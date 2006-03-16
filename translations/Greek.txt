@@ -1,0 +1,1040 @@
+# Χρησιμοποιείστε το αρχείο αυτό για να μεταφράσετε το Ημερολόγιο σε άλλη
+# γλώσσα.  Η μορφή είναι "Αγγλικό κείμενο: Μεταφρασμένο κείμενο"
+# Δεν μπορεί να υπάρχει ":" στο αγγλικό κείμενο.
+# Μεταφραστής: Παύλος Γκέσος cham_gss@hotmail.com
+# Τελευταία ενημέρωση: 10 Μαρ 2006
+# Check out the tools directory which contains two perl scripts:
+#   check_translation.pl will tell you if you have successfully translated
+#        all required text
+#   update_translation.pl will take an old translation file and move the
+#        translations around so they age grouped by the page they appear in.
+#        It will also identify any missing translations and tag them
+#        with a comment.  If it is a non-english translation, the english
+#        translation will be included in the comment to simplify completing
+#        the translation.
+#
+# Note: You will notice the entry for "May_" below.  There's a reason for
+# this.  Translate "May_" to the full month name and "May" to the three-letter
+# month abbreviation (like "Oct" for "October").
+#
+#
+#
+#
+# Translation last updated on 10 Μαρ 2006
+
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: utf8
+
+
+
+###############################################
+# Page: activity_log.php
+#
+Activity Log: Αρχείο ενεργειών
+Admin: Διαχειριστής
+User: Χρήστης
+Calendar: Ημερολόγιο
+Date: Ημερομηνία
+Time: Ώρα
+Event: Γεγονός
+Action: Ενέργεια
+Event created: Το γεγονός δημιουργήθηκε
+Event approved: Το γεγονός έγινε αποδεκτό
+Event rejected: Το γεγονός απορίφθηκε
+Event updated: Το γεγονός ενημερώθηκε
+Event deleted: Το γεγονός διαγράφτηκε
+Notification sent: Η ειδοποίηση στάλθηκε
+Reminder sent: Η υπενθύμιση στάλθηκε
+Database error: Σφάλμα στη βάση δεδομένων
+Previous: Προηγούμενο
+Events: Γεγονότα
+Next: Επόμενο
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Εσφαλμένο id καταχώρησης
+This is a private event and may not be added to your calendar.: Αυτό είναι ιδιωτικό γεγονός και δεν μπορεί να προστεθεί στο ημερολόγιό σας.
+Error adding event: Σφάλμα στην προσθήκη γεγονότος
+
+
+###############################################
+# Page: admin.php
+#
+System Settings: Ρυθμίσεις συστήματος
+Help: Βοήθεια
+You are not authorized: Δεν είστε εξουσιοδοτημένος
+Note: Σημείωση
+Your user preferences: Οι ρυθμίσεις σας
+may be affecting the appearance of this page.: επηρρεάζουν την εμφάνιση της σελίδας.
+Click here: Πατήστε εδώ
+to not use your user preferences when viewing this page: για να φορτώσετε τη σελίδα χωρίς τις ρυθμίσεις σας.
+are being ignored while viewing this page.: αγνοήθηκαν στη φόρτωση αυτής της σελίδας.
+to load your user preferences when viewing this page: για να φορτώσετε τη σελίδα με τις ρυθμίσεις σας
+Save: Αποθήκευση
+Settings: Ρυθμίσεις
+Public Access: Κοινή πρόσβαση
+Groups: Ομάδες
+NonUser Calendars: Ημερολόγια μη-χρηστών
+Other: Διάφορα
+Email: Email
+colors-help: Όλα τα χρώματα πρέπει να ορίζονται σε δεκαεξαδική μορφή "#RRGGBB" όπου "RR" είναι η δεκαεξαδική τιμή του ερυθρού, "GG" του πράσινου, και "BB" του κυανού.
+Colors: Χρώματα
+app-name-help: Καθορίζει το όνομα της εφαρμογής που θα εμφανίζεται στη γραμμή τίτλου του browser σε όλες τις σελίδες.  Η επιλογή εδώ θα αναζητηθεί στα αρχεία μεταφράσεων για να μπορούν να δωθούν διαφορετικοί τίτλοι σε διαφορετικές γλώσσες.
+Application Name: Όνομα εφαρμογής
+server-url-help: Καθορίζει το URL της εφαρμογής.  Θα περιλαμβάνεται στα email υπενθυμίσεων και ειδοποιήσεων.
+Server URL: Server URL
+language-help: Καθορίζει το ποιά γλώσσα θα χρησιμοποιείται.
+Language: Γλώσσα
+Your browser default language is: Η default γλώσσα του browser σας είναι
+fonts-help: Καθορίζει μια λίστα από γραμματοσειρές που θα χρησιμοποιούνται (π.χ. "Arial, Helvetica")
+Fonts: Γραμματοσειρές
+custom-script-help: Επιτρέπει την καταχώρηση προσαρμοσμένου κειμένου Javascript ή stylesheet το οποίο θα εισαχθεί στο HTML "head" tag για κάθε σελίδα.
+Custom script/stylesheet: Προσαρμοσμένο script/stylesheet
+Yes: Ναι
+No: Όχι
+Edit: Επεξεργασία
+custom-header-help: Επιτρέπει σε ένα προσαρμοσμένο HTML snippet να εισαχθεί στην αρχή κάθε σελίδας.
+Custom header: Προσαρμοσμένος πρόλογος
+custom-trailer-help: Επιτρέπει σε ένα προσαρμοσμένο HTML snippet να εισαχθεί στο τέλος κάθε σελίδας.
+Custom trailer: Προσαρμοσμένος επίλογος
+preferred-view-help: Καθορίζει ποιά εμφάνιση θα είναι η default (Ημέρας, Εβδομάδας, Μήνα, ή Χρόνου).
+Preferred view: Προτιμόμενη εμφάνιση
+Day: Ημέρα
+Week: Εβδομάδα
+Month: Μήνας
+Year: Έτος
+display-weekends-help: Εμφάνιση και των Σαββατοκύριακων στην Εμφάνιση Εβδομάδας.
+Display weekends in week view: Εμφάνιση Εβδομάδας με Σαββατοκύριακα
+yearly-shows-events-help: Στην Εμφάνιση Έτους, εμφάνιση των ημερών που περιέχουν γεγονότα με έντονη γραφή.
+Display days with events in bold in month and year views: Στην Εμφάνιση Μήνα και Έτους, εμφάνιση των ημερών που περιέχουν γεγονότα με έντονα
+display-desc-print-day-help: Εμφάνιση της περιγραφής των γεγονότων στην έκδοση για εκτύπωση της Εμφάνισης Ημέρας.
+Display description in printer day view: Εμφάνιση περιγραφής στην εκτύπωση της Εμφάνισης Ημέρας
+date-format-help: Καθορίζει τη μορφή της ημερομηνίας.
+Date format: Μορφή ημερομηνίας
+December: Δεκέμβριος
+time-format-help: Καθορίζει τι τύπος ώρας θα χρησιμοποιείται: <br /><i>12ωρος:</i> Εμφανίζει την ώρα σαν 3πμ, 8:30αμ, κτλ.  <br /><i>24ωρος:</i> Εμφανίζει την ώρα σαν 300, 2030, κτλ.
+Time format: Τύπος ώρας
+12 hour: 12ωρος
+24 hour: 24ωρος
+time-interval-help: Καθορίζει τη διάρκεια των block ώρας στην Εμφάνιση Εβδομάδας και Εμφάνιση Ημέρας.
+Time interval: Διάρκεια block ώρας
+hour: ώρα
+minutes: λεπτά
+auto-refresh-help: Όταν είναι ενεργό, η Εμφάνιση Ημέρας, Εβδομάδας, Μήνα, και η λίστα με τα γεγονότα σε αναμονή αποδοχής, ανανεώνονται περιοδικά.
+Auto-refresh calendars: Αυτόματη ανανέωση ημερολογίων
+auto-refresh-time-help: Όταν η Αυτόματη ανανέωση είναι ενεργή, αυτή η επιλογή καθορίζει το χρόνο ανανέωσης.
+Auto-refresh time: Χρόνος ανανέωσης
+require-approvals-help: Όταν είναι ενεργό, ο χρήστης πρέπει να αποδεχτεί ένα γεγονός πριν εμφανιστεί στο ημερολόγιό του (εκτός και αν το "Εμφάνιση των Γεγονότων σε Αναμονή Αποδοχής" είναι ενεργό).  Θέτοντάς το σε "Όχι" δεν απενεργοποιείτε τις αποδοχές για το Ημερολόγιο Δημόσιας Πρόσβασης (Αν το Ημερολόγιο Δημόσιας Πρόσβασης είναι ενεργό).
+Require event approvals: Απαιτεί αποδοχή γεγονότων
+display-unapproved-help: Καθορίζει αν τα, σε αναμονή αποδοχής γεγονότα, θα εμφανίζονται στο ημερολόγιό σας.<br /> Αν το θέσετε σε "Ναι", τότε τα γεγονότα αυτά θα εμφανίζονται στο ημερολόγιό σας (με διαφορετικό χρώμα).<br /> Αν το θέσετε σε "Όχι", τα γεγονότα θα αυτά πρέπει να τα αποδεκτείτε για να εμφανιστούν στο ημερολόγιό σας.
+Display unapproved: Εμφάνιση των σε αναμονή αποδοχής γεγονότων
+display-week-number-help: Καθορίζει αν θα εμφανίζεται ο αριθμός εβδομάδας (1-52) στην Εμφάνιση Μήνα και Εμφάνιση Εβδομάδας.
+Display week number: Εμφάνιση αριθμού εβδομάδας
+display-week-starts-on: Καθορίζει αν η εβδομάδα αρχίζει Κυριακή ή Δευτέρα.  Αν επιλέξετε Δευτέρα, τότε ο αριθμός εβδομάδας συμβαδίζει με τον αντίστοιχο ISO.
+Week starts on: Η εβδομάδα αρχίζει την
+Sunday: Κυριακή
+Monday: Δευτέρα
+work-hours-help: Καθορίζει το χρονικό διάστημα που θα εμφανίζεται στην Εμφάνιση Ημέρας.
+Work hours: Ώρες δουλειάς
+From: Από
+to: ως
+disable-priority-field-help: Επιλέγοντας "Ναι" εξαφανίζεται η επιλογή "Προτεραιότητα" από τις πληροφορίες του γεγονότος, παρέχοντας ένα απλούστερο περιβάλλον για τους αρχάριους.
+Disable Priority field: Απενεργοποίηση επιλογής Προτεραιότητας
+disable-access-field-help: Επιλέγοντας "Ναι" εξαφανίζεται η επιλογή "Πρόσβαση" από τις πληροφορίες του γεγονότος, παρέχοντας ένα απλούστερο περιβάλλον για τους αρχάριους.
+Disable Access field: Απενεργοποίηση επιλογής Πρόσβασης
+disable-participants-field-help: Επιλέγοντας "Ναι" εξαφανίζεται η επιλογή "Συμμετέχοντες" από τις πληροφορίες του γεγονότος, απαγορεύοντας στους χρήστες να προσθέτουν άλλους χρήστες στα γεγονότα τους. Αν ενεργοποιήσετε την επιλογή, πιθανόν να θέλετε να απενεργοποιήσετε την επιλογή "Εμφάνιση ημερολογίων άλλων χρηστών" επίσης.
+Disable Participants field: Απενεργοποίηση επιλογής Συμμετέχοντες
+disable-repeating-field-help: Επιλέγοντας "Ναι" εξαφανίζεται η επιλογή "Επανάληψη" στην προσθήκη γεγονότων, παρέχοντας ένα απλούστερο περιβάλλον για τους αρχάριους.
+Disable Repeating field: Απενεργοποίηση επιλογής Επανάληψη
+popup-includes-siteextras-help: Αν είναι ενεργό επιτρέπει προσαρμένα από το χρήστη πεδία στα γεγονότα τα οποία βρίσκονται στο αρχείο site_extras.php να εμφανίζονται στα αναδυόμενα μυνήματα των γεγονότων.
+Display Site Extras in popup: Εμφάνιση των επιπλέον πληροφοριών με αναδυόμενο μύνημα
+allow-html-description-help: Αν είναι ενεργό, οι λεπτομέρειες των γεγονότων μπορούν να δίνοναι σε μορφή HTML Αν όχι, τα HTML tags εμφανίζονται σαν κανονικό κείμενο. Προειδοποίηση: Αν είναι ενεργό, επιτρέπεται στους χρήστες να αναφέρονται σε εικόνες που βρίσκονται σε εξωτερικές URL διευθύνσεις.
+Allow HTML in Description: Επιτρέπεται το HTML στην περιγραφή
+allow-view-other-help: Καθορίζει πότε ένας χρήστης θα μπορεί να δεί το ημερολόγιο άλλου χρήστη.
+Allow viewing other user's calendars: Επιτρέπεται η εμφάνιση ημερολογίων άλλων χρηστών
+allow-view-add-help: Ένα εικονίδιο '+' εμφανίζεται στις διάφορες προβολές, το οποίο επιτρέπει στους χρήστες να εισάγουν γρήγορα γεγονότα σε ημερολόγια άλλων χρηστών.
+Include add event link in views: Εμφάνιση προσθήκης γεγονότος στις προβολές
+remember-last-login-help: Όταν είναι ενεργό, το Όνομα Χρήστη θα συμπληρώνεται αυτόματα στη σελίδα εισόδου (όχι όμως και ο κωδικός), και οι ρυθμίσεις του χρήστη θα φορτώνονται (συμπεριλαμβανομένων των επιλεγμένων χρωμάτων και της γλώσσας).
+Remember last login: Μνήμη της τελευταίας εισόδου
+conflict-check-help: Έλεγχος για επικαλύψεις γεγονότων (δύο γεγονότα προγραμματισμένα την ίδια ώρα για τον ίδιο χρήστη).  Αν τεθεί σε "Ναι", μπορείτε να τα προγραμματίσετε την ίδια ώρα αλλά θα σας εμφανιστεί μια προειδοποίηση. Αν τεθεί σε "Όχι" δεν θα υπάρξει καμμία προειδοποίηση. Προτείνεται να το θέσετε στο "Ναι".
+Check for event conflicts: Έλεγχος για επικάλυψη γεγονότων
+conflict-months-help: Αν είναι ενεργός ο έλεγχος για επικάλυψη ("Έλεγχος για επικάλυψη γεγονότων" έχει τιμή "Ναι"), αυτή η ρύθμιση καθορίζει σε πόσους μήνες βάθος, θα γίνεται ο έλεγχος επικάλυψης. Αν διαπιστώσετε οτι το πρόγραμμα αργεί να προσθέσει νέα γεγονότα, μειώστε το νούμερο.
+Conflict checking months: Βάθος χρόνου σε μήνες για τον έλεγχο επικάλυψης
+conflict-check-override-help: Επιτρέπεται σε χρήστες να προγραμματίσουν 2 ή περισσότερα γεγονότα την ίδια χρονική περίοδο.
+Allow users to override conflicts: Επιτρέπεται να υπάρχουν επικαλύψεις
+limit-appts-help: Επιτρέπει τον διαχειριστή να ορίσει όριο στον αριθμό συναντήσεων που μπορεί να έχει ένας χρήστης σε κάθε μέρα.
+Limit number of timed events per day: Περιορισμός, αριθμού γεγονότων με χρόνο, στη μέρα
+limit-appts-number-help: Ο μέγιστος αριθμός, γεγονότων με χρόνο, που μπορεί να έχει ένας χρήστης σε κάθε μέρα.
+Maximum timed events per day: Μέγιστος αριθμός, γεγονότων με χρόνο, στη μέρα
+timed-evt-len-help: Καθορίζει τον τρόπο που θα δηλώνεται η λήξη ενός γεγονότος.
+Specify timed event length by: Καθορίζει τη διάρκεια ενός γεγονότος με χρόνο με
+Duration: Διάρκεια
+End Time: Χρόνος λήξης
+Plugins: Plugins
+plugins-enabled-help: Επιτρέπονται plugin εφαρμογές.
+Enable Plugins: Επιτρέπονται τα Plugins
+plugins-sort-key-help: Ορίζει μια συντόμευση για το plugin.  Αυτό τα επιτρέπει να εμφανίζονται με συγκεκριμένη σειρά τα plugins.
+Plugin: Plugin
+allow-public-access-help: Όταν είναι ενεργό το ημερολόγιο μπορεί να χρησιμοποιηθεί σαν δημόσια μόνο για ανάγνωση, χωρίς να χρειάζεται να γίνει login.
+Allow public access: Δημόσια πρόσβαση
+public-access-default-visible: Τα γεγονότα του δημοσίου ημερολογίου θα εμφανίζονται στα ημερολόγια όλων των χρηστών.
+Public access visible by default: Εμφάνιση των δημόσιων γεγονότων
+public-access-default-selected: Όταν προσθέτουμε ένα γεγονός, ο δημόσιος χρήστης, επιλέγεται σαν συμμετέχων.
+Public access is default participant: Συμμετοχή από το δημόσιο ημερολόγιο
+public-access-view-others-help: Καθορίζει αν οο δημόσιοι χρήστες μπορούν να βλέπουν τα ημερολόγια των άλλων χρηστών.
+Public access can view other users: Η δημόσια πρόσβαση μπορεί να βλέπει άλλους χρήστες
+public-access-can-add-help: Όταν είναι ενεργό, οι δημόσιοι χρήστε μπορούν να προσθέσουν γεγονότα, αλλά δεν εμφανίζονται μέχρι ο διαχειριστής να τα αποδεχτεί.
+Public access can add events: Η δημόσια πρόσβαση μπορεί να προσθέτει γεγονότα
+public-access-add-requires-approval-help: Καθορίζει αν τα γεγονότα που προσθέτονται από δημόσιους χρήστες θα χρειάζονται αποδοχή/έγκριση για να εμφανιστούν.
+Public access new events require approval: Η δημόσια πρόσβαση χρειάζεται αποδοχή/έγκριση για προσθήκη γεγονότων
+public-access-sees-participants-help: Όταν είναι ενεργό, οι δημόσιοι χρήστες έχουν τη δυνατότητα να βλέπουνε τους συμμετέχοντες στο γεγονός αν βλέπουνε τις λεπτομέρειες ενός γεγονότος.
+Public access can view participants: Η δημόσια πρόσβαση μπορεί να βλέπει συμμετέχοντες
+groups-enabled-help: Η ενεργοποίηση των ομάδων, επιτρέπει την επιλογή ομάδας χρηστών, επιλέγοντας την ομάδα στην οποία βρίσκονται.
+Groups enabled: Ομάδες
+user-sees-his-group-help:
+Αν είναι ενεργό, οι χρήστες δεν μπορούν να δούνε χρήστες που δεν ανοίκουν σε μια τουλάχιστον ίδια ομάδα με αυτούς.
+User sees only his groups: Ο χρήστης βλέπει μόνο την ομάδα του
+nonuser-enabled-help: Αν είναι ενεργό, οι διαχειριστές έχουν δικαίωμα να δημιουργούν ημερολόγια μη χρηστών.
+Nonuser enabled: Ενεργά ημερολόγια μη χρηστών
+nonuser-list-help: Που να εμφανίζονται τα ημερολόγια των μη χρηστών στη λίστα συμμετέχοντων
+Nonuser list: Εμφάνιση στη λίστα συμμετέχοντων
+Top: Πάνω
+Bottom: Κάτω
+reports-enabled-help: Αν είναι ενεργό, οι χρήστες θα βλέπουν μια περιοχή "Αναφορές" κάτω, σε κάθε σελίδα, και τους επιτρέπεται να δημιουργούν δικές τους αναφορές.  Επιπρόσθετα, οι διαχειριστές μπορούν να δημιουργήσουν αναφορές που να εμφανίζονται στις σελίδες όλων.
+Reports enabled: Αναφορές
+subscriptions-enabled-help: Καθορίζει αν οι απομακρυσμένοι χρήστες μπορούν να συνδεθούν στο ημερολόγιο ενός χρήστη, επιτρέποντας τους να δούν τα γεγονότα του στη συμβατή με iCal εφαρμογή τους (όπως το iCal της Apple ή το Mozilla Calendar).
+Allow remote subscriptions: Επιτρέπονται απομακρυσμένες συνδέσεις
+categories-enabled-help: Επιτρέπει υποστήριξη κατηγοριών γεγονότων.
+Categories enabled: Κατηγορίες
+allow-external-users-help: Καθορίζει αν ένας τρίτος που δεν είναι χρήστης μπορεί να γίνει συμμετέχων σε ένα γεγονός.
+Allow external users: Επιτρέπονται εξωτερικοί χρήστες
+external-can-receive-notification-help: Όταν οι εξωτερικοί χρήστες είναι ενεργοί, καθώς και η χρήση email, οι εξωτερικοί χρήστες λαμβάνουν ειδοποίηση email όταν ένα γεγονός προστίθεται/τροποποιείται/διαγράφεται (Αν παρέχεται το email του εξωτερικού χρήστη).
+External users can receive email notifications: Οι εξωτερικοί χρήστες λαμβάνουν ειδοποιήσεις email
+external-can-receive-reminder-help: Όταν οι εξωτερικοί χρήστες είναι ενεργοί, καθώς και η χρήση email, οι εξωτερικοί χρήστες λαμβάνουν υπενθύμιση email (Αν παρέχεται το email του εξωτερικού χρήστη).
+External users can receive email reminders: Οι εξωτερικοί χρήστες λαμβάνουν υπενθυμίσεις email
+email-enabled-help: Ενεργοποιεί ή απενεργοποιεί την αποστολή email για υπενθυμίσεις και ειδοποιήσεις. Αν ο server δεν μπορεί να στείλει mail, επιλέξτε "Όχι".
+Email enabled: Χρήση email
+email-default-sender: Καθορίζει την διεύθυνση email που θα φαίνεται ως αποστολέας, όταν αποστέλονται υπενθυμίσεις.
+Default sender address: Διεύθυνση αποστολέα
+Default user settings: Default ρυθμίσεις χρήστη
+email-event-reminders-help: Καθορίζει πότε θα αποστέλονται υπενθυμίσεις γεγονότων.
+Event reminders: Υπενθυμίσεις γεγονότων
+email-event-added: Καθορίζει αν θα αποστέλεται email ειδοποίηση όταν προστίθεται γεγονός στο ημερολόγιό σας.
+Events added to my calendar: Γεγονότα που προστίθενται στο ημερολόγιό μου
+email-event-updated: Καθορίζει αν θα αποστέλεται email ειδοποίηση όταν τροποποιείται γεγονός στο ημερολόγιό σας.
+Events updated on my calendar: Γεγονότα που τροποποιούνται στο ημερολόγιό μου
+email-event-deleted: Καθορίζει αν θα αποστέλεται email ειδοποίηση όταν διαγράφεται γεγονός από το ημερολόγιό σας.
+Events removed from my calendar: Γεγονότα που διαγράφονται από το ημερολόγιό μου
+email-event-rejected: Καθορίζει αν θα αποστέλεται email ειδοποίηση όταν ένας συμμετέχων απορρίπτει γεγονός στο ημερολόγιό σας.
+Event rejected by participant: Γεγονότα που απορρίπτονται από τον συμμετέχοντα
+Allow user to customize colors: Αλλαγή χρωμάτων από τους χρήστες
+Enable gradient images for background colors: Ενεργοποίηση εικόνων για χρώμα background
+Not available: Μη διαθέσιμο
+Document background: Background κειμένου
+Select: Επιλέξτε
+Document title: Τίτλος κειμένου
+Document text: Κείμενο
+Table grid color: Χρώμα του grid του πίνακα
+Table header background: Χρώμα του background της επικεφαλίδας του πίνακα
+Table header text: Κείμενο της επικεφαλίδας του πίνακα
+Table cell background: Background κελιών του πίνακα
+Table cell background for current day: Background κελιών του πίνακα για την τρέχουσα ημέρα
+Table cell background for weekends: Background κελιών του πίνακα για τα σαββατοκύριακα
+Event popup background: Background των αναδυόμενων κειμένων των γεγονότων
+Event popup text: Κείμενο των αναδυόμενων κειμένων των γεγονότων
+
+
+###############################################
+# Page: admin_handler.php
+#
+Error: Σφάλμα
+The following error occurred: Συνέβη το ακόλουθο σφάλμα
+
+
+###############################################
+# Page: adminhome.php
+#
+Preferences: Ρυθμίσεις
+Users: Χρηστες
+Account: Λογαριασμός
+Assistants: Συμμετέχοντες
+Categories: Κατηγορίες
+Views: Εμφανίσεις
+Layers: Επίπεδα
+Reports: Αναφορές
+Delete Events: Διαγραφή Γεγονότων
+Public Preferences: Δημόσιες Ρυθμίσεις
+Unapproved Public Events: Σε αναμονή αποδοχής, δημόσια γεγονότα
+Administrative Tools: Βοηθήματα Διαχειριστή
+
+
+###############################################
+# Page: approve_entry.php
+#
+Error approving event: Σφάλμα στην αποδοχή γεγονότος
+
+
+###############################################
+# Page: assistant_edit.php
+#
+Admin mode: Κατάσταση διαχειριστή
+Your assistants: Οι βοηθοί σας
+
+
+###############################################
+# Page: category.php
+#
+Add: Προσθήκη
+Category Name: Όνομα Κατηγορίας
+Global: Δημόσιο
+Delete: Διαγραφή
+Are you sure you want to delete this entry?: Είστε σίγουρος οτι θέλετε να σβύσετε την εγγραφή;
+Add New Category: Προσθήκη νέας κατηγορίας
+
+
+###############################################
+# Page: day.php
+#
+Assistant mode: Κατάσταση βοηθού
+Generate printer-friendly version: Δημιουργία εμφάνισης για εκτύπωση
+Printer Friendly: Εμφάνιση για εκτύπωση
+
+
+###############################################
+# Page: del_entry.php
+#
+Hello: Καλημέρα
+An appointment has been canceled for you by: Μια συνάντηση ακυρώθηκε για σας από το χρήστη:
+The subject was: Το θέμα είναι
+Notification: Ειδοποίηση
+
+
+###############################################
+# Page: edit_entry.php
+#
+Edit Entry: Επεξεργασία Εγγραφής
+Add Entry: Προσθήκη Εγγραφής
+Details: Λεπτομέρειες
+Participants: Συμμετέχοντες
+Repeat: Επανάληψη
+brief-description-help: Παρέχει μια σύντομη περιγραφή (περίπου 20 χαρακτήρες) του γεγονότος.  Εμφανίζεται όταν βλέπετε το ημερολόγιο.
+Brief Description: Σύντομη περιγραφή
+full-description-help: Η πλήρης περιγραφή του γεγονότος. Εμφανίζεται όταν ο χρήστης επιλέγει να δεί το γεγονός.
+Full Description: Πλήρης περιγραφή
+access-help: Καθορίζει το επίπεδο πρόσβασης του γεγονότος.<br /> <i>Δημόσιο</i>: Ο καθένας μπορεί να δεί όλες τις λεπτομέρειες του γεγονότος.  <br /><i>Εμπιστευτικό</i>: Οι άλλοι μπορούν να δουν οτι υπάρχει κάποιο γεγονός σε εκείνη την ημερομηνία και ώρα, αλλά χωρίς να ξέρουν τι γεγονός είναι.
+Access: Πρόσβαση
+Public: Δημόσιο
+Confidential: Εμπιστευτικό
+priority-help: Καθορίζει την προτεραιότητα του γεγονότος.  Τα γεγονότα σε υψηλή προτεραιότητα εμφανίζονται με έντονη γραφή.
+Priority: Προτεραιότητα
+Low: Χαμηλή
+Medium: Μέτρια
+High: Υψηλή
+category-help: Καθορίζει την κατηγορία του γεγονότος.
+Category: Κατηγορία
+None: Όχι
+date-help: Καθορίζει την ημερομηνία του γεγονότος.
+Untimed event: Γεγονός δίχως ώρα
+Timed event: Γεγονός με ώρα
+All day event: Ολοήμερο γεγονός
+time-help: Καθορίζει την ώρα του γεγονότος.<br />Επέλεξε "Γεγονός με ώρα" (για γεγονός που προγραμματίστηκε για συγκεκριμένη ώρα της μέρας), "Γεγονός δίχως ώρα" (για γεγονός που δεν έχει ώρα (π.χ. εορτή κάποιου φίλου), ή "Ολοήμερο γεγονός" (για γεγονός που ισχύει όλη την ημέρα (π.χ. απουσία από το γραφείο).
+am: πμ
+pm: μμ
+duration-help: Καθορίζει τη διάρκεια (σε ώρες:λεπτά) του γεγονότος.  <br /><i>Η επιλογή μπορεί να μείνει κενή.</i>
+hours: ώρες
+end-time-help: Καθορίζει την ώρα που αναμένεται το γεγονός να τελειώσει.
+days: μέρες
+before event: πριν το γεγονός
+participants-help: Εμφανίζει τους συμμετέχοντες στο γεγονός.
+Availability: Διαθεσιμότητα
+external-participants-help: Καθορίζει μια λίστα με συμμετέχοντες στο γεγονός, οι οποίοι δεν χρησιμοποιούν την εφαρμογή.  Οι χρήστες εμφανίζονται ένας ανα γραμμή και μπορούν να περιλαμβάνουν email.  Αν περιλαμβάνεται email, ο χρήστης μπορεί να λαμβάνει υπενθημίσεις και ειδοποιήσεις.
+External Participants: Εξωτερικοί συμμετέχοντες
+repeat-type-help: Καθορίζει το πόσο συχνά θα επαναλαμβάνεται ένα γεγονός. Το <i>Μηνιαία (κατά ημέρα)</i> επιτρέπει ένα γεγονός να επαναλαμβάνεται την 1η Δευτέρα του μήνα, την 3η Τρίτη του μήνα κ.τ.λ. <i>Μηνιαία (κατά ημερομηνία)</i> επιτρέπει ένα γεγονός να επαναλαμβάνεται την ίδια ημερομηνία του μήνα. π.χ. στις 30 του μήνα ή στις 20 του μήνα.
+Repeat Type: Επανάληψη
+Daily: Καθημερινά
+Weekly: Εβδομαδιαία
+Monthly: Μηνιαία
+by day: κατά ημέρα
+by day (from end): κατά ημέρα (ανάστροφα)
+by date: κατά ημερομηνία
+Yearly: Ετήσια
+repeat-end-date-help: Καθορίζει την ημερομηνία μέχρι την οποία θα επαναλαμβάνεται το γεγονός.
+Repeat End Date: Ημερομηνία τέλους επανάληψης
+Use end date: Χρήση ημερομηνίας λήξης
+repeat-frequency-help: Καθορίζει πόσο συχνά το γεγονός επαναλαμβάνεται. Το default 1 καθορίζει οτι θα συμβαίνει κάθε φορά. Δίνοντας 2, θα συμβαίνει κάθε δεύτερη εβδομάδα (αν η <i>Επανάληψη</i> έχει οριστεί <i>Εβδομαδιαία</i>), κάθε δεύτερο μήνα (αν η <i>Επανάληψη</i> έχει οριστεί <i>Μηνιαία</i>), κ.τ.λ.
+Frequency: Συχνότητα
+repeat-day-help: Καθορίζει ποιές μέρες της εβδομάδας θα επναλαμβάνεται το γεγονός.  Χρησιμοποιείται μόνο όταν η <i>Επανάλυψη</i> έχει τεθεί σε <i>Εβδομαδιαία</i>.
+Repeat Day: Μέρα επανάληψης
+Tuesday: Τρίτη
+Wednesday: Τετάρτη
+Thursday: Πέμπτη
+Friday: Παρασκευή
+Saturday: Σάββατο
+Delete entry: Διαγραφή εγγραφής
+You are not authorized to edit this entry: Δεν είστε εξουσιοδοτημένος να επεξεργαστείτε αυτή την εγγραφή
+
+
+###############################################
+# Page: edit_entry_handler.php
+#
+The following conflicts with the suggested time: Οι ακόλουθες επικαλύψεις με περίοδο
+Unnamed Event: Γεγονός χωρίς τίτλο
+The description is: Η περιγραφή είναι
+A new appointment has been made for you by: Μια νέα συνάντηση δημιουργήθηκε για σας από τον χρήστη:
+An appointment has been updated by: Μια νέα συνάντηση ανανεώθηκε από το χρήστη:
+The subject is: Το θέμα είναι:
+Please look on: Παρακαλώ κοιτάξτε
+to accept or reject this appointment: να δεχθείτε ή απορρίψετε τη συνάντηση
+to view this appointment: να δείτε τη συνάντηση
+Scheduling Conflict: Αναπρογραμματισμός επικαλύψεων
+Your suggested time of: Η περίοδος
+conflicts with the following existing calendar entries: επικαλύπτει τα παρακάτω γεγονότα
+Cancel: Ακύρωση
+
+
+###############################################
+# Page: edit_layer.php
+#
+Edit Layer: Επεξεργασία Επιπέδου
+Add Layer: Προσθήκη νέου Επιπέδου
+Source: Πηγή
+Color: Χρώμα
+Duplicates: Διπλές καταχωρήσεις
+Show layer events that are the same as your own: Εμφάνιση των γεγονότων του επιπέδου που είναι ίδια με τα δικά σας
+Delete layer: Διαγραφή Επιπέδου
+Are you sure you want to delete this layer?: Είστε σίγουρος οτι θέλετε να διαγράψετε αυτό το Επίπεδο;
+
+
+###############################################
+# Page: edit_layer_handler.php
+#
+You cannot create a layer for yourself: Δεν μπορείτε να δημιουργήσετε ένα επίπεδο για εσάς
+You can only create one layer for each user: Μπορείτε να δημιουργήσετε μόνο ένα επίπεδο για κάθε χρήστη
+
+
+###############################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX δεν έχει τεθεί στο config.php.
+word characters only: can only contain word characters (a-zA-Z_0-9)
+Edit User: Επεξεργασία Χρήστη
+Add User: Προσθήκη Χρήστη
+Calendar ID: ID Ημερολογίου
+First Name: Όνομα
+Last Name: Επίθετο
+
+
+###############################################
+# Page: edit_nonusers_handler.php
+#
+Changes successfully saved: Οι αλλαγές αποθηκεύτηκαν επιτυχώς
+
+
+###############################################
+# Page: edit_report.php
+#
+Tomorrow: Αύριο
+Today: Σήμερα
+Yesterday: Χθές
+Day before yesterday: Προχθές
+Next week: Επόμενη εβδομάδα
+This week: Αυτή η εβδομάδα
+Last week: Προηγούμενη εβδομάδα
+Week before last: Προπροηγούμενη εβδομάδα
+Next week and week after: Επόμενη και μεθεπόμενη εβδομάδα
+This week and next week: Αυτή και η επόμενη εβδομάδα
+Last week and this week: Αυτή και η προηγούμενη εβδομάδα
+Last two weeks: Τελευταίες δύο εβδομάδες
+Next month: Επόμενος μήνας
+This month: Αυτός ο μήνας
+Last month: Προηγούμενος μήνας
+Month before last: Προπροηγούμενος μήνας
+Next year: Επόμενο έτος
+This year: Αυτό το έτος
+Last year: Προηγούμενο έτος
+Year before last: Προπροηγούμενο έτος
+Next 14 days: Επόμενες 14 ημέρες
+Next 30 days: Επόμενες 30 ημέρες
+Next 60 days: Επόμενες 60 ημέρες
+Next 90 days: Επόμενες 90 ημέρες
+Next 180 days: Επόμενες 180 ημέρες
+Next 365 days: Επόμενες 365 ημέρες
+Invalid report id: Εσφαλμένο id αναφοράς
+Unnamed Report: Αναφορά χωρίς όνομα
+Add Report: Προσθήκη Αναφοράς
+Edit Report: Επεξεργασία Αναφοράς
+Report name: Όνομα αναφοράς
+Current User: Τρέχων Χρήστης
+Include link in trailer: Συμπεριέλαβε link στον επίλογο
+Include standard header/trailer: Συμπεριέλαβε τον standard πρόλογο/επίλογο
+Date range: Περίοδος
+Include previous/next links: Συμπεριέλαβε τα προηγούμενα/επόμενα links
+Include empty dates: Συμπεριέλαβε τις κενές μέρες
+Template variables: Μεταβλητές του template
+Page template: Template σελίδας
+Day template: Template ημέρας
+Event template: Template γεγονότος
+Are you sure you want to delete this report?: Είστε σίγουρος οτι θέλετε να διαγράψετε την αναφορά;
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+Variable N not found: Η μεταβλητή N δεν βρέθηκε
+
+
+###############################################
+# Page: edit_template.php
+#
+Edit Custom Script/Stylesheet: Επεξεργασία προσαρμοσμένου από το χρήστη Script/Stylesheet
+Edit Custom Header: Επεξεργασία προσαρμοσμένου από το χρήστη Προλόγου
+Edit Custom Trailer: Επεξεργασία προσαρμοσμένου από το χρήστη Επιλόγου
+
+
+###############################################
+# Page: edit_user.php
+#
+Username: Όνομα Χρήστη
+E-mail address: Διεύθυνση E-mail
+Password: Κωδικός
+again: ξανά
+Disabled for demo: Disabled for demo
+Are you sure you want to delete this user?: Είστε σίγουρος οτι θέλετε να διαγράψετε το χρήστη;
+Change Password: Αλλαγή κωδικού
+New Password: Νέος κωδικός
+Set Password: Θέσετε τον κωδικό
+
+
+###############################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported: Η διαγραφή χρηστών δεν υποστηρίζεται
+The passwords were not identical: Οι κωδικοί δεν είναι ίδιοι
+You have not entered a password: Δεν δώσατε κωδικό
+Username can not be blank: Το όνομα χρήστη δεν μπορεί να είναι κενό
+
+
+###############################################
+# Page: export.php
+#
+Export: Εξαγωγή
+Export format: Μορφή εξαγωγής
+Palm Pilot: Palm Pilot
+Include all layers: Περιέλαβε όλα τα επίπεδα
+Export all dates: Εξαγωγή όλων των συνατήσεων
+Start date: Ημερομηνία έναρξης
+End date: Ημερομηνία λήξης
+Modified since: Έχει να τροποποιηθεί από τις
+
+
+###############################################
+# Page: group_edit.php
+#
+Unnamed Group: Ομάδα χωρίς όνομα
+Add Group: Προσθήκη Ομάδας
+Edit Group: Επεξεργασία Ομάδας
+Group name: Όνομα ομάδας
+Updated: Ανανεώθηκε
+Created by: Δημιουργήθηκε από τον χρήστη:
+
+
+###############################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Πρέπει να ορίσετε ένα όνομα ομάδας
+
+
+###############################################
+# Page: groups.php
+#
+Add New Group: Προσθήκη νέας ομάδας
+
+
+###############################################
+# Page: help_admin.php
+#
+Display days with events in bold in year view: Εμφάνιση ημερών με γεγονότα σε έντονη γραφή στην Εμφάνιση Έτους
+Nonuser: Ημερολόγια μη Χρηστών
+user-customize-color: Καθορίζει αν οι χρήστες μπορούν να αλλάζουν τους χρωματισμούς τους.
+enable-gradient-help: Χρήση μεταβλητών χρωμάτων στα κελιά των πινάκων.
+Manually entering color values: Εισαγωγή χρωμάτων με το χέρι
+
+
+###############################################
+# Page: help_bug.php
+#
+Report Bug: Αναφέρετε ένα Bug
+
+
+###############################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Πρόσθεση/Επεξεργασία εγγραφών Ημερολογίου
+
+
+###############################################
+# Page: help_import.php
+#
+Import: Εισαγωγή
+Palm Desktop: Palm Desktop
+This form will allow you to import entries from the Palm Desktop Datebook.: Η σελίδα αυτή σας επιτρέπει να εισάγετε γεγονότα από ένα Palm Desktop Datebook.
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Πρέπει να βρίσκεται στο Palm σας, στο directory <tt>datebook/datebook.dat</tt> σε ένα subdirectory με όνομα ίδιο με το όνομα χρήστη.
+The following entries will not be imported: Οι ακόλουθες εγγραφές δεν θα εισαχθούν
+Entries older than the current date: Εγγραφές παλαιότερες από σήμερα
+Entries created in the Palm Desktop that have not been HotSync'd: Εγγραφές που δημιουργήθηκαν στο Palm Desktop και δεν έχουν γίνει HotSync'd
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Ότι εισάγεται από το Palm θα διαγραφεί και ξαναγραφεί στην επόμενη εισαγωγή (εκτός και αν η ημερομηνία του γεγονότος έχει περάσει).
+Therefore, updates should be made in the Palm Desktop.: Αλλιώς, πρέπει να γίνουν τροποποιήσεις στο Palm Desktop.
+vCal: vCal
+This form will import vCalendar (.vcs) 1.0 events: Η σελίδα αυτή εισάγει γεγονότα από vCalendar (.vcs) 1.0
+The following formats have been tested: Τα παρακάτω formats έχουν ελεγχθεί
+Palm Desktop 4: Palm Desktop 4
+Lotus Organizer 6: Lotus Organizer 6
+Microsoft Outlook 2002: Microsoft Outlook 2002
+iCalendar: iCalendar
+This form will import iCalendar (.ics) events: Η σελίδα αυτή εισάγει γεγονότα από iCalendar (.ics)
+Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Αν ενεργοποιήσετε το <b>Overwrite πριν την Εισαγωγή</b>, όλα τα γεγονότα που εισάχθηκαν προηγουμένως χρησιμοποιούν το ίδιο UID με τα γεγονότα από τη νέα εισαγωγή που μαρκαρίστηκαν για διαγραφή. Αυτό επιτρέπει ένα αρχείο iCalendar να εισαχθεί χωρίς να δημιουργεί διπλοεγγραφές.
+
+
+###############################################
+# Page: help_index.php
+#
+Help Index: Περιεχόμενα Βοήθειας
+
+
+###############################################
+# Page: help_layers.php
+#
+Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Τα επίπεδα χρησιμεύουν στο να βλέπετε γεγονότα άλλων χρηστών στο δικό σας ημερολόγιο. Μπορείτε να επιλέξετε το χρήστη και το χρώμα για τα γεγονότα που θα εμφανίζονται.
+Add/Edit/Delete: Προσθήκη/Επεξεργασία/Διαγραφή
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Πατώντας το link Επεξεργασία Επιπέδων στην περιοχή διαχειριστή, κάτω στη σελίδα, σας επιτρέπει να προσθέσετε/επεξεργαστείτε/διαγράψετε επίπεδα.
+Specifies the user that you would like to see displayed in your calendar.: Καθορίζει το χρήστη που επιθυμείτε να εμφανίζεται στο ημερολόγιό σας.
+The text color of the new layer that will be displayed in your calendar.: Το χρώμα του κειμένου από το νέο επίπεδο που θα εμφανίζεται στο ημερολόγιό σας.
+If checked, events that are duplicates of your events will be shown.: Αν είναι επιλεγμένο, θα εμφανίζονται τα γεγονότα που είναι αντίγραφα των γεγονότων σας.
+Disabling: Απενεργοποίηση
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Πατήστε το link για απενεργοποίηση επιπέδων στην περιοχή του διαχειριστή, κάτω στη σελίδα, για να τα απενεργοποιήσετε.
+Enabling: Ενεργοποίηση
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Πατήστε το link για ενεργοποίηση επιπέδων στην περιοχή του διαχειριστή, κάτω στη σελίδα, για να τα ενεργοποιήσετε.
+
+
+###############################################
+# Page: help_pref.php
+#
+Timezone Offset: Timezone Offset
+tz-help: Καθορίζει τη διαφορά ώρας από το server στον client.
+Default Category: Default Κατηγορία
+default-category-help: Καθορίζει την κατηγορία στην οποία θα προστίθεται από default κάθε νέο γεγονός.
+When I am the boss: Όταν είμαι το αφεντικό
+Email me event notification: Στείλε μου email με ειδοποιήσεις γεγονότων
+email-boss-notifications-help: Καθορίζει αν τα αφεντικά λαμβάνουν emails για ειδοποιήσεις γεγονότων.
+I want to approve events: Θέλω να αποδέχομαι/εγκρίνω γεγονότα
+boss-approve-event-help: Καθορίζει αν το αφεντικό θα χρειάζεται να αποδέχεται/εγκρίνει γεγονότα που προστίθεται από συνεργάτες.
+Subscribe/Publish: Συνδρομή/Δημοσίευση
+allow-remote-subscriptions-help: Καθορίζει αν απομακρυσμένοι χρήστες θα μπορούν να συνδέονται στο ημερολόγιό σας, επιτρέποντας να δούνε τα γεγονότα σας σε μια εφαρμογή που υποστηρίζει iCal (σαν το iCal της Apple ή το Mozilla Calendar).
+URL: URL
+remote-subscriptions-url-help: Εμφανίζει το URL που χρειάζονται οι απομακρυσμένοι χρήστες για να συνδεθούν στο ημερολόγιό σας.
+
+
+###############################################
+# Page: import.php
+#
+Disabled: Μη ενεργό
+Import format: Format εισαγωγής
+Exclude private records: Αποκλείονται ιδιωτικές εγγραφές
+Overwrite Prior Import: Επικάλυψη της προηγούμενης εισαγωγής
+
+
+###############################################
+# Page: import_handler.php
+#
+Import Results: Αποτελέσματα Εισαγωγής
+Events successfully imported: Γεγονότα που εισάχθηκαν επιτυχώς
+Events from prior import marked as deleted: Γεγονότα από προηγούμενη εισαγωγή που μαρκαρίστηκαν για διαγραφή
+Conflicting events: Γεγονότα που επικαλύπτονται
+Errors: Σφάλματα
+There was an error parsing the import file or no events were returned: Σφάλμα κατά την ανάλυση του αρχείου εισαγωγής ή δεν υπήρχαν γεγονότα
+The import file contained no data: Το αρχείο εισαγωγής δεν περιέχει δεδομένα
+Event Imported: Γεγονός Εισάχθηκε
+View this entry: Εμφάνιση της εγγραφής
+
+
+###############################################
+# Page: layers.php
+#
+Layers are currently: Τα επίπεδα είναι
+Enabled: Ενεργό
+Disable Layers: Απενεργοποίηση Επιπέδων
+Enable Layers: Ενεργοποίηση Επιπέδων
+to modify the layers settings for the: για να τροποποιήσετε τις ρυθμίσεις των επιπέδων για το
+calendar: ημερολόγιο
+Add layer: Προσθήκη επιπέδου
+Layer: Επίπεδο
+Edit layer: Επεξεργασία επιπέδου
+
+
+###############################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Αποδοχή/Έγκριση
+Approve this entry?: Αποδοχή της εγγραφής;
+Reject: Απόρριψη
+Reject this entry?: Απόρριψη της εγγραφής;
+No unapproved events for: Κανένα γεγονός σε αναμονή αποδοχής, για το χρήστη:
+Unapproved Events: Γεγονότα σε αναμονή αποδοχής
+
+
+###############################################
+# Page: login.php
+#
+Invalid login: Εσφαλμένη προσπάθεια εισόδου
+You must enter a login and password: Πρέπει να δώσετε Όνομα Χρήστη και Κωδικό
+Save login via cookies so I don't have to login next time: Αποθήκευση της εισόδου με cookies για να μην χρειαστεί η διαδικασία εισόδου την επόμενη φορά
+Login: Είσοδος
+Access public calendar: Πρόσβαση στο Δημόσιο Ημερολόγιο
+cookies-note: <b>Σημείωση:</b> Η εφαρμογή απαιτεί τα cookies να είναι ενεργά.
+
+
+###############################################
+# Page: month.php
+#
+Sun: Κυρ
+Mon: Δευ
+Tue: Τρι
+Wed: Τετ
+Thu: Πεμ
+Fri: Παρ
+Sat: Σαβ
+
+
+###############################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Προσθήκη Νέου Ημερολογίου Μη Χρηστών
+
+
+###############################################
+# Page: pref.php
+#
+Save Preferences: Αποθήκευση ρυθμίσεων
+to modify the preferences for the Public Access calendar: για να τροποποιήσετε τις ρυθμίσεις του ημερολογίου κοινής πρόσβασης
+Add N hours to: Πρόσθεσε N ώρες στην
+Subtract N hours from: Αφαίρεσε N ώρες από την
+same as: ιδια με την
+server time: ώρα server
+All: Όλα
+
+
+###############################################
+# Page: purge.php
+#
+Preview: Προεπισκόπηση
+Purging events for: Εκκαθάριση γεγονότων για το χρήστη:
+Finished: Ολοκληρώθηκε
+Check box to delete <b>ALL</b> events for a user: Επιλέξτε το για να διαγραφούν <b>ΟΛΑ</b> τα γεγονότα για το χρήστη
+Delete all events before: Διαγραφή όλων των γεγονότων πριν τις
+Preview delete: Προεπισκόπηση διαγραφής
+Are you sure you want to delete events for: Είστε σίγουρος οτι θέλετε να διαγραφούν τα γεγονότα για το χρήστη:
+Records deleted from: Οι εγγραφές θα διαγραφούν από τις
+
+
+###############################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: Μια συνάντηση, απορρίφθηκε από το χρήστη:
+Title: Web Ημερολόγιο
+
+
+###############################################
+# Page: report.php
+#
+Private: Ιδιωτικό
+This event is confidential: Το γεγονός είναι ιδιωτικό
+Waiting for approval: Περιμένει για αποδοχή
+Deleted: Διεγραμένο
+Rejected: Απορριφθέν
+Approved: Εγκεκριμένο
+Unknown: Άγνωστο
+to manage reports for the Public Access calendar: για τη διαχείρηση αναφορών από το Ημερολόγιο Δημόσιας Πρόσβασης
+Add new report: Προσθήκη νέας αναφοράς
+cont.: cont.
+Manage Reports: Διαχείρηση αναφορών
+
+
+###############################################
+# Page: search.php
+#
+Search: Αναζήτηση
+Keywords: Λέξεις-Κλειδιά
+Advanced Search: Προηγμένη αναζήτηση
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Πρέπει να θέσετε μια ή περισσότερες λέξεις κλειδιά
+Search Results: Αποτελέσματα Αναζήτησης
+match found: Βρέθηκε ταίριασμα
+matches found: Βρέθηκαν ταιριάσματα
+No matches found: Δεν βρέθηκαν ταιριάσματα
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: Δείτε το Ημερολόγιο άλλου χρήστη
+Go: Πήγαινε
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: Δεν έχετε προσθέσει καμμία κατηγορία
+Set Category: Κατηγορία
+
+
+###############################################
+# Page: users.php
+#
+Add New User: Προσθήκη Νέου Χρήστη
+denotes administrative user: δείχνει χρήστη που είναι διαχειριστής
+
+
+###############################################
+# Page: usersel.php
+#
+Reset: Επαναφορά
+Remove: Διαγραφή
+Ok: Εντάξει
+
+
+###############################################
+# Page: view_d.php
+#
+No users for this view: Δεν υπάρχουν χρήστες για την εμφάνιση αυτή
+
+
+###############################################
+# Page: view_entry.php
+#
+every: κάθε
+2nd: 2ος
+3rd: 3ος
+4th: 4ος
+5th: 5ος
+1st: 1ος
+last: τελευταίος
+Description: Περιγραφή
+Status: Κατάσταση
+day: ημέρα
+minute: λεπτό
+External User: Εξωτερικός Χρήστης
+Approve/Confirm entry: Αποδοχή/Έγκριση εγγραφής
+Reject entry: Απόριψη εγγραφής
+Set category: Κατηγορία
+Edit repeating entry for all dates: Τροποποίηση επαναλαμβανόμενης εγγραφής για όλες τις ημερομηνίες
+Edit entry for this date: Τροποποίηση εγγραφής για την τρέχουσα ημερομηνία
+Delete repeating event for all dates: Διαγραφή επαναλαμβανόμενου γεγονότος για όλες τις ημερομηνίες
+This will delete this entry for all users.: Θα διαγραφεί η εγγραφή για όλους τους χρήστες.
+Delete entry only for this date: Διαγραφή εγγραφής μόνο για την τρέχουσα ημερομηνία
+Edit entry: Επεξεργασία εγγραφής
+Copy entry: Αντιγραφή εγγραφής
+This will delete the entry from your calendar.: Θα διαγραφεί η εγγραφή από το ημερολόγιό σας.
+Add to My Calendar: Προσθήκη στο Ημερολόγιο μου
+Do you want to add this entry to your calendar?: Θέλεις να προσθέσεις την εγγραφή στο ημερολόγιό σου;
+This will add the entry to your calendar.: Θα προσθέσει την εγγραφή στο ημερολόγιό σου.
+Email all participants: Στείλε email σε όλους τους συμμετέχοντες
+Show activity log: Εμφάνιση του αρχείου ενεργειών
+Hide activity log: Απόκρυψη του αρχείου ενεργειών
+Export this entry to: Εξαγωγή αυτής της εγγραφής σε
+
+
+###############################################
+# Page: views.php
+#
+Add New View: Προσθήκη νέας εμφάνισης
+
+
+###############################################
+# Page: views_edit.php
+#
+Unnamed View: Εμφάνιση χωρίς όνομα
+Add View: Προσθήκη εμφάνισης
+Edit View: Επεξεργασία εμφάνισης
+View Name: Όνομα εμφάνισης
+View Type: Τύπος εμφάνισης
+Week (Users horizontal): Εβδομάδα (Χρήστες οριζόντια)
+Week (Users vertical): Εβδομάδα (Χρήστες κατακόρυφα)
+Week (Timebar): Εβδομάδα (Μπάρα ώρας)
+Month (Timebar): Μήνας (Μπάρα ώρας)
+Month (side by side): Μήνας (πλευρά - πλευρά)
+Month (on same calendar): Μήνας (στο ίδιο ημερολόγιο)
+preview: προεπισκόπηση
+Selected: Επιλεγμένο
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Πρέπει να ορίσετε ένα όνομα εμφάνισης
+
+
+###############################################
+# Page: week_details.php
+#
+New Entry: Νέα εγγραφή
+
+
+###############################################
+# Page: export_handler.php
+#
+export format not defined or incorrect: το format εξαγωγής δεν ορίστηκε ή είναι λανθασμένο
+
+
+###############################################
+# Page: includes/config.php
+#
+English: Αγγλικά
+Basque: Βάσκικα
+Bulgarian: Βουλγαρικά
+Catalan: Καταλανικά
+Chinese (Traditonal/Big5): Κινέζικα (Παραδοσιακά/Big5)
+Chinese (Simplified/GB2312): Κινέζικα (Απλοποιημένα/GB2312)
+Czech: Τσέχικα
+Danish: Δανέζικα
+Dutch: Dutch
+Estonian: Εσθονικά
+Finnish: Φινλανδικά
+French: Γαλλικά
+Galician: Galician
+German: Γερμανικά
+Greek: Ελληνικά
+Holo (Taiwanese): Holo (Ταϊβανέζικα)
+Hungarian: Ουγγαρικά
+Icelandic: Ισλανδικά
+Italian: Ιταλικά
+Japanese: Γιαπωνέζικα
+Korean: Κορεατικά
+Norwegian: Νορβηγικά
+Polish: Πολωνικά
+Portuguese: Πορτογαλλικά
+Portuguese/Brazil: Πορτογαλλικά/Βραζιλιάνικα
+Romanian: Ρουμανικά
+Russian: Ρωσικά
+Spanish: Ισπανικά
+Swedish: Ελβετικά
+Turkish: Τουρκικά
+Welsh: Ουαλλικά
+
+
+###############################################
+# Page: includes/functions.php
+#
+exceeds limit of XXX events per day: υπέρβαση του ορίου των XXX γεγονότων την ημέρα
+You have XXX unapproved events: Έχετε XXX γεγονότα σε αναμονή αποδοχής
+January: Ιανουάριος
+February: Φεβρουάριος
+March: Μάρτιος
+April: Απρίλιος
+May_: Μάιος
+June: Ιούνιος
+July: Ιούλιος
+August: Αύγουστος
+September: Σεπτέμβριος
+October: Οκτώβριος
+November: Νοέμβριος
+Jan: Ιαν
+Feb: Φεβ
+Mar: Μαρ
+Apr: Απρ
+May: Μαι
+Jun: Ιουν
+Jul: Ιουλ
+Aug: Αυγ
+Sep: Σεπ
+Oct: Οκτ
+Nov: Νοε
+Dec: Δεκ
+All Attendees: Όλοι οι παρευρισκόμενοι
+Busy: Απασχολημένο
+Tentative: Αβέβαιο
+
+
+###############################################
+# Page: includes/help_trailer.php
+#
+Go to: Πήγαινε
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Αποστολή υπενθυμιστή
+
+
+###############################################
+# Page: includes/trailer.php
+#
+My Calendar: Το Ημερολόγιό μου
+Back to My Calendar: Πίσω στο Ημερολόγιό μου
+Another User's Calendar: Ημερολόγια άλλων χρηστών
+Add New Entry: Προσθήκη νέας εγγραφής
+Logout: Αποσύνδεση
+Manage calendar of: Διαχείρηση του Ημερολογίου του χρήστη:
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+incorrect password: Εσφαλμένος κωδικός
+no such user: Ανύπαρκτος χρήστης
+Invalid user login: Εσφαλμένη εξουσιοδοτημένη είσοδος
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Δεν δώσατε σύντομη περιγραφή
+You have not entered a valid time of day: Δεν δώσατε σωστή ώρα
+The time you have entered begins before your preferred work hours.  Is this correct?: Η ώρα που δώσατε ξεκινάει πριν από τις ώρες εργασίας. Είναι σωστό;
+Please add a participant: Παρακαλώ προσθέσετε ένα συμμετέχοντα
+
+
+###############################################
+# Page: includes/js/admin.php
+#
+Server URL is required: Το URL του Server είναι απαραίτητο
+Server URL must end with '/': Το URL του Server πρέπει να τελειώνει σε '/'
+Invalid work hours: Εσφαλμένες ώρες εργασίας
+Invalid color for document background: Εσφαλμένο χρώμα για το background του κειμένου
+Invalid color for document title: Εσφαλμένο χρώμα για τον τίτλο του κειμένου
+Invalid color for table cell background: Εσφαλμένο χρώμα για το background των κελιών του πίνακα
+Invalid color for table grid: Εσφαλμένο χρώμα για το grid του πίνακα
+Invalid color for table header background: Εσφαλμένο χρώμα για το background της επικεφαλίδας του πίνακα
+Invalid color for table text background: Εσφαλμένο χρώμα για το background του κειμένου του πίνακα
+Invalid color for event popup background: Εσφαλμένο χρώμα για το background του αναδυόμενου μύνηματος του γεγονότος
+Invalid color for event popup text: Εσφαλμένο χρώμα για το κείμενο του αναδυόμενου μύνηματος του γεγονότος
+Invalid color for table cell background for today: Εσφαλμένο χρώμα για το background του κελιού του πίνακα για σήμερα
+Color format should be '#RRGGBB': Η μορφή του χρώματος πρέπει να είναι '#RRGGBB'
+
+
+###############################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Να αλλαχθεί η ημερομηνία και η ώρα αυτής της εγγραφής;
+
+
+###############################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Μη έγκυρο χρώμα
+
+
+###############################################
+# Page: tools/send_reminders.php
+#
+This is a reminder for the event detailed below.: Αυτός είναι υπενθυμιστής για το γεγονός που περιγράφεται παρακάτω.
+Reminder: Υπενθυμιστής
