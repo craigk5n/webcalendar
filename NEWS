@@ -1,13 +1,17 @@
 Version 1.0.3-CVS (?? ??? 2005)
- - Fixed bug 1406428: Bug in endhour
- - Fixed bug 1438181: DBI Interbase-Firebird connection call has wrong parameters
- - Fixed bug 1279804: send_reminders.php fails in v1.0.1
- - Fixed bug 1417585: vCal export of forever repeating events fails for Palm
- - Fixed bug 1417529: Can't change public access layers
- - Fixed bug 1397766: Tomorrow Report fails to This Week
- - Fixed bug 1374014 Prefs page displays option to modify Public Acces calendar..
- - Fixed bug 1382217 Glitch in handling of public access prefs
- - Added support for DB2
+  - Fixed bug 1406428: Bug in endhour
+  - Fixed bug 1438181: DBI Interbase-Firebird connection call has
+    wrong parameters
+  - Fixed bug 1279804: send_reminders.php fails in v1.0.1
+  - Fixed bug 1417585: vCal export of forever repeating events fails for Palm
+  - Fixed bug 1417529: Can't change public access layers
+  - Fixed bug 1397766: Tomorrow Report fails to This Week
+  - Fixed bug 1374014: Prefs page displays option to modify
+    Public Access calendar..
+  - Fixed bug 1382217 Glitch in handling of public access prefs
+  - Added support for DB2
+  - The following translations were updated:
+    Greek (new)
 Version 1.0.2 (06 Dec 2005)
   - Fixed vuln in layers: published vulnerability in layers_toggle.php
     was fixed
