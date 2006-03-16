@@ -1,6 +1,9 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Performance improvement: if "cachedir" is defined in settings.php, then
+   translations are parsed and stored as binary.  Future requests will load
+   the already parsed binary data.
  - Added new options in includes/settings.php:
-   "db_cachedir" specifies a db query cache directory.
+   "cachedir" specifies a db query cache directory.
    "db_debug" if "on", then SQL will be displayed at bottom of each page
  - Fixed bug 1448958: All day events incorrectly displayed in week view
  - Fixed bug 1449561: overlapping buttons at 'adminhome.php'

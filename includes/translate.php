@@ -1,8 +1,16 @@
 <?php
 /**
+ * $Id$
+ *
  * Language translation functions.
  *
  * The idea is very much stolen from the GNU translate C library.
+ *
+ * We load a translation file and store it in the global variable
+ * $translations.  If a cache dir is enabled (in $settings[]), then
+ * we serialize $translations and store it in a file in the cache dir.
+ * The next call will unserialize the cached file rather than re-parse
+ * the file.
  *
  * Although there is a PHP gettext() function, I prefer to use this home-grown
  * translate function since it is simpler to work with.
@@ -65,7 +73,8 @@ function reset_language ( $new_language ) {
  * {@link translate()} the first time it is called.
  */
 function load_translation_text () {
-  global $lang_file, $translations, $basedir, $PUBLIC_ACCESS_FULLNAME, $fullname;
+  global $lang_file, $translations, $basedir, $PUBLIC_ACCESS_FULLNAME,
+    $fullname, $settings;
   $translations = array ();
   if ( ! empty ( $basedir ) ) {
     $lang_file_2 = "$basedir/$lang_file";
@@ -75,32 +84,82 @@ function load_translation_text () {
   if ( ! file_exists ( $lang_file ) ) {
     die_miserable_death ( "Cannot find language file: $lang_file" );
   }
-  $fp = fopen ( $lang_file, "r", false );
-  if ( ! $fp ) {
-    die_miserable_death ( "Could not open language file: $lang_file" );
-  }
-  while ( ! feof ( $fp ) ) {
-    $buffer = fgets ( $fp, 4096 );
-    $buffer = trim ( $buffer );
-    //  stripslashes may cause problems with Japanese translations
-   // if so, we may have to make this configurable.
-    if ( get_magic_quotes_runtime() ) {
-      $buffer = stripslashes ( $buffer );
+  // Check for 'cachedir' in settings.  If found, then we will save
+  // the parsed translation file there as a serialized array.
+  $cached_file = '';
+  $save_to_cache = false;
+  $use_cached = false;
+  if ( ! empty ( $settings['cachedir'] ) &&
+    is_dir ( $settings['cachedir'] ) ) {
+    $cached_file = $settings['cachedir'] . '/' . $lang_file;
+    $cache_tran_dir = dirname ( $cached_file );
+    if ( ! is_dir ( $cache_tran_dir ) ) {
+      @mkdir ( $cache_tran_dir, 0777 );
+      @chmod ( $cache_tran_dir, 0777 );
     }
-    if ( substr ( $buffer, 0, 1 ) == "#" || strlen ( $buffer ) == 0 )
-      continue;
-    $pos = strpos ( $buffer, ":" );
-    $abbrev = substr ( $buffer, 0, $pos );
-    $abbrev = trim ( $abbrev );
-    $trans = substr ( $buffer, $pos + 1 );
-    $trans = trim ( $trans );
-    $translations[$abbrev] = $trans;
-    //echo "Abbrev: $abbrev<br />Trans: $trans<br />\n";
+    if ( ! is_dir ( $cache_tran_dir ) ) {
+      die_miserable_death ( 'Error creating cached translation directory: ' .
+        $cache_tran_dir . "<br/><br/>" .
+        'Please check the permissions of the following directory: ' .
+        $settings['cachedir'] );
+    }
+    if ( ! file_exists ( $cached_file ) ) {
+      $save_to_cache = true;
+    } else {
+      $mod_orig = filemtime ( $lang_file );
+      $mod_cached = filemtime ( $cached_file );
+      if ( $mod_orig > $mod_cached ) {
+        // translation was updated.  reload/reparse and save.
+        $save_to_cache = true;
+      } else {
+        // cached is more recent
+        $use_cached = true;
+      }
+    }
   }
-  fclose ( $fp );
-  $PUBLIC_ACCESS_FULLNAME = translate ("Public Access" );
-  if ( $fullname == "Public Access" ) {
-    $fullname = $PUBLIC_ACCESS_FULLNAME;
+  if ( $use_cached ) {
+    $translations = unserialize ( file_get_contents ( $cached_file ) );
+    // boy, that was easy ;-)
+  } else {
+    $fp = fopen ( $lang_file, "r", false );
+    if ( ! $fp ) {
+      die_miserable_death ( "Could not open language file: $lang_file" );
+    }
+    while ( ! feof ( $fp ) ) {
+      $buffer = fgets ( $fp, 4096 );
+      $buffer = trim ( $buffer );
+      //  stripslashes may cause problems with Japanese translations
+      // if so, we may have to make this configurable.
+      if ( get_magic_quotes_runtime() ) {
+        $buffer = stripslashes ( $buffer );
+      }
+      if ( substr ( $buffer, 0, 1 ) == "#" || strlen ( $buffer ) == 0 )
+        continue;
+      $pos = strpos ( $buffer, ":" );
+      $abbrev = substr ( $buffer, 0, $pos );
+      $abbrev = trim ( $abbrev );
+      $trans = substr ( $buffer, $pos + 1 );
+      $trans = trim ( $trans );
+      $translations[$abbrev] = $trans;
+      //echo "Abbrev: $abbrev<br />Trans: $trans<br />\n";
+    }
+    fclose ( $fp );
+    $PUBLIC_ACCESS_FULLNAME = translate ("Public Access" );
+    if ( $fullname == "Public Access" ) {
+      $fullname = $PUBLIC_ACCESS_FULLNAME;
+    }
+    if ( ! empty ( $cached_file ) && $save_to_cache ) {
+      $fd = @fopen ( $cached_file, "w+b", false );
+      if ( ! empty ( $fd ) ) {
+        fwrite ( $fd, serialize ( $translations ) );
+        fclose ( $fd );
+        chmod ( $cached_file, 0666 );
+      } else {
+        // Could not write to cachedir
+        die_miserable_death ( 'Error writing translation cache file: ' .
+          $cached_file );
+      }
+    }
   }
 }
 
