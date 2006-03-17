@@ -1,6 +1,6 @@
 /*upgrade_v0.9.13*/
 UPDATE webcal_entry SET cal_time = -1 WHERE cal_time IS NULL;
-ALTER TABLE webcal_entry MODIFY cal_time NOT NULL DEFAULT -1;
+ALTER TABLE webcal_entry MODIFY cal_time INT NOT NULL DEFAULT -1;
 CREATE TABLE webcal_entry_repeats (
   cal_id INT NOT NULL,
   cal_days CHAR(7),
