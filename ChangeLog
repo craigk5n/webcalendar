@@ -1,4 +1,5 @@
 Version 1.0.3-CVS (?? ??? ????)
+ - Patch 1279537: Don't display confidential events in upcoming.php
  - Patch 1445335: Added Greek translations
  - Fixed bug 1406428: Bug in endhour
  - Fixed bug 1438181: DBI Interbase-Firebird connection call has wrong
