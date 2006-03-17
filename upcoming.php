@@ -118,16 +118,23 @@ load_global_settings ();
 
 $WebCalendar->setLanguage();
 
- // Print the details of an upcoming event
- // This function is here, inside the 'if' that runs only the first time this
- // file is included within an external document, so that the function isn't 
- // declared twice in case of this file being included twice or more within the same doc.
- function print_upcoming_event ( $e, $date ) {
-  global $display_link, $link_target, $SERVER_URL, $charset, $display_tzid, $showTime, $showPopups, $eventinfo, $user;
+// Print the details of an upcoming event
+// This function is here, inside the 'if' that runs only the first time this
+// file is included within an external document, so that the function isn't 
+// declared twice in case of this file being included twice or more within the same doc.
+function print_upcoming_event ( $e, $date ) {
+  global $display_link, $link_target, $SERVER_URL, $charset,
+    $display_tzid, $showTime, $showPopups, $eventinfo, $user;
 
   $popupid = 'pop' . $e->getId() . '-' . $date;
 
-  if ( $display_link && ! empty ( $SERVER_URL ) ) {
+  $private = false;
+  if ( $e->getAccess() != 'P' ) {
+    // not a public event, so we will just display "Confidential"
+    $private = true;
+  }
+
+  if ( $display_link && ! empty ( $SERVER_URL ) && ! $private ) {
     if ( $showPopups ) {
       $timestr = "";
       if ( $e->isAllDay() ) {
@@ -153,8 +160,12 @@ $WebCalendar->setLanguage();
     }
     print ">";
   }
-  print htmlspecialchars ( $e->getName() );
-  if ( $display_link && ! empty ( $SERVER_URL ) ) {
+  if ( $private ) {
+    print translate( '[' . translate('Confidential') . ']' );
+  } else {
+    print htmlspecialchars ( $e->getName() );
+  }
+  if ( $display_link && ! empty ( $SERVER_URL ) && ! $private ) {
     print "</a>";
   }
   
