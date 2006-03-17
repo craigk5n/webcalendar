@@ -157,7 +157,8 @@ if ( empty ( $user ) || $user == $login ) {
       translate("Search") . "\" href=\"search.php\">" .
       translate("Search") . "</a>";
   }
-  if ( $login != '__public__' && ! $is_nonuser ) {
+  if ( $login != '__public__' && ! $is_nonuser
+    && $readonly != 'Y' ) {
     if ( access_can_access_function ( ACCESS_IMPORT ) ) {
       $goto_link[] = "<a title=\"" . 
         translate("Import") . "\" href=\"import.php\">" . 
@@ -309,19 +310,21 @@ if ( ! $use_http_auth ) {
     } 
   }  
     
- if ( strlen ( $login ) && $login != "__public__" ) {
-  echo "<span class=\"prefix\">" .
-   translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
-   translate("Logout") . "\" href=\"$logout_url\">" . 
-   translate("Logout") . "</a>)\n";
- } else {
-  // For public user (who did not actually login)
-  echo "<span class=\"prefix\">" .
-   translate("Current User") . ":</span>&nbsp;" . 
-   translate("Public Access") . "&nbsp;(<a title=\"" . 
-   translate("Login") . "\" href=\"$login_url\">" . 
-   translate("Login") . "</a>)\n";
- }
+  if ( $readonly != 'Y' ) {
+    if ( strlen ( $login ) && $login != "__public__" ) {
+     echo "<span class=\"prefix\">" .
+      translate("Current User") . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
+      translate("Logout") . "\" href=\"$logout_url\">" . 
+      translate("Logout") . "</a>)\n";
+    } else {
+     // For public user (who did not actually login)
+     echo "<span class=\"prefix\">" .
+      translate("Current User") . ":</span>&nbsp;" . 
+      translate("Public Access") . "&nbsp;(<a title=\"" . 
+      translate("Login") . "\" href=\"$login_url\">" . 
+      translate("Login") . "</a>)\n";
+    }
+  }
 }
 
 // Manage Calendar links
