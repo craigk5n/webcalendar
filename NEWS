@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1451583: Umlaut Event popup text together with FCKEditor-2.0
       1279537: Don't display confidential events in upcoming.php
       1448958: All day events incorrectly displayed in week view
       1446790: user-ldap.php bug
