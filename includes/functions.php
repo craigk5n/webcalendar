@@ -1152,6 +1152,8 @@ function build_entry_popup ( $popupid, $user, $description='', $time,
     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
       $str = str_replace ( "&", "&amp;", $description );
       $str = str_replace ( "&amp;amp;", "&amp;", $str );
+      //decode special characters
+      $str = html_entity_decode( $str);
       // If there is no html found, then go ahead and replace
       // the line breaks ("\n") with the html break.
       if ( strstr ( $str, "<" ) && strstr ( $str, ">" ) ) {
