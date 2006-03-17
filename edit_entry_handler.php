@@ -829,10 +829,10 @@ if ( strlen ( $conflicts ) ) {
   echo "<form name=\"confirm\" method=\"post\">\n";
   if ( ! is_array ( $_POST ) && is_array ( $HTTP_POST_VARS ) )
     $_POST = $HTTP_POST_VARS;
-  while (list($xkey, $xval)=each($_POST)) {
+  foreach ($_POST as $xkey=>$xval ) {
     if (is_array($xval)) {
       $xkey.="[]";
-      while (list($ykey, $yval)=each($xval)) {
+      foreach ( $xval as $ykey=>$yval ) {
         if (get_magic_quotes_gpc())
           $yval = stripslashes($yval);
         $yval = htmlentities  ( $yval );
