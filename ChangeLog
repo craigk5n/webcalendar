@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1420859: Problems with overriding conflict
  - Fixed bug 1451583: Umlaut Event popup text together with FCKEditor-2.0
  - Patch 1279537: Don't display confidential events in upcoming.php
  - Patch 1445579: sort users in views
