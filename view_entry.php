@@ -1014,7 +1014,8 @@ if ( empty ( $user ) && $CATEGORIES_ENABLED == "Y" &&
     translate("Set category") . "</a><br />\n";
 }
 
-if ( $can_edit && $event_status != "D" && ! $is_nonuser ) {
+if ( $can_edit && $event_status != "D" && ! $is_nonuser
+  && $readonly != 'Y' ) {
   if ( $event_repeats ) {
     echo "<a title=\"" .
       translate("Edit repeating entry for all dates") . 
