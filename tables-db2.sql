@@ -62,7 +62,7 @@ CREATE TABLE webcal_entry_user (
 CREATE TABLE webcal_entry_ext_user (
   cal_id INT DEFAULT 0 NOT NULL,
   cal_fullname VARCHAR(50) NOT NULL,
-  cal_email VARCHAR(75),
+  cal_email VARCHAR(75) DEFAULT NULL,
   PRIMARY KEY ( cal_id, cal_fullname )
 );
 
@@ -330,7 +330,7 @@ CREATE TABLE webcal_nonuser_cals (
 
 CREATE TABLE webcal_import (
   cal_import_id INT NOT NULL,
-  cal_name VARCHAR(50),
+  cal_name VARCHAR(50) DEFAULT NULL,
   cal_date INT NOT NULL,
   cal_type VARCHAR(10) NOT NULL,
   cal_login VARCHAR(25),
@@ -342,7 +342,7 @@ CREATE TABLE webcal_import_data (
   cal_id int NOT NULL,
   cal_login VARCHAR(25) NOT NULL,
   cal_import_type VARCHAR(15) NOT NULL,
-  cal_external_id VARCHAR(200),
+  cal_external_id VARCHAR(200) DEFAULT NULL,
   PRIMARY KEY  ( cal_id, cal_login )
 );
 
@@ -354,9 +354,9 @@ CREATE TABLE webcal_report (
   cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
   cal_report_name VARCHAR(50) NOT NULL,
   cal_time_range INT NOT NULL,
-  cal_user VARCHAR(25),
+  cal_user VARCHAR(25) DEFAULT NULL,
   cal_allow_nav CHAR(1) DEFAULT 'Y',
-  cal_cat_id INT,
+  cal_cat_id INT DEFAULT NULL,
   cal_include_empty CHAR(1) DEFAULT 'N',
   cal_show_in_trailer CHAR(1) DEFAULT 'N',
   cal_update_date INT NOT NULL,

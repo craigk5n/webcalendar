@@ -1,4 +1,5 @@
 Version 1.0.3-CVS (?? ??? ????)
+ - Fixed bug 1445535: tables-db2.sql NULL usage was incorrect
  - Patch 1279537: Don't display confidential events in upcoming.php
  - Patch 1445335: Added Greek translations
  - Fixed bug 1406428: Bug in endhour
