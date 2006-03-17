@@ -1122,31 +1122,12 @@ are compared to your import file's TZID information and if no match is found, We
     Alternately, you can disable any error messages from being displayed
     in the browser and have them logged to a file.  (See the comments
     included in the <tt>php.ini</tt> file for instructions on how to do this.)</dd>
- <dt>I get errors when trying to add an event that contains a single quotation.</dt>
-  <dd>WebCalendar is designed to work with PHP's
-  <tt>magic_quotes_gpc</tt> feature (configured in <tt>php.ini</tt>).
-  If you do not have this enabled (<tt>On</tt> in <tt>php.ini</tt>),
-  you may get errors when adding events.
-  In WebCalendar version 0.9.43 or later, you will always get an error
-  message telling you to update <tt>php.ini</tt> if <tt>magic_quotes_gpc</tt>
-  is set to <tt>Off</tt>.
-  <br /><br />
-  <span class="tip">TIP</span> If you are using Apache
-  as your web server and if you cannot or do not want to enable
-  <tt>magic_quotes_gpc</tt> for your entire site, you can enable
-  it just for WebCalendar.
-  Create a <tt>.htaccess</tt> file in the toplevel WebCalendar
-  directory that contains a single line:
-  <pre>php_value magic_quotes_gpc 1</pre>
-  <p>(For this to work with Apache, you must have the Apache
-  <tt>AllowOverride All</tt> directive enabled for the directory
-  where WebCalendar is installed.
-  Additionally, PHP must be running as an Apache module, not
-  a CGI.)</p>
-  <br />
-  <span class="note">Note for Oracle and PostgreSQL:</span> You must also change the value of
-  <tt>magic_quotes_sybase</tt> to <tt>On</tt> within the <tt>php.ini</tt>
-  settings.</dd>
+ <dt>I receive an error message saying "Failed opening 'includes/...' for inclusion ..."</dt>
+   <dd>You may have to modify the <tt>include_path</tt> setting
+       in your <tt>php.ini</tt> file.  Most users do not need to do this,
+       but some PHP installs seem to require it.  You will need to
+       add the WebCalendar directory to the list of directories
+       for <tt>include_path</tt>.</dd>
  <dt>I get an error message from PHP saying "Call to undefined function: ..."</dt>
   <dd>This tells you that your version of PHP is missing something that
     WebCalendar needs.  If the function mentioned is a database login
@@ -1611,7 +1592,9 @@ p&gt;No news....&lt;/p&gt;
 
 <p>Configuring WebCalendar to use an existing LDAP directory is fairly 
 simple.  It is know to work with OpenLDAP and Novell Edirectory and 
-should work with other systems as well. <span class="note">Note:</span> 
+should work with other systems as well.
+<br/>
+<span class="note">Note:</span> 
 If you use LDAP, the group functionality of WebCalendar does not yet work.   
 </p>
 
