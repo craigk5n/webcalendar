@@ -180,7 +180,7 @@ if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
 
 
 // Logout/Login URL
-if ( ! $use_http_auth ) {
+if ( ! $use_http_auth && $single_user != 'Y' ) {
   if ( empty ( $login_return_path ) ) {
     $logout_url = "login.php?action=logout";
     $login_url = "login.php";
