@@ -120,7 +120,8 @@ if ( empty ( $user ) || $user == $login ) {
   
   // Import/Export
   if ( $login != '__public__' && ! $is_nonuser ) {
-    if ( access_can_access_function ( ACCESS_IMPORT, $user ) ) {
+    if ( $readonly != 'Y' &&
+      access_can_access_function ( ACCESS_IMPORT, $user ) ) {
       $import_url = 'import.php';
     }
     if ( access_can_access_function ( ACCESS_EXPORT, $user ) ) {
@@ -355,7 +356,8 @@ var myMenu =
   jscMenu_menu ('Events');
     if ( $new_entry_url != '' ) jscMenu_item ( 'add.png', 'Add New Event', $new_entry_url );
     if ( $new_task_url != '' ) jscMenu_item ( 'newtodo.png', 'Add New Task', $new_task_url );
-    if ( $is_admin ) jscMenu_item ( 'delete.png', 'Delete Entries', 'purge.php' );
+    if ( $is_admin && $readonly != 'Y' )
+      jscMenu_item ( 'delete.png', 'Delete Entries', 'purge.php' );
     if ( $unapproved_url != '' ) jscMenu_item ( 'unapproved.png', 'Unapproved Entries', $unapproved_url );
     if ( $export_url != '' ) jscMenu_item ( 'up.png', 'Export', $export_url );
     if ( $import_url != '' ) jscMenu_item ( 'down.png', 'Import', $import_url );
@@ -390,7 +392,9 @@ var myMenu =
         jscMenu_close();
       }    
       
-      if ( ! access_is_enabled () || access_can_access_function ( ACCESS_VIEW_MANAGEMENT, $user ) ) {    
+      if ( ( ! access_is_enabled () ||
+        access_can_access_function ( ACCESS_VIEW_MANAGEMENT, $user ) ) &&
+        $readonly != 'Y' ) {    
         jscMenu_divider();
         jscMenu_item ( 'manage_views.png', 'Manage Views', 'views.php' );
       }
@@ -404,7 +408,7 @@ var myMenu =
   // translate ( 'My Reports', true);
   // translate ( 'Manage Reports', true);
   if ( $login != '__public__' ) {
-  jscMenu_menu ('Reports');
+    jscMenu_menu ('Reports');
     if ( $is_admin && ( ! access_is_enabled () || 
       access_can_access_function ( ACCESS_ACTIVITY_LOG, $user ) ) )
       jscMenu_item ( 'log.png', 'Activity Log', 'activity_log.php' );
@@ -417,7 +421,7 @@ var myMenu =
       jscMenu_close();
     }    
 
-    if ( $REPORTS_ENABLED == 'Y' && 
+    if ( $REPORTS_ENABLED == 'Y' && $readonly != 'Y' &&
       ( ! access_is_enabled () || access_can_access_function ( ACCESS_REPORT, $user ) ) ) {
       jscMenu_divider();
       jscMenu_item ( 'manage_reports.png', 'Manage Reports', 'report.php' );
@@ -437,12 +441,12 @@ var myMenu =
   // translate ( 'Unapproved Events', true);
   // translate ( 'System Settings', true);
   // translate ( 'User Manager', true);
-  if ( $login != '__public__' ) {
+  if ( $login != '__public__' && $readonly != 'Y' ) {
   jscMenu_menu ('Settings');  
 
     // Nonuser Admin Settings
     if ( $is_nonuser_admin ) {
-      if ( $single_user != 'Y' ) {
+      if ( $single_user != 'Y' && $readonly != 'Y' ) {
         if ( ! access_is_enabled () || access_can_access_function ( ACCESS_ASSISTANTS, $user ) ) { 
           jscMenu_item ( 'users.png', 'Assistants', "assistant_edit.php?user=$user" );
         }
