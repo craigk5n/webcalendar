@@ -722,6 +722,8 @@ function dbi_fatal_error ( $msg, $doExit=true, $showError=true ) {
  */
 function dbi_escape_string( $string )
 {
+  global $db_connection_info;
+
   // return the string in original form; all possible escapings by 
   // magic_quotes_gpc (and possibly magic_quotes_sybase) will be 
   // rolled back, but also we may roll back escaping we have done
@@ -733,7 +735,10 @@ function dbi_escape_string( $string )
   switch ( $GLOBALS["db_type"] )
   {
     case "mysql":
-      if(version_compare(phpversion(),"4.3.0") >= 0) {
+      // MySQL requires an active connection
+      if ( empty ( $db_connection_info['connected'] ) )
+        return addslashes( $string );
+      else if(version_compare(phpversion(),"4.3.0") >= 0) {
         return mysql_real_escape_string( $string );
       } else {
         return mysql_escape_string( $string );      
