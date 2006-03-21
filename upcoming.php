@@ -128,13 +128,17 @@ function print_upcoming_event ( $e, $date ) {
 
   $popupid = 'pop' . $e->getId() . '-' . $date;
 
-  $private = false;
+  $private = $confidential = false;
   if ( $e->getAccess() != 'P' ) {
-    // not a public event, so we will just display "Confidential"
+    // not a public event, so we will just display "Private"
     $private = true;
   }
+  if ( $e->getAccess() != 'C' ) {
+    // not a public event, so we will just display "Confidential"
+    $confidential = true;
+  }
 
-  if ( $display_link && ! empty ( $SERVER_URL ) && ! $private ) {
+  if ( $display_link && ! empty ( $SERVER_URL ) && ! $private && ! $confidential) {
     if ( $showPopups ) {
       $timestr = "";
       if ( $e->isAllDay() ) {
@@ -161,7 +165,9 @@ function print_upcoming_event ( $e, $date ) {
     print ">";
   }
   if ( $private ) {
-    print translate( '[' . translate('Confidential') . ']' );
+    print '[' . translate('Private') . ']';
+  } else if ( $confidential ) {
+    print '[' . translate('Confidential') . ']';
   } else {
     print htmlspecialchars ( $e->getName() );
   }
