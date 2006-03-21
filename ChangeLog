@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1455193: problem with updating the translation file
  - Fixed bug: Do not display logout/export in trailer if system is read-only
  - Fixed bug 1420859: Problems with overriding conflict
  - Fixed bug 1451583: Umlaut Event popup text together with FCKEditor-2.0
