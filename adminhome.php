@@ -29,7 +29,6 @@ $style .= "
 table.admin td {
  padding: 20px;
  text-align: center;
- width: 175px;
 }
 .admin td a {
  padding: 10px;
