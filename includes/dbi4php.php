@@ -149,10 +149,18 @@ function dbi_connect ( $host, $login, $password, $database, $lazy=true ) {
       return false;
     }
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
-    if ( strlen ( $host ) && strcmp ( $host, "localhost" ) )
-      $c = OCIPLogon ( "$login@$host", $password, $database );
-    else
-      $c = OCIPLogon ( $login, $password, $database );
+    if ($GLOBALS["db_persistent"]) {
+      $_ora_conn_func = "OCIPLogon";
+    } else {
+      $_ora_conn_func = "OCILogon";
+    }
+    
+    if ( strlen ( $host ) && strcmp ( $host, "localhost" ) ) {
+      $c = $_ora_conn_func ( $login, $password, "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = $host)(PORT = 1521))) (CONNECT_DATA = (SID = $database)))" );
+    } else {
+      $c = $_ora_conn_func ( $login, $password, $database );
+    }
+    unset($_ora_conn_func);
     $GLOBALS["oracle_connection"] = $c;
     $db_connection_info['connection'] = $c;
     $db_connection_info['connected'] = true;
@@ -387,8 +395,12 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
         "", $fatalOnError, $showError );
     return $res;
   } else if ( strcmp ( $GLOBALS["db_type"], "oracle" ) == 0 ) {
-    $GLOBALS["oracle_statement"] =
-      OCIParse ( $GLOBALS["oracle_connection"], $sql );
+    if (false === $GLOBALS["oracle_statement"] = 
+        OCIParse ( $GLOBALS["oracle_connection"], $sql )) {
+      dbi_fatal_error ( "Error parsing query." .
+        $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
+        "", $fatalOnError, $showError );
+    }
     return OCIExecute ( $GLOBALS["oracle_statement"],
       OCI_COMMIT_ON_SUCCESS );
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
@@ -753,6 +765,7 @@ function dbi_escape_string( $string )
     case "sqlite":
       return sqlite_escape_string( $string );
     case "oracle":
+      return str_replace("'", "''", $string);
     case "odbc":
     case "ibm_db2":
     default:
