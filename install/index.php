@@ -200,7 +200,7 @@ function get_installed_version () {
   $row = dbi_fetch_row ( $res );
   // if not 'Y', we will prompt user to do conversion
   // from server time to GMT time
-  if ( ! empty ( $row[0] ) ) {
+  if ( !empty ( $row[0] ) ) {
    $_SESSION['tz_conversion']  = $row[0];
   }
   dbi_free_result ( $res );
@@ -489,7 +489,7 @@ function db_populate ( $install_filename, $display_sql ) {
   for ( $i = 0; $i < count($parsed_sql); $i++ ) {
     if ( empty ( $display_sql ) ){ 
   if ( $show_all_errors == true ) echo $parsed_sql[$i] . "<br />";
-      dbi_execute ( $parsed_sql[$i], false, $show_all_errors );   
+      dbi_execute ( $parsed_sql[$i], array(), false, $show_all_errors );   
   } else {
     $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
   } 
@@ -513,7 +513,7 @@ if ( ! empty ( $action ) &&  $action == "install" ){
   $display_sql = getPostValue('display_sql');
   
     $c = dbi_connect ( $db_host, $db_login,
-      $db_password, $db_database );
+      $db_password, $db_database, false );
   // It's possible that the tables were created manually
   // and we just want to do the database population routines
   if ( $c && isset ( $_SESSION['install_file'] )  ) {
@@ -616,9 +616,9 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
    $onload = "db_type_handler();";
     
    //disable warnings
-   //show_errors ();
+   show_errors ();
    $c = dbi_connect ( $db_host, $db_login,
-     $db_password, $db_database );
+     $db_password, $db_database, false );
 
     //enable warnings
    show_errors ( true);
@@ -638,14 +638,14 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
    // See if user is valid, but database doesn't exist
    // The normal call to dbi_connect simply return false for both conditions
    if ( $db_type == "mysql"  ) {
-     $c = mysql_connect ( $db_host, $db_login, $db_password );
+     $c = mysql_connect ( $db_host, $db_login, $db_password, '' , false );
    } else if ( $db_type == "mssql"  ) {
-     $c = mssql_connect ( $db_host, $db_login, $db_password );
+     $c = mssql_connect ( $db_host, $db_login, $db_password, '', false );
    } else if ( $db_type == "postgresql"  ) {
-     $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1');
+     $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1', false);
    } else if ( $db_type == "ibase"  ) {
     //TODO figure out how to remove this hardcoded link
-     $c = dbi_connect ( $db_host, $db_login, $db_password , $firebird_path);
+     $c = dbi_connect ( $db_host, $db_login, $db_password , $firebird_path, false);
       } //TODO Code remaining database types
    if ( $c ) { // credentials are valid, but database doesn't exist
       $response_msg = translate ( "Correct your entries or click the <b>Create New</b> button to continue installation" );
@@ -682,7 +682,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
     // We don't use the normal dbi_execute because we need to know
   // the difference between no conection and no database 
   if ( $db_type == "mysql" ) {
-      $c = dbi_connect ( $db_host, $db_login, $db_password, 'mysql' );
+      $c = dbi_connect ( $db_host, $db_login, $db_password, 'mysql', false );
       if ( $c ) {
      dbi_execute ( "CREATE DATABASE $db_database;" , array(), false, $show_all_errors);
     if ( ! @mysql_select_db ( $db_database ) ) {
@@ -698,7 +698,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
 
    }
   } else if ( $db_type == "mssql" ) {
-      $c = dbi_connect ( $db_host, $db_login, $db_password , 'master');
+      $c = dbi_connect ( $db_host, $db_login, $db_password , 'master', false);
       if ( $c ) {
      dbi_execute ( "CREATE DATABASE $db_database;" , array(), false, $show_all_errors);
     if ( ! @mssql_select_db ( $db_database ) ) {
@@ -715,7 +715,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
 
    }
   } else if ( $db_type == "postgresql" ) {
-   $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1'); 
+   $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1', false); 
       if ( $c ) {
      dbi_execute ( "CREATE DATABASE $db_database" , array(), false, $show_all_errors);
      $_SESSION['db_noexist'] = false;
@@ -729,8 +729,10 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
       $response_msg = "<b>" . translate ( "Failure Reason" ) . 
      ":</b><blockquote>" . translate ( "You must manually create database" ) . 
      "</blockquote>\n";
-
+     
   } // TODO code remainig database types
+  //allow bypass of TZ Conversion
+  $_SESSION['tz_conversion'] = "Y";
 }
 
 // Is this a Timezone Convert?
@@ -745,7 +747,7 @@ if ( ! empty ( $action ) && $action == "tz_convert" && ! empty ( $_SESSION['vali
   // Avoid false visibilty of single user login
   $onload = "auth_handler();";   
     $c = dbi_connect ( $db_host, $db_login,
-      $db_password, $db_database );
+      $db_password, $db_database, false );
  
     if ( $c ) {
         $ret = convert_server_to_GMT ();
@@ -854,7 +856,7 @@ if ( ! empty ( $y ) ) {
  $_SESSION['application_name']  = getPostValue ( "form_application_name" );
  $_SESSION['server_url']  = getPostValue ( "form_server_url" );
   $c = dbi_connect ( $settings['db_host'], $settings['db_login'],
-    $settings['db_password'], $settings['db_database'] );
+    $settings['db_password'], $settings['db_database'], false );
  if ( $c ) {
    if ( isset ( $_SESSION['application_name'] ) ) {
     dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'APPLICATION_NAME'");
@@ -904,7 +906,7 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     @chmod ( $file, 0644 );
   }
 }
-
+//print_r ( $_SESSION);
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
@@ -1469,7 +1471,6 @@ if ( ! $exists || ! $canWrite ) { ?>
 </td></tr>
 <tr><th colspan="2" class="header"><?php etranslate ( "Database Status" ) ?></th></tr>
 <tr><td>
-<?php //print_r ( $_SESSION); ?>
 <?php echo $response_msg; ?>
 </td></tr>
 <?php if ( ! empty ( $_SESSION['db_updated'] ) ){ ?>
