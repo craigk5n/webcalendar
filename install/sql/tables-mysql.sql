@@ -80,10 +80,11 @@ CREATE TABLE webcal_entry (
   cal_due_time INT DEFAULT NULL,
   /* event priority: 1=Low, 2=Med, 3=High */
   cal_priority INT DEFAULT 2,
-  /* 'E' = Event, 'M' = Repeating event */
+  /* 'E' = Event, 'M' = Repeating event, 'T' = Task */
   cal_type CHAR(1) DEFAULT 'E',
   /* 'P' = Public, */
-  /* 'R' = Confidential (others can see time allocated but not what it is) */
+  /* 'R' = Private (others cannot see the event), */
+  /* 'C' = Confidential (others can see time allocated but not what it is) */
   cal_access CHAR(1) DEFAULT 'P',
   /* brief description of event */
   cal_name VARCHAR(80) NOT NULL,
