@@ -11,6 +11,8 @@ if ( ! $is_admin ) {
 if ( $error == "" ) {
   while ( list ( $key, $value ) = each ( $HTTP_POST_VARS ) ) {
     $setting = substr ( $key, 6 );
+    if ( $key == 'ovrd'  )
+      continue;
     // validate key name.  should start with "admin_" and not include
     // any unusual characters that might cause SQL injection
     if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) ) {

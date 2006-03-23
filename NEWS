@@ -1,4 +1,5 @@
 Version 1.0.3-CVS (?? ??? 2005)
+  - Fixed bug 1444923: system settings error on save when ovrd=1 is used
   - Fixed bug 1420859: Problems with overriding conflict
   - Fixed bug 1445535: tables-db2.sql NULL usage was incorrect
   - Patch 1279537: Don't display confidential events in upcoming.php
