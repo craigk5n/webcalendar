@@ -242,6 +242,7 @@ function do_v11b_updates () {
 
 //convert site_extra reminders to webcal_reminders
 function do_v11e_updates () {
+ $reminder_log_exists = false;
  $res = dbi_execute ( "SELECT webcal_site_extras.cal_id, webcal_site_extras.cal_data " . 
    "FROM webcal_site_extras WHERE webcal_site_extras.cal_type = '7'");
  $done = array ();
@@ -263,6 +264,7 @@ function do_v11e_updates () {
        "FROM webcal_reminder_log WHERE cal_id = ? AND cal_last_sent > 0",
        array (  $row[0] ) );
      if (  $res2 ) {
+       $reminder_log_exists = true;
        $row2 = dbi_fetch_row ( $res2 );
        $times_sent = 1;
        $last_sent = $row2[0];
@@ -277,7 +279,8 @@ function do_v11e_updates () {
    //remove reminders from site_extras
    dbi_execute ( "DELETE FROM webcal_site_extras WHERE webcal_site_extras.cal_type = '7'");
    //remove entries from webcal_reminder_log
-   dbi_execute ( "DELETE FROM webcal_reminder_log", false, false);
+   if (  $reminder_log_exists == true )
+     dbi_execute ( "DELETE FROM webcal_reminder_log", false, false);
  } 
  
 }
