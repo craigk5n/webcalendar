@@ -1653,11 +1653,11 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
  *
  */
 function display_small_tasks ( $cat_id ) {
- global $user, $login, $is_assistant;
+  global $user, $login, $is_assistant;
 
   if ( ! empty ( $user ) && $user != $login  && ! $is_assistant ) {
-   return false;
- }
+    return false;
+  }
  
  
   if ( $user != $login && ! empty ( $user ) ) {
