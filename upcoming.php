@@ -129,11 +129,12 @@ function print_upcoming_event ( $e, $date ) {
   $popupid = 'pop' . $e->getId() . '-' . $date;
 
   $private = $confidential = false;
-  if ( $e->getAccess() != 'P' ) {
+  // Access: P=Public, R=Private, C=Confidential
+  if ( $e->getAccess() == 'R' ) {
     // not a public event, so we will just display "Private"
     $private = true;
   }
-  if ( $e->getAccess() != 'C' ) {
+  else if ( $e->getAccess() == 'C' ) {
     // not a public event, so we will just display "Confidential"
     $confidential = true;
   }
@@ -523,7 +524,8 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
 
   if ( count ( $ev ) > 0 ) {
     print "<!-- XXX -->\n";
-    print "<dt>" . date_to_str ( $d,  translate ( "__month__ __dd__" ), true, true ) . "</dt>\n<dd>";
+    //print "<dt>" . date_to_str ( $d,  translate ( "__month__ __dd__" ), true, true ) . "</dt>\n<dd>";
+    print "<dt>" . date_to_str ( $d ) . "</dt>\n<dd>";
     for ( $j = 0; $j < count ( $ev ) && $numEvents < $maxEvents; $j++ ) {
       print_upcoming_event ( $ev[$j], $d );
       $numEvents++;
