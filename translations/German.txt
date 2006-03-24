@@ -17,7 +17,9 @@
 # Last update: 3 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 6 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 13 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 03-13-2006
+# Last update: 21 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 24 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 03-21-2006
 
 
 ###############################################
@@ -317,7 +319,7 @@ Export: Export
 All day event: Termin f&uuml;r den GANZEN Tag
 Untimed event: Termin OHNE Zeitangabe
 cont.: Forts.
-This event is confidential: Dies ist ein privater Termin 
+This event is confidential: Dieser Termin ist <b>VERTRAULICH</b>
 Waiting for approval: Warten auf &Uuml;berpr&uuml;fung
 Deleted: Gel&ouml;scht
 Approved: Best&auml;tigt
@@ -1367,6 +1369,7 @@ Finnish: Finnisch
 French: Franz&ouml;sisch
 Galician: G&auml;lisch
 German: Deutsch
+Greek: Griechisch
 Holo (Taiwanese): Taiwanesisch
 Hungarian: Ungarisch
 Icelandic: Isl&auml;ndisch
