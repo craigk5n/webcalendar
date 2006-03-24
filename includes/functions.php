@@ -1768,8 +1768,7 @@ function print_entry ( $event, $date ) {
   //build entry link if UAC permits viewing
   if ( $can_access != 0 && $time_only != 'Y' ) {
     //make sure clones have parents url date
-    $linkDate = (  $event->getClone()?date( "Ymd", 
-      get_datetime_add_tz ( $date, 12, -24 ) ): $date );
+    $linkDate = (  $event->getClone()?$event->getClone(): $date );
     $title = " title=\"$view_text\" ";
     $href = "href=\"$cal_link?id=$id&amp;date=$linkDate";
     if ( strlen ( $user ) > 0 )
@@ -2346,7 +2345,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
         }
       }
        if ( $item->getDuration() > 0 && ! $item->isAllDay() ) 
-         $i = get_OverLap ( $item, $i );
+         $i = get_OverLap ( $item, $i, true, 0, $item->getDate()  );
     }
   }
   
@@ -2372,7 +2371,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
           }
         }
         //get all dates for this event
-        //if clone, we'll get the dats from parent later
+        //if clone, we'll get the dates from parent later
         if ( ! $result[$i]->getClone() ){
           if ( $result[$i]->getRepeatEndDateTimeTS() ) {
             $until = $result[$i]->getRepeatEndDateTimeTS();
@@ -3508,8 +3507,7 @@ function html_for_event_week_at_a_glance ( $event, $date, $override_class='', $s
   $time_spacer = ( $time_only == 'Y' ? '' : $TIME_SPACER );
   if ( $can_access != 0 && $time_only != 'Y') {
     //make sure clones have parents url date
-    $linkDate = (  $event->getClone()?date( "Ymd", 
-    get_datetime_add_tz ( $date, 12, -24 ) ): $date ); 
+    $linkDate = (  $event->getClone()?$event->getClone(): $date ); 
     $href = "href=\"view_entry.php?id=$id&amp;date=$linkDate";
     if ( $cal_type == 'task' ) {
       $title  = "<a title=\"" . translate ( "View this task" ) . "\""; 
@@ -3685,8 +3683,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   }
   
     //make sure clones have parents url date
-    $linkDate = (  $event->getClone()?date( "Ymd", 
-    get_datetime_add_tz ( $date, 12, -24 ) ): $date );
+    $linkDate = (  $event->getClone()?$event->getClone(): $date );
     $href = '';
     if (  $can_access != 0 && $time_only != 'Y') {
       $href = "href=\"$cal_link?id=$id&amp;date=$linkDate";
@@ -4725,8 +4722,7 @@ function print_entry_timebar ( $event, $date ) {
   $key++;
   if ( $can_access != 0 && $time_only != 'Y' ) {
     //make sure clones have parents url date
-    $linkDate = (  $event->getClone()?date( "Ymd", 
-      get_datetime_add_tz ( $date, 12, -24 ) ): $date ); 
+    $linkDate = (  $event->getClone()?$event->getClone(): $date ); 
     echo "<a class=\"$class\" id=\"$linkid\" " . 
       " href=\"view_entry.php?id=$id&amp;date=$linkDate";
     if ( strlen ( $user ) > 0 )
@@ -5789,21 +5785,18 @@ function get_tz_offset ( $tz, $timestamp = '', $dateYmd = '' ) {
 */
 function print_timezone_select_html ( $prefix, $tz ) {
   global $TZ_COMPLETE_LIST;
- 
+  $ret = '';
   if ( ! empty ( $TZ_COMPLETE_LIST ) && $TZ_COMPLETE_LIST == "Y" ) {
-    $rows = dbi_get_cached_rows ( "SELECT  DISTINCT zone_name, zone_country " .
-      "FROM webcal_tz_zones ORDER BY zone_country" );
+    $rows = dbi_get_cached_rows ( "SELECT  DISTINCT zone_name, zone_country FROM webcal_tz_zones ORDER BY zone_country", array());
   } else {
-    $rows = dbi_execute ( "SELECT  tz_list_name, tz_list_text " .
-       "FROM webcal_tz_list ORDER BY tz_list_id" );
+    $rows = dbi_get_cached_rows ( "SELECT  tz_list_name, tz_list_text FROM webcal_tz_list ORDER BY tz_list_id", array() );
  }
    //allows different SETTING names between SERVER and USER
    if ( $prefix == 'admin_' ) $prefix .= 'SERVER_';
    if ( $rows ) {
     $ret =  "<select name=\"" . $prefix . "TIMEZONE\" id=\"" . 
       $prefix . "TIMEZONE\">\n";
-    for ( $i = 0; $i < count ( $rows ); $i++ ) {
-      $row = $rows[$i];
+    foreach ( $rows as $row ) {
       if ( ! empty ( $TZ_COMPLETE_LIST ) && $TZ_COMPLETE_LIST == "Y" ) {
         if  ( strpos ( $row[0], "/", 1) ){
           $tz_label = substr ( $row[0], strpos ( $row[0], "/", 1) +1);
@@ -5816,7 +5809,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
    } 
       $ret .= "<option value=\"$row[0]\"" . 
         ( $row[0] == $tz ? " selected=\"selected\"" : "" ) . 
-         ">" . htmlspecialchars ( $tz_label ) . "</option>\n";
+         ">" . html_entity_decode ( $tz_label ) . "</option>\n";
     }
     $ret .= "</select><br />\n";
   }
@@ -6043,10 +6036,9 @@ function combine_and_sort_events ( $ev, $rep ) {
 } 
 
 //calculate rollover to next day and add partial event as needed
-function get_OverLap ( $item, $i, $parent=true, $nextdur=0 ) {
+function get_OverLap ( $item, $i, $parent=true, $nextdur=0, $originalDate='' ) {
   global $TIMEZONE, $result;
   $recurse = 0;
-  if ( $parent ) $originalDate = $item->getDate();
   $tz_offset = get_tz_offset ( $TIMEZONE, $item->getDateTimeTS() );
   $startLocal = get_datetime_add_tz ( $item->getDate(),  
     $item->getTime(), $tz_offset[0] );
@@ -6075,7 +6067,7 @@ function get_OverLap ( $item, $i, $parent=true, $nextdur=0 ) {
     if ( $parent )$item->setDuration( $item->getDuration() - $item_duration -1);         
   }
   //call this function recursively until duration < ONE_DAY
-  if ( $recurse == 1 ) get_OverLap ( $result[$i -1], $i, false, $next_duration );
+  if ( $recurse == 1 ) get_OverLap ( $result[$i -1], $i, false, $next_duration, $originalDate );
   return $i;
 }
 if (version_compare(phpversion(), '5.0') < 0) {
