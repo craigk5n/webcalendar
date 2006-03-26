@@ -723,10 +723,6 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
         }
       }
     }
-  } else {
-    echo translate("Database error") .": " . dbi_error ();
-    echo "<br />\nSQL:<br />\n$sql";
-    exit;
   }
   return $ret;
 }
