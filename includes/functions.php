@@ -1149,7 +1149,7 @@ function build_entry_popup ( $popupid, $user, $description='', $time,
       $str = str_replace ( "&", "&amp;", $description );
       $str = str_replace ( "&amp;amp;", "&amp;", $str );
       //decode special characters
-      $str = html_entity_decode( $str);
+      $str = unhtmlentities( $str);
       // If there is no html found, then go ahead and replace
       // the line breaks ("\n") with the html break.
       if ( strstr ( $str, "<" ) && strstr ( $str, ">" ) ) {
@@ -5805,7 +5805,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
    } 
       $ret .= "<option value=\"$row[0]\"" . 
         ( $row[0] == $tz ? " selected=\"selected\"" : "" ) . 
-         ">" . html_entity_decode ( $tz_label ) . "</option>\n";
+         ">" . unhtmlentities ( $tz_label ) . "</option>\n";
     }
     $ret .= "</select><br />\n";
   }
