@@ -350,7 +350,7 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Applied patch 1171807: reminder sent late if cron run at exact
       second of reminder (was accidentally not included in 1.0.0)
   - The following translations were updated:
-    + Czech, Danish, French, German, Greek (new) Norwegian, Polish,
+    + Czech, Danish, French, German, Greek (new), Hungarian, Norwegian, Polish,
       Portuguese_BR, Japanese (switched to UTF-8), Japanese-sjis (new),
       Japanese-eucjp
 
