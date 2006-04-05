@@ -15,7 +15,7 @@ Version 1.0.3-CVS (?? ??? 2005)
   - Fixed bug 1382217 Glitch in handling of public access prefs
   - Added support for DB2
   - The following translations were updated:
-    Greek (new)
+    Greek (new), Hungarian
 Version 1.0.2 (06 Dec 2005)
   - Fixed vuln in layers: published vulnerability in layers_toggle.php
     was fixed
