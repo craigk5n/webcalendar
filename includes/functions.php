@@ -3735,7 +3735,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $hour_arr[$ind] .= "</a>";
   if ( $DISPLAY_DESC_PRINT_DAY == "Y" ) {
     $hour_arr[$ind] .= "\n<dl class=\"desc\">\n";
-    $hour_arr[$ind] .= "<dt>Description:</dt>\n<dd>";
+    $hour_arr[$ind] .= "<dt>" . translate("Description") . ":</dt>\n<dd>";
     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
       $hour_arr[$ind] .= $event->getDescription();
     } else {
