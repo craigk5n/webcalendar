@@ -110,7 +110,7 @@ for ( $d = $starttime; $d <= $endtime; $d += ONE_DAY ) {
   //$out .= "Date: $date\n";
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.
-  $ev = get_entries ( $user, $date );
+  $ev = get_entries ( $date );
   // Keep track of duplicates
   $completed_ids = array ( );
   for ( $i = 0; $i < count ( $ev ); $i++ ) {

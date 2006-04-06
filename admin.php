@@ -129,6 +129,10 @@ $GLOBALS['OTHERMONTHBG'] = $s['OTHERMONTHBG'];
 $GLOBALS['FONTS'] = $s['FONTS'];
 $GLOBALS['MYEVENTS'] = $s['MYEVENTS'];
 
+//determine if we can set timezones, if not don't display any options
+$can_set_timezone = set_env ( "TZ", $s['SERVER_TIMEZONE'] );
+
+
 $BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();';
 $BodyX .= ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );\"" : '"' );
 $INC = array('js/admin.php','js/visible.php');
@@ -199,6 +203,17 @@ if ( ! $error ) {
   <?php echo translate("Your browser default language is") . " " . 
    get_browser_language ( true )  . "."; ?>
  </td></tr>
+ <?php if ( $can_set_timezone == true ) { ?>
+ <tr><td class="tooltipselect" title="<?php etooltip("tz-help")?>">
+  <label for="admin_SERVER_TIMEZONE"><?php etranslate("Server Timezone Selection")?>:</label></td><td>
+  <?php
+   $tz_offset = date("Z") /ONE_HOUR;
+   echo print_timezone_select_html ( "admin_", $s['SERVER_TIMEZONE']);
+   echo  translate("Your current GMT offset is") . "&nbsp;" .
+	   $tz_offset . "&nbsp;" .translate("hours") . ".";
+  ?>
+</td></tr>
+ <?php } // end $can_set_timezone ?>
 <tr><td><label>
  <?php etranslate("Allow user to use themes")?>:</label></td><td colspan="3">
  <label><input type="radio" name="admin_ALLOW_USER_THEMES" value='Y'<?php if ( $s['ALLOW_USER_THEMES'] != 'N' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
@@ -329,20 +344,6 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label><input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value='Y' <?php if ( $s['DISPLAY_DESC_PRINT_DAY'] == 'Y' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
   <label><input type="radio" name="admin_DISPLAY_DESC_PRINT_DAY" value='N' <?php if ( $s['DISPLAY_DESC_PRINT_DAY'] != 'Y' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('No')?></label>
  </td></tr>
- <tr><td class="tooltip" title="<?php etooltip("display-alltimezones-help");?>">
-  <?php etranslate("Display complete timezone list")?>:</td><td>
-  <label><input type="radio" name="admin_TZ_COMPLETE_LIST" value='Y' <?php if ( $s['TZ_COMPLETE_LIST'] != 'N' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
-  <label><input type="radio" name="admin_TZ_COMPLETE_LIST" value='N' <?php if ( $s['TZ_COMPLETE_LIST'] == 'N' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('No')?></label>&nbsp;&nbsp;<?php echo  "(" . translate("Requires page reload") . ")"; ?>
- </td></tr>
- <tr><td class="tooltipselect" title="<?php etooltip("tz-help")?>">
-  <label for="admin_SERVER_TIMEZONE"><?php etranslate("Server Timezone Selection")?>:</label></td><td>
-  <?php
-   $tz_offset = get_tz_offset ( $s['SERVER_TIMEZONE'], time() );
-   echo print_timezone_select_html ( "admin_", $s['SERVER_TIMEZONE']);
-   echo  translate("Your current GMT offset is")  . " " . $tz_offset[0] . " " . translate("hours") . ".";
-  ?>&nbsp;&nbsp;
- <input type="button" value="<?php etranslate("Load Timezone Data");?>" onclick="window.open('load_tz_data.php','_blank','dependent,height=200,width=400,outerHeight=220,outerWidth=420');" name="" />
-</td></tr>
  <tr><td class="tooltip" title="<?php etooltip("display-general-use-gmt-help");?>">
   <?php etranslate("Display Common Use Date/Times as GMT")?>:</td><td>
   <label><input type="radio" name="admin_GENERAL_USE_GMT" value='Y' <?php if ( $s['GENERAL_USE_GMT'] == 'Y' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
@@ -729,12 +730,6 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label><input type="radio" name="admin_DISPLAY_TASKS_IN_GRID" value='N' <?php if ( $s['DISPLAY_TASKS_IN_GRID'] != 'Y' ) echo " checked=\"checked\"";?>  />&nbsp;<?php etranslate('No')?></label>
  </td></tr>
 
-<!-- BEGIN USE TIMEZONES IN ICS-->
- <tr><td class="tooltip" title="<?php etooltip("export-ics-timezones-help")?>">
-  <?php etranslate("Export VTIMEZONE in ics files" )?>:</td><td>
-  <label><input type="radio" name="admin_ICS_TIMEZONES" value='Y' <?php if ( $s['ICS_TIMEZONES'] == 'Y' ) echo " checked=\"checked\"";?>  />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
-  <label><input type="radio" name="admin_ICS_TIMEZONES" value='N' <?php if ( $s['ICS_TIMEZONES'] != 'Y' ) echo " checked=\"checked\"";?>  />&nbsp;<?php etranslate('No')?></label>
- </td></tr> 
 <!-- BEGIN EXT PARTICIPANTS -->
 
  <tr><td class="tooltip" title="<?php etooltip("allow-external-users-help")?>">
@@ -918,7 +913,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <!-- BEGIN EXAMPLE MONTH -->
 <table style="border:0px; width:100%;"><tr>
 <td style="text-align:center; color:<?php echo $H2COLOR?>; font-weight:bold;"><?php
-echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false, false );?></td></tr>
+echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false );?></td></tr>
 </table>
 <?php 
 set_today( date ("Ymd") );

@@ -98,20 +98,11 @@ function list_unapproved ( $user ) {
         "\" class=\"entry\" id=\"$linkid\" href=\"$view_link.php?id=$id&amp;user=$cal_user\">";
       $timestr = "";
       if ( $time > 0 ) {
-        $user_TIMEZONE = get_pref_setting ( $cal_user, "TIMEZONE" );
-        $timestr = display_time ( $date . $time, 0, '', $user_TIMEZONE );
+			  $eventstart = date_to_epoch ( $date . $time );
+				$eventstop = $eventstart + $duration;
+        $timestr = display_time ('', 0, $eventstart);
         if ( $duration > 0 ) {
-          // calc end time
-          $h = (int) ( $time / 10000 );
-          $m = ( $time / 100 ) % 100;
-          $m += $duration;
-          $d = $duration;
-          while ( $m >= 60 ) {
-            $h++;
-            $m -= 60;
-          }
-          $end_time = sprintf ( "%02d%02d00", $h, $m );
-          $timestr .= " - " . display_time ( $date . $end_time, 0 ,'', $user_TIMEZONE );
+          $timestr .= " - " . display_time ( '', 0 , $eventstop );
         }
       }
       echo htmlspecialchars ( $name );

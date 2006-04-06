@@ -98,13 +98,7 @@ if ( empty ( $error ) && $id > 0 ) {
     dbi_free_result ( $res );
   }
 
-  if ($time != '-1') {
-    $hour = floor($time / 10000);
-    $minute = ( $time / 100 ) % 100;
-  } else {
-   $hour =  $minute = 0;
- }
-  $eventstart = $fmtdate .  sprintf( "%06d", ( $hour * 10000 ) + ( $minute * 100 ) );
+  $eventstart = date_to_epoch ( $fmtdate . $time );
   for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
     // does this user want email for this?
     $send_user_mail = get_pref_setting ( $partlogin[$i],
@@ -118,7 +112,7 @@ if ( empty ( $error ) && $id > 0 ) {
     $t_format = get_pref_setting ( $partlogin[$i], "TIME_FORMAT" );
     user_load_variables ( $partlogin[$i], "temp" );
     $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
-    $user_TZ = get_tz_offset ( $user_TIMEZONE, '', $eventstart );
+    set_env ( "TZ", $user_TIMEZONE);
     $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
     if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
       $SEND_EMAIL != "N" && $can_mail == 'Y') {
@@ -134,8 +128,8 @@ if ( empty ( $error ) && $id > 0 ) {
       translate("The description is") . " \"" . $description . "\"\n" .
       translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
       ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate("Time") . ": " .
-      // Display using user's GMT offset and display TZID
-      display_time ( $eventstart, 2, '' , $user_TIMEZONE, $t_format ) ) ). "\n";
+      // Display using user's TIMEZONE and display TZID
+      display_time ( '', 2, $eventstart , $t_format ) ) ). "\n";
       if ( ! empty ( $SERVER_URL ) ) {
         //DON'T change & to &amp; here. email will handle it
         $url = $SERVER_URL .  $view_type . ".php?id=" .  $id . "&em=1";
@@ -168,7 +162,8 @@ if ( empty ( $error ) && $id > 0 ) {
     }
   }
 }
-
+//return to login TIMEZONE
+set_env ( "TZ", $TIMEZONE );
 if ( empty ( $error ) ) {
   if ( ! empty ( $ret ) && $ret == "listall" )
     do_redirect ( "list_unapproved.php" );

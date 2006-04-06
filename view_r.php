@@ -116,12 +116,9 @@ $prevday = date ( "d", $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 
-if ( $WEEK_START == 1 ) {
-   $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
-} else {
-   $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
-}
-$wkend = $wkstart + ( 3600 * 24 * 6 );
+$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday );
+
+$wkend = $wkstart + ( ONE_DAY * 6 );
 
 if ( ! $fit_to_window )
   $time_w = "100px";
@@ -160,7 +157,7 @@ if ( $is_day_view ) {
 // Generate the column headers for each day and the unix datetime
 // values for each date.
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
-  $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
+  $days[$i] = $wkstart + ONE_DAY * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
   $header[$i] = $weekdays[$i] . "<br />" .
      month_short_name ( date ( "m", $days[$i] ) - 1 ) .
@@ -368,7 +365,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         }
       }
     }
-    $ev = get_entries ( $user, $adate, $get_unapproved , 1, 1);
+    $ev = get_entries ( $adate, $get_unapproved , 1, 1);
     for ( $j = 0; $j < count ( $ev ); $j++ ) {
       if ( ! isset ( $am_part[$ev[$j]->getID()] ) ) {
         $am_part[$ev[$j]->getID()] =
@@ -397,7 +394,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $cur_rep = 0;
 
     // Get static non-repeating events
-    $ev = get_entries ( $user, $adate, $get_unapproved, 1, 1 );
+    $ev = get_entries ( $adate, $get_unapproved, 1, 1 );
     $hour_arr = array (  );
     $rowspan_arr = array (  );
     for ( $i = 0; $i < count ( $ev ); $i++ ) {

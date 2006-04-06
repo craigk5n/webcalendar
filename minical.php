@@ -115,8 +115,8 @@ $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 
 $boldDays = true;
-$startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
-$enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
+$startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+$enddate = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 
 
 $HeadX = '';

@@ -44,11 +44,10 @@ $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
 
-$startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
-$enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
-$monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-$monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
-$thisdate = $startdate;
+$startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+$enddate = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );;
+
+$thisdate = date ( "Ymd", $startdate );
 ?>
 
 <div style="border-width:0px; width:99%;">
@@ -131,8 +130,8 @@ for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
   } //end for
   echo "</tr>\n";
 
-  for ( $date = $monthstart; date ("Ymd", $date) <= date ("Ymd", $monthend);
-    $date += (24 * 3600), $wday++ ) {
+  for ( $date = $startdate; date ("Ymd", $date) <= date ("Ymd", $enddate);
+    $date += ONE_DAY, $wday++ ) {
  $wday = strftime ("%w", $date);
  if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == "N" ) continue; 
  $weekday = weekday_short_name ($wday);

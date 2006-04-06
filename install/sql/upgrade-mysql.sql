@@ -186,35 +186,6 @@ CREATE TABLE webcal_access_user (
   cal_can_view CHAR(1) NOT NULL DEFAULT 'N',
   PRIMARY KEY (cal_login,cal_other_user)
 );
-/*upgrade_v1.1.0-CVS*/
-CREATE TABLE webcal_tz_list (
-  tz_list_id INT NOT NULL,
-  tz_list_name VARCHAR(50) NOT NULL,
-  tz_list_text VARCHAR(75) NOT NULL
-);
-CREATE TABLE webcal_tz_rules (
-  rule_at INT NOT NULL,
-  rule_at_suffix CHAR(1) NOT NULL,
-  rule_from INT NOT NULL,
-  rule_in INT NOT NULL,
-  rule_letter VARCHAR(5) NOT NULL,
-  rule_name VARCHAR(50) NOT NULL,
-  rule_on VARCHAR(20) NOT NULL,
-  rule_save INT NOT NULL,
-  rule_to INT NOT NULL,
-  rule_type VARCHAR(20) NOT NULL
-);
-CREATE TABLE webcal_tz_zones (
-  zone_cc CHAR(2) NOT NULL,
-  zone_coord VARCHAR(20) NOT NULL,
-  zone_country VARCHAR(50) NOT NULL,
-  zone_format VARCHAR(20) NOT NULL,
-  zone_from BIGINT NOT NULL,
-  zone_gmtoff INT NOT NULL,
-  zone_name VARCHAR(50) NOT NULL,
-  zone_rules VARCHAR(50) NOT NULL,
-  zone_until BIGINT NOT NULL
-);
 /*upgrade_v1.1.0a-CVS*/
 ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1) NOT NULL DEFAULT 'N';
 CREATE TABLE webcal_user_template (

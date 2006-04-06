@@ -119,6 +119,8 @@ if ( ! $res ) {
   dbi_free_result ( $res );
 }
 
+$display_date = date ("Ymd", date_to_epoch ( $orig_date . $event_time ) );
+
 if ( ! empty ( $year ) ) {
   $thisyear = $year;
 }
@@ -306,43 +308,14 @@ if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
   exit;
 }
 
-// Timezone Adjustments
-$adjusted_start = get_datetime_add_tz ( $orig_date, $event_time );
-$adjusted_due = get_datetime_add_tz ( $due_date, $due_time );
- 
-$adjusted_time = date ( "His",$adjusted_start );
-$adjusted_date = date (  "Ymd", $adjusted_start );
-
-$adjusted_due_time = date ( "His",$adjusted_due );
-$adjusted_due_date = date (  "Ymd", $adjusted_due );
-  $year = substr($orig_date,0,4);
-  $month = substr($orig_date,4,2);
-  $day = substr($orig_date,-2);
-$tz_offset = get_tz_offset ( $TIMEZONE, mktime ( 0, 0, 0, $month, $day, $year ) );
-if ( $event_time >= 0 && ! empty ( $tz_offset[0] )  && $tz_offset[0] != 0 ) { 
-  // -1 = no time specified
-  $adjusted_time = $event_time + $tz_offset[0] * 10000;
-  if ( $adjusted_time > 240000 ) {
-    $gmt = mktime ( 0, 0, 0, $month, $day, $year );
-    $gmt += ONE_DAY;
-  } else if ( $adjusted_time < 0 ) {
-    $gmt = mktime ( 0, 0, 0, $month, $day, $year );
-    $gmt -= ONE_DAY;
-  }
-}
-// Set alterted date
-$tz_date = ( ! empty ( $gmt ) ) ? date ( "Ymd", $gmt ) : $orig_date;
 
 // save date so the trailer links are for the same time period
-if (  $eType == 'task' ) {
-  $thisyear = (int) ( $adjusted_date / 10000 );
-  $thismonth = ( $adjusted_date / 100 ) % 100;
-  $thisday = $adjusted_date % 100;
-} else {
-  $thisyear = (int) ( $tz_date / 10000 );
-  $thismonth = ( $tz_date / 100 ) % 100;
-  $thisday = $tz_date % 100;
-}
+//if (  $eType == 'task' ) {
+  $thisyear = (int) ( $orig_date / 10000 );
+  $thismonth = ( $orig_date / 100 ) % 100;
+  $thisday = $orig_date % 100;
+
+//}
 $thistime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 $thisdow = date ( "w", $thistime );
 
@@ -365,7 +338,7 @@ if ( $res ) {
 }
 /* calculate end time */
 if ( $event_time >= 0 && $duration > 0 )
-  $end_str = "-" . display_time ( $tz_date . 
+  $end_str = "-" . display_time ( $display_date . 
     add_duration ( $event_time, $duration % 1440 ), 2 );
 else
   $end_str = "";
@@ -415,7 +388,7 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
 }
 
   //get reminders 
-  $reminder = getReminders ( $id, $tz_offset[0], true );
+  $reminder = getReminders ( $id, true );
   
 ?>
 <h2><?php echo  $name ; ?></h2>
@@ -468,14 +441,14 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
  <?php echo ( $eType == 'task' ? translate("Start Date") : translate("Date") )?>:</td><td>
  <?php
  if ( $eType == 'task' ) {
-   echo date_to_str ( $orig_date );
+   echo date_to_str ( $display_date );
   ?>
 </td></tr>
 <?php if ( $event_time >= 0 ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Start Time")?>:</td><td>
  <?php
-   echo display_time ( $orig_date . $event_time, 2 );
+   echo display_time ( $display_date . $event_time, 2 );
   ?>
 </td></tr>
 <?php } ?>
@@ -489,14 +462,8 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
  <?php etranslate("Due Time")?>:</td><td>
  <?php
    echo display_time (  $due_date . $due_time, 2 );
- 
  } else {
-  if ( $event_repeats ) {
-    echo date_to_str ( $adjusted_date );
-  } else {
-    echo date_to_str ( $orig_date, "", true, false, 
-      ( $duration == ONE_DAY ? "" : $event_time ) );
-  }
+   echo date_to_str ( $display_date );
  }
   ?>
 </td></tr>
@@ -506,7 +473,7 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
  <?php echo export_recurrence_ical( $id , true); ?>
 </td></tr>
 <?php } ?>
-<?php if ( $event_time >= 0 ) { ?>
+<?php if ( $eType != 'task' && $event_time >= 0 ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Time")?>:</td><td>
  <?php
@@ -515,7 +482,7 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
     } else {
       // Display TZID if no end time
       $display_tzid = empty ( $end_str ) ? 2 : 0;
-      echo display_time ( $tz_date . sprintf ( "%06d", $event_time ), 
+      echo display_time ( $display_date . $event_time, 
         $display_tzid ) . $end_str;
     }
   ?>
@@ -598,7 +565,7 @@ if ( $single_user == "N" && ! empty ( $createby_fullname )  ) {
     if ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == "Y" ) {    
       echo display_time ( $mod_time, 3 );
     } else {
-      echo display_time ( $mod_date . $mod_time, 2, '',  $SERVER_TIMEZONE );    
+      echo display_time ( $mod_date . $mod_time, 2 );    
     }
    ?>
 </td></tr>

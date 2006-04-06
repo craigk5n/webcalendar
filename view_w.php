@@ -48,21 +48,16 @@ $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
-// We add 2 hours on to the time so that the switch to DST doesn't
-// throw us off.  So, all our dates are 2AM for that day.
-if ( $WEEK_START == 1 || $DISPLAY_WEEKENDS == "N" ) {
-  $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
-} else {
-  $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
-}
-$wkend = $wkstart + ( 3600 * 24 * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ) );
+$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday );
+
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ) );
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
 
 $thisdate = $startdate;
 
 for ( $i = 0; $i < 7; $i++ ) {
-  $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
+  $days[$i] = $wkstart + ONE_DAY * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
   $header[$i] = $weekdays[$i] . "<br />" .
      month_short_name ( date ( "m", $days[$i] ) - 1 ) .
@@ -160,7 +155,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
 
   for ( $xdate = $wkstart, $h = 0;
     date ( "Ymd", $xdate ) <= date ( "Ymd", $wkend );
-    $xdate += ( 24 * 3600 ), $h++ ) {
+    $xdate += ONE_DAY, $h++ ) {
     $wday = strftime ( "%w", $xdate );
     if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == "N" ) continue;
     $weekday = weekday_short_name ( $wday );

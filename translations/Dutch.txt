@@ -535,7 +535,7 @@ Export this entry to: Exporteer afspraak naar
 #
 An appointment has been rejected by: Er is een afspraak geweigerd door
 The description is: De omschrijving van de afspraak luidt
-Title: Titel
+Title: WebCalendar
 
 
 ###############################################

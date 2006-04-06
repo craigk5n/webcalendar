@@ -154,11 +154,9 @@ function print_upcoming_event ( $e, $date ) {
         $e->getDescription(), $timestr, site_extras_for_popup ( $e->getId() ),
         $e->getLocation(), $e->getName(), $e->getId() );
     }
-    $cal_type = ( $e->getCalType() == 'T' || $e->getCalType() == 'N' ) ?
-      'task' : 'entry';
     print "<a class=\"entry\" id=\"$popupid\" title=\"" . 
       htmlspecialchars ( $e->getName() ) . "\" href=\"" . 
-      $SERVER_URL . 'view_' . $cal_type . '.php?id=' . 
+      $SERVER_URL . 'view_entry.php?id=' . 
         $e->getID() . "&amp;date=$date\"";
       if ( ! empty ( $link_target ) ) {
       print " target=\"$link_target\"";
@@ -342,7 +340,7 @@ $thisyear = substr ( $date, 0, 4 );
 $thismonth = substr ( $date, 4, 2 );
 $thisday = substr ( $date, 6, 2 );
 
-$startTime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
+$startDate = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 
 $x = getIntValue ( "days", true );
 if ( ! empty ( $x ) ) {
@@ -352,9 +350,8 @@ if ( ! empty ( $x ) ) {
 if ( $numDays > 365 ) {
   $numDays = 365;
 }
-$endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays,
+$endDate = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays,
   $thisyear );
-$endDate = date ( "Ymd", $endTime );
 
 // If 'showEvents=0' is in URL, then just include tasks in list
 $show_events = getGetValue ( "showEvents", "[01]", true );
@@ -365,17 +362,17 @@ if ( $tasks_only ) {
 } else {
 
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $username, $cat_id, $date );
+  $repeated_events = read_repeated_events ( $username, $cat_id, $startDate );
 
   /* Pre-load the non-repeating events for quicker access */
-  $events = read_events ( $username, $date, $endDate, $cat_id );
+  $events = read_events ( $username, $startDate, $endDate, $cat_id );
 }
 
 // Pre-load tasks for quicker access */
 if ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
   && $showTasks ) {
   /* Pre-load tasks for quicker access */
-  $tasks = read_tasks ( $username, $date, $endDate, $cat_id );
+  $tasks = read_tasks ( $username, $endDate, $cat_id );
 }
 
 
@@ -503,21 +500,21 @@ if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate($upcoming_titl
 <?php
 print "<dl>\n";
 
-print "<!-- \nstartTime: $startTime\nendTime: $endTime\nstartDate: " .
+print "<!-- \nstartTime: startDate\nendTime: $endDate\nstartDate: " .
   "$date\nnumDays: $numDays\nuser: $username\nevents: " . 
   count ( $events ) . "\nrepeated_events: " . 
   count ( $repeated_events ) . " -->\n";
 
 $eventinfo = '';
 $numEvents = 0;
-for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
-  $numEvents < $maxEvents; $i += ( 24 * 3600 ) ) {
+for ( $i = $startDate; date ( "Ymd", $i ) <= date ( "Ymd", $endDate ) &&
+  $numEvents < $maxEvents; $i += ONE_DAY ) {
   $d = date ( "Ymd", $i );
-  $entries = get_entries ( $username, $d, $get_unapproved );
+  $entries = get_entries ( $d, $get_unapproved );
   $rentries = get_repeating_entries ( $username, $d, $get_unapproved );
   $ev = combine_and_sort_events ( $entries, $rentries );
 
-  $tentries = get_tasks ( $user, $d, $get_unapproved );
+  $tentries = get_tasks ( $d, $get_unapproved );
   $ev = combine_and_sort_events ( $ev, $tentries );
 
   print "<!-- $d " . count ( $ev ) . " -->\n";

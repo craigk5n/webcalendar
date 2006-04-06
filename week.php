@@ -13,16 +13,13 @@ $nextYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear )
 $prevYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
 
 
-if ( $WEEK_START == 1 || $DISPLAY_WEEKENDS == "N" ) {
-   $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
-} else {
-   $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
-}
+$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday );
 
-$wkend = $wkstart + ( 3600 * 24 * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ) );
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ) );
  
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
+
 if ( $DISPLAY_WEEKENDS == "N" ) {
   if ( $WEEK_START == 1 ) {
     $start_ind = 0;
@@ -49,21 +46,22 @@ print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quckier access */
 $repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login,
-  $cat_id, $startdate );
+  $cat_id, $wkstart );
 
 /* Pre-load the non-repeating events for quicker access */
+//Start the search one week early to account for cross-day events
 $events = read_events ( strlen ( $user ) ? $user : $login,
-  $startdate, $enddate, $cat_id );
+  $wkstart - ONE_WEEK, $wkend, $cat_id );
 
 if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) && $is_assistant )
-    ? $user : $login, $startdate, $enddate, $cat_id );
+    ? $user : $login, $wkend, $cat_id );
 }
 
-if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == "N" ) $wkstart = $wkstart - ONE_DAY;
+//if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == "N" ) $wkstart = $wkstart - ONE_DAY;
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
-  $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
+  $days[$i] = $wkstart + ONE_DAY * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
   $header[$i] = $weekdays[$i] . "<br />" .
     date_to_str ( date ("Ymd",$days[$i]), $DATE_FORMAT_MD, false, true );
@@ -149,14 +147,14 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   $rep = get_repeating_entries ( $user, $date );
 
   // Get static non-repeating events
-  $ev = get_entries ( $user, $date, $get_unapproved, true, true );
+  $ev = get_entries ( $date, $get_unapproved );
   // combine and sort the event arrays
   $ev = combine_and_sort_events($ev, $rep);
  
  // get all due tasks for this date and before and store in $tk
  $tk = array();
  if ( $date >= date ( "Ymd" ) ) {
-    $tk = get_tasks ( $user, $date, $get_unapproved );
+    $tk = get_tasks ( $date, $get_unapproved );
  }
  $ev = combine_and_sort_events($ev, $tk);
 

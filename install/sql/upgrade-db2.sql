@@ -201,36 +201,6 @@ CREATE TABLE webcal_access_function (
   PRIMARY KEY ( cal_login )
 );
 
-/*upgrade_v1.1.0-CVS*/
-CREATE TABLE webcal_tz_zones (
-  zone_name VARCHAR(50) NOT NULL DEFAULT '',
-  zone_gmtoff INT NOT NULL DEFAULT 0,
-  zone_rules VARCHAR(50) NOT NULL DEFAULT '',
-  zone_format VARCHAR(20) NOT NULL DEFAULT '',
-  zone_from BIGINT NOT NULL DEFAULT 0,
-  zone_until BIGINT NOT NULL DEFAULT 0,
-  zone_cc CHAR(2) NOT NULL DEFAULT '',
-  zone_coord VARCHAR(20) NOT NULL DEFAULT '',
-  zone_country VARCHAR(50) NOT NULL DEFAULT ''
-);
-CREATE TABLE webcal_tz_rules (
-  rule_name VARCHAR(50) NOT NULL DEFAULT '',
-  rule_from INT NOT NULL DEFAULT 0,
-  rule_to INT NOT NULL DEFAULT 0,
-  rule_type VARCHAR(20) NOT NULL DEFAULT '',
-  rule_in INT NOT NULL DEFAULT 0,
-  rule_on VARCHAR(20) NOT NULL DEFAULT '',
-  rule_at INT NOT NULL DEFAULT 0,
-  rule_at_suffix CHAR(1) NOT NULL DEFAULT '',
-  rule_save INT NOT NULL DEFAULT 0,
-  rule_letter VARCHAR(5) NOT NULL DEFAULT ''
-);
-CREATE TABLE webcal_tz_list (
-  tz_list_id INT NOT NULL default 0,
-  tz_list_name VARCHAR(50) NOT NULL default '',
-  tz_list_text VARCHAR(75) NOT NULL default ''
-);
-
 /*upgrade_v1.1.0a-CVS*/
 ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1) DEFAULT 'N' NOT NULL;
 CREATE TABLE webcal_user_template (

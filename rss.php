@@ -229,10 +229,10 @@ $reventIds = array();
 
 echo "\n<items>\n<rdf:Seq>\n";
 for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
-  $numEvents < $maxEvents; $i += ( 24 * 3600 ) ) {
+  $numEvents < $maxEvents; $i += ONE_DAY ) {
   $eventIds = array();
   $d = date ( "Ymd", $i );
-  $entries = get_entries ( $username, $d, false );
+  $entries = get_entries ( $d, false );
   $rentries = get_repeating_entries ( $username, $d, false );
   if ($debug) echo "\n\ni=$i d=$d \n\n";
   if ($debug) echo "\n\ncountentries==". count($entries) . " " . count ($rentries) . "\n\n";
@@ -289,10 +289,10 @@ $numEvents = 0;
 $reventIds = array();
 
 for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
-  $numEvents < $maxEvents; $i += ( 24 * 3600 ) ) {
+  $numEvents < $maxEvents; $i += ONE_DAY ) {
   $eventIds=array();
   $d = date ( "Ymd", $i );
-  $entries = get_entries ( $username, $d );
+  $entries = get_entries ( $d, false  );
   $rentries = get_repeating_entries ( $username, $d );
 
   if ($debug) echo "\n\ncountentries==". count($entries) . " " . count ($rentries) . "\n\n";

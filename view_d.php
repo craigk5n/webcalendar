@@ -57,19 +57,10 @@ $wday = strftime ( "%w", mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
 $now = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 $nowYmd = date ( "Ymd", $now );
 
-$next = mktime ( 0, 0, 0, $thismonth, $thisday + 1, $thisyear );
-$nextyear = date ( "Y", $next );
-$nextmonth = date ( "m", $next );
-$nextday = date ( "d", $next );
-$nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
+$nextdate = date( "Ymd", $now + ONE_DAY);
 
-$prev = mktime ( 0, 0, 0, $thismonth, $thisday - 1, $thisyear );
-$prevyear = date ( "Y", $prev );
-$prevmonth = date ( "m", $prev );
-$prevday = date ( "d", $prev );
-$prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
+$prevdate = date( "Ymd", $now - ONE_DAY);
 
-$thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 ?>
 
 <div style="border-width:0px; width:99%;">
@@ -81,9 +72,7 @@ $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 <?php echo $id . "&amp;date=" . $nextdate?>"><img src="images/rightarrow.gif" 
   class="prevnext" alt="<?php etranslate("Next")?>" /></a>
 <div class="title">
-<span class="date"><?php 
-  printf ( "%s, %s %d, %d", weekday_name ( $wday ),
-    month_name ( $thismonth - 1 ), $thisday, $thisyear ); 
+<span class="date"><?php echo date_to_str ( $nowYmd ); 
 ?></span><br />
 <span class="viewname"><?php echo htmlspecialchars ( $view_name ); ?></span>
 </div></div>
@@ -95,10 +84,8 @@ daily_matrix($date,$participants);
 
 <!-- Hidden form for booking events -->
 <form action="edit_entry.php" method="post" name="schedule">
-<input type="hidden" name="date" value="
-  <?php echo $thisyear.$thismonth.$thisday;?>" />
-<input type="hidden" name="defusers" value="
-  <?php echo implode ( ",", $participants ); ?>" />
+<input type="hidden" name="date" value="<?php echo $thisyear.$thismonth.$thisday;?>" />
+<input type="hidden" name="defusers" value="<?php echo implode ( ",", $participants ); ?>" />
 <input type="hidden" name="hour" value="" />
 <input type="hidden" name="minute" value="" />
 </form>

@@ -36,7 +36,7 @@ function delete_palm_events($login) {
 }
 
 function ParseLine($line){
-  global $SERVER_TIMEZONE, $calUser;
+  global $calUser;
   list(
     $Entry['RecordID'],
     $Entry['StartTime'],
@@ -60,12 +60,11 @@ function ParseLine($line){
 
   // Adjust times to users Timezone if not Untimed
   if ( isset ( $Entry['Untimed'] ) && $Entry['Untimed'] == 0) {
-    $user_TIMEZONE = get_pref_setting ( $calUser, "TIMEZONE" );
-    $user_TIMEZONE = ( ! empty ( $user_TIMEZONE ) ? $user_TIMEZONE : $SERVER_TIMEZONE );
-  
-    $tz_offset = get_tz_offset ( $user_TIMEZONE, $Entry['StartTime'] );
-    $Entry['StartTime'] = $Entry['StartTime'] - ( $tz_offset[0] * 3600 );
-    $Entry['EndTime'] = $Entry['EndTime'] - ( $tz_offset[0] * 3600 );
+
+    $tz_offset = date ("Z", $Entry['StartTime'] );
+    $Entry['StartTime'] -= $tz_offset;
+    $tz_offset = date ("Z", $Entry['EndTime'] );		
+    $Entry['EndTime'] -= $tz_offset;
   }
 
   if ($Exceptions) $Entry['Repeat']['Exceptions'] = explode(":",$Exceptions);

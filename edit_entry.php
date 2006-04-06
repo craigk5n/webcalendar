@@ -100,20 +100,18 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $due_date = $row[13];
     $due_time = $row[14];
     
-    $adjusted_start = get_datetime_add_tz ( $cal_date, $cal_time );
-    $adjusted_due = get_datetime_add_tz ( $due_date, $due_time );
-    
+		$calTS = date_to_epoch ( $cal_date . $cal_time );
     //Don't adjust for All Day entries
-    //this could probably replace the code below at line 160
     if ( $cal_time > 0 || ( $cal_time == 0 &&  $row[5] != 1440 ) ) {
-      $cal_date = date ( "Ymd",$adjusted_start );
-      $cal_time = date (  "His", $adjusted_start );
+      $cal_date = date ( "Ymd", $calTS );
+      $cal_time = date (  "His", $calTS );
     }
     $hour = floor($cal_time / 10000);
     $minute = ( $cal_time / 100 ) % 100;
   
-    $due_date = date ( "Ymd",$adjusted_due );
-    $due_time = date (  "His", $adjusted_due );
+	  $dueTS = date_to_epoch ( $due_date . $due_time );
+    $due_date = date ( "Ymd", $dueTS );
+    $due_time = date (  "His", $dueTS );
     $due_hour = floor($due_time / 10000);
     $due_minute = ( $due_time / 100 ) % 100;
    
@@ -149,32 +147,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $month = ( $cal_date / 100 ) % 100;
     $day = $cal_date % 100;
     $time = $row[2];
-    
-    $tz_offset = get_tz_offset ( $TIMEZONE, mktime ( 0, 0, 0, $month, $day, $year ) );
-    // test for AllDay event, if so, don't adjust time
-    if ( $time > 0  || ( $time == 0 &&  $row[5] != 1440 ) ) { /* -1 = no time specified */
-      $time = get_time_add_tz ( $time, $tz_offset[0] );
-      if ( $time > 240000 ) {
-        $time -= 240000;
-        $gmt = mktime ( 0, 0, 0, $month, $day, $year );
-        $gmt += ONE_DAY;
-        $month = date ( "m", $gmt );
-        $day = date ( "d", $gmt );
-        $year = date ( "Y", $gmt );
-      } else if ( $time < 0 ) {
-        $time += 240000;
-        $gmt = mktime ( 0, 0, 0, $month, $day, $year );
-        $gmt -= ONE_DAY;
-        $month = date ( "m", $gmt );
-        $day = date ( "d", $gmt );
-        $year = date ( "Y", $gmt );
-      }
-      // Set alterted date
-    //  $cal_date = sprintf("%04d%02d%02d",$year,$month,$day);
-    }
+
     if ( $time >= 0 ) {
-      $hour = floor($time / 10000);
-      $minute = ( $time / 100 ) % 100;
       $duration = $row[5];
     } else {
       $duration = "";
@@ -206,12 +180,13 @@ if ( $readonly == 'Y' || $is_nonuser ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
           $rpt_type = $row[1];
           if ( $row[2] > 0 )
-            $rpt_end = get_datetime_add_tz( $row[2], $row[3] );
+            $rpt_end = date_to_epoch( $row[2] . $row[3] );
           else
             $rpt_end = 0;
           if ( ! empty ( $row[2] ) ) {
-            $rpt_end_date = date( "Ymd", get_datetime_add_tz( $row[2], $row[3] ) );
-            $rpt_end_time = date( "His", get_datetime_add_tz( $row[2], $row[3] ) );
+					   $rpt_endTS = date_to_epoch( $row[2] . $row[3] );
+             $rpt_end_date = date( "Ymd", $rpt_endTS );
+             $rpt_end_time = date( "His", $rpt_endTS );
           }  else {
             $rpt_end_date = $cal_date;
             $rpt_end_time = $cal_time;
@@ -305,8 +280,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   }
 
   //get reminders 
-  $reminder = getReminders ( $id, $tz_offset[0] ); 
-  $reminder_offset = ( isset ($reminder['offset'] ) ? $reminder['offset']:0);
+  $reminder = getReminders ( $id ); 
+  $reminder_offset = $reminder['offset'];
   
   //get participants
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? AND " .
@@ -339,10 +314,14 @@ if ( $readonly == 'Y' || $is_nonuser ) {
  //reminder settings
  $reminder_offset = ($REMINDER_WITH_DATE =='N' ? $REMINDER_OFFSET:0);
  
+
+ if ( $eType == 'task' ) {
+   $hour = $WORK_DAY_START_HOUR;
+ }
   // Anything other then testing for strlen breaks either hour=0 or no hour in URL
   if ( strlen ( $hour ) ) {
-    $time = $hour * 100;
-  } else {
+		$time = $hour * 100;	
+	} else {
     $time = -1;
     $hour = -1;
   }
@@ -375,7 +354,7 @@ if ( ! isset ( $hour ) )
   $hour = -1;
 if ( empty ( $duration ) )
   $duration = 0;
-if ( $duration == ( 24 * 60 ) && $hour == 0 ) {
+if ( $duration == ONE_DAY && $hour == 0 ) {
   $hour = $minute = $duration = "";
   $allday = "Y";
 } else
@@ -421,15 +400,16 @@ if ( empty ( $due_date ) || ! $due_date )
   $due_date = $thisdate;
 
 //Setup to display user's timezone difference if Admin or Assistane
-//Even thought event is stored in GMT, an Assistant may need to know that
+//Even though event is stored in GMT, an Assistant may need to know that
 //the boss is in a different Timezone
-if ( $is_assistant || $is_admin && ! empty ( $user ) ) { 
-  $tz_offset = get_tz_offset ( $TIMEZONE, '', $cal_date );
+if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
+	$tz_offset = date ( "Z", $calTS );   
   $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
-  $user_TZ = get_tz_offset ( $user_TIMEZONE, '', $cal_date );
-  if ( $tz_offset[0] != $user_TZ[0] ) {  //Different TZ_Offset
+  set_env ( "TZ", $user_TIMEZONE );
+	$user_tz_offset = date ( "Z", $calTS );
+  if ( $tz_offset != $user_tz_offset ) {  //Different TZ_Offset
     user_load_variables ( $user, "temp" );
-    $tz_diff = $user_TZ[0] - $tz_offset[0];
+    $tz_diff = $user_tz_offset - $tz_offset;
     $tz_value = ( $tz_diff > 0? translate ("hours ahead of you") :
       translate ("hours behind you") );
     $TZ_notice = "(" . $tempfullname . " " . 
@@ -438,6 +418,8 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
     $TZ_notice .= abs ( $tz_diff ) . " " . $tz_value . ".<br />&nbsp;"; 
     $TZ_notice .= translate ("Time entered here is based on your Timezone") . ".)"; 
   }
+	//return to $login TIMEZONE
+	set_env ( "TZ", $TIMEZONE );
 }
 if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
   // Allow HTML in description
@@ -751,8 +733,7 @@ if ( $TIME_FORMAT == "12" ) {
 }
 if ( $cal_time < 0 ) $h12 = "";
 ?>
-   <input type="text" name="hour" size="2" value="<?php 
-    if ( $cal_time >= 0 ) echo $h12;
+   <input type="text" name="hour" size="2" value="<?php echo $h12;
    ?>" maxlength="2" />:<input type="text" name="minute" size="2" value="<?php 
     if ( $cal_time >= 0 ) printf ( "%02d", $minute );
    ?>" maxlength="2" />
@@ -1276,7 +1257,7 @@ if ( $TIME_FORMAT == "12" ) {
  ?>  onclick="toggle_rem_when()" /><?php etranslate ("Use Date/Time"); ?>&nbsp;<label>
     </td><td class="boxtop boxright" nowrap="nowrap" colspan="2"> 
     <?php 
-      if ( $reminder_offset == 0 && ! empty ( $reminder['date'] ) )
+      if ( ! empty ( $reminder['date'] ) )
         print_date_selection ( 'reminder_', $reminder['date'] );
       else
         print_date_selection ( 'reminder_', $cal_date );
@@ -1317,10 +1298,7 @@ if ( $TIME_FORMAT == "12" ) {
  ?>  onclick="toggle_rem_when()" /><?php etranslate ("Use Offset"); ?>&nbsp;<label>
     </td><td class="boxright" nowrap="nowrap" colspan="2">
     <?php
-      if ( $reminder_offset > 0 && ! empty ( $reminder['offset'] ) )
-        $rem_minutes = $reminder['offset'];
-      else
-        $rem_minutes = $REMINDER_OFFSET;
+        $rem_minutes = $reminder_offset;
       // will be specified in total minutes
       $rem_days = (int) ( $rem_minutes / ( 24 * 60 ) );
       $rem_minutes -= ( $rem_days * 24 * 60 );

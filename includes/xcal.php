@@ -166,7 +166,6 @@ function export_get_attendee($id, $export) {
 //All times are now stored in UTC time, so no conversions are needed
 // other than formatting
 function export_time($date, $duration, $time, $texport, $vtype='E') {
- 
   $ret = '';
   $year = (int) substr($date,0,-4);
   $month = (int) substr($date,-4,2);
@@ -190,7 +189,7 @@ function export_time($date, $duration, $time, $texport, $vtype='E') {
       date("His", mktime()));
     $ret .= "DTSTAMP:$utc_dtstamp\r\n";
   //We don' want DTEND for VTODOs
-  if ( $vtype == "T" || $vtype == "N" ) return;
+  if ( $vtype == "T" || $vtype == "N" ) return $ret;
    if ($time == -1  || ( $time == 0 && $duration == 1440 ) ) {
       // untimed event
      $end_date = date("Ymd", mktime(12, 0, 0, $month, $day +1, $year));
@@ -220,7 +219,7 @@ function export_time($date, $duration, $time, $texport, $vtype='E') {
 }
 //$simple allows for easy reading 
 function export_recurrence_ical( $id, $simple=false ) {
-  global $timestamp_RRULE, $TIMEZONE, $ICS_TIMEZONES;
+  global $timestamp_RRULE, $TIMEZONE;
   
  $recurrance = '';
   $sql = "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = ?";
@@ -269,38 +268,6 @@ function export_recurrence_ical( $id, $simple=false ) {
       $cal_count  = $row[13];
       $duration   = $row[14];
       
-      // set $timestamp_RRULE for use in VTIMEZONE
-   //skip if UNTIMED or ALL DAY Event
-   //this violates RFC2445, but oh well :)
-   //Also this can be disabled to vastly improve performance
-   if ( ! empty ( $ICS_TIMEZONES ) && $ICS_TIMEZONES == "Y" ) {    
-    if ( ( empty ( $timestamp_RRULE ) && $simple == false ) &&
-     ( $time != -1 || ($time == 0 && $duration == 1440 ) ) ){
-     $day_epoch = date_to_epoch ( $day . $time, 0 );
-     if ( ! empty ( $end ) ) {
-       $until = date_to_epoch ( $end . $endtime, 0 );
-     } else { 
-       $until = mktime ( 0,0,0,12,31,2037 );
-     }
-     $cal_count_local = ( empty ( $cal_count )? 999: $cal_count );
- 
-     //we'll get_all_dates to see if this RRULE spans DST
-     $dates = get_all_dates( $day_epoch, $type, $interval, $bymonth, 
-      $byweekno, $byyearday,$bymonthday, $byday,$bysetpos, $cal_count_local,
-      $until, $wkst);
-    
-     if ( count ( $dates ) > 1  ) {
-      $is_dst = $tz_info = array();
-      for ( $j =0; $j < count ($dates); $j++ ) {
-       $tz_info = get_tz_offset ( $TIMEZONE, $dates[$j]  );
-       $is_dst[$j] =  $tz_info[0];     
-      }  
-      if ( count ( array_count_values($is_dst) > 1) )
-       $timestamp_RRULE = $day_epoch;
-     }
-    }
-   }  
-
 
       $rrule = '';
    
@@ -403,12 +370,12 @@ function export_recurrence_vcal($id, $date) {
 
   $sql = "SELECT webcal_entry_repeats.cal_type, webcal_entry_repeats.cal_end, "
     . " webcal_entry_repeats.cal_endtime, webcal_entry_repeats.cal_frequency, "
-  . " webcal_entry.cal_date, webcal_entry.cal_time, webcal_entry_repeats.cal_bymonth, "
-  . " webcal_entry_repeats.cal_bymonthday,  webcal_entry_repeats.cal_byday, "
-  . " webcal_entry_repeats.cal_bysetpos, webcal_entry_repeats.cal_byweekno, "
-  . " webcal_entry_repeats.cal_byyearday, webcal_entry_repeats.cal_wkst "
-    . " FROM webcal_entry, webcal_entry_repeats WHERE webcal_entry_repeats.cal_id = ?"
-    . "AND webcal_entry.cal_id = ?";
+    . " webcal_entry.cal_date, webcal_entry.cal_time, webcal_entry_repeats.cal_bymonth, "
+    . " webcal_entry_repeats.cal_bymonthday,  webcal_entry_repeats.cal_byday, "
+    . " webcal_entry_repeats.cal_bysetpos, webcal_entry_repeats.cal_byweekno, "
+    . " webcal_entry_repeats.cal_byyearday, webcal_entry_repeats.cal_wkst, "
+    . " webcal_entry_repeats.cal_count  FROM webcal_entry, webcal_entry_repeats "
+    . " WHERE webcal_entry_repeats.cal_id = ? AND webcal_entry.cal_id = ?";
 
   $res = dbi_execute( $sql , array ( $id , $id ) );
 
@@ -416,87 +383,85 @@ function export_recurrence_vcal($id, $date) {
     if ( $row = dbi_fetch_row($res) ) {
       $type = $row[0];
       $end = $row[1];
-     $endtime = $row[2];  
+      $endtime = $row[2];  
       $interval = $row[3];
       $day = $row[4];
       $time = $row[5];
-   $bymonth = $row[6];
-   $bymonthday = $row[7];
-   $byday = $row[8];
-   $bysetpos = $row[9];
-   $byweekno = $row[10];
-   $byyearday = $row[11];
-   $wkst = $row[12];
+      $bymonth = explode ( ",", $row[6] );;
+      $bymonthday = explode ( ",", $row[7] );
+      $byday = explode ( ",", $row[8] );
+      $bysetpos = explode ( ",", $row[9]);;
+      $byweekno = $row[10];
+      $byyearday = explode ( ",", $row[11] );
+      $wkst = $row[12];
+      $count = $row[13];
+
+        //flip -n to n-
+      for ( $i=0; $i< count ($byday); $i++ ) {
+        if ( substr ( $byday[$i], 0,1 ) == "-" )
+          $byday[$i] = substr ( $byday[$i], 1, 1) . "- " . substr ( $byday[$i], -2, 2);
+        else 
+          $byday[$i] = substr ( $byday[$i], 0, 1) . "+ " . substr ( $byday[$i], -2, 2);        
+      }
+      $byday = implode ( " ", $byday );
+ 
+       //flip -n to n-
+      for ( $i=0; $i< count ($bymonthday); $i++ ) {
+        if ( substr ( $bymonthday[$i], 0,1 ) == "-" )
+          $bymonthday[$i] = substr ( $bymonthday[$i], 1) . "-";
+      }
+      $bymonthday = implode ( " ", $bymonthday );
 
       echo "RRULE:";
 
       /* recurrence frequency */
       switch ($type) {
        case 'daily' :
-         echo "D";
+         echo "D$interval ";
          break;
        case 'weekly' :
-         echo "W";
+         echo "W$interval " ;
+         if ( ! empty ( $byday ) )
+           echo $byday . " ";
          break;
        case 'monthlyByDay':
-         echo "MP";
-         break;
+         echo "MP$interval ";
+         if ( ! empty ( $byday ) )
+           echo $byday . " ";
+           break;
        case 'monthlyBySetPos':
-         echo "MP";
+         echo "MP$interval ";
+         if ( ! empty ( $bymonthday ) )
+           echo $bymonthday . " ";
          break;
        case 'monthlyByDate' :
-         echo "MD";
-         break;
+         echo "MD$interval ";
+         if ( ! empty ( $byday ) )
+           echo  $byday . " ";
+          break;
        case 'yearly' :
-         echo "YM";
+         if ( ! empty ( $byyearday ) )
+           echo "YM$interval ";
+         else
+           echo "YD$interval ";
          break;
       }
 
-      echo $interval." ";
-
- if ($type == "weekly") {
-   if ($day != "nnnnnnn") {
-     for ($i=0; $i < strlen($day); $i++) {
-       if ($day[$i] == 'y') {
-        $byday .= $str_day[$i] ." ";
-        }
-     }
-     echo $byday;
+      
+      
+  
+      
+    if ( ! empty ( $count ) && $count > 0 )  {
+      echo "#" . $count . " ";
+    } else if ( ! empty ( $count ) && $count == 0 && empty ( $end ) )  {
+      echo "#" . $count . " ";
     }
- } elseif ($type == "monthlyByDate") {
-   $day = (int) substr($date,-2,2);
-   echo "$day ";
- } elseif ($type == "monthlyByDay" ) {
-   $year = (int) substr($date,0,-4);
-   $month = (int) substr($date,-4,2);
-   $day = (int) substr($date,-2,2);
 
-   $stamp = mktime(0, 0, 0, $month, $day, $year);
-   $date_array = getdate($stamp);
-          $day_no = $str_day[$date_array['wday']];
-
-   $next_stamp = $stamp + 7 * 24 * 60 * 60;
-   $next_date_array = getdate($next_stamp);
-
-   if ($date_array['mon'] != $next_date_array['mon']) {
-     $pos = 5;
-   } else {
-     $pos = (int) ($day / 7);
-      if (($day % 7) > 0) {
-        $pos++;
-      }
-   }
-   echo $pos."+ $day_no ";
- } elseif ($type == "yearly") {
-    $month = (int) substr($date,-4,2);
-    echo "$month ";
- }
-
- // End Date - For all types
- if (!empty($end)) {
-   echo export_get_utc_date($end, $time);
- }
-  echo "\r\n";
+    // End Date - For all types
+    if (!empty($end)) {
+     echo export_get_utc_date($end, $time);
+    }
+    echo "\r\n";
 
     // Repeating Exceptions
     $num = count($exdate);
@@ -547,18 +512,14 @@ function export_alarm_vcal($id,$date,$time=0) {
 
 
 // Convert the webcalendar reminder to an ical VALARM
-// TODO: need to loop through the site_extras[] array to determine
-// what type of reminder (with date or with offset) since this info
-// is not stored in the database.  Then, use that to determine when
-// the reminder should be sent.  Check the webcal_reminders table to
-// make sure the reminder has not already been sent.
-function export_alarm_ical ( $id, $date, $description ) {
+function export_alarm_ical ( $id, $date, $description, $task_complete=true ) {
   global $cal_type;
   
   $ret = '';
   $reminder = array();
   // Don't send reminder for event in the past
-  if ( $date < date("Ymd") )
+  //unless this is a task that may be overdue
+  if ( $date < date("Ymd") && $task_complete == true )
     return;
 
   //get reminders 
@@ -578,7 +539,7 @@ function export_alarm_ical ( $id, $date, $description ) {
     if ( $reminder['related'] == 'E' ) {
       $ret .= ";RELATED=END";  
     }
-    if ( ! empty ( $reminder['offset'] ) ) {
+    if ( empty ( $reminder['date'] ) ) { //offset may be zero
       //before edge needs a '-' 
       $sign = ( $reminder['before'] == 'Y' ? '-' : '' );
       $ret .= ":" . $sign . "PT". $reminder['offset'] ."M\r\n";    
@@ -775,18 +736,6 @@ function export_vcal ($id) {
     echo "$prodid\r\n";
     echo "VERSION:1.0\r\n";
 
-    /* Time Zone
- $tzdate = mktime();
- $gmdate = gmmktime();
- $tzdiff = ($gmdate - $tzdate) / 60 / 60; //FIXME only hours are represented
-
- $tz = sprintf("%02d", $tzdiff);
-
- echo "TZ:";
- echo ($tzdiff >= 0) ? "+" : "-";
- echo "$tz\r\n";
-
-    */
   }
 
   while (list($key,$row) = each($entry_array)) {
@@ -801,15 +750,30 @@ function export_vcal ($id) {
       $access = $row[7];
       $duration = $row[8];
       $description = $row[9];
+      $percent = $row[11];
+      $completed = $row[12];
+      $due_date = $row[13];
+      $due_time = $row[14];
+      $location = $row[15];
+      $url = $row[16];
+      $cal_type = $row[17];
+      
 
-      /* Start of event */
-      echo "BEGIN:VEVENT\r\n";
+      /* Start of event/task */
+      if ( $cal_type == "E" || $cal_type == "M" ) {
+        echo "BEGIN:VEVENT\r\n";
+      } else if ( $cal_type == "E" || $cal_type == "M" ) {
+        echo "BEGIN:VTODO\r\n";
+      } else {
+        //VJOURNALS are nor allowed in VCS files
+        continue;
+      }
 
       /* UID of the event (folded to 76 char) */
       $export_uid = "UID:$export_uid";
       $array = export_fold_lines($export_uid);
       while (list($key,$value) = each($array))
- echo "$value\r\n";
+        echo "$value\r\n";
 
       /* SUMMARY of the event (folded to 76 char) */
       $name = preg_replace("/\\\\/", "\\\\\\", $name); // ??
@@ -817,24 +781,24 @@ function export_vcal ($id) {
       $array = export_fold_lines($name,"quotedprintable");
 
       while (list($key,$value) = each($array))
- echo "$value\r\n";
+        echo "$value\r\n";
 
       /* DESCRIPTION if any (folded to 76 char) */
       if ($description != "") {
-   $description = preg_replace("/\\\\/", "\\\\\\", $description); // ??
-   $description = "DESCRIPTION;ENCODING=QUOTED-PRINTABLE:" . $description;
-   $array = export_fold_lines($description,"quotedprintable");
-   while (list($key,$value) = each($array))
-     echo "$value\r\n";
+        $description = preg_replace("/\\\\/", "\\\\\\", $description); // ??
+        $description = "DESCRIPTION;ENCODING=QUOTED-PRINTABLE:" . $description;
+        $array = export_fold_lines($description,"quotedprintable");
+        while (list($key,$value) = each($array))
+          echo "$value\r\n";
       } //end if ($description != "")
 
       /* CLASS either "PRIVATE", "CONFIDENTIAL, or "PUBLIC" (the default) */
       if ($access == "R") {
-   echo "CLASS:PRIVATE\r\n";
+        echo "CLASS:PRIVATE\r\n";
       } else  if ($access == "C"){
-   echo "CLASS:CONFIDENTIAL\r\n";
+        echo "CLASS:CONFIDENTIAL\r\n";
       } else {
-   echo "CLASS:PUBLIC\r\n";
+        echo "CLASS:PUBLIC\r\n";
       }
 
 
@@ -842,9 +806,9 @@ function export_vcal ($id) {
       $attendee = export_get_attendee($row[0], "vcal");
 
       for ($i = 0; $i < count($attendee); $i++) {
-   $attendee[$i] = export_fold_lines($attendee[$i],"quotedprintable");
-   while (list($key,$value) = each($attendee[$i]))
-     echo "$value\r\n";
+        $attendee[$i] = export_fold_lines($attendee[$i],"quotedprintable");
+        while (list($key,$value) = each($attendee[$i]))
+          echo "$value\r\n";
       }
 
       /* Time - all times are utc */
@@ -855,8 +819,12 @@ function export_vcal ($id) {
       // FIXME: handle alarms
       export_alarm_vcal($uid,$date,$time);
 
-      /* Goodbye event */
-      echo "END:VEVENT\n";
+      /* Goodbye event/task */
+      if ( $cal_type == "E" || $cal_type == "M" ) {
+        echo "END:VEVENT\n";
+      } else {
+        echo "END:VTODO\n";
+      }
     } //end while (list($key,$row) = each($entry_array))
 
   if (count($entry_array) > 0)
@@ -974,11 +942,11 @@ function export_ical ( $id='all', $attachment=false ) {
    the section "4.1.10.11 Time" for proper interpretation of floating
    time). It can be present if the iCalendar object does not contain
    such a RRULE. In addition, if a RRULE is present, there MUST be valid
-   time zone information for all recurrence instances. */
-  
-  if ( ! empty ( $timestamp_RRULE ) ){ //$timestamp_RRULE set in export_recurrence_ical
-   $ret .= export_vtimezone( $timestamp_RRULE );
-  }
+   time zone information for all recurrence instances. 
+   
+   However, this is not possible to implement at this time
+   */
+ 
     
   if ( $cal_type == "E" || $cal_type == "M" ) {
    $exporting_event = true;
@@ -1075,9 +1043,13 @@ function export_ical ( $id='all', $attachment=false ) {
     $ret .= export_time($date, $duration, $time, "ical", $cal_type );
     
   //VTODO specific items
-    if ( $cal_type == "T" || $cal_type == "N" ) {
+    $task_complete = false;
+    if ( $cal_type == "T" || $cal_type == "N" ) { 
       $ret .= "DUE:" . $due_date. "T". sprintf ( "%06d", $due_time ) . "Z\r\n";
-    if ( ! empty ( $completed ) ) echo "COMPLETED:" . $completed . "\r\n";
+      if ( ! empty ( $completed ) ) { 
+        echo "COMPLETED:" . $completed . "\r\n";
+        $task_complete = true;
+      }
       $ret .= "PERCENT-COMPLETE:" . $percent . "\r\n";
   }
   
@@ -1085,7 +1057,7 @@ function export_ical ( $id='all', $attachment=false ) {
     $ret .= $recurrance;
 
     /* handle alarms */
-    $ret .= export_alarm_ical($id,$date,$description);
+    $ret .= export_alarm_ical($id,$date,$description, $task_complete );
 
   if ( $cal_type == "E" || $cal_type == "M" ) {
       /* End of event */
@@ -2127,7 +2099,7 @@ function RepeatType ($type) {
 function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0',
   $plus_y = '0') {
   global $SERVER_TIMEZONE, $calUser;;
-  $this_TIMEZONE = $Z = '';
+  $this_TIMEZONE = $Z ='';
  
   $y = substr($vdate, 0, 4) + $plus_y;
   $m = substr($vdate, 4, 2) + $plus_m;
@@ -2141,7 +2113,8 @@ function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0'
  //We'll just hardcode their GMT timezone def here
  switch  ( $tzid ) {
    case "/Mozilla.org/BasicTimezones/GMT":
-     $Z = "Z"; //force GMT
+     //I think this is the only real timezone set to UTC...since 1972 at least
+     $this_TIMEZONE = "Africa/Monrovia"; 
      break;
    case "US-Eastern":
    case "US/Eastern":
@@ -2158,32 +2131,24 @@ function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0'
    case "":
      break;   
    default:
-     $sql = "SELECT zone_name FROM webcal_tz_zones WHERE zone_name = ?";
-     $res = dbi_execute($sql , array ( $tzid ) );
-     if ( $row = dbi_fetch_row($res) ) {
-       $this_TIMEZONE = $tzid;
-    }   else {
-       echo translate ( "Unknown Timezone" ) . ": <b>$tzid</b> " . 
-         translate ( "defaulting to GMT" ) . ". ";
-       echo "<a href=\"docs/WebCalendar-SysAdmin.html#faq\" target=\"_docs\">" .
-         translate ( "Please see FAQ" ) . "</a><br />"; 
-       $Z = "Z"; //force GMT        
-    }   
+     $this_TIMEZONE = $tzid;
    break;
  } //end switch
  
-  $TS = mktime($H,$M,$S,$m,$d,$y);
-  if ($Z != 'Z') {
-    // Convert time from user's timezone to GMT if datetime value
-    if ( strlen ( $vdate ) > 8 ) {
-      if ( empty ( $this_TIMEZONE ) ) {
-        $this_TIMEZONE = get_pref_setting ( $calUser, "TIMEZONE" );
-        $this_TIMEZONE = ( ! empty ( $user_TIMEZONE ) ? $user_TIMEZONE : $SERVER_TIMEZONE );
-      }
-      $tz_offset = get_tz_offset ( $this_TIMEZONE, $TS );
-      $TS = $TS - ( $tz_offset[0] * 3600 );
+  // Convert time from user's timezone to GMT if datetime value
+  if ( strlen ( $vdate ) > 8 ) {
+    if ( empty ( $this_TIMEZONE ) ) {
+      $user_TIMEZONE = get_pref_setting ( $calUser, "TIMEZONE" );
+      $this_TIMEZONE = ( ! empty ( $user_TIMEZONE ) ? $user_TIMEZONE : $SERVER_TIMEZONE );
     }
-  }
+    if ( ! empty ( $Z ) ) {
+      putenv ( "TZ=$this_TIMEZONE" );
+      $TS = mktime($H,$M,$S,$m,$d,$y);
+    } else {
+       $TS = gmmktime($H,$M,$S,$m,$d,$y);
+    }
+ }
+  set_env ( "TZ", $user_TIMEZONE );
   return $TS;
 }
 
@@ -2254,13 +2219,13 @@ global $login;
     $startTime = icaldate_to_timestamp($event['dtstart']);
     $endTime = icaldate_to_timestamp($event['dtend']);
     // Not sure... should this be untimed or allday?
-    if ( $endTime - $startTime == ( 3600 * 24 ) ) {
+    if ( $endTime - $startTime == ONE_DAY ) {
       // They used a DTEND set to the next day to say this is an all day
       // event.  We will call this an all day event.
       $fevent['Duration'] = '1440';
       $fevent['Untimed'] = 0;
 
-    } else if ( $endTime - $startTime > ( 3600 * 24 ) ){
+    } else if ( $endTime - $startTime > ONE_DAY ){
       // Event spans multiple days.  The EndTime actually represents
       // the first day the event does _not_ take place.  So,
       // we need to back up one day since WebCalendar end date is the
@@ -2697,7 +2662,6 @@ function parse_vcal($cal_file) {
 
 // Convert vcal format (yyyymmddThhmmssZ) to epoch time
 function vcaldate_to_timestamp($vdate,$plus_d = '0',$plus_m = '0', $plus_y = '0') {
-  global $TZoffset;
 
   $y = substr($vdate, 0, 4) + $plus_y;
   $m = substr($vdate, 4, 2) + $plus_m;
@@ -2877,264 +2841,4 @@ function fb_export_time ( $date, $duration, $time, $texport ) {
   return $ret;
 }
 
-/**
- * Generate VTIMEZONE element
- *
- * $parm int  $timestamp Date containing year that this 
- *   VTIMEZONE element will describe (Unix timestamp)
- *
- * Example
- * BEGIN:VTIMEZONE
- * TZID:Eastern Time (US & Canada)
- * BEGIN:STANDARD
- * DTSTART:20041031T020000
- * RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=-1SU;BYMONTH=10
- * TZOFFSETFROM:-0400
- * TZOFFSETTO:-0500
- * TZNAME:Standard Time
- * END:STANDARD
- * BEGIN:DAYLIGHT
- * DTSTART:20050403T020000
- * RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=1SU;BYMONTH=4
- * TZOFFSETFROM:-0500
- * TZOFFSETTO:-0400
- * TZNAME:Daylight Savings Time
- * END:DAYLIGHT
- * END:VTIMEZONE
- *
- */
-function export_vtimezone( $timestamp ) {
-   global $TIMEZONE;
-
-  $ret = '';
-  $tz_info = array();
-  //Get TZID value
-  $tzid = $TIMEZONE; //default value
-  //see if a short version is available
-  //found out many apps simply use the Olsen names...comment out for now
-  //$res = dbi_execute ( "SELECT tz_list_text " .
-   //  "FROM webcal_tz_list WHERE tz_list_name = ?" , array ( $TIMEZONE ) );
-  //if ( $res ) {
-  //  $row = dbi_fetch_row ( $res );
-  // if ( $row ) {
-   //    $tzid = substr ( $row[0], strpos ( $row[0], ")", 1) +3);
-  // }
-  //}
-  $GLOBALS['TZID']  = ( ! empty ( $tzid) ? $tzid : "" );
-  $tz_info = get_tz_info ( $timestamp );
-   //print_r ($tz_info);
-  $ret =  "BEGIN:VTIMEZONE\r\n";
-  $ret .= "TZID:" .$tzid . "\r\n";
-  foreach ( $tz_info as $tz_data) {
-   if ( $tz_data['rule_save'] == 0 ) {
-    $ret .= "BEGIN:STANDARD\r\n";
-    $ret .= "DTSTART:" . $tz_data['start'] . "\r\n";
-       if ( ! empty ($tz_data['rrule'] ) ) {
-         $name = $tz_data['rrule'];
-         $array = export_fold_lines($name,"utf8");
-         while (list($key,$value) = each($array))
-           $ret .= "$value\r\n";    
-    }
-    $ret .= "TZOFFSETFROM:" . $tz_data['offsetfrom'] . "\r\n";
-    $ret .= "TZOFFSETTO:" . $tz_data['offsetto'] . "\r\n";
-    $ret .= "TZNAME:" . $tz_data['name'] . "\r\n";
-    $ret .= "END:STANDARD\r\n";
-   } else {
-    $ret .= "BEGIN:DAYLIGHT\r\n";
-    $ret .= "DTSTART:" . $tz_data['start'] . "\r\n";
-       if ( ! empty ($tz_data['rrule'] ) ) {
-         $name = $tz_data['rrule'];
-         $array = export_fold_lines($name,"utf8");
-         while (list($key,$value) = each($array))
-           $ret .= "$value\r\n";    
-    }    
-    $ret .= "TZOFFSETFROM:" . $tz_data['offsetfrom'] . "\r\n";
-    $ret .= "TZOFFSETTO:" . $tz_data['offsetto'] . "\r\n";
-    $ret .= "TZNAME:" . $tz_data['name'] . "\r\n";
-    $ret .= "END:DAYLIGHT\r\n";
-   }
-  }
-  $ret .= "END:VTIMEZONE\r\n";
-  
-  return $ret;
-}
-
-/**
- * Return TIMEZONE info for a given year
- *  this function is very similar to get_tz_time in functions.php
- *
- * @param timestamp  $timestamp   UNIX format
- *
- * @return array
- *  dst_results['name']      = abbreviated name of TZ
- *  dst_results['timestamp'] = UNIX timestamp of converted time/date
- */ 
-function get_tz_info ( $timestamp ) {
-  global $TIMEZONE;
-  $sql = "SELECT  zone_rules, zone_gmtoff, zone_format " . 
-    " FROM webcal_tz_zones WHERE zone_name  = ? " .
-    " AND zone_from <= ? AND zone_until >= ?";
-  $res = dbi_execute ( $sql , array ( trim( $TIMEZONE ) , $timestamp , $timestamp ) );
-  $dst_rules = array ();
-  $dst_results = array ();
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( ! empty ($row[0] ) )  {// Zone rules apply
-        $dst_rules = get_vtimezone_rules ( $row[0], $timestamp );
-         $i=0;
-     foreach ( $dst_rules as $dst_rule ) {
-      if ( $dst_rule['rule_save'] > 0 ) $current_save = $dst_rule['rule_save'];
-            $rule_save = $dst_rule['rule_save'];
-       if ( $dst_rule['rule_save'] == 0 ) { //going to Standard Time
-           $start = str_replace ( ":", "T", date ( "Ymd:His", $dst_rule['rule_date']  ) );
-       $rrule = $dst_rule['rule_rrule'];
-       $offsetfrom = seconds_to_hhmm ( $row[1] + $current_save);  
-       $offsetto = seconds_to_hhmm ( $row[1] );
-       $name = str_replace ( "%s", $dst_rule['rule_letter'], $row[2] );    
-            } else {         
-       $start = str_replace ( ":", "T", date ( "Ymd:His", $dst_rule['rule_date'] ) );
-       $rrule = $dst_rule['rule_rrule'];
-       $offsetto = seconds_to_hhmm ( $row[1] + $current_save );
-       $offsetfrom = seconds_to_hhmm ( $row[1]  );
-       $name = str_replace ( "%s", $dst_rule['rule_letter'], $row[2] );
-         }
-      
-      $dst_results[$i] = array (
-        "rule_save" => $rule_save,
-        "start" => $start,
-        "rrule" => $rrule,
-        "offsetfrom" => $offsetfrom,
-        "offsetto" => $offsetto,
-        "name" => $name,
-             );
-             $i++;
-     } //end foreach
-   }
-     dbi_free_result ( $res );
-   //print_r ( $row);
-  // print_r ( $dst_results);
-     return $dst_results;
-   }
- }
-
-}
-
-/**
- * Return the timezone rules for a given zone rule
- * copied from functions.php so changes can be made as needed
- * @param string $zone_rule   
- * @param int $timestamp  UNIX timestamp of requested rule
- *
- * $global array $days_of_week Sun => 0...Sat => 6
- * @return array   
- *   dst_rules[0]['rule_date']   = first time change timestamp
- *   dst_rules[0]['rule_save']   = first time savings in seconds
- *   dst_rules[0]['rule_letter'] = first letter to apply to TZ abbreviation
- *   dst_rules[1]['rule_date']   = second time change timestamp
- *   dst_rules[1]['rule_save']   = second time savings in seconds
- *   dst_rules[1]['rule_letter'] = second letter to apply to TZ abbreviation
- *   dst_rules['lastyear']       = last year time savings in seconds
- *   dst_rules['lastletter']     - last year letter to apply to TZ abbreviation 
- */
-function get_vtimezone_rules ( $zone_rule, $timestamp  ) {
- global $days_of_week;
-
- $year = date ("Y", $timestamp );
-
- $sql = "SELECT rule_from, rule_to, rule_in, rule_on, rule_at, rule_save, rule_letter, rule_at_suffix  " . 
-   "FROM webcal_tz_rules " .
-  " WHERE rule_name  = ?"  . 
-   " AND rule_to >= ? " .
-  " ORDER BY rule_to DESC, rule_save DESC, rule_from  ";
-  
-  $res = dbi_execute ( $sql , array ( $zone_rule , $year ) );
-
-  $dst_rules = array();
-  $i = $row_cnt = 0;
-  if ( $res ) {
-
-    while ( $row = dbi_fetch_row ( $res ) ) {
-    $row_cnt++;
-   $bymonthday = array();
-   $year1 = $row[0];
-   if ( $year1 < 1970 ) $year1 = 1970;
-   $yearL = $row[1];
-   if ( $yearL > 2037 ) $yearL = 2037;
-      if ( substr ( $row[3], 0, 4 ) == "last" ) {
-          $lastday = date ( "w", mktime ( 0, 0, 0, $row[2] + 1 , 0, $year ) );
-          $offset = -( ( $lastday +7 - $days_of_week[substr($row[3], 4, 3)]) % 7);
-          $changeday = mktime ( 0, 0, 0, $row[2] + 1, $offset, $year1 ) + $row[4];
-          $rrule = "RRULE:FREQ=YEARLY;BYMONTH=" .$row[2] . ";BYDAY=-1" . 
-       strtoupper ( substr( $row[3],4,2));
-     } else if ( substr ( $row[3], 3, 2 ) == "<="  OR substr ( $row[3], 3, 2 ) == ">=") {
-          $rule_day = substr( $row[3], 5, strlen( $row[3]) -5);
-          $givenday = date ( "w", mktime ( 0, 0, 0, $row[2] , $rule_day, $year ) );
-          if ( substr ( $row[3], 3, 2) == "<=" ) {
-            $offset = -( ( $givenday  + 7  - $days_of_week[ substr( $row[3], 0, 3)]) % 7);            
-        for ($j= $rule_day -6; $j<=$rule_day;$j++) {
-          if($j <1) $j =1;
-          $bymonthday[] = $j;
-       }
-       sort ($bymonthday );
-         $rrule = "RRULE:FREQ=YEARLY;BYMONTH=" .$row[2] . ";BYDAY=" . 
-            strtoupper ( substr( $row[3],0,2)). ";BYMONTHDAY=" . implode(",",$bymonthday);
-      
-          } else {
-            $offset = ( ( $days_of_week[ substr( $row[3], 0, 3)] + 7 - $givenday   ) % 7);
-            $dim = date ( "t", mktime ( 0,0,0,$row[2], 1, $year)); //days in month
-            if ( $rule_day <= 6 ) {
-         $rrule = "RRULE:FREQ=YEARLY;BYMONTH=" .$row[2] . ";BYDAY=" . 
-         strtoupper ( substr( $row[3],0,2));         
-      } else {
-        for ($j= $rule_day +6; $j>=$rule_day;$j--) {
-          if($j > $dim) $j = $dim;
-          $bymonthday[] = $j;
-        }
-          sort ($bymonthday );
-         $rrule = "RRULE:FREQ=YEARLY;BYMONTH=" .$row[2] . ";BYDAY=" . 
-            strtoupper ( substr( $row[3],0,2)). ";BYMONTHDAY=" . implode(",",$bymonthday);       
-      } 
-          }
-          $changeday = mktime (  0, 0, 0, $row[2] , $rule_day + $offset, $year1 ) + $row[4];
-      } else {
-     $offset = 0;
-        $changeday = mktime (  0, 0, 0, $row[2] , $row[3], $year1 ) + $row[4];
-        $rrule = "RRULE:FREQ=YEARLY;BYMONTH=" .$row[2] . ";BYMONTHDAY=" . $row[3];
-      }  
-      //delete rrule if only one year in rule
-   if ( $row[0] == $row[1] ) {
-     $rrule = '';
-    //add UNTIL only if more than 2 definitions
-   } else if ( $row_cnt  > 2 ) {
-        $rrule .= ";UNTIL=" . str_replace ( ":", "T", 
-       date ( "Ymd:His", gmmktime(0,0,0,date("m",$changeday ),date("d",$changeday)-1, $yearL) ) ). "Z";
-     }
-      $dst_rules[$i] = array (
-       "rule_date" => $changeday,
-       "rule_rrule" => $rrule,
-       "rule_month" => $row[2],
-       "rule_day" => $row[3],
-       "rule_save" => $row[5],
-       "rule_letter" => $row[6]
-      );
-      $i++;
-    }
-    dbi_free_result ( $res );
-  }
-// print_r ( $dst_rules);
-  return $dst_rules;
-}
-
-function seconds_to_hhmm ( $seconds ) {
-   
-  $neg =  ( $seconds < 0 )? true : false;
-  $seconds = abs ( $seconds);
-  $m = $seconds;
-   $h = ( $m / 3600 );
-   $m = ( $h  - (int) $h ) * 60;
-   $h = (int) $h; 
-   $ret = sprintf ( "%02d%02d", $h, $m );
-  if ( $neg ) $ret = "-" . $ret;
-  return $ret;
-}
 ?>

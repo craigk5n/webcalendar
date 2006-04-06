@@ -52,17 +52,15 @@ for ( $i = 1; $i < 7; $i++ ) {
 if ( $WEEK_START == 1 ) echo "<td>" .
   weekday_short_name ( 0 ) . "</td>\n";
 echo "</tr>\n";
-if ( $WEEK_START == "1" )
-  $wkstart = get_monday_before ( $thisyear, $thismonth, 1 );
-else
-  $wkstart = get_sunday_before ( $thisyear, $thismonth, 1 );
+$wkstart = get_weekday_before ( $thisyear, $thismonth, 1 );
+
 $monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 $monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
-  $i += ( 24 * 3600 * 7 ) ) {
+  $i += ( ONE_DAY * 7 ) ) {
   echo "<tr>\n";
   for ( $j = 0; $j < 7; $j++ ) {
-    $date = $i + ( $j * 24 * 3600 );
+    $date = $i + ( $j * ONE_DAY );
     if ( ( date ( "Ymd", $date ) >= date ( "Ymd", $monthstart ) &&
       date ( "Ymd", $date ) <= date ( "Ymd", $monthend ) ) || 
       ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && 
