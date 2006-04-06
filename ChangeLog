@@ -1,4 +1,10 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Changed the Timezone calculations to use PHP putenv
+ - Fixed bug 1343631: Timezone / Summertime error
+ - Fixed bug 1454998: Wrong character in notification mails
+ - Fixed bug 1460511: 'Invalid Login' cannot be displayed correctly in German
+ - Fixed bug 1462428: repeated reminders not working when using date/time
+ - Fixed bug 1462455: reminder send-time offset from event end not beginning
  - Patch 1456375: day view not translating "Description"
  - Fixed bug 1455193: problem with updating the translation file
  - Fixed bug: Do not display logout/export in trailer if system is read-only
