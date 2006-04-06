@@ -3129,8 +3129,24 @@ function html_for_event_day_at_a_glance ( $id, $date, $time,
   $hour_arr[$ind] .= "</a>";
   if ( $GLOBALS["DISPLAY_DESC_PRINT_DAY"] == "Y" ) {
     $hour_arr[$ind] .= "\n<dl class=\"desc\">\n";
-    $hour_arr[$ind] .= "<dt>Description:</dt>\n<dd>";
-    $hour_arr[$ind] .= htmlspecialchars ( $description );
+    $hour_arr[$ind] .= "<dt>" . translate("Description") . ":</dt>\n<dd>";
+    if ( ! empty ( $GLOBALS['allow_html_description'] ) &&
+      $GLOBALS['allow_html_description'] == 'Y' ) {
+      $str = str_replace ( "&", "&amp;", $description );
+      $str = str_replace ( "&amp;amp;", "&amp;", $str );
+      // If there is no html found, then go ahead and replace
+      // the line breaks ("\n") with the html break.
+      if ( strstr ( $str, "<" ) && strstr ( $str, ">" ) ) {
+        // found some html...
+        $hour_arr[$ind] .= $str;
+      } else {
+        // no html, replace line breaks
+        $hour_arr[$ind] .= nl2br ( $str );
+      }
+    } else {
+      // html not allowed in description, escape everything
+      $hour_arr[$ind] .= nl2br ( htmlspecialchars ( $description ) );
+    }
     $hour_arr[$ind] .= "</dd>\n</dl>\n";
   }
 

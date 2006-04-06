@@ -1,4 +1,6 @@
 Version 1.0.3-CVS (?? ??? 2005)
+  - Patch 1456375: Day view - "Description" not translated, improper
+    handling of HTML in description
   - Fixed bug 1444923: system settings error on save when ovrd=1 is used
   - Fixed bug 1420859: Problems with overriding conflict
   - Fixed bug 1445535: tables-db2.sql NULL usage was incorrect
