@@ -1,5 +1,10 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1343631: Timezone / Summertime error
+      1454998: Wrong character in notification mails
+      1460511: 'Invalid Login' cannot be displayed correctly in German
+      1462428: repeated reminders not working when using date/time
+      1462455: reminder send-time offset from event end not beginning
       1455193: problem with updating the translation file
       1451583: Umlaut Event popup text together with FCKEditor-2.0
       1279537: Don't display confidential events in upcoming.php
@@ -229,6 +234,7 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Changed the Timezone calculations to use PHP putenv
     + Added caching of db requests and parsed translations.
     + Implemented improved reminder UI and added repeating functionality per RFC2445
     + Implemented PATCH 1442317: view_entry.php: Disable $proxy_fullname for LDAP users
