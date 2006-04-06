@@ -142,6 +142,9 @@ $GLOBALS['OTHERMONTHBG'] = $prefarray['OTHERMONTHBG'];
 $GLOBALS['FONTS'] = $prefarray['FONTS'];
 $GLOBALS['MYEVENTS'] = $prefarray['MYEVENTS'];
 
+//determine if we can set timezones, if not don't display any options
+$can_set_timezone = set_env ( "TZ", $TIMEZONE );
+
 $BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' )\"" : '' );
 $INC = array('js/pref.php','js/visible.php');
 print_header($INC, '' , $BodyX);
@@ -254,16 +257,18 @@ if ( empty ( $user ) || $user == $login ) {
  <?php echo translate("Your browser default language is") . " " . 
    get_browser_language ( true )  . "."; ?>
 </td></tr>
+<?php if ( $can_set_timezone == true ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip("tz-help")?>">
   <label for="pref_TIMEZONE"><?php etranslate("Timezone Selection")?>:</label></td><td>
   <?php 
    if ( empty ( $prefarray['TIMEZONE'] ) ) $prefarray['TIMEZONE'] = $SERVER_TIMEZONE;
-   $tz_offset = get_tz_offset ( $prefarray['TIMEZONE'], time() );
+   $tz_offset = date("Z") / ONE_HOUR;
    echo print_timezone_select_html ( "pref_", $prefarray['TIMEZONE']); 
-   echo  translate("Your current GMT offset is")  . " " . $tz_offset[0] . 
-     " " . translate("hours") . ". ($tz_offset[1])";
+   echo  translate("Your current GMT offset is") . "&nbsp;" .
+	   $tz_offset . "&nbsp;" .translate("hours") . ".";
   ?>
 </td></tr>
+ <?php } //end $can_set_timezone ?>
 <tr><td class="tooltipselect" title="<?php etooltip("fonts-help")?>">
  <label for="pref_font"><?php etranslate("Fonts")?>:</label></td><td>
  <input type="text" size="40" name="pref_FONTS" id="pref_font" value="<?php echo htmlspecialchars ( $prefarray['FONTS'] );?>" />
@@ -481,11 +486,6 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <?php etranslate("Display tasks in Calendars")?>:</td><td>
  <label><input type="radio" name="pref_DISPLAY_TASKS_IN_GRID" value="Y" <?php if (  $prefarray['DISPLAY_TASKS_IN_GRID']  != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
  <label><input type="radio" name="pref_DISPLAY_TASKS_IN_GRID" value="N" <?php if (  $prefarray['DISPLAY_TASKS_IN_GRID'] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip("export-ics-timezones-help")?>">
- <?php etranslate("Export VTIMEZONE in ics files")?>:</td><td>
- <label><input type="radio" name="pref_ICS_TIMEZONES" value="Y" <?php if (  $prefarray['ICS_TIMEZONES'] != "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("Yes")?></label>&nbsp;
- <label><input type="radio" name="pref_ICS_TIMEZONES" value="N" <?php if (  $prefarray['ICS_TIMEZONES'] == "N" ) echo " checked=\"checked\"";?> /> <?php etranslate("No")?></label>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip("lunar-help")?>">
  <?php etranslate("Display Lunar Phases in month view")?>:</td><td>
@@ -776,7 +776,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <!-- BEGIN EXAMPLE MONTH -->
   <table style="border:0px; width:100%;"><tr>
   <td style="text-align:center; color:<?php echo $prefarray['H2COLOR'] ?>; font-weight:bold;"><?php
-  echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false, false );?></td></tr>
+  echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false );?></td></tr>
   </table>
   <?php 
   set_today( date ("Ymd") );

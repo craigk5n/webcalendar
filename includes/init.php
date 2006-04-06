@@ -355,8 +355,8 @@ function print_menu_dates ( $menu=false) {
   $wkstart = mktime ( 0, 0, 0, $m, $d - ( $wday - $WEEK_START ), $y );
 
   for ( $i = -7; $i <= 7; $i++ ) {
-    $twkstart = $wkstart + ( 3600 * 24 * 7 * $i );
-    $twkend = $twkstart + ( 3600 * 24 * 6 );
+    $twkstart = $wkstart + ( ONE_DAY * 7 * $i );
+    $twkend = $twkstart + ( ONE_DAY * 6 );
 //  echo $twkstart . " " . $twkend;
   if ( $twkstart > 0 && $twkend < 2146021200 ) { 
       echo "<option value=\"" . date ( "Ymd", $twkstart ) . "\"";

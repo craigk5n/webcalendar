@@ -118,6 +118,12 @@ class Event {
    */
   var $_calType;
  /**
+   * The event's type name.
+   * @var mixed
+   * @access private
+   */
+  var $_calTypeName;
+ /**
    * The event's location.
    * @var mixed
    * @access private
@@ -351,7 +357,7 @@ class Event {
   } else {
    $h = $m = 0;
   }
-    $this->_DueDateTime = mktime ( $h, $m, 0, $month, $day, $year );
+    $this->_DueDateTime = gmmktime ( $h, $m, 0, $month, $day, $year );
     return $this->_DueDateTime;
   }
    
@@ -385,7 +391,7 @@ class Event {
   } else {
    $h = $m = 0;
   }
-    $this->_DateTime = mktime ( $h, $m, 0, $month, $day, $year );
+    $this->_DateTime = gmmktime ( $h, $m, 0, $month, $day, $year );
     return $this->_DateTime;
   }
  
@@ -498,6 +504,26 @@ class Event {
   function getCalType () {
     return $this->_calType;
   }
+	
+  /**
+   * Gets the event's type name
+   *
+   * @return string The event's type name
+   *
+   * @access public
+   */
+  function getCalTypeName () {
+	  if ( isset ( $this->_calTypeName ) )
+		  return $this->_calTypeName;
+	  if ( $this->_calType == 'E' || $this->_calType == 'M' )
+		  $this->_calTypeName = 'event';
+	  if ( $this->_calType == 'T' || $this->_calType == 'N' )
+		  $this->_calTypeName = 'task';
+	  if ( $this->_calType == 'J' || $this->_calType == 'O' )
+		  $this->_calTypeName = 'journal';			
+    return $this->_calTypeName;
+  }
+	
   /**
    * Gets the event's location
    *
@@ -557,7 +583,7 @@ class Event {
       $h = $m = 0;
     }
     $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
-    $this->_endDate = date ( "Ymd", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
+    $this->_endDate = gmdate ( "Ymd", gmmktime ( $h, $m + $dur, 0, $month, $day, $year ) );
     return $this->_endDate;
   }
   
@@ -579,7 +605,7 @@ class Event {
       $h = $m = 0;
     }
     $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
-    $this->_endTime = date ( "His", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
+    $this->_endTime = gmdate ( "His", gmmktime ( $h, $m + $dur, 0, $month, $day, $year ) );
     return $this->_endTime;
   }
  
@@ -601,7 +627,7 @@ class Event {
       $h = $m = 0;
     }
     $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
-    $this->_endDateTime = date ( "YmdHis", mktime ( $h, $m + $dur, 0, $month, $day, $year ) );
+    $this->_endDateTime = gmdate ( "YmdHis", gmmktime ( $h, $m + $dur, 0, $month, $day, $year ) );
     return $this->_endDateTime;
   }
 
@@ -623,7 +649,7 @@ class Event {
       $h = $m = 0;
     }
     $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
-    $this->_endDateTime = mktime ( $h, $m + $dur, 0, $month, $day, $year );
+    $this->_endDateTime = gmmktime ( $h, $m + $dur, 0, $month, $day, $year );
     return $this->_endDateTime;
   }
     

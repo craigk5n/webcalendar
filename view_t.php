@@ -66,17 +66,13 @@ $prevday = date ( "d", $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 if ( ! empty ( $timeb) && $timeb == 1 ) {
-  if ( $WEEK_START == 1 ) {
-    $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
-  } else {
-    $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
-  }
+  $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday );
 } else {
   $wkstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 }
 
 if ( ! empty ( $timeb) && $timeb == 1 ) {
-  $wkend = $wkstart + ( 3600 * 24 * 6 );
+  $wkend = $wkstart + ( ONE_DAY * 6 );
 } else {
   $wkend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 }
@@ -91,7 +87,7 @@ if ( ! empty ( $timeb) && $timeb == 1 ) {
   $val_boucle = date("t", $wkstart);
 }
 for ( $i = 0; $i < $val_boucle; $i++ ) {
-  $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
+  $days[$i] = $wkstart + ONE_DAY * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % $val_boucle );
   $header[$i] = $weekdays[$i] . "<br />\n" .
      month_short_name ( date ( "m", $days[$i] ) - 1 ) .
@@ -164,7 +160,7 @@ $repeated_events = $re_save;
 <?php
 for ( $date = $wkstart, $h = 0;
   date ( "Ymd", $date ) <= date ( "Ymd", $wkend );
-  $date += ( 24 * 3600 ), $h++ ) {
+  $date += ONE_DAY, $h++ ) {
   $wday = strftime ( "%w", $date );
   if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == "N" ) continue; 
   $weekday = weekday_short_name ( $wday );

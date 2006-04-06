@@ -43,23 +43,26 @@
  *   Preferences), do not allow.
  */
 
-require_once 'includes/classes/WebCalendar.class';
-   
-$WebCalendar =& new WebCalendar ( __FILE__ );    
-   
-include 'includes/config.php';    
-include 'includes/dbi4php.php';    
-include 'includes/functions.php';    
-   
-$WebCalendar->initializeFirstPhase();    
+ require_once 'includes/classes/WebCalendar.class';
+ require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
+    
+ $WebCalendar =& new WebCalendar ( __FILE__ );    
+     
+ include 'includes/config.php';    
+ include 'includes/dbi4php.php';    
+ include 'includes/functions.php';    
+     
+ $WebCalendar->initializeFirstPhase();    
+     
+ include "includes/$user_inc";    
+ include_once 'includes/validate.php';    
+ include 'includes/translate.php';    
+ include 'includes/site_extras.php';
  
-include "includes/$user_inc";    
-include 'includes/translate.php';    
-   
-include 'includes/site_extras.php';    
 include_once 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase();
+ $WebCalendar->initializeSecondPhase();
 
 // Calculate username.
 //if using http_auth, use those credentials
@@ -111,19 +114,17 @@ $startdate = mktime ( 0, 0, 0, date("m"), 1, date("Y") );
 $enddate = mktime ( 0, 0, 0, date("m"), 1, date("Y") + 1 );
 
 /* Pre-Load the repeated events for quicker access */
-$repeated_events = read_repeated_events ( $user, '',
-  date ( "Ymd" ), $startdate );
+$repeated_events = read_repeated_events ( $user, '', $startdate );
 
 /* Pre-load the non-repeating events for quicker access */
-$events = read_events ( $user, date ( "Ymd", $startdate ),
-  date ( "Ymd", $enddate ), '' );
+$events = read_events ( $user, $startdate, $enddate);
 
 // Loop from start date until we reach end date...
 $event_text = '';
 //define ( 'ONE_DAY', ( 3600 * 24 ) );
 for ( $d = $startdate; $d <= $enddate; $d += ONE_DAY ) {
   $dYmd = date ( "Ymd", $d );
-  $ev = get_entries ( $user, $dYmd, $get_unapproved );
+  $ev = get_entries ( $dYmd, $get_unapproved );
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     $event_text .= fb_export_time ( $dYmd, $ev[$i]->getDuration(),
       $ev[$i]->getTime(), "ical");

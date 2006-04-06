@@ -10,25 +10,21 @@ if (($user != $login) && $is_nonuser_admin) {
 load_user_categories ();
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
-$nextYmd = date ("Ymd", $next );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
-//$nextdate = date ( "Ymd" );
 
 $prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
-$prevYmd = date ( "Ymd", $prev );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
-//$prevdate = date ( "Ymd" );
 
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;
-  $startdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
-  $enddate = sprintf ( "%04d%02d31", $nextyear, $nextmonth );
+  $startdate = mktime ( 0,0,0, $prevmonth, 1, $prevyear );
+  $enddate = mktime ( 0,0,0, $nextmonth +1 ,0, $nextyear );
 } else {
   $boldDays = false;
-  $startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
-  $enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
+  $startdate = mktime (  0,0,0, $thismonth, 1, $thisyear );
+  $enddate = mktime ( 0,0,0, $thismonth +1, 0, $thisyear );
 }
 
 $HeadX = '';
@@ -52,7 +48,7 @@ $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
 if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) && $is_assistant )
-    ? $user : $login, $startdate, $enddate, $cat_id );
+    ? $user : $login, $enddate, $cat_id );
 }
 
 if ( ! empty ( $cat_id ) )

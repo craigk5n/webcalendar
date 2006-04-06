@@ -77,5 +77,11 @@ function visByClass(classname, state){
        alltags[i].style.display = "";     
  }
 } 
+
+function callEdit() {
+  var features = 'width=600,height=500,resizable=yes,scrollbars=no';
+  var url = "edit_entry.php";
+  editwin = window.open( url, "edit_entry", features ); 
+}
 //]]> -->
 </script>

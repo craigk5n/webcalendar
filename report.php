@@ -135,7 +135,7 @@ function event_to_text ( $event, $date ) {
   }
 
   $date_str = date_to_str ( $date, "", false );
-  $date_full_str = date_to_str ( $date, "", true, false );
+  $date_full_str = date_to_str ( $date);
 
   if ( $event->getDuration() > 0 ) {
     $duration_str = $event->getDuration() . ' ' . translate ( "minutes" );
@@ -362,57 +362,39 @@ if ( empty ( $offset ) || empty ( $report_allow_nav ) ||
 }
 
 // Set time range based on cal_time_range field.
+$DISPLAY_WEEKENDS = 'Y';
+$wkstart = get_weekday_before ( date ( "Y" ), date ( "m" ), date ( "d" ) );
 if ( ! isset ( $report_time_range ) ) {
   // manage reports
 } else if ( $report_time_range >= 0 && $report_time_range < 10 ) {
   $today = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
   $days_offset = 1 - $report_time_range + $offset;
-  $start_date = date ( "Ymd", $today + ( $days_offset * ONE_DAY ) );
+  $start_date = $today + ( $days_offset * ONE_DAY );
   $end_date = $start_date;
 } else if ( $report_time_range >= 10 && $report_time_range < 20 ) {
-  if ( $WEEK_START == 1 ) {
-    $wkstart = get_monday_before ( date ( "Y" ), date ( "m" ),
-      date ( "d" ) );
-  } else {
-    $wkstart = get_sunday_before ( date ( "Y" ), date ( "m" ),
-      date ( "d" ) );
-  }
   //echo "wkstart = " . date("Ymd",$wkstart) . "<br />";
   $week_offset = 11 - $report_time_range + $offset;
   //echo "week_offset=$week_offset <br />";
-  $start_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * ONE_DAY ) );
-  $end_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * ONE_DAY ) + 
-    ( ONE_DAY * 6 ) );
+  $start_date = $wkstart + ( $week_offset * 7 * ONE_DAY );
+  $end_date = $wkstart + ( $week_offset * 7 * ONE_DAY ) + ( ONE_DAY * 6 );
 } else if ( $report_time_range >= 20 && $report_time_range < 30 ) {
-  if ( $WEEK_START == 1 ) {
-    $wkstart = get_monday_before ( date ( "Y" ), date ( "m" ),
-      date ( "d" ) );
-  } else {
-    $wkstart = get_sunday_before ( date ( "Y" ), date ( "m" ),
-      date ( "d" ) );
-  }
   //echo "wkstart = " . date("Ymd",$wkstart) . "<br />";
   $week_offset = 21 - $report_time_range + $offset;
   //echo "week_offset=$week_offset <br />";
-  $start_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * ONE_DAY ) );
-  $end_date = date ( "Ymd", $wkstart + ( $week_offset * 7 * ONE_DAY ) + 
-    ( ONE_DAY * 13 ) );
+  $start_date = $wkstart + ( $week_offset * 7 * ONE_DAY );
+  $end_date = $wkstart + ( $week_offset * 7 * ONE_DAY ) + ( ONE_DAY * 13 );
 } else if ( $report_time_range >= 30 && $report_time_range < 40 ) {
   $thismonth = date ( "m" );
   $month_offset = 31 - $report_time_range + $offset;
   //echo "month_offset=$month_offset <br />";
-  $start_date = date ( "Ymd", mktime ( 0, 0, 0, $thismonth + $month_offset,
-    1, date ( "Y" ) ) );
-  $end_date = date ( "Ymd", mktime ( 0, 0, 0, $thismonth + $month_offset + 1,
-    0, date ( "Y" ) ) );
+  $start_date = mktime ( 0, 0, 0, $thismonth + $month_offset, 1, date ( "Y" ) );
+  $end_date = mktime ( 0, 0, 0, $thismonth + $month_offset + 1, 0, date ( "Y" ) );
 } else if ( $report_time_range >= 40 && $report_time_range < 50 ) {
   $thisyear = date ( "Y" );
   $year_offset = 41 - $report_time_range + $offset;
   //echo "year_offset=$year_offset <br />";
-  $start_date = date ( "Ymd", mktime ( 0, 0, 0, 1, 1,
-    $thisyear + $year_offset ) );
-  $end_date = date ( "Ymd", mktime ( 0, 0, 0, 12, 31,
-    $thisyear + $year_offset ) );
+  $start_date = mktime ( 0, 0, 0, 1, 1, $thisyear + $year_offset );
+  $end_date = mktime ( 0, 0, 0, 12, 31, $thisyear + $year_offset );
 } else if ( $report_time_range >= 50 && $report_time_range < 60 ) {
   // This series of reports is today + N days
   switch ( $report_time_range ) {
@@ -426,10 +408,8 @@ if ( ! isset ( $report_time_range ) ) {
       exit;
   }
   $today = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
-  $start = $today + ( ONE_DAY * $offset * $x );
-  $end = $start + ( ONE_DAY * $x );
-  $start_date = date ( "Ymd", $start );
-  $end_date = date ( "Ymd", $end );
+  $start_date = $today + ( ONE_DAY * $offset * $x );
+  $end_date = $start_date + ( ONE_DAY * $x );
 } else {
   // Programmer's bug (no translation needed)
   echo "Invalid cal_time_range setting for report id $report_id";
@@ -448,26 +428,17 @@ if ( empty ( $error ) && empty ( $list ) ) {
   //echo "User: $report_user <br />\n";
   //echo "Date Range: $start_date - $end_date <br /><br />\n";
 
-  $start_year = substr ( $start_date, 0, 4 );
-  $start_month = substr ( $start_date, 4, 2 );
-  $start_day = substr ( $start_date, 6, 2 );
-  $start_time = mktime ( 0, 0, 0, $start_month, $start_day, $start_year );
-
-  $end_year = substr ( $end_date, 0, 4 );
-  $end_month = substr ( $end_date, 4, 2 );
-  $end_day = substr ( $end_date, 6, 2 );
-  $end_time = mktime ( 0, 0, 0, $end_month, $end_day, $end_year );
 
   $day_str = '';
 
   // Loop through each day
   // Get events for each day (both normal and repeating).
   // (Most of this code was copied from week.php)
-  for ( $cur_time = $start_time; $cur_time <= $end_time; $cur_time += ONE_DAY ) {
+  for ( $cur_time = $start_date; $cur_time <= $end_date; $cur_time += ONE_DAY ) {
     $event_str = '';
     $dateYmd = date ( "Ymd", $cur_time );
     $rep = get_repeating_entries ( empty ( $user ) ? $login : $user, $dateYmd );
-    $ev = get_entries ( empty ( $user ) ? $login : $user, $dateYmd );
+    $ev = get_entries ( $dateYmd );
     $ev = combine_and_sort_events($ev, $rep);
     //echo "DATE: $dateYmd <br />\n";
   
@@ -480,7 +451,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
     if ( ! empty ( $event_str ) || $report_include_empty == 'Y' ||
       $report_time_range < 10 ) {
       $date_str = date_to_str ( $dateYmd, "", false );
-      $date_full_str = date_to_str ( $dateYmd, "", true, false );
+      $date_full_str = date_to_str ( $dateYmd );
       $text = str_replace ( '${events}', $event_str, $day_template );
       $text = str_replace ( '${report_id}', $report_id, $text );
       $text = str_replace ( '${fulldate}', $date_full_str, $text );

@@ -135,10 +135,12 @@ if ( $id > 0 && empty ( $error ) ) {
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $name = $row[0];
-      $eventdate = $row[1];
-      $eventtime = $row[2];
+      $fmtdate = $row[1];
+      $time = $row[2];
       dbi_free_result ( $res );
     }
+		
+		$eventstart = date_to_epoch ( $fmtdate . $time );
     $TIME_FORMAT=24;
     for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
       // Log the deletion
@@ -153,6 +155,7 @@ if ( $id > 0 && empty ( $error ) ) {
         $htmlmail = get_pref_setting ( $partlogin[$i], "EMAIL_HTML" );
         $t_format = get_pref_setting ( $partlogin[$i], "TIME_FORMAT" );
         $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
+        set_env ( "TZ", $user_TIMEZONE );
         $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
         user_load_variables ( $partlogin[$i], "temp" );         
         if ( ! $is_nonuser_admin && $partlogin[$i] != $login && $do_send == "Y" &&
@@ -168,9 +171,10 @@ if ( $id > 0 && empty ( $error ) ) {
             " " . $login_fullname .  ".\n" .
             translate("The subject was") . " \"" . $name . "\"\n" .
             translate("Date") . ": " . date_to_str ($thisdate) . "\n";
-            if ( $eventtime != '-1' ) $msg .= translate("Time") . ": " . 
+            if ( ! empty ( $eventtime ) && $eventtime != '-1' ) 
+						  $msg .= translate("Time") . ": " . 
              // Apply user's GMT offset and display their TZID
-             display_time ( $eventdate . $eventtime, 2, '', $user_TIMEZONE, $t_format );
+             display_time ( '', 2, $eventstart, $t_format );
             $msg .= "\n\n";
             $msg = stripslashes ( $msg );
             //use WebCalMailer class
@@ -278,6 +282,8 @@ if ( ! empty ( $ret ) && $ret == "listall" ) {
   $url = get_preferred_view ( "", empty ( $user ) ? "" : "user=$user" );
 }
 
+//return to login TIMEZONE
+set_env ( "TZ", $TIMEZONE );
 if ( empty ( $error ) ) {
   do_redirect ( $url );
   exit;

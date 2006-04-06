@@ -38,30 +38,18 @@ print_header($INC);
 
 set_today($date);
 
-$next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
-$nextyear = date ( "Y", $next );
-$nextmonth = date ( "m", $next );
-$nextdate = sprintf ( "%04d%02d01", $nextyear, $nextmonth );
-
-$prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
-$prevyear = date ( "Y", $prev );
-$prevmonth = date ( "m", $prev );
-$prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
-
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;
-  $startdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
-  $enddate = sprintf ( "%04d%02d31", $nextyear, $nextmonth );
+  $startdate = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear );
+  $enddate = mktime ( 0, 0, 0, $thismonth + 2, 0 , $thisyear );
 } else {
   $boldDays = false;
-  $startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
-  $enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
+  $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+  $enddate = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 }
 
-$monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-$monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 
-$thisdate = $startdate;
+$thisdate = date ( "Ymd", $startdate );
 
 // get users in this view
 $viewusers = view_get_user_list ( $id );

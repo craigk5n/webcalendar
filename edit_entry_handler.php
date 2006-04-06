@@ -131,7 +131,7 @@ if ( ! empty ( $rpt_year ) ) {
     }
  }  
 }
-$TIME_FORMAT=24;
+//$TIME_FORMAT=24;
 // If "all day event" was selected, then we set the event time
 // to be 12AM with a duration of 24 hours.
 // We don't actually store the "all day event" flag per se.  This method
@@ -162,12 +162,19 @@ if ( $timetype == "U" ) {
   $endminute = 0;
 }
 
-// Combine all values to create event start date/time - User Time
+
+// Combine all values to create event start date/time 
 $eventstart = mktime ( $hour, $minute, 0, $month, $day, $year );
+//if ( $timetype == "T" ) { // All other types are time independent
+//  $eventstart  -= date ( "Z", $eventstart );
+//}
 
 if ( $eType == 'task' ) {
   // Combine all values to create event due date/time - User Time
   $eventdue = mktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
+//  if ( $timetype == "T" ) { // All other types are time independent
+//    $eventdue  -= date ( "Z", $eventdue );	
+//	}
 
   // Combine all values to create completed date 
   if ( ! empty ( $complete_year )  && ! empty ( $complete_month ) &&
@@ -187,18 +194,12 @@ if ( $TIMED_EVT_LEN == 'E') {
  $eventstophour= $hour + $duration_h;
  $eventstopmin= $minute + $duration_m;
 }
+
 $eventstop = mktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
+//if ( $timetype == "T" ) { // All other types are time independent
+//  $eventstop -= date ("Z", $eventstop );
+//}
  
-  // Get this user's Timezone offset for this date/time  
-  $tz_offset = get_tz_offset ( $TIMEZONE, $eventstart );
-if ( $timetype == "T" ) { // All other types are time independent
-  // Adjust eventstart  by Timezone offset to get GMT
-  $eventstart -= ( $tz_offset[0] * 3600 );
-  
-  // Adjust eventstop  by Timezone offset to get GMT
-  $eventdue -= ( $tz_offset[0] * 3600 );
-  $eventstop -= ( $tz_offset[0] * 3600 );
-}
 
  
 // Calculate event duration
@@ -330,6 +331,7 @@ if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
   
   if ( ! empty ( $rpt_year ) ) {  
     $endt = mktime ( $rpt_endhour, $rpt_endminute, 0, $rpt_month, $rpt_day,$rpt_year );
+		$endt -= date ("Z", $endt );
   } else {
     $endt = 'NULL';
   }
@@ -440,14 +442,14 @@ if ( empty ( $error ) ) {
     $query_params[] = $old_id;
 
   $query_params[] = ( ! empty ( $old_create_by ) ? $old_create_by : $login );
-  $query_params[] = date ( "Ymd", $eventstart );
-  $query_params[] = ( strlen ( $hour ) > 0 && $timetype != 'U' ) ? date ( "His", $eventstart ) : "-1";
+  $query_params[] = gmdate ( "Ymd", $eventstart );
+  $query_params[] = ( strlen ( $hour ) > 0 && $timetype != 'U' ) ? gmdate ( "His", $eventstart ) : "-1";
   
   if ( ! empty ( $eventcomplete ) )
     $query_params[] = $eventcomplete;
 
-  $query_params[] = date ( "Ymd", $eventdue );
-  $query_params[] = date ( "His", $eventdue );
+  $query_params[] = gmdate ( "Ymd", $eventdue );
+  $query_params[] = gmdate ( "His", $eventdue );
   $query_params[] = gmdate ( "Ymd" );
   $query_params[] = gmdate ( "Gis" );
   $query_params[] = sprintf ( "%d", $duration );
@@ -578,7 +580,7 @@ if ( empty ( $error ) ) {
   if ( ! dbi_execute ( "DELETE FROM webcal_reminders WHERE cal_id = ?", array( $id ) ) )
     $error = translate("Database error") . ": " . dbi_error ();
   if ( $DISABLE_REMINDER_FIELD != "Y" && $reminder == true ) {
-    if ( empty ( $rem_related ) ) $rem_related = 'N';
+    if ( empty ( $rem_related ) ) $rem_related = 'S';
     if ( empty ( $rem_before ) ) $rem_before = 'Y';
     $reminder_date = $reminder_offset = $reminder_duration = $reminder_repeats = 0;
     if ( $rem_when == 'Y' ) { //use date
@@ -602,8 +604,9 @@ if ( empty ( $error ) ) {
           $remhour += 12;
         }
       }
-      $reminder_date = mktime ( $remhour - $tz_offset[0], $remminute, 0, $reminder_month,
-        $reminder_day, $reminder_year );  
+      $reminder_date = gmmktime ( $remhour, $remminute, 0, $reminder_month,
+        $reminder_day, $reminder_year );
+		  //$reminder_date -= date("Z", $reminder_date ); 
     } else { //use offset
       $reminder_offset = ($rem_days * 60 * 24 ) + ( $rem_hours * 60 ) + $rem_minutes;
     }
@@ -635,7 +638,7 @@ if ( empty ( $error ) ) {
     if ( ! empty ( $rpt_year  ) ) {
       $rpt_end = sprintf ( "%04d%02d%02d", $rpt_year, $rpt_month, $rpt_day );
       $rpt_endtime = sprintf ( "%02d%02d00", $rpt_endhour, $rpt_endminute );
-      $rpt_enddatetime = get_datetime_add_tz ( $rpt_end, $rpt_endtime, '', true );
+      //$rpt_enddatetime = get_datetime_add_tz ( $rpt_end, $rpt_endtime, '', true );
       $rpt_end = date ("Ymd", $rpt_enddatetime );
       $rpt_endtime = date ("His", $rpt_enddatetime );
     } else {
@@ -747,17 +750,13 @@ if ( empty ( $error ) ) {
         $htmlmail = get_pref_setting ( $old_participant, "EMAIL_HTML" );
         $t_format = get_pref_setting ( $old_participant, "TIME_FORMAT" );
         $user_TIMEZONE = get_pref_setting ( $old_participant, "TIMEZONE" );
-        $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
+        set_env ( "TZ", $user_TIMEZONE );
         $user_language = get_pref_setting ( $old_participant, "LANGUAGE" );
         user_load_variables ( $old_participant, "temp" );
         
         
         if ( $old_participant != $login && ! empty ( $tempemail ) &&
-          $do_send == "Y" && $SEND_EMAIL != "N" ) {
-
-          // Want date/time in user's timezone
-          $user_eventstart = $eventstart  + ( $user_TZ[0] * 3600 );
-       
+          $do_send == "Y" && $SEND_EMAIL != "N" ) {     
        
           if ( empty ( $user_language ) || ( $user_language == 'none' )) {
              reset_language ( $LANGUAGE );
@@ -765,7 +764,7 @@ if ( empty ( $error ) ) {
              reset_language ( $user_language );
           }
   
-          $fmtdate = date ( "Ymd", $user_eventstart ); 
+          $fmtdate = date ( "Ymd", $eventstart ); 
           $msg = translate("Hello", true) . ", " .
             unhtmlentities( $tempfullname ) . ".\n\n" .
             translate("An appointment has been canceled for you by", true) .
@@ -776,8 +775,7 @@ if ( empty ( $error ) ) {
              ( $timetype != 'T'  ? "" :
             translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
-            display_time ( date ( "YmdHis", $eventstart ), 2, '', 
-              $user_TIMEZONE, $t_format ) . "\n\n\n");
+            display_time ( '', 2, $eventstart, $t_format ) . "\n\n\n");
           $msg = stripslashes ( $msg );
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
@@ -879,7 +877,7 @@ if ( empty ( $error ) ) {
         $htmlmail = get_pref_setting ( $participants[$i], "EMAIL_HTML" );
         $t_format = get_pref_setting ( $participants[$i], "TIME_FORMAT" );
         $user_TIMEZONE = get_pref_setting ( $participants[$i], "TIMEZONE" );
-        $user_TZ = get_tz_offset ( $user_TIMEZONE, $eventstart );
+        set_env ( "TZ", $user_TIMEZONE );
         $user_language = get_pref_setting ( $participants[$i], "LANGUAGE" );
         user_load_variables ( $participants[$i], "temp" );
         if ( $participants[$i] != $login && 
@@ -887,16 +885,14 @@ if ( empty ( $error ) ) {
           ! empty ( $tempemail ) &&
           $do_send == "Y" && $send_user_mail && $SEND_EMAIL != "N" ) {
 
-          // Want date/time in user's timezone
-          $user_eventstart = $eventstart  + ( $user_TZ[0] * 3600 );
-         
+
           if ( empty ( $user_language ) || ( $user_language == 'none' )) {
              reset_language ( $LANGUAGE );
           } else {
              reset_language ( $user_language );
           }
 
-          $fmtdate = date ( "Ymd", $user_eventstart ); 
+          $fmtdate = date ( "Ymd", $eventstart ); 
           $msg = translate("Hello", true) . ", " .
             unhtmlentities ( $tempfullname ) . ".\n\n";
           if ( $newevent || ( empty ( $old_status[$participants[$i]] ) ) ) {
@@ -911,8 +907,7 @@ if ( empty ( $error ) ) {
             ( $timetype != 'T' ? "" :
             translate("Time") . ": " .
             // Apply user's GMT offset and display their TZID
-            display_time ( date ( "YmdHis", $eventstart ), 2, '', 
-              $user_TIMEZONE, $t_format ) . "\n" ) .
+            display_time ( '', 2, $eventstart, $t_format ) . "\n" ) .
             translate("Please look on", true) . " " . translate($APPLICATION_NAME) . " " .
             ( $REQUIRE_APPROVALS == "Y" ?
             translate("to accept or reject this appointment", true) :
@@ -1034,11 +1029,10 @@ if ( $single_user == "N" &&
                 $msg .= translate("Time") . ": ";
                 if ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == "Y" ) {
                   // Do not apply TZ offset & display TZID, which is GMT
-                  $msg .= display_time ( date ("YmdHis", $eventstart ), 3 );
+                  $msg .= display_time ( '', 3, $eventstart );
                 } else {
-                  // Display time in server's timezone (probably more useful than GMT)
-                  $msg .= display_time ( date ("YmdHis", $eventstart ), 2, '', 
-                    $SERVER_TIMEZONE );              
+                  // Display time in server's timezone
+                  $msg .= display_time ( '', 6, $eventstart);              
                 }
               }
             $msg = stripslashes ( $msg );          

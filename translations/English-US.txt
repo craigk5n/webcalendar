@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 03-10-2006
+# Translation last updated on 04-06-2006
 
 
 ###############################################
@@ -130,6 +130,10 @@ Home URL: Home URL
 language-help: Specifies which language to use.
 Language: Language
 Your browser default language is: Your browser default language is
+tz-help: Specifies how many hours to adjust the time from server time to local time.
+Server Timezone Selection: Server Timezone Selection
+Your current GMT offset is: Your current GMT offset is
+hours: hours
 Allow user to use themes: Allow user to use themes
 Yes: Yes
 No: No
@@ -168,14 +172,6 @@ yearly-shows-events-help: On the yearly view, display days that contain events i
 Display days with events in bold in month and year views: Display days with events in bold in month and year views
 display-desc-print-day-help: Include event descriptions in printer-friendly version of day view.
 Display description in printer day view: Display description in printer day view
-display-alltimezones-help: If enabled, all known times are loaded in timezone dropdown
-Display complete timezone list: Display complete timezone list
-Requires page reload: Requires page reload
-tz-help: Specifies how many hours to adjust the time from server time to local time.
-Server Timezone Selection: Server Timezone Selection
-Your current GMT offset is: Your current GMT offset is
-hours: hours
-Load Timezone Data: Load Timezone Data
 display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
 Display Common Use Date/Times as GMT: Display Common Use Date/Times as GMT
 date-format-help: Specifies the preferred date format.
@@ -297,8 +293,6 @@ display-tasks-help: Display small task window on month and day calendar
 Display small task list: Display small task list
 display-tasks-in-grid-help: Display tasks in calendars along with events
 Display tasks in Calendars: Display tasks in Calendars
-export-ics-timezones-help: Export VTIMEZONE data with ics files
-Export VTIMEZONE in ics files: Export VTIMEZONE in ics files
 allow-external-users-help: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
 Allow external users: Allow external users
 external-can-receive-notification-help: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
@@ -1165,15 +1159,6 @@ Export this entry to: Export this entry to
 
 
 ###############################################
-# Page: view_entry_class.php
-#
-day: day
-minute: minute
-before due time: before due time
-before event: before event
-
-
-###############################################
 # Page: view_r.php
 #
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
@@ -1272,6 +1257,8 @@ Saturday: Saturday
 All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
+day: day
+minute: minute
 before: before
 after: after
 start: start
@@ -1316,6 +1303,7 @@ Finnish: Finnish
 French: French
 Galician: Galician
 German: German
+Greek: Greek
 Holo (Taiwanese): Holo (Taiwanese)
 Hungarian: Hungarian
 Icelandic: Icelandic
@@ -1357,9 +1345,6 @@ INCLUSION DATES: INCLUSION DATES
 EXCLUSION DATES: EXCLUSION DATES
 Unnamed Event: Unnamed Event
 Event Imported: Event Imported
-Unknown Timezone: Unknown Timezone
-defaulting to GMT: defaulting to GMT
-Please see FAQ: Please see FAQ
 
 
 ###############################################
@@ -1456,7 +1441,9 @@ User Manager: User Manager
 ###############################################
 # Page: tools/send_reminders.php
 #
+This is a reminder for the task detailed below.: This is a reminder for the task detailed below.
 This is a reminder for the event detailed below.: This is a reminder for the event detailed below.
+Pecentage Complete: Pecentage Complete
 Reminder: Reminder
 
 
@@ -1465,6 +1452,7 @@ Reminder: Reminder
 #
 Successful Login: Successful Login
 Invalid Login: Invalid Login
+required only if Safe Mode is On: required only if Safe Mode is On
 needed for Gradient Image Backgrounds: needed for Gradient Image Backgrounds
 Passwords do not match: Passwords do not match
 Unable to write password to settings.php file: Unable to write password to settings.php file
@@ -1475,6 +1463,9 @@ Failure Reason: Failure Reason
 Correct your entries or click the <b>Create New</b> button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
 You must manually create database: You must manually create database
 Correct your entries and try again: Correct your entries and try again
+Database Cache Directory: Database Cache Directory
+does not exist: does not exist
+is not writable: is not writable
 Timezone Conversion Successful: Timezone Conversion Successful
 Error Converting Timezone: Error Converting Timezone
 Error Unable to write to file: Error Unable to write to file
@@ -1549,7 +1540,6 @@ If you have, you may ignore this notice and not proceed with the conversion: If 
 If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
 Convert Data to GMT: Convert Data to GMT
 Conversion Successful: Conversion Successful
-Conversion Not Needed: Conversion Not Needed
 Application Settings: Application Settings
 HTTP-based authentication was not detected: HTTP-based authentication was not detected
 You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to

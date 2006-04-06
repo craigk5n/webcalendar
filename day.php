@@ -31,8 +31,8 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
  $boldDays = false;
 }
 
-$startdate = sprintf ( "%04d%02d01", $thisyear, $thismonth );
-$enddate = sprintf ( "%04d%02d31", $thisyear, $thismonth );
+$startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+$enddate = mktime ( 0, 0, 0, $thismonth +1 , 0, $thisyear );
 
 $HeadX = '';
 if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {

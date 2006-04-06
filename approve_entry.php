@@ -92,13 +92,7 @@ if ( strlen ( $comments ) && empty ( $cancel ) ) {
     dbi_free_result ( $res );
   }
 
-  if ($time != '-1') {
-    $hour = substr($time,0,2);
-    $minute = substr($time,2,2);
-  } else {
-   $hour =  $minute = 0;
- }
-  $eventstart = $fmtdate .  sprintf( "%06d", ( $hour * 10000 ) + ( $minute * 100 ) );
+  $eventstart = date_to_epoch ( $fmtdate . $time );
   //TODO figure out if creator wants approved comment email
 		//check UAC
     $send_user_mail = "Y"; 
@@ -109,7 +103,7 @@ if ( strlen ( $comments ) && empty ( $cancel ) ) {
     $t_format = get_pref_setting ( $creator, "TIME_FORMAT" );
     user_load_variables ( $creator, "temp" );
     $user_TIMEZONE = get_pref_setting ( $creator, "TIMEZONE" );
-    $user_TZ = get_tz_offset ( $user_TIMEZONE, '', $eventstart );
+    set_env ( "TZ", $user_TIMEZONE );
     $user_language = get_pref_setting ( $creator, "LANGUAGE" );
     if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
       $SEND_EMAIL != "N" ) {
@@ -126,7 +120,7 @@ if ( strlen ( $comments ) && empty ( $cancel ) ) {
       translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
       ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate("Time") . ": " .
       // Display using user's GMT offset and display TZID
-      display_time ( $eventstart, 2, '' , $user_TIMEZONE, $t_format ) ) ). "\n";
+      display_time ( '', 2, $eventstart , $t_format ) ) ). "\n";
       if ( ! empty ( $SERVER_URL ) ) {
         //DON'T change & to &amp; here. email will handle it
         $url = $SERVER_URL .  $view_type . ".php?id=" .  $id . "&em=1";
@@ -158,6 +152,8 @@ if ( strlen ( $comments ) && empty ( $cancel ) ) {
         "Approved w/Comments by $app_user" );
   }
 }
+//return to login TIMEZONE
+set_env ( "TZ", $TIMEZONE );
 if ( empty ( $error ) ) {
   if ( ! empty ( $ret ) && $ret == "listall" )
     do_redirect ( "list_unapproved.php" );

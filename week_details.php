@@ -13,11 +13,9 @@ load_user_categories ();
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
-if ( $WEEK_START == 1 || $DISPLAY_WEEKENDS == "N" )
-  $wkstart = get_monday_before ( $thisyear, $thismonth, $thisday );
-else
-  $wkstart = get_sunday_before ( $thisyear, $thismonth, $thisday );
-$wkend = $wkstart + ( 3600 * 24 * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ));
+$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday );
+
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ));
 
 $startdate = date ( "Ymd", $wkstart );
 $enddate = date ( "Ymd", $wkend );
@@ -63,7 +61,7 @@ $events = read_events ( strlen ( $user ) ? $user : $login, $startdate, $enddate,
 <?php
 if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == "N" ) $wkstart = $wkstart - ONE_DAY;
 for ( $i = 0; $i < 7; $i++ ) {
-  $days[$i] = $wkstart + ( 24 * 3600 ) * $i;
+  $days[$i] = $wkstart + ONE_DAY * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
   $header[$i] = $weekdays[$i] . " " .
     date_to_str ( date ( "Ymd", $days[$i] ), $DATE_FORMAT_MD, false );
@@ -260,7 +258,7 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   $rep = get_repeating_entries ( $user, $date );
 
   // get all the non-repeating events for this date and store in $ev
-  $ev = get_entries ( $user, $date );
+  $ev = get_entries ( $date );
 
   // combine and sort the event arrays
   $ev = combine_and_sort_events($ev, $rep);

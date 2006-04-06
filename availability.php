@@ -42,18 +42,12 @@ $INC = array ( 'js/availability.php' );
 print_header($INC, '', "onload=\"focus();\"", true, false, true );
 
 $span = ($WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR) * 3 + 1;
-if (strlen($month) == 1) $month = '0'.$month;   // add leading zeros
-if (strlen($day) == 1) $day = '0'.$day;         // add leading zeros
-$date = $year.$month.$day;
 $time = mktime(0,0,0,$month,$day,$year);
+$date = date ( "Ymd", $time );
 $wday = strftime ( "%w", $time );
 $base_url = "?users=$users";
-$prev_url = $base_url."&amp;year=".  strftime('%Y', $time - 86400)
-                     ."&amp;month=". strftime('%m', $time - 86400)
-                     ."&amp;day=".   strftime('%d', $time - 86400);
-$next_url = $base_url."&amp;year=".  strftime('%Y', $time + 86400)
-                     ."&amp;month=". strftime('%m', $time + 86400)
-                     ."&amp;day=".   strftime('%d', $time + 86400);
+$prev_url = $base_url . strftime('&amp;year=%Y&amp;month=%m&amp;day=%d', $time - ONE_DAY);
+$next_url = $base_url . strftime('&amp;year=%Y&amp;month=%m&amp;day=%d', $time + ONE_DAY);
 
 $users = explode(",",$users);
 ?>
