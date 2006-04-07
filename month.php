@@ -12,10 +12,12 @@ load_user_categories ();
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
+$nextYmd = date ( "Ymd", $next );
 
 $prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
+$prevYmd = date ( "Ymd", $prev );
 
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;
