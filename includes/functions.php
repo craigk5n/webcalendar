@@ -5270,172 +5270,6 @@ function get_site_extras_names () {
   return $ret;
 }
 
-/**
- * Return the timezone rules for a given zone rule
- * Called only from function get_tz_time()
- *
- * @param string $zone_rule   
- * @param int $timestamp  UNIX timestamp of requested rule
- *
- * $global array $days_of_week Sun => 0...Sat => 6
- * @return array   
- *   dst_rules[0]['rule_date']   = first time change timestamp
- *   dst_rules[0]['rule_save']   = first time savings in seconds
- *   dst_rules[0]['rule_letter'] = first letter to apply to TZ abbreviation
- *   dst_rules[1]['rule_date']   = second time change timestamp
- *   dst_rules[1]['rule_save']   = second time savings in seconds
- *   dst_rules[1]['rule_letter'] = second letter to apply to TZ abbreviation
- *   dst_rules['lastyear']       = last year time savings in seconds
- *   dst_rules['lastletter']     - last year letter to apply to TZ abbreviation 
- */
-function get_rules ( $zone_rule, $timestamp  ) {
- global $days_of_week;
- static $rules;
- 
- $year = date ("Y", $timestamp );
-
- if ( ! empty ( $rules[$zone_rule.$year] ) ) {
-   //print_r ( $rules[$zone_rule.$year] );
-   return $rules[$zone_rule.$year];
- }
-   
- $sql = "SELECT rule_from, rule_to, rule_in, rule_on, rule_at, rule_save, rule_letter, rule_at_suffix  " . 
-   "FROM webcal_tz_rules WHERE rule_name  = ?"  . 
-   " AND rule_from <= ? AND rule_to >= ? ORDER BY rule_in";
-  
-  $rows = dbi_get_cached_rows ( $sql, array( $zone_rule, $year, $year ) );
-
-  $dst_rules = array();
-  $i = 0;
-  if ( $rows ) {
-    for ( $j = 0; $j < count ( $rows ); $j++ ) {
-      $row = $rows[$j];
-      if ( substr ( $row[3], 0, 4 ) == "last" ) {
-          $lastday = date ( "w", mktime ( 0, 0, 0, $row[2] + 1 , 0, $year ) );
-          $offset = -( ( $lastday +7 - $days_of_week[substr($row[3], 4, 3)]) % 7);
-          $changeday = mktime ( 0, 0, 0, $row[2] + 1, $offset, $year ) + $row[4];
-      } else if ( substr ( $row[3], 3, 2 ) == "<="  OR substr ( $row[3], 3, 2 ) == ">=") {
-          $rule_day = substr( $row[3], 5, strlen( $row[3]) -5);
-          $givenday = date ( "w", mktime ( 0, 0, 0, $row[2] , $rule_day, $year ) );
-          if ( substr ( $row[3], 3, 2) == "<=" ) {
-            $offset = -( ( $givenday  + 7  - $days_of_week[ substr( $row[3], 0, 3)]) % 7);
-          } else {
-            $offset = ( ( $days_of_week[ substr( $row[3], 0, 3)] + 7 - $givenday   ) % 7);
-          }
-          $changeday = mktime (  0, 0, 0, $row[2] , $rule_day + $offset, $year ) + $row[4];
-      } else {
-        $changeday = mktime (  0, 0, 0, $row[2] , $row[3], $year ) + $row[4];
-      }
-      
-      $dst_rules[$i] = array (
-       "rule_date" => $changeday,
-       "rule_month" => $row[2],
-       "rule_day" => $row[3],
-       "rule_save" => $row[5],
-       "rule_letter" => $row[6]
-      );
-      $i++;
-    }
-  }
-  // Need data from previous year in case requested date is prior to 
-  // first change date in the current year
-  if ( isset (  $dst_rules[0] ) && $timestamp < $dst_rules[0]['rule_date'] ) {
-    $year = $year -1 ; 
-    //We may get more than one row back. We want the first row
-    $sql = "SELECT rule_save, rule_letter  " . 
-      "FROM webcal_tz_rules WHERE rule_name = ?" . 
-      " AND rule_to >= ? ORDER BY rule_in DESC";
-    $rows = dbi_get_cached_rows ( $sql, array( $zone_rule, $year ) );
-    $i = 0;
-    if ( $rows ) {
-      $row = $rows[0];
-      $dst_rules['lastyear'] = $row[0];
-      $dst_rules['lastletter'] = ( isset ( $row[1] )? $row[1]: "");
-    }
-  }
-  $rules[$zone_rule.$year] = $dst_rules;
-  return $dst_rules;
-}
-
-/**
- * Return UNIX timestamp adjusted for timezone and DST
- *
- * @param timestamp  $timestamp   UNIX format
- * @param string $tz_name  name of requested Time Zone
- *  based on Olsen TZ data
- * @param bool is_gmt 1 if input time is GMT value 
- * @param bool use_dst 1 if DST calculations required
- *
- * @return array
- *  dst_results['name']      = abbreviated name of TZ
- *  dst_results['timestamp'] = UNIX timestamp of converted time/date
- */ 
-function get_tz_time ( $timestamp, $tz_name, $is_gmt = 1, $use_dst = 1 ) {
-  $sql = "SELECT zone_rules, zone_gmtoff, zone_format " . 
-    " FROM webcal_tz_zones WHERE zone_name  = ? " .
-    " AND zone_from <= ? AND zone_until >= ?";
-  $rows = dbi_get_cached_rows (
-    $sql, array( trim( $tz_name ), $timestamp, $timestamp ) );
-  $dst_rules = array ();
-  $dst_results = array ();
-  if ( $rows ) {
-    for ( $j = 0; $j < count ( $rows ); $j++ ) {
-      $row = $rows[$j];
-      //Assign default value for TZ abbrev.
-      $dst_results['name'] = str_replace ( "%s", "", $row[2] );
-      // adjust by gmtoff value
-      if ( $is_gmt == true ) {
-        $dst_results['timestamp'] = $timestamp + $row[1];
-      } else {
-        $dst_results['timestamp'] = $timestamp - $row[1];
-      }
-      if ( ! empty ($row[0] )  && $use_dst == 1 ) { // Zone rules apply
-        $dst_rules = get_rules ( $row[0], $timestamp );
-        if ( count ( $dst_rules ) >= 2) {
-          if ( $timestamp < $dst_rules[0]["rule_date"] && 
-            ! empty ( $dst_rules['lastyear'] ) ) {
-            $dst_results['name'] =
-              str_replace ( "%s", $dst_rules['lastletter'], $row[2] );
-            if ( $is_gmt == true ) {  
-              $dst_results['timestamp'] =
-                $dst_results['timestamp'] + $dst_rules['lastyear'];
-            } else {
-              $dst_results['timestamp'] =
-                $dst_results['timestamp'] - $dst_rules['lastyear'];
-            }
-            return $dst_results;
-          } else if ( $timestamp >= $dst_rules[0]["rule_date"] &&
-            $timestamp < $dst_rules[1]["rule_date"] ) {
-            $dst_results['name'] =
-              str_replace ( "%s", $dst_rules[0]['rule_letter'], $row[2] );
-            if ( $is_gmt == true ) {  
-              $dst_results['timestamp'] =
-                $dst_results['timestamp'] + $dst_rules[0]['rule_save'];
-            } else {
-              $dst_results['timestamp'] =
-                $dst_results['timestamp'] - $dst_rules[0]['rule_save'];     
-            }
-            return $dst_results;
-          } else {
-            $dst_results['name'] =
-              str_replace ( "%s", $dst_rules[1]['rule_letter'], $row[2] );  
-            if ( $is_gmt == true ) {  
-              $dst_results['timestamp'] =
-                $dst_results['timestamp'] + $dst_rules[1]['rule_save'];
-            } else {
-              $dst_results['timestamp'] =
-                $dst_results['timestamp'] - $dst_rules[1]['rule_save'];     
-            }
-            return $dst_results;
-          }
-        }
-      }
-    }
-    return $dst_results;
-  }
-}
-
-
 /*
  * Prints Timezone select for use on forms
  *
@@ -5468,7 +5302,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
       }
       fclose($fd);
    }
-	 sort ( $timezones);
+   sort ( $timezones);
    //allows different SETTING names between SERVER and USER
    if ( $prefix == 'admin_' ) $prefix .= 'SERVER_';
    $ret =  "<select name=\"" . $prefix . "TIMEZONE\" id=\"" . 
@@ -5812,13 +5646,13 @@ function getReminders ( $id, $display=false ) {
         } else  { //must be an offset even if zero
           $str .= "&nbsp;&nbsp;-&nbsp;&nbsp;";
           $d = $h = $minutes = 0;
-					if ( $reminder['offset'] > 0 ) {
-						$minutes = $reminder['offset'];
-						$d = (int) ( $minutes / ONE_DAY );
-						$minutes -= ( $d * ONE_DAY );
-						$h = (int) ( $minutes / 60 );
-						$minutes -= ( $h * 60 );
-					}
+          if ( $reminder['offset'] > 0 ) {
+            $minutes = $reminder['offset'];
+            $d = (int) ( $minutes / ONE_DAY );
+            $minutes -= ( $d * ONE_DAY );
+            $h = (int) ( $minutes / 60 );
+            $minutes -= ( $h * 60 );
+          }
           if ( $d > 1 ) {
             $str .= $d . " " . translate("days") . " ";
           } else if ( $d == 1 ) {
@@ -5867,10 +5701,10 @@ function set_env ( $val, $setting ) {
   
   if ( $ret == true ) 
     putenv ( $val ."=" . $setting );
-		
-	//some say this is required to properly init timezone changes
+    
+  //some say this is required to properly init timezone changes
   if ( $val == "TZ" ) mktime ( 0,0,0,1,1,1970);
-		
+    
   return $ret;
 }
 ?>
