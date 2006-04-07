@@ -100,7 +100,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $due_date = $row[13];
     $due_time = $row[14];
     
-		$calTS = date_to_epoch ( $cal_date . $cal_time );
+    $calTS = date_to_epoch ( $cal_date . $cal_time );
     //Don't adjust for All Day entries
     if ( $cal_time > 0 || ( $cal_time == 0 &&  $row[5] != 1440 ) ) {
       $cal_date = date ( "Ymd", $calTS );
@@ -109,7 +109,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $hour = floor($cal_time / 10000);
     $minute = ( $cal_time / 100 ) % 100;
   
-	  $dueTS = date_to_epoch ( $due_date . $due_time );
+    $dueTS = date_to_epoch ( $due_date . $due_time );
     $due_date = date ( "Ymd", $dueTS );
     $due_time = date (  "His", $dueTS );
     $due_hour = floor($due_time / 10000);
@@ -184,7 +184,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
           else
             $rpt_end = 0;
           if ( ! empty ( $row[2] ) ) {
-					   $rpt_endTS = date_to_epoch( $row[2] . $row[3] );
+             $rpt_endTS = date_to_epoch( $row[2] . $row[3] );
              $rpt_end_date = date( "Ymd", $rpt_endTS );
              $rpt_end_time = date( "His", $rpt_endTS );
           }  else {
@@ -281,7 +281,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
 
   //get reminders 
   $reminder = getReminders ( $id ); 
-  $reminder_offset = $reminder['offset'];
+  $reminder_offset = ( ! empty (  $reminder ) ? $reminder['offset'] : 0 );
   
   //get participants
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? AND " .
@@ -320,8 +320,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
  }
   // Anything other then testing for strlen breaks either hour=0 or no hour in URL
   if ( strlen ( $hour ) ) {
-		$time = $hour * 100;	
-	} else {
+    $time = $hour * 100;  
+  } else {
     $time = -1;
     $hour = -1;
   }
@@ -354,11 +354,12 @@ if ( ! isset ( $hour ) )
   $hour = -1;
 if ( empty ( $duration ) )
   $duration = 0;
-if ( $duration == ONE_DAY && $hour == 0 ) {
+if ( $duration == 1440 && $time == 0 ) {
   $hour = $minute = $duration = "";
   $allday = "Y";
-} else
+} else {
   $allday = "N";
+}
 if ( empty ( $name ) )
   $name = "";
 if ( empty ( $description ) || $description == "<br />" )
@@ -377,14 +378,13 @@ if ( empty ( $rpt_end_time ) )
   $rpt_end_time = 0;
 
 if ( empty ( $cal_date ) ) {
-  if ( ! empty ( $date ) )
+  if ( ! empty ( $date ) && $eType != 'task' )
     $cal_date = $date;
   else
     $cal_date = date ( "Ymd" );
   if ( empty ( $due_date ) )
     $due_date = date ( "Ymd" );
 }
-
 if ( empty ( $thisyear ) )
   $thisdate = date ( "Ymd" );
 else {
@@ -403,10 +403,10 @@ if ( empty ( $due_date ) || ! $due_date )
 //Even though event is stored in GMT, an Assistant may need to know that
 //the boss is in a different Timezone
 if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
-	$tz_offset = date ( "Z", $calTS );   
+  $tz_offset = date ( "Z", $calTS );   
   $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
   set_env ( "TZ", $user_TIMEZONE );
-	$user_tz_offset = date ( "Z", $calTS );
+  $user_tz_offset = date ( "Z", $calTS );
   if ( $tz_offset != $user_tz_offset ) {  //Different TZ_Offset
     user_load_variables ( $user, "temp" );
     $tz_diff = $user_tz_offset - $tz_offset;
@@ -418,8 +418,8 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
     $TZ_notice .= abs ( $tz_diff ) . " " . $tz_value . ".<br />&nbsp;"; 
     $TZ_notice .= translate ("Time entered here is based on your Timezone") . ".)"; 
   }
-	//return to $login TIMEZONE
-	set_env ( "TZ", $TIMEZONE );
+  //return to $login TIMEZONE
+  set_env ( "TZ", $TIMEZONE );
 }
 if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
   // Allow HTML in description
