@@ -477,7 +477,7 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Time")?>:</td><td>
  <?php
-    if ( $duration == ONE_DAY ) {
+    if ( $duration == 1440  && $event_time == 0 ) {
       etranslate("All day event");
     } else {
       // Display TZID if no end time
