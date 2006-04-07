@@ -2179,7 +2179,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
           // There's another one with the same ID as the one we inserted.
           // Check for dup and if so, delete it.
           $other_item = $result[$first_i_this_id + 1];
-          if ($layers_byuser[$other_item->getLogin()] == 'N') {
+          if (!empty($layers_byuser[$other_item->getLogin()]) &&
+            $layers_byuser[$other_item->getLogin()] == 'N') {
             // NOTE: array_splice requires PHP4
             array_splice ( $result, $first_i_this_id + 1, 1 );
             $i--;
