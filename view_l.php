@@ -38,6 +38,19 @@ print_header($INC);
 
 set_today($date);
 
+$next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
+$nextyear = date ( "Y", $next );
+$nextmonth = date ( "m", $next );
+$nextdate = sprintf ( "%04d%02d01", $nextyear, $nextmonth );
+$nextYmd = date ( "Ymd", $next );
+
+$prev = mktime ( 3, 0, 0, $thismonth - 1, 1, $thisyear );
+$prevyear = date ( "Y", $prev );
+$prevmonth = date ( "m", $prev );
+$prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
+$prevYmd = date ( "Ymd", $prev );
+
+
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;
   $startdate = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear );
