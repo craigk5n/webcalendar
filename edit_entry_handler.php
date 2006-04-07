@@ -17,7 +17,7 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
 }
 // Remember previous cal_goup_id if present
 $old_id = ( ! empty ( $parent ) ? $parent : $old_id );
-
+$old_status = array();
 //Pass all string values through getPostValue
 $name = getPostValue ( 'name' );
 $description = getPostValue ( 'description' );
@@ -55,7 +55,7 @@ if ( empty ( $duration_m ) || $duration_m < 0 ) $duration_m = 0;
 
 // Timed event.
 if ( $timetype == 'T' )  {
-  // Convert to 24 hour before subtracting tz_offset so am/pm isn't confused.
+  // Convert to 24 hour  so am/pm isn't confused.
   // Note this obsoltes any code in the file below that deals with am/pm
   // so the code can be deleted
   if ( $TIME_FORMAT == '12' && $hour < 12 ) {
@@ -131,7 +131,6 @@ if ( ! empty ( $rpt_year ) ) {
     }
  }  
 }
-//$TIME_FORMAT=24;
 // If "all day event" was selected, then we set the event time
 // to be 12AM with a duration of 24 hours.
 // We don't actually store the "all day event" flag per se.  This method
@@ -163,18 +162,22 @@ if ( $timetype == "U" ) {
 }
 
 
-// Combine all values to create event start date/time 
-$eventstart = mktime ( $hour, $minute, 0, $month, $day, $year );
-//if ( $timetype == "T" ) { // All other types are time independent
-//  $eventstart  -= date ( "Z", $eventstart );
-//}
+// Combine all values to create event start date/time
+if ( $timetype != "T" ) { 
+  $eventstart = gmmktime ( $hour, $minute, 0, $month, $day, $year );
+} else {
+  $eventstart = mktime ( $hour, $minute, 0, $month, $day, $year );
+}
+
 
 if ( $eType == 'task' ) {
   // Combine all values to create event due date/time - User Time
-  $eventdue = mktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
-//  if ( $timetype == "T" ) { // All other types are time independent
-//    $eventdue  -= date ( "Z", $eventdue );	
-//	}
+  if ( $timetype != "T" ) { 
+    $eventdue = gmmktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
+  } else {
+    $eventdue = mktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
+  }
+
 
   // Combine all values to create completed date 
   if ( ! empty ( $complete_year )  && ! empty ( $complete_month ) &&
@@ -195,23 +198,21 @@ if ( $TIMED_EVT_LEN == 'E') {
  $eventstopmin= $minute + $duration_m;
 }
 
-$eventstop = mktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
-//if ( $timetype == "T" ) { // All other types are time independent
-//  $eventstop -= date ("Z", $eventstop );
-//}
- 
-
- 
-// Calculate event duration
-$duration = ( $eventstop - $eventstart ) / 60;
-
-if ( $timetype == "T" && $duration < 0 ) {
- $duration = 0;
+if ( $timetype != "T" ) { 
+  $eventstop = gmmktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
+} else {
+  $eventstop = mktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
 }
 
-//Hack to prevent DST edge days from changing All Day Events
-if ( $timetype == "A" ) {
+
+// Calculate event duration
+if ( $timetype == "T" ) {
+  $duration = ( $eventstop - $eventstart ) / 60;
+  if (  $duration < 0 ) $duration = 0;
+} else if ( $timetype == "A" ) {
  $duration = 1440;
+} else if ( $timetype == "U" ) {
+ $duration = 0;
 }
  
 // Make sure this user is really allowed to edit this event.
@@ -331,7 +332,7 @@ if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
   
   if ( ! empty ( $rpt_year ) ) {  
     $endt = mktime ( $rpt_endhour, $rpt_endminute, 0, $rpt_month, $rpt_day,$rpt_year );
-		$endt -= date ("Z", $endt );
+    $endt -= date ("Z", $endt );
   } else {
     $endt = 'NULL';
   }
@@ -606,7 +607,7 @@ if ( empty ( $error ) ) {
       }
       $reminder_date = gmmktime ( $remhour, $remminute, 0, $reminder_month,
         $reminder_day, $reminder_year );
-		  //$reminder_date -= date("Z", $reminder_date ); 
+      //$reminder_date -= date("Z", $reminder_date ); 
     } else { //use offset
       $reminder_offset = ($rem_days * 60 * 24 ) + ( $rem_hours * 60 ) + $rem_minutes;
     }
@@ -857,8 +858,8 @@ if ( empty ( $error ) ) {
     dbi_execute ( "DELETE FROM webcal_entry_user WHERE cal_id = ? " .
       "AND cal_login = ?", array( $id, $participants[$i] ) );
     $sql = "INSERT INTO webcal_entry_user " .
-      "( cal_id, cal_login, cal_status ) VALUES ( ?, ?, ? )";
-    if ( ! dbi_execute ( $sql, array( $id, $participants[$i], $status ) ) ) {
+      "( cal_id, cal_login, cal_status, cal_percent ) VALUES ( ?, ?, ?, ? )";
+    if ( ! dbi_execute ( $sql, array( $id, $participants[$i], $status, $percent ) ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
       break;
 
@@ -1080,7 +1081,7 @@ if ( ! empty ( $conflicts ) ) {
 
 <?php etranslate("Your suggested time of")?> <span style="font-weight:bold;">
 <?php
-  if ( ! empty ( $allday ) && $allday == "Y" ) {
+  if (  $timetype == "A" ) {
     etranslate("All day event");
   } else {
     $time = sprintf ( "%d%02d00", $hour, $minute );
