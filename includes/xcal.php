@@ -1779,7 +1779,7 @@ foreach ( $data as $Entry ){
       }
     }
     for ( $i = 0; $i < count ( $oldIds ); $i++ ) {
-      $sql = "UPDATE webcal_entry_user SET cal_status = 'd' " .
+      $sql = "UPDATE webcal_entry_user SET cal_status = 'D' " .
         "WHERE cal_id = ?";
       $sqlLog .= $sql . "<br />\n";
       dbi_execute ( $sql , array ( $oldIds[$i] ) );
