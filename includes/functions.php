@@ -2197,7 +2197,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
       }
        //Does event go past midnight?
        if ( date( "Ymd", $item->getDateTimeTS() ) != 
-         date( "Ymd", $item->getEndDateTimeTS() ) && ! $item->isAllDay() ) 
+         date( "Ymd", $item->getEndDateTimeTS() ) && 
+         ! $item->isAllDay() && $item->getCalTypeName() == 'event' ) 
          $i = get_OverLap ( $item, $i, true, 0, $item->getDate()  );
     }
   }
@@ -3144,9 +3145,9 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
             if ( $row->getAccess() == 'R' && $row->getLogin() != $login ) {
               $conflicts .=  "(" . translate("Private") . ")";
             } else if ( $row->getAccess() == 'C' && $row->getLogin() != $login &&
-        !$is_assistant  && !$is_nonuser_admin) {
+              !$is_assistant  && !$is_nonuser_admin) {
               //assistants can see confidential stuff
-       $conflicts .=  "(" . translate("Confidential") . ")";
+              $conflicts .=  "(" . translate("Confidential") . ")";
             } else {
               $conflicts .=  "<a href=\"view_entry.php?id=" . $row->getID();
               if ( ! empty ( $user ) && $user != $login )
