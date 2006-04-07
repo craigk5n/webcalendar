@@ -2197,7 +2197,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
       }
        //Does event go past midnight?
        if ( date( "Ymd", $item->getDateTimeTS() ) != 
-         date( "Ymd", $item->getEndDateTimeTS() ) ) 
+         date( "Ymd", $item->getEndDateTimeTS() ) && ! $item->isAllDay() ) 
          $i = get_OverLap ( $item, $i, true, 0, $item->getDate()  );
     }
   }
@@ -2990,7 +2990,7 @@ function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
  * 
  * @todo Update this to handle exceptions to repeating events
  *
- * @param array  $dates        Array of dates in YYYYMMDD format that is
+ * @param array  $dates        Array of dates in Timestamp format that is
  *                             checked for overlaps.
  * @param int    $duration     Event duration in minutes
  * @param int    $eventstart   GMT starttime timestamp
@@ -3007,8 +3007,8 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
   global $single_user_login, $single_user;
   global $repeated_events, $LIMIT_APPTS, $LIMIT_APPTS_NUMBER;
   if (!count($dates)) return false;
-  $hour = date ( "H", $eventstart );
-  $minute = date ( "i", $eventstart ); 
+  $hour = gmdate ( "H", $eventstart );
+  $minute = gmdate ( "i", $eventstart ); 
   $evtcnt = array ();
   
   $query_params = array();
@@ -3022,7 +3022,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
     "AND (";
   for ($x = 0; $x < count($dates); $x++) {
     if ($x != 0) $sql .= " OR ";
-    $sql.="webcal_entry.cal_date = " . date ( "Ymd", $dates[$x] );
+    $sql.="webcal_entry.cal_date = " . gmdate ( "Ymd", $dates[$x] );
   }
   $sql .=  ") AND webcal_entry.cal_time >= 0 " .
     "AND webcal_entry_user.cal_status IN ('A','W') AND ( ";
@@ -3048,7 +3048,6 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
   $found = array();
   $count = 0;
   if ( $res ) {
-    //Need to add user's timezone offset
     $time1 = sprintf ( "%d%02d00", $hour, $minute );
     $duration1 = sprintf ( "%d", $duration );
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -3085,7 +3084,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
               $conflicts .= "&amp;user=$row[0]";
             $conflicts .= "\">$row[3]</a>";
           }
-          if ( $duration2 == ( 24 * 60 ) ) {
+          if ( $duration2 == ( 24 * 60 ) && $time2 == 0 ) {
             $conflicts .= " (" . translate("All day event") . ")";
           } else {
             $conflicts .= " (" . display_time ( $row[8] . $time2 );
@@ -3117,8 +3116,8 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
     //events that couldn't possibly match.  This could be made much more complex to put more
     //of the searching work onto the database server, or it could be dropped all together to put
     //the searching work onto the client.
-    $date_filter  = "AND (webcal_entry.cal_date <= " . date("Ymd",$dates[count($dates)-1]);
-    $date_filter .= " AND (webcal_entry_repeats.cal_end IS NULL OR webcal_entry_repeats.cal_end >= " . date("Ymd",$dates[0]) . "))";
+    $date_filter  = "AND (webcal_entry.cal_date <= " . gmdate("Ymd",$dates[count($dates)-1]);
+    $date_filter .= " AND (webcal_entry_repeats.cal_end IS NULL OR webcal_entry_repeats.cal_end >= " . gmdate("Ymd",$dates[0]) . "))";
     //Read repeated events for the participants only once for a participant for
     //for performance reasons.
     $repeated_events=query_events($participants[$q],true,$date_filter);
@@ -3126,7 +3125,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
       //  echo $repeated_events[$dd]->getID() . "<br />";
     //}
     for ($i=0; $i < count($dates); $i++) {
-      $dateYmd = date ( "Ymd", $dates[$i] );
+      $dateYmd = gmdate ( "Ymd", $dates[$i] );
       $list = get_repeating_entries($participants[$q],$dateYmd);
       $thisyear = substr($dateYmd, 0, 4);
       $thismonth = substr($dateYmd, 4, 2);
@@ -5538,7 +5537,7 @@ function combine_and_sort_events ( $ev, $rep ) {
 //calculate rollover to next day and add partial event as needed
 function get_OverLap ( $item, $i, $parent=true, $nextdur=0, $originalDate='' ) {
   global $result;
-  
+ 
   $recurse = 0;
   $lt = localtime ( $item->getDateTimeTS() );
   $tz_offset = date ( "Z", $item->getDateTimeTS() ) / 3600;
