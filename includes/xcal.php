@@ -167,48 +167,35 @@ function export_get_attendee($id, $export) {
 // other than formatting
 function export_time($date, $duration, $time, $texport, $vtype='E') {
   $ret = '';
-  $year = (int) substr($date,0,-4);
-  $month = (int) substr($date,-4,2);
-  $day = (int) substr($date,-2,2);
- if ( $time != -1 ) {
-   $time = sprintf ( "%06d", $time ); 
-    $hour = (int) substr($time,0,-4);
-    $min = (int) substr($time,-4,2);
-    $sec = (int) substr($time,-2,2);
- }
- if ( $time == -1  || ( $time == 0 && $duration == 1440 ) ) {
-    // untimed event or all day
+  $eventstart = date_to_epoch ( $date . $time );
+  $eventend = $eventstart + ( $duration * 60 );
+  if ( $time == 0 && $duration == 1440 ) {
+    //all day
     $ret .= "DTSTART;VALUE=DATE:$date\r\n";
+  } else if ( $time == -1 ) {
+    // untimed event 
+    $ret .= "DTSTART;VALUE=DATETIME:" . $date . "T000000\r\n";
   } else {
     // timed event 
-    $utc_start = export_get_utc_date($date, $time);
+    $utc_start = export_ts_utc_date( $eventstart );
     $ret .= "DTSTART:$utc_start\r\n";
   }
   if (strcmp($texport,"ical") == 0) {
-    $utc_dtstamp = export_get_utc_date(date("Ymd", mktime()),
-      date("His", mktime()));
+    $utc_dtstamp = export_ts_utc_date( gmmktime() );
     $ret .= "DTSTAMP:$utc_dtstamp\r\n";
   //We don' want DTEND for VTODOs
   if ( $vtype == "T" || $vtype == "N" ) return $ret;
-   if ($time == -1  || ( $time == 0 && $duration == 1440 ) ) {
-      // untimed event
-     $end_date = date("Ymd", mktime(12, 0, 0, $month, $day +1, $year));
-     $ret .= "DTEND;VALUE=DATE:$end_date\r\n";
-   } else {
-     $end_tmstamp = mktime($hour, $min + $duration, 0, $month, $day, $year);
-    //echo date("YmdHis", $end_tmstamp);
-     $utc_end = export_get_utc_date(date("Ymd", $end_tmstamp), date("His", $end_tmstamp));
-    //echo $hour." " .$min ." " .$duration." " .$month." " . $day." " . $year;
+   if ( $time >= 0 ) {
+      // all day event or timed event
+     $utc_end = export_ts_utc_date( $eventend );
      $ret .= "DTEND:$utc_end\r\n";
    }
   } elseif (strcmp($texport,"vcal") == 0) {
    if ($time == -1  || ( $time == 0 && $duration == 1440 ) ) {
-     $end_tmstamp = mktime($hour, $min, 0, $month, $day +1, $year);
-     $utc_end = date("Ymd", $end_tmstamp);
+     $utc_end = gmdate("Ymd", $eventend);
      $ret .= "DTEND:$utc_end\r\n";
    } else {
-     $end_tmstamp = mktime($hour, $min + $duration, 0, $month, $day, $year);;
-     $utc_end = export_get_utc_date(date("Ymd", $end_tmstamp), date("His", $end_tmstamp));
+     $utc_end = export_ts_utc_date( $eventend );
      $ret .= "DTEND:$utc_end\r\n";
    }
   } else {
@@ -484,6 +471,17 @@ function export_recurrence_vcal($id, $date) {
 function export_get_utc_date($date, $time=0) {
   $time = sprintf ( "%06d", $time);
   $utc = sprintf ("%sT%sZ", $date, $time);
+
+  return $utc;
+}
+
+/*
+ * Create a date-time format (e.g. "20041130T123000Z") that is
+ * Times are now stored in GMT so no conversion is needed
+ */
+function export_ts_utc_date( $timestamp ) {
+
+  $utc = gmdate ( "Ymd", $timestamp ) . "T" . gmdate ( "His", $timestamp ) . "Z";
 
   return $utc;
 }
@@ -1073,7 +1071,7 @@ function export_ical ( $id='all', $attachment=false ) {
 
   
   $ret .= "END:VCALENDAR\r\n";
-  
+do_debug ( $ret);  
   //attachment will be true if called during email creation
   if ( !$attachment ) {
     echo $ret;
@@ -1158,19 +1156,12 @@ foreach ( $data as $Entry ){
     $participants[0] = $calUser;
     //$participants[0] = $login;
 
-    // Some additional date/time info
-    $START = $Entry['StartTime'] > 0 ? localtime($Entry['StartTime']) : 0;
-    $END   = $Entry['EndTime'] > 0 ? localtime($Entry['EndTime']) : 0;
-    $Entry['StartMinute']        = sprintf ("%02d",$START[1]);
-    $Entry['StartHour']          = sprintf ("%02d",$START[2]);
-    $Entry['StartDay']           = sprintf ("%02d",$START[3]);
-    $Entry['StartMonth']         = sprintf ("%02d",$START[4] + 1);
-    $Entry['StartYear']          = sprintf ("%04d",$START[5] + 1900);
-    $Entry['EndMinute']          = sprintf ("%02d",$END[1]);
-    $Entry['EndHour']            = sprintf ("%02d",$END[2]);
-    $Entry['EndDay']             = sprintf ("%02d",$END[3]);
-    $Entry['EndMonth']           = sprintf ("%02d",$END[4] + 1);
-    $Entry['EndYear']            = sprintf ("%04d",$END[5] + 1900);
+
+    $Entry['start_date'] = gmdate (  "Ymd", $Entry['StartTime'] );
+    $Entry['start_time'] = gmdate (  "His", $Entry['StartTime'] );
+    $Entry['end_date'] = gmdate (  "Ymd", $Entry['EndTime'] );
+    $Entry['end_time'] = gmdate (  "His", $Entry['EndTime'] );
+
    //not in icalclient
     if ( $overwrite && ! empty ( $Entry['UID'] ) ) {
       if ( empty ( $oldUIDs[$Entry['UID']] ) ) {
@@ -1182,18 +1173,13 @@ foreach ( $data as $Entry ){
 
     // Check for untimed
     if ( ! empty ( $Entry['Untimed'] ) && $Entry['Untimed'] == 1) {
-      $Entry['StartMinute'] = '';
-      $Entry['StartHour'] = '';
-      $Entry['EndMinute'] = '';
-      $Entry['EndHour'] = '';
+      $Entry['start_time'] = 0;
     }
 
     // Check for all day
     if ( ! empty ( $Entry['AllDay'] ) && $Entry['AllDay'] == 1) {
-      $Entry['StartMinute'] = '0';
-      $Entry['StartHour'] = '0';
-      $Entry['EndMinute'] = '0';
-      $Entry['EndHour'] = '0';
+      $Entry['start_time'] = 0;
+      $Entry['end_time'] = 0;
       $Entry['Duration'] = '1440';
     }
 
@@ -1212,10 +1198,7 @@ foreach ( $data as $Entry ){
     // first check for any schedule conflicts
     if ( ( $ALLOW_CONFLICT_OVERRIDE == "N" && $ALLOW_CONFLICTS == "N" ) &&
       ( $Entry['Duration'] != 0 )) {
-      $date = mktime (0,0,0,$Entry['StartMonth'],
-        $Entry['StartDay'],$Entry['StartYear']);
-
-    
+  
       $ex_days = array ();
       if ( ! empty ( $Entry['Repeat']['Exceptions'] ) ) {
         foreach ($Entry['Repeat']['Exceptions'] as $ex_date) {
@@ -1229,7 +1212,7 @@ foreach ( $data as $Entry ){
         }
       }
 
-    $dates = get_all_dates($date, RepeatType($Entry['Repeat']['Frequency']), 
+    $dates = get_all_dates($Entry['StartTime'], RepeatType($Entry['Repeat']['Frequency']), 
       $Entry['Repeat']['Interval'], $Entry['Repeat']['ByMonth'], 
       $Entry['Repeat']['ByWeekNo'], $Entry['Repeat']['ByYearDay'],
       $Entry['Repeat']['ByMonthDay'], $Entry['Repeat']['ByDay'],
@@ -1238,7 +1221,7 @@ foreach ( $data as $Entry ){
       $ex_days, $inc_days);
 
       $overlap = check_for_conflicts ( $dates, $Entry['Duration'], 
-        $Entry['StartHour'], $Entry['StartMinute'], $participants, $login, 0 );
+        $Entry['StartTime'], $participants, $login, 0 );
     }
 
     if ( empty ( $error ) && ! empty ( $overlap ) ) {
@@ -1302,12 +1285,10 @@ foreach ( $data as $Entry ){
         $values[] = $login;
       }
       $names[] = 'cal_date';
-      $values[] = sprintf ( "%04d%02d%02d",
-        $Entry['StartYear'],$Entry['StartMonth'],$Entry['StartDay']);
+      $values[] = $Entry['start_date'];
       $names[] = 'cal_time';
       $values[] = ( ! empty ( $Entry['Untimed'] ) && 
-        $Entry['Untimed'] == 1) ? "-1" :
-        sprintf ( "%02d%02d00", $Entry['StartHour'],$Entry['StartMinute']);
+        $Entry['Untimed'] == 1) ? "-1" : $Entry['start_time'];
       $names[] = 'cal_mod_date';
       $values[] = gmdate("Ymd");
       $names[] = 'cal_mod_time';
@@ -1412,7 +1393,8 @@ foreach ( $data as $Entry ){
           $string_values .= '?';
           $sql_params[] = $values[$f];
         }
-        $sql = "INSERT INTO webcal_entry ( " . $string_names . " ) VALUES ( " . $string_values . " )";
+        $sql = "INSERT INTO webcal_entry ( " . $string_names . 
+          " ) VALUES ( " . $string_values . " )";
       }
 
       //do_debug ( "SQL> $sql" );
@@ -1432,15 +1414,15 @@ foreach ( $data as $Entry ){
         activity_log ( $id, $login, $login,
           $updateMode ? LOG_UPDATE : LOG_CREATE, "Import from $ImportType" );   
    }
- //not in icalclient
+      //not in icalclient
       if ( $single_user == "Y" ) {
         $participants[0] = $single_user_login;
       }
 
       // Now add to webcal_import_data
       if ( ! $updateMode ) {
-     //only in icalclient
- //add entry to webcal_import and webcal_import_data
+       //only in icalclient
+       //add entry to webcal_import and webcal_import_data
         $uid = generate_uid ($id);
         $uid = empty ( $Entry['UID'] ) ? $uid  : $Entry['UID'];
         if ( $importId < 0 ) {
@@ -1452,7 +1434,8 @@ foreach ( $data as $Entry ){
             "cal_login, cal_import_type, cal_external_id ) VALUES ( " .
             "?, ?, ?, ?, ? )";
           $sqlLog .= $sql . "<br />\n";
-          if ( ! dbi_execute ( $sql , array ( $importId, $id, $calUser, 'palm', $Entry['RecordID'] ) ) ) {
+          if ( ! dbi_execute ( $sql , array ( $importId, $id, 
+            $calUser, 'palm', $Entry['RecordID'] ) ) ) {
             $error = translate("Database error") . ": " . dbi_error ();
             break;
           }
@@ -1488,7 +1471,7 @@ foreach ( $data as $Entry ){
 
       // Now add participants
       $status = ( ! empty ( $Entry['Status'] ) ? $Entry['Status'] : "A" );
-      $percent = ( ! empty ( $Entry['Percent'] ) ? $Entry['Percent'] : '0' );
+      $percent = ( ! empty ( $Entry['Percent'] ) ? $Entry['Percent'] : '' );
       if ( ! $updateMode ) {
         //do_debug ( "Adding event $id for user $participants[0] with status=$status" );
         $sql = "INSERT INTO webcal_entry_user " .
@@ -1500,16 +1483,25 @@ foreach ( $data as $Entry ){
           break;
         }
       } else {
-        //do_debug ( "Updating event $id for user $participants[0] with status=$status" );
+        do_debug ( "Updating event $id for user $participants[0] with status=$status" );
         //do_debug ( "SQL> $sql" );
-        $sql = "UPDATE webcal_entry_user SET cal_status = ? ," .
-         " cal_percent = ?" .
+        $sql = "UPDATE webcal_entry_user SET cal_status = ?" .
           " WHERE cal_id = ?";
-       if ( ! dbi_execute ( $sql , array ( $status , $percent , $id ) ) ) {
+       if ( ! dbi_execute ( $sql , array ( $status, $id ) ) ) {
          $error = translate("Database error") . ": " . dbi_error ();
          //do_debug ( "Error: " . $error );
          break;
        }
+        //update percentage only if set
+        if ( $percent !='' ) {
+          $sql = "UPDATE webcal_entry_user SET cal_percent = ?" .
+            " WHERE cal_id = ?";
+          if ( ! dbi_execute ( $sql , array ( $percent , $id ) ) ) {
+            $error = translate("Database error") . ": " . dbi_error ();
+           //do_debug ( "Error: " . $error );
+           break;
+          }
+        }
     dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ?" , array ( $id ) );
      }
      //update Categories
@@ -1585,12 +1577,12 @@ foreach ( $data as $Entry ){
          $REND   = localtime($Entry['Repeat']['Until']);
      if (! empty ( $Entry['Repeat']['Count'] ) ) {
        //Get end time from DTSTART
-      $RENDTIME =sprintf ( "%02d%02d00", $Entry['StartHour'],$Entry['StartMinute']);
+      $RENDTIME = $Entry['start_time'];
      } else {
-       $RENDTIME = sprintf ( "%02d%02d%02d", $REND[2], $REND[1], $REND[0]); 
+       $RENDTIME = gmdate ( "His", $Entry['Repeat']['Until'] ); 
       }
      $names[] = 'cal_end';
-         $values[] = sprintf ( "%04d%02d%02d",$REND[5] + 1900, $REND[4] + 1, $REND[3]);
+         $values[] = gmdate ( "Ymd", $Entry['Repeat']['Until'] );
     // if ( $RENDTIME != '000000' ) {
         $names[] = 'cal_endtime';         
            $values[] = $RENDTIME;
@@ -1721,10 +1713,10 @@ foreach ( $data as $Entry ){
       echo "</h2></b>";
 
       if ( $Entry['Duration'] > 0 ) {
-        $time = display_time ( $Entry['StartHour'].$Entry['StartMinute']."00", 1 ) .
-          " - " . display_time ( $Entry['EndHour'].$Entry['EndMinute']."00", 3 );
+        $time = display_time ( $Entry['start_time'], 1 ) .
+          " - " . display_time ( $Entry['end_time'], 3 );
       }
-      $dd = $Entry['StartMonth'] . "-" .  $Entry['StartDay'] . "-" . $Entry['StartYear'];
+      $dd = date ( "m-d-Y", $Entry['StartTime'] );
       $Entry['Summary'] = str_replace ( "''", "'", $Entry['Summary'] );
       $Entry['Summary'] = str_replace ( "'", "\\'", $Entry['Summary'] );
       echo htmlspecialchars ( $Entry['Summary'] );
@@ -1744,12 +1736,11 @@ foreach ( $data as $Entry ){
   }
       $count_suc++;
       if ( $Entry['Duration'] > 0 ) {
-        $time = display_time ( $Entry['StartHour'].$Entry['StartMinute']."00", 1 ) .
-          " - " . display_time ( $Entry['EndHour'].$Entry['EndMinute']."00", 3 );
+        $time = display_time ( $Entry['start_time'], 1 ) .
+          " - " . display_time ( $Entry['end_time'], 3 );
       }
-      $dateYmd = sprintf ( "%04d%02d%02d", $Entry['StartYear'],
-        $Entry['StartMonth'], $Entry['StartDay'] );
-      $dd = date_to_str ( $dateYmd );
+
+      $dd = $Entry['start_date']; 
       echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
       echo "\" onmouseover=\"window.status='" . translate("View this entry") .
         "'; return true;\" onmouseout=\"window.status=''; return true;\">";
@@ -1788,7 +1779,7 @@ foreach ( $data as $Entry ){
       }
     }
     for ( $i = 0; $i < count ( $oldIds ); $i++ ) {
-      $sql = "UPDATE webcal_entry_user SET cal_status = 'D' " .
+      $sql = "UPDATE webcal_entry_user SET cal_status = 'd' " .
         "WHERE cal_id = ?";
       $sqlLog .= $sql . "<br />\n";
       dbi_execute ( $sql , array ( $oldIds[$i] ) );
@@ -1846,7 +1837,7 @@ function parse_ical ( $cal_file, $source='file' ) {
   $cnt = 0;
   while ( ! feof ( $stdin ) ) {
     $line = fgets ( $stdin, 1024 );
-    //do_debug ( "data-> '" . $line . "'" );
+    do_debug ( "data-> '" . $line . "'" );
     $cnt++;
     //do_debug ( "cnt = " . ( ++$cnt ) );
     $data .= $line;
@@ -2100,21 +2091,24 @@ function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0'
   $plus_y = '0') {
   global $SERVER_TIMEZONE, $calUser;;
   $this_TIMEZONE = $Z ='';
- 
+  $H = $M = $S = 0; 
   $y = substr($vdate, 0, 4) + $plus_y;
   $m = substr($vdate, 4, 2) + $plus_m;
   $d = substr($vdate, 6, 2) + $plus_d;
-  $H = substr($vdate, 9, 2);
-  $M = substr($vdate, 11, 2);
-  $S = substr($vdate, 13, 2);
-  $Z = substr($vdate, 15, 1);
+  if ( strlen ( $vdate ) > 8 ) {  
+    $H = substr($vdate, 9, 2);
+    $M = substr($vdate, 11, 2);
+    $S = substr($vdate, 13, 2);
+    $Z = substr($vdate, 15, 1);
+  }
 
   //Sunbird does not do Timezone right so...
  //We'll just hardcode their GMT timezone def here
  switch  ( $tzid ) {
    case "/Mozilla.org/BasicTimezones/GMT":
      //I think this is the only real timezone set to UTC...since 1972 at least
-     $this_TIMEZONE = "Africa/Monrovia"; 
+     $this_TIMEZONE = "Africa/Monrovia";
+     $Z = "Z"; 
      break;
    case "US-Eastern":
    case "US/Eastern":
@@ -2134,20 +2128,18 @@ function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0'
      $this_TIMEZONE = $tzid;
    break;
  } //end switch
- 
+
   // Convert time from user's timezone to GMT if datetime value
-  if ( strlen ( $vdate ) > 8 ) {
     if ( empty ( $this_TIMEZONE ) ) {
       $user_TIMEZONE = get_pref_setting ( $calUser, "TIMEZONE" );
       $this_TIMEZONE = ( ! empty ( $user_TIMEZONE ) ? $user_TIMEZONE : $SERVER_TIMEZONE );
     }
-    if ( ! empty ( $Z ) ) {
+    if ( empty ( $Z ) ) {
       putenv ( "TZ=$this_TIMEZONE" );
       $TS = mktime($H,$M,$S,$m,$d,$y);
     } else {
        $TS = gmmktime($H,$M,$S,$m,$d,$y);
     }
- }
   set_env ( "TZ", $user_TIMEZONE );
   return $TS;
 }
@@ -2177,10 +2169,10 @@ global $login;
    "DTEND" property, the event ends on the same calendar date and time
    of day specified by the "DTSTART" property. */
 
- $dtstartTzid = ( ! empty ( $event['dtstartTzid'] )?$event['dtstartTzid'] : '' );
+  $dtstartTzid = ( ! empty ( $event['dtstartTzid'] )?$event['dtstartTzid'] : '' );
   $fevent['StartTime'] = icaldate_to_timestamp($event['dtstart'], $dtstartTzid );
   if ( isset ( $event['dtend'] ) ) {
-   $dtendTzid = ( ! empty ( $event['dtendTzid'] )?$event['dtendTzid'] : '' );
+    $dtendTzid = ( ! empty ( $event['dtendTzid'] )?$event['dtendTzid'] : '' );
     $fevent['EndTime'] = icaldate_to_timestamp($event['dtend'], $dtendTzid );
   } else if ( isset ( $event['duration'] ) ) {
     $fevent['EndTime'] = $fevent['StartTime'] + $event['duration'] * 60;
@@ -2189,11 +2181,12 @@ global $login;
     $fevent['EndTime'] = $fevent['StartTime'];
     $fevent['Untimed'] = 1;
   } else if ( isset ( $event['dtstartDATE'] ) ) {
-   //This is an all day event
-    $fevent['EndTime'] = $fevent['StartTime'] + 3600;
-    $event['duration'] = 1440;
+   //This event ends at the end of this day
+    $next_day = $fevent['StartTime'] + ONE_DAY;
+    $fevent['EndTime'] = $next_day - ( $next_day % ONE_DAY );
   } else {
     $fevent['EndTime'] = $fevent['StartTime'];
+    $fevent['Untimed'] = 1;
   }
 
  
@@ -2203,38 +2196,17 @@ global $login;
   } else if ( empty ( $fevent['Duration'] ) ) {
     $fevent['Duration'] = ($fevent['EndTime'] - $fevent['StartTime']) / 60;
   }
-//  if ( $fevent['Duration'] == '1440' ) {
-    // All day event... nothing to do here :-)
-//  } else if ( preg_match ( "/\d\d\d\d\d\d\d\d$/",
-//    $event['dtstart'], $pmatch ) ) {
-    // Untimed event
-//    $fevent['Duration'] = 0;
-//    $fevent['Untimed'] = 1;
- // }
-//do_debug ( print_r ( $fevent, true) ) ;
-//do_debug ( date ("YmdHis", $fevent['StartTime']) . " " . date ("YmdHis", $fevent['EndTime']) );
+
   if ( isset ( $event['dtend'] ) && preg_match ( "/\d\d\d\d\d\d\d\d$/", $event['dtstart'],
     $pmatch ) && preg_match ( "/\d\d\d\d\d\d\d\d$/", $event['dtend'],
-  $pmatch2 ) && $event['dtstart'] != $event['dtend'] ) {
-    $startTime = icaldate_to_timestamp($event['dtstart']);
-    $endTime = icaldate_to_timestamp($event['dtend']);
-    // Not sure... should this be untimed or allday?
+    $pmatch2 ) && $event['dtstart'] != $event['dtend'] ) {
+    $startTime = $fevent['StartTime'];
+    $endTime = $fevent['EndTime'];
     if ( $endTime - $startTime == ONE_DAY ) {
       // They used a DTEND set to the next day to say this is an all day
       // event.  We will call this an all day event.
       $fevent['Duration'] = '1440';
       $fevent['Untimed'] = 0;
-
-    } else if ( $endTime - $startTime > ONE_DAY ){
-      // Event spans multiple days.  The EndTime actually represents
-      // the first day the event does _not_ take place.  So,
-      // we need to back up one day since WebCalendar end date is the
-      // last day the event takes place.
-      //$fevent['Repeat']['Frequency'] = '1'; // 1 = daily
-      //$fevent['Repeat']['Interval'] = '1'; // 1 = every day
-     // $fevent['Duration'] = '0';
-     // $fevent['Untimed'] = 1;
-     // $fevent['Repeat']['Until'] = $endTime;
     }
   }
   if ( empty ( $event['summary'] ) ) $event['summary'] = "Unnamed Event";
@@ -2688,8 +2660,10 @@ function format_vcal($event) {
   $fevent['EndTime'] = vcaldate_to_timestamp($event['dtend']);
 
   // Calculate duration in minutes
-  $fevent['Duration']           = ($fevent['EndTime'] - $fevent['StartTime']) / 60;
-  if ($fevent['Duration'] == '1440') { $fevent['Duration'] = '0'; $fevent['Untimed'] = 1; } //All day (untimed)
+  $fevent['Duration'] = ($fevent['EndTime'] - $fevent['StartTime']) / 60;
+  if ($fevent['Duration'] == '1440') { 
+    $fevent['Duration'] = '0'; 
+    $fevent['Untimed'] = 1; } //All day (untimed)
 
   if (! empty($event['summary'])) $fevent['Summary'] = $event['summary'];
   if (! empty($event['description'])) $fevent['Description'] = $event['description'];
