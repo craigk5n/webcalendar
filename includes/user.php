@@ -41,12 +41,13 @@ $admin_can_delete_user = true;
  *
  * @param string $login    User login
  * @param string $password User password
+ * @param bool $#silent  if truem do not return any $error
  *
  * @return bool True on success
  *
  * @global string Error message
  */
-function user_valid_login ( $login, $password ) {
+function user_valid_login ( $login, $password, $silent=false ) {
   global $error;
   $ret = false;
 
@@ -59,10 +60,10 @@ function user_valid_login ( $login, $password ) {
       // the login.
       if ( $row[0] == $login )
         $ret = true; // found login/password
-      else
+      else if ( ! $silent )
         $error = translate ("Invalid login", true ) . ": " .
           translate("incorrect password", true );
-    } else {
+    } else if ( ! $silent ) {
       $error = translate ("Invalid login", true );
       // Could be no such user or bad password
       // Check if user exists, so we can tell.
@@ -82,7 +83,7 @@ function user_valid_login ( $login, $password ) {
       }
     }
     dbi_free_result ( $res );
-  } else {
+  } else if ( ! $silent ) {
     $error = translate("Database error", true) . ": " . dbi_error();
   }
 
