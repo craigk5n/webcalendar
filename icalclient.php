@@ -111,10 +111,6 @@ include_once 'includes/xcal.php';
 
  $WebCalendar->initializeSecondPhase();
  
-// Require an authenticated user HTTP Auth
-// TODO: make this work for CGI installations
-// see http://us3.php.net/manual/en/features.http-auth.php
-//global $login;
 
 if ( empty ( $APPLICATION_NAME ) ) {
   $APPLICATION_NAME = "WebCalendar";
@@ -124,20 +120,36 @@ if ( empty ( $APPLICATION_NAME ) ) {
 // validate.php.
 
 
+//if running as CGI, the following should se the
+// PHP_AUTH_xxxx variables if the following instructions are
+//followed. This has been tested with apache2 only so far
+// If using php as CGI, you'll need to include this
+// in you php.ini file or possibly in a .htaccess file
+//       <IfModule mod_rewrite.c>
+//          RewriteEngine on
+//          RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
+//       </IfModule>
+if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) ){
+  list($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) =
+   explode(":", base64_decode(substr($_ENV['REMOTE_USER'], 6))); 
+}
+   
+unset ($_ENV['REMOTE_USER']);      
 if ( empty ( $login ) ) {
   if (!isset($_SERVER['PHP_AUTH_USER'])) {
+    unset($_SERVER['PHP_AUTH_PW']);
     header('WWW-Authenticate: Basic realm="' . $APPLICATION_NAME . '"' );
     header('HTTP/1.0 401 Unauthorized');
     exit;
   } else {
     if ( user_valid_login ( $_SERVER['PHP_AUTH_USER'],
-      $_SERVER['PHP_AUTH_PW'] )) {
+      $_SERVER['PHP_AUTH_PW'], true ) ) {
       $login = $_SERVER['PHP_AUTH_USER'];
     } else {
       unset($_SERVER['PHP_AUTH_USER']);
       unset($_SERVER['PHP_AUTH_PW']);
       //TODO should be able code this better to eliminate duplicate code
-      header('WWW-Authenticate: Basic realm="WebCalendar Publisher - ' . $APPLICATION_NAME );
+      header('WWW-Authenticate: Basic realm="' . $APPLICATION_NAME . '"' );
       header('HTTP/1.0 401 Unauthorized');
       exit;
     }
