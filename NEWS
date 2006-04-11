@@ -1,4 +1,4 @@
-Version 1.0.3-CVS (?? ??? 2005)
+Version 1.0.3 (11 Apr 2006)
   - Patch 1456375: Day view - "Description" not translated, improper
     handling of HTML in description
   - Fixed bug 1444923: system settings error on save when ovrd=1 is used

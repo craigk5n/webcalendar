@@ -1,4 +1,4 @@
-Version 1.0.3-CVS (?? ??? ????)
+Version 1.0.3 (11 Apr 2006)
  - Patch 1456375: Day view - "Description" not translated, improper
    handling of HTML in description
  - Patch 1458663: updated Hungarian translation
