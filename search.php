@@ -19,7 +19,7 @@ else if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
   $show_others = true;
 
 if ( $show_others ) {
-  $INC = array ('js/search.php');
+  $INC = array ('js/search.php/true');
 } else {
   $INC = '';
 }

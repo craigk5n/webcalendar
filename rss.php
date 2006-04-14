@@ -187,10 +187,10 @@ $endDate = date ( "Ymd", $endTime );
 
 /* Pre-Load the repeated events for quicker access */
 if (  $allow_repeats == true )
-  $repeated_events = read_repeated_events ( $username, $cat_id, $date );
+  $repeated_events = read_repeated_events ( $username, $cat_id, $startTime );
 
 /* Pre-load the non-repeating events for quicker access */
-$events = read_events ( $username, $date, $endDate, $cat_id );
+$events = read_events ( $username, $startTime, $endTime, $cat_id );
 
 $charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
 // This should work ok with RSS, may need to hardcode fallback value
@@ -242,7 +242,8 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
       if ( $entries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) {
         $eventIds[] = $entries[$j]->getID();
         echo "<rdf:li rdf:resource=\"" . $SERVER_URL . "view_entry.php?id=" . 
-          $entries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "\" />\n";
+          $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
+          $d . "\" />\n";
         $numEvents++;
       }
     }
@@ -266,7 +267,8 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
           ( ! $show_daily_events_only_once || ! in_array($rentries[$j]->getID(),$reventIds )) && 
         ( $rentries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) ) {
         echo "<rdf:li rdf:resource=\"" . $SERVER_URL . "view_entry.php?id=" . 
-          $rentries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "\" />\n";
+          $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
+            $d . "\" />\n";
 
           //show repeating events only once
           if ( $rentries[$j]->getrepeatType()=="daily" ) 
@@ -302,14 +304,15 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
       if ( $username == '__public__' || $entries[$j]->getAccess() == "P" ||
         $allow_all_access == "Y" ) {
         $eventIds[] = $entries[$j]->getID();
-        $unixtime = unixtime ( $d, $entries[$j]->getTime() );
+        $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
         $gmtoffset = substr_replace ( date ( "O", $unixtime ), ":" . 
           substr ( date ( "O", $unixtime ), -2), -2, 2 );
         echo "\n<item rdf:about=\"" . $SERVER_URL . "view_entry.php?id=" . 
           $entries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "\">\n";
         echo "<title xml:lang=\"$lang\"><![CDATA[" . $entries[$j]->getName() . "]]></title>\n";
         echo "<link>" . $SERVER_URL . "view_entry.php?id=" . 
-          $entries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "</link>\n";
+          $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
+          $d . "</link>\n";
         echo "<description xml:lang=\"$lang\"><![CDATA[" .
           $entries[$j]->getDescription() . "]]></description>\n";
         //category not valid for RSS 1.0
@@ -351,12 +354,13 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
 
         echo "\n<item rdf:about=\"" . $SERVER_URL . "view_entry.php?id=" . 
           $rentries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "\">\n";
-        $unixtime = unixtime ( $d, $rentries[$j]->getTime() );
+        $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
         $gmtoffset = substr_replace ( date ( "O", $unixtime ), ":" . 
           substr ( date ( "O", $unixtime ), -2), -2, 2 );
         echo "<title xml:lang=\"$lang\"><![CDATA[" . $rentries[$j]->getName() . "]]></title>\n";
         echo "<link>" . $SERVER_URL . "view_entry.php?id=" . 
-          $rentries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "</link>\n";
+          $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
+          $d . "</link>\n";
         echo "<description xml:lang=\"$lang\"><![CDATA[" .
           $rentries[$j]->getDescription() . "]]></description>\n";
         //category not valid for RSS 1.0
@@ -378,21 +382,4 @@ echo "</rdf:RDF>\n";
 $login = '';
 exit;
 
-
-// Make a unix GMT time from a date (YYYYMMDD) and time (HHMM)
-function unixtime ( $date, $time )
-{
-  $hour = $minute = 0;
-
-  $year = substr ( $date, 0, 4 );
-  $month = substr ( $date, 4, 2 );
-  $day = substr ( $date, 6, 2 );
-
-  if ( $time >= 0 ) {
-    $hour = substr ( $time, 0, 2 );
-    $minute = substr ( $time, 2, 2 );
-  }
-
-  return mktime ( $hour, $minute, 0, $month, $day, $year );
-}
 ?>

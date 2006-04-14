@@ -3,19 +3,19 @@
  * $Id$
  *
  * Page Description:
- *	This page will handle deletion of an entry in webcal_blob.
- *	This could be a comment or an attachment.
+ *  This page will handle deletion of an entry in webcal_blob.
+ *  This could be a comment or an attachment.
  *
  * Input Parameters:
- *	For GET:
- *	  blid - unique id, corresponds to webcal_blob.cal_blob_id
+ *  For GET:
+ *    blid - unique id, corresponds to webcal_blob.cal_blob_id
  *
  * Security:
- *	Only the creator of the comment, the creator of the associated
- *	event, or an admin can delete. 
- *	(An assistant can also delete their boss' documents.)
+ *  Only the creator of the comment, the creator of the associated
+ *  event, or an admin can delete. 
+ *  (An assistant can also delete their boss' documents.)
  * Comments:
- *	TODO: perhaps add email notification on this
+ *  TODO: perhaps add email notification on this
  */
 include_once 'includes/init.php';
 include_once 'includes/classes/Doc.class';

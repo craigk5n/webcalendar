@@ -1,6 +1,4 @@
 <?php /* $Id$ */ ?>
-<script type="text/javascript">
-<!-- <![CDATA[
 function selectDate ( day, month, year, current, evt ) {
   // get currently selected month/year
   monthobj = eval ( 'document.exportform.' + month );
@@ -70,5 +68,4 @@ function checkExtension () {
   }
   return true;
 }
-//]]> -->
-</script>
+

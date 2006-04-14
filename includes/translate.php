@@ -54,7 +54,8 @@ function unhtmlentities ( $string ) {
  */
 function reset_language ( $new_language ) {
   global $lang_file, $translations, $basedir, $lang, $translation_loaded;
-
+  if ( $new_language == 'none' )
+    $new_language = get_browser_language ();
   if ( $new_language != $lang || ! $translation_loaded ) {
     $translations = array ();
     $lang = $new_language;
@@ -167,7 +168,7 @@ function load_translation_text () {
 /**
  * Gets browser-specified language preference.
  *
- * Aparam  bool $pref  true is we want to simply display value
+ * param  bool $pref  true is we want to simply display value
  *                     without affecting translations.
  * @return string Preferred language
  *

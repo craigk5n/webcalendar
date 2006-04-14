@@ -3,11 +3,11 @@
  * $Id$
  *
  * Description:
- *	Obtain a binary object from the database and send it back to
- *	the browser using the correct mime type.
+ *  Obtain a binary object from the database and send it back to
+ *  the browser using the correct mime type.
  *
  * Input Parameters:
- *	blid(*) - The unique identifier for this blob
+ *  blid(*) - The unique identifier for this blob
  * (*) required field
  */
 include_once 'includes/init.php';
@@ -110,8 +110,8 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
           "webcal_entry_user.cal_id AND webcal_entry.cal_id = ? " .
           "AND webcal_entry_user.cal_login IN ( ";
         $query_params = array();
-		$query_params[] = $id;
-		for ( $i = 0; $i < count ( $my_users ); $i++ ) {
+    $query_params[] = $id;
+    for ( $i = 0; $i < count ( $my_users ); $i++ ) {
           if ( $i > 0 ) {
             $sql .= ", ";
           }

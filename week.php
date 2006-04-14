@@ -13,7 +13,7 @@ $nextYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear )
 $prevYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
 
 
-$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday );
+$wkstart = get_weekday_before ( $thisyear, $thismonth );
 
 $wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ) );
  
@@ -74,7 +74,8 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 <tr><td style="vertical-align:top; width:80%;" >
 <?php display_navigation( 'week' ); ?>
 </td>
-<td style="vertical-align:top;" rowspan="2">
+<?php if ( $DISPLAY_TASKS == "Y" && $DISPLAY_SM_MONTH == "Y" ) { ?>
+<td  rowspan="2">
 <!-- START MINICAL -->
 <div class="minicontainer">
 <div class="minicalcontainer">
@@ -82,12 +83,14 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 </div>
 <br />
 <?php 
-if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y" ) {
+if (  $DISPLAY_TASKS == "Y" ) {
   echo display_small_tasks ( $cat_id );;
 }
 ?> 
 </div>
-</td></tr><tr><td>
+</td>
+<?php } //end minical ?>
+</tr><tr><td>
 <table class="main" cellspacing="0" cellpadding="0">
 <tr>
 <th class="empty">&nbsp;</th>

@@ -1,5 +1,4 @@
-<script type="text/javascript">
-<!-- <![CDATA[
+<?php /* $Id:  */ ?>
 function selectDate (  day, month, year, current, evt ) {
   // get currently selected day/month/year
   monthobj = eval ( 'document.purgeform.' + month );
@@ -35,5 +34,3 @@ function all_handler () {
   }
 }
 
-//]]> -->
-</script>

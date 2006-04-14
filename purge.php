@@ -43,7 +43,7 @@ $user = getPostValue ( "user" );
 $preview = getPostValue ( "preview" );
 $preview = ( empty ( $preview ) ? false : true );
 
-$INC = array('js/purge.php','js/visible.php');
+$INC = array('js/purge.php/true','js/visible.php/true');
 
 if ( $do_purge ) {
   $BodyX = '';

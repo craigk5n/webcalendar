@@ -134,28 +134,28 @@ function app_active_session($sid) {
 function app_get_sid( $id ) {
   global $app_secret, $app_session_type;
 
-  $browser 	= @$_SERVER['HTTP_USER_AGENT'];
-	switch ( $app_session_type ) {
-		case 2:
-		// 1.0.0 to 1.0.7 Compatibility
-		// lowest level security
-			$value 			= md5( $id . $_SERVER['REMOTE_ADDR'] );
-			break;
+  $browser   = @$_SERVER['HTTP_USER_AGENT'];
+  switch ( $app_session_type ) {
+    case 2:
+    // 1.0.0 to 1.0.7 Compatibility
+    // lowest level security
+      $value       = md5( $id . $_SERVER['REMOTE_ADDR'] );
+      break;
 
-		case 1:
-		// slightly reduced security - 3rd level IP authentication for those behind IP Proxy 
-			$remote_addr 	= explode( '.', $_SERVER['REMOTE_ADDR'] );
-			$ip				= $remote_addr[0] .'.'. $remote_addr[1] .'.'. $remote_addr[2];
-			$value 			= md5( $app_secret . md5( $id . $ip . $browser ) );
-			break;
-		
-		default:
-		// Highest security level - new default for 1.0.8 and beyond
-			$ip				= $_SERVER['REMOTE_ADDR'];
-			$value 			= md5( $app_secret . md5( $id . $ip . $browser ) );
-			break;
-	}		
-	return $value;
+    case 1:
+    // slightly reduced security - 3rd level IP authentication for those behind IP Proxy 
+      $remote_addr   = explode( '.', $_SERVER['REMOTE_ADDR'] );
+      $ip        = $remote_addr[0] .'.'. $remote_addr[1] .'.'. $remote_addr[2];
+      $value       = md5( $app_secret . md5( $id . $ip . $browser ) );
+      break;
+    
+    default:
+    // Highest security level - new default for 1.0.8 and beyond
+      $ip        = $_SERVER['REMOTE_ADDR'];
+      $value       = md5( $app_secret . md5( $id . $ip . $browser ) );
+      break;
+  }    
+  return $value;
 }
 
 //  Updates the session table to set the last access time to now 
@@ -407,7 +407,7 @@ function user_delete_user ( $user ) {
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
-	  $delete_em[] = $events[$i];
+    $delete_em[] = $events[$i];
       }
       dbi_free_result ( $res );
     }

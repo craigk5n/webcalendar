@@ -94,11 +94,11 @@ if ( strlen ( $comments ) && empty ( $cancel ) ) {
 
   $eventstart = date_to_epoch ( $fmtdate . $time );
   //TODO figure out if creator wants approved comment email
-		//check UAC
+    //check UAC
     $send_user_mail = "Y"; 
-		if ( access_is_enabled () ) {
-			$send_user_mail = access_user_calendar ( 'email', $creator, $login);
-		}	 
+    if ( access_is_enabled () ) {
+      $send_user_mail = access_user_calendar ( 'email', $creator, $login);
+    }   
     $htmlmail = get_pref_setting ( $creator, "EMAIL_HTML" );
     $t_format = get_pref_setting ( $creator, "TIME_FORMAT" );
     user_load_variables ( $creator, "temp" );

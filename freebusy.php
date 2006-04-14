@@ -45,7 +45,7 @@
 
  require_once 'includes/classes/WebCalendar.class';
  require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
+ require_once 'includes/classes/RptEvent.class';
     
  $WebCalendar =& new WebCalendar ( __FILE__ );    
      
@@ -56,11 +56,11 @@ require_once 'includes/classes/RptEvent.class';
  $WebCalendar->initializeFirstPhase();    
      
  include "includes/$user_inc";    
- include_once 'includes/validate.php';    
+ include 'includes/validate.php';    
  include 'includes/translate.php';    
  include 'includes/site_extras.php';
  
-include_once 'includes/xcal.php';
+ include 'includes/xcal.php';
 
  $WebCalendar->initializeSecondPhase();
 

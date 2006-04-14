@@ -119,8 +119,8 @@ class Doc {
   /**
     * Create a SQL query to load attachment meta data for the
     * specified event id.
-    * @param int $event_id	The event id
-    * @return string	The SQL text
+    * @param int $event_id  The event id
+    * @return string  The SQL text
     * @access public
     */
   function getAttachmentsSQL ( $event_id )
@@ -131,8 +131,8 @@ class Doc {
 
   /**
     * Create a SQL query to load comment meta data for the specified event id.
-    * @param int $event_id	The event id
-    * @return string	The SQL text
+    * @param int $event_id  The event id
+    * @return string  The SQL text
     * @access public
     */
   function getCommentsSQL ( $event_id )
@@ -152,8 +152,8 @@ class Doc {
   /**
     * Generate the SQL to load a single doc specified by its
     * unique ID
-    * @param int blid	Unique doc id
-    * @return string	The SQL to load the Doc
+    * @param int blid  Unique doc id
+    * @return string  The SQL to load the Doc
     */
   function getSQLForDocId ( $blid )
   {
@@ -171,20 +171,20 @@ class Doc {
    *   dbi_free_result ( $res );
    * </pre></blockquote>
    *
-   * @param array $row	An array returned from dbi_fetch_row using
-   *			the SQL from Doc->getSQL.
-   *			The elements of the array should be:  <ul>
-   *			<li> Unique BLOB id  </li>
-   *			<li> Event id  </li>
-   *			<li> Login of owner  </li>
-   *			<li> Name of object  </li>
-   *			<li> Description  </li>
-   *			<li> Size of object (attachments)  </li>
-   *			<li> MIME type of object  </li>
-   *			<li> Type of objecgt ('A' or 'C')  </li>
-   *			<li> Modification date (YYYYMMDD)  </li>
-   *			<li> Modification time (YYYYMMDD)  </li>
-   *			</ul>
+   * @param array $row  An array returned from dbi_fetch_row using
+   *      the SQL from Doc->getSQL.
+   *      The elements of the array should be:  <ul>
+   *      <li> Unique BLOB id  </li>
+   *      <li> Event id  </li>
+   *      <li> Login of owner  </li>
+   *      <li> Name of object  </li>
+   *      <li> Description  </li>
+   *      <li> Size of object (attachments)  </li>
+   *      <li> MIME type of object  </li>
+   *      <li> Type of objecgt ('A' or 'C')  </li>
+   *      <li> Modification date (YYYYMMDD)  </li>
+   *      <li> Modification time (YYYYMMDD)  </li>
+   *      </ul>
    * @return Doc The new Doc object
    * @access public
    */
@@ -297,7 +297,7 @@ class Doc {
 
   /**
     * Get a summary of this object
-    * @return string	A summary of the object
+    * @return string  A summary of the object
     */
   function getSummary () {
     $ret = '<a href="doc.php?blid=' . $this->_blob_id .
@@ -321,7 +321,7 @@ class Doc {
     * This is NOT cached and is only loaded when this function is
     * called.  Repeated calls to this function will make repeated
     * calls to the database.
-    * @return mixed	binary data of the blob
+    * @return mixed  binary data of the blob
     */
   function getData () {
     return dbi_get_blob ( 'webcal_blob', 'cal_blob',

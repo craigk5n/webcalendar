@@ -20,9 +20,10 @@ table.admin {
 ";
 if ( function_exists ("imagepng") &&
   ( empty ($ENABLE_GRADIENTS) || $ENABLE_GRADIENTS == 'Y' ) ) {
- $style .= " background-image: url(\"gradient.php?height=300&base=ccc&percent=10\");\n";
+ //$style .= background_css ( $CELLBG, 400 );
+  $style .= " background-color: $CELLBG;\n";
 } else {
- $style .= " background-color: #CCCCCC;\n";
+ $style .= " background-color: $CELLBG;\n";
 }
 $style .= "
 }
@@ -33,7 +34,7 @@ table.admin td {
 .admin td a {
  padding: 10px;
  text-align: center;
- background-color: #CCCCCC;
+ background-color: $CELLBG;
  border-top: 1px solid #EEEEEE;
  border-left: 1px solid #EEEEEE;
  border-bottom: 1px solid #777777;

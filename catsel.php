@@ -18,7 +18,7 @@ $catNames = implode("," , $categories);
 $catList = implode(",", array_keys($categories) );
 $eventcats = explode("," , $cats);
 
-$INC = array('js/catsel.php');
+$INC = array("js/catsel.php/false/$form");
 print_header($INC,'','',true, false, true);
 ?>
 <table align="center"  border="0" width="250px">
@@ -31,7 +31,7 @@ print_header($INC,'','',true, false, true);
     "<option disabled>" . translate("AVAILABLE CATEGORIES") . "</option>\n";
     foreach ( $categories as $K => $V ) {
       if ( $category_owners[$K] == $login || $is_admin || 
-			  substr ( $form, 0, 4 ) == 'edit' ) {
+        substr ( $form, 0, 4 ) == 'edit' ) {
         if ( empty ( $category_owners[$K] ) ) {
           echo "<option value=\"-$K\" name=\"$V\">$V<sup>*</sup>";
         } else {
@@ -50,7 +50,7 @@ print_header($INC,'','',true, false, true);
    //disable if not creator and category is Global
    $neg_num = $show_ast = "";
    $disabled = ( empty ( $category_owners[abs($K)] ) && 
-	   substr($form,0,4) != 'edit'? "disabled": "");
+     substr($form,0,4) != 'edit'? "disabled": "");
      if ( empty ( $category_owners[abs($K)] ) ) {
        $neg_num = "-";
        $show_ast = "*";

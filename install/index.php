@@ -97,19 +97,19 @@ function getGetValue ( $name ) {
 
 function get_php_setting ( $val, $string=false ) {
   $setting = ini_get ( $val );
-	if ( $string == false ) {
+  if ( $string == false ) {
     if ( $setting == '1' || $setting == 'ON' )
       return 'ON';
     else
       return 'OFF';
-	} else {
+  } else {
     //test for $string in ini value 
     $string_found = array_search ( $string, explode ( ",", $setting ) );
-		if 	( $string_found )
-		  return $string;
-		else
-		  return false;
-	}
+    if   ( $string_found )
+      return $string;
+    else
+      return false;
+  }
 }
 
 
@@ -295,7 +295,7 @@ function get_installed_version () {
  //don't show TZ conversion if blank database
  if ( $_SESSION['blank_database'] == true )
    $_SESSION['tz_conversion']  = 'Y';
-	 
+   
  // Get existing server URL
  // We could use the self-discvery value, but this 
  // may be a custom value
@@ -661,7 +661,7 @@ if ( ! empty ( $action ) &&  $action == "install" ){
    
   
    // If new install, run 0 GMT offset
-	 //just to set webcal_config.WEBCAL_TZ_CONVERSION
+   //just to set webcal_config.WEBCAL_TZ_CONVERSION
    if ( $_SESSION['old_program_version'] == "new_install" ) {
      convert_server_to_GMT ();
    }
@@ -692,8 +692,8 @@ $post_action2 = getPostValue ( "action2" );
 // If so, just test the connection, show the result and exit.
 if (  ! empty ( $post_action ) && $post_action == "Test Settings"  && 
   ! empty ( $_SESSION['validuser'] )  ) {
-	  $response_msg = '';
-		$response_msg2 = '';
+    $response_msg = '';
+    $response_msg2 = '';
     $_SESSION['db_success'] = false;
     $db_persistent = getPostValue ( 'db_persistent' );
     $db_type = getPostValue ( 'form_db_type' );
@@ -701,7 +701,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
     $db_database = getPostValue ( 'form_db_database' );
     $db_login = getPostValue ( 'form_db_login' );
     $db_password = getPostValue ( 'form_db_password' );
-		$db_cache = getPostValue ( 'form_db_cache' );
+    $db_cachedir = getPostValue ( 'form_db_cachedir' );
     //Allow  field length to change if needed
    $onload = "db_type_handler();";
  
@@ -727,43 +727,43 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
         ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
      // See if user is valid, but database doesn't exist
      // The normal call to dbi_connect simply return false for both conditions
-		 if ( $db_type == "mysql"  ) {
-			 $c = mysql_connect ( $db_host, $db_login, $db_password, '' , false );
-		 } else if ( $db_type == "mssql"  ) {
-			 $c = mssql_connect ( $db_host, $db_login, $db_password, '', false );
-		 } else if ( $db_type == "postgresql"  ) {
-			 $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1', false);
-		 } else if ( $db_type == "ibase"  ) {
-			//TODO figure out how to remove this hardcoded link
-			 $c = dbi_connect ( $db_host, $db_login, $db_password , $firebird_path, false);
-		 } //TODO Code remaining database types
-		 if ( $c ) { // credentials are valid, but database doesn't exist
-				$response_msg = translate ( "Correct your entries or click the <b>Create New</b> button to continue installation" );
-			 $_SESSION['db_noexist'] = true;
-		 } else {
-			 if ( $db_type == "ibase"  ) {
-				 $response_msg = "<b>" . translate ( "Failure Reason" ) . 
-					 ":</b><blockquote>" . translate ( "You must manually create database" ) . 
-					 "</blockquote>\n";
-			 } else {
-				 $response_msg = "<b>" . translate ( "Failure Reason" ) .
-					 ":</b><blockquote>" . dbi_error () . "</blockquote>\n" .
-					 translate ( "Correct your entries and try again" );
-			 }
+     if ( $db_type == "mysql"  ) {
+       $c = mysql_connect ( $db_host, $db_login, $db_password, '' , false );
+     } else if ( $db_type == "mssql"  ) {
+       $c = mssql_connect ( $db_host, $db_login, $db_password, '', false );
+     } else if ( $db_type == "postgresql"  ) {
+       $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1', false);
+     } else if ( $db_type == "ibase"  ) {
+      //TODO figure out how to remove this hardcoded link
+       $c = dbi_connect ( $db_host, $db_login, $db_password , $firebird_path, false);
+     } //TODO Code remaining database types
+     if ( $c ) { // credentials are valid, but database doesn't exist
+        $response_msg = translate ( "Correct your entries or click the <b>Create New</b> button to continue installation" );
+       $_SESSION['db_noexist'] = true;
+     } else {
+       if ( $db_type == "ibase"  ) {
+         $response_msg = "<b>" . translate ( "Failure Reason" ) . 
+           ":</b><blockquote>" . translate ( "You must manually create database" ) . 
+           "</blockquote>\n";
+       } else {
+         $response_msg = "<b>" . translate ( "Failure Reason" ) .
+           ":</b><blockquote>" . dbi_error () . "</blockquote>\n" .
+           translate ( "Correct your entries and try again" );
+       }
      } 
   } //end if ($c)
-	
-	//test db_cache directory for write permissions
-	if ( strlen ( $db_cache ) > 0 ) { 	
-	  if ( ! file_exists ( $db_cache ) ) {
-		  $response_msg2 = "<b>" . translate ( "Failure Reason" ) . ":</b>" .
-		    translate ( "Database Cache Directory" ) . " " . translate ( "does not exist" );
-		} else if ( ! is_writable ( $db_cache ) ) {
-		  $response_msg2 = "<b>" . translate ( "Failure Reason" ) . ":</b>" .
-			  translate ( "Database Cache Directory" ) . " " . translate ( "is not writable" );
-			} else {
-		}		  
-	}
+  
+  //test db_cachedir directory for write permissions
+  if ( strlen ( $db_cachedir ) > 0 ) {   
+    if ( ! file_exists ( $db_cachedir ) ) {
+      $response_msg2 = "<b>" . translate ( "Failure Reason" ) . ":</b>" .
+        translate ( "Database Cache Directory" ) . " " . translate ( "does not exist" );
+    } else if ( ! is_writable ( $db_cachedir ) ) {
+      $response_msg2 = "<b>" . translate ( "Failure Reason" ) . ":</b>" .
+        translate ( "Database Cache Directory" ) . " " . translate ( "is not writable" );
+      } else {
+    }      
+  }
 
 // Is this a db create?
 // If so, just test the connection, show the result and exit.
@@ -910,7 +910,7 @@ if ( empty ( $x ) ) {
     $settings['db_login'] = 'webcalendar';
     $settings['db_password'] = 'webcal01';
     $settings['db_persistent'] = 'false';
-		$settings['db_cache'] = 'tmp/';
+    $settings['db_cachedir'] = 'tmp/';
     $settings['readonly'] = 'false';
     $settings['user_inc'] = 'user.php';
     $settings['install_password'] = '';
@@ -925,13 +925,19 @@ if ( empty ( $x ) ) {
   $settings['db_login'] = getPostValue ( 'form_db_login' );
   $settings['db_password'] = getPostValue ( 'form_db_password' );
   $settings['db_persistent'] = getPostValue ( 'form_db_persistent' );
-  $settings['db_cache'] = getPostValue ( 'form_db_cache' );
-  $settings['readonly'] = ( ! isset ( $settings['readonly'] )?'false': $settings['readonly']);
-  $settings['user_inc'] = ( ! isset ( $settings['user_inc'] )? 'user.php': $settings['user_inc']);
-  $settings['install_password'] = ( ! isset ( $settings['install_password'] )?'' :$settings['install_password']);
-  $settings['single_user_login'] = ( ! isset ( $settings['single_user_login'] )? '': $settings['single_user_login']);
-  $settings['use_http_auth'] = ( ! isset ( $settings['use_http_auth'] )?'false':$settings['use_http_auth']);
-  $settings['single_user'] = ( ! isset ( $settings['single_user'] )?'false': $settings['single_user']);
+  $settings['db_cachedir'] = getPostValue ( 'form_db_cachedir' );
+  $settings['readonly'] =( ! isset ( $settings['readonly'] )?
+    'false':$settings['readonly']);
+  $settings['user_inc'] =( ! isset ( $settings['user_inc'] )?
+    'user.php':$settings['user_inc']);
+  $settings['install_password'] = ( ! isset ( $settings['install_password'] )?
+    '' :$settings['install_password']);
+  $settings['single_user_login'] = ( ! isset ( $settings['single_user_login'] )?
+     '': $settings['single_user_login']);
+  $settings['use_http_auth'] = ( ! isset ( $settings['use_http_auth'] )?
+    'false':$settings['use_http_auth']);
+  $settings['single_user'] = ( ! isset ( $settings['single_user'] )?
+    'false': $settings['single_user']);
 }
 $y = getPostValue ( "app_settings" );
 if ( ! empty ( $y ) ) {
@@ -993,7 +999,7 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     fwrite ( $fd, "<?php\r\n" );
     fwrite ( $fd, "# updated via install/index.php on " . date("r") . "\r\n" );
     foreach ( $settings as $k => $v ) {
-		  if ( $v != "<br />" && $v != '' )
+      if ( $v != "<br />" && $v != '' )
       fwrite ( $fd, $k . ": " . $v . "\r\n" );
     }
     fwrite ( $fd, "# end settings.php\r\n?>\r\n" );
@@ -1009,7 +1015,7 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     @chmod ( $file, 0644 );
   }
 }
-	//print_r ( $_SESSION);
+  //print_r ( $_SESSION);
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
@@ -1184,12 +1190,6 @@ doc.li {
 <a href="../docs/WebCalendar-SysAdmin.html#help" target="_docs">Getting Help</a>,
 <a href="../UPGRADING.html" target="_docs">Upgrading Guide</a>
 </td></tr>
-<!--<tr><th class="header"  colspan="2"><?php etranslate ( "WebCalendar Version Check" ) ?></th></tr>
-<tr><td>
-<?php echo translate ( "This is version" ) . " " . $PROGRAM_VERSION . " "; ?>
-</td><td>
-<?php etranslate ( "The most recent version available is" ) ?> <img src="version.gif" />
-</td></tr> -->
 <tr><th class="header"  colspan="2"><?php etranslate ( "PHP Version Check" ) ?></th></tr>
 <tr><td>
 <?php etranslate ( "Check to see if PHP 4.1.0 or greater is installed" ) ?>. 
@@ -1199,9 +1199,9 @@ doc.li {
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
     if ($class='recommended') {
-     echo "<img src=\"recommended.gif\" />&nbsp;";
+     echo "<img src=\"recommended.gif\" alt=\"\"/>&nbsp;";
     } else {
- echo "<img src=\"not_recommended.jpg\" />&nbsp;";
+ echo "<img src=\"not_recommended.jpg\" alt=\"\"/>&nbsp;";
     }
     echo translate ( "PHP version") . " " . phpversion();
    ?>
@@ -1215,14 +1215,14 @@ doc.li {
 <?php foreach ( $php_settings as $setting ) { ?>
   <tr><td class="prompt"><?php echo $setting[0];?></td>
   <?php
-	  $ini_get_result = get_php_setting ( $setting[1], $setting[3] );
+    $ini_get_result = get_php_setting ( $setting[1], $setting[3] );
     $class = ( $ini_get_result == $setting[2] ) ?
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
     if ($class == 'recommended') {
-      echo "<img src=\"recommended.gif\" />&nbsp;";
+      echo "<img src=\"recommended.gif\" alt=\"\"/>&nbsp;";
     } else {
-      echo "<img src=\"not_recommended.jpg\" />&nbsp;";
+      echo "<img src=\"not_recommended.jpg\" alt=\"\"/>&nbsp;";
     }
     echo $ini_get_result;
    ?>
@@ -1235,9 +1235,9 @@ doc.li {
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
     if ($class == 'recommended') {
-      echo "<img src=\"recommended.gif\" />&nbsp;ON";
+      echo "<img src=\"recommended.gif\" alt=\"\"/>&nbsp;ON";
     } else {
-      echo "<img src=\"not_recommended.jpg\" />&nbsp;OFF";
+      echo "<img src=\"not_recommended.jpg\" alt=\"\"/>&nbsp;OFF";
     }
    ?>
    </td></tr>
@@ -1250,9 +1250,9 @@ doc.li {
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
     if ($class == 'recommended') {
-     echo "<img src=\"recommended.gif\" />&nbsp;";
+     echo "<img src=\"recommended.gif\" alt=\"\"/>&nbsp;";
     } else {
- echo "<img src=\"not_recommended.jpg\" />&nbsp;";
+ echo "<img src=\"not_recommended.jpg\" alt=\"\"/>&nbsp;";
     }
     echo get_php_modules ( $module[1] );
    ?>
@@ -1268,9 +1268,9 @@ doc.li {
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
     if ($_SESSION['check'] > 0) {
-     echo "<img src=\"recommended.gif\" />&nbsp;";
+     echo "<img src=\"recommended.gif\" alt=\"\"/>&nbsp;";
     } else {
- echo "<img src=\"not_recommended.jpg\" />&nbsp;";
+ echo "<img src=\"not_recommended.jpg\" alt=\"\"/>&nbsp;";
     }
      echo translate ( "SESSION COUNTER" ) . ": " . $_SESSION['check'];
 ?>
@@ -1286,7 +1286,8 @@ if ( ! $exists || ! $canWrite ) { ?>
 <?php //if the settings file exists, but we can't write to it..
  if ( $exists && ! $canWrite ) { ?>
   <tr><td>
-   <img src="not_recommended.jpg" />&nbsp;<?php etranslate ( "The file permissions of <b>settings.php</b> are set..." ) ?>:</td><td>
+   <img src="not_recommended.jpg" alt=""/>&nbsp;<?php 
+     etranslate ( "The file permissions of <b>settings.php</b> are set..." ) ?>:</td><td>
    <blockquote><b>
     <?php echo realpath ( $file ); ?>
    </b></blockquote>
@@ -1294,7 +1295,8 @@ if ( ! $exists || ! $canWrite ) { ?>
 <?php //or, if the settings file doesn't exist & we can't write to the includes directory..
  } else if ( ! $exists && ! $canWrite ) { ?>
   <tr><td colspan="2">
-   <img src="not_recommended.jpg" />&nbsp;<?php etranslate ( "The file permissions of the <b>includes</b> directory are set..." ) ?>:
+   <img src="not_recommended.jpg" alt=""/>&nbsp;<?php 
+     etranslate ( "The file permissions of the <b>includes</b> directory are set..." ) ?>:
    <blockquote><b>
     <?php echo realpath ( $fileDir ); ?>
    </b></blockquote>
@@ -1302,13 +1304,15 @@ if ( ! $exists || ! $canWrite ) { ?>
 <?php //if settings.php DOES exist & we CAN write to it..
  } else { ?>
   <tr><td>
-   <?php etranslate ( "Your <b>settings.php</b> file appears to be valid" ) ?>.</td><td class="recommended">
-   <img src="recommended.gif" />&nbsp;OK
+   <?php etranslate ( "Your <b>settings.php</b> file appears to be valid" ) 
+     ?>.</td><td class="recommended">
+   <img src="recommended.gif" alt=""/>&nbsp;OK
   </td></tr>
 
 <?php if (  empty ( $_SESSION['validuser'] ) ) { ?>
- <tr><th colspan="2" class="header"><?php etranslate ( "Configuration Wizard Password" ) ?></th></tr>
- <tr><td colspan="2" align="center">
+ <tr><th colspan="2" class="header"><?php 
+   etranslate ( "Configuration Wizard Password" ) ?></th></tr>
+ <tr><td colspan="2" align="center" style="border:none">
  <?php if ( $doLogin ) { ?>
   <form action="index.php" method="post" name="dblogin">
    <table>
@@ -1341,7 +1345,6 @@ if ( ! $exists || ! $canWrite ) { ?>
  <?php } ?>
 <?php } ?>
 <?php } ?> 
-</td></tr>
 </td></tr></table>
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
 <table border="0" width="90%" align="center">
@@ -1400,21 +1403,24 @@ if ( ! $exists || ! $canWrite ) { ?>
 ?></li>
 
 <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  ) { ?>
-  <li class="recommended"><img src="recommended.gif" />&nbsp;<?php etranslate ( "Your current database settings are able to access the database" ) ?>.</li>
+  <li class="recommended"><img src="recommended.gif" alt=""/>&nbsp;<?php 
+   etranslate ( "Your current database settings are able to access the database" ) ?>.</li>
   <?php if ( ! empty ( $response_msg )  && empty ( $response_msg2 ) ) { ?>
-  <li class="recommended"><img src="recommended.gif" />&nbsp;<?php echo $response_msg; ?></li>
+  <li class="recommended"><img src="recommended.gif" alt=""/>&nbsp;<?php 
+    echo $response_msg; ?></li>
    <?php } elseif ( empty ( $response_msg2 ) ) {?>
-  <li class="notrecommended"><img src="not_recommended.jpg" />&nbsp;<b><?php etranslate ( "Please Test Settings" ) ?></b></li>  
+  <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<b><?php 
+    etranslate ( "Please Test Settings" ) ?></b></li>  
   <?php } ?>
 <?php } else { ?>
-  <li class="notrecommended"><img src="not_recommended.jpg" />&nbsp;<?php etranslate ( "Your current database settings are <b>not</b> able to access the database or have not yet been tested" ) ?>.</li>
+  <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<?php etranslate ( "Your current database settings are <b>not</b> able to access the database or have not yet been tested" ) ?>.</li>
   <?php if ( ! empty ( $response_msg ) ) { ?>
-  <li class="notrecommended"><img src="not_recommended.jpg" />&nbsp;<?php echo $response_msg; ?></li>
+  <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<?php echo $response_msg; ?></li>
    <?php } ?>
 <?php } ?>
 <?php if (  ! empty ( $response_msg2 ) ) { ?>
-  <li class="notrecommended"><img src="not_recommended.jpg" />&nbsp;<b><?php 
-	echo $response_msg2; ?></b></li>  
+  <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<b><?php 
+  echo $response_msg2; ?></b></li>  
 <?php }  ?>
 </ul>
 </td></tr>
@@ -1511,9 +1517,9 @@ if ( ! $exists || ! $canWrite ) { ?>
 <?php } ?>
   </td></tr>
   <tr><td class="prompt"><?php etranslate ( "Database Cache Directory" ) ?>:</td>
-   <td><?php if ( empty ( $settings['db_cache'] ) ) $settings['db_cache'] = '';  ?>
-	 <input  type="text" size="70" name="form_db_cache" id="form_db_cache" value="<?php 
-	   echo $settings['db_cache']; ?>"/></td></tr>  
+   <td><?php if ( empty ( $settings['db_cachedir'] ) ) $settings['db_cachedir'] = '';  ?>
+   <input  type="text" size="70" name="form_db_cachedir" id="form_db_cachedir" value="<?php 
+     echo $settings['db_cachedir']; ?>"/></td></tr>  
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
  <tr><td align="center" colspan="3">
   <?php 
@@ -1669,7 +1675,7 @@ if ( ! $exists || ! $canWrite ) { ?>
    <tr><td colspan="2" width="50%">
      <?php etranslate ( "This is the final step in setting up your WebCalendar Installation" ) ?>.
    </td></tr>
-	 <?php if ( $_SESSION['tz_conversion'] != "Y" ) { ?>
+   <?php if ( $_SESSION['tz_conversion'] != "Y" ) { ?>
   <th class="header" colspan="2"><?php etranslate ( "Timezone Conversion" ) ?></th></tr>
   <tr><td colspan="2">
  <?php if ( empty ( $_SESSION['tz_conversion'] ) ) {?>
@@ -1752,7 +1758,7 @@ if ( ! $exists || ! $canWrite ) { ?>
    echo "<option value=\"none\" " .
     ( $settings['user_inc'] == 'user.php' && $settings['single_user'] == 'true' ? " selected=\"selected\"" : "" ) .
     ">" . translate ( "None (Single-User)" ) . "</option>\n</select>\n";
-	?>
+  ?>
     </td>
    </tr>
    <tr id="singleuser">

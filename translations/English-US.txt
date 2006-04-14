@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 04-06-2006
+# Translation last updated on 04-14-2006
 
 
 ###############################################
@@ -357,6 +357,7 @@ Table cell background for current day: Table cell background for current day
 Table cell background for days with events: Table cell background for days with events
 Table cell background for weekends: Table cell background for weekends
 Table cell background for other month: Table cell background for other month
+Week number color: Week number color
 Event popup background: Event popup background
 Event popup text: Event popup text
 The following error occurred: The following error occurred
@@ -471,6 +472,8 @@ Removed: Removed
 You are not authorized to edit this task: You are not authorized to edit this task
 hours ahead of you: hours ahead of you
 hours behind you: hours behind you
+hour ahead of you: hour ahead of you
+hour behind you: hour behind you
 is in a different timezone than you are. Currently: is in a different timezone than you are. Currently
 Time entered here is based on your Timezone: Time entered here is based on your Timezone
 Edit Entry: Edit Entry
@@ -959,9 +962,10 @@ Add New NonUser Calendar: Add New NonUser Calendar
 ###############################################
 # Page: pref.php
 #
-to modify the preferences for the Public Access calendar: to modify the preferences for the Public Access calendar
-to modify the preferences for the: to modify the preferences for the
 Save Preferences: Save Preferences
+Public Access calendar: Public Access calendar
+Modify Non User Calendar Preferences: Modify Non User Calendar Preferences
+Return to My Preferences: Return to My Preferences
 Custom Scripts: Custom Scripts
 Timezone Selection: Timezone Selection
 Email format preference: Email format preference
@@ -1480,9 +1484,6 @@ The password contains illegal characters.: The password contains illegal charact
 WebCalendar Installation Wizard: WebCalendar Installation Wizard
 Step: Step
 This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
-WebCalendar Version Check: WebCalendar Version Check
-This is version: This is version
-The most recent version available is: The most recent version available is
 PHP Version Check: PHP Version Check
 Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
 PHP version: PHP version

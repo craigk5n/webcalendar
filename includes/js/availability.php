@@ -1,4 +1,4 @@
-<?php
+<?php /* $Id:  */
 if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
   ! empty ( $_SERVER['PHP_SELF'] ) ) {
   $PHP_SELF = $_SERVER['PHP_SELF'];
@@ -6,11 +6,12 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
 if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     die ( "You can't access this file directly!" );
 }
-global $month, $day, $year, $parent_form;
+$month = $arinc[3];
+$day = $arinc[4];
+$year = $arinc[5];
+$parent_form = $arinc[6];
 ?>
 
-<script type="text/javascript">
-<!-- <![CDATA[
 // detect browser
 NS4 = (document.layers) ? 1 : 0;
 IE4 = (document.all) ? 1 : 0;
@@ -78,5 +79,3 @@ function schedule_event(hours, minutes) {
     window.close ();
   }
 }
-//]]> -->
-</script>

@@ -2,9 +2,16 @@
 include_once 'includes/init.php';
 include_once 'includes/date_formats.php';
 
+
+//force the css cache to clear by incrementing webcalendar_csscache cookie
+$webcalendar_csscache = 1;
+if  ( isset ( $_COOKIE["webcalendar_csscache"] ) ) {
+  $webcalendar_csscache += $_COOKIE["webcalendar_csscache"];
+}
+SetCookie ( "webcalendar_csscache", $webcalendar_csscache );
+
 function save_pref( $prefs, $src) {
   global $my_theme, $prefuser, $MENU_THEME;
-  $reload_prefs = false;
   while ( list ( $key, $value ) = each ( $prefs ) ) {
     if ( $src == 'post' ) {
       $setting = substr ( $key, 5 );
@@ -24,9 +31,7 @@ function save_pref( $prefs, $src) {
     //echo "Setting = $setting, key = $key, prefix = $prefix <br />\n";
     if ( strlen ( $setting ) > 0 && $prefix == "pref_" ) {
       if ( $setting == "THEME" &&  $value != 'none' )
-        $my_theme = strtolower ( $value );
-      if ( $setting == "MENU_THEME" && ( $value != $MENU_THEME ) )
-        $reload_prefs = true; 
+        $my_theme = strtolower ( $value ); 
       $sql =
         "DELETE FROM webcal_user_pref WHERE cal_login = ? " .
         "AND cal_setting = ?";
@@ -44,23 +49,28 @@ function save_pref( $prefs, $src) {
       }
     }
   }
-  // Reload preferences if we changed the menu theme
-  if ( $reload_prefs ) load_user_preferences ();
 }
 $currenttab = '';
+$public = getGetValue ('public');
+$user = getGetValue ('user');
+$updating_public = false;
+
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
+  $updating_public = true;
+  load_user_preferences ( '__public__' );  
+  $prefuser = "__public__";
+} elseif ( ! empty ( $user ) && $user != $login && ($is_admin || $is_nonuser_admin)) {
+  $prefuser = $user;
+    load_user_preferences ();
+} else {
+  $prefuser = $login;
+  // Reload preferences so any css changes will take effect
+  load_user_preferences ();
+}
+
 if ( ! empty ( $_POST ) && empty ( $error )) {
   $my_theme = '';
-  $currenttab = getPostValue ( 'currenttab' );
-  $updating_public = false;;
-  if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
-    $updating_public = true;
-    $prefuser = "__public__";
-  } elseif (($user != $login) && ($is_admin || $is_nonuser_admin)) {
-    $prefuser = "$user";
-  } else {
-    $prefuser = "$login";
-  }
-  
+  $currenttab = getPostValue ( 'currenttab' ); 
   save_pref ( $_POST, 'post' );
   
   if ( ! empty ( $my_theme ) ) {
@@ -68,7 +78,6 @@ if ( ! empty ( $_POST ) && empty ( $error )) {
     include_once $theme;
     save_pref ( $webcal_theme, 'theme' );  
   }
-  do_redirect ( 'pref.php' );
 }
 
 
@@ -77,10 +86,8 @@ if ($user != $login)
 
 // Load categories only if editing our own calendar
 if (!$user || $user == $login) load_user_categories ();
-
 // Reload preferences into $prefarray[].
 // Get system settings first.
-$updating_public = false;
 $prefarray = array ();
 $res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_config " );
 if ( $res ) {
@@ -89,20 +96,21 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
-  $updating_public = true;
-  $res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
-    "WHERE cal_login = '__public__'" );
-} else {
-  $res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
-    "WHERE cal_login = ?" , array ( $user ) );
-}
+//get user settings
+$res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
+    "WHERE cal_login = ?" , array ( $prefuser ) );
+
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $prefarray[$row[0]] = $row[1];
   }
   dbi_free_result ( $res );
 }
+
+//this will force $LANGUAGE to to the current value and eliminate having
+//to double click the 'SAVE' buton
+reset_language ( get_pref_setting ( $login, 'LANGUAGE' ) );
+
 //get list of theme files from /themes directory
 $themes = array();
 $dir = "themes/";
@@ -146,7 +154,7 @@ $GLOBALS['MYEVENTS'] = $prefarray['MYEVENTS'];
 $can_set_timezone = set_env ( "TZ", $TIMEZONE );
 
 $BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' )\"" : '' );
-$INC = array('js/pref.php','js/visible.php');
+$INC = array('js/pref.php','js/visible.php/true');
 print_header($INC, '' , $BodyX);
 ?>
 
@@ -159,54 +167,56 @@ print_header($INC, '' , $BodyX);
   echo "<br /><strong>-- " . 
    translate("Admin mode") . ": ".$nonuserfullname." --</strong>\n";
  }
+ 
+$formaction = substr($self, strrpos($self, '/') + 1) . "?" . $_SERVER['QUERY_STRING'];
+
 ?>&nbsp;<img src="images/help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 
-<a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
 
-<form action="pref.php" method="post" onsubmit="return valid_form(this);" name="prefform">
+<form action="<?php echo $formaction ?>" method="post" onsubmit="return valid_form(this);" name="prefform">
 <input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>" />
 <?php 
  if ($user) 
   echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
 ?>
-
+<a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a>&nbsp;&nbsp;
+<input type="submit" value="<?php etranslate("Save Preferences")?>" name="" />
+&nbsp;&nbsp;&nbsp;
 <?php if ( $updating_public ) { ?>
  <input type="hidden" name="public" value="1" />
 <?php } /*if ( $updating_public )*/ ?>
 
 
 <?php
-if ( $is_admin && ! $updating_public  ) {
-  if ( empty ( $public ) && ! empty ( $PUBLIC_ACCESS ) &&
-    $PUBLIC_ACCESS == 'Y' ) {
-    echo "<blockquote><a href=\"pref.php?public=1\">" .
-      translate("Click here") . "</a> " .
-      translate("to modify the preferences for the Public Access calendar") .
-      "</blockquote>\n";
-  }
-}
-
 // If user is admin of a non-user cal, and non-user cal is "public"
 // (meaning it is a public calendar that requires no login), then allow
 // the current user to modify prefs for that nonuser cal
-if ( empty ( $user ) || $user == $login ) {
-  $nulist = get_nonuser_cals ( $login );
-  for ( $i = 0; $i < count ( $nulist ); $i++ ) {
-    if ( $nulist[$i]['cal_is_public'] == 'Y' ) {
-      echo "<blockquote><a href=\"pref.php?user=" .
-        $nulist[$i]['cal_login'] . '">' .
-        translate("Click here") . "</a> " .
-        translate("to modify the preferences for the") . ' ' .
-        $nulist[$i]['cal_fullname'] . ' ' . translate("calendar") .
-         "</blockquote>\n";
-    }
+if ( $is_admin && ! $updating_public  ) {
+  if ( empty ( $public ) && ! empty ( $PUBLIC_ACCESS ) &&
+    $PUBLIC_ACCESS == 'Y' ) {
+    $public_option =  "<option value=\"pref.php?public=1\">" .
+      translate("Public Access calendar") .
+      "</option>\n";
   }
 }
-
+if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
+  $nulist = get_nonuser_cals ( $login );
+  echo "<select onchange=\"location=this.options[this.selectedIndex].value;\">\n";
+  echo "<option selected=\"selected\" disabled=\"disabled\" value=\"\">" . 
+    translate ( "Modify Non User Calendar Preferences") . "</option>\n";
+  if ( ! empty ( $public_option ) ) echo $public_option . "\n";
+  for ( $i = 0; $i < count ( $nulist ); $i++ ) {
+    echo "<option value=\"pref.php?user=". $nulist[$i]['cal_login']. "\">" . 
+      $nulist[$i]['cal_fullname'] . "</option>\n";
+  }
+  echo "</select>\n";
+} else {
+  $linktext = translate ( "Return to My Preferences" );
+  echo "<a title=\"$linktext\" class=\"nav\" href=\"pref.php\">&laquo;&nbsp; $linktext </a>";
+}
 ?>
 
-<input type="submit" value="<?php etranslate("Save Preferences")?>" name="" />
-<br/><br/>
+<br/><br />
 
 <!-- TABS -->
 <div id="tabs">
@@ -265,7 +275,7 @@ if ( empty ( $user ) || $user == $login ) {
    $tz_offset = date("Z") / ONE_HOUR;
    echo print_timezone_select_html ( "pref_", $prefarray['TIMEZONE']); 
    echo  translate("Your current GMT offset is") . "&nbsp;" .
-	   $tz_offset . "&nbsp;" .translate("hours") . ".";
+     $tz_offset . "&nbsp;" .translate("hours") . ".";
   ?>
 </td></tr>
  <?php } //end $can_set_timezone ?>
@@ -756,6 +766,12 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
     <input type="button" onclick="selectColor('pref_OTHERMONTHBG')" value="<?php etranslate("Select")?>..." />
   </td></tr>
+<tr><td>
+  <label for="pref_WEEKNUMBER"><?php etranslate("Week number color")?>:</label></td><td>
+  <input type="text" name="pref_WEEKNUMBER" id="pref_WEEKNUMBER" size="8" maxlength="7" value="<?php echo $prefarray['WEEKNUMBER']; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $prefarray['WEEKNUMBER']?>;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+  <input type="button" onclick="selectColor('pref_WEEKNUMBER')" value="<?php etranslate("Select")?>..." name="" />
+</td></tr>
    <tr><td style="font-weight:bold;">
     <label for="pref_othmonth"><?php etranslate("Event popup background")?>:</label></td><td>
   <input type="text" name="pref_POPUP_BG" id="pref_POPUP_BG" size="8" maxlength="7" value="<?php echo $prefarray['POPUP_BG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['POPUP_BG']?>; border-style: groove;">
@@ -772,19 +788,22 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
 </td><td style="text-align:center; vertical-align:top;;">
 <br />
-
-  <!-- BEGIN EXAMPLE MONTH -->
-  <table style="border:0px; width:100%;"><tr>
-  <td style="text-align:center; color:<?php echo $prefarray['H2COLOR'] ?>; font-weight:bold;"><?php
-  echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false );?></td></tr>
-  </table>
-  <?php 
-  set_today( date ("Ymd") );
-  display_month ( date ("m") , date("Y") , true);
-  ?>
-  <!-- END EXAMPLE MONTH -->
-  <br /><br />
-
+<!-- BEGIN EXAMPLE MONTH -->
+<table style="border:0px; width:90%; background-color:<?php echo $BGCOLOR?>"><tr>
+<td width="1%" rowspan="3">&nbsp;</td>
+<td style="text-align:center; color:<?php 
+  echo $H2COLOR?>; font-weight:bold;"><?php
+  echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false );?></td>
+<td width="1%" rowspan="3">&nbsp;</td></tr>
+<tr><td bgcolor="<?php echo $BGCOLOR?>">
+<?php 
+set_today( date ("Ymd") );
+display_month ( date ("m") , date('Y') , true);
+?>
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+<!-- END EXAMPLE MONTH -->
 </td></tr></table>
 </div>
 <!-- END COLORS -->

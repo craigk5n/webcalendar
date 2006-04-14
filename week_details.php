@@ -13,7 +13,7 @@ load_user_categories ();
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
-$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday );
+$wkstart = get_weekday_before ( $thisyear, $thismonth );
 
 $wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ));
 

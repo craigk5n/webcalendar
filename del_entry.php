@@ -139,8 +139,8 @@ if ( $id > 0 && empty ( $error ) ) {
       $time = $row[2];
       dbi_free_result ( $res );
     }
-		
-		$eventstart = date_to_epoch ( $fmtdate . $time );
+    
+    $eventstart = date_to_epoch ( $fmtdate . $time );
     $TIME_FORMAT=24;
     for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
       // Log the deletion
@@ -172,7 +172,7 @@ if ( $id > 0 && empty ( $error ) ) {
             translate("The subject was") . " \"" . $name . "\"\n" .
             translate("Date") . ": " . date_to_str ($thisdate) . "\n";
             if ( ! empty ( $eventtime ) && $eventtime != '-1' ) 
-						  $msg .= translate("Time") . ": " . 
+              $msg .= translate("Time") . ": " . 
              // Apply user's GMT offset and display their TZID
              display_time ( '', 2, $eventstart, $t_format );
             $msg .= "\n\n";

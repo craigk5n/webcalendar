@@ -117,7 +117,7 @@ if ( $is_admin ) { ?>
 </form>
 
 <?php if ( ! empty ( $user ) && ! $use_http_auth &&
-  ( isset ( $user_can_update_password ) && $user_can_update_password ) ) { ?>
+  ( $user_can_update_password ) ) { ?>
 </td><td>&nbsp;&nbsp;</td>
 <td style="vertical-align:top;">
 

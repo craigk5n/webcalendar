@@ -123,7 +123,7 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
     do_redirect ( $url );
   }
 }
-$INC = array('js/set_entry_cat.php');
+$INC = array('js/set_entry_cat.php/true');
 print_header($INC);
 ?>
 

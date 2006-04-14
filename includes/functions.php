@@ -329,8 +329,8 @@ function get_web_browser () {
  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-  //error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
-  //3, "d:\php\logs\debug.txt" );
+  error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n<br />",
+  3, "d:\Devcalendar\cvs_checkout\debug.html" );
   //fwrite ( $fd, date ( "Y-m-d H:i:s" ) .  "> $msg\n" );
   //fclose ( $fd );
   //  3, "/tmp/webcal-debug.log" );
@@ -603,7 +603,11 @@ function load_user_preferences ( $guest='') {
   );
  
   //allow __public__ pref to be used if logging in or user not validated
-  $tmp_login = ( ! empty ( $guest )? "__public__" : $login );
+  if ( ! empty ( $guest ) ) {
+    $tmp_login = ( $guest == 'guest' ? "__public__" : $guest );
+  } else {
+    $tmp_login = $login;
+  }
   $browser = get_web_browser ();
   $browser_lang = get_browser_language ();
   $prefarray = array ();
@@ -632,7 +636,8 @@ function load_user_preferences ( $guest='') {
   }
   
   //set users timezone
-  set_env ( "TZ", $GLOBALS['TIMEZONE'] );
+  if ( isset ( $GLOBALS['TIMEZONE'] ) ) 
+    set_env ( "TZ", $GLOBALS['TIMEZONE'] );
   
   // get views for this user and global views
   $rows = dbi_get_cached_rows (
@@ -676,7 +681,6 @@ function load_user_preferences ( $guest='') {
       "( cal_login, cal_setting, cal_value ) VALUES " .
       "( ?, ?, ? )", array( $tmp_login, 'LANGUAGE', $lang ) );
   }
-
   reset_language ( ! empty ( $LANGUAGE) && $LANGUAGE != 'none'? $LANGUAGE : $browser_lang );
   if (  empty ( $DATE_FORMAT ) || $DATE_FORMAT == 'LANGUAGE_DEFINED' ){
     $DATE_FORMAT = translate ( "__month__ __dd__, __yyyy__" );
@@ -692,7 +696,7 @@ function load_user_preferences ( $guest='') {
     user_is_assistant ( $tmp_login, $user );
   $has_boss = user_has_boss ( $tmp_login );
   $is_nonuser_admin = ($user) ? user_is_nonuser_admin ( $tmp_login, $user ) : false;
-  if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
+  //if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
 }
 
 /**
@@ -825,8 +829,7 @@ function get_my_users ( $user='', $reason='invite') {
   if ( $GROUPS_ENABLED == "Y" && $USER_SEES_ONLY_HIS_GROUPS == "Y" &&
     ! $is_admin ) {
     // get groups that current user is in
-    $rows =
-      dbi_get_cached_rows ( "SELECT cal_group_id FROM webcal_group_user " .
+    $rows = dbi_get_cached_rows ( "SELECT cal_group_id FROM webcal_group_user " .
       "WHERE cal_login = ?", array( $login ) );
     $groups = array ();
     if ( $rows ) {
@@ -1345,7 +1348,7 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
 
 echo "<table class=\"main\" style=\"clear:both;\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" id=\"month_main\">";
 echo "<tr>";
-if ( $DISPLAY_WEEKNUMBER == "Y" && ! $demo ) {
+if ( $DISPLAY_WEEKNUMBER == "Y" ) {
     echo "<th class=\"weekcell\" width\"5%\"></th>\n"; 
 }
 if ( $WEEK_START == 0 ) {
@@ -1363,7 +1366,7 @@ if ( $WEEK_START == 1 ) {
 echo "</tr>\n";
 
 
-$wkstart = get_weekday_before ( $thisyear, $thismonth, 1 );
+$wkstart = get_weekday_before ( $thisyear, $thismonth );
 
 // generate values for first day and last day of month
 $monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
@@ -1372,11 +1375,12 @@ $monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
   $i += ( ONE_DAY * 7 ) ) {
   print "<tr>\n";
-   if ( $DISPLAY_WEEKNUMBER == "Y" && ! $demo ) {
-      echo "<td class=\"weekcell\"><a title=\"" .
+   if ( $DISPLAY_WEEKNUMBER == "Y" ) {
+      $href = ( $demo? "href=\"\"": "href=\"week.php?date=". 
+        date ( "Ymd", $i + ONE_DAY ) ."\"" );
+      echo "<td class=\"weekcell\"><a class=\"weekcell\" title=\"" .
         translate("Week") . "&nbsp;" .
-          date( "W", $i + ONE_DAY ) . "\" href=\"week.php?date=".
-            date ( "Ymd", $i + ONE_DAY );
+          date( "W", $i + ONE_DAY ) . "\"" . $href;
       if ( ! empty ( $user) && $user != $login  )
         echo "&amp;user=$user";
       if ( ! empty ( $cat_id ) )
@@ -1423,6 +1427,10 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         }
         $class .= "othermonth";
       }
+      
+      if ( $demo && ( date ( "d", $date ) == 15 || date ( "d", $date ) == 12 ) ) {
+        $class .= " entry";
+      }
       if ( strlen ( $class ) )  {
       echo " class=\"$class\"";
       }
@@ -1432,7 +1440,8 @@ for ( $i = $wkstart; date ( "Ymd", $i ) <= date ( "Ymd", $monthend );
         print_date_entries ( date ( "Ymd", $date ),
           ( ! empty ( $user ) ) ? $user : $login, false );
       } else {
-        echo "&nbsp;";
+        if ( date ( "d", $date ) == 15 || date ( "d", $date ) == 12 ) 
+          echo translate("My event text");
       }
       print "</td>\n";
     } else {
@@ -1540,10 +1549,9 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   }
 
   //determine if the week starts on sunday or monday
-  $wkstart = get_weekday_before ( $thisyear, $thismonth, 1 );
-
+  $wkstart = get_weekday_before ( $thisyear, $thismonth );
+  
   //print the headers to display the day of the week (sun, mon, tues, etc.)
-
   // if we're showing week numbers we need an extra column
   if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' )
     echo "<th class=\"empty\">&nbsp;</th>\n";
@@ -1564,8 +1572,11 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     $i += (ONE_DAY * 7) ) {
     echo "<tr>\n";
     if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ) {
-      echo "<td class=\"weeknumber\"><a href=\"week.php?" . $u_url .
-        "date=".date("Ymd", $i)."\">(" . date( "W", $i + ONE_DAY ) . ")</a></td>\n";
+      $title = "title=\"" . translate("Week") . "&nbsp;" . 
+        date( "W", $i + ONE_DAY ) . "\" ";
+      $href = "href=\"week.php?" . $u_url . "date=".date("Ymd", $i+ ONE_DAY). "\" ";
+      echo "<td class=\"weeknumber\"><a class=\"weeknumber\"" . $title . $href . ">(" . 
+        date( "W", $i + ONE_DAY ) . ")</a></td>\n";
     }
     for ($j = 0; $j < 7; $j++) {
       $date = $i + ($j * ONE_DAY);
@@ -1588,7 +1599,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       }
       if ( ( $dateYmd >= date ("Ymd",$monthstart) &&
         $dateYmd <= date ("Ymd",$monthend) )  || 
-        ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == "Y" ) ) {
+        ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && 
+          $DISPLAY_ALL_DAYS_IN_MONTH == "Y" ) ) {
         echo "<td";
         $class = '';
        //add class="weekend" if it's saturday or sunday
@@ -1631,12 +1643,11 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
             ( ! empty ( $title )? " title=\"$title\"" : "") .
             ">";    
         } else {
-            echo "><a href=\"day.php?" .$u_url  . "date=" .  $dateYmd . "\">";
+          echo "><a href=\"day.php?" .$u_url  . "date=" .  $dateYmd . "\">";
         }
         echo date ( "j", $date ) . "</a></td>\n";
        } else {
-          echo "<td class=\"empty" . ( $wday == 0 || $wday == 6?" weekend":"") .
-            "\">&nbsp;</td>\n";
+          echo "<td class=\"empty\">&nbsp;</td>\n";
        }
       }                 // end for $j
       echo "</tr>\n";
@@ -2817,16 +2828,16 @@ function date_to_epoch ( $d ) {
  *
  * @param int $year  Year
  * @param int $month Month (1-12)
- * @param int $day   Day of the month
  *
  * @return int The date (in UNIX timestamp format)
  *
  */
-function get_weekday_before ( $year, $month, $day ) {
+function get_weekday_before ( $year, $month ) {
   global $WEEK_START, $DISPLAY_WEEKENDS;
   
   $laststr = ( $WEEK_START == 1 || $DISPLAY_WEEKENDS == "N" ? 'last Mon':'last Sun' );
-  $newdate = strtotime ( $laststr, mktime ( 0, 0, 0, $month, $day, $year ) );
+  //we use day 2 so if the 1st is Sunday or Monday it will return the 1st
+  $newdate = strtotime ( $laststr, mktime ( 0, 0, 0, $month, 2, $year ) );
   return $newdate;
 }
 
@@ -4188,7 +4199,6 @@ function load_user_categories ($ex_global = '') {
       $sql .= " cat_owner = ? ORDER BY cat_name";
     }
     $query_params[] = $cat_owner;
-    $res = dbi_execute ( $sql, $query_params );
     $rows = dbi_get_cached_rows ( $sql, $query_params );
     if ( $rows ) {
       for ( $i = 0; $i < count ( $rows ); $i++ ) {
@@ -4661,7 +4671,7 @@ function get_nonuser_cals ($user = '') {
 
   if ($user != '') {
     $sql .= "WHERE cal_admin = ? ";
-  $query_params[] = $user;
+    $query_params[] = $user;
   }
   $sql .= "ORDER BY cal_lastname, cal_firstname, cal_login";
   
@@ -5013,29 +5023,7 @@ function languageToAbbrev ( $name ) {
  *
  * @return string The style sheet text to use
  */
-function background_css ( $color, $height = '', $percent = '' ) {
-  global $ENABLE_GRADIENTS;
-  $ret = '';
 
-  if ( ( function_exists ( 'imagepng' ) || function_exists ( 'imagegif' ) )
-    && ( empty ( $ENABLE_GRADIENTS ) || $ENABLE_GRADIENTS == 'Y' ) ) {
-    $ret = "background: $color url(\"gradient.php?base=" . substr ( $color, 1 );
-
-    if ( $height != '' ) {
-      $ret .= "&height=$height";
-    }
-
-    if ( $percent != '' ) {
-      $ret .= "&percent=$percent";
-    }
-
-    $ret .= "\") repeat-x;\n";
-  } else {
-    $ret = "background-color: $color;\n";
-  }
-
-  return $ret;
-}
 
 /**
  * Draws a daily outlook style availability grid showing events that are
@@ -5312,7 +5300,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
         ( $timezones[$i] == $tz ? " selected=\"selected\"" : "" ) . 
          ">" . html_entity_decode ( $timezones[$i] ) . "</option>\n";
    }
-   $ret .= "</select><br />\n";
+   $ret .= "</select>\n";
    return $ret;
 }
 

@@ -48,7 +48,7 @@ $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
-$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday );
+$wkstart = get_weekday_before ( $thisyear, $thismonth );
 
 $wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ) );
 $startdate = date ( "Ymd", $wkstart );

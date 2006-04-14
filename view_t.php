@@ -66,7 +66,7 @@ $prevday = date ( "d", $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 if ( ! empty ( $timeb) && $timeb == 1 ) {
-  $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday );
+  $wkstart = get_weekday_before ( $thisyear, $thismonth );
 } else {
   $wkstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 }

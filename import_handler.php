@@ -16,7 +16,7 @@
  *
  * Input parameters:
  * FileName: File name specified by user on import.php
- *    calUser: user's calendar to import data into, unless
+ *      user's calendar to import data into, unless
  *      single user = Y or Admin, caluser will equal logged
  *      in user.
  *    exc_private: exclude private records from Palmdesktop import

@@ -3,55 +3,55 @@
  * $Id$
  *
  * Description:
- *	Generate a gradient image for use as a background image.
- *	Requires gd module.
+ *  Generate a gradient image for use as a background image.
+ *  Requires gd module.
  *
  * Input Parameters:
- *	height		Height of output image (ignored for horizontal gradient)
- * 	width		Width of output image (ignored for vertical gradient)
- *	colors		Number of colors to generate
- *	direction	Direction gradient should go
- *			Currently limited to multiples of 90 degrees
- *			0 means left-to-right, 90 means bottom-to-top,
- *			180 means right-to-left, 270 means top-to-bottom
+ *  height    Height of output image (ignored for horizontal gradient)
+ *   width    Width of output image (ignored for vertical gradient)
+ *  colors    Number of colors to generate
+ *  direction  Direction gradient should go
+ *      Currently limited to multiples of 90 degrees
+ *      0 means left-to-right, 90 means bottom-to-top,
+ *      180 means right-to-left, 270 means top-to-bottom
  *
  * Notes:
- *	One of the following two pairs of input parameters should be used
- *	to specify the colors for the gradient:
- *		1. color1, color2 - End colors of gradient specified
- *		   as "color1=RRGGBB" or "color1=RGB"
- *		2. base, percent - `base' is specified the same way as
- *		   `color1' and `color2'
- *		   `percent' is the amount the components of `base'
- *		   should be increased
- *	For example, given "base=445566&percent=50", the starting and
- *	ending colors of the gradient will be:
- *		Start:
- *			Red: 44 (hex) | 68 (dec)
- *			Green: 55 (hex) | 85 (dec)
- *			Blue: 66 (hex) | 102 (dec)
- *		End:
- *			Red: 44 + (50% of FF) =
- *			     CC (hex) | 68 + (50% of 255) = 196 (dec)
- *			Green: 55 + (50% of FF) =
- *			       DD (hex) | 85 + (50% of 255) = 203 (dec)
- *			Blue: 66 + (50% of FF) =
- *			      EE (hex) | 102 + (50% of 255) = 230 (dec)
+ *  One of the following two pairs of input parameters should be used
+ *  to specify the colors for the gradient:
+ *    1. color1, color2 - End colors of gradient specified
+ *       as "color1=RRGGBB" or "color1=RGB"
+ *    2. base, percent - `base' is specified the same way as
+ *       `color1' and `color2'
+ *       `percent' is the amount the components of `base'
+ *       should be increased
+ *  For example, given "base=445566&percent=50", the starting and
+ *  ending colors of the gradient will be:
+ *    Start:
+ *      Red: 44 (hex) | 68 (dec)
+ *      Green: 55 (hex) | 85 (dec)
+ *      Blue: 66 (hex) | 102 (dec)
+ *    End:
+ *      Red: 44 + (50% of FF) =
+ *           CC (hex) | 68 + (50% of 255) = 196 (dec)
+ *      Green: 55 + (50% of FF) =
+ *             DD (hex) | 85 + (50% of 255) = 203 (dec)
+ *      Blue: 66 + (50% of FF) =
+ *            EE (hex) | 102 + (50% of 255) = 230 (dec)
  *
- *	So it is entirely equivalent to say "base=445566&percent=50" OR
- *	"color1=445566&color2=CCDDEE"
+ *  So it is entirely equivalent to say "base=445566&percent=50" OR
+ *  "color1=445566&color2=CCDDEE"
  *
- *	Since this file does not use any other WebCalendar file, it could
- *	be used by other PHP apps.
+ *  Since this file does not use any other WebCalendar file, it could
+ *  be used by other PHP apps.
  *
  * TODO:
- *	Allow directions which are not multiples of 90 degrees so that
- *	we can have diagonal gradients.
+ *  Allow directions which are not multiples of 90 degrees so that
+ *  we can have diagonal gradients.
  *
  * Security:
- *	No security restrictions by user.
- *	Limit height and width parameters to 600 so a malicious user cannot
- *	request a 10Gb image 8-)
+ *  No security restrictions by user.
+ *  Limit height and width parameters to 600 so a malicious user cannot
+ *  request a 10Gb image 8-)
  */
  
 $MAX_HEIGHT = 600;
@@ -88,10 +88,10 @@ function getGetValue ( $name ) {
  * Turn an HTML color (like 'AABBCC') into an array of decimal RGB values
  *
  * Parameters:
- *	$color - HTML color specification in 'RRGGBB' or 'RGB' format
+ *  $color - HTML color specification in 'RRGGBB' or 'RGB' format
  *
  * Return value:
- *	array('red' => $red_val, 'green' => $green_val, 'blue' => $blue_val)
+ *  array('red' => $red_val, 'green' => $green_val, 'blue' => $blue_val)
  */
 function colorToRGB ( $color ) {
   if ( strlen ( $color ) == 6 ) {

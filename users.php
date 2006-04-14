@@ -27,7 +27,7 @@ if ( empty ( $login) || $login == "__public__" ) {
   exit;
 }
 
-$INC = array('js/users.php','js/visible.php');
+$INC = array('js/users.php/true','js/visible.php/true');
 print_header($INC);
 
 //if ( ! $is_admin ) {

@@ -1,5 +1,4 @@
-<script type="text/javascript">
-<!-- <![CDATA[
+<?php /* $Id:  */ ?>
 function show(foo,f,section) {
 	document.getElementById(foo).style.display = "block";
 	if (f) { setCookie(foo, "o", section); }
@@ -18,5 +17,4 @@ function hide(foo,f,section) {
 tabs[1] = "users";
 tabs[2] = "groups";
 tabs[3] = "nonusers";
-//]]> -->
-</script>
+

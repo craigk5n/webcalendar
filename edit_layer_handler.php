@@ -30,7 +30,7 @@ if ( ! empty ( $layeruser ) && $error == "" ) {
     $layerid = $layers[$id]['cal_layerid'];
 
     dbi_execute ( "UPDATE webcal_user_layers SET cal_layeruser = ?, cal_color = ?, cal_dups = ? WHERE cal_layerid = ?", 
-		array( $layeruser, $layercolor, $dups, $layerid ) );
+    array( $layeruser, $layercolor, $dups, $layerid ) );
 
   } else {
     // new layer entry

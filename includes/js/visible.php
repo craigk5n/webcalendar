@@ -1,13 +1,14 @@
-<?php
-/*
- * $Id
- *
- * The functions in this file can be used to make elements visible or
- * hidden on the page.
- */
+<?php /* $Id:  */ 
+//install/index.php needs to call this file directly, so we
+//need to insert the proper script tags as needed
+if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
+  ! empty ( $_SERVER['PHP_SELF'] ) ) {
+  $PHP_SELF = $_SERVER['PHP_SELF'];
+}
+if ( ! empty ( $PHP_SELF ) && ! preg_match ( "/js_cacher.php/", $PHP_SELF ) ) {
+ echo "<script type=\"text/javascript\">\n<!-- <![CDATA[\n";
+}
 ?>
-<script type="text/javascript">
-<!-- <![CDATA[
 // detect browser
 NS4 = (document.layers) ? 1 : 0;
 IE4 = (document.all) ? 1 : 0;
@@ -83,5 +84,8 @@ function callEdit() {
   var url = "edit_entry.php";
   editwin = window.open( url, "edit_entry", features ); 
 }
-//]]> -->
-</script>
+<?php 
+if ( ! empty ( $PHP_SELF ) && ! preg_match ( "/js_cacher.php/", $PHP_SELF ) ) {
+ echo "//]]> -->\n</script>\n";
+}
+?>

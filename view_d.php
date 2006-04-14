@@ -30,7 +30,7 @@ $error = "";
 
 view_init ( $id );
 
-$INC = array ( 'js/view_d.php' );
+$INC = array ( 'js/view_d.php/true' );
 print_header ( $INC );
 
 // get users in this view

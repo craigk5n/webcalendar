@@ -37,7 +37,8 @@ include 'includes/functions.php';
    
 $WebCalendar->initializeFirstPhase();    
  
-include "includes/$user_inc";    
+include "includes/$user_inc";
+    
 include 'includes/translate.php';    
    
 include 'includes/site_extras.php';    

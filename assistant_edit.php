@@ -11,7 +11,7 @@ if ($user != $login)
   $user = (($is_admin || $is_nonuser_admin) && $user) ? $user : $login;
 
 if ( $GROUPS_ENABLED == "Y" ) {
-  $INC = array('js/assistant_edit.php');
+  $INC = array("js/assistant_edit.php/true");
 } else {
   $INC = '';
 }

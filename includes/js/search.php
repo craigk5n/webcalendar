@@ -1,5 +1,4 @@
-<script type="text/javascript">
-<!-- <![CDATA[
+<?php /* $Id:  */ ?>
 function selectUsers () {
   // find id of user selection object
   var listid = 0;
@@ -34,5 +33,4 @@ function hide(foo,f, section) {
 		if (f) { deleteCookie(foo, section); }
 	}
 }
-//]]> -->
-</script>
+

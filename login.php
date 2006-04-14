@@ -12,6 +12,7 @@ $WebCalendar->initializeFirstPhase();
 include "includes/$user_inc";
 include_once 'includes/access.php';
 include 'includes/translate.php';
+include 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -177,6 +178,7 @@ function myOnLoad() {
 </script>
 <?php 
 }
+
  include "includes/styles.php";
 
  // Print custom header (since we do not call print_header function)

@@ -189,10 +189,12 @@ UPDATE webcal_config SET cal_value = 'week.php'
 CREATE TABLE webcal_access_user (
   cal_login VARCHAR(50) NOT NULL,
   cal_other_user VARCHAR(50) NOT NULL,
-  cal_can_view CHAR(1) NOT NULL DEFAULT 'N',
-  cal_can_edit CHAR(1) NOT NULL DEFAULT 'N',
-  cal_can_delete CHAR(1) NOT NULL DEFAULT 'N',
-  cal_can_approve CHAR(1) NOT NULL DEFAULT 'N',
+  cal_can_view INT DEFAULT '0' NOT NULL,
+  cal_can_edit INT DEFAULT '0' NOT NULL,
+  cal_can_approve INT DEFAULT '0' NOT NULL,
+  cal_can_invite CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_can_email CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_can_see_times_only CHAR(1) DEFAULT 'N' NOT NULL,
   PRIMARY KEY ( cal_login, cal_other_user )
 );
 CREATE TABLE webcal_access_function (
@@ -200,8 +202,6 @@ CREATE TABLE webcal_access_function (
   cal_permissions VARCHAR(64) NOT NULL,
   PRIMARY KEY ( cal_login )
 );
-
-/*upgrade_v1.1.0a-CVS*/
 ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1) DEFAULT 'N' NOT NULL;
 CREATE TABLE webcal_user_template (
   cal_login VARCHAR(25) NOT NULL,
@@ -209,8 +209,6 @@ CREATE TABLE webcal_user_template (
   cal_template_text VARCHAR(1024),
   PRIMARY KEY ( cal_login, cal_type )
 );
-
-/*upgrade_v1.1.0b-CVS*/
 ALTER TABLE webcal_entry_repeats ADD cal_endtime INT DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_bymonth VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_bymonthday VARCHAR(100) DEFAULT NULL;
@@ -234,7 +232,6 @@ CREATE TABLE webcal_entry_categories (
   cat_order INT NOT NULL DEFAULT 0,
   cat_owner VARCHAR(25) DEFAULT NULL
 );
-/*upgrade_v1.1.0c-CVS*/
 CREATE TABLE webcal_blob (
   cal_blob_id INT NOT NULL,
   cal_id INT,
@@ -249,20 +246,6 @@ CREATE TABLE webcal_blob (
   cal_blob BLOB,
   PRIMARY KEY ( cal_blob_id )
 );
-/*upgrade_v1.1.0d-CVS*/
-DROP TABLE webcal_access_user;
-CREATE TABLE webcal_access_user (
-  cal_login VARCHAR(50) NOT NULL,
-  cal_other_user VARCHAR(50) NOT NULL,
-  cal_can_view INT DEFAULT '0' NOT NULL,
-  cal_can_edit INT DEFAULT '0' NOT NULL,
-  cal_can_approve INT DEFAULT '0' NOT NULL,
-  cal_can_invite CHAR(1) DEFAULT 'Y' NOT NULL,
-  cal_can_email CHAR(1) DEFAULT 'Y' NOT NULL,
-  cal_can_see_times_only CHAR(1) DEFAULT 'N' NOT NULL,
-  PRIMARY KEY ( cal_login, cal_other_user )
-);
-/*upgrade_v1.1.0e-CVS*/
 CREATE TABLE webcal_reminders (
   cal_id INT DEFAULT '0' NOT NULL,
   cal_date INT DEFAULT '0' NOT NULL,

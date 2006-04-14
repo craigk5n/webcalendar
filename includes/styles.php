@@ -7,7 +7,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     die ( "You can't access this file directly!" );
 }
 ?>
-<?php /* 
+<?php 
+/* 
 
                    HOW TO READ THIS DOCUMENT
 
@@ -61,10 +62,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
   POPUP_BG - background-color for event popups
   H2COLOR - text color for text within h2 tags
 */
-?>
-<style type="text/css">
-<!--
-<?php /*==================== SECTION A ===============================
+ /*==================== SECTION A ===============================
 
   The CSS for WebCalendar is broken down into several sections.
   This should make it easier to understand, debug & understand the
@@ -83,7 +81,9 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     Section D - the "nitty gritty" of classes. Used specifically for 
       fine-tuning elements within a specific page
 */
-
+if ( ! empty ( $PHP_SELF ) && ! preg_match ( "/css_cacher.php/", $PHP_SELF ) ) {
+  echo "<style type=\"text/css\">\n<!--\n";
+}
 /* SECTION A */
 ?>body {
   color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
@@ -148,9 +148,9 @@ a:hover {
 #tabscontent_email,
 #tabscontent_colors,
 #tabscontent_participants,
+#tabscontent_reminder,
 #tabscontent_sched,
 #tabscontent_pete,
-#tabscontent_reminder,
 #tabscontent_nonusers,
 #tabscontent_themes,
 #tabscontent_boss,
@@ -172,7 +172,7 @@ label {
 ?>.weeknumber,
 .weeknumber a {
   font-size: 10px;
-  color: #B04040;
+  color: <?php echo $GLOBALS['WEEKNUMBER']; ?>;
   text-decoration: none;
 }
 <?php //transparent images used for visual color-selection
@@ -491,7 +491,7 @@ textarea {
 }
 .minical caption a {
   font-weight: bold;
-  color: #B04040;
+  color: <?php echo $GLOBALS['CAPTIONS']; ?>;
 }
 .minical caption a:hover {
   color: #0000FF;
@@ -728,6 +728,9 @@ th {
 ?>#viewd .main th {
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   padding: 1px;
+}
+a.weekcell {
+  color: <?php echo $GLOBALS['WEEKNUMBER']; ?>;
 }
 #admin .main th.weekcell,
 #pref .main th.weekcell,
@@ -1091,12 +1094,6 @@ abbr {
   background-color:#FF5050;
   text-align:center;
 }
-.box {
- border-top: 1px solid #888888;
- border-left: 1px solid #888888;
- border-right: 1px solid #888888;
- border-bottom: 1px solid #888888;
-}
 .boxtop {
  border-top: 1px solid #888888;
 }
@@ -1113,5 +1110,8 @@ abbr {
  padding-left:50px;
  text-align:left;
 }
--->
-</style>
+<?php
+if ( ! empty ( $PHP_SELF ) && ! preg_match ( "/css_cacher/", $PHP_SELF ) ) {
+  echo "\n-->\n</style>";
+}
+?>

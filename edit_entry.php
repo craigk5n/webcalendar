@@ -12,8 +12,6 @@
  * discontinued) or FCKEditor.  See the WebCalendar home page
  * for download and install instructions for these packages.
  *
- * This file will not pass XHTML validation with HTMLArea enabled
- * (Not sure about FCKEditor...)
  */
 include_once 'includes/init.php';
 
@@ -403,15 +401,17 @@ if ( empty ( $due_date ) || ! $due_date )
 //Even though event is stored in GMT, an Assistant may need to know that
 //the boss is in a different Timezone
 if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
-  $tz_offset = date ( "Z", $calTS );   
+  $tz_offset = date ( "Z", date_to_epoch ( $cal_date . $cal_time ) );   
   $user_TIMEZONE = get_pref_setting ( $user, "TIMEZONE" );
   set_env ( "TZ", $user_TIMEZONE );
-  $user_tz_offset = date ( "Z", $calTS );
+  $user_tz_offset = date ( "Z", date_to_epoch ( $cal_date . $cal_time ) );
   if ( $tz_offset != $user_tz_offset ) {  //Different TZ_Offset
     user_load_variables ( $user, "temp" );
-    $tz_diff = $user_tz_offset - $tz_offset;
+    $tz_diff = ( $user_tz_offset - $tz_offset ) / ONE_HOUR;
     $tz_value = ( $tz_diff > 0? translate ("hours ahead of you") :
       translate ("hours behind you") );
+    $tz_value = ( $tz_diff == 1? translate ("hour ahead of you") :
+      translate ("hour behind you") );
     $TZ_notice = "(" . $tempfullname . " " . 
       translate ("is in a different timezone than you are. Currently") . " ";
       //TODO show hh:mm instead of abs 
@@ -421,29 +421,22 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
   //return to $login TIMEZONE
   set_env ( "TZ", $TIMEZONE );
 }
+
+$textareasize = 'rows="5" cols="40"';
+$INC = array (  "js/visible.php/true", "js/edit_entry.php/false/$user" );
+$BodyX = 'onload="onLoad();"';
 if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
   // Allow HTML in description
   // If they have installed the htmlarea widget, make use of it
-  $textareasize = 'rows="15" cols="50"';
   if ( $use_fckeditor ) {
     $textareasize = 'rows="20" cols="50"';
-    $BodyX = 'onload="onLoad();"';
-    $INC = array ( 'js/edit_entry.php', 'js/visible.php' );
   } else if ( $use_htmlarea ) {
+    $textareasize = 'rows="15" cols="50"';
     $BodyX = 'onload="initEditor();onLoad()"';
-    $INC = array ( 'htmlarea/htmlarea.php', 'js/edit_entry.php',
-      'js/visible.php', 'htmlarea/core.php' );
-  } else {
-    // No htmlarea files found...
-    $BodyX = 'onload="onLoad()"';
-    $INC = array ( 'js/edit_entry.php', 'js/visible.php' );
+    $INC[] = "htmlarea/htmlarea.php/true";
+    $INC[] = "htmlarea/core.php/true";
   }
-} else {
-  $textareasize = 'rows="5" cols="40"';
-  $BodyX = 'onload="onLoad()"';
-  $INC = array('js/edit_entry.php','js/visible.php');
 }
-
 print_header ( $INC, '', $BodyX );
 
 $eType_label = " ( " . translate ( $eType ) . " )";
@@ -793,7 +786,7 @@ if ( $TIME_FORMAT == "12" ) {
 // load any site-specific fields and display them
 if ( $id > 0 )
   $extras = get_site_extra_fields ( $id );
-if ( isset ( $extras ) ) 
+if ( count ( $site_extras ) ) 
   echo "<table>";
 for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   $extra_name = $site_extras[$i][0];
@@ -862,7 +855,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   }
   echo "</td></tr>\n"; 
 }
-if ( isset ( $extras ) )
+if ( count ( $site_extras ) )
   echo "</table>\n";
 // end site-specific extra fields
 ?>

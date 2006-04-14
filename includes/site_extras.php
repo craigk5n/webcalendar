@@ -100,5 +100,6 @@ define ( 'EXTRA_SELECTLIST',    8 );
 // Use tools/check_translation.pl to verify you have all your translations.
 //
 
-$site_extras = array ();
+$site_extras = array (
+);
 ?>

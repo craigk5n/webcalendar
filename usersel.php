@@ -49,7 +49,7 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-$INC = array('js/usersel.php');
+$INC = array("js/usersel.php/false/$form/$listid/$groups");
 print_header($INC,'','',true, false, true);
 ?>
 

@@ -4,6 +4,14 @@ include_once 'includes/date_formats.php';
 if ( file_exists ( 'install/default_config.php' ) )
   include_once 'install/default_config.php';
 
+//force the css cache to clear by incrementing webcalendar_csscache cookie
+//admin.php will not use this cached css, but we want to make sure it's flushed
+$webcalendar_csscache = 1;
+if  ( isset ( $_COOKIE["webcalendar_csscache"] ) ) {
+  $webcalendar_csscache += $_COOKIE["webcalendar_csscache"];
+}
+SetCookie ( "webcalendar_csscache", $webcalendar_csscache );
+  
 function save_pref( $prefs, $src) {
   global $my_theme;
   while ( list ( $key, $value ) = each ( $prefs ) ) {
@@ -44,6 +52,9 @@ function save_pref( $prefs, $src) {
       }
     }
   }
+  // Reload preferences so any css changes will take effect
+  load_global_settings ();
+  load_user_preferences ();  
 }
 
 $error = '';
@@ -65,7 +76,6 @@ if ( ! empty ( $_POST ) && empty ( $error )) {
     include_once $theme;
     save_pref ( $webcal_theme, 'theme' );  
   }
-  do_redirect ( 'admin.php' );
 }  
 
 //load any new config settings. Existing ones will not be affected
@@ -121,13 +131,18 @@ if ( is_dir( $dir ) ) {
 $GLOBALS['APPLICATION_NAME'] = $s['APPLICATION_NAME'];
 $GLOBALS['TODAYCELLBG'] = $s['TODAYCELLBG'];
 $GLOBALS['TABLEBG'] = $s['TABLEBG'];
-$GLOBALS['TABLEBG'] = $s['TABLEBG'];
 $GLOBALS['THBG'] = $s['THBG'];
+$GLOBALS['THFG'] = $s['THFG'];
 $GLOBALS['CELLBG'] = $s['CELLBG'];
 $GLOBALS['WEEKENDBG'] = $s['WEEKENDBG'];
 $GLOBALS['OTHERMONTHBG'] = $s['OTHERMONTHBG'];
 $GLOBALS['FONTS'] = $s['FONTS'];
 $GLOBALS['MYEVENTS'] = $s['MYEVENTS'];
+$GLOBALS['BGCOLOR'] = $s['BGCOLOR'];
+$GLOBALS['TEXTCOLOR'] = $s['TEXTCOLOR'];
+$GLOBALS['H2COLOR'] = $s['H2COLOR'];
+$GLOBALS['HASEVENTSBG'] = $s['HASEVENTSBG'];
+$GLOBALS['WEEKNUMBER'] = $s['WEEKNUMBER'];
 
 //determine if we can set timezones, if not don't display any options
 $can_set_timezone = set_env ( "TZ", $s['SERVER_TIMEZONE'] );
@@ -135,18 +150,16 @@ $can_set_timezone = set_env ( "TZ", $s['SERVER_TIMEZONE'] );
 
 $BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();';
 $BodyX .= ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );\"" : '"' );
-$INC = array('js/admin.php','js/visible.php');
+$INC = array('js/admin.php',"js/visible.php/true");
 print_header ( $INC, '', $BodyX );
 ?>
 
 <h2><?php etranslate("System Settings")?>&nbsp;<img src="images/help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_admin.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
-<?php
-
-if ( ! $error ) {
- echo "<a title=\"" . translate("Admin") . "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n";
-?>
 
 <form action="admin.php" method="post" onsubmit="return valid_form(this);" name="prefform">
+<?php if ( ! $error ) {
+ echo "<a title=\"" . translate("Admin") . "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" . translate("Admin") . "</a>&nbsp;&nbsp;&nbsp;\n";
+?>
 <input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>" />
 <input type="submit" value="<?php etranslate("Save")?>" name="" />
 <br/><br/>
@@ -199,7 +212,7 @@ if ( ! $error ) {
      echo ">" . translate ( $key ) . "</option>\n";
     }
    ?>
-  </select><br />
+  </select>&nbsp;&nbsp;
   <?php echo translate("Your browser default language is") . " " . 
    get_browser_language ( true )  . "."; ?>
  </td></tr>
@@ -209,8 +222,8 @@ if ( ! $error ) {
   <?php
    $tz_offset = date("Z") /ONE_HOUR;
    echo print_timezone_select_html ( "admin_", $s['SERVER_TIMEZONE']);
-   echo  translate("Your current GMT offset is") . "&nbsp;" .
-	   $tz_offset . "&nbsp;" .translate("hours") . ".";
+   echo  "&nbsp;&nbsp;" . translate("Your current GMT offset is") . "&nbsp;" .
+       $tz_offset . "&nbsp;" .translate("hours") . ".";
   ?>
 </td></tr>
  <?php } // end $can_set_timezone ?>
@@ -888,7 +901,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <!-- BEGIN COLORS -->
 <div id="tabscontent_colors">
 <table cellspacing="0" cellpadding="3"  width="100%">
-<tr><td width="40%"><label>
+<tr><td width="30%"><label>
  <?php etranslate("Allow user to customize colors")?>:</label></td><td colspan="5">
  <label><input type="radio" name="admin_ALLOW_COLOR_CUSTOMIZATION" value='Y'<?php if ( $s['ALLOW_COLOR_CUSTOMIZATION'] != 'N' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
  <label><input type="radio" name="admin_ALLOW_COLOR_CUSTOMIZATION" value='N'<?php if ( $s['ALLOW_COLOR_CUSTOMIZATION'] == 'N' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('No')?></label>
@@ -908,17 +921,23 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
  <input type="button" onclick="selectColor('admin_BGCOLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td>
-<td rowspan="14" width="3%">&nbsp;</td>
-<td rowspan="14" width="35%">
+<td rowspan="14" width="1%">&nbsp;</td>
+<td rowspan="14" width="45%">
 <!-- BEGIN EXAMPLE MONTH -->
-<table style="border:0px; width:100%;"><tr>
-<td style="text-align:center; color:<?php echo $H2COLOR?>; font-weight:bold;"><?php
-echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false );?></td></tr>
-</table>
+<table style="border:0px; width:90%; background-color:<?php echo $BGCOLOR?>"><tr>
+<td width="1%" rowspan="3">&nbsp;</td>
+<td style="text-align:center; color:<?php 
+  echo $H2COLOR?>; font-weight:bold;"><?php
+  echo date_to_str ( date ("Ymd"), $DATE_FORMAT_MY, false );?></td>
+<td width="1%" rowspan="3">&nbsp;</td></tr>
+<tr><td bgcolor="<?php echo $BGCOLOR?>">
 <?php 
 set_today( date ("Ymd") );
 display_month ( date ("m") , date('Y') , true);
 ?>
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
 <!-- END EXAMPLE MONTH -->
 </td>
 </tr>
@@ -987,6 +1006,12 @@ display_month ( date ("m") , date('Y') , true);
   <input type="text" name="admin_OTHERMONTHBG" id="tdbgothermonth" size="8" maxlength="7" value="<?php echo $s['OTHERMONTHBG']; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s['OTHERMONTHBG']?>;">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('admin_OTHERMONTHBG')" value="<?php etranslate("Select")?>..." name="" />
+</td></tr>
+<tr><td>
+  <label for="admin_WEEKNUMBER"><?php etranslate("Week number color")?>:</label></td><td>
+  <input type="text" name="admin_WEEKNUMBER" id="admin_WEEKNUMBER" size="8" maxlength="7" value="<?php echo $s['WEEKNUMBER']; ?>" onkeyup="updateColor(this);" /></td><td class="sample" style="background-color:<?php echo $s['WEEKNUMBER']?>;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+  <input type="button" onclick="selectColor('admin_WEEKNUMBER')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
 <tr><td>
  <label for="admin_POPUP_BG"><?php etranslate("Event popup background")?>:</label></td><td>
