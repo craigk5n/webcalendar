@@ -1,4 +1,4 @@
-<?php /* $Id:  */ 
+<?php /* $Id$  */ 
 //install/index.php needs to call this file directly, so we
 //need to insert the proper script tags as needed
 if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&

@@ -1,4 +1,4 @@
-<?php /* $Id:  */  ?>
+<?php /* $Id$  */  ?>
 function valid_color ( str ) {
  var validColor = /^#[0-9a-fA-F]{3}$|^#[0-9a-fA-F]{6}$/;
 

@@ -1,4 +1,4 @@
-<?php /* $Id:  */ ?>
+<?php /* $Id$  */ ?>
 function selectDate (  day, month, year, current, evt ) {
   // get currently selected day/month/year
   monthobj = eval ( 'document.purgeform.' + month );
