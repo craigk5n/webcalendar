@@ -1,4 +1,4 @@
-<?php /* $Id:  */ ?>
+<?php /* $Id$  */ ?>
 function show(foo,f,section) {
 	document.getElementById(foo).style.display = "block";
 	if (f) { setCookie(foo, "o", section); }

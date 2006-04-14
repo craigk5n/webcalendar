@@ -1,4 +1,4 @@
-<?php /* $Id:  */ ?>
+<?php /* $Id$  */ ?>
 function valid_color ( str ) {
   var ch, j;
   var valid = "0123456789abcdefABCDEF";

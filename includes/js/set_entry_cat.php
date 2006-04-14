@@ -1,4 +1,4 @@
-<?php /* $Id:  */ ?>
+<?php /* $Id$  */ ?>
 function editCats (  evt ) {
   if (document.getElementById) {
     mX = evt.clientX   +150;

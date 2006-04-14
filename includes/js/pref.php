@@ -1,4 +1,4 @@
-<?php /* $Id:  */
+<?php /* $Id$  */
   global $ALLOW_COLOR_CUSTOMIZATION;
 ?>
 // error check the colors

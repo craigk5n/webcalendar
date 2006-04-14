@@ -1,4 +1,4 @@
-<?php /* $Id:  */ ?>
+<?php /* $Id$  */ ?>
 function selectUsers () {
   // find id of user selection object
   var listid = 0;
