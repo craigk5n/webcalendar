@@ -1,12 +1,10 @@
-<?php
-global $form;
+<?php /* $Id:  */
 if (preg_match("/\/includes\//", $PHP_SELF)) {
   die ("You can't access this file directly!");
 }
+$form = $arinc[3];
 ?>
 
-<script type="text/javascript">
-<!-- <![CDATA[
 function sendCats ( cats ) {
   var parentid = '';
   var parenttext = '';
@@ -87,5 +85,3 @@ function selRemove(btn){
      }
    } // end with document
 }
-//]]> -->
-</script>

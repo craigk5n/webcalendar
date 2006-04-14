@@ -3,26 +3,26 @@
  * $Id$
  *
  * Page Description:
- *	This page will handle adding blobs into the database.  It will
- *	present the form page on a GET and handle updating the database
- *	on a POST.
- *	This includes:
- *		Add comment to an event
- *		Add attachment to an event
+ *  This page will handle adding blobs into the database.  It will
+ *  present the form page on a GET and handle updating the database
+ *  on a POST.
+ *  This includes:
+ *    Add comment to an event
+ *    Add attachment to an event
  *
  * Input Parameters:
- *	For GET:
- *	  id - event id (optional for some types)
- *	  type - C=comment, A=attachment
- *	For POST:
- *	  id - event id (optional for some types)
- *	  type - C=comment, A=attachment
- *	  description - (for type=C and A)
- *	  comment - (for type=C)
- *	  FileName - (for type=A)
+ *  For GET:
+ *    id - event id (optional for some types)
+ *    type - C=comment, A=attachment
+ *  For POST:
+ *    id - event id (optional for some types)
+ *    type - C=comment, A=attachment
+ *    description - (for type=C and A)
+ *    comment - (for type=C)
+ *    FileName - (for type=A)
  *
  * Comments:
- *	TODO: add email notification when attachment or comment is added
+ *  TODO: add email notification when attachment or comment is added
  */
 include_once 'includes/init.php';
 

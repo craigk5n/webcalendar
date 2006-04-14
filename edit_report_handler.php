@@ -195,7 +195,7 @@ if ( empty ( $error ) ) {
       if ( $i > 0 )
         $sql .= ", ";
       //$sql .= $values[$i];
-	  $sql .= "?";
+    $sql .= "?";
     }
     $sql .= " )";
     $report_id = $newid;
@@ -205,10 +205,10 @@ if ( empty ( $error ) ) {
       if ( $i > 0 )
         $sql .= ", ";
       //$sql .= "$names[$i] = $values[$i]";
-	  $sql .= "$names[$i] = ?";
+    $sql .= "$names[$i] = ?";
     }
     $sql .= " WHERE cal_report_id = ?";
-	$values[] = $report_id; // push the $report_id to $values
+  $values[] = $report_id; // push the $report_id to $values
 
   }
   //echo "SQL: $sql"; exit;

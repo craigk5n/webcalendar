@@ -63,6 +63,8 @@ include_once 'includes/access.php';
 
 include_once 'includes/translate.php';
 
+include_once 'includes/gradient.php';
+
 $WebCalendar->initializeSecondPhase();
 
 
@@ -94,7 +96,20 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   
   //remember this view if the file is a view_x.php script
   if ( ! strstr ( $REQUEST_URI, "view_entry" ) )  remember_this_view ( true );
-
+  
+  //get script name for later use
+  $thisPage = substr($self, strrpos($self, '/') + 1);
+    
+  //check the css version for cache clearing if needed
+  if ( ! $disableStyle ) {
+    if  ( isset ( $_COOKIE["webcalendar_csscache"] ) ) {
+      $webcalendar_csscache = $_COOKIE["webcalendar_csscache"];
+    } else {
+      $webcalendar_csscache = 1;
+      SetCookie ( "webcalendar_csscache", $webcalendar_csscache );
+    }
+  }
+    
   $lang = '';
   if ( ! empty ( $LANGUAGE ) )
     $lang = languageToAbbrev ( $LANGUAGE );
@@ -138,7 +153,9 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
        $DISABLE_POPUPS == "Y" ) {
        //don't load popups.php javascript if DISABLE_POPUPS
       } else {
-        include_once 'includes/'.$inc;
+        echo "<script type=\"text/javascript\" ".
+          "src=\"js_cacher.php?inc=$inc\"></script>\n";
+        ///include_once 'includes/'.$inc;
       }
     }
   }
@@ -147,8 +164,16 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   if ($HeadX) echo $HeadX."\n";
 
   // Include the styles
+  //if loading admin.php, we will not us an exrternal file because
+  //we need to override the global colors and this is impossible if loading
+  //external file. We will still increment the webcalendar_csscache cookie though
   if ( ! $disableStyle ) {
-    include_once 'includes/styles.php';
+    if ( $thisPage == 'admin.php' || $thisPage == 'pref.php') {
+      include_once 'includes/styles.php';
+    } else {
+      echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"screen\"  " .
+        "href=\"css_cacher.php?$login$webcalendar_csscache\" />\n";
+    }
   }
 
   // Add custom script/stylesheet if enabled
@@ -186,7 +211,6 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   echo "</head>\n<body";
 
   // Find the filename of this page and give the <body> tag the corresponding id
-  $thisPage = substr($self, strrpos($self, '/') + 1);
   if ( isset( $bodyid[$thisPage] ) )
     echo " id=\"" . $bodyid[$thisPage] . "\"";
 

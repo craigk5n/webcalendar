@@ -1,13 +1,13 @@
-<?php
-  global $form,$listid,$groups;
+<?php /* $Id:  */ 
   if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
   }
+	$form = $arinc[3];
+	$listid = $arinc[4];
+	$groups = $arinc[5];
   $form = clean_word($form);
   $listid = clean_int($listid);
 ?>
-<script type="text/javascript">
-<!-- <![CDATA[
 function OkButton () {
   var parentlist = window.opener.document.<?php echo $form?>.elements[<?php echo $listid?>];
   var thislist = document.userselform.elements[0];
@@ -86,5 +86,4 @@ function selectGroupMembers () {
 function deselectGroupMembers () {
   toggleGroup ( false );
 }
-//]]> -->
-</script>
+

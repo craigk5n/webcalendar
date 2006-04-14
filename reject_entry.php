@@ -103,11 +103,11 @@ if ( empty ( $error ) && $id > 0 ) {
     // does this user want email for this?
     $send_user_mail = get_pref_setting ( $partlogin[$i],
       "EMAIL_EVENT_REJECTED" );
-		//check UAC
+    //check UAC
     $can_mail = "Y"; 
-		if ( access_is_enabled () ) {
-			$can_mail = access_user_calendar ( 'email', $partlogin[$i], $login);
-		}
+    if ( access_is_enabled () ) {
+      $can_mail = access_user_calendar ( 'email', $partlogin[$i], $login);
+    }
     $htmlmail = get_pref_setting ( $partlogin[$i], "EMAIL_HTML" );
     $t_format = get_pref_setting ( $partlogin[$i], "TIME_FORMAT" );
     user_load_variables ( $partlogin[$i], "temp" );

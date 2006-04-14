@@ -11,7 +11,9 @@ $fday = getGetValue ( "fday" );
 $fmonth = getGetValue ( "fmonth" );
 $fyear = getGetValue ( "fyear" );
 
-$INC = array('js/datesel.php');
+$form = getGetValue ( "form" );
+
+$INC = array("js/datesel.php/false/$form/$fmonth/$fday/$fyear");
 print_header($INC,'','',true);
 
 if ( strlen ( $date ) > 0 ) {
@@ -52,7 +54,7 @@ for ( $i = 1; $i < 7; $i++ ) {
 if ( $WEEK_START == 1 ) echo "<td>" .
   weekday_short_name ( 0 ) . "</td>\n";
 echo "</tr>\n";
-$wkstart = get_weekday_before ( $thisyear, $thismonth, 1 );
+$wkstart = get_weekday_before ( $thisyear, $thismonth );
 
 $monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 $monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );

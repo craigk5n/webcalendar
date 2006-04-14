@@ -53,9 +53,8 @@ function view_init ( $view_id )
   * @param int $view_id id of the view
   * @return the array of valid users
   */
-function view_get_user_list ( $view_id )
-{
-  global $error, $login, $is_admin;
+function view_get_user_list ( $view_id ) {
+  global $error, $login, $is_admin, $NONUSER_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
 
   // get users in this view
   $res = dbi_execute (
@@ -80,15 +79,15 @@ function view_get_user_list ( $view_id )
     }
   } else {
     $myusers = get_my_users ();
-    
+     
+    if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" ) {
+      $myusers = array_merge ( $myusers, get_nonuser_cals () );
+    } 
     // Make sure this user is allowed to see all users in this view
     // If this is a global view, it may include users that this user
     // is not allowed to see.
     if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
       $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
-      if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" ) {
-        $myusers = array_merge ( $myusers, get_nonuser_cals () );
-      }
       $userlookup = array();
       for ( $i = 0; $i < count ( $myusers ); $i++ ) {
         $userlookup[$myusers[$i]['cal_login']] = 1;

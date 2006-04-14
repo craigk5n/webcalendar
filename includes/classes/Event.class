@@ -504,7 +504,7 @@ class Event {
   function getCalType () {
     return $this->_calType;
   }
-	
+  
   /**
    * Gets the event's type name
    *
@@ -513,17 +513,17 @@ class Event {
    * @access public
    */
   function getCalTypeName () {
-	  if ( isset ( $this->_calTypeName ) )
-		  return $this->_calTypeName;
-	  if ( $this->_calType == 'E' || $this->_calType == 'M' )
-		  $this->_calTypeName = 'event';
-	  if ( $this->_calType == 'T' || $this->_calType == 'N' )
-		  $this->_calTypeName = 'task';
-	  if ( $this->_calType == 'J' || $this->_calType == 'O' )
-		  $this->_calTypeName = 'journal';			
+    if ( isset ( $this->_calTypeName ) )
+      return $this->_calTypeName;
+    if ( $this->_calType == 'E' || $this->_calType == 'M' )
+      $this->_calTypeName = 'event';
+    if ( $this->_calType == 'T' || $this->_calType == 'N' )
+      $this->_calTypeName = 'task';
+    if ( $this->_calType == 'J' || $this->_calType == 'O' )
+      $this->_calTypeName = 'journal';      
     return $this->_calTypeName;
   }
-	
+  
   /**
    * Gets the event's location
    *

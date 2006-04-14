@@ -98,8 +98,8 @@ function list_unapproved ( $user ) {
         "\" class=\"entry\" id=\"$linkid\" href=\"$view_link.php?id=$id&amp;user=$cal_user\">";
       $timestr = "";
       if ( $time > 0 ) {
-			  $eventstart = date_to_epoch ( $date . $time );
-				$eventstop = $eventstart + $duration;
+        $eventstart = date_to_epoch ( $date . $time );
+        $eventstop = $eventstart + $duration;
         $timestr = display_time ('', 0, $eventstart);
         if ( $duration > 0 ) {
           $timestr .= " - " . display_time ( '', 0 , $eventstop );

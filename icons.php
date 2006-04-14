@@ -4,7 +4,7 @@ $icon_path = 'icons/';
 
 $can_edit = ( is_dir($icon_path) && ( ! empty ( $ENABLE_ICON_UPLOADS ) &&
   $ENABLE_ICON_UPLOADS == "Y" || $is_admin ));
-	
+  
 if ( ! $can_edit ) do_redirect ( "category.php" );
 
 print_header('','','',true);

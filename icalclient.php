@@ -102,7 +102,8 @@
      
  $WebCalendar->initializeFirstPhase();    
      
- include "includes/$user_inc";    
+ include "includes/$user_inc";
+    
  include_once 'includes/validate.php';    
  include 'includes/translate.php';    
  include 'includes/site_extras.php';
@@ -120,7 +121,7 @@ if ( empty ( $APPLICATION_NAME ) ) {
 // validate.php.
 
 
-//if running as CGI, the following should se the
+//if running as CGI, the following should set the
 // PHP_AUTH_xxxx variables if the following instructions are
 //followed. This has been tested with apache2 only so far
 // If using php as CGI, you'll need to include this
@@ -142,7 +143,7 @@ if ( empty ( $login ) ) {
     header('HTTP/1.0 401 Unauthorized');
     exit;
   } else {
-    if ( user_valid_login ( $_SERVER['PHP_AUTH_USER'],
+    if ( validUserLogin ( $_SERVER['PHP_AUTH_USER'],
       $_SERVER['PHP_AUTH_PW'], true ) ) {
       $login = $_SERVER['PHP_AUTH_USER'];
     } else {

@@ -6,7 +6,7 @@
 }
 
 .ThemeMenubackgr {
-	background:	#E7E9EA url(../../../../gradient.php?base=E7E9EA&height=25) repeat scroll 0%;
+	background:	#E7E9EA url(../../../../includes/gradient.php?base=E7E9EA&height=25) repeat scroll 0%;
 	border-bottom: 1px solid #cccccc;
 }
 
@@ -202,7 +202,7 @@ tr.ThemeMainItem td.ThemeMainFolderRight {
 /*
 	background-color:	#DDE1E6;
 */
-	background:	#E0E2EB url(../../../../gradient.php?base=E0E2EB&width=25&direction=180) repeat scroll 0%;
+	background:	#E0E2EB url(../../../../includes/gradient.php?base=E0E2EB&width=25&direction=180) repeat scroll 0%;
 }
 
 .ThemeMenuItem .ThemeMenuFolderText,

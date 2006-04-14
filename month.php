@@ -36,7 +36,7 @@ if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {
     "year=$thisyear&amp;month=$thismonth$caturl" . 
     ( ! empty ( $friendly ) ? "&amp;friendly=1" : "") . "\" />\n";
 }
-$INC =  array('js/popups.php', 'js/visible.php');
+$INC =  array('js/popups.php', "js/visible.php/true");
 print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quicker access */

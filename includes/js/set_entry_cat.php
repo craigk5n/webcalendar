@@ -1,7 +1,4 @@
-<?php
-  global $type;
-?><script type="text/javascript">
-<!-- <![CDATA[
+<?php /* $Id:  */ ?>
 function editCats (  evt ) {
   if (document.getElementById) {
     mX = evt.clientX   +150;
@@ -16,5 +13,4 @@ function editCats (  evt ) {
   url = "catsel.php?form=selectcategory&cats=" + cat_ids;
   var catWindow = window.open(url,"EditCat","width=385,height=250,"  + MyPosition);
 }
-//]]> -->
-</script>
+

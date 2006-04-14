@@ -1,5 +1,4 @@
-<script type="text/javascript">
-<!-- <![CDATA[
+<?php /* $Id:  */ ?>
 function selectUsers () {
   var listid = 0;
   for ( i = 0; i < document.editviewform.elements.length; i++ ) {
@@ -32,5 +31,3 @@ function usermode_handler ()
   }
 }
 
-//]]> -->
-</script>

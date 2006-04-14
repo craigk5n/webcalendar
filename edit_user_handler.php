@@ -75,7 +75,7 @@ else if ( $formtype == "edituser" ) {
         $error = "Invalid characters in login.";
       } else if ( empty ( $user ) || $user == "" ) {
         // Username can not be blank. This is currently the only place that 
-        // calls user_add_user that is located in $user_inc
+        // calls addUser that is located in $user_inc
         $error = translate( "Username can not be blank" ) . ".";
       } else {
         user_add_user ( $user, $upassword1, $ufirstname, $ulastname,

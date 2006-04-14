@@ -401,6 +401,7 @@ print "<br /><br /><a title=\"" . $GLOBALS['PROGRAM_NAME'] . "\" " .
 <ol>
 <?php
 $log = $GLOBALS['SQLLOG'];
+//$log=0;
 for ( $i = 0; $i < count ( $log ); $i++ ) {
   echo "<li>" . $log[$i] . "</li>";
 }

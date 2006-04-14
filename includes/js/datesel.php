@@ -1,12 +1,13 @@
-<?php
-global $form, $fmonth, $fday, $fyear;
+<?php /* $Id:  */ 
 if (preg_match("/\/includes\//", $PHP_SELF)) {
   die ("You can't access this file directly!");
 }
+$form = $arinc[3];
+$fmonth = $arinc[4];
+$fday = $arinc[5];
+$fyear = $arinc[6];
 ?>
 
-<script type="text/javascript">
-<!-- <![CDATA[
 function sendDate ( date ) {
   year = date.substring ( 0, 4 );
   month = date.substring ( 4, 6 );
@@ -20,5 +21,3 @@ function sendDate ( date ) {
   }
   window.close ();
 }
-//]]> -->
-</script>

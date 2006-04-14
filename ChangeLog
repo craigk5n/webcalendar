@@ -1,4 +1,13 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Changed gradients to save images in cache file and return real 
+   url if called from background_css function in css files
+ - Changed css and javascript to external files and enabled caching
+ - Added db_cachedir setting to install/index.php script
+ - Fixed bug 1467713: report belongs to a deleted user remains in DB
+ - Fixed bug 1468170: Can't create Views with NUCs
+ - Fixed bug 1468558: view of deleted user remains in the database
+ - Fixed bug 1468877: <table> tag missing from 'Add Entry' site extras
+ - Fixed bug 1428558: Rejected Event in Views
  - Changed the Timezone calculations to use PHP putenv
  - Fixed bug 1343631: Timezone / Summertime error
  - Fixed bug 1454998: Wrong character in notification mails

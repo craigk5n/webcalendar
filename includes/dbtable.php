@@ -130,8 +130,8 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
   }
   if ( ! empty ( $actionlabel ) )
     $ret .= "<tr><td colspan=\"2\" style=\"text-align:center;\">\n" . 
-    	"<input type=\"submit\" value=\"" . htmlspecialchars ( $actionlabel ) . "\" />" . 
-	"</td></tr></form>\n";
+      "<input type=\"submit\" value=\"" . htmlspecialchars ( $actionlabel ) . "\" />" . 
+  "</td></tr></form>\n";
   $ret .= "</table>\n</td></tr></table>\n</td></tr></table>\n";
 
   return $ret;
@@ -194,7 +194,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
           else
             $sql .= " AND ";
           $sql .= $tablear[$i]["name"] . " = ?" ;
-		  $query_params[] = $keys[$tablear[$i]["name"]];
+      $query_params[] = $keys[$tablear[$i]["name"]];
         }
       }
     }
@@ -337,7 +337,7 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
         else
           $sql .= " AND ";
         $sql .= $tablear[$i]["name"] . " = ?" ;
-		$query_params[] = $keys[$tablear[$i]["name"]];
+    $query_params[] = $keys[$tablear[$i]["name"]];
       }
     }
   }
@@ -382,18 +382,18 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
   for ( $i = 0; $i < count ( $tablear ); $i++ ) {
     if ( $first ) {
       $first = 0;
-	  $sql .= "?";
+    $sql .= "?";
     }
     else {
       $sql .= ", ?";
-	}
+  }
     
-	if ( empty ( $valuesar[$i] ) ) {
-	  $query_params[] = NULL;
-	}
+  if ( empty ( $valuesar[$i] ) ) {
+    $query_params[] = NULL;
+  }
     else {
       $query_params[] = $valuesar[$i];
-	}
+  }
   }
   $sql .= " )";
   //echo "SQL: $sql<br />\n";
@@ -435,10 +435,10 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
     }
     $sql .= " " . $tablear[$i]["name"] . " = ?";
     if ( empty ( $valuesar[$i] ) ) {
-	  $query_params[] = NULL;
+    $query_params[] = NULL;
     } else {
-	  $query_params[] = $valuesar[$i];
-	}
+    $query_params[] = $valuesar[$i];
+  }
   }
   $sql .= " WHERE";
   $first = 1;
@@ -455,7 +455,7 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
       exit;
     }
     $sql .= " " . $tablear[$i]["name"] . " = ?";
-	$query_params[] = $valuesar[$i];
+  $query_params[] = $valuesar[$i];
   }
   //echo "SQL: $sql <P>\n";
   if ( ! dbi_execute ( $sql, $query_params ) ) {

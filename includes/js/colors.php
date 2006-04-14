@@ -1,13 +1,10 @@
-<?php
-global $color;
+<?php /* $Id:  */ 
 if (preg_match("/\/includes\//", $PHP_SELF)) {
     die ("You can't access this file directly!");
 }
-$color = clean_word($color);
+$color = $arinc[3];
 ?>
 
-<script type="text/javascript">
-<!-- <![CDATA[
 function sendColor ( color ) {
 	var thisInput = window.opener.document.prefform.<?php echo $color; ?>;
 
@@ -20,5 +17,3 @@ function sendColor ( color ) {
 	}
   window.close ();
 }
-//]]> -->
-</script>

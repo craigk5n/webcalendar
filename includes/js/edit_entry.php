@@ -1,7 +1,7 @@
-<?php
- global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR, $user;
-?><script type="text/javascript">
-<!-- <![CDATA[
+<?php /* $Id:  */
+ global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
+ $user = $arinc[3];
+?>
 // do a little form verifying
 function validate_and_submit () {
   if ( document.editentryform.name.value == "" ) {
@@ -616,8 +616,10 @@ function toggle_rem_when() {
    document.editentryform.elements['reminder_btn'].disabled = false;
    document.editentryform.elements['remhour'].disabled = false;
    document.editentryform.elements['remminute'].disabled = false;
-   document.editentryform.elements['remam'].disabled = false;
-   document.editentryform.elements['rempm'].disabled = false;
+	 if ( document.editentryform.elements['remam'] ) {
+     document.editentryform.elements['remam'].disabled = false;
+     document.editentryform.elements['rempm'].disabled = false;
+	 }
    document.editentryform.elements['rem_days'].disabled = true;
    document.editentryform.elements['rem_hours'].disabled = true;
    document.editentryform.elements['rem_minutes'].disabled = true;
@@ -632,8 +634,10 @@ function toggle_rem_when() {
    document.editentryform.elements['reminder_btn'].disabled = true;
    document.editentryform.elements['remhour'].disabled = true;
    document.editentryform.elements['remminute'].disabled = true;
-   document.editentryform.elements['remam'].disabled = true;
-   document.editentryform.elements['rempm'].disabled = true;
+	 if ( document.editentryform.elements['remam'] ) {
+     document.editentryform.elements['remam'].disabled = true;
+     document.editentryform.elements['rempm'].disabled = true;
+	 }
    document.editentryform.elements['rem_days'].disabled = false;
    document.editentryform.elements['rem_hours'].disabled = false;
    document.editentryform.elements['rem_minutes'].disabled = false;
@@ -708,5 +712,4 @@ function onLoad () {
   toggle_until();
   toggle_reminders();
 }
-//]]> -->
-</script>
+

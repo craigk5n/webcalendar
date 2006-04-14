@@ -1,5 +1,4 @@
-<script type="text/javascript">
-<!-- <![CDATA[
+<?php /* $Id:  */ ?>
 // The following code is used to support the small popups that
 // give the full description of an event when the user move the
 // mouse over it.
@@ -151,5 +150,4 @@ function mousemove(e){
 }
 // Initialize after loading the page
 addLoadHandler(infoinit);
-//]]> -->
-</script>
+

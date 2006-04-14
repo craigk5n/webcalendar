@@ -314,7 +314,6 @@ if ( empty ( $error ) && empty ( $list ) ) {
 if ( empty ( $report_user ) ) {
   $report_user = $login;
 }
-//echo "User: $report_user <p>";
 
 // Set default templates (in case there are none in the database for
 // this report.)
@@ -363,7 +362,7 @@ if ( empty ( $offset ) || empty ( $report_allow_nav ) ||
 
 // Set time range based on cal_time_range field.
 $DISPLAY_WEEKENDS = 'Y';
-$wkstart = get_weekday_before ( date ( "Y" ), date ( "m" ), date ( "d" ) );
+$wkstart = get_weekday_before ( date ( "Y" ), date ( "m" ) );
 if ( ! isset ( $report_time_range ) ) {
   // manage reports
 } else if ( $report_time_range >= 0 && $report_time_range < 10 ) {
@@ -425,7 +424,6 @@ if ( empty ( $error ) && empty ( $list ) ) {
 
   $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
-  //echo "User: $report_user <br />\n";
   //echo "Date Range: $start_date - $end_date <br /><br />\n";
 
 

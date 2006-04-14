@@ -1,8 +1,6 @@
-<?php
+<?php /* $Id:  */
   global $ALLOW_COLOR_CUSTOMIZATION;
 ?>
-<script type="text/javascript">
-<!-- <![CDATA[
 // error check the colors
 function valid_color ( str ) {
  var validColor = /^#[0-9a-fA-F]{3}$|^#[0-9a-fA-F]{6}$/;
@@ -93,5 +91,3 @@ tabs[5] = "subscribe";
 tabs[6] = "header";
 tabs[7] = "colors";
 
-//]]> -->
-</script>

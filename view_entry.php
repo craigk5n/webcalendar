@@ -57,6 +57,22 @@ if ( empty ( $error ) ) {
   } 
 }
 
+//Check if we can display basic info for RSS FEED
+$rssuser = getGetValue ( 'rssuser' );
+if ( ! empty ( $rssuser ) ) {
+  $user_rss_enabled = get_pref_setting ( $rssuser, 'USER_RSS_ENABLED' );
+  $user_rss_timezone = get_pref_setting ( $rssuser, 'TIMEZONE' );
+  $rss_view = ( $RSS_ENABLED =="Y" && $user_rss_enabled == 'Y' &&
+    $friendly ==1 && ! empty ( $rssuser ) ?  true : false );
+  if ( $rss_view == true ) {
+    $hide_details = false;
+    //make sure the displayed time is accurate
+    set_env ( "TZ", $user_rss_timezone );
+  }
+}
+
+
+
   // is this user a participant or the creator of the event?
   $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
     "webcal_entry_user WHERE webcal_entry.cal_id = " .
@@ -298,8 +314,10 @@ if ( empty ( $event_status ) ) {
   }
 }
 
+
 // If we have no event status yet, it must have been deleted.
-if ( ( empty ( $event_status ) && ! $is_admin ) || ! $can_view ) {
+if ( ( empty ( $event_status ) && ! $is_admin ) || 
+  ( ! $can_view  && $rss_view == false )) {
   echo "<h2>" . 
     translate("Error") . "</h2>" . 
     translate("You are not authorized") . ".\n";
@@ -771,7 +789,7 @@ if ( $single_user == "N" && $show_participants ) { ?>
 }
 
 
-if ( Doc::attachmentsEnabled () ) { ?>
+if ( Doc::attachmentsEnabled () && $rss_vies = false ) { ?>
   <tr><td style="vertical-align:top; font-weight:bold;">
   <?php etranslate("Attachments")?>:</td><td>
   <?php

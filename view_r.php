@@ -116,7 +116,7 @@ $prevday = date ( "d", $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 
-$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday );
+$wkstart = get_weekday_before ( $thisyear, $thismonth );
 
 $wkend = $wkstart + ( ONE_DAY * 6 );
 
@@ -216,7 +216,7 @@ $get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
 // public access events can not override $DISPLAY_UNAPPROVED
 if ( $user == "__public__" && $PUBLIC_ACCESS_VIEW_UNAPPROVED != 'Y' )
   $get_unapproved = false;
-	
+  
 // Step through each user and load events for that user.
 // Store in $e_save[] (normal events) and $re_save[] (repeating events).
 $e_save = array ();

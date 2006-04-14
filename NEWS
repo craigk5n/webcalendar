@@ -1,5 +1,10 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1467713: report belongs to a deleted user remains in DB
+      1468170: Can't create Views with NUCs
+      1468558: view of deleted user remains in the database
+      1468877: <table> tag missing from 'Add Entry' site extras
+      1428558: Rejected Event in Views
       1343631: Timezone / Summertime error
       1454998: Wrong character in notification mails
       1460511: 'Invalid Login' cannot be displayed correctly in German
@@ -234,6 +239,9 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Changed gradients to save images in cache file and return real url if called
+      from background_css function in css files
+    + Changed css and javascript to external files and enabled caching
     + Changed the Timezone calculations to use PHP putenv
     + Added caching of db requests and parsed translations.
     + Implemented improved reminder UI and added repeating functionality per RFC2445

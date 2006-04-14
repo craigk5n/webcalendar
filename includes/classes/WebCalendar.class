@@ -171,7 +171,7 @@ class WebCalendar {
     if ($DMW) {
       
       // Tell the browser not to cache
-      send_no_cache_header ();
+      //send_no_cache_header ();
       if ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin && ! $is_assistant )
         $user = "";
 
@@ -895,7 +895,7 @@ class WebCalendar {
                 }
                 $is_nonuser = true;
               }
-              else if (!user_valid_crypt($login, $cryptpw)) {
+              else if (! user_valid_crypt ($login, $cryptpw)) {
                 //do_debug ( "User not logged in; redirecting to login page" );
                 if ( empty ( $login_return_path ) )
                   do_redirect ( "login.php" );

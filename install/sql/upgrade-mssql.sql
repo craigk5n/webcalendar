@@ -186,22 +186,11 @@ UPDATE webcal_config SET cal_value = 'week.php'
   WHERE cal_setting = 'STARTVIEW';
 
 /*upgrade_v1.1.0*/
-CREATE TABLE webcal_access_user (
-  cal_login VARCHAR(50) NOT NULL,
-  cal_other_user VARCHAR(50) NOT NULL,
-  cal_can_view CHAR(1) NOT NULL DEFAULT 'N',
-  cal_can_edit CHAR(1) NOT NULL DEFAULT 'N',
-  cal_can_delete CHAR(1) NOT NULL DEFAULT 'N',
-  cal_can_approve CHAR(1) NOT NULL DEFAULT 'N',
-  PRIMARY KEY ( cal_login, cal_other_user )
-);
 CREATE TABLE webcal_access_function (
   cal_login VARCHAR(50) NOT NULL,
   cal_permissions VARCHAR(64) NOT NULL,
   PRIMARY KEY ( cal_login )
 );
-
-/*upgrade_v1.1.0a-CVS*/
 ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1) DEFAULT 'N' NOT NULL;
 CREATE TABLE webcal_user_template (
   cal_login VARCHAR(25) NOT NULL,
@@ -209,8 +198,6 @@ CREATE TABLE webcal_user_template (
   cal_template_text TEXT NULL,
   PRIMARY KEY ( cal_login, cal_type )
 );
-
-/*upgrade_v1.1.0b-CVS*/
 ALTER TABLE webcal_entry_repeats ADD cal_endtime INT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_bymonth VARCHAR(50) NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_bymonthday VARCHAR(100) NULL;
@@ -227,14 +214,12 @@ ALTER TABLE webcal_entry ADD cal_location VARCHAR(50) NULL;
 ALTER TABLE webcal_entry ADD cal_url VARCHAR(100) NULL;
 ALTER TABLE webcal_entry ADD cal_completed INT NULL;
 ALTER TABLE webcal_entry_user ADD cal_percent INT NOT NULL default '0';
-/*ALTER TABLE webcal_site_extras DROP PRIMARY KEY;*/
 CREATE TABLE webcal_entry_categories (
   cal_id INT NOT NULL default '0',
   cat_id INT NOT NULL default '0',
   cat_order INT NOT NULL default '0',
   cat_owner VARCHAR(25) NULL
 );
-/*upgrade_v1.1.0c-CVS*/
 CREATE TABLE webcal_blob (
   cal_blob_id INT NOT NULL,
   cal_id INT NULL,
@@ -249,8 +234,6 @@ CREATE TABLE webcal_blob (
   cal_blob IMAGE NULL,
   PRIMARY KEY ( cal_blob_id )
 );
-/*upgrade_v1.1.0d-CVS*/
-DROP TABLE webcal_access_user;
 CREATE TABLE webcal_access_user (
   cal_login VARCHAR(50) NOT NULL,
   cal_other_user VARCHAR(50) NOT NULL,
@@ -262,7 +245,6 @@ CREATE TABLE webcal_access_user (
   cal_see_time_only CHAR(1) NOT NULL DEFAULT 'N',
   PRIMARY KEY ( cal_login, cal_other_user )
 );
-/*upgrade_v1.1.0e-CVS*/
 CREATE TABLE webcal_reminders (
   cal_id INT NOT NULL DEFAULT '0',
   cal_date INT NOT NULL DEFAULT '0',
