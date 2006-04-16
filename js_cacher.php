@@ -2,6 +2,8 @@
  //if the javascript doesn't need any input from php, then we can cache it
  // and not run init.php
 $caching = false;
+if ( empty ( $inc ) )
+  $inc = $_GET['inc'];
 $arinc = explode ( "/", $inc );
 
 if ( $arinc[0] != 'js')
