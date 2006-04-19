@@ -212,12 +212,11 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   $res = dbi_execute ( $sql, array( $id ) );
  if ( $res ) {
    while ( $row = dbi_fetch_row ( $res ) ) {
-      $overall_percent[] = $row; 
-   if ($login == $row[0]) $task_percent = $row[1];
-   if ( $is_admin && $user == $row[0]) $task_percent = $row[1]; 
-   
-    if ($login == $row[0]) $task_status = $row[2];
-    if ( $is_admin && $user == $row[0]) $task_status = $row[2];
+     $overall_percent[] = $row; 
+     if ( $login == $row[0] || ( $is_admin && $user == $row[0]) ) {
+       $task_percent = $row[1];
+       $task_status = $row[2];
+     } 
   }  
     dbi_free_result ( $res ); 
  }
@@ -255,7 +254,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   dbi_free_result ( $res );
  }
   //get user's categories 
-  $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
+  $real_user =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
     $is_admin ) ) ? $user : $login;
   $sql = "SELECT  webcal_entry_categories.cat_id, " .
     " webcal_entry_categories.cat_owner, webcal_entry_categories.cat_order, cat_name " .
@@ -264,7 +263,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     " webcal_entry_categories.cal_id = ? ) AND " . 
     " webcal_categories.cat_owner = ?".
     " ORDER BY webcal_entry_categories.cat_order";
-  $res = dbi_execute ( $sql, array( $id, $cat_owner ) );
+  $res = dbi_execute ( $sql, array( $id, $real_user ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( empty ( $user ) || $login == $user || $is_assistant  || $is_admin ) {
@@ -422,7 +421,7 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
   set_env ( "TZ", $TIMEZONE );
 }
 
-$textareasize = 'rows="5" cols="40"';
+$textareasize = 'rows="15" cols="50"';
 $INC = array (  "js/visible.php/true", "js/edit_entry.php/false/$user" );
 $BodyX = 'onload="onLoad();"';
 if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
@@ -431,7 +430,6 @@ if ( $ALLOW_HTML_DESCRIPTION == "Y" ){
   if ( $use_fckeditor ) {
     $textareasize = 'rows="20" cols="50"';
   } else if ( $use_htmlarea ) {
-    $textareasize = 'rows="15" cols="50"';
     $BodyX = 'onload="initEditor();onLoad()"';
     $INC[] = "htmlarea/htmlarea.php/true";
     $INC[] = "htmlarea/core.php/true";
@@ -534,11 +532,13 @@ if ( ! empty ( $parent ) )
 <?php if ( ! empty ( $categories ) ) { ?>
      <tr><td class="tooltip" title="<?php etooltip("category-help")?>" valign="top">
       <label for="entry_categories"><?php etranslate("Category")?>:<br /></label>
-   <input type="button" value="<?php etranslate("Edit") ?>" onclick="editCats(event)" /></td><td valign="top">
+   <input type="button" value="<?php etranslate("Edit") ?>" onclick="editCats(event)" />
+   </td><td valign="top">
       <input  readonly="readonly" type="text" name="catnames" 
      value="<?php echo $catNames ?>"  size="30" 
     onclick="alert('<?php etranslate("Use the Edit button to make changes.", true) ?>')"/>
-   <input  type="hidden" name="cat_id" id="entry_categories" value="<?php echo $catList ?>" />
+   <input  type="hidden" name="cat_id" id="entry_categories" value="<?php 
+     echo $catList ?>" />
      </td></tr>
 <?php } //end if (! empty ($categories)) ?>
 <?php if (( ! empty ( $categories ) ) || ( $DISABLE_ACCESS_FIELD != "Y" ) || 
@@ -546,10 +546,19 @@ if ( ! empty ( $parent ) )
    </table>
     
 <?php }  ?>
-<?php if ( $eType == 'task' ) { //only for tasks ?>
-  <table border="0"><tr><td class="tooltip" title="<?php etooltip("percent-help")?>">
+<?php if ( $eType == 'task' ) { //only for tasks 
+  $completed_visible = ( strlen ( $completed ) ? 'visible' : 'hidden' );
+  ?>
+  <br />
+  <table border="0">
+    <tr id="completed">
+    <td class="tooltip" title="<?php etooltip("completed-help")?>">
+    <label for="task_percent"><?php etranslate("Date Completed")?>:&nbsp;</label></td>
+    <td><?php print_date_selection ( "completed_", $completed ); ?>
+    </td></tr>
+   <tr><td class="tooltip" title="<?php etooltip("percent-help")?>">
     <label for="task_percent"><?php etranslate("Percent Complete")?>:&nbsp;</label></td><td>
-    <select name="percent" id="task_percent">
+    <select name="percent" id="task_percent" onchange="completed_handler()">
    <?php  
      for ( $i=0; $i<=100 ; $i+=10 ){ 
        echo "<option value=\"$i\" " .
@@ -558,21 +567,23 @@ if ( ! empty ( $parent ) )
      }
     echo "</select></td></tr>\n";
     if ( ! empty ( $overall_percent ) ) {
-      echo "<tr><td colspan=\"2\">\n<table width=\"100%\" border=\"0\"" .
-        " cellpadding=\"2\" cellspacing\"5\">".
-        "<tr>\n<td colspan=\"2\">". translate("All Percentages") . "</td><tr>";
-      $all_complete = true;
+      echo  "<tr><td colspan=\"2\">\n<table width=\"100%\" border=\"0\"" .
+      " cellpadding=\"2\" cellspacing=\"5\">".
+      "<tr>\n<td colspan=\"2\">". translate("All Percentages") . "</td></tr>";
+      $others_complete = 'yes';
       for ( $i = 0; $i < count ( $overall_percent ); $i++ ) {
-            user_load_variables ( $overall_percent[$i][0], "percent" );
-          echo "<tr><td>" . $percentfullname . "</td><td>" .
-            $overall_percent[$i][1] . "</td></tr>\n";
-         if ( $overall_percent[$i][1] < 100 ) $all_complete = false;
-       }
-      echo "</table>";
+        user_load_variables ( $overall_percent[$i][0], "percent" );
+        echo  "<tr><td>" . $percentfullname . "</td><td>" .
+           $overall_percent[$i][1] . "</td></tr>\n";
+        if ( $overall_percent[$i][0] != $real_user && 
+         $overall_percent[$i][1] < 100 ) $others_complete = 'no';
+      }
+      echo  "</table>";
     }
-    echo "</td></tr>\n";
-   ?>
-   </td></tr></table>
+
+    ?>
+    </td></tr> </table>
+   <input type="hidden" name="others_complete" value="<?php echo $others_complete ?>" />
 <?php  } //end tasks only ?> 
  
   </td></tr>

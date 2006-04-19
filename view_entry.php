@@ -94,13 +94,19 @@ if ( ! empty ( $_POST ) && $is_my_event ) {
  if ( $upercent >= 0 && $upercent <= 100 )
     dbi_execute ( "UPDATE webcal_entry_user SET cal_percent = ? WHERE cal_login = ? " .
     " AND cal_id = ?" , array ( $upercent , $login, $id ) );
+//check if all other user percent is 100%, if so, set cal_complete date
+$others_complete = getPostValue ( 'others_complete' );
+if ( $upercent == 100 && $others_complete == 'yes' )
+  dbi_execute ( "UPDATE webcal_entry SET cal_completed = ? WHERE " .
+    "cal_id = ?" , array ( gmdate ( "Ymd", time() ), $id ) );
+
 }
 
 // Load event info now.
 $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
   "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-  "cal_name, cal_description, cal_location, cal_url, cal_due_date, cal_due_time FROM webcal_entry " .
-  "  WHERE cal_id = ?";
+  "cal_name, cal_description, cal_location, cal_url, cal_due_date, " .
+  "cal_due_time, cal_completed FROM webcal_entry  WHERE cal_id = ?";
 $res = dbi_execute ( $sql , array ( $id ) );
 if ( ! $res ) {
   $error = translate("Invalid entry id") . ": $id";
@@ -120,6 +126,7 @@ if ( ! $res ) {
       $eType = 'task';
     $due_date = $row[13];
     $due_time = $row[14];
+    $cal_completed = $row[15];
     if ( $hide_details ) {
       $name = translate ( $OVERRIDE_PUBLIC_TEXT );
       $description = translate ( $OVERRIDE_PUBLIC_TEXT );
@@ -480,6 +487,13 @@ if ( $CATEGORIES_ENABLED == "Y" ) {
  <?php etranslate("Due Time")?>:</td><td>
  <?php
    echo display_time (  $due_date . $due_time, 2 );
+  ?>
+  </td></tr>
+  <?php if (! empty ( $cal_completed ) ) { ?>
+    <tr><td style="vertical-align:top; font-weight:bold;">
+    <?php echo translate("Completed") . ":</td><td>\n";
+    echo date_to_str (  $cal_completed ); 
+   }
  } else {
    echo date_to_str ( $display_date );
  }
@@ -686,29 +700,34 @@ if ( $single_user == "N" && $show_participants ) { ?>
     }
   }
   if ( $eType == 'task' ) {
- echo "<table  border=\"1\"  width=\"80%\" cellspacing=\"0\" cellpadding=\"0\">\n";
- echo "<th align=\"center\">" .translate( "Participants" ) . "</th>";
- echo "<th align=\"center\" colspan=\"2\">" . translate( "Percentage Complete" ) . "</th>";
-  for ( $i = 0; $i < count ( $participants ); $i++ ) {
-    user_load_variables ( $participants[$i][0], "temp" );
-    if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
-    $spacer = 100 - $participants[$i][2];
-    $percentage = $participants[$i][2];
-    if ( $participants[$i][0] == $login ) $login_percentage = $participants[$i][2];
-    echo "<tr><td width=\"30%\">";
-    if ( strlen ( $tempemail ) && $can_email != 'N') {
-      echo "<a href=\"mailto:" . $tempemail . "?subject=$subject\">" .
-        "&nbsp;" . $tempfullname . "</a>"; 
-      $allmails[] = $tempemail;
-    } else { 
-      echo "&nbsp;" . $tempfullname; 
-    }   
-    echo "</td>\n";
-    echo "<td width=\"5%\" align=\"center\">$percentage%</td>\n<td width=\"65%\">";
-    echo "<img src=\"images/pix.gif\" width=\"$percentage%\" height=\"10\">";
-    echo "<img src=\"images/spacer.gif\" width=\"$spacer\" height=\"10\">";
-    echo "</td></tr>\n";
-  }
+    echo "<table  border=\"1\"  width=\"80%\" cellspacing=\"0\" cellpadding=\"0\">\n";
+    echo "<th align=\"center\">" .translate( "Participants" ) . "</th>";
+    echo "<th align=\"center\" colspan=\"2\">" . translate( "Percentage Complete" ) . "</th>";
+    $others_complete = 'yes';
+    for ( $i = 0; $i < count ( $participants ); $i++ ) {
+      user_load_variables ( $participants[$i][0], "temp" );
+      if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
+      $spacer = 100 - $participants[$i][2];
+      $percentage = $participants[$i][2];
+      if ( $participants[$i][0] == $login ) {
+        $login_percentage = $participants[$i][2];
+      } else {
+        if ( $participants[$i][2] < 100 ) $others_complete = 'no';
+      }
+      echo "<tr><td width=\"30%\">";
+      if ( strlen ( $tempemail ) && $can_email != 'N') {
+        echo "<a href=\"mailto:" . $tempemail . "?subject=$subject\">" .
+          "&nbsp;" . $tempfullname . "</a>"; 
+        $allmails[] = $tempemail;
+      } else { 
+        echo "&nbsp;" . $tempfullname; 
+      }   
+      echo "</td>\n";
+      echo "<td width=\"5%\" align=\"center\">$percentage%</td>\n<td width=\"65%\">";
+      echo "<img src=\"images/pix.gif\" width=\"$percentage%\" height=\"10\">";
+      echo "<img src=\"images/spacer.gif\" width=\"$spacer\" height=\"10\">";
+      echo "</td></tr>\n";
+    }
     echo "</table>";
   
   } else {
@@ -777,10 +796,13 @@ if ( $single_user == "N" && $show_participants ) { ?>
    $event_status != "D"  )  {
     echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n";
     echo "<form action=\"view_entry.php?id=$id\" method=\"post\" name=\"setpercentage\">\n";
+    echo "<input type=\"hidden\" name=\"others_complete\" value=\"$others_complete\" />\n";
     echo  translate ("Update Task Percentage") . 
-     "</td<td><select name=\"upercent\" id=\"task_percent\">\n";
+     "</td><td><select name=\"upercent\" id=\"task_percent\">\n";
     for ( $i=0; $i<=100 ; $i+=10 ){ 
-      echo "<option value=\"$i\" " .  ($login_percentage == $i? " selected=\"selected\"":""). " >" .  $i . "</option>\n";
+      echo "<option value=\"$i\" " .  
+        ($login_percentage == $i? " selected=\"selected\"":"") . " >" . 
+           $i . "</option>\n";
     }
     echo "</select>\n";
     echo "&nbsp;<input type=\"submit\" value=\"" . translate("Update") . "\" />\n";

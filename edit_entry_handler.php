@@ -180,10 +180,10 @@ if ( $eType == 'task' ) {
 
 
   // Combine all values to create completed date 
-  if ( ! empty ( $complete_year )  && ! empty ( $complete_month ) &&
-    ! empty ( $complete_day ) ) 
-    $eventcomplete =  sprintf( "%04d%02d%02d" , $complete_year, 
-      $complete_month, $complete_day );
+  if ( ! empty ( $completed_year )  && ! empty ( $completed_month ) &&
+    ! empty ( $completed_day ) ) 
+    $eventcomplete =  sprintf( "%04d%02d%02d" , $completed_year, 
+      $completed_month, $completed_day );
 } else {
   $eventdue = $eventstart; //just keeps things simple later on 
 }
@@ -831,6 +831,13 @@ if ( empty ( $error ) ) {
         boss_must_approve_event ( $login, $participants[$i] ) && 
         $REQUIRE_APPROVALS == "Y" && ! $is_nonuser_admin ) ?
         $tmp_status : "A";
+      
+      //set percentage to old_percent if not owner
+      $tmp_percent = ( ! empty ( $old_percent[$participants[$i]] ) ? 
+        $old_percent[$participants[$i]] : 0 );
+      //TODO this logic needs work 
+      $new_percent = ( $participants[$i] != $login ) ?
+        $tmp_percent : $percent;
 
       // If user is admin and this event was previously approved for public,
       // keep it as approved even though date/time may have changed
@@ -859,7 +866,7 @@ if ( empty ( $error ) ) {
       "AND cal_login = ?", array( $id, $participants[$i] ) );
     $sql = "INSERT INTO webcal_entry_user " .
       "( cal_id, cal_login, cal_status, cal_percent ) VALUES ( ?, ?, ?, ? )";
-    if ( ! dbi_execute ( $sql, array( $id, $participants[$i], $status, $percent ) ) ) {
+    if ( ! dbi_execute ( $sql, array( $id, $participants[$i], $status, $new_percent ) ) ) {
       $error = translate("Database error") . ": " . dbi_error ();
       break;
 
