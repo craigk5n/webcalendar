@@ -853,6 +853,7 @@ if ( empty ( $error ) ) {
         boss_must_approve_event ( $login, $participants[$i] ) && 
         $REQUIRE_APPROVALS == "Y" && ! $is_nonuser_admin ) ?
         "W" : "A";
+      $new_percent = ( $participants[$i] != $login ) ? 0 : $percent;
       // If admin, no need to approve Public Access Events
       if ( $participants[$i] == "__public__" && $is_admin ) {
         $status = "A";
