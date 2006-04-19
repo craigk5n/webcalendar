@@ -31,14 +31,15 @@ pre {
  margin-right: 25px;
 }
 tr {
- background-color: #606080;
- color: #F0F0F0;
+ background-color: #99CCFF;
+ color: #000000;
 }
 td {
  vertical-align: top;
 }
 th {
- background-color: #000000;
+ background-color: #0066CC;
+ color: #F0F0F0;
 }
 .colorheader {
  background-color: #000000;
@@ -88,8 +89,7 @@ h2 {
  <li><a href="#intro">Introduction</a></li>
  <li><a href="#requirements">System Requirements</a></li>
  <li><a href="#fileunpacking">File Unpacking</a></li>
- <li><a href="#dbsetup">Database Setup</a></li>
- <li><a href="#appsetup">Application Setup</a></li>
+ <li><a href="#appsetup">Application Installation</a></li>
  <li><a href="#reminders">Setting Up Email Reminders</a></li>
  <li><a href="#systemsettings">System Settings</a></li>
  <li><a href="#siteextras">Custom Event Fields</a></li>
@@ -99,9 +99,11 @@ h2 {
  <li><a href="#license">Licensing</a></li>
  <li><a href="#glossary">Glossary</a></li>
  <li><a href="#appendixA">Appendix A: Database Setup with phpMyAdmin</a></li>
- <li><a href="#appendixB">Appendix B: Setting Up Reminders on Windows</a></li>
- <li><a href="#appendixC">Appendix C: Displaying Upcoming Events on Your Site</a></li>
- <li><a href="#appendixD">Appendix D: How To Configure For LDAP</a></li>
+ <li><a href="#appendixB">Appendix B: Database Setup</a></li>
+ <li><a href="#appendixC">Appendix C: Setting Up Reminders on Windows</a></li>
+ <li><a href="#appendixD">Appendix D: Displaying Upcoming Events on Your Site</a></li>
+ <li><a href="#appendixE">Appendix E: How To Configure For LDAP</a></li>
+ <li><a href="#appendixF">Appendix F: Manual Installation</a></li>
 </ul>
 <hr />
 
@@ -124,7 +126,7 @@ h2 {
   <li>Public calendar (that requires no login) where anonymous users
     submit events that are approved by an administrator</li>
   <li>Add/Edit/Delete users</li>
-  <li>Add/Edit/Delete events</li>
+  <li>Add/Edit/Delete events/todos</li>
   <li>Repeating events</li>
   <li>Custom event fields</li>
   <li>Search interface for calendar entries</li>
@@ -151,6 +153,7 @@ h2 {
    <li>Estonian</li>
    <li>Fran&#231;ais (French)</li>
    <li>Galician</li>
+   <li>Greek</li>
    <li>Hollands (Dutch)</li>
    <li>Holo (Taiwanese)</li>
    <li>Hungarian</li>
@@ -182,7 +185,9 @@ h2 {
    <li>LDAP</li>
    <li>HTTP authentication</li>
    <li>NIS</li>
+   <li>IMAP</li>
    <li>web-based</li>
+   <li>support for external application authentication ( Postnuke, Joomla ) </li>
   </ul>
  </li>
  <li>Activity log that tracks:
@@ -193,7 +198,14 @@ h2 {
    <li>event rejection</li>
    <li>email notifications</li>
    <li>email reminders</li>
-  </ul>
+   </ul>
+ </li>
+ <li>Synchronization and Syndication:
+   <ul>
+   <li>Two-way authenticated ics sync </li>
+   <li>Anonymous ics publishing</li>
+   <li>RSS 1.0 feed </li>
+   </ul>
  </li>
 </ul>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
@@ -202,7 +214,7 @@ h2 {
 <a name="requirements"></a>
 <h2>System Requirements</h2>
  <ul>
-  <li>PHP 4 (PHP 5 not yet tested) with <tt>magic_quotes_gpc</tt> enabled</li>
+  <li>PHP 4.1 - PHP 5</li>
   <li>Database (see <a href="#database">below</a>)</li>
   <li>CSS-enabled browser</li>
   <li>JavaScript-enabled browser</li>
@@ -220,10 +232,12 @@ h2 {
   <li>PostgreSQL</li>
   <li>Interbase</li>
   <li>MS SQL Server</li>
+  <li>SQLLite</li>
+  <li>IBM Db2 </li>
   <li>ODBC</li>
  </ul>
- <p><span class="tip">TIP</span>PHP ODBC includes support for Adabas D,
-    IBM DB2, Solid and Sybase SQL Anywhere as well as ODBC.  </p>
+ <p><span class="tip">TIP</span>PHP ODBC includes support for Adabas D, Solid
+   and Sybase SQL Anywhere as well as ODBC.  </p>
  <p>For the database you choose, you must have its drivers built into
   PHP.  For example, to use MySQL, PHP must be compiled with MySQL
   support (which is the default setting when installing PHP).
@@ -232,22 +246,9 @@ h2 {
  <p>No optional PHP packages (other than MySQL) are required for this
   application.  However, PHP should be compiled with <tt>--enable-track-vars</tt>
   on some systems.</p>
- <p>Make sure that <tt>magic_quotes_gpc</tt> in <tt>php.ini</tt>
-  is turned on (otherwise, you will get an error message when you try to access WebCalendar.)</p>
- <p><span class="tip">TIP</span> If you are using Apache
-  as your web server and if you cannot or do not want to enable
-  <tt>magic_quotes_gpc</tt> for your entire site, you can enable
-  it just for WebCalendar.
-  Create a <tt>.htaccess</tt> file in the toplevel WebCalendar
-  directory that contains a single line:</p>
-  <pre>php_value magic_quotes_gpc 1</pre>
-  <p>(For this to work with Apache, you must have the Apache
-  <tt>AllowOverride All</tt> directive enabled for the directory
-  where WebCalendar is installed.
-  Additionally, PHP must be running as an Apache module, not
-  a CGI.)</p>
-
- <p>You can run PHP either as a CGI or an Apache module.  You'll get better
+ <p><span class="tip">TIP</span>If you want to use gradient background images,
+  PHP must be compiled with the GD library. </p>
+  <p>You can run PHP either as a CGI or an Apache module.  You'll get better
   performance with PHP setup as a module.  Not only will you not have to
   deal with the CGI performance hit, but you'll be able to use PHP's
   database connection pooling.  Additionally, this application can use
@@ -273,136 +274,100 @@ h2 {
   your web server will find it.  (See your web server docs for info.)</p>
  <p>By default, WebCalendar should create its own directory
   when you unpack it.  The new directory name will typically
-  contain the version name (such as <tt>WebCalendar-0.9.41</tt>).
+  contain the version name (such as <tt>WebCalendar-1.1</tt>).
   You can rename this directory after unpacking the files if you
   prefer a directory name like <tt>calendar</tt> or <tt>webcalendar</tt>.
   Keep in mind that unless you remap the directory (via your web server's
   configuration settings), it will be part of the URL for the calendar.</p>
-<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
-
-<a name="dbsetup"></a>
- <h2>Database Setup</h2>
- <p>There are three steps in setting up the database:</p>
- <ol>
-  <li>Creating the database</li>
-  <li>Creating the user</li>
-  <li>Creating the required tables</li>
- </ol>
- <p>Follow the steps outlined below for the database you are using.
-  When complete, a single user account will be created
-  with the <strong>login "admin" and password "admin"</strong>, which you are encouraged
-  to use to create your own account.</p>
- <p><span class="note">Note:</span> In the examples below, text in <strong>bold</strong>
-  represents text that you must type in.</p>
-         <p><span class="note">Security:</span> The default values for database, login, and
-  password (<strong>intranet</strong>, <strong>webcalendar</strong>, and <strong>webcal01</strong>) are for demonstration purposes only
-  and should never be used in a production environment.</p>
- <h3 class="colorheader">MySQL</h3>
- <p>The following will create a database named "intranet".</p>
-<pre><strong>mysqladmin create intranet</strong></pre>
- <p>Next, create the database user account that will be used to access the database.</p>
- <pre><strong>mysql --user=root mysql</strong>
-mysql> <strong>GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost
-IDENTIFIED BY 'webcal01' WITH GRANT OPTION;</strong>
-mysql> <strong>FLUSH PRIVILEGES;</strong>
-mysql> <strong>QUIT</strong></pre>
- <p>If you will be accessing MySQL from a different machine than
-  the one running the web server, repeat the command above
-  and replace 'localhost' with the hostname of the other machine.</p>
- <p>Create the calendar tables using the supplied <tt>tables-mysql.sql</tt> file:</p>
- <pre><strong>mysql intranet &lt; tables-mysql.sql</strong></pre>
- <p>In the above example, "intranet" is the name of your database.</p>
-
- <p><span class="note">Note:</span> If you are using
- <a href="http://www.phpmyadmin.net">phpMyAdmin</a> to
- manage your MySQL database, follow the
- instructions in <a href="#appendixA">Appendix A</a>.
- </p>
-
- <h3 class="colorheader">Oracle</h3>
- <p>The following will create a tablespace named "webcalendar".
-  From the command line, startup sqlplus and
-  issue the following command:</p>
- <pre><strong>sqlplus</strong>
-SQL&gt; <strong>CREATE TABLESPACE webcalendar
-DATAFILE 'webcalendar.dat' SIZE 10M
-AUTOEXTEND ON NEXT 10M MAXSIZE 40M;</strong></pre>
- <p>Next, create the database user account that will be used to access the database.</p>
- <pre><strong>sqlplus</strong>
-SQL&gt; <strong>CREATE USER webcalendar IDENTIFIED BY webcal01
-DEFAULT TABLESPACE webcalendar;</strong>
-SQL&gt; <strong>GRANT dba TO webcalendar;</strong>
-SQL&gt; <strong>quit</strong></pre>
- <p>Create the calendar tables using the supplied <tt>tables-oracle.sql</tt> file:</p>
- <pre><strong>sqlplus webcalendar/webcal01</strong>
-SQL&gt; <strong>@tables-oracle;</strong>
-SQL&gt; <strong>quit</strong></pre>
-
- <h3 class="colorheader">PostgreSQL</h3>
- <p>The following will create a database named "webcalendar".
-  From the command line as the psql user: issue the following commands:
- </p>
-  <pre>$ <strong>su postgres</strong>
-# <strong>createdb webcalendar</strong>
-# <strong>createuser --no-createdb --no-adduser -P webcalendar</strong>
-# <strong>psql webcalendar webcalendar</strong>
-<strong>\i tables-postgres.sql</strong>
-<strong>\q</strong></pre>
-
- <h3 class="colorheader">Interbase</h3>
- <p>The following will create a database named "WEBCAL.gdb".
-  From the command line, startup usql and
-  issue the following command:</p>
- <pre><strong>CREATE DATABASE 'WEBCAL.gdb';</strong></pre>
-
- <p>Create the calendar tables using the supplied <tt>tables-ibase.sql</tt> file:</p>
- <pre><strong>isql
-connect /path/WEBCAL.gdb;
-input path/table-ibase.sql;</strong></pre>
-
- <h3 class="colorheader">ODBC</h3>
- <p>Setup will depend on which database you are using.
-  When it comes time to create the tables,
-  the <tt>tables-postgres.sql</tt> file should work for most
-  databases.</p>
-   <h3 class="colorheader">MSSQL</h3>
- <p>Create a database, <strong>intranet,</strong>  and add a user, <strong>webcalendar</strong>, to access this database. The user should be granted public, db_datareader,
-   and db_datawriter privileges. Open SQL Query Analyzer then open
-   the file <tt>tables-postgres.sql</tt>. Make sure you have identified <strong>intranet</strong> as the target database and Execute the contents of the sql file.</p>
-          <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+ <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <a name="appsetup"></a>
- <h2>Application Setup</h2>
- <p>Next, you will need to run the web-based database setup script
- (simply direct your browser to your new WebCalendar location).
- You will need to modify the permissions of the <tt>includes</tt>
- directory.  On Linux/UNIX, you should change this directory
- to be read/write for all users (<tt>chmod 777 includes</tt>).
- On Windows, change this directory to have full access for all users
- using Windows Explorer. Changing the write permissions will allow the web-based
- database configuration tool to create the <tt>settings.php</tt> file.</p>
+ <h2>Application Installation</h2>
  
- <p><span class="tip">TIP</span> After you have created the
- <tt>settings.php</tt> file (with the "Save Settings" button),
- you can change the permissions back to a more restrictive setting.</p>
+ <p>WebCalendar now includes an installation script that will guide you through
+ the entire installation process. It should run automatically when first accessing
+ a new installation or when a major version upgrade has been performed. The installation
+ script can always be rerun if needed by adding <tt>install/index.php</tt> to your 
+ base WebCalendar URL. </p>
+
+ <h3>WebCalendar Installation Wizard: Step 1</h3> 
+ <p>When first run, the installation script will prompt you for a 
+ <em>Configuration Wizard Password</em> that will protect against unauthorized 
+ tampering. Until this password is set, your WebCalendar installation and possibly your database are vulnerable to attack. Once, you've set your password, be sure 
+ to write it down. If forgotten, the only way to recover is to manually edit the 
+ settings.php file.</p>
  
- <p>After you test and save your database settings, you
- will be prompted to enter an installation password.
- <b>Write this password down somewhere.</b> There is no way to reset 
- this password. If you forget this password and need to change your database settings, 
- you will need to manually edit the <tt>settings.php</tt> file with a text editor.</p>
+ <p>The installation script will now check several prerequisites and report the 
+ results. Any item that appears in <font color="#FF0000">RED</font> should be
+  corrected before continuing.</p>
  
- <p>If you choose not to use the web-based database configuration
- tool, you can manually edit the <tt>settings.php</tt> file.
- There is an example file <tt>settings.php.orig</tt> that you
- can use as a starting point. Simply rename this file to <tt>settings.php</tt>. 
- You will need to set the values as follows in <tt>settings.php</tt>:</p>
- <p>To configure your database access. Set the values for:</p>
+ <table cellpadding="2">
+ <tr><th>Prerequisite Failed</th><th>Recommended Solution</th></tr>
+ <tr>
+   <td>PHP 4.1.0 or greater</td>
+	 <td>Upgrade your PHP installation</td>
+ </tr>
+ <tr>
+   <td>Safe Mode* = Off</td>
+	 <td>If possible, change this setting in your php.ini file to <tt>Off</tt>.</td>
+ </tr>
+ <tr>
+   <td>Safe Mode Allowed Vars*</td>
+	 <td>If unable to to set Safe Mode Off, then set safe_mode_allowed_vars to contain
+	 <tt>TZ</tt> in your php.ini file.
+	 </td>
+	</tr>
+	<tr><td colspan="2">* NOTE: If neither of the these settings pass testing, then
+	 your WebCalendar installation will be restricted to using the server's timezone 
+	 setting only.</td>
+ </tr>
+ <tr>
+   <td>File Uploads</td>
+	 <td>If disabled, then some features of WebCalendar will not function. This setting is configurable in your php.ini or httpd.conf files as <tt>file_uploads</tt></td>
+ </tr>
+ <tr>
+   <td>CRYPT_STD_DES</td>
+	 <td>This setting should be able to be ignored. We now support multiple <tt>crypt</tt>
+	 algorithms. If this setting is not enabled and you experience difficulties logging in,
+	  please notify the WebCalendar development team.</td>
+ </tr>
+ <tr>
+   <td>GD</td>
+	 <td>This library is required only if gradient background images are desired. Normally, PHP must be compiled with this option. Some installations only require it be enabled in your 
+	 php.ini file.</td>
+ </tr>
+ <tr>
+   <td>Session Check</td>
+	 <td>PHP Sessions are used during the installation process and are reuired for proper operation. Sessions cam be configured in your php.ini file. If it's not possible to enable
+	 sessions, then you must manually install WebCalendar. Details are available in 
+	 <a href-"#appendixF">Appendix F</a></td>
+ </tr>
+ <tr>
+   <td>Settings.php Status</td>
+	 <td>The installation script was either unable to create, or unable to write to your
+	  settings.php file. You will need to modify the permissions of the <tt>includes</tt>
+		directory.  On Linux/UNIX, you should change this directoryto be read/write 
+		for all users (<tt>chmod 777 includes</tt>). On Windows, change this directory 
+		to have full access for all users using Windows Explorer.</td>
+ </tr>
+ 
+ </table>
+ <h3>WebCalendar Installation Wizard: STEP 2</h3>
+ 
+ <p>The installation script can create your WebCalendar database as well as create all the required tables and pre-populate them with the basic configuration data. These features are only available when using fully supported database types. See 
+ <a href-"#appendixB">Appendix B</a> to manually create your database if needed.</p>
+ 
+ </p><strong>Database Status</strong></p>
+ <p>Displays the current status of your database settings as well the supported
+ databases for your PHP installation.</p> 
+ 
+ </p><strong>Database Settings</strong></p>
+<p>To configure your database access. Set the values for:</p>
  <table class="distinguish">
+  <tr><th>Displayed Value</th><th>settings.php value</th><th>Comments</th></tr>
   <tr><td>
-   db_type</td>
+   Database Type</td<td>db_type</td>
   <td>
    One of "mysql", "oracle", "postgresql", "odbc",
    &quot;mssql&quot;, sqllite, db2,
@@ -410,35 +375,81 @@ input path/table-ibase.sql;</strong></pre>
   </td>
   </tr>
   <tr><td>
-   db_host</td><td>
+   Server</td<td>db_host</td><td>
    The hostname that database is running on.
    (Use localhost if it's the same machine as 
-   the web server.) (This variable is not used with ODBC)<br />
+   the web server.) (This variable is not used with ODBC, enter 'none')
    (Use 'none' if your db server does not use a TCP socket to connect)   
   </td></tr>
   <tr><td>
-   db_login</td><td>
+   Login</td<td>db_login</td><td>
    The database login
   </td></tr>
   <tr><td>
-   db_password</td><td>
+   Database Name</td<td>db_password</td><td>
    The database password for the above login<br />
    (Use 'none' if your db server does not use a TCP socket to connect)  
   </td></tr>
   <tr><td>
-   db_database</td><td>
+   Database Name</td<td>db_database</td><td>
    The name of the database that the calendar 
    tables reside in.  ("intranet" in the <a href="#dbsetup">examples above</a>.) 
    For ODBC, this should be the DSN.
   </td></tr>
   <tr><td>
-   db_persistent</td><td>
+   Connection Persistence</td<td>db_persistent</td><td>
    Enable use of persistent (pooled) database connections. 
-   This should typically be enabled.
+   This should typically be enabled. This setting may be disabled for CGI installations.
   </td></tr>
- </table>
+  <tr><td>
+   Database Cache Directory</td<td>db_cachedir</td><td>
+   To enable caching of database query results, enter a writtable directory. This directory should NOT be in the webserver document path to prevent unauthorized access to cached 
+	 sensitive data  such as passwords hashes and private event details.
+  </td></tr>
+ </table> 
+ <p>Click the <font color="#FF0000">Test Settings</font> button to perform the test your settings.</p>
 
- <p>You can configure the calendar to run in single-user<a href="#g_singleuser">*</a> mode or 
+ <p>Click the <font color="#FF0000">Create</font> button to have the installation script create your database. This option will only be availabe for fully supported database types. Retest your database settings if prompted to do so.</p>
+ 
+ <p><span class="tip">TIP</span>If this step does not complete properly, then you will have to manually create your database. Detailed instructions can be found in <a href-"#appendixB">Appendix B</a>. Then rerun the installtion script to continue the installation.</p>
+
+<h3>WebCalendar Installation Wizard: STEP 3</h3> 
+ <p>In this section we will perform the required database changes to bring your database up to the required level If you are using a fully supported database, this step will be performed automatically for you If not, the required SQL can be displayed and you should be able to cut & paste it into your database server query window.</p>
+ 
+ <p><strong>Database Status</strong></p>
+ <p>This should display the current installed version of WebCalendar as well as the version being instaled.</p>
+ 
+ <p><font color="#FF0000"><strong>The following database actions are required</strong>
+ </font></p>
+ 
+ <p>If using a fully supported database type, clicking the <strong>Update Database</strong> button  will create any tables required for this installation or upgrade. If this feature is
+ not supported, then this button will not be available.</p>
+ 
+<p>The <strong>Display Required SQL</strong> button will always be available and if clicked
+will display the reuired SQL text that can then be cut &amp; pasted into the SQL query window of your database program. If using the approach, please rerun the installation script after completing your required database updates.</p>
+
+ <p><span class="tip">TIP</span>If this step does not complete properly, then you will have to manually create your database tables. Detailed instructions can be found in <a href-"#appendixF">Appendix F</a>. Then rerun the installtion script to continue the 
+ installation.</p>
+ 
+<h3>WebCalendar Installation Wizard: STEP 4</h3>
+
+<p><strong>Timezone Conversion</strong></p>
+<p>If upgrading WebCalendar from a previous version, you may be prompted to perform a Timezone Conversion. WebCalendar version 1.0.3 and earlier stored event date and time in the server's
+timezone. As of v1.1.0, all event date and time information is stored as UTC time. So, a one-time conversion of existing events will required to prevent event displayed times from
+appearing incorrectly.</p> 
+
+<p><strong>Application Settings</strong></p>
+
+<p>Create Default Admin Account: If checked, a DEFAULT ADMINISTRATOR account will be created with username:admin password:admin</p>
+
+<p>Application Name: The default value <strong>Title</strong> will be translated into
+ <strong>WebCalendar</strong> into the user's language. Any other entry will not be 
+translated unless entries are made into the appropriate language.txt files.</p>
+
+<p>Server URL: This should be the full URL to access your WebCalendar installation.The trailing "/" is required for proper operation. If this field is left blank, WebCalendar will
+calculate the proper value and store it in the database.</p>
+
+<p>User Authentication: You can configure the calendar to run in single-user<a href="#g_singleuser">*</a> mode or 
  multi-user<a href="#g_multiuser">*</a> mode. If this is your first time using the 
  calendar, it's easier to try single-user. You can always switch to multi-user 
  later. Leave <tt>single_user</tt> set to "false" (the default) for multi-user or set 
@@ -446,8 +457,7 @@ input path/table-ibase.sql;</strong></pre>
  to set the system to single-user mode. (And be sure to set the value of 
  <tt>single_user_login</tt> to the login that you would choose if you decide to switch 
  to multi-user mode some day.)</p>
- <p><span class="note">Note:</span> If you do decide to switch from single-user mode to multi-user mode,
-  make sure you add in a user to the system for the login you set the
+ <p><span class="note">Note:</span> If you do decide to switch from single-user mode to multi-user mode, make sure you add in a user to the system for the login you set the
   <tt>single_user_login</tt> variable to.  You will need to do this via the
   database (mysql, sqlplus, etc.)  Look in the <tt>tables-mysql.sql</tt>
   (or <tt>tables-oracle.sql</tt>, etc.) to see the example of adding in the "admin" user.</p>
@@ -455,7 +465,7 @@ input path/table-ibase.sql;</strong></pre>
   how your users are authenticated. You must change the settings of 
   <tt>use_http_auth</tt> and <tt>user_inc</tt>
   to setup which authentication method to use.</p>
- <p>You currently have four choices:</p>
+ <p>You currently have five choices:</p>
  <ol>
   <li>Web-based authentication (login/passwords verified in the WebCalendar database):<br />
    <tt>use_http_auth = false</tt><br />
@@ -481,7 +491,26 @@ input path/table-ibase.sql;</strong></pre>
    Additional configuration settings will need to be set
    in <tt>includes/user-ldap.php</tt>.
   </li>
+  <li>IMAP-based authentication (login/passwords verified by IMAP server):<br />
+   <tt>use_http_auth = false</tt><br />
+   <tt>user_inc = user-imap.php</tt><br />
+   Additional configuration settings will need to be set
+   in <tt>includes/user-imap.php</tt>.
+  </li>
  </ol>
+ 
+<p>Read-Only: Determines whether events can be added to you WebCalendar.</p> 
+
+<p>Environment: Normally set this <strong>Production</strong>. Development will allow 
+more verbose sql logging and should not be used unless needed.</p>
+
+<p>After saving your settings, you should be provided with a 
+<strong>Launch WebCalendar</strong>  button that will open WebCalendar in a seperate browser window.</p>
+
+<p><strong>Congratulations! You have successfully installed WebCalendar on 
+your system.</strong></p>
+
+
     <p>Keep in mind that if you want to use reminders, you will need to
   setup the <tt>send_reminders.php</tt> script (see below) and keep your admin
   setting for "Email enabled" set to "Yes" on the admin settings page.</p>
@@ -489,27 +518,8 @@ input path/table-ibase.sql;</strong></pre>
   To access WebCalendar open up your favorite web browser and
   type in the URL.  The URL will depend on where you installed
   WebCalendar.</p>
-    <p>When you unpacked/unzipped the WebCalendar distribution, it typically
-  creates a directory that includes the version number.
-  For example, if the zip file was named <tt>WebCalendar-0.9.99.zip</tt>
-  (or <tt>WebCalendar-0.9.99.tar.gz</tt>), then there
-  should be a <tt>WebCalendar-0.9.99</tt> directory.  For convenience, you
-  can rename this directory so that the URL does not include the version
-  number.  On Windows, you can do this from the Windows Explorer.
-  On Linux/UNIX, you can use the <tt>mv</tt> command to rename the directory.
-  Supposing you renamed the <tt>WebCalendar-0.9.99</tt> directory to just
-  be <tt>calendar</tt>, and you unpacked/unzipped the files into your toplevel
-  web server directory, the URL would be:</p>
-    <pre>http://yourserverhere/calendar/index.php</pre>
- <p>If you have not previously configured your database settings,
-  you will be automatically redirected to a web page for
-  configuring your database settings. After you have configured the database, 
-  use the URL again to access WebCalendar.</p>
-    <p>If you have configured your web server to use <tt>index.php</tt> as the
-  default index page for a directory, you can omit that from the URL.
-  On a single-user system, your browser should be redirected to week.php
-  initially. On a multi-user system, your browser should be redirected to login.php
-  so that you can login.</p>
+ 
+ 
  <p><span class="tip">TIP</span> On a multi-user system, the only user account created
  during installation has the username of "admin" and a password of "admin". You should create 
  a new admin account and delete this one for security reasons.</p>
@@ -732,8 +742,9 @@ input path/table-ibase.sql;</strong></pre>
    <dd>If enabled, a small task window will be displayed in the month and day calendars. These tasks are compatible with the VTODO component of RFC2445 (ical)</dd>
   <dt>Display tasks in Calendars</dt>
    <dd>If enabled, tasks are displayed along with events in calendars. The date they appear is the due date but if the due date has passed without the task being completed, the task will shift to the current day.</dd>
-  <dt>Export VTIMEZONE in ics files</dt>
+<!--  <dt>Export VTIMEZONE in ics files</dt>
    <dd>If enabled, a complete VTIMEZONE component will be exported with .ics files as necessary. This function requires considerable processing time, so it should not be enabled unless needed.</dd>
+-->
   <dt>Allow external users</dt>
   <dd>If enabled, the create/edit event page will contain a text area to include 
   the names (and optional email address) of event participants that are not calendar users.</dd>
@@ -861,37 +872,6 @@ input path/table-ibase.sql;</strong></pre>
     a mailto URL link</td><td>
     N/A</td><td>
     N/A
-   </td></tr>
-   <tr><td>
-    <tt>EXTRA_REMINDER</tt></td><td>
-    Allows the user to specify if a reminder should be sent out for 
-    the event</td><td>
-    Specifies how many minutes before the event that the reminder 
-    should be sent. </td><td>
-    Specifies other reminder-specific options. The following options are available:
-     <ul>
-      <li><tt>$EXTRA_REMINDER_WITH_DATE</tt></li>
-      <li><tt>$EXTRA_REMINDER_WITH_OFFSET</tt></li>
-      <li><tt>$EXTRA_REMINDER_DEFAULT_YES</tt></li>
-     </ul>
-    If more than one option is needed, they should be or-ed together with 
-    the <tt>|</tt> character.
-   </td></tr>
-   <tr><td>
-    <tt>EXTRA_REMINDER_DATE</tt></td><td>
-    Allows the user to specify if a reminder should be sent out for the event 
-    and what time it should be sent</td><td>
-    Specifies the default for how many minutes before the event that the 
-    reminder should be sent. The user can override this when they create/edit 
-    the event.</td><td>
-    Specifies other reminder-specific options. The following options are available:
-     <ul>
-      <li><tt>$EXTRA_REMINDER_WITH_DATE</tt></li>
-      <li><tt>$EXTRA_REMINDER_WITH_OFFSET</tt></li>
-      <li><tt>$EXTRA_REMINDER_DEFAULT_YES</tt></li>
-        </ul>
-    If more than one option is needed, they should be or-ed together with 
-    the <tt>|</tt> character.
    </td></tr>
    <tr><td>
     <tt>EXTRA_SELECTION_LIST</tt></td><td>
@@ -1255,6 +1235,8 @@ cal_firstname, cal_is_admin ) VALUES
    <dd>A calendar participant that does not have a calendar user account</dd>
   <dt><a name="g_group">Group</a></dt>
    <dd>A mechanism of dividing up a large set of users into smaller sets of users</dd>
+  <dt><a name="g_imap">IMAP</a></dt>
+   <dd>Internet Message Access Protocol, an optional method of user authentication.</dd>
   <dt><a name="g_layer">Layer</a></dt>
    <dd>A function that allows a user to overlay another user's calendar
     on top of his own calendar so that the standard day, week and month
@@ -1301,6 +1283,10 @@ cal_firstname, cal_is_admin ) VALUES
    <dd>The amount of time each "block" will represent in
     either the day or week view
     (set in user <a href="#pref">Preferences</a>)</dd>
+  <dt><a name="g_uac">User Access Control (UAC)</a></dt>
+   <dd>The fully configurable feature to allow extremely granular
+	 access control to user. This control applies to system options and
+	 features as well as other user's calendars.</dd>
   <dt><a name="g_view">View</a></dt>
    <dd>A customized page that presents the events of selected users</dd>
   <dt><a name="g_workhours">Work Hours</a></dt>
@@ -1360,7 +1346,98 @@ following steps to setup WebCalendar.
 <hr />
 
 <a name="appendixB"></a>
-<h2>Appendix B: Setting Up Reminders on Windows</h2>
+ <h2>Appendix B: Database Setup</h2>
+ <p>There are three steps in setting up the database:</p>
+ <ol>
+  <li>Creating the database</li>
+  <li>Creating the user</li>
+  <li>Creating the required tables</li>
+ </ol>
+ <p>Follow the steps outlined below for the database you are using.
+  When complete, a single user account will be created
+  with the <strong>login "admin" and password "admin"</strong>, which you are encouraged
+  to use to create your own account.</p>
+ <p><span class="note">Note:</span> In the examples below, text in <strong>bold</strong>
+  represents text that you must type in.</p>
+         <p><span class="note">Security:</span> The default values for database, login, and
+  password (<strong>intranet</strong>, <strong>webcalendar</strong>, and <strong>webcal01</strong>) are for demonstration purposes only
+  and should never be used in a production environment.</p>
+ <h3 class="colorheader">MySQL</h3>
+ <p>The following will create a database named "intranet".</p>
+<pre><strong>mysqladmin create intranet</strong></pre>
+ <p>Next, create the database user account that will be used to access the database.</p>
+ <pre><strong>mysql --user=root mysql</strong>
+mysql> <strong>GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost
+IDENTIFIED BY 'webcal01' WITH GRANT OPTION;</strong>
+mysql> <strong>FLUSH PRIVILEGES;</strong>
+mysql> <strong>QUIT</strong></pre>
+ <p>If you will be accessing MySQL from a different machine than
+  the one running the web server, repeat the command above
+  and replace 'localhost' with the hostname of the other machine.</p>
+ <p>Create the calendar tables using the supplied <tt>tables-mysql.sql</tt> file:</p>
+ <pre><strong>mysql intranet &lt; tables-mysql.sql</strong></pre>
+ <p>In the above example, "intranet" is the name of your database.</p>
+
+ <p><span class="note">Note:</span> If you are using
+ <a href="http://www.phpmyadmin.net">phpMyAdmin</a> to
+ manage your MySQL database, follow the
+ instructions in <a href="#appendixA">Appendix A</a>.
+ </p>
+
+ <h3 class="colorheader">Oracle</h3>
+ <p>The following will create a tablespace named "webcalendar".
+  From the command line, startup sqlplus and
+  issue the following command:</p>
+ <pre><strong>sqlplus</strong>
+SQL&gt; <strong>CREATE TABLESPACE webcalendar
+DATAFILE 'webcalendar.dat' SIZE 10M
+AUTOEXTEND ON NEXT 10M MAXSIZE 40M;</strong></pre>
+ <p>Next, create the database user account that will be used to access the database.</p>
+ <pre><strong>sqlplus</strong>
+SQL&gt; <strong>CREATE USER webcalendar IDENTIFIED BY webcal01
+DEFAULT TABLESPACE webcalendar;</strong>
+SQL&gt; <strong>GRANT dba TO webcalendar;</strong>
+SQL&gt; <strong>quit</strong></pre>
+ <p>Create the calendar tables using the supplied <tt>tables-oracle.sql</tt> file:</p>
+ <pre><strong>sqlplus webcalendar/webcal01</strong>
+SQL&gt; <strong>@tables-oracle;</strong>
+SQL&gt; <strong>quit</strong></pre>
+
+ <h3 class="colorheader">PostgreSQL</h3>
+ <p>The following will create a database named "webcalendar".
+  From the command line as the psql user: issue the following commands:
+ </p>
+  <pre>$ <strong>su postgres</strong>
+# <strong>createdb webcalendar</strong>
+# <strong>createuser --no-createdb --no-adduser -P webcalendar</strong>
+# <strong>psql webcalendar webcalendar</strong>
+<strong>\i tables-postgres.sql</strong>
+<strong>\q</strong></pre>
+
+ <h3 class="colorheader">Interbase</h3>
+ <p>The following will create a database named "WEBCAL.gdb".
+  From the command line, startup usql and
+  issue the following command:</p>
+ <pre><strong>CREATE DATABASE 'WEBCAL.gdb';</strong></pre>
+
+ <p>Create the calendar tables using the supplied <tt>tables-ibase.sql</tt> file:</p>
+ <pre><strong>isql
+connect /path/WEBCAL.gdb;
+input path/table-ibase.sql;</strong></pre>
+
+ <h3 class="colorheader">ODBC</h3>
+ <p>Setup will depend on which database you are using.
+  When it comes time to create the tables,
+  the <tt>tables-postgres.sql</tt> file should work for most
+  databases.</p>
+   <h3 class="colorheader">MSSQL</h3>
+ <p>Create a database, <strong>intranet,</strong>  and add a user, <strong>webcalendar</strong>, to access this database. The user should be granted public, db_datareader,
+   and db_datawriter privileges. Open SQL Query Analyzer then open
+   the file <tt>tables-postgres.sql</tt>. Make sure you have identified <strong>intranet</strong> as the target database and Execute the contents of the sql file.</p>
+          <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+					
+<a name="appendixC"></a>
+<h2>Appendix C: Setting Up Reminders on Windows</h2>
 
 <p>You have two options to choose from when setting up email
    reminders on a Windows platform.
@@ -1478,8 +1555,8 @@ view the UNIX man page for crontab
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
-<a name="appendixC"></a>
-<h2>Appendix C: Displaying Upcoming Events on Your Site</h2>
+<a name="appendixD"></a>
+<h2>Appendix D: Displaying Upcoming Events on Your Site</h2>
 
 <p>
 If you would like to list upcoming events somewhere on a page on your site
@@ -1587,8 +1664,8 @@ p&gt;No news....&lt;/p&gt;
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
-<a name="appendixD"></a>
-<h2>Appendix D: How To Configure For LDAP</h2>
+<a name="appendixE"></a>
+<h2>Appendix E: How To Configure For LDAP</h2>
 
 <p>Configuring WebCalendar to use an existing LDAP directory is fairly 
 simple.  It is know to work with OpenLDAP and Novell Edirectory and 
@@ -1606,7 +1683,7 @@ If you use LDAP, the group functionality of WebCalendar does not yet work.
 
 <p>The first step is to set WebCalendar to use LDAP authentication in 
 <tt>settings.php</tt>.  Instructions on to do this can be found in the
-<a href="#appsetup">Application Setup</a> section above.
+<a href="#appsetup">Application Installation</a> section above.
 In summary, the following should be set:<br />
 <tt>use_http_auth = false</tt><br />
 <tt>user_inc = user-ldap.php</tt><br />
@@ -1649,9 +1726,19 @@ to the beginning of <tt>$ldap_server</tt>.  <br />Example: ldaps://ldapserver.co
 </p>
 
 <h3>Using TLS with LDAP</h3>
-<p>If the LDAP server is set up to use TLS, just set <tt>$ldap_start_tls = true</tt>.
+<p>If the LDAP server is set up to use TLS,  set <tt>$ldap_start_tls = true</tt>.
 </p>
 
+<h3>Using LDAPv3</h3>
+<p>If the LDAP server uses protocol version 3,  set
+<tt>$set_ldap_version = true</tt>
+and <tt>$ldap_version = '3'</tt>.</p>
+
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
+
+<a name="appendixF"></a>
+<h2>Appendix F: Manual Installation</h2>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
