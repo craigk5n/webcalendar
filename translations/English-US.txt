@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 04-14-2006
+# Translation last updated on 04-18-2006
 
 
 ###############################################
@@ -496,6 +496,8 @@ High: High
 category-help: Specifies the category of the event.
 Category: Category
 Use the Edit button to make changes.: Use the Edit button to make changes.
+completed-help: Date task is completed. Only enabled when all participants percentage equals 100%.
+Date Completed: Date Completed
 percent-help: Task completion percentage for this user
 Percent Complete: Percent Complete
 All Percentages: All Percentages
@@ -920,15 +922,6 @@ Not authorized: Not authorized
 
 
 ###############################################
-# Page: load_tz_data.php
-#
-Load: Load
-Loading Timezone Data into Database: Loading Timezone Data into Database
-This could take several minutes to complete: This could take several minutes to complete
-Close: Close
-
-
-###############################################
 # Page: login-app.php
 #
 You must enter a login and password: You must enter a login and password
@@ -1132,6 +1125,7 @@ Status: Status
 Accepted: Accepted
 Needs-Action: Needs-Action
 Declined: Declined
+Completed: Completed
 by: by
 Percentage Complete: Percentage Complete
 External User: External User
@@ -1226,7 +1220,6 @@ Due: Due
 Task Name: Task Name
 Task Due Date: Task Due Date
 __mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-Completed: Completed
 View this task: View this task
 View this event: View this event
 exceeds limit of XXX events per day: exceeds limit of XXX events per day

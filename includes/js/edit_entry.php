@@ -616,10 +616,10 @@ function toggle_rem_when() {
    document.editentryform.elements['reminder_btn'].disabled = false;
    document.editentryform.elements['remhour'].disabled = false;
    document.editentryform.elements['remminute'].disabled = false;
-	 if ( document.editentryform.elements['remam'] ) {
+   if ( document.editentryform.elements['remam'] ) {
      document.editentryform.elements['remam'].disabled = false;
      document.editentryform.elements['rempm'].disabled = false;
-	 }
+   }
    document.editentryform.elements['rem_days'].disabled = true;
    document.editentryform.elements['rem_hours'].disabled = true;
    document.editentryform.elements['rem_minutes'].disabled = true;
@@ -634,10 +634,10 @@ function toggle_rem_when() {
    document.editentryform.elements['reminder_btn'].disabled = true;
    document.editentryform.elements['remhour'].disabled = true;
    document.editentryform.elements['remminute'].disabled = true;
-	 if ( document.editentryform.elements['remam'] ) {
+   if ( document.editentryform.elements['remam'] ) {
      document.editentryform.elements['remam'].disabled = true;
      document.editentryform.elements['rempm'].disabled = true;
-	 }
+   }
    document.editentryform.elements['rem_days'].disabled = false;
    document.editentryform.elements['rem_hours'].disabled = false;
    document.editentryform.elements['rem_minutes'].disabled = false;
@@ -706,10 +706,28 @@ function isNumeric(sText)
    return sText;
 }
 
+function completed_handler () {
+  var mypercent = document.editentryform.percent.selectedIndex;
+  var others_complete = document.editentryform.others_complete.value;
+  if ( mypercent == 10 && others_complete == 'yes' ) {
+    document.editentryform.elements['completed_day'].disabled = false;
+    document.editentryform.elements['completed_month'].disabled = false;
+    document.editentryform.elements['completed_year'].disabled = false;
+    document.editentryform.elements['completed_btn'].disabled = false;
+  } else {
+    document.editentryform.elements['completed_day'].disabled = true;
+    document.editentryform.elements['completed_month'].disabled = true;
+    document.editentryform.elements['completed_year'].disabled = true;
+    document.editentryform.elements['completed_btn'].disabled = true;
+  }
+}
+
+
 function onLoad () {
   timetype_handler();
   rpttype_handler();
   toggle_until();
   toggle_reminders();
+  completed_handler();
 }
 
