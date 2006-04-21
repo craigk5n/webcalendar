@@ -21,6 +21,29 @@ send_no_cache_header ();
 if ( empty ( $user ) )
   $user = $login;
 
+//we must be doing a batch process
+if ( ! empty ( $_POST ) ) {
+  if ( ! empty ( $approve_selected ) ) {
+    foreach ( $_POST as $tid => $app_user ) {
+      if ( $app_user == $approve_selected && $tid != 'approve_selected' )
+        $type = substr ( $tid, 0 );
+        $id = substr( $tid,1 );
+        if ( empty ( $error ) && $id > 0 ) {
+          update_status ( 'A', $app_user, $id, $type );
+        }
+      }
+  } else if ( ! empty ( $reject_selected ) ) {
+    foreach ( $_POST as $tid => $app_user ) {
+      if ( $app_user == $reject_selected && $tid != 'reject_selected' )
+        $type = substr ( $tid, 0 );
+        $id = substr( $tid,1 );
+        if ( empty ( $error ) && $id > 0 ) {
+          update_status ( 'R', $app_user, $id, $type );
+        }
+      }
+  }
+}
+
 // Only admin user or assistant can specify a username other than his own.
 if ( ! $is_admin && $user != $login  && ! $is_assistant &&
   ! access_is_enabled () )
@@ -35,10 +58,10 @@ if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; URL=" .
     $returl . "\" />\n";
 }
-$INC = array('js/popups.php');
+$INC = array('js/popups.php', 'js/list_unapproved.php');
 print_header($INC,$HeadX);
 
-$key = 0;
+$key =  0;
 
 if ( ! empty ( $user ) && $user != $login ) {
   $retarg = 'list';
@@ -50,8 +73,10 @@ if ( ! empty ( $user ) && $user != $login ) {
 // Exclude "extension" events (used when an event goes past midnight)
 // TODO: only include delete link if they have permission to delete
 // when user access control is enabled.
+
 function list_unapproved ( $user ) {
   global $temp_fullname, $key, $login, $retarg, $NONUSER_ENABLED;
+  
   $count = 0;
   
   user_load_variables ( $user, "temp_" );
@@ -88,13 +113,14 @@ function list_unapproved ( $user ) {
       $view_link = 'view_entry';      
 
       if ($count == 0 ) { 
-        echo "<h3>" . $temp_fullname . "</h3>\n";      
-        echo "<ul>\n"; 
+        echo "<tr><td colspan=\"5\"><h3>" . $temp_fullname . "</h3></td></tr>\n";       
       }
-      
+      $tribbon =  ( $count %2 == 0 ? 'even' :'odd' );
+      echo "<tr class=\"$tribbon\"><td width=\"5%\" align=\"right\">";
+      echo "<input type=\"checkbox\" name=\"$type$id\"  value=\"$user\"/></td>\n";
       $divname = "eventinfo-pop$id-$key";
       $linkid  = "pop$id-$key";
-      echo "<li><a  title=\"" . translate("View this entry") .
+      echo "<td><a  title=\"" . translate("View this entry") .
         "\" class=\"entry\" id=\"$linkid\" href=\"$view_link.php?id=$id&amp;user=$cal_user\">";
       $timestr = "";
       if ( $time > 0 ) {
@@ -109,41 +135,58 @@ function list_unapproved ( $user ) {
       echo "</a>";
       echo " (" . date_to_str ($date) . ")\n";
       //approve
-      echo ": <a title=\"" . 
-        translate("Approve/Confirm") . 
-     "\"  href=\"approve_entry.php?id=$id&amp;ret=$retarg&amp;user=$cal_user&amp;type=$type";
+      echo ":</td><td align=\"center\"> <a title=\"" .  translate("Approve/Confirm") . 
+        "\"  href=\"approve_entry.php?id=$id&amp;ret=$retarg&amp;user=$cal_user&amp;type=$type";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
         translate("Approve this entry?", true) . "');\">" . 
-          translate("Approve/Confirm") . "</a>, ";
+          "<img src=\"images/check.gif\" border=\"0\"></a></td> ";
       //reject
-      echo "<a title=\"" . 
-        translate("Reject") . 
+      echo "<td align=\"center\"><a title=\"" . translate("Reject") . 
         "\" href=\"reject_entry.php?id=$id&amp;ret=$retarg&amp;user=$cal_user&amp;type=$type";
       if ( $user == "__public__" )
         echo "&amp;public=1";
       echo "\" class=\"nav\" onclick=\"return confirm('" .
         translate("Reject this entry?", true) . "');\">" . 
-          translate("Reject") . "</a>";
+        "<img src=\"images/rejected.gif\" border=\"0\"></a></td>";
       //delete
       if ( ! access_is_enabled () ||
         access_user_calendar ( 'edit', $user ) ) {
-        echo ", <a title=\"" . 
+        echo "<td align=\"center\"><a title=\"" . 
           translate("Delete") . "\" href=\"del_entry.php?id=$id&amp;ret=$retarg";
         if ( $cal_user != $login )
           echo "&amp;user=$cal_user";
         echo "\" class=\"nav\" onclick=\"return confirm('" .
           translate("Are you sure you want to delete this entry?", true) . "');\">" . 
-        translate("Delete") . "</a>";
+          "<img src=\"images/delete.png\" border=\"0\"></a></td>\n";
       }
-      echo "\n</li>\n";
       $eventinfo .= build_entry_popup ( $divname, $cal_user, $description,
         $timestr, site_extras_for_popup ( $id ));
       $count++;
+      echo "</tr>\n";
     }
     dbi_free_result ( $res );
-    if ($count > 0 ) { echo "</ul>\n"; }
+    if ( $count > 0 ) {
+      echo "<tr class=\"even\"><td colspan=\"5\">&nbsp;&nbsp;&nbsp;";
+      echo "<img src=\"images/select.gif\" border=\"0\">\n";
+      echo "<label><a  onclick=\"check_all('$user');\">" . 
+        translate ("Check All" ) . "</a>  /  ";
+      echo  "<a  onclick=\"uncheck_all('$user');\">" . 
+        translate ("Uncheck All" ). "</a></label>";
+      echo "&nbsp;&nbsp;&nbsp;";
+      echo "<input  type=\"image\" src=\"images/check.gif\" value=\"$user\"" . 
+        "name=\"approve_selected\" title=\"" . translate ("Approve Selected" ) .
+         "\" onclick=\"return confirm('" . translate("Approve Selected entries?", true) .
+          "');this.form.submit();\"\" />";
+      echo "&nbsp;&nbsp;&nbsp;";
+      echo "<input  type=\"image\" src=\"images/rejected.gif\" value=\"$user\"" . 
+        "name=\"reject_selected\" title=\"" . translate ("Reject Selected" ) .
+         "\" onclick=\"return confirm('" . translate("Reject Selected entries?", true) .
+          "');this.form.submit();\"\" />";
+      echo "&nbsp;&nbsp;&nbsp;( " . translate ("Emails Will Not Be Sent") . " )"; 
+      echo "</td></tr>\n";
+    }
   }
   if ( $count == 0  ) {
     echo "<p class=\"nounapproved\">" . 
@@ -210,15 +253,34 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
     }
   }
 }
-
-
+echo "<form action=\"list_unapproved.php\" name=\"listunapproved\" method=\"post\">\n";
+echo "<table border=\"0\">";
 for ( $i = 0; $i < count ( $app_users ); $i++ ) {
   // List unapproved entries for this user.
   list_unapproved ( $app_users[$i] );
 }
-
+echo "</table></form>";
 ?>
-
+<script language="javascript" >
+function check_all( user) {
+  var theForm = document.forms['listunapproved'];
+  var z = 0;
+  for(z=0; z < theForm.length;z++){
+    if(theForm[z].type == 'checkbox' && theForm[z].value == user){
+    theForm[z].checked = true;
+    }
+  }
+}
+function uncheck_all(user) {
+  var theForm = document.forms['listunapproved'];
+  var z = 0;
+  for(z=0; z < theForm.length;z++){
+    if(theForm[z].type == 'checkbox' && theForm[z].value == user){
+    theForm[z].checked = false;
+    }
+  }
+}
+</script>
 <?php print_trailer(); ?>
 </body>
 </html>
