@@ -5695,4 +5695,55 @@ function set_env ( $val, $setting ) {
     
   return $ret;
 }
+
+/**
+ * Updates event status and logs activity
+ *
+ * @param string   $status   A,W,R,D to set cal_status
+ * @param string   $user     user to apply changes to
+ * @param int      $id       event id
+ * @param string   $type     event type for logging
+ *
+ */
+function update_status ( $status, $user, $id, $type='E' ) {
+  global $login, $error;
+  if ( empty ( $status ) )
+    return;
+  $log_type = '';  
+  switch ( $type ) {
+    case 'T':
+    case 'N';
+      $log_type = '_T';
+      break;
+    case 'J':
+    case 'O';
+      $log_type = '_J';
+      break;
+    default;
+      break;  
+  }
+  switch ( $status ) {
+    case 'A':
+        $log_type = constant ( 'LOG_APPROVE' . $log_type );
+        $error_msg = translate("Error approving event");
+      break;
+    case 'D';
+      $log_type = constant ( 'LOG_DELETE' . $log_type );
+      $error_msg = translate("Error deleting event");
+      break;
+    case 'R';
+      $log_type = constant ( 'LOG_REJECT' . $log_type );
+      $error_msg = translate("Error rejecting event");
+      break;  
+  }  
+  
+  if ( ! dbi_execute ( "UPDATE webcal_entry_user SET cal_status = ? " .
+    "WHERE cal_login = ? AND cal_id = ?", array( $status, $user, $id ) ) ) {
+    $error = $error_msg . ": " . dbi_error ();
+  } else {
+    activity_log ( $id, $login, $user, $log_type, "" );
+  }
+
+
+}
 ?>

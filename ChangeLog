@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Implemented RFE 617965: approve/confirm/reject all events
  - PATCH 1470047: Auto-Completing Tasks
  - Changed gradients to save images in cache file and return real 
    url if called from background_css function in css files

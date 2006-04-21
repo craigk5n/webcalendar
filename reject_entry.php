@@ -45,35 +45,9 @@ if ( access_is_enabled () && ! empty ( $user ) &&
 
 $view_type = "view_entry";
 $type = getGetValue ( 'type' );
-if ( ! empty ( $type ) && ( $type == 'T' || $type == 'N' ) ) {
-  $log_reject =  LOG_REJECT_T;
-} else if ( ! empty ( $type ) && ( $type == 'T' || $type == 'N' ) ) {
-  $log_reject =  LOG_REJECT_J; 
-} else {
-  $log_reject =  LOG_REJECT;
-}
 
 if ( empty ( $error ) && $id > 0 ) {
-  if ( ! dbi_execute ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
-    "WHERE cal_login = ? AND cal_id = ?" , array ( $app_user , $id ) ) ) {
-    $error = translate("Error approving event") . ": " . dbi_error ();
-  } else {
-    activity_log ( $id, $login, $app_user, $log_reject, "" );
-  }
-
-  // Update any extension events related to this one.
-  $res = dbi_execute ( "SELECT cal_id FROM webcal_entry " .
-    "WHERE cal_ext_for_id = ?" , array ( $id ) );
-  if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) ) {
-      $ext_id = $row[0];
-      if ( ! dbi_execute ( "UPDATE webcal_entry_user SET cal_status = 'R' " .
-        "WHERE cal_login = ? AND cal_id = ?" , array ( $app_user , $ext_id ) ) ) {
-        $error = translate("Error approving event") . ": " . dbi_error ();
-      }
-    }
-    dbi_free_result ( $res );
-  }
+  update_status ( 'R', $app_user, $id, $type );
 
   // Email participants to notify that it was rejected.
   // Get list of participants
