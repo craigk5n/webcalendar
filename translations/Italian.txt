@@ -601,7 +601,6 @@ Manage calendar of: Gestisci il calendario di
 Invalid login: Login non valido
 Invalid user login: Nome utente non valido
 Send Reminder: Avvisa
-charset: set di caratteri
 This event is confidential: Questo evento &egrave; confidenziale
 exceeds limit of XXX events per day: Superato il limite di XXX eventi al giorno
 You have XXX unapproved events: Hai XXX eventi non approvati
