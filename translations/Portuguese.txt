@@ -1095,12 +1095,6 @@ Dec: Dez
 
 
 ###############################################
-# Page: includes/init.php
-#
-charset: conjunto de caracteres
-
-
-###############################################
 # Page: includes/js/admin.php
 #
 Server URL is required: É necessário o URL do servidor
