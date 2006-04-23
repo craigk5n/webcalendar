@@ -368,7 +368,7 @@ Version 1.1.0-CVS (?? ??? 2006)
   - The following translations were updated:
     + Czech, Danish, French, German, Greek (new), Hungarian, Norwegian, Polish,
       Portuguese_BR, Japanese (switched to UTF-8), Japanese-sjis (new),
-      Japanese-eucjp
+      Japanese-eucjp, Portuguese
 
 Version 1.0.0 (17 May 2005) aka Buster
   - Fixed the following bug reports on SourceForge:
