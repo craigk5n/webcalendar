@@ -1,7 +1,7 @@
 # Translated by:
 #	Antonio Costa - accmdq@mail.esoterica.pt
-# Last update: 26-Nov-2004
-# Translation last updated on 12-02-2004
+# Last update: 16-Apr-2006
+# Translation last updated on 16-04-2006
 
 # No charset specified (not needed for iso-8859-1)
 # "charset" is used in a meta tag, do not translate "charset" here.
@@ -40,12 +40,8 @@ Save: Gravar
 Settings: Parâmetros
 Public Access: Acesso Público
 Groups: Grupos
-#
-# << MISSING >>
-# NonUser Calendars:
-#
-# << MISSING >>
-# Other:
+NonUser Calendars: Calendários sem utilizador
+Other: Outro
 Email: Correio electrónico
 colors-help: Todas as cores devem ser especificadas da forma "#RRGGBB" hexadecimal, em que "RR" é o valor hexadecimal para o encarnado, "GG" é o valor hexadecimal para o verde e "BB" é o valor hexadecimal para o azul.
 Colors: Cores
@@ -63,9 +59,7 @@ Fonts: Tipos de letra
 # custom-script-help:
 # English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
 #
-#
-# << MISSING >>
-# Custom script/stylesheet:
+Custom script/stylesheet: Script/folha de estilo personalizada
 Yes: Sim
 No: Não
 Edit: Editar
@@ -74,17 +68,13 @@ Edit: Editar
 # custom-header-help:
 # English text: Allows a custom HTML snippet to be included in the top of every page.
 #
-#
-# << MISSING >>
-# Custom header:
+Custom header: Cabeçalho personalizado
 #
 # << MISSING >>
 # custom-trailer-help:
 # English text: Allows a custom HTML snippet to be included at the end of every page.
 #
-#
-# << MISSING >>
-# Custom trailer:
+Custom trailer: Rodapé personalizado
 preferred-view-help: Especifica a vista padrão (Dia, Semana, Mês, ou Ano).
 Preferred view: Visualização preferida
 Day: Dia
@@ -97,9 +87,7 @@ Display weekends in week view: Mostrar fins-de-semana na vista de semana
 # yearly-shows-events-help:
 # English text: On the yearly view, display days that contain events in a bold font.
 #
-#
-# << MISSING >>
-# Display days with events in bold in month and year views:
+Display days with events in bold in month and year views: Mostrar dias com eventos a negrito nas vistas mensais e anuais
 #
 # << MISSING >>
 # display-desc-print-day-help:
@@ -148,9 +136,7 @@ Disable Repeating field: Desactivar campo "Repetições"
 # popup-includes-siteextras-help:
 # English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
 #
-#
-# << MISSING >>
-# Display Site Extras in popup:
+Display Site Extras in popup: Mostrar Extras num popup
 #
 # << MISSING >>
 # allow-html-description-help:
@@ -212,22 +198,10 @@ Enable Plugins: Activar Plugins
 Plugin: Plugin
 allow-public-access-help: Quando activo, o calendário pode ser usado para acesso público (sem possibilidade de modificação).
 Allow public access: Permitir acesso público
-#
-# << MISSING >>
-# public-access-default-visible:
-# English text: Events from the public calendar will automatically appear on all users' calendars
-#
-#
-# << MISSING >>
-# Public access visible by default:
-#
-# << MISSING >>
-# public-access-default-selected:
-# English text: When adding a new event, the public user will be selected by default as a participant.
-#
-#
-# << MISSING >>
-# Public access is default participant:
+public-access-default-visible: Eventos do calendário público irão aparecer em todos os calendários
+Public access visible by default: Acesso público visível por omissão
+public-access-default-selected: Aquando de um novo evento, o público será definido como participante por omissão
+Public access is default participant: Acesso público participante por omissão
 public-access-view-others-help: Quando em modo de acesso público, especifica se o utilizador pode ou não ver o calendário de outro utilizador.
 Public access can view other users: Ver calendários de outros utilizadores em modo de acesso público
 public-access-can-add-help: Quando em modo de acesso público, os utilizadores poderão criar novos eventos, mas estes apenas serão visualizados depois da aprovação pelo administrador.
@@ -243,9 +217,7 @@ Public access new events require approval: Novos eventos públicos exigem aprovaç
 # public-access-sees-participants-help:
 # English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
 #
-#
-# << MISSING >>
-# Public access can view participants:
+Public access can view participants: Acesso público pode ver participantes
 groups-enabled-help: Activa o suporte de grupos, permitindo que os utilizadores seleccionem outros utilizadores através de grupos.
 Groups enabled: Grupos activados
 user-sees-his-group-help: Quando activo, o utilizador não verá calendários de outros utilizadores que não pertençam pelo menos a um dos seus grupos.
@@ -344,9 +316,7 @@ Event deleted: Evento apagado
 Notification sent: Notificação enviada
 Reminder sent: Lembrete enviado
 Database error: Erro na base de dados
-#
-# << MISSING >>
-# Events:
+Events: Eventos
 
 
 ###############################################
@@ -417,9 +387,7 @@ You can only create one layer for each user: Apenas pode criar um nível por util
 Deleting users not supported: A remoção de utilizadores não é permitida
 The passwords were not identical: As passwords não são iguais
 You have not entered a password: Não introduziu uma password
-#
-# << MISSING >>
-# Changes successfully saved:
+Changes successfully saved: Alterações gravadas com sucesso
 
 
 ###############################################
@@ -427,9 +395,7 @@ You have not entered a password: Não introduziu uma password
 #
 Export format: Formato da exportação
 Palm Pilot: Palm Pilot
-#
-# << MISSING >>
-# Include all layers:
+Include all layers: Incluir todos os níveis
 Export all dates: Exportar todas as datas
 Start date: Data de início
 End date: Data final
@@ -473,11 +439,7 @@ Add New Group: Adicionar Novo Grupo
 Preferences: Preferências
 Save Preferences: Gravar Preferências
 to modify the preferences for the Public Access calendar: para modificar as preferências do calendário de Acesso Público
-#
-# << MISSING >>
-# tz-help:
-# English text: Specifies how many hours to adjust the time from server time to local time.
-#
+tz-help: Quantas horas para ajustar o tempo à hora local
 Timezone Offset: Offset de Zona Horária
 Add N hours to: Adicionar N horas a
 Subtract N hours from: Subtrair N horas a
@@ -627,13 +589,9 @@ All day event: Evento de dia completo
 Public: Público
 Category: Categoria
 days: dias
-#
-# << MISSING >>
-# day:
+day: dia
 hours: horas
-#
-# << MISSING >>
-# minute:
+minute: minuto
 before event: antes do evento
 External User: Utilizador anónimo
 Approve/Confirm entry: Aprovar/Confirmar entrada
@@ -712,13 +670,9 @@ Cancel: Cancelar
 ###############################################
 # Page: import.php
 #
-#
-# << MISSING >>
-# Import format:
+Import format: Formato de importação
 Exclude private records: Excluir eventos privados
-#
-# << MISSING >>
-# Overwrite Prior Import:
+Overwrite Prior Import: Escrever sobre importação anterior
 
 
 ###############################################
@@ -752,40 +706,24 @@ View Type: Tipo de Vista
 Week (Users horizontal): Semana (Utilizadores na horizontal)
 Week (Users vertical): Semana (Utilizadores na vertical)
 Week (Timebar): Semana (Barra temporal)
-#
-# << MISSING >>
-# Month (Timebar):
+Month (Timebar): Mês (Barra temporal)
 Month (side by side): Mês (lado a lado)
 Month (on same calendar): Mês (no mesmo calendário)
-#
-# << MISSING >>
-# preview:
+preview: previsão
 
 
 ###############################################
 # Page: nonusers.php
 #
-#
-# << MISSING >>
-# NONUSER_PREFIX not set:
-# English text: NONUSER_PREFIX has not been set in config.php.
-#
-#
-# << MISSING >>
-# Add New NonUser Calendar:
+NONUSER_PREFIX not set: Prefixo de acesso público por definir!
+Add New NonUser Calendar: Adicionar Novo Calendário Público
 
 
 ###############################################
 # Page: nonusers_handler.php
 #
-#
-# << MISSING >>
-# Calendar ID:
-#
-# << MISSING >>
-# word characters only:
-# English text: can only contain word characters (a-zA-Z_0-9)
-#
+Calendar ID: ID do calendário
+word characters only: apenas caracteres de palavras (a-zA-Z_0-9)
 
 
 ###############################################
@@ -824,15 +762,9 @@ pm: PM
 ###############################################
 # Page: import_handler.php
 #
-#
-# << MISSING >>
-# Import Results:
-#
-# << MISSING >>
-# Events successfully imported:
-#
-# << MISSING >>
-# Events from prior import marked as deleted:
+Import Results: Importar Resultados
+Events successfully imported: Eventos importados com sucesso
+Events from prior import marked as deleted: Eventos de importações anteriores marcadas para remoção
 Conflicting events: Eventos conflituosos
 Errors: Erros
 There was an error parsing the import file or no events were returned: Ocorreu um erro ao interpretar o ficheiro ou não foram encontrados eventos
@@ -849,15 +781,9 @@ Event Imported: Evento Importado
 #
 Edit Entry: Editar Entrada
 Add Entry: Adicionar Entrada
-#
-# << MISSING >>
-# Details:
-#
-# << MISSING >>
-# Scheduling:
-#
-# << MISSING >>
-# Repeat:
+Details: Detalhes
+Scheduling: Escalonamento
+Repeat: Repetição
 category-help: Especifica a categoria do evento.
 Timed event: Evento temporizado
 #
@@ -932,12 +858,8 @@ Your assistants: Seus assistentes
 # Page: adminhome.php
 #
 Delete Events: Remover Eventos
-#
-# << MISSING >>
-# Public Preferences:
-#
-# << MISSING >>
-# Unapproved Public Events:
+Public Preferences: Preferências Públicas
+Unapproved Public Events: Eventos Públicos por Aprovar
 Administrative Tools: Ferramentas administrativas
 
 
@@ -949,9 +871,7 @@ Finished: Terminado
 Delete all events before: Remover todos os eventos antes de
 Check box to delete <b>ALL</b> events for a user: Seleccione caixa para remover <b>TODOS</b> os eventos do utilizador
 Are you sure you want to delete events for: Tem a certeza que quer apagar entradas para
-#
-# << MISSING >>
-# Records deleted from:
+Records deleted from: Remover registos de
 
 
 ###############################################
@@ -969,9 +889,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Este
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Deverá estar localizado no directório Palm em <tt>datebook/datebook.dat</tt> dentro de subdirectório com o seu nome de utilizador
 The following entries will not be imported: As seguintes entradas serão importadas
 Entries older than the current date: Entradas mais antigas do que a data corrente
-#
-# << MISSING >>
-# Entries created in the Palm Desktop that have not been HotSync'd:
+Entries created in the Palm Desktop that have not been HotSync'd: Entradas criadas no Palm Desktop que não foram HotSync'd
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Informação importada do Palm será sobreescrita na próxima importação (excepto se a data do evento tiver passado).
 Therefore, updates should be made in the Palm Desktop.: Assim sendo, deverão ser feitas actualizações no Palm.
 vCal: vCal
@@ -980,15 +898,9 @@ The following formats have been tested: Os seguintes formatos foram testados
 Palm Desktop 4: Palm 4 PDA
 Lotus Organizer 6: Lotus Organizer 6
 Microsoft Outlook 2002: Microsoft Outlook 2002:
-#
-# << MISSING >>
-# iCalendar:
-#
-# << MISSING >>
-# This form will import iCalendar (.ics) events:
-#
-# << MISSING >>
-# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
+iCalendar: iCalendar
+This form will import iCalendar (.ics) events: Este formulário irá importar eventos iCalendar (.ics)
+Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Activar este mecanismo irá apagar eventos conflituosos e evitar duplicações.
 
 
 ###############################################
@@ -1021,15 +933,9 @@ Last Name: Último Nome
 ###############################################
 # Page: edit_template.php
 #
-#
-# << MISSING >>
-# Edit Custom Script/Stylesheet:
-#
-# << MISSING >>
-# Edit Custom Header:
-#
-# << MISSING >>
-# Edit Custom Trailer:
+Edit Custom Script/Stylesheet: Editar Script/Folha de estilo Personalizada
+Edit Custom Header: Editar Cabeçalho Personalizado
+Edit Custom Trailer: Editar Rodapé Personalizado
 
 
 ###############################################
@@ -1038,9 +944,7 @@ Last Name: Último Nome
 E-mail address: Endereço de email
 again: novamente
 Disabled for demo: Desactivado em modo demo
-#
-# << MISSING >>
-# Are you sure you want to delete this user?:
+Are you sure you want to delete this user?: Tem a certeza que quer remover este utilizador?
 Change Password: Alterar Password
 New Password: Nova Password
 Set Password: Gravar Password
@@ -1061,12 +965,8 @@ Manage calendar of: Gerir calendário de
 ###############################################
 # Page: includes/user.php
 #
-#
-# << MISSING >>
-# incorrect password:
-#
-# << MISSING >>
-# no such user:
+incorrect password: password incorrecta
+no such user: utilizador não encontrado
 Invalid user login: Acesso inválido
 
 
@@ -1197,9 +1097,7 @@ Dec: Dez
 ###############################################
 # Page: includes/init.php
 #
-#
-# << MISSING >>
-# charset:
+charset: conjunto de caracteres
 
 
 ###############################################
