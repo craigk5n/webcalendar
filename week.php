@@ -13,7 +13,7 @@ $nextYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear )
 $prevYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
 
 
-$wkstart = get_weekday_before ( $thisyear, $thismonth );
+$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
 $wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ) );
  
@@ -143,7 +143,6 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) / $interval );
 $untimed_found = false;
 $get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
 
-$all_day = array ();
 for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   // get all the repeating events for this date and store in array $rep
   $date = date ( "Ymd", $days[$d] );
@@ -165,9 +164,6 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   $rowspan_arr = array ();
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
-      if ( $ev[$i]->isAllDay() ) {
-        $all_day[$d] = 1;
-      }
       html_for_event_week_at_a_glance ( $ev[$i], $date );
     }
   }
