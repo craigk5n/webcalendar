@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 04-18-2006
+# Translation last updated on 04-24-2006
 
 
 ###############################################
@@ -283,6 +283,8 @@ reports-enabled-help: If enabled, users will see a "Reports" section at the bott
 Reports enabled: Reports enabled
 subscriptions-enabled-help: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
 Allow remote subscriptions: Allow remote subscriptions
+remotes-enabled-help: Allows users to load remote ics files using URL
+Allow remote calendars: Allow remote calendars
 rss-enabled-help: Specifies if a user's calendar can be obtained from a RSS feed.
 Enable RSS feed: Enable RSS feed
 categories-enabled-help: Enables support for event categories.
@@ -388,7 +390,6 @@ Additional Comments (optional): Additional Comments (optional)
 Approve and Send: Approve and Send
 Approve and Exit: Approve and Exit
 (Your comments will be included in an email to the event creator): (Your comments will be included in an email to the event creator)
-Error approving event: Error approving event
 Hello: Hello
 An appointment has been approved and comments added by: An appointment has been approved and comments added by
 The subject was: The subject was
@@ -629,6 +630,27 @@ Changes successfully saved: Changes successfully saved
 
 
 ###############################################
+# Page: edit_remotes.php
+#
+Edit Remote Calendar: Edit Remote Calendar
+Add Remote Calendar: Add Remote Calendar
+URL: URL
+Create Layer: Create Layer
+Required to View Remote Calendar: Required to View Remote Calendar
+Reload: Reload
+
+
+###############################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Import Results
+Events successfully imported: Events successfully imported
+Create a new layer to view this calendar: Create a new layer to view this calendar
+Errors: Errors
+There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
+
+
+###############################################
 # Page: edit_report.php
 #
 Tomorrow: Tomorrow
@@ -837,7 +859,6 @@ I want to approve events: I want to approve events
 boss-approve-event-help: Specifies whether the boss will be required to approve events added by assistants.
 Subscribe/Publish: Subscribe/Publish
 allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-URL: URL
 remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
 Allow remote publishing: Allow remote publishing
 allow-remote-publishing-help: Specifies if a remote iCal client can publish events back to WebCalendar
@@ -884,12 +905,8 @@ Repeated items are imported separately. Prior imports are not overwritten.: Repe
 ###############################################
 # Page: import_handler.php
 #
-Import Results: Import Results
-Events successfully imported: Events successfully imported
 Events from prior import marked as deleted: Events from prior import marked as deleted
 Conflicting events: Conflicting events
-Errors: Errors
-There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
 The import file contained no data: The import file contained no data
 
 
@@ -916,6 +933,13 @@ Approve/Confirm: Approve/Confirm
 Approve this entry?: Approve this entry?
 Reject: Reject
 Reject this entry?: Reject this entry?
+Check All: Check All
+Uncheck All: Uncheck All
+Approve Selected: Approve Selected
+Approve Selected entries?: Approve Selected entries?
+Reject Selected: Reject Selected
+Reject Selected entries?: Reject Selected entries?
+Emails Will Not Be Sent: Emails Will Not Be Sent
 No unapproved entries for: No unapproved entries for
 Unapproved Entries: Unapproved Entries
 Not authorized: Not authorized
@@ -1014,6 +1038,12 @@ An appointment has been rejected by: An appointment has been rejected by
 
 
 ###############################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Add New Remote Calendar
+
+
+###############################################
 # Page: report.php
 #
 cont.: cont.
@@ -1070,6 +1100,7 @@ more: more
 ###############################################
 # Page: users.php
 #
+Remote Calendars: Remote Calendars
 Add New User: Add New User
 denotes administrative user: denotes administrative user
 
@@ -1260,6 +1291,9 @@ before: before
 after: after
 start: start
 end: end
+Error approving event: Error approving event
+Error deleting event: Error deleting event
+Error rejecting event: Error rejecting event
 
 
 ###############################################
@@ -1386,6 +1420,12 @@ Invalid color: Invalid color
 
 
 ###############################################
+# Page: includes/js/edit_remotes.php
+#
+URL can not be blank: URL can not be blank
+
+
+###############################################
 # Page: includes/js/export_import.php
 #
 File type does not match Import Format: File type does not match Import Format
@@ -1450,6 +1490,7 @@ Reminder: Reminder
 Successful Login: Successful Login
 Invalid Login: Invalid Login
 required only if Safe Mode is On: required only if Safe Mode is On
+required only if Remote Calendars are used: required only if Remote Calendars are used
 needed for Gradient Image Backgrounds: needed for Gradient Image Backgrounds
 Passwords do not match: Passwords do not match
 Unable to write password to settings.php file: Unable to write password to settings.php file

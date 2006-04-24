@@ -51,7 +51,7 @@ class WebCalendar {
    * @todo Make it possible to distinguish between files in different directories (e.g. login.php and ws/login.php).
    */
   var $_filePhaseMap = array(
-    '/^(nulogin|login|login-app|freebusy|publish|register|rss|upcoming|week_ssi|minical|controlpanel|icalclient)\.php$/' =>
+    '/^(nulogin|login|login-app|freebusy|publish|register|rss|upcoming|week_ssi|minical|controlpanel|icalclient|reload_remotes)\.php$/' =>
       array(array('Config', 'PHPDBI', 'Functions'),
             array('User', 'Connect')),
     '/^(icalclient|get_reminders|get_events|ws)\.php$/' =>
@@ -150,7 +150,7 @@ class WebCalendar {
     $month = getValue ( "month", "[0-9]+" );
     $hour = getValue ( "hour", "[0-9]+" );
     $minute = getValue ( "minute", "[0-9]+" );
-    $cat_id = getValue ( "cat_id", "[0-9]+" );
+    $cat_id = getValue ( "cat_id", "[\-0-9]+" );
     $friendly = getValue ( "friendly", "[01]" );
     if ( empty ( $PUBLIC_ACCESS ) )
       $PUBLIC_ACCESS = 'N';
@@ -253,6 +253,8 @@ class WebCalendar {
       "edit_layer.php" => "editlayer",
       "edit_nonusers_handler.php" => "editnonusershandler",
       "edit_nonusers.php" => "editnonusers",
+      "edit_remotes.php" => "editremotes",
+      "edit_remotes_handler.php" => "editremoteshandler",
       "edit_report.php" => "editreport",
       "edit_task.php" => "edittask",
       "edit_template.php" => "edittemplate",
@@ -330,7 +332,7 @@ class WebCalendar {
       $readonly, $run_mode, $phpdbiVerbose, $single_user,
       $single_user_login, $use_http_auth, $user_inc, $NONUSER_PREFIX;
 
-    $PROGRAM_VERSION = "v1.1.0e-CVS";
+    $PROGRAM_VERSION = "v1.1.0";
     $PROGRAM_DATE = "?? ??? 2006";
     $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
     $PROGRAM_URL = "http://www.k5n.us/webcalendar.php";
@@ -477,7 +479,6 @@ class WebCalendar {
     // for these calendars as not to get mixed up with real logins.  This prefix
     // should be a Maximum of 5 characters and should NOT change once set!
     $NONUSER_PREFIX = '_NUC_';
-
 
 
     if ( $single_user != "Y" )

@@ -17,4 +17,5 @@ function hide(foo,f,section) {
 tabs[1] = "users";
 tabs[2] = "groups";
 tabs[3] = "nonusers";
+tabs[3] = "remotes";
 

@@ -28,7 +28,8 @@ if ( empty ( $login) || $login == "__public__" ) {
 }
 
 $INC = array('js/users.php/true','js/visible.php/true');
-print_header($INC);
+$BodyX = ( ! empty ( $tab ) ?  "onload=\"showTab( '$tab' );\"" : '"' );
+print_header($INC,'', $BodyX );
 
 //if ( ! $is_admin ) {
 //echo "<h2>" . translate("Error") . "</h2>\n" . 
@@ -53,6 +54,9 @@ print_header($INC);
  <?php } 
  if ($NONUSER_ENABLED == 'Y' && $is_admin) { ?>
   <span class="tabbak" id="tab_nonusers"><a href="#tabnonusers" onclick="return showTab('nonusers')"><?php etranslate("NonUser Calendars")?></a></span>
+ <?php } 
+ if ($REMOTES_ENABLED == 'Y') { ?>
+  <span class="tabbak" id="tab_remotes"><a href="#tabremotes" onclick="return showTab('remotes')"><?php etranslate("Remote Calendars")?></a></span>
  <?php } ?>
 </div>
 
@@ -92,7 +96,7 @@ print_header($INC);
     " name=\"useriframe\" id=\"useriframe\" style=\"width:90%;border-width:0px; height:280px;\"></iframe>";
   ?>
 <?php } else { ?>
-<iframe src="edit_user.php" name="accountiframe" id="accountiframe" style="width:90%;border-width:0px; height:210px;\"></iframe>
+<iframe src="edit_user.php" name="accountiframe" id="accountiframe" style="width:90%;border-width:0px; height:210px;"></iframe>
 <?php } ?>
 </div>
 
@@ -102,6 +106,9 @@ print_header($INC);
  } 
  if ($NONUSER_ENABLED == 'Y' && $is_admin) {
   include_once 'nonusers.php';
+ }
+  if ($REMOTES_ENABLED == 'Y') {
+  include_once 'remotes.php';
  }
 ?>
 </div>

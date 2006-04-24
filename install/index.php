@@ -38,7 +38,7 @@ clearstatcache();
 // We may need time to run extensive database loads
 set_time_limit(240);
 
-// If we're using SQLite, it seems that magic_quotes_sybase must be on
+// If we're using SQLLite, it seems that magic_quotes_sybase must be on
 //ini_set('magic_quotes_sybase', 'On'); 
 
 
@@ -246,18 +246,16 @@ function get_installed_version () {
     "database tables" ) . "."; 
  }
  // v1.1 and after will have an entry in webcal_config to make this easier
- //Not sure if this will work well for CVS code
- //We'll bypass this for now
-// $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
-//  "WHERE cal_setting  = 'WEBCAL_PROGRAM_VERSION'", array(), false, false );
-// if ( $res ) {
-//   $row = dbi_fetch_row ( $res );
-//  if ( ! empty ( $row[0] ) ) {  
-//    $_SESSION['old_program_version'] = $row[0];
-//    $_SESSION['install_file']  = "upgrade_" . $row[0];
-//  }
-//  dbi_free_result ( $res );
-// }
+ $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+  "WHERE cal_setting  = 'WEBCAL_PROGRAM_VERSION'", array(), false, false );
+ if ( $res ) {
+   $row = dbi_fetch_row ( $res );
+  if ( ! empty ( $row[0] ) ) {  
+    $_SESSION['old_program_version'] = $row[0];
+    $_SESSION['install_file']  = "upgrade_" . $row[0];
+  }
+  dbi_free_result ( $res );
+ }
 
  //We need to determine this is a blank database
  // This may be due to a manual table setup
@@ -413,13 +411,17 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
     exit;
   }
 }
-$safevarstring = "Safe Mode Allowed Vars  (" . translate ( "required only if Safe Mode is On" ) . ")";
-//[0]Display Text  [1]ini_get name [2]reuired value [3]ini_get string search value
+$safevarstring = "Safe Mode Allowed Vars  (" . 
+  translate ( "required only if Safe Mode is On" ) . ")";
+$allowurlstring = "Allow URL fopen  (" . 
+  translate ( "required only if Remote Calendars are used" ) . ")";
+//[0]Display Text  [1]ini_get name [2]required value [3]ini_get string search value
 $php_settings = array (
   array ('Safe Mode','safe_mode','OFF', false),
   array ( $safevarstring,'safe_mode_allowed_env_vars','TZ', 'TZ'),
   array ('Display Errors','display_errors','ON', false),
-  array ('File Uploads','file_uploads','ON', false) 
+  array ('File Uploads','file_uploads','ON', false),
+  array ($allowurlstring,'allow_url_fopen','ON', false), 
 );
 
 // set up array to test for some constants (display name, constant name, preferred value )
@@ -1090,14 +1092,17 @@ function db_type_handler () {
   var form = document.dbform;
   // find id of db_type object
   var listid = 0;
+	var sqliteibase = false;
   for ( i = 0; i < form.form_db_type.length; i++ ) {
-    if ( form.form_db_type.options[i].value == "sqlite" )
-      sqliteid = i;
-  if ( form.form_db_type.options[i].value == "ibase" )
-      ibaseid = i;
+    if ( form.form_db_type.options[i].value == "sqlite" ) {
+			sqliteibase = true;
+		}
+    if ( form.form_db_type.options[i].value == "ibase" ) {
+
+			sqliteibase = true ;
+		}
   }
-   if ( form.form_db_type.options[sqliteid].selected  || 
-    form.form_db_type.options[ibaseid].selected) {
+   if ( sqliteibase ) {
       form.form_db_database.size = 65;
     document.getElementById("db_name").innerHTML = 
     "<?php etranslate ( "Database Name" ) ?>" + ":" +  
