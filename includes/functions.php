@@ -2047,9 +2047,16 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
   //new multiple categories requires some checking to see if this this cat_id is
   //valid for this cal_id. It could be done with nested sql, but that may not work
   //for all databases. This might be quicker also.
-  $catlist = array(); 
-  if ( $cat_id != '' ) {
+  $catlist = array();
+  //None was selected...return only events without categories
+  if ( $cat_id == -1 ) {
+    $sql = "SELECT DISTINCT cal_id FROM webcal_entry_categories ";
+    $rows = dbi_get_cached_rows ( $sql, array() ); 
+  } else if ( $cat_id != '' ) {
     $sql = "SELECT cal_id FROM webcal_entry_categories WHERE  cat_id = ? ";
+    $rows = dbi_get_cached_rows ( $sql, array( $cat_id ) );
+  }
+  if ( $cat_id != '' ) {
     $rows = dbi_get_cached_rows ( $sql, array( $cat_id ) );
     if ( $rows ) {
       for ( $i = 0; $i < count ( $rows ); $i++ ) {
@@ -2099,7 +2106,11 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
       $placeholders .= ( $p_i == 0 ) ? "?" : ", ?";
       $query_params[] = $catlist[$p_i];
     }
-    $sql .= "AND webcal_entry.cal_id IN ( $placeholders ) ";
+    if ( $cat_id > 0 ) {
+      $sql .= "AND webcal_entry.cal_id IN ( $placeholders ) ";
+    } else if ( $cat_id == -1 ){ //eliminate events with categories
+      $sql .= "AND webcal_entry.cal_id NOT IN ( $placeholders ) ";
+    }
   } else if ( $cat_id != '' ) {
     //force no rows to be returned
     $sql .= "AND 1 = 0 "; // no matching entries in category  
@@ -2828,16 +2839,17 @@ function date_to_epoch ( $d ) {
  *
  * @param int $year  Year
  * @param int $month Month (1-12)
+ * @param int $day   Day (1-31)
  *
  * @return int The date (in UNIX timestamp format)
  *
  */
-function get_weekday_before ( $year, $month ) {
+function get_weekday_before ( $year, $month, $day=2 ) {
   global $WEEK_START, $DISPLAY_WEEKENDS;
   
   $laststr = ( $WEEK_START == 1 || $DISPLAY_WEEKENDS == "N" ? 'last Mon':'last Sun' );
-  //we use day 2 so if the 1st is Sunday or Monday it will return the 1st
-  $newdate = strtotime ( $laststr, mktime ( 0, 0, 0, $month, 2, $year ) );
+  //we default day=2 so if the 1ast is Sunday or Monday it will return the 1st
+  $newdate = strtotime ( $laststr, mktime ( 0, 0, 0, $month, $day, $year ) );
   return $newdate;
 }
 
@@ -3647,11 +3659,8 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   $last_slot = (int) ( ( ( $WORK_DAY_END_HOUR  ) * 60 ) / $interval);
   //echo "first_slot = $first_slot<br />\nlast_slot = $last_slot<br />\ninterval = $interval<br />\nTIME_SLOTS = $TIME_SLOTS<br />\n";
   $rowspan_arr = array ();
-  $all_day = 0;
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
-      if ( $ev[$i]->isAllDay() )
-        $all_day = 1;
       html_for_event_day_at_a_glance ( $ev[$i], $date );
     }
   }
@@ -4230,6 +4239,9 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   echo "<option value=\"\"";
   if ( $cat_id == '' ) echo " selected=\"selected\"";
   echo ">" . translate("All") . "</option>\n";
+  echo "<option value=\"-1\"";
+  if ( $cat_id == -1 ) echo " selected=\"selected\"";
+  echo ">" . translate("None") . "</option>\n";
   $cat_owner =  ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login;
   if (  is_array ( $categories ) ) {
     foreach ( $categories as $K => $V ){
@@ -4651,6 +4663,7 @@ function user_is_participant ( $id, $user )
  * Gets a list of nonuser calendars and return info in an array.
  *
  * @param string $user Login of admin of the nonuser calendars
+ * @param bool $remote Return only remote calendar  records
  *
  * @return array Array of nonuser cals, where each is an array with the
  *               following fields:
@@ -4661,18 +4674,25 @@ function user_is_participant ( $id, $user )
  * - <var>cal_fullname</var>
  * - <var>cal_is_public</var>
  */
-function get_nonuser_cals ($user = '') {
+function get_nonuser_cals ($user = '', $remote=false) {
   global  $is_admin;
   $count = 0;
   $ret = array ();
   $sql = "SELECT cal_login, cal_lastname, cal_firstname, " .
-    "cal_admin, cal_is_public FROM webcal_nonuser_cals ";
+    "cal_admin, cal_is_public, cal_url FROM webcal_nonuser_cals ";
   $query_params = array();
 
+  if ($remote == false) { 
+    $sql .= "WHERE cal_url IS NULL ";
+  } else {
+    $sql .= "WHERE cal_url IS NOT NULL ";  
+  }
+  
   if ($user != '') {
-    $sql .= "WHERE cal_admin = ? ";
+    $sql .= "AND  cal_admin = ? ";
     $query_params[] = $user;
   }
+  
   $sql .= "ORDER BY cal_lastname, cal_firstname, cal_login";
   
   $rows = dbi_get_cached_rows ( $sql, $query_params );
@@ -4689,6 +4709,7 @@ function get_nonuser_cals ($user = '') {
         "cal_firstname" => $row[2],
         "cal_admin" => $row[3],
         "cal_is_public" => $row[4],
+        "cal_url" => $row[5],
         "cal_fullname" => $fullname
       );
     }
@@ -4728,7 +4749,7 @@ function nonuser_load_variables ( $login, $prefix ) {
   $ret =  false;
   $rows = dbi_get_cached_rows (
     "SELECT cal_login, cal_lastname, cal_firstname, " .
-    "cal_admin, cal_is_public FROM " .
+    "cal_admin, cal_is_public, cal_url FROM " .
     "webcal_nonuser_cals WHERE cal_login = ?", array( $login ) );
   if ( $rows ) {
     for ( $i = 0; $i < count ( $rows ); $i++ ) {
@@ -4744,6 +4765,7 @@ function nonuser_load_variables ( $login, $prefix ) {
         $GLOBALS[$prefix . "fullname"] = $fullname;
         $GLOBALS[$prefix . "admin"] = $row[3];
         $GLOBALS[$prefix . "is_public"] = $row[4];
+        $GLOBALS[$prefix . "url"] = $row[5];
         $GLOBALS[$prefix . "is_admin"] = false;
         $GLOBALS[$prefix . "is_nonuser"] = true;
         // We need the email address for the admin

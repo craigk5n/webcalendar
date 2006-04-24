@@ -106,8 +106,10 @@ a:hover {
 #edituserhandler,
 #groupedit,
 #editnonusers,
+#editremotes,
 #groupedithandler,
-#editnonusershandler {
+#editnonusershandler,
+#editremoteshandler {
   background-color: #F8F8FF;
 }
 #tabscontent {
@@ -152,6 +154,7 @@ a:hover {
 #tabscontent_sched,
 #tabscontent_pete,
 #tabscontent_nonusers,
+#tabscontent_remotes,
 #tabscontent_themes,
 #tabscontent_boss,
 #tabscontent_subscribe,
@@ -159,6 +162,7 @@ a:hover {
 #useriframe,
 #grpiframe,
 #nonusersiframe,
+#remotesiframe,
 #viewiframe {
   display: none;
 }

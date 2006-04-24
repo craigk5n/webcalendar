@@ -12,7 +12,7 @@ global $readonly, $is_nonuser, $is_nonuser_admin, $single_user, $user,
        $ALLOW_VIEW_OTHER, $DISPLAY_TASKS, $thisyear, $thismonth, $thisday,
        $views, $REPORTS_ENABLED, $use_http_auth, $login_return_path,
        $NONUSER_ENABLED, $has_boss, $is_admin, $CATEGORIES_ENABLED,
-       $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL;
+       $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL,$REMOTES_ENABLED;
 
 
 //------------------------------------------------------------------//
@@ -437,6 +437,7 @@ var myMenu =
   // translate ( 'Categories', true);
   // translate ( 'Layers', true);
   // translate ( 'My Profile', true);
+  // translate ( 'Remote Calendars', true);
   // translate ( 'Public Calendar', true);
   // translate ( 'Unapproved Events', true);
   // translate ( 'System Settings', true);
@@ -474,6 +475,10 @@ var myMenu =
 
       if ( ! $is_admin ) {
         jscMenu_item ( 'profile.png', 'My Profile', 'users.php' );
+      }
+			
+      if ( $REMOTES_ENABLED == 'Y' ) {
+        jscMenu_item ( 'vcalendar.png', 'Remote Calendars', 'users.php?tab=remotes' );
       }
 
       if ( ! access_is_enabled () || access_can_access_function ( ACCESS_PREFERENCES, $user ) ) {

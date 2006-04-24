@@ -147,6 +147,8 @@ $GLOBALS['WEEKNUMBER'] = $s['WEEKNUMBER'];
 //determine if we can set timezones, if not don't display any options
 $can_set_timezone = set_env ( "TZ", $s['SERVER_TIMEZONE'] );
 
+//determine if allow_url_fopen is enabled
+$allow_url_fopen = preg_match ( "/(On|1|true|yes)/i", ini_get ( 'allow_url_fopen' ) );
 
 $BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();';
 $BodyX .= ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );\"" : '"' );
@@ -710,6 +712,13 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <label><input type="radio" name="admin_PUBLISH_ENABLED" value='Y' <?php if ( $s['PUBLISH_ENABLED'] == 'Y' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
  <label><input type="radio" name="admin_PUBLISH_ENABLED" value='N' <?php if ( $s['PUBLISH_ENABLED'] != 'Y' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('No')?></label>
 </td></tr>
+<?php if ( $allow_url_fopen ) { ?>
+<tr><td class="tooltip" title="<?php etooltip("remotes-enabled-help")?>">
+ <?php etranslate("Allow remote calendars")?>:</td><td>
+ <label><input type="radio" name="admin_REMOTES_ENABLED" value='Y' <?php if ( $s['REMOTES_ENABLED'] == 'Y' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;
+ <label><input type="radio" name="admin_REMOTES_ENABLED" value='N' <?php if ( $s['REMOTES_ENABLED'] != 'Y' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('No')?></label>
+</td></tr>
+<?php } ?>
 <tr><td class="tooltip" title="<?php etooltip("rss-enabled-help")?>">
  <?php etranslate("Enable RSS feed")?>:</td><td>
  <label><input type="radio" name="admin_RSS_ENABLED" value='Y' <?php if ( $s['RSS_ENABLED'] == 'Y' ) echo " checked=\"checked\"";?> />&nbsp;<?php etranslate('Yes')?></label>&nbsp;

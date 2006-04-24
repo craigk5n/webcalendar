@@ -431,6 +431,8 @@ CREATE TABLE webcal_nonuser_cals (
   cal_admin VARCHAR(25) NOT NULL,
   /* can this nonuser calendar be a public calendar (no login required) */
   cal_is_public CHAR(1) NOT NULL DEFAULT 'N',
+  /* url of the remote calendar */
+  cal_url VARCHAR(75) DEFAULT NULL,
   PRIMARY KEY ( cal_login )
 );
 

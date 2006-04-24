@@ -264,3 +264,4 @@ CREATE TABLE webcal_reminders (
   cal_action VARCHAR(12) DEFAULT 'EMAIL' NOT NULL,
   PRIMARY KEY ( cal_id )
 );
+ALTER TABLE webcal_nonuser_cals ADD cal_url VARCHAR(75) DEFAULT NULL;

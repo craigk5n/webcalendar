@@ -1125,7 +1125,7 @@ function import_data ( $data, $overwrite, $type ) {
 
   $oldUIDs = array ();
   $oldIds = array ();
-  $firstEventId = 0;
+  $firstEventId = $count_suc = 0;
   //  $importId = -1;  
   $importId = 1;
  $subType = '';
@@ -1133,6 +1133,10 @@ function import_data ( $data, $overwrite, $type ) {
    $ImportType = 'ICAL';
    $type = 'ical';
   $subType = 'icalclient';
+ } else if ( $type == 'remoteics' ) {
+   $ImportType = 'RMTICS';
+   $type = 'rmtics';
+   $subType = 'remoteics';
  }
   // Generate a unique import id
   $res = dbi_execute ( "SELECT MAX(cal_import_id) FROM webcal_import" );
@@ -1194,7 +1198,7 @@ foreach ( $data as $Entry ){
    $months =  (! empty ( $Entry['Repeat']['ByMonth'] ) ) ? 
      $Entry['Repeat']['ByMonth'] : "";
      
-   if  ( $subType != 'icalclient' ) {
+   if  ( $subType != 'icalclient' && $subType != 'remoteics' ) {
     // first check for any schedule conflicts
     if ( ( $ALLOW_CONFLICT_OVERRIDE == "N" && $ALLOW_CONFLICTS == "N" ) &&
       ( $Entry['Duration'] != 0 )) {
@@ -1228,7 +1232,7 @@ foreach ( $data as $Entry ){
       $error = translate("The following conflicts with the suggested time").
         ":<ul>$overlap</ul>\n";
     }
-  } //end  $subType != 'icalclient'
+  } //end  $subType != 'icalclient' && != 'remoteics'
   
     if ( empty ( $error ) ) { 
       $updateMode = false;
@@ -1403,6 +1407,8 @@ foreach ( $data as $Entry ){
           $error .= translate("Database error") . ": " . dbi_error ();
           //do_debug ( $error );
           break;
+        } else if ( $ImportType == 'RMTICS' ) {
+          $count_suc++;
         }
       }
 
@@ -1697,7 +1703,7 @@ foreach ( $data as $Entry ){
     }
 
   //here to end not in icalclient
- if ( $subType != 'icalclient' ) {
+ if ( $subType != 'icalclient'  && $subType != 'remoteics') {
     if ( ! empty ($error) && empty ($overlap))  {
       $error_num++;
       echo "<h2>". translate("Error") .
@@ -1809,12 +1815,11 @@ foreach ( $data as $Entry ){
 function parse_ical ( $cal_file, $source='file' ) {
   global $tz, $errormsg;
   $ical_data = array();
- if ( $source == 'file' ) {
+ if ( $source == 'file' || $source == 'remoteics') {
   if (!$fd=@fopen($cal_file,"r")) {
     $errormsg .= "Can't read temporary file: $cal_file\n";
     exit();
   } else {
-
     // Read in contents of entire file first
     $data = '';
     $line = 0;
@@ -1824,8 +1829,6 @@ function parse_ical ( $cal_file, $source='file' ) {
     }
     fclose($fd);
   }
- } else if ( $source == 'remoteics' ) {
-   $data = $cal_file;
  } else if ( $source == 'icalclient' ) {
   //do_debug ( "before fopen on stdin..." );
   $stdin = fopen ("php://input", "r");
@@ -1977,6 +1980,12 @@ function parse_ical ( $cal_file, $source='file' ) {
           if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
             $substate = "dtendTzid"; 
             $event[$substate] = $submatch[1];
+          } else if ( preg_match ( "/VALUE=DATE-TIME(.*)$/i", $match[1], $submatch ) ) {
+            $substate = "dtendDATETIME"; 
+            $event[$substate] = true;
+          } else if ( preg_match ( "/VALUE=DATE(.*)$/i", $match[1], $submatch ) ) {
+            $substate = "dtendDATE"; 
+            $event[$substate] = true;
           }
         } elseif (preg_match("/^DUE.*:\s*(.*)\s*$/i", $buff, $match)) {
           $substate = "due";
@@ -1989,12 +1998,7 @@ function parse_ical ( $cal_file, $source='file' ) {
           $event[$substate] = $match[1];
         } elseif (preg_match("/^DURATION.*:(.+)\s*$/i", $buff, $match)) {
           $substate = "duration";
-          $durH = $durM = 0;
-          if ( preg_match ( "/PT.*([0-9]+)H/", $match[1], $submatch ) )
-            $durH = $submatch[1];
-          if ( preg_match ( "/PT.*([0-9]+)M/", $match[1], $submatch ) )
-            $durM = $submatch[1];
-          $event[$substate] = $durH * 60 + $durM;
+          $event[$substate] = parse_ISO8601_duration ( $match[1] );
         } elseif (preg_match("/^RRULE.*:(.+)$/i", $buff, $match)) {
           $substate = "rrule";
           $event[$substate] = $match[1];
@@ -2089,8 +2093,11 @@ function RepeatType ($type) {
 // Convert ical format (yyyymmddThhmmssZ) to epoch time
 function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0',
   $plus_y = '0') {
-  global $SERVER_TIMEZONE, $calUser;;
+  global $SERVER_TIMEZONE, $calUser;
   $this_TIMEZONE = $Z ='';
+  
+  $user_TIMEZONE = get_pref_setting ( $calUser, "TIMEZONE" );
+  
   $H = $M = $S = 0; 
   $y = substr($vdate, 0, 4) + $plus_y;
   $m = substr($vdate, 4, 2) + $plus_m;
@@ -2106,6 +2113,7 @@ function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0'
  //We'll just hardcode their GMT timezone def here
  switch  ( $tzid ) {
    case "/Mozilla.org/BasicTimezones/GMT":
+   case "GMT":
      //I think this is the only real timezone set to UTC...since 1972 at least
      $this_TIMEZONE = "Africa/Monrovia";
      $Z = "Z"; 
@@ -2131,7 +2139,6 @@ function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0'
 
   // Convert time from user's timezone to GMT if datetime value
     if ( empty ( $this_TIMEZONE ) ) {
-      $user_TIMEZONE = get_pref_setting ( $calUser, "TIMEZONE" );
       $this_TIMEZONE = ( ! empty ( $user_TIMEZONE ) ? $user_TIMEZONE : $SERVER_TIMEZONE );
     }
     if ( empty ( $Z ) ) {
@@ -2152,6 +2159,7 @@ global $login;
   //Set Calendar Type for easier processing later
  $fevent['CalendarType'] = $event['state'];
 
+ $fevent['Untimed'] = $fevent['AllDay'] = 0;
  
   //Categories
   if ( isset ( $event['categories'] ) ) {
@@ -2174,41 +2182,39 @@ global $login;
   if ( isset ( $event['dtend'] ) ) {
     $dtendTzid = ( ! empty ( $event['dtendTzid'] )?$event['dtendTzid'] : '' );
     $fevent['EndTime'] = icaldate_to_timestamp($event['dtend'], $dtendTzid );
+    $fevent['Duration'] = ($fevent['EndTime'] - $fevent['StartTime']) / 60;
   } else if ( isset ( $event['duration'] ) ) {
     $fevent['EndTime'] = $fevent['StartTime'] + $event['duration'] * 60;
+    $fevent['Duration'] = $event['duration'];
   } else if ( isset ( $event['dtstartDATETIME'] ) ) {
    //Untimed
     $fevent['EndTime'] = $fevent['StartTime'];
     $fevent['Untimed'] = 1;
-  } else if ( isset ( $event['dtstartDATE'] ) ) {
-   //This event ends at the end of this day
-    $next_day = $fevent['StartTime'] + ONE_DAY;
-    $fevent['EndTime'] = $next_day - ( $next_day % ONE_DAY );
-  } else {
-    $fevent['EndTime'] = $fevent['StartTime'];
-    $fevent['Untimed'] = 1;
-  }
-
- 
-  // Calculate duration in minutes
-  if ( isset ( $event['duration'] ) ) {
-    $fevent['Duration'] = $event['duration'];
-  } else if ( empty ( $fevent['Duration'] ) ) {
+    $fevent['Duration'] = 0;
+  } 
+    
+  if ( isset ( $event['dtstartDATE'] ) && ! isset ( $event['dtendDATE'] )) {
+    //This is an anniversary
+    $fevent['StartTime'] = icaldate_to_timestamp($event['dtstart'], 'GMT' );
+    $fevent['EndTime'] = $fevent['StartTime'] + ONE_DAY; 
+    $fevent['AllDay'] = 1;
+    $fevent['Duration'] = 1440;
+  } else if ( isset ( $event['dtstartDATE'] ) && isset ( $event['dtendDATE'] )) {
+    //This is an anniversary
+    $fevent['StartTime'] = icaldate_to_timestamp($event['dtstart'], 'GMT' );
+    $fevent['EndTime'] = icaldate_to_timestamp($event['dtend'], 'GMT' );
     $fevent['Duration'] = ($fevent['EndTime'] - $fevent['StartTime']) / 60;
+    if ($fevent['Duration'] == 1440  ) $fevent['AllDay'] = 1;
   }
+  //catch 22
+  if ( ! isset ( $fevent['EndTime'] ) ) {
+    $fevent['EndTime'] = $fevent['StartTime'];
+  }
+  if ( ! isset ( $fevent['Duration'] ) ) {
+    $fevent['Duration'] = 0;
+  }  
+  
 
-  if ( isset ( $event['dtend'] ) && preg_match ( "/\d\d\d\d\d\d\d\d$/", $event['dtstart'],
-    $pmatch ) && preg_match ( "/\d\d\d\d\d\d\d\d$/", $event['dtend'],
-    $pmatch2 ) && $event['dtstart'] != $event['dtend'] ) {
-    $startTime = $fevent['StartTime'];
-    $endTime = $fevent['EndTime'];
-    if ( $endTime - $startTime == ONE_DAY ) {
-      // They used a DTEND set to the next day to say this is an all day
-      // event.  We will call this an all day event.
-      $fevent['Duration'] = '1440';
-      $fevent['Untimed'] = 0;
-    }
-  }
   if ( empty ( $event['summary'] ) ) $event['summary'] = "Unnamed Event";
   $fevent['Summary'] = $event['summary'];
   if ( ! empty ( $event['description'] ) ) {

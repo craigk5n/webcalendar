@@ -46,6 +46,10 @@ if ( $single_user == "N" ) {
     $nonusers = get_nonuser_cals ();
     $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
+  if ($REMOTES_ENABLED == "Y" ) {
+    $remotes = get_nonuser_cals ( $login, true );
+    $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($remotes, $userlist) : array_merge($userlist, $remotes);
+  }	
   $num_users = 0;
   $size = 0;
   $users = "";
@@ -65,9 +69,9 @@ if ( $single_user == "N" ) {
   else if ( $size > 5 )
     $size = 5;
   if ( $size >= 1 ) {
- print "<tr><td style=\"vertical-align:top;\">\n<label for=\"layeruser\">" .
+    print "<tr><td style=\"vertical-align:top;\">\n<label for=\"layeruser\">" .
       translate("Source") . ":</label></td><td>\n";
-    print "<select name=\"layeruser\" id=\"layeruser\" size=\"1\">$users\n";
+    print "<select name=\"layeruser\" id=\"layeruser\" size=\"1\">\n$users\n";
     print "</select>\n";
     print "</td></tr>\n";
   }
