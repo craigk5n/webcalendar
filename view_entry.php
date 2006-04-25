@@ -592,12 +592,12 @@ if ( $single_user == "N" && ! empty ( $createby_fullname )  ) {
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate("Updated")?>:</td><td>
  <?php
-    echo date_to_str ( $mod_date );
-    echo " ";
     if ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == "Y" ) {    
-      echo display_time ( $mod_time, 3 );
+      echo date_to_str ( $mod_date ) . " " . 
+        display_time ( $mod_date . $mod_time, 3 );
     } else {
-      echo display_time ( $mod_date . $mod_time, 2 );    
+      echo date_to_str ( date ("Ymd", date_to_epoch ( $mod_date . $mod_time ) ) ) . " " .
+        display_time ( $mod_date . $mod_time, 2 );    
     }
    ?>
 </td></tr>
