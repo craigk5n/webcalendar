@@ -50,7 +50,7 @@ foreach ( $config_lines as $line ) {
 unset( $config_lines );
 
 // Joomla 1.0.8 introduced session types
-$app_session_type = ( isset( $app_config['session_type'] ) ) ? $app_config['session_type'] : '2';
+$app_session_type = ( isset( $app_config['session_type'] ) ) ? $app_config['session_type'] : '';
 $app_secret = $app_config['secret'];
 
 // Session id cookie name
