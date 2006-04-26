@@ -2304,7 +2304,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
  *
  * @param string $user   Username
  * @param int    $cat_id Category ID to filter on  (May be empty)
- * @param string $date   Cutoff date for repeating event endtimes in YYYYMMDD
+ * @param int $date      Cutoff date for repeating event endtimes in timestamp
  *                       format (may be empty)
  *
  * @return array Array of RepeatingEvents sorted by time of day
@@ -2314,6 +2314,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
 function read_repeated_events ( $user, $cat_id = '', $date = ''  ) {
   global $login;
   global $layers;
+  $date = date ( "Ymd", $date );
   $filter = ($date != '') ? "AND (webcal_entry_repeats.cal_end >= $date OR webcal_entry_repeats.cal_end IS NULL) " : '';
   return query_events ( $user, true, $filter, $cat_id );
 }
@@ -4033,7 +4034,6 @@ function weekday_short_name ( $w ) {
  * @return string Date in the specified format
  *
  * @global string Preferred date format
- * @global int    User's timezone offset from the server
  */
 function date_to_str ( $indate, $format="", $show_weekday=true, $short_months=false ) {
   global $DATE_FORMAT;
