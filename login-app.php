@@ -10,7 +10,9 @@ include 'includes/functions.php';
 $WebCalendar->initializeFirstPhase();
 
 include "includes/$user_inc";
+include_once 'includes/access.php';
 include 'includes/translate.php';
+include 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
 
