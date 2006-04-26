@@ -379,6 +379,7 @@ function etooltip ( $str ) {
       "pt-br" => "Portuguese_BR", // Portuguese/Brazil
       "ro" =>"Romanian",
       "ru" =>"Russian",
+      "ru-ru" =>"Russian", //Safari reports this
       "es" =>"Spanish",
       "sv" =>"Swedish",
       "tr" =>"Turkish",
