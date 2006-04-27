@@ -109,10 +109,11 @@ $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
+  $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkend );
   $re_save[$i] = $repeated_events;
-  /* Pre-load the non-repeating events for quicker access */
-  $events = read_events ( $viewusers[$i], $wkstart, $wkend );
+  /* Pre-load the non-repeating events for quicker access 
+      subtracting ONE_WEEK to allow cross-day events to display*/
+  $events = read_events ( $viewusers[$i], $wkstart - ONE_WEEK, $wkend );
   $e_save[$i] = $events;
 }
 

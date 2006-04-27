@@ -418,7 +418,7 @@ if ( ! isset ( $report_time_range ) ) {
 if ( empty ( $error ) && empty ( $list ) ) {
   $cat_id = empty ( $report_cat_id ) ? "" : $report_cat_id;
 
-  $repeated_events = read_repeated_events ( $report_user, $cat_id, $start_date );
+  $repeated_events = read_repeated_events ( $report_user, $cat_id, $end_date );
 
   $events = read_events ( $report_user, $start_date, $end_date, $cat_id );
 
