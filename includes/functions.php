@@ -4481,7 +4481,9 @@ function print_entry_timebar ( $event, $date ) {
   if ( $day_end == 0 ) $day_end = 23*60;
   if ( $day_end <= $day_start ) $day_end = $day_start + 60; //avoid exceptions
 
-  if ($event->getTime() >= 0) {
+  $time = date ( "His", $event->getDateTimeTS() );
+  $endminutes = time_to_minutes ( date ( "His", $event->getEndDateTimeTS() ) );
+  if ( $time >= 0 ) {
   $bar_units= 100/(($day_end - $day_start)/60) ; // Percentage each hour occupies
   $ev_start = round((floor(($time/10000) - ($day_start/60)) + (($time/100)%100)/60) * $bar_units);
   }else{
@@ -4492,13 +4494,15 @@ function print_entry_timebar ( $event, $date ) {
   // All day event
    $ev_start = 0;
    $ev_duration = 100;
-  } else  if ($event->getDuration() > 0) {
+  } else  if ( $endminutes < $day_start ) {
+    $ev_duration = 1;  
+  } else  if ($event->getDuration() > 0 ) {
     $ev_duration = round(100 * $event->getDuration() / ($day_end - $day_start)) ;
     if ($ev_start + $ev_duration > 100 ) {
       $ev_duration = 100 - $ev_start;
-    }
+    } 
   } else {
-    if ($event->getTime() >= 0) {
+    if ( $time >= 0) {
       $ev_duration = 1;
     } else {
       $ev_duration=100-$ev_start;
@@ -4565,7 +4569,7 @@ function print_entry_timebar ( $event, $date ) {
   $timestr = "";
   if ( $event->isAllDay() ) {
     $timestr = translate("All day event");
-  } else if ( $event->getTime() >= 0 ) {
+  } else if ( $time >= 0 ) {
     $timestr = display_time ( $event->getDatetime() );
     if ( $event->getDuration() > 0 ) {
       $timestr .= " - " . display_time ( $event->getEndDateTime(), 2 );
@@ -5650,11 +5654,10 @@ function getReminders ( $id, $display=false ) {
     //create display string if needed in user's timezone
     if ( ! empty ( $reminder ) && $display == true ) {
        $str .= translate ( "Yes" );
+       $str .= "&nbsp;&nbsp;-&nbsp;&nbsp;";
         if ( ! empty ( $reminder['date'] ) ) {
-          $str .= "&nbsp;&nbsp;-&nbsp;&nbsp;";
           $str .= date ( "Ymd", $reminder['timestamp'] );
         } else  { //must be an offset even if zero
-          $str .= "&nbsp;&nbsp;-&nbsp;&nbsp;";
           $d = $h = $minutes = 0;
           if ( $reminder['offset'] > 0 ) {
             $minutes = $reminder['offset'];
@@ -5678,9 +5681,8 @@ function getReminders ( $id, $display=false ) {
           } else {
             $str .= $minutes . " " . translate("minute");
           }
-          $before = ( $reminder['before'] == 'Y'?translate("before" ):translate("after" ) );
-          $related = ( $reminder['related'] == 'S'?translate("start" ):translate("end" ) );
-          $str .= " " . $before . " " . $related;  
+          $str .= " " . translate( $reminder['before'] == 'Y' ? 'before' : 'after' ) . 
+            " " .  translate( $reminder['related'] == 'S' ? 'start' : 'end' ) ;  
         }
       return $str;
     }
