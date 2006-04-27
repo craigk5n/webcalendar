@@ -133,7 +133,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   echo "<title>".translate($APPLICATION_NAME)."</title>\n";
 
   echo "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
-
+  echo "<script type=\"text/javascript\" src=\"includes/js/prototype.js\"></script>\n";
   // Menu control
   if ( !empty ( $friendly ) || $disableCustom ) $MENU_ENABLED = 'N';
 

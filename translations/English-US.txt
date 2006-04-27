@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 04-24-2006
+# Translation last updated on 04-27-2006
 
 
 ###############################################
@@ -381,6 +381,12 @@ Delete Events: Delete Events
 Public Preferences: Public Preferences
 Unapproved Public Events: Unapproved Public Events
 Administrative Tools: Administrative Tools
+
+
+###############################################
+# Page: ajax.php
+#
+Duplicate Name: Duplicate Name
 
 
 ###############################################
@@ -1287,10 +1293,6 @@ Busy: Busy
 Tentative: Tentative
 day: day
 minute: minute
-before: before
-after: after
-start: start
-end: end
 Error approving event: Error approving event
 Error deleting event: Error deleting event
 Error rejecting event: Error rejecting event
@@ -1417,6 +1419,13 @@ You have not entered a valid time of day: You have not entered a valid time of d
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Invalid color
+
+
+###############################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID can not be blank: Calendar ID can not be blank
+Both first and last names can not be blank: Both first and last names can not be blank
 
 
 ###############################################

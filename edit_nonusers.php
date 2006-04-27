@@ -1,6 +1,7 @@
 <?php
 include_once 'includes/init.php';
-print_header( '', '', '', true );
+$INC = array('js/edit_nonuser.php/false');
+print_header( $INC, '', '', true );
 
 if ( ! $is_admin ) {
   echo "<h2>" . translate("Error") . "</h2>\n" . 
@@ -24,7 +25,7 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
   $nid = clean_html($nid);
 ?>
 
-<form action="edit_nonusers_handler.php" method="post">
+<form action="edit_nonusers_handler.php" name="editnonuser" method="post" onsubmit="return valid_form(this);">
   <?php
   if ( ! empty ( $nid ) ) {
     nonuser_load_variables ( $nid, 'nonusertemp_' );
@@ -32,7 +33,7 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
     $button = translate("Save");
     $nonusertemp_login = substr($nonusertemp_login, strlen($NONUSER_PREFIX));
   } else {
-    $id_display = "<input type=\"text\" name=\"nid\" id=\"calid\" size=\"20\" maxlength=\"20\" /> " . translate ("word characters only");
+    $id_display = "<input type=\"text\" name=\"nid\" id=\"calid\" size=\"20\" onchange=\"check_name();\" maxlength=\"20\" /> " . translate ("word characters only");
   }
   if (! empty ( $nonusertemp_admin ) ){
     echo "<input type=\"hidden\" name=\"old_admin\" value=\"{$nonusertemp_admin}\" />";
