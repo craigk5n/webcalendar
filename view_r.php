@@ -84,7 +84,7 @@ $show_untimed_row_always = true;
 
 view_init ( $id );
 
-// view type 'R' is for week view, 'S' is for day view
+// view type 'E' = Day by Time, 'R' = Week by Time
 $is_day_view = ( $view_type == 'E' );
 $col_pixels = ( $is_day_view ? $col_pixels_day : $col_pixels_week );
 $fit_to_window = ( $is_day_view ? $fit_to_window_day : $fit_to_window_week );
@@ -116,7 +116,7 @@ $prevday = date ( "d", $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 
-$wkstart = get_weekday_before ( $thisyear, $thismonth );
+$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
 $wkend = $wkstart + ( ONE_DAY * 6 );
 
@@ -228,10 +228,10 @@ else
 $uheader = "";
 for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], "", $startdate );
+  $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
   $re_save[$i] = $repeated_events;
   /* Pre-load the non-repeating events for quicker access */
-  $events = read_events ( $viewusers[$i], $startdate, $enddate );
+  $events = read_events ( $viewusers[$i], $wkstart, $wkend );
   $e_save[$i] = $events;
   user_load_variables ( $viewusers[$i], "temp" );
   $uheader .= "<th class=\"small\" width=\"$uwf\" style=\"width:$uwf;\">" .
