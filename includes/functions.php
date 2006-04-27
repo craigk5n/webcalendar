@@ -165,7 +165,7 @@ function getIntValue ( $name, $fatal=false ) {
  */
 function load_global_settings () {
   global $login, $readonly, $HTTP_HOST, $SERVER_PORT, $REQUEST_URI, $_SERVER;
-  global $SERVER_URL, $APPLICATION_NAM, $FONTS, $LANGUAGE;
+  global $SERVER_URL, $APPLICATION_NAME, $FONTS, $LANGUAGE;
   // Note: when running from the command line (send_reminders.php),
   // these variables are (obviously) not set.
   // TODO: This type of checking should be moved to a central location
@@ -2217,11 +2217,13 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
           $result [$i++] = $item;
         }
       }
-       //Does event go past midnight?
-       if ( date( "Ymd", $item->getDateTimeTS() ) != 
-         date( "Ymd", $item->getEndDateTimeTS() ) && 
-         ! $item->isAllDay() && $item->getCalTypeName() == 'event' ) 
-         $i = get_OverLap ( $item, $i, true, 0, $item->getDate()  );
+      //Does event go past midnight?
+      if ( date( "Ymd", $item->getDateTimeTS() ) != 
+        date( "Ymd", $item->getEndDateTimeTS() ) && 
+        ! $item->isAllDay() && $item->getCalTypeName() == 'event' )  {
+        get_OverLap ( $item, $i, true );
+        $i = count ( $result );
+      }
     }
   }
   
@@ -2237,8 +2239,6 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
           //if this is a clone, add one day to each exception date
           if ( ! $result[$i]->getClone() ){
             $except_date = $row[0];          
-          } else {
-            //$except_date = date( "Ymd", get_datetime_add_tz ( $row[0], 12, 24 ) );
           }
           if ( $row[1] == 1 ) {
             $result[$i]->addRepeatException($except_date, $result[$i]->getID());
@@ -3908,7 +3908,7 @@ function display_time ( $time='', $control=0, $timestamp='', $format='' ) {
       $hour = 12;
     $ret = sprintf ( "%d:%02d%s", $hour, $min, $ampm );
   } else {
-    $ret = sprintf ( "%d:%02d", $hour, $min );
+    $ret = sprintf ( "%02d:%02d", $hour, $min );
   }
   if ( $control & 2 ) $ret .= $tzid;
   //reset timezone to previous value
@@ -5546,39 +5546,39 @@ function combine_and_sort_events ( $ev, $rep ) {
 } 
 
 //calculate rollover to next day and add partial event as needed
-function get_OverLap ( $item, $i, $parent=true, $nextdur=0, $originalDate='' ) {
+function get_OverLap ( $item, $i, $parent=true ) {
   global $result;
- 
+  static $realEndTS, $originalDate, $originalItem;
+
   $recurse = 0;
   $lt = localtime ( $item->getDateTimeTS() );
   $tz_offset = date ( "Z", $item->getDateTimeTS() ) / 3600;
-  $midnight = mktime ( -$tz_offset, 0, 0, $lt[4] +1, $lt[3] +1, $lt[5] );
-  $realEndTS = $item->getEndDateTimeTS() - date ( "Z", $item->getEndDateTimeTS() );
-  $item_duration = $new_duration = ( $realEndTS - $midnight + $nextdur ) /60;
+  $midnight = gmmktime ( -$tz_offset, 0, 0, $lt[4] +1, $lt[3] +1, $lt[5] );
+  if ( $parent ) {
+    $realEndTS = $item->getEndDateTimeTS();
+    $originalDate = $item->getDate();
+    $originalItem = $item;
+  }
+  $new_duration = ( $realEndTS - $midnight) /60;
   if ( $new_duration > 1440 ) {
     $recurse = 1;
-    $next_duration = ($new_duration - 1440 ) * 60;
     $new_duration = 1439;
   }
-  if ( $realEndTS  >  $midnight - 60 ) {          
-    $result[$i] = clone ( $item ); 
+  if ( $realEndTS  >  $midnight ) {          
+    $result[$i] = clone ( $originalItem );
     $result[$i]->setClone( $originalDate );
-    $result[$i]->setDuration( $new_duration == 1439? 1440 : $new_duration );
-    if ($tz_offset > 0) {
-      $result[$i]->setTime( (24 - $tz_offset) * 10000 );
-    } else {
-    $result[$i]->setTime( -($tz_offset) * 10000 );
-    $result[$i]->setDate( date ( "Ymd", $midnight + (12 * 3600 ) ) );
-    }
-    if ( $parent )$result[$i]->setName( $result[$i]->getName() .
-      ' (' . translate ( "cont." ) . ')');        
+    $result[$i]->setDuration( $new_duration );
+    $result[$i]->setTime( gmdate ( "G0000", $midnight ) );
+    $result[$i]->setDate( gmdate ( "Ymd", $midnight ) );
+    $result[$i]->setName( $originalItem->getName() . ' (' . translate ( "cont." ) . ')'); 
+    
     $i++;  
-    if ( $parent )$item->setDuration( $item->getDuration() - $item_duration -1);         
+    if ( $parent )$item->setDuration( ( ( $midnight - $item->getDateTimeTS() ) /60 ) -1 );    
   }
   //call this function recursively until duration < ONE_DAY
-  if ( $recurse == 1 ) get_OverLap ( $result[$i -1], $i, false, $next_duration, $originalDate );
-  return $i;
+  if ( $recurse == 1 ) get_OverLap ( $result[$i -1], $i, false );
 }
+
 if (version_compare(phpversion(), '5.0') < 0) {
     eval('
     function clone($item) {

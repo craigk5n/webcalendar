@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1477303: CVS Cross-Day events bug
       1474888: Timezone issue on updated timestamp (1.1.cvs)
       1467713: report belongs to a deleted user remains in DB
       1468170: Can't create Views with NUCs
