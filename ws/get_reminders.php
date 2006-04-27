@@ -3,27 +3,27 @@
  * $Id$
  *
  * Description:
- *	Web Service functionality for reminders.
- *	Uses XML (but not SOAP at this point since that would be
+ *  Web Service functionality for reminders.
+ *  Uses XML (but not SOAP at this point since that would be
  *      overkill and require extra packages to install).
  *
  * Comments:
- *	Some of this code was borrowed from send_reminders.php.
+ *  Some of this code was borrowed from send_reminders.php.
  *
- *	This functionality works somewhat independent of the email-based
- *	send_reminders.php script.  If the end user intends to use
- *	client-side reminders, they should set "Event Reminders" to "No"
- *	in the "Email" section on the Prefernces page.
+ *  This functionality works somewhat independent of the email-based
+ *  send_reminders.php script.  If the end user intends to use
+ *  client-side reminders, they should set "Event Reminders" to "No"
+ *  in the "Email" section on the Prefernces page.
  *
- *	This is read-only for the client side, so the client must
- *	keep track of whether or not they have displayed the reminder
- *	to the user.  (No where in the database will it be recorded that
- *	the user received a reminder through this functionality.)
+ *  This is read-only for the client side, so the client must
+ *  keep track of whether or not they have displayed the reminder
+ *  to the user.  (No where in the database will it be recorded that
+ *  the user received a reminder through this functionality.)
  *
- *	Client apps must use the same authentication as the web browser.
- *	If WebCalendar is setup to use web-based authentication, then
- *	the login.php found in this directory should be used to obtain
- *	a session cookie.
+ *  Client apps must use the same authentication as the web browser.
+ *  If WebCalendar is setup to use web-based authentication, then
+ *  the login.php found in this directory should be used to obtain
+ *  a session cookie.
  *
  */
 
@@ -83,8 +83,8 @@ if ( $login != $user ) {
 //  exit;
 //}
 
-$startdate = date ( "Ymd" );
-$enddate = date ( "Ymd", time() + ( $DAYS_IN_ADVANCE * 24 * 3600 ) );
+$startdate = mktime ();
+$enddate = $startdate + ( $DAYS_IN_ADVANCE * 24 * 3600 ) );
 
 // Now read events all the repeating events
 $repeated_events = query_events ( $user, true,
