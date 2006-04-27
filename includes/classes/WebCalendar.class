@@ -220,7 +220,7 @@ class WebCalendar {
       if ( $CATEGORIES_ENABLED == "Y" ) {
         if ( ! empty ( $cat_id ) ) {
           $cat_id = $cat_id;
-        } elseif ( ! empty ( $CATEGORY_VIEW ) ) {
+        } elseif ( ! empty ( $CATEGORY_VIEW ) && ! isset  ( $_GET['cat_id'] ) ) {
           $cat_id = $CATEGORY_VIEW;
         } else {
           $cat_id = '';
