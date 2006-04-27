@@ -5082,7 +5082,8 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
     /* Pre-Load the repeated events for quckier access */
     $repeated_events = read_repeated_events ( $participants[$i], "", $dateTS );
     /* Pre-load the non-repeating events for quicker access */
-    $events = read_events ( $participants[$i], $dateTS, $dateTS );
+    /* Subtract one week to try and include any cross-day events */
+    $events = read_events ( $participants[$i], $dateTS - ONE_WEEK, $dateTS );
 
     // get all the repeating events for this date and store in array $rep
     $rep = get_repeating_entries ( $participants[$i], $dateTS );
