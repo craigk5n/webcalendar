@@ -1115,13 +1115,13 @@ if ( ! empty ( $conflicts ) ) {
       foreach ( $xval as $ykey=>$yval ) {
         if (get_magic_quotes_gpc())
           $yval = stripslashes($yval);
-        $yval = htmlentities  ( $yval );
+        //$yval = htmlentities  ( $yval );
         echo "<input type=\"hidden\" name=\"$xkey\" value=\"$yval\" />\n";
       }
     } else {
       if (get_magic_quotes_gpc())
         $xval = stripslashes($xval);
-      $xval = htmlentities ( $xval );
+      //$xval = htmlentities ( $xval );
       echo "<input type=\"hidden\" name=\"$xkey\" value=\"$xval\" />\n";
     }
   }

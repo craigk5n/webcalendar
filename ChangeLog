@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1448727: Conflict changes national characters
  - Fixed bug 1477303: CVS Cross-Day events bug
  - Fixed bug 1474888: Timezone issue on updated timestamp (1.1.cvs)
  - Implemented RFE 617965: approve/confirm/reject all events
