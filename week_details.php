@@ -13,12 +13,11 @@ load_user_categories ();
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
-$wkstart = get_weekday_before ( $thisyear, $thismonth );
+$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
 $wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ));
+$thisdate = date ( "Ymd", $wkstart );
 
-$startdate = date ( "Ymd", $wkstart );
-$enddate = date ( "Ymd", $wkend );
 
 if ( $DISPLAY_WEEKENDS == "N" ) {
   if ( $WEEK_START == 1 ) {
@@ -37,16 +36,16 @@ $HeadX = '';
 if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {
   $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week_details.php?$u_url" .
-    "date=$startdate$caturl\" />\n";
+    "date=$thisdate$caturl\" />\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login, $cat_id, $startdate  );
+$repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login, $cat_id, $wkstart  );
 
 /* Pre-load the non-repeating events for quicker access */
-$events = read_events ( strlen ( $user ) ? $user : $login, $startdate, $enddate, $cat_id  );
+$events = read_events ( strlen ( $user ) ? $user : $login, $wkstart, $wkend, $cat_id  );
 
 ?>
 

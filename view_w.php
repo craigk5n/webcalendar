@@ -48,13 +48,11 @@ $prevmonth = date ( "m", $prev );
 $prevday = date ( "d", $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
-$wkstart = get_weekday_before ( $thisyear, $thismonth );
+$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1);
 
 $wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ) );
-$startdate = date ( "Ymd", $wkstart );
-$enddate = date ( "Ymd", $wkend );
+$thisdate = date ( "Ymd", $wkstart );
 
-$thisdate = $startdate;
 
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ONE_DAY * $i;
@@ -111,10 +109,10 @@ $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], "", $startdate );
+  $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
   $re_save[$i] = $repeated_events;
   /* Pre-load the non-repeating events for quicker access */
-  $events = read_events ( $viewusers[$i], $startdate, $enddate );
+  $events = read_events ( $viewusers[$i], $wkstart, $wkend );
   $e_save[$i] = $events;
 }
 
