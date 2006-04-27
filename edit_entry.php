@@ -502,8 +502,12 @@ if ( ! empty ( $parent ) )
      echo $textareasize;
     ?>><?php
      echo htmlspecialchars ( $description );
-    ?></textarea></td><td style="vertical-align:top;">
-
+    ?></textarea></td>
+<?php if ( $use_fckeditor ||  $use_htmlarea  ) { ?>
+    </tr><tr><td  colspan="2" style="vertical-align:top;">
+<?php } else {?>
+    <td style="vertical-align:top;">
+<?php } ?>
   
 <?php if (( ! empty ( $categories ) ) || ( $DISABLE_ACCESS_FIELD != "Y" ) || 
          ( $DISABLE_PRIORITY_FIELD != "Y" ) ){ // new table for extra fields ?>
