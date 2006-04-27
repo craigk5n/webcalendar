@@ -27,7 +27,7 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
     $button = translate("Save");
     $remotestemp_login = substr($remotestemp_login, strlen($NONUSER_PREFIX));
   } else {
-    $id_display = "<input type=\"text\" name=\"nid\" id=\"calid\" size=\"20\" maxlength=\"20\" /> " . translate ("word characters only");
+    $id_display = "<input type=\"text\" name=\"nid\" id=\"nid\" size=\"20\" maxlength=\"20\"    onchange=\"check_name();\" /> " . translate ("word characters only");
   }
   ?>
 <h2><?php

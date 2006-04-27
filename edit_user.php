@@ -31,8 +31,8 @@ if ( empty ( $user ) ) {
 }
 
 $disableCustom = true;
-
-print_header ( '', '', '', $disableCustom );
+$INC = array('js/edit_user.php/false');
+print_header ( $INC, '', '', $disableCustom );
 
 if ( ! empty ( $error ) ) {
   echo "<h2>" . translate ( "Error" ) . "</h2>\n<p>" . $error . "</p>\n";
@@ -48,7 +48,7 @@ if ( ! empty ( $error ) ) {
   echo translate("Add User");
  }
 ?></h2>
-<form action="edit_user_handler.php" method="post">
+<form action="edit_user_handler.php"  name="edituser" method="post" onsubmit="return valid_form(this);" >
 <input type="hidden" name="formtype" value="edituser" />
 <?php
  if ( empty ( $user ) ) {
@@ -66,7 +66,7 @@ if ( ! empty ( $error ) ) {
       else
         echo $user;
     } else {
-      echo "<input type=\"text\" name=\"user\" id=\"username\" size=\"25\" maxlength=\"25\" />\n";
+      echo "<input type=\"text\" name=\"user\" id=\"username\" size=\"25\" onchange=\"check_name();\" maxlength=\"25\" />\n";
     }
 ?>
  </td></tr>
