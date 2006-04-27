@@ -639,9 +639,9 @@ if ( empty ( $error ) ) {
     if ( ! empty ( $rpt_year  ) ) {
       $rpt_end = sprintf ( "%04d%02d%02d", $rpt_year, $rpt_month, $rpt_day );
       $rpt_endtime = sprintf ( "%02d%02d00", $rpt_endhour, $rpt_endminute );
-      //$rpt_enddatetime = get_datetime_add_tz ( $rpt_end, $rpt_endtime, '', true );
-      $rpt_end = date ("Ymd", $rpt_enddatetime );
-      $rpt_endtime = date ("His", $rpt_enddatetime );
+      $rpt_enddatetime =  date_to_epoch ( $rpt_end .$rpt_endtime );
+      $rpt_end = gmdate ("Ymd", $rpt_enddatetime );
+      $rpt_endtime = gmdate ("His", $rpt_enddatetime );
     } else {
       $rpt_end = NULL;
     }

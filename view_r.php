@@ -128,15 +128,11 @@ else
 // Set the day of week range (0=Sun, 6=Sat)
 // $start_ind = start of range
 // $end_ind = end of range (inclusive)
-// $startdate = YYYYMMDD format of first day to display
-// $enddate = YYYYMMDD format of last day to display
+
 if ( $is_day_view ) {
-  $startdate = $enddate = $thisdate;
   $thistime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
   $start_ind = $end_ind = ( date ( 'w', $thistime ) - $WEEK_START + 7 ) % 7;
 } else {
-  $startdate = date ( "Ymd", $wkstart );
-  $enddate = date ( "Ymd", $wkend );
   if ( $DISPLAY_WEEKENDS == "N" ) {
     if ( $WEEK_START == 1 ) {
       $start_ind = 0;
@@ -150,9 +146,6 @@ if ( $is_day_view ) {
     $end_ind = 6;
   }
 }
-
-//echo "startdate=$startdate, enddate=$enddate, start_ind=$start_ind, end_ind=$end_ind<br />\n";
-
 
 // Generate the column headers for each day and the unix datetime
 // values for each date.

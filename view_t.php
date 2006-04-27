@@ -76,10 +76,8 @@ if ( ! empty ( $timeb) && $timeb == 1 ) {
 } else {
   $wkend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 }
-$startdate = date ( "Ymd", $wkstart );
-$enddate = date ( "Ymd", $wkend );
+$thisdate = date ( "Ymd", $wkstart );
 
-$thisdate = $startdate;
 
 if ( ! empty ( $timeb) && $timeb == 1 ) {
   $val_boucle = 7;
