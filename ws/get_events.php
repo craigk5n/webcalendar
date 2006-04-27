@@ -3,19 +3,19 @@
  * $Id$
  *
  * Description:
- *	Web Service functionality to get events.
- *	Uses XML (but not SOAP at this point since that would be
+ *  Web Service functionality to get events.
+ *  Uses XML (but not SOAP at this point since that would be
  *      overkill and require extra packages to install).
  *
  * Comments:
- *	Client apps must use the same authentication as the web browser.
- *	If WebCalendar is setup to use web-based authentication, then
- *	the login.php found in this directory should be used to obtain
- *	a session cookie.
+ *  Client apps must use the same authentication as the web browser.
+ *  If WebCalendar is setup to use web-based authentication, then
+ *  the login.php found in this directory should be used to obtain
+ *  a session cookie.
  *
  * Developer Notes:
- *	If you enable the WS_DEBUG option below, all data will be written
- *	to a debug file in /tmp also.
+ *  If you enable the WS_DEBUG option below, all data will be written
+ *  to a debug file in /tmp also.
  *
  */
 
@@ -72,7 +72,7 @@ $repeated_events = query_events ( $user, true,
 // Read non-repeating events (for all users)
 if ( $WS_DEBUG )
   $out .= "<!-- Checking for events for $user from date $startdate to date $enddate -->\n";
-$events = read_events ( $user, $startdate, $enddate );
+$events = read_events ( $user, date_to_epoch( $startdate ), date_to_epoch( $enddate ) );
 if ( $WS_DEBUG )
   $out .= "<!-- Found " . count ( $events ) . " events in time range. -->\n";
 
