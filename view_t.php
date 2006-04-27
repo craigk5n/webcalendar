@@ -31,7 +31,7 @@ $USERS_PER_TABLE = 6;
 
 view_init ( $id );
 
-$INC = array('js/popups.php');
+$INC = array('js/popups.php/false');
 print_header($INC);
 
 
@@ -146,10 +146,10 @@ $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], "", $startdate );
+  $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
   $re_save = array_merge($re_save, $repeated_events);
   /* Pre-load the non-repeating events for quicker access */
-  $events = read_events ( $viewusers[$i], $startdate, $enddate );
+  $events = read_events ( $viewusers[$i], $wkstart, $wkend );
   $e_save = array_merge($e_save, $events);
 }
 $events = $e_save;
