@@ -242,6 +242,7 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Impemented RFE 1470722: option to disable 2nd entry of cross-day event
     + Implemented RFE 617965: approve/confirm/reject all events
     + Implemented PATCH 1470047: Auto-Completing Tasks
     + Changed gradients to save images in cache file and return real url if called
