@@ -558,7 +558,7 @@ if ( ! empty ( $parent ) )
     <tr id="completed">
     <td class="tooltip" title="<?php etooltip("completed-help")?>">
     <label for="task_percent"><?php etranslate("Date Completed")?>:&nbsp;</label></td>
-    <td><?php print_date_selection ( "completed_", $completed ); ?>
+    <td><?php echo date_selection ( "completed_", $completed ); ?>
     </td></tr>
    <tr><td class="tooltip" title="<?php etooltip("percent-help")?>">
     <label for="task_percent"><?php etranslate("Percent Complete")?>:&nbsp;</label></td><td>
@@ -602,7 +602,7 @@ if ( ! empty ( $parent ) )
  echo "<tr><td class=\"tooltip\" title=\"" . tooltip("date-help") . "\">";
  echo  ( $eType == 'task'? translate("Start Date"):translate("Date") ) . 
    ":</td><td colspan=\"2\">\n";
-  print_date_selection ( "", $cal_date );
+  echo date_selection ( "", $cal_date );
 
   echo "</td></tr>\n";
 if ( $eType != 'task' ) {?>
@@ -758,7 +758,7 @@ if ( $TIME_FORMAT == "12" ) {
 <tr><td class="tooltip" title="<?php etooltip("date-help")?>">
    <?php etranslate("Due Date")?>:</td><td colspan="2">
    <?php 
-    print_date_selection ( "due_", $due_date );
+    echo date_selection ( "due_", $due_date );
    ?>
   </td></tr>
   <tr><td class="tooltip" title="<?php etooltip("time-help")?>">
@@ -825,9 +825,9 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
       "" : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) . "\" />";
   } else if ( $extra_type == EXTRA_DATE ) {
     if ( ! empty ( $extras[$extra_name]['cal_date'] ) )
-      print_date_selection ( $extra_name, $extras[$extra_name]['cal_date'] );
+      echo date_selection ( $extra_name, $extras[$extra_name]['cal_date'] );
     else
-      print_date_selection ( $extra_name, $cal_date );
+      echo date_selection ( $extra_name, $cal_date );
   } else if ( $extra_type == EXTRA_TEXT ) {
     $size = ( $extra_arg1 > 0 ? $extra_arg1 : 50 );
     echo "<input type=\"text\" size=\"" . $size . "\" name=\"" . $extra_name .
@@ -1014,7 +1014,7 @@ if ( $single_user == "N" && $show_participants ) {
  ?> onclick="toggle_until()" />&nbsp;<label><?php etranslate("Use end date")?></label>
 </td><td class="boxright">
  <span class="end_day_selection" id="rpt_end_day_select"><?php
-  print_date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date )
+  echo date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date )
  ?></span><br />
  <?php
 $rpt_endh12 = floor($rpt_end_time / 10000);
@@ -1209,7 +1209,7 @@ if ( $TIME_FORMAT == "12" ) {
  <td colspan="2">
  <table bgcolor="#CCCCCC"  border="0" width="250px">
  <tr ><td colspan="2">
- <?php print_date_selection ( "except_", $rpt_end_date ? $rpt_end_date : $cal_date )?>
+ <?php echo date_selection ( "except_", $rpt_end_date ? $rpt_end_date : $cal_date )?>
  </td></tr><tr><td align="right" valign="top" width="100">
  <label id="select_exceptions_not" style="visibility:<?php echo ( empty ( $excepts )? "visible" : "hidden" ) ?>;"></label>
  <select id="select_exceptions"  name="exceptions[]"  multiple="multiple" style="visibility:<?php echo ( ! empty ( $excepts )? "visible" : "hidden" ) ?>;" size="4" >
@@ -1266,9 +1266,9 @@ if ( $TIME_FORMAT == "12" ) {
     </td><td class="boxtop boxright" nowrap="nowrap" colspan="2"> 
     <?php 
       if ( ! empty ( $reminder['date'] ) )
-        print_date_selection ( 'reminder_', $reminder['date'] );
+        echo date_selection ( 'reminder_', $reminder['date'] );
       else
-        print_date_selection ( 'reminder_', $cal_date );
+        echo date_selection ( 'reminder_', $cal_date );
       ?>
      </td></tr>
      <tr><td class="boxleft">&nbsp;</td><td class="boxright"  colspan="2" nowrap="nowrap">

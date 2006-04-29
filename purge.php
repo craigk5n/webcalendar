@@ -144,7 +144,7 @@ if ( $do_purge ) {
  </td></tr>
  <tr id="dateArea"><td><label>
   <?php etranslate("Delete all events before");?>:</label></td><td>
-  <?php print_date_selection ( "end_", date ( "Ymd" ) ) ?>
+  <?php echo date_selection ( "end_", date ( "Ymd" ) ) ?>
  </td></tr>
  <tr><td><label for="preview">
   <?php etranslate("Preview delete")?>:</label></td>
