@@ -20,10 +20,11 @@ $old_id = ( ! empty ( $parent ) ? $parent : $old_id );
 $old_status = array();
 //Pass all string values through getPostValue
 $name = getPostValue ( 'name' );
-$description = getPostValue ( 'description' );
 $cat_id = getPostValue ( 'cat_id' );
 $timetype = getPostValue ( 'timetype' );
-
+$description = getPostValue ( 'description' );
+$description = ( strlen ( $description ) == 0  || 
+  $description == "<br />" ? $name : $description );
 
 // Ensure all time variables are not empty
 if ( empty ( $cal_hour ) ) $cal_hour = 0;
@@ -471,7 +472,7 @@ if ( empty ( $error ) ) {
   $query_params[] = "J";
   }
   $query_params[] = ( strlen ( $name ) == 0 ) ? "Unnamed Event" : $name;
-  $query_params[] = ( strlen ( $description ) == 0  || $description == "<br />" ) ? $name : $description;
+  $query_params[] = $description;
   $query_params[] = ( ! empty ( $location ) ) ? $location : '' ;
 
   if ( empty ( $error ) ) {
@@ -765,7 +766,8 @@ if ( empty ( $error ) ) {
              reset_language ( $user_language );
           }
   
-          $fmtdate = date ( "Ymd", $eventstart ); 
+          $fmtdate = ( $timetype == "T" ? 
+            date ( "Ymd", $eventstart ): gmdate ( "Ymd", $eventstart ) ); 
           $msg = translate("Hello", true) . ", " .
             unhtmlentities( $tempfullname ) . ".\n\n" .
             translate("An appointment has been canceled for you by", true) .
@@ -901,7 +903,8 @@ if ( empty ( $error ) ) {
              reset_language ( $user_language );
           }
 
-          $fmtdate = date ( "Ymd", $eventstart ); 
+          $fmtdate = ( $timetype == "T" ? 
+            date ( "Ymd", $eventstart ): gmdate ( "Ymd", $eventstart ) ); 
           $msg = translate("Hello", true) . ", " .
             unhtmlentities ( $tempfullname ) . ".\n\n";
           if ( $newevent || ( empty ( $old_status[$participants[$i]] ) ) ) {
@@ -1021,7 +1024,8 @@ if ( $single_user == "N" &&
         if ( $EXTERNAL_NOTIFICATIONS == "Y" && $SEND_EMAIL != "N" &&
           strlen ( $ext_emails[$i] ) > 0 ) {          
           if ( ( ! $newevent &&  $EXTERNAL_UPDATES == "Y" ) || $newevent ) {
-            $fmtdate = date ( "Ymd", $eventstart ); 
+            $fmtdate = ( $timetype == "T" ? 
+              date ( "Ymd", $eventstart ): gmdate ( "Ymd", $eventstart ) ); 
             // Strip [\d] from duplicate Names before emailing
             $ext_names[$i] = trim(preg_replace( '/\[[\d]]/', "", $ext_names[$i]) );
             $msg = translate("Hello", true) . ", " . $ext_names[$i] . ".\n\n";

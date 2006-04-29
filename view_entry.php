@@ -142,7 +142,8 @@ if ( ! $res ) {
   dbi_free_result ( $res );
 }
 
-$display_date = date ("Ymd", date_to_epoch ( $orig_date . $event_time ) );
+$display_date = ( $event_time > 0 ? date ("Ymd", 
+  date_to_epoch ( $orig_date . $event_time ) ) :$orig_date );
 
 if ( ! empty ( $year ) ) {
   $thisyear = $year;
