@@ -506,6 +506,11 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <label><input type="radio" name="pref_DISPLAY_MOON_PHASES" value="Y" <?php if (  $prefarray['DISPLAY_MOON_PHASES'] != "N" ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
  <label><input type="radio" name="pref_DISPLAY_MOON_PHASES" value="N" <?php if (  $prefarray['DISPLAY_MOON_PHASES'] == "N" ) echo $checked;?> /> <?php echo $No?></label>
 </td></tr>
+<tr><td class="tooltip" title="<?php etooltip("crossday-help")?>">
+ <?php etranslate("Disable Cross-Day Events")?>:</td><td>
+ <label><input type="radio" name="pref_DISABLE_CROSSDAY_EVENTS" value="Y" <?php if (  $prefarray['DISABLE_CROSSDAY_EVENTS'] != "N" ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
+ <label><input type="radio" name="pref_DISABLE_CROSSDAY_EVENTS" value="N" <?php if (  $prefarray['DISABLE_CROSSDAY_EVENTS'] == "N" ) echo $checked;?> /> <?php echo $No?></label>
+</td></tr>
 </table>
 </div>
 <!-- END SETTINGS -->
@@ -552,33 +557,33 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <?php if ( $SEND_EMAIL == 'Y' ) { ?>
 <div id="tabscontent_email">
 <table  cellspacing="1" cellpadding="2">
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td>
  <?php etranslate("Email format preference")?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_HTML" value="Y" <?php if ( $prefarray['EMAIL_HTML'] != "N" ) echo $checked;?> />&nbsp;<?php etranslate("HTML")?></label>&nbsp;
  <label><input type="radio" name="pref_EMAIL_HTML" value="N" <?php if ( $prefarray['EMAIL_HTML'] == "N" ) echo $checked;?> />&nbsp;<?php etranslate("Plain Text")?></label>
 </td></tr>
 
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td>
  <?php etranslate("Event reminders")?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_REMINDER" value="Y" <?php if ( $prefarray['EMAIL_REMINDER'] != "N" ) echo $checked;?> />&nbsp;<?php echo $Yes?></label>&nbsp;
  <label><input type="radio" name="pref_EMAIL_REMINDER" value="N" <?php if ( $prefarray['EMAIL_REMINDER'] == "N" ) echo $checked;?> />&nbsp;<?php echo $No?></label>
 </td></tr>
 
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td>
  <?php etranslate("Events added to my calendar")?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_EVENT_ADDED" value="Y" <?php if ( $prefarray['EMAIL_EVENT_ADDED'] != "N" ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_EMAIL_EVENT_ADDED" value="N" <?php if ( $prefarray['EMAIL_EVENT_ADDED'] == "N" ) echo $checked;?> /> <?php echo $No?></label></td></tr>
 
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td>
  <?php etranslate("Events updated on my calendar")?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_EVENT_UPDATED" value="Y" <?php if ( $prefarray['EMAIL_EVENT_UPDATED'] != "N" ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_EMAIL_EVENT_UPDATED" value="N" <?php if ( $prefarray['EMAIL_EVENT_UPDATED'] == "N" ) echo $checked;?> /> <?php echo $No?></label>
 </td></tr>
 
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td>
  <?php etranslate("Events removed from my calendar")?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_EVENT_DELETED" value="Y" <?php if ( $prefarray['EMAIL_EVENT_DELETED'] != "N" ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_EMAIL_EVENT_DELETED" value="N" <?php if ( $prefarray['EMAIL_EVENT_DELETED'] == "N" ) echo $checked;?> /> <?php echo $No?></label>
 </td></tr>
 
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td>
  <?php etranslate("Event rejected by participant")?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_EVENT_REJECTED" value="Y" <?php if ( $prefarray['EMAIL_EVENT_REJECTED'] != "N" ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_EMAIL_EVENT_REJECTED" value="N" <?php if ( $prefarray['EMAIL_EVENT_REJECTED'] == "N" ) echo $checked;?> /> <?php echo $No?></label>
 </td></tr>
@@ -590,10 +595,10 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <div id="tabscontent_boss">
 <table  cellspacing="1" cellpadding="2">
 <?php if ( $SEND_EMAIL == 'Y' ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("Email me event notification")?>:</td>
+<tr><td><?php etranslate("Email me event notification")?>:</td>
   <td><label><input type="radio" name="pref_EMAIL_ASSISTANT_EVENTS" value="Y" <?php if ( $prefarray['EMAIL_ASSISTANT_EVENTS'] == "Y" ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_EMAIL_ASSISTANT_EVENTS" value="N" <?php if ( $prefarray['EMAIL_ASSISTANT_EVENTS'] == "N" ) echo $checked;?> /> <?php echo $No?></label></td></tr>
 <?php } //end email ?>
-<tr><td style="vertical-align:top; font-weight:bold;"><?php etranslate("I want to approve events")?>:</td>
+<tr><td><?php etranslate("I want to approve events")?>:</td>
   <td><label><input type="radio" name="pref_APPROVE_ASSISTANT_EVENT" value="Y" <?php if ( $prefarray['APPROVE_ASSISTANT_EVENT'] == "Y" ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_APPROVE_ASSISTANT_EVENT" value="N" <?php if ( $prefarray['APPROVE_ASSISTANT_EVENT'] == "N" ) echo $checked;?> /> <?php echo $No?></label></td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip("display_byproxy-help")?>"><?php etranslate("Display if created by Assistant")?>:</td>
@@ -698,13 +703,13 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <table style="border-width:0px; width:100%;">
 <tr><td style="vertical-align:top;">
 <table  cellspacing="1" cellpadding="2">
- <tr><td style="font-weight:bold;">
+ <tr><td>
   <label for="pref_bg"><?php etranslate("Document background")?>:</label></td><td>
   <input type="text" name="pref_BGCOLOR" id="pref_bg" size="8" maxlength="7" value="<?php echo $prefarray['BGCOLOR']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['BGCOLOR']?>; border-style: groove;">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_BGCOLOR')" value="<?php etranslate("Select")?>..." />
  </td></tr>
- <tr><td style="font-weight:bold;">
+ <tr><td>
   <label for="pref_h2"><?php etranslate("Document title")?>:</label></td><td>
   <input type="text" name="pref_H2COLOR" id="pref_h2" size="8" maxlength="7" value="<?php echo $prefarray['H2COLOR']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['H2COLOR']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
@@ -716,37 +721,37 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
  <input type="button" onclick="selectColor('pref_TEXTCOLOR')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
- <tr><td style="font-weight:bold;">
+ <tr><td>
   <label for="pref_MYEVENTS"><?php etranslate("My event text")?>:</label></td><td>
   <input type="text" name="pref_MYEVENTS" id="pref_MYEVENTS" size="8" maxlength="7" value="<?php echo $prefarray['MYEVENTS']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['MYEVENTS']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_MYEVENTS')" value="<?php etranslate("Select")?>..." />
  </td></tr>
- <tr><td style="font-weight:bold;">
+ <tr><td>
   <label for="pref_TABLEBG"><?php etranslate("Table grid color")?>:</label></td><td>
   <input type="text" name="pref_TABLEBG" id="pref_TABLEBG" size="8" maxlength="7" value="<?php echo $prefarray['TABLEBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['TABLEBG']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_TABLEBG')" value="<?php etranslate("Select")?>..." />
  </td></tr>
- <tr><td style="font-weight:bold;">
+ <tr><td>
   <label for="pref_TABLEBG"><?php etranslate("Table header background")?>:</label></td><td>
   <input type="text" name="pref_THBG" id="pref_THBG" size="8" maxlength="7" value="<?php echo $prefarray['THBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['THBG']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_THBG')" value="<?php etranslate("Select")?>..." />
  </td></tr>
- <tr><td style="font-weight:bold;">
+ <tr><td>
   <label for="pref_TABLEBG"><?php etranslate("Table header text")?>:</label></td><td>
   <input type="text" name="pref_THFG" id="pref_THFG" size="8" maxlength="7" value="<?php echo $prefarray['THFG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['THFG']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_THFG')" value="<?php etranslate("Select")?>..." />
  </td></tr>
- <tr><td style="font-weight:bold;">
+ <tr><td>
   <label for="pref_cell"><?php etranslate("Table cell background")?>:</label></td><td>
   <input type="text" name="pref_CELLBG" id="pref_CELLBG" size="8" maxlength="7" value="<?php echo $prefarray['CELLBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['CELLBG']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_CELLBG')" value="<?php etranslate("Select")?>..." />
  </td></tr>
- <tr><td style="font-weight:bold;">
+ <tr><td>
   <label for="pref_today"><?php etranslate("Table cell background for current day")?>:</label></td><td>
   <input type="text" name="pref_TODAYCELLBG" id="pref_TODAYCELLBG" size="8" maxlength="7" value="<?php echo $prefarray['TODAYCELLBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['TODAYCELLBG']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
@@ -758,13 +763,13 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
  <input type="button" onclick="selectColor('pref_HASEVENTSBG')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
- <tr><td style="font-weight:bold;">
+ <tr><td>
   <label for="pref_wkend"><?php etranslate("Table cell background for weekends")?>:</label></td><td>
   <input type="text" name="pref_WEEKENDBG" id="pref_WEEKENDBG" size="8" maxlength="7" value="<?php echo $prefarray['WEEKENDBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['WEEKENDBG']?>; border-style: groove;">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_WEEKENDBG')" value="<?php etranslate("Select")?>..." />
  </td></tr>
-   <tr><td style="font-weight:bold;">
+   <tr><td>
     <label for="pref_othmonth"><?php etranslate("Table cell background for other month")?>:</label></td><td>
   <input type="text" name="pref_OTHERMONTHBG" id="pref_OTHERMONTHBG" size="8" maxlength="7" value="<?php echo $prefarray['OTHERMONTHBG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['OTHERMONTHBG']?>; border-style: groove;">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
@@ -776,13 +781,13 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
   <input type="button" onclick="selectColor('pref_WEEKNUMBER')" value="<?php etranslate("Select")?>..." name="" />
 </td></tr>
-   <tr><td style="font-weight:bold;">
+   <tr><td>
     <label for="pref_othmonth"><?php etranslate("Event popup background")?>:</label></td><td>
   <input type="text" name="pref_POPUP_BG" id="pref_POPUP_BG" size="8" maxlength="7" value="<?php echo $prefarray['POPUP_BG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['POPUP_BG']?>; border-style: groove;">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
     <input type="button" onclick="selectColor('pref_POPUP_BG')" value="<?php etranslate("Select")?>..." />
   </td></tr>
-   <tr><td style="font-weight:bold;">
+   <tr><td>
     <label for="pref_othmonth"><?php etranslate("Event popup text")?>:</label></td><td>
   <input type="text" name="pref_POPUP_FG" id="pref_POPUP_FG" size="8" maxlength="7" value="<?php echo $prefarray['POPUP_FG']; ?>" onkeyup="updateColor(this);" /></td><td style="background-color:<?php echo $prefarray['POPUP_FG']?>; border-style: groove;">
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>

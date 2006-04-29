@@ -566,6 +566,11 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label><input type="radio" name="admin_DISPLAY_MOON_PHASES" value="Y" <?php if ( $s['DISPLAY_MOON_PHASES'] == "Y" ) echo $checked;?> />&nbsp;<?php echo $Yes?></label> 
   <label><input type="radio" name="admin_DISPLAY_MOON_PHASES" value="N" <?php if ( $s['DISPLAY_MOON_PHASES'] != "Y" ) echo $checked;?> />&nbsp;<?php echo $No?></label>
  </td></tr>
+<tr><td class="tooltip" title="<?php etooltip("crossday-help")?>">
+  <?php etranslate("Disable Cross-Day Events")?>:</td><td>
+  <label><input type="radio" name="admin_DISABLE_CROSSDAY_EVENTS" value="Y" <?php if ( $s['DISABLE_CROSSDAY_EVENTS'] == "Y" ) echo $checked;?> />&nbsp;<?php echo $Yes?></label> 
+  <label><input type="radio" name="admin_DISABLE_CROSSDAY_EVENTS" value="N" <?php if ( $s['DISABLE_CROSSDAY_EVENTS'] != "Y" ) echo $checked;?> />&nbsp;<?php echo $No?></label>
+ </td></tr>
 </table>
 </div>
 <!-- END SETTINGS -->
