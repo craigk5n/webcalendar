@@ -78,8 +78,8 @@ if ($is_nonuser_admin) {
   }
 } else {
 
-  if ( ( $is_admin && ! access_is_enabled () ) ||
-    access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) ) {
+  if ( ( $is_admin && ! access_is_enabled () ) || ( access_is_enabled () &&
+    access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) ) ) {
     $names[] = translate("System Settings");
     $links[] = "admin.php";
   }
