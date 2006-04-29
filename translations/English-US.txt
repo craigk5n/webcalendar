@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 04-27-2006
+# Translation last updated on 04-28-2006
 
 
 ###############################################
@@ -109,6 +109,8 @@ Error adding event: Error adding event
 # Page: admin.php
 #
 Error: Error
+Yes: Yes
+No: No
 System Settings: System Settings
 Help: Help
 Settings: Settings
@@ -135,8 +137,6 @@ Server Timezone Selection: Server Timezone Selection
 Your current GMT offset is: Your current GMT offset is
 hours: hours
 Allow user to use themes: Allow user to use themes
-Yes: Yes
-No: No
 themes-help: Allows mass update of configuration settings. Lower case labels are user pref only.
 Themes: Themes
 AVAILABLE THEMES: AVAILABLE THEMES
@@ -244,6 +244,8 @@ summary_length-help: Maximum length of Brief Description in calendar views
 Brief Description Length: Brief Description Length
 lunar-help: If enabled, will display small icons representing the lunar phases each month
 Display Lunar Phases in month view: Display Lunar Phases in month view
+crossday-help: If enabled, events that span days will be displayed on seperate days
+Disable Cross-Day Events: Disable Cross-Day Events
 Plugins: Plugins
 plugins-enabled-help: Enable plugin applications.
 Enable Plugins: Enable Plugins
@@ -1239,6 +1241,7 @@ Dec: Dec
 ###############################################
 # Page: includes/functions.php
 #
+Unauthorized: Unauthorized
 __month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
 This event is private: This event is private

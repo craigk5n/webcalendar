@@ -229,10 +229,8 @@ function load_global_settings () {
 
   // If no font settings, then set some
   if ( empty ( $FONTS ) ) {
-    if ( $LANGUAGE == "Japanese" )
-      $FONTS = "Osaka, Arial, Helvetica, sans-serif";
-    else
-      $FONTS = "Arial, Helvetica, sans-serif";
+  $FONTS = ( $LANGUAGE == 'Japanese' ? 'Osaka, ' : '' ) . 
+    'Arial, Helvetica, sans-serif';
   }
 }
 
@@ -351,18 +349,16 @@ function do_debug ( $msg ) {
  * @return string URL of the user's preferred view
  */
 function get_preferred_view ( $indate="", $args="" ) {
-  global $STARTVIEW, $thisdate;
-  global $ALLOW_VIEW_OTHER, $is_admin;
+  global $STARTVIEW, $thisdate, $ALLOW_VIEW_OTHER, $is_admin;
     
   //we want user's to set  their pref on first login
   if ( empty ( $STARTVIEW ) ) return false;
   
-  $url = empty ( $STARTVIEW ) ? "month.php" : $STARTVIEW;
+  $url = $STARTVIEW;
   // We used to just store "month" in $STARTVIEW without the ".php"
   // This is just to prevent users from getting a "404 not found" if
   // they have not updated their preferences.
-  if ( $url == "month" || $url == "day" || $url == "week" || $url == "year" )
-    $url .= ".php";
+  $url .= ( ! strpos( $STARTVIEW, '.php' ) ? '.php' : '' );
   
   //prevent endless looping if preferred view is custom and viewing
   //others is not allowed
@@ -390,19 +386,9 @@ function get_preferred_view ( $indate="", $args="" ) {
   $url = str_replace ( '&', '&amp;', $url );
 
   $xdate = empty ( $indate ) ? $thisdate : $indate;
-  if ( ! empty ( $xdate ) ) {
-    if ( strstr ( $url, "?" ) )
-      $url .= '&amp;' . "date=$xdate";
-    else
-      $url .= '?' . "date=$xdate";
-  }
+  $url .= ( ! empty( $xdate )? ( strstr( $url, '?' ) ? '&amp;' :'?' ). "date=$xdate" : '' );
+  $url .= ( ! empty( $args ) ? ( strstr( $url, '?' ) ? '&amp;' :'?' ) . $args : '' );
 
-  if ( ! empty ( $args ) ) {
-    if ( strstr ( $url, "?" ) )
-      $url .= '&amp;' . $args;
-    else
-      $url .= '?' . $args;
-  }
   return $url;
 }
 
@@ -452,22 +438,17 @@ function do_redirect ( $url ) {
   //echo "SERVER_SOFTWARE = $SERVER_SOFTWARE <br />\n"; exit;
   if ( ( substr ( $SERVER_SOFTWARE, 0, 5 ) == "Micro" ) ||
     ( substr ( $SERVER_SOFTWARE, 0, 3 ) == "WN/" ) ) {
-    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html
-    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-    \"DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
-<head>\n<title>Redirect</title>\n" .
-      "<meta http-equiv=\"refresh\" content=\"0; url=$url\" />\n</head>\n<body>\n" .
-      "Redirecting to.. <a href=\"" . $url . "\">here</a>.</body>\n</html>";
+    $meta = " <meta http-equiv='refresh' content='0; url=$url' />";
   } else {
-    Header ( "Location: $url" );
-    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html
-    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-    \"DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
-<head>\n<title>Redirect</title>\n</head>\n<body>\n" .
-      "Redirecting to ... <a href=\"" . $url . "\">here</a>.</body>\n</html>";
+    $meta = '';
+    Header( "Location: $url" );
   }
+  echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" .
+    "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
+    "\"DTD/xhtml1-transitional.dtd\">\n" .
+    "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n" .
+    "<head>\n<title>Redirect</title>\n" . $meta .
+      "Redirecting to.. <a href=\"" . $url . "\">here</a>.</body>\n</html>";
   dbi_close ( $c );
   exit;
 }
@@ -479,28 +460,22 @@ function send_http_login () {
   global $lang_file, $APPLICATION_NAME;
 
   if ( strlen ( $lang_file ) ) {
-    Header ( "WWW-Authenticate: Basic realm=\"" . translate("Title") . "\"");
-    Header ( "HTTP/1.0 401 Unauthorized" );
-    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html
-    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-    \"DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
-<head>\n<title>Unauthorized</title>\n</head>\n<body>\n" .
-      "<h2>" . translate("Title") . "</h2>\n" .
-      translate("You are not authorized") .
-      "\n</body>\n</html>";
+    $title = translate( 'Title' );
+    $unauthorized = translate( 'Unauthorized' );
+    $not_authorized = translate( 'You are not authorized' );
   } else {
-    Header ( "WWW-Authenticate: Basic realm=\"WebCalendar\"");
-    Header ( "HTTP/1.0 401 Unauthorized" );
-    echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html
-    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-    \"DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
-<head>\n<title>Unauthorized</title>\n</head>\n<body>\n" .
-      "<h2>WebCalendar</h2>\n" .
-      "You are not authorized" .
-      "\n</body>\n</html>";
+    $title = 'Webcalendar';
+    $unauthorized = 'Unauthorized';
+    $not_authorized = 'You are not authorized';
   }
+  Header ( "WWW-Authenticate: Basic realm=\"$title\"");
+  Header ( "HTTP/1.0 401 Unauthorized" );
+  echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" .
+    "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
+    "\"DTD/xhtml1-transitional.dtd\">\n" .
+    "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n" .
+    "<head>\n<title>$unauthorized</title>\n</head>\n<body>\n" .
+    "<h2>$title</h2>\n$not_authorized\n</body>\n</html>";
   exit;
 }
 
@@ -543,8 +518,7 @@ function get_last_view () {
   $val = '';
 
  if ( isset ( $_COOKIE["webcalendar_last_view"] ) ) {
-   $HTTP_COOKIE_VARS["webcalendar_last_view"] = $_COOKIE["webcalendar_last_view"];
-    $val = $_COOKIE["webcalendar_last_view"]; 
+    $val = $HTTP_COOKIE_VARS["webcalendar_last_view"] = $_COOKIE["webcalendar_last_view"];
   } else if ( isset ( $HTTP_COOKIE_VARS["webcalendar_last_view"] ) ) {
     $val = $HTTP_COOKIE_VARS["webcalendar_last_view"];
  }
@@ -603,11 +577,9 @@ function load_user_preferences ( $guest='') {
   );
  
   //allow __public__ pref to be used if logging in or user not validated
-  if ( ! empty ( $guest ) ) {
-    $tmp_login = ( $guest == 'guest' ? "__public__" : $guest );
-  } else {
-    $tmp_login = $login;
-  }
+  $tmp_login = ( ! empty( $guest )? 
+    ( $guest == 'guest' ? '__public__' : $guest ) : $login );
+  
   $browser = get_web_browser ();
   $browser_lang = get_browser_language ();
   $prefarray = array ();
@@ -700,42 +672,39 @@ function load_user_preferences ( $guest='') {
 }
 
 /**
- * Gets the list of external users for an event from the webcal_entry_ext_user table in an HTML format.
+ * Gets the list of external users for an event from the 
+ *  webcal_entry_ext_user table in an HTML format.
  *
  * @param int $event_id   Event ID
  * @param int $use_mailto When set to 1, email address will contain an href
  *                        link with a mailto URL.
  *
- * @return string The list of external users for an event formatte in HTML.
+ * @return string The list of external users for an event formated in HTML.
  */
 function event_get_external_users ( $event_id, $use_mailto=0 ) {
   global $error;
   $ret = "";
 
   $rows = dbi_get_cached_rows ( "SELECT cal_fullname, cal_email " .
-    "FROM webcal_entry_ext_user " .
-    "WHERE cal_id = ? " .
+    "FROM webcal_entry_ext_user WHERE cal_id = ? " .
     "ORDER by cal_fullname", array( $event_id ) );
   if ( $rows ) {
     for ( $i = 0; $i < count ( $rows ); $i++ ) {
       $row = $rows[$i];
-      if ( strlen ( $ret ) )
+      if ( strlen ( $ret ) ) {
         $ret .= "\n";
+      }
       // Remove [\d] if duplicate name
-      $trow = trim( preg_replace( '/\[[\d]]/' , "", $row[0] ) );
-      $ret .= $trow;
+      $ret .= trim( preg_replace( '/\[[\d]]/' , "", $row[0] ) );
       if ( strlen ( $row[1] ) ) {
-        if ( $use_mailto ) {
-          $ret .= " <a href=\"mailto:$row[1]\">&lt;" .
-            htmlentities ( $row[1] ) . "&gt;</a>";
-        } else {
-          $ret .= " &lt;". htmlentities ( $row[1] ) . "&gt;";
-        }
+        $row_one = htmlentities( " <$row[1]>" );
+        $ret .= ( $use_mailto ? " <a href=\"mailto:$row[1]\">$row_one</a>" : $row_one );
       }
     }
   }
   return $ret;
 }
+
 
 /**
  * Adds something to the activity log for an event.
@@ -811,7 +780,6 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
  *    - cal_login
  *    - cal_lastname
  *    - cal_firstname
- *    - cal_is_admin
  *    - cal_is_admin
  *    - cal_email
  *    - cal_password
@@ -957,9 +925,7 @@ function get_pref_setting ( $user, $setting ) {
  *                      user preferences have layers turned off.
  */
 function load_user_layers ($user="",$force=0) {
-  global $login;
-  global $layers;
-  global $LAYERS_STATUS, $ALLOW_VIEW_OTHER;
+  global $login, $layers, $LAYERS_STATUS, $ALLOW_VIEW_OTHER;
 
   if ( $user == "" )
     $user = $login;
@@ -1017,14 +983,15 @@ function format_site_extras ( $extras ) {
   foreach ( $site_extras as $site_extra ) {
     $data = '';
     $extra_name = $site_extra[0];
+    $extra_desc = $site_extra[1];
     $extra_type = $site_extra[2];
     $extra_arg1 = $site_extra[3];
     $extra_arg2 = $site_extra[4];
 
-    if ( ! empty ( $extras[$extra_name] )
-         && ! empty ( $extras[$extra_name]['cal_name'] ) ) {
+    if ( ! empty ( $extras[$extra_name] ) && 
+      ! empty ( $extras[$extra_name]['cal_name'] ) ) {
 
-      $name = translate ( $site_extra[1] );
+      $name = translate ( $extra_desc );
 
       if ( $extra_type == EXTRA_DATE ) {
 
@@ -1032,8 +999,8 @@ function format_site_extras ( $extras ) {
           $data = date_to_str ( $extras[$extra_name]['cal_date'] );
         }
 
-      } else if ( $extra_type == EXTRA_TEXT
-                  || $extra_type == EXTRA_MULTILINETEXT ) {
+      } else if ( $extra_type == EXTRA_TEXT || 
+        $extra_type == EXTRA_MULTILINETEXT ) {
 
         $data = nl2br ( $extras[$extra_name]['cal_data'] );
 
@@ -1225,19 +1192,6 @@ function build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only
   return $ret;
   
 }
-/**
- * Prints out a date selection box for use in a form.
- *
- * @param string $prefix Prefix to use in front of form element names
- * @param string $date   Currently selected date (in YYYYMMDD format)
- * @param bool $trigger   Add onchange event trigger that
- *  calls javascript function $prefix_datechanged()
-  *
- * @uses date_selection_html
- */
-function print_date_selection ( $prefix, $date, $trigger=false ) {
-  print date_selection_html ( $prefix, $date, $trigger );
-}
 
 /**
  * Generate HTML for a date selection for use in a form.
@@ -1249,7 +1203,7 @@ function print_date_selection ( $prefix, $date, $trigger=false ) {
  *
  * @return string HTML for the selection box
  */
-function date_selection_html ( $prefix, $date, $trigger=false ) {
+function date_selection ( $prefix, $date, $trigger=false ) {
   $ret = "";
   $num_years = 20;
  $trigger_str = ( ! empty ( $trigger )? $prefix . "datechanged()" : "");
@@ -2044,7 +1998,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
   $cloneRepeats = array();
   $result = array ();
   $layers_byuser = array ();
-  //new multiple categories requires some checking to see if this this cat_id is
+  //new multiple categories requires some checking to see if this cat_id is
   //valid for this cal_id. It could be done with nested sql, but that may not work
   //for all databases. This might be quicker also.
   $catlist = array();
@@ -2236,7 +2190,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
           "WHERE cal_id = ?", array( $result[$i]->getID() ) );
         for ( $ii = 0; $ii < count ( $rows ); $ii++ ) {
           $row = $rows[$ii];
-          //if this is a clone, add one day to each exception date
+          //if this is not a clone, add exception date
           if ( ! $result[$i]->getClone() ){
             $except_date = $row[0];          
           }
@@ -3531,7 +3485,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $view_text = translate ( "View this task" );
     $hour_arr[$ind] .= "<img src=\"images/task.gif\" class=\"bullet\" alt=\"*\" /> ";    
   } else {
-    $view_text = translate ( "View this task" );    
+    $view_text = translate ( "View this event" );    
   }
   
     //make sure clones have parents url date
@@ -3902,7 +3856,7 @@ function display_time ( $time='', $control=0, $timestamp='', $format='' ) {
   while ( $hour > 23 )
     $hour -= 24;
   if ( $t_format == "12" ) {
-    $ampm = ( $hour >= 12 ) ? translate("pm") : translate("am");
+    $ampm = translate ( $hour >= 12  ? "pm" : "am" );
     $hour %= 12;
     if ( $hour == 0 )
       $hour = 12;
@@ -5552,9 +5506,13 @@ function combine_and_sort_events ( $ev, $rep ) {
 
 //calculate rollover to next day and add partial event as needed
 function get_OverLap ( $item, $i, $parent=true ) {
-  global $result;
+  global $result, $DISABLE_CROSSDAY_EVENTS;
   static $realEndTS, $originalDate, $originalItem;
 
+  if ( $DISABLE_CROSSDAY_EVENTS == 'Y' ) {
+    return false;
+  }
+    
   $recurse = 0;
   $lt = localtime ( $item->getDateTimeTS() );
   $tz_offset = date ( "Z", $item->getDateTimeTS() ) / 3600;
