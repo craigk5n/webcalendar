@@ -476,7 +476,7 @@ var myMenu =
       if ( ! $is_admin ) {
         jscMenu_item ( 'profile.png', 'My Profile', 'users.php' );
       }
-			
+      
       if ( $REMOTES_ENABLED == 'Y' ) {
         jscMenu_item ( 'vcalendar.png', 'Remote Calendars', 'users.php?tab=remotes' );
       }
@@ -495,14 +495,17 @@ var myMenu =
       }
 
 
-      if ( ( $is_admin && ! access_is_enabled () ) || access_can_access_function ( ACCESS_SYSTEM_SETTINGS, $user ) ) {
+      if ( ( $is_admin && ! access_is_enabled () ) || 
+        ( access_is_enabled () && 
+        access_can_access_function ( ACCESS_SYSTEM_SETTINGS, $user ) ) ) {
         jscMenu_item ( 'config.png', 'System Settings', 'admin.php' );
       }
 
-      if ( $is_admin ) {
-        if ( access_is_enabled () ) {
-          jscMenu_item ( 'access.png', 'User Access Control', 'access.php' );
-        }
+      if ( $is_admin || ( access_is_enabled () && 
+        access_can_access_function ( ACCESS_ACCESS_MANAGEMENT, $user ) )) {
+        jscMenu_item ( 'access.png', 'User Access Control', 'access.php' );
+      }
+      if ( $is_admin ) {      
         jscMenu_item ( 'user.png', 'User Manager', 'users.php' );
       }
     }  
