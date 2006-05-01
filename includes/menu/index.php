@@ -477,7 +477,8 @@ var myMenu =
         jscMenu_item ( 'profile.png', 'My Profile', 'users.php' );
       }
       
-      if ( $REMOTES_ENABLED == 'Y' ) {
+      if ( $REMOTES_ENABLED == 'Y' && ( ! access_is_enabled () || 
+        access_can_access_function ( ACCESS_IMPORT ) )) {
         jscMenu_item ( 'vcalendar.png', 'Remote Calendars', 'users.php?tab=remotes' );
       }
 
