@@ -1112,8 +1112,8 @@ class WebCalendar {
         strstr ( $PHP_SELF, "group_edit_handler.php" ) ||
         strstr ( $PHP_SELF, "pref.php" ) ||
         strstr ( $PHP_SELF, "pref_handler.php" ) ||
-        strstr ( $PHP_SELF, "edit_task.php" ) ||
-        strstr ( $PHP_SELF, "edit_task_handler.php" ) ||
+        strstr ( $PHP_SELF, "edit_remotes.php" ) ||
+        strstr ( $PHP_SELF, "edit_remotes_handler.php" ) ||
         strstr ( $PHP_SELF, "edit_user.php" ) ||
         strstr ( $PHP_SELF, "edit_user_handler.php" ) ||
         strstr ( $PHP_SELF, "approve_entry.php" ) ||
@@ -1286,7 +1286,7 @@ class WebCalendar {
       ACCESS_WEEK => "(week.php|week_details.php)",
       ACCESS_MONTH => "month.php",
       ACCESS_YEAR => "year.php",
-      ACCESS_ADMIN_HOME => "(adminhome.php|users.php|load_tz_data.php)",
+      ACCESS_ADMIN_HOME => "(adminhome.php|users.php)",
       ACCESS_REPORT => "report",
       ACCESS_VIEW => "view_..php",
       ACCESS_VIEW_MANAGEMENT => "(views.php|views_edit)",
@@ -1299,7 +1299,7 @@ class WebCalendar {
       ACCESS_ACCESS_MANAGEMENT => "(access.*php)",
       ACCESS_PREFERENCES => "pref.*php",
       ACCESS_SYSTEM_SETTINGS => "(admin.php|admin_handler.php|controlpanel.php)",
-      ACCESS_IMPORT => "import.*php",
+      ACCESS_IMPORT => "(import.*php|edit_remotes.php|edit_remotes_handler.php)",
       ACCESS_EXPORT => "export.*php",
       ACCESS_PUBLISH => "(publish.php|freebusy.php|icalclient.php|rss.php|minical.php|upcoming.php)",
       ACCESS_ASSISTANTS => "assist.*php",

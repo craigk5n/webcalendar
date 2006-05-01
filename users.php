@@ -55,7 +55,8 @@ print_header($INC,'', $BodyX );
  if ($NONUSER_ENABLED == 'Y' && $is_admin) { ?>
   <span class="tabbak" id="tab_nonusers"><a href="#tabnonusers" onclick="return showTab('nonusers')"><?php etranslate("NonUser Calendars")?></a></span>
  <?php } 
- if ($REMOTES_ENABLED == 'Y') { ?>
+ if ($REMOTES_ENABLED == 'Y'  && ( ! access_is_enabled () || 
+   access_can_access_function ( ACCESS_IMPORT ) )) { ?>
   <span class="tabbak" id="tab_remotes"><a href="#tabremotes" onclick="return showTab('remotes')"><?php etranslate("Remote Calendars")?></a></span>
  <?php } ?>
 </div>
@@ -107,7 +108,8 @@ print_header($INC,'', $BodyX );
  if ($NONUSER_ENABLED == 'Y' && $is_admin) {
   include_once 'nonusers.php';
  }
-  if ($REMOTES_ENABLED == 'Y') {
+  if ($REMOTES_ENABLED == 'Y' && ( ! access_is_enabled () ||
+    access_can_access_function ( ACCESS_IMPORT ) ) ) {
   include_once 'remotes.php';
  }
 ?>
