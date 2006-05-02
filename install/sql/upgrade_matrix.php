@@ -16,7 +16,8 @@ array ( "SELECT * FROM webcal_asst", "v0.9.40", "upgrade_v0.9.41"),
 array ( "SELECT * FROM webcal_nonuser_cals", "v0.9.41", "upgrade_v0.9.42"),
 array ( "SELECT * FROM webcal_report", "v0.9.42", "upgrade_v0.9.43"),
 array ( "SELECT * FROM webcal_import", "v0.9.43 - v1.0RC2", "upgrade_v1.0RC3"),
-array ( "SELECT * FROM webcal_reminders", "v1.0RC3 - v1.0.3", "upgrade_v1.1.0")
+array ( "SELECT cal_is_global FROM webcal_view", "v1.0RC3 - v1.0.3", "upgrade_v1.1.0"),
+array ( "SELECT * FROM webcal_access_function", "v1.1.0", "upgrade_v1.1.1")
 );
 
 //Program Version for this release

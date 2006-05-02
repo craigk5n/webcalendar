@@ -1092,17 +1092,8 @@ function db_type_handler () {
   var form = document.dbform;
   // find id of db_type object
   var listid = 0;
-	var sqliteibase = false;
-  for ( i = 0; i < form.form_db_type.length; i++ ) {
-    if ( form.form_db_type.options[i].value == "sqlite" ) {
-			sqliteibase = true;
-		}
-    if ( form.form_db_type.options[i].value == "ibase" ) {
-
-			sqliteibase = true ;
-		}
-  }
-   if ( sqliteibase ) {
+  var selectvalue = form.form_db_type.value;
+  if ( selectvalue == "sqlite" || selectvalue == "ibase" ) {
       form.form_db_database.size = 65;
     document.getElementById("db_name").innerHTML = 
     "<?php etranslate ( "Database Name" ) ?>" + ":" +  
@@ -1563,7 +1554,8 @@ if ( ! $exists || ! $canWrite ) { ?>
 </table>
 
 <?php } else if ( $_SESSION['step'] == 3 ) { ?>
-<?php  
+<?php 
+  print_r ( $_SESSION); 
   $_SESSION['db_updated'] = false;
   if ( $_SESSION['old_program_version'] == $PROGRAM_VERSION  && 
    empty ( $_SESSION['blank_database'] ) ){
