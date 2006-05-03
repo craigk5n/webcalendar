@@ -145,7 +145,7 @@ function background_css ( $base, $height = '', $percent = '' ) {
 
   if ( function_exists ( "imagepng" ) ) {
     $type = ".png";
-  } else if ( function_exists ( "imagepng" ) ){
+  } else if ( function_exists ( "imagegif" ) ){
     $type = ".gif";
   }
   if ( $type != '' ) {
