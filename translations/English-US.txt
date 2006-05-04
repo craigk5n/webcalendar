@@ -610,6 +610,8 @@ Source: Source
 Color: Color
 Duplicates: Duplicates
 Show layer events that are the same as your own: Show layer events that are the same as your own
+Add to Others: Add to Others
+Add to My Calendar: Add to My Calendar
 Delete layer: Delete layer
 Are you sure you want to delete this layer?: Are you sure you want to delete this layer?
 
@@ -1192,7 +1194,6 @@ Edit entry: Edit entry
 from calendar of: from calendar of
 Copy entry: Copy entry
 This will delete the entry from your calendar.: This will delete the entry from your calendar.
-Add to My Calendar: Add to My Calendar
 Do you want to add this entry to your calendar?: Do you want to add this entry to your calendar?
 This will add the entry to your calendar.: This will add the entry to your calendar.
 Email all participants: Email all participants

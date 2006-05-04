@@ -34,3 +34,15 @@ function selectColor ( color ) {
   var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
 }
 
+function show_others () {
+ var ismine = document.prefform.is_mine.checked;
+ var dups = document.prefform.dups;
+ if ( ismine ) {
+   makeInvisible ( "others" );
+ } else {
+   makeVisible ( "others" );
+   dups.checked = false;
+ }
+
+}
+
