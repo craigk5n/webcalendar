@@ -18,7 +18,7 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
 
 load_user_layers ( $layer_user, 1 );
 
-$INC = array('js/edit_layer.php');
+$INC = array('js/edit_layer.php', 'js/visible.php');
 print_header($INC);
 ?>
 
@@ -41,7 +41,7 @@ else
 <table style="border-width:0px;">
 <?php
 if ( $single_user == "N" ) {
-  $userlist = get_my_users ();
+  $userlist =  $otherlist = get_my_users ();
   if ($NONUSER_ENABLED == "Y" ) {
     $nonusers = get_nonuser_cals ();
     $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
@@ -49,7 +49,7 @@ if ( $single_user == "N" ) {
   if ($REMOTES_ENABLED == "Y" ) {
     $remotes = get_nonuser_cals ( $login, true );
     $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($remotes, $userlist) : array_merge($userlist, $remotes);
-  }	
+  }  
   $num_users = 0;
   $size = 0;
   $users = "";
@@ -64,10 +64,23 @@ if ( $single_user == "N" ) {
       $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>\n";
     }
   }
+  $osize = 0;
+  $others = "";
+  for ( $i = 0; $i < count ( $otherlist ); $i++ ) {
+    if ( $otherlist[$i]['cal_login'] != $layer_user ) {
+      $osize++;
+      $others .= "<option value=\"" . $otherlist[$i]['cal_login'] . "\">" .
+        $otherlist[$i]['cal_fullname'] . "</option>\n";
+    }
+  }
   if ( $size > 50 )
     $size = 15;
   else if ( $size > 5 )
     $size = 5;
+  if ( $osize > 50 )
+    $osize = 15;
+  else if ( $osize > 5 )
+    $osize = 5;
   if ( $size >= 1 ) {
     print "<tr><td style=\"vertical-align:top;\">\n<label for=\"layeruser\">" .
       translate("Source") . ":</label></td><td>\n";
@@ -89,6 +102,26 @@ if ( $single_user == "N" ) {
    echo " checked=\"checked\"";
  ?> />&nbsp;<?php etranslate("Show layer events that are the same as your own")?></label>
 </td></tr>
+<?php
+// If admin and adding a new layer, add ability to select other users
+if ( $is_admin && empty ( $layers[$id]['cal_layeruser'] ) )  {
+$addStr = translate ( 'Add to Others' );
+$addmyStr = translate ( 'Add to My Calendar' );
+echo <<<EOT
+  <tr><td style="font-weight:bold;"> 
+  {$addmyStr}:</td><td>
+  <input type="checkbox" name="is_mine"  checked="checked" onclick="show_others();" />
+  </td></tr> 
+  <tr id="others" style="visibility:hidden;"><td style="vertical-align:top;">
+   <label for="cal_login">{$addStr}:</label></td><td>
+   <select name="cal_login[]" id="cal_login" size="{$osize}" multiple="multiple" >{$others}
+   </select>
+  </td></tr>
+EOT;
+}
+
+?>
+
 <tr><td colspan="2">
  <input type="submit" value="<?php etranslate("Save")?>" />
 </td></tr>
