@@ -263,49 +263,56 @@ function export_recurrence_ical( $id, $simple=false ) {
       /* recurrence frequency */
       switch ($type) {
        case 'daily' :
-         $rrule .= "FREQ=DAILY";
+         $rrule .= (! $simple ? "FREQ=DAILY" : translate ( 'Daily' ) );
          break;
        case 'weekly' :
-         $rrule .= "FREQ=WEEKLY";
+         $rrule .= (! $simple ? "FREQ=WEEKLY" : translate ( 'Weekly' ) );
          break;
-        case 'monthlyBySetPos':
+       case 'monthlyBySetPos':
        case 'monthlyByDay':
        case 'monthlyByDate' :
-         $rrule .= "FREQ=MONTHLY";
+         $rrule .= (! $simple ? "FREQ=MONTHLY" : translate ( 'Monthly' ) );
          break;
        case 'yearly' :
-         $rrule .= "FREQ=YEARLY";
+         $rrule .= (! $simple ? "FREQ=YEARLY" : translate ( 'Yearly' ) );
          break;
        }
 
     if ( ! empty ( $interval ) && $interval > 1 )
-        $rrule .= ";INTERVAL=$interval";
+        $rrule .= (! $simple ? ";INTERVAL" : "," . translate ( 'Interval' ) ) .
+          "=$interval";
 
       if ( ! empty ( $bymonth ) ) 
-         $rrule .= ";BYMONTH=". $bymonth;
+         $rrule .= (! $simple ? ";BYMONTH" : "," . translate ( 'Months' ) ) .
+          "=$bymonth";
  
       if ( ! empty ( $bymonthday ) ) 
-         $rrule .= ";BYMONTHDAY=". $bymonthday;
+         $rrule .= (! $simple ? ";BYMONTHDAY" : "," . translate ( 'Month Days' ) ) .
+          "=$bymonthday";
 
       if ( ! empty ( $byday ) ) 
-         $rrule .= ";BYDAY=". $byday;
+         $rrule .= (! $simple ? ";BYDAY" : "," . translate ( 'Days' ) ) .
+          "=$byday";
 
       if ( ! empty ( $byweekno ) ) 
-         $rrule .= ";BYWEEKNO=". $byweekno;
+         $rrule .= (! $simple ? ";BYWEEKNO" : "," . translate ( 'Weeks' ) ) .
+          "=$byweekno";
 
       if ( ! empty ( $bysetpos ) ) 
-         $rrule .= ";BYSETPOS=". $bysetpos;
+         $rrule .= (! $simple ? ";BYSETPOS" : "," . translate ( 'Position' ) ) .
+          "=$bysetpos";
    
    if ( ! empty ( $wkst ) && $wkst != 'MO' ) 
-         $rrule .= ";WKST=". $wkst;
+         $rrule .= (! $simple ? ";WKST" : "," . translate ( 'Week Start' ) ) .
+          "=$wkst";
 
     if (!empty($end)) {
     $endtime = ( ! empty ( $endtime)? $endtime:0);
-     $rrule .= ";UNTIL=";
+     $rrule .= (! $simple ? ";UNTIL" : "," .translate ( 'Until' ) ) . "=";
      $utc = export_get_utc_date($end, $endtime );
      $rrule .= $utc;
     } else if (! empty ($cal_count ) && $cal_count != 999 ) {
-    $rrule .= ";COUNT=" . $cal_count;
+    $rrule .= (! $simple ? ";COUNT" : translate ( 'Count' ) )  . "=$cal_count";
   }
   
     //wrap line if necessary
@@ -313,12 +320,12 @@ function export_recurrence_ical( $id, $simple=false ) {
    while (list($key,$value) = each($rrule)) 
      $recurrance .= "$value\r\n";
 
-   //If type = manual, undo what we just did and onlt process RDATE && EXDATE
+   //If type = manual, undo what we just did and only process RDATE && EXDATE
    if ( $type == "manual" ) $recurrance = '';
    
    if (count($rdate) > 0) {
-     if ( ! $simple ) $string = "RDATE;VALUE=DATE:" . implode (",", $rdate);
-     if ( $simple ) $string = translate ("INCLUSION DATES") . ":" . implode (",", $rdate);
+     $string = ( ! $simple ? "RDATE;VALUE=DATE:" :
+       "," .translate ("Inclusion Dates") . "="  ) . implode (",", $rdate);
      $string = export_fold_lines($string);
      while (list($key,$value) = each($string)) 
        $recurrance .= "$value\r\n";
@@ -326,8 +333,8 @@ function export_recurrence_ical( $id, $simple=false ) {
      if ( $simple ) $recurrance .= "<br />";
    
      if (count($exdate) > 0) {
-       if ( ! $simple ) $string = "EXDATE;VALUE=DATE:". implode (",", $exdate);
-       if ( $simple ) $string = translate ("EXCLUSION DATES") . ":". implode (",", $exdate);
+       $string = ( ! $simple ? "EXDATE;VALUE=DATE:" :
+         "," .translate ("Exclusion Dates") .  "=" ) . implode (",", $exdate);
        $string = export_fold_lines($string);
        while (list($key,$value) = each($string)) 
          $recurrance .= "$value\r\n";

@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Implemented RFE 1337524: not proper display of "Repeating events" in 'view_entry.php'
  - Implemented dropdown time entry fields based on PATCH 1276894
  - Added option to set remote access permissions to publish.php and rss.php
  - Impemented RFE 1470722: option to disable 2nd entry of cross-day event

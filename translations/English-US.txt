@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 05-03-2006
+# Translation last updated on 05-04-2006
 
 
 ###############################################
@@ -1198,7 +1198,6 @@ This will add the entry to your calendar.: This will add the entry to your calen
 Email all participants: Email all participants
 Show activity log: Show activity log
 Hide activity log: Hide activity log
-Export this entry to: Export this entry to
 
 
 ###############################################
@@ -1382,8 +1381,16 @@ no such user: no such user
 ###############################################
 # Page: includes/xcal.php
 #
-INCLUSION DATES: INCLUSION DATES
-EXCLUSION DATES: EXCLUSION DATES
+Interval: Interval
+Months: Months
+Month Days: Month Days
+Days: Days
+Weeks: Weeks
+Position: Position
+Until: Until
+Count: Count
+Inclusion Dates: Inclusion Dates
+Exclusion Dates: Exclusion Dates
 Unnamed Event: Unnamed Event
 Event Imported: Event Imported
 
