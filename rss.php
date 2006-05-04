@@ -38,8 +38,11 @@
  * Security:
  * $RSS_ENABLED must be set true
  * $USER_RSS_ENABLED must be set true unless this is for the public user
- * Unless the setting for $allow_all_access is modified below, we do
- *   not include Confidential events in the RSS feed.
+ * $USER_REMOTE_ACCESS can be set as follows in pref.php
+ *      0 = Public entries only
+ *      1 = Public & Confidential entries only
+ *      2 = All entries are included in the feed *USE WITH CARE
+ *   
  * We do not include unapproved events in the RSS feed.
  */
 
@@ -79,10 +82,6 @@ $maxEvents = 10;
 // '__public__' is the login name for the public user
 $username = '__public__';
 
-// Allow non-public events to be fed to RSS
-// This will only be used if $username is not __public__
-$allow_all_access = "N";
-
 // Allow the URL to override the user setting such as
 // "rss.php?user=craig"
 $allow_user_override = true;
@@ -118,6 +117,18 @@ if ( $allow_user_override ) {
 }
 
 load_user_preferences ();
+
+// Determine what remote access has been set up by user
+// This will only be used if $username is not __public__
+if ( ! empty ( $USER_REMOTE_ACCESS ) && $username != '__public__' ) {
+  if ( $USER_REMOTE_ACCESS == 1 ) { //public or confidential
+    $allow_access = array('', 'P', 'C');
+  } else if ( $USER_REMOTE_ACCESS == 2 ){ //all entries included
+    $allow_access = array('', 'P', 'C', 'R');
+  } 
+} else { //public entries only
+  $allow_access = array('', 'P');
+}
 
 user_load_variables ( $login, "rss_" );
 $creator = ( $username == '__public__' ) ? 'Public' : $rss_fullname;
@@ -239,7 +250,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
   if ( count ( $entries ) > 0 || count ( $rentries ) > 0 ) {
     for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      if ( $entries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) {
+      if ( array_search ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
         echo "<rdf:li rdf:resource=\"" . $SERVER_URL . "view_entry.php?id=" . 
           $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
@@ -265,7 +276,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
        //echo $rentries[$j]->getID() . "<p>";
       if ( ! in_array($rentries[$j]->getID(),$eventIds ) && 
           ( ! $show_daily_events_only_once || ! in_array($rentries[$j]->getID(),$reventIds )) && 
-        ( $rentries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) ) {
+        ( array_search ( $rentries[$j]->getAccess(), $allow_access ) ) ) {
         echo "<rdf:li rdf:resource=\"" . $SERVER_URL . "view_entry.php?id=" . 
           $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
             $d . "\" />\n";
@@ -301,8 +312,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
   if ( count ( $entries ) > 0 || count ( $rentries ) > 0 ) {
     for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      if ( $username == '__public__' || $entries[$j]->getAccess() == "P" ||
-        $allow_all_access == "Y" ) {
+      if ( array_search ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
         $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
         $gmtoffset = substr_replace ( date ( "O", $unixtime ), ":" . 
@@ -345,7 +355,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
       // of daily events from displaying if that option has been selected
       if ( ! in_array($rentries[$j]->getID(),$eventIds ) && 
          ( ! $show_daily_events_only_once || ! in_array($rentries[$j]->getID(),$reventIds )) && 
-         ( $rentries[$j]->getAccess() == "P" || $allow_all_access == "Y" ) ) { 
+         ( array_search ( $rentries[$j]->getAccess(), $allow_access ) ) ) { 
   
           //show repeating events only once
           if ( $rentries[$j]->getrepeatType()=="daily" ) 
