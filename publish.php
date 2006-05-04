@@ -102,5 +102,6 @@ user_load_variables ( $user, "publish_" );
 header ( "Content-Type: text/calendar" );
 header ( 'Content-Disposition: attachment; filename="' . $user .  '.ics"' );
 $use_all_dates = true;
+$type = 'publish';
 export_ical();
 ?>

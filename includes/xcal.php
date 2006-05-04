@@ -564,7 +564,7 @@ function export_alarm_ical ( $id, $date, $description, $task_complete=true ) {
 function export_get_event_entry($id='all', $attachment=false) {
   global $use_all_dates, $include_layers, $fromyear,$frommonth,$fromday,
     $endyear,$endmonth,$endday,$modyear,$modmonth,$modday,$login,$user;
-  global $DISPLAY_UNAPPROVED, $layers;
+  global $DISPLAY_UNAPPROVED, $layers, $type, $USER_REMOTE_ACCESS;
   
   $sql_params = array();
   // We export repeating events only with the pilot-datebook CSV format
@@ -638,7 +638,15 @@ function export_get_event_entry($id='all', $attachment=false) {
   else {
     $sql .= " AND webcal_entry_user.cal_status IN ('W','A')";
   }
-
+  
+  if ( ! empty ( $type ) && $type = 'publish' ) {
+    if ( $USER_REMOTE_ACCESS == 0 ) {
+      $sql .= " AND webcal_entry.cal_access = 'P'";
+    } else if ( $USER_REMOTE_ACCESS == 1 ){
+      $sql .= " AND webcal_entry.cal_access IN ('P', 'C' )";
+    }
+  }
+  
   $sql .= " ORDER BY webcal_entry.cal_date";
 
   $res = dbi_execute ( $sql , $sql_params );
@@ -831,7 +839,7 @@ function export_vcal ($id) {
 
 function export_ical ( $id='all', $attachment=false ) {
   global $publish_fullname, $login, $PROGRAM_VERSION,
-   $PROGRAM_NAME, $cal_type,  $timestamp_RRULE;
+   $PROGRAM_NAME, $cal_type, $timestamp_RRULE;
  $exportId = -1;
  $ret='';
  
