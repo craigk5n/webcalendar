@@ -15,6 +15,80 @@
  */
 include_once 'includes/init.php';
 
+/**
+ * Generate HTML for a time selection for use in a form.
+ *
+ * @param string $prefix Prefix to use in front of form element names
+ * @param string $time   Currently selected time in HHMMSS
+ * @param bool $trigger   Add onchange event trigger that
+ *  calls javascript function $prefix_timechanged()
+ *
+ * @return string HTML for the selection box
+ */
+function time_selection ( $prefix, $time='', $trigger=false ) {
+  global $TIME_FORMAT, $ENTRY_SLOTS, $WORK_DAY_START_HOUR;
+  $ret = "";
+  $hournameid = "name=\"" . $prefix . "hour\" id=\"" . $prefix . "hour\" ";
+  $minnameid = "name=\"" . $prefix . "minute\" id=\"" . $prefix . "minute\" ";
+  $trigger_str = ( $trigger ? "onchange=\"" . $prefix . "timechanged() " : "");
+  if ( empty ( $time ) ) {
+    $hour = $WORK_DAY_START_HOUR;
+    $minute = 0;
+  } else {
+    $hour = floor($time / 10000);
+    $minute = ( $time / 100 ) % 100;  
+  }
+  if ( $TIME_FORMAT == "12" ) {
+    $maxhour = 12;
+    if ( $hour < 12 ) {
+      $amsel = " checked=\"checked\""; $pmsel = "";
+    } else {
+      $amsel = ""; $pmsel = " checked=\"checked\"";
+    }
+    $hour %= 12;
+    if ( $hour == 0 ) $hour = 12;
+  } else {
+    $maxhour = 24;
+    $hour = sprintf ( "%02d", $hour );  
+  }
+  $minute = sprintf ( "%02d", $minute ); 
+  $ret .= "<select " . $hournameid . $trigger_str . " >\n";
+  for ( $i = 0; $i < $maxhour; $i++ ) {
+    $ihour = ( $TIME_FORMAT == '24' ? sprintf ( "%02d", $i ) : $i );
+    if ( $i == 0 && $TIME_FORMAT == '12' ) $ihour = 12;
+    $ret .= "<option value=\"$i\"" .
+      ( $ihour == $hour ? " selected=\"selected\"" : "" ) . ">$ihour</option>\n";
+  }
+  $ret .= "</select>:\n<select " . $minnameid . $trigger_str . " >\n";
+  //we use $TIME_SLOTS to populate the minutes pulldown
+  $found = false;
+  for ( $i = 0; $i <= 59; ) {
+    $imin = sprintf ( "%02d", $i );
+    $selected = '';
+    if ( $imin == $minute ) {
+      $found = true;
+      $selected = " selected=\"selected\"";  
+    }
+    $ret .= "<option value=\"$i\"$selected >$imin</option>\n";
+    $i += (1440 / $ENTRY_SLOTS);
+  }
+  //we'll add an option with the exact time if not found above
+  if ( $found == false ) {
+    $ret .= "<option value=\"$minute\" selected=\"selected\" >$minute</option>\n";
+  }
+  $ret .= "</select>\n";
+
+  if ( $TIME_FORMAT == "12" ) {
+    $ret .= "<label><input type=\"radio\" name=\"" . $prefix . 
+      "ampm\" value=\"0\" $amsel />&nbsp;" . translate("am") . "</label>\n";
+    $ret .= "<label><input type=\"radio\" name=\"" . $prefix . 
+      "ampm\" value=\"12\" $pmsel />&nbsp;" . translate("pm") . "</label>\n";
+  } else {
+    $ret .= "<input type=\"hidden\" name=\"" . $prefix . "ampm\" value=\"0\" />\n";
+  }
+  return $ret;
+}
+
 load_user_categories ();
    
 // Default for using tabs is enabled
@@ -618,41 +692,18 @@ if ( $eType != 'task' ) {?>
    <?php etranslate ("Timezone Offset")?>:</td><td colspan="2">
    <?php echo $TZ_notice ?></td></tr>
  <?php } ?>
-  <tr id="timeentrystart"><td class="tooltip" title="<?php etooltip("time-help")?>">
+  <tr id="timeentrystart" style="visibility:hidden;">
+    <td class="tooltip" title="<?php etooltip("time-help")?>">
    <?php echo translate("Time") . ":"; ?></td><td colspan="2">
 <?php
-$h12 = $hour;
-$amsel = " checked=\"checked\""; $pmsel = "";
-if ( $TIME_FORMAT == "12" ) {
-  if ( $h12 < 12 ) {
-    $amsel = " checked=\"checked\""; $pmsel = "";
-  } else {
-    $amsel = ""; $pmsel = " checked=\"checked\"";
-  }
-  $h12 %= 12;
-  if ( $h12 == 0 ) $h12 = 12;
-}
-if ( $time < 0 )
-  $h12 = "";
-?>
-   <input type="text" name="hour" size="2" value="<?php 
-    if ( $time >= 0 && $allday != 'Y' ) echo $h12;
-   ?>" maxlength="2" />:<input type="text" name="minute" size="2" value="<?php 
-    if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $minute );
-   ?>" maxlength="2" />
-<?php
-if ( $TIME_FORMAT == "12" ) {
-  echo "<label><input type=\"radio\" name=\"ampm\" value=\"am\" $amsel />&nbsp;" .
-    translate("am") . "</label>\n";
-  echo "<label><input type=\"radio\" name=\"ampm\" value=\"pm\" $pmsel />&nbsp;" .
-    translate("pm") . "</label>\n";
-}
+  echo time_selection ( 'entry_', $cal_time);
+
  $dur_h = (int)( $duration / 60 );
  $dur_m = $duration - ( $dur_h * 60 );
 
 if ($TIMED_EVT_LEN != 'E') { ?>
    </td></tr>
-  <tr id="timeentryduration"><td>
+  <tr id="timeentryduration" style="visibility:hidden;"><td>
   <span class="tooltip" title="<?php 
    etooltip("duration-help")
   ?>"><?php 
@@ -670,56 +721,11 @@ if ($TIMED_EVT_LEN != 'E') { ?>
   ?></label>)
  </td></tr>
 <?php } else {
-if ( $id ) {
-  $t_h12 = $h12;
-  if ( $TIME_FORMAT == "12" ) {
-    // Convert to a twenty-four hour time scale
-    if ( !empty ( $amsel ) && $t_h12 == 12 )
-      $t_h12 = 0;
-    if ( !empty ( $pmsel ) && $t_h12 < 12 )
-      $t_h12 += 12;
-  } //end 12-hour time format
-
-  // Add duration
-  $endhour = $t_h12 + $dur_h;
-  $endminute = $minute + $dur_m;
-  $endhour = $endhour + ( $endminute / 60 );
-  $endminute %= 60;
-
-  if ( $TIME_FORMAT == "12" ) {
-    // Convert back to a standard time format
-    if ( $endhour < 12 ) {
-      $endamsel = " checked=\"checked\""; $endpmsel = "";
-    } else {
-      $endamsel = ""; $endpmsel = " checked=\"checked\"";
-    } //end if ( $endhour < 12 )
-    $endhour %= 12;
-    if ( $endhour == 0 ) $endhour = 12;
-  } //end if ( $TIME_FORMAT == "12" )
-} else {
-  $endhour = $h12;
-  $endminute = $minute;
-  $endamsel = $amsel;
-  $endpmsel = $pmsel;
-} //end if ( $id )
-if ( $allday != "Y" && $hour == -1 ) {
-  $endhour = "";
-  $endminute = "";
-} //end if ( $allday != "Y" && $hour == -1 )
+  $end_time = ( $id ? add_duration ($cal_time, $duration ) : $cal_time );
 ?>
  <span id="timeentryend" class="tooltip" title="<?php etooltip("end-time-help")?>">&nbsp;-&nbsp;
-  <input type="text" name="endhour" size="2" value="<?php 
-   if ( $allday != "Y" ) echo $endhour;
-  ?>" maxlength="2" />:<input type="text" name="endminute" size="2" value="<?php 
-   if ( $time >= 0 && $allday != "Y" ) printf ( "%02d", $endminute );
-  ?>" maxlength="2" />
-  <?php
-   if ( $TIME_FORMAT == "12" ) {
-    echo "<label><input type=\"radio\" name=\"endampm\" value=\"am\" $endamsel />&nbsp;" .
-     translate("am") . "</label>\n";
-    echo "<label><input type=\"radio\" name=\"endampm\" value=\"pm\" $endpmsel />&nbsp;" .
-     translate("pm") . "</label>\n";
-   }
+<?php 
+  echo time_selection ( 'end_', $end_time);
   ?>
  </span>
 </td></tr>
@@ -728,30 +734,7 @@ if ( $allday != "Y" && $hour == -1 ) {
   <tr><td class="tooltip" title="<?php etooltip("time-help")?>">
    <?php echo translate("Start Time") . ":"; ?></td><td colspan="2">
 <?php
-$h12 = $hour;
-$amsel = " checked=\"checked\""; $pmsel = "";
-if ( $TIME_FORMAT == "12" ) {
-  if ( $h12 < 12 ) {
-    $amsel = " checked=\"checked\""; $pmsel = "";
-  } else {
-    $amsel = ""; $pmsel = " checked=\"checked\"";
-  }
-  $h12 %= 12;
-  if ( $h12 == 0 ) $h12 = 12;
-}
-if ( $cal_time < 0 ) $h12 = "";
-?>
-   <input type="text" name="hour" size="2" value="<?php echo $h12;
-   ?>" maxlength="2" />:<input type="text" name="minute" size="2" value="<?php 
-    if ( $cal_time >= 0 ) printf ( "%02d", $minute );
-   ?>" maxlength="2" />
-<?php
-if ( $TIME_FORMAT == "12" ) {
-  echo "<label><input type=\"radio\" name=\"ampm\" value=\"am\" $amsel />&nbsp;" .
-    translate("am") . "</label>\n";
-  echo "<label><input type=\"radio\" name=\"ampm\" value=\"pm\" $pmsel />&nbsp;" .
-    translate("pm") . "</label>\n";
-}
+ echo time_selection ( 'start_', $entry_time);
 ?>
 </td></tr>
 <tr><td colspan="3">&nbsp;</td></tr>
@@ -763,33 +746,9 @@ if ( $TIME_FORMAT == "12" ) {
   </td></tr>
   <tr><td class="tooltip" title="<?php etooltip("time-help")?>">
    <?php echo translate("Due Time") . ":"; ?></td><td colspan="2">
-<?php
-$dh12 = $due_hour;
-$damsel = " checked=\"checked\""; $dpmsel = "";
-if ( $TIME_FORMAT == "12" ) {
-  if ( $dh12 < 12 ) {
-    $damsel = " checked=\"checked\""; $dpmsel = "";
-  } else {
-    $damsel = ""; $dpmsel = " checked=\"checked\"";
-  }
-  $dh12 %= 12;
-  if ( $dh12 == 0 ) $dh12 = 12;
-}
-if ( $due_time < 0 ) $dh12 = "";
-?>
-   <input type="text" name="due_hour" size="2" value="<?php 
-    if ( $due_time >= 0 ) echo $dh12;
-   ?>" maxlength="2" />:<input type="text" name="due_minute" size="2" value="<?php 
-    if ( $due_time >= 0 ) printf ( "%02d", $due_minute );
-   ?>" maxlength="2" />
-<?php
-if ( $TIME_FORMAT == "12" ) {
-  echo "<label><input type=\"radio\" name=\"dampm\" value=\"am\" $damsel />&nbsp;" .
-    translate("am") . "</label>\n";
-  echo "<label><input type=\"radio\" name=\"dampm\" value=\"pm\" $dpmsel />&nbsp;" .
-    translate("pm") . "</label>\n";
-}
-?>
+  <?php
+   echo time_selection ( 'due_', $due_time);
+  ?>
 </td></tr>
 
 <?php } ?>
@@ -1017,29 +976,8 @@ if ( $single_user == "N" && $show_participants ) {
   echo date_selection ( "rpt_", $rpt_end_date ? $rpt_end_date : $cal_date )
  ?></span><br />
  <?php
-$rpt_endh12 = floor($rpt_end_time / 10000);
-$rpt_endminute = ( $rpt_end_time / 100 ) % 100;
-$rpt_endamsel = " checked=\"checked\""; $rpt_endpmsel = "";
-if ( $TIME_FORMAT == "12" ) {
-  if ( $rpt_endh12 < 12 ) {
-    $rpt_endamsel = " checked=\"checked\""; $rpt_endpmsel = "";
-  } else {
-    $rpt_endamsel = ""; $rpt_endpmsel = " checked=\"checked\"";
-  }
-  $rpt_endh12 %= 12;
-  if ( $rpt_endh12 == 0 ) $rpt_endh12 = 12;
-}
-?>
-   <input type="text" name="rpt_endhour" size="2" value="<?php echo $rpt_endh12;?>" maxlength="2" />:<input type="text" name="rpt_endminute" size="2" value="<?php  printf ( "%02d", $rpt_endminute );
-   ?>" maxlength="2" />
-<?php
-if ( $TIME_FORMAT == "12" ) {
-  echo "<label><input type=\"radio\" name=\"rpt_endampm\" id=\"rpt_endam\" value=\"am\" $rpt_endamsel />&nbsp;" .
-    translate("am") . "</label>\n";
-  echo "<label><input type=\"radio\" name=\"rpt_endampm\" id=\"rpt_endpm\" value=\"pm\" $rpt_endpmsel />&nbsp;" .
-    translate("pm") . "</label>\n";
-}
-?>
+  echo time_selection ( 'rpt_', $rpt_end_time);
+ ?>
 </td></tr>
 <tr id="rptenddate3" style="visibility:hidden;"><td class="boxleft boxbottom">
   <input type="radio" name="rpt_end_use" id="rpt_untilc" value="c" <?php 
@@ -1265,37 +1203,14 @@ if ( $TIME_FORMAT == "12" ) {
  ?>  onclick="toggle_rem_when()" /><?php etranslate ("Use Date/Time"); ?>&nbsp;<label>
     </td><td class="boxtop boxright" nowrap="nowrap" colspan="2"> 
     <?php 
-      if ( ! empty ( $reminder['date'] ) )
-        echo date_selection ( 'reminder_', $reminder['date'] );
-      else
-        echo date_selection ( 'reminder_', $cal_date );
+      echo date_selection ( 'reminder_', ( ! empty ( $reminder['date'] ) ?
+          $reminder['date'] : $cal_date )  );
       ?>
      </td></tr>
      <tr><td class="boxleft">&nbsp;</td><td class="boxright"  colspan="2" nowrap="nowrap">
     <?php
-    if ( empty ( $reminder['time'] ) ) $reminder['time'] = 0;
-    $remh12 = floor($reminder['time'] / 10000);
-    $remminute = ( $reminder['time'] / 100 ) % 100;
-    if ( $TIME_FORMAT == "12" ) {
-      if ( $remh12 < 12 ) {
-        $remamsel = " checked=\"checked\""; $rempmsel = "";
-      } else {
-        $remamsel = ""; $rempmsel = " checked=\"checked\"";
-      }
-      $remh12 %= 12;
-      if ( $remh12 == 0 ) $remh12 = 12;
-    }
-    ?>
-    <input type="text" name="remhour" id="remhour" size="2" value="<?php echo $remh12;
-     ?>" maxlength="2" />:<input type="text" name="remminute" id="remminute" size="2" value="<?php 
-     printf ( "%02d", $remminute );?>" maxlength="2" />
-    <?php
-    if ( $TIME_FORMAT == "12" ) {
-      echo "<label><input type=\"radio\" name=\"remampm\" id=\"remam\" " .
-        "value=\"am\" $remamsel />&nbsp;" . translate("am") . "</label>\n";
-      echo "<label><input type=\"radio\" name=\"remampm\" id=\"rempm\" " .
-        "value=\"pm\" $rempmsel />&nbsp;" . translate("pm") . "</label></td></tr>\n";
-    }      
+      echo time_selection ( 'reminder_', ( ! empty ( $reminder['time'] ) ? 
+        $reminder['time'] : $cal_time ) );
     ?>  
      <tr><td class="boxleft boxright"  height="20px" colspan="3">&nbsp;</td></tr>  
      <tr>
