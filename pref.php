@@ -397,7 +397,25 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <label><input type="radio" name="pref_TIME_FORMAT" value="12" <?php if ( $prefarray['TIME_FORMAT'] == "12" ) echo $checked;?> /> <?php etranslate("12 hour")?></label> 
  <label><input type="radio" name="pref_TIME_FORMAT" value="24" <?php if ( $prefarray['TIME_FORMAT'] != "12" ) echo $checked;?> /> <?php etranslate("24 hour")?></label>
 </td></tr>
-
+<tr><td class="tooltip" title="<?php etooltip("entry-interval-help")?>">
+ <?php etranslate("Entry interval")?>:</td><td>
+ <select name="pref_ENTRY_SLOTS">
+  <option value="24" <?php if ( $prefarray['ENTRY_SLOTS'] == "24" ) 
+    echo " selected=\"selected\""?>>1 <?php etranslate("hour")?></option>
+  <option value="48" <?php if ( $prefarray['ENTRY_SLOTS'] == "48" ) 
+    echo " selected=\"selected\""?>>30 <?php etranslate("minutes")?></option>
+  <option value="72" <?php if ( $prefarray['ENTRY_SLOTS'] == "72" ) 
+    echo " selected=\"selected\""?>>20 <?php etranslate("minutes")?></option>
+  <option value="96" <?php if ( $prefarray['ENTRY_SLOTS'] == "96" ) 
+    echo " selected=\"selected\""?>>15 <?php etranslate("minutes")?></option>
+  <option value="144" <?php if ( $prefarray['ENTRY_SLOTS'] == "144" ) 
+    echo " selected=\"selected\""?>>10 <?php etranslate("minutes")?></option>
+  <option value="144" <?php if ( $prefarray['ENTRY_SLOTS'] == "288" ) 
+    echo " selected=\"selected\""?>>5 <?php etranslate("minutes")?></option>
+  <option value="1440" <?php if ( $prefarray['ENTRY_SLOTS'] == "1440" ) 
+    echo " selected=\"selected\""?>>1 <?php etranslate("minute")?></option>
+ </select>
+</td></tr>
 <tr><td class="tooltip" title="<?php etooltip("time-interval-help")?>">
  <?php etranslate("Time interval")?>:</td><td>
  <select name="pref_TIME_SLOTS">
@@ -610,6 +628,24 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <?php } /* if ( ! $updating_public ) */ ?>
 <div id="tabscontent_subscribe">
 <table  cellspacing="1" cellpadding="2">
+<?php if ( $PUBLISH_ENABLED == 'Y' || $RSS_ENABLED == 'Y') { ?>
+<tr><td class="tooltipselect" title="<?php etooltip("allow-view-subscriptions-help")?>"><?php etranslate("Allow remote viewing of");
+$publish_access =  ( empty  ( $prefarray['USER_REMOTE_ACCESS'] ) ? 0 :
+   $prefarray['USER_REMOTE_ACCESS'] );
+?>:</td><td>
+  <select name="pref_USER_REMOTE_ACCESS">
+   <option value="0" <?php echo ( $publish_access == "0" ?
+     " selected=\"selected\"" : "" ) . " >" . translate("Public") . " " .  
+     translate("entries")?></option>
+   <option value="1" <?php echo ( $publish_access == "1" ? 
+     " selected=\"selected\"" : "" ) . " >" . translate("Public") . " & " . 
+      translate("Confidential") . " " . translate("entries")?></option>
+   <option value="2" <?php echo ( $publish_access == "2" ? 
+     " selected=\"selected\"" : "" ) . " >" . translate("All") . " " . 
+     translate("entries")?></option>  
+  </select>  
+  </td></tr>
+<?php } ?>  
 <?php if ( $PUBLISH_ENABLED == 'Y' ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip("allow-remote-subscriptions-help")?>"><?php etranslate("Allow remote subscriptions")?>:</td>
   <td><label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="Y" <?php if ( isset ( $prefarray['USER_PUBLISH_ENABLED'] ) && $prefarray['USER_PUBLISH_ENABLED'] == "Y" ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_USER_PUBLISH_ENABLED" value="N" <?php if ( empty ( $prefarray['USER_PUBLISH_ENABLED'] ) || $prefarray['USER_PUBLISH_ENABLED'] != "Y" ) echo $checked;?> /> <?php echo $No?></label></td></tr>
