@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 04-28-2006
+# Translation last updated on 05-03-2006
 
 
 ###############################################
@@ -180,10 +180,13 @@ time-format-help: Specifies which time format to use: <br /><em>12 hour:</em> Di
 Time format: Time format
 12 hour: 12 hour
 24 hour: 24 hour
-time-interval-help: Specifies how long the time blocks in the week view and day view will be.
-Time interval: Time interval
+entry-interval-help: Sets minute interval when editing entry times
+Entry interval: Entry interval
 hour: hour
 minutes: minutes
+minute: minute
+time-interval-help: Specifies how long the time blocks in the week view and day view will be.
+Time interval: Time interval
 auto-refresh-help: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
 Auto-refresh calendars: Auto-refresh calendars
 auto-refresh-time-help: If Auto-refresh is enabled, this specifies the time between each refresh.
@@ -478,6 +481,8 @@ Removed: Removed
 ###############################################
 # Page: edit_entry.php
 #
+am: am
+pm: pm
 You are not authorized to edit this task: You are not authorized to edit this task
 hours ahead of you: hours ahead of you
 hours behind you: hours behind you
@@ -519,8 +524,6 @@ Timed event: Timed event
 All day event: All day event
 Timezone Offset: Timezone Offset
 time-help: Specifies the time of the event.<br />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
-am: am
-pm: pm
 duration-help: Specifies the duration (in hours;minutes) of the event.  <br /><em>This field can be left blank.</em>
 end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
@@ -998,6 +1001,9 @@ HTML: HTML
 Plain Text: Plain Text
 display_byproxy-help: Display the real creator on view_entry page
 Display if created by Assistant: Display if created by Assistant
+allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries 
+Allow remote viewing of: Allow remote viewing of
+entries: entries
 
 
 ###############################################
@@ -1295,7 +1301,6 @@ All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
 day: day
-minute: minute
 Error approving event: Error approving event
 Error deleting event: Error deleting event
 Error rejecting event: Error rejecting event

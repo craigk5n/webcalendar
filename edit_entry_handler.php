@@ -27,27 +27,9 @@ $description = ( strlen ( $description ) == 0  ||
   $description == "<br />" ? $name : $description );
 
 // Ensure all time variables are not empty
-if ( empty ( $cal_hour ) ) $cal_hour = 0;
-if ( empty ( $cal_minute ) ) $cal_minute = 0;
-
-if ( empty ( $due_hour ) ) $due_hour = 0;
-if ( empty ( $due_minute ) ) $due_minute = 0;
-
 if ( empty ( $percent ) ) $percent = 0;
 
 if ( empty ( $timetype ) ) $timetype = 'T';
-if ( empty ( $ampm ) ) $ampm = 'pm';
-if ( empty ( $hour ) ) $hour = 0;
-if ( empty ( $minute ) ) $minute = 0;
-if  ( empty ( $endminute ) && !empty ( $endhour ) ||
-  ( ! empty ( $endminute ) && $endminute < 0 ) ) {
-  $endminute = 0;
-} else if ( empty ( $endminute ) && empty ( $endhour ) ) {
-  $endminute = $minute;
-  $endampm = $ampm;
-}
-if ( empty ( $endhour ) || $endhour < 0 ) $endhour = $hour;
-
 
 $duration_h = getValue ( "duration_h" );
 $duration_m = getValue ( "duration_m" );
@@ -56,82 +38,23 @@ if ( empty ( $duration_m ) || $duration_m < 0 ) $duration_m = 0;
 
 // Timed event.
 if ( $timetype == 'T' )  {
-  // Convert to 24 hour  so am/pm isn't confused.
-  // Note this obsoltes any code in the file below that deals with am/pm
-  // so the code can be deleted
-  if ( $TIME_FORMAT == '12' && $hour < 12 ) {
-    if ( $ampm == 'pm' )
-     $hour += 12;
-  } elseif ($TIME_FORMAT == '12' && $hour == '12' && $ampm == 'am' ) {
-    $hour = 0;
+  $entry_hour += $entry_ampm;
+  
+  if ( $eType == 'task'  ) {
+    $start_hour += $start_ampm;
+    $due_hour += $due_ampm; 
   }
-  if ( $hour > 0  &&  $TIME_FORMAT == '12' ) {
-    $ampmt = $ampm;
-    //This way, a user can pick am and still
-    //enter a 24 hour clock time.
-    if ($hour > 12 && $ampm == 'am') {
-      $ampmt = 'pm';
-    }
-    $hour %= 12;
-    if ( $ampmt == 'pm' ) {
-      $hour += 12;
-    }
-  }
-  if ( $eType == 'task' && $TIME_FORMAT == '12' && $due_hour < 12 ) {
-    if ( $dampm == 'pm' )
-     $due_hour += 12;
-  } elseif ($TIME_FORMAT == '12' && $due_hour == '12' && $dampm == 'am' ) {
-    $due_hour = 0;
-  }
-  if ( $due_hour > 0  &&  $TIME_FORMAT == '12' ) {
-    $dampmt = $dampm;
-        if ($due_hour > 12 && $dampm == 'am') {
-      $dampmt = 'pm';
-    }
-    $due_hour %= 12;
-    if ( $dampmt == 'pm' ) {
-      $due_hour += 12;
-    }
-  }
-
 
   // Use end times
   if ( $TIMED_EVT_LEN == 'E') {
-    if ( isset ( $endhour ) && $TIME_FORMAT == '12' ) {
-      // Convert end time to a twenty-four hour time scale.
-      if ( $endampm == 'pm' && $endhour < 12 ) {
-        $endhour += 12;
-      } elseif ( $endampm == 'am' && $endhour == 12 ) {
-        $endhour = 0;
-      }
-    }
+    $end_hour +=  $end_ampm;
   } else {
-    $endhour = 0;
-    $endminute = 0;
+    $end_hour = 0;
+    $end_minute = 0;
   }
 }
 
-//Repeat UNTIL time adjustment
-if ( ! empty ( $rpt_year ) ) {
-  if ( $TIME_FORMAT == '12' && $rpt_endhour < 12 ) {
-    if ( $rpt_endampm == 'pm' )
-      $rpt_endhour += 12;
-  } elseif ($TIME_FORMAT == '12' && $rpt_endhour == '12' && $rpt_endampm == 'am' ) {
-    $rpt_endhour = 0;
-  }
-  if ( $rpt_endhour > 0  &&  $TIME_FORMAT == '12' ) {
-    $rpt_endampmt = $rpt_endampm;
-    //This way, a user can pick am and still
-    //enter a 24 hour clock time.
-    if ($rpt_endhour > 12 && $rpt_endampm == 'am') {
-     $rpt_endampmt = 'pm';
-    }
-    $rpt_endhour %= 12;
-    if ( $rpt_endampmt == 'pm' ) {
-      $rpt_endhour += 12;
-    }
- }  
-}
+
 // If "all day event" was selected, then we set the event time
 // to be 12AM with a duration of 24 hours.
 // We don't actually store the "all day event" flag per se.  This method
@@ -146,30 +69,29 @@ if ( ! empty ( $rpt_year ) ) {
 if ( $timetype == "A" ) {
   $duration_h = 24;
   $duration_m = 0;
-  $hour = 0;
-  $minute = 0;
-  $endhour = 0;
-  $endminute = 0;  
+  $entry_hour = 0;
+  $entry_minute = 0;
+  $end_hour = 0;
+  $end_minute = 0;  
 }
 
 // Untimed Event
 if ( $timetype == "U" ) {
   $duration_h = 0;
   $duration_m = 0;
-  $hour = 0;
-  $minute = 0;
-  $endhour = 0;
-  $endminute = 0;
+  $entry_hour = 0;
+  $entry_minute = 0;
+  $end_hour = 0;
+  $end_minute = 0;
 }
 
 
 // Combine all values to create event start date/time
 if ( $timetype != "T" ) { 
-  $eventstart = gmmktime ( $hour, $minute, 0, $month, $day, $year );
+  $eventstart = gmmktime ( $entry_hour, $entry_minute, 0, $month, $day, $year );
 } else {
-  $eventstart = mktime ( $hour, $minute, 0, $month, $day, $year );
+  $eventstart = mktime ( $entry_hour, $entry_minute, 0, $month, $day, $year );
 }
-
 
 if ( $eType == 'task' ) {
   // Combine all values to create event due date/time - User Time
@@ -180,8 +102,8 @@ if ( $eType == 'task' ) {
   }
 
 
-  // Combine all values to create completed date 
-  if ( ! empty ( $completed_year )  && ! empty ( $completed_month ) &&
+// Combine all values to create completed date 
+if ( ! empty ( $completed_year )  && ! empty ( $completed_month ) &&
     ! empty ( $completed_day ) ) 
     $eventcomplete =  sprintf( "%04d%02d%02d" , $completed_year, 
       $completed_month, $completed_day );
@@ -192,11 +114,11 @@ if ( $eType == 'task' ) {
 //Create event stop from event  duration/end values
 // Note: for any given event, either end times or durations are 0
 if ( $TIMED_EVT_LEN == 'E') {
- $eventstophour= $endhour + $duration_h;
- $eventstopmin= $endminute + $duration_m;
+ $eventstophour= $end_hour + $duration_h;
+ $eventstopmin= $end_minute + $duration_m;
 } else {
- $eventstophour= $hour + $duration_h;
- $eventstopmin= $minute + $duration_m;
+ $eventstophour= $entry_hour + $duration_h;
+ $eventstopmin= $entry_minute + $duration_m;
 }
 
 if ( $timetype != "T" ) { 
@@ -329,13 +251,11 @@ if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != "Y" ) {
 }
 
 if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
-  strlen ( $hour ) > 0 && $timetype != 'U' ) {
+  strlen ( $entry_hour ) > 0 && $timetype != 'U' ) {
   
-  if ( ! empty ( $rpt_year ) ) {  
-    $endt = mktime ( $rpt_endhour, $rpt_endminute, 0, $rpt_month, $rpt_day,$rpt_year );
-    $endt -= date ("Z", $endt );
-  } else {
-    $endt = 'NULL';
+  if ( ! empty ( $rpt_year ) ) {
+    $rpt_hour +=  $rpt_ampm;  
+    $rpt_until = mktime ( $rpt_hour, $rpt_minute, 0, $rpt_month, $rpt_day,$rpt_year );
   }
 
  $inclusion_list = array();
@@ -364,7 +284,7 @@ if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
   
   $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, $bymonth,
    $byweekno, $byyearday, $bymonthday, $byday, $bysetpos, $count,
-   $endt, $wkst, $exception_list, $inclusion_list );
+   $rpt_until, $wkst, $exception_list, $inclusion_list );
   
   //make sure at least start date is in array
   if ( empty ( $dates ) ) $dates[0] = $eventstart;
@@ -438,14 +358,14 @@ if ( empty ( $error ) ) {
   "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
   $query_params = array();
-
   $query_params[] = $id;
   if ( $old_id > 0 )
     $query_params[] = $old_id;
 
   $query_params[] = ( ! empty ( $old_create_by ) ? $old_create_by : $login );
   $query_params[] = gmdate ( "Ymd", $eventstart );
-  $query_params[] = ( strlen ( $hour ) > 0 && $timetype != 'U' ) ? gmdate ( "His", $eventstart ) : "-1";
+  $query_params[] = ( strlen ( $entry_hour ) > 0 && $timetype != 'U' ) ? 
+    gmdate ( "His", $eventstart ) : "-1";
   
   if ( ! empty ( $eventcomplete ) )
     $query_params[] = $eventcomplete;
@@ -586,36 +506,17 @@ if ( empty ( $error ) ) {
     if ( empty ( $rem_before ) ) $rem_before = 'Y';
     $reminder_date = $reminder_offset = $reminder_duration = $reminder_repeats = 0;
     if ( $rem_when == 'Y' ) { //use date
-      if ( empty ( $remhour ) ) $remhour = 0;
-      if ( empty ( $remminute ) ) $remminute = 0;  
-      if ( $TIME_FORMAT == '12' && $remhour < 12 ) {
-        if ( $remampm == 'pm' )
-         $remhour += 12;
-      } elseif ($TIME_FORMAT == '12' && $remhour == '12' && $remampm == 'am' ) {
-        $remhour = 0;
-      }
-      if ( $remhour > 0  &&  $TIME_FORMAT == '12' ) {
-        $remampmt = $remampm;
-        //This way, a user can pick am and still
-        //enter a 24 hour clock time.
-        if ($remhour > 12 && $remampm == 'am') {
-          $remampmt = 'pm';
-        }
-        $remhour %= 12;
-        if ( $remampmt == 'pm' ) {
-          $remhour += 12;
-        }
-      }
-      $reminder_date = gmmktime ( $remhour, $remminute, 0, $reminder_month,
-        $reminder_day, $reminder_year );
-      //$reminder_date -= date("Z", $reminder_date ); 
+      $reminder_hour +=  $reminder_ampm;
+      $reminder_date = mktime ( $reminder_hour, $reminder_minute, 0, $reminder_month,
+        $reminder_day, $reminder_year ); 
     } else { //use offset
-      $reminder_offset = ($rem_days * 60 * 24 ) + ( $rem_hours * 60 ) + $rem_minutes;
+      $reminder_offset = ($rem_days * 60 * 24 ) + ( $reminder_hour * 60 ) + 
+        $reminder_minute;
     }
     if ( $rem_rep_count > 0 ) {
       $reminder_repeats = $rem_rep_count;
       $reminder_duration = ($rem_rep_days * 60 * 24 ) + 
-        ( $rem_rep_hours * 60 ) + $rem_rep_minutes;      
+        ( $rem_rep_hours * 60 ) + $rem_rep_minute;      
     }
     $sql = "INSERT INTO webcal_reminders ( cal_id, cal_date, cal_offset, cal_related, " .
       "cal_before, cal_repeats, cal_duration, cal_action, cal_last_sent, cal_times_sent ) " .
@@ -635,18 +536,7 @@ if ( empty ( $error ) ) {
   }
     // add repeating info
   if ( ! empty ( $rpt_type ) && strlen ( $rpt_type ) && $rpt_type != 'none' ) {
-    $freq = ( $rpt_freq ? $rpt_freq : 1 );
-        
-    if ( ! empty ( $rpt_year  ) ) {
-      $rpt_end = sprintf ( "%04d%02d%02d", $rpt_year, $rpt_month, $rpt_day );
-      $rpt_endtime = sprintf ( "%02d%02d00", $rpt_endhour, $rpt_endminute );
-      $rpt_enddatetime =  date_to_epoch ( $rpt_end .$rpt_endtime );
-      $rpt_end = gmdate ("Ymd", $rpt_enddatetime );
-      $rpt_endtime = gmdate ("His", $rpt_enddatetime );
-    } else {
-      $rpt_end = NULL;
-    }
-
+    $freq = ( $rpt_freq ? $rpt_freq : 1 );      
 
     $names = array();
     $values = array();
@@ -694,11 +584,11 @@ if ( empty ( $error ) ) {
       $values[] = $rpt_count;
     } 
 
-    $names[] = 'cal_end';
-    $values[] = $rpt_end;
-    if ( ! empty($rpt_endtime) ) {
+    if ( ! empty($rpt_until) ) {
+      $names[] = 'cal_end';
+      $values[] = gmdate ("Ymd", $rpt_until );
       $names[] = 'cal_endtime';         
-      $values[] = $rpt_endtime;
+      $values[] = gmdate ("His", $rpt_until );
     }
 
     $placeholders = '';
@@ -1096,7 +986,7 @@ if ( ! empty ( $conflicts ) ) {
   if (  $timetype == "A" ) {
     etranslate("All day event");
   } else {
-    $time = sprintf ( "%d%02d00", $hour, $minute );
+    $time = sprintf ( "%d%02d00", $entry_hour, $entry_minute );
     // Pass the adjusted timestamp in case the date changed due to GMT offset 
     echo display_time ( $time, 1, $eventstart );
     if ( $duration > 0 ) {

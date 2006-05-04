@@ -17,86 +17,22 @@ function validate_and_submit () {
   }
   if ( document.editentryform.timetype && 
     document.editentryform.timetype.selectedIndex == 1 ) {
-    h = parseInt (isNumeric( document.editentryform.hour.value ));
-    m = parseInt (isNumeric( document.editentryform.minute.value ));  
-<?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
-    if ( document.editentryform.ampm[1].checked ) {
-      // pm
-      if ( h < 12 )
-        h += 12;
-    } else {
-      // am
-      if ( h == 12 )
-        h = 0;
-    }
-<?php } ?>
-    if ( h >= 24 || h < 0 ) {
-<?php
-      if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
-        $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
-        showTab ( "details" );
-<?php } ?>
-      displayInValid(document.editentryform.hour);
-      return false;
-    }
-    if ( m > 59 || m < 0 ) {
-<?php
-      if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
-        $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
-        showTab ( "details" );
-<?php } ?>
-      displayInValid(document.editentryform.minute);
-      return false;
-    }
+    h = parseInt (isNumeric( document.editentryform.entry_hour.value ));
+    m = parseInt (isNumeric( document.editentryform.entry_minute.value ));  
+
     // Ask for confirmation for time of day if it is before the user's
     // preference for work hours.
     <?php if ($GLOBALS["TIME_FORMAT"] == "24") {
       echo "if ( h < $WORK_DAY_START_HOUR  ) {";
     }  else {
-      echo "if ( h < $WORK_DAY_START_HOUR && document.editentryform.ampm[0].checked ) {";
+      echo "if ( h < $WORK_DAY_START_HOUR && document.editentryform.entry_ampm[0].checked ) {";
     }
     ?>
     if ( ! confirm ( "<?php etranslate ("The time you have entered begins before your preferred work hours.  Is this correct?", true)?> "))
       return false;
    }
   }
-  //test endhour and endminute if used  
-  if ( document.editentryform.endhour ) {
-    if ( document.editentryform.timetype.selectedIndex == 1 ) {
-      eh = parseInt (isNumeric( document.editentryform.endhour.value ));
-      em = parseInt (isNumeric( document.editentryform.endminute.value ));   
-    <?php if ($GLOBALS["TIME_FORMAT"] == "12") { ?>
-      if ( document.editentryform.endampm[1].checked ) {
-        // pm
-        if ( eh < 12 )
-          eh += 12;
-      } else {
-        // am
-        if ( eh == 12 )
-          eh = 0;
-      }
-    <?php } ?>
-      if ( eh >= 24 || eh < 0 ) {
-    <?php
-        if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
-          $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
-          showTab ( "details" );
-    <?php } ?>
-        displayInValid(document.editentryform.endhour);        
-        return false;
-      }
-      if ( em > 59 || em < 0 ) {
-    <?php
-        if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
-          $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
-          showTab ( "details" );
-    <?php } ?>
-        displayInValid(document.editentryform.endminute);  
-        return false;
-      }
-     }
-  }
-
+ 
   // is there really a change?
   changed = false;
   form=document.editentryform;
@@ -581,11 +517,11 @@ function toggle_until() {
  document.editentryform.elements[rpt_monthid].disabled = true;
  document.editentryform.elements[rpt_yearid].disabled = true;
  document.editentryform.elements[rpt_btnid].disabled = true;
- document.editentryform.elements['rpt_endhour'].disabled = true;
- document.editentryform.elements['rpt_endminute'].disabled = true;
- if ( document.editentryform.elements['rpt_endam'] ) {
-   document.editentryform.elements['rpt_endam'].disabled = true;
-   document.editentryform.elements['rpt_endpm'].disabled = true;
+ document.editentryform.elements['rpt_hour'].disabled = true;
+ document.editentryform.elements['rpt_minute'].disabled = true;
+ if ( document.editentryform.elements['rpt_ampm'] ) {
+   document.editentryform.elements['rpt_ampm'].disabled = true;
+   document.editentryform.elements['rpt_ampm'].disabled = true;
  }
  document.editentryform.elements['rpt_count'].disabled = true;
  if ( document.editentryform.rpt_untilu.checked ) { //use until date
@@ -593,11 +529,11 @@ function toggle_until() {
    document.editentryform.elements[rpt_monthid].disabled = false;
    document.editentryform.elements[rpt_yearid].disabled = false;
    document.editentryform.elements[rpt_btnid].disabled = false;
-   document.editentryform.elements['rpt_endhour'].disabled = false;
-   document.editentryform.elements['rpt_endminute'].disabled = false;
-   if ( document.editentryform.elements['rpt_endam'] ) {
-     document.editentryform.elements['rpt_endam'].disabled = false; 
-     document.editentryform.elements['rpt_endpm'].disabled = false;
+   document.editentryform.elements['rpt_hour'].disabled = false;
+   document.editentryform.elements['rpt_minute'].disabled = false;
+   if ( document.editentryform.elements['rpt_ampm'] ) {
+     document.editentryform.elements['rpt_ampm'].disabled = false; 
+     document.editentryform.elements['rpt_ampm'].disabled = false;
    }
  } else if ( document.editentryform.rpt_untilc.checked ) { //use count
    document.editentryform.elements['rpt_count'].disabled = false; 
@@ -614,11 +550,11 @@ function toggle_rem_when() {
    document.editentryform.elements['reminder_month'].disabled = false;
    document.editentryform.elements['reminder_year'].disabled = false;
    document.editentryform.elements['reminder_btn'].disabled = false;
-   document.editentryform.elements['remhour'].disabled = false;
-   document.editentryform.elements['remminute'].disabled = false;
-   if ( document.editentryform.elements['remam'] ) {
-     document.editentryform.elements['remam'].disabled = false;
-     document.editentryform.elements['rempm'].disabled = false;
+   document.editentryform.elements['reminder_hour'].disabled = false;
+   document.editentryform.elements['reminder_minute'].disabled = false;
+   if ( document.editentryform.elements['reminder_ampm'] ) {
+     document.editentryform.elements['reminder_ampm'].disabled = false;
+     document.editentryform.elements['reminder_ampm'].disabled = false;
    }
    document.editentryform.elements['rem_days'].disabled = true;
    document.editentryform.elements['rem_hours'].disabled = true;
@@ -632,11 +568,11 @@ function toggle_rem_when() {
    document.editentryform.elements['reminder_month'].disabled = true;
    document.editentryform.elements['reminder_year'].disabled = true;
    document.editentryform.elements['reminder_btn'].disabled = true;
-   document.editentryform.elements['remhour'].disabled = true;
-   document.editentryform.elements['remminute'].disabled = true;
-   if ( document.editentryform.elements['remam'] ) {
-     document.editentryform.elements['remam'].disabled = true;
-     document.editentryform.elements['rempm'].disabled = true;
+   document.editentryform.elements['reminder_hour'].disabled = true;
+   document.editentryform.elements['reminder_minute'].disabled = true;
+   if ( document.editentryform.elements['reminder_ampm'] ) {
+     document.editentryform.elements['reminder_ampm'].disabled = true;
+     document.editentryform.elements['reminder_ampm'].disabled = true;
    }
    document.editentryform.elements['rem_days'].disabled = false;
    document.editentryform.elements['rem_hours'].disabled = false;
@@ -707,19 +643,21 @@ function isNumeric(sText)
 }
 
 function completed_handler () {
-  var mypercent = document.editentryform.percent.selectedIndex;
-  var others_complete = document.editentryform.others_complete.value;
-  if ( mypercent == 10 && others_complete == 'yes' ) {
-    document.editentryform.elements['completed_day'].disabled = false;
-    document.editentryform.elements['completed_month'].disabled = false;
-    document.editentryform.elements['completed_year'].disabled = false;
-    document.editentryform.elements['completed_btn'].disabled = false;
-  } else {
-    document.editentryform.elements['completed_day'].disabled = true;
-    document.editentryform.elements['completed_month'].disabled = true;
-    document.editentryform.elements['completed_year'].disabled = true;
-    document.editentryform.elements['completed_btn'].disabled = true;
-  }
+  if ( document.editentryform.percent ) {
+		var mypercent = document.editentryform.percent.selectedIndex;
+		var others_complete = document.editentryform.others_complete.value;
+		if ( mypercent == 10 && others_complete == 'yes' ) {
+			document.editentryform.elements['completed_day'].disabled = false;
+			document.editentryform.elements['completed_month'].disabled = false;
+			document.editentryform.elements['completed_year'].disabled = false;
+			document.editentryform.elements['completed_btn'].disabled = false;
+		} else {
+			document.editentryform.elements['completed_day'].disabled = true;
+			document.editentryform.elements['completed_month'].disabled = true;
+			document.editentryform.elements['completed_year'].disabled = true;
+			document.editentryform.elements['completed_btn'].disabled = true;
+		}
+	}
 }
 
 
