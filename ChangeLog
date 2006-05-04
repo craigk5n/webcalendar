@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Implemented dropdown time entry fields based on PATCH 1276894
+ - Added option to set remote access permissions to publish.php and rss.php
  - Impemented RFE 1470722: option to disable 2nd entry of cross-day event
  - Fixed bug 1448727: Conflict changes national characters
  - Fixed bug 1477303: CVS Cross-Day events bug

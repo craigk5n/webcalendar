@@ -407,14 +407,38 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <label><input type="radio" name="admin_TIME_FORMAT" value="12" <?php if ( $s['TIME_FORMAT'] == "12" ) echo $checked;?> />&nbsp;<?php etranslate("12 hour")?></label>&nbsp;
   <label><input type="radio" name="admin_TIME_FORMAT" value="24" <?php if ( $s['TIME_FORMAT'] != "12" ) echo $checked;?> />&nbsp;<?php etranslate("24 hour")?></label>
  </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip("entry-interval-help")?>">
+  <label for="admin_TIME_SLOTS"><?php etranslate("Entry interval")?>:</label></td><td>
+  <select name="admin_ENTRY_SLOTS" id="admin_ENTRY_SLOTS">
+   <option value="24" <?php if ( $s['ENTRY_SLOTS'] == "24" ) 
+     echo " selected=\"selected\""?>>1 <?php etranslate("hour")?></option>
+   <option value="48" <?php if ( $s['ENTRY_SLOTS'] == "48" ) 
+     echo " selected=\"selected\""?>>30 <?php etranslate("minutes")?></option>
+   <option value="72" <?php if ( $s['ENTRY_SLOTS'] == "72" ) 
+     echo " selected=\"selected\""?>>20 <?php etranslate("minutes")?></option>
+   <option value="96" <?php if ( $s['ENTRY_SLOTS'] == "96" ) 
+     echo " selected=\"selected\""?>>15 <?php etranslate("minutes")?></option>
+   <option value="144" <?php if ( $s['ENTRY_SLOTS'] == "144" ) 
+     echo " selected=\"selected\""?>>10 <?php etranslate("minutes")?></option>
+   <option value="288" <?php if ( $s['ENTRY_SLOTS'] == "288" ) 
+     echo " selected=\"selected\""?>>5 <?php etranslate("minutes")?></option>
+   <option value="1440" <?php if ( $s['ENTRY_SLOTS'] == "1440" ) 
+     echo " selected=\"selected\""?>>1 <?php etranslate("minute")?></option>
+  </select>
+ </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("time-interval-help")?>">
   <label for="admin_TIME_SLOTS"><?php etranslate("Time interval")?>:</label></td><td>
   <select name="admin_TIME_SLOTS" id="admin_TIME_SLOTS">
-   <option value="24" <?php if ( $s['TIME_SLOTS'] == "24" ) echo " selected=\"selected\""?>>1 <?php etranslate("hour")?></option>
-   <option value="48" <?php if ( $s['TIME_SLOTS'] == "48" ) echo " selected=\"selected\""?>>30 <?php etranslate("minutes")?></option>
-   <option value="72" <?php if ( $s['TIME_SLOTS'] == "72" ) echo " selected=\"selected\""?>>20 <?php etranslate("minutes")?></option>
-   <option value="96" <?php if ( $s['TIME_SLOTS'] == "96" ) echo " selected=\"selected\""?>>15 <?php etranslate("minutes")?></option>
-   <option value="144" <?php if ( $s['TIME_SLOTS'] == "144" ) echo " selected=\"selected\""?>>10 <?php etranslate("minutes")?></option>
+   <option value="24" <?php if ( $s['TIME_SLOTS'] == "24" ) 
+     echo " selected=\"selected\""?>>1 <?php etranslate("hour")?></option>
+   <option value="48" <?php if ( $s['TIME_SLOTS'] == "48" ) 
+     echo " selected=\"selected\""?>>30 <?php etranslate("minutes")?></option>
+   <option value="72" <?php if ( $s['TIME_SLOTS'] == "72" ) 
+     echo " selected=\"selected\""?>>20 <?php etranslate("minutes")?></option>
+   <option value="96" <?php if ( $s['TIME_SLOTS'] == "96" ) 
+     echo " selected=\"selected\""?>>15 <?php etranslate("minutes")?></option>
+   <option value="144" <?php if ( $s['TIME_SLOTS'] == "144" ) 
+     echo " selected=\"selected\""?>>10 <?php etranslate("minutes")?></option>
   </select>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip("auto-refresh-help");?>">
