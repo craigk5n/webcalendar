@@ -126,7 +126,7 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == "full" ) {
  }
 
  if ( empty ( $error ) ) {
-   addUser ( $user, $upassword1, $ufirstname, $ulastname,
+   user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
      $uemail, $uis_admin );
   activity_log ( 0, 'admin', $user, LOG_NEWUSER_FULL, "New user via self-registration" );
  }
@@ -152,7 +152,7 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == "full" ) {
   if ( empty ( $error ) ) {
     $new_pass = generate_password ();
     //TODO allow admin to approve account aand emails prior to processing
-    addUser ( $user, $new_pass, $ufirstname, $ulastname,
+    user_add_user ( $user, $new_pass, $ufirstname, $ulastname,
       $uemail, $uis_admin );
    
    $msg = translate("Hello") . ", " . $ufirstname . " " . $ulastname . "\n\n";
