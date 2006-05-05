@@ -912,7 +912,7 @@ if ( empty ( $x ) ) {
     $settings['db_login'] = 'webcalendar';
     $settings['db_password'] = 'webcal01';
     $settings['db_persistent'] = 'false';
-    $settings['db_cachedir'] = 'tmp/';
+    $settings['db_cachedir'] = '/tmp';
     $settings['readonly'] = 'false';
     $settings['user_inc'] = 'user.php';
     $settings['install_password'] = '';
@@ -1555,7 +1555,7 @@ if ( ! $exists || ! $canWrite ) { ?>
 
 <?php } else if ( $_SESSION['step'] == 3 ) { ?>
 <?php 
-  print_r ( $_SESSION); 
+  //print_r ( $_SESSION); 
   $_SESSION['db_updated'] = false;
   if ( $_SESSION['old_program_version'] == $PROGRAM_VERSION  && 
    empty ( $_SESSION['blank_database'] ) ){
