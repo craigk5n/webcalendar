@@ -1204,22 +1204,23 @@ if ( $can_show_log && $show_log ) {
 if ( access_can_access_function ( ACCESS_EXPORT ) && 
    (( ! $is_private  && ! $is_confidential )  || 
    ! access_is_enabled() )  && ! $hide_details ) {
-  echo "<br /><form method=\"post\" name=\"exportform\" " .
-    "action=\"export_handler.php\">\n";
-  echo "<label for=\"exformat\">" . 
-    translate("Export this entry to") . ":&nbsp;</label>\n";
-  echo "<select name=\"format\" id=\"exformat\">\n";
-  echo " <option value=\"ical\">iCalendar</option>\n";
-  echo " <option value=\"vcal\">vCalendar</option>\n";
-  echo " <option value=\"pilot-csv\">Pilot-datebook CSV (" . 
-    translate("Palm Pilot") . ")</option>\n";
-  echo " <option value=\"pilot-text\">Install-datebook (" . 
-    translate("Palm Pilot") . ")</option>\n";
-  echo "</select>\n";
-  echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
-  echo "<input type=\"submit\" value=\"" . 
-    translate("Export") . "\" />\n";
-  echo "</form>\n";
+   $exportThisStr = translate('Export this entry to');
+   $palmStr = translate ('Palm Pilot');
+   $exportStr = translate ('Export');
+   echo <<<EOT
+   <br />
+   <form method="post" name="exportform" action="export_handler.php">
+     <label for="exformat">{$exportThisStr}:&nbsp;</label>
+     <select name="format" id="exformat">
+      <option value="ical">iCalendar</option>
+      <option value="vcal">vCalendar</option>
+      <option value="pilot-csv">Pilot-datebook CSV ({$palmStr})</option>
+      <option value="pilot-text">Install-datebook ({$palmStr})</option>
+     </select>
+     <input type="hidden" name="id" value="$id" />
+     <input type="submit" value="{$exportStr}" />
+   </form>
+EOT;
 }
 ?>
 

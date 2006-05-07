@@ -237,32 +237,23 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
   }
   if ( ! empty ( $bysetpos2) ) $bysetpos = implode (",", $bysetpos2 );
   
-  if ( ! empty ( $bymonth) ) $bymonth = implode (",", $bymonth );
+  $bymonth = ( ! empty ( $bymonth) ? implode (",", $bymonth ) : '' );
   
   //This allows users to select on weekdays if daily
   if ( $rpt_type == 'daily' && ! empty ( $weekdays_only ) ) {
    $dayst = "MO,TU,WE,TH,FR";
   }
-} // end test for $DISABLE_REPEATING_FIELD
-
-// first check for any schedule conflicts
-if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != "Y" ) {
-  $confirm_conflicts = ""; // security precaution
-}
-
-if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
-  strlen ( $entry_hour ) > 0 && $timetype != 'U' ) {
   
   if ( ! empty ( $rpt_year ) ) {
     $rpt_hour +=  $rpt_ampm;  
     $rpt_until = mktime ( $rpt_hour, $rpt_minute, 0, $rpt_month, $rpt_day,$rpt_year );
   }
 
- $inclusion_list = array();
- $exception_list = array();
- if ( empty ( $exceptions ) ) { 
+  $inclusion_list = array();
+  $exception_list = array();
+  if ( empty ( $exceptions ) ) { 
    $exceptions = array();
- } else {
+  } else {
    foreach ( $exceptions as $exception ) {
      if ( substr ( $exception, 0, 1 ) == "+" ) {
        $inclusion_list[] = substr ( $exception, 1, 8);
@@ -270,17 +261,28 @@ if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
        $exception_list[] = substr ( $exception, 1, 8);     
      }
    }
- }
- if ( empty ( $bymonth ) ) $bymonth = '';
- if ( empty ( $byweekno ) ) $byweekno = '';
- if ( empty ( $byyearday ) ) $byyearday = '';
- if ( empty ( $bymonthday ) ) $bymonthday = '';
- if ( empty ( $byday ) ) $byday = '';
- if ( empty ( $bysetpos ) ) $bysetpos = ''; 
- if ( empty ( $count ) ) $count = '';
- if ( empty ( $rpt_type ) ) $rpt_type = '';
- if ( empty ( $rpt_freq ) ) $rpt_freq = 1;
- if ( empty ( $wkst ) ) $wkst = 'MO';
+  }
+} // end test for $DISABLE_REPEATING_FIELD
+
+//make sure we initialize this variables
+if ( empty ( $bymonth ) ) $bymonth = '';
+if ( empty ( $byweekno ) ) $byweekno = '';
+if ( empty ( $byyearday ) ) $byyearday = '';
+if ( empty ( $bymonthday ) ) $bymonthday = '';
+if ( empty ( $byday ) ) $byday = '';
+if ( empty ( $bysetpos ) ) $bysetpos = ''; 
+if ( empty ( $count ) ) $count = '';
+if ( empty ( $rpt_type ) ) $rpt_type = '';
+if ( empty ( $rpt_freq ) ) $rpt_freq = 1;
+if ( empty ( $wkst ) ) $wkst = 'MO';
+  
+// first check for any schedule conflicts
+if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != "Y" ) {
+  $confirm_conflicts = ""; // security precaution
+}
+
+if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
+  strlen ( $entry_hour ) > 0 && $timetype != 'U' ) {
   
   $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, $bymonth,
    $byweekno, $byyearday, $bymonthday, $byday, $bysetpos, $count,

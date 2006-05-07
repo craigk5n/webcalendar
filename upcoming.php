@@ -362,7 +362,7 @@ if ( $tasks_only ) {
 } else {
 
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $username, $cat_id, $endDate );
+  $repeated_events = read_repeated_events ( $username, $cat_id, $startDate );
 
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $username, $startDate, $endDate, $cat_id );

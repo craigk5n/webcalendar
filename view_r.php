@@ -221,7 +221,7 @@ else
 $uheader = "";
 for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkend );
+  $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
   $re_save[$i] = $repeated_events;
   /* Pre-load the non-repeating events for quicker access 
       subtracting ONE_WEEK to allow cross-day events to display*/
