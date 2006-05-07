@@ -46,7 +46,7 @@ print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quckier access */
 $repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login,
-  $cat_id, $wkend );
+  $cat_id, $wkstart );
 
 /* Pre-load the non-repeating events for quicker access */
 //Start the search one week early to account for cross-day events

@@ -32,7 +32,7 @@ $boldDays = false;
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events (
-    ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login, $cat_id, $enddate );
+    ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login, $cat_id, $startdate );
 
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )

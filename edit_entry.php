@@ -80,9 +80,11 @@ function time_selection ( $prefix, $time='', $trigger=false ) {
 
   if ( $TIME_FORMAT == "12" ) {
     $ret .= "<label><input type=\"radio\" name=\"" . $prefix . 
-      "ampm\" value=\"0\" $amsel />&nbsp;" . translate("am") . "</label>\n";
+      "ampm\" id=\"". $prefix . "ampmA\" value=\"0\" $amsel />&nbsp;" . 
+      translate("am") . "</label>\n";
     $ret .= "<label><input type=\"radio\" name=\"" . $prefix . 
-      "ampm\" value=\"12\" $pmsel />&nbsp;" . translate("pm") . "</label>\n";
+      "ampm\" id=\"". $prefix . "ampmP\" value=\"12\" $pmsel />&nbsp;" . 
+      translate("pm") . "</label>\n";
   } else {
     $ret .= "<input type=\"hidden\" name=\"" . $prefix . "ampm\" value=\"0\" />\n";
   }
@@ -1285,7 +1287,7 @@ if ( $single_user == "N" && $show_participants ) {
     echo "&nbsp;&nbsp;&nbsp;<label>" . translate("Times") . "</label></td>";
     echo "<td class=\"boxright boxtop\" colspan=\"2\">";
     echo "<input type=\"text\" size=\"2\" name=\"rem_rep_count\" ".
-      "value=\"$rem_rep_count\" /></label></td></tr>\n";
+      "value=\"$rem_rep_count\" onchange=\"toggle_rem_rep();\" /></label></td></tr>\n";
     echo "<tr id=\"rem_repeats\"><td class=\"boxleft boxbottom\">";
     echo "&nbsp;&nbsp;&nbsp;<label>" . translate ( "Every" ) . "</label></td>";
     echo "<td class=\"boxright boxbottom\" colspan=\"2\">";

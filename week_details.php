@@ -42,7 +42,8 @@ $INC = array('js/popups.php');
 print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login, $cat_id, $wkend );
+$repeated_events = read_repeated_events ( strlen ( $user ) ? 
+  $user : $login, $cat_id, $wkstart );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( strlen ( $user ) ? $user : $login, $wkstart, $wkend, $cat_id  );
