@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1462457: reminder form should have more conditionally disabled fields
  - Implemented RFE 1379431: Global Layers!
  - Implemented RFE 1337524: not proper display of "Repeating events" in 'view_entry.php'
  - Implemented dropdown time entry fields based on PATCH 1276894

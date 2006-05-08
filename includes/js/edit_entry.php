@@ -520,8 +520,8 @@ function toggle_until() {
  document.editentryform.elements['rpt_hour'].disabled = true;
  document.editentryform.elements['rpt_minute'].disabled = true;
  if ( document.editentryform.elements['rpt_ampm'] ) {
-   document.editentryform.elements['rpt_ampm'].disabled = true;
-   document.editentryform.elements['rpt_ampm'].disabled = true;
+   document.getElementById('rpt_ampmA').disabled = 'disabled';
+   document.getElementById('rpt_ampmP').disabled = 'disabled';
  }
  document.editentryform.elements['rpt_count'].disabled = true;
  if ( document.editentryform.rpt_untilu.checked ) { //use until date
@@ -532,8 +532,8 @@ function toggle_until() {
    document.editentryform.elements['rpt_hour'].disabled = false;
    document.editentryform.elements['rpt_minute'].disabled = false;
    if ( document.editentryform.elements['rpt_ampm'] ) {
-     document.editentryform.elements['rpt_ampm'].disabled = false; 
-     document.editentryform.elements['rpt_ampm'].disabled = false;
+     document.getElementById('rpt_ampmA').disabled = false;
+     document.getElementById('rpt_ampmP').disabled = false;
    }
  } else if ( document.editentryform.rpt_untilc.checked ) { //use count
    document.editentryform.elements['rpt_count'].disabled = false; 
@@ -553,8 +553,8 @@ function toggle_rem_when() {
    document.editentryform.elements['reminder_hour'].disabled = false;
    document.editentryform.elements['reminder_minute'].disabled = false;
    if ( document.editentryform.elements['reminder_ampm'] ) {
-     document.editentryform.elements['reminder_ampm'].disabled = false;
-     document.editentryform.elements['reminder_ampm'].disabled = false;
+   document.getElementById('reminder_ampmA').disabled = false;
+   document.getElementById('reminder_ampmP').disabled = false;
    }
    document.editentryform.elements['rem_days'].disabled = true;
    document.editentryform.elements['rem_hours'].disabled = true;
@@ -571,8 +571,8 @@ function toggle_rem_when() {
    document.editentryform.elements['reminder_hour'].disabled = true;
    document.editentryform.elements['reminder_minute'].disabled = true;
    if ( document.editentryform.elements['reminder_ampm'] ) {
-     document.editentryform.elements['reminder_ampm'].disabled = true;
-     document.editentryform.elements['reminder_ampm'].disabled = true;
+   document.getElementById('reminder_ampmA').disabled = 'disabled';
+   document.getElementById('reminder_ampmP').disabled = 'disabled';
    }
    document.editentryform.elements['rem_days'].disabled = false;
    document.editentryform.elements['rem_hours'].disabled = false;
@@ -597,6 +597,20 @@ function toggle_reminders() {
    makeVisible ( "reminder_repeat", true );
   }
 }
+
+function toggle_rem_rep(){
+ var cnt = document.editentryform.elements['rem_rep_count'].value;
+ if (cnt == 0 ) {
+   document.editentryform.elements['rem_rep_days'].disabled = true;
+   document.editentryform.elements['rem_rep_hours'].disabled = true;
+   document.editentryform.elements['rem_rep_minutes'].disabled = true;
+ } else {
+   document.editentryform.elements['rem_rep_days'].disabled = false;
+   document.editentryform.elements['rem_rep_hours'].disabled = false;
+   document.editentryform.elements['rem_rep_minutes'].disabled = false; 
+ }
+}
+
 
 function editCats (  evt ) {
   if (document.getElementById) {
@@ -644,20 +658,20 @@ function isNumeric(sText)
 
 function completed_handler () {
   if ( document.editentryform.percent ) {
-		var mypercent = document.editentryform.percent.selectedIndex;
-		var others_complete = document.editentryform.others_complete.value;
-		if ( mypercent == 10 && others_complete == 'yes' ) {
-			document.editentryform.elements['completed_day'].disabled = false;
-			document.editentryform.elements['completed_month'].disabled = false;
-			document.editentryform.elements['completed_year'].disabled = false;
-			document.editentryform.elements['completed_btn'].disabled = false;
-		} else {
-			document.editentryform.elements['completed_day'].disabled = true;
-			document.editentryform.elements['completed_month'].disabled = true;
-			document.editentryform.elements['completed_year'].disabled = true;
-			document.editentryform.elements['completed_btn'].disabled = true;
-		}
-	}
+    var mypercent = document.editentryform.percent.selectedIndex;
+    var others_complete = document.editentryform.others_complete.value;
+    if ( mypercent == 10 && others_complete == 'yes' ) {
+      document.editentryform.elements['completed_day'].disabled = false;
+      document.editentryform.elements['completed_month'].disabled = false;
+      document.editentryform.elements['completed_year'].disabled = false;
+      document.editentryform.elements['completed_btn'].disabled = false;
+    } else {
+      document.editentryform.elements['completed_day'].disabled = true;
+      document.editentryform.elements['completed_month'].disabled = true;
+      document.editentryform.elements['completed_year'].disabled = true;
+      document.editentryform.elements['completed_btn'].disabled = true;
+    }
+  }
 }
 
 
@@ -666,6 +680,7 @@ function onLoad () {
   rpttype_handler();
   toggle_until();
   toggle_reminders();
+  toggle_rem_rep();
   completed_handler();
 }
 
