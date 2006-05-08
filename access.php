@@ -134,7 +134,7 @@ if ( ! empty ( $otheruser ) ) {
 }
 
 $BodyX = ( ! empty ( $op['time'] ) && $op['time'] == "Y" ? 
-  "onload=\"enableAll( true );\"" : '"' );
+  'onload="enableAll( true );"' : '' );
 print_header ('','', $BodyX);
 
 if ( ! empty ( $guser ) || ! $is_admin ) {
@@ -239,7 +239,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
 
      if (  empty ( $otheruser ) ) {
        print_trailer ();
-       echo "</html></body>\n";
+       echo "</body></html>\n";
        exit;
     }
   }
