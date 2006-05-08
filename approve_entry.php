@@ -28,7 +28,7 @@ if ( ! empty ( $_POST ) ) {
    echo "<tr><td align=\"center\"><input type=\"submit\" value=\"" . 
      translate ( "Approve and Send" ) . "\" />&nbsp;&nbsp;&nbsp;";
    echo "<input type=\"submit\" value=\"" . 
-     translate ( "Approve and Exit" ) . "\" /></tr></tr>\n<tr><td>";
+     translate ( "Approve and Exit" ) . "\" /></td></tr>\n<tr><td>";
    etranslate ( "(Your comments will be included in an email to the event creator)" );
    echo "</td></tr></table></form>\n"; 
    echo "</body>\n</html>";
