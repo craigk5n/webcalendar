@@ -1087,9 +1087,10 @@ function build_entry_popup ( $popupid, $user, $description='', $time,
       "WHERE cal_id = ? ORDER by cal_fullname";
     $rows = dbi_get_cached_rows ( $sql, array ( $id ) );
     if ( $rows ) {
+      $extStr = translate ( 'External User');
       for ( $i = 0; $i < count ( $rows ); $i++ ) {
         $row = $rows[$i];
-        $partList[] = $row[0] . " (" . translate ( "External User") . ")";
+        $partList[] = $row[0] . ' (' . $extStr . ')';
       }
     }
   }
@@ -1303,7 +1304,7 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
 echo "<table class=\"main\" style=\"clear:both;\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" id=\"month_main\">";
 echo "<tr>";
 if ( $DISPLAY_WEEKNUMBER == "Y" ) {
-    echo "<th class=\"weekcell\" width\"5%\"></th>\n"; 
+    echo "<th class=\"weekcell\" width=\"5%\"></th>\n"; 
 }
 if ( $WEEK_START == 0 ) {
   echo "<th class=\"weekend\">" . translate('Sun') . "</th>\n";
@@ -1435,11 +1436,12 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     $u_url = '';
   }
   
-    $header_span = ( $DISPLAY_WEEKNUMBER == true? 8:7 );
+  $header_span = ( $DISPLAY_WEEKNUMBER == true? 8:7 );
+  $weekStr = translate("Week");
   //start the minical table for each month
-//  echo "\n<table " . ( $DISPLAY_TASKS == 'Y' && 
-//    $SCRIPT == "month.php"?"width=\"100%\"" :"") . 
-//    "  class=\"minical\"";
+  //  echo "\n<table " . ( $DISPLAY_TASKS == 'Y' && 
+  //    $SCRIPT == "month.php"?"width=\"100%\"" :"") . 
+  //    "  class=\"minical\"";
   //start the minical table for each month
   echo "\n<table class=\"minical\"";
   if ( $minical_id != '' ) {
@@ -1455,8 +1457,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear ) );
     $month_ahead = date ( "Ymd",
       mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear ) );
-    if ( $SCRIPT == 'day.php' )
-      echo "<caption>$thisday</caption>\n";
+    echo "<caption>$thisday</caption>\n";
     echo "<thead>\n";
     echo "<tr class=\"monthnav\"><th colspan=\"$header_span\">\n";
     echo "<a title=\"" . 
@@ -1526,11 +1527,11 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     $i += (ONE_DAY * 7) ) {
     echo "<tr>\n";
     if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ) {
-      $title = "title=\"" . translate("Week") . "&nbsp;" . 
-        date( "W", $i + ONE_DAY ) . "\" ";
-      $href = "href=\"week.php?" . $u_url . "date=".date("Ymd", $i+ ONE_DAY). "\" ";
-      echo "<td class=\"weeknumber\"><a class=\"weeknumber\"" . $title . $href . ">(" . 
-        date( "W", $i + ONE_DAY ) . ")</a></td>\n";
+      $title = 'title="' . $weekStr . '&nbsp;' . 
+        date( "W", $i + ONE_DAY ) . '" ';
+      $href = 'href="week.php?' . $u_url . 'date=' .date("Ymd", $i+ ONE_DAY). '" ';
+      echo '<td class="weeknumber"><a class="weeknumber"' . $title . $href . '>(' . 
+        date( "W", $i + ONE_DAY ) . ')</a></td>' . "\n";
     }
     for ($j = 0; $j < 7; $j++) {
       $date = $i + ($j * ONE_DAY);
@@ -1628,7 +1629,11 @@ function display_small_tasks ( $cat_id ) {
     $u_url = '';
     $task_user = $login;
   }
- 
+  $priorityStr = translate ( 'Priority' );
+  $taskStr = translate ( 'Task Name' );
+  $dueStr = translate ( 'Task Due Date' );
+  $dateFormatStr = translate ( '__mm__/__dd__/__yyyy__' );
+  $completedStr = translate ( 'Completed' );
   $filter = "";
   $task_list = query_events ( $task_user, false, $filter, $cat_id, true  );
   $row_cnt = 1;
@@ -1642,15 +1647,15 @@ function display_small_tasks ( $cat_id ) {
   foreach ( $task_list as $E )  {
     $cal_id = $E->getId();
     $link = "<a href=\"view_entry.php?" . $u_url ."id=" . $cal_id . "\"";
-    $priority = $link  . " title=\"" . translate ( "Priority" ) . "\" >" . 
+    $priority = $link  . " title=\"" . $priorityStr . "\" >" . 
       $E->getPriority() . "</a>";
     $dots = ( strlen ( $E->getName() ) > 10 ? "..." : "" );
-    $name = $link  . " title=\"" . translate ( "Task Name" ) . ":" . $E->getName() . 
+    $name = $link  . " title=\"" . $taskStr . ":" . $E->getName() . 
       "\" >". substr( $E->getName(), 0, 10 ) . $dots ."</a>";
-    $due_date = $link  . " title=\"" . translate ( "Task Due Date" ) . "\" >". 
-      date_to_str( $E->getDueDate(), translate ( "__mm__/__dd__/__yyyy__" ), false, false) . 
+    $due_date = $link  . " title=\"" . $dueStr . "\" >". 
+      date_to_str( $E->getDueDate(), $dateFormatStr, false, false) . 
         "</a>";
-    $percent = $link . " title=\"% " . translate ( "Completed" ) . "\" >". 
+    $percent = $link . " title=\"% " . $completedStr . "\" >". 
       $E->getPercent() . "</a>";
     $task_html .= "<tr><td>$priority</td><td>$name</td>" .
       "<td>$due_date</td><td>&nbsp;&nbsp;$percent</td></tr>\n";
@@ -2258,7 +2263,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
  *
  * @param string $user   Username
  * @param int    $cat_id Category ID to filter on  (May be empty)
- * @param int $date      Cutoff date for repeating event endtimes in timestamp
+ * @param int $date      Cutoff date for repeating event cal_end in timestamp
  *                       format (may be empty)
  *
  * @return array Array of RepeatingEvents sorted by time of day
@@ -2268,7 +2273,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
 function read_repeated_events ( $user, $cat_id = '', $date = ''  ) {
   global $login;
   global $layers;
-  $date = date ( "Ymd", $date );
+  if ( $date != '') $date = date ( "Ymd", $date );
   $filter = ($date != '') ? "AND (webcal_entry_repeats.cal_end >= $date OR webcal_entry_repeats.cal_end IS NULL) " : '';
   return query_events ( $user, true, $filter, $cat_id );
 }
@@ -2864,7 +2869,6 @@ function print_date_entries ( $date, $user, $ssi ) {
   $year = substr ( $date, 0, 4 );
   $month = substr ( $date, 4, 2 );
   $day = substr ( $date, 6, 2 );
-  $dateu = mktime ( 12, 0, 0, $month, $day, $year );
   $moons = getMoonPhases ( $year, $month );
   $can_add = ( $readonly == "N" || $is_admin );
   if ( $PUBLIC_ACCESS == "Y" && $PUBLIC_ACCESS_CAN_ADD != "Y" &&
@@ -3026,6 +3030,10 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
   $res = dbi_execute ( $sql, $query_params );
   $found = array();
   $count = 0;
+  $privateStr = translate("Private");
+  $confidentialStr = translate("Confidential");
+  $allDayStr = translate("All day event");
+  $exceedsStr = translate ( "exceeds limit of XXX events per day" );
   if ( $res ) {
     $time1 = sprintf ( "%d%02d00", $hour, $minute );
     $duration1 = sprintf ( "%d", $duration );
@@ -3052,11 +3060,11 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
           if ( $single_user != "Y" )
             $conflicts .= "$row[0]: ";
           if ( $row[6] == 'R' && $row[0] != $login ) {
-            $conflicts .=  "(" . translate("Private") . ")";
+            $conflicts .=  "(" . $privateStr . ")";
           } else if ( $row[6] == 'C' && $row[0] != $login  && 
-       !$is_assistant  && !$is_nonuser_admin) {
+            !$is_assistant  && !$is_nonuser_admin) {
             //assistants can see confidential stuff
-      $conflicts .=  "(" . translate("Confidential") . ")";
+            $conflicts .=  "(" . $confidentialStr . ")";
           } else {
             $conflicts .=  "<a href=\"view_entry.php?id=$row[4]";
             if ( $row[0] != $login )
@@ -3064,7 +3072,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
             $conflicts .= "\">$row[3]</a>";
           }
           if ( $duration2 == ( 24 * 60 ) && $time2 == 0 ) {
-            $conflicts .= " (" . translate("All day event") . ")";
+            $conflicts .= " (" . $allDayStr . ")";
           } else {
             $conflicts .= " (" . display_time ( $row[8] . $time2 );
             if ( $duration2 > 0 )
@@ -3074,8 +3082,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
           }
           $conflicts .= " on " . date_to_str( $row[8] );
           if ( $over_limit ) {
-            $tmp = translate ( "exceeds limit of XXX events per day" );
-            $tmp = str_replace ( "XXX", $LIMIT_APPTS_NUMBER, $tmp );
+            $tmp = str_replace ( "XXX", $LIMIT_APPTS_NUMBER, $exceedsStr );
             $conflicts .= " (" . $tmp . ")";
           }
           $conflicts .= "</li>\n";
@@ -4376,8 +4383,6 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $year = substr ( $date, 0, 4 );
   $month = substr ( $date, 4, 2 );
   $day = substr ( $date, 6, 2 );
- 
-  $dateu = mktime ( 0, 0, 0, $month, $day, $year );
 
   $can_add = ( $readonly == "N" || $is_admin );
   if ( $PUBLIC_ACCESS == "Y" && $PUBLIC_ACCESS_CAN_ADD != "Y" &&
@@ -5139,7 +5144,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   // Javascript for cells
   $MouseOver = "onmouseover=\"this.style.backgroundColor='#CCFFCC';\"";
   $MouseOut = "onmouseout=\"this.style.backgroundColor='".$CELLBG."';\"";
-
+  $viewMsg = translate ( "View this entry" );
   // Display each participant
   for ( $i = 0; $i < count ( $participants ); $i++ ) {
     if ($participants[$i] != '_all_') {
@@ -5153,9 +5158,9 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
       $user_nospace = preg_replace ( '/\s/', '&nbsp;', $user_nospace );
     }
 
-    echo "<tr>\n<th class=\"row\" style=\"width:{$participant_pct};\">".$user_nospace."</th>\n";
+    echo "<tr>\n<th class=\"row\" style=\"width:{$participant_pct};\">". 
+      $user_nospace."</th>\n";
     $col = 1;
-    $viewMsg = translate ( "View this entry" );
 
     // check each timebar
     for ( $j = $first_hour; $j < $last_hour; $j++ ) {
