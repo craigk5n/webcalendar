@@ -2,7 +2,7 @@
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
 
-$error = "";
+$error = '';
 
 $delete = getPostValue ( 'delete' );
 $reload = getPostValue ( 'reload' );
@@ -23,8 +23,8 @@ if ( ! empty ( $reload ) ) {
       delete_events ( $nid );
       //import new events
       import_data ( $data, $overwrite, $type );
-      echo "<p>" . translate("Import Results") . "</p>\n<br /><br />\n" .
-      translate("Events successfully imported") . ": $count_suc<br />\n";
+      echo '<p>' . translate( 'Import Results' ) . "</p>\n<br /><br />\n" .
+      translate( 'Events successfully imported' ) . ": $count_suc<br />\n";
       load_user_layers();
       $layer_found = false;
       foreach ($layers as $layer) {
@@ -32,13 +32,13 @@ if ( ! empty ( $reload ) ) {
           $layer_found = true;
       }
       if ( $layer_found == false )     
-        echo "<p>" . translate("Create a new layer to view this calendar") . ".</p>\n";
+        echo '<p>' . translate( 'Create a new layer to view this calendar' ) . ".</p>\n";
     } elseif (! empty ( $errormsg ) ) {
-      echo translate ( "Errors" ) . ": $error_num<br /><br />\n";
-      echo "<br /><br />\n<b>" . translate("Error") . ":</b> $errormsg<br />\n";
+      echo translate ( 'Errors' ) . ": $error_num<br /><br />\n";
+      echo "<br /><br />\n<b>" . translate( 'Error' ) . ":</b> $errormsg<br />\n";
     } else {
-      echo "<br /><br />\n<b>" . translate("Error") . ":</b> " .
-        translate("There was an error parsing the import file or no events were returned") .
+      echo "<br /><br />\n<b>" . translate( 'Error' ) . ":</b> " .
+        translate( 'There was an error parsing the import file or no events were returned' ) .
         ".<br />\n";
     }
     print_trailer ( false, true, true );
@@ -62,10 +62,10 @@ if ( ! empty ( $reload ) ) {
   // Delete user
   if ( ! dbi_execute ( "DELETE FROM webcal_nonuser_cals WHERE cal_login = ?", 
     array( $nid ) ) )
-    $error = translate ("Database error") . ": " . dbi_error();
+    $error = translate( 'Database error' ) . ': ' . dbi_error();
 
 } else {
-  if ( $action == "Save" || $action == translate ("Save") ) {
+  if ( $action == "Save" || $action == translate( 'Save' ) ) {
     // Updating
     $query_params = array();
     $sql = "UPDATE webcal_nonuser_cals SET ";
@@ -87,7 +87,7 @@ if ( ! empty ( $reload ) ) {
     $query_params[] = $nid;
 
     if ( ! dbi_execute ( $sql, $query_params ) ) {
-      $error = translate ("Database error") . ": " . dbi_error();
+      $error = translate( 'Database error' ) . ": " . dbi_error();
     }
   } else {
     // Adding    
@@ -98,13 +98,13 @@ if ( ! empty ( $reload ) ) {
       "VALUES ( ?, ?, ?, ?, ?, ? )";
       if ( ! dbi_execute ( $sql, 
         array( $nid, $nfirstname, $nlastname, $nadmin, 'N', $nurl ) ) ) {
-        $error = translate ("Database error") . ": " . dbi_error();
+        $error = translate( 'Database error' ) . ': ' . dbi_error();
       }
     } else {
-      $error = translate ("Calendar ID")." ".translate ("word characters only").".";
+      $error = translate ( 'Calendar ID' ).' '.translate ( 'word characters only' ).'.';
     }
     //add new layer if requested
-    if ( ! empty ( $nlayer ) && $nlayer == "Y" ) {
+    if ( ! empty ( $nlayer ) && $nlayer == 'Y' ) {
       $res = dbi_execute ( "SELECT MAX(cal_layerid) FROM webcal_user_layers" );
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
@@ -126,7 +126,7 @@ if ( ! empty ( $reload ) ) {
     "cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only ) VALUES " .
     "( ?, ?, ?, ?, ?, ?, ?, ? )";
   if ( ! dbi_execute ( $sql, array( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) ) {
-    die_miserable_death ( translate ( "Database error" ) . ": " .
+    die_miserable_death ( translate ( 'Database error' ) . ': ' .
       dbi_error () );
   }  
 }
@@ -191,7 +191,7 @@ if ( ! empty ( $error ) ) {
   print_header( '', '', '', true );
 ?>
 
-<h2><?php etranslate("Error")?></h2>
+<h2><?php etranslate(  'Error' )?></h2>
 
 <blockquote>
 <?php
@@ -204,6 +204,6 @@ echo $error;
 </html>
 <?php } else if ( empty ( $error ) ) {
 ?><html><head></head>
-<body onLoad="alert('<?php etranslate("Changes successfully saved", true);?>'); window.parent.location.href='users.php?tab=remotes';">
+<body onLoad="alert('<?php etranslate( 'Changes successfully saved', true);?>'); window.parent.location.href='users.php?tab=remotes';">
 </body></html>
 <?php } ?>

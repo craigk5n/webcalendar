@@ -33,7 +33,7 @@
  *
  * Usage Requirements:
  * For this work, at least on some Apache intallations, may need
- * to be added to the http.conf file:
+ * to be added to the httpd.conf file:
  *  <Directory "/var/www/html/webcalendar">
  *    Script PUT /icalclient.php    
  *  </Directory>
@@ -168,23 +168,23 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   // Mozilla Calendar does not bother showing errors, so they won't
   // see this error message anyhow....  Not sure about Apple iCal or
   // other clients.
-  etranslate ("Publishing Disabled (Admin)" );
+  etranslate ( 'Publishing Disabled (Admin)' );
   exit;
 }
 //echo $prefarray['USER_PUBLISH_RW_ENABLED'];
 if ( empty ( $USER_PUBLISH_RW_ENABLED ) || $USER_PUBLISH_RW_ENABLED != 'Y' ) {
   header ( "Content-Type: text/plain" );
-  etranslate ("Publishing Disabled (User)" );
+  etranslate ( 'Publishing Disabled (User)' );
   exit;
 }
 
 
-$prodid = "Unnamed iCal client";
+$prodid = 'Unnamed iCal client';
 
 
 
 // Load user name, etc.
-user_load_variables ( $login, "publish_" );
+user_load_variables ( $login, 'publish_' );
 
 
 function dump_globals ()

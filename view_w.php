@@ -50,8 +50,8 @@ $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1);
 
-$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ) );
-$thisdate = date ( "Ymd", $wkstart );
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 4 : 6 ) );
+$thisdate = date ( 'Ymd', $wkstart );
 
 
 for ( $i = 0; $i < 7; $i++ ) {
@@ -68,11 +68,11 @@ $viewusers = view_get_user_list ( $id );
 if ( count ( $viewusers ) == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view
-  $error = translate ( "No users for this view" );
+  $error = translate ( 'No users for this view' ) ;
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<h2>" . translate ( "Error" ) .
+  echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
   print_trailer ();
   exit;
@@ -80,17 +80,17 @@ if ( ! empty ( $error ) ) {
 ?>
 
 <div style="border-width:0px; width:99%;">
-<a title="<?php etranslate("Previous")?>" class="prev" 
+<a title="<?php etranslate ( 'Previous' )?>" class="prev" 
   href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>">
-  <img src="images/leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
-<a title="<?php etranslate("Next")?>" class="next" 
+  <img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
+<a title="<?php etranslate ( 'Next' )?>" class="next" 
   href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>">
-  <img src="images/rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
+  <img src="images/rightarrow.gif" alt="<?php etranslate ( 'Next' )?>" /></a>
 <div class="title">
 <span class="date"><?php
-  echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
+  echo date_to_str ( date ( 'Ymd', $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
-    date_to_str ( date ( "Ymd", $wkend ), "", false );
+    date_to_str ( date ( 'Ymd', $wkend ), "", false );
 ?></span><br />
 <span class="viewname"><?php echo htmlspecialchars ( $view_name ); ?></span>
 </div>
@@ -153,12 +153,12 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   echo "</tr>\n";
 
   for ( $xdate = $wkstart, $h = 0;
-    date ( "Ymd", $xdate ) <= date ( "Ymd", $wkend );
+    date ( 'Ymd', $xdate ) <= date ( 'Ymd', $wkend );
     $xdate += ONE_DAY, $h++ ) {
     $wday = strftime ( "%w", $xdate );
-    if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == "N" ) continue;
+    if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue;
     $weekday = weekday_short_name ( $wday );
-    if ( date ( "Ymd", $xdate ) == date ( "Ymd", $today ) ) {
+    if ( date ( 'Ymd', $xdate ) == date ( 'Ymd', $today ) ) {
       echo "<tr><th class=\"today\">";
     } else {
       echo "<tr><th class=\"row\">";
@@ -170,7 +170,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
-    if ( date ( "Ymd", $xdate ) == date ( "Ymd", $today ) ) {
+    if ( date ( 'Ymd', $xdate ) == date ( 'Ymd', $today ) ) {
       echo "<td class=\"today\" style=\"width:$tdw%;\">";
     } else {
       if ( $wday == 0 || $wday == 6 ) {
@@ -180,10 +180,10 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
       }
     }
       //echo date ( "D, m-d-Y H:i:s", $xdate ) . "<br />";
-      if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != "N" ) {
-        echo html_for_add_icon ( date ( "Ymd", $xdate ), "", "", $user );
+      if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' ) {
+        echo html_for_add_icon ( date ( 'Ymd', $xdate ), "", "", $user );
       }
-      print_date_entries ( date ( "Ymd", $xdate ), $user, true );
+      print_date_entries ( date ( 'Ymd', $xdate ), $user, true );
       echo "</td>\n";
     }
     echo "</tr>\n";
@@ -197,11 +197,11 @@ if ( ! empty ( $eventinfo ) ) {
   echo $eventinfo;
 }
 
-echo "<a title=\"" . translate("Generate printer-friendly version") . 
+echo "<a title=\"" . translate ( 'Generate printer-friendly version' ) . 
   "\" class=\"printer\" href=\"view_w.php?id=$id&amp;date=$date&amp;friendly=1\" " .
   "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
-  translate("Generate printer-friendly version") .
-  "'\">[" . translate("Printer Friendly") . "]</a>\n";
+  translate ( 'Generate printer-friendly version' ) .
+  "'\">[" . translate ( 'Printer Friendly' ) . "]</a>\n";
 
 print_trailer ();
 ?>

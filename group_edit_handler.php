@@ -2,24 +2,24 @@
 include_once 'includes/init.php';
 
 if ( ! $is_admin ) {
-  $error = "You are not authorized";
+  $error = 'You are not authorized';
 } else  {
-  $delete = getPostValue ( "delete" );
+  $delete = getPostValue ( 'delete' );
   if ( ! empty ( $delete ) ) {
     // delete this group
     dbi_execute ( "DELETE FROM webcal_group WHERE cal_group_id = ? ", array( $id ) );
     dbi_execute ( "DELETE FROM webcal_group_user WHERE cal_group_id = ? ", array( $id ) );
   } else {
-    $date = date ( "Ymd" );
+    $date = date ( 'Ymd' );
     if ( empty ( $groupname ) ) {
-      $error = translate("You must specify a group name");
+      $error = translate( 'You must specify a group name' );
     }
     else if ( ! empty ( $id ) ) {
       # update
       if ( ! dbi_execute ( "UPDATE webcal_group SET cal_name = " .
         "?, cal_last_update = ? " .
         "WHERE cal_group_id = ?", array( $groupname, $date, $id ) ) ) {
-        $error = translate ("Database error") . ": " . dbi_error();
+        $error = translate( 'Database error' ) . ': ' . dbi_error();
       }
     } else {
       # new... get new id first
@@ -32,10 +32,10 @@ if ( ! $is_admin ) {
         $sql = "INSERT INTO webcal_group " .
           "( cal_group_id, cal_owner, cal_name, cal_last_update ) VALUES ( ?, ?, ?, ? )";
         if ( ! dbi_execute ( $sql, array( $id, $login, $groupname, $date ) ) ) {
-          $error = translate ("Database error") . ": " . dbi_error();
+          $error = translate( 'Database error' ) . ': ' . dbi_error();
         }
       } else {
-        $error = translate ("Database error") . ": " . dbi_error();
+        $error = translate( 'Database error' ) . ': ' . dbi_error();
       }
     }
   
@@ -54,7 +54,7 @@ if ( ! empty ( $error ) ) {
   print_header( '', '', '', true );
 
 ?>
-<h2><?php etranslate("Error")?></h2>
+<h2><?php etranslate( 'Error' )?></h2>
 
 <blockquote>
 <?php
@@ -67,6 +67,7 @@ echo $error;
 </body>
 </html>
 <?php } else if ( empty ( $error ) ) {
-?><html><head></head><body onLoad="alert('<?php etranslate("Changes successfully saved", true);?>'); window.parent.location.href='users.php';">
+?><html><head></head><body onLoad="alert('<?php 
+  etranslate( 'Changes successfully saved', true);?>'); window.parent.location.href='users.php';">
 </body></html>
 <?php } ?>

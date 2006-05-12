@@ -42,13 +42,13 @@ $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 $nextdate = sprintf ( "%04d%02d01", $nextyear, $nextmonth );
-$nextYmd = date ( "Ymd", $next );
+$nextYmd = date ( 'Ymd', $next );
 
 $prev = mktime ( 3, 0, 0, $thismonth - 1, 1, $thisyear );
 $prevyear = date ( "Y", $prev );
 $prevmonth = date ( "m", $prev );
 $prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
-$prevYmd = date ( "Ymd", $prev );
+$prevYmd = date ( 'Ymd', $prev );
 
 
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
@@ -62,18 +62,18 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
 }
 
 
-$thisdate = date ( "Ymd", $startdate );
+$thisdate = date ( 'Ymd', $startdate );
 
 // get users in this view
 $viewusers = view_get_user_list ( $id );
 if ( count ( $viewusers ) == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view
-  $error = translate ( "No users for this view" );
+  $error = translate ( 'No users for this view' ) ;
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<h2>" . translate ( "Error" ) .
+  echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
   print_trailer ();
   exit;
@@ -143,7 +143,7 @@ display_unapproved_events ( ( $is_assistant ||
 
 <br />
 <a title="<?php 
- etranslate("Generate printer-friendly version")
+ etranslate ( 'Generate printer-friendly version' )
 ?>" class="printer" href="view_l.php?id=<?php echo $id?>&amp;<?php
  if ( $thisyear ) {
   echo "year=$thisyear&amp;month=$thismonth&amp;";
@@ -151,8 +151,8 @@ display_unapproved_events ( ( $is_assistant ||
  if ( ! empty ( $user ) ) echo "user=$user&amp;";
  if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
 ?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php 
- etranslate("Generate printer-friendly version")?>'">[<?php 
- etranslate("Printer Friendly")?>]</a>
+ etranslate ( 'Generate printer-friendly version' )?>'">[<?php 
+ etranslate ( 'Printer Friendly' )?>]</a>
 
 <?php print_trailer ();?>
 </body>

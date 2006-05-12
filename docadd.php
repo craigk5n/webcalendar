@@ -35,17 +35,17 @@ switch ( $type ) {
   case 'C':
     if ( empty ( $id ) )
       $error = 'No id specified';
-    $title = translate ( "Add Comment" );
+    $title = translate ( 'Add Comment' );
     break;
   case 'A':
     if ( empty ( $id ) )
       $error = 'No id specified';
-    $title = translate ( "Add Attachment" );
-    $upload = ini_get ( "file_uploads" );
+    $title = translate ( 'Add Attachment' );
+    $upload = ini_get ( 'file_uploads' );
     $upload_enabled = ! empty ( $upload ) &&
       preg_match ( "/(On|1|true|yes)/i", $upload );
     if ( ! $upload_enabled ) {
-      $error = "You must enable file_uploads in php.ini";
+      $error = 'You must enable file_uploads in php.ini';
     }
     break;
   default:
@@ -77,14 +77,14 @@ if ( empty ( $error ) && ! empty ( $id ) ) {
 
 if ( $type == 'A' ) {
   if ( empty ( $ALLOW_ATTACH ) || $ALLOW_ATTACH != 'Y' )
-    $error = translate('You are not authorized');
+    $error = translate( 'You are not authorized' );
   else if ( empty ( $error ) && $ALLOW_ATTACH_PART == 'Y' && $is_my_event )
     $can_add = true;
   else if ( $ALLOW_ATTACH_ANY == 'Y' )
     $can_add = true;
 } else if ( $type == 'C' ) {
   if ( empty ( $ALLOW_COMMENTS ) || $ALLOW_COMMENTS != 'Y' )
-    $error = translate('You are not authorized');
+    $error = translate( 'You are not authorized' );
   else if ( empty ( $error ) && $ALLOW_COMMENTS_PART == 'Y' && $is_my_event )
     $can_add = true;
   else if ( $ALLOW_COMMENTS_ANY == 'Y' )
@@ -96,11 +96,11 @@ if ( access_is_enabled () ) {
 }
 
 if ( ! $can_add )
-  $error = translate ( "You are not authorized" );
+  $error = translate ( 'You are not authorized' );
 
 if ( ! empty ( $error ) ) {
   print_header ();
-  echo "<h2>" . translate("Error") . "</h2>" . $error;
+  echo '<h2>' . translate( 'Error' ) . '</h2>' . $error;
   print_trailer ();
   echo "</body></html>\n";
   exit;
@@ -114,7 +114,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   // get next id first
   $res = dbi_execute ( "SELECT MAX(cal_blob_id) FROM webcal_blob" );
   if ( ! $res ) {
-    die_miserable_death ( translate("Database error") . ": " .
+    die_miserable_death ( translate( 'Database error' ) . ": " .
       dbi_error () );
   }
   if ( $row = dbi_fetch_row ( $res ) )
@@ -131,12 +131,12 @@ if ( $REQUEST_METHOD == 'POST' ) {
       "cal_id, cal_login, cal_name, cal_description, " .
       "cal_size, cal_mime_type, cal_type, cal_mod_date, " .
       "cal_mod_time, cal_blob ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, NULL, $description, 0, 'text/plain', 'C', date("Ymd"), date("His"), NULL ) ) ) {
-      $error = translate ( "Database error" ) . ": " . dbi_error ();
+    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, NULL, $description, 0, 'text/plain', 'C', date('Ymd'), date("His"), NULL ) ) ) {
+      $error = translate ( 'Database error' ) . ": " . dbi_error ();
     } else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
         "cal_blob_id = $nextid", $comment ) ) {
-        $error = translate ( "Database error" ) . ": " . dbi_error ();
+        $error = translate ( 'Database error' ) . ": " . dbi_error ();
       } else {
         // success!  redirect to view event page
         activity_log ( $id, $login, $login, LOG_COMMENT, '' );
@@ -152,7 +152,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
       $file = $HTTP_POST_FILES['FileName'];
     }
     if ( empty ( $file['file'] ) )
-      $error = "File Upload error!<br/>";
+      $error = 'File Upload error!<br/>';
 
     //print_r ( $file ); exit;
     $mimetype = $file['type'];
@@ -178,12 +178,12 @@ if ( $REQUEST_METHOD == 'POST' ) {
       "cal_id, cal_login, cal_name, cal_description, " .
       "cal_size, cal_mime_type, cal_type, cal_mod_date, " .
       "cal_mod_time, cal_blob ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, $filename, $description, $filesize, $mimetype, 'A', date("Ymd"), date("His"), NULL ) ) ) {
-      $error = translate ( "Database error" ) . ": " . dbi_error ();
+    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, $filename, $description, $filesize, $mimetype, 'A', date('Ymd'), date("His"), NULL ) ) ) {
+      $error = translate ( 'Database error' ) . ": " . dbi_error ();
     } else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
         "cal_blob_id = $nextid", $data ) ) {
-        $error = translate ( "Database error" ) . ": " . dbi_error ();
+        $error = translate ( 'Database error' ) . ": " . dbi_error ();
       } else {
         // success!  redirect to view event page
         activity_log ( $id, $login, $login, LOG_ATTACHMENT, $filename );
@@ -191,12 +191,12 @@ if ( $REQUEST_METHOD == 'POST' ) {
       }
     }
   } else {
-    die_miserable_death ( "Unsupported type" ); // programmer error
+    die_miserable_death ( 'Unsupported type' ); // programmer error
   }
 
   if ( ! empty ( $error ) ) {
     print_header ();
-    echo "<h2>" . translate("Error") . "</h2>" . $error;
+    echo '<h2>' . translate( 'Error' ) . '</h2>' . $error;
     print_trailer ();
     echo "</body></html>\n";
     exit;
@@ -218,14 +218,14 @@ print_header ();
 <table style="border-width:0px;">
 
 <tr><td style="vertical-align:top;"><label for="description">
-  <?php etranslate("Subject")?>:</label></td>
+  <?php etranslate( 'Subject' )?>:</label></td>
   <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
 <!-- TODO: htmlarea or fckeditor support -->
 <tr><td style="vertical-align:top;"><label for="comment">
-  <?php etranslate("Comment")?>:</label></td>
+  <?php etranslate( 'Comment' )?>:</label></td>
   <td><textarea name="comment" rows="15" cols="60" wrap="auto"></textarea></td></tr>
 <tr><td colspan="2">
-<input type="submit" value="<?php etranslate("Add Comment")?>" /></td></tr>
+<input type="submit" value="<?php etranslate( 'Add Comment' )?>" /></td></tr>
 </table>
 </form>
 
@@ -240,21 +240,19 @@ print_header ();
 <input type="hidden" name="type" value="A" />
 <table style="border-width:0px;">
 <tr class="browse"><td>
- <label for="fileupload"><?php etranslate("Upload file");?>:</label></td><td>
+ <label for="fileupload"><?php etranslate( 'Upload file' );?>:</label></td><td>
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
 <tr><td style="vertical-align:top;"><label for="description">
-  <?php etranslate("Description")?>:</label></td>
+  <?php etranslate( 'Description' )?>:</label></td>
   <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
 
 <tr><td colspan="2">
-<input type="submit" value="<?php etranslate("Add Attachment")?>" /></td></tr>
+<input type="submit" value="<?php etranslate( 'Add Attachment' )?>" /></td></tr>
 
 </table>
 </form>
 
-<?php } ?>
-
-
-<?php print_trailer (); ?>
+<?php } 
+print_trailer (); ?>
 </body>
 </html>

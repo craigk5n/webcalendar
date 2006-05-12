@@ -26,9 +26,9 @@ include_once '../includes/config.php';
 include_once '../includes/translate.php';
 include_once 'default_config.php';
 include_once 'sql/upgrade_matrix.php';
-$file = "../includes/settings.php";
-$fileDir = "../includes";
-$basedir = "..";
+$file = '../includes/settings.php';
+$fileDir = '../includes';
+$basedir = '..';
 
 //change this path if needed
 $firebird_path = 'c&#58;/program files/firebird/firebird_1_5/examples/employee.fdb';
@@ -48,13 +48,17 @@ if ( ! empty (  $_SERVER['PHP_AUTH_USER'] ) )
 
 //We'll always use browser defined languages 
 $lang = get_browser_language ();
-if ( $lang == "none" )
- $lang = "";
+if ( $lang == 'none' )
+ $lang = '';
 if ( strlen ( $lang ) == 0 || $lang == 'none' ) {
-$lang = "English-US"; // Default
+$lang = 'English-US'; // Default
 }
 
-$lang_file = "translations/" . $lang . ".txt";
+$lang_file = 'translations/' . $lang . '.txt';
+
+$failure = '<b>' . translate ( 'Failure Reason' ) . ':</b><blockquote>';
+$selected = ' selected="selected" ';
+$checked = ' checked="checked" ';
 
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
@@ -129,16 +133,16 @@ function show_errors ( $error_val=0 ) {
  if ( empty ( $_SESSION['error_reporting'] ) )
     $_SESSION['error_reporting'] = get_php_setting ( 'error_reporting' ); 
   if ( $show_all_errors == true ) {
-   ini_set ( "error_reporting", 64 );
+   ini_set ( 'error_reporting', 64 );
  } else {
-    ini_set ( "error_reporting", ( $error_val? $_SESSION['error_reporting'] :64) );
+    ini_set ( 'error_reporting', ( $error_val? $_SESSION['error_reporting'] :64) );
  }
 }
 
 //We will convert from Server based storage to GMT time
 function convert_server_to_GMT () {
  //Default value 
- $error = "<b>Conversion Successful</b>";
+ $error = '<b>Conversion Successful</b>';
  // Do webcal_entry update
   $res = dbi_execute ( "SELECT cal_date, cal_time, cal_id, cal_duration FROM webcal_entry" );
   if ( $res ) {
@@ -158,8 +162,8 @@ function convert_server_to_GMT () {
      $si = substr ( $cal_time, 2, 2 );
      $ss = substr ( $cal_time, 4, 2 );   
      $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
-     $new_cal_date = gmdate ( "Ymd", $new_datetime );
-     $new_cal_time = gmdate ( "His", $new_datetime );
+     $new_cal_date = gmdate ( 'Ymd', $new_datetime );
+     $new_cal_time = gmdate ( 'His', $new_datetime );
      // Now update row with new data
      if ( ! dbi_execute ( "UPDATE webcal_entry SET cal_date = ?, " .
        " cal_time = ? ".
@@ -186,8 +190,8 @@ function convert_server_to_GMT () {
    $si = substr ( $cal_time, 2, 2 );
    $ss = substr ( $cal_time, 4, 2 );   
    $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
-   $new_cal_date = gmdate ( "Ymd", $new_datetime );
-   $new_cal_time = gmdate ( "His", $new_datetime );
+   $new_cal_date = gmdate ( 'Ymd', $new_datetime );
+   $new_cal_time = gmdate ( 'His', $new_datetime );
    // Now update row with new data
    if ( ! dbi_execute ( "UPDATE webcal_entry_log SET cal_date = ?, " .
      " cal_time = ? ".
@@ -202,13 +206,13 @@ function convert_server_to_GMT () {
    //Delete any existing entry
    $sql = "DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_TZ_CONVERSION'";
    if ( ! dbi_execute ( $sql ) ) {
-    $error = "Database error: " . dbi_error ();
+    $error = 'Database error: ' . dbi_error ();
     return $error;
    }
   $sql = "INSERT INTO webcal_config ( cal_setting, cal_value ) " .
    "VALUES ( 'WEBCAL_TZ_CONVERSION', 'Y' )";
   if ( ! dbi_execute ( $sql ) ) {
-    $error = "Database error: " . dbi_error ();
+    $error = 'Database error: ' . dbi_error ();
    return $error;
   }
  return $error;
@@ -220,12 +224,12 @@ function get_installed_version () {
   //disable warnings
  //show_errors ();
  // Set this as the default value
- $_SESSION['application_name']  = "Title";
- $_SESSION['old_program_version'] = "new_install";
- $_SESSION['blank_database'] = "";
+ $_SESSION['application_name']  = 'Title';
+ $_SESSION['old_program_version'] = 'new_install';
+ $_SESSION['blank_database'] = '';
  
  //We will append the db_type to come up te proper filename
-  $_SESSION['install_file'] = "tables";
+  $_SESSION['install_file'] = 'tables';
  //This data is read from file upgrade_matrix.php
  for ( $i=0; $i < count( $database_upgrade_matrix); $i++ ) {
    $sql = $database_upgrade_matrix[$i][0];
@@ -237,13 +241,10 @@ function get_installed_version () {
   }
 //echo $_SESSION['old_program_version'] . " " . $database_upgrade_matrix[$i][1] . "<br>";
  } 
- if ( $_SESSION['old_program_version'] == "pre-v0.9.07" ) {
-   $response_msg = translate ( "Your previous version of WebCalendar requires running a PERL script " .
-    "to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page " .
-    "to continue" ) .  ".";
+ if ( $_SESSION['old_program_version'] == 'pre-v0.9.07' ) {
+   $response_msg = translate ( 'Perl script required' );
  } else {
-   $response_msg = translate ( "Your previous version of WebCalendar requires updating several " .
-    "database tables" ) . "."; 
+   $response_msg = translate ( 'Your previous version of WebCalendar requires updating several database tables.' ); 
  }
  // v1.1 and after will have an entry in webcal_config to make this easier
  $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
@@ -252,7 +253,7 @@ function get_installed_version () {
    $row = dbi_fetch_row ( $res );
   if ( ! empty ( $row[0] ) ) {  
     $_SESSION['old_program_version'] = $row[0];
-    $_SESSION['install_file']  = "upgrade_" . $row[0];
+    $_SESSION['install_file']  = 'upgrade_' . $row[0];
   }
   dbi_free_result ( $res );
  }
@@ -324,7 +325,7 @@ function get_installed_version () {
 // We need to read it first in order to get the md5 password.
 $magic = @get_magic_quotes_runtime();
 @set_magic_quotes_runtime(0);    
-$fd = @fopen ( $file, "rb", true );
+$fd = @fopen ( $file, 'rb', true );
 $settings = array ();
 $password = '';
 $forcePassword = false;
@@ -333,7 +334,7 @@ if ( ! empty ( $fd ) ) {
     $buffer = fgets ( $fd, 4096 );
     $buffer = trim ( $buffer, "\r\n " );
     if ( preg_match ( "/^(\S+):\s*(.*)/", $buffer,  $matches ) ) {
-      if ( $matches[1] == "install_password" ) {
+      if ( $matches[1] == 'install_password' ) {
         $password = $matches[2];
         $settings['install_password'] = $password;
       }
@@ -352,7 +353,7 @@ $doLogin = false;
 
 // Set default Application Name
 if ( ! isset ( $_SESSION['application_name'] ) ) {
-  $_SESSION['application_name'] = "WebCalendar";
+  $_SESSION['application_name'] = 'WebCalendar';
 }
 
 // Set Server URL
@@ -374,7 +375,7 @@ if ( ! isset ( $_SESSION['server_url'] ) ) {
 // Handle "Logout" button
 if ( 'logout' == getGetValue ( 'action' ) ) {
   session_destroy ();
-  Header ( "Location: index.php" );
+  Header ( 'Location: index.php' );
   exit;
 }
 
@@ -386,7 +387,7 @@ if ( file_exists ( $file ) && ! empty ( $password ) &&
   $doLogin = true;
 }
 
-$pwd = getPostValue ( "password" );
+$pwd = getPostValue ( 'password' );
 if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
   if ( md5($pwd) == $password ) {
     $_SESSION['validuser'] = $password;
@@ -394,7 +395,7 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
       <html><head><title>Password Accepted</title>
       <meta http-equiv="refresh" content="0; index.php" />
       </head>
-      <body onLoad="alert('<?php etranslate ( "Successful Login", true ) ?>');">
+      <body onLoad="alert('<?php etranslate ( 'Successful Login', true ) ?>');">
       </body></html>
 <?php
     exit;
@@ -405,16 +406,16 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
       <html><head><title>Password Incorrect</title>
       <meta http-equiv="refresh" content="0; index.php" />
       </head>
-      <body onLoad="alert ('<?php etranslate ( "Invalid Login" ) ?>'); document.go(-1)">
+      <body onLoad="alert ('<?php etranslate ( 'Invalid Login' ) ?>'); document.go(-1)">
       </body></html>
 <?php
     exit;
   }
 }
-$safevarstring = "Safe Mode Allowed Vars  (" . 
-  translate ( "required only if Safe Mode is On" ) . ")";
-$allowurlstring = "Allow URL fopen  (" . 
-  translate ( "required only if Remote Calendars are used" ) . ")";
+$safevarstring = 'Safe Mode Allowed Vars  (' . 
+  translate ( 'required only if Safe Mode is On' ) . ')';
+$allowurlstring = 'Allow URL fopen  (' . 
+  translate ( 'required only if Remote Calendars are used' ) . ')';
 //[0]Display Text  [1]ini_get name [2]required value [3]ini_get string search value
 $php_settings = array (
   array ('Safe Mode','safe_mode','OFF', false),
@@ -432,33 +433,33 @@ $php_constants = array (
   // array ('CRYPT_MD5',CRYPT_MD5, 1)
   // array ('CRYPT_BLOWFISH',CRYPT_BLOWFISH, 1)
 
-$gdstring = "GD  (" . translate ( "needed for Gradient Image Backgrounds" ) . ")";
+$gdstring = 'GD  (' . translate ( 'needed for Gradient Image Backgrounds' ) . ')';
 $php_modules = array (
   array ($gdstring,'imagepng','ON'),
 );
 
-$pwd1 = getPostValue ( "password1" );
-$pwd2 = getPostValue ( "password2" );
+$pwd1 = getPostValue ( 'password1' );
+$pwd2 = getPostValue ( 'password2' );
 if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
   if ( $pwd1 != $pwd2 ) {
-    etranslate ( "Passwords do not match" ) . "!<br />\n";
+    etranslate ( 'Passwords do not match' ) . "!<br />\n";
     exit;
   }
-  $fd = @fopen ( $file, "a+b", false );
+  $fd = @fopen ( $file, 'a+b', false );
   if ( empty ( $fd ) ) {
-    echo "<html><body>" . translate ( "Unable to write password to settings.php file" ) . 
-    ".</body></html>";
+    echo '<html><body>' . translate ( 'Unable to write password to settings.php file' ) . 
+    '.</body></html>';
     exit;
   }
   fwrite ( $fd, "<?php\r\n" );
-  fwrite ( $fd, "install_password: " . md5($pwd1) . "\r\n" );
+  fwrite ( $fd, 'install_password: ' . md5($pwd1) . "\r\n" );
   fwrite ( $fd, "?>\r\n" );
   fclose ( $fd );
   ?>
     <html><head><title>Password Updated</title>
     <meta http-equiv="refresh" content="0; index.php" />
     </head>
-    <body onLoad="alert('<?php etranslate ( "Password has been set", true ) ?>');">
+    <body onLoad="alert('<?php etranslate ( 'Password has been set', true ) ?>');">
     </body></html>
   <?php
   exit;
@@ -466,7 +467,7 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
 
 $magic = @get_magic_quotes_runtime();
 @set_magic_quotes_runtime(0);
-$fd = @fopen ( $file, "rb", false );
+$fd = @fopen ( $file, 'rb', false );
 if ( ! empty ( $fd ) ) {
   while ( ! feof ( $fd ) ) {
     $buffer = fgets ( $fd, 4096 );
@@ -485,23 +486,23 @@ if ( ! empty ( $fd ) ) {
 }
 @set_magic_quotes_runtime($magic);
 
-$action = getGetValue ( "action" );
+$action = getGetValue ( 'action' );
 // We were set here because of a mismatch of $PROGRAM_VERSION
 // A simple way to ensure that UPGRADING.html gets read and processed
-if ( ! empty ( $action ) && $action == "mismatch" ) {
-  $version = getGetValue ( "version" );
+if ( ! empty ( $action ) && $action == 'mismatch' ) {
+  $version = getGetValue ( 'version' );
  $_SESSION['old_program_version'] = $version;
 }
 
 // Go to the proper page
-if ( ! empty ( $action ) && $action == "switch" ) {
-  $page = getGetValue ( "page" );
+if ( ! empty ( $action ) && $action == 'switch' ) {
+  $page = getGetValue ( 'page' );
  switch ( $page ){
  
    case 2:
      if ( ! empty ( $_SESSION['validuser'] ) ){  
        $_SESSION['step'] = $page;
-    $onload = "db_type_handler();";
+    $onload = 'db_type_handler();';
     }
    break;
   case 3;
@@ -513,7 +514,7 @@ if ( ! empty ( $action ) && $action == "switch" ) {
      if ( ! empty ( $_SESSION['validuser'] ) && ! empty ( $_SESSION['db_success'] )  &&
       empty ( $_SESSION['db_create'] ) ){  
        $_SESSION['step'] = $page;
-    $onload = "auth_handler();";
+    $onload = 'auth_handler();';
     }
    break;
   default:
@@ -529,7 +530,7 @@ function parse_sql($sql) {
  $buffer_str = '';
  for($i=0; $i < strlen($sql); $i++) {
     $buffer_str .= substr($sql, $i, 1);
-  if(substr( $sql,$i, 1) == ";") {
+  if(substr( $sql,$i, 1) == ';') {
    $ret[] = $buffer_str;
    $buffer_str = '';
   }
@@ -539,24 +540,24 @@ function parse_sql($sql) {
 
 function db_populate ( $install_filename, $display_sql ) {
   global $str_parsed_sql, $show_all_errors;
-  if ( $install_filename == "" ) return;
- $full_sql = "";
+  if ( $install_filename == '' ) return;
+ $full_sql = '';
  $current_pointer = false;
  $magic = @get_magic_quotes_runtime();
  @set_magic_quotes_runtime(0);
- $fd = @fopen ( "sql/" . $install_filename, "r", true);
+ $fd = @fopen ( 'sql/' . $install_filename, 'r', true);
  //discard everything up to the required point in the upgrade file 
  while (!feof($fd) && empty ( $current_pointer ) ) {
   $data = fgets($fd, 4096);
   $data = trim ( $data, "\r\n " );
   if ( strpos(  strtoupper ( $data ) , strtoupper ( $_SESSION['install_file'] ) )  || 
-    substr( $_SESSION['install_file'], 0, 6 ) == "tables" ) {
+    substr( $_SESSION['install_file'], 0, 6 ) == 'tables' ) {
     $current_pointer = true;
   }
  }
  //We already have a $data item from above
  if ( substr ( $data , 0 , 2 ) == "/*" && 
-   substr( $_SESSION['install_file'], 0, 6 ) != "tables" ) {
+   substr( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
   //Do nothing...We skip over comments in upgrade files
  } else {
   $full_sql .= $data;
@@ -565,8 +566,8 @@ function db_populate ( $install_filename, $display_sql ) {
  while (!feof($fd)  ) {
   $data = fgets($fd, 4096);
   $data = trim ( $data, "\r\n " );
-  if ( substr ( $data , 0 , 2 ) == "/*" && 
-   substr( $_SESSION['install_file'], 0, 6 ) != "tables" ) {
+  if ( substr ( $data , 0 , 2 ) == '/*' && 
+   substr( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
     //Do nothing...We skip over comments in upgrade files
   } else {
     $full_sql .= $data;
@@ -582,7 +583,7 @@ function db_populate ( $install_filename, $display_sql ) {
  $str_parsed_sql = "";
   for ( $i = 0; $i < count($parsed_sql); $i++ ) {
     if ( empty ( $display_sql ) ){ 
-  if ( $show_all_errors == true ) echo $parsed_sql[$i] . "<br />";
+  if ( $show_all_errors == true ) echo $parsed_sql[$i] . '<br />';
       dbi_execute ( $parsed_sql[$i], array(), false, $show_all_errors );   
   } else {
     $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
@@ -594,7 +595,7 @@ function db_populate ( $install_filename, $display_sql ) {
 } //end db_populate
 
 // We're doing a database installation yea ha!
-if ( ! empty ( $action ) &&  $action == "install" ){
+if ( ! empty ( $action ) &&  $action == 'install' ){
     // We'll grab database settings from settings.php
     $db_persistent = false;
     $db_type = $settings['db_type'];
@@ -612,37 +613,37 @@ if ( ! empty ( $action ) &&  $action == "install" ){
   // and we just want to do the database population routines
   if ( $c && isset ( $_SESSION['install_file'] )  ) {
    $sess_install = $_SESSION['install_file'];
-    $install_filename = ( $sess_install == "tables" ? "tables":"upgrade");
+    $install_filename = ( $sess_install == 'tables' ? 'tables':'upgrade');
     switch ( $db_type ) {
-       case "mysql";
-      $install_filename .= "-mysql.sql";    
+       case 'mysql';
+      $install_filename .= '-mysql.sql';    
         break;
-       case "mysqli";
-      $install_filename .= "-mysql.sql";    
+       case 'mysqli';
+      $install_filename .= '-mysql.sql';    
         break;      
-       case "mssql";
-      $install_filename .="-mssql.sql";    
+       case 'mssql';
+      $install_filename .= '-mssql.sql';    
         break;
-       case "ibm_db2";
-      $install_filename .="-db2.sql";    
+       case 'ibm_db2';
+      $install_filename .= '-db2.sql';    
         break;
-     case "oracle";
-      $install_filename .= "-oracle.sql";    
+     case 'oracle';
+      $install_filename .= '-oracle.sql';    
       break;
-       case "ibase";
-      $install_filename .= "-ibase.sql";    
+       case 'ibase';
+      $install_filename .= '-ibase.sql';    
         break;
-       case "postgresql";
-      $install_filename .= "-postgres.sql";    
+       case 'postgresql';
+      $install_filename .= '-postgres.sql';    
         break;
-     case "odbc";
-       $underlying_db = "-" . $_SESSION['odbc_db'] . ".sql";
+     case 'odbc';
+       $underlying_db = "-" . $_SESSION['odbc_db'] . '.sql';
       $install_filename .= $underlying_db;        
       break;
-     case "sqlite";
-       include_once "sql/tables-sqlite.php";
+     case 'sqlite';
+       include_once 'sql/tables-sqlite.php';
       populate_sqlite_db ( $db_database, $c );
-      $install_filename =  "";      
+      $install_filename =  '';      
       break;      
      default; 
     }
@@ -664,7 +665,7 @@ if ( ! empty ( $action ) &&  $action == "install" ){
   
    // If new install, run 0 GMT offset
    //just to set webcal_config.WEBCAL_TZ_CONVERSION
-   if ( $_SESSION['old_program_version'] == "new_install" ) {
+   if ( $_SESSION['old_program_version'] == 'new_install' ) {
      convert_server_to_GMT ();
    }
    
@@ -678,21 +679,21 @@ if ( ! empty ( $action ) &&  $action == "install" ){
    // Update the version info
    get_installed_version();
    
-   $_SESSION['blank_database'] = "";
+   $_SESSION['blank_database'] = '';
   } //end if $display_sql
   
 } //end database installation
 
 //Set the value of the underlying database for ODBC connections
-if ( ! empty ( $action ) &&  $action == "set_odbc_db" ){
- $_SESSION['odbc_db'] = getPostValue("odbc_db");
+if ( ! empty ( $action ) &&  $action == 'set_odbc_db' ){
+ $_SESSION['odbc_db'] = getPostValue( 'odbc_db' );
 }
 
-$post_action = getPostValue ( "action" );
-$post_action2 = getPostValue ( "action2" );
+$post_action = getPostValue ( 'action' );
+$post_action2 = getPostValue ( 'action2' );
 // Is this a db connection test?
 // If so, just test the connection, show the result and exit.
-if (  ! empty ( $post_action ) && $post_action == "Test Settings"  && 
+if (  ! empty ( $post_action ) && $post_action == 'Test Settings'  && 
   ! empty ( $_SESSION['validuser'] )  ) {
     $response_msg = '';
     $response_msg2 = '';
@@ -705,7 +706,7 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
     $db_password = getPostValue ( 'form_db_password' );
     $db_cachedir = getPostValue ( 'form_db_cachedir' );
     //Allow  field length to change if needed
-   $onload = "db_type_handler();";
+   $onload = 'db_type_handler();';
  
    //disable warnings
    show_errors ();
@@ -721,36 +722,33 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
       // Do some queries to try to determine the previous version
       get_installed_version();
    
-      $response_msg = "<b>" .translate ( "Connection Successful" ) . "</b> " .
-      translate ( "Please go to next page to continue installation" ) . ".";
+      $response_msg = '<b>' .translate ( 'Connection Successful' ) . '</b> ' .
+      translate ( 'Please go to next page to continue installation' ) . '.';
    
     } else {
-      $response_msg =  "<b>" . translate ( "Failure Reason" ) . 
-        ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
+      $response_msg =  $failure . dbi_error () . "</blockquote>\n";
      // See if user is valid, but database doesn't exist
      // The normal call to dbi_connect simply return false for both conditions
-     if ( $db_type == "mysql"  ) {
+     if ( $db_type == 'mysql'  ) {
        $c = mysql_connect ( $db_host, $db_login, $db_password, '' , false );
-     } else if ( $db_type == "mssql"  ) {
+     } else if ( $db_type == 'mssql'  ) {
        $c = mssql_connect ( $db_host, $db_login, $db_password, '', false );
-     } else if ( $db_type == "postgresql"  ) {
+     } else if ( $db_type == 'postgresql'  ) {
        $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1', false);
-     } else if ( $db_type == "ibase"  ) {
+     } else if ( $db_type == 'ibase'  ) {
       //TODO figure out how to remove this hardcoded link
        $c = dbi_connect ( $db_host, $db_login, $db_password , $firebird_path, false);
      } //TODO Code remaining database types
      if ( $c ) { // credentials are valid, but database doesn't exist
-        $response_msg = translate ( "Correct your entries or click the <b>Create New</b> button to continue installation" );
+        $response_msg = translate ( 'Correct your entries or click the <b>Create New</b> button to continue installation' );
        $_SESSION['db_noexist'] = true;
      } else {
-       if ( $db_type == "ibase"  ) {
-         $response_msg = "<b>" . translate ( "Failure Reason" ) . 
-           ":</b><blockquote>" . translate ( "You must manually create database" ) . 
+       if ( $db_type == 'ibase'  ) {
+         $response_msg = $failure . translate ( 'You must manually create database' ) . 
            "</blockquote>\n";
        } else {
-         $response_msg = "<b>" . translate ( "Failure Reason" ) .
-           ":</b><blockquote>" . dbi_error () . "</blockquote>\n" .
-           translate ( "Correct your entries and try again" );
+         $response_msg = $failure . dbi_error () . "</blockquote>\n" .
+           translate ( 'Correct your entries and try again' );
        }
      } 
   } //end if ($c)
@@ -758,18 +756,18 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
   //test db_cachedir directory for write permissions
   if ( strlen ( $db_cachedir ) > 0 ) {   
     if ( ! file_exists ( $db_cachedir ) ) {
-      $response_msg2 = "<b>" . translate ( "Failure Reason" ) . ":</b>" .
-        translate ( "Database Cache Directory" ) . " " . translate ( "does not exist" );
+      $response_msg2 = '<b>' . translate ( 'Failure Reason' ) . ':</b>'.
+        translate ( 'Database Cache Directory' ) . ' ' . translate ( 'does not exist' );
     } else if ( ! is_writable ( $db_cachedir ) ) {
-      $response_msg2 = "<b>" . translate ( "Failure Reason" ) . ":</b>" .
-        translate ( "Database Cache Directory" ) . " " . translate ( "is not writable" );
+      $response_msg2 = '<b>' . translate ( 'Failure Reason' ) . ':</b>' .
+        translate ( 'Database Cache Directory' ) . ' ' . translate ( 'is not writable' );
       } else {
     }      
   }
 
 // Is this a db create?
 // If so, just test the connection, show the result and exit.
-} else if ( ! empty ( $post_action2 ) && $post_action2== "Create New"  && 
+} else if ( ! empty ( $post_action2 ) && $post_action2== 'Create New'  && 
   ! empty ( $_SESSION['validuser'] ) && ! empty ( $_SESSION['db_noexist'] )) {
     $_SESSION['db_success'] = false;
 
@@ -781,67 +779,61 @@ if (  ! empty ( $post_action ) && $post_action == "Test Settings"  &&
     $db_password = getPostValue ( 'form_db_password' );
 
     //Allow ODBC field to be visible if needed
-   $onload = "db_type_handler();";
+   $onload = 'db_type_handler();';
   
     // We don't use the normal dbi_execute because we need to know
   // the difference between no conection and no database 
-  if ( $db_type == "mysql" ) {
+  if ( $db_type == 'mysql' ) {
       $c = dbi_connect ( $db_host, $db_login, $db_password, 'mysql', false );
       if ( $c ) {
      dbi_execute ( "CREATE DATABASE $db_database;" , array(), false, $show_all_errors);
     if ( ! @mysql_select_db ( $db_database ) ) {
-      $response_msg = "<b>" . translate ( "Failure Reason" ) . 
-     ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
+      $response_msg = $failure . dbi_error () . "</blockquote>\n";
     } else {
       $_SESSION['db_noexist'] = false;
       $_SESSION['old_program_version'] = 'new_install';
     }
     } else {
-      $response_msg = "<b>" . translate ( "Failure Reason" ) . 
-     ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
+      $response_msg = $failure . dbi_error () . "</blockquote>\n";
 
    }
-  } else if ( $db_type == "mssql" ) {
+  } else if ( $db_type == 'mssql' ) {
       $c = dbi_connect ( $db_host, $db_login, $db_password , 'master', false);
       if ( $c ) {
      dbi_execute ( "CREATE DATABASE $db_database;" , array(), false, $show_all_errors);
     if ( ! @mssql_select_db ( $db_database ) ) {
-      $response_msg = "<b>" . translate ( "Failure Reason" ) . 
-     ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
+      $response_msg = $failure . dbi_error () . "</blockquote>\n";
 
     } else {
       $_SESSION['db_noexist'] = false;
       $_SESSION['old_program_version'] = 'new_install';
     }
      } else {
-      $response_msg = "<b>" . translate ( "Failure Reason" ) . 
-     ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
+      $response_msg = $failure . dbi_error () . "</blockquote>\n";
 
    }
-  } else if ( $db_type == "postgresql" ) {
+  } else if ( $db_type == 'postgresql' ) {
    $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1', false); 
       if ( $c ) {
      dbi_execute ( "CREATE DATABASE $db_database" , array(), false, $show_all_errors);
      $_SESSION['db_noexist'] = false;
     } else {
-      $response_msg = "<b>" . translate ( "Failure Reason" ) . 
-     ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
+      $response_msg = $failure . dbi_error () . "</blockquote>\n";
 
    }
-  } else if ( $db_type == "ibase" ) {
+  } else if ( $db_type == 'ibase' ) {
 
-      $response_msg = "<b>" . translate ( "Failure Reason" ) . 
-     ":</b><blockquote>" . translate ( "You must manually create database" ) . 
+      $response_msg = $failure . translate ( 'You must manually create database' ) . 
      "</blockquote>\n";
      
   } // TODO code remainig database types
   //allow bypass of TZ Conversion
-  $_SESSION['tz_conversion'] = "Y";
+  $_SESSION['tz_conversion'] = 'Y';
 }
 
 // Is this a Timezone Convert?
 // If so, run it
-if ( ! empty ( $action ) && $action == "tz_convert" && ! empty ( $_SESSION['validuser'] ) ) {
+if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['validuser'] ) ) {
     $db_persistent = false;
     $db_type = $settings['db_type'];
     $db_host = $settings['db_host'];
@@ -849,30 +841,29 @@ if ( ! empty ( $action ) && $action == "tz_convert" && ! empty ( $_SESSION['vali
     $db_login = $settings['db_login'];
     $db_password = $settings['db_password'];
   // Avoid false visibilty of single user login
-  $onload = "auth_handler();";   
+  $onload = 'auth_handler();';   
     $c = dbi_connect ( $db_host, $db_login,
       $db_password, $db_database, false );
  
     if ( $c ) {
         $ret = convert_server_to_GMT ();
-    if ( substr ( $ret, 3, 21 ) == "Conversion Successful" ) {
+    if ( substr ( $ret, 3, 21 ) == 'Conversion Successful' ) {
       $_SESSION['tz_conversion']  = 'Success';
-     $response_msg = translate ( "Timezone Conversion Successful" );
+     $response_msg = translate ( 'Timezone Conversion Successful' );
     } else {
-       $response_msg = translate ( "Error Converting Timezone" );
+       $response_msg = translate ( 'Error Converting Timezone' );
     }
     } else {
-      $response_msg = "<b>" . translate ( "Failure Reason" ) . 
-     ":</b><blockquote>" . dbi_error () . "</blockquote>\n";
+      $response_msg = $failure . dbi_error () . "</blockquote>\n";
     }
 }
 
 // Is this a call to phpinfo()?
-if ( ! empty ( $action ) && $action == "phpinfo" ) {
+if ( ! empty ( $action ) && $action == 'phpinfo' ) {
   if ( ! empty ( $_SESSION['validuser'] ) ) {
     phpinfo();
   } else {
-    etranlate ( "You are not authorized" ) . ".";
+    etranlate ( 'You are not authorized' ) . '.';
   }
   exit;
 }
@@ -891,7 +882,7 @@ if ( $exists ) {
   $canWrite = is_writable ( $file );
 } else {
   // check to see if we can create the settings file.
-  $testFd = @fopen ( $file, "w+b", false );
+  $testFd = @fopen ( $file, 'w+b', false );
   if ( file_exists ( $file ) ) {
     $canWrite = true;
     $exists  = true;
@@ -902,7 +893,7 @@ if ( $exists ) {
 
 // If we are handling a form POST, then take that data and put it in settings
 // array.
-$x = getPostValue ( "form_db_type" );
+$x = getPostValue ( 'form_db_type' );
 if ( empty ( $x ) ) {
   // No form was posted.  Set defaults if none set yet.
   if ( ! file_exists ( $file ) || count ( $settings ) == 1) {
@@ -941,16 +932,16 @@ if ( empty ( $x ) ) {
   $settings['single_user'] = ( ! isset ( $settings['single_user'] )?
     'false': $settings['single_user']);
 }
-$y = getPostValue ( "app_settings" );
+$y = getPostValue ( 'app_settings' );
 if ( ! empty ( $y ) ) {
   $settings['single_user_login'] = getPostValue ( 'form_single_user_login' );
   $settings['readonly'] = getPostValue ( 'form_readonly' );
   $settings['mode'] = getPostValue ( 'form_mode' );
-  if ( getPostValue ( "form_user_inc" ) == "http" ) {
+  if ( getPostValue ( 'form_user_inc' ) == 'http' ) {
     $settings['use_http_auth'] = 'true';
     $settings['single_user'] = 'false';
     $settings['user_inc'] = 'user.php';
-  } else if ( getPostValue ( "form_user_inc" ) == "none" ) {
+  } else if ( getPostValue ( 'form_user_inc' ) == 'none' ) {
     $settings['use_http_auth'] = 'false';
     $settings['single_user'] = 'true';
     $settings['user_inc'] = 'user.php';
@@ -963,8 +954,8 @@ if ( ! empty ( $y ) ) {
  //Save Application Name and Server URL
  $db_persistent = false;
  $db_type = $settings['db_type'];
- $_SESSION['application_name']  = getPostValue ( "form_application_name" );
- $_SESSION['server_url']  = getPostValue ( "form_server_url" );
+ $_SESSION['application_name']  = getPostValue ( 'form_application_name' );
+ $_SESSION['server_url']  = getPostValue ( 'form_server_url' );
   $c = dbi_connect ( $settings['db_host'], $settings['db_login'],
     $settings['db_password'], $settings['db_database'], false );
  if ( $c ) {
@@ -979,7 +970,7 @@ if ( ! empty ( $y ) ) {
           "VALUES ('SERVER_URL', ?)" , array ( $_SESSION['server_url'] ) );
   }
  }
- $do_load_admin = getPostValue ( "load_admin" );
+ $do_load_admin = getPostValue ( 'load_admin' );
  if ( ! empty ( $do_load_admin ) ) {
   //add default admin user if not exists
   db_load_admin ();
@@ -988,26 +979,26 @@ if ( ! empty ( $y ) ) {
 }
   // Save settings to file now.
 if ( ! empty ( $x ) || ! empty ( $y ) ){
-  $fd = @fopen ( $file, "w+b", false );
+  $fd = @fopen ( $file, 'w+b', false );
   if ( empty ( $fd ) ) {
     if ( file_exists ( $file ) ) {
-      $onload = "alert('" . translate ( "Error Unable to write to file", true ) . 
-     $file . "\\n" . translate ( "Please change the file permissions of this file", true ) . ".');";
+      $onload = "alert('" . translate ( 'Error Unable to write to file', true ) . 
+     $file . "\\n" . translate ( 'Please change the file permissions of this file', true ) . ".');";
     } else {
-      $onload = "alert('" . translate ( "Error Unable to write to file", true ) . 
-     $file. "\\n" . translate ( "Please change the file permissions of your includes directory to allow writing by other users", true ) . ".');";
+      $onload = "alert('" . translate ( 'Error Unable to write to file', true ) . 
+     $file. "\\n" . translate ( 'Please change includes dir premission', true ) . ".');";
     }
   } else {
     fwrite ( $fd, "<?php\r\n" );
-    fwrite ( $fd, "# updated via install/index.php on " . date("r") . "\r\n" );
+    fwrite ( $fd, '# updated via install/index.php on ' . date('r') . "\r\n" );
     foreach ( $settings as $k => $v ) {
-      if ( $v != "<br />" && $v != '' )
+      if ( $v != '<br />' && $v != '' )
       fwrite ( $fd, $k . ": " . $v . "\r\n" );
     }
     fwrite ( $fd, "# end settings.php\r\n?>\r\n" );
     fclose ( $fd );
     if ( $post_action != 'Test Settings' && $post_action2 != 'Create New' ){
-      $onload .= "alert('" . translate ( "Your settings have been saved", true ) . ".\\n\\n');";
+      $onload .= "alert('" . translate ( 'Your settings have been saved', true ) . ".\\n\\n');";
     }
 
     // Change to read/write by us only (only applies if we created file)
@@ -1024,7 +1015,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head><title>WebCalendar Setup Wizard</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<?php include "../includes/js/visible.php"; ?>
+<?php include '../includes/js/visible.php'; ?>
 <script language="JavaScript" type="text/javascript">
 <!-- <![CDATA[
 <?php   if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
@@ -1050,24 +1041,24 @@ function validate(form)
   if ( form.form_user_inc.options[listid].selected ) {
     if ( form.form_single_user_login.value.length == 0 ) {
       // No single user login specified
-      alert ("<?php etranslate ("Error you must specify a\\nSingle-User Login", true ) ?> ");
+      alert ("<?php etranslate ( 'Error you must specify a\\nSingle-User Login', true ) ?> ");
       form.form_single_user_login.focus ();
       return false;
     }
   }
   if ( form.form_server_url.value == "" ) {
-    err += "<?php etranslate ( "Server URL is required", true ) ?>" + "\n";
+    err += "<?php etranslate ( 'Server URL is required', true ) ?>" + "\n";
     form.form_server_url.select ();
     form.form_server_url.focus ();
   }
   else if ( form.form_server_url.value.charAt (
     form.form_server_url.value.length - 1 ) != '/' ) {
-    err += "<?php etranslate ( "Server URL must end with", true )?>" + "'/'\n";
+    err += "<?php etranslate ( 'Server URL must end with', true )?>" + "'/'\n";
     form.form_server_url.select ();
     form.form_server_url.focus ();
   }
  if ( err != "" ) {
-    alert ( "<?php etranslate ( "Error", true ) ?>" + ":\n\n" + err );
+    alert ( "<?php etranslate ( 'Error', true ) ?>" + ":\n\n" + err );
     return false;
   }
   // Submit form...
@@ -1096,11 +1087,11 @@ function db_type_handler () {
   if ( selectvalue == "sqlite" || selectvalue == "ibase" ) {
       form.form_db_database.size = 65;
     document.getElementById("db_name").innerHTML = 
-    "<?php etranslate ( "Database Name" ) ?>" + ":" +  
-   "<?php etranslate ( "Full Path (no backslashes)") ?>";
+    "<?php etranslate ( 'Database Name' ) ?>" + ":" +  
+   "<?php etranslate ( 'Full Path (no backslashes)') ?>";
   } else {
       form.form_db_database.size = 20;
-    document.getElementById("db_name").innerHTML = "<?php etranslate ( "Database Name" ) ?>" + ":";
+    document.getElementById("db_name").innerHTML = "<?php etranslate ( 'Database Name' ) ?>" + ":";
   }
 }
 function chkPassword () {
@@ -1109,7 +1100,7 @@ function chkPassword () {
   var illegalChars = /\#/;
   // do not allow #.../\#/ would stop all non-alphanumeric
   if (illegalChars.test(db_pass)) {
-    alert( "<?php etranslate ( "The password contains illegal characters.", true ) ?>");
+    alert( "<?php etranslate ( 'The password contains illegal characters.', true ) ?>");
     form.form_db_password.select ();
     form.form_db_password.focus ();
     return false;
@@ -1173,39 +1164,40 @@ doc.li {
 }
 </style>
 </head>
-<body <?php if ( ! empty ($onload) ) echo "onload=\"$onload\""; ?> >
-<?php   //print_r ( $_SERVER ); ?>
-<?php if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
+<body <?php if ( ! empty ($onload) ) echo 'onload="$onload"'; ?> >
+<?php   //print_r ( $_SERVER );
+if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <table border="1" width="90%" align="center">
-<tr><th class="pageheader"  colspan="2"><?php echo translate ( "WebCalendar Installation Wizard" ) . ":" . translate ( "Step" ) ?> 1</th></tr>
+<tr><th class="pageheader"  colspan="2"><?php echo 
+  translate ( 'WebCalendar Installation Wizard' ) . ':' . translate ( 'Step' ) ?> 1</th></tr>
 <tr><td colspan="2" width="50%">
-<?php etranslate ( "This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see" ) ?>:<br />
+<?php etranslate ( 'This installation wizard will guide you...' ) ?>:<br />
 <a href="../docs/WebCalendar-SysAdmin.html" target="_docs">System Administrator's Guide</a>,
 <a href="../docs/WebCalendar-SysAdmin.html#faq" target="_docs">FAQ</a>,
 <a href="../docs/WebCalendar-SysAdmin.html#trouble" target="_docs">Troubleshooting</a>,
 <a href="../docs/WebCalendar-SysAdmin.html#help" target="_docs">Getting Help</a>,
 <a href="../UPGRADING.html" target="_docs">Upgrading Guide</a>
 </td></tr>
-<tr><th class="header"  colspan="2"><?php etranslate ( "PHP Version Check" ) ?></th></tr>
+<tr><th class="header"  colspan="2"><?php etranslate ( 'PHP Version Check' ) ?></th></tr>
 <tr><td>
-<?php etranslate ( "Check to see if PHP 4.1.0 or greater is installed" ) ?>. 
+<?php etranslate ( 'Check to see if PHP 4.1.0 or greater is installed' ) ?>. 
 </td>
   <?php
-    $class = ( version_compare(phpversion(), "4.1.0", ">=") ) ?
+    $class = ( version_compare(phpversion(), '4.1.0', '>=') ) ?
       'recommended' : 'notrecommended';
-    echo "<td class=\"$class\">";
+    echo '<td class="$class">';
     if ($class='recommended') {
-     echo "<img src=\"recommended.gif\" alt=\"\"/>&nbsp;";
+      echo '<img src="recommended.gif" alt=""/>&nbsp;';
     } else {
- echo "<img src=\"not_recommended.jpg\" alt=\"\"/>&nbsp;";
+      echo '<img src="not_recommended.jpg" alt=""/>&nbsp;';
     }
-    echo translate ( "PHP version") . " " . phpversion();
+    echo translate ( 'PHP version') . ' ' . phpversion();
    ?>
 </td></tr>
 <tr><th class="header" colspan="2">
  PHP Settings
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
-  &nbsp;<input name="action" type="button" value="<?php etranslate ( "Detailed PHP Info" ) ?>" onClick="testPHPInfo()" />
+  &nbsp;<input name="action" type="button" value="<?php etranslate ( 'Detailed PHP Info' ) ?>" onClick="testPHPInfo()" />
 <?php } ?>
 </th></tr>
 <?php foreach ( $php_settings as $setting ) { ?>
@@ -1214,76 +1206,77 @@ doc.li {
     $ini_get_result = get_php_setting ( $setting[1], $setting[3] );
     $class = ( $ini_get_result == $setting[2] ) ?
       'recommended' : 'notrecommended';
-    echo "<td class=\"$class\">";
+    echo '<td class="$class">';
     if ($class == 'recommended') {
-      echo "<img src=\"recommended.gif\" alt=\"\"/>&nbsp;";
+      echo '<img src="recommended.gif" alt=""/>&nbsp;';
     } else {
-      echo "<img src=\"not_recommended.jpg\" alt=\"\"/>&nbsp;";
+      echo '<img src="not_recommended.jpg" alt=""/>&nbsp;';
     }
     echo $ini_get_result;
    ?>
    </td></tr>
-<?php } ?>
-<?php foreach ( $php_constants as $constant ) { ?>
+<?php }
+ foreach ( $php_constants as $constant ) { ?>
   <tr><td class="prompt"><?php echo $constant[0];?></td>
   <?php
     $class = (  $constant[1] ) == $constant[2]  ?
       'recommended' : 'notrecommended';
-    echo "<td class=\"$class\">";
+    echo '<td class"$class\">';
     if ($class == 'recommended') {
-      echo "<img src=\"recommended.gif\" alt=\"\"/>&nbsp;ON";
+      echo '<img src="recommended.gif" alt=""/>&nbsp;ON';
     } else {
-      echo "<img src=\"not_recommended.jpg\" alt=\"\"/>&nbsp;OFF";
+      echo '<img src="not_recommended.jpg" alt=""/>&nbsp;OFF';
     }
    ?>
    </td></tr>
-<?php } ?>  
+<?php }  
 
-<?php foreach ( $php_modules as $module ) { ?>
+ foreach ( $php_modules as $module ) { ?>
   <tr><td class="prompt"><?php echo $module[0];?></td>
   <?php
     $class = ( get_php_modules ( $module[1] ) == $module[2] ) ?
       'recommended' : 'notrecommended';
-    echo "<td class=\"$class\">";
+    echo '<td class="$class">';
     if ($class == 'recommended') {
-     echo "<img src=\"recommended.gif\" alt=\"\"/>&nbsp;";
+     echo '<img src="recommended.gif" alt=""/>&nbsp;';
     } else {
- echo "<img src=\"not_recommended.jpg\" alt=\"\"/>&nbsp;";
+ echo '<img src="not_recommended.jpg" alt=""/>&nbsp;';
     }
     echo get_php_modules ( $module[1] );
    ?>
    </td></tr>
 <?php } ?>  
 
- <tr><th class="header" colspan="2"><?php etranslate ( "Session Check" ) ?></th></tr>
+ <tr><th class="header" colspan="2"><?php etranslate ( 'Session Check' ) ?></th></tr>
  <tr><td>
-  <?php echo translate ( "To test the proper operation of sessions, reload this page" ) . "<br />" . 
-  translate ( "You should see the session counter increment each time" ) ?>.</td>
+  <?php echo translate ( 'To test the proper operation of sessions, reload this page' ) . 
+  '<br />' . 
+  translate ( 'You should see the session counter increment each time' ) ?>.</td>
 <?php
     $class = ( $_SESSION['check'] > 0 ) ?
       'recommended' : 'notrecommended';
-    echo "<td class=\"$class\">";
+    echo '<td class="$class">';
     if ($_SESSION['check'] > 0) {
-     echo "<img src=\"recommended.gif\" alt=\"\"/>&nbsp;";
+     echo '<img src="recommended.gif" alt=""/>&nbsp;';
     } else {
- echo "<img src=\"not_recommended.jpg\" alt=\"\"/>&nbsp;";
+      echo '<img src="not_recommended.jpg" alt=""/>&nbsp;';
     }
-     echo translate ( "SESSION COUNTER" ) . ": " . $_SESSION['check'];
+     echo translate ( 'SESSION COUNTER' ) . ': ' . $_SESSION['check'];
 ?>
  </td></tr>
 <?php //if the settings file doesn't exist or we can't write to it, echo an error header..
 if ( ! $exists || ! $canWrite ) { ?>
- <tr><th class="redheader" colspan="2"><?php echo translate ( "Settings.php Status" ) . 
-   ":" . translate ( "Error" ) ?></th></tr>
+ <tr><th class="redheader" colspan="2"><?php echo translate ( 'Settings.php Status' ) . 
+   ":" . translate ( 'Error' ) ?></th></tr>
 <?php //..otherwise, edit a regular header
 } else { ?>
  <tr><th class="header" colspan="2">Settings.php Status</th></tr>
-<?php } ?>
-<?php //if the settings file exists, but we can't write to it..
+<?php }
+ //if the settings file exists, but we can't write to it..
  if ( $exists && ! $canWrite ) { ?>
   <tr><td>
    <img src="not_recommended.jpg" alt=""/>&nbsp;<?php 
-     etranslate ( "The file permissions of <b>settings.php</b> are set..." ) ?>:</td><td>
+     etranslate ( 'The file permissions of <b>settings.php</b> are set...' ) ?>:</td><td>
    <blockquote><b>
     <?php echo realpath ( $file ); ?>
    </b></blockquote>
@@ -1292,7 +1285,7 @@ if ( ! $exists || ! $canWrite ) { ?>
  } else if ( ! $exists && ! $canWrite ) { ?>
   <tr><td colspan="2">
    <img src="not_recommended.jpg" alt=""/>&nbsp;<?php 
-     etranslate ( "The file permissions of the <b>includes</b> directory are set..." ) ?>:
+     etranslate ( 'The file permissions of the <b>includes</b> directory are set...' ) ?>:
    <blockquote><b>
     <?php echo realpath ( $fileDir ); ?>
    </b></blockquote>
@@ -1300,20 +1293,20 @@ if ( ! $exists || ! $canWrite ) { ?>
 <?php //if settings.php DOES exist & we CAN write to it..
  } else { ?>
   <tr><td>
-   <?php etranslate ( "Your <b>settings.php</b> file appears to be valid" ) 
+   <?php etranslate ( 'Your <b>settings.php</b> file appears to be valid' ) 
      ?>.</td><td class="recommended">
    <img src="recommended.gif" alt=""/>&nbsp;OK
   </td></tr>
 
 <?php if (  empty ( $_SESSION['validuser'] ) ) { ?>
  <tr><th colspan="2" class="header"><?php 
-   etranslate ( "Configuration Wizard Password" ) ?></th></tr>
+   etranslate ( 'Configuration Wizard Password' ) ?></th></tr>
  <tr><td colspan="2" align="center" style="border:none">
  <?php if ( $doLogin ) { ?>
   <form action="index.php" method="post" name="dblogin">
    <table>
     <tr><th>
-     <?php etranslate ( "Password" ) ?>:</th><td>
+     <?php etranslate ( 'Password' ) ?>:</th><td>
      <input name="password" type="password" />
      <input type="submit" value="Login" />
     </td></tr>
@@ -1323,76 +1316,75 @@ if ( ! $exists || ! $canWrite ) { ?>
   <form action="index.php" method="post" name="dbpassword">
    <table border="0">
     <tr><th colspan="2" class="header">
-     <?php etranslate ( "Create Settings File Password" ) ?>
+     <?php etranslate ( 'Create Settings File Password' ) ?>
     </th></tr>
     <tr><th>
-     <?php etranslate ( "Password" ) ?>:</th><td>
+     <?php etranslate ( 'Password' ) ?>:</th><td>
      <input name="password1" type="password" />
     </td></tr>
     <tr><th>
-     <?php etranslate ( "Password (again)" ) ?>:</th><td>
+     <?php etranslate ( 'Password (again)' ) ?>:</th><td>
      <input name="password2" type="password" />
     </td></tr>
     <tr><td colspan="2" align="center">
-     <input type="submit" value="<?php etranslate ( "Set Password" ) ?>" />
+     <input type="submit" value="<?php etranslate ( 'Set Password' ) ?>" />
     </td></tr>
    </table>
   </form>
- <?php } ?>
-<?php } ?>
-<?php } ?> 
+ <?php }
+  }
+} ?> 
 </td></tr></table>
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
 <table border="0" width="90%" align="center">
  <tr><td align="center">
   <form action="index.php?action=switch&amp;page=2" method="post">
-   <input type="submit" value="<?php etranslate ( "Next" ) ?> ->" />
+   <input type="submit" value="<?php etranslate ( 'Next' ) ?> ->" />
   </form>
  </td></tr>
 </table>
-<?php } ?>
+<?php } 
 
-<?php //BEGIN STEP 2 
+//BEGIN STEP 2 
 } else if ( $_SESSION['step'] == 2 ) { ?>
 
 <table border="1" width="90%" align="center">
  <tr><th class="pageheader" colspan="2">
-  <?php echo translate ( "WebCalendar Installation Wizard" ) . ": " . translate ( "Step" ) ?> 2
+  <?php echo translate ( 'WebCalendar Installation Wizard' ) . ': ' . 
+  translate ( 'Step' ) ?> 2
  </th></tr>
  <tr><td colspan="2" width="50%">
-  <?php echo translate ( "In this section you will set up and test a connection to your database server" ) . ". " .
-    translate ( "The account information supplied should have FULL permissions to create databases, tables and users" ) . "." . 
-   translate ( "If this is not possible, or your database access is limited, you will have to manually configure your database" ) ?>.
+  <?php echo translate ( 'db setup directions...' )?>.
  </td></tr>
  <tr><th colspan="2" class="header">
-  <?php etranslate ( "Database Status" ) ?>
+  <?php etranslate ( 'Database Status' ) ?>
  </th></tr>
  <tr><td>
   <ul>
-   <li><?php etranslate ( "Supported databases for your PHP installation" ) ?>:
+   <li><?php etranslate ( 'Supported databases for your PHP installation' ) ?>:
 <?php
   $dbs = array ();
-  if ( function_exists ( "mysql_pconnect" ) )
-    $dbs[] = "mysql";
-  if ( function_exists ( "mysqli_connect" ) )
-    $dbs[] = "mysqli";
-  if ( function_exists ( "OCIPLogon" ) )
-    $dbs[] = "oracle";
-  if ( function_exists ( "pg_pconnect" ) )
-    $dbs[] = "postgresql";
+  if ( function_exists ( 'mysql_connect' ) )
+    $dbs[] = 'mysql';
+  if ( function_exists ( 'mysqli_connect' ) )
+    $dbs[] = 'mysqli';
+  if ( function_exists ( 'OCIPLogon' ) )
+    $dbs[] = 'oracle';
+  if ( function_exists ( 'pg_pconnect' ) )
+    $dbs[] = 'postgresql';
   if ( function_exists ( "odbc_pconnect" ) )
-    $dbs[] = "odbc";
-  if ( function_exists ( "ibase_pconnect" ) )
-    $dbs[] = "ibase";
-  if ( function_exists ( "mssql_pconnect" ) )
-    $dbs[] = "mssql";
-  if ( function_exists ( "sqlite_open" ) )
-    $dbs[] = "sqlite";
-  if ( function_exists ( "db2_pconnect" ) )
-    $dbs[] = "ibm_db2";
+    $dbs[] = 'odbc';
+  if ( function_exists ( 'ibase_connect' ) )
+    $dbs[] = 'ibase';
+  if ( function_exists ( "mssql_connect" ) )
+    $dbs[] = 'mssql';
+  if ( function_exists ( 'sqlite_open' ) )
+    $dbs[] = 'sqlite';
+  if ( function_exists ( 'db2_pconnect' ) )
+    $dbs[] = 'ibm_db2';
 
   for ( $i = 0; $i < count ( $dbs ); $i++ ) {
-    if ( $i ) echo ", ";
+    if ( $i ) echo ', ';
   echo  $dbs[$i] ;
     $supported[$dbs[$i]] = true;
   }
@@ -1400,119 +1392,119 @@ if ( ! $exists || ! $canWrite ) { ?>
 
 <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  ) { ?>
   <li class="recommended"><img src="recommended.gif" alt=""/>&nbsp;<?php 
-   etranslate ( "Your current database settings are able to access the database" ) ?>.</li>
+   etranslate ( 'Your current database settings are able to access the database' ) ?>.</li>
   <?php if ( ! empty ( $response_msg )  && empty ( $response_msg2 ) ) { ?>
   <li class="recommended"><img src="recommended.gif" alt=""/>&nbsp;<?php 
     echo $response_msg; ?></li>
    <?php } elseif ( empty ( $response_msg2 ) ) {?>
   <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<b><?php 
-    etranslate ( "Please Test Settings" ) ?></b></li>  
-  <?php } ?>
-<?php } else { ?>
-  <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<?php etranslate ( "Your current database settings are <b>not</b> able to access the database or have not yet been tested" ) ?>.</li>
+    etranslate ( 'Please Test Settings' ) ?></b></li>  
+  <?php } 
+ } else { ?>
+  <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<?php etranslate ( 'Your current database settings are <b>not</b> able to access the database or have not yet been tested' ) ?>.</li>
   <?php if ( ! empty ( $response_msg ) ) { ?>
   <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<?php echo $response_msg; ?></li>
-   <?php } ?>
-<?php } ?>
-<?php if (  ! empty ( $response_msg2 ) ) { ?>
+   <?php }
+ } 
+ if (  ! empty ( $response_msg2 ) ) { ?>
   <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<b><?php 
   echo $response_msg2; ?></b></li>  
 <?php }  ?>
 </ul>
 </td></tr>
 <tr><th class="header" colspan="2">
- <?php etranslate ( "Database Settings" ) ?>
+ <?php etranslate ( 'Database Settings' ) ?>
 </th></tr>
 <tr><td>
  <form action="index.php" method="post" name="dbform" onSubmit="return chkPassword()">
  <table align="right" width="100%" border="0">
   <tr><td rowspan="7" width="20%">&nbsp;
    </td><td class="prompt" width="25%" valign="bottom">
-   <label for="db_type"><?php etranslate ( "Database Type" ) ?>:</label></td><td valign="bottom">
+   <label for="db_type"><?php etranslate ( 'Database Type' ) ?>:</label></td><td valign="bottom">
    <select name="form_db_type" id="db_type" onChange="db_type_handler();">
 <?php
   if ( ! empty ( $supported['mysql'] ) )
-    echo "  <option value=\"mysql\" " .
-      ( $settings['db_type'] == 'mysql' ? " selected=\"selected\"" : "" ) .
+    echo '  <option value="mysql" ' .
+      ( $settings['db_type'] == 'mysql' ? $selected : '' ) .
       ">MySQL</option>\n";
       
   if ( ! empty ( $supported['mysqli'] ) )
-    echo "  <option value=\"mysqli\" " .
-      ( $settings['db_type'] == 'mysqli' ? " selected=\"selected\"" : "" ) .
+    echo '  <option value="mysqli" ' .
+      ( $settings['db_type'] == 'mysqli' ? $selected : '' ) .
       ">MySQL (Improved)</option>\n";
 
   if ( ! empty ( $supported['oracle'] ) )
-    echo "  <option value=\"oracle\" " .
-      ( $settings['db_type'] == 'oracle' ? " selected=\"selected\"" : "" ) .
+    echo '  <option value="oracle" ' .
+      ( $settings['db_type'] == 'oracle' ? $selected : '' ) .
       ">Oracle (OCI)</option>\n";
 
   if ( ! empty ( $supported['postgresql'] ) )
-    echo "  <option value=\"postgresql\" " .
-      ( $settings['db_type'] == 'postgresql' ? " selected=\"selected\"" : "" ) .
+    echo '  <option value="postgresql" ' .
+      ( $settings['db_type'] == 'postgresql' ? $selected : '' ) .
       ">PostgreSQL</option>\n";
 
   if ( ! empty ( $supported['ibm_db2'] ) )
-    echo "  <option value=\"ibm_db2\" " .
-      ( $settings['db_type'] == 'ibm_db2' ? " selected=\"selected\"" : "" ) .
+    echo '  <option value="ibm_db" ' .
+      ( $settings['db_type'] == 'ibm_db2' ? $selected : '' ) .
       ">IBM DB2 Universal Database</option>\n";
 
   if ( ! empty ( $supported['odbc'] ) )
-    echo "  <option value=\"odbc\" " .
-      ( $settings['db_type'] == 'odbc' ? " selected=\"selected\"" : "" ) .
+    echo '  <option value="odbc" ' .
+      ( $settings['db_type'] == 'odbc' ? $selected : '' ) .
       ">ODBC</option>\n";
 
   if ( ! empty ( $supported['ibase'] ) )
-    echo "  <option value=\"ibase\" " .
-      ( $settings['db_type'] == 'ibase' ? " selected=\"selected\"" : "" ) .
+    echo '  <option value="ibase" ' .
+      ( $settings['db_type'] == 'ibase' ? $selected : '' ) .
       ">Interbase</option>\n";
 
   if ( ! empty ( $supported['mssql'] ) )
-    echo "  <option value=\"mssql\" " .
-      ( $settings['db_type'] == 'mssql' ? " selected=\"selected\"" : "" ) .
+    echo '  <option value="mssql" ' .
+      ( $settings['db_type'] == 'mssql' ? $selected : '' ) .
       ">MS SQL Server</option>\n";
       
   if ( ! empty ( $supported['sqlite'] ) )
-    echo "  <option value=\"sqlite\" " .
-      ( $settings['db_type'] == 'sqlite' ? " selected=\"selected\"" : "" ) .
+    echo '  <option value="sqlite" ' .
+      ( $settings['db_type'] == 'sqlite' ? $selected : '' ) .
       ">SQLite</option>\n";
 ?>
    </select>
   </td></tr>
   <tr><td class="prompt">
-   <label for="server"><?php etranslate ( "Server" ) ?>:</label></td><td colspan="2">
+   <label for="server"><?php etranslate ( 'Server' ) ?>:</label></td><td colspan="2">
    <input name="form_db_host" id="server" size="20" value="<?php echo $settings['db_host'];?>" />
   </td></tr>
   <tr><td class="prompt">
-   <label for="login"><?php etranslate ( "Login" ) ?>:</label></td><td colspan="2">
+   <label for="login"><?php etranslate ( 'Login' ) ?>:</label></td><td colspan="2">
    <input name="form_db_login" id="login" size="20" value="<?php echo $settings['db_login'];?>" />
   </td></tr>
   <tr><td class="prompt">
-   <label for="pass"><?php etranslate ( "Password" ) ?>:</label></td><td colspan="2">
+   <label for="pass"><?php etranslate ( 'Password' ) ?>:</label></td><td colspan="2">
    <input name="form_db_password" id="pass"  size="20" value="<?php echo $settings['db_password'];?>" />
   </td></tr>
   <tr><td class="prompt" id="db_name">
-   <label for="database"><?php etranslate ( "Database Name" ) ?>:</label></td><td colspan="2">
+   <label for="database"><?php etranslate ( 'Database Name' ) ?>:</label></td><td colspan="2">
    <input name="form_db_database" id="database" size="20" value="<?php echo $settings['db_database'];?>" />
   </td></tr>
 
 <?php
   // This a workaround for postgresql. The db_type should be 'pgsql' but 'postgresql' is used
  // in a lot of places...so this is easier for now :(  
-  $real_db_type = ( $settings['db_type'] == "postgresql" ? "pgsql" : $settings['db_type'] );
-  if ( substr( php_sapi_name(), 0, 3) <> "cgi" && 
-        ini_get( $real_db_type . ".allow_persistent" ) ){ ?>
+  $real_db_type = ( $settings['db_type'] == 'postgresql' ? 'pgsql' : $settings['db_type'] );
+  if ( substr( php_sapi_name(), 0, 3) <> 'cgi' && 
+        ini_get( $real_db_type . '.allow_persistent' ) ){ ?>
   <tr><td class="prompt">
-   <label for="conn_pers"><?php etranslate ( "Connection Persistence" ) ?>:</label></td><td colspan="2">
+   <label for="conn_pers"><?php etranslate ( 'Connection Persistence' ) ?>:</label></td><td colspan="2">
    <label><input name="form_db_persistent" value="true" type="radio"<?php 
-    echo ( $settings['db_persistent'] == 'true' ) ? " checked=\"checked\"" : ""; ?> /><?php etranslate ( "Enabled" ) ?></label>
+    echo ( $settings['db_persistent'] == 'true' ) ? $checked : ''; ?> /><?php etranslate ( 'Enabled' ) ?></label>
   &nbsp;&nbsp;&nbsp;&nbsp;
    <label><input name="form_db_persistent" value="false" type="radio"<?php 
-    echo ( $settings['db_persistent'] != 'true' )? " checked=\"checked\"" : ""; ?> /><?php etranslate ( "Disabled" ) ?></label>
+    echo ( $settings['db_persistent'] != 'true' )? $checked : ''; ?> /><?php etranslate ( 'Disabled' ) ?></label>
 <?php } else { // Need to set a default value ?>
    <input name="form_db_persistent" value="false" type="hidden" />
 <?php } ?>
   </td></tr>
-  <tr><td class="prompt"><?php etranslate ( "Database Cache Directory" ) ?>:</td>
+  <tr><td class="prompt"><?php etranslate ( 'Database Cache Directory' ) ?>:</td>
    <td><?php if ( empty ( $settings['db_cachedir'] ) ) $settings['db_cachedir'] = '';  ?>
    <input  type="text" size="70" name="form_db_cachedir" id="form_db_cachedir" value="<?php 
      echo $settings['db_cachedir']; ?>"/></td></tr>  
@@ -1522,11 +1514,10 @@ if ( ! $exists || ! $canWrite ) { ?>
     $class = ( ! empty ( $_SESSION['db_success'] ) ) ?
       'recommended' : 'notrecommended';
     echo "<input name=\"action\" type=\"submit\" value=\"Test Settings\" class=\"$class\" />\n";
-  ?>
- <?php
-     if ( ! empty ( $_SESSION['db_noexist'] ) &&  empty ( $_SESSION['db_success'] ) ){
+
+   if ( ! empty ( $_SESSION['db_noexist'] ) &&  empty ( $_SESSION['db_success'] ) ){
        echo "<input name=\"action2\" type=\"submit\" value=\"" . 
-      translate ( "Create New" ). "\" class=\"recommended\" />\n";
+      translate ( 'Create New' ). "\" class=\"recommended\" />\n";
    } 
   ?>
 </td></tr>
@@ -1539,73 +1530,72 @@ if ( ! $exists || ! $canWrite ) { ?>
 <table border="0" width="90%" align="center">
 <tr><td align="right" width="40%">
   <form action="index.php?action=switch&amp;page=1" method="post">
-    <input type="submit" value="<- <?php etranslate ( "Back" ) ?>" />
+    <input type="submit" value="<- <?php etranslate ( 'Back' ) ?>" />
   </form>
 </td><td align="center" width="20%">
   <form action="index.php?action=switch&amp;page=3" method="post">
-    <input type="submit" value="<?php etranslate ( "Next" ) ?> ->" <?php echo ( ! empty ($_SESSION['db_success'] )? "" : "disabled" ); ?> />
+    <input type="submit" value="<?php etranslate ( 'Next' ) ?> ->" <?php echo ( ! empty ($_SESSION['db_success'] )? '' : 'disabled' ); ?> />
   </form>
 </td><td align="left" width="40%">
   <form action="" method="post">
- <input type="button" value="<?php etranslate ( "Logout" ) ?>" <?php echo ( ! empty ($_SESSION['validuser'] )? "" : "disabled" ); ?> 
+ <input type="button" value="<?php etranslate ( 'Logout' ) ?>" <?php echo ( ! empty ($_SESSION['validuser'] )? '' : 'disabled' ); ?> 
   onclick="document.location.href='index.php?action=logout'" />
   </form>
 </td></tr>
 </table>
 
-<?php } else if ( $_SESSION['step'] == 3 ) { ?>
-<?php 
+<?php } else if ( $_SESSION['step'] == 3 ) { 
   //print_r ( $_SESSION); 
   $_SESSION['db_updated'] = false;
   if ( $_SESSION['old_program_version'] == $PROGRAM_VERSION  && 
    empty ( $_SESSION['blank_database'] ) ){
-   $response_msg = translate ( "All your database tables appear to be up to date. You may proceed to the") . " " . 
-       translate ( "next page and complete your WebCalendar setup" ) .".";
+   $response_msg = translate ( 'All your database tables appear to be up to date. You may proceed to the') . ' ' . 
+       translate ( 'next page and complete your WebCalendar setup' ) .'.';
   $_SESSION['db_updated'] = true; 
-  } else if ( $_SESSION['old_program_version'] == "new_install" ) {
-   $response_msg = translate ( "This appears to be a new installation. If this is not correct, please") . " " .
-      translate ("go back to the previous page and correct your settings" ) . ".";  
+  } else if ( $_SESSION['old_program_version'] == 'new_install' ) {
+   $response_msg = translate ( 'This appears to be a new installation. If this is not correct, please') . ' ' .
+      translate ( 'go back to the previous page and correct your settings' ) . '.';  
   } else if ( ! empty ( $_SESSION['blank_database'] ) ){
-   $response_msg =translate ( "The database requires some data input" ) . ". " . 
-      translate ( "Click <b>Update Database</b> to complete the upgrade" ) . ".";  
+   $response_msg =translate ( 'The database requires some data input' ) . '. ' . 
+      translate ( 'Click <b>Update Database</b> to complete the upgrade' ) . '.';  
   } else {
-     $response_msg = translate ( "This appears to be an upgrade from version")  . 
-     "&nbsp;" .   $_SESSION['old_program_version'] . "&nbsp;" .
-     translate ( "to" ) . " " .  $PROGRAM_VERSION. ".";
+     $response_msg = translate ( 'This appears to be an upgrade from version' )  . 
+     '&nbsp;' .   $_SESSION['old_program_version'] . '&nbsp;' .
+     translate ( 'to' ) . ' ' .  $PROGRAM_VERSION. '.';
   }
 ?>
 <table border="1" width="90%" align="center">
-<tr><th class="pageheader" colspan="2"><?php echo translate ( "WebCalendar Installation Wizard" ) . 
- ": " . translate ( "Step" ) ?> 3</th></tr>
+<tr><th class="pageheader" colspan="2"><?php echo translate ( 'WebCalendar Installation Wizard' ) . 
+ ': ' . translate ( 'Step' ) ?> 3</th></tr>
 <tr><td colspan="2" width="50%">
-<?php echo translate ( "In this section we will perform the required database changes to bring your database up to the required level" ) . " " .
-  translate ( "If you are using a fully supported database, this step will be performed automatically for you" ) . " " . 
-  translate ( "If not, the required SQL can be displayed and you should be able" ) . " " .
-  translate ( "to cut &amp; paste it into your database server query window" ) ?>.
+<?php echo translate ( 'In this section we will perform the required database changes to bring your database up to the required level' ) . ' ' .
+  translate ( 'If you are using a fully supported database, this step will be performed automatically for you' ) . ' ' . 
+  translate ( 'If not, the required SQL can be displayed and you should be able' ) . ' ' .
+  translate ( 'to cut &amp; paste it into your database server query window' ) ?>.
 </td></tr>
-<tr><th colspan="2" class="header"><?php etranslate ( "Database Status" ) ?></th></tr>
+<tr><th colspan="2" class="header"><?php etranslate ( 'Database Status' ) ?></th></tr>
 <tr><td>
 <?php echo $response_msg; ?>
 </td></tr>
 <?php if ( ! empty ( $_SESSION['db_updated'] ) ){ ?>
-<tr><th colspan="2" class="header"><?php etranslate ( "No database actions are required" ) ?></th></tr>
+<tr><th colspan="2" class="header"><?php etranslate ( 'No database actions are required' ) ?></th></tr>
 <?php } else { ?>
-<tr><th colspan="2" class="redheader"><?php etranslate ( "The following database actions are required" ) ?></th></tr>
- <?php if ( $settings['db_type']  == "odbc" &&  empty ( $_SESSION['db_updated'] ) ) { ?>
- <?php  if ( empty ( $_SESSION['odbc_db'] ) ) $_SESSION['odbc_db'] = "mysql"; ?>
+<tr><th colspan="2" class="redheader"><?php etranslate ( 'The following database actions are required' ) ?></th></tr>
+ <?php if ( $settings['db_type']  == 'odbc' &&  empty ( $_SESSION['db_updated'] ) ) {
+ <if ( empty ( $_SESSION['odbc_db'] ) ) $_SESSION['odbc_db'] = 'mysql'; ?>
 <tr><td id="odbc_db" align="center" nowrap>
 <form action="index.php?action=set_odbc_db" method="post" name="set_odbc_db">
-<b><?php etranslate ( "ODBC Underlying Database" ) ?>:</b> <select name="odbc_db"  onchange="document.set_odbc_db.submit();">
+<b><?php etranslate ( 'ODBC Underlying Database' ) ?>:</b> <select name="odbc_db"  onchange="document.set_odbc_db.submit();">
   <option value="mysql"
-   <?php echo $_SESSION['odbc_db'] == "mysql"? " selected=\"selected\"" : "" ; ?> >MySQL</option>
+   <?php echo $_SESSION['odbc_db'] == 'mysql'? $selected : '' ; ?> >MySQL</option>
   <option value="mssql"
-   <?php echo $_SESSION['odbc_db'] == "mssql"? " selected=\"selected\"" : "" ; ?> >MS SQL</option>
+   <?php echo $_SESSION['odbc_db'] == 'mssql'? $selected : '' ; ?> >MS SQL</option>
   <option value="oracle"
-   <?php echo $_SESSION['odbc_db'] == "oracle"? " selected=\"selected\"" : "" ; ?> >Oracle</option>
+   <?php echo $_SESSION['odbc_db'] == 'oracle'? $selected : '' ; ?> >Oracle</option>
   <option value="postgresql"
-  <?php echo $_SESSION['odbc_db'] == "postgresql"? " selected=\"selected\"" : "" ; ?> >PostgreSQL</option>
+  <?php echo $_SESSION['odbc_db'] == 'postgresql'? $selected : '' ; ?> >PostgreSQL</option>
   <option value="ibase" 
-  <?php echo $_SESSION['odbc_db'] == "ibase"? " selected=\"selected\"" : "" ; ?> >Interbase</option>
+  <?php echo $_SESSION['odbc_db'] == 'ibase'? $selected :''  ; ?> >Interbase</option>
 </select>
 </form>
 </td></tr>
@@ -1613,148 +1603,151 @@ if ( ! $exists || ! $canWrite ) { ?>
 <tr>
   <td class="recommended" align="center">
  <?php if ( ! empty ( $settings['db_type'] ) && empty ( $_SESSION['blank_database'] ) &&
-   ( $settings['db_type'] == "ibase" || $settings['db_type'] == "oracle" ) ) { ?>
- <?php etranslate ( "Automatic installation has not been fully implemented for your database type. You will
- have to manually create the required tables using the sql supplied. Please click
- <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window" ) ?>. 
- <?php } else { ?>
-  <?php etranslate ( "This may take several minutes to complete" ) ?>.
-  <?php if ( $_SESSION['old_program_version'] == "new_install" &&
+   ( $settings['db_type'] == 'ibase' || $settings['db_type'] == 'oracle' ) ) {
+  etranslate ( 'Automatic installation not supported' ) ?>. 
+ <?php } else {
+  etranslate ( 'This may take several minutes to complete' ) ?>.
+  <?php if ( $_SESSION['old_program_version'] == 'new_install' &&
    empty ( $_SESSION['blank_database'] ) ){ ?>
    <form action="index.php?action=install" method="post">
-      <input type="submit" value="<?php etranslate ( "Install Database" ) ?>" />
+      <input type="submit" value="<?php etranslate ( 'Install Database' ) ?>" />
     </form>
   <?php } else {//We're doing an upgrade ?>
   <form action="index.php?action=install" method="post">
     <input type="hidden" name="install_file" value="<?php echo $_SESSION['install_file']; ?>" />
-      <input type="submit" value="<?php etranslate ( "Update Database" ) ?>" />
+      <input type="submit" value="<?php etranslate ( 'Update Database' ) ?>" />
     </form>
-  <?php } ?>
- <?php } ?>
+  <?php }
+ } ?>
  </td></tr>
-  <?php if ( ! empty ( $settings['db_type'] ) && $settings['db_type'] != "sqlite" &&
+  <?php if ( ! empty ( $settings['db_type'] ) && $settings['db_type'] != 'sqlite' &&
    empty ( $_SESSION['blank_database'] ) ) { ?>
  <tr><td align="center">
    <form action="index.php?action=install" method="post" name="display">
     <input type="hidden" name="install_file" value="<?php echo $_SESSION['install_file']; ?>" />
    <input type="hidden" name="display_sql" value="1" />
-      <input type="submit" value="<?php etranslate ( "Display Required SQL" ) ?>" /><br />
+      <input type="submit" value="<?php etranslate ( 'Display Required SQL' ) ?>" /><br />
  <?php if ( ! empty ( $str_parsed_sql ) ) { ?>
     <textarea name="displayed_sql" cols="100" rows="12" ><?php echo $str_parsed_sql; ?></textarea>
    <br />
-      <p class="recommended"><?php etranslate ( "After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes" ) ?>.</p>
+      <p class="recommended"><?php 
+  etranslate ( 'Return to previous page after processing sql' ) ?>.</p>
  <?php } ?>
   </form>  
   </td></tr>
- <?php } ?> 
-<?php } ?>
+ <?php } 
+} ?>
 </table>
 <table border="0" width="90%" align="center">
 <tr><td align="right" width="40%">
   <form action="index.php?action=switch&amp;page=2" method="post">
-    <input type="submit" value="<- <?php etranslate ( "Back" ) ?>" />
+    <input type="submit" value="<- <?php etranslate ( 'Back' ) ?>" />
   </form>
 </td><td align="center" width="20%">
   <form action="index.php?action=switch&amp;page=4" method="post">
-    <input type="submit" value="<?php etranslate ( "Next" ) ?> ->" <?php echo ( empty ($_SESSION['db_updated'] )? "disabled" : "" ); ?> />
+    <input type="submit" value="<?php etranslate ( 'Next' ) ?> ->" <?php echo ( empty ($_SESSION['db_updated'] )? 'disabled' : '' ); ?> />
   </form>
 </td><td align="left" width="40%">
   <form action="" method="post">
-  <input type="button" value="<?php etranslate ( "Logout" ) ?>" <?php echo ( ! empty ($_SESSION['validuser'] )? "" : "disabled" ); ?>
+  <input type="button" value="<?php etranslate ( 'Logout' ) ?>" <?php echo ( ! empty ($_SESSION['validuser'] )? '' : 'disabled' ); ?>
    onclick="document.location.href='index.php?action=logout'" />
  </form>
 </td></tr>
 </table>
 <?php } else if ( $_SESSION['step'] == 4 ) { ?>
  <table border="1" width="90%" align="center">
-   <th class="pageheader" colspan="2"><?php echo translate ( "WebCalendar Installation Wizard" ) . 
-    ": " . translate ( "Step" ) ?> 4</th>
+   <th class="pageheader" colspan="2"><?php echo translate ( 'WebCalendar Installation Wizard' ) . 
+    ': ' . translate ( 'Step' ) ?> 4</th>
    <tr><td colspan="2" width="50%">
-     <?php etranslate ( "This is the final step in setting up your WebCalendar Installation" ) ?>.
+     <?php etranslate ( 'This is the final step in setting up your WebCalendar Installation' ) ?>.
    </td></tr>
-   <?php if ( $_SESSION['tz_conversion'] != "Y" ) { ?>
-  <th class="header" colspan="2"><?php etranslate ( "Timezone Conversion" ) ?></th></tr>
+   <?php if ( $_SESSION['tz_conversion'] != 'Y' ) { ?>
+  <th class="header" colspan="2"><?php etranslate ( 'Timezone Conversion' ) ?></th></tr>
   <tr><td colspan="2">
  <?php if ( empty ( $_SESSION['tz_conversion'] ) ) {?>
    <form action="index.php?action=tz_convert" method="post">
   <ul><li>
-<?php echo translate ( "It appears that you have" ) . " " . translate ("NOT"); ?> 
-  <?php etranslate ( "converted your existing WebCalendar event data to GMT" ) ?>.
-   <?php echo translate ( "If you have, you may ignore this notice and not proceed with the conversion" ) . " " .
-    translate ( "If this is a new installation, you may also ignore this notice." ) ?> .
+<?php echo translate ( 'It appears that you have' ) . ' ' . translate ( 'NOT' ); 
+  etranslate ( 'converted your existing WebCalendar event data to GMT' ) ?>.
+   <?php echo translate ( 'If you have, you may ignore this notice and not proceed with the conversion' ) . ' ' .
+    translate ( 'If this is a new installation, you may also ignore this notice.' ) ?> .
     </li></ul>
    <div align="center">
-     <input  type="submit" value="<?php etranslate ( "Convert Data to GMT") ?>:"  /></div>
+     <input  type="submit" value="<?php etranslate ( 'Convert Data to GMT') ?>:"  /></div>
    </form>
- <?php } else if ( $_SESSION['tz_conversion'] == "Success" ) { ?>
-    <ul><li><?php etranslate ( "Conversion Successful" ) ?></li></ul>
+ <?php } else if ( $_SESSION['tz_conversion'] == 'Success' ) { ?>
+    <ul><li><?php etranslate ( 'Conversion Successful' ) ?></li></ul>
  <?php } ?>
  </td></tr>
   <?php } //end Timezone Conversion ?>
- <th class="header" colspan="2"><?php etranslate ( "Application Settings" ) ?></th>
+ <th class="header" colspan="2"><?php etranslate ( 'Application Settings' ) ?></th>
  <tr><td colspan="2"><ul>
   <?php if ( empty ( $PHP_AUTH_USER ) ) { ?>
-   <li><?php echo translate ( "HTTP-based authentication was not detected" ) . ". " .
-     translate ( "You will need to reconfigure your web server if you wish to" ) . " " .
+   <li><?php echo translate ( 'HTTP-based authentication was not detected' ) . '. ' .
+     translate ( 'You will need to reconfigure your web server if you wish to' ) . ' ' .
      translate ( "select 'Web Server' from the 'User Authentication' choices below" ) ?>.
    </li>
   <?php } else { ?>
-   <li><?php echo translate ( "HTTP-based authentication was detected" ) . ". " .
-     translate ( "User authentication is being handled by your web server" ) . ". " .
+   <li><?php echo translate ( 'HTTP-based authentication was detected' ) . '. ' .
+     translate ( 'User authentication is being handled by your web server' ) . '. ' .
      translate ( "You should select 'Web Server' from the list of 'User Authentication' choices below" ) ?>.
    </li>
   <?php } ?>
  </ul></td></tr>
 
    <tr><td>
- <?php $will_load_admin = ( ( $_SESSION['old_program_version'] == "new_install" )? "checked=\"checked\"":""); ?>
+ <?php $will_load_admin = ( ( $_SESSION['old_program_version'] == 'new_install' )? 
+  $checked:''); ?>
   <table width="75%" align="center" border="0"><tr>
   <form action="index.php?action=switch&amp;page=4" method="post" name="form_app_settings">
     <input type="hidden" name="app_settings"  value="1"/>
-    <td class="prompt"><?php etranslate ( "Create Default Admin Account" ) ?>:</td>
+    <td class="prompt"><?php etranslate ( 'Create Default Admin Account' ) ?>:</td>
     <td><input type="checkbox" name="load_admin" value="Yes" <?php echo $will_load_admin ?> /></td></tr>
-    <tr><td class="prompt"><?php etranslate ( "Application Name" ) ?>:</td>
+    <tr><td class="prompt"><?php etranslate ( 'Application Name' ) ?>:</td>
    <td>   
      <input type="text" size="40" name="form_application_name" id="form_application_name" value="<?php 
            echo $_SESSION['application_name'];?>" /></td></tr>
-     <tr><td class="prompt"><?php etranslate ( "Server URL" ) ?>:</td>
+     <tr><td class="prompt"><?php etranslate( 'Server URL' ) ?>:</td>
    <td>   
      <input type="text" size="40" name="form_server_url" id="form_server_url" value="<?php 
            echo $_SESSION['server_url'];?>" /></td></tr>     
       
-   <tr><td class="prompt"><?php etranslate ( "User Authentication" ) ?>:</td>
+   <tr><td class="prompt"><?php etranslate ( 'User Authentication' ) ?>:</td>
    <td>
     <select name="form_user_inc" onChange="auth_handler()">
   <?php
    echo "<option value=\"user.php\" " .
-    ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] != 'true' ? " selected=\"selected\"" : "" ) .
-    ">". translate ( "Web-based via WebCalendar (default)" ) . "</option>\n";
+    ( $settings['user_inc'] == 'user.php' && 
+     $settings['use_http_auth'] != 'true' ? $selected : '' ) .
+    ">". translate ( 'Web-based via WebCalendar (default)' ) . "</option>\n";
   
    echo "<option value=\"http\" " .
-    ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] == 'true' ? " selected=\"selected\"" : "" ) .
-    ">" . translate ( "Web Server" ) .
-    ( empty ( $PHP_AUTH_USER ) ? "(not detected)" : "(detected)" ) .
+    ( $settings['user_inc'] == 'user.php' && 
+     $settings['use_http_auth'] == 'true' ? $selected : '' ) .
+    ">" . translate ( 'Web Server' ) .
+    ( empty ( $PHP_AUTH_USER ) ? '(not detected)' : '(detected)' ) .
     "</option>\n";
   
-   if ( function_exists ( "ldap_connect" ) ) {
-    echo "<option value=\"user-ldap.php\" " .
-     ( $settings['user_inc'] == 'user-ldap.php' ? " selected=\"selected\"" : "" ) .
+   if ( function_exists ( 'ldap_connect' ) ) {
+    echo '<option value="user-ldap.php" ' .
+     ( $settings['user_inc'] == 'user-ldap.php' ? $selected : '' ) .
      ">LDAP</option>\n";
    }
   
-   if ( function_exists ( "yp_match" ) ) {
-    echo "<option value=\"user-nis.php\" " .
-     ( $settings['user_inc'] == 'user-nis.php' ? " selected=\"selected\"" : "" ) .
+   if ( function_exists ( 'yp_match' ) ) {
+    echo '<option value="user-nis.php" ' .
+     ( $settings['user_inc'] == 'user-nis.php' ? $selected : '' ) .
      ">NIS</option>\n";
    }
 
-   echo "<option value=\"user-imap.php\" " .
-     ( $settings['user_inc'] == 'user-imap.php' ? " selected=\"selected\"" : "" ) .
+   echo '<option value="user-imap.php" ' .
+     ( $settings['user_inc'] == 'user-imap.php' ? $selected : '' ) .
      ">IMAP</option>\n"; 
       
-   echo "<option value=\"none\" " .
-    ( $settings['user_inc'] == 'user.php' && $settings['single_user'] == 'true' ? " selected=\"selected\"" : "" ) .
-    ">" . translate ( "None (Single-User)" ) . "</option>\n</select>\n";
+   echo '<option value="none" ' .
+    ( $settings['user_inc'] == 'user.php' && 
+     $settings['single_user'] == 'true' ? $selected : '' ) .
+    '>' . translate ( 'None (Single-User)' ) . "</option>\n</select>\n";
   ?>
     </td>
    </tr>
@@ -1764,17 +1757,17 @@ if ( ! $exists || ! $canWrite ) { ?>
      <input name="form_single_user_login" size="20" value="<?php echo $settings['single_user_login'];?>" /></td>
    </tr>
    <tr>
-    <td class="prompt"><?php etranslate ( "Read-Only" ) ?>:</td>
+    <td class="prompt"><?php etranslate ( 'Read-Only' ) ?>:</td>
     <td>
      <input name="form_readonly" value="true" type="radio"
- <?php echo ( $settings['readonly'] == 'true' )? " checked=\"checked\"" : "";?> /><?php etranslate ("Yes" ) ?>
+ <?php echo ( $settings['readonly'] == 'true' )? $checked : '';?> /><?php etranslate ( 'Yes' ) ?>
  &nbsp;&nbsp;&nbsp;&nbsp;
  <input name="form_readonly" value="false" type="radio"
- <?php echo ( $settings['readonly'] != 'true' )? " checked=\"checked\"" : "";?> /><?php etranslate ("No" ) ?>
+ <?php echo ( $settings['readonly'] != 'true' )? $checked : '';?> /><?php etranslate ( 'No' ) ?>
      </td>
     </tr>
    <tr>
-    <td class="prompt"><?php etranslate ( "Environment" ) ?>:</td>
+    <td class="prompt"><?php etranslate ( 'Environment' ) ?>:</td>
     <td>
      <select name="form_mode">
      <?php if ( preg_match ( "/dev/", $settings['mode'] ) )
@@ -1782,8 +1775,10 @@ if ( ! $exists || ! $canWrite ) { ?>
         else
          $mode = 'prod'; //production
      ?>
-     <option value="prod" <?php if ( $mode == 'prod' ) echo 'selected="selected"'; echo ">" . translate ( "Production" ) ?></option>
-     <option value="dev" <?php if ( $mode == 'dev' ) echo 'selected="selected"'; echo ">" . translate ( "Development" ) ?></option>
+     <option value="prod" <?php if ( $mode == 'prod' ) 
+      echo $selected; echo ">" . translate ( 'Production' ) ?></option>
+     <option value="dev" <?php if ( $mode == 'dev' ) 
+      echo $selected; echo ">" . translate ( 'Development' ) ?></option>
      </select>
      </td>
     </tr> 
@@ -1792,14 +1787,14 @@ if ( ! $exists || ! $canWrite ) { ?>
  <table width="80%"  align="center">
  <tr><td align="center">
   <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  && empty ( $dologin ) ) { ?>
-  <input name="action" type="button" value="<?php etranslate ( "Save Settings" ) ?>" onClick="return validate();" />
+  <input name="action" type="button" value="<?php etranslate ( 'Save Settings' ) ?>" onClick="return validate();" />
    <?php if ( ! empty ( $_SESSION['old_program_version'] ) && 
     $_SESSION['old_program_version'] == $PROGRAM_VERSION  && ! empty ( $setup_complete )) { ?>
-    <input type="button"  name="action2" value="<?php etranslate ( "Launch WebCalendar" ) ?>" onClick="window.open('../index.php', 'webcalendar');" />
-   <?php } ?>
-  <?php } ?>
-  <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
-  <input type="button" value="<?php etranslate ( "Logout" ) ?>"
+    <input type="button"  name="action2" value="<?php etranslate ( 'Launch WebCalendar' ) ?>" onClick="window.open('../index.php', 'webcalendar');" />
+   <?php }
+  } 
+  if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
+  <input type="button" value="<?php etranslate ( 'Logout' ) ?>"
    onclick="document.location.href='index.php?action=logout'" />
   <?php } ?>
  </form>

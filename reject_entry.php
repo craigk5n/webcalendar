@@ -3,10 +3,10 @@ include_once 'includes/init.php';
 require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
 
-$error = "";
+$error = '';
 
 if ( $readonly == 'Y' ) {
-  $error = translate("You are not authorized");
+  $error = translate( 'You are not authorized' );
 }
 
 //give user a change to add comments to rejection email
@@ -19,19 +19,19 @@ if ( ! empty ( $_POST ) ) {
    echo "<form action=\"reject_entry.php?$q_string\" method=\"post\" name=\"add_comments\" >\n";
    echo "<table border=\"0\" cellspacing=\"5\">\n" .
      "<tr><td align=\"center\" valign=\"bottom\"><h3>" . 
-     translate ( "Additional Comments (optional)" ) . "</h3></td><tr>\n";
+     translate ( 'Additional Comments (optional)' ) . "</h3></td><tr>\n";
    echo "<tr><td align=\"center\">" .
      "<textarea name=\"comments\" rows=\"5\" cols=\"60\" ></textarea></td></tr>\n";
    echo "<tr><td align=\"center\"><input type=\"submit\" value=\"" . 
-     translate ( "Continue" ) . "\" /></tr></tr>\n<tr><td>";
-   etranslate ( "(Your comments will be included in an email to the other participants)" );
+     translate ( 'Continue' ) . "\" /></tr></tr>\n<tr><td>";
+   etranslate ( '(Your comments will be included in an email to the other participants)' );
    echo "</td></tr></table></form>\n"; 
    echo "</body>\n</html>";
    exit;
 }
 // Allow administrators to approve public events
-if ( $PUBLIC_ACCESS == "Y" && ! empty ( $public ) && $is_admin )
-  $app_user = "__public__";
+if ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin )
+  $app_user = '__public__';
 else
   $app_user = ( $is_assistant || $is_nonuser_admin ? $user : $login );
 
@@ -43,7 +43,7 @@ if ( access_is_enabled () && ! empty ( $user ) &&
     $app_user = $user;
 }
 
-$view_type = "view_entry";
+$view_type = 'view_entry';
 $type = getGetValue ( 'type' );
 
 if ( empty ( $error ) && $id > 0 ) {
@@ -76,44 +76,44 @@ if ( empty ( $error ) && $id > 0 ) {
   for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
     // does this user want email for this?
     $send_user_mail = get_pref_setting ( $partlogin[$i],
-      "EMAIL_EVENT_REJECTED" );
+      'EMAIL_EVENT_REJECTED' );
     //check UAC
-    $can_mail = "Y"; 
+    $can_mail = 'Y'; 
     if ( access_is_enabled () ) {
       $can_mail = access_user_calendar ( 'email', $partlogin[$i], $login);
     }
-    $htmlmail = get_pref_setting ( $partlogin[$i], "EMAIL_HTML" );
-    $t_format = get_pref_setting ( $partlogin[$i], "TIME_FORMAT" );
-    user_load_variables ( $partlogin[$i], "temp" );
-    $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
-    set_env ( "TZ", $user_TIMEZONE);
-    $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
-    if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
-      $SEND_EMAIL != "N" && $can_mail == 'Y') {
+    $htmlmail = get_pref_setting ( $partlogin[$i], 'EMAIL_HTML' );
+    $t_format = get_pref_setting ( $partlogin[$i], 'TIME_FORMAT' );
+    user_load_variables ( $partlogin[$i], 'temp' );
+    $user_TIMEZONE = get_pref_setting ( $partlogin[$i], 'TIMEZONE' );
+    set_env ( 'TZ', $user_TIMEZONE);
+    $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
+    if ( $send_user_mail == 'Y' && strlen ( $tempemail ) &&
+      $SEND_EMAIL != 'N' && $can_mail == 'Y') {
       if ( empty ( $user_language ) || ( $user_language == 'none' )) {
         reset_language ( $LANGUAGE );
       } else {
         reset_language ( $user_language );
       }
-      $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
-      translate("An appointment has been rejected by") .
-      " " . $login_fullname .  ".\n\n" .
-      translate("The subject was") . " \"" . $name . " \"\n" .
-      translate("The description is") . " \"" . $description . "\"\n" .
-      translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-      ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate("Time") . ": " .
+      $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
+      translate( 'An appointment has been rejected by' ) .
+      ' ' . $login_fullname .  ".\n\n" .
+      translate( 'The subject was' ) . ' "' . $name . " \"\n" .
+      translate( 'The description is' ) . " \"" . $description . "\"\n" .
+      translate( 'Date' ) . ": " . date_to_str ( $fmtdate ) . "\n" .
+      ( ( empty ( $hour ) && empty ( $minute ) ? '' : translate( 'Time' ) . ": " .
       // Display using user's TIMEZONE and display TZID
       display_time ( '', 2, $eventstart , $t_format ) ) ). "\n";
       if ( ! empty ( $SERVER_URL ) ) {
         //DON'T change & to &amp; here. email will handle it
-        $url = $SERVER_URL .  $view_type . ".php?id=" .  $id . "&em=1";
+        $url = $SERVER_URL .  $view_type . '.php?id=' .  $id . '&em=1';
         if ( $htmlmail == 'Y' ) {
           $url =  activate_urls ( $url ); 
         }
         $msg .= "\n" . $url;
       }
       if ( strlen ( $comments ) ) {
-        $msg .= "\n\n" . translate ( "Comments" ) . ": " . $comments;
+        $msg .= "\n\n" . translate ( 'Comments' ) . ': ' . $comments;
       }
       $from = $EMAIL_FALLBACK_FROM;
       if ( strlen ( $login_email ) ) $from = $login_email;
@@ -137,18 +137,18 @@ if ( empty ( $error ) && $id > 0 ) {
   }
 }
 //return to login TIMEZONE
-set_env ( "TZ", $TIMEZONE );
+set_env ( 'TZ', $TIMEZONE );
 if ( empty ( $error ) ) {
-  if ( ! empty ( $ret ) && $ret == "listall" )
-    do_redirect ( "list_unapproved.php" );
-  else if (  ! empty ( $ret ) &&  $ret == "list" )
+  if ( ! empty ( $ret ) && $ret == 'listall' )
+    do_redirect ( 'list_unapproved.php' );
+  else if (  ! empty ( $ret ) &&  $ret == 'list' )
     do_redirect ( "list_unapproved.php?user=$app_user" );
   else
     do_redirect ( $view_type . ".php?id=$id&amp;user=$app_user" );
   exit;
 }
 print_header ();
-echo "<h2>" . translate("Error") . "</h2>\n";
-echo "<p>" . $error . "</p>\n";
+echo '<h2>' . translate( 'Error' ) . "</h2>\n";
+echo '<p>' . $error . "</p>\n";
 print_trailer ();
 ?>

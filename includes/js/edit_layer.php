@@ -20,10 +20,11 @@ function valid_color ( str ) {
 function valid_form ( form ) {
   var err = "";
   if ( ! valid_color ( form.layercolor.value ) )
-    err += "<?php etranslate("Invalid color", true)?>.\n";
+    err += "<?php etranslate( 'Invalid color', true)?>.\n";
 
   if ( err.length > 0 ) {
-    alert ( "<?php etranslate("Error", true) ?>:\n\n" + err + "\n\n<?php etranslate("Color format should be '#RRGGBB'", true)?>" );
+    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + err + "\n\n<?php 
+  etranslate("Color format should be '#RRGGBB'", true)?>" );
     return false;
   }
   return true;

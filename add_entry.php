@@ -16,7 +16,7 @@ if ( $id > 0 ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $id ) {
       $is_my_event = true;
-      echo "Event # " . $id . " is already on your calendar.";
+      echo translate( 'Event' ) . " # $id" . translate( 'is already on your calendar.' );
       exit;
     }
     dbi_free_result ( $res );
@@ -27,28 +27,28 @@ if ( $id > 0 ) {
   $sql = "SELECT cal_access FROM webcal_entry WHERE cal_id = ?";
   $res = dbi_execute ( $sql, array( $id ) );
   if ( ! $res ) {
-    echo translate("Invalid entry id") . ": $id";
+    echo translate( 'Invalid entry id' ) . ": $id";
     exit;
   }
   $row = dbi_fetch_row ( $res );
 
-  if ( $row[0] == "R" && ! $is_my_event ) {
+  if ( $row[0] == 'R' && ! $is_my_event ) {
     $is_private = true;
-    etranslate("This is a private event and may not be added to your calendar.");
+    etranslate( 'This is a private event and may not be added to your calendar.' );
     exit;
-  } else   if ( $row[0] == "C" && ! $is_my_event && !$is_assistant  && !$is_nonuser_admin ) {
+  } else   if ( $row[0] == 'C' && ! $is_my_event && !$is_assistant  && !$is_nonuser_admin ) {
     //assistants are allowed to see confidential stuff
     $is_private = true;
-    etranslate("This is a confidential event and may not be added to your calendar.");
+    etranslate( 'This is a confidential event and may not be added to your calendar.' );
     exit;
   } else {
     $is_private = false;
   }
 
   // add the event
-  if ( $readonly == "N" && ! $is_my_event && ! $is_private )  {
+  if ( $readonly == 'N' && ! $is_my_event && ! $is_private )  {
     if ( ! dbi_execute ( "INSERT INTO webcal_entry_user ( cal_id, cal_login, cal_status ) VALUES ( ?, ?, ? )", array( $id, $login, 'A' ) ) ) {
-      $error = translate("Error adding event") . ": " . dbi_error ();
+      $error = translate( 'Error adding event' ) . ': ' . dbi_error ();
     }
   }
 }

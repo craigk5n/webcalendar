@@ -84,13 +84,13 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
         $ret .= " />";
       } else if ( $tablear[$i]["type"] == "boolean" ) {
         $ret .= "<input type=\"radio\" value=\"Y\" name=\"" . $tablear[$i]["name"] . "\"";
-        if ( $valuesar[$i] == "Y" )
+        if ( $valuesar[$i] == 'Y' )
           $ret .= " checked=\"checked\"";
-        $ret .= ">" . translate("Yes") . "&nbsp;&nbsp;&nbsp;";
+        $ret .= ">" . translate ( 'Yes') . "&nbsp;&nbsp;&nbsp;";
         $ret .= "<input type=\"radio\" value=\"N\" name=\"" . $tablear[$i]["name"] . "\"";
-        if ( $valuesar[$i] != "Y" )
+        if ( $valuesar[$i] != 'Y' )
           $ret .= " checked=\"checked\"";
-        $ret .= ">" . translate("No");
+        $ret .= ">" . translate ( 'No');
       } else if ( $tablear[$i]["type"] == "date" ) {
         $ret .= date_selection_html ( $tablear[$i]["name"], $valuesar[$i] );
       } else if ( $tablear[$i]["type"] == "dbdate" ) {
@@ -109,10 +109,10 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
           $tablear[$i]["type"] == "int" || $tablear[$i]["type"] == "float" ) {
           $ret .= htmlentities ( $valuesar[$i] );
         } else if ( $tablear[$i]["type"] == "boolean" ) {
-          if ( $valuesar[$i] == "Y" || empty ( $valuesar[$i] ) )
-            $ret .= translate("Yes");
+          if ( $valuesar[$i] == 'Y' || empty ( $valuesar[$i] ) )
+            $ret .= translate ( 'Yes');
           else
-            $ret .= translate("No");
+            $ret .= translate ( 'No');
         } else if ( $tablear[$i]["type"] == "date" ) {
           $ret .= date_to_str ( $valuesar[$i] );
         } else if ( $tablear[$i]["type"] == "dbdate" ) {
@@ -229,7 +229,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
             for ( $j = count ( $fields ) - 1; $j >= 0; $j-- ) {
               $url = str_replace ( "%$j", $row[$j], $url );
             }
-            $ret .= "<a href=\"$url\">" . $val . "</a>";
+            $ret .= "<a href=\"$url\">" . $val . '</a>';
           } else {
             $ret .= $val;
           }
@@ -239,7 +239,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
       $ret .= "</tr>\n";
     }
   } else {
-    echo translate("Database error") . ": " . dbi_error (); exit;
+    echo translate( 'Database error' ) . ": " . dbi_error (); exit;
   }
   $ret .= "</table>\n</td></tr></table>\n</td></tr></table>\n";
   return $ret;
@@ -303,7 +303,7 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
     }
     dbi_free_result ( $res );
   } else {
-    echo translate("Database error") . ": " . dbi_error (); exit;
+    echo translate( 'Database error' ) . ": " . dbi_error (); exit;
   }
   return $ret;
 }
@@ -343,7 +343,7 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
   }
   //echo "SQL: $sql<br />";
   if ( ! dbi_execute ( $sql, $query_params ) ) {
-    echo translate("Database error") . ": " . dbi_error (); exit;
+    echo translate( 'Database error' ) . ": " . dbi_error (); exit;
   }
   return $ret;
 }
@@ -399,7 +399,7 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
   //echo "SQL: $sql<br />\n";
   if ( ! dbi_execute ( $sql, $query_params ) ) {
     // Shouldn't happen... complain if it does.
-    $error = translate("Database error") . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ": " . dbi_error ();
     return false;
   }
   return true;
@@ -460,7 +460,7 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
   //echo "SQL: $sql <P>\n";
   if ( ! dbi_execute ( $sql, $query_params ) ) {
     // Shouldn't happen... complain if it does.
-    $error = translate("Database error") . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ": " . dbi_error ();
     return false;
   }
   return true;

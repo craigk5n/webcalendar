@@ -8,11 +8,11 @@ $INC = array('js/views.php/true','js/visible.php/true');
 print_header($INC);
 ?>
 
-<a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
+<a title="<?php etranslate( 'Admin' ) ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate( 'Admin' ) ?></a><br /><br />
 <!-- TABS -->
 <div id="tabs">
   <span class="tabfor" id="tab_views"><a href="#tabviews" onclick="return showTab('views')"><?php 
-    echo translate("Views");
+    echo translate( 'Views' );
   ?></a></span>
 </div>
 
@@ -23,8 +23,8 @@ print_header($INC);
   <div id="tabscontent_views">
 <?php
   echo "<a title=\"" . 
-  translate("Add New View") . "\" href=\"views_edit.php\" target=\"viewiframe\" onclick=\"javascript:show('viewiframe');\">" . 
-  translate("Add New View") . "</a>\n";
+  translate( 'Add New View' ) . "\" href=\"views_edit.php\" target=\"viewiframe\" onclick=\"javascript:show('viewiframe');\">" . 
+  translate( 'Add New View' ) . "</a>\n";
 ?>
   <ul>
 <?php
@@ -36,9 +36,9 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
       "\" href=\"views_edit.php?id=" . 
       $views[$i]["cal_view_id"] .
       "\" target=\"viewiframe\" onclick=\"javascript:show('viewiframe');\">" . 
-      htmlspecialchars ( $views[$i]["cal_name"] ) . "</a>";
+      htmlspecialchars ( $views[$i]["cal_name"] ) . '</a>';
     if ( $views[$i]['cal_is_global'] == 'Y' ) {
-      echo "&nbsp;<abbr title=\"" . translate("Global") . "\">*</abbr>";
+      echo "&nbsp;<abbr title=\"" . translate( 'Global' ) . "\">*</abbr>";
       $global_found = true;
     }
     echo "</li>\n";
@@ -48,7 +48,7 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 </ul>
 <?php
   if ( $global_found )
-    echo "<br />\n*&nbsp;" . translate ( "Global" );
+    echo "<br />\n*&nbsp;" . translate ( 'Global' );
 ?>
 <br />
 <iframe name="viewiframe" id="viewiframe" style="width:90%;border-width:0px; height:343px;"></iframe>

@@ -110,7 +110,7 @@ $WebCalendar->initializeSecondPhase();
 //Using upcoming-.* allows you to use names like upcoming-1.php, upcoming-2.php etc. 
 //if you want have different upcoming-*.php files with variants.
 
-$name_of_this_file="/upcoming.php/";
+$name_of_this_file='/upcoming.php/';
 
 //echo "$showTitle $showMore $maxEvents $numDays $cat_id<p>";
 
@@ -143,11 +143,11 @@ function print_upcoming_event ( $e, $date ) {
     if ( $showPopups ) {
       $timestr = "";
       if ( $e->isAllDay() ) {
-        $timestr = translate("All day event");
+        $timestr = translate( 'All day event' );
       } else if ( $e->getTime() >= 0 ) {
         $timestr = display_time ( $e->getDatetime() );
         if ( $e->getDuration() > 0 ) {
-          $timestr .= " - " .  display_time ( $e->getEndDateTime() );
+          $timestr .= ' - ' .  display_time ( $e->getEndDateTime() );
         }
       }
       $eventinfo .= build_entry_popup ( 'eventinfo-' . $popupid, $user,
@@ -155,30 +155,30 @@ function print_upcoming_event ( $e, $date ) {
         $e->getLocation(), $e->getName(), $e->getId() );
     }
     print "<a class=\"entry\" id=\"$popupid\" title=\"" . 
-      htmlspecialchars ( $e->getName() ) . "\" href=\"" . 
+      htmlspecialchars ( $e->getName() ) . '" href="' . 
       $SERVER_URL . 'view_entry.php?id=' . 
         $e->getID() . "&amp;date=$date\"";
       if ( ! empty ( $link_target ) ) {
       print " target=\"$link_target\"";
     }
-    print ">";
+    print '>';
   }
   if ( $private ) {
-    print '[' . translate('Private') . ']';
+    print '[' . translate( 'Private' ) . ']';
   } else if ( $confidential ) {
-    print '[' . translate('Confidential') . ']';
+    print '[' . translate( 'Confidential' ) . ']';
   } else {
     print htmlspecialchars ( $e->getName() );
   }
   if ( $display_link && ! empty ( $SERVER_URL ) && ! $private ) {
-    print "</a>";
+    print '</a>';
   }
   
   if ( $showTime ) {  //show event time if requested (default=don't show)
     if ( $e->isAllDay() ) {
-      print " (" . translate("All day event") . ")\n";
+      print ' (' . translate( 'All day event' ) . ")\n";
     } else if ( $e->getTime() != -1 ) {
-      print " (" . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
+      print ' (' . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
     }
   }
 
@@ -277,18 +277,18 @@ $login = $username;
 load_user_preferences ();
 
 if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' ) {
-  $error = translate ( "You are not authorized" ) . ".";
+  $error = translate ( 'You are not authorized' ) . '.';
 }
 
 if ( $allow_user_override ) {
-  $u = getValue ( "user", "[A-Za-z0-9_\.=@,\-]+", true );
+  $u = getValue ( 'user', "[A-Za-z0-9_\.=@,\-]+", true );
   if ( ! empty ( $u ) ) {
     $username = $u;
     $login = $u;
-    $TIMEZONE = get_pref_setting ( $username, "TIMEZONE" );
-    $DISPLAY_UNAPPROVED = get_pref_setting ( $username, "DISPLAY_UNAPPROVED" );
+    $TIMEZONE = get_pref_setting ( $username, 'TIMEZONE' );
+    $DISPLAY_UNAPPROVED = get_pref_setting ( $username, 'DISPLAY_UNAPPROVED' );
     $DISPLAY_TASKS_IN_GRID =
-      get_pref_setting ( $username, "DISPLAY_TASKS_IN_GRID" );
+      get_pref_setting ( $username, 'DISPLAY_TASKS_IN_GRID' );
     // We also set $login since some functions assume that it is set.
   }
 }
@@ -296,29 +296,29 @@ if ( $allow_user_override ) {
 $get_unapproved = ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y' );
 
 if ( $CATEGORIES_ENABLED == 'Y' ) {
-  $x = getIntValue ( "cat_id", true );
+  $x = getIntValue ( 'cat_id', true );
   if ( ! empty ( $x ) ) {
     $cat_id = $x;
   }
 }
 
-  $x = getGetValue ( "upcoming_title", true );
+  $x = getGetValue ( 'upcoming_title', true );
   if ( ! empty ( $x ) ) {
     $upcoming_title = $x;
   }
 
-  $x = getGetValue ( "showMore", true );
+  $x = getGetValue ( 'showMore', true );
   if ( strlen(  $x ) > 0 ) {
     $showMore= $x;
   }
 
-  $x = getGetValue ( "showTime", true );
+  $x = getGetValue ( 'showTime', true );
   if ( strlen(  $x ) > 0 ) {
     $showTime= $x;
   }
 
 
-  $x = getGetValue ( "showTitle", true );
+  $x = getGetValue ( 'showTitle', true );
   if ( strlen(  $x ) > 0 ) {
     $showTitle = $x;
   }
@@ -331,10 +331,10 @@ if ( $load_layers ) {
 //load_user_categories ();
 
 // Calculate date range
-$date = getIntValue ( "date", true );
+$date = getIntValue ( 'date', true );
 if ( empty ( $date ) || strlen ( $date ) != 8 ) {
   // If no date specified, start with today
-  $date = date ( "Ymd" );
+  $date = date ( 'Ymd' );
 }
 $thisyear = substr ( $date, 0, 4 );
 $thismonth = substr ( $date, 4, 2 );
@@ -342,7 +342,7 @@ $thisday = substr ( $date, 6, 2 );
 
 $startDate = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 
-$x = getIntValue ( "days", true );
+$x = getIntValue ( 'days', true );
 if ( ! empty ( $x ) ) {
   $numDays = $x;
 }
@@ -354,7 +354,7 @@ $endDate = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays,
   $thisyear );
 
 // If 'showEvents=0' is in URL, then just include tasks in list
-$show_events = getGetValue ( "showEvents", "[01]", true );
+$show_events = getGetValue ( 'showEvents', "[01]", true );
 $tasks_only = ( $show_events == '0' );
 
 if ( $tasks_only ) {
@@ -385,10 +385,10 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
 if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) { 
 // Print header without custom header and no style sheet
 if ( ! empty ( $LANGUAGE ) ) {
-  $charset = translate ( "charset" );
-  $lang = languageToAbbrev ( ( $LANGUAGE == "Browser-defined" || 
-    $LANGUAGE == "none" )? $lang : $LANGUAGE );
-  if ( $charset != "charset" ) {
+  $charset = translate ( 'charset' );
+  $lang = languageToAbbrev ( ( $LANGUAGE == 'Browser-defined' || 
+    $LANGUAGE == 'none' )? $lang : $LANGUAGE );
+  if ( $charset != 'charset' ) {
     echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n" .
       "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
       "\"DTD/xhtml1-transitional.dtd\">\n" .
@@ -407,10 +407,10 @@ if ( ! empty ( $LANGUAGE ) ) {
   }
 } else {
   echo "<html>\n";
-  $charset = "iso-8859-1";
+  $charset = 'iso-8859-1';
 }
 
-echo "<title>".translate($APPLICATION_NAME)."</title>\n";
+echo '<title>'.translate($APPLICATION_NAME)."</title>\n";
 
 ?>
 <!-- This style sheet is here mostly to make it easier for others
@@ -474,10 +474,10 @@ a:hover {
 
 <?php
 if ( ! empty ( $showPopups ) ) {
-  echo "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
+  echo '<script type="text/javascript" src="includes/js/util.js"></script>' . "\n";
   
-  echo "<script type=\"text/javascript\">\n";
-  include_once "includes/js/popups.php";
+  echo '<script type="text/javascript">' . "\n";
+  include_once 'includes/js/popups.php';
   echo "</script>\n";
 }
 ?>
@@ -486,7 +486,7 @@ if ( ! empty ( $showPopups ) ) {
 <?php } //end test for direct call
 
 if ( ! empty ( $error ) ) {
-  echo "<h2>" . translate ( "Error" ) .
+  echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
   echo "\n<br /><br />\n</body></html>";
 
@@ -510,9 +510,9 @@ print "<!-- \nstartTime: startDate\nendTime: $endDate\nstartDate: " .
 
 $eventinfo = '';
 $numEvents = 0;
-for ( $i = $startDate; date ( "Ymd", $i ) <= date ( "Ymd", $endDate ) &&
+for ( $i = $startDate; date ( 'Ymd', $i ) <= date ( 'Ymd', $endDate ) &&
   $numEvents < $maxEvents; $i += ONE_DAY ) {
-  $d = date ( "Ymd", $i );
+  $d = date ( 'Ymd', $i );
   $entries = get_entries ( $d, $get_unapproved );
   $rentries = get_repeating_entries ( $username, $d, $get_unapproved );
   $ev = combine_and_sort_events ( $entries, $rentries );
@@ -524,8 +524,8 @@ for ( $i = $startDate; date ( "Ymd", $i ) <= date ( "Ymd", $endDate ) &&
 
   if ( count ( $ev ) > 0 ) {
     print "<!-- XXX -->\n";
-    //print "<dt>" . date_to_str ( $d,  translate ( "__month__ __dd__" ), true, true ) . "</dt>\n<dd>";
-    print "<dt>" . date_to_str ( $d ) . "</dt>\n<dd>";
+    //print "<dt>" . date_to_str ( $d,  translate ( '__month__ __dd__' ), true, true ) . "</dt>\n<dd>";
+    print '<dt>' . date_to_str ( $d ) . "</dt>\n<dd>";
     for ( $j = 0; $j < count ( $ev ) && $numEvents < $maxEvents; $j++ ) {
       print_upcoming_event ( $ev[$j], $d );
       $numEvents++;
@@ -537,7 +537,7 @@ for ( $i = $startDate; date ( "Ymd", $i ) <= date ( "Ymd", $endDate ) &&
 print "</dl>\n";
 
 if ( $showMore ) echo '<center><i><a href="'. $title_more_url . '"> . . . ' . 
-   translate ("more") . '</a></i></center>';
+   translate ( 'more' ) . '</a></i></center>';
 ?>
 </div>
 <?php

@@ -30,7 +30,7 @@ include_once 'includes/xcal.php';
 $error = '';
 print_header();
 
-$overwrite = getValue("overwrite");
+$overwrite = getValue( 'overwrite' );
 $doOverwrite = ( empty ( $overwrite ) || $overwrite != 'Y' ) ? false : true;
 $numDeleted = 0;
 
@@ -43,13 +43,13 @@ if ( ! empty ( $_FILES['FileName'] ) ) {
 }
 
 if ( empty ( $file ) ) {
-  echo "No file!<br />";
+  echo 'No file!<br />';
 }
 
 // Handle user
-$calUser = getValue ( "calUser" );
+$calUser = getValue ( 'calUser' );
 if ( ! empty ( $calUser ) ) {
-  if ( $single_user == "N" && ! $is_admin ) $calUser = $login;
+  if ( $single_user == 'N' && ! $is_admin ) $calUser = $login;
 } else {
   $calUser = $login;
 }
@@ -66,8 +66,8 @@ if ($file['size'] > 0) {
 //
 
     case 'PALMDESKTOP':
-      include "import_palmdesktop.php";
-      if (delete_palm_events($login) != 1) $errormsg = "Error deleting palm events from webcalendar.";
+      include 'import_palmdesktop.php';
+      if (delete_palm_events($login) != 1) $errormsg = 'Error deleting palm events from webcalendar.';
       $data = parse_palmdesktop($file['tmp_name'], $exc_private);
       $type = 'palm';
       break;
@@ -83,7 +83,7 @@ if ($file['size'] > 0) {
       break;
 
     case 'OUTLOOKCSV':
-      include "import_outlookcsv.php";
+      include 'import_outlookcsv.php';
       $data = parse_outlookcsv($file['tmp_name']);
       $type = 'outlookcsv';
       break;
@@ -93,23 +93,23 @@ if ($file['size'] > 0) {
   $count_con = $count_suc = $error_num = 0;
   if (! empty ($data) && empty ($errormsg) ) {
     import_data ( $data, $doOverwrite, $type );
-    echo "<p>" . translate("Import Results") . "</p>\n<br /><br />\n" .
-      translate("Events successfully imported") . ": $count_suc<br />\n";
-    echo translate("Events from prior import marked as deleted") . ": $numDeleted<br />\n";
+    echo '<p>' . translate( 'Import Results' ) . "</p>\n<br /><br />\n" .
+      translate( 'Events successfully imported' ) . ": $count_suc<br />\n";
+    echo translate( 'Events from prior import marked as deleted' ) . ": $numDeleted<br />\n";
     if ( empty ( $ALLOW_CONFLICTS ) ) {
-      echo translate("Conflicting events") . ": " . $count_con . "<br />\n";
+      echo translate( 'Conflicting events' ) . ": " . $count_con . "<br />\n";
     }
-    echo translate ( "Errors" ) . ": $error_num<br /><br />\n";
+    echo translate ( 'Errors' ) . ": $error_num<br /><br />\n";
   } elseif (! empty ( $errormsg ) ) {
-    echo "<br /><br />\n<b>" . translate("Error") . ":</b> $errormsg<br />\n";
+    echo "<br /><br />\n<b>" . translate( 'Error' ) . ":</b> $errormsg<br />\n";
   } else {
-    echo "<br /><br />\n<b>" . translate("Error") . ":</b> " .
-      translate("There was an error parsing the import file or no events were returned") .
+    echo "<br /><br />\n<b>" . translate( 'Error' ) . ':</b> ' .
+      translate( 'There was an error parsing the import file or no events were returned' ) .
       ".<br />\n";
   }
 } else {
- echo "<br /><br />\n<b>" . translate("Error") . ":</b> " .
-    translate("The import file contained no data") . ".<br />\n";
+ echo "<br /><br />\n<b>" . translate( 'Error' ) . ":</b> " .
+    translate( 'The import file contained no data' ) . ".<br />\n";
 }
 
 

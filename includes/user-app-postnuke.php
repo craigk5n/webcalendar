@@ -236,9 +236,9 @@ function user_get_users () {
   $Admins = get_admins();
   $count = 0;
   $ret = array ();
-  if ( $PUBLIC_ACCESS == "Y" )
+  if ( $PUBLIC_ACCESS == 'Y' )
     $ret[$count++] = array (
-       "cal_login" => "__public__",
+       "cal_login" => '__public__',
        "cal_lastname" => "",
        "cal_firstname" => "",
        "cal_is_admin" => "N",
@@ -286,7 +286,7 @@ function user_load_variables ( $login, $prefix ) {
     return true;
   }
   
-  if ( $login == "__public__" ) {
+  if ( $login == '__public__' ) {
     $GLOBALS[$prefix . "login"] = $login;
     $GLOBALS[$prefix . "firstname"] = "";
     $GLOBALS[$prefix . "lastname"] = "";

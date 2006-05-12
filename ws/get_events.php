@@ -34,7 +34,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 $out = "<events>\n";
 
 // If login is public user, make sure public can view others...
-if ( $login == "__public__" && $login != $user ) {
+if ( $login == '__public__' && $login != $user ) {
   if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
     $out .= "<error>" . translate("Not authorized") . "</error>\n";
     $out .= "</events>\n";
@@ -60,7 +60,7 @@ $startdate = getValue ( 'startdate' );
 $enddate = getValue ( 'enddate' );
 
 if ( empty ( $startdate ) )
-  $startdate = date ( "Ymd" );
+  $startdate = date ( 'Ymd' );
 if ( empty ( $enddate ) )
   $enddate = $startdate;
 
@@ -106,7 +106,7 @@ $endtime = mktime ( 0, 0, 0, $endmonth, $endday, $endyear );
 
 for ( $d = $starttime; $d <= $endtime; $d += ONE_DAY ) {
   $completed_ids = array ();
-  $date = date ( "Ymd", $d );
+  $date = date ( 'Ymd', $d );
   //$out .= "Date: $date\n";
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.

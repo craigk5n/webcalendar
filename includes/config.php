@@ -45,21 +45,23 @@ function die_miserable_death ( $error ) {
       
     }
     $app_name = translate ( $app_name );
-    $title = $app_name . ": " . translate ( "Fatal Error" );
-    $h2_label = $app_name . " " . translate ( "Error" );  
-    $trouble_label = translate ( "Troubleshooting Help" );
+    $title = $app_name . ': ' . translate ( 'Fatal Error' );
+    $h2_label = $app_name . ' '. translate ( 'Error' );  
+    $trouble_label = translate ( 'Troubleshooting Help' );
   } else {
-    $app_name = "WebCalendar";
-    $title = $app_name . ": " . "Fatal Error";
-    $h2_label = $app_name . " " . "Error";  
-    $trouble_label = "Troubleshooting Help";
+    $app_name = 'WebCalendar';
+    $title = $app_name . ': ' . 'Fatal Error';
+    $h2_label = $app_name . ' ' . 'Error';  
+    $trouble_label = 'Troubleshooting Help';
   }
     
-  echo "<html><head><title>$title</title></head>\n" .
-    "<body><h2>$h2_label</h2>\n" .
-    "<p>$error</p>\n<hr />" .
-    "<p><a href=\"$TROUBLE_URL\" target=\"_blank\">" .
-    $trouble_label . "</a></p></body></html>\n";
+  echo <<<EOT
+    <html><head><title>{$title}</title></head>
+    <body><h2>{$h2_label}</h2>
+    <p>{$error}</p>\n<hr />
+    <p><a href="{$TROUBLE_URL}" target="_blank">
+    {$trouble_label}</a></p></body></html>
+EOT;
   exit;
 }
 

@@ -1,17 +1,17 @@
 <?php
 include_once 'includes/init.php';
 
-if ( empty ( $login) || $login == "__public__" ) {
+if ( empty ( $login) || $login == '__public__' ) {
   // do not allow public access
-  do_redirect ( empty ( $STARTVIEW ) ? "month.php" : "$STARTVIEW" );
+  do_redirect ( empty ( $STARTVIEW ) ? 'month.php' : "$STARTVIEW" );
   exit;
 }
 
 if ($user != $login)
   $user = (($is_admin || $is_nonuser_admin) && $user) ? $user : $login;
 
-if ( $GROUPS_ENABLED == "Y" ) {
-  $INC = array("js/assistant_edit.php/true");
+if ( $GROUPS_ENABLED == 'Y' ) {
+  $INC = array('js/assistant_edit.php/true');
 } else {
   $INC = '';
 }
@@ -22,18 +22,18 @@ print_header($INC);
 <?php
   if ($user) echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   if ( $is_nonuser_admin ) {
-    nonuser_load_variables ( $user, "nonuser" );
-    echo "<h2>" . $nonuserfullname . " " . translate("Assistants")
-        ."<br />\n-- " . translate("Admin mode") . " --</h2>\n";
+    nonuser_load_variables ( $user, 'nonuser' );
+    echo '<h2>' . $nonuserfullname . " " . translate( 'Assistants' )
+        ."<br />\n-- " . translate( 'Admin mode' ) . " --</h2>\n";
   } else {
-    echo "<h2>" . translate("Your assistants") . "</h2>\n";
+    echo '<h2>' . translate( 'Your assistants' ) . "</h2>\n";
   }
 ?>
-<a title="<?php etranslate("Admin") ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate("Admin") ?></a><br /><br />
+<a title="<?php etranslate( 'Admin' ) ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate( 'Admin' ) ?></a><br /><br />
 
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top;">
- <label for="users"><?php etranslate("Assistants"); ?>:</label></td><td>
+ <label for="users"><?php etranslate( 'Assistants' ); ?>:</label></td><td>
  <select name="users[]" id="users" size="10" multiple="multiple">
 <?php
   // get list of all users
@@ -53,22 +53,22 @@ print_header($INC);
     if ($u == '__public__' ) continue;
     echo "<option value=\"$u\"";
     if ( ! empty ( $assistantuser[$u] ) ) {
-      echo " selected=\"selected\"";
+      echo ' selected="selected"';
     }
-    echo ">" . $users[$i]['cal_fullname'] . "</option>\n";
+    echo '>' . $users[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
 </select>
 <?php
-if ( $GROUPS_ENABLED == "Y" ) {
-  echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
-    translate("Select") . "...\" />\n";
+if ( $GROUPS_ENABLED == 'Y' ) {
+  echo '<input type="button" onclick="selectUsers()" value="' .
+    translate( 'Select' ) . "...\" />\n";
 }
 ?>
 </td></tr>
 <tr><td colspan="2" style="text-align:center;">
 <br />
-<input type="submit" name="action" value="<?php etranslate("Save"); ?>" />
+<input type="submit" name="action" value="<?php etranslate( 'Save' ); ?>" />
 </td></tr>
 </table>
 </form>

@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 print_header('','','',true);
 ?>
 
-<h2><?php etranslate("Help")?>: <?php etranslate("User Access Control")?></h2>
+<h2><?php etranslate("Help")?>: <?php etranslate ( 'User Access Control' )?></h2>
 
 <table style="border-width:0px;">
  <tr><td colspan="2">
@@ -11,7 +11,7 @@ print_header('','','',true);
  </td></tr>
  <tr><td colspan="2">&nbsp;</td></tr>
  <tr><td class="help">
-  <?php etranslate("Can Invite")?>:</td><td>
+  <?php etranslate ( 'Can Invite' )?>:</td><td>
   <?php etranslate("If disabled, this user will not see you in the participants list.")?>
  </td></tr>
  <tr><td class="help">
@@ -19,7 +19,7 @@ print_header('','','',true);
   <?php etranslate("If disabled, this user will not be able to send you emails.")?>
  </td></tr>
  <tr><td class="help">
-  <?php etranslate("Can See Time Only")?>:</td><td>
+  <?php etranslate ( 'Can See Time Only' )?>:</td><td>
   <?php etranslate("If enabled, this user will not be able to view the details of any of your entries.")?>
  </td></tr>
 </table>

@@ -18,7 +18,7 @@ $WebCalendar->setLanguage();
 $user = "__none__"; // don't let user specify in URL
 
 if ( strlen ( $login ) == 0 ) {
-  if ( $single_user == "Y" ) {
+  if ( $single_user == 'Y' ) {
     $login = $user = $single_user_login;
   } else if ( strlen ( $webcalendar_login ) > 0 ) {
     $login = $user = $webcalendar_login;
@@ -57,8 +57,8 @@ $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 $wkstart = get_weekday_before ( $thisyear, $thismonth );
 
 $wkend = $wkstart + ( ONE_DAY * 6 );
-$startdate = date ( "Ymd", $wkstart );
-$enddate = date ( "Ymd", $wkend );
+$startdate = date ( 'Ymd', $wkstart );
+$enddate = date ( 'Ymd', $wkend );
 
 /* Pre-Load the repeated events for quckier access */
 $repeated_events = read_repeated_events ( $login, "", $startdate );
@@ -84,7 +84,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 <tr>
 <?php
 for ( $d = 0; $d < 7; $d++ ) {
-  if ( date ( "Ymd", $days[$d] ) == date ( "Ymd", $today ) )
+  if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) )
     $color = $TODAYCELLBG;
   else
     $color = $THBG;
@@ -99,10 +99,10 @@ $first_hour = $WORK_DAY_START_HOUR;
 $last_hour = $WORK_DAY_END_HOUR;
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
-  $date = date ( "Ymd", $days[$d] );
+  $date = date ( 'Ymd', $days[$d] );
 
   print "<td style=\"vertical-align:top; width:75px; height:75px;";
-  if ( $date == date ( "Ymd" ) )
+  if ( $date == date ( 'Ymd' ) )
     echo " background-color:$TODAYCELLBG;\">\n";
   else
     echo " background-color:$CELLBG;\">";

@@ -18,7 +18,7 @@ $error = '';
 
 $res = dbi_execute ( Doc::getSQLForDocId ( $blid ) );
 if ( ! $res ) {
-  $error = translate ( "Database error" ) . ": " . dbi_error ();
+  $error = translate ( 'Database error' ) . ': ' . dbi_error ();
 }
 if ( empty ( $error ) ) {
   $row = dbi_fetch_row ( $res );
@@ -57,7 +57,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     $can_view = true;
   } 
   if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) ) {
-    $error = translate ( "Invalid entry id" ) . "."; 
+    $error = translate( 'Invalid entry id' ) . '.'; 
   }
 
   if ( empty ( $error ) ) {
@@ -77,19 +77,19 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       dbi_free_result ( $res );
     }
 
-    if ( ($login != "__public__") && ($PUBLIC_ACCESS_OTHERS == "Y") ) {
+    if ( ($login != '__public__') && ($PUBLIC_ACCESS_OTHERS == 'Y') ) {
       $can_view = true;
     }
     if ( ! $can_view ) {
       $check_group = false;
       // if not a participant in the event, must be allowed to look at
       // other user's calendar.
-      if ( $login == "__public__" ) {
-        if ( $PUBLIC_ACCESS_OTHERS == "Y" ) {
+      if ( $login == '__public__' ) {
+        if ( $PUBLIC_ACCESS_OTHERS == 'Y' ) {
           $check_group = true;
         }
       } else {
-        if ( $ALLOW_VIEW_OTHER == "Y" ) {
+        if ( $ALLOW_VIEW_OTHER == 'Y' ) {
           $check_group = true;
         }
       }
@@ -173,13 +173,13 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     }
   } 
   if ( empty ( $error ) && ! $can_view ) {
-    $error = translate ( "You are not authorized" );
+    $error = translate ( 'You are not authorized' );
   }
 }
 
 if ( ! empty ( $error ) ) {
   print_header ();
-  echo "<h2>" . translate ( "Error" ) .
+  echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
   print_trailer ();
   echo "</body>\n</html>";

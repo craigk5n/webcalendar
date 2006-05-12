@@ -7,18 +7,18 @@ function valid_form ( form ) {
   var pass1 = form.upassword1.value;
   var pass2 = form.upassword2.value;
   if ( ! name ) {
-    alert ( "<?php etranslate("Error", true) ?>:\n\n" + "<?php 
-      etranslate("Username can not be blank", true)?>" );
+    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
+      etranslate( 'Username can not be blank', true)?>" );
     return false;  
   }  
   if ( ! pass1 || ! pass2 ) {
-    alert ( "<?php etranslate("Error", true) ?>:\n\n" + "<?php 
-      etranslate("You have not entered a password", true)?>" );
+    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
+      etranslate( 'You have not entered a password', true)?>" );
     return false;  
   }
   if (  pass1 != pass2 ) {
-    alert ( "<?php etranslate("Error", true) ?>:\n\n" + "<?php 
-      etranslate("The passwords were not identical", true)?>" );
+    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
+      etranslate( 'The passwords were not identical', true)?>" );
     return false;  
   }
   check_name();

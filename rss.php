@@ -57,7 +57,7 @@ $WebCalendar->setLanguage();
 
 if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
   header ( "Content-Type: text/plain" );
-  etranslate("You are not authorized");
+  etranslate( 'You are not authorized' );
   exit;
 }
 /*
@@ -108,7 +108,7 @@ $show_daily_events_only_once = false;
 $login = $username;
 
 if ( $allow_user_override ) {
-  $u = getValue ( "user", "[A-Za-z0-9_\.=@,\-]+", true );
+  $u = getValue ( 'user', "[A-Za-z0-9_\.=@,\-]+", true );
   if ( ! empty ( $u ) ) {
     $username = $u;
     $login = $u;
@@ -130,19 +130,19 @@ if ( ! empty ( $USER_REMOTE_ACCESS ) && $username != '__public__' ) {
   $allow_access = array('', 'P');
 }
 
-user_load_variables ( $login, "rss_" );
+user_load_variables ( $login, 'rss_' );
 $creator = ( $username == '__public__' ) ? 'Public' : $rss_fullname;
 
 if ( $username != '__public__' && ( empty ( $USER_RSS_ENABLED ) || 
   $USER_RSS_ENABLED != 'Y' ) ) {
-  header ( "Content-Type: text/plain" );
-  etranslate("You are not authorized");
+  header ( 'Content-Type: text/plain' );
+  etranslate( 'You are not authorized' );
   exit;
 }
 
 $cat_id = '';
 if ( $CATEGORIES_ENABLED == 'Y' ) {
-  $x = getIntValue ( "cat_id", true );
+  $x = getIntValue ( 'cat_id', true );
   if ( ! empty ( $x ) ) {
     $cat_id = $x;
   }
@@ -155,10 +155,10 @@ if ( $load_layers ) {
 //load_user_categories ();
 
 // Calculate date range
-$date = getIntValue ( "date", true );
+$date = getIntValue ( 'date', true );
 if ( empty ( $date ) || strlen ( $date ) != 8 ) {
   // If no date specified, start with today
-  $date = date ( "Ymd" );
+  $date = date ( 'Ymd' );
 }
 $thisyear = substr ( $date, 0, 4 );
 $thismonth = substr ( $date, 4, 2 );
@@ -166,7 +166,7 @@ $thisday = substr ( $date, 6, 2 );
 
 $startTime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 
-$x = getIntValue ( "days", true );
+$x = getIntValue ( 'days', true );
 if ( ! empty ( $x ) ) {
   $numDays = $x;
 }
@@ -174,7 +174,7 @@ if ( ! empty ( $x ) ) {
 if ( $numDays > 365 ) {
   $numDays = 365;
 }
-$x = getIntValue ( "max", true );
+$x = getIntValue ( 'max', true );
 if ( ! empty ( $x ) ) {
   $maxEvents = $x;
 }
@@ -183,7 +183,7 @@ if ( $maxEvents > 100 ) {
   $maxEvents = 100;
 }
 
-$x = getIntValue ( "repeats", true );
+$x = getIntValue ( 'repeats', true );
 if ( ! empty ( $x ) ) {
   $allow_repeats = $x;
   if ( $x==2 ) {
@@ -193,7 +193,7 @@ if ( ! empty ( $x ) ) {
 
 $endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays -1,
   $thisyear );
-$endDate = date ( "Ymd", $endTime );
+$endDate = date ( 'Ymd', $endTime );
 
 
 /* Pre-Load the repeated events for quicker access */
@@ -203,10 +203,10 @@ if (  $allow_repeats == true )
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $username, $startTime, $endTime, $cat_id );
 
-$charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
+$charset = ( ! empty ( $LANGUAGE )?translate( 'charset' ): 'iso-8859-1' );
 // This should work ok with RSS, may need to hardcode fallback value
-$lang = languageToAbbrev ( ( $LANGUAGE == "Browser-defined" || 
-  $LANGUAGE == "none" )? $lang : $LANGUAGE );
+$lang = languageToAbbrev ( ( $LANGUAGE == 'Browser-defined' || 
+  $LANGUAGE == 'none' )? $lang : $LANGUAGE );
   
 //header('Content-type: application/rss+xml');
 header('Content-type: text/xml');
@@ -222,14 +222,14 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>';
   xmlns:cc="http://web.resource.org/cc/"
   xmlns="http://purl.org/rss/1.0/">
   
-<channel rdf:about="<?php echo $SERVER_URL . "rss.php"; ?>">
+<channel rdf:about="<?php echo $SERVER_URL . 'rss.php'; ?>">
 <title><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></title>
 <link><?php echo $SERVER_URL; ?></link>
 <description><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></description>
 <dc:language><?php echo $lang; ?></dc:language>
 <dc:creator><![CDATA[<?php echo $creator; ?>]]></dc:creator>
 <?php //proper format is 2002-10-02T10:00:00-05:00
-$gmtoffset = substr_replace ( date ( "O" ), ":" . substr ( date ( "O" ), -2), -2, 2 );
+$gmtoffset = substr_replace ( date ( "O" ), ":" . substr ( date ( 'O' ), -2), -2, 2 );
 ?>
 <dc:date><?php echo date ( 'Y-m-d' ) . 'T' . date ( 'H:i:s' ). $gmtoffset; ?></dc:date>
 <admin:generatorAgent rdf:resource="http://www.k5n.us/webcalendar.php?v=<?php echo $PROGRAM_VERSION; ?>" />
@@ -239,10 +239,10 @@ $numEvents = 0;
 $reventIds = array();
 
 echo "\n<items>\n<rdf:Seq>\n";
-for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
+for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
   $numEvents < $maxEvents; $i += ONE_DAY ) {
   $eventIds = array();
-  $d = date ( "Ymd", $i );
+  $d = date ( 'Ymd', $i );
   $entries = get_entries ( $d, false );
   $rentries = get_repeating_entries ( $username, $d, false );
   if ($debug) echo "\n\ni=$i d=$d \n\n";
@@ -252,7 +252,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
       // Prevent non-Public events from feeding
       if ( array_search ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
-        echo "<rdf:li rdf:resource=\"" . $SERVER_URL . "view_entry.php?id=" . 
+        echo '<rdf:li rdf:resource="' . $SERVER_URL . 'view_entry.php?id=' . 
           $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
           $d . "\" />\n";
         $numEvents++;
@@ -265,7 +265,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
           //events shows up in $entries AND $rentries & we suppress display
           //of it in $rentries
        if ( in_array($rentries[$j]->getID(),$eventIds)  && 
-             $rentries[$j]->getrepeatType()=="daily" ) {
+             $rentries[$j]->getrepeatType()== 'daily' ) {
                $reventIds[]=$rentries[$j]->getID(); 
           }
 
@@ -275,14 +275,15 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
       // has alreay been displayed
        //echo $rentries[$j]->getID() . "<p>";
       if ( ! in_array($rentries[$j]->getID(),$eventIds ) && 
-          ( ! $show_daily_events_only_once || ! in_array($rentries[$j]->getID(),$reventIds )) && 
-        ( array_search ( $rentries[$j]->getAccess(), $allow_access ) ) ) {
-        echo "<rdf:li rdf:resource=\"" . $SERVER_URL . "view_entry.php?id=" . 
+         ( ! $show_daily_events_only_once || 
+         ! in_array($rentries[$j]->getID(),$reventIds )) && 
+         ( array_search ( $rentries[$j]->getAccess(), $allow_access ) ) ) {
+        echo '<rdf:li rdf:resource="' . $SERVER_URL . 'view_entry.php?id=' . 
           $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
             $d . "\" />\n";
 
           //show repeating events only once
-          if ( $rentries[$j]->getrepeatType()=="daily" ) 
+          if ( $rentries[$j]->getrepeatType()== 'daily' ) 
                   $reventIds[]=$rentries[$j]->getID(); 
 
         $numEvents++;
@@ -301,10 +302,10 @@ echo "</rdf:Seq>\n</items>\n</channel>\n\n";
 $numEvents = 0;
 $reventIds = array();
 
-for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
+for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
   $numEvents < $maxEvents; $i += ONE_DAY ) {
   $eventIds=array();
-  $d = date ( "Ymd", $i );
+  $d = date ( 'Ymd', $i );
   $entries = get_entries ( $d, false  );
   $rentries = get_repeating_entries ( $username, $d );
 
@@ -315,12 +316,13 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
       if ( array_search ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
         $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
-        $gmtoffset = substr_replace ( date ( "O", $unixtime ), ":" . 
-          substr ( date ( "O", $unixtime ), -2), -2, 2 );
-        echo "\n<item rdf:about=\"" . $SERVER_URL . "view_entry.php?id=" . 
-          $entries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "\">\n";
-        echo "<title xml:lang=\"$lang\"><![CDATA[" . $entries[$j]->getName() . "]]></title>\n";
-        echo "<link>" . $SERVER_URL . "view_entry.php?id=" . 
+        $gmtoffset = substr_replace ( date ( 'O', $unixtime ), ":" . 
+          substr ( date ( 'O', $unixtime ), -2), -2, 2 );
+        echo "\n<item rdf:about=\"" . $SERVER_URL . 'view_entry.php?id=' . 
+          $entries[$j]->getID() . '&amp;friendly=1&amp;date=' . $d . "\">\n";
+        echo "<title xml:lang=\"$lang\"><![CDATA[" . 
+          $entries[$j]->getName() . "]]></title>\n";
+        echo '<link>' . $SERVER_URL . 'view_entry.php?id=' . 
           $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
           $d . "</link>\n";
         echo "<description xml:lang=\"$lang\"><![CDATA[" .
@@ -330,8 +332,8 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
           //"]]></category>\n";
         echo "<content:encoded xml:lang=\"$lang\"><![CDATA[" .
           $entries[$j]->getDescription() . "]]></content:encoded>\n";
-        echo "<dc:creator><![CDATA[" . $creator . "]]></dc:creator>\n";
-        echo "<dc:date>" . date ( 'Y-m-d', $unixtime ) .'T' . 
+        echo '<dc:creator><![CDATA[' . $creator . "]]></dc:creator>\n";
+        echo '<dc:date>' . date ( 'Y-m-d', $unixtime ) .'T' . 
           date ( 'H:i:s', $unixtime ) . $gmtoffset . "</dc:date>\n";
         echo "</item>\n";
         $numEvents++;
@@ -344,7 +346,7 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
           //events shows up in $entries AND $rentries & we suppress display
           //of it in $rentries
        if ( in_array($rentries[$j]->getID(),$eventIds)  && 
-             $rentries[$j]->getrepeatType()=="daily" ) {
+             $rentries[$j]->getrepeatType()== 'daily' ) {
                $reventIds[]=$rentries[$j]->getID(); 
           }
 
@@ -358,16 +360,17 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
          ( array_search ( $rentries[$j]->getAccess(), $allow_access ) ) ) { 
   
           //show repeating events only once
-          if ( $rentries[$j]->getrepeatType()=="daily" ) 
+          if ( $rentries[$j]->getrepeatType()== 'daily' ) 
                   $reventIds[]=$rentries[$j]->getID(); 
 
 
-        echo "\n<item rdf:about=\"" . $SERVER_URL . "view_entry.php?id=" . 
-          $rentries[$j]->getID() . "&amp;friendly=1&amp;date=" . $d . "\">\n";
+        echo "\n<item rdf:about=\"" . $SERVER_URL . 'view_entry.php?id=' . 
+          $rentries[$j]->getID() . '&amp;friendly=1&amp;date=' . $d . "\">\n";
         $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
-        $gmtoffset = substr_replace ( date ( "O", $unixtime ), ":" . 
+        $gmtoffset = substr_replace ( date ( "O", $unixtime ), ':' . 
           substr ( date ( "O", $unixtime ), -2), -2, 2 );
-        echo "<title xml:lang=\"$lang\"><![CDATA[" . $rentries[$j]->getName() . "]]></title>\n";
+        echo "<title xml:lang=\"$lang\"><![CDATA[" . 
+          $rentries[$j]->getName() . "]]></title>\n";
         echo "<link>" . $SERVER_URL . "view_entry.php?id=" . 
           $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
           $d . "</link>\n";
@@ -378,8 +381,8 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
           //"]]></category>\n";
         echo "<content:encoded xml:lang=\"$lang\"><![CDATA[" .
           $rentries[$j]->getDescription() . "]]></content:encoded>\n";
-        echo "<dc:creator><![CDATA[" . $creator . "]]></dc:creator>\n";
-        echo "<dc:date>" . date ( 'Y-m-d', $unixtime ) .'T' . 
+        echo '<dc:creator><![CDATA[' . $creator . "]]></dc:creator>\n";
+        echo '<dc:date>' . date ( 'Y-m-d', $unixtime ) .'T' . 
           date ( 'H:i:s', $unixtime ) . $gmtoffset . "</dc:date>\n";
         echo "</item>\n";   
         $numEvents++;

@@ -142,10 +142,10 @@ $webcalConfig = array (
 function make_uppercase () {
   //make sure all cal_settings are UPPERCASE
   if ( ! dbi_execute ( "UPDATE webcal_config SET cal_setting = UPPER(cal_setting)" ) )
-    echo translate("Error updating webcal_config") . ": " . dbi_error ();       
+    echo translate( 'Error updating webcal_config') . ': ' . dbi_error ();       
   dbi_free_result ( $res );    
   if ( ! dbi_execute ( "UPDATE webcal_user_pref SET cal_setting = UPPER(cal_setting)" ) )
-    echo translate("Error updating webcal_user_pref") . ": " . dbi_error ();       
+    echo translate( 'Error updating webcal_user_pref') . ': ' . dbi_error ();       
   dbi_free_result ( $res );
 }
 

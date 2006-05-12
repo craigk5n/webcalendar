@@ -47,12 +47,12 @@ $prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
 $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 $enddate = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );;
 
-$thisdate = date ( "Ymd", $startdate );
+$thisdate = date ( 'Ymd', $startdate );
 ?>
 
 <div style="border-width:0px; width:99%;">
-<a title="<?php etranslate("Previous")?>" class="prev" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
-<a title="<?php etranslate("Next")?>" class="next" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="images/rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate ( 'Previous' )?>" class="prev" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
+<a title="<?php etranslate ( 'Next' )?>" class="next" href="view_m.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="images/rightarrow.gif" alt="<?php etranslate ( 'Next' )?>" /></a>
 <div class="title">
 <span class="date"><?php
   printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
@@ -74,11 +74,11 @@ $viewusers = view_get_user_list ( $id );
 if ( count ( $viewusers ) == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view
-  $error = translate ( "No users for this view" );
+  $error = translate ( 'No users for this view' ) ;
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<h2>" . translate ( "Error" ) .
+  echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
   print_trailer ();
   exit;
@@ -130,13 +130,13 @@ for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
   } //end for
   echo "</tr>\n";
 
-  for ( $date = $startdate; date ("Ymd", $date) <= date ("Ymd", $enddate);
+  for ( $date = $startdate; date ('Ymd', $date) <= date ('Ymd', $enddate);
     $date += ONE_DAY, $wday++ ) {
  $wday = strftime ("%w", $date);
- if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == "N" ) continue; 
+ if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
  $weekday = weekday_short_name ($wday);
  echo "<tr><th";
- if ( date ("Ymd", $date) == date ("Ymd", $today) ) {
+ if ( date ('Ymd', $date) == date ('Ymd', $today) ) {
    echo " class=\"today\">";
  } else {
   if ($wday == 0 || $wday == 6) {
@@ -153,7 +153,7 @@ for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
  $user = $viewusers[$i];
  $events = $e_save[$i];
  $repeated_events = $re_save[$i];
- if ( date ("Ymd", $date) == date ("Ymd", $today) ) {
+ if ( date ('Ymd', $date) == date ('Ymd', $today) ) {
   echo "<td class=\"today\"";
  } else {
   if ($wday == 0 || $wday == 6) {
@@ -164,10 +164,10 @@ for ( $j = 0; $j < count ($viewusers); $j += $USERS_PER_TABLE ) {
  }
  echo " style=\"width:$tdw%;\">";
  //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
-      if ( empty ($ADD_LINK_IN_VIEWS) || $ADD_LINK_IN_VIEWS != "N" ) {
-        echo html_for_add_icon ( date ("Ymd", $date), "", "", $user );
+      if ( empty ($ADD_LINK_IN_VIEWS) || $ADD_LINK_IN_VIEWS != 'N' ) {
+        echo html_for_add_icon ( date ('Ymd', $date), "", "", $user );
       }
-      print_date_entries ( date ("Ymd", $date), $user, true );
+      print_date_entries ( date ('Ymd', $date), $user, true );
       echo "</td>";
     } //end for
     echo "</tr>\n";
@@ -183,11 +183,11 @@ if ( ! empty ( $eventinfo ) ) {
 }
 
 echo "<a title=\"" . 
-  translate("Generate printer-friendly version") . "\" class=\"printer\" " .
+  translate ( 'Generate printer-friendly version' ) . "\" class=\"printer\" " .
   "href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
   "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
-  translate("Generate printer-friendly version") . "'\">[" . 
-  translate("Printer Friendly") . "]</a>\n";
+  translate ( 'Generate printer-friendly version' ) . "'\">[" . 
+  translate ( 'Printer Friendly' ) . "]</a>\n";
 
 print_trailer (); ?>
 </body>

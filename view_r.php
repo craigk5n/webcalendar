@@ -133,7 +133,7 @@ if ( $is_day_view ) {
   $thistime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
   $start_ind = $end_ind = ( date ( 'w', $thistime ) - $WEEK_START + 7 ) % 7;
 } else {
-  if ( $DISPLAY_WEEKENDS == "N" ) {
+  if ( $DISPLAY_WEEKENDS == 'N' ) {
     if ( $WEEK_START == 1 ) {
       $start_ind = 0;
       $end_ind = 4;
@@ -156,8 +156,8 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
      month_short_name ( date ( "m", $days[$i] ) - 1 ) .
      " " . date ( "d", $days[$i] );
   if ( empty ( $first_date ) )
-    $first_date = date_to_str ( date ( "Ymd", $days[$i] ), "", false );
-  $last_date = date_to_str ( date ( "Ymd", $days[$i] ), "", false );
+    $first_date = date_to_str ( date ( 'Ymd', $days[$i] ), "", false );
+  $last_date = date_to_str ( date ( 'Ymd', $days[$i] ), "", false );
 }
 
 
@@ -181,7 +181,7 @@ if ( count ( $viewusers ) == 0 ) {
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<h2>" . translate ( "Error" ) .
+  echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
   print_trailer ();
   exit;
@@ -205,9 +205,9 @@ else
   $tdw = floor ( ( 100 - $time_w ) / ( $end_ind - $start_ind + 1 ) );
 
 $untimed_found = false;
-$get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
+$get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 // public access events can not override $DISPLAY_UNAPPROVED
-if ( $user == "__public__" && $PUBLIC_ACCESS_VIEW_UNAPPROVED != 'Y' )
+if ( $user == '__public__' && $PUBLIC_ACCESS_VIEW_UNAPPROVED != 'Y' )
   $get_unapproved = false;
   
 // Step through each user and load events for that user.
@@ -247,13 +247,13 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
 
 
 <div style="border-width:0px; width:99%;">
-<a title="<?php etranslate("Previous")?>" class="prev" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
+<a title="<?php etranslate ( 'Previous' )?>" class="prev" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
 
-<a title="<?php etranslate("Next")?>" class="next" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate("Next")?>" /></a>
+<a title="<?php etranslate ( 'Next' )?>" class="next" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate ( 'Next' )?>" /></a>
 <div class="title">
 <span class="date"><?php
   if ( $is_day_view ) {
-    echo date_to_str ( date ( "Ymd", $thistime ), false );
+    echo date_to_str ( date ( 'Ymd', $thistime ), false );
   } else {
     echo $first_date . "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
       $last_date;
@@ -263,7 +263,7 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
 <?php
   if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
     echo "<br />\n<span class=\"weeknumber\">(" .
-      translate("Week") . " " . date("W", $wkstart + ONE_DAY ) . ")</span>";
+      translate ( 'Week' ) . " " . date("W", $wkstart + ONE_DAY ) . ")</span>";
   }
 ?>
 </div></div><br />
@@ -271,13 +271,12 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
 <?php
 if ( $can_add ) {
   $help = 'title="' .
-    translate ( "Double-click on empty cell to add new entry" ) . '"';
+    translate ( 'Double-click on empty cell to add new entry' ) . '"';
 } else {
   $help = '';
 }
-?>
-
-<?php if ( ! $fit_to_window ) { ?>
+ 
+if ( ! $fit_to_window ) { ?>
 <table <?php echo $help;?> class="main" cellspacing="0" cellpadding="0"
   style="width:<?php echo $table_width;?>px;" width="<?php echo $table_width;?>">
 <?php } else { ?>
@@ -289,15 +288,15 @@ if ( $can_add ) {
 <?php
   // heading row that displays day of week and date
   if ( ! $fit_to_window )
-    $tdwf = ( $col_pixels * count ( $viewusers ) ) . "px";
+    $tdwf = ( $col_pixels * count ( $viewusers ) ) . 'px';
   else
     $tdwf = sprintf ( "%0.2f", $tdw ) . "%";
-  $todayYmd = date ( "Ymd", $today );
+  $todayYmd = date ( 'Ymd', $today );
   for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
-    $wday = date ( "w", $days[$i] );
-    if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == "N" ) continue; 
+    $wday = date ( 'w', $days[$i] );
+    if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
     $weekday = weekday_short_name ( $wday );
-    if ( $todayYmd == date ( "Ymd", $days[$i] ) ) {
+    if ( $todayYmd == date ( 'Ymd', $days[$i] ) ) {
       echo "<th class=\"today\" style=\"width:$tdwf;\" colspan=\"$num_users\">";
     } else {
       echo "<th style=\"width:$tdwf;\" colspan=\"$num_users\">";
@@ -342,7 +341,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $events = $e_save[$u];
     $repeated_events = $re_save[$u];
     // get all the repeating events for this date and store in array $rep
-    $adate = date ( "Ymd", $days[$d] );
+    $adate = date ( 'Ymd', $days[$d] );
     $rep = get_repeating_entries ( $user, $adate );
     for ( $j = 0; $j < count ( $rep ); $j++ ) {
       if ( ! isset ( $am_part[$rep[$j]->getID()] ) ) {
@@ -383,7 +382,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $events = $e_save[$u];
     $repeated_events = $re_save[$u];
     // get all the repeating events for this date and store in array $rep
-    $adate = date ( "Ymd", $days[$d] );
+    $adate = date ( 'Ymd', $days[$d] );
     $rep = get_repeating_entries ( $user, $adate );
     $cur_rep = 0;
 
@@ -465,10 +464,10 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 if ( $untimed_found || $show_untimed_row_always ) {
   echo "<tr><th class=\"empty\" width=\"$time_w\" style=\"width:$time_w;\">&nbsp;</th>\n";
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-    $thiswday = date ( "w", $days[$d] );
+    $thiswday = date ( 'w', $days[$d] );
 
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-    if ( $is_weekend  && $DISPLAY_WEEKENDS == "N" ) continue; 
+    if ( $is_weekend  && $DISPLAY_WEEKENDS == 'N' ) continue; 
     for ( $u = 0; $u < count ( $viewusers ); $u++ ) {
       $untimed = $save_untimed[$u][$d];
 
@@ -494,7 +493,7 @@ if ( $untimed_found || $show_untimed_row_always ) {
         echo " class=\"$class\"";
       }
       if ( $can_add ) {
-        $add_url = "edit_entry.php?date=" . date ( "Ymd", $days[$d] ) .
+        $add_url = "edit_entry.php?date=" . date ( 'Ymd', $days[$d] ) .
           "&amp;defusers=" . $viewusers[$u] . "&amp;duration=1440";
         echo " ondblclick='document.location.href=\"$add_url\"' ";
       }
@@ -526,7 +525,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   //echo "<tr>\n<th valign=\"top\">" .  $time . "</th>\n";
 
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-    $thiswday = date ( "w", $days[$d] );
+    $thiswday = date ( 'w', $days[$d] );
 
     for ( $u = 0; $u < count ( $viewusers ); $u++ ) {
 
@@ -560,14 +559,14 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
           echo "<td";
           echo ( empty ( $class ) ) ? "" : " class=\"$class\"";
           if ( $can_add ) {
-            $add_url = "edit_entry.php?date=" . date ( "Ymd", $days[$d] ) .
+            $add_url = "edit_entry.php?date=" . date ( 'Ymd', $days[$d] ) .
               "&amp;defusers=" . $viewusers[$u] .
               "&amp;hour=$time_h&amp;minute=$time_m";
             echo " ondblclick='document.location.href=\"$add_url\"' ";
           }
           echo ">";
           //if ( $can_add ) {        //if user can add events...
-          //  echo html_for_add_icon ( date ( "Ymd", $days[$d] ),
+          //  echo html_for_add_icon ( date ( 'Ymd', $days[$d] ),
           //    $time_h, $time_m, $user );        //..then echo the add event icon
           //}
           echo "&nbsp;</td>\n";
@@ -578,14 +577,14 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
             echo ( empty ( $class ) ) ? "" : " class=\"$class\"";
             echo " rowspan=\"" . $rowspan_day[$u][$d] . "\"";
             if ( $can_add ) {
-              $add_url = "edit_entry.php?date=" . date ( "Ymd", $days[$d] ) .
+              $add_url = "edit_entry.php?date=" . date ( 'Ymd', $days[$d] ) .
                 "&amp;defusers=$user" .
                 "&amp;hour=$time_h&amp;minute=$time_m";
               echo " ondblclick='document.location.href=\"$add_url\"' ";
             }
             echo ">";
             //if ( $can_add ) {
-            //  echo html_for_add_icon ( date ( "Ymd", $days[$d] ), $time_h,
+            //  echo html_for_add_icon ( date ( 'Ymd', $days[$d] ), $time_h,
             //    $time_m, $user );
             //}
             echo $hour_arr[$i]."</td>\n";
@@ -593,14 +592,14 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
             echo "<td";
             echo ( empty ( $class ) ) ? "" : " class=\"$class\"";
             if ( $can_add ) {
-              $add_url = "edit_entry.php?date=" . date ( "Ymd", $days[$d] ) .
+              $add_url = "edit_entry.php?date=" . date ( 'Ymd', $days[$d] ) .
                 "&amp;defusers=$user" .
                 "&amp;hour=$time_h&amp;minute=$time_m";
               echo " ondblclick='document.location.href=\"$add_url\"' ";
             }
             echo ">";
             //if ( $can_add ) {
-            //  echo html_for_add_icon ( date ( "Ymd", $days[$d] ), $time_h,
+            //  echo html_for_add_icon ( date ( 'Ymd', $days[$d] ), $time_h,
             //    $time_m, $user );
             //}
             echo $hour_arr[$i]."</td>\n";
@@ -625,10 +624,10 @@ $user = ""; // reset
 
 if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
-echo "<a title=\"" . translate("Generate printer-friendly version") . "\" class=\"printer\" href=\"view_r.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
+echo "<a title=\"" . translate ( 'Generate printer-friendly version' ) . "\" class=\"printer\" href=\"view_r.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
         "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
-        translate("Generate printer-friendly version") .
-        "'\">[" . translate("Printer Friendly") . "]</a>\n";
+        translate ( 'Generate printer-friendly version' ) .
+        "'\">[" . translate ( 'Printer Friendly' ) . "]</a>\n";
 
 print_trailer ();
 ?>

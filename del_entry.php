@@ -13,7 +13,7 @@ if ( $id > 0 ) {
   // first see who has access to edit this entry
   if ( $is_admin ) {
     $can_edit = true;
-  } else if ( $readonly == "Y" ) {
+  } else if ( $readonly == 'Y') {
     $can_edit = false;
   } else {
     $can_edit = false;
@@ -77,7 +77,7 @@ if ( ! $can_edit && access_is_enabled () && ! empty ( $user ) ) {
 }
 
 if ( ! $can_edit ) {
-  $error = translate ( "You are not authorized" );
+  $error = translate ( 'You are not authorized' );
 }
 
 // Is this a repeating event?
@@ -151,28 +151,28 @@ if ( $id > 0 && empty ( $error ) ) {
         $can_email = access_user_calendar ( 'email', $partlogin[$i], $login);
       }  
       if ( $can_email == 'Y' ) {  
-        $do_send = get_pref_setting ( $partlogin[$i], "EMAIL_EVENT_DELETED" );
-        $htmlmail = get_pref_setting ( $partlogin[$i], "EMAIL_HTML" );
-        $t_format = get_pref_setting ( $partlogin[$i], "TIME_FORMAT" );
-        $user_TIMEZONE = get_pref_setting ( $partlogin[$i], "TIMEZONE" );
-        set_env ( "TZ", $user_TIMEZONE );
-        $user_language = get_pref_setting ( $partlogin[$i], "LANGUAGE" );
-        user_load_variables ( $partlogin[$i], "temp" );         
-        if ( ! $is_nonuser_admin && $partlogin[$i] != $login && $do_send == "Y" &&
+        $do_send = get_pref_setting ( $partlogin[$i], 'EMAIL_EVENT_DELETED' );
+        $htmlmail = get_pref_setting ( $partlogin[$i], 'EMAIL_HTML' );
+        $t_format = get_pref_setting ( $partlogin[$i], 'TIME_FORMAT' );
+        $user_TIMEZONE = get_pref_setting ( $partlogin[$i], 'TIMEZONE' );
+        set_env ( 'TZ', $user_TIMEZONE );
+        $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
+        user_load_variables ( $partlogin[$i], 'temp' );         
+        if ( ! $is_nonuser_admin && $partlogin[$i] != $login && $do_send == 'Y' &&
           boss_must_be_notified ( $login, $partlogin[$i] ) && 
-          ! empty ( $tempemail ) && $SEND_EMAIL != "N" ) {
+          ! empty ( $tempemail ) && $SEND_EMAIL != 'N' ) {
             if ( empty ( $user_language ) || ( $user_language == 'none' )) {
                reset_language ( $LANGUAGE );
             } else {
                reset_language ( $user_language );
             }
-          $msg = translate("Hello") . ", " . unhtmlentities( $tempfullname ). ".\n\n" .
-            translate("An appointment has been canceled for you by") .
+          $msg = translate( 'Hello' ) . ", " . unhtmlentities( $tempfullname ). ".\n\n" .
+            translate( 'An appointment has been canceled for you by' ) .
             " " . $login_fullname .  ".\n" .
-            translate("The subject was") . " \"" . $name . "\"\n" .
-            translate("Date") . ": " . date_to_str ($thisdate) . "\n";
+            translate( 'The subject was' ) . " \"" . $name . "\"\n" .
+            translate( 'Date' ) . ": " . date_to_str ($thisdate) . "\n";
             if ( ! empty ( $eventtime ) && $eventtime != '-1' ) 
-              $msg .= translate("Time") . ": " . 
+              $msg .= translate( 'Time' ) . ": " . 
              // Apply user's GMT offset and display their TZID
              display_time ( '', 2, $eventstart, $t_format );
             $msg .= "\n\n";
@@ -257,7 +257,7 @@ if ( $id > 0 && empty ( $error ) ) {
         $del_user = $user;
       } else {
         // Error: user cannot delete from other user's calendar
-        $error = translate ( "You are not authorized" );
+        $error = translate ( 'You are not authorized' );
       }
     }
     if ( empty ( $error ) ) {
@@ -268,22 +268,22 @@ if ( $id > 0 && empty ( $error ) ) {
   }
 }
 
-$ret = getValue ( "ret" );
+$ret = getValue ( 'ret' );
 $return_view = get_last_view ();
-if ( ! empty ( $ret ) && $ret == "listall" ) {
-  $url = "list_unapproved.php";
-} else if ( ! empty ( $ret ) && $ret == "list" ) {
-  $url = "list_unapproved.php";
+if ( ! empty ( $ret ) && $ret == 'listall' ) {
+  $url = 'list_unapproved.php';
+} else if ( ! empty ( $ret ) && $ret == 'list' ) {
+  $url = 'list_unapproved.php';
   if ( ! empty ( $user ) )
     $url .= "?user=$user";
 }else if ( ! empty ( $return_view ) ) {
     do_redirect ( $return_view );
 } else {
-  $url = get_preferred_view ( "", empty ( $user ) ? "" : "user=$user" );
+  $url = get_preferred_view ( '', empty ( $user ) ? '' : "user=$user" );
 }
 
 //return to login TIMEZONE
-set_env ( "TZ", $TIMEZONE );
+set_env ( 'TZ', $TIMEZONE );
 if ( empty ( $error ) ) {
   do_redirect ( $url );
   exit;
@@ -291,7 +291,7 @@ if ( empty ( $error ) ) {
 print_header();
 ?>
 
-<h2><?php etranslate("Error")?></h2>
+<h2><?php etranslate( 'Error' )?></h2>
 <blockquote>
 <?php echo $error; ?>
 </blockquote>

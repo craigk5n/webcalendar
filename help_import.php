@@ -16,8 +16,8 @@
   </ul>
   <br /><br />
 
-  <?php etranslate("Anything imported from Palm will be overwritten during the next import (unless the event date has passed).") ?>
-  <?php etranslate("Therefore, updates should be made in the Palm Desktop.");?>
+  <?php etranslate("Anything imported from Palm will be overwritten during the next import (unless the event date has passed).")
+  etranslate("Therefore, updates should be made in the Palm Desktop.");?>
 
 <h3><?php etranslate("vCal")?></h3>
   <?php etranslate("This form will import vCalendar (.vcs) 1.0 events");?>.<br /><br />

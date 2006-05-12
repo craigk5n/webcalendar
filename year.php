@@ -8,14 +8,14 @@ else
   load_user_layers ();
 
 if ( empty ( $year ) )
-  $year = date("Y");
+  $year = date ( 'Y' );
 
 $thisyear = $year;
-if ( $year != date ( "Y") )
+if ( $year != date ( 'Y' ) )
   $thismonth = 1;
 //set up global $today value for highlighting current date
 set_today($date);
-if ( $year > "1903" )
+if ( $year > '1903' )
   $prevYear = $year - 1;
 else
   $prevYear=$year;
@@ -25,8 +25,8 @@ $nextYear= $year + 1;
 $startdate = mktime ( 0, 0, 0, 1, 1, $year);
 $enddate = mktime ( 0, 0, 0, 12, 31, $year);
 
-if ( $ALLOW_VIEW_OTHER != "Y" && ! $is_admin )
-  $user = "";
+if ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin )
+  $user = '';
 
 $boldDays = false;
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
@@ -49,20 +49,20 @@ print_header();
 ?>
  
 <div class="title">
- <a title="<?php etranslate("Previous")?>" class="prev" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="images/leftarrow.gif" alt="<?php etranslate("Previous")?>" /></a>
- <a title="<?php etranslate("Next")?>" class="next" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="images/rightarrow.gif" alt="<?php etranslate("Next")?>" /></a>
+ <a title="<?php etranslate ( 'Previous' )?>" class="prev" href="year.php?year=<?php echo $prevYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
+ <a title="<?php etranslate ( 'Next' )?>" class="next" href="year.php?year=<?php echo $nextYear; if ( ! empty ( $user ) ) echo "&amp;user=$user";?>"><img src="images/rightarrow.gif" alt="<?php etranslate ( 'Next' )?>" /></a>
  <span class="date"><?php echo $thisyear ?></span>
  <span class="user"><?php
-  if ( $single_user == "N" ) {
+  if ( $single_user == 'N' ) {
    echo "<br />\n";
    if ( ! empty ( $user ) ) {
-    user_load_variables ( $user, "user_" );
+    user_load_variables ( $user, 'user_' );
     echo $user_fullname;
    } else {
     echo $fullname;
    }
    if ( $is_assistant )
-    echo "<br /><strong>-- " . translate("Assistant mode") . " --</strong>";
+    echo '<br /><strong>-- ' . translate( 'Assistant mode' ) . ' --</strong>';
   }
  ?></span>
 </div>
@@ -95,13 +95,15 @@ print_header();
 <?php display_unapproved_events ( $login ); ?>
 <br />
 <a title="<?php 
- etranslate("Generate printer-friendly version")
+ etranslate ( 'Generate printer-friendly version' )
 ?>" class="printer" href="year.php?<?php
  if ( $thisyear )
   echo "year=$thisyear&amp;";
  if ( $user != $login && ! empty ( $user ) )
   echo "user=$user&amp;";
-?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
+?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php 
+  etranslate ( 'Generate printer-friendly version' )?>'">[<?php 
+  etranslate ( 'Printer Friendly' )?>]</a>
 
 <?php print_trailer(); ?>
 </body>

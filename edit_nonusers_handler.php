@@ -3,8 +3,8 @@ include_once 'includes/init.php';
 load_user_layers ();
 
 if ( ! $is_admin ) {
-  echo "<h2>" . translate("Error") .
-    "</h2>" . translate("You are not authorized") . ".\n";
+  echo '<h2>' . translate( 'Error' ) .
+    '</h2>' . translate( 'You are not authorized' ) . ".\n";
   echo "</body>\n</html>";
   exit;
 }
@@ -85,10 +85,10 @@ if ( ! empty ( $delete ) ) {
   // Delete user
   if ( ! dbi_execute ( "DELETE FROM webcal_nonuser_cals WHERE cal_login = ?", 
     array( $nid ) ) )
-    $error = translate ("Database error") . ": " . dbi_error();
+    $error = translate( 'Database error' ) . ': ' . dbi_error();
 
 } else {
-  if ( $action == "Save" || $action == translate ("Save") ) {
+  if ( $action == 'Save' || $action == translate( 'Save' ) ) {
     // Updating
     $query_params = array();
     $sql = "UPDATE webcal_nonuser_cals SET ";
@@ -110,7 +110,7 @@ if ( ! empty ( $delete ) ) {
     $query_params[] = $nid;
 
     if ( ! dbi_execute ( $sql, $query_params ) ) {
-      $error = translate ("Database error") . ": " . dbi_error();
+      $error = translate( 'Database error' ) . ': ' . dbi_error();
     }
   } else {
     // Adding
@@ -121,10 +121,10 @@ if ( ! empty ( $delete ) ) {
       "VALUES ( ?, ?, ?, ?, ? )";
       if ( ! dbi_execute ( $sql, 
         array( $nid, $nfirstname, $nlastname, $nadmin, $ispublic ) ) ) {
-        $error = translate ("Database error") . ": " . dbi_error();
+        $error = translate( 'Database error' ) . ': ' . dbi_error();
       }
     } else {
-      $error = translate ("Calendar ID")." ".translate ("word characters only").".";
+      $error = translate ( 'Calendar ID' )." ".translate ( 'word characters only' ).'.';
     }
   }
   //Add entry in UAC access table for new admin and remove for of admin
@@ -136,7 +136,7 @@ if ( ! empty ( $delete ) ) {
     "cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only ) VALUES " .
     "( ?, ?, ?, ?, ?, ?, ?, ? )";
   if ( ! dbi_execute ( $sql, array( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) ) {
-    die_miserable_death ( translate ( "Database error" ) . ": " .
+    die_miserable_death ( translate ( 'Database error' ) . ': ' .
       dbi_error () );
   }
   // Delete old admin...
@@ -150,7 +150,7 @@ if ( ! empty ( $error ) ) {
   print_header( '', '', '', true );
 ?>
 
-<h2><?php etranslate("Error")?></h2>
+<h2><?php etranslate( 'Error' )?></h2>
 
 <blockquote>
 <?php
@@ -163,6 +163,6 @@ echo $error;
 </html>
 <?php } else if ( empty ( $error ) ) {
 ?><html><head></head>
-<body onLoad="alert('<?php etranslate("Changes successfully saved", true);?>'); window.parent.location.href='users.php';">
+<body onLoad="alert('<?php etranslate( 'Changes successfully saved', true);?>'); window.parent.location.href='users.php';">
 </body></html>
 <?php } ?>

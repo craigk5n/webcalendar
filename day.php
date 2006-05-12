@@ -11,19 +11,19 @@ load_user_categories ();
 $wday = strftime ( "%w", mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
 
 $now = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
-$nowYmd = date ( "Ymd", $now );
+$nowYmd = date ( 'Ymd', $now );
 
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 1, $thisyear );
-$nextYmd = date ( "Ymd", $next );
-$nextyear = date ( "Y", $next );
-$nextmonth = date ( "m", $next );
-$nextday = date ( "d", $next );
+$nextYmd = date ( 'Ymd', $next );
+$nextyear = date ( 'Y', $next );
+$nextmonth = date ( 'm', $next );
+$nextday = date ( 'd', $next );
 
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 1, $thisyear );
-$prevYmd = date ( "Ymd", $prev );
-$prevyear = date ( "Y", $prev );
-$prevmonth = date ( "m", $prev );
-$prevday = date ( "d", $prev );
+$prevYmd = date ( 'Ymd', $prev );
+$prevyear = date ( 'Y', $prev );
+$prevmonth = date ( 'm', $prev );
+$prevday = date ( 'd', $prev );
 
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
  $boldDays = true;
@@ -35,16 +35,14 @@ $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 $enddate = mktime ( 0, 0, 0, $thismonth +1 , 0, $thisyear );
 
 $HeadX = '';
-if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {
+if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
   $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=day.php?$u_url" .
-    "date=$nowYmd$caturl" . ( ! empty ( $friendly ) ? "&amp;friendly=1" : "") . "\" />\n";
+    "date=$nowYmd$caturl" . ( ! empty ( $friendly ) ? '&amp;friendly=1' : '') . "\" />\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
-?>
 
-<?php
 /* Pre-Load the repeated events for quckier access */
 $repeated_events = read_repeated_events ( empty ( $user ) ? $login : $user,
   $cat_id, $startdate  );
@@ -53,7 +51,7 @@ $repeated_events = read_repeated_events ( empty ( $user ) ? $login : $user,
 $events = read_events ( empty ( $user ) ? $login : $user, $startdate, $enddate,
   $cat_id  );
  
-if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
+if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) )
     ? $user : $login, $startdate, $enddate, $cat_id );
@@ -71,7 +69,7 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
 if ( empty ( $TIME_SLOTS ) )
   $TIME_SLOTS = 24;
 
-print_day_at_a_glance ( date ( "Ymd", $now ),
+print_day_at_a_glance ( date ( 'Ymd', $now ),
   empty ( $user ) ? $login : $user, $can_add );
 ?>
 </table>
@@ -83,7 +81,7 @@ print_day_at_a_glance ( date ( "Ymd", $now ),
 </div>
 <br />
 <?php 
-if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y" ) {
+if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y' ) {
   echo display_small_tasks ( $cat_id );
 }
 ?> 
@@ -95,13 +93,15 @@ if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y" ) {
   display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 ?>
 <br />
-<a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="day.php?<?php
+<a title="<?php etranslate( 'Generate printer-friendly version' )?>" class="printer" href="day.php?<?php
   echo $u_url;
   if ( $thisyear ) {
     echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday&amp;";
   }
   if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
-?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
+?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php 
+etranslate( 'Generate printer-friendly version' )?>'">[<?php 
+etranslate( 'Printer Friendly' )?>]</a>
 
 <?php print_trailer (); ?>
 </body>

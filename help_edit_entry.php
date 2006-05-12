@@ -32,30 +32,29 @@
    <?php etranslate("End Time")?>:</td><td>
    <?php etranslate("end-time-help")?>
   </td></tr>
-   <?php } ?>
- <?php if ( $DISABLE_PRIORITY_FIELD != "Y" ) { ?>
+   <?php }
+ if ( $DISABLE_PRIORITY_FIELD != 'Y' ) { ?>
   <tr><td class="help">
    <?php etranslate("Priority")?>:</td><td>
    <?php etranslate("priority-help")?>
   </td></tr>
- <?php } ?>
- <?php if ( $DISABLE_ACCESS_FIELD != "Y" ) { ?>
+ <?php }
+ if ( $DISABLE_ACCESS_FIELD != 'Y' ) { ?>
   <tr><td class="help">
    <?php etranslate("Access")?>:</td><td>
    <?php etranslate("access-help")?>
   </td></tr>
- <?php } ?>
- <?php
-  $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != "Y" );
+ <?php }
+  $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
   if ( $is_admin )
    $show_participants = true;
-  if ( $single_user == "N" && $show_participants ) { ?>
+  if ( $single_user == 'N' && $show_participants ) { ?>
    <tr><td class="help">
     <?php etranslate("Participants")?>:</td><td>
     <?php etranslate("participants-help")?>
    </td></tr>
-  <?php } ?>
- <?php if ( $DISABLE_REPEATING_FIELD != "Y" ) { ?>
+  <?php } 
+  if ( $DISABLE_REPEATING_FIELD != 'Y' ) { ?>
   <tr><td class="help">
    <?php etranslate("Repeat Type")?>:</td><td>
    <?php etranslate("repeat-type-help")?>

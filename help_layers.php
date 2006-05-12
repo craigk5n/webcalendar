@@ -19,7 +19,7 @@ print_header('','','',true);
   <?php etranslate("Specifies the user that you would like to see displayed in your calendar.")?>
  </td></tr>
  <tr><td class="help">
-  <?php etranslate("Colors")?>:</td><td>
+  <?php etranslate( 'Colors' )?>:</td><td>
   <?php etranslate("The text color of the new layer that will be displayed in your calendar.")?>
  </td></tr>
  <tr><td class="help">
@@ -38,11 +38,11 @@ print_header('','','',true);
 <br /><br />
 
 <?php if ( $ALLOW_COLOR_CUSTOMIZATION ) { ?>
- <h3><?php etranslate("Colors")?></h3>
+ <h3><?php etranslate( 'Colors' )?></h3>
  <?php etranslate("colors-help")?>
  <br /><br />
-<?php } // if $ALLOW_COLOR_CUSTOMIZATION ?>
+<?php } // if $ALLOW_COLOR_CUSTOMIZATION 
 
-<?php print_trailer( false, true, true ); ?>
+print_trailer( false, true, true ); ?>
 </body>
 </html>

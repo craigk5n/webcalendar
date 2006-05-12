@@ -23,21 +23,21 @@ load_global_settings ();
 $showLoginFailureReason = true;
 
 if ( ! empty ( $last_login ) ) {
-  $login = "";
+  $login = '';
 }
 
 if ( empty ( $webcalendar_login ) ) {
-  $webcalendar_login = "";
+  $webcalendar_login = '';
 }
 
-if ( $REMEMBER_LAST_LOGIN == "Y" && empty ( $login ) ) {
+if ( $REMEMBER_LAST_LOGIN == 'Y' && empty ( $login ) ) {
   $last_login = $login = $webcalendar_login;
 }
 
 $WebCalendar->setLanguage();
 
 load_global_settings ();
-load_user_preferences ( "guest" );
+load_user_preferences ( 'guest' );
 
 // Look for action=logout
 $logout = false;
@@ -45,24 +45,24 @@ $action = getGetValue ( 'action' );
 if ( ! empty ( $action ) && $action == 'logout' ) {
   $logout = true;
   $return_path = '';
-  SetCookie ( "webcalendar_login", "", 0 );
-  SetCookie ( "webcalendar_last_view", "", 0 );
+  SetCookie ( 'webcalendar_login', '', 0 );
+  SetCookie ( 'webcalendar_last_view', '', 0 );
 } else if (  empty ( $return_path ) ) {
   // see if a return path was set
   $return_path = get_last_view();
   if ( ! empty ( $return_path ) ) 
-    SetCookie ( "webcalendar_last_view", "", 0 );
+    SetCookie ( 'webcalendar_last_view', '', 0 );
 }
 
 if ( ! empty ( $return_path ) ) {
   $return_path = clean_whitespace ( $return_path );
   $url = $return_path;
 } else {
-  $url = "index.php";
+  $url = 'index.php';
 }
 
 $lang = '';
-if ( ! empty ( $LANGUAGE ) &&  $LANGUAGE != "Browser-defined" && $LANGUAGE != "none" ) {
+if ( ! empty ( $LANGUAGE ) &&  $LANGUAGE != 'Browser-defined' && $LANGUAGE != 'none' ) {
   $lang = languageToAbbrev ( $LANGUAGE );
 } else {
   $lang_long = get_browser_language ();
@@ -78,17 +78,17 @@ $password = getPostValue ( 'password' );
 
 // calculate path for cookie
 if ( empty ( $PHP_SELF ) ) {
-  $PHP_SELF = $_SERVER["PHP_SELF"];
+  $PHP_SELF = $_SERVER['PHP_SELF'];
 }
-$cookie_path = str_replace ( "login.php", "", $PHP_SELF );
+$cookie_path = str_replace ( 'login.php', '', $PHP_SELF );
 //echo "Cookie path: $cookie_path\n";
 
-if ( $single_user == "Y" ) {
+if ( $single_user == 'Y' ) {
   // No login for single-user mode
-  do_redirect ( "index.php" );
+  do_redirect ( 'index.php' );
 } else if ( $use_http_auth ) {
   // There is no login page when using HTTP authorization
-  do_redirect ( "index.php" );
+  do_redirect ( 'index.php' );
 } else {
   if ( ! empty ( $login ) && ! empty ( $password ) && ! $logout ) {
     if ( get_magic_quotes_gpc() ) {
@@ -97,20 +97,20 @@ if ( $single_user == "Y" ) {
     }
     $login = trim ( $login );
     if ( $login != addslashes ( $login ) ) {
-      die_miserable_death ( "Illegal characters in login " .
-        "<tt>" . htmlentities ( $login ) . "</tt>" );
+      die_miserable_death ( 'Illegal characters in login ' .
+        '<tt>' . htmlentities ( $login ) . '</tt>' );
     }
     if ( user_valid_login ( $login, $password ) ) {
 
-      user_load_variables ( $login, "" );
+      user_load_variables ( $login, '' );
 
-      $encoded_login = encode_string ( $login . "|" . crypt($password) );
+      $encoded_login = encode_string ( $login . '|' . crypt($password) );
       // set login to expire in 365 days
-      if ( ! empty ( $remember ) && $remember == "yes" ) {
-        SetCookie ( "webcalendar_session", $encoded_login,
+      if ( ! empty ( $remember ) && $remember == 'yes' ) {
+        SetCookie ( 'webcalendar_session', $encoded_login,
           time() + ( 24 * 3600 * 365 ), $cookie_path );
       } else {
-        SetCookie ( "webcalendar_session", $encoded_login, 0, $cookie_path );
+        SetCookie ( 'webcalendar_session', $encoded_login, 0, $cookie_path );
       }
       // The cookie "webcalendar_login" is provided as a convenience to
       // other apps that may wish to find out what the last calendar
@@ -119,18 +119,18 @@ if ( $single_user == "Y" ) {
       // is not used to allow logins within this app.  It is used to
       // load user preferences on the login page (before anyone has
       // logged in) if $REMEMBER_LAST_LOGIN is set to "Y" (in admin.php).
-      if ( ! empty ( $remember ) && $remember == "yes" ) {
-        SetCookie ( "webcalendar_login", $login,
+      if ( ! empty ( $remember ) && $remember == 'yes' ) {
+        SetCookie ( 'webcalendar_login', $login,
           time() + ( 24 * 3600 * 365 ), $cookie_path );
       } else {
-        SetCookie ( "webcalendar_login", $login, 0, $cookie_path );
+        SetCookie ( 'webcalendar_login', $login, 0, $cookie_path );
       }
-      if ( ! empty ( $GLOBALS["newUserUrl"] ) ) $url = $GLOBALS["newUserUrl"];
+      if ( ! empty ( $GLOBALS['newUserUrl'] ) ) $url = $GLOBALS['newUserUrl'];
       do_redirect ( $url );
     } else {
       // Invalid login
       if ( empty ( $error ) || ! $showLoginFailureReason ) {
-        $error = translate("Invalid login", true );
+        $error = translate('Invalid login', true );
       }
     }
   } else {
@@ -138,30 +138,30 @@ if ( $single_user == "Y" ) {
     //$error = "Start";
   }
   // delete current user
-  SetCookie ( "webcalendar_session", "", 0, $cookie_path );
+  SetCookie ( 'webcalendar_session', '', 0, $cookie_path );
   // In older versions the cookie path had no trailing slash and NS 4.78
   // thinks "path/" and "path" are different, so the line above does not
   // delete the "old" cookie. This prohibits the login. So we delete the
   // cookie with the trailing slash removed
   if (substr($cookie_path, -1) == '/') {
-    SetCookie ( "webcalendar_session", "", 0, substr($cookie_path, 0, -1)  );
+    SetCookie ( 'webcalendar_session', '', 0, substr($cookie_path, 0, -1)  );
   }
 }
-$charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
-echo "<?xml version=\"1.0\" encoding=\"$charset\"?>" . "\n";
+$charset = ( ! empty ( $LANGUAGE )?translate( 'charset' ): 'iso-8859-1' );
+echo '<?xml version="1.0" encoding="' . $charset . '"?>' . "\n";
 ?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" lang="<?php echo $lang; ?>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
-<title><?php etranslate($APPLICATION_NAME)?></title>
+<title><?php etranslate( $APPLICATION_NAME )?></title>
 <?php if ( ! $logout ) { ?>
 <script type="text/javascript">
 // error check login/password
 function valid_form ( form ) {
   if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
-    alert ( '<?php etranslate("You must enter a login and password", true)?>.' );
+    alert ( '<?php etranslate( 'You must enter a login and password', true)?>.' );
     return false;
   }
   return true;
@@ -198,7 +198,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 <h2><?php 
 // If Application Name is set to Title then get translation
 // If not, use the Admin defined Application Name
-if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME =="Title") {
+if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME == 'Title' ) {
   etranslate($APPLICATION_NAME);
 } else {
   echo htmlspecialchars ( $APPLICATION_NAME );
@@ -207,19 +207,19 @@ if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME =="Title") {
 
 <?php
 if ( ! empty ( $error ) ) {
-  print "<span style=\"color:#FF0000; font-weight:bold;\">" . 
-    translate("Error") . ": $error</span><br />\n";
+  print '<span style="color:#FF0000; font-weight:bold;">' . 
+    translate( 'Error' ) . ": $error</span><br />\n";
 } else {
   print "<br />\n";
 }
 
 if ( $logout ) {
-  echo '<p>' . translate ( "You have been logged out" ) . ".</p>\n";
+  echo '<p>' . translate ( 'You have been logged out' ) . ".</p>\n";
   echo "<br /><br />\n";
   echo '<a href="login.php' .
     ( ! empty ( $return_path ) ?
-      "?return_path=" . htmlentities ( $return_path ) : '' ) .
-    '" class="nav">' . translate("Login") .
+      '?return_path=' . htmlentities ( $return_path ) : '' ) .
+    '" class="nav">' . translate( 'Login' ) .
     "</a><br /><br /><br />\n";
 }
 
@@ -229,76 +229,73 @@ if ( ! $logout ) {
   onsubmit="return valid_form(this)">
 <?php
 if ( ! empty ( $return_path ) ) {
-  echo "<input type=\"hidden\" name=\"return_path\" value=\"" .
-    htmlentities ( $return_path ) . "\" />\n";
+  echo '<input type="hidden" name="return_path" value="' .
+    htmlentities ( $return_path ) . '" />' . "\n";
 }
 ?>
 
 <table cellpadding="10" align="center">
 <tr><td rowspan="2">
  <img src="images/login.gif" alt="Login" /></td><td align="right">
- <label for="user"><?php etranslate("Username")?>:</label></td><td>
+ <label for="user"><?php etranslate( 'Username' )?>:</label></td><td>
  <input name="login" id="user" size="15" maxlength="25" 
    value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" 
    tabindex="1" />
 </td></tr>
 <tr><td style="text-align:right;">
- <label for="password"><?php etranslate("Password")?>:</label></td><td>
+ <label for="password"><?php etranslate( 'Password' )?>:</label></td><td>
  <input name="password" id="password" type="password" size="15" 
    maxlength="30" tabindex="2" />
 </td></tr>
 <tr><td colspan="3" style="font-size: 10px;">
  <input type="checkbox" name="remember" id="remember" tabindex="3" 
-   value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) {
-     echo "checked=\"checked\""; }?> /><label for="remember">&nbsp;
+   value="yes" <?php if ( ! empty ( $remember ) && $remember == 'yes' ) {
+     echo 'checked="checked"'; }?> /><label for="remember">&nbsp;
    <?php etranslate("Save login via cookies so I don't have to login next time")?></label>
 </td></tr>
 <tr><td colspan="4" style="text-align:center;">
- <input type="submit" value="<?php etranslate("Login")?>" tabindex="4" />
+ <input type="submit" value="<?php etranslate( 'Login' )?>" tabindex="4" />
 </td></tr>
 </table>
 </form>
 
-<?php } ?>
+<?php }
 
-<?php if ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == "Y" ) { ?>
+if ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) { ?>
  <br /><br />
  <a class="nav" href="index.php">
-   <?php etranslate("Access public calendar")?></a><br />
-<?php } ?>
+   <?php etranslate( 'Access public calendar' )?></a><br />
+<?php }
 
-<?php
   $nulist = get_nonuser_cals ();
   for ( $i = 0; $i < count ( $nulist ); $i++ ) {
     if ( $nulist[$i]['cal_is_public'] == 'Y' ) {
       ?><a class="nav" href="nulogin.php?login=<?php
-        echo $nulist[$i]['cal_login'] . "\">" .
-          translate("Access") . ' ' . $nulist[$i]['cal_fullname'] . ' ' .
-          translate("calendar");
+        echo $nulist[$i]['cal_login'] . '">' .
+          translate( 'Access' ) . ' ' . $nulist[$i]['cal_fullname'] . ' ' .
+          translate( 'calendar' );
       ?></a><br /><?php
     }
   }
-?>
-
-<?php if ( $DEMO_MODE == "Y" ) {
+if ( $DEMO_MODE == 'Y' ) {
  // This is used on the sourceforge demo page
- echo "Demo login: user = \"demo\", password = \"demo\"<br />";
+ echo 'Demo login: user = "demo", password = "demo"<br />';
 } ?>
 <br /><br />
 <?php if ( ! empty ( $ALLOW_SELF_REGISTRATION ) &&
-  $ALLOW_SELF_REGISTRATION == "Y" ) { 
+  $ALLOW_SELF_REGISTRATION == 'Y' ) { 
   // We can limit what domain is allowed to self register
   // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
   if ( ! empty ( $SELF_REGISTRATION_DOMAIN ) ) {
     $valid_ip = validate_domain ( $SELF_REGISTRATION_DOMAIN );
  }
  if ( ! empty ( $valid_ip ) || empty ( $SELF_REGISTRATION_DOMAIN ) ) {
-    echo "<b><a href='register.php'>" . translate ( "Not yet registered? Register here!" ) . 
-     "</a></b><br /><br />";
+    echo '<b><a href="register.php">' . translate ( 'Not yet registered? Register here!' ) . 
+     '</a></b><br /><br />';
   }
 }
 ?>
-<span class="cookies"><?php etranslate("cookies-note")?></span><br />
+<span class="cookies"><?php etranslate( 'cookies-note' )?></span><br />
 <hr />
 <br /><br />
 <a href="<?php echo $PROGRAM_URL ?>" id="programname"><?php echo $PROGRAM_NAME?></a>
