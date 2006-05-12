@@ -20,24 +20,24 @@ $PAGE_SIZE = 25; // number of entries to show at once
 
 if ( ! $is_admin || ( access_is_enabled () &&
   ! access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) ) {
-  die_miserable_death ( translate ( "You are not authorized" ) );
+  die_miserable_death ( translate ( 'You are not authorized' ) );
 }
 
 print_header();
 
 $startid = getIntValue ( 'startid' );
 
-echo '<h3>' . translate("Activity Log") . "</h3>\n";
+echo '<h3>' . translate( 'Activity Log' ) . "</h3>\n";
 
-echo '<a title="' . translate("Admin") . '" class="nav" href="adminhome.php">&laquo;&nbsp;' . translate("Admin") . '</a><br /><br />' . "\n";
+echo '<a title="' . translate( 'Admin' ) . '" class="nav" href="adminhome.php">&laquo;&nbsp;' . translate( 'Admin' ) . '</a><br /><br />' . "\n";
 
 echo "<table class=\"embactlog\">\n";
 echo "<tr><th class=\"usr\">\n" .
-  translate("User") . "</th><th class=\"cal\">\n" .
-  translate("Calendar") . "</th><th class=\"scheduled\">\n" .
-  translate("Date") . "/" . translate("Time") . "</th><th class=\"dsc\">\n" .
-  translate("Event") . "</th><th class=\"action\">\n" .
-  translate("Action") . "\n</th></tr>\n";
+  translate( 'User' ) . "</th><th class=\"cal\">\n" .
+  translate( 'Calendar' ) . "</th><th class=\"scheduled\">\n" .
+  translate( 'Date' ) . "/" . translate( 'Time' ) . "</th><th class=\"dsc\">\n" .
+  translate( 'Event' ) . "</th><th class=\"action\">\n" .
+  translate( 'Action' ) . "\n</th></tr>\n";
 $sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
   "webcal_entry_log.cal_type, webcal_entry_log.cal_date, " .
   "webcal_entry_log.cal_time, webcal_entry_log.cal_text, webcal_entry.cal_id, " .
@@ -50,7 +50,7 @@ if ( ! empty ( $startid ) )
 $sql .= "ORDER BY webcal_entry_log.cal_log_id DESC";
 $res = dbi_execute ( $sql );
 
-$nextpage = "";
+$nextpage = '';
 
 if ( $res ) {
   $num = 0;
@@ -60,60 +60,60 @@ if ( $res ) {
       $nextpage = $row[8];
       break;
     } else {
-      echo "<tr";
+      echo '<tr';
       if ( $num % 2 ) {
-        echo " class=\"odd\"";
+        echo ' class="odd"';
       }
       $view_link = 'view_entry';      
       echo "><td>\n" .
         $row[0] . "</td><td>\n" .
         $row[1] . "</td><td>\n" . 
-        date_to_str ( $row[3] ) . "&nbsp;" .
+        date_to_str ( $row[3] ) . '&nbsp;' .
         // No TZ conversion & show TZID which will be GMT
         display_time ( $row[4], 3 ) . "</td><td>\n" . 
-        "<a title=\"" .
+        '<a title="' .
         htmlspecialchars($row[7]) . "\" href=\"$view_link.php?id=$row[6]\">" .
         htmlspecialchars($row[7]) . "</a></td><td>\n";
       if ( $row[2] == LOG_CREATE ) {
-        etranslate("Event created");
+        etranslate( 'Event created' );
       } else if ( $row[2] == LOG_APPROVE ) {
-        etranslate("Event approved");
+        etranslate( 'Event approved' );
       } else if ( $row[2] == LOG_REJECT ) {
-        etranslate("Event rejected");
+        etranslate( 'Event rejected' );
       } else if ( $row[2] == LOG_UPDATE ) {
-        etranslate("Event updated");
+        etranslate( 'Event updated' );
       } else if ( $row[2] == LOG_DELETE ) {
-        etranslate("Event deleted");
+        etranslate( 'Event deleted' );
       } else if ( $row[2] ==  LOG_CREATE_T ) { 
-        etranslate("Task created");        
+        etranslate( 'Task created' );        
       } else if ( $row[2] == LOG_APPROVE_T ) {
-        etranslate("Task approved");
+        etranslate( 'Task approved' );
       } else if ( $row[2] == LOG_REJECT_T ) {
-        etranslate("Task rejected");
+        etranslate( 'Task rejected' );
       } else if ( $row[2] == LOG_UPDATE_T ) {
-        etranslate("Task updated");
+        etranslate( 'Task updated' );
       } else if ( $row[2] == LOG_DELETE_T ) {
-        etranslate("Task deleted");
+        etranslate( 'Task deleted' );
       } else if ( $row[2] ==  LOG_CREATE_J ) { 
-        etranslate("Journal created");        
+        etranslate( 'Journal created' );        
       } else if ( $row[2] == LOG_APPROVE_J ) {
-        etranslate("Journal approved");
+        etranslate( 'Journal approved' );
       } else if ( $row[2] == LOG_REJECT_J ) {
-        etranslate("Journal rejected");
+        etranslate( 'Journal rejected' );
       } else if ( $row[2] == LOG_UPDATE_J ) {
-        etranslate("Journal updated");
+        etranslate( 'Journal updated' );
       } else if ( $row[2] == LOG_DELETE_J ) {
-        etranslate("Journal deleted");    
+        etranslate( 'Journal deleted' );    
       } else if ( $row[2] == LOG_NOTIFICATION ) {
-        etranslate("Notification sent");
+        etranslate( 'Notification sent' );
       } else if ( $row[2] == LOG_REMINDER ) {
-        etranslate("Reminder sent");
+        etranslate( 'Reminder sent' );
         if ( ! empty ( $row[5] ) )
           echo " (" . htmlentities ( $row[5] ) . ")";
       } else if ( $row[2] == LOG_ATTACHMENT ) {
-        etranslate("Attachment");
+        etranslate( 'Attachment' );
       } else if ( $row[2] == LOG_COMMENT ) {
-        etranslate("Comment");
+        etranslate( 'Comment' );
       } else if ( $row[2] == LOG_COMMENT ) {
         echo '???';
       }
@@ -122,7 +122,7 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 } else {
-  echo translate("Database error") . ": " . dbi_error ();
+  echo translate( 'Database error' ) . ": " . dbi_error ();
 }
 ?>
 </table><br />
@@ -131,11 +131,11 @@ if ( $res ) {
 //go BACK in time
 if ( ! empty ( $nextpage ) ) {
   echo "<a title=\"" . 
-    translate("Previous") . "&nbsp;$PAGE_SIZE&nbsp;" . 
-    translate("Events") .
+    translate( 'Previous' ) . "&nbsp;$PAGE_SIZE&nbsp;" . 
+    translate ( 'Events' ) .
     "\" class=\"prev\" href=\"activity_log.php?startid=$nextpage\">" . 
-    translate("Previous") . "&nbsp;$PAGE_SIZE&nbsp;" . 
-    translate("Events") . "</a>\n";
+    translate( 'Previous' ) . "&nbsp;$PAGE_SIZE&nbsp;" . 
+    translate ( 'Events' ) . "</a>\n";
 }
 
 if ( ! empty ( $startid ) ) {
@@ -150,11 +150,11 @@ if ( ! empty ( $startid ) ) {
         $prevarg = "?startid=$previd";
       }
       //go FORWARD in time
-      echo "<a title=\"" .  translate("Next") . "&nbsp;$PAGE_SIZE&nbsp;" . 
-        translate("Events") .
+      echo '<a title="' .  translate( 'Next' ) . "&nbsp;$PAGE_SIZE&nbsp;" . 
+        translate ( 'Events' ) .
         "\" class=\"next\" href=\"activity_log.php$prevarg\">" . 
-        translate("Next") . "&nbsp;$PAGE_SIZE&nbsp;" . 
-        translate("Events") . "</a><br />\n";
+        translate( 'Next' ) . "&nbsp;$PAGE_SIZE&nbsp;" . 
+        translate ( 'Events' ) . "</a><br />\n";
     }
     dbi_free_result ( $res );
   }
