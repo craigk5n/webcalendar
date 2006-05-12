@@ -12,7 +12,7 @@ function validate_and_submit () {
     showTab ( "details" );
 <?php } ?>
     document.editentryform.name.focus ();
-    alert ( "<?php etranslate("You have not entered a Brief Description", true)?>.");
+    alert ( "<?php etranslate( 'You have not entered a Brief Description', true)?>.");
     return false;
   }
   if ( document.editentryform.timetype && 
@@ -28,7 +28,7 @@ function validate_and_submit () {
       echo "if ( h < $WORK_DAY_START_HOUR && document.editentryform.entry_ampm[0].checked ) {";
     }
     ?>
-    if ( ! confirm ( "<?php etranslate ("The time you have entered begins before your preferred work hours.  Is this correct?", true)?> "))
+    if ( ! confirm ( "<?php etranslate ( 'The time you have entered begins before your preferred work hours.  Is this correct?', true)?> "))
       return false;
    }
   }
@@ -77,7 +77,7 @@ function validate_and_submit () {
   var valy = document.editentryform.year.options[y].value;
   var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
-   alert ("<?php etranslate ("Invalid Event Date", true)?>.");
+   alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
   document.editentryform.day.focus ();
    return false;
  }
@@ -103,7 +103,7 @@ function validate_and_submit () {
    var valy = document.editentryform.due_year.options[y].value;
    var c = new Date(valy,valm -1,vald);
    if ( c.getDate() != vald ) {
-     alert ("<?php etranslate ("Invalid Event Date", true)?>.");
+     alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
      document.editentryform.due_day.focus ();
      return false;
    }
@@ -139,7 +139,7 @@ function selectDate (  day, month, year, current, evt ) {
   var colorWindow = window.open(url,"DateSelection","width=300,height=200,"  + MyPosition);
 }
 
-<?php if ( $GROUPS_ENABLED == "Y" ) { 
+<?php if ( $GROUPS_ENABLED == 'Y' ) { 
 ?>function selectUsers () {
   var user = "<?php echo $user ?>";
   // find id of user selection object
@@ -163,9 +163,8 @@ function selectDate (  day, month, year, current, evt ) {
   window.open ( url, "UserSelection",
     "width=500,height=500,resizable=yes,scrollbars=yes" );
 }
-<?php } ?>
-
-<?php // This function is called when the event type combo box 
+<?php }
+// This function is called when the event type combo box 
  // is changed. If the user selectes "untimed event" or "all day event",
  // the times & duration fields are hidden.
  // If they change their mind & switch it back, the original 
@@ -363,7 +362,7 @@ function showSchedule () {
     }
   }
   if (users == '') {
-    alert("<?php etranslate("Please add a participant", true)?>" );
+    alert("<?php etranslate( 'Please add a participant', true)?>" );
     return false;
   }
   var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=no';
@@ -395,7 +394,7 @@ function add_exception (which) {
  var valy = document.editentryform.except_year.options[y].value;
  var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
-   alert ("<?php etranslate("Invalid Date",true ) ?>");
+   alert ("<?php etranslate( 'Invalid Date',true ) ?>");
    return false;
  }
  //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
@@ -600,15 +599,9 @@ function toggle_reminders() {
 
 function toggle_rem_rep(){
  var cnt = document.editentryform.elements['rem_rep_count'].value;
- if (cnt == 0 ) {
-   document.editentryform.elements['rem_rep_days'].disabled = true;
-   document.editentryform.elements['rem_rep_hours'].disabled = true;
-   document.editentryform.elements['rem_rep_minutes'].disabled = true;
- } else {
-   document.editentryform.elements['rem_rep_days'].disabled = false;
-   document.editentryform.elements['rem_rep_hours'].disabled = false;
-   document.editentryform.elements['rem_rep_minutes'].disabled = false; 
- }
+ document.editentryform.elements['rem_rep_days'].disabled = (cnt == 0 );
+ document.editentryform.elements['rem_rep_hours'].disabled = (cnt == 0 );
+ document.editentryform.elements['rem_rep_minutes'].disabled = (cnt == 0 );
 }
 
 
@@ -633,7 +626,7 @@ function editCats (  evt ) {
 
 function displayInValid(myvar)
 {
-  alert ( "<?php etranslate ("You have not entered a valid time of day", true)?>.");
+  alert ( "<?php etranslate ( 'You have not entered a valid time of day', true)?>.");
   myvar.select ();
   myvar.focus ();
 }

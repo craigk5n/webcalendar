@@ -38,7 +38,7 @@ load_global_settings ();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( "Content-Type: text/plain" );
-  etranslate("You are not authorized");
+  etranslate( 'You are not authorized' );
   exit;
 }
 /*
@@ -52,7 +52,7 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
 // The html target window to use when clicking on the minical
 // You should be able to set this to the desired frame or window 
 // to receive the results.
-$MINI_TARGET = "_blank";
+$MINI_TARGET = '_blank';
 
 // Change this to false if you still want to access this page even
 // though you do not have public access enabled.
@@ -81,11 +81,11 @@ $login = $user;
 
 
 if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' ) {
-  $error = translate ( "You are not authorized" ) . ".";
+  $error = translate ( 'You are not authorized' ) . '.';
 }
 
 if ( $allow_user_override ) {
-  $u = getValue ( "user", "[A-Za-z0-9_\.=@,\-]+", true );
+  $u = getValue ( 'user', "[A-Za-z0-9_\.=@,\-]+", true );
   if ( ! empty ( $u ) ) {
     $user = $u;
     $login = $u;
@@ -95,15 +95,15 @@ if ( $allow_user_override ) {
 
 load_user_preferences ();
 
-user_load_variables ( $login, "minical_" );
+user_load_variables ( $login, 'minical_' );
 
 if ( $user != '__public__' && ! nonuser_load_variables ( $login, 'minica_' ) ) {
-  die_miserable_death ( translate ( "No such nonuser calendar" ) .
+  die_miserable_death ( translate ( 'No such nonuser calendar' ) .
     ': ' . $login );
 }
 
 if ( $user != '__public__' && ( empty ( $minical_is_public ) || $minical_is_public != 'Y' ) ) {
-  die_miserable_death ( translate ( "This Calendar is not Public" ) );
+  die_miserable_death ( translate ( 'This Calendar is not Public' ) );
 }
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
@@ -111,8 +111,8 @@ $nextyear = date ( "Y", $next );
 $nextmonth = date ( "m", $next );
 
 $prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
-$prevyear = date ( "Y", $prev );
-$prevmonth = date ( "m", $prev );
+$prevyear = date ( 'Y', $prev );
+$prevmonth = date ( 'm', $prev );
 
 $boldDays = true;
 $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
@@ -120,7 +120,7 @@ $enddate = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 
 
 $HeadX = '';
-if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {
+if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
   $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=minical.php?$u_url" .
     "year=$thisyear&amp;month=$thismonth  \" />\n";

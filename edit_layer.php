@@ -3,15 +3,15 @@ include_once 'includes/init.php';
 
 if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   print_header ();
-  etranslate("You are not authorized");
+  etranslate( 'You are not authorized' );
   print_trailer ();
   exit;
 }
 
 $updating_public = false;
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
-  $layer_user = "__public__";
+  $layer_user = '__public__';
 } else {
   $layer_user = $login;
 }
@@ -27,10 +27,10 @@ if ( $updating_public )
   echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
 
 if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
-  etranslate("Edit Layer");
+  etranslate( 'Edit Layer' );
 else
-  etranslate("Add Layer");
-?>&nbsp;<img src="images/help.gif" alt="<?php etranslate("Help")?>" class="help" onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" /></h2>
+  etranslate( 'Add Layer' );
+?>&nbsp;<img src="images/help.gif" alt="<?php etranslate( 'Help' )?>" class="help" onclick="window.open ( 'help_layers.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" /></h2>
 
 <form action="edit_layer_handler.php" method="post" onsubmit="return valid_form(this);" name="prefform">
 
@@ -40,36 +40,36 @@ else
 
 <table style="border-width:0px;">
 <?php
-if ( $single_user == "N" ) {
+if ( $single_user == 'N' ) {
   $userlist =  $otherlist = get_my_users ();
-  if ($NONUSER_ENABLED == "Y" ) {
+  if ($NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_nonuser_cals ();
-    $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+    $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
-  if ($REMOTES_ENABLED == "Y" ) {
+  if ($REMOTES_ENABLED == 'Y' ) {
     $remotes = get_nonuser_cals ( $login, true );
-    $userlist = ($NONUSER_AT_TOP == "Y") ? array_merge($remotes, $userlist) : array_merge($userlist, $remotes);
+    $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($remotes, $userlist) : array_merge($userlist, $remotes);
   }  
   $num_users = 0;
   $size = 0;
-  $users = "";
+  $users = '';
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
     if ( $userlist[$i]['cal_login'] != $layer_user ) {
       $size++;
-      $users .= "<option value=\"" . $userlist[$i]['cal_login'] . "\"";
+      $users .= '<option value="' . $userlist[$i]['cal_login'] . '"';
       if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) {
         if ( $layers[$id]['cal_layeruser'] == $userlist[$i]['cal_login'] )
-          $users .= " selected=\"selected\"";
+          $users .= ' selected="selected"';
       } 
-      $users .= ">" . $userlist[$i]['cal_fullname'] . "</option>\n";
+      $users .= '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
     }
   }
   $osize = 0;
-  $others = "";
+  $others = '';
   for ( $i = 0; $i < count ( $otherlist ); $i++ ) {
     if ( $otherlist[$i]['cal_login'] != $layer_user ) {
       $osize++;
-      $others .= "<option value=\"" . $otherlist[$i]['cal_login'] . "\">" .
+      $others .= '<option value="' . $otherlist[$i]['cal_login'] . '">' .
         $otherlist[$i]['cal_fullname'] . "</option>\n";
     }
   }
@@ -83,7 +83,7 @@ if ( $single_user == "N" ) {
     $osize = 5;
   if ( $size >= 1 ) {
     print "<tr><td style=\"vertical-align:top;\">\n<label for=\"layeruser\">" .
-      translate("Source") . ":</label></td><td>\n";
+      translate( 'Source' ) . ":</label></td><td>\n";
     print "<select name=\"layeruser\" id=\"layeruser\" size=\"1\">\n$users\n";
     print "</select>\n";
     print "</td></tr>\n";
@@ -91,16 +91,18 @@ if ( $single_user == "N" ) {
 }
 ?>
 <tr><td>
- <label for="layercolor"><?php etranslate("Color")?>:</label></td><td>
- <input type="text" name="layercolor" id="layercolor" size="7" maxlength="7" value="<?php echo empty ( $layers[$id]['cal_color'] ) ? "" :  $layers[$id]['cal_color']; ?>" />
- <input type="button" onclick="selectColor('layercolor')" value="<?php etranslate("Select")?>..." />
+ <label for="layercolor"><?php etranslate( 'Color' )?>:</label></td><td>
+ <input type="text" name="layercolor" id="layercolor" size="7" maxlength="7" value="<?php 
+  echo empty ( $layers[$id]['cal_color'] ) ? '':  $layers[$id]['cal_color']; ?>" />
+ <input type="button" onclick="selectColor('layercolor')" value="<?php 
+  etranslate( 'Select' )?>..." />
 </td></tr>
 <tr><td style="font-weight:bold;">
- <?php etranslate("Duplicates")?>:</td><td>
+ <?php etranslate( 'Duplicates' )?>:</td><td>
  <label><input type="checkbox" name="dups" value="Y"<?php 
   if (! empty ($layers[$id]['cal_dups']) && $layers[$id]['cal_dups'] == 'Y') 
-   echo " checked=\"checked\"";
- ?> />&nbsp;<?php etranslate("Show layer events that are the same as your own")?></label>
+   echo ' checked="checked"';
+ ?> />&nbsp;<?php etranslate( 'Show layer events that are the same as your own' )?></label>
 </td></tr>
 <?php
 // If admin and adding a new layer, add ability to select other users
@@ -123,13 +125,15 @@ EOT;
 ?>
 
 <tr><td colspan="2">
- <input type="submit" value="<?php etranslate("Save")?>" />
+ <input type="submit" value="<?php etranslate( 'Save' )?>" />
 </td></tr>
 <?php
 // If a layer already exists put a 'Delete Layer' link
 if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) { ?>
 <tr><td>
- <br /><a title="<?php etranslate("Delete layer")?>" href="del_layer.php?id=<?php echo $id; if ( $updating_public ) echo "&amp;public=1"; ?>" onclick="return confirm('<?php etranslate("Are you sure you want to delete this layer?", true)?>');"><?php etranslate("Delete layer")?></a><br />
+ <br /><a title="<?php etranslate( 'Delete layer' )?>" href="del_layer.php?id=<?php echo $id; if ( $updating_public ) echo '&amp;public=1'; ?>" onclick="return confirm('<?php 
+etranslate( 'Are you sure you want to delete this layer?', true)?>');"><?php 
+  etranslate( 'Delete layer' )?></a><br />
 </td></tr>
 <?php }  // end 'Delete Layer' link ?>
 </table>

@@ -3,15 +3,15 @@ include_once 'includes/init.php';
 load_user_layers ();
 
 if ( ! $is_admin ) {
-  echo "<h2>" . translate("Error") .
-    "</h2>" . translate("You are not authorized") . ".\n";
+  echo '<h2>' . translate( 'Error' ) .
+    '</h2>' . translate( 'You are not authorized' ) . ".\n";
   print_trailer ();
   echo "</body></html>\n";
   exit;
 }
-$error = "";
+$error = '';
 
-if ( $action == "Delete" || $action == translate ("Delete") ) {
+if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
   // delete this nonuser calendar
   $user = $nid;
 
@@ -55,10 +55,10 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
 
   // Delete user
   if ( ! dbi_execute ( "DELETE FROM webcal_nonuser_cals WHERE cal_login = ?" , array ( $user ) ) )
-     $error = translate ("Database error") . ": " . dbi_error();
+     $error = translate( 'Database error' ) . ': ' . dbi_error();
 
 } else {
-  if ( $action == "Save" || $action == translate ("Save") ) {
+  if ( $action == 'Save' || $action == translate( 'Save' ) ) {
   // Updating
     $sql_params = array();
     $sql = "UPDATE webcal_nonuser_cals SET ";
@@ -74,7 +74,7 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
     $sql_params[] = $nadmin;
     $sql_params[] = $nid;
     if ( ! dbi_execute ( $sql , $sql_params ) ) {
-      $error = translate ("Database error") . ": " . dbi_error();
+      $error = translate( 'Database error' ) . ": " . dbi_error();
     }
   } else {
   // Adding
@@ -84,19 +84,19 @@ if ( $action == "Delete" || $action == translate ("Delete") ) {
       "( cal_login, cal_firstname, cal_lastname, cal_admin ) " .
       "VALUES ( ?, ?, ?, ?' )";
       if ( ! dbi_execute ( $sql , array ( $nid , $nfirstname , $nlastname , $nadmin ) ) ) {
-        $error = translate ("Database error") . ": " . dbi_error();
+        $error = translate( 'Database error' ) . ': ' . dbi_error();
       }
     } else {
-      $error = translate ("Calendar ID")." ".translate ("word characters only").".";
+      $error = translate ( 'Calendar ID' ).' '.translate ( 'word characters only' ).'.';
     }
   }
 }
-if ( empty ( $error ) ) do_redirect ( "nonusers.php" );
+if ( empty ( $error ) ) do_redirect ( 'nonusers.php' );
 
 print_header();
 ?>
 
-<h2><?php etranslate("Error")?></h2>
+<h2><?php etranslate( 'Error' )?></h2>
 
 <blockquote>
 <?php

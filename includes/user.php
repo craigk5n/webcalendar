@@ -60,10 +60,10 @@ function user_valid_login ( $login, $password, $silent=false ) {
       if ( $row[0] == $login )
         $ret = true; // found login/password
       else if ( ! $silent )
-        $error = translate ("Invalid login", true ) . ": " .
-          translate("incorrect password", true );
+        $error = translate ( 'Invalid login', true ) . ': ' .
+          translate( 'incorrect password', true );
     } else if ( ! $silent ) {
-      $error = translate ("Invalid login", true );
+      $error = translate ( 'Invalid login', true );
       // Could be no such user or bad password
       // Check if user exists, so we can tell.
       $res2 = dbi_execute ( "SELECT cal_login FROM webcal_user WHERE cal_login = ?" , array ( $login ) );
@@ -71,19 +71,19 @@ function user_valid_login ( $login, $password, $silent=false ) {
         $row = dbi_fetch_row ( $res2 );
         if ( $row && ! empty ( $row[0] ) ) {
           // got a valid username, but wrong password
-          $error = translate ("Invalid login", true ) . ": " .
-            translate("incorrect password", true );
+          $error = translate ( 'Invalid login', true ) . ': ' .
+            translate( 'incorrect password', true );
         } else {
           // No such user.
-          $error = translate ("Invalid login", true) . ": " .
-            translate("no such user", true );
+          $error = translate ( 'Invalid login', true) . ': ' .
+            translate( 'no such user', true );
         }
         dbi_free_result ( $res2 );
       }
     }
     dbi_free_result ( $res );
   } else if ( ! $silent ) {
-    $error = translate("Database error", true) . ": " . dbi_error();
+    $error = translate( 'Database error', true) . ': ' . dbi_error();
   }
 
   return $ret;
@@ -116,16 +116,13 @@ function user_valid_crypt ( $login, $crypt_password ) {
       if ( ($row[0] == $login) && ( (crypt($row[1], $crypt_password) == $crypt_password) ) )
         $ret = true; // found login/password
       else
-        //$error = translate ("Invalid login");
-        $error = "Invalid login";
+        $error = 'Invalid login';
     } else {
-      //$error = translate ("Invalid login");
-      $error = "Invalid login";
+      $error = 'Invalid login';
     }
     dbi_free_result ( $res );
   } else {
-    //$error = translate("Database error") . ": " . dbi_error();
-    $error = "Database error: " . dbi_error();
+    $error = 'Database error: ' . dbi_error();
   }
 
   return $ret;
@@ -147,15 +144,15 @@ function user_load_variables ( $login, $prefix ) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }
-  if ( $login == "__public__" || $login == "__default__" ) {
-    $GLOBALS[$prefix . "login"] = $login;
-    $GLOBALS[$prefix . "firstname"] = "";
-    $GLOBALS[$prefix . "lastname"] = "";
-    $GLOBALS[$prefix . "is_admin"] = "N";
-    $GLOBALS[$prefix . "email"] = "";
-    $GLOBALS[$prefix . "fullname"] = ( $login == "__public__"?
-      $PUBLIC_ACCESS_FULLNAME : translate ( "DEFAULT CONFIGURATION" ) );
-    $GLOBALS[$prefix . "password"] = "";
+  if ( $login == '__public__' || $login == '__default__' ) {
+    $GLOBALS[$prefix . 'login'] = $login;
+    $GLOBALS[$prefix . 'firstname'] = '';
+    $GLOBALS[$prefix . 'lastname'] = '';
+    $GLOBALS[$prefix . 'is_admin'] = 'N';
+    $GLOBALS[$prefix . 'email'] = '';
+    $GLOBALS[$prefix . 'fullname'] = ( $login == '__public__'?
+      $PUBLIC_ACCESS_FULLNAME : translate ( 'DEFAULT CONFIGURATION' ) );
+    $GLOBALS[$prefix . 'password'] = '';
     return true;
   }
   $sql =
@@ -164,21 +161,21 @@ function user_load_variables ( $login, $prefix ) {
   $res = dbi_execute ( $sql , array ( $login ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
-      $GLOBALS[$prefix . "login"] = $login;
-      $GLOBALS[$prefix . "firstname"] = $row[0];
-      $GLOBALS[$prefix . "lastname"] = $row[1];
-      $GLOBALS[$prefix . "is_admin"] = $row[2];
-      $GLOBALS[$prefix . "email"] = empty ( $row[3] ) ? "" : $row[3];
+      $GLOBALS[$prefix . 'login'] = $login;
+      $GLOBALS[$prefix . 'firstname'] = $row[0];
+      $GLOBALS[$prefix . 'lastname'] = $row[1];
+      $GLOBALS[$prefix . 'is_admin'] = $row[2];
+      $GLOBALS[$prefix . 'email'] = empty ( $row[3] ) ? '' : $row[3];
       if ( strlen ( $row[0] ) && strlen ( $row[1] ) )
-        $GLOBALS[$prefix . "fullname"] = "$row[0] $row[1]";
+        $GLOBALS[$prefix . 'fullname'] = "$row[0] $row[1]";
       else
-        $GLOBALS[$prefix . "fullname"] = $login;
-      $GLOBALS[$prefix . "password"] = $row[4];
+        $GLOBALS[$prefix . 'fullname'] = $login;
+      $GLOBALS[$prefix . 'password'] = $row[4];
       $ret = true;
     }
     dbi_free_result ( $res );
   } else {
-    $error = translate ("Database error") . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ': ' . dbi_error ();
     return false;
   }
   return $ret;
@@ -202,8 +199,8 @@ function user_add_user ( $user, $password, $firstname,
   $lastname, $email, $admin ) {
   global $error;
 
-  if ( $user == "__public__" ) {
-    $error = translate ("Invalid user login", true);
+  if ( $user == '__public__' ) {
+    $error = translate ( 'Invalid user login', true);
     return false;
   }
 
@@ -223,15 +220,15 @@ function user_add_user ( $user, $password, $firstname,
     $upassword = md5($password);
   else
     $upassword = NULL;
-  if ( $admin != "Y" )
-    $admin = "N";
+  if ( $admin != 'Y' )
+    $admin = 'N';
   $sql = "INSERT INTO webcal_user " .
     "( cal_login, cal_lastname, cal_firstname, " .
     "cal_is_admin, cal_passwd, cal_email ) " .
     "VALUES ( ?, ?, ?, ?, ?, ? )";
   if ( ! dbi_execute ( $sql , array ( $user, $ulastname, 
     $ufirstname, $admin, $upassword, $uemail ) ) ) {
-    $error = translate ("Database error", true) . ": " . dbi_error ();
+    $error = translate ( 'Database error', true) . ': ' . dbi_error ();
     return false;
   }
   return true;
@@ -253,8 +250,8 @@ function user_add_user ( $user, $password, $firstname,
 function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
   global $error;
 
-  if ( $user == "__public__" ) {
-    $error = translate ("Invalid user login");
+  if ( $user == '__public__' ) {
+    $error = translate ( 'Invalid user login' );
     return false;
   }
   if ( strlen ( $email ) )
@@ -269,14 +266,14 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
     $ulastname = $lastname;
   else
     $ulastname = NULL;
-  if ( $admin != "Y" )
-    $admin = "N";
+  if ( $admin != 'Y' )
+    $admin = 'N';
 
   $sql = "UPDATE webcal_user SET cal_lastname = ?, " .
     "cal_firstname = ?, cal_email = ?," .
     "cal_is_admin = ? WHERE cal_login = ?";
   if ( ! dbi_execute ( $sql , array ( $ulastname , $ufirstname , $uemail , $admin , $user  ) ) ) {
-    $error = translate ("Database error") . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ': ' . dbi_error ();
     return false;
   }
   return true;
@@ -297,7 +294,7 @@ function user_update_user_password ( $user, $password ) {
 
   $sql = "UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?";
   if ( ! dbi_execute ( $sql , array ( md5 ( $password ) , $user ) ) ) {
-    $error = translate ("Database error") . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ': ' . dbi_error ();
     return false;
   }
   return true;
@@ -450,15 +447,15 @@ function user_get_users () {
 
   $count = 0;
   $ret = array ();
-  if ( $PUBLIC_ACCESS == "Y" )
+  if ( $PUBLIC_ACCESS == 'Y' )
     $ret[$count++] = array (
-       "cal_login" => "__public__",
-       "cal_lastname" => "",
-       "cal_firstname" => "",
-       "cal_is_admin" => "N",
-       "cal_email" => "",
-       "cal_password" => "",
-       "cal_fullname" => $PUBLIC_ACCESS_FULLNAME );
+       'cal_login' => '__public__',
+       'cal_lastname' => '',
+       'cal_firstname' => '',
+       'cal_is_admin' => 'N',
+       'cal_email' => '',
+       'cal_password' => '',
+       'cal_fullname' => $PUBLIC_ACCESS_FULLNAME );
   $res = dbi_execute ( "SELECT cal_login, cal_lastname, cal_firstname, " .
     "cal_is_admin, cal_email, cal_passwd FROM webcal_user " .
     "ORDER BY cal_lastname, cal_firstname, cal_login" );
@@ -469,13 +466,13 @@ function user_get_users () {
       else
         $fullname = $row[0];
       $ret[$count++] = array (
-        "cal_login" => $row[0],
-        "cal_lastname" => $row[1],
-        "cal_firstname" => $row[2],
-        "cal_is_admin" => $row[3],
-        "cal_email" => empty ( $row[4] ) ? "" : $row[4],
-        "cal_password" => $row[5],
-        "cal_fullname" => $fullname
+        'cal_login' => $row[0],
+        'cal_lastname' => $row[1],
+        'cal_firstname' => $row[2],
+        'cal_is_admin' => $row[3],
+        'cal_email' => empty ( $row[4] ) ? '' : $row[4],
+        'cal_password' => $row[5],
+        'cal_fullname' => $fullname
       );
     }
     dbi_free_result ( $res );

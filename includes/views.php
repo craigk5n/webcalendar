@@ -20,7 +20,7 @@ function view_init ( $view_id )
   global $ALLOW_VIEW_OTHER, $is_admin;
   global $view_name, $view_type;
 
-  if ( ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == "N" )
+  if ( ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'N' )
     && ! $is_admin ) {
     // not allowed...
     send_to_preferred_view ();
@@ -42,7 +42,7 @@ function view_init ( $view_id )
   // If view_name not found, then the specified view id does not
   // belong to current user.
   if ( empty ( $view_name ) ) {
-    $error = translate ( "You are not authorized" );
+    $error = translate ( 'You are not authorized' );
   }
 }
 
@@ -69,7 +69,7 @@ function view_get_user_list ( $view_id ) {
     }
     dbi_free_result ( $res );
   } else {
-    $error = translate ( "Database error" ) . ": " . dbi_error ();
+    $error = translate ( 'Database error' ) . ": " . dbi_error ();
   }
   if ( $all_users ) {
     $users = get_my_users ();
@@ -80,7 +80,7 @@ function view_get_user_list ( $view_id ) {
   } else {
     $myusers = get_my_users ();
      
-    if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" ) {
+    if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
       $myusers = array_merge ( $myusers, get_nonuser_cals () );
     } 
     // Make sure this user is allowed to see all users in this view

@@ -13,12 +13,12 @@ $WebCalendar->setLanguage();
 
 // No login for single-user mode
 if ( $single_user == 'Y' ) {
-  die_miserable_death ( translate ( "You are not authorized" ) );
+  die_miserable_death ( translate ( 'You are not authorized' ) );
 }
 
 // No web login for HTTP-based authentication
 if ( $use_http_auth ) {
-  die_miserable_death ( translate ( "You are not authorized" ) );
+  die_miserable_death ( translate ( 'You are not authorized' ) );
 }
 
 $login = getValue ( 'login' );
@@ -33,7 +33,7 @@ if ( ! empty ( $return_path ) ) {
   $return_path = clean_whitespace ( $return_path );
   $url = $return_path;
 } else {
-  $url = "index.php";
+  $url = 'index.php';
 }
 
 if ( $login == '__public__' ) {
@@ -41,18 +41,18 @@ if ( $login == '__public__' ) {
 }
 
 if ( ! nonuser_load_variables ( $login, 'temp_' ) ) {
-  die_miserable_death ( translate ( "No such nonuser calendar" ) .
+  die_miserable_death ( translate ( 'No such nonuser calendar' ) .
     ': ' . $login );
 }
 if ( empty ( $temp_is_public ) || $temp_is_public != 'Y' ) {
-  die_miserable_death ( translate ( "You are not authorized" ) );
+  die_miserable_death ( translate ( 'You are not authorized' ) );
 }
 
 // calculate path for cookie
 if ( empty ( $PHP_SELF ) ) {
-  $PHP_SELF = $_SERVER["PHP_SELF"];
+  $PHP_SELF = $_SERVER['PHP_SELF'];
 }
-$cookie_path = str_replace ( "nulogin.php", "", $PHP_SELF );
+$cookie_path = str_replace ( 'nulogin.php', '', $PHP_SELF );
 //echo "Cookie path: $cookie_path\n";
 
 if ( get_magic_quotes_gpc() ) {
@@ -60,18 +60,18 @@ if ( get_magic_quotes_gpc() ) {
 }
 $login = trim ( $login );
 if ( $login != addslashes ( $login ) ) {
-  die_miserable_death ( "Illegal characters in login " .
-    "<tt>" . htmlentities ( $login ) . "</tt>" );
+  die_miserable_death ( 'Illegal characters in login ' .
+    '<tt>' . htmlentities ( $login ) . '</tt>' );
 }
 
 // set login to expire in 365 days
-$encoded_login = encode_string ( $login . "|nonuser" );
+$encoded_login = encode_string ( $login . '|nonuser' );
 
-if ( ! empty ( $remember ) && $remember == "yes" ) {
-  SetCookie ( "webcalendar_session", $encoded_login,
+if ( ! empty ( $remember ) && $remember == 'yes' ) {
+  SetCookie ( 'webcalendar_session', $encoded_login,
     time() + ( 24 * 3600 * 365 ), $cookie_path );
 } else {
-  SetCookie ( "webcalendar_session", $encoded_login, 0, $cookie_path );
+  SetCookie ( 'webcalendar_session', $encoded_login, 0, $cookie_path );
 }
 
 

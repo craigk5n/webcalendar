@@ -110,7 +110,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
     $query_params[] = $template;
   }
   if ( ! dbi_execute ( $sql, $query_params ) ) {
-    $error = translate("Database error") . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ": " . dbi_error ();
   } else {
     //echo "SQL: $sql <br />\n";
     echo "<html>\n<head>\n</head>\n<body onload=\"window.close();\">\nDone</body>\n</html>";
@@ -126,11 +126,11 @@ print_header( '', '', '', true );
 
 <h2><?php
 if ( $type == 'S' )
-  etranslate("Edit Custom Script/Stylesheet");
+  etranslate( 'Edit Custom Script/Stylesheet' );
 else if ( $type == 'H' )
-  etranslate("Edit Custom Header");
+  etranslate( 'Edit Custom Header' );
 else
-  etranslate("Edit Custom Trailer");
+  etranslate( 'Edit Custom Trailer' );
 if ( $user != '__system__' ) {
   user_load_variables ( $user, 'temp_' );
   echo ' [' . $temp_fullname . ']';
@@ -139,7 +139,7 @@ if ( $user != '__system__' ) {
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo "<h2>" . translate("Error") . "</h2>\n" .
+  echo '<h2>' . translate( 'Error' ) . "</h2>\n" .
     $error . "\n";
 } else {
 ?>
@@ -155,12 +155,13 @@ if ( ! empty ( $error ) ) {
 <textarea rows="15" cols="60" name="template"><?php echo htmlspecialchars ( $cur )?></textarea>
 
 <br />
-<input type="button" value="<?php etranslate("Cancel")?>" onclick="window.close();" />
-<input name="action" type="submit" value="<?php etranslate("Save")?>" />
+<input type="button" value="<?php etranslate( 'Cancel' )?>" onclick="window.close();" />
+<input name="action" type="submit" value="<?php etranslate( 'Save' )?>" />
 
 <?php if ( ! empty ( $user ) ) { ?>
-  <input name="delete" type="submit" value="<?php etranslate("Delete")?>"
-  onclick="return confirm('<?php etranslate("Are you sure you want to delete this entry?", true);?>');" />
+  <input name="delete" type="submit" value="<?php 
+  etranslate( 'Delete' )?>" onclick="return confirm('<?php 
+  etranslate( 'Are you sure you want to delete this entry?', true);?>');" />
 <?php } ?>
 
 </form>

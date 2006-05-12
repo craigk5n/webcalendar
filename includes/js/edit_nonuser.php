@@ -7,14 +7,14 @@ function valid_form ( form ) {
   var fname = form.nfirstname.value;
   var lname = form.nlastname.value;
   if ( ! name ) {
-    alert ( "<?php etranslate("Error", true) ?>:\n\n" + "<?php 
-      etranslate("Calendar ID can not be blank", true)?>" );
+    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
+      etranslate( 'Calendar ID can not be blank', true)?>" );
     document.editnonuser.nid.focus();
     return false;  
   }  
   if ( ! fname && ! lname ) {
-    alert ( "<?php etranslate("Error", true) ?>:\n\n" + "<?php 
-      etranslate("Both first and last names can not be blank", true)?>" );
+    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
+      etranslate( 'Both first and last names can not be blank', true)?>" );
     document.editnonuser.nfirstname.focus();  
     return false;  
   }

@@ -70,7 +70,7 @@ if ( $use_http_auth && empty ( $user ) ) {
   $user = $login; 
 }
 if ( empty ( $user ) ) {
-  $arr = explode ( "/", $PHP_SELF );
+  $arr = explode ( '/', $PHP_SELF );
   $user = $arr[count($arr)-1];
   # remove any trailing ".ifb" in user name
   $user = preg_replace ( "/\.[iI][fF][bB]$/", '', $user );
@@ -90,28 +90,28 @@ load_user_preferences ();
 $WebCalendar->setLanguage();
 
 // Load user name, etc.
-user_load_variables ( $user, "publish_" );
+user_load_variables ( $user, 'publish_' );
 
 if ( empty ( $FREEBUSY_ENABLED ) || $FREEBUSY_ENABLED != 'Y' ) {
   header ( "Content-Type: text/plain" );
   echo "user=$user\n";
-  etranslate("You are not authorized");
+  etranslate( 'You are not authorized' );
   exit;
 }
 
 // Make sure they specified a username
 if ( empty ( $user ) ) {
-  die_miserable_death ( "No user specified" );
+  die_miserable_death ( 'No user specified' );
 }
 
 $get_unapproved = false;
 
 // Start date is beginning of this month
-$startdate = mktime ( 0, 0, 0, date("m"), 1, date("Y") );
+$startdate = mktime ( 0, 0, 0, date('m'), 1, date('Y') );
 
 // End date is one year from now
 // Seems kind of arbitrary, eh?
-$enddate = mktime ( 0, 0, 0, date("m"), 1, date("Y") + 1 );
+$enddate = mktime ( 0, 0, 0, date('m'), 1, date('Y') + 1 );
 
 /* Pre-Load the repeated events for quicker access */
 $repeated_events = read_repeated_events ( $user, '', $startdate );
@@ -123,16 +123,16 @@ $events = read_events ( $user, $startdate, $enddate);
 $event_text = '';
 //define ( 'ONE_DAY', ( 3600 * 24 ) );
 for ( $d = $startdate; $d <= $enddate; $d += ONE_DAY ) {
-  $dYmd = date ( "Ymd", $d );
+  $dYmd = date ( 'Ymd', $d );
   $ev = get_entries ( $dYmd, $get_unapproved );
   for ( $i = 0; $i < count ( $ev ); $i++ ) {
     $event_text .= fb_export_time ( $dYmd, $ev[$i]->getDuration(),
-      $ev[$i]->getTime(), "ical");
+      $ev[$i]->getTime(), 'ical');
   }
   $revents = get_repeating_entries ( $user, $dYmd, $get_unapproved );
   for ( $i = 0; $i < count ( $revents ); $i++ ) {
     $event_text .= fb_export_time ( $dYmd, $revents[$i]->getDuration(),
-      $revents[$i]->getTime(), "ical");
+      $revents[$i]->getTime(), 'ical');
   }
 }
 
@@ -152,12 +152,12 @@ echo "VERSION:2.0\r\n";
 //echo "METHOD:PUBLISH\r\n";
 echo "BEGIN:VFREEBUSY\r\n";
 
-$utc_start = export_get_utc_date ( date ( "Ymd", $startdate ), 0 );
+$utc_start = export_get_utc_date ( date ( 'Ymd', $startdate ), 0 );
 echo "DTSTART:$utc_start\r\n";
-$utc_end = export_get_utc_date ( date ( "Ymd", $enddate ), '235959' );
+$utc_end = export_get_utc_date ( date ( 'Ymd', $enddate ), '235959' );
 echo "DTEND:$utc_end\r\n";
 echo $event_text;
-echo "URL:" . $GLOBALS['SERVER_URL'] . "freebusy.php/" .
+echo 'URL:' . $GLOBALS['SERVER_URL'] . 'freebusy.php/' .
   $user . ".ifb\r\n";
 echo "END:VFREEBUSY\r\n";
 echo "END:VCALENDAR\r\n";

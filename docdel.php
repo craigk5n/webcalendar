@@ -33,7 +33,7 @@ if ( $is_admin )
 
 $res = dbi_execute ( Doc::getSQLForDocId ( $blid ) );
 if ( ! $res ) {
-  $error = translate("Database error") . ": " . dbi_error ();
+  $error = translate( 'Database error' ) . ': ' . dbi_error ();
 } else {
   if ( $row = dbi_fetch_row ( $res ) ) {
     $doc =& new Doc ( $row );
@@ -47,7 +47,7 @@ if ( ! $res ) {
       $can_delete = true;
   } else {
     // document not found
-    $error = translate ( "Invalid entry id" ) . " '$blid'";
+    $error = translate( 'Invalid entry id' ) . " '$blid'";
   }
   dbi_free_result ( $res );
 }
@@ -69,20 +69,20 @@ if ( empty ( $error ) && ! $can_delete && $event_id > 0 ) {
 }
 
 if ( empty ( $error ) && ! $can_delete ) {
-  $error = translate ( "You are not authorized" );
+  $error = translate ( 'You are not authorized' );
 }
 
 if ( empty ( $error ) && $can_delete ) {
   if ( ! dbi_execute ( "DELETE FROM webcal_blob WHERE cal_blob_id = ?", array( $blid ) ) ) {
-    $error = translate ( "Database error" ) . ": " . dbi_error ();
+    $error = translate ( 'Database error' ) . ": " . dbi_error ();
   } else {
     if ( $event_id > 0 ) {
       if ( $type == 'C' )
         activity_log ( $event_id, $login, $login, LOG_COMMENT,
-          translate ( "Removed" ) );
+          translate ( 'Removed' ) );
       else if ( $type == 'A' )
         activity_log ( $event_id, $login, $login, LOG_ATTACHMENT,
-          translate ( "Removed" ) . ": " . $name );
+          translate ( 'Removed' ) . ': ' . $name );
     }
     if ( $event_id > 0 )
       do_redirect ( "view_entry.php?id=$event_id" );

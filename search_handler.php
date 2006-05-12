@@ -13,12 +13,12 @@
  */
 include_once 'includes/init.php';
 
-$error = "";
+$error = '';
 
-$keywords = getValue ( "keywords" );
+$keywords = getValue ( 'keywords' );
 
 if ( strlen ( $keywords ) == 0 )
-  $error = translate("You must enter one or more search keywords") . ".";
+  $error = translate( 'You must enter one or more search keywords' ) . '.';
 
 $matches = 0;
 
@@ -77,14 +77,14 @@ if ( empty ( $users ) || empty ( $users[0] ) )
 print_header();
 ?>
 
-<h2><?php etranslate("Search Results")?></h2>
+<h2><?php etranslate( 'Search Results' )?></h2>
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo "<span style=\"font-weight:bold;\">" . translate("Error") . ":</span> $error";
+  echo '<span style="font-weight:bold;">' . translate( 'Error' ) . ':</span>' . $error;
 } else {
   $ids = array ();
-  $words = split ( " ", $keywords );
+  $words = split ( ' ', $keywords );
   for ( $i = 0; $i < count ( $words ); $i++ ) {
     $sql_params = array();
     // Note: we only search approved/waiting events (not deleted)
@@ -147,16 +147,15 @@ if ( ! empty ( $error ) ) {
   }
 }
 
-if ( $matches > 0 )
+if ( $matches > 0 ) {
   $matches = count ( $ids );
 
-if ( $matches == 1 )
-  echo "<span style=\"font-weight:bold;\">$matches " . translate("match found") . ".</span><br /><br />";
-else if ( $matches > 0 )
-  echo "<span style=\"font-weight:bold;\">$matches " . translate("matches found") . ".</span><br /><br />";
-else
-  echo translate("No matches found") . ".";
-
+  echo '<span style="font-weight:bold;">' . $matches . ' ' .
+    translate( $matches == 1 ? 'match found' : 'matches found' ) 
+     . '.</span><br /><br />';
+} else {
+  echo translate( 'No matches found' ) . '.';
+}
 // now sort by number of hits
 if ( empty ( $error ) ) {
   arsort ( $ids );

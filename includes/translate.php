@@ -59,7 +59,7 @@ function reset_language ( $new_language ) {
   if ( $new_language != $lang || ! $translation_loaded ) {
     $translations = array ();
     $lang = $new_language;
-    $lang_file = "translations/" . $lang . ".txt";
+    $lang_file = 'translations/' . $lang . '.txt';
     load_translation_text ();
     $translation_loaded = true;
   }
@@ -83,7 +83,7 @@ function load_translation_text () {
       $lang_file = $lang_file_2;
   }
   if ( ! file_exists ( $lang_file ) ) {
-    die_miserable_death ( "Cannot find language file: $lang_file" );
+    die_miserable_death ( 'Cannot find language file: ' .$lang_file );
   }
   // Check for 'cachedir' in settings.  If found, then we will save
   // the parsed translation file there as a serialized array.
@@ -100,7 +100,7 @@ function load_translation_text () {
     }
     if ( ! is_dir ( $cache_tran_dir ) ) {
       die_miserable_death ( 'Error creating cached translation directory: ' .
-        $cache_tran_dir . "<br/><br/>" .
+        $cache_tran_dir . '<br/><br/>' .
         'Please check the permissions of the following directory: ' .
         $settings['cachedir'] );
     }
@@ -122,9 +122,9 @@ function load_translation_text () {
     $translations = unserialize ( file_get_contents ( $cached_file ) );
     // boy, that was easy ;-)
   } else {
-    $fp = fopen ( $lang_file, "r", false );
+    $fp = fopen ( $lang_file, 'r', false );
     if ( ! $fp ) {
-      die_miserable_death ( "Could not open language file: $lang_file" );
+      die_miserable_death ( 'Could not open language file: ' .$lang_file );
     }
     while ( ! feof ( $fp ) ) {
       $buffer = fgets ( $fp, 4096 );
@@ -134,9 +134,9 @@ function load_translation_text () {
       if ( get_magic_quotes_runtime() ) {
         $buffer = stripslashes ( $buffer );
       }
-      if ( substr ( $buffer, 0, 1 ) == "#" || strlen ( $buffer ) == 0 )
+      if ( substr ( $buffer, 0, 1 ) == '#' || strlen ( $buffer ) == 0 )
         continue;
-      $pos = strpos ( $buffer, ":" );
+      $pos = strpos ( $buffer, ':' );
       $abbrev = substr ( $buffer, 0, $pos );
       $abbrev = trim ( $abbrev );
       $trans = substr ( $buffer, $pos + 1 );
@@ -145,8 +145,8 @@ function load_translation_text () {
       //echo "Abbrev: $abbrev<br />Trans: $trans<br />\n";
     }
     fclose ( $fp );
-    $PUBLIC_ACCESS_FULLNAME = translate ("Public Access" );
-    if ( $fullname == "Public Access" ) {
+    $PUBLIC_ACCESS_FULLNAME = translate( 'Public Access' );
+    if ( $fullname == 'Public Access' ) {
       $fullname = $PUBLIC_ACCESS_FULLNAME;
     }
     if ( ! empty ( $cached_file ) && $save_to_cache ) {
@@ -176,18 +176,18 @@ function load_translation_text () {
  */
 function get_browser_language ( $pref=false ) {
   global $HTTP_ACCEPT_LANGUAGE, $browser_languages;
-  $ret = "";
+  $ret = '';
   if ( empty ( $HTTP_ACCEPT_LANGUAGE ) &&
-    isset ( $_SERVER["HTTP_ACCEPT_LANGUAGE"] ) )
-    $HTTP_ACCEPT_LANGUAGE = $_SERVER["HTTP_ACCEPT_LANGUAGE"];
+    isset ( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) )
+    $HTTP_ACCEPT_LANGUAGE = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
   if (  empty ( $HTTP_ACCEPT_LANGUAGE ) ) {
     if ( $pref == false ) {
-      return "English-US";
+      return 'English-US';
     }else {
-      return translate ( "Browser Language Not Found" );
+      return translate ( 'Browser Language Not Found' );
     }
   } else {
-    $langs = explode ( ",", $HTTP_ACCEPT_LANGUAGE );
+    $langs = explode ( ',', $HTTP_ACCEPT_LANGUAGE );
     for ( $i = 0; $i < count ( $langs ); $i++ ) {
      $l = strtolower ( trim ( ereg_replace(';.*', '', $langs[$i] ) ) );
       $ret .= "\"$l\" ";
@@ -197,9 +197,9 @@ function get_browser_language ( $pref=false ) {
     }
   }
   if ( strlen ( $HTTP_ACCEPT_LANGUAGE )  && $pref == true)
-    return $HTTP_ACCEPT_LANGUAGE . " ( " . translate ( "not supported" ) . " )";
+    return $HTTP_ACCEPT_LANGUAGE . ' ( ' . translate ( 'not supported' ) . ' )';
   else
-    return "English-US";
+    return 'English-US';
 } 
 
 /**
@@ -295,40 +295,40 @@ function etooltip ( $str ) {
     // the second is the filename (without the ".txt") that must exist
     // in the translations subdirectory.
     $languages = array (
-      "Browser-defined" =>"none",
-      "English" =>"English-US",
-      "Basque" => "Basque",
-      "Bulgarian" => "Bulgarian",
-      "Catalan" => "Catalan",
-      "Chinese (Traditional/Big5)" => "Chinese-Big5",
-      "Chinese (Simplified/GB2312)" => "Chinese-GB2312",
-      "Czech" => "Czech",
-      "Danish" => "Danish",
-      "Dutch" =>"Dutch",
-      "Estonian" => "Estonian",
-      "Finnish" =>"Finnish",
-      "French" =>"French",
-      "Galician" => "Galician",
-      "German" =>"German",
-      "Greek" =>"Greek",
-      "Holo (Taiwanese)" => "Holo-Big5",
-      "Hungarian" =>"Hungarian",
-      "Icelandic" => "Icelandic",
-      "Italian" => "Italian",
-      "Japanese(UTF-8)" => "Japanese",
-      "Japanese(SHIFT JIS)" => "Japanese-sjis",
-      "Japanese(EUC-JP)" => "Japanese-eucjp",
-      "Korean" =>"Korean",
-      "Norwegian" => "Norwegian",
-      "Polish" => "Polish",
-      "Portuguese" =>"Portuguese",
-      "Portuguese/Brazil" => "Portuguese_BR",
-      "Romanian" =>"Romanian",
-      "Russian" => "Russian",
-      "Spanish" =>"Spanish",
-      "Swedish" =>"Swedish",
-      "Turkish" =>"Turkish",
-      "Welsh" => "Welsh"
+      'Browser-defined' =>'none',
+      'English' =>'English-US',
+      'Basque' => 'Basque',
+      'Bulgarian' => 'Bulgarian',
+      'Catalan' => 'Catalan',
+      'Chinese (Traditional/Big5)' => 'Chinese-Big5',
+      'Chinese (Simplified/GB2312)' => 'Chinese-GB2312',
+      'Czech' => 'Czech',
+      'Danish' => 'Danish',
+      'Dutch' =>'Dutch',
+      'Estonian' => 'Estonian',
+      'Finnish' =>'Finnish',
+      'French' =>'French',
+      'Galician' => 'Galician',
+      'German' =>'German',
+      'Greek' =>'Greek',
+      'Holo (Taiwanese)' => 'Holo-Big5',
+      'Hungarian' =>'Hungarian',
+      'Icelandic' => 'Icelandic',
+      'Italian' => 'Italian',
+      'Japanese(UTF-8)' => 'Japanese',
+      'Japanese(SHIFT JIS)' => 'Japanese-sjis',
+      'Japanese(EUC-JP)' => 'Japanese-eucjp',
+      'Korean' =>'Korean',
+      'Norwegian' => 'Norwegian',
+      'Polish' => 'Polish',
+      'Portuguese' =>'Portuguese',
+      'Portuguese/Brazil' => 'Portuguese_BR',
+      'Romanian' =>'Romanian',
+      'Russian' => 'Russian',
+      'Spanish' =>'Spanish',
+      'Swedish' =>'Swedish',
+      'Turkish' =>'Turkish',
+      'Welsh' => 'Welsh'
       // add new languages here!  (don't forget to add a comma at the end of
       // last line above.)
     );
@@ -342,90 +342,90 @@ function etooltip ( $str ) {
     // Not sure what the abbreviation is?  Check out the following URL:
     // http://www.geocities.com/click2speak/languages.html
     $browser_languages = array (
-      "eu" => "Basque",
-      "bg" => "Bulgarian",
-      "ca" => "Catalan",
-      "zh" => "Chinese-GB2312",    // Simplified Chinese
-      "zh-cn" => "Chinese-GB2312",
-      "zh-tw" => "Chinese-Big5",   // Traditional Chinese
-      "cs" => "Czech",
-      "en" => "English-US",
-      "en-ca" => "English-US",
-      "en-us" => "English-US",
-      "en-gb" => "English-US",
-      "da" => "Danish",
-      "nl" =>"Dutch",
-      "ee" => "Estonian",
-      "fi" =>"Finnish",
-      "fr" =>"French",
-      "fr-ch" =>"French", // French/Swiss
-      "fr-ca" =>"French", // French/Canada
-      "gl" => "Galician",
-      "de" =>"German",
-      "de-at" =>"German", // German/Austria
-      "de-ch" =>"German", // German/Switzerland
-      "de-de" =>"German", // German/German
-      "el" =>"Greek",
-      "hu" => "Hungarian",
-      "zh-min-nan-tw" => "Holo-Big5",
-      "is" => "Icelandic",
-      "it" => "Italian",
-      "it-ch" => "Italian", // Italian/Switzerland
-      "ja" => "Japanese",
-      "ko" =>"Korean",
-      "no" => "Norwegian",
-      "pl" => "Polish",
-      "pt" =>"Portuguese",
-      "pt-br" => "Portuguese_BR", // Portuguese/Brazil
-      "ro" =>"Romanian",
-      "ru" =>"Russian",
-      "ru-ru" =>"Russian", //Safari reports this
-      "es" =>"Spanish",
-      "sv" =>"Swedish",
-      "tr" =>"Turkish",
-      "cy" => "Welsh"
+      'eu' => 'Basque',
+      'bg' => 'Bulgarian',
+      'ca' => 'Catalan',
+      'zh' => 'Chinese-GB2312',    // Simplified Chinese
+      'zh-cn' => 'Chinese-GB2312',
+      'zh-tw' => 'Chinese-Big5',   // Traditional Chinese
+      'cs' => 'Czech',
+      'en' => 'English-US',
+      'en-ca' => 'English-US',
+      'en-us' => 'English-US',
+      'en-gb' => 'English-US',
+      'da' => 'Danish',
+      'nl' =>'Dutch',
+      'ee' => 'Estonian',
+      'fi' =>'Finnish',
+      'fr' =>'French',
+      'fr-ch' =>'French', // French/Swiss
+      'fr-ca' =>'French', // French/Canada
+      'gl' => 'Galician',
+      'de' =>'German',
+      'de-at' =>'German', // German/Austria
+      'de-ch' =>'German', // German/Switzerland
+      'de-de' =>'German', // German/German
+      'el' =>'Greek',
+      'hu' => 'Hungarian',
+      'zh-min-nan-tw' => 'Holo-Big5',
+      'is' => 'Icelandic',
+      'it' => 'Italian',
+      'it-ch' => 'Italian', // Italian/Switzerland
+      'ja' => 'Japanese',
+      'ko' =>'Korean',
+      'no' => 'Norwegian',
+      'pl' => 'Polish',
+      'pt' =>'Portuguese',
+      'pt-br' => 'Portuguese_BR', // Portuguese/Brazil
+      'ro' =>'Romanian',
+      'ru' =>'Russian',
+      'ru-ru' =>'Russian', //Safari reports this
+      'es' =>'Spanish',
+      'sv' =>'Swedish',
+      'tr' =>'Turkish',
+      'cy' => 'Welsh'
     );
   
     // The following comments will be picked up by update_translation.pl so
     // translators will be aware that they also need to translate language names.
     //
-    // translate("English")
-    // translate("English-US")
-    // translate("Basque")
-    // translate("Bulgarian")
-    // translate("Catalan")
-    // translate("Chinese (Traditional/Big5)")
-    // translate("Chinese (Simplified/GB2312)")
-    // translate("Czech")
-    // translate("Danish")
-    // translate("Dutch")
-    // translate("Estonian")
-    // translate("Finnish")
-    // translate("French")
-    // translate("Galician")
-    // translate("German")
-    // translate("Greek")
-    // translate("Holo (Taiwanese)")
-    // translate("Hungarian")
-    // translate("Icelandic")
-    // translate("Italian")
-    // translate("Japanese")
-    // translate("Korean")
-    // translate("Norwegian")
-    // translate("Polish")
-    // translate("Portuguese")
-    // translate("Portuguese/Brazil")
-    // translate("Romanian")
-    // translate("Russian")
-    // translate("Spanish")
-    // translate("Swedish")
-    // translate("Turkish")
-    // translate("Welsh")
+    // translate( 'English' )
+    // translate( 'English-US' )
+    // translate( 'Basque' )
+    // translate( 'Bulgarian' )
+    // translate( 'Catalan' )
+    // translate( 'Chinese (Traditional/Big5)' )
+    // translate( 'Chinese (Simplified/GB2312)' )
+    // translate( 'Czech' )
+    // translate( 'Danish' )
+    // translate( 'Dutch' )
+    // translate( 'Estonian' )
+    // translate( 'Finnish' )
+    // translate( 'French' )
+    // translate( 'Galician' )
+    // translate( 'German' )
+    // translate( 'Greek' )
+    // translate( 'Holo (Taiwanese)' )
+    // translate( 'Hungarian' )
+    // translate( 'Icelandic' )
+    // translate( 'Italian' )
+    // translate( 'Japanese' )
+    // translate( 'Korean' )
+    // translate( 'Norwegian' )
+    // translate( 'Polish' )
+    // translate( 'Portuguese' )
+    // translate( 'Portuguese/Brazil' )
+    // translate( 'Romanian' )
+    // translate( 'Russian' )
+    // translate( 'Spanish' )
+    // translate( 'Swedish' )
+    // translate( 'Turkish' )
+    // translate( 'Welsh' )
     
 //General purpose translations that may be used elsewhere
 //as variables and not picked up by update_translation.pl
-   // translate ( "task" );
-   // translate ( "event" );
-   // translate ( "journal" );
+   // translate ( 'task' );
+   // translate ( 'event' );
+   // translate ( 'journal' );
    
 ?>

@@ -26,42 +26,42 @@ if ( $show_others ) {
 print_header ( $INC );
 
 ?>
-<h2><?php etranslate("Search"); ?></h2>
+<h2><?php etranslate( 'Search' ); ?></h2>
 
 <form action="search_handler.php" method="post" name="searchformentry" style="margin-left:13px;">
 
-<label for="keywordsadv"><?php etranslate("Keywords")?>:&nbsp;</label>
+<label for="keywordsadv"><?php etranslate( 'Keywords' )?>:&nbsp;</label>
 <input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
-<input type="submit" value="<?php etranslate("Search")?>" /><br />
+<input type="submit" value="<?php etranslate( 'Search' )?>" /><br />
 <?php 
 if ( ! $show_others ) {
-  echo "</form>";
+  echo '</form>';
 } else {
 ?>
 <br /><br />
-<div id="advlink"><a title="<?php etranslate("Advanced Search");?>"
+<div id="advlink"><a title="<?php etranslate( 'Advanced Search' );?>"
    href="javascript:show('adv'); hide('advlink');"><?php
-    etranslate("Advanced Search");?></a></div>
+    etranslate( 'Advanced Search' );?></a></div>
 <table id="adv" style="display:none;">
 <tr><td style="vertical-align:top; text-align:right; font-weight:bold; width:60px;">
- <?php etranslate("Users"); ?>:&nbsp;</td><td>
+ <?php etranslate( 'Users' ); ?>:&nbsp;</td><td>
 <?php
   $users = get_my_users ();
   // Get non-user calendars (if enabled)
-  if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" ) {
+  if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_nonuser_cals ();
-    if ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == "Y" )
+    if ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == 'Y' )
       $users = array_merge ( $nonusers, $users );
     else
       $users = array_merge ( $users, $nonusers );
   }
   $size = 0;
-  $out = "";
+  $out = '';
   for ( $i = 0; $i < count ( $users ); $i++ ) {
-    $out .= "<option value=\"" . $users[$i]['cal_login'] . "\"";
+    $out .= '<option value="' . $users[$i]['cal_login'] . '"';
     if ( $users[$i]['cal_login'] == $login )
-      $out .= " selected=\"selected\"";
-    $out .= ">" . $users[$i]['cal_fullname'] . "</option>\n";
+      $out .= ' selected="selected"';
+    $out .= '>' . $users[$i]['cal_fullname'] . "</option>\n";
   }
   if ( count ( $users ) > 50 )
     $size = 15;
@@ -72,16 +72,15 @@ if ( ! $show_others ) {
 ?>
 <select name="users[]" size="<?php echo $size;?>" multiple="multiple"><?php echo $out; ?></select>
 <?php 
-  if ( $GROUPS_ENABLED == "Y" ) {
-   echo "<input type=\"button\" onclick=\"selectUsers()\" value=\"" .
-      translate("Select") . "...\" />\n";
+  if ( $GROUPS_ENABLED == 'Y' ) {
+   echo '<input type="button" onclick="selectUsers()" value="' .
+      translate( 'Select' ) . '..." />' . "\n";
   }
 ?>
 </td></tr>
 </table>
 </form>
-<?php } ?>
-
-<?php print_trailer(); ?>
+<?php }
+print_trailer(); ?>
 </body>
 </html>

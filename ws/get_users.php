@@ -34,7 +34,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 $out = "<users>\n";
 
 // If login is public user, make sure public can view others...
-if ( $login == "__public__" && $login != $user ) {
+if ( $login == '__public__' && $login != $user ) {
   if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
     $out .= "<error>" . translate("Not authorized") . "</error>\n";
     $out .= "</events>\n";

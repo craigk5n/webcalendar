@@ -40,7 +40,7 @@ function schedule_event(hours, minutes) {
   var year =<?php echo $year ?>;
   var month =<?php echo $month ?>;
   var day =<?php echo $day ?>;
-  if (confirm("<?php etranslate("Change the date and time of this entry?", true)?>")) {
+  if (confirm("<?php etranslate( 'Change the date and time of this entry?', true)?>")) {
     var parentForm = window.opener.document.forms['<?php echo $parent_form ?>'];
     if ( '<?php echo $parent_form ?>' == 'editentryform') {
       parentForm.timetype.selectedIndex = 1;

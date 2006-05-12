@@ -22,7 +22,7 @@ if ( ! empty ( $PROGRAM_VERSION ) ) {
 } else if ( preg_match ( "/v(\d\S+) /", $GLOBALS['PROGRAM_NAME'], $matches ) ) {
   $prodid = "PRODID:-//WebCalendar-$matches[1]";
 } else {
-  $prodid = "PRODID:-//WebCalendar-UnknownVersion";
+  $prodid = 'PRODID:-//WebCalendar-UnknownVersion';
 }
 
 if ( empty ( $user ) || $user == $login )
@@ -51,14 +51,14 @@ function pilot_date_time ( $date, $time, $duration, $csv=false ) {
 
   // All times are now stored as GMT
   //TODO Palm uses local time, so convert to users' time
-  $tz_offset = date ( "Z" ); // in seconds
+  $tz_offset = date ( 'Z' ); // in seconds
   $tzh = (int) ( $tz_offset / 3600 );
   $tzm = (int) ( $tz_offset / 60 ) % 60;
   if ( $tzh < 0 ) {
-    $tzsign = "-";
+    $tzsign = '-';
     $tzh = abs ( $tzh );
   } else
-    $tzsign = "+";
+    $tzsign = '+';
 
   if ( $csv )
     return sprintf ( "%04d-%02d-%02d%s%02d:%02d:00",
@@ -229,19 +229,19 @@ $modday = getIntValue  ( 'modday', true );
 mt_srand((float) microtime()*1000000);
 
 if (empty($id)) {
-  $id = "all";
+  $id = 'all';
 }
 
-if ($format == "ical") {
+if ($format == 'ical') {
   transmit_header ( 'text/ical', "webcalendar-$id.ics" );
   export_ical($id);
-} elseif ($format == "vcal") {
+} elseif ($format == 'vcal') {
   transmit_header ( 'text/vcal', "webcalendar-$id.vcs" );
   export_vcal($id);
-} elseif ($format == "pilot-csv") {
+} elseif ($format == 'pilot-csv') {
   transmit_header ( 'text/csv', "webcalendar-$id.csv" );
   export_pilot_csv ( $id );
-} elseif ($format == "pilot-text") {
+} elseif ($format == 'pilot-text') {
   transmit_header('text/plain', "webcalendar-$id.txt" );
   export_install_datebook($id);
 } else {
@@ -249,20 +249,20 @@ if ($format == "ical") {
 
   print_header();
 
-  echo "<h2>";
-  etranslate("Export");
+  echo '<h2>';
+  etranslate( 'Export' );
   echo " ";
-  etranslate("Error");
+  etranslate( 'Error' );
   echo "</h2>\n";
-  echo "<span style=\"font-weight:bold;\">";
-  etranslate("Error");
-  echo ":</span> ";
-  echo translate("export format not defined or incorrect") . ".";
+  echo '<span style="font-weight:bold;">';
+  etranslate( 'Error' );
+  echo ':</span> ';
+  echo translate( 'export format not defined or incorrect' ) . '.';
   echo "<br />\n";
 
   print_trailer ();
 
   echo " </body>\n";
-  echo "</html>";
+  echo '</html>';
 } //end if ($format == "ical")
 ?>

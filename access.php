@@ -23,7 +23,7 @@
 include_once 'includes/init.php';
 
 if ( ! access_is_enabled () ) {
-  etranslate ( "You are not authorized" );
+  etranslate ( 'You are not authorized' );
   exit;  
 }
 //print_r ( $_POST );
@@ -45,7 +45,7 @@ if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) != '') {
   $sql = "INSERT INTO webcal_access_function ( cal_login, cal_permissions ) " .
     "VALUES ( ?, ? )";
   if ( ! dbi_execute ( $sql, array( $auser, $perm ) ) ) {
-    die_miserable_death ( translate ( "Database error" ) . ": " .
+    die_miserable_death ( translate ( 'Database error' ) . ": " .
       dbi_error () );
   }
 
@@ -69,16 +69,16 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '') {
       break;
     $view_total = $edit_total = $approve_total = 0;
     for ( $i=1;$i<=256; ) {
-      //echo $i . " "  .getPostValue ( "v_" . $i ) . "<br>";
-      $view_total    += getPostValue ( "v_" . $i );
-      $edit_total    += getPostValue ( "e_" . $i );
-      $approve_total += getPostValue ( "a_" . $i );
+      //echo $i . " "  .getPostValue ( 'v_' . $i ) . "<br>";
+      $view_total    += getPostValue ( 'v_' . $i );
+      $edit_total    += getPostValue ( 'e_' . $i );
+      $approve_total += getPostValue ( 'a_' . $i );
       $i += $i;
 
     }
-    $invite = ( strlen ( getPostValue ( "invite" ) )?getPostValue ( "invite" ):'N' );
-    $email = ( strlen ( getPostValue ( "email" ) )?getPostValue ( "email" ):'N' );
-    $time = ( strlen ( getPostValue ( "time" ) )?getPostValue ( "time" ):'N' );
+    $invite = ( strlen ( getPostValue ( 'invite' ) )?getPostValue ( 'invite' ):'N' );
+    $email = ( strlen ( getPostValue ( 'email' ) )?getPostValue ( 'email' ):'N' );
+    $time = ( strlen ( getPostValue ( 'time' ) )?getPostValue ( 'time' ):'N' );
     $view = ( $view_total > 0 ) ? $view_total : 0;
     $edit = ( $edit_total > 0 && $puser != '__public__' ? $edit_total : 0 );
     $approve = ( $approve_total > 0 && $puser != '__public__' ? $approve_total : 0 );
@@ -89,7 +89,7 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '') {
       "( ?, ?, ?, ?, ?, ?, ?, ? )";
     if ( ! dbi_execute ( $sql, array( $puser, $pouser, 
       $view, $edit, $approve, $invite, $email, $time ) ) ) {
-      die_miserable_death ( translate ( "Database error" ) . ": " .
+      die_miserable_death ( translate ( 'Database error' ) . ": " .
         dbi_error () );
     }
   }
@@ -120,20 +120,20 @@ if ( ! empty ( $otheruser ) ) {
     $op = array ();
     while ( $row = dbi_fetch_row ( $res ) ) {
       $op = array (
-        "cal_other_user" => $row[0],
-        "view" => $row[1],
-        "edit" => $row[2],
-        "approve" => $row[3],
-        "invite" => $row[4],
-        "email" => $row[5],
-        "time" => $row[6]
+        'cal_other_user' => $row[0],
+        'view' => $row[1],
+        'edit' => $row[2],
+        'approve' => $row[3],
+        'invite' => $row[4],
+        'email' => $row[5],
+        'time' => $row[6]
       );
     }
     dbi_free_result ( $res );
   }
 }
 
-$BodyX = ( ! empty ( $op['time'] ) && $op['time'] == "Y" ? 
+$BodyX = ( ! empty ( $op['time'] ) && $op['time'] == 'Y' ? 
   'onload="enableAll( true );"' : '' );
 print_header ('','', $BodyX);
 
@@ -142,12 +142,12 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
   // Present a page to allow editing a user's rights
   user_load_variables ( $guser, 'user_' );
   
-  echo "<h2>" . translate ( "User Access Control" ) . ": " .
+  echo '<h2>' . translate ( 'User Access Control' ) . ": " .
     $user_fullname . "</h2>\n";
 
-  echo "<a title=\"" . translate("Admin") .
-    "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" .
-    translate("Admin") . "</a><br /><br />\n";
+  echo '<a title="' . translate( 'Admin' ) .
+    '" class="nav" href="adminhome.php">&laquo;&nbsp;' .
+    translate( 'Admin' ) . "</a><br /><br />\n";
 
   ?>
   <form action="access.php" method="post" name="accessform">
@@ -184,9 +184,9 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     if ( $show ) {
       $yesno = substr ( $access, $i, 1 );
       $checked = ( $yesno != 'N' ) ? "checked=\"checked\"" : '';
-      echo "<label for=\"access_" . $i . "\">";
-      echo "<input type=\"checkbox\" name=\"access_" . $i .
-        "\" id=\"access_" . $i . "\" value=\"Y\" " . $checked . "/>\n";
+      echo '<label for="access_' . $i . '">';
+      echo '<input type="checkbox" name="access_' . $i .
+        '" id="access_' . $i . '" value="Y" ' . $checked . "/>\n";
       echo access_get_function_description ( $i );
       echo "</label><br />\n";
     }
@@ -196,9 +196,9 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
   ?>
   </td></tr>
   </tbody></table>
-    <input type="button" value="<?php etranslate("Cancel"); ?>"
+    <input type="button" value="<?php etranslate( 'Cancel' ); ?>"
     onclick="document.location.href='access.php'" />
-  <input type="submit" name="submit"  value="<?php etranslate("Save"); ?>" />
+  <input type="submit" name="submit"  value="<?php etranslate( 'Save' ); ?>" />
   </form>
 <?php
  } //end is_admin test
@@ -207,7 +207,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
    // if ( $guser != '__default__' ) {
       if ( ! $is_admin ) {
         $guser = $login;
-        $pagetitle = translate ( "Grant This User Access to My Calendar" );
+        $pagetitle = translate ( 'Grant This User Access to My Calendar' );
       } else {
         $pagetitle = translate ( "Allow Access to Other Users' Calendar" );    
       }
@@ -217,24 +217,24 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
       } else { 
         $userlist = get_list_of_users ( $guser );
         echo "<h2>$pagetitle</h2>\n";
-        echo "<form action=\"access.php\" method=\"post\" name=\"SelectOther\">\n";
+        echo '<form action="access.php" method="post" name="SelectOther">' . "\n";
         echo "<input type=\"hidden\" name=\"guser\" value=\"$guser\" />\n";
-        echo "<select name=\"otheruser\" onchange=\"document.SelectOther.submit()\">\n";
+        echo '<select name="otheruser" onchange="document.SelectOther.submit()">' . "\n";
 
         //add a DEFAULT CONFIGURATION to be used as a mask  
-        echo "<option value=\"__default__\">".
-          translate ( "DEFAULT CONFIGURATION" )."</option>\n";
+        echo '<option value="__default__">'.
+          translate ( 'DEFAULT CONFIGURATION' )."</option>\n";
         $selected ='';
         for ( $i = 0; $i < count ( $userlist ); $i++ ) {
           if ( $userlist[$i]['cal_login'] != $guser  ) {
             $selected = ( ! empty ( $otheruser ) && 
-              $otheruser == $userlist[$i]['cal_login'] ? " selected=\"selected\"":'');
-            echo "<option value=\"".$userlist[$i]['cal_login']. "\"" . 
-              $selected .">". $userlist[$i]['cal_fullname']."</option>\n";
+              $otheruser == $userlist[$i]['cal_login'] ? ' selected="selected"':'');
+            echo '<option value="' .$userlist[$i]['cal_login']. '"' . 
+              $selected .'>'. $userlist[$i]['cal_fullname']."</option>\n";
           }
        }
-       echo "</select>";
-       echo "<input type=\"submit\"  value=\"" . translate("Go") . "\" />";
+       echo '</select>';
+       echo '<input type="submit"  value="' . translate( 'Go' ) . '" />';
        echo "</form>\n";
 
      if (  empty ( $otheruser ) ) {
@@ -258,116 +258,116 @@ if ( ! empty ( $otheruser ) ) {
     <tr>
 <?php if ( $guser == '__public__' ) { ?>
       <th class="boxtop boxbottom" width="60%" align="center">
-      <?php etranslate("Calendar"); ?></th>
+      <?php etranslate('Calendar'); ?></th>
       <th class="boxtop boxbottom" width="20%">
-      <?php etranslate("Type"); ?></th>
+      <?php etranslate( 'Type' ); ?></th>
       <th class="boxtop boxbottom boxright" colspan="3" width="20%">
-      <?php etranslate("View Event"); ?></th>
+      <?php etranslate( 'View Event' ); ?></th>
 <?php } else   {//if ( $guser != '__default__' ) { ?>
       <th class="boxtop boxbottom" width="25%">
       <?php echo $otheruser_fullname; ?></th>
       <th class="boxtop boxbottom" width="15%">
-      <?php etranslate("Type"); ?></th>
+      <?php etranslate( 'Type' ); ?></th>
       <th width="15%" colspan="3" class="boxtop boxbottom">
-        <?php etranslate("View"); ?></th>
+        <?php etranslate( 'View' ); ?></th>
       <th width="15%" colspan="3" class="boxtop boxbottom">
-        <?php etranslate("Edit"); ?></th>
+        <?php etranslate( 'Edit' ); ?></th>
       <th width="15%" colspan="3" class="boxtop boxright boxbottom">
-        <?php etranslate("Approve/Reject"); ?></th>
+        <?php etranslate( 'Approve/Reject' ); ?></th>
 <?php } ?>
 </tr>
     <?php
         $access_type = array();
-        $access_type[1] = translate ( "Events" );
-        $access_type[2] = translate ( "Tasks" );
-        $access_type[4] = translate ( "Journals" );      
+        $access_type[1] = translate ( 'Events' );
+        $access_type[2] = translate ( 'Tasks' );
+        $access_type[4] = translate ( 'Journals' );      
         for ( $j =1; $j < 5;$j++ ) {
           $bottomedge = ''; 
           if ( $j ==3 ) continue; 
           echo "<tr>";
           if ( $j == 1) {
-            echo "<td class=\"boxleft leftpadded\">" .
-              "<input type=\"checkbox\" value=\"Y\" name=\"invite\"" . 
-              ( !empty ( $op['invite'] ) && $op['invite'] == "N" ? 
-                "":" checked=\"checked\"") . " />" . 
-                  translate ( "Can Invite" ) . "</td>\n";
+            echo '<td class="boxleft leftpadded">' .
+              '<input type="checkbox" value="Y" name="invite"' . 
+              ( !empty ( $op['invite'] ) && $op['invite'] == 'N' ? 
+                '':' checked="checked"') . ' />' . 
+                  translate ( 'Can Invite' ) . "</td>\n";
           } else if ( $j == 2 ) {
-            echo "<td class=\"boxleft leftpadded\">" .
-              "<input type=\"checkbox\" value=\"Y\" name=\"email\"" . 
-              ( !empty ( $op['email'] ) && $op['email'] == "N" ? 
-                "":" checked=\"checked\"") . " />" . 
-                  translate ( "Can Email" ) . "</td>\n";          
+            echo '<td class="boxleft leftpadded">' .
+              '<input type="checkbox" value="Y" name="email"' . 
+              ( !empty ( $op['email'] ) && $op['email'] == 'N' ? 
+                '':' checked="checked"') . ' />' . 
+                  translate ( 'Can Email' ) . "</td>\n";          
           } else {
-            echo "<td class=\"boxleft boxbottom leftpadded\">" .
-              "<input type=\"checkbox\" value=\"Y\" name=\"time\"" . 
-              ( ! empty ( $op['time'] ) && $op['time'] == "Y" ? 
-              " checked=\"checked\"":"") . " onclick=\"enableAll(this.checked);\"/>" . 
-                translate ( "Can See Time Only" ) . "</td>\n";
-            $bottomedge = "boxbottom";          
+            echo '<td class="boxleft boxbottom leftpadded">' .
+              '<input type="checkbox" value="Y" name="time"' . 
+              ( ! empty ( $op['time'] ) && $op['time'] == 'Y' ? 
+              ' checked="checked"':'') . ' onclick="enableAll(this.checked);"/>' . 
+                translate ( 'Can See Time Only' ) . "</td>\n";
+            $bottomedge = 'boxbottom';          
           }
           echo "<td align=\"center\" class=\"boxleft $bottomedge\">". 
             $access_type[$j] . "</td>\n<td align=\"center\" ".
             "class=\"boxleft pub $bottomedge\">";
-          echo "<input type=\"checkbox\" value=\"$j\" name=\"v_" . $j ."\"" . 
+          echo "<input type=\"checkbox\" value=\"$j\" name=\"v_" . $j .'"' . 
             ( ! empty ( $op['view'] ) && ( $op['view'] & $j ) ? 
-              " checked=\"checked\"":"")  . " /></td><td class=\"conf $bottomedge\">\n";
-          echo "<input type=\"checkbox\" value=\"".($j*8)."\" name=\"v_" . ($j* 8 ) .
-            "\"" . ( ! empty ( $op['view'] ) && ( $op['view'] & ($j*8) )? 
-            " checked=\"checked\"":"")  . " /></td><td class=\"priv $bottomedge\">\n";
-          echo "<input type=\"checkbox\" value=\"".($j*64)."\" name=\"v_" . ($j*64 )  .
-            "\"" . ( ! empty ( $op['view'] ) && ( $op['view'] & ($j*64))? 
-            " checked=\"checked\"":"")  . " />\n";
+              ' checked="checked"':'')  . " /></td><td class=\"conf $bottomedge\">\n";
+          echo '<input type="checkbox" value="'.($j*8).'" name="v_' . ($j* 8 ) .
+            '"' . ( ! empty ( $op['view'] ) && ( $op['view'] & ($j*8) )? 
+            ' checked="checked"':'')  . " /></td><td class=\"priv $bottomedge\">\n";
+          echo '<input type="checkbox" value="'.($j*64).'" name="v_' . ($j*64 )  .
+            '"' . ( ! empty ( $op['view'] ) && ( $op['view'] & ($j*64))? 
+            ' checked="checked"':'')  . " />\n";
           echo "</td>\n";              
           if ( $guser != '__public__' ) {
             echo "<td align=\"center\" class=\"boxleft pub $bottomedge\">";
-          echo "<input type=\"checkbox\" value=\"$j\" name=\"e_" . $j ."\"" . 
-            ( ! empty ( $op['edit'] ) && ( $op['edit'] & $j )? " checked=\"checked\"":"")  . 
+          echo "<input type=\"checkbox\" value=\"$j\" name=\"e_" . $j .'"' . 
+            ( ! empty ( $op['edit'] ) && ( $op['edit'] & $j )? ' checked="checked"':'')  . 
               " /></td><td class=\"conf $bottomedge\">\n";
-          echo "<input type=\"checkbox\" value=\"".($j*8)."\" name=\"e_" . ($j* 8 ) .
-            "\"" . ( ! empty ( $op['edit'] ) && ( $op['edit'] & ($j*8) )? 
-            " checked=\"checked\"":"")  . " /></td><td class=\"priv $bottomedge\">\n";
-          echo "<input type=\"checkbox\" value=\"".($j*64)."\" name=\"e_" . ($j*64 )  .
-            "\"" . ( ! empty ( $op['edit'] ) && ( $op['edit'] & ($j*64) )? 
-            " checked=\"checked\"":"")  . " />\n";
+          echo '<input type="checkbox" value="'.($j*8).'" name="e_' . ($j* 8 ) .
+            '"' . ( ! empty ( $op['edit'] ) && ( $op['edit'] & ($j*8) )? 
+            ' checked="checked"':'')  . " /></td><td class=\"priv $bottomedge\">\n";
+          echo '<input type="checkbox" value="'.($j*64).'" name="e_' . ($j*64 )  .
+            '"' . ( ! empty ( $op['edit'] ) && ( $op['edit'] & ($j*64) )? 
+            ' checked="checked"':'')  . " />\n";
             echo "</td>\n";
             echo "<td align=\"center\" class=\"boxleft pub $bottomedge\">";
-          echo "<input type=\"checkbox\" value=\"$j\" name=\"a_" . $j ."\"" . 
+          echo "<input type=\"checkbox\" value=\"$j\" name=\"a_" . $j .'"' . 
             ( ! empty ( $op['approve'] ) && ($op['approve'] & $j )? 
-            " checked=\"checked\"":"")  .  " /></td><td class=\"conf $bottomedge\">\n";
-          echo "<input type=\"checkbox\" value=\"".( $j*8)."\" name=\"a_" . ($j* 8 ) .
-            "\"" . ( ! empty ( $op['approve'] ) && ( $op['approve'] & ($j*8 )) ? 
-            " checked=\"checked\"":"")  . 
+            ' checked="checked"':'')  .  " /></td><td class=\"conf $bottomedge\">\n";
+          echo '<input type="checkbox" value="'.( $j*8).'" name="a_' . ($j* 8 ) .
+            '"' . ( ! empty ( $op['approve'] ) && ( $op['approve'] & ($j*8 )) ? 
+            ' checked="checked"':'')  . 
             " /></td><td class=\"boxright  priv $bottomedge\">\n";
-          echo "<input type=\"checkbox\" value=\"".($j*64)."\" name=\"a_" . ($j*64 )  .
-            "\"" . ( ! empty ( $op['approve'] ) && ( $op['approve'] & ($j*64 ))? 
-            " checked=\"checked\"":"")  . " />\n";
+          echo '<input type="checkbox" value="'.($j*64)."\" name=\"a_" . ($j*64 )  .
+            '"' . ( ! empty ( $op['approve'] ) && ( $op['approve'] & ($j*64 ))? 
+            ' checked="checked"':'')  . " />\n";
             echo "</td>\n";
           }
           echo "</tr>\n";
         }
-        echo "<tr><td colspan=\"2\" style=\"text-align:right\">";
+        echo '<tr><td colspan="2" style="text-align:right">';
         if ( $otheruser != '__default__' &&  $otheruser != '__public__' )
-        echo "<input type=\"button\" value=\"" . 
-          translate("Assistant") . "\" onclick=\"selectAll(63);\" />&nbsp;&nbsp;";
+        echo '<input type="button" value="' . 
+          translate( 'Assistant' ) . "\" onclick=\"selectAll(63);\" />&nbsp;&nbsp;";
         echo  "<input type=\"button\" value=\"" . 
-          translate("Select All") . "\" onclick=\"selectAll(256);\" />&nbsp;&nbsp;";
+          translate( 'Select All' ) . "\" onclick=\"selectAll(256);\" />&nbsp;&nbsp;";
         echo  "<input type=\"button\" value=\"" . 
-          translate("Clear All") . "\" onclick=\"selectAll(0);\" /></td>";
+          translate( 'Clear All' ) . "\" onclick=\"selectAll(0);\" /></td>";
         echo "<td colspan=\"9\">\n";
  
-        echo "<table border=\"0\" align=\"center\" cellpadding=\"5\" cellspacing=\"2\">".
-          "<tr><td class=\"pub\">" . 
-          translate ("Public") ."</td>" .
-          "<td class=\"conf\">" . translate("Confidential") . "</td>" .
-          "<td class=\"priv\">" . translate("Private") .
+        echo '<table border="0" align="center" cellpadding="5" cellspacing="2">'.
+          '<tr><td class="pub">' . 
+          translate ( 'Public' ) .'</td>' .
+          '<td class="conf">' . translate( 'Confidential' ) . '</td>' .
+          '<td class="priv">' . translate( 'Private' ) .
           "</td></tr></table></td></tr>\n";
         echo "</tbody></table>\n";
 ?>
     <br /><br />
   <?php } ?>
-  <input type="button" value="<?php etranslate("Cancel"); ?>"
+  <input type="button" value="<?php etranslate( 'Cancel' ); ?>"
     onclick="document.location.href='access.php'" />
-  <input type="submit" name="submit" value="<?php etranslate("Save"); ?>" />
+  <input type="submit" name="submit" value="<?php etranslate( 'Save' ); ?>" />
   </form>
 <script language="javascript" type="text/javascript">
 <!-- <![CDATA[
@@ -428,11 +428,11 @@ function enableAll ( on ) {
 if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
   // If we are here... we must need to print out a list of users
   
-  echo "<h2>" . translate ( "User Access Control" ) . "</h2>\n";
+  echo '<h2>' . translate ( 'User Access Control' ) . "</h2>\n";
   
-  echo "<a title=\"" . translate("Admin") .
-    "\" class=\"nav\" href=\"adminhome.php\">&laquo;&nbsp;" .
-    translate("Admin") . "</a><br /><br />\n";
+  echo '<a title="' . translate( 'Admin' ) .
+    '" class="nav" href="adminhome.php">&laquo;&nbsp;' .
+    translate( 'Admin' ) . "</a><br /><br />\n";
   
   $userlist = get_my_users ();
   $nonuserlist = get_nonuser_cals ();
@@ -441,20 +441,20 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
   <select name="guser" onchange="document.SelectUser.submit()">
   <?php
   //add a DEFAULT CONFIGURATION to be used as a mask  
-  echo "<option value=\"__default__\">".
-    translate ( "DEFAULT CONFIGURATION" )."</option>\n";
+  echo '<option value="__default__">'.
+    translate ( 'DEFAULT CONFIGURATION' )."</option>\n";
   for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-    echo "<option value=\"".$userlist[$i]['cal_login']."\">".
+    echo '<option value="'.$userlist[$i]['cal_login']."\">".
       $userlist[$i]['cal_fullname']."</option>\n";
   }
   for ( $i = 0; $i < count ( $nonuserlist ); $i++ ) {
-    $is_global = ( $nonuserlist[$i]['cal_is_public'] == 'Y'?"*":'' );
-    echo "<option value=\"".$nonuserlist[$i]['cal_login']."\">".
-      $nonuserlist[$i]['cal_fullname']. " " . $is_global . "</option>\n";
+    $is_global = ( $nonuserlist[$i]['cal_is_public'] == 'Y'?'*':'' );
+    echo '<option value="' . $nonuserlist[$i]['cal_login'] . '">'.
+      $nonuserlist[$i]['cal_fullname'] . ' ' . $is_global . "</option>\n";
   }
 ?>
   </select>
-  <input type="submit"  value="<?php etranslate("Go")?>" />
+  <input type="submit"  value="<?php etranslate( 'Go' )?>" />
   </form>
   
 <?php 

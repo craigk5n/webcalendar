@@ -7,15 +7,15 @@ $status = getValue ( 'status', '(on|off)', true );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   print_header ();
-  etranslate("You are not authorized");
+  etranslate( 'You are not authorized' );
   print_trailer ();
   exit;
 }
 
 $updating_public = false;
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
-  $layer_user = "__public__";
+  $layer_user = '__public__';
   $url = 'layers.php?public=1';
 } else {
   $layer_user = $login;
@@ -44,9 +44,9 @@ if ( empty ( $error ) ) {
 print_header();
 ?>
 
-<h2><?php etranslate("Error")?></h2>
+<h2><?php etranslate( 'Error' )?></h2>
 
-<?php etranslate("The following error occurred")?>:
+<?php etranslate( 'The following error occurred' )?>:
 <blockquote>
 <?php echo $error; ?>
 </blockquote>

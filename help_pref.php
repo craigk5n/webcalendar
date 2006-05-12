@@ -8,7 +8,7 @@ print_header('','','',true);
 <h3><?php etranslate("Settings")?></h3>
 <table class="standard">
  <tr><td class="help">
-  <?php etranslate("Language")?>:</td><td>
+  <?php etranslate( 'Language' )?>:</td><td>
   <?php etranslate("language-help")?>
  </td></tr>
   <tr><td class="help">
@@ -78,7 +78,7 @@ print_header('','','',true);
 </table>
 <br /><br />
 
-<h3><?php etranslate("Email")?></h3>
+<h3><?php etranslate( 'Email' )?></h3>
 <table class="standard">
  <tr><td class="help">
   <?php etranslate("Event reminders")?>:</td><td>
@@ -150,13 +150,13 @@ print_header('','','',true);
    <?php etranslate("freebusy-url-help")?>
   </td></tr>
  </table>
-<?php } ?>
+<?php }
 
-<?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
- <h3><?php etranslate("Colors")?></h3>
+ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
+ <h3><?php etranslate( 'Colors' )?></h3>
  <?php etranslate("colors-help")?>
  <br /><br />
-<?php } // if $ALLOW_COLOR_CUSTOMIZATION ?>
-<?php print_trailer( false, true, true ); ?>
+<?php } // if $ALLOW_COLOR_CUSTOMIZATION 
+print_trailer( false, true, true ); ?>
 </body>
 </html>

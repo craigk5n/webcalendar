@@ -52,7 +52,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 $out = "<reminders>\n";
 
 // If login is public user, make sure public can view others...
-if ( $login == "__public__" && $login != $user ) {
+if ( $login == '__public__' && $login != $user ) {
   if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
     $out .= "<error>" . translate("Not authorized") . "</error>\n";
     $out .= "</reminders>\n";
@@ -107,7 +107,7 @@ function process_reminder ( $id, $event_date, $remind_time ) {
 
   $out = "<reminder>\n";
 
-  $out .= "  <remindDate>" . date ( "Ymd", $remind_time ) . "</remindDate>\n";
+  $out .= "  <remindDate>" . date ( 'Ymd', $remind_time ) . "</remindDate>\n";
   $out .= "  <remindTime>" . date ( "Hi", $remind_time ) . "</remindTime>\n";
   $out .= "  <untilRemind>" . ( $remind_time - time() ) . "</untilRemind>\n";
   $out .= ws_print_event_xml ( $id, $event_date );
@@ -181,7 +181,7 @@ $out .= "<!-- reminders for user \"$user\", login \"$login\" -->\n";
 
 $startdate = time(); // today
 for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
-  $date = date ( "Ymd", time() + ( $d * 24 * 3600 ) );
+  $date = date ( 'Ymd', time() + ( $d * 24 * 3600 ) );
   //echo "Date: $date\n";
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.

@@ -6,7 +6,7 @@ $mail = new WebCalMailer;
 load_user_categories ();
 
 $error = "";
-
+$dberror = translate( 'Database error' ) . ': ';
 $do_override = false;
 $old_id = -1;
 if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
@@ -24,17 +24,25 @@ $cat_id = getPostValue ( 'cat_id' );
 $timetype = getPostValue ( 'timetype' );
 $description = getPostValue ( 'description' );
 $description = ( strlen ( $description ) == 0  || 
-  $description == "<br />" ? $name : $description );
+  $description == '<br />' ? $name : $description );
 
-// Ensure all time variables are not empty
+// Ensure  variables are not empty
 if ( empty ( $percent ) ) $percent = 0;
 
 if ( empty ( $timetype ) ) $timetype = 'T';
 
-$duration_h = getValue ( "duration_h" );
-$duration_m = getValue ( "duration_m" );
+$duration_h = getValue ( 'duration_h' );
+$duration_m = getValue ( 'duration_m' );
 if ( empty ( $duration_h ) || $duration_h < 0 ) $duration_h = 0;
 if ( empty ( $duration_m ) || $duration_m < 0 ) $duration_m = 0;
+
+//Reminder values could be valid as 0
+if ( empty ( $rem_days ) ) $rem_days = 0;
+if ( empty ( $reminder_hour ) ) $reminder_hour = 0;
+if ( empty ( $reminder_minute ) ) $reminder_minute = 0;
+if ( empty ( $rem_rep_days ) ) $rem_rep_days = 0;
+if ( empty ( $rem_rep_hours ) ) $rem_rep_hours = 0;
+if ( empty ( $rem_rep_minute ) ) $rem_rep_minute = 0;
 
 // Timed event.
 if ( $timetype == 'T' )  {
@@ -66,7 +74,7 @@ if ( $timetype == 'T' )  {
 // same manner.
 
 // All Day Event
-if ( $timetype == "A" ) {
+if ( $timetype == 'A' ) {
   $duration_h = 24;
   $duration_m = 0;
   $entry_hour = 0;
@@ -76,7 +84,7 @@ if ( $timetype == "A" ) {
 }
 
 // Untimed Event
-if ( $timetype == "U" ) {
+if ( $timetype == 'U' ) {
   $duration_h = 0;
   $duration_m = 0;
   $entry_hour = 0;
@@ -87,7 +95,7 @@ if ( $timetype == "U" ) {
 
 
 // Combine all values to create event start date/time
-if ( $timetype != "T" ) { 
+if ( $timetype != 'T' ) { 
   $eventstart = gmmktime ( $entry_hour, $entry_minute, 0, $month, $day, $year );
 } else {
   $eventstart = mktime ( $entry_hour, $entry_minute, 0, $month, $day, $year );
@@ -95,7 +103,7 @@ if ( $timetype != "T" ) {
 
 if ( $eType == 'task' ) {
   // Combine all values to create event due date/time - User Time
-  if ( $timetype != "T" ) { 
+  if ( $timetype != 'T' ) { 
     $eventdue = gmmktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
   } else {
     $eventdue = mktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
@@ -121,7 +129,7 @@ if ( $TIMED_EVT_LEN == 'E') {
  $eventstopmin= $entry_minute + $duration_m;
 }
 
-if ( $timetype != "T" ) { 
+if ( $timetype != 'T' ) { 
   $eventstop = gmmktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
 } else {
   $eventstop = mktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
@@ -129,12 +137,12 @@ if ( $timetype != "T" ) {
 
 
 // Calculate event duration
-if ( $timetype == "T" ) {
+if ( $timetype == 'T' ) {
   $duration = ( $eventstop - $eventstart ) / 60;
   if (  $duration < 0 ) $duration = 0;
-} else if ( $timetype == "A" ) {
+} else if ( $timetype == 'A' ) {
  $duration = 1440;
-} else if ( $timetype == "U" ) {
+} else if ( $timetype == 'U' ) {
  $duration = 0;
 }
  
@@ -165,7 +173,7 @@ if ( empty ( $id ) ) {
       $can_edit = true;
     dbi_free_result ( $res );
   } else
-    $error = translate("Database error") . ": " . dbi_error ();
+    $error = $dberror . dbi_error ();
 }
 
 if ( $is_admin ) {
@@ -182,14 +190,14 @@ if ( empty ( $error ) && ! $can_edit ) {
       $can_edit = true; // is participant
     dbi_free_result ( $res );
   } else
-    $error = translate("Database error") . ": " . dbi_error ();
+    $error = $dberror . dbi_error ();
 }
 //check UAC
 if ( access_is_enabled () && ! empty ( $old_create_by ) ) {
   $can_edit = access_user_calendar ( 'edit', $old_create_by, $login);
 } 
 if ( ! $can_edit && empty ( $error ) ) {
-  $error = translate ( "You are not authorized" );
+  $error = translate ( 'You are not authorized' );
 }
 
 // If display of participants is disabled, set the participant list
@@ -203,45 +211,45 @@ if ( empty ( $participants[0] ) ) {
   // There might be a better way to do this, but if Admin sets this value,
   // WebCalendar should respect it
   if ( ! empty ( $PUBLIC_ACCESS_DEFAULT_SELECTED ) &&
-    $PUBLIC_ACCESS_DEFAULT_SELECTED == "Y" ) {
-    $participants[1] = "__public__";     
+    $PUBLIC_ACCESS_DEFAULT_SELECTED == 'Y' ) {
+    $participants[1] = '__public__';     
   }
 }
 
 if ( empty ( $DISABLE_REPEATING_FIELD ) ||
-  $DISABLE_REPEATING_FIELD == "N" ) {
+  $DISABLE_REPEATING_FIELD == 'N' ) {
   //Convert $byxx arrays from form
   rsort ($bydayext2);
   
   for ( $i=0; $i<35;$i++) {
    if ( strlen ($bydayext2[$i]) < 2 || 
-     $bydayext2[$i] == "        ") unset  ($bydayext2[$i]);
+     $bydayext2[$i] == '        ') unset  ($bydayext2[$i]);
   }
   if ( ! empty ( $bydayext1 ) ) {
     $bydayext = array_merge($bydayext1,$bydayext2);
-    $byday = implode (",", $bydayext );
+    $byday = implode (',', $bydayext );
   } else {
-    $byday = implode (",", $bydayext2 );
+    $byday = implode (',', $bydayext2 );
   }
   rsort ($bymonthday);
   for ( $i=0; $i<31;$i++) {
    if ( strlen ($bymonthday[$i] < 1 || 
-     $bymonthday[$i] == "      " ) ) unset  ($bymonthday[$i]);
+     $bymonthday[$i] == '      ' ) ) unset  ($bymonthday[$i]);
   }
-  $bymonthday = implode (",", $bymonthday );
+  $bymonthday = implode (',', $bymonthday );
   
   rsort ($bysetpos2);
   for ( $i=0; $i<31;$i++) {
    if ( strlen ($bysetpos2[$i]) < 1 || 
-     $bysetpos2[$i] == "      ") unset  ($bysetpos2[$i]);
+     $bysetpos2[$i] == '      ') unset  ($bysetpos2[$i]);
   }
-  if ( ! empty ( $bysetpos2) ) $bysetpos = implode (",", $bysetpos2 );
+  if ( ! empty ( $bysetpos2) ) $bysetpos = implode (',', $bysetpos2 );
   
-  $bymonth = ( ! empty ( $bymonth) ? implode (",", $bymonth ) : '' );
+  $bymonth = ( ! empty ( $bymonth) ? implode (',', $bymonth ) : '' );
   
   //This allows users to select on weekdays if daily
   if ( $rpt_type == 'daily' && ! empty ( $weekdays_only ) ) {
-   $dayst = "MO,TU,WE,TH,FR";
+   $dayst = 'MO,TU,WE,TH,FR';
   }
   
   if ( ! empty ( $rpt_year ) ) {
@@ -255,7 +263,7 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
    $exceptions = array();
   } else {
    foreach ( $exceptions as $exception ) {
-     if ( substr ( $exception, 0, 1 ) == "+" ) {
+     if ( substr ( $exception, 0, 1 ) == '+' ) {
        $inclusion_list[] = substr ( $exception, 1, 8);
      } else {
        $exception_list[] = substr ( $exception, 1, 8);     
@@ -277,11 +285,11 @@ if ( empty ( $rpt_freq ) ) $rpt_freq = 1;
 if ( empty ( $wkst ) ) $wkst = 'MO';
   
 // first check for any schedule conflicts
-if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != "Y" ) {
-  $confirm_conflicts = ""; // security precaution
+if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != 'Y' ) {
+  $confirm_conflicts = ''; // security precaution
 }
 
-if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
+if ( $ALLOW_CONFLICTS != 'Y' && empty ( $confirm_conflicts ) &&
   strlen ( $entry_hour ) > 0 && $timetype != 'U' ) {
   
   $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, $bymonth,
@@ -296,8 +304,8 @@ if ( $ALLOW_CONFLICTS != "Y" && empty ( $confirm_conflicts ) &&
 } //end  check for any schedule conflicts
 
 if ( empty ( $error ) && ! empty ( $conflicts ) ) {
-  $error = translate("The following conflicts with the suggested time") .
-    ": <ul>$conflicts</ul>";
+  $error = translate( 'The following conflicts with the suggested time' ) .
+    ': <ul>$conflicts</ul>';
 }
 
 $msg = '';
@@ -326,7 +334,7 @@ if ( empty ( $error ) ) {
       }
       dbi_free_result ( $res );
     } else {
-      $error = translate("Database error") . ": " . dbi_error ();
+      $error = $dberror . dbi_error ();
     }
 
     if ( empty ( $error ) ) {
@@ -343,7 +351,7 @@ if ( empty ( $error ) ) {
     $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
       "VALUES ( ?, ?, ? )";
     if ( ! dbi_execute ( $sql, array( $old_id, $override_date, 1 ) ) ) {
-      $error = translate("Database error") . ": " . dbi_error ();
+      $error = $dberror . dbi_error ();
     }
   }
 
@@ -365,41 +373,41 @@ if ( empty ( $error ) ) {
     $query_params[] = $old_id;
 
   $query_params[] = ( ! empty ( $old_create_by ) ? $old_create_by : $login );
-  $query_params[] = gmdate ( "Ymd", $eventstart );
+  $query_params[] = gmdate ( 'Ymd', $eventstart );
   $query_params[] = ( strlen ( $entry_hour ) > 0 && $timetype != 'U' ) ? 
-    gmdate ( "His", $eventstart ) : "-1";
+    gmdate ('His', $eventstart ) : "-1";
   
   if ( ! empty ( $eventcomplete ) )
     $query_params[] = $eventcomplete;
 
-  $query_params[] = gmdate ( "Ymd", $eventdue );
-  $query_params[] = gmdate ( "His", $eventdue );
-  $query_params[] = gmdate ( "Ymd" );
-  $query_params[] = gmdate ( "Gis" );
+  $query_params[] = gmdate ( 'Ymd', $eventdue );
+  $query_params[] = gmdate ('His', $eventdue );
+  $query_params[] = gmdate ( 'Ymd' );
+  $query_params[] = gmdate ( 'Gis' );
   $query_params[] = sprintf ( "%d", $duration );
-  $query_params[] = ( ! empty ( $priority ) ) ? sprintf ( "%d", $priority ) : "2";
+  $query_params[] = ( ! empty ( $priority ) ) ? sprintf ( "%d", $priority ) : '2';
   
-  $query_params[] = empty ( $access ) ? "P" : "$access";
+  $query_params[] = empty ( $access ) ? 'P' : "$access";
   if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'event' ) {
-  $query_params[] = "M";
+  $query_params[] = 'M';
   } else if ( $eType == 'event' ) {
-  $query_params[] = "E";
+  $query_params[] = 'E';
   }  else if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'task' ) {
-  $query_params[] = "N";
+  $query_params[] = 'N';
   } else if ( $eType == 'task' ) {
-  $query_params[] = "T";
+  $query_params[] = 'T';
   }  else if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'journal' ) {
-  $query_params[] = "O";
+  $query_params[] = 'O';
   } else if ( $eType == 'journal' ) {
-  $query_params[] = "J";
+  $query_params[] = 'J';
   }
-  $query_params[] = ( strlen ( $name ) == 0 ) ? "Unnamed Event" : $name;
+  $query_params[] = ( strlen ( $name ) == 0 ) ? 'Unnamed Event' : $name;
   $query_params[] = $description;
   $query_params[] = ( ! empty ( $location ) ) ? $location : '' ;
 
   if ( empty ( $error ) ) {
     if ( ! dbi_execute ( $sql, $query_params ) ) {
-      $error = translate("Database error") . ": " . dbi_error ();
+      $error = $dberror . dbi_error ();
     }
   }
 
@@ -415,9 +423,9 @@ if ( empty ( $error ) ) {
    $log_u = LOG_UPDATE;
   }
   activity_log ( $id, $login, ($is_assistant || $is_nonuser_admin ? $user : $login),
-    $newevent ? $log_c : $log_u, "" );
+    $newevent ? $log_c : $log_u, '' );
   
-  if ( $single_user == "Y" ) {
+  if ( $single_user == 'Y' ) {
     $participants[0] = $single_user_login;
   }
 
@@ -426,42 +434,43 @@ if ( empty ( $error ) ) {
     $is_admin ) ) ? $user : $login;
   dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ? " .
     "AND ( cat_owner = ? OR cat_owner IS NULL )", array( $id, $cat_owner ) );
-  $categories = explode (",", $cat_id );
-  sort ( $categories);
-  for ( $i =0; $i < count( $categories ); $i++ ) {
-    $names = array();
-    $values = array(); 
-    $names[] = 'cal_id';
-    $values[]  = $id; 
-    $names[] = 'cat_id';
-    $values[]  = abs($categories[$i]);
-    //we set cat_id negative in form if global
-    if ( $categories[$i] > 0 ) {
-      $names[] = 'cat_owner';
-      $values[]  = $cat_owner;
-      $names[] = 'cat_order';
-      $values[]  = ($i+1);
-    } else {
-      $names[] = 'cat_order';
-      $values[]  = 99; //forces global categories to apear at the end of lists 
-    }
-
-  // build the variable placeholders - ?-s, comma-separated
-  $placeholders = '';
-    for ( $v_i = 0; $v_i < count( $values ); $v_i++ ) {
-      $placeholders .= '?,';
-  }
-  $placeholders = preg_replace( "/,$/", "", $placeholders ); // remove trailing ','
-    $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ", ", $names ) .
-      " ) VALUES ( $placeholders )"; 
-    if ( ! dbi_execute ( $sql, $values ) ) {
-      $error = translate("Database error") . ": " . dbi_error ();
-      break;
+  if ( ! empty ( $cat_id ) ) {
+    $categories = explode (",", $cat_id );
+    sort ( $categories);
+    for ( $i =0; $i < count( $categories ); $i++ ) {
+      $names = array();
+      $values = array(); 
+      $names[] = 'cal_id';
+      $values[]  = $id; 
+      $names[] = 'cat_id';
+      $values[]  = abs($categories[$i]);
+      //we set cat_id negative in form if global
+      if ( $categories[$i] > 0 ) {
+        $names[] = 'cat_owner';
+        $values[]  = $cat_owner;
+        $names[] = 'cat_order';
+        $values[]  = ($i+1);
+      } else {
+        $names[] = 'cat_order';
+        $values[]  = 99; //forces global categories to appear at the end of lists 
+      }
+      // build the variable placeholders - ?-s, comma-separated
+      $placeholders = '';
+      for ( $v_i = 0; $v_i < count( $values ); $v_i++ ) {
+        $placeholders .= '?,';
+      }
+      $placeholders = preg_replace( "/,$/", "", $placeholders ); // remove trailing ','
+      $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ", ", $names ) .
+        " ) VALUES ( $placeholders )"; 
+      if ( ! dbi_execute ( $sql, $values ) ) {
+        $error = $dberror . dbi_error ();
+        break;
+      }
     }
   }     
   // add site extras
   for ( $i = 0; $i < count ( $site_extras ) && empty ( $error ); $i++ ) {
-    $sql = "";
+    $sql = '';
     $extra_name = $site_extras[$i][0];
     $extra_type = $site_extras[$i][2];
     $extra_arg1 = $site_extras[$i][3];
@@ -483,9 +492,9 @@ if ( empty ( $error ) ) {
           "( cal_id, cal_name, cal_type, cal_data ) VALUES ( ?, ?, ?, ? )";
     $query_params = array( $id, $extra_name, $extra_type, $value );
       } else if ( $extra_type == EXTRA_DATE )  {
-        $yname = $extra_name . "year";
-        $mname = $extra_name . "month";
-        $dname = $extra_name . "day";
+        $yname = $extra_name . 'year';
+        $mname = $extra_name . 'month';
+        $dname = $extra_name . 'day';
         $edate = sprintf ( "%04d%02d%02d", $$yname, $$mname, $$dname );
         $sql = "INSERT INTO webcal_site_extras " .
           "( cal_id, cal_name, cal_type, cal_date ) VALUES ( ?, ?, ?, ? )";
@@ -495,15 +504,15 @@ if ( empty ( $error ) ) {
     if ( strlen ( $sql ) && empty ( $error ) ) {
       //echo "SQL: $sql<br />\n";
       if ( ! dbi_execute ( $sql, $query_params ) ) {
-        $error = translate("Database error") . ": " . dbi_error ();
+        $error = $dberror . dbi_error ();
       }
     }
   } //end for site_extras loop
 
   //process reminder
   if ( ! dbi_execute ( "DELETE FROM webcal_reminders WHERE cal_id = ?", array( $id ) ) )
-    $error = translate("Database error") . ": " . dbi_error ();
-  if ( $DISABLE_REMINDER_FIELD != "Y" && $reminder == true ) {
+    $error = $dberror . dbi_error ();
+  if ( $DISABLE_REMINDER_FIELD != 'Y' && $reminder == true ) {
     if ( empty ( $rem_related ) ) $rem_related = 'S';
     if ( empty ( $rem_before ) ) $rem_before = 'Y';
     $reminder_date = $reminder_offset = $reminder_duration = $reminder_repeats = 0;
@@ -526,15 +535,15 @@ if ( empty ( $error ) ) {
       if ( ! dbi_execute ( $sql, array( $id, $reminder_date, $reminder_offset, 
         $rem_related, $rem_before,$reminder_repeats, $reminder_duration, $rem_action, 
         $rem_last_sent, $rem_times_sent ) ) )
-        $error = translate("Database error") . ": " . dbi_error ();    
+        $error = $dberror . dbi_error ();    
   }
   // clearly, we want to delete the old repeats, before inserting new...
   if ( empty ( $error ) ) {
     if ( ! dbi_execute ( "DELETE FROM webcal_entry_repeats WHERE cal_id = ?", array( $id ) ) ) {
-      $error = translate("Database error") . ": " . dbi_error ();
+      $error = $dberror . dbi_error ();
     }
   if ( ! dbi_execute ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?", array( $id ) ) ) {
-      $error = translate("Database error") . ": " . dbi_error ();
+      $error = $dberror . dbi_error ();
   }
     // add repeating info
   if ( ! empty ( $rpt_type ) && strlen ( $rpt_type ) && $rpt_type != 'none' ) {
@@ -588,9 +597,9 @@ if ( empty ( $error ) ) {
 
     if ( ! empty($rpt_until) ) {
       $names[] = 'cal_end';
-      $values[] = gmdate ("Ymd", $rpt_until );
+      $values[] = gmdate ( 'Ymd', $rpt_until );
       $names[] = 'cal_endtime';         
-      $values[] = gmdate ("His", $rpt_until );
+      $values[] = gmdate ('His', $rpt_until );
     }
 
     $placeholders = '';
@@ -611,7 +620,7 @@ if ( empty ( $error ) ) {
            "VALUES ( ?, ?, ? )";
          if ( ! dbi_execute ( $sql, array( $id, substr ($exceptions[$i],1,8 ), 
            ( ( substr ($exceptions[$i],0, 1 ) == "+" ) ? 0 : 1 ) ) ) ) {
-           $error = translate("Database error") . ": " . dbi_error ();
+           $error = $dberror . dbi_error ();
          }
        }
       } //end exceptions    
@@ -640,17 +649,17 @@ if ( empty ( $error ) ) {
       // and we are the admin
       if ( !$found_flag && !$is_nonuser_admin && $can_email == 'Y') {
         // only send mail if their email address is filled in
-        $do_send = get_pref_setting ( $old_participant, "EMAIL_EVENT_DELETED" );
-        $htmlmail = get_pref_setting ( $old_participant, "EMAIL_HTML" );
-        $t_format = get_pref_setting ( $old_participant, "TIME_FORMAT" );
-        $user_TIMEZONE = get_pref_setting ( $old_participant, "TIMEZONE" );
-        set_env ( "TZ", $user_TIMEZONE );
-        $user_language = get_pref_setting ( $old_participant, "LANGUAGE" );
-        user_load_variables ( $old_participant, "temp" );
+        $do_send = get_pref_setting ( $old_participant, 'EMAIL_EVENT_DELETED' );
+        $htmlmail = get_pref_setting ( $old_participant, 'EMAIL_HTML' );
+        $t_format = get_pref_setting ( $old_participant, 'TIME_FORMAT' );
+        $user_TIMEZONE = get_pref_setting ( $old_participant, 'TIMEZONE' );
+        set_env ( 'TZ', $user_TIMEZONE );
+        $user_language = get_pref_setting ( $old_participant, 'LANGUAGE' );
+        user_load_variables ( $old_participant, 'temp' );
         
         
         if ( $old_participant != $login && ! empty ( $tempemail ) &&
-          $do_send == "Y" && $SEND_EMAIL != "N" ) {     
+          $do_send == 'Y' && $SEND_EMAIL != 'N' ) {     
        
           if ( empty ( $user_language ) || ( $user_language == 'none' )) {
              reset_language ( $LANGUAGE );
@@ -658,24 +667,24 @@ if ( empty ( $error ) ) {
              reset_language ( $user_language );
           }
   
-          $fmtdate = ( $timetype == "T" ? 
-            date ( "Ymd", $eventstart ): gmdate ( "Ymd", $eventstart ) ); 
-          $msg = translate("Hello", true) . ", " .
+          $fmtdate = ( $timetype == 'T' ? 
+            date ( 'Ymd', $eventstart ): gmdate ( 'Ymd', $eventstart ) ); 
+          $msg = translate( 'Hello', true) . ', ' .
             unhtmlentities( $tempfullname ) . ".\n\n" .
-            translate("An appointment has been canceled for you by", true) .
+            translate( 'An appointment has been canceled for you by', true) .
             " " . $login_fullname .  ".\n" .
-            translate("The subject was", true) . " \"" . $name . "\"\n\n" .
-            translate("The description is", true) . " \"" . $description . "\"\n" .
-            translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
+            translate( 'The subject was', true) . ' "' . $name . "\"\n\n" .
+            translate( 'The description is', true) . ' "' . $description . "\"\n" .
+            translate( 'Date') . ': ' . date_to_str ( $fmtdate ) . "\n" .
              ( $timetype != 'T'  ? "" :
-            translate("Time") . ": " .
+            translate( 'Time' ) . ': ' .
             // Apply user's GMT offset and display their TZID
             display_time ( '', 2, $eventstart, $t_format ) . "\n\n\n");
           $msg = stripslashes ( $msg );
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
             //DON'T change & to &amp; here. email will handle it
-            $url = $SERVER_URL .  "view_entry.php?id=" .  $id . "&em=1";
+            $url = $SERVER_URL .  'view_entry.php?id=' .  $id . '&em=1';
             if ( $htmlmail == 'Y' ) {
               $url =  activate_urls ( $url ); 
             }
@@ -694,7 +703,7 @@ if ( empty ( $error ) ) {
           $mail->Send();
           $mail->ClearAll();          
           activity_log ( $id, $login, $old_participant, LOG_NOTIFICATION,
-            "User removed from participants list" );
+            'User removed from participants list' );
         }
       }
     }
@@ -706,25 +715,25 @@ if ( empty ( $error ) ) {
     $is_nonuser_admin = user_is_nonuser_admin ( $login, $participants[$i] );
 
     // if public access, require approval unless
-    // $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL is set to "N"
-    if ( $login == "__public__" ) {
+    // $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL is set to 'N'
+    if ( $login == '__public__' ) {
       if ( ! empty ( $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL ) &&
-        $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == "N" ) {
-        $status = "A"; // no approval needed
+        $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'N' ) {
+        $status = 'A'; // no approval needed
       } else {
         // Approval required
-        $status = "W"; // approval required
+        $status = 'W'; // approval required
       }
     } else if ( ! $newevent ) {
       // keep the old status if no email will be sent
       $send_user_mail = ( empty ( $old_status[$participants[$i]] ) ||
         $entry_changed ) ?  true : false;
       $tmp_status = ( ! empty ( $old_status[$participants[$i]] ) && 
-        ! $send_user_mail ? $old_status[$participants[$i]] : "W" );
+        ! $send_user_mail ? $old_status[$participants[$i]] : 'W' );
       $status = ( $participants[$i] != $login && 
         boss_must_approve_event ( $login, $participants[$i] ) && 
-        $REQUIRE_APPROVALS == "Y" && ! $is_nonuser_admin ) ?
-        $tmp_status : "A";
+        $REQUIRE_APPROVALS == 'Y' && ! $is_nonuser_admin ) ?
+        $tmp_status : 'A';
       
       //set percentage to old_percent if not owner
       $tmp_percent = ( ! empty ( $old_percent[$participants[$i]] ) ? 
@@ -737,7 +746,7 @@ if ( empty ( $error ) ) {
       // keep it as approved even though date/time may have changed
       // This goes against stricter security, but it confuses users to have
       // to re-approve events they already approved.
-      if ( $participants[$i] == "__public__" && $is_admin &&
+      if ( $participants[$i] == '__public__' && $is_admin &&
         ( empty ( $old_status['__public__'] ) || $old_status['__public__'] == 'A' ) ) {
         $status = 'A';
       }
@@ -745,12 +754,12 @@ if ( empty ( $error ) ) {
       $send_user_mail = true;
       $status = ( $participants[$i] != $login && 
         boss_must_approve_event ( $login, $participants[$i] ) && 
-        $REQUIRE_APPROVALS == "Y" && ! $is_nonuser_admin ) ?
-        "W" : "A";
+        $REQUIRE_APPROVALS == 'Y' && ! $is_nonuser_admin ) ?
+        'W' : 'A';
       $new_percent = ( $participants[$i] != $login ) ? 0 : $percent;
       // If admin, no need to approve Public Access Events
-      if ( $participants[$i] == "__public__" && $is_admin ) {
-        $status = "A";
+      if ( $participants[$i] == '__public__' && $is_admin ) {
+        $status = 'A';
       }
     } //end new/old event
   
@@ -762,7 +771,7 @@ if ( empty ( $error ) ) {
     $sql = "INSERT INTO webcal_entry_user " .
       "( cal_id, cal_login, cal_status, cal_percent ) VALUES ( ?, ?, ?, ? )";
     if ( ! dbi_execute ( $sql, array( $id, $participants[$i], $status, $new_percent ) ) ) {
-      $error = translate("Database error") . ": " . dbi_error ();
+      $error = $dberror . dbi_error ();
       break;
 
     } else {
@@ -776,17 +785,17 @@ if ( empty ( $error ) ) {
       if (!$is_nonuser_admin && $can_email == 'Y') {
         // only send mail if their email address is filled in
         $do_send = get_pref_setting ( $participants[$i],
-        $newevent ? "EMAIL_EVENT_ADDED" : "EMAIL_EVENT_UPDATED" );
-        $htmlmail = get_pref_setting ( $participants[$i], "EMAIL_HTML" );
-        $t_format = get_pref_setting ( $participants[$i], "TIME_FORMAT" );
-        $user_TIMEZONE = get_pref_setting ( $participants[$i], "TIMEZONE" );
-        set_env ( "TZ", $user_TIMEZONE );
-        $user_language = get_pref_setting ( $participants[$i], "LANGUAGE" );
-        user_load_variables ( $participants[$i], "temp" );
+        $newevent ? 'EMAIL_EVENT_ADDED' : 'EMAIL_EVENT_UPDATED' );
+        $htmlmail = get_pref_setting ( $participants[$i], 'EMAIL_HTML' );
+        $t_format = get_pref_setting ( $participants[$i], 'TIME_FORMAT' );
+        $user_TIMEZONE = get_pref_setting ( $participants[$i], 'TIMEZONE' );
+        set_env ( 'TZ', $user_TIMEZONE );
+        $user_language = get_pref_setting ( $participants[$i], 'LANGUAGE' );
+        user_load_variables ( $participants[$i], 'temp' );
         if ( $participants[$i] != $login && 
           boss_must_be_notified ( $login, $participants[$i] ) && 
           ! empty ( $tempemail ) &&
-          $do_send == "Y" && $send_user_mail && $SEND_EMAIL != "N" ) {
+          $do_send == 'Y' && $send_user_mail && $SEND_EMAIL != 'N' ) {
 
 
           if ( empty ( $user_language ) || ( $user_language == 'none' )) {
@@ -795,32 +804,32 @@ if ( empty ( $error ) ) {
              reset_language ( $user_language );
           }
 
-          $fmtdate = ( $timetype == "T" ? 
-            date ( "Ymd", $eventstart ): gmdate ( "Ymd", $eventstart ) ); 
-          $msg = translate("Hello", true) . ", " .
+          $fmtdate = ( $timetype == 'T' ? 
+            date ( 'Ymd', $eventstart ): gmdate ( 'Ymd', $eventstart ) ); 
+          $msg = translate( 'Hello', true) . ', ' .
             unhtmlentities ( $tempfullname ) . ".\n\n";
           if ( $newevent || ( empty ( $old_status[$participants[$i]] ) ) ) {
-            $msg .= translate("A new appointment has been made for you by", true);
+            $msg .= translate( 'A new appointment has been made for you by', true);
           } else {
-            $msg .= translate("An appointment has been updated by", true);
+            $msg .= translate( 'An appointment has been updated by', true);
           }
-          $msg .= " " . $login_fullname .  ".\n" .
-            translate("The subject is", true) . " \"" . $name . "\"\n\n" .
-            translate("The description is", true) . " \"" . $description . "\"\n" .
-            translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-            ( $timetype != 'T' ? "" :
-            translate("Time") . ": " .
+          $msg .= ' ' . $login_fullname .  ".\n" .
+            translate( 'The subject is', true) . ' "' . $name . "\"\n\n" .
+            translate( 'The description is', true) . ' "' . $description . "\"\n" .
+            translate( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .
+            ( $timetype != 'T' ? '' :
+            translate( 'Time' ) . ': ' .
             // Apply user's GMT offset and display their TZID
             display_time ( '', 2, $eventstart, $t_format ) . "\n" ) .
-            translate("Please look on", true) . " " . translate($APPLICATION_NAME) . " " .
-            ( $REQUIRE_APPROVALS == "Y" ?
-            translate("to accept or reject this appointment", true) :
-            translate("to view this appointment", true) ) . ".";
+            translate( 'Please look on', true) . ' ' . translate($APPLICATION_NAME) . 
+            ' ' . ( $REQUIRE_APPROVALS == 'Y' ?
+            translate( 'to accept or reject this appointment', true) :
+            translate( 'to view this appointment', true) ) . '.';
           $msg = stripslashes ( $msg );
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
             //DON'T change & to &amp; here. email will handle it
-            $url = $SERVER_URL .  "view_entry.php?id=" .  $id . "&em=1";
+            $url = $SERVER_URL .  'view_entry.php?id=' .  $id . '&em=1';
             if ( $htmlmail == 'Y' ) {
               $url =  activate_urls ( $url ); 
             }
@@ -852,9 +861,9 @@ $ext_names = array ();
 $ext_emails = array ();
 $matches = array ();
 $ext_count = 0;
-if ( $single_user == "N" &&
+if ( $single_user == 'N' &&
   ! empty ( $ALLOW_EXTERNAL_USERS ) && 
-  $ALLOW_EXTERNAL_USERS == "Y" &&
+  $ALLOW_EXTERNAL_USERS == 'Y' &&
   ! empty ( $externalparticipants ) ) {
   $lines = explode ( "\n", $externalparticipants );
   if ( ! is_array ( $lines ) ) {
@@ -909,30 +918,30 @@ if ( $single_user == "N" &&
           "( cal_id, cal_fullname, cal_email ) VALUES ( ?, ?, ? )";
         if ( ! dbi_execute ( $sql, array( $id, $ext_names[$i], 
           ( strlen ( $ext_emails[$i] ) ? $ext_emails[$i] : NULL ) ) ) ) {
-          $error = translate("Database error") . ": " . dbi_error ();
+          $error = $dberror . dbi_error ();
         }
         // send mail notification if enabled
         // TODO: move this code into a function...
-        if ( $EXTERNAL_NOTIFICATIONS == "Y" && $SEND_EMAIL != "N" &&
+        if ( $EXTERNAL_NOTIFICATIONS == 'Y' && $SEND_EMAIL != 'N' &&
           strlen ( $ext_emails[$i] ) > 0 ) {          
-          if ( ( ! $newevent &&  $EXTERNAL_UPDATES == "Y" ) || $newevent ) {
-            $fmtdate = ( $timetype == "T" ? 
-              date ( "Ymd", $eventstart ): gmdate ( "Ymd", $eventstart ) ); 
+          if ( ( ! $newevent &&  $EXTERNAL_UPDATES == 'Y' ) || $newevent ) {
+            $fmtdate = ( $timetype == 'T' ? 
+              date ( 'Ymd', $eventstart ): gmdate ( 'Ymd', $eventstart ) ); 
             // Strip [\d] from duplicate Names before emailing
             $ext_names[$i] = trim(preg_replace( '/\[[\d]]/', "", $ext_names[$i]) );
-            $msg = translate("Hello", true) . ", " . $ext_names[$i] . ".\n\n";
+            $msg = translate( 'Hello', true) . ", " . $ext_names[$i] . ".\n\n";
             if ( $newevent ) {
-              $msg .= translate("A new appointment has been made for you by", true);
+              $msg .= translate( 'A new appointment has been made for you by', true);
             } else {
-              $msg .= translate("An appointment has been updated by", true);
+              $msg .= translate( 'An appointment has been updated by', true);
             }
             $msg .= " " . $login_fullname .  ".\n" .
-              translate("The subject is", true) . " \"" . $name . "\"\n\n" .
-              translate("The description is", true) . " \"" . $description . "\"\n\n" .
-              translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n";
+              translate( 'The subject is', true) . " \"" . $name . "\"\n\n" .
+              translate( 'The description is', true) . ' "' . $description . "\"\n\n" .
+              translate( 'Date') . ': ' . date_to_str ( $fmtdate ) . "\n";
               if ( $timetype == 'T')  {
-                $msg .= translate("Time") . ": ";
-                if ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == "Y" ) {
+                $msg .= translate( 'Time' ) . ': ';
+                if ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y' ) {
                   // Do not apply TZ offset & display TZID, which is GMT
                   $msg .= display_time ( '', 3, $eventstart );
                 } else {
@@ -949,7 +958,7 @@ if ( $single_user == "N" &&
             } else {
               $mail->From = $login_fullname;
             }  
-            $mail->IsHTML($htmlmail == "Y");
+            $mail->IsHTML($htmlmail == 'Y');
             $mail->AddAddress( $ext_emails[$i], $ext_names[$i] );
             $mail->WCSubject ( $name );                     
             $mail->IcsAttach ( $id ) ;
@@ -981,12 +990,12 @@ if ( empty ( $error ) ) {
 print_header();
 if ( ! empty ( $conflicts ) ) { 
 ?>
-<h2><?php etranslate("Scheduling Conflict")?></h2>
+<h2><?php etranslate( 'Scheduling Conflict' )?></h2>
 
-<?php etranslate("Your suggested time of")?> <span style="font-weight:bold;">
+<?php etranslate( 'Your suggested time of' )?> <span style="font-weight:bold;">
 <?php
-  if (  $timetype == "A" ) {
-    etranslate("All day event");
+  if (  $timetype == 'A' ) {
+    etranslate( 'All day event' );
   } else {
     $time = sprintf ( "%d%02d00", $entry_hour, $entry_minute );
     // Pass the adjusted timestamp in case the date changed due to GMT offset 
@@ -995,14 +1004,14 @@ if ( ! empty ( $conflicts ) ) {
       echo "-" . display_time ( add_duration ( $time, $duration ), 1, $eventstart );
     }
   }
-?></span> <?php etranslate("conflicts with the following existing calendar entries")?>:
+?></span> <?php etranslate( 'conflicts with the following existing calendar entries' )?>:
 <ul>
 <?php echo $conflicts; ?>
 </ul>
 
 <?php
 // user can confirm conflicts
-  echo "<form name=\"confirm\" method=\"post\">\n";
+  echo '<form name="confirm" method="post">' . "\n";
   if ( ! is_array ( $_POST ) && is_array ( $HTTP_POST_VARS ) )
     $_POST = $HTTP_POST_VARS;
   foreach ($_POST as $xkey=>$xval ) {
@@ -1027,24 +1036,23 @@ if ( ! empty ( $conflicts ) ) {
 <?php
   // Allow them to override a conflict if server settings allow it
   if ( ! empty ( $ALLOW_CONFLICT_OVERRIDE ) &&
-    $ALLOW_CONFLICT_OVERRIDE == "Y" ) {
-    echo "<td><input type=\"submit\" name=\"confirm_conflicts\" " .
-      "value=\"" . translate("Save") . "\" /></td>\n";
+    $ALLOW_CONFLICT_OVERRIDE == 'Y' ) {
+    echo '<td><input type="submit" name="confirm_conflicts" value="' . 
+      translate( 'Save' ) . "\" /></td>\n";
   }
 ?>
-   <td><input type="button" value="<?php etranslate("Cancel")?>" 
+   <td><input type="button" value="<?php etranslate( 'Cancel' )?>" 
 onclick="history.back()" /><td>
  </tr>
 </table>
 </form>
 
 <?php } else { ?>
-<h2><?php etranslate("Error")?></h2>
+<h2><?php etranslate( 'Error' )?></h2>
 <blockquote>
 <?php echo $error; ?>
 </blockquote>
-<?php } ?>
-
-<?php print_trailer(); ?>
+<?php }
+print_trailer(); ?>
 </body>
 </html>

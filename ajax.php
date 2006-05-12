@@ -11,7 +11,7 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser') {
     foreach ( $rows as $row ) {
       // assuming we are using '_NUC_' as $NONUSER_PREFIX
       if ( $name ==  substr ( $row[0],  strlen ( $NONUSER_PREFIX ) ) )
-        echo translate ( "Duplicate Name", true ) . ": $name";
+        echo translate ( 'Duplicate Name', true ) . ": $name";
     }
   }
 
@@ -23,7 +23,7 @@ if ( $page == 'edit_user' ) {
   if ( $rows ) {
     foreach ( $rows as $row ) {
       if ( $name ==  $row[0] )
-        echo translate ( "Duplicate Name", true ) . ": $name";
+        echo translate ( 'Duplicate Name', true ) . ": $name";
     }
   }
 

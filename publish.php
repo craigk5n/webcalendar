@@ -46,18 +46,20 @@ include_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 
-
 // Calculate username.
 //if using http_auth, use those credentials
 if ( $use_http_auth && empty ( $user ) ) {
   $user = $login; 
 }
 if ( empty ( $user ) ) {
-  $arr = explode ( "/", $PHP_SELF );
+  $arr = explode ( '/', $PHP_SELF );
   $user = $arr[count($arr)-1];
   # remove any trailing ".ics" in user name
   $user = preg_replace ( "/\.[iI][cC][sS]$/", '', $user );
 }
+
+if ( $user == 'publish.php' )
+  $user = '';
 
 if ( $user == 'public' )
   $user = '__public__';
@@ -67,20 +69,25 @@ load_global_settings ();
 $WebCalendar->setLanguage();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
-  header ( "Content-Type: text/plain" );
-  etranslate("You are not authorized");
+  header ( 'Content-Type: text/plain' );
+  etranslate( 'You are not authorized' );
   exit;
 }
 
+ $error = translate( 'Error' );
+ $nouser = translate( 'No user specified' );
 // Make sure they specified a username
 if ( empty ( $user ) ) {
-  echo "<?xml version=\"1.0\" encoding=\"utf8\"?>\n<!DOCTYPE html
-    PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-    \"DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n
- <head>\n<title>" . translate("Error") . "</title>\n</head>\n" .
-    "<body>\n<h2>" . translate("Error") . "</h2>\n" .
-    "No user specified.\n</body>\n</html>";
+  echo <<<EOT
+   <?xml version="1.0" encoding="utf8"?>
+   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+   <head><title>{$error}</title></head>
+    <body>
+    <h2>{$error}</h2>
+    {$nouser}.</body></html>
+EOT;
+  exit;
 }
 
 // Load user preferences (to get the USER_PUBLISH_ENABLED and
@@ -89,17 +96,17 @@ $login = $user;
 load_user_preferences ();
 
 if ( empty ( $USER_PUBLISH_ENABLED ) || $USER_PUBLISH_ENABLED != 'Y' ) {
-  header ( "Content-Type: text/plain" );
-  etranslate("You are not authorized");
+  header ( 'Content-Type: text/plain' );
+  etranslate( 'You are not authorized' );
   exit;
 }
 
 // Load user name, etc.
-user_load_variables ( $user, "publish_" );
+user_load_variables ( $user, 'publish_' );
 
 
-//header ( "Content-Type: text/plain" );
-header ( "Content-Type: text/calendar" );
+//header ( 'Content-Type: text/plain' );
+header ( 'Content-Type: text/calendar' );
 header ( 'Content-Disposition: attachment; filename="' . $user .  '.ics"' );
 $use_all_dates = true;
 $type = 'publish';

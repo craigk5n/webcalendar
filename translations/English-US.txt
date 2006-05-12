@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 05-04-2006
+# Translation last updated on 05-12-2006
 
 
 ###############################################
@@ -99,6 +99,7 @@ Next: Next
 ###############################################
 # Page: add_entry.php
 #
+is already on your calendar.: is already on your calendar.
 Invalid entry id: Invalid entry id
 This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
 This is a confidential event and may not be added to your calendar.: This is a confidential event and may not be added to your calendar.
@@ -109,6 +110,7 @@ Error adding event: Error adding event
 # Page: admin.php
 #
 Error: Error
+Select: Select
 Yes: Yes
 No: No
 System Settings: System Settings
@@ -119,7 +121,6 @@ Groups: Groups
 NonUser Calendars: NonUser Calendars
 Other: Other
 Email: Email
-colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 Colors: Colors
 app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: Application Name
@@ -352,7 +353,6 @@ gradient-colors: If enabled gradient colors are used. This can greatly impact pe
 Enable gradient images for background colors: Enable gradient images for background colors
 Not available: Not available
 Document background: Document background
-Select: Select
 Document title: Document title
 Document text: Document text
 My event text: My event text
@@ -557,7 +557,7 @@ ByDay: ByDay
 All: All
 repeat-month-help: Specifies which months the event should repeat in.
 ByMonth: ByMonth
-repeat-bysetpos-help: Allows date selection based on position within an another ByXXX set of dates.
+repeat-bysetpos-help: Allows date selection based on position withing the month.
 BySetPos: BySetPos
 repeat-bymonthdayextended-help: Allows date selection based on date.
 ByMonthDay: ByMonthDay
@@ -744,6 +744,7 @@ Set Password: Set Password
 Deleting users not supported: Deleting users not supported
 The passwords were not identical: The passwords were not identical
 You have not entered a password: You have not entered a password
+Invalid characters in login: Invalid characters in login
 Username can not be blank: Username can not be blank
 
 
@@ -798,6 +799,7 @@ Nonuser: Nonuser Calendars
 user-customize-color: Specifies whether users are allowed to modify their own color scheme.
 enable-gradient-help: Use gradient colors for cell backgrounds.
 Manually entering color values: Manually entering color values
+colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 
 
 ###############################################
@@ -1009,6 +1011,12 @@ entries: entries
 
 
 ###############################################
+# Page: publish.php
+#
+No user specified: No user specified
+
+
+###############################################
 # Page: purge.php
 #
 Purging events for: Purging events for
@@ -1087,8 +1095,6 @@ Advanced Search: Advanced Search
 #
 You must enter one or more search keywords: You must enter one or more search keywords
 Search Results: Search Results
-match found: match found
-matches found: matches found
 No matches found: No matches found
 
 
@@ -1199,6 +1205,7 @@ This will add the entry to your calendar.: This will add the entry to your calen
 Email all participants: Email all participants
 Show activity log: Show activity log
 Hide activity log: Hide activity log
+Export this entry to: Export this entry to
 
 
 ###############################################
@@ -1260,12 +1267,12 @@ Thu: Thu
 Fri: Fri
 Sat: Sat
 WK: WK
-TASKS: TASKS
-Task_Title: Title
-Due: Due
 Task Name: Task Name
 Task Due Date: Task Due Date
 __mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+TASKS: TASKS
+Task_Title: Title
+Due: Due
 View this task: View this task
 View this event: View this event
 exceeds limit of XXX events per day: exceeds limit of XXX events per day
@@ -1512,6 +1519,9 @@ Reminder: Reminder
 ###############################################
 # Page: install/index.php
 #
+Failure Reason: Failure Reason
+Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
+Your previous version of WebCalendar requires updating several database tables.: Your previous version of WebCalendar requires updating several database tables.
 Successful Login: Successful Login
 Invalid Login: Invalid Login
 required only if Safe Mode is On: required only if Safe Mode is On
@@ -1522,7 +1532,6 @@ Unable to write password to settings.php file: Unable to write password to setti
 Password has been set: Password has been set
 Connection Successful: Connection Successful
 Please go to next page to continue installation: Please go to next page to continue installation
-Failure Reason: Failure Reason
 Correct your entries or click the <b>Create New</b> button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
 You must manually create database: You must manually create database
 Correct your entries and try again: Correct your entries and try again
@@ -1533,7 +1542,7 @@ Timezone Conversion Successful: Timezone Conversion Successful
 Error Converting Timezone: Error Converting Timezone
 Error Unable to write to file: Error Unable to write to file
 Please change the file permissions of this file: Please change the file permissions of this file
-Please change the file permissions of your includes directory to allow writing by other users: Please change the file permissions of your includes directory to allow writing by other users
+Please change includes dir premission: Please change the file permissions of your includes directory to allow writing by other users
 Your settings have been saved: Your settings have been saved
 Error you must specify a\\nSingle-User Login: Error you must specify a\\nSingle-User Login
 Server URL must end with: Server URL must end with
@@ -1542,7 +1551,7 @@ Full Path (no backslashes): Full Path (no backslashes)
 The password contains illegal characters.: The password contains illegal characters.
 WebCalendar Installation Wizard: WebCalendar Installation Wizard
 Step: Step
-This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
+This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
 PHP Version Check: PHP Version Check
 Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
 PHP version: PHP version
@@ -1558,9 +1567,7 @@ Your <b>settings.php</b> file appears to be valid: Your <b>settings.php</b> file
 Configuration Wizard Password: Configuration Wizard Password
 Create Settings File Password: Create Settings File Password
 Password (again): Password (again)
-In this section you will set up and test a connection to your database server: In this section you will set up and test a connection to your database server
-The account information supplied should have FULL permissions to create databases, tables and users: The account information supplied should have FULL permissions to create databases, tables and users
-If this is not possible, or your database access is limited, you will have to manually configure your database: If this is not possible, or your database access is limited, you will have to manually configure your database
+db setup directions...: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
 Database Status: Database Status
 Supported databases for your PHP installation: Supported databases for your PHP installation
 Your current database settings are able to access the database: Your current database settings are able to access the database
@@ -1586,11 +1593,12 @@ to cut &amp; paste it into your database server query window: to cut &amp; paste
 No database actions are required: No database actions are required
 The following database actions are required: The following database actions are required
 ODBC Underlying Database: ODBC Underlying Database
+Automatic installation not supported: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the sql supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
 This may take several minutes to complete: This may take several minutes to complete
 Install Database: Install Database
 Update Database: Update Database
 Display Required SQL: Display Required SQL
-After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes
+Return to previous page after processing sql: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
 This is the final step in setting up your WebCalendar Installation: This is the final step in setting up your WebCalendar Installation
 Timezone Conversion: Timezone Conversion
 It appears that you have: It appears that you have

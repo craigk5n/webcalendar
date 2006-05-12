@@ -21,12 +21,26 @@ load_global_settings ();
 $WebCalendar->setLanguage();
 
 load_global_settings ();
-load_user_preferences ( "guest" );
+load_user_preferences ( 'guest' );
 
+// Look for action=logout
+$logout = false;
+$action = getGetValue ( 'action' );
+if ( ! empty ( $action ) && $action == 'logout' ) {
+  $logout = true;
+  $return_path = '';
+  SetCookie ( 'webcalendar_login', '', 0 );
+  SetCookie ( 'webcalendar_last_view', '', 0 );
+} else if (  empty ( $return_path ) ) {
+  // see if a return path was set
+  $return_path = get_last_view();
+  if ( ! empty ( $return_path ) ) 
+    SetCookie ( 'webcalendar_last_view', '', 0 );
+}
 
 // Set default language
 $lang = '';
-if ( ! empty ( $LANGUAGE ) &&  $LANGUAGE != "Browser-defined" && $LANGUAGE != "none" ) {
+if ( ! empty ( $LANGUAGE ) &&  $LANGUAGE != 'Browser-defined' && $LANGUAGE != 'none' ) {
   $lang = languageToAbbrev ( $LANGUAGE );
 } else {
   $lang_long = get_browser_language ();
@@ -37,8 +51,8 @@ if ( empty ( $lang ) ) {
   $lang = 'en';
 }
 
-$charset = ( ! empty ( $LANGUAGE )?translate("charset"): "iso-8859-1" );
-echo "<?xml version=\"1.0\" encoding=\"$charset\"?>" . "\n";
+$charset = ( ! empty ( $LANGUAGE )?translate( 'charset' ): 'iso-8859-1' );
+echo '<?xml version="1.0" encoding="' . $charset . '"?>' . "\n";
 
 // Set return page
 if ( $return_path != '') {
@@ -58,7 +72,7 @@ if ( $return_path != '') {
 // error check login/password
 function valid_form ( form ) {
   if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
-    alert ( '<?php etranslate("You must enter a login and password", true)?>.' );
+    alert ( '<?php etranslate( 'You must enter a login and password', true)?>.' );
     return false;
   }
   return true;
@@ -66,7 +80,7 @@ function valid_form ( form ) {
 function myOnLoad() {
   document.login_form.login.focus();
   <?php
-    if ( ! empty ( $login ) ) echo "document.login_form.login.select();";
+    if ( ! empty ( $login ) ) echo 'document.login_form.login.select();';
     if ( ! empty ( $error ) ) {
       echo "  alert ( \"$error\" );\n";
     }
@@ -75,7 +89,7 @@ function myOnLoad() {
 </script>
 <?php 
 }
- include "includes/styles.php";
+ include 'includes/styles.php';
 
  // Print custom header (since we do not call print_header function)
  if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
@@ -94,7 +108,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 <h2><?php 
 // If Application Name is set to Title then get translation
 // If not, use the Admin defined Application Name
-if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME =="Title") {
+if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME == 'Title' ) {
   etranslate($APPLICATION_NAME);
 } else {
   echo htmlspecialchars ( $APPLICATION_NAME );
@@ -103,8 +117,8 @@ if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME =="Title") {
 
 <?php
 if ( ! empty ( $error ) ) {
-  print "<span style=\"color:#FF0000; font-weight:bold;\">" . 
-    translate("Error") . ": $error</span><br />\n";
+  print '<span style="color:#FF0000; font-weight:bold;">' . 
+    translate( 'Error' ) . ": $error</span><br />\n";
 } else {
   print "<br />\n";
 }
@@ -117,20 +131,20 @@ if ( ! empty ( $error ) ) {
 <table cellpadding="10" align="center">
 <tr><td rowspan="2">
  <img src="images/login.gif" alt="Login" /></td><td align="right">
- <label for="user"><?php etranslate("Username")?>:</label></td><td>
+ <label for="user"><?php etranslate( 'Username' )?>:</label></td><td>
  <input name="<?php echo $app_login_page['username'] ?>" id="user" size="15" maxlength="25" 
    tabindex="1" />
 </td></tr>
 <tr><td style="text-align:right;">
- <label for="password"><?php etranslate("Password")?>:</label></td><td>
+ <label for="password"><?php etranslate( 'Password' )?>:</label></td><td>
  <input name="<?php echo $app_login_page['password'] ?>" id="password" type="password" size="15" 
    maxlength="30" tabindex="2" />
 </td></tr>
 <?php if (! empty (  $app_login_page['remember'] ) ) { ?>
 <tr><td colspan="3" style="font-size: 10px;">
  <input type="checkbox" name="<?php echo $app_login_page['remember'] ?>" id="remember" tabindex="3" 
-   value="yes" <?php if ( ! empty ( $remember ) && $remember == "yes" ) {
-     echo "checked=\"checked\""; }?> /><label for="remember">&nbsp;
+   value="yes" <?php if ( ! empty ( $remember ) && $remember == 'yes' ) {
+     echo 'checked="checked"'; }?> /><label for="remember">&nbsp;
    <?php etranslate("Save login via cookies so I don't have to login next time")?></label>
 </td></tr>
 <?php } ?>
@@ -142,38 +156,37 @@ if ( ! empty ( $error ) ) {
     }
   }
 ?>
- <input type="submit" name="<?php echo $app_login_page['submit'] ?>" value="<?php etranslate("Login")?>" tabindex="4" />
+ <input type="submit" name="<?php echo $app_login_page['submit'] ?>" value="<?php 
+  etranslate( 'Login' )?>" tabindex="4" />
 </td></tr>
 </table>
 </form>
 
 
-<?php if ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == "Y" ) { ?>
+<?php if ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) { ?>
  <br /><br />
  <a class="nav" href="index.php">
-   <?php etranslate("Access public calendar")?></a><br />
-<?php } ?>
+   <?php etranslate( 'Access public calendar' )?></a><br />
+<?php }
 
-<?php
   $nulist = get_nonuser_cals ();
   for ( $i = 0; $i < count ( $nulist ); $i++ ) {
     if ( $nulist[$i]['cal_is_public'] == 'Y' ) {
       ?><a class="nav" href="nulogin.php?login=<?php
         echo $nulist[$i]['cal_login'] . "\">" .
-          translate("Access") . ' ' . $nulist[$i]['cal_fullname'] . ' ' .
-          translate("calendar");
+          translate( 'Access' ) . ' ' . $nulist[$i]['cal_fullname'] . ' ' .
+          translate( 'calendar' );
       ?></a><br /><?php
     }
   }
-?>
 
-<?php if ( $DEMO_MODE == "Y" ) {
+if ( $DEMO_MODE == 'Y' ) {
  // This is used on the sourceforge demo page
- echo "Demo login: user = \"demo\", password = \"demo\"<br />";
+ echo 'Demo login: user = "demo", password = "demo"<br />';
 } ?>
 <br /><br />
 
-<span class="cookies"><?php etranslate("cookies-note")?></span><br />
+<span class="cookies"><?php etranslate( 'cookies-note' )?></span><br />
 <hr />
 <br /><br />
 <a href="<?php echo $PROGRAM_URL ?>" id="programname"><?php echo $PROGRAM_NAME?></a>

@@ -91,8 +91,8 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   // get external participants
   $ext_participants = array ();
   $num_ext_participants = 0;
-  if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == "Y" &&
-    ! empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == "Y" ) {
+  if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' &&
+    ! empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == 'Y' ) {
     $sql = "SELECT cal_fullname, cal_email FROM webcal_entry_ext_user " .
       "WHERE cal_id = ? AND cal_email IS NOT NULL " .
       "ORDER BY cal_fullname";
@@ -159,7 +159,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
     $out .= "  <priority>" . $pri[$row[6]] . "</priority>\n";
   if ( ! empty ( $DISABLE_ACCESS_FIELD ) && $DISABLE_ACCESS_FIELD == 'Y' )
     $out .= "  <access>" . 
-      ( $row[8] == "P" ? translate("Public") : translate("Confidential") ) .
+      ( $row[8] == "P" ? translate ( 'Public' ) : translate( 'Confidential' ) ) .
       "</access>\n";
   if ( ! strlen ( $single_user_login ) )
     $out .= "  <createdBy>" . $row[0] . "</createdBy>\n";
@@ -190,7 +190,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
         $se .= ws_escape_xml ( $extras[$extra_name]['cal_data'] );
       } else if ( $extra_type == EXTRA_REMINDER ) {
         $se .= ( $extras[$extra_name]['cal_remind'] > 0 ?
-          translate("Yes") : translate("No") );
+          translate ( 'Yes') : translate ( 'No') );
       } else {
         // default method for EXTRA_URL, EXTRA_TEXT, etc...
         $se .= ws_escape_xml ( $extras[$extra_name]['cal_data'] );
@@ -200,7 +200,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   }
   if ( $se != '' )
     $out .= "  <siteExtras>\n" . $se . "  </siteExtras>\n";
-  if ( $single_user != "Y" && ! $DISABLE_PARTICIPANTS_FIELD ) {
+  if ( $single_user != 'Y' && ! $DISABLE_PARTICIPANTS_FIELD ) {
     $out .= "  <participants>\n";
     for ( $i = 0; $i < count ( $participants ); $i++ ) {
       $out .= "    <participant>" .  $participants[$i] .

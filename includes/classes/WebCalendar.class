@@ -925,7 +925,7 @@ class WebCalendar {
       $firstname, $fullname, $user_email, $use_http_auth, $user_inc,
       $login_login, $login_is_admin, $login_lastname, $LANGUAGE,
       $login_firstname, $login_fullname, $login_email, $single_user,
-      $not_auth, $readonly, $is_nonuser, $PROGRAM_VERSION;
+      $not_auth, $readonly, $is_nonuser, $PROGRAM_VERSION, $SCRIPT;
 
     // db settings are in config.php
 

@@ -9,18 +9,18 @@ if (($user != $login) && $is_nonuser_admin) {
 
 load_user_categories ();
 
-$nextYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
-$prevYmd = date ( "Ymd", mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
+$nextYmd = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
+$prevYmd = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
 
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
-$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ) );
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 4 : 6 ) );
  
-$startdate = date ( "Ymd", $wkstart );
-$enddate = date ( "Ymd", $wkend );
+$startdate = date ( 'Ymd', $wkstart );
+$enddate = date ( 'Ymd', $wkend );
 
-if ( $DISPLAY_WEEKENDS == "N" ) {
+if ( $DISPLAY_WEEKENDS == 'N' ) {
   if ( $WEEK_START == 1 ) {
     $start_ind = 0;
     $end_ind = 4;
@@ -32,9 +32,9 @@ if ( $DISPLAY_WEEKENDS == "N" ) {
   $start_ind = 0;
   $end_ind = 6;
 }
-//echo date ("Ymd", $wkstart ) . " " . $start_ind . " " . $end_ind;
+//echo date ('Ymd', $wkstart ) . " " . $start_ind . " " . $end_ind;
 $HeadX = '';
-if ( ! empty ( $AUTO_REFRESH ) && $AUTO_REFRESH == "Y" &&
+if ( ! empty ( $AUTO_REFRESH ) && $AUTO_REFRESH == 'Y' &&
   ! empty ( $AUTO_REFRESH_TIME ) ) {
   $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week.php?$u_url" .
@@ -53,18 +53,18 @@ $repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login,
 $events = read_events ( strlen ( $user ) ? $user : $login,
   $wkstart - ONE_WEEK, $wkend, $cat_id );
 
-if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == "Y" ) {
+if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) && $is_assistant )
     ? $user : $login, $wkend, $cat_id );
 }
 
-//if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == "N" ) $wkstart = $wkstart - ONE_DAY;
+//if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == 'N' ) $wkstart = $wkstart - ONE_DAY;
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = $wkstart + ONE_DAY * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
   $header[$i] = $weekdays[$i] . "<br />" .
-    date_to_str ( date ("Ymd",$days[$i]), $DATE_FORMAT_MD, false, true );
+    date_to_str ( date ('Ymd',$days[$i]), $DATE_FORMAT_MD, false, true );
 }
 
 ?>
@@ -74,7 +74,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 <tr><td style="vertical-align:top; width:80%;" >
 <?php display_navigation( 'week' ); ?>
 </td>
-<?php if ( $DISPLAY_TASKS == "Y" && $DISPLAY_SM_MONTH == "Y" ) { ?>
+<?php if ( $DISPLAY_TASKS == 'Y' && $DISPLAY_SM_MONTH == 'Y' ) { ?>
 <td  rowspan="2">
 <!-- START MINICAL -->
 <div class="minicontainer">
@@ -83,7 +83,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 </div>
 <br />
 <?php 
-if (  $DISPLAY_TASKS == "Y" ) {
+if (  $DISPLAY_TASKS == 'Y' ) {
   echo display_small_tasks ( $cat_id );;
 }
 ?> 
@@ -101,7 +101,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
 
   if ( $is_weekend ) {
-   // if ( $DISPLAY_WEEKENDS == "N" ) continue;
+   // if ( $DISPLAY_WEEKENDS == 'N' ) continue;
     $class = "weekend";
   } else {
     $class = "";
@@ -122,7 +122,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   echo ">";
 
   if ( $can_add ) {
-    echo html_for_add_icon (  date ( "Ymd", $days[$d] ), "", "", $user );
+    echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), "", "", $user );
   }
   echo "<a href=\"day.php?" . $u_url .
     "date=" . date ('Ymd', $days[$d] ) . $caturl . "\">" .
@@ -141,11 +141,11 @@ $first_slot = (int)( ( ( $WORK_DAY_START_HOUR ) * 60 ) / $interval );
 $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) / $interval );
 
 $untimed_found = false;
-$get_unapproved = ( $DISPLAY_UNAPPROVED == "Y" );
+$get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
 for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   // get all the repeating events for this date and store in array $rep
-  $date = date ( "Ymd", $days[$d] );
+  $date = date ( 'Ymd', $days[$d] );
   $rep = get_repeating_entries ( $user, $date );
 
   // Get static non-repeating events
@@ -155,7 +155,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
  
  // get all due tasks for this date and before and store in $tk
  $tk = array();
- if ( $date >= date ( "Ymd" ) ) {
+ if ( $date >= date ( 'Ymd' ) ) {
     $tk = get_tasks ( $date, $get_unapproved );
  }
  $ev = combine_and_sort_events($ev, $tk);
@@ -215,9 +215,9 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 if ( $untimed_found ) {
   echo "<tr>\n<th class=\"empty\">&nbsp;</th>\n";
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-    $thiswday = date ( "w", $days[$d] );
+    $thiswday = date ( 'w', $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-   // if ( $is_weekend && $DISPLAY_WEEKENDS == "N" ) continue;
+   // if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue;
     $class = ( $is_weekend ? "weekend" : "" );
 
    if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
@@ -260,7 +260,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
   echo "<tr>\n<th class=\"row\">" .  $time . "</th>\n";
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-    $thiswday = date ( "w", $days[$d] );
+    $thiswday = date ( 'w', $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
     $class = ( $is_weekend ? "weekend" : "" );
     if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
@@ -295,7 +295,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
      }
      echo ">";
      if ( $can_add ) { //if user can add events...
-       echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, 
+       echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), $time_h, $time_m, 
          $user ); //..then echo the add event icon
      }
      echo "&nbsp;</td>\n";
@@ -308,7 +308,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
        }
        echo " rowspan=\"$rowspan_day[$d]\">";
        if ( $can_add ) {
-         echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
+         echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), $time_h, $time_m, $user );
        }
        echo $save_hour_arr[$d][$i] . "</td>\n";
      } else {
@@ -318,7 +318,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
        }
        echo ">";
        if ( $can_add ) {
-         echo html_for_add_icon (  date ( "Ymd", $days[$d] ), $time_h, $time_m, $user );
+         echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), $time_h, $time_m, $user );
        }
        echo $save_hour_arr[$d][$i] . "</td>\n";
      }
@@ -341,7 +341,7 @@ display_unapproved_events ( ( $is_assistant ||
 ?>
 
 <br />
-<a title="<?php etranslate("Generate printer-friendly version")?>" 
+<a title="<?php etranslate ( 'Generate printer-friendly version' )?>" 
 class="printer" href="week.php?<?php
   echo $u_url;
   if ( $thisyear ) {
@@ -349,7 +349,7 @@ class="printer" href="week.php?<?php
   }
   echo $caturl . "&amp;";
 ?>friendly=1" target="cal_printer_friendly"
-onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php etranslate("Printer Friendly")?>]</a>
+onmouseover="window.status = '<?php etranslate ( 'Generate printer-friendly version' )?>'">[<?php etranslate ( 'Printer Friendly' )?>]</a>
 
 <?php
 print_trailer ();

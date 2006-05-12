@@ -83,18 +83,18 @@ function event_to_text ( $event, $date ) {
   $time_str = $start_time_str = $end_time_str = '';
 
   if ( $event->isAllDay() ) {
-    $time_str = translate("All day event");
+    $time_str = translate( 'All day event' );
   } else if ( $event->isUntimed() ) {
-    $time_str = translate("Untimed event");
+    $time_str = translate( 'Untimed event' );
   } else {
     $time_str = display_time ( $event->getDateTime() );
     $start_time_str = $time_str;
     $time_short = preg_replace ("/(:00)/", '', $time_str);
     if ( $event->getDuration() > 0 ) {
       if (  $event->isAllDay() ) {
-        $time_str = translate("All day event");
+        $time_str = translate( 'All day event' );
       } else {
-        $time_str .= " - " . display_time (  $event->getEndDateTime() );
+        $time_str .= ' - ' . display_time (  $event->getEndDateTime() );
         $end_time_str = display_time ( $event->getEndDateTime() );
       }
     }
@@ -102,27 +102,27 @@ function event_to_text ( $event, $date ) {
 
   if ( $event->getExtForID() != '' ) {
     $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( "cont." ) . ')';
+    $name = $event->getName() . ' (' . translate ( 'cont.' ) . ')';
   } else {
     $id = $event->getID();
     $name = $event->getName();
   }
 
   if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
-    $name_str = "(" . translate("Private") . ")";
-    $description_str = translate("This event is confidential");
+    $name_str = '(' . translate( 'Private' ) . ')';
+    $description_str = translate( 'This event is confidential' );
   } else if ( $login != $event->getLogin() && $event->getAccess() == 'R' &&
     strlen ( $event->getLogin() ) ) {
-    $name_str = "(" . translate("Private") . ")";
-    $description_str = translate("This event is confidential");
+    $name_str = '(' . translate( 'Private' ) . ')';
+    $description_str = translate( 'This event is confidential' );
   } else {
     $name_str = htmlspecialchars ( $name );
     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) &&
       $ALLOW_HTML_DESCRIPTION == 'Y' ) {
       $str = str_replace ( '&', '&amp;', $event->getDescription() );
       $description_str = str_replace ( '&amp;amp;', '&amp;', $str );
-      if ( strstr ( $description_str, "<" ) &&
-        strstr ( $description_str, ">" ) ) {
+      if ( strstr ( $description_str, '<' ) &&
+        strstr ( $description_str, '>' ) ) {
         // found some HTML
       } else {
         // No HTML found.  Add line breaks.
@@ -134,33 +134,33 @@ function event_to_text ( $event, $date ) {
     }
   }
 
-  $date_str = date_to_str ( $date, "", false );
+  $date_str = date_to_str ( $date, '', false );
   $date_full_str = date_to_str ( $date);
 
   if ( $event->getDuration() > 0 ) {
-    $duration_str = $event->getDuration() . ' ' . translate ( "minutes" );
+    $duration_str = $event->getDuration() . ' ' . translate ( 'minutes' );
   } else {
     $duration_str = '';
   }
 
   if ( $event->getPriority() == 1 ) {
-    $pri_str = translate ( "Low" );
+    $pri_str = translate ( 'Low' );
   } else if ( $event->getPriority() == 2 ) {
-    $pri_str = translate ( "Medium" );
+    $pri_str = translate ( 'Medium' );
   } else if ( $event->getPriority() == 3 ) {
-    $pri_str = translate ( "High" );
+    $pri_str = translate ( 'High' );
   }
 
   if ( $event->getStatus() == 'W' ) {
-    $status_str = translate ( "Waiting for approval" );
+    $status_str = translate ( 'Waiting for approval' );
   } else if ( $event->getStatus() == 'D' ) {
-    $status_str = translate ( "Deleted" );
+    $status_str = translate ( 'Deleted' );
   } else if ( $event->getStatus() == 'R' ) {
-    $status_str = translate ( "Rejected" );
+    $status_str = translate ( 'Rejected' );
   } else if ( $event->getStatus() == 'A' ) {
-    $status_str = translate ( "Approved" );
+    $status_str = translate ( 'Approved' );
   } else {
-    $status_str = translate ( "Unknown" );
+    $status_str = translate ( 'Unknown' );
   }
   $location = $event->getLocation();
   $href_str = "view_entry.php?id=$id";
@@ -199,41 +199,39 @@ if ( ! empty ( $user ) && $user != $login &&
   $report_user = $user;
   $u_url = "&amp;user=$user";
 } else {
-  $u_url = "";
+  $u_url = '';
 }
 
 if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' ) {
-  $error = translate ( "You are not authorized" ) . ".";
+  $error = translate ( 'You are not authorized' ) . '.';
 }
 
 $updating_public = false;
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
-  $report_user = "__public__";
+  $report_user = '__public__';
 }
 
-$report_id = getIntValue ( "report_id", true );
-$offset = getIntValue ( "offset", true );
+$report_id = getIntValue ( 'report_id', true );
+$offset = getIntValue ( 'offset', true );
 if ( empty ( $offset ) ) {
   $offset = 0;
 }
 
 // If no report id is specified, then generate a list of reports for
 // the user to select from.
-if ( empty ( $error ) && empty ( $report_id ) && $login == "__public__" ) {
-  $error = translate ( "You are not authorized" ) . ".";
+if ( empty ( $error ) && empty ( $report_id ) && $login == '__public__' ) {
+  $error = translate ( 'You are not authorized' ) . '.';
 }
 if ( empty ( $error ) && empty ( $report_id ) ) {
-  $list = "";
+  $list = '';
   $sql_params = array();
   if ( $is_admin ) {
     if ( ! $updating_public ) {
-      $list .= "<p><a title=\"" .
-        translate("Click here") . " " .
-        translate("to manage reports for the Public Access calendar") . "." .
-        "\" href=\"report.php?public=1\">" .
-        translate("Click here") . " " .
-        translate("to manage reports for the Public Access calendar") . "." .
+      $textStr = translate( 'Click here' ) . ' ' .
+        translate( 'to manage reports for the Public Access calendar' ) . '.';
+      $list .= '<p><a title="' . $textStr .
+        '" href="report.php?public=1">' . $textStr .
         "</a></p>\n";
       $sql = "SELECT cal_report_id, cal_report_name " .
         "FROM webcal_report WHERE cal_login = ? OR " .
@@ -256,18 +254,18 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
     while ( $row = dbi_fetch_row ( $res ) ){
       $rep_name = trim ( $row[1] );
       if ( empty ( $rep_name ) )
-        $rep_name = translate ( "Unnamed Report" );
+        $rep_name = translate ( 'Unnamed Report' );
       $list .= "<li><a href=\"edit_report.php?report_id=$row[0]\" class=\"nav\">" .
         $rep_name . "</a></li>\n";
     }
     $list .= "</ul>\n";
     $addurl = $updating_public ? "edit_report.php?public=1" : "edit_report.php";
-    $list .= "<p><a title=\"" .
-      translate("Add new report") . "\" href=\"$addurl\" class=\"nav\">" .
-      translate("Add new report") . "</a></p>\n";
+    $list .= '<p><a title="' .
+      translate( 'Add new report' ) . "\" href=\"$addurl\" class=\"nav\">" .
+      translate( 'Add new report' ) . "</a></p>\n";
     dbi_free_result ( $res );
   } else {
-    $error = translate ( "Invalid report id" );
+    $error = translate ( 'Invalid report id' );
   }
 }
 
@@ -281,7 +279,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) { 
       if ( $row[2] != 'Y' && $login != $row[0] ) {
-        $error = translate ( "You are not authorized" ) . ".";
+        $error = translate ( 'You are not authorized' ) . '.';
       } else {
         $i = 0;
         $report_login = $row[$i++];
@@ -303,11 +301,11 @@ if ( empty ( $error ) && empty ( $list ) ) {
         $report_update_date = $row[$i++];
       }
     } else {
-      $error = translate ( "Invalid report id" );
+      $error = translate ( 'Invalid report id' );
     }
     dbi_free_result ( $res );
   } else {
-    $error = translate ( "Database error" ) . ": " . dbi_error ();
+    $error = translate ( 'Database error' ) . ': ' . dbi_error ();
   }
 }
 
@@ -320,8 +318,8 @@ if ( empty ( $report_user ) ) {
 $page_template = '<dl>${days}</dl>';
 $day_template = '<dt><b>${date}</b></dt><dd><dl>${events}</dl></dd>';
 $event_template = '<dt>${name}</dt><dd>' .
-  '<b>' . translate ( "Date" ) . ':</b> ${date}<br />' .
-  '<b>' . translate ( "Time" ) . ':</b> ${time}<br />' .
+  '<b>' . translate ( 'Date' ) . ':</b> ${date}<br />' .
+  '<b>' . translate ( 'Time' ) . ':</b> ${time}<br />' .
   '${description}</dd>';
 
 // Load templates for this report.
@@ -340,13 +338,13 @@ if ( empty ( $error ) && empty ( $list ) ) {
       } else {
         // This shouldn't happen under normal circumstances, so
         // no need translate.
-        echo "Invalid template type: '$row[0]'";
+        echo 'Invalid template type: ' .$row[0];
         exit;
       }
     }
     dbi_free_result ( $res );
   } else {
-    $error = translate ( "Database error" ) . ": " . dbi_error ();
+    $error = translate ( 'Database error' ) . ': ' . dbi_error ();
   }
 }
 
@@ -362,34 +360,38 @@ if ( empty ( $offset ) || empty ( $report_allow_nav ) ||
 
 // Set time range based on cal_time_range field.
 $DISPLAY_WEEKENDS = 'Y';
-$wkstart = get_weekday_before ( date ( "Y" ), date ( "m" ) );
+$dateY = date ( 'Y' );
+$datem = date ( 'm' );
+$dated = date ( "d" );
+
+$wkstart = get_weekday_before ( $dateY, $datem );
 if ( ! isset ( $report_time_range ) ) {
   // manage reports
 } else if ( $report_time_range >= 0 && $report_time_range < 10 ) {
-  $today = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
+  $today = mktime ( 0, 0, 0, $datem, $dated, $dateY );
   $days_offset = 1 - $report_time_range + $offset;
   $start_date = $today + ( $days_offset * ONE_DAY );
   $end_date = $start_date;
 } else if ( $report_time_range >= 10 && $report_time_range < 20 ) {
-  //echo "wkstart = " . date("Ymd",$wkstart) . "<br />";
+  //echo "wkstart = " . date('Ymd',$wkstart) . "<br />";
   $week_offset = 11 - $report_time_range + $offset;
   //echo "week_offset=$week_offset <br />";
   $start_date = $wkstart + ( $week_offset * 7 * ONE_DAY );
   $end_date = $wkstart + ( $week_offset * 7 * ONE_DAY ) + ( ONE_DAY * 6 );
 } else if ( $report_time_range >= 20 && $report_time_range < 30 ) {
-  //echo "wkstart = " . date("Ymd",$wkstart) . "<br />";
+  //echo "wkstart = " . date('Ymd',$wkstart) . "<br />";
   $week_offset = 21 - $report_time_range + $offset;
   //echo "week_offset=$week_offset <br />";
   $start_date = $wkstart + ( $week_offset * 7 * ONE_DAY );
   $end_date = $wkstart + ( $week_offset * 7 * ONE_DAY ) + ( ONE_DAY * 13 );
 } else if ( $report_time_range >= 30 && $report_time_range < 40 ) {
-  $thismonth = date ( "m" );
+  $thismonth = $datem;
   $month_offset = 31 - $report_time_range + $offset;
   //echo "month_offset=$month_offset <br />";
-  $start_date = mktime ( 0, 0, 0, $thismonth + $month_offset, 1, date ( "Y" ) );
-  $end_date = mktime ( 0, 0, 0, $thismonth + $month_offset + 1, 0, date ( "Y" ) );
+  $start_date = mktime ( 0, 0, 0, $thismonth + $month_offset, 1, $dateY );
+  $end_date = mktime ( 0, 0, 0, $thismonth + $month_offset + 1, 0, $dateY );
 } else if ( $report_time_range >= 40 && $report_time_range < 50 ) {
-  $thisyear = date ( "Y" );
+  $thisyear = $dateY;
   $year_offset = 41 - $report_time_range + $offset;
   //echo "year_offset=$year_offset <br />";
   $start_date = mktime ( 0, 0, 0, 1, 1, $thisyear + $year_offset );
@@ -406,7 +408,7 @@ if ( ! isset ( $report_time_range ) ) {
     default: echo "Invalid cal_time_range setting for report id $report_id";
       exit;
   }
-  $today = mktime ( 0, 0, 0, date ( "m" ), date ( "d" ), date ( "Y" ) );
+  $today = mktime ( 0, 0, 0, $datem, $dated, $dateY );
   $start_date = $today + ( ONE_DAY * $offset * $x );
   $end_date = $start_date + ( ONE_DAY * $x );
 } else {
@@ -416,7 +418,7 @@ if ( ! isset ( $report_time_range ) ) {
 }
 
 if ( empty ( $error ) && empty ( $list ) ) {
-  $cat_id = empty ( $report_cat_id ) ? "" : $report_cat_id;
+  $cat_id = empty ( $report_cat_id ) ? '' : $report_cat_id;
 
   $repeated_events = read_repeated_events ( $report_user, $cat_id, $start_date );
 
@@ -434,7 +436,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
   // (Most of this code was copied from week.php)
   for ( $cur_time = $start_date; $cur_time <= $end_date; $cur_time += ONE_DAY ) {
     $event_str = '';
-    $dateYmd = date ( "Ymd", $cur_time );
+    $dateYmd = date ( 'Ymd', $cur_time );
     $rep = get_repeating_entries ( empty ( $user ) ? $login : $user, $dateYmd );
     $ev = get_entries ( $dateYmd );
     $ev = combine_and_sort_events($ev, $rep);
@@ -448,7 +450,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
   
     if ( ! empty ( $event_str ) || $report_include_empty == 'Y' ||
       $report_time_range < 10 ) {
-      $date_str = date_to_str ( $dateYmd, "", false );
+      $date_str = date_to_str ( $dateYmd, '', false );
       $date_full_str = date_to_str ( $dateYmd );
       $text = str_replace ( '${events}', $event_str, $day_template );
       $text = str_replace ( '${report_id}', $report_id, $text );
@@ -459,20 +461,20 @@ if ( empty ( $error ) && empty ( $list ) ) {
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<h2>" . translate("Error") .
+  echo '<h2>' . translate( 'Error' ) .
     "</h2>\n" . $error;
 } else if ( ! empty ( $list ) ) {
-  echo "<h2>";
+  echo '<h2>';
   if ( $updating_public ) {
-    echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
+    echo translate($PUBLIC_ACCESS_FULLNAME) . ' ';
   }
-  echo translate("Manage Reports");
+  echo translate( 'Manage Reports' );
   echo "</h2>\n" . 
-  "<a title=\"" . translate("Admin") . "\" class=\"nav\" href=\"adminhome.php\"> " .
-     "&laquo;&nbsp;" . translate("Admin") . "</a><br /><br />\n" . $list;
+  '<a title="' . translate( 'Admin' ) . '" class="nav" href="adminhome.php"> ' .
+     '&laquo;&nbsp;' . translate( 'Admin' ) . "</a><br /><br />\n" . $list;
 } else {
   if ( $report_include_header == 'Y' ) {
-    echo "<h2>" . $report_name . "</h2>\n";
+    echo '<h2>' . $report_name . "</h2>\n";
   }
   $text = str_replace ( '${report_id}', $report_id, $page_template );
   echo str_replace ( '${days}', $day_str, $text );
@@ -486,22 +488,22 @@ if ( empty ( $error ) && empty ( $list ) ) {
     }
     $next = $offset + 1;
     $prev = $offset - 1;
-    echo "<br /><br /><a title=\"" .
-      translate ( "Previous" ) . "\" href=\"report.php?report_id=$report_id$u_url" .
-      ( empty ( $prev ) ? "" : "&amp;offset=$prev" ) . "\" class=\"nav\">" .
-      translate ( "Previous" ) . "</a>\n";
-    echo "&nbsp;&nbsp;<a title=\"" .
-      translate ( "Next" ) . "\" href=\"report.php?report_id=$report_id$u_url" .
+    echo '<br /><br /><a title="' .
+      translate ( 'Previous' ) . "\" href=\"report.php?report_id=$report_id$u_url" .
+      ( empty ( $prev ) ? '' : "&amp;offset=$prev" ) . '" class="nav">' .
+      translate ( 'Previous' ) . "</a>\n";
+    echo '&nbsp;&nbsp;<a title="' .
+      translate ( 'Next' ) . "\" href=\"report.php?report_id=$report_id$u_url" .
       ( empty ( $next ) ? "" : "&amp;offset=$next" ) . "\" class=\"nav\">" .
-      translate ( "Next" ) . "</a><br />\n";
+      translate ( 'Next' ) . "</a><br />\n";
   }
   if ( $report_include_header == 'Y' ) {
-    echo '<br /><br /><a title="' . translate("Printer Friendly") . 
+    echo '<br /><br /><a title="' . translate( 'Printer Friendly' ) . 
       '" class="nav" href="report.php?report_id=' . $report_id .
       '&amp;friendly=1' . $u_url . '&amp;offset=' . $offset .
       '" target="cal_printer_friendly" onmouseover="window.status=\'' .
-      translate("Generate printer-friendly version") .
-      '\'">[' . translate("Printer Friendly") . ']</a>';
+      translate( 'Generate printer-friendly version' ) .
+      '\'">[' . translate( 'Printer Friendly' ) . ']</a>';
   }
 }
 

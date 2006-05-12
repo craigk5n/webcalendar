@@ -7,7 +7,7 @@ load_user_categories();
 $error = "";
 
 if ( $readonly == 'Y' ) {
-  $error = translate("You are not authorized");
+  $error = translate( 'You are not authorized' );
 }
 
 
@@ -22,24 +22,24 @@ if ( ! empty ( $_POST ) ) {
    echo "<form action=\"approve_entry.php?$q_string\" method=\"post\" name=\"add_comments\" >\n";
    echo "<table border=\"0\" cellspacing=\"5\">\n" .
      "<tr><td align=\"center\" valign=\"bottom\"><h3>" . 
-     translate ( "Additional Comments (optional)" ) . "</h3></td><tr>\n";
+     translate ( 'Additional Comments (optional)' ) . "</h3></td><tr>\n";
    echo "<tr><td align=\"center\">" .
      "<textarea name=\"comments\" rows=\"5\" cols=\"60\" ></textarea></td></tr>\n";
    echo "<tr><td align=\"center\"><input type=\"submit\" value=\"" . 
-     translate ( "Approve and Send" ) . "\" />&nbsp;&nbsp;&nbsp;";
+     translate ( 'Approve and Send' ) . "\" />&nbsp;&nbsp;&nbsp;";
    echo "<input type=\"submit\" value=\"" . 
-     translate ( "Approve and Exit" ) . "\" /></td></tr>\n<tr><td>";
-   etranslate ( "(Your comments will be included in an email to the event creator)" );
+     translate ( 'Approve and Exit' ) . "\" /></td></tr>\n<tr><td>";
+   etranslate ( '(Your comments will be included in an email to the event creator)' );
    echo "</td></tr></table></form>\n"; 
    echo "</body>\n</html>";
    exit;
 }
 
-$view_type = "view_entry";  
+$view_type = 'view_entry';  
 
 // Allow administrators to approve public events
-if ( $PUBLIC_ACCESS == "Y" && ! empty ( $public ) && $is_admin )
-  $app_user = "__public__";
+if ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin )
+  $app_user = '__public__';
 else
   $app_user = ( $is_assistant || $is_nonuser_admin ? $user : $login );
 
@@ -80,38 +80,38 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
     if ( access_is_enabled () ) {
       $send_user_mail = access_user_calendar ( 'email', $creator, $login);
     }   
-    $htmlmail = get_pref_setting ( $creator, "EMAIL_HTML" );
-    $t_format = get_pref_setting ( $creator, "TIME_FORMAT" );
-    user_load_variables ( $creator, "temp" );
-    $user_TIMEZONE = get_pref_setting ( $creator, "TIMEZONE" );
-    set_env ( "TZ", $user_TIMEZONE );
-    $user_language = get_pref_setting ( $creator, "LANGUAGE" );
-    if ( $send_user_mail == "Y" && strlen ( $tempemail ) &&
-      $SEND_EMAIL != "N" ) {
+    $htmlmail = get_pref_setting ( $creator, 'EMAIL_HTML' );
+    $t_format = get_pref_setting ( $creator, 'TIME_FORMAT' );
+    user_load_variables ( $creator, 'temp' );
+    $user_TIMEZONE = get_pref_setting ( $creator, 'TIMEZONE' );
+    set_env ( 'TZ', $user_TIMEZONE );
+    $user_language = get_pref_setting ( $creator, 'LANGUAGE' );
+    if ( $send_user_mail == 'Y' && strlen ( $tempemail ) &&
+      $SEND_EMAIL != 'N' ) {
       if ( empty ( $user_language ) || ( $user_language == 'none' )) {
         reset_language ( $LANGUAGE );
       } else {
         reset_language ( $user_language );
       }
-      $msg = translate("Hello") . ", " . $tempfullname . ".\n\n" .
-      translate("An appointment has been approved and comments added by") .
+      $msg = translate( 'Hello' ) . ", " . $tempfullname . ".\n\n" .
+      translate( 'An appointment has been approved and comments added by' ) .
       " " . $login_fullname .  ".\n\n" .
-      translate("The subject was") . " \"" . $name . " \"\n" .
-      translate("The description is") . " \"" . $description . "\"\n" .
-      translate("Date") . ": " . date_to_str ( $fmtdate ) . "\n" .
-      ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate("Time") . ": " .
+      translate( 'The subject was' ) . " \"" . $name . " \"\n" .
+      translate( 'The description is' ) . " \"" . $description . "\"\n" .
+      translate( 'Date' ) . ": " . date_to_str ( $fmtdate ) . "\n" .
+      ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate( 'Time' ) . ": " .
       // Display using user's GMT offset and display TZID
       display_time ( '', 2, $eventstart , $t_format ) ) ). "\n";
       if ( ! empty ( $SERVER_URL ) ) {
         //DON'T change & to &amp; here. email will handle it
-        $url = $SERVER_URL .  $view_type . ".php?id=" .  $id . "&em=1";
+        $url = $SERVER_URL .  $view_type . '.php?id=' .  $id . '&em=1';
         if ( $htmlmail == 'Y' ) {
           $url =  activate_urls ( $url ); 
         }
         $msg .= "\n" . $url;
       }
       if ( ! empty ( $comments ) ) {
-        $msg .= "\n\n" . translate ( "Comments" ) . ": " . $comments;
+        $msg .= "\n\n" . translate ( 'Comments' ) . ': ' . $comments;
       }
       $from = $EMAIL_FALLBACK_FROM;
       if ( strlen ( $login_email ) ) $from = $login_email;
@@ -134,11 +134,11 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   }
 }
 //return to login TIMEZONE
-set_env ( "TZ", $TIMEZONE );
+set_env ( 'TZ', $TIMEZONE );
 if ( empty ( $error ) ) {
-  if ( ! empty ( $ret ) && $ret == "listall" ) {
-    do_redirect ( "list_unapproved.php" );
-  } else if ( ! empty ( $ret ) && $ret == "list" ) {
+  if ( ! empty ( $ret ) && $ret == 'listall' ) {
+    do_redirect ( 'list_unapproved.php' );
+  } else if ( ! empty ( $ret ) && $ret == 'list' ) {
     do_redirect ( "list_unapproved.php?user=$app_user" );
   } else {
     do_redirect ( $view_type . ".php?id=$id&amp;user=$app_user" );
@@ -146,7 +146,7 @@ if ( empty ( $error ) ) {
   exit;
 }
 print_header ();
-echo "<h2>" . translate("Error") . "</h2>\n";
-echo "<p>" . $error . "</p>\n";
+echo '<h2>' . translate( 'Error' ) . "</h2>\n";
+echo '<p>'. $error . "</p>\n";
 print_trailer ();
 ?>

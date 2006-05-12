@@ -7,14 +7,14 @@ include_once 'includes/init.php';
 // listid: element id of user selection object in form
 //   ... to be used like form.elements[$listid]
 if ( empty ( $form ) ) {
-  echo "Program Error: No form specified!"; exit;
+  echo 'Program Error: No form specified!'; exit;
 }
 if ( empty ( $listid ) ) {
-  echo "Program Error: No listid specified!"; exit;
+  echo 'Program Error: No listid specified!'; exit;
 }
 
 // parse $users
-$exp = split ( ",", $users );
+$exp = split ( ',', $users );
 $selected = array ();
 for ( $i = 0; $i < count ( $exp ); $i++ ) {
   $selected[$exp[$i]] = 1;
@@ -23,7 +23,7 @@ for ( $i = 0; $i < count ( $exp ); $i++ ) {
 $sql_params = array();
 $owner = ( $is_nonuser_admin || $is_assistant ? $user : $login ); 
 // load list of groups
-if ( $USER_SEES_ONLY_HIS_GROUPS == "Y" ) {
+if ( $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
   $sql =
     "SELECT webcal_group.cal_group_id, webcal_group.cal_name " .
     "FROM webcal_group, webcal_group_user " .
@@ -42,8 +42,8 @@ $groups = array ();
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $groups[] = array (
-      "cal_group_id" => $row[0],
-      "cal_name" => $row[1]
+      'cal_group_id' => $row[0],
+      'cal_name' => $row[1]
       );
   }
   dbi_free_result ( $res );
@@ -57,48 +57,48 @@ print_header($INC,'','',true, false, true);
 <form action="#" name="userselform">
 <table style="border-width:0px; width:100%;">
 <tr><td style="vertical-align:top;">
-<b><?php etranslate("Users"); ?>:</b><br />
+<b><?php etranslate( 'Users' ); ?>:</b><br />
 <select name="users" size="15" multiple="multiple">
 <?php
 
 $users = get_my_users ();
-if ($NONUSER_ENABLED == "Y" ) {
+if ($NONUSER_ENABLED == 'Y' ) {
   $nonusers = get_nonuser_cals ();
-  $users = ($NONUSER_AT_TOP == "Y") ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
+  $users = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
 }
 
 for ( $i = 0; $i < count ( $users ); $i++ ) {
   $u = $users[$i]['cal_login'];
   echo "<option value=\"$u\"";
   if ( ! empty ( $selected[$u] ) )
-    echo " selected=\"selected\"";
-  echo ">" . $users[$i]['cal_fullname'] . "</option>\n";
+    echo ' selected="selected"';
+  echo '>' . $users[$i]['cal_fullname'] . "</option>\n";
 }
 ?>
 </select><br />
-<input type="button" value="<?php etranslate("All");?>" onclick="selectAll()" />
-<input type="button" value="<?php etranslate("None");?>" onclick="selectNone()" />
-<input type="reset" value="<?php etranslate("Reset");?>" />
+<input type="button" value="<?php etranslate( 'All' );?>" onclick="selectAll()" />
+<input type="button" value="<?php etranslate( 'None' );?>" onclick="selectNone()" />
+<input type="reset" value="<?php etranslate( 'Reset' );?>" />
 </td>
 
 <td valign="top">
-<b><?php etranslate("Groups"); ?>:</b><br />
+<b><?php etranslate( 'Groups' ); ?>:</b><br />
 <select name="groups" size="15">
 <?php
 for ( $i = 0; $i < count ( $groups ); $i++ ) {
-  echo "<option value=\"" . $groups[$i]['cal_group_id'] .
-      "\">" . $groups[$i]['cal_name'] . "</option>\n";
+  echo '<option value="' . $groups[$i]['cal_group_id'] .
+      '">' . $groups[$i]['cal_name'] . "</option>\n";
 }
 ?>
 </select><br />
-<input type="button" value="<?php etranslate("Add");?>" onclick="selectGroupMembers();" />
-<input type="button" value="<?php etranslate("Remove");?>" onclick="deselectGroupMembers();" />
+<input type="button" value="<?php etranslate( 'Add' );?>" onclick="selectGroupMembers();" />
+<input type="button" value="<?php etranslate( 'Remove' );?>" onclick="deselectGroupMembers();" />
 </td></tr>
 
 <tr><td style="text-align:center;" colspan="2">
 <br /><br />
-<input type="button" value="<?php etranslate("Ok");?>" onclick="OkButton()" />
-<input type="button" value="<?php etranslate("Cancel");?>" onclick="window.close()" />
+<input type="button" value="<?php etranslate( 'Ok' );?>" onclick="OkButton()" />
+<input type="button" value="<?php etranslate( 'Cancel' );?>" onclick="window.close()" />
 </td></tr>
 
 </table>

@@ -38,7 +38,7 @@ $cookie_path = str_replace ( "login.php", "", $PHP_SELF );
 
 $out = "<login>\n";
 
-if ( $single_user == "Y" ) {
+if ( $single_user == 'Y' ) {
   // No login for single-user mode
   $out .= "<error>No login required for single-user mode</error>\n";
 } else if ( $use_http_auth ) {

@@ -4,16 +4,16 @@ include_once 'includes/init.php';
 $error = "";
 
 if ( $ALLOW_VIEW_OTHER != 'Y' ) {
-  $error = translate("You are not authorized");
+  $error = translate( 'You are not authorized' );
 }
 
 if ( empty ( $dups ) )
   $dups = 'N';
 
 $updating_public = false;
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == "Y" ) {
+if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
-  $layer_user = "__public__";
+  $layer_user = '__public__';
 } else if ( empty ( $cal_login ) ){
   $layer_user = $login;
   save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id );
@@ -30,11 +30,11 @@ if ( $is_admin && ! empty ( $cal_login ) ) {
 function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
   global $error, $layers;
   if ( $layer_user == $layeruser )
-    $error = translate ("You cannot create a layer for yourself") . ".";
+    $error = translate ( 'You cannot create a layer for yourself' ) . '.';
   
   load_user_layers ( $layer_user, 1 );
   
-  if ( ! empty ( $layeruser ) && $error == "" ) {
+  if ( ! empty ( $layeruser ) && $error == '' ) {
     // existing layer entry
     if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) {
       // update existing layer entry for this user
@@ -52,7 +52,7 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
         if ( $row[0] > 0 ) {
-          $error = translate ("You can only create one layer for each user") . ".";
+          $error = translate ( 'You can only create one layer for each user' ) . '.';
         }
         dbi_free_result ( $res );
       }
@@ -75,16 +75,16 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
 //We don't want to throw error if doing a multiple save
 if ( $error == "" || ! empty ( $cal_login ) ) {
   if ( $updating_public )
-    do_redirect ( "layers.php?public=1" );
+    do_redirect ( 'layers.php?public=1' );
   else
-    do_redirect ( "layers.php" );
+    do_redirect ( 'layers.php' );
   exit;
 }
 
 print_header();
 ?>
 
-<h2><?php etranslate("Error")?></h2>
+<h2><?php etranslate( 'Error' )?></h2>
 <blockquote>
 <?php echo $error; ?>
 </blockquote>

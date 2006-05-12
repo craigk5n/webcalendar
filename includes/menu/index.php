@@ -57,7 +57,7 @@ if ( $can_add ) {
 }
 
 // Add new task
-if ( $can_add && ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y") {
+if ( $can_add && ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y') {
   $new_task_url = 'edit_entry.php?eType=task';
   if ( ! empty ( $thisyear ) ) {
     $new_task_url .= "&amp;year=$thisyear";
@@ -70,7 +70,7 @@ if ( $can_add && ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == "Y") {
   }
 }
 
-if ( $single_user != "Y" ) {
+if ( $single_user != 'Y' ) {
   // Today
   if ( ! empty ( $user ) && $user != $login ) { 
     $today_url .= '?user=' . $user;
@@ -82,18 +82,18 @@ if ( $single_user != "Y" ) {
   }
 
   // List Unapproved
-  if ( $login != "__public__" && ! $is_nonuser &&  $readonly == "N" &&
-    ( $REQUIRE_APPROVALS == "Y" || $PUBLIC_ACCESS == "Y" ) ) {
+  if ( $login != '__public__' && ! $is_nonuser &&  $readonly == 'N' &&
+    ( $REQUIRE_APPROVALS == 'Y' || $PUBLIC_ACCESS == 'Y' ) ) {
     $unapproved_url = 'list_unapproved.php';
     if ( $is_nonuser_admin ) $unapproved_url .= "?user=" . getValue ( 'user' );
   }
   
   
   // Another User's Calendar
-  if ( ( $login == "__public__" && $PUBLIC_ACCESS_OTHERS != "Y" ) ||
+  if ( ( $login == '__public__' && $PUBLIC_ACCESS_OTHERS != 'Y' ) ||
     ( $is_nonuser && ! access_is_enabled () ) ) {
     // don't allow them to see other people's calendar
-  } else if ( $ALLOW_VIEW_OTHER == "Y" || $is_admin ) {
+  } else if ( $ALLOW_VIEW_OTHER == 'Y' || $is_admin ) {
     // Also, make sure they able to access either day/week/month/year view
     // If not, then there is no way to view another user's calendar except
     // a custom view.
@@ -139,7 +139,7 @@ if ( access_is_enabled () ) {
 
 
 // Views
-if ( ( access_can_access_function ( ACCESS_VIEW, $user ) && $ALLOW_VIEW_OTHER != "N" )
+if ( ( access_can_access_function ( ACCESS_VIEW, $user ) && $ALLOW_VIEW_OTHER != 'N' )
   && count ( $views ) > 0 ) {
   $views_link = array ();
   for ( $i = 0; $i < count ( $views ); $i++ ) {
@@ -200,7 +200,7 @@ if ( ! $use_http_auth && $single_user != 'Y' ) {
 }   
 
 // Manage Calendar links
-if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == "Y" )
+if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' )
   $admincals = get_nonuser_cals ( $login );
 // Make sure they have access to either month/week/day view.
 // If they do not, then we cannot create a URL that shows just
@@ -219,8 +219,8 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
   }
   if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
     $public = array (
-      "cal_login" => "__public__",
-      "cal_fullname" => translate ( "Public Access" )
+      "cal_login" => '__public__',
+      "cal_fullname" => translate( 'Public Access' )
     );
     array_unshift ( $grouplist, $public );
   }
@@ -539,18 +539,18 @@ cmDraw ('myMenuID', myMenu, 'hbr', cmTheme, 'Theme');
 <td class="ThemeMenubackgr" align="right">
 <?php
 if ( ! empty ( $logout_url ) ) { //using http_auth
-  if ( strlen ( $login ) && $login != "__public__" ) {
-    echo "<a title=\"" . 
-      translate("Logout") . "\" href=\"$logout_url\">" . 
-      translate("Logout") . "</a>: $login\n";
+  if ( strlen ( $login ) && $login != '__public__' ) {
+    echo '<a title="' . 
+      translate( 'Logout' ) . "\" href=\"$logout_url\">" . 
+      translate( 'Logout' ) . "</a>: $login\n";
     } else {
     // For public user
-    echo "<a title=\"" . 
-      translate("Login") . "\" href=\"$login_url\">" . 
-      translate("Login") . "</a>\n";
+    echo '<a title="' . 
+      translate( 'Login' ) . "\" href=\"$login_url\">" . 
+      translate( 'Login' ) . "</a>\n";
   }
 } else {
-  echo "&nbsp;&nbsp;&nbsp;";  //TODO replace with something???
+  echo '&nbsp;&nbsp;&nbsp;';  //TODO replace with something???
 }
 ?>
  &nbsp;</td>

@@ -15,11 +15,11 @@ $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
-$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == "N"? 4 : 6 ));
-$thisdate = date ( "Ymd", $wkstart );
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 4 : 6 ));
+$thisdate = date ( 'Ymd', $wkstart );
 
 
-if ( $DISPLAY_WEEKENDS == "N" ) {
+if ( $DISPLAY_WEEKENDS == 'N' ) {
   if ( $WEEK_START == 1 ) {
     $start_ind = 0;
     $end_ind = 4;
@@ -33,7 +33,7 @@ if ( $DISPLAY_WEEKENDS == "N" ) {
 }
 
 $HeadX = '';
-if ( $AUTO_REFRESH == "Y" && ! empty ( $AUTO_REFRESH_TIME ) ) {
+if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
   $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week_details.php?$u_url" .
     "date=$thisdate$caturl\" />\n";
@@ -51,38 +51,38 @@ $events = read_events ( strlen ( $user ) ? $user : $login, $wkstart, $wkend, $ca
 ?>
 
 <div class="title">
-<a title="Previous" class="prev" href="week_details.php?<?php echo $u_url; ?>date=<?php echo date("Ymd", $prev ) . $caturl;?>"><img src="images/leftarrow.gif" alt="Previous" /></a>
-<a title="Next" class="next" href="week_details.php?<?php echo $u_url;?>date=<?php echo date ("Ymd", $next ) . $caturl;?>"><img src="images/rightarrow.gif" alt="Next" /></a>
+<a title="Previous" class="prev" href="week_details.php?<?php echo $u_url; ?>date=<?php echo date('Ymd', $prev ) . $caturl;?>"><img src="images/leftarrow.gif" alt="Previous" /></a>
+<a title="Next" class="next" href="week_details.php?<?php echo $u_url;?>date=<?php echo date ('Ymd', $next ) . $caturl;?>"><img src="images/rightarrow.gif" alt="Next" /></a>
 <span class="date"><?php
-  echo date_to_str ( date ( "Ymd", $wkstart ), "", false ) .
+  echo date_to_str ( date ( 'Ymd', $wkstart ), "", false ) .
     "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
-    date_to_str ( date ( "Ymd", $wkend ), "", false );
+    date_to_str ( date ( 'Ymd', $wkend ), "", false );
 ?></span>
 <?php
-if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == "N" ) $wkstart = $wkstart - ONE_DAY;
+if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == 'N' ) $wkstart = $wkstart - ONE_DAY;
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ONE_DAY * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
   $header[$i] = $weekdays[$i] . " " .
-    date_to_str ( date ( "Ymd", $days[$i] ), $DATE_FORMAT_MD, false );
+    date_to_str ( date ( 'Ymd', $days[$i] ), $DATE_FORMAT_MD, false );
 }
 
-if ( $DISPLAY_WEEKNUMBER == "Y" ) {
+if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
   echo "<br />\n<span class=\"weeknumber\">(" .
-    translate("Week") . " " . date( "W", $wkstart + ONE_DAY ) . ")</span>";
+    translate ( 'Week' ) . " " . date( "W", $wkstart + ONE_DAY ) . ")</span>";
 }
 ?>
 <span class="user"><?php
-  if ( $single_user == "N" ) {
+  if ( $single_user == 'N' ) {
     echo "<br />$user_fullname\n";
   }
   if ( $is_nonuser_admin )
-    echo "<br />-- " . translate("Admin mode") . " --";
+    echo "<br />-- " . translate( 'Admin mode' ) . " --";
   if ( $is_assistant )
-    echo "<br />-- " . translate("Assistant mode") . " --";
+    echo "<br />-- " . translate( 'Assistant mode' ) . " --";
 ?></span>
 <?php
-  if ( $CATEGORIES_ENABLED == "Y" ) {
+  if ( $CATEGORIES_ENABLED == 'Y' ) {
     echo "<br /><br />\n";
     print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   } ?>
@@ -93,43 +93,43 @@ if ( $DISPLAY_WEEKNUMBER == "Y" ) {
 <?php
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
-  $date = date ( "Ymd", $days[$d] );
-  $thiswday = date ( "w", $days[$d] );
+  $date = date ( 'Ymd', $days[$d] );
+  $thiswday = date ( 'w', $days[$d] );
   $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-  if ( $is_weekend && $DISPLAY_WEEKENDS == "N" ) continue;
-  print "<tr><th";
-  if ( $date == date ( "Ymd", $today ) ) {
-    echo " class=\"today\">";
+  if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue;
+  print '<tr><th';
+  if ( $date == date ( 'Ymd', $today ) ) {
+    echo ' class="today">';
   } elseif ( $is_weekend ) {
-    echo " class=\"weekend\">";
+    echo ' class="weekend">';
   } else {
-    echo ">";
+    echo '>';
   }
 
   if ( $can_add ) {
-    echo "<a title=\"" .
-      translate("New Entry") . "\" href=\"edit_entry.php?" . 
-      $u_url . "date=" . 
-      date ( "Ymd", $days[$d] ) . "\"><img src=\"images/new.gif\" class=\"new\" alt=\"" .
-      translate("New Entry") . "\" /></a>\n";
+    echo '<a title="' .
+      translate( 'New Entry' ) . '" href="edit_entry.php?' . 
+      $u_url . 'date=' . 
+      date ( 'Ymd', $days[$d] ) . '"><img src="images/new.gif" class="new" alt="' .
+      translate( 'New Entry' ) . "\" /></a>\n";
   }
-  echo "<a title=\"" .
-    $header[$d] . "\" href=\"day.php?" . 
-    $u_url . "date=" . 
-    date("Ymd", $days[$d] ) . "$caturl\">" .
+  echo '<a title="' .
+    $header[$d] . '" href="day.php?' . 
+    $u_url . 'date=' . 
+    date('Ymd', $days[$d] ) . "$caturl\">" .
     $header[$d] . "</a></th>\n</tr>\n";
 
   print "<tr>\n<td";
-  if ( $date == date ( "Ymd", $today ) ) {
-    echo " class=\"today\">";
+  if ( $date == date ( 'Ymd', $today ) ) {
+    echo ' class="today">';
   } elseif ( $is_weekend ) {
-    echo " class=\"weekend\">";
+    echo ' class="weekend">';
   } else {
-    echo ">";
+    echo '>';
   }
 
   print_det_date_entries ( $date, $user, true );
-  echo "&nbsp;";
+  echo '&nbsp;';
   echo "</td></tr>\n";
 }
 ?>
@@ -138,15 +138,15 @@ for ( $d = 0; $d < 7; $d++ ) {
 
 <?php  if ( ! empty ( $eventinfo ) ) echo $eventinfo; ?>
 <br />
-<a title="<?php etranslate("Generate printer-friendly version")?>" class="printer" href="week_details.php?<?php
+<a title="<?php etranslate ( 'Generate printer-friendly version' )?>" class="printer" href="week_details.php?<?php
   echo $u_url;
   if ( $thisyear ) {
     echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday";
   }
-  echo $caturl . "&amp;";
+  echo $caturl . '&amp;';
 ?>friendly=1" target="cal_printer_friendly" 
-onmouseover="window.status = '<?php etranslate("Generate printer-friendly version")?>'">[<?php 
- etranslate("Printer Friendly")
+onmouseover="window.status = '<?php etranslate ( 'Generate printer-friendly version' )?>'">[<?php 
+ etranslate ( 'Printer Friendly' )
 ?>]</a>
 
 <?php print_trailer(); ?>
@@ -167,17 +167,17 @@ function print_detailed_entry ( $event, $date ) {
   global $layers;
 
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
-    $class = "layerentry";
+    $class = 'layerentry';
   } else {
-    $class = "entry";
-    if ( $event->getStatus() == "W" ) $class = "unapprovedentry";
+    $class = 'entry';
+    if ( $event->getStatus() == 'W' ) $class = 'unapprovedentry';
   }
 
-  if ( $event->getPriority() == 3 ) echo "<strong>";
+  if ( $event->getPriority() == 3 ) echo '<strong>';
 
   if ( $event->getExtForID() != '' ) {
     $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( "cont." ) . ')';
+    $name = $event->getName() . ' (' . translate ( 'cont.' ) . ')';
   } else {
     $id = $event->getID();
     $name = $event->getName();
@@ -188,34 +188,34 @@ function print_detailed_entry ( $event, $date ) {
 
   $key++;
 
-  echo "<a title=\"" . translate("View this entry") . 
+  echo '<a title="' . translate( 'View this entry' ) . 
     "\" class=\"$class\" id=\"$linkid\"  href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $user ) > 0 )
-    echo "&amp;user=" . $user;
-  echo "<img src=\"images/circle.gif\" class=\"bullet\" alt=\"view icon\" />";
+    echo '&amp;user=' . $user;
+  echo '<img src="images/circle.gif" class="bullet" alt="view icon" />';
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     if ($layers) foreach ($layers as $layer) {
       if($layer['cal_layeruser'] == $event->getLogin()) {
         $in_span = true;
-        echo("<span style=\"color:#" . $layer['cal_color'] . ";\">");
+        echo '<span style="color:#' . $layer['cal_color'] . ';">';
       }
     }
   }
 
-  $timestr = "";
+  $timestr = '';
 
  if ( $event->isAllDay() ) {
-  $timestr = translate("All day event");
+  $timestr = translate( 'All day event' );
  } else if ( $event->getDuration() > 0 ) {
   $timestr = display_time ( $event->getDateTime() ) .
-   " - " . display_time ( $event->getEndDateTime() );
-  echo $timestr . "&raquo;&nbsp;";
+   ' - ' . display_time ( $event->getEndDateTime() );
+  echo $timestr . '&raquo;&nbsp;';
  }
 
   if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
-    $PN = "(" . translate("Private") . ")"; $PD = "(" . translate("Private") . ")";
+    $PN =  $PD = '(' . translate( 'Private' ) . ')';
   } elseif ( $login != $event->getLogin() && $event->getAccess() == 'R' && strlen ( $event->getLogin() ) ) {
-    $PN = "(" . translate("Private") . ")";$PD ="(" . translate("Private") . ")";
+    $PN = $PD = '(' . translate( 'Private' ) . ')';
   } elseif ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     $PN = htmlspecialchars ( $name );
     $PD = activate_urls ( htmlspecialchars ( $event->getDescription() ) );
@@ -224,11 +224,11 @@ function print_detailed_entry ( $event, $date ) {
     $PD = activate_urls ( htmlspecialchars ( $event->getDescription() ) );
   }
   if ( ! empty ( $in_span ) ) 
-   $PN .= "</span>";
+   $PN .= '</span>';
 
   echo $PN;
-  echo "</a>";
-  if ( $event->getPriority() == 3 ) echo "</strong>";
+  echo '</a>';
+  if ( $event->getPriority() == 3 ) echo '</strong>';
   # Only display description if it is different than the event name.
   if ( $PN != $PD )
     echo " - " . $PD;

@@ -26,13 +26,13 @@
    -----------------------------------------------------------
                  7             56               448    =  511
 */
-define ("EVENT_WT", 73);
-define ("TASK_WT", 146);
-define ("JOURNAL_WT", 292);
+define ('EVENT_WT', 73);
+define ('TASK_WT', 146);
+define ('JOURNAL_WT', 292);
 
-define ("PUBLIC_WT", 7);
-define ("CONF_WT", 56);
-define ("PRIVATE_WT", 448);
+define ('PUBLIC_WT', 7);
+define ('CONF_WT', 56);
+define ('PRIVATE_WT', 448);
 
 define ( 'CAN_DOALL', 511 );//Can access all types and levels
 
@@ -57,61 +57,61 @@ function access_get_function_description ( $function )
 {
   switch ( $function ) {
     case ACCESS_EVENT_VIEW:
-      return translate ( "View Event" );
+      return translate( 'View Event' );
     case ACCESS_EVENT_EDIT:
-      return translate ( "Edit Event" );
+      return translate ( 'Edit Event' );
     case ACCESS_DAY:
-      return translate ( "Day View" );
+      return translate ( 'Day View' );
     case ACCESS_WEEK:
-      return translate ( "Week View" );
+      return translate ( 'Week View' );
     case ACCESS_MONTH:
-      return translate ( "Month View" );
+      return translate ( 'Month View' );
     case ACCESS_YEAR:
-      return translate ( "Year View" );
+      return translate ( 'Year View' );
     case ACCESS_ADMIN_HOME:
-      return translate ( "Administrative Tools" );
+      return translate ( 'Administrative Tools' );
     case ACCESS_REPORT:
-      return translate ( "Reports" );
+      return translate ( 'Reports' );
     case ACCESS_VIEW:
-      return translate ( "Views" );
+      return translate ( 'Views' );
     case ACCESS_VIEW_MANAGEMENT:
-      return translate ( "Manage Views" );
+      return translate ( 'Manage Views' );
     case ACCESS_CATEGORY_MANAGEMENT:
-      return translate ( "Category Management" );
+      return translate ( 'Category Management' );
     case ACCESS_LAYERS:
-      return translate ( "Layers" );
+      return translate ( 'Layers' );
     case ACCESS_SEARCH:
-      return translate ( "Search" );
+      return translate ( 'Search' );
     case ACCESS_ADVANCED_SEARCH:
-      return translate ( "Advanced Search" );
+      return translate ( 'Advanced Search' );
     case ACCESS_ACTIVITY_LOG:
-      return translate ( "Activity Log" );
+      return translate ( 'Activity Log' );
     case ACCESS_USER_MANAGEMENT:
-      return translate ( "User Management" );
+      return translate ( 'User Management' );
     case ACCESS_ACCOUNT_INFO:
-      return translate ( "Account" );
+      return translate ( 'Account' );
     case ACCESS_ACCESS_MANAGEMENT:
-      return translate ( "User Access Control" );
+      return translate ( 'User Access Control' );
     case ACCESS_PREFERENCES:
-      return translate ( "Preferences" );
+      return translate ( 'Preferences' );
     case ACCESS_SYSTEM_SETTINGS:
-      return translate ( "System Settings" );
+      return translate ( 'System Settings' );
     case ACCESS_ANOTHER_CALENDAR:
       return translate ( "Another User's Calendar" );
     case ACCESS_IMPORT:
-      return translate ( "Import" );
+      return translate ( 'Import' );
     case ACCESS_EXPORT:
-      return translate ( "Export" );
+      return translate ( 'Export' );
     case ACCESS_PUBLISH:
-      return translate ( "Subscribe/Publish" );
+      return translate ( 'Subscribe/Publish' );
     case ACCESS_ASSISTANTS:
-      return translate ( "Assistants" );
+      return translate ( 'Assistants' );
     case ACCESS_TRAILER:
-      return translate ( "Common Trailer" );
+      return translate ( 'Common Trailer' );
     case ACCESS_HELP:
-      return translate ( "Help" );
+      return translate ( 'Help' );
     default:
-      die_miserable_death ( "Invalid function id: $function" );
+      die_miserable_death ( 'Invalid function id: ' . $function );
   }
 }
 
@@ -139,16 +139,16 @@ function access_load_user_permissions ()
   $res = dbi_execute ( $sql );
   assert ( '$res' );
   while ( $row = dbi_fetch_row ( $res ) ) {
-    $key = $row[0] . "." . $row[1];
+    $key = $row[0] . '.' . $row[1];
     $access_other_cals[$key] = array (
-      "cal_login" => $row[0],
-      "cal_other_user" => $row[1],
-      "view" => $row[2],
-      "edit" => $row[3],
-      "approve" => $row[4],
-      "email" => $row[5],
-      "invite" => $row[6],
-      "time" => $row[7]
+      'cal_login' => $row[0],
+      'cal_other_user' => $row[1],
+      'view' => $row[2],
+      'edit' => $row[3],
+      'approve' => $row[4],
+      'email' => $row[5],
+      'invite' => $row[6],
+      'time' => $row[7]
     );  
   }
   dbi_free_result ( $res );
@@ -270,7 +270,7 @@ function access_init ( $user="" )
  *
  * @global string Username of the currently logged-in user
  */
-function access_can_access_function ( $function, $user="" )
+function access_can_access_function ( $function, $user='' )
 {
   global $login;
 
@@ -308,7 +308,7 @@ function access_can_access_function ( $function, $user="" )
  * @global string
  * @global bool   Is the currently logged-in user an administrator?
  */
-function access_can_view_page ( $page="", $user="" )
+function access_can_view_page ( $page='', $user='' )
 {
   global $PHP_SELF, $login, $page_lookup, $page_lookup_ex, $is_admin;
   $page_id = -1;
@@ -419,9 +419,9 @@ function access_user_calendar ( $cal_can_xxx='', $other_user, $cur_user='',
   if ( empty ( $access_other_cals ) )
     access_load_user_permissions ();
              
-  $key1 = $cur_user . "." . $other_user;
-  $key2 = "__default__." . $other_user;
-  $key3 = "__default__.__default__";
+  $key1 = $cur_user . '.' . $other_user;
+  $key2 = '__default__.' . $other_user;
+  $key3 = '__default__.__default__';
   
   if ( isset ( $access_other_cals[$key1][$cal_can_xxx] ) ) {
     $ret = $access_other_cals[$key1][$cal_can_xxx];

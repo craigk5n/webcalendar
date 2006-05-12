@@ -12,11 +12,11 @@ print_header('', '', '', true);
  <?php etranslate("app-name-help")?>
 </td></tr>
 <tr><td class="help">
- <?php etranslate("Server URL")?>:</td><td>
+ <?php etranslate( 'Server URL' )?>:</td><td>
  <?php etranslate("server-url-help")?>
 </td></tr>
 <tr><td class="help">
- <?php etranslate("Language")?>:</td><td>
+ <?php etranslate( 'Language' )?>:</td><td>
  <?php etranslate("language-help")?>
 </td></tr>
 <tr><td class="help">
@@ -152,7 +152,7 @@ print_header('', '', '', true);
  <?php etranslate("timed-evt-len-help")?>
 </td></tr>
 </table>
-<h3><?php etranslate("Public Access")?></h3>
+<h3><?php etranslate( 'Public Access' )?></h3>
 <table class="standard">
 <tr><td class="help">
  <?php etranslate("Allow public access")?>:</td><td>
@@ -183,7 +183,7 @@ print_header('', '', '', true);
  <?php etranslate("public-access-sees-participants-help")?>
 </td></tr>
 </table>
-<h3><?php etranslate("Groups")?></h3>
+<h3><?php etranslate( 'Groups' )?></h3>
 <table class="standard">
 <tr><td class="help">
  <?php etranslate("Groups enabled")?>:</td><td>
@@ -208,7 +208,7 @@ print_header('', '', '', true);
 </td></tr>
 </table>
 
-<h3><?php etranslate("Other")?></h3>
+<h3><?php etranslate( 'Other' )?></h3>
 <table class="standard">
 <tr><td class="help">
  <?php etranslate("Reports enabled")?>:</td><td>
@@ -237,7 +237,7 @@ print_header('', '', '', true);
 </table>
 
 
-<h3><?php etranslate("Email")?></h3>
+<h3><?php etranslate( 'Email' )?></h3>
 <table class="standard">
 <tr><td class="help">
  <?php etranslate("Email enabled")?>:</td><td>
@@ -269,7 +269,7 @@ print_header('', '', '', true);
 </td></tr>
 </table>
 
-<h3><?php etranslate("Colors")?></h3>
+<h3><?php etranslate( 'Colors' )?></h3>
 <table class="standard">
 <tr><td class="help">
  <?php etranslate("Allow user to customize colors")?>:</td><td>

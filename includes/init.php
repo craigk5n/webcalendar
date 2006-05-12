@@ -150,7 +150,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   if ( is_array ( $includes ) ) {
     foreach( $includes as $inc ){
       if ( $inc == 'js/popups.php' && ! empty ( $DISABLE_POPUPS ) && 
-       $DISABLE_POPUPS == "Y" ) {
+       $DISABLE_POPUPS == 'Y' ) {
        //don't load popups.php javascript if DISABLE_POPUPS
       } else {
         echo "<script type=\"text/javascript\" ".
@@ -253,7 +253,7 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
     $GROUPS_ENABLED, $fullname, $has_boss, $is_nonuser, $DISPLAY_TASKS;
   
   if ( $include_nav_links  ) {//TODO Add test for $MENU_ENABLED == 'N'
-    include_once "includes/trailer.php";
+    include_once 'includes/trailer.php';
   }
 
   // Add custom trailer if enabled
@@ -267,7 +267,7 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
     unset ( $c );
   }
  // adds an easy link to validate the pages
- if ( $DEMO_MODE == "Y" ) {
+ if ( $DEMO_MODE == 'Y' ) {
      echo "<p><a href=\"http://validator.w3.org/check?uri=referer\"><img " .
        "src=\"http://www.w3.org/Icons/valid-xhtml10\" " .
        "alt=\"Valid XHTML 1.0!\" class=\"valid\"  /></a></p>";
@@ -293,12 +293,12 @@ function print_menu_dates ( $menu=false) {
   if ( ! empty ( $user ) && $user != $login ) {
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
-  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == "Y"
+  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
     && ( ! $user || $user == $login ) ) {
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
 
-  echo "<label for=\"monthselect\"><a href=\"javascript:document.SelectMonth.submit()\">" .    translate("Month") . "</a>:&nbsp;</label>\n";
+  echo "<label for=\"monthselect\"><a href=\"javascript:document.SelectMonth.submit()\">" .    translate( 'Month' ) . "</a>:&nbsp;</label>\n";
   echo "<select name=\"date\" id=\"monthselect\" " .
     "onchange=\"document.SelectMonth.submit()\">\n";
 
@@ -306,11 +306,11 @@ function print_menu_dates ( $menu=false) {
     $m = $thismonth;
     $y = $thisyear;
   } else {
-    $m = date ( "m" );
-    $y = date ( "Y" );
+    $m = date ( 'm' );
+    $y = date ( 'Y' );
   }
   $d_time = mktime ( 0, 0, 0, $m, 1, $y );
-  $thisdate = date ( "Ymd", $d_time );
+  $thisdate = date ( 'Ymd', $d_time );
   $y--;
   for ( $i = 0; $i < 25; $i++ ) {
     $m++;
@@ -320,19 +320,19 @@ function print_menu_dates ( $menu=false) {
     }
   if ( $y >= 1970 && $y < 2038 ) {
       $d = mktime ( 0, 0, 0, $m, 1, $y );
-      echo "<option value=\"" . date ( "Ymd", $d ) . "\"";
-      if ( date ( "Ymd", $d ) == $thisdate ) {
-        echo " selected=\"selected\"";
+      echo '<option value="' . date ( 'Ymd', $d ) . "\"";
+      if ( date ( 'Ymd', $d ) == $thisdate ) {
+        echo ' selected="selected" ';
       }
       echo ">";
-      echo date_to_str ( date ( "Ymd", $d ), $DATE_FORMAT_MY, false, true, 0 );
+      echo date_to_str ( date ( 'Ymd', $d ), $DATE_FORMAT_MY, false, true, 0 );
       echo "</option>\n";
   }
   }
 
   echo "</select>\n";
   if ( $menu == false )
-    echo "<input type=\"submit\" value=\"" . translate("Go") . "\" />\n";
+    echo "<input type=\"submit\" value=\"" . translate( 'Go' ) . "\" />\n";
   echo "</form>\n";
   if ( $menu == true ) echo "</td>\n<td class=\"ThemeMenubackgr\">";
 
@@ -352,20 +352,20 @@ function print_menu_dates ( $menu=false) {
   if ( ! empty ( $user ) && $user != $login ) {
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
-  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == "Y"
+  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
     && ( ! $user || $user == $login ) ) {
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
 
-  echo "<label for=\"weekselect\"><a href=\"javascript:document.SelectWeek.submit()\">" .    translate("Week") . "</a>:&nbsp;</label>\n";
+  echo "<label for=\"weekselect\"><a href=\"javascript:document.SelectWeek.submit()\">" .    translate ( 'Week' ) . "</a>:&nbsp;</label>\n";
   echo "<select name=\"date\" id=\"weekselect\" " .
     "onchange=\"document.SelectWeek.submit()\">\n";
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
     $m = $thismonth;
     $y = $thisyear;
   } else {
-    $m = date ( "m" );
-    $y = date ( "Y" );
+    $m = date ( 'm' );
+    $y = date ( 'Y' );
   }
   if ( ! empty ( $thisday ) ) {
     $d = $thisday;
@@ -373,8 +373,8 @@ function print_menu_dates ( $menu=false) {
     $d = date ( "d" );
   }
   $d_time = mktime ( 0, 0, 0, $m, $d, $y );
-  $thisdate = date ( "Ymd", $d_time );
-  $wday = date ( "w", $d_time );
+  $thisdate = date ( 'Ymd', $d_time );
+  $wday = date ( 'w', $d_time );
   // $WEEK_START equals 1 or 0 
   $wkstart = mktime ( 0, 0, 0, $m, $d - ( $wday - $WEEK_START ), $y );
 
@@ -383,26 +383,26 @@ function print_menu_dates ( $menu=false) {
     $twkend = $twkstart + ( ONE_DAY * 6 );
 //  echo $twkstart . " " . $twkend;
   if ( $twkstart > 0 && $twkend < 2146021200 ) { 
-      echo "<option value=\"" . date ( "Ymd", $twkstart ) . "\"";
-      if ( date ( "Ymd", $twkstart ) <= $thisdate &&
-        date ( "Ymd", $twkend ) >= $thisdate ) {
-        echo " selected=\"selected\"";
+      echo '<option value="' . date ( 'Ymd', $twkstart ) . "\"";
+      if ( date ( 'Ymd', $twkstart ) <= $thisdate &&
+        date ( 'Ymd', $twkend ) >= $thisdate ) {
+        echo ' selected="selected" ';
       }
       echo ">";
       if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
-        $GLOBALS['PULLDOWN_WEEKNUMBER'] == "Y" ) {
+        $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y' ) {
         echo  "(" . date( "W", $twkstart + ONE_DAY ) . ")&nbsp;&nbsp;";
       }
       printf ( "%s - %s",
-        date_to_str ( date ( "Ymd", $twkstart ), $DATE_FORMAT_MD, false, true, 0 ),
-        date_to_str ( date ( "Ymd", $twkend ), $DATE_FORMAT_MD, false, true, 0 ) );
+        date_to_str ( date ( 'Ymd', $twkstart ), $DATE_FORMAT_MD, false, true, 0 ),
+        date_to_str ( date ( 'Ymd', $twkend ), $DATE_FORMAT_MD, false, true, 0 ) );
       echo "</option>\n";
   }
   }
 
   echo "</select>\n";
   if ( $menu == false )
-    echo "<input type=\"submit\" value=\"" . translate("Go") ."\" />\n";
+    echo "<input type=\"submit\" value=\"" . translate( 'Go' ) ."\" />\n";
   echo "</form>\n";
   if ( $menu == true ) echo "</td>\n<td class=\"ThemeMenubackgr\">";
 
@@ -422,25 +422,25 @@ function print_menu_dates ( $menu=false) {
   if ( ! empty ( $user ) && $user != $login ) {
     echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
-  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == "Y"
+  if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
     && ( ! $user || $user == $login ) ) {
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
 
-  echo "<label for=\"yearselect\"><a href=\"javascript:document.SelectYear.submit()\">" .    translate("Year") . "</a>:&nbsp;</label>\n";
+  echo "<label for=\"yearselect\"><a href=\"javascript:document.SelectYear.submit()\">" .    translate( 'Year' ) . "</a>:&nbsp;</label>\n";
   echo "<select name=\"year\" id=\"yearselect\" ".
     "onchange=\"document.SelectYear.submit()\">\n";
 
   if ( ! empty ( $thisyear ) ) {
     $y = $thisyear;
   } else {
-    $y = date ( "Y" );
+    $y = date ( 'Y' );
   }
   for ( $i = $y - 4; $i < $y + 4; $i++ ) {
    if ( $i >= 1970 && $i < 2038 ) {
       echo "<option value=\"$i\"";
       if ( $i == $y ) {
-        echo " selected=\"selected\"";
+        echo ' selected="selected" ';
       }
       echo ">$i</option>\n";
   }
@@ -448,7 +448,7 @@ function print_menu_dates ( $menu=false) {
 
   echo "</select>\n";
   if ( $menu == false )
-    echo "<input type=\"submit\" value=\"" . translate("Go") . "\" />\n";
+    echo "<input type=\"submit\" value=\"" . translate( 'Go' ) . "\" />\n";
   echo "</form>\n";
 }
 ?>
