@@ -539,7 +539,7 @@ if ( $DISABLE_PRIORITY_FIELD != 'Y' ) { ?>
  <?php echo $pri[$cal_priority]; ?>
 </td></tr>
 <?php }
-f ( $DISABLE_ACCESS_FIELD != 'Y' ) { ?>
+if ( $DISABLE_ACCESS_FIELD != 'Y' ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate( 'Access' )?>:</td><td>
  <?php echo ( $cal_access == "P" ) ? translate ( 'Public' ) : ( $cal_access == 'C' ? translate( 'Confidential' ) : translate( 'Private' )  ); ?>
