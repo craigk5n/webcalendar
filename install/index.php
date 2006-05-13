@@ -1582,7 +1582,7 @@ if ( ! $exists || ! $canWrite ) { ?>
 <?php } else { ?>
 <tr><th colspan="2" class="redheader"><?php etranslate ( 'The following database actions are required' ) ?></th></tr>
  <?php if ( $settings['db_type']  == 'odbc' &&  empty ( $_SESSION['db_updated'] ) ) {
- <if ( empty ( $_SESSION['odbc_db'] ) ) $_SESSION['odbc_db'] = 'mysql'; ?>
+ if ( empty ( $_SESSION['odbc_db'] ) ) $_SESSION['odbc_db'] = 'mysql'; ?>
 <tr><td id="odbc_db" align="center" nowrap>
 <form action="index.php?action=set_odbc_db" method="post" name="set_odbc_db">
 <b><?php etranslate ( 'ODBC Underlying Database' ) ?>:</b> <select name="odbc_db"  onchange="document.set_odbc_db.submit();">
