@@ -95,7 +95,6 @@ Settings: Réglages
 Public Access: Accès public 
 Groups: Groupes
 NonUser Calendars: Calendriers Non-Utilisateurs
-#
 Other: Autre
 Email: Courrier électronique
 colors-help: Toutes les couleurs doivent être au format hexdécimal « #RRVVBB » ou « RR » est la valeur hexa pour le rouge, « VV » est la valeur hexa pour le vert, et « BB » est la valeur hexa pour le bleu.
@@ -114,18 +113,9 @@ Custom script/stylesheet: Script/Feuille de style personnalisé
 Yes: Oui
 No: Non
 Edit: Editer
-#
-# << MISSING >>
 custom-header-help: Permet d'ajouter un bout de HTML au haut de chaque page
-# English text: Allows a custom HTML snippet to be included in the top of every page.
-#
 Custom header: Entête personnalisée
-#
-# << MISSING >>
-# custom-trailer-help:
 custom-trailer-help: Permet d'ajouter un bout de HTML au bas de chaque page
-# English text: Allows a custom HTML snippet to be included at the end of every page.
-#
 Custom trailer: Bas de page personnalisé
 preferred-view-help: Spécifie la vue par défaut (par Jour, Semaine, Mois, ou Année).
 Preferred view: Vue préférée
@@ -135,13 +125,7 @@ Month: Mois
 Year: Année
 display-weekends-help: Inclure les week-ends lors de la visualisation de la semaine. 
 Display weekends in week view: Afficher les week-ends dans la représentation de la semaine
-#
-# << MISSING >>
 yearly-shows-events-help: Sur la vue par année, affiche les jours contenant des événements en caractères gras
-# English text: On the yearly view, display days that contain events in a bold font.
-#
-#
-# << MISSING >>
 Display days with events in bold in month and year views: Sur les vues par mois et par année, affiche les jours contenant des événements en caractères gras
 display-desc-print-day-help: Inclure les descriptions d'événements dans la version imprimable de la vue journalière.
 Display description in printer day view: Descriptions dans la version imprimable de la vue journalière.
@@ -182,19 +166,9 @@ disable-participants-field-help: En sélectionnant « Oui », vous enlevez le champ
 Disable Participants field: Désactiver le champ Participants
 disable-repeating-field-help: En sélectionnant « Oui », vous enlevez le champ « Répétitions » lors de l'ajout d'événements, fournissant une interface plus simple pour les novices.
 Disable Repeating field: Désactiver le champ de répétition
-#
-# << MISSING >>
 popup-includes-siteextras-help: Si coché, permet aux champs ajoutés dans site_extras.php de s'afficher dans les fenêtres d'alerte d'événements
-# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
-#
-#
-# << MISSING >>
 Display Site Extras in popup: Afficher les extras au site dans les fenêtres d'alerte
-#
-# << MISSING >>
 allow-html-description-help: Si coché, les utilisateurs pourront ajouter du code HTML dans le champ descriptif d'événement.  Sinon, le HTML sera affiché textuellement.  Attention: Allumer cette option permet aux utilisateurs d'inclure des images hébergées sur d'autres site web.
-# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
-#
 Allow HTML in Description: Autoriser l'utilisation de code HTML dans les descriptions
 allow-view-other-help: Spécifie si un utilisateur peut voir l'agenda d'un autre utilisateur.
 Allow viewing other user's calendars: Autoriser la visualisation des agendas des autres personnes
@@ -212,17 +186,9 @@ limit-appts-help: Permet à l'administrateur de fixer la limite générale du nombr
 Limit number of timed events per day: Nombre maximum d'événements temporels par jour
 limit-appts-number-help: Fixe le nombre maximum d'événements temporels qu'un utilisateur peut avoir dans une journée.
 Maximum timed events per day: Nombre maximum d'événements temporels par jour
-#
-# << MISSING >>
 timed-evt-len-help: Spécifie la méthode d'entrée pour la durée d'un événement
-# English text: Specifies input method for determining the length of a timed event.
-#
-#
-# << MISSING >>
 Specify timed event length by: Déterminer la fin d'un événenement par
 Duration: Durée
-#
-# << MISSING >>
 End Time: Fin
 Plugins: Greffons
 plugins-enabled-help: Autoriser les applications greffons
@@ -231,21 +197,9 @@ plugins-sort-key-help: Spécifie une clé de tri pour les greffons. Cela permet au
 Plugin: Greffon
 allow-public-access-help: Lorsqu'activé, l'agenda peut être utilisé comme un agenda public en lecture seule qui n'a pas besoin d'une connexion par les utilisateurs.
 Allow public access: Autoriser l'accès public
-#
-# << MISSING >>
 public-access-default-visible: Les événements du calendrier public s'afficheront automatiquement sur les calendriers de tous les autres usagers.
-# English text: Events from the public calendar will automatically appear on all users' calendars
-#
-#
-# << MISSING >>
 Public access visible by default: Accès public visible par défaut
-#
-# << MISSING >>
 public-access-default-selected: À l'ajout d'un événement, l'utilisateur public sera sélectionné par défaut comme participant.
-# English text: When adding a new event, the public user will be selected by default as a participant.
-#
-#
-# << MISSING >>
 Public access is default participant: L'accès public est le participant par défaut
 public-access-view-others-help: Lors d'un accès en mode « accès public », spécifie si l'utilisateur peut voir les agendas des autres utilisateurs.
 Public access can view other users: L'accès public peut voir les autres utilisateurs
@@ -253,11 +207,7 @@ public-access-can-add-help: Lorsqu'activé, les utilisateurs qui accédent au syst
 Public access can add events: L'accès public peut ajouter des événements
 public-access-add-requires-approval-help: Indique si les événements ajoutés par le compte public nécéssitent d'être approuvés avant d'être affichés
 Public access new events require approval: Les nouveaux événements publiques doivent être approuvés
-#
-# << MISSING >>
 public-access-sees-participants-help: Si coché, les utilisateurs consultant le calendrier à partir du compte public pourront voir la liste des participants en regardant les détails d'un événement
-# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
-#
 Public access can view participants: Les utilisateurs publiques peuvent voir les participants
 groups-enabled-help: Active le support des groupes, autorisant les utilisateurs à sélectionner les utilisateurs par groupe.
 Groups enabled: Groupes activés
@@ -269,12 +219,7 @@ nonuser-list-help: Où afficher le calendrier des non-utilisateurs dans la liste 
 Nonuser list: Afficher la list des particants à 
 Top: En haut
 Bottom: En bas
-#
-# << MISSING >>
 reports-enabled-help: Si coché, les utilisateurs verront une section « Rapports » au bas de chaque page et pourront créer des rapports personnalisés.  En plus, les administrateurs peuvent créer des rapports globaux s'affichant au bas de chaque page d'usager.
-
-# English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
-#
 Reports enabled: Rapports activés
 subscriptions-enabled-help: specifie si l'utilisateur distant peut s'inscrire comme utilisateur de calendier WebCalendar, lui permettant ainsi de voir les événements des utilisateurs des applications de typeiCal (comme iCal d'Apple ou le calendrier Mozilla)
 Allow remote subscriptions: Autoriser les inscriptions distantes
@@ -302,11 +247,7 @@ Events removed from my calendar: événement supprimé dans votre agenda
 email-event-rejected: Notification par couriel lors du rejet d'un événement par l'un des participants.
 Event rejected by participant: événement rejeté par un participant
 Allow user to customize colors: Autoriser les utilisateurs à personnaliser leurs couleurs 
-#
-# << MISSING >>
 Enable gradient images for background colors: Permettre les images en dégradés comme images de fond
-#
-# << MISSING >>
 Not available: Non disponible
 Document background: Fond
 Select: Sélectionner
@@ -332,8 +273,6 @@ Error approving event: Erreur en approuvant l'événement
 # Page: assistant_edit.php
 #
 Admin mode: Mode administrateur
-#
-# << MISSING >>
 Your assistants: Vos assistants
 
 
@@ -394,8 +333,6 @@ Cancel: Annuler
 #
 Edit Entry: Modification de l'événement
 Add Entry: Ajouter un événement
-#
-# << MISSING >>
 Details: Détails
 Participants: Participants
 Repeat: Répétition
@@ -423,16 +360,10 @@ am: am
 pm: pm
 duration-help: Spécification de la durée (en minutes) de l'événement.  <br /><i>Ce champ peut être laissé vide.</i>
 hours: heures
-#
-# << MISSING >>
 end-time-help: Spécifie l'heure à laquelle l'événement est prévu se terminer
-# English text: Specifies the time the event is expected to end.
-#
 days: jours
 before event: avant
 participants-help: Liste des participants pour cet événement.
-#
-# << MISSING >>
 Availability: Disponibilité
 external-participants-help: Spécifie une liste de participants pour cet événement qui ne font pas partie des utilisateurs de l'agenda. Ces utilisateurs devraient figurer un par ligne evec éventuellement leur adresse de couriel. Si une adresse de couriel figure, l'utilisateur peut recevoir par couriel les notifications et rappels.
 External Participants: Participants extérieurs
@@ -485,13 +416,7 @@ Are you sure you want to delete this layer?: êtes vous sûr de détruire ce calque
 # Page: edit_nonusers_handler.php
 #
 Calendar ID: ID calendrier
-#
-# << MISSING >>
 word characters only: peut continr seulement des caractères alphanumériques (a-zA-Z_0-9)
-# English text: can only contain word characters (a-zA-Z_0-9)
-#
-#
-# << MISSING >>
 Changes successfully saved: Changements sauvegardés avec succès
 
 
@@ -566,8 +491,6 @@ Edit Custom Trailer: Editer les fin de pages personnalisés
 Deleting users not supported: La suppression des utilisateurs n'est pas supportée
 The passwords were not identical: Les mots de passe ne sont pas identiques
 You have not entered a password: Vous n'avez pas saisi de mot de passe
-#
-# << MISSING >>
 Username can not be blank: Le nom d'utilisateur ne peut être laissé en blanc
 
 
@@ -579,8 +502,6 @@ E-mail address: Adresse de couriel
 Password: Mot de passe
 again: bis
 Disabled for demo: Désactivé pour la démo
-#
-# << MISSING >>
 Are you sure you want to delete this user?: Êtes-vous certain de vouloir effacer cet usager?
 Change Password: Changer de mot de passe
 New Password: Nouveau mot de passe
@@ -599,8 +520,6 @@ export format not defined or incorrect: Le format d'exportation n'est pas défini
 #
 Export format: Format d'exportation
 Palm Pilot: Palm Pilot
-#
-# << MISSING >>
 Include all layers: Inclure tous les calques
 Export all dates: Exporter toutes les dates
 Start date: Date de début
@@ -636,18 +555,8 @@ Add New Group: Ajouter un nouveau groupe
 #
 Display days with events in bold in year view: Afficher les jours avec événements en gras dans la vue annuelle
 Nonuser: Calendrier Non-utilisateur
-#
-# << MISSING >>
 user-customize-color: Détermine si les usagers peuvent modifier leurs couleurs d'affichage
-# English text: Specifies whether users are allowed to modify their own color scheme.
-#
-#
-# << MISSING >>
 enable-gradient-help: Utiliser des dégradés comme couleurs de fond des cellules
-# English text: Use gradient colors for cell backgrounds.
-#
-#
-# << MISSING >>
 Manually entering color values: Entrée manuelle des couleurs
 
 
@@ -716,29 +625,13 @@ Default Category: Catégorie par défaut
 default-category-help: Spécifie la catégorie par défaut lors de la création d'événement.
 When I am the boss: Lorsque je suis le "boss"
 Email me event notification: Envoi d'un email de notification d'événement
-#
-# << MISSING >>
 email-boss-notifications-help: Détermine si les "boss" reçoivent des courriels comme notification 
-# English text: Specifies if bosses receive emails as event notifications.
-#
 I want to approve events: Je veux approuver les événements
-#
-# << MISSING >>
 boss-approve-event-help: Détermine si le "boss" doit approuver les événements ajoutés par des assistants
-# English text: Specifies whether the boss will be required to approve events added by assistants.
-#
 Subscribe/Publish: S'abonner/Publier
-#
-# << MISSING >>
 allow-remote-subscriptions-help: Détermine si les usagers distants peuvent s'abonner à votre calendrier, leur permettant de consulter vos événements à même une application compatible iCal (tel que Mozilla Calendar ou Apple iCal)
-# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
 URL: URL
-#
-# << MISSING >>
 remote-subscriptions-url-help: Affiche l'URL avec lequel les usagers distants peuvent s'abonner à votre calendrier
-# English text: Displays the URL remote users should use to subscribe to your calendar.
-#
 
 
 ###############################################
@@ -759,8 +652,6 @@ View this entry: Voir cet événement
 # Page: import.php
 #
 Disabled: Désactivés
-#
-# << MISSING >>
 Import format: Format d'import
 Exclude private records: exclure les enregistrements privés
 Overwrite Prior Import: Remplacer l'importation précédente
@@ -774,8 +665,6 @@ Enabled: Activés
 Disable Layers: Désactiver les calques
 Enable Layers: Activer les calques
 to modify the layers settings for the: pour modifier les paramètres de calque de 
-#
-# << MISSING >>
 calendar: calendrier
 Add layer: Ajouter un calque
 Layer: Calque
@@ -837,19 +726,13 @@ All: Tout
 ###############################################
 # Page: purge.php
 #
-#
-# << MISSING >>
 Preview: Aperçu
 Purging events for: Effacer les événements de
 Finished: Terminé
 Check box to delete <b>ALL</b> events for a user: Cocher la case pour effacer <b>TOUS</b> les événements d'un utilisateur
 Delete all events before: Effacer les événements avant
-#
-# << MISSING >>
 Preview delete: Aperçu de l'effacement
 Are you sure you want to delete events for: Etes-vous sur de vouloir effacer les événements de
-#
-# << MISSING >>
 Records deleted from: Enregistrements effacés de
 
 
@@ -926,8 +809,6 @@ denotes administrative user: appliquer les droits d'administrateur
 ###############################################
 # Page: view_d.php
 #
-#
-# << MISSING >>
 No users for this view: Aucun utilisateur pour cette vue
 
 
@@ -943,11 +824,7 @@ every: tous
 last: dernier
 Description: Description
 Status: Etat
-#
-# << MISSING >>
 day: jour
-#
-# << MISSING >>
 minute: minute
 External User: Utilisateur extérieur
 Approve/Confirm entry: Approuver/Confirmer cet événement
@@ -990,11 +867,7 @@ Week (Timebar): Semaine (planning)
 Month (Timebar): Mois (planning)
 Month (side by side): Mois (Côte à côte)
 Month (on same calendar): Mois (sur le même calendrier)
-#
-# << MISSING >>
 preview: aperçu
-#
-# << MISSING >>
 Selected: Sélectionné
 
 
@@ -1130,14 +1003,8 @@ Sep: Sep
 Oct: Oct
 Nov: Nov
 Dec: Déc
-#
-# << MISSING >>
 All Attendees: Tous les participants
-#
-# << MISSING >>
 Busy: Occupé
-#
-# << MISSING >>
 Tentative: Exploratoire
 
 
@@ -1161,11 +1028,7 @@ Manage calendar of: Gérer le calendrier de
 ###############################################
 # Page: includes/user-nis.php
 #
-#
-# << MISSING >>
 incorrect password: mot de passe incorrect
-#
-# << MISSING >>
 no such user: usager non-existant
 Invalid user login: Identifiant non valable
 
@@ -1181,8 +1044,6 @@ Send Reminder: Envoyer un rappel
 #
 Server URL is required: L'URL du serveur est manquante
 Server URL must end with '/': L'URL du serveur doit se terminer par '/'
-#
-# << MISSING >>
 Invalid work hours: Heures de travail invalides
 Invalid color for document background: Couleur de fond incorrecte
 Invalid color for document title: Couleur de titre de document incorrecte
@@ -1199,8 +1060,6 @@ Color format should be '#RRGGBB': Le format de couleur devrait être '#RRGGBB'
 ###############################################
 # Page: includes/js/availability.php
 #
-#
-# << MISSING >>
 Change the date and time of this entry?: Modifier la date et l'heure de cette entrée?
 
 
@@ -1210,8 +1069,6 @@ Change the date and time of this entry?: Modifier la date et l'heure de cette en
 You have not entered a Brief Description: Vous n'avez pas entré de description succinte
 You have not entered a valid time of day: Vous n'avez pas entré d'heure correcte
 The time you have entered begins before your preferred work hours.  Is this correct?: L'heure que vous avez spécifiée commence avant l'heure de début de vos journées. Est-ce correct ?
-#
-# << MISSING >>
 Please add a participant: Veuillez ajouter un participant
 
 
