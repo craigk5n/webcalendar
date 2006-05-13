@@ -1019,7 +1019,7 @@ Disabled for demo: Désactivé pour la démo
 Are you sure you want to delete this user?: Êtes-vous certain de vouloir effacer cet usager?
 Change Password: Changer de mot de passe
 New Password: Nouveau mot de passe
-Set Password: Déterminer le mot de passe
+Set Password: Changer le mot de passe
 
 
 ###############################################
@@ -1360,7 +1360,7 @@ Send Reminder: Envoyer un rappel
 # Page: includes/js/admin.php
 #
 Server URL is required: L'URL du serveur est manquante
-Server URL must end with '/': L'URL du serveur doit débuter par '/'
+Server URL must end with '/': L'URL du serveur doit se terminer par '/'
 Invalid work hours: Heures de travail invalides
 Invalid color for document background: Couleur de fond incorrecte
 Invalid color for document title: Couleur de titre de document incorrecte
