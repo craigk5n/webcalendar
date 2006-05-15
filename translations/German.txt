@@ -167,7 +167,7 @@ Time format: Zeit-Format
 12 hour: 12-st&uuml;ndig
 24 hour: 24-st&uuml;ndig
 entry-interval-help: Setzt Minutenintervall beim &Auml;ndern eingetragener Zeiten
-Entry interval: Eintragsinterval
+Entry interval: Eintragsintervall
 hour: Stunde
 minutes: Minute(n)
 minute: Minute
@@ -233,8 +233,8 @@ summary_length-help: Maximale L&auml;nge der Kurzbeschreibung in den Kalenderans
 Brief Description Length: L&auml;nge der Kurzbeschreibung
 lunar-help: Wenn aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
 Display Lunar Phases in month view: Anzeigen der Mondphasen in der Monatsansicht
-crossday-help: Falls aktiv, werden tage&uuml;bergreifende Termine extra angezeigt
-Disable Cross-Day Events: Tage&uuml;bergreifende Termine deaktivieren
+crossday-help: Falls aktiv, werden tages&uuml;bergreifende Termine extra angezeigt
+Disable Cross-Day Events: Tages&uuml;bergreifende Termine deaktivieren
 Plugins: "Plugins" (Erweiterungen)
 plugins-enabled-help: Hilfe f&uuml;r "Plugins" (Erweiterungen) aktivieren
 Enable Plugins: "Plugins" (Erweiterungen) aktivieren
@@ -982,7 +982,7 @@ Add New NonUser Calendar: Neuen 'Zentralen-Kalender' hinzuf&uuml;gen
 # Page: pref.php
 #
 Save Preferences: Voreinstellungen speichern
-Public Access calendar: &Oouml;ffentlicher Kalender
+Public Access calendar: &Ouml;ffentlicher Kalender
 Modify Non User Calendar Preferences: &Auml;ndern der Einstellungen von Zentralen Kalendern
 Return to My Preferences: Zur&uuml;ck zu meinen Einstellungen
 Custom Scripts: Eigene Scripte
@@ -1254,7 +1254,7 @@ WK: KW
 Task Name: Aufgabenname
 Task Due Date: Abgabefrist
 __mm__/__dd__/__yyyy__: __dd__. __mm__. __yyyy__
-TASKS: AUFGABE
+TASKS: AUFGABEN
 Task_Title: Aufgabentitel
 Due: F&auml;lligkeit
 View this task: Diese Aufgabe anzeigen
