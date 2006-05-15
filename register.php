@@ -1,16 +1,33 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/classes/WebCalendar.class';
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/functions.php';
+
+$WebCalendar->initializeFirstPhase();
+
+include "includes/$user_inc";
+include_once 'includes/access.php';
+include 'includes/translate.php';
+include 'includes/gradient.php';
+
+$WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
+
+$WebCalendar->setLanguage();
 
 require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
 //TODO make this an option for external users
 $htmlmail = false;
 
-load_user_preferences ( );
+load_user_preferences ( 'guest' );
 
-$WebCalendar->setLanguage();
+
 
 $notauth = translate ( 'You are not authorized' );
 
@@ -29,8 +46,9 @@ if ( empty ( $SELF_REGISTRATION_FULL ) || $SELF_REGISTRATION_FULL == 'N' ) {
 //return true if all is ok
 function check_username ( $user ) {
   global $control, $error;
-  if ( ! strlen ( $user ) ) {
-   $errror = translate ( 'Username can not be blank' );
+
+  if ( strlen ( $user ) == 0 ) {
+   $error = translate ( 'Username can not be blank' );
   return false;
  } 
   $sql="SELECT cal_login FROM webcal_user WHERE cal_login = ?";
@@ -51,7 +69,7 @@ function check_username ( $user ) {
 function check_email ( $uemail ) {
   global $control, $error;
   if ( ! strlen ( $uemail ) ) {
-   $errror = translate ( 'Email address can not be blank' );
+   $error = translate ( 'Email address can not be blank' );
   return false;
  } 
   $sql="SELECT cal_email FROM webcal_user WHERE cal_email = ?";
@@ -99,41 +117,7 @@ if ( ! empty ( $SELF_REGISTRATION_BLACKLIST ) && $SELF_REGISTRATION_BLACKLIST ==
 }
 //We could make $control a unique value if necessary
 $control = getPostValue ( 'control' );
-//Process full account addition
-if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
-  $user = getPostValue ( 'user' );
-  $upassword1 = getPostValue ( 'upassword1' );
-  $upassword2 = getPostValue ( 'upassword2' );
-  $ufirstname = getPostValue ( 'ufirstname' );
-  $ulastname = getPostValue ( 'ulastname' );
-  $uemail = getPostValue ( 'uemail' );
-  $uis_admin = 'N';
-  // Do some checking of user info
- if ( ! empty ( $user ) && ! empty ( $upassword1 ) ) {
-    if ( get_magic_quotes_gpc() ) {
-      $upassword1 = stripslashes ( $upassword1 );
-      $user = stripslashes ( $user );
-    }
-    $user = trim ( $user );
-    if ( $user != addslashes ( $user ) ) {
-      $error = translate ( 'Illegal characters in login' ) .
-        '<tt>' . htmlentities ( $user ) . '</tt>';
-    }
-  } else if ( $upassword1 != $upassword2 ) { 
-    $error = translate( 'The passwords were not identical' ) . '.';
-   $control = ''; 
-  } else {
-   //Check to make sure user doesn't already exist
-   check_username ( $user );
- }
-
- if ( empty ( $error ) ) {
-   user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
-     $uemail, $uis_admin );
-  activity_log ( 0, 'admin', $user, LOG_NEWUSER_FULL, 'New user via self-registration' );
- }
-//Process account info for email submission
-} else if ( empty ( $error ) && ! empty ( $control ) && $control == 'email' ) { 
+if ( empty ( $error ) && ! empty ( $control ) {
   $user = getPostValue ( 'user' );
   $ufirstname = getPostValue ( 'ufirstname' );
   $ulastname = getPostValue ( 'ulastname' );
@@ -149,7 +133,34 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
   check_username ( $user );
   //Check to make sure email address doesn't already exist
   check_email ( $uemail );
-  
+}
+//Process full account addition
+if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
+  $upassword1 = getPostValue ( 'upassword1' );
+  $upassword2 = getPostValue ( 'upassword2' );
+  // Do some checking of user info
+ if ( ! empty ( $user ) && ! empty ( $upassword1 ) ) {
+    if ( get_magic_quotes_gpc() ) {
+      $upassword1 = stripslashes ( $upassword1 );
+      $user = stripslashes ( $user );
+    }
+    $user = trim ( $user );
+    if ( $user != addslashes ( $user ) ) {
+      $error = translate ( 'Illegal characters in login' ) .
+        '<tt>' . htmlentities ( $user ) . '</tt>';
+    }
+  } else if ( $upassword1 != $upassword2 ) { 
+    $error = translate( 'The passwords were not identical' ) . '.';
+   $control = ''; 
+ }
+
+ if ( empty ( $error ) ) {
+   user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
+     $uemail, $uis_admin );
+  activity_log ( 0, 'admin', $user, LOG_NEWUSER_FULL, 'New user via self-registration' );
+ }
+//Process account info for email submission
+} else if ( empty ( $error ) && ! empty ( $control ) && $control == 'email' ) {  
   // need to generate unique passwords and email them to the new user 
   if ( empty ( $error ) ) {
     $new_pass = generate_password ();
@@ -201,21 +212,64 @@ echo "<?xml version=\"1.0\" encoding=\"$charset\"?>" . "\n";
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
 <title><?php etranslate( $APPLICATION_NAME )?></title>
-
+<script type="text/javascript" src="includes/js/prototype.js"></script>
 <script type="text/javascript">
-// error check login/password
+var validform = false;
+var formfield = 'user';
 function valid_form () {
-  if ( document.selfreg.user.value.length == 0 || document.selfreg.upassword1.value.length == 0 || document.selfreg.upassword2.value.length == 0) {
-    alert ( "<?php etranslate( 'You must enter a login and password', true)?>." );
+  if ( document.selfreg.upassword1.value.length == 0 ) {
+    alert ( "<?php etranslate( 'You have not entered a password', true)?>." );
+    return false;
+  }
+  if ( document.selfreg.user.value.length == 0 ) {
+    alert ( "<?php etranslate( 'Username can not be blank', true)?>." );
     return false;
   }
   if ( document.selfreg.upassword1.value != document.selfreg.upassword2.value ) {
-    alert ( "<?php etranslate( 'Your passwords do not match', true)?>." );
+    alert ( "<?php etranslate( 'The passwords were not identical', true)?>." );
     return false;
-  }
- 
-  return true;
+  } 
+  check_name();
+  check_uemail();
+
+  return validform;
 }
+
+function check_name() {
+  formfield = 'user';
+  var url = 'ajax.php';
+  var params = 'page=register&name=' + $F('user');
+  var ajax = new Ajax.Request(url,
+    {method: 'post', 
+    parameters: params, 
+    onComplete: showResponse});
+}
+
+function check_uemail() {
+  formfield = 'uemail';
+  var url = 'ajax.php';
+  var params = 'page=email&name=' + $F('uemail');
+  var ajax = new Ajax.Request(url,
+    {method: 'post', 
+    parameters: params, 
+    onComplete: showResponse});
+}
+
+function showResponse(originalRequest) {
+  if (originalRequest.responseText) {
+    text = originalRequest.responseText;
+    //this causes javascript errors in Firefox, but these can be ignored
+    alert (text);
+    if (   formfield == 'user' )
+      document.selfreg.user.focus();
+    if (   formfield == 'uemail' )
+      document.selfreg.uemail.focus();
+    validform =  false;
+  } else {
+    validform =  true;
+  }
+}
+
 </script>
 <?php 
  include 'includes/styles.php';
@@ -240,13 +294,13 @@ echo " " . translate ( 'Registration' );
 
 <?php
 if ( ! empty ( $error ) ) {
-  print '<span style="color:#FF0000; font-weight:bold;">' . 
+  echo '<span style="color:#FF0000; font-weight:bold;">' . 
     translate( 'Error' ) . ": $error</span><br />\n";
 } else {
-  print "<br /><br />\n";
+  echo "<br /><br />\n";
 }
 if ( ! empty ($control ) && empty ( $error ) ) { ?>
-<form action="login.php" method="post" >
+<form action="login.php" method="post"  >
 <input  type="hidden" name="login" value="<?php echo $user ?>" />
 <table align="center"  cellpadding="0" cellspacing="10">
 <tr><td rowspan="3"><img src="images/register.gif"></td>
@@ -268,7 +322,7 @@ if ( ! empty ($control ) && empty ( $error ) ) { ?>
 <tr><td rowspan="3"><img src="images/register.gif" alt="" /></td>
 <td  align="right">
   <label><?php etranslate( 'Username' )?>:</label></td>
-  <td align="left"><input  type="text" name="user"  value="<?php echo $user ?>" size="20" maxlength="20" /></td></tr>
+  <td align="left"><input  type="text" name="user"  id="user" value="<?php echo $user ?>" size="20" maxlength="20" onchange="check_name();" /></td></tr>
 <tr><td  align="right">
   <label><?php etranslate( 'First Name' )?>:</label></td>
   <td align="left"><input type="text" name="ufirstname" value="<?php echo $ufirstname ?>" size="25" maxlength="25" /></td></tr>
@@ -277,7 +331,7 @@ if ( ! empty ($control ) && empty ( $error ) ) { ?>
   <td align="left"><input type="text" name="ulastname" value="<?php echo $ulastname ?>" size="25"  maxlength="25" /></td></tr>
 <tr><td  align="right" colspan="2">
   <label><?php etranslate( 'E-mail address' )?>:</label></td>
-  <td align="left"><input type="text" name="uemail" value="<?php echo $uemail ?>" size="40"  maxlength="75" /></td></tr>
+  <td align="left"><input type="text" name="uemail" id="uemail" value="<?php echo $uemail ?>" size="40"  maxlength="75" onchange="check_uemail();" /></td></tr>
 <?php if ( $SELF_REGISTRATION_FULL == 'Y' ) { ?>
   <tr><td  align="right" colspan="2">
     <label><?php etranslate( 'Password' )?>:</label></td>
