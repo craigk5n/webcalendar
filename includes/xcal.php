@@ -16,7 +16,7 @@
  */
 
 function export_quoted_printable_encode($car) {
-  $res = ' ';
+  $res = '';
 
   if ((ord($car) >= 33 && ord($car) <= 60) || (ord($car) >= 62 && ord($car) <= 126) || 
       ord($car) == 9 || ord($car) == 32) {
@@ -28,26 +28,26 @@ function export_quoted_printable_encode($car) {
   return $res;
 } //end function export_quoted_printable_encode
 
-function export_fold_lines($string, $encoding="none", $limit=76) {
+function export_fold_lines($string, $encoding='none', $limit=76) {
   $len = strlen($string);
   $fold = $limit; 
   $res = array();
-  $row = ' ';
-  $enc = ' ';
+  $row = '';
+  $enc = '';
   $lwsp = 0; // position of the last linear whitespace (where to fold)
   $res_ind = 0; // row index
   $start_encode = 0; // we start encoding only after the ': ' character is encountered
 
-  if (strcmp($encoding,"quotedprintable") == 0)
+  if (strcmp($encoding,'quotedprintable') == 0)
     $fold--; // must take into account the soft line break
 
   for ($i = 0; $i < $len; $i++) {
       $enc = $string[$i];
 
  if ($start_encode) {
-   if (strcmp($encoding,"quotedprintable") == 0)
+   if (strcmp($encoding,'quotedprintable') == 0)
      $enc = export_quoted_printable_encode($string[$i]);
-   else if (strcmp($encoding,"utf8") == 0)
+   else if (strcmp($encoding,'utf8') == 0)
      $enc = utf8_encode($string[$i]);
  }
 
@@ -65,14 +65,14 @@ function export_fold_lines($string, $encoding="none", $limit=76) {
 
    $res[$res_ind] = substr($row, 0, $lwsp+1+$delta);
 
-   if (strcmp($encoding,"quotedprintable") == 0)
+   if (strcmp($encoding,'quotedprintable') == 0)
      $res[$res_ind] .= "="; // soft line break;
 
    $row = substr($row, $lwsp+1);
 
    $row = ' ' . $row;
 
-   if ($delta == -1 && strcmp($encoding,"utf8") == 0)
+   if ($delta == -1 && strcmp($encoding,'utf8') == 0)
      $row = ' ' . $row;
 
    if ($res_ind == 0)
@@ -84,14 +84,15 @@ function export_fold_lines($string, $encoding="none", $limit=76) {
    $lwsp = 0;
  } //end if ((strlen($row) + strlen($enc)) > $fold)
 
-      $row .= $enc;
+   $row .= $enc;
 
-      if ($string[$i] == ' ' || $string[$i] == "\t" || $string[$i] == ";" || $string[$i] == ",")
- $lwsp = strlen($row) - 1;
+   if ($string[$i] == ' ' || $string[$i] == "\t" || 
+     $string[$i] == ';' || $string[$i] == ',')
+   $lwsp = strlen($row) - 1;
 
-      if ($string[$i] == ': ' && (strcmp($encoding,"quotedprintable") == 0))
- $lwsp = strlen($row) - 1; // we cut at ':' only for quoted printable
-    } //end for ($i = 0; $i < $len; $i++)
+   if ($string[$i] == ': ' && (strcmp($encoding,'quotedprintable') == 0))
+     $lwsp = strlen($row) - 1; // we cut at ':' only for quoted printable
+  } //end for ($i = 0; $i < $len; $i++)
 
   $res[$res_ind] = $row; // Add last row (or first if no folding is necessary)
 
@@ -135,7 +136,7 @@ function export_get_attendee($id, $export) {
  if (count($user) > 0) {
    $attendee[$count] = 'ATTENDEE;ROLE=';
    $attendee[$count] .= ($row[2] == $user[3]) ? 'OWNER;': 'ATTENDEE;';
-   $attendee[$count] .= 'STATUS="';
+   $attendee[$count] .= "STATUS=";
 
    switch ($row[1]) {
      case 'A':
@@ -151,8 +152,8 @@ function export_get_attendee($id, $export) {
        continue;
    } //end switch
 
-   if (strcmp($export,'vcal') == 0)
-     $attendee[$count] .= ';ENCODING=QUOTED-PRINTABLE';
+   if (strcmp($export,"vcal") == 0)
+     $attendee[$count] .= ";ENCODING=QUOTED-PRINTABLE";
 
    $attendee[$count] .= ":$user[0] $user[1] <$user[2]>";
 
@@ -184,7 +185,7 @@ function export_time($date, $duration, $time, $texport, $vtype='E') {
     $utc_dtstamp = export_ts_utc_date( gmmktime() );
     $ret .= "DTSTAMP:$utc_dtstamp\r\n";
   //We don' want DTEND for VTODOs
-  if ( $vtype == "T" || $vtype == 'N' ) return $ret;
+  if ( $vtype == 'T' || $vtype == 'N' ) return $ret;
    if ( $time >= 0 ) {
       // all day event or timed event
      $utc_end = export_ts_utc_date( $eventend );
@@ -308,7 +309,7 @@ function export_recurrence_ical( $id, $simple=false ) {
 
     if (!empty($end)) {
     $endtime = ( ! empty ( $endtime)? $endtime:0);
-     $rrule .= (! $simple ? ';UNTIL': ',' .translate ( 'Until' ) ) . "=";
+     $rrule .= (! $simple ? ';UNTIL': ',' .translate ( 'Until' ) ) . '=';
      $utc = export_get_utc_date($end, $endtime );
      $rrule .= $utc;
     } else if (! empty ($cal_count ) && $cal_count != 999 ) {
@@ -783,7 +784,7 @@ function export_vcal ($id) {
       }
 
       /* UID of the event (folded to 76 char) */
-      $export_uid = 'UID:$export_uid';
+      $export_uid = "UID:$export_uid";
       $array = export_fold_lines($export_uid);
       while (list($key,$value) = each($array))
         echo "$value\r\n";
@@ -797,13 +798,13 @@ function export_vcal ($id) {
         echo "$value\r\n";
 
       /* DESCRIPTION if any (folded to 76 char) */
-      if ($description != ' ') {
+      if ($description != '') {
         $description = preg_replace("/\\\\/", "\\\\\\", $description); // ??
         $description = 'DESCRIPTION;ENCODING=QUOTED-PRINTABLE:' . $description;
         $array = export_fold_lines($description,'quotedprintable');
         while (list($key,$value) = each($array))
           echo "$value\r\n";
-      } //end if ($description != ' ')
+      } //end if ($description != '')
 
       /* CLASS either "PRIVATE", "CONFIDENTIAL, or "PUBLIC" (the default) */
       if ($access == 'R') {
@@ -995,7 +996,7 @@ function export_ical ( $id='all', $attachment=false ) {
        $ret .= "$value\r\n";
 
     /* DESCRIPTION if any (folded to 76 char) */
-    if ($description != ' ') {
+    if ($description != '') {
       $description = 'DESCRIPTION:' . $description;
       $array = export_fold_lines($description,'utf8');
       while (list($key,$value) = each($array))
@@ -1003,17 +1004,17 @@ function export_ical ( $id='all', $attachment=false ) {
     }
 
     /* LOCATION if any (folded to 76 char) */
-    if ($location != ' ') {
-      $location = 'LOCATION:' . $location;
-      $array = export_fold_lines($location,'utf8');
+    if ($location != '') {
+      $location = "LOCATION:" . $location;
+      $array = export_fold_lines($location,"utf8");
       while (list($key,$value) = each($array))
         $ret .= "$value\r\n";
     } 
     
     /* URL if any (folded to 76 char) */
-    if ($url != ' ') {
-      $url = 'URL:' . $url;
-      $array = export_fold_lines($url,'utf8');
+    if ($url != '') {
+      $url = "URL:" . $url;
+      $array = export_fold_lines($url,"utf8");
       while (list($key,$value) = each($array))
         $ret .= "$value\r\n";
     }
@@ -1211,7 +1212,7 @@ foreach ( $data as $Entry ){
   
 
    $months =  (! empty ( $Entry['Repeat']['ByMonth'] ) ) ? 
-     $Entry['Repeat']['ByMonth'] : ' ';
+     $Entry['Repeat']['ByMonth'] : '';
      
    if  ( $subType != 'icalclient' && $subType != 'remoteics' ) {
     // first check for any schedule conflicts
@@ -1373,7 +1374,7 @@ foreach ( $data as $Entry ){
       // Mozilla will send this goofy string, so replace it with real html
       $Entry['Description'] = str_replace ( "=0D=0A=", "<br />", 
         $Entry['Description'] );
-      $Entry['Description'] = str_replace ( "=0D=0A", ' ', 
+      $Entry['Description'] = str_replace ( "=0D=0A", "", 
         $Entry['Description'] );
       // Allow option to not limit description size
       // This will only be practical for mysql and MSSQL/Postgres as 
@@ -1888,7 +1889,7 @@ function parse_ical ( $cal_file, $source='file' ) {
     // We will allow it to be CRLF, CR or LF or any repeated sequence
     // so long as there is a single white space character next.
     //echo "Orig:<br /><pre>$data</pre><br /><br />\n";
-    $data = preg_replace ( "/[\r\n]+[\t ]/", ' ', $data );
+    $data = preg_replace ( "/[\r\n]+[\t ]/",  " ", $data );
     $data = preg_replace ( "/[\r\n]+/", "\n", $data );
     //echo "Data:<br /><pre>$data</pre><p>";
 
@@ -1896,18 +1897,18 @@ function parse_ical ( $cal_file, $source='file' ) {
     // VEVENT, VTODO, VJORNAL, VFREEBUSY, VTIMEZONE
     $state = 'NONE';
     $substate = 'none'; // reflect the sub section
-    $subsubstate = ' '; // reflect the sub-sub section
+    $subsubstate = ''; // reflect the sub-sub section
     $error = false;
     $line = 0;
     $event = '';
-    $lines = explode ( '\n', $data );
+    $lines = explode ( "\n", $data );
     for ( $n = 0; $n < count ( $lines ) && ! $error; $n++ ) {
       $line++;
       $buff = trim( $lines[$n] );
       if ( preg_match ( "/^PRODID:(.+)$/i", $buff, $match) ) {
         $prodid = $match[1];
-        $prodid = str_replace ( "-//", ' ', $prodid);
-        $prodid = str_replace ( "\,',',", $prodid );
+        $prodid = str_replace ( "-//", "", $prodid);
+        $prodid = str_replace ( "\,", ",", $prodid );
         //do_debug ( "Product ID: " . $prodid );
       }
       // parser debugging code...
@@ -2144,7 +2145,7 @@ function icaldate_to_timestamp ($vdate, $tzid = '', $plus_d = '0', $plus_m = '0'
    case 'US/Pacific':
      $this_TIMEZONE = 'America/Los_Angeles'; 
      break;
-   case ' ':
+   case '':
      break;   
    default:
      $this_TIMEZONE = $tzid;
@@ -2537,7 +2538,7 @@ function parse_vcal($cal_file) {
     // VCALENDAR, TZ/DAYLIGHT, VEVENT, ALARM
     $state = 'NONE';
     $substate = 'none'; // reflect the sub section
-    $subsubstate = ' '; // reflect the sub-sub section
+    $subsubstate = ''; // reflect the sub-sub section
     $error = false;
     $line = 0;
     $event = '';
