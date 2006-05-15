@@ -171,7 +171,7 @@ UPDATE webcal_user_pref SET cal_value = 'month.php'  WHERE cal_value = 'month' A
 UPDATE webcal_user_pref SET cal_value = 'week.php'  WHERE cal_value = 'week' AND cal_setting = 'STARTVIEW';
 UPDATE webcal_user_pref SET cal_value = 'year.php'  WHERE cal_value = 'year' AND cal_setting = 'STARTVIEW';
 UPDATE webcal_view SET cal_is_global = 'N';
-/*upgrade_v1.1.0*/
+/*upgrade_v1.1.0a*/
 CREATE TABLE webcal_access_function (
   cal_login VARCHAR(25) NOT NULL,
   cal_permissions VARCHAR(64) NOT NULL,
