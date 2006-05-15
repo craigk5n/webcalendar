@@ -291,10 +291,10 @@ if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != 'Y' ) {
 
 if ( $ALLOW_CONFLICTS != 'Y' && empty ( $confirm_conflicts ) &&
   strlen ( $entry_hour ) > 0 && $timetype != 'U' ) {
-  
+  $conflict_until = ( ! empty ( $rpt_until ) ? $rpt_until : '');
   $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, $bymonth,
    $byweekno, $byyearday, $bymonthday, $byday, $bysetpos, $count,
-   $rpt_until, $wkst, $exception_list, $inclusion_list );
+   $conflict_until, $wkst, $exception_list, $inclusion_list );
   
   //make sure at least start date is in array
   if ( empty ( $dates ) ) $dates[0] = $eventstart;
@@ -356,15 +356,15 @@ if ( empty ( $error ) ) {
   }
 
   $sql = "INSERT INTO webcal_entry ( cal_id, " .
-    ( $old_id > 0 ? " cal_group_id, " : "" ) .
+    ( $old_id > 0 ? ' cal_group_id, ': '' ) .
     "cal_create_by, cal_date, cal_time, " .
-    ( ! empty ( $eventcomplete)? "cal_completed, ": "" ) .
+    ( ! empty ( $eventcomplete)? 'cal_completed, ': '' ) .
     "cal_due_date, cal_due_time, cal_mod_date, cal_mod_time, cal_duration, cal_priority, " .
     "cal_access, cal_type, cal_name, cal_description, cal_location ) " .
     "VALUES ( ?, " .
-    ( $old_id > 0 ? "?, " : "" ) .
+    ( $old_id > 0 ? '?, ': '' ) .
     "?, ?, ?, " . 
-  ( ! empty ( $eventcomplete ) ? "?, ": "" ) .
+  ( ! empty ( $eventcomplete ) ? '?, ': '' ) .
   "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
   $query_params = array();
@@ -436,8 +436,9 @@ if ( empty ( $error ) ) {
     "AND ( cat_owner = ? OR cat_owner IS NULL )", array( $id, $cat_owner ) );
   if ( ! empty ( $cat_id ) ) {
     $categories = explode (",", $cat_id );
+    $categorycnt = count( $categories );
     sort ( $categories);
-    for ( $i =0; $i < count( $categories ); $i++ ) {
+    for ( $i =0; $i < $categorycnt; $i++ ) {
       $names = array();
       $values = array(); 
       $names[] = 'cal_id';
@@ -456,7 +457,8 @@ if ( empty ( $error ) ) {
       }
       // build the variable placeholders - ?-s, comma-separated
       $placeholders = '';
-      for ( $v_i = 0; $v_i < count( $values ); $v_i++ ) {
+      $valuecnt = count( $values );
+      for ( $v_i = 0; $v_i < $valuecnt; $v_i++ ) {
         $placeholders .= '?,';
       }
       $placeholders = preg_replace( "/,$/", "", $placeholders ); // remove trailing ','
@@ -469,7 +471,8 @@ if ( empty ( $error ) ) {
     }
   }     
   // add site extras
-  for ( $i = 0; $i < count ( $site_extras ) && empty ( $error ); $i++ ) {
+  $site_extracnt = count ( $site_extras );
+  for ( $i = 0; $i < $site_extracnt && empty ( $error ); $i++ ) {
     $sql = '';
     $extra_name = $site_extras[$i][0];
     $extra_type = $site_extras[$i][2];
@@ -603,7 +606,8 @@ if ( empty ( $error ) ) {
     }
 
     $placeholders = '';
-  for ( $v_i = 0; $v_i < count( $values ); $v_i++ ) {
+  $valuecnt = count( $values );
+  for ( $v_i = 0; $v_i < $valuecnt; $v_i++ ) {
       $placeholders .= '?,';
   }
   $placeholders = preg_replace( "/,$/", "", $placeholders ); // remove trailing ','
@@ -615,7 +619,8 @@ if ( empty ( $error ) ) {
     } //end add repeating info
     //We manually created exceptions. This can be done without repeats
      if ( ! empty ($exceptions ) ) {
-       for ( $i = 0; $i < count ( $exceptions ); $i++ ) {
+       $exceptcnt = count ( $exceptions );
+       for ( $i = 0; $i < $exceptcnt; $i++ ) {
          $sql = "INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) " .
            "VALUES ( ?, ?, ? )";
          if ( ! dbi_execute ( $sql, array( $id, substr ($exceptions[$i],1,8 ), 
@@ -625,15 +630,15 @@ if ( empty ( $error ) ) {
        }
       } //end exceptions    
   } 
-
+  $partcnt = count ( $participants );
   $from = $login_email;
   if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
     $from = $EMAIL_FALLBACK_FROM;
   // check if participants have been removed and send out emails
   if ( ! $newevent && count ( $old_status ) > 0 ) {  
     while ( list ( $old_participant, $dummy ) = each ( $old_status ) ) {
-      $found_flag = false; 
-      for ( $i = 0; $i < count ( $participants ); $i++ ) {
+      $found_flag = false;
+      for ( $i = 0; $i < $partcnt; $i++ ) {
         if ( $participants[$i] == $old_participant ) {
           $found_flag = true;
           break;
@@ -710,7 +715,7 @@ if ( empty ( $error ) ) {
   }
 
   // now add participants and send out notifications
-  for ( $i = 0; $i < count ( $participants ); $i++ ) {
+  for ( $i = 0; $i < $partcnt; $i++ ) {
     // Is the person adding the nonuser calendar admin
     $is_nonuser_admin = user_is_nonuser_admin ( $login, $participants[$i] );
 
@@ -870,15 +875,17 @@ if ( $single_user == 'N' &&
     $lines = array ( $externalparticipants );
   }
   if ( is_array ( $lines ) ) {
-    for ( $i = 0; $i < count ( $lines ); $i++ ) {
+    $linecnt = count ( $lines );
+    for ( $i = 0; $i < $linecnt; $i++ ) {
       $ext_words = explode ( " ", $lines[$i] );
       if ( ! is_array ( $ext_words ) ) {
         $ext_words = array ( $lines[$i] );
       }
       if ( is_array ( $ext_words ) ) {
+        $ext_wordscnt = count ( $ext_words );
         $ext_names[$ext_count] = "";
         $ext_emails[$ext_count] = "";
-        for ( $j = 0; $j < count ( $ext_words ); $j++ ) {
+        for ( $j = 0; $j < $ext_wordscnt; $j++ ) {
           // use regexp matching to pull email address out
           $ext_words[$j] = chop ( $ext_words[$j] ); // remove \r if there is one
           if ( preg_match ( "/<?\\S+@\\S+\\.\\S+>?/", $ext_words[$j],
@@ -912,7 +919,8 @@ if ( $single_user == 'N' &&
 }  
   // send notification if enabled.
   if ( is_array ( $ext_names ) && is_array ( $ext_emails ) ) {
-    for ( $i = 0; $i < count ( $ext_names ); $i++ ) {
+    $ext_namescnt = count ( $ext_names );
+    for ( $i = 0; $i < $ext_namescnt; $i++ ) {
       if ( strlen ( $ext_names[$i] ) ) {
         $sql = "INSERT INTO webcal_entry_ext_user " .
           "( cal_id, cal_fullname, cal_email ) VALUES ( ?, ?, ? )";
@@ -936,7 +944,7 @@ if ( $single_user == 'N' &&
               $msg .= translate( 'An appointment has been updated by', true);
             }
             $msg .= " " . $login_fullname .  ".\n" .
-              translate( 'The subject is', true) . " \"" . $name . "\"\n\n" .
+              translate( 'The subject is', true) . ' "' . $name . "\"\n\n" .
               translate( 'The description is', true) . ' "' . $description . "\"\n\n" .
               translate( 'Date') . ': ' . date_to_str ( $fmtdate ) . "\n";
               if ( $timetype == 'T')  {
