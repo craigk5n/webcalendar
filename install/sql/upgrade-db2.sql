@@ -185,7 +185,7 @@ UPDATE webcal_user_pref SET cal_value = 'year.php'
 UPDATE webcal_config SET cal_value = 'week.php'
   WHERE cal_setting = 'STARTVIEW';
 
-/*upgrade_v1.1.0*/
+/*upgrade_v1.1.0a*/
 CREATE TABLE webcal_access_user (
   cal_login VARCHAR(50) NOT NULL,
   cal_other_user VARCHAR(50) NOT NULL,
