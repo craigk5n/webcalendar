@@ -3,7 +3,7 @@
     <?php
       echo '<a title="' . 
         translate( 'Add New Group' ) . "\" href=\"group_edit.php\" target=\"grpiframe\" onclick=\"javascript:show('grpiframe');\">" . 
-        translate( 'Add New Grou'p ) . "</a><br />\n";
+        translate( 'Add New Group' ) . "</a><br />\n";
 
        $count = 0;
         $lastrow = 0;
