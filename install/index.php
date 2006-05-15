@@ -364,7 +364,7 @@ if ( ! isset ( $_SESSION['server_url'] ) ) {
         $uri = substr ( $_SERVER['REQUEST_URI'], 0, $ptr + 1 );
         $SERVER_URL = "http://" . $_SERVER['HTTP_HOST'];
         if ( ! empty ( $_SERVER['SERVER_PORT'] ) && $_SERVER['SERVER_PORT'] != 80 )
-          $SERVER_URL .= ":" . $_SERVER['SERVER_PORT'];
+          $SERVER_URL .= ': ' . $_SERVER['SERVER_PORT'];
         $SERVER_URL .= $uri;
         $_SESSION['server_url'] = $SERVER_URL;
       }
@@ -993,7 +993,7 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     fwrite ( $fd, '# updated via install/index.php on ' . date('r') . "\r\n" );
     foreach ( $settings as $k => $v ) {
       if ( $v != '<br />' && $v != '' )
-      fwrite ( $fd, $k . ": " . $v . "\r\n" );
+      fwrite ( $fd, $k . ': ' . $v . "\r\n" );
     }
     fwrite ( $fd, "# end settings.php\r\n?>\r\n" );
     fclose ( $fd );
@@ -1087,11 +1087,11 @@ function db_type_handler () {
   if ( selectvalue == "sqlite" || selectvalue == "ibase" ) {
       form.form_db_database.size = 65;
     document.getElementById("db_name").innerHTML = 
-    "<?php etranslate ( 'Database Name' ) ?>" + ":" +  
+    "<?php etranslate ( 'Database Name' ) ?>" + ": " +  
    "<?php etranslate ( 'Full Path (no backslashes)') ?>";
   } else {
       form.form_db_database.size = 20;
-    document.getElementById("db_name").innerHTML = "<?php etranslate ( 'Database Name' ) ?>" + ":";
+    document.getElementById("db_name").innerHTML = "<?php etranslate ( 'Database Name' ) ?>" + ": ";
   }
 }
 function chkPassword () {
@@ -1267,7 +1267,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <?php //if the settings file doesn't exist or we can't write to it, echo an error header..
 if ( ! $exists || ! $canWrite ) { ?>
  <tr><th class="redheader" colspan="2"><?php echo translate ( 'Settings.php Status' ) . 
-   ":" . translate ( 'Error' ) ?></th></tr>
+   ': ' . translate ( 'Error' ) ?></th></tr>
 <?php //..otherwise, edit a regular header
 } else { ?>
  <tr><th class="header" colspan="2">Settings.php Status</th></tr>
