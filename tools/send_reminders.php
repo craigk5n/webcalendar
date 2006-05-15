@@ -117,7 +117,8 @@ if ( $res ) {
 // They must also have an email address.  Otherwise, we can't
 // send them mail, so what's the point?
 $allusers = user_get_users ();
-for ( $i = 0; $i < count ( $allusers ); $i++ ) {
+$allusercnt = count ( $allusers );
+for ( $i = 0; $i < $allusercnt; $i++ ) {
   $names[$allusers[$i]['cal_login']] = $allusers[$i]['cal_fullname'];
   $emails[$allusers[$i]['cal_login']] = $allusers[$i]['cal_email'];
 }
@@ -193,19 +194,19 @@ $enddate = date ( 'Ymd', $enddateTS );
 // Now read events all the repeating events (for all users)
 $repeated_events = query_events ( "", true, "AND (webcal_entry_repeats.cal_end >= 
   $startdate OR webcal_entry_repeats.cal_end IS NULL) " );
-
+$repcnt = count ( $repeated_events );
 // Read non-repeating events (for all users)
 if ( $debug )
   echo "Checking for events from date $startdate to date $enddate <br />\n";
 $events = read_events ( "", $startdateTS, $enddateTS );
-
+$eventcnt = count ( $events );
 if ( $debug )
   echo "Checking for tasks from date $startdate to date $enddate <br />\n";
 $tasks = read_tasks ( '', $enddateTS );
-
+$taskcnt = count ( $tasks );
 if ( $debug ) {
   $found = 0;
-  $found = count ( $events ) + count ( $tasks ) +count ( $repeated_events );
+  $found = $eventcnt + $taskcnt + $repcnt;
   echo 'Found ' . $found . " events in time range. <br />\n";
 }
 $is_task = false;
@@ -217,7 +218,8 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   $ev = get_entries ( $date );
   // Keep track of duplicates
   $completed_ids = array ( );
-  for ( $i = 0; $i < count ( $ev ); $i++ ) {
+  $evcnt = count ( $ev );
+  for ( $i = 0; $i < $evcnt; $i++ ) {
     $id = $ev[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
@@ -231,7 +233,8 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   $tks = get_tasks ( $date );
   // Keep track of duplicates
   $completed_ids = array ( );
-  for ( $i = 0; $i < count ( $tks ); $i++ ) {
+  $tkscnt = count ( $tks );
+  for ( $i = 0; $i < $tkscnt; $i++ ) {
     $id = $tks[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
@@ -243,7 +246,8 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   $is_task = false;
   //Get repeating events...tasks are not included at this time
   $rep = get_repeating_entries ( "", $date );
-  for ( $i = 0; $i < count ( $rep ); $i++ ) {
+  $repcnt = count ( $rep );
+  for ( $i = 0; $i < $repcnt; $i++ ) {
     $id = $rep[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
@@ -284,7 +288,7 @@ function send_reminder ( $id, $event_date ) {
       $percentage[$row[0]] = $row[1];
     }
   }
-
+  $partcnt = count ( $participants );
   // get external participants
   $ext_participants = array ();
   $num_ext_participants = 0;
@@ -301,7 +305,7 @@ function send_reminder ( $id, $event_date ) {
       }
     }
   }
-
+  $ext_partcnt = count ( $ext_participants );
   if ( ! $num_participants && ! $num_ext_participants ) {
     if ( $debug )
       echo "No participants found for event id: $id <br />\n";
@@ -334,7 +338,7 @@ function send_reminder ( $id, $event_date ) {
     $mailusers[] = $emails[$single_user_login];
     $recipients[] = $single_user_login;
   } else {
-    for ( $i = 0; $i < count ( $participants ); $i++ ) {
+    for ( $i = 0; $i < $partcnt; $i++ ) {
       if ( strlen ( $emails[$participants[$i]] ) ) {
         $mailusers[] = $emails[$participants[$i]];
         $recipients[] = $participants[$i];
@@ -343,14 +347,15 @@ function send_reminder ( $id, $event_date ) {
           echo "No email for user $participants[$i] <br />\n";
       }
     }
-    for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
+    for ( $i = 0; $i < $ext_partcnt; $i++ ) {
       $mailusers[] = $ext_participants_email[$i];
       $recipients[] = $ext_participants[$i];
     }
   }
+  $mailusercnt = count ( $mailusers );
   if ( $debug )
-    echo 'Found ' . count ( $mailusers ) . " with email addresses <br />\n";
-  for ( $j = 0; $j < count ( $mailusers ); $j++ ) {
+    echo 'Found ' . $mailusercnt . " with email addresses <br />\n";
+  for ( $j = 0; $j < $mailusercnt; $j++ ) {
     $recip = $mailusers[$j];
     $user = $recipients[$j];
     $isExt = ( in_array ( $user, $participants ) ? false : true );
@@ -457,7 +462,8 @@ function send_reminder ( $id, $event_date ) {
 
     // site extra fields
     $extras = get_site_extra_fields ( $id );
-    for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
+    $site_extracnt = count ( $site_extras );
+    for ( $i = 0; $i < $site_extracnt; $i++ ) {
       $extra_name = $site_extras[$i][0];
       $extra_descr = $site_extras[$i][1];
       $extra_type = $site_extras[$i][2];
@@ -480,11 +486,11 @@ function send_reminder ( $id, $event_date ) {
       $DISABLE_PARTICIPANTS_FIELD != 'N' ) ) {
         $body .= translate( 'Participants', true) . ":\n";
 
-      for ( $i = 0; $i < count ( $participants ); $i++ ) {
+      for ( $i = 0; $i < $partcnt; $i++ ) {
         $body .= $padding . $names[$participants[$i]] . "\n";
       }
-      for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
-        $body .= $padding . $ext_participants[$i]  . " (" .
+      for ( $i = 0; $i < $ext_partcnt; $i++ ) {
+        $body .= $padding . $ext_participants[$i]  . ' (' .
             translate( 'External User', true ) . ")\n";
       }
     }
