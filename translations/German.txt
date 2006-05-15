@@ -4,23 +4,9 @@
 #
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
-# Last update: 24 Jan 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 2 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 3 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 6 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 10 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 13 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 22 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 23 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 27 Feb 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 2 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 3 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 6 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 13 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 21 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 24 Mar 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 9 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 05-04-2006
+# Last update: 15 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 05-15-2006
 
 
 ###############################################
@@ -98,6 +84,7 @@ Next: N&auml;chsten
 ###############################################
 # Page: add_entry.php
 #
+is already on your calendar.: ist schon auf Ihrem Kalender
 Invalid entry id: Ung&uuml;ltiger Eintrag
 This is a private event and may not be added to your calendar.: Das ist ein PRIVATER Termin und kann Ihrem Kalender nicht hinzugef&uuml;gt werden.
 This is a confidential event and may not be added to your calendar.: Das ist ein <b>vertraulicher Termin</b> und wird nicht zu Ihrem Kalender hinzugef&uuml;gt.
@@ -108,11 +95,10 @@ Error adding event: Fehler beim Hinzuf&uuml;gen eines Termines
 # Page: admin.php
 #
 Error: Fehler
+Select: Ausw&auml;hlen 
 Yes: Ja
 No: Nein
 System Settings: Systemeinstellungen
-
-
 Help: Hilfe
 Settings: Einstellungen
 Public Access: &Ouml;ffentlicher Zugang
@@ -120,7 +106,6 @@ Groups: Benutzergruppen
 NonUser Calendars: 'Zentrale' - Kalender
 Other: Sonstiges
 Email: Email
-colors-help: Alle Farben k&ouml;nnen im Format "#RRGGBB" eingegeben werden. Hierbei steht "RR" f&uuml;r den hexadezimalen Wert von Rot, "GG" f&uuml;r Gr&uuml;n und "BB" f&uuml;r Blau.
 Colors: Farben
 app-name-help: Gibt den Titel f&uuml;r die Titelleiste des Browsers, f&uuml;r alle Seiten des Kalenders und die Startseite des Kalenders an. Der Titel wird in die Sprachdatei eingetragen und kann f&uuml;r andere Spracheinstellungen abge&auml;ndert werden.
 Application Name: Anwendungsbezeichnung
@@ -353,7 +338,6 @@ gradient-colors: Falls aktiviert, stufenweiser Farbverlauf (Farb&auml;nderung) m
 Enable gradient images for background colors: Aktiviern des stufenweisen Farbverlaufes (Farb&auml;nderung) f&uuml;r Hintergrundfarben
 Not available: Nicht verf&uuml;gbar
 Document background: Hintergrund
-Select: Ausw&auml;hlen 
 Document title: Titel
 Document text: Textfarbe der Webkalenderseiten
 My event text: Textfarbe meiner eigenen Eintr&auml;ge
@@ -611,6 +595,8 @@ Source: Quelle
 Color: Farbe
 Duplicates: Duplikate
 Show layer events that are the same as your own: Zeige Layer welche die gleichen Termine sind wie die eigenen
+Add to Others: Zu Anderen hinzuf&uuml;gen
+Add to My Calendar: Zu meinem Kalender hinzuf&uuml;gen
 Delete layer: Layer l&ouml;schen
 Are you sure you want to delete this layer?: Wollen Sie diesen Layer wirklich l&ouml;schen?
 
@@ -743,6 +729,7 @@ Set Password: Setze Kennwort
 Deleting users not supported: Gel&ouml;schte Benutzer werden nicht unterst&uuml;tzt
 The passwords were not identical: Die eingebenen Kennw&ouml;rter stimmten nicht &uuml;berein
 You have not entered a password: Sie haben kein Kennwort eingegeben
+Invalid characters in login: Ung&uml;ltige Zeichen im Login
 Username can not be blank: Benutzername darf nicht LEER sein
 
 
@@ -797,6 +784,7 @@ Nonuser: 'Zentrale'-Kalender
 user-customize-color: Spezifiziert, ob Benutzern erlaubt wird, ihre eigenen Farbeneinstellungen zu &auml;ndern
 enable-gradient-help: Verwendet die stufenweise Farb&auml;nderungen f&uuml;r Zellenhintergr&uuml;nde
 Manually entering color values: Eigene eingegebene Farbwerte
+colors-help: Alle Farben k&ouml;nnen im Format "#RRGGBB" eingegeben werden. Hierbei steht "RR" f&uuml;r den hexadezimalen Wert von Rot, "GG" f&uuml;r Gr&uuml;n und "BB" f&uuml;r Blau.
 
 
 ###############################################
@@ -1008,6 +996,12 @@ entries: Eintr&auml;ge
 
 
 ###############################################
+# Page: publish.php
+#
+No user specified: Kein Benutzer ausgew&auml;hlt
+
+
+###############################################
 # Page: purge.php
 #
 Purging events for: L&ouml;sche Termine f&uuml;r
@@ -1086,8 +1080,6 @@ Advanced Search: Erweiterte Suche
 #
 You must enter one or more search keywords: Sie m&uuml;ssen ein oder mehrere Stichw&ouml;rter eingeben
 Search Results: Suchergebnis
-match found: Eintrag gefunden
-matches found: Eintr&auml;ge gefunden
 No matches found: Keine Eintr&auml;ge gefunden
 
 
@@ -1193,12 +1185,12 @@ Edit entry: Eintrag &auml;ndern
 from calendar of: vom Kalender
 Copy entry: Eintrag kopieren
 This will delete the entry from your calendar.: Dieser Eintrag wird von Ihrem Kalender gel&ouml;scht.
-Add to My Calendar: Zu meinem Kalender hinzuf&uuml;gen
 Do you want to add this entry to your calendar?: Wollen Sie diesen Eintrag zu Ihrem Kalender hinzuf&uuml;gen?
 This will add the entry to your calendar.: Bitte best&auml;tigen, um den Eintrag hinzuzuf&uuml;gen.
 Email all participants: Email an alle Benutzer
 Show activity log: Aktivit&auml;ten Protokoll ansehen
 Hide activity log: Aktivit&auml;ten Protokoll ausblenden
+Export this entry to: Diesen Eintrag exportieren nach
 
 
 ###############################################
@@ -1243,6 +1235,7 @@ LANGUAGE DEFINED: SPRACHDEFINIERT
 December: Dezember
 Dec: Dez
 
+
 ###############################################
 # Page: includes/functions.php
 #
@@ -1252,7 +1245,6 @@ __month__ __yyyy__: __month__ __yyyy__
 This event is private: Dieser Termin ist <b>PRIVAT</b>
 Conf.: Geheim
 Sun: So
-
 Mon: Mo
 Tue: Di
 Wed: Mi
@@ -1260,12 +1252,12 @@ Thu: Do
 Fri: Fr
 Sat: Sa
 WK: KW
-TASKS: AUFGABE
-Task_Title: Aufgabentitel
-Due: F&auml;lligkeit
 Task Name: Aufgabenname
 Task Due Date: Abgabefrist
 __mm__/__dd__/__yyyy__: __dd__. __mm__. __yyyy__
+TASKS: AUFGABE
+Task_Title: Aufgabentitel
+Due: F&auml;lligkeit
 View this task: Diese Aufgabe anzeigen
 View this event: Diesen Termin anzeigen
 exceeds limit of XXX events per day: &uuml;berschrittenes Limit von XXX Termin(e) pro Tag
@@ -1512,9 +1504,11 @@ Reminder: Erinnerung
 ###############################################
 # Page: install/index.php
 #
+Failure Reason: Fehlerbegr&uuml;ndung
+Perl script required: Ihre vorhergehende Version des Webkalenders erfordert das Durchf&uuml;hren eines PERL Skriptes um Ihre Dateien umzuwandeln. '/tools/upgrade_to_0.9.7.pl' bitte laufen lassen danach zu dieser Seite zur&uuml;ckkehren um fortzufahren.
+Your previous version of WebCalendar requires updating several database tables.: Ihre vorhergehende Version vom Webkalender erfordert die Aktualisierung einiger Datenbanktabellen. 
 Successful Login: Erfolgreiches Login
 Invalid Login: Ung&uuml;ltiges Login
-
 required only if Safe Mode is On: nur erforderlich wenn Safe Mode 'ON' gesetzt ist
 required only if Remote Calendars are used: nur erforderlich wenn Fernzugriff-Kalender verwendet werden
 needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig
@@ -1523,7 +1517,6 @@ Unable to write password to settings.php file: Passwort kann nicht in die 'setti
 Password has been set: Passwort wurde gesetzt
 Connection Successful: Verbindung erfolgreich.
 Please go to next page to continue installation: Bitte f&uuml;hren Sie den n&auml;chsten Schritt aus um mit der Installation fortzufahren
-Failure Reason: Fehlerbegr&uuml;ndung
 Correct your entries or click the <b>Create New</b> button to continue installation: Korrigieren Sie Ihre Eintr&auml;ge oder klicken Sie auf <b>Create New</b> Button um die Installation fortzufahren
 You must manually create database: Sie m&uuml;ssen die Datenbank manuell einrichten
 Correct your entries and try again: Korrigieren Sie Ihre Eintr&auml;ge und versichen Sie es erneut
@@ -1534,7 +1527,7 @@ Timezone Conversion Successful: Konvertierung der Zeitzone erfolgreich abgeschlo
 Error Converting Timezone: Fehler bei der Zeitzonenkonvertierung
 Error Unable to write to file: Fehler beim Schreiben auf Datei
 Please change the file permissions of this file: Bitte &auml;ndern Sie die Rechte dieser Datei
-Please change the file permissions of your includes directory to allow writing by other users: Bitte &auml;ndern Sie die Dateirechte Ihres Includeverzeichnisses damit andere Benutzer auch Schreibrechte haben
+Please change includes dir premission: Bitte &auml;ndern Sie die Dateiberechtigungen von Ihrem 'includes'-Verzeichnis um 'Schreibrechte' f&uuml;r 'andere Benutzer' zu haben.
 Your settings have been saved: Ihre Einstellungen wurden gespeichert.
 Error you must specify a\\nSingle-User Login: Fehler, Sie m&uuml;ssen ein Single-User Login definieren
 Server URL must end with: Server URL mu&szlig; enden mit
@@ -1543,7 +1536,7 @@ Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
 The password contains illegal characters.: Das Passwort beinhaltet unzul&auml;ssige Zeichen
 WebCalendar Installation Wizard: Webkalender Installationsassistent
 Step: Schritt
-This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see: Dieser Installationsassistent unterst&uuml;zt Sie beim Erstellen bzw. Updaten des Webkalenders (Grundeinstellung). F&uuml;r Hilfe und Fehlersuche schauen Sie
+This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch 
 PHP Version Check: PHP Versions&uuml;berpr&uuml;fung
 Check to see if PHP 4.1.0 or greater is installed: &Uuml;berpr&uuml;fung ob PHP 4.1.0 oder h&ouml;her installiert ist
 PHP version: PHP Version
@@ -1559,9 +1552,7 @@ Your <b>settings.php</b> file appears to be valid: Ihre <b>settings.php</b> Date
 Configuration Wizard Password: Assitenten - Konfigurationspasswort
 Create Settings File Password: Erzeuge Passwort f&uuml;r die Settings Datei
 Password (again): Passwort (wiederholen)
-In this section you will set up and test a connection to your database server: In diesem Abschnitt erstellen und testen Sie Ihre Verbindung zum Datenbankserver.
-The account information supplied should have FULL permissions to create databases, tables and users: Die gelieferten Kontoinformationen sollten VOLLE Rechte zum Erstellen von Datenbanken, Tabellen und Benutzer haben
-If this is not possible, or your database access is limited, you will have to manually configure your database: Wenn das nicht m&ouml;glich ist, oder Ihre Datenbank begrenzten Zugriff hat, m&uuml;ssen Sie Ihre Datenbank manuell konfigurieren
+db setup directions...: In diesem Abschnitt stellen (und &uuml;berpr&uuml;fen) Sie die Verbindung zum Datenbankserver her. Die gelieferten Kontoinformationen sollten VOLLE Erlaubnis haben um Datenbanken, Tabellen und Benutzer zu erstellen. Wenn dies nicht m&ouml;glich oder Ihr Datenbankzugriff begrenzt ist, m&uuml;ssen Sie manuell Ihre Datenbank einstellen. 
 Database Status: Datenbank Status
 Supported databases for your PHP installation: Unterst&uuml;zte Datenbanken f&uuml;r Ihre PHP Installation
 Your current database settings are able to access the database: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie in der Lage auf Ihre Datenbank zuzugreifen.
@@ -1573,32 +1564,33 @@ Server: Server
 Connection Persistence: Permanente Verbindung
 Create New: Neu erstellen
 Back: Zur&uuml;ck
-All your database tables appear to be up to date. You may proceed to the: Alle Ihre Datenbanktabellen scheinen upgedated zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
+All your database tables appear to be up to date. You may proceed to the: Alle Ihre Datenbanktabellen scheinen auf den neuesten Stand gebracht zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
 next page and complete your WebCalendar setup: Ihre Webkalendereinstellungen zu vervollst&auml;ndigen
 This appears to be a new installation. If this is not correct, please: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte
 go back to the previous page and correct your settings: Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen
 The database requires some data input: Die Datenbank erfodert einige Dateneingaben
 Click <b>Update Database</b> to complete the upgrade: Klick auf <b>Update Database</b> um das Upgrade zu vervollst&auml;ndigen
 This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
-In this section we will perform the required database changes to bring your database up to the required level: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch, um Ihre Datenbank auf das notwendige Niveau zu bringen.
+In this section we will perform the required database changes to bring your database up to the required level: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch, um Ihre Datenbank auf den notwendigen Stand zu bringen.
 If you are using a fully supported database, this step will be performed automatically for you: Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt.
 If not, the required SQL can be displayed and you should be able: Wenn nicht, kann der angeforderte SQL angezeigt werden und Sie sollten in der Lage sein,
-to cut &amp; paste it into your database server query window: diese zu kopieren &amp; f&uuml;gen diese in Ihr Datenbankabfragefenster ein
+to cut &amp; paste it into your database server query window: diese zu kopieren und in Ihr Datenbankabfragefenster einzuf&uuml;gen
 No database actions are required: Keine Datenbankt&auml;tigkeiten erforderlich
 The following database actions are required: Folgende Datenbankt&auml;tigkeiten sind erforderlich
 ODBC Underlying Database: ODBC zugrundeliegende Datenbank
+Automatic installation not supported: Eine komplett automatisierte Installation wird von Ihrem verwendeten Datenbanktyps nicht vollst&auml;ndig unterst&uuml;tzt. Sie m&uuml;ssen die erforderlichen Tabellen mit den mitgelieferten SQL manuell erstellen. Bitte Klicken <b>Ben&ouml;tigte SQL anzeigen</b> um fortzufahren. Ausschneiden &amp; Einf&uml;gen in Ihrem Datenbankabfragefenster.
 This may take several minutes to complete: Die Fertigstellung kann einige Minuten dauern
 Install Database: Datenbank installieren
 Update Database: Datenbank updaten
 Display Required SQL: Ben&ouml;tigte SQL anzeigen
-After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes: Nach manueller Ausf&uuml;hrung des SQLs, sollten Sie zur vorigen Seite zur&uuml;ckkehren und die Datenbank nochmals testen, so das das Script die &Auml;nderungen erkennen kann
+Return to previous page after processing sql: Nach der Verarbeitung des SQL, m&uuml;ssen Sie zur vorigen Seite zur&uuml;ckkehren um Ihre Datenbank erneut zu testen (&uuml;berpr&uuml;fen), damit die &Auml;nderungen ermittelt werden k&ouml;nnen.
 This is the final step in setting up your WebCalendar Installation: Dieses ist der letzte Schritt um Ihre Webkalenderinstallation abzuschliessen
 Timezone Conversion: Zeitzonenkonvertierung
 It appears that you have: Es scheint Sie haben Ihre Webkalendereintr&auml;ge noch
 NOT: NICHT
-converted your existing WebCalendar event data to GMT: in GMT (Greenwich Mean Time) umgewandelt zu haben
+converted your existing WebCalendar event data to GMT: &nbsp;in GMT (Greenwich Mean Time) umgewandelt zu haben
 If you have, you may ignore this notice and not proceed with the conversion: Wenn Sie dies bereits getan haben, k&ouml;nnen Sie diese Nachricht ignorieren und ohne der Umwandlung fortfahren.
-If this is a new installation, you may also ignore this notice.: Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung ingorieren
+If this is a new installation, you may also ignore this notice.: Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren
 Convert Data to GMT: Konvertieren nach GMT
 Conversion Successful: Umwandlung erfolgreich
 Application Settings: Anwendungseinstellung
