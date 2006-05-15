@@ -29,14 +29,15 @@ print_header($INC);
   <ul>
 <?php
 $global_found = false;
-for ( $i = 0; $i < count ( $views ); $i++ ) {
+$cnt = count ( $views );
+for ( $i = 0; $i < $cnt; $i++ ) {
   if ( $views[$i]['cal_is_global'] != 'Y' || $is_admin ) {
     echo "<li><a title=\"" . 
-      htmlspecialchars ( $views[$i]["cal_name"] ) .
+      htmlspecialchars ( $views[$i]['cal_name'] ) .
       "\" href=\"views_edit.php?id=" . 
-      $views[$i]["cal_view_id"] .
+      $views[$i]['cal_view_id'] .
       "\" target=\"viewiframe\" onclick=\"javascript:show('viewiframe');\">" . 
-      htmlspecialchars ( $views[$i]["cal_name"] ) . '</a>';
+      htmlspecialchars ( $views[$i]['cal_name'] ) . '</a>';
     if ( $views[$i]['cal_is_global'] == 'Y' ) {
       echo "&nbsp;<abbr title=\"" . translate( 'Global' ) . "\">*</abbr>";
       $global_found = true;

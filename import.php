@@ -39,7 +39,8 @@ function print_user_list () {
     $num_users = 0;
     $size = 0;
     $users = '';
-    for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+    $cnt = count ( $userlist );
+    for ( $i = 0; $i < $cnt; $i++ ) {
       $l = $userlist[$i]['cal_login'];
       $size++;
       $users .= '<option value="' . $l . '"';
@@ -57,11 +58,11 @@ function print_user_list () {
       $size = 15;
     else if ( $size > 5 )
       $size = 5;
-    print '<tr><td style="vertical-align:top;">' . "\n";
-    print '<label for="caluser">' . 
+    echo '<tr><td style="vertical-align:top;">' . "\n";
+    echo '<label for="caluser">' . 
      translate( 'Calendar' ) . "</label></td><td>\n";
-    print '<select name="calUser" id="caluser" size="' .$size. "\">$users\n";
-    print '</select></td></tr>' . "\n";
+    echo '<select name="calUser" id="caluser" size="' .$size. "\">$users\n";
+    echo '</select></td></tr>' . "\n";
   }
 }
 ?>

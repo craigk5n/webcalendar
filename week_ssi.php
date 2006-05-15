@@ -101,7 +101,7 @@ $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( 'Ymd', $days[$d] );
 
-  print "<td style=\"vertical-align:top; width:75px; height:75px;";
+  echo "<td style=\"vertical-align:top; width:75px; height:75px;";
   if ( $date == date ( 'Ymd' ) )
     echo " background-color:$TODAYCELLBG;\">\n";
   else

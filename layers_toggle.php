@@ -26,7 +26,7 @@ $sql = "DELETE FROM webcal_user_pref WHERE cal_login = ? " .
   "AND cal_setting = 'LAYERS_STATUS'";
 dbi_execute ( $sql , array ( $layer_user ) );
 
-$value = ( $status == "off" ? "N" : "Y" );
+$value = ( $status == 'off' ? 'N': 'Y' );
 
 $sql = "INSERT INTO webcal_user_pref " .
   "( cal_login, cal_setting, cal_value ) VALUES " .

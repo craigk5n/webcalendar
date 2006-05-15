@@ -207,10 +207,10 @@ if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME == 'Title' ) {
 
 <?php
 if ( ! empty ( $error ) ) {
-  print '<span style="color:#FF0000; font-weight:bold;">' . 
+  echo '<span style="color:#FF0000; font-weight:bold;">' . 
     translate( 'Error' ) . ": $error</span><br />\n";
 } else {
-  print "<br />\n";
+  echo "<br />\n";
 }
 
 if ( $logout ) {
@@ -268,7 +268,8 @@ if ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) { ?>
 <?php }
 
   $nulist = get_nonuser_cals ();
-  for ( $i = 0; $i < count ( $nulist ); $i++ ) {
+  $cnt = count ( $nulist );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     if ( $nulist[$i]['cal_is_public'] == 'Y' ) {
       ?><a class="nav" href="nulogin.php?login=<?php
         echo $nulist[$i]['cal_login'] . '">' .

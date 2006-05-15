@@ -216,7 +216,8 @@ if ( $showHelp ) {
 
 if ( count ( $goto_link ) > 0 ) {
   ?><span class="prefix"><?php etranslate( 'Go to' )?>:</span> <?php
-  for ( $i = 0; $i < count ( $goto_link ); $i++ ) {
+  $gotocnt = count ( $goto_link );
+  for ( $i = 0; $i < $gotocnt; $i++ ) {
     if ( $i > 0 )
       echo ' | ';
     echo $goto_link[$i];
@@ -226,9 +227,10 @@ if ( count ( $goto_link ) > 0 ) {
 
 <!-- VIEWS -->
 <?php
+$viewcnt = count ( $views );
 if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER != 'N' )
-  && count ( $views ) > 0 ) {
-  for ( $i = 0; $i < count ( $views ); $i++ ) {
+  && $viewcnt > 0 ) {
+  for ( $i = 0; $i < $viewcnt; $i++ ) {
     $out = '<a title="' .
       htmlspecialchars ( $views[$i]['cal_name'] ) .
       '" href="';
@@ -240,9 +242,10 @@ if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER != 'N' )
     $views_link[] = $out;
   }
 }
-if ( count ( $views_link ) > 0 ) {
+$views_linkcnt = count ( $views_link );
+if ( $views_linkcnt > 0 ) {
   ?><br /><span class="prefix"><?php etranslate( 'Views' )?>:</span>&nbsp;<?php
-  for ( $i = 0; $i < count ( $views_link ); $i++ ) {
+  for ( $i = 0; $i < $views_linkcnt; $i++ ) {
     if ( $i > 0 )
       echo ' | ';
     echo $views_link[$i];
@@ -274,10 +277,10 @@ $reports_link = array ();
     }
     dbi_free_result ( $res );
   }
-
-  if ( count ( $reports_link ) > 0 ) {
+  $reports_linkcnt = count ( $reports_link );
+  if ( $reports_linkcnt  > 0 ) {
     ?><br /><span class="prefix"><?php etranslate( 'Reports' );?>:</span>&nbsp;<?php
-    for ( $i = 0; $i < count ( $reports_link ); $i++ ) {
+    for ( $i = 0; $i < $reports_linkcnt ; $i++ ) {
       if ( $i > 0 )
         echo ' | ';
       echo $reports_link[$i];
@@ -351,7 +354,8 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     array_unshift ( $grouplist, $public );
   }
   $groups = "";
-  for ( $i = 0; $i < count ( $grouplist ); $i++ ) {
+  $grouplistcnt = count ( $grouplist );
+  for ( $i = 0; $i < $grouplistcnt; $i++ ) {
     $l = $grouplist[$i]['cal_login'];
     $f = $grouplist[$i]['cal_fullname'];
     // Use the preferred view if it is day/week/month/year.php.  Try
@@ -381,7 +385,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
 }
 
 // WebCalendar Info...
-print '<br /><br /><a title="' . $GLOBALS['PROGRAM_NAME'] . '" ' .
+echo '<br /><br /><a title="' . $GLOBALS['PROGRAM_NAME'] . '" ' .
   "id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_blank\">" .
   $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
@@ -400,7 +404,8 @@ if ( dbi_get_debug() ) { ?>
 <?php
 $log = $GLOBALS['SQLLOG'];
 //$log=0;
-for ( $i = 0; $i < count ( $log ); $i++ ) {
+$logcnt = count ( $log );
+for ( $i = 0; $i < $logcnt; $i++ ) {
   echo '<li>' . $log[$i] . '</li>';
 }
 ?>

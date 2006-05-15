@@ -402,7 +402,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   }
   if ( ! empty ( $defusers ) ) {
     $tmp_ar = explode ( ',', $defusers );
-    for ( $i = 0; $i < count ( $tmp_ar ); $i++ ) {
+    $cnt = count ( $tmp_ar );
+    for ( $i = 0; $i < $cnt; $i++ ) {
       $participants[$tmp_ar[$i]] = 1;
     }
   }
@@ -662,7 +663,8 @@ if ( $eType == 'task' ) { //only for tasks
       ' cellpadding="2" cellspacing="5">'.
       "<tr>\n<td colspan=\"2\">". translate( 'All Percentages' ) . '</td></tr>';
       $others_complete = 'yes';
-      for ( $i = 0; $i < count ( $overall_percent ); $i++ ) {
+      $cnt = ount ( $overall_percent );
+      for ( $i = 0; $i < $cnt; $i++ ) {
         user_load_variables ( $overall_percent[$i][0], 'percent' );
         echo  '<tr><td>' . $percentfullname . '</td><td>' .
            $overall_percent[$i][1] . "</td></tr>\n";
@@ -773,9 +775,10 @@ if ( $eType != 'task' ) {?>
 // load any site-specific fields and display them
 if ( $id > 0 )
   $extras = get_site_extra_fields ( $id );
-if ( count ( $site_extras ) ) 
+$site_extracnt = count ( $site_extras );
+if ( $site_extracnt ) 
   echo '<table>';
-for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
+for ( $i = 0; $i < $site_extracnt; $i++ ) {
   $extra_name = $site_extras[$i][0];
   $extra_descr = $site_extras[$i][1];
   $extra_type = $site_extras[$i][2];
@@ -816,7 +819,8 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     echo '<select name="' . $extra_name . "\">\n";
     echo '<option value="">None</option>' ."\n";
     $userlist = get_my_users ( get_my_users );
-    for ( $j = 0; $j < count ( $userlist ); $j++ ) {
+    $usercnt = count ( $userlist );
+    for ( $j = 0; $j < $usercnt; $j++ ) {
       if ( access_is_enabled () &&
         ! access_user_calendar ( 'view', $userlist[$j]['cal_login'] ) )
         continue; // cannot view calendar so cannot add to their cal
@@ -831,7 +835,8 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
     // show custom select list.
     echo '<select name="' . $extra_name . "\">\n";
     if ( is_array ( $extra_arg1 ) ) {
-      for ( $j = 0; $j < count ( $extra_arg1 ); $j++ ) {
+      $extra_arg1cnt = count ( $extra_arg1 ); 
+      for ( $j = 0; $j < $extra_arg1cnt; $j++ ) {
         echo "<option";
         if ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
           $extra_arg1[$j] == $extras[$extra_name]['cal_data'] )
@@ -843,7 +848,7 @@ for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
   }
   echo "</td></tr>\n"; 
 }
-if ( count ( $site_extras ) )
+if ( $site_extracnt )
   echo "</table>\n";
 // end site-specific extra fields
 
@@ -867,6 +872,7 @@ if ( $login == '__public__' && $PUBLIC_ACCESS_OTHERS != 'Y' )
 
 if ( $single_user == 'N' && $show_participants ) {
   $userlist = get_my_users ( $create_by, 'invite' );
+  $usercnt = count ( $userlist );
   if ($NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_nonuser_cals ();
     $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
@@ -874,7 +880,7 @@ if ( $single_user == 'N' && $show_participants ) {
   $num_users = 0;
   $size = 0;
   $users = '';
-  for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+  for ( $i = 0; $i < $usercnt; $i++ ) {
     $l = $userlist[$i]['cal_login'];
     $size++;
     $users .= '<option value="' . $l . '"';
@@ -903,26 +909,26 @@ if ( $single_user == 'N' && $show_participants ) {
     $size = 15;
   else if ( $size > 5 )
     $size = 5;
-  print '<tr title="' . 
+  echo '<tr title="' . 
  tooltip( 'participants-help' ) . '"><td class="tooltipselect">' ."\n" .
   '<label for="entry_part">' . translate( 'Participants' ) . ":</label></td><td>\n";
-  print "<select name=\"participants[]\" id=\"entry_part\" size=\"$size\" multiple=\"multiple\">$users\n";
-  print "</select>\n";
+  echo "<select name=\"participants[]\" id=\"entry_part\" size=\"$size\" multiple=\"multiple\">$users\n";
+  echo "</select>\n";
   if ( $GROUPS_ENABLED == 'Y' ) {
     echo '<input type="button" onclick="selectUsers()" value="' .
       translate( 'Select' ) . '..." />' . "\n";
   }
   echo '<input type="button" onclick="showSchedule()" value="' .
     translate( 'Availability' ) . '..." />' ."\n";
-  print "</td></tr>\n";
+  echo "</td></tr>\n";
 
   // external users
   if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' ) {
-    print '<tr title="' .
+    echo '<tr title="' .
       tooltip( 'external-participants-help' ) . '"><td style="vertical-align:top;" class="tooltip">' . "\n" . '<label for="entry_extpart">' .
       translate( 'External Participants' ) . ':</label></td><td>' . "\n";
-    print '<textarea name="externalparticipants" id="entry_extpart" rows="5" cols="40">';
-    print $external_users . "</textarea>\n</td></tr>\n";
+    echo '<textarea name="externalparticipants" id="entry_extpart" rows="5" cols="40">';
+    echo $external_users . "</textarea>\n</td></tr>\n";
   }
 }
 ?>
@@ -1141,11 +1147,13 @@ if ( $useTabs ) { ?>
 
  //Populate Repeat Exceptions data for later use
  $excepts = '';
- for ( $i = 0; $i < count ( $exceptions ); $i++ ) {
+ $exceptcnt = count ( $exceptions );
+ for ( $i = 0; $i < $exceptcnt; $i++ ) {
    $excepts .= '<option -' . $exceptions[$i] . '>-' . $exceptions[$i] . "</option>\n";
  }
   //Populate Repeat Inclusions data for later use
- for ( $i = 0; $i < count ( $inclusions ); $i++ ) {
+ $includecnt = count ( $inclusions );
+ for ( $i = 0; $i < $includecnt; $i++ ) {
    $excepts .= '<option +' . $inclusions[$i] . '>+' . $inclusions[$i] . "</option>\n";
  }
 ?>

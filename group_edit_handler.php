@@ -42,7 +42,8 @@ if ( ! $is_admin ) {
     # update user list
     if ( empty ( $error ) &&  ! empty ( $users ) ) {
       dbi_execute ( "DELETE FROM webcal_group_user WHERE cal_group_id = ?", array( $id ) );
-      for ( $i = 0; $i < count ( $users ); $i++ ) {
+      $cnt = count ( $users );
+      for ( $i = 0; $i < $cnt ; $i++ ) {
         dbi_execute ( "INSERT INTO webcal_group_user ( cal_group_id, cal_login ) " .
           "VALUES ( ?, ? )", array( $id, $users[$i] ) );
       }

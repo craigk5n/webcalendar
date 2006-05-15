@@ -71,15 +71,16 @@ print_header($INC,'', $BodyX );
   <ul>
    <?php
     $userlist = user_get_users ();
-    for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+    $cnt = count ( $userlist );
+    for ( $i = 0; $i < $cnt; $i++ ) {
      if ( $userlist[$i]['cal_login'] != '__public__' ) {
       echo '<li><a title="' . 
        $userlist[$i]['cal_fullname'] . '" href="edit_user.php?user=' . 
-       $userlist[$i]["cal_login"] . 
+       $userlist[$i]['cal_login'] . 
        "\" target=\"useriframe\" onclick=\"javascript:show('useriframe');\">";
       echo $userlist[$i]['cal_fullname'];
       echo '</a>';
-      if (  $userlist[$i]["cal_is_admin"] == 'Y' )
+      if (  $userlist[$i]['cal_is_admin'] == 'Y' )
        echo '&nbsp;<abbr title="' . translate( 'denotes administrative user' ) . 
        '">*</abbr>';
       echo "</li>\n";

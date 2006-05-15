@@ -173,8 +173,8 @@ function access_get_viewable_users ( $user )
 
   if ( empty ( $access_other_cals ) )
     access_load_user_permissions ();
-
-  for ( $i = 0; $i < count ( $access_other_cals ); $i++ ) {
+  $cnt = count ( $access_other_cals );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     if ( preg_match ( "/" . $user . "\.(\S+)/", $access_other_cals[$i],
       $matches ) ) {
       $ret[] = $matches[1];
@@ -207,8 +207,8 @@ function access_load_user_functions ( $user )
   $ret = '';
   $rets = array();
   $users = array ( $user, '__default__' );
- 
-  for ( $i = 0; $i < count ( $users ) && empty ( $ret ); $i++ )  {
+  $cnt = count ( $users );
+  for ( $i = 0; $i < $cnt && empty ( $ret ); $i++ )  {
     $res = dbi_execute ( "SELECT cal_permissions FROM webcal_access_function " .
       "WHERE cal_login = ?", array( $users[$i] ) );
     assert ( '$res' );

@@ -114,7 +114,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   // get next id first
   $res = dbi_execute ( "SELECT MAX(cal_blob_id) FROM webcal_blob" );
   if ( ! $res ) {
-    die_miserable_death ( translate( 'Database error' ) . ": " .
+    die_miserable_death ( translate( 'Database error' ) . ': ' .
       dbi_error () );
   }
   if ( $row = dbi_fetch_row ( $res ) )
@@ -131,12 +131,12 @@ if ( $REQUEST_METHOD == 'POST' ) {
       "cal_id, cal_login, cal_name, cal_description, " .
       "cal_size, cal_mime_type, cal_type, cal_mod_date, " .
       "cal_mod_time, cal_blob ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, NULL, $description, 0, 'text/plain', 'C', date('Ymd'), date("His"), NULL ) ) ) {
-      $error = translate ( 'Database error' ) . ": " . dbi_error ();
+    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, NULL, $description, 0, 'text/plain', 'C', date('Ymd'), date( 'His' ), NULL ) ) ) {
+      $error = translate ( 'Database error' ) . ': ' . dbi_error ();
     } else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
         "cal_blob_id = $nextid", $comment ) ) {
-        $error = translate ( 'Database error' ) . ": " . dbi_error ();
+        $error = translate ( 'Database error' ) . ': ' . dbi_error ();
       } else {
         // success!  redirect to view event page
         activity_log ( $id, $login, $login, LOG_COMMENT, '' );
@@ -178,12 +178,12 @@ if ( $REQUEST_METHOD == 'POST' ) {
       "cal_id, cal_login, cal_name, cal_description, " .
       "cal_size, cal_mime_type, cal_type, cal_mod_date, " .
       "cal_mod_time, cal_blob ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, $filename, $description, $filesize, $mimetype, 'A', date('Ymd'), date("His"), NULL ) ) ) {
-      $error = translate ( 'Database error' ) . ": " . dbi_error ();
+    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, $filename, $description, $filesize, $mimetype, 'A', date('Ymd'), date( 'His' ), NULL ) ) ) {
+      $error = translate ( 'Database error' ) . ': ' . dbi_error ();
     } else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
         "cal_blob_id = $nextid", $data ) ) {
-        $error = translate ( 'Database error' ) . ": " . dbi_error ();
+        $error = translate ( 'Database error' ) . ': ' . dbi_error ();
       } else {
         // success!  redirect to view event page
         activity_log ( $id, $login, $login, LOG_ATTACHMENT, $filename );

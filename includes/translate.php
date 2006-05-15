@@ -188,7 +188,8 @@ function get_browser_language ( $pref=false ) {
     }
   } else {
     $langs = explode ( ',', $HTTP_ACCEPT_LANGUAGE );
-    for ( $i = 0; $i < count ( $langs ); $i++ ) {
+    $langcnt = count ( $langs );
+    for ( $i = 0; $i < $langcnt; $i++ ) {
      $l = strtolower ( trim ( ereg_replace(';.*', '', $langs[$i] ) ) );
       $ret .= "\"$l\" ";
       if ( ! empty ( $browser_languages[$l] ) ) {

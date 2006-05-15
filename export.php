@@ -67,7 +67,7 @@ print_header($INC);
    $year = $dateY;
    for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<option value=\"$i\"" . ( $i == $month ? $selected : '' ) . ">$m</option>\n";
+    echo "<option value=\"$i\"" . ( $i == $month ? $selected : '' ) . ">$m</option>\n";
    }
   ?>
  </select>
@@ -76,7 +76,7 @@ print_header($INC);
    $year = $dateY - 1;
    for ( $i = -1; $i < 5; $i++ ) {
     $y = $dateY + $i;
-    print "<option value=\"$y\"" . ( $y == $year ? $selected : '' ) . ">$y</option>\n";
+    echo "<option value=\"$y\"" . ( $y == $year ? $selected : '' ) . ">$y</option>\n";
    }
   ?>
  </select>
@@ -97,7 +97,7 @@ print_header($INC);
    $year = $dateY;
    for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<option value=\"$i\"" . ( $i == $month ? $selected : '') . ">$m</option>\n";
+    echo "<option value=\"$i\"" . ( $i == $month ? $selected : '') . ">$m</option>\n";
    }
   ?>
  </select>
@@ -106,7 +106,7 @@ print_header($INC);
    $year = $dateY + 1;
    for ( $i = -1; $i < 5; $i++ ) {
     $y = $dateY + $i;
-    print "<option value=\"$y\"" . ( $y == $year ? $selected : '' ) . ">$y</option>\n";
+    echo "<option value=\"$y\"" . ( $y == $year ? $selected : '' ) . ">$y</option>\n";
    }
   ?>
  </select>
@@ -128,7 +128,7 @@ print_header($INC);
    $year = date ( 'Y', $week_ago );
    for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_short_name ( $i - 1 );
-    print "<option value=\"$i\"" . ( $i == $month ? $selected : '' ) . ">$m</option>\n";
+    echo "<option value=\"$i\"" . ( $i == $month ? $selected : '' ) . ">$m</option>\n";
    }
   ?>
  </select>
@@ -137,7 +137,7 @@ print_header($INC);
    $year = date ( 'Y', $week_ago );
    for ( $i = -1; $i < 5; $i++ ) {
     $y = $dateY + $i;
-    print "<option value=\"$y\"" . ( $y == $year ? $selected : '' ) . ">$y</option>\n";
+    echo "<option value=\"$y\"" . ( $y == $year ? $selected : '' ) . ">$y</option>\n";
    }
   ?>
  </select>

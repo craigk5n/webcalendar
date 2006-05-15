@@ -20,7 +20,8 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 } else 
 //see if we are processing multiple layer_users as admin
 if ( $is_admin && ! empty ( $cal_login ) ) {
-  for ( $i=0; $i < count ( $cal_login ); $i++ ) {
+  $cnt = count ( $cal_login );
+  for ( $i=0; $i < $cnt; $i++ ) {
     save_layer ( $cal_login[$i], $layeruser, $layercolor, 'N', $id ); 
   }
 }

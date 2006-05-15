@@ -392,7 +392,8 @@ function export_recurrence_vcal($id, $date) {
       $count = $row[13];
 
         //flip -n to n-
-      for ( $i=0; $i< count ($byday); $i++ ) {
+      $bydaycnt = count ($byday);
+      for ( $i=0; $i< $bydaycnt; $i++ ) {
         if ( substr ( $byday[$i], 0,1 ) == '-' )
           $byday[$i] = substr ( $byday[$i], 1, 1) . '-' . substr ( $byday[$i], -2, 2);
         else 
@@ -401,7 +402,8 @@ function export_recurrence_vcal($id, $date) {
       $byday = implode ( ' ', $byday );
  
        //flip -n to n-
-      for ( $i=0; $i< count ($bymonthday); $i++ ) {
+      $bymonthdaycnt = count ($bymonthday);
+      for ( $i=0; $i< $bymonthdaycnt; $i++ ) {
         if ( substr ( $bymonthday[$i], 0,1 ) == '-' )
           $bymonthday[$i] = substr ( $bymonthday[$i], 1) . '-';
       }
@@ -818,8 +820,8 @@ function export_vcal ($id) {
 
       // ATTENDEE of the event
       $attendee = export_get_attendee($row[0], 'vcal');
-
-      for ($i = 0; $i < count($attendee); $i++) {
+      $attendcnt = count($attendee);
+      for ($i = 0; $i < $attendcnt; $i++) {
         $attendee[$i] = export_fold_lines($attendee[$i],'quotedprintable');
         while (list($key,$value) = each($attendee[$i]))
           echo "$value\r\n";
@@ -1391,9 +1393,10 @@ foreach ( $data as $Entry ){
       $values[] = $Entry['Description'];
       //do_debug ( "descr='" . $Entry['Description'] . "'" );
       $sql_params = array();
+      $namecnt = count ( $names );
       if ( $updateMode ) {
         $sql = "UPDATE webcal_entry SET ";
-        for ( $f = 0; $f < count ( $names ); $f++ ) {
+        for ( $f = 0; $f < $namecnt; $f++ ) {
           if ( $f > 0 )
             $sql .= ", ";
           $sql .= $names[$f] . " = ?";
@@ -1404,7 +1407,7 @@ foreach ( $data as $Entry ){
       } else {
         $string_names = '';
         $string_values = '';
-        for ( $f = 0; $f < count ( $names ); $f++ ) {
+        for ( $f = 0; $f < $namecnt; $f++ ) {
           if ( $f > 0 ) {
             $string_names .= ", ";
             $string_values .= ", ";
@@ -1614,7 +1617,8 @@ foreach ( $data as $Entry ){
     $string_names = '';
     $string_values = '';
     $sql_params = array();
-    for ( $f = 0; $f < count ( $names ); $f++ ) {
+    $namecnt = count ( $names );
+    for ( $f = 0; $f < $namecnt; $f++ ) {
       if ( $f > 0 ) {
         $string_names .= ", ";
         $string_values .= ", ";
@@ -1703,7 +1707,8 @@ foreach ( $data as $Entry ){
       $string_names = '';
       $string_values = '';
       $sql_params = array();
-      for ( $f = 0; $f < count ( $names ); $f++ ) {
+      $namecnt = count ( $names );
+      for ( $f = 0; $f < $namecnt; $f++ ) {
         if ( $f > 0 ) {
           $string_names .= ', ';
           $string_values .= ', ';
@@ -1784,7 +1789,8 @@ foreach ( $data as $Entry ){
     // We could do this with a single SQL using sub-select, but
     // I'm pretty sure MySQL does not support it.
     $old = array_keys ( $oldUIDs );
-    for ( $i = 0; $i < count ( $old ); $i++ ) {
+    $oldcnt = count ( $old );
+    for ( $i = 0; $i < $oldcnt; $i++ ) {
       $sql = "SELECT cal_id FROM webcal_import_data WHERE " .
         "cal_import_type = ? AND " .
         "cal_external_id = ? AND " .
@@ -1800,7 +1806,8 @@ foreach ( $data as $Entry ){
         echo translate( 'Database error' ) . ': ' . dbi_error () . "<br />\n";
       }
     }
-    for ( $i = 0; $i < count ( $oldIds ); $i++ ) {
+    $oldidcnt = count ( $oldIds );
+    for ( $i = 0; $i < $oldidcnt; $i++ ) {
       $sql = "UPDATE webcal_entry_user SET cal_status = 'D' " .
         "WHERE cal_id = ?";
       $sqlLog .= $sql . "<br />\n";
@@ -1902,7 +1909,8 @@ function parse_ical ( $cal_file, $source='file' ) {
     $line = 0;
     $event = '';
     $lines = explode ( "\n", $data );
-    for ( $n = 0; $n < count ( $lines ) && ! $error; $n++ ) {
+    $linecnt = count ( $lines );
+    for ( $n = 0; $n < $linecnt && ! $error; $n++ ) {
       $line++;
       $buff = trim( $lines[$n] );
       if ( preg_match ( "/^PRODID:(.+)$/i", $buff, $match) ) {
@@ -2373,11 +2381,12 @@ global $login;
     $RR = explode ( ';', $event['rrule'] );
 
     // create an associative array of key-value pairs in $RR2[]
-    for ( $i = 0; $i < count ( $RR ); $i++ ) {
+    $rrcnt = count ( $RR );
+    for ( $i = 0; $i < $rrcnt; $i++ ) {
       $ar = explode ( '=', $RR[$i] );
       $RR2[$ar[0]] = $ar[1];
     }
-    for ( $i = 0; $i < count ( $RR ); $i++ ) {
+    for ( $i = 0; $i < $rrcnt; $i++ ) {
       if ( preg_match ( "/^FREQ=(.+)$/i", $RR[$i], $match ) ) {
         if ( preg_match ( "/YEARLY/i", $match[1], $submatch ) ) {
           $fevent['Repeat']['Frequency'] = 6;
@@ -2484,7 +2493,8 @@ function parse_ISO8601_duration ( $duration ) {
   $ret = 0;
   $result = preg_split ( '/(P|D|T|H|M)/', $duration, -1, 
     PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
-  for ( $i =0; $i< count ( $result); $i++) {
+  $resultcnt = count ( $result);
+  for ( $i =0; $i< $resultcnt; $i++) {
     if ( is_numeric ($result[$i] ) && isset ( $result[$i+1] ) ) {
      $ret += ( $result[$i] * $const[$result[$i+1]] );
     }

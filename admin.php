@@ -246,7 +246,8 @@ print_header ( $INC, '', $BodyX );
   echo '<option disabled="disabled">' . translate( 'AVAILABLE THEMES' ) . $option;
   //always use 'none' as default so we don't overwrite manual settings
   echo '<option  value="none"' . $selected . '>' . translate( 'None' ) . $option;
-  for ( $i = 0; $i <= count ( $themes); $i++ ) {
+  $cnt = count ( $themes);
+  for ( $i = 0; $i <= $cnt; $i++ ) {
      echo '<option value="' . $themes[1][$i] . '">' . $themes[0][$i] . $option;
   }
 ?>
@@ -316,8 +317,8 @@ print_header ( $INC, '', $BodyX );
 $choices = array ( 'day.php', 'week.php', 'month.php', 'year.php' );
 $choices_text = array ( translate ( 'Day' ), translate ( 'Week' ),
   translate ( 'Month' ), translate ( 'Year' ) );
-
-for ( $i = 0; $i < count ( $choices ); $i++ ) {
+$cnt = count ( $choices );
+for ( $i = 0; $i < $cnt; $i++ ) {
   echo '<option value="' . $choices[$i] . '" ';
   if ( $s['STARTVIEW'] == $choices[$i] )
     echo $selected;
@@ -325,7 +326,8 @@ for ( $i = 0; $i < count ( $choices ); $i++ ) {
 }
 
 // Allow user to select a view also
-for ( $i = 0; $i < count ( $views ); $i++ ) {
+$cnt = count ( $views );
+for ( $i = 0; $i < $cnt; $i++ ) {
   if ( $views[$i]['cal_is_global'] != 'Y' )
     continue;
   $xurl = $views[$i]['url'];
@@ -373,7 +375,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
   <?php etranslate( 'Date format' )?>:</td><td>
   <select name="admin_DATE_FORMAT">
    <?php
-    for ( $i = 0; $i < count ( $datestyles ); $i += 2 ) {
+    $cnt = count ( $datestyles );
+    for ( $i = 0; $i < $cnt; $i += 2 ) {
      echo '<option value="' . $datestyles[$i] . '"';
      if ( $s['DATE_FORMAT'] == $datestyles[$i] )
       echo $selected;
@@ -384,7 +387,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
   <select name="admin_DATE_FORMAT_MY">
    <?php
-    for ( $i = 0; $i < count ( $datestyles_my ); $i += 2 ) {
+    $cnt = count ( $datestyles_my );
+    for ( $i = 0; $i < $cnt; $i += 2 ) {
      echo '<option value="' . $datestyles_my[$i] . '"';
      if ( $s['DATE_FORMAT_MY'] == $datestyles_my[$i] )
       echo $selected;
@@ -395,7 +399,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 
   <select name="admin_DATE_FORMAT_MD">
    <?php
-    for ( $i = 0; $i < count ( $datestyles_md ); $i += 2 ) {
+    $cnt = count ( $datestyles_md );
+    for ( $i = 0; $i < $cnt; $i += 2 ) {
      echo '<option value="' . $datestyles_md[$i] . '"';
      if ( $s['DATE_FORMAT_MD'] == $datestyles_md[$i] )
       echo $selected;
@@ -613,8 +618,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 // <?php
 // if ( $PLUGINS_ENABLED == 'Y' ) {
 //   $plugins = get_plugin_list ( true );
-
-//   for ( $i = 0; $i < count ( $plugins ); $i++ ) {
+//   $cnt = count ( $plugins );
+//   for ( $i = 0; $i < $cnt; $i++ ) {
 //     $val = $s[$plugins[$i] . ".plugin_status'];
 //     echo "<tr><td class=\"tooltip\" title=\"" .
 //       tooltip("plugins-sort-key-help") . "\">&nbsp;&nbsp;&nbsp;" .

@@ -8,16 +8,15 @@ if ($user != $login)
 # update user list
 dbi_execute ( "DELETE FROM webcal_asst WHERE cal_boss = ?", array( $user ) );
 if ( ! empty ( $users ) ){
-  for ( $i = 0; $i < count ( $users ); $i++ ) {
+  $cnt = count ( $users );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     dbi_execute ( "INSERT INTO webcal_asst ( cal_boss, cal_assistant ) " .
       "VALUES ( ?, ? )", array( $user, $users[$i] ) );
   }
 }
 
-$url = 'assistant_edit.php';
-if (($is_admin || $is_nonuser_admin) && $login != $user )
-   $url = $url . (strpos($url, '?') === false ? '?' : '&amp;') . "user=$user";
-do_redirect ( $url );
+do_redirect ( 'assistant_edit.php' . ( ( $is_admin || $is_nonuser_admin ) && 
+  $login != $user ? '?user=' . $user : '' ) );
 
 print_header();
 ?>

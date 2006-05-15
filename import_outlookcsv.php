@@ -66,7 +66,7 @@ function parse_outlookcsv ( $cal_file ) {
       $tmp_data['Description']        =  $description; //Full Description (string)
       $tmp_data['Location']           =  $location; //Location (string)
       $tmp_data['AllDay']             =  $all_day_event; //1 = true  0 = false
-      $tmp_data['Class']              =  ( $class == 1 ? "Private":"Public" );
+      $tmp_data['Class']              =  ( $class == 1 ? 'Private': 'Public' );
       $tmp_data['Category']           =  $categories; //comma seperated string of categories
       $tmp_data['AlarmSet']           =  0; //1 = true  0 = false
       $tmp_data['AlarmAdvanceAmount'] =  -1; //How many units in AlarmAdvanceType (-1 means not set)

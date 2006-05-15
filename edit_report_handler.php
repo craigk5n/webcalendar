@@ -110,11 +110,11 @@ $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $report_id ) && ! empty ( $delete ) ) {
   if ( ! dbi_execute ( "DELETE FROM webcal_report_template " .
     "WHERE cal_report_id = ?", array( $report_id ) ) )
-    $error = translate( 'Database error' ) . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ': ' . dbi_error ();
   if ( empty ( $error ) &
     ! dbi_execute ( "DELETE FROM webcal_report " .
     "WHERE cal_report_id = ?", array( $report_id ) ) )
-    $error = translate( 'Database error' ) . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ': ' . dbi_error ();
   // send back to main report listing page
   if ( empty ( $error ) )
     do_redirect ( 'report.php' );
@@ -182,13 +182,15 @@ if ( empty ( $error ) ) {
     $names[] = 'cal_report_id';
     $values[] = $newid;
     $sql = "INSERT INTO webcal_report ( ";
-    for ( $i = 0; $i < count ( $names ); $i++ ) {
+    $namecnt = count ( $names );
+    for ( $i = 0; $i < $namecnt; $i++ ) {
       if ( $i > 0 )
         $sql .= ", ";
       $sql .= $names[$i];
     }
     $sql .= " ) VALUES ( ";
-    for ( $i = 0; $i < count ( $values ); $i++ ) {
+    $valuecnt = count ( $values );
+    for ( $i = 0; $i < $valuecnt; $i++ ) {
       if ( $i > 0 )
         $sql .= ", ";
       //$sql .= $values[$i];
@@ -198,7 +200,8 @@ if ( empty ( $error ) ) {
     $report_id = $newid;
   } else {
     $sql = "UPDATE webcal_report SET ";
-    for ( $i = 0; $i < count ( $names ); $i++ ) {
+    $namecnt = count ( $names );
+    for ( $i = 0; $i < $namecnt; $i++ ) {
       if ( $i > 0 )
         $sql .= ", ";
       //$sql .= "$names[$i] = $values[$i]";
@@ -222,23 +225,23 @@ if ( empty ( $error ) ) {
   if ( ! $adding_report ) {
     if ( ! dbi_execute ( "DELETE FROM webcal_report_template " .
       "WHERE cal_report_id = ?", array( $report_id ) ) )
-      $error = translate( 'Database error' ) . ": " . dbi_error ();
+      $error = translate( 'Database error' ) . ': ' . dbi_error ();
   }
   if ( empty ( $error ) &&
     ! dbi_execute ( "INSERT INTO webcal_report_template " .
     "( cal_report_id, cal_template_type, cal_template_text ) VALUES ( " .
     "?, ?, ? )", array( $report_id, 'P', $page_template ) ) )
-    $error = translate( 'Database error' ) . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ': ' . dbi_error ();
   if ( empty ( $error ) &&
     ! dbi_execute ( "INSERT INTO webcal_report_template " .
     "( cal_report_id, cal_template_type, cal_template_text ) VALUES ( " .
     "?, ?, ? )", array( $report_id, 'D', $day_template ) ) )
-    $error = translate( 'Database error' ) . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ': ' . dbi_error ();
   if ( empty ( $error ) &&
     ! dbi_execute ( "INSERT INTO webcal_report_template " .
     "( cal_report_id, cal_template_type, cal_template_text ) VALUES ( " .
     "?, ?, ? )", array( $report_id, 'E', $event_template ) ) )
-    $error = translate( 'Database error' ) . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ': ' . dbi_error ();
 }
 
 if ( empty ( $error ) ) {

@@ -96,10 +96,10 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
       $msg = translate( 'Hello' ) . ", " . $tempfullname . ".\n\n" .
       translate( 'An appointment has been approved and comments added by' ) .
       " " . $login_fullname .  ".\n\n" .
-      translate( 'The subject was' ) . " \"" . $name . " \"\n" .
-      translate( 'The description is' ) . " \"" . $description . "\"\n" .
-      translate( 'Date' ) . ": " . date_to_str ( $fmtdate ) . "\n" .
-      ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate( 'Time' ) . ": " .
+      translate( 'The subject was' ) . ' "' . $name . " \"\n" .
+      translate( 'The description is' ) . ' "' . $description . "\"\n" .
+      translate( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .
+      ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate( 'Time' ) . ': ' .
       // Display using user's GMT offset and display TZID
       display_time ( '', 2, $eventstart , $t_format ) ) ). "\n";
       if ( ! empty ( $SERVER_URL ) ) {

@@ -44,7 +44,8 @@ if ( empty ( $id ) ) {
   $viewname = translate( 'Unnamed View' );
 } else {
   // search for view by id
-  for ( $i = 0; $i < count ( $views ); $i++ ) {
+  $cnt = count ( $views );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     if ( $views[$i]['cal_view_id'] == $id ) {
       $newview = false;
       $viewname = $views[$i]['cal_name'];
@@ -166,7 +167,8 @@ if ( $newview ) {
     $nonusers = get_nonuser_cals ();
     $users = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
   }
-  for ( $i = 0; $i < count ( $users ); $i++ ) {
+  $cnt = count ( $users );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     $u = $users[$i]['cal_login'];
     echo "<option value=\"$u\"";
     if ( ! empty ( $viewuser[$u] ) ) {

@@ -74,7 +74,7 @@ if ( empty ( $error ) && ! $can_delete ) {
 
 if ( empty ( $error ) && $can_delete ) {
   if ( ! dbi_execute ( "DELETE FROM webcal_blob WHERE cal_blob_id = ?", array( $blid ) ) ) {
-    $error = translate ( 'Database error' ) . ": " . dbi_error ();
+    $error = translate ( 'Database error' ) . ': ' . dbi_error ();
   } else {
     if ( $event_id > 0 ) {
       if ( $type == 'C' )

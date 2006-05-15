@@ -293,7 +293,7 @@ label {
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   padding: 0px 2px 0px 3px;
-  vertical-align:top
+  vertical-align:top;
 }
 <?php //numerical date links in main calendars on hover
 ?>.dayofmonth:hover {
@@ -411,6 +411,7 @@ a.matrix img {
   left: 0px;
   border: 1px solid <?php echo $GLOBALS['POPUP_FG']; ?>;
   padding: 3px;
+  -moz-border-radius: 6px;
 }
 .popup dl {
   margin: 0px;

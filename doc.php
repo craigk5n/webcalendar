@@ -104,14 +104,15 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       // In summary, make sure at least one event participant is in one of
       // this user's groups.
       $my_users = get_my_users ();
-      if ( is_array ( $my_users ) && count ( $my_users ) ) {
+      $cnt = count ( $my_users );
+      if ( is_array ( $my_users ) && $cnt ) {
         $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
           "webcal_entry_user WHERE webcal_entry.cal_id = " .
           "webcal_entry_user.cal_id AND webcal_entry.cal_id = ? " .
           "AND webcal_entry_user.cal_login IN ( ";
         $query_params = array();
-    $query_params[] = $id;
-    for ( $i = 0; $i < count ( $my_users ); $i++ ) {
+      $query_params[] = $id;
+      for ( $i = 0; $i < $cnt; $i++ ) {
           if ( $i > 0 ) {
             $sql .= ", ";
           }
@@ -148,7 +149,8 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     $NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_nonuser_cals ();
     $nonuser_lookup = array ();
-    for ( $i = 0; $i < count ( $nonusers ); $i++ ) {
+    $cnt = count ( $nonusers );
+    for ( $i = 0; $i < $cnt; $i++ ) {
       $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
     }
     $sql = "SELECT cal_login FROM webcal_entry_user " .
@@ -203,7 +205,7 @@ Header ( "Content-Description: $description" );
 //Header ( "Content-Disposition: $disp; filename=$filename" );
 Header ( "Content-Disposition: filename=$filename" );
 
-print $filedata;
+echo $filedata;
 exit;
 
 ?>

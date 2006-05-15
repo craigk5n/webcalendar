@@ -97,7 +97,7 @@ for ( $d = 0; $d < 7; $d++ ) {
   $thiswday = date ( 'w', $days[$d] );
   $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
   if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue;
-  print '<tr><th';
+  echo '<tr><th';
   if ( $date == date ( 'Ymd', $today ) ) {
     echo ' class="today">';
   } elseif ( $is_weekend ) {
@@ -119,7 +119,7 @@ for ( $d = 0; $d < 7; $d++ ) {
     date('Ymd', $days[$d] ) . "$caturl\">" .
     $header[$d] . "</a></th>\n</tr>\n";
 
-  print "<tr>\n<td";
+  echo "<tr>\n<td";
   if ( $date == date ( 'Ymd', $today ) ) {
     echo ' class="today">';
   } elseif ( $is_weekend ) {
@@ -262,8 +262,8 @@ function print_det_date_entries ( $date, $user, $ssi ) {
 
   // combine and sort the event arrays
   $ev = combine_and_sort_events($ev, $rep);
-
-  for ( $i = 0; $i < count ( $ev ); $i++ ) {
+  $cnt = count ( $ev );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' ) ||
       $ev[$i]->getStatus() == 'A' )
       print_detailed_entry ( $ev[$i], $date );

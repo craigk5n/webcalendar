@@ -229,7 +229,7 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>';
 <dc:language><?php echo $lang; ?></dc:language>
 <dc:creator><![CDATA[<?php echo $creator; ?>]]></dc:creator>
 <?php //proper format is 2002-10-02T10:00:00-05:00
-$gmtoffset = substr_replace ( date ( "O" ), ":" . substr ( date ( 'O' ), -2), -2, 2 );
+$gmtoffset = substr_replace ( date ( 'O' ), ': ' . substr ( date ( 'O' ), -2), -2, 2 );
 ?>
 <dc:date><?php echo date ( 'Y-m-d' ) . 'T' . date ( 'H:i:s' ). $gmtoffset; ?></dc:date>
 <admin:generatorAgent rdf:resource="http://www.k5n.us/webcalendar.php?v=<?php echo $PROGRAM_VERSION; ?>" />
@@ -245,10 +245,12 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
   $d = date ( 'Ymd', $i );
   $entries = get_entries ( $d, false );
   $rentries = get_repeating_entries ( $username, $d, false );
+  $entrycnt = count ( $entries );
+  $rentrycnt = count ( $rentries );
   if ($debug) echo "\n\ni=$i d=$d \n\n";
-  if ($debug) echo "\n\ncountentries==". count($entries) . " " . count ($rentries) . "\n\n";
-  if ( count ( $entries ) > 0 || count ( $rentries ) > 0 ) {
-    for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
+  if ($debug) echo "\n\ncountentries==". $entrycnt . " " . $rentrycnt . "\n\n";
+  if ( $entrycnt > 0 || $rentrycnt > 0 ) {
+    for ( $j = 0; $j < $entrycnt && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
       if ( array_search ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
@@ -258,7 +260,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
         $numEvents++;
       }
     }
-    for ( $j = 0; $j < count ( $rentries ) && $numEvents < $maxEvents; $j++ ) {
+    for ( $j = 0; $j < $rentrycnt && $numEvents < $maxEvents; $j++ ) {
 
           //to allow repeated daily entries to be suppressed
           //step below is necessary because 1st occurence of repeating 
@@ -308,15 +310,16 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
   $d = date ( 'Ymd', $i );
   $entries = get_entries ( $d, false  );
   $rentries = get_repeating_entries ( $username, $d );
-
-  if ($debug) echo "\n\ncountentries==". count($entries) . " " . count ($rentries) . "\n\n";
-  if ( count ( $entries ) > 0 || count ( $rentries ) > 0 ) {
-    for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
+  $entrycnt = count ( $entries );
+  $rentrycnt = count ( $rentries );
+  if ($debug) echo "\n\ncountentries==". $entrycnt . " " . $rentrycnt . "\n\n";
+  if ( $entrycnt > 0 || $rentrycnt > 0 ) {
+    for ( $j = 0; $j < $entrycnt && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
       if ( array_search ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
         $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
-        $gmtoffset = substr_replace ( date ( 'O', $unixtime ), ":" . 
+        $gmtoffset = substr_replace ( date ( 'O', $unixtime ), ': ' . 
           substr ( date ( 'O', $unixtime ), -2), -2, 2 );
         echo "\n<item rdf:about=\"" . $SERVER_URL . 'view_entry.php?id=' . 
           $entries[$j]->getID() . '&amp;friendly=1&amp;date=' . $d . "\">\n";
@@ -339,7 +342,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
         $numEvents++;
       }
     }
-    for ( $j = 0; $j < count ( $rentries ) && $numEvents < $maxEvents; $j++ ) {
+    for ( $j = 0; $j < $rentrycnt && $numEvents < $maxEvents; $j++ ) {
 
           //to allow repeated daily entries to be suppressed
           //step below is necessary because 1st occurence of repeating 

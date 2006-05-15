@@ -142,7 +142,8 @@ if ( $id > 0 && empty ( $error ) ) {
     
     $eventstart = date_to_epoch ( $fmtdate . $time );
     $TIME_FORMAT=24;
-    for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
+    $cnt = count ( $partlogin );
+    for ( $i = 0; $i < $cnt; $i++ ) {
       // Log the deletion
       activity_log ( $id, $login, $partlogin[$i], $log_delete, "" );
       //check UAC
@@ -169,10 +170,10 @@ if ( $id > 0 && empty ( $error ) ) {
           $msg = translate( 'Hello' ) . ", " . unhtmlentities( $tempfullname ). ".\n\n" .
             translate( 'An appointment has been canceled for you by' ) .
             " " . $login_fullname .  ".\n" .
-            translate( 'The subject was' ) . " \"" . $name . "\"\n" .
-            translate( 'Date' ) . ": " . date_to_str ($thisdate) . "\n";
+            translate( 'The subject was' ) . ' "' . $name . "\"\n" .
+            translate( 'Date' ) . ': ' . date_to_str ($thisdate) . "\n";
             if ( ! empty ( $eventtime ) && $eventtime != '-1' ) 
-              $msg .= translate( 'Time' ) . ": " . 
+              $msg .= translate( 'Time' ) . ': ' . 
              // Apply user's GMT offset and display their TZID
              display_time ( '', 2, $eventstart, $t_format );
             $msg .= "\n\n";
@@ -216,7 +217,8 @@ if ( $id > 0 && empty ( $error ) ) {
             $ex_events[] = $row[0];
           }
           dbi_free_result ( $res );
-          for ( $i = 0; $i < count ( $ex_events ); $i++ ) {
+          $cnt = count ( $ex_events );
+          for ( $i = 0; $i < $cnt; $i++ ) {
             $res = dbi_execute ( "SELECT cal_login FROM " .
               "webcal_entry_user WHERE cal_id = ?", array( $ex_events[$i] ) );
             if ( $res ) {
@@ -225,7 +227,8 @@ if ( $id > 0 && empty ( $error ) ) {
                 $delusers[] = $row[0];
               }
               dbi_free_result ( $res );
-              for ( $j = 0; $j < count ( $delusers ); $j++ ) {
+              $cnt = count ( $delusers );
+              for ( $j = 0; $j < $cnt; $j++ ) {
                 // Log the deletion
                 activity_log ( $ex_events[$i], $login, $delusers[$j],
                   $log_delete, "" );

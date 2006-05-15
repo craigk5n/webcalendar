@@ -47,7 +47,8 @@ print_header($INC);
     }
     dbi_free_result ( $res );
   }
-  for ( $i = 0; $i < count ( $users ); $i++ ) {
+  $cnt = count ( $users );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     $u = $users[$i]['cal_login'];
     if ($u == $login ) continue;
     if ($u == '__public__' ) continue;

@@ -57,18 +57,19 @@ if ( ! $show_others ) {
   }
   $size = 0;
   $out = '';
-  for ( $i = 0; $i < count ( $users ); $i++ ) {
+  $cnt = count ( $users );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     $out .= '<option value="' . $users[$i]['cal_login'] . '"';
     if ( $users[$i]['cal_login'] == $login )
       $out .= ' selected="selected"';
     $out .= '>' . $users[$i]['cal_fullname'] . "</option>\n";
   }
-  if ( count ( $users ) > 50 )
+  if ( $cnt > 50 )
     $size = 15;
-  else if ( count ( $users ) > 10 )
+  else if ( $cnt > 10 )
     $size = 10;
   else
-    $size = count ( $users );
+    $size = $cnt;
 ?>
 <select name="users[]" size="<?php echo $size;?>" multiple="multiple"><?php echo $out; ?></select>
 <?php 

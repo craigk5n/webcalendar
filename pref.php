@@ -210,7 +210,8 @@ if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
   echo "<option $selected disabled=\"disabled\" value=\"\">" . 
     translate ( 'Modify Non User Calendar Preferences') . "</option>\n";
   if ( ! empty ( $public_option ) ) echo $public_option . "\n";
-  for ( $i = 0; $i < count ( $nulist ); $i++ ) {
+  $cnt = count ( $nulist );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     echo '<option value="pref.php?user='. $nulist[$i]['cal_login']. '">' . 
       $nulist[$i]['cal_fullname'] . "</option>\n";
   }
@@ -316,14 +317,16 @@ if ( access_can_access_function ( ACCESS_YEAR ) ) {
   $choices[] = 'year.php';
   $choices_text[] = translate ( 'Year' );
 }
-for ( $i = 0; $i < count ( $choices ); $i++ ) {
+$cnt = count ( $choices );
+for ( $i = 0; $i < $cnt; $i++ ) {
   echo '<option value="' . $choices[$i] . '" ';
   if ( $prefarray['STARTVIEW'] == $choices[$i] )
     echo $selected;
   echo ' >' . htmlspecialchars ( $choices_text[$i] ) . "</option>\n";
 }
 // Allow user to select a view also
-for ( $i = 0; $i < count ( $views ); $i++ ) {
+$cnt = count ( $views );
+for ( $i = 0; $i < $cnt; $i++ ) {
   if ( $updating_public && $views[$i]['cal_is_global'] != 'Y' )
     continue;
   $xurl = $views[$i]['url'];
@@ -360,7 +363,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
  <?php etranslate( 'Date format' )?>:</td><td>
  <select name="pref_DATE_FORMAT">
   <?php
-  for ( $i = 0; $i < count ( $datestyles ); $i += 2 ) {
+  $cnt = count ( $datestyles );
+  for ( $i = 0; $i < $cnt; $i += 2 ) {
     echo '<option value="' . $datestyles[$i] . '"';
     if ( $prefarray['DATE_FORMAT'] == $datestyles[$i] )
       echo $selected;
@@ -372,7 +376,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <br />
 <select name="pref_DATE_FORMAT_MY">
 <?php
-  for ( $i = 0; $i < count ( $datestyles_my ); $i += 2 ) {
+  $cnt = count ( $datestyles_my );
+  for ( $i = 0; $i < $cnt; $i += 2 ) {
     echo '<option value="' . $datestyles_my[$i] . '"';
     if ( $prefarray['DATE_FORMAT_MY'] == $datestyles_my[$i] )
       echo $selected;
@@ -384,7 +389,8 @@ for ( $i = 0; $i < count ( $views ); $i++ ) {
 <br />
 <select name="pref_DATE_FORMAT_MD">
 <?php
-  for ( $i = 0; $i < count ( $datestyles_md ); $i += 2 ) {
+  $cnt = count ( $datestyles_md );
+  for ( $i = 0; $i < $cnt; $i += 2 ) {
     echo '<option value="' . $datestyles_md[$i] . '"';
     if ( $prefarray['DATE_FORMAT_MD'] == $datestyles_md[$i] )
       echo $selected;

@@ -167,6 +167,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 // done.
 
 $viewusers = view_get_user_list ( $id );
+$viewusercnt = count ( $viewusers );
 //echo "<pre>"; print_r ( $viewusers ); echo "</pre>\n";
 
 
@@ -175,7 +176,7 @@ $viewusers = view_get_user_list ( $id );
 // the current user does not have permission to view any of the
 // users in the view.
 // In theory, we whould always at least have ourselves in the view, right?
-if ( count ( $viewusers ) == 0 ) {
+if ( $viewusercnt == 0 ) {
   // I don't think we need to translate this.
   $error = "No users for this view";
 }
@@ -191,7 +192,7 @@ if ( ! empty ( $error ) ) {
 // col_pixels = width of smallest column
 // 100 = width of time column on left of table
 if ( ! $fit_to_window ) {
-  $table_width = ( $col_pixels * count ( $viewusers ) ) *
+  $table_width = ( $col_pixels * $viewusercnt ) *
     ( $end_ind - $start_ind + 1 ) + 100;
 }
 //echo "table_width=$table_width<br />\n";
@@ -217,9 +218,9 @@ $re_save = array ();
 if ( ! $fit_to_window )
   $uwf = $col_pixels . "px";
 else
-  $uwf = sprintf ( "%0.2f", $tdw / count ( $viewusers ) ) . "%";
+  $uwf = sprintf ( "%0.2f", $tdw / $viewusercnt ) . "%";
 $uheader = "";
-for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
+for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
   $re_save[$i] = $repeated_events;
@@ -232,7 +233,7 @@ for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
     $tempfullname . "</th>\n";
   //echo "$viewusers[$i]: loaded " . count ( $events ) . " events<br />\n";
 }
-$num_users = count ( $viewusers );
+$num_users = $viewusercnt;
 
 // $TIME_SLOTS is set in both admin system settings and user preferences.
 if ( empty ( $TIME_SLOTS ) )
@@ -288,7 +289,7 @@ if ( ! $fit_to_window ) { ?>
 <?php
   // heading row that displays day of week and date
   if ( ! $fit_to_window )
-    $tdwf = ( $col_pixels * count ( $viewusers ) ) . 'px';
+    $tdwf = ( $col_pixels * $viewusercnt ) . 'px';
   else
     $tdwf = sprintf ( "%0.2f", $tdw ) . "%";
   $todayYmd = date ( 'Ymd', $today );
@@ -335,7 +336,7 @@ $all_day = array (  );
 //</long-winded-explanation>
 $am_part = array ( ); // am I a participant array
 for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-  for ( $u = 0; $u < count ( $viewusers ); $u++ ) {
+  for ( $u = 0; $u < $viewusercnt; $u++ ) {
     $untimed = array (  );
     $user = $viewusers[$u];
     $events = $e_save[$u];
@@ -343,7 +344,8 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     // get all the repeating events for this date and store in array $rep
     $adate = date ( 'Ymd', $days[$d] );
     $rep = get_repeating_entries ( $user, $adate );
-    for ( $j = 0; $j < count ( $rep ); $j++ ) {
+    $repcnt = count ( $rep );
+    for ( $j = 0; $j < $repcnt; $j++ ) {
       if ( ! isset ( $am_part[$rep[$j]->getID()] ) ) {
         $am_part[$rep[$j]->getID()] =
           user_is_participant ( $rep[$j]->getID(), $login );
@@ -359,7 +361,8 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
       }
     }
     $ev = get_entries ( $adate, $get_unapproved , 1, 1);
-    for ( $j = 0; $j < count ( $ev ); $j++ ) {
+    $evcnt = count ( $ev );
+    for ( $j = 0; $j < $evcnt; $j++ ) {
       if ( ! isset ( $am_part[$ev[$j]->getID()] ) ) {
         $am_part[$ev[$j]->getID()] =
           user_is_participant ( $ev[$j]->getID(), $login );
@@ -376,7 +379,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 }
 
 for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-  for ( $u = 0; $u < count ( $viewusers ); $u++ ) {
+  for ( $u = 0; $u < $viewusercnt; $u++ ) {
     $untimed = array (  );
     $user = $viewusers[$u];
     $events = $e_save[$u];
@@ -390,9 +393,11 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $ev = get_entries ( $adate, $get_unapproved, 1, 1 );
     $hour_arr = array (  );
     $rowspan_arr = array (  );
-    for ( $i = 0; $i < count ( $ev ); $i++ ) {
+    $evcnt = count ( $ev );
+    $repcnt = count ( $rep );
+    for ( $i = 0; $i < $evcnt; $i++ ) {
       // print out any repeating events that are before this one...
-      while ( $cur_rep < count ( $rep ) &&
+      while ( $cur_rep < $repcnt &&
         $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
         if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
           if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) )
@@ -410,7 +415,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
       }
     }
     // print out any remaining repeating events
-    while ( $cur_rep < count ( $rep ) ) {
+    while ( $cur_rep < $repcnt ) {
       if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
         if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) )
           $all_day[$d] = 1;
@@ -468,16 +473,16 @@ if ( $untimed_found || $show_untimed_row_always ) {
 
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
     if ( $is_weekend  && $DISPLAY_WEEKENDS == 'N' ) continue; 
-    for ( $u = 0; $u < count ( $viewusers ); $u++ ) {
+    for ( $u = 0; $u < $viewusercnt; $u++ ) {
       $untimed = $save_untimed[$u][$d];
 
       echo "<td";
 
-      $class = ( $is_weekend ) ? "weekend" : "";
+      $class = ( $is_weekend ) ? 'weekend': '';
 
       if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
-        if ( $class != "" )
-          $class .= " ";
+        if ( $class != '' )
+          $class .= ' ';
         $class .= "today";
       }
       // Use the class 'hasevents' for any hour block that has events
@@ -502,7 +507,7 @@ if ( $untimed_found || $show_untimed_row_always ) {
       if ( !empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
         echo $untimed[$d];
       } else {
-        echo "&nbsp;";
+        echo '&nbsp;';
       }
       echo "</td>\n";
     }
@@ -511,7 +516,7 @@ if ( $untimed_found || $show_untimed_row_always ) {
 }
 
 $rowspan_day = array (  );
-for ( $u = 0; $u < count ( $viewusers ); $u++ ) {
+for ( $u = 0; $u < $viewusercnt; $u++ ) {
   for ( $d = $start_ind; $d <= $end_ind; $d++ )
     $rowspan_day[$u][$d] = 0;
 }
@@ -521,23 +526,23 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_m = ( $i * $interval ) % 60;
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
   echo "<tr>\n<th valign=\"top\" class=\"row\" width=\"$time_w" .
-    "\">" . $time . "</th>\n";
+    '">' . $time . "</th>\n";
   //echo "<tr>\n<th valign=\"top\">" .  $time . "</th>\n";
 
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $thiswday = date ( 'w', $days[$d] );
 
-    for ( $u = 0; $u < count ( $viewusers ); $u++ ) {
+    for ( $u = 0; $u < $viewusercnt; $u++ ) {
 
       $hour_arr = $save_hour_arr[$u][$d];
       $rowspan_arr = $save_rowspan_arr[$u][$d];
 
       $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-      $class = $is_weekend ? "weekend" : "";
+      $class = $is_weekend ? 'weekend': '';
       if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
-        if ( $class != "" )
-          $class .= " ";
-        $class .= "today";
+        if ( $class != '' )
+          $class .= ' ';
+        $class .= 'today';
       }
       // Use the class 'hasevents' for any hour block that has events
       // in it.
@@ -549,15 +554,15 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
         // this might mean there's an overlap, or it could mean one event
         // ends at 11:15 and another starts at 11:30.
         if ( !empty ( $hour_arr[$i] ) ) {
-          echo "<td";
-          echo ( empty ( $class ) ) ? "" : " class=\"$class\"";
-          echo ">" . $hour_arr[$i]."</td>\n";
+          echo '<td';
+          echo ( empty ( $class ) ) ? '': " class=\"$class\"";
+          echo '>' . $hour_arr[$i]."</td>\n";
         }
         $rowspan_day[$u][$d]--;
       } else {
         if ( empty ( $hour_arr[$i] ) ) {
           echo "<td";
-          echo ( empty ( $class ) ) ? "" : " class=\"$class\"";
+          echo ( empty ( $class ) ) ? '': " class=\"$class\"";
           if ( $can_add ) {
             $add_url = "edit_entry.php?date=" . date ( 'Ymd', $days[$d] ) .
               "&amp;defusers=" . $viewusers[$u] .
@@ -573,9 +578,9 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
         } else {
           $rowspan_day[$u][$d] = $save_rowspan_arr[$u][$d][$i];
           if ( $rowspan_day[$u][$d] > 1 ) {
-            echo "<td";
-            echo ( empty ( $class ) ) ? "" : " class=\"$class\"";
-            echo " rowspan=\"" . $rowspan_day[$u][$d] . "\"";
+            echo '<td';
+            echo ( empty ( $class ) ) ? '': " class=\"$class\"";
+            echo ' rowspan="' . $rowspan_day[$u][$d] . '"';
             if ( $can_add ) {
               $add_url = "edit_entry.php?date=" . date ( 'Ymd', $days[$d] ) .
                 "&amp;defusers=$user" .
@@ -589,8 +594,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
             //}
             echo $hour_arr[$i]."</td>\n";
           } else {
-            echo "<td";
-            echo ( empty ( $class ) ) ? "" : " class=\"$class\"";
+            echo '<td';
+            echo ( empty ( $class ) ) ? '': " class=\"$class\"";
             if ( $can_add ) {
               $add_url = "edit_entry.php?date=" . date ( 'Ymd', $days[$d] ) .
                 "&amp;defusers=$user" .

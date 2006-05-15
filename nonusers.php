@@ -24,10 +24,11 @@ if ( empty ($error) ) {
   $userlist = get_nonuser_cals ();
   if ( ! empty ( $userlist ) ) {
     echo '<ul>';
-    for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+    $cnt = count ( $userlist );
+    for ( $i = 0; $i < $cnt; $i++ ) {
       echo '<li><a title="' . 
         $userlist[$i]['cal_fullname'] . '" href="edit_nonusers.php?nid=' . 
-  $userlist[$i]["cal_login"] . "\" target=\"nonusersiframe\" onclick=\"javascript:show('nonusersiframe');\">" . 
+  $userlist[$i]['cal_login'] . "\" target=\"nonusersiframe\" onclick=\"javascript:show('nonusersiframe');\">" . 
   $userlist[$i]['cal_fullname'] . "</a></li>\n";
     }
     echo '</ul>';

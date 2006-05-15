@@ -259,7 +259,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
         $rep_name . "</a></li>\n";
     }
     $list .= "</ul>\n";
-    $addurl = $updating_public ? "edit_report.php?public=1" : "edit_report.php";
+    $addurl = $updating_public ? 'edit_report.php?public=1': 'edit_report.php';
     $list .= '<p><a title="' .
       translate( 'Add new report' ) . "\" href=\"$addurl\" class=\"nav\">" .
       translate( 'Add new report' ) . "</a></p>\n";
@@ -441,8 +441,8 @@ if ( empty ( $error ) && empty ( $list ) ) {
     $ev = get_entries ( $dateYmd );
     $ev = combine_and_sort_events($ev, $rep);
     //echo "DATE: $dateYmd <br />\n";
-  
-    for ( $i = 0; $i < count ( $ev ); $i++ ) {
+    $cnt = count ( $ev );
+    for ( $i = 0; $i < $cnt; $i++ ) {
       if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
         $event_str .= event_to_text ( $ev[$i], $dateYmd );
       }
@@ -494,7 +494,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
       translate ( 'Previous' ) . "</a>\n";
     echo '&nbsp;&nbsp;<a title="' .
       translate ( 'Next' ) . "\" href=\"report.php?report_id=$report_id$u_url" .
-      ( empty ( $next ) ? "" : "&amp;offset=$next" ) . "\" class=\"nav\">" .
+      ( empty ( $next ) ? '': "&amp;offset=$next" ) . "\" class=\"nav\">" .
       translate ( 'Next' ) . "</a><br />\n";
   }
   if ( $report_include_header == 'Y' ) {
