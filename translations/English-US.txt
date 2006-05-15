@@ -1,6 +1,6 @@
 # Use this as a starting point to translate this application into
 # another language.  The format is "English text: translated text"
-# There cannot be a ":" in the English text.
+# There cannot be a ': ' in the English text.
 # Translated by:
 # your name and email here...
 # Last update: 02 July 2002
@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 05-12-2006
+# Translation last updated on 05-15-2006
 
 
 ###############################################
@@ -392,6 +392,8 @@ Administrative Tools: Administrative Tools
 # Page: ajax.php
 #
 Duplicate Name: Duplicate Name
+Username already exists: Username already exists
+Email address already exists: Email address already exists
 
 
 ###############################################
@@ -1031,9 +1033,7 @@ Records deleted from: Records deleted from
 ###############################################
 # Page: register.php
 #
-Username already exists: Username already exists
 Email address can not be blank: Email address can not be blank
-Email address already exists: Email address already exists
 Illegal characters in login: Illegal characters in login
 A new WebCalendar account has been set up for you: A new WebCalendar account has been set up for you
 Your username is: Your username is
@@ -1044,7 +1044,6 @@ You may change your password after logging in the first time: You may change you
 If you received this email in error: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note 
 Administrator: Administrator
 Welcome: Welcome
-Your passwords do not match: Your passwords do not match
 Registration: Registration
 Welcome to WebCalendar: Welcome to WebCalendar
 Your email should arrive shortly: Your email should arrive shortly
