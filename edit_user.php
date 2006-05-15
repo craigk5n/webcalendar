@@ -80,7 +80,7 @@ if ( ! empty ( $error ) ) {
  </td></tr>
  <tr><td>
   <label for="uemail"><?php etranslate( 'E-mail address' )?>:</label></td><td>
-  <input type="text" name="uemail" id="uemail" size="20" value="<?php echo empty ( $uemail ) ? '' : htmlspecialchars ( $uemail );?>" />
+  <input type="text" name="uemail" id="uemail" size="20" value="<?php echo empty ( $uemail ) ? '' : htmlspecialchars ( $uemail );?>" onchange="check_uemail();" />
  </td></tr>
 <?php if ( empty ( $user ) && ! $use_http_auth && $user_can_update_password ) { ?>
  <tr><td>
