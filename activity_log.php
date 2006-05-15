@@ -109,7 +109,7 @@ if ( $res ) {
       } else if ( $row[2] == LOG_REMINDER ) {
         etranslate( 'Reminder sent' );
         if ( ! empty ( $row[5] ) )
-          echo " (" . htmlentities ( $row[5] ) . ")";
+          echo ' (' . htmlentities ( $row[5] ) . ')';
       } else if ( $row[2] == LOG_ATTACHMENT ) {
         etranslate( 'Attachment' );
       } else if ( $row[2] == LOG_COMMENT ) {
@@ -122,7 +122,7 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 } else {
-  echo translate( 'Database error' ) . ": " . dbi_error ();
+  echo translate( 'Database error' ) . ': ' . dbi_error ();
 }
 ?>
 </table><br />

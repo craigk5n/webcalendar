@@ -97,7 +97,7 @@ if ($file['size'] > 0) {
       translate( 'Events successfully imported' ) . ": $count_suc<br />\n";
     echo translate( 'Events from prior import marked as deleted' ) . ": $numDeleted<br />\n";
     if ( empty ( $ALLOW_CONFLICTS ) ) {
-      echo translate( 'Conflicting events' ) . ": " . $count_con . "<br />\n";
+      echo translate( 'Conflicting events' ) . ': ' . $count_con . "<br />\n";
     }
     echo translate ( 'Errors' ) . ": $error_num<br /><br />\n";
   } elseif (! empty ( $errormsg ) ) {

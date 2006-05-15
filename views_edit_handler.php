@@ -22,7 +22,7 @@ if ( ! empty ( $delete ) ) {
       "?, cal_view_type = ?, " .
       "cal_is_global = ? " .
       "WHERE cal_view_id = ? AND cal_owner = ?" , array ( $viewname , $viewtype , $viewisglobal , $id , $login ) ) ) {
-      $error = translate( 'Database error' ) . ": " . dbi_error();
+      $error = translate( 'Database error' ) . ': ' . dbi_error();
     }
   } else {
     # new... get new id first
@@ -37,10 +37,10 @@ if ( ! empty ( $delete ) ) {
         " VALUES ( ?, ?, ?, ?, ? )";
       $sql_params = array ( $id , $login , $viewname , $viewtype , $viewisglobal );
       if ( ! dbi_execute ( $sql , $sql_params ) ) {
-        $error = translate( 'Database error' ) . ": " . dbi_error();
+        $error = translate( 'Database error' ) . ': ' . dbi_error();
       }
     } else {
-      $error = translate( 'Database error' ) . ": " . dbi_error();
+      $error = translate( 'Database error' ) . ': ' . dbi_error();
     }
   }
 
@@ -50,7 +50,8 @@ if ( ! empty ( $delete ) ) {
     // If selected "All", then just put "__all__" in for username.
     if ( getPostValue ( "viewuserall" ) == 'Y' )
       $users = array ( "__all__" );
-    for ( $i = 0; ! empty ( $users ) && $i < count ( $users ); $i++ ) {
+    $cnt = count ( $users );
+    for ( $i = 0; ! empty ( $users ) && $i < $cnt; $i++ ) {
       dbi_execute ( "INSERT INTO webcal_view_user ( cal_view_id, cal_login ) " .
         "VALUES ( ?, ? )" , array ( $id , $users[$i] ) );
     }

@@ -126,7 +126,8 @@ if ( $do_purge ) {
     $nonusers = get_nonuser_cals ();
     $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
-  for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+  $cnt = count ( $userlist );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     echo '<option value="' . $userlist[$i]['cal_login'] . '"';
  if ( $login == $userlist[$i]['cal_login'] ) {
   echo ' selected="selected"';
@@ -185,11 +186,12 @@ function purge_events ( $ids ) {
 
   //var_dump($tables);exit;
   $num = array();
-  for ( $i = 0; $i < count ( $tables ); $i++ ) {
+  $cnt = count ( $tables );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     $num[$i] = 0;
   }
   foreach ( $ids as $cal_id ) {
-    for ( $i = 0; $i < count ( $tables ); $i++ ) {
+    for ( $i = 0; $i < $cnt; $i++ ) {
       $clause = ( $cal_id == 'ALL' ? '' :
         " WHERE {$tables[$i][1]} = $cal_id" );
       if ( $preview ) {
@@ -216,7 +218,7 @@ function purge_events ( $ids ) {
       }
     }
   }
-  for ( $i = 0; $i < count ( $tables ); $i++ ) {
+  for ( $i = 0; $i < $cnt; $i++ ) {
     $table = $tables[$i][0];
     echo '[' . translate ( 'Preview' ) . '] ' .
       translate( 'Records deleted from' ) .

@@ -50,11 +50,13 @@ if ( $search_others ) {
     && ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' ) {
     $myusers = get_my_users ();
     $userlookup = array ();
-    for ( $i = 0; $i < count ( $myusers ); $i++ ) {
+    $cnt = count ( $myusers );
+    for ( $i = 0; $i < $cnt; $i++ ) {
       $userlookup[$myusers[$i]['cal_login']] = 1;
     }
     $newlist = array ();
-    for ( $i = 0; $i < count ( $users ); $i++ ) {
+    $cnt = count ( $users );
+    for ( $i = 0; $i < $cnt; $i++ ) {
       if ( ! empty ( $userlookup[$users[$i]] ) )
         $newlist[] = $users[$i];
     }
@@ -63,7 +65,7 @@ if ( $search_others ) {
   // Now, use access control to remove more users :-)
   if ( access_is_enabled () && ! $is_admin ) {
     $newlist = array ( );
-    for ( $i = 0; $i < count ( $users ); $i++ ) {
+    for ( $i = 0; $i < $cnt; $i++ ) {
       if ( access_user_calendar ( 'view', $users[$i] ) )
         $newlist[] = $users[$i];
     }
@@ -85,7 +87,8 @@ if ( ! empty ( $error ) ) {
 } else {
   $ids = array ();
   $words = split ( ' ', $keywords );
-  for ( $i = 0; $i < count ( $words ); $i++ ) {
+  $word_cnt = count ( $words );
+  for ( $i = 0; $i < $word_cnt; $i++ ) {
     $sql_params = array();
     // Note: we only search approved/waiting events (not deleted)
     $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name, " .
@@ -97,7 +100,8 @@ if ( ! empty ( $error ) ) {
     if ( $search_others ) {
       if ( empty ( $users[0] ) )
         $users[0] = $login;
-      for ( $j = 0; $j < count ( $users ); $j++ ) {
+      $user_cnt = count ( $users );
+      for ( $j = 0; $j < $user_cnt; $j++ ) {
         if ( $j > 0 )
           $sql .= ", ";
         $sql .= " ?";
@@ -121,9 +125,8 @@ if ( ! empty ( $error ) ) {
     //this only will search the first ikb of the description
     $sql .= "AND ( UPPER(webcal_entry.cal_name) " .
       "LIKE UPPER(?) " .
-      ( strcmp ( $GLOBALS["db_type"], "mssql" ) == 0? 
-        "OR UPPER( CAST ( webcal_entry.cal_description AS varchar(1024) ) ) " :
-        "OR UPPER(webcal_entry.cal_description ) " ).
+      ( strcmp ( $GLOBALS['db_type'], "mssql" ) == 0? 
+        "OR UPPER( CAST ( webcal_entry.cal_description AS varchar(1024) ) ) ": "OR UPPER(webcal_entry.cal_description ) " ).
       "LIKE UPPER(?) ) " .
       "ORDER BY cal_date";
     $sql_params[] = '%' . $words[$i] . '%';

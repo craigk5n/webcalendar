@@ -94,7 +94,8 @@ for ( $i = 0; $i < $val_boucle; $i++ ) {
 
 // get users in this view
 $viewusers = view_get_user_list ( $id );
-if ( count ( $viewusers ) == 0 ) {
+$viewusercnt = count ( $viewusers );
+if ( $viewusercnt == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view
   $error = translate ( 'No users for this view' ) ;
@@ -142,7 +143,7 @@ if ( ! empty ( $error ) ) {
 
 $e_save = array ();
 $re_save = array ();
-for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
+for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
   $re_save = array_merge($re_save, $repeated_events);
@@ -185,20 +186,20 @@ for ( $date = $wkstart, $h = 0;
   }
 
   // Default settings
-  if ( ! isset ($prefarray["WORK_DAY_START_HOUR"] ) || 
-    ! isset ( $prefarray["WORK_DAY_END_HOUR"] ) ) {
+  if ( ! isset ($prefarray['WORK_DAY_START_HOUR'] ) || 
+    ! isset ( $prefarray['WORK_DAY_END_HOUR'] ) ) {
      $val = dbi_fetch_row ( dbi_execute ( "SELECT cal_value FROM webcal_config 
      where cal_setting='WORK_DAY_START_HOUR'" ));
-     $prefarray["WORK_DAY_START_HOUR"]=$val[0];
+     $prefarray['WORK_DAY_START_HOUR']=$val[0];
      $val = dbi_fetch_row ( dbi_execute ( "SELECT cal_value FROM webcal_config 
      where cal_setting='WORK_DAY_END_HOUR'" ));
-     $prefarray["WORK_DAY_END_HOUR"]=$val[0];
+     $prefarray['WORK_DAY_END_HOUR']=$val[0];
   }
     
-  print_header_timebar($prefarray["WORK_DAY_START_HOUR"], 
-    $prefarray["WORK_DAY_END_HOUR"]);
-  print_date_entries_timebar ( date ( 'Ymd', $date ), $GLOBALS["login"], true );
-  echo "</td>";
+  print_header_timebar($prefarray['WORK_DAY_START_HOUR'], 
+    $prefarray['WORK_DAY_END_HOUR']);
+  print_date_entries_timebar ( date ( 'Ymd', $date ), $GLOBALS['login'], true );
+  echo '</td>';
   echo "</tr>\n";
 }
 
@@ -210,7 +211,7 @@ if ( ! empty ( $eventinfo ) ) {
   echo $eventinfo;
 }
 
-echo "<a title=\"" . translate ( 'Generate printer-friendly version' ) . "\" " .
+echo "<a title=\"" . translate ( 'Generate printer-friendly version' ) . '" ' .
   "class=\"printer\" href=\"view_t.php?timeb=$timeb&amp;id=$id&amp;date=" .
   "$thisdate&amp;friendly=1\" target=\"cal_printer_friendly\" " .
   "onmouseover=\"window.status='" .

@@ -65,7 +65,8 @@ for ( $i = 0; $i < 7; $i++ ) {
 
 // get users in this view
 $viewusers = view_get_user_list ( $id );
-if ( count ( $viewusers ) == 0 ) {
+$viewusercnt = count ( $viewusers );
+if ( $viewusercnt == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view
   $error = translate ( 'No users for this view' ) ;
@@ -107,7 +108,7 @@ if ( ! empty ( $error ) ) {
 
 $e_save = array ();
 $re_save = array ();
-for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
+for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
   $re_save[$i] = $repeated_events;
@@ -117,12 +118,12 @@ for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   $e_save[$i] = $events;
 }
 
-for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
+for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   // since print_date_entries is rather stupid, we can swap the event data
   // around for users by changing what $events points to.
 
   // Calculate width of columns in this table.
-  $num_left = count ( $viewusers ) - $j;
+  $num_left = $viewusercnt - $j;
   if ( $num_left > $USERS_PER_TABLE ) {
     $num_left = $USERS_PER_TABLE;
   }
@@ -145,7 +146,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
   // $k is counter starting at 0
   // $i starts at table start and goes until end of this table/row.
   for ( $i = $j, $k = 0;
-    $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
+    $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );
     echo "<th style=\"width:$tdw%;\">$tempfullname</th>\n";
@@ -166,7 +167,7 @@ for ( $j = 0; $j < count ( $viewusers ); $j += $USERS_PER_TABLE ) {
     echo $weekday . " " .
       round ( date ( "d", $xdate ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
-      $i < count ( $viewusers ) && $k < $USERS_PER_TABLE; $i++, $k++ ) {
+      $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];

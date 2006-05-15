@@ -63,15 +63,15 @@ function toggleGroup ( state ) {
   var selNum = list.selectedIndex;
   <?php
   for ( $i = 0; $i < count ( $groups ); $i++ ) {
-    print "\n  if ( selNum == $i ) {\n";
+    echo "\n  if ( selNum == $i ) {\n";
     $res = dbi_execute ( "SELECT cal_login from webcal_group_user " .
-      "WHERE cal_group_id = ?" , array ( $groups[$i]["cal_group_id"] ) );
+      "WHERE cal_group_id = ?" , array ( $groups[$i]['cal_group_id'] ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
-        print "    selectByLogin ( \"$row[0]\", state );\n";
+        echo "    selectByLogin ( \"$row[0]\", state );\n";
       }
       dbi_free_result ( $res );
-      print "  }\n";
+      echo "  }\n";
     }
   }
   ?>

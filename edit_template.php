@@ -110,7 +110,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
     $query_params[] = $template;
   }
   if ( ! dbi_execute ( $sql, $query_params ) ) {
-    $error = translate( 'Database error' ) . ": " . dbi_error ();
+    $error = translate( 'Database error' ) . ': ' . dbi_error ();
   } else {
     //echo "SQL: $sql <br />\n";
     echo "<html>\n<head>\n</head>\n<body onload=\"window.close();\">\nDone</body>\n</html>";

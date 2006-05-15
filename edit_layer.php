@@ -53,7 +53,8 @@ if ( $single_user == 'N' ) {
   $num_users = 0;
   $size = 0;
   $users = '';
-  for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+  $cnt = count ( $userlist );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     if ( $userlist[$i]['cal_login'] != $layer_user ) {
       $size++;
       $users .= '<option value="' . $userlist[$i]['cal_login'] . '"';
@@ -66,7 +67,8 @@ if ( $single_user == 'N' ) {
   }
   $osize = 0;
   $others = '';
-  for ( $i = 0; $i < count ( $otherlist ); $i++ ) {
+  $cnt = count ( $otherlist );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     if ( $otherlist[$i]['cal_login'] != $layer_user ) {
       $osize++;
       $others .= '<option value="' . $otherlist[$i]['cal_login'] . '">' .
@@ -82,11 +84,11 @@ if ( $single_user == 'N' ) {
   else if ( $osize > 5 )
     $osize = 5;
   if ( $size >= 1 ) {
-    print "<tr><td style=\"vertical-align:top;\">\n<label for=\"layeruser\">" .
+    echo"<tr><td style=\"vertical-align:top;\">\n<label for=\"layeruser\">" .
       translate( 'Source' ) . ":</label></td><td>\n";
-    print "<select name=\"layeruser\" id=\"layeruser\" size=\"1\">\n$users\n";
-    print "</select>\n";
-    print "</td></tr>\n";
+    echo "<select name=\"layeruser\" id=\"layeruser\" size=\"1\">\n$users\n";
+    echo "</select>\n";
+    echo "</td></tr>\n";
   }
 }
 ?>

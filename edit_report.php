@@ -105,6 +105,7 @@ if ( empty ( $error ) && $show_participants ) {
     $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : 
       array_merge($userlist, $nonusers);
   }
+  $userlistcnt = count ( $userlist );
 }
 
 // Default values
@@ -144,7 +145,7 @@ if ( empty ( $error ) && $report_id >= 0 ) {
       // Check permissions.
       if ( $show_participants && ! empty ( $report_user ) ) {
         $user_is_in_list = false;
-        for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+        for ( $i = 0; $i < $userlistcnt; $i++ ) {
           if ( $report_user == $userlist[$i]['cal_login'] ) {
             $user_is_in_list = true;
           }
@@ -249,7 +250,7 @@ if ( $show_participants ) {
     $users .= ' selected="selected"';
   }
   $users .= '>' . translate ( 'Current User' ) . "</option>\n";
-  for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+  for ( $i = 0; $i < $userlistcnt; $i++ ) {
     $users .= '<option value="' . $userlist[$i]['cal_login'] . '"';
     if ( ! empty ( $report_user ) ) {
       if ( $report_user == $userlist[$i]['cal_login'] ) {
@@ -258,11 +259,11 @@ if ( $show_participants ) {
     } 
     $users .= '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
-  print '<tr><td><label for="rpt_user">' .
+  echo '<tr><td><label for="rpt_user">' .
     translate( 'User' ) . ":</label></td>\n";
-  print "<td><select name=\"report_user\" id=\"rpt_user\" size=\"1\">$users\n";
-  print "</select>\n";
-  print "</td></tr>\n";
+  echo "<td><select name=\"report_user\" id=\"rpt_user\" size=\"1\">$users\n";
+  echo "</select>\n";
+  echo "</td></tr>\n";
 }
 
 if ( $is_admin ) { ?>

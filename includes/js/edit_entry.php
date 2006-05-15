@@ -22,7 +22,7 @@ function validate_and_submit () {
 
     // Ask for confirmation for time of day if it is before the user's
     // preference for work hours.
-    <?php if ($GLOBALS["TIME_FORMAT"] == "24") {
+    <?php if ($GLOBALS['TIME_FORMAT'] == "24") {
       echo "if ( h < $WORK_DAY_START_HOUR  ) {";
     }  else {
       echo "if ( h < $WORK_DAY_START_HOUR && document.editentryform.entry_ampm[0].checked ) {";

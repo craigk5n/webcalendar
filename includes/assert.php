@@ -27,8 +27,8 @@ function assert_get_cvs_file_version ( $file )
 {
   $version = "v?.?";
   $path = array ( "", "includes/", "../" );
-
-  for ( $i = 0; $i < count ( $path ); $i++ ) {
+  $cnt = count ( $path );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     $newfile = $path[$i] . $file;
     if ( file_exists ( $newfile ) ) {
       $fd = @fopen ( $newfile, "rb", false );
@@ -70,7 +70,8 @@ function assert_backtrace ()
   $bt = debug_backtrace ();
   //print_r ( $bt );
   $file = array ();
-  for ( $i = 0; $i < count ( $bt ); $i++ ) {
+  $cnt = count ( $bt );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     // skip the first two, since it's always this func and assert_handler
     if ( $i < 2 )
       continue;
@@ -121,17 +122,17 @@ function assert_handler ( $script, $line, $msg )
 {
   if ( empty ( $msg ) )
     $msg = "Assertion failed<br />\n";
-  if ( function_exists ( "debug_backtrace" ) )
+  if ( function_exists ( 'debug_backtrace' ) )
     $trace = assert_backtrace ();
   else
-    $trace = basename ( $script ) . ":" . $line . " " . $msg;
+    $trace = basename ( $script ) . ': ' . $line . ' ' . $msg;
   $msg .= "<b>Stack Trace:</b><br /><br /><blockquote><tt>\n" .
     nl2br ( $trace ) .
     "\n</tt></blockquote>\n";
-  if ( function_exists ( "die_miserable_death" ) ) {
+  if ( function_exists ( 'die_miserable_death' ) ) {
     die_miserable_death ( $msg );
   } else {
-    print "<html><head><title>WebCalendar Error</title></head>\n" .
+    echo "<html><head><title>WebCalendar Error</title></head>\n" .
       "<body><h2>WebCalendar Error</h2><p>" . $Msg . "</p></body></html>\n";
     exit;
   }

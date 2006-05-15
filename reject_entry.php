@@ -73,7 +73,8 @@ if ( empty ( $error ) && $id > 0 ) {
   }
 
   $eventstart = date_to_epoch ( $fmtdate . $time );
-  for ( $i = 0; $i < count ( $partlogin ); $i++ ) {
+  $cnt = count ( $partlogin );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     // does this user want email for this?
     $send_user_mail = get_pref_setting ( $partlogin[$i],
       'EMAIL_EVENT_REJECTED' );
@@ -99,9 +100,9 @@ if ( empty ( $error ) && $id > 0 ) {
       translate( 'An appointment has been rejected by' ) .
       ' ' . $login_fullname .  ".\n\n" .
       translate( 'The subject was' ) . ' "' . $name . " \"\n" .
-      translate( 'The description is' ) . " \"" . $description . "\"\n" .
-      translate( 'Date' ) . ": " . date_to_str ( $fmtdate ) . "\n" .
-      ( ( empty ( $hour ) && empty ( $minute ) ? '' : translate( 'Time' ) . ": " .
+      translate( 'The description is' ) . ' "' . $description . "\"\n" .
+      translate( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .
+      ( ( empty ( $hour ) && empty ( $minute ) ? '' : translate( 'Time' ) . ': ' .
       // Display using user's TIMEZONE and display TZID
       display_time ( '', 2, $eventstart , $t_format ) ) ). "\n";
       if ( ! empty ( $SERVER_URL ) ) {

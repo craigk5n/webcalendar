@@ -95,18 +95,18 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $bodyid, $self, $login, $browser;
   
   //remember this view if the file is a view_x.php script
-  if ( ! strstr ( $REQUEST_URI, "view_entry" ) )  remember_this_view ( true );
+  if ( ! strstr ( $REQUEST_URI, 'view_entry' ) )  remember_this_view ( true );
   
   //get script name for later use
   $thisPage = substr($self, strrpos($self, '/') + 1);
     
   //check the css version for cache clearing if needed
   if ( ! $disableStyle ) {
-    if  ( isset ( $_COOKIE["webcalendar_csscache"] ) ) {
-      $webcalendar_csscache = $_COOKIE["webcalendar_csscache"];
+    if  ( isset ( $_COOKIE['webcalendar_csscache'] ) ) {
+      $webcalendar_csscache = $_COOKIE['webcalendar_csscache'];
     } else {
       $webcalendar_csscache = 1;
-      SetCookie ( "webcalendar_csscache", $webcalendar_csscache );
+      SetCookie ( 'webcalendar_csscache', $webcalendar_csscache );
     }
   }
     
@@ -186,8 +186,8 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   // including this as a normal stylesheet so they can see how it will look 
   // when printed. This maintains backwards-compatibility for browsers that 
   // don't support media="print" stylesheets
-  echo "<link rel=\"stylesheet\" type=\"text/css\"" . 
-    ( empty ( $friendly ) ? " media=\"print\"" : "" ) . 
+  echo '<link rel="stylesheet" type="text/css"' . 
+    ( empty ( $friendly ) ? ' media="print"': '' ) . 
     " href=\"includes/print_styles.css\" />\n";
 
   // Add RSS feed if publishing is enabled
@@ -195,24 +195,24 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
     $login == '__public__' ||
     ( ! empty ( $GLOBALS['USER_RSS_ENABLED'] ) &&
     $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) && $disableRSS == false ) {
-    echo "<link rel=\"alternate\" type=\"application/rss+xml\" " .
-      "title=\"" . htmlentities ( $APPLICATION_NAME ) .
-      " [RSS 1.0]\" href=\"rss.php";
+    echo '<link rel="alternate" type="application/rss+xml" ' .
+      'title="' . htmlentities ( $APPLICATION_NAME ) .
+      ' [RSS 1.0]" href="rss.php';
     // TODO: single-user mode, etc.
     if ( $login != '__public__' )
-      echo "?user=" . $login;
+      echo '?user=' . $login;
     echo "\" />\n";
   }
 
   // Link to favicon
-  echo "<link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/x-icon\" />\n";
+  echo '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />' . "\n";
 
   // Finish the header
   echo "</head>\n<body";
 
   // Find the filename of this page and give the <body> tag the corresponding id
   if ( isset( $bodyid[$thisPage] ) )
-    echo " id=\"" . $bodyid[$thisPage] . "\"";
+    echo " id=\"" . $bodyid[$thisPage] . '"';
 
   // Add any extra parts to the <body> tag
   if ( ! empty( $BodyX ) )
@@ -298,8 +298,8 @@ function print_menu_dates ( $menu=false) {
     echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
 
-  echo "<label for=\"monthselect\"><a href=\"javascript:document.SelectMonth.submit()\">" .    translate( 'Month' ) . "</a>:&nbsp;</label>\n";
-  echo "<select name=\"date\" id=\"monthselect\" " .
+  echo '<label for="monthselect"><a href="javascript:document.SelectMonth.submit()">' .    translate( 'Month' ) . "</a>:&nbsp;</label>\n";
+  echo '<select name="date" id="monthselect" ' .
     "onchange=\"document.SelectMonth.submit()\">\n";
 
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -320,7 +320,7 @@ function print_menu_dates ( $menu=false) {
     }
   if ( $y >= 1970 && $y < 2038 ) {
       $d = mktime ( 0, 0, 0, $m, 1, $y );
-      echo '<option value="' . date ( 'Ymd', $d ) . "\"";
+      echo '<option value="' . date ( 'Ymd', $d ) . '"';
       if ( date ( 'Ymd', $d ) == $thisdate ) {
         echo ' selected="selected" ';
       }
@@ -383,15 +383,15 @@ function print_menu_dates ( $menu=false) {
     $twkend = $twkstart + ( ONE_DAY * 6 );
 //  echo $twkstart . " " . $twkend;
   if ( $twkstart > 0 && $twkend < 2146021200 ) { 
-      echo '<option value="' . date ( 'Ymd', $twkstart ) . "\"";
+      echo '<option value="' . date ( 'Ymd', $twkstart ) . '"';
       if ( date ( 'Ymd', $twkstart ) <= $thisdate &&
         date ( 'Ymd', $twkend ) >= $thisdate ) {
         echo ' selected="selected" ';
       }
-      echo ">";
+      echo '>';
       if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
         $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y' ) {
-        echo  "(" . date( "W", $twkstart + ONE_DAY ) . ")&nbsp;&nbsp;";
+        echo  '(' . date( 'W', $twkstart + ONE_DAY ) . ')&nbsp;&nbsp;';
       }
       printf ( "%s - %s",
         date_to_str ( date ( 'Ymd', $twkstart ), $DATE_FORMAT_MD, false, true, 0 ),
@@ -402,7 +402,7 @@ function print_menu_dates ( $menu=false) {
 
   echo "</select>\n";
   if ( $menu == false )
-    echo "<input type=\"submit\" value=\"" . translate( 'Go' ) ."\" />\n";
+    echo '<input type="submit" value="' . translate( 'Go' ) ."\" />\n";
   echo "</form>\n";
   if ( $menu == true ) echo "</td>\n<td class=\"ThemeMenubackgr\">";
 
@@ -428,7 +428,7 @@ function print_menu_dates ( $menu=false) {
   }
 
   echo "<label for=\"yearselect\"><a href=\"javascript:document.SelectYear.submit()\">" .    translate( 'Year' ) . "</a>:&nbsp;</label>\n";
-  echo "<select name=\"year\" id=\"yearselect\" ".
+  echo '<select name="year" id="yearselect" '.
     "onchange=\"document.SelectYear.submit()\">\n";
 
   if ( ! empty ( $thisyear ) ) {
@@ -438,7 +438,7 @@ function print_menu_dates ( $menu=false) {
   }
   for ( $i = $y - 4; $i < $y + 4; $i++ ) {
    if ( $i >= 1970 && $i < 2038 ) {
-      echo "<option value=\"$i\"";
+      echo '<option value="$i"';
       if ( $i == $y ) {
         echo ' selected="selected" ';
       }
@@ -448,7 +448,7 @@ function print_menu_dates ( $menu=false) {
 
   echo "</select>\n";
   if ( $menu == false )
-    echo "<input type=\"submit\" value=\"" . translate( 'Go' ) . "\" />\n";
+    echo '<input type="submit" value="' . translate( 'Go' ) . "\" />\n";
   echo "</form>\n";
 }
 ?>

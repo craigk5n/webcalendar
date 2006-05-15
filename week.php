@@ -39,7 +39,7 @@ if ( ! empty ( $AUTO_REFRESH ) && $AUTO_REFRESH == 'Y' &&
   $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week.php?$u_url" .
     "date=$startdate$caturl" . 
-    ( ! empty ( $friendly ) ? "&amp;friendly=1" : "") . "\" />\n";
+    ( ! empty ( $friendly ) ? '&amp;friendly=1': '') . "\" />\n";
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
@@ -162,7 +162,8 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 
   $hour_arr = array ();
   $rowspan_arr = array ();
-  for ( $i = 0; $i < count ( $ev ); $i++ ) {
+  $cnt = count ( $ev );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
       html_for_event_week_at_a_glance ( $ev[$i], $date );
     }
@@ -218,15 +219,15 @@ if ( $untimed_found ) {
     $thiswday = date ( 'w', $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
    // if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue;
-    $class = ( $is_weekend ? "weekend" : "" );
+    $class = ( $is_weekend ? 'weekend': '' );
 
    if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
-     if ($class != "") {
-       $class .= " ";
+     if ($class != '') {
+       $class .= ' ';
      }
-     $class .= "today";
+     $class .= 'today';
    }
-   echo "<td";
+   echo '<td';
 
    // Use the class 'hasevents' for any hour block that has events
    // in it.
@@ -262,12 +263,12 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $thiswday = date ( 'w', $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-    $class = ( $is_weekend ? "weekend" : "" );
+    $class = ( $is_weekend ? 'weekend': '' );
     if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
-      if ( $class != "" ) {
-        $class .= " ";
+      if ( $class != '' ) {
+        $class .= ' ';
       }
-        $class .= "today";
+        $class .= 'today';
       }
 
    // Use the class 'hasevents' for any hour block that has events

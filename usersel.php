@@ -16,7 +16,8 @@ if ( empty ( $listid ) ) {
 // parse $users
 $exp = split ( ',', $users );
 $selected = array ();
-for ( $i = 0; $i < count ( $exp ); $i++ ) {
+$cnt = count ( $exp );
+for ( $i = 0; $i < $cnt; $i++ ) {
   $selected[$exp[$i]] = 1;
 }
 
@@ -66,8 +67,8 @@ if ($NONUSER_ENABLED == 'Y' ) {
   $nonusers = get_nonuser_cals ();
   $users = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
 }
-
-for ( $i = 0; $i < count ( $users ); $i++ ) {
+$cnt = count ( $users );
+for ( $i = 0; $i < $cnt; $i++ ) {
   $u = $users[$i]['cal_login'];
   echo "<option value=\"$u\"";
   if ( ! empty ( $selected[$u] ) )
@@ -85,7 +86,8 @@ for ( $i = 0; $i < count ( $users ); $i++ ) {
 <b><?php etranslate( 'Groups' ); ?>:</b><br />
 <select name="groups" size="15">
 <?php
-for ( $i = 0; $i < count ( $groups ); $i++ ) {
+$cnt = count ( $groups );
+for ( $i = 0; $i < $cnt; $i++ ) {
   echo '<option value="' . $groups[$i]['cal_group_id'] .
       '">' . $groups[$i]['cal_name'] . "</option>\n";
 }

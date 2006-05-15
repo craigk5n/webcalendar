@@ -125,12 +125,14 @@ $event_text = '';
 for ( $d = $startdate; $d <= $enddate; $d += ONE_DAY ) {
   $dYmd = date ( 'Ymd', $d );
   $ev = get_entries ( $dYmd, $get_unapproved );
-  for ( $i = 0; $i < count ( $ev ); $i++ ) {
+  $evcnt = count ( $ev );
+  for ( $i = 0; $i < $evcnt; $i++ ) {
     $event_text .= fb_export_time ( $dYmd, $ev[$i]->getDuration(),
       $ev[$i]->getTime(), 'ical');
   }
   $revents = get_repeating_entries ( $user, $dYmd, $get_unapproved );
-  for ( $i = 0; $i < count ( $revents ); $i++ ) {
+  $recnt = count ( $revents );
+  for ( $i = 0; $i < $recnt; $i++ ) {
     $event_text .= fb_export_time ( $dYmd, $revents[$i]->getDuration(),
       $revents[$i]->getTime(), 'ical');
   }

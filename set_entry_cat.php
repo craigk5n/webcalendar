@@ -91,7 +91,8 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
  $categories = explode (",", $cat_id );
 
  $sql_params = array();
- for ( $i =0; $i < count( $categories ); $i++ ) {
+ $cnt = count( $categories );
+ for ( $i =0; $i < $cnt; $i++ ) {
    //don't process Global Categories
    if ( $categories[$i] > 0 ) {
    $names = array();

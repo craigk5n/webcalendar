@@ -205,14 +205,15 @@ if ( $readonly == 'Y' || $is_nonuser ||
     // In summary, make sure at least one event participant is in one of
     // this user's groups.
     $my_users = get_my_users ();
-    if ( is_array ( $my_users ) && count ( $my_users ) ) {
+    $my_usercnt = count ( $my_users );
+    if ( is_array ( $my_users ) && $my_usercnt ) {
       $sql_params = array ();
       $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
         "webcal_entry_user WHERE webcal_entry.cal_id = " .
         "webcal_entry_user.cal_id AND webcal_entry.cal_id = ? " .
         "AND webcal_entry_user.cal_login IN ( ";
       $sql_params[] = $id;
-      for ( $i = 0; $i < count ( $my_users ); $i++ ) {
+      for ( $i = 0; $i < $my_usercnt; $i++ ) {
         if ( $i > 0 ) {
           $sql .= ", ";
         }
@@ -242,7 +243,8 @@ if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
   $NONUSER_ENABLED == 'Y' ) {
   $nonusers = get_nonuser_cals ();
   $nonuser_lookup = array ();
-  for ( $i = 0; $i < count ( $nonusers ); $i++ ) {
+  $cnt = count ( $nonusers );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
   }
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? AND cal_status in ('A','W')";
@@ -346,9 +348,9 @@ $thistime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 $thisdow = date ( 'w', $thistime );
 
 // $subject is used for mailto URLs
-$subject = translate($APPLICATION_NAME) . ": " . $name;
+$subject = translate($APPLICATION_NAME) . ': ' . $name;
 // Remove the '"' character since it causes some mailers to barf
-$subject = str_replace ( "\"", "", $subject );
+$subject = str_replace ( ' "', '', $subject );
 $subject = htmlspecialchars ( $subject );
 
 $event_repeats = false;
@@ -613,7 +615,8 @@ if ( ! empty ( $reminder ) ) {
 
 // load any site-specific fields and display them
 $extras = get_site_extra_fields ( $id );
-for ( $i = 0; $i < count ( $site_extras ); $i++ ) {
+$site_extracnt = count ( $site_extras );
+for ( $i = 0; $i < $site_extracnt; $i++ ) {
   $extra_name = $site_extras[$i][0];
   $extra_type = $site_extras[$i][2];
   $extra_arg1 = $site_extras[$i][3];
@@ -704,7 +707,8 @@ if ( $single_user == 'N' && $show_participants ) { ?>
     echo '<th align="center">' .translate( 'Participants' ) . '</th>';
     echo '<th align="center" colspan="2">' . translate( 'Percentage Complete' ) . '</th>';
     $others_complete = 'yes';
-    for ( $i = 0; $i < count ( $participants ); $i++ ) {
+    $cnt = count ( $participants );
+    for ( $i = 0; $i < $cnt; $i++ ) {
       user_load_variables ( $participants[$i][0], 'temp' );
       if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
       $spacer = 100 - $participants[$i][2];
@@ -747,9 +751,10 @@ if ( $single_user == 'N' && $show_participants ) { ?>
     $external_users = event_get_external_users ( $id, 1 );
     $ext_users = explode ( "\n", $external_users );
     if ( is_array ( $ext_users ) ) {
-      for ( $i = 0; $i < count( $ext_users ); $i++ ) {
+      $cnt = count( $ext_users );
+      for ( $i = 0; $i < $cnt; $i++ ) {
         if ( ! empty ( $ext_users[$i] ) ) {
-          echo $ext_users[$i] . " (" . translate( 'External User' ) . 
+          echo $ext_users[$i] . ' (' . translate( 'External User' ) . 
             ")<br />\n";
           if ( preg_match ( '/mailto:(\S+)"/', $ext_users[$i], $match ) ) {
             $allmails[] = $match[1];
@@ -998,7 +1003,7 @@ if ( Doc::commentsEnabled () ) {
 if ( $can_add_attach ) {
   echo '<a title="' . translate( 'Add Attachment' ) .
     "\" class=\"nav\" href=\"docadd.php?type=A&amp;id=$id" . 
-    ( $login != $user? "&amp;user=$user":"")  . '">' .
+    ( $login != $user? "&amp;user=$user": '')  . '">' .
   translate ( 'Add Attachment' ) . "</a><br/>\n";
 }
 

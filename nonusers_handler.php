@@ -30,7 +30,8 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
   $delete_em = array ();
-  for ( $i = 0; $i < count ( $events ); $i++ ) {
+  $cnt = count ( $events );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     $res = dbi_execute ( "SELECT COUNT(*) FROM webcal_entry_user " .
       "WHERE cal_id = ?" , array ( $events[$i] ) );
     if ( $res ) {
@@ -42,7 +43,8 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
     }
   }
   // Now delete events that were just for this user
-  for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
+  $cnt = count ( $delete_em );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     dbi_execute ( "DELETE FROM webcal_entry WHERE cal_id = ?" , array ( $delete_em[$i] ) );
     
   }
@@ -74,7 +76,7 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
     $sql_params[] = $nadmin;
     $sql_params[] = $nid;
     if ( ! dbi_execute ( $sql , $sql_params ) ) {
-      $error = translate( 'Database error' ) . ": " . dbi_error();
+      $error = translate( 'Database error' ) . ': ' . dbi_error();
     }
   } else {
   // Adding

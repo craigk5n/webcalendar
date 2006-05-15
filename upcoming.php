@@ -154,35 +154,35 @@ function print_upcoming_event ( $e, $date ) {
         $e->getDescription(), $timestr, site_extras_for_popup ( $e->getId() ),
         $e->getLocation(), $e->getName(), $e->getId() );
     }
-    print "<a class=\"entry\" id=\"$popupid\" title=\"" . 
+    echo "<a class=\"entry\" id=\"$popupid\" title=\"" . 
       htmlspecialchars ( $e->getName() ) . '" href="' . 
       $SERVER_URL . 'view_entry.php?id=' . 
         $e->getID() . "&amp;date=$date\"";
       if ( ! empty ( $link_target ) ) {
-      print " target=\"$link_target\"";
+      echo " target=\"$link_target\"";
     }
-    print '>';
+    echo '>';
   }
   if ( $private ) {
-    print '[' . translate( 'Private' ) . ']';
+    echo '[' . translate( 'Private' ) . ']';
   } else if ( $confidential ) {
-    print '[' . translate( 'Confidential' ) . ']';
+    echo '[' . translate( 'Confidential' ) . ']';
   } else {
-    print htmlspecialchars ( $e->getName() );
+    echo htmlspecialchars ( $e->getName() );
   }
   if ( $display_link && ! empty ( $SERVER_URL ) && ! $private ) {
-    print '</a>';
+    echo '</a>';
   }
   
   if ( $showTime ) {  //show event time if requested (default=don't show)
     if ( $e->isAllDay() ) {
-      print ' (' . translate( 'All day event' ) . ")\n";
+      echo ' (' . translate( 'All day event' ) . ")\n";
     } else if ( $e->getTime() != -1 ) {
-      print ' (' . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
+      echo ' (' . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
     }
   }
 
-  print "<br />\n";
+  echo "<br />\n";
 
  }  //end function
 
@@ -501,9 +501,9 @@ if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate($upcoming_titl
 
 <div class="cal_upcoming">
 <?php
-print "<dl>\n";
+echo "<dl>\n";
 
-print "<!-- \nstartTime: startDate\nendTime: $endDate\nstartDate: " .
+echo "<!-- \nstartTime: startDate\nendTime: $endDate\nstartDate: " .
   "$date\nnumDays: $numDays\nuser: $username\nevents: " . 
   count ( $events ) . "\nrepeated_events: " . 
   count ( $repeated_events ) . " -->\n";
@@ -516,25 +516,25 @@ for ( $i = $startDate; date ( 'Ymd', $i ) <= date ( 'Ymd', $endDate ) &&
   $entries = get_entries ( $d, $get_unapproved );
   $rentries = get_repeating_entries ( $username, $d, $get_unapproved );
   $ev = combine_and_sort_events ( $entries, $rentries );
-
+  $ev_cnt = count ( $ev );
   $tentries = get_tasks ( $d, $get_unapproved );
   $ev = combine_and_sort_events ( $ev, $tentries );
 
-  print "<!-- $d " . count ( $ev ) . " -->\n";
+  echo "<!-- $d " . count ( $ev ) . " -->\n";
 
-  if ( count ( $ev ) > 0 ) {
-    print "<!-- XXX -->\n";
+  if ( $ev_cnt > 0 ) {
+    echo "<!-- XXX -->\n";
     //print "<dt>" . date_to_str ( $d,  translate ( '__month__ __dd__' ), true, true ) . "</dt>\n<dd>";
-    print '<dt>' . date_to_str ( $d ) . "</dt>\n<dd>";
-    for ( $j = 0; $j < count ( $ev ) && $numEvents < $maxEvents; $j++ ) {
+    echo '<dt>' . date_to_str ( $d ) . "</dt>\n<dd>";
+    for ( $j = 0; $j < $ev_cnt && $numEvents < $maxEvents; $j++ ) {
       print_upcoming_event ( $ev[$j], $d );
       $numEvents++;
     }
-    print "</dd>\n";
+    echo "</dd>\n";
   }
 }
 
-print "</dl>\n";
+echo "</dl>\n";
 
 if ( $showMore ) echo '<center><i><a href="'. $title_more_url . '"> . . . ' . 
    translate ( 'more' ) . '</a></i></center>';
@@ -543,7 +543,7 @@ if ( $showMore ) echo '<center><i><a href="'. $title_more_url . '"> . . . ' .
 <?php
 echo $eventinfo;
 if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) { 
-  print "</body>\n</html>";
+  echo "</body>\n</html>";
 }
 
 //restore previous working directory before exit

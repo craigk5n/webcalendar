@@ -92,7 +92,8 @@ for ( $i = 0; $i < 7; $i++ ) {
 
 // get users in this view
 $viewusers = view_get_user_list ( $id );
-if ( count ( $viewusers ) == 0 ) {
+$viewusercnt = count ( $viewusers );
+if ( $viewusercnt == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view
   $error = translate ( 'No users for this view' ) ;
@@ -107,7 +108,7 @@ if ( ! empty ( $error ) ) {
 
 $e_save = array ();
 $re_save = array ();
-for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
+for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
   $re_save[$i] = $repeated_events;
@@ -142,7 +143,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     round ( date ( "d", $date ) ) . "</th>\n";
   }
   echo "</tr>\n";
-  for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
+  for ( $i = 0; $i < $viewusercnt; $i++ ) {
     echo "\n<tr>\n";
     $user = $viewusers[$i];
     user_load_variables ( $user, "temp" );

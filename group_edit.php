@@ -77,7 +77,8 @@ if ( $newgroup ) {
       dbi_free_result ( $res );
     }
   }
-  for ( $i = 0; $i < count ( $users ); $i++ ) {
+  $cnt = count ( $users );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     $u = $users[$i]['cal_login'];
     echo "<option value=\"$u\" ";
     if ( ! empty ( $groupuser[$u] ) ) {

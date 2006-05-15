@@ -228,7 +228,8 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
     } else {
       $all = get_my_users ( );
     }
-    for ( $j = 0; $j < count ( $all ); $j++ ) {
+    $cnt = count ( $all );
+    for ( $j = 0; $j < $cnt; $j++ ) {
       $x = $all[$j]['cal_login'];
       if ( access_user_calendar ( 'approve', $x ) ) {
         if ( empty ( $app_user_hash[$x] ) ) {
@@ -244,7 +245,8 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
       $app_users_hash['__public__'] = 1;
     }
     $all = get_nonuser_cals ( );
-    for ( $j = 0; $j < count ( $all ); $j++ ) {
+    $cnt = count ( $all );
+    for ( $j = 0; $j < $cnt; $j++ ) {
       $x = $all[$j]['cal_login'];
         if ( empty ( $app_user_hash[$x] ) ) {
           $app_users[] = $x;
@@ -255,7 +257,8 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
 }
 echo '<form action="list_unapproved.php" name="listunapproved" method="post">' . "\n";
 echo '<table border"0">';
-for ( $i = 0; $i < count ( $app_users ); $i++ ) {
+$cnt = count ( $app_users );
+for ( $i = 0; $i < $cnt; $i++ ) {
   // List unapproved entries for this user.
   list_unapproved ( $app_users[$i] );
 }
