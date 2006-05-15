@@ -377,6 +377,8 @@ Administrative Tools: Administrative Werkzeuge
 # Page: ajax.php
 #
 Duplicate Name: Doppelter Name
+Username already exists: Benutzer existiert bereits
+Email address already exists: Emailadresse existiert bereits
 
 
 ###############################################
@@ -1016,9 +1018,7 @@ Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
 ###############################################
 # Page: register.php
 #
-Username already exists: Benutzer existiert bereits
 Email address can not be blank: Emailadresse darf nicht leer sein
-Email address already exists: Emailadresse existiert bereits
 Illegal characters in login: Nicht zul&auml;ssige Zeichen beim Login
 A new WebCalendar account has been set up for you: Ein neuer Webkalenderzugang ist f&uuml;r Sie eingerichtet worden
 Your username is: Ihr Benutzername lautet
@@ -1029,7 +1029,6 @@ You may change your password after logging in the first time: Sie m&uuml;ssen na
 If you received this email in error: Wenn Sie diese Email erhalten aber keinen Webkalenderzugang beantragt haben, ignorieren Sie diese oder benachrichtigen Sie uns kurz
 Administrator: Administrator
 Welcome: Willkommen
-Your passwords do not match: Ihr Passwort stimmt nicht &uuml;berein
 Registration: Registrierung
 Welcome to WebCalendar: Willkommen beim Webkalender
 Your email should arrive shortly: Ihre Email wird in K&uuml;rze zugestellt
