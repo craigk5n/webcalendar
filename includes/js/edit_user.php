@@ -1,6 +1,6 @@
 <?php /* $Id$  */ ?>
-var validform = true;
-
+var validform = false;
+var formfield = 'user';
 
 function valid_form ( form ) {
   var name = form.user.value;
@@ -29,8 +29,19 @@ function valid_form ( form ) {
 
 
 function check_name() {
+  formfield = 'user';
   var url = 'ajax.php';
   var params = 'page=edit_user&name=' + $F('username');
+  var ajax = new Ajax.Request(url,
+    {method: 'post', 
+    parameters: params, 
+    onComplete: showResponse});
+}
+
+function check_uemail() {
+  formfield = 'uemail';
+  var url = 'ajax.php';
+  var params = 'page=email&name=' + $F('uemail');
   var ajax = new Ajax.Request(url,
     {method: 'post', 
     parameters: params, 
@@ -42,7 +53,10 @@ function showResponse(originalRequest) {
     text = originalRequest.responseText;
     //this causes javascript errors in Firefox, but these can be ignored
     alert (text);
-    document.edituser.user.focus();
+    if (   formfield == 'user' )
+      document.edituser.user.focus();
+    if (   formfield == 'uemail' )
+      document.edituser.uemail.focus();
     validform =  false;
   } else {
     validform =  true;
