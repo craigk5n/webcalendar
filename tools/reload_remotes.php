@@ -45,11 +45,11 @@
 // which you probably should do since it would be better for security
 // reasons, you would need to change $includedir to point to the
 // webcalendar include directory.
-$basedir = ".."; // points to the base WebCalendar directory relative to
+$basedir = '..'; // points to the base WebCalendar directory relative to
                  // current working directory
-$includedir = "../includes";
+$includedir = '../includes';
 $old_path = ini_get('include_path');
-$delim = ( strstr ( $old_path, ";" )? ";" : ":");
+$delim = ( strstr ( $old_path, ';' )? ';': ':');
 ini_set('include_path', $old_path . $delim . $includedir . $delim);
 
 require_once "$includedir/classes/WebCalendar.class";
@@ -73,14 +73,14 @@ $debug = false; // set to true to print debug info...
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
 if ( ! $c ) {
-  echo "Error connecting to database: " . dbi_error ();
+  echo 'Error connecting to database: ' . dbi_error ();
   exit;
 }
 
 load_global_settings ();
 
 if ( $debug )
-  echo "<br />Include Path=" . ini_get('include_path') . " <br />\n";
+  echo '<br />Include Path=' . ini_get('include_path') . " <br />\n";
 
 if ( $REMOTES_ENABLED == 'Y' ) {
    $res = dbi_execute ( "SELECT cal_login, cal_url, cal_admin FROM webcal_nonuser_cals " .
@@ -130,7 +130,8 @@ function delete_events ( $nid ){
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
   $delete_em = array ();
-  for ( $i = 0; $i < count ( $events ); $i++ ) {
+  $cnt = count ( $events );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     $res = dbi_execute ( "SELECT COUNT(*) FROM webcal_entry_user " .
       "WHERE cal_id = ?", array( $events[$i] ) );
     if ( $res ) {
@@ -142,7 +143,8 @@ function delete_events ( $nid ){
     }
   }
   // Now delete events that were just for this user
-  for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
+  $cnt = count ( $delete_em );
+  for ( $i = 0; $i < $cnt; $i++ ) {
     dbi_execute ( "DELETE FROM webcal_entry_repeats WHERE cal_id = ?", 
       array( $delete_em[$i] ) );
     dbi_execute ( "DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?", 
