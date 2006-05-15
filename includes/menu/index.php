@@ -139,16 +139,18 @@ if ( access_is_enabled () ) {
 
 
 // Views
+$view_cnt = count ( $views );
 if ( ( access_can_access_function ( ACCESS_VIEW, $user ) && $ALLOW_VIEW_OTHER != 'N' )
-  && count ( $views ) > 0 ) {
+  && $view_cnt > 0 ) {
   $views_link = array ();
-  for ( $i = 0; $i < count ( $views ); $i++ ) {
+  for ( $i = 0; $i < $view_cnt; $i++ ) {
     $tmp['name'] = htmlspecialchars ($views[$i]['cal_name']);
     $tmp['url'] = $views[$i]['url'];
     if ( ! empty ( $thisdate ) )
       $tmp['url'] .= "&amp;date=$thisdate";
     $views_link[] = $tmp;
   }
+  $views_linkcnt = count ( $views_link );
   $tmp = '';
 }
 
@@ -175,6 +177,7 @@ if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
     }
     dbi_free_result ( $res );
   }
+  $reports_linkcnt = count ( $reports_link);
   $tmp = '';
 }
 
@@ -225,7 +228,8 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     array_unshift ( $grouplist, $public );
   }
   $groups = "";
-  for ( $i = 0; $i < count ( $grouplist ); $i++ ) {
+  $grouplistcnt = count ( $grouplist );
+  for ( $i = 0; $i < $grouplistcnt; $i++ ) {
     $l = $grouplist[$i]['cal_login'];
     $f = $grouplist[$i]['cal_fullname'];
     // Use the preferred view if it is day/week/month/year.php.  Try
@@ -376,9 +380,9 @@ var myMenu =
     if ( $select_user_url != '' ) jscMenu_item ( 'display.png', "Another User\'s Calendar", $select_user_url );
 
     if ( $login != '__public__' ) {
-      if ( ! empty ( $views_link ) && count ( $views_link ) > 0 ) { 
+      if ( ! empty ( $views_link ) && $views_linkcnt > 0 ) { 
         jscMenu_sub_menu ( 'views.png', 'My Views' );
-        for ( $i = 0; $i < count ( $views_link ); $i++ ) {
+        for ( $i = 0; $i < $views_linkcnt; $i++ ) {
           jscMenu_item ( 'views.png', $views_link[$i]['name'], $views_link[$i]['url'] );
         }
         jscMenu_close();
@@ -386,7 +390,8 @@ var myMenu =
       
       if ( ! empty ( $groups ) ) {
         jscMenu_sub_menu ( 'manage_cal.png', 'Manage Calendar of' ); 
-        for ( $i = 0; $i < count ( $groups ); $i++ ) {
+        $groupcnt = count ( $groups );
+        for ( $i = 0; $i < $groupcnt; $i++ ) {
           jscMenu_item ( 'display.png', $groups[$i]['name'], $groups[$i]['url'] );
         }
         jscMenu_close();
@@ -413,9 +418,9 @@ var myMenu =
       access_can_access_function ( ACCESS_ACTIVITY_LOG, $user ) ) )
       jscMenu_item ( 'log.png', 'Activity Log', 'activity_log.php' );
 
-    if ( ! empty ( $reports_link ) && count ( $reports_link ) > 0 ) {
+    if ( ! empty ( $reports_link ) && $reports_linkcnt > 0 ) {
       jscMenu_sub_menu ( 'reports.png', 'My Reports' );
-      for ( $i = 0; $i < count ( $reports_link ); $i++ ) { 
+      for ( $i = 0; $i < $reports_linkcnt; $i++ ) { 
         jscMenu_item ( 'document.png', $reports_link[$i]['name'], $reports_link[$i]['url'] );
       }
       jscMenu_close();
