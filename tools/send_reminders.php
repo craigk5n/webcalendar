@@ -506,7 +506,7 @@ function send_reminder ( $id, $event_date ) {
           translate ( 'Administrator', true ). "\n\n$body\n\n</pre>\n";
     } else {
       $mail = new WebCalMailer;
-      loadUserVariables ( $user, "temp" );
+      user_load_variables ( $user, "temp" );
       if ( strlen ( $GLOBALS['EMAIL_FALLBACK_FROM'] ) ) {
         $mail->From = $GLOBALS['EMAIL_FALLBACK_FROM'];
         $mail->FromName = translate ( 'Administrator', true);
