@@ -419,7 +419,7 @@ for ( $i = 0; $i < $cnt; $i++ ) {
     echo $selected?>>15 <?php etranslate( 'minutes' )?></option>
   <option value="144" <?php if ( $prefarray['ENTRY_SLOTS'] == "144" ) 
     echo $selected?>>10 <?php etranslate( 'minutes' )?></option>
-  <option value="144" <?php if ( $prefarray['ENTRY_SLOTS'] == "288" ) 
+  <option value="288" <?php if ( $prefarray['ENTRY_SLOTS'] == "288" ) 
     echo $selected?>>5 <?php etranslate( 'minutes' )?></option>
   <option value="1440" <?php if ( $prefarray['ENTRY_SLOTS'] == "1440" ) 
     echo $selected?>>1 <?php etranslate( 'minute' )?></option>
