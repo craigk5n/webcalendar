@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1434994: minitask leaks details on other user's private tasks
  - Fixed bug 1489393: "Add Entry" defaults to first work hour
  - Fixed bug 1488942: 'system settings' and 'preferences' couldn't be displayed
  - Fixed bug 1462457: reminder form should have more conditionally disabled fields
