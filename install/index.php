@@ -1699,7 +1699,7 @@ if ( ! $exists || ! $canWrite ) { ?>
  <?php $will_load_admin = ( ( $_SESSION['old_program_version'] == 'new_install' )? 
   $checked:''); ?>
   <table width="75%" align="center" border="0"><tr>
-  <form action="index.php?action=switch&amp;page=4" method="post" name="form_app_settings">
+  <form action="index.php?action=switch&amp;page=4" method="post" enctype='multipart/form-data' name="form_app_settings">
     <input type="hidden" name="app_settings"  value="1"/>
     <td class="prompt"><?php etranslate ( 'Create Default Admin Account' ) ?>:</td>
     <td><input type="checkbox" name="load_admin" value="Yes" <?php echo $will_load_admin ?> /></td></tr>
