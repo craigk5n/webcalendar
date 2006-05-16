@@ -874,11 +874,12 @@ if ( $login == '__public__' && $PUBLIC_ACCESS_OTHERS != 'Y' )
 
 if ( $single_user == 'N' && $show_participants ) {
   $userlist = get_my_users ( $create_by, 'invite' );
-  $usercnt = count ( $userlist );
   if ($NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_nonuser_cals ();
-    $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+    $userlist = ($NONUSER_AT_TOP == 'Y') ? 
+      array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
+  $usercnt = count ( $userlist );
   $num_users = 0;
   $size = 0;
   $users = '';
