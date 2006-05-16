@@ -213,7 +213,9 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
       }
       if ( $guser == '__default__' ) {
         $userlist = array ( '__default__' );
-        $otheruser = '__default__';        
+        $otheruser = '__default__';
+        $otheruser_fullname = 'DEFAULT CONFIGURATION';
+        $otheruser_login  = '__default__';        
       } else { 
         $userlist = get_list_of_users ( $guser );
         echo "<h2>$pagetitle</h2>\n";
