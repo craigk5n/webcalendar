@@ -52,23 +52,23 @@ function schedule_event(hours, minutes) {
         makeVisible ( "timeentryend" );
       }
     }
+    parentForm.entry_hour.value = hours;
     if ( hours >  12 ) {
-      parentForm.hour.value = hours - 12;
-      if ( parentForm.ampm ) {
-        parentForm.ampm[1].checked = true;
+      if ( parentForm.entry_ampmP ) {
+        parentForm.entry_hour.value = hours - 12;
+        parentForm.entry_ampmP.checked = true;
       }
     } else {
-      parentForm.hour.value = hours;
-      if ( hours ==  12 &&  parentForm.ampm )  {
-        parentForm.ampm[1].checked = true;
+      if ( hours ==  12 &&  parentForm.entry_ampmP )  {
+        parentForm.entry_ampmP.checked = true;
       } else {
-        if ( parentForm.ampm ) {
-          parentForm.ampm[0].checked = true;
+        if ( parentForm.entry_ampmA ) {
+          parentForm.entry_ampmA.checked = true;
         }
       }
     }
-		if 	( minutes <= 9 ) minutes = '0' + minutes;	
-    parentForm.minute.value=minutes;		
+    if   ( minutes <= 9 ) minutes = '0' + minutes;  
+    parentForm.entry_minute.value=minutes;    
     parentForm.day.selectedIndex = day - 1;
     parentForm.month.selectedIndex = month - 1;
     for ( i = 0; i < parentForm.year.length; i++ ) {

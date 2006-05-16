@@ -25,7 +25,7 @@ function validate_and_submit () {
     <?php if ($GLOBALS['TIME_FORMAT'] == "24") {
       echo "if ( h < $WORK_DAY_START_HOUR  ) {";
     }  else {
-      echo "if ( h < $WORK_DAY_START_HOUR && document.editentryform.entry_ampm[0].checked ) {";
+      echo "if ( h < $WORK_DAY_START_HOUR && document.editentryform.entry_ampmA.checked ) {";
     }
     ?>
     if ( ! confirm ( "<?php etranslate ( 'The time you have entered begins before your preferred work hours.  Is this correct?', true)?> "))
@@ -365,7 +365,7 @@ function showSchedule () {
     alert("<?php etranslate( 'Please add a participant', true)?>" );
     return false;
   }
-  var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=no';
+  var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=yes';
   var url = 'availability.php?users=' + users + 
            '&form='  + 'editentryform' +     
            '&year='  + myForm.year.value + 
@@ -518,7 +518,7 @@ function toggle_until() {
  document.editentryform.elements[rpt_btnid].disabled = true;
  document.editentryform.elements['rpt_hour'].disabled = true;
  document.editentryform.elements['rpt_minute'].disabled = true;
- if ( document.editentryform.elements['rpt_ampm'] ) {
+ if ( document.editentryform.elements['rpt_ampmA'] ) {
    document.getElementById('rpt_ampmA').disabled = 'disabled';
    document.getElementById('rpt_ampmP').disabled = 'disabled';
  }
@@ -530,7 +530,7 @@ function toggle_until() {
    document.editentryform.elements[rpt_btnid].disabled = false;
    document.editentryform.elements['rpt_hour'].disabled = false;
    document.editentryform.elements['rpt_minute'].disabled = false;
-   if ( document.editentryform.elements['rpt_ampm'] ) {
+   if ( document.editentryform.elements['rpt_ampmA'] ) {
      document.getElementById('rpt_ampmA').disabled = false;
      document.getElementById('rpt_ampmP').disabled = false;
    }
@@ -551,7 +551,7 @@ function toggle_rem_when() {
    document.editentryform.elements['reminder_btn'].disabled = false;
    document.editentryform.elements['reminder_hour'].disabled = false;
    document.editentryform.elements['reminder_minute'].disabled = false;
-   if ( document.editentryform.elements['reminder_ampm'] ) {
+   if ( document.editentryform.elements['reminder_ampmA'] ) {
    document.getElementById('reminder_ampmA').disabled = false;
    document.getElementById('reminder_ampmP').disabled = false;
    }
@@ -569,7 +569,7 @@ function toggle_rem_when() {
    document.editentryform.elements['reminder_btn'].disabled = true;
    document.editentryform.elements['reminder_hour'].disabled = true;
    document.editentryform.elements['reminder_minute'].disabled = true;
-   if ( document.editentryform.elements['reminder_ampm'] ) {
+   if ( document.editentryform.elements['reminder_ampmA'] ) {
    document.getElementById('reminder_ampmA').disabled = 'disabled';
    document.getElementById('reminder_ampmP').disabled = 'disabled';
    }
