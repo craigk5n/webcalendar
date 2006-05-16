@@ -1240,7 +1240,7 @@ function date_selection ( $prefix, $date, $trigger=false ) {
       ( $i == $thismonth ? ' selected="selected"' : '' ) . ">$m</option>\n";
   }
   $ret .= "</select>\n<select name=\"" . $prefix . 'year"' .
-    (! empty ( $trigger_str )? 'onchange="$trigger_str"': '') . " >\n";
+    (! empty ( $trigger_str )? "onchange=\"$trigger_str\"": '') . " >\n";
   for ( $i = -10; $i < $num_years; $i++ ) {
     $y = $thisyear + $i;
     $ret .= "<option value=\"$y\"" .
@@ -1947,9 +1947,8 @@ function get_entries ( $date, $get_unapproved=true ) {
   $evcnt = count ( $events );
   for ( $i = 0; $i < $evcnt; $i++ ) {
     $event_date = date ('Ymd', $events[$i]->getDateTimeTS() );
-//echo  "$event_date  $date<br>";
     if ( ! $get_unapproved && $events[$i]->getStatus() == 'W' )
-      continue;    
+      continue;  
     if ( $events[$i]->isAllDay() || $events[$i]->isUntimed() ) {
       if ( $events[$i]->getDate() == $date )
         $ret[] = $events[$i];
@@ -5057,10 +5056,13 @@ function languageToAbbrev ( $name ) {
 function daily_matrix ( $date, $participants, $popup = '' ) {
   global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TABLEBG;
   global $user_fullname, $repeated_events, $events, $TIME_FORMAT;
-  global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR;
+  global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR, $ENTRY_SLOTS;
 
-  $increment = 15;
-  $interval = 4;
+  $entrySlots = ( $ENTRY_SLOTS >288 ? 288 : ( $ENTRY_SLOTS <72 ? 72 : $ENTRY_SLOTS ) ); 
+  $increment = (int)( 1440 / $entrySlots );
+  $interval = (int)( 60 / $increment );
+
+echo "$ENTRY_SLOTS    $entrySlots     $increment  $interval";
   $participant_pct = '20%'; //use percentage
 
   $first_hour = $WORK_DAY_START_HOUR;
@@ -5074,12 +5076,10 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   // Build a master array containing all events for $participants
   $cnt = count ( $participants );
   for ( $i = 0; $i < $cnt; $i++ ) {
-
     /* Pre-Load the repeated events for quckier access */
     $repeated_events = read_repeated_events ( $participants[$i], "", $dateTS );
     /* Pre-load the non-repeating events for quicker access */
-    /* Subtract one week to try and include any cross-day events */
-    $events = read_events ( $participants[$i], $dateTS - ONE_WEEK, $dateTS );
+    $events = read_events ( $participants[$i], $dateTS , $dateTS );
 
     // get all the repeating events for this date and store in array $rep
     $rep = get_repeating_entries ( $participants[$i], $dateTS );
@@ -5088,7 +5088,6 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
 
     // combine into a single array for easy processing
     $ALL = array_merge ( $rep, $ev );
-
     foreach ( $ALL as $E ) {
       if ($E->getTime() == 0) { 
         $time = $first_hour."0000";
@@ -5101,15 +5100,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
       $mins = substr($time, 2, 2 );
        
       // convert cal_time to slot
-      if ($mins < 15) {
-        $slot = $hour.'';
-      } elseif ($mins >= 15 && $mins < 30) {
-        $slot = $hour.'.25';
-      } elseif ($mins >= 30 && $mins < 45) {
-        $slot = $hour.'.5';
-      } elseif ($mins >= 45) {
-        $slot = $hour.'.75';
-      }
+      $slot= $hour + substr ($mins,0,1) ;
 
       // convert cal_duration to bars
       $bars = $duration / $increment;
@@ -5128,11 +5119,13 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
           $master[$participants[$i]][$slot]['stat'] = $E->getStatus();
           $master[$participants[$i]][$slot]['ID'] = $E->getID();
         }
-        $slot = $slot + '0.25';
+        $slot = $slot + ($increment * .01);
+        if ( $slot - (int)$slot >= .59 ) $slot = (int)$slot +1;
       }
 
     }
   }
+
 ?>
   <br />
   <table  align="center" class="matrixd" style="width:<?php echo $total_pct;?>;" cellspacing="0" cellpadding="0">
@@ -5148,26 +5141,44 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
     if ( $TIME_FORMAT == "12" ) {
       $hour %= 12;
       if ( $hour == 0 ) $hour = 12;
+      $hourfmt = "%d";
+    } else {
+      $hourfmt = "%02d";
     }
-
+     $halfway = (int)(($interval /2 ) -1 );
+     $schedaStr = " onmouseover=\"window.status='" . translate ( 'Schedule a' ) . ' ';
+     $apptStr = translate ( 'appointment') .
+       " ';this.style.backgroundColor='#CCFFCC'; return true;\"";
+     $schedStr = ' title="' .translate ( 'Schedule an appointment for' ) . ' ';
      for($j=0;$j<$interval;$j++) {
         $str .= ' <td  id="C'.$CC.'" class="dailymatrix" ';
         $MouseDown = 'onmousedown="schedule_event('.$i.','.sprintf ("%02d",($increment * $j)).');"';
         switch($j) {
-          case 1:
-                  if($interval == 4) { $k = ($hour<=9?'0':substr($hour,0,1)); }
-    $str .= 'style="width:'.$cell_pct.'%; text-align:right;"  '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
-                  $str .= $k."</td>\n";
-                  break;
-          case 2:
-                  if($interval == 4) { $k = ($hour<=9?substr($hour,0,1):substr($hour,1,2)); }
-    $str .= 'style="width:'.$cell_pct.'%; text-align:left;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
-                  $str .= $k."</td>\n";
-                  break;
+          case $halfway:
+            $k = ($hour<=9?'0':substr($hour,0,1));
+            $str .= 'style="width:'.$cell_pct.'%; text-align:right;"  '.
+              $MouseDown. $schedaStr . $hour.':'.($increment * $j<=9?'0':'').
+              ($increment * $j).$apptStr. $MouseOut. $schedStr .
+              sprintf ($hourfmt, $hour).':'.($increment * $j<=9?'0':'').
+              ($increment * $j).".\">";
+            $str .= $k."</td>\n";
+            break;
+          case $halfway +1:
+           $k = ($hour<=9?substr($hour,0,1):substr($hour,1,2));
+           $str .= 'style="width:'.$cell_pct.'%; text-align:left;" '.
+             $MouseDown. $schedaStr .$hour.':'.($increment * $j). $apptStr .
+             $MouseOut.$schedStr .sprintf ($hourfmt, $hour).':'.($increment * $j<=9?'0':'').
+             ($increment * $j).".\">";
+            $str .= $k."</td>\n";
+            break;
           default:
-    $str .= 'style="width:'.$cell_pct.'%;" '.$MouseDown." onmouseover=\"window.status='Schedule a ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j)." appointment.'; this.style.backgroundColor='#CCFFCC'; return true;\" ".$MouseOut." title=\"Schedule an appointment for ".$hour.':'.($increment * $j<=9?'0':'').($increment * $j).".\">";
-                  $str .= "&nbsp;&nbsp;</td>\n";
-                  break;
+            $str .= 'style="width:'.$cell_pct.'%;" '.
+              $MouseDown.$schedaStr .$hour.':'.($increment * $j<=9?'0':'').
+              ($increment * $j).$apptStr.$MouseOut.$schedStr .
+              sprintf ($hourfmt, $hour).':'.($increment * $j<=9?'0':'').
+              ($increment * $j).".\">";
+            $str .= "&nbsp;&nbsp;</td>\n";
+            break;
         }
        $CC++;
      }
@@ -5177,13 +5188,12 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
 
   // Add user _all_ to beginning of $participants array
   array_unshift($participants, '_all_');
-
   // Javascript for cells
   $MouseOver = "onmouseover=\"this.style.backgroundColor='#CCFFCC';\"";
   $MouseOut = "onmouseout=\"this.style.backgroundColor='".$CELLBG."';\"";
   $viewMsg = translate ( 'View this entry' );
   // Display each participant
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0; $i <= $cnt; $i++ ) {
     if ($participants[$i] != '_all_') {
       // Load full name of user
       user_load_variables ( $participants[$i], 'user_' );
@@ -5208,7 +5218,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
          //$space = '';
          $space = '&nbsp;';
 
-         $r = sprintf ("%02d",$j) . '.' . sprintf ("%02d", (25 * $k)).'';
+         $r = sprintf ("%02d",$j) . '.' . sprintf ("%02d", ($increment * $k)).'';
          if ( empty ( $master[$participants[$i]][$r] ) ) {
            // ignore this..
          } else if ( empty ( $master[$participants[$i]][$r]['ID'] ) ) {
