@@ -327,7 +327,7 @@ if ( empty ( $event_status ) ) {
 
 // If we have no event status yet, it must have been deleted.
 if ( ( empty ( $event_status ) && ! $is_admin ) || 
-  ( ! $can_view  && $rss_view == false )) {
+  ( ! $can_view  && empty ( $rss_view ) ) ) {
   echo '<h2>' . 
     translate ( 'Error' ) . "</h2>" . 
     translate ( 'You are not authorized' ) . ".\n";

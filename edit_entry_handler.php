@@ -38,6 +38,8 @@ if ( empty ( $duration_m ) || $duration_m < 0 ) $duration_m = 0;
 
 //Reminder values could be valid as 0
 if ( empty ( $rem_days ) ) $rem_days = 0;
+if ( empty ( $rem_hours ) ) $rem_hours = 0;
+if ( empty ( $rem_minutes ) ) $rem_minutes = 0;
 if ( empty ( $reminder_hour ) ) $reminder_hour = 0;
 if ( empty ( $reminder_minute ) ) $reminder_minute = 0;
 if ( empty ( $rem_rep_days ) ) $rem_rep_days = 0;
@@ -47,20 +49,20 @@ if ( empty ( $rem_rep_minute ) ) $rem_rep_minute = 0;
 // Timed event.
 if ( $timetype == 'T' )  {
   $entry_hour += $entry_ampm;
-  
+
   if ( $eType == 'task'  ) {
-    $start_hour += $start_ampm;
     $due_hour += $due_ampm; 
   }
-
-  // Use end times
-  if ( $TIMED_EVT_LEN == 'E') {
-    $end_hour +=  $end_ampm;
-  } else {
-    $end_hour = 0;
-    $end_minute = 0;
-  }
 }
+
+// Use end times
+if ( $TIMED_EVT_LEN == 'E' && $eType != 'task') {
+  $end_hour +=  $end_ampm;
+} else {
+  $end_hour = 0;
+  $end_minute = 0;
+}
+
 
 
 // If "all day event" was selected, then we set the event time
@@ -94,29 +96,23 @@ if ( $timetype == 'U' ) {
 }
 
 
-// Combine all values to create event start date/time
-if ( $timetype != 'T' ) { 
+// Combine all values to create event start date/time 
+if ( $timetype != 'T' ) {
   $eventstart = gmmktime ( $entry_hour, $entry_minute, 0, $month, $day, $year );
 } else {
   $eventstart = mktime ( $entry_hour, $entry_minute, 0, $month, $day, $year );
 }
 
-if ( $eType == 'task' ) {
+if (  $eType == 'task') {
   // Combine all values to create event due date/time - User Time
-  if ( $timetype != 'T' ) { 
-    $eventdue = gmmktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
-  } else {
-    $eventdue = mktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
-  }
+  $eventdue = mktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
 
 
-// Combine all values to create completed date 
-if ( ! empty ( $completed_year )  && ! empty ( $completed_month ) &&
-    ! empty ( $completed_day ) ) 
-    $eventcomplete =  sprintf( "%04d%02d%02d" , $completed_year, 
-      $completed_month, $completed_day );
-} else {
-  $eventdue = $eventstart; //just keeps things simple later on 
+  // Combine all values to create completed date 
+  if ( ! empty ( $completed_year )  && ! empty ( $completed_month ) &&
+      ! empty ( $completed_day ) ) 
+      $eventcomplete =  sprintf( "%04d%02d%02d" , $completed_year, 
+        $completed_month, $completed_day );
 }
 
 //Create event stop from event  duration/end values
@@ -129,21 +125,24 @@ if ( $TIMED_EVT_LEN == 'E') {
  $eventstopmin= $entry_minute + $duration_m;
 }
 
-if ( $timetype != 'T' ) { 
-  $eventstop = gmmktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
+if ($eType != 'task' ) {
+  if ( $timetype != 'T' ) { 
+    $eventstop = gmmktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
+  } else {
+    $eventstop = mktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
+  }
+
+  // Calculate event duration
+  if ( $timetype == 'T' ) {
+    $duration = ( $eventstop - $eventstart ) / 60;
+    if (  $duration < 0 ) $duration = 0;
+  } else if ( $timetype == 'A' ) {
+   $duration = 1440;
+  } else if ( $timetype == 'U' ) {
+   $duration = 0;
+  }
 } else {
-  $eventstop = mktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year );
-}
-
-
-// Calculate event duration
-if ( $timetype == 'T' ) {
-  $duration = ( $eventstop - $eventstart ) / 60;
-  if (  $duration < 0 ) $duration = 0;
-} else if ( $timetype == 'A' ) {
- $duration = 1440;
-} else if ( $timetype == 'U' ) {
- $duration = 0;
+  $duration = 0;
 }
  
 // Make sure this user is really allowed to edit this event.
@@ -290,7 +289,7 @@ if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != 'Y' ) {
 }
 
 if ( $ALLOW_CONFLICTS != 'Y' && empty ( $confirm_conflicts ) &&
-  strlen ( $entry_hour ) > 0 && $timetype != 'U' ) {
+  strlen ( $entry_hour ) > 0 && $timetype != 'U' && $eType != 'task') {
   $conflict_until = ( ! empty ( $rpt_until ) ? $rpt_until : '');
   $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, $bymonth,
    $byweekno, $byyearday, $bymonthday, $byday, $bysetpos, $count,
@@ -524,8 +523,8 @@ if ( empty ( $error ) ) {
       $reminder_date = mktime ( $reminder_hour, $reminder_minute, 0, $reminder_month,
         $reminder_day, $reminder_year ); 
     } else { //use offset
-      $reminder_offset = ($rem_days * 60 * 24 ) + ( $reminder_hour * 60 ) + 
-        $reminder_minute;
+      $reminder_offset = ($rem_days * 60 * 24 ) + ( $rem_hours * 60 ) + 
+        $rem_minutes;
     }
     if ( $rem_rep_count > 0 ) {
       $reminder_repeats = $rem_rep_count;

@@ -26,7 +26,7 @@
 include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-$error = "";
+$error = '';
 $USERS_PER_TABLE = 6;
 
 view_init ( $id );
@@ -35,61 +35,49 @@ $INC = array('js/popups.php/false');
 print_header($INC);
 
 
-set_today($date);
 
+$date = ! empty ($date) ? $date : date ( 'Ymd' );
 // Initialize date to first of current month
 if ( empty ( $timeb ) || $timeb == 0 ) {
-  $date = substr($date,0,6)."01";
+  $date = substr($date,0,6).'01';
 }
 
-
+set_today( $date );
 
 // Week timebar
 if ( ! empty ( $timeb) && $timeb == 1 ) {
   $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
+  $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
+  $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
+  $wkend = $wkstart + ( ONE_DAY * 6 );
+  $val_boucle = 7;
 } else {
   $next = mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear );
+  $prev = mktime ( 0, 0, 0, $thismonth - 1, $thisday, $thisyear );
+  $wkstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+  $wkend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
+  $val_boucle = date('t', $wkstart);
 }
-$nextyear = date ( "Y", $next );
-$nextmonth = date ( "m", $next );
-$nextday = date ( "d", $next );
+$nextyear = date ( 'Y', $next );
+$nextmonth = date ( 'm', $next );
+$nextday = date ( 'd', $next );
 $nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
-if ( ! empty ( $timeb) && $timeb == 1 ) {
-  $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
-} else {
-  $prev = mktime ( 0, 0, 0, $thismonth - 1, $thisday, $thisyear );
-}
-$prevyear = date ( "Y", $prev );
-$prevmonth = date ( "m", $prev );
-$prevday = date ( "d", $prev );
+$prevyear = date ( 'Y', $prev );
+$prevmonth = date ( 'm', $prev );
+$prevday = date ( 'd', $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
-if ( ! empty ( $timeb) && $timeb == 1 ) {
-  $wkstart = get_weekday_before ( $thisyear, $thismonth );
-} else {
-  $wkstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-}
 
-if ( ! empty ( $timeb) && $timeb == 1 ) {
-  $wkend = $wkstart + ( ONE_DAY * 6 );
-} else {
-  $wkend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
-}
 $thisdate = date ( 'Ymd', $wkstart );
 
 
-if ( ! empty ( $timeb) && $timeb == 1 ) {
-  $val_boucle = 7;
-} else {
-  $val_boucle = date("t", $wkstart);
-}
 for ( $i = 0; $i < $val_boucle; $i++ ) {
   $days[$i] = $wkstart + ONE_DAY * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % $val_boucle );
   $header[$i] = $weekdays[$i] . "<br />\n" .
-     month_short_name ( date ( "m", $days[$i] ) - 1 ) .
-     " " . date ( "d", $days[$i] );
+     month_short_name ( date ( 'm', $days[$i] ) - 1 ) .
+     ' ' . date ( 'd', $days[$i] );
 }
 
 // get users in this view
@@ -170,18 +158,18 @@ for ( $date = $wkstart, $h = 0;
     echo "<tr><th class=\"row\">";
   }
   if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' )  {
-    echo html_for_add_icon ( date ( 'Ymd', $date ), "", "", $user );
+    echo html_for_add_icon ( date ( 'Ymd', $date ), '', '', $user );
   }
-  echo $weekday . "&nbsp;" . round ( date ( "d", $date ) ) . "</th>\n";
+  echo $weekday . '&nbsp;' . round ( date ( 'd', $date ) ) . "</th>\n";
 
   //start the container cell for each day, with its appropriate style
   if ( date ( 'Ymd', $date ) == date ( 'Ymd', $today ) ) {
-    echo "<td class=\"today\">";
+    echo '<td class="today">';
   } else {
     if ( $wday == 0 || $wday == 6 ) {
-      echo "<td class=\"weekend\">";
+      echo '<td class="weekend">';
     } else {
-      echo "<td class=\"reg\">";
+      echo '<td class="reg">';
     }
   }
 
@@ -211,7 +199,7 @@ if ( ! empty ( $eventinfo ) ) {
   echo $eventinfo;
 }
 
-echo "<a title=\"" . translate ( 'Generate printer-friendly version' ) . '" ' .
+echo '<a title="' . translate ( 'Generate printer-friendly version' ) . '" ' .
   "class=\"printer\" href=\"view_t.php?timeb=$timeb&amp;id=$id&amp;date=" .
   "$thisdate&amp;friendly=1\" target=\"cal_printer_friendly\" " .
   "onmouseover=\"window.status='" .

@@ -743,7 +743,7 @@ if ( $eType != 'task' ) {?>
 ?>
  <span id="timeentryend" class="tooltip" title="<?php 
   etooltip( 'end-time-help' )?>">&nbsp;-&nbsp;<?php 
-  echo time_selection ( 'end_', $end_time);?>
+  echo time_selection ( 'end_', $cal_time);?>
  </span>
 </td></tr>
 <?php } 
@@ -751,7 +751,7 @@ if ( $eType != 'task' ) {?>
   <tr><td class="tooltip" title="<?php etooltip( 'time-help' )?>">
    <?php echo translate( 'Start Time' ) . ':'; ?></td><td colspan="2">
 <?php
- echo time_selection ( 'start_', $entry_time);
+ echo time_selection ( 'entry_', $cal_time);
 ?>
 </td></tr>
 <tr><td colspan="3">&nbsp;</td></tr>
@@ -1276,7 +1276,7 @@ if ( $useTabs ) { ?>
     $rem_before = ( empty ( $reminder['before'] ) || 
       $reminder['before'] == 'Y' ?true:false );
     echo '<td class="boxleft">&nbsp;</td>' . "\n" . '<td>';
-    echo '<label><input type="radio" name="rem_before" id="rem_beforeY" value="\"';
+    echo '<label><input type="radio" name="rem_before" id="rem_beforeY" value="Y"';
 
     if ( $rem_before )
       echo $checked;
