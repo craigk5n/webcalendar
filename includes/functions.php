@@ -5062,7 +5062,6 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $increment = (int)( 1440 / $entrySlots );
   $interval = (int)( 60 / $increment );
 
-echo "$ENTRY_SLOTS    $entrySlots     $increment  $interval";
   $participant_pct = '20%'; //use percentage
 
   $first_hour = $WORK_DAY_START_HOUR;
