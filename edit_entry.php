@@ -64,17 +64,17 @@ function time_selection ( $prefix, $time='', $trigger=false ) {
   $found = false;
   for ( $i = 0; $i <= 59; ) {
     $imin = sprintf ( "%02d", $i );
-    $selected = '';
+    $isselected = '';
     if ( $imin == $minute ) {
       $found = true;
-      $selected = ' selected="selected" ';  
+      $isselected = $selected;  
     }
-    $ret .= "<option value=\"$i\"$selected >$imin</option>\n";
+    $ret .= "<option value=\"$i\"$isselected >$imin</option>\n";
     $i += (1440 / $ENTRY_SLOTS);
   }
   //we'll add an option with the exact time if not found above
   if ( $found == false ) {
-    $ret .= "<option value=\"$minute\" selected=\"selected\" >$minute</option>\n";
+    $ret .= "<option value=\"$minute\" $selected >$minute</option>\n";
   }
   $ret .= "</select>\n";
 
@@ -374,7 +374,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $external_users = event_get_external_users ( $id );
   }
 } else {
-  // New entry.
+  // ##########   New entry.   ################
   $id = 0; // to avoid warnings below about use of undefined var
  //We'll use $WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR
  // As our starting and due times
@@ -890,14 +890,13 @@ if ( $single_user == 'N' && $show_participants ) {
       if ( ! empty ($participants[$l]) )
         $users .= $selected;
     } else {
-      if ( ! empty ($defusers) ) {
+      if ( ! empty ($defusers) && ! empty ( $participants[$l] ) ) {
         // default selection of participants was in the URL
-        if ( ! empty ( $participants[$l] ) )
-          $users .= $selected;
-      } else {
-        if ( ($l == $login && ! $is_assistant  && 
-          ! $is_nonuser_admin) || (! empty ($user) && $l == $user) )
-          $users .= $selected;
+        $users .= $selected;
+      }
+      if ( ($l == $login && ! $is_assistant  && 
+        ! $is_nonuser_admin) || (! empty ($user) && $l == $user) ) {
+        $users .= $selected;
       }
       if ( $l == '__public__' &&
         ! empty ($PUBLIC_ACCESS_DEFAULT_SELECTED) &&
@@ -968,7 +967,7 @@ if ( $useTabs ) { ?>
   ( strcmp ( $rpt_type, 'monthlyByDate' ) == 0 ? $selected : '' ) . '>' . 
   translate( 'Monthly' ) . ' (' . translate( 'by date' ) . ')' . "</option>\n";
  echo '  <option value="monthlyBySetPos"' . 
-  ( strcmp ( $rpt_type, 'monthlyBySetPos' ) == 0 ? $selected : '' ) . '' . 
+  ( strcmp ( $rpt_type, 'monthlyBySetPos' ) == 0 ? $selected : '' ) . '>' . 
   translate( 'Monthly' ) . ' (' . translate( 'by position' ) . ')' . "</option>\n";
  echo '  <option value="yearly"' . 
   ( strcmp ( $rpt_type, 'yearly' ) == 0 ? $selected : '' ) . '>' . 
