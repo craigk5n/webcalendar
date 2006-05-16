@@ -79,7 +79,7 @@ include "$includedir/translate.php";
 
 $WebCalendar->initializeSecondPhase();
 
-$debug = true; // set to true to print debug info...
+$debug = false; // set to true to print debug info...
 $only_testing = false; // act like we're sending, but don't send -- for debugging
 
 // Establish a database connection.
