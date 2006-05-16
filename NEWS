@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1434994: minitask leaks details on other user's private tasks
       1489393: "Add Entry" defaults to first work hour
       1488942: 'system settings' and 'preferences' couldn't be displayed
       1462457: reminder form should have more conditionally disabled fields

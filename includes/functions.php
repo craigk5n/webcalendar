@@ -1641,6 +1641,7 @@ function display_small_tasks ( $cat_id ) {
     $u_url = '';
     $task_user = $login;
   }
+
   $priorityStr = translate ( 'Priority' );
   $taskStr = translate ( 'Task Name' );
   $dueStr = translate ( 'Task Due Date' );
@@ -1657,8 +1658,17 @@ function display_small_tasks ( $cat_id ) {
   $task_html .= "<tr class=\"header\"><th>!</th><th>".  translate ( 'Task_Title' ) . 
     "</th><th>" . translate ('Due' ) . "</th><th>&nbsp;%&nbsp;</th></tr>\n";
   foreach ( $task_list as $E )  {
+    //check UAC
+    $task_owner = $E->getLogin();
+    if ( access_is_enabled () ) {
+      $can_access = access_user_calendar ( 'view', $task_owner, '', 
+        $E->getCalType(), $E->getAccess() );
+      if ( $can_access == 0 )
+        continue;    
+    }
     $cal_id = $E->getId();
-    $link = "<a href=\"view_entry.php?" . $u_url ."id=" . $cal_id . '"';
+    $t_url = ( $task_owner != $login ? "user={$task_owner}&amp;":'');
+    $link = "<a href=\"view_entry.php?" . $t_url ."id=" . $cal_id . '"';
     $priority = $link  . " title=\"" . $priorityStr . "\" >" . 
       $E->getPriority() . '</a>';
     $dots = ( strlen ( $E->getName() ) > 10 ? '...': '' );
@@ -1976,17 +1986,9 @@ function get_tasks ( $date, $get_unapproved=true ) {
     if ( ! $get_unapproved && $tasks[$i]->getStatus() == 'W' )
       continue;
     $due_date = gmdate ('Ymd', $tasks[$i]->getDueDateTimeTS() );
-    $due_time = gmdate ( 'His', $tasks[$i]->getDueDateTimeTS() );
-//echo "$today $date  $due_date $due_time  ". $tasks[$i]->getDueTime() . "<br>";
-    //don't adjust anything  if  ALL Day Task or Untimed
-    if ( $tasks[$i]->isAllDay() || $tasks[$i]->isUntimed() ) {
-      if ( ( $date == $today && $due_date <= $today ) || $due_date == $date )
-        $ret[] = $tasks[$i];
-    } else  { 
-       if ( ( $date == $today && $due_date < $today ) || 
-       ( $due_date == $date ) ) {
-        $ret[] = $tasks[$i];
-      }
+    //make overdue tasks float to today
+    if ( ( $date == $today && $due_date < $today ) || ( $due_date == $date ) ) {
+      $ret[] = $tasks[$i];
     }
   }
   return $ret;
@@ -2936,7 +2938,7 @@ function print_date_entries ( $date, $user, $ssi ) {
   // get all due tasks for this date and before and store in $tk
     $tk = array();
     if ( $date >= date ('Ymd' ) ) {
-    $tk = get_tasks ( $date, $get_unapproved );
+      $tk = get_tasks ( $date, $get_unapproved );
     }
    $ev = combine_and_sort_events($ev, $tk);
  }
@@ -4504,14 +4506,14 @@ function print_entry_timebar ( $event, $date ) {
    else        { $pos = 0; }
  
   echo "\n<!-- ENTRY BAR -->\n<table class=\"entrycont\" cellpadding=\"0\" cellspacing=\"0\">\n";
-   echo "<tr>\n";
-   echo ($ev_start > 0 ?  "<td style=\"text-align:right;  width:$ev_start%;\">": '' );
-   if ( $pos > 0 ) {
-     echo ($ev_start > 0 ?  "&nbsp;</td>\n": '' ) ;
+  echo "<tr>\n";
+  echo ($ev_start > 0 ?  "<td style=\"text-align:right;  width:$ev_start%;\">": '' );
+  if ( $pos > 0 ) {
+    echo ($ev_start > 0 ?  "&nbsp;</td>\n": '' ) ;
     echo "<td style=\"width:$ev_duration%;\">\n<table class=\"entrybar\">\n<tr>\n<td class=\"entry\">";
-     if ( $pos > 1 ) {
-       echo ($ev_padding > 0 ?  "&nbsp;</td>\n": '' ) . "</tr>\n</table></td>\n";
-       echo ($ev_padding > 0 ?  "<td style=\"text-align:left; width:$ev_padding%;\">": '');
+    if ( $pos > 1 ) {
+      echo "&nbsp;</td>\n</tr>\n</table></td>\n";
+      echo "<td style=\"text-align:left; width:$ev_padding%;\">";
     }
   };
 
