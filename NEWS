@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1489393: "Add Entry" defaults to first work hour
       1488942: 'system settings' and 'preferences' couldn't be displayed
       1462457: reminder form should have more conditionally disabled fields
       1448727: Conflict changes national characters

@@ -31,12 +31,12 @@ function time_selection ( $prefix, $time='', $trigger=false ) {
   $hournameid = 'name="' . $prefix . 'hour" id="' . $prefix . 'hour" ';
   $minnameid = 'name="' . $prefix . 'minute" id="' . $prefix . 'minute" ';
   $trigger_str = ( $trigger ? 'onchange="' . $prefix . 'timechanged() ' : '');
-  if ( empty ( $time ) ) {
+  if ( ! isset ( $time ) && $time != 0 ) {
     $hour = $WORK_DAY_START_HOUR;
     $minute = 0;
   } else {
     $hour = floor($time / 10000);
-    $minute = ( $time / 100 ) % 100;  
+    $minute = ( ( $time / 100 ) % 100 ) % 60;  
   }
   if ( $TIME_FORMAT == '12' ) {
     $maxhour = 12;
@@ -426,8 +426,11 @@ if ( empty ( $rpt_type ) || ! $rpt_type )
   $rpt_type = 'none';
 
 // avoid error for using undefined vars
-if ( ! isset ( $hour ) )
+if ( ! isset ( $hour ) && $hour != 0 ) {
   $hour = -1;
+} else {
+  $cal_time = ( $hour * 10000 ) + ( isset ( $minute ) ? $minute * 100 : 0 );  
+}
 if ( empty ( $duration ) )
   $duration = 0;
 if ( $duration == 1440 && $time == 0 ) {
@@ -714,8 +717,7 @@ if ( $eType != 'task' ) {?>
     <td class="tooltip" title="<?php etooltip( 'time-help' )?>">
    <?php echo translate( 'Time' ) . ':'; ?></td><td colspan="2">
 <?php
-  echo time_selection ( 'entry_', $cal_time);
-
+ echo time_selection ( 'entry_', $cal_time);
  $dur_h = (int)( $duration / 60 );
  $dur_m = $duration - ( $dur_h * 60 );
 
