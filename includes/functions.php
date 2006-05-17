@@ -1920,9 +1920,9 @@ function read_tasks ( $user, $duedate, $cat_id = ''  ) {
 
   $due_date = gmdate ('Ymd', $duedate );
   $due_time = gmdate ( 'His', $duedate );
-  $date_filter = " AND ( webcal_entry.cal_due_date <= $due_date ) OR " .
+  $date_filter = " AND ( ( webcal_entry.cal_due_date <= $due_date ) OR " .
     "( webcal_entry.cal_due_date = $due_date AND " .
-    "webcal_entry.cal_due_time <= $due_time )";
+    "webcal_entry.cal_due_time <= $due_time ) )";
 
   return query_events ( $user, false, $date_filter, $cat_id, true  );
 }
