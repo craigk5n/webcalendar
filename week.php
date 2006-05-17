@@ -1,4 +1,5 @@
 <?php
+ /* $Id */
 include_once 'includes/init.php';
 
 if (($user != $login) && $is_nonuser_admin) {
