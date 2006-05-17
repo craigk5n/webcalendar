@@ -136,7 +136,7 @@ if ( $id > 0 && empty ( $error ) ) {
       $row = dbi_fetch_row ( $res );
       $name = $row[0];
       $fmtdate = $row[1];
-      $time = $row[2];
+      $time = sprintf ( "%06d", $row[2] );
       dbi_free_result ( $res );
     }
     

@@ -2808,6 +2808,7 @@ function get_categories_id_byname ( $cat_names) {
 // Generate the FREEBUSY line of text for a single event
 function fb_export_time ( $date, $duration, $time, $texport ) {
   $ret = '';
+  $time = sprintf ( "%06d", $time );
   $allday = ( $time == -1 || $duration == 24 * 60 );
   $year = (int) substr ( $date, 0, -4 );
   $month = (int) substr ( $date,- 4, 2 );
