@@ -438,7 +438,7 @@ function print_menu_dates ( $menu=false) {
   }
   for ( $i = $y - 4; $i < $y + 4; $i++ ) {
    if ( $i >= 1970 && $i < 2038 ) {
-      echo '<option value="$i"';
+      echo "<option value=\"$i\"";
       if ( $i == $y ) {
         echo ' selected="selected" ';
       }
