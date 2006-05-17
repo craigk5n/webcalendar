@@ -117,7 +117,7 @@ if ( ! $res ) {
     $orig_date = $row[1];
     $event_time = $row[2];
     $mod_date = $row[3];
-    $mod_time = $row[4];
+    $mod_time = $mod_time$row[4] );
     $duration = $row[5];
     $cal_priority = $row[6];
     $cal_type = $row[7];
@@ -490,7 +490,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate( 'Due Time' )?>:</td><td>
  <?php
-   echo display_time (  $due_date . $due_time, 2 );
+   echo display_time (  $due_date . sprintf( "%06d", $due_time ), 2 );
   ?>
   </td></tr>
   <?php if (! empty ( $cal_completed ) ) { ?>

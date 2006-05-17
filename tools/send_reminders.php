@@ -394,7 +394,7 @@ function send_reminder ( $id, $event_date ) {
     } else {
       $body = translate( 'This is a reminder for the event detailed below.', true). "\n\n";
     }    
-    $event_time = date_to_epoch ( $row[1] . $row[2] );
+    $event_time = date_to_epoch ( $row[1] . sprintf ( "%06d", $row[2] ) );
     $create_by = $row[0];
     $name = $row[9];
     $description = $row[10];
@@ -457,7 +457,7 @@ function send_reminder ( $id, $event_date ) {
     }
 
     $body .= translate ( 'Updated', true ). ': ' .
-      date_to_str ( $row[3] ) . " " .  display_time ( $row[3] . $row[4],
+      date_to_str ( $row[3] ) . " " .  display_time ( $row[3] . sprintf ( "%06d" , $row[4] ),
         $display_tzid, '', $userTformat ) ."\n";
 
     // site extra fields
