@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1490046: Time zone problems
       1474991: Can't see all participants in availability window
       1476022: Availability Status
       1434994: minitask leaks details on other user's private tasks
