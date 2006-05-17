@@ -106,7 +106,7 @@ function list_unapproved ( $user ) {
       $cal_user = $row[3];
       $pri = $row[4];
       $date = $row[5];
-      $time = $row[6];
+      $time = sprintf ( "%06d", $row[6] );
       $duration = $row[7];
       $status = $row[8];
       $type = $row[9];

@@ -68,7 +68,7 @@ if ( empty ( $error ) && $id > 0 ) {
     $name = $row[0];
     $description = $row[1];
     $fmtdate = $row[2];
-    $time = $row[3];
+    $time = sprintf ( "%06d", $row[3] );
     dbi_free_result ( $res );
   }
 

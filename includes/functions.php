@@ -3147,7 +3147,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
         $row = $list[$j];
         if ( $row->getID() != $id && ( $row->getExtForID() == '' || 
           $row->getExtForID() != $id ) ) {
-          $time2 = $row->getTime();
+          $time2 = sprintf ( "%06d", $row->getTime() );
           $duration2 = $row->getDuration();
           if ( times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
             $conflicts .= '<li>';
@@ -3216,7 +3216,7 @@ function time_to_minutes ( $time ) {
  */
 function calc_time_slot ( $time, $round_down = false ) {
   global $TIME_SLOTS;
-
+  $time = sprintf ( "%06d", $time );
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
   $mins_since_midnight = time_to_minutes ( $time ); 
   $ret = (int) ( $mins_since_midnight / $interval );
@@ -5263,6 +5263,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
  * @return string The time in HHMMSS format
  */
 function add_duration ( $time, $duration ) {
+  $time = sprintf ( "%06d", $time );
   $hour = (int) ( $time / 10000 );
   $min = ( $time / 100 ) % 100;
   $minutes = $hour * 60 + $min + $duration;
