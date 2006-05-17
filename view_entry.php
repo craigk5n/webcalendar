@@ -117,7 +117,7 @@ if ( ! $res ) {
     $orig_date = $row[1];
     $event_time = $row[2];
     $mod_date = $row[3];
-    $mod_time = $mod_time$row[4] );
+    $mod_time = sprintf ( "%06d", $row[4] );
     $duration = $row[5];
     $cal_priority = $row[6];
     $cal_type = $row[7];
