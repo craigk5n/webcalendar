@@ -378,7 +378,8 @@ if ( empty ( $error ) ) {
   
   if ( ! empty ( $eventcomplete ) )
     $query_params[] = $eventcomplete;
-
+  //just set $eventstart to something
+  $eventdue = ( ! empty ( $eventdue ) ? $eventdue : $eventstart );
   $query_params[] = gmdate ( 'Ymd', $eventdue );
   $query_params[] = gmdate ('His', $eventdue );
   $query_params[] = gmdate ( 'Ymd' );
