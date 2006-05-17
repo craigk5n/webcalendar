@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1490046: Time zone problems
  - Fixed bug 1474991: Can't see all participants in availability window
  - Fixed bug 1476022: Availability Status
  - Fixed bug 1434994: minitask leaks details on other user's private tasks

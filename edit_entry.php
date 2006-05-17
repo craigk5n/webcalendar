@@ -172,7 +172,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     if (( $user == $create_by ) && ( $is_assistant || $is_nonuser_admin ))
       $can_edit = true;
 
-    $cal_time = $row[2];
+    $cal_time = sprintf( "%06d", $row[2] );
     $due_date = $row[13];
     $due_time = $row[14];
     

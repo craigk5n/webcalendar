@@ -245,7 +245,7 @@ function export_recurrence_ical( $id, $simple=false ) {
       $endtime    = $row[2];  
       $interval   = $row[3];
       $day        = $row[4];
-      $time       = $row[5];
+      $time       = sprintf( "%06d", $row[5] );
       $bymonth    = $row[6];
       $bymonthday = $row[7];
       $byday      = $row[8];
@@ -381,7 +381,7 @@ function export_recurrence_vcal($id, $date) {
       $endtime = $row[2];  
       $interval = $row[3];
       $day = $row[4];
-      $time = $row[5];
+      $time = sprintf( "%06d", $row[5] );
       $bymonth = explode ( ',', $row[6] );;
       $bymonthday = explode ( ',', $row[7] );
       $byday = explode ( ',', $row[8] );
@@ -760,7 +760,7 @@ function export_vcal ($id) {
       $name = $row[1];
       $priority = $row[2];
       $date = $row[3];
-      $time = $row[4];
+      $time = sprintf( "%06d", $row[4] );
       $status = $row[5];
       $create_by = $row[6];
       $access = $row[7];
@@ -884,7 +884,7 @@ function export_ical ( $id='all', $attachment=false ) {
     $name = $row[1];
     $priority = $row[2];
     $date = $row[3];
-    $time = $row[4];
+    $time = sprintf( "%06d", $row[4] );
     $status = $row[5];
     $create_by = $row[6];
     $access = $row[7];

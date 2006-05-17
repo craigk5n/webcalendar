@@ -143,7 +143,7 @@ if ( ! $res ) {
 }
 
 $display_date = ( $event_time > 0 ? date ('Ymd', 
-  date_to_epoch ( $orig_date . $event_time ) ) :$orig_date );
+  date_to_epoch ( $orig_date . sprintf( "%06d", $event_time ) ) ) :$orig_date );
 
 if ( ! empty ( $year ) ) {
   $thisyear = $year;
@@ -477,7 +477,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate( 'Start Time' )?>:</td><td>
  <?php
-   echo display_time ( $display_date . $event_time, 2 );
+   echo display_time ( $display_date . sprintf( "%06d", $event_time ), 2 );
   ?>
 </td></tr>
 <?php } ?>
@@ -518,7 +518,7 @@ if ( $eType != 'task' && $event_time >= 0 ) { ?>
     } else {
       // Display TZID if no end time
       $display_tzid = empty ( $end_str ) ? 2 : 0;
-      echo display_time ( $display_date . $event_time, 
+      echo display_time ( $display_date . sprintf( "%06d", $event_time ), 
         $display_tzid ) . $end_str;
     }
   ?>
