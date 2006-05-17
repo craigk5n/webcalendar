@@ -666,7 +666,7 @@ if ( $eType == 'task' ) { //only for tasks
       ' cellpadding="2" cellspacing="5">'.
       "<tr>\n<td colspan=\"2\">". translate( 'All Percentages' ) . '</td></tr>';
       $others_complete = 'yes';
-      $cnt = ount ( $overall_percent );
+      $cnt = count ( $overall_percent );
       for ( $i = 0; $i < $cnt; $i++ ) {
         user_load_variables ( $overall_percent[$i][0], 'percent' );
         echo  '<tr><td>' . $percentfullname . '</td><td>' .
