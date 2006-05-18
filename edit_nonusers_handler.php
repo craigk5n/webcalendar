@@ -8,7 +8,7 @@ if ( ! $is_admin ) {
   echo "</body>\n</html>";
   exit;
 }
-$error = "";
+$error = '';
 
 $delete = getPostValue ( 'delete' );
 $nid = getPostValue ( 'nid' );
@@ -157,7 +157,7 @@ if ( ! empty ( $error ) ) {
 <blockquote>
 <?php
 echo $error;
-//if ( $sql != "" )
+//if ( $sql != '' )
 //  echo "<br /><br /><b>SQL:</b> $sql";
 //?>
 </blockquote>

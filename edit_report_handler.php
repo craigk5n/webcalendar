@@ -37,11 +37,11 @@
 include_once 'includes/init.php';
 load_user_categories ();
 
-$error = "";
-$report_id = getIntValue ( "report_id", true );
+$error = '';
+$report_id = getIntValue ( 'report_id', true );
 
 if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' ) {
-  $error = translate ( 'You are not authorized' ) . ".";
+  $error = translate ( 'You are not authorized' ) . '.';
 }
 
 $updating_public = false;
@@ -149,7 +149,7 @@ if ( empty ( $error ) ) {
   if ( empty ( $include_header ) || $include_header != 'Y' ) {
     $values[] = 'N';
   } else {
-    $values[] = "Y";
+    $values[] = 'Y';
   }
 
   $names[] = 'cal_time_range';

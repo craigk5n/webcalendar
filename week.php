@@ -62,7 +62,7 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
 
 //if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == 'N' ) $wkstart = $wkstart - ONE_DAY;
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
-  $days[$i] = $wkstart + ONE_DAY * $i;
+  $days[$i] = ( $wkstart + ONE_DAY * $i ) + ( 12 * 3600 );
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
   $header[$i] = $weekdays[$i] . "<br />" .
     date_to_str ( date ('Ymd',$days[$i]), $DATE_FORMAT_MD, false, true );
@@ -85,7 +85,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 <br />
 <?php 
 if (  $DISPLAY_TASKS == 'Y' ) {
-  echo display_small_tasks ( $cat_id );;
+  echo display_small_tasks ( $cat_id );
 }
 ?> 
 </div>
@@ -105,28 +105,28 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
    // if ( $DISPLAY_WEEKENDS == 'N' ) continue;
     $class = "weekend";
   } else {
-    $class = "";
+    $class = '';
   }
 
   if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
     if ( $class != '' ) {
-     $class .= " ";
+     $class .= ' ';
     }
-    $class .= "today";
+    $class .= 'today';
   }
 
-  echo "<th";
+  echo '<th';
 
   if ( $class != '') {
     echo " class=\"$class\"";
   }
-  echo ">";
+  echo '>';
 
   if ( $can_add ) {
-    echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), "", "", $user );
+    echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), '', '', $user );
   }
-  echo "<a href=\"day.php?" . $u_url .
-    "date=" . date ('Ymd', $days[$d] ) . $caturl . "\">" .
+  echo '<a href="day.php?' . $u_url .
+    'date=' . date ('Ymd', $days[$d] ) . $caturl . '">' .
     $header[$d] . "</a></th>\n";
 }
 ?>
@@ -236,7 +236,7 @@ if ( $untimed_found ) {
     $class = 'hasevents';
    }
 
-   if ( $class != "" ) {
+   if ( $class != '' ) {
      echo " class=\"$class\"";
    }
    echo ">";
@@ -244,7 +244,7 @@ if ( $untimed_found ) {
    if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
      echo $untimed[$d];
    } else {
-     echo "&nbsp;";
+     echo '&nbsp;';
    }
    echo "</td>\n";
   }
@@ -283,19 +283,19 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
      // this might mean there's an overlap, or it could mean one event
      // ends at 11:15 and another starts at 11:30.
      if ( ! empty ( $save_hour_arr[$d][$i] ) ) {
-       echo "<td";
+       echo '<td';
        if ( $class != '' ) {
          echo " class=\"$class\"";
        }
-       echo ">" . $save_hour_arr[$d][$i] . "</td>\n";
+       echo '>' . $save_hour_arr[$d][$i] . "</td>\n";
      }
      $rowspan_day[$d]--;
    } else if ( empty ( $save_hour_arr[$d][$i] ) ) {
-     echo "<td";
-     if ( $class != "" ) {
+     echo '<td';
+     if ( $class != '' ) {
        echo " class=\"$class\"";
      }
-     echo ">";
+     echo '>';
      if ( $can_add ) { //if user can add events...
        echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), $time_h, $time_m, 
          $user ); //..then echo the add event icon
@@ -304,7 +304,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
    } else {
      $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
      if ( $rowspan_day[$d] > 1 ) {
-       echo "<td";
+       echo '<td';
        if ( $class != '' ) {
          echo " class=\"$class\"";
        }
@@ -314,11 +314,11 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
        }
        echo $save_hour_arr[$d][$i] . "</td>\n";
      } else {
-       echo "<td";
+       echo '<td';
        if ( $class != '' ) {
          echo " class=\"$class\"";
        }
-       echo ">";
+       echo '>';
        if ( $can_add ) {
          echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), $time_h, $time_m, $user );
        }
@@ -340,20 +340,10 @@ if ( ! empty ( $eventinfo ) ) {
 }
 display_unapproved_events ( ( $is_assistant || 
   $is_nonuser_admin ? $user : $login ) );
-?>
 
-<br />
-<a title="<?php etranslate ( 'Generate printer-friendly version' )?>" 
-class="printer" href="week.php?<?php
-  echo $u_url;
-  if ( $thisyear ) {
-    echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday";
-  }
-  echo $caturl . "&amp;";
-?>friendly=1" target="cal_printer_friendly"
-onmouseover="window.status = '<?php etranslate ( 'Generate printer-friendly version' )?>'">[<?php etranslate ( 'Printer Friendly' )?>]</a>
 
-<?php
+echo '<br />';
+echo generate_printer_friendly ( 'week.php' );
 print_trailer ();
 ?>
 </body>

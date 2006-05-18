@@ -56,7 +56,7 @@ $WebCalendar->setLanguage();
 
 
 if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
-  header ( "Content-Type: text/plain" );
+  header ( 'Content-Type: text/plain' );
   etranslate( 'You are not authorized' );
   exit;
 }
@@ -370,11 +370,11 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
         echo "\n<item rdf:about=\"" . $SERVER_URL . 'view_entry.php?id=' . 
           $rentries[$j]->getID() . '&amp;friendly=1&amp;date=' . $d . "\">\n";
         $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
-        $gmtoffset = substr_replace ( date ( "O", $unixtime ), ':' . 
-          substr ( date ( "O", $unixtime ), -2), -2, 2 );
+        $gmtoffset = substr_replace ( date ( 'O', $unixtime ), ':' . 
+          substr ( date ( 'O', $unixtime ), -2), -2, 2 );
         echo "<title xml:lang=\"$lang\"><![CDATA[" . 
           $rentries[$j]->getName() . "]]></title>\n";
-        echo "<link>" . $SERVER_URL . "view_entry.php?id=" . 
+        echo '<link>' . $SERVER_URL . "view_entry.php?id=" . 
           $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
           $d . "</link>\n";
         echo "<description xml:lang=\"$lang\"><![CDATA[" .

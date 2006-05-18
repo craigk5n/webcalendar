@@ -2,7 +2,7 @@
 include_once 'includes/init.php';
 load_user_categories();
 
-$error = "";
+$error = '';
 
 // Only proceed if id was passed
 if ( $id > 0 ) {

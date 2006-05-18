@@ -90,19 +90,10 @@ if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y' ) {
 <?php
  if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
-  display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
-?>
-<br />
-<a title="<?php etranslate( 'Generate printer-friendly version' )?>" class="printer" href="day.php?<?php
-  echo $u_url;
-  if ( $thisyear ) {
-    echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday&amp;";
-  }
-  if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
-?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php 
-etranslate( 'Generate printer-friendly version' )?>'">[<?php 
-etranslate( 'Printer Friendly' )?>]</a>
+display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 
-<?php print_trailer (); ?>
+echo  '<br />';
+echo generate_printer_friendly ( 'day.php' );
+print_trailer (); ?>
 </body>
 </html>

@@ -52,7 +52,7 @@ function time_selection ( $prefix, $time='', $trigger=false ) {
     $hour = sprintf ( "%02d", $hour );  
   }
   $minute = sprintf ( "%02d", $minute ); 
-  $ret .= '<select "' . $hournameid . $trigger_str . " >\n";
+  $ret .= '<select ' . $hournameid . $trigger_str . " >\n";
   for ( $i = 0; $i < $maxhour; $i++ ) {
     $ihour = ( $TIME_FORMAT == '24' ? sprintf ( "%02d", $i ) : $i );
     if ( $i == 0 && $TIME_FORMAT == '12' ) $ihour = 12;
@@ -135,7 +135,7 @@ if ( $ALLOW_HTML_DESCRIPTION == 'Y' ){
   }
 }
 
-$external_users = $byweekno = $byyearday = $rpt_count = $catNames = $catList="";
+$external_users = $byweekno = $byyearday = $rpt_count = $catNames = $catList='';
 $participants = $exceptions = $inclusions = $reminder = array();
 $byday = $bymonth = $bymonthday = $bysetpos = array();
 $wkst = 'MO';
@@ -268,10 +268,10 @@ if ( $readonly == 'Y' || $is_nonuser ) {
             $rpt_end_time = $cal_time;
           }        
           $rpt_freq = $row[4];
-          $byday = explode(",",$row[5]);
-          $bymonth = explode(",",$row[6]);
-          $bymonthday = explode(",", $row[7]);
-          $bysetpos = explode(",", $row[8]);
+          $byday = explode(',',$row[5]);
+          $bymonth = explode(',',$row[6]);
+          $bymonthday = explode(',', $row[7]);
+          $bysetpos = explode(',', $row[8]);
           $byweekno = $row[9];
           $byyearday = $row[10];
           $wkst = $row[11];
@@ -440,7 +440,7 @@ if ( $duration == 1440 && $time == 0 ) {
   $allday = 'N';
 }
 if ( empty ( $name ) )
-  $name = "";
+  $name = '';
 if ( empty ( $description ) || $description == '<br />' )
   $description = '';
 if ( empty ( $location ) )
@@ -500,7 +500,7 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
     $TZ_notice .= translate ( 'Time entered here is based on your Timezone' ) . '.)'; 
   }
   //return to $login TIMEZONE
-  set_env ( "TZ", $TIMEZONE );
+  set_env ( 'TZ', $TIMEZONE );
 }
 
 $textareasize = 'rows="15" cols="50"';
@@ -958,7 +958,7 @@ if ( $useTabs ) { ?>
  echo '  <option value="daily"' . 
   ( strcmp ( $rpt_type, 'daily' ) == 0 ? $selected : '' ) . '>' . 
   translate( 'Daily' ) . "</option>\n";
- echo "  <option value=\"weekly\"" . 
+ echo '  <option value="weekly"' . 
   ( strcmp ( $rpt_type, 'weekly' ) == 0 ? $selected : '' ) . '>' . 
   translate( 'Weekly' ) . "</option>\n";
  echo '  <option value="monthlyByDay"' . 

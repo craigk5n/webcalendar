@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 05-16-2006
+# Translation last updated on 05-18-2006
 
 
 ###############################################
@@ -449,13 +449,6 @@ AVAILABLE CATEGORIES: AVAILABLE CATEGORIES
 Remove: Remove
 Global Category: Global Category
 Ok: Ok
-
-
-###############################################
-# Page: day.php
-#
-Generate printer-friendly version: Generate printer-friendly version
-Printer Friendly: Printer Friendly
 
 
 ###############################################
@@ -1094,6 +1087,8 @@ Advanced Search: Advanced Search
 #
 You must enter one or more search keywords: You must enter one or more search keywords
 Search Results: Search Results
+match found: match found
+matches found: matches found
 No matches found: No matches found
 
 
@@ -1310,9 +1305,15 @@ All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
 day: day
+before: before
+after: after
+start: start
+end: end
 Error approving event: Error approving event
 Error deleting event: Error deleting event
 Error rejecting event: Error rejecting event
+Generate printer-friendly version: Generate printer-friendly version
+Printer Friendly: Printer Friendly
 
 
 ###############################################

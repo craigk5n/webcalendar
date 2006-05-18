@@ -29,7 +29,7 @@
 include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-$error = "";
+$error = '';
 
 view_init ( $id );
 
@@ -39,14 +39,14 @@ print_header($INC);
 set_today($date);
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
-$nextyear = date ( "Y", $next );
-$nextmonth = date ( "m", $next );
+$nextyear = date ( 'Y', $next );
+$nextmonth = date ( 'm', $next );
 $nextdate = sprintf ( "%04d%02d01", $nextyear, $nextmonth );
 $nextYmd = date ( 'Ymd', $next );
 
 $prev = mktime ( 3, 0, 0, $thismonth - 1, 1, $thisyear );
-$prevyear = date ( "Y", $prev );
-$prevmonth = date ( "m", $prev );
+$prevyear = date ( 'Y', $prev );
+$prevmonth = date ( 'm', $prev );
 $prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
 $prevYmd = date ( 'Ymd', $prev );
 
@@ -69,7 +69,7 @@ $viewusers = view_get_user_list ( $id );
 if ( count ( $viewusers ) == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view
-  $error = translate ( 'No users for this view' ) ;
+  $error = translate ( 'No users for this view' );
 }
 
 if ( ! empty ( $error ) ) {
@@ -84,7 +84,7 @@ $re_save = array ();
 $cnt = count ( $viewusers );
 for ( $i = 0; $i < $cnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], "", $startdate ); 
+  $repeated_events = read_repeated_events ( $viewusers[$i], '', $startdate ); 
   $re_save = array_merge($re_save, $repeated_events);
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $viewusers[$i], $startdate, $enddate );
@@ -143,21 +143,10 @@ if ( ! empty ( $eventinfo ) ) {
 
 display_unapproved_events ( ( $is_assistant || 
   $is_nonuser_admin ? $user : $login ) );
-?>
 
-<br />
-<a title="<?php 
- etranslate ( 'Generate printer-friendly version' )
-?>" class="printer" href="view_l.php?id=<?php echo $id?>&amp;<?php
- if ( $thisyear ) {
-  echo "year=$thisyear&amp;month=$thismonth&amp;";
- }
- if ( ! empty ( $user ) ) echo "user=$user&amp;";
- if ( ! empty ( $cat_id ) ) echo "cat_id=$cat_id&amp;";
-?>friendly=1" target="cal_printer_friendly" onmouseover="window.status = '<?php 
- etranslate ( 'Generate printer-friendly version' )?>'">[<?php 
- etranslate ( 'Printer Friendly' )?>]</a>
 
-<?php print_trailer ();?>
+echo generate_printer_friendly ( 'view_l.php');
+
+print_trailer ();?>
 </body>
 </html>

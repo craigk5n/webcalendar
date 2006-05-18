@@ -130,7 +130,7 @@ if ( $res ) {
 <?php
 //go BACK in time
 if ( ! empty ( $nextpage ) ) {
-  echo "<a title=\"" . 
+  echo '<a title="' . 
     translate( 'Previous' ) . "&nbsp;$PAGE_SIZE&nbsp;" . 
     translate ( 'Events' ) .
     "\" class=\"prev\" href=\"activity_log.php?startid=$nextpage\">" . 

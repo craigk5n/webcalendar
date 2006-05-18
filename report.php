@@ -190,8 +190,8 @@ function event_to_text ( $event, $date ) {
   return $text;
 }
 
-$error = "";
-$list = ""; // list of reports when no id specified
+$error = '';
+$list = ''; // list of reports when no id specified
 
 if ( ! empty ( $user ) && $user != $login &&
   ( ( ! empty ( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' )
@@ -362,7 +362,7 @@ if ( empty ( $offset ) || empty ( $report_allow_nav ) ||
 $DISPLAY_WEEKENDS = 'Y';
 $dateY = date ( 'Y' );
 $datem = date ( 'm' );
-$dated = date ( "d" );
+$dated = date ( 'd' );
 
 $wkstart = get_weekday_before ( $dateY, $datem );
 if ( ! isset ( $report_time_range ) ) {
@@ -498,12 +498,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
       translate ( 'Next' ) . "</a><br />\n";
   }
   if ( $report_include_header == 'Y' ) {
-    echo '<br /><br /><a title="' . translate( 'Printer Friendly' ) . 
-      '" class="nav" href="report.php?report_id=' . $report_id .
-      '&amp;friendly=1' . $u_url . '&amp;offset=' . $offset .
-      '" target="cal_printer_friendly" onmouseover="window.status=\'' .
-      translate( 'Generate printer-friendly version' ) .
-      '\'">[' . translate( 'Printer Friendly' ) . ']</a>';
+    echo generate_printer_friendly ( 'report.php' );
   }
 }
 

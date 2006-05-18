@@ -228,13 +228,13 @@ function user_get_users () {
   $ret = array ();
   if ( $PUBLIC_ACCESS == 'Y' )
     $ret[$count++] = array (
-       "cal_login" => '__public__',
-       "cal_lastname" => "",
-       "cal_firstname" => "",
-       "cal_is_admin" => "N",
-       "cal_email" => "",
-       "cal_password" => "",
-       "cal_fullname" => $PUBLIC_ACCESS_FULLNAME );
+       'cal_login' => '__public__',
+       'cal_lastname' => '',
+       'cal_firstname' => '',
+       'cal_is_admin' => 'N',
+       'cal_email' => '',
+       'cal_password' => '',
+       'cal_fullname' => $PUBLIC_ACCESS_FULLNAME );
 
   // if application is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
@@ -245,12 +245,12 @@ function user_get_users () {
     while ( $row = dbi_fetch_row ( $res ) ) {
       list($fname, $lname) = split (" ",$row[1]);
       $ret[$count++] = array (
-        "cal_login" => $row[2],
-        "cal_lastname" => $lname,
-        "cal_firstname" => $fname,
-        "cal_is_admin" => user_is_admin($row[0],$Admins),
-        "cal_email" => $row[3],
-        "cal_fullname" => $row[1]
+        'cal_login' => $row[2],
+        'cal_lastname' => $lname,
+        'cal_firstname' => $fname,
+        'cal_is_admin' => user_is_admin($row[0],$Admins),
+        'cal_email' => $row[3],
+        'cal_fullname' => $row[1]
       );
     }
     dbi_free_result ( $res );
@@ -277,13 +277,13 @@ function user_load_variables ( $login, $prefix ) {
   }
   
   if ( $login == '__public__' ) {
-    $GLOBALS[$prefix . "login"] = $login;
-    $GLOBALS[$prefix . "firstname"] = "";
-    $GLOBALS[$prefix . "lastname"] = "";
-    $GLOBALS[$prefix . "is_admin"] = "N";
-    $GLOBALS[$prefix . "email"] = "";
-    $GLOBALS[$prefix . "fullname"] = $PUBLIC_ACCESS_FULLNAME;
-    $GLOBALS[$prefix . "password"] = "";
+    $GLOBALS[$prefix . 'login'] = $login;
+    $GLOBALS[$prefix . 'firstname'] = '';
+    $GLOBALS[$prefix . 'lastname'] = '';
+    $GLOBALS[$prefix . 'is_admin'] = 'N';
+    $GLOBALS[$prefix . 'email'] = '';
+    $GLOBALS[$prefix . 'fullname'] = $PUBLIC_ACCESS_FULLNAME;
+    $GLOBALS[$prefix . 'password'] = '';
     return true;
   }
 
@@ -296,12 +296,12 @@ function user_load_variables ( $login, $prefix ) {
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       list($fname, $lname) = split (" ",$row[1]);
-      $GLOBALS[$prefix . "login"] = $login;
-      $GLOBALS[$prefix . "firstname"] = $fname;
-      $GLOBALS[$prefix . "lastname"] = $lname;
-      $GLOBALS[$prefix . "is_admin"] = user_is_admin($row[0],get_admins());
-      $GLOBALS[$prefix . "email"] = $row[3];
-      $GLOBALS[$prefix . "fullname"] = $row[1];
+      $GLOBALS[$prefix . 'login'] = $login;
+      $GLOBALS[$prefix . 'firstname'] = $fname;
+      $GLOBALS[$prefix . 'lastname'] = $lname;
+      $GLOBALS[$prefix . 'is_admin'] = user_is_admin($row[0],get_admins());
+      $GLOBALS[$prefix . 'email'] = $row[3];
+      $GLOBALS[$prefix . 'fullname'] = $row[1];
     }
     dbi_free_result ( $res );
   } else {
@@ -371,11 +371,11 @@ function app_login_screen( $return ) {
 // returns: Y if user is admin, N if not
 function user_is_admin($uid,$Admins) {
   if ( ! $Admins ) {
-    return "N";
+    return 'N';
   } else if (in_array ($uid, $Admins)) {
-    return "Y";
+    return 'Y';
   } else {
-    return "N";
+    return 'N';
   }
 }
 

@@ -525,7 +525,7 @@ function connect_and_bind() {
   global $ds, $error, $ldap_server, $ldap_port, $ldap_version; 
   global $ldap_admin_dn, $ldap_admin_pwd, $ldap_start_tls, $set_ldap_version;
 
-  if ( ! function_exists ( "ldap_connect" ) ) {
+  if ( ! function_exists ( 'ldap_connect' ) ) {
     die_miserable_death ( "Your installation of PHP does not support LDAP" );
   }
 

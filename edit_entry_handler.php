@@ -5,7 +5,7 @@ $mail = new WebCalMailer;
 
 load_user_categories ();
 
-$error = "";
+$error = '';
 $dberror = translate( 'Database error' ) . ': ';
 $do_override = false;
 $old_id = -1;
@@ -230,6 +230,7 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
   } else {
     $byday = implode (',', $bydayext2 );
   }
+
   rsort ($bymonthday);
   for ( $i=0; $i<31;$i++) {
    if ( strlen ($bymonthday[$i] < 1 || 
@@ -435,7 +436,7 @@ if ( empty ( $error ) ) {
   dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ? " .
     "AND ( cat_owner = ? OR cat_owner IS NULL )", array( $id, $cat_owner ) );
   if ( ! empty ( $cat_id ) ) {
-    $categories = explode (",", $cat_id );
+    $categories = explode (',', $cat_id );
     $categorycnt = count( $categories );
     sort ( $categories);
     for ( $i =0; $i < $categorycnt; $i++ ) {
@@ -610,8 +611,8 @@ if ( empty ( $error ) ) {
   for ( $v_i = 0; $v_i < $valuecnt; $v_i++ ) {
       $placeholders .= '?,';
   }
-  $placeholders = preg_replace( "/,$/", "", $placeholders ); // remove trailing ','
-    $sql = "INSERT INTO webcal_entry_repeats ( " . implode ( ", ", $names ) .
+  $placeholders = preg_replace( "/,$/", '', $placeholders ); // remove trailing ','
+    $sql = "INSERT INTO webcal_entry_repeats ( " . implode ( ', ', $names ) .
        " ) VALUES ( $placeholders )"; 
       dbi_execute ( $sql, $values );
       $msg .= "<span style=\"font-weight:bold;\">SQL:</span> $sql<br />\n<br />";
@@ -681,7 +682,7 @@ if ( empty ( $error ) ) {
             translate( 'The subject was', true) . ' "' . $name . "\"\n\n" .
             translate( 'The description is', true) . ' "' . $description . "\"\n" .
             translate( 'Date') . ': ' . date_to_str ( $fmtdate ) . "\n" .
-             ( $timetype != 'T'  ? "" :
+             ( $timetype != 'T'  ? '' :
             translate( 'Time' ) . ': ' .
             // Apply user's GMT offset and display their TZID
             display_time ( '', 2, $eventstart, $t_format ) . "\n\n\n");
@@ -854,7 +855,7 @@ if ( empty ( $error ) ) {
           $mail->Send();
           $mail->ClearAll();
           
-          activity_log ( $id, $login, $participants[$i], LOG_NOTIFICATION, "" );
+          activity_log ( $id, $login, $participants[$i], LOG_NOTIFICATION, '' );
         }
       }
     }
@@ -877,25 +878,25 @@ if ( $single_user == 'N' &&
   if ( is_array ( $lines ) ) {
     $linecnt = count ( $lines );
     for ( $i = 0; $i < $linecnt; $i++ ) {
-      $ext_words = explode ( " ", $lines[$i] );
+      $ext_words = explode ( ' ', $lines[$i] );
       if ( ! is_array ( $ext_words ) ) {
         $ext_words = array ( $lines[$i] );
       }
       if ( is_array ( $ext_words ) ) {
         $ext_wordscnt = count ( $ext_words );
-        $ext_names[$ext_count] = "";
-        $ext_emails[$ext_count] = "";
+        $ext_names[$ext_count] = '';
+        $ext_emails[$ext_count] = '';
         for ( $j = 0; $j < $ext_wordscnt; $j++ ) {
           // use regexp matching to pull email address out
           $ext_words[$j] = chop ( $ext_words[$j] ); // remove \r if there is one
           if ( preg_match ( "/<?\\S+@\\S+\\.\\S+>?/", $ext_words[$j],
             $matches ) ) {
             $ext_emails[$ext_count] = $matches[0];
-            $ext_emails[$ext_count] = preg_replace ( "/[<>]/", "",
+            $ext_emails[$ext_count] = preg_replace ( "/[<>]/", '',
               $ext_emails[$ext_count] );
           } else {
             if ( strlen ( $ext_names[$ext_count] ) ) {
-              $ext_names[$ext_count] .= " ";
+              $ext_names[$ext_count] .= ' ';
             }
             $ext_names[$ext_count] .= $ext_words[$j];
           }
@@ -936,7 +937,7 @@ if ( $single_user == 'N' &&
             $fmtdate = ( $timetype == 'T' ? 
               date ( 'Ymd', $eventstart ): gmdate ( 'Ymd', $eventstart ) ); 
             // Strip [\d] from duplicate Names before emailing
-            $ext_names[$i] = trim(preg_replace( '/\[[\d]]/', "", $ext_names[$i]) );
+            $ext_names[$i] = trim(preg_replace( '/\[[\d]]/', '', $ext_names[$i]) );
             $msg = translate( 'Hello', true) . ", " . $ext_names[$i] . ".\n\n";
             if ( $newevent ) {
               $msg .= translate( 'A new appointment has been made for you by', true);

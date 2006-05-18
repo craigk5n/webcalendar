@@ -1,7 +1,7 @@
 <?php
 include_once 'includes/init.php';
 
-$error = "";
+$error = '';
 
 if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   $error = translate( 'You are not authorized' );
@@ -57,7 +57,7 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
         }
         dbi_free_result ( $res );
       }
-      if ( $error == "" ) {
+      if ( $error == '' ) {
         $res = dbi_execute ( "SELECT MAX(cal_layerid) FROM webcal_user_layers" );
         if ( $res ) {
           $row = dbi_fetch_row ( $res );
@@ -74,7 +74,7 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
 }
 
 //We don't want to throw error if doing a multiple save
-if ( $error == "" || ! empty ( $cal_login ) ) {
+if ( $error == '' || ! empty ( $cal_login ) ) {
   if ( $updating_public )
     do_redirect ( 'layers.php?public=1' );
   else

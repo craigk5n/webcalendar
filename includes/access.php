@@ -230,7 +230,7 @@ function access_load_user_functions ( $user )
       $ret .= get_default_function_access ( $i, $user );
     }
   }
-  //do_debug ( $user . " " . $ret);;
+  //do_debug ( $user . " " . $ret);
   $permissions[$user] = $ret;
   return $ret;
 }
@@ -246,7 +246,7 @@ function access_load_user_functions ( $user )
  * @global string 
  * @global bool   Is the current user an administrator?
  */
-function access_init ( $user="" )
+function access_init ( $user='' )
 {
   global $login, $access_user, $is_admin;
 

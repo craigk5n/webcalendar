@@ -108,7 +108,7 @@ function get_php_setting ( $val, $string=false ) {
       return 'OFF';
   } else {
     //test for $string in ini value 
-    $string_found = array_search ( $string, explode ( ",", $setting ) );
+    $string_found = array_search ( $string, explode ( ',', $setting ) );
     if   ( $string_found )
       return $string;
     else
@@ -239,7 +239,7 @@ function get_installed_version () {
   $_SESSION['install_file'] = $database_upgrade_matrix[$i][2];
   dbi_free_result ( $res );
   }
-//echo $_SESSION['old_program_version'] . " " . $database_upgrade_matrix[$i][1] . "<br>";
+//echo $_SESSION['old_program_version'] . " " . $database_upgrade_matrix[$i][1] . "<br />";
  } 
  if ( $_SESSION['old_program_version'] == 'pre-v0.9.07' ) {
    $response_msg = translate ( 'Perl script required' );
@@ -580,7 +580,7 @@ function db_populate ( $install_filename, $display_sql ) {
  //disable warnings
  //show_errors ();
  //string version of parsed_sql that is used if displaying sql only
- $str_parsed_sql = "";
+ $str_parsed_sql = '';
   for ( $i = 0; $i < count($parsed_sql); $i++ ) {
     if ( empty ( $display_sql ) ){ 
   if ( $show_all_errors == true ) echo $parsed_sql[$i] . '<br />';
@@ -1372,11 +1372,11 @@ if ( ! $exists || ! $canWrite ) { ?>
     $dbs[] = 'oracle';
   if ( function_exists ( 'pg_pconnect' ) )
     $dbs[] = 'postgresql';
-  if ( function_exists ( "odbc_pconnect" ) )
+  if ( function_exists ( 'odbc_pconnect' ) )
     $dbs[] = 'odbc';
   if ( function_exists ( 'ibase_connect' ) )
     $dbs[] = 'ibase';
-  if ( function_exists ( "mssql_connect" ) )
+  if ( function_exists ( 'mssql_connect' ) )
     $dbs[] = 'mssql';
   if ( function_exists ( 'sqlite_open' ) )
     $dbs[] = 'sqlite';

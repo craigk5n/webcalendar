@@ -1,5 +1,9 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1490944: 1.1.0 works only with firefox
+      1490979: descriptions of preferences will not be <bold>
+      1490969: option 'Display tasks in Calendars:' enabled will not work
+      1490749: reminder-entry in pop-up couldn't be translated
       1490046: Time zone problems
       1474991: Can't see all participants in availability window
       1476022: Availability Status

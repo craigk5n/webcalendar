@@ -57,7 +57,7 @@ print_header($INC);
  <label><?php etranslate( 'Start date' )?>:</label></td><td>
  <select name="fromday">
   <?php
-   $day = date ( "d" );
+   $day = date ( 'd' );
    for ( $i = 1; $i <= 31; $i++ ) echo '<option' . ( $i == $day ? $selected : '' ) . ">$i</option>\n";
   ?>
  </select>
@@ -118,7 +118,7 @@ print_header($INC);
  <select name="modday">
   <?php
    $week_ago = mktime ( 0, 0, 0, $datem, date ( 'd' ) - 7, $dateY );
-   $day = date ( "d", $week_ago );
+   $day = date ( 'd', $week_ago );
    for ( $i = 1; $i <= 31; $i++ ) echo '<option' . ( $i == $day ? $selected : '' ) . ">$i</option>\n";
   ?>
  </select>

@@ -382,10 +382,10 @@ function export_recurrence_vcal($id, $date) {
       $interval = $row[3];
       $day = $row[4];
       $time = sprintf( "%06d", $row[5] );
-      $bymonth = explode ( ',', $row[6] );;
+      $bymonth = explode ( ',', $row[6] );
       $bymonthday = explode ( ',', $row[7] );
       $byday = explode ( ',', $row[8] );
-      $bysetpos = explode ( ',', $row[9]);;
+      $bysetpos = explode ( ',', $row[9]);
       $byweekno = $row[10];
       $byyearday = explode ( ',', $row[11] );
       $wkst = $row[12];
@@ -893,7 +893,7 @@ function export_ical ( $id='all', $attachment=false ) {
     //New columns to support tasks
     $percent = ( ! empty ( $row[11] )? $row[11] : 0 );
     $completed = ( ! empty ( $row[12] )? substr( $row[12], 0 ,8 ) . 
-      "T" . sprintf ( "%06d", substr( $row[12], 9 ,6 ) ) : '');
+      'T' . sprintf ( "%06d", substr( $row[12], 9 ,6 ) ) : '');
     $due_date = $row[13];
     $due_time = $row[14];
     $location = $row[15];
@@ -1769,8 +1769,7 @@ foreach ( $data as $Entry ){
 
       $dd = $Entry['start_date']; 
       echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
-      echo "\" onmouseover=\"window.status='" . translate( 'View this entry' ) .
-        "'; return true;\" onmouseout=\"window.status=''; return true;\">";
+      echo '" title="' . translate( 'View this entry' ) . '">';
       $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary']);
       $Entry['Summary'] = str_replace( "\\", ' ', $Entry['Summary']);
       echo htmlspecialchars ( $Entry['Summary'] );

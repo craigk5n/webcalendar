@@ -191,7 +191,7 @@ function export_pilot_csv ($id) {
 } //end function
 
 function transmit_header ( $mime, $file ) {
-  header ( "Content-Type: application/octet-stream" );
+  header ( 'Content-Type: application/octet-stream' );
   //header ( "Content-Type: $mime" );
   header ( 'Content-Disposition: attachment; filename="' . $file .  '"');
   header ( 'Pragma: no-cache');
@@ -251,7 +251,7 @@ if ($format == 'ical') {
 
   echo '<h2>';
   etranslate( 'Export' );
-  echo " ";
+  echo ' ';
   etranslate( 'Error' );
   echo "</h2>\n";
   echo '<span style="font-weight:bold;">';

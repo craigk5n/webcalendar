@@ -61,7 +61,7 @@ if ( ! empty ( $error ) ) {
 <?php
 
 echo $error;
-//if ( $sql != "" )
+//if ( $sql != '' )
 //  echo "<br /><br /><strong>SQL:</strong> $sql";
 //?>
 </blockquote>

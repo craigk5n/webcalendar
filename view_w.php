@@ -24,7 +24,7 @@
 include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-$error = "";
+$error = '';
 $USERS_PER_TABLE = 6;
 
 view_init ( $id );
@@ -37,15 +37,15 @@ print_header($INC);
 set_today($date);
 
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
-$nextyear = date ( "Y", $next );
-$nextmonth = date ( "m", $next );
-$nextday = date ( "d", $next );
+$nextyear = date ( 'Y', $next );
+$nextmonth = date ( 'm', $next );
+$nextday = date ( 'd', $next );
 $nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
-$prevyear = date ( "Y", $prev );
-$prevmonth = date ( "m", $prev );
-$prevday = date ( "d", $prev );
+$prevyear = date ( 'Y', $prev );
+$prevmonth = date ( 'm', $prev );
+$prevday = date ( 'd', $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1);
@@ -57,9 +57,9 @@ $thisdate = date ( 'Ymd', $wkstart );
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ONE_DAY * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
-  $header[$i] = $weekdays[$i] . "<br />" .
-     month_short_name ( date ( "m", $days[$i] ) - 1 ) .
-     " " . date ( "d", $days[$i] );
+  $header[$i] = $weekdays[$i] . '<br />' .
+     month_short_name ( date ( 'm', $days[$i] ) - 1 ) .
+     ' ' . date ( 'd', $days[$i] );
 }
 
 
@@ -89,9 +89,9 @@ if ( ! empty ( $error ) ) {
   <img src="images/rightarrow.gif" alt="<?php etranslate ( 'Next' )?>" /></a>
 <div class="title">
 <span class="date"><?php
-  echo date_to_str ( date ( 'Ymd', $wkstart ), "", false ) .
-    "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
-    date_to_str ( date ( 'Ymd', $wkend ), "", false );
+  echo date_to_str ( date ( 'Ymd', $wkstart ), '', false ) .
+    '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;' .
+    date_to_str ( date ( 'Ymd', $wkend ), '', false );
 ?></span><br />
 <span class="viewname"><?php echo htmlspecialchars ( $view_name ); ?></span>
 </div>
@@ -110,7 +110,7 @@ $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
+  $repeated_events = read_repeated_events ( $viewusers[$i], '', $wkstart );
   $re_save[$i] = $repeated_events;
   /* Pre-load the non-repeating events for quicker access 
       subtracting ONE_WEEK to allow cross-day events to display*/
@@ -148,7 +148,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   for ( $i = $j, $k = 0;
     $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
-    user_load_variables ( $user, "temp" );
+    user_load_variables ( $user, 'temp' );
     echo "<th style=\"width:$tdw%;\">$tempfullname</th>\n";
   }
   echo "</tr>\n";
@@ -160,12 +160,12 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue;
     $weekday = weekday_short_name ( $wday );
     if ( date ( 'Ymd', $xdate ) == date ( 'Ymd', $today ) ) {
-      echo "<tr><th class=\"today\">";
+      echo '<tr><th class="today">';
     } else {
-      echo "<tr><th class=\"row\">";
+      echo '<tr><th class="row">';
     }
-    echo $weekday . " " .
-      round ( date ( "d", $xdate ) ) . "</th>\n";
+    echo $weekday . ' ' .
+      round ( date ( 'd', $xdate ) ) . "</th>\n";
     for ( $i = $j, $k = 0;
       $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $user = $viewusers[$i];
@@ -180,9 +180,9 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
         echo "<td style=\"width:$tdw%;\">";
       }
     }
-      //echo date ( "D, m-d-Y H:i:s", $xdate ) . "<br />";
+      //echo date ( 'D, m-d-Y H:i:s', $xdate ) . '<br />';
       if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' ) {
-        echo html_for_add_icon ( date ( 'Ymd', $xdate ), "", "", $user );
+        echo html_for_add_icon ( date ( 'Ymd', $xdate ), '', '', $user );
       }
       print_date_entries ( date ( 'Ymd', $xdate ), $user, true );
       echo "</td>\n";
@@ -192,18 +192,13 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   echo "</table>\n<br /><br />\n";
 }
 
-$user = ""; // reset
+$user = ''; // reset
 
 if ( ! empty ( $eventinfo ) ) {
   echo $eventinfo;
 }
 
-echo "<a title=\"" . translate ( 'Generate printer-friendly version' ) . 
-  "\" class=\"printer\" href=\"view_w.php?id=$id&amp;date=$date&amp;friendly=1\" " .
-  "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
-  translate ( 'Generate printer-friendly version' ) .
-  "'\">[" . translate ( 'Printer Friendly' ) . "]</a>\n";
-
+echo generate_printer_friendly ( 'view_w.php' );
 print_trailer ();
 ?>
 </body>

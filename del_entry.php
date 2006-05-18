@@ -145,7 +145,7 @@ if ( $id > 0 && empty ( $error ) ) {
     $cnt = count ( $partlogin );
     for ( $i = 0; $i < $cnt; $i++ ) {
       // Log the deletion
-      activity_log ( $id, $login, $partlogin[$i], $log_delete, "" );
+      activity_log ( $id, $login, $partlogin[$i], $log_delete, '' );
       //check UAC
       $can_email = 'Y'; 
       if ( access_is_enabled () ) {
@@ -191,7 +191,7 @@ if ( $id > 0 && empty ( $error ) ) {
             $mail->IsHTML( $htmlmail == 'Y' ? true : false );
             $mail->AddAddress( $tempemail, unhtmlentities( $tempfullname ) );
             $mail->WCSubject ( $name );
-            $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;;                    
+            $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;                    
             $mail->Send();
             $mail->ClearAll();
         }
@@ -231,7 +231,7 @@ if ( $id > 0 && empty ( $error ) ) {
               for ( $j = 0; $j < $cnt; $j++ ) {
                 // Log the deletion
                 activity_log ( $ex_events[$i], $login, $delusers[$j],
-                  $log_delete, "" );
+                  $log_delete, '' );
                 dbi_execute ( "UPDATE webcal_entry_user SET cal_status = ? " .
                   "WHERE cal_id = ? " .
                   "AND cal_login = ?", array( 'D', $ex_events[$i], $delusers[$j] ) );
@@ -266,7 +266,7 @@ if ( $id > 0 && empty ( $error ) ) {
     if ( empty ( $error ) ) {
       dbi_execute ( "UPDATE webcal_entry_user SET cal_status = ? " .
         "WHERE cal_id = ? AND cal_login = ?", array( 'D', $id, $del_user ) );
-      activity_log ( $id, $login, $login, $log_reject, "" );
+      activity_log ( $id, $login, $login, $log_reject, '' );
     }
   }
 }

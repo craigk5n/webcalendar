@@ -24,7 +24,7 @@
 include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-$error = "";
+$error = '';
 $USERS_PER_TABLE = 6;
 
 view_init ( $id );
@@ -35,17 +35,17 @@ print_header($INC);
 set_today($date);
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
-$nextyear = date ( "Y", $next );
-$nextmonth = date ( "m", $next );
+$nextyear = date ( 'Y', $next );
+$nextmonth = date ( 'm', $next );
 $nextdate = sprintf ( "%04d%02d01", $nextyear, $nextmonth );
 
 $prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
-$prevyear = date ( "Y", $prev );
-$prevmonth = date ( "m", $prev );
+$prevyear = date ( 'Y', $prev );
+$prevmonth = date ( 'm', $prev );
 $prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
 
 $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-$enddate = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );;
+$enddate = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
 
 $thisdate = date ( 'Ymd', $startdate );
 ?>
@@ -89,7 +89,7 @@ $re_save = array ();
 $viewusercnt = count ( $viewusers );
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], "", $startdate );
+  $repeated_events = read_repeated_events ( $viewusers[$i], '', $startdate );
   $re_save[$i] = $repeated_events;
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $viewusers[$i], $startdate, $enddate );
@@ -136,40 +136,40 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
  $wday = strftime ("%w", $date);
  if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
  $weekday = weekday_short_name ($wday);
- echo "<tr><th";
+ echo '<tr><th';
  if ( date ('Ymd', $date) == date ('Ymd', $today) ) {
-   echo " class=\"today\">";
+   echo ' class="today">';
  } else {
   if ($wday == 0 || $wday == 6) {
-    echo " class=\"weekend\">";
+    echo ' class="weekend">';
   } else {
-    echo " class=\"row\">";
+    echo ' class="row">';
   }
  }
  //non-breaking space below keeps event from wrapping prematurely
- echo $weekday . "&nbsp;" .
-  round ( date ("d", $date) ) . "</th>\n";
+ echo $weekday . '&nbsp;' .
+  round ( date ('d', $date) ) . "</th>\n";
     for ( $i = $j, $k = 0;
       $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
  $user = $viewusers[$i];
  $events = $e_save[$i];
  $repeated_events = $re_save[$i];
  if ( date ('Ymd', $date) == date ('Ymd', $today) ) {
-  echo "<td class=\"today\"";
+  echo '<td class="today"';
  } else {
   if ($wday == 0 || $wday == 6) {
-   echo "<td class=\"weekend\"";
+   echo '<td class="weekend"';
   } else {
-   echo "<td";
+   echo '<td';
   }
  }
  echo " style=\"width:$tdw%;\">";
- //echo date ( "D, m-d-Y H:i:s", $date ) . "<br />";
+ //echo date ( 'D, m-d-Y H:i:s', $date ) . '<br />';
       if ( empty ($ADD_LINK_IN_VIEWS) || $ADD_LINK_IN_VIEWS != 'N' ) {
-        echo html_for_add_icon ( date ('Ymd', $date), "", "", $user );
+        echo html_for_add_icon ( date ('Ymd', $date), '', '', $user );
       }
       print_date_entries ( date ('Ymd', $date), $user, true );
-      echo "</td>";
+      echo '</td>';
     } //end for
     echo "</tr>\n";
   }
@@ -177,18 +177,13 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   echo "</table>\n<br /><br />\n";
 }
 
-$user = ""; // reset
+$user = ''; // reset
 
 if ( ! empty ( $eventinfo ) ) {
   echo $eventinfo;
 }
 
-echo "<a title=\"" . 
-  translate ( 'Generate printer-friendly version' ) . "\" class=\"printer\" " .
-  "href=\"view_m.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
-  "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
-  translate ( 'Generate printer-friendly version' ) . "'\">[" . 
-  translate ( 'Printer Friendly' ) . "]</a>\n";
+echo generate_printer_friendly ( 'view_m.php' );
 
 print_trailer (); ?>
 </body>

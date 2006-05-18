@@ -48,7 +48,7 @@ print_header($INC,'','',true, false, true);
   if ( strlen ( $cats ) ) {
   foreach ( $eventcats as $K) {  
    //disable if not creator and category is Global
-   $neg_num = $show_ast = "";
+   $neg_num = $show_ast = '';
    $disabled = ( empty ( $category_owners[abs($K)] ) && 
      substr($form,0,4) != 'edit'? 'disabled': '');
      if ( empty ( $category_owners[abs($K)] ) ) {

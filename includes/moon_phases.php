@@ -20,7 +20,7 @@
 function calculateMoonPhases( $year, $month=1 ) {
   $R1 = 3.14159265 / 180;
   $U = false;
-  $s = ""; // Formatted Output String
+  $s = ''; // Formatted Output String
   $K0 = intval(($year-1900)*12.3685) +( $month -1);
   $T = ($year-1899.5) / 100;
   $T2 = $T*$T; $T3 = $T*$T*$T;

@@ -104,7 +104,7 @@ print_header();
 <?php
 
 echo $error;
-//if ( $sql != "" )
+//if ( $sql != '' )
 //  echo "<br /><br /><b>SQL:</b> $sql";
 //?>
 </blockquote>

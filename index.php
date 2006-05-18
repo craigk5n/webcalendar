@@ -12,17 +12,17 @@ if ( ! empty ( $STARTVIEW ) ) {
     // User's preferences need to be updated so they can update
     // their preferred view
     if ( access_can_access_function ( ACCESS_PREFERENCES ) )
-      do_redirect ( "pref.php" );
+      do_redirect ( 'pref.php' );
     // User does not have access to preferences...
     // So, we need to pick another page
     if ( access_can_access_function ( ACCESS_WEEK ) )
-      do_redirect ( "week.php" );
+      do_redirect ( 'week.php' );
     else if ( access_can_access_function ( ACCESS_MONTH ) )
-      do_redirect ( "month.php" );
+      do_redirect ( 'month.php' );
     else if ( access_can_access_function ( ACCESS_DAY ) )
-      do_redirect ( "day.php" );
+      do_redirect ( 'day.php' );
     else if ( access_can_access_function ( ACCESS_YEAR ) )
-      do_redirect ( "year.php" );
+      do_redirect ( 'year.php' );
     // At this point, this user cannot view the preferred view in their
     // preferences (and they cannot update their preferences), and they
     // cannot view any of the standard day/week/month/year pages.
@@ -34,5 +34,5 @@ if ( ! empty ( $STARTVIEW ) ) {
     // No views either?  You gotta be kidding me! ;-)
   }
 } else
-  do_redirect ( "month.php" );
+  do_redirect ( 'month.php' );
 ?>

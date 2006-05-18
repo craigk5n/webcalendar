@@ -205,7 +205,7 @@ print_header ( $INC, '', $BodyX );
  <tr><td class="tooltip" title="<?php etooltip( 'home-url-help' )?>">
   <label for="admin_HOME_LINK"><?php etranslate( 'Home URL' )?>:</label></td><td>
   <input type="text" size="40" name="admin_HOME_LINK" id="admin_HOME_LINK" value="<?php 
-   echo ( ! empty ( $s['HOME_LINK'] )? htmlspecialchars ( $s['HOME_LINK'] ): "");
+   echo ( ! empty ( $s['HOME_LINK'] )? htmlspecialchars ( $s['HOME_LINK'] ): '');
   ?>" />
  </td></tr>
  <tr><td class="tooltipselect" title="<?php etooltip( 'language-help' );?>">
@@ -850,10 +850,10 @@ for ( $i = 0; $i < $cnt; $i++ ) {
   <?php etranslate( 'Admin and owner can always add attachments if enabled' );?><br/>
   <label><input type="checkbox" value="Y" name="admin_ALLOW_ATTACH_PART"
     <?php if ( ! empty ( $s['ALLOW_ATTACH_PART'] ) && $s['ALLOW_ATTACH_PART'] == 'Y' ) 
-      echo $checked;;?> /> <?php etranslate( 'Participant' )?> </label>
+      echo $checked;?> /> <?php etranslate( 'Participant' )?> </label>
   <label><input type="checkbox" value="Y" name="admin_ALLOW_ATTACH_ANY"
     <?php if ( ! empty ( $s['ALLOW_ATTACH_ANY'] ) && $s['ALLOW_ATTACH_ANY'] == 'Y' ) 
-    echo $checked;;?> /> <?php etranslate( 'Anyone' )?> </label>
+    echo $checked;?> /> <?php etranslate( 'Anyone' )?> </label>
   </span>
  </td></tr>
 
@@ -866,10 +866,10 @@ for ( $i = 0; $i < $cnt; $i++ ) {
   <br/><strong>Note:</strong>
   <?php etranslate( 'Admin and owner can always add comments if enabled' );?><br/>
   <label><input type="checkbox" value="Y" name="admin_ALLOW_COMMENTS_PART"
-    <?php if ( $s['ALLOW_COMMENTS_PART'] == 'Y' ) echo $checked;;?> /> <?php 
+    <?php if ( $s['ALLOW_COMMENTS_PART'] == 'Y' ) echo $checked;?> /> <?php 
     etranslate( 'Participant' )?> </label>
   <label><input type="checkbox" value="Y" name="admin_ALLOW_COMMENTS_ANY"
-    <?php if ( $s['ALLOW_COMMENTS_ANY'] == 'Y' ) echo $checked;;?> /> <?php 
+    <?php if ( $s['ALLOW_COMMENTS_ANY'] == 'Y' ) echo $checked;?> /> <?php 
     etranslate( 'Anyone' )?> </label>
   </span>
  </td></tr>

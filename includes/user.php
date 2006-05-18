@@ -54,7 +54,7 @@ function user_valid_login ( $login, $password, $silent=false ) {
   $res = dbi_execute ( $sql , array ( $login , md5( $password ) ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] != "" ) {
+    if ( $row && $row[0] != '' ) {
       // MySQL seems to do case insensitive matching, so double-check
       // the login.
       if ( $row[0] == $login )
@@ -109,7 +109,7 @@ function user_valid_crypt ( $login, $crypt_password ) {
   $res = dbi_execute ( $sql , array ( $login ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] != "" ) {
+    if ( $row && $row[0] != '' ) {
       // MySQL seems to do case insensitive matching, so double-check
       // the login.
       // also check if password matches

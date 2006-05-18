@@ -141,7 +141,7 @@ function print_upcoming_event ( $e, $date ) {
 
   if ( $display_link && ! empty ( $SERVER_URL ) && ! $private && ! $confidential) {
     if ( $showPopups ) {
-      $timestr = "";
+      $timestr = '';
       if ( $e->isAllDay() ) {
         $timestr = translate( 'All day event' );
       } else if ( $e->getTime() >= 0 ) {

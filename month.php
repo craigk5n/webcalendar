@@ -47,7 +47,7 @@ $repeated_events = read_repeated_events (
 $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
   ? $user : $login, $startdate, $enddate, $cat_id );
 
-if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
+if ( $DISPLAY_TASKS == 'Y' ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) && $is_assistant )
     ? $user : $login, $enddate, $cat_id );
@@ -90,28 +90,15 @@ if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y' && $friendly !=1 ) {
 
 </td></tr></table>
 <?php }
- if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
- display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
-?>
+if ( ! empty ( $eventinfo ) ) echo $eventinfo;
+if ( empty ( $friendly ) ) {
+  display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 
-<br />
-<a title="<?php etranslate('Generate printer-friendly version')?>" 
-class="printer" href="month.php?<?php
-   if ( $thisyear ) {
-    echo "year=$thisyear&amp;month=$thismonth&amp;";
-   }
-   if ( ! empty ( $user ) ) {
-     echo "user=$user&amp;";
-   }
-   if ( ! empty ( $cat_id ) ) {
-     echo "cat_id=$cat_id&amp;";
-   }
-  ?>friendly=1" target="cal_printer_friendly" 
-onmouseover="window.status = '<?php etranslate('Generate printer-friendly version')
-  ?>'">[<?php etranslate('Printer Friendly')?>]</a>
-<?php
- print_trailer ();
+  echo '<br />';
+  echo generate_printer_friendly ( 'month.php' );
+  print_trailer ();
+}
 ?>
 </body>
 </html>

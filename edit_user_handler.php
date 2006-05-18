@@ -73,7 +73,7 @@ else if ( $formtype == 'edituser' ) {
         // This error should get caught before here anyhow, so
         // no need to translate this.  This is just in case :-)
         $error = translate( 'Invalid characters in login' ) . '.';
-      } else if ( empty ( $user ) || $user == "" ) {
+      } else if ( empty ( $user ) || $user == '' ) {
         // Username can not be blank. This is currently the only place that 
         // calls addUser that is located in $user_inc
         $error = translate( 'Username can not be blank' ) . '.';
@@ -105,7 +105,7 @@ if ( ! empty ( $error ) ) {
 <blockquote>
 <?php
 echo $error;
-//if ( $sql != "" )
+//if ( $sql != '' )
 //  echo "<br /><br /><strong>SQL:</strong> $sql";
 //?>
 </blockquote>

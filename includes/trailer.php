@@ -183,7 +183,7 @@ if ( empty ( $user ) || $user == $login ) {
     $url .= '">' . translate( 'Add New Entry' ) . '</a>';
     $goto_link[] = $url;
   }
-  if ( $can_add && ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y') {
+  if ( $can_add && ( $DISPLAY_TASKS_IN_GRID == 'Y' || $DISPLAY_TASKS == 'Y' ) ) {
     $url = '<a title="' . 
       translate( 'Add New Task' ) . '" href="edit_entry.php?eType=task';
     if ( ! empty ( $thisyear ) ) {
@@ -208,9 +208,8 @@ if ( $showHelp ) {
   $goto_link[] = '<a title="' . 
     translate( 'Help' ) . '" href="#" onclick="window.open ' .
     "( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars, " .
-    "height=500,width=600,innerHeight=520,outerWidth=620' );\"  " .
-    "onmouseover=\"window.status='" . 
-    translate( 'Help' ) . "'\">" . 
+    "height=500,width=600,innerHeight=520,outerWidth=620' ); \" " .
+    "onmouseover=\"window.status=''; return true\">" .
     translate( 'Help' ) . '</a>';
 }
 
@@ -220,7 +219,7 @@ if ( count ( $goto_link ) > 0 ) {
   for ( $i = 0; $i < $gotocnt; $i++ ) {
     if ( $i > 0 )
       echo ' | ';
-    echo $goto_link[$i];
+    echo $goto_link[$i] . "\n";
   }
 }
 ?>
@@ -237,7 +236,7 @@ if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER != 'N' )
     $out .= $views[$i]['url'];
     if ( ! empty ( $thisdate ) )
       $out .= "&amp;date=$thisdate";
-    $out .= "\">" .
+    $out .= '">' .
       htmlspecialchars ( $views[$i]['cal_name'] ) . "</a>\n";
     $views_link[] = $out;
   }
@@ -283,7 +282,7 @@ $reports_link = array ();
     for ( $i = 0; $i < $reports_linkcnt ; $i++ ) {
       if ( $i > 0 )
         echo ' | ';
-      echo $reports_link[$i];
+      echo $reports_link[$i] . "\n";
     }
   }
 }
@@ -353,7 +352,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     );
     array_unshift ( $grouplist, $public );
   }
-  $groups = "";
+  $groups = '';
   $grouplistcnt = count ( $grouplist );
   for ( $i = 0; $i < $grouplistcnt; $i++ ) {
     $l = $grouplist[$i]['cal_login'];
@@ -364,7 +363,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     // Of course, if this user cannot view any of the standard D/W/M/Y
     // pages, that will force us to use the view.
     $xurl = get_preferred_view ( '', "user=$l" );
-    if ( strstr ( $xurl, "view_" ) ) {
+    if ( strstr ( $xurl, 'view_' ) ) {
       if ( access_can_access_function ( ACCESS_MONTH ) )
         $xurl = "month.php?user=$l";
       else if ( access_can_access_function ( ACCESS_WEEK ) )
@@ -374,7 +373,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
       // year does not show events, so you cannot manage someone's cal
     }
     if ( $i > 0 )
-      $groups .= ', ';
+      $groups .= ", \n";
     $groups .= "<a title=\"$f\" href=\"$xurl\">$f</a>";
   }
   if ( ! empty ( $groups ) ) {
@@ -385,7 +384,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
 }
 
 // WebCalendar Info...
-echo '<br /><br /><a title="' . $GLOBALS['PROGRAM_NAME'] . '" ' .
+echo '<br /><br />' . "\n" . '<a title="' . $GLOBALS['PROGRAM_NAME'] . '" ' .
   "id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_blank\">" .
   $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 ?>
