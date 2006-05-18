@@ -151,7 +151,7 @@ $GLOBALS['FONTS'] = $prefarray['FONTS'];
 $GLOBALS['MYEVENTS'] = $prefarray['MYEVENTS'];
 
 //determine if we can set timezones, if not don't display any options
-$can_set_timezone = set_env ( 'TZ', $TIMEZONE );
+$can_set_timezone = set_env ( 'TZ', $prefarray['TIMEZONE'] );
 
 $checked = ' checked="checked" ';
 $selected = ' selected="selected" ';
