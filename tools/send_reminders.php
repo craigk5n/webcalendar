@@ -192,13 +192,13 @@ $startdate = date ( 'Ymd', $startdateTS );
 $enddate = date ( 'Ymd', $enddateTS );
 
 // Now read events all the repeating events (for all users)
-$repeated_events = query_events ( "", true, "AND (webcal_entry_repeats.cal_end >= 
+$repeated_events = query_events ( '', true, "AND (webcal_entry_repeats.cal_end >= 
   $startdate OR webcal_entry_repeats.cal_end IS NULL) " );
 $repcnt = count ( $repeated_events );
 // Read non-repeating events (for all users)
 if ( $debug )
   echo "Checking for events from date $startdate to date $enddate <br />\n";
-$events = read_events ( "", $startdateTS, $enddateTS );
+$events = read_events ( '', $startdateTS, $enddateTS );
 $eventcnt = count ( $events );
 if ( $debug )
   echo "Checking for tasks from date $startdate to date $enddate <br />\n";
@@ -245,7 +245,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   }
   $is_task = false;
   //Get repeating events...tasks are not included at this time
-  $rep = get_repeating_entries ( "", $date );
+  $rep = get_repeating_entries ( '', $date );
   $repcnt = count ( $rep );
   for ( $i = 0; $i < $repcnt; $i++ ) {
     $id = $rep[$i]->getID();
@@ -457,7 +457,7 @@ function send_reminder ( $id, $event_date ) {
     }
 
     $body .= translate ( 'Updated', true ). ': ' .
-      date_to_str ( $row[3] ) . " " .  display_time ( $row[3] . sprintf ( "%06d" , $row[4] ),
+      date_to_str ( $row[3] ) . ' ' .  display_time ( $row[3] . sprintf ( "%06d" , $row[4] ),
         $display_tzid, '', $userTformat ) ."\n";
 
     // site extra fields
@@ -468,7 +468,7 @@ function send_reminder ( $id, $event_date ) {
       $extra_descr = $site_extras[$i][1];
       $extra_type = $site_extras[$i][2];
       if ( ! empty (  $extras[$extra_name]['cal_name'] ) && 
-      $extras[$extra_name]['cal_name'] != "" ) {
+      $extras[$extra_name]['cal_name'] != '' ) {
         $val = '';
         $prompt = $extra_descr;
         if ( $extra_type == EXTRA_DATE ) {
