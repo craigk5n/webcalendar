@@ -91,7 +91,7 @@ function dbi_connect ( $host, $login, $password, $database, $lazy=true ) {
   // Lazy connections... do not connect until 1st call to dbi_query
   if ( $lazy ) {
     //echo "<!-- Waiting on db connection made (lazy) -->\n";
-    //echo "RETURN!<br>";
+    //echo "RETURN!<br />";
     return true;
   }
 
@@ -345,7 +345,7 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
   if ( ! empty ( $db_connection_info['debug'] ) )
     $SQLLOG[] = $sql;
 
-  //echo "dbi_query!: " . htmlentities ( $sql ) . "<br>";
+  //echo "dbi_query!: " . htmlentities ( $sql ) . "<br />";
   // Connect now if not connected.
   if ( is_array ( $db_connection_info ) &&
     ! $db_connection_info['connected'] ) {

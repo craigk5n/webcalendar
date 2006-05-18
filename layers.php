@@ -9,7 +9,7 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $u_url = '&amp;public=1';
 } else {
   $layer_user = $login;
-  $u_url = "";
+  $u_url = '';
 }
 
 load_user_layers ( $layer_user, 1 );

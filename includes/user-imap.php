@@ -122,8 +122,8 @@ function user_valid_login ( $login, $password ) {
   # iterate over all hosts and return if you get a successful login
   foreach( $all_imap_hosts as $idx => $host)
   {
-    $error_number = "";
-    $error_string = "";
+    $error_number = '';
+    $error_string = '';
 
     // Connect to IMAP-server
     $stream = fsockopen( $host, $all_imap_ports[$idx], $error_number, $error_string, 15 );
@@ -198,7 +198,7 @@ function user_valid_crypt ( $login, $crypt_password ) {
     }
     dbi_free_result ( $res );
   } else {
-    //$error = translate( 'Database error' ) . ": " . dbi_error();
+    //$error = translate( 'Database error' ) . ': ' . dbi_error();
     $error = 'Database error: ' . dbi_error();
   }
 
@@ -305,7 +305,7 @@ function user_add_user ( $user, $password, $firstname,
     "VALUES ( ?, ?, ?, ?, ?, ? )";
   if ( ! dbi_execute ( $sql , array ( $user, $ulastname, 
     $ufirstname, $admin, $upassword, $uemail ) ) ) {
-    $error = translate ( 'Database error', true) . ": " . dbi_error ();
+    $error = translate ( 'Database error', true) . ': ' . dbi_error ();
     return false;
   }
   return true;
@@ -527,11 +527,11 @@ function user_get_users () {
   if ( $PUBLIC_ACCESS == 'Y' )
     $ret[$count++] = array (
        'cal_login' => '__public__',
-       'cal_lastname' => "",
-       'cal_firstname' => "",
-       'cal_is_admin' => "N",
-       'cal_email' => "",
-       'cal_password' => "",
+       'cal_lastname' => '',
+       'cal_firstname' => '',
+       'cal_is_admin' => 'N',
+       'cal_email' => '',
+       'cal_password' => '',
        'cal_fullname' => $PUBLIC_ACCESS_FULLNAME );
   $res = dbi_execute ( "SELECT cal_login, cal_lastname, cal_firstname, " .
     "cal_is_admin, cal_email, cal_passwd FROM webcal_user " .

@@ -164,7 +164,7 @@ load_user_preferences ();
 $WebCalendar->setLanguage();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
-  header ( "Content-Type: text/plain" );
+  header ( 'Content-Type: text/plain' );
   // Mozilla Calendar does not bother showing errors, so they won't
   // see this error message anyhow....  Not sure about Apple iCal or
   // other clients.
@@ -173,7 +173,7 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
 }
 //echo $prefarray['USER_PUBLISH_RW_ENABLED'];
 if ( empty ( $USER_PUBLISH_RW_ENABLED ) || $USER_PUBLISH_RW_ENABLED != 'Y' ) {
-  header ( "Content-Type: text/plain" );
+  header ( 'Content-Type: text/plain' );
   etranslate ( 'Publishing Disabled (User)' );
   exit;
 }
@@ -213,7 +213,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'PUT' ) {
  import_data ( $data, $overwrite, $type );
 } else {
   //do_debug ( "Exporting updated remote calendar" );
-  header ( "Content-Type: text/calendar" );
+  header ( 'Content-Type: text/calendar' );
   header ( 'Content-Disposition: attachment; filename="' . $login .  '.ics"' );
  $use_all_dates = true;
   export_ical();

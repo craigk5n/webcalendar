@@ -25,8 +25,8 @@
  */
 function assert_get_cvs_file_version ( $file )
 {
-  $version = "v?.?";
-  $path = array ( "", "includes/", "../" );
+  $version = 'v?.?';
+  $path = array ( '', 'includes/', '../' );
   $cnt = count ( $path );
   for ( $i = 0; $i < $cnt; $i++ ) {
     $newfile = $path[$i] . $file;
@@ -36,7 +36,7 @@ function assert_get_cvs_file_version ( $file )
         while ( ! feof ( $fd ) ) {
           $data = fgets ( $fd, 1024 );
           if ( preg_match ( "/Id: (\S+),v (\d\S+)/", $data, $match ) ) {
-            $version = "v" . $match[2];
+            $version = 'v' . $match[2];
             break;
           }
         }
@@ -61,12 +61,12 @@ function assert_backtrace ()
 
   if ( empty ( $settings ) || empty ( $settings['mode'] ) ||
     $settings['mode'] == 'prod' ) {
-    return "No stack trace [production mode]";
+    return 'No stack trace [production mode]';
   }
 
-  if ( ! function_exists ( "debug_backtrace" ) )
-    return "[stacktrack requires PHP 4.3/5.0.  " .
-      "Not available in PHP " . phpversion() . "]";
+  if ( ! function_exists ( 'debug_backtrace' ) )
+    return '[stacktrack requires PHP 4.3/5.0.  ' .
+      'Not available in PHP ' . phpversion() . ']';
   $bt = debug_backtrace ();
   //print_r ( $bt );
   $file = array ();

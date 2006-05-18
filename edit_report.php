@@ -31,7 +31,7 @@ include_once 'includes/init.php';
 load_user_categories ();
 
 $updating_public = false;
-$error = "";
+$error = '';
 
 if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' ) {
   $error = translate ( 'You are not authorized' ) . '.';
@@ -211,7 +211,7 @@ print_header();
 
 <h2><?php
 if ( $updating_public ) {
-  echo translate($PUBLIC_ACCESS_FULLNAME) . " ";
+  echo translate($PUBLIC_ACCESS_FULLNAME) . ' ';
 }
 if ( $adding_report ) {
   etranslate( 'Add Report' );

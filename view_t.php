@@ -110,9 +110,9 @@ if ( ! empty ( $error ) ) {
 <?php etranslate ( 'Next' )?>" /></a>
 <div class="title">
 <span class="date"><?php
-  echo date_to_str ( date ( 'Ymd', $wkstart ), "", false ) .
-    "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
-    date_to_str ( date ( 'Ymd', $wkend ), "", false );
+  echo date_to_str ( date ( 'Ymd', $wkstart ), '', false ) .
+    '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;' .
+    date_to_str ( date ( 'Ymd', $wkend ), '', false );
 ?></span><br />
 <span class="viewname"><?php 
  echo htmlspecialchars ( $view_name  );
@@ -133,7 +133,7 @@ $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
+  $repeated_events = read_repeated_events ( $viewusers[$i], '', $wkstart );
   $re_save = array_merge($re_save, $repeated_events);
   /* Pre-load the non-repeating events for quicker access 
       subtracting ONE_WEEK to allow cross-day events to display*/
@@ -193,19 +193,13 @@ for ( $date = $wkstart, $h = 0;
 
 echo "</table>\n<br />\n";
 
-$user = ""; // reset
+$user = ''; // reset
 
 if ( ! empty ( $eventinfo ) ) {
   echo $eventinfo;
 }
 
-echo '<a title="' . translate ( 'Generate printer-friendly version' ) . '" ' .
-  "class=\"printer\" href=\"view_t.php?timeb=$timeb&amp;id=$id&amp;date=" .
-  "$thisdate&amp;friendly=1\" target=\"cal_printer_friendly\" " .
-  "onmouseover=\"window.status='" .
-  translate ( 'Generate printer-friendly version' ) .
-  "'\">[" . translate ( 'Printer Friendly' ) . "]</a>\n";
-
+echo generate_printer_friendly ( 'view_t.php' );
 print_trailer ();
 ?>
 </body>

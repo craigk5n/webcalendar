@@ -39,7 +39,7 @@ if ( empty ( $users ) ) {
 $parent_form = getGetValue ('form');
 
 $INC = array ( "js/availability.php/false/$month/$day/$year/$parent_form" );
-print_header($INC, '', "onload=\"focus();\"", true, false, true );
+print_header($INC, '', 'onload="focus();"', true, false, true );
 
 $span = ($WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR) * 3 + 1;
 $time = mktime(0,0,0,$month,$day,$year);
@@ -49,7 +49,7 @@ $base_url = "?users=$users";
 $prev_url = $base_url . strftime('&amp;year=%Y&amp;month=%m&amp;day=%d', $time - ONE_DAY);
 $next_url = $base_url . strftime('&amp;year=%Y&amp;month=%m&amp;day=%d', $time + ONE_DAY);
 
-$users = explode(",",$users);
+$users = explode(',',$users);
 ?>
 
 <div style="border-width:0px; width:99%;">

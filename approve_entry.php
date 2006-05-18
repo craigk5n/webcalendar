@@ -4,7 +4,7 @@ require ( 'includes/classes/WebCalMailer.class' );
 
 load_user_categories();
 
-$error = "";
+$error = '';
 
 if ( $readonly == 'Y' ) {
   $error = translate( 'You are not authorized' );
@@ -76,7 +76,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   $eventstart = date_to_epoch ( $fmtdate . $time );
   //TODO figure out if creator wants approved comment email
     //check UAC
-    $send_user_mail = "Y"; 
+    $send_user_mail = 'Y'; 
     if ( access_is_enabled () ) {
       $send_user_mail = access_user_calendar ( 'email', $creator, $login);
     }   
@@ -99,7 +99,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
       translate( 'The subject was' ) . ' "' . $name . " \"\n" .
       translate( 'The description is' ) . ' "' . $description . "\"\n" .
       translate( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .
-      ( ( empty ( $hour ) && empty ( $minute ) ? "" : translate( 'Time' ) . ': ' .
+      ( ( empty ( $hour ) && empty ( $minute ) ? '' : translate( 'Time' ) . ': ' .
       // Display using user's GMT offset and display TZID
       display_time ( '', 2, $eventstart , $t_format ) ) ). "\n";
       if ( ! empty ( $SERVER_URL ) ) {

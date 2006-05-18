@@ -26,12 +26,12 @@ function view_init ( $view_id )
     send_to_preferred_view ();
   }
   if ( empty ( $view_id ) ) {
-    do_redirect ( "views.php" );
+    do_redirect ( 'views.php' );
   }
 
   // Find view name in $views[]
-  $view_name = "";
-  $view_type = "";
+  $view_name = '';
+  $view_type = '';
   $viewcnt = count ( $views );
   for ( $i = 0; $i < $viewcnt; $i++ ) {
     if ( $views[$i]['cal_view_id'] == $view_id ) {

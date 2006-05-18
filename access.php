@@ -69,7 +69,7 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '') {
       break;
     $view_total = $edit_total = $approve_total = 0;
     for ( $i=1;$i<=256; ) {
-      //echo $i . " "  .getPostValue ( 'v_' . $i ) . "<br>";
+      //echo $i . " "  .getPostValue ( 'v_' . $i ) . "<br />";
       $view_total    += getPostValue ( 'v_' . $i );
       $edit_total    += getPostValue ( 'e_' . $i );
       $approve_total += getPostValue ( 'a_' . $i );
@@ -448,7 +448,7 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
     translate ( 'DEFAULT CONFIGURATION' )."</option>\n";
   $cnt = count ( $userlist );
   for ( $i = 0; $i < $cnt; $i++ ) {
-    echo '<option value="'.$userlist[$i]['cal_login']."\">".
+    echo '<option value="'.$userlist[$i]['cal_login']. '">' .
       $userlist[$i]['cal_fullname']."</option>\n";
   }
   $cnt = count ( $nonuserlist );

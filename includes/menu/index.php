@@ -12,7 +12,8 @@ global $readonly, $is_nonuser, $is_nonuser_admin, $single_user, $user,
        $ALLOW_VIEW_OTHER, $DISPLAY_TASKS, $thisyear, $thismonth, $thisday,
        $views, $REPORTS_ENABLED, $use_http_auth, $login_return_path,
        $NONUSER_ENABLED, $has_boss, $is_admin, $CATEGORIES_ENABLED,
-       $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL,$REMOTES_ENABLED;
+       $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL,
+       $REMOTES_ENABLED, $DISPLAY_TASKS_IN_GRID;
 
 
 //------------------------------------------------------------------//
@@ -57,7 +58,7 @@ if ( $can_add ) {
 }
 
 // Add new task
-if ( $can_add && ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y') {
+if ( $can_add && ( $DISPLAY_TASKS_IN_GRID == 'Y' || $DISPLAY_TASKS == 'Y' ) ) {
   $new_task_url = 'edit_entry.php?eType=task';
   if ( ! empty ( $thisyear ) ) {
     $new_task_url .= "&amp;year=$thisyear";
@@ -162,7 +163,7 @@ if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
   if ( ! empty ( $user ) && $user != $login ) {
     $u_url = "&amp;user=$user";
   } else {
-    $u_url = "";
+    $u_url = '';
   }
   $res = dbi_execute ( "SELECT cal_report_name, cal_report_id " .
     "FROM webcal_report " .
@@ -222,12 +223,12 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
   }
   if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
     $public = array (
-      "cal_login" => '__public__',
-      "cal_fullname" => translate( 'Public Access' )
+      'cal_login' => '__public__',
+      'cal_fullname' => translate( 'Public Access' )
     );
     array_unshift ( $grouplist, $public );
   }
-  $groups = "";
+  $groups = '';
   $grouplistcnt = count ( $grouplist );
   for ( $i = 0; $i < $grouplistcnt; $i++ ) {
     $l = $grouplist[$i]['cal_login'];
@@ -237,8 +238,8 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     // proper user's events.  (Fallback to month.php if this is true.)
     // Of course, if this user cannot view any of the standard D/W/M/Y
     // pages, that will force us to use the view.
-    $xurl = get_preferred_view ( "", "user=$l" );
-    if ( strstr ( $xurl, "view_" ) ) {
+    $xurl = get_preferred_view ( '', "user=$l" );
+    if ( strstr ( $xurl, 'view_' ) ) {
       if ( access_can_access_function ( ACCESS_MONTH, $user ) )
         $xurl = "month.php?user=$l";
       else if ( access_can_access_function ( ACCESS_WEEK, $user ) )
@@ -287,9 +288,9 @@ function jscMenu_menu ( $title, $url = false ) {
 }
 
 // Dropdown menu item
-function jscMenu_item ( $icon, $title, $url ) {
+function jscMenu_item ( $icon, $title, $url, $target='' ) {
   echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','".
-       translate( $title )."','$url',null,''],\n";
+       translate( $title )."','$url','$target',''],\n";
 }
 
 // Dropdown menu item that has a sub menu
@@ -532,6 +533,9 @@ var myMenu =
   // Help Menu (Link)
   // translate ( 'Help', true);
   if ( $help_url != '' ) jscMenu_menu ('Help','javascript:openHelp()');
+  
+  $href = generate_printer_friendly ();
+  jscMenu_item ( 'printer.png', '', $href, 'cal_printer_friendly' );
 ?>  
 ];
 cmDraw ('myMenuID', myMenu, 'hbr', cmTheme, 'Theme');

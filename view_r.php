@@ -49,7 +49,7 @@
 include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-$error = "";
+$error = '';
 $can_add = true; // include '+' add icons in this view?
 
 // Set this to true to allow the table to be larger than the browser's
@@ -101,18 +101,18 @@ if ( $is_day_view )
   $next = mktime ( 0, 0, 0, $thismonth, $thisday + 1, $thisyear );
 else
   $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
-$nextyear = date ( "Y", $next );
-$nextmonth = date ( "m", $next );
-$nextday = date ( "d", $next );
+$nextyear = date ( 'Y', $next );
+$nextmonth = date ( 'm', $next );
+$nextday = date ( 'd', $next );
 $nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
 if ( $is_day_view )
   $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 1, $thisyear );
 else
   $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
-$prevyear = date ( "Y", $prev );
-$prevmonth = date ( "m", $prev );
-$prevday = date ( "d", $prev );
+$prevyear = date ( 'Y', $prev );
+$prevmonth = date ( 'm', $prev );
+$prevday = date ( 'd', $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 
@@ -121,9 +121,9 @@ $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 $wkend = $wkstart + ( ONE_DAY * 6 );
 
 if ( ! $fit_to_window )
-  $time_w = "100px";
+  $time_w = '100px';
 else
-  $time_w = "8%"; // 8% for time column
+  $time_w = '8%'; // 8% for time column
 
 // Set the day of week range (0=Sun, 6=Sat)
 // $start_ind = start of range
@@ -150,14 +150,14 @@ if ( $is_day_view ) {
 // Generate the column headers for each day and the unix datetime
 // values for each date.
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
-  $days[$i] = $wkstart + ONE_DAY * $i;
+  $days[$i] = ( $wkstart + ONE_DAY * $i ) + ( 12 * 3600 );
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
-  $header[$i] = $weekdays[$i] . "<br />" .
-     month_short_name ( date ( "m", $days[$i] ) - 1 ) .
-     " " . date ( "d", $days[$i] );
+  $header[$i] = $weekdays[$i] . '<br />' .
+     month_short_name ( date ( 'm', $days[$i] ) - 1 ) .
+     ' ' . date ( 'd', $days[$i] );
   if ( empty ( $first_date ) )
-    $first_date = date_to_str ( date ( 'Ymd', $days[$i] ), "", false );
-  $last_date = date_to_str ( date ( 'Ymd', $days[$i] ), "", false );
+    $first_date = date_to_str ( date ( 'Ymd', $days[$i] ), '', false );
+  $last_date = date_to_str ( date ( 'Ymd', $days[$i] ), '', false );
 }
 
 
@@ -178,7 +178,7 @@ $viewusercnt = count ( $viewusers );
 // In theory, we whould always at least have ourselves in the view, right?
 if ( $viewusercnt == 0 ) {
   // I don't think we need to translate this.
-  $error = "No users for this view";
+  $error = 'No users for this view';
 }
 
 if ( ! empty ( $error ) ) {
@@ -216,19 +216,19 @@ if ( $user == '__public__' && $PUBLIC_ACCESS_VIEW_UNAPPROVED != 'Y' )
 $e_save = array ();
 $re_save = array ();
 if ( ! $fit_to_window )
-  $uwf = $col_pixels . "px";
+  $uwf = $col_pixels . 'px';
 else
-  $uwf = sprintf ( "%0.2f", $tdw / $viewusercnt ) . "%";
-$uheader = "";
+  $uwf = sprintf ( "%0.2f", $tdw / $viewusercnt ) . '%';
+$uheader = '';
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], "", $wkstart );
+  $repeated_events = read_repeated_events ( $viewusers[$i], '', $wkstart );
   $re_save[$i] = $repeated_events;
   /* Pre-load the non-repeating events for quicker access 
       subtracting ONE_WEEK to allow cross-day events to display*/
   $events = read_events ( $viewusers[$i], $wkstart - ONE_WEEK, $wkend );
   $e_save[$i] = $events;
-  user_load_variables ( $viewusers[$i], "temp" );
+  user_load_variables ( $viewusers[$i], 'temp' );
   $uheader .= "<th class=\"small\" width=\"$uwf\" style=\"width:$uwf;\">" .
     $tempfullname . "</th>\n";
   //echo "$viewusers[$i]: loaded " . count ( $events ) . " events<br />\n";
@@ -264,7 +264,7 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
 <?php
   if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
     echo "<br />\n<span class=\"weeknumber\">(" .
-      translate ( 'Week' ) . " " . date("W", $wkstart + ONE_DAY ) . ")</span>";
+      translate ( 'Week' ) . ' ' . date('W', $wkstart + ONE_DAY ) . ')</span>';
   }
 ?>
 </div></div><br />
@@ -402,14 +402,14 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
           if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) )
             $all_day[$d] = 1;
-          html_for_event_week_at_a_glance ( $rep[$cur_rep], $adate, "small", $show_time );
+          html_for_event_week_at_a_glance ( $rep[$cur_rep], $adate, 'small', $show_time );
         }
         $cur_rep++;
       }
       if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
         if ( $ev[$i]->getDuration() == ( 24 * 60 ) )
           $all_day[$d] = 1;
-        html_for_event_week_at_a_glance ( $ev[$i], $adate, "small", $show_time );
+        html_for_event_week_at_a_glance ( $ev[$i], $adate, 'small', $show_time );
         //echo "Found event date=$adate name='$viewname'<br />\n";
         //print_r ( $rowspan_arr );
       }
@@ -419,7 +419,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
       if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
         if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) )
           $all_day[$d] = 1;
-        html_for_event_week_at_a_glance ( $rep[$cur_rep], $adate, "small", $show_time );
+        html_for_event_week_at_a_glance ( $rep[$cur_rep], $adate, 'small', $show_time );
       }
       $cur_rep++;
     }
@@ -444,7 +444,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
           for ( $x = $diff_start_time; $x > 0; $x-- )
             $hour_arr[$last_row] .= "<br />\n";
           $hour_arr[$last_row] .= $hour_arr[$i];
-          $hour_arr[$i] = "";
+          $hour_arr[$i] = '';
           $rowspan_arr[$i] = 0;
         }
         $rowspan--;
@@ -476,14 +476,14 @@ if ( $untimed_found || $show_untimed_row_always ) {
     for ( $u = 0; $u < $viewusercnt; $u++ ) {
       $untimed = $save_untimed[$u][$d];
 
-      echo "<td";
+      echo '<td';
 
       $class = ( $is_weekend ) ? 'weekend': '';
 
       if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
         if ( $class != '' )
           $class .= ' ';
-        $class .= "today";
+        $class .= 'today';
       }
       // Use the class 'hasevents' for any hour block that has events
       // in it.
@@ -492,17 +492,17 @@ if ( $untimed_found || $show_untimed_row_always ) {
       }
       if ( ! empty ( $class ) )
         $class .= ' ';
-      $class .= "small";
+      $class .= 'small';
 
-      if ( $class != "" ) {
-        echo " class=\"$class\"";
+      if ( $class != '' ) {
+        echo ' class="$class"';
       }
       if ( $can_add ) {
-        $add_url = "edit_entry.php?date=" . date ( 'Ymd', $days[$d] ) .
-          "&amp;defusers=" . $viewusers[$u] . "&amp;duration=1440";
+        $add_url = 'edit_entry.php?date=' . date ( 'Ymd', $days[$d] ) .
+          '&amp;defusers=' . $viewusers[$u] . '&amp;duration=1440';
         echo " ondblclick='document.location.href=\"$add_url\"' ";
       }
-      echo ">";
+      echo '>';
 
       if ( !empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
         echo $untimed[$d];
@@ -561,15 +561,15 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
         $rowspan_day[$u][$d]--;
       } else {
         if ( empty ( $hour_arr[$i] ) ) {
-          echo "<td";
+          echo '<td';
           echo ( empty ( $class ) ) ? '': " class=\"$class\"";
           if ( $can_add ) {
-            $add_url = "edit_entry.php?date=" . date ( 'Ymd', $days[$d] ) .
-              "&amp;defusers=" . $viewusers[$u] .
+            $add_url = 'edit_entry.php?date=' . date ( 'Ymd', $days[$d] ) .
+              '&amp;defusers=' . $viewusers[$u] .
               "&amp;hour=$time_h&amp;minute=$time_m";
             echo " ondblclick='document.location.href=\"$add_url\"' ";
           }
-          echo ">";
+          echo '>';
           //if ( $can_add ) {        //if user can add events...
           //  echo html_for_add_icon ( date ( 'Ymd', $days[$d] ),
           //    $time_h, $time_m, $user );        //..then echo the add event icon
@@ -587,7 +587,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
                 "&amp;hour=$time_h&amp;minute=$time_m";
               echo " ondblclick='document.location.href=\"$add_url\"' ";
             }
-            echo ">";
+            echo '>';
             //if ( $can_add ) {
             //  echo html_for_add_icon ( date ( 'Ymd', $days[$d] ), $time_h,
             //    $time_m, $user );
@@ -597,12 +597,12 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
             echo '<td';
             echo ( empty ( $class ) ) ? '': " class=\"$class\"";
             if ( $can_add ) {
-              $add_url = "edit_entry.php?date=" . date ( 'Ymd', $days[$d] ) .
+              $add_url = 'edit_entry.php?date=' . date ( 'Ymd', $days[$d] ) .
                 "&amp;defusers=$user" .
                 "&amp;hour=$time_h&amp;minute=$time_m";
               echo " ondblclick='document.location.href=\"$add_url\"' ";
             }
-            echo ">";
+            echo '>';
             //if ( $can_add ) {
             //  echo html_for_add_icon ( date ( 'Ymd', $days[$d] ), $time_h,
             //    $time_m, $user );
@@ -625,15 +625,11 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 
 <?php
 
-$user = ""; // reset
+$user = ''; // reset
 
 if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
-echo "<a title=\"" . translate ( 'Generate printer-friendly version' ) . "\" class=\"printer\" href=\"view_r.php?id=$id&amp;date=$thisdate&amp;friendly=1\" " .
-        "target=\"cal_printer_friendly\" onmouseover=\"window.status='" .
-        translate ( 'Generate printer-friendly version' ) .
-        "'\">[" . translate ( 'Printer Friendly' ) . "]</a>\n";
-
+echo generate_printer_friendly ( 'view_r.php' );
 print_trailer ();
 ?>
 </body>

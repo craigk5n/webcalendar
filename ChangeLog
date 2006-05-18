@@ -1,4 +1,8 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1490944: 1.1.0 works only with firefox
+ - Fixed bug 1490979: descriptions of preferences will not be <bold>
+ - Fixed bug 1490969: option 'Display tasks in Calendars:' enabled will not work
+ - Fixed bug 1490749: reminder-entry in pop-up couldn't be translated
  - Fixed bug 1490046: Time zone problems
  - Fixed bug 1474991: Can't see all participants in availability window
  - Fixed bug 1476022: Availability Status

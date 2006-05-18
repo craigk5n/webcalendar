@@ -1,9 +1,9 @@
 <?php
 include_once 'includes/init.php';
 
-$error = "";
+$error = '';
 
-$viewisglobal = getPostValue ( "is_global" );
+$viewisglobal = getPostValue ( 'is_global' );
 if ( ! $is_admin || $viewisglobal != 'Y' )
   $viewisglobal = 'N'; // only admin can create global view
 //echo "viewisglobal = $viewisglobal"; exit;
@@ -45,11 +45,11 @@ if ( ! empty ( $delete ) ) {
   }
 
   # update user list
-  if ( $error == "" ) {
+  if ( $error == '' ) {
     dbi_execute ( "DELETE FROM webcal_view_user WHERE cal_view_id = ?" , array ( $id ) );
     // If selected "All", then just put "__all__" in for username.
-    if ( getPostValue ( "viewuserall" ) == 'Y' )
-      $users = array ( "__all__" );
+    if ( getPostValue ( 'viewuserall' ) == 'Y' )
+      $users = array ( '__all__' );
     $cnt = count ( $users );
     for ( $i = 0; ! empty ( $users ) && $i < $cnt; $i++ ) {
       dbi_execute ( "INSERT INTO webcal_view_user ( cal_view_id, cal_login ) " .

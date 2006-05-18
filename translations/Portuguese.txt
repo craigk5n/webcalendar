@@ -957,7 +957,7 @@ duration-help: Especifica a duração do evento em minutos. Este campo é opcional.
 Priority: Prioridade
 priority-help: Especifica a prioridade do evento.  Prioridade Alta é apresentada num tipo de letra mais escuro.
 Access: Accesso
-access-help: Especifica o nível de acesso do evento. <BR><I>Público</I> Todos os intervenientes podem ver todos os detalhes do evento. <BR><I>Confidencial</I> Outros utilizadores poderão ver que tem um evento marcado, mas não podem visualizar os detalhes.
+access-help: Especifica o nível de acesso do evento. <br /><em>Público</em> Todos os intervenientes podem ver todos os detalhes do evento. <br /><em>Confidencial</em> Outros utilizadores poderão ver que tem um evento marcado, mas não podem visualizar os detalhes.
 Participants: Participantes
 participants-help: Lista os participantes neste evento.
 Repeat Type: Tipo de repetição

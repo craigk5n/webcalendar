@@ -38,15 +38,15 @@ if ( ! empty ( $date ) && ! empty ( $date ) ) {
   $thisday = substr ( $date, 6, 2 );
 } else {
   if ( empty ( $month ) || $month == 0 )
-    $thismonth = date("m", $today);
+    $thismonth = date( 'm', $today);
   else
     $thismonth = $month;
   if ( empty ( $year ) || $year == 0 )
-    $thisyear = date("Y", $today);
+    $thisyear = date('Y', $today);
   else
     $thisyear = $year;
   if ( empty ( $day ) || $day == 0 )
-    $thisday = date("d", $today);
+    $thisday = date('d', $today);
   else
     $thisday = $day;
 }
@@ -61,7 +61,7 @@ $startdate = date ( 'Ymd', $wkstart );
 $enddate = date ( 'Ymd', $wkend );
 
 /* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( $login, "", $startdate );
+$repeated_events = read_repeated_events ( $login, '', $startdate );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $login, $startdate, $enddate );
@@ -69,9 +69,9 @@ $events = read_events ( $login, $startdate, $enddate );
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ONE_DAY * $i;
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
-  $header[$i] = $weekdays[$i] . "<br />" .
-     month_short_name ( date ( "m", $days[$i] ) - 1 ) .
-     " " . date ( "d", $days[$i] );
+  $header[$i] = $weekdays[$i] . '<br />' .
+     month_short_name ( date ( 'm', $days[$i] ) - 1 ) .
+     ' ' . date ( 'd', $days[$i] );
 }
 
 ?>
@@ -101,14 +101,14 @@ $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {
   $date = date ( 'Ymd', $days[$d] );
 
-  echo "<td style=\"vertical-align:top; width:75px; height:75px;";
+  echo '<td style="vertical-align:top; width:75px; height:75px;';
   if ( $date == date ( 'Ymd' ) )
     echo " background-color:$TODAYCELLBG;\">\n";
   else
     echo " background-color:$CELLBG;\">";
 
   print_date_entries ( $date, $login, true, true );
-  echo "&nbsp;";
+  echo '&nbsp;';
   echo "</td>\n";
 }
 ?>

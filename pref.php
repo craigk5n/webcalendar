@@ -589,33 +589,33 @@ if ( ! $updating_public ) {
 if ( $SEND_EMAIL == 'Y' ) { ?>
 <div id="tabscontent_email">
 <table  cellspacing="1" cellpadding="2">
-<tr><td>
+<tr><td class="tooltip">
  <?php etranslate( 'Email format preference' )?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_HTML" value="Y" <?php if ( $prefarray['EMAIL_HTML'] != 'N' ) echo $checked;?> />&nbsp;<?php etranslate( 'HTML' )?></label>&nbsp;
  <label><input type="radio" name="pref_EMAIL_HTML" value="N" <?php if ( $prefarray['EMAIL_HTML'] == 'N' ) echo $checked;?> />&nbsp;<?php etranslate( 'Plain Text' )?></label>
 </td></tr>
 
-<tr><td>
+<tr><td class="tooltip">
  <?php etranslate( 'Event reminders' )?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_REMINDER" value="Y" <?php if ( $prefarray['EMAIL_REMINDER'] != 'N' ) echo $checked;?> />&nbsp;<?php echo $Yes?></label>&nbsp;
  <label><input type="radio" name="pref_EMAIL_REMINDER" value="N" <?php if ( $prefarray['EMAIL_REMINDER'] == 'N' ) echo $checked;?> />&nbsp;<?php echo $No?></label>
 </td></tr>
 
-<tr><td>
+<tr><td class="tooltip">
  <?php etranslate( 'Events added to my calendar' )?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_EVENT_ADDED" value="Y" <?php if ( $prefarray['EMAIL_EVENT_ADDED'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_EMAIL_EVENT_ADDED" value="N" <?php if ( $prefarray['EMAIL_EVENT_ADDED'] == 'N' ) echo $checked;?> /> <?php echo $No?></label></td></tr>
 
-<tr><td>
+<tr><td class="tooltip">
  <?php etranslate( 'Events updated on my calendar' )?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_EVENT_UPDATED" value="Y" <?php if ( $prefarray['EMAIL_EVENT_UPDATED'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_EMAIL_EVENT_UPDATED" value="N" <?php if ( $prefarray['EMAIL_EVENT_UPDATED'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
 </td></tr>
 
-<tr><td>
+<tr><td class="tooltip">
  <?php etranslate( 'Events removed from my calendar' )?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_EVENT_DELETED" value="Y" <?php if ( $prefarray['EMAIL_EVENT_DELETED'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_EMAIL_EVENT_DELETED" value="N" <?php if ( $prefarray['EMAIL_EVENT_DELETED'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
 </td></tr>
 
-<tr><td>
+<tr><td class="tooltip">
  <?php etranslate( 'Event rejected by participant' )?>:</td><td>
  <label><input type="radio" name="pref_EMAIL_EVENT_REJECTED" value="Y" <?php if ( $prefarray['EMAIL_EVENT_REJECTED'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_EMAIL_EVENT_REJECTED" value="N" <?php if ( $prefarray['EMAIL_EVENT_REJECTED'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
 </td></tr>
@@ -627,10 +627,10 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <div id="tabscontent_boss">
 <table  cellspacing="1" cellpadding="2">
 <?php if ( $SEND_EMAIL == 'Y' ) { ?>
-<tr><td><?php etranslate( 'Email me event notification' )?>:</td>
+<tr><td class="tooltip"><?php etranslate( 'Email me event notification' )?>:</td>
   <td><label><input type="radio" name="pref_EMAIL_ASSISTANT_EVENTS" value="Y" <?php if ( $prefarray['EMAIL_ASSISTANT_EVENTS'] == 'Y' ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_EMAIL_ASSISTANT_EVENTS" value="N" <?php if ( $prefarray['EMAIL_ASSISTANT_EVENTS'] == 'N' ) echo $checked;?> /> <?php echo $No?></label></td></tr>
 <?php } //end email ?>
-<tr><td><?php etranslate( 'I want to approve events' )?>:</td>
+<tr><td class="tooltip"><?php etranslate( 'I want to approve events' )?>:</td>
   <td><label><input type="radio" name="pref_APPROVE_ASSISTANT_EVENT" value="Y" <?php if ( $prefarray['APPROVE_ASSISTANT_EVENT'] == 'Y' ) echo $checked;?> /> <?php echo $Yes?></label> <label><input type="radio" name="pref_APPROVE_ASSISTANT_EVENT" value="N" <?php if ( $prefarray['APPROVE_ASSISTANT_EVENT'] == 'N' ) echo $checked;?> /> <?php echo $No?></label></td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip( 'display_byproxy-help' )?>"><?php 
@@ -867,7 +867,7 @@ echo $select; ?>" />
   </td></tr>
 </table>
 
-</td><td style="text-align:center; vertical-align:top;;">
+</td><td style="text-align:center; vertical-align:top;">
 <br />
 <!-- BEGIN EXAMPLE MONTH -->
 <table style="border:0px; width:90%; background-color:<?php echo $BGCOLOR?>"><tr>

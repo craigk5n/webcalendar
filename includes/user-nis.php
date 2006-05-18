@@ -57,11 +57,11 @@ function user_valid_login ( $login, $password ) {
         $res = dbi_execute ( $sql, array( $login ) );
         if ( ! $res || ! dbi_fetch_row ( $res ) ) {
           // insert user into webcal_user
-          $uname = explode ( " ", $data[4] );
+          $uname = explode ( ' ', $data[4] );
           $ufirstname = $uname[0];
           $ulastname = $uname[count ( $uname ) - 1];
           user_add_user ( $login, $password, $ufirstname, 
-            $ulastname, $login . "@" . $user_external_email, 'N' );
+            $ulastname, $login . '@' . $user_external_email, 'N' );
          } else {
            //refresh their password in webcal_user
            user_update_user_password ( $login, $password )
@@ -100,7 +100,7 @@ function user_valid_crypt ( $login, $crypt_password ) {
   $res = dbi_execute ( $sql , array ( $login ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] != "" ) {
+    if ( $row && $row[0] != '' ) {
       // MySQL seems to do case insensitive matching, so double-check
       // the login.
       // also check if password matches
@@ -219,7 +219,7 @@ function user_add_user ( $user, $password, $firstname,
     "VALUES ( ?, ?, ?, ?, ?, ? )";
   if ( ! dbi_execute ( $sql , array ( $user, $ulastname, 
     $ufirstname, $admin, $upassword, $uemail ) ) ) {
-    $error = translate ( 'Database error', true) . ": " . dbi_error ();
+    $error = translate ( 'Database error', true) . ': ' . dbi_error ();
     return false;
   }
   return true;

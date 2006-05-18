@@ -37,7 +37,7 @@ load_global_settings ();
 
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
-  header ( "Content-Type: text/plain" );
+  header ( 'Content-Type: text/plain' );
   etranslate( 'You are not authorized' );
   exit;
 }
@@ -107,8 +107,8 @@ if ( $user != '__public__' && ( empty ( $minical_is_public ) || $minical_is_publ
 }
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
-$nextyear = date ( "Y", $next );
-$nextmonth = date ( "m", $next );
+$nextyear = date ( 'Y', $next );
+$nextmonth = date ( 'm', $next );
 
 $prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
 $prevyear = date ( 'Y', $prev );

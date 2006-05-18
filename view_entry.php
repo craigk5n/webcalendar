@@ -67,7 +67,7 @@ if ( ! empty ( $rssuser ) ) {
   if ( $rss_view == true ) {
     $hide_details = false;
     //make sure the displayed time is accurate
-    set_env ( "TZ", $user_rss_timezone );
+    set_env ( 'TZ', $user_rss_timezone );
   }
 }
 
@@ -278,7 +278,7 @@ if ( ! empty ( $error ) ) {
   exit;
 }
 // Try to determine the event status.
-$event_status = "";
+$event_status = '';
 
 if ( ! empty ( $user ) && $login != $user ) {
   // If viewing another user's calendar, check the status of the
@@ -338,14 +338,9 @@ if ( ( empty ( $event_status ) && ! $is_admin ) ||
 
 
 // save date so the trailer links are for the same time period
-//if (  $eType == 'task' ) {
-  $thisyear = (int) ( $orig_date / 10000 );
-  $thismonth = ( $orig_date / 100 ) % 100;
-  $thisday = $orig_date % 100;
-
-//}
-$thistime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
-$thisdow = date ( 'w', $thistime );
+$thisyear = (int) ( $orig_date / 10000 );
+$thismonth = ( $orig_date / 100 ) % 100;
+$thisday = $orig_date % 100;
 
 // $subject is used for mailto URLs
 $subject = translate($APPLICATION_NAME) . ': ' . $name;
@@ -530,9 +525,9 @@ if ( $duration > 0 && $duration != ONE_DAY ) { ?>
  <?php 
    $dur_h = (int)( $duration / 60 );
    $dur_m = $duration - ( $dur_h * 60 );
-   if ( $dur_h ==1 ) echo $dur_h . " " . translate( 'hour' ) . " ";
-   if ( $dur_h > 1 ) echo $dur_h . " " . translate( 'hours' ) . " ";
-   if ( $dur_m > 0 )echo $dur_m . " " . translate( 'minutes' )?>
+   if ( $dur_h ==1 ) echo $dur_h . ' ' . translate( 'hour' ) . ' ';
+   if ( $dur_h > 1 ) echo $dur_h . ' ' . translate( 'hours' ) . ' ';
+   if ( $dur_m > 0 )echo $dur_m . ' ' . translate( 'minutes' )?>
 </td></tr>
 <?php }
 if ( $DISABLE_PRIORITY_FIELD != 'Y' ) { ?>
@@ -627,7 +622,7 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
       ":</td><td>\n";
     if ( $extra_type == EXTRA_URL ) {
       if ( strlen ( $extras[$extra_name]['cal_data'] ) ) {
-        echo "<a href=\"" . $extras[$extra_name]['cal_data'] . "\">" .
+        echo "<a href=\"" . $extras[$extra_name]['cal_data'] . '">' .
           $extras[$extra_name]['cal_data'] . "</a>\n";
       }
     } else if ( $extra_type == EXTRA_EMAIL ) {
@@ -936,18 +931,14 @@ hideComments ();
 <br />
 
 <?php 
-$rdate = "";
+$rdate = '';
 if ( $event_repeats ) {
   $rdate = "&amp;date=$event_date";
 }
 
 // Show a printer-friendly link
 if ( empty ( $friendly ) ) {
-  echo '<a title="' . 
-    translate ( 'Generate printer-friendly version' ) . '" class="printer" ' .
-    "href=\"view_entry.php?id=$id&amp;friendly=1$rdate\" " .
-    'target="cal_printer_friendly">' .
-    translate ( 'Printer Friendly' ) . "</a><br />\n";
+  echo generate_printer_friendly ( 'view_entry.php' );
 }
 
 if ( empty ( $event_status ) ) {
@@ -1226,6 +1217,7 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
    </form>
 EOT;
 }
+
 print_trailer ( empty ($friendly) );?>
 </body>
 </html>

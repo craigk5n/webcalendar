@@ -250,7 +250,8 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
     $single_user, $use_http_auth, $login_return_path, $REQUIRE_APPROVALS,
     $is_nonuser_admin, $PUBLIC_ACCESS_OTHERS, $ALLOW_VIEW_OTHER,
     $views, $REPORTS_ENABLED, $LAYER_STATUS, $NONUSER_ENABLED,
-    $GROUPS_ENABLED, $fullname, $has_boss, $is_nonuser, $DISPLAY_TASKS;
+    $GROUPS_ENABLED, $fullname, $has_boss, $is_nonuser, 
+    $DISPLAY_TASKS, $DISPLAY_TASKS_IN_GRID;
   
   if ( $include_nav_links  ) {//TODO Add test for $MENU_ENABLED == 'N'
     include_once 'includes/trailer.php';
@@ -277,7 +278,7 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
 function print_menu_dates ( $menu=false) {
   global $user, $login, $cat_id, $CATEGORIES_ENABLED, $thisyear,
     $thismonth,  $DATE_FORMAT_MY, $DATE_FORMAT_MD, $WEEK_START;
-  if ( access_can_view_page ( "month.php" ) ) {
+  if ( access_can_view_page ( 'month.php' ) ) {
     $monthUrl = 'month.php';
     $urlArgs = '';
   } else {
@@ -311,14 +312,15 @@ function print_menu_dates ( $menu=false) {
   }
   $d_time = mktime ( 0, 0, 0, $m, 1, $y );
   $thisdate = date ( 'Ymd', $d_time );
-  $y--;
+  //$y--;
+  $m -= 7;
   for ( $i = 0; $i < 25; $i++ ) {
     $m++;
     if ( $m > 12 ) {
       $m = 1;
       $y++;
     }
-  if ( $y >= 1970 && $y < 2038 ) {
+    if ( $y >= 1970 && $y < 2038 ) {
       $d = mktime ( 0, 0, 0, $m, 1, $y );
       echo '<option value="' . date ( 'Ymd', $d ) . '"';
       if ( date ( 'Ymd', $d ) == $thisdate ) {
@@ -327,7 +329,7 @@ function print_menu_dates ( $menu=false) {
       echo ">";
       echo date_to_str ( date ( 'Ymd', $d ), $DATE_FORMAT_MY, false, true, 0 );
       echo "</option>\n";
-  }
+    }
   }
 
   echo "</select>\n";
@@ -336,7 +338,7 @@ function print_menu_dates ( $menu=false) {
   echo "</form>\n";
   if ( $menu == true ) echo "</td>\n<td class=\"ThemeMenubackgr\">";
 
-  if ( access_can_view_page ( "week.php" ) ) {
+  if ( access_can_view_page ( 'week.php' ) ) {
     $weekUrl = 'week.php';
     $urlArgs = '';
   } else {
@@ -370,7 +372,7 @@ function print_menu_dates ( $menu=false) {
   if ( ! empty ( $thisday ) ) {
     $d = $thisday;
   } else {
-    $d = date ( "d" );
+    $d = date ( 'd' );
   }
   $d_time = mktime ( 0, 0, 0, $m, $d, $y );
   $thisdate = date ( 'Ymd', $d_time );
@@ -378,7 +380,7 @@ function print_menu_dates ( $menu=false) {
   // $WEEK_START equals 1 or 0 
   $wkstart = mktime ( 0, 0, 0, $m, $d - ( $wday - $WEEK_START ), $y );
 
-  for ( $i = -7; $i <= 7; $i++ ) {
+  for ( $i = -5; $i <= 9; $i++ ) {
     $twkstart = $wkstart + ( ONE_DAY * 7 * $i );
     $twkend = $twkstart + ( ONE_DAY * 6 );
 //  echo $twkstart . " " . $twkend;
@@ -406,7 +408,7 @@ function print_menu_dates ( $menu=false) {
   echo "</form>\n";
   if ( $menu == true ) echo "</td>\n<td class=\"ThemeMenubackgr\">";
 
-  if ( access_can_view_page ( "year.php" ) ) {
+  if ( access_can_view_page ( 'year.php' ) ) {
     $yearUrl = 'year.php';
     $urlArgs = '';
   } else {
@@ -436,7 +438,7 @@ function print_menu_dates ( $menu=false) {
   } else {
     $y = date ( 'Y' );
   }
-  for ( $i = $y - 4; $i < $y + 4; $i++ ) {
+  for ( $i = $y - 2; $i < $y + 6; $i++ ) {
    if ( $i >= 1970 && $i < 2038 ) {
       echo "<option value=\"$i\"";
       if ( $i == $y ) {

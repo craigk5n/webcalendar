@@ -152,7 +152,8 @@ if ( ! empty ( $error ) ) {
 
 if ( $matches > 0 ) {
   $matches = count ( $ids );
-
+  // let translations get picked up
+  // translate ( 'match found' ) translate ( 'matches found' )
   echo '<span style="font-weight:bold;">' . $matches . ' ' .
     translate( $matches == 1 ? 'match found' : 'matches found' ) 
      . '.</span><br /><br />';

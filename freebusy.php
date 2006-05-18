@@ -93,7 +93,7 @@ $WebCalendar->setLanguage();
 user_load_variables ( $user, 'publish_' );
 
 if ( empty ( $FREEBUSY_ENABLED ) || $FREEBUSY_ENABLED != 'Y' ) {
-  header ( "Content-Type: text/plain" );
+  header ( 'Content-Type: text/plain' );
   echo "user=$user\n";
   etranslate( 'You are not authorized' );
   exit;
@@ -121,7 +121,6 @@ $events = read_events ( $user, $startdate, $enddate);
 
 // Loop from start date until we reach end date...
 $event_text = '';
-//define ( 'ONE_DAY', ( 3600 * 24 ) );
 for ( $d = $startdate; $d <= $enddate; $d += ONE_DAY ) {
   $dYmd = date ( 'Ymd', $d );
   $ev = get_entries ( $dYmd, $get_unapproved );
@@ -138,7 +137,7 @@ for ( $d = $startdate; $d <= $enddate; $d += ONE_DAY ) {
   }
 }
 
-header ( "Content-Type: text/calendar" );
+header ( 'Content-Type: text/calendar' );
 header ( 'Content-Disposition: attachment; filename="' . $login .  '.ifb"' );
 echo "BEGIN:VCALENDAR\r\n";
   $title = "X-WR-CALNAME;VALUE=TEXT:" .

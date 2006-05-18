@@ -174,7 +174,7 @@ if ( ! empty ( $error ) ) {
   for ( $i = 0; $i < $cnt; $i++ ) {
     if ( $nulist[$i]['cal_is_public'] == 'Y' ) {
       ?><a class="nav" href="nulogin.php?login=<?php
-        echo $nulist[$i]['cal_login'] . "\">" .
+        echo $nulist[$i]['cal_login'] . '">' .
           translate( 'Access' ) . ' ' . $nulist[$i]['cal_fullname'] . ' ' .
           translate( 'calendar' );
       ?></a><br /><?php

@@ -20,7 +20,7 @@ include_once 'includes/init.php';
 $report_id = 0;
 $error = '';
 
-$type = getValue ( "type", "S|H|T", true );
+$type = getValue ( 'type', "S|H|T", true );
 $cur = '';
 $found = $foundOld = false;
 
@@ -78,7 +78,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
     echo "<html><body onload=\"window.close()\"></body></html>\n";
     exit;
   }
-  $template = getPostValue ( "template" );
+  $template = getPostValue ( 'template' );
   //echo "Template: " .  $template  . "<br />\n"; exit;
   $query_params = array();
   if ( $found ) {

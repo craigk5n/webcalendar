@@ -9,4 +9,4 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 ?>
 
 <hr />
-<strong><?php etranslate("Go to")?>:</strong>&nbsp;<a title="<?php etranslate("Help Index")?>" href="help_index.php"><?php etranslate("Help Index")?></a>
+<strong><?php etranslate("Go to")?>:</strong>&nbsp;<a title="<?php etranslate( 'Help Index' )?>" href="help_index.php"><?php etranslate( 'Help Index' )?></a>

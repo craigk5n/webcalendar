@@ -54,22 +54,22 @@ $events = read_events ( strlen ( $user ) ? $user : $login, $wkstart, $wkend, $ca
 <a title="Previous" class="prev" href="week_details.php?<?php echo $u_url; ?>date=<?php echo date('Ymd', $prev ) . $caturl;?>"><img src="images/leftarrow.gif" alt="Previous" /></a>
 <a title="Next" class="next" href="week_details.php?<?php echo $u_url;?>date=<?php echo date ('Ymd', $next ) . $caturl;?>"><img src="images/rightarrow.gif" alt="Next" /></a>
 <span class="date"><?php
-  echo date_to_str ( date ( 'Ymd', $wkstart ), "", false ) .
-    "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
-    date_to_str ( date ( 'Ymd', $wkend ), "", false );
+  echo date_to_str ( date ( 'Ymd', $wkstart ), '', false ) .
+    '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;' .
+    date_to_str ( date ( 'Ymd', $wkend ), '', false );
 ?></span>
 <?php
 if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == 'N' ) $wkstart = $wkstart - ONE_DAY;
 for ( $i = 0; $i < 7; $i++ ) {
-  $days[$i] = $wkstart + ONE_DAY * $i;
+  $days[$i] = ( $wkstart + ONE_DAY * $i ) + ( 12 * 3600 );
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
-  $header[$i] = $weekdays[$i] . " " .
+  $header[$i] = $weekdays[$i] . ' ' .
     date_to_str ( date ( 'Ymd', $days[$i] ), $DATE_FORMAT_MD, false );
 }
 
 if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
   echo "<br />\n<span class=\"weeknumber\">(" .
-    translate ( 'Week' ) . " " . date( "W", $wkstart + ONE_DAY ) . ")</span>";
+    translate ( 'Week' ) . ' ' . date( 'W', $wkstart + ONE_DAY ) . ')</span>';
 }
 ?>
 <span class="user"><?php
@@ -77,9 +77,9 @@ if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
     echo "<br />$user_fullname\n";
   }
   if ( $is_nonuser_admin )
-    echo "<br />-- " . translate( 'Admin mode' ) . " --";
+    echo '<br />-- ' . translate( 'Admin mode' ) . ' --';
   if ( $is_assistant )
-    echo "<br />-- " . translate( 'Assistant mode' ) . " --";
+    echo '<br />-- ' . translate( 'Assistant mode' ) . ' --';
 ?></span>
 <?php
   if ( $CATEGORIES_ENABLED == 'Y' ) {
@@ -135,21 +135,13 @@ for ( $d = 0; $d < 7; $d++ ) {
 ?>
 </table>
 </center>
+<?php
+if ( ! empty ( $eventinfo ) ) echo $eventinfo;
+echo '<br />';
 
-<?php  if ( ! empty ( $eventinfo ) ) echo $eventinfo; ?>
-<br />
-<a title="<?php etranslate ( 'Generate printer-friendly version' )?>" class="printer" href="week_details.php?<?php
-  echo $u_url;
-  if ( $thisyear ) {
-    echo "year=$thisyear&amp;month=$thismonth&amp;day=$thisday";
-  }
-  echo $caturl . '&amp;';
-?>friendly=1" target="cal_printer_friendly" 
-onmouseover="window.status = '<?php etranslate ( 'Generate printer-friendly version' )?>'">[<?php 
- etranslate ( 'Printer Friendly' )
-?>]</a>
-
-<?php print_trailer(); ?>
+echo generate_printer_friendly ( 'week_details.php' );
+print_trailer(); 
+?>
 </body>
 </html><?php
 

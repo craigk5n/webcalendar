@@ -33,11 +33,11 @@ function parse_outlookcsv ( $cal_file ) {
     while ($data = fgetcsv($fd, filesize($cal_file)) ) {
   
       $subject = addslashes($data[0]);
-      $start = date("F d, Y H:i:s",strtotime($data[1]." ".$data[2]));
-      $end = date("F d, Y H:i:s",strtotime($data[3]." ".$data[4]));
+      $start = date('F d, Y H:i:s',strtotime($data[1]." ".$data[2]));
+      $end = date('F d, Y H:i:s',strtotime($data[3]." ".$data[4]));
       $all_day_event = (int)toBoolean($data[5]);
       $remind_on_off = (int)toBoolean($data[6]);
-      $reminder = date("Y-m-d H:i:s",strtotime($data[7]." ".$data[8]));
+      $reminder = date('Y-m-d H:i:s',strtotime($data[7]." ".$data[8]));
       $meeting_organizer = $data[9];
       $required_attendies = $data[10];
       $optional_attendies = $data[11];

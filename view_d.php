@@ -26,7 +26,7 @@
 include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-$error = "";
+$error = '';
 
 view_init ( $id );
 
@@ -91,15 +91,7 @@ daily_matrix($date,$participants);
 </form>
 
 <?php
-echo '<br /><a title="' . translate ( 'Generate printer-friendly version' ) . 
-  "\" class=\"printer\" href=\"view_d.php?id=$id&amp;";
-echo ( empty ( $u_url ) ? '' : $u_url ) . "date=$nowYmd";
-echo ( empty ( $caturl ) ? '' : $caturl );
-echo '&amp;friendly=1" target="cal_printer_friendly" ' .
-  "onmouseover=\"window.status='" .
-  translate ( 'Generate printer-friendly version' ) .
-  "'\">[" . translate ( 'Printer Friendly' ) . ']</a>';
-
+echo generate_printer_friendly ( 'view_d.php' );
 print_trailer ();?>
 </body>
 </html>

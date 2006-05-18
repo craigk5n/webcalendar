@@ -143,10 +143,10 @@ function background_css ( $base, $height = '', $percent = '' ) {
   global $ENABLE_GRADIENTS;
   $ret = $type = '';
 
-  if ( function_exists ( "imagepng" ) ) {
-    $type = ".png";
-  } else if ( function_exists ( "imagegif" ) ){
-    $type = ".gif";
+  if ( function_exists ( 'imagepng' ) ) {
+    $type = '.png';
+  } else if ( function_exists ( 'imagegif' ) ){
+    $type = '.gif';
   }
   if ( $type != '' ) {
     if ( ! file_exists( 'images/cache' ) || ! is_writable ( 'images/cache' ) ) {
@@ -155,9 +155,9 @@ function background_css ( $base, $height = '', $percent = '' ) {
       if ( $percent != '' ) $ret .= "&percent=$percent";
       $ret .= "\") repeat-x;\n";
     } else  {
-      $hgt = ( $height != ''?  "-" . $height : '');
-      $pct = ( $percent != ''? "-" . $percent : '' );
-      $file_name ="images/cache/". substr ( $base,1,6 ). $hgt . $pct . $type;
+      $hgt = ( $height != ''?  '-' . $height : '');
+      $pct = ( $percent != ''? '-' . $percent : '' );
+      $file_name ='images/cache/'. substr ( $base,1,6 ). $hgt . $pct . $type;
       if ( !file_exists ( $file_name ) ) 
       $tmp = create_image  ( $file_name, $base, $height, $percent );
       $ret = "background: $base url( $file_name ) repeat-x;\n";
@@ -364,16 +364,16 @@ function create_image ( $file_name, $base='', $height='', $percent='', $width=''
   $i++;
 }
 
-  if ( function_exists ( "imagepng" ) ) {
+  if ( function_exists ( 'imagepng' ) ) {
     if ( $file_name == '' ) {
-      header ( "Content-type: image/png" );
+      header ( 'Content-type: image/png' );
       imagepng($image);  
     } else {
       imagepng($image, $file_name);
     }
-  } else if ( function_exists ( "imagegif" ) ) {
+  } else if ( function_exists ( 'imagegif' ) ) {
     if ( $file_name == '' ) {
-      header ( "Content-type: image/gif" );
+      header ( 'Content-type: image/gif' );
       imagegif ( $image );
     } else {
       imagegif ( $image, $file_name );

@@ -354,11 +354,17 @@ label {
   text-align: right;
   background-color: <?php echo $GLOBALS['THBG']; ?>;
 }
+.dailymatrix:hover {
+  background-color:#CCFFCC;
+}
 td.matrixappts {
   cursor: pointer;
   text-align: left;
   background-color: <?php echo $GLOBALS['CELLBG']; ?>;
   vertical-align: middle;
+}
+td.matrixappts:hover {
+  background-color:#CCFFCC;
 }
 td.matrix {
   height: 1px;

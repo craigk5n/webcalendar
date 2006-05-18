@@ -22,8 +22,8 @@ print_header($INC);
   <a name="tabviews"></a>
   <div id="tabscontent_views">
 <?php
-  echo "<a title=\"" . 
-  translate( 'Add New View' ) . "\" href=\"views_edit.php\" target=\"viewiframe\" onclick=\"javascript:show('viewiframe');\">" . 
+  echo '<a title="' . 
+  translate( 'Add New View' ) . '" href="views_edit.php" target="viewiframe" onclick="javascript:show(\'viewiframe\');">' . 
   translate( 'Add New View' ) . "</a>\n";
 ?>
   <ul>
@@ -32,14 +32,14 @@ $global_found = false;
 $cnt = count ( $views );
 for ( $i = 0; $i < $cnt; $i++ ) {
   if ( $views[$i]['cal_is_global'] != 'Y' || $is_admin ) {
-    echo "<li><a title=\"" . 
+    echo '<li><a title="' . 
       htmlspecialchars ( $views[$i]['cal_name'] ) .
-      "\" href=\"views_edit.php?id=" . 
+      '" href="views_edit.php?id=' . 
       $views[$i]['cal_view_id'] .
-      "\" target=\"viewiframe\" onclick=\"javascript:show('viewiframe');\">" . 
+      '" target="viewiframe" onclick="javascript:show(\'viewiframe\');">' . 
       htmlspecialchars ( $views[$i]['cal_name'] ) . '</a>';
     if ( $views[$i]['cal_is_global'] == 'Y' ) {
-      echo "&nbsp;<abbr title=\"" . translate( 'Global' ) . "\">*</abbr>";
+      echo '&nbsp;<abbr title="' . translate( 'Global' ) . '">*</abbr>';
       $global_found = true;
     }
     echo "</li>\n";
