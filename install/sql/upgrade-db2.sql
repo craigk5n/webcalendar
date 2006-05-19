@@ -1,4 +1,4 @@
-/*upgrade_v0.9.13*/
+/*upgrade_v0.9.14*/
 UPDATE webcal_entry SET cal_time = -1 WHERE cal_time is null;
 CREATE TABLE webcal_entry_repeats (
   cal_id INT DEFAULT 0 NOT NULL,
@@ -28,14 +28,6 @@ CREATE TABLE webcal_site_extras (
   cal_data VARCHAR(1024),
   PRIMARY KEY ( cal_id, cal_name, cal_type )
 );
-CREATE TABLE webcal_reminder_log (
-  cal_id INT DEFAULT 0 NOT NULL,
-  cal_name VARCHAR(25) NOT NULL,
-  cal_event_date INT NOT NULL DEFAULT 0,
-  cal_last_sent INT NOT NULL DEFAULT 0,
-  PRIMARY KEY ( cal_id, cal_name, cal_event_date )
-);
-
 /*upgrade_v0.9.35*/
 CREATE TABLE webcal_group (
   cal_group_id INT NOT NULL,
@@ -94,11 +86,10 @@ CREATE TABLE webcal_categories (
   PRIMARY KEY ( cat_id )
 );
 
-/*upgrade_v0.9.39*/
+/*upgrade_v0.9.40*/
 DELETE FROM webcal_config WHERE cal_setting LIKE 'DATE_FORMAT%';
 DELETE FROM webcal_user_pref WHERE cal_setting LIKE 'DATE_FORMAT%';
 
-/*upgrade_v0.9.40*/
 CREATE TABLE webcal_asst (
   cal_boss VARCHAR(25) NOT NULL,
   cal_assistant VARCHAR(25) NOT NULL,
@@ -148,7 +139,7 @@ CREATE TABLE webcal_import_data (
   cal_id int NOT NULL,
   cal_login VARCHAR(25) NOT NULL,
   cal_import_type VARCHAR(15) NOT NULL,
-  cal_external_id VARCHAR(200),
+  cal_external_id VARCHAR(200) NULL,
   PRIMARY KEY  ( cal_id, cal_login )
 );
 
@@ -185,24 +176,20 @@ UPDATE webcal_user_pref SET cal_value = 'year.php'
 UPDATE webcal_config SET cal_value = 'week.php'
   WHERE cal_setting = 'STARTVIEW';
 
-/*upgrade_v1.1.0a*/
-CREATE TABLE webcal_access_user (
-  cal_login VARCHAR(50) NOT NULL,
-  cal_other_user VARCHAR(50) NOT NULL,
-  cal_can_view INT DEFAULT '0' NOT NULL,
-  cal_can_edit INT DEFAULT '0' NOT NULL,
-  cal_can_approve INT DEFAULT '0' NOT NULL,
-  cal_can_invite CHAR(1) DEFAULT 'Y' NOT NULL,
-  cal_can_email CHAR(1) DEFAULT 'Y' NOT NULL,
-  cal_can_see_times_only CHAR(1) DEFAULT 'N' NOT NULL,
-  PRIMARY KEY ( cal_login, cal_other_user )
-);
+/*upgrade_v1.1.0-CVS*/
 CREATE TABLE webcal_access_function (
   cal_login VARCHAR(50) NOT NULL,
   cal_permissions VARCHAR(64) NOT NULL,
   PRIMARY KEY ( cal_login )
 );
+CREATE TABLE webcal_access_user (
+  cal_login VARCHAR(50) NOT NULL,
+  cal_other_user VARCHAR(50) NOT NULL,
+  PRIMARY KEY ( cal_login, cal_other_user )
+);
 ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1) DEFAULT 'N' NOT NULL;
+
+/*upgrade_v1.1.0a-CVS*/
 CREATE TABLE webcal_user_template (
   cal_login VARCHAR(25) NOT NULL,
   cal_type CHAR(1) NOT NULL,
@@ -226,12 +213,16 @@ ALTER TABLE webcal_entry ADD cal_url VARCHAR(100) DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_completed INT DEFAULT NULL;
 ALTER TABLE webcal_entry_user ADD cal_percent INT NOT NULL DEFAULT 0;
 ALTER TABLE webcal_site_extras DROP PRIMARY KEY;
+
+/*upgrade_v1.1.0b-CVS*/
 CREATE TABLE webcal_entry_categories (
   cal_id INT NOT NULL DEFAULT 0,
   cat_id INT NOT NULL DEFAULT 0,
   cat_order INT NOT NULL DEFAULT 0,
   cat_owner VARCHAR(25) DEFAULT NULL
 );
+
+/*upgrade_v1.1.0c-CVS*/
 CREATE TABLE webcal_blob (
   cal_blob_id INT NOT NULL,
   cal_id INT,
@@ -246,6 +237,22 @@ CREATE TABLE webcal_blob (
   cal_blob BLOB,
   PRIMARY KEY ( cal_blob_id )
 );
+
+/*upgrade_v1.1.0d-CVS*/
+DROP TABLE webcal_access_user;
+CREATE TABLE webcal_access_user (
+  cal_login VARCHAR(50) NOT NULL,
+  cal_other_user VARCHAR(50) NOT NULL,
+  cal_can_view INT DEFAULT '0' NOT NULL,
+  cal_can_edit INT DEFAULT '0' NOT NULL,
+  cal_can_approve INT DEFAULT '0' NOT NULL,
+  cal_can_invite CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_can_email CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_can_see_times_only CHAR(1) DEFAULT 'N' NOT NULL,
+  PRIMARY KEY ( cal_login, cal_other_user )
+);
+
+/*upgrade_v1.1.0e-CVS*/
 CREATE TABLE webcal_reminders (
   cal_id INT DEFAULT '0' NOT NULL,
   cal_date INT DEFAULT '0' NOT NULL,
@@ -259,7 +266,7 @@ CREATE TABLE webcal_reminders (
   cal_action VARCHAR(12) DEFAULT 'EMAIL' NOT NULL,
   PRIMARY KEY ( cal_id )
 );
-/*upgrade_v1.1.0e*/
-ALTER TABLE webcal_nonuser_cals ADD cal_url VARCHAR(75) DEFAULT NULL;
-/*upgrade_v1.1.0*/
+/*upgrade_v1.1.1*/
+ALTER TABLE webcal_nonuser_cals ADD cal_url VARCHAR(255) DEFAULT NULL;
+
 

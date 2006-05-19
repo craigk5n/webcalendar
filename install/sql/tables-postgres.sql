@@ -161,7 +161,7 @@ CREATE TABLE webcal_nonuser_cals (
   cal_firstname VARCHAR(25) NULL,
   cal_admin VARCHAR(25) NOT NULL,
   cal_is_public CHAR(1) DEFAULT 'N' NOT NULL,
-  cal_url VARCHAR(75) DEFAULT NULL,
+  cal_url VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY ( cal_login )
 );
 CREATE TABLE webcal_import (

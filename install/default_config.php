@@ -131,7 +131,7 @@ $webcalConfig = array (
 'TODAYCELLBG'=>'#FFFF33',
 'UAC_ENABLED'=>'N',
 'USER_SEES_ONLY_HIS_GROUPS'=>'Y',
-'WEBCAL_PROGRAM_VERSION'=>'v1.1.0',
+'WEBCAL_PROGRAM_VERSION'=>'v1.1.1',
 'WEEK_START'=>'0',
 'WEEKENDBG'=>'#D0D0D0',
 'WEEKNUMBER'=>'#FF6633',
@@ -234,7 +234,7 @@ function do_v11b_updates () {
        if ( substr( $row[1],4,1 ) == 'y') $byday[] = 'TH';
        if ( substr( $row[1],5,1 ) == 'y') $byday[] = 'FR';
        if ( substr( $row[1],6,1 ) == 'y') $byday[] = 'SA';
-       $bydays = implode (",", $byday );       
+       $bydays = implode (',', $byday );       
        dbi_execute ("UPDATE webcal_entry_repeats  SET cal_byday = ?" .
        " WHERE cal_id = ?" , array ( $bydays , $row[0] ) );
      }
@@ -282,8 +282,10 @@ function do_v11e_updates () {
    //remove reminders from site_extras
    dbi_execute ( "DELETE FROM webcal_site_extras WHERE webcal_site_extras.cal_type = '7'");
    //remove entries from webcal_reminder_log
-   if (  $reminder_log_exists == true )
-     dbi_execute ( "DELETE FROM webcal_reminder_log", false, false);
+   if (  $reminder_log_exists == true ) {
+     dbi_execute ( "DELETE FROM webcal_reminder_log", array(), false, false);
+     dbi_execute ( "DELETE TABLE webcal_reminder_log", array(), false, false);
+   }
  } 
  
 }
