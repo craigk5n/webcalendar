@@ -72,7 +72,7 @@ if ( ! empty ( $_POST ) && empty ( $error )) {
   }
   
   if ( ! empty ( $my_theme ) ) {
-    $theme = 'themes'. strtolower ( $my_theme ). '.php';
+    $theme = 'themes/'. strtolower ( $my_theme ). '.php';
     include_once $theme;
     save_pref ( $webcal_theme, 'theme' );  
   }
@@ -621,17 +621,17 @@ for ( $i = 0; $i < $cnt; $i++ ) {
 //   $cnt = count ( $plugins );
 //   for ( $i = 0; $i < $cnt; $i++ ) {
 //     $val = $s[$plugins[$i] . ".plugin_status'];
-//     echo "<tr><td class=\"tooltip\" title=\"" .
-//       tooltip("plugins-sort-key-help") . "\">&nbsp;&nbsp;&nbsp;" .
-//       translate( 'Plugin' ) . " " . $plugins[$i] . ":</td>\n";
-//     echo "<td><input type=\"radio\" name=\"admin_" .
-//        $plugins[$i] . "_plugin_status\" value=\"Y\" ";
+//     echo '<tr><td class="tooltip" title="' .
+//       tooltip('plugins-sort-key-help') . '">&nbsp;&nbsp;&nbsp;' .
+//       translate( 'Plugin' ) . ' ' . $plugins[$i] . ":</td>\n";
+//     echo '<td><input type="radio" name="admin_' .
+//        $plugins[$i] . '_plugin_status" value="Y" ';
 //     if ( $val != 'N' ) echo $checked;
-//     echo " /> " . translate('Yes');
-//     echo "<input type=\"radio\" name=\"admin_" .
-//        $plugins[$i] . "_plugin_status\" VALUE=\"N\" ";
+//     echo ' /> ' . translate('Yes');
+//     echo '<input type="radio" name="admin_' .
+//        $plugins[$i] . '_plugin_status" VALUE="N" ';
 //     if ( $val == 'N' ) echo $checked;
-//     echo " /> " . translate('No') . "</td></tr>\n";
+//     echo ' /> ' . translate('No') . "</td></tr>\n";
 //   }
 // }
 // ?>
