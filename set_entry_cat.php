@@ -66,8 +66,8 @@ if ( $res ) {
  dbi_free_result ( $res );
 }
 $catNames = $catList = '';
-if ( ! empty ( $cat_name ) ) $catNames = implode(", " , array_unique($cat_name));
-if ( ! empty ( $cat_ids ) ) $catList = implode(", ", array_unique($cat_ids));
+if ( ! empty ( $cat_name ) ) $catNames = implode(', ' , array_unique($cat_name));
+if ( ! empty ( $cat_ids ) ) $catList = implode(', ', array_unique($cat_ids));
 // Get event name and make sure event exists
 $event_name = '';
 $res = dbi_execute ( "SELECT cal_name FROM webcal_entry " .

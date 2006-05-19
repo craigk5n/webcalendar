@@ -463,7 +463,7 @@ if ( empty ( $error ) ) {
         $placeholders .= '?,';
       }
       $placeholders = preg_replace( "/,$/", "", $placeholders ); // remove trailing ','
-      $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ", ", $names ) .
+      $sql = "INSERT INTO webcal_entry_categories ( " . implode ( ', ', $names ) .
         " ) VALUES ( $placeholders )"; 
       if ( ! dbi_execute ( $sql, $values ) ) {
         $error = $dberror . dbi_error ();
