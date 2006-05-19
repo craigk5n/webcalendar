@@ -111,11 +111,7 @@ function dbi_connect ( $host, $login, $password, $database, $lazy=true ) {
       return false;
     }
   } else if ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
-    if ($GLOBALS['db_persistent']) {
-      $c = @mysqli_connect ( $host, $login, $password, $database);
-    } else {
-      $c = @mysqli_connect ( $host, $login, $password, $database);
-    }
+    $c = @mysqli_connect ( $host, $login, $password, $database);
     if ( $c ) {
       /*
       if ( ! mysqli_select_db ( $c, $database ) )
@@ -166,19 +162,10 @@ function dbi_connect ( $host, $login, $password, $database, $lazy=true ) {
     $db_connection_info['connected'] = true;
     return $c;
   } else if ( strcmp ( $GLOBALS['db_type'], 'postgresql' ) == 0 ) {
-    if ( strlen ( $password ) ) {
-      if ( strlen ( $host ) ) {
-        $dbargs = "host=$host dbname=$database user=$login password=$password";
-      } else {
-        $dbargs = "dbname=$database user=$login password=$password";
-      }
-    } else {
-      if ( strlen ( $host ) ) {
-        $dbargs = "host=$host dbname=$database user=$login";
-      } else {
-        $dbargs = "dbname=$database user=$login";
-      }
-    }
+    $dbargs = ( strlen ( $host ) ? "host=$host " :'' )
+      . 'dbname=' . $database . ' user=' . $login
+      . ( strlen ( $password ) ? ' password=' . $password : '' );
+
     if ($GLOBALS['db_persistent']) {
       $c = pg_pconnect ( $dbargs );
     } else {
@@ -255,8 +242,8 @@ function dbi_connect ( $host, $login, $password, $database, $lazy=true ) {
  * @return bool True on success, false on error
  */
 function dbi_close ( $conn ) {
-  global $old_textlimit, $old_textsize, $db_connection_info, $db_query_count;
-  global $SQLLOG;
+  global $old_textlimit, $old_textsize, $db_connection_info, $db_query_count,
+  $SQLLOG;
 
   if ( is_array ( $db_connection_info ) ) {
     if ( ! $db_connection_info['connected'] ) {
@@ -468,9 +455,9 @@ function dbi_fetch_row ( $res ) {
   } else if ( strcmp ( $GLOBALS['db_type'], 'postgresql' ) == 0 ) {
    //Note:  row became optional in PHP 4.1.0.
     $r =  pg_fetch_array ( $res, NULL, PGSQL_NUM );
-        if ( ! $r ) {
+      if ( ! $r ) {
         return false;
-    }
+      }
     return $r;
   } else if ( strcmp ( $GLOBALS['db_type'], 'odbc' ) == 0 ) {
     if ( ! odbc_fetch_into ( $res, $ret ) )
@@ -610,7 +597,7 @@ function dbi_get_blob ( $table, $column, $key ) {
     if ( ! $res )
       return false;
     if ( $row = dbi_fetch_row ( $res ) )
-      $ret =  $ret = $row[0];
+      $ret = $row[0];
     dbi_free_result ( $res );
   } else if ( strcmp ( $GLOBALS['db_type'], 'postgresql' ) == 0 ) {
     $res = dbi_execute ( "SELECT $column FROM $table WHERE $key" );
