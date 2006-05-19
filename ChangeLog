@@ -1,4 +1,8 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Implemented RFE 1490058: export a certain category
+ - Fixed bug 1489354: installation wizard doesn't work after 'step3'
+ - Fixed bug 1490179: Error after upgrading to latest CVS 1.1
+ - Fixed bug 1491406: using 'Not yet registered? Register here!' cause an error
  - Fixed bug 1490944: 1.1.0 works only with firefox
  - Fixed bug 1490979: descriptions of preferences will not be <bold>
  - Fixed bug 1490969: option 'Display tasks in Calendars:' enabled will not work
