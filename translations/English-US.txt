@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 05-18-2006
+# Translation last updated on 05-19-2006
 
 
 ###############################################
@@ -1298,8 +1298,6 @@ Wednesday: Wednesday
 Thursday: Thursday
 Friday: Friday
 Saturday: Saturday
-Schedule a: Schedule a
-appointment: appointment
 Schedule an appointment for: Schedule an appointment for
 All Attendees: All Attendees
 Busy: Busy
