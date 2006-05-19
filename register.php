@@ -117,7 +117,7 @@ if ( ! empty ( $SELF_REGISTRATION_BLACKLIST ) && $SELF_REGISTRATION_BLACKLIST ==
 }
 //We could make $control a unique value if necessary
 $control = getPostValue ( 'control' );
-if ( empty ( $error ) && ! empty ( $control ) {
+if ( empty ( $error ) && ! empty ( $control ) ) {
   $user = getPostValue ( 'user' );
   $ufirstname = getPostValue ( 'ufirstname' );
   $ulastname = getPostValue ( 'ulastname' );
