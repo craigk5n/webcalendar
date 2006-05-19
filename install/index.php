@@ -218,14 +218,14 @@ function convert_server_to_GMT () {
  return $error;
 }
 
-function get_installed_version () {
- global $database_upgrade_matrix, $show_all_errors;
+function get_installed_version ( $postinstall=false ) {
+ global $database_upgrade_matrix, $show_all_errors, $PROGRAM_VERSION;
  
   //disable warnings
  //show_errors ();
  // Set this as the default value
  $_SESSION['application_name']  = 'Title';
- $_SESSION['old_program_version'] = 'new_install';
+ $_SESSION['old_program_version'] = ( $postinstall ? $PROGRAM_VERSION : 'new_install' );
  $_SESSION['blank_database'] = '';
  
  //We will append the db_type to come up te proper filename
@@ -233,12 +233,18 @@ function get_installed_version () {
  //This data is read from file upgrade_matrix.php
  for ( $i=0; $i < count( $database_upgrade_matrix); $i++ ) {
    $sql = $database_upgrade_matrix[$i][0];
-  $res = dbi_execute ( $sql, array(), false, $show_all_errors );
-  if ( $res ) {
-  $_SESSION['old_program_version'] = $database_upgrade_matrix[$i][1];
-  $_SESSION['install_file'] = $database_upgrade_matrix[$i][2];
-  dbi_free_result ( $res );
-  }
+   //echo "SQL: " .$sql . "<br />";
+   if ( $sql != '' ) 
+     $res = @dbi_execute ( $sql, array(), false, $show_all_errors );
+   if  ( $res ) {
+     $_SESSION['old_program_version'] = $database_upgrade_matrix[$i +1][2];
+     $_SESSION['install_file'] = $database_upgrade_matrix[$i +1][3];
+     dbi_free_result ( $res );
+     $res = '';
+     $sql = $database_upgrade_matrix[$i][1];
+     if ( $sql != '' )
+       dbi_execute ( $sql, array(), false, $show_all_errors );
+   }
 //echo $_SESSION['old_program_version'] . " " . $database_upgrade_matrix[$i][1] . "<br />";
  } 
  if ( $_SESSION['old_program_version'] == 'pre-v0.9.07' ) {
@@ -247,16 +253,16 @@ function get_installed_version () {
    $response_msg = translate ( 'Your previous version of WebCalendar requires updating several database tables.' ); 
  }
  // v1.1 and after will have an entry in webcal_config to make this easier
- $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
-  "WHERE cal_setting  = 'WEBCAL_PROGRAM_VERSION'", array(), false, false );
- if ( $res ) {
-   $row = dbi_fetch_row ( $res );
-  if ( ! empty ( $row[0] ) ) {  
-    $_SESSION['old_program_version'] = $row[0];
-    $_SESSION['install_file']  = 'upgrade_' . $row[0];
-  }
-  dbi_free_result ( $res );
- }
+// $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+//  "WHERE cal_setting  = 'WEBCAL_PROGRAM_VERSION'", array(), false, false );
+// if ( $res ) {
+//   $row = dbi_fetch_row ( $res );
+//  if ( ! empty ( $row[0] ) ) {  
+//    $_SESSION['old_program_version'] = $row[0];
+//    $_SESSION['install_file']  = 'upgrade_' . $row[0];
+//  }
+//  dbi_free_result ( $res );
+// }
 
  //We need to determine this is a blank database
  // This may be due to a manual table setup
@@ -427,12 +433,12 @@ $php_settings = array (
 
 // set up array to test for some constants (display name, constant name, preferred value )
 $php_constants = array (
-  array (' CRYPT_STD_DES', CRYPT_STD_DES, 1) );
- //future expansion
+  //array (' CRYPT_STD_DES', CRYPT_STD_DES, 1) 
+  //future expansion
   // array ('CRYPT_STD_DES',CRYPT_STD_DES, 1)
   // array ('CRYPT_MD5',CRYPT_MD5, 1)
   // array ('CRYPT_BLOWFISH',CRYPT_BLOWFISH, 1)
-
+  );
 $gdstring = 'GD  (' . translate ( 'needed for Gradient Image Backgrounds' ) . ')';
 $php_modules = array (
   array ($gdstring,'imagepng','ON'),
@@ -677,7 +683,7 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
   do_v11e_updates(); 
  
    // Update the version info
-   get_installed_version();
+   get_installed_version( true );
    
    $_SESSION['blank_database'] = '';
   } //end if $display_sql
@@ -1008,7 +1014,7 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     @chmod ( $file, 0644 );
   }
 }
-  //print_r ( $_SESSION);
+ //print_r ( $_SESSION);
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
@@ -1118,16 +1124,16 @@ table {
   border: 0px solid #ccc;
 }
 th.pageheader {
-  font-size: 24px;
+  font-size: 18px;
  padding:10px;
   background-color: #eee;
 }
 th.header {
-  font-size: 18px;
+  font-size: 14px;
   background-color: #eee;
 }
 th.redheader {
-  font-size: 18px;
+  font-size: 14px;
   color: red; 
   background-color: #eee;
 }
@@ -1141,7 +1147,7 @@ td.prompt {
 td.subprompt {
   font-weight: bold;
   padding-right: 20px;
- font-size: 14px;
+ font-size: 12px;
 }
 div.nav {
   margin: 0;
@@ -1164,7 +1170,7 @@ doc.li {
 }
 </style>
 </head>
-<body <?php if ( ! empty ($onload) ) echo 'onload="$onload"'; ?> >
+<body <?php if ( ! empty ($onload) ) echo "onload=\"$onload\""; ?> >
 <?php   //print_r ( $_SERVER );
 if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <table border="1" width="90%" align="center">
@@ -1185,7 +1191,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
   <?php
     $class = ( version_compare(phpversion(), '4.1.0', '>=') ) ?
       'recommended' : 'notrecommended';
-    echo '<td class="$class">';
+    echo "<td class=\"$class\">";
     if ($class='recommended') {
       echo '<img src="recommended.gif" alt=""/>&nbsp;';
     } else {
@@ -1206,7 +1212,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
     $ini_get_result = get_php_setting ( $setting[1], $setting[3] );
     $class = ( $ini_get_result == $setting[2] ) ?
       'recommended' : 'notrecommended';
-    echo '<td class="$class">';
+    echo "<td class=\"$class\">";
     if ($class == 'recommended') {
       echo '<img src="recommended.gif" alt=""/>&nbsp;';
     } else {
@@ -1221,7 +1227,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
   <?php
     $class = (  $constant[1] ) == $constant[2]  ?
       'recommended' : 'notrecommended';
-    echo '<td class"$class\">';
+    echo "<td class=\"$class\">";
     if ($class == 'recommended') {
       echo '<img src="recommended.gif" alt=""/>&nbsp;ON';
     } else {
@@ -1236,7 +1242,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
   <?php
     $class = ( get_php_modules ( $module[1] ) == $module[2] ) ?
       'recommended' : 'notrecommended';
-    echo '<td class="$class">';
+    echo "<td class=\"$class\">";
     if ($class == 'recommended') {
      echo '<img src="recommended.gif" alt=""/>&nbsp;';
     } else {
@@ -1255,7 +1261,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <?php
     $class = ( $_SESSION['check'] > 0 ) ?
       'recommended' : 'notrecommended';
-    echo '<td class="$class">';
+    echo "<td class=\"$class\">";
     if ($_SESSION['check'] > 0) {
      echo '<img src="recommended.gif" alt=""/>&nbsp;';
     } else {
@@ -1361,7 +1367,8 @@ if ( ! $exists || ! $canWrite ) { ?>
  </th></tr>
  <tr><td>
   <ul>
-   <li><?php etranslate ( 'Supported databases for your PHP installation' ) ?>:
+  <!-- <li><?php etranslate ( 'Supported databases for your PHP installation' ) ?>: 
+ -->
 <?php
   $dbs = array ();
   if ( function_exists ( 'mysql_connect' ) )
@@ -1384,8 +1391,8 @@ if ( ! $exists || ! $canWrite ) { ?>
     $dbs[] = 'ibm_db2';
 
   for ( $i = 0; $i < count ( $dbs ); $i++ ) {
-    if ( $i ) echo ', ';
-  echo  $dbs[$i] ;
+ //   if ( $i ) echo ', ';
+  //echo  $dbs[$i] ;
     $supported[$dbs[$i]] = true;
   }
 ?></li>
@@ -1396,7 +1403,7 @@ if ( ! $exists || ! $canWrite ) { ?>
   <?php if ( ! empty ( $response_msg )  && empty ( $response_msg2 ) ) { ?>
   <li class="recommended"><img src="recommended.gif" alt=""/>&nbsp;<?php 
     echo $response_msg; ?></li>
-   <?php } elseif ( empty ( $response_msg2 ) ) {?>
+   <?php } elseif ( empty ( $response_msg2 )&& empty ( $_SESSION['db_success'] ) ) {?>
   <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<b><?php 
     etranslate ( 'Please Test Settings' ) ?></b></li>  
   <?php } 
@@ -1661,7 +1668,8 @@ if ( ! $exists || ! $canWrite ) { ?>
    <tr><td colspan="2" width="50%">
      <?php etranslate ( 'This is the final step in setting up your WebCalendar Installation' ) ?>.
    </td></tr>
-   <?php if ( $_SESSION['tz_conversion'] != 'Y' ) { ?>
+   <?php if ( ! empty ( $_SESSION['tz_conversion']) && 
+           $_SESSION['tz_conversion'] != 'Y' ) { ?>
   <th class="header" colspan="2"><?php etranslate ( 'Timezone Conversion' ) ?></th></tr>
   <tr><td colspan="2">
  <?php if ( empty ( $_SESSION['tz_conversion'] ) ) {?>
