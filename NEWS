@@ -1,5 +1,8 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1489354: installation wizard doesn't work after 'step3'
+      1490179: Error after upgrading to latest CVS 1.1
+      1491406: using 'Not yet registered? Register here!' cause an error
       1490944: 1.1.0 works only with firefox
       1490979: descriptions of preferences will not be <bold>
       1490969: option 'Display tasks in Calendars:' enabled will not work
@@ -253,6 +256,7 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented RFE 1490058: export a certain category
     + Implemented RFE 1379431: Global Layers!
     + Implemented RFE 1337524: not proper display of "Repeating events" in 'view_entry.php'
     + Implemented dropdown time entry fields based on PATCH 1276894
