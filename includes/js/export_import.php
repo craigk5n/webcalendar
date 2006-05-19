@@ -40,6 +40,15 @@ function toggle_import() {
    }
 }
 
+function toggel_catfilter() {
+  var i = document.exportform.format.selectedIndex;
+  if ( i == 0 ) { //ICAL
+      makeVisible ( "catfilter" );
+   } else {
+      makeInvisible ( "catfilter" ); 
+   }
+
+}
 function checkExtension () {
   var type = document.importform.ImportType.selectedIndex;
   var filename = document.importform.FileName.value;

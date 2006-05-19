@@ -574,7 +574,7 @@ function export_alarm_ical ( $id, $date, $description, $task_complete=true ) {
 function export_get_event_entry($id='all', $attachment=false) {
   global $use_all_dates, $include_layers, $fromyear,$frommonth,$fromday,
     $endyear,$endmonth,$endday,$modyear,$modmonth,$modday,$login,$user;
-  global $DISPLAY_UNAPPROVED, $layers, $type, $USER_REMOTE_ACCESS;
+  global $DISPLAY_UNAPPROVED, $layers, $type, $USER_REMOTE_ACCESS, $cat_filter;
   
   $sql_params = array();
   // We export repeating events only with the pilot-datebook CSV format
@@ -849,7 +849,7 @@ function export_vcal ($id) {
 
 function export_ical ( $id='all', $attachment=false ) {
   global $publish_fullname, $login, $PROGRAM_VERSION,
-   $PROGRAM_NAME, $cal_type, $timestamp_RRULE;
+   $PROGRAM_NAME, $cal_type, $timestamp_RRULE, $cat_filter;
  $exportId = -1;
  $ret='';
  
@@ -902,8 +902,10 @@ function export_ical ( $id='all', $attachment=false ) {
 
  
     // Figure out Categories
-    $categories = array();
-    $sql = "SELECT webcal_categories.cat_name " .
+    $categories = $catids = array();
+    $catids[0] = ''; //this simplifies array_search later
+    $sql = "SELECT webcal_categories.cat_name, " .
+      " webcal_categories.cat_id " .
       " FROM webcal_categories, webcal_entry_categories " .
       " WHERE webcal_entry_categories.cal_id = ? AND " . 
       " webcal_entry_categories.cat_id = webcal_categories.cat_id AND ".
@@ -913,6 +915,7 @@ function export_ical ( $id='all', $attachment=false ) {
     $res = dbi_execute ( $sql , array ( $id , $login ) );
     while ( $row = dbi_fetch_row ( $res ) ) {
       $categories[] = $row[0];
+      $catids[] = $row[1];
     }
     dbi_free_result ( $res );
 
@@ -963,6 +966,12 @@ function export_ical ( $id='all', $attachment=false ) {
    However, this is not possible to implement at this time
    */
  
+  // if Categories were selected as an export filter, then abort this
+  // event if it does not contain that category
+  if ( ! empty ( $cat_filter ) ) {
+    if (  count ( $catids ) == 1 || ! array_search ( $cat_filter, $catids ) )
+      continue; 
+  }
     
   if ( $cal_type == 'E' || $cal_type == 'M' ) {
    $exporting_event = true;

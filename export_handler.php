@@ -11,7 +11,7 @@
  * untimed events with a start time of -1 in the webcalendar database.
  *
  * TODO:
- * Add support for categories
+ * Add support for categories for other than ical
  *
  *********************************************************************/
 include_once 'includes/init.php';
@@ -135,9 +135,9 @@ function export_pilot_csv ($id) {
     // FIXME: verify if WebCal. DB interpreted correctly
     // advance (int), advanceUnit (int: 0=minutes, 1=hours, 2=days)
     // FIXME: better adjust unit
-    $ext = get_cal_ent_extras($row[0], 'webcal_site_extras', "cal_name = 'Reminder' AND cal_remind = 1");
+    $ext = get_cal_ent_extras($row[0], 'webcal_reminders');
     if ( $ext )
-      echo '1,', $ext[5], ',0,';
+      echo '1,', $ext[2], ',0,';
     else
       echo '0,0,0,';
     // repeat:
@@ -215,6 +215,10 @@ if ( $use_all_dates != 'y' )
 $include_layers = getPostValue  ( 'include_layers' );
 if ( $include_layers != 'y' )
  $include_layers = '';
+
+$cat_filter = getPostValue  ( 'cat_filter' );
+if ( $cat_filter == 0 )
+ $cat_filter = '';
 
 $fromyear = getIntValue  ( 'fromyear', true );
 $frommonth = getIntValue  ( 'frommonth', true );
