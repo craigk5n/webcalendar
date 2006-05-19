@@ -6,7 +6,10 @@
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Last update: 9 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 15 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 05-15-2006
+# Last update: 16 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 17 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 19 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 05-19-2006
 
 
 ###############################################
@@ -17,91 +20,458 @@ charset: iso-8859-1
 
 
 ###############################################
-# Page: access.php
+# Page: import_handler.php
 #
-You are not authorized: Sie haben daf&uuml;r keine Berechtigung
-Database error: Datenbank Fehler
-User Access Control: Zugriffskontrolle
-Admin: Administration
-Cancel: Abbrechen
-Save: Speichern
-Grant This User Access to My Calendar: Erlaube Benutzerzugriff auf meinen Kalender
-Allow Access to Other Users' Calendar: Erlaube Zugriff auf Kalender anderer Benutzer
-DEFAULT CONFIGURATION: GRUNDKONFIGURATION
-Go: Zeigen 
-Calendar: Kalender
-Type: Art
-View Event: Termin ansehen
-View: Ansicht
-Edit: &Auml;ndern
-Approve/Reject: Genehmigen/Zur&uuml;ckweisen
-Events: Termine
-Tasks: Aufgaben
-Journals: Journale
-Can Invite: Kann Einladen
-Can Email: Kann Emailen
-Can See Time Only: Kann nur Zeit sehen
-Assistant: Assistent
-Select All: Alle ausw&auml;hlen
-Clear All: Alles l&ouml;schen
-Public: &Ouml;ffentlich
-Confidential: Vertraulich 
-Private: Privat
+Import Results: Importierte Ergebnisse
+Events successfully imported: Termine erfolgreich importiert
+Events from prior import marked as deleted: Termine vom vorigen Import als "gel&ouml;scht" markieren
+Conflicting events: Termin&uuml;berschneidung
+Errors: Fehler
+Error: Fehler
+There was an error parsing the import file or no events were returned: Beim Einlesen der Import-Datei trat ein Fehler auf oder es wurden keine Eintr&auml;ge zur&uuml;ckgegeben
+The import file contained no data: Die importierte Datei enthielt keine Daten
 
 
 ###############################################
-# Page: activity_log.php
+# Page: del_entry.php
 #
-Activity Log: Aktivit&auml;ten Protokoll
-User: Benutzer
+You are not authorized: Sie haben daf&uuml;r keine Berechtigung
+Hello: Guten Tag 
+An appointment has been canceled for you by: Eine Verabredung wurde storniert von 
+The subject was: Der Betreff lautete
 Date: Datum
 Time: Uhrzeit
-Event: Termin
+
+
+###############################################
+# Page: edit_report.php
+#
+Tomorrow: Morgen
+Today: Heute
+Yesterday: Gestern
+Day before yesterday: Vorgestern
+Next week: N&auml;chste Woche
+This week: Diese Woche
+Last week: Letzte Woche
+Week before last: Vorletzte Woche
+Next week and week after: N&auml;chste und &uuml;bern&auml;chste Woche
+This week and next week: Diese und n&auml;chste Woche
+Last week and this week: Letzte und diese Woche
+Last two weeks: Letzten zwei Wochen
+Next month: N&auml;chster Monat
+This month: Aktueller Monat
+Last month: Voriger Monat
+Month before last: Vorletzter Monat
+Next year: N&auml;chstes Jahr
+This year: Dieses Jahr
+Last year: Voriges Jahr
+Year before last: Vorletztes Jahr
+Next 14 days: N&auml;chsten 14 Tage
+Next 30 days: N&auml;chsten 30 Tage
+Next 60 days: N&auml;chsten 60 Tage
+Next 90 days: N&auml;chsten 90 Tage
+Next 180 days: N&auml;chsten 180 Tage
+Next 365 days: N&auml;chsten 365 Tage
+Invalid report id: Ung&uuml;ltige Bericht ID
+Database error: Datenbank Fehler
+Unnamed Report: Neuer Bericht
+Add Report: Bericht hinzuf&uuml;gen
+Edit Report: Bericht editieren
+Report name: Berichtsname
+Current User: Aktueller Benutzer
+User: Benutzer
+Global: Allgemein
+Yes: Ja
+No: Nein
+Include link in trailer: Inklusive Linkverkn&uuml;pfung in der Navigationsleiste
+Include standard header/trailer: Inklusive Standard-Kopf/Navigationsleiste
+Date range: Datumsbereich
+Category: Kategorie
+None: Keine
+Include previous/next links: Inklusive vorige(r)/n&auml;chste(r) Link(s)
+Include empty dates: Auch Tage ohne Termine anzeigen
+Template variables: Vorlagen Variablen
+Page template: Seiten Vorlagen
+Day template: Tagesvorlage
+Event template: Terminvorlage
+Save: Speichern
+Delete: L&ouml;schen
+Are you sure you want to delete this report?: Wollen Sie diese Bericht wirklich l&ouml;schen?
+
+
+###############################################
+# Page: year.php
+#
+Previous: Vorherige
+Next: N&auml;chsten
+Assistant mode: Assistentenmodus
+
+
+###############################################
+# Page: groups.php
+#
+Add New Group: Benutzergruppe hinzuf&uuml;gen
+
+
+###############################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Sie m&uuml;ssen einen Gruppennamen anlegen
+Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
+
+
+###############################################
+# Page: list_unapproved.php
+#
+View this entry: Eintrag ansehen
+Approve/Confirm: Eintrag &Uuml;berpr&uuml;fen/Best&auml;tigen
+Approve this entry?: Diesen Eintrag best&auml;tigen?
+Reject: Ablehnen
+Reject this entry?: Eintrag ablehnen?
+Are you sure you want to delete this entry?: Wollen Sie diesen Eintrag wirklich l&ouml;schen?
+Check All: Alles markieren
+Uncheck All: Nichts markieren
+Approve Selected: Pr&uuml;fe Auswahl
+Approve Selected entries?: Pr&uuml,fe ausgew&auml;hlte Eintr&auml;ge?
+Reject Selected: Abgelehnte Auswahl
+Reject Selected entries?: Abgelehnte ausgew&auml;hlte Eintr&auml;ge?
+Emails Will Not Be Sent: Emails werden nicht versendet
+No unapproved entries for: Keine unbest&auml;tigten Eintr&auml;ge f&uuml;r
+Unapproved Entries: Unbest&auml;tigte Eintr&auml;ge
+Not authorized: Keine Berechtigung
+
+
+###############################################
+# Page: doc.php
+#
+Invalid entry id: Ung&uuml;ltiger Eintrag
+
+
+###############################################
+# Page: login-app.php
+#
+You must enter a login and password: Sie m&uuml;ssen einen Benutzernamen und ein Kennwort eingeben.
+Username: Benutzername
+Password: Kennwort
+Save login via cookies so I don't have to login next time: Login in Cookies abspeichern, um die Anmeldung beim n&auml;chsten Mal automatisch zu &uuml;berspringen.
+Login: Anmelden
+Access public calendar: Zugang &Ouml;ffentlicher Kalender
+Access: Zugang
+calendar: Kalender
+cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Cookies akzeptieren.
+
+
+###############################################
+# Page: views_edit.php
+#
+Unnamed View: Neue Ansicht
+Add View: Ansicht hinzuf&uuml;gen
+Edit View: Ansicht editieren
+View Name: Ansichtsname
+View Type: Ansichtstyp
+Day: Tag
+Day by Time: Zeiteinteilungen pro Tag
+Week (Users horizontal): Woche (Teilnehmer horizontal)
+Week by Time: Zeiteinteilungen pro Woche
+Week (Users vertical): Woche (Teilnehmer vertikal)
+Week (Timebar): Woche (Zeitschiene)
+Month (Timebar): Monat (Zeitschiene)
+Month (side by side): Monat (Seitenweise)
+Month (on same calendar): Monat (am gleichen Kalender)
+preview: Vorschau (Ansicht)
+Users: Benutzer
+Selected: Ausgew&auml;hlte(r)
+All: Alle
+Select: Ausw&auml;hlen 
+Add: Hinzuf&uuml;gen
+
+
+###############################################
+# Page: pref_handler.php
+#
+The following error occurred: Folgender Fehler trat auf
+
+
+###############################################
+# Page: adminhome.php
+#
+Control Panel: Systemsteuerung
+Preferences: Voreinstellungen
+Assistants: Assistenten
+System Settings: Systemeinstellungen
+Account: Konto
+User Access Control: Zugriffskontrolle
+Categories: Kategorien
+Views: Ansichten
+Layers: Layers
+Reports: Berichte
+Delete Events: L&ouml;sche Termine (Purging)
+Activity Log: Aktivit&auml;ten Protokoll
+Public Preferences: Voreinstellungen &Ouml;ffentl. Zugang 
+Unapproved Public Events: Unbest&auml;tigte &Ouml;ffentl. Termine
+Administrative Tools: Administrative Werkzeuge
+
+
+###############################################
+# Page: select_user_icons.php
+#
+View Another User's Calendar: Kalender anderer Benutzer anzeigen 
+Go: Zeigen 
+
+
+###############################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Zus&auml;tzliche Anmerkungen (optional)
+Approve and Send: Genehmigen und Senden
+Approve and Exit: Genehmigen und Schlie&szlig;en
+(Your comments will be included in an email to the event creator): (Ihre Anmerkung wird per Email f&uuml;r den einladenden Teilnehmer beigef&uuml;gt)
+An appointment has been approved and comments added by: Eine Verabredung wurde genehmigt und eine Anmerkung wurde hinzugef&uuml;gt von
+The description is: Die Beschreibung lautet
+Comments: Anmerkungen
+
+
+###############################################
+# Page: view_task.php
+#
+Invalid task id: Ung&uuml;ltige Aufgaben ID
+Low: Niedrig
+Medium: Normal
+High: Hoch
+Private: Privat
+Confidential: Vertraulich(e)
+Description: Beschreibung
+Location: Ort
+Status: Status
+Accepted: Best&auml;tigt
+Needs-Action: Ben&ouml;tige Aktion
+Declined: Abgenommen
+Rejected: Eintrag abgelehnt, wird nicht teilnehmen
+Start Date: Startdatum
+Start Time: Startzeit
+Due Date: F&auml;lligkeitsdatum
+Due Time: F&auml;lligkeitszeit
+Repeat Type: Art der Wiederholung
+Priority: Priorit&auml;t
+Public: &Ouml;ffentlich(e)
+Created by: Erstellt von
+Public Access: &Ouml;ffentlicher Zugang
+Updated: Aktualisiert
+days: Tage
+day: Tag
+hours: Stunden
+hour: Stunde
+minutes: Minute(n)
+minute: Minute
+before due time: vor F&auml;lligkeitszeit
+Participants: Benutzer
+Percentage Complete: Prozentsatz erledigt
+Update Task Percentage: Aktualisierung des Aufgabenprozentsatzes
+Update: Aktualisieren
+Generate printer-friendly version: Erzeuge Version zum Drucken
+Printer Friendly: Druckansicht
+Approve/Confirm entry: Eintrag genehmigen/best&auml;tigen?
+Reject entry: Eintrag ablehnen?
+Set category: Kategorie zuweisen
+Edit repeating entry for all dates: &Auml;ndern ALLER wiederkehrenden Termine des Eintrags
+Edit entry for this date: &Auml;ndern des Termines f&uuml;r DIESES Datum
+Delete repeating event for all dates: L&ouml;schen ALLER wiederkehrenden Termine des Eintrags 
+This will delete this entry for all users.: Dieser Eintrag wird f&uuml;r alle Benutzer gel&ouml;scht.
+Delete entry only for this date: L&ouml;schen des Termines nur f&uuml;r DIESES Datum
+Edit task: Aufgabe editieren
+Delete task: Aufgabe l&ouml;schen
+Are you sure you want to delete this task?: Wollen Sie diese Aufgabe wirklich l&ouml;schen?
+This will delete this task for all users.: Dies l&ouml;scht die Aufgabe f&uuml,r alle Benutzer.
+Copy task: Aufgabe kopieren
+This will delete the task from your calendar.: Dies l&ouml;scht die Aufgabe von Ihrem Kalender.
+Email all participants: Email an alle Benutzer
+Show activity log: Aktivit&auml;ten Protokoll ansehen
+Hide activity log: Aktivit&auml;ten Protokoll ausblenden
+Calendar: Kalender
 Action: Aktion
-Event created: Termin hinzugef&uuml;gt
-Event approved: Termin best&auml;tigt
-Event rejected: Termin abgelehnt
-Event updated: Termin aktualisiert
-Event deleted: Termin gel&ouml;scht
 Task created: Aufgabe erstellt
 Task approved: Aufgabe genehmigt
 Task rejected: Aufgabe abgelehnt
 Task updated: Aufgabe aktualisiert
 Task deleted: Aufgabe gel&ouml;scht
-Journal created: Journal erstellt
-Journal approved: Journal best&auml;tigt
-Journal rejected: Journal abgelehnt
-Journal updated: Journal aktualisiert
-Journal deleted: Jounral gel&ouml;scht
 Notification sent: Benachrichtigung gesendet
 Reminder sent: Erinnerung gesendet
-Attachment: Anhang
+Export this task to: Dies Aufgabe exportieren nach
+Palm Pilot: Palm Pilot
+Export: Export
+
+
+###############################################
+# Page: edit_remotes.php
+#
+NONUSER_PREFIX not set: 'NONUSER_PREFIX' nicht definiert
+word characters only: K&ouml;nnen nur Buchstaben und Ziffern sein (a-zA-Z_0-9)
+Edit Remote Calendar: Ver&auml;ndere entfernten (anderen) Kalender
+Add Remote Calendar: Hinzuf&uuml;gen entfernten (anderen) Kalender
+Calendar ID: Kalender ID
+First Name: Vorname
+Last Name: Nachname
+URL: URL
+Create Layer: Erstelle Layer
+Required to View Remote Calendar: Erfordere Ansicht des entfernten Kalenders
+Color: Farbe
+Reload: Neuladen
+
+
+###############################################
+# Page: report.php
+#
+All day event: Termin f&uuml;r den GANZEN Tag
+Untimed event: Termin OHNE Zeitangabe
+cont.: Forts.
+This event is confidential: Dieser Termin ist <b>VERTRAULICH</b>
+Waiting for approval: Warten auf &Uuml;berpr&uuml;fung
+Deleted: Gel&ouml;scht
+Approved: Best&auml;tigt
+Unknown: Unbekannt
+Click here: <u>Klicken Sie hier</u>
+to manage reports for the Public Access calendar: Zum verwalten der Berichte f&uuml;r den &Ouml;ffentlichen Kalender
+Add new report: Neuen Bericht hinzuf&uuml;gen
+Manage Reports: Berichte verwalten
+Admin: Administration
+
+
+###############################################
+# Page: docadd.php
+#
+Add Comment: Anmerkung hinzuf&uuml;gen
+Add Attachment: Anhang hinzuf&uuml;gen
+Subject: Betrifft
 Comment: Anmerkung
-Previous: Vorherige
-Next: N&auml;chsten
+Upload file: Upload Datei
 
 
 ###############################################
 # Page: add_entry.php
 #
+Event: Termin
 is already on your calendar.: ist schon auf Ihrem Kalender
-Invalid entry id: Ung&uuml;ltiger Eintrag
 This is a private event and may not be added to your calendar.: Das ist ein PRIVATER Termin und kann Ihrem Kalender nicht hinzugef&uuml;gt werden.
 This is a confidential event and may not be added to your calendar.: Das ist ein <b>vertraulicher Termin</b> und wird nicht zu Ihrem Kalender hinzugef&uuml;gt.
 Error adding event: Fehler beim Hinzuf&uuml;gen eines Termines
 
 
 ###############################################
+# Page: week_details.php
+#
+Week: Woche
+Admin mode: Administratormodus
+New Entry: Neuer Eintrag
+
+
+###############################################
+# Page: group_edit.php
+#
+Unnamed Group: Neue Benutzergruppe
+Add Group: Benutzergruppe hinzuf&uuml;gen
+Edit Group: Benutzergruppe editieren
+Group name: Benutzergruppenname
+
+
+###############################################
+# Page: nulogin.php
+#
+No such nonuser calendar: Kein(e) 'Zentrale(r)'-Kalender
+
+
+###############################################
+# Page: upcoming.php
+#
+__month__ __dd__: __dd__. __month__
+more: weitere...
+
+
+###############################################
+# Page: login.php
+#
+Invalid login: Benutzername oder Passwort falsch
+You have been logged out: Sie sind nun abgemeldet
+Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie sich registrieren!
+
+
+###############################################
+# Page: layers.php
+#
+Help: Hilfe
+Layers are currently: Layers sind derzeit
+Enabled: Aktiv
+Disable Layers: Layers abschalten
+Disabled: Inaktiv
+Enable Layers: Layers aktivieren
+to modify the layers settings for the: um die Layer Einstellungen zu &auml;ndern f&uuml;r den
+Add layer: Layer hinzuf&uuml;gen
+Layer: Layer
+Edit layer: Layer editieren
+Edit: &Auml;ndern
+Delete layer: Layer l&ouml;schen
+Are you sure you want to delete this layer?: Wollen Sie diesen Layer wirklich l&ouml;schen?
+Source: Quelle
+Duplicates: Duplikate
+
+
+###############################################
+# Page: minical.php
+#
+This Calendar is not Public: Dies ist kein &Ouml;ffentlicher Kalender
+
+
+###############################################
+# Page: view_entry.php
+#
+Completed: Abgeschlossen
+Duration: Dauer
+by: von
+Send Reminder: Erinnerung senden
+External User: Externer Benutzer
+Attachments: Anh&auml;nge
+comments: Anmerkung(en)
+Show: Zeigen
+Hide: Verstecken
+Edit entry: Eintrag &auml;ndern
+Delete entry: Eintrag l&ouml;schen
+from calendar of: vom Kalender
+Copy entry: Eintrag kopieren
+This will delete the entry from your calendar.: Dieser Eintrag wird von Ihrem Kalender gel&ouml;scht.
+Add to My Calendar: Zu meinem Kalender hinzuf&uuml;gen
+Do you want to add this entry to your calendar?: Wollen Sie diesen Eintrag zu Ihrem Kalender hinzuf&uuml;gen?
+This will add the entry to your calendar.: Bitte best&auml;tigen, um den Eintrag hinzuzuf&uuml;gen.
+Event created: Termin hinzugef&uuml;gt
+Event approved: Termin best&auml;tigt
+Event rejected: Termin abgelehnt
+Event updated: Termin aktualisiert
+Event deleted: Termin gel&ouml;scht
+Journal created: Journal erstellt
+Journal approved: Journal best&auml;tigt
+Journal rejected: Journal abgelehnt
+Journal updated: Journal aktualisiert
+Journal deleted: Jounral gel&ouml;scht
+Attachment: Anhang
+Export this entry to: Diesen Eintrag exportieren nach
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+Variable N not found: Variable N nicht gefunden
+
+
+###############################################
+# Page: ajax.php
+#
+Duplicate Name: Doppelter Name
+Username already exists: Benutzer existiert bereits
+Email address already exists: Emailadresse existiert bereits
+
+
+###############################################
 # Page: admin.php
 #
-Error: Fehler
-Select: Ausw&auml;hlen 
-Yes: Ja
-No: Nein
-System Settings: Systemeinstellungen
-Help: Hilfe
 Settings: Einstellungen
-Public Access: &Ouml;ffentlicher Zugang
 Groups: Benutzergruppen
 NonUser Calendars: 'Zentrale' - Kalender
 Other: Sonstiges
@@ -121,12 +491,10 @@ Your browser default language is: Ihre derzeitige Browser-Sprache ist
 tz-help: Hilfe f&uuml;r Zeitzonen
 Server Timezone Selection: Zeitzonenauswahl am Server
 Your current GMT offset is: Ihre jetzige GMT-Zeitverschiebung ist
-hours: Stunden
 Allow user to use themes: Erlaubt das Verwenden von 'Themen' f&uuml;r Benutzer
 themes-help: Erlaubt eine Vielzahl von Updates f&uuml;r Konfigurationseinstellungen. Kleingeschriebene Eintr&auml;ge sind nur benutzereigene Voreinstellungen
 Themes: Themen
 AVAILABLE THEMES: VERF&Uuml;GBARE THEMEN
-None: Keine
 Preview: Vorschau
 Allow top menu: Erlaube Topmen&uuml;
 menu-themes-help: Stellt die Farben und die Art des oberen Men&uuml;s ein
@@ -144,8 +512,6 @@ Allow external file for header/script/trailer: Erlaubt externe Datei f&uuml;r Ko
 Allow user to override header/trailer: Erlaubt den Benutzer Kopf- und Fu&szlig;zeile zu &uuml;berschreiben
 preferred-view-help: Gibt die bevorzugte Ansicht an (Tag, Woche, Monat oder Jahr).
 Preferred view: Bevorzugte Ansicht
-Day: Tag
-Week: Woche
 Month: Monat
 Year: Jahr
 display-sm_month-help: Falls aktiviert, werden kleine Monate in der Monatsansichten angezeigt
@@ -168,9 +534,6 @@ Time format: Zeit-Format
 24 hour: 24-st&uuml;ndig
 entry-interval-help: Setzt Minutenintervall beim &Auml;ndern eingetragener Zeiten
 Entry interval: Eintragsintervall
-hour: Stunde
-minutes: Minute(n)
-minute: Minute
 time-interval-help: Legt das Zeitintervall in der Tages,- Wochen- und Monatsansicht fest.
 Time interval: Zeitintervall
 auto-refresh-help: Falls aktiviert, Tages,- Wochen- und Monats-Ansicht, und "unbest&auml;tigte Termine" werden automatisch aktualisiert.
@@ -227,7 +590,6 @@ limit-appts-number-help: Definiert die max. Anzahl der gezeiteten Termine f&uuml
 Maximum timed events per day: Maximale Anzahl der zu vergebenen Termine pro Tag
 timed-evt-len-help: Spezifiziert die Methode der Zeitangabe als Zeitdauer oder Endzeitpunkt
 Specify timed event length by: Spezifiziert die Zeitspanne eines Termins als
-Duration: Dauer
 End Time: Endzeitpunkt
 summary_length-help: Maximale L&auml;nge der Kurzbeschreibung in den Kalenderansichten
 Brief Description Length: L&auml;nge der Kurzbeschreibung
@@ -352,71 +714,6 @@ Table cell background for other month: Tabellen-Hintergrund f&uuml;r anderen Mon
 Week number color: Farbe f&uuml;r Wochennummer
 Event popup background: Hintergrundfarbe Termin-PopUp
 Event popup text: Textfarbe Termin-PopUp
-The following error occurred: Folgender Fehler trat auf
-
-
-###############################################
-# Page: adminhome.php
-#
-Control Panel: Systemsteuerung
-Preferences: Voreinstellungen
-Assistants: Assistenten
-Users: Benutzer
-Account: Konto
-Categories: Kategorien
-Views: Ansichten
-Layers: Layers
-Reports: Berichte
-Delete Events: L&ouml;sche Termine (Purging)
-Public Preferences: Voreinstellungen &Ouml;ffentl. Zugang 
-Unapproved Public Events: Unbest&auml;tigte &Ouml;ffentl. Termine
-Administrative Tools: Administrative Werkzeuge
-
-
-###############################################
-# Page: ajax.php
-#
-Duplicate Name: Doppelter Name
-Username already exists: Benutzer existiert bereits
-Email address already exists: Emailadresse existiert bereits
-
-
-###############################################
-# Page: approve_entry.php
-#
-Additional Comments (optional): Zus&auml;tzliche Anmerkungen (optional)
-Approve and Send: Genehmigen und Senden
-Approve and Exit: Genehmigen und Schlie&szlig;en
-(Your comments will be included in an email to the event creator): (Ihre Anmerkung wird per Email f&uuml;r den einladenden Teilnehmer beigef&uuml;gt)
-Hello: Guten Tag 
-An appointment has been approved and comments added by: Eine Verabredung wurde genehmigt und eine Anmerkung wurde hinzugef&uuml;gt von
-The subject was: Der Betreff lautete
-The description is: Die Beschreibung lautet
-Comments: Anmerkungen
-
-
-###############################################
-# Page: assistant_edit.php
-#
-Admin mode: Administratormodus
-Your assistants: Ihre Assistenten
-
-
-###############################################
-# Page: category.php
-#
-Add: Hinzuf&uuml;gen
-Category Name: Kategorie Name
-Category Icon: Kategorie Icon
-Remove Icon: Icon entfernen
-Global: Allgemein
-Add Icon to Category: Icon f&uuml;r Kategorie hinzuf&uuml;gen
-Upload: Hochladen
-gif 3kb max: gif max. 3kb gro&szlig;
-Search for existing icons: Suche nach bereits vorhandene Icons
-Delete: L&ouml;schen
-Are you sure you want to delete this entry?: Wollen Sie diesen Eintrag wirklich l&ouml;schen?
-Add New Category: Neue Kategorie hinzuf&uuml;gen
 
 
 ###############################################
@@ -424,357 +721,6 @@ Add New Category: Neue Kategorie hinzuf&uuml;gen
 #
 File size exceeds maximum: Dateigr&ouml;&szlig;e &uuml;bersteigt Maximum
 File is not a gif image: Datei ist kein 'gif' Bild
-
-
-###############################################
-# Page: catsel.php
-#
-ENTRY CATEGORIES: EINGETRAGENE KATEGORIEN
-AVAILABLE CATEGORIES: VERF&Uuml;GBARE KATEGORIEN
-Remove: Entfernen
-Global Category: Allg. Kategorien
-Ok: Ok
-
-
-###############################################
-# Page: day.php
-#
-Generate printer-friendly version: Erzeuge Version zum Drucken
-Printer Friendly: Druckansicht
-
-
-###############################################
-# Page: del_entry.php
-#
-An appointment has been canceled for you by: Eine Verabredung wurde storniert von 
-
-
-###############################################
-# Page: docadd.php
-#
-Add Comment: Anmerkung hinzuf&uuml;gen
-Add Attachment: Anhang hinzuf&uuml;gen
-Subject: Betrifft
-Upload file: Upload Datei
-Description: Beschreibung
-
-
-###############################################
-# Page: docdel.php
-#
-Removed: Entfernt
-
-
-###############################################
-# Page: edit_entry.php
-#
-am: Vormittag
-pm: Nachmittag
-You are not authorized to edit this task: Sie haben keine Berechtigung diese Aufgabe zu &auml;ndern
-hours ahead of you: Stunden vor Ihnen
-hours behind you: Stunden nach Ihnen
-hour ahead of you: Stunde vor Ihnen
-hour behind you: Stunde nach Ihnen
-is in a different timezone than you are. Currently: ist in einem anderen Zeitzone, als Sie sind. Derzeit
-Time entered here is based on your Timezone: Die eingegebene Zeit entspricht Ihrer Zeitzone
-Edit Entry: Eintrag &auml;ndern
-Add Entry: Eintrag hinzuf&uuml;gen
-Details: Details
-Participants: Benutzer
-Repeat: Wiederholung
-Reminders: Erinnerungen
-brief-description-help: Kurzbeschreibung (ca. 20 Zeichen) des Termines. Diese erscheint, wenn der Kalender angezeigt wird.
-Brief Description: Kurzbeschreibung
-full-description-help: Komplette Beschreibung des Termines. Diese Information sieht der Benutzer beim Termin.
-Full Description: Ausf&uuml;hrliche Beschreibung
-access-help: Gibt den Zugriff auf den Termin an. &ouml;ffentlich -  Jeder kann alle Details des Termines sehen. Privat - Andere k&ouml;nnen sehen, da&szlig; ein Termin existiert, k&ouml;nnen jedoch keine Details ansehen.
-Access: Zugang
-priority-help: Gibt die Priorit&auml;t des Termines an. Termine mit hoher Priorit&auml;t werden fett angezeigt.
-Priority: Priorit&auml;t
-Low: Niedrig
-Medium: Normal
-High: Hoch
-category-help: Definiert die Kategorie eines Termines.
-Category: Kategorie
-Use the Edit button to make changes.: Verwende den &Auml;nderungsbutton um &Auml;nderungen vorzunehmen
-completed-help: Datumaufgabe ist abgeschlossen. Nur aktiv, wenn alle Teilnehmer einen Prozentsatz von 100% entsprechen.
-Date Completed: Datum f&uuml;hrte durch
-percent-help: Aufgabenbeendigungsprozentsatz f&uuml;r diesen Benutzer
-Percent Complete: Prozent erledigt
-All Percentages: <u><b>Erf&uuml;llungsgrad der Aufgabe (%)</b></u>
-location-help: Ort des Termines
-Location: Ort
-date-help: Gibt das Datum des Termines an.
-Start Date: Startdatum
-Untimed event: Termin OHNE Zeitangabe
-Timed event: Termin MIT Zeitangabe
-All day event: Termin f&uuml;r den GANZEN Tag
-Timezone Offset: Zeitzonenausgleich
-time-help: Gibt die Uhrzeit des Termines an. Kann leer gelassen werden.
-duration-help: Gibt die Dauer des Termines in Minuten an. Kann leer gelassen werden.
-end-time-help: Definiert die Zeit des Termines als Endzeitpunkt.
-Start Time: Startzeit
-Due Date: F&auml;lligkeitsdatum
-Due Time: F&auml;lligkeitszeit
-participants-help: Gibt die Benutzer des Termines an.
-Availability: Verf&uuml;gbarkeit
-external-participants-help: Externe Benutzer (optional mit einer "name@domain.de" Emailadresse) pro Zeile.
-External Participants: Externe Benutzer
-repeat-type-help: W&auml;hlen Sie wie oft ein Termin wiederholt werden soll. Monatlich (tagesorientiert) wiederholt einen Termin jeden 1. Montag des Monats, jeden 3. Donnerstag des Monats, etc.
-Daily: T&auml;glich
-Weekly: W&ouml;chentlich
-Monthly: Monatlich
-by day: Tagesorientiert
-by date: Nach Datum
-by position: Nach Position
-Yearly: J&auml;hrlich
-Manual: Bedienungsanleitung
-Expert Mode: Experten Modus
-repeat-end-date-help: Gibt an bis zu welchem Datum der Termin wiederholt werden soll.
-Ending: Ende
-Forever: Immer
-Use end date: Ende an diesem Tag
-Number of times: Anzahl der Zeiten
-repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist "1",  der Termin wird immer wiederholt. Wenn sie "2" ausw&auml;hlen wird der Termin jede 2. Woche wiederholt (wenn Art der Wiederholung auf W&ouml;chentlich gesetzt ist), jeden 2. Monat (wenn Art der Wiederholung auf Monatlich gesetzt ist), etc.
-Frequency: H&auml;ufigkeit
-Weekdays Only: Nur Wochentage
-Week Start: Wochenstart
-repeat-bydayextended-help: Erlaubt Datumsauswahl, die auf Tag der Woche basiert
-ByDay: Nach Tag
-All: Alle
-repeat-month-help: Spezifiziert, bei welchen Monaten der Termin wiederholt werden sollte
-ByMonth: Nach Monat
-repeat-bysetpos-help: Erlaubt weitere Auswahlm&ouml;glichkeiten (Datums) basierend der Position die bereits ausgew&auml;hlt sind
-BySetPos: Nach ausgew&auml;hlter Position
-repeat-bymonthdayextended-help: Erlaubt weitere Datumsauswahl, basierend auf Datum.
-ByMonthDay: Nach Monatstag
-repeat-byweekno-help: Erlaubt den Benutzer ein Liste von wiederholenden Kalenderwochen zum Termin zu definieren (1,2...53,-53,-52...-1).
-ByWeekNo: Nach Kalenderwoche
-repeat-byyearday-help: Erlaubt den Benutzer ein Liste wiederholender Jahrestage zum Termin zu definieren (1,2...366,-366,-365...-1).
-ByYearDay: Nach Jahrestagen
-repeat-exceptions-help: Zus&auml;tzliche Tage, an denen dieser Termin auftreten oder nicht auftreten sollte
-Exclusions: Exklusive
-Inclusions: Inklusive
-Add Exception: Ausnahme hinzuf&uuml;gen
-Add Inclusion: Zus&auml;tzlicher Termin
-Delete Selected: Ausgew&auml;hltes Datum l&ouml;schen
-Send Reminder: Erinnerung senden
-When: Wann
-Use Date/Time: Datum/Zeit verwenden
-Use Offset: Zeitzone verwenden
-days: Tage
-Before: Davor
-After: Danach
-Start: Beginn
-End/Due: Ende/Bis
-Times: Wie oft
-Every: Jeden
-Delete entry: Eintrag l&ouml;schen
-You are not authorized to edit this entry: Sie haben keine Berechtigung diesen Eintrag zu &auml;ndern.
-
-
-###############################################
-# Page: edit_entry_handler.php
-#
-The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
-A new appointment has been made for you by: Es wurde Ihnen eine neue Verabredung eingetragen von -->
-An appointment has been updated by: Eine Verabredung wurde ge&auml;ndert von
-The subject is: Die Beschreibung lautet 
-Please look on: Bitte konsultieren Sie Ihren
-to accept or reject this appointment: Um die Verabredung zu best&auml;tigen/abzulehnen.
-to view this appointment: Verabredung anschauen
-Scheduling Conflict: Termin&uuml;berschneidung
-Your suggested time of: Ihre Eintragung von 
-conflicts with the following existing calendar entries: &uuml;berschneidet sich mit folgenden Kalendereintr&auml;gen
-
-
-###############################################
-# Page: edit_layer.php
-#
-Edit Layer: Layer editieren
-Add Layer: Layer hinzuf&uuml;gen
-Source: Quelle
-Color: Farbe
-Duplicates: Duplikate
-Show layer events that are the same as your own: Zeige Layer welche die gleichen Termine sind wie die eigenen
-Add to Others: Zu Anderen hinzuf&uuml;gen
-Add to My Calendar: Zu meinem Kalender hinzuf&uuml;gen
-Delete layer: Layer l&ouml;schen
-Are you sure you want to delete this layer?: Wollen Sie diesen Layer wirklich l&ouml;schen?
-
-
-###############################################
-# Page: edit_layer_handler.php
-#
-You cannot create a layer for yourself: Sie k&ouml;nnen sich selber als Layer NICHT hinzuf&uuml;gen
-You can only create one layer for each user: Sie k&ouml;nnen nur jeweils EINEN Benutzer pro Layer hinzuf&uuml;gen
-
-
-###############################################
-# Page: edit_nonusers.php
-#
-NONUSER_PREFIX not set: 'NONUSER_PREFIX' nicht definiert
-word characters only: K&ouml;nnen nur Buchstaben und Ziffern sein (a-zA-Z_0-9)
-Edit User: Benutzer &auml;ndern
-Add User: Benutzer hinzuf&uuml;gen
-Calendar ID: Kalender ID
-First Name: Vorname
-Last Name: Nachname
-Is public calendar: Als &Ouml;ffentlichen Kalender freigeben
-
-
-###############################################
-# Page: edit_nonusers_handler.php
-#
-Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
-
-
-###############################################
-# Page: edit_remotes.php
-#
-Edit Remote Calendar: Ver&auml;ndere entfernten (anderen) Kalender
-Add Remote Calendar: Hinzuf&uuml;gen entfernten (anderen) Kalender
-URL: URL
-Create Layer: Erstelle Layer
-Required to View Remote Calendar: Erfordere Ansicht des entfernten Kalenders
-Reload: Neuladen
-
-
-###############################################
-# Page: edit_remotes_handler.php
-#
-Import Results: Importierte Ergebnisse
-Events successfully imported: Termine erfolgreich importiert
-Create a new layer to view this calendar: Erstelle neuen Layer um diesen Kalendar anzuzeigen.
-Errors: Fehler
-There was an error parsing the import file or no events were returned: Beim Einlesen der Import-Datei trat ein Fehler auf oder es wurden keine Eintr&auml;ge zur&uuml;ckgegeben
-
-
-###############################################
-# Page: edit_report.php
-#
-Tomorrow: Morgen
-Today: Heute
-Yesterday: Gestern
-Day before yesterday: Vorgestern
-Next week: N&auml;chste Woche
-This week: Diese Woche
-Last week: Letzte Woche
-Week before last: Vorletzte Woche
-Next week and week after: N&auml;chste und &uuml;bern&auml;chste Woche
-This week and next week: Diese und n&auml;chste Woche
-Last week and this week: Letzte und diese Woche
-Last two weeks: Letzten zwei Wochen
-Next month: N&auml;chster Monat
-This month: Aktueller Monat
-Last month: Voriger Monat
-Month before last: Vorletzter Monat
-Next year: N&auml;chstes Jahr
-This year: Dieses Jahr
-Last year: Voriges Jahr
-Year before last: Vorletztes Jahr
-Next 14 days: N&auml;chsten 14 Tage
-Next 30 days: N&auml;chsten 30 Tage
-Next 60 days: N&auml;chsten 60 Tage
-Next 90 days: N&auml;chsten 90 Tage
-Next 180 days: N&auml;chsten 180 Tage
-Next 365 days: N&auml;chsten 365 Tage
-Invalid report id: Ung&uuml;ltige Bericht ID
-Unnamed Report: Neuer Bericht
-Add Report: Bericht hinzuf&uuml;gen
-Edit Report: Bericht editieren
-Report name: Berichtsname
-Current User: Aktueller Benutzer
-Include link in trailer: Inklusive Linkverkn&uuml;pfung in der Navigationsleiste
-Include standard header/trailer: Inklusive Standard-Kopf/Navigationsleiste
-Date range: Datumsbereich
-Include previous/next links: Inklusive vorige(r)/n&auml;chste(r) Link(s)
-Include empty dates: Auch Tage ohne Termine anzeigen
-Template variables: Vorlagen Variablen
-Page template: Seiten Vorlagen
-Day template: Tagesvorlage
-Event template: Terminvorlage
-Are you sure you want to delete this report?: Wollen Sie diese Bericht wirklich l&ouml;schen?
-
-
-###############################################
-# Page: edit_report_handler.php
-#
-Variable N not found: Variable N nicht gefunden
-
-
-###############################################
-# Page: edit_template.php
-#
-Edit Custom Script/Stylesheet: &auml;ndern der benutzerdefinierten Scripte/Stylesheets
-Edit Custom Header: &auml;ndern der benutzerdefinierten KOPFZEILE
-Edit Custom Trailer: &auml;ndern der benutzerdefinierten FU&szlig;ZEILE
-
-
-###############################################
-# Page: edit_user.php
-#
-Username: Benutzername
-E-mail address: E-Mail Adresse
-Password: Kennwort
-again: Wiederholung
-Disabled for demo: F&uuml;r DEMO deaktiviert
-Are you sure you want to delete this user?: Soll dieser Benutzer wirklich gel&ouml;scht werden?
-Change Password: Kennwort &auml;ndern
-New Password: Neues Kennwort
-Set Password: Setze Kennwort
-
-
-###############################################
-# Page: edit_user_handler.php
-#
-Deleting users not supported: Gel&ouml;schte Benutzer werden nicht unterst&uuml;tzt
-The passwords were not identical: Die eingebenen Kennw&ouml;rter stimmten nicht &uuml;berein
-You have not entered a password: Sie haben kein Kennwort eingegeben
-Invalid characters in login: Ung&uml;ltige Zeichen im Login
-Username can not be blank: Benutzername darf nicht LEER sein
-
-
-###############################################
-# Page: export.php
-#
-Export: Export
-Export format: Exportformat
-Palm Pilot: Palm Pilot
-Include all layers: Beinhaltet ALLE Layers
-Export all dates: Alle Eintr&auml;ge exportieren
-Start date: Anfangsdatum
-End date: Enddatum
-Modified since: &Auml;nderungen ab
-
-
-###############################################
-# Page: export_handler.php
-#
-export format not defined or incorrect: Exportiertes Format nicht definiert oder ung&uuml;ltig
-
-
-###############################################
-# Page: groups.php
-#
-Add New Group: Benutzergruppe hinzuf&uuml;gen
-
-
-###############################################
-# Page: group_edit.php
-#
-Unnamed Group: Neue Benutzergruppe
-Add Group: Benutzergruppe hinzuf&uuml;gen
-Edit Group: Benutzergruppe editieren
-Group name: Benutzergruppenname
-Updated: Aktualisiert
-Created by: Erstellt von
-
-
-###############################################
-# Page: group_edit_handler.php
-#
-You must specify a group name: Sie m&uuml;ssen einen Gruppennamen anlegen
 
 
 ###############################################
@@ -790,48 +736,178 @@ colors-help: Alle Farben k&ouml;nnen im Format "#RRGGBB" eingegeben werden. Hier
 
 
 ###############################################
-# Page: help_bug.php
+# Page: activity_log.php
 #
-Report Bug: Fehlermeldung
+Events: Termine
 
 
 ###############################################
-# Page: help_edit_entry.php
+# Page: usersel.php
 #
-Adding/Editing Calendar Entries: Hinzuf&uuml;gen/&Auml;ndern von Kalender-Eintr&auml;gen
-Repeat Type: Art der Wiederholung
-Repeat End Date: Ende der wiederkehrenden Termine
-Repeat Day: Tag der Wiederholung
-repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden soll. Dies gilt nur wenn Art der Wiederholung auf W&ouml;chentlich gesetzt ist.
+Reset: Zur&uuml;cksetzen
+Remove: Entfernen
+Ok: Ok
+Cancel: Abbrechen
 
 
 ###############################################
-# Page: help_import.php
+# Page: assistant_edit.php
+#
+Your assistants: Ihre Assistenten
+
+
+###############################################
+# Page: views.php
+#
+Add New View: Neue Ansicht hinzuf&uuml;gen
+
+
+###############################################
+# Page: help_uac.php
+#
+User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.: Die Zugriffskontrolle erlaubt eine bessere Steuerung der Anwenderzugriffe und deren Berechtigungen. Benutzer k&ouml;nnen Ihre Berechtigungen &auml;ndern sofern Sie vom Administrator authorisiert wurden.
+Can Invite: Kann Einladen
+If disabled, this user will not see you in the participants list.: Wenn deaktiviert, kann Sie dieser Benutzer nicht in der Teilnehmerliste sehen
+Can Email: Kann Emailen
+If disabled, this user will not be able to send you emails.: Wenn deaktiviert, der Benutzer kann Ihnen kein Mail senden
+Can See Time Only: Kann nur Zeit sehen
+If enabled, this user will not be able to view the details of any of your entries.: Falls aktiviert, kann dieser Benutzer keine Details Ihrer Eintr&auml;ge sehen
+
+
+###############################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Neuen Fernzugriff-Kalender hinzuf&uuml;gen
+
+
+###############################################
+# Page: import.php
 #
 Import: Import
-Palm Desktop: Palm Desktop
-This form will allow you to import entries from the Palm Desktop Datebook.: Dieses Formular erlaubt das Importieren der Kalendereintr&auml;ge ihres Palm Desktop Datebook.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner <tt>datebook/datebook.dat</tt> in einem Unterverzeichnis mit Ihrem Usernamen sein.
-The following entries will not be imported: Folgende Eintr&auml;ge werden nicht importiert
-Entries older than the current date: Eintr&auml;ge die &auml;lter als das aktuelle Datum sind
-Entries created in the Palm Desktop that have not been HotSync'd: Hinzugef&uuml;gte Eintr&auml;ge im Palm Desktop die nicht synchronisiert wurden (HotSync'd)
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er das Datum des Termines ist vorbei).
-Therefore, updates should be made in the Palm Desktop.: Deshalb sollten &Auml;nderungen auf dem Palm/Desktop durchgef&uuml;hrt werden.
-vCal: vCalendar
-This form will import vCalendar (.vcs) 1.0 events: Dieses Formular importiert vCalendar (.vcs) 1.0 Eintr&auml;ge
-The following formats have been tested: Folgende Formate wurden getestet
-Palm Desktop 4: Palm Desktop 4
-Lotus Organizer 6: Lotus Organizer 6
-Microsoft Outlook 2002: Microsoft Outlook 2002
-iCalendar: iCalendar
-This form will import iCalendar (.ics) events: Dieses Formular importiert iCalendar (.ics) Eintr&auml;ge
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Aktiviertes <b>Vorigen Import &uuml;berschreiben</b> bewirkt, da&szlig; vorige importierte Termine, welche die selbe UID verwenden, wie ein Termin von der neuen Import-Datei, als "l&ouml;schen" markiert sind. Das erlaubt ein Importieren einer aktuellen iCalendar Datei ohne Duplikate zu erzeugen.
+Import format: Importformat
+Exclude private records: Private Eintr&auml;ge ausschlie&szlig;en
+Overwrite Prior Import: Vorigen Import &uuml;berschreiben
+Repeated items are imported separately. Prior imports are not overwritten.: Wiederkehrende Objekte werden extra importiert. Vorige Importe werden nicht &uuml;berschrieben.
+
+
+###############################################
+# Page: edit_template.php
+#
+Edit Custom Script/Stylesheet: &auml;ndern der benutzerdefinierten Scripte/Stylesheets
+Edit Custom Header: &auml;ndern der benutzerdefinierten KOPFZEILE
+Edit Custom Trailer: &auml;ndern der benutzerdefinierten FU&szlig;ZEILE
+
+
+###############################################
+# Page: access.php
+#
+Grant This User Access to My Calendar: Erlaube Benutzerzugriff auf meinen Kalender
+Allow Access to Other Users' Calendar: Erlaube Zugriff auf Kalender anderer Benutzer
+DEFAULT CONFIGURATION: GRUNDKONFIGURATION
+Type: Art
+View Event: Termin ansehen
+View: Ansicht
+Approve/Reject: Genehmigen/Zur&uuml;ckweisen
+Tasks: Aufgaben
+Journals: Journale
+Assistant: Assistent
+Select All: Alle ausw&auml;hlen
+Clear All: Alles l&ouml;schen
+
+
+###############################################
+# Page: reject_entry.php
+#
+Continue: Weiter
+(Your comments will be included in an email to the other participants): (Ihre Anmerkung wird per Email f&uuml;r den anderen Teilnehmer beigef&uuml;gt)
+An appointment has been rejected by: Eine Verabredung wurde zur&uuml;ckgewiesen von
+
+
+###############################################
+# Page: publish.php
+#
+No user specified: Kein Benutzer ausgew&auml;hlt
 
 
 ###############################################
 # Page: help_index.php
 #
 Help Index: Hilfe-Index
+Adding/Editing Calendar Entries: Hinzuf&uuml;gen/&Auml;ndern von Kalender-Eintr&auml;gen
+Report Bug: Fehlermeldung
+
+
+###############################################
+# Page: help_edit_entry.php
+#
+Brief Description: Kurzbeschreibung
+brief-description-help: Kurzbeschreibung (ca. 20 Zeichen) des Termines. Diese erscheint, wenn der Kalender angezeigt wird.
+Full Description: Ausf&uuml;hrliche Beschreibung
+full-description-help: Komplette Beschreibung des Termines. Diese Information sieht der Benutzer beim Termin.
+date-help: Gibt das Datum des Termines an.
+time-help: Gibt die Uhrzeit des Termines an. Kann leer gelassen werden.
+duration-help: Gibt die Dauer des Termines in Minuten an. Kann leer gelassen werden.
+end-time-help: Definiert die Zeit des Termines als Endzeitpunkt.
+priority-help: Gibt die Priorit&auml;t des Termines an. Termine mit hoher Priorit&auml;t werden fett angezeigt.
+access-help: Gibt den Zugriff auf den Termin an. &ouml;ffentlich -  Jeder kann alle Details des Termines sehen. Privat - Andere k&ouml;nnen sehen, da&szlig; ein Termin existiert, k&ouml;nnen jedoch keine Details ansehen.
+participants-help: Gibt die Benutzer des Termines an.
+repeat-type-help: W&auml;hlen Sie wie oft ein Termin wiederholt werden soll. Monatlich (tagesorientiert) wiederholt einen Termin jeden 1. Montag des Monats, jeden 3. Donnerstag des Monats, etc.
+Repeat End Date: Ende der wiederkehrenden Termine
+repeat-end-date-help: Gibt an bis zu welchem Datum der Termin wiederholt werden soll.
+Repeat Day: Tag der Wiederholung
+repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden soll. Dies gilt nur wenn Art der Wiederholung auf W&ouml;chentlich gesetzt ist.
+Frequency: H&auml;ufigkeit
+repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist "1",  der Termin wird immer wiederholt. Wenn sie "2" ausw&auml;hlen wird der Termin jede 2. Woche wiederholt (wenn Art der Wiederholung auf W&ouml;chentlich gesetzt ist), jeden 2. Monat (wenn Art der Wiederholung auf Monatlich gesetzt ist), etc.
+
+
+###############################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported: Gel&ouml;schte Benutzer werden nicht unterst&uuml;tzt
+The passwords were not identical: Die eingebenen Kennw&ouml;rter stimmten nicht &uuml;berein
+You have not entered a password: Sie haben kein Kennwort eingegeben
+Invalid characters in login: Ung&uml;ltige Zeichen im Login
+Username can not be blank: Benutzername darf nicht LEER sein
+
+
+###############################################
+# Page: edit_layer_handler.php
+#
+You cannot create a layer for yourself: Sie k&ouml;nnen sich selber als Layer NICHT hinzuf&uuml;gen
+You can only create one layer for each user: Sie k&ouml;nnen nur jeweils EINEN Benutzer pro Layer hinzuf&uuml;gen
+
+
+###############################################
+# Page: pref.php
+#
+Save Preferences: Voreinstellungen speichern
+Public Access calendar: &Ouml;ffentlicher Kalender
+Modify Non User Calendar Preferences: &Auml;ndern der Einstellungen von Zentralen Kalendern
+Return to My Preferences: Zur&uuml;ck zu meinen Einstellungen
+When I am the boss: Wenn ich der Chef bin
+Subscribe/Publish: Abonieren/Ver&ouml;ffentlichen
+Custom Scripts: Eigene Scripte
+Timezone Selection: Auswahl der Zeitzone
+Default Category: Standard Kategorie
+Email format preference: Emailformat Einstellungen
+HTML: HTML
+Plain Text: Reiner Text
+Email me event notification: Benachrichtigen bei Terminbest&auml;tigung
+I want to approve events: Ich m&ouml;chte Termine &uuml;berpr&uuml;fen
+display_byproxy-help: Anzeige durch Proxyhilfe
+Display if created by Assistant: Anzeigen wenn durch Assistent eingegeben
+allow-view-subscriptions-help: Erlaubt eingeschr&auml;nkten Fernzugriff auf Private oder Vertrauliche Eintr&auml;ge
+Allow remote viewing of: Erlaubt Ansicht via Fernzugriff auf
+entries: Eintr&auml;ge
+allow-remote-subscriptions-help: Bestimmt ob 'REMOTE'-Teilnehmer IHREN WebKalender abonnieren d&uuml;rfen, und somit dessen Termine und ihre 'iCal'-aktiven Anwendungen (wie Apple's iCal oder Mozilla-Kalender) sehen k&ouml;nnen.
+remote-subscriptions-url-help: Zeigt die URL, die ein 'REMOTE'-Teilnehmer zum Abonnieren Ihres Kalenders verwenden soll
+allow-remote-publishing-help: Bestimmt, ob ein entfernter iCal - Klient Termine im Webkalender ver&ouml;ffentlichen darf
+Allow remote publishing: Erlaube das Ver&ouml;ffentlichen von 'REMOTE'-Terminen
+remote-publishing-url-help: Zeigt die URL (Adresse) die im iCal-Client zum abonieren und ver&ouml;ffentlichen im Webkalender notwendig ist.
+rss-feed-url-help: Die URL f&uuml;r den Zugang zum RSS-Feed
+freebusy-enabled-help: Sepzifiziert die Zeit der Verf&uuml;gbarkeit eines Benutzers bei Verwendung des iCal FreeBusy - Standart.
+Enable FreeBusy publishing: Aktivieren der FreeBusy Ver&ouml;ffentlichung
+freebusy-url-help: Die URL f&uuml;r den Benutzerzugang zur FreeBusy - Liste
 
 
 ###############################################
@@ -850,41 +926,44 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 
 
 ###############################################
-# Page: help_pref.php
+# Page: edit_entry_handler.php
 #
-Default Category: Standard Kategorie
-default-category-help: Legt eine Standardkategorie f&uuml;r einen neuen Termin fest.
-When I am the boss: Wenn ich der Chef bin
-Email me event notification: Benachrichtigen bei Terminbest&auml;tigung
-email-boss-notifications-help: Legt fest ob Chefs Terminbenachrichtigungen als Email bekommen.
-I want to approve events: Ich m&ouml;chte Termine &uuml;berpr&uuml;fen
-boss-approve-event-help: Legt fest ob der Chef die eingetragenen Termine des Assistenten best&auml;tigen (genehmigen) mu&szlig;
-Subscribe/Publish: Abonieren/Ver&ouml;ffentlichen
-allow-remote-subscriptions-help: Bestimmt ob 'REMOTE'-Teilnehmer IHREN WebKalender abonnieren d&uuml;rfen, und somit dessen Termine und ihre 'iCal'-aktiven Anwendungen (wie Apple's iCal oder Mozilla-Kalender) sehen k&ouml;nnen.
-remote-subscriptions-url-help: Zeigt die URL, die ein 'REMOTE'-Teilnehmer zum Abonnieren Ihres Kalenders verwenden soll
-Allow remote publishing: Erlaube das Ver&ouml;ffentlichen von 'REMOTE'-Terminen
-allow-remote-publishing-help: Bestimmt, ob ein entfernter iCal - Klient Termine im Webkalender ver&ouml;ffentlichen darf
-remote-publishing-url-help: Zeigt die URL (Adresse) die im iCal-Client zum abonieren und ver&ouml;ffentlichen im Webkalender notwendig ist.
-rss-feed-url-help: Die URL f&uuml;r den Zugang zum RSS-Feed
-Enable FreeBusy publishing: Aktivieren der FreeBusy Ver&ouml;ffentlichung
-freebusy-enabled-help: Sepzifiziert die Zeit der Verf&uuml;gbarkeit eines Benutzers bei Verwendung des iCal FreeBusy - Standart.
-freebusy-url-help: Die URL f&uuml;r den Benutzerzugang zur FreeBusy - Liste
+The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
+A new appointment has been made for you by: Es wurde Ihnen eine neue Verabredung eingetragen von -->
+An appointment has been updated by: Eine Verabredung wurde ge&auml;ndert von
+The subject is: Die Beschreibung lautet 
+Please look on: Bitte konsultieren Sie Ihren
+to accept or reject this appointment: Um die Verabredung zu best&auml;tigen/abzulehnen.
+to view this appointment: Verabredung anschauen
+Scheduling Conflict: Termin&uuml;berschneidung
+Your suggested time of: Ihre Eintragung von 
+conflicts with the following existing calendar entries: &uuml;berschneidet sich mit folgenden Kalendereintr&auml;gen
 
 
 ###############################################
-# Page: help_uac.php
+# Page: edit_nonusers.php
 #
-User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.: Die Zugriffskontrolle erlaubt eine bessere Steuerung der Anwenderzugriffe und deren Berechtigungen. Benutzer k&ouml;nnen Ihre Berechtigungen &auml;ndern sofern Sie vom Administrator authorisiert wurden.
-If disabled, this user will not see you in the participants list.: Wenn deaktiviert, kann Sie dieser Benutzer nicht in der Teilnehmerliste sehen
-If disabled, this user will not be able to send you emails.: Wenn deaktiviert, der Benutzer kann Ihnen kein Mail senden
-If enabled, this user will not be able to view the details of any of your entries.: Falls aktiviert, kann dieser Benutzer keine Details Ihrer Eintr&auml;ge sehen
+Edit User: Benutzer &auml;ndern
+Add User: Benutzer hinzuf&uuml;gen
+Is public calendar: Als &Ouml;ffentlichen Kalender freigeben
 
 
 ###############################################
-# Page: icalclient.php
+# Page: search.php
 #
-Publishing Disabled (Admin): Ver&ouml;ffentlichung Inaktiv (Administrator)
-Publishing Disabled (User): Ver&ouml;ffentlichung Inaktiv (Benutzer)
+Search: Suche
+Keywords: Stichw&ouml;rter
+Advanced Search: Erweiterte Suche
+
+
+###############################################
+# Page: set_entry_cat.php
+#
+You have not added any categories: Sie haben noch keine Kategorien angelegt
+Set Category: Kategorie zuweisen
+category-help: Definiert die Kategorie eines Termines.
+Use the Edit button to make changes.: Verwende den &Auml;nderungsbutton um &Auml;nderungen vorzunehmen
+Global Categories can not be changed: Allgemeine Kategorieren k&ouml;nnen nicht ge&auml;ndert werden
 
 
 ###############################################
@@ -895,124 +974,45 @@ Current Icons on Server: Derzeitige Icons am Server
 
 
 ###############################################
-# Page: import.php
+# Page: edit_layer.php
 #
-Disabled: Inaktiv
-Import format: Importformat
-Exclude private records: Private Eintr&auml;ge ausschlie&szlig;en
-Overwrite Prior Import: Vorigen Import &uuml;berschreiben
-Repeated items are imported separately. Prior imports are not overwritten.: Wiederkehrende Objekte werden extra importiert. Vorige Importe werden nicht &uuml;berschrieben.
+Edit Layer: Layer editieren
+Add Layer: Layer hinzuf&uuml;gen
+Show layer events that are the same as your own: Zeige Layer welche die gleichen Termine sind wie die eigenen
+Add to Others: Zu Anderen hinzuf&uuml;gen
 
 
 ###############################################
-# Page: import_handler.php
+# Page: help_pref.php
 #
-Events from prior import marked as deleted: Termine vom vorigen Import als "gel&ouml;scht" markieren
-Conflicting events: Termin&uuml;berschneidung
-The import file contained no data: Die importierte Datei enthielt keine Daten
+Timezone Offset: Zeitzonenausgleich
+default-category-help: Legt eine Standardkategorie f&uuml;r einen neuen Termin fest.
+email-boss-notifications-help: Legt fest ob Chefs Terminbenachrichtigungen als Email bekommen.
+boss-approve-event-help: Legt fest ob der Chef die eingetragenen Termine des Assistenten best&auml;tigen (genehmigen) mu&szlig;
 
 
 ###############################################
-# Page: layers.php
+# Page: docdel.php
 #
-Layers are currently: Layers sind derzeit
-Enabled: Aktiv
-Disable Layers: Layers abschalten
-Enable Layers: Layers aktivieren
-Click here: <u>Klicken Sie hier</u>
-to modify the layers settings for the: um die Layer Einstellungen zu &auml;ndern f&uuml;r den
-calendar: Kalender
-Add layer: Layer hinzuf&uuml;gen
-Layer: Layer
-Edit layer: Layer editieren
+Removed: Entfernt
 
 
 ###############################################
-# Page: list_unapproved.php
+# Page: view_d.php
 #
-View this entry: Eintrag ansehen
-Approve/Confirm: Eintrag &Uuml;berpr&uuml;fen/Best&auml;tigen
-Approve this entry?: Diesen Eintrag best&auml;tigen?
-Reject: Ablehnen
-Reject this entry?: Eintrag ablehnen?
-Check All: Alles markieren
-Uncheck All: Nichts markieren
-Approve Selected: Pr&uuml;fe Auswahl
-Approve Selected entries?: Pr&uuml,fe ausgew&auml;hlte Eintr&auml;ge?
-Reject Selected: Abgelehnte Auswahl
-Reject Selected entries?: Abgelehnte ausgew&auml;hlte Eintr&auml;ge?
-Emails Will Not Be Sent: Emails werden nicht versendet
-No unapproved entries for: Keine unbest&auml;tigten Eintr&auml;ge f&uuml;r
-Unapproved Entries: Unbest&auml;tigte Eintr&auml;ge
-Not authorized: Keine Berechtigung
+No users for this view: Keine g&uuml;ltigen Benutzer f&uuml;r diese Ansicht
 
 
 ###############################################
-# Page: login-app.php
+# Page: export_handler.php
 #
-You must enter a login and password: Sie m&uuml;ssen einen Benutzernamen und ein Kennwort eingeben.
-Save login via cookies so I don't have to login next time: Login in Cookies abspeichern, um die Anmeldung beim n&auml;chsten Mal automatisch zu &uuml;berspringen.
-Login: Anmelden
-Access public calendar: Zugang &Ouml;ffentlicher Kalender
-cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Cookies akzeptieren.
+export format not defined or incorrect: Exportiertes Format nicht definiert oder ung&uuml;ltig
 
 
 ###############################################
-# Page: login.php
+# Page: view_r.php
 #
-Invalid login: Benutzername oder Passwort falsch
-You have been logged out: Sie sind nun abgemeldet
-Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie sich registrieren!
-
-
-###############################################
-# Page: minical.php
-#
-No such nonuser calendar: Kein(e) 'Zentrale(r)'-Kalender
-This Calendar is not Public: Dieser Kalender ist nicht &Oouml;ffentlich
-
-
-###############################################
-# Page: nonusers.php
-#
-Add New NonUser Calendar: Neuen 'Zentralen-Kalender' hinzuf&uuml;gen
-
-
-###############################################
-# Page: pref.php
-#
-Save Preferences: Voreinstellungen speichern
-Public Access calendar: &Ouml;ffentlicher Kalender
-Modify Non User Calendar Preferences: &Auml;ndern der Einstellungen von Zentralen Kalendern
-Return to My Preferences: Zur&uuml;ck zu meinen Einstellungen
-Custom Scripts: Eigene Scripte
-Timezone Selection: Auswahl der Zeitzone
-Email format preference: Emailformat Einstellungen
-HTML: HTML
-Plain Text: Reiner Text
-display_byproxy-help: Anzeige durch Proxyhilfe
-Display if created by Assistant: Anzeigen wenn durch Assistent eingegeben
-allow-view-subscriptions-help: Erlaubt eingeschr&auml;nkten Fernzugriff auf Private oder Vertrauliche Eintr&auml;ge
-Allow remote viewing of: Erlaubt Ansicht via Fernzugriff auf
-entries: Eintr&auml;ge
-
-
-###############################################
-# Page: publish.php
-#
-No user specified: Kein Benutzer ausgew&auml;hlt
-
-
-###############################################
-# Page: purge.php
-#
-Purging events for: L&ouml;sche Termine f&uuml;r
-Finished: Abgeschlossen
-Check box to delete <b>ALL</b> events for a user: Aktivieren zum L&ouml;schen <b>ALLER</b> Termine f&uuml;r einen Teilnehmer
-Delete all events before: L&ouml;sche alle Termine vor dem
-Preview delete: Keine Vorschau der zu l&ouml;schenden Termine
-Are you sure you want to delete events for: Wollen Sie wirklich die Termine l&ouml;schen f&uuml;r
-Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
+Double-click on empty cell to add new entry: Ein 'Doppelklick' auf eine leere Zelle f&uuml;gt einen neuen Termin ein.
 
 
 ###############################################
@@ -1033,74 +1033,60 @@ Registration: Registrierung
 Welcome to WebCalendar: Willkommen beim Webkalender
 Your email should arrive shortly: Ihre Email wird in K&uuml;rze zugestellt
 Return to Login screen: Zur&uuml;ck zum Loginschirm
+E-mail address: E-Mail Adresse
+again: Wiederholung
 Your account information will be emailed to you: Ihre Zugangsdaten werden ihnen zugesandt
 Submit: Senden
 
 
 ###############################################
-# Page: reject_entry.php
+# Page: edit_user.php
 #
-Continue: Weiter
-(Your comments will be included in an email to the other participants): (Ihre Anmerkung wird per Email f&uuml;r den anderen Teilnehmer beigef&uuml;gt)
-An appointment has been rejected by: Eine Verabredung wurde zur&uuml;ckgewiesen von
+Disabled for demo: F&uuml;r DEMO deaktiviert
+Are you sure you want to delete this user?: Soll dieser Benutzer wirklich gel&ouml;scht werden?
+Change Password: Kennwort &auml;ndern
+New Password: Neues Kennwort
+Set Password: Setze Kennwort
 
 
 ###############################################
-# Page: remotes.php
+# Page: help_import.php
 #
-Add New Remote Calendar: Neuen Fernzugriff-Kalender hinzuf&uuml;gen
+Palm Desktop: Palm Desktop
+This form will allow you to import entries from the Palm Desktop Datebook.: Dieses Formular erlaubt das Importieren der Kalendereintr&auml;ge ihres Palm Desktop Datebook.
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner <tt>datebook/datebook.dat</tt> in einem Unterverzeichnis mit Ihrem Usernamen sein.
+The following entries will not be imported: Folgende Eintr&auml;ge werden nicht importiert
+Entries older than the current date: Eintr&auml;ge die &auml;lter als das aktuelle Datum sind
+Entries created in the Palm Desktop that have not been HotSync'd: Hinzugef&uuml;gte Eintr&auml;ge im Palm Desktop die nicht synchronisiert wurden (HotSync'd)
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er das Datum des Termines ist vorbei).
+Therefore, updates should be made in the Palm Desktop.: Deshalb sollten &Auml;nderungen auf dem Palm/Desktop durchgef&uuml;hrt werden.
+vCal: vCalendar
+This form will import vCalendar (.vcs) 1.0 events: Dieses Formular importiert vCalendar (.vcs) 1.0 Eintr&auml;ge
+The following formats have been tested: Folgende Formate wurden getestet
+Palm Desktop 4: Palm Desktop 4
+Lotus Organizer 6: Lotus Organizer 6
+Microsoft Outlook 2002: Microsoft Outlook 2002
+iCalendar: iCalendar
+This form will import iCalendar (.ics) events: Dieses Formular importiert iCalendar (.ics) Eintr&auml;ge
+Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Aktiviertes <b>Vorigen Import &uuml;berschreiben</b> bewirkt, da&szlig; vorige importierte Termine, welche die selbe UID verwenden, wie ein Termin von der neuen Import-Datei, als "l&ouml;schen" markiert sind. Das erlaubt ein Importieren einer aktuellen iCalendar Datei ohne Duplikate zu erzeugen.
 
 
 ###############################################
-# Page: report.php
+# Page: icalclient.php
 #
-cont.: Forts.
-This event is confidential: Dieser Termin ist <b>VERTRAULICH</b>
-Waiting for approval: Warten auf &Uuml;berpr&uuml;fung
-Deleted: Gel&ouml;scht
-Rejected: Eintrag abgelehnt, wird nicht teilnehmen
-Approved: Best&auml;tigt
-Unknown: Unbekannt
-to manage reports for the Public Access calendar: Zum verwalten der Berichte f&uuml;r den &Ouml;ffentlichen Kalender
-Add new report: Neuen Bericht hinzuf&uuml;gen
-Manage Reports: Berichte verwalten
+Publishing Disabled (Admin): Ver&ouml;ffentlichung Inaktiv (Administrator)
+Publishing Disabled (User): Ver&ouml;ffentlichung Inaktiv (Benutzer)
 
 
 ###############################################
-# Page: search.php
+# Page: export.php
 #
-Search: Suche
-Keywords: Stichw&ouml;rter
-Advanced Search: Erweiterte Suche
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: Sie m&uuml;ssen ein oder mehrere Stichw&ouml;rter eingeben
-Search Results: Suchergebnis
-No matches found: Keine Eintr&auml;ge gefunden
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: Kalender anderer Benutzer anzeigen 
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-You have not added any categories: Sie haben noch keine Kategorien angelegt
-Set Category: Kategorie zuweisen
-Global Categories can not be changed: Allgemeine Kategorieren k&ouml;nnen nicht ge&auml;ndert werden
-
-
-###############################################
-# Page: upcoming.php
-#
-__month__ __dd__: __dd__. __month__
-more: weitere...
+Export format: Exportformat
+Include all layers: Beinhaltet ALLE Layers
+Export all dates: Alle Eintr&auml;ge exportieren
+Start date: Anfangsdatum
+End date: Enddatum
+Modified since: &Auml;nderungen ab
 
 
 ###############################################
@@ -1112,35 +1098,13 @@ denotes administrative user: Kennzeichnet Benutzer mit administrativen Rechten
 
 
 ###############################################
-# Page: usersel.php
+# Page: search_handler.php
 #
-Reset: Zur&uuml;cksetzen
-
-
-###############################################
-# Page: views.php
-#
-Add New View: Neue Ansicht hinzuf&uuml;gen
-
-
-###############################################
-# Page: views_edit.php
-#
-Unnamed View: Neue Ansicht
-Add View: Ansicht hinzuf&uuml;gen
-Edit View: Ansicht editieren
-View Name: Ansichtsname
-View Type: Ansichtstyp
-Day by Time: Zeiteinteilungen pro Tag
-Week (Users horizontal): Woche (Teilnehmer horizontal)
-Week by Time: Zeiteinteilungen pro Woche
-Week (Users vertical): Woche (Teilnehmer vertikal)
-Week (Timebar): Woche (Zeitschiene)
-Month (Timebar): Monat (Zeitschiene)
-Month (side by side): Monat (Seitenweise)
-Month (on same calendar): Monat (am gleichen Kalender)
-preview: Vorschau (Ansicht)
-Selected: Ausgew&auml;hlte(r)
+You must enter one or more search keywords: Sie m&uuml;ssen ein oder mehrere Stichw&ouml;rter eingeben
+Search Results: Suchergebnis
+match found: Eintrag gefunden
+matches found: Eintr&auml;ge gefunden
+No matches found: Keine Eintr&auml;ge gefunden
 
 
 ###############################################
@@ -1150,89 +1114,151 @@ You must specify a view name: Sie m&uuml;ssen einen Ansichtsnamen angeben
 
 
 ###############################################
-# Page: view_d.php
+# Page: nonusers.php
 #
-No users for this view: Keine g&uuml;ltigen Benutzer f&uuml;r diese Ansicht
+Add New NonUser Calendar: Neuen 'Zentralen-Kalender' hinzuf&uuml;gen
 
 
 ###############################################
-# Page: view_entry.php
+# Page: category.php
 #
-Status: Status
-Accepted: Best&auml;tigt
-Needs-Action: Ben&ouml;tige Aktion
-Declined: Abgenommen
-Completed: Abgeschlossen
-by: von
-Percentage Complete: Prozentsatz erledigt
-External User: Externer Benutzer
-Update Task Percentage: Aktualisierung des Aufgabenprozentsatzes
-Update: Aktualisieren
-Attachments: Anh&auml;nge
-comments: Anmerkung(en)
-Show: Zeigen
-Hide: Verstecken
-Approve/Confirm entry: Eintrag genehmigen/best&auml;tigen?
-Reject entry: Eintrag ablehnen?
-Set category: Kategorie zuweisen
-Edit repeating entry for all dates: &Auml;ndern ALLER wiederkehrenden Termine des Eintrags
-Edit entry for this date: &Auml;ndern des Termines f&uuml;r DIESES Datum
-Delete repeating event for all dates: L&ouml;schen ALLER wiederkehrenden Termine des Eintrags 
-This will delete this entry for all users.: Dieser Eintrag wird f&uuml;r alle Benutzer gel&ouml;scht.
-Delete entry only for this date: L&ouml;schen des Termines nur f&uuml;r DIESES Datum
-Edit entry: Eintrag &auml;ndern
-from calendar of: vom Kalender
-Copy entry: Eintrag kopieren
-This will delete the entry from your calendar.: Dieser Eintrag wird von Ihrem Kalender gel&ouml;scht.
-Do you want to add this entry to your calendar?: Wollen Sie diesen Eintrag zu Ihrem Kalender hinzuf&uuml;gen?
-This will add the entry to your calendar.: Bitte best&auml;tigen, um den Eintrag hinzuzuf&uuml;gen.
-Email all participants: Email an alle Benutzer
-Show activity log: Aktivit&auml;ten Protokoll ansehen
-Hide activity log: Aktivit&auml;ten Protokoll ausblenden
-Export this entry to: Diesen Eintrag exportieren nach
+Category Name: Kategorie Name
+Category Icon: Kategorie Icon
+Remove Icon: Icon entfernen
+Add Icon to Category: Icon f&uuml;r Kategorie hinzuf&uuml;gen
+Upload: Hochladen
+gif 3kb max: gif max. 3kb gro&szlig;
+Search for existing icons: Suche nach bereits vorhandene Icons
+Add New Category: Neue Kategorie hinzuf&uuml;gen
 
 
 ###############################################
-# Page: view_r.php
+# Page: edit_remotes_handler.php
 #
-Double-click on empty cell to add new entry: Ein 'Doppelklick' auf eine leere Zelle f&uuml;gt einen neuen Termin ein.
+Create a new layer to view this calendar: Erstelle neuen Layer um diesen Kalendar anzuzeigen.
 
 
 ###############################################
-# Page: week_details.php
+# Page: edit_entry.php
 #
-Assistant mode: Assistentenmodus
-New Entry: Neuer Eintrag
+am: Vormittag
+pm: Nachmittag
+You are not authorized to edit this task: Sie sind nicht berechtigt diese Aufgabe zu &auml;ndern
+hours ahead of you: Stunden vor Ihnen
+hours behind you: Stunden nach Ihnen
+hour ahead of you: Stunde vor Ihnen
+hour behind you: Stunde nach Ihnen
+is in a different timezone than you are. Currently: ist in einem anderen Zeitzone, als Sie sind. Derzeit
+Time entered here is based on your Timezone: Die eingegebene Zeit entspricht Ihrer Zeitzone
+Edit Entry: Eintrag &auml;ndern
+Add Entry: Eintrag hinzuf&uuml;gen
+Details: Details
+Repeat: Wiederholung
+Reminders: Erinnerungen
+completed-help: Datumaufgabe ist abgeschlossen. Nur aktiv, wenn alle Teilnehmer einen Prozentsatz von 100% entsprechen.
+Date Completed: Datum f&uuml;hrte durch
+percent-help: Aufgabenbeendigungsprozentsatz f&uuml;r diesen Benutzer
+Percent Complete: Prozent erledigt
+All Percentages: <u><b>Erf&uuml;llungsgrad der Aufgabe (%)</b></u>
+location-help: Ort des Termines
+Timed event: Termin MIT Zeitangabe
+Availability: Verf&uuml;gbarkeit
+external-participants-help: Spezifiziert eine Teilnehmerliste f&uuml;r Benutzer die keinen eigenen Webkalenderzugang haben. Die Benutzer sollten pro Zeile aufgef&uuml;hrt werden und k&ouml;nnen auch Emailadressen miteinschlie&szlig;en bzw. enthalten.  Wenn ein Emailadresse eingetragen wurde, ist der Benutzer in der Lage, Benachrichtigungen und Erinnerungen zu empfangen. 
+External Participants: Externe Benutzer
+Daily: T&auml;glich
+Weekly: W&ouml;chentlich
+Monthly: Monatlich
+by day: Tagesorientiert
+by date: Nach Datum
+by position: Nach Position
+Yearly: J&auml;hrlich
+Manual: H&auml;ndisch (manuell)
+Expert Mode: Experten Modus
+Ending: Ende
+Forever: Immer
+Use end date: Ende an diesem Tag
+Number of times: Anzahl der Zeiten
+Weekdays Only: Nur Wochentage
+Week Start: Wochenstart
+repeat-bydayextended-help: Erlaubt Datumsauswahl, die auf Tag der Woche basiert
+ByDay: Nach Tag
+repeat-month-help: Spezifiziert, bei welchen Monaten der Termin wiederholt werden sollte
+ByMonth: Nach Monat
+repeat-bysetpos-help: Erlaubt weitere Auswahlm&ouml;glichkeiten (Datums) basierend der Position die bereits ausgew&auml;hlt sind
+BySetPos: Nach ausgew&auml;hlter Position
+repeat-bymonthdayextended-help: Erlaubt weitere Datumsauswahl, basierend auf Datum.
+ByMonthDay: Nach Monatstag
+repeat-byweekno-help: Erlaubt den Benutzer ein Liste von wiederholenden Kalenderwochen zum Termin zu definieren (1,2...53,-53,-52...-1).
+ByWeekNo: Nach Kalenderwoche
+repeat-byyearday-help: Erlaubt den Benutzer ein Liste wiederholender Jahrestage zum Termin zu definieren (1,2...366,-366,-365...-1).
+ByYearDay: Nach Jahrestagen
+repeat-exceptions-help: Zus&auml;tzliche Tage, an denen dieser Termin auftreten oder nicht auftreten sollte
+Exclusions: Exklusive
+Inclusions: Inklusive
+Add Exception: Ausnahme hinzuf&uuml;gen
+Add Inclusion: Zus&auml;tzlicher Termin
+Delete Selected: Ausgew&auml;hltes Datum l&ouml;schen
+When: Wann
+Use Date/Time: Datum/Zeit verwenden
+Use Offset: Zeitzone verwenden
+Before: Davor
+After: Danach
+Start: Beginn
+End/Due: Ende/Bis
+Times: Wie oft
+Every: Jeden
+You are not authorized to edit this entry: Sie haben keine Berechtigung diesen Eintrag zu &auml;ndern.
 
 
 ###############################################
-# Page: includes/access.php
+# Page: purge.php
 #
-Edit Event: Termin &auml;ndern
-Day View: Tagesansicht
-Week View: Wochenansicht
-Month View: Monatsansicht
-Year View: Jahresansicht
-Manage Views: Ansichten verwalten
-Category Management: Kategorien verwalten
-User Management: Benutzer verwalten
-Another User's Calendar: Kalender anderer Benutzer 
-Common Trailer: Allgemeine Navigationsleiste
+Purging events for: L&ouml;sche Termine f&uuml;r
+Finished: Abgeschlossen
+Check box to delete <b>ALL</b> events for a user: Aktivieren zum L&ouml;schen <b>ALLER</b> Termine f&uuml;r einen Teilnehmer
+Delete all events before: L&ouml;sche alle Termine vor dem
+Preview delete: Keine Vorschau der zu l&ouml;schenden Termine
+Are you sure you want to delete events for: Wollen Sie wirklich die Termine l&ouml;schen f&uuml;r
+Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
 
 
 ###############################################
-# Page: includes/config.php
+# Page: catsel.php
 #
-Fatal Error: Fataler Fehler
-Troubleshooting Help: Fehlersuche (Hilfe)
+ENTRY CATEGORIES: EINGETRAGENE KATEGORIEN
+AVAILABLE CATEGORIES: VERF&Uuml;GBARE KATEGORIEN
+Global Category: Allg. Kategorien
 
 
 ###############################################
-# Page: includes/date_formats.php
+# Page: includes/help_trailer.php
 #
-LANGUAGE DEFINED: SPRACHDEFINIERT
-December: Dezember
-Dec: Dez
+Go to: Gehe zu
+
+
+###############################################
+# Page: includes/doc.php
+#
+bytes: Bytes
+kb: kB
+Mb: Mb
+
+
+###############################################
+# Page: includes/xcal.php
+#
+Interval: Interval
+Months: Monate
+Month Days: Monatstage
+Days: Tage
+Weeks: Wochen
+Position: Position
+Until: Bis
+Count: Z&auml;hlimpuls
+Inclusion Dates: Inklusive des Datum(s)
+Exclusion Dates: Exklusive des Datum(s)
+Unnamed Event: Unbenannter Termin
+Event Imported: Termin importiert
 
 
 ###############################################
@@ -1272,6 +1298,7 @@ August: August
 September: September
 October: Oktober
 November: November
+December: Dezember
 Jan: Jan
 Feb: Feb
 Mar: M&auml;r
@@ -1283,36 +1310,57 @@ Aug: Aug
 Sep: Sep
 Oct: Okt
 Nov: Nov
+Dec: Dez
 Tuesday: Dienstag
 Wednesday: Mittwoch
 Thursday: Donnerstag
 Friday: Freitag
 Saturday: Samstag
+Schedule an appointment for: Eine Verabredungsliste festlegen f&uuml;r
 All Attendees: Alle Teilnehmer
 Busy: Besch&auml;ftigt
 Tentative: Vorl&auml;ufig
-day: Tag
+before: vor
+after: nach
+start: Beginn
+end: Ende
 Error approving event: Fehler beim Genehmigen des Termin
 Error deleting event: Fehler beim L&ouml;schen des Termin
 Error rejecting event: Fehler beim Ablehnen des Termin
 
 
 ###############################################
-# Page: includes/help_trailer.php
+# Page: includes/date_formats.php
 #
-Go to: Gehe zu
+LANGUAGE DEFINED: SPRACHDEFINIERT
 
 
 ###############################################
-# Page: includes/trailer.php
+# Page: includes/config.php
 #
-Home: Hauptseite
-My Calendar: Mein Kalender
-Back to My Calendar: Zur&uuml;ck zu meinem Kalender
-Add New Entry: Eintrag hinzuf&uuml;gen
-Add New Task: Neue Aufgabe hinzuf&uuml;gen
-Logout: Abmelden
-Manage calendar of: Kalender verwalten von
+Fatal Error: Fataler Fehler
+Troubleshooting Help: Fehlersuche (Hilfe)
+
+
+###############################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Ung&uuml;ltige Anmeldung
+
+
+###############################################
+# Page: includes/access.php
+#
+Edit Event: Termin &auml;ndern
+Day View: Tagesansicht
+Week View: Wochenansicht
+Month View: Monatsansicht
+Year View: Jahresansicht
+Manage Views: Ansichten verwalten
+Category Management: Kategorien verwalten
+User Management: Benutzer verwalten
+Another User's Calendar: Kalender anderer Benutzer 
+Common Trailer: Allgemeine Navigationsleiste
 
 
 ###############################################
@@ -1358,33 +1406,43 @@ journal: Journal
 
 
 ###############################################
-# Page: includes/user-imap.php
+# Page: includes/trailer.php
 #
-Invalid user login: Ung&uuml;ltige Anmeldung
+Home: Hauptseite
+My Calendar: Mein Kalender
+Back to My Calendar: Zur&uuml;ck zu meinem Kalender
+Add New Entry: Eintrag hinzuf&uuml;gen
+Add New Task: Neue Aufgabe hinzuf&uuml;gen
+Logout: Abmelden
+Manage calendar of: Kalender verwalten von
 
 
 ###############################################
-# Page: includes/user-nis.php
+# Page: includes/user.php
 #
 incorrect password: Ung&uuml;ltiges Passwort
 no such user: kein solcher Benutzer
 
 
 ###############################################
-# Page: includes/xcal.php
+# Page: includes/js/edit_nonuser.php
 #
-Interval: Interval
-Months: Monate
-Month Days: Monatstage
-Days: Tage
-Weeks: Wochen
-Position: Position
-Until: Bis
-Count: Z&auml;hlimpuls
-Inclusion Dates: Inklusive des Datum(s)
-Exclusion Dates: Exklusive des Datum(s)
-Unnamed Event: Unbenannter Termin
-Event Imported: Termin importiert
+Calendar ID can not be blank: Kalender ID kann nicht LEER sein
+Both first and last names can not be blank: Beide Namen (Vor- und Nachname) k&ouml;nnen nicht LEER sein
+
+
+###############################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Ung&uuml;ltige Farbe
+Color format should be '#RRGGBB': Farbformat sollte '#RRGGBB' sein
+URL can not be blank: URL kann nicht LEER sein
+
+
+###############################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Dateityp passt nicht mit dem Import-Format &uuml;berein
 
 
 ###############################################
@@ -1402,7 +1460,6 @@ Invalid color for table text background: Ung&uuml;ltige Farbe f&uuml;r Tabellent
 Invalid color for event popup background: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Hintergrund
 Invalid color for event popup text: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Text
 Invalid color for table cell background for today: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund 'Heute'
-Color format should be '#RRGGBB': Farbformat sollte '#RRGGBB' sein
 
 
 ###############################################
@@ -1420,39 +1477,6 @@ Invalid Event Date: Ung&uuml;tiges Datum f&uuml;r Termin
 Please add a participant: Bitte einen Teilnehmer hinzuf&uuml;gen
 Invalid Date: Ung&uuml;ltiges Datum
 You have not entered a valid time of day: Sie haben keine g&uuml;ltige Zeit f&uuml;r diesen Tag eingetragen
-
-
-###############################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: Ung&uuml;ltige Farbe
-
-
-###############################################
-# Page: includes/js/edit_nonuser.php
-#
-Calendar ID can not be blank: Kalender ID kann nicht LEER sein
-Both first and last names can not be blank: Beide Namen (Vor- und Nachname) k&ouml;nnen nicht LEER sein
-
-
-###############################################
-# Page: includes/js/edit_remotes.php
-#
-URL can not be blank: URL kann nicht LEER sein
-
-
-###############################################
-# Page: includes/js/export_import.php
-#
-File type does not match Import Format: Dateityp passt nicht mit dem Import-Format &uuml;berein
-
-
-###############################################
-# Page: includes/classes/Doc.class
-#
-bytes: Bytes
-kb: kB
-Mb: Mb
 
 
 ###############################################
@@ -1511,7 +1535,7 @@ Invalid Login: Ung&uuml;ltiges Login
 required only if Safe Mode is On: nur erforderlich wenn Safe Mode 'ON' gesetzt ist
 required only if Remote Calendars are used: nur erforderlich wenn Fernzugriff-Kalender verwendet werden
 needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig
-Passwords do not match: Passw&oouml;rter stimmen nicht &uuml;berein
+Passwords do not match: Passw&ouml;rter stimmen nicht &uuml;berein
 Unable to write password to settings.php file: Passwort kann nicht in die 'settings.php'-Datei geschrieben werden
 Password has been set: Passwort wurde gesetzt
 Connection Successful: Verbindung erfolgreich.
