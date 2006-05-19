@@ -17,11 +17,13 @@ if ( empty ( $login) || $login == '__public__' ) {
   exit;
 }
 
+load_user_categories ();
+
 $selected = ' selected="selected"';
 $datem = date ( 'm' );
 $dateY = date ( 'Y' );
 
-$INC = array('js/export_import.php');
+$INC = array('js/export_import.php', 'js/visible.php/true');
 print_header($INC);
 ?>
 
@@ -31,7 +33,7 @@ print_header($INC);
 <table style="border-width:0px;">
 <tr><td>
  <label for="exformat"><?php etranslate( 'Export format' )?>:</label></td><td>
- <select name="format" id="exformat">
+ <select name="format" id="exformat" onchange="toggel_catfilter();">
   <option value="ical">iCalendar</option>
   <option value="vcal">vCalendar</option>
   <option value="pilot-csv">Pilot-datebook CSV (<?php etranslate( 'Palm Pilot' )?>)</option>
@@ -53,6 +55,21 @@ print_header($INC);
  <input type="checkbox" name="use_all_dates" id="exportall" value="y" />
  <label for="exportall"><?php etranslate( 'Export all dates' )?></label>
 </td></tr>
+<?php
+  if (  is_array ( $categories ) ) { ?>
+  <tr id="catfilter"><td>
+  <label for="cat_filter"><?php etranslate( 'Categories' )?>:</label></td><td>
+ <select name="cat_filter" id="cat_filter"> 
+   <?php  
+    echo '<option value="" selected="selected">' . translate( 'All' ) . "</option>\n";
+    foreach ( $categories as $K => $V ){
+      if ( $K  > 0 )
+        echo "<option value=\"$K\">$V</option>\n";
+    }
+   ?>
+ </select>
+ </tr></td>
+<?php } ?>
 <tr><td>
  <label><?php etranslate( 'Start date' )?>:</label></td><td>
  <select name="fromday">
