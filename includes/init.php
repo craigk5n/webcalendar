@@ -171,8 +171,8 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
     if ( $thisPage == 'admin.php' || $thisPage == 'pref.php') {
       include_once 'includes/styles.php';
     } else {
-      echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"screen\"  " .
-        "href=\"css_cacher.php?$login$webcalendar_csscache\" />\n";
+      echo '<link rel="stylesheet" type="text/css"' .
+        " href=\"css_cacher.php?$login$webcalendar_csscache\" />\n";
     }
   }
 
