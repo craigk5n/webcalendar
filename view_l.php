@@ -81,8 +81,7 @@ if ( ! empty ( $error ) ) {
 
 $e_save = array ();
 $re_save = array ();
-$cnt = count ( $viewusers );
-for ( $i = 0; $i < $cnt; $i++ ) {
+for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], '', $startdate ); 
   $re_save = array_merge($re_save, $repeated_events);
@@ -92,13 +91,10 @@ for ( $i = 0; $i < $cnt; $i++ ) {
 } 
 $events = array ();
 $repeated_events = array ();
-$ev_save_cnt = count ( $e_save );
-$rv_save_cnt = count ( $re_save );
-$event_cnt = count ( $events );
-$rep_cnt = count ( $repeated_events );
-for ( $i = 0; $i < $ev_save_cnt; $i++ ) {
+
+for ( $i = 0; $i < count ( $e_save ); $i++ ) {
   $should_add = 1;
-  for ( $j = 0; $j < $event_cnt && $should_add; $j++ ) {
+  for ( $j = 0; $j < count ( $events ) && $should_add; $j++ ) {
     if ( ! $e_save[$i]->getClone() && 
       $e_save[$i]->getID() == $events[$j]->getID() ) {
       $should_add = 0;
@@ -109,9 +105,9 @@ for ( $i = 0; $i < $ev_save_cnt; $i++ ) {
   }
 }
 
-for ( $i = 0; $i < $rv_save_cnt; $i++ ) {
+for ( $i = 0; $i < count ( $re_save ); $i++ ) {
   $should_add = 1;
-  for ( $j = 0; $j < $rep_cnt && $should_add; $j++ ) {
+  for ( $j = 0; $j < count ( $repeated_events ) && $should_add; $j++ ) {
     if ( ! $re_save[$i]->getClone() && 
       $re_save[$i]->getID() == $repeated_events[$j]->getID() ) {
       $should_add = 0;
