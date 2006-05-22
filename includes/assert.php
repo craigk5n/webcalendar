@@ -27,8 +27,7 @@ function assert_get_cvs_file_version ( $file )
 {
   $version = 'v?.?';
   $path = array ( '', 'includes/', '../' );
-  $cnt = count ( $path );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $path ); $i < $cnt; $i++ ) {
     $newfile = $path[$i] . $file;
     if ( file_exists ( $newfile ) ) {
       $fd = @fopen ( $newfile, "rb", false );
@@ -70,8 +69,7 @@ function assert_backtrace ()
   $bt = debug_backtrace ();
   //print_r ( $bt );
   $file = array ();
-  $cnt = count ( $bt );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $bt ); $i < $cnt; $i++ ) {
     // skip the first two, since it's always this func and assert_handler
     if ( $i < 2 )
       continue;

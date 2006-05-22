@@ -132,12 +132,12 @@ function access_load_user_permissions ()
   if ( ! empty ( $access_other_cals ) )
     return $access_other_cals;
 
-  $sql = "SELECT cal_login, cal_other_user, " .
-    "cal_can_view, cal_can_edit, cal_can_approve, " .
-    "cal_can_email, cal_can_invite, cal_see_time_only ".
-    "FROM webcal_access_user";
+  $sql = 'SELECT cal_login, cal_other_user, ' .
+    'cal_can_view, cal_can_edit, cal_can_approve, ' .
+    'cal_can_email, cal_can_invite, cal_see_time_only '.
+    'FROM webcal_access_user';
   $res = dbi_execute ( $sql );
-  assert ( '$res' );
+  assert ( $res );
   while ( $row = dbi_fetch_row ( $res ) ) {
     $key = $row[0] . '.' . $row[1];
     $access_other_cals[$key] = array (
@@ -173,8 +173,7 @@ function access_get_viewable_users ( $user )
 
   if ( empty ( $access_other_cals ) )
     access_load_user_permissions ();
-  $cnt = count ( $access_other_cals );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $access_other_cals ); $i < $cnt; $i++ ) {
     if ( preg_match ( "/" . $user . "\.(\S+)/", $access_other_cals[$i],
       $matches ) ) {
       $ret[] = $matches[1];
@@ -207,10 +206,9 @@ function access_load_user_functions ( $user )
   $ret = '';
   $rets = array();
   $users = array ( $user, '__default__' );
-  $cnt = count ( $users );
-  for ( $i = 0; $i < $cnt && empty ( $ret ); $i++ )  {
-    $res = dbi_execute ( "SELECT cal_permissions FROM webcal_access_function " .
-      "WHERE cal_login = ?", array( $users[$i] ) );
+  for ( $i = 0, $cnt = count ( $users ); $i < $cnt && empty ( $ret ); $i++ )  {
+    $res = dbi_execute ( 'SELECT cal_permissions FROM webcal_access_function ' .
+      'WHERE cal_login = ?', array( $users[$i] ) );
     assert ( '$res' );
     if ( $row = dbi_fetch_row ( $res ) ) {
       $rets[$users[$i]] = $row[0];

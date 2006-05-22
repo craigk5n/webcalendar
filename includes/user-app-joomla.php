@@ -305,7 +305,7 @@ function user_load_variables ( $login, $prefix ) {
     }
     dbi_free_result ( $res );
   } else {
-    $error = "Database error: " . dbi_error ();
+    $error = db_error ();
     return false;
   }
 

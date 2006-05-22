@@ -65,6 +65,21 @@ EOT;
   exit;
 }
 
-
+function db_error ( $doExit=false, $sql='' ) {
+  global $settings;
+  
+  $ret = '';
+  $ret = translate('Database error') . ': ' . dbi_error ();
+  if ( ! empty ( $settings['mode'] ) && $settings['mode'] == 'dev'  && 
+    ! empty ( $sql ) ) {
+    $ret .= "<br />\nSQL:<br />\n$sql";
+  }
+  if ( $doExit ) {
+    echo $ret;
+    exit;
+  } else {
+    return $ret;
+  }
+}
 
 ?>
