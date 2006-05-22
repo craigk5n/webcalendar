@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1491491: reload_remotes.php doesn't display any error message
  - Implemented RFE 1490058: export a certain category
  - Fixed bug 1489354: installation wizard doesn't work after 'step3'
  - Fixed bug 1490179: Error after upgrading to latest CVS 1.1

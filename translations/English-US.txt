@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 05-19-2006
+# Translation last updated on 05-22-2006
 
 
 ###############################################
@@ -995,6 +995,8 @@ Modify Non User Calendar Preferences: Modify Non User Calendar Preferences
 Return to My Preferences: Return to My Preferences
 Custom Scripts: Custom Scripts
 Timezone Selection: Timezone Selection
+theme-reload-help: Due to CSS caching, a page reload may be required
+Page may need to be reloaded for new Theme to take effect: Page may need to be reloaded for new Theme to take effect
 Email format preference: Email format preference
 HTML: HTML
 Plain Text: Plain Text
@@ -1515,6 +1517,18 @@ This is a reminder for the task detailed below.: This is a reminder for the task
 This is a reminder for the event detailed below.: This is a reminder for the event detailed below.
 Pecentage Complete: Pecentage Complete
 Reminder: Reminder
+
+
+###############################################
+# Page: tools/reload_remotes.php
+#
+Include Path: Include Path
+Deleting events for: Deleting events for
+Importing events for: Importing events for
+No data returned from: No data returned from
+for non-user calendar: for non-user calendar
+No Remote Calendars found: No Remote Calendars found
+Remote Calendars not enabled: Remote Calendars not enabled
 
 
 ###############################################
