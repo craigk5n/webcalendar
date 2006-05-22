@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1492753: missing 'convert to GMT' at wizard 'step 4'
       1491491: reload_remotes.php doesn't display any error message
       1489354: installation wizard doesn't work after 'step3'
       1490179: Error after upgrading to latest CVS 1.1
