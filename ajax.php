@@ -21,13 +21,13 @@ load_global_settings ();
 $WebCalendar->setLanguage();
 load_user_preferences ();
 
-$page = getPostValue ( 'page' );
-$name = getPostValue ( 'name' );
+//$page = getPostValue ( 'page' );
+//$name = getPostValue ( 'name' );
 
 //we're processing edit_remotes Calendar ID field
 if ( $page == 'edit_remotes' || $page == 'edit_nonuser') {
-  $sql="SELECT cal_login FROM webcal_nonuser_cals WHERE cal_login = ?";
-  $res = dbi_execute ( $sql , array ( $name ) ); 
+  $sql= 'SELECT cal_login FROM webcal_nonuser_cals WHERE cal_login = ?';
+  $res = dbi_execute ( $sql , array ( $NONUSER_PREFIX.$name ) ); 
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     // assuming we are using '_NUC_' as $NONUSER_PREFIX
@@ -40,7 +40,7 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser') {
 
 //we're processing  username field
 if ( $page == 'register' || $page == 'edit_user' ) {
-  $sql="SELECT cal_login FROM webcal_user WHERE cal_login = ?";
+  $sql= 'SELECT cal_login FROM webcal_user WHERE cal_login = ?';
   $res = dbi_execute ( $sql , array ( $name ) ); 
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -52,7 +52,7 @@ if ( $page == 'register' || $page == 'edit_user' ) {
 
 //we're processing email field from any page field
 if ( $page == 'email' ) {
-  $sql="SELECT cal_email FROM webcal_user WHERE cal_email = ?";
+  $sql= 'SELECT cal_email FROM webcal_user WHERE cal_email = ?';
   $res = dbi_execute ( $sql , array ( $name ) ); 
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
