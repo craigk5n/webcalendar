@@ -15,9 +15,7 @@
 // Any option in webcal_user_pref can be configured here
 //
 
-//This theme will reset the System Settings to the default values from the 
-//installation script. This will not affect colors or options that users have
-//already saved under preferences.
+//This theme will be available to both normal users and System Settings.
 $webcal_theme = array (
 'BGCOLOR'              =>'#FFFFFF',
 'CELLBG'               =>'#C0C0C0',
@@ -29,6 +27,7 @@ $webcal_theme = array (
 'FONTS'                =>'Arial, Helvetica, sans-serif',
 'HASEVENTSBG'          =>'#FFFF33',
 'H2COLOR'              =>'#000000',
+'MENU_THEME'           =>'default',
 'OTHERMONTHBG'         =>'#D0D0D0',
 'POPUP_BG'             =>'#FFFFFF',
 'POPUP_FG'             =>'#000000',

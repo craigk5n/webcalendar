@@ -15,13 +15,13 @@
 // Any option in webcal_user_pref can be configured here
 //
 
-//This theme changes the color scheme only to the hues of autumn.
 //This theme will be available to both normal users and System Settings.
 $webcal_theme = array (
 'BGCOLOR'          =>'#F4DD65',
 'CELLBG'           =>'#F4DD65',
 'HASEVENTSBG'      =>'#CC9900',
 'H2COLOR'          =>'#000000',
+'MENU_THEME'       =>'autumn',
 'OTHERMONTHBG'     =>'#CC9900',
 'POPUP_BG'         =>'#F4DD65',
 'POPUP_FG'         =>'#000000',

@@ -34,16 +34,15 @@ function save_pref( $prefs, $src) {
       if ( $setting == 'THEME' &&  $value != 'none' )
         $my_theme = strtolower ( $value );
       $setting = strtoupper ( $setting );
-      $sql = "DELETE FROM webcal_config WHERE cal_setting = ?";
+      $sql = 'DELETE FROM webcal_config WHERE cal_setting = ?';
       if ( ! dbi_execute ( $sql, array( $setting ) ) ) {
         $error = translate( 'Error' ) . ': ' . dbi_error () .
           "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
         break;
       }
       if ( strlen ( $value ) > 0 ) {
-        $sql = "INSERT INTO webcal_config " .
-          "( cal_setting, cal_value ) VALUES " .
-          "( ?, ? )";
+        $sql = 'INSERT INTO webcal_config ' .
+          '( cal_setting, cal_value ) VALUES ( ?, ? )';
         if ( ! dbi_execute ( $sql, array( $setting, $value ) ) ) {
           $error = translate( 'Error' ) . ': ' . dbi_error () .
             '<br /><br /><span style="font-weight:bold;">SQL:</span>' . $sql;
@@ -83,7 +82,7 @@ if ( ! empty ( $_POST ) && empty ( $error )) {
 if ( function_exists ( 'db_load_config' ) && empty ( $_POST )  )
   db_load_config ();
 
-$res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_config" );
+$res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config' );
 $s = array ();
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
@@ -246,8 +245,7 @@ print_header ( $INC, '', $BodyX );
   echo '<option disabled="disabled">' . translate( 'AVAILABLE THEMES' ) . $option;
   //always use 'none' as default so we don't overwrite manual settings
   echo '<option  value="none"' . $selected . '>' . translate( 'None' ) . $option;
-  $cnt = count ( $themes);
-  for ( $i = 0; $i <= $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $themes); $i <= $cnt; $i++ ) {
      echo '<option value="' . $themes[1][$i] . '">' . $themes[0][$i] . $option;
   }
 ?>
@@ -317,8 +315,7 @@ print_header ( $INC, '', $BodyX );
 $choices = array ( 'day.php', 'week.php', 'month.php', 'year.php' );
 $choices_text = array ( translate ( 'Day' ), translate ( 'Week' ),
   translate ( 'Month' ), translate ( 'Year' ) );
-$cnt = count ( $choices );
-for ( $i = 0; $i < $cnt; $i++ ) {
+for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
   echo '<option value="' . $choices[$i] . '" ';
   if ( $s['STARTVIEW'] == $choices[$i] )
     echo $selected;
@@ -326,8 +323,7 @@ for ( $i = 0; $i < $cnt; $i++ ) {
 }
 
 // Allow user to select a view also
-$cnt = count ( $views );
-for ( $i = 0; $i < $cnt; $i++ ) {
+for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   if ( $views[$i]['cal_is_global'] != 'Y' )
     continue;
   $xurl = $views[$i]['url'];
@@ -375,8 +371,7 @@ for ( $i = 0; $i < $cnt; $i++ ) {
   <?php etranslate( 'Date format' )?>:</td><td>
   <select name="admin_DATE_FORMAT">
    <?php
-    $cnt = count ( $datestyles );
-    for ( $i = 0; $i < $cnt; $i += 2 ) {
+    for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i += 2 ) {
      echo '<option value="' . $datestyles[$i] . '"';
      if ( $s['DATE_FORMAT'] == $datestyles[$i] )
       echo $selected;
@@ -387,8 +382,7 @@ for ( $i = 0; $i < $cnt; $i++ ) {
 
   <select name="admin_DATE_FORMAT_MY">
    <?php
-    $cnt = count ( $datestyles_my );
-    for ( $i = 0; $i < $cnt; $i += 2 ) {
+    for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
      echo '<option value="' . $datestyles_my[$i] . '"';
      if ( $s['DATE_FORMAT_MY'] == $datestyles_my[$i] )
       echo $selected;
@@ -399,8 +393,7 @@ for ( $i = 0; $i < $cnt; $i++ ) {
 
   <select name="admin_DATE_FORMAT_MD">
    <?php
-    $cnt = count ( $datestyles_md );
-    for ( $i = 0; $i < $cnt; $i += 2 ) {
+    for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
      echo '<option value="' . $datestyles_md[$i] . '"';
      if ( $s['DATE_FORMAT_MD'] == $datestyles_md[$i] )
       echo $selected;
@@ -618,8 +611,8 @@ for ( $i = 0; $i < $cnt; $i++ ) {
 // <?php
 // if ( $PLUGINS_ENABLED == 'Y' ) {
 //   $plugins = get_plugin_list ( true );
-//   $cnt = count ( $plugins );
-//   for ( $i = 0; $i < $cnt; $i++ ) {
+//   
+//   for ( $i = 0, $cnt = count ( $plugins ); $i < $cnt; $i++ ) {
 //     $val = $s[$plugins[$i] . ".plugin_status'];
 //     echo '<tr><td class="tooltip" title="' .
 //       tooltip('plugins-sort-key-help') . '">&nbsp;&nbsp;&nbsp;' .

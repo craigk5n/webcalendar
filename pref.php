@@ -11,7 +11,7 @@ if  ( isset ( $_COOKIE['webcalendar_csscache'] ) ) {
 SetCookie ( 'webcalendar_csscache', $webcalendar_csscache );
 
 function save_pref( $prefs, $src) {
-  global $my_theme, $prefuser, $MENU_THEME;
+  global $my_theme, $prefuser;
   while ( list ( $key, $value ) = each ( $prefs ) ) {
     if ( $src == 'post' ) {
       $setting = substr ( $key, 5 );
@@ -32,15 +32,14 @@ function save_pref( $prefs, $src) {
     if ( strlen ( $setting ) > 0 && $prefix == 'pref_' ) {
       if ( $setting == 'THEME' &&  $value != 'none' )
         $my_theme = strtolower ( $value ); 
-      $sql =
-        "DELETE FROM webcal_user_pref WHERE cal_login = ? " .
-        "AND cal_setting = ?";
+      $sql = 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
+        'AND cal_setting = ?';
       dbi_execute ( $sql , array ( $prefuser , $setting ) );
       if ( strlen ( $value ) > 0 ) {
       $setting = strtoupper ( $setting );
-        $sql = "INSERT INTO webcal_user_pref " .
-          "( cal_login, cal_setting, cal_value ) VALUES " .
-          "( ?, ?, ? )";
+        $sql = 'INSERT INTO webcal_user_pref ' .
+          '( cal_login, cal_setting, cal_value ) VALUES ' .
+          '( ?, ?, ? )';
         if ( ! dbi_execute ( $sql , array ( $prefuser , $setting , $value ) ) ) {
           $error = 'Unable to update preference: ' . dbi_error () .
    '<br /><br /><span style="font-weight:bold;">SQL:</span>' . $sql;
@@ -54,6 +53,7 @@ $currenttab = '';
 $public = getGetValue ('public');
 $user = getGetValue ('user');
 $updating_public = false;
+  load_global_settings ();
 
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
@@ -89,7 +89,7 @@ if (!$user || $user == $login) load_user_categories ();
 // Reload preferences into $prefarray[].
 // Get system settings first.
 $prefarray = array ();
-$res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_config " );
+$res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config ' );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $prefarray[$row[0]] = $row[1];
@@ -97,8 +97,8 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 //get user settings
-$res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_user_pref " .
-    "WHERE cal_login = ?" , array ( $prefuser ) );
+$res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_user_pref ' .
+    'WHERE cal_login = ?' , array ( $prefuser ) );
 
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
@@ -118,7 +118,7 @@ if (is_dir($dir)) {
    if ($dh = opendir($dir)) {
        while (($file = readdir($dh)) !== false) {
          if ( strpos ( $file, '_pref.php' ) )
-           $themes[] = strtoupper( str_replace ( '_pref.php', '', $file ) );
+           $themes[] = str_replace ( '_pref.php', '', $file );
        }
        sort ( $themes );
        closedir($dh);
@@ -131,7 +131,8 @@ $dir = 'includes/menu/themes/';
 if ( is_dir( $dir ) ) {
    if ( $dh = opendir( $dir ) ) {
        while ( ( $file = readdir( $dh ) ) !== false ) {
-         if ( $file == "." || $file == ".." || $file == 'CVS' ) continue;
+         if ( $file == '.' || $file == '..' || $file == 'CVS' || 
+           $file == 'default') continue;
          if ( is_dir ( $dir.$file ) ) $menuthemes[] = $file;
        }
        closedir($dh);
@@ -210,8 +211,7 @@ if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
   echo "<option $selected disabled=\"disabled\" value=\"\">" . 
     translate ( 'Modify Non User Calendar Preferences') . "</option>\n";
   if ( ! empty ( $public_option ) ) echo $public_option . "\n";
-  $cnt = count ( $nulist );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
     echo '<option value="pref.php?user='. $nulist[$i]['cal_login']. '">' . 
       $nulist[$i]['cal_fullname'] . "</option>\n";
   }
@@ -317,16 +317,14 @@ if ( access_can_access_function ( ACCESS_YEAR ) ) {
   $choices[] = 'year.php';
   $choices_text[] = translate ( 'Year' );
 }
-$cnt = count ( $choices );
-for ( $i = 0; $i < $cnt; $i++ ) {
+for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
   echo '<option value="' . $choices[$i] . '" ';
   if ( $prefarray['STARTVIEW'] == $choices[$i] )
     echo $selected;
   echo ' >' . htmlspecialchars ( $choices_text[$i] ) . "</option>\n";
 }
 // Allow user to select a view also
-$cnt = count ( $views );
-for ( $i = 0; $i < $cnt; $i++ ) {
+for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   if ( $updating_public && $views[$i]['cal_is_global'] != 'Y' )
     continue;
   $xurl = $views[$i]['url'];
@@ -363,8 +361,7 @@ for ( $i = 0; $i < $cnt; $i++ ) {
  <?php etranslate( 'Date format' )?>:</td><td>
  <select name="pref_DATE_FORMAT">
   <?php
-  $cnt = count ( $datestyles );
-  for ( $i = 0; $i < $cnt; $i += 2 ) {
+  for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i += 2 ) {
     echo '<option value="' . $datestyles[$i] . '"';
     if ( $prefarray['DATE_FORMAT'] == $datestyles[$i] )
       echo $selected;
@@ -376,8 +373,7 @@ for ( $i = 0; $i < $cnt; $i++ ) {
 <br />
 <select name="pref_DATE_FORMAT_MY">
 <?php
-  $cnt = count ( $datestyles_my );
-  for ( $i = 0; $i < $cnt; $i += 2 ) {
+  for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
     echo '<option value="' . $datestyles_my[$i] . '"';
     if ( $prefarray['DATE_FORMAT_MY'] == $datestyles_my[$i] )
       echo $selected;
@@ -389,8 +385,7 @@ for ( $i = 0; $i < $cnt; $i++ ) {
 <br />
 <select name="pref_DATE_FORMAT_MD">
 <?php
-  $cnt = count ( $datestyles_md );
-  for ( $i = 0; $i < $cnt; $i += 2 ) {
+  for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
     echo '<option value="' . $datestyles_md[$i] . '"';
     if ( $prefarray['DATE_FORMAT_MD'] == $datestyles_md[$i] )
       echo $selected;
@@ -551,13 +546,16 @@ for ( $i = 0; $i < $cnt; $i++ ) {
 <div id="tabscontent_themes">
 <table  cellspacing="1" cellpadding="2"  border="0" width="35%">
 <?php if ( $ALLOW_USER_THEMES == 'Y' ) { ?>
+<tr><td class="tooltip"  title="<?php etooltip( 'theme-reload-help' );?>"colspan="3"><?php 
+etranslate( 'Page may need to be reloaded for new Theme to take effect' )?></td></tr>
 <tr><td  class="tooltipselect" title="<?php etooltip( 'themes-help' );?>">
  <label for="pref_THEME"><?php etranslate( 'Themes' )?>:</label></td><td>
  <select name="pref_THEME" id="pref_THEME">
 <?php
-  echo '<option disabled>' . translate( 'AVAILABLE THEMES' ) . "</option>\n";
+  echo "<option value=\"none\" disabled  $selected>" . 
+    translate( 'AVAILABLE THEMES' ) . "</option>\n";
   //always use 'none' as default so we don't overwrite manual settings
-  echo '<option value="none"' . $selected . translate( 'None' ) . "</option>\n";
+ // echo '<option value="none"' . $selected . translate( 'None' ) . "</option>\n";
     foreach ( $themes as $theme ) {
      echo '<option value="' . $theme . '">' . $theme . "</option>\n";
   }
@@ -570,7 +568,8 @@ for ( $i = 0; $i < $cnt; $i++ ) {
  <label for="pref_MENU_THEME"><?php etranslate( 'Menu theme' )?>:</label></td><td>
  <select name="pref_MENU_THEME" id="pref_MENU_THEME">
 <?php
-  echo '<option  value="none"' . $selected . translate( 'None' ) . "</option>\n";
+  echo '<option value="default" ' . ($prefarray['MENU_THEME'] == 'default' ?
+    $selected : '' ) . ">default</option>\n";
   foreach ( $menuthemes as $menutheme ) {
      echo '<option value="' . $menutheme . '"';
      if ($prefarray['MENU_THEME'] == $menutheme ) echo $selected;

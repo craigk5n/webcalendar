@@ -79,7 +79,7 @@ $webcalConfig = array (
 'LIMIT_APPTS'=>'N',
 'LIMIT_DESCRIPTION_SIZE'=>'N',
 'MENU_ENABLED'=>'N',
-'MENU_THEME'=>'',
+'MENU_THEME'=>'default',
 'MYEVENTS'=>'#006000',
 'NONUSER_AT_TOP'=>'Y',
 'NONUSER_ENABLED'=>'Y',
@@ -141,10 +141,10 @@ $webcalConfig = array (
 
 function make_uppercase () {
   //make sure all cal_settings are UPPERCASE
-  if ( ! dbi_execute ( "UPDATE webcal_config SET cal_setting = UPPER(cal_setting)" ) )
+  if ( ! dbi_execute ( 'UPDATE webcal_config SET cal_setting = UPPER(cal_setting)' ) )
     echo translate( 'Error updating webcal_config') . ': ' . dbi_error ();       
   dbi_free_result ( $res );    
-  if ( ! dbi_execute ( "UPDATE webcal_user_pref SET cal_setting = UPPER(cal_setting)" ) )
+  if ( ! dbi_execute ( 'UPDATE webcal_user_pref SET cal_setting = UPPER(cal_setting)' ) )
     echo translate( 'Error updating webcal_user_pref') . ': ' . dbi_error ();       
   dbi_free_result ( $res );
 }
@@ -152,10 +152,10 @@ function make_uppercase () {
 function db_load_config () {
 global $webcalConfig; 
    while ( list ( $key, $val ) = each ( $webcalConfig ) ) {
-    $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
-     "WHERE cal_setting  = ?", array( $key ) , false, false );
-   $sql = "INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-       "VALUES (?,?)";
+    $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
+     'WHERE cal_setting  = ?', array( $key ) , false, false );
+   $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) ' .
+       'VALUES (?,?)';
      if ( ! $res ) {
        dbi_execute  ( $sql , array ( $key , $val ) );
    } else { //Sqlite returns $res always
@@ -169,7 +169,7 @@ global $webcalConfig;
 }
 
 function db_load_admin () {
- $res = dbi_execute ( "SELECT cal_login FROM webcal_user " .
+ $res = dbi_execute ( 'SELECT cal_login FROM webcal_user ' .
  "WHERE cal_login  = 'admin'", array() , false, false );
  $sql = "INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) 
 VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ADMINISTRATOR', 'DEFAULT', 'Y' );";
@@ -190,17 +190,17 @@ VALUES ( 'admin', 'YYYYYYYYYYYYYYYYYYYYYYYYYYY' );";
 }
 
 function do_v11b_updates () {
- $res = dbi_execute ( "SELECT webcal_entry_user.cal_id, cal_category, cat_owner " . 
-   "FROM webcal_entry_user, webcal_categories " . 
-   "WHERE webcal_entry_user.cal_category = webcal_categories.cat_id");
+ $res = dbi_execute ( 'SELECT webcal_entry_user.cal_id, cal_category, cat_owner ' . 
+   'FROM webcal_entry_user, webcal_categories ' . 
+   'WHERE webcal_entry_user.cal_category = webcal_categories.cat_id');
  if (  $res ) {
    while( $row = dbi_fetch_row ( $res ) ) {
      if (  ! empty ( $row[2] ) ) {
-     dbi_execute ("INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) " .
-       " VALUES (?,?,?)" , array ( $row[0], $row[1], $row[2] ) );  
+     dbi_execute ('INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) ' .
+       ' VALUES (?,?,?)' , array ( $row[0], $row[1], $row[2] ) );  
       } else {
-     dbi_execute ("INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_order ) " .
-       " VALUES (?,?,?)" , array ( $row[0], $row[1], 99 ) );        
+     dbi_execute ('INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_order ) ' .
+       ' VALUES (?,?,?)' , array ( $row[0], $row[1], 99 ) );        
       }     
    }
    dbi_free_result ( $res );
@@ -214,15 +214,15 @@ function do_v11b_updates () {
     " WHERE cal_setting = 'LANGUAGE' AND cal_value = 'Browser-defined'");
          
  //clear old category values
- dbi_execute ( "UPDATE webcal_entry_user SET cal_category = NULL");  
+ dbi_execute ( 'UPDATE webcal_entry_user SET cal_category = NULL');  
  //mark existing exclusions as new exclusion type
- dbi_execute ( "UPDATE webcal_entry_repeats_not  SET cal_exdate = 1");  
+ dbi_execute ( 'UPDATE webcal_entry_repeats_not  SET cal_exdate = 1');  
  //change cal_days format to cal_cal_byday format
  
  //deprecate monthlyByDayR to simply monthlyByDay
  dbi_execute ("UPDATE webcal_entry_repeats  SET cal_type = 'monthlyByDay'" .
     " WHERE cal_type = 'monthlybByDayR'");
- $res = dbi_execute ( "SELECT cal_id, cal_days FROM webcal_entry_repeats ");
+ $res = dbi_execute ( 'SELECT cal_id, cal_days FROM webcal_entry_repeats ');
  if (  $res ) {
    while( $row = dbi_fetch_row ( $res ) ) {
      if ( ! empty ( $row[1] ) && $row[1] != 'yyyyyyy' && $row[1] != 'nnnnnnn' ) {
@@ -235,8 +235,8 @@ function do_v11b_updates () {
        if ( substr( $row[1],5,1 ) == 'y') $byday[] = 'FR';
        if ( substr( $row[1],6,1 ) == 'y') $byday[] = 'SA';
        $bydays = implode (',', $byday );       
-       dbi_execute ("UPDATE webcal_entry_repeats  SET cal_byday = ?" .
-       " WHERE cal_id = ?" , array ( $bydays , $row[0] ) );
+       dbi_execute ('UPDATE webcal_entry_repeats  SET cal_byday = ?' .
+       ' WHERE cal_id = ?' , array ( $bydays , $row[0] ) );
      }
    }
    dbi_free_result ( $res );
@@ -246,7 +246,7 @@ function do_v11b_updates () {
 //convert site_extra reminders to webcal_reminders
 function do_v11e_updates () {
  $reminder_log_exists = false;
- $res = dbi_execute ( "SELECT webcal_site_extras.cal_id, webcal_site_extras.cal_data " . 
+ $res = dbi_execute ( 'SELECT webcal_site_extras.cal_id, webcal_site_extras.cal_data ' . 
    "FROM webcal_site_extras WHERE webcal_site_extras.cal_type = '7'");
  $done = array ();
  if (  $res ) {
@@ -263,8 +263,8 @@ function do_v11e_updates () {
      } else {
        $offset = $row[1];
      }
-     $res2 = dbi_execute ( "SELECT cal_last_sent " . 
-       "FROM webcal_reminder_log WHERE cal_id = ? AND cal_last_sent > 0",
+     $res2 = dbi_execute ( 'SELECT cal_last_sent ' . 
+       'FROM webcal_reminder_log WHERE cal_id = ? AND cal_last_sent > 0',
        array (  $row[0] ) );
      if (  $res2 ) {
        $reminder_log_exists = true;
@@ -273,8 +273,8 @@ function do_v11e_updates () {
        $last_sent = $row2[0];
        dbi_free_result ( $res2 );
      }     
-     dbi_execute ("INSERT INTO webcal_reminders ( cal_id, cal_date, cal_offset, cal_last_sent, " .
-       "cal_times_sent ) VALUES (?,?,?,?,?)" , 
+     dbi_execute ('INSERT INTO webcal_reminders ( cal_id, cal_date, ' .
+       'cal_offset, cal_last_sent, cal_times_sent ) VALUES (?,?,?,?,?)' , 
        array ( $row[0], $date, $offset, $last_sent, $times_sent) );       
      $done[$row[0]] = true;
    }
@@ -283,8 +283,8 @@ function do_v11e_updates () {
    dbi_execute ( "DELETE FROM webcal_site_extras WHERE webcal_site_extras.cal_type = '7'");
    //remove entries from webcal_reminder_log
    if (  $reminder_log_exists == true ) {
-     dbi_execute ( "DELETE FROM webcal_reminder_log", array(), false, false);
-     dbi_execute ( "DELETE TABLE webcal_reminder_log", array(), false, false);
+     dbi_execute ( 'DELETE FROM webcal_reminder_log', array(), false, false);
+     dbi_execute ( 'DROP TABLE webcal_reminder_log', array(), false, false);
    }
  } 
  
