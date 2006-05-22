@@ -17,6 +17,7 @@
 
 //This theme will be available to both normal users and System Settings.
 $webcal_theme = array (
+  'MENU_THEME'   => 'touch_of_grey',  // Document background  
   'BGCOLOR'      => '#E0E2EB',  // Document background
   'H2COLOR'      => '#000000',  // Document title
   'TEXTCOLOR'    => '#000000',  // Document text
