@@ -144,7 +144,7 @@ function convert_server_to_GMT () {
  //Default value 
  $error = '<b>Conversion Successful</b>';
  // Do webcal_entry update
-  $res = dbi_execute ( "SELECT cal_date, cal_time, cal_id, cal_duration FROM webcal_entry" );
+  $res = dbi_execute ( 'SELECT cal_date, cal_time, cal_id, cal_duration FROM webcal_entry' );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $cal_date = $row[0];
@@ -165,10 +165,10 @@ function convert_server_to_GMT () {
      $new_cal_date = gmdate ( 'Ymd', $new_datetime );
      $new_cal_time = gmdate ( 'His', $new_datetime );
      // Now update row with new data
-     if ( ! dbi_execute ( "UPDATE webcal_entry SET cal_date = ?, " .
-       " cal_time = ? ".
-          "WHERE cal_id = ?" , array ( $new_cal_date , $new_cal_time , $cal_id ) ) ){
-          $error = "Error updating table 'webcal_entry' " . dbi_error ();
+     if ( ! dbi_execute ( 'UPDATE webcal_entry SET cal_date = ?, ' .
+       ' cal_time = ? '.
+       'WHERE cal_id = ?' , array ( $new_cal_date , $new_cal_time , $cal_id ) ) ){
+       $error = "Error updating table 'webcal_entry' " . dbi_error ();
      return $error;
      }
     }
@@ -177,7 +177,7 @@ function convert_server_to_GMT () {
   }
  
   // Do webcal_entry_logs update
-  $res = dbi_execute ( "SELECT cal_date, cal_time, cal_log_id FROM webcal_entry_log" );
+  $res = dbi_execute ( 'SELECT cal_date, cal_time, cal_log_id FROM webcal_entry_log' );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $cal_date = $row[0];
@@ -193,10 +193,10 @@ function convert_server_to_GMT () {
    $new_cal_date = gmdate ( 'Ymd', $new_datetime );
    $new_cal_time = gmdate ( 'His', $new_datetime );
    // Now update row with new data
-   if ( ! dbi_execute ( "UPDATE webcal_entry_log SET cal_date = ?, " .
-     " cal_time = ? ".
-        "WHERE cal_log_id = ?" , array ( $new_cal_date , $new_cal_time , $cal_log_id ) ) ){
-        $error = "Error updating table 'webcal_entry_log' " . dbi_error ();
+   if ( ! dbi_execute ( 'UPDATE webcal_entry_log SET cal_date = ?, ' .
+     ' cal_time = ? '.
+     'WHERE cal_log_id = ?' , array ( $new_cal_date , $new_cal_time , $cal_log_id ) ) ){
+     $error = "Error updating table 'webcal_entry_log' " . dbi_error ();
     return $error;
    }
     }
@@ -266,7 +266,7 @@ function get_installed_version ( $postinstall=false ) {
 
  //We need to determine this is a blank database
  // This may be due to a manual table setup
- $res = dbi_execute ( "SELECT count(cal_value) FROM webcal_config" , array() , false,
+ $res = dbi_execute ( 'SELECT count(cal_value) FROM webcal_config' , array() , false,
    $show_all_errors );
  if ( $res ) {
    $row = dbi_fetch_row ( $res );
@@ -286,7 +286,7 @@ function get_installed_version ( $postinstall=false ) {
  }
  // Determine if old data has been converted to GMT
  // This seems lke a good place to put this
- $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+ $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
   "WHERE cal_setting  = 'WEBCAL_TZ_CONVERSION'", array(), false, $show_all_errors);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
@@ -304,7 +304,7 @@ function get_installed_version ( $postinstall=false ) {
  // Get existing server URL
  // We could use the self-discvery value, but this 
  // may be a custom value
- $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+ $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
   "WHERE cal_setting  = 'SERVER_URL'", array(), false, $show_all_errors);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
@@ -314,7 +314,7 @@ function get_installed_version ( $postinstall=false ) {
   dbi_free_result ( $res );
  }
  // Get existing application name
- $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
+ $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
   "WHERE cal_setting  = 'APPLICATION_NAME'", array(), false, $show_all_errors);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
@@ -657,12 +657,12 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
   }
   if ( empty ( $display_sql ) ){
    //Convert passwords to md5 hashes if needed
-   $sql = "SELECT cal_login, cal_passwd FROM webcal_user";
+   $sql = 'SELECT cal_login, cal_passwd FROM webcal_user';
    $res = dbi_execute ( $sql, array(), false, $show_all_errors );
    if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
      if ( strlen ( $row[1] ) < 30 ) {
-      dbi_execute ("UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?", array ( md5( $row[1] ) , $row[0] ) );
+      dbi_execute ('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?', array ( md5( $row[1] ) , $row[0] ) );
      }
     }
     dbi_free_result ( $res );
@@ -1668,11 +1668,10 @@ if ( ! $exists || ! $canWrite ) { ?>
    <tr><td colspan="2" width="50%">
      <?php etranslate ( 'This is the final step in setting up your WebCalendar Installation' ) ?>.
    </td></tr>
-   <?php if ( ! empty ( $_SESSION['tz_conversion']) && 
-           $_SESSION['tz_conversion'] != 'Y' ) { ?>
+   <?php if ( $_SESSION['tz_conversion'] != 'Y' ) { ?>
   <th class="header" colspan="2"><?php etranslate ( 'Timezone Conversion' ) ?></th></tr>
   <tr><td colspan="2">
- <?php if ( empty ( $_SESSION['tz_conversion'] ) ) {?>
+ <?php if ( $_SESSION['tz_conversion'] != 'Success' ) {?>
    <form action="index.php?action=tz_convert" method="post">
   <ul><li>
 <?php echo translate ( 'It appears that you have' ) . ' ' . translate ( 'NOT' ); 
