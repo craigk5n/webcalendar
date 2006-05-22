@@ -13,7 +13,7 @@ global $readonly, $is_nonuser, $is_nonuser_admin, $single_user, $user,
        $views, $REPORTS_ENABLED, $use_http_auth, $login_return_path,
        $NONUSER_ENABLED, $has_boss, $is_admin, $CATEGORIES_ENABLED,
        $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL,
-       $REMOTES_ENABLED, $DISPLAY_TASKS_IN_GRID;
+       $REMOTES_ENABLED, $DISPLAY_TASKS_IN_GRID, $HOME_LINK;
 
 
 //------------------------------------------------------------------//
@@ -165,11 +165,10 @@ if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
   } else {
     $u_url = '';
   }
-  $res = dbi_execute ( "SELECT cal_report_name, cal_report_id " .
-    "FROM webcal_report " .
-    "WHERE cal_login = ? OR " .
+  $res = dbi_execute ( 'SELECT cal_report_name, cal_report_id ' .
+    'FROM webcal_report WHERE cal_login = ? OR ' .
     "( cal_is_global = 'Y' AND cal_show_in_trailer = 'Y' ) " .
-    "ORDER BY cal_report_id", array ( $login ) );
+    'ORDER BY cal_report_id', array ( $login ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $tmp['name'] = htmlspecialchars ( $row[0] );
@@ -342,7 +341,7 @@ var myMenu =
   // translate ( 'This Month', true);
   // translate ( 'This Year', true);
   jscMenu_menu ('My Calendar');
-    jscMenu_item ( 'home.png', 'Home', 'index.php' );
+    jscMenu_item ( 'home.png', 'Home', ( empty ( $HOME_LINK )? 'index.php' : $HOME_LINK ) );
     if ( $today_url != '' ) jscMenu_item ( 'today.png', 'Today', $today_url );
     jscMenu_item ( 'week.png', 'This Week', $week_url );
     jscMenu_item ( 'month.png', 'This Month', $month_url );
