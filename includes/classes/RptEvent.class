@@ -258,17 +258,21 @@ class RepeatingEvent extends Event {
    * @access public
    */
   function getRepeatEndDateTimeTS () {
-    $year = substr ( $this->_repeatEnd, 0, 4 );
-    $month = substr ( $this->_repeatEnd, 4, 2 ); 
-    $day = substr ( $this->_repeatEnd, 6, 2 );
-  if ( $this->_repeatEndTime > 0 ) {
-    $h = (int) ( $this->_repeatEndTime / 10000 );
-    $m = ( $this->_repeatEndTime / 100 ) % 100;
-  } else {
-    $h = $m = 0;
-  }
-    $edt = gmmktime ( $h, $m, 0, $month, $day, $year );
-    $this->_repeatEndDateTimeTS = ( $edt > 0 ? $edt : '' );
+    if ( $this->_repeatEndTime > 0 ) {
+      $year = substr ( $this->_repeatEnd, 0, 4 );
+      $month = substr ( $this->_repeatEnd, 4, 2 ); 
+      $day = substr ( $this->_repeatEnd, 6, 2 );
+      if ( $this->_repeatEndTime > 0 ) {
+        $h = (int) ( $this->_repeatEndTime / 10000 );
+        $m = ( $this->_repeatEndTime / 100 ) % 100;
+      } else {
+        $h = $m = 0;
+      }
+      $edt = gmmktime ( $h, $m, 0, $month, $day, $year );
+      $this->_repeatEndDateTimeTS = ( $edt > 0 ? $edt : '' );
+    } else {
+      $this->_repeatEndDateTimeTS = '';
+    }
     return $this->_repeatEndDateTimeTS;
   }  
     
