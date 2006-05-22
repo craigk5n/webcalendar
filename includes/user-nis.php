@@ -18,7 +18,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 // need these functions and you will still need to add users to
 // webcal_user.
 
-define ( 'CRYPT_SALT_LENGTH', 12 );
+if ( ! defined ( 'CRYPT_SALT_LENGTH' ) )
+  define ( 'CRYPT_SALT_LENGTH', 12 );
 
 // Set some global config variables about your system.
 // For NIS (which is maintained external to WebCalendar), don't let them
@@ -64,7 +65,7 @@ function user_valid_login ( $login, $password ) {
             $ulastname, $login . '@' . $user_external_email, 'N' );
          } else {
            //refresh their password in webcal_user
-           user_update_user_password ( $login, $password )
+           user_update_user_password ( $login, $password );
         }
       } else {
        $error = translate ( 'Invalid login' ) . ': ' .
@@ -166,7 +167,7 @@ function user_load_variables ( $login, $prefix ) {
     }
     dbi_free_result ( $res );
   } else {
-    $error = translate( 'Database error' ) . ': ' . dbi_error ();
+    $error = db_error ();
     return false;
   }
   return $ret;
@@ -264,7 +265,7 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
     "cal_firstname = ?, cal_email = ?," .
     "cal_is_admin = ? WHERE cal_login = ?";
   if ( ! dbi_execute ( $sql , array ( $ulastname , $ufirstname , $uemail , $admin , $user  ) ) ) {
-    $error = translate( 'Database error' ) . ': ' . dbi_error ();
+    $error = db_error ();
     return false;
   }
   return true;
@@ -285,7 +286,7 @@ function user_update_user_password ( $user, $password ) {
 
   $sql = "UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?";
   if ( ! dbi_execute ( $sql , array ( md5 ( $password ) , $user ) ) ) {
-    $error = translate( 'Database error' ) . ': ' . dbi_error ();
+    $error = db_error ();
     return false;
   }
   return true;

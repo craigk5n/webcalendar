@@ -59,18 +59,18 @@ function view_get_user_list ( $view_id ) {
 
   // get users in this view
   $res = dbi_execute (
-    "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?" , array ( $view_id ) );
+    'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?' , array ( $view_id ) );
   $ret = array ();
   $all_users = false;
   if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
       $ret[] = $row[0];
-      if ( $row[0] == "__all__" )
+      if ( $row[0] == '__all__' )
         $all_users = true;
     }
     dbi_free_result ( $res );
   } else {
-    $error = translate ( 'Database error' ) . ': ' . dbi_error ();
+    $error = db_error ();
   }
   if ( $all_users ) {
     $users = get_my_users ();

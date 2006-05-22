@@ -15,8 +15,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 // $fieldname - name of field
 function dbtable_get_field_index ( $tablear, $fieldname ) {
   global $error;
-  for ( $j = 0; $j < count ( $tablear ); $j++ ) {
-    if ( $tablear[$j]["name"] == $fieldname ) {
+  for ( $j = 0, $cnt = count ( $tablear ); $j < $cnt; $j++ ) {
+    if ( $tablear[$j]['name'] == $fieldname ) {
       //echo "found $fieldname $j<br />";
       return $j;
     }
@@ -49,80 +49,80 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
       $ret .= " name=\"$formname\"";
     $ret .= ">";
     if ( is_array ( $hidden ) ) {
-      for ( $i = 0; $i < count ( $hidden ); $i += 2 ) {
+      for ( $i = 0, $cnt = count ( $hidden ); $i < $cnt; $i += 2 ) {
         $ret .= "<input type=\"hidden\" name=\"" . $hidden[$i] .
           "\" value=\"" . $hidden[$i+1] . "\" />";
       }
     }
   }
-  for ( $i = 0; $i < count ( $tablear ); $i++ ) {
-    if ( ! empty ( $tablear[$i]["hide"] ) )
+  for ( $i = 0, $cnt = count ( $tablear ); $i < $cnt; $i++ ) {
+    if ( ! empty ( $tablear[$i]['hide'] ) )
       continue;
-    if ( ! empty ( $action ) && ! empty ( $tablear[$i]["calculated"] ) )
+    if ( ! empty ( $action ) && ! empty ( $tablear[$i]['calculated'] ) )
       continue;
     $ret .= "<tr><td style=\"vertical-align:top;\">";
-    if ( ! empty ( $tablear[$i]["prompt"] ) ) {
+    if ( ! empty ( $tablear[$i]['prompt'] ) ) {
       $ret .= "<b";
-      if ( ! empty ( $tablear[$i]["tooltip"] ) )
-        $ret .= " class=\"tooltip\" title=\"" .  $tablear[$i]["tooltip"] . "\"";
-      $ret .= ">" . $tablear[$i]["prompt"] . ":</b></td>\n";
+      if ( ! empty ( $tablear[$i]['tooltip'] ) )
+        $ret .= " class=\"tooltip\" title=\"" .  $tablear[$i]['tooltip'] . '"';
+      $ret .= ">" . $tablear[$i]['prompt'] . ":</b></td>\n";
     } else {
       $ret .= "&nbsp;</td>";
     }
     $ret .= "<td style=\"vertical-align:top;\">";
-    if ( empty ( $tablear[$i]["noneditable"] ) && ! empty ( $action ) ) {
-      if ( $tablear[$i]["type"] == "text" || 
-        $tablear[$i]["type"] == "int" || $tablear[$i]["type"] == "float" ) {
-        $ret .= "<input type=\"text\" name=\"" . $tablear[$i]["name"] .
-          "\"";
-        if ( ! empty ( $tablear[$i]["maxlength"] ) )
-          $ret .= " maxlength=\"" .  $tablear[$i]["maxlength"] . "\"";
-        if ( ! empty ( $tablear[$i]["length"] ) )
-        $ret .= " size=\"" . $tablear[$i]["length"] . "\"";
+    if ( empty ( $tablear[$i]['noneditable'] ) && ! empty ( $action ) ) {
+      if ( $tablear[$i]['type'] == "text" || 
+        $tablear[$i]['type'] == "int" || $tablear[$i]['type'] == "float" ) {
+        $ret .= "<input type=\"text\" name=\"" . $tablear[$i]['name'] .
+          '"';
+        if ( ! empty ( $tablear[$i]['maxlength'] ) )
+          $ret .= " maxlength=\"" .  $tablear[$i]['maxlength'] . '"';
+        if ( ! empty ( $tablear[$i]['length'] ) )
+        $ret .= " size=\"" . $tablear[$i]['length'] . '"';
         if ( ! empty ( $valuesar[$i] ) )
-          $ret .= " value=\"" . htmlspecialchars ( $valuesar[$i] ) . "\"";
+          $ret .= " value=\"" . htmlspecialchars ( $valuesar[$i] ) . '"';
         $ret .= " />";
-      } else if ( $tablear[$i]["type"] == "boolean" ) {
-        $ret .= "<input type=\"radio\" value=\"Y\" name=\"" . $tablear[$i]["name"] . "\"";
+      } else if ( $tablear[$i]['type'] == "boolean" ) {
+        $ret .= "<input type=\"radio\" value=\"Y\" name=\"" . $tablear[$i]['name'] . '"';
         if ( $valuesar[$i] == 'Y' )
           $ret .= " checked=\"checked\"";
         $ret .= ">" . translate ( 'Yes') . "&nbsp;&nbsp;&nbsp;";
-        $ret .= "<input type=\"radio\" value=\"N\" name=\"" . $tablear[$i]["name"] . "\"";
+        $ret .= "<input type=\"radio\" value=\"N\" name=\"" . $tablear[$i]['name'] . '"';
         if ( $valuesar[$i] != 'Y' )
           $ret .= " checked=\"checked\"";
         $ret .= ">" . translate ( 'No');
-      } else if ( $tablear[$i]["type"] == "date" ) {
-        $ret .= date_selection_html ( $tablear[$i]["name"], $valuesar[$i] );
-      } else if ( $tablear[$i]["type"] == "dbdate" ) {
+      } else if ( $tablear[$i]['type'] == "date" ) {
+        $ret .= date_selection_html ( $tablear[$i]['name'], $valuesar[$i] );
+      } else if ( $tablear[$i]['type'] == "dbdate" ) {
         // '2002-12-31'
         $y = substr ( $valuesar[$i], 0, 4 );
         $m = substr ( $valuesar[$i], 5, 2 );
         $d = substr ( $valuesar[$i], 8, 2 );
         $date = sprintf ( "%04d%02d%02d", $y, $m, $d );
-        $ret .= date_selection_html ( $tablear[$i]["name"], $date );
+        $ret .= date_selection_html ( $tablear[$i]['name'], $date );
       } else {
-        $ret .= "(type " . $tablear[$i]["type"] . " not supported)";
+        $ret .= "(type " . $tablear[$i]['type'] . " not supported)";
       }
     } else {
       if ( ! empty ( $valuesar[$i] ) ) {
-        if ( $tablear[$i]["type"] == "text" ||
-          $tablear[$i]["type"] == "int" || $tablear[$i]["type"] == "float" ) {
+        if ( $tablear[$i]['type'] == "text" ||
+          $tablear[$i]['type'] == "int" || $tablear[$i]['type'] == "float" ) {
           $ret .= htmlentities ( $valuesar[$i] );
-        } else if ( $tablear[$i]["type"] == "boolean" ) {
+        } else if ( $tablear[$i]['type'] == "boolean" ) {
           if ( $valuesar[$i] == 'Y' || empty ( $valuesar[$i] ) )
             $ret .= translate ( 'Yes');
           else
             $ret .= translate ( 'No');
-        } else if ( $tablear[$i]["type"] == "date" ) {
+        } else if ( $tablear[$i]['type'] == "date" ) {
           $ret .= date_to_str ( $valuesar[$i] );
-        } else if ( $tablear[$i]["type"] == "dbdate" ) {
+        } else if ( $tablear[$i]['type'] == "dbdate" ) {
           $y = substr ( $valuesar[$i], 0, 4 );
           $m = substr ( $valuesar[$i], 5, 2 );
           $d = substr ( $valuesar[$i], 8, 2 );
           $date = sprintf ( "%04d%02d%02d", $y, $m, $d );
           $ret .= date_to_str ( $date );
         } else {
-          $ret .= "(type " . $tablear[$i]["type"] . " not supported)";
+          $ret .= "(type " . $tablear[$i]['type'] . " not supported)";
         }
       }
     }
@@ -162,39 +162,40 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
     "<table style=\"border-width:0px; width:100%;\">\n";
   // header
   $ret .= "<tr>";
-  for ( $i = 0; $i < count ( $fields ); $i++ ) {
+  $fieldcnt = count ( $fields );
+  for ( $i = 0; $i < $fieldcnt; $i++ ) {
     $ind = dbtable_get_field_index ( $tablear, $fields[$i] );
 /*
     if ( $ind < 0 )
       echo "Error: dbtable_html_list invalid fieldname \"$fields[$i]\" $i\n"; exit;
 */
-    if ( empty ( $tablear[$ind]["hide"] ) )
+    if ( empty ( $tablear[$ind]['hide'] ) )
       $ret .= "<th style=\"background-color:$THBG; color:$THFG;\">" .
-        $tablear[$ind]["prompt"] . "</th>";
+        $tablear[$ind]['prompt'] . "</th>";
   }
   $ret .= "</tr>\n";
   $sql = "SELECT " . $fields[0];
   $query_params = array();
 
-  for ( $i = 1; $i < count ( $fields ); $i++ ) {
+  for ( $i = 1; $i < $fieldcnt; $i++ ) {
     $sql .= ", " . $fields[$i];
   }
   $sql .= " FROM " . $tablename . " ";
   if ( is_array ( $keys ) && count ( $keys ) > 0 ) {
     $sql .= "WHERE ";
     $first = 1;
-    for ( $i = 0; $i < count ( $tablear ); $i++ ) {
-      if ( ! empty ( $tablear[$i]["iskey"] ) ) {
-        if ( empty ( $keys[$tablear[$i]["name"]] ) ) {
-          //echo "Error: key value for " . $tablear[$i]["name"] . " not set.\n";
+    for ( $i = 0, $cnt = count ( $tablear ); $i < $cnt; $i++ ) {
+      if ( ! empty ( $tablear[$i]['iskey'] ) ) {
+        if ( empty ( $keys[$tablear[$i]['name']] ) ) {
+          //echo "Error: key value for " . $tablear[$i]['name'] . " not set.\n";
           //exit;
         } else {
           if ( $first )
             $first = 0;
           else
             $sql .= " AND ";
-          $sql .= $tablear[$i]["name"] . " = ?" ;
-      $query_params[] = $keys[$tablear[$i]["name"]];
+          $sql .= $tablear[$i]['name'] . " = ?" ;
+      $query_params[] = $keys[$tablear[$i]['name']];
         }
       }
     }
@@ -208,14 +209,14 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
       $ret .= "<tr>";
       $first_href = 1;
       $first = 1;
-      for ( $i = 0; $i < count ( $fields ); $i++ ) {
+      for ( $i = 0; $i < $fieldcnt; $i++ ) {
         // check data type (date)
         $ind = dbtable_get_field_index ( $tablear, $fields[$i] );
-        if ( empty ( $tablear[$ind]["hide"] ) ) {
+        if ( empty ( $tablear[$ind]['hide'] ) ) {
           $ret .= "<td style=\"background-color:$CELLBG; vertical-align:top;\">";
-          if ( $tablear[$ind]["type"] == "date" )
+          if ( $tablear[$ind]['type'] == "date" )
             $val = date_to_str ( $row[$i], "", 1, 1 );
-          else if ( $tablear[$ind]["type"] == "dbdate" ) {
+          else if ( $tablear[$ind]['type'] == "dbdate" ) {
             $y = substr ( $row[$i], 0, 4 );
             $m = substr ( $row[$i], 5, 2 );
             $d = substr ( $row[$i], 8, 2 );
@@ -239,7 +240,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
       $ret .= "</tr>\n";
     }
   } else {
-    echo translate( 'Database error' ) . ": " . dbi_error (); exit;
+    dbi_error ( true );
   }
   $ret .= "</table>\n</td></tr></table>\n</td></tr></table>\n";
   return $ret;
@@ -267,26 +268,26 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
       $first = 0;
     else
       $sql .= ", ";
-    if ( empty ( $tablear[$i]["name"] ) ) {
+    if ( empty ( $tablear[$i]['name'] ) ) {
       echo "Error: dbtable_load $tablename field $i does not define name.\n";
       exit;
     }
-    $sql .= $tablear[$i]["name"];
+    $sql .= $tablear[$i]['name'];
   }
   $sql .= " FROM " . $tablename . " WHERE ";
   $first = 1;
   for ( $i = 0; $i < count ( $tablear ); $i++ ) {
-    if ( ! empty ( $tablear[$i]["iskey"] ) ) {
-      if ( empty ( $keys[$tablear[$i]["name"]] ) ) {
-        //echo "Error: key value for " . $tablear[$i]["name"] . " not set.\n";
+    if ( ! empty ( $tablear[$i]['iskey'] ) ) {
+      if ( empty ( $keys[$tablear[$i]['name']] ) ) {
+        //echo "Error: key value for " . $tablear[$i]['name'] . " not set.\n";
         //exit;
       } else {
         if ( $first )
           $first = 0;
         else
           $sql .= " AND ";
-        $sql .= $tablear[$i]["name"] . " = ?" ;
-        $query_params[] = $keys[$tablear[$i]["name"]];
+        $sql .= $tablear[$i]['name'] . " = ?" ;
+        $query_params[] = $keys[$tablear[$i]['name']];
       }
     }
   }
@@ -303,7 +304,7 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
     }
     dbi_free_result ( $res );
   } else {
-    echo translate( 'Database error' ) . ": " . dbi_error (); exit;
+    dbi_error ( true );
   }
   return $ret;
 }
@@ -326,9 +327,9 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
   $query_params = array();
   $first = 1;
   for ( $i = 0; $i < count ( $tablear ); $i++ ) {
-    if ( ! empty ( $tablear[$i]["iskey"] ) ) {
-      if ( empty ( $keys[$tablear[$i]["name"]] ) ) {
-        //echo "Error: key value for " . $tablear[$i]["name"] . " not set.\n";
+    if ( ! empty ( $tablear[$i]['iskey'] ) ) {
+      if ( empty ( $keys[$tablear[$i]['name']] ) ) {
+        //echo "Error: key value for " . $tablear[$i]['name'] . " not set.\n";
         //exit;
         continue;
       } else {
@@ -336,14 +337,14 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
           $first = 0;
         else
           $sql .= " AND ";
-        $sql .= $tablear[$i]["name"] . " = ?" ;
-    $query_params[] = $keys[$tablear[$i]["name"]];
+        $sql .= $tablear[$i]['name'] . " = ?" ;
+    $query_params[] = $keys[$tablear[$i]['name']];
       }
     }
   }
   //echo "SQL: $sql<br />";
   if ( ! dbi_execute ( $sql, $query_params ) ) {
-    echo translate( 'Database error' ) . ": " . dbi_error (); exit;
+    dbi_error ( true );
   }
   return $ret;
 }
@@ -355,7 +356,7 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
 function dbtable_add ( $tablear, $tablename, $valuesar ) {
   global $error;
   $ret = false;
-  $sql = "INSERT INTO " . $tablename . " (";
+  $sql = 'INSERT INTO ' . $tablename . ' (';
   $query_params = array();
   if ( ! is_array ( $tablear ) ) {
     echo "Error: dbtable_add parameter 1 is not an array!<br />\n";
@@ -371,21 +372,21 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
       $first = 0;
     else
       $sql .= ", ";
-    if ( empty ( $tablear[$i]["name"] ) ) {
+    if ( empty ( $tablear[$i]['name'] ) ) {
       echo "Error: dbtable_load $tablename field $i does not define name.\n";
       exit;
     }
-    $sql .= $tablear[$i]["name"];
+    $sql .= $tablear[$i]['name'];
   }
-  $sql .= " ) VALUES (";
+  $sql .= ' ) VALUES (';
   $first = 1;
   for ( $i = 0; $i < count ( $tablear ); $i++ ) {
     if ( $first ) {
       $first = 0;
-    $sql .= "?";
+    $sql .= '?';
     }
     else {
-      $sql .= ", ?";
+      $sql .= ', ?';
   }
     
   if ( empty ( $valuesar[$i] ) ) {
@@ -395,11 +396,11 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
       $query_params[] = $valuesar[$i];
   }
   }
-  $sql .= " )";
+  $sql .= ' )';
   //echo "SQL: $sql<br />\n";
   if ( ! dbi_execute ( $sql, $query_params ) ) {
     // Shouldn't happen... complain if it does.
-    $error = translate( 'Database error' ) . ": " . dbi_error ();
+    $error = db_error ();
     return false;
   }
   return true;
@@ -411,7 +412,7 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
 // $valuesar - array of values
 function dbtable_update ( $tablear, $tablename, $valuesar ) {
   global $error;
-  $sql = "UPDATE " . $tablename . " SET";
+  $sql = 'UPDATE ' . $tablename . ' SET';
   $query_params = array();
   if ( ! is_array ( $tablear ) ) {
     echo "Error: dbtable_update parameter 1 is not an array!<br />\n";
@@ -423,44 +424,44 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
   }
   $first = 1;
   for ( $i = 0; $i < count ( $tablear ); $i++ ) {
-    if ( ! empty ( $tablear[$i]["iskey"] ) )
+    if ( ! empty ( $tablear[$i]['iskey'] ) )
       continue;
     if ( $first )
       $first = 0;
     else
       $sql .= ", ";
-    if ( empty ( $tablear[$i]["name"] ) ) {
+    if ( empty ( $tablear[$i]['name'] ) ) {
       echo "Error: dbtable_update $tablename field $i does not define name.\n";
       exit;
     }
-    $sql .= " " . $tablear[$i]["name"] . " = ?";
+    $sql .= " " . $tablear[$i]['name'] . ' = ?';
     if ( empty ( $valuesar[$i] ) ) {
     $query_params[] = NULL;
     } else {
     $query_params[] = $valuesar[$i];
   }
   }
-  $sql .= " WHERE";
+  $sql .= ' WHERE';
   $first = 1;
   for ( $i = 0; $i < count ( $tablear ); $i++ ) {
-    if ( empty ( $tablear[$i]["iskey"] ) )
+    if ( empty ( $tablear[$i]['iskey'] ) )
       continue;
     if ( $first )
       $first = 0;
     else
-      $sql .= " AND";
+      $sql .= ' AND';
     if ( empty ( $valuesar[$i] ) ) {
-      echo "Error: you must set field $i (" . $tablear[$i]["name"] .
+      echo "Error: you must set field $i (" . $tablear[$i]['name'] .
         ") by hand. Cannot be empty.";
       exit;
     }
-    $sql .= " " . $tablear[$i]["name"] . " = ?";
+    $sql .= " " . $tablear[$i]['name'] . ' = ?';
   $query_params[] = $valuesar[$i];
   }
   //echo "SQL: $sql <P>\n";
   if ( ! dbi_execute ( $sql, $query_params ) ) {
     // Shouldn't happen... complain if it does.
-    $error = translate( 'Database error' ) . ": " . dbi_error ();
+    $error = db_error ();
     return false;
   }
   return true;
@@ -471,7 +472,7 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
 function dbtable_genid ( $tablename, $field ) {
   $ret = 1;
 
-  $sql = "SELECT MAX(" . $field . ") FROM " . $tablename;
+  $sql = 'SELECT MAX(' . $field . ') FROM ' . $tablename;
   $res = dbi_execute ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
@@ -489,7 +490,7 @@ function dbtable_genid ( $tablename, $field ) {
 function dbtable_build_name_index ( $tablear, $valuesar ) {
   $ret = array ();
   for ( $i = 0; $i < count ( $tablear ); $i++ ) {
-    $ret[$tablear[$i]["name"]] = $valuesar[$i];
+    $ret[$tablear[$i]['name']] = $valuesar[$i];
   }
   return $ret;
 }
