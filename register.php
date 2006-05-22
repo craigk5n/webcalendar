@@ -51,7 +51,7 @@ function check_username ( $user ) {
    $error = translate ( 'Username can not be blank' );
   return false;
  } 
-  $sql="SELECT cal_login FROM webcal_user WHERE cal_login = ?";
+  $sql='SELECT cal_login FROM webcal_user WHERE cal_login = ?';
   $res = dbi_execute ( $sql , array ( $user ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -72,7 +72,7 @@ function check_email ( $uemail ) {
    $error = translate ( 'Email address can not be blank' );
   return false;
  } 
-  $sql="SELECT cal_email FROM webcal_user WHERE cal_email = ?";
+  $sql='SELECT cal_email FROM webcal_user WHERE cal_email = ?';
   $res = dbi_execute ( $sql , array ( $uemail ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -89,7 +89,7 @@ function check_email ( $uemail ) {
 function generate_password() {
   $pass_length = 7;
   $pass= '';
-  $salt = "abchefghjkmnpqrstuvwxyz0123456789";
+  $salt = 'abchefghjkmnpqrstuvwxyz0123456789';
   srand((double)microtime()*1000000); 
    $i = 0;
    while ($i <= $pass_length) {
@@ -168,7 +168,7 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
     user_add_user ( $user, $new_pass, $ufirstname, $ulastname,
       $uemail, $uis_admin );
    
-   $msg = translate( 'Hello' ) . ', ' . $ufirstname . " " . $ulastname . "\n\n";
+   $msg = translate( 'Hello' ) . ', ' . $ufirstname . ' ' . $ulastname . "\n\n";
    $msg .= translate( 'A new WebCalendar account has been set up for you' ). ".\n\n";
    $msg .= translate( 'Your username is' ) . ' "' . $user . "\"\n\n";
    $msg .= translate( 'Your password is' ) . ' "' . $new_pass . "\"\n\n";
@@ -192,8 +192,8 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
     $mail->From = translate( 'Administrator' );
   }
   $mail->IsHTML( $htmlmail == 'Y' ? true : false );
-  $mail->AddAddress( $uemail, $ufirstname .  " " . $ulastname );
-  $mail->Subject = translate($APPLICATION_NAME) . " " .
+  $mail->AddAddress( $uemail, $ufirstname .  ' ' . $ulastname );
+  $mail->Subject = translate($APPLICATION_NAME) . ' ' .
     translate( 'Welcome' ) . ': ' . $ufirstname;
   $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;
   $mail->Send();
@@ -359,7 +359,7 @@ if ( ! empty ($control ) && empty ( $error ) ) { ?>
 <?php // Print custom trailer (since we do not call print_trailer function)
 if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
   $res = dbi_execute (
-    "SELECT cal_template_text FROM webcal_report_template " .
+    'SELECT cal_template_text FROM webcal_report_template ' .
     "WHERE cal_template_type = 'T' and cal_report_id = 0" );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {

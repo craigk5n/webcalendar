@@ -50,8 +50,7 @@ if ( $search_others ) {
     && ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' ) {
     $myusers = get_my_users ();
     $userlookup = array ();
-    $cnt = count ( $myusers );
-    for ( $i = 0; $i < $cnt; $i++ ) {
+    for ( $i = 0, $cnt = count ( $myusers ); $i < $cnt; $i++ ) {
       $userlookup[$myusers[$i]['cal_login']] = 1;
     }
     $newlist = array ();
@@ -91,31 +90,31 @@ if ( ! empty ( $error ) ) {
   for ( $i = 0; $i < $word_cnt; $i++ ) {
     $sql_params = array();
     // Note: we only search approved/waiting events (not deleted)
-    $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name, " .
-      "webcal_entry.cal_date " .
-      "FROM webcal_entry, webcal_entry_user " .
-      "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id " .
+    $sql = 'SELECT webcal_entry.cal_id, webcal_entry.cal_name, ' .
+      'webcal_entry.cal_date ' .
+      'FROM webcal_entry, webcal_entry_user ' .
+      'WHERE webcal_entry.cal_id = webcal_entry_user.cal_id ' .
       "AND webcal_entry_user.cal_status in ('A','W') " .
-      "AND webcal_entry_user.cal_login IN ( ";
+      'AND webcal_entry_user.cal_login IN ( ';
     if ( $search_others ) {
       if ( empty ( $users[0] ) )
         $users[0] = $login;
       $user_cnt = count ( $users );
       for ( $j = 0; $j < $user_cnt; $j++ ) {
         if ( $j > 0 )
-          $sql .= ", ";
-        $sql .= " ?";
+          $sql .= ', ';
+        $sql .= ' ?';
         $sql_params[] = $users[$j];
       }
     } else {
-      $sql .= " ? ";
+      $sql .= ' ? ';
       $sql_params[] = $login;
     }
-    $sql .= ") ";
+    $sql .= ') ';
     if ( $search_others ) {
       // Don't search confidential entries of other users.
-      $sql .= "AND ( webcal_entry_user.cal_login = ? OR " .
-        "( webcal_entry_user.cal_login != ? AND " .
+      $sql .= 'AND ( webcal_entry_user.cal_login = ? OR ' .
+        '( webcal_entry_user.cal_login != ? AND ' .
         "webcal_entry.cal_access = 'P' ) ) ";
         $sql_params[] = $login;
         $sql_params[] = $login;
@@ -123,12 +122,12 @@ if ( ! empty ( $error ) ) {
     //we get an error using mssql trying to read text column as varchar
     //this workaround seems to fix it up ROJ
     //this only will search the first ikb of the description
-    $sql .= "AND ( UPPER(webcal_entry.cal_name) " .
-      "LIKE UPPER(?) " .
-      ( strcmp ( $GLOBALS['db_type'], "mssql" ) == 0? 
-        "OR UPPER( CAST ( webcal_entry.cal_description AS varchar(1024) ) ) ": "OR UPPER(webcal_entry.cal_description ) " ).
-      "LIKE UPPER(?) ) " .
-      "ORDER BY cal_date";
+    $sql .= 'AND ( UPPER(webcal_entry.cal_name) ' .
+      'LIKE UPPER(?) ' .
+      ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0? 
+        'OR UPPER( CAST ( webcal_entry.cal_description AS varchar(1024) ) ) ': 
+        'OR UPPER(webcal_entry.cal_description ) ' ).
+      'LIKE UPPER(?) ) ORDER BY cal_date';
     $sql_params[] = '%' . $words[$i] . '%';
     $sql_params[] = '%' . $words[$i] . '%';
     //echo "SQL: $sql<br /><br />";
@@ -142,8 +141,7 @@ if ( ! empty ( $error ) ) {
           $ids[$idstr] = 1;
         else
           $ids[$idstr]++;
-        $info[$idstr] = "$row[1] (" . date_to_str ($row[2]) .
-          ")";
+        $info[$idstr] = "$row[1] (" . date_to_str ($row[2]) . ')';
       }
     }
     dbi_free_result ( $res );

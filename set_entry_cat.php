@@ -12,11 +12,11 @@ else if ( empty ( $categories ) )
   $error = translate( 'You have not added any categories' ) . '.';
 
 // make sure user is a participant
-$res = dbi_execute ( "SELECT  cal_status FROM webcal_entry_user " .
-  "WHERE cal_id = ? AND cal_login = ?" , array ( $id , $login ) );
+$res = dbi_execute ( 'SELECT  cal_status FROM webcal_entry_user ' .
+  'WHERE cal_id = ? AND cal_login = ?' , array ( $id , $login ) );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
-    if ( $row[0] == "D" ) // User deleted themself
+    if ( $row[0] == 'D' ) // User deleted themself
       $error = translate( 'You are not authorized' ) . '.';
   } else {
     // not a participant for this event
@@ -24,7 +24,7 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 } else {
-  $error = translate( 'Database error' ) . ': ' . dbi_error ();
+  $error = db_error ();
 }
  
 $cat_id = getPostValue ( 'cat_id' );
@@ -33,14 +33,14 @@ $cat_name = array();
 $catNames = '';
 
 //get user's categories for this event
-$sql = "SELECT  DISTINCT cal_login, webcal_entry_categories.cat_id, " .
- " webcal_entry_categories.cat_owner, cat_name " .
- " FROM webcal_entry_user, webcal_entry_categories, webcal_categories " .
- " WHERE ( webcal_entry_user.cal_id = webcal_entry_categories.cal_id AND " .
- " webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
- " webcal_entry_user.cal_id = ? ) AND " . 
- " webcal_categories.cat_owner = ?".
- " ORDER BY webcal_entry_categories.cat_order";
+$sql = 'SELECT  DISTINCT cal_login, webcal_entry_categories.cat_id, ' .
+ ' webcal_entry_categories.cat_owner, cat_name ' .
+ ' FROM webcal_entry_user, webcal_entry_categories, webcal_categories ' .
+ ' WHERE ( webcal_entry_user.cal_id = webcal_entry_categories.cal_id AND ' .
+ ' webcal_entry_categories.cat_id = webcal_categories.cat_id AND ' .
+ ' webcal_entry_user.cal_id = ? ) AND ' . 
+ ' webcal_categories.cat_owner = ?'.
+ ' ORDER BY webcal_entry_categories.cat_order';
 $res = dbi_execute ( $sql , array ( $id , $login ) );
 if ( $res ) {
  while ( $row = dbi_fetch_row ( $res ) ) {
@@ -51,11 +51,11 @@ if ( $res ) {
 }
 //get global categories
 $globals_found = false;
-$sql = "SELECT  webcal_entry_categories.cat_id, cat_name " .
-  " FROM webcal_entry_categories, webcal_categories " .
-  " WHERE webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
-  " webcal_entry_categories.cal_id = ? AND " . 
-  " webcal_categories.cat_owner IS NULL ";
+$sql = 'SELECT  webcal_entry_categories.cat_id, cat_name ' .
+  ' FROM webcal_entry_categories, webcal_categories ' .
+  ' WHERE webcal_entry_categories.cat_id = webcal_categories.cat_id AND ' .
+  ' webcal_entry_categories.cal_id = ? AND ' . 
+  ' webcal_categories.cat_owner IS NULL ';
 $res = dbi_execute ( $sql , array ( $id ) );
 if ( $res ) {
  while ( $row = dbi_fetch_row ( $res ) ) {
@@ -70,8 +70,8 @@ if ( ! empty ( $cat_name ) ) $catNames = implode(', ' , array_unique($cat_name))
 if ( ! empty ( $cat_ids ) ) $catList = implode(', ', array_unique($cat_ids));
 // Get event name and make sure event exists
 $event_name = '';
-$res = dbi_execute ( "SELECT cal_name FROM webcal_entry " .
-  "WHERE cal_id = ?" , array ( $id ) );
+$res = dbi_execute ( 'SELECT cal_name FROM webcal_entry ' .
+  'WHERE cal_id = ?' , array ( $id ) );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     $event_name = $row[0];
@@ -81,18 +81,17 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 } else {
-  $error = translate( 'Database error' ) . ': ' . dbi_error ();
+  $error = db_error ();
 }
 
 // If this is the form handler, then save now
 if ( ! empty ( $cat_id ) && empty ( $error ) ) {
- dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ? " .
-    "AND ( cat_owner = ? )" , array ( $id , $login ) );
+ dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cal_id = ? ' .
+    'AND ( cat_owner = ? )' , array ( $id , $login ) );
  $categories = explode (',', $cat_id );
 
  $sql_params = array();
- $cnt = count( $categories );
- for ( $i =0; $i < $cnt; $i++ ) {
+ for ( $i =0, $cnt = count( $categories ); $i < $cnt; $i++ ) {
    //don't process Global Categories
    if ( $categories[$i] > 0 ) {
    $names = array();
@@ -116,7 +115,7 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
  $view_type = 'view_entry';  
   
  if ( ! dbi_execute ( $sql , $sql_params ) ) {
-    $error = translate ( 'Database error' ) . ': ' . dbi_error ();
+    $error = db_error ();
   } else {
     $url = $view_type .".php?id=$id";
     if ( ! empty ( $date ) )

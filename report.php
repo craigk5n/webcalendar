@@ -233,19 +233,19 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
       $list .= '<p><a title="' . $textStr .
         '" href="report.php?public=1">' . $textStr .
         "</a></p>\n";
-      $sql = "SELECT cal_report_id, cal_report_name " .
-        "FROM webcal_report WHERE cal_login = ? OR " .
+      $sql = 'SELECT cal_report_id, cal_report_name ' .
+        'FROM webcal_report WHERE cal_login = ? OR ' .
         "cal_is_global = 'Y' ORDER BY cal_update_date DESC, cal_report_name";
       $sql_params[] = $login;
     } else {
-      $sql = "SELECT cal_report_id, cal_report_name " .
+      $sql = 'SELECT cal_report_id, cal_report_name ' .
         "FROM webcal_report WHERE cal_login = '__public__' " .
-        "ORDER BY cal_update_date DESC, cal_report_name";
+        'ORDER BY cal_update_date DESC, cal_report_name';
     }
   } else {
-    $sql = "SELECT cal_report_id, cal_report_name " .
-      "FROM webcal_report WHERE cal_login = ? " .
-      "ORDER BY cal_update_date DESC, cal_report_name";
+    $sql = 'SELECT cal_report_id, cal_report_name ' .
+      'FROM webcal_report WHERE cal_login = ? ' .
+      'ORDER BY cal_update_date DESC, cal_report_name';
     $sql_params[] = $login;
   }
   $res = dbi_execute ( $sql , $sql_params );
@@ -271,11 +271,11 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
 
 // Load the specified report
 if ( empty ( $error ) && empty ( $list ) ) {
-  $res = dbi_execute ( "SELECT cal_login, cal_report_id, cal_is_global, " .
-    "cal_report_type, cal_include_header, cal_report_name, " .
-    "cal_time_range, cal_user, " .
-    "cal_allow_nav, cal_cat_id, cal_include_empty, cal_update_date " .
-    "FROM webcal_report WHERE cal_report_id = ?" , array ( $report_id ) );
+  $res = dbi_execute ( 'SELECT cal_login, cal_report_id, cal_is_global, ' .
+    'cal_report_type, cal_include_header, cal_report_name, ' .
+    'cal_time_range, cal_user, ' .
+    'cal_allow_nav, cal_cat_id, cal_include_empty, cal_update_date ' .
+    'FROM webcal_report WHERE cal_report_id = ?' , array ( $report_id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) { 
       if ( $row[2] != 'Y' && $login != $row[0] ) {
@@ -305,7 +305,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
     }
     dbi_free_result ( $res );
   } else {
-    $error = translate ( 'Database error' ) . ': ' . dbi_error ();
+    $error = db_error ();
   }
 }
 
@@ -324,9 +324,9 @@ $event_template = '<dt>${name}</dt><dd>' .
 
 // Load templates for this report.
 if ( empty ( $error ) && empty ( $list ) ) {
-  $res = dbi_execute ( "SELECT cal_template_type, cal_template_text " .
-    "FROM webcal_report_template " .
-    "WHERE cal_report_id = ?" , array ( $report_id ) );
+  $res = dbi_execute ( 'SELECT cal_template_type, cal_template_text ' .
+    'FROM webcal_report_template ' .
+    'WHERE cal_report_id = ?' , array ( $report_id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] == 'P' ) {
@@ -344,7 +344,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
     }
     dbi_free_result ( $res );
   } else {
-    $error = translate ( 'Database error' ) . ': ' . dbi_error ();
+    $error = db_error ();
   }
 }
 
@@ -405,7 +405,7 @@ if ( ! isset ( $report_time_range ) ) {
     case 53: $x = 90; break;
     case 54: $x = 180; break;
     case 55: $x = 365; break;
-    default: echo "Invalid cal_time_range setting for report id $report_id";
+    default: echo 'Invalid cal_time_range setting for report id ' .$report_id;
       exit;
   }
   $today = mktime ( 0, 0, 0, $datem, $dated, $dateY );
@@ -413,7 +413,7 @@ if ( ! isset ( $report_time_range ) ) {
   $end_date = $start_date + ( ONE_DAY * $x );
 } else {
   // Programmer's bug (no translation needed)
-  echo "Invalid cal_time_range setting for report id $report_id";
+  echo 'Invalid cal_time_range setting for report id ' .$report_id;
   exit;
 }
 
@@ -441,8 +441,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
     $ev = get_entries ( $dateYmd );
     $ev = combine_and_sort_events($ev, $rep);
     //echo "DATE: $dateYmd <br />\n";
-    $cnt = count ( $ev );
-    for ( $i = 0; $i < $cnt; $i++ ) {
+    for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
       if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
         $event_str .= event_to_text ( $ev[$i], $dateYmd );
       }

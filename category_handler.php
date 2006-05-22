@@ -4,7 +4,6 @@ include_once 'includes/init.php';
 $icon_path = 'icons/';
 $icon_max_size = '3000';
 
-$dberror = translate( 'Database error' ) . ': ';
 //Rename any icons associated with this cat_id
 function renameIcon ( $id ) {
   global $icon_path;
@@ -20,8 +19,8 @@ $is_my_event = false;
 if ( empty ( $id ) ) {
   $is_my_event = true; // new event
 } else {
-  $res = dbi_execute ( "SELECT cat_id, cat_owner FROM webcal_categories " .
-    "WHERE cat_id = ?", array( $id ) );
+  $res = dbi_execute ( 'SELECT cat_id, cat_owner FROM webcal_categories ' .
+    'WHERE cat_id = ?', array( $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $id && $row[1] == $login )
@@ -30,7 +29,7 @@ if ( empty ( $id ) ) {
       $is_my_event = true; // global category
     dbi_free_result ( $res );
   } else {
-    $error = $dberror . dbi_error ();
+    $error = db_error ();
   }
 
 }
@@ -48,25 +47,25 @@ $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $delete ) ) {
   // delete this category
   if ( $is_admin ) {
-    if ( ! dbi_execute ( "DELETE FROM webcal_categories " .
-      "WHERE cat_id = ? AND " .
-      "( cat_owner = ? OR cat_owner IS NULL )", array( $id, $login ) ) )
-      $error = $dberror . dbi_error();
+    if ( ! dbi_execute ( 'DELETE FROM webcal_categories ' .
+      'WHERE cat_id = ? AND ' .
+      '( cat_owner = ? OR cat_owner IS NULL )', array( $id, $login ) ) )
+      $error = db_error ();
   } else {
-    if ( ! dbi_execute ( "DELETE FROM webcal_categories " .
-      "WHERE cat_id = ? AND cat_owner = ?", array( $id, $login ) ) )
-      $error = $dberror . dbi_error();
+    if ( ! dbi_execute ( 'DELETE FROM webcal_categories ' .
+      'WHERE cat_id = ? AND cat_owner = ?', array( $id, $login ) ) )
+      $error = db_error ();
   }
       
   // Set any events in this category to NULL
   if ( $is_admin ) {
-    if ( !  dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ? AND " .
-      " ( cat_owner = ? OR cat_owner IS NULL)", array( $id, $login ) ) ) 
-    $error = $dberror . dbi_error();
+    if ( !  dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cal_id = ? AND ' .
+      ' ( cat_owner = ? OR cat_owner IS NULL)', array( $id, $login ) ) ) 
+    $error = db_error ();
   } else {
-    if ( !  dbi_execute ( "DELETE FROM webcal_entry_categories WHERE cal_id = ? " .
-      "AND cat_owner = ?", array( $id, $login ) ) )
-    $error = $dberror . dbi_error();
+    if ( !  dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cal_id = ? ' .
+      'AND cat_owner = ?', array( $id, $login ) ) )
+    $error = db_error ();
  }
  
   //Rename any icons associated with this cat_id
@@ -75,10 +74,10 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
 } else if ( empty ( $error ) ) {
   if ( ! empty ( $id ) ) {
     # update (don't let them change global status)
-    $sql = "UPDATE webcal_categories SET cat_name = ? " .
-      "WHERE cat_id = ?";
+    $sql = 'UPDATE webcal_categories SET cat_name = ? ' .
+      'WHERE cat_id = ?';
     if ( ! dbi_execute ( $sql, array( $catname, $id ) ) ) {
-      $error = $dberror . dbi_error();
+      $error = db_error ();
     }
     $delIcon = getPostValue ( 'delIcon' );
     if ( ! empty ( $delIcon ) && $delIcon == 'Y' ) {
@@ -87,7 +86,7 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
   } else {
     // add new category
     // get new id
-    $res = dbi_execute ( "SELECT MAX(cat_id) FROM webcal_categories" );
+    $res = dbi_execute ( 'SELECT MAX(cat_id) FROM webcal_categories' );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $id = $row[0] + 1;
@@ -99,14 +98,14 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
           $catowner = $login;
       } else
         $catowner = $login;
-      $sql = "INSERT INTO webcal_categories " .
-        "( cat_id, cat_owner, cat_name ) " .
-        "VALUES ( ?, ?, ? )";
+      $sql = 'INSERT INTO webcal_categories ' .
+        '( cat_id, cat_owner, cat_name ) ' .
+        'VALUES ( ?, ?, ? )';
       if ( ! dbi_execute ( $sql, array( $id, $catowner, $catname ) ) ) {
-        $error = $dberror . dbi_error();
+        $error = db_error ();
       }
     } else {
-      $error = $dberror . dbi_error();
+      $error = db_error ();
     }
   }
 

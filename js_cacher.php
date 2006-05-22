@@ -22,7 +22,8 @@ if ( $caching == true ) {
   include_once 'includes/init.php';
   send_no_cache_header ();
 }
-ob_start( 'ob_gzhandler' ); 
+if ( ini_get ( 'zlib.output_compression' ) != 1 ) 
+  ob_start( 'ob_gzhandler' );
 
 $newinc = $arinc[0] . '/' . $arinc[1]; 
 include_once ( "includes/$newinc" );

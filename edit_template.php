@@ -38,9 +38,9 @@ if ( $user == '__system__' ) {
 }
 
 // Get existing value.
-$res = dbi_execute ( "SELECT cal_template_text " .
-  "FROM webcal_user_template " .
-  "WHERE cal_type = ? AND cal_login = ?", array( $type, $user ) );
+$res = dbi_execute ( 'SELECT cal_template_text ' .
+  'FROM webcal_user_template ' .
+  'WHERE cal_type = ? AND cal_login = ?', array( $type, $user ) );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     $cur = $row[0];
@@ -52,9 +52,9 @@ if ( $res ) {
 // Check the cal_template_text table since that is where we stored it
 // in 1.0 and before.
 if ( ! $found ) {
-  $res = dbi_execute ( "SELECT cal_template_text " .
-    "FROM webcal_report_template " .
-    "WHERE cal_template_type = ? AND cal_report_id = 0", array( $type ) );
+  $res = dbi_execute ( 'SELECT cal_template_text ' .
+    'FROM webcal_report_template ' .
+    'WHERE cal_template_type = ? AND cal_report_id = 0', array( $type ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $cur = $row[0];
@@ -72,9 +72,9 @@ if ( $REQUEST_METHOD == 'POST' ) {
   // Was this a delete request?
   $delete = getPostValue ( 'delete' );
   if ( $user != '__system__' && ! empty ( $delete ) ) {
-    dbi_execute ( "DELETE FROM webcal_user_template " .
-      "WHERE cal_type = ? " .
-      "AND cal_login = ?", array( $type, $user ) );
+    dbi_execute ( 'DELETE FROM webcal_user_template ' .
+      'WHERE cal_type = ? ' .
+      'AND cal_login = ?', array( $type, $user ) );
     echo "<html><body onload=\"window.close()\"></body></html>\n";
     exit;
   }
@@ -82,9 +82,9 @@ if ( $REQUEST_METHOD == 'POST' ) {
   //echo "Template: " .  $template  . "<br />\n"; exit;
   $query_params = array();
   if ( $found ) {
-    $sql = "UPDATE webcal_user_template " .
-      "SET cal_template_text = ? " .
-      "WHERE cal_type = ? AND cal_login = ?";
+    $sql = 'UPDATE webcal_user_template ' .
+      'SET cal_template_text = ? ' .
+      'WHERE cal_type = ? AND cal_login = ?';
     $query_params[] = $template;
     $query_params[] = $type;
     $query_params[] = $user;
@@ -92,25 +92,25 @@ if ( $REQUEST_METHOD == 'POST' ) {
     // User is upgrading from WebCalendar 1.0 to 1.1.
     // Delete from the webcal_report_template table and move the info
     // to the new webcal_user_template table.
-    dbi_execute ( "DELETE FROM webcal_report_template " .
-      "WHERE cal_template_type = ? " .
-      "AND cal_report_id = 0 ", array( $type ) );
-    $sql = "INSERT INTO webcal_user_template " .
-      "( cal_type, cal_login, cal_template_text ) " .
-      "VALUES ( ?, ?, ? )";
+    dbi_execute ( 'DELETE FROM webcal_report_template ' .
+      'WHERE cal_template_type = ? ' .
+      'AND cal_report_id = 0 ', array( $type ) );
+    $sql = 'INSERT INTO webcal_user_template ' .
+      '( cal_type, cal_login, cal_template_text ) ' .
+      'VALUES ( ?, ?, ? )';
     $query_params[] = $type;
     $query_params[] = '__system__';
     $query_params[] = $template;
   } else {
-    $sql = "INSERT INTO webcal_user_template " .
-      "( cal_type, cal_login, cal_template_text ) " .
-      "VALUES ( ?, ?, ? )";
+    $sql = 'INSERT INTO webcal_user_template ' .
+      '( cal_type, cal_login, cal_template_text ) ' .
+      'VALUES ( ?, ?, ? )';
   $query_params[] = $type;
     $query_params[] = $user;
     $query_params[] = $template;
   }
   if ( ! dbi_execute ( $sql, $query_params ) ) {
-    $error = translate( 'Database error' ) . ': ' . dbi_error ();
+    $error = db_error ();
   } else {
     //echo "SQL: $sql <br />\n";
     echo "<html>\n<head>\n</head>\n<body onload=\"window.close();\">\nDone</body>\n</html>";

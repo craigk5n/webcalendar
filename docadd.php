@@ -60,11 +60,11 @@ if ( $is_admin )
 // Get event details if this is associated with an event
 if ( empty ( $error ) && ! empty ( $id ) ) {
   // is this user a participant or the creator of the event?
-  $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
-    "webcal_entry_user WHERE webcal_entry.cal_id = " .
-    "webcal_entry_user.cal_id AND webcal_entry.cal_id = ? " .
-    "AND (webcal_entry.cal_create_by = ? " .
-    "OR webcal_entry_user.cal_login = ?)";
+  $sql = 'SELECT webcal_entry.cal_id FROM webcal_entry, ' .
+    'webcal_entry_user WHERE webcal_entry.cal_id = ' .
+    'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
+    'AND (webcal_entry.cal_create_by = ? ' .
+    'OR webcal_entry_user.cal_login = ?)';
   $res = dbi_execute ( $sql, array( $id, $login, $login ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -112,7 +112,7 @@ if ( empty ( $REQUEST_METHOD ) )
 if ( $REQUEST_METHOD == 'POST' ) {
 
   // get next id first
-  $res = dbi_execute ( "SELECT MAX(cal_blob_id) FROM webcal_blob" );
+  $res = dbi_execute ( 'SELECT MAX(cal_blob_id) FROM webcal_blob' );
   if ( ! $res ) {
     die_miserable_death ( translate( 'Database error' ) . ': ' .
       dbi_error () );
@@ -127,16 +127,17 @@ if ( $REQUEST_METHOD == 'POST' ) {
     // Comment
     $description = getValue ( 'description' );
     $comment = getValue ( 'comment' );
-    $sql = "INSERT INTO webcal_blob ( cal_blob_id, " .
-      "cal_id, cal_login, cal_name, cal_description, " .
-      "cal_size, cal_mime_type, cal_type, cal_mod_date, " .
-      "cal_mod_time, cal_blob ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, NULL, $description, 0, 'text/plain', 'C', date('Ymd'), date( 'His' ), NULL ) ) ) {
-      $error = translate ( 'Database error' ) . ': ' . dbi_error ();
+    $sql = 'INSERT INTO webcal_blob ( cal_blob_id, ' .
+      'cal_id, cal_login, cal_name, cal_description, ' .
+      'cal_size, cal_mime_type, cal_type, cal_mod_date, ' .
+      'cal_mod_time, cal_blob ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
+    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, NULL, 
+      $description, 0, 'text/plain', 'C', date('Ymd'), date( 'His' ), NULL ) ) ) {
+      $error = db_error ();
     } else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
         "cal_blob_id = $nextid", $comment ) ) {
-        $error = translate ( 'Database error' ) . ': ' . dbi_error ();
+        $error = db_error ();
       } else {
         // success!  redirect to view event page
         activity_log ( $id, $login, $login, LOG_COMMENT, '' );
@@ -174,16 +175,17 @@ if ( $REQUEST_METHOD == 'POST' ) {
     fclose ( $fd );
 
     $comment = getValue ( 'description' );
-    $sql = "INSERT INTO webcal_blob ( cal_blob_id, " .
-      "cal_id, cal_login, cal_name, cal_description, " .
-      "cal_size, cal_mime_type, cal_type, cal_mod_date, " .
-      "cal_mod_time, cal_blob ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, $filename, $description, $filesize, $mimetype, 'A', date('Ymd'), date( 'His' ), NULL ) ) ) {
-      $error = translate ( 'Database error' ) . ': ' . dbi_error ();
+    $sql = 'INSERT INTO webcal_blob ( cal_blob_id, ' .
+      'cal_id, cal_login, cal_name, cal_description, ' .
+      'cal_size, cal_mime_type, cal_type, cal_mod_date, ' .
+      'cal_mod_time, cal_blob ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
+    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, $filename, 
+      $description, $filesize, $mimetype, 'A', date('Ymd'), date( 'His' ), NULL ) ) ) {
+      $error = db_error ();
     } else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
         "cal_blob_id = $nextid", $data ) ) {
-        $error = translate ( 'Database error' ) . ': ' . dbi_error ();
+        $error = db_error ();
       } else {
         // success!  redirect to view event page
         activity_log ( $id, $login, $login, LOG_ATTACHMENT, $filename );

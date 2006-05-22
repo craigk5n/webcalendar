@@ -22,7 +22,7 @@ if ( strlen ( $layers[$id]['cal_layeruser'] ) > 0 &&
   ( $is_admin || $readonly == 'N' ) ) {
   $layeruser = $layers[$id]['cal_layeruser'];
 
-  dbi_execute ( "DELETE FROM webcal_user_layers WHERE cal_login = ? AND cal_layeruser = ?", array( $layer_user, $layeruser ) );
+  dbi_execute ( 'DELETE FROM webcal_user_layers WHERE cal_login = ? AND cal_layeruser = ?', array( $layer_user, $layeruser ) );
 }
 
 if ( $updating_public )

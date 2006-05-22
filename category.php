@@ -16,8 +16,8 @@ if ( $CATEGORIES_ENABLED == 'N' ) {
 // If editing, make sure they are editing their own
 // (or they are an admin user).
 if ( ! empty ( $id ) ) {
-  $res = dbi_execute ( "SELECT cat_id, cat_owner FROM webcal_categories WHERE " .
-    "cat_id = ?", array( $id ) );
+  $res = dbi_execute ( 'SELECT cat_id, cat_owner FROM webcal_categories WHERE ' .
+    'cat_id = ?', array( $id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] != $id )
@@ -27,7 +27,7 @@ if ( ! empty ( $id ) ) {
     }
     dbi_free_result ( $res );
   } else {
-    $error = translate( 'Database error' ) . ': ' . dbi_error ();
+    $error = db_error();
   }
 }
 
@@ -59,7 +59,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   etranslate( 'Category Name' )?>: <input type="text" name="catname" size="20" value="<?php   echo htmlspecialchars ( $catname ); ?>" />
   <br />
   <?php if ( ! empty ( $catIcon ) && file_exists ( $catIcon ) ){
-      echo "<br />" . translate ( 'Category Icon' ) . ":  <img src=\"$catIcon\" alt=\"" . translate( 'Category Icon' ) . "\" /><br />\n";
+      echo '<br />' . translate ( 'Category Icon' ) . ":  <img src=\"$catIcon\" alt=\"" . translate( 'Category Icon' ) . "\" /><br />\n";
       echo translate( 'Remove Icon' ) . 
         ':&nbsp;<input type="checkbox" name="delIcon" value="Y" />';
   }

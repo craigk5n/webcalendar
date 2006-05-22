@@ -268,8 +268,7 @@ if ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) { ?>
 <?php }
 
   $nulist = get_nonuser_cals ();
-  $cnt = count ( $nulist );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
     if ( $nulist[$i]['cal_is_public'] == 'Y' ) {
       ?><a class="nav" href="nulogin.php?login=<?php
         echo $nulist[$i]['cal_login'] . '">' .

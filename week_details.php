@@ -254,8 +254,7 @@ function print_det_date_entries ( $date, $user, $ssi ) {
 
   // combine and sort the event arrays
   $ev = combine_and_sort_events($ev, $rep);
-  $cnt = count ( $ev );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
     if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' ) ||
       $ev[$i]->getStatus() == 'A' )
       print_detailed_entry ( $ev[$i], $date );

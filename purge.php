@@ -90,12 +90,12 @@ if ( $do_purge ) {
       $tail = '';
       $ALL = 1;  // Need this to tell get_ids to ignore participant check
     }
-    $E_ids = get_ids ( "SELECT cal_id FROM webcal_entry " .
+    $E_ids = get_ids ( 'SELECT cal_id FROM webcal_entry ' .
       "WHERE cal_type = 'E' AND cal_date < '$end_date' $tail",
       $ALL );
-    $M_ids = get_ids ( "SELECT webcal_entry.cal_id FROM webcal_entry " .
-      "INNER JOIN webcal_entry_repeats ON " .
-      "webcal_entry.cal_id = webcal_entry_repeats.cal_id " .
+    $M_ids = get_ids ( 'SELECT webcal_entry.cal_id FROM webcal_entry ' .
+      'INNER JOIN webcal_entry_repeats ON ' .
+      'webcal_entry.cal_id = webcal_entry_repeats.cal_id ' .
       "WHERE webcal_entry.cal_type = 'M' AND " .
       "cal_end IS NOT NULL AND cal_end < '$end_date' $tail",
       $ALL );
@@ -126,8 +126,7 @@ if ( $do_purge ) {
     $nonusers = get_nonuser_cals ();
     $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
-  $cnt = count ( $userlist );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '<option value="' . $userlist[$i]['cal_login'] . '"';
  if ( $login == $userlist[$i]['cal_login'] ) {
   echo ' selected="selected"';
@@ -195,7 +194,7 @@ function purge_events ( $ids ) {
       $clause = ( $cal_id == 'ALL' ? '' :
         " WHERE {$tables[$i][1]} = $cal_id" );
       if ( $preview ) {
-        $sql = "SELECT COUNT(" . $tables[$i][1] .
+        $sql = 'SELECT COUNT(' . $tables[$i][1] .
           ") FROM {$tables[$i][0]}" . $clause;
         //echo "cal_id = '$cal_id'<br />clause = '$clause'<br />";
         //echo "$sql <br />\n";
@@ -239,8 +238,8 @@ function get_ids ( $sql, $ALL = '' ) {
       } else {
         //ONLY Delete event if no other participants.
         $ID = $row[0];
-        $res2 = dbi_execute ( "SELECT COUNT(*) FROM webcal_entry_user " .
-          "WHERE cal_id = ?" , array ( $ID ) );
+        $res2 = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user ' .
+          'WHERE cal_id = ?' , array ( $ID ) );
         if ( $res2 ) {
           if ( $row2 = dbi_fetch_row ( $res2 ) ) {
             if ( $row2[0] == 1 ) $ids[] = $ID;

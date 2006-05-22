@@ -22,17 +22,17 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $url = 'layers.php';
 }
 
-$sql = "DELETE FROM webcal_user_pref WHERE cal_login = ? " .
+$sql = 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
   "AND cal_setting = 'LAYERS_STATUS'";
 dbi_execute ( $sql , array ( $layer_user ) );
 
 $value = ( $status == 'off' ? 'N': 'Y' );
 
-$sql = "INSERT INTO webcal_user_pref " .
-  "( cal_login, cal_setting, cal_value ) VALUES " .
+$sql = 'INSERT INTO webcal_user_pref ' .
+  '( cal_login, cal_setting, cal_value ) VALUES ' .
   "( ?, 'LAYERS_STATUS', ? )";
 if ( ! dbi_execute ( $sql , array ( $layer_user, $value ) ) ) {
-  $error = "Unable to update preference: " . dbi_error () .
+  $error = 'Unable to update preference: ' . dbi_error () .
     "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
   break;
 }

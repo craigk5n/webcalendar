@@ -5,9 +5,10 @@
         translate( 'Add New Group' ) . "\" href=\"group_edit.php\" target=\"grpiframe\" onclick=\"javascript:show('grpiframe');\">" . 
         translate( 'Add New Group' ) . "</a><br />\n";
 
-       $count = 0;
+        $count = 0;
         $lastrow = 0;
-        $res = dbi_execute ( "SELECT cal_group_id, cal_name FROM webcal_group ORDER BY cal_name" );
+        $res = dbi_execute ( 'SELECT cal_group_id, cal_name FROM webcal_group ' .
+          'ORDER BY cal_name' );
         if ( $res ) {
           while ( $row = dbi_fetch_row ( $res ) ) {
             if ( $count == 0 ) {

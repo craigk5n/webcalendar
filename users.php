@@ -71,8 +71,7 @@ print_header($INC,'', $BodyX );
   <ul>
    <?php
     $userlist = user_get_users ();
-    $cnt = count ( $userlist );
-    for ( $i = 0; $i < $cnt; $i++ ) {
+    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
      if ( $userlist[$i]['cal_login'] != '__public__' ) {
       echo '<li><a title="' . 
        $userlist[$i]['cal_fullname'] . '" href="edit_user.php?user=' . 
