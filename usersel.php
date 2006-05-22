@@ -16,8 +16,7 @@ if ( empty ( $listid ) ) {
 // parse $users
 $exp = split ( ',', $users );
 $selected = array ();
-$cnt = count ( $exp );
-for ( $i = 0; $i < $cnt; $i++ ) {
+for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
   $selected[$exp[$i]] = 1;
 }
 
@@ -25,17 +24,16 @@ $sql_params = array();
 $owner = ( $is_nonuser_admin || $is_assistant ? $user : $login ); 
 // load list of groups
 if ( $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
-  $sql =
-    "SELECT webcal_group.cal_group_id, webcal_group.cal_name " .
-    "FROM webcal_group, webcal_group_user " .
-    "WHERE webcal_group.cal_group_id = webcal_group_user.cal_group_id " .
-    "AND webcal_group_user.cal_login = ? " .
-    "ORDER BY webcal_group.cal_name";
+  $sql = 'SELECT webcal_group.cal_group_id, webcal_group.cal_name ' .
+    'FROM webcal_group, webcal_group_user ' .
+    'WHERE webcal_group.cal_group_id = webcal_group_user.cal_group_id ' .
+    'AND webcal_group_user.cal_login = ? ' .
+    'ORDER BY webcal_group.cal_name';
   $sql_params[] = $owner;
 } else {
   // show all groups
-  $sql = "SELECT cal_group_id, cal_name FROM webcal_group " .
-    "ORDER BY cal_name";
+  $sql = 'SELECT cal_group_id, cal_name FROM webcal_group ' .
+    'ORDER BY cal_name';
 }
 
 $res = dbi_execute ( $sql , $sql_params );
@@ -67,8 +65,7 @@ if ($NONUSER_ENABLED == 'Y' ) {
   $nonusers = get_nonuser_cals ();
   $users = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
 }
-$cnt = count ( $users );
-for ( $i = 0; $i < $cnt; $i++ ) {
+for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
   $u = $users[$i]['cal_login'];
   echo "<option value=\"$u\"";
   if ( ! empty ( $selected[$u] ) )
@@ -86,8 +83,7 @@ for ( $i = 0; $i < $cnt; $i++ ) {
 <b><?php etranslate( 'Groups' ); ?>:</b><br />
 <select name="groups" size="15">
 <?php
-$cnt = count ( $groups );
-for ( $i = 0; $i < $cnt; $i++ ) {
+for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
   echo '<option value="' . $groups[$i]['cal_group_id'] .
       '">' . $groups[$i]['cal_name'] . "</option>\n";
 }

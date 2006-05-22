@@ -74,11 +74,11 @@ if ( ! empty ( $rssuser ) ) {
 
 
   // is this user a participant or the creator of the event?
-  $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
-    "webcal_entry_user WHERE webcal_entry.cal_id = " .
-    "webcal_entry_user.cal_id AND webcal_entry.cal_id = ? " .
-    "AND (webcal_entry.cal_create_by = ? " .
-    "OR webcal_entry_user.cal_login = ?)";
+  $sql = 'SELECT webcal_entry.cal_id FROM webcal_entry, ' .
+    'webcal_entry_user WHERE webcal_entry.cal_id = ' .
+    'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
+    'AND (webcal_entry.cal_create_by = ? ' .
+    'OR webcal_entry_user.cal_login = ?)';
   $res = dbi_execute ( $sql , array ( $id , $login, $login ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -92,21 +92,21 @@ if ( ! empty ( $rssuser ) ) {
 if ( ! empty ( $_POST ) && $is_my_event ) {
   $upercent = getPostValue ( 'upercent' );
  if ( $upercent >= 0 && $upercent <= 100 )
-    dbi_execute ( "UPDATE webcal_entry_user SET cal_percent = ? WHERE cal_login = ? " .
-    " AND cal_id = ?" , array ( $upercent , $login, $id ) );
+    dbi_execute ( 'UPDATE webcal_entry_user SET cal_percent = ? WHERE cal_login = ? ' .
+    ' AND cal_id = ?' , array ( $upercent , $login, $id ) );
 //check if all other user percent is 100%, if so, set cal_complete date
 $others_complete = getPostValue ( 'others_complete' );
 if ( $upercent == 100 && $others_complete == 'yes' )
-  dbi_execute ( "UPDATE webcal_entry SET cal_completed = ? WHERE " .
-    "cal_id = ?" , array ( gmdate ( 'Ymd', time() ), $id ) );
+  dbi_execute ( 'UPDATE webcal_entry SET cal_completed = ? WHERE ' .
+    'cal_id = ?' , array ( gmdate ( 'Ymd', time() ), $id ) );
 
 }
 
 // Load event info now.
-$sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
-  "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-  "cal_name, cal_description, cal_location, cal_url, cal_due_date, " .
-  "cal_due_time, cal_completed FROM webcal_entry  WHERE cal_id = ?";
+$sql = 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date, ' .
+  'cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, ' .
+  'cal_name, cal_description, cal_location, cal_url, cal_due_date, ' .
+  'cal_due_time, cal_completed FROM webcal_entry  WHERE cal_id = ?';
 $res = dbi_execute ( $sql , array ( $id ) );
 if ( ! $res ) {
   $error = translate( 'Invalid entry id' ) . ": $id";
@@ -208,19 +208,19 @@ if ( $readonly == 'Y' || $is_nonuser ||
     $my_usercnt = count ( $my_users );
     if ( is_array ( $my_users ) && $my_usercnt ) {
       $sql_params = array ();
-      $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
-        "webcal_entry_user WHERE webcal_entry.cal_id = " .
-        "webcal_entry_user.cal_id AND webcal_entry.cal_id = ? " .
-        "AND webcal_entry_user.cal_login IN ( ";
+      $sql = 'SELECT webcal_entry.cal_id FROM webcal_entry, ' .
+        'webcal_entry_user WHERE webcal_entry.cal_id = ' .
+        'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
+        'AND webcal_entry_user.cal_login IN ( ';
       $sql_params[] = $id;
       for ( $i = 0; $i < $my_usercnt; $i++ ) {
         if ( $i > 0 ) {
-          $sql .= ", ";
+          $sql .= ', ';
         }
-        $sql .= "?";
+        $sql .= '?';
         $sql_params[] = $my_users[$i]['cal_login'];
       }
-      $sql .= " )";
+      $sql .= ' )';
       $res = dbi_execute ( $sql , $sql_params );
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
@@ -243,8 +243,7 @@ if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
   $NONUSER_ENABLED == 'Y' ) {
   $nonusers = get_nonuser_cals ();
   $nonuser_lookup = array ();
-  $cnt = count ( $nonusers );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
     $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
   }
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? AND cal_status in ('A','W')";
@@ -283,8 +282,8 @@ $event_status = '';
 if ( ! empty ( $user ) && $login != $user ) {
   // If viewing another user's calendar, check the status of the
   // event on their calendar (to see if it's deleted).
-  $sql = "SELECT cal_status FROM webcal_entry_user " .
-    "WHERE cal_login = ? AND cal_id = ?";
+  $sql = 'SELECT cal_status FROM webcal_entry_user ' .
+    'WHERE cal_login = ? AND cal_id = ?';
   $res = dbi_execute ( $sql , array ( $user , $id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
@@ -295,8 +294,8 @@ if ( ! empty ( $user ) && $login != $user ) {
 } else {
   // We are viewing event on user's own calendar, so check the
   // status on their own calendar.
-  $sql = "SELECT cal_id, cal_status FROM webcal_entry_user " .
-    "WHERE cal_login = ? AND cal_id = ?";
+  $sql = 'SELECT cal_id, cal_status FROM webcal_entry_user ' .
+    'WHERE cal_login = ? AND cal_id = ?';
   $res = dbi_execute ( $sql , array ( $user , $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -313,7 +312,7 @@ if ( ! empty ( $user ) && $login != $user ) {
 // Check to make sure that it hasn't been deleted from everyone's
 // calendar.
 if ( empty ( $event_status ) ) {
-  $sql = "SELECT cal_status FROM webcal_entry_user " .
+  $sql = 'SELECT cal_status FROM webcal_entry_user ' .
     "WHERE cal_status <> 'D' ORDER BY cal_status";
   $res = dbi_execute ( $sql , array () );
   if ( $res ) {
@@ -329,7 +328,7 @@ if ( empty ( $event_status ) ) {
 if ( ( empty ( $event_status ) && ! $is_admin ) || 
   ( ! $can_view  && empty ( $rss_view ) ) ) {
   echo '<h2>' . 
-    translate ( 'Error' ) . "</h2>" . 
+    translate ( 'Error' ) . '</h2>' . 
     translate ( 'You are not authorized' ) . ".\n";
   print_trailer ();
   echo "</body>\n</html>";
@@ -350,7 +349,7 @@ $subject = htmlspecialchars ( $subject );
 
 $event_repeats = false;
 // build info string for repeating events and end date
-$sql = "SELECT cal_type FROM webcal_entry_repeats WHERE cal_id = ?";
+$sql = 'SELECT cal_type FROM webcal_entry_repeats WHERE cal_id = ?';
 $res = dbi_execute ( $sql , array ( $id ) );
 $rep_str = '';
 if ( $res ) {
@@ -395,11 +394,11 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
   $categories = array();
   $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
     $is_admin ) ) ? $user : $login;  
-  $sql = "SELECT cat_name FROM webcal_categories, webcal_entry_categories " .
-    "WHERE ( webcal_entry_categories.cat_owner = ? OR " .
-  "webcal_entry_categories.cat_owner IS NULL) AND webcal_entry_categories.cal_id = ? " .
-    "AND webcal_entry_categories.cat_id = webcal_categories.cat_id " .
-  "ORDER BY webcal_entry_categories.cat_order";
+  $sql = 'SELECT cat_name FROM webcal_categories, webcal_entry_categories ' .
+    'WHERE ( webcal_entry_categories.cat_owner = ? OR ' .
+    'webcal_entry_categories.cat_owner IS NULL) AND webcal_entry_categories.cal_id = ? ' .
+    'AND webcal_entry_categories.cat_id = webcal_categories.cat_id ' .
+    'ORDER BY webcal_entry_categories.cat_order';
   $res2 = dbi_execute ( $sql , array ( $cat_owner , $id ) );
   if ( $res2 ) {
     while ($row2 = dbi_fetch_row ( $res2 )) { 
@@ -554,16 +553,16 @@ if ( $CATEGORIES_ENABLED == 'Y' && ! empty ( $category ) ) { ?>
 // @todo Don't work, if users are stored at LDAP.
 $proxy_fullname = '';  
 if ( !empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == 'Y' ) {
-  $res = dbi_execute ( "SELECT wu.cal_firstname, wu.cal_lastname " .
-    "FROM webcal_user wu INNER JOIN webcal_entry_log wel ON wu.cal_login = wel.cal_login " .
-    "WHERE wel.cal_entry_id = ? " .
+  $res = dbi_execute ( 'SELECT wu.cal_firstname, wu.cal_lastname ' .
+    'FROM webcal_user wu INNER JOIN webcal_entry_log wel ON wu.cal_login = wel.cal_login ' .
+    'WHERE wel.cal_entry_id = ? ' .
     "AND wel.cal_type = 'C'" , array ( $id ) );
   if ( $res ) {
     $row3 = dbi_fetch_row ( $res ) ;
     if ( !empty ( $row3 ) ) {
    $proxy_fullname = $row3[0] . ' ' . $row3[1];
    $proxy_fullname = ($createby_fullname == $proxy_fullname ? ''  :
-        ' ( ' . translate( 'by' ) . " " . $proxy_fullname . ' )');
+        ' ( ' . translate( 'by' ) . ' ' . $proxy_fullname . ' )');
     }
   }
 }
@@ -595,7 +594,7 @@ if ( $single_user == 'N' && ! empty ( $createby_fullname )  ) {
       echo date_to_str ( $mod_date ) . ' ' . 
         display_time ( $mod_date . $mod_time, 3 );
     } else {
-      echo date_to_str ( date ('Ymd', date_to_epoch ( $mod_date . $mod_time ) ) ) . " " .
+      echo date_to_str ( date ('Ymd', date_to_epoch ( $mod_date . $mod_time ) ) ) . ' ' .
         display_time ( $mod_date . $mod_time, 2 );    
     }
    ?>
@@ -622,12 +621,12 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
       ":</td><td>\n";
     if ( $extra_type == EXTRA_URL ) {
       if ( strlen ( $extras[$extra_name]['cal_data'] ) ) {
-        echo "<a href=\"" . $extras[$extra_name]['cal_data'] . '">' .
+        echo '<a href="' . $extras[$extra_name]['cal_data'] . '">' .
           $extras[$extra_name]['cal_data'] . "</a>\n";
       }
     } else if ( $extra_type == EXTRA_EMAIL ) {
       if ( strlen ( $extras[$extra_name]['cal_data'] ) ) {
-        echo "<a href=\"mailto:" . $extras[$extra_name]['cal_data'] .
+        echo '<a href="mailto:' . $extras[$extra_name]['cal_data'] .
           "?subject=$subject\">" .
           $extras[$extra_name]['cal_data'] . "</a>\n";
       }
@@ -667,8 +666,8 @@ if ( $single_user == 'N' && $show_participants ) { ?>
   } else   if ( $is_confidential  && ! access_is_enabled() ) {
     echo '[' . translate( 'Confidential' ) . ']';
   } else {
-    $sql = "SELECT cal_login, cal_status, cal_percent FROM webcal_entry_user " .
-      "WHERE cal_id = ?";
+    $sql = 'SELECT cal_login, cal_status, cal_percent FROM webcal_entry_user ' .
+      'WHERE cal_id = ?';
     if ( $eType == 'task' ) {
         $sql .= " AND cal_status IN ( 'A', 'W' )";
     }
@@ -694,7 +693,7 @@ if ( $single_user == 'N' && $show_participants ) { ?>
       }
       dbi_free_result ( $res );
     } else {
-      echo translate( 'Database error' ) . ': ' . dbi_error() . "<br />\n";
+      db_error() . "<br />\n";
     }
   }
   if ( $eType == 'task' ) {
@@ -702,8 +701,7 @@ if ( $single_user == 'N' && $show_participants ) { ?>
     echo '<th align="center">' .translate( 'Participants' ) . '</th>';
     echo '<th align="center" colspan="2">' . translate( 'Percentage Complete' ) . '</th>';
     $others_complete = 'yes';
-    $cnt = count ( $participants );
-    for ( $i = 0; $i < $cnt; $i++ ) {
+    for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
       user_load_variables ( $participants[$i][0], 'temp' );
       if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
       $spacer = 100 - $participants[$i][2];
@@ -746,8 +744,7 @@ if ( $single_user == 'N' && $show_participants ) { ?>
     $external_users = event_get_external_users ( $id, 1 );
     $ext_users = explode ( "\n", $external_users );
     if ( is_array ( $ext_users ) ) {
-      $cnt = count( $ext_users );
-      for ( $i = 0; $i < $cnt; $i++ ) {
+      for ( $i = 0, $cnt = count( $ext_users ); $i < $cnt; $i++ ) {
         if ( ! empty ( $ext_users[$i] ) ) {
           echo $ext_users[$i] . ' (' . translate( 'External User' ) . 
             ")<br />\n";
@@ -1131,10 +1128,10 @@ if ( $can_show_log && $show_log ) {
    translate( 'Time' ) . '</th><th class="action">' . "\n";
   echo translate( 'Action' ) . "\n</th></tr>\n";
 
-  $res = dbi_execute ( "SELECT cal_login, cal_user_cal, cal_type, " .
-    "cal_date, cal_time, cal_text " .
-    "FROM webcal_entry_log WHERE cal_entry_id = ? " .
-    "ORDER BY cal_log_id DESC" , array ( $id ) );
+  $res = dbi_execute ( 'SELECT cal_login, cal_user_cal, cal_type, ' .
+    'cal_date, cal_time, cal_text ' .
+    'FROM webcal_entry_log WHERE cal_entry_id = ? ' .
+    'ORDER BY cal_log_id DESC' , array ( $id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       echo "<tr><td valign=\"top\">\n";

@@ -18,7 +18,7 @@ $error = '';
 
 $res = dbi_execute ( Doc::getSQLForDocId ( $blid ) );
 if ( ! $res ) {
-  $error = translate ( 'Database error' ) . ': ' . dbi_error ();
+  $error = db_error ();
 }
 if ( empty ( $error ) ) {
   $row = dbi_fetch_row ( $res );
@@ -62,11 +62,11 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
 
   if ( empty ( $error ) ) {
     // is this user a participant or the creator of the event?
-    $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
-        "webcal_entry_user WHERE webcal_entry.cal_id = " .
-      "webcal_entry_user.cal_id AND webcal_entry.cal_id = ? " .
-      "AND (webcal_entry.cal_create_by = ? " .
-      "OR webcal_entry_user.cal_login = ?)";
+    $sql = 'SELECT webcal_entry.cal_id FROM webcal_entry, ' .
+        'webcal_entry_user WHERE webcal_entry.cal_id = ' .
+      'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
+      'AND (webcal_entry.cal_create_by = ? ' .
+      'OR webcal_entry_user.cal_login = ?)';
     $res = dbi_execute ( $sql, array( $id, $login, $login ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
@@ -106,20 +106,20 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       $my_users = get_my_users ();
       $cnt = count ( $my_users );
       if ( is_array ( $my_users ) && $cnt ) {
-        $sql = "SELECT webcal_entry.cal_id FROM webcal_entry, " .
-          "webcal_entry_user WHERE webcal_entry.cal_id = " .
-          "webcal_entry_user.cal_id AND webcal_entry.cal_id = ? " .
-          "AND webcal_entry_user.cal_login IN ( ";
+        $sql = 'SELECT webcal_entry.cal_id FROM webcal_entry, ' .
+          'webcal_entry_user WHERE webcal_entry.cal_id = ' .
+          'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
+          'AND webcal_entry_user.cal_login IN ( ';
         $query_params = array();
       $query_params[] = $id;
       for ( $i = 0; $i < $cnt; $i++ ) {
           if ( $i > 0 ) {
-            $sql .= ", ";
+            $sql .= ', ';
           }
-          $sql .= "?";
+          $sql .= '?';
           $query_params[] = $my_users[$i]['cal_login'];
         }
-        $sql .= " )";
+        $sql .= ' )';
         $res = dbi_execute ( $sql, $query_params );
         if ( $res ) {
           $row = dbi_fetch_row ( $res );
@@ -149,11 +149,10 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     $NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_nonuser_cals ();
     $nonuser_lookup = array ();
-    $cnt = count ( $nonusers );
-    for ( $i = 0; $i < $cnt; $i++ ) {
+    for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
       $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
     }
-    $sql = "SELECT cal_login FROM webcal_entry_user " .
+    $sql = 'SELECT cal_login FROM webcal_entry_user ' .
       "WHERE cal_id = ? AND cal_status in ('A','W')";
     $res = dbi_execute ( $sql, array( $id ) );
     $found_nonuser_cal = false;

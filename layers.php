@@ -15,7 +15,7 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 load_user_layers ( $layer_user, 1 );
 
 $layers_enabled = 0;
-$sql = "SELECT cal_value FROM webcal_user_pref " .
+$sql = 'SELECT cal_value FROM webcal_user_pref ' .
   "WHERE cal_setting = 'LAYERS_STATUS' AND cal_login = ?";
 $res = dbi_execute ( $sql , array ( $layer_user ) );
 if ( $res ) {

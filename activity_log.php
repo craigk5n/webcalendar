@@ -38,16 +38,16 @@ echo "<tr><th class=\"usr\">\n" .
   translate( 'Date' ) . "/" . translate( 'Time' ) . "</th><th class=\"dsc\">\n" .
   translate( 'Event' ) . "</th><th class=\"action\">\n" .
   translate( 'Action' ) . "\n</th></tr>\n";
-$sql = "SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, " .
-  "webcal_entry_log.cal_type, webcal_entry_log.cal_date, " .
-  "webcal_entry_log.cal_time, webcal_entry_log.cal_text, webcal_entry.cal_id, " .
-  "webcal_entry.cal_name, webcal_entry_log.cal_log_id, webcal_entry.cal_type " .
-  "FROM webcal_entry_log, webcal_entry " .
-  "WHERE webcal_entry_log.cal_entry_id = webcal_entry.cal_id ";
+$sql = 'SELECT webcal_entry_log.cal_login, webcal_entry_log.cal_user_cal, ' .
+  'webcal_entry_log.cal_type, webcal_entry_log.cal_date, ' .
+  'webcal_entry_log.cal_time, webcal_entry_log.cal_text, webcal_entry.cal_id, ' .
+  'webcal_entry.cal_name, webcal_entry_log.cal_log_id, webcal_entry.cal_type ' .
+  'FROM webcal_entry_log, webcal_entry ' .
+  'WHERE webcal_entry_log.cal_entry_id = webcal_entry.cal_id ';
 $startid = getIntValue ( 'startid', true );
 if ( ! empty ( $startid ) )
-  $sql .= "AND webcal_entry_log.cal_log_id <= $startid ";
-$sql .= "ORDER BY webcal_entry_log.cal_log_id DESC";
+  $sql .= 'AND webcal_entry_log.cal_log_id <= $startid ';
+$sql .= 'ORDER BY webcal_entry_log.cal_log_id DESC';
 $res = dbi_execute ( $sql );
 
 $nextpage = '';
@@ -122,7 +122,7 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 } else {
-  echo translate( 'Database error' ) . ': ' . dbi_error ();
+  echo db_error ();
 }
 ?>
 </table><br />
@@ -140,8 +140,7 @@ if ( ! empty ( $nextpage ) ) {
 
 if ( ! empty ( $startid ) ) {
   $previd = $startid + $PAGE_SIZE;
-  $res = dbi_execute ( "SELECT MAX(cal_log_id) FROM " .
-    "webcal_entry_log" );
+  $res = dbi_execute ( 'SELECT MAX(cal_log_id) FROM webcal_entry_log' );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] <= $previd ) {

@@ -61,7 +61,8 @@ if ( empty ( $error ) && $id > 0 ) {
   }
 
   // Get the name of the event
-  $sql = "SELECT cal_name, cal_description, cal_date, cal_time FROM webcal_entry WHERE cal_id = ?";
+  $sql = 'SELECT cal_name, cal_description, cal_date, cal_time ' .
+    'FROM webcal_entry WHERE cal_id = ?';
   $res = dbi_execute ( $sql , array ( $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -73,8 +74,7 @@ if ( empty ( $error ) && $id > 0 ) {
   }
 
   $eventstart = date_to_epoch ( $fmtdate . $time );
-  $cnt = count ( $partlogin );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $partlogin ); $i < $cnt; $i++ ) {
     // does this user want email for this?
     $send_user_mail = get_pref_setting ( $partlogin[$i],
       'EMAIL_EVENT_REJECTED' );

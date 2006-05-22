@@ -148,11 +148,11 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   if ( $is_admin ) {
     $can_edit = true;
   }
-  $sql = "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
-    "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-    " cal_name, cal_description, cal_group_id, cal_location,  " .
-    " cal_due_date, cal_due_time, cal_completed, cal_url " .
-    "FROM webcal_entry WHERE cal_id = ?";
+  $sql = 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date, ' .
+    'cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, ' .
+    ' cal_name, cal_description, cal_group_id, cal_location,  ' .
+    ' cal_due_date, cal_due_time, cal_completed, cal_url ' .
+    'FROM webcal_entry WHERE cal_id = ?';
 
   $res = dbi_execute ( $sql, array( $id ) );
   if ( $res ) {
@@ -248,10 +248,10 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       $rpt_end_date = $cal_date;
       $rpt_freq = 1;
     } else {
-      $res = dbi_execute ( "SELECT cal_id, cal_type, cal_end, cal_endtime, " .
-        "cal_frequency, cal_byday, cal_bymonth, cal_bymonthday, cal_bysetpos, " .  
-        "cal_byweekno, cal_byyearday, cal_wkst, cal_count  " .
-    "FROM webcal_entry_repeats WHERE cal_id = ?", array( $id ) );
+      $res = dbi_execute ( 'SELECT cal_id, cal_type, cal_end, cal_endtime, ' .
+        'cal_frequency, cal_byday, cal_bymonth, cal_bymonthday, cal_bysetpos, ' .  
+        'cal_byweekno, cal_byyearday, cal_wkst, cal_count  ' .
+        'FROM webcal_entry_repeats WHERE cal_id = ?', array( $id ) );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
           $rpt_type = $row[1];
@@ -285,8 +285,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       }
     }
    
-  $sql = "SELECT cal_login,  cal_percent, cal_status " .
-   " FROM webcal_entry_user WHERE cal_id = ?";
+  $sql = 'SELECT cal_login,  cal_percent, cal_status ' .
+   ' FROM webcal_entry_user WHERE cal_id = ?';
   $res = dbi_execute ( $sql, array( $id ) );
  if ( $res ) {
    while ( $row = dbi_fetch_row ( $res ) ) {
@@ -304,7 +304,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       isset ($bysetpos) || isset($bymonthday) || isset ($bymonth) || isset($byday));
   
     //Get Repeat Exceptions
-  $sql = "SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = ?";
+  $sql = 'SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = ?';
     $res = dbi_execute ( $sql, array( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -318,11 +318,11 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     }
   }
   //get global categories
-  $sql = "SELECT  webcal_entry_categories.cat_id, cat_name " .
-    " FROM webcal_entry_categories, webcal_categories " .
-      " WHERE webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
-   " webcal_entry_categories.cal_id = ?  AND " . 
-      " webcal_categories.cat_owner IS NULL ";
+  $sql = 'SELECT  webcal_entry_categories.cat_id, cat_name ' .
+    ' FROM webcal_entry_categories, webcal_categories ' .
+    ' WHERE webcal_entry_categories.cat_id = webcal_categories.cat_id AND ' .
+    ' webcal_entry_categories.cal_id = ?  AND ' . 
+    ' webcal_categories.cat_owner IS NULL ';
   $res = dbi_execute ( $sql, array( $id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -334,13 +334,13 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   //get user's categories 
   $real_user =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
     $is_admin ) ) ? $user : $login;
-  $sql = "SELECT  webcal_entry_categories.cat_id, " .
-    " webcal_entry_categories.cat_owner, webcal_entry_categories.cat_order, cat_name " .
-    " FROM webcal_entry_categories, webcal_categories " .
-    " WHERE ( webcal_entry_categories.cat_id = webcal_categories.cat_id AND " .
-    " webcal_entry_categories.cal_id = ? ) AND " . 
-    " webcal_categories.cat_owner = ?".
-    " ORDER BY webcal_entry_categories.cat_order";
+  $sql = 'SELECT  webcal_entry_categories.cat_id, ' .
+    ' webcal_entry_categories.cat_owner, webcal_entry_categories.cat_order, cat_name ' .
+    ' FROM webcal_entry_categories, webcal_categories ' .
+    ' WHERE ( webcal_entry_categories.cat_id = webcal_categories.cat_id AND ' .
+    ' webcal_entry_categories.cal_id = ? ) AND ' . 
+    ' webcal_categories.cat_owner = ?'.
+    ' ORDER BY webcal_entry_categories.cat_order';
   $res = dbi_execute ( $sql, array( $id, $real_user ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -359,7 +359,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   $reminder_offset = ( ! empty (  $reminder ) ? $reminder['offset'] : 0 );
   
   //get participants
-  $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? AND " .
+  $sql = 'SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? AND ' .
     " cal_status IN ('A', 'W' )";
   $res = dbi_execute ( $sql, array( $id ) );
   if ( $res ) {
@@ -402,8 +402,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   }
   if ( ! empty ( $defusers ) ) {
     $tmp_ar = explode ( ',', $defusers );
-    $cnt = count ( $tmp_ar );
-    for ( $i = 0; $i < $cnt; $i++ ) {
+    for ( $i = 0, $cnt = count ( $tmp_ar ); $i < $cnt; $i++ ) {
       $participants[$tmp_ar[$i]] = 1;
     }
   }
@@ -424,13 +423,13 @@ $thismonth = $month;
 $thisday = $day;
 if ( empty ( $rpt_type ) || ! $rpt_type )
   $rpt_type = 'none';
-
 // avoid error for using undefined vars
 if ( ! isset ( $hour ) && $hour != 0 ) {
   $hour = -1;
-} else {
+} else if ( isset ( $hour ) && $hour >= 0 ){
   $cal_time = ( $hour * 10000 ) + ( isset ( $minute ) ? $minute * 100 : 0 );  
 }
+
 if ( empty ( $duration ) )
   $duration = 0;
 if ( $duration == 1440 && $time == 0 ) {
@@ -496,7 +495,7 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
     $TZ_notice = '(' . $tempfullname . ' ' . 
       translate ( 'is in a different timezone than you are. Currently' ) . ' ';
       //TODO show hh:mm instead of abs 
-    $TZ_notice .= abs ( $tz_diff ) . " " . $tz_value . '.<br />&nbsp;'; 
+    $TZ_notice .= abs ( $tz_diff ) . ' ' . $tz_value . '.<br />&nbsp;'; 
     $TZ_notice .= translate ( 'Time entered here is based on your Timezone' ) . '.)'; 
   }
   //return to $login TIMEZONE
@@ -666,8 +665,7 @@ if ( $eType == 'task' ) { //only for tasks
       ' cellpadding="2" cellspacing="5">'.
       "<tr>\n<td colspan=\"2\">". translate( 'All Percentages' ) . '</td></tr>';
       $others_complete = 'yes';
-      $cnt = count ( $overall_percent );
-      for ( $i = 0; $i < $cnt; $i++ ) {
+      for ( $i = 0, $cnt = count ( $overall_percent ); $i < $cnt; $i++ ) {
         user_load_variables ( $overall_percent[$i][0], 'percent' );
         echo  '<tr><td>' . $percentfullname . '</td><td>' .
            $overall_percent[$i][1] . "</td></tr>\n";
@@ -1057,10 +1055,10 @@ if ( $useTabs ) { ?>
 
     echo "<td align=\"center\"><input type=\"hidden\" name=\"bydayext2[]\"  " .
       " id=\"$loop_ctr$byday_names[$rpt_byday]\" value=\"$buttonvalue\" />\n" .
-     " <input  type=\"button\" name=\"byday2[]\"" .
+      " <input  type=\"button\" name=\"byday2[]\"" .
       " id=\"$loop_ctr$byday_names[$rpt_byday]\"" .
       " value=\"$buttonvalue\"" .
-     " onclick=\"toggle_byday(this)\" /></td>\n";
+      " onclick=\"toggle_byday(this)\" /></td>\n";
     }
    echo  "</tr>\n";
     if ( $loop_ctr  < 5 ) 

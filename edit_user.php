@@ -42,7 +42,7 @@ if ( ! empty ( $error ) ) {
 <tr><td style="vertical-align:top; width:50%;">
 <h2><?php
  if ( ! empty ( $user ) ) {
-  user_load_variables ( $user, "u" );
+  user_load_variables ( $user, 'u' );
   echo translate( 'Edit User' );
  } else {
   echo translate( 'Add User' );
@@ -96,8 +96,8 @@ if ( ! empty ( $error ) ) {
 if ( $is_admin ) { ?>
  <tr><td style="font-weight:bold;">
   <?php etranslate( 'Admin' )?>:</td><td>
-  <label><input type="radio" name="uis_admin" value="Y"<?php if ( ! empty ( $uis_admin ) && $uis_admin == Y ) echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'Yes' )?></label> 
-  <label><input type="radio" name="uis_admin" value="N"<?php if ( empty ( $uis_admin ) || $uis_admin != Y ) echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'No' )?></label>
+  <label><input type="radio" name="uis_admin" value="Y"<?php if ( ! empty ( $uis_admin ) && $uis_admin == 'Y' ) echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'Yes' )?></label> 
+  <label><input type="radio" name="uis_admin" value="N"<?php if ( empty ( $uis_admin ) || $uis_admin != 'Y' ) echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'No' )?></label>
  </td></tr>
 <?php } //end if ($is_admin ) ?>
  <tr><td colspan="2">

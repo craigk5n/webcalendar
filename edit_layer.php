@@ -53,8 +53,7 @@ if ( $single_user == 'N' ) {
   $num_users = 0;
   $size = 0;
   $users = '';
-  $cnt = count ( $userlist );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     if ( $userlist[$i]['cal_login'] != $layer_user ) {
       $size++;
       $users .= '<option value="' . $userlist[$i]['cal_login'] . '"';
@@ -67,8 +66,7 @@ if ( $single_user == 'N' ) {
   }
   $osize = 0;
   $others = '';
-  $cnt = count ( $otherlist );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $otherlist ); $i < $cnt; $i++ ) {
     if ( $otherlist[$i]['cal_login'] != $layer_user ) {
       $osize++;
       $others .= '<option value="' . $otherlist[$i]['cal_login'] . '">' .

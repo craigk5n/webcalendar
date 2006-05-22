@@ -39,11 +39,11 @@ if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) != '') {
     $perm .= ( $val == 'Y' ) ? 'Y' : 'N';
   }
 
-  $sql = "DELETE FROM webcal_access_function WHERE cal_login = ?";
+  $sql = 'DELETE FROM webcal_access_function WHERE cal_login = ?';
   dbi_execute ( $sql, array( $auser ) );
 
-  $sql = "INSERT INTO webcal_access_function ( cal_login, cal_permissions ) " .
-    "VALUES ( ?, ? )";
+  $sql = 'INSERT INTO webcal_access_function ( cal_login, cal_permissions ) ' .
+    'VALUES ( ?, ? )';
   if ( ! dbi_execute ( $sql, array( $auser, $perm ) ) ) {
     die_miserable_death ( translate ( 'Database error' ) . ': ' .
       dbi_error () );
@@ -62,8 +62,8 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '') {
     if ( ! $is_admin )
       list($puser, $pouser) = array($pouser, $puser);
 
-    dbi_execute ( "DELETE FROM webcal_access_user WHERE cal_login = ? AND " .
-      "cal_other_user = ?", array( $puser, $pouser ) );
+    dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ? AND ' .
+      'cal_other_user = ?', array( $puser, $pouser ) );
       
     if ( empty ( $pouser ) )
       break;
@@ -83,10 +83,10 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '') {
     $edit = ( $edit_total > 0 && $puser != '__public__' ? $edit_total : 0 );
     $approve = ( $approve_total > 0 && $puser != '__public__' ? $approve_total : 0 );
     
-    $sql = "INSERT INTO webcal_access_user " .
-      "( cal_login, cal_other_user, cal_can_view, cal_can_edit, " .
-      "cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only ) VALUES " .
-      "( ?, ?, ?, ?, ?, ?, ?, ? )";
+    $sql = 'INSERT INTO webcal_access_user ' .
+      '( cal_login, cal_other_user, cal_can_view, cal_can_edit, ' .
+      'cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only ) VALUES ' .
+      '( ?, ?, ?, ?, ?, ?, ?, ? )';
     if ( ! dbi_execute ( $sql, array( $puser, $pouser, 
       $view, $edit, $approve, $invite, $email, $time ) ) ) {
       die_miserable_death ( translate ( 'Database error' ) . ': ' .
@@ -113,11 +113,11 @@ if ( ! empty ( $otheruser ) ) {
       $query_param = array( $otheruser, $guser );
     user_load_variables ( $otheruser, 'otheruser_' );
     // Now load all the data from webcal_access_user
-    $res = dbi_execute ( "SELECT cal_other_user, cal_can_view, cal_can_edit, " .
-      "cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only " .
-      "FROM webcal_access_user WHERE cal_login = ? AND cal_other_user = ?", 
+    $res = dbi_execute ( 'SELECT cal_other_user, cal_can_view, cal_can_edit, ' .
+      'cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only ' .
+      'FROM webcal_access_user WHERE cal_login = ? AND cal_other_user = ?', 
       $query_param );
-    assert ( '$res' );
+    assert ( $res );
     $op = array ();
     while ( $row = dbi_fetch_row ( $res ) ) {
       $op = array (
@@ -227,8 +227,8 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
         echo '<option value="__default__">'.
           translate ( 'DEFAULT CONFIGURATION' )."</option>\n";
         $selected ='';
-        $cnt = count ( $userlist );
-        for ( $i = 0; $i < $cnt; $i++ ) {
+        
+        for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
           if ( $userlist[$i]['cal_login'] != $guser  ) {
             $selected = ( ! empty ( $otheruser ) && 
               $otheruser == $userlist[$i]['cal_login'] ? ' selected="selected"':'');
@@ -446,13 +446,11 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
   //add a DEFAULT CONFIGURATION to be used as a mask  
   echo '<option value="__default__">'.
     translate ( 'DEFAULT CONFIGURATION' )."</option>\n";
-  $cnt = count ( $userlist );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $userlist );, $i < $cnt; $i++ ) {
     echo '<option value="'.$userlist[$i]['cal_login']. '">' .
       $userlist[$i]['cal_fullname']."</option>\n";
   }
-  $cnt = count ( $nonuserlist );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $nonuserlist ); $i < $cnt; $i++ ) {
     $is_global = ( $nonuserlist[$i]['cal_is_public'] == 'Y'?'*':'' );
     echo '<option value="' . $nonuserlist[$i]['cal_login'] . '">'.
       $nonuserlist[$i]['cal_fullname'] . ' ' . $is_global . "</option>\n";

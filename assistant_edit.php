@@ -39,7 +39,7 @@ print_header($INC);
   // get list of all users
   $users = get_my_users ();
   // get list of users for this view
-  $sql = "SELECT cal_boss, cal_assistant FROM webcal_asst WHERE cal_boss = ?";
+  $sql = 'SELECT cal_boss, cal_assistant FROM webcal_asst WHERE cal_boss = ?';
   $res = dbi_execute ( $sql, array( $user ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -47,8 +47,7 @@ print_header($INC);
     }
     dbi_free_result ( $res );
   }
-  $cnt = count ( $users );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
     $u = $users[$i]['cal_login'];
     if ($u == $login ) continue;
     if ($u == '__public__' ) continue;

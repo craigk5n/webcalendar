@@ -39,8 +39,7 @@ function print_user_list () {
     $num_users = 0;
     $size = 0;
     $users = '';
-    $cnt = count ( $userlist );
-    for ( $i = 0; $i < $cnt; $i++ ) {
+    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       $l = $userlist[$i]['cal_login'];
       $size++;
       $users .= '<option value="' . $l . '"';

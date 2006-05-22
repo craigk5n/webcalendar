@@ -33,7 +33,7 @@ if ( $is_admin )
 
 $res = dbi_execute ( Doc::getSQLForDocId ( $blid ) );
 if ( ! $res ) {
-  $error = translate( 'Database error' ) . ': ' . dbi_error ();
+  $error = db_error ();
 } else {
   if ( $row = dbi_fetch_row ( $res ) ) {
     $doc =& new Doc ( $row );
@@ -54,8 +54,8 @@ if ( ! $res ) {
 
 if ( empty ( $error ) && ! $can_delete && $event_id > 0 ) {
   // See if current user is creator of associated event
-  $res = dbi_execute ( "SELECT cal_create_by FROM webcal_entry " .
-    "WHERE cal_id = ?", array( $event_id ) );
+  $res = dbi_execute ( 'SELECT cal_create_by FROM webcal_entry ' .
+    'WHERE cal_id = ?', array( $event_id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $event_owner = $row[0];
@@ -73,8 +73,8 @@ if ( empty ( $error ) && ! $can_delete ) {
 }
 
 if ( empty ( $error ) && $can_delete ) {
-  if ( ! dbi_execute ( "DELETE FROM webcal_blob WHERE cal_blob_id = ?", array( $blid ) ) ) {
-    $error = translate ( 'Database error' ) . ': ' . dbi_error ();
+  if ( ! dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_blob_id = ?', array( $blid ) ) ) {
+    $error = db_error ();
   } else {
     if ( $event_id > 0 ) {
       if ( $type == 'C' )

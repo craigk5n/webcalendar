@@ -64,8 +64,7 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
   <label for="nadmin"><?php etranslate( 'Admin' )?>:</label></td><td>
   <select name="nadmin" id="nadmin">
 <?php
-  $cnt = count ( $userlist );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
  echo '<option value="' .$userlist[$i]['cal_login']. '"';
  if (! empty ( $nonusertemp_admin ) &&
             $nonusertemp_admin == $userlist[$i]['cal_login'] ) 

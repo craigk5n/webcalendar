@@ -170,8 +170,7 @@ if ($is_nonuser_admin) {
 
 <table class="admin">
 <?php
- $cnt = count ($names);
- for ( $i = 0; $i < $cnt; $i++ ) {
+ for ( $i = 0, $cnt = count ($names); $i < $cnt; $i++ ) {
   if ( $i % COLUMNS == 0 )
    echo "<tr>\n";
    echo '<td>';

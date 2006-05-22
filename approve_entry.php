@@ -20,14 +20,14 @@ if ( ! empty ( $_POST ) ) {
 
    print_header ();
    echo "<form action=\"approve_entry.php?$q_string\" method=\"post\" name=\"add_comments\" >\n";
-   echo "<table border=\"0\" cellspacing=\"5\">\n" .
-     "<tr><td align=\"center\" valign=\"bottom\"><h3>" . 
+   echo '<table border="0" cellspacing="5">' . "\n" .
+     '<tr><td align="center" valign="botto"><h3>' . 
      translate ( 'Additional Comments (optional)' ) . "</h3></td><tr>\n";
-   echo "<tr><td align=\"center\">" .
-     "<textarea name=\"comments\" rows=\"5\" cols=\"60\" ></textarea></td></tr>\n";
-   echo "<tr><td align=\"center\"><input type=\"submit\" value=\"" . 
-     translate ( 'Approve and Send' ) . "\" />&nbsp;&nbsp;&nbsp;";
-   echo "<input type=\"submit\" value=\"" . 
+   echo '<tr><td align="center">' .
+     '<textarea name="comments" rows="5" cols="60" ></textarea></td></tr>' . "\n";
+   echo '<tr><td align="center"><input type="submit" value="' . 
+     translate ( 'Approve and Send' ) . '" />&nbsp;&nbsp;&nbsp;';
+   echo '<input type="submit" value="' . 
      translate ( 'Approve and Exit' ) . "\" /></td></tr>\n<tr><td>";
    etranslate ( '(Your comments will be included in an email to the event creator)' );
    echo "</td></tr></table></form>\n"; 
@@ -60,8 +60,8 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   $mail = new WebCalMailer;
   // Email event creator to notify that it was approved with comments.
   // Get the name of the event
-  $sql = "SELECT cal_name, cal_description, cal_date, cal_time, cal_create_by " .
-    "FROM webcal_entry WHERE cal_id = ?";
+  $sql = 'SELECT cal_name, cal_description, cal_date, cal_time, cal_create_by ' .
+    'FROM webcal_entry WHERE cal_id = ?';
   $res = dbi_execute ( $sql, array( $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -93,9 +93,9 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
       } else {
         reset_language ( $user_language );
       }
-      $msg = translate( 'Hello' ) . ", " . $tempfullname . ".\n\n" .
+      $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
       translate( 'An appointment has been approved and comments added by' ) .
-      " " . $login_fullname .  ".\n\n" .
+      ' ' . $login_fullname .  ".\n\n" .
       translate( 'The subject was' ) . ' "' . $name . " \"\n" .
       translate( 'The description is' ) . ' "' . $description . "\"\n" .
       translate( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .

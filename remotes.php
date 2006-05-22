@@ -18,8 +18,7 @@ if ( empty ($error) ) {
   $userlist = get_nonuser_cals ( $login, true);
   if ( ! empty ( $userlist ) ) {
     echo '<ul>';
-    $cnt = count ( $userlist );
-    for ( $i = 0; $i < $cnt; $i++ ) {
+    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       echo '<li><a title="' . 
         $userlist[$i]['cal_fullname'] . '" href="edit_remotes.php?nid=' . 
   $userlist[$i]['cal_login'] . "\" target=\"remotesiframe\" onclick=\"javascript:show('remotesiframe');\">" . 

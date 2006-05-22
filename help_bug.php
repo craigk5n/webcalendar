@@ -33,17 +33,17 @@ if ( empty ( $HTTP_USER_AGENT ) )
   $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
 
 echo '<pre>';
-printf ( "%-25s: %s\n", "PROGRAM_NAME", $PROGRAM_NAME );
-printf ( "%-25s: %s\n", "SERVER_SOFTWARE", $SERVER_SOFTWARE );
-printf ( "%-25s: %s\n", "Web Browser", $HTTP_USER_AGENT );
-printf ( "%-25s: %s\n", "db_type", $db_type );
-printf ( "%-25s: %s\n", "readonly", $readonly );
-printf ( "%-25s: %s\n", "single_user", $single_user );
-printf ( "%-25s: %s\n", "single_user_login", $single_user_login );
-printf ( "%-25s: %s\n", "use_http_auth", $use_http_auth ? 'true': 'false');
-printf ( "%-25s: %s\n", "user_inc", $user_inc );
+printf ( "%-25s: %s\n", 'PROGRAM_NAME', $PROGRAM_NAME );
+printf ( "%-25s: %s\n", 'SERVER_SOFTWARE', $SERVER_SOFTWARE );
+printf ( "%-25s: %s\n", 'Web Browser', $HTTP_USER_AGENT );
+printf ( "%-25s: %s\n", 'db_type', $db_type );
+printf ( "%-25s: %s\n", 'readonly', $readonly );
+printf ( "%-25s: %s\n", 'single_user', $single_user );
+printf ( "%-25s: %s\n", 'single_user_login', $single_user_login );
+printf ( "%-25s: %s\n", 'use_http_auth', $use_http_auth ? 'true': 'false');
+printf ( "%-25s: %s\n", 'user_inc', $user_inc );
 
-$res = dbi_execute ( "SELECT cal_setting, cal_value FROM webcal_config" );
+$res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config' );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     printf ( "%-25s: %s\n", $row[0], $row[1] );

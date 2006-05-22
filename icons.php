@@ -48,8 +48,7 @@ if($d = dir($icon_path)) {
 <?php
   echo '<h2>' .  translate ( 'Current Icons on Server' )  . '</h2>';   
   echo "</td></tr>\n<tr>";
-  $cnt = count ( $icons );
-  for ( $i = 0; $i < $cnt; $i++ ) {  
+  for ( $i = 0, $cnt = count ( $icons ); $i < $cnt; $i++ ) {  
     echo "<td><a href=\"#\" onclick=\"sendURL('".$icon_path. $icons[$i]."')\" >" .
       '<img src="' .$icon_path . $icons[$i]. '" border="0" title="' . 
       $title_str . '" alt="' . $title_str . "\" /></a></td>\n";

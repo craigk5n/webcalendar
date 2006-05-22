@@ -64,6 +64,7 @@ if ( empty ( $DISPLAY_TASKS ) ||  $DISPLAY_TASKS == 'N' && $DISPLAY_SM_MONTH != 
     $monthURL );
   display_small_month ( $nextmonth, $nextyear, true, true, 'nextmonth',
     $monthURL );
+
 } else {
   $spacer = '';
   echo '<table border="0" width="100%" cellpadding="5"> ' .
@@ -78,14 +79,16 @@ if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y' && $friendly !=1 ) {
  echo '</td><td valign="top" align="center"><br />';
   display_small_month ( $prevmonth, $prevyear, true, false, 'prevmonth',
     $monthURL );
- echo "<br />";
+ echo '<br />';
   display_small_month ( $nextmonth, $nextyear, true, false, 'nextmonth',
     $monthURL );
+
 ?>
 </td></tr><tr><td valign="bottom">
 
 <?php 
     echo display_small_tasks ( $cat_id );
+
 ?>
 
 </td></tr></table>
@@ -98,6 +101,7 @@ if ( empty ( $friendly ) ) {
   echo '<br />';
   echo generate_printer_friendly ( 'month.php' );
   print_trailer ();
+
 }
 ?>
 </body>

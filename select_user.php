@@ -31,8 +31,7 @@ if ( ! empty ( $error ) ) {
   <form action="<?php echo $url;?>" method="get" name="SelectUser">
   <select name="user" onchange="document.SelectUser.submit()">
   <?php
-  $cnt = count ( $userlist );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '<option value="'.$userlist[$i]['cal_login'].'">'.$userlist[$i]['cal_fullname']."</option>\n";
   }
   ?>

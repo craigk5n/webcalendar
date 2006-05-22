@@ -29,8 +29,7 @@ print_header($INC);
   <ul>
 <?php
 $global_found = false;
-$cnt = count ( $views );
-for ( $i = 0; $i < $cnt; $i++ ) {
+for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   if ( $views[$i]['cal_is_global'] != 'Y' || $is_admin ) {
     echo '<li><a title="' . 
       htmlspecialchars ( $views[$i]['cal_name'] ) .

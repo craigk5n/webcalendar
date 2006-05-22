@@ -44,8 +44,7 @@ if ( empty ( $id ) ) {
   $viewname = translate( 'Unnamed View' );
 } else {
   // search for view by id
-  $cnt = count ( $views );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
     if ( $views[$i]['cal_view_id'] == $id ) {
       $newview = false;
       $viewname = $views[$i]['cal_name'];
@@ -66,7 +65,7 @@ if ( empty( $viewname ) ) {
 // get list of users for this view
 $all_users = false;
 if ( ! $newview ) {
-  $sql = "SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?";
+  $sql = 'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?';
     $res = dbi_execute ( $sql , array ( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -76,7 +75,7 @@ if ( ! $newview ) {
       }
       dbi_free_result ( $res );
     } else {
-      $error = translate ( 'Database error' ) . ': ' . dbi_error ();
+      $error = db_error ();
     }
 }
 
@@ -167,8 +166,7 @@ if ( $newview ) {
     $nonusers = get_nonuser_cals ();
     $users = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
   }
-  $cnt = count ( $users );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
     $u = $users[$i]['cal_login'];
     echo "<option value=\"$u\"";
     if ( ! empty ( $viewuser[$u] ) ) {

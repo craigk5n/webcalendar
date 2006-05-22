@@ -79,22 +79,22 @@ function list_unapproved ( $user ) {
   
   $count = 0;
   
-  user_load_variables ( $user, "temp_" );
+  user_load_variables ( $user, 'temp_' );
   //echo "Listing events for $user<br />";
 
-  $sql = "SELECT webcal_entry.cal_id, webcal_entry.cal_name, " .
-    "webcal_entry.cal_description, webcal_entry_user.cal_login, " .
-    "webcal_entry.cal_priority, webcal_entry.cal_date, " .
-    "webcal_entry.cal_time, webcal_entry.cal_duration, " .
-    "webcal_entry_user.cal_status, webcal_entry.cal_type " .
-    "FROM webcal_entry, webcal_entry_user " .
-    "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id " .
-    "AND ( webcal_entry.cal_ext_for_id IS NULL " .
-    "OR webcal_entry.cal_ext_for_id = 0 ) AND " .
-    "( webcal_entry_user.cal_login = ?  ";
+  $sql = 'SELECT webcal_entry.cal_id, webcal_entry.cal_name, ' .
+    'webcal_entry.cal_description, webcal_entry_user.cal_login, ' .
+    'webcal_entry.cal_priority, webcal_entry.cal_date, ' .
+    'webcal_entry.cal_time, webcal_entry.cal_duration, ' .
+    'webcal_entry_user.cal_status, webcal_entry.cal_type ' .
+    'FROM webcal_entry, webcal_entry_user ' .
+    'WHERE webcal_entry.cal_id = webcal_entry_user.cal_id ' .
+    'AND ( webcal_entry.cal_ext_for_id IS NULL ' .
+    'OR webcal_entry.cal_ext_for_id = 0 ) AND ' .
+    '( webcal_entry_user.cal_login = ?  ';
       
   $sql .= ") AND webcal_entry_user.cal_status = 'W' " .
-    "ORDER BY webcal_entry_user.cal_login, webcal_entry.cal_date";
+    'ORDER BY webcal_entry_user.cal_login, webcal_entry.cal_date';
   $res = dbi_execute ( $sql , array ( $user ) );
   $eventinfo = '';
   if ( $res ) {
@@ -184,7 +184,7 @@ function list_unapproved ( $user ) {
         'name="reject_selecte" title="' . translate ( 'Reject Selected' ) .
          "\" onclick=\"return confirm('" . translate( 'Reject Selected entries?', true) .
           "');this.form.submit();\"\" />";
-      echo "&nbsp;&nbsp;&nbsp;( " . translate ( 'Emails Will Not Be Sent' ) . " )"; 
+      echo "&nbsp;&nbsp;&nbsp;( " . translate ( 'Emails Will Not Be Sent' ) . ' )'; 
       echo "</td></tr>\n";
     }
   }
@@ -228,8 +228,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
     } else {
       $all = get_my_users ( );
     }
-    $cnt = count ( $all );
-    for ( $j = 0; $j < $cnt; $j++ ) {
+    for ( $j = 0, $cnt = count ( $all ); $j < $cnt; $j++ ) {
       $x = $all[$j]['cal_login'];
       if ( access_user_calendar ( 'approve', $x ) ) {
         if ( empty ( $app_user_hash[$x] ) ) {
@@ -245,8 +244,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
       $app_users_hash['__public__'] = 1;
     }
     $all = get_nonuser_cals ( );
-    $cnt = count ( $all );
-    for ( $j = 0; $j < $cnt; $j++ ) {
+    for ( $j = 0, $cnt = count ( $all ); $j < $cnt; $j++ ) {
       $x = $all[$j]['cal_login'];
         if ( empty ( $app_user_hash[$x] ) ) {
           $app_users[] = $x;
@@ -257,8 +255,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
 }
 echo '<form action="list_unapproved.php" name="listunapproved" method="post">' . "\n";
 echo '<table border"0">';
-$cnt = count ( $app_users );
-for ( $i = 0; $i < $cnt; $i++ ) {
+for ( $i = 0, $cnt = count ( $app_users ); $i < $cnt; $i++ ) {
   // List unapproved entries for this user.
   list_unapproved ( $app_users[$i] );
 }
