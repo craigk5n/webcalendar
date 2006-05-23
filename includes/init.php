@@ -138,7 +138,9 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   if ( !empty ( $friendly ) || $disableCustom ) $MENU_ENABLED = 'N';
 
   // Includes needed for the top menu
-  if ( ( $MENU_ENABLED == 'Y'  ) && ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none') ) {
+  if ( $MENU_ENABLED == 'Y' ) {
+    $MENU_THEME = ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none' ? 
+      $MENU_THEME : 'default' );
     echo "<script type=\"text/javascript\" src=\"includes/menu/JSCookMenu.js\"></script>\n";
     echo "<link rel=\"stylesheet\" type=\"text/css\" " .
       "href=\"includes/menu/themes/$MENU_THEME/theme.css\" />\n";
@@ -225,7 +227,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   }
 
   // Add the top menu if enabled
-  if ( ( $MENU_ENABLED == 'Y'  ) && ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none') )
+  if ( $MENU_ENABLED == 'Y' )
     include_once 'includes/menu/index.php';
 }
 
@@ -243,8 +245,8 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
 function print_trailer ( $include_nav_links=true, $closeDb=true,
   $disableCustom=false )
 {
-  global $CUSTOM_TRAILER, $c, $STARTVIEW, $DEMO_MODE, $MENU_ENABLED;
-  global $login, $user, $cat_id, $CATEGORIES_ENABLED, $thisyear,
+  global $CUSTOM_TRAILER, $c, $STARTVIEW, $DEMO_MODE, $MENU_ENABLED,
+    $login, $user, $cat_id, $CATEGORIES_ENABLED, $thisyear,
     $thismonth, $thisday, $DATE_FORMAT_MY, $WEEK_START, $DATE_FORMAT_MD,
     $readonly, $is_admin, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
     $single_user, $use_http_auth, $login_return_path, $REQUIRE_APPROVALS,
@@ -269,9 +271,9 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
   }
  // adds an easy link to validate the pages
  if ( $DEMO_MODE == 'Y' ) {
-     echo "<p><a href=\"http://validator.w3.org/check?uri=referer\"><img " .
-       "src=\"http://www.w3.org/Icons/valid-xhtml10\" " .
-       "alt=\"Valid XHTML 1.0!\" class=\"valid\"  /></a></p>";
+     echo '<p><a href="http://validator.w3.org/check?uri=referer"><img ' .
+        'src="http://www.w3.org/Icons/valid-xhtml10" ' .
+       'alt="Valid XHTML 1.0!" class="valid"  /></a></p>';
  }  
 }
 
