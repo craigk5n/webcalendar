@@ -1,4 +1,14 @@
 <?php
+/* $Id$ 
+ * Allows the setting of categories by each participant
+ * of an event
+ *
+ * Multiple categories can be added by each participant and 
+ * stored seperately for that user. Global categories will be visible
+ * by all participants, but can only be added/removed by the owner
+ * in the edit-entry form.
+ *
+ */
 include_once 'includes/init.php';
 load_user_categories();
 
@@ -123,6 +133,16 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
     do_redirect ( $url );
   }
 }
+//set up variables for inclusion later
+$setCatStr = translate( 'Set Category' );
+$briefStr = translate( 'Brief Description' );
+$catHelpStr = tooltip( 'category-help' );
+$catStr = translate( 'Category' );
+$editStr = translate( 'Edit' );
+$useEditStr = translate( 'Use the Edit button to make changes.', true);
+$globalNoteStr = ( $globals_found ? translate( 'Global Categories can not be changed'):'');
+$saveStr = translate( 'Save' );
+
 $INC = array('js/set_entry_cat.php/true');
 print_header($INC);
 
@@ -132,39 +152,36 @@ if ( ! empty ( $error ) ) { ?>
 <?php echo $error; ?>
 </blockquote>
 
-<?php } else { ?>
-<h2><?php etranslate( 'Set Category' )?></h2>
-
+<?php } else {
+echo <<<EOT
+<h2>{$setCatStr}</h2>
 <form action="set_entry_cat.php" method="post" name="selectcategory">
-
-<input type="hidden" name="date" value="<?php echo $date?>" />
-<input type="hidden" name="id" value="<?php echo $id?>" />
-
-<table border="0" cellpadding="5">
-<tr style="vertical-align:top;"><td style="font-weight:bold;">
- <?php etranslate( 'Brief Description' )?>:</td><td>
- <?php echo $event_name; ?>
-</td></tr>
-     <tr><td class="tooltip" title="<?php etooltip( 'category-help' )?>" valign="top">
-      <label for="entry_categories"><?php etranslate( 'Category' )?>:<br /></label>
-   <input type="button" value="Edit" onclick="editCats(event)" /></td><td valign="top">
-      <input  readonly=""type="text" name="catnames" 
-     value="<?php echo $catNames ?>"  size="75" 
-    onclick="alert('<?php etranslate( 'Use the Edit button to make changes.', true) ?>')"/>
-    <br />
-    <?php if ( $globals_found) echo '*' . 
-     translate( 'Global Categories can not be changed')?>
-   <input  type="hidden" name="cat_id" id="entry_categories" value="<?php echo $catList ?>" />
-     </td></tr>
-  <tr><td colspan="2">
-    
-  </td></tr>
-<tr style="vertical-align:top;"><td colspan="2">
- <input type="submit" value="<?php etranslate( 'Save' );?>" />
-</td></tr>
-</table>
+  <input type="hidden" name="date" value="{$date}" />
+  <input type="hidden" name="id" value="{$id}" />
+  <table border="0" cellpadding="5">
+    <tr style="vertical-align:top;">
+      <td style="font-weight:bold;">{$briefStr}:</td>
+      <td>{$event_name}</td>
+    </tr>
+    <tr>
+      <td class="tooltip" title="{$catHelpStr}" valign="top">
+        <label for="entry_categories">{$catStr}:<br /></label>
+        <input type="button" value="{$editStr}" onclick="editCats(event)" />
+       </td><td valign="top">
+       <input readonly="readonly" type="text" name="catnames" value="{$catNames}" size="75" onclick="alert('{$useEditStr}')"/>
+       <br />{$globalNoteStr}
+       <input  type="hidden" name="cat_id" id="entry_categories" value="{$catList}" />
+      </td>
+    </tr>
+    <tr style="vertical-align:top;">
+      <td colspan="2"><br />
+        <input type="submit" value="{$saveStr}" />
+      </td>
+    </tr>
+  </table>
 </form>
-<?php }
+EOT;
+}
 print_trailer(); ?>
 </body>
 </html>
