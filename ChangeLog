@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1491490: cal_url is too short
+ - Fixed bug 1492792: Month-, Week- and Year-selection at trailer are missing
  - Fixed bug 1493405: [_public_] won't be displayed in the proper language
  - Fixed bug 1493446: 'Edit' - button not displayed in the proper language
  - Fixed bug 1486953: 'Unapproved Entries' list shows every NUC
