@@ -4755,7 +4755,7 @@ function nonuser_load_variables ( $login, $prefix ) {
 function user_is_nonuser_admin ( $login, $nonuser ) {
   $ret = false;
 
-  $rows = dbi_get_cached_rows ( 'SELECT * FROM webcal_nonuser_cals ' .
+  $rows = dbi_get_cached_rows ( 'SELECT cal_admin FROM webcal_nonuser_cals ' .
     'WHERE cal_login = ? AND cal_admin = ?', array( $nonuser, $login ) );
   if ( $rows ) {
     if ( ! empty ( $rows[0] ) )
