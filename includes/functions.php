@@ -4422,7 +4422,7 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
  */
 function print_entry_timebar ( $event, $date ) {
   global $eventinfo, $login, $user, $PHP_SELF, $prefarray, $is_assistant,
-    $is_nonuser_admin, $layers;
+    $is_nonuser_admin, $layers, $PUBLIC_ACCESS_FULLNAME;
 
   static $key = 0;
   $insidespan = false;
@@ -4495,10 +4495,10 @@ function print_entry_timebar ( $event, $date ) {
     if ( $event->getStatus() == 'W' ) $class = 'unapprovedentry';
   }
   // if we are looking at a view, then always use "entry"
-  if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
+  if ( strstr ( $PHP_SELF, 'view_t.php' ) ||
     strstr ( $PHP_SELF, 'view_w.php' ) ||
     strstr ( $PHP_SELF, 'view_v.php' ) ||
-    strstr ( $PHP_SELF, 'view_t.php' ) )
+    strstr ( $PHP_SELF, 'view_m.php' ) )
     $class = 'entry';
 
   if ( $event->getPriority() == 3 ) echo '<strong>';
@@ -4527,14 +4527,15 @@ function print_entry_timebar ( $event, $date ) {
     }
   }
 
-  echo '[' . $event->getLogin() . ']&nbsp;';
+  echo '[' . ( $event->getLogin() == '__public__' ? 
+    $PUBLIC_ACCESS_FULLNAME : $event->getLogin() ) . ']&nbsp;';
   $timestr = '';
   if ( $event->isAllDay() ) {
     $timestr = translate('All day event');
   } else if ( $time >= 0 ) {
     $timestr = display_time ( $event->getDatetime() );
     if ( $event->getDuration() > 0 ) {
-      $timestr .= " - " . display_time ( $event->getEndDateTime(), 2 );
+      $timestr .= ' - ' . display_time ( $event->getEndDateTime(), 2 );
     }
   }
   echo build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only );
