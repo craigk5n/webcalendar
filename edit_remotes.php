@@ -1,17 +1,17 @@
 <?php
-/* $Id$ 
+/*  
  * 
  * Allows a user to specify a remote calendar by URL that can
  * be imported manually into the NUC calendar specified. The user
  * will also be allowed to create a layer to display this calendar 
  * on top of their own calendar.
  *
- * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @author Ray Jones <rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @version $Id$
  * @package WebCalendar
- * @subpackage Reports
+ * @subpackage Edit Remotes
  *
  * Security
  * $REMOTES_ENABLED must be enabled under System Settings and if
