@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1493446: 'Edit' - button not displayed in the proper language
       1486953: 'Unapproved Entries' list shows every NUC
       1492771: rejection of 'Themes' AND 'Menu themes' don't work
       1492753: missing 'convert to GMT' at wizard 'step 4'
