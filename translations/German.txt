@@ -9,7 +9,8 @@
 # Last update: 16 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 17 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 19 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 05-19-2006
+# Last update: 23 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 05-23-2006
 
 
 ###############################################
@@ -73,7 +74,6 @@ Next 90 days: N&auml;chsten 90 Tage
 Next 180 days: N&auml;chsten 180 Tage
 Next 365 days: N&auml;chsten 365 Tage
 Invalid report id: Ung&uuml;ltige Bericht ID
-Database error: Datenbank Fehler
 Unnamed Report: Neuer Bericht
 Add Report: Bericht hinzuf&uuml;gen
 Edit Report: Bericht editieren
@@ -124,17 +124,17 @@ Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
 # Page: list_unapproved.php
 #
 View this entry: Eintrag ansehen
-Approve/Confirm: Eintrag &Uuml;berpr&uuml;fen/Best&auml;tigen
+Approve/Confirm: Eintrag Best&auml;tigen/R&uuml;ckmelden
 Approve this entry?: Diesen Eintrag best&auml;tigen?
 Reject: Ablehnen
 Reject this entry?: Eintrag ablehnen?
 Are you sure you want to delete this entry?: Wollen Sie diesen Eintrag wirklich l&ouml;schen?
 Check All: Alles markieren
 Uncheck All: Nichts markieren
-Approve Selected: Pr&uuml;fe Auswahl
-Approve Selected entries?: Pr&uuml,fe ausgew&auml;hlte Eintr&auml;ge?
-Reject Selected: Abgelehnte Auswahl
-Reject Selected entries?: Abgelehnte ausgew&auml;hlte Eintr&auml;ge?
+Approve Selected: Best&auml;tige Auswahl
+Approve Selected entries?: Best&auml;tige ausgew&auml;hlte Eintr&auml;ge?
+Reject Selected: Auswahl ablehnen
+Reject Selected entries?: Ausgew&auml;hlte Eintr&auml;ge ablehnen?
 Emails Will Not Be Sent: Emails werden nicht versendet
 No unapproved entries for: Keine unbest&auml;tigten Eintr&auml;ge f&uuml;r
 Unapproved Entries: Unbest&auml;tigte Eintr&auml;ge
@@ -264,7 +264,8 @@ hour: Stunde
 minutes: Minute(n)
 minute: Minute
 before due time: vor F&auml;lligkeitszeit
-Participants: Benutzer
+Database error: Datenbank Fehler
+Participants: Teilnehmer
 Percentage Complete: Prozentsatz erledigt
 Update Task Percentage: Aktualisierung des Aufgabenprozentsatzes
 Update: Aktualisieren
@@ -889,6 +890,8 @@ Subscribe/Publish: Abonieren/Ver&ouml;ffentlichen
 Custom Scripts: Eigene Scripte
 Timezone Selection: Auswahl der Zeitzone
 Default Category: Standard Kategorie
+theme-reload-help: Wegen gecachten CSS ist ein nochmaliges (Reload) der Seite erforderlich
+Page may need to be reloaded for new Theme to take effect: Seite m&uuml;&szlig;te neu geladen werden um das neues Thema anzuzeigen
 Email format preference: Emailformat Einstellungen
 HTML: HTML
 Plain Text: Reiner Text
@@ -933,7 +936,7 @@ A new appointment has been made for you by: Es wurde Ihnen eine neue Verabredung
 An appointment has been updated by: Eine Verabredung wurde ge&auml;ndert von
 The subject is: Die Beschreibung lautet 
 Please look on: Bitte konsultieren Sie Ihren
-to accept or reject this appointment: Um die Verabredung zu best&auml;tigen/abzulehnen.
+to accept or reject this appointment: um die Verabredung zu best&auml;tigen/abzulehnen.
 to view this appointment: Verabredung anschauen
 Scheduling Conflict: Termin&uuml;berschneidung
 Your suggested time of: Ihre Eintragung von 
@@ -1268,7 +1271,7 @@ Unauthorized: Nicht autorisiert
 __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
 This event is private: Dieser Termin ist <b>PRIVAT</b>
-Conf.: Geheim
+Conf.: Vertraulich
 Sun: So
 Mon: Mo
 Tue: Di
@@ -1277,7 +1280,7 @@ Thu: Do
 Fri: Fr
 Sat: Sa
 WK: KW
-Task Name: Aufgabenname
+Task Name: Aufgabe
 Task Due Date: Abgabefrist
 __mm__/__dd__/__yyyy__: __dd__. __mm__. __yyyy__
 TASKS: AUFGABEN
@@ -1594,7 +1597,7 @@ go back to the previous page and correct your settings: Gehen Sie zur&uuml;ck zu
 The database requires some data input: Die Datenbank erfodert einige Dateneingaben
 Click <b>Update Database</b> to complete the upgrade: Klick auf <b>Update Database</b> um das Upgrade zu vervollst&auml;ndigen
 This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
-In this section we will perform the required database changes to bring your database up to the required level: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch, um Ihre Datenbank auf den notwendigen Stand zu bringen.
+In this section we will perform the required database changes to bring your database up to the required level: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch, um Ihre Datenbank auf den aktuellen Stand zu bringen.
 If you are using a fully supported database, this step will be performed automatically for you: Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt.
 If not, the required SQL can be displayed and you should be able: Wenn nicht, kann der angeforderte SQL angezeigt werden und Sie sollten in der Lage sein,
 to cut &amp; paste it into your database server query window: diese zu kopieren und in Ihr Datenbankabfragefenster einzuf&uuml;gen
