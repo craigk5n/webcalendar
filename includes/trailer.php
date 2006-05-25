@@ -12,13 +12,13 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 // in includes/init.php.  If you add a global variable somewhere in this
 // file, be sure to declare it global in the print_trailer function
 // or use $GLOBALS[].
-if ( access_can_access_function ( ACCESS_TRAILER ) ) { ?>
+$tret = '';
+if ( access_can_access_function ( ACCESS_TRAILER ) ) { 
 
-<div id="trailer">
-<?php if ( $MENU_ENABLED == 'N' ) print_menu_dates (); ?>
-<div id="menu">
+$tret .= '<div id="trailer">';
+if ( $MENU_ENABLED == 'N' ) $tret .= print_menu_dates (); 
+$tret .= '<div id="menu">' . "\n";
 
-<?php
 $goto_link = array ( );
 $views_link = array ( );
 $reports_link = array ( );
@@ -214,12 +214,12 @@ if ( $showHelp ) {
 }
 
 if ( count ( $goto_link ) > 0 ) {
-  ?><span class="prefix"><?php etranslate( 'Go to' )?>:</span> <?php
+ $tret .= '<span class="prefix">' .translate( 'Go to' ) . ':</span>' . "\n";
   $gotocnt = count ( $goto_link );
   for ( $i = 0; $i < $gotocnt; $i++ ) {
     if ( $i > 0 )
-      echo ' | ';
-    echo $goto_link[$i] . "\n";
+      $tret .= ' | ';
+    $tret .= $goto_link[$i] . "\n";
   }
 }
 ?>
@@ -242,12 +242,12 @@ if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER != 'N' )
   }
 }
 $views_linkcnt = count ( $views_link );
-if ( $views_linkcnt > 0 ) {
-  ?><br /><span class="prefix"><?php etranslate( 'Views' )?>:</span>&nbsp;<?php
+if ( $views_linkcnt > 0 ) { 
+  $tret .= '<br /><span class="prefix">' . translate( 'Views' ) . ':</span>&nbsp;' . "\n";
   for ( $i = 0; $i < $views_linkcnt; $i++ ) {
     if ( $i > 0 )
-      echo ' | ';
-    echo $views_link[$i];
+      $tret .= ' | ';
+    $tret .= $views_link[$i];
   }
 }
 ?>
@@ -262,34 +262,34 @@ $reports_link = array ();
   } else {
     $u_url = '';
   }
-  $res = dbi_execute ( 'SELECT cal_report_name, cal_report_id ' .
+  $rows = dbi_get_cached_rows ( 'SELECT cal_report_name, cal_report_id ' .
     'FROM webcal_report ' .
     'WHERE cal_login = ? OR ' .
     "( cal_is_global = 'Y' AND cal_show_in_trailer = 'Y' ) " .
     'ORDER BY cal_report_id', array( $login ) );
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
+  if ( $rows ) {
+    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+      $row = $rows[$i];
       $reports_link[] = '<a title="' . 
         htmlspecialchars ( $row[0] ) . 
         "\" href=\"report.php?report_id=$row[1]$u_url\">" . 
         htmlspecialchars ( $row[0] ) . '</a>';
     }
-    dbi_free_result ( $res );
   }
   $reports_linkcnt = count ( $reports_link );
   if ( $reports_linkcnt  > 0 ) {
-    ?><br /><span class="prefix"><?php etranslate( 'Reports' );?>:</span>&nbsp;<?php
+    $tret .= '<br /><span class="prefix">' . 
+      translate( 'Reports' ) . ':</span>&nbsp;' . "\n";
     for ( $i = 0; $i < $reports_linkcnt ; $i++ ) {
       if ( $i > 0 )
-        echo ' | ';
-      echo $reports_link[$i] . "\n";
+        $tret .= ' | ';
+      $tret .= $reports_link[$i] . "\n";
     }
   }
 }
+$tret .= '<br />';
 ?>
-
 <!-- CURRENT USER -->
-<br />
 <?php
 if ( ! $use_http_auth ) {
  if ( empty ( $login_return_path ) ) {
@@ -312,13 +312,13 @@ if ( ! $use_http_auth ) {
     
   if ( $readonly != 'Y' ) {
     if ( strlen ( $login ) && $login != '__public__' ) {
-     echo '<span class="prefix">' .
+     $tret .= '<span class="prefix">' .
       translate( 'Current User' ) . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
       translate( 'Logout' ) . "\" href=\"$logout_url\">" . 
       translate( 'Logout' ) . "</a>)\n";
     } else {
      // For public user (who did not actually login)
-     echo '<span class="prefix">' .
+     $tret .= '<span class="prefix">' .
       translate( 'Current User' ) . ':</span>&nbsp;' . 
       translate( 'Public Access' ) . '&nbsp;(<a title="' . 
       translate( 'Login' ) . "\" href=\"$login_url\">" . 
@@ -377,37 +377,34 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     $groups .= "<a title=\"$f\" href=\"$xurl\">$f</a>";
   }
   if ( ! empty ( $groups ) ) {
-    echo '<br /><span class="prefix">';
-    etranslate ( 'Manage calendar of' );
-    echo ':</span>&nbsp;' . $groups;
+    $tret .= '<br /><span class="prefix">';
+    $tret .= translate ( 'Manage calendar of' );
+    $tret .= ':</span>&nbsp;' . $groups;
   }
 }
 
 // WebCalendar Info...
-echo '<br /><br />' . "\n" . '<a title="' . $GLOBALS['PROGRAM_NAME'] . '" ' .
+$tret .= '<br /><br />' . "\n" . '<a title="' . $GLOBALS['PROGRAM_NAME'] . '" ' .
   "id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_blank\">" .
   $GLOBALS['PROGRAM_NAME'] . "</a>\n";
+
+$tret .= '</div></div>' . "\n";
 ?>
-</div>
-</div>
 <!-- /TRAILER -->
 <?php } 
-  echo '<!-- Db queries: ' . dbi_num_queries () .
+  $tret .= '<!-- Db queries: ' . dbi_num_queries () .
   '   Cached queries: ' . dbi_num_cached_queries () . " -->\n";
-if ( dbi_get_debug() ) { ?>
-<blockquote style="border: 1px solid #ccc; background-color: #eee;">
-<b>Executed queries:</b> <?php echo dbi_num_queries ();?>
-&nbsp;&nbsp; <b>Cached queries:</b> <?php echo dbi_num_cached_queries ();?>
-<br/>
-<ol>
-<?php
-$log = $GLOBALS['SQLLOG'];
-//$log=0;
-$logcnt = count ( $log );
-for ( $i = 0; $i < $logcnt; $i++ ) {
-  echo '<li>' . $log[$i] . '</li>';
+if ( dbi_get_debug() ) { 
+  $tret .= '<blockquote style="border: 1px solid #ccc; background-color: #eee;">' . "\n";
+  $tret .= '<b>Executed queries:' .dbi_num_queries ();
+  $tret .= '&nbsp;&nbsp; <b>Cached queries:</b>' . dbi_num_cached_queries ();
+  $tret .= "<br/><ol>\n";
+  $log = $GLOBALS['SQLLOG'];
+  //$log=0;
+  $logcnt = count ( $log );
+  for ( $i = 0; $i < $logcnt; $i++ ) {
+    $tret .= '<li>' . $log[$i] . '</li>';
+  }
+  $tret .= "</ol>\n</blockquote>\n";
 }
 ?>
-</ol>
-</blockquote>
-<?php } ?>
