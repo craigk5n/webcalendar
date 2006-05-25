@@ -143,7 +143,7 @@ if ( empty ( $login ) ) {
     header('HTTP/1.0 401 Unauthorized');
     exit;
   } else {
-    if ( validUserLogin ( $_SERVER['PHP_AUTH_USER'],
+    if ( user_valid_login ( $_SERVER['PHP_AUTH_USER'],
       $_SERVER['PHP_AUTH_PW'], true ) ) {
       $login = $_SERVER['PHP_AUTH_USER'];
     } else {
