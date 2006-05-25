@@ -1097,7 +1097,6 @@ function export_ical ( $id='all', $attachment=false ) {
 
   
   $ret .= "END:VCALENDAR\r\n";
-do_debug ( $ret);  
   //attachment will be true if called during email creation
   if ( !$attachment ) {
     echo $ret;
@@ -1516,7 +1515,7 @@ foreach ( $data as $Entry ){
           break;
         }
       } else {
-        do_debug ( "Updating event $id for user $participants[0] with status=$status" );
+        //do_debug ( "Updating event $id for user $participants[0] with status=$status" );
         //do_debug ( "SQL> $sql" );
         $sql = 'UPDATE webcal_entry_user SET cal_status = ?' .
           ' WHERE cal_id = ?';
@@ -1882,7 +1881,6 @@ function parse_ical ( $cal_file, $source='file' ) {
     }
   }
   fclose ( $stdin );
-
   //do_debug ( "strlen(data)=" . strlen($data) );
 
    // Check for PHP stdin bug
@@ -1901,6 +1899,11 @@ function parse_ical ( $cal_file, $source='file' ) {
     // We will allow it to be CRLF, CR or LF or any repeated sequence
     // so long as there is a single white space character next.
     //echo "Orig:<br /><pre>$data</pre><br /><br />\n";
+
+    //Special cases for  stupid Sunbird wrapping every line!
+    $data = preg_replace ( "/[\r\n]+[\t ];/",  ";", $data );
+    $data = preg_replace ( "/[\r\n]+[\t ]:/",  ":", $data );
+
     $data = preg_replace ( "/[\r\n]+[\t ]/",  " ", $data );
     $data = preg_replace ( "/[\r\n]+/", "\n", $data );
     //echo "Data:<br /><pre>$data</pre><p>";
@@ -1933,7 +1936,7 @@ function parse_ical ( $cal_file, $source='file' ) {
 
       if ($state == 'VEVENT' || $state == 'VTODO') {
         if ( ! empty ( $subsubstate ) ) {
-          if (preg_match("/^END:(.+)$/i", $buff, $match)) {
+          if (preg_match("/^END.*:(.+)$/i", $buff, $match)) {
             if ( $match[1] == $subsubstate ) {
               $subsubstate = '';
             }
@@ -1942,31 +1945,31 @@ function parse_ical ( $cal_file, $source='file' ) {
               // Example: TRIGGER;VALUE=DATE-TIME:19970317T133000Z
               $substate = 'alarm_trigger';
               $event[$substate] = $match[1];
-            } else if ( preg_match ( "/ACTION:(.+)$/i", $buff, $match ) ) {
+            } else if ( preg_match ( "/ACTION.*:(.+)$/i", $buff, $match ) ) {
               $substate = 'alarm_action';
               $event[$substate] = $match[1];   
-            } else  if ( preg_match ( "/REPEAT:(.+)$/i", $buff, $match ) ) {
+            } else  if ( preg_match ( "/REPEAT.*:(.+)$/i", $buff, $match ) ) {
               $substate = 'alarm_repeat';
               $event[$substate] = $match[1]; 
             } else  if ( preg_match ( "/DURATION.*:(.+)$/i", $buff, $match ) ) {
               $substate = 'alarm_duration';
               $event[$substate] = $match[1];
-            } else  if ( preg_match ( "/RELATED:(.+)$/i", $buff, $match ) ) {
+            } else  if ( preg_match ( "/RELATED.*:(.+)$/i", $buff, $match ) ) {
               $substate = 'alarm_related';
               $event[$substate] = $match[1];  
             } 
           }     
-        } else if (preg_match("/^BEGIN:(.+)$/i", $buff, $match)) {
+        } else if (preg_match("/^BEGIN.*:(.+)$/i", $buff, $match)) {
             $subsubstate = $match[1];
         }
           // we suppose ': ' is on the same line as property name,
           // this can perhaps cause problems
-        else if (preg_match("/^SUMMARY(;.+)?:(.+)$/i", $buff, $match)) {
+        else if (preg_match("/^SUMMARY\s*(;.+)?:(.+)$/i", $buff, $match)) {
           $substate = 'summary';
           if (stristr($match[1], 'ENCODING=QUOTED-PRINTABLE'))
             $match[2] = quoted_printable_decode($match[2]);
           $event[$substate] = $match[2];
-        } elseif (preg_match("/^DESCRIPTION(;.+)?:(.+)$/i", $buff, $match)) {
+        } elseif (preg_match("/^DESCRIPTION\s*(;.+)?:(.+)$/i", $buff, $match)) {
           $substate = 'description';
           if (stristr($match[1], 'ENCODING=QUOTED-PRINTABLE'))
             $match[2] = quoted_printable_decode($match[2]);
@@ -1977,7 +1980,7 @@ function parse_ical ( $cal_file, $source='file' ) {
         } elseif (preg_match("/^LOCATION.*:(.+)$/i", $buff, $match)) {
           $substate = 'location';
           $event[$substate] = $match[1];
-        } elseif (preg_match("/^URL:(.+)$/i", $buff, $match)) {
+        } elseif (preg_match("/^URL.*:(.+)$/i", $buff, $match)) {
           $substate = 'url';
           $event[$substate] = $match[1];
         } elseif (preg_match("/^TRANSP.*:(.+)$/i", $buff, $match)) {
@@ -1989,7 +1992,7 @@ function parse_ical ( $cal_file, $source='file' ) {
         } elseif (preg_match("/^PRIORITY.*:(.*)$/i", $buff, $match)) {
           $substate = 'priority';
           $event[$substate] = $match[1];
-        } elseif (preg_match("/^DTSTART(.*):\s*(.*)\s*$/i", $buff, $match)) {
+        } elseif (preg_match("/^DTSTART\s*(.*):\s*(.*)\s*$/i", $buff, $match)) {
           $substate = 'dtstart';
           $event[$substate] = $match[2];
           if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
@@ -2002,7 +2005,7 @@ function parse_ical ( $cal_file, $source='file' ) {
             $substate = 'dtstartDATE'; 
             $event[$substate] = true;      
           }
-        } elseif (preg_match("/^DTEND(.*):\s*(.*)\s*$/i", $buff, $match)) {
+        } elseif (preg_match("/^DTEND\s*(.*):\s*(.*)\s*$/i", $buff, $match)) {
           $substate = 'dtend';
           $event[$substate] = $match[2];
           if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
@@ -2243,7 +2246,7 @@ global $login;
   }  
   
 
-  if ( empty ( $event['summary'] ) ) $event['summary'] = "Unnamed Event";
+  if ( empty ( $event['summary'] ) ) $event['summary'] = translate( 'Unnamed Event' );
   $fevent['Summary'] = $event['summary'];
   if ( ! empty ( $event['description'] ) ) {
     $fevent['Description'] = $event['description'];
