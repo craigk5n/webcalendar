@@ -223,6 +223,7 @@ if ( -d "$p_base_dir/includes/classes" ) {
 if ( $plugin eq "" ) {
   push( @files, "includes/menu/index.php" );
   push( @files, "tools/send_reminders.php" );
+  push( @files, "tools/reload_remotes.php" );
   push( @files, "install/index.php" );
 }
 
