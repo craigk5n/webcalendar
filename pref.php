@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 include_once 'includes/date_formats.php';
 
@@ -878,7 +879,7 @@ echo $select; ?>" />
 <tr><td bgcolor="<?php echo $BGCOLOR?>">
 <?php 
 set_today( date ( 'Ymd' ) );
-display_month ( date ( 'm' ) , date( 'Y' ) , true );
+echo display_month ( date ( 'm' ) , date( 'Y' ) , true );
 ?>
 </td></tr>
 <tr><td>&nbsp;</td></tr>
@@ -898,6 +899,6 @@ display_month ( date ( 'm' ) , date( 'Y' ) , true );
 </div>
 </form>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

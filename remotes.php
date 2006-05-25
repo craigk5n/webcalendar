@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 if ( ! $NONUSER_PREFIX ) {
   echo '<h2>' . translate( 'Error' ) . "</h2>\n" . 
       translate( 'NONUSER_PREFIX not set' ) . ".\n";

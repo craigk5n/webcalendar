@@ -101,7 +101,7 @@ if ( ! $can_add )
 if ( ! empty ( $error ) ) {
   print_header ();
   echo '<h2>' . translate( 'Error' ) . '</h2>' . $error;
-  print_trailer ();
+  echo print_trailer ();
   echo "</body></html>\n";
   exit;
 }
@@ -199,7 +199,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   if ( ! empty ( $error ) ) {
     print_header ();
     echo '<h2>' . translate( 'Error' ) . '</h2>' . $error;
-    print_trailer ();
+    echo print_trailer ();
     echo "</body></html>\n";
     exit;
   }
@@ -255,6 +255,6 @@ print_header ();
 </form>
 
 <?php } 
-print_trailer (); ?>
+echo print_trailer (); ?>
 </body>
 </html>

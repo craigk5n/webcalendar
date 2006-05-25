@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 
 if (($user != $login) && $is_nonuser_admin)
@@ -58,10 +59,10 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
 }
 ?>
 
-<table  width="100%">
+<table  width="100%" cellpadding="1">
 <tr><td style="vertical-align:top; width:80%;" >
 <?php
-  display_navigation( 'day' );
+  echo display_navigation( 'day' );
 ?>
 </td><td>&nbsp;</td></tr><tr><td>
 <table class="glance" cellspacing="0" cellpadding="0">
@@ -69,7 +70,7 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
 if ( empty ( $TIME_SLOTS ) )
   $TIME_SLOTS = 24;
 
-print_day_at_a_glance ( date ( 'Ymd', $now ),
+echo print_day_at_a_glance ( date ( 'Ymd', $now ),
   empty ( $user ) ? $login : $user, $can_add );
 ?>
 </table>
@@ -77,7 +78,7 @@ print_day_at_a_glance ( date ( 'Ymd', $now ),
 <td style="vertical-align:top;" rowspan="2">
 <!-- START MINICAL -->
 <div class="minicalcontainer" style="text-align:center">
-<?php display_small_month ( $thismonth, $thisyear, true ); ?>
+<?php echo display_small_month ( $thismonth, $thisyear, true ); ?>
 </div>
 <br />
 <?php 
@@ -90,10 +91,10 @@ if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y' ) {
 <?php
  if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
-display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
+echo display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 
 echo  '<br />';
 echo generate_printer_friendly ( 'day.php' );
-print_trailer (); ?>
+echo print_trailer (); ?>
 </body>
 </html>

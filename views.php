@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 
 if ( ! $is_admin )
@@ -54,6 +55,6 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <iframe name="viewiframe" id="viewiframe" style="width:90%;border-width:0px; height:343px;"></iframe>
 </div>
 </div>
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

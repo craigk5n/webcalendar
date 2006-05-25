@@ -95,10 +95,11 @@ function list_unapproved ( $user ) {
       
   $sql .= ") AND webcal_entry_user.cal_status = 'W' " .
     'ORDER BY webcal_entry_user.cal_login, webcal_entry.cal_date';
-  $res = dbi_execute ( $sql , array ( $user ) );
+  $rows = dbi_get_cached_rows ( $sql , array ( $user ) );
   $eventinfo = '';
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
+  if ( $rows ) {
+    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+      $row = $rows[$i];
       $key++;
       $id = $row[0];
       $name = $row[1];
@@ -166,7 +167,6 @@ function list_unapproved ( $user ) {
       $count++;
       $ret .= "</tr>\n";
     }
-    dbi_free_result ( $res );
     if ( $count > 0 ) {
       $ret .= '<tr class="even"><td colspan="5">&nbsp;&nbsp;&nbsp;';
       $ret .= '<img src="images/select.gif" border="0">' . "\n";
@@ -288,6 +288,6 @@ function uncheck_all(user) {
   }
 }
 </script>
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

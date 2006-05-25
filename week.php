@@ -1,5 +1,5 @@
 <?php
- /* $Id */
+/* $Id$ */
 include_once 'includes/init.php';
 
 if (($user != $login) && $is_nonuser_admin) {
@@ -16,7 +16,7 @@ $prevYmd = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear )
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
-$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 4 : 6 ) );
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 5 : 7 ) );
  
 $startdate = date ( 'Ymd', $wkstart );
 $enddate = date ( 'Ymd', $wkend );
@@ -71,27 +71,12 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 ?>
 
 <br />
-<table width="100%">
+<table width="100%"  cellpadding="1">
 <tr><td style="vertical-align:top; width:80%;" >
-<?php display_navigation( 'week' ); ?>
-</td>
-<?php if ( $DISPLAY_TASKS == 'Y' && $DISPLAY_SM_MONTH == 'Y' ) { ?>
-<td  rowspan="2">
-<!-- START MINICAL -->
-<div class="minicontainer">
-<div class="minicalcontainer">
-<?php display_small_month ( $thismonth, $thisyear, true ); ?>
-</div>
-<br />
-<?php 
-if (  $DISPLAY_TASKS == 'Y' ) {
-  echo display_small_tasks ( $cat_id );
-}
-?> 
-</div>
-</td>
-<?php } //end minical ?>
-</tr><tr><td>
+<?php echo display_navigation( 'week' ); ?>
+</td><td></td>
+</tr><tr>
+<td>
 <table class="main" cellspacing="0" cellpadding="0">
 <tr>
 <th class="empty">&nbsp;</th>
@@ -330,6 +315,22 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 ?>
 </table>
 </td>
+<?php if ( $DISPLAY_TASKS == 'Y' && $DISPLAY_SM_MONTH == 'Y' ) { ?>
+<td  rowspan="2" valign="top">
+<!-- START MINICAL -->
+<div class="minicontainer">
+<div class="minicalcontainer">
+<?php echo display_small_month ( $thismonth, $thisyear, true ); ?>
+</div>
+<br />
+<?php 
+if (  $DISPLAY_TASKS == 'Y' ) {
+  echo display_small_tasks ( $cat_id );
+}
+?> 
+</div>
+</td>
+<?php } //end minical ?>
 </tr></table>
 <br />
 
@@ -337,13 +338,13 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 if ( ! empty ( $eventinfo ) ) {
   echo $eventinfo;
 }
-display_unapproved_events ( ( $is_assistant || 
+echo display_unapproved_events ( ( $is_assistant || 
   $is_nonuser_admin ? $user : $login ) );
 
 
 echo '<br />';
 echo generate_printer_friendly ( 'week.php' );
-print_trailer ();
+echo print_trailer ();
 ?>
 </body>
 </html>

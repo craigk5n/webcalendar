@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 
 // If not yet logged in, you will be redirected to login.php before

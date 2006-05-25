@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 $INC = array("js/colors.php/false/$color");
 print_header($INC,'','',true);
@@ -62,6 +63,6 @@ for ($gs=0; $gs < $graycnt; $gs++){
 
 </div>
 
-<?php print_trailer ( false, false, true ); ?>
+<?php echo print_trailer ( false, false, true ); ?>
 </body>
 </html>

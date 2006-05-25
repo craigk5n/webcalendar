@@ -241,7 +241,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
        echo "</form>\n";
 
      if (  empty ( $otheruser ) ) {
-       print_trailer ();
+       echo print_trailer ();
        echo "</body></html>\n";
        exit;
     }
@@ -424,7 +424,7 @@ function enableAll ( on ) {
 //]]> -->
 </script>
   <?php
-  print_trailer ();
+  echo print_trailer ();
   echo "</body></html>\n";
   exit;
 }
@@ -462,7 +462,7 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
   
 <?php 
 } //end admin $guser !- default test
-print_trailer(); ?>
+echo print_trailer(); ?>
 </body>
 </html>
 

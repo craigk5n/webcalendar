@@ -8,7 +8,7 @@ $status = getValue ( 'status', '(on|off)', true );
 if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   print_header ();
   etranslate( 'You are not authorized' );
-  print_trailer ();
+  echo print_trailer ();
   exit;
 }
 
@@ -51,7 +51,7 @@ print_header();
 <?php echo $error; ?>
 </blockquote>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 
 </body>
 </html>

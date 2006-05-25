@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 //we will cache css as default, but override from admin and pref
 //by incrementing the webcalendar_csscacha cookie value

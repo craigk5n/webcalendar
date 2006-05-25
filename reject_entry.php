@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
@@ -151,5 +152,5 @@ if ( empty ( $error ) ) {
 print_header ();
 echo '<h2>' . translate( 'Error' ) . "</h2>\n";
 echo '<p>' . $error . "</p>\n";
-print_trailer ();
+echo print_trailer ();
 ?>

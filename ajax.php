@@ -1,4 +1,10 @@
 <?php
+/* $Id$ 
+ *
+ * Description
+ * This is the handler for Ajax httpXmlRequests 
+ * 
+ */
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
@@ -21,8 +27,8 @@ load_global_settings ();
 $WebCalendar->setLanguage();
 load_user_preferences ();
 
-//$page = getPostValue ( 'page' );
-//$name = getPostValue ( 'name' );
+$page = getPostValue ( 'page' );
+$name = getPostValue ( 'name' );
 
 //we're processing edit_remotes Calendar ID field
 if ( $page == 'edit_remotes' || $page == 'edit_nonuser') {

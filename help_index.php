@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
   include_once 'includes/init.php';
   print_header('','','',true);
 ?>
@@ -16,6 +17,6 @@
   <li><a title='<?php etranslate('Report Bug')?>' href='help_bug.php'><?php etranslate('Report Bug')?></a></li>
 </ul>
 
-<?php print_trailer( false, true, true ); ?>
+<?php echo print_trailer( false, true, true ); ?>
 </body>
 </html>

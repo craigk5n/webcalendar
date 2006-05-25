@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
 
@@ -41,7 +42,7 @@ if ( ! empty ( $reload ) ) {
         translate( 'There was an error parsing the import file or no events were returned' ) .
         ".<br />\n";
     }
-    print_trailer ( false, true, true );
+    echo print_trailer ( false, true, true );
     exit;    
 } else if ( ! empty ( $delete ) ) {
   // delete events from this remote calendar

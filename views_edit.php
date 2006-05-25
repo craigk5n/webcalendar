@@ -82,7 +82,7 @@ if ( ! $newview ) {
 if ( ! empty ( $error ) ) {
   echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
-  print_trailer ();
+  echo print_trailer ();
   exit;
 }
 
@@ -192,6 +192,6 @@ if ( $newview ) {
 
 </form>
 
-<?php print_trailer ( false, true, true ); ?>
+<?php echo print_trailer ( false, true, true ); ?>
 </body>
 </html>

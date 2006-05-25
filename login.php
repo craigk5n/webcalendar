@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );

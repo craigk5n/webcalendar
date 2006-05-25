@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
@@ -1062,6 +1063,6 @@ onclick="history.back()" /><td>
 <?php echo $error; ?>
 </blockquote>
 <?php }
-print_trailer(); ?>
+echo print_trailer(); ?>
 </body>
 </html>

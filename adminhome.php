@@ -193,6 +193,6 @@ if ($is_nonuser_admin) {
 ?>
 </table>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

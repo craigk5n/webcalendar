@@ -1,5 +1,5 @@
 <?php
-/*
+/* $Id$ 
  * Page Description:
  * Display a timebar view of a single day.
  *
@@ -63,9 +63,9 @@ $users = explode(',',$users);
 <br />
 
 <form action="availability.php" method="post">
-<?php daily_matrix($date,$users); ?>
+<?php echo daily_matrix($date,$users); ?>
 </form>
 
-<?php print_trailer ( false, true, true ); ?>
+<?php echo print_trailer ( false, true, true ); ?>
 
 </body></html>

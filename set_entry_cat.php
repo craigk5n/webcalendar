@@ -182,6 +182,6 @@ echo <<<EOT
 </form>
 EOT;
 }
-print_trailer(); ?>
+echo print_trailer(); ?>
 </body>
 </html>

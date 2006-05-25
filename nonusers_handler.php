@@ -1,11 +1,12 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 load_user_layers ();
 
 if ( ! $is_admin ) {
   echo '<h2>' . translate( 'Error' ) .
     '</h2>' . translate( 'You are not authorized' ) . ".\n";
-  print_trailer ();
+  echo print_trailer ();
   echo "</body></html>\n";
   exit;
 }
@@ -107,6 +108,6 @@ echo $error;
 //?>
 </blockquote>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

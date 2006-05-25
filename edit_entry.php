@@ -1378,7 +1378,7 @@ if ( $useTabs ) { ?>
   echo translate( 'You are not authorized to edit this entry' ) . '.';
 } //end if ( $can_edit )
 
-print_trailer(); ?>
+echo print_trailer(); ?>
 </body>
 </html>
 

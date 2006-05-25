@@ -167,7 +167,7 @@ if ( ! empty ( $error ) ) {
 </form>
 
 <?php }
- print_trailer ( false, true, true );
+ echo print_trailer ( false, true, true );
 ?>
 </body>
 </html>

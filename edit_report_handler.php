@@ -260,6 +260,6 @@ print_header();
 <?php echo  $error ; ?>
 </blockquote>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

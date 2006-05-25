@@ -184,7 +184,7 @@ if ( $viewusercnt == 0 ) {
 if ( ! empty ( $error ) ) {
   echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
-  print_trailer ();
+  echo print_trailer ();
   exit;
 }
 
@@ -630,7 +630,7 @@ $user = ''; // reset
 if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
 echo generate_printer_friendly ( 'view_r.php' );
-print_trailer ();
+echo print_trailer ();
 ?>
 </body>
 </html>

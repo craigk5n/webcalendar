@@ -1,4 +1,8 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Changed functions to return strings vs echoing data...precursor to templating
+ - Fixed bug 1492216: Firefox 'Live Bookmark' shows '(Empty)'
+ - Fixed bug 1492208: Entries not displayed on last day of week in 'Week' view
+ - Fixed bug 1493481: 'small task list' is on the bottom of the month.php
  - Fixed bug 1491490: cal_url is too short
  - Fixed bug 1492792: Month-, Week- and Year-selection at trailer are missing
  - Fixed bug 1493405: [_public_] won't be displayed in the proper language

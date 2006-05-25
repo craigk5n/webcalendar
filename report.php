@@ -503,9 +503,9 @@ if ( empty ( $error ) && empty ( $list ) ) {
 
 if ( ! empty ( $list ) || $report_include_header == 'Y'
   || ! empty ( $error ) || ! empty ( $list ) ) {
-  print_trailer ();
+  echo print_trailer ();
 } else {
-  print_trailer ( false );
+  echo print_trailer ( false );
 }
 
 ?>

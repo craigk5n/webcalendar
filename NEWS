@@ -1,5 +1,8 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1492216: Firefox 'Live Bookmark' shows '(Empty)'
+      1492208: Entries not displayed on last day of week in 'Week' view
+      1493481: 'small task list' is on the bottom of the month.php
       1491490: cal_url is too short
       1492792: Month-, Week- and Year-selection at trailer are missing
       1493405: [_public_] won't be displayed in the proper language

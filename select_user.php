@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 print_header();
 ?>
@@ -43,6 +44,6 @@ if ( ! empty ( $error ) ) {
 ?>
 <br /><br />
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

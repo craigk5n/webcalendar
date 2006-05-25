@@ -1,6 +1,6 @@
 <?php
 /*
- * $Id: 
+ * $Id$  
  *
  * Description:
  * Loads appropriate import file parser and processes the data returned
@@ -115,7 +115,7 @@ if ($file['size'] > 0) {
 
 //echo "<hr />$sqlLog\n";
 
-print_trailer ();
+echo print_trailer ();
 echo "</body>\n</html>";
 
 ?>

@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 send_no_cache_header ();
 
@@ -71,31 +72,31 @@ print_header();
 <div align="center">
  <table class="main">
   <tr><td>
-   <?php display_small_month(1,$year,False); ?></td><td>
-   <?php display_small_month(2,$year,False); ?></td><td>
-   <?php display_small_month(3,$year,False); ?></td><td>
-   <?php display_small_month(4,$year,False); ?>
+   <?php echo display_small_month(1,$year,False); ?></td><td>
+   <?php echo display_small_month(2,$year,False); ?></td><td>
+   <?php echo display_small_month(3,$year,False); ?></td><td>
+   <?php echo display_small_month(4,$year,False); ?>
   </td></tr>
   <tr><td>
-   <?php display_small_month(5,$year,False); ?></td><td>
-   <?php display_small_month(6,$year,False); ?></td><td>
-   <?php display_small_month(7,$year,False); ?></td><td>
-   <?php display_small_month(8,$year,False); ?>
+   <?php echo display_small_month(5,$year,False); ?></td><td>
+   <?php echo display_small_month(6,$year,False); ?></td><td>
+   <?php echo display_small_month(7,$year,False); ?></td><td>
+   <?php echo display_small_month(8,$year,False); ?>
   </td></tr>
   <tr><td>
-   <?php display_small_month(9,$year,False); ?></td><td>
-   <?php display_small_month(10,$year,False); ?></td><td>
-   <?php display_small_month(11,$year,False); ?></td><td>
-   <?php display_small_month(12,$year,False); ?>
+   <?php echo display_small_month(9,$year,False); ?></td><td>
+   <?php echo display_small_month(10,$year,False); ?></td><td>
+   <?php echo display_small_month(11,$year,False); ?></td><td>
+   <?php echo display_small_month(12,$year,False); ?>
   </td></tr>
  </table>
 </div>
 
 <br />
-<?php display_unapproved_events ( $login ); ?>
+<?php echo display_unapproved_events ( $login ); ?>
 <br />
 <?php 
 echo generate_printer_friendly ( 'year.php' );
-print_trailer(); ?>
+echo print_trailer(); ?>
 </body>
 </html>

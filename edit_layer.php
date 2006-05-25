@@ -1,10 +1,11 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 
 if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   print_header ();
   etranslate( 'You are not authorized' );
-  print_trailer ();
+  echo print_trailer ();
   exit;
 }
 
@@ -143,6 +144,6 @@ etranslate( 'Are you sure you want to delete this layer?', true)?>');"><?php
 ?>
 </form>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

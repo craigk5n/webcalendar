@@ -75,7 +75,7 @@ if ( count ( $viewusers ) == 0 ) {
 if ( ! empty ( $error ) ) {
   echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
-  print_trailer ();
+  echo print_trailer ();
   exit;
 }
 
@@ -118,31 +118,31 @@ for ( $i = 0; $i < count ( $re_save ); $i++ ) {
   }
 }
 
-display_small_month ( $prevmonth, $prevyear, true, true, "prevmonth", 
+echo display_small_month ( $prevmonth, $prevyear, true, true, "prevmonth", 
   "view_l.php?id=$id&amp;" );
-display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth", 
+echo display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth", 
   "view_l.php?id=$id&amp;" );
 ?>
 
 <div class="title">
-<?php display_navigation( 'view_l', false ); ?>
+<?php echo display_navigation( 'view_l', false ); ?>
 
 <span class="viewname"><br /><?php echo htmlspecialchars ( $view_name ); ?></span></div>
 <br /><br />
 <?php
-display_month ( $thismonth, $thisyear );
+echo display_month ( $thismonth, $thisyear );
 echo "<br />";
 
 if ( ! empty ( $eventinfo ) ) {
   echo $eventinfo;
 }
 
-display_unapproved_events ( ( $is_assistant || 
+echo display_unapproved_events ( ( $is_assistant || 
   $is_nonuser_admin ? $user : $login ) );
 
 
 echo generate_printer_friendly ( 'view_l.php');
 
-print_trailer ();?>
+echo print_trailer ();?>
 </body>
 </html>
