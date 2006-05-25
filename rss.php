@@ -4,7 +4,7 @@
  *
  * Description:
  * This script is intended to be used outside of normal WebCalendar
- * use, typically as an RDF/RSS feed to a RSS client.
+ * use,  as an RSS 2.0 feed to a RSS client.
  *
  * You must have "Enable RSS feed" set to "Yes" in both System
  * Settings and in the specific user's Preferences.
@@ -44,11 +44,35 @@
  *      2 = All entries are included in the feed *USE WITH CARE
  *   
  * We do not include unapproved events in the RSS feed.
+ *
+ * TODO
+ * Add other RSS 2.0 options such as media
+ * Add <managingEditor>: dan@spam_me.com (Dan Deletekey)
  */
 
 $debug=FALSE;
 
-include_once 'includes/init.php';
+ require_once 'includes/classes/WebCalendar.class';
+ require_once 'includes/classes/Event.class';
+ require_once 'includes/classes/RptEvent.class';
+     
+ $WebCalendar =& new WebCalendar ( __FILE__ );    
+     
+ include 'includes/config.php';    
+ include 'includes/dbi4php.php';    
+ include 'includes/functions.php';    
+     
+ $WebCalendar->initializeFirstPhase();    
+     
+ include "includes/$user_inc";
+    
+ include_once 'includes/validate.php';    
+ include 'includes/translate.php';    
+ include 'includes/site_extras.php';
+ 
+include_once 'includes/xcal.php';
+
+ $WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
 
@@ -144,7 +168,9 @@ $cat_id = '';
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   $x = getIntValue ( 'cat_id', true );
   if ( ! empty ( $x ) ) {
+    load_user_categories ();
     $cat_id = $x;
+    $category = $categories[$cat_id];
   }
 }
 
@@ -152,7 +178,6 @@ if ( $load_layers ) {
   load_user_layers ( $username );
 }
 
-//load_user_categories ();
 
 // Calculate date range
 $date = getIntValue ( 'date', true );
@@ -207,95 +232,22 @@ $charset = ( ! empty ( $LANGUAGE )?translate( 'charset' ): 'iso-8859-1' );
 // This should work ok with RSS, may need to hardcode fallback value
 $lang = languageToAbbrev ( ( $LANGUAGE == 'Browser-defined' || 
   $LANGUAGE == 'none' )? $lang : $LANGUAGE );
-  
+if ( $lang == 'en' ) $lang = 'en-us'; //the RSS 2.0 default
+
 //header('Content-type: application/rss+xml');
 header('Content-type: text/xml');
 echo '<?xml version="1.0" encoding="' . $charset . '"?>';
 ?>
-
-<rdf:RDF
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:dc="http://purl.org/dc/elements/1.1/"
-  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-  xmlns:admin="http://webns.net/mvcb/"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/"
-  xmlns:cc="http://web.resource.org/cc/"
-  xmlns="http://purl.org/rss/1.0/">
-  
-<channel rdf:about="<?php echo $SERVER_URL . 'rss.php'; ?>">
+<rss version="2.0" xml:lang="<?php echo $lang ?>">
+ 
+<channel>
 <title><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></title>
 <link><?php echo $SERVER_URL; ?></link>
 <description><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></description>
-<dc:language><?php echo $lang; ?></dc:language>
-<dc:creator><![CDATA[<?php echo $creator; ?>]]></dc:creator>
-<?php //proper format is 2002-10-02T10:00:00-05:00
-$gmtoffset = substr_replace ( date ( 'O' ), ': ' . substr ( date ( 'O' ), -2), -2, 2 );
-?>
-<dc:date><?php echo date ( 'Y-m-d' ) . 'T' . date ( 'H:i:s' ). $gmtoffset; ?></dc:date>
-<admin:generatorAgent rdf:resource="http://www.k5n.us/webcalendar.php?v=<?php echo $PROGRAM_VERSION; ?>" />
-
-<?php
-$numEvents = 0;
-$reventIds = array();
-
-echo "\n<items>\n<rdf:Seq>\n";
-for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
-  $numEvents < $maxEvents; $i += ONE_DAY ) {
-  $eventIds = array();
-  $d = date ( 'Ymd', $i );
-  $entries = get_entries ( $d, false );
-  $rentries = get_repeating_entries ( $username, $d, false );
-  $entrycnt = count ( $entries );
-  $rentrycnt = count ( $rentries );
-  if ($debug) echo "\n\ni=$i d=$d \n\n";
-  if ($debug) echo "\n\ncountentries==". $entrycnt . " " . $rentrycnt . "\n\n";
-  if ( $entrycnt > 0 || $rentrycnt > 0 ) {
-    for ( $j = 0; $j < $entrycnt && $numEvents < $maxEvents; $j++ ) {
-      // Prevent non-Public events from feeding
-      if ( array_search ( $entries[$j]->getAccess(), $allow_access ) ) {
-        $eventIds[] = $entries[$j]->getID();
-        echo '<rdf:li rdf:resource="' . $SERVER_URL . 'view_entry.php?id=' . 
-          $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
-          $d . "\" />\n";
-        $numEvents++;
-      }
-    }
-    for ( $j = 0; $j < $rentrycnt && $numEvents < $maxEvents; $j++ ) {
-
-          //to allow repeated daily entries to be suppressed
-          //step below is necessary because 1st occurence of repeating 
-          //events shows up in $entries AND $rentries & we suppress display
-          //of it in $rentries
-       if ( in_array($rentries[$j]->getID(),$eventIds)  && 
-             $rentries[$j]->getrepeatType()== 'daily' ) {
-               $reventIds[]=$rentries[$j]->getID(); 
-          }
-
-
-      // Prevent non-Public events from feeding
-      // Prevent a repeating event from displaying if the original event
-      // has alreay been displayed
-       //echo $rentries[$j]->getID() . "<p>";
-      if ( ! in_array($rentries[$j]->getID(),$eventIds ) && 
-         ( ! $show_daily_events_only_once || 
-         ! in_array($rentries[$j]->getID(),$reventIds )) && 
-         ( array_search ( $rentries[$j]->getAccess(), $allow_access ) ) ) {
-        echo '<rdf:li rdf:resource="' . $SERVER_URL . 'view_entry.php?id=' . 
-          $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
-            $d . "\" />\n";
-
-          //show repeating events only once
-          if ( $rentries[$j]->getrepeatType()== 'daily' ) 
-                  $reventIds[]=$rentries[$j]->getID(); 
-
-        $numEvents++;
-      }
-    }
-  }
-}
-echo "</rdf:Seq>\n</items>\n</channel>\n\n";
-?>
-<image rdf:about="http://www.k5n.us/k5n_small.gif">
+<language><?php echo $lang; ?></language>
+<generator>:"http://www.k5n.us/webcalendar.php?v=<?php 
+echo $PROGRAM_VERSION; ?>"</generator>
+<image>
 <title><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></title>
 <link><?php echo $PROGRAM_URL; ?></link>
 <url>http://www.k5n.us/k5n_small.gif</url>
@@ -319,25 +271,22 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
       if ( array_search ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
         $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
-        $gmtoffset = substr_replace ( date ( 'O', $unixtime ), ': ' . 
-          substr ( date ( 'O', $unixtime ), -2), -2, 2 );
-        echo "\n<item rdf:about=\"" . $SERVER_URL . 'view_entry.php?id=' . 
-          $entries[$j]->getID() . '&amp;friendly=1&amp;date=' . $d . "\">\n";
-        echo "<title xml:lang=\"$lang\"><![CDATA[" . 
+        echo "\n<item>\n";
+        echo "<title><![CDATA[" . 
           $entries[$j]->getName() . "]]></title>\n";
         echo '<link>' . $SERVER_URL . 'view_entry.php?id=' . 
           $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
           $d . "</link>\n";
-        echo "<description xml:lang=\"$lang\"><![CDATA[" .
+        echo "<description><![CDATA[" .
           $entries[$j]->getDescription() . "]]></description>\n";
-        //category not valid for RSS 1.0
-        //echo "<category xml:lang=\"$lang\"><![CDATA[" . $entries[$j]->getName() .
-          //"]]></category>\n";
-        echo "<content:encoded xml:lang=\"$lang\"><![CDATA[" .
-          $entries[$j]->getDescription() . "]]></content:encoded>\n";
-        echo '<dc:creator><![CDATA[' . $creator . "]]></dc:creator>\n";
-        echo '<dc:date>' . date ( 'Y-m-d', $unixtime ) .'T' . 
-          date ( 'H:i:s', $unixtime ) . $gmtoffset . "</dc:date>\n";
+        if ( ! empty ( $category ) )
+          echo "<category><![CDATA[" . $category . "]]></category>\n";
+        //echo '<creator><![CDATA[' . $creator . "]]></creator>\n";
+        //RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT
+        echo '<pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) ." GMT</pubDate>\n";
+        echo '<guid>' . $SERVER_URL . 'view_entry.php?id=' . 
+          $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
+          $d . "</guid>\n";
         echo "</item>\n";
         $numEvents++;
       }
@@ -367,33 +316,29 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
                   $reventIds[]=$rentries[$j]->getID(); 
 
 
-        echo "\n<item rdf:about=\"" . $SERVER_URL . 'view_entry.php?id=' . 
-          $rentries[$j]->getID() . '&amp;friendly=1&amp;date=' . $d . "\">\n";
+        echo "\n<item>\n";
         $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
-        $gmtoffset = substr_replace ( date ( 'O', $unixtime ), ':' . 
-          substr ( date ( 'O', $unixtime ), -2), -2, 2 );
-        echo "<title xml:lang=\"$lang\"><![CDATA[" . 
+        echo "<title><![CDATA[" . 
           $rentries[$j]->getName() . "]]></title>\n";
         echo '<link>' . $SERVER_URL . "view_entry.php?id=" . 
           $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
           $d . "</link>\n";
-        echo "<description xml:lang=\"$lang\"><![CDATA[" .
+        echo "<description><![CDATA[" .
           $rentries[$j]->getDescription() . "]]></description>\n";
-        //category not valid for RSS 1.0
-        //echo "<category><![CDATA[" .  $rentries[$j]->getName()  .
-          //"]]></category>\n";
-        echo "<content:encoded xml:lang=\"$lang\"><![CDATA[" .
-          $rentries[$j]->getDescription() . "]]></content:encoded>\n";
-        echo '<dc:creator><![CDATA[' . $creator . "]]></dc:creator>\n";
-        echo '<dc:date>' . date ( 'Y-m-d', $unixtime ) .'T' . 
-          date ( 'H:i:s', $unixtime ) . $gmtoffset . "</dc:date>\n";
+        if ( ! empty ( $category ) )
+          echo "<category><![CDATA[" . $category . "]]></category>\n";
+       // echo '<creator><![CDATA[' . $creator . "]]></creator>\n";
+        echo '<pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) . " GMT</pubDate>\n";
+        echo '<guid>' . $SERVER_URL . 'view_entry.php?id=' . 
+          $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
+          $d . "</guid>\n";
         echo "</item>\n";   
         $numEvents++;
       }
     }
   }
 }
-echo "</rdf:RDF>\n";
+echo "</channel></rss>\n";
 // Clear login...just in case
 $login = '';
 exit;
