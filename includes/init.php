@@ -93,7 +93,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT,$REQUEST_URI;
   global $friendly, $DISPLAY_WEEKENDS, $DISPLAY_TASKS;
   global $bodyid, $self, $login, $browser;
-  
+  $ret = '';
   //remember this view if the file is a view_x.php script
   if ( ! strstr ( $REQUEST_URI, 'view_entry' ) )  remember_this_view ( true );
   
@@ -122,7 +122,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   if ( empty ( $charset ) || $charset == 'charset' ) {
   $charset = 'iso-8859-1';
   }
-  echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n" .
+  $ret .= "<?xml version=\"1.0\" encoding=\"$charset\"?>\n" .
     "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
     "\"DTD/xhtml1-transitional.dtd\">\n" .
     "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
@@ -130,10 +130,10 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
     "<head>\n" .
     "<meta http-equiv=\"Content-Type\" content=\"text/html; " .
     "charset=$charset\" />\n";
-  echo "<title>".translate($APPLICATION_NAME)."</title>\n";
+  $ret .= "<title>".translate($APPLICATION_NAME)."</title>\n";
 
-  echo "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
-  echo "<script type=\"text/javascript\" src=\"includes/js/prototype.js\"></script>\n";
+  $ret .= "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
+  $ret .= "<script type=\"text/javascript\" src=\"includes/js/prototype.js\"></script>\n";
   // Menu control
   if ( !empty ( $friendly ) || $disableCustom ) $MENU_ENABLED = 'N';
 
@@ -141,11 +141,10 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   if ( $MENU_ENABLED == 'Y' ) {
     $MENU_THEME = ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none' ? 
       $MENU_THEME : 'default' );
-    echo "<script type=\"text/javascript\" src=\"includes/menu/JSCookMenu.js\"></script>\n";
-    echo "<link rel=\"stylesheet\" type=\"text/css\" " .
-      "href=\"includes/menu/themes/$MENU_THEME/theme.css\" />\n";
-    echo "<script type=\"text/javascript\" ".
-      "src=\"includes/menu/themes/$MENU_THEME/theme.js\"></script>\n";
+    $ret .= '<script type="text/javascript" src="includes/menu/JSCookMenu.js">' .
+      '</script>' . "\n";
+    $ret .= '<script type="text/javascript" src="includes/menu/themes/' . 
+     $MENU_THEME. '/theme.js"></script>' . "\n";
   }
 
   // Any other includes?
@@ -155,17 +154,21 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
        $DISABLE_POPUPS == 'Y' ) {
        //don't load popups.php javascript if DISABLE_POPUPS
       } else {
-        echo "<script type=\"text/javascript\" ".
-          "src=\"js_cacher.php?inc=$inc\"></script>\n";
-        ///include_once 'includes/'.$inc;
+        $ret .= '<script type="text/javascript" src="js_cacher.php?inc=' .
+          $inc . '"></script>' . "\n";
       }
     }
   }
 
   // Do we need anything else inside the header tag?
-  if ($HeadX) echo $HeadX."\n";
+  if ($HeadX) $ret .= $HeadX."\n";
 
   // Include the styles
+  // Include CSS needed for the top menu
+  if ( $MENU_ENABLED == 'Y' ) {  
+    $ret .= '<link rel="stylesheet" type="text/css" href="includes/menu/themes/' .
+      $MENU_THEME . '/theme.css" />' . "\n";
+  }
   //if loading admin.php, we will not us an exrternal file because
   //we need to override the global colors and this is impossible if loading
   //external file. We will still increment the webcalendar_csscache cookie though
@@ -173,14 +176,14 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
     if ( $thisPage == 'admin.php' || $thisPage == 'pref.php') {
       include_once 'includes/styles.php';
     } else {
-      echo '<link rel="stylesheet" type="text/css"' .
-        " href=\"css_cacher.php?$login$webcalendar_csscache\" />\n";
+      $ret .= '<link rel="stylesheet" type="text/css"  href="css_cacher.php?' . 
+        $login . $webcalendar_csscache . "\" />\n";
     }
   }
 
   // Add custom script/stylesheet if enabled
   if ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom ) {
-    echo load_template ( $login, 'S' );
+    $ret .= load_template ( $login, 'S' );
   }
 
   // Include includes/print_styles.css as a media="print" stylesheet. When the
@@ -188,44 +191,45 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   // including this as a normal stylesheet so they can see how it will look 
   // when printed. This maintains backwards-compatibility for browsers that 
   // don't support media="print" stylesheets
-  echo '<link rel="stylesheet" type="text/css"' . 
+  $ret .= '<link rel="stylesheet" type="text/css"' . 
     ( empty ( $friendly ) ? ' media="print"': '' ) . 
-    " href=\"includes/print_styles.css\" />\n";
+    ' href="includes/print_styles.css" />' . "\n";
 
   // Add RSS feed if publishing is enabled
   if ( ! empty ( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y' &&
     $login == '__public__' ||
     ( ! empty ( $GLOBALS['USER_RSS_ENABLED'] ) &&
     $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) && $disableRSS == false ) {
-    echo '<link rel="alternate" type="application/rss+xml" ' .
+    $ret .= '<link rel="alternate" type="application/rss+xml" ' .
       'title="' . htmlentities ( $APPLICATION_NAME ) .
-      ' [RSS 1.0]" href="rss.php';
+      ' [RSS 2.0]" href="rss.php';
     // TODO: single-user mode, etc.
     if ( $login != '__public__' )
-      echo '?user=' . $login;
-    echo "\" />\n";
+      $ret .= '?user=' . $login;
+    $ret .= "\" />\n";
   }
 
   // Link to favicon
-  echo '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />' . "\n";
+  $ret .= '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />' . "\n";
 
   // Finish the header
-  echo "</head>\n<body";
+  $ret .= "</head>\n<body";
 
   // Find the filename of this page and give the <body> tag the corresponding id
   if ( isset( $bodyid[$thisPage] ) )
-    echo " id=\"" . $bodyid[$thisPage] . '"';
+    $ret .= " id=\"" . $bodyid[$thisPage] . '"';
 
   // Add any extra parts to the <body> tag
   if ( ! empty( $BodyX ) )
-    echo " $BodyX";
-  echo ">\n";
+    $ret .= " $BodyX";
+  $ret .= ">\n";
 
   // Add custom header if enabled
   if ( $CUSTOM_HEADER == 'Y' && ! $disableCustom ) {
-    echo load_template ( $login, 'H' );
+    $ret .= load_template ( $login, 'H' );
   }
-
+  //TODO convert this to return value
+  echo $ret;
   // Add the top menu if enabled
   if ( $MENU_ENABLED == 'Y' )
     include_once 'includes/menu/index.php';
@@ -255,13 +259,15 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
     $GROUPS_ENABLED, $fullname, $has_boss, $is_nonuser, 
     $DISPLAY_TASKS, $DISPLAY_TASKS_IN_GRID;
   
+  $ret = '';
   if ( $include_nav_links  ) {//TODO Add test for $MENU_ENABLED == 'N'
     include_once 'includes/trailer.php';
   }
+  if ( ! empty ( $tret ) ) $ret .= $tret; //data from trailer
 
   // Add custom trailer if enabled
   if ( $CUSTOM_TRAILER == 'Y' && ! $disableCustom && isset ( $c ) ) {
-    echo load_template ( $login, 'T' );
+    $ret .= load_template ( $login, 'T' );
   }
 
   if ( $closeDb ) {
@@ -271,15 +277,18 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
   }
  // adds an easy link to validate the pages
  if ( $DEMO_MODE == 'Y' ) {
-     echo '<p><a href="http://validator.w3.org/check?uri=referer"><img ' .
+     $ret .= '<p><a href="http://validator.w3.org/check?uri=referer"><img ' .
         'src="http://www.w3.org/Icons/valid-xhtml10" ' .
        'alt="Valid XHTML 1.0!" class="valid"  /></a></p>';
- }  
+ }
+
+ return $ret;  
 }
 
 function print_menu_dates ( $menu=false) {
   global $user, $login, $cat_id, $CATEGORIES_ENABLED, $thisyear,
     $thismonth,  $DATE_FORMAT_MY, $DATE_FORMAT_MD, $WEEK_START;
+  $ret = '';
   if ( access_can_view_page ( 'month.php' ) ) {
     $monthUrl = 'month.php';
     $urlArgs = '';
@@ -290,19 +299,19 @@ function print_menu_dates ( $menu=false) {
       $urlArgs = "<input type=\"hidden\" name=\"$match[1]\" value=\"$match[2]\" />\n";
     }
   }
-  echo "<form action=\"$monthUrl\" method=\"get\" name=\"SelectMonth\" id=\"monthform\">";
+  $ret .= "<form action=\"$monthUrl\" method=\"get\" name=\"SelectMonth\" id=\"monthform\">";
 
-  echo $urlArgs;
+  $ret .= $urlArgs;
   if ( ! empty ( $user ) && $user != $login ) {
-    echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
+    $ret .= "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
   if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
     && ( ! $user || $user == $login ) ) {
-    echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
+    $ret .= "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
 
-  echo '<label for="monthselect"><a href="javascript:document.SelectMonth.submit()">' .    translate( 'Month' ) . "</a>:&nbsp;</label>\n";
-  echo '<select name="date" id="monthselect" ' .
+  $ret .= '<label for="monthselect"><a href="javascript:document.SelectMonth.submit()">' .    translate( 'Month' ) . "</a>:&nbsp;</label>\n";
+  $ret .= '<select name="date" id="monthselect" ' .
     "onchange=\"document.SelectMonth.submit()\">\n";
 
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
@@ -324,21 +333,22 @@ function print_menu_dates ( $menu=false) {
     }
     if ( $y >= 1970 && $y < 2038 ) {
       $d = mktime ( 0, 0, 0, $m, 1, $y );
-      echo '<option value="' . date ( 'Ymd', $d ) . '"';
-      if ( date ( 'Ymd', $d ) == $thisdate ) {
-        echo ' selected="selected" ';
+      $dateYmd = date ( 'Ymd', $d );
+      $ret .= '<option value="' . $dateYmd . '"';
+      if ( $dateYmd == $thisdate ) {
+        $ret .= ' selected="selected" ';
       }
-      echo ">";
-      echo date_to_str ( date ( 'Ymd', $d ), $DATE_FORMAT_MY, false, true, 0 );
-      echo "</option>\n";
+      $ret .= '>';
+      $ret .= date_to_str ( $dateYmd, $DATE_FORMAT_MY, false, true, 0 );
+      $ret .= "</option>\n";
     }
   }
 
-  echo "</select>\n";
+  $ret .= "</select>\n";
   if ( $menu == false )
-    echo "<input type=\"submit\" value=\"" . translate( 'Go' ) . "\" />\n";
-  echo "</form>\n";
-  if ( $menu == true ) echo "</td>\n<td class=\"ThemeMenubackgr\">";
+    $ret .= '<input type="submit" value="' . translate( 'Go' ) . "\" />\n";
+  $ret .= "</form>\n";
+  if ( $menu == true ) $ret .= "</td>\n<td class=\"ThemeMenubackgr\">";
 
   if ( access_can_view_page ( 'week.php' ) ) {
     $weekUrl = 'week.php';
@@ -351,18 +361,18 @@ function print_menu_dates ( $menu=false) {
     }
   }
 
-  echo "<form action=\"$weekUrl\" method=\"get\" name=\"SelectWeek\" id=\"weekform\">\n";
-  echo $urlArgs;
+  $ret .= "<form action=\"$weekUrl\" method=\"get\" name=\"SelectWeek\" id=\"weekform\">\n";
+  $ret .= $urlArgs;
   if ( ! empty ( $user ) && $user != $login ) {
-    echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
+    $ret .= "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
   if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
     && ( ! $user || $user == $login ) ) {
-    echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
+    $ret .= "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
 
-  echo "<label for=\"weekselect\"><a href=\"javascript:document.SelectWeek.submit()\">" .    translate ( 'Week' ) . "</a>:&nbsp;</label>\n";
-  echo "<select name=\"date\" id=\"weekselect\" " .
+  $ret .= '<label for="weekselect"><a href="javascript:document.SelectWeek.submit()">' .    translate ( 'Week' ) . "</a>:&nbsp;</label>\n";
+  $ret .= '<select name="date" id="weekselect" ' .
     "onchange=\"document.SelectWeek.submit()\">\n";
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
     $m = $thismonth;
@@ -385,30 +395,31 @@ function print_menu_dates ( $menu=false) {
   for ( $i = -5; $i <= 9; $i++ ) {
     $twkstart = $wkstart + ( ONE_DAY * 7 * $i );
     $twkend = $twkstart + ( ONE_DAY * 6 );
+    $dateSYmd = date ( 'Ymd', $twkstart );
+    $dateEYmd = date ( 'Ymd', $twkend );
 //  echo $twkstart . " " . $twkend;
   if ( $twkstart > 0 && $twkend < 2146021200 ) { 
-      echo '<option value="' . date ( 'Ymd', $twkstart ) . '"';
-      if ( date ( 'Ymd', $twkstart ) <= $thisdate &&
-        date ( 'Ymd', $twkend ) >= $thisdate ) {
-        echo ' selected="selected" ';
+      $ret .= '<option value="' . $dateSYmd . '"';
+      if ( $dateSYmd <= $thisdate && $dateEYmd >= $thisdate ) {
+        $ret .= ' selected="selected" ';
       }
-      echo '>';
+      $ret .= '>';
       if ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
         $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y' ) {
-        echo  '(' . date( 'W', $twkstart + ONE_DAY ) . ')&nbsp;&nbsp;';
+        $ret .=  '(' . date( 'W', $twkstart + ONE_DAY ) . ')&nbsp;&nbsp;';
       }
-      printf ( "%s - %s",
-        date_to_str ( date ( 'Ymd', $twkstart ), $DATE_FORMAT_MD, false, true, 0 ),
-        date_to_str ( date ( 'Ymd', $twkend ), $DATE_FORMAT_MD, false, true, 0 ) );
-      echo "</option>\n";
+      $ret .= sprintf ( "%s - %s",
+        date_to_str ( $dateSYmd, $DATE_FORMAT_MD, false, true, 0 ),
+        date_to_str ( $dateEYmd, $DATE_FORMAT_MD, false, true, 0 ) );
+      $ret .= "</option>\n";
   }
   }
 
-  echo "</select>\n";
+  $ret .= "</select>\n";
   if ( $menu == false )
-    echo '<input type="submit" value="' . translate( 'Go' ) ."\" />\n";
-  echo "</form>\n";
-  if ( $menu == true ) echo "</td>\n<td class=\"ThemeMenubackgr\">";
+    $ret .= '<input type="submit" value="' . translate( 'Go' ) ."\" />\n";
+  $ret .= "</form>\n";
+  if ( $menu == true ) $ret .= "</td>\n<td class=\"ThemeMenubackgr\">";
 
   if ( access_can_view_page ( 'year.php' ) ) {
     $yearUrl = 'year.php';
@@ -421,18 +432,18 @@ function print_menu_dates ( $menu=false) {
     }
   }
 
-  echo "<form action=\"$yearUrl\" method=\"get\" name=\"SelectYear\" id=\"yearform\">\n";
-  echo $urlArgs;
+  $ret .= "<form action=\"$yearUrl\" method=\"get\" name=\"SelectYear\" id=\"yearform\">\n";
+  $ret .= $urlArgs;
   if ( ! empty ( $user ) && $user != $login ) {
-    echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
+    $ret .= "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   }
   if ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
     && ( ! $user || $user == $login ) ) {
-    echo "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
+    $ret .= "<input type=\"hidden\" name=\"cat_id\" value=\"$cat_id\" />\n";
   }
 
-  echo "<label for=\"yearselect\"><a href=\"javascript:document.SelectYear.submit()\">" .    translate( 'Year' ) . "</a>:&nbsp;</label>\n";
-  echo '<select name="year" id="yearselect" '.
+  $ret .= "<label for=\"yearselect\"><a href=\"javascript:document.SelectYear.submit()\">" .    translate( 'Year' ) . "</a>:&nbsp;</label>\n";
+  $ret .= '<select name="year" id="yearselect" '.
     "onchange=\"document.SelectYear.submit()\">\n";
 
   if ( ! empty ( $thisyear ) ) {
@@ -442,17 +453,19 @@ function print_menu_dates ( $menu=false) {
   }
   for ( $i = $y - 2; $i < $y + 6; $i++ ) {
    if ( $i >= 1970 && $i < 2038 ) {
-      echo "<option value=\"$i\"";
+      $ret .= "<option value=\"$i\"";
       if ( $i == $y ) {
-        echo ' selected="selected" ';
+        $ret .= ' selected="selected" ';
       }
-      echo ">$i</option>\n";
+      $ret .= ">$i</option>\n";
   }
   }
 
-  echo "</select>\n";
+  $ret .= "</select>\n";
   if ( $menu == false )
-    echo '<input type="submit" value="' . translate( 'Go' ) . "\" />\n";
-  echo "</form>\n";
+    $ret .= '<input type="submit" value="' . translate( 'Go' ) . "\" />\n";
+  $ret .= "</form>\n";
+
+  return $ret;
 }
 ?>
