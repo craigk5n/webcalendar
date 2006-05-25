@@ -161,7 +161,7 @@ if ( $do_purge ) {
 <?php } ?>
 </td></tr></table>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>
 <?php

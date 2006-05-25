@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 $INC = array('js/edit_nonuser.php/false');
 print_header( $INC, '', '', true );
@@ -101,6 +102,6 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
   <?php }  ?>
   </form>
 <?php }
-print_trailer ( false, true, true ); ?>
+echo print_trailer ( false, true, true ); ?>
 </body>
 </html>

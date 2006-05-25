@@ -182,7 +182,7 @@ if ( ! empty ( $error ) ) {
   print_header ();
   echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
-  print_trailer ();
+  echo print_trailer ();
   echo "</body>\n</html>";
   exit;
 }

@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 
 $error = '';
@@ -56,5 +57,5 @@ if ( ! empty ( $delete ) ) {
   }
 }
 
-error_check('views.php');
+echo error_check('views.php');
 ?>

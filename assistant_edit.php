@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 
 if ( empty ( $login) || $login == '__public__' ) {
@@ -73,6 +74,6 @@ if ( $GROUPS_ENABLED == 'Y' ) {
 </table>
 </form>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

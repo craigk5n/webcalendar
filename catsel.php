@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 
 // load user and global cats
@@ -74,6 +75,6 @@ print_header($INC,'','',true, false, true);
 </table>
 
 
-<?php print_trailer ( false, true, true ); ?>
+<?php echo print_trailer ( false, true, true ); ?>
 </body>
 </html>

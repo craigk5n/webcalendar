@@ -272,7 +272,7 @@ print_header ();
 if ( ! empty ( $error ) ) {
   echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
-  print_trailer ();
+  echo print_trailer ();
   echo "</body>\n</html>";
   exit;
 }
@@ -330,7 +330,7 @@ if ( ( empty ( $event_status ) && ! $is_admin ) ||
   echo '<h2>' . 
     translate ( 'Error' ) . '</h2>' . 
     translate ( 'You are not authorized' ) . ".\n";
-  print_trailer ();
+  echo print_trailer ();
   echo "</body>\n</html>";
   exit;
 }
@@ -1215,6 +1215,6 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
 EOT;
 }
 
-print_trailer ( empty ($friendly) );?>
+echo print_trailer ( empty ($friendly) );?>
 </body>
 </html>

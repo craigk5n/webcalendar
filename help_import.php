@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
   include_once 'includes/init.php';
   print_header('','','',true);
 ?>
@@ -33,6 +34,6 @@
   <p><?php etranslate('This form will import iCalendar (.ics) events');?>.
   <?php etranslate('Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.'); ?></p>
 
-<?php print_trailer( false, true, true ); ?>
+<?php echo print_trailer( false, true, true ); ?>
 </body>
 </html>

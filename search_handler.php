@@ -1,5 +1,6 @@
 <?php
 /**
+ *  $Id$ 
  * This page produces search results.
  *
  * "Advanced Search" adds the ability to search other users' calendars.
@@ -171,7 +172,7 @@ if ( empty ( $error ) ) {
 ?>
 <br /><br />
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 send_no_cache_header ();
 
@@ -15,7 +16,7 @@ $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
-$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 4 : 6 ));
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 5 : 7 ));
 $thisdate = date ( 'Ymd', $wkstart );
 
 
@@ -84,7 +85,7 @@ if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
 <?php
   if ( $CATEGORIES_ENABLED == 'Y' ) {
     echo "<br /><br />\n";
-    print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
+    echo print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   } ?>
 </div>
 <br />
@@ -140,7 +141,7 @@ if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 echo '<br />';
 
 echo generate_printer_friendly ( 'week_details.php' );
-print_trailer(); 
+echo print_trailer(); 
 ?>
 </body>
 </html><?php

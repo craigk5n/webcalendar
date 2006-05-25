@@ -160,6 +160,6 @@ if ( ! empty ( $startid ) ) {
 }
 ?>
 </div>
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

@@ -264,7 +264,7 @@ if ($format == 'ical') {
   echo translate( 'export format not defined or incorrect' ) . '.';
   echo "<br />\n";
 
-  print_trailer ();
+  echo print_trailer ();
 
   echo " </body>\n";
   echo '</html>';

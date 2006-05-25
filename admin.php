@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 include_once 'includes/date_formats.php';
 if ( file_exists ( 'install/default_config.php' ) )
@@ -989,7 +990,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <tr><td bgcolor="<?php echo $BGCOLOR?>">
 <?php 
 set_today( date ('Ymd') );
-display_month ( date ('m') , date('Y') , true);
+echo display_month ( date ('m') , date('Y') , true);
 ?>
 </td></tr>
 <tr><td>&nbsp;</td></tr>
@@ -1113,6 +1114,6 @@ display_month ( date ('m') , date('Y') , true);
     echo $error;
     echo "</blockquote>\n";  
 } 
-print_trailer (); ?>
+echo print_trailer (); ?>
 </body>
 </html>

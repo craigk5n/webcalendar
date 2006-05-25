@@ -17,7 +17,7 @@
  This structure is mirrored for groups & nonusers
 */
 
-/* $Id $ */
+/* $Id$ */
 
 include_once 'includes/init.php';
 
@@ -111,6 +111,6 @@ print_header($INC,'', $BodyX );
 ?>
 </div>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

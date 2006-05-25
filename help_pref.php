@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 print_header('','','',true);
 ?>
@@ -157,6 +158,6 @@ print_header('','','',true);
  <?php etranslate('colors-help')?>
  <br /><br />
 <?php } // if $ALLOW_COLOR_CUSTOMIZATION 
-print_trailer( false, true, true ); ?>
+echo print_trailer( false, true, true ); ?>
 </body>
 </html>

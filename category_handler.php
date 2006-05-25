@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 
 $icon_path = 'icons/';
@@ -146,6 +147,6 @@ print_header();
 <?php echo $error; ?>
 </blockquote>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

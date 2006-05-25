@@ -1,3 +1,6 @@
+<?php
+/* $Id$ */
+?>
   <a name="tabgroups"></a>
   <div id="tabscontent_groups">
     <?php

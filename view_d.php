@@ -44,7 +44,7 @@ if ( count ( $participants ) == 0 ) {
 if ( ! empty ( $error ) ) {
   echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
-  print_trailer ();
+  echo print_trailer ();
   exit;
 }
 
@@ -78,7 +78,7 @@ $prevdate = date( 'Ymd', $now - ONE_DAY);
 </div></div>
 
 <?php
-daily_matrix($date,$participants);
+echo daily_matrix($date,$participants);
 ?>
 <br />
 
@@ -92,6 +92,6 @@ daily_matrix($date,$participants);
 
 <?php
 echo generate_printer_friendly ( 'view_d.php' );
-print_trailer ();?>
+echo print_trailer ();?>
 </body>
 </html>

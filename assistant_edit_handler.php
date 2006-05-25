@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 
 $error = '';
@@ -25,6 +26,6 @@ print_header();
 <?php echo $error; ?>
 </blockquote>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

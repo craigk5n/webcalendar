@@ -223,7 +223,7 @@ if ( $adding_report ) {
 <?php
 if ( ! empty ( $error ) ) {
   echo $error;
-  print_trailer( false );
+  echo print_trailer( false );
   exit;
 }
 ?>
@@ -404,6 +404,6 @@ if ( $is_admin ) {
 </table>
 </form>
 
-<?php print_trailer(); ?>
+<?php echo print_trailer(); ?>
 </body>
 </html>

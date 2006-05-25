@@ -92,7 +92,7 @@ if ( $viewusercnt == 0 ) {
 if ( ! empty ( $error ) ) {
   echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
-  print_trailer ();
+  echo print_trailer ();
   exit;
 }
 
@@ -184,9 +184,9 @@ for ( $date = $wkstart, $h = 0;
      $prefarray['WORK_DAY_END_HOUR']=$val[0];
   }
     
-  print_header_timebar($prefarray['WORK_DAY_START_HOUR'], 
+  echo print_header_timebar($prefarray['WORK_DAY_START_HOUR'], 
     $prefarray['WORK_DAY_END_HOUR']);
-  print_date_entries_timebar ( date ( 'Ymd', $date ), $GLOBALS['login'], true );
+  echo print_date_entries_timebar ( date ( 'Ymd', $date ), $GLOBALS['login'], true );
   echo '</td>';
   echo "</tr>\n";
 }
@@ -200,7 +200,7 @@ if ( ! empty ( $eventinfo ) ) {
 }
 
 echo generate_printer_friendly ( 'view_t.php' );
-print_trailer ();
+echo print_trailer ();
 ?>
 </body>
 </html>

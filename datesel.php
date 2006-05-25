@@ -88,6 +88,6 @@ for ( $i = $wkstart; date ( 'Ymd', $i ) <= date ( 'Ymd', $monthend );
 </table>
 </div>
 
-<?php print_trailer ( false, true, true ); ?>
+<?php echo print_trailer ( false, true, true ); ?>
 </body>
 </html>

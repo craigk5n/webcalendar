@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 print_header('', '', '', true);
 ?>
@@ -285,6 +286,6 @@ print_header('', '', '', true);
 </td></tr>
 </table>
 
-<?php print_trailer( false, true, true ); ?>
+<?php echo print_trailer( false, true, true ); ?>
 </body>
 </html>

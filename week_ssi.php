@@ -107,7 +107,7 @@ for ( $d = 0; $d < 7; $d++ ) {
   else
     echo " background-color:$CELLBG;\">";
 
-  print_date_entries ( $date, $login, true, true );
+  echo print_date_entries ( $date, $login, true, true );
   echo '&nbsp;';
   echo "</td>\n";
 }

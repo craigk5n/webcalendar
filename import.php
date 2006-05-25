@@ -120,6 +120,6 @@ if ( ! $upload_enabled ) {
 </table>
 <br /><input type="submit" value="<?php etranslate( 'Import' )?>" />
 </form>
-<?php } print_trailer (); ?>
+<?php } echo print_trailer (); ?>
 </body>
 </html>

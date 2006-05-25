@@ -166,6 +166,6 @@ print_header($INC);
 </td></tr>
 </table>
 </form>
-<?php print_trailer (); ?>
+<?php echo print_trailer (); ?>
 </body>
 </html>

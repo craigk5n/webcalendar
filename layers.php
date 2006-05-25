@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 send_no_cache_header ();
 
@@ -111,6 +112,6 @@ if ($layers_enabled) { ?>
  }
 }
 
- print_trailer(); ?>
+ echo print_trailer(); ?>
 </body>
 </html>

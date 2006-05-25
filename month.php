@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 
 if (($user != $login) && $is_nonuser_admin) {
@@ -29,16 +30,6 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $enddate = mktime ( 0,0,0, $thismonth +1, 0, $thisyear );
 }
 
-$HeadX = '';
-if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
-  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
-  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=month.php?$u_url" .
-    "year=$thisyear&amp;month=$thismonth$caturl" . 
-    ( ! empty ( $friendly ) ? '&amp;friendly=1' : '') . "\" />\n";
-}
-$INC =  array('js/popups.php', 'js/visible.php/true');
-print_header($INC,$HeadX);
-
 /* Pre-Load the repeated events for quicker access */
 $repeated_events = read_repeated_events (
   ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login, $cat_id, $startdate );
@@ -52,57 +43,64 @@ if ( $DISPLAY_TASKS == 'Y' ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
   $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) && $is_assistant )
     ? $user : $login, $enddate, $cat_id );
 }
-
-if ( ! empty ( $cat_id ) )
-  $monthURL = "month.php?cat_id=$cat_id&amp;";
-else
-  $monthURL = 'month.php?';
-
+$monthURL = ( ! empty ( $cat_id )? "month.php?cat_id=$cat_id&amp;" :'month.php?' );
+$prevMonth1 = $nextMonth1 = $prevMonth2 = $nextMonth2 = '';
+$smallTasks = $unapprovedStr = $printFriendlyStr = '';
 if ( empty ( $DISPLAY_TASKS ) ||  $DISPLAY_TASKS == 'N' && $DISPLAY_SM_MONTH != 'N') {
-  $spacer = '<br />'; 
-  display_small_month ( $prevmonth, $prevyear, true, true, 'prevmonth',
+  $prevMonth1 = display_small_month ( $prevmonth, $prevyear, true, true, 'prevmonth',
     $monthURL );
-  display_small_month ( $nextmonth, $nextyear, true, true, 'nextmonth',
-    $monthURL );
-
-} else {
-  $spacer = '';
-  echo '<table border="0" width="100%" cellpadding="5"> ' .
-   '<tr><td valign="top" width="80%" rowspan="2">';
+  $nextMonth1 = display_small_month ( $nextmonth, $nextyear, true, true, 'nextmonth',
+    $monthURL ); 
+  $tableWidth = '100%';
 }
-
-display_navigation( 'month' );
-
-display_month ( $thismonth, $thisyear );
 
 if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y' && $friendly !=1 ) {
- echo '</td><td valign="top" align="center"><br />';
-  display_small_month ( $prevmonth, $prevyear, true, false, 'prevmonth',
+  $prevMonth2 = display_small_month ( $prevmonth, $prevyear, true, false, 'prevmonth',
     $monthURL );
- echo '<br />';
-  display_small_month ( $nextmonth, $nextyear, true, false, 'nextmonth',
+  $nextMonth2 = display_small_month ( $nextmonth, $nextyear, true, false, 'nextmonth',
     $monthURL );
-
-?>
-</td></tr><tr><td valign="bottom">
-
-<?php 
-    echo display_small_tasks ( $cat_id );
-
-?>
-
-</td></tr></table>
-<?php }
-
-if ( ! empty ( $eventinfo ) ) echo $eventinfo;
-if ( empty ( $friendly ) ) {
-  display_unapproved_events ( ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
-
-  echo '<br />';
-  echo generate_printer_friendly ( 'month.php' );
-  print_trailer ();
-
+  $smallTasks = display_small_tasks ( $cat_id );
+  $tableWidth = '80%';
 }
-?>
+$navStr = display_navigation( 'month' );
+$monthStr = display_month ( $thismonth, $thisyear );
+$eventinfo = ( ! empty ( $eventinfo )? $eventinfo : '' );
+$HeadX = '';
+if ( empty ( $friendly ) ) {
+  $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
+    $is_nonuser_admin ? $user : $login ) );
+  $printFriendlyStr = generate_printer_friendly ( 'month.php' );
+}
+
+
+if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
+  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
+  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=month.php?$u_url" .
+    "year=$thisyear&amp;month=$thismonth$caturl" . 
+    ( ! empty ( $friendly ) ? '&amp;friendly=1' : '') . "\" />\n";
+}
+$INC =  array('js/popups.php', 'js/visible.php/true');
+print_header($INC,$HeadX);
+$trailerStr = print_trailer ();
+echo <<<EOT
+  <table border="0" width="100%" cellpadding="1">
+    <tr>
+      <td valign="top" width="{$tableWidth}" rowspan="2">
+      {$prevMonth1}{$nextMonth1}
+      {$navStr}
+      {$monthStr}
+     </td>
+     <td valign="top" align="center">
+      {$prevMonth2}<br />{$nextMonth2}<br />{$smallTasks}
+     </td>
+    </tr>
+  </table>
+{$eventinfo}
+{$unapprovedStr}
+{$printFriendlyStr}
+<br />
+{$trailerStr}
 </body>
 </html>
+EOT;
+?>

@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 include_once 'includes/init.php';
 
 // load user and global cats
@@ -122,6 +123,6 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
 if ( ! empty ( $error ) ) {
   echo "<span style=\"font-weight:bold;\">" . translate ( 'Error' ) . ':</span>' . $error;
 }
-print_trailer(); ?>
+echo print_trailer(); ?>
 </body>
 </html>

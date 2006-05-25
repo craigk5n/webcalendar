@@ -80,7 +80,7 @@ if ( count ( $viewusers ) == 0 ) {
 if ( ! empty ( $error ) ) {
   echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
-  print_trailer ();
+  echo print_trailer ();
   exit;
 }
 
@@ -168,7 +168,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       if ( empty ($ADD_LINK_IN_VIEWS) || $ADD_LINK_IN_VIEWS != 'N' ) {
         echo html_for_add_icon ( date ('Ymd', $date), '', '', $user );
       }
-      print_date_entries ( date ('Ymd', $date), $user, true );
+      echo print_date_entries ( date ('Ymd', $date), $user, true );
       echo '</td>';
     } //end for
     echo "</tr>\n";
@@ -185,6 +185,6 @@ if ( ! empty ( $eventinfo ) ) {
 
 echo generate_printer_friendly ( 'view_m.php' );
 
-print_trailer (); ?>
+echo print_trailer (); ?>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
  //if the javascript doesn't need any input from php, then we can cache it
  // and not run init.php
 $caching = false;

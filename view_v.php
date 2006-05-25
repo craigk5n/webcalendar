@@ -52,7 +52,7 @@ $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
-$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 4 : 6 ) );
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 5 : 7 ) );
 $thisdate = date ( 'Ymd', $wkstart );
 
 
@@ -102,7 +102,7 @@ if ( $viewusercnt == 0 ) {
 if ( ! empty ( $error ) ) {
   echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
-  print_trailer ();
+  echo print_trailer ();
   exit;
 }
 
@@ -165,7 +165,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
       if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' ) {
         echo html_for_add_icon ( date ( 'Ymd', $date ), '', '', $user );
       }
-      print_date_entries ( date ( 'Ymd', $date ), $user, true );
+      echo print_date_entries ( date ( 'Ymd', $date ), $user, true );
       echo '</td>';
     }
     echo "</tr>\n";
@@ -180,7 +180,7 @@ if ( ! empty ( $eventinfo ) ) {
 }
 
 echo generate_printer_friendly ( 'view_v.php');
-print_trailer ();
+echo print_trailer ();
 ?>
 </body>
 </html>
