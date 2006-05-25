@@ -542,7 +542,7 @@ textarea {
 }
 <?php // table appearing in small task window 
 ?>.minitask {
- width:100%;
+  width:100%;
   border: 1px solid #000000;
 }
 .minitask tr.header th {
@@ -610,7 +610,7 @@ textarea {
   padding: 1px 3px;
 }
 #day div.minicalcontainer {
-  text-align:center;
+  vertical-align:top;
   border: 1px solid #000000;
   padding: 3px;
 }
