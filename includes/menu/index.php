@@ -165,17 +165,17 @@ if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
   } else {
     $u_url = '';
   }
-  $res = dbi_execute ( 'SELECT cal_report_name, cal_report_id ' .
+  $rows = dbi_get_cached_rows ( 'SELECT cal_report_name, cal_report_id ' .
     'FROM webcal_report WHERE cal_login = ? OR ' .
     "( cal_is_global = 'Y' AND cal_show_in_trailer = 'Y' ) " .
     'ORDER BY cal_report_id', array ( $login ) );
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
+  if ( $rows ) {
+    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+      $row = $rows[$i];
       $tmp['name'] = htmlspecialchars ( $row[0] );
       $tmp['url'] = "report.php?report_id=$row[1]$u_url";
       $reports_link[] = $tmp;
     }
-    dbi_free_result ( $res );
   }
   $reports_linkcnt = count ( $reports_link);
   $tmp = '';
@@ -542,7 +542,7 @@ cmDraw ('myMenuID', myMenu, 'hbr', cmTheme, 'Theme');
 </script>
 </td>
 <td class="ThemeMenubackgr" align="right">
-<?php print_menu_dates ( true ); ?>
+<?php echo print_menu_dates ( true ); ?>
 </td>
 <td class="ThemeMenubackgr" align="right">
 <?php
