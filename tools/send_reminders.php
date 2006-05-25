@@ -99,7 +99,7 @@ if ( $debug )
   echo '<br />Include Path=' . ini_get('include_path') . " <br />\n";
 
 // Get a list of people who have asked not to receive email
-$res = dbi_execute ( "SELECT cal_login FROM webcal_user_pref " .
+$res = dbi_execute ( 'SELECT cal_login FROM webcal_user_pref ' .
   "WHERE cal_setting = 'EMAIL_REMINDER' " .
   "AND cal_value = 'N'" );
 $noemail = array ();
@@ -294,9 +294,9 @@ function send_reminder ( $id, $event_date ) {
   $num_ext_participants = 0;
   if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' &&
     ! empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == 'Y' ) {
-    $sql = "SELECT cal_fullname, cal_email FROM webcal_entry_ext_user " .
-      "WHERE cal_id = ? AND cal_email IS NOT NULL " .
-      "ORDER BY cal_fullname";
+    $sql = 'SELECT cal_fullname, cal_email FROM webcal_entry_ext_user ' .
+      'WHERE cal_id = ? AND cal_email IS NOT NULL ' .
+      'ORDER BY cal_fullname';
     $res = dbi_execute ( $sql , array ( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -315,10 +315,10 @@ function send_reminder ( $id, $event_date ) {
 
   // get event details
   $res = dbi_execute (
-    "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
-    "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-    "cal_name, cal_description, cal_due_date, cal_due_time " .
-  "FROM webcal_entry WHERE cal_id = ?" , array ( $id ) );
+    'SELECT cal_create_by, cal_date, cal_time, cal_mod_date, ' .
+    'cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, ' .
+    'cal_name, cal_description, cal_due_date, cal_due_time ' .
+  'FROM webcal_entry WHERE cal_id = ?' , array ( $id ) );
   if ( ! $res ) {
     echo "Db error: could not find event id $id.\n";
     return;
@@ -506,7 +506,7 @@ function send_reminder ( $id, $event_date ) {
           translate ( 'Administrator', true ). "\n\n$body\n\n</pre>\n";
     } else {
       $mail = new WebCalMailer;
-      user_load_variables ( $user, "temp" );
+      user_load_variables ( $user, 'temp' );
       if ( strlen ( $GLOBALS['EMAIL_FALLBACK_FROM'] ) ) {
         $mail->From = $GLOBALS['EMAIL_FALLBACK_FROM'];
         $mail->FromName = translate ( 'Administrator', true);
@@ -536,9 +536,9 @@ function log_reminder ( $id, $times_sent ) {
   global $only_testing;
 
   if ( ! $only_testing ) {
-    dbi_execute ( "UPDATE webcal_reminders " .
-      "SET cal_last_sent = ?, cal_times_sent = ? " .
-      "WHERE cal_id = ?", array ( gmmktime(), $times_sent, $id ) );
+    dbi_execute ( 'UPDATE webcal_reminders ' .
+      'SET cal_last_sent = ?, cal_times_sent = ? ' .
+      'WHERE cal_id = ?', array ( gmmktime(), $times_sent, $id ) );
   }
 }
 
