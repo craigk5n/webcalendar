@@ -74,12 +74,15 @@ if ( ! empty ( $rssuser ) ) {
 
 
   // is this user a participant or the creator of the event?
+  // if assistant is doing this, then we need to switch login
+  // to user in the sql
+  $sqlparm = ( $is_assistant ? $user : $login );
   $sql = 'SELECT webcal_entry.cal_id FROM webcal_entry, ' .
     'webcal_entry_user WHERE webcal_entry.cal_id = ' .
     'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
     'AND (webcal_entry.cal_create_by = ? ' .
     'OR webcal_entry_user.cal_login = ?)';
-  $res = dbi_execute ( $sql , array ( $id , $login, $login ) );
+  $res = dbi_execute ( $sql , array ( $id , $sqlparm, $sqlparm ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row && $row[0] > 0 ) {
@@ -413,7 +416,12 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
   $reminder = getReminders ( $id, true );
   
 ?>
-<h2><?php echo  $name ; ?></h2>
+<h2><?php echo  $name ; 
+  if ( $is_nonuser_admin )
+    echo '  ( ' . translate('Admin mode') . ' )';
+  if ( $is_assistant )
+    echo '  ( ' . translate('Assistant mode') . ' )';
+?></h2>
 <table border="0" width="100%">
 <tr><td style="vertical-align:top; font-weight:bold;" width="10%">
  <?php etranslate( 'Description' )?>:</td><td>
@@ -679,7 +687,8 @@ if ( $single_user == 'N' && $show_participants ) { ?>
         $participants[] = $row;
         $pname = $row[0];
         if ( ( $login == $row[0] || access_user_calendar ( 'approve', $row[0] ) ||
-          ( $is_nonuser_admin && ! empty ( $user ) && $user == $row[0] ) ) && 
+          ( $is_nonuser_admin || $is_assistant && 
+          ! empty ( $user ) && $user == $row[0] ) ) && 
           $row[1] == 'W' ) {
           $unapproved = TRUE;
         }
@@ -951,7 +960,7 @@ if ( ! empty ( $user ) && $login != $user ) {
   $u_url = '';
 }
 
-if ( ( $is_my_event || $is_nonuser_admin || $can_approve ) && 
+if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) && 
   $unapproved && $readonly == 'N' ) {
   echo '<a title="' . 
     translate( 'Approve/Confirm entry' ) . 
@@ -1054,10 +1063,10 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser
       translate( 'Delete entry' ) . '" class="nav" ' .
       "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
        translate( 'Are you sure you want to delete this entry?', true) . "\\n\\n";
-    if ( empty ( $user ) || $user == $login  )
+    if ( empty ( $user ) || $user == $login || $is_assistant )
       echo translate( 'This will delete this entry for all users.' , true);
     echo "');\">" .  translate( 'Delete entry' );
-    if ( ! empty ( $user ) &&  $user != $login ) {
+    if ( ! empty ( $user ) &&  $user != $login  && ! $is_assistant ) {
       user_load_variables ( $user, 'temp_' );
       echo ' ' . translate ( 'from calendar of' ) . ' ' . $temp_fullname;
     }
@@ -1073,9 +1082,19 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser
   echo '<a title="' . 
     translate( 'Delete entry' ) . '" class="nav" ' .
     "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
-    translate( 'Are you sure you want to delete this entry?', true) . "\\n\\n" . 
-    translate( 'This will delete the entry from your calendar.', true) . "');\">" . 
-    translate( 'Delete entry' ) . "</a><br />\n";
+    translate( 'Are you sure you want to delete this entry?', true) . "\\n\\n";
+  if ( $is_assistant ) {
+    echo translate( "This will delete the entry from your boss\' calendar.", true) . 
+      "');\">";
+  } else {
+    echo translate( 'This will delete the entry from your calendar.', true) . 
+      "');\">";
+  }
+  echo translate( 'Delete entry' );
+  if ( $is_assistant ) {
+    echo  ' ' . translate ( "from your boss' calendar" );
+  }
+  echo "</a><br />\n";
   echo '<a title="' . 
     translate( 'Copy entry' ) . '" class="nav" ' .
     "href=\"edit_entry.php?id=$id&amp;copy=1\">" . 

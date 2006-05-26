@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 05-22-2006
+# Translation last updated on 05-26-2006
 
 
 ###############################################
@@ -1170,6 +1170,7 @@ No users for this view: No users for this view
 ###############################################
 # Page: view_entry.php
 #
+Assistant mode: Assistant mode
 Status: Status
 Accepted: Accepted
 Needs-Action: Needs-Action
@@ -1195,7 +1196,9 @@ Delete entry only for this date: Delete entry only for this date
 Edit entry: Edit entry
 from calendar of: from calendar of
 Copy entry: Copy entry
+This will delete the entry from your boss\' calendar.: This will delete the entry from your boss\' calendar.
 This will delete the entry from your calendar.: This will delete the entry from your calendar.
+from your boss' calendar: from your boss' calendar
 Do you want to add this entry to your calendar?: Do you want to add this entry to your calendar?
 This will add the entry to your calendar.: This will add the entry to your calendar.
 Email all participants: Email all participants
@@ -1213,7 +1216,6 @@ Double-click on empty cell to add new entry: Double-click on empty cell to add n
 ###############################################
 # Page: week_details.php
 #
-Assistant mode: Assistant mode
 New Entry: New Entry
 
 

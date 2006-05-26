@@ -19,12 +19,15 @@ if ( $id > 0 ) {
   } else {
     $can_edit = false;
   }
+    // if assistant is doing this, then we need to switch login
+    // to user in the sql
+    $sqlparm = ( $is_assistant ? $user : $login );
     $sql = 'SELECT webcal_entry.cal_id, webcal_entry.cal_type FROM webcal_entry, ' .
       'webcal_entry_user WHERE webcal_entry.cal_id = ' .
       'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
       'AND (webcal_entry.cal_create_by = ? ' .
       'OR webcal_entry_user.cal_login = ?)';
-    $res = dbi_execute ( $sql, array( $id, $login, $login ) );
+    $res = dbi_execute ( $sql, array( $id, $sqlparm, $sqlparm ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( $row && $row[0] > 0 )
@@ -59,11 +62,11 @@ if ( $res ) {
   }
 }
 
-// If the user is the creator of the event, allow them to delete
-// the event from another user's calendar.
+// If the user is the creator of the event or their assistant, 
+// allow them to delete the event from another user's calendar.
 // It's essentially the same thing as editing the event and removing the
 // user from the participants list.
-if ( $my_event && ! empty ( $user ) && $user != $login ) {
+if ( $my_event && ! empty ( $user ) && $user != $login  && ! $is_assistant ) {
   $other_user = $user;
 }
 
@@ -252,7 +255,7 @@ if ( $id > 0 && empty ( $error ) ) {
     // Just  set the status to 'D' instead of deleting.
     $del_user = ( ! empty ( $other_user ) ?  $other_user : $login );
     if ( ! empty ( $user ) && $user != $login ) {
-      if ( $is_admin || $my_event ||
+      if ( $is_admin || $my_event || ( $can_edit && $is_assistant ) ||
         ( access_is_enabled () &&
         access_user_calendar ( 'edit', $user ) ) ) {
         $del_user = $user;
