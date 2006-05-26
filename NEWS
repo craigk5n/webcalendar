@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1493472: entered 'task' will not be displayed on day.php
       1495426: grid incomplete at preview of colors
       1457983: Assistants don't delete events for everyone
       1487016: Events not listing in time order
