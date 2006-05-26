@@ -5467,7 +5467,7 @@ function error_check ( $nextURL ) {
  * @params passed automatically by usort, don't pass them in your call
  */
 function sort_events ( $a, $b ) { 
-  $retval = strnatcmp( $a->getTime(), $b->getTime() ); 
+  $retval = strnatcmp( $a->getDateTimeTS(), $b->getDateTimeTS() ); 
   if( ! $retval ) return strnatcmp( $a->getName(), $b->getName() );
   return $retval; 
 } 
@@ -5480,7 +5480,7 @@ function sort_events ( $a, $b ) {
  * @params passed automatically by usort, don't pass them in your call
  */
 function sort_events_insensitive ( $a, $b ) { 
-  $retval = strnatcmp( $a->getTime(), $b->getTime() ); 
+  $retval = strnatcmp( $a->getDateTimeTS(), $b->getDateTimeTS() ); 
   if( ! $retval ) return strnatcmp( strtolower($a->getName()), strtolower($b->getName()) ); 
   return $retval; 
 } 
