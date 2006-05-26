@@ -1,19 +1,19 @@
 #!/usr/bin/perl
 #
 # This tool will update a translation file by doing the following:
-# - Insert an empty translation when a missing translation is found.
-#   The translation will have "<< MISSING >>" right above it to
-#   make it easy to find.
-# - Show the English translation (in a comment) before a missing translation,
-#   making it easier to add the translation.
-# - Translations will be reorganized so that they are divided up into
-#   the pages that they appear on.
+# - When a missing translation is found, the phrase will have
+#   "<< MISSING >>"
+#   right before it to make it easy to find.
+# - Show the English text (in a comment) after an untranslated phrase,
+#   when the "phrase" is not the same as the "translation",
+#   making it easier to translate.
+# - Phrases are organized by the page on which they appear.
 #
 # Note: you will lose any comments you put in the translation file
 # when using this tool (except for the comments at the very beginning).
 #
-# Note #2: This will overwrite the existing translation file, so a save
-# backup of the translation will be saved with a .bak file extension.
+# Note #2: This will overwrite the existing translation file, so a backup
+# of the original can optionally be saved with a .bak file extension.
 #
 # Usage:
 # update_translation.pl [-p plugin] languagefile
@@ -49,7 +49,7 @@ $verbose      = 0;
 
 ($this) = reverse split( /\//, $0 );
 
-$save_backup = 0;
+$save_backup = 0;     # set to 1 to create backups
 
 for ( $i = 0 ; $i < @ARGV ; $i++ ) {
   if ( $ARGV[$i] eq "-p" ) {
@@ -90,8 +90,8 @@ die "Usage: $this [-p plugin] language\n" if ( !-f $infile );
 
 print "Translation file: $infile\n" if ($verbose);
 
-# Now load the base translation(s) file (English), so that we can include
-# the English translation text above a missing translation in a comment.
+# Now load the base translation(s) file (English) so that we can include
+# the English text, below the untranslated phrase, in a comment.
 open( F, $base_trans_file ) || die "Error opening $base_trans_file";
 print "Reading base translation file: $base_trans_file\n" if ($verbose);
 while (<F>) {
