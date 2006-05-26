@@ -563,6 +563,9 @@ textarea {
   padding: 0px;
   border-bottom: 0px;
 }
+.task {
+  color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+}
 #admin .tooltip,
 #pref .tooltip{
   cursor: help;
@@ -1119,6 +1122,9 @@ abbr {
 .leftpadded {
  padding-left:50px;
  text-align:left;
+}
+.location {
+ font-size: 10px;
 }
 <?php
 if ( ! empty ( $PHP_SELF ) && ! preg_match ( "/css_cacher/", $PHP_SELF ) ) {

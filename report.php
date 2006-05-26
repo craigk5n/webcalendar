@@ -89,7 +89,7 @@ function event_to_text ( $event, $date ) {
   } else {
     $time_str = display_time ( $event->getDateTime() );
     $start_time_str = $time_str;
-    $time_short = preg_replace ("/(:00)/", '', $time_str);
+    $time_short = getShortTime ( $time_str );
     if ( $event->getDuration() > 0 ) {
       if (  $event->isAllDay() ) {
         $time_str = translate( 'All day event' );

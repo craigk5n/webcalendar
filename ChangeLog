@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Implemented PATCH 1470681: New preference: DISPLAY_TASKS_YEAR
+ - Implemented PATCH 1459888: New preference: DISPLAY_MINUTES
  - Fixed bug 1493472: entered 'task' will not be displayed on day.php
  - Fixed bug 1495426: grid incomplete at preview of colors
  = Fixed bug 1457983: Assistants don't delete events for everyone

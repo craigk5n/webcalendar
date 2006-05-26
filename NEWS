@@ -271,6 +271,8 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented PATCH 1470681: New preference: DISPLAY_TASKS_YEAR
+    + Implemented PATCH 1459888: New preference: DISPLAY_MINUTES
     + Implemented RFE 1490058: export a certain category
     + Implemented RFE 1379431: Global Layers!
     + Implemented RFE 1337524: not proper display of "Repeating events" in 'view_entry.php'

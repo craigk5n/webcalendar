@@ -49,16 +49,14 @@ function infoinit(){
   var entries = document.getElementsBySelector("a.entry");
   entries = entries.concat(document.getElementsBySelector("a.layerentry"));
   entries = entries.concat(document.getElementsBySelector("a.unapprovedentry"));
-
+  entries = entries.concat(document.getElementsBySelector("tr.task"));
   for (var i = 0; i < entries.length; i++) {
     entries[i].onmouseover = function(event) {
    show(event, "eventinfo-" + this.id);
-   window.status = "<?php etranslate( 'View this entry', true); ?>";
    return true;
   }
     entries[i].onmouseout = function() {
       hide("eventinfo-" + this.id);
-   window.status = "";
    return true;
     }
   }
