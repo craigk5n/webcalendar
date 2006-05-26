@@ -559,8 +559,9 @@ function send_no_cache_header () {
  */
 function load_user_preferences ( $guest='') {
   global $login, $browser, $views, $prefarray, $is_assistant,
-    $DATE_FORMAT_MY, $DATE_FORMAT, $DATE_FORMAT_MD, $LANGUAGE, $lang_file, 
-    $has_boss, $user, $is_nonuser_admin, $ALLOW_COLOR_CUSTOMIZATION;
+    $DATE_FORMAT_MY, $DATE_FORMAT, $DATE_FORMAT_MD, $DATE_FORMAT_TASK,
+    $LANGUAGE, $lang_file, $has_boss, $user, $is_nonuser_admin, 
+    $ALLOW_COLOR_CUSTOMIZATION;
   $lang_found = false;
   $colors = array (
     'BGCOLOR' => 1,
@@ -661,6 +662,9 @@ function load_user_preferences ( $guest='') {
   }
   if ( empty ( $DATE_FORMAT_MD ) || $DATE_FORMAT_MD == 'LANGUAGE_DEFINED' ){  
     $DATE_FORMAT_MD = translate ( '__month__ __dd__' );  
+  }
+  if ( empty ( $DATE_FORMAT_TASK ) || $DATE_FORMAT_TASK == 'LANGUAGE_DEFINED' ){  
+    $DATE_FORMAT_TASK = translate ( '__mm__/__dd__/__yyyy__' );  
   }
     
   $is_assistant = empty ( $user ) ? false :
@@ -1612,8 +1616,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
  *
  */
 function display_small_tasks ( $cat_id ) {
-  global $user, $login, $is_assistant;
-
+  global $user, $login, $is_assistant, $eventinfo, $DATE_FORMAT_TASK;
+  static $key = 0;
   if ( ! empty ( $user ) && $user != $login  && ! $is_assistant ) {
     return false;
   }
@@ -1630,7 +1634,7 @@ function display_small_tasks ( $cat_id ) {
   $priorityStr = translate ( 'Priority' );
   $taskStr = translate ( 'Task Name' );
   $dueStr = translate ( 'Task Due Date' );
-  $dateFormatStr = translate ( '__mm__/__dd__/__yyyy__' );
+  $dateFormatStr = $DATE_FORMAT_TASK;
   $completedStr = translate ( 'Completed' );
   $filter = '';
   $task_list = query_events ( $task_user, false, $filter, $cat_id, true  );
@@ -1642,7 +1646,7 @@ function display_small_tasks ( $cat_id ) {
     '<img src="images/new.gif" alt="+" class="new"/></a></th></tr>' . "\n";
   $task_html .= '<tr class="header"><th>!</th><th>'.  translate ( 'Task_Title' ) . 
     '</th><th>' . translate ('Due' ) . '</th><th>&nbsp;%&nbsp;</th></tr>' . "\n";
-  foreach ( $task_list as $E )  {
+  foreach ( $task_list as $E )  {  
     //check UAC
     $task_owner = $E->getLogin();
     if ( access_is_enabled () ) {
@@ -1652,9 +1656,13 @@ function display_small_tasks ( $cat_id ) {
         continue;    
     }
     $cal_id = $E->getId();
+    //generate popup info
+    $popupid = "eventinfo-pop$cal_id-$key";
+    $linkid  = "pop$cal_id-$key";
+    $key++; 
     $t_url = ( $task_owner != $login ? "user={$task_owner}&amp;":'');
     $link = '<a href="view_entry.php?' . $t_url .'id=' . $cal_id . '"';
-    $priority = $link  . ' title="' . $priorityStr . '" >' . 
+    $priority = $link  . ' title="' . $priorityStr . '">' . 
       $E->getPriority() . '</a>';
     $dots = ( strlen ( $E->getName() ) > 10 ? '...': '' );
     $name = $link  . ' title="' . $taskStr . ': ' . $E->getName() . 
@@ -1664,9 +1672,19 @@ function display_small_tasks ( $cat_id ) {
         '</a>';
     $percent = $link . ' title="% ' . $completedStr . '">'. 
       $E->getPercent() . '</a>';
-    $task_html .= "<tr><td>$priority</td><td>$name</td>" .
+    $task_html .= "<tr class=\"task\" id=\"$linkid\"><td>$priority</td><td>$name</td>" .
       "<td>$due_date</td><td>&nbsp;&nbsp;$percent</td></tr>\n";
     $row_cnt++;
+   //build special string to pass to popup
+   // TODO move this logic into build_entry_popup() 
+    $timeStr = translate ( 'Due Time' ) . ':' . display_time( $E->getDueTime()) .
+      '</dd><dd>' . 
+      translate ( 'Due Date' ) . ':' . date_to_str( $E->getDueDate(),'', false ).
+      '</dd></dt><dt>' . translate ( 'Percent Complete' ) .
+      ':<dt><dd>' . $E->getPercent() . '%' ;
+
+    $eventinfo .= build_entry_popup ( $popupid, $E->getLogin(), $E->getDescription(), 
+      $timeStr, '', $E->getLocation(), $E->getName(), $cal_id ); 
   }
   for ($i=7; $i > $row_cnt; $i-- ) {
     $task_html .= "<tr><td colspan=\"4\"  class=\"filler\">&nbsp;</td></tr>\n";        
@@ -1785,10 +1803,10 @@ function print_entry ( $event, $date ) {
     $timestr = translate('All day event');
   } else if ( ! $event->isUntimed() ) {
     $timestr = display_time ( $event->getDateTime() );
-    $time_short = preg_replace ("/(:00)/", '', $timestr);
+    $time_short = getShortTime ( $timestr );
     if ( $cal_type == 'event' ) $ret .= $time_short . $time_spacer;
     if ( $event->getDuration() > 0 ) {
-      $timestr .= " - " . display_time ( $event->getEndDateTime() );
+      $timestr .= ' - ' . display_time ( $event->getEndDateTime() );
     }
   }
   $ret .= build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only );
@@ -1796,13 +1814,13 @@ function print_entry ( $event, $date ) {
   //added to allow a small location to be displayed if wanted
  if ( ! empty ($location) &&
    ! empty ( $DISPLAY_LOCATION ) && $DISPLAY_LOCATION == 'Y') {
-   $ret .= "<br /><font size=\"-2\">(" . htmlspecialchars ( $location ) . ")</font>";
+   $ret .= '<br /><span class="location">(' . htmlspecialchars ( $location ) . ')</span>';
   }
  
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     if ($layers) foreach ($layers as $layer) {
         if($layer['cal_layeruser'] == $event->getLogin() ) {
-            $ret .= "</span>";
+            $ret .= '</span>';
         }
     }
   }
@@ -3384,7 +3402,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
       $hour_arr[$ind] .= display_time ( $event->getDatetime() ) . $time_spacer;
     $timestr = display_time ( $event->getDatetime() );
     if ( $event->getDuration() > 0 ) {
-      $timestr .= "-" . display_time ( $event->getEndDateTime() , $DISPLAY_TZ );
+      $timestr .= '-' . display_time ( $event->getEndDateTime() , $DISPLAY_TZ );
       $end_time = date( 'His', $event->getEndDateTimeTS() );
       //this fixes the improper display if an event ends at or after midnight
       if ( $end_time <  $tz_time ){
@@ -3672,6 +3690,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
       $last_row = $i;
     }
   }
+  $ret .= '<table class="glance" cellspacing="0" cellpadding="0">';
   if ( ! empty ( $hour_arr[9999] ) ) {
     $ret .= '<tr><th class="empty">&nbsp;</th>' .
       "\n<td class=\"hasevents\">$hour_arr[9999]</td></tr>\n";
@@ -3720,7 +3739,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     }
     $ret .= "</tr>\n";    
   }
- 
+  $ret .= "</table>\n";
   return $ret;
 }
 
@@ -4803,8 +4822,7 @@ function load_nonuser_preferences ($nonuser) {
   }
   if ( empty ( $DATE_FORMAT_MD ) || $DATE_FORMAT_MD == 'LANGUAGE_DEFINED' ){  
     $DATE_FORMAT_MD = translate ( '__month__ __dd__' );  
-  }  
-  
+  }   
 }
 
 /**
@@ -5765,5 +5783,23 @@ function generate_printer_friendly ( $hrefin='' ) {
   <a title="{$statusStr}" class="printer" href="{$href}" target="cal_printer_friendly">[{$displayStr}]</a>
 EOT;
 return $ret;
+}
+/**
+ * Remove :00 from times based on $DISPLAY_MINUTES
+ *  value
+ *
+ * @param string   $timestr  time value to shorten
+ *
+ *
+ */
+function getShortTime ( $timestr ) {
+  global $DISPLAY_MINUTES;
+  
+  if ( empty ( $DISPLAY_MINUTES ) || $DISPLAY_MINUTES == 'N' ) {
+    return preg_replace ('/(:00)/', '', $timestr);
+  }
+  else {
+    return $timestr;
+  }
 }
 ?>

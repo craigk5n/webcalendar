@@ -379,7 +379,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
      echo '>' . $datestyles[$i + 1] . $option;
     }
    ?>
-  </select><br />
+  </select>&nbsp;<?php echo $choices_text[2] . ' ' . $choices_text[0] .
+    ' ' . $choices_text[3];?><br />
 
   <select name="admin_DATE_FORMAT_MY">
    <?php
@@ -390,7 +391,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
      echo '>' . $datestyles_my[$i + 1] . $option;
     }
    ?>
-  </select><br />
+  </select>&nbsp;<?php echo $choices_text[2] .' ' . $choices_text[3];?><br />
 
   <select name="admin_DATE_FORMAT_MD">
    <?php
@@ -401,13 +402,37 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
      echo '>' . $datestyles_md[$i + 1] . $option;
     }
    ?>
-  </select>
+  </select>&nbsp;<?php echo $choices_text[2] .' ' . $choices_text[0];?><br />
+
+  <select name="admin_DATE_FORMAT_TASK">
+   <?php
+    for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i += 2 ) {
+     echo '<option value="' . $datestyles_task[$i] . '"';
+     if ( $s['DATE_FORMAT_TASK'] == $datestyles_task[$i] )
+      echo $selected;
+     echo '>' . $datestyles_task[$i + 1] . $option;
+    }
+   ?>
+  </select>&nbsp;<?php echo translate ( 'Small Task Date' );?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'time-format-help' )?>">
   <?php etranslate( 'Time format' )?>:</td><td>
-  <label><input type="radio" name="admin_TIME_FORMAT" value="12" <?php if ( $s['TIME_FORMAT'] == "12" ) echo $checked;?> />&nbsp;<?php etranslate( '12 hour' )?></label>&nbsp;
-  <label><input type="radio" name="admin_TIME_FORMAT" value="24" <?php if ( $s['TIME_FORMAT'] != "12" ) echo $checked;?> />&nbsp;<?php etranslate( '24 hour' )?></label>
+  <label><input type="radio" name="admin_TIME_FORMAT" value="12" <?php 
+  if ( $s['TIME_FORMAT'] == "12" ) echo $checked;?> />&nbsp;<?php 
+    etranslate( '12 hour' )?></label>&nbsp;
+  <label><input type="radio" name="admin_TIME_FORMAT" value="24" <?php 
+  if ( $s['TIME_FORMAT'] != "12" ) echo $checked;?> />&nbsp;<?php 
+    etranslate( '24 hour' )?></label>
  </td></tr>
+<tr><td class="tooltip" title="<?php etooltip("display-minutes-help")?>">
+ <?php etranslate("Display 00 minutes always")?>:</td><td>
+ <label><input type="radio" name="admin_DISPLAY_MINUTES" value="Y" <?php 
+ if ( $s['DISPLAY_MINUTES'] != 'N' ) echo $checked;?> /> <?php 
+  echo $Yes?></label>&nbsp;
+ <label><input type="radio" name="admin_DISPLAY_MINUTES" value="N" <?php 
+ if ( $s['DISPLAY_MINUTES'] == 'N' ) echo $checked;?> /> <?php 
+  echo $No?></label>
+</td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'entry-interval-help' )?>">
   <label for="admin_TIME_SLOTS"><?php etranslate( 'Entry interval' )?>:</label></td><td>
   <select name="admin_ENTRY_SLOTS" id="admin_ENTRY_SLOTS">
