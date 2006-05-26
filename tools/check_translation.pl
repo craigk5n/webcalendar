@@ -68,6 +68,7 @@ foreach $f (@incfiles) {
   push( @files, "includes/classes/$f" );
 }
 push( @files, "tools/send_reminders.php" );
+push( @files, "tools/reload_remotes.php" );
 push( @files, "install/index.php" );
 push( @files, "includes/menu/index.php" );
 
