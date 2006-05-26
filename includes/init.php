@@ -174,11 +174,11 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   //external file. We will still increment the webcalendar_csscache cookie though
   if ( ! $disableStyle ) {
     if ( $thisPage == 'admin.php' || $thisPage == 'pref.php') {
-      include_once 'includes/styles.php';
-    } else {
-      $ret .= '<link rel="stylesheet" type="text/css"  href="css_cacher.php?' . 
-        $login . $webcalendar_csscache . "\" />\n";
+      //this will always force a reload of CSS
+      $webcalendar_csscache = $webcalendar_csscache . 'adminpref';
     }
+    $ret .= '<link rel="stylesheet" type="text/css"  href="css_cacher.php?' . 
+      $login . $webcalendar_csscache . "\" />\n";
   }
 
   // Add custom script/stylesheet if enabled
