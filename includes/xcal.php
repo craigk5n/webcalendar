@@ -1311,7 +1311,7 @@ foreach ( $data as $Entry ){
       $values[] = $id;
       if ( ! $updateMode ) {
         $names[] = 'cal_create_by';
-        $values[] = $login;
+        $values[] = ( $ImportType == 'RMTICS' ? $calUser : $login ) ;
       }
       $names[] = 'cal_date';
       $values[] = $Entry['start_date'];
