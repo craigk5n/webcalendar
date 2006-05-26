@@ -148,7 +148,7 @@ function background_css ( $base, $height = '', $percent = '' ) {
   } else if ( function_exists ( 'imagegif' ) ){
     $type = '.gif';
   }
-  if ( $type != '' ) {
+  if ( $type != '' && $ENABLE_GRADIENTS == 'Y') {
     if ( ! file_exists( 'images/cache' ) || ! is_writable ( 'images/cache' ) ) {
       $ret = "background: $base url(\"includes/gradient.php?base=" . substr ( $base, 1 );
       if ( $height != '' )  $ret .= "&height=$height";
