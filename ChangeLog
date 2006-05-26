@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1487016: Events not listing in time order
  - Changed functions to return strings vs echoing data...precursor to templating
  - Fixed bug 1492216: Firefox 'Live Bookmark' shows '(Empty)'
  - Fixed bug 1492208: Entries not displayed on last day of week in 'Week' view
