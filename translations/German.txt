@@ -10,7 +10,8 @@
 # Last update: 17 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 19 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 23 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 05-23-2006
+# Last update: 26 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 05-26-2006
 
 
 ###############################################
@@ -306,9 +307,9 @@ Export: Export
 # Page: edit_remotes.php
 #
 NONUSER_PREFIX not set: 'NONUSER_PREFIX' nicht definiert
-word characters only: K&ouml;nnen nur Buchstaben und Ziffern sein (a-zA-Z_0-9)
 Edit Remote Calendar: Ver&auml;ndere entfernten (anderen) Kalender
 Add Remote Calendar: Hinzuf&uuml;gen entfernten (anderen) Kalender
+word characters only: K&ouml;nnen nur Buchstaben und Ziffern sein (a-zA-Z_0-9)
 Calendar ID: Kalender ID
 First Name: Vorname
 Last Name: Nachname
@@ -1525,6 +1526,18 @@ This is a reminder for the task detailed below.: Das ist eine Erinnerung f&uuml;
 This is a reminder for the event detailed below.: Das ist eine Erinnerung f&uuml;r den unten aufgef&uuml;hrten (detailierten) Termin
 Pecentage Complete: Prozentsatz abgeschlossen
 Reminder: Erinnerung
+
+
+###############################################
+# Page: tools/reload_remotes.php
+#
+Include Path: Include Pfad
+Deleting events for: Gel&ouml;schte Termine f&uuml;r
+Importing events for: Importierte Termine f&uuml;r
+No data returned from: Keine Daten erhalten von
+for non-user calendar: f&uuml;r 'Zentrale'-Benutzerkalender
+No Remote Calendars found: Kein 'Remote'(Fernzugriff)-Kalender gefunden
+Remote Calendars not enabled: 'Remote'(Fernzugriffs)-Kalender nicht m&ouml;glich
 
 
 ###############################################
