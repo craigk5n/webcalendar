@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1490641: 'Reports' out by 2 weeks
  - Implemented PATCH 1470681: New preference: DISPLAY_TASKS_YEAR
  - Implemented PATCH 1459888: New preference: DISPLAY_MINUTES
  - Fixed bug 1493472: entered 'task' will not be displayed on day.php
