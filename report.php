@@ -228,11 +228,12 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   $sql_params = array();
   if ( $is_admin ) {
     if ( ! $updating_public ) {
-      $textStr = translate( 'Click here' ) . ' ' .
-        translate( 'to manage reports for the Public Access calendar' ) . '.';
-      $list .= '<p><a title="' . $textStr .
-        '" href="report.php?public=1">' . $textStr .
-        "</a></p>\n";
+      if ( $PUBLIC_ACCESS == 'Y') {
+        $clickStr = translate( 'Click here' ) . ' ' .
+          translate( 'to manage reports for the Public Access calendar' ) . '.';
+        $list .= '<p><a title="' . $clickStr .
+           '" href="report.php?public=1">' . $clickStr . "</a></p>\n";
+      }
       $sql = 'SELECT cal_report_id, cal_report_name ' .
         'FROM webcal_report WHERE cal_login = ? OR ' .
         "cal_is_global = 'Y' ORDER BY cal_update_date DESC, cal_report_name";
@@ -251,18 +252,19 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   $res = dbi_execute ( $sql , $sql_params );
   $list .= "<ul>\n";
   if ( $res ) {
+    $unnamesStr = translate ( 'Unnamed Report' );
+    $addStr = translate( 'Add new report' );
     while ( $row = dbi_fetch_row ( $res ) ){
       $rep_name = trim ( $row[1] );
       if ( empty ( $rep_name ) )
-        $rep_name = translate ( 'Unnamed Report' );
+        $rep_name = $unnamesStr;
       $list .= "<li><a href=\"edit_report.php?report_id=$row[0]\" class=\"nav\">" .
         $rep_name . "</a></li>\n";
     }
     $list .= "</ul>\n";
     $addurl = $updating_public ? 'edit_report.php?public=1': 'edit_report.php';
-    $list .= '<p><a title="' .
-      translate( 'Add new report' ) . "\" href=\"$addurl\" class=\"nav\">" .
-      translate( 'Add new report' ) . "</a></p>\n";
+    $list .= '<p><a title="' . $addStr . "\" href=\"$addurl\" class=\"nav\">" .
+      $addStr . "</a></p>\n";
     dbi_free_result ( $res );
   } else {
     $error = translate ( 'Invalid report id' );
@@ -315,6 +317,7 @@ if ( empty ( $report_user ) ) {
 
 // Set default templates (in case there are none in the database for
 // this report.)
+$day_str = '';
 $page_template = '<dl>${days}</dl>';
 $day_template = '<dt><b>${date}</b></dt><dd><dl>${events}</dl></dd>';
 $event_template = '<dt>${name}</dt><dd>' .
@@ -348,8 +351,10 @@ if ( empty ( $error ) && empty ( $list ) ) {
   }
 }
 
-if ( ! empty ( $report_include_header ) && $report_include_header == 'Y' ||
-  ! empty ( $list ) || ! empty ( $error ) ) {
+$include_header = ( ! empty ( $report_include_header ) && 
+  $report_include_header == 'Y'? true : false );
+
+if ( $include_header || ! empty ( $list ) || ! empty ( $error ) ) {
   print_header();
 }
 
@@ -357,14 +362,15 @@ if ( empty ( $offset ) || empty ( $report_allow_nav ) ||
   $report_allow_nav != 'Y' ) {
   $offset = 0;
 }
-
+$next = $offset + 1;
+$prev = $offset - 1;
 // Set time range based on cal_time_range field.
 $DISPLAY_WEEKENDS = 'Y';
 $dateY = date ( 'Y' );
 $datem = date ( 'm' );
 $dated = date ( 'd' );
 
-$wkstart = get_weekday_before ( $dateY, $datem );
+$wkstart = get_weekday_before ( $dateY, $datem, $dated +1 );
 if ( ! isset ( $report_time_range ) ) {
   // manage reports
 } else if ( $report_time_range >= 0 && $report_time_range < 10 ) {
@@ -428,9 +434,6 @@ if ( empty ( $error ) && empty ( $list ) ) {
 
   //echo "Date Range: $start_date - $end_date <br /><br />\n";
 
-
-  $day_str = '';
-
   // Loop through each day
   // Get events for each day (both normal and repeating).
   // (Most of this code was copied from week.php)
@@ -458,56 +461,61 @@ if ( empty ( $error ) && empty ( $list ) ) {
     }
   }
 }
-
 if ( ! empty ( $error ) ) {
-  echo '<h2>' . translate( 'Error' ) .
-    "</h2>\n" . $error;
-} else if ( ! empty ( $list ) ) {
-  echo '<h2>';
-  if ( $updating_public ) {
-    echo translate($PUBLIC_ACCESS_FULLNAME) . ' ';
-  }
-  echo translate( 'Manage Reports' );
-  echo "</h2>\n" . 
-  '<a title="' . translate( 'Admin' ) . '" class="nav" href="adminhome.php"> ' .
-     '&laquo;&nbsp;' . translate( 'Admin' ) . "</a><br /><br />\n" . $list;
-} else {
-  if ( $report_include_header == 'Y' ) {
-    echo '<h2>' . $report_name . "</h2>\n";
-  }
-  $text = str_replace ( '${report_id}', $report_id, $page_template );
-  echo str_replace ( '${days}', $day_str, $text );
-}
-
-
-if ( empty ( $error ) && empty ( $list ) ) {
-  if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
-    if ( empty ( $offset ) ) {
-      $offset = 0;
-    }
-    $next = $offset + 1;
-    $prev = $offset - 1;
-    echo '<br /><br /><a title="' .
-      translate ( 'Previous' ) . "\" href=\"report.php?report_id=$report_id$u_url" .
-      ( empty ( $prev ) ? '' : "&amp;offset=$prev" ) . '" class="nav">' .
-      translate ( 'Previous' ) . "</a>\n";
-    echo '&nbsp;&nbsp;<a title="' .
-      translate ( 'Next' ) . "\" href=\"report.php?report_id=$report_id$u_url" .
-      ( empty ( $next ) ? '': "&amp;offset=$next" ) . "\" class=\"nav\">" .
-      translate ( 'Next' ) . "</a><br />\n";
-  }
-  if ( $report_include_header == 'Y' ) {
-    echo generate_printer_friendly ( 'report.php' );
-  }
-}
-
-if ( ! empty ( $list ) || $report_include_header == 'Y'
-  || ! empty ( $error ) || ! empty ( $list ) ) {
+  echo '<h2>' . translate ( 'Error' ) . "</h2>\n" . $error;
   echo print_trailer ();
-} else {
-  echo print_trailer ( false );
+  exit;
 }
 
+$prevStr = translate ( 'Previous' );
+$nextStr = translate ( 'Next' );
+
+if ( $include_header ) {
+  $reportNameStr = $report_name;
+  $printerStr =  generate_printer_friendly ( 'report.php' );
+  $htmlclose = '</body></html>';
+} else { 
+$reportNameStr = $htmlclose = $printerStr = '';
+}
+if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
+  $prevLinkStr =  '<a class="nav" title="' . $prevStr . '" href="report.php?report_id=' . 
+    $report_id .$u_url . "&amp;offset=$prev\">" . $prevStr . '</a>';
+  $nextLinkStr = '<a  class="nav" title="' . $nextStr . '" href="report.php?report_id=' .
+    $report_id . $u_url . "&amp;offset=$next\">" . $nextStr . '</a>';
+} else {
+  $prevLinkStr = $nextLinkStr ='';
+}
+if ( ! empty ( $list ) ) {
+  $textStr = '';
+  $adminStr = translate( 'Admin' );
+  $manageStr = translate( 'Manage Reports' ); 
+  if ( $updating_public ) {
+    $manageStr = translate($PUBLIC_ACCESS_FULLNAME) . ' ' . $manageStr;
+  } 
+  $adminLinkStr ='<a title="' . $adminStr . '" class="nav" href="adminhome.php"> ' .
+     '&laquo;&nbsp;' . $adminStr . '</a>';
+  $trailerStr = print_trailer ( );
+} else {
+  $manageStr = $adminLinkStr = '';
+  $text = str_replace ( '${report_id}', $report_id, $page_template );
+  $textStr = str_replace ( '${days}', $day_str, $text );
+  $trailerStr = print_trailer ( $include_header  );
+}
+
+echo <<<EOT
+  <h2>{$reportNameStr}</h2>
+  {$prevLinkStr}&nbsp;&nbsp;
+  {$nextLinkStr}
+  <h2>{$manageStr}</h2>
+  {$adminLinkStr}
+
+
+  {$list}
+  {$textStr}
+  {$printerStr}
+  
+  {$trailerStr}
+  
+  {$htmlclose}
+EOT;
 ?>
-</body>
-</html>
