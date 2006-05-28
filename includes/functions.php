@@ -1241,7 +1241,7 @@ function date_selection ( $prefix, $date, $trigger=false ) {
   return $ret;
 }
 
-function display_navigation( $name, $show_arrows=true ){
+function display_navigation( $name, $show_arrows=true, $show_cats=true ){
   global $single_user, $user_fullname, $is_nonuser_admin, $is_assistant,
   $user, $login, $thisyear, $thismonth, $thisday, $cat_id, $CATEGORIES_ENABLED,
   $nextYmd, $prevYmd, $caturl, $nowYmd, $wkstart, $wkend, $spacer,
@@ -1271,8 +1271,8 @@ function display_navigation( $name, $show_arrows=true ){
     '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;' .
     date_to_str ( date ('Ymd', $wkend ), '', false );
     if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
-      $ret .= " \n<span class=\"weeknumber\">(" .
-      translate('Week') . ' ' . date('W', $wkstart + ONE_DAY ) . ')</span>';
+      $ret .= " \n(" .
+      translate('Week') . ' ' . date('W', $wkstart + ONE_DAY ) . ')';
     }      
   } else if ( $name == 'month'  || $name == 'view_l' ){
      $ret .= $spacer . date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
@@ -1289,7 +1289,8 @@ function display_navigation( $name, $show_arrows=true ){
   if ( $is_assistant )
     $ret .= '<br />-- ' . translate('Assistant mode') . ' --';
   $ret .= "</span>\n";
-  if ( $CATEGORIES_ENABLED == 'Y' && (!$user || ($user == $login || $is_assistant ))) {
+  if ( $CATEGORIES_ENABLED == 'Y' && $show_cats && 
+    (!$user || ($user == $login || $is_assistant ))) {
     $ret .= "<br />\n<br />\n";
     $ret .= print_category_menu( $name, sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $cat_id );
   }
@@ -1530,7 +1531,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       $title = 'title="' . $weekStr . '&nbsp;' . 
         date('W', $i + ONE_DAY ) . '" ';
       $href = 'href="week.php?' . $u_url . 'date=' .date ('Ymd', $i+ ONE_DAY). '" ';
-      $ret .= '<td class="weeknumber"><a class="weeknumber"' . $title . $href . '>(' . 
+      $ret .= '<td class="weeknumber"><a class="weeknumber" ' . $title . $href . '>(' . 
         date('W', $i + ONE_DAY ) . ')</a></td>' . "\n";
     }
     for ($j = 0; $j < 7; $j++) {
@@ -2240,33 +2241,36 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
             $date += (12 * 3600);//a simple hack to prevent DST problems
           }
 
-  //check if this event id has been cached
-  $hash = md5 ( $result[$i]->getId() );
-  $file = $db_connection_info['cachedir'] . '/' . $hash . '.dat';
-  if ( ! empty ( $db_connection_info['cachedir'] ) &&  file_exists ( $file ) ){
-      $dates =  unserialize ( file_get_contents ( $file ) );
-   } else {
+          //check if this event id has been cached
+          $file = '';
+          if ( ! empty ( $db_connection_info['cachedir'] ) ){
+            $hash = md5 ( $result[$i]->getId() );
+            $file = $db_connection_info['cachedir'] . '/' . $hash . '.dat';
+          }
+          if (  file_exists ( $file ) ) {
+            $dates =  unserialize ( file_get_contents ( $file ) );
+          } else {
 
-          $dates = get_all_dates ( $date,
-            $result[$i]->getRepeatType(), $result[$i]->getRepeatFrequency(),
-            $result[$i]->getRepeatByMonth(), $result[$i]->getRepeatByWeekNo(),
-            $result[$i]->getRepeatByYearDay(), $result[$i]->getRepeatByMonthDay(),
-            $result[$i]->getRepeatByDay(), $result[$i]->getRepeatBySetPos(),
-            $rpt_count, $until, $result[$i]->getRepeatWkst(),
-            $result[$i]->getRepeatExceptions(), 
-            $result[$i]->getRepeatInclusions(), $jump );
-          $result[$i]->addRepeatAllDates($dates);
-    // serialize and save in cache for later use
-   if ( ! empty ( $db_connection_info['cachedir'] ) ) {
-      $fd = @fopen ( $file, 'w+b', false );
-      if ( empty ( $fd ) ) {
-        dbi_fatal_error ( "Cache error: could not write file $file" );
-      }
-      fwrite ( $fd, serialize ( $dates ) );
-      fclose ( $fd );
-      chmod ( $file, 0666 );
-    }
-   }
+            $dates = get_all_dates ( $date,
+              $result[$i]->getRepeatType(), $result[$i]->getRepeatFrequency(),
+              $result[$i]->getRepeatByMonth(), $result[$i]->getRepeatByWeekNo(),
+              $result[$i]->getRepeatByYearDay(), $result[$i]->getRepeatByMonthDay(),
+              $result[$i]->getRepeatByDay(), $result[$i]->getRepeatBySetPos(),
+              $rpt_count, $until, $result[$i]->getRepeatWkst(),
+              $result[$i]->getRepeatExceptions(), 
+              $result[$i]->getRepeatInclusions(), $jump );
+            $result[$i]->addRepeatAllDates($dates);
+            // serialize and save in cache for later use
+            if ( ! empty ( $db_connection_info['cachedir'] ) ) {
+              $fd = @fopen ( $file, 'w+b', false );
+              if ( empty ( $fd ) ) {
+                dbi_fatal_error ( "Cache error: could not write file $file" );
+              }
+              fwrite ( $fd, serialize ( $dates ) );
+              fclose ( $fd );
+              chmod ( $file, 0666 );
+            }
+          }
         } else { //process clones if any
           if ( count ( $result[$i-1]->getRepeatAllDates() > 0 ) ){
             $parentRepeats = $result[$i-1]->getRepeatAllDates();
@@ -2893,7 +2897,7 @@ function print_date_entries ( $date, $user, $ssi ) {
     $DISPLAY_TASKS_IN_GRID, $WEEK_START;
 
   $cnt = 0;
-
+  $ret = '';
   $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
   
@@ -4212,8 +4216,12 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   global $categories, $category_owners, $user, $login;
   $ret = '';
   $ret .= "<form action=\"{$form}.php\" method=\"get\" name=\"SelectCategory\" class=\"categories\">\n";
-  if ( ! empty($date) ) 
-    $ret .= "<input type=\"hidden\" name=\"date\" value=\"$date\" />\n";
+  if ( ! empty($date) )
+    if ( $form != 'year' ) { 
+      $ret .= "<input type=\"hidden\" name=\"date\" value=\"$date\" />\n";
+    } else {
+      $ret .= "<input type=\"hidden\" name=\"year\" value=\"$date\" />\n";
+    }
   if ( ! empty ( $user ) && $user != $login )
     $ret .= "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   $ret .= translate ('Category') . ': <select name="cat_id" onchange="document.SelectCategory.submit()">' . "\n";
