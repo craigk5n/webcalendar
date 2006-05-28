@@ -272,6 +272,7 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented RFE 1075840: "Manage calendar of" during management
     + Implemented PATCH 1470681: New preference: DISPLAY_TASKS_YEAR
     + Implemented PATCH 1459888: New preference: DISPLAY_MINUTES
     + Implemented RFE 1490058: export a certain category

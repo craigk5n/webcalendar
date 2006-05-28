@@ -232,6 +232,10 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
   for ( $i = 0; $i < $grouplistcnt; $i++ ) {
     $l = $grouplist[$i]['cal_login'];
     $f = $grouplist[$i]['cal_fullname'];
+    //don't display current $user in group list
+    if ( ! empty ( $user ) && $user == $l ) {
+       continue;
+    }
     // Use the preferred view if it is day/week/month/year.php.  Try
     // not to use a user-created view because it might not display the
     // proper user's events.  (Fallback to month.php if this is true.)
