@@ -464,6 +464,11 @@ textarea {
   color: <?php echo $GLOBALS['H2COLOR']; ?>;
   text-align: center;
 }
+.asstmode {
+  font-weight:bold;
+  color: <?php echo $GLOBALS['H2COLOR']; ?>;
+  text-align: center;
+}
 .categories {
   font-size: 18px;
   color: <?php echo $GLOBALS['H2COLOR']; ?>;
@@ -964,7 +969,7 @@ a.weekcell {
   text-align: center;
   color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
-.title .weeknumber {
+.title .titleweek {
   font-size: 20px;
   color: <?php echo $GLOBALS['H2COLOR']; ?>;
 }
@@ -1074,6 +1079,10 @@ a.weekcell {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   vertical-align: top;
+}
+.viewnav {
+  border-width:0px; 
+  width:99%;
 }
 #login {
   margin-top: 70px;
