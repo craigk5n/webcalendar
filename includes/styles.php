@@ -115,7 +115,7 @@ a:hover {
   margin: 0px;
   padding: 0.5em;
   border: 2px groove #C0C0C0;
-  width: 80%;
+  width: 98%;
   background-color: #F8F8FF;
 }
 .tabfor {
@@ -798,6 +798,10 @@ a.weekcell {
   <?php echo background_css ( $GLOBALS['THBG'], 15 ); ?>
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+}
+#viewv .main th.row {
+  text-align: left;
+  padding: 0px 5px;
 }
 #viewd .main th.row {
   border-right-width: 0px;
