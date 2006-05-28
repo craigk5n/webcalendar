@@ -272,6 +272,7 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented RFE 1496319: Left align "Users" column in "Week (Users vertical)" view
     + Implemented RFE 1176218: can not select category in year-view
     + Implemented RFE 1075840: "Manage calendar of" during management
     + Implemented PATCH 1470681: New preference: DISPLAY_TASKS_YEAR
