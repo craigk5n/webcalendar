@@ -222,10 +222,9 @@ if ( count ( $goto_link ) > 0 ) {
     $tret .= $goto_link[$i] . "\n";
   }
 }
-?>
 
-<!-- VIEWS -->
-<?php
+$tret .= '<!-- VIEWS -->' . "\n";
+
 $viewcnt = count ( $views );
 if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER != 'N' )
   && $viewcnt > 0 ) {
@@ -250,10 +249,10 @@ if ( $views_linkcnt > 0 ) {
     $tret .= $views_link[$i];
   }
 }
-?>
 
-<!-- REPORTS -->
-<?php
+
+$tret .= '<!-- REPORTS -->' . "\n";
+
 if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
   access_can_access_function ( ACCESS_REPORT ) ) {
 $reports_link = array ();
@@ -288,9 +287,9 @@ $reports_link = array ();
   }
 }
 $tret .= '<br />';
-?>
-<!-- CURRENT USER -->
-<?php
+
+$tret .= '<!-- CURRENT USER -->' . "\n";
+
 if ( ! $use_http_auth ) {
  if ( empty ( $login_return_path ) ) {
   $logout_url = 'login.php?action=logout';
@@ -353,10 +352,13 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     array_unshift ( $grouplist, $public );
   }
   $groups = '';
-  $grouplistcnt = count ( $grouplist );
-  for ( $i = 0; $i < $grouplistcnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $grouplist ); $i < $cnt; $i++ ) {
     $l = $grouplist[$i]['cal_login'];
     $f = $grouplist[$i]['cal_fullname'];
+    //don't display current $user in group list
+    if ( ! empty ( $user ) && $user == $l ) {
+       continue;
+    }
     // Use the preferred view if it is day/week/month/year.php.  Try
     // not to use a user-created view because it might not display the
     // proper user's events.  (Fallback to month.php if this is true.)
@@ -372,7 +374,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
         $xurl = "day.php?user=$l";
       // year does not show events, so you cannot manage someone's cal
     }
-    if ( $i > 0 )
+    if ( $i > 0 && $groups != '' )
       $groups .= ", \n";
     $groups .= "<a title=\"$f\" href=\"$xurl\">$f</a>";
   }
@@ -389,9 +391,9 @@ $tret .= '<br /><br />' . "\n" . '<a title="' . $GLOBALS['PROGRAM_NAME'] . '" ' 
   $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 
 $tret .= '</div></div>' . "\n";
-?>
-<!-- /TRAILER -->
-<?php } 
+
+$tret .= '<!-- /TRAILER -->' . "\n";
+ } 
   $tret .= '<!-- Db queries: ' . dbi_num_queries () .
   '   Cached queries: ' . dbi_num_cached_queries () . " -->\n";
 if ( dbi_get_debug() ) { 
