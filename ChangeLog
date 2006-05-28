@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Implemented RFE 1176218: can not select category in year-view
  - Implemented RFE 1075840: "Manage calendar of" during management
  - Fixed bug 1490641: 'Reports' out by 2 weeks
  - Implemented PATCH 1470681: New preference: DISPLAY_TASKS_YEAR
