@@ -22,18 +22,26 @@ $startdate = date ( 'Ymd', $wkstart );
 $enddate = date ( 'Ymd', $wkend );
 
 if ( $DISPLAY_WEEKENDS == 'N' ) {
-  if ( $WEEK_START == 1 ) {
-    $start_ind = 0;
-    $end_ind = 4;
-  } else {
-    $start_ind = 1;
-    $end_ind = 5;
-  }
+  $WEEK_START = 1; //set to monday
+  $start_ind = 0;
+  $end_ind = 4;
 } else {
   $start_ind = 0;
   $end_ind = 6;
 }
-//echo date ('Ymd', $wkstart ) . " " . $start_ind . " " . $end_ind;
+
+if ( empty ( $TIME_SLOTS ) ) {
+  $TIME_SLOTS = 24;
+}
+
+$interval = ( 24 * 60 ) / $TIME_SLOTS;
+
+$first_slot = (int)( ( ( $WORK_DAY_START_HOUR ) * 60 ) / $interval );
+$last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) / $interval );
+
+$untimed_found = false;
+$get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
+
 $HeadX = '';
 if ( ! empty ( $AUTO_REFRESH ) && $AUTO_REFRESH == 'Y' &&
   ! empty ( $AUTO_REFRESH_TIME ) ) {
@@ -60,78 +68,33 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
     ? $user : $login, $wkend, $cat_id );
 }
 
-//if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == 'N' ) $wkstart = $wkstart - ONE_DAY;
+$untimedStr = $headerStr = $eventsStr = $minical_tasks = '';
+$navStr = display_navigation( 'week' );;
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
-  $days[$i] = ( $wkstart + ONE_DAY * $i ) + ( 12 * 3600 );
+  $days[$i] = ( $wkstart + ( ONE_DAY * $i ) ) + ( 12 * 3600 );
   $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
-  $header[$i] = $weekdays[$i] . "<br />" .
-    date_to_str ( date ('Ymd',$days[$i]), $DATE_FORMAT_MD, false, true );
-}
-
-?>
-
-<br />
-<table width="100%"  cellpadding="1">
-<tr><td style="vertical-align:top; width:80%;" >
-<?php echo display_navigation( 'week' ); ?>
-</td><td></td>
-</tr><tr>
-<td>
-<table class="main" cellspacing="0" cellpadding="0">
-<tr>
-<th class="empty">&nbsp;</th>
-<?php
-for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-  $thiswday = date ( 'w', $days[$d] );
+  $thiswday = date ( 'w', $days[$i] );
+  $dateYmd = date ( 'Ymd', $days[$i] );
 
   $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-
-  if ( $is_weekend ) {
-   // if ( $DISPLAY_WEEKENDS == 'N' ) continue;
-    $class = "weekend";
-  } else {
-    $class = '';
-  }
-
-  if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
-    if ( $class != '' ) {
-     $class .= ' ';
-    }
-    $class .= 'today';
-  }
-
-  echo '<th';
-
-  if ( $class != '') {
-    echo " class=\"$class\"";
-  }
-  echo '>';
-
+  $header[$i] = $weekdays[$i] . '<br />' .
+    date_to_str ( $dateYmd, $DATE_FORMAT_MD, false, true );
+  
+  $class = '';
+  //generate header row
+  if ( $is_weekend ) { $class .= 'weekend '; }
+  if ( $dateYmd == date ( 'Ymd', $today ) ) { $class .= 'today'; }
+  $headerStr .=  '<th';
+  if ( $class != '') { $headerStr .= " class=\"$class\""; }
+  $headerStr .= '>';
   if ( $can_add ) {
-    echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), '', '', $user );
+    $headerStr .= html_for_add_icon (  $dateYmd, '', '', $user );
   }
-  echo '<a href="day.php?' . $u_url .
-    'date=' . date ('Ymd', $days[$d] ) . $caturl . '">' .
-    $header[$d] . "</a></th>\n";
-}
-?>
-</tr>
-<?php
-if ( empty ( $TIME_SLOTS ) ) {
-  $TIME_SLOTS = 24;
-}
+  $headerStr .= '<a href="day.php?' . $u_url . 'date=' . 
+    $dateYmd . $caturl . '">' . $header[$i] . "</a></th>\n";
 
-$interval = ( 24 * 60 ) / $TIME_SLOTS;
-
-$first_slot = (int)( ( ( $WORK_DAY_START_HOUR ) * 60 ) / $interval );
-$last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) / $interval );
-
-$untimed_found = false;
-$get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
-
-for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   // get all the repeating events for this date and store in array $rep
-  $date = date ( 'Ymd', $days[$d] );
+  $date = date ( 'Ymd', $days[$i] );
   $rep = get_repeating_entries ( $user, $date );
 
   // Get static non-repeating events
@@ -148,108 +111,86 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 
   $hour_arr = array ();
   $rowspan_arr = array ();
-  for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
-    if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
-      html_for_event_week_at_a_glance ( $ev[$i], $date );
+  for ( $j = 0, $cnt = count ( $ev ); $j < $cnt; $j++ ) {
+    if ( $get_unapproved || $ev[$j]->getStatus() == 'A' ) {
+      html_for_event_week_at_a_glance ( $ev[$j], $date );
     }
   }
-
 
   // squish events that use the same cell into the same cell.
   // For example, an event from 8:00-9:15 and another from 9:30-9:45 both
   // want to show up in the 8:00-9:59 cell.
   $rowspan = 0;
   $last_row = -1;
-  for ( $i = 0; $i < $TIME_SLOTS; $i++ ) {
+  for ( $j = 0; $j < $TIME_SLOTS; $j++ ) {
     if ( $rowspan > 1 ) {
-      if ( ! empty ( $hour_arr[$i] ) ) {
-        $diff_start_time = $i - $last_row;
-        if ( $rowspan_arr[$i] > 1 ) {
-          if (  $rowspan_arr[$i] + ( $diff_start_time ) >  $rowspan_arr[$last_row]  ) {
-            $rowspan_arr[$last_row] = ( $rowspan_arr[$i] + ( $diff_start_time ) );
+      if ( ! empty ( $hour_arr[$j] ) ) {
+        $diff_start_time = $j - $last_row;
+        if ( $rowspan_arr[$j] > 1 ) {
+          if (  $rowspan_arr[$j] + ( $diff_start_time ) >  $rowspan_arr[$last_row]  ) {
+            $rowspan_arr[$last_row] = ( $rowspan_arr[$j] + ( $diff_start_time ) );
           }
-          $rowspan += ( $rowspan_arr[$i] - 1 );
+          $rowspan += ( $rowspan_arr[$j] - 1 );
         } else {
-          $rowspan_arr[$last_row] += $rowspan_arr[$i];
+          $rowspan_arr[$last_row] += $rowspan_arr[$j];
         }
         // this will move entries apart that appear in one field,
         // yet start on different hours
         for ( $u = $diff_start_time ; $u > 0 ; $u-- ) {
           $hour_arr[$last_row] .= "<br />\n"; 
         }
-        $hour_arr[$last_row] .= $hour_arr[$i];
-        $hour_arr[$i] = "";
-        $rowspan_arr[$i] = 0;
+        $hour_arr[$last_row] .= $hour_arr[$j];
+        $hour_arr[$j] = '';
+        $rowspan_arr[$j] = 0;
       }
       $rowspan--;
-    } else if ( ! empty ( $rowspan_arr[$i] ) && $rowspan_arr[$i] > 1 ) {
-      $rowspan = $rowspan_arr[$i];
-      $last_row = $i;
+    } else if ( ! empty ( $rowspan_arr[$j] ) && $rowspan_arr[$j] > 1 ) {
+      $rowspan = $rowspan_arr[$j];
+      $last_row = $j;
     }
   }
 
   // now save the output...
   if ( ! empty ( $hour_arr[9999] ) && strlen ( $hour_arr[9999] ) ) {
-    $untimed[$d] = $hour_arr[9999];
+    $untimed[$i] = $hour_arr[9999];
     $untimed_found = true;
   }
-  $save_hour_arr[$d] = $hour_arr;
-  $save_rowspan_arr[$d] = $rowspan_arr;
-}
 
-// untimed events first
-if ( $untimed_found ) {
-  echo "<tr>\n<th class=\"empty\">&nbsp;</th>\n";
-  for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-    $thiswday = date ( 'w', $days[$d] );
-    $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-   // if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue;
-    $class = ( $is_weekend ? 'weekend': '' );
+  $untimedStr .= '<td';
 
-   if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
-     if ($class != '') {
-       $class .= ' ';
-     }
-     $class .= 'today';
-   }
-   echo '<td';
-
-   // Use the class 'hasevents' for any hour block that has events
-   // in it.
-   if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
-    $class = 'hasevents';
-   }
-
-   if ( $class != '' ) {
-     echo " class=\"$class\"";
-   }
-   echo ">";
-
-   if ( ! empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
-     echo $untimed[$d];
-   } else {
-     echo '&nbsp;';
-   }
-   echo "</td>\n";
+  // Use the class 'hasevents' for any hour block that has events
+  // in it.
+  if ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] ) ) {
+    $class .= ' hasevents';
   }
-  echo "</tr>\n";
-}
+  
+  $untimedStr .= " class=\"$class\">";
+  
+  if ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] ) ) {
+    $untimedStr .= $untimed[$i];
+  } else {
+    $untimedStr .= '&nbsp;';
+  }
+  $untimedStr .= "</td>\n";
 
-for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-  $rowspan_day[$d] = 0;
+  $save_hour_arr[$i] = $hour_arr;
+  $save_rowspan_arr[$i] = $rowspan_arr;
+  $rowspan_day[$i] = 0;
 }
-
+$untimedStr = ( $untimed_found ? '<tr><th class="empty">&nbsp;</th>'. 
+  $untimedStr . "</tr>\n": '') ;
 for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = (int) ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
   // Do not apply TZ offset
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
-  echo "<tr>\n<th class=\"row\">" .  $time . "</th>\n";
+  $eventsStr .= "<tr>\n<th class=\"row\">" .  $time . "</th>\n";
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $thiswday = date ( 'w', $days[$d] );
+    $dateYmd = date ( 'Ymd', $days[$d] );
     $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
     $class = ( $is_weekend ? 'weekend': '' );
-    if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
+    if ( $dateYmd == date ( 'Ymd', $today ) ) {
       if ( $class != '' ) {
         $class .= ' ';
       }
@@ -267,84 +208,104 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
      // this might mean there's an overlap, or it could mean one event
      // ends at 11:15 and another starts at 11:30.
      if ( ! empty ( $save_hour_arr[$d][$i] ) ) {
-       echo '<td';
+       $eventsStr .= '<td';
        if ( $class != '' ) {
-         echo " class=\"$class\"";
+         $eventsStr .= " class=\"$class\"";
        }
-       echo '>' . $save_hour_arr[$d][$i] . "</td>\n";
+       $eventsStr .= '>' . $save_hour_arr[$d][$i] . "</td>\n";
      }
      $rowspan_day[$d]--;
    } else if ( empty ( $save_hour_arr[$d][$i] ) ) {
-     echo '<td';
+     $eventsStr .= '<td';
      if ( $class != '' ) {
-       echo " class=\"$class\"";
+       $eventsStr .= " class=\"$class\"";
      }
-     echo '>';
+     $eventsStr .= '>';
      if ( $can_add ) { //if user can add events...
-       echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), $time_h, $time_m, 
+       $eventsStr .= html_for_add_icon (  $dateYmd, $time_h, $time_m, 
          $user ); //..then echo the add event icon
      }
-     echo "&nbsp;</td>\n";
+     $eventsStr .= "&nbsp;</td>\n";
    } else {
      $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
      if ( $rowspan_day[$d] > 1 ) {
-       echo '<td';
+       $eventsStr .= '<td';
        if ( $class != '' ) {
-         echo " class=\"$class\"";
+         $eventsStr .= " class=\"$class\"";
        }
-       echo " rowspan=\"$rowspan_day[$d]\">";
+       $eventsStr .= " rowspan=\"$rowspan_day[$d]\">";
        if ( $can_add ) {
-         echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), $time_h, $time_m, $user );
+         $eventsStr .= html_for_add_icon (  $dateYmd, $time_h, $time_m, $user );
        }
-       echo $save_hour_arr[$d][$i] . "</td>\n";
+       $eventsStr .= $save_hour_arr[$d][$i] . "</td>\n";
      } else {
-       echo '<td';
+       $eventsStr .= '<td';
        if ( $class != '' ) {
-         echo " class=\"$class\"";
+         $eventsStr .= " class=\"$class\"";
        }
-       echo '>';
+       $eventsStr .= '>';
        if ( $can_add ) {
-         echo html_for_add_icon (  date ( 'Ymd', $days[$d] ), $time_h, $time_m, $user );
+         $eventsStr .= html_for_add_icon ( $dateYmd, $time_h, $time_m, $user );
        }
-       echo $save_hour_arr[$d][$i] . "</td>\n";
+       $eventsStr .= $save_hour_arr[$d][$i] . "</td>\n";
      }
    }
   }
-  echo "</tr>\n";
+  $eventsStr .= "</tr>\n";
 }
+
+$tableWidth = ( $DISPLAY_TASKS == 'Y' ? '80%' : '100%' );
+$eventinfo = ( ! empty ( $eventinfo )? $eventinfo : '' );
+if ( empty ( $friendly ) ) {
+  $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
+    $is_nonuser_admin ? $user : $login ) );
+  $printerStr = generate_printer_friendly ( 'month.php' );
+}
+$trailerStr = print_trailer ();
+if ( $DISPLAY_TASKS == 'Y'  ) {
+  $minical_tasks .= '<td  rowspan="2" valign="top">';
+  $minical_tasks .= '<!-- START MINICAL -->';
+  $minical_tasks .= '<div class="minicontainer">';
+  if  ( $DISPLAY_SM_MONTH == 'Y' ) {
+    $minical_tasks .= '<div class="minicalcontainer">';
+    $minical_tasks .= display_small_month ( $thismonth, $thisyear, true );
+    $minical_tasks .= '</div>';
+  }
+  $minical_tasks .= '<br />';  
+  $minical_tasks .= display_small_tasks ( $cat_id );
+  $minical_tasks .= '</div>';
+  $minical_tasks .= '</td>';
+}//end minical
+
+echo <<<EOT
+  <table width="100%"  cellpadding="1">
+    <tr>
+      <td style="vertical-align:top; width:{$tableWidth};" >
+      {$navStr}
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <table class="main" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="empty">&nbsp;</th>
+            {$headerStr}
+          </tr>
+          {$untimedStr}
+          {$eventsStr}
+        </table>
+      </td>
+     {$minical_tasks}
+    </tr>
+  </table>
+  <br />
+  
+  {$eventinfo}
+  {$unapprovedStr}
+  {printerStr};
+  {$trailerStr}
+  </body>
+  </html>
+EOT;
 ?>
-</table>
-</td>
-<?php if ( $DISPLAY_TASKS == 'Y' && $DISPLAY_SM_MONTH == 'Y' ) { ?>
-<td  rowspan="2" valign="top">
-<!-- START MINICAL -->
-<div class="minicontainer">
-<div class="minicalcontainer">
-<?php echo display_small_month ( $thismonth, $thisyear, true ); ?>
-</div>
-<br />
-<?php 
-if (  $DISPLAY_TASKS == 'Y' ) {
-  echo display_small_tasks ( $cat_id );
-}
-?> 
-</div>
-</td>
-<?php } //end minical ?>
-</tr></table>
-<br />
-
-<?php
-if ( ! empty ( $eventinfo ) ) {
-  echo $eventinfo;
-}
-echo display_unapproved_events ( ( $is_assistant || 
-  $is_nonuser_admin ? $user : $login ) );
-
-
-echo '<br />';
-echo generate_printer_friendly ( 'week.php' );
-echo print_trailer ();
-?>
-</body>
-</html>
