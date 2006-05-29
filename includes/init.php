@@ -257,9 +257,14 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
     $is_nonuser_admin, $PUBLIC_ACCESS_OTHERS, $ALLOW_VIEW_OTHER,
     $views, $REPORTS_ENABLED, $LAYER_STATUS, $NONUSER_ENABLED,
     $GROUPS_ENABLED, $fullname, $has_boss, $is_nonuser, 
-    $DISPLAY_TASKS, $DISPLAY_TASKS_IN_GRID;
+    $DISPLAY_TASKS, $DISPLAY_TASKS_IN_GRID, $MENU_DATE_TOP;
   
   $ret = '';
+  if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' ) {
+    $ret .= '<div id="trailer">';
+    $ret .= print_menu_dates ();
+    $ret .= '</div>';
+  }
   if ( $include_nav_links  ) {//TODO Add test for $MENU_ENABLED == 'N'
     include_once 'includes/trailer.php';
   }
@@ -299,7 +304,9 @@ function print_menu_dates ( $menu=false) {
       $urlArgs = "<input type=\"hidden\" name=\"$match[1]\" value=\"$match[2]\" />\n";
     }
   }
-  $ret .= "<form action=\"$monthUrl\" method=\"get\" name=\"SelectMonth\" id=\"monthform\">";
+  $formclass = ( $menu == true ? 'monthmenu' : 'monthform' );
+  $ret .= "<form action=\"$monthUrl\" method=\"get\" name=\"SelectMonth\" id=\"" . 
+    $formclass . "\">\n ";
 
   $ret .= $urlArgs;
   if ( ! empty ( $user ) && $user != $login ) {
@@ -312,7 +319,7 @@ function print_menu_dates ( $menu=false) {
 
   $ret .= '<label for="monthselect"><a href="javascript:document.SelectMonth.submit()">' .    translate( 'Month' ) . "</a>:&nbsp;</label>\n";
   $ret .= '<select name="date" id="monthselect" ' .
-    "onchange=\"document.SelectMonth.submit()\">\n";
+    'onchange="document.SelectMonth.submit()">' . "\n";
 
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
     $m = $thismonth;
@@ -348,7 +355,8 @@ function print_menu_dates ( $menu=false) {
   if ( $menu == false )
     $ret .= '<input type="submit" value="' . translate( 'Go' ) . "\" />\n";
   $ret .= "</form>\n";
-  if ( $menu == true ) $ret .= "</td>\n<td class=\"ThemeMenubackgr\">";
+  if ( $menu == true ) 
+    $ret .= '</td><td class="ThemeMenubackgr ThemeMenu">' . "\n";
 
   if ( access_can_view_page ( 'week.php' ) ) {
     $weekUrl = 'week.php';
@@ -360,8 +368,8 @@ function print_menu_dates ( $menu=false) {
       $urlArgs = "<input type=\"hidden\" name=\"$match[1]\" value=\"$match[2]\" />\n";
     }
   }
-
-  $ret .= "<form action=\"$weekUrl\" method=\"get\" name=\"SelectWeek\" id=\"weekform\">\n";
+  $formclass = ( $menu == true ? 'weekmenu' : 'weekform' );
+  $ret .= "<form action=\"$weekUrl\" method=\"get\" name=\"SelectWeek\" id=\"$formclass\">\n";
   $ret .= $urlArgs;
   if ( ! empty ( $user ) && $user != $login ) {
     $ret .= "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
@@ -419,7 +427,8 @@ function print_menu_dates ( $menu=false) {
   if ( $menu == false )
     $ret .= '<input type="submit" value="' . translate( 'Go' ) ."\" />\n";
   $ret .= "</form>\n";
-  if ( $menu == true ) $ret .= "</td>\n<td class=\"ThemeMenubackgr\">";
+  if ( $menu == true ) 
+    $ret .= '</td><td class="ThemeMenubackgr ThemeMenu" align="right">' . "\n";
 
   if ( access_can_view_page ( 'year.php' ) ) {
     $yearUrl = 'year.php';
@@ -431,8 +440,8 @@ function print_menu_dates ( $menu=false) {
       $urlArgs = "<input type=\"hidden\" name=\"$match[1]\" value=\"$match[2]\" />\n";
     }
   }
-
-  $ret .= "<form action=\"$yearUrl\" method=\"get\" name=\"SelectYear\" id=\"yearform\">\n";
+  $formclass = ( $menu == true ? 'yearmenu' : 'yearform' );
+  $ret .= "<form action=\"$yearUrl\" method=\"get\" name=\"SelectYear\" id=\"$formclass\">\n";
   $ret .= $urlArgs;
   if ( ! empty ( $user ) && $user != $login ) {
     $ret .= "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";

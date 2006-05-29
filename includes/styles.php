@@ -196,7 +196,9 @@ label {
 #trailer form {
   float: left;
   width: 33%;
+<?php if ( $MENU_ENABLED == 'N' ) { ?>
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+<?php } ?>
   padding-top: 5px;
   margin-top: 5px;
   margin-bottom: 25px;
@@ -212,6 +214,13 @@ label {
 }
 #weekform {
   text-align: center;
+  margin-bottom:0px;
+}
+#weekmenu,
+#monthmenu,
+#yearmenu {
+  font-size: .9em;
+  text-align: right;
   margin-bottom:0px;
 }
 #yearform {

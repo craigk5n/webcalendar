@@ -15,8 +15,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 $tret = '';
 if ( access_can_access_function ( ACCESS_TRAILER ) ) { 
 
-$tret .= '<div id="trailer">';
-if ( $MENU_ENABLED == 'N' ) $tret .= print_menu_dates (); 
+$tret .= '<div id="trailer">'; 
 $tret .= '<div id="menu">' . "\n";
 
 $goto_link = array ( );
