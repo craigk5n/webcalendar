@@ -37,16 +37,14 @@ function save_pref( $prefs, $src) {
       $setting = strtoupper ( $setting );
       $sql = 'DELETE FROM webcal_config WHERE cal_setting = ?';
       if ( ! dbi_execute ( $sql, array( $setting ) ) ) {
-        $error = translate( 'Error' ) . ': ' . dbi_error () .
-          "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
+        $error = db_error ( false, $sql );
         break;
       }
       if ( strlen ( $value ) > 0 ) {
         $sql = 'INSERT INTO webcal_config ' .
           '( cal_setting, cal_value ) VALUES ( ?, ? )';
         if ( ! dbi_execute ( $sql, array( $setting, $value ) ) ) {
-          $error = translate( 'Error' ) . ': ' . dbi_error () .
-            '<br /><br /><span style="font-weight:bold;">SQL:</span>' . $sql;
+          $error = db_error ( false, $sql );
           break;
         }
       }
@@ -184,7 +182,7 @@ print_header ( $INC, '', $BodyX );
 </div>
 
 <!-- TABS BODY -->
-<div id="tabscontent" style="width: 98%;">
+<div id="tabscontent">
  <!-- DETAILS -->
  <div id="tabscontent_settings">
  <table cellspacing="0" cellpadding="3">
@@ -257,6 +255,11 @@ print_header ( $INC, '', $BodyX );
  <?php etranslate( 'Allow top menu' )?>:</label></td><td colspan="3">
  <label><input type="radio" name="admin_MENU_ENABLED" value="Y"<?php if ( $s['MENU_ENABLED'] != 'N' ) echo $checked;?> />&nbsp;<?php echo $Yes?></label>&nbsp;
  <label><input type="radio" name="admin_MENU_ENABLED" value="N"<?php if ( $s['MENU_ENABLED'] == 'N' ) echo $checked;?> />&nbsp;<?php echo $No?></label>
+ </td></tr>
+ <tr><td><label>
+ <?php etranslate( 'Date Selectors position' )?>:</label></td><td colspan="3">
+ <label><input type="radio" name="admin_MENU_DATE_TOP" value="Y"<?php if ( $s['MENU_DATE_TOP'] != 'N' ) echo $checked;?> />&nbsp;<?php etranslate( 'Top' )?></label>&nbsp;
+ <label><input type="radio" name="admin_MENU_DATE_TOP" value="N"<?php if ( $s['MENU_DATE_TOP'] == 'N' ) echo $checked;?> />&nbsp;<?php etranslate( 'Bottom' )?></label>
  </td></tr> 
  <tr><td  class="tooltip" title="<?php etooltip( 'menu-themes-help' );?>">
  <label for="admin_MENU_THEME"><?php etranslate( 'Menu theme' )?>:</label></td><td>

@@ -3035,8 +3035,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
 
   $sql = 'SELECT distinct webcal_entry_user.cal_login, webcal_entry.cal_time,' .
     'webcal_entry.cal_duration, webcal_entry.cal_name, ' .
-    'webcal_entry.cal_id, webcal_entry.cal_ext_for_id, ' .
-    'webcal_entry.cal_access, ' .
+    'webcal_entry.cal_id, webcal_entry.cal_access, ' .
     'webcal_entry_user.cal_status, webcal_entry.cal_date ' .
     'FROM webcal_entry, webcal_entry_user ' .
     'WHERE webcal_entry.cal_id = webcal_entry_user.cal_id ' .
@@ -3080,10 +3079,10 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
       //Add to an array to see if it has been found already for the next part.
       $found[$count++] = $row[4];
       // see if either event overlaps one another
-      if ( $row[4] != $id && ( empty ( $row[5] ) || $row[5] != $id ) ) {
+      if ( $row[4] != $id  ) {
         $time2 = sprintf ( "%06d", $row[1] );
         $duration2 = $row[2];
-        $cntkey = $row[0] . '-' . $row[8];
+        $cntkey = $row[0] . '-' . $row[7];
         if ( empty ( $evtcnt[$cntkey] ) )
           $evtcnt[$cntkey] = 0;
         else
@@ -3098,9 +3097,9 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
           $conflicts .= '<li>';
           if ( $single_user != 'Y' )
             $conflicts .= "$row[0]: ";
-          if ( $row[6] == 'R' && $row[0] != $login ) {
+          if ( $row[5] == 'R' && $row[0] != $login ) {
             $conflicts .=  '(' . $privateStr . ')';
-          } else if ( $row[6] == 'C' && $row[0] != $login  && 
+          } else if ( $row[5] == 'C' && $row[0] != $login  && 
             !$is_assistant  && !$is_nonuser_admin) {
             //assistants can see confidential stuff
             $conflicts .=  '(' . $confidentialStr . ')';
@@ -3113,13 +3112,13 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
           if ( $duration2 == ( 24 * 60 ) && $time2 == 0 ) {
             $conflicts .= ' (' . $allDayStr . ')';
           } else {
-            $conflicts .= ' (' . display_time ( $row[8] . $time2 );
+            $conflicts .= ' (' . display_time ( $row[7] . $time2 );
             if ( $duration2 > 0 )
               $conflicts .= '-' .
-                display_time ( $row[8] . add_duration ( $time2, $duration2 ) );
+                display_time ( $row[7] . add_duration ( $time2, $duration2 ) );
             $conflicts .= ')';
           }
-          $conflicts .= ' on ' . date_to_str( $row[8] );
+          $conflicts .= ' on ' . date_to_str( $row[7] );
           if ( $over_limit ) {
             $tmp = str_replace ( 'XXX', $LIMIT_APPTS_NUMBER, $exceedsStr );
             $conflicts .= ' (' . $tmp . ')';
@@ -3759,7 +3758,8 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
  * @param string $user Current user login
  */
 function display_unapproved_events ( $user ) {
-  global $PUBLIC_ACCESS, $is_admin, $NONUSER_ENABLED, $login, $is_nonuser;
+  global $PUBLIC_ACCESS, $NONUSER_ENABLED, $MENU_ENABLED,
+    $login, $is_nonuser, $is_admin;
   
   $app_users = array ();
   $app_user_hash = array ( );
@@ -3774,8 +3774,6 @@ function display_unapproved_events ( $user ) {
     'FROM webcal_entry_user, webcal_entry ' .
     'WHERE webcal_entry_user.cal_id = webcal_entry.cal_id ' .
     "AND webcal_entry_user.cal_status = 'W' " .
-    'AND ( webcal_entry.cal_ext_for_id IS NULL ' .
-    'OR webcal_entry.cal_ext_for_id = 0 ) ' .
     'AND ( webcal_entry_user.cal_login = ?';
   $query_params[] = $user;
 
@@ -3817,12 +3815,18 @@ function display_unapproved_events ( $user ) {
     $row = $rows[0];
     if ( $row ) {
       if ( $row[0] > 0 ) {
-        $str = translate ('You have XXX unapproved entries');
-        $str = str_replace ( 'XXX', $row[0], $str );
-        $ret .= '<a class="nav" href="list_unapproved.php';
-        if ( $user != $login )
-          $ret .= "?user=$user\"";
-        $ret .= '">' . $str .  "</a><br />\n";
+        if ( $MENU_ENABLED == 'N' ) {
+          $str = translate ('You have XXX unapproved entries');
+          $str = str_replace ( 'XXX', $row[0], $str );
+          $ret .= '<a class="nav" href="list_unapproved.php';
+          if ( $user != $login )
+            $ret .= "?user=$user\"";
+          $ret .= '">' . $str .  "</a><br />\n";
+        } else { 
+          //return something that won't display in bottom menu 
+          // but still has strlen >0
+          $ret .= '<br />';
+        }
       }
     }
   }
