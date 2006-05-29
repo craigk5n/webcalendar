@@ -7,13 +7,13 @@
  *   - Javascript & CSS by JSCookMenu at http://www.cs.ucla.edu/~heng/JSCookMenu/ 
  */ 
 
-global $readonly, $is_nonuser, $is_nonuser_admin, $single_user, $user,
-       $REQUIRE_APPROVALS, $PUBLIC_ACCESS, $PUBLIC_ACCESS_OTHERS, $login,
+global $readonly, $is_nonuser, $is_nonuser_admin, $is_assistant, $single_user, 
+       $user, $REQUIRE_APPROVALS, $PUBLIC_ACCESS, $PUBLIC_ACCESS_OTHERS, $login,
        $ALLOW_VIEW_OTHER, $DISPLAY_TASKS, $thisyear, $thismonth, $thisday,
        $views, $REPORTS_ENABLED, $use_http_auth, $login_return_path,
        $NONUSER_ENABLED, $has_boss, $is_admin, $CATEGORIES_ENABLED,
        $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL,
-       $REMOTES_ENABLED, $DISPLAY_TASKS_IN_GRID, $HOME_LINK;
+       $REMOTES_ENABLED, $DISPLAY_TASKS_IN_GRID, $HOME_LINK, $MENU_DATE_TOP;
 
 
 //------------------------------------------------------------------//
@@ -532,27 +532,39 @@ var myMenu =
     jscMenu_custom('<td class="ThemeMenuItemLeft"><img src="includes/menu/icons/spacer.gif" /></td><td colspan="2"><form action="search_handler.php" method="post"><input type="text" name="keywords" size="25" /><input type="submit" value="' . translate ( 'Search', true) . '" /></form></td>');
     jscMenu_close();
   }
-
   // Help Menu (Link)
   // translate ( 'Help', true);
-  if ( $help_url != '' ) jscMenu_menu ('Help','javascript:openHelp()');
+  if ( $help_url != '' )  {
+    jscMenu_menu ('Help','javascript:openHelp()');
+  }
   
+  //Add spacer
+  echo "[_cmNoAction, '<td>&nbsp;&nbsp;</td>'],";
+
+  // Unapproved Icon if any exist
+  $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
+    $is_nonuser_admin ? $user : $login ) );
+  if ( strlen ( $unapprovedStr ) && $unapproved_url != '' )
+    jscMenu_item ( 'unapproved.png', '', $unapproved_url );
+ 
+  // Generate Printer Friendly Icon 
   $href = generate_printer_friendly ();
-  jscMenu_item ( 'printer.png', '', $href, 'cal_printer_friendly' );
+  jscMenu_item ( 'printer.gif', '', $href, 'cal_printer_friendly' );
+
 ?>  
 ];
 cmDraw ('myMenuID', myMenu, 'hbr', cmTheme, 'Theme');
 //]]> -->
 </script>
 </td>
-<td class="ThemeMenubackgr" align="right">
-<?php echo print_menu_dates ( true ); ?>
+<td class="ThemeMenubackgr ThemeMenu" align="right">
+<?php if ( $MENU_DATE_TOP == 'Y' ) echo print_menu_dates ( true ); ?>
 </td>
-<td class="ThemeMenubackgr" align="right">
+<td class="ThemeMenubackgr ThemeMenu" align="right">
 <?php
 if ( ! empty ( $logout_url ) ) { //using http_auth
   if ( strlen ( $login ) && $login != '__public__' ) {
-    echo '<a title="' . 
+    echo '<a  title="' . 
       translate( 'Logout' ) . "\" href=\"$logout_url\">" . 
       translate( 'Logout' ) . "</a>: $login\n";
     } else {
