@@ -446,7 +446,7 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
   //add a DEFAULT CONFIGURATION to be used as a mask  
   echo '<option value="__default__">'.
     translate ( 'DEFAULT CONFIGURATION' )."</option>\n";
-  for ( $i = 0, $cnt = count ( $userlist );, $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '<option value="'.$userlist[$i]['cal_login']. '">' .
       $userlist[$i]['cal_fullname']."</option>\n";
   }
