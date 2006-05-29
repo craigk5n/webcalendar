@@ -80,6 +80,7 @@ $webcalConfig = array (
 'LIMIT_APPTS_NUMBER'=>'6',
 'LIMIT_APPTS'=>'N',
 'LIMIT_DESCRIPTION_SIZE'=>'N',
+'MENU_DATE_TOP'=>'Y',
 'MENU_ENABLED'=>'N',
 'MENU_THEME'=>'default',
 'MYEVENTS'=>'#006000',
