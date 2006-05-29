@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 05-26-2006
+# Translation last updated on 05-28-2006
 
 
 ###############################################
@@ -109,7 +109,6 @@ Error adding event: Error adding event
 ###############################################
 # Page: admin.php
 #
-Error: Error
 Select: Select
 Yes: Yes
 No: No
@@ -144,6 +143,9 @@ AVAILABLE THEMES: AVAILABLE THEMES
 None: None
 Preview: Preview
 Allow top menu: Allow top menu
+Date Selectors position: Date Selectors position
+Top: Top
+Bottom: Bottom
 menu-themes-help: Sets the colors and style of the top menu
 Menu theme: Menu theme
 fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
@@ -286,8 +288,6 @@ nonuser-enabled-help: If enabled, admins will have the option to add nonuser cal
 Nonuser enabled: Nonuser Calendars Enabled
 nonuser-list-help: Where to display the nonuser calendars in the participant list
 Nonuser list: Display in participants list at
-Top: Top
-Bottom: Bottom
 reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 Reports enabled: Reports enabled
 subscriptions-enabled-help: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
@@ -370,6 +370,7 @@ Table cell background for other month: Table cell background for other month
 Week number color: Week number color
 Event popup background: Event popup background
 Event popup text: Event popup text
+Error: Error
 The following error occurred: The following error occurred
 
 
