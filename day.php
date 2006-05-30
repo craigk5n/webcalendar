@@ -38,7 +38,7 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
 $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 $enddate = mktime ( 0, 0, 0, $thismonth +1 , 0, $thisyear );
 
-$smallTasks = $unapprovedStr = $printFriendlyStr = '';
+$smallTasks = $unapprovedStr = $printerStr = '';
 
 /* Pre-Load the repeated events for quckier access */
 $repeated_events = read_repeated_events ( empty ( $user ) ? $login : $user,
@@ -64,9 +64,10 @@ $smallMonthStr = display_small_month ( $thismonth, $thisyear, true );
 if ( empty ( $friendly ) ) {
   $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
     $is_nonuser_admin ? $user : $login ) );
-  $printFriendlyStr = generate_printer_friendly ( 'day.php' );
+  $printerStr = generate_printer_friendly ( 'day.php' );
 }
-
+$eventinfo = ( ! empty ( $eventinfo )? $eventinfo : '' );
+$trailerStr = print_trailer ();
 $HeadX = '';
 if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
   $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
@@ -75,7 +76,6 @@ if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
 }
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
-$trailerStr = print_trailer ();
 
 echo <<<EOT
   <table width="100%" cellpadding="1">
@@ -99,11 +99,11 @@ echo <<<EOT
       </td>
     </tr>
   </table>
-  <br />
+  {$eventinfo}
   {$unapprovedStr}
-  <br />
-  {$printFriendlyStr}
+  {$printerStr}
   {$trailerStr}
   </body>
   </html>
 EOT;
+?>

@@ -298,12 +298,10 @@ echo <<<EOT
       </td>
      {$minical_tasks}
     </tr>
-  </table>
-  <br />
-  
+  </table> 
   {$eventinfo}
   {$unapprovedStr}
-  {printerStr};
+  {$printerStr}
   {$trailerStr}
   </body>
   </html>
