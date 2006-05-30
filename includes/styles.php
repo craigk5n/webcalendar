@@ -1151,6 +1151,10 @@ abbr {
 .location {
  font-size: 10px;
 }
+.byxxx th,
+.byxxx td {
+ text-align: center;  
+}
 <?php
 if ( ! empty ( $PHP_SELF ) && ! preg_match ( "/css_cacher/", $PHP_SELF ) ) {
   echo "\n-->\n</style>";
