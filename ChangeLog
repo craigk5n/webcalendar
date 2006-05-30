@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1476212: Conflict check with repeating events and DST
  - Fixed bug 1428140: 'top-menue' - truncated using IE6
  - Fixed bug 1496308: error message regarding 'cachedir'
  - Implemented RFE 1496319: Left align "Users" column in "Week (Users vertical)" view
