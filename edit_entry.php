@@ -1033,19 +1033,19 @@ if ( $useTabs ) { ?>
   //We use BUTTONS  in a triple state configuration, but this data will not get
   //posted along with the form. So, we create hidden text fields to pass the data 
   //to the form handler. If there is  a better/easier way to do this....let us know.
-   echo '<table cellpadding="2" cellspacing="0" border="1"><tr><td></td>';
+   echo '<table class="byxxx" cellpadding="2" cellspacing="0" border="1"><tr><td></td>';
   for ( $rpt_byday_label =0;$rpt_byday_label <=6; $rpt_byday_label++){
-    echo '<th align="center" width="50px"><label >' . translate($weekday_names[$rpt_byday_label]) . "</label></th>\n";
+    echo '<th width="50px"><label >' . translate($weekday_names[$rpt_byday_label]) . "</label></th>\n";
   }
-  echo "</tr><tr>\n<th align=\"center\">" . translate ( 'All' ) . '</th>';
+  echo "</tr><tr>\n<th>" . translate ( 'All' ) . '</th>';
   for ( $rpt_byday_single =0;$rpt_byday_single <=6; $rpt_byday_single++){
-    echo '<td align="center"><input type="checkbox" name="bydayext1[]" id="' .
+    echo '<td><input type="checkbox" name="bydayext1[]" id="' .
     $byday_names[$rpt_byday_single] ."\" value=\"$byday_names[$rpt_byday_single]\"" 
      . (in_array($byday_names[$rpt_byday_single],$byday)? $checked:'') . " />\n</td>\n";
   }
   echo '</tr><tr id="rptbydayln" style="visibility:hidden;">' ."\n";
   for ( $loop_ctr=1; $loop_ctr < 6; $loop_ctr++) {
-    echo '<th align="center"><label>' . $loop_ctr . '/' . ($loop_ctr - 6) . 
+    echo '<th><label>' . $loop_ctr . '/' . ($loop_ctr - 6) . 
      '</label></th>' . "\n";
     for ( $rpt_byday =0;$rpt_byday <=6; $rpt_byday++){
        $buttonvalue = (in_array($loop_ctr . $byday_names[$rpt_byday],$byday) 
@@ -1053,7 +1053,7 @@ if ( $useTabs ) { ?>
      : (in_array(($loop_ctr -6) . $byday_names[$rpt_byday],$byday)
      ?($loop_ctr -6) . $byday_names[$rpt_byday]:'        ')); 
 
-    echo "<td align=\"center\"><input type=\"hidden\" name=\"bydayext2[]\"  " .
+    echo "<td><input type=\"hidden\" name=\"bydayext2[]\"  " .
       " id=\"$loop_ctr$byday_names[$rpt_byday]\" value=\"$buttonvalue\" />\n" .
       " <input  type=\"button\" name=\"byday2[]\"" .
       " id=\"$loop_ctr$byday_names[$rpt_byday]\"" .
@@ -1090,26 +1090,26 @@ if ( $useTabs ) { ?>
 <?php etranslate( 'BySetPos' )?>:&nbsp;</td><td colspan="2">
  <?php
    //display bysetpos selection
-   echo '<table cellpadding="2" cellspacing="0" border="1" ><tr><td></td>';
-  for ( $rpt_bysetpos_label =1;$rpt_bysetpos_label <=11; $rpt_bysetpos_label++){
-    echo "<th align=\"center\" width=\"37px\"><label >$rpt_bysetpos_label</label></th>\n";
+   echo '<table  class="byxxx" cellpadding="2" cellspacing="0" border="1" ><tr><td></td>';
+  for ( $rpt_bysetpos_label =1;$rpt_bysetpos_label <=10; $rpt_bysetpos_label++){
+    echo "<th width=\"37px\"><label >$rpt_bysetpos_label</label></th>\n";
   }
   echo "</tr><tr>\n";
   for ( $loop_ctr=1; $loop_ctr <32; $loop_ctr++) {
        $buttonvalue = (in_array($loop_ctr,$bysetpos) 
       ?($loop_ctr):(in_array(($loop_ctr -32),$bysetpos)
      ?($loop_ctr -32):"      ")); 
-      if ( $loop_ctr == 1 || $loop_ctr == 12  ) 
-        echo '<th align="center"><label>' . $loop_ctr . '-' . ($loop_ctr + 10) . 
+      if ( $loop_ctr == 1 || $loop_ctr == 11 || $loop_ctr == 21 ) 
+        echo '<th><label>' . $loop_ctr . '-' . ($loop_ctr + 9) . 
           "</label></th>\n";
-      if ( $loop_ctr == 23 ) 
-        echo '<th align="center"><label>' . $loop_ctr . "-31"  . "</label></th>\n";
-    echo '<td align="center"><input type="hidden" name="bysetpos2[]"  ' .
+      if ( $loop_ctr == 31 ) 
+        echo '<th><label>31</label></th>' . "\n";
+    echo '<td><input type="hidden" name="bysetpos2[]"  ' .
       " id=\"bysetpos$loop_ctr\" value=\"$buttonvalue\" />\n" .
      ' <input  type="button" name="bysetpos[]"' .
       " id=\"bysetpos$loop_ctr\" value=\"$buttonvalue\"" .
      ' onclick="toggle_bysetpos(this)" /></td>' . "\n";
-       if ( $loop_ctr == 11 || $loop_ctr == 22 ) echo  "</tr><tr>\n";
+       if (  $loop_ctr %10 == 0 ) echo  "</tr><tr>\n";
     
  }
    echo '</tr></table>';
@@ -1121,26 +1121,26 @@ if ( $useTabs ) { ?>
 <?php etranslate( 'ByMonthDay' )?>:&nbsp;</td><td colspan="2">
  <?php
    //display bymonthday extended selection
-   echo '<table cellpadding="2" cellspacing="0" border="1" ><tr><td></td>';
-  for ( $rpt_bymonthday_label =1;$rpt_bymonthday_label <=11; $rpt_bymonthday_label++){
-    echo "<th align=\"center\" width=\"37px\"><label >$rpt_bymonthday_label</label></th>\n";
+   echo '<table class="byxxx" cellpadding="2" cellspacing="0" border="1" ><tr><td></td>';
+  for ( $rpt_bymonthday_label =1;$rpt_bymonthday_label <=10; $rpt_bymonthday_label++){
+    echo "<th width=\"37px\"><label >$rpt_bymonthday_label</label></th>\n";
   }
   echo "</tr><tr>\n";
   for ( $loop_ctr=1; $loop_ctr <32; $loop_ctr++) {
        $buttonvalue = (in_array($loop_ctr,$bymonthday) 
       ?($loop_ctr):(in_array(($loop_ctr -32),$bymonthday)
      ?($loop_ctr -32):'      ')); 
-      if ( $loop_ctr == 1 || $loop_ctr == 12  ) 
-        echo '<th align="center"><label>' . $loop_ctr . "-" . ($loop_ctr + 10) . 
+      if ( $loop_ctr == 1 || $loop_ctr == 11 || $loop_ctr == 21 ) 
+        echo '<th><label>' . $loop_ctr . "-" . ($loop_ctr + 9) . 
           "</label></th>\n";
-      if ( $loop_ctr == 23 ) 
-        echo '<th align="center"><label>' . $loop_ctr . "-31"  . "</label></th>\n";
-    echo '<td align="center"><input type="hidden" name="bymonthday[]"  ' .
+      if ( $loop_ctr == 31 ) 
+        echo '<th><label>31</label></th>' . "\n";
+    echo '<td><input type="hidden" name="bymonthday[]"  ' .
       " id=\"bymonthday$loop_ctr\" value=\"$buttonvalue\" />\n" .
-     ' <input  type="button" name="bymonthday2[]" id="bymonthday$loop_ctr"' .
+     ' <input  type="button" name="bymonthday2[]" id="bymonthday' . $loop_ctr . '"' .
       " value=\"$buttonvalue\"" .
      ' onclick="toggle_bymonthday(this)" /></td>' . "\n";
-       if ( $loop_ctr == 11 || $loop_ctr == 22 ) echo  "</tr><tr>\n";
+       if ( $loop_ctr %10 == 0 ) echo  "</tr><tr>\n";
     
  }
    echo '</tr></table>';
