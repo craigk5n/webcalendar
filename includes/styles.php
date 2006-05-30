@@ -961,6 +961,9 @@ a.weekcell {
 #month .minical {
   border-width: 0px;
 }
+.topnav {
+  border-width:0px;
+}
 #viewt td.reg {
   <?php echo background_css ( $GLOBALS['CELLBG'], 100 ); ?>
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
