@@ -45,7 +45,7 @@ if ( $DISPLAY_TASKS == 'Y' ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
 }
 $monthURL = ( ! empty ( $cat_id )? "month.php?cat_id=$cat_id&amp;" :'month.php?' );
 $prevMonth1 = $nextMonth1 = $prevMonth2 = $nextMonth2 = '';
-$smallTasks = $unapprovedStr = $printFriendlyStr = '';
+$smallTasks = $unapprovedStr = $printerStr = '';
 if ( empty ( $DISPLAY_TASKS ) ||  $DISPLAY_TASKS == 'N' && $DISPLAY_SM_MONTH != 'N') {
   $prevMonth1 = display_small_month ( $prevmonth, $prevyear, true, true, 'prevmonth',
     $monthURL );
@@ -69,9 +69,9 @@ $HeadX = '';
 if ( empty ( $friendly ) ) {
   $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
     $is_nonuser_admin ? $user : $login ) );
-  $printFriendlyStr = generate_printer_friendly ( 'month.php' );
+  $printerStr = generate_printer_friendly ( 'month.php' );
 }
-
+$trailerStr = print_trailer ();
 
 if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
   $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
@@ -81,7 +81,7 @@ if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
 }
 $INC =  array('js/popups.php', 'js/visible.php/true');
 print_header($INC,$HeadX);
-$trailerStr = print_trailer ();
+
 echo <<<EOT
   <table border="0" width="100%" cellpadding="1">
     <tr>
@@ -97,8 +97,7 @@ echo <<<EOT
   </table>
 {$eventinfo}
 {$unapprovedStr}
-{$printFriendlyStr}
-<br />
+{$printerStr}
 {$trailerStr}
 </body>
 </html>
