@@ -136,7 +136,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
 }
 //return to login TIMEZONE
 set_env ( 'TZ', $TIMEZONE );
-if ( empty ( $error ) ) {
+if ( empty ( $error ) && empty ( $mailerError ) ) {
   if ( ! empty ( $ret ) && $ret == 'listall' ) {
     do_redirect ( 'list_unapproved.php' );
   } else if ( ! empty ( $ret ) && $ret == 'list' ) {
@@ -147,7 +147,18 @@ if ( empty ( $error ) ) {
   exit;
 }
 print_header ();
+if ( ! empty ( $mailerError ) ) { ?>
+<h2><?php echo translate( 'Email' ) . ' ' . translate( 'Error' )?></h2>
+<blockquote>
+<?php 
+  echo $mailerError;
+  if (  empty ( $error ) )
+    etranslate ( 'Changes successfully saved' ); 
+?>
+</blockquote>
+<?php } else { 
 echo '<h2>' . translate( 'Error' ) . "</h2>\n";
 echo '<p>'. $error . "</p>\n";
+}
 echo print_trailer ();
 ?>

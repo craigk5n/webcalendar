@@ -1066,7 +1066,8 @@ onclick="history.back()" /><td>
 <blockquote>
 <?php 
   echo $mailerError;
-  etranslate ( 'Changes successfully saved' ); 
+  if (  empty ( $error ) )
+    etranslate ( 'Changes successfully saved' ); 
 ?>
 </blockquote>
 <?php } else { ?>

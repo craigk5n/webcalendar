@@ -288,19 +288,28 @@ if ( ! empty ( $ret ) && $ret == 'listall' ) {
 
 //return to login TIMEZONE
 set_env ( 'TZ', $TIMEZONE );
-if ( empty ( $error ) ) {
+if ( empty ( $error ) && empty ( $mailerError ) ) {
   do_redirect ( $url );
   exit;
 }
 print_header();
+if ( ! empty ( $mailerError ) ) { ?>
+<h2><?php echo translate( 'Email' ) . ' ' . translate( 'Error' )?></h2>
+<blockquote>
+<?php 
+  echo $mailerError;
+  if (  empty ( $error ) )
+    etranslate ( 'Changes successfully saved' ); 
 ?>
-
+</blockquote>
+<?php } else {?>
 <h2><?php etranslate( 'Error' )?></h2>
 <blockquote>
 <?php echo $error; ?>
 </blockquote>
 
-<?php echo print_trailer(); ?>
+<?php  } 
+echo print_trailer(); ?>
 
 </body>
 </html>
