@@ -1252,7 +1252,7 @@ function display_navigation( $name, $show_arrows=true, $show_cats=true ){
   if ( ! empty ( $user ) && $user != $login )
     $u_url = "user=$user&amp;";
       
-  $ret = '<div style="border-width:0px;">';
+  $ret = '<div class="topnav">';
   if ( $show_arrows && ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || 
     $DISPLAY_TASKS == 'Y' ) ){
     $ret .= '<a title="' . translate('Next') . '" class="next" href="' . 
@@ -1269,7 +1269,7 @@ function display_navigation( $name, $show_arrows=true, $show_cats=true ){
   } else if ( $name == 'week' ) {
     $ret .= date_to_str ( date ( 'Ymd', $wkstart ), '', false ) .
     '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;' .
-    date_to_str ( date ('Ymd', $wkend ), '', false );
+    date_to_str ( date ('Ymd', $wkend  - ONE_DAY ), '', false );
     if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
       $ret .= " \n(" .
       translate('Week') . ' ' . date('W', $wkstart + ONE_DAY ) . ')';
