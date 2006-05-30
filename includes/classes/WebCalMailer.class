@@ -26,7 +26,8 @@ class WebCalMailer extends phpmailer {
   //constructor function
   function WebCalMailer () {
     global $APPLICATION_NAME, $SMTP_HOST, $SMTP_AUTH,
-      $SMTP_USERNAME, $SMTP_PASSWORD, $EMAIL_MAILER;
+      $SMTP_USERNAME, $SMTP_PASSWORD, $EMAIL_MAILER, $mailerError;
+    $mailerError = '';
     $this->Version .= " extended by " . translate($APPLICATION_NAME);
     $this->Host     = $SMTP_HOST;
     $this->Mailer   = $EMAIL_MAILER;
@@ -44,9 +45,11 @@ class WebCalMailer extends phpmailer {
 
   //Replace the default error handler so we can add our own trailer
   function SetError($msg) {
+    global $mailerError;
     $this->error_count++;
     //$this->ErrorInfo = $msg;
-    die_miserable_death ( $msg );
+    //die_miserable_death ( $msg );
+    $mailerError .= $msg . '<br />';
   }
   
   //Strip slashes from subject

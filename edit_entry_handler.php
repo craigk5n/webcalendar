@@ -990,7 +990,7 @@ if ( $single_user == 'N' &&
 // If we were editing this event, then go back to the last view (week, day,
 // month).  If this is a new event, then go to the preferred view for
 // the date range that this event was added to.
-if ( empty ( $error ) ) {
+if ( empty ( $error )  && empty ( $mailerError ) ) {
   $return_view = get_last_view ();
   if ( ! empty ( $return_view ) ) {
     do_redirect ( $return_view );
@@ -1061,6 +1061,14 @@ onclick="history.back()" /><td>
 </table>
 </form>
 
+<?php } else if ( ! empty ( $mailerError ) ) { ?>
+<h2><?php echo translate( 'Email' ) . ' ' . translate( 'Error' )?></h2>
+<blockquote>
+<?php 
+  echo $mailerError;
+  etranslate ( 'Changes successfully saved' ); 
+?>
+</blockquote>
 <?php } else { ?>
 <h2><?php etranslate( 'Error' )?></h2>
 <blockquote>
