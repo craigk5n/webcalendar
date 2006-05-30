@@ -260,12 +260,13 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
     $DISPLAY_TASKS, $DISPLAY_TASKS_IN_GRID, $MENU_DATE_TOP;
   
   $ret = '';
-  if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' ) {
-    $ret .= '<div id="trailer">';
-    $ret .= print_menu_dates ();
-    $ret .= '</div>';
-  }
+
   if ( $include_nav_links  ) {//TODO Add test for $MENU_ENABLED == 'N'
+    if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' ) {
+      $ret .= '<div id="trailer">';
+      $ret .= print_menu_dates ();
+      $ret .= '</div>';
+    }
     include_once 'includes/trailer.php';
   }
   if ( ! empty ( $tret ) ) $ret .= $tret; //data from trailer
@@ -292,7 +293,7 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
 
 function print_menu_dates ( $menu=false) {
   global $user, $login, $cat_id, $CATEGORIES_ENABLED, $thisyear,
-    $thismonth,  $DATE_FORMAT_MY, $DATE_FORMAT_MD, $WEEK_START;
+    $thismonth,  $DATE_FORMAT_MY, $DATE_FORMAT_MD, $WEEK_START, $DISPLAY_WEEKENDS;
   $ret = '';
   if ( access_can_view_page ( 'month.php' ) ) {
     $monthUrl = 'month.php';
@@ -399,10 +400,10 @@ function print_menu_dates ( $menu=false) {
   $wday = date ( 'w', $d_time );
   // $WEEK_START equals 1 or 0 
   $wkstart = mktime ( 0, 0, 0, $m, $d - ( $wday - $WEEK_START ), $y );
-
+  $lastDay = ( $DISPLAY_WEEKENDS == 'N'? 4 : 6 );
   for ( $i = -5; $i <= 9; $i++ ) {
     $twkstart = $wkstart + ( ONE_DAY * 7 * $i );
-    $twkend = $twkstart + ( ONE_DAY * 6 );
+    $twkend = $twkstart + ( ONE_DAY * $lastDay );
     $dateSYmd = date ( 'Ymd', $twkstart );
     $dateEYmd = date ( 'Ymd', $twkend );
 //  echo $twkstart . " " . $twkend;
