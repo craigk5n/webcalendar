@@ -2250,7 +2250,6 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
           if (  file_exists ( $file ) ) {
             $dates =  unserialize ( file_get_contents ( $file ) );
           } else {
-
             $dates = get_all_dates ( $date,
               $result[$i]->getRepeatType(), $result[$i]->getRepeatFrequency(),
               $result[$i]->getRepeatByMonth(), $result[$i]->getRepeatByWeekNo(),
@@ -3139,8 +3138,10 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
     //events that couldn't possibly match.  This could be made much more complex to put more
     //of the searching work onto the database server, or it could be dropped all together to put
     //the searching work onto the client.
-    $date_filter  = "AND (webcal_entry.cal_date <= " . gmdate ('Ymd',$dates[count($dates)-1]);
-    $date_filter .= " AND (webcal_entry_repeats.cal_end IS NULL OR webcal_entry_repeats.cal_end >= " . gmdate ('Ymd',$dates[0]) . "))";
+    $date_filter  = 'AND (webcal_entry.cal_date <= ' . 
+      gmdate ('Ymd',$dates[count($dates)-1]);
+    $date_filter .= ' AND (webcal_entry_repeats.cal_end IS NULL OR ' .
+      'webcal_entry_repeats.cal_end >= ' . gmdate ('Ymd',$dates[0]) . "))";
     //Read repeated events only once for a participant for
     //for performance reasons.
     $repeated_events=query_events($participants[$q],true,$date_filter);
@@ -3174,10 +3175,10 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
                 $conflicts .= "&amp;user=$user";
               $conflicts .= '">' . $row->getName() . '</a>';
             }
-            $conflicts .= ' (' . display_time ( $dateYmd . $time2 );
+            $conflicts .= ' (' . display_time ( $row->getDate() . $time2 );
             if ( $duration2 > 0 )
               $conflicts .= '-' .
-                display_time ( $dateYmd . add_duration ( $time2, $duration2 ) );
+                display_time ( $row->getDate() . add_duration ( $time2, $duration2 ) );
             $conflicts .= ')';
             $conflicts .= ' on ' . date('l, F j, Y', $dates[$i]);
             $conflicts .= "</li>\n";

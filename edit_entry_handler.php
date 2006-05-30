@@ -293,13 +293,17 @@ if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != 'Y' ) {
 if ( $ALLOW_CONFLICTS != 'Y' && empty ( $confirm_conflicts ) &&
   strlen ( $entry_hour ) > 0 && $timetype != 'U' && $eType != 'task') {
   $conflict_until = ( ! empty ( $rpt_until ) ? $rpt_until : '');
+  $conflict_count = ( ! empty ( $count ) ? $count : 999);
   $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, $bymonth,
-   $byweekno, $byyearday, $bymonthday, $byday, $bysetpos, $count,
+   $byweekno, $byyearday, $bymonthday, $byday, $bysetpos, $conflict_count,
    $conflict_until, $wkst, $exception_list, $inclusion_list );
-  
+
   //make sure at least start date is in array
   if ( empty ( $dates ) ) $dates[0] = $eventstart;
-
+  
+  //make sure %thismonth and $thisyear are set for use in query_events()
+  $thismonth = $month;
+  $thisyear = $year;
   $conflicts = check_for_conflicts ( $dates, $duration, $eventstart,
     $participants, $login, empty ( $id ) ? 0 : $id );
 } //end  check for any schedule conflicts
