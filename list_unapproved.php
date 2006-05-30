@@ -131,7 +131,7 @@ function list_unapproved ( $user ) {
       }
       $ret .= htmlspecialchars ( $name );
       $ret .= '</a>';
-      $ret .= ' (' . date_to_str ($date) . ")\n";
+      $ret .= ' (' . date_to_str ( date ('Ymd', $eventstart) ) . ")\n";
       //approve
       $ret .= ':</td><td align="center"> <a title="' .  
         translate( 'Approve/Confirm' ) . "\"  href=\"approve_entry.php?id=$id&amp;ret=$retarg&amp;user=$cal_user&amp;type=$type";
