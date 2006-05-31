@@ -2240,16 +2240,16 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
           if ( $result[$i]->isAllDay() || $result[$i]->isUntimed() ) {
             $date += (12 * 3600);//a simple hack to prevent DST problems
           }
-
+          //TODO get this to work
           //check if this event id has been cached
-          $file = '';
-          if ( ! empty ( $db_connection_info['cachedir'] ) ){
-            $hash = md5 ( $result[$i]->getId() );
-            $file = $db_connection_info['cachedir'] . '/' . $hash . '.dat';
-          }
-          if (  file_exists ( $file ) ) {
-            $dates =  unserialize ( file_get_contents ( $file ) );
-          } else {
+          //$file = '';
+          //if ( ! empty ( $db_connection_info['cachedir'] ) ){
+          //  $hash = md5 ( $result[$i]->getId() . $until . $jump );
+          //  $file = $db_connection_info['cachedir'] . '/' . $hash . '.dat';
+          //}
+          //if (  file_exists ( $file ) ) {
+          //  $dates =  unserialize ( file_get_contents ( $file ) );
+          //} else {
             $dates = get_all_dates ( $date,
               $result[$i]->getRepeatType(), $result[$i]->getRepeatFrequency(),
               $result[$i]->getRepeatByMonth(), $result[$i]->getRepeatByWeekNo(),
@@ -2260,16 +2260,16 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
               $result[$i]->getRepeatInclusions(), $jump );
             $result[$i]->addRepeatAllDates($dates);
             // serialize and save in cache for later use
-            if ( ! empty ( $db_connection_info['cachedir'] ) ) {
-              $fd = @fopen ( $file, 'w+b', false );
-              if ( empty ( $fd ) ) {
-                dbi_fatal_error ( "Cache error: could not write file $file" );
-              }
-              fwrite ( $fd, serialize ( $dates ) );
-              fclose ( $fd );
-              chmod ( $file, 0666 );
-            }
-          }
+            // if ( ! empty ( $db_connection_info['cachedir'] ) ) {
+            //   $fd = @fopen ( $file, 'w+b', false );
+            //  if ( empty ( $fd ) ) {
+            //    dbi_fatal_error ( "Cache error: could not write file $file" );
+            //  }
+            //  fwrite ( $fd, serialize ( $dates ) );
+            //  fclose ( $fd );
+            //  chmod ( $file, 0666 );
+            //}
+          //}
         } else { //process clones if any
           if ( count ( $result[$i-1]->getRepeatAllDates() > 0 ) ){
             $parentRepeats = $result[$i-1]->getRepeatAllDates();
