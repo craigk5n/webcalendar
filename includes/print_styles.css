@@ -1,9 +1,12 @@
 #trailer,
 form,
 #month .minical,
+#week .minical,
+#minicolumn,
 .minitask,
 .popup,
 .printer,
+.ThemeMenubar,
 .nav,
 .bullet,
 .new,
@@ -34,4 +37,7 @@ a {
 #viewt tr,
 #viewt td {
   border-color: black !important;
+}
+#printarea {
+ width: 100% !important;
 }
