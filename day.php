@@ -35,8 +35,8 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
  $boldDays = false;
 }
 
-$startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-$enddate = mktime ( 0, 0, 0, $thismonth +1 , 0, $thisyear );
+$startdate = mktime ( 0, 0, 0, $thismonth, 0, $thisyear );
+$enddate = mktime ( 0, 0, 0, $thismonth +1 , 1, $thisyear );
 
 $smallTasks = $unapprovedStr = $printerStr = '';
 
@@ -47,7 +47,7 @@ $repeated_events = read_repeated_events ( empty ( $user ) ? $login : $user,
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( empty ( $user ) ? $login : $user, $startdate, $enddate,
   $cat_id  );
- 
+
 if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) )
