@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1497840: Entries not shown in Day view for current day +GMT TZ only
       1472286: Event Creation Aborted Upon Error
       1476212: Conflict check with repeating events and DST
       1428140: 'top-menue' - truncated using IE6
