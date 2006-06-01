@@ -277,6 +277,8 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented PATCH 1498087: Add simple navigation to help
+    + Implemented PATCH 1498201: Don't print ThemeMenubar
     + Implemented RFE 1496319: Left align "Users" column in "Week (Users vertical)" view
     + Implemented RFE 1176218: can not select category in year-view
     + Implemented RFE 1075840: "Manage calendar of" during management

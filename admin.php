@@ -428,7 +428,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
     etranslate( '24 hour' )?></label>
  </td></tr>
 <tr><td class="tooltip" title="<?php etooltip("display-minutes-help")?>">
- <?php etranslate("Display 00 minutes always")?>:</td><td>
+ <?php etranslate( 'Display 00 minutes always' )?>:</td><td>
  <label><input type="radio" name="admin_DISPLAY_MINUTES" value="Y" <?php 
  if ( $s['DISPLAY_MINUTES'] != 'N' ) echo $checked;?> /> <?php 
   echo $Yes?></label>&nbsp;
