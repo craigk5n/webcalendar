@@ -17,7 +17,7 @@
 # db_database to your full DSN
 ##########################################################
 
-# database settings see notes above
+/* database settings see notes above
 db_type: mysql
 db_host: localhost
 db_login: webcalendar
@@ -71,5 +71,5 @@ use_http_auth: false
 # need to modify user-ldap.php to configure some settings.
 user_inc: user.php
 
-# end
+# end */
 ?>
