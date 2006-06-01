@@ -1,12 +1,5 @@
 <?php
-
-if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
-  ! empty ( $_SERVER['PHP_SELF'] ) ) {
-  $PHP_SELF = $_SERVER['PHP_SELF'];
-}
-if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
-    die ( "You can't access this file directly!" );
-}
+defined( '_ISVALID' ) or die( "You can't access this file directly!" );
 
 // This file contains all the functions for getting information
 // about users from Joomla 1.0.8 and logging in/out

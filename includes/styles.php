@@ -1,12 +1,5 @@
 <?php
-if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
-  ! empty ( $_SERVER['PHP_SELF'] ) ) {
-  $PHP_SELF = $_SERVER['PHP_SELF'];
-}
-if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
-    die ( "You can't access this file directly!" );
-}
-
+defined( '_ISVALID' ) or die( "You can't access this file directly!" );
 /* 
 
                    HOW TO READ THIS DOCUMENT
@@ -80,7 +73,8 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     Section D - the "nitty gritty" of classes. Used specifically for 
       fine-tuning elements within a specific page
 */
-if ( ! empty ( $PHP_SELF ) && ! preg_match ( "/css_cacher.php/", $PHP_SELF ) ) {
+if ( ! empty ( $_SERVER['PHP_SELF'] ) && 
+  ! preg_match ( "/css_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
   echo "<style type=\"text/css\">\n<!--\n";
 }
 /* SECTION A */
@@ -267,7 +261,7 @@ label {
   padding-right: 3px;
 }
 .nounapproved {
-  margin-left: 20px;
+  padding-left: 20px;
 }
 <?php //links to entries/events on layers
 ?>.layerentry {
@@ -1156,7 +1150,8 @@ abbr {
  text-align: center;  
 }
 <?php
-if ( ! empty ( $PHP_SELF ) && ! preg_match ( "/css_cacher/", $PHP_SELF ) ) {
+if ( ! empty ( $_SERVER['PHP_SELF'] ) && 
+  ! preg_match ( "/css_cacher/", $_SERVER['PHP_SELF'] ) ) {
   echo "\n-->\n</style>";
 }
 ?>

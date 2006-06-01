@@ -42,7 +42,12 @@
  * @version $Id$
  * @package WebCalendar
  */
- 
+if (  empty ( $_SERVER['PHP_SELF'] ) || 
+  ( ! empty ( $_SERVER['PHP_SELF'] ) && 
+  preg_match ( "/\/includes\//", $_SERVER['PHP_SELF'] ) ) ){
+  die ( "You can't access this file directly!" );
+}
+
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
@@ -262,11 +267,6 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
   $ret = '';
 
   if ( $include_nav_links  ) {//TODO Add test for $MENU_ENABLED == 'N'
-    if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' ) {
-      $ret .= '<div id="trailer">';
-      $ret .= print_menu_dates ();
-      $ret .= '</div>';
-    }
     include_once 'includes/trailer.php';
   }
   if ( ! empty ( $tret ) ) $ret .= $tret; //data from trailer
