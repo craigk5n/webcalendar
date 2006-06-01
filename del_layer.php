@@ -2,13 +2,15 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
-if ( $ALLOW_VIEW_OTHER != 'Y' ) {
+$id = getGetValue ( 'id' );
+
+if ( $ALLOW_VIEW_OTHER != 'Y' || empty ( $id )) {
   print_header ();
   etranslate( 'You are not authorized' );
   echo print_trailer ();
   exit;
 }
-
+$id = getGetValue ( 'id' );
 $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;

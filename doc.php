@@ -14,12 +14,17 @@ include_once 'includes/init.php';
 include_once 'includes/classes/Doc.class';
 
 $blid = getIntValue ( 'blid', true );
-$error = '';
+$error = $res = '';
 
-$res = dbi_execute ( Doc::getSQLForDocId ( $blid ) );
-if ( ! $res ) {
-  $error = db_error ();
+if ( empty ( $blid ) ) {
+  $error = translate ( 'Invalid blob id' );
+} else {
+  $res = dbi_execute ( Doc::getSQLForDocId ( $blid ) );
+  if ( ! $res ) {
+   $error = db_error ();
+  }
 }
+
 if ( empty ( $error ) ) {
   $row = dbi_fetch_row ( $res );
   if ( ! $row ) {
