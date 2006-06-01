@@ -89,6 +89,8 @@ if ( ! empty ( $_GET ) && ! empty ( $PHP_SELF ) &&
 }
 
 // Get a value from a GET URL
+// This function is identical to getGetValue in functions.php
+// but we're not exactly sure how to get there from here
 function get_GetValue ( $name ) {
   global $HTTP_GET_VARS;
 
