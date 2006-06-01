@@ -1,12 +1,5 @@
 <?php
-
-if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
-  ! empty ( $_SERVER['PHP_SELF'] ) ) {
-  $PHP_SELF = $_SERVER['PHP_SELF'];
-}
-if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
-    die ( "You can't access this file directly!" );
-}
+defined( '_ISVALID' ) or die( "You can't access this file directly!" );
 
 // NOTE: This file is included within the print_trailer function found
 // in includes/init.php.  If you add a global variable somewhere in this
@@ -15,7 +8,10 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
 $tret = '';
 if ( access_can_access_function ( ACCESS_TRAILER ) ) { 
 
-$tret .= '<div id="trailer">'; 
+$tret .= '<div id="trailer">';
+if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' ) {
+  $tret .= print_menu_dates ();
+} 
 $tret .= '<div id="menu">' . "\n";
 
 $goto_link = array ( );
@@ -386,7 +382,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
 
 // WebCalendar Info...
 $tret .= '<br /><br />' . "\n" . '<a title="' . $GLOBALS['PROGRAM_NAME'] . '" ' .
-  "id=\"programname\" href=\"$GLOBALS[PROGRAM_URL]\" target=\"_blank\">" .
+  'id="programname" href="' . $GLOBALS['PROGRAM_URL'] . '" target="_blank">' .
   $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 
 $tret .= '</div></div>' . "\n";

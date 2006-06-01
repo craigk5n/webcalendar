@@ -1,4 +1,9 @@
 <?php
+if (  empty ( $_SERVER['PHP_SELF'] ) || 
+  ( ! empty ( $_SERVER['PHP_SELF'] ) && 
+  preg_match ( "/\/includes\//", $_SERVER['PHP_SELF'] ) ) ){
+  die ( "You can't access this file directly!" );
+}
 /**
  * Authentication functions.
  *
@@ -17,14 +22,6 @@
  * @package WebCalendar
  * @subpackage IMAPAuthentication
  */
-
-if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
-  ! empty ( $_SERVER['PHP_SELF'] ) ) {
-  $PHP_SELF = $_SERVER['PHP_SELF'];
-}
-if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
-    die ( "You can't access this file directly!" );
-}
 
 // Set some global config variables about your system.
 $user_can_update_password = false;
