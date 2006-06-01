@@ -1,4 +1,12 @@
 <?php
+/* $Id$ 
+ * 
+ * The file contains a listing of all the current WebCalendar config settings
+ * and their default values.
+ * Also, some function used during the installation script
+ *
+ *
+*/
 $webcalConfig = array (
 'ADD_LINK_IN_VIEWS'=>'N',
 'ALLOW_ATTACH'=>'N',
