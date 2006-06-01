@@ -69,7 +69,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 }
 
 if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
-  echo "<br />\n<span class=\"weeknumber\">(" .
+  echo "<br />\n<span class=\"titleweek\">(" .
     translate ( 'Week' ) . ' ' . date( 'W', $wkstart + ONE_DAY ) . ')</span>';
 }
 ?>
