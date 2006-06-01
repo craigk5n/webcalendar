@@ -35,7 +35,7 @@ function view_init ( $view_id )
   $viewcnt = count ( $views );
   for ( $i = 0; $i < $viewcnt; $i++ ) {
     if ( $views[$i]['cal_view_id'] == $view_id ) {
-      $view_name = $views[$i]['cal_name'];
+      $view_name = htmlspecialchars ( $views[$i]['cal_name'] );
       $view_type = $views[$i]['cal_view_type'];
     }
   }
