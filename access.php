@@ -26,6 +26,9 @@ if ( ! access_is_enabled () ) {
   etranslate ( 'You are not authorized' );
   exit;  
 }
+$allow_view_other = ( ! empty ( $ALLOW_VIEW_OTHER ) || 
+  $ALLOW_VIEW_OTHER == 'Y' ? true : false );
+
 //print_r ( $_POST );
 // Are we handling the access form?
 // If so, do that, then redirect
@@ -55,7 +58,7 @@ if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) != '') {
 if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '') { 
   $puser = getPostValue ( 'guser' );
   $pouser = getPostValue ( 'otheruser' );  
-  if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
+  if ( $allow_view_other ) {
     // Handle access to other users' calendars
     //if user is not admin, reverse values so they are granting
     //access to their own calendar
@@ -105,7 +108,7 @@ if ( $otheruser == '__default__' ) {
 }
 
 if ( ! empty ( $otheruser ) ) {
-  if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
+  if ( $allow_view_other ) {
     $query_param = array( $guser, $otheruser );
     //if user is not admin, reverse values so they are granting
     //access to their own calendar
@@ -184,11 +187,12 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     if ( $show ) {
       $yesno = substr ( $access, $i, 1 );
       $checkit = ( $yesno != 'N' ) ? $checked : '';
-      echo '<label for="access_' . $i . '">';
-      echo '<input type="checkbox" name="access_' . $i .
+      $showStr = '<label for="access_' . $i . '">';
+      $showStr .= '<input type="checkbox" name="access_' . $i .
         '" id="access_' . $i . '" value="Y" ' . $checkit . "/>\n";
-      echo access_get_function_description ( $i );
-      echo "</label><br />\n";
+      $showStr .= access_get_function_description ( $i );
+      $showStr .= "</label><br />\n";
+      echo $showStr; 
     }
     if ( ($i + 1 )%$div == 0 )
       echo "</td>\n<td valign=\"top\">\n";
@@ -218,13 +222,13 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
         $otheruser_login  = '__default__';        
       } else { 
         $userlist = get_list_of_users ( $guser );
-        echo "<h2>$pagetitle</h2>\n";
-        echo '<form action="access.php" method="post" name="SelectOther">' . "\n";
-        echo "<input type=\"hidden\" name=\"guser\" value=\"$guser\" />\n";
-        echo '<select name="otheruser" onchange="document.SelectOther.submit()">' . "\n";
+        $str = "<h2>$pagetitle</h2>\n";
+        $str .= '<form action="access.php" method="post" name="SelectOther">' . "\n";
+        $str .= "<input type=\"hidden\" name=\"guser\" value=\"$guser\" />\n";
+        $str .= '<select name="otheruser" onchange="document.SelectOther.submit()">' . "\n";
 
         //add a DEFAULT CONFIGURATION to be used as a mask  
-        echo '<option value="__default__">'.
+        $str .= '<option value="__default__">'.
           translate ( 'DEFAULT CONFIGURATION' )."</option>\n";
         $selected ='';
         
@@ -232,14 +236,14 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
           if ( $userlist[$i]['cal_login'] != $guser  ) {
             $selected = ( ! empty ( $otheruser ) && 
               $otheruser == $userlist[$i]['cal_login'] ? ' selected="selected"':'');
-            echo '<option value="' .$userlist[$i]['cal_login']. '"' . 
+            $str .= '<option value="' .$userlist[$i]['cal_login']. '"' . 
               $selected .'>'. $userlist[$i]['cal_fullname']."</option>\n";
           }
        }
-       echo '</select>';
-       echo '<input type="submit"  value="' . translate( 'Go' ) . '" />';
-       echo "</form>\n";
-
+       $str .= '</select>';
+       $str .= '<input type="submit"  value="' . translate( 'Go' ) . '" />';
+       $str .= "</form>\n";
+       echo $str;
      if (  empty ( $otheruser ) ) {
        echo print_trailer ();
        echo "</body></html>\n";
@@ -249,10 +253,11 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
 }
 
 if ( ! empty ( $otheruser ) ) {
-  if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'Y' ) {
-    echo "<form action=\"access.php\" method=\"post\" name=\"EditOther\">\n";
-    echo "<input type=\"hidden\" name=\"guser\" value=\"$guser\" />\n";        
-    echo "<input type=\"hidden\" name=\"otheruser\" value=\"$otheruser\" />\n";
+  if ( $allow_view_other ) {
+    $str = "<form action=\"access.php\" method=\"post\" name=\"EditOther\">\n";
+    $str .= "<input type=\"hidden\" name=\"guser\" value=\"$guser\" />\n";        
+    $str .= "<input type=\"hidden\" name=\"otheruser\" value=\"$otheruser\" />\n";
+    echo $str;
 ?>
     <br />
     
@@ -283,88 +288,90 @@ if ( ! empty ( $otheruser ) ) {
         $access_type = array();
         $access_type[1] = translate ( 'Events' );
         $access_type[2] = translate ( 'Tasks' );
-        $access_type[4] = translate ( 'Journals' );      
+        $access_type[4] = translate ( 'Journals' ); 
+        $gridStr = '';     
         for ( $j =1; $j < 5;$j++ ) {
           $bottomedge = ''; 
           if ( $j ==3 ) continue; 
-          echo "<tr>";
+          $gridStr.= '<tr>';
           if ( $j == 1) {
-            echo '<td class="boxleft leftpadded">' .
+            $gridStr.= '<td class="boxleft leftpadded">' .
               '<input type="checkbox" value="Y" name="invite"' . 
               ( !empty ( $op['invite'] ) && $op['invite'] == 'N' ? 
                 '': $checked ) . ' />' . 
                   translate ( 'Can Invite' ) . "</td>\n";
           } else if ( $j == 2 ) {
-            echo '<td class="boxleft leftpadded">' .
+            $gridStr.= '<td class="boxleft leftpadded">' .
               '<input type="checkbox" value="Y" name="email"' . 
               ( !empty ( $op['email'] ) && $op['email'] == 'N' ? 
                 '': $checked ) . ' />' . 
                   translate ( 'Can Email' ) . "</td>\n";          
           } else {
-            echo '<td class="boxleft boxbottom leftpadded">' .
+            $gridStr.= '<td class="boxleft boxbottom leftpadded">' .
               '<input type="checkbox" value="Y" name="time"' . 
               ( ! empty ( $op['time'] ) && $op['time'] == 'Y' ? 
               $checked :'') . ' onclick="enableAll(this.checked);"/>' . 
                 translate ( 'Can See Time Only' ) . "</td>\n";
             $bottomedge = 'boxbottom';          
           }
-          echo "<td align=\"center\" class=\"boxleft $bottomedge\">". 
+          $gridStr.= "<td align=\"center\" class=\"boxleft $bottomedge\">". 
             $access_type[$j] . "</td>\n<td align=\"center\" ".
             "class=\"boxleft pub $bottomedge\">";
-          echo "<input type=\"checkbox\" value=\"$j\" name=\"v_" . $j .'"' . 
+          $gridStr.= "<input type=\"checkbox\" value=\"$j\" name=\"v_" . $j .'"' . 
             ( ! empty ( $op['view'] ) && ( $op['view'] & $j ) ? 
               $checked :'')  . " /></td><td class=\"conf $bottomedge\">\n";
-          echo '<input type="checkbox" value="'.($j*8).'" name="v_' . ($j* 8 ) .
+          $gridStr.= '<input type="checkbox" value="'.($j*8).'" name="v_' . ($j* 8 ) .
             '"' . ( ! empty ( $op['view'] ) && ( $op['view'] & ($j*8) )? 
             $checked :'')  . " /></td><td class=\"priv $bottomedge\">\n";
-          echo '<input type="checkbox" value="'.($j*64).'" name="v_' . ($j*64 )  .
+          $gridStr.= '<input type="checkbox" value="'.($j*64).'" name="v_' . ($j*64 )  .
             '"' . ( ! empty ( $op['view'] ) && ( $op['view'] & ($j*64))? 
             $checked :'')  . " />\n";
-          echo "</td>\n";              
+          $gridStr.= "</td>\n";              
           if ( $guser != '__public__' ) {
-            echo "<td align=\"center\" class=\"boxleft pub $bottomedge\">";
-          echo "<input type=\"checkbox\" value=\"$j\" name=\"e_" . $j .'"' . 
+            $gridStr.= "<td align=\"center\" class=\"boxleft pub $bottomedge\">";
+          $gridStr.= "<input type=\"checkbox\" value=\"$j\" name=\"e_" . $j .'"' . 
             ( ! empty ( $op['edit'] ) && ( $op['edit'] & $j )? $checked :'')  . 
               " /></td><td class=\"conf $bottomedge\">\n";
-          echo '<input type="checkbox" value="'.($j*8).'" name="e_' . ($j* 8 ) .
+          $gridStr.= '<input type="checkbox" value="'.($j*8).'" name="e_' . ($j* 8 ) .
             '"' . ( ! empty ( $op['edit'] ) && ( $op['edit'] & ($j*8) )? 
             $checked :'')  . " /></td><td class=\"priv $bottomedge\">\n";
-          echo '<input type="checkbox" value="'.($j*64).'" name="e_' . ($j*64 )  .
+          $gridStr.= '<input type="checkbox" value="'.($j*64).'" name="e_' . ($j*64 )  .
             '"' . ( ! empty ( $op['edit'] ) && ( $op['edit'] & ($j*64) )? 
             $checked :'')  . " />\n";
-            echo "</td>\n";
-            echo "<td align=\"center\" class=\"boxleft pub $bottomedge\">";
-          echo "<input type=\"checkbox\" value=\"$j\" name=\"a_" . $j .'"' . 
+            $gridStr.= "</td>\n";
+            $gridStr.= "<td align=\"center\" class=\"boxleft pub $bottomedge\">";
+          $gridStr.= "<input type=\"checkbox\" value=\"$j\" name=\"a_" . $j .'"' . 
             ( ! empty ( $op['approve'] ) && ($op['approve'] & $j )? 
             $checked :'')  .  " /></td><td class=\"conf $bottomedge\">\n";
-          echo '<input type="checkbox" value="'.( $j*8).'" name="a_' . ($j* 8 ) .
+          $gridStr.= '<input type="checkbox" value="'.( $j*8).'" name="a_' . ($j* 8 ) .
             '"' . ( ! empty ( $op['approve'] ) && ( $op['approve'] & ($j*8 )) ? 
             $checked :'')  . 
             " /></td><td class=\"boxright  priv $bottomedge\">\n";
-          echo '<input type="checkbox" value="'.($j*64)."\" name=\"a_" . ($j*64 )  .
+          $gridStr.= '<input type="checkbox" value="'.($j*64)."\" name=\"a_" . ($j*64 )  .
             '"' . ( ! empty ( $op['approve'] ) && ( $op['approve'] & ($j*64 ))? 
             $checked :'')  . " />\n";
-            echo "</td>\n";
+            $gridStr.= "</td>\n";
           }
-          echo "</tr>\n";
+          $gridStr.= "</tr>\n";
         }
-        echo '<tr><td colspan="2" style="text-align:right">';
+        $gridStr.= '<tr><td colspan="2" style="text-align:right">';
         if ( $otheruser != '__default__' &&  $otheruser != '__public__' )
-        echo '<input type="button" value="' . 
+        $gridStr.= '<input type="button" value="' . 
           translate( 'Assistant' ) . "\" onclick=\"selectAll(63);\" />&nbsp;&nbsp;";
-        echo  '<input type="button" value="' . 
+        $gridStr.=  '<input type="button" value="' . 
           translate( 'Select All' ) . "\" onclick=\"selectAll(256);\" />&nbsp;&nbsp;";
-        echo  '<input type="button" value="' . 
+        $gridStr.=  '<input type="button" value="' . 
           translate( 'Clear All' ) . "\" onclick=\"selectAll(0);\" /></td>";
-        echo "<td colspan=\"9\">\n";
+        $gridStr.= "<td colspan=\"9\">\n";
  
-        echo '<table border="0" align="center" cellpadding="5" cellspacing="2">'.
+        $gridStr.= '<table border="0" align="center" cellpadding="5" cellspacing="2">'.
           '<tr><td class="pub">' . 
           translate ( 'Public' ) .'</td>' .
           '<td class="conf">' . translate( 'Confidential' ) . '</td>' .
           '<td class="priv">' . translate( 'Private' ) .
           "</td></tr></table></td></tr>\n";
-        echo "</tbody></table>\n";
+        $gridStr.= "</tbody></table>\n";
+        echo $gridStr;
 ?>
     <br /><br />
   <?php } ?>
@@ -444,17 +451,18 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
   <select name="guser" onchange="document.SelectUser.submit()">
   <?php
   //add a DEFAULT CONFIGURATION to be used as a mask  
-  echo '<option value="__default__">'.
+  $str = '<option value="__default__">'.
     translate ( 'DEFAULT CONFIGURATION' )."</option>\n";
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-    echo '<option value="'.$userlist[$i]['cal_login']. '">' .
+    $str .= '<option value="'.$userlist[$i]['cal_login']. '">' .
       $userlist[$i]['cal_fullname']."</option>\n";
   }
   for ( $i = 0, $cnt = count ( $nonuserlist ); $i < $cnt; $i++ ) {
     $is_global = ( $nonuserlist[$i]['cal_is_public'] == 'Y'?'*':'' );
-    echo '<option value="' . $nonuserlist[$i]['cal_login'] . '">'.
+    $str .= '<option value="' . $nonuserlist[$i]['cal_login'] . '">'.
       $nonuserlist[$i]['cal_fullname'] . ' ' . $is_global . "</option>\n";
   }
+  echo $str;
 ?>
   </select>
   <input type="submit"  value="<?php etranslate( 'Go' )?>" />
