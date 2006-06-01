@@ -1,4 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Implemented new method of restricting direct file access
+ - Implemented PATCH 1498087: Add simple navigation to help
+ - Implemented PATCH 1498201: Don't print ThemeMenubar
  - Fixed bug 1497840: Entries not shown in Day view for current day +GMT TZ only
  - Fixed bug 1472286: Event Creation Aborted Upon Error
  - Fixed bug 1476212: Conflict check with repeating events and DST
