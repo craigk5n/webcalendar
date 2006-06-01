@@ -1,11 +1,15 @@
 <?php
 /* $Id$ */
+defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+
+$newGroupStr = translate( 'Add New Group' );
+$targetStr = 'target="grpiframe" onclick="javascript:show(\'grpiframe\');">';
 ?>
   <a name="tabgroups"></a>
   <div id="tabscontent_groups">
     <?php
       echo '<a title="' . 
-        translate( 'Add New Group' ) . "\" href=\"group_edit.php\" target=\"grpiframe\" onclick=\"javascript:show('grpiframe');\">" . 
+        $newGroupStr . '" href="group_edit.php"' . $targetStr . 
         translate( 'Add New Group' ) . "</a><br />\n";
 
         $count = 0;
@@ -18,7 +22,7 @@
               echo "<ul>\n";
             }
           echo '<li><a title="' . 
-            $row[1] . "\" href=\"group_edit.php?id=" . $row[0] . "\" target=\"grpiframe\" onclick=\"javascript:show('grpiframe');\">" . 
+            $row[1] . '" href="group_edit.php?id=' . $row[0] . '"' . $targetStr . 
             $row[1] . "</a></li>\n";
             $count++;
             $lastrow = $row[0];
