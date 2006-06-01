@@ -79,6 +79,9 @@ class WebCalendar {
     $this->_filename = basename ( $path );
 
     $this->_directory = dirname ( __FILE__ ) . '/../../';
+
+    //define  a value to prevent direct access to files
+    define ( '_ISVALID', 1 );
   }
 
   // cek: This function is used by some other apps that I have developed
