@@ -1,4 +1,6 @@
-<?php /* $Id$  */ ?>
+<?php /* $Id$  */ 
+defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+?>
 var validform = false;
 var formfield = 'user';
 

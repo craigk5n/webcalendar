@@ -1,4 +1,6 @@
 <?php /* $Id$  */
+defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+
   global $ALLOW_COLOR_CUSTOMIZATION;
 ?>
 // error check the colors

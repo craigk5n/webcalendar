@@ -1,7 +1,5 @@
 <?php /* $Id$  */ 
-  if (preg_match("/\/includes\//", $PHP_SELF)) {
-    die ("You can't access this file directly!");
-  }
+defined( '_ISVALID' ) or die( "You can't access this file directly!" );
 	$form = $arinc[3];
 	$listid = $arinc[4];
 	$groups = $arinc[5];
