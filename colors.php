@@ -1,6 +1,7 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
+$color = getGetValue ( 'color' );
 $INC = array("js/colors.php/false/$color");
 print_header($INC,'','',true);
 
