@@ -263,7 +263,7 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
 <span class="viewname"><?php echo htmlspecialchars ( $view_name ) ?></span>
 <?php
   if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
-    echo "<br />\n<span class=\"weeknumber\">(" .
+    echo "<br />\n<span class=\"titleweek\">(" .
       translate ( 'Week' ) . ' ' . date('W', $wkstart + ONE_DAY ) . ')</span>';
   }
 ?>
