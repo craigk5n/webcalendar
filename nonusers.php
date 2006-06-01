@@ -1,5 +1,9 @@
 <?php
 /* $Id$ */
+defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+
+$targetStr = 'target="nonusersiframe" onclick="javascript:show(\'nonusersiframe\');">';
+
 if ( ! $is_admin ) {
   echo '<h2>' . translate( 'Error' ) . "</h2>\n" . 
       translate( 'You are not authorized' ) . ".\n";
@@ -19,8 +23,8 @@ $add = getValue ( 'add' );
 <?php
 if ( empty ($error) ) {
   echo '<a title="' . 
-  translate( 'Add New NonUser Calendar' ) . "\" href=\"edit_nonusers.php?add=1\" target=\"nonusersiframe\" onclick=\"javascript:show('nonusersiframe');\">" . 
-  translate( 'Add New NonUser Calendar' ) . "</a><br />\n";
+  $newNonUserStr . '" href="edit_nonusers.php?add=1"' . $targetStr . 
+  $newNonUserStr . "</a><br />\n";
   // Displaying NonUser Calendars
   $userlist = get_nonuser_cals ();
   if ( ! empty ( $userlist ) ) {
@@ -28,7 +32,7 @@ if ( empty ($error) ) {
     for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       echo '<li><a title="' . 
         $userlist[$i]['cal_fullname'] . '" href="edit_nonusers.php?nid=' . 
-  $userlist[$i]['cal_login'] . "\" target=\"nonusersiframe\" onclick=\"javascript:show('nonusersiframe');\">" . 
+  $userlist[$i]['cal_login'] . '"' . $targetStr . 
   $userlist[$i]['cal_fullname'] . "</a></li>\n";
     }
     echo '</ul>';
