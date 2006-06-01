@@ -2,6 +2,7 @@
 /* $Id$ */
 defined( '_ISVALID' ) or die( "You can't access this file directly!" );
 
+$newRemoteStr = translate( 'Add New Remote Calendar' );
 $targetStr = 'target="remotesiframe" onclick="javascript:show(\'remotesiframe\');">';
 
 if ( ! $NONUSER_PREFIX ) {
