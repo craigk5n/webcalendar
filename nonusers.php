@@ -2,6 +2,7 @@
 /* $Id$ */
 defined( '_ISVALID' ) or die( "You can't access this file directly!" );
 
+$newNonUserStr = translate( 'Add New NonUser Calendar' );
 $targetStr = 'target="nonusersiframe" onclick="javascript:show(\'nonusersiframe\');">';
 
 if ( ! $is_admin ) {

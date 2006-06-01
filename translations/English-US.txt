@@ -980,6 +980,12 @@ This Calendar is not Public: This Calendar is not Public
 
 
 ###############################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Add New NonUser Calendar
+
+
+###############################################
 # Page: pref.php
 #
 Save Preferences: Save Preferences
@@ -1046,6 +1052,12 @@ Submit: Submit
 Continue: Continue
 (Your comments will be included in an email to the other participants): (Your comments will be included in an email to the other participants)
 An appointment has been rejected by: An appointment has been rejected by
+
+
+###############################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Add New Remote Calendar
 
 
 ###############################################
