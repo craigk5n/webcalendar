@@ -42,8 +42,7 @@ if ( count ( $participants ) == 0 ) {
 }
 
 if ( ! empty ( $error ) ) {
-  echo '<h2>' . translate ( 'Error' ) .
-    "</h2>\n" . $error;
+  echo '<h2>' . translate ( 'Error' ) . "</h2>\n" . $error;
   echo print_trailer ();
   exit;
 }
@@ -60,38 +59,39 @@ $nowYmd = date ( 'Ymd', $now );
 $nextdate = date( 'Ymd', $now + ONE_DAY);
 
 $prevdate = date( 'Ymd', $now - ONE_DAY);
+$prevStr = translate ( 'Previous' );
+$nextStr = translate ( 'Next' );
+$nowStr = date_to_str ( $nowYmd );
+$matrixStr = daily_matrix($date,$participants);
+$partStr = implode ( ',', $participants );
+$printerStr = generate_printer_friendly ( 'view_d.php' );
+$trailerStr = print_trailer (); 
 
-?>
+echo <<<EOT
+  <div class="viewnav">
+    <a title="{$prevStr}" class="prev" href="view_d.php?id={$id}&amp;date={$prevdate}">
+      <img src="images/leftarrow.gif" class="prevnext" alt="{$prevStr}" /></a>
+    <a title="{$nextStr}" class="next" href="view_d.php?id={$id}&amp;date={$nextdate}">
+      <img src="images/rightarrow.gif" class="prevnext" alt="{$nextStr}" /></a>
+    <div class="title">
+     <span class="date">{$nowStr}</span>
+     <br />
+     <span class="viewname">{$view_name}</span>
+    </div>
+   </div>
+   {$matrixStr}
+   <br />
 
-<div style="border-width:0px; width:99%;">
-<a title="<?php etranslate ( 'Previous' )?>" class="prev" href="view_d.php?id=
-<?php echo $id . "&amp;date=" . $prevdate?>"><img src="images/leftarrow.gif" 
-  class="prevnext" alt="<?php etranslate ( 'Previous' )?>" /></a>
+   <!-- Hidden form for booking events -->
+   <form action="edit_entry.php" method="post" name="schedule">
+     <input type="hidden" name="date" value="{$thisyear}{$thismonth}{$thisday}" />
+     <input type="hidden" name="defusers" value="{$partStr}" />
+     <input type="hidden" name="hour" value="" />
+     <input type="hidden" name="minute" value="" />
+   </form>
 
-<a title="<?php etranslate ( 'Next' )?>" class="next" href="view_d.php?id=
-<?php echo $id . '&amp;date=' . $nextdate?>"><img src="images/rightarrow.gif" 
-  class="prevnext" alt="<?php etranslate ( 'Next' )?>" /></a>
-<div class="title">
-<span class="date"><?php echo date_to_str ( $nowYmd ); 
-?></span><br />
-<span class="viewname"><?php echo htmlspecialchars ( $view_name ); ?></span>
-</div></div>
-
-<?php
-echo daily_matrix($date,$participants);
-?>
-<br />
-
-<!-- Hidden form for booking events -->
-<form action="edit_entry.php" method="post" name="schedule">
-<input type="hidden" name="date" value="<?php echo $thisyear.$thismonth.$thisday;?>" />
-<input type="hidden" name="defusers" value="<?php echo implode ( ',', $participants ); ?>" />
-<input type="hidden" name="hour" value="" />
-<input type="hidden" name="minute" value="" />
-</form>
-
-<?php
-echo generate_printer_friendly ( 'view_d.php' );
-echo print_trailer ();?>
-</body>
-</html>
+  {$printerStr}
+  {$trailerStr}
+  </body>
+  </html>
+EOT;

@@ -35,7 +35,7 @@ view_init ( $id );
 
 $INC = array('js/popups.php');
 print_header($INC);
-
+$trailerStr = print_trailer ();
 set_today($date);
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
@@ -117,32 +117,39 @@ for ( $i = 0; $i < count ( $re_save ); $i++ ) {
     array_push ( $repeated_events, $re_save[$i] );
   }
 }
-
-echo display_small_month ( $prevmonth, $prevyear, true, true, "prevmonth", 
-  "view_l.php?id=$id&amp;" );
-echo display_small_month ( $nextmonth, $nextyear, true, true, "nextmonth", 
-  "view_l.php?id=$id&amp;" );
-?>
-
-<div class="title">
-<?php echo display_navigation( 'view_l', false ); ?>
-
-<span class="viewname"><br /><?php echo htmlspecialchars ( $view_name ); ?></span></div>
-<br /><br />
-<?php
-echo display_month ( $thismonth, $thisyear );
-echo "<br />";
-
-if ( ! empty ( $eventinfo ) ) {
-  echo $eventinfo;
+$printerStr = $unapprovedStr = '';
+if ( empty ( $friendly ) ) {
+  $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
+    $is_nonuser_admin ? $user : $login ) );
+  $printerStr = generate_printer_friendly ( 'month.php' );
 }
+if ( $DISPLAY_SM_MONTH != 'N') {
+  $prevMonth = display_small_month ( $prevmonth, $prevyear, true, true, 'prevmonth',
+    "view_l.php?id=$id&amp;" );
+  $nextMonth = display_small_month ( $nextmonth, $nextyear, true, true, 'nextmonth',
+    "view_l.php?id=$id&amp;" ); 
+  $navStr = display_navigation( 'view_l', false, false );
+} else {
+  $navStr = display_navigation( 'view_l', true, false );
+}
+$monthStr = display_month ( $thismonth, $thisyear );
+$eventinfo = ( ! empty ( $eventinfo )? $eventinfo : '' );
 
-echo display_unapproved_events ( ( $is_assistant || 
-  $is_nonuser_admin ? $user : $login ) );
-
-
-echo generate_printer_friendly ( 'view_l.php');
-
-echo print_trailer ();?>
-</body>
-</html>
+echo <<<EOT
+  <div class="title">
+    <div  class="minical">
+     {$prevMonth}{$nextMonth}
+    </div> 
+    {$navStr}
+    <span class="viewname"><br />{$view_name}</span>
+  </div>
+	<br />
+	{$monthStr}
+	<br />
+	{$eventinfo}
+	{$unapprovedStr}
+	{$printerStr}
+	{$trailerStr}
+	</body>
+	</html>
+EOT;
