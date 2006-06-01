@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 05-28-2006
+# Translation last updated on 06-01-2006
 
 
 ###############################################
@@ -412,6 +412,7 @@ An appointment has been approved and comments added by: An appointment has been 
 The subject was: The subject was
 The description is: The description is
 Comments: Comments
+Changes successfully saved: Changes successfully saved
 
 
 ###############################################
@@ -459,6 +460,12 @@ Ok: Ok
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: An appointment has been canceled for you by
+
+
+###############################################
+# Page: doc.php
+#
+Invalid blob id: Invalid blob id
 
 
 ###############################################
@@ -633,12 +640,6 @@ Calendar ID: Calendar ID
 First Name: First Name
 Last Name: Last Name
 Is public calendar: Is public calendar
-
-
-###############################################
-# Page: edit_nonusers_handler.php
-#
-Changes successfully saved: Changes successfully saved
 
 
 ###############################################
@@ -821,7 +822,6 @@ repeat-day-help: Specifies which days of the week the event should repeat on.
 # Page: help_import.php
 #
 Import: Import
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
 The following entries will not be imported: The following entries will not be imported
@@ -829,13 +829,8 @@ Entries older than the current date: Entries older than the current date
 Entries created in the Palm Desktop that have not been HotSync'd: Entries created in the Palm Desktop that have not been HotSync'd
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
 Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
-vCal: vCal
 This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
 The following formats have been tested: The following formats have been tested
-Palm Desktop 4: Palm Desktop 4
-Lotus Organizer 6: Lotus Organizer 6
-Microsoft Outlook 2002: Microsoft Outlook 2002
-iCalendar: iCalendar
 This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
 Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.
 
@@ -985,12 +980,6 @@ This Calendar is not Public: This Calendar is not Public
 
 
 ###############################################
-# Page: nonusers.php
-#
-Add New NonUser Calendar: Add New NonUser Calendar
-
-
-###############################################
 # Page: pref.php
 #
 Save Preferences: Save Preferences
@@ -1057,12 +1046,6 @@ Submit: Submit
 Continue: Continue
 (Your comments will be included in an email to the other participants): (Your comments will be included in an email to the other participants)
 An appointment has been rejected by: An appointment has been rejected by
-
-
-###############################################
-# Page: remotes.php
-#
-Add New Remote Calendar: Add New Remote Calendar
 
 
 ###############################################
@@ -1323,9 +1306,9 @@ Printer Friendly: Printer Friendly
 
 
 ###############################################
-# Page: includes/help_trailer.php
+# Page: includes/help_list.php
 #
-Go to: Go to
+Page: Page
 
 
 ###############################################
@@ -1336,6 +1319,7 @@ My Calendar: My Calendar
 Back to My Calendar: Back to My Calendar
 Add New Entry: Add New Entry
 Add New Task: Add New Task
+Go to: Go to
 Logout: Logout
 Manage calendar of: Manage calendar of
 
