@@ -43,6 +43,7 @@ if ( $DISPLAY_TASKS == 'Y' ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
   $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) && $is_assistant )
     ? $user : $login, $enddate, $cat_id );
 }
+$tableWidth = '100%';
 $monthURL = ( ! empty ( $cat_id )? "month.php?cat_id=$cat_id&amp;" :'month.php?' );
 $prevMonth1 = $nextMonth1 = $prevMonth2 = $nextMonth2 = '';
 $smallTasks = $unapprovedStr = $printerStr = '';
@@ -51,7 +52,6 @@ if ( empty ( $DISPLAY_TASKS ) ||  $DISPLAY_TASKS == 'N' && $DISPLAY_SM_MONTH != 
     $monthURL );
   $nextMonth1 = display_small_month ( $nextmonth, $nextyear, true, true, 'nextmonth',
     $monthURL ); 
-  $tableWidth = '100%';
 }
 
 if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y' && $friendly !=1 ) {
@@ -85,7 +85,7 @@ print_header($INC,$HeadX);
 echo <<<EOT
   <table border="0" width="100%" cellpadding="1">
     <tr>
-      <td valign="top" width="{$tableWidth}" rowspan="2">
+      <td id="printarea" valign="top" width="{$tableWidth}" rowspan="2">
       {$prevMonth1}{$nextMonth1}
       {$navStr}
       {$monthStr}

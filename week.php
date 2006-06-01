@@ -254,16 +254,19 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $eventsStr .= "</tr>\n";
 }
 
-$tableWidth = ( $DISPLAY_TASKS == 'Y' ? '80%' : '100%' );
+$tableWidth = '100%';
 $eventinfo = ( ! empty ( $eventinfo )? $eventinfo : '' );
 if ( empty ( $friendly ) ) {
   $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
     $is_nonuser_admin ? $user : $login ) );
   $printerStr = generate_printer_friendly ( 'month.php' );
+} else {
+  $unapprovedStr = $printerStr = '';
 }
 $trailerStr = print_trailer ();
 if ( $DISPLAY_TASKS == 'Y'  ) {
-  $minical_tasks .= '<td  rowspan="2" valign="top">';
+  $tableWidth = '80%';
+  $minical_tasks .= '<td id="minicolumn" rowspan="2" valign="top">';
   $minical_tasks .= '<!-- START MINICAL -->';
   $minical_tasks .= '<div class="minicontainer">';
   if  ( $DISPLAY_SM_MONTH == 'Y' ) {
@@ -280,14 +283,14 @@ if ( $DISPLAY_TASKS == 'Y'  ) {
 echo <<<EOT
   <table width="100%"  cellpadding="1">
     <tr>
-      <td style="vertical-align:top; width:{$tableWidth};" >
+      <td id="printarea" style="vertical-align:top; width:{$tableWidth};" >
       {$navStr}
       </td>
       <td></td>
     </tr>
     <tr>
       <td>
-        <table class="main" cellspacing="0" cellpadding="0">
+        <table class="main " cellspacing="0" cellpadding="0">
           <tr>
             <th class="empty">&nbsp;</th>
             {$headerStr}
