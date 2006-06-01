@@ -1,7 +1,9 @@
 <?php
 /* $Id$ */
-  include_once 'includes/init.php';
-  print_header('','','',true);
+include_once 'includes/init.php';
+include_once 'includes/help_list.php';  
+print_header('', '', '', true);
+echo $helpListStr;
 ?>
 
 <h2><?php etranslate( 'Report Bug' )?></h2>
