@@ -13,6 +13,7 @@ if ( $CATEGORIES_ENABLED == 'N' ) {
 }
 
 $form = getGetValue ( 'form' );
+$cats = getGetValue ( 'cats' );
 $header_text = translate( 'ENTRY CATEGORIES' );
 
 $catNames = implode(',' , $categories);
@@ -31,8 +32,9 @@ print_header($INC,'','',true, false, true);
    echo '<select name="cats[]" size="10">' . "\n" . 
     '<option disabled>' . translate( 'AVAILABLE CATEGORIES' ) . "</option>\n";
     foreach ( $categories as $K => $V ) {
-      if ( $category_owners[$K] == $login || $is_admin || 
-        substr ( $form, 0, 4 ) == 'edit' ) {
+      //None is index -1 and needs to be ignored
+      if ( $K > 0 && ( $category_owners[$K] == $login || $is_admin || 
+        substr ( $form, 0, 4 ) == 'edit' ) ) {
         if ( empty ( $category_owners[$K] ) ) {
           echo "<option value=\"-$K\" name=\"$V\">$V<sup>*</sup>";
         } else {
