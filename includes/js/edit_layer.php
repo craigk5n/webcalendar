@@ -1,4 +1,6 @@
-<?php /* $Id$  */ ?>
+<?php /* $Id$  */ 
+defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+?>
 function valid_color ( str ) {
   var ch, j;
   var valid = "0123456789abcdefABCDEF";

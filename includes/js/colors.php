@@ -1,7 +1,6 @@
 <?php /* $Id$  */ 
-if (preg_match("/\/includes\//", $PHP_SELF)) {
-    die ("You can't access this file directly!");
-}
+defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+
 $color = $arinc[3];
 ?>
 
