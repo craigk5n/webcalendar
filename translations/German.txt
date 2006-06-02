@@ -11,14 +11,16 @@
 # Last update: 19 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 23 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 26 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 05-26-2006
+# Last update: 29 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 30 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 2 June 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 06-02-2006
 
 
 ###############################################
 # Specify a charset (will be sent within meta tag for each page)
 #
 charset: iso-8859-1
-
 
 
 ###############################################
@@ -43,6 +45,8 @@ An appointment has been canceled for you by: Eine Verabredung wurde storniert vo
 The subject was: Der Betreff lautete
 Date: Datum
 Time: Uhrzeit
+Email: Email
+Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
 
 
 ###############################################
@@ -118,7 +122,6 @@ Add New Group: Benutzergruppe hinzuf&uuml;gen
 # Page: group_edit_handler.php
 #
 You must specify a group name: Sie m&uuml;ssen einen Gruppennamen anlegen
-Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
 
 
 ###############################################
@@ -145,7 +148,8 @@ Not authorized: Keine Berechtigung
 ###############################################
 # Page: doc.php
 #
-Invalid entry id: Ung&uuml;ltiger Eintrag
+Invalid blob id: Ung&uuml;ltige 'blob' id
+Invalid entry id: Ung&uuml;ltiger id-Eintrag
 
 
 ###############################################
@@ -182,7 +186,7 @@ Month (on same calendar): Monat (am gleichen Kalender)
 preview: Vorschau (Ansicht)
 Users: Benutzer
 Selected: Ausgew&auml;hlte(r)
-All: Alle
+All: Jeden
 Select: Ausw&auml;hlen 
 Add: Hinzuf&uuml;gen
 
@@ -334,8 +338,8 @@ Unknown: Unbekannt
 Click here: <u>Klicken Sie hier</u>
 to manage reports for the Public Access calendar: Zum verwalten der Berichte f&uuml;r den &Ouml;ffentlichen Kalender
 Add new report: Neuen Bericht hinzuf&uuml;gen
-Manage Reports: Berichte verwalten
 Admin: Administration
+Manage Reports: Berichte verwalten
 
 
 ###############################################
@@ -438,7 +442,9 @@ Edit entry: Eintrag &auml;ndern
 Delete entry: Eintrag l&ouml;schen
 from calendar of: vom Kalender
 Copy entry: Eintrag kopieren
+This will delete the entry from your boss\' calendar.: Dieser Eintrag wird von Ihrem 'Boss'-Kalender gel&ouml;scht.
 This will delete the entry from your calendar.: Dieser Eintrag wird von Ihrem Kalender gel&ouml;scht.
+from your boss' calendar: von Ihrem 'Boss'-Kalender
 Add to My Calendar: Zu meinem Kalender hinzuf&uuml;gen
 Do you want to add this entry to your calendar?: Wollen Sie diesen Eintrag zu Ihrem Kalender hinzuf&uuml;gen?
 This will add the entry to your calendar.: Bitte best&auml;tigen, um den Eintrag hinzuzuf&uuml;gen.
@@ -477,7 +483,6 @@ Settings: Einstellungen
 Groups: Benutzergruppen
 NonUser Calendars: 'Zentrale' - Kalender
 Other: Sonstiges
-Email: Email
 Colors: Farben
 app-name-help: Gibt den Titel f&uuml;r die Titelleiste des Browsers, f&uuml;r alle Seiten des Kalenders und die Startseite des Kalenders an. Der Titel wird in die Sprachdatei eingetragen und kann f&uuml;r andere Spracheinstellungen abge&auml;ndert werden.
 Application Name: Anwendungsbezeichnung
@@ -499,6 +504,9 @@ Themes: Themen
 AVAILABLE THEMES: VERF&Uuml;GBARE THEMEN
 Preview: Vorschau
 Allow top menu: Erlaube Topmen&uuml;
+Date Selectors position: Position der Datumsauswahl im Topmen&uuml;
+Top: Oben
+Bottom: Unten
 menu-themes-help: Stellt die Farben und die Art des oberen Men&uuml;s ein
 Menu theme: Men&uuml; Thema
 fonts-help: Definiert die Standard-Schriftarten (z.B. "Arial, Helvetica")
@@ -530,10 +538,13 @@ display-general-use-gmt-help: Falls aktiv, werden allg. Datums/Zeiten als GMT an
 Display Common Use Date/Times as GMT: Verwenden des allg. Datums/Zeiten als GMT
 date-format-help: Legt ein spezielles Datumsformat fest.
 Date format: Datumsformat
-time-format-help: Gibt an welches Zeit-Format benutzt wird - 12-st&uuml;ndiges - Zeigt Zeiten als 3am, 8.30pm, etc. 24-st&uuml;ndiges - Zeigt Zeiten als 3.00, 20.30, etc.
+Small Task Date: Kleines Datumsformat f&uuml;r Aufgaben
+time-format-help: Gibt an welches Zeit-Format benutzt wird - 12-st&uuml;ndiges - Zeigt Zeiten als 3am, 8:30pm, etc. 24-st&uuml;ndiges - Zeigt Zeiten als 3:00, 20:30, etc.
 Time format: Zeit-Format
 12 hour: 12-st&uuml;ndig
 24 hour: 24-st&uuml;ndig
+display-minutes-help: Falls aktiviert, werden die ganzen Stunden auch mit :00 Minuten angezeigt
+Display 00 minutes always: Anzeigen auch von ':00' Minuten
 entry-interval-help: Setzt Minutenintervall beim &Auml;ndern eingetragener Zeiten
 Entry interval: Eintragsintervall
 time-interval-help: Legt das Zeitintervall in der Tages,- Wochen- und Monatsansicht fest.
@@ -632,8 +643,6 @@ nonuser-enabled-help: Falls aktiviert: Administratoren haben die M&ouml;glichkei
 Nonuser enabled: 'Zentrale'-Kalender aktiviert
 nonuser-list-help: Wo sollen die 'Zentralen'-Kalender in der Teilnehmerliste angezeigt werden?
 Nonuser list: Wo sollen die 'Zentralen' Kalender in der Teilnehmerliste angezeigt werden
-Top: Oben
-Bottom: Unten
 reports-enabled-help: Wenn aktiviert, finden die Benutzer am Ende jeder Seite einen Eintrag "Berichte" welcher f&uuml;r das Erstellen von Berichten verwendet werden kann. Zus&auml;tzlich kann der "Administrator" allgemeine Berichte erstellen, die f&uuml;r jeden Benutzer am Ende jeder Seite zur Verf&uuml;gung stehen.
 Reports enabled: Berichte aktivieren
 subscriptions-enabled-help: Bestimmt ob 'REMOTE'-Teilnehmer andere WebKalender von Teilnehmern abonnieren, und somit dessen Termine und ihre 'iCal'-aktiven Anwendungen (wie Apple's iCal oder Mozilla-Kalender) sehen k&ouml;nnen.
@@ -835,13 +844,12 @@ No user specified: Kein Benutzer ausgew&auml;hlt
 # Page: help_index.php
 #
 Help Index: Hilfe-Index
-Adding/Editing Calendar Entries: Hinzuf&uuml;gen/&Auml;ndern von Kalender-Eintr&auml;gen
-Report Bug: Fehlermeldung
 
 
 ###############################################
 # Page: help_edit_entry.php
 #
+Adding/Editing Calendar Entries: Hinzuf&uuml;gen/&Auml;ndern von Kalender-Eintr&auml;gen
 Brief Description: Kurzbeschreibung
 brief-description-help: Kurzbeschreibung (ca. 20 Zeichen) des Termines. Diese erscheint, wenn der Kalender angezeigt wird.
 Full Description: Ausf&uuml;hrliche Beschreibung
@@ -1056,7 +1064,6 @@ Set Password: Setze Kennwort
 ###############################################
 # Page: help_import.php
 #
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Dieses Formular erlaubt das Importieren der Kalendereintr&auml;ge ihres Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner <tt>datebook/datebook.dat</tt> in einem Unterverzeichnis mit Ihrem Usernamen sein.
 The following entries will not be imported: Folgende Eintr&auml;ge werden nicht importiert
@@ -1064,13 +1071,8 @@ Entries older than the current date: Eintr&auml;ge die &auml;lter als das aktuel
 Entries created in the Palm Desktop that have not been HotSync'd: Hinzugef&uuml;gte Eintr&auml;ge im Palm Desktop die nicht synchronisiert wurden (HotSync'd)
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er das Datum des Termines ist vorbei).
 Therefore, updates should be made in the Palm Desktop.: Deshalb sollten &Auml;nderungen auf dem Palm/Desktop durchgef&uuml;hrt werden.
-vCal: vCalendar
 This form will import vCalendar (.vcs) 1.0 events: Dieses Formular importiert vCalendar (.vcs) 1.0 Eintr&auml;ge
 The following formats have been tested: Folgende Formate wurden getestet
-Palm Desktop 4: Palm Desktop 4
-Lotus Organizer 6: Lotus Organizer 6
-Microsoft Outlook 2002: Microsoft Outlook 2002
-iCalendar: iCalendar
 This form will import iCalendar (.ics) events: Dieses Formular importiert iCalendar (.ics) Eintr&auml;ge
 Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Aktiviertes <b>Vorigen Import &uuml;berschreiben</b> bewirkt, da&szlig; vorige importierte Termine, welche die selbe UID verwenden, wie ein Termin von der neuen Import-Datei, als "l&ouml;schen" markiert sind. Das erlaubt ein Importieren einer aktuellen iCalendar Datei ohne Duplikate zu erzeugen.
 
@@ -1140,6 +1142,12 @@ Add New Category: Neue Kategorie hinzuf&uuml;gen
 # Page: edit_remotes_handler.php
 #
 Create a new layer to view this calendar: Erstelle neuen Layer um diesen Kalendar anzuzeigen.
+
+
+###############################################
+# Page: help_bug.php
+#
+Report Bug: Fehlermeldung
 
 
 ###############################################
@@ -1231,13 +1239,13 @@ Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
 #
 ENTRY CATEGORIES: EINGETRAGENE KATEGORIEN
 AVAILABLE CATEGORIES: VERF&Uuml;GBARE KATEGORIEN
-Global Category: Allg. Kategorien
+Global Category: Allg. Kategorie
 
 
 ###############################################
-# Page: includes/help_trailer.php
+# Page: includes/help_list.php
 #
-Go to: Gehe zu
+Page: Seite
 
 
 ###############################################
@@ -1271,6 +1279,7 @@ Event Imported: Termin importiert
 Unauthorized: Nicht autorisiert
 __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 __month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: __dd__. __mm__. __yyyy__
 This event is private: Dieser Termin ist <b>PRIVAT</b>
 Conf.: Vertraulich
 Sun: So
@@ -1283,7 +1292,6 @@ Sat: Sa
 WK: KW
 Task Name: Aufgabe
 Task Due Date: Abgabefrist
-__mm__/__dd__/__yyyy__: __dd__. __mm__. __yyyy__
 TASKS: AUFGABEN
 Task_Title: Aufgabentitel
 Due: F&auml;lligkeit
@@ -1417,6 +1425,7 @@ My Calendar: Mein Kalender
 Back to My Calendar: Zur&uuml;ck zu meinem Kalender
 Add New Entry: Eintrag hinzuf&uuml;gen
 Add New Task: Neue Aufgabe hinzuf&uuml;gen
+Go to: Gehe zu
 Logout: Abmelden
 Manage calendar of: Kalender verwalten von
 
