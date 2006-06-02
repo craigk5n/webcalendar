@@ -50,21 +50,23 @@ class WebCalendar {
    *
    * @todo Make it possible to distinguish between files in different directories (e.g. login.php and ws/login.php).
    */
-  var $_filePhaseMap = array(
-    '/^(nulogin|login|login-app|freebusy|publish|register|rss|upcoming|week_ssi|minical|controlpanel|icalclient|reload_remotes|ajax)\.php$/' =>
-      array(array('Config', 'PHPDBI', 'Functions'),
-            array('User', 'Connect')),
-    '/^(icalclient|get_reminders|get_events|ws)\.php$/' =>
-      array(array('Config', 'PHPDBI', 'Functions'),
-            array('User', 'Validate', 'Connect', 'SiteExtras')),
-    '/^convert_passwords\.php$/' => array(array('Config', 'PHPDBI'),
-                                          array()),
-    '/^send_reminders\.php$/' => array(array('Config', 'PHPDBI', 'Functions'),
-                                       array('User', 'SiteExtras')),
-    /* This is for files which have called include('includes/init.php') */
-    '/^init\.php$/' => array(array('InitFirstPhase', 'Config', 'PHPDBI', 'Functions'),
-                             array('User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'InitSecondPhase'))
-  );
+  var $_filePhaseMap = array(    '/^(nulogin|login|login-app|freebusy|publish|register|rss|upcoming|week_ssi|minical|controlpanel|icalclient|reload_remotes|ajax)\.php$/' =>
+  array(array('Config', 'PHPDBI', 'Functions'),
+  array('User', 'Connect')),
+'/^(icalclient|get_reminders|get_events|ws)\.php$/' =>
+  array(array('Config', 'PHPDBI', 'Functions'),
+  array('User', 'Validate', 'Connect', 'SiteExtras')),
+'/^convert_passwords\.php$/' =>
+  array(array('Config', 'PHPDBI'),
+  array()),
+'/^send_reminders\.php$/' =>
+  array(array('Config', 'PHPDBI', 'Functions'),
+  array('User', 'SiteExtras')),
+/* This is for files which have called include('includes/init.php') */
+'/^init\.php$/' =>
+  array(array('InitFirstPhase', 'Config', 'PHPDBI', 'Functions'),
+  array('User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'InitSecondPhase'))
+);
 
   /**
    * WebCalendar constructor.
@@ -136,7 +138,7 @@ class WebCalendar {
       $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_OTHERS, $can_add, $GROUPS_ENABLED,
       $USER_SEES_ONLY_HIS_GROUPS, $valid_user, $userlist, $NONUSER_ENABLED,
       $nonusers, $u_url, $user_fullname, $fullname, $PUBLIC_ACCESS_FULLNAME,
-      $CATEGORIES_ENABLED, $CATEGORY_VIEW, $caturl, $bodyid, $is_nonuser,
+      $CATEGORIES_ENABLED, $CATEGORY_VIEW, $caturl, $is_nonuser,
       $is_assistant;
     load_global_settings ();
 
@@ -146,15 +148,15 @@ class WebCalendar {
     $this->setLanguage();
 
     // error-check some commonly used form variable names
-    $id = getValue ( 'id', "[0-9]+", true );
-    $user = getValue ( 'user', "[A-Za-z0-9_\.=@,\-]*", true );
-    $date = getValue ( 'date', "[0-9]+" );
-    $year = getValue ( "year", "[0-9]+" );
-    $month = getValue ( 'month', "[0-9]+" );
-    $hour = getValue ( 'hour', "[0-9]+" );
-    $minute = getValue ( 'minute', "[0-9]+" );
-    $cat_id = getValue ( 'cat_id', "[\-0-9]+" );
-    $friendly = getValue ( 'friendly', "[01]" );
+    $id = getValue ( 'id', '[0-9]+', true );
+    $user = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]*', true );
+    $date = getValue ( 'date', '[0-9]+' );
+    $year = getValue ( 'year', '[0-9]+' );
+    $month = getValue ( 'month', '[0-9]+' );
+    $hour = getValue ( 'hour', '[0-9]+' );
+    $minute = getValue ( 'minute', '[0-9]+' );
+    $cat_id = getValue ( 'cat_id', '[\-0-9]+' );
+    $friendly = getValue ( 'friendly', '[01]' );
     if ( empty ( $PUBLIC_ACCESS ) )
       $PUBLIC_ACCESS = 'N';
     // Initialize access settings ($user_access string) and make sure user
@@ -236,80 +238,6 @@ class WebCalendar {
       else
         $caturl = "&amp;cat_id=$cat_id";
     }
-
-    /** Maps page filenames to the id that page's <body> tag will have
-     *
-     * @global array $bodyid
-     */
-    $bodyid = array(
-      'activity_log.php' => 'activitylog',
-      'add_entry.php' => 'addentry',
-      'adminhome.php' => 'adminhome',
-      'admin.php' => 'admin',
-      'approve_entry.php' => 'approveentry',
-      'assistant_edit.php' => 'assistantedit',
-      'category.php' => 'category',
-      'day.php' => 'day',
-      'del_entry.php' => 'delentry',
-      'del_layer.php' => 'dellayer',
-      'edit_entry.php' => 'editentry',
-      'edit_layer.php' => 'editlayer',
-      'edit_nonusers_handler.php' => 'editnonusershandler',
-      'edit_nonusers.php' => 'editnonusers',
-      'edit_remotes.php' => 'editremotes',
-      'edit_remotes_handler.php' => 'editremoteshandler',
-      'edit_report.php' => 'editreport',
-      'edit_task.php' => 'edittask',
-      'edit_template.php' => 'edittemplate',
-      'edit_user_handler.php' => 'edituserhandler',
-      'edit_user.php' => 'edituser',
-      'export.php' => 'export',
-      'group_edit_handler.php' => 'groupedithandler',
-      'group_edit.php' => 'groupedit',
-      'groups.php' => 'groups',
-      'help_admin.php' => 'helpadmin',
-      'help_bug.php' => 'helpbug',
-      'help_edit_entry.php' => 'helpeditentry',
-      'help_edit_task.php' => 'helpedittask',
-      'help_import.php' => 'helpimport',
-      'help_index.php' => 'helpindex',
-      'help_layers.php' => 'helplayers',
-      'help_pref.php' => 'helppref',
-      'import.php' => 'import',
-      'index.php' => 'index',
-      'layers.php' => 'layers',
-      'layers_toggle.php' => 'layerstoggle',
-      'list_unapproved.php' => 'listunapproved',
-      'login.php' => 'login',
-      'minical.php' => 'minicalendar',
-      'month.php' => 'month',
-      'nonusers.php' => 'nonusers',
-      'pref.php' => 'pref',
-      'publish.php' => 'publish',
-      'purge.php' => 'purge',
-      'register.php' => 'register',
-      'reject_entry.php' => 'rejectentry',
-      'report.php' => 'report',
-      'search.php' => 'search',
-      'select_user.php' => 'selectuser',
-      'set_entry_cat.php' => 'setentrycat',
-      'usersel.php' => 'usersel',
-      'users.php' => 'users',
-      'view_d.php' => 'viewd',
-      'view_entry.php' => 'viewentry',
-      'view_l.php' => 'viewl',
-      'view_m.php' => 'viewm',
-      'view_r.php' => 'viewr',
-      'views_edit.php' => 'viewsedit',
-      'views.php' => 'views',
-      'view_t.php' => 'viewt',
-      'view_v.php' => 'viewv',
-      'view_w.php' => 'vieww',
-      'week_details.php' => 'weekdetails',
-      'week.php' => 'week',
-      'week_ssi.php' => 'weekssi',
-      'year.php' => 'year'
-    );
   }
 
   /**
@@ -379,7 +307,7 @@ class WebCalendar {
     for ( $n = 0; $n < count ( $configLines ); $n++ ) {
       $buffer = $configLines[$n];
       $buffer = trim ( $buffer, "\r\n " );
-      if ( preg_match ( "/^#/", $buffer ) )
+      if ( preg_match ( "/^#|\//", $buffer ) )
         continue;
       if ( preg_match ( "/^<\?/", $buffer ) ) // start php code
         continue;
