@@ -96,6 +96,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   if ( ! empty ( $categories ) ) {
     echo '<ul>';
     foreach ( $categories as $K => $V ) {
+      if ( $K <1 ) continue;
       $catIcon = $icon_path. 'cat-' . $K . '.gif';
       echo '<li>';
       if ( $category_owners[$K] == $login || $is_admin )
