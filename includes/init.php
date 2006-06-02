@@ -97,7 +97,7 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   global $LANGUAGE, $DISABLE_POPUPS, $MENU_ENABLED, $MENU_THEME;
   global $CUSTOM_HEADER, $CUSTOM_SCRIPT,$REQUEST_URI;
   global $friendly, $DISPLAY_WEEKENDS, $DISPLAY_TASKS;
-  global $bodyid, $self, $login, $browser;
+  global $self, $login, $browser;
   $ret = '';
   //remember this view if the file is a view_x.php script
   if ( ! strstr ( $REQUEST_URI, 'view_entry' ) )  remember_this_view ( true );
@@ -220,9 +220,9 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   // Finish the header
   $ret .= "</head>\n<body";
 
-  // Find the filename of this page and give the <body> tag the corresponding id
-  if ( isset( $bodyid[$thisPage] ) )
-    $ret .= " id=\"" . $bodyid[$thisPage] . '"';
+  // Calculate the <body> id value and assign it
+  $thisPageId = preg_replace ( "/(_|.php)/" , '' , $thisPage );
+  $ret .= ' id="' . $thisPageId . '"';
 
   // Add any extra parts to the <body> tag
   if ( ! empty( $BodyX ) )
