@@ -61,7 +61,7 @@ Here are some other ideas for the next or perhaps later releases:
     public events (would run in background until new event is submitted,
     then popup for accept/reject)
 [ ] Admin tool for importing a large number of users (CSV, tab-delimeted, etc.)
-[ ] Support for remote calendar subscriptions (ical) for each user.
+[X] Support for remote calendar subscriptions (ical) for each user.
     Would need to add a new cron job to periodically update/re-import
     the remote ics file.
 [X] Add iCal client publish so Mozilla Calendar (or Apple iCal) can
