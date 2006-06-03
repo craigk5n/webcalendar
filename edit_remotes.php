@@ -79,7 +79,7 @@ echo <<<EOT
       <label for="calid">{$calIdStr}:</label></td>
       <td>{$id_display}</td></tr>
     <tr><td>
-      <label for="nfirstname">[$firstNameStr}:</label></td><td>
+      <label for="nfirstname">{$firstNameStr}:</label></td><td>
       <input type="text" name="nfirstname" id="nfirstname" size="20" maxlength="25" value="{$firstNameValue}" /></td></tr>
     <tr><td>
       <label for="nlastname">{$lastNameStr}:</label></td><td>
