@@ -30,7 +30,7 @@ function print_user_list () {
     $is_nonuser_admin, $is_assistant;
 
   if ( $single_user == 'N' && $is_admin ) {
-    $userlist = get_my_users ();
+    $userlist = user_get_users ();
     if ($NONUSER_ENABLED == 'Y' ) {
       $nonusers = get_nonuser_cals ();
       $userlist = ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == 'Y') ?

@@ -63,7 +63,7 @@ print_header($INC,'','',true, false, true);
 
 $users = get_my_users ();
 if ($NONUSER_ENABLED == 'Y' ) {
-  $nonusers = get_nonuser_cals ();
+  $nonusers = get_my_nonusers ( $login , true );
   $users = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
 }
 for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {

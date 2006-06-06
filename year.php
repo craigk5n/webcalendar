@@ -102,7 +102,7 @@ echo <<<EOT
   <br />
  
   <div align="center">
-  <table class="main">
+  <table>
     <tr>
       <td>{$month1}</td>
       <td>{$month2}</td>

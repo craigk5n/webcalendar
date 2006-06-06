@@ -144,7 +144,7 @@ $events = $e_save;
 $repeated_events = $re_save;
 ?>
 
-<table class="viewt">
+<table class="main">
 <?php
 for ( $date = $wkstart, $h = 0;
   date ( 'Ymd', $date ) <= date ( 'Ymd', $wkend );

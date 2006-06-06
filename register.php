@@ -303,7 +303,7 @@ if ( ! empty ( $error ) ) {
 if ( ! empty ($control ) && empty ( $error ) ) { ?>
 <form action="login.php" method="post"  >
 <input  type="hidden" name="login" value="<?php echo $user ?>" />
-<table align="center"  cellpadding="0" cellspacing="10">
+<table align="center" cellspacing="10" cellpadding="10">
 <tr><td rowspan="3"><img src="images/register.gif"></td>
 
 <td><?php etranslate( 'Welcome to WebCalendar' )?></td></tr>
@@ -319,7 +319,7 @@ if ( ! empty ($control ) && empty ( $error ) ) { ?>
 <?php } else if ( empty ( $error ) ) { ?>
 <form action="register.php" method="post" onsubmit="return valid_form()" name="selfreg">
 <input  type="hidden" name="control" value="<?php echo $form_control ?>" />
-<table align="center"  cellpadding="0" cellspacing="10">
+<table align="center"  cellpadding="10" cellspacing="10">
 <tr><td rowspan="3"><img src="images/register.gif" alt="" /></td>
 <td  align="right">
   <label><?php etranslate( 'Username' )?>:</label></td>

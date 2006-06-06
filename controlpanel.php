@@ -56,7 +56,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
   codebase="<?php echo $SERVER_URL;?>"
   href="controlpanel.php">
   <information>
-    <title><?php echo translate ( "Control Panel" ) .
+    <title><?php echo translate ( 'Control Panel' ) .
       ': ' . htmlentities ( $APPLICATION_NAME );?></title>
     <vendor>k5n.us</vendor>
     <homepage href="http://www.k5n.us"/>

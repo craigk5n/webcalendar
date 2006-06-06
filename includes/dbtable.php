@@ -30,9 +30,8 @@ function dbtable_get_field_index ( $tablear, $fieldname ) {
 function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
   $actionlabel="", $hidden="" ) {
   global $CELLBG;
-  $ret = "<table style=\"border-width:0px;\" cellspacing=\"0\" cellpadding=\"0\">" .
-    "<tr><td style=\"background-color:#000000;\">" .
-    "<table style=\"border-width:0px; width:100%;\" cellspacing=\"1\" cellpadding=\"2\">" .
+  $ret = '<table><tr><td style="background-color:#000000;">' .
+    '<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">' .
     "<tr><td style=\"width:100%; background-color:$CELLBG;\">" .
     "<table style=\"border-width:0px; width:100%;\">\n";
   if ( ! is_array ( $tablear ) ) {
@@ -150,9 +149,9 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
     return "Error: dbtable_to_html_list parameter 2 is not an array!\n<br />\n";
   if ( ! is_array ( $keys ) )
     return "Error: dbtable_to_html_list parameter 3 is not an array!\n<br />\n";
-  $ret = "<table style=\"border-width:0px;\" cellspacing=\"0\" cellpadding=\"0\">" .
-    "<tr><td style=\"background-color:#000000;\">" .
-    "<table style=\"border-width:0px; width:100%;\" cellspacing=\"1\" cellpadding=\"2\">" .
+  $ret = '<table>' .
+    '<tr><td style="background-color:#000000;">' .
+    '<table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">' .
     "<tr><td style=\"width:100%; background-color:$CELLBG;\">" .
     "<table style=\"border-width:0px; width:100%;\">\n";
   // header

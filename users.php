@@ -28,12 +28,11 @@ if ( empty ( $login) || $login == '__public__' ) {
 }
 
 $INC = array('js/users.php/true','js/visible.php/true');
-$BodyX = ( ! empty ( $tab ) ?  "onload=\"showTab( '$tab' );\"" : '"' );
+$BodyX = ( ! empty ( $tab ) ?  "onload=\"showTab( '$tab' );\"" : '' );
 print_header($INC,'', $BodyX );
 
-
+echo display_admin_link();
 ?>
-<a title="<?php etranslate( 'Admin' ) ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate( 'Admin' ) ?></a><br /><br />
 
 <!-- TABS -->
 <div id="tabs">

@@ -188,7 +188,7 @@ function myOnLoad() {
  }
 ?>
 </head>
-<body <?php if ( ! $logout ) { ?>onload="myOnLoad();"<?php } ?>>
+<body id="login" <?php if ( ! $logout ) { ?>onload="myOnLoad();"<?php } ?>>
 <?php
 // Print custom header (since we do not call print_header function)
 if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
@@ -235,7 +235,7 @@ if ( ! empty ( $return_path ) ) {
 }
 ?>
 
-<table cellpadding="10" align="center">
+<table align="center" cellspacing="10" cellpadding="10">
 <tr><td rowspan="2">
  <img src="images/login.gif" alt="Login" /></td><td align="right">
  <label for="user"><?php etranslate( 'Username' )?>:</label></td><td>

@@ -77,7 +77,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 ?>
 
 
-<table style="border-width:0px; width:100%;" cellspacing="0" cellpadding="0">
+<table width="100%">
 <tr><td style="background-color:<?php echo $TABLEBG?>;">
 <table style="border-width:0px; width:100%;" cellspacing="1" cellpadding="2">
 

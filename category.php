@@ -35,8 +35,8 @@ if ( ! empty ( $id ) ) {
 print_header();
 ?>
 <h2><?php etranslate( 'Categories' )?></h2>
-<a title="<?php etranslate( 'Admin' ) ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate( 'Admin' ) ?></a><br /><br />
 <?php
+echo display_admin_link();
 
 if ( empty ( $add ) )
   $add = 0;

@@ -102,7 +102,7 @@ if ( $single_user != 'Y' ) {
     if ( ! access_is_enabled () ||
       access_can_access_function ( ACCESS_ANOTHER_CALENDAR, $user ) ) {
       // get count of users this user can see.  if > 1, then...
-      $ulist = array_merge ( get_my_users(), get_nonuser_cals () );
+      $ulist = array_merge ( get_my_users(), get_my_nonusers ( $login , true ) );
       if ( count ( $ulist ) > 1 ) {
         $select_user_url = 'select_user.php'; 
       }
@@ -323,7 +323,7 @@ function jscMenu_divider () {
 //------------------------------------------------------------------//
 ?>
 
-<table width="100%" class="ThemeMenubar" cellpadding="0" cellspacing="0" border="0">
+<table width="100%" class="ThemeMenubar">
   <tr>
    <td class="ThemeMenubackgr">
 <div id="myMenuID"></div>
@@ -402,7 +402,7 @@ var myMenu =
         jscMenu_close();
       }    
       
-      if ( ( ! access_is_enabled () ||
+      if ( ! $is_nonuser && ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_VIEW_MANAGEMENT, $user ) ) &&
         $readonly != 'Y' ) {    
         jscMenu_divider();
@@ -431,7 +431,7 @@ var myMenu =
       jscMenu_close();
     }    
 
-    if ( $REPORTS_ENABLED == 'Y' && $readonly != 'Y' &&
+    if ( ! $is_nonuser && $REPORTS_ENABLED == 'Y' && $readonly != 'Y' &&
       ( ! access_is_enabled () || access_can_access_function ( ACCESS_REPORT, $user ) ) ) {
       jscMenu_divider();
       jscMenu_item ( 'manage_reports.png', 'Manage Reports', 'report.php' );
@@ -452,7 +452,7 @@ var myMenu =
   // translate ( 'Unapproved Events', true);
   // translate ( 'System Settings', true);
   // translate ( 'User Manager', true);
-  if ( $login != '__public__' && $readonly != 'Y' ) {
+  if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' ) {
   jscMenu_menu ('Settings');  
 
     // Nonuser Admin Settings
@@ -528,8 +528,11 @@ var myMenu =
   // translate ( 'Advanced Search', true);
   if ( $search_url != '' ) {
     jscMenu_menu ('Search');
-    jscMenu_item ( 'search.png', 'Advanced Search', 'search.php' );
-    jscMenu_divider();
+    if ( $login != '__public__' && ( ! $is_nonuser || access_is_enabled () && 
+      access_can_access_function ( ACCESS_ADVANCED_SEARCH ) ) ) {
+      jscMenu_item ( 'search.png', 'Advanced Search', 'search.php' );
+      jscMenu_divider();
+    }
     jscMenu_custom('<td class="ThemeMenuItemLeft"><img src="includes/menu/icons/spacer.gif" /></td><td colspan="2"><form action="search_handler.php" method="post"><input type="text" name="keywords" size="25" /><input type="submit" value="' . translate ( 'Search', true) . '" /></form></td>');
     jscMenu_close();
   }
@@ -565,12 +568,12 @@ cmDraw ('myMenuID', myMenu, 'hbr', cmTheme, 'Theme');
 <?php
 if ( ! empty ( $logout_url ) ) { //using http_auth
   if ( strlen ( $login ) && $login != '__public__' ) {
-    echo '<a  title="' . 
+    echo '<a style="font-size: 12px" title="' . 
       translate( 'Logout' ) . "\" href=\"$logout_url\">" . 
-      translate( 'Logout' ) . "</a>: $login\n";
+      translate( 'Logout' ) . ":</a> <label>$login</label>\n";
     } else {
     // For public user
-    echo '<a title="' . 
+    echo '<a style="font-size: 12px" title="' . 
       translate( 'Login' ) . "\" href=\"$login_url\">" . 
       translate( 'Login' ) . "</a>\n";
   }

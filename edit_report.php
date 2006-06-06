@@ -101,7 +101,8 @@ $ranges = array (
 if ( empty ( $error ) && $show_participants ) {
   $userlist = get_my_users ();
   if ($NONUSER_ENABLED == 'Y' ) {
-    $nonusers = get_nonuser_cals ();
+    //restrict NUC list if groups are enabled
+    $nonusers = get_my_nonusers ( $login , true );
     $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : 
       array_merge($userlist, $nonusers);
   }

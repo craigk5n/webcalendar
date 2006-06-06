@@ -12,6 +12,10 @@
  * discontinued) or FCKEditor.  See the WebCalendar home page
  * for download and install instructions for these packages.
  *
+ * TODO 
+ *   Add <fieldset></fieldset> grouping if $EVENT_EDIT_TABS = N
+ *   Fix XHTML errors with duplicate ids and ids starting with numbers
+ *
  */
 include_once 'includes/init.php';
 
@@ -140,6 +144,9 @@ $participants = $exceptions = $inclusions = $reminder = array();
 $byday = $bymonth = $bymonthday = $bysetpos = array();
 $wkst = 'MO';
 $create_by = $login;
+
+$real_user =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
+  $is_admin ) ) ? $user : $login;
 
 if ( $readonly == 'Y' || $is_nonuser ) {
   $can_edit = false;
@@ -332,8 +339,6 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   dbi_free_result ( $res );
  }
   //get user's categories 
-  $real_user =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
-    $is_admin ) ) ? $user : $login;
   $sql = 'SELECT  webcal_entry_categories.cat_id, ' .
     ' webcal_entry_categories.cat_owner, webcal_entry_categories.cat_order, cat_name ' .
     ' FROM webcal_entry_categories, webcal_categories ' .
@@ -873,7 +878,8 @@ if ( $login == '__public__' && $PUBLIC_ACCESS_OTHERS != 'Y' )
 if ( $single_user == 'N' && $show_participants ) {
   $userlist = get_my_users ( $create_by, 'invite' );
   if ($NONUSER_ENABLED == 'Y' ) {
-    $nonusers = get_nonuser_cals ();
+    // include public NUCs
+    $nonusers = get_my_nonusers ( $real_user, true );
     $userlist = ($NONUSER_AT_TOP == 'Y') ? 
       array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }

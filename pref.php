@@ -186,8 +186,9 @@ $formaction = substr($self, strrpos($self, '/') + 1) . '?' . $_SERVER['QUERY_STR
 <?php 
  if ($user) 
   echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
+
+echo display_admin_link();
 ?>
-<a title="<?php etranslate( 'Admin' ) ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate( 'Admin' ) ?></a>&nbsp;&nbsp;
 <input type="submit" value="<?php etranslate( 'Save Preferences' )?>" name="" />
 &nbsp;&nbsp;&nbsp;
 <?php if ( $updating_public ) { ?>
@@ -207,7 +208,7 @@ if ( $is_admin && ! $updating_public  ) {
   }
 }
 if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
-  $nulist = get_nonuser_cals ( $login );
+  $nulist = get_my_nonusers ( $login );
   echo '<select onchange="location=this.options[this.selectedIndex].value;">' ."\n";
   echo "<option $selected disabled=\"disabled\" value=\"\">" . 
     translate ( 'Modify Non User Calendar Preferences') . "</option>\n";

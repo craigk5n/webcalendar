@@ -150,8 +150,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
 ?>  
   <h2><?php echo $uacStr;?>:<?php echo $user_fullname;?></h2>
 
-  <a title="<?php echo $adminStr;?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php 
-  echo $adminStr;?></a><br /><br />
+<?php echo display_admin_link(); ?>
 
   <form action="access.php" method="post" name="accessform">
   <input type="hidden" name="auser" value="<?php echo $guser;?>" />
@@ -164,9 +163,9 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
   $div = ceil ( ACCESS_NUMBER_FUNCTIONS / 4 );
 
   for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ){
-    // Public access can never use some of these functions
+    // Public access and NUCs can never use some of these functions
     $show = true;
-    if ( $guser == '__public__' ) {
+    if ( $guser == '__public__' || $is_nonuser ) {
       switch ( $i ) {
         case ACCESS_VIEW_MANAGEMENT:
         case ACCESS_ACTIVITY_LOG:
@@ -440,9 +439,7 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
   
   echo '<h2>' . translate ( 'User Access Control' ) . "</h2>\n";
   
-  echo '<a title="' . translate( 'Admin' ) .
-    '" class="nav" href="adminhome.php">&laquo;&nbsp;' .
-    translate( 'Admin' ) . "</a><br /><br />\n";
+  echo display_admin_link();
   
   $userlist = get_my_users ();
   $nonuserlist = get_nonuser_cals ();
@@ -481,11 +478,10 @@ echo print_trailer(); ?>
 function get_list_of_users ( $user )
 {
   global $is_admin, $is_nonuser_admin;
-  // groups not enabled... return all users
-  //echo "No groups. ";
   $u = get_my_users ( $user, 'view');
   if ( $is_admin || $is_nonuser_admin ) {
-    $nonusers = get_nonuser_cals ();
+    // get public NUCs also
+    $nonusers = get_my_nonusers ( $user, true);
     $u = array_merge( $nonusers, $u );
   }
   return $u;

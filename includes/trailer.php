@@ -118,7 +118,7 @@ if ( $single_user != 'Y' ) {
     if ( ! access_is_enabled () ||
       access_can_access_function ( ACCESS_ANOTHER_CALENDAR ) ) {
       // get count of users this user can see.  if > 1, then...
-      $ulist = array_merge ( get_my_users(), get_nonuser_cals () );
+      $ulist = array_merge ( get_my_users(), get_my_nonusers ( $login , true ) );
       if ( count ( $ulist ) > 1 ) {
         $goto_link[] = '<a title="' . 
           translate("Another User's Calendar") .

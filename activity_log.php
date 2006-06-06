@@ -27,9 +27,9 @@ print_header();
 
 $startid = getIntValue ( 'startid' );
 
-echo '<h3>' . translate( 'Activity Log' ) . "</h3>\n";
+echo '<h2>' . translate( 'Activity Log' ) . "</h2>\n";
 
-echo '<a title="' . translate( 'Admin' ) . '" class="nav" href="adminhome.php">&laquo;&nbsp;' . translate( 'Admin' ) . '</a><br /><br />' . "\n";
+echo display_admin_link();
 
 echo "<table class=\"embactlog\">\n";
 echo "<tr><th class=\"usr\">\n" .
