@@ -278,10 +278,10 @@ if ( $can_add ) {
 }
  
 if ( ! $fit_to_window ) { ?>
-<table <?php echo $help;?> class="main" cellspacing="0" cellpadding="0"
-  style="width:<?php echo $table_width;?>px;" width="<?php echo $table_width;?>">
+<table <?php echo $help;?> class="main" style="width:<?php 
+  echo $table_width;?>px;" width="<?php echo $table_width;?>">
 <?php } else { ?>
-<table <?php echo $help;?> class="main" cellspacing="0" cellpadding="0" width="100%">
+<table <?php echo $help;?> class="main" width="100%">
 <?php } ?>
 
 <!-- table header -->

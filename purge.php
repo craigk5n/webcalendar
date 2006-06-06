@@ -61,11 +61,7 @@ echo '<h2>' . translate( 'Delete Events' );
 if ( $preview )
   echo '[ ' . translate( 'Preview' ) . ']';
 echo "</h2>\n";
-
-?>
-<a title="<?php etranslate( 'Admin' ) ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate( 'Admin' ) ?></a><br /><br />
-<?php
-
+echo display_admin_link();
 
 if ( $do_purge ) {
   if ( $preview ) {

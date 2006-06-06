@@ -38,7 +38,7 @@ if ( ! empty ( $error ) ) {
   echo '<h2>' . translate ( 'Error' ) . "</h2>\n<p>" . $error . "</p>\n";
 } else {
 ?>
-<table style="border-width:0px;">
+<table>
 <tr><td style="vertical-align:top; width:50%;">
 <h2><?php
  if ( ! empty ( $user ) ) {

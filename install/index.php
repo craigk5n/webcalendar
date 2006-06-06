@@ -50,7 +50,7 @@ if ( ! empty (  $_SERVER['PHP_AUTH_USER'] ) )
 $lang = get_browser_language ();
 if ( $lang == 'none' )
  $lang = '';
-if ( strlen ( $lang ) == 0 || $lang == 'none' ) {
+if ( strlen ( $lang ) == 0 ) {
 $lang = 'English-US'; // Default
 }
 
@@ -1668,7 +1668,8 @@ if ( ! $exists || ! $canWrite ) { ?>
    <tr><td colspan="2" width="50%">
      <?php etranslate ( 'This is the final step in setting up your WebCalendar Installation' ) ?>.
    </td></tr>
-   <?php if ( $_SESSION['tz_conversion'] != 'Y' ) { ?>
+   <?php if ( ! empty ( $_SESSION['tz_conversion'] ) && 
+     $_SESSION['tz_conversion'] != 'Y' ) { ?>
   <th class="header" colspan="2"><?php etranslate ( 'Timezone Conversion' ) ?></th></tr>
   <tr><td colspan="2">
  <?php if ( $_SESSION['tz_conversion'] != 'Success' ) {?>

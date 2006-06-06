@@ -290,7 +290,7 @@ echo <<<EOT
     </tr>
     <tr>
       <td>
-        <table class="main " cellspacing="0" cellpadding="0">
+        <table class="main ">
           <tr>
             <th class="empty">&nbsp;</th>
             {$headerStr}

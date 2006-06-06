@@ -1,5 +1,8 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1414471: missing 'back to my calendar' in the trailer for 'non_user'
+      1366151: NUC's cannot be handled by their admins
+      1499150: Events Not Wordwrapping Correctly
       1497840: Entries not shown in Day view for current day +GMT TZ only
       1472286: Event Creation Aborted Upon Error
       1476212: Conflict check with repeating events and DST

@@ -163,7 +163,7 @@ print_header ( $INC, '', $BodyX );
 
 <form action="admin.php" method="post" onsubmit="return valid_form(this);" name="prefform">
 <?php if ( ! $error ) {
- echo '<a title="' . translate( 'Admin' ) . '" class="nav" href="adminhome.php">&laquo;&nbsp;' . translate( 'Admin' ) . "</a>&nbsp;&nbsp;&nbsp;\n";
+  echo display_admin_link() . "&nbsp;&nbsp;&nbsp;\n";
 ?>
 <input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>" />
 <input type="submit" value="<?php etranslate( 'Save' )?>" name="" />
@@ -185,7 +185,7 @@ print_header ( $INC, '', $BodyX );
 <div id="tabscontent">
  <!-- DETAILS -->
  <div id="tabscontent_settings">
- <table cellspacing="0" cellpadding="3">
+ <table >
  <tr><td class="tooltip" title="<?php etooltip( 'app-name-help' )?>">
   <label for="admin_APPLICATION_NAME"><?php etranslate( 'Application Name' )?>:</label></td><td>
   <input type="text" size="40" name="admin_APPLICATION_NAME" id="admin_APPLICATION_NAME" value="<?php 
@@ -663,7 +663,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <!-- BEGIN PUBLIC ACCESS -->
 
 <div id="tabscontent_public">
- <table cellspacing="0" cellpadding="3">
+ <table >
   <tr><td class="tooltip" title="<?php etooltip( 'allow-public-access-help' )?>">
    <?php etranslate( 'Allow public access' )?>:</td><td>
    <label><input type="radio" name="admin_PUBLIC_ACCESS" value="Y" <?php if ( $s['PUBLIC_ACCESS'] == 'Y' ) echo $checked;?> onclick="public_handler()" />&nbsp;<?php echo $Yes?></label>&nbsp;
@@ -719,7 +719,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <!-- BEGIN USER ACCESS CONTROL -->
 <div id="tabscontent_uac">
-<table cellspacing="0" cellpadding="3">
+<table >
 <tr><td class="tooltip" title="<?php etooltip( 'uac-enabled-help' )?>">
    <?php etranslate( 'User Access Control enabled' )?>:</td><td>
    <label><input type="radio" name="admin_UAC_ENABLED" value="Y" <?php if ( $s['UAC_ENABLED'] == 'Y' ) echo $checked;?> />&nbsp;<?php echo $Yes?></label>&nbsp;
@@ -731,7 +731,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <!-- BEGIN GROUPS -->
 <div id="tabscontent_groups">
-<table cellspacing="0" cellpadding="3">
+<table >
  <tr><td class="tooltip" title="<?php etooltip( 'groups-enabled-help' )?>">
   <?php etranslate( 'Groups enabled' )?>:</td><td>
   <label><input type="radio" name="admin_GROUPS_ENABLED" value="Y" <?php if ( $s['GROUPS_ENABLED'] == 'Y' ) echo $checked;?> />&nbsp;<?php echo $Yes?></label>&nbsp;
@@ -747,7 +747,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <!-- BEGIN NONUSER -->
 <div id="tabscontent_nonuser">
-<table cellspacing="0" cellpadding="3">
+<table >
  <tr><td class="tooltip" title="<?php etooltip( 'nonuser-enabled-help' )?>">
   <?php etranslate( 'Nonuser enabled' )?>:</td><td>
   <label><input type="radio" name="admin_NONUSER_ENABLED" value="Y" <?php if ( $s['NONUSER_ENABLED'] == 'Y' ) echo $checked;?> />&nbsp;<?php echo $Yes?></label>&nbsp;
@@ -763,7 +763,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <!-- BEGIN REPORTS -->
 <div id="tabscontent_other">
-<table cellspacing="0" cellpadding="3">
+<table >
 <tr><td class="tooltip" title="<?php etooltip( 'reports-enabled-help' )?>">
  <?php etranslate( 'Reports enabled' )?>:</td><td>
  <label><input type="radio" name="admin_REPORTS_ENABLED" value="Y" <?php if ( $s['REPORTS_ENABLED'] == 'Y' ) echo $checked;?> />&nbsp;<?php echo $Yes?></label>&nbsp;
@@ -903,7 +903,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <!-- BEGIN EMAIL -->
 <div id="tabscontent_email">
-<table cellspacing="0" cellpadding="3">
+<table >
 <tr><td class="tooltip" title="<?php etooltip( 'email-enabled-help' )?>">
  <?php etranslate( 'Email enabled' )?>:</td><td>
  <label><input type="radio" name="admin_SEND_EMAIL" value="Y" <?php if ( $s['SEND_EMAIL'] == 'Y' ) echo $checked;?> onclick="email_handler()" />&nbsp;<?php echo $Yes?></label>&nbsp;
@@ -984,7 +984,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <!-- BEGIN COLORS -->
 <div id="tabscontent_colors">
-<table cellspacing="0" cellpadding="3"  width="100%">
+<table   width="100%">
 <tr><td width="30%"><label>
  <?php etranslate( 'Allow user to customize colors' )?>:</label></td><td colspan="5">
  <label><input type="radio" name="admin_ALLOW_COLOR_CUSTOMIZATION" value="Y"<?php if ( $s['ALLOW_COLOR_CUSTOMIZATION'] != 'N' ) echo $checked;?> />&nbsp;<?php echo $Yes?></label>&nbsp;

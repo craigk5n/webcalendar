@@ -88,7 +88,7 @@ function getGetValue ( $name ) {
  * <b>Note:</b> The return value will be affected by the value of
  * <var>magic_quotes_gpc</var> in the php.ini file.
  *
- * <b>Note:</b> If you need to get an integer value, yuou can use the
+ * <b>Note:</b> If you need to get an integer value, you can use the
  * getIntValue function.
  *
  * @param string $name   Name used in the HTML form or found in the URL
@@ -560,7 +560,7 @@ function send_no_cache_header () {
 function load_user_preferences ( $guest='') {
   global $login, $browser, $views, $prefarray, $is_assistant,
     $DATE_FORMAT_MY, $DATE_FORMAT, $DATE_FORMAT_MD, $DATE_FORMAT_TASK,
-    $LANGUAGE, $lang_file, $has_boss, $user, $is_nonuser_admin, 
+    $LANGUAGE, $lang_file, $has_boss, $user, $is_nonuser_admin, $is_nonuser,
     $ALLOW_COLOR_CUSTOMIZATION;
   $lang_found = false;
   $colors = array (
@@ -612,10 +612,14 @@ function load_user_preferences ( $guest='') {
     set_env ( 'TZ', $GLOBALS['TIMEZONE'] );
   
   // get views for this user and global views
+  // if NUC and not authorized by UAC, disallow global views
+  $getGlobal = ( $is_nonuser && ( ! access_is_enabled () || 
+    access_is_enabled () && ! access_can_access_function ( ACCESS_VIEWS ) ) ?
+     '' : " OR cal_is_global = 'Y' " );
   $rows = dbi_get_cached_rows (
     'SELECT cal_view_id, cal_name, cal_view_type, cal_is_global ' .
     'FROM webcal_view ' .
-    "WHERE cal_owner = ? OR cal_is_global = 'Y' " .
+    "WHERE cal_owner = ? $getGlobal " .
     'ORDER BY cal_name', array( $tmp_login ) );
   if ( $rows ) {
     $views = array ();
@@ -799,7 +803,7 @@ function get_my_users ( $user='', $reason='invite') {
     ! $is_admin ) {
     // get groups that current user is in
     $rows = dbi_get_cached_rows ( 'SELECT cal_group_id FROM webcal_group_user ' .
-      'WHERE cal_login = ?', array( $login ) );
+      'WHERE cal_login = ?', array( $this_user ) );
     $groups = array ();
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
@@ -814,7 +818,7 @@ function get_my_users ( $user='', $reason='invite') {
     }
     $u = user_get_users ();
     if ( $is_nonuser_admin ) {
-      $nonusers = get_nonuser_cals ();
+      $nonusers = get_my_nonusers ();
       $u = array_merge( $nonusers, $u );
     }
     $u_byname = array ();
@@ -871,6 +875,184 @@ function get_my_users ( $user='', $reason='invite') {
   }
 
   $my_user_array[$this_user] = $ret;
+  return $ret;
+}
+
+/**
+ * Gets a list of nonusers.
+ *
+ * If groups are enabled, this will restrict the list of nonusers to only those
+ * that are in the same group(s) as the user (unless the user is an admin
+ * user) or the nonuser is a public calendar.  
+ * We allow admin users to see all users because they can also edit
+ * someone else's events (so they may need access to users who are not in the
+ * same groups that they are in).
+ *
+ * If user access control is enabled, then we also check to see if this
+ * user is allowed to view each nonuser's calendar.  If not, then that nonuser
+ * is not included in the list.
+ *
+ * @return array Array of nonusers, where each element in the array is an array
+ *               with the following keys:
+ *    - cal_login
+ *    - cal_lastname
+ *    - cal_firstname
+ *    - cal_is_public
+ */
+function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
+  global $login, $is_admin, $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
+  global $my_nonuser_array, $is_nonuser, $is_nonuser_admin;
+
+  $this_user = ( ! empty ( $user ) ? $user : $login );
+  // Return the global variable (cached)
+  if ( ! empty ( $my_nonuser_array[$this_user . $add_public] ) && 
+    is_array ( $my_nonuser_array ) )
+    return $my_nonuser_array[$this_user . $add_public];
+  
+  $u = get_nonuser_cals ();
+  if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' &&
+    ! $is_admin ) {
+    // get groups that current user is in
+    $rows = dbi_get_cached_rows ( 'SELECT cal_group_id FROM webcal_group_user ' .
+      'WHERE cal_login = ?', array( $this_user ) );
+    $groups = array ();
+    if ( $rows ) {
+      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+        $row = $rows[$i];
+        $groups[] = $row[0];
+      }
+    }
+    $groupcnt = count ( $groups );
+    // Nonuser (public) can only see themself (unless access control is on)
+    if ( $is_nonuser && ! access_is_enabled () ) {
+      return array ( $this_user );
+    }
+    $u_byname = array ();
+    for ( $i = 0, $cnt = count ( $u ); $i < $cnt; $i++ ) {
+      $name = $u[$i]['cal_login'];
+      $u_byname[$name] = $u[$i];
+    }
+    $ret = array ();
+    if ( $groupcnt == 0 ) {
+      // Eek.  User is in no groups... Return only themselves
+      if ( isset ( $u_byname[$this_user] ) ) $ret[] = $u_byname[$this_user];
+      $my_nonuser_array[$this_user . $add_public] = $ret;
+      return $ret;
+    }
+    // get list of users in the same groups as current user
+    $public = ( $add_public ? "webcal_nonuser_cals.cal_is_public = 'Y'  OR " : '' );
+    $sql = 'SELECT DISTINCT(webcal_nonuser_cals.cal_login), cal_lastname, cal_firstname ' .
+      ' cal_is_public FROM webcal_group_user, webcal_nonuser_cals ' .
+      " WHERE $public cal_admin = ? OR  " .
+      ' ( webcal_group_user.cal_login = webcal_nonuser_cals.cal_login AND ' .
+      ' cal_group_id ';
+    if ( $groupcnt == 1 )
+      $sql .= '= ?';
+    else {
+    // build count( $groups ) placeholders separated with commas
+    $placeholders = '';
+    for ( $p_i = 0; $p_i < $groupcnt; $p_i++ ) {
+        $placeholders .= ( $p_i == 0 ) ? '?': ', ?';
+    }
+      $sql .= "IN ( $placeholders ) )";
+    }
+    $sql .= ' ORDER BY cal_lastname, cal_firstname, webcal_group_user.cal_login';
+    //add $this_user to beginning of query params
+    array_unshift ( $groups, $this_user );
+    $rows = dbi_get_cached_rows ( $sql, $groups );
+    if ( $rows ) {
+      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+        $row = $rows[$i];
+        if ( isset ( $u_byname[$row[0]] ) ) $ret[] = $u_byname[$row[0]];
+      }
+    }
+  } else {
+    // groups not enabled... return all nonusers
+    $ret = $u;
+  }
+
+  // If user access control enabled, remove any nonusers that this user
+  // does not have required access.
+  if ( access_is_enabled () ) {
+    $newlist = array ();
+    for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
+      $can_list = access_user_calendar ( $reason, $ret[$i]['cal_login'], $this_user );
+      if (  $can_list == 'Y' ||  $can_list > 0 ) {
+        $newlist[] = $ret[$i];
+      }
+    }
+    $ret = $newlist;
+  }
+
+  $my_nonuser_array[$this_user . $add_public] = $ret;
+  return $ret;
+}
+
+/**
+ * Gets a list of nonuser calendars and return info in an array.
+ *
+ * @param string $user Login of admin of the nonuser calendars
+ * @param bool $remote Return only remote calendar  records
+ *
+ * @return array Array of nonuser cals, where each is an array with the
+ *               following fields:
+ * - <var>cal_login</var>
+ * - <var>cal_lastname</var>
+ * - <var>cal_firstname</var>
+ * - <var>cal_admin</var>
+ * - <var>cal_fullname</var>
+ * - <var>cal_is_public</var>
+ */
+function get_nonuser_cals ($user = '', $remote=false) {
+  global  $is_admin;
+  $count = 0;
+  $ret = array ();
+  $sql = 'SELECT cal_login, cal_lastname, cal_firstname, ' .
+    'cal_admin, cal_is_public, cal_url FROM webcal_nonuser_cals ';
+  $query_params = array();
+
+  if ($remote == false) { 
+    $sql .= 'WHERE cal_url IS NULL ';
+  } else {
+    $sql .= 'WHERE cal_url IS NOT NULL ';  
+  }
+  
+  if ($user != '') {
+    $sql .= 'AND  cal_admin = ? ';
+    $query_params[] = $user;
+  }
+  
+  $sql .= 'ORDER BY cal_lastname, cal_firstname, cal_login';
+  
+  $rows = dbi_get_cached_rows ( $sql, $query_params );
+  if ( $rows ) {
+    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+      $row = $rows[$i];
+      if ( strlen ( $row[1] ) || strlen ( $row[2] ) )
+        $fullname = "$row[2] $row[1]";
+      else
+        $fullname = $row[0];
+      $ret[$count++] = array (
+        'cal_login' => $row[0],
+        'cal_lastname' => $row[1],
+        'cal_firstname' => $row[2],
+        'cal_admin' => $row[3],
+        'cal_is_public' => $row[4],
+        'cal_url' => $row[5],
+        'cal_fullname' => $fullname
+      );
+    }
+  }
+    // If user access control enabled, remove any users that this user
+  // does not have 'view' access to.
+  if ( access_is_enabled () && ! $is_admin ) {
+    $newlist = array ();
+    for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
+      if ( access_user_calendar ( 'view', $ret[$i]['cal_login'] ) )
+        $newlist[] = $ret[$i];
+    }
+    $ret = $newlist;
+  }
   return $ret;
 }
 
@@ -2191,7 +2373,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
       if ( date ('Ymd', $item->getDateTimeTS() ) != 
         date ('Ymd', $item->getEndDateTimeTS() ) && 
         ! $item->isAllDay() && $item->getCalTypeName() == 'event' )  {
-        get_OverLap ( $item, $i, true );
+        getOverLap ( $item, $i, true );
         $i = count ( $result );
       }
     }
@@ -3786,7 +3968,7 @@ function display_unapproved_events ( $user ) {
     $app_users[] = $login;
     $app_user_hash[$login] = 1;
     if ( $NONUSER_ENABLED == 'Y' ) {
-      $all = array_merge ( get_my_users ( ), get_nonuser_cals ( $login ) );
+      $all = array_merge ( get_my_users ( ), get_my_nonusers ( ) );
     } else {
       $all = get_my_users ( );
     }
@@ -3804,7 +3986,7 @@ function display_unapproved_events ( $user ) {
     $query_params[] = $app_users[$i];
     }
   } else if ( $NONUSER_ENABLED == 'Y' ) {
-    $admincals = get_nonuser_cals ( $login );
+    $admincals = get_my_nonusers ( $login );
     for ( $i = 0, $cnt = count ( $admincals ); $i < $cnt; $i++ ) {
       $sql .= ' OR webcal_entry_user.cal_login = ? ';
     $query_params[] = $admincals[$i]['cal_login'];
@@ -4664,74 +4846,6 @@ function user_is_participant ( $id, $user )
 
 
 /**
- * Gets a list of nonuser calendars and return info in an array.
- *
- * @param string $user Login of admin of the nonuser calendars
- * @param bool $remote Return only remote calendar  records
- *
- * @return array Array of nonuser cals, where each is an array with the
- *               following fields:
- * - <var>cal_login</var>
- * - <var>cal_lastname</var>
- * - <var>cal_firstname</var>
- * - <var>cal_admin</var>
- * - <var>cal_fullname</var>
- * - <var>cal_is_public</var>
- */
-function get_nonuser_cals ($user = '', $remote=false) {
-  global  $is_admin;
-  $count = 0;
-  $ret = array ();
-  $sql = 'SELECT cal_login, cal_lastname, cal_firstname, ' .
-    'cal_admin, cal_is_public, cal_url FROM webcal_nonuser_cals ';
-  $query_params = array();
-
-  if ($remote == false) { 
-    $sql .= 'WHERE cal_url IS NULL ';
-  } else {
-    $sql .= 'WHERE cal_url IS NOT NULL ';  
-  }
-  
-  if ($user != '') {
-    $sql .= 'AND  cal_admin = ? ';
-    $query_params[] = $user;
-  }
-  
-  $sql .= 'ORDER BY cal_lastname, cal_firstname, cal_login';
-  
-  $rows = dbi_get_cached_rows ( $sql, $query_params );
-  if ( $rows ) {
-    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-      $row = $rows[$i];
-      if ( strlen ( $row[1] ) || strlen ( $row[2] ) )
-        $fullname = "$row[2] $row[1]";
-      else
-        $fullname = $row[0];
-      $ret[$count++] = array (
-        'cal_login' => $row[0],
-        'cal_lastname' => $row[1],
-        'cal_firstname' => $row[2],
-        'cal_admin' => $row[3],
-        'cal_is_public' => $row[4],
-        'cal_url' => $row[5],
-        'cal_fullname' => $fullname
-      );
-    }
-  }
-    // If user access control enabled, remove any users that this user
-  // does not have 'view' access to.
-  if ( access_is_enabled () && ! $is_admin ) {
-    $newlist = array ();
-    for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
-      if ( access_user_calendar ( 'view', $ret[$i]['cal_login'] ) )
-        $newlist[] = $ret[$i];
-    }
-    $ret = $newlist;
-  }
-  return $ret;
-}
-
-/**
  * Loads nonuser variables (login, firstname, etc.).
  *
  * The following variables will be set:
@@ -5543,7 +5657,7 @@ function combine_and_sort_events ( $ev, $rep ) {
 } 
 
 //calculate rollover to next day and add partial event as needed
-function get_OverLap ( $item, $i, $parent=true ) {
+function getOverLap ( $item, $i, $parent=true ) {
   global $result, $DISABLE_CROSSDAY_EVENTS;
   static $realEndTS, $originalDate, $originalItem;
 
@@ -5577,7 +5691,7 @@ function get_OverLap ( $item, $i, $parent=true ) {
     if ( $parent )$item->setDuration( ( ( $midnight - $item->getDateTimeTS() ) /60 ) -1 );    
   }
   //call this function recursively until duration < ONE_DAY
-  if ( $recurse == 1 ) get_OverLap ( $result[$i -1], $i, false );
+  if ( $recurse == 1 ) getOverLap ( $result[$i -1], $i, false );
 }
 
 if (version_compare(phpversion(), '5.0') < 0) {
@@ -5814,5 +5928,22 @@ function getShortTime ( $timestr ) {
   else {
     return $timestr;
   }
+}
+
+/**
+ * Display the <<Admin link on pages if menus are not enabled
+ *
+ * 
+ */
+function display_admin_link ( ) {
+ global $MENU_ENABLED;
+ 
+ $ret = '<br />';
+ if ( $MENU_ENABLED == 'N' ) {
+   $adminStr = translate( 'Admin' );
+   $ret = '<a title="' . $adminStr . '" class="nav" href="adminhome.php">&laquo;&nbsp; ' .
+     $adminStr . "</a>\n<br /><br />\n";
+ }
+ return $ret;
 }
 ?>

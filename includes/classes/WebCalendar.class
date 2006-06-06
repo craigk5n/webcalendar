@@ -194,8 +194,8 @@ class WebCalendar {
         ! $is_admin ) {
         $valid_user = false;
         $userlist = get_my_users();
-        if ( ! empty ( $nonuser_enabled ) && $nonuser_enabled == 'Y' ) {
-          $nonusers = get_nonuser_cals ();
+        if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
+          $nonusers = get_my_nonusers ( );
           $userlist =  array_merge($nonusers, $userlist);
         }
         for ( $i = 0; $i < count ( $userlist ); $i++ ) {
@@ -815,7 +815,6 @@ class WebCalendar {
                   dbi_error () . "</blockquote>\n" );
               }
               doDbSanityCheck ();
-
               if ( $cryptpw == 'nonuser' ) {
                 if ( ! nonuser_load_variables ( $login, 'nutemp_' ) ) {
                   // no such nonuser cal
@@ -1030,7 +1029,7 @@ class WebCalendar {
     // If they are accessing using the public login, restrict them from using
     // certain pages.
     $not_auth = false;
-    if ( ! empty ( $login ) && $login == '__public__' ) {
+    if ( ! empty ( $login ) && $login == '__public__' || $is_nonuser ) {
       if ( strstr ( $PHP_SELF, 'views.php' ) ||
         strstr ( $PHP_SELF, 'views_edit_handler.php' ) ||
         strstr ( $PHP_SELF, 'category.php' ) ||

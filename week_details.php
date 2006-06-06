@@ -90,7 +90,7 @@ if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
 </div>
 <br />
 <center>
-<table class="main" cellspacing="0" cellpadding="0">
+<table class="main">
 <?php
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {

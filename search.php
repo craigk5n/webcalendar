@@ -11,7 +11,7 @@ if ( $is_admin )
   $show_others = true;
 else if ( access_is_enabled () )
   $show_others = access_can_access_function ( ACCESS_ADVANCED_SEARCH );
-else if ( $login != '__public__' && ! empty ( $ALLOW_VIEW_OTHER ) &&
+else if ( $login != '__public__' && ! $is_nonuser && ! empty ( $ALLOW_VIEW_OTHER ) &&
   $ALLOW_VIEW_OTHER == 'Y' )
   $show_others = true;
 else if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
@@ -49,7 +49,7 @@ if ( ! $show_others ) {
   $users = get_my_users ();
   // Get non-user calendars (if enabled)
   if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
-    $nonusers = get_nonuser_cals ();
+    $nonusers = get_my_nonusers ( $login , true );
     if ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == 'Y' )
       $users = array_merge ( $nonusers, $users );
     else

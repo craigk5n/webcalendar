@@ -7,9 +7,9 @@ if ( ! $is_admin )
 
 $INC = array('js/views.php/true','js/visible.php/true');
 print_header($INC);
-?>
 
-<a title="<?php etranslate( 'Admin' ) ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate( 'Admin' ) ?></a><br /><br />
+echo display_admin_link();
+?>
 <!-- TABS -->
 <div id="tabs">
   <span class="tabfor" id="tab_views"><a href="#tabviews" onclick="return showTab('views')"><?php 

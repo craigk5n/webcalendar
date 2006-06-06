@@ -29,8 +29,9 @@ print_header($INC);
   } else {
     echo '<h2>' . translate( 'Your assistants' ) . "</h2>\n";
   }
+
+echo display_admin_link();
 ?>
-<a title="<?php etranslate( 'Admin' ) ?>" class="nav" href="adminhome.php">&laquo;&nbsp;<?php etranslate( 'Admin' ) ?></a><br /><br />
 
 <table style="border-width:0px;">
 <tr><td style="vertical-align:top;">

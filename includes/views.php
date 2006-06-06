@@ -83,7 +83,7 @@ function view_get_user_list ( $view_id ) {
     $myusers = get_my_users ();
      
     if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
-      $myusers = array_merge ( $myusers, get_nonuser_cals () );
+      $myusers = array_merge ( $myusers, get_my_nonusers ( $login , true ) );
     } 
     // Make sure this user is allowed to see all users in this view
     // If this is a global view, it may include users that this user

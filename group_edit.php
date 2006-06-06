@@ -3,7 +3,6 @@
 include_once 'includes/init.php';
 print_header( '', '', '', true );
 ?>
-
 <form action="group_edit_handler.php" method="post">
 <?php
 $newgroup = true;
@@ -98,7 +97,6 @@ if ( $newgroup ) {
 </td></tr>
 </table>
 </form>
-
 <?php echo print_trailer ( false, true, true ); ?>
 
 </body>

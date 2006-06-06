@@ -471,7 +471,7 @@ $prevStr = translate ( 'Previous' );
 $nextStr = translate ( 'Next' );
 
 if ( $include_header ) {
-  $reportNameStr = $report_name;
+  $reportNameStr = '<h2>' . $report_name . '</h2>';
   $printerStr =  generate_printer_friendly ( 'report.php' );
   $htmlclose = '</body></html>';
 } else { 
@@ -487,13 +487,11 @@ if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
 }
 if ( ! empty ( $list ) ) {
   $textStr = '';
-  $adminStr = translate( 'Admin' );
   $manageStr = translate( 'Manage Reports' ); 
   if ( $updating_public ) {
     $manageStr = translate($PUBLIC_ACCESS_FULLNAME) . ' ' . $manageStr;
   } 
-  $adminLinkStr ='<a title="' . $adminStr . '" class="nav" href="adminhome.php"> ' .
-     '&laquo;&nbsp;' . $adminStr . '</a>';
+  $adminLinkStr = display_admin_link();
   $trailerStr = print_trailer ( );
 } else {
   $manageStr = $adminLinkStr = '';
@@ -503,7 +501,7 @@ if ( ! empty ( $list ) ) {
 }
 
 echo <<<EOT
-  <h2>{$reportNameStr}</h2>
+  {$reportNameStr}
   {$prevLinkStr}&nbsp;&nbsp;
   {$nextLinkStr}
   <h2>{$manageStr}</h2>

@@ -17,7 +17,7 @@ if ( ! empty ( $error ) ) {
 } else {
   $userlist = get_my_users ( '', 'view');
   if ($NONUSER_ENABLED == 'Y' ) {
-    $nonusers = get_nonuser_cals ();
+    $nonusers = get_my_nonusers ( $login , true );
     $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
 
