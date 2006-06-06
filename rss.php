@@ -212,7 +212,7 @@ $x = getIntValue ( 'repeats', true );
 if ( ! empty ( $x ) ) {
   $allow_repeats = $x;
   if ( $x==2 ) {
-    $show_daily_events_only_once = $true;
+    $show_daily_events_only_once = true;
   }
 }
 
@@ -249,7 +249,7 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>';
 echo $PROGRAM_VERSION; ?>"</generator>
 <image>
 <title><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></title>
-<link><?php echo $PROGRAM_URL; ?></link>
+<link><?php echo $SERVER_URL; ?></link>
 <url>http://www.k5n.us/k5n_small.gif</url>
 </image>
 <?php
@@ -305,7 +305,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
 
       // Prevent non-Public events from feeding
       // Prevent a repeating event from displaying if the original event 
-      // has alreay been displayed; prevent 2nd & later recurrence
+      // has already been displayed; prevent 2nd & later recurrence
       // of daily events from displaying if that option has been selected
       if ( ! in_array($rentries[$j]->getID(),$eventIds ) && 
          ( ! $show_daily_events_only_once || ! in_array($rentries[$j]->getID(),$reventIds )) && 
@@ -317,7 +317,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
 
 
         echo "\n<item>\n";
-        $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
+        $unixtime = date_to_epoch ( $rentries[$j]->getDateTime() );
         echo "<title><![CDATA[" . 
           $rentries[$j]->getName() . "]]></title>\n";
         echo '<link>' . $SERVER_URL . "view_entry.php?id=" . 
@@ -330,7 +330,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
        // echo '<creator><![CDATA[' . $creator . "]]></creator>\n";
         echo '<pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) . " GMT</pubDate>\n";
         echo '<guid>' . $SERVER_URL . 'view_entry.php?id=' . 
-          $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
+          $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
           $d . "</guid>\n";
         echo "</item>\n";   
         $numEvents++;
