@@ -250,7 +250,7 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
   
   //This allows users to select on weekdays if daily
   if ( $rpt_type == 'daily' && ! empty ( $weekdays_only ) ) {
-   $dayst = 'MO,TU,WE,TH,FR';
+   $byday = 'MO,TU,WE,TH,FR';
   }
   
   if ( ! empty ( $rpt_year ) ) {

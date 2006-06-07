@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1502420: daily repeat doesn't skip weekend
  - Fixed bug 1414471: missing 'back to my calendar' in the trailer for 'non_user'
  - Fixed bug 1366151: NUC's cannot be handled by their admins
  - Fixed bug 1499150: Events Not Wordwrapping Correctly
