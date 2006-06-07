@@ -307,7 +307,7 @@ class WebCalendar {
     for ( $n = 0; $n < count ( $configLines ); $n++ ) {
       $buffer = $configLines[$n];
       $buffer = trim ( $buffer, "\r\n " );
-      if ( preg_match ( "/^#|\//", $buffer ) )
+      if ( preg_match ( "/^#|\/\*/", $buffer ) )
         continue;
       if ( preg_match ( "/^<\?/", $buffer ) ) // start php code
         continue;
