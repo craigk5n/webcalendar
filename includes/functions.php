@@ -947,7 +947,7 @@ function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
       ' ( webcal_group_user.cal_login = webcal_nonuser_cals.cal_login AND ' .
       ' cal_group_id ';
     if ( $groupcnt == 1 )
-      $sql .= '= ?';
+      $sql .= '= ? )' ;
     else {
     // build count( $groups ) placeholders separated with commas
     $placeholders = '';
