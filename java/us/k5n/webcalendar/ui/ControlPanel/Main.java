@@ -1,16 +1,3 @@
-/*
- * $Id$
- *
- * Description:
- *	WebCalendar Admin ControlPanel - used to administer WebCalendar
- *
- * THIS IS STILL UNDER CONSTRUCTION...
- *
- * History:
- *	23-Aug-2005	cknudsen@cknudsen.com
- *			Created
- */
-
 package us.k5n.webcalendar.ui.ControlPanel;
 
 import java.awt.BorderLayout;
