@@ -290,7 +290,7 @@ function user_load_variables ( $login, $prefix ) {
 
 // Redirect the user to the application's login screen
 function app_login_screen($return_path = 'index.php') {
-  global $app_login_page, $app_redirect_param;
+  global $app_login_page, $app_redir_param;
   
   if ($return_path != '' && $app_redir_param != '') {
     if (strstr($app_login_page, '?')) {
