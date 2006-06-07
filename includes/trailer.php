@@ -281,7 +281,6 @@ $reports_link = array ();
     }
   }
 }
-$tret .= '<br />';
 
 $tret .= '<!-- CURRENT USER -->' . "\n";
 
@@ -306,13 +305,13 @@ if ( ! $use_http_auth ) {
     
   if ( $readonly != 'Y' ) {
     if ( strlen ( $login ) && $login != '__public__' ) {
-     $tret .= '<span class="prefix">' .
+     $tret .= '<br /><span class="prefix">' .
       translate( 'Current User' ) . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
       translate( 'Logout' ) . "\" href=\"$logout_url\">" . 
       translate( 'Logout' ) . "</a>)\n";
     } else {
      // For public user (who did not actually login)
-     $tret .= '<span class="prefix">' .
+     $tret .= '<br /><span class="prefix">' .
       translate( 'Current User' ) . ':</span>&nbsp;' . 
       translate( 'Public Access' ) . '&nbsp;(<a title="' . 
       translate( 'Login' ) . "\" href=\"$login_url\">" . 
