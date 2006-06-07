@@ -996,12 +996,12 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     }
   } else {
     fwrite ( $fd, "<?php\r\n" );
-    fwrite ( $fd, '# updated via install/index.php on ' . date('r') . "\r\n" );
+    fwrite ( $fd, '/* updated via install/index.php on ' . date('r') . "\r\n" );
     foreach ( $settings as $k => $v ) {
       if ( $v != '<br />' && $v != '' )
       fwrite ( $fd, $k . ': ' . $v . "\r\n" );
     }
-    fwrite ( $fd, "# end settings.php\r\n?>\r\n" );
+    fwrite ( $fd, "# end settings.php */\r\n?>\r\n" );
     fclose ( $fd );
     if ( $post_action != 'Test Settings' && $post_action2 != 'Create New' ){
       $onload .= "alert('" . translate ( 'Your settings have been saved', true ) . ".\\n\\n');";
