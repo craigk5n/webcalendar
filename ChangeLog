@@ -1,4 +1,5 @@
 Version 1.0.4-CVS (?? ??? 2006)
+ - Fixed bug 1502099: Fix for user-app-postnuke.php
  - Updated Portugues translation
 Version 1.0.3 (11 Apr 2006)
  - Patch 1456375: Day view - "Description" not translated, improper
