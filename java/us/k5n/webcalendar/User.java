@@ -19,14 +19,6 @@ import org.xml.sax.*;
 // DOM
 import org.w3c.dom.*;
 
-class siteExtra {
-  public int number;
-  public String name;
-  public String description;
-  public int type;
-  public String value;
-}
-
 public class User {
   /** Unique login id */
   public String login = null;

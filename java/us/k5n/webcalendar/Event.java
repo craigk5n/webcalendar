@@ -1,23 +1,10 @@
-/*
- * $Id$
- *
- * Description:
- *	Event object
- *
- */
-
 package us.k5n.webcalendar;
 
-import java.util.Vector;
 import java.util.Calendar;
-import java.io.IOException;
+import java.util.Vector;
 
-// JAXP
-import javax.xml.parsers.*;
-// SAX
-import org.xml.sax.*;
-// DOM
-import org.w3c.dom.*;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 class siteExtra {
   public int number;
@@ -27,6 +14,13 @@ class siteExtra {
   public String value;
 }
 
+/**
+ * The Event class represents an event.
+ * 
+ * @author Craig Knudsen
+ * @version $Id$
+ * 
+ */
 public class Event {
   /** Unique event id */
   public String id = null;
@@ -60,114 +54,106 @@ public class Event {
   String updateTime = null;
   /** Vector of SiteExtra objects */
   Vector siteExtras = null;
-  
+
   /**
-    * Construct the reminder from the specified XML DOM node
-    * (which corresponds to the <reminder> tag).
-    */
-  public Event ( Node eventNode ) throws WebCalendarParseException
-  {
+   * Construct the reminder from the specified XML DOM node (which corresponds
+   * to the <reminder> tag).
+   */
+  public Event ( Node eventNode ) throws WebCalendarParseException {
     NodeList list = eventNode.getChildNodes ();
     int len = list.getLength ();
 
-    for ( int i = 0; i < len; i++ ) {
+    for (int i = 0; i < len; i++) {
       Node n = list.item ( i );
-    
-      if ( n.getNodeType() == Node.ELEMENT_NODE ) {
+
+      if (n.getNodeType () == Node.ELEMENT_NODE) {
         String nodeName = n.getNodeName ();
-        if ( "name".equals ( nodeName ) ) {
+        if ("name".equals ( nodeName )) {
           name = Utils.xmlNodeGetValue ( n );
-        } else if ( "id".equals ( nodeName ) ) {
+        } else if ("id".equals ( nodeName )) {
           id = Utils.xmlNodeGetValue ( n );
-        } else if ( "description".equals ( nodeName ) ) {
+        } else if ("description".equals ( nodeName )) {
           description = Utils.xmlNodeGetValue ( n );
-        } else if ( "url".equals ( nodeName ) ) {
+        } else if ("url".equals ( nodeName )) {
           url = Utils.xmlNodeGetValue ( n );
-        } else if ( "dateFormatted".equals ( nodeName ) ) {
+        } else if ("dateFormatted".equals ( nodeName )) {
           dateFormatted = Utils.xmlNodeGetValue ( n );
-        } else if ( "date".equals ( nodeName ) ) {
+        } else if ("date".equals ( nodeName )) {
           date = Utils.xmlNodeGetValue ( n );
           dateCalendar = Utils.YYYYMMDDToCalendar ( date );
-        } else if ( "time".equals ( nodeName ) ) {
+        } else if ("time".equals ( nodeName )) {
           time = Utils.xmlNodeGetValue ( n );
-        } else if ( "timeFormatted".equals ( nodeName ) ) {
+        } else if ("timeFormatted".equals ( nodeName )) {
           timeFormatted = Utils.xmlNodeGetValue ( n );
-        } else if ( "duration".equals ( nodeName ) ) {
+        } else if ("duration".equals ( nodeName )) {
           duration = Utils.xmlNodeGetValue ( n );
-        } else if ( "priority".equals ( nodeName ) ) {
+        } else if ("priority".equals ( nodeName )) {
           priority = Utils.xmlNodeGetValue ( n );
-        } else if ( "access".equals ( nodeName ) ) {
+        } else if ("access".equals ( nodeName )) {
           access = Utils.xmlNodeGetValue ( n );
-        } else if ( "createdBy".equals ( nodeName ) ) {
+        } else if ("createdBy".equals ( nodeName )) {
           createdBy = Utils.xmlNodeGetValue ( n );
-        } else if ( "updateDate".equals ( nodeName ) ) {
+        } else if ("updateDate".equals ( nodeName )) {
           updateDate = Utils.xmlNodeGetValue ( n );
-        } else if ( "updateTime".equals ( nodeName ) ) {
+        } else if ("updateTime".equals ( nodeName )) {
           updateTime = Utils.xmlNodeGetValue ( n );
-        } else if ( "siteExtras".equals ( nodeName ) ) {
+        } else if ("siteExtras".equals ( nodeName )) {
           // NOT YET IMPLEMENTED
-        } else if ( "participants".equals ( nodeName ) ) {
+        } else if ("participants".equals ( nodeName )) {
           // NOT YET IMPLEMENTED
         } else {
-          System.err.println ( "Not sure what to do with <" + nodeName +
-            "> tag (ignoring)" );
+          System.err.println ( "Not sure what to do with <" + nodeName
+              + "> tag (ignoring)" );
         }
       }
     }
   }
 
   /**
-    * Does the event's date match the specified date?
-    */
-  public boolean dateMatches ( Calendar c )
-  {
-    if ( dateCalendar == null )
+   * Does the event's date match the specified date?
+   */
+  public boolean dateMatches ( Calendar c ) {
+    if (dateCalendar == null)
       return false;
-    if ( dateCalendar.get ( Calendar.DAY_OF_MONTH ) !=
-      c.get ( Calendar.DAY_OF_MONTH ) )
+    if (dateCalendar.get ( Calendar.DAY_OF_MONTH ) != c
+        .get ( Calendar.DAY_OF_MONTH ))
       return false;
-    if ( dateCalendar.get ( Calendar.MONTH ) !=
-      c.get ( Calendar.MONTH ) )
+    if (dateCalendar.get ( Calendar.MONTH ) != c.get ( Calendar.MONTH ))
       return false;
-    if ( dateCalendar.get ( Calendar.YEAR ) !=
-      c.get ( Calendar.YEAR ) )
+    if (dateCalendar.get ( Calendar.YEAR ) != c.get ( Calendar.YEAR ))
       return false;
     return true;
   }
 
-
   /**
-    * Create a multiline String representation of this event.
-    * This will include the event name, date and time.
-    * The description will convert HTML breaks into new lines.
-    */
-  public String toString()
-  {
+   * Create a multiline String representation of this event. This will include
+   * the event name, date and time. The description will convert HTML breaks
+   * into new lines.
+   */
+  public String toString () {
     StringBuffer sb = new StringBuffer ( 100 );
-    if ( name != null ) {
+    if (name != null) {
       sb.append ( name );
       sb.append ( "\n" );
     }
-    if ( description != null && 
-      ( name == null || ! name.equals ( description ) ) ) {
+    if (description != null && ( name == null || !name.equals ( description ) )) {
       sb.append ( "Description: " );
       String s = description.replaceAll ( "<br/>", "\n    " );
       s = s.replaceAll ( "\\n", "\n    " );
       sb.append ( s );
       sb.append ( "\n" );
     }
-    if ( dateFormatted != null ) {
+    if (dateFormatted != null) {
       sb.append ( "Date: " );
       sb.append ( dateFormatted );
       sb.append ( "\n" );
     }
-    if ( timeFormatted != null ) {
+    if (timeFormatted != null) {
       sb.append ( "Time: " );
       sb.append ( timeFormatted );
       sb.append ( "\n" );
     }
-    return sb.toString();
+    return sb.toString ();
   }
 
 }
-

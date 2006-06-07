@@ -1,9 +1,11 @@
-/*
- * $Id$
- */
-
 package us.k5n.webcalendar;
 
+/**
+ * Interface for showing a reminders.
+ * 
+ * @author Craig Knudsen
+ * @version $Id$
+ */
 public interface ShowReminder {
 
   public void showReminder ( Reminder reminder );
@@ -13,4 +15,3 @@ public interface ShowReminder {
   public void showError ( String message );
 
 }
-
