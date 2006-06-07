@@ -110,4 +110,4 @@ function jd_to_greg($julian) {
    }
    return sprintf ( "%04d%02d%02d", $year, $month, $day);
 }
-?> 
+?>
