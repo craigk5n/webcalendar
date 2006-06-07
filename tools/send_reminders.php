@@ -53,11 +53,15 @@ $DAYS_IN_ADVANCE = 30;
 // which you probably should do since it would be better for security
 // reasons, you would need to change $includedir to point to the
 // webcalendar include directory.
+// We set these twice since config.php unsets these.
+$includedir = "../includes"; // Set again after config.php
+
+include "$includedir/config.php";
+
 $basedir = ".."; // points to the base WebCalendar directory relative to
                  // current working directory
 $includedir = "../includes";
 
-include "$includedir/config.php";
 include "$includedir/php-dbi.php";
 include "$includedir/functions.php";
 include "$includedir/$user_inc";

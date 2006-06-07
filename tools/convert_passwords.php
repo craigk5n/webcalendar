@@ -16,6 +16,7 @@
 
 $includedir = "../includes";
 include "$includedir/config.php";
+$includedir = "../includes";
 include "$includedir/php-dbi.php";
 
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );

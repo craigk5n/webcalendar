@@ -1,4 +1,6 @@
 Version 1.0.4-CVS (?? ??? 2006)
+  - Security fix: do not allow setting of "includedir" via URL when
+    register_globals is enabled in php.ini
   - Updated Portugues translation
 Version 1.0.3 (11 Apr 2006)
   - Patch 1456375: Day view - "Description" not translated, improper

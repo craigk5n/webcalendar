@@ -24,6 +24,25 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( "/\/includes\//", $PHP_SELF ) ) {
     die ( "You can't access this file directly!" );
 }
 
+// Unset some variables in case the server has register_globals
+// enabled.  This will prevent users from settings these values
+// in a URL:
+// http://localhost/calendar/month.php?includedir=http://xxx/bad-guy
+unset ( $includedir );
+unset ( $db_type );
+unset ( $db_database );
+unset ( $db_login );
+unset ( $db_password );
+unset ( $db_persistent );
+unset ( $single_user_login );
+unset ( $readonly );
+unset ( $mode );
+unset ( $use_http_auth );
+unset ( $single_user );
+unset ( $user_inc );
+unset ( $includedir );
+unset ( $basedir );
+
 
 $PROGRAM_VERSION = "v1.0.4-CVS";
 $PROGRAM_DATE = "?? ??? 2006";
