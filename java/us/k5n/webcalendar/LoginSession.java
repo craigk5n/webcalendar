@@ -1,24 +1,24 @@
-/*
- * $Id$
- *
- * Description:
- *	Handle the results of the login process (parse the XML).
- *
- */
-
 package us.k5n.webcalendar;
 
-import java.util.Vector;
 import java.io.IOException;
 import java.io.StringBufferInputStream;
+import java.util.Vector;
 
-// JAXP
-import javax.xml.parsers.*;
-// SAX
-import org.xml.sax.*;
-// DOM
-import org.w3c.dom.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+/**
+ * The LoginSession handles the results of the login process (parse the XML).
+ * 
+ * @author Craig Knudsen
+ * @version $Id$
+ */
 public class LoginSession extends Vector {
   String cookieName = null;
   String cookieValue = null;
@@ -26,12 +26,10 @@ public class LoginSession extends Vector {
   Document document; // XML DOM object
 
   /**
-    * Construct from the specified XML
-    * returned from the WebCalendar server.
-    */
-  public LoginSession ( String xmlContent )
-    throws WebCalendarParseException, WebCalendarErrorException
-  {
+   * Construct from the specified XML returned from the WebCalendar server.
+   */
+  public LoginSession ( String xmlContent ) throws WebCalendarParseException,
+      WebCalendarErrorException {
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance ();
     try {
       DocumentBuilder builder = factory.newDocumentBuilder ();
@@ -41,54 +39,54 @@ public class LoginSession extends Vector {
     } catch ( SAXException sxe ) {
       // Error generated during parsing
       Exception x = sxe;
-      if ( sxe.getException() != null )
+      if (sxe.getException () != null)
         x = sxe.getException ();
       x.printStackTrace ();
       throw new WebCalendarParseException (
-        "Error parsing XML from WebCalendar server: " + x.toString() );
+          "Error parsing XML from WebCalendar server: " + x.toString () );
     } catch ( IOException ioe ) {
       ioe.printStackTrace ();
       throw new WebCalendarParseException (
-        "I/O Error parsing XML from WebCalendar server: " + ioe.toString() );
+          "I/O Error parsing XML from WebCalendar server: " + ioe.toString () );
     } catch ( ParserConfigurationException pce ) {
       pce.printStackTrace ();
       throw new WebCalendarParseException (
-        "Parser Config Error parsing XML from WebCalendar server: " + pce.toString() );
+          "Parser Config Error parsing XML from WebCalendar server: "
+              + pce.toString () );
     }
   }
 
   private void domToSession ( Document document )
-    throws WebCalendarParseException, WebCalendarErrorException
-  {
+      throws WebCalendarParseException, WebCalendarErrorException {
     String error = Utils.getError ( document );
-    if ( error != null ) {
+    if (error != null) {
       throw new WebCalendarErrorException ( error );
     }
     NodeList list = document.getElementsByTagName ( "login" );
-    if ( list.getLength() != 1 ) {
+    if (list.getLength () != 1) {
       System.err.println ( "Wrong number of <login> tags found" );
-      throw new WebCalendarParseException ( "Wrong number of <login> tags found" );
+      throw new WebCalendarParseException (
+          "Wrong number of <login> tags found" );
     }
     Node loginNode = list.item ( 0 );
     list = loginNode.getChildNodes ();
-    for ( int i = 0; i < list.getLength(); i++ ) {
+    for (int i = 0; i < list.getLength (); i++) {
       Node n = list.item ( i );
-      if ( n.getNodeType() == Node.ELEMENT_NODE ) {
-        if ( "cookieName".equals ( n.getNodeName() ) ) {
+      if (n.getNodeType () == Node.ELEMENT_NODE) {
+        if ("cookieName".equals ( n.getNodeName () )) {
           cookieName = Utils.xmlNodeGetValue ( n );
-        } else if ( "cookieValue".equals ( n.getNodeName() ) ) {
+        } else if ("cookieValue".equals ( n.getNodeName () )) {
           cookieValue = Utils.xmlNodeGetValue ( n );
-        } else if ( "admin".equals ( n.getNodeName() ) ) {
+        } else if ("admin".equals ( n.getNodeName () )) {
           String adminStr = Utils.xmlNodeGetValue ( n );
-          if ( adminStr.startsWith ( "1" ) || adminStr.startsWith ( "Y" ) ||
-            adminStr.startsWith ( "y" ) )
+          if (adminStr.startsWith ( "1" ) || adminStr.startsWith ( "Y" )
+              || adminStr.startsWith ( "y" ))
             admin = true;
         } else {
-          System.err.println ( "Not sure what to do with <" +
-            n.getNodeName() + "> tag (expecting <cookieName>... ignoring)" );
+          System.err.println ( "Not sure what to do with <" + n.getNodeName ()
+              + "> tag (expecting <cookieName>... ignoring)" );
         }
       }
     }
   }
 }
-
