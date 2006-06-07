@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1502420: daily repeat doesn't skip weekend
       1414471: missing 'back to my calendar' in the trailer for 'non_user'
       1366151: NUC's cannot be handled by their admins
       1499150: Events Not Wordwrapping Correctly
