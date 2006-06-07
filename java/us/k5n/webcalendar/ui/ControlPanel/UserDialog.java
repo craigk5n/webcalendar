@@ -2,9 +2,11 @@ package us.k5n.webcalendar.ui.ControlPanel;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -48,8 +50,6 @@ public class UserDialog extends JDialog {
     mode = modeIn;
     // setSize ( 400, 400 );
     JPanel buttonPanel, topPanel;
-
-    // TODO: Replace the layout with GridBagLayout.
 
     getContentPane ().setLayout ( new BorderLayout () );
 
@@ -95,11 +95,11 @@ public class UserDialog extends JDialog {
         } );
 
     topPanel = new JPanel ();
-    topPanel.setLayout ( new BoxLayout ( topPanel, BoxLayout.Y_AXIS ) );
+    topPanel.setLayout ( new GridLayout ( mode == ADD_MODE ? 7 : 5, 2 ) );
+    topPanel.setBorder ( BorderFactory
+        .createTitledBorder ( mode == ADD_MODE ? "Add User" : "Edit User" ) );
 
-    JPanel subP = new JPanel ();
-    subP.setLayout ( new FlowLayout () );
-    subP.add ( new JLabel ( "User login: " ) );
+    topPanel.add ( new JLabel ( "User login: " ) );
     username = new JTextField ( 25 );
     username.setName ( "username" );
     if (mode == EDIT_MODE) {
@@ -107,28 +107,21 @@ public class UserDialog extends JDialog {
         username.setText ( user.login );
       username.setEditable ( false );
     }
-    subP.add ( username );
-    topPanel.add ( subP );
+    topPanel.add ( username );
 
-    subP = new JPanel ();
-    subP.setLayout ( new FlowLayout () );
-    subP.add ( new JLabel ( "First name: " ) );
+    topPanel.add ( new JLabel ( "First name: " ) );
     firstname = new JTextField ( 15 );
     firstname.setName ( "firstname" );
     if (mode == EDIT_MODE && user.firstName != null)
       firstname.setText ( user.firstName );
-    subP.add ( firstname );
-    topPanel.add ( subP );
+    topPanel.add ( firstname );
 
-    subP = new JPanel ();
-    subP.setLayout ( new FlowLayout () );
-    subP.add ( new JLabel ( "Last name: " ) );
+    topPanel.add ( new JLabel ( "Last name: " ) );
     lastname = new JTextField ( 15 );
     lastname.setName ( "lastname" );
     if (mode == EDIT_MODE && user.lastName != null)
       lastname.setText ( user.lastName );
-    subP.add ( lastname );
-    topPanel.add ( subP );
+    topPanel.add ( lastname );
 
     // WebCalendar uses firstname & lastname to derive
     // the display/full name
@@ -139,43 +132,31 @@ public class UserDialog extends JDialog {
      * subP );
      */
 
-    subP = new JPanel ();
-    subP.setLayout ( new FlowLayout () );
-    subP.add ( new JLabel ( "Email: " ) );
+    topPanel.add ( new JLabel ( "Email: " ) );
     email = new JTextField ( 25 );
     if (mode == EDIT_MODE && user.email != null)
       email.setText ( user.email );
-    subP.add ( email );
-    topPanel.add ( subP );
+    topPanel.add ( email );
 
     if (mode == ADD_MODE) {
-      subP = new JPanel ();
-      subP.setLayout ( new FlowLayout () );
-      subP.add ( new JLabel ( "Password: " ) );
+      topPanel.add ( new JLabel ( "Password: " ) );
       password1 = new JPasswordField ( 25 );
       password1.setEchoChar ( '*' );
-      subP.add ( password1 );
-      topPanel.add ( subP );
+      topPanel.add ( password1 );
 
-      subP = new JPanel ();
-      subP.setLayout ( new FlowLayout () );
-      subP.add ( new JLabel ( "Password (confirm): " ) );
+      topPanel.add ( new JLabel ( "Password (confirm): " ) );
       password2 = new JPasswordField ( 25 );
       password2.setEchoChar ( '*' );
-      subP.add ( password2 );
-      topPanel.add ( subP );
+      topPanel.add ( password2 );
     }
 
     java.util.Vector userTypeOptions = new java.util.Vector ();
     userTypeOptions.addElement ( "User" );
     userTypeOptions.addElement ( "Administrator" );
 
-    subP = new JPanel ();
-    subP.setLayout ( new FlowLayout () );
-    subP.add ( new JLabel ( "User type: " ) );
+    topPanel.add ( new JLabel ( "User type: " ) );
     userType = new JComboBox ( userTypeOptions );
-    subP.add ( userType );
-    topPanel.add ( subP );
+    topPanel.add ( userType );
 
     getContentPane ().add ( topPanel, BorderLayout.CENTER );
 
