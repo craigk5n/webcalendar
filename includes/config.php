@@ -44,8 +44,8 @@ unset ( $includedir );
 unset ( $basedir );
 
 
-$PROGRAM_VERSION = "v1.0.4-CVS";
-$PROGRAM_DATE = "?? ??? 2006";
+$PROGRAM_VERSION = "v1.0.4";
+$PROGRAM_DATE = "07 Jun 2006";
 $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
 $PROGRAM_URL = "http://webcalendar.sourceforge.net/";
 
