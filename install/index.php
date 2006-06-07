@@ -219,7 +219,7 @@ function convert_server_to_GMT () {
 }
 
 function get_installed_version ( $postinstall=false ) {
- global $database_upgrade_matrix, $show_all_errors, $PROGRAM_VERSION;
+ global $settings, $database_upgrade_matrix, $show_all_errors, $PROGRAM_VERSION;
  
   //disable warnings
  //show_errors ();
@@ -275,12 +275,20 @@ function get_installed_version ( $postinstall=false ) {
   } else {
    //make sure all existing values in config and pref tables are UPPERCASE
    make_uppercase ();
+
+   // Clear db_cache. This will prevent looping when launching WebCalendar
+   // if upgrading and WEBCAL_PROGRAM_VERSION is cached
+   if ( ! empty ( $settings['db_cachedir'] ) )
+     dbi_init_cache ( $settings['db_cachedir'] );
+   else if ( ! empty ( $settings['cachedir'] ) )
+     dbi_init_cache ( $settings['cachedir'] ); 
    
    //delete existing WEBCAL_PROGRAM_VERSION number 
    dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
       
    // Insert webcal_config values only if blank
-   db_load_config ();   
+   db_load_config ();
+ 
  }
   dbi_free_result ( $res );
  }
@@ -478,7 +486,7 @@ if ( ! empty ( $fd ) ) {
   while ( ! feof ( $fd ) ) {
     $buffer = fgets ( $fd, 4096 );
     $buffer = trim ( $buffer, "\r\n " );
-    if ( preg_match ( "/^#/", $buffer ) )
+    if ( preg_match ( "/^#|\/\*/", $buffer ) )
       continue;
     if ( preg_match ( "/^<\?/", $buffer ) ) // start php code
       continue;
@@ -783,7 +791,7 @@ if (  ! empty ( $post_action ) && $post_action == 'Test Settings'  &&
     $db_database = getPostValue ( 'form_db_database' );
     $db_login = getPostValue ( 'form_db_login' );
     $db_password = getPostValue ( 'form_db_password' );
-
+    $db_cachedir = getPostValue ( 'form_db_cachedir' );
     //Allow ODBC field to be visible if needed
    $onload = 'db_type_handler();';
   
@@ -846,6 +854,7 @@ if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['vali
     $db_database = $settings['db_database'];
     $db_login = $settings['db_login'];
     $db_password = $settings['db_password'];
+    $db_cachedir = getPostValue ( 'form_db_cachedir' );
   // Avoid false visibilty of single user login
   $onload = 'auth_handler();';   
     $c = dbi_connect ( $db_host, $db_login,
@@ -1014,7 +1023,7 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     @chmod ( $file, 0644 );
   }
 }
- //print_r ( $_SESSION);
+//print_r ( $_SESSION);
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
