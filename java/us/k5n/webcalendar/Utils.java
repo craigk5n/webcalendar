@@ -2,7 +2,9 @@ package us.k5n.webcalendar;
 
 import java.util.Calendar;
 
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -28,6 +30,31 @@ public class Utils {
       // n.getNodeValue () + ", type=" + n.getNodeType() );
       if (n.getNodeType () == Node.TEXT_NODE) {
         return ( n.getNodeValue () );
+      }
+    }
+    return ( null ); // not found
+  }
+  
+  /**
+   * For tags such as <name attr="xxx" />, get the "xxx".
+   */
+  public static String xmlNodeGetAttribute ( Node node, String name ) {
+    NamedNodeMap list = node.getAttributes ();
+    if (list == null)
+      return null;
+    int len = list.getLength ();
+    if (len == 0)
+      return null;
+    for (int i = 0; i < len; i++) {
+      Node n = list.item ( i );
+      // System.out.println ( " " + i + "> name=" + n.getNodeName() + ", value="
+      // +
+      // n.getNodeValue () + ", type=" + n.getNodeType() );
+      if (n.getNodeType () == Node.ATTRIBUTE_NODE) {
+        Attr attr = (Attr)n;
+        if (name.equalsIgnoreCase ( attr.getName () )) {
+          return attr.getValue ();
+        }
       }
     }
     return ( null ); // not found
