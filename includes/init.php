@@ -114,6 +114,9 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
       SetCookie ( 'webcalendar_csscache', $webcalendar_csscache );
     }
   }
+
+  // Menu control
+  if ( !empty ( $friendly ) || $disableCustom ) $MENU_ENABLED = 'N';
     
   $lang = '';
   if ( ! empty ( $LANGUAGE ) )
@@ -137,11 +140,6 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
     "charset=$charset\" />\n";
   $ret .= "<title>".translate($APPLICATION_NAME)."</title>\n";
 
-  $ret .= "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
-  $ret .= "<script type=\"text/javascript\" src=\"includes/js/prototype.js\"></script>\n";
-  // Menu control
-  if ( !empty ( $friendly ) || $disableCustom ) $MENU_ENABLED = 'N';
-
   // Includes needed for the top menu
   if ( $MENU_ENABLED == 'Y' ) {
     $MENU_THEME = ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none' ? 
@@ -151,6 +149,9 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
     $ret .= '<script type="text/javascript" src="includes/menu/themes/' . 
      $MENU_THEME. '/theme.js"></script>' . "\n";
   }
+
+  $ret .= "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
+  $ret .= "<script type=\"text/javascript\" src=\"includes/js/prototype.js\"></script>\n";
 
   // Any other includes?
   if ( is_array ( $includes ) ) {
