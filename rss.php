@@ -260,6 +260,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
   $numEvents < $maxEvents; $i += ONE_DAY ) {
   $eventIds=array();
   $d = date ( 'Ymd', $i );
+  $pubDate = gmdate ( 'D, d M Y', $i );
   $entries = get_entries ( $d, false  );
   $rentries = get_repeating_entries ( $username, $d );
   $entrycnt = count ( $entries );
@@ -328,7 +329,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
         if ( ! empty ( $category ) )
           echo "<category><![CDATA[" . $category . "]]></category>\n";
        // echo '<creator><![CDATA[' . $creator . "]]></creator>\n";
-        echo '<pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) . " GMT</pubDate>\n";
+        echo '<pubDate>' . $pubDate . ' ' . gmdate ( 'H:i:s', $unixtime ) . " GMT</pubDate>\n";
         echo '<guid>' . $SERVER_URL . 'view_entry.php?id=' . 
           $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
           $d . "</guid>\n";
