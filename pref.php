@@ -162,7 +162,7 @@ $Yes = translate ( 'Yes' );
 $No = translate ( 'No' );
 
 $BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' )\"" : '' );
-$INC = array('js/pref.php','js/visible.php/true');
+$INC = array('js/visible.php/true', 'js/pref.php');
 print_header($INC, '' , $BodyX);
 ?>
 
@@ -230,7 +230,7 @@ if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
 <div id="tabs">
  <span class="tabfor" id="tab_settings"><a href="" onclick="return setTab('settings');"><?php etranslate( 'Settings' )?></a></span>
  <?php if ( $ALLOW_USER_THEMES == 'Y' || $MENU_ENABLED == 'Y' ) { ?>
- <span class="tabbak" id="tab_themes"><a href="" onclick="return setTab('themes')"><?php etranslate( 'Themes' )?></a></span>
+ <span class="tabbak" id="tab_themes"><a href="" onclick="return setTab('themes');"><?php etranslate( 'Themes' )?></a></span>
 <?php }
  if ( $SEND_EMAIL == 'Y' ) { ?>
  <span class="tabbak" id="tab_email"><a href="" onclick="return setTab('email');"><?php etranslate( 'Email' )?></a></span>
