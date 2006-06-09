@@ -5,9 +5,17 @@ import java.util.Vector;
 import us.k5n.webcalendar.Event;
 import us.k5n.webcalendar.Participant;
 
+/**
+ * The EventVector object is a wrapper around the Event and Participant classes
+ * intended to be used as a row in a JTable (which gladly accepts Vector objects
+ * for each row).
+ * 
+ * @author Craig Knudsen, craig@k5n.us
+ * @version $Id$
+ */
 public class EventVector extends Vector {
   private Event event;
-  private Participant p;
+  private Participant participant;
 
   public EventVector ( Event e ) {
     super ();
@@ -17,7 +25,7 @@ public class EventVector extends Vector {
   public EventVector ( Event e, Participant p ) {
     super ();
     this.event = e;
-    this.p = p;
+    this.participant = p;
   }
 
   public void setEvent ( Event e ) {
@@ -40,16 +48,37 @@ public class EventVector extends Vector {
       case 1:
         return event.getTimeFormatted ();
       case 2:
-        return p.getLogin ();
+        return participant.getDisplayLogin ();
       case 3:
         return event.getName ();
       default:
         return "-";
     }
   }
-  
-  public String toString ()
-  {
+
+  /**
+   * @return Returns the participant.
+   */
+  public Participant getParticipant () {
+    return participant;
+  }
+
+  /**
+   * @param participant
+   *          The participant to set.
+   */
+  public void setParticipant ( Participant participant ) {
+    this.participant = participant;
+  }
+
+  /**
+   * @return Returns the event.
+   */
+  public Event getEvent () {
+    return event;
+  }
+
+  public String toString () {
     return event == null ? "No event" : event.toString ();
   }
 
