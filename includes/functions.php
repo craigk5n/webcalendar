@@ -4051,8 +4051,7 @@ function activate_urls ( $text ) {
  *
  */
 function display_time ( $time='', $control=0, $timestamp='', $format='' ) {
-  global $TIME_FORMAT, $SERVER_TIMEZONE;
-  
+  global $TIME_FORMAT, $SERVER_TIMEZONE; 
   if (  $control & 4 ) { 
     $currentTZ = getenv ( 'TZ' );
     set_env ( 'TZ', $SERVER_TIMEZONE );
@@ -4060,7 +4059,7 @@ function display_time ( $time='', $control=0, $timestamp='', $format='' ) {
   $tzid = date ( ' T' ); //default tzid for today
   $t_format = ( empty ( $format )? $TIME_FORMAT : $format );
 
-  if ( ! empty ( $time ) && strlen ( $time >=13 ) )
+  if ( ! empty ( $time ) && strlen ( $time ) >=13  )
     $timestamp = date_to_epoch ( $time );
 
   if ( ! empty ( $timestamp ) ) {
@@ -4073,7 +4072,6 @@ function display_time ( $time='', $control=0, $timestamp='', $format='' ) {
       $tzid = date ( ' T', $timestamp );
     }
   }
-
   $hour = (int) ( $time / 10000 );
   $min = abs( ( $time / 100 ) % 100 );
   //Prevent goofy times like 8:00 9:30 9:00 10:30 10:00 
