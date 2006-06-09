@@ -153,9 +153,16 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   $out .= "  <dateFormatted>" . date_to_str ( $event_date ) .
     "</dateFormatted>\n";
   $out .= "  <date>" . $event_date . "</date>\n";
-  if ( $row[2] >= 0 ) {
+  if ( $row[2] == 0 && $row[5] == ( 60 * 24 )  ) {
+    $out .= "  <time>0</time>\n";
+    $out .= "  <timeFormatted>All Day</timeFormatted>\n";
+  } else if ( $row[2] >= 0 ) {
     $out .= "  <time>" . sprintf ( "%04d", $row[2] / 100 ) . "</time>\n";
-    $out .= "  <timeFormatted>" . display_time ( $row[2] ) . "</timeFormatted>\n";
+    $out .= "  <timeFormatted>" . display_time ( $event_date .
+      sprintf ( "%06d",  $row[2] ) ) . "</timeFormatted>\n";
+  } else {
+    $out .= "  <time>-1</time>\n";
+    $out .= "  <timeFormatted>Untimed</timeFormatted>\n";
   }
   if ( $row[5] > 0 )
     $out .= "  <duration>" . $row[5] . "</duration>\n";
