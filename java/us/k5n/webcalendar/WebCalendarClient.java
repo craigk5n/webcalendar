@@ -9,6 +9,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.Calendar;
+import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -44,6 +45,7 @@ public class WebCalendarClient implements MessageDisplayer {
   private final static String LOGIN_REQUEST = "ws/login.php";
   private final static String EVENTS_REQUEST = "ws/get_events.php";
   private final static String REMINDER_REQUEST = "ws/get_reminders.php";
+  private Vector listeners;
 
   /**
    * Create a WebCalendar client instance.
@@ -54,6 +56,7 @@ public class WebCalendarClient implements MessageDisplayer {
   public WebCalendarClient ( URL url ) {
     this.url = url;
     messageDisplayer = (MessageDisplayer)this;
+    listeners = new Vector ();
   }
 
   /**
@@ -311,15 +314,21 @@ public class WebCalendarClient implements MessageDisplayer {
   }
 
   /**
-   * Get the results of a request.
+   * Get the results of a request. All communication to the WebCalendar server
+   * should go through this method.
    * 
-   * @param request
+   * @param urlFile
    *          The filename and (optionally) querystring of the URL. (example:
    *          "login.php?username=xxx&password=yyy")
    * @return The data sent back from the WebCalendar server (typically XML).
    */
   public String query ( String urlFile ) throws MalformedURLException,
       IOException {
+    for (int i = 0; i < listeners.size (); i++) {
+      WebCalendarClientListener listener = (WebCalendarClientListener)listeners
+          .elementAt ( i );
+      listener.outgoingRequest ( urlFile );
+    }
     URLConnection urlc = openConnection ( urlFile );
     StringBuffer data = new StringBuffer ();
     BufferedReader in = new BufferedReader ( new InputStreamReader ( urlc
@@ -330,7 +339,13 @@ public class WebCalendarClient implements MessageDisplayer {
       data.append ( "\n" );
     }
     in.close ();
-    return data.toString ();
+    String ret = data.toString ();
+    for (int i = 0; i < listeners.size (); i++) {
+      WebCalendarClientListener listener = (WebCalendarClientListener)listeners
+          .elementAt ( i );
+      listener.incomingResult ( ret );
+    }
+    return ret;
   }
 
   /**
@@ -503,6 +518,18 @@ public class WebCalendarClient implements MessageDisplayer {
       messageDisplayer.showError ( message );
     else
       System.err.println ( "Error: " + message );
+  }
+
+  /**
+   * Add a WebCalendarClientListener to be called for incoming/outgoing web
+   * service messages.
+   * 
+   * @param listener
+   *          The WebCalendarClientListener listener to call on outgoing
+   *          requests and incoming responses.
+   */
+  public void addListener ( WebCalendarClientListener listener ) {
+    listeners.addElement ( listener );
   }
 
 }

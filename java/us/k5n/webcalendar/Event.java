@@ -54,12 +54,15 @@ public class Event {
   String updateTime = null;
   /** Vector of SiteExtra objects */
   Vector siteExtras = null;
+  /** Vector of Participant objects */
+  Vector participants = null;
 
   /**
    * Construct the reminder from the specified XML DOM node (which corresponds
    * to the <reminder> tag).
    */
   public Event ( Node eventNode ) throws WebCalendarParseException {
+    participants = new Vector ();
     NodeList list = eventNode.getChildNodes ();
     int len = list.getLength ();
 
@@ -100,10 +103,31 @@ public class Event {
         } else if ("siteExtras".equals ( nodeName )) {
           // NOT YET IMPLEMENTED
         } else if ("participants".equals ( nodeName )) {
-          // NOT YET IMPLEMENTED
+          parseParticipants ( n );
         } else {
           System.err.println ( "Not sure what to do with <" + nodeName
               + "> tag (ignoring)" );
+        }
+      }
+    }
+  }
+
+  private void parseParticipants ( Node topNode )
+      throws WebCalendarParseException {
+    NodeList list = topNode.getChildNodes ();
+    int len = list.getLength ();
+
+    for (int i = 0; i < len; i++) {
+      Node n = list.item ( i );
+
+      if (n.getNodeType () == Node.ELEMENT_NODE) {
+        String nodeName = n.getNodeName ();
+        if ("participant".equals ( nodeName )) {
+          Participant p = new Participant ( n );
+          participants.addElement ( p );
+        } else {
+          System.err.println ( "Not sure what to do with <" + nodeName
+              + "> tag (ignoring) inside <participants>" );
         }
       }
     }
@@ -123,6 +147,125 @@ public class Event {
     if (dateCalendar.get ( Calendar.YEAR ) != c.get ( Calendar.YEAR ))
       return false;
     return true;
+  }
+
+  /**
+   * @return Returns the access.
+   */
+  public String getAccess () {
+    return access;
+  }
+
+  /**
+   * @return Returns the createdBy.
+   */
+  public String getCreatedBy () {
+    return createdBy;
+  }
+
+  /**
+   * @return Returns the date.
+   */
+  public String getDate () {
+    return date;
+  }
+
+  /**
+   * @return Returns the dateCalendar.
+   */
+  public Calendar getDateCalendar () {
+    return dateCalendar;
+  }
+
+  /**
+   * @return Returns the dateFormatted.
+   */
+  public String getDateFormatted () {
+    return dateFormatted;
+  }
+
+  /**
+   * @return Returns the description.
+   */
+  public String getDescription () {
+    return description;
+  }
+
+  /**
+   * @return Returns the duration.
+   */
+  public String getDuration () {
+    return duration;
+  }
+
+  /**
+   * @return Returns the id.
+   */
+  public String getId () {
+    return id;
+  }
+
+  /**
+   * @return Returns the name.
+   */
+  public String getName () {
+    return name;
+  }
+
+  /**
+   * @return Returns the participants.
+   */
+  public Vector getParticipants () {
+    return participants;
+  }
+
+  /**
+   * @return Returns the priority.
+   */
+  public String getPriority () {
+    return priority;
+  }
+
+  /**
+   * @return Returns the siteExtras.
+   */
+  public Vector getSiteExtras () {
+    return siteExtras;
+  }
+
+  /**
+   * @return Returns the time.
+   */
+  public String getTime () {
+    return time;
+  }
+
+  /**
+   * @return Returns the timeFormatted.
+   */
+  public String getTimeFormatted () {
+    return timeFormatted;
+  }
+
+  /**
+   * @return Returns the updateDate.
+   */
+  public String getUpdateDate () {
+    return updateDate;
+  }
+
+  /**
+   * @return Returns the updateTime.
+   */
+  public String getUpdateTime () {
+    return updateTime;
+  }
+
+  /**
+   * @return Returns the url.
+   */
+  public String getUrl () {
+    return url;
   }
 
   /**
