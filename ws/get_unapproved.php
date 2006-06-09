@@ -34,7 +34,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
 $sentIds = array ();
 
-$out = "<events>\n";
+$out = '';
 
 // Public is not allowed to approve anything
 if ( $login == '__public__' ) {
@@ -63,13 +63,22 @@ if ( $login != $user ) {
 // Get users that this user can approve
 $userList = get_users_to_approve ();
 
+$out = "<unapproved>\n";
+
+$out .= "  <userlist>\n";
+for ( $i = 0; $i < count ( $userList ); $i++ ) {
+  $out .= "    <login>" . ws_escape_xml ( $userList[$i] ) . "</login>\n";
+}
+$out .= "  </userlist>\n";
+
+$out .= "<events>\n";
 for ( $i = 0; $i < count ( $userList ); $i++ ) {
   if ( $WS_DEBUG )
     $out .= "<!-- Getting unapproved for user '" . $userList[$i] . "' -->\n";
   $out .= get_unapproved ( $userList[$i] );
 }
 
-$out .= "</events>";
+$out .= "</events>\n</unapproved>\n";
 
 // If web servic debugging is on...
 if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG ) {
@@ -120,6 +129,7 @@ function get_unapproved ( $user )
     'AND webcal_entry_user.cal_status = \'W\' ' .
     'ORDER BY webcal_entry.cal_date';
   $rows = dbi_get_cached_rows ( $sql , array ( $user ) );
+  echo "<!-- SQL:\n $sql \n-->\n";
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
