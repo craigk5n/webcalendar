@@ -185,7 +185,7 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
     // tabs.addTab ( "Layers", new JPanel () );
     // tabs.addTab ( "Reports", new JPanel () );
     // tabs.addTab ( "Delete Events", new JPanel () );
-    tabs.addTab ( "Activity Log", createActivityLogTab () );
+    tabs.addTab ( "Activity Log", new ActivityLogPanel ( client ) );
     // tabs.addTab ( "Appearance", new JPanel () );
     tabs.addTab ( "Unapproved Events", new UnapprovedEventsPanel ( client ) );
 
@@ -322,76 +322,6 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
   public JDialog createUserModDialog ( JFrame appFrame ) {
     return new UserDialog ( client, appFrame, UserDialog.ADD_MODE,
         (UserListener)this );
-  }
-
-  JPanel createActivityLogTab () {
-    JPanel ret;
-
-    ret = new JPanel ();
-
-    ret.setLayout ( new BorderLayout () );
-    JPanel cmdPanel = new JPanel ();
-    cmdPanel.setLayout ( new FlowLayout () );
-
-    JButton b = new JButton ( "Refresh" );
-    b.setEnabled ( false );
-    cmdPanel.add ( b );
-    b.addActionListener ( // Anonymous class as a listener.
-        new ActionListener () {
-          public void actionPerformed ( ActionEvent e ) {
-            // updateActivityLog ();
-          }
-        } );
-
-    b = new JButton ( "Next Page" );
-    b.setEnabled ( false );
-    cmdPanel.add ( b );
-    b.addActionListener ( // Anonymous class as a listener.
-        new ActionListener () {
-          public void actionPerformed ( ActionEvent e ) {
-            // TODO...
-          }
-        } );
-
-    b = new JButton ( "Previous Page" );
-    b.setEnabled ( false );
-    cmdPanel.add ( b );
-    b.addActionListener ( // Anonymous class as a listener.
-        new ActionListener () {
-          public void actionPerformed ( ActionEvent e ) {
-            // TODO...
-          }
-        } );
-
-    ret.add ( cmdPanel, BorderLayout.SOUTH );
-
-    ActivityLogList list = null;
-    try {
-      String logList = client.query ( "ws/activity_log.php?num=500" );
-      if (logList.indexOf ( "<activitylog>" ) < 0) {
-        System.err.println ( "Invalid activity log XML:\n" + logList );
-      } else {
-        list = new ActivityLogList ( logList, "activitylog" );
-      }
-    } catch ( Exception e ) {
-      System.err.println ( "Exception getting activity log: " + e );
-      e.printStackTrace ();
-    }
-    if (list != null) {
-      Vector colHeader = new Vector ();
-      colHeader.add ( "User" );
-      colHeader.add ( "Calendar" );
-      colHeader.add ( "Date" );
-      colHeader.add ( "Action" );
-      colHeader.add ( "Event" );
-      logTable = new ReadOnlyTable ( list, colHeader );
-    } else {
-      logTable = new ReadOnlyTable ( 5, 1 );
-    }
-    JScrollPane scrollPane = new JScrollPane ( logTable );
-    ret.add ( scrollPane, BorderLayout.CENTER );
-
-    return ret;
   }
 
   private void reloadEvents () {

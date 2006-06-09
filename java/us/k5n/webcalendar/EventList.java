@@ -85,8 +85,8 @@ public class EventList extends Vector {
       throw new WebCalendarParseException ( "Too many <" + tag + "> found ("
           + list.getLength () + ")" );
     }
-    Node remindersNode = list.item ( 0 );
-    list = remindersNode.getChildNodes ();
+    Node eventsNode = list.item ( 0 );
+    list = eventsNode.getChildNodes ();
     for (int i = 0; i < list.getLength (); i++) {
       Node n = list.item ( i );
       if (n.getNodeType () == Node.ELEMENT_NODE) {
