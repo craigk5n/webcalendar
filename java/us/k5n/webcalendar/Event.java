@@ -56,6 +56,9 @@ public class Event {
   Vector siteExtras = null;
   /** Vector of Participant objects */
   Vector participants = null;
+  /** An Untimed event */
+  public static int UNTIMED = -1;
+  public static int ALL_DAY = -2;
 
   /**
    * Construct the reminder from the specified XML DOM node (which corresponds

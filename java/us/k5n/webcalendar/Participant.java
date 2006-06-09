@@ -12,6 +12,10 @@ import org.w3c.dom.Node;
 public class Participant {
   String login = null;
   String status = null;
+  /** Login used by the public access calendar */
+  public static String PUBLIC_LOGIN = "__public__";
+  /** Name to display as the user for the public access calendar */
+  public static String PUBLIC_NAME = "Public User";
 
   public Participant ( String login ) {
     this.login = login;
@@ -34,6 +38,15 @@ public class Participant {
    * @return Returns the login.
    */
   public String getLogin () {
+    return login;
+  }
+
+  /**
+   * @return Returns the login suitable for display.
+   */
+  public String getDisplayLogin () {
+    if (PUBLIC_LOGIN.equals ( login ))
+      return PUBLIC_NAME;
     return login;
   }
 

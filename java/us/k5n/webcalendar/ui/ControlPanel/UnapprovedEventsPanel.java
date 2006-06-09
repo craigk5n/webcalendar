@@ -29,6 +29,7 @@ public class UnapprovedEventsPanel extends JPanel {
   ReadOnlyTable table;
   WebCalendarClient client;
   Vector events = null;
+  private JScrollPane scrollPane;
 
   public UnapprovedEventsPanel ( WebCalendarClient client ) {
     super ();
@@ -48,23 +49,66 @@ public class UnapprovedEventsPanel extends JPanel {
           }
         } );
 
-    b = new JButton ( "Approve" );
-    cmdPanel.add ( b );
-    b.addActionListener ( // Anonymous class as a listener.
+    final JButton approveButton = new JButton ( "Approve" );
+    cmdPanel.add ( approveButton );
+    approveButton.addActionListener ( // Anonymous class as a listener.
         new ActionListener () {
           public void actionPerformed ( ActionEvent e ) {
-            if (table.getSelectedRowCount () == 0) {
-              showError ( "You must select an event to approver" );
+            // Is a event selected?
+            int[] sel = table.getSelectedRows ();
+            if (sel.length == 0) {
+              showError ( "You must select an event." );
+            } else if (sel.length > 1) {
+              showError ( "You must select\nonly one event." );
             } else {
-              // TODO: add confirm popup
-              int[] sel = table.getSelectedRows ();
+              // one event selected... now confirm
+              EventVector event = (EventVector)events.elementAt ( sel[0] );
+              String[] options = { "Approve", "Cancel" };
+              int n = JOptionPane.showOptionDialog (
+                  approveButton.getParent (),
+                  "Are you sure you want to\napprove the following event\n"
+                      + "for user " + event.getParticipant ().getDisplayLogin ()
+                      + "?\n\n" + event.toString (), "Confirm",
+                  JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+                  null, options, options[1] );
+              if (n == 0) {
+                approveEvent ( event );
+              }
             }
           }
         } );
 
-    final JButton b2 = new JButton ( "Delete" );
-    cmdPanel.add ( b2 );
-    b2.addActionListener ( // Anonymous class as a listener.
+    final JButton rejectButton = new JButton ( "Reject" );
+    cmdPanel.add ( rejectButton );
+    rejectButton.addActionListener ( // Anonymous class as a listener.
+        new ActionListener () {
+          public void actionPerformed ( ActionEvent e ) {
+            // Is a event selected?
+            int[] sel = table.getSelectedRows ();
+            if (sel.length == 0) {
+              showError ( "You must select an event." );
+            } else if (sel.length > 1) {
+              showError ( "You must select\nonly one event." );
+            } else {
+              // one event selected... now confirm
+              EventVector event = (EventVector)events.elementAt ( sel[0] );
+              String[] options = { "Reject", "Cancel" };
+              int n = JOptionPane.showOptionDialog ( rejectButton.getParent (),
+                  "Are you sure you want to\nreject the following event\n"
+                      + "for user " + event.getParticipant ().getDisplayLogin ()
+                      + "?\n\n" + event.toString (), "Confirm",
+                  JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+                  null, options, options[1] );
+              if (n == 0) {
+                rejectEvent ( event );
+              }
+            }
+          }
+        } );
+
+    final JButton deleteButton = new JButton ( "Delete" );
+    cmdPanel.add ( deleteButton );
+    deleteButton.addActionListener ( // Anonymous class as a listener.
         new ActionListener () {
           public void actionPerformed ( ActionEvent e ) {
             // Is a event selected?
@@ -77,15 +121,14 @@ public class UnapprovedEventsPanel extends JPanel {
               // one event selected... now confirm
               EventVector event = (EventVector)events.elementAt ( sel[0] );
               String[] options = { "Delete", "Cancel" };
-              int n = JOptionPane.showOptionDialog ( b2.getParent (),
-                  "Are you sure you want to\ndelete the following event?\n\n"
-                      + event.toString (), "Confirm",
+              int n = JOptionPane.showOptionDialog ( deleteButton.getParent (),
+                  "Are you sure you want to\ndelete the following event\n"
+                      + "for user " + event.getParticipant ().getDisplayLogin ()
+                      + "\n\n" + event.toString (), "Confirm",
                   JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
                   null, options, options[1] );
               if (n == 0) {
-                System.out.println ( "Deleting unapproved event" );
                 deleteEvent ( event );
-                updateEventList ();
               }
             }
           }
@@ -93,28 +136,36 @@ public class UnapprovedEventsPanel extends JPanel {
 
     add ( cmdPanel, BorderLayout.SOUTH );
 
+    scrollPane = new JScrollPane ();
+
     updateEventList ();
 
-    if (events != null) {
-      table = new ReadOnlyTable ( events, EventVector.getHeader () );
-    } else {
-      table = new ReadOnlyTable ( new Vector (), EventVector.getHeader () );
-    }
-    JScrollPane scrollPane = new JScrollPane ( table );
-
-    // table.setCellRenderer ( new EventListCellRenderer () );
     table.setSelectionMode ( ListSelectionModel.SINGLE_SELECTION );
 
     add ( scrollPane, BorderLayout.CENTER );
   }
 
   private void showError ( String msg ) {
-    JOptionPane.showMessageDialog ( this, "Error", msg,
+    JOptionPane.showMessageDialog ( this, msg, "Error",
         JOptionPane.WARNING_MESSAGE );
   }
 
   private void deleteEvent ( EventVector e ) {
-    showError ( "Not yet implemented!" );
+    if (!client.deleteEvent ( e.getEvent (), e.getParticipant () ))
+      showError ( "Error deleting event" );
+    updateEventList ();
+  }
+
+  private void approveEvent ( EventVector e ) {
+    if (!client.approveEvent ( e.getEvent (), e.getParticipant () ))
+      showError ( "Error approving event" );
+    updateEventList ();
+  }
+
+  private void rejectEvent ( EventVector e ) {
+    if (!client.rejectEvent ( e.getEvent (), e.getParticipant () ))
+      showError ( "Error rejecting event" );
+    updateEventList ();
   }
 
   public void updateEventList () {
@@ -127,6 +178,15 @@ public class UnapprovedEventsPanel extends JPanel {
       showError ( "Exception getting events:\n\n" + e.getMessage () );
       e.printStackTrace ();
     }
+    if (table != null)
+      scrollPane.remove ( table );
+    if (events != null) {
+      table = new ReadOnlyTable ( events, EventVector.getHeader () );
+    } else {
+      table = new ReadOnlyTable ( new Vector (), EventVector.getHeader () );
+    }
+    table.doLayout ();
+    scrollPane.setViewportView ( table );
   }
 
   private Vector eventListToVector ( EventList list ) {

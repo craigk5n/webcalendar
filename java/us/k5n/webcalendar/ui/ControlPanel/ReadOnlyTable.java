@@ -22,6 +22,7 @@ public class ReadOnlyTable extends JTable implements MouseListener {
   Color evenForeground, evenBackground, oddForeground, oddBackground;
   Color selectedForeground, selectedBackground;
   Color lightGray;
+  private int numColumns;
 
   public Component prepareRenderer ( TableCellRenderer renderer, int rowIndex,
       int vColIndex ) {
@@ -45,6 +46,7 @@ public class ReadOnlyTable extends JTable implements MouseListener {
     setCellSelectionEnabled ( false );
     setRowSelectionAllowed ( true );
     this.addMouseListener ( this );
+    numColumns = cols;
     initColors ();
   }
 
@@ -53,7 +55,18 @@ public class ReadOnlyTable extends JTable implements MouseListener {
     setCellSelectionEnabled ( false );
     setRowSelectionAllowed ( true );
     this.addMouseListener ( this );
+    numColumns = colNames.size ();
     initColors ();
+  }
+
+  public void updateTableData ( Vector rowData ) {
+    for (int i = 0; i < rowData.size (); i++) {
+      Vector row = (Vector)rowData.elementAt ( i );
+      for (int col = 0; col < numColumns; col++) {
+        Object o = rowData.elementAt ( col );
+        super.setValueAt ( o, i, col );
+      }
+    }
   }
 
   private void initColors () {

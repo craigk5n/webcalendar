@@ -492,6 +492,89 @@ public class WebCalendarClient implements MessageDisplayer {
     return false;
   }
 
+  /**
+   * Approve an event for the specified event participant.
+   * 
+   * @param event
+   *          Event to update
+   * @param participant
+   *          The event participant whose status we are modifying
+   * @return true on success, false on error
+   */
+  public boolean approveEvent ( Event event, Participant participant ) {
+    return updateEventStatus ( event, participant, "approve" );
+  }
+
+  /**
+   * Reject an event for the specified event participant.
+   * 
+   * @param event
+   *          Event to update
+   * @param participant
+   *          The event participant whose status we are modifying
+   * @return true on success, false on error
+   */
+  public boolean rejectEvent ( Event event, Participant participant ) {
+    return updateEventStatus ( event, participant, "reject" );
+  }
+
+  /**
+   * Delete an event for the specified event participant. This only marks the
+   * event as deleted in the system. The event will still be in the database.
+   * 
+   * @param event
+   *          Event to update
+   * @param participant
+   *          The event participant whose status we are modifying
+   * @return true on success, false on error
+   */
+  public boolean deleteEvent ( Event event, Participant participant ) {
+    return updateEventStatus ( event, participant, "delete" );
+  }
+
+  /**
+   * Update the status of an event (approve, reject, delete)
+   * 
+   * @param event
+   *          Event to update
+   * @param participant
+   *          The event participant whose status we are modifying
+   * @param action
+   *          The action ("approve", "reject", "delete")
+   * @return true on success, false on error
+   */
+  private boolean updateEventStatus ( Event event, Participant participant,
+      String action ) {
+    try {
+      StringBuffer sb = new StringBuffer ( 50 );
+      sb.append ( "ws/event_mod.php?username=" );
+      sb.append ( URLEncoder.encode ( participant.getLogin () ) );
+      sb.append ( "&id=" );
+      sb.append ( event.getId () );
+      sb.append ( "&action=" );
+      sb.append ( URLEncoder.encode ( action ) );
+      debug ( "Request: " + sb.toString () );
+      String result = query ( sb.toString () );
+      debug ( "Result:\n" + result );
+      if (result.indexOf ( "success" ) >= 0) {
+        return true;
+      } else {
+        // Error!
+        int pos = result.indexOf ( "<error>" );
+        int pos2 = result.indexOf ( "</error>" );
+        String msg = "Error updating event status: " + result;
+        if (pos > 0 && pos2 > 0) {
+          msg = result.substring ( pos + 7, pos2 );
+        }
+        messageDisplayer.showError ( msg );
+      }
+    } catch ( Exception e ) {
+      showError ( "Error updating user:\n\n" + e.toString () );
+      e.printStackTrace ();
+    }
+    return false;
+  }
+
   private void debug ( String message ) {
     if (debugEnabled)
       System.out.println ( "[dbg] " + message );
