@@ -66,25 +66,29 @@ function ws_escape_xml ( $str )
 }
 
 // Send a single event
+// This will include all participants (with status)
 function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   global $site_extras, $WS_DEBUG,
     $SERVER_URL, $APPLICATION_NAME, $single_user, $single_user_login,
-    $DISABLE_PRIORITY_FIELD, $DISABLE_PARTICIPANTS_FIELD ;
+    $DISABLE_PRIORITY_FIELD, $DISABLE_PARTICIPANTS_FIELD,
+    $ALLOW_EXTERNAL_USERS, $EXTERNAL_REMINDERS;
 
   $pri[1] = translate("Low");
   $pri[2] = translate("Medium");
   $pri[3] = translate("High");
 
   // get participants first...
-  $sql = "SELECT cal_login FROM webcal_entry_user " .
+  $sql = "SELECT cal_login, cal_status FROM webcal_entry_user " .
     "WHERE cal_id = ? AND cal_status IN ('A','W') " .
     "ORDER BY cal_login";
   $res = dbi_execute ( $sql , array( $id ) );
   $participants = array ();
-  $num_participants = 0;
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $participants[$num_participants++] = $row[0];
+      $participants[] = array (
+        'cal_login' => $row[0],
+        'cal_status' => $row[1],
+      );
     }
   }
 
@@ -105,7 +109,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
     }
   }
 
-  if ( ! $num_participants && ! $num_ext_participants ) {
+  if ( count ( $participants ) == 0 && ! $num_ext_participants ) {
     if ( $WS_DEBUG )
       $out .= "<!-- No participants found for event id: $id -->\n";
     return;
@@ -200,14 +204,17 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   }
   if ( $se != '' )
     $out .= "  <siteExtras>\n" . $se . "  </siteExtras>\n";
-  if ( $single_user != 'Y' && ! $DISABLE_PARTICIPANTS_FIELD ) {
+  if ( $single_user != 'Y' && ( empty ( $DISABLE_PARTICIPANTS_FIELD ) ||
+    $DISABLE_PARTICIPANTS_FIELD != 'Y' ) ) {
     $out .= "  <participants>\n";
     for ( $i = 0; $i < count ( $participants ); $i++ ) {
-      $out .= "    <participant>" .  $participants[$i] .
+      $out .= "    <participant status=\"" .
+        $participants[$i]['cal_status'] . "\">" .
+        $participants[$i]['cal_login'] .
         "</participant>\n";
     }
     for ( $i = 0; $i < count ( $ext_participants ); $i++ ) {
-      $out .= "    <participant>" . $ext_participants[$i] .
+      $out .= "    <participant>" . ws_escape_xml ( $ext_participants[$i] ) .
         "</participant>\n";
     }
     $out .= "  </participants>\n";
