@@ -35,6 +35,7 @@ import us.k5n.webcalendar.Reminder;
 import us.k5n.webcalendar.User;
 import us.k5n.webcalendar.UserList;
 import us.k5n.webcalendar.WebCalendarClient;
+import us.k5n.webcalendar.WebCalendarClientListener;
 
 /**
  * WebCalendar Control Panel main class. This application is typically launched
@@ -50,7 +51,7 @@ import us.k5n.webcalendar.WebCalendarClient;
  * @version $Id$
  */
 public class Main implements MessageDisplayer, EventDisplayer, UserListener,
-    ActionListener {
+    ActionListener, WebCalendarClientListener {
   WebCalendarClient client = null;
   String appName = "WebCalendar ControlPanel";
   EventLoader eloader = null;
@@ -64,6 +65,7 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
   JPanel userTab = null;
   JList userTabUserList = null;
   ReadOnlyTable logTable = null;
+  WebServiceLogPanel logPanel = null;
 
   /**
    * Show a reminder on the screen.
@@ -139,6 +141,7 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
   public void createWindow ( int width, int height, WebCalendarClient client ) {
     JMenuItem item;
     this.client = client;
+    logPanel = new WebServiceLogPanel ();
     toplevel = new JFrame ( appName );
     JPanel mainPanel = new JPanel ();
     mainPanel.setLayout ( new BorderLayout () );
@@ -184,7 +187,9 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
     // tabs.addTab ( "Delete Events", new JPanel () );
     tabs.addTab ( "Activity Log", createActivityLogTab () );
     // tabs.addTab ( "Appearance", new JPanel () );
-    // tabs.addTab ( "Unapproved Events", new JPanel () );
+    tabs.addTab ( "Unapproved Events", new UnapprovedEventsPanel ( client ) );
+
+    tabs.addTab ( "Web Service Log", logPanel );
 
     Container contentPane = toplevel.getContentPane ();
     contentPane.setLayout ( new GridLayout ( 1, 1 ) );
@@ -421,6 +426,30 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
   }
 
   /**
+   * The outgoingRequest method will be called before an outgoing request to a
+   * WebCalendar server is sent.
+   * 
+   * @param text
+   *          The outgoing request (a URL)
+   */
+  public void outgoingRequest ( String text ) {
+    if (logPanel != null)
+      logPanel.appendRequest ( text );
+  }
+
+  /**
+   * The incomingResult method will be called after an incoming request from a
+   * WebCalendar server is received.
+   * 
+   * @param text
+   *          The incoming response text (XML)
+   */
+  public void incomingResult ( String text ) {
+    if (logPanel != null)
+      logPanel.appendResposne ( text );
+  }
+
+  /**
    * Prompt the user for a text response.
    * 
    * @param message
@@ -526,6 +555,7 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
 
     Main app = new Main ();
     client.setMessageDisplayer ( (MessageDisplayer)app );
+    client.addListener ( app );
 
     // Display a message indicating we are connecting...
     app.startupStatusFrame = new JFrame ( app.appName );
