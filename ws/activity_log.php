@@ -4,8 +4,7 @@
  *
  * Description:
  *	Web Service functionality to get the activity log.
- *	Uses XML (but not SOAP at this point since that would be
- *      overkill and require extra packages to install).
+ *	Uses REST-style Web Services.
  *
  * Parameters:
  *	startid* - Optional first id to start list from
@@ -34,10 +33,10 @@ ws_init ();
 
 $startid = getGetValue ( 'startid' );
 $num = getGetValue ( 'num' );
-if ( empty ( $num ) || $num < 0 || $num > 500 )
-  $num = 500;
+if ( empty ( $num ) || $num < 0 )
+  $num = 100;
 
-if ( $num < $MAX_ENTRIES )
+if ( $num > $MAX_ENTRIES )
   $num = $MAX_ENTRIES;
 
 Header ( "Content-type: text/xml" );
