@@ -4,16 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import us.k5n.webcalendar.ActivityLogList;
-import us.k5n.webcalendar.EventList;
 import us.k5n.webcalendar.WebCalendarClient;
 
 /**
@@ -28,12 +28,31 @@ public class ActivityLogPanel extends JPanel {
   private JScrollPane scrollPane;
   private Vector colHeader = null;
   private ActivityLogList list = null;
+  private int numToShow = 100;
+  JComboBox numToShowCombo;
 
   public ActivityLogPanel ( WebCalendarClient client ) {
     super ();
     this.client = client;
 
     setLayout ( new BorderLayout () );
+
+    JPanel choicePanel = new JPanel ();
+    choicePanel.setLayout ( new FlowLayout ( FlowLayout.LEFT ) );
+    choicePanel.add ( new JLabel ( "Entries to Display:" ) );
+    String[] options = { "25", "50", "100", "250", "500", "1000" };
+    numToShowCombo = new JComboBox ( options );
+    choicePanel.add ( numToShowCombo, BorderLayout.CENTER );
+
+    numToShowCombo.addActionListener ( // Anonymous class as a listener.
+        new ActionListener () {
+          public void actionPerformed ( ActionEvent e ) {
+            updateActivtyLogTable ();
+          }
+        } );
+
+    add ( choicePanel, BorderLayout.NORTH );
+
     JPanel cmdPanel = new JPanel ();
     cmdPanel.setLayout ( new FlowLayout () );
 
@@ -60,18 +79,6 @@ public class ActivityLogPanel extends JPanel {
 
     add ( cmdPanel, BorderLayout.SOUTH );
 
-    ActivityLogList list = null;
-    try {
-      String logList = client.query ( "ws/activity_log.php?num=500" );
-      if (logList.indexOf ( "<activitylog>" ) < 0) {
-        System.err.println ( "Invalid activity log XML:\n" + logList );
-      } else {
-        list = new ActivityLogList ( logList, "activitylog" );
-      }
-    } catch ( Exception e ) {
-      System.err.println ( "Exception getting activity log: " + e );
-      e.printStackTrace ();
-    }
     colHeader = new Vector ();
     colHeader.add ( "User" );
     colHeader.add ( "Calendar" );
@@ -85,8 +92,11 @@ public class ActivityLogPanel extends JPanel {
   }
 
   public void updateActivtyLogTable () {
+    // Determine number to show
+    String val = (String)numToShowCombo.getSelectedItem ();
+    numToShow = Integer.parseInt ( val );
     try {
-      String logList = client.query ( "ws/activity_log.php?num=500" );
+      String logList = client.query ( "ws/activity_log.php?num=" + numToShow );
       if (logList.indexOf ( "<activitylog>" ) < 0) {
         System.err.println ( "Invalid activity log XML:\n" + logList );
       } else {
