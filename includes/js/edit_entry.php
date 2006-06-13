@@ -669,13 +669,3 @@ function completed_handler () {
   }
 }
 
-
-function onLoad () {
-  timetype_handler();
-  rpttype_handler();
-  toggle_until();
-  toggle_reminders();
-  toggle_rem_rep();
-  completed_handler();
-}
-
