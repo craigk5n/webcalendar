@@ -20,7 +20,7 @@
  *
  */
 
-$WS_DEBUG = true;
+$WS_DEBUG = false;
 
 require_once "ws.php";
 
