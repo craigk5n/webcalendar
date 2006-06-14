@@ -147,7 +147,7 @@ if ( ( access_can_access_function ( ACCESS_VIEW, $user ) && $ALLOW_VIEW_OTHER !=
   $views_link = array ();
   for ( $i = 0; $i < $view_cnt; $i++ ) {
     $tmp['name'] = htmlspecialchars ($views[$i]['cal_name']);
-    $tmp['url'] = $views[$i]['url'];
+    $tmp['url'] = str_replace ( '&amp;', '&', $views[$i]['url'] );
     if ( ! empty ( $thisdate ) )
       $tmp['url'] .= "&amp;date=$thisdate";
     $views_link[] = $tmp;
