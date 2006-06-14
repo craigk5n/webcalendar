@@ -170,14 +170,14 @@ ul a {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   vertical-align: top;
 }
-.main td.today {
-  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
-}
 .main td.weekend {
   <?php echo background_css ( $GLOBALS['WEEKENDBG'], 100 ); ?>
 <?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
  display: none; 
 <?php } ?>
+}
+.main td.today {
+  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
 }
 .main td.othermonth {
   <?php echo background_css ( $GLOBALS['OTHERMONTHBG'], 100 ); ?>
@@ -809,12 +809,24 @@ a.weekcell {
   vertical-align: top;
   height: 40px;
 }
+#viewt.main {
+  margin: 0px;
+  padding: 0px;
+}
 #vieww .main th.row,
 #viewv .main th.row,
 #viewm .main th.row,
-#viewt .main th.row {
+#viewt .main th {
   width: 10%;
   vertical-align: top;
+}
+<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+#viewt .main tr.weekend {
+ display: none;
+} 
+<?php } ?>
+#viewt .main th.weekend {
+  <?php echo background_css ( $GLOBALS['WEEKENDBG'], 15 ); ?>
 }
 #viewv .main th.row {
   text-align: left;
@@ -830,8 +842,7 @@ a.weekcell {
 }
 #vieww .main th.today,
 #viewm .main th.today,
-#viewv .main th.today,
-#viewt .main th.today {
+#viewv .main th.today {
   width: 10%;
 }
 #admin .main th.today,
@@ -915,9 +926,6 @@ a.weekcell {
 .topnav {
   border-width:0px;
 }
-#viewt .main td.reg {
-  width: 90%;
-}
 .title {
   width: 99%;
   text-align: center;
@@ -955,49 +963,27 @@ a.weekcell {
 #weekdetails .main td {
   height: 75px;
 }
-#viewt .timebar {
-  padding: 0px;
+#viewt table.timebar {
   width: 100%;
-  border-width: 0px;
 }
-#viewt .timebar td {
-  padding: 0px;
+#viewt table.timebar td {
+  text-align: center;
+}
+#viewt td.timebar {
+  width: 90%;
   background-color: #FFFFFF;
   text-align: center;
-  color: #CCCCCC;
+  color: #999999;
   font-size: 10px;
 }
-#viewt .yardstick {
-  width: 100%;
-  padding: 0px;
-  border-width: 0px;
-}
 #viewt .yardstick td {
-  background-color: #FFFFFF;
-  border: 1px solid #CCCCCC;
-}
-#viewt .entrycont {
-  width: 100%;
   padding: 0px;
-  border-width: 0px;
+  border: 1px solid #999999;
 }
-#viewt .entrycont td {
-  text-align: right;
-}
-#viewt .entrybar {
-  width: 100%;
-  border-width: 0px;
-}
-#viewt .entrybar td.entry {
+#viewt td.entry {
+  padding: 0px;
   text-align: center;
-  background-color: #F5DEB3;
-  border: 1px solid #000000;
-}
-#viewt .main.weekend {
-  width: 90%;
-}
-#viewt .main td.today {
-  width: 90%;
+  <?php echo background_css ( $GLOBALS['THBG'], 10 ); ?>
 }
 .viewnav {
   border-width:0px; 

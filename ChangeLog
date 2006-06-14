@@ -1,4 +1,7 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Changed view_t.php to use $ENTRY_SLOT value and improve event placement
+ - Fixed bug 1503762: Table cell bg for current day not diplayed on weekends
+ - Fixed bug 1505083: get_weekday_before doesn't return a value on
  - Fixed bug 1502420: daily repeat doesn't skip weekend
  - Fixed bug 1414471: missing 'back to my calendar' in the trailer for 'non_user'
  - Fixed bug 1366151: NUC's cannot be handled by their admins
@@ -19,7 +22,7 @@ Version 1.1.0-CVS (?? ??? 2006)
  - Implemented PATCH 1459888: New preference: DISPLAY_MINUTES
  - Fixed bug 1493472: entered 'task' will not be displayed on day.php
  - Fixed bug 1495426: grid incomplete at preview of colors
- = Fixed bug 1457983: Assistants don't delete events for everyone
+ - Fixed bug 1457983: Assistants don't delete events for everyone
  - Fixed bug 1487016: Events not listing in time order
  - Changed functions to return strings vs echoing data...precursor to templating
  - Fixed bug 1492216: Firefox 'Live Bookmark' shows '(Empty)'
