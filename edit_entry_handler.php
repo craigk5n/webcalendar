@@ -178,7 +178,10 @@ if ( empty ( $id ) ) {
 
 if ( $is_admin ) {
   $can_edit = true;
-}
+} else if ( access_is_enabled () && ! empty ( $old_create_by ) ) {
+  $can_edit = access_user_calendar ( 'edit', $old_create_by, $login);
+} 
+
 if ( empty ( $error ) && ! $can_edit ) {
   // is user a participant of that event ?
   $sql = 'SELECT cal_id FROM webcal_entry_user WHERE cal_id = ? ' .
@@ -192,10 +195,7 @@ if ( empty ( $error ) && ! $can_edit ) {
   } else
     $error = $dberror . dbi_error ();
 }
-//check UAC
-if ( access_is_enabled () && ! empty ( $old_create_by ) ) {
-  $can_edit = access_user_calendar ( 'edit', $old_create_by, $login);
-} 
+
 if ( ! $can_edit && empty ( $error ) ) {
   $error = translate ( 'You are not authorized' );
 }
