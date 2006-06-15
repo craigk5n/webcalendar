@@ -1,9 +1,4 @@
 <?php
-if (  empty ( $_SERVER['PHP_SELF'] ) || 
-  ( ! empty ( $_SERVER['PHP_SELF'] ) && 
-  preg_match ( "/\/includes\//", $_SERVER['PHP_SELF'] ) ) ){
-  die ( "You can't access this file directly!" );
-}
 /**
  * Authentication functions.
  *
@@ -22,7 +17,7 @@ if (  empty ( $_SERVER['PHP_SELF'] ) ||
  * @package WebCalendar
  * @subpackage IMAPAuthentication
  */
-
+defined( '_ISVALID' ) or die( "You can't access this file directly!" );
 // Set some global config variables about your system.
 $user_can_update_password = false;
 $admin_can_add_user = false;
@@ -147,7 +142,7 @@ function user_valid_login ( $login, $password ) {
               "edit_user.php?user=$login";
           } else {
             //refresh their password in webcal_user
-            user_update_user_password ( $login, $password )
+            user_update_user_password ( $login, $password );
           }
         }
         return $ret;
