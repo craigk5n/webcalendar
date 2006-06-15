@@ -23,7 +23,10 @@ if ( $caching == true ) {
   include_once 'includes/init.php';
   send_no_cache_header ();
 }
-if ( ini_get ( 'zlib.output_compression' ) != 1 ) 
+
+// we don't want to compress for IE6 because of 'object expected' errors
+$isIE6 = ereg ( "MSIE 6", $_SERVER['HTTP_USER_AGENT'] );
+if ( ini_get ( 'zlib.output_compression' ) != 1  && ! $isIE6 ) 
   ob_start( 'ob_gzhandler' );
 
 $newinc = $arinc[0] . '/' . $arinc[1]; 

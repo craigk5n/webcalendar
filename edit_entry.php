@@ -1384,20 +1384,7 @@ if ( $useTabs ) { ?>
   echo translate( 'You are not authorized to edit this entry' ) . '.';
 } //end if ( $can_edit )
 
-echo print_trailer(); 
-//the following script is placed here to try and solve the IE
-// 'object expected' error.
-?>
-<script language="javascript" type="text/javascript">
-  function onLoad () {
-    timetype_handler();
-    rpttype_handler();
-    toggle_until();
-    toggle_reminders();
-    toggle_rem_rep();
-    completed_handler();
-  }
-</script>
+echo print_trailer(); ?>
 </body>
 </html>
 
