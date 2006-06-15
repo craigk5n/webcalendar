@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1506417: user-imap.php (rev 1.10) gave me a parse error on line 151
  - Changed view_t.php to use $ENTRY_SLOT value and improve event placement
  - Fixed bug 1503762: Table cell bg for current day not diplayed on weekends
  - Fixed bug 1505083: get_weekday_before doesn't return a value on
