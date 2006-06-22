@@ -746,7 +746,7 @@ if ( $eType != 'task' ) {?>
 ?>
  <span id="timeentryend" class="tooltip" title="<?php 
   etooltip( 'end-time-help' )?>">&nbsp;-&nbsp;<?php 
-  echo time_selection ( 'end_', $cal_time);?>
+  echo time_selection ( 'end_', $end_time);?>
  </span>
 </td></tr>
 <?php } 
