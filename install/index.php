@@ -302,6 +302,8 @@ function get_installed_version ( $postinstall=false ) {
   // from server time to GMT time
   if ( !empty ( $row[0] ) ) {
    $_SESSION['tz_conversion']  = $row[0];
+  } else {
+    $_SESSION['tz_conversion']  = 'NEEDED';
   }
   dbi_free_result ( $res );
  }
@@ -1687,7 +1689,7 @@ if ( ! $exists || ! $canWrite ) { ?>
 <?php echo translate ( 'It appears that you have' ) . ' ' . translate ( 'NOT' ); 
   etranslate ( 'converted your existing WebCalendar event data to GMT' ) ?>.
    <?php echo translate ( 'If you have, you may ignore this notice and not proceed with the conversion' ) . ' ' .
-    translate ( 'If this is a new installation, you may also ignore this notice.' ) ?> .
+    translate ( 'If this is a new installation, you may also ignore this notice.' ) ?>
     </li></ul>
    <div align="center">
      <input  type="submit" value="<?php etranslate ( 'Convert Data to GMT') ?>:"  /></div>

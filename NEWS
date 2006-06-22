@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1508681: 'convert to GMT' - button is missing
       1507985: event participant shown in public popup
       1506417: user-imap.php (rev 1.10) gave me a parse error on line 151
       1503762: Table cell bg for current day not diplayed on weekends
