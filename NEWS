@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1510761: missing 'back to my calendar' in the 'top-menue'
       1497931: Weird repeating events - read on
       1509045: repeated events seem to be shown out of order
       1510599: Adding event to public access error.

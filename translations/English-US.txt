@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 06-01-2006
+# Translation last updated on 06-22-2006
 
 
 ###############################################
@@ -1497,6 +1497,7 @@ encoding: Unknown encoding~
 ###############################################
 # Page: includes/menu/index.php
 #
+My Page: My Page
 This Week: This Week
 This Month: This Month
 This Year: This Year
