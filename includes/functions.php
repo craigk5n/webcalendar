@@ -5373,7 +5373,9 @@ function error_check ( $nextURL ) {
  * @params passed automatically by usort, don't pass them in your call
  */
 function sort_events ( $a, $b ) { 
-  $retval = strnatcmp( $a->getDateTimeTS(), $b->getDateTimeTS() ); 
+  $retval = strnatcmp( 
+    display_time( '',0,$a->getDateTimeTS(),24), 
+    display_time( '',0,$b->getDateTimeTS(),24) ); 
   if( ! $retval ) return strnatcmp( $a->getName(), $b->getName() );
   return $retval; 
 } 
@@ -5386,7 +5388,9 @@ function sort_events ( $a, $b ) {
  * @params passed automatically by usort, don't pass them in your call
  */
 function sort_events_insensitive ( $a, $b ) { 
-  $retval = strnatcmp( $a->getDateTimeTS(), $b->getDateTimeTS() ); 
+  $retval = strnatcmp( 
+    display_time( '',0,$a->getDateTimeTS(),24), 
+    display_time( '',0,$b->getDateTimeTS(),24) ); 
   if( ! $retval ) return strnatcmp( strtolower($a->getName()), strtolower($b->getName()) ); 
   return $retval; 
 } 
