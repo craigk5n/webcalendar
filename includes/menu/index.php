@@ -13,7 +13,7 @@ global $readonly, $is_nonuser, $is_nonuser_admin, $is_assistant, $single_user,
        $ALLOW_VIEW_OTHER, $DISPLAY_TASKS, $thisyear, $thismonth, $thisday,
        $views, $REPORTS_ENABLED, $use_http_auth, $login_return_path,
        $NONUSER_ENABLED, $has_boss, $is_admin, $CATEGORIES_ENABLED,
-       $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL,
+       $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL, $START_VIEW,
        $REMOTES_ENABLED, $DISPLAY_TASKS_IN_GRID, $HOME_LINK, $MENU_DATE_TOP;
 
 
@@ -44,6 +44,11 @@ $month_url = 'month.php';
 $week_url = 'week.php';
 $year_url = 'year.php';
 
+if ( ! empty ( $STARTVIEW ) ) {
+  $mycal = $STARTVIEW;
+} else {
+  $mycal = 'index.php';
+}
 // Add new entry
 if ( $can_add ) {
   $new_entry_url = 'edit_entry.php';
@@ -342,12 +347,14 @@ var myMenu =
   // My Calendar Menu
   // translate ( 'My Calendar', true);
   // translate ( 'Today', true);
-  // translate ( 'Home', true);  
+  // translate ( 'Home', true); 
+  // translate ( 'My Page', true); 
   // translate ( 'This Week', true);
   // translate ( 'This Month', true);
   // translate ( 'This Year', true);
   jscMenu_menu ('My Calendar');
-    jscMenu_item ( 'home.png', 'Home', ( empty ( $HOME_LINK )? 'index.php' : $HOME_LINK ) );
+    if ( ! empty ( $HOME_LINK ) ) jscMenu_item ( 'home.png', 'Home', $HOME_LINK ) ;
+    jscMenu_item ( 'back.png', 'My Page', $mycal );
     if ( $today_url != '' ) jscMenu_item ( 'today.png', 'Today', $today_url );
     jscMenu_item ( 'week.png', 'This Week', $week_url );
     jscMenu_item ( 'month.png', 'This Month', $month_url );
