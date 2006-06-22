@@ -262,8 +262,8 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
    // Don't allow users to select browser-defined.  We want them to pick
    // a language so that when we send reminders (done without the benefit
    // of a browser-preferred language), we'll know which language to use.
-   // DO let them select browser-defined for the public user.
-   if ( $key != 'Browser-defined' || $updating_public ||
+   // DO let them select browser-defined for the public user or NUC.
+   if ( $key != 'Browser-defined' || $updating_public || $is_admin ||
               $is_nonuser_admin ) {
      echo '<option value="' . $val . '"';
      if ( $val == $prefarray['LANGUAGE'] ) echo $selected;
