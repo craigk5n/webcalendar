@@ -1015,9 +1015,9 @@ if ( ! empty ( $conflicts ) ) {
   } else {
     $time = sprintf ( "%d%02d00", $entry_hour, $entry_minute );
     // Pass the adjusted timestamp in case the date changed due to GMT offset 
-    echo display_time ( $time, 1, $eventstart );
+    echo display_time ( '', 0, $eventstart );
     if ( $duration > 0 ) {
-      echo "-" . display_time ( add_duration ( $time, $duration ), 1, $eventstart );
+      echo "-" . display_time ( '', 0, $eventstart + ( $duration * 60 ) );
     }
   }
 ?></span> <?php etranslate( 'conflicts with the following existing calendar entries' )?>:
