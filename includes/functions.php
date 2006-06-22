@@ -1237,7 +1237,7 @@ function build_entry_popup ( $popupid, $user, $description='', $time,
   $site_extras='', $location='', $name='', $id='', $reminder='' ) {
   global $login, $popup_fullnames, $popuptemp_fullname, $DISABLE_POPUPS,
     $ALLOW_HTML_DESCRIPTION, $SUMMARY_LENGTH, $PARTICIPANTS_IN_POPUP,
-    $tempfullname;
+    $PUBLIC_ACCESS_VIEW_PART, $tempfullname;
   
  if ( ! empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) 
     return;
@@ -1248,7 +1248,8 @@ function build_entry_popup ( $popupid, $user, $description='', $time,
     $popup_fullnames = array ();  
   $partList = array();
   if ( $id != '' && ! empty ( $PARTICIPANTS_IN_POPUP  ) && 
-    $PARTICIPANTS_IN_POPUP == 'Y' ) {
+    $PARTICIPANTS_IN_POPUP == 'Y' && 
+    ! ( $PUBLIC_ACCESS_VIEW_PART == 'N' && $login == '__public__' )  ) {
     $sql = 'SELECT cal_login, cal_status FROM webcal_entry_user ' .
       "WHERE cal_id = ? AND cal_status IN ('A', 'W' ) ";
     $rows = dbi_get_cached_rows ( $sql,  array ( $id ) );
