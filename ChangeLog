@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1497931: Weird repeating events - read on
  - Fixed bug 1509045: repeated events seem to be shown out of order
  - Fixed bug 1510599: Adding event to public access error.
  - Fixed bug 1508681: 'convert to GMT' - button is missing
