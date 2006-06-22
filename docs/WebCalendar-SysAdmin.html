@@ -1194,6 +1194,17 @@ cal_firstname, cal_is_admin ) VALUES
     <tt>includes/settings.php</tt> file</li>
    </ul>
   </dd>
+ <dt>I get a database error from MySQL that says "Client does not support authentication protocol."</dt>
+  <dd>From the MySQL 5.0 Reference Manual:
+  <blockquote>MySQL 5.0 uses an authentication protocol based on a password hashing algorithm that is incompatible with that used by older (pre-4.1) clients. If you upgrade the server from 4.0, attempts to connect to it with an older client may fail with the following message:
+ <br/><br/>
+  Client does not support authentication protocol requested
+  by server; consider upgrading MySQL client
+  </blockquote>
+  The <a href="http://dev.mysql.com/doc/refman/5.0/en/old-client.html">MySQL
+    Reference Manual</a> has solutions for this problem.
+  </dd>
+
 <!-- END FAQ -->
 </dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
