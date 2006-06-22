@@ -50,10 +50,10 @@ if ( $can_add ) {
   if ( ! empty ( $thisyear ) ) {
     $new_entry_url .= "?year=$thisyear";
     if ( ! empty ( $thismonth ) ) {
-      $new_entry_url .= "&amp;month=$thismonth";
+      $new_entry_url .= "&month=$thismonth";
     }
     if ( ! empty ( $thisday ) ) {
-      $new_entry_url .= "&amp;day=$thisday";
+      $new_entry_url .= "&day=$thisday";
     }
   }
 }
@@ -62,12 +62,12 @@ if ( $can_add ) {
 if ( $can_add && ( $DISPLAY_TASKS_IN_GRID == 'Y' || $DISPLAY_TASKS == 'Y' ) ) {
   $new_task_url = 'edit_entry.php?eType=task';
   if ( ! empty ( $thisyear ) ) {
-    $new_task_url .= "&amp;year=$thisyear";
+    $new_task_url .= "&year=$thisyear";
     if ( ! empty ( $thismonth ) ) {
-      $new_task_url .= "&amp;month=$thismonth";
+      $new_task_url .= "&month=$thismonth";
     }
     if ( ! empty ( $thisday ) ) {
-      $new_task_url .= "&amp;day=$thisday";
+      $new_task_url .= "&day=$thisday";
     }
   }
 }
@@ -149,7 +149,7 @@ if ( ( access_can_access_function ( ACCESS_VIEW, $user ) && $ALLOW_VIEW_OTHER !=
     $tmp['name'] = htmlspecialchars ($views[$i]['cal_name']);
     $tmp['url'] = str_replace ( '&amp;', '&', $views[$i]['url'] );
     if ( ! empty ( $thisdate ) )
-      $tmp['url'] .= "&amp;date=$thisdate";
+      $tmp['url'] .= "&date=$thisdate";
     $views_link[] = $tmp;
   }
   $views_linkcnt = count ( $views_link );
@@ -162,7 +162,7 @@ if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
   access_can_access_function ( ACCESS_REPORT, $user ) ) {
   $reports_link = array ();
   if ( ! empty ( $user ) && $user != $login ) {
-    $u_url = "&amp;user=$user";
+    $u_url = "&user=$user";
   } else {
     $u_url = '';
   }
@@ -252,6 +252,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
         $xurl = "day.php?user=$l";
       // year does not show events, so you cannot manage someone's cal
     }
+   $xurl = str_replace ( '&amp;', '&', $xurl );
     $tmp['name'] = $f;
     $tmp['url'] = $xurl;
     $groups[] = $tmp;
