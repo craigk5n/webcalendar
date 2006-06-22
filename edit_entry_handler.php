@@ -735,6 +735,8 @@ if ( empty ( $error ) ) {
         // Approval required
         $status = 'W'; // approval required
       }
+      // Prcent will always be 0 for Public
+      $new_percent = 0;
     } else if ( ! $newevent ) {
       // keep the old status if no email will be sent
       $send_user_mail = ( empty ( $old_status[$participants[$i]] ) ||
