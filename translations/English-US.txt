@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 06-22-2006
+# Translation last updated on 06-23-2006
 
 
 ###############################################
@@ -1341,6 +1341,7 @@ Manage calendar of: Manage calendar of
 #
 Browser Language Not Found: Browser Language Not Found
 not supported: not supported
+Browser-defined: Browser-defined
 English: English
 English-US: English-US
 Basque: Basque

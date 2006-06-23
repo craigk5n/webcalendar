@@ -390,6 +390,7 @@ function etooltip ( $str ) {
     // The following comments will be picked up by update_translation.pl so
     // translators will be aware that they also need to translate language names.
     //
+    // translate( 'Browser-defined' )
     // translate( 'English' )
     // translate( 'English-US' )
     // translate( 'Basque' )
