@@ -347,18 +347,18 @@ var myMenu =
   // My Calendar Menu
   // translate ( 'My Calendar', true);
   // translate ( 'Today', true);
-  // translate ( 'Home', true); 
-  // translate ( 'My Page', true); 
+  // translate ( 'Home', true);  
   // translate ( 'This Week', true);
   // translate ( 'This Month', true);
   // translate ( 'This Year', true);
+  // translate ( 'Exit', true);
   jscMenu_menu ('My Calendar');
-    if ( ! empty ( $HOME_LINK ) ) jscMenu_item ( 'home.png', 'Home', $HOME_LINK ) ;
-    jscMenu_item ( 'back.png', 'My Page', $mycal );
+    jscMenu_item ( 'home.png', 'Home', $mycal );
     if ( $today_url != '' ) jscMenu_item ( 'today.png', 'Today', $today_url );
     jscMenu_item ( 'week.png', 'This Week', $week_url );
     jscMenu_item ( 'month.png', 'This Month', $month_url );
     jscMenu_item ( 'year.png', 'This Year', $year_url );
+    if ( ! empty ( $HOME_LINK ) ) jscMenu_item ( 'exit.png', 'Exit', $HOME_LINK ) ;
   jscMenu_close();
   
   
@@ -556,7 +556,7 @@ var myMenu =
   // Unapproved Icon if any exist
   $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
     $is_nonuser_admin ? $user : $login ) );
-  if ( strlen ( $unapprovedStr ) && $unapproved_url != '' )
+  if ( strlen ( $unapprovedStr ) && $unapprovedStr != '<br />' && $unapproved_url != '' )
     jscMenu_item ( 'unapproved.png', '', $unapproved_url );
  
   // Generate Printer Friendly Icon 
