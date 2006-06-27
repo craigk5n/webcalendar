@@ -2,9 +2,11 @@
 /* $Id$ */
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
+require_once 'includes/classes/hKit/hkit.class.php';
 
 $error = '';
 
+$action = getPostValue ( 'action' );
 $delete = getPostValue ( 'delete' );
 $reload = getPostValue ( 'reload' );
 $nid = getPostValue ( 'nid' );
@@ -14,12 +16,26 @@ $nlayer = getPostValue ( 'nlayer' );
 $nlayercolor = getPostValue ( 'layercolor' );
 
 if ( ! empty ( $reload ) ) {
+    $data = array();
     $calUser = $nid;
-    $type = 'remoteics';
     $overwrite = true;
+    $type = 'remoteics';
+    // we will check ics first
     $data = parse_ical( $nurl, $type );
+    //TODO it may be a vcs file
+    //if ( count ( $data ) == 0 ) {
+    //  $data = parse_vcal( $nurl );
+    //}  
+    // we may be processing an hCalendar
+    if ( count ( $data ) == 0  && function_exists ( 'simplexml_load_string' ) ) {
+      $h  = new hKit;
+      $h->tidy_mode  = 'proxy';
+      $result  = $h->getByURL('hcal', $nurl);
+      $type= 'hcal';
+      $data = parse_hcal( $result, $type );
+    }
     print_header( '','','',true,false,true);
-    if (! empty ($data) && empty ($errormsg) ) {
+    if ( count ($data) && empty ($errormsg) ) {
       //delete existing events
       delete_events ( $nid );
       //import new events
@@ -42,9 +58,10 @@ if ( ! empty ( $reload ) ) {
         translate( 'There was an error parsing the import file or no events were returned' ) .
         ".<br />\n";
     }
-    echo print_trailer ( false, true, true );
-    exit;    
-} else if ( ! empty ( $delete ) ) {
+    echo print_trailer ( false, true, true );   
+}
+
+if ( ! empty ( $delete ) ) {
   // delete events from this remote calendar
   delete_events ( $nid );
 
@@ -66,7 +83,7 @@ if ( ! empty ( $reload ) ) {
     $error = db_error ();
 
 } else {
-  if ( $action == 'Save' || $action == translate( 'Save' ) ) {
+  if ( ! empty ( $nid ) && $action == 'Save' || $action == translate( 'Save' ) ) {
     // Updating
     $query_params = array();
     $sql = 'UPDATE webcal_nonuser_cals SET ';
@@ -80,6 +97,7 @@ if ( ! empty ( $reload ) ) {
     }
     $sql .= ' cal_url = ?, ';
     $query_params[] = $nurl;
+
     $sql .= ' cal_is_public = ?, ';
     $query_params[] = 'N';
         
@@ -90,7 +108,7 @@ if ( ! empty ( $reload ) ) {
     if ( ! dbi_execute ( $sql, $query_params ) ) {
       $error = db_error ();
     }
-  } else {
+  } else if ( empty ( $nid ) ){
     // Adding    
     if (preg_match( "/^[\w]+$/", $nid )) {
       $nid = $NONUSER_PREFIX.$nid;
@@ -204,7 +222,7 @@ echo $error;
 </blockquote>
 </body>
 </html>
-<?php } else if ( empty ( $error ) ) {
+<?php } else if ( ! empty ( $action ) && empty ( $error ) ) {
 ?><html><head></head>
 <body onLoad="alert('<?php etranslate( 'Changes successfully saved', true);?>'); window.parent.location.href='users.php?tab=remotes';">
 </body></html>

@@ -293,6 +293,7 @@ Version 1.1.0-CVS (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Added hCalendar feature to Remote Calendars
     + Implemented PATCH 1498087: Add simple navigation to help
     + Implemented PATCH 1498201: Don't print ThemeMenubar
     + Implemented RFE 1496319: Left align "Users" column in "Week (Users vertical)" view

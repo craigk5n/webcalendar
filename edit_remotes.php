@@ -85,16 +85,17 @@ echo <<<EOT
       <label for="nlastname">{$lastNameStr}:</label></td><td>
       <input type="text" name="nlastname" id="nlastname" size="20" maxlength="25" value="{$lastNameValue}" /></td></tr>
     <tr><td>
-      <label for="url">{$urlStr}:</label></td><td>
+      <label for="nurl">{$urlStr}:</label></td><td>
       <input type="text" name="nurl" id="nurl" size="75" maxlength="255" value="{$urlValue}" /></td></tr>
 EOT;
 if ( empty ( $nid ) ) {
 echo <<<EOT
    <tr><td>
-     <label for="url">{$createLayerStr}:</label></td><td>
-     <input type="checkbox" name="nlayer"  value="Y"  onchange="toggle_layercolor();"/>{$requiredStr}</td></tr>
+     <label for="nlayer">{$createLayerStr}:</label></td><td>
+     <input type="checkbox" name="nlayer" id="nlayer"  value="Y"  onchange="toggle_layercolor();"/>{$requiredStr}</td></tr>
    <tr id="nlayercolor" style="visibility:hidden" ><td>
-     <label for="layercolor">{id$colorStr}:</label></td><td>
+     <label for="layercolor">{$colorStr}:</label></td><td>
+     <input type="hidden" name="reload" id="reload" value="true" />
      <input type="text" name="layercolor" id="layercolor" size="7" maxlength="7" value="" />
      <input type="button" onclick="selectColor('layercolor')" value="{$selectStr}..." /></td></tr> 
 EOT;
@@ -103,11 +104,13 @@ echo <<<EOT
   </table>
   <input type="hidden" name="nadmin" id="nadmin" value="{$login}" />
   <input type="submit" name="action" value="{$button}" />
+
 EOT;
 if ( ! empty ( $nid ) ) {
 echo <<<EOT
   <input type="submit" name="delete" value="{$deleteStr}" onclick="return confirm('{$confirmStr}')" />
   <input type="submit" name="reload" value="{$reloadStr}" />
+
 EOT;
 }  ?>
 </form>

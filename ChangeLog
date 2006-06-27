@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Added hCalendar feature to Remote Calendars
  - Fixed bug 1513448: Cannot Display Attachment
  - Fixed bug 1511337: time-stamps at the 'activity-log' are incorrect
  - Fixed bug 1511120: 'unapproved-icon' in 'top-menue' not properly displayed

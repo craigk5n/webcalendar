@@ -218,6 +218,7 @@ ul a {
 }
 #editnonusers,
 #editremotes,
+#editremoteshandler,
 #edituser,
 #groupedit,
 #viewsedit {
