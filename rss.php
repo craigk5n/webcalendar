@@ -34,6 +34,8 @@
  *     following System Settings configured for this:
  *       Allow viewing other user's calendars: Yes
  *       Public access can view others: Yes
+ *   - showdate: put the date and time (if specified in the title 
+ *       of the item) in the title
  *
  * Security:
  * $RSS_ENABLED must be set true
@@ -44,6 +46,7 @@
  *      2 = All entries are included in the feed *USE WITH CARE
  *   
  * We do not include unapproved events in the RSS feed.
+ *
  *
  * TODO
  * Add other RSS 2.0 options such as media
@@ -93,6 +96,15 @@ if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
  *
  */
 
+//Show the date in the title and how to format it
+$date_in_title = false;  //can overriden with "rss.php?showdate=1|true"
+$showdate = getValue ( 'showdate' );
+if ( ! empty ( $showdate ) ) {
+  $date_in_title = ( $showdate == 'true' || $showdate == 1 ? true : false );
+}
+$date_format = 'M jS';  //Aug 10th, 8/10
+$time_format = 'g:ia';  //4:30pm, 16:30
+$time_separator = ', '; //Aug 10th @ 4:30pm, Aug 10th, 4:30pm
 
 // Default time window of events to load
 // Can override with "rss.php?days=60"
@@ -272,8 +284,15 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
       if ( array_search ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
         $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
+        if ( $date_in_title ) {
+          $itemtime = ( $entries[$j]->isAllDay() || $entries[$j]->isUntimed() ?
+            $time_separator . date( $time_format, $unixtime ): '' ) . ' ';
+          $dateinfo = date( $date_format, $unixtime ) . $itemtime;
+        } else {
+          $dateinfo = '';
+        }
         echo "\n<item>\n";
-        echo "<title><![CDATA[" . 
+        echo '<title><![CDATA[' . $dateinfo .  
           $entries[$j]->getName() . "]]></title>\n";
         echo '<link>' . $SERVER_URL . 'view_entry.php?id=' . 
           $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
@@ -319,7 +338,14 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
 
         echo "\n<item>\n";
         $unixtime = date_to_epoch ( $rentries[$j]->getDateTime() );
-        echo "<title><![CDATA[" . 
+        if ( $date_in_title == true ) {
+          $itemtime = ( $rentries[$j]->isAllDay() || $rentries[$j]->isUntimed() ?
+            $time_separator . date( $time_format, $unixtime ): '' ) . ' ';
+          $dateinfo = date( $date_format, $unixtime ) . $itemtime;
+        } else {
+          $dateinfo = '';
+        }
+        echo '<title><![CDATA[' . $dateinfo .    
           $rentries[$j]->getName() . "]]></title>\n";
         echo '<link>' . $SERVER_URL . "view_entry.php?id=" . 
           $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
