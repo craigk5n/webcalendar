@@ -1158,7 +1158,7 @@ function import_data ( $data, $overwrite, $type ) {
    $ImportType = 'ICAL';
    $type = 'ical';
   $subType = 'icalclient';
- } else if ( $type == 'remoteics' ) {
+ } else if ( $type == 'remoteics' ||  $type == 'hcal') {
    $ImportType = 'RMTICS';
    $type = 'rmtics';
    $subType = 'remoteics';
@@ -1177,8 +1177,9 @@ function import_data ( $data, $overwrite, $type ) {
     $errormsg = db_error();
     return;
   }
-
-foreach ( $data as $Entry ){
+ if ( ! is_array ( $data ) ) 
+   return false;
+ foreach ( $data as $Entry ){
 
     //do_debug ( "Entry Array " . print_r ( $Entry , true ) );
     $priority = 2;
@@ -1920,6 +1921,10 @@ function parse_ical ( $cal_file, $source='file' ) {
     $linecnt = count ( $lines );
     for ( $n = 0; $n < $linecnt && ! $error; $n++ ) {
       $line++;
+      if ( $line > 5 && $line < 10 && $state == 'NONE' ) {
+        //we are probably not reading an ics file
+        return false;
+      }
       $buff = trim( $lines[$n] );
       if ( preg_match ( "/^PRODID:(.+)$/i", $buff, $match) ) {
         $prodid = $match[1];
@@ -2113,6 +2118,125 @@ function parse_ical ( $cal_file, $source='file' ) {
 
   return $ical_data;
 }
+
+
+// Parse the hcal array 
+function parse_hcal ( $hcal_array ) {
+  global $tz, $errormsg;
+  $ical_data = array();
+   
+   $error = false;
+   $event = '';
+   if ( ! is_array ( $hcal_array ) ) {
+     return false;
+   }
+   foreach ( $hcal_array as $hcal ) {
+
+    foreach ( $hcal as $key => $value ) {
+      $value = trim( $value );
+      // set default UID
+      $event['uid'] = generate_uid ( 1 );
+      // parser debugging code...
+      //echo "buff = " . htmlspecialchars ( $buff ) . "<br /><br />\n";
+      if ( $key == 'SUMMARY' ) {
+          $substate = 'summary';
+          $event[$substate] = $value;
+      } elseif ( $key == 'DESCRIPTION' ) {
+          $substate = 'description';
+          $event[$substate] = $value;               
+        } elseif ( $key == 'CLASS' ) {
+          $substate = 'class';
+          $event[$substate] = $value;
+        } elseif ( $key == 'LOCATION' ) {
+          $substate = 'location';
+          $event[$substate] = $value;
+        } elseif ( $key == 'URL' ) {
+          $substate = 'url';
+          $event[$substate] = $value;
+        } elseif ( $key == 'TRANSP' ) {
+          $substate = 'transparency';
+          $event[$substate] = $value;
+        } elseif ( $key == 'STATUS') {
+          $substate = 'status';
+          $event[$substate] = $value;
+        } elseif ( $key == 'PRIORITY' ) {
+          $substate = 'priority';
+          $event[$substate] = $value;
+        } elseif ( $key == 'DTSTART' ) {
+          $substate = 'dtstart';
+          $event[$substate] = $value;
+          if ( strlen ( $value ) > 8 ) {
+            $substate = 'dtstartDATETIME'; 
+            $event[$substate] = true;
+          } else  {
+            $substate = 'dtstartDATE'; 
+            $event[$substate] = true;
+          }
+        } elseif ( $key == 'DTEND' ) {
+          $substate = 'dtend';
+          $event[$substate] = $value;
+          if ( strlen ( $value ) > 8 ) {
+            $substate = 'dtendDATETIME'; 
+            $event[$substate] = true;
+          } else  {
+            $substate = 'dtendDATE'; 
+            $event[$substate] = true;
+          }
+        } elseif ( $key == 'TZ'  ) {
+          $substate = 'tzid';
+          $event[$substate] = $value;
+        } elseif ( $key == 'DUE') {
+          $substate = 'due';
+          $event[$substate] = $value;
+        } elseif ( $key == 'COMPLETED' ) {
+          $substate = 'completed';
+          $event[$substate] = $value;
+        } elseif ( $key == 'PERCENT-COMPLETE' ) {
+          $substate = 'percent';
+          $event[$substate] = $value;
+        } elseif ( $key == 'DURATION' ) {
+          $substate = 'duration';
+          $event[$substate] = parse_ISO8601_duration ( $value );
+        } elseif ( $key == 'RRULE' ) {
+          $substate = 'rrule';
+          $event[$substate] = $value;
+        } elseif ( $key == 'EXDATE' ) {
+          $substate = 'exdate';
+          //allows multiple ocurrances of EXDATE to be processed
+          if (isset($event[$substate] ) ) {
+            $event[$substate] .= ',' . $value;
+          } else {
+            $event[$substate] = $value;   
+          }
+          } elseif ( $key == 'RDATE' ) {
+            $substate = 'rdate';
+           //allows multiple ocurrances of RDATE to be processed
+           if (isset($event[$substate] ) ) {
+             $event[$substate] .= ',' . $value;
+           } else {
+             $event[$substate] = $value;   
+           }
+         } elseif ( $key == 'CATEGORIES' ) {
+            $substate = 'categories';
+           //allows multiple ocurrances of CATEGORIES to be processed
+           if (isset($event[$substate] ) ) {
+             $event[$substate] .= ',' . $value;
+           } else {
+             $event[$substate] = $value;   
+           }
+         } elseif ( $key == 'UID' ) {
+           $substate = 'uid';
+           $event[$substate] = $value;
+         }
+      } // End foreach $hcal
+      $event['state'] = 'VEVENT';
+      if ($tmp_data = format_ical($event)) $hcal_data[] = $tmp_data;
+      $event = '';
+    } // End foreach $hcal_array
+
+  return $hcal_data;
+}
+
 
 // Convert interval to webcal repeat type
 function RepeatType ($type) {
@@ -2563,9 +2687,12 @@ function parse_vcal($cal_file) {
 
     while (!feof($fd) && !$error) {
       $line++;
+      if ( $line > 5 && $line < 10 && $state == 'NONE' ) {
+        //we are probably not reading a vcs file
+        return false;
+      }
       $buff = fgets($fd, 4096);
       $buff = chop($buff);
-
       if ($state == 'VEVENT') {
           if ( ! empty ( $subsubstate ) ) {
             if (preg_match("/^END:(.+)$/i", $buff, $match)) {

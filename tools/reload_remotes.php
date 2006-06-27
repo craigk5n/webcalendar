@@ -67,6 +67,8 @@ include "$includedir/xcal.php";
 include "$includedir/translate.php";
 
 $WebCalendar->initializeSecondPhase();
+// used for hCal parsing
+require_once "$includedir/classes/hKit/hkit.class.php";
 
 $debug = false; // set to true to print debug info...
 
@@ -84,19 +86,32 @@ if ( $debug )
   echo '<br />' . translate( 'Include Path' ) .' =' . ini_get('include_path') . " <br />\n";
 
 if ( $REMOTES_ENABLED == 'Y' ) {
-   $res = dbi_execute ( 'SELECT cal_login, cal_url, cal_admin FROM webcal_nonuser_cals ' .
-     ' WHERE cal_url IS NOT NULL ' );  
+   $res = dbi_execute ( 'SELECT cal_login, cal_url, cal_admin ' .
+     'FROM webcal_nonuser_cals  WHERE cal_url IS NOT NULL ' );  
   $cnt = 0;
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
+      $data = array();
       $cnt++;
       $calUser = $row[0];
       $cal_url = $row[1];
       $login = $row[2];
-      $type = 'remoteics';
       $overwrite = true;
+      $type = 'remoteics';
       $data = parse_ical( $cal_url, $type );
-      if (! empty ($data) && empty ($errormsg) ) {
+      //TODO it may be a vcs file
+      //if ( count ( $data ) == 0 ) {
+      //  $data = parse_vcal( $cal_url );
+      //}   
+      // we may be processing an hCalendar
+      if ( count ( $data ) == 0 && function_exists ( 'simplexml_load_string' ) ) {
+        $h  = new hKit;
+        $h->tidy_mode  = 'proxy';
+        $result  = $h->getByURL('hcal', $cal_url);
+        $type= 'hcal';
+        $data = parse_hcal( $result, $type );
+      }
+      if ( count ( $data ) && empty ($errormsg) ) {
         //delete existing events
         if ( $debug )
           echo '<br />' . translate( 'Deleting events for' ) . ": $calUser<br />\n";
@@ -112,7 +127,7 @@ if ( $REMOTES_ENABLED == 'Y' ) {
         if ( ! empty ( $errormsg ) ) {
           echo $errormsg . '<br />';
         }
-        if ( empty ( $data ) ) {
+        if ( count ( $data ) == 0  ) {
           echo '<br />' . translate( 'No data returned from' ) .
             ":  $cal_url<br />\n" . translate( 'for non-user calendar' ) .
             ":  $calUser<br />\n";
