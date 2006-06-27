@@ -145,8 +145,8 @@ if ( ! $res ) {
   }
   dbi_free_result ( $res );
 }
-
-$display_date = ( $event_time > 0 ? date ('Ymd', 
+//don't shift date if All Day or Untimed
+$display_date = ( $event_time > 0 || ($event_time == 0 && $duration != 1440 )  ? date ('Ymd', 
   date_to_epoch ( $orig_date . sprintf( "%06d", $event_time ) ) ) :$orig_date );
 
 if ( ! empty ( $year ) ) {
@@ -527,7 +527,7 @@ if ( $eType != 'task' && $event_time >= 0 ) { ?>
   ?>
 </td></tr>
 <?php }
-if ( $duration > 0 && $duration != ONE_DAY ) { ?>
+if ( $duration > 0 && $duration != 1440 ) { ?>
 <tr><td style="vertical-align:top; font-weight:bold;">
  <?php etranslate( 'Duration' )?>:</td><td>
  <?php 
