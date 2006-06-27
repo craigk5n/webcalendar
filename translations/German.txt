@@ -14,7 +14,9 @@
 # Last update: 29 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 30 May 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 2 June 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 06-23-2006
+# Last update: 19 June 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 23 June 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 06-27-2006
 
 
 ###############################################
@@ -1334,7 +1336,7 @@ Manage calendar of: Kalender verwalten von
 #
 Browser Language Not Found: Browsersprache nicht gefunden
 not supported: nicht unterst&uuml;tzt
-Browser-defined: SPRACHDEFINIERT
+Browser-defined: Browser-definiert
 English: Englisch
 English-US: Englisch-US
 Basque: Baskisch
@@ -1491,10 +1493,10 @@ encoding: Unbekannte Verschl&uuml;sselung
 ###############################################
 # Page: includes/menu/index.php
 #
-My Page: Meine Seite
 This Week: Aktuelle Woche
 This Month: Aktueller Monat
 This Year: Aktuelles Jahr
+Exit: Ausgang
 Add New Event: Neuen Termin hinzuf&uuml;gen
 Delete Entries: Eintr&auml;ge l&ouml;schen
 Another User\'s Calendar: Kalender anderer Benutzer
