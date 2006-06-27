@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 06-23-2006
+# Translation last updated on 06-27-2006
 
 
 ###############################################
