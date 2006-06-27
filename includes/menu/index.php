@@ -556,7 +556,7 @@ var myMenu =
   // Unapproved Icon if any exist
   $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
     $is_nonuser_admin ? $user : $login ) );
-  if ( strlen ( $unapprovedStr ) && $unapprovedStr != '<br />' && $unapproved_url != '' )
+  if ( $unapprovedStr == '<br />' && $unapproved_url != '' )
     jscMenu_item ( 'unapproved.png', '', $unapproved_url );
  
   // Generate Printer Friendly Icon 
