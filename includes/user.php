@@ -133,7 +133,8 @@ function user_valid_crypt ( $login, $crypt_password ) {
 function user_load_variables ( $login, $prefix ) {
   global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX;
   $ret = false;
-
+  //help prevent spoofed username attempts from disclosing fullpath
+  $GLOBALS[$prefix . 'fullname'] = '';
   if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
     return true;
