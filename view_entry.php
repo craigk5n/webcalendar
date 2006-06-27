@@ -845,7 +845,7 @@ if ( Doc::attachmentsEnabled () && $rss_view == false ) { ?>
 
   $num_app = $num_wait = $num_rej = 0;
 
-  echo "<td></tr>\n";
+  echo "</td></tr>\n";
 }
 
 if ( Doc::commentsEnabled () ) { ?>
@@ -885,13 +885,13 @@ if ( Doc::commentsEnabled () ) { ?>
       translate( 'Show' ) . '" onclick="showComments();" />';
     echo '<input id="hidebutton" type="button" value="' .
       translate( 'Hide' ) . '" onclick="hideComments();" />';
-    echo '<br/><span id="comtext">' . $comment_text . "</span>\n";
+    echo '<br/><div id="comtext">' . $comment_text . "</div>\n";
     // We could put the following JS in includes/js/view_entry.php,
     // but we won't need it in many cases and we don't know whether
     // we need until after would need to include it.  So, we
     // will include it here instead.
     ?>
-<script language="JavaScript">
+<script language="JavaScript" type="text/javascript">
 <!-- <![CDATA[
 function showComments () {
   var x = document.getElementById ( "comtext" )
