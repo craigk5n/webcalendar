@@ -29,6 +29,7 @@ $event_status = '';
 $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
 $can_email = true;
+$rss_view = false;
 
 $error = '';
 $eType = '';
@@ -817,7 +818,7 @@ if ( $single_user == 'N' && $show_participants ) { ?>
 }
 
 
-if ( Doc::attachmentsEnabled () && $rss_vies = false ) { ?>
+if ( Doc::attachmentsEnabled () && $rss_view == false ) { ?>
   <tr><td style="vertical-align:top; font-weight:bold;">
   <?php etranslate( 'Attachments' )?>:</td><td>
   <?php
