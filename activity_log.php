@@ -69,8 +69,8 @@ if ( $res ) {
         $row[0] . "</td><td>\n" .
         $row[1] . "</td><td>\n" . 
         date_to_str ( $row[3] ) . '&nbsp;' .
-        // No TZ conversion & show TZID which will be GMT
-        display_time ( $row[4], 3 ) . "</td><td>\n" . 
+        // No TZ conversion & simply print GMT
+        display_time ( $row[4], 1 ) . " GMT</td><td>\n" . 
         '<a title="' .
         htmlspecialchars($row[7]) . "\" href=\"$view_link.php?id=$row[6]\">" .
         htmlspecialchars($row[7]) . "</a></td><td>\n";

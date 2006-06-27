@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1511337: time-stamps at the 'activity-log' are incorrect
       1511120: 'unapproved-icon' in 'top-menue' not properly displayed
       1510761: missing 'back to my calendar' in the 'top-menue'
       1497931: Weird repeating events - read on
