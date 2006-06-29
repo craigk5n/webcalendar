@@ -258,7 +258,7 @@ class RepeatingEvent extends Event {
    * @access public
    */
   function getRepeatEndDateTimeTS () {
-    if ( $this->_repeatEndTime >= 0 ) {
+    if ( $this->_repeatEnd > 0 ) {
       $year = substr ( $this->_repeatEnd, 0, 4 );
       $month = substr ( $this->_repeatEnd, 4, 2 ); 
       $day = substr ( $this->_repeatEnd, 6, 2 );
