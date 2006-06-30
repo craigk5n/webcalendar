@@ -621,7 +621,6 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 ?>
 
 </table>
-<br /><br />
 
 <?php
 

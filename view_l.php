@@ -145,7 +145,6 @@ echo <<<EOT
   </div>
 	<br />
 	{$monthStr}
-	<br />
 	{$eventinfo}
 	{$unapprovedStr}
 	{$printerStr}

@@ -189,7 +189,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     }
     echo "</tr>\n";
   }
-  echo "</table>\n<br /><br />\n";
+  echo "</table>\n";
 }
 
 $user = ''; // reset

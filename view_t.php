@@ -390,7 +390,7 @@ for ( $date = $wkstart, $h = 0;
   echo "</tr>\n";
 }
 
-echo "</table>\n<br />\n";
+echo "</table>\n";
 
 $user = ''; // reset
 
