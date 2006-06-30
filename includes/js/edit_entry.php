@@ -591,8 +591,8 @@ function toggle_reminders() {
     return;
   }
   toggle_rem_when();
-  makeInvisible ( "reminder_when" );
-  makeInvisible ( "reminder_repeat" );
+  makeInvisible ( "reminder_when",true );
+  makeInvisible ( "reminder_repeat", true );
   if ( document.editentryform.elements['reminderYes'].checked == true ) { 
    makeVisible ( "reminder_when", true ); 
    makeVisible ( "reminder_repeat", true );
