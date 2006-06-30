@@ -191,7 +191,7 @@ ul a {
   position: relative;
   z-index: 50;
 }
-.tabfor ,
+.tabfor,
 .tabbak  {
   padding: 0.2em 0.2em 0.1em 0.2em;
   margin: 0px 0px 0px 0.1em;
@@ -200,13 +200,21 @@ ul a {
   border-right: 2px ridge #C0C0C0;
   border-bottom: 2px solid #F8F8FF;
   -moz-border-radius: .75em .75em 0em 0em;
+  border-radius-topleft: .75em;
+  border-radius-topright: .75em;
   position: relative;
 }
 .tabfor a,
 .tabbak a {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
   text-decoration: none;
-  color: #000000;
+}
+.tabfor a {
+  color: <?php echo $GLOBALS['H2COLOR']; ?>;
+}
+.tabbak a {
+  color: #999999; 
 }
 .tabfor {
   background-color: #F8F8FF;
