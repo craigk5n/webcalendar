@@ -80,7 +80,6 @@ echo <<<EOT
     </div>
    </div>
    {$matrixStr}
-   <br />
 
    <!-- Hidden form for booking events -->
    <form action="edit_entry.php" method="post" name="schedule">
