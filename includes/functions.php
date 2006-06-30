@@ -5100,8 +5100,8 @@ $MouseOut = '';
     $ret .= "</tr><tr>\n<td class=\"matrix\" colspan=\"$cols\">" .
       "<img src=\"images/pix.gif\" alt=\"-\" /></td></tr>\n";
   } // End foreach participant
-  $busy = translate ('Busy');
-  $tentative = translate ('Tentative');  
+  $busy = ' ' . translate ('Busy');
+  $tentative = ' ' . translate ('Tentative');  
   $ret .= <<<EOT
     </table><br />
     <table align="center"><tr><td class="matrixlegend" >
