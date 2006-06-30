@@ -48,11 +48,13 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
+$INC = '';
 
-$INC = array("js/usersel.php/false/$form/$listid/$groups");
 print_header($INC,'','',true, false, true);
 ?>
-
+<script language="javascript" type="text/javascript">
+<?php include "includes/js/usersel.php"; ?>
+</script>
 <center>
 <form action="#" name="userselform">
 <table style="border-width:0px; width:100%;">
