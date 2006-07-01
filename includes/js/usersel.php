@@ -1,25 +1,26 @@
 <?php /* $Id$  */ 
 defined( '_ISVALID' ) or die( "You can't access this file directly!" );
-	global $form,$listid,$groups;
+  global $form,$listid,$groups;
   $form = clean_word($form);
   $listid = clean_int($listid);
 ?>
 function OkButton () {
   var parentlist = window.opener.document.<?php echo $form?>.elements[<?php echo $listid?>];
   var thislist = document.userselform.elements[0];
-
-  // select/deselect all elements
+  // store current selections
+  tmp = new Array();
   for ( i = 0; i < thislist.length; i++ ) {
     if (thislist.options[i].selected) {
-      for ( j = 0; j < parentlist.length; j++ ) {
-        if ( thislist.options[j].value == parentlist.options[i].value ) {
-           parentlist.options[i].selected = true;
-           break;
-        }
+      tmp[i] = thislist.options[i].value; 
+    }
+  }
+
+  // select/deselect users on parent form
+    for ( j = 0; j < parentlist.length; j++ ) {
+      if ( tmp[j] != undefined ) {
+         parentlist.options[j].selected = true;
       }
     }
-
-  }
   window.close ();
 }
 
@@ -58,18 +59,18 @@ function toggleGroup ( state ) {
   var list = document.userselform.elements[4];
   var selNum = list.selectedIndex;
   <?php
-		for ( $i = 0; $i < count ( $groups ); $i++ ) {
-			echo "\n  if ( selNum == $i ) {\n";
-			$res = dbi_execute ( 'SELECT cal_login from webcal_group_user ' .
-				'WHERE cal_group_id = ?' , array ( $groups[$i]['cal_group_id'] ) );
-			if ( $res ) {
-				while ( $row = dbi_fetch_row ( $res ) ) {
-					echo "    selectByLogin ( \"$row[0]\", state );\n";
-				}
-				dbi_free_result ( $res );
-				echo "  }\n";
-			}
-		}
+    for ( $i = 0; $i < count ( $groups ); $i++ ) {
+      echo "\n  if ( selNum == $i ) {\n";
+      $res = dbi_execute ( 'SELECT cal_login from webcal_group_user ' .
+        'WHERE cal_group_id = ?' , array ( $groups[$i]['cal_group_id'] ) );
+      if ( $res ) {
+        while ( $row = dbi_fetch_row ( $res ) ) {
+          echo "    selectByLogin ( \"$row[0]\", state );\n";
+        }
+        dbi_free_result ( $res );
+        echo "  }\n";
+      }
+    }
   ?>
 }
 
