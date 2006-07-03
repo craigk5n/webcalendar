@@ -200,8 +200,6 @@ ul a {
   border-right: 2px ridge #C0C0C0;
   border-bottom: 2px solid #F8F8FF;
   -moz-border-radius: .75em .75em 0em 0em;
-  border-radius-topleft: .75em;
-  border-radius-topright: .75em;
   position: relative;
 }
 .tabfor a,
