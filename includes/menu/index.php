@@ -229,7 +229,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
   if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
     $public = array (
       'cal_login' => '__public__',
-      'cal_fullname' => translate( 'Public Access' )
+      'cal_fullname' => translate( 'Public Access', true )
     );
     array_unshift ( $grouplist, $public );
   }
@@ -290,23 +290,24 @@ For full menu options see JSCookMenu documentation
 
 // A menu link
 function jscMenu_menu ( $title, $url = false ) {
+  $titleStr = translate( $title, true );
   if ( $url ) {
-    echo "\n  [null,'".translate($title)."','$url',null,null],\n";
+    echo "\n  [null,\"" . $titleStr. "\",'$url',null,null],\n";
   } else {
-    echo "\n  [null,'".translate($title)."',null,null,null,\n";
+    echo "\n  [null,\""  . $titleStr . "\",null,null,null,\n";
   }
 }
 
 // Dropdown menu item
 function jscMenu_item ( $icon, $title, $url, $target='' ) {
-  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','".
-       translate( $title )."','$url','$target',''],\n";
+  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />',\"".
+       translate( $title, true )."\",'$url','$target',''],\n";
 }
 
 // Dropdown menu item that has a sub menu
 function jscMenu_sub_menu ( $icon, $title ) {
-  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','".
-       translate( $title )."','',null,'',\n";
+  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />',\"".
+       translate( $title, true )."\",'',null,'',\n";
 }
 
 // Dropdown menu item is custom html
@@ -345,13 +346,13 @@ var myMenu =
 <?php
 
   // My Calendar Menu
-  // translate ( 'My Calendar', true);
-  // translate ( 'Today', true);
-  // translate ( 'Home', true);  
-  // translate ( 'This Week', true);
-  // translate ( 'This Month', true);
-  // translate ( 'This Year', true);
-  // translate ( 'Exit', true);
+  // translate ( 'My Calendar');
+  // translate ( 'Today');
+  // translate ( 'Home');  
+  // translate ( 'This Week');
+  // translate ( 'This Month');
+  // translate ( 'This Year');
+  // translate ( 'Exit');
   jscMenu_menu ('My Calendar');
     jscMenu_item ( 'home.png', 'Home', $mycal );
     if ( $today_url != '' ) jscMenu_item ( 'today.png', 'Today', $today_url );
@@ -363,13 +364,13 @@ var myMenu =
   
   
   // Events Menu 
-  // translate ( 'Events', true);
-  // translate ( 'Add New Event', true);
-  // translate ( 'Add New Task', true);
-  // translate ( 'Delete Entries', true);
-  // translate ( 'Unapproved Entries', true);
-  // translate ( 'Export', true);
-  // translate ( 'Import', true);
+  // translate ( 'Events');
+  // translate ( 'Add New Event');
+  // translate ( 'Add New Task');
+  // translate ( 'Delete Entries');
+  // translate ( 'Unapproved Entries');
+  // translate ( 'Export');
+  // translate ( 'Import');
   jscMenu_menu ('Events');
     if ( $new_entry_url != '' ) jscMenu_item ( 'add.png', 'Add New Event', $new_entry_url );
     if ( $new_task_url != '' ) jscMenu_item ( 'newtodo.png', 'Add New Task', $new_task_url );
@@ -382,13 +383,13 @@ var myMenu =
 
 
   // Views Menu
-  // translate ( 'Views', true);
-  // translate ( 'Another User\'s Calendar', true);
-  // translate ( 'My Views', true);
-  // translate ( 'Another User\'s Calendar', true);
-  // translate ( 'Views', true);
-  // translate ( 'Manage Calendar of', true);
-  // translate ( 'Manage Views', true);
+  // translate ( 'Views');
+  // translate ( 'Another User\'s Calendar');
+  // translate ( 'My Views');
+  // translate ( 'Another User\'s Calendar');
+  // translate ( 'Views');
+  // translate ( 'Manage Calendar of');
+  // translate ( 'Manage Views');
   jscMenu_menu ('Views');
     if ( $select_user_url != '' ) jscMenu_item ( 'display.png', "Another User\'s Calendar", $select_user_url );
 
@@ -421,10 +422,10 @@ var myMenu =
 
 
   // Reports Menu
-  // translate ( 'Reports', true);
-  // translate ( 'Activity Log', true);
-  // translate ( 'My Reports', true);
-  // translate ( 'Manage Reports', true);
+  // translate ( 'Reports');
+  // translate ( 'Activity Log');
+  // translate ( 'My Reports');
+  // translate ( 'Manage Reports');
   if ( $login != '__public__' ) {
     jscMenu_menu ('Reports');
     if ( $is_admin && ( ! access_is_enabled () || 
@@ -449,17 +450,17 @@ var myMenu =
   
 
   // Settings Menu
-  // translate ( 'Settings', true);
-  // translate ( 'Assistants', true);
-  // translate ( 'Preferences', true);
-  // translate ( 'Categories', true);
-  // translate ( 'Layers', true);
-  // translate ( 'My Profile', true);
-  // translate ( 'Remote Calendars', true);
-  // translate ( 'Public Calendar', true);
-  // translate ( 'Unapproved Events', true);
-  // translate ( 'System Settings', true);
-  // translate ( 'User Manager', true);
+  // translate ( 'Settings');
+  // translate ( 'Assistants');
+  // translate ( 'Preferences');
+  // translate ( 'Categories');
+  // translate ( 'Layers');
+  // translate ( 'My Profile');
+  // translate ( 'Remote Calendars');
+  // translate ( 'Public Calendar');
+  // translate ( 'Unapproved Events');
+  // translate ( 'System Settings');
+  // translate ( 'User Manager');
   if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' ) {
   jscMenu_menu ('Settings');  
 
@@ -532,8 +533,8 @@ var myMenu =
   }
 
   // Search Menu
-  // translate ( 'Search', true);
-  // translate ( 'Advanced Search', true);
+  // translate ( 'Search');
+  // translate ( 'Advanced Search');
   if ( $search_url != '' ) {
     jscMenu_menu ('Search');
     if ( $login != '__public__' && ( ! $is_nonuser || access_is_enabled () && 
@@ -545,7 +546,7 @@ var myMenu =
     jscMenu_close();
   }
   // Help Menu (Link)
-  // translate ( 'Help', true);
+  // translate ( 'Help');
   if ( $help_url != '' )  {
     jscMenu_menu ('Help','javascript:openHelp()');
   }
@@ -576,14 +577,16 @@ cmDraw ('myMenuID', myMenu, 'hbr', cmTheme, 'Theme');
 <?php
 if ( ! empty ( $logout_url ) ) { //using http_auth
   if ( strlen ( $login ) && $login != '__public__' ) {
+    $logoutStr = translate( 'Logout', true );
     echo '<a style="font-size: 12px" title="' . 
-      translate( 'Logout' ) . "\" href=\"$logout_url\">" . 
-      translate( 'Logout' ) . ":</a> <label>$login</label>\n";
+      $logoutStr . "\" href=\"$logout_url\">" . 
+      $logoutStr . ":</a> <label>$login</label>\n";
     } else {
     // For public user
+    $loginStr = translate( 'Login', true );
     echo '<a style="font-size: 12px" title="' . 
-      translate( 'Login' ) . "\" href=\"$login_url\">" . 
-      translate( 'Login' ) . "</a>\n";
+      $loginStr . "\" href=\"$login_url\">" . 
+      $loginStr . "</a>\n";
   }
 } else {
   echo '&nbsp;&nbsp;&nbsp;';  //TODO replace with something???
