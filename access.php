@@ -22,12 +22,13 @@
  */
 include_once 'includes/init.php';
 
+$allow_view_other = ( ! empty ( $ALLOW_VIEW_OTHER ) &&
+  $ALLOW_VIEW_OTHER == 'Y' ? true : false );
+
 if ( ! access_is_enabled () ) {
   etranslate ( 'You are not authorized' );
   exit;  
 }
-$allow_view_other = ( ! empty ( $ALLOW_VIEW_OTHER ) || 
-  $ALLOW_VIEW_OTHER == 'Y' ? true : false );
 
 //print_r ( $_POST );
 // Are we handling the access form?
@@ -219,7 +220,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
         $otheruser = '__default__';
         $otheruser_fullname = 'DEFAULT CONFIGURATION';
         $otheruser_login  = '__default__';        
-      } else { 
+      } else if ( $allow_view_other ) { 
         $userlist = get_list_of_users ( $guser );
         $str = "<h2>$pagetitle</h2>\n";
         $str .= '<form action="access.php" method="post" name="SelectOther">' . "\n";
