@@ -88,6 +88,10 @@ function dbi_connect ( $host, $login, $password, $database, $lazy=true ) {
   $db_connection_info['connected'] = false;
   $db_connection_info['connection'] = 0;
 
+  //mysqli requires $db_connection_info['connection'] to be set
+  if ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
+    $lazy == false;
+  }
   // Lazy connections... do not connect until 1st call to dbi_query
   if ( $lazy ) {
     //echo "<!-- Waiting on db connection made (lazy) -->\n";
@@ -743,7 +747,7 @@ function dbi_escape_string( $string )
         return mysql_escape_string( $string );      
       }
     case 'mysqli':
-      return mysqli_real_escape_string( $string );
+      return mysqli_real_escape_string( $db_connection_info['connection'], $string );
     case 'mssql':
     case 'ibase':
       return str_replace( "'", "''", $string );

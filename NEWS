@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1518552: PHP5 and MySQLi Warnings
       1520002: 'top-menue' are not at the left-margin for year.php
       1516114: Javascript top menu does'nt work in french
       1513448: Cannot Display Attachment
