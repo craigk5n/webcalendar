@@ -748,7 +748,7 @@ a.matrix img {
   padding-left: 20px;
 }
 <?php //contains ALL months
-?>#year tr {
+?>#year .minical tr {
   vertical-align: top;
 }
 #admin th td {
@@ -876,7 +876,7 @@ a.weekcell {
 #weekdetails .main th a:hover {
   color: #0000FF;
 }
-#year td {
+#year .minical td {
   text-align: center;
   padding: 0px 3px;
 }
