@@ -3254,7 +3254,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
   $confidentialStr = translate('Confidential');
   $allDayStr = translate('All day event');
   $exceedsStr = translate ( 'exceeds limit of XXX events per day' );
-  $onStr = trnslate ( 'on' );
+  $onStr = translate ( 'on' );
   if ( $res ) {
     $time1 = sprintf ( "%d%02d00", $hour, $minute );
     $duration1 = sprintf ( "%d", $duration );
