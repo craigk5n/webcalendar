@@ -1,5 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1522560: 'Scheduling Conflict events' will be displayed in mixed
       1530179: 'Public Access' using UAC will not be translated
       1518552: PHP5 and MySQLi Warnings
       1520002: 'top-menue' are not at the left-margin for year.php
