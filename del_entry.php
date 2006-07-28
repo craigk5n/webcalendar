@@ -26,8 +26,8 @@ if ( $id > 0 ) {
       'webcal_entry_user WHERE webcal_entry.cal_id = ' .
       'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
       'AND (webcal_entry.cal_create_by = ? ' .
-      'OR webcal_entry_user.cal_login = ?)';
-    $res = dbi_execute ( $sql, array( $id, $sqlparm, $sqlparm ) );
+      'OR webcal_entry_user.cal_login = ? OR ?)';
+    $res = dbi_execute ( $sql, array( $id, $sqlparm, $sqlparm, $is_admin ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( $row && $row[0] > 0 )
@@ -115,8 +115,7 @@ if ( $id > 0 && empty ( $error ) ) {
   // if owner or admin, not participant.
   // If a user was specified, then only delete that user (not here) even if we
   // are the owner or an admin.
-  if ( ( $is_admin || $my_event ) && ! $other_user ) {
-  
+  if ( ( $is_admin || $my_event ) && ! $other_user ) { 
     // Email participants that the event was deleted
     // First, get list of participants (with status Approved or
     // Waiting on approval).
@@ -126,12 +125,10 @@ if ( $id > 0 && empty ( $error ) ) {
     $partlogin = array ();
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
-        if ( $row[0] != $login )
-          $partlogin[] = $row[0];
+        $partlogin[] = $row[0];
       }
       dbi_free_result($res);
     }
-
     // Get event name
     $sql = 'SELECT cal_name, cal_date, cal_time ' .
       'FROM webcal_entry WHERE cal_id = ?';
@@ -145,16 +142,17 @@ if ( $id > 0 && empty ( $error ) ) {
     }
     
     $eventstart = date_to_epoch ( $fmtdate . $time );
-    $TIME_FORMAT=24;
+    $TIME_FORMAT=24; 
     for ( $i = 0, $cnt = count ( $partlogin ); $i < $cnt; $i++ ) {
-      // Log the deletion
-      activity_log ( $id, $login, $partlogin[$i], $log_delete, '' );
+      // Log the deletion 
+     activity_log ( $id, $login, $partlogin[$i], $log_delete, '' );
       //check UAC
       $can_email = 'Y'; 
       if ( access_is_enabled () ) {
         $can_email = access_user_calendar ( 'email', $partlogin[$i], $login);
-      }  
-      if ( $can_email == 'Y' ) {  
+      }
+      //don't email the logged in user  
+      if ( $can_email == 'Y' && $partlogin[$i] != $login ) {  
         $do_send = get_pref_setting ( $partlogin[$i], 'EMAIL_EVENT_DELETED' );
         $htmlmail = get_pref_setting ( $partlogin[$i], 'EMAIL_HTML' );
         $t_format = get_pref_setting ( $partlogin[$i], 'TIME_FORMAT' );
