@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 06-27-2006
+# Translation last updated on 07-28-2006
 
 
 ###############################################
@@ -36,13 +36,14 @@ charset: iso-8859-1
 #
 You are not authorized: You are not authorized
 Database error: Database error
+DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
+Public Access: Public Access
 User Access Control: User Access Control
 Admin: Admin
 Cancel: Cancel
 Save: Save
 Grant This User Access to My Calendar: Grant This User Access to My Calendar
 Allow Access to Other Users' Calendar: Allow Access to Other Users' Calendar
-DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Go: Go
 Calendar: Calendar
 Type: Type
@@ -115,7 +116,6 @@ No: No
 System Settings: System Settings
 Help: Help
 Settings: Settings
-Public Access: Public Access
 Groups: Groups
 NonUser Calendars: NonUser Calendars
 Other: Other
@@ -1273,6 +1273,7 @@ Due: Due
 View this task: View this task
 View this event: View this event
 exceeds limit of XXX events per day: exceeds limit of XXX events per day
+on: on
 You have XXX unapproved entries: You have XXX unapproved entries
 January: January
 February: February
