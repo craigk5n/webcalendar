@@ -3254,6 +3254,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
   $confidentialStr = translate('Confidential');
   $allDayStr = translate('All day event');
   $exceedsStr = translate ( 'exceeds limit of XXX events per day' );
+  $onStr = trnslate ( 'on' );
   if ( $res ) {
     $time1 = sprintf ( "%d%02d00", $hour, $minute );
     $duration1 = sprintf ( "%d", $duration );
@@ -3300,7 +3301,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
                 display_time ( $row[7] . add_duration ( $time2, $duration2 ) );
             $conflicts .= ')';
           }
-          $conflicts .= ' on ' . date_to_str( $row[7] );
+          $conflicts .= ' ' . $onStr . ' ' . date_to_str( $row[7] );
           if ( $over_limit ) {
             $tmp = str_replace ( 'XXX', $LIMIT_APPTS_NUMBER, $exceedsStr );
             $conflicts .= ' (' . $tmp . ')';
@@ -3347,11 +3348,11 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
             if ( $single_user != 'Y' )
               $conflicts .= $row->getLogin() . ': ';
             if ( $row->getAccess() == 'R' && $row->getLogin() != $login ) {
-              $conflicts .=  '(' . translate('Private') . ')';
+              $conflicts .=  '(' . $privateStr . ')';
             } else if ( $row->getAccess() == 'C' && $row->getLogin() != $login &&
               !$is_assistant  && !$is_nonuser_admin) {
               //assistants can see confidential stuff
-              $conflicts .=  '(' . translate('Confidential') . ')';
+              $conflicts .=  '(' . $confidentialStr . ')';
             } else {
               $conflicts .=  '<a href="view_entry.php?id=' . $row->getID();
               if ( ! empty ( $user ) && $user != $login )
@@ -3363,7 +3364,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
               $conflicts .= '-' .
                 display_time ( $row->getDate() . add_duration ( $time2, $duration2 ) );
             $conflicts .= ')';
-            $conflicts .= ' on ' . date('l, F j, Y', $dates[$i]);
+            $conflicts .= ' ' . $onStr . ' ' . date_to_str ( $dates[$i] );
             $conflicts .= "</li>\n";
           }
         }
