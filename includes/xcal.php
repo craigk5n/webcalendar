@@ -1071,7 +1071,7 @@ function export_ical ( $id='all', $attachment=false ) {
     if ( $cal_type == 'T' || $cal_type == 'N' ) { 
       $ret .= 'DUE:' . $due_date. 'T'. sprintf ( "%06d", $due_time ) . "Z\r\n";
       if ( ! empty ( $completed ) ) { 
-        echo 'COMPLETED:' . $completed . "\r\n";
+        $ret .= 'COMPLETED:' . $completed . "\r\n";
         $task_complete = true;
       }
       $ret .= 'PERCENT-COMPLETE:' . $percent . "\r\n";
