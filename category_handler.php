@@ -47,28 +47,17 @@ if ( ! $is_my_event )
 $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $delete ) ) {
   // delete this category
-  if ( $is_admin ) {
-    if ( ! dbi_execute ( 'DELETE FROM webcal_categories ' .
-      'WHERE cat_id = ? AND ' .
-      '( cat_owner = ? OR cat_owner IS NULL )', array( $id, $login ) ) )
-      $error = db_error ();
-  } else {
-    if ( ! dbi_execute ( 'DELETE FROM webcal_categories ' .
-      'WHERE cat_id = ? AND cat_owner = ?', array( $id, $login ) ) )
-      $error = db_error ();
+  if ( ! dbi_execute( 'DELETE FROM webcal_categories 
+    WHERE cat_id = ? AND ( cat_owner = ?'
+    . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ), array( $id, $login ) ) ) {
+    $error = db_error ();
   }
-      
-  // Set any events in this category to NULL
-  if ( $is_admin ) {
-    if ( !  dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cal_id = ? AND ' .
-      ' ( cat_owner = ? OR cat_owner IS NULL)', array( $id, $login ) ) ) 
+     
+  if ( ! dbi_execute( 'DELETE FROM webcal_entry_categories 
+    WHERE cat_id = ? AND ( cat_owner = ?'
+    . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ), array( $id, $login ) ) ) {
     $error = db_error ();
-  } else {
-    if ( !  dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cal_id = ? ' .
-      'AND cat_owner = ?', array( $id, $login ) ) )
-    $error = db_error ();
- }
- 
+  }
   //Rename any icons associated with this cat_id
   renameIcon ( $id ); 
 
