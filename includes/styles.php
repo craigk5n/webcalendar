@@ -409,10 +409,14 @@ ul a {
   float: right;
 }
 #activitylog .prev {
+  font-size: 14px;
+  font-weight: bold;
   border-width: 0px;
   float: left;
 }
 #activitylog .next {
+  font-size: 14px;
+  font-weight: bold;
   border-width: 0px;
   float: right;
 }
