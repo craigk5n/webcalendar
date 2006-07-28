@@ -54,6 +54,7 @@ if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) != '') {
   }
 
 }
+$defaultStr = translate ( 'DEFAULT CONFIGURATION' );
 // Are we handling the other user form?
 // If so, do that, then redirect
 if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '') { 
@@ -101,11 +102,14 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '') {
 $otheruser = '';
 $checked = ' checked="checked" ';
 $guser = getPostValue ( 'guser' );
-if ( $guser == '__default__' ) $user_fullname = 'DEFAULT CONFIGURATION';
+if ( $guser == '__default__' ) $user_fullname = $defaultStr;
 $otheruser = getPostValue ( 'otheruser' );
 if ( $otheruser == '__default__' ) {
-  $otheruser_fullname = 'DEFAULT CONFIGURATION';
+  $otheruser_fullname = $defaultStr;
   $otheruser_login  = '__default__';
+} else if ( $otheruser == '__public__' ) {
+  $otheruser_fullname = translate ( 'Public Access' );
+  $otheruser_login  = '__public__';
 }
 
 if ( ! empty ( $otheruser ) ) {
@@ -218,7 +222,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
       if ( $guser == '__default__' ) {
         $userlist = array ( '__default__' );
         $otheruser = '__default__';
-        $otheruser_fullname = 'DEFAULT CONFIGURATION';
+        $otheruser_fullname = $defaultStr;
         $otheruser_login  = '__default__';        
       } else if ( $allow_view_other ) { 
         $userlist = get_list_of_users ( $guser );
@@ -229,7 +233,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
 
         //add a DEFAULT CONFIGURATION to be used as a mask  
         $str .= '<option value="__default__">'.
-          translate ( 'DEFAULT CONFIGURATION' )."</option>\n";
+          $defaultStr ."</option>\n";
         $selected ='';
         
         for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
@@ -449,8 +453,7 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
   <select name="guser" onchange="document.SelectUser.submit()">
   <?php
   //add a DEFAULT CONFIGURATION to be used as a mask  
-  $str = '<option value="__default__">'.
-    translate ( 'DEFAULT CONFIGURATION' )."</option>\n";
+  $str = '<option value="__default__">'. $defaultStr ."</option>\n";
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     $str .= '<option value="'.$userlist[$i]['cal_login']. '">' .
       $userlist[$i]['cal_fullname']."</option>\n";

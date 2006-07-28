@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1530179: 'Public Access' using UAC will not be translated
  - Fixed bug 1518552: PHP5 and MySQLi Warnings
  - Fixed bug 1520002: 'top-menue' are not at the left-margin for year.php
  - Fixed bug 1516114: Javascript top menu does'nt work in french
