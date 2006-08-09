@@ -66,14 +66,15 @@ if ( $res ) {
       }
       $view_link = 'view_entry';      
       echo "><td>\n" .
-        $row[0] . "</td><td>\n" .
-        $row[1] . "</td><td>\n" . 
-        date_to_str ( $row[3] ) . '&nbsp;' .
-        // No TZ conversion & simply print GMT
-        display_time ( $row[4], 1 ) . " GMT</td><td>\n" . 
-        '<a title="' .
-        htmlspecialchars($row[7]) . "\" href=\"$view_link.php?id=$row[6]\">" .
-        htmlspecialchars($row[7]) . "</a></td><td>\n";
+      $row[0] . "</td><td>\n" .
+      $row[1] . "</td><td>\n" . 
+      date_to_str ( $row[3] ) . '&nbsp;' ;
+      // Added TZ conversion
+      $use_gmt = ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y' ? 3 : 2 );
+      echo display_time ( $row[3] . $row[4], $use_gmt ) ;
+      echo "</td><td>\n" . '<a title="' .
+      htmlspecialchars($row[7]) . "\" href=\"$view_link.php?id=$row[6]\">" .
+      htmlspecialchars($row[7]) . "</a></td><td>\n";
       if ( $row[2] == LOG_CREATE ) {
         etranslate( 'Event created' );
       } else if ( $row[2] == LOG_APPROVE ) {
@@ -125,7 +126,7 @@ if ( $res ) {
   echo db_error ();
 }
 ?>
-</table><br />
+</table>
 <div class="navigation">
 <?php
 //go BACK in time

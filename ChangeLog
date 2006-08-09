@@ -1,4 +1,6 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1536755: Activity Log for single event shows incorrect time
+ - Fixed bug 1536785: Activity Log Report only shows times in GMT
  - Fixed bug 1521837: no entries for 'deleted entries' at 'activity.log'
  - Fixed bug 1522560: 'Scheduling Conflict events' will be displayed in mixed
  - Fixed bug 1530179: 'Public Access' using UAC will not be translated
