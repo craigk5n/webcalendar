@@ -68,7 +68,7 @@ print_header($INC);
     }
    ?>
  </select>
- </tr></td>
+ </td></tr>
 <?php } ?>
 <tr><td>
  <label><?php etranslate( 'Start date' )?>:</label></td><td>
