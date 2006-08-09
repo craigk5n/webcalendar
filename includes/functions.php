@@ -756,13 +756,13 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
   }
   $date = gmdate ( 'Ymd' );
   $time = gmdate ( 'Gis' );
-  $sql_text = empty ( $text ) ? NULL : $text;
-  
+  $sql_text = empty ( $text ) ? NULL : $text; 
   $sql_user_cal = empty ( $user_cal ) ? NULL : $user_cal;
   $sql = 'INSERT INTO webcal_entry_log ( ' .
     'cal_log_id, cal_entry_id, cal_login, cal_user_cal, cal_type, ' .
     'cal_date, cal_time, cal_text ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )';
-  if ( ! dbi_execute ( $sql, array( $next_id, $event_id, $user, $sql_user_cal, $type, $date, $time, $sql_text ) ) ) {
+  if ( ! dbi_execute ( $sql, array( $next_id, $event_id, $user, 
+    $sql_user_cal, $type, $date, $time, $sql_text ) ) ) {
     db_error ( true, $sql);
   }
 }
@@ -4918,6 +4918,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TABLEBG;
   global $user_fullname, $repeated_events, $events, $TIME_FORMAT;
   global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR, $ENTRY_SLOTS;
+  global $thismonth, $thisyear;
  
   $ret = '';
   $entrySlots = ( $ENTRY_SLOTS >288 ? 288 : ( $ENTRY_SLOTS <72 ? 72 : $ENTRY_SLOTS ) ); 
@@ -4934,6 +4935,8 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $cell_pct =  (int) (80 /($hours * $interval) );
   $master = array();
   $dateTS = date_to_epoch ( $date);
+  $thismonth = date('m', $dateTS);
+  $thisyear = date('Y', $dateTS);
   // Build a master array containing all events for $participants
   $cnt = count ( $participants );
   for ( $i = 0; $i < $cnt; $i++ ) {
@@ -4943,7 +4946,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
     $events = read_events ( $participants[$i], $dateTS , $dateTS );
 
     // get all the repeating events for this date and store in array $rep
-    $rep = get_repeating_entries ( $participants[$i], $dateTS );
+    $rep = get_repeating_entries ( $participants[$i], $date );
     // get all the non-repeating events for this date and store in $ev
     $ev = get_entries ( $date );
 
