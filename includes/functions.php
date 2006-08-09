@@ -941,7 +941,7 @@ function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
     }
     // get list of users in the same groups as current user
     $public = ( $add_public ? "webcal_nonuser_cals.cal_is_public = 'Y'  OR " : '' );
-    $sql = 'SELECT DISTINCT(webcal_nonuser_cals.cal_login), cal_lastname, cal_firstname ' .
+    $sql = 'SELECT DISTINCT(webcal_nonuser_cals.cal_login), cal_lastname, cal_firstname, ' .
       ' cal_is_public FROM webcal_group_user, webcal_nonuser_cals ' .
       " WHERE $public cal_admin = ? OR  " .
       ' ( webcal_group_user.cal_login = webcal_nonuser_cals.cal_login AND ' .
@@ -2817,8 +2817,8 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
 }
 
 /**
- * Get the corrected timestamp after adding ONE_WEEK
- * or ONE_DAY to compensate for DST
+ * Get the corrected timestamp after adding or subtracting ONE_HOUR
+ * to compensate for DST
  *
  */
 function add_dstfree_time ( $date, $span, $interval=1 ) {
@@ -3326,8 +3326,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
       gmdate ('Ymd',$dates[count($dates)-1]);
     $date_filter .= ' AND (webcal_entry_repeats.cal_end IS NULL OR ' .
       'webcal_entry_repeats.cal_end >= ' . gmdate ('Ymd',$dates[0]) . "))";
-    //Read repeated events only once for a participant for
-    //for performance reasons.
+    //Read repeated events only once for a participant for performance reasons.
     $repeated_events=query_events($participants[$q],true,$date_filter);
     for ($i=0; $i < $datecnt; $i++) {
       $dateYmd = gmdate ('Ymd', $dates[$i] );
