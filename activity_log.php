@@ -115,7 +115,7 @@ if ( $res ) {
         etranslate( 'Attachment' );
       } else if ( $row[2] == LOG_COMMENT ) {
         etranslate( 'Comment' );
-      } else if ( $row[2] == LOG_COMMENT ) {
+      } else {
         echo '???';
       }
       echo "\n</td></tr>\n";
