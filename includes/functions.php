@@ -2272,11 +2272,10 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
     $sql .= 'AND 1 = 0 '; // no matching entries in category  
   }
  
-  if ( $is_task == false ) {
-      $sql .= "AND webcal_entry.cal_type IN ('E','M')  ";
-    } else {
-      $sql .= "AND webcal_entry.cal_type IN ('T','N') AND ( webcal_entry.cal_completed IS NULL ) ";    
-    }
+  $sql .= 'AND webcal_entry.cal_type IN '
+    . ( $is_task == false? '("E","M") ' : 
+    '("T","N") AND (webcal_entry.cal_completed IS NULL) ');
+
 
   if ( strlen ( $user ) > 0 )
     $sql .= 'AND (webcal_entry_user.cal_login = ? ';
