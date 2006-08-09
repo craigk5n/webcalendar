@@ -1157,8 +1157,10 @@ if ( $can_show_log && $show_log ) {
       echo "<tr><td valign=\"top\">\n";
       echo $row[0] . "</td><td valign=\"top\">\n";
       echo $row[1] . "</td><td valign=\"top\">\n" . 
-        date_to_str ( $row[3] ) . '&nbsp;' .
-        display_time ( $row[4], 3 ) . "</td><td valign=\"top\">\n";
+        date_to_str ( $row[3] ) . '&nbsp;' ;
+      $use_gmt = ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y'? 3 : 2 );    
+      echo display_time ( $row[3] . $row[4], $use_gmt ) ;
+      echo "</td><td valign=\"top\">\n";
       if ( $row[2] == LOG_CREATE ) {
         etranslate( 'Event created' );
       } else if ( $row[2] == LOG_APPROVE ) {
