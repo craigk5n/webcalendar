@@ -54,7 +54,7 @@ if ( ! empty ( $date ) && ! empty ( $date ) ) {
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
-$wkstart = get_weekday_before ( $thisyear, $thismonth $thisday +1 );
+$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
 $wkend = $wkstart + ( ONE_DAY * 6 );
 $startdate = date ( 'Ymd', $wkstart );
