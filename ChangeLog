@@ -1,4 +1,5 @@
 Version 1.1.0-CVS (?? ??? 2006)
+ - Fixed bug 1536702: Repeated events don't show up in Availability window
  - Fixed bug 1536755: Activity Log for single event shows incorrect time
  - Fixed bug 1536785: Activity Log Report only shows times in GMT
  - Fixed bug 1521837: no entries for 'deleted entries' at 'activity.log'
