@@ -84,7 +84,7 @@ if ( $login != $user ) {
 //}
 
 $startdate = mktime ();
-$enddate = $startdate + ( $DAYS_IN_ADVANCE * 24 * 3600 ) );
+$enddate = $startdate + ( $DAYS_IN_ADVANCE * 24 * 3600 );
 
 // Now read events all the repeating events
 $repeated_events = query_events ( $user, true,
