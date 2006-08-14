@@ -65,9 +65,9 @@ $webcalConfig = array (
 'DISPLAY_WEEKNUMBER'=>'Y',
 'EMAIL_ASSISTANT_EVENTS'=>'Y',
 'EMAIL_EVENT_ADDED'=>'Y',
-'EMAIL_EVENT_DLETED'=>'Y',
-'EMAIL_EVENT_RJECTED'=>'Y',
-'EMAIL_EVENT_UDATED'=>'Y',
+'EMAIL_EVENT_DELETED'=>'Y',
+'EMAIL_EVENT_REJECTED'=>'Y',
+'EMAIL_EVENT_UPDATED'=>'Y',
 'EMAIL_FALLBACK_FROM'=>'youremailhere',
 'EMAIL_HTML'=>'N',
 'EMAIL_MAILER'=>'mail',
@@ -103,7 +103,7 @@ $webcalConfig = array (
 'POPUP_FG'=>'#000000',
 'PUBLIC_ACCESS_ADD_NEEDS_APPROVAL'=>'N',
 'PUBLIC_ACCESS_CAN_ADD'=>'N',
-'PUBLIC_ACCESS_DEFAULT_SLECTED'=>'N',
+'PUBLIC_ACCESS_DEFAULT_SELECTED'=>'N',
 'PUBLIC_ACCESS_DEFAULT_VISIBLE'=>'N',
 'PUBLIC_ACCESS_OTHERS'=>'Y',
 'PUBLIC_ACCESS_VIEW_PART'=>'N',
@@ -299,19 +299,5 @@ function do_v11e_updates () {
    }
  } 
  
-}
-
-function do_v111_updates () {
- dbi_execute ("UPDATE webcal_config  SET cal_setting = 'PUBLIC_ACCESS_DEFAULT_SLECTED'" .
-    " WHERE cal_setting = 'PUBLIC_ACCESS_DEFAULT_SELECTED'");
-
- dbi_execute ("UPDATE webcal_config  SET cal_setting = 'EMAIL_EVENT_DLETED'" .
-    " WHERE cal_setting = 'EMAIL_EVENT_DELETED'");
-
- dbi_execute ("UPDATE webcal_config  SET cal_setting = 'EMAIL_EVENT_RJECTED'" .
-    " WHERE cal_setting = 'EMAIL_EVENT_REJECTED'");
-
- dbi_execute ("UPDATE webcal_config  SET cal_setting = 'EMAIL_EVENT_UDATED'" .
-    " WHERE cal_setting = 'EMAIL_EVENT_UPDATED'");
 }
 ?>
