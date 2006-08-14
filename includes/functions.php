@@ -2273,8 +2273,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
   }
  
   $sql .= 'AND webcal_entry.cal_type IN '
-    . ( $is_task == false? '("E","M") ' : 
-    '("T","N") AND (webcal_entry.cal_completed IS NULL) ');
+    . ( $is_task == false? "('E','M') " : 
+    "('T','N') AND (webcal_entry.cal_completed IS NULL) ");
 
 
   if ( strlen ( $user ) > 0 )

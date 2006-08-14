@@ -1,5 +1,6 @@
 Version 1.1.1 (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1539899: postgres problem
       1538718: Logic typo in 'view_entry.php'
       1536702: Repeated events don't show up in Availability window
       1536755: Activity Log for single event shows incorrect time
