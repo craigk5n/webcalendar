@@ -1,4 +1,5 @@
 Version 1.1.1 (?? ??? 2006)
+ - Fixed bug 1538055: UAC for "Default Configuration" does not show correct values
  - Fixed bug 1539899: postgres problem
  - Fixed bug 1538718: Logic typo in 'view_entry.php'
  - Fixed bug 1536702: Repeated events don't show up in Availability window
