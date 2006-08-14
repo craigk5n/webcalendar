@@ -5713,4 +5713,64 @@ function display_admin_link ( ) {
  }
  return $ret;
 }
+
+/**
+ * Display a text for a single activity log entry
+ *
+ * @param string   $cal_type the log entry type
+ * @param string   $cal_text  addiitonal text to display
+ */
+function display_activity_log ( $cal_type, $cal_text='' ) {
+
+  $ret = '';
+  if ( $cal_type == LOG_CREATE ) {
+    $ret .= translate( 'Event created' );
+  } else if ( $cal_type == LOG_APPROVE ) {
+    $ret .= translate( 'Event approved' );
+  } else if ( $cal_type == LOG_REJECT ) {
+    $ret .= translate( 'Event rejected' );
+  } else if ( $cal_type == LOG_UPDATE ) {
+    $ret .= translate( 'Event updated' );
+  } else if ( $cal_type == LOG_DELETE ) {
+    $ret .= translate( 'Event deleted' );
+  } else if ( $cal_type ==  LOG_CREATE_T ) { 
+    $ret .= translate( 'Task created' );        
+  } else if ( $cal_type == LOG_APPROVE_T ) {
+    $ret .= translate( 'Task approved' );
+  } else if ( $cal_type == LOG_REJECT_T ) {
+    $ret .= translate( 'Task rejected' );
+  } else if ( $cal_type == LOG_UPDATE_T ) {
+    $ret .= translate( 'Task updated' );
+  } else if ( $cal_type == LOG_DELETE_T ) {
+    $ret .= translate( 'Task deleted' );
+  } else if ( $cal_type ==  LOG_CREATE_J ) { 
+    $ret .= translate( 'Journal created' );        
+  } else if ( $cal_type == LOG_APPROVE_J ) {
+    $ret .= translate( 'Journal approved' );
+  } else if ( $cal_type == LOG_REJECT_J ) {
+    $ret .= translate( 'Journal rejected' );
+  } else if ( $cal_type == LOG_UPDATE_J ) {
+    $ret .= translate( 'Journal updated' );
+  } else if ( $cal_type == LOG_DELETE_J ) {
+    $ret .= translate( 'Journal deleted' );    
+  } else if ( $cal_type == LOG_NOTIFICATION ) {
+    etranslate( 'Notification sent' );
+  } else if ( $cal_type == LOG_REMINDER ) {
+    $ret .= translate( 'Reminder sent' );
+    if ( ! empty ( $cal_text ) )
+      $ret .=  ' (' . htmlentities ( $cal_text ) . ')';
+  } else if ( $cal_type == LOG_ATTACHMENT ) {
+    $ret .= translate( 'Attachment' );
+    if ( ! empty ( $cal_text ) )
+      $ret .=  '<br/>&nbsp;' . htmlentities ( $cal_text );
+  } else if ( $cal_type == LOG_COMMENT ) {
+    $ret .= translate( 'Comment' );
+    if ( ! empty ( $cal_text ) )
+      $ret .=  '<br/>&nbsp;' . htmlentities ( $cal_text );
+  } else {
+    $ret .=  '???';
+  }
+  
+  return $ret;
+}
 ?>
