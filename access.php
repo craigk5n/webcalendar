@@ -102,8 +102,12 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '') {
 $otheruser = '';
 $checked = ' checked="checked" ';
 $guser = getPostValue ( 'guser' );
-if ( $guser == '__default__' ) $user_fullname = $defaultStr;
-$otheruser = getPostValue ( 'otheruser' );
+if ( $guser == '__default__' ) {
+  $user_fullname = $defaultStr;
+  $otheruser = '__default__';
+} else {
+  $otheruser = getPostValue ( 'otheruser' );
+}
 if ( $otheruser == '__default__' ) {
   $otheruser_fullname = $defaultStr;
   $otheruser_login  = '__default__';
@@ -111,7 +115,6 @@ if ( $otheruser == '__default__' ) {
   $otheruser_fullname = translate ( 'Public Access' );
   $otheruser_login  = '__public__';
 }
-
 if ( ! empty ( $otheruser ) ) {
   if ( $allow_view_other ) {
     $query_param = array( $guser, $otheruser );
@@ -158,7 +161,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
 <?php echo display_admin_link(); ?>
 
   <form action="access.php" method="post" name="accessform">
-  <input type="hidden" name="auser" value="<?php echo $guser;?>" />
+  <input type="hidden" name="auser" value="<?php echo $auser;?>" />
   <input type="hidden" name="guser" value="<?php echo $guser;?>" />
   <table border="0" cellspacing="10"><tbody><tr><td valign="top">
   <?php
