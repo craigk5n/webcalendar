@@ -1,4 +1,5 @@
-Version 1.1.0-CVS (?? ??? 2006)
+Version 1.1.1 (?? ??? 2006)
+ - Fixed bug 1538718: Logic typo in 'view_entry.php'
  - Fixed bug 1536702: Repeated events don't show up in Availability window
  - Fixed bug 1536755: Activity Log for single event shows incorrect time
  - Fixed bug 1536785: Activity Log Report only shows times in GMT

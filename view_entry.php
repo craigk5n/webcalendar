@@ -1161,53 +1161,7 @@ if ( $can_show_log && $show_log ) {
       $use_gmt = ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y'? 3 : 2 );    
       echo display_time ( $row[3] . $row[4], $use_gmt ) ;
       echo "</td><td valign=\"top\">\n";
-      if ( $row[2] == LOG_CREATE ) {
-        etranslate( 'Event created' );
-      } else if ( $row[2] == LOG_APPROVE ) {
-        etranslate( 'Event approved' );
-      } else if ( $row[2] == LOG_REJECT ) {
-        etranslate( 'Event rejected' );
-      } else if ( $row[2] == LOG_UPDATE ) {
-        etranslate( 'Event updated' );
-      } else if ( $row[2] == LOG_DELETE ) {
-        etranslate( 'Event deleted' );
-      } else if ( $row[2] ==  LOG_CREATE_T ) { 
-        etranslate( 'Task created' );        
-      } else if ( $row[2] == LOG_APPROVE_T ) {
-        etranslate( 'Task approved' );
-      } else if ( $row[2] == LOG_REJECT_T ) {
-        etranslate( 'Task rejected' );
-      } else if ( $row[2] == LOG_UPDATE_T ) {
-        etranslate( 'Task updated' );
-      } else if ( $row[2] == LOG_DELETE_T ) {
-        etranslate( 'Task deleted' );
-      } else if ( $row[2] ==  LOG_CREATE_J ) { 
-        etranslate( 'Journal created' );        
-      } else if ( $row[2] == LOG_APPROVE_J ) {
-        etranslate( 'Journal approved' );
-      } else if ( $row[2] == LOG_REJECT_J ) {
-        etranslate( 'Journal rejected' );
-      } else if ( $row[2] == LOG_UPDATE_J ) {
-        etranslate( 'Journal updated' );
-      } else if ( $row[2] == LOG_DELETE_J ) {
-        etranslate( 'Journal deleted' );    
-      } else if ( $row[2] == LOG_NOTIFICATION ) {
-        etranslate( 'Notification sent' );
-      } else if ( $row[2] == LOG_REMINDER ) {
-        etranslate( 'Reminder sent' );
-        if ( ! empty ( $row[5] ) )
-          echo ' (' . htmlentities ( $row[5] ) . ')';
-      } else if ( $row[2] == LOG_ATTACHMENT ) {
-        etranslate( 'Attachment' );
-        if ( ! empty ( $row[5] ) )
-          echo '<br/>' . htmlentities ( $row[5] );
-      } else if ( $row[2] == LOG_COMMENT ) {
-        etranslate( 'Comment' );
-        if ( ! empty ( $row[5] ) )
-          echo '<br/>' . htmlentities ( $row[5] );
-      } else if ( $row[2] == LOG_COMMENT ) {
-        echo '???';
-      }
+      echo display_activity_log ( $row[2], $row[5] );
       echo "</td></tr>\n";
     }
     dbi_free_result ( $res );

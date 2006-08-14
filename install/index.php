@@ -691,6 +691,9 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
  
   //v1.1e requires converting webcal_site_extras to webcal_reminders
   do_v11e_updates(); 
+
+  //v1.1.1 change up some form names to prevent false mod_security alerts
+  do_v111_updates(); 
  
    // Update the version info
    get_installed_version( true );
