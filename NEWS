@@ -1,5 +1,6 @@
 Version 1.1.1 (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1538312: get_my_users() may return incorrect cached data
       1538669: UAC issue with "invite" permissions vs "view"
       1540251: Activity log wrong for imported entries
       1538055: UAC for "Default Configuration" does not show correct values

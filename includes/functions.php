@@ -796,8 +796,8 @@ function get_my_users ( $user='', $reason='invite') {
 
   $this_user = ( ! empty ( $user ) ? $user : $login );
   // Return the global variable (cached)
-  if ( ! empty ( $my_user_array[$this_user] ) && is_array ( $my_user_array ) )
-    return $my_user_array[$this_user];
+  if ( ! empty ( $my_user_array[$this_user][$reason] ) && is_array ( $my_user_array ) )
+    return $my_user_array[$this_user][$reason];
 
   if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' &&
     ! $is_admin ) {
@@ -830,7 +830,7 @@ function get_my_users ( $user='', $reason='invite') {
     if ( $groupcnt == 0 ) {
       // Eek.  User is in no groups... Return only themselves
       if ( isset ( $u_byname[$this_user] ) ) $ret[] = $u_byname[$this_user];
-      $my_user_array[$this_user] = $ret;
+      $my_user_array[$this_user][$reason] = $ret;
       return $ret;
     }
     // get list of users in the same groups as current user
@@ -874,7 +874,7 @@ function get_my_users ( $user='', $reason='invite') {
     $ret = $newlist;
   }
 
-  $my_user_array[$this_user] = $ret;
+  $my_user_array[$this_user][$reason] = $ret;
   return $ret;
 }
 
@@ -3968,6 +3968,7 @@ function display_unapproved_events ( $user ) {
     $app_users[] = $login;
     $app_user_hash[$login] = 1;
     if ( $NONUSER_ENABLED == 'Y' ) {
+      //TODO add 'approved' switch to these functions
       $all = array_merge ( get_my_users ( ), get_my_nonusers ( ) );
     } else {
       $all = get_my_users ( );
