@@ -127,11 +127,13 @@ function access_get_function_description ( $function )
  */
 function access_load_user_permissions ()
 {
-  global $access_other_cals;
+  global $is_admin, $ADMIN_OVERRIDE_UAC, $access_other_cals;
   // Don't run this query twice
   if ( ! empty ( $access_other_cals ) )
     return $access_other_cals;
 
+  $admin_override = ( $is_admin  &&  ! empty ( $ADMIN_OVERRIDE_UAC ) && 
+    $ADMIN_OVERRIDE_UAC == 'Y' );
   $sql = 'SELECT cal_login, cal_other_user, ' .
     'cal_can_view, cal_can_edit, cal_can_approve, ' .
     'cal_can_email, cal_can_invite, cal_see_time_only '.
@@ -139,16 +141,19 @@ function access_load_user_permissions ()
   $res = dbi_execute ( $sql );
   assert ( $res );
   while ( $row = dbi_fetch_row ( $res ) ) {
+    //TODO should we set admin_override here to apply to DEFAULT CONFIFURATION only?
+    //$admin_override = ( $row[1] == '__default__' && $is_admin  &&  
+    //  ! empty ( $ADMIN_OVERRIDE_UAC ) && $ADMIN_OVERRIDE_UAC == 'Y' );
     $key = $row[0] . '.' . $row[1];
     $access_other_cals[$key] = array (
       'cal_login' => $row[0],
       'cal_other_user' => $row[1],
-      'view' => $row[2],
-      'edit' => $row[3],
-      'approve' => $row[4],
-      'email' => $row[5],
-      'invite' => $row[6],
-      'time' => $row[7]
+      'view' => ( $admin_override ? CAN_DOALL : $row[2] ),
+      'edit' => ( $admin_override ? CAN_DOALL : $row[3] ),
+      'approve' => ( $admin_override ? CAN_DOALL : $row[4] ),
+      'email' => ( $admin_override ? 'Y' : $row[5] ),
+      'invite' => ( $admin_override ? 'Y' : $row[6] ),
+      'time' => ( $admin_override ? 'N' : $row[7] )
     );  
   }
   dbi_free_result ( $res );

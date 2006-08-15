@@ -9,6 +9,7 @@
 */
 $webcalConfig = array (
 'ADD_LINK_IN_VIEWS'=>'N',
+'ADMIN_OVERRIDE_UAC'=>'Y',
 'ALLOW_ATTACH'=>'N',
 'ALLOW_ATTACH_ANY'=>'N',
 'ALLOW_ATTACH_PART'=>'N',
