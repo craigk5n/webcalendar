@@ -1,5 +1,6 @@
 Version 1.1.1 (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1540251: Activity log wrong for imported entries
       1538055: UAC for "Default Configuration" does not show correct values
       1539899: postgres problem
       1538718: Logic typo in 'view_entry.php'
