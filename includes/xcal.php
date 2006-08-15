@@ -1441,10 +1441,10 @@ function import_data ( $data, $overwrite, $type ) {
 
       // log add/update
    if ( $Entry['CalendarType'] == 'VTODO' ) {
-        activity_log ( $id, $login, $login,
+        activity_log ( $id, $login, $calUser,
           $updateMode ? LOG_UPDATE_T : LOG_CREATE_T, 'Import from ' .$ImportType );
    } else {
-        activity_log ( $id, $login, $login,
+        activity_log ( $id, $login, $calUser,
           $updateMode ? LOG_UPDATE : LOG_CREATE, 'Import from ' .$ImportType );   
    }
       //not in icalclient
