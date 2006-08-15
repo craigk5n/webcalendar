@@ -46,10 +46,10 @@ if ( ! $show_others ) {
 <tr><td style="vertical-align:top; text-align:right; font-weight:bold; width:60px;">
  <?php etranslate( 'Users' ); ?>:&nbsp;</td><td>
 <?php
-  $users = get_my_users ();
+  $users = get_my_users ( '', 'view' );
   // Get non-user calendars (if enabled)
   if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
-    $nonusers = get_my_nonusers ( $login , true );
+    $nonusers = get_my_nonusers ( $login , true, 'view' );
     if ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == 'Y' )
       $users = array_merge ( $nonusers, $users );
     else

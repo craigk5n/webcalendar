@@ -42,10 +42,10 @@ else
 <table style="border-width:0px;">
 <?php
 if ( $single_user == 'N' ) {
-  $userlist =  $otherlist = get_my_users ();
+  $userlist =  $otherlist = get_my_users ( '', 'view' );
   if ($NONUSER_ENABLED == 'Y' ) { 
     //restrict NUC list if groups are enabled
-    $nonusers = get_my_nonusers ( $login , true );
+    $nonusers = get_my_nonusers ( $login , true, 'view' );
     $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
   if ($REMOTES_ENABLED == 'Y' ) {

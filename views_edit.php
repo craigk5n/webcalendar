@@ -161,9 +161,9 @@ if ( $newview ) {
  <select name="users[]" id="viewusers" size="10" multiple="multiple">
 <?php
   // get list of all users
-  $users = get_my_users ();
+  $users = get_my_users ( '', 'view' );
   if ($NONUSER_ENABLED == 'Y' ) {
-    $nonusers = get_my_nonusers ( $user , true );
+    $nonusers = get_my_nonusers ( $user , true, 'view' );
     $users = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
   }
   for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
