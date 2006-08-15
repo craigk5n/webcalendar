@@ -1,4 +1,5 @@
 Version 1.1.1 (?? ??? 2006)
+ - Fixed bug 1538669: UAC issue with "invite" permissions vs "view"
  - Fixed bug 1540251: Activity log wrong for imported entries
  - Fixed bug 1538055: UAC for "Default Configuration" does not show correct values
  - Fixed bug 1539899: postgres problem

@@ -73,17 +73,17 @@ function view_get_user_list ( $view_id ) {
     $error = db_error ();
   }
   if ( $all_users ) {
-    $users = get_my_users ();
+    $users = get_my_users ( '', 'view' );
     $ret = array ( );
     $usercnt = count ( $users );
     for ( $i = 0; $i < $usercnt; $i++ ) {
       $ret[] = $users[$i]['cal_login'];
     }
   } else {
-    $myusers = get_my_users ();
+    $myusers = get_my_users ( '', 'view' );
      
     if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
-      $myusers = array_merge ( $myusers, get_my_nonusers ( $login , true ) );
+      $myusers = array_merge ( $myusers, get_my_nonusers ( $login , true, 'view' ) );
     } 
     // Make sure this user is allowed to see all users in this view
     // If this is a global view, it may include users that this user

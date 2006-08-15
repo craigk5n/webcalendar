@@ -99,10 +99,10 @@ $ranges = array (
 
 // Get list of users that the current user can see
 if ( empty ( $error ) && $show_participants ) {
-  $userlist = get_my_users ();
+  $userlist = get_my_users ( '', 'view' );
   if ($NONUSER_ENABLED == 'Y' ) {
     //restrict NUC list if groups are enabled
-    $nonusers = get_my_nonusers ( $login , true );
+    $nonusers = get_my_nonusers ( $login , true, 'view' );
     $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : 
       array_merge($userlist, $nonusers);
   }

@@ -21,7 +21,7 @@ $nid = getValue ( 'nid' );
 
 // Adding/Editing nonuser calendar
 if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
-  $userlist = get_my_users ();
+  $userlist = user_get_users ();
   $button = translate( 'Add' );
   $nid = clean_html($nid);
 ?>
