@@ -5120,10 +5120,6 @@ EOT;
  * Return the time in HHMMSS format of input time + duration
  *
  *
- * <b>Note:</b> The gd library module needs to be available to use gradient
- * images.  If it is not available, a single background color will be used
- * instead.
- *
  * @param string $time   format "235900"
  * @param int $duration  number of minutes
  *
