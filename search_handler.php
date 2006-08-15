@@ -49,7 +49,7 @@ if ( $search_others ) {
   if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) && 
     $USER_SEES_ONLY_HIS_GROUPS == 'Y'
     && ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' ) {
-    $myusers = get_my_users ();
+    $myusers = get_my_users ( '', 'view' );
     $userlookup = array ();
     for ( $i = 0, $cnt = count ( $myusers ); $i < $cnt; $i++ ) {
       $userlookup[$myusers[$i]['cal_login']] = 1;
