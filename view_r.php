@@ -495,7 +495,7 @@ if ( $untimed_found || $show_untimed_row_always ) {
       $class .= 'small';
 
       if ( $class != '' ) {
-        echo ' class="$class"';
+        echo " class=\"$class\"";
       }
       if ( $can_add ) {
         $add_url = 'edit_entry.php?date=' . date ( 'Ymd', $days[$d] ) .
