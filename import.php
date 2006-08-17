@@ -27,7 +27,7 @@ print_header($INC, '', $BodyX);
 // - non-admin users this functionality
 function print_user_list () {
   global $single_user, $is_admin, $NONUSER_ENABLED, $login,
-    $is_nonuser_admin, $is_assistant;
+    $is_nonuser_admin, $is_assistant, $NONUSER_AT_TOP;
 
   if ( $single_user == 'N' && $is_admin ) {
     $userlist = user_get_users ();
