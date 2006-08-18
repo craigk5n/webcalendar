@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 07-28-2006
+# Translation last updated on 08-18-2006
 
 
 ###############################################
@@ -74,25 +74,6 @@ Date: Date
 Time: Time
 Event: Event
 Action: Action
-Event created: Event created
-Event approved: Event approved
-Event rejected: Event rejected
-Event updated: Event updated
-Event deleted: Event deleted
-Task created: Task created
-Task approved: Task approved
-Task rejected: Task rejected
-Task updated: Task updated
-Task deleted: Task deleted
-Journal created: Journal created
-Journal approved: Journal approved
-Journal rejected: Journal rejected
-Journal updated: Journal updated
-Journal deleted: Journal deleted
-Notification sent: Notification sent
-Reminder sent: Reminder sent
-Attachment: Attachment
-Comment: Comment
 Previous: Previous
 Next: Next
 
@@ -474,6 +455,7 @@ Invalid blob id: Invalid blob id
 Add Comment: Add Comment
 Add Attachment: Add Attachment
 Subject: Subject
+Comment: Comment
 Upload file: Upload file
 Description: Description
 
@@ -1316,6 +1298,24 @@ Error deleting event: Error deleting event
 Error rejecting event: Error rejecting event
 Generate printer-friendly version: Generate printer-friendly version
 Printer Friendly: Printer Friendly
+Event created: Event created
+Event approved: Event approved
+Event rejected: Event rejected
+Event updated: Event updated
+Event deleted: Event deleted
+Task created: Task created
+Task approved: Task approved
+Task rejected: Task rejected
+Task updated: Task updated
+Task deleted: Task deleted
+Journal created: Journal created
+Journal approved: Journal approved
+Journal rejected: Journal rejected
+Journal updated: Journal updated
+Journal deleted: Journal deleted
+Notification sent: Notification sent
+Reminder sent: Reminder sent
+Attachment: Attachment
 
 
 ###############################################
@@ -1484,16 +1484,16 @@ Mb: Mb
 Notification: Notification
 provide_address: You must provide at least one recipient email address
 mailer_not_supported: mailer is not supported
-execute: Could not execute~
+execute: Could not execute:
 instantiate: Could not instantiate mail function
-authenticate: SMTP Error~ Could not authenticate
-from_failed: The following From address failed~
-recipients_failed: SMTP Error~ The following recipients failed~
-data_not_accepted: SMTP Error~ Data not accepted
-connect_host: SMTP Error~ Could not connect to SMTP host~
-file_access: Could not access file~
-file_open: File Error Could not open file~
-encoding: Unknown encoding~
+authenticate: SMTP Error: Could not authenticate
+from_failed: The following From address failed:
+recipients_failed: SMTP Error: The following recipients failed:
+data_not_accepted: SMTP Error: Data not accepted
+connect_host: SMTP Error: Could not connect to SMTP host:
+file_access: Could not access file:
+file_open: File Error Could not open file:
+encoding: Unknown encoding:
 
 
 ###############################################
