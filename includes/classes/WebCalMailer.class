@@ -39,8 +39,7 @@ class WebCalMailer extends phpmailer {
   
   // Replace the default language handler to use WebCalendar's function
   function Lang($key) {
-    //we can't put ":" in translations, so we use "~"
-    return  str_replace ( "~", ": ", translate ( $key ) ); 
+    return  translate ( $key ); 
   }
 
   //Replace the default error handler so we can add our own trailer
