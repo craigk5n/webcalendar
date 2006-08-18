@@ -186,8 +186,12 @@ function export_time($date, $duration, $time, $texport, $vtype='E') {
     $ret .= "DTSTAMP:$utc_dtstamp\r\n";
   //We don' want DTEND for VTODOs
   if ( $vtype == 'T' || $vtype == 'N' ) return $ret;
-   if ( $time >= 0 ) {
-      // all day event or timed event
+   if ( $time == 0  && $duration == 1440 ) {
+      // all day event
+     $ret .= "DTEND;VALUE=DATE:". gmdate ( 'Ymd', $eventend ) . "\r\n";
+   }
+   if ( $time > 0 || ( $time == 0  && $duration != 1440 ) ) {
+      // timed event
      $utc_end = export_ts_utc_date( $eventend );
      $ret .= "DTEND:$utc_end\r\n";
    }
