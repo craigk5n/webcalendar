@@ -203,7 +203,7 @@ function dbi_connect ( $host, $login, $password, $database, $lazy=true ) {
     $db_connection_info['connected'] = true;
     return $c;
   } else if ( strcmp ( $GLOBALS['db_type'], 'ibase' ) == 0 ) {
-   $host = $host . ': ' . $database;
+   $host = $host . ':' . $database;
     if ($GLOBALS['db_persistent']) {
       $c = ibase_pconnect ( $host, $login, $password );
     } else {
