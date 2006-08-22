@@ -1,5 +1,6 @@
 Version 1.1.1 (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1543579: typos and other minor glitches - view_entry.php
       1522357: after upgrading 'categories' are enabled
       1541558: Non-users ignore "NONUSER_AT_TOP" during import
       1532286: UAC settings of 'admins' will be overwritten

@@ -1185,7 +1185,7 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
       <option value="pilot-csv">Pilot-datebook CSV ({$palmStr})</option>
       <option value="pilot-text">Install-datebook ({$palmStr})</option>
      </select>
-     <input type="hidden" name="id" value="$id" />
+     <input type="hidden" name="id" value="{$id}" />
      <input type="submit" value="{$exportStr}" />
    </form>
 EOT;
