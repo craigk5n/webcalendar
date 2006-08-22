@@ -176,6 +176,9 @@ ul a {
  display: none; 
 <?php } ?>
 }
+.main td.hasevents {
+  <?php echo background_css ( $GLOBALS['HASEVENTSBG'], 100 ); ?>
+}
 .main td.today {
   <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
 }
@@ -861,14 +864,6 @@ a.weekcell {
 #viewr .main th.today,
 #week .main th.today {
   width: 12%;
-}
-#viewr .main td.hasevents {
-  font-size: 9px;
-  <?php echo background_css ( $GLOBALS['HASEVENTSBG'], 100 ); ?>
-}
-#week .main td.hasevents,
-#day .glance td.hasevents {
-  <?php echo background_css ( $GLOBALS['HASEVENTSBG'], 100 ); ?>
 }
 #viewr .main th a,
 #week .main th a,

@@ -1574,18 +1574,23 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
         if ( $demo && ( date ( 'd', $date ) == 15 || date ( 'd', $date ) == 12 ) ) {
           $class .= ' entry';
         }
-        if ( strlen ( $class ) )  {
-        $ret .= " class=\"$class\"";
-        }
-        $ret .= '>';
+        //get events for this day
+        $ret_events = '';
         if ( ! $demo ) {
-          $ret .= print_date_entries ( date ('Ymd', $date ),
+          $ret_events = print_date_entries ( date ('Ymd', $date ),
             ( ! empty ( $user ) ) ? $user : $login, false );
         } else {
           if ( date ( 'd', $date ) == 15 || date ( 'd', $date ) == 12 ) 
-            $ret .= translate('My event text');
+            $ret_events = translate('My event text');
         }
-        $ret .= "</td>\n";
+        if ( ! empty ( $ret_events ) && strstr ( $ret_events, 'class="entry"' ) ) {
+          $class .= ' hasevents';
+        }        
+        if ( strlen ( $class ) )  {
+        $ret .= " class=\"$class\"";
+        }
+
+        $ret .= ">$ret_events</td>\n";
       } else {
         $ret .=  '<td ' . ( $is_weekend? 'class="weekend"': '' ) . ">&nbsp;</td>\n";        
       }
@@ -1762,7 +1767,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
           if ( $class != '' ) {
             $class .= ' ';
           }
-          $class .= "hasevents";
+          $class .= 'hasevents';
         }
         if ( $class != '' ) {
           $ret .= " class=\"$class\"";
@@ -3721,7 +3726,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     }
     $hour_arr[$ind] .= '<a title="' . $view_text .
       "\" class=\"$class\" id=\"$linkid\" $href";
-    $hour_arr[$ind] .= '">';
+    $hour_arr[$ind] .= '>';
     
   if ( $event->getPriority() == 3 ) $hour_arr[$ind] .= '<strong>';
 
@@ -3789,7 +3794,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
  */
 function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan, $DISPLAY_UNAPPROVED;
-  global $TABLEBG, $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS;
+  global $TABLEBG, $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS, $today;
   global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR, $DISPLAY_TASKS_IN_GRID;
   //global $repeated_events;
   $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
@@ -3827,7 +3832,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
    $ev = combine_and_sort_events($ev, $tk);
  }
     
-
+  $class = ( $date == date ('Ymd', $today ) ? ' class="today"' : '' );
   $hour_arr = array ();
   $interval = ( 24 * 60 ) / $TIME_SLOTS;
   $first_slot = (int) ( ( ( $WORK_DAY_START_HOUR ) * 60 ) / $interval );
@@ -3876,7 +3881,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
       $last_row = $i;
     }
   }
-  $ret .= '<table class="glance" cellspacing="0" cellpadding="0">';
+  $ret .= '<table class="main glance" cellspacing="0" cellpadding="0">';
   if ( ! empty ( $hour_arr[9999] ) ) {
     $ret .= '<tr><th class="empty">&nbsp;</th>' .
       "\n<td class=\"hasevents\">$hour_arr[9999]</td></tr>\n";
@@ -3899,7 +3904,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
       $rowspan--;
     } else {
       if ( empty ( $hour_arr[$i] ) ) {
-        $ret .= '<td>';
+        $ret .= "<td $class>";
         if ( $can_add ) {
           $ret .= html_for_add_icon ( $date, $time_h, $time_m, $user ) . '</td>';
         } else {
