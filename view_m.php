@@ -154,21 +154,22 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
  $user = $viewusers[$i];
  $events = $e_save[$i];
  $repeated_events = $re_save[$i];
- if ( date ('Ymd', $date) == date ('Ymd', $today) ) {
-  echo '<td class="today"';
+ $entryStr = print_date_entries ( date ('Ymd', $date), $user, true );
+ if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' ) {
+   $class = 'class="hasevents"';
+ } else if ( date ('Ymd', $date) == date ('Ymd', $today) ) {
+  $class = 'class="today"';
+ } else if ($wday == 0 || $wday == 6) {
+   $class = 'class="weekend"';
  } else {
-  if ($wday == 0 || $wday == 6) {
-   echo '<td class="weekend"';
-  } else {
-   echo '<td';
-  }
+   $class = '';
  }
- echo " style=\"width:$tdw%;\">";
+ echo "<td $class style=\"width:$tdw%;\">";
  //echo date ( 'D, m-d-Y H:i:s', $date ) . '<br />';
       if ( empty ($ADD_LINK_IN_VIEWS) || $ADD_LINK_IN_VIEWS != 'N' ) {
         echo html_for_add_icon ( date ('Ymd', $date), '', '', $user );
       }
-      echo print_date_entries ( date ('Ymd', $date), $user, true );
+      echo $entryStr;
       echo '</td>';
     } //end for
     echo "</tr>\n";
