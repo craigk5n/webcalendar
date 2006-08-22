@@ -171,20 +171,23 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
-    if ( date ( 'Ymd', $xdate ) == date ( 'Ymd', $today ) ) {
-      echo "<td class=\"today\" style=\"width:$tdw%;\">";
-    } else {
-      if ( $wday == 0 || $wday == 6 ) {
-        echo "<td class=\"weekend\" style=\"width:$tdw%;\">";
+      $entryStr = print_date_entries ( date ( 'Ymd', $xdate ), $user, true );
+      if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' ) {
+        $class = 'class="hasevents"';
+      } else if ( date ( 'Ymd', $xdate ) == date ( 'Ymd', $today ) ) {
+        $class = 'class=\"today\"';
+      } else { if ( $wday == 0 || $wday == 6 ) {
+        $class = 'class=\"weekend\"';;
       } else {
-        echo "<td style=\"width:$tdw%;\">";
+        $class = '';
       }
     }
+    echo "<td $class style=\"width:$tdw%;\">";
       //echo date ( 'D, m-d-Y H:i:s', $xdate ) . '<br />';
       if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' ) {
         echo html_for_add_icon ( date ( 'Ymd', $xdate ), '', '', $user );
       }
-      echo print_date_entries ( date ( 'Ymd', $xdate ), $user, true );
+      echo $entryStr;
       echo "</td>\n";
     }
     echo "</tr>\n";

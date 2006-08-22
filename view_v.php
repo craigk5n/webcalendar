@@ -152,20 +152,24 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
       date ( 'Ymd', $date ) <= date ( 'Ymd', $wkend );
       $date += ONE_DAY, $h++ ) {
       $wday = strftime ( "%w", $date );
-   // JCJ Correction for today class
-   if ( date ( 'Ymd', $date ) == date ( 'Ymd', $today ) ) {
-    echo "<td class=\"today\" style=\"width:$tdw%;\">";
-   } else if ( $wday == 0 || $wday == 6 ) {
-        echo "<td class=\"weekend\" style=\"width:$tdw%;\">";
+      $entryStr = print_date_entries ( date ( 'Ymd', $date ), $user, true );
+      // JCJ Correction for today class
+      if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' ) {
+        $class = 'class="hasevents"';
+      } else if ( date ( 'Ymd', $date ) == date ( 'Ymd', $today ) ) {
+        $class = 'class="today"';
+      } else if ( $wday == 0 || $wday == 6 ) {
+        $class = 'class="weekend"';
       } else {
-        echo "<td style=\"width:$tdw%;\">";
+        $class = '';
       }
+      echo "<td $class style=\"width:$tdw%;\">";
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
       if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' ) {
         echo html_for_add_icon ( date ( 'Ymd', $date ), '', '', $user );
       }
-      echo print_date_entries ( date ( 'Ymd', $date ), $user, true );
+      echo $entryStr;
       echo '</td>';
     }
     echo "</tr>\n";
