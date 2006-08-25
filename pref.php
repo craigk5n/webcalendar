@@ -100,7 +100,6 @@ if ( $res ) {
 //get user settings
 $res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_user_pref ' .
     'WHERE cal_login = ?' , array ( $prefuser ) );
-
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $prefarray[$row[0]] = $row[1];
@@ -142,6 +141,9 @@ if ( is_dir( $dir ) ) {
 
 //make globals values passed to styles.php are for this user
 //makes the demo calendar accurate
+$GLOBALS['BGCOLOR'] = $prefarray['BGCOLOR'];
+$GLOBALS['H2COLOR'] = $prefarray['H2COLOR'];
+$GLOBALS['MENU_THEME'] = $prefarray['MENU_THEME'];
 $GLOBALS['TODAYCELLBG'] = $prefarray['TODAYCELLBG'];
 $GLOBALS['TABLEBG'] = $prefarray['TABLEBG'];
 $GLOBALS['TABLEBG'] = $prefarray['TABLEBG'];
@@ -163,14 +165,16 @@ $No = translate ( 'No' );
 
 $BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' )\"" : '' );
 $INC = array('js/visible.php/true', 'js/pref.php');
-print_header($INC, '' , $BodyX);
+//disable css here and include it manually so other user pref will display properly
+print_header($INC, '' , $BodyX, false, true);
+include "includes/styles.php";
 ?>
 
 <h2><?php
  if ( $updating_public )
   echo translate($PUBLIC_ACCESS_FULLNAME) . '&nbsp;';
  etranslate( 'Preferences' );
- if ( $is_nonuser_admin ) {
+ if ( $is_nonuser_admin || ( $is_admin && substr ( $prefuser, 0, 5 ) == '_NUC_' ) ) {
   nonuser_load_variables ( $user, 'nonuser' );
   echo '<br /><strong>-- ' . 
    translate( 'Admin mode' ) . ': '.$nonuserfullname." --</strong>\n";
