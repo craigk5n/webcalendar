@@ -13,6 +13,7 @@ load_user_categories ();
 $nextYmd = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
 $prevYmd = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
 
+$boldDays = ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
