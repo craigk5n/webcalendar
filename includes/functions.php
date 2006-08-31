@@ -1576,7 +1576,7 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
         }
         
         if ( $demo && ( date ( 'd', $date ) == 15 || date ( 'd', $date ) == 12 ) ) {
-          $class .= ' hasevents';
+          $class .= ' entry hasevents ';
         }
         //get events for this day
         $ret_events = '';
