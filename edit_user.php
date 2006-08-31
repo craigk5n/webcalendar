@@ -135,7 +135,7 @@ if ( $is_admin ) { ?>
 <td style="vertical-align:top;">
 
 <h2><?php etranslate( 'Change Password' )?></h2>
-<form action="edit_user_handler.php" method="post">
+<form action="edit_user_handler.php" method="post"  onsubmit="return valid_form2(this);" >
 <input type="hidden" name="formtype" value="setpassword" />
 <?php if ( $is_admin ) { ?>
  <input type="hidden" name="user" value="<?php echo $user;?>" />
