@@ -13,6 +13,14 @@ $error = '';
 if ( ! $is_admin )
   $user = $login;
 
+$notAuthStr = translate( 'You are not authorized' ) . '.';
+$deleteStr = translate( 'Deleting users not supported' ) . '.';
+$notIdenticalStr = translate( 'The passwords were not identical' ) . '.';
+$noPasswordStr = translate( 'You have not entered a password' ) . '.';
+$invalidCharStr = translate( 'Invalid characters in login' ) . '.';
+$blankUserStr = translate( 'Username can not be blank' ) . '.';
+$successStr = translate( 'Changes successfully saved', true);
+$errorStr = translate( 'Error' );
 // don't allow them to edit users if it's not allowed
 if ( empty ( $user ) ) {
   // asking to create a new user
@@ -40,10 +48,10 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
     if ( $admin_can_delete_user ) {
       user_delete_user ( $user ); // will also delete user's events
     } else {
-      $error = translate( 'Deleting users not supported' ) . '.';
+      $error = $deleteStr;
     }
   } else {
-    $error = translate( 'You are not authorized' ) . '.';
+    $error = $notAuthStr;
   }
 }
 
@@ -51,32 +59,33 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
 else if ( $formtype == 'setpassword' && strlen ( $user ) ) {
   if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) &&
     ! access_can_access_function ( ACCESS_ACCOUNT ) ) {
-    $error = translate( 'You are not authorized' ) . '.';
+    $error = $notAuthStr;
   } else if ( $upassword1 != $upassword2 ) {
-    $error = translate( 'The passwords were not identical' ) . '.';
+    $error = $notIdenticalStr;
   } else if ( strlen ( $upassword1 ) ) {
-    if ( $user_can_update_password )
+    if ( $user_can_update_password ) {
       user_update_user_password ( $user, $upassword1 );
-    else
-      $error = translate( 'You are not authorized' ) . '.';
+    } else {
+      $error = $notAuthStr;
+    }
   } else
-    $error = translate( 'You have not entered a password' ) . '.';
+    $error = $noPasswordStr;
 }
 
 // Handle update of user info
 else if ( $formtype == 'edituser' ) {
   if ( ! empty ( $add ) && $is_admin ) {
     if ( $upassword1 != $upassword2 ) { 
-      $error = translate( 'The passwords were not identical' ) . '.'; 
+      $error = $notIdenticalStr; 
     } else {
       if ( addslashes ( $user ) != $user ) {
         // This error should get caught before here anyhow, so
         // no need to translate this.  This is just in case :-)
-        $error = translate( 'Invalid characters in login' ) . '.';
+        $error = $invalidCharStr;
       } else if ( empty ( $user ) || $user == '' ) {
         // Username can not be blank. This is currently the only place that 
         // calls addUser that is located in $user_inc
-        $error = translate( 'Username can not be blank' ) . '.';
+        $error = $blankUserStr;
       } else {
         user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
           $uemail, $uis_admin );
@@ -84,7 +93,7 @@ else if ( $formtype == 'edituser' ) {
     }
   } else if ( ! empty ( $add ) &&
     ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
-    $error = translate( 'You are not authorized' ) . '.';
+    $error = $notAuthStr;
   } else {
     // Don't allow a user to change themself to an admin by setting
     // uis_admin in the URL by hand.  They must be admin beforehand.
@@ -95,23 +104,13 @@ else if ( $formtype == 'edituser' ) {
   }
 }
 
-$nextURL = empty ( $is_admin ) ? 'adminhome.php' : 'users.php';
-
 if ( ! empty ( $error ) ) {
   print_header( '', '', '', true );
-
+  echo '<h2>' . $errorStr . '</h2><blockquote>' .
+    $error . '</blockquote>';
+} else  {
+  echo '<html><head></head><body onLoad="alert(\''. $successStr . 
+    '\'); window.parent.location.href=\'users.php\';">';
+}
+echo '</body></html>';
 ?>
-<h2><?php etranslate( 'Error' )?></h2>
-<blockquote>
-<?php
-echo $error;
-//if ( $sql != '' )
-//  echo "<br /><br /><strong>SQL:</strong> $sql";
-//?>
-</blockquote>
-</body>
-</html>
-<?php } else if ( empty ($error) ) {
-?><html><head></head><body onLoad="alert('<?php 
-  etranslate( 'Changes successfully saved', true);?>'); window.parent.location.href='<?php echo $nextURL;?>';">
-</body></html><?php } ?>

@@ -1,4 +1,5 @@
 Version 1.1.1 (?? ??? 2006)
+ - Code cleanup 1545314: duplicate code redundancies - edit_user_handler.php
  - Fixed bug 1509458: Reminders are coming at the wrong time
  - Fixed bug 1536288: URL missing folder name
  - Fixed bug 1512310: Path Truncation in Windows
