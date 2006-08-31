@@ -45,7 +45,7 @@ if ( empty ( $reminder_hour ) ) $reminder_hour = 0;
 if ( empty ( $reminder_minute ) ) $reminder_minute = 0;
 if ( empty ( $rem_rep_days ) ) $rem_rep_days = 0;
 if ( empty ( $rem_rep_hours ) ) $rem_rep_hours = 0;
-if ( empty ( $rem_rep_minute ) ) $rem_rep_minute = 0;
+if ( empty ( $rem_rep_minutes ) ) $rem_rep_minutes = 0;
 
 // Timed event.
 if ( $timetype == 'T' )  {
@@ -536,7 +536,7 @@ if ( empty ( $error ) ) {
     if ( $rem_rep_count > 0 ) {
       $reminder_repeats = $rem_rep_count;
       $reminder_duration = ($rem_rep_days * 60 * 24 ) + 
-        ( $rem_rep_hours * 60 ) + $rem_rep_minute;      
+        ( $rem_rep_hours * 60 ) + $rem_rep_minutes;      
     }
     $sql = 'INSERT INTO webcal_reminders ( cal_id, cal_date, cal_offset, cal_related, ' .
       'cal_before, cal_repeats, cal_duration, cal_action, cal_last_sent, cal_times_sent ) ' .
