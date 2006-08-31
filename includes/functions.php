@@ -183,6 +183,10 @@ function load_global_settings () {
     }
     if ( empty ( $REQUEST_URI ) && isset ( $_SERVER['REQUEST_URI'] ) )
       $REQUEST_URI = $_SERVER['REQUEST_URI'];
+    //hack to fix up IIS 
+    if ( strstr($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') && 
+      isset ( $_SERVER['SCRIPT_NAME'] ) )
+      $REQUEST_URI = $_SERVER['SCRIPT_NAME'];
   }
 
   $rows = dbi_get_cached_rows (
@@ -1572,7 +1576,7 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
         }
         
         if ( $demo && ( date ( 'd', $date ) == 15 || date ( 'd', $date ) == 12 ) ) {
-          $class .= ' entry';
+          $class .= ' hasevents';
         }
         //get events for this day
         $ret_events = '';
