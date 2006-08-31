@@ -44,11 +44,8 @@ $month_url = 'month.php';
 $week_url = 'week.php';
 $year_url = 'year.php';
 
-if ( ! empty ( $STARTVIEW ) ) {
-  $mycal = $STARTVIEW;
-} else {
-  $mycal = 'index.php';
-}
+$mycal = ( ! empty ( $STARTVIEW ) ? $STARTVIEW : 'index.php' );
+
 // Add new entry
 if ( $can_add ) {
   $new_entry_url = 'edit_entry.php';
@@ -290,12 +287,9 @@ For full menu options see JSCookMenu documentation
 
 // A menu link
 function jscMenu_menu ( $title, $url = false ) {
-  $titleStr = translate( $title, true );
-  if ( $url ) {
-    echo "\n  [null,\"" . $titleStr. "\",'$url',null,null],\n";
-  } else {
-    echo "\n  [null,\""  . $titleStr . "\",null,null,null,\n";
-  }
+  $bracket = ( $url ? ']' : '' );
+  echo "\n  [null,\"" . translate( $title, true ) . 
+    "\",'$url',null,null" . $bracket . ",\n";
 }
 
 // Dropdown menu item
@@ -386,8 +380,6 @@ var myMenu =
   // translate ( 'Views');
   // translate ( 'Another User\'s Calendar');
   // translate ( 'My Views');
-  // translate ( 'Another User\'s Calendar');
-  // translate ( 'Views');
   // translate ( 'Manage Calendar of');
   // translate ( 'Manage Views');
   jscMenu_menu ('Views');
