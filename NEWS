@@ -1,5 +1,8 @@
 Version 1.1.1 (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1509458: Reminders are coming at the wrong time
+      1536288: URL missing folder name
+      1512310: Path Truncation in Windows
       1522439: Wrong colors for 'Manage Calendar of'
       1542228: Background for "days with events" color not working
       1543579: typos and other minor glitches - view_entry.php
