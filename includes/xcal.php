@@ -182,7 +182,7 @@ function export_time($date, $duration, $time, $texport, $vtype='E') {
     $ret .= "DTSTART:$utc_start\r\n";
   }
   if (strcmp($texport,'ical') == 0) {
-    $utc_dtstamp = export_ts_utc_date( gmmktime() );
+    $utc_dtstamp = export_ts_utc_date( time() );
     $ret .= "DTSTAMP:$utc_dtstamp\r\n";
   //We don' want DTEND for VTODOs
   if ( $vtype == 'T' || $vtype == 'N' ) return $ret;
