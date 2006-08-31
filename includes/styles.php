@@ -176,9 +176,12 @@ ul a {
  display: none; 
 <?php } ?>
 }
+<?php if ( $GLOBALS['HASEVENTSBG'] != $GLOBALS['CELLBG'] )  { 
+  //only use HASEVENTSBG if it differs form CELLBG  ?>
 .main td.hasevents {
   <?php echo background_css ( $GLOBALS['HASEVENTSBG'], 100 ); ?>
-}
+} 
+<?php } ?>
 .main td.today {
   <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
 }
