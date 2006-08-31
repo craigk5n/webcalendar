@@ -185,7 +185,7 @@ if ( empty ( $GENERAL_USE_GMT ) || $GENERAL_USE_GMT != 'Y' ) {
   $def_tz = $SERVER_TIMEZONE;
 }
 
-$startdateTS = gmmktime(0,0,0);
+$startdateTS = time(0,0,0);
 $enddateTS = $startdateTS + ( $DAYS_IN_ADVANCE * ONE_DAY );
 
 $startdate = date ( 'Ymd', $startdateTS );
@@ -538,7 +538,7 @@ function log_reminder ( $id, $times_sent ) {
   if ( ! $only_testing ) {
     dbi_execute ( 'UPDATE webcal_reminders ' .
       'SET cal_last_sent = ?, cal_times_sent = ? ' .
-      'WHERE cal_id = ?', array ( gmmktime(), $times_sent, $id ) );
+      'WHERE cal_id = ?', array ( time(), $times_sent, $id ) );
   }
 }
 
@@ -625,13 +625,12 @@ function process_event ( $id, $name, $start, $end, $new_date='' ) {
         echo '  Last sent on: ' .  
         ( $lastsent == 0 ? 'NEVER' : date ( 'm/d/Y H:i T', 
         $lastsent ) ). "<br /><br />\n";
-
       //no sense sending reminders if the event is over!
       //unless the entry is a task
       if ( $times_sent <  ( $repeats + 1 ) && 
-        gmmktime() >= $remind_time &&
+        time() >= $remind_time &&
         $lastsent <= $remind_time &&  
-        ( gmmktime() <= $pointless || $is_task == true ) ) {
+        ( time() <= $pointless || $is_task == true ) ) {
         // Send a reminder
         if ( $debug )
           echo "  SENDING REMINDER! <br />\n";
