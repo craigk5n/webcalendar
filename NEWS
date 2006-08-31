@@ -1,5 +1,6 @@
 Version 1.1.1 (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1547474: duplicate code redundancies - js/edit_entry.php
       1545314: duplicate code redundancies - edit_user_handler.php
       1509458: Reminders are coming at the wrong time
       1536288: URL missing folder name
