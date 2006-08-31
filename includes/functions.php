@@ -184,7 +184,8 @@ function load_global_settings () {
     if ( empty ( $REQUEST_URI ) && isset ( $_SERVER['REQUEST_URI'] ) )
       $REQUEST_URI = $_SERVER['REQUEST_URI'];
     //hack to fix up IIS 
-    if ( strstr($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') && 
+    if ( isset ( $_SERVER['SERVER_SOFTWARE'] ) && 
+      strstr($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') && 
       isset ( $_SERVER['SCRIPT_NAME'] ) )
       $REQUEST_URI = $_SERVER['SCRIPT_NAME'];
   }
