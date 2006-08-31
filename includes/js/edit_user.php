@@ -6,13 +6,21 @@ var formfield = 'user';
 
 function valid_form ( form ) {
   var name = form.user.value;
-  var pass1 = form.upassword1.value;
-  var pass2 = form.upassword2.value;
   if ( ! name ) {
     alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
       etranslate( 'Username can not be blank', true)?>" );
     return false;  
   }  
+  check_name();
+  
+  return validform;
+
+}
+
+function valid_form2 ( form ) {
+  var pass1 = form.upassword1.value;
+  var pass2 = form.upassword2.value;
+ 
   if ( ! pass1 || ! pass2 ) {
     alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
       etranslate( 'You have not entered a password', true)?>" );
@@ -23,9 +31,8 @@ function valid_form ( form ) {
       etranslate( 'The passwords were not identical', true)?>" );
     return false;  
   }
-  check_name();
-  
-  return validform;
+
+  return true;
 
 }
 
