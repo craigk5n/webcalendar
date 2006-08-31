@@ -1,4 +1,7 @@
 Version 1.1.1 (?? ??? 2006)
+ - Fixed bug 1509458: Reminders are coming at the wrong time
+ - Fixed bug 1536288: URL missing folder name
+ - Fixed bug 1512310: Path Truncation in Windows
  - Fixed bug 1522439: Wrong colors for 'Manage Calendar of'
  - Fixed bug 1542228: Background for "days with events" color not working
  - Fixed bug 1543579: typos and other minor glitches - view_entry.php
