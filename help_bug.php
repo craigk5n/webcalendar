@@ -4,6 +4,7 @@ include_once 'includes/init.php';
 include_once 'includes/help_list.php';  
 print_header('', '', '', true);
 echo $helpListStr;
+$rowStr = '</td></tr><tr><td>';
 ?>
 
 <h2><?php etranslate( 'Report Bug' )?></h2>
@@ -13,11 +14,11 @@ echo $helpListStr;
   //reported in English.
   //Americans only speak English, of course ;-)
 ?>
-Please include all the information below when reporting a bug.
+<p>Please include all the information below when reporting a bug.</p>
 <?php if ( $LANGUAGE != 'English-US' ) { ?>
   Also.. when reporting a bug, please use <strong>English</strong> rather than <?php echo $LANGUAGE?>.
 <?php } ?>
-
+</p>
 <form action="http://sourceforge.net/tracker/" target="_new">
   <input type="hidden" name="func" value="add" />
   <input type="hidden" name="group_id" value="3870" />
@@ -34,26 +35,37 @@ if ( empty ( $HTTP_USER_AGENT ) )
   $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
 if ( empty ( $HTTP_USER_AGENT ) )
   $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
+echo '<table border="0"><tr><td>';
+printf ( "%-25s:</td><td> %s\n", 'PROGRAM_NAME', $PROGRAM_NAME );
+echo $rowStr;
+printf ( "%-25s:</td><td> %s\n", 'SERVER_SOFTWARE', $SERVER_SOFTWARE );
+echo $rowStr;
+printf ( "%-25s:</td><td> %s\n", 'Web Browser', $HTTP_USER_AGENT );
+echo $rowStr;
+printf ( "%-25s:</td><td> %s\n", 'PHP Version', phpversion() );
+echo $rowStr;
+printf ( "%-25s:</td><td> %s\n", 'db_type', $db_type );
+echo $rowStr;
+printf ( "%-25s:</td><td> %s\n", 'readonly', $readonly );
+echo $rowStr;
+printf ( "%-25s:</td><td> %s\n", 'single_user', $single_user );
+echo $rowStr;
+printf ( "%-25s:</td><td> %s\n", 'single_user_login', $single_user_login );
+echo $rowStr;
+printf ( "%-25s:</td><td> %s\n", 'use_http_auth', $use_http_auth ? 'true': 'false');
+echo $rowStr;
+printf ( "%-25s:</td><td> %s\n", 'user_inc', $user_inc );
+echo $rowStr;
 
-echo '<pre>';
-printf ( "%-25s: %s\n", 'PROGRAM_NAME', $PROGRAM_NAME );
-printf ( "%-25s: %s\n", 'SERVER_SOFTWARE', $SERVER_SOFTWARE );
-printf ( "%-25s: %s\n", 'Web Browser', $HTTP_USER_AGENT );
-printf ( "%-25s: %s\n", 'db_type', $db_type );
-printf ( "%-25s: %s\n", 'readonly', $readonly );
-printf ( "%-25s: %s\n", 'single_user', $single_user );
-printf ( "%-25s: %s\n", 'single_user_login', $single_user_login );
-printf ( "%-25s: %s\n", 'use_http_auth', $use_http_auth ? 'true': 'false');
-printf ( "%-25s: %s\n", 'user_inc', $user_inc );
-
-$res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config' );
+$res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config ORDER BY cal_setting' );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
-    printf ( "%-25s: %s\n", $row[0], $row[1] );
+    printf ( "%-25s:</td><td> %s\n", $row[0], $row[1] );
+    echo $rowStr;
   }
   dbi_free_result ( $res );
 }
-echo "</pre>\n";
+echo '</td></tr></table>';
 
 echo print_trailer( false, true, true );
 ?>

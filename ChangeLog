@@ -1,4 +1,5 @@
 Version 1.1.1 (?? ??? 2006)
+ - Fixed bug 1510777: Standardize layout of help pages
  - Fixed bug 1550117: UAC default settings that don't already exist in DB
  - Fixed bug 1547474: duplicate code redundancies - js/edit_entry.php
  - Fixed bug 1545314: duplicate code redundancies - edit_user_handler.php

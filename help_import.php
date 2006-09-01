@@ -9,23 +9,22 @@ echo $helpListStr;
 <h2><?php etranslate('Help')?>: <?php etranslate('Import')?></h2>
 
 <h3><?php echo 'Palm Desktop';?></h3>
-  <?php etranslate('This form will allow you to import entries from the Palm Desktop Datebook.'); ?><br />
-  <?php etranslate('It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.') ?><br /><br />
+  <p><?php etranslate('This form will allow you to import entries from the Palm Desktop Datebook.'); ?><br />
+  <?php etranslate('It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.') ?></p>
 
-<?php etranslate('The following entries will not be imported')?>:
+<p><?php etranslate('The following entries will not be imported')?>:</p>
   <ul>
     <li><?php etranslate('Entries older than the current date')?></li>
     <li><?php etranslate("Entries created in the Palm Desktop that have not been HotSync'd")?></li>
   </ul>
-  <br /><br />
 
-  <?php etranslate('Anything imported from Palm will be overwritten during the next import (unless the event date has passed).') .
-  etranslate('Therefore, updates should be made in the Palm Desktop.');?>
+  <p><?php etranslate('Anything imported from Palm will be overwritten during the next import (unless the event date has passed).') .
+  etranslate('Therefore, updates should be made in the Palm Desktop.');?></p>
 
 <h3><?php echo 'vCal' ?></h3>
-  <?php etranslate('This form will import vCalendar (.vcs) 1.0 events');?>.<br /><br />
+  <p><?php etranslate('This form will import vCalendar (.vcs) 1.0 events');?>.</p>
 
-<?php etranslate('The following formats have been tested');?>:
+<p><?php etranslate('The following formats have been tested');?>:</p>
   <ul>
     <li><?php echo 'Palm Desktop 4'; ?></li>
     <li><?php echo 'Lotus Organizer 6'; ?></li>
