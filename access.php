@@ -117,34 +117,25 @@ if ( $otheruser == '__default__' ) {
 }
 if ( ! empty ( $otheruser ) ) {
   if ( $allow_view_other ) {
-    $query_param = array( $guser, $otheruser );
-    //if user is not admin, reverse values so they are granting
-    //access to their own calendar
-    if ( ! $is_admin )
-      $query_param = array( $otheruser, $guser );
     user_load_variables ( $otheruser, 'otheruser_' );
+    //turn off admin override so we see the users own settings
+    $ADMIN_OVERRIDE_UAC = 'N';
     // Now load all the data from webcal_access_user
-    $res = dbi_execute ( 'SELECT cal_other_user, cal_can_view, cal_can_edit, ' .
-      'cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only ' .
-      'FROM webcal_access_user WHERE cal_login = ? AND cal_other_user = ?', 
-      $query_param );
-    assert ( $res );
-    $op = array ();
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $op = array (
-        'cal_other_user' => $row[0],
-        'view' => $row[1],
-        'edit' => $row[2],
-        'approve' => $row[3],
-        'invite' => $row[4],
-        'email' => $row[5],
-        'time' => $row[6]
-      );
+    $allPermissions = access_load_user_permissions ();
+    //load default-default values if exist
+    if ( ! empty ( $allPermissions['__default__.__default__'] ) ) {
+      $op = $allPermissions['__default__.__default__'];
     }
-    dbi_free_result ( $res );
+    //load defulat-user values if exist
+    if ( ! empty ( $allPermissions['__default__.' . $guser] ) ) {
+      $op = $allPermissions['__default__.' . $guser ];
+    }
+    //load otheruser-user values if exist
+    if ( ! empty ( $allPermissions[$otheruser . '.' . $guser] ) ) {
+      $op = $allPermissions[$otheruser . '.' . $guser];
+    }
   }
 }
-
 $BodyX = ( ! empty ( $op['time'] ) && $op['time'] == 'Y' ? 
   'onload="enableAll( true );"' : '' );
 print_header ('','', $BodyX);
