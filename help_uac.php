@@ -10,7 +10,7 @@ echo $helpListStr;
 
 <table style='border-width:0px;'>
  <tr><td colspan="2">
-  <?php etranslate('User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.')?>
+ <p><?php etranslate('User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.')?></p>
  </td></tr>
  <tr><td colspan="2">&nbsp;</td></tr>
  <tr><td class="help">
@@ -26,7 +26,6 @@ echo $helpListStr;
   <?php etranslate('If enabled, this user will not be able to view the details of any of your entries.')?>
  </td></tr>
 </table>
-<br /><br />
 
 <?php echo print_trailer( false, true, true ); ?>
 </body>

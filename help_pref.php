@@ -157,8 +157,7 @@ echo $helpListStr;
 
  if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
  <h3><?php etranslate( 'Colors' )?></h3>
- <?php etranslate('colors-help')?>
- <br /><br />
+ <p><?php etranslate('colors-help')?></p>
 <?php } // if $ALLOW_COLOR_CUSTOMIZATION 
 echo print_trailer( false, true, true ); ?>
 </body>

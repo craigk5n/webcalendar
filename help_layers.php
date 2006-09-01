@@ -10,7 +10,7 @@ echo $helpListStr;
 
 <table style='border-width:0px;'>
  <tr><td colspan="2">
-  <?php etranslate("Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.")?>
+  <p><?php etranslate("Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.")?></p>
  </td></tr>
  <tr><td colspan="2">&nbsp;</td></tr>
  <tr><td class="help">
@@ -38,12 +38,10 @@ echo $helpListStr;
   <?php etranslate('Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.')?>
  </td></tr>
 </table>
-<br /><br />
 
 <?php if ( $ALLOW_COLOR_CUSTOMIZATION ) { ?>
  <h3><?php etranslate( 'Colors' )?></h3>
- <?php etranslate('colors-help')?>
- <br /><br />
+ <p><?php etranslate('colors-help')?></p>
 <?php } // if $ALLOW_COLOR_CUSTOMIZATION 
 
 echo print_trailer( false, true, true ); ?>
