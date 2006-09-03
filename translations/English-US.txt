@@ -497,7 +497,6 @@ Medium: Medium
 High: High
 category-help: Specifies the category of the event.
 Category: Category
-Use the Edit button to make changes.: Use the Edit button to make changes.
 completed-help: Date task is completed. Only enabled when all participants percentage equals 100%.
 Date Completed: Date Completed
 percent-help: Task completion percentage for this user
