@@ -139,7 +139,6 @@ $briefStr = translate( 'Brief Description' );
 $catHelpStr = tooltip( 'category-help' );
 $catStr = translate( 'Category' );
 $editStr = translate( 'Edit' );
-$useEditStr = translate( 'Use the Edit button to make changes.', true);
 $globalNoteStr = ( $globals_found ? translate( 'Global Categories can not be changed'):'');
 $saveStr = translate( 'Save' );
 
@@ -168,7 +167,7 @@ echo <<<EOT
         <label for="entry_categories">{$catStr}:<br /></label>
         <input type="button" value="{$editStr}" onclick="editCats(event)" />
        </td><td valign="top">
-       <input readonly="readonly" type="text" name="catnames" value="{$catNames}" size="75" onclick="alert('{$useEditStr}')"/>
+       <input readonly="readonly" type="text" name="catnames" value="{$catNames}" size="75" onclick="editCats(event)"/>
        <br />{$globalNoteStr}
        <input  type="hidden" name="cat_id" id="entry_categories" value="{$catList}" />
       </td>

@@ -636,8 +636,7 @@ if ( ! empty ( $categories ) && $CATEGORIES_ENABLED == 'Y' ) { ?>
    <input type="button" value="<?php etranslate( 'Edit' ) ?>" onclick="editCats(event)" />
    </td><td valign="top">
       <input  readonly="readonly" type="text" name="catnames" 
-     value="<?php echo $catNames ?>"  size="30" 
-    onclick="alert('<?php etranslate( 'Use the Edit button to make changes.', true) ?>')"/>
+     value="<?php echo $catNames ?>"  size="30" onclick="editCats(event)"/>
    <input  type="hidden" name="cat_id" id="entry_categories" value="<?php 
      echo $catList ?>" />
      </td></tr>
