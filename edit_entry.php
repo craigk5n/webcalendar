@@ -1035,7 +1035,8 @@ if ( $useTabs ) { ?>
 
  <tr id="rptbydayextended" style="visibility:hidden;" title="<?php 
   etooltip( 'repeat-bydayextended-help' )?>"><td class="tooltip">
- <label><?php echo translate( 'ByDay' ) ?>:</label></td><td colspan="2">
+ <label><?php echo translate( 'ByDay' ) ?>:</label></td>
+    <td colspan="2" style="padding-left:0px">
  <?php
    //display byday extended selection
   //We use BUTTONS  in a triple state configuration, but this data will not get
@@ -1077,7 +1078,8 @@ if ( $useTabs ) { ?>
 
 <tr id="rptbymonth" style="visibility:hidden;" title="<?php 
   etooltip( 'repeat-month-help' )?>"><td class="tooltip">
- <?php etranslate( 'ByMonth' )?>:&nbsp;</td><td colspan="2">
+ <?php etranslate( 'ByMonth' )?>:&nbsp;</td>
+    <td colspan="2" style="padding-left:0px">
  <?php
    //display bymonth selection
    echo '<table cellpadding="5" cellspacing="0" border="1"><tr>';
@@ -1095,7 +1097,8 @@ if ( $useTabs ) { ?>
   <tr  id="rptbysetpos" style="visibility:hidden;" title="<?php 
   etooltip( 'repeat-bysetpos-help' )?>">
  <td class="tooltip" id="BySetPoslabel">
-<?php etranslate( 'BySetPos' )?>:&nbsp;</td><td colspan="2">
+<?php etranslate( 'BySetPos' )?>:&nbsp;</td>
+   <td colspan="2" style="padding-left:0px;padding-right:0px">
  <?php
    //display bysetpos selection
    echo '<table  class="byxxx" cellpadding="2" cellspacing="0" border="1" ><tr><td></td>';
@@ -1126,7 +1129,8 @@ if ( $useTabs ) { ?>
  <tr  id="rptbymonthdayextended" style="visibility:hidden;" title="<?php 
   etooltip( 'repeat-bymonthdayextended-help' )?>">
  <td class="tooltip" id="ByMonthDaylabel">
-<?php etranslate( 'ByMonthDay' )?>:&nbsp;</td><td colspan="2">
+<?php etranslate( 'ByMonthDay' )?>:&nbsp;
+  </td><td colspan="2" style="padding-left:0px;padding-right:0px">
  <?php
    //display bymonthday extended selection
    echo '<table class="byxxx" cellpadding="2" cellspacing="0" border="1" ><tr><td></td>';
@@ -1185,8 +1189,8 @@ if ( $useTabs ) { ?>
   etooltip( 'repeat-exceptions-help' )?>">
  <td class="tooltip">
  <?php echo translate( 'Exclusions' ) . '/<br />' . translate( 'Inclusions' )?>:</td>
- <td colspan="2">
- <table bgcolor="#CCCCCC"  border="0" width="250px">
+ <td colspan="2" class="boxleft boxtop boxright boxbottom">
+ <table border="0" width="250px">
  <tr ><td colspan="2">
  <?php echo date_selection ( 'except_', $rpt_end_date ? $rpt_end_date : $cal_date )?>
  </td></tr><tr><td align="right" valign="top" width="100">
