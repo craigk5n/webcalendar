@@ -8,6 +8,7 @@
 # Usage:
 # perl sql2html.pl < ../install/sql/tables-mysql.sql > WebCalendar-Database.html
 # History:
+# 05-Sep-2006 Cleanup missing html tags and removed inline styles
 # 13-Apr-2004 xHTML & CSS work
 # 12-Oct-2002 Created
 #
@@ -18,11 +19,11 @@ $verbose = 0;
 
 sub th {
   ( $s ) = @_;
-  return "<th style=\"vertical-align:top; background-color:#C0C0C0;\">$s</th>";
+  return "<th>$s</th>";
 }
 sub td {
   ( $s ) = @_;
-  return "<td style=\"vertical-align:top; background-color:#E0E0E0;\">$s</td>";
+  return "<td>$s</td>";
 }
 
 
@@ -31,13 +32,13 @@ sub print_table {
   $out{$name} .= "<blockquote>\n";
   $out{$name} .= "$description<br /><br />\n"
     if ( defined ( $description ) );
-  $out{$name} .= "<table style=\"border-width:0px;\">";
+  $out{$name} .= "<table>";
   $out{$name} .= "<tr>" . th("Column Name") . th("Type") . th("Length") .
      th("Null") . th("Default") . th("Description") . "</tr>\n";
   for ( $i = 0; $i < @column_name; $i++ ) {
     $out{$name} .= "<tr>";
     if ( defined ( $table_keys{$column_name[$i]} ) ) {
-      $out{$name} .= td("<span style=\"font-weight:bold; color:#A00000;\">" . $column_name[$i] .
+      $out{$name} .= td("<span>" . $column_name[$i] .
         "</span>");
     } else {
       $out{$name} .= td($column_name[$i]);
@@ -47,6 +48,7 @@ sub print_table {
     $out{$name} .= td($column_null[$i]);
     $out{$name} .= td($column_default[$i]);
     $out{$name} .= td($column_descr[$i]);
+    $out{$name} .= "</tr>\n";
   }
   $out{$name} .= "</table>\n";
   $out{$name} .= "</blockquote>\n";
@@ -111,7 +113,7 @@ while ( <> ) {
         push ( @column_size, $1 );
         push ( @column_type, $` );
       } else {
-        push ( @column_size, " " );
+        push ( @column_size, "&nbsp;" );
         push ( @column_type, $t );
       }
       if ( /not null/i ) {
@@ -126,7 +128,7 @@ while ( <> ) {
         $def =~ s/,//;
         push ( @column_default, $def );
       } else {
-        push ( @column_default, " " );
+        push ( @column_default, "&nbsp;" );
       }
       $descr =~ s/[\r\n \t]+/ /g;
       push ( @column_descr, $descr );
@@ -166,30 +168,56 @@ $now = sprintf "%02d-%s-%04d",
   $mday, $months[$mon], $year + 1900;
 
 print<<EOF;
-<html>\n
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>\n
  <title>WebCalendar Database Documentation</title>\n
+<style type="text/css">
+<!--
+body {
+  background-color:#FFFFFF;
+}
+table {
+  border-width:0px;
+  padding:1px;
+}
+th {
+  vertical-align:top;
+  background-color:#C0C0C0;
+}
+td {
+  vertical-align:top; 
+  background-color:#E0E0E0;
+  padding:2px;
+}
+span {
+  font-weight:bold; 
+  color:#A00000;
+}
+-->
+</style>\n
 </head>\n
-<body style="background-color:#FFFFFF;">\n
+<body>\n
 <h2>WebCalendar Database Documentation</h2>\n
-<table style="border-width:0px;">\n
+<table>\n
  <tr><td>
   Home Page:</td><td>
   <a href="http://www.k5n.us/webcalendar.php">http://www.k5n.us/webcalendar.php</a>
  </td></tr>
  <tr><td>
   Author:</td><td>
-  <a href="http://www.cknudsen.com">Craig Knudsen</a>, <a href="mailto:&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#99;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;">&#99;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;</a>
+  <a href="http://www.cknudsen.com">Craig Knudsen</a>, <a href="mailto:&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;">&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;</a>
  </td></tr>
- <tr><td style="vertical-align:top;">
+ <tr><td>
   Version:</td><td>
   $v<br />
   \$Id\$
  </td></tr>
- <tr><td style="vertical-align:top;">
-  Last updated:</td><td>\$Date\$<br/>(by \$Author\$)</td><td>
- </td></tr>
-</table>
+ <tr><td>
+  Last updated:</td><td>\$Date\$<br/>(by \$Author\$)</td>
+</tr></table>
 
 <blockquote>
  This file is generated from <tt>tables-mysql.sql</tt>. Below are the definitions of all WebCalendar tables along with some descriptions of how each table is used. Column names shown in red are the primary keys for that table.
