@@ -124,10 +124,10 @@ CREATE TABLE webcal_entry_repeats (
   /* type of repeating:<ul> */
   /* <li>daily - repeats daily</li> */
   /* <li>monthlyByDate - repeats on same day of the month</li> */
-  /* <li>monthlyBySetPos - repeats based on position within the result set of other ByXXX values */
+  /* <li>monthlyBySetPos - repeats based on position within other ByXXX values</li> */
   /* <li>monthlyByDay - repeats on specified weekday (2nd Monday, for example)</li> */
   /* <li>weekly - repeats every week</li> */
-  /* <li>yearly - repeats on same date every year</li> */
+  /* <li>yearly - repeats on same date every year</li></ul> */
   cal_type VARCHAR(20),
   /* end date for repeating event (in YYYYMMDD format) */
   cal_end INT,
