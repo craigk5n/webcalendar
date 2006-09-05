@@ -123,14 +123,7 @@ if ( $newview ) {
   <option value="L" <?php if ( $viewtype == 'L' ) 
   echo $selected;?>><?php etranslate( 'Month (on same calendar)' ); ?></option>
       </select>&nbsp;
-<!--
-  cek - commented out since preview-views.html is hard-coded to English
-  and causes the download .tar.gz file to be 300k bigger.
-  I will add this back when we can resolve these issues.
-      <a class="nav" href="docs/preview-views.html" target="_blank">(<?php 
-       etranslate( 'preview' ); ?>)</a>
--->
-      </td></tr>
+  </td></tr>
 
 <?php if ( $is_admin ) { ?>
 <tr><td><label>
