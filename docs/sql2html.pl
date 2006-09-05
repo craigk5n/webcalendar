@@ -56,9 +56,9 @@ sub print_table {
 open ( F, "../includes/classes/WebCalendar.class" ) || die "Error reading WebCalendar.class: $!\n";
 while ( <F> ) {
   if ( /PROGRAM_VERSION =/ ) {
-    if ( /"/ ) {
+    if ( /'/ ) {
       $v = $';
-      if ( $v =~ /"/ ) { $v = $`; }
+      if ( $v =~ /'/ ) { $v = $`; }
     }
     last;
   }
