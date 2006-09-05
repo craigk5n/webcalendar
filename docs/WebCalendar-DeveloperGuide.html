@@ -132,7 +132,7 @@ required to run WebCalendar due to the use of classes and sessions.
   patches area.</dd>
 
   <dt><a href="https://www.cvshome.org/">CVS</a></dt>
-  <dd>Configuration management is managed using CVS.</dd>
+  <dd>Configuration management is accomplished using CVS.</dd>
 
   <dt>Internet Explorer, Mozilla/Firefox, and Apple Safari</dt>
   <dd>We try to test on all three of these platforms whenever we make any HTML
@@ -154,23 +154,21 @@ include perl, make, patch, diff and cvs.
 
 <p>You should always be using the latest code in CVS.  You can obtain the
 latest code using anonymous CVS.  (You do not need to be an authorized
-WebCalendar developer).  Use the following commands to checkout the latest code
-from CVS:</p>
+WebCalendar developer).  Use one of the following commands to checkout the 
+latest code from CVS:</p>
 
-<pre>cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/webcalendar login 
-cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/webcalendar co webcalendar</pre>
+<pre>cvs -d:pserver:anonymous@webcalendar.cvs.sourceforge.net:/cvsroot/webcalendar login 
+cvs -z3 -d:pserver:anonymous@webcalendar.cvs.sourceforge.net:/cvsroot/webcalendar co -P webcalendar</pre>
 
-<p>This will create a <tt>webcalendar</tt> directory.  You should run these
-commands from one of the directories that your web server is configured to use.
-For example, on some Linux systems, the Apache document root is configured to
-be <tt>/var/www/html</tt>.  So, you would change directories to that
-directories before checking the code out of CVS.</p>
+<p>This will create a <tt>webcalendar</tt> directory.  NOTE:  To be useful, you
+> will need to upload this directory, with all sub-directories (except the ones
+> named 'CVS') and files, to your web server.</p>
 
 <p>You only need to perform this checkout once.  After the initial checkout,
 you can update your code with the following command (run this command from
-inside the toplevel WebCalendar directory):</p>
+inside the top level WebCalendar directory):</p>
 
-<pre>cvs update -d</pre>
+<pre>cvs update -dP</pre>
 
 <p>If you have modified any of the WebCalendar files, CVS will attempt to merge
 your changes with any changes to the same file in the new code from CVS.</p>
@@ -277,43 +275,77 @@ they have not been 100% implemented).</p>
   <dd>Each file should have a file header.
     <br />
     See <a
-      href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/report.php?view=markup"><tt>report.php</tt></a>
+      href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/report.php?revision=1.56&view=markup"><tt>report.php</tt></a>
     as an example.</dd>
 
   <dt>PHP function comments</dt>
-  <dd><a href="phpdoc/" title="WebCalendar Function Documenation">Function
-    documentation</a> is generated using <a href="http://www.phpdoc.org/"
+  <dd>Function documentation is generated using <a href="http://www.phpdoc.org/"
     title="phpDocumentor">phpDocumentor</a>.  Each function should be preceded
   by a DocBlock.  See the phpDocumentor website for <a
     href="http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#basics.docblock"
     title="DocBlocks">information about DocBlocks and DocBlock syntax</a>, and
-  see <a
-    href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/includes/functions.php?view=markup"><tt>includes/functions.php</tt></a>
-  for examples.</dd>
+  see <a href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/includes/functions.php?revision=1.389&view=markup"><tt>includes/functions.php</tt></a> for examples.</dd>
 
   <dt>XHTML</dt>
   <dd>All XHTML should conform to XHTML 1.0 Transitional. Use double quotes around HTML attributes.</dd>
 
   <dt>If/Else</dt>
-  <dd>Always use {} when not using the ternary operator (?:). Either of the
-  following is acceptable based on logic complexity:
+  <dd>Use the ternary operator (?:) whenever possible.
+   Curly brackets, {}, need only be used around multi-statement blocks.
+   Any of the following is acceptable based on logic complexity:
 
-<pre>if ( foo == 1 ) {
-  bar = true;
-} else {
-  bar = false;
-}
-or  
-bar = ( foo == 1 )? true : false ;</pre>
+    <pre>bar = ( foo == 1 )? true : false ;
+ 
+ <b>or</b>
+ 
+if ( $foo == 1 )
+   $pro = true;
+ else
+   $con = true;
+ 
+ <b>or</b>
+ 
+if ( $bar &gt; 0 ) {
+   $drink++;
+   $glass = 'full';
+ } else {
+   $fun--;
+   if ( $fun &lt; 1)
+     echo 'Party is over!';
+ }</pre>
   </dd>
-
   <dt>Function Calls/Declarations</dt>
-  <dd>Use spaces inside and around  parenthesis ()
+  <dd>Use one space both inside and outside of parenthesis ()
 
-<pre>Declaration: function getGetValue ( $name ) {
+
+    <pre>Declaration: function getGetValue ( $name ) {
 Call: bar = getGetValue ( $name );</pre>
-
   </dd>
+   <dt>Single quotes vs double quotes</dt>
+   <dd>With the exception of XHTML attributes, use single quotes where possible.
+ 
+ <pre>echo 'This is an example of single quoting.  ';
+ echo 'But, sometimes it\'s not possible without escaping.  ';
+ echo "Also it's not possible with $embedded variables.  ";
+ echo 'Control characters such as linefeed "\n" and tab "\t" don\'t work either.  ';
+ echo 'However, it\'s preferable to concatenate' . $variables . 'like this, anyway.  '
+ echo '"Nested quotes", she said, "are also acceptable where needed.
+   Just try to use single quotes as the outer set."'</pre>
+   </dd>
+ 
+   <dt>Use of the dot connector. Also called concatenation.</dt>
+   <dd>The above example is faster if written this way:
+ 
+ <pre>echo 'This is an example of single quoting.  '
+ . 'But, sometimes it\'s not possible without escaping.  '
+ . "Also it's not possible with $embedded variables.  "
+ . 'Control characters such as "\n" (linefeed) and "\t" (tab) don\'t work either.  '
+ . 'However, it\'s preferable to concatenate' . $variables . 'like this, anyway.  '
+ . '"Nested quotes", she said, "are also acceptable where needed.
+ Just try to use single quotes as the outer set."'</pre>
+ 
+ </dd>
+
 </dl>
 
 <div class="top"><a href="#" target="_top">top</a></div>
@@ -324,14 +356,15 @@ Call: bar = getGetValue ( $name );</pre>
   <dt>ChangeLog</dt>
   <dd>If you have access to commit your changes to CVS, please
   put an entry at the top of the ChangeLog file that describes the
-  change.  If the change fixes a specific SourceForge bug, then
-  include the bug id in the description.</dd>
+  change.  If the change fixes a specific SourceForge bug, or implements
+  a patch or Feature Request, then include the appropriate SourceForge
+  id in the description.</dd>
 
   <dt>NEWS</dt>
   <dd>The NEWS file should document user-visible changes between each
   WebCalendar release. This includes new features and significant bug
   fixes.</dd>
- </dl>
+</dl>
 
 <div class="top"><a href="#" target="_top">top</a></div>
 <a name="patch"></a>
@@ -343,23 +376,25 @@ Patches are typically a zip or tar.gz of .patch files created
 with the UNIX/Cygwin diff program.
 Here's how to do that.  First, you must have a copy of the unmodified
 WebCalendar source code.  So, let's say you are using version
-1.0.2 of WebCalendar, and you have the code for it in
-a directory <tt>WebCalendar-1.0.2</tt> along side your own
+1.1.1 of WebCalendar, and you have the code for it in
+a directory <tt>WebCalendar-1.1.1</tt> along side your own
 directory that includes your changes called <tt>calendar.modified</tt>.
 You would use the following diff command to create the patch:
 </p>
 <pre>
-diff -crw WebCalendar-1.0.2 calendar.modified > mychange.patch
+diff -drw WebCalendar-1.1.1 calendar.modified > mychange.patch
 </pre>
-<p>You can then either zip or gzip the patch file, create your
-patch on SourceForge and attach the file to it.
+<p>If your patch is bigger than 8 - 10 lines, please either zip or gzip it
+if possible. In the Webcalendar patch area on SourceForge, select 'Submit New'
+and write up your commentary. Then 'Browse' to your file, enter a short tag line,
+and press 'Submit'.
 </p>
 <p>Note: Cygwin's diff seems to have some issues with DOS vs UNIX
 line feeds.  If you are using Cygwin on Windows, it's best to just
 remove all the carriage returns:
 </p>
 <pre>
-diff -crw WebCalendar-1.0.2 calendar.modified | tr -d '\015' > mychange.patch
+diff -drw WebCalendar-1.1.1 calendar.modified | tr -d '\015' > mychange.patch
 </pre>
 <p>Notes:</p>
 <ul>
@@ -372,7 +407,7 @@ diff -crw WebCalendar-1.0.2 calendar.modified | tr -d '\015' > mychange.patch
       file (<tt>translations/English-US.txt</tt>) can be updated
       as part of your patch.</li>
   <li>If you are developing against the latest CVS code rather than
-      an official file release, there is a <tt>cvs rdiff</tt> command that
+      an official file release, there is a <tt>cvs diff</tt> command that
       you can use to create the patch (with no need to keep a local copy
       of the unmodified source).</li>
 </ul>
@@ -390,7 +425,8 @@ quickly and efficiently.</p>
   <dd>All displayable text should be sent to the <em>translate ()</em>
   function, which returns the text translated in the user's language of choice.
   A variation of this function is <em>etranslate ()</em>, which includes and
-  echo command.</dd>
+  echo command. When translating text within javascript, always set the <em>decode</em>
+  flag to true. This will allow proper decoding of htmlentities.</dd>
 
   <dt>Htmlentities</dt>
   <dd>When used, this function tag should include the current charset when
@@ -405,8 +441,17 @@ quickly and efficiently.</p>
     href="http://us3.php.net/manual/en/function.htmlentities.php">
   http://us3.php.net/manual/en/function.htmlentities.php</a></dd>
 
-  <dt>TODO</dt>
-  <dd>Add procedures for updating Language.txt files.</dd>	
+  <dt>Updating Language Files</dt>
+  <dd>When text is added or updated, requiring new translations, the <tt>  
+  translations/English-US.txt</tt> file 
+  should be updated as a minimum. This file will be used as the basis for updating
+  the other language files and needs to be up to date. From within the <tt>tools</tt> directory,
+  the  following command will search through the WebCalendar source files and
+  update the language file specified.
+
+  Language files should always be committed to CVS in Unix format to save space.
+  <pre>perl update_translation.pl English-US.txt</pre>
+</dd>	
 </dl>
 
 <div class="top"><a href="#" target="_top">top</a></div>
@@ -435,7 +480,7 @@ quickly and efficiently.</p>
 
   <dt>How do I install a patch?</dt>
   <dd>Different patches are applied differently.  Some patches just contain an
-  updated file.  In that case, you should be able to use replace the old file
+  updated file.  In that case, you should be able to just replace the old file
   with the new (assuming the new file and your install are based on the same
   version of WebCalendar).
   <br /><br />
@@ -470,8 +515,7 @@ quickly and efficiently.</p>
 <p>The following resources may be helpful:</p>
 
 <ul>
-  <li>The <a
-    href="http://cvs.sourceforge.net/viewcvs.py/webcalendar/webcalendar/TODO?view=markup">TODO</a>
+  <li>The <a href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/TODO?revision=1.13&view=markup">TODO</a>
   file in CVS contains ideas for future enhancements.</li>
   <li>The <a href="http://sourceforge.net/forum/forum.php?forum_id=11587">Open
     Discussion</a> forum on SourceForge is a good place to ask questions about
