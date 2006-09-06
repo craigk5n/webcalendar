@@ -337,52 +337,52 @@ h2 {
  <tr><th>Prerequisite Failed</th><th>Recommended Solution</th></tr>
  <tr>
    <td>PHP 4.1.0 or greater</td>
-	 <td>Upgrade your PHP installation</td>
+   <td>Upgrade your PHP installation</td>
  </tr>
  <tr>
    <td>Safe Mode* = Off</td>
-	 <td>If possible, change this setting in your <tt>php.ini</tt> file to <tt>Off</tt>.</td>
+   <td>If possible, change this setting in your <tt>php.ini</tt> file to <tt>Off</tt>.</td>
  </tr>
  <tr>
    <td>Safe Mode Allowed Vars*</td>
-	 <td>If unable to to set Safe Mode Off, then set safe_mode_allowed_vars to contain
-	 <tt>TZ</tt> in your <tt>php.ini</tt> file.
-	 </td>
-	</tr>
-	<tr><td colspan="2">* NOTE: If neither of the these settings pass testing, then
-	 your WebCalendar installation will be restricted to using the server's timezone 
-	 setting only.</td>
+   <td>If unable to to set Safe Mode Off, then set safe_mode_allowed_vars to contain
+   <tt>TZ</tt> in your <tt>php.ini</tt> file.
+   </td>
+  </tr>
+  <tr><td colspan="2">* NOTE: If neither of the these settings pass testing, then
+   your WebCalendar installation will be restricted to using the server's timezone 
+   setting only.</td>
  </tr>
  <tr>
    <td>File Uploads</td>
-	 <td>If disabled, then some features of WebCalendar will not function. This setting is configurable in your <tt>php.ini</tt> or <tt>httpd.conf</tt> files as <tt>file_uploads</tt></td>
+   <td>If disabled, then some features of WebCalendar will not function. This setting is configurable in your <tt>php.ini</tt> or <tt>httpd.conf</tt> files as <tt>file_uploads</tt></td>
  </tr>
  <tr>
    <td>CRYPT_STD_DES</td>
-	 <td>This setting should be able to be ignored. We now support multiple <tt>crypt</tt>
-	 algorithms. If this setting is not enabled and you experience difficulties logging in,
-	  please notify the WebCalendar development team.</td>
+   <td>This setting should be able to be ignored. We now support multiple <tt>crypt</tt>
+   algorithms. If this setting is not enabled and you experience difficulties logging in,
+    please notify the WebCalendar development team.</td>
  </tr>
  <tr>
    <td>GD</td>
-	 <td>This library is required only if gradient background images are desired. Normally, PHP must be compiled with this option. Some installations only require it be enabled in your 
-	 <tt>php.ini</tt> file.</td>
+   <td>This library is required only if gradient background images are desired. Normally, PHP must be compiled with this option. Some installations only require it be enabled in your 
+   <tt>php.ini</tt> file.</td>
  </tr>
  <tr>
    <td>Session Check</td>
-	 <td>PHP Sessions are used during the installation process and are required
-	   for proper operation. Sessions can be configured in your <tt>php.ini</tt> file.
-	   If it's not possible to enable sessions, then you must manually install WebCalendar.
-	   Details are available in 
-	 <a href="#appendixF">Appendix F</a></td>
+   <td>PHP Sessions are used during the installation process and are required
+     for proper operation. Sessions can be configured in your <tt>php.ini</tt> file.
+     If it's not possible to enable sessions, then you must manually install WebCalendar.
+     Details are available in 
+   <a href="#appendixF">Appendix F</a></td>
  </tr>
  <tr>
    <td>Settings.php Status</td>
-	 <td>The installation script was either unable to create, or unable to write
-	   to your settings.php file. You will need to modify the permissions of the <tt>includes</tt>
-		directory.  On Linux/UNIX, you should change this directory to be read/write
-		 for all users (<tt>chmod 777 includes</tt>). On Windows, change this directory
-		  to have full access for all users using Windows Explorer.</td>
+   <td>The installation script was either unable to create, or unable to write
+     to your settings.php file. You will need to modify the permissions of the <tt>includes</tt>
+    directory.  On Linux/UNIX, you should change this directory to be read/write
+     for all users (<tt>chmod 777 includes</tt>). On Windows, change this directory
+      to have full access for all users using Windows Explorer.</td>
  </tr>
  
  </table>
@@ -1464,8 +1464,8 @@ cal_firstname, cal_is_admin ) VALUES
     (set in user <a href="#pref">Preferences</a>)</dd>
   <dt><a name="g_uac">User Access Control (UAC)</a></dt>
    <dd>The fully configurable feature to allow extremely granular
-	 access control to user. This control applies to system options and
-	 features as well as other user's calendars.</dd>
+   access control to user. This control applies to system options and
+   features as well as other user's calendars.</dd>
   <dt><a name="g_view">View</a></dt>
    <dd>A customized page that presents the events of selected users</dd>
   <dt><a name="g_workhours">Work Hours</a></dt>
@@ -1611,7 +1611,7 @@ input path/table-ibase.sql;</strong></pre>
    and db_datawriter privileges. Open SQL Query Analyzer then open
    the file <tt>tables-postgres.sql</tt>. Make sure you have identified <strong>intranet</strong> as the target database and Execute the contents of the sql file.</p>
           <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-					
+          
 <a name="appendixC"></a>
 <h2>Appendix C: Setting Up Reminders on Windows</h2>
 
