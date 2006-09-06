@@ -1,92 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html
-	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"DTD/xhtml1-transitional.dtd">
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>WebCalendar User Manual</title>
 <style type="text/css">
-	body {
-		background-color: #FFFFFF;
-		font-family: Arial, Helvetica, sans-serif;
-	}
-	a {
-		text-decoration: none;
-	}
-	p {
-		margin: 10px;
-	}
-	dl,
-	ul {
-		margin-left: 10px;
-	}
-	h2 {
-		background-color: #191970;
-		color: #FFFFFF;
-		padding: 5px;
-	}
-	h3 {
-		padding: 5px;
-	}
-	dt {
-		font-weight: bold;
-		margin-top: 10px;
-	}
-	pre {
-		font-family: courier, monospace;
-		font-size: 14px;
-		border: 1px solid #0000FF;
-		background-color: #EEEEFF;
-		padding: 4px;
-		margin-left: 25px;
-		margin-right: 25px;
-	}
-	.tip {
-		font-weight: bold;
-		background-color: #FFFF00;
-		padding: 2px;
-	}
-	.note {
-		font-weight: bold;
-		background-color: #87CEFA;
-		padding: 2px;
-	}
-	hr {
-		margin-bottom: 7px;
-	}
-	.valid {
-		border-width: 0px;
-	}
-	.top {
-		text-align: right;
-	}
+  body {
+    background-color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  a {
+    text-decoration: none;
+  }
+  p {
+    margin: 10px;
+  }
+  dl,
+  ul {
+    margin-left: 10px;
+  }
+  h2 {
+    background-color: #191970;
+    color: #FFFFFF;
+    padding: 5px;
+  }
+  h3 {
+    padding: 5px;
+  }
+  dt {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  pre {
+    font-family: courier, monospace;
+    font-size: 14px;
+    border: 1px solid #0000FF;
+    background-color: #EEEEFF;
+    padding: 4px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  .tip {
+    font-weight: bold;
+    background-color: #FFFF00;
+    padding: 2px;
+  }
+  .note {
+    font-weight: bold;
+    background-color: #87CEFA;
+    padding: 2px;
+  }
+  hr {
+    margin-bottom: 7px;
+  }
+  .valid {
+    border-width: 0px;
+  }
+  .top {
+    text-align: right;
+  }
 </style>
 </head>
 <body>
 <h1>WebCalendar User Manual</h1>
 
-<p><strong>WebCalendar Version: 1.1</strong></p>
+<p><strong>WebCalendar Version: 1.1.1</strong></p>
 
 <h2>Table of Contents</h2>
 <ul><li>
-	<a href="#intro">Introduction</a></li><li>
-	<a href="#users">Users and Events</a></li><li>
-	<a href="#repeat">Repeating Events</a></li><li>
-	<a href="#publicaccess">Public Access</a></li><li>
-	<a href="#subscriptions">Remote Subscriptions</a></li><li>
-	<a href="#external">External Users</a></li><li>
-	<a href="#nonuser">NonUser Calendars</a></li><li>
-	<a href="#categories">Categories</a></li><li>
-	<a href="#views">Views</a></li><li>
-	<a href="#groups">Groups</a></li><li>
-	<a href="#layers">Layers</a></li><li>
-	<a href="#boss">Assistant/Boss</a></li><li>
-	<a href="#pref">Preferences</a></li><li>
-	<a href="#faq">FAQ</a></li><li>
-	<a href="#licensing">Licensing</a></li><li>
-	<a href="#help">Getting Help</a></li><li>
-	<a href="#glossary">Glossary</a></li><li>
-	<a href="#history">History</a>
+  <a href="#intro">Introduction</a></li><li>
+  <a href="#users">Users and Events</a></li><li>
+  <a href="#repeat">Repeating Events</a></li><li>
+  <a href="#publicaccess">Public Access</a></li><li>
+  <a href="#subscriptions">Remote Subscriptions</a></li><li>
+  <a href="#external">External Users</a></li><li>
+  <a href="#nonuser">NonUser Calendars</a></li><li>
+  <a href="#categories">Categories</a></li><li>
+  <a href="#views">Views</a></li><li>
+  <a href="#groups">Groups</a></li><li>
+  <a href="#layers">Layers</a></li><li>
+  <a href="#boss">Assistant/Boss</a></li><li>
+  <a href="#uac">User Access Control</a></li><li>
+  <a href="#pref">Preferences</a></li><li>
+  <a href="#faq">FAQ</a></li><li>
+  <a href="#licensing">Licensing</a></li><li>
+  <a href="#help">Getting Help</a></li><li>
+  <a href="#glossary">Glossary</a></li><li>
+  <a href="#history">History</a>
 </li></ul>
 <hr />
 
@@ -146,16 +148,16 @@ automatically set to "Approved."</p>
 
 <span class="note">Notes:</span>
 <ul>
-	<li>If you did not create the event, then you can only delete the 
-	event from your own calendar. Other users will still have the event 
-	on their calendar.</li>
-	<li>If you did not create the event, you will not be able to edit the 
-	event.  Only the user who created the event can edit it.</li>
-	<li>If you see an event on another user's calendar that is not on 
-	your calendar, the event details page will provide a link to add the 
-	event to your calendar.</li>
-	<li>All changes to an event (accepting/rejecting, updating, deleting)
-	are logged and are viewable by the system administrator.</li>
+  <li>If you did not create the event, then you can only delete the 
+  event from your own calendar. Other users will still have the event 
+  on their calendar.</li>
+  <li>If you did not create the event, you will not be able to edit the 
+  event.  Only the user who created the event can edit it.</li>
+  <li>If you see an event on another user's calendar that is not on 
+  your calendar, the event details page will provide a link to add the 
+  event to your calendar.</li>
+  <li>All changes to an event (accepting/rejecting, updating, deleting)
+  are logged and are viewable by the system administrator.</li>
 </ul>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
@@ -246,7 +248,7 @@ more week numbers to be entered separated by commas (1,2...53,-53,-52...-1). <em
 allows the user to enter days of the year to repeat separated by commas (1,2,...366,-366,-365...-1).</p>
 
 <p>Please Note: All ByXXX values are evaluated by ANDing the values together with the following precedence.
- BYMONTH, BYWEEKNO, BYYEARDAY, BYMONTHDAY, BYDAY, and BYSETPOS
+ BYMONTH, BYWEEKNO, BYYEARDAY, BYMONTHDAY, BYDAY, and BYSETPOS</p>
 
 <h3> Exclusions/Inclusions</h3>
 <p>This option allows the exclusion or inclusion of dates for the repeat sequence. This setting is applied
@@ -267,9 +269,6 @@ creating a new event: the 'Public Access' user. To make an event visible
 to users that aren't logged in, simply select the 'Public Access' user as
 a participant for the event(s).</p>
 
-<p><span class="note">Note:</span> Setting the 'Access' field to 
-'Confidential' will still publish the event if you select 'Public Access' 
-as a participant for that event.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
@@ -298,9 +297,11 @@ participants to an event that are not WebCalendar users. When adding
 or editing an event, you will see a free text area titled "External 
 Participants." In this area you can enter names of participants. 
 If your system is configured to allow it, the External Participants 
-will be notified via email when the event is created, and updated. In addition, external 
-users will be reminded of an upcoming event via email, if the event has a reminder set.</p>
-
+will be notified via email when the event is created, and updated. In addition,
+external  users will be reminded of an upcoming event via email, if the event
+has a reminder set. They will not be provided a URL to access the calendar but
+will receive and ics file as an attachment for inclusion in their own calendar
+client. </p>
 <p>External Participants should be specified one name per line (email address optional). 
 All of the following would be legal entries:</p>
 <pre>Joe Smith
@@ -322,7 +323,7 @@ information on layers, see the <a href="#layers">layers</a> documentation.</p>
 
 <p>This can be used for resource management such as scheduling usage
 of a conference room. If used in combination with <a href="#views">views</a>,
-you can quickly & easily view the availability of multiple conference rooms
+you can quickly &amp; easily view the availability of multiple conference rooms
 on the same page.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
@@ -344,33 +345,17 @@ If you selected a global category, all users will be able to see the same catego
 displayed near the top of the page that allows you to filter events based 
 on a category. When you select a category from this menu, only events associated 
 with that category will appear on your calendar.</p>
+
+<p>If enabled, icons can also be uploaded and assigned to categories to be displayed 
+before the event name. You will also be able to choose an icon from existing icons that have already been uploaded.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
 <h2><a name="views">Views</a></h2>
 <p>Views<a href="#g_view">*</a> allow you to look at the calendar of one or 
 more users (or NonUser Calendars) at the same time. You can create a new 
-view by clicking "Views" in the admin panel. Examples of the available view types 
-appear below.</p>
+view by clicking "Views" in the admin panel.</p>
 
-<h3>Day</h3>
-<p>The "Day" view shows users' availability for the selected day.</p>
-	<img src="day_view.gif" alt="Day View Screenshot" />
-
-<h3>Week (Users horizontal)</h3>
-	<img src="week_view_h.gif" alt="Week (Users Horizontal) Screenshot" />
-
-<h3>Week (Users vertical)</h3>
-	<img src="week_view_v.gif" alt="Week (Users Vertical) Screenshot" />
-
-<h3>Week (Timebar)</h3>
-	<img src="week_view_t.gif" alt="Week (Timebar) Screenshot" />
-
-<h3>Month (Side By Side)</h3>
-	<img src="month_view.gif" alt="Month (Side By Side) Screenshot" />
-
-<h3>Month (On Same Calendar)</h3>
-	<img src="month_view_2.gif" alt="Month (On Same Calendar) Screenshot" />
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
@@ -422,6 +407,21 @@ will see a new "Manage Calendar of" link at the bottom of the page.
 This link will quickly bring the Assistant to a view of the Boss' calendar.
 When adding an event from this page, the default participant will
 be only the Boss.</p>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
+
+<h2><a name="uac">User Access Control</a></h2>
+<p>If your system is not configured to use User Access Control, then you may skip 
+this section.</p>
+
+<p>If enabled, you may now set very detailed access controls to your calendar for 
+other WebCalendar users. You can specify their access view,edit, and approve entries on your calendar and can further specify access to events, tasks, and journals (coming soon).</p>
+
+<p>Access can also be granted/restricted to allow invitations, emails, and a very restrictive 
+setting <strong>Can See Time Only</strong> that prevents the other user from viewing any details
+of your events.</p>
+
+<p>The <strong>DEFAULT CONFIGURATION</strong> selection will set the access for all users not otherwise granted/restricted access to your calendar.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
@@ -573,27 +573,27 @@ URL displayed.</dd>
 <!-- cek: leave these comments here... extractfaqs.pl looks for them -->
 <!-- START FAQ: Usage -->
 <dl>
-	<dt>Why do weeks start with Sunday instead of Monday?</dt>
-	<dd>The default setup of WebCalendar is to start weeks on Sunday. Your 
-	system administrator can change the system default setting. You can 
-	change the setting just for you in your <a href="#pref">Preferences</a>.</dd>
+  <dt>Why do weeks start with Sunday instead of Monday?</dt>
+  <dd>The default setup of WebCalendar is to start weeks on Sunday. Your 
+  system administrator can change the system default setting. You can 
+  change the setting just for you in your <a href="#pref">Preferences</a>.</dd>
 
-	<dt>Can I sync events with Palm/PocketPC/Outlook/iCal?</dt>
-	<dd>Export support is available for Palm and anything that supports 
-	iCal or vCal. Use the "Export" link at the bottom of each page.</dd>
+  <dt>Can I sync events with Palm/PocketPC/Outlook/iCal?</dt>
+  <dd>Export support is available for Palm and anything that supports 
+  iCal or vCal. Use the "Export" link at the bottom of each page.</dd>
 
 
-	<dt>Why can't I edit an event that another user added to my calendar?</dt>
-	<dd>If another user adds an event to your calendar, you cannot 
-	edit the event. This is a security restriction. You can reject the 
-	event rather than approve it, or you can delete the event from your 
-	calendar.</dd>
+  <dt>Why can't I edit an event that another user added to my calendar?</dt>
+  <dd>If another user adds an event to your calendar, you cannot 
+  edit the event. This is a security restriction. You can reject the 
+  event rather than approve it, or you can delete the event from your 
+  calendar.</dd>
 
-	<dt>I'm trying to add a user as a participant to an event, but they do not 
-	show up in the list of users.</dt>
-	<dd>Your system administrator has enabled a feature that only allows 
-	you to view users that are in the same group(s) that you are in. Make sure the 
-	user is in one of the same groups that you are in.</dd>
+  <dt>I'm trying to add a user as a participant to an event, but they do not 
+  show up in the list of users.</dt>
+  <dd>Your system administrator has enabled a feature that only allows 
+  you to view users that are in the same group(s) that you are in. Make sure the 
+  user is in one of the same groups that you are in.</dd>
 <!-- END FAQ -->
 </dl>
 
@@ -669,9 +669,9 @@ displayed in blocks of time (set in user <a href="#pref">Preferences</a>)</dd>
 </dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <p>
-	<a href="http://validator.w3.org/check?uri=referer"><img 
-		src="http://www.w3.org/Icons/valid-xhtml10" 
-		alt="Valid XHTML 1.0!" class="valid" /></a>
+  <a href="http://validator.w3.org/check?uri=referer"><img 
+    src="http://www.w3.org/Icons/valid-xhtml10" 
+    alt="Valid XHTML 1.0!" class="valid" /></a>
 </p>
 </body>
 </html>
