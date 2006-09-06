@@ -4,6 +4,7 @@
     "DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
      <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>WebCalendar System Administrator's Guide</title>
 <style type="text/css">
 body {
@@ -87,7 +88,7 @@ h2 {
 </head>
 <body>
 <h1>WebCalendar System Administrator's Guide</h1>
-<p><strong>WebCalendar Version: 1.1</strong></p>
+<p><strong>WebCalendar Version: 1.1.1</strong></p>
 
 <h2>Table of Contents</h2>
 <ul>
@@ -152,7 +153,7 @@ h2 {
    <li>简体中文(GB2312)</li>
    <li>Czech</li>
    <li>Danish</li>
-   <li>Deutsch (German)</li>
+   <li>Deutsche (German)</li>
    <li>English</li>
    <li>Espa&#241;ol (Spanish)</li>
    <li>Estonian</li>
@@ -210,7 +211,7 @@ h2 {
    <ul>
    <li>Two-way authenticated iCalendar (ics) sync </li>
    <li>Anonymous iCalendar (ics) publishing</li>
-   <li>RSS 1.0 feed </li>
+   <li>RSS 2.0 feed </li>
    </ul>
  </li>
 </ul>
@@ -259,7 +260,7 @@ h2 {
  <p class="ptip"><span class="tip">TIP</span>PHP ODBC includes support for Adabas D, Solid
    and Sybase SQL Anywhere as well as ODBC.  PHP5 comes bundled with
    SQLite support.  SQLite is an embedded file-based database.  If your
-   hosting service supports PHP5, you should be able to create at as
+   hosting service supports PHP5, you should be able to create as
    many SQLite databases as you like (since each database is just
    a file).</p>
  <p>For the database you choose, you must have its drivers built into
@@ -270,8 +271,8 @@ h2 {
  <p>No optional PHP packages (other than MySQL) are required for this
   application.  However, PHP should be compiled with <tt>--enable-track-vars</tt>
   on some systems.</p>
- <p class="ptip"><span class="tip">TIP</span>If you want to use gradient background images,
-  PHP must be compiled with the GD library. </p>
+ <p class="ptip"><span class="tip">TIP</span>If you want to use gradient background
+   images, PHP must be compiled with the GD library. </p>
 
   <p>You can run PHP either as a CGI or an Apache module.  You'll get better
   performance with PHP setup as a module.  Not only will you not have to
@@ -302,7 +303,7 @@ h2 {
   your web server will find it.  (See your web server documentation for information.)</p>
  <p>By default, unpacking WebCalendar will create its own directory
   when you unpack it.  The new directory name will typically
-  contain the version name (such as <tt>WebCalendar-1.1</tt>).
+  contain the version name (such as <tt>WebCalendar-1.1.1</tt>).
   You can rename this directory after unpacking the files if you
   prefer a directory name like <tt>calendar</tt> or <tt>webcalendar</tt>.
   Keep in mind that unless you remap the directory (via your web server's
@@ -313,7 +314,7 @@ h2 {
 <a name="appsetup"></a>
  <h2>Application Installation</h2>
  
- <p>WebCalendar now includes installation script that will guide you through
+ <p>WebCalendar now includes an installation script that will guide you through
  the entire installation process.
  It should run automatically when first accessing
  a new installation or when a major version upgrade has been performed.
@@ -326,7 +327,7 @@ h2 {
  <em>Configuration Wizard Password</em> that will protect against unauthorized 
  tampering. Until this password is set, your WebCalendar installation and possibly your database are vulnerable to attack. Once, you've set your password, be sure 
  to write it down. If forgotten, the only way to recover is to manually edit the 
- settings.php file.</p>
+ <tt>install/settings.php</tt> file.</p>
  
  <p>The installation script will now check several prerequisites and report the 
  results. Any item that appears in <font color="#FF0000">RED</font> should be
@@ -369,35 +370,37 @@ h2 {
  </tr>
  <tr>
    <td>Session Check</td>
-	 <td>PHP Sessions are used during the installation process and are reuired for proper operation. Sessions can be configured in your <tt>php.ini</tt> file. If it's not possible to enable
-	 sessions, then you must manually install WebCalendar. Details are available in 
-	 <a href-"#appendixF">Appendix F</a></td>
+	 <td>PHP Sessions are used during the installation process and are required
+	   for proper operation. Sessions can be configured in your <tt>php.ini</tt> file.
+	   If it's not possible to enable sessions, then you must manually install WebCalendar.
+	   Details are available in 
+	 <a href="#appendixF">Appendix F</a></td>
  </tr>
  <tr>
    <td>Settings.php Status</td>
-	 <td>The installation script was either unable to create, or unable to write to your
-	  settings.php file. You will need to modify the permissions of the <tt>includes</tt>
-		directory.  On Linux/UNIX, you should change this directoryto be read/write 
-		for all users (<tt>chmod 777 includes</tt>). On Windows, change this directory 
-		to have full access for all users using Windows Explorer.</td>
+	 <td>The installation script was either unable to create, or unable to write
+	   to your settings.php file. You will need to modify the permissions of the <tt>includes</tt>
+		directory.  On Linux/UNIX, you should change this directory to be read/write
+		 for all users (<tt>chmod 777 includes</tt>). On Windows, change this directory
+		  to have full access for all users using Windows Explorer.</td>
  </tr>
  
  </table>
  <h3>WebCalendar Installation Wizard: STEP 2</h3>
  
  <p>The installation script can create your WebCalendar database as well as create all the required tables and pre-populate them with the basic configuration data. These features are only available when using fully supported database types. See 
- <a href-"#appendixB">Appendix B</a> to manually create your database if needed.</p>
+ <a href="#appendixB">Appendix B</a> to manually create your database if needed.</p>
  
- </p><strong>Database Status</strong></p>
+ <p><strong>Database Status</strong></p>
  <p>Displays the current status of your database settings as well the supported
  databases for your PHP installation.</p> 
  
- </p><strong>Database Settings</strong></p>
+ <p><strong>Database Settings</strong></p>
 <p>To configure your database access. Set the values for:</p>
  <table class="distinguish">
   <tr><th>Displayed Value</th><th>settings.php value</th><th>Comments</th></tr>
   <tr><td>
-   Database Type</td<td>db_type</td>
+   Database Type</td><td>db_type</td>
   <td>
    One of "mysql", "oracle", "postgresql", "odbc",
    &quot;mssql&quot;, sqllite, db2,
@@ -405,49 +408,60 @@ h2 {
   </td>
   </tr>
   <tr><td>
-   Server</td<td>db_host</td><td>
+   Server</td><td>db_host</td><td>
    The hostname that database is running on.
    (Use localhost if it's the same machine as 
    the web server.) (This variable is not used with ODBC, enter 'none')
-   (Use 'none' if your db server does not use a TCP socket to connect)   
+   (Use 'none' if your db server does not use a TCP socket to connect)
+   (If using a special PORT, you can specify it as HOST:PORT)   
   </td></tr>
   <tr><td>
-   Login</td<td>db_login</td><td>
+   Login</td><td>db_login</td><td>
    The database login
   </td></tr>
   <tr><td>
-   Database Name</td<td>db_password</td><td>
+   Database Name</td><td>db_password</td><td>
    The database password for the above login<br />
    (Use 'none' if your db server does not use a TCP socket to connect)  
   </td></tr>
   <tr><td>
-   Database Name</td<td>db_database</td><td>
+   Database Name</td><td>db_database</td><td>
    The name of the database that the calendar 
    tables reside in.  ("intranet" in the <a href="#dbsetup">examples above</a>.) 
    For ODBC, this should be the DSN.
   </td></tr>
   <tr><td>
-   Connection Persistence</td<td>db_persistent</td><td>
+   Connection Persistence</td><td>db_persistent</td><td>
    Enable use of persistent (pooled) database connections. 
    This should typically be enabled. This setting may be disabled for CGI installations.
   </td></tr>
   <tr><td>
-   Database Cache Directory</td<td>db_cachedir</td><td>
-   To enable caching of database query results, enter a writtable directory. This directory should NOT be in the webserver document path to prevent unauthorized access to cached 
-	 sensitive data  such as passwords hashes and private event details.
-  </td></tr>
+   Database Cache Directory</td><td>db_cachedir</td>
+   <td>
+   To enable caching of database query results, enter a writable directory. This
+     directory should NOT be in the webserver document path to prevent unauthorized
+     access to cached  sensitive data such as passwords hashes and private event
+     details.
+  </td>
+  </tr>
  </table> 
  <p>Click the <font color="#FF0000">Test Settings</font> button to perform the test your settings.</p>
 
- <p>Click the <font color="#FF0000">Create</font> button to have the installation script create your database. This option will only be availabe for fully supported database types. Retest your database settings if prompted to do so.</p>
+ <p>Click the <font color="#FF0000">Create</font> button to have the installation
+   script create your database. This option will only be available for fully
+   supported database types. Retest your database settings if prompted to do
+   so.</p>
  
- <p class="ptip"><span class="tip">TIP</span>If this step does not complete properly, then you will have to manually create your database. Detailed instructions can be found in <a href-"#appendixB">Appendix B</a>. Then rerun the installtion script to continue the installation.</p>
+ <p class="ptip"><span class="tip">TIP</span>If this step does not complete
+   properly, then you will have to manually create your database. Detailed instructions
+   can be found in <a href="#appendixB">Appendix B</a>. Then rerun the installation
+   script to continue the installation.</p>
 
-<h3>WebCalendar Installation Wizard: STEP 3</h3> 
- <p>In this section we will perform the required database changes to bring your database up to the required level If you are using a fully supported database, this step will be performed automatically for you If not, the required SQL can be displayed and you should be able to cut & paste it into your database server query window.</p>
+ <h3>WebCalendar Installation Wizard: STEP 3</h3> 
+ <p>In this section we will perform the required database changes to bring your database up to the required level If you are using a fully supported database, this step will be performed automatically for you If not, the required SQL can be displayed and you should be able to cut &amp; paste it into your database server query window.</p>
  
  <p><strong>Database Status</strong></p>
- <p>This should display the current installed version of WebCalendar as well as the version being instaled.</p>
+ <p>This should display the current installed version of WebCalendar as well as the version being installed.</p>
  
  <p><font color="#FF0000"><strong>The following database actions are required</strong>
  </font></p>
@@ -455,16 +469,21 @@ h2 {
  <p>If using a fully supported database type, clicking the <strong>Update Database</strong> button  will create any tables required for this installation or upgrade. If this feature is
  not supported, then this button will not be available.</p>
  
-<p>The <strong>Display Required SQL</strong> button will always be available and if clicked
-will display the reuired SQL text that can then be cut &amp; pasted into the SQL query window of your database program. If using the approach, please rerun the installation script after completing your required database updates.</p>
+<p>The <strong>Display Required SQL</strong> button will always be available
+  and if clicked will display the required SQL text that can then be cut &amp; pasted
+  into the SQL query window of your database program. If using the approach,
+  please rerun the installation script after completing your required database
+  updates.</p>
 
- <p class="ptip"><span class="tip">TIP</span>If this step does not complete properly, then you will have to manually create your database tables. Detailed instructions can be found in <a href-"#appendixF">Appendix F</a>. Then rerun the installtion script to continue the 
- installation.</p>
+ <p class="ptip"><span class="tip">TIP</span>If this step does not complete properly,
+   then you will have to manually create your database tables. Detailed instructions
+   can be found in <a href="#appendixF">Appendix F</a>. Then rerun the installation
+   script to continue the  installation.</p>
  
-<h3>WebCalendar Installation Wizard: STEP 4</h3>
+ <h3>WebCalendar Installation Wizard: STEP 4</h3>
 
 <p><strong>Timezone Conversion</strong></p>
-<p>If upgrading WebCalendar from a previous version, you may be prompted to perform a Timezone Conversion. WebCalendar version 1.0.3 and earlier stored event date and time in the server's
+<p>If upgrading WebCalendar from a previous version, you may be prompted to perform a Timezone Conversion. WebCalendar version 1.0.4 and earlier stored event date and time in the server's
 timezone. As of v1.1.0, all event date and time information is stored as UTC time. So, a one-time conversion of existing events will required to prevent event displayed times from
 appearing incorrectly.</p> 
 
@@ -529,13 +548,14 @@ calculate the proper value and store it in the database.</p>
   </li>
  </ol>
  
-<p>Read-Only: Determines whether events can be added to you WebCalendar.</p> 
+<p>Read-Only: Determines whether events can be added to your WebCalendar.</p> 
 
 <p>Environment: Normally set this <strong>Production</strong>. Development will allow 
 more verbose sql logging and should not be used unless needed.</p>
 
 <p>After saving your settings, you should be provided with a 
-<strong>Launch WebCalendar</strong>  button that will open WebCalendar in a seperate browser window.</p>
+<strong>Launch WebCalendar</strong>  button that will open WebCalendar in a separate
+browser window.</p>
 
 <p><strong>Congratulations! You have successfully installed WebCalendar on 
 your system.</strong></p>
@@ -623,7 +643,9 @@ your system.</strong></p>
  <h2>System Settings</h2>
  <p>System Settings allows the administrator to control what features are available to users 
  as well as default values for certain features.</p>
- <p>Many of these settings can be overridden by users in their Preferences (such as color).</p>
+ <p>Many of these settings can be overridden by users in their Preferences (such
+   as color). These user configurable settings are identified by 
+  <strong><em>Italics</em></strong>.</p>
  <h3>Settings</h3>
  <dl>
   <dt>Application Name</dt>
@@ -632,20 +654,39 @@ your system.</strong></p>
   <dt>Server URL</dt>
   <dd>Specifies the base URL of the calendar. This information is needed to 
   accurately include URLs in email messages (Notifications and Reminders).</dd>
-  <dt>Language</dt>
+  <dt>Home URL</dt>
+  <dd>Specifies the URL to return to when exiting WebCalendar. If set, a new menu option will
+  become visible in the menu.</dd>
+  <dt><em>Language</em></dt>
    <dd>Specifies the default language setting for all users.</dd>
-  <dt>Fonts</dt>
+  <dt>Server Timezone Selection</dt>
+   <dd>Allows you to manually set your server's WebCalendar timezone selection. This has 
+   no effect on the OS Timezone settings.</dd>
+  <dt>Allow user to use themes</dt>
+   <dd>Allows users to have access to pre-defined themes that can set color or user preference
+   settings. There are a few examples available in the <tt>themes</tt> folder.</dd>
+  <dt><em>Themes</em></dt>
+   <dd>The default theme that will be applied to all users unless they make their own 
+   changes.</dd>
+  <dt>Allow top menu</dt>
+   <dd>Turns on the NEW menu system for all users.</dd>
+  <dt>Date Selectors position</dt>
+   <dd>Determines position of Date Pulldown Selectors. Either inside the NEW
+     menu or in their original location at the bottom of the calendar.</dd>
+   <dt><em>Menu theme</em></dt>
+   <dd>Theme to be used with NEW menu.</dd>
+  <dt><em>Fonts</em></dt>
    <dd>Specifies your preferred font.  Multiple font names should be comma-separated.</dd>
-  <dt> Custom script/stylesheet</dt>
+  <dt><em>Custom script/stylesheet</em></dt>
    <dd>Place any custom stylesheet information or JavaScript that will
        be included on all WebCalendar pages.</dd>
-  <dt> Custom header</dt>
+  <dt><em>Custom header</em></dt>
    <dd>The custom header allows you to specify HTML to be placed after
        the &lt;body&gt; tag but before any WebCalendar content and
        included on all WebCalendar pages.</dd>
-  <dt> Custom trailer</dt>
+  <dt><em>Custom trailer</em></dt>
    <dd>The custom trailer allows you to specify HTML to be placed after
-       the WebCalendar content but before the &;t;/body&gt; tag and
+       the WebCalendar content but before the &lt;/body&gt; tag and
        included on all WebCalendar pages.</dd>
  <dt>Allow external file for header/script/trailer</dt>
    <dd>If enabled, then the Custom header and Custom trailer settings
@@ -654,44 +695,61 @@ your system.</strong></p>
    <dd>If enabled, then users can add their own custom HTML for
        both the header (top of the page) and trailer (bottom of the page)
        to customize the appearance of all pages.</dd>  
-  <dt>Preferred View</dt>
+  <dt><em>Preferred View</em></dt>
    <dd>Specify if users should see the day, week, month, or year after logging in.</dd>
-  <dt>Display weekends in view</dt>
-   <dd>Specifies default setting for if Saturdays and Sundays should appear in the 
-  calendar when viewing a month or week</dd>
+  <dt><em>Display small months</em></dt>
+   <dd>Specifies whether small months are included in month, week, day views.</dd>
+  <dt><em>Display weekends</em></dt>
+   <dd>Specifies whether weekends are included in month, week, day, and views.</dd>
+  <dt><em>Display all days in month view</em></dt>
+   <dd>Specifies whether the complete month grid is filled with days from previous and
+   next month.</dd>
   <dt>Display days with events in bold in month and year views</dt>
-   <dd>Highlights and bolds the text for days containing events in the mini-calendars used in day, month and year calendars.</dd>
-  <dt>Display description in printer day view</dt>
-   <dd>If enabled, then the "printer friendly" view of the
-       day view will include full event descriptions
-       rather than just the event name.</dd>
-  <dt>Server Timezone Selection</dt>
-   <dd>Allows you to manually set your server's timezone selection. This has no effect on the OS Timezone settings, but will be used as the default value for users until they set their value.</dd>
-   <dt>Date format</dt>
-   <dd>Specifies the default format for displaying dates</dd>
-  <dt>Time format</dt>
+   <dd>Highlights and bolds the text for days containing events in the mini-calendars 
+   used in day, month and year calendars.</dd>
+  <dt><em>Display description in printer day view</em></dt>
+   <dd>If enabled, then the "printer friendly" view of the day view will include full event
+    descriptions rather than just the event name.</dd>
+  <dt>Display Common Use Date/Times as GMT</dt>
+   <dd>Sets the timezone to used for General Purpose dates. Either GMT of the Server 
+   timezone will be selected.</dd>
+   <dt><em>Date format</em></dt>
+   <dd>Specifies the default format for displaying dates. These are defined in
+     file
+   <tt>includes/date_formats.php</tt> and if <strong>LANGUAGE DEFINED</strong> is selected
+   then the format will be adjusted based on the format in the user's language.txt file.</dd>
+   <dt><em>Time format</em></dt>
    <dd>Specifies the default time format as either 12-hour (3:45pm) or 24-hour (15:14)</dd>
-  <dt>Time interval</dt>
+   <dt><em>Display 00 minutes always</em></dt>
+   <dd>Specifies whether times on the hour ( 10:00 ) are displayed with trailing 00.</dd>
+  <dt><em>Entry interval</em></dt>
+  <dd>Specify the default options for entry start and stop times. This values will also
+  determine the display resolution of timebar views as well as user availability.</dd>
+  <dt><em>Time interval</em></dt>
   <dd>Specify the default number of minutes each time block represents in the day and 
   week display</dd>
-  <dt>Auto-refresh calendars</dt>
+  <dt><em>Auto-refresh calendars</em></dt>
   <dd>If set to "yes," the day, week, and month pages will automatically 
   reload after a specified duration</dd>
-  <dt>Auto-refresh time</dt>
+  <dt><em>Auto-refresh time</em></dt>
   <dd>Specifies how long to wait before the auto-refresh should force a page 
   to be reloaded</dd>
   <dt>Require event approvals</dt>
   <dd>If enabled, then events added to one user's calendar by another
       user will require approval.</dd>
-  <dt>Display unapproved</dt>
+  <dt><em>Display unapproved</em></dt>
   <dd>Specifies whether events that have been added to a calendar but not yet 
   approved should display on the calendar (in a different color)</dd>
-  <dt>Display week number</dt>
+  <dt><em>Display week number</em></dt>
    <dd>Specifies whether the week number should be displayed in month and week views</dd>
-  <dt>Week starts on</dt>
+  <dt><em>Week starts on</em></dt>
    <dd>Specifies if week start on Sunday or Monday</dd>
-  <dt>Work hours</dt>
+  <dt><em>Work hours</em></dt>
    <dd>Specifies the default time range to display in day and week views</dd>
+  <dt>Disable Pop-Ups</dt>
+   <dd>Determines whether event pop-ups are displayed.</dd>
+  <dt>Disable Location field</dt>
+   <dd>Determines whether to use the Location field for events.</dd>
   <dt>Disable Priority field</dt>
    <dd>If enabled, the Priority field will not be used</dd>
   <dt>Disable Access field</dt>
@@ -705,6 +763,8 @@ your system.</strong></p>
   <dd>If enabled, custom event fields configured in <tt>site_extras.php</tt>
       will appear in the mouse-over popups containing additional
       event information.</dd>
+  <dt>Display Participants in popup</dt>
+  <dd>If enabled, event participants will be included in popup details.</dd>
   <dt>Allow HTML in Description</dt>
   <dd>Allow the use of HTML in the description field when creating events. In addition, with the addition of either of two optional packages (HTMLArea or FCKEditor), you can have a WYSIWYG interface. These packages are available on <a href="http://www.k5n.us/webcalendar.php?topic=Add-Ons">WebCalendar's Home Page</a></dd>
   <dt>Allow viewing other user's calendars</dt>
@@ -724,9 +784,16 @@ your system.</strong></p>
    <dd>If enabled, users can be limited to a specific number of timed events per day</dd>
   <dt>Maximum timed events per day</dt>
    <dd>Specifies that maximum number of events that can be scheduled in one day of any one user.</dd>
-   <dt> Specify timed event length by</dt>
+   <dt>Specify timed event length by</dt>
    <dd>Allows you to configure event lengths to be specified
        by either duration or end time.</dd>
+   <dt>Brief Description Length</dt>
+   <dd>Specifies the maximum numbers of characters to display in calendar views.</dd>
+   <dt><em>Display Lunar Phases in month view</em></dt>
+   <dd>Show Lunar Calendar icons in month view. This will not use existing event space.</dd>
+   <dt><em>Disable Cross-Day Events</em></dt>
+   <dd>Determines whether to display events that cross user's day boundary as
+     multiple  events.</dd>
  </dl>
  <h3>Public Access</h3>
  <dl>
@@ -755,11 +822,13 @@ your system.</strong></p>
    <dd>User Access Control provides more advanced control of
        user access permissions.
        If enabled, a "User Access Control" button will appear on the
-       main Admin page.  This page will allow you to configure:
-       <ul>
-         <li>which functions in the system each user can access </li>
-         <li>which user calendars each user can access
-             (user A can edit events on user B's calendar, etc.)
+   main Admin page and/or on the Settings menu of the NEW top menu. This page 
+   will allow you to configure: </dd>
+   <dd>
+     <ul>
+       <li>which functions in the system each user can access </li>
+       <li>which user calendars each user can access
+           (user A can edit events on user B's calendar, etc.)</li>
        </ul>
    </dd>
  </dl>
@@ -780,10 +849,10 @@ your system.</strong></p>
      users may want to access as a layer.
      You will need to enable nonuser calendars in order to subscribe
      to remote iCalendar URLs from within WebCalendar (allowing the events
-     from an iCalendar file elsewhere on the net to appear in your
+     from an iCalendar or hCalendar file elsewhere on the net to appear in your
      WebCalendar calendar.)
    </dd>
-  <dt>Display in participants list at</dt>
+   <dt>Display in participants list at</dt>
    <dd>If enabled, then nonuser calendars can be selected as
        participants to events.</dd>
  </dl>
@@ -791,20 +860,37 @@ your system.</strong></p>
  <dl>
   <dt>Reports enabled</dt>
    <dd>If enabled, user's will be able to create and generate reports.</dd>
-  <dt>Allow remote subscriptions</dt>
+  <dt><em>Allow remote subscriptions</em></dt>
    <dd>If enabled, user's will be able enable their own subscription settings. There are currently two main ways to publish events with WebCalendar.</dd>
-      <ul style="margin-left:70px";><li ><strong>publish.php</strong> will provide outbound publishing to a calendar client</li>
+   <dd>
+      <ul style="margin-left:70px;"><li ><strong>publish.php</strong> will provide outbound publishing to a calendar client</li>
    <li><strong>icalclient.php</strong> will provide two-way full synchronization between WebCalendar and another calendar client such as Sunbird, Apple iCal.
       (PHP 4.3+ required)</li>
-      </ul>
+      </ul></dd>
 
-  <dt>Enable RSS feed</dt>
-   <dd>If enabled, a link is added to all pages that permits some browsers to create a persistent RSS feed to that page. Currently, only Firefox supports this functionality. Also, the setting will enable the use of the rss.php script generate RSS feeds to RSS clients. User's will also be required to enable this feature in their respective preference settings.</dd>
+ <dt>Allow remote calendars</dt>
+   <dd>If enabled, user's will be able to add a special type Non-User Calendar
+     that includes a URL that point to the remote location. The user can manually
+     synchronize the remote calendars if desired. In addition, <tt>tool/reload_remotes.php</tt>
+     can be set up as a cron job to automatically reload all remote calendars
+     as desired. Currently both iCalendar and hCalendar calendars can be consumed
+     by WebCalendar. The  calendar type should be automatically detected based
+     on the URL and calendar content. Users will need to create a layer to make
+     a remote calendar visible on their calendars, just like regular Non-User
+     Calendars.</dd>
+   <dt>Enable RSS feed</dt>
+   <dd>If enabled, a link is added to all pages that permits some browsers to
+     create a persistent RSS feed to that page. Currently, only Firefox and IE
+     7.0 supports this functionality. Also, the setting will enable the use of
+     the rss.php script generate RSS feeds to RSS clients. User's will also be
+     required to enable this feature in their respective preference settings.</dd>
    <dt>Categories enabled</dt>
    <dd>Specifies if category features should be enabled</dd>
-  <dt>Display small task list</dt>
+   <dt>Category Icon Upload enabled</dt>
+   <dd>Specifies if category icons can be uploaded by users.</dd>
+  <dt><em>Display small task list</em></dt>
    <dd>If enabled, a small task window will be displayed in the month and day calendars. These tasks are compatible with the VTODO component of RFC2445 (iCalendar)</dd>
-  <dt>Display tasks in Calendars</dt>
+  <dt><em>Display tasks in Calendars</em></dt>
    <dd>If enabled, tasks are displayed along with events in calendars. The date they appear is the due date but if the due date has passed without the task being completed, the task will shift to the current day.</dd>
 <!--  <dt>Export VTIMEZONE in iCalendar (ics) files</dt>
    <dd>If enabled, a complete VTIMEZONE component will be exported with iCalendar (ics) files as necessary. This function requires considerable processing time, so it should not be enabled unless needed.</dd>
@@ -822,6 +908,14 @@ your system.</strong></p>
    <dd>If enabled, admin can configure the includes/blacklist.php to restrict or permit self-registration based on the user's IP. This will restrict access to existing users or new user's set up by admin. Details and examples are available in the top of the file.</dd>
    <dt>Generate passwords and send to new users</dt>
    <dd>If enabled, self-registration user's will be emailed a randomly generated password that they can then use to access WebCalendar normally. Hopefully, this will prevent some spammers and hackers from misusing the self-registration process.</dd>
+   <dt>Allow file attachments to events</dt>
+   <dd>If enabled, attachments can be uploaded and associated with events. The
+     attachments are stored in the database, so care should be taken if performance
+     is an issue. Additionally, permission may extended to participants and/or
+     anyone.</dd>
+   <dt>Allow comments to events</dt>
+   <dd>If enabled, comments can be associated with events. Additionally,
+   permission may extended to participants and/or anyone. </dd>
  </dl>
  <h3>Email</h3>
  <dl>
@@ -829,6 +923,15 @@ your system.</strong></p>
    <dd>Specifies if email functionality should be enabled.  If set to "No," then no email messages will be sent at any time.</dd>
   <dt>Default sender address</dt>
    <dd>Specifies the email originator to use when the system sends out email Notifications and Reminders</dd>
+  <dt>Email Mailer</dt>
+   <dd>Specifies the email program to use. (PHP mail, SMTP, or sendmail)</dd>
+  <dt>SMTP Host name(s)</dt>
+   <dd>Specifies the SMTP server name(s) or IP(s) if SMTP is selected above.</dd>
+  <dt>SMTP Port Number</dt>
+   <dd>Specifies the SMTP port number if SMTP is selected above. Default is 25.</dd>
+  <dt>SMTP Authentication</dt>
+   <dd>Specifies whether authentication is required if SMTP is selected above. Additionally,
+   <strong>SMTP Username</strong> and <strong>SMTP Password</strong> will be required.</dd>
   <dt>Event reminders</dt>
      <dd>Specifies if email reminders for events that include a reminder should be sent</dd>
   <dt>Events added to my calendar</dt>
@@ -852,6 +955,8 @@ your system.</strong></p>
      <dd>Specifies the color of page title on each page</dd>
   <dt>Document text</dt>
      <dd>Specifies the default text color on each page</dd>
+  <dt>My event text</dt>
+     <dd>Specifies the default text color for the user's events</dd>
   <dt>Table grid color</dt>
      <dd>Specifies color of the lines that make HTML table grids on each page</dd>
   <dt>Table header background</dt>
@@ -861,9 +966,18 @@ your system.</strong></p>
   <dt>Table cell background</dt>
      <dd>Specifies the background color for table cells</dd>
   <dt>Table cell background for current day</dt>
-     <dd>Specifies the background color for the table cell containing the current date</dd>
-  <dt>Table cell background for weekend</dt>
+     <dd>Specifies the background color for the table cell containing the current
+       date (<strong>today</strong>) </dd>
+     <dt>Table cell background for days with events</dt>
+   <dd>Specifies the background color of table cells containing events. This
+     setting will not override the <strong>today</strong> setting and
+     if identical to <strong>today</strong>, will be ignored. </dd>
+   <dt>Table cell background for weekend</dt>
    <dd>Specifies the background color for table cells that represent a Saturday or Sunday</dd>
+   <dt>Table cell background for other month</dt>
+   <dd>Specifies the background color for table cells of other month days.</dd>
+  <dt>Week number color</dt>
+   <dd>Specifies the text color for week numbers (if enabled)</dd>
   <dt>Event popup background</dt>
    <dd>Specifies the background color of event popup areas</dd>
   <dt>Event popup text</dt>
@@ -881,12 +995,7 @@ your system.</strong></p>
   is <em>optional</em>.</p>
  <p>You can use this feature to add extra
   fields to your calendar events.  For example, you can add a URL,
-  a contact email address, or a location.</p>
- <p>By default, this file is configured with
-  a single reminder field that allows the user to specify how long
-  before the event the reminder should be sent.</p>
- <p class="ptip"><span class="tip">TIP</span> See <a href="#reminders">instructions</a> on setting
-  up reminders to enable sending of reminders.</p>
+  a contact email address, or a pulldown containing predefined attributes.</p>
  <p>When defining a new custom field, the following types listed below
   are available. "Arg 1" and "Arg 2" have different meaning depending on the type
   of field.  In some cases, "Arg 1" and "Arg 2" are not used.</p>
@@ -1018,8 +1127,7 @@ your system.</strong></p>
  For example, the U.S. holiday iCalendar file can be downloaded from:
  <blockquote>
  <a href="http://icalshare.com/article.php?story=20020912105939521">http://icalshare.com/article.php?story=20020912105939521
-        <img src="newwin.gif" alt="new" class="newwin" /></a>
- </blockquote>
+        <img src="newwin.gif" alt="new" class="newwin" /></a> </blockquote>
  If you don't want each individual user to have to import
  the holiday calendar, you can use nonuser calendars.
  First, make sure nonuser calendars are enabled in your
@@ -1027,8 +1135,7 @@ your system.</strong></p>
  access nonuser calendars.  Create a new nonuser calendar
  (such as "usholidays").  Then, notify your users that they
  can add this nonuser calendar as a layer to their own
- calendar in order to see the holidays.
- </dd>
+ calendar in order to see the holidays. </dd>
 
  <dt>Why are deleted events still present in the database?</dt>
   <dd>When you delete an event from your calendar, it is not
@@ -1096,8 +1203,7 @@ your system.</strong></p>
     If you want to add JavaScript or Stylesheet data, you can use
     the "Custom script/stylesheet" option on the same System Settings page.
     Any content entered will be included within the document's HTML
-    <code>&lt;head&gt;</code> section.
-  </dd>
+    <code>&lt;head&gt;</code> section.  </dd>
  <dt>How do I add a new translation?</dt>
   <dd>
   It's a fairly simple process.  If you've ever translated a C-based app
@@ -1107,16 +1213,16 @@ your system.</strong></p>
      <li>look in the "translations" directory</li>
      <li>copy the <tt>English-US.txt</tt> file into what you'd like to call your
        language data file.  (e.g. <tt>cp English-US.txt French.txt</tt>)</li>
-     <li>Now translate all the text to the _right_ of the ":" into the
-       new language.  Do <em>not</em> alter the text to the left of the ":".</li>
+     <li>Now translate all the text to the _right_ of the ": " into the
+       new language.  Do <em>not</em> alter the text to the left of the ": ".</li>
      <li>When you're done making changes, move into the "tools" directory.
        Run the <tt>check_translation.pl</tt> script on your new data file to make
        sure you have all the needed translations.
        (e.g. <tt>perl check_translation.pl French</tt>)</li>
      <li>Add the new language to both the $languages array and the
-       $browser_languages arrays defined in <tt>includes/config.php</tt>.</li>
+       $browser_languages arrays defined in <tt>includes/translate.php</tt>.</li>
      <li>Test it out... </li>
-  <li>Post a copy of your translation (along with your changes to <tt>includes/config.php</tt>) to the <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> for WebCalendar.</li>
+  <li>Post a copy of your translation (along with your changes to <tt>includes/translate.php</tt>) to the <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> for WebCalendar.</li>
      </ol>
   </dd>
  <dt>How do I update an existing translation?</dt>
@@ -1143,9 +1249,9 @@ your system.</strong></p>
      Post a copy of your translation to the 
   <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> for WebCalendar.</dd>
 <dt>During Import, I receive this error: Unknown Timezone: XXXXX defaulting to GMT.</dt>
-<dd>This is notify that your import file contained unknown timezone information. WebCalendar
-using the Olsen database of approximately 367 different timezones from around the world. These
-are compared to your import file's TZID information and if no match is found, WebCalendar will simply save the event or task as GMT. You are encouraged to submit these notices as <a href="https://sourceforge.net/projects/webcalendar/">Bug Reports to SourceForge</a>, so that WebCalendar can improve its TZID support.</dd>
+<dd>This is a notice that your import file contained unknown timezone information.
+  WebCalendar will simply save the event or task as GMT. You are encouraged to
+  submit these notices as <a href="https://sourceforge.net/projects/webcalendar/">Bug Reports to SourceForge</a>, so that WebCalendar can improve its TZID support.</dd>
 
 <!-- END FAQ -->
  </dl>
@@ -1280,8 +1386,7 @@ cal_firstname, cal_is_admin ) VALUES
  <pre><a href="https://sourceforge.net/forum/forum.php?forum_id=11588">https://sourceforge.net/forum/forum.php?forum_id=11588</a>&nbsp;<a href="http://sourceforge.net/forum/forum.php?forum_id=11588" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></pre>
  <p>If you encounter a bug, please check the 
   <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870">list of open and pending bugs</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
-  If you do <strong>not</strong> see anything similar, submit a new bug.
- </p>
+  If you do <strong>not</strong> see anything similar, submit a new bug.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
@@ -1290,8 +1395,7 @@ cal_firstname, cal_is_admin ) VALUES
  <p>WebCalendar is distributed under the open source
   <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
   If you have questions about this license, please
-  read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl-faq.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
- </p>
+  read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl-faq.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
@@ -1317,9 +1421,9 @@ cal_firstname, cal_is_admin ) VALUES
     on top of his own calendar so that the standard day, week and month
     pages show both his own and the layered user's events</dd>
   <dt><a name="g_ldap">LDAP</a></dt>
-   <dd>LDAP (Lighweight Directory Access Protocol) is an Internet protocol 
+   <dd>LDAP (Lightweight Directory Access Protocol) is an Internet protocol 
     used to maintain user directories</dd>
-  <dt><a name="g_mulituser">Multi-User Mode</a></dt>
+   <dt><a name="g_mulituser">Multi-User Mode</a></dt>
    <dd>When WebCalendar is configured in Multi-User Mode,
     there can be multiple user accounts, each with his
     own calendar.  Unless Public Access is enabled, all users 
@@ -1378,8 +1482,7 @@ cal_firstname, cal_is_admin ) VALUES
 If you have <a href="http://www.phpmyadmin.net">phpMyAdmin</a>
 installed and configured to manage your MySQL database, use the
 following steps to setup WebCalendar.
-(The following information is based on phpMyAdmin version 2.6.1.)
-</p>
+(The following information is based on phpMyAdmin version 2.6.1.)</p>
 <ol>
 <li>On the initial phpMyAdmin page, under the "MySQL" heading, the first
   option should be "Create new database."  Enter the name you have
@@ -1456,8 +1559,7 @@ mysql> <strong>QUIT</strong></pre>
  <p><span class="note">Note:</span> If you are using
  <a href="http://www.phpmyadmin.net">phpMyAdmin</a> to
  manage your MySQL database, follow the
- instructions in <a href="#appendixA">Appendix A</a>.
- </p>
+ instructions in <a href="#appendixA">Appendix A</a>.</p>
 
  <h3 class="colorheader">Oracle</h3>
  <p>The following will create a tablespace named "webcalendar".
@@ -1480,8 +1582,7 @@ SQL&gt; <strong>quit</strong></pre>
 
  <h3 class="colorheader">PostgreSQL</h3>
  <p>The following will create a database named "webcalendar".
-  From the command line as the psql user: issue the following commands:
- </p>
+  From the command line as the psql user: issue the following commands:</p>
   <pre>$ <strong>su postgres</strong>
 # <strong>createdb webcalendar</strong>
 # <strong>createuser --no-createdb --no-adduser -P webcalendar</strong>
@@ -1517,36 +1618,30 @@ input path/table-ibase.sql;</strong></pre>
 <p>You have two options to choose from when setting up email
    reminders on a Windows platform.
    You can either install a cron package for Windows,
-   or you can use the Windows Task Scheduler.
-</p>
+   or you can use the Windows Task Scheduler.</p>
 
 <h3>Installing a Cron Package</h3>
 <p>
 If you install a cron package for Windows, you will need to setup
 to setup a cron job.
 (UNIX cron is a tool for used to run tasks as specified times anywhere
-from every minute to once a year.)
-</p>
+from every minute to once a year.)</p>
 <p>
 First, you should create a <tt>sendreminders.bat</tt> file
-that contains a single line:
-</p>
+that contains a single line:</p>
 <pre>C:\your\path\to\php.exe C:\your\path\to\webcalendar\tools\send_reminders.php</pre>
 <p>You can place this <tt>sendreminders.bat</tt> file anywhere on your
-file system.
-</p>
+file system.</p>
 <p>Next, you need to setup the cron job.
 The crontab entry should look like
 the following (replace with the correct path to your
-newly created <tt>sendreminders.bat</tt> file):
-</p>
+newly created <tt>sendreminders.bat</tt> file):</p>
 
 <pre>1 * * * * C:\your\path\to\sendreminders.bat</pre>
 
 <p>The "1 * * * *" will tell the cron schedule to run this task
 at 1 after the hour all day long (12:01am, 1:01am, 2:01am, etc.)
-If you only want to run it once per day, you could use:
-</p>
+If you only want to run it once per day, you could use:</p>
 <pre>1 4 * * * C:\your\path\to\sendreminders.bat</pre>
 <p>This would tell the cron scheduler to run the task at 4:01am
 every day.
@@ -1554,15 +1649,13 @@ For more information about the syntax of cron, check the documentation
 for the package you have installed or
 view the UNIX man page for crontab
 (like <a href="http://www.rt.com/man/crontab.5.html"
-  target="_blank">this one</a>).
-</p>
+  target="_blank">this one</a>).</p>
 
 
 <p>There are many cron packages for Windows available.
    Below is a list of packages to choose from.
    (Note: use at your own risk.  These links are provided
-   for information only.)
-</p>
+   for information only.)</p>
 
 <ul>
   <li><a href="http://cronw.sourceforge.net/"
@@ -1582,8 +1675,7 @@ view the UNIX man page for crontab
 <p>Follow the steps listed below to setup a new task
    in the Windows Task Scheduler.
    (These instructions were created with Windows XP Professional.
-   Other versions of Windows might be different.)
-</p>
+   Other versions of Windows might be different.)</p>
 
 <ol>
 
@@ -1638,11 +1730,9 @@ If you would like to list upcoming events somewhere on a page on your site
 (someplace other than the WebCalendar pages),
 you can use the <tt>upcoming.php</tt> page to do this.
 This page is intended to be included in other pages using the
-<tt>iframe</tt> tag.
-</p>
+<tt>iframe</tt> tag.</p>
 <p>You may need to modify some of the variables near the top of
-<tt>upcoming.php</tt> with a text editor:
-</p>
+<tt>upcoming.php</tt> with a text editor:</p>
 <table border="0" style="margin-left: 20px; margin-right: 20px;">
 
 <tr><td valign="top">$public_must_be_enabled</td>
@@ -1719,8 +1809,8 @@ This page is intended to be included in other pages using the
 &lt;html&gt;&lt;head&gt;&lt;title&gt;ACME Home Page&lt;/title&gt;&lt;/head&gt;
 &lt;body&gt;
 &lt;h1&gt;Welcome to the ACME Home Page&lt;/h1&gt;
-&lt;h2&gt;News&lt;/h2&gt;&lt;
-p&gt;No news....&lt;/p&gt;
+&lt;h2&gt;News&lt;/h2&gt;
+&lt;p&gt;No news....&lt;/p&gt;
 &lt;h2&gt;Upcoming Events&lt;/h2&gt;
 &lt;iframe src="upcoming.php" width="400" height="400" name="califrame"&gt;&lt;/iframe&gt;
 &lt;/body&gt;
@@ -1732,8 +1822,7 @@ p&gt;No news....&lt;/p&gt;
   The <a href="http://www.w3schools.com/tags/tag_iframe.asp"
   target="_blank">W3 Schools</a> site provides documentation
   about the different options that you can use
-  with the <tt>iframe</tt> tag.
-</p>
+  with the <tt>iframe</tt> tag.</p>
 
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
@@ -1747,8 +1836,7 @@ simple.  It is know to work with OpenLDAP and Novell Edirectory and
 should work with other systems as well.
 <br/>
 <span class="note">Note:</span> 
-If you use LDAP, the group functionality of WebCalendar does not yet work.   
-</p>
+If you use LDAP, the group functionality of WebCalendar does not yet work.</p>
 
 <p>To configure WebCalendar to use LDAP, do the following:</p>
 <ol>
@@ -1761,8 +1849,7 @@ If you use LDAP, the group functionality of WebCalendar does not yet work.
 <a href="#appsetup">Application Installation</a> section above.
 In summary, the following should be set:<br />
 <tt>use_http_auth = false</tt><br />
-<tt>user_inc = user-ldap.php</tt><br />
-</p>
+<tt>user_inc = user-ldap.php</tt><br /></p>
 
 <p>The next step is a little more work and involves editing the 
 <tt>includes/user-ldap.php</tt> file with a text editor.  You will have
@@ -1797,12 +1884,10 @@ following:</p>
 
 <h3>Using SSL with LDAP</h3>
 <p>If the LDAP server will accept connections over SSL, simply add 'ldaps://'
-to the beginning of <tt>$ldap_server</tt>.  <br />Example: ldaps://ldapserver.company.com
-</p>
+to the beginning of <tt>$ldap_server</tt>.  <br />Example: ldaps://ldapserver.company.com</p>
 
 <h3>Using TLS with LDAP</h3>
-<p>If the LDAP server is set up to use TLS,  set <tt>$ldap_start_tls = true</tt>.
-</p>
+<p>If the LDAP server is set up to use TLS,  set <tt>$ldap_start_tls = true</tt>.</p>
 
 <h3>Using LDAPv3</h3>
 <p>If the LDAP server uses protocol version 3,  set
@@ -1817,10 +1902,10 @@ and <tt>$ldap_version = '3'</tt>.</p>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
+<h3>TODO</h3>
 <p>
  <a href="http://validator.w3.org/check?uri=referer"><img 
   src="http://www.w3.org/Icons/valid-xhtml10" 
-  alt="Valid XHTML 1.0!" class="valid" /></a>
-</p>
+  alt="Valid XHTML 1.0!" class="valid" /></a></p>
 </body>
 </html>
