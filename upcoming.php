@@ -350,7 +350,7 @@ if ( ! empty ( $x ) ) {
 if ( $numDays > 365 ) {
   $numDays = 365;
 }
-$endDate = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays,
+$endDate = mktime ( 23, 59, 59, $thismonth, $thisday + $numDays,
   $thisyear );
 
 // If 'showEvents=0' is in URL, then just include tasks in list

@@ -26,7 +26,7 @@ else
 $nextYear= $year + 1;
 
 $startdate = mktime ( 0, 0, 0, 1, 1, $year);
-$enddate = mktime ( 0, 0, 0, 12, 31, $year);
+$enddate = mktime ( 23, 59, 59, 12, 31, $year);
 
 if ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin )
   $user = '';

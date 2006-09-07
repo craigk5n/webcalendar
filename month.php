@@ -23,11 +23,11 @@ $prevYmd = date ( 'Ymd', $prev );
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;
   $startdate = mktime ( 0,0,0, $prevmonth, 1, $prevyear );
-  $enddate = mktime ( 0,0,0, $nextmonth +1 ,0, $nextyear );
+  $enddate = mktime ( 23, 59, 59, $nextmonth +1 ,0, $nextyear );
 } else {
   $boldDays = false;
   $startdate = mktime (  0,0,0, $thismonth, 1, $thisyear );
-  $enddate = mktime ( 0,0,0, $thismonth +1, 0, $thisyear );
+  $enddate = mktime ( 23, 59, 59, $thismonth +1, 0, $thisyear );
 }
 
 /* Pre-Load the repeated events for quicker access */

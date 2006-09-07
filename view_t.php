@@ -271,7 +271,7 @@ if ( ! empty ( $timeb) && $timeb == 1 ) {
   $next = mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear );
   $prev = mktime ( 0, 0, 0, $thismonth - 1, $thisday, $thisyear );
   $wkstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-  $wkend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
+  $wkend = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
   $val_boucle = date('t', $wkstart);
 }
 $nextyear = date ( 'Y', $next );
