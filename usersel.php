@@ -105,5 +105,4 @@ for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
 </table>
 
 <?php echo print_trailer ( false, true, true ); ?>
-</body>
-</html>
+

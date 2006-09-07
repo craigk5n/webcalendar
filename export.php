@@ -167,5 +167,4 @@ print_header($INC);
 </table>
 </form>
 <?php echo print_trailer (); ?>
-</body>
-</html>
+

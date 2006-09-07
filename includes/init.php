@@ -289,6 +289,9 @@ function print_trailer ( $include_nav_links=true, $closeDb=true,
        'alt="Valid XHTML 1.0!" class="valid"  /></a></p>';
  }
 
+ //close html page properly
+ $ret .= "</body>\n</html>\n";
+
  return $ret;  
 }
 

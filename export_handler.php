@@ -254,20 +254,10 @@ if ($format == 'ical') {
 
   print_header();
 
-  echo '<h2>';
-  etranslate( 'Export' );
-  echo ' ';
-  etranslate( 'Error' );
-  echo "</h2>\n";
-  echo '<span style="font-weight:bold;">';
-  etranslate( 'Error' );
-  echo ':</span> ';
-  echo translate( 'export format not defined or incorrect' ) . '.';
-  echo "<br />\n";
-
+  echo '<h2>' . translate( 'Export' ) . ' ' .translate( 'Error' ) . "</h2>\n"
+    . '<span style="font-weight:bold;">' . translate( 'Error' ) . ':</span> '
+    . translate( 'export format not defined or incorrect' ) . '.' . "<br />\n";
   echo print_trailer ();
 
-  echo " </body>\n";
-  echo '</html>';
 } //end if ($format == "ical")
 ?>

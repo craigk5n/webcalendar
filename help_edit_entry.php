@@ -79,5 +79,3 @@ echo $helpListStr;
 
 <?php echo print_trailer( false, true, true ); ?>
 
-</body>
-</html>

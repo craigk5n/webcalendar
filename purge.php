@@ -157,10 +157,8 @@ if ( $do_purge ) {
 <?php } ?>
 </td></tr></table>
 
-<?php echo print_trailer(); ?>
-</body>
-</html>
-<?php
+<?php echo print_trailer(); 
+
 function purge_events ( $ids ) {
   global $preview, $c; // db connection
   global $sqlLog;

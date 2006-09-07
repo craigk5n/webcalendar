@@ -65,5 +65,4 @@ for ($gs=0; $gs < $graycnt; $gs++){
 </div>
 
 <?php echo print_trailer ( false, false, true ); ?>
-</body>
-</html>
+

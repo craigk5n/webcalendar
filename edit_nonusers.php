@@ -103,5 +103,4 @@ if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
   </form>
 <?php }
 echo print_trailer ( false, true, true ); ?>
-</body>
-</html>
+

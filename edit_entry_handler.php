@@ -1079,5 +1079,4 @@ onclick="history.back()" /><td>
 </blockquote>
 <?php }
 echo print_trailer(); ?>
-</body>
-</html>
+

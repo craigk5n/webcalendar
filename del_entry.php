@@ -309,5 +309,3 @@ if ( ! empty ( $mailerError ) ) { ?>
 <?php  } 
 echo print_trailer(); ?>
 
-</body>
-</html>

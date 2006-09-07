@@ -78,5 +78,4 @@ print_header($INC,'','',true, false, true);
 
 
 <?php echo print_trailer ( false, true, true ); ?>
-</body>
-</html>
+

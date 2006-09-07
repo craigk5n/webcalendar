@@ -406,5 +406,4 @@ if ( $is_admin ) {
 </form>
 
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

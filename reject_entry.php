@@ -161,5 +161,4 @@ if ( ! empty ( $mailerError ) ) {
   echo '<h2>' . translate( 'Error' ) . "</h2>\n";
   echo '<p>' . $error . "</p>\n";
 }
-echo print_trailer ();
-?>
+echo print_trailer (); ?>

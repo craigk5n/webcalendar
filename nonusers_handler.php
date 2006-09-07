@@ -7,7 +7,6 @@ if ( ! $is_admin ) {
   echo '<h2>' . translate( 'Error' ) .
     '</h2>' . translate( 'You are not authorized' ) . ".\n";
   echo print_trailer ();
-  echo "</body></html>\n";
   exit;
 }
 $error = '';
@@ -109,5 +108,4 @@ echo $error;
 </blockquote>
 
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

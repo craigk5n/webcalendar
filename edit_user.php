@@ -165,5 +165,4 @@ if ( $is_admin ) { ?>
 </td></tr></table>
 <?php } 
 echo print_trailer ( false, true, true ); ?>
-</body>
-</html>
+

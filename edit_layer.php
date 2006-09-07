@@ -146,5 +146,4 @@ etranslate( 'Are you sure you want to delete this layer?', true)?>');"><?php
 </form>
 
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

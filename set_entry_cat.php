@@ -182,5 +182,3 @@ echo <<<EOT
 EOT;
 }
 echo print_trailer(); ?>
-</body>
-</html>

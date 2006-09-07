@@ -36,5 +36,4 @@ echo $helpListStr;
   <?php etranslate('Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.'); ?></p>
 
 <?php echo print_trailer( false, true, true ); ?>
-</body>
-</html>
+

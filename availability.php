@@ -68,4 +68,3 @@ $users = explode(',',$users);
 
 <?php echo print_trailer ( false, true, true ); ?>
 
-</body></html>

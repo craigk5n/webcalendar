@@ -120,5 +120,4 @@ if ( ! empty ( $startid ) ) {
 ?>
 </div>
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

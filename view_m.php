@@ -187,5 +187,4 @@ if ( ! empty ( $eventinfo ) ) {
 echo generate_printer_friendly ( 'view_m.php' );
 
 echo print_trailer (); ?>
-</body>
-</html>
+

@@ -160,5 +160,4 @@ echo $helpListStr;
  <p><?php etranslate('colors-help')?></p>
 <?php } // if $ALLOW_COLOR_CUSTOMIZATION 
 echo print_trailer( false, true, true ); ?>
-</body>
-</html>
+

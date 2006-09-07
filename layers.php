@@ -113,6 +113,5 @@ if ($layers_enabled) { ?>
  }
 }
 
- echo print_trailer(); ?>
-</body>
-</html>
+echo print_trailer(); ?>
+

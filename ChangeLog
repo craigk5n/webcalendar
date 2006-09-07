@@ -1,4 +1,6 @@
 Version 1.1.1 (?? ??? 2006)
+ - Implemented PATCH 1539603: Move </body></html> into print_trailer()
+ - Fixed bug 1554309: demo calendar event days are not the same
  - Fixed bug 1553518: events one day early in list_unapproved.php
  - Fixed bug 1553639: Events missing from the 31st day of month
  - Applied PATCH 1529623: Click on 'category' text field opens category-manager direct

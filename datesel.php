@@ -89,5 +89,4 @@ for ( $i = $wkstart; date ( 'Ymd', $i ) <= date ( 'Ymd', $monthend );
 </div>
 
 <?php echo print_trailer ( false, true, true ); ?>
-</body>
-</html>
+

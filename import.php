@@ -121,5 +121,4 @@ if ( ! $upload_enabled ) {
 <br /><input type="submit" value="<?php etranslate( 'Import' )?>" />
 </form>
 <?php } echo print_trailer (); ?>
-</body>
-</html>
+

@@ -473,9 +473,8 @@ $nextStr = translate ( 'Next' );
 if ( $include_header ) {
   $reportNameStr = '<h2>' . $report_name . '</h2>';
   $printerStr =  generate_printer_friendly ( 'report.php' );
-  $htmlclose = '</body></html>';
 } else { 
-$reportNameStr = $htmlclose = $printerStr = '';
+$reportNameStr = $printerStr = '';
 }
 if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
   $prevLinkStr =  '<a class="nav" title="' . $prevStr . '" href="report.php?report_id=' . 
@@ -514,6 +513,5 @@ echo <<<EOT
   
   {$trailerStr}
   
-  {$htmlclose}
 EOT;
 ?>

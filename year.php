@@ -129,7 +129,5 @@ echo <<<EOT
   <br />
   {$printerStr}
   {$trailerStr}
-</body>
-</html>
 EOT;
 ?>

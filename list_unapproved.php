@@ -297,5 +297,4 @@ function uncheck_all(user) {
 //]]> -->
 </script>
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

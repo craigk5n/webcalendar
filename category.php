@@ -125,5 +125,3 @@ if ( ! empty ( $error ) ) {
   echo "<span style=\"font-weight:bold;\">" . translate ( 'Error' ) . ':</span>' . $error;
 }
 echo print_trailer(); ?>
-</body>
-</html>
