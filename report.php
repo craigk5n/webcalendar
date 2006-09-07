@@ -395,13 +395,13 @@ if ( ! isset ( $report_time_range ) ) {
   $month_offset = 31 - $report_time_range + $offset;
   //echo "month_offset=$month_offset <br />";
   $start_date = mktime ( 0, 0, 0, $thismonth + $month_offset, 1, $dateY );
-  $end_date = mktime ( 0, 0, 0, $thismonth + $month_offset + 1, 0, $dateY );
+  $end_date = mktime ( 23, 59, 59, $thismonth + $month_offset + 1, 0, $dateY );
 } else if ( $report_time_range >= 40 && $report_time_range < 50 ) {
   $thisyear = $dateY;
   $year_offset = 41 - $report_time_range + $offset;
   //echo "year_offset=$year_offset <br />";
   $start_date = mktime ( 0, 0, 0, 1, 1, $thisyear + $year_offset );
-  $end_date = mktime ( 0, 0, 0, 12, 31, $thisyear + $year_offset );
+  $end_date = mktime ( 23, 59, 59, 12, 31, $thisyear + $year_offset );
 } else if ( $report_time_range >= 50 && $report_time_range < 60 ) {
   // This series of reports is today + N days
   switch ( $report_time_range ) {
