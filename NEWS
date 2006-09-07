@@ -1,5 +1,6 @@
 Version 1.1.1 (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1553518: events one day early in list_unapproved.php
       1553639: Events missing from the 31st day of month
       1510777: Standardize layout of help pages
       1550117: UAC default settings that don't already exist in DB

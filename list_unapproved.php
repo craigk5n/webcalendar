@@ -121,19 +121,25 @@ function list_unapproved ( $user ) {
       $ret .= '<td><a  title="' . translate( 'View this entry' ) .
         "\" class=\"entry\" id=\"$linkid\" href=\"$view_link.php?id=$id&amp;user=$cal_user\">";
       $timestr = '';
-      if ( $time > 0 ) {
+      if ( $time > 0 || ($time == 0 && $duration != 1440 ) ) {
         $eventstart = date_to_epoch ( $date . $time );
         $eventstop = $eventstart + $duration;
         $timestr = display_time ('', 0, $eventstart);
         if ( $duration > 0 ) {
           $timestr .= ' - ' . display_time ( '', 0 , $eventstop );
         }
+        $eventdate = date_to_str ( date ('Ymd', $eventstart) );
       } else {
-         $eventstart = date_to_epoch ( $date );
+        //don't shift date if All Day or Untimed
+        $eventdate = date_to_str ( $date );
+        // if All Day display in popup
+        if ($time == 0 && $duration == 1440 ) {
+          $timestr = translate('All day event');
+        }
       }
       $ret .= htmlspecialchars ( $name );
       $ret .= '</a>';
-      $ret .= ' (' . date_to_str ( date ('Ymd', $eventstart) ) . ")\n";
+      $ret .= ' (' . $eventdate . ")\n";
       //approve
       $ret .= ':</td><td align="center">' . "\n" . '<a title="' .  
         translate( 'Approve/Confirm' ) . '"  href="approve_entry.php?id=' .
