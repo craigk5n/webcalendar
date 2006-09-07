@@ -1517,10 +1517,10 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
   $wkstart = get_weekday_before ( $thisyear, $thismonth );
   
   // generate values for first day and last day of month
-  $monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-  $monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
+  $monthstart = date ('Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
+  $monthend = date ('Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
   
-  for ( $i = $wkstart; date ('Ymd', $i ) <= date ('Ymd', $monthend );
+  for ( $i = $wkstart; date ('Ymd', $i ) <= $monthend;
     $i += ( ONE_DAY * 7 ) ) {
     $ret .= "<tr>\n";
      if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
@@ -1548,17 +1548,19 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
     
     for ( $j = 0; $j < 7; $j++ ) {
       $date = $i + ( $j * ONE_DAY + ( 12 * 3600 ) );
+      $dateYmd = date ('Ymd', $date );
+      $dateD = date ( 'd', $date );
       $thiswday = date('w', $date  );
       $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
       if ( empty ( $WEEKENDBG ) ) {
         $is_weekend = false;
       }
-      if ( ( date ('Ymd', $date ) >= date ('Ymd', $monthstart ) &&
-        date ('Ymd', $date ) <= date ('Ymd', $monthend ) ) || 
+      if ( ( $dateYmd >= $monthstart  &&
+        $dateYmd <= $monthend ) || 
         ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
         $ret .= '<td';
         $class = '';
-        if ( date ('Ymd', $date  ) == date ('Ymd', $today ) ) {
+        if ( !$demo && $dateYmd == date ('Ymd', $today ) ) {
           $class = 'today';
         }
         if ( $is_weekend ) {
@@ -1568,25 +1570,33 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
           $class .= 'weekend';
         }
         //change class if date is not in this month
-        if ( date ('Ymd', $date ) < date ('Ymd', $monthstart ) ||
-          date ('Ymd', $date ) > date ('Ymd', $monthend ) ) {
+        if ( $dateYmd < $monthstart || $dateYmd > $monthend ) {
           if ( strlen ( $class ) ) {
             $class .= ' ';
           }
           $class .= 'othermonth';
         }
         
-        if ( $demo && ( date ( 'd', $date ) == 15 || date ( 'd', $date ) == 12 ) ) {
-          $class .= ' entry hasevents ';
-        }
         //get events for this day
         $ret_events = '';
         if ( ! $demo ) {
-          $ret_events = print_date_entries ( date ('Ymd', $date ),
+          $ret_events = print_date_entries ( $dateYmd,
             ( ! empty ( $user ) ) ? $user : $login, false );
         } else {
-          if ( date ( 'd', $date ) == 15 || date ( 'd', $date ) == 12 ) 
-            $ret_events = translate('My event text');
+          //Since we base this calendar on the current month, 
+          //the placement of the days always change so 
+          //set 3rd Thursday as "today" for the demo
+          if ( $dateD >= 16 && $dateD <= 23 && $thiswday == 4 ) {
+            $ret_events = translate('Today');
+            $class = 'today';
+          }
+          //Since we base this calendar on the current month, 
+          //the placement of the days always change so 
+          //set 2nd Saturday and 2nd Tuesday as the event days for the demo
+          if ( $dateD >= 8 && $dateD <= 15 && ( $thiswday == 2 || $thiswday == 6 ) ) {
+             $ret_events = translate('My event text');
+            $class .= ' entry hasevents ';
+          }
         }
         if ( ! empty ( $ret_events ) && strstr ( $ret_events, 'class="entry"' ) ) {
           $class .= ' hasevents';
@@ -1643,8 +1653,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   }
   $ret .= ">\n";
 
-  $monthstart = mktime( 0,0,0,$thismonth,1,$thisyear);
-  $monthend = mktime( 0,0,0,$thismonth + 1,0,$thisyear);
+  $monthstart = date ('Ymd', mktime( 0,0,0,$thismonth,1,$thisyear) );
+  $monthend = date ('Ymd', mktime( 0,0,0,$thismonth + 1,0,$thisyear) );
 
   if ( $SCRIPT == 'day.php' ) {
     $month_ago = date ('Ymd',
@@ -1717,7 +1727,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     $ret .= '<th class="weekend">' .  weekday_short_name ( 0 ) .  "</th>\n";
   //end the header row
   $ret .= "</tr>\n</thead>\n<tbody>\n";
-  for ($i = $wkstart; date ('Ymd',$i) <= date ('Ymd',$monthend);
+  for ($i = $wkstart; date ('Ymd',$i) <= $monthend;
     $i += (ONE_DAY * 7) ) {
     $ret .= "<tr>\n";
     if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ) {
@@ -1746,8 +1756,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
           }
         }
       }
-      if ( ( $dateYmd >= date ('Ymd',$monthstart) &&
-        $dateYmd <= date ('Ymd',$monthend) )  || 
+      if ( ( $dateYmd >= $monthstart && $dateYmd <= $monthend )  || 
         ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && 
           $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
         $ret .= '<td';
@@ -1777,7 +1786,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
         if ( $class != '' ) {
           $ret .= " class=\"$class\"";
         }
-        if ( date ('Ymd', $date  ) == date ('Ymd', $today ) ){
+        if ( $dateYmd == date ('Ymd', $today ) ){
           $ret .= ' id="today"';
         }
         if ( $SCRIPT == 'minical.php' ) {
