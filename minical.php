@@ -116,7 +116,7 @@ $prevmonth = date ( 'm', $prev );
 
 $boldDays = true;
 $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-$enddate = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
+$enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 
 
 $HeadX = '';

@@ -1,4 +1,5 @@
 Version 1.1.1 (?? ??? 2006)
+ - Fixed bug 1553639: Events missing from the 31st day of month
  - Applied PATCH 1529623: Click on 'category' text field opens category-manager direct
  - Applied PATCH 1532231: Change bgcolor for exclusions/inclusions in repeat event
  - Fixed bug 1510777: Standardize layout of help pages

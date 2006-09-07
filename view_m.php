@@ -45,7 +45,7 @@ $prevmonth = date ( 'm', $prev );
 $prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
 
 $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-$enddate = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
+$enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 
 $thisdate = date ( 'Ymd', $startdate );
 ?>
