@@ -65,7 +65,7 @@ echo "</tr>\n";
 $wkstart = get_weekday_before ( $thisyear, $thismonth );
 
 $monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-$monthend = mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear );
+$monthend = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 for ( $i = $wkstart; date ( 'Ymd', $i ) <= date ( 'Ymd', $monthend );
   $i += ( ONE_DAY * 7 ) ) {
   echo "<tr>\n";
