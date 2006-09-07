@@ -157,6 +157,7 @@ $BodyX = 'onload="public_handler(); eu_handler(); sr_handler(); attach_handler()
 $BodyX .= ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );\"" : '"' );
 $INC = array('js/admin.php','js/visible.php/true');
 print_header ( $INC, '', $BodyX );
+include "includes/styles.php";
 ?>
 
 <h2><?php etranslate( 'System Settings' )?>&nbsp;<img src="images/help.gif" alt="<?php etranslate( 'Help' )?>" class="help" onclick="window.open ( 'help_admin.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
@@ -1007,7 +1008,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  echo $select ?>" name="" />
 </td>
 <td rowspan="14" width="1%">&nbsp;</td>
-<td rowspan="14" width="45%">
+<td rowspan="14" width="45%" style="text-align:center; vertical-align:top;">
 <!-- BEGIN EXAMPLE MONTH -->
 <table style="border:0px; width:90%; background-color:<?php echo $BGCOLOR?>"><tr>
 <td width="1%" rowspan="3">&nbsp;</td>
@@ -1143,5 +1144,4 @@ echo display_month ( date ('m') , date('Y') , true);
     echo "</blockquote>\n";  
 } 
 echo print_trailer (); ?>
-</body>
-</html>
+
