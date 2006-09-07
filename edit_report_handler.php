@@ -261,5 +261,4 @@ print_header();
 </blockquote>
 
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

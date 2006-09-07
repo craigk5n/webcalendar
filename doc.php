@@ -188,7 +188,6 @@ if ( ! empty ( $error ) ) {
   echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
   echo print_trailer ();
-  echo "</body>\n</html>";
   exit;
 }
 

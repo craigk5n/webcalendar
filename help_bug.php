@@ -67,7 +67,5 @@ if ( $res ) {
 }
 echo '</td></tr></table>';
 
-echo print_trailer( false, true, true );
-?>
-</body>
-</html>
+echo print_trailer( false, true, true ); ?>
+

@@ -307,7 +307,5 @@ echo <<<EOT
   {$unapprovedStr}
   {$printerStr}
   {$trailerStr}
-  </body>
-  </html>
 EOT;
 ?>

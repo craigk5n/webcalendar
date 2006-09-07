@@ -142,9 +142,7 @@ echo '<br />';
 
 echo generate_printer_friendly ( 'week_details.php' );
 echo print_trailer(); 
-?>
-</body>
-</html><?php
+
 
 /**
  * Prints the HTML for one event in detailed view.

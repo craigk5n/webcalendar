@@ -83,5 +83,4 @@ if ( ! $show_others ) {
 </form>
 <?php }
 echo print_trailer(); ?>
-</body>
-</html>
+

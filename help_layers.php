@@ -45,5 +45,4 @@ echo $helpListStr;
 <?php } // if $ALLOW_COLOR_CUSTOMIZATION 
 
 echo print_trailer( false, true, true ); ?>
-</body>
-</html>
+

@@ -45,5 +45,4 @@ if ( ! empty ( $error ) ) {
 <br /><br />
 
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

@@ -194,5 +194,4 @@ if ($is_nonuser_admin) {
 </table>
 
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

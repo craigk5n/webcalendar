@@ -244,7 +244,6 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
        echo $str;
      if (  empty ( $otheruser ) ) {
        echo print_trailer ();
-       echo "</body></html>\n";
        exit;
     }
   }
@@ -430,7 +429,6 @@ function enableAll ( on ) {
 </script>
   <?php
   echo print_trailer ();
-  echo "</body></html>\n";
   exit;
 }
 if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
@@ -465,12 +463,8 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__'  ) ) {
   
 <?php 
 } //end admin $guser !- default test
-echo print_trailer(); ?>
-</body>
-</html>
+echo print_trailer(); 
 
-
-<?php
 
 // Get the list of users that the specified user can see.
 function get_list_of_users ( $user )

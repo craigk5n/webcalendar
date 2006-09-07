@@ -1390,6 +1390,5 @@ if ( $useTabs ) { ?>
 } //end if ( $can_edit )
 
 echo print_trailer(); ?>
-</body>
-</html>
+
 

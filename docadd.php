@@ -102,7 +102,6 @@ if ( ! empty ( $error ) ) {
   print_header ();
   echo '<h2>' . translate( 'Error' ) . '</h2>' . $error;
   echo print_trailer ();
-  echo "</body></html>\n";
   exit;
 }
 
@@ -200,7 +199,6 @@ if ( $REQUEST_METHOD == 'POST' ) {
     print_header ();
     echo '<h2>' . translate( 'Error' ) . '</h2>' . $error;
     echo print_trailer ();
-    echo "</body></html>\n";
     exit;
   }
 }
@@ -256,5 +254,4 @@ print_header ();
 
 <?php } 
 echo print_trailer (); ?>
-</body>
-</html>
+

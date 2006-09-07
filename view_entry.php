@@ -277,7 +277,6 @@ if ( ! empty ( $error ) ) {
   echo '<h2>' . translate ( 'Error' ) .
     "</h2>\n" . $error;
   echo print_trailer ();
-  echo "</body>\n</html>";
   exit;
 }
 // Try to determine the event status.
@@ -335,7 +334,6 @@ if ( ( empty ( $event_status ) && ! $is_admin ) ||
     translate ( 'Error' ) . '</h2>' . 
     translate ( 'You are not authorized' ) . ".\n";
   echo print_trailer ();
-  echo "</body>\n</html>";
   exit;
 }
 
@@ -1192,5 +1190,4 @@ EOT;
 }
 
 echo print_trailer ( empty ($friendly) );?>
-</body>
-</html>
+

@@ -91,6 +91,4 @@ echo <<<EOT
 
   {$printerStr}
   {$trailerStr}
-  </body>
-  </html>
 EOT;

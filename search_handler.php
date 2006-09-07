@@ -174,5 +174,3 @@ if ( empty ( $error ) ) {
 
 <?php echo print_trailer(); ?>
 
-</body>
-</html>

@@ -922,5 +922,4 @@ echo display_month ( date ( 'm' ) , date( 'Y' ) , true );
 </form>
 
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

@@ -76,5 +76,4 @@ if ( $GROUPS_ENABLED == 'Y' ) {
 </form>
 
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

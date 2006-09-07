@@ -629,7 +629,5 @@ $user = ''; // reset
 if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
 echo generate_printer_friendly ( 'view_r.php' );
-echo print_trailer ();
-?>
-</body>
-</html>
+echo print_trailer (); ?>
+

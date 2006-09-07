@@ -93,8 +93,7 @@ if ( empty ( $error ) && $can_delete ) {
 // Some kind of error...
 print_header ();
 echo '<h2>' . translate ( 'Error' ) . '</h2>' . $error;
-echo print_trailer ();
-?>
-</body></html>
+echo print_trailer (); ?>
+
 
 

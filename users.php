@@ -111,5 +111,4 @@ echo display_admin_link();
 </div>
 
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

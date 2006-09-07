@@ -28,5 +28,4 @@ echo $helpListStr;
 </table>
 
 <?php echo print_trailer( false, true, true ); ?>
-</body>
-</html>
+

@@ -115,7 +115,4 @@ if ($file['size'] > 0) {
 
 //echo "<hr />$sqlLog\n";
 
-echo print_trailer ();
-echo "</body>\n</html>";
-
-?>
+echo print_trailer (); ?>

@@ -92,5 +92,3 @@ print_header();
 
 <?php echo print_trailer(); ?>
 
-</body>
-</html>

@@ -56,5 +56,4 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 </div>
 </div>
 <?php echo print_trailer(); ?>
-</body>
-</html>
+

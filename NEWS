@@ -1,5 +1,6 @@
 Version 1.1.1 (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1554309: demo calendar event days are not the same
       1553518: events one day early in list_unapproved.php
       1553639: Events missing from the 31st day of month
       1510777: Standardize layout of help pages
@@ -323,6 +324,7 @@ Version 1.1.1 (?? ??? 2006)
     + Category was lost wan clicking on prev/next month in month.php
     + Fixed small bug if using 59 minutes for event time
   - New Features / Enhancements / Changes:
+    + Implemented PATCH 1539603: Move </body></html> into print_trailer()
     + Added hCalendar feature to Remote Calendars
     + Implemented PATCH 1498087: Add simple navigation to help
     + Implemented PATCH 1498201: Don't print ThemeMenubar

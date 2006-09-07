@@ -204,5 +204,4 @@ if ( ! empty ( $eventinfo ) ) {
 echo generate_printer_friendly ( 'view_w.php' );
 echo print_trailer ();
 ?>
-</body>
-</html>
+
