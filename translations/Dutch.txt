@@ -1451,10 +1451,10 @@ Your password is: Uw wachtwoord is
 Your previous version of WebCalendar requires updating several database tables.: Uw vorige versie van WebKalender vereist een opwaardering van diverse database-tabellen.
 Your settings have been saved: Uw instellingen zijn opgeslagen
 Your username is: Uw gebruikersnaam is
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__jjjj__
-__month__ __dd__: __maand__ __dd__
-__month__ __dd__, __yyyy__: __maand__ __dd__, __jjjj__
-__month__ __yyyy__: __maand__ __jjjj__
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
 
 Common Trailer: Meestvoorkomende aansluiting
 Date Selectors position: Datum positiekiezers
