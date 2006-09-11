@@ -55,7 +55,6 @@ $lang = 'English-US'; // Default
 }
 
 $lang_file = 'translations/' . $lang . '.txt';
-
 $failure = '<b>' . translate ( 'Failure Reason' ) . ':</b><blockquote>';
 $selected = ' selected="selected" ';
 $checked = ' checked="checked" ';
@@ -1212,7 +1211,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
    ?>
 </td></tr>
 <tr><th class="header" colspan="2">
- PHP Settings
+ <?php etranslate ( 'PHP Settings' ) ?>
 <?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
   &nbsp;<input name="action" type="button" value="<?php etranslate ( 'Detailed PHP Info' ) ?>" onClick="testPHPInfo()" />
 <?php } ?>
