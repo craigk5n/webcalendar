@@ -8,7 +8,7 @@ echo $helpListStr;
 
 <h2><?php etranslate('Help')?>: <?php etranslate('Layers')?></h2>
 
-<table style='border-width:0px;'>
+<table>
  <tr><td colspan="2">
   <p><?php etranslate("Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.")?></p>
  </td></tr>

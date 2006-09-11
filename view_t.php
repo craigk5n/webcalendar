@@ -165,15 +165,15 @@ function print_entry_timebar ( $event, $date ) {
   $ret .= "\n<!-- ENTRY BAR -->\n\n";
   $ret .= "<tr class=\"entrycont\" >\n";
   $fill = ( $start_padding == 0 && $ev_duration ==1 ? '&nbsp;' : '&nbsp;' );
-  $ret .= ($start_padding > 0 ?  "<td style=\"text-align:right\" colspan=\"$start_padding\">": '' );
+  $ret .= ($start_padding > 0 ?  "<td class=\"alignright\" colspan=\"$start_padding\">": '' );
   if ( $pos > 0 ) {
     if ( ! $event->isUntimed() ) {
-			$ret .= ($start_padding > 0 ?  "&nbsp;</td>\n": '' ) ;
-			$ret .= "<td  class=\"entry\" colspan=\"$ev_duration\">\n";
-			if ( $pos > 1 ) {
-				$ret .= "$fill</td>\n";
-				$ret .= "<td style=\"text-align:left;\" colspan=\"$end_padding\">";
-			}
+      $ret .= ($start_padding > 0 ?  "&nbsp;</td>\n": '' ) ;
+      $ret .= "<td  class=\"entry\" colspan=\"$ev_duration\">\n";
+      if ( $pos > 1 ) {
+        $ret .= "$fill</td>\n";
+        $ret .= "<td class=\"alignleft\" colspan=\"$end_padding\">";
+      }
     } else { // Untimed, just display text
       $ret .= '<td colspan="' . $totalSlots . '">';
     }
@@ -213,7 +213,7 @@ function print_entry_timebar ( $event, $date ) {
       $fill = ( $ev_duration ==1 ? '&nbsp;' : '&nbsp;' );
       $ret .= "<td class=\"entry\" colspan=\"$ev_duration\">$fill</td>\n";
     }
-    $ret .= ($end_padding > 1 ? "<td style=\"text-align:left;\" colspan=\"$end_padding\">&nbsp;</td>\n": '' );
+    $ret .= ($end_padding > 1 ? "<td class=\"alignleft\" colspan=\"$end_padding\">&nbsp;</td>\n": '' );
   }
   //we'll close the table later
   $ret .= "</tr>\n";
@@ -317,7 +317,7 @@ if ( ! empty ( $error ) ) {
 
 ?>
 
-<div style="border-width:0px; width:99%;">
+<div style="width:99%;">
 <a title="<?php etranslate ( 'Previous' )?>" class="prev" href="view_t.php?timeb=
 <?php echo $timeb?>&amp;id=<?php echo $id?>&amp;date=
 <?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="

@@ -8,7 +8,7 @@ echo $helpListStr;
 
 <h2><?php etranslate('Help')?>: <?php etranslate('Adding/Editing Calendar Entries')?></h2>
 
-<table style='border-width:0px;'>
+<table>
  <tr><td class="help">
   <?php etranslate('Brief Description')?>:</td><td>
   <?php etranslate('brief-description-help')?>

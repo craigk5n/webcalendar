@@ -586,7 +586,7 @@ if ( $DISABLE_REMINDER_FIELD != 'Y' ) { ?>
     <input type="text" name="name" id="entry_brief" size="25" value="<?php 
      echo htmlspecialchars ( $name );
     ?>" /></td></tr>
-   <tr><td style="vertical-align:top;" class="tooltip" title="<?php 
+   <tr><td class="tooltip aligntop" title="<?php 
     etooltip( 'full-description-help' )?>">
     <label for="entry_full"><?php etranslate( 'Full Description' )?>:</label></td><td>
     <textarea name="description" id="entry_full" <?php
@@ -595,9 +595,9 @@ if ( $DISABLE_REMINDER_FIELD != 'Y' ) { ?>
      echo htmlspecialchars ( $description );
     ?></textarea></td>
 <?php if ( $use_fckeditor ||  $use_htmlarea  ) { ?>
-    </tr><tr><td  colspan="2" style="vertical-align:top;">
+    </tr><tr><td  colspan="2" class="aligntop">
 <?php } else {?>
-    <td style="vertical-align:top;">
+    <td class="aligntop">
 <?php }
   
 if (( ! empty ( $categories ) ) || ( $DISABLE_ACCESS_FIELD != 'Y' ) || 
@@ -792,9 +792,9 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
   $extra_arg2 = $site_extras[$i][4];
 
   if ( $extra_type == EXTRA_MULTILINETEXT )
-    echo '<tr><td style="vertical-align:top; font-weight:bold;"><br />' ."\n";
+    echo '<tr><td class="aligntop bold"><br />' ."\n";
   else
-    echo '<tr><td style="font-weight:bold;">';
+    echo '<tr><td class="bold">';
   echo translate ( $extra_descr ) .  ":</td><td>\n";
   if ( $extra_type == EXTRA_URL ) {
     echo '<input type="text" size="50" name="' . $extra_name .
@@ -932,7 +932,8 @@ if ( $single_user == 'N' && $show_participants ) {
   // external users
   if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' ) {
     echo '<tr title="' .
-      tooltip( 'external-participants-help' ) . '"><td style="vertical-align:top;" class="tooltip">' . "\n" . '<label for="entry_extpart">' .
+      tooltip( 'external-participants-help' ) . '"><td class="tooltip aligntop">' . 
+        "\n" . '<label for="entry_extpart">' .
       translate( 'External Participants' ) . ':</label></td><td>' . "\n";
     echo '<textarea name="externalparticipants" id="entry_extpart" rows="5" cols="40">';
     echo $external_users . "</textarea>\n</td></tr>\n";
@@ -1352,7 +1353,7 @@ if ( $useTabs ) { ?>
 <?php } /* $useTabs */ 
 } ?>
 </div> <!-- End tabscontent -->
-<table  style="border-width:0px;">
+<table>
 <tr><td>
  <script type="text/javascript">
 <!-- <![CDATA[

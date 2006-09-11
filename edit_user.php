@@ -55,7 +55,7 @@ if ( ! empty ( $error ) ) {
   echo '<input type="hidden" name="add" value="1" />' . "\n";
  }
 ?>
-<table style="border-width:0px;">
+<table>
  <tr><td>
   <label for="username"><?php etranslate( 'Username' )?>:</label></td><td>
   <?php
@@ -97,7 +97,7 @@ if ( ! empty ( $error ) ) {
  </td></tr>
 <?php }
 if ( $is_admin ) { ?>
- <tr><td style="font-weight:bold;">
+ <tr><td class="bold">
   <?php etranslate( 'Admin' )?>:</td><td>
   <label><input type="radio" name="uis_admin" value="Y"<?php 
   if ( ! empty ( $uis_admin ) && $uis_admin == 'Y' ) 
@@ -132,7 +132,7 @@ if ( $is_admin ) { ?>
 <?php if ( ! empty ( $user ) && ! $use_http_auth &&
   ( $user_can_update_password ) ) { ?>
 </td><td>&nbsp;&nbsp;</td>
-<td style="vertical-align:top;">
+<td class="aligntop">
 
 <h2><?php etranslate( 'Change Password' )?></h2>
 <form action="edit_user_handler.php" method="post"  onsubmit="return valid_form2(this);" >
@@ -140,7 +140,7 @@ if ( $is_admin ) { ?>
 <?php if ( $is_admin ) { ?>
  <input type="hidden" name="user" value="<?php echo $user;?>" />
 <?php } ?>
-<table style="border-width:0px;">
+<table>
  <tr><td>
   <label for="newpass1"><?php etranslate( 'New Password' )?>:</label></td><td>
   <input name="upassword1" id="newpass1" type="password" size="15" />

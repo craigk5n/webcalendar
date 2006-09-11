@@ -39,7 +39,7 @@ else
  <input type="hidden" name="public" value="1" />
 <?php } ?>
 
-<table style="border-width:0px;">
+<table>
 <?php
 if ( $single_user == 'N' ) {
   $userlist =  $otherlist = get_my_users ( '', 'view' );
@@ -84,7 +84,7 @@ if ( $single_user == 'N' ) {
   else if ( $osize > 5 )
     $osize = 5;
   if ( $size >= 1 ) {
-    echo"<tr><td style=\"vertical-align:top;\">\n<label for=\"layeruser\">" .
+    echo"<tr><td class=\"aligntop\">\n<label for=\"layeruser\">" .
       translate( 'Source' ) . ":</label></td><td>\n";
     echo "<select name=\"layeruser\" id=\"layeruser\" size=\"1\">\n$users\n";
     echo "</select>\n";
@@ -99,7 +99,7 @@ if ( $single_user == 'N' ) {
  <input type="button" onclick="selectColor('layercolor')" value="<?php 
   etranslate( 'Select' )?>..." />
 </td></tr>
-<tr><td style="font-weight:bold;">
+<tr><td class="bold">
  <?php etranslate( 'Duplicates' )?>:</td><td>
  <label><input type="checkbox" name="dups" value="Y"<?php 
   if (! empty ($layers[$id]['cal_dups']) && $layers[$id]['cal_dups'] == 'Y') 
@@ -112,11 +112,11 @@ if ( $is_admin && empty ( $layers[$id]['cal_layeruser'] ) )  {
 $addStr = translate ( 'Add to Others' );
 $addmyStr = translate ( 'Add to My Calendar' );
 echo <<<EOT
-  <tr><td style="font-weight:bold;"> 
+  <tr><td class="bold"> 
   {$addmyStr}:</td><td>
   <input type="checkbox" name="is_mine"  checked="checked" onclick="show_others();" />
   </td></tr> 
-  <tr id="others" style="visibility:hidden;"><td style="vertical-align:top;">
+  <tr id="others" style="visibility:hidden;"><td class="aligntop">
    <label for="cal_login">{$addStr}:</label></td><td>
    <select name="cal_login[]" id="cal_login" size="{$osize}" multiple="multiple" >{$others}
    </select>

@@ -8,7 +8,7 @@ echo $helpListStr;
 
 <h2><?php etranslate('Help')?>: <?php etranslate ( 'User Access Control' )?></h2>
 
-<table style='border-width:0px;'>
+<table>
  <tr><td colspan="2">
  <p><?php etranslate('User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.')?></p>
  </td></tr>

@@ -255,7 +255,7 @@ if ($format == 'ical') {
   print_header();
 
   echo '<h2>' . translate( 'Export' ) . ' ' .translate( 'Error' ) . "</h2>\n"
-    . '<span style="font-weight:bold;">' . translate( 'Error' ) . ':</span> '
+    . '<span class="bold">' . translate( 'Error' ) . ':</span> '
     . translate( 'export format not defined or incorrect' ) . '.' . "<br />\n";
   echo print_trailer ();
 
