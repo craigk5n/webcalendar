@@ -80,7 +80,7 @@ print_header($INC,$HeadX);
 echo <<<EOT
   <table width="100%" cellpadding="1">
     <tr>
-      <td style="vertical-align:top; width:80%;" >
+      <td class="aligntop" width="80%" >
       {$navStr}
       </td>
       <td>&nbsp;</td>
@@ -89,9 +89,9 @@ echo <<<EOT
      <td>
       {$dayStr}
      </td>
-     <td style="vertical-align:top;" rowspan="2">
+     <td class="aligntop" rowspan="2">
        <!-- START MINICAL -->
-       <div class="minicalcontainer" style="text-align:center">
+       <div class="minicalcontainer aligncenter">
         {$smallMonthStr}
        </div>
        <br />
