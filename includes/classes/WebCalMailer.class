@@ -73,6 +73,23 @@ class WebCalMailer extends phpmailer {
     $this->ClearAttachments();
     $this->ClearCustomHeaders();      
   }
+
+  //Locate common error function here
+  function MailError ( $mailerError, $error ) {
+    print_header();
+    if ( ! empty ( $mailerError ) ) { 
+      $errStr = '<h2>' .translate( 'Email' ) . ' ' . translate( 'Error' ). "</h2>\n";
+      $errStr .= '<blockquote>' . $mailerError;
+      if (  empty ( $error ) )
+        $errStr .=translate ( 'Changes successfully saved' ); 
+      $errStr .= '</blockquote>'
+    else {
+      $errStr = '<h2>' . translate( 'Error' ) . "</h2>\n";
+      $errStr .= '<blockquote>' . $error . "</blockquote>\n";
+    } 
+    echo $errStr;
+    echo print_trailer();
+  }
 }
 
 // The following comments will be picked up by update_translation.pl so
