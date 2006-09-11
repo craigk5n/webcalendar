@@ -1,3 +1,5 @@
+Version 1.0.5 (?? ??? 2006)
+ - Patch 1519610: Updated French translation
 Version 1.0.4 (07 Jun 2006)
  - Security fix: do not allow setting of "includedir" via URL when
    register_globals is enabled in php.ini
