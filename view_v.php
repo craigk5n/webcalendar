@@ -65,7 +65,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 }
 ?>
 
-<div style="border-width:0px; width:99%;">
+<div style="width:99%;">
 <a title="<?php etranslate ( 'Previous' )?>" class="prev" 
   href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>">
   <img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>

@@ -83,7 +83,7 @@ print_header();
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo '<span style="font-weight:bold;">' . translate( 'Error' ) . ':</span>' . $error;
+  echo '<span class="bold">' . translate( 'Error' ) . ':</span>' . $error;
 } else {
   $ids = array ();
   $words = split ( ' ', $keywords );
@@ -153,7 +153,7 @@ if ( $matches > 0 ) {
   $matches = count ( $ids );
   // let translations get picked up
   // translate ( 'match found' ) translate ( 'matches found' )
-  echo '<span style="font-weight:bold;">' . $matches . ' ' .
+  echo '<span class="bold">' . $matches . ' ' .
     translate( $matches == 1 ? 'match found' : 'matches found' ) 
      . '.</span><br /><br />';
 } else {

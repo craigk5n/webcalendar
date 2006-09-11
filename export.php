@@ -30,7 +30,7 @@ print_header($INC);
 <h2><?php etranslate( 'Export' )?></h2>
 
 <form action="export_handler.php" method="post" name="exportform">
-<table style="border-width:0px;">
+<table>
 <tr><td>
  <label for="exformat"><?php etranslate( 'Export format' )?>:</label></td><td>
  <select name="format" id="exformat" onchange="toggel_catfilter();">

@@ -136,7 +136,7 @@ if ( ! empty ( $error ) ) {
  <input name="<?php echo $app_login_page['username'] ?>" id="user" size="15" maxlength="25" 
    tabindex="1" />
 </td></tr>
-<tr><td style="text-align:right;">
+<tr><td class"alignright">
  <label for="password"><?php etranslate( 'Password' )?>:</label></td><td>
  <input name="<?php echo $app_login_page['password'] ?>" id="password" type="password" size="15" 
    maxlength="30" tabindex="2" />
@@ -149,7 +149,7 @@ if ( ! empty ( $error ) ) {
    <?php etranslate("Save login via cookies so I don't have to login next time")?></label>
 </td></tr>
 <?php } ?>
-<tr><td colspan="4" style="text-align:center;">
+<tr><td colspan="4" class="aligncenter">
 <?php 
   if (! empty (  $app_login_page['hidden'] ) ) { 
     foreach ( $app_login_page['hidden'] as $key => $val ) {

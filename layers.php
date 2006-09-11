@@ -78,7 +78,7 @@ if ($layers_enabled) { ?>
        $layeruser = $layer['cal_layeruser'];
        user_load_variables ( $layeruser, 'layer' );
 ?>
- <span style="font-weight:bold;"><?php etranslate( 'Layer' )?>&nbsp;<?php echo ($layer_count); ?></span>
+ <span class="bold"><?php etranslate( 'Layer' )?>&nbsp;<?php echo ($layer_count); ?></span>
  (<a title="<?php 
   etranslate( 'Edit layer' ); ?>" href="edit_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>"><?php 
   etranslate( 'Edit' ); ?></a> / 
@@ -88,16 +88,16 @@ if ($layers_enabled) { ?>
   etranslate( 'Delete' )?></a>)
 
 <table style="margin-left:20px; border-width:0px;">
- <tr><td style="vertical-align:top; font-weight:bold;">
+ <tr><td class="aligntop bold">
   <?php etranslate( 'Source' )?>:</td><td>
   <?php echo $layerfullname; ?>
  </td></tr>
- <tr><td style="font-weight:bold;">
+ <tr><td class="bold">
   <?php etranslate( 'Color' )?>:</td><td style="background-color:<?php 
   echo $CELLBG;?>; color:<?php echo ( $layer['cal_color'] ); ?>;">
   <?php echo ( $layer['cal_color'] ); ?>
  </td></tr>
- <tr><td style="font-weight:bold;">
+ <tr><td class="bold">
   <?php etranslate( 'Duplicates' )?>:</td><td>
   <?php
    if( $layer['cal_dups'] == 'N')
