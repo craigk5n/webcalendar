@@ -83,12 +83,7 @@ if ( $error == '' || ! empty ( $cal_login ) ) {
 }
 
 print_header();
+echo print_error ( $error);
+echo print_trailer(); 
 ?>
-
-<h2><?php etranslate( 'Error' )?></h2>
-<blockquote>
-<?php echo $error; ?>
-</blockquote>
-
-<?php echo print_trailer(); ?>
 

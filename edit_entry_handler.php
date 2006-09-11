@@ -620,7 +620,7 @@ if ( empty ( $error ) ) {
     $sql = 'INSERT INTO webcal_entry_repeats ( ' . implode ( ', ', $names ) .
        " ) VALUES ( $placeholders )"; 
       dbi_execute ( $sql, $values );
-      $msg .= "<span style=\"font-weight:bold;\">SQL:</span> $sql<br />\n<br />";
+      $msg .= "<span class=\"bold\">SQL:</span> $sql<br />\n<br />";
 
     } //end add repeating info
     //We manually created exceptions. This can be done without repeats
@@ -1003,12 +1003,12 @@ if ( empty ( $error )  && empty ( $mailerError ) ) {
   }
 }
 
-print_header();
 if ( ! empty ( $conflicts ) ) { 
+print_header();
 ?>
 <h2><?php etranslate( 'Scheduling Conflict' )?></h2>
 
-<?php etranslate( 'Your suggested time of' )?> <span style="font-weight:bold;">
+<?php etranslate( 'Your suggested time of' )?> <span class="bold">
 <?php
   if (  $timetype == 'A' ) {
     etranslate( 'All day event' );
@@ -1063,20 +1063,8 @@ onclick="history.back()" /><td>
 </table>
 </form>
 
-<?php } else if ( ! empty ( $mailerError ) ) { ?>
-<h2><?php echo translate( 'Email' ) . ' ' . translate( 'Error' )?></h2>
-<blockquote>
-<?php 
-  echo $mailerError;
-  if (  empty ( $error ) )
-    etranslate ( 'Changes successfully saved' ); 
-?>
-</blockquote>
-<?php } else { ?>
-<h2><?php etranslate( 'Error' )?></h2>
-<blockquote>
-<?php echo $error; ?>
-</blockquote>
-<?php }
-echo print_trailer(); ?>
+<?php } else {
+//process errors
+$mail->MailError ( $mailerError, $error );
+ ?>
 

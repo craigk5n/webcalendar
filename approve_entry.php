@@ -146,19 +146,6 @@ if ( empty ( $error ) && empty ( $mailerError ) ) {
   }
   exit;
 }
-print_header ();
-if ( ! empty ( $mailerError ) ) { ?>
-<h2><?php echo translate( 'Email' ) . ' ' . translate( 'Error' )?></h2>
-<blockquote>
-<?php 
-  echo $mailerError;
-  if (  empty ( $error ) )
-    etranslate ( 'Changes successfully saved' ); 
-?>
-</blockquote>
-<?php } else { 
-echo '<h2>' . translate( 'Error' ) . "</h2>\n";
-echo '<p>'. $error . "</p>\n";
-}
-echo print_trailer ();
+//process errors
+$mail->MailError ( $mailerError, $error );
 ?>

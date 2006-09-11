@@ -206,24 +206,5 @@ function delete_events ( $nid ){
 
 }
 
-
-if ( ! empty ( $error ) ) {
-  print_header( '', '', '', true );
+echo error_check('users.php?tab=remotes'); 
 ?>
-
-<h2><?php etranslate(  'Error' )?></h2>
-
-<blockquote>
-<?php
-echo $error;
-//if ( $sql != '' )
-//  echo "<br /><br /><b>SQL:</b> $sql";
-//?>
-</blockquote>
-</body>
-</html>
-<?php } else if ( ! empty ( $action ) && empty ( $error ) ) {
-?><html><head></head>
-<body onLoad="alert('<?php etranslate( 'Changes successfully saved', true);?>'); window.parent.location.href='users.php?tab=remotes';">
-</body></html>
-<?php } ?>

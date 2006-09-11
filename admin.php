@@ -952,7 +952,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <input type="text" size="30" name="admin_SMTP_PASSWORD" value="<?php echo ( ! empty ($s['SMTP_PASSWORD'])?$s['SMTP_PASSWORD']:'');?>" />
 </td></tr>
 
-<tr id="em7"><td colspan="2" style="font-weight:bold;">
+<tr id="em7"><td colspan="2" class="bold">
  <?php etranslate( 'Default user settings' )?>:
 </td></tr>
 <tr id="em8"><td class="tooltip" title="<?php etooltip( 'email-event-reminders-help' )?>">
@@ -1008,9 +1008,9 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  echo $select ?>" name="" />
 </td>
 <td rowspan="14" width="1%">&nbsp;</td>
-<td rowspan="14" width="45%" style="text-align:center; vertical-align:top;">
+<td rowspan="14" width="45%" class="aligncenter ligntop">
 <!-- BEGIN EXAMPLE MONTH -->
-<table style="border:0px; width:90%; background-color:<?php echo $BGCOLOR?>"><tr>
+<table style="width:90%; background-color:<?php echo $BGCOLOR?>"><tr>
 <td width="1%" rowspan="3">&nbsp;</td>
 <td style="text-align:center; color:<?php 
   echo $H2COLOR?>; font-weight:bold;"><?php
@@ -1131,17 +1131,13 @@ echo display_month ( date ('m') , date('Y') , true);
 </div>
 
 <br /><br />
-<div style="border-width:0px;">
+<div>
  <input type="submit" value="<?php etranslate( 'Save' )?>" name="" />
 </div>
 </form>
 
 <?php } else {// if $error 
-    echo '<h2>' . translate( 'Error' ) . "</h2>\n";
-    echo translate( 'The following error occurred' ) . ':';
-    echo "<blockquote>\n";
-    echo $error;
-    echo "</blockquote>\n";  
+  echo print_error ( $error, true );  
 } 
 echo print_trailer (); ?>
 

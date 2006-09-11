@@ -149,16 +149,5 @@ if ( empty ( $error ) && empty ( $mailerError ) ) {
     do_redirect ( $view_type . ".php?id=$id&amp;user=$app_user" );
   exit;
 }
-print_header ();
-if ( ! empty ( $mailerError ) ) { 
-  echo '<h2>' . translate( 'Email' ) . ' ' . translate( 'Error' ) . 
-    "</h2>\n<blockquote>\n"; 
-  echo $mailerError;
-  if (  empty ( $error ) )
-    etranslate ( 'Changes successfully saved' ); 
-  echo "</blockquote>\n";
-} else { 
-  echo '<h2>' . translate( 'Error' ) . "</h2>\n";
-  echo '<p>' . $error . "</p>\n";
-}
-echo print_trailer (); ?>
+//process errors
+$mail->MailError ( $mailerError, $error ); ?>

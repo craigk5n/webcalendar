@@ -91,21 +91,11 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
     }
   }
 }
-if ( empty ( $error ) ) do_redirect ( 'nonusers.php' );
+if ( empty ( $error ) ) 
+  do_redirect ( 'nonusers.php' );
 
 print_header();
+echo print_error ( $error);
+echo print_trailer(); 
 ?>
-
-<h2><?php etranslate( 'Error' )?></h2>
-
-<blockquote>
-<?php
-
-echo $error;
-//if ( $sql != '' )
-//  echo "<br /><br /><b>SQL:</b> $sql";
-//?>
-</blockquote>
-
-<?php echo print_trailer(); ?>
 

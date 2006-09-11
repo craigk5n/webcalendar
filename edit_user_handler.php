@@ -2,7 +2,7 @@
 /* $Id$ */
 
 // There is the potential for a lot of mischief from users trying to
-// access this file in ways the shouldn't.  Users may try to type in
+// access this file in ways they shouldn't.  Users may try to type in
 // a URL to get around functions that are not being displayed on the
 // web page to them. 
 
@@ -19,8 +19,6 @@ $notIdenticalStr = translate( 'The passwords were not identical' ) . '.';
 $noPasswordStr = translate( 'You have not entered a password' ) . '.';
 $invalidCharStr = translate( 'Invalid characters in login' ) . '.';
 $blankUserStr = translate( 'Username can not be blank' ) . '.';
-$successStr = translate( 'Changes successfully saved', true);
-$errorStr = translate( 'Error' );
 // don't allow them to edit users if it's not allowed
 if ( empty ( $user ) ) {
   // asking to create a new user
@@ -104,13 +102,5 @@ else if ( $formtype == 'edituser' ) {
   }
 }
 
-if ( ! empty ( $error ) ) {
-  print_header( '', '', '', true );
-  echo '<h2>' . $errorStr . '</h2><blockquote>' .
-    $error . '</blockquote>';
-} else  {
-  echo '<html><head></head><body onLoad="alert(\''. $successStr . 
-    '\'); window.parent.location.href=\'users.php\';">';
-}
-echo '</body></html>';
+echo error_check('users.php', false);
 ?>
