@@ -96,7 +96,7 @@ if ( $newview ) {
 }
 ?>
 
-<table style="border-width:0px;">
+<table>
 <tr><td>
  <label for="viewname"><?php etranslate( 'View Name' )?>:</label></td><td>
  <input name="viewname" id="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>" />
@@ -174,7 +174,7 @@ if ( $newview ) {
 <?php } ?>
 </div>
 </td></tr>
-<tr><td colspan="2" style="text-align:center;">
+<tr><td colspan="2" class="aligncenter">
 <br />
 <input type="submit" name="action" value="<?php if ( $newview ) etranslate( 'Add' ); else etranslate( 'Save' ); ?>" />
 <?php if ( ! $newview ) { ?>

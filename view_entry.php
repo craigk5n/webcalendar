@@ -421,8 +421,8 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
   if ( $is_assistant )
     echo '  ( ' . translate('Assistant mode') . ' )';
 ?></h2>
-<table border="0" width="100%">
-<tr><td style="vertical-align:top; font-weight:bold;" width="10%">
+<table width="100%">
+<tr><td class="aligntop bold" width="10%">
  <?php etranslate( 'Description' )?>:</td><td>
  <?php
   if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) &&
@@ -444,13 +444,13 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 ?></td></tr>
  <?php
   if ( $DISABLE_LOCATION_FIELD != 'Y' && ! empty ( $location ) ) { 
-    echo '<tr><td style="vertical-align:top; font-weight:bold;">';
+    echo '<tr><td class="aligntop bold">';
     echo translate( 'Location' ) . ':</td><td>';
     echo $location . "</td><tr>\n";
   }
     
  if ( $event_status != 'A' && ! empty ( $event_status ) ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php etranslate( 'Status' )?>:</td><td>
  <?php
      if ( $event_status == 'A' )
@@ -467,7 +467,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 </td></tr>
 <?php } ?>
 
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php echo ( $eType == 'task' ? translate('Start Date' ) : translate( 'Date' ) )?>:</td><td>
  <?php
  if ( $eType == 'task' ) {
@@ -475,27 +475,27 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
   ?>
 </td></tr>
 <?php if ( $event_time >= 0 ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php etranslate( 'Start Time' )?>:</td><td>
  <?php
    echo display_time ( $display_date . sprintf( "%06d", $event_time ), 2 );
   ?>
 </td></tr>
 <?php } ?>
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php etranslate( 'Due Date' )?>:</td><td>
  <?php
    echo date_to_str ( $due_date );
   ?>
 </td></tr>
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php etranslate( 'Due Time' )?>:</td><td>
  <?php
    echo display_time (  $due_date . sprintf( "%06d", $due_time ), 2 );
   ?>
   </td></tr>
   <?php if (! empty ( $cal_completed ) ) { ?>
-    <tr><td style="vertical-align:top; font-weight:bold;">
+    <tr><td class="aligntop bold">
     <?php echo translate( 'Completed' ) . ":</td><td>\n";
     echo date_to_str (  $cal_completed ); 
    }
@@ -505,13 +505,13 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
   ?>
 </td></tr>
 <?php if ( $event_repeats ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php etranslate( 'Repeat Type' )?>:</td><td>
  <?php echo export_recurrence_ical( $id , true); ?>
 </td></tr>
 <?php }
 if ( $eType != 'task' && $event_time >= 0 ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php etranslate( 'Time' )?>:</td><td>
  <?php
     if ( $duration == 1440  && $event_time == 0 ) {
@@ -526,7 +526,7 @@ if ( $eType != 'task' && $event_time >= 0 ) { ?>
 </td></tr>
 <?php }
 if ( $duration > 0 && $duration != 1440 ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php etranslate( 'Duration' )?>:</td><td>
  <?php 
    $dur_h = (int)( $duration / 60 );
@@ -537,19 +537,19 @@ if ( $duration > 0 && $duration != 1440 ) { ?>
 </td></tr>
 <?php }
 if ( $DISABLE_PRIORITY_FIELD != 'Y' ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php etranslate( 'Priority' )?>:</td><td>
  <?php echo $pri[$cal_priority]; ?>
 </td></tr>
 <?php }
 if ( $DISABLE_ACCESS_FIELD != 'Y' ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php etranslate( 'Access' )?>:</td><td>
  <?php echo ( $cal_access == "P" ) ? translate ( 'Public' ) : ( $cal_access == 'C' ? translate( 'Confidential' ) : translate( 'Private' )  ); ?>
 </td></tr>
 <?php }
 if ( $CATEGORIES_ENABLED == 'Y' && ! empty ( $category ) ) { ?>
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php etranslate( 'Category' )?>:</td><td>
  <?php echo $category; ?>
 </td></tr>
@@ -575,7 +575,7 @@ if ( !empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == 'Y' ) {
 }
 
 if ( $single_user == 'N' && ! empty ( $createby_fullname )  ) {
-  echo '<tr><td style="vertical-align:top; font-weight:bold;">' . 
+  echo '<tr><td class="aligntop bold">' . 
  translate( 'Created by' ) . ":</td><td>\n";
   if ( $is_private  && ! access_is_enabled() ) {
     echo '[' . translate( 'Private' ) . "]\n</td></tr>";
@@ -594,7 +594,7 @@ if ( $single_user == 'N' && ! empty ( $createby_fullname )  ) {
   }
 }
 ?>
-<tr><td style="vertical-align:top; font-weight:bold;">
+<tr><td class="aligntop bold">
  <?php etranslate( 'Updated' )?>:</td><td>
  <?php
     if ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y' ) {    
@@ -609,7 +609,7 @@ if ( $single_user == 'N' && ! empty ( $createby_fullname )  ) {
 <?php
 //display the reminder info if found
 if ( ! empty ( $reminder ) ) {
-  echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" .
+  echo '<tr><td class="aligntop bold">' .
       translate ( 'Send Reminder' ) . ":</td>\n";
   echo '<td>' . $reminder . "</td></tr>\n";
 }
@@ -623,7 +623,7 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
   $extra_arg1 = $site_extras[$i][3];
   $extra_arg2 = $site_extras[$i][4];
   if ( ! empty ( $extras[$extra_name]['cal_name'] ) ) {
-    echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n" .
+    echo '<tr><td class="aligntop bold">' .
       translate ( $site_extras[$i][1] ) .
       ":</td><td>\n";
     if ( $extra_type == EXTRA_URL ) {
@@ -664,7 +664,7 @@ if ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' &&
   $show_participants = false;
 }
 if ( $single_user == 'N' && $show_participants ) { ?>
-  <tr><td style="vertical-align:top; font-weight:bold;">
+  <tr><td class="aligntop bold">
   <?php etranslate( 'Participants' )?>:</td><td>
   <?php
   $num_app = $num_wait = $num_rej = 0;
@@ -799,7 +799,7 @@ if ( $single_user == 'N' && $show_participants ) { ?>
   if ( empty ( $user ) && $readonly != 'Y' && $is_my_event && 
     $login != '__public__' && ! $is_nonuser && 
    $event_status != 'D'  )  {
-    echo "<tr><td style=\"vertical-align:top; font-weight:bold;\">\n";
+    echo "<tr><td class=\"aligntop bold\">\n";
     echo "<form action=\"view_entry.php?id=$id\" method=\"post\" name=\"setpercentage\">\n";
     echo "<input type=\"hidden\" name=\"others_complete\" value=\"$others_complete\" />\n";
     echo  translate ( 'Update Task Percentage' ) . 
@@ -817,7 +817,7 @@ if ( $single_user == 'N' && $show_participants ) { ?>
 
 
 if ( Doc::attachmentsEnabled () && $rss_view == false ) { ?>
-  <tr><td style="vertical-align:top; font-weight:bold;">
+  <tr><td class="aligntop bold">
   <?php etranslate( 'Attachments' )?>:</td><td>
   <?php
   $attList =& new AttachmentList ( $id );
@@ -847,7 +847,7 @@ if ( Doc::attachmentsEnabled () && $rss_view == false ) { ?>
 }
 
 if ( Doc::commentsEnabled () ) { ?>
-  <tr><td style="vertical-align:top; font-weight:bold;">
+  <tr><td class="aligntop bold">
   <?php etranslate( 'Comments' )?>:</td><td>
   <?php
   $comList =& new CommentList ( $id );
