@@ -1,4 +1,5 @@
 Version 1.0.5 (?? ??? 2006)
+  - Patch 1520078: Fix for postgreSQL PHP warnings
   - The following translations were updated:
     French
 Version 1.0.4 (07 Jun 2006)

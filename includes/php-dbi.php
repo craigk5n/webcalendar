@@ -288,8 +288,8 @@ function dbi_query ( $sql, $fatalOnError=true, $showError=true ) {
     return OCIExecute ( $GLOBALS["oracle_statement"],
       OCI_COMMIT_ON_SUCCESS );
   } else if ( strcmp ( $GLOBALS["db_type"], "postgresql" ) == 0 ) {
-    $GLOBALS["postgresql_row[\"$res\"]"] = 0;
     $res =  pg_exec ( $GLOBALS["postgresql_connection"], $sql );
+    $GLOBALS["postgresql_row[\"$res\"]"] = 0;
     if ( ! $res )
       dbi_fatal_error ( "Error executing query." .
         $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : "" .
