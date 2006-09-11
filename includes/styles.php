@@ -105,6 +105,9 @@ a:hover {
 abbr {
   cursor: help;
 }
+div {
+  border-width:0px; 
+}
 h2 {
   font-size: 20px;
   color: <?php echo $GLOBALS['H2COLOR']; ?>;
@@ -127,7 +130,8 @@ textarea {
 }
 table {
   border-collapse: collapse; 
-  border-spacing: 0px; 
+  border-spacing: 0px;
+  border-width:0px; 
 }
 th {
   font-size: 13px;
@@ -465,6 +469,7 @@ td.matrixappts {
   text-align: left;
   background-color: <?php echo $GLOBALS['CELLBG']; ?>;
   vertical-align: middle;
+  width:0%;
 }
 td.matrixappts:hover {
   background-color:#CCFFCC;
@@ -488,6 +493,9 @@ a.matrix img {
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   margin-left: auto; 
   margin-right: auto;
+}
+.matrixledge {
+  border-left: 1px solid #000000;
 }
 .matrixlegend {
   margin-top: 25px;
@@ -1048,6 +1056,26 @@ a.weekcell {
 .byxxx th,
 .byxxx td {
  text-align: center;  
+}
+.icon_text {
+ border-width:0px; 
+ width:10px; 
+ height:10px;
+}
+.alignright {
+ text-align:right;
+}
+.alignleft {
+ text-align:left;
+}
+.aligncenter {
+ text-align:center;
+}
+.aligntop {
+ vertical-align:top;
+}
+.bold {
+ font-weight: bold;
 }
 <?php
 if ( ! empty ( $_SERVER['PHP_SELF'] ) && 

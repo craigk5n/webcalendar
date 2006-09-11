@@ -36,7 +36,7 @@ else {
 if ( ! empty ( $GLOBALS['HOME_LINK'] ) ) {
   $home = $GLOBALS['HOME_LINK'];
   $goto_link[] = '<a title="' . 
-    translate( 'Home' ) . '" style="font-weight:bold;" ' .
+    translate( 'Home' ) . '" class="bold" ' .
     "href=\"$home\">" . 
     translate( 'Home' ) . '</a>';
 }
@@ -70,12 +70,12 @@ if ( ! access_can_view_page ( $todayURL ) ) {
 if ( $single_user != 'Y' ) {
   if ( ! empty ( $user ) && $user != $login ) {
     $goto_link[] = '<a title="' . 
-      translate( 'My Calendar' ) . '" style="font-weight:bold;" ' .
+      translate( 'My Calendar' ) . '" class="bold" ' .
       "href=\"$mycal\">" . 
       translate( 'Back to My Calendar' ) . '</a>';
   } else {
     $goto_link[] = '<a title="' . 
-      translate( 'My Calendar' ) . '" style="font-weight:bold;" ' .
+      translate( 'My Calendar' ) . '" class="bold" ' .
       "href=\"$mycal\">" . 
       translate( 'My Calendar' ) . '</a>';
   }
@@ -84,7 +84,7 @@ if ( $single_user != 'Y' ) {
   }
   if ( ! empty ( $todayURL ) ) {
     $goto_link[] = '<a title="' . 
-      translate( 'Today' ) . '" style="font-weight:bold;" ' .
+      translate( 'Today' ) . '" class="bold" ' .
       "href=\"$todayURL\">" . 
       translate( 'Today' ) . '</a>';
   }
@@ -94,7 +94,7 @@ if ( $single_user != 'Y' ) {
       $url = 'adminhome.php';
       if ($is_nonuser_admin) $url .= "?user=$user";
       $goto_link[] = '<a title="' . 
-        translate( 'Admin' ) . '" style="font-weight:bold;" ' .
+        translate( 'Admin' ) . '" class="bold" ' .
         "href=\"$url\">" . translate( 'Admin' ) . '</a>';
     }
   }
@@ -129,16 +129,16 @@ if ( $single_user != 'Y' ) {
   }
 } else {
   $goto_link[] = '<a title="' . 
-    translate( 'My Calendar' ) . '" style="font-weight:bold;" ' .
+    translate( 'My Calendar' ) . '" class="bold" ' .
     "href=\"$mycal\">" . 
     translate( 'My Calendar' ) . '</a>';
   $goto_link[] = '<a title="' . 
-    translate( 'Today' ) . '" style="font-weight:bold;" ' .
+    translate( 'Today' ) . '" class="bold" ' .
     "href=\"$todayURL\">" . 
     translate( 'Today' ) . '</a>';
   if ( $readonly == 'N' ) {
     $goto_link[] = '<a title="' . 
-      translate( 'Admin' ) . '" style="font-weight:bold;" ' .
+      translate( 'Admin' ) . '" class="bold" ' .
       'href="adminhome.php">' . 
       translate( 'Admin' ) . '</a>';
   }
