@@ -351,7 +351,7 @@ if ( ! empty ( $otheruser ) ) {
           }
           $gridStr.= "</tr>\n";
         }
-        $gridStr.= '<tr><td colspan="2" style="text-align:right">';
+        $gridStr.= '<tr><td colspan="2" class="alignright">';
         if ( $otheruser != '__default__' &&  $otheruser != '__public__' )
         $gridStr.= '<input type="button" value="' . 
           translate( 'Assistant' ) . "\" onclick=\"selectAll(63);\" />&nbsp;&nbsp;";

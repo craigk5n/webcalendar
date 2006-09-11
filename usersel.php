@@ -58,7 +58,7 @@ print_header($INC,'','',true, false, true);
 <center>
 <form action="#" name="userselform">
 <table style="border-width:0px; width:100%;">
-<tr><td style="vertical-align:top;">
+<tr><td class="aligntop">
 <b><?php etranslate( 'Users' ); ?>:</b><br />
 <select name="users" size="15" multiple="multiple">
 <?php

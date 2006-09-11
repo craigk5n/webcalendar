@@ -16,7 +16,7 @@ $graycnt = count($grayscale);
 $rgb = '000000';
 ?>
 
-<div style="text-align:center;">
+<div class="aligncenter">
 <table style="border-collapse: separate;border: none;background-color:#000000;border-spacing: 1px;">
 <?php
 // First green array 
