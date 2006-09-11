@@ -1,4 +1,5 @@
 Version 1.1.1 (?? ??? 2006)
+ - Changed translate.php to ignore /install/ files if unneeded
  - Implemented PATCH 1539603: Move </body></html> into print_trailer()
  - Fixed bug 1554309: demo calendar event days are not the same
  - Fixed bug 1553518: events one day early in list_unapproved.php
