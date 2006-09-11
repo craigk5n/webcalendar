@@ -75,6 +75,7 @@ $datestyles_md = array (
  '__month__-__dd__', translate( 'December' ) . '-31',
  '__dd__ __month__', '31 ' . translate( 'December' ),
  '__dd__. __month__', '31. ' . translate( 'December' ),
+ '__dd__ __mon__', ' 31' . translate( 'Dec' ),
  '__mm__/__dd__', '12/31',
  '__mm__-__dd__', '12-31',
  '__dd__/__mm__', '31/12',
