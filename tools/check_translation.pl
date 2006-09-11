@@ -69,8 +69,9 @@ foreach $f (@incfiles) {
 }
 push( @files, "tools/send_reminders.php" );
 push( @files, "tools/reload_remotes.php" );
-push( @files, "install/index.php" );
 push( @files, "includes/menu/index.php" );
+push( @files, "install/defaqult_config.php" );
+push( @files, "install/index.php" );
 
 foreach $f (@files) {
   $file = "../$f";

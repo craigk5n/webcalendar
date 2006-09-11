@@ -224,6 +224,12 @@ if ( $plugin eq "" ) {
   push( @files, "includes/menu/index.php" );
   push( @files, "tools/send_reminders.php" );
   push( @files, "tools/reload_remotes.php" );
+#
+# Do not add any files below this point. We want to be able to 
+# ignore these translations when not performing an installation
+# Please see includes/translate.php for details
+#
+  push( @files, "install/default_config.php" );
   push( @files, "install/index.php" );
 }
 
