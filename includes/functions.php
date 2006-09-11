@@ -1493,23 +1493,21 @@ function display_navigation( $name, $show_arrows=true, $show_cats=true ){
  */
 function display_month ( $thismonth, $thisyear, $demo='' ){
  global $WEEK_START, $WEEKENDBG, $user, $login, $today,
-   $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_WEEKNUMBER;
+   $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_WEEKNUMBER, $DISPLAY_LONG_WEEKDAYS;
 
-  $ret = '<table class="main" style="clear:both;" cellspacing="0" cellpadding="0" width="100%" id="month_main"><tr>';
+ //TODO Add this option to System Settings and Preferences
+ //Display long Weeekday names
+  $DISPLAY_LONG_WEEKDAYS = 'N';
+  $ret = '<table class="main"  cellspacing="0" cellpadding="0" id="month_main"><tr>';
   if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
       $ret .= '<th class="weekcell" width="5%"></th>' . "\n"; 
   }
-  if ( $WEEK_START == 0 ) {
-    $ret .= '<th class="weekend">' . translate('Sun') . "</th>\n";
-  }
-  $ret .= '<th>' . translate('Mon') . "</th>\n";
-  $ret .= '<th>' . translate('Tue') . "</th>\n";
-  $ret .= '<th>' . translate('Wed') . "</th>\n";
-  $ret .= '<th>' . translate('Thu') . "</th>\n";
-  $ret .= '<th>' . translate('Fri') . "</th>\n";
-  $ret .= '<th class="weekend">' . translate('Sat') . "</th>\n";
-  if ( $WEEK_START == 1 ) {
-    $ret .= '<th class="weekend">' . translate('Sun') . "</th>\n";
+  for ( $i = 0; $i < 7; $i++ ) {
+    $thday = ( $i + $WEEK_START ) % 7;
+    $thname = ( $DISPLAY_LONG_WEEKDAYS  == 'Y'? 
+      weekday_name ( $thday ) : weekday_short_name ( $thday ) );
+    $thclass = ( $thday == 0 || $thday == 6 ? ' class="weekend"' :'' );
+    $ret .= "<th$thclass>" . $thname . "</th>\n";
   }
   $ret .= "</tr>\n";
   
@@ -2710,7 +2708,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
         $n=count($ret);
       }//end while  
     } else if ($rpt_type == 'yearly') {
-      //this RRULE is VERY difficult to parse becauseRFC2445 doesn't
+      //this RRULE is VERY difficult to parse because RFC2445 doesn't
       //give any guidance on which BYxxx are mutually exclusive
       //We will assume that:
       //BYMONTH, BYMONTHDAY, BYDAY go together. BYDAY will be parsed relative to BYMONTH
@@ -3067,17 +3065,17 @@ function icon_text ( $id, $can_edit, $can_delete ) {
   global $readonly, $is_admin;
   $ret = '<a title="' . 
   translate('View this entry') . "\" href=\"view_entry.php?id=$id\"><img src=\"images/view.gif\" alt=\"" . 
-  translate('View this entry') . '" style="border-width:0px; width:10px; height:10px;" /></a>';
+  translate('View this entry') . '" class="icon_text" /></a>';
   if ( $can_edit && $readonly == 'N' )
     $ret .= '<a title="' . translate('Edit entry') . 
     "\" href=\"edit_entry.php?id=$id\"><img src=\"images/edit.gif\" alt=\"" . 
-  translate('Edit entry') . '" style="border-width:0px; width:10px; height:10px;" /></a>';
+  translate('Edit entry') . '" class="icon_text" /></a>';
   if ( $can_delete && ( $readonly == 'N' || $is_admin ) )
     $ret .= '<a title="' . 
       translate('Delete entry') . "\" href=\"del_entry.php?id=$id\" onclick=\"return confirm('" .
   translate('Are you sure you want to delete this entry?', true) . "\\n\\n" . 
   translate('This will delete this entry for all users.') . '\');\"><img src="images/delete.gif" alt="' . 
-  translate('Delete entry') . '" style="border-width:0px; width:10px; height:10px;" /></a>';
+  translate('Delete entry') . '" class="icon_text" /></a>';
   return $ret;
 }
 
@@ -4385,7 +4383,7 @@ function load_user_categories ($ex_global = '') {
   $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
     $is_admin ) ) ? $user : $login;  
   $categories = array ();
-  $categories[-1] = translate ( 'None' );;
+  $categories[-1] = translate ( 'None' );
   $category_owners = array ();
   if ( $CATEGORIES_ENABLED == 'Y' ) {
     $sql = 'SELECT cat_id, cat_name, cat_owner FROM webcal_categories WHERE ';
@@ -4951,6 +4949,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $cols = (($hours * $interval) + 1);
   $total_pct = '80%';
   $cell_pct =  (int) (80 /($hours * $interval) );
+  $style_width = ( $cell_pct > 0 ? 'style="width:'.$cell_pct.'%;"' : '' );
   $master = array();
   $dateTS = date_to_epoch ( $date);
   $thismonth = date('m', $dateTS);
@@ -5055,8 +5054,7 @@ EOT;
             $str .= $k."</td>\n";
             break;
           default:
-            $str .= 'style="width:'.$cell_pct.'%;" '.
-              $MouseDown . $MouseOver . $MouseOut.$titleStr .
+            $str .= $style_width . $MouseDown . $MouseOver . $MouseOut.$titleStr .
               sprintf ($hourfmt, $hour).':'.($increment * $j<=9?'0':'').
               ($increment * $j). '.">';
             $str .= "&nbsp;&nbsp;</td>\n";
@@ -5094,8 +5092,9 @@ $MouseOut = '';
     // check each timebar
     for ( $j = $first_hour; $j < $last_hour; $j++ ) {
        for ( $k = 0; $k < $interval; $k++ ) {
-         $border = ($k == '0') ? ' border-left: 1px solid #000000;' : '';
-         $MouseDown = 'onmousedown="schedule_event('.$j.','.sprintf ("%02d",($increment * $k)).');"';
+         $border = ($k == '0') ? ' matrixledge' : '';
+         $MouseDown = 'onmousedown="schedule_event('.$j.','.
+           sprintf ("%02d",($increment * $k)).');"';
         $RC = $CELLBG;
          //$space = '';
          $space = '&nbsp;';
@@ -5105,14 +5104,14 @@ $MouseOut = '';
            // ignore this..
          } else if ( empty ( $master[$participants[$i]][$r]['ID'] ) ) {
            // This is the first line for 'all' users.  No event here.
-           $space = "<span class=\"matrix\"><img src=\"images/pix.gif\" alt=\"\" style=\"height: 8px\" /></span>";
+           $space = "<span class=\"matrix\"><img src=\"images/pix.gif\" alt=\"\" /></span>";
          } else if ($master[$participants[$i]][$r]['stat'] == "A") {
            $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"images/pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
          } else if ($master[$participants[$i]][$r]['stat'] == "W") {
            $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"images/pixb.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
          }
 
-         $ret .= "<td class=\"matrixappts\" style=\"width:{$cell_pct}%;$border\" ";
+         $ret .= "<td class=\"matrixappts$border\" $style_width ";
          if ($space == '&nbsp;') $ret .= "$MouseDown $MouseOver $MouseOut";
          $ret .= ">$space</td>\n";
          $col++;
@@ -5369,18 +5368,31 @@ function load_template ( $login, $type )
 }
 
 
-function error_check ( $nextURL ) {
+function error_check ( $nextURL, $redirect=true ) {
+  global $error;
   $ret = '';
   if ( ! empty ($error) ) {
     print_header( '', '', '', true );
-    $ret .= '<h2>' . translate('Error') . '</h2>';
-    $ret .= '<blockquote>' . $error . "</blockquote>\n</body></html>";
+    $ret .= '<h2>' . print_error ( $error ) ."</body></html>";
   } else if ( empty ($error) ) {
+    if ( $redirect ) {
+      do_redirect ( $nextURL );
+    }
     $ret .= "<html><head></head><body onload=\"alert('" . 
       translate('Changes successfully saved', true) . 
       "');  window.parent.location.href='$nextURL';\"></body></html>";
   }
   return $ret;
+}
+
+function print_error ( $error, $full=false ) {
+	$ret =  '<h2>' . translate( 'Error' ) . "</h2>\n";
+  if ( $full )
+	  $ret .=  translate( 'The following error occurred' ) . ':';
+	$ret .= "<blockquote>\n";
+	$ret .= $error;
+	$ret .= "</blockquote>\n";
+  return $ret; 
 }
 
 /**
