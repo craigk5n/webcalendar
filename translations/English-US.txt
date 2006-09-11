@@ -29,7 +29,7 @@
 #
 #
 #
-# Translation last updated on 09-07-2006
+# Translation last updated on 09-11-2006
 
 
 ###############################################
@@ -359,8 +359,6 @@ Table cell background for other month: Table cell background for other month
 Week number color: Week number color
 Event popup background: Event popup background
 Event popup text: Event popup text
-Error: Error
-The following error occurred: The following error occurred
 
 
 ###############################################
@@ -379,6 +377,13 @@ Delete Events: Delete Events
 Public Preferences: Public Preferences
 Unapproved Public Events: Unapproved Public Events
 Administrative Tools: Administrative Tools
+
+
+###############################################
+# Page: admin_mod_security.php
+#
+Error: Error
+The following error occurred: The following error occurred
 
 
 ###############################################
@@ -401,7 +406,6 @@ An appointment has been approved and comments added by: An appointment has been 
 The subject was: The subject was
 The description is: The description is
 Comments: Comments
-Changes successfully saved: Changes successfully saved
 
 
 ###############################################
@@ -1044,6 +1048,12 @@ An appointment has been rejected by: An appointment has been rejected by
 
 
 ###############################################
+# Page: reject_entry_mod_security.php
+#
+Changes successfully saved: Changes successfully saved
+
+
+###############################################
 # Page: remotes.php
 #
 Add New Remote Calendar: Add New Remote Calendar
@@ -1245,13 +1255,6 @@ __month__ __yyyy__: __month__ __yyyy__
 __mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
 This event is private: This event is private
 Conf.: Conf.
-Sun: Sun
-Mon: Mon
-Tue: Tue
-Wed: Wed
-Thu: Thu
-Fri: Fri
-Sat: Sat
 WK: WK
 Task Name: Task Name
 Task Due Date: Task Due Date
@@ -1290,6 +1293,13 @@ Wednesday: Wednesday
 Thursday: Thursday
 Friday: Friday
 Saturday: Saturday
+Sun: Sun
+Mon: Mon
+Tue: Tue
+Wed: Wed
+Thu: Thu
+Fri: Fri
+Sat: Sat
 Schedule an appointment for: Schedule an appointment for
 All Attendees: All Attendees
 Busy: Busy
@@ -1543,6 +1553,13 @@ Remote Calendars not enabled: Remote Calendars not enabled
 
 
 ###############################################
+# Page: install/default_config.php
+#
+Error updating webcal_config: Error updating webcal_config
+Error updating webcal_user_pref: Error updating webcal_user_pref
+
+
+###############################################
 # Page: install/index.php
 #
 Failure Reason: Failure Reason
@@ -1581,6 +1598,7 @@ This installation wizard will guide you...: This installation wizard will guide 
 PHP Version Check: PHP Version Check
 Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
 PHP version: PHP version
+PHP Settings:PHP Settings
 Detailed PHP Info: Detailed PHP Info
 Session Check: Session Check
 To test the proper operation of sessions, reload this page: To test the proper operation of sessions, reload this page
