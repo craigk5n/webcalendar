@@ -33,8 +33,8 @@ print_header($INC);
 echo display_admin_link();
 ?>
 
-<table style="border-width:0px;">
-<tr><td style="vertical-align:top;">
+<table>
+<tr><td class="aligntop">
  <label for="users"><?php etranslate( 'Assistants' ); ?>:</label></td><td>
  <select name="users[]" id="users" size="10" multiple="multiple">
 <?php
@@ -68,7 +68,7 @@ if ( $GROUPS_ENABLED == 'Y' ) {
 }
 ?>
 </td></tr>
-<tr><td colspan="2" style="text-align:center;">
+<tr><td colspan="2" class="aligncenter"">
 <br />
 <input type="submit" name="action" value="<?php etranslate( 'Save' ); ?>" />
 </td></tr>

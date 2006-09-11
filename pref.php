@@ -43,7 +43,7 @@ function save_pref( $prefs, $src) {
           '( ?, ?, ? )';
         if ( ! dbi_execute ( $sql , array ( $prefuser , $setting , $value ) ) ) {
           $error = 'Unable to update preference: ' . dbi_error () .
-   '<br /><br /><span style="font-weight:bold;">SQL:</span>' . $sql;
+   '<br /><br /><span class="bold">SQL:</span>' . $sql;
           break;
         }
       }
@@ -776,8 +776,8 @@ if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
 
 <?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 <div id="tabscontent_colors">
-<table style="border-width:0px; width:100%;">
-<tr><td style="vertical-align:top;">
+<table>
+<tr><td class="aligntop">
 <table  cellspacing="1" cellpadding="2">
  <tr><td>
   <label for="pref_bg"><?php etranslate( 'Document background' )?>:</label></td><td>
@@ -889,10 +889,10 @@ echo $select; ?>" />
   </td></tr>
 </table>
 
-</td><td style="text-align:center; vertical-align:top;">
+</td><td class="aligncenter aligntop">
 <br />
 <!-- BEGIN EXAMPLE MONTH -->
-<table style="border:0px; width:90%; background-color:<?php echo $BGCOLOR?>"><tr>
+<table style="width:90%; background-color:<?php echo $BGCOLOR?>"><tr>
 <td width="1%" rowspan="3">&nbsp;</td>
 <td style="text-align:center; color:<?php 
   echo $H2COLOR?>; font-weight:bold;"><?php
@@ -915,7 +915,7 @@ echo display_month ( date ( 'm' ) , date( 'Y' ) , true );
 
 <!-- END TABS -->
 <br /><br />
-<div style="border-width:0px;">
+<div>
 <input type="submit" value="<?php etranslate( 'Save Preferences' )?>" name="" />
 <br/><br/>
 </div>

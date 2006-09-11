@@ -57,7 +57,7 @@ function print_user_list () {
       $size = 15;
     else if ( $size > 5 )
       $size = 5;
-    echo '<tr><td style="vertical-align:top;">' . "\n";
+    echo '<tr><td class="aligntop">' . "\n";
     echo '<label for="caluser">' . 
      translate( 'Calendar' ) . "</label></td><td>\n";
     echo '<select name="calUser" id="caluser" size="' .$size. "\">$users\n";
@@ -83,7 +83,7 @@ if ( ! $upload_enabled ) {
   // file uploads enabled
 ?>
 <form action="import_handler.php" method="post" name="importform"  enctype="multipart/form-data" onsubmit="return checkExtension()">
-<table style="border-width:0px;">
+<table>
 <tr><td>
  <label for="importtype"><?php etranslate( 'Import format' )?>:</label></td><td>
   <select name="ImportType" id="importtype" onchange="toggle_import()">

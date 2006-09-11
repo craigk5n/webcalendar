@@ -54,7 +54,7 @@ if ( $do_purge ) {
 print_header ( $INC, '', $BodyX );
 ?>
 
-<table style="border-width:0px;">
+<table>
 <tr><td style="vertical-align:top; width:50%;">
 <?php
 echo '<h2>' . translate( 'Delete Events' );

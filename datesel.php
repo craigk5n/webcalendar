@@ -41,8 +41,8 @@ $href = "href=\"datesel.php?form={$form}&amp;fday={$fday}&amp;" .
   "fmonth={$fmonth}&amp;fyear={$fyear}&amp;date=";
 
 echo <<<EOT
- <div style="text-align:center;">
-  <table align="center" >
+ <div class="aligncenter">
+  <table class="aligncenter">
    <tr>
      <td><a title="{$previousStr}" class="prev" {$href}{$prevdate}>
      <img src="images/leftarrowsmall.gif"  alt="{$previousStr}" /></a></td>

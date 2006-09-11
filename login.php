@@ -243,7 +243,7 @@ if ( ! empty ( $return_path ) ) {
    value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" 
    tabindex="1" />
 </td></tr>
-<tr><td style="text-align:right;">
+<tr><td class="alignright">
  <label for="password"><?php etranslate( 'Password' )?>:</label></td><td>
  <input name="password" id="password" type="password" size="15" 
    maxlength="30" tabindex="2" />
@@ -254,7 +254,7 @@ if ( ! empty ( $return_path ) ) {
      echo 'checked="checked"'; }?> /><label for="remember">&nbsp;
    <?php etranslate("Save login via cookies so I don't have to login next time")?></label>
 </td></tr>
-<tr><td colspan="4" style="text-align:center;">
+<tr><td colspan="4" class="aligncenter">
  <input type="submit" value="<?php etranslate( 'Login' )?>" tabindex="4" />
 </td></tr>
 </table>

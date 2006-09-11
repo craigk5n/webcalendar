@@ -238,7 +238,7 @@ if ( ! $adding_report ) { ?>
   <input type="hidden" name="report_id" value="<?php echo $report_id?>" />
 <?php } ?>
 
-<table style="border-width:0px;">
+<table>
  <tr><td>
   <label for="rpt_name"><?php etranslate( 'Report name' )?>:</label></td><td>
   <input type="text" name="report_name" id="rpt_name" size="40" maxlength="50"
@@ -351,21 +351,21 @@ if ( $is_admin ) {
 </td></tr>
 </table>
 
-<table style="border-width:0px;">
+<table>
  <tr><td>&nbsp;</td><td>&nbsp;</td><td><label>
   <?php etranslate( 'Template variables' )?></label>
  </td></tr>
  <tr><td valign="top"><label>
   <?php etranslate( 'Page template' )?>:</label></td><td>
   <textarea rows="12" cols="60" name="page_template"><?php echo htmlentities ( $page_template, ENT_COMPAT, $charset )?></textarea>
-  </td><td style="vertical-align:top;">
+  </td><td class="aligntop">
   <tt>${days}</tt><br />
   <tt>${report_id}</tt><br />
  </td></tr>
  <tr><td valign="top"><label>
   <?php etranslate( 'Day template' )?>:</label></td><td>
   <textarea rows="12" cols="60" name="day_template"><?php echo htmlentities ( $day_template, ENT_COMPAT, $charset )?></textarea>
-  </td><td style="vertical-align:top;">
+  </td><td class="aligntop">
   <tt>${events}</tt><br />
   <tt>${date}</tt><br />
   <tt>${fulldate}</tt><br />
@@ -374,7 +374,7 @@ if ( $is_admin ) {
  <tr><td valign="top"><label>
   <?php etranslate( 'Event template' )?>:</label></td><td>
   <textarea rows="12" cols="60" name="event_template"><?php echo htmlentities ( $event_template, ENT_COMPAT, $charset )?></textarea>
-  </td><td style="vertical-align:top;">
+  </td><td class="aligntop">
   <tt>${name}</tt><br />
   <tt>${description}</tt><br />
   <tt>${date}</tt><br />

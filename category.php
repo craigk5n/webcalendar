@@ -122,6 +122,6 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<span style=\"font-weight:bold;\">" . translate ( 'Error' ) . ':</span>' . $error;
+  echo "<span class=\"bold\">" . translate ( 'Error' ) . ':</span>' . $error;
 }
 echo print_trailer(); ?>

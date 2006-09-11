@@ -52,7 +52,7 @@ $next_url = $base_url . strftime('&amp;year=%Y&amp;month=%m&amp;day=%d', $time +
 $users = explode(',',$users);
 ?>
 
-<div style="border-width:0px; width:99%;">
+<div style="width:99%;">
 <a title="<?php etranslate( 'Previous' )?>" class="prev" href="<?php echo $prev_url ?>"><img src="images/leftarrow.gif" class="prevnext" alt="<?php etranslate( 'Previous' )?>" /></a>
 <a title="<?php etranslate( 'Next' )?>" class="next" href="<?php echo $next_url ?>"><img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate( 'Next' )?>" /></a>
 <div class="title">

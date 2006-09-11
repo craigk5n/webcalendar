@@ -80,7 +80,7 @@ if ( ! empty ( $error ) ) {
 }
 ?>
 
-<div style="border-width:0px; width:99%;">
+<div style="width:99%;">
 <a title="<?php etranslate ( 'Previous' )?>" class="prev" 
   href="view_w.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>">
   <img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
@@ -177,7 +177,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       } else if ( date ( 'Ymd', $xdate ) == date ( 'Ymd', $today ) ) {
         $class = 'class=\"today\"';
       } else { if ( $wday == 0 || $wday == 6 ) {
-        $class = 'class=\"weekend\"';;
+        $class = 'class=\"weekend\"';
       } else {
         $class = '';
       }

@@ -215,13 +215,13 @@ print_header ();
 <input type="hidden" name="id" value="<?php echo $id?>" />
 <input type="hidden" name="type" value="C" />
 
-<table style="border-width:0px;">
+<table>
 
-<tr><td style="vertical-align:top;"><label for="description">
+<tr><td class="aligntop"><label for="description">
   <?php etranslate( 'Subject' )?>:</label></td>
   <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
 <!-- TODO: htmlarea or fckeditor support -->
-<tr><td style="vertical-align:top;"><label for="comment">
+<tr><td class="aligntop"><label for="comment">
   <?php etranslate( 'Comment' )?>:</label></td>
   <td><textarea name="comment" rows="15" cols="60" wrap="auto"></textarea></td></tr>
 <tr><td colspan="2">
@@ -238,11 +238,11 @@ print_header ();
 <form action="docadd.php" method="post" name="docform" enctype="multipart/form-data">
 <input type="hidden" name="id" value="<?php echo $id?>" />
 <input type="hidden" name="type" value="A" />
-<table style="border-width:0px;">
+<table>
 <tr class="browse"><td>
  <label for="fileupload"><?php etranslate( 'Upload file' );?>:</label></td><td>
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
-<tr><td style="vertical-align:top;"><label for="description">
+<tr><td class="aligntop"><label for="description">
   <?php etranslate( 'Description' )?>:</label></td>
   <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
 

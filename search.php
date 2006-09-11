@@ -43,7 +43,7 @@ if ( ! $show_others ) {
    href="javascript:show('adv'); hide('advlink');"><?php
     etranslate( 'Advanced Search' );?></a></div>
 <table id="adv" style="display:none;">
-<tr><td style="vertical-align:top; text-align:right; font-weight:bold; width:60px;">
+<tr><td class="aligntop alignright bold" width="60px">
  <?php etranslate( 'Users' ); ?>:&nbsp;</td><td>
 <?php
   $users = get_my_users ( '', 'view' );
