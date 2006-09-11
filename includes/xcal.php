@@ -1741,7 +1741,10 @@ function import_data ( $data, $overwrite, $type ) {
       $error_num++;
       echo print_error ( $error ). "\n<br />\n";
     }
-
+    if ( $Entry['Duration'] > 0 ) {
+      $time = trim( display_time ( '', 0, $Entry['StartTime']) .
+        '-' . display_time ( '',2, $Entry['EndTime'] ) );
+    }
     // Conflicting
     if ( ! empty ( $overlap ) ) {
       echo '<b><h2>' .
@@ -1749,16 +1752,12 @@ function import_data ( $data, $overwrite, $type ) {
       $count_con++;
       echo '</h2></b>';
 
-      if ( $Entry['Duration'] > 0 ) {
-        $time = display_time ( $Entry['start_time'], 1 ) .
-          '-' . display_time ( $Entry['end_time'], 3 );
-      }
+
       $dd = date ( 'm-d-Y', $Entry['StartTime'] );
       $Entry['Summary'] = str_replace ( "''", "'", $Entry['Summary'] );
       $Entry['Summary'] = str_replace ( "'", "\\'", $Entry['Summary'] );
       echo htmlspecialchars ( $Entry['Summary'] );
       echo ' (' . $dd;
-      $time = trim ( $time );
       if ( ! empty ( $time ) )
         echo '&nbsp; ' . $time;
       echo ")<br />\n";
@@ -1772,10 +1771,6 @@ function import_data ( $data, $overwrite, $type ) {
         translate( 'Event Imported' ) . ":</h2></b><br />\n";
   }
       $count_suc++;
-      if ( $Entry['Duration'] > 0 ) {
-        $time = display_time ( $Entry['start_time'], 1 ) .
-          '-' . display_time ( $Entry['end_time'], 3 );
-      }
 
       $dd = $Entry['start_date']; 
       echo "<a class=\"entry\" href=\"view_entry.php?id=$id";

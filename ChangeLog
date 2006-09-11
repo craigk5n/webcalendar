@@ -1,4 +1,5 @@
 Version 1.1.1 (?? ??? 2006)
+ - Fixed bug 1554383: Times next to events during import is wrong
  - Fixed bug 1555860: SQL Error on import
  - Changed translate.php to ignore /install/ files if unneeded
  - Implemented PATCH 1539603: Move </body></html> into print_trailer()
