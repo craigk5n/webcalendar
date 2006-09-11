@@ -141,29 +141,11 @@ if ( ! empty ( $delete ) ) {
       dbi_error () );
   }
   // Delete old admin...
-  //TODO Make this an optioanl step
+  //TODO Make this an optional step
   if ( ! empty ( $old_admin ) )
     dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ? ' .
       'AND cal_other_user = ?', array( $old_admin, $nid ) );  
 }
 
-if ( ! empty ( $error ) ) {
-  print_header( '', '', '', true );
+echo error_check('users.php', false);
 ?>
-
-<h2><?php etranslate( 'Error' )?></h2>
-
-<blockquote>
-<?php
-echo $error;
-//if ( $sql != '' )
-//  echo "<br /><br /><b>SQL:</b> $sql";
-//?>
-</blockquote>
-</body>
-</html>
-<?php } else if ( empty ( $error ) ) {
-?><html><head></head>
-<body onLoad="alert('<?php etranslate( 'Changes successfully saved', true);?>'); window.parent.location.href='users.php';">
-</body></html>
-<?php } ?>

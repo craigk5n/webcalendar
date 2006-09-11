@@ -51,24 +51,5 @@ if ( ! $is_admin ) {
   }
 }
 
-if ( ! empty ( $error ) ) {
-  print_header( '', '', '', true );
-
+echo error_check('users.php', false); 
 ?>
-<h2><?php etranslate( 'Error' )?></h2>
-
-<blockquote>
-<?php
-
-echo $error;
-//if ( $sql != '' )
-//  echo "<br /><br /><strong>SQL:</strong> $sql";
-//?>
-</blockquote>
-</body>
-</html>
-<?php } else if ( empty ( $error ) ) {
-?><html><head></head><body onLoad="alert('<?php 
-  etranslate( 'Changes successfully saved', true);?>'); window.parent.location.href='users.php';">
-</body></html>
-<?php } ?>

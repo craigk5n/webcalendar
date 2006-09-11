@@ -33,7 +33,7 @@ $sql = 'INSERT INTO webcal_user_pref ' .
   "( ?, 'LAYERS_STATUS', ? )";
 if ( ! dbi_execute ( $sql , array ( $layer_user, $value ) ) ) {
   $error = 'Unable to update preference: ' . dbi_error () .
-    "<br /><br /><span style=\"font-weight:bold;\">SQL:</span> $sql";
+    "<br /><br /><span class=\"bold\">SQL:</span> $sql";
   break;
 }
 
@@ -42,14 +42,7 @@ if ( empty ( $error ) ) {
 }
 
 print_header();
+echo print_error ( $error, true);
+echo print_trailer(); 
 ?>
-
-<h2><?php etranslate( 'Error' )?></h2>
-
-<?php etranslate( 'The following error occurred' )?>:
-<blockquote>
-<?php echo $error; ?>
-</blockquote>
-
-<?php echo print_trailer(); ?>
 

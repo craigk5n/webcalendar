@@ -185,8 +185,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
 
 if ( ! empty ( $error ) ) {
   print_header ();
-  echo '<h2>' . translate ( 'Error' ) .
-    "</h2>\n" . $error;
+  echo print_error ( $error, true);
   echo print_trailer ();
   exit;
 }

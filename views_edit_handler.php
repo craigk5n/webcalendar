@@ -57,5 +57,5 @@ if ( ! empty ( $delete ) ) {
   }
 }
 
-echo error_check('views.php');
+echo error_check('views.php', false);
 ?>

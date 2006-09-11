@@ -145,21 +145,17 @@ $saveStr = translate( 'Save' );
 $INC = array('js/set_entry_cat.php/true');
 print_header($INC);
 
-if ( ! empty ( $error ) ) { ?>
-<h2><?php etranslate( 'Error' )?></h2>
-<blockquote>
-<?php echo $error; ?>
-</blockquote>
-
-<?php } else {
+if ( ! empty ( $error ) ) { 
+  echo print_error ( $error );
+} else {
 echo <<<EOT
 <h2>{$setCatStr}</h2>
 <form action="set_entry_cat.php" method="post" name="selectcategory">
   <input type="hidden" name="date" value="{$date}" />
   <input type="hidden" name="id" value="{$id}" />
   <table border="0" cellpadding="5">
-    <tr style="vertical-align:top;">
-      <td style="font-weight:bold;">{$briefStr}:</td>
+    <tr class="aligntop">
+      <td class="bold">{$briefStr}:</td>
       <td>{$event_name}</td>
     </tr>
     <tr>
@@ -172,7 +168,7 @@ echo <<<EOT
        <input  type="hidden" name="cat_id" id="entry_categories" value="{$catList}" />
       </td>
     </tr>
-    <tr style="vertical-align:top;">
+    <tr class="aligntop">
       <td colspan="2"><br />
         <input type="submit" value="{$saveStr}" />
       </td>

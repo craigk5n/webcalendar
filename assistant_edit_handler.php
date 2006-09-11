@@ -14,17 +14,8 @@ if ( ! empty ( $users ) ){
       'VALUES ( ?, ? )', array( $user, $users[$i] ) );
   }
 }
-
-do_redirect ( 'assistant_edit.php' . ( ( $is_admin || $is_nonuser_admin ) && 
-  $login != $user ? '?user=' . $user : '' ) );
-
-print_header();
-?>
-<h2><?php etranslate( 'Error' )?></h2>
-
-<blockquote>
-<?php echo $error; ?>
-</blockquote>
-
-<?php echo print_trailer(); ?>
+$nextUrl =  'assistant_edit.php' . ( ( $is_admin || $is_nonuser_admin ) && 
+  $login != $user ? '?user=' . $user : '' );
+echo error_check($nextUrl );
+ ?>
 
