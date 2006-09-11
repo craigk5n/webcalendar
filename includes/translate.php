@@ -87,12 +87,19 @@ function load_translation_text () {
   }
   // Check for 'cachedir' in settings.  If found, then we will save
   // the parsed translation file there as a serialized array.
-  $cached_file = '';
+  $cached_file = $cachedir = '';
   $save_to_cache = false;
   $use_cached = false;
+  //ensure we use the proper cachedir name
   if ( ! empty ( $settings['cachedir'] ) &&
     is_dir ( $settings['cachedir'] ) ) {
-    $cached_file = $settings['cachedir'] . '/' . $lang_file;
+    $cachedir = $settings['cachedir'];
+  } else   if ( ! empty ( $settings['db_cachedir'] ) &&
+    is_dir ( $settings['db_cachedir'] ) ) {
+    $cachedir = $settings['db_cachedir'];
+  }
+  if ( ! empty ( $cachedir ) ) {
+    $cached_file = $cachedir . '/' . $lang_file;
     $cache_tran_dir = dirname ( $cached_file );
     if ( ! is_dir ( $cache_tran_dir ) ) {
       @mkdir ( $cache_tran_dir, 0777 );
@@ -102,7 +109,7 @@ function load_translation_text () {
       die_miserable_death ( 'Error creating cached translation directory: ' .
         $cache_tran_dir . '<br/><br/>' .
         'Please check the permissions of the following directory: ' .
-        $settings['cachedir'] );
+        $cachedir );
     }
     if ( ! file_exists ( $cached_file ) ) {
       $save_to_cache = true;
@@ -134,6 +141,11 @@ function load_translation_text () {
       if ( get_magic_quotes_runtime() ) {
         $buffer = stripslashes ( $buffer );
       }
+      //We will exit this process when we come to the installation translations
+      //unless we are runn install/index.php
+      if ( substr ( $buffer, 0, 15 ) == '# Page: install' && 
+         ! strstr ( $_SERVER['SCRIPT_NAME'] , 'install/index.php' ) )
+        break;
       if ( substr ( $buffer, 0, 1 ) == '#' || strlen ( $buffer ) == 0 )
         continue;
       $pos = strpos ( $buffer, ':' );
