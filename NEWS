@@ -1,5 +1,6 @@
 Version 1.1.1 (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1555860: SQL Error on import
       1554309: demo calendar event days are not the same
       1553518: events one day early in list_unapproved.php
       1553639: Events missing from the 31st day of month

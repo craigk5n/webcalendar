@@ -1508,7 +1508,7 @@ function import_data ( $data, $overwrite, $type ) {
 
       // Now add participants
       $status = ( ! empty ( $Entry['Status'] ) ? $Entry['Status'] : 'A' );
-      $percent = ( ! empty ( $Entry['Percent'] ) ? $Entry['Percent'] : '' );
+      $percent = ( ! empty ( $Entry['Percent'] ) ? $Entry['Percent'] : '0' );
       if ( ! $updateMode ) {
         //do_debug ( "Adding event $id for user $participants[0] with status=$status" );
         $sql = 'INSERT INTO webcal_entry_user ' .
@@ -1739,9 +1739,7 @@ function import_data ( $data, $overwrite, $type ) {
  if ( $subType != 'icalclient'  && $subType != 'remoteics') {
     if ( ! empty ($error) && empty ($overlap))  {
       $error_num++;
-      echo '<h2>'. translate ( 'Error' ) .
-        "</h2>\n<blockquote>\n";
-      echo $error . "</blockquote>\n<br />\n";
+      echo print_error ( $error ). "\n<br />\n";
     }
 
     // Conflicting
