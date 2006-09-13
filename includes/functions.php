@@ -3379,7 +3379,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
               $conflicts .= '-' .
                 display_time ( $row->getDate() . add_duration ( $time2, $duration2 ) );
             $conflicts .= ')';
-            $conflicts .= ' ' . $onStr . ' ' . date_to_str ( $dates[$i] );
+            $conflicts .= ' ' . $onStr . ' ' . date_to_str ( $dateYmd );
             $conflicts .= "</li>\n";
           }
         }
