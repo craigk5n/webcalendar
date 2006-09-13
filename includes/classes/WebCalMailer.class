@@ -80,10 +80,10 @@ class WebCalMailer extends phpmailer {
     if ( ! empty ( $mailerError ) ) { 
       $errStr = '<h2>' .translate( 'Email' ) . ' ' . translate( 'Error' ). "</h2>\n";
       $errStr .= '<blockquote>' . $mailerError;
-      if (  empty ( $error ) )
-        $errStr .=translate ( 'Changes successfully saved' ); 
-      $errStr .= '</blockquote>'
-    else {
+      if (  empty ( $error ) ) 
+        $errStr .= translate ( 'Changes successfully saved' ); 
+      $errStr .= '</blockquote>';
+    } else {
       $errStr = '<h2>' . translate( 'Error' ) . "</h2>\n";
       $errStr .= '<blockquote>' . $error . "</blockquote>\n";
     } 
