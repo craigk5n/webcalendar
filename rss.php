@@ -84,7 +84,7 @@ $WebCalendar->setLanguage();
 
 if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  etranslate( 'You are not authorized' );
+  echo print_not_auth ();
   exit;
 }
 /*
@@ -172,7 +172,7 @@ $creator = ( $username == '__public__' ) ? 'Public' : $rss_fullname;
 if ( $username != '__public__' && ( empty ( $USER_RSS_ENABLED ) || 
   $USER_RSS_ENABLED != 'Y' ) ) {
   header ( 'Content-Type: text/plain' );
-  etranslate( 'You are not authorized' );
+  echo print_not_auth ();
   exit;
 }
 

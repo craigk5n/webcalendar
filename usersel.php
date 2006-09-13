@@ -8,10 +8,10 @@ include_once 'includes/init.php';
 // listid: element id of user selection object in form
 //   ... to be used like form.elements[$listid]
 if ( empty ( $form ) ) {
-  echo 'Program Error: No form specified!'; exit;
+  echo translate ('Program Error' ) . ': ' . translate ( 'No form specified!' ); exit;
 }
 if ( empty ( $listid ) ) {
-  echo 'Program Error: No listid specified!'; exit;
+  echo translate ('Program Error' ) . ': ' .  translate ('No listid specified!' ); exit;
 }
 
 // parse $users

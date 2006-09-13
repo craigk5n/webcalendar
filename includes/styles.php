@@ -192,6 +192,9 @@ ul a {
 .main td.othermonth {
   <?php echo background_css ( $GLOBALS['OTHERMONTHBG'], 100 ); ?>
 }
+.underline {
+ text-decoration: underline;
+}
 #tabscontent {
   margin: -1px 2px;
   padding: 0.5em;
@@ -572,6 +575,23 @@ a.matrix img {
   vertical-align: top;
   font-weight: bold;
 }
+.helpbody {
+  vertical-align: top;
+  font-weight:normal;
+}
+.helpbody label {
+  vertical-align: top;
+  clear:left;
+  float:left;
+  width:150px;
+  font-size: 1.1em;
+  font-weight:bold;
+}
+.helplist {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}
 <?php //question mark img linking to help sections
 ?>img.help {
   border-width: 0px;
@@ -665,7 +685,7 @@ a.matrix img {
   cursor: help;
   text-decoration: none;
   font-weight: bold;
- width:175px;
+  width:175px;
 }
 #minicalendar table {
   width: <?php echo ( ! empty ( $GLOBALS['MINICALWIDTH'])?$GLOBALS['MINICALWIDTH']: '160px'); ?>;

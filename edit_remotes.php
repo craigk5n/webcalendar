@@ -29,11 +29,11 @@ if ( ! $NONUSER_PREFIX ) {
 
  if ($REMOTES_ENABLED != 'Y'  || ( access_is_enabled () && 
   ! access_can_access_function ( ACCESS_IMPORT ) ) ) {
-  $error = translate ( 'You are not authorized' );
+  $error = print_not_auth ();
 }
 
 if ( $error ) {
-  echo '<h2>' . translate( 'Error' ) . "</h2>\n" . $error . ".\n";
+  echo print_error ( $error );
   echo "</body>\n</html>";
   exit;
 }

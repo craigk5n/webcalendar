@@ -42,7 +42,7 @@ if ( ! empty ( $_FILES['FileName'] ) ) {
 }
 
 if ( ! $is_my_event )
-  $error = translate ( 'You are not authorized' ) . '.';
+  $error = print_not_auth () . '.';
 
 $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $delete ) ) {

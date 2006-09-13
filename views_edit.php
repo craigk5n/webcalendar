@@ -59,7 +59,7 @@ if ( empty ( $id ) ) {
 // If view_name not found, then the specified view id does not
 // belong to current user. 
 if ( empty( $viewname ) ) {
-  $error = translate ( 'You are not authorized' );
+  $error = print_not_auth ();
 }
 
 // get list of users for this view
@@ -80,8 +80,7 @@ if ( ! $newview ) {
 }
 
 if ( ! empty ( $error ) ) {
-  echo '<h2>' . translate ( 'Error' ) .
-    "</h2>\n" . $error;
+  echo print_error ( $error );
   echo print_trailer ();
   exit;
 }

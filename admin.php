@@ -59,7 +59,7 @@ $error = '';
 $currenttab = '';
 
 if ( ! $is_admin ) {
-  $error = translate ( 'You are not authorized' );
+  $error = print_not_auth ();
 }
 
 if ( ! empty ( $_POST ) && empty ( $error )) {

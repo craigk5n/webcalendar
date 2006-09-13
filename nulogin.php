@@ -27,12 +27,12 @@ $WebCalendar->setLanguage();
 
 // No login for single-user mode
 if ( $single_user == 'Y' ) {
-  die_miserable_death ( translate ( 'You are not authorized' ) );
+  die_miserable_death ( print_not_auth () );
 }
 
 // No web login for HTTP-based authentication
 if ( $use_http_auth ) {
-  die_miserable_death ( translate ( 'You are not authorized' ) );
+  die_miserable_death ( print_not_auth () );
 }
 
 $login = getValue ( 'login' );
@@ -59,7 +59,7 @@ if ( ! nonuser_load_variables ( $login, 'temp_' ) ) {
     ': ' . $login );
 }
 if ( empty ( $temp_is_public ) || $temp_is_public != 'Y' ) {
-  die_miserable_death ( translate ( 'You are not authorized' ) );
+  die_miserable_death ( print_not_auth () );
 }
 
 // calculate path for cookie

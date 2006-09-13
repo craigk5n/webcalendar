@@ -165,8 +165,7 @@ class WebCalendar {
     if ( ! access_can_view_page ( ) ) {
       echo "<html>\n<head>\n<title>" . translate ( $APPLICATION_NAME ) . ' ' .
         translate( 'Error' ) .  "</title></head>\n" .
-        "<body>\n<h2>" . translate ( 'Error' ) . "</h2>\n" .
-        translate ( 'You are not authorized' );
+        "<body>\n" . print_not_auth ( true );
       exit;
     }
 

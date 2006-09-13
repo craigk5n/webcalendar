@@ -41,7 +41,7 @@ $error = '';
 $report_id = getIntValue ( 'report_id', true );
 
 if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' ) {
-  $error = translate ( 'You are not authorized' ) . '.';
+  $error = print_not_auth () . '.';
 }
 
 $updating_public = false;
@@ -67,7 +67,7 @@ if ( empty ( $error ) && $single_user != 'N' && ! empty ( $report_id ) &&
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] != $login ) {
-        $error = translate( 'You are not authorized' );
+        $error = print_not_auth ();
       }
     } else {
       $error = 'No such report id';

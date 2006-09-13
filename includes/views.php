@@ -43,7 +43,7 @@ function view_init ( $view_id )
   // If view_name not found, then the specified view id does not
   // belong to current user.
   if ( empty ( $view_name ) ) {
-    $error = translate ( 'You are not authorized' );
+    $error = print_not_auth ();
   }
 }
 

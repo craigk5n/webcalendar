@@ -42,7 +42,7 @@ if ( count ( $participants ) == 0 ) {
 }
 
 if ( ! empty ( $error ) ) {
-  echo '<h2>' . translate ( 'Error' ) . "</h2>\n" . $error;
+  echo print_error ( $error );
   echo print_trailer ();
   exit;
 }

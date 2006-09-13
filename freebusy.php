@@ -95,7 +95,7 @@ user_load_variables ( $user, 'publish_' );
 if ( empty ( $FREEBUSY_ENABLED ) || $FREEBUSY_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
   echo "user=$user\n";
-  etranslate( 'You are not authorized' );
+  echo print_not_auth ();
   exit;
 }
 

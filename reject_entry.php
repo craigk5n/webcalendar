@@ -7,7 +7,7 @@ $mail = new WebCalMailer;
 $error = '';
 
 if ( $readonly == 'Y' ) {
-  $error = translate( 'You are not authorized' );
+  $error = print_not_auth ();
 }
 
 //give user a change to add comments to rejection email

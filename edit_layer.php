@@ -4,7 +4,7 @@ include_once 'includes/init.php';
 
 if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   print_header ();
-  etranslate( 'You are not authorized' );
+  echo print_not_auth ();
   echo print_trailer ();
   exit;
 }

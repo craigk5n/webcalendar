@@ -83,7 +83,7 @@ print_header();
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo '<span class="bold">' . translate( 'Error' ) . ':</span>' . $error;
+  echo print_error ( $error );
 } else {
   $ids = array ();
   $words = split ( ' ', $keywords );

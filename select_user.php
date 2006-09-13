@@ -9,7 +9,7 @@ print_header();
 <?php
 if (( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
    ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' && $PUBLIC_ACCESS_OTHERS != 'Y')) {
-  $error = translate ( 'You are not authorized' );
+  $error = print_not_auth ();
 }
 
 if ( ! empty ( $error ) ) {

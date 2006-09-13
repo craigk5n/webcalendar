@@ -2,16 +2,15 @@
 /* $Id$ */
 include_once 'includes/init.php';
 $INC = array('js/edit_nonuser.php/false');
-print_header( $INC, '', '', true );
+print_header( $INC, '', '', true, '', true, false );
 
 if ( ! $is_admin ) {
-  echo '<h2>' . translate( 'Error' ) . "</h2>\n" . 
-    translate( 'You are not authorized' ) . ".\n";
+  echo print_not_auth ( true );
   echo "</body>\n</html>";
   exit;
 }
 if ( ! $NONUSER_PREFIX ) {
-  echo '<h2>' . translate( 'Error' ) . "</h2>\n" . 
+  echo print_error_header () . 
     translate( 'NONUSER_PREFIX not set' ) . ".\n";
   echo "</body>\n</html>";
   exit;

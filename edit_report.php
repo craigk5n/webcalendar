@@ -34,7 +34,7 @@ $updating_public = false;
 $error = '';
 
 if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' ) {
-  $error = translate ( 'You are not authorized' ) . '.';
+  $error = print_not_auth () . '.';
 }
 
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
@@ -61,7 +61,7 @@ if ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y' ) {
 }
 
 if ( $login == '__public__' ) {
-  $error = translate ( 'You are not authorized' );
+  $error = print_not_auth ();
 }
 
 $charset = ( ! empty ( $LANGUAGE )?translate( 'charset' ): 'iso-8859-1' );
@@ -152,12 +152,12 @@ if ( empty ( $error ) && $report_id >= 0 ) {
           }
         }
         if ( ! $user_is_in_list && $report_login != $login && ! $is_admin ) {
-          $error = translate ( 'You are not authorized' );
+          $error = print_not_auth ();
         }
       }
       if ( ! $is_admin && $login != $report_login ) {
         // If not admin, only creator can edit/delete the event
-        $error = translate ( 'You are not authorized' );
+        $error = print_not_auth ();
       }
       
       // If we are editing a public user report we need to set $updating_public

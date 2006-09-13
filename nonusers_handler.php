@@ -4,8 +4,7 @@ include_once 'includes/init.php';
 load_user_layers ();
 
 if ( ! $is_admin ) {
-  echo '<h2>' . translate( 'Error' ) .
-    '</h2>' . translate( 'You are not authorized' ) . ".\n";
+  echo print_not_auth ( true );
   echo print_trailer ();
   exit;
 }

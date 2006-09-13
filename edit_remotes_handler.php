@@ -35,6 +35,7 @@ if ( ! empty ( $reload ) ) {
       $data = parse_hcal( $result, $type );
     }
     print_header( '','','',true,false,true);
+    $errorStr = "<br /><br />\n<b>" . translate( 'Error' ) . ':</b> ';
     if ( count ($data) && empty ($errormsg) ) {
       //delete existing events
       delete_events ( $nid );
@@ -52,9 +53,9 @@ if ( ! empty ( $reload ) ) {
         echo '<p>' . translate( 'Create a new layer to view this calendar' ) . ".</p>\n";
     } elseif (! empty ( $errormsg ) ) {
       echo translate ( 'Errors' ) . ": $error_num<br /><br />\n";
-      echo "<br /><br />\n<b>" . translate( 'Error' ) . ":</b> $errormsg<br />\n";
+      echo $errorStr$errormsg . "<br />\n";
     } else {
-      echo "<br /><br />\n<b>" . translate( 'Error' ) . ':</b> ' .
+      echo $errorStr .
         translate( 'There was an error parsing the import file or no events were returned' ) .
         ".<br />\n";
     }

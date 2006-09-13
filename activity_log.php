@@ -20,7 +20,7 @@ $PAGE_SIZE = 25; // number of entries to show at once
 
 if ( ! $is_admin || ( access_is_enabled () &&
   ! access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) ) {
-  die_miserable_death ( translate ( 'You are not authorized' ) );
+  die_miserable_death ( print_not_auth () );
 }
 
 print_header();

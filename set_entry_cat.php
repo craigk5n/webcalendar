@@ -17,7 +17,7 @@ $error = '';
 if ( empty ( $id ) )
   $error = translate( 'Invalid entry id' ) . '.';
 else if ( $CATEGORIES_ENABLED != 'Y' )
-  $error = translate( 'You are not authorized' ) . '.';
+  $error = print_not_auth () . '.';
 else if ( empty ( $categories ) )
   $error = translate( 'You have not added any categories' ) . '.';
 
@@ -27,10 +27,10 @@ $res = dbi_execute ( 'SELECT  cal_status FROM webcal_entry_user ' .
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     if ( $row[0] == 'D' ) // User deleted themself
-      $error = translate( 'You are not authorized' ) . '.';
+      $error = print_not_auth () . '.';
   } else {
     // not a participant for this event
-    $error = translate( 'You are not authorized' ) . '.';
+    $error = print_not_auth () . '.';
   }
   dbi_free_result ( $res );
 } else {

@@ -26,14 +26,15 @@ if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin ) {
 
 // input args in URL
 // users: list of comma-separated users
+$programStr = translate ( 'Program Error' )  . ': ';
 if ( empty ( $users ) ) {
-  echo 'Program Error: No users specified!'; exit;
+  echo $programStr . translate ( 'No users specified!' ); exit;
 } else if ( empty ( $year ) ) {
-  echo 'Program Error: No year specified!'; exit;
+  echo $programStr . translate ( 'No year specified!' ); exit;
 } else if ( empty ( $month ) ) {
-  echo 'Program Error: No month specified!'; exit;
+  echo $programStr . translate ( 'No month specified!' ); exit;
 } else if ( empty ( $day ) ) {
-  echo 'Program Error: No day specified!'; exit;
+  echo $programStr . translate ( 'No day specified!' ); exit;
 }
 
 $parent_form = getGetValue ('form');

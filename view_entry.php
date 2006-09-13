@@ -112,7 +112,7 @@ $sql = 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date, ' .
   'cal_name, cal_description, cal_location, cal_url, cal_due_date, ' .
   'cal_due_time, cal_completed FROM webcal_entry  WHERE cal_id = ?';
 $res = dbi_execute ( $sql , array ( $id ) );
-if ( ! $res ) {
+if ( ! $res  ) {
   $error = translate( 'Invalid entry id' ) . ": $id";
 } else {
   $row = dbi_fetch_row ( $res );
@@ -132,9 +132,10 @@ if ( ! $res ) {
     $due_time = $row[14];
     $cal_completed = $row[15];
     if ( $hide_details ) {
-      $name = translate ( $OVERRIDE_PUBLIC_TEXT );
-      $description = translate ( $OVERRIDE_PUBLIC_TEXT );
-      if ( ! empty ( $row[11] ) ) $location = translate ( $OVERRIDE_PUBLIC_TEXT );
+      $overrideStr = translate ( $OVERRIDE_PUBLIC_TEXT );
+      $name = $overrideStr;
+      $description = $overrideStr;
+      if ( ! empty ( $row[11] ) ) $location = $overrideStr;
     } else {
       $name = $row[9];
       $description = $row[10];
@@ -145,101 +146,104 @@ if ( ! $res ) {
   }
   dbi_free_result ( $res );
 }
-//don't shift date if All Day or Untimed
-$display_date = ( $event_time > 0 || ($event_time == 0 && $duration != 1440 )  ? date ('Ymd', 
-  date_to_epoch ( $orig_date . sprintf( "%06d", $event_time ) ) ) :$orig_date );
 
-if ( ! empty ( $year ) ) {
-  $thisyear = $year;
-}
-if ( ! empty ( $month ) ) {
-  $thismonth = $month;
-}
-
-//check UAC
-if ( empty ( $user ) ) {
-  $euser =  ( $is_my_event == true ? $login : $create_by );
-} else {
-  $euser =  ( ! empty ( $user ) && $login != $user ? $user : $login );
-}
-if ( access_is_enabled () && ! empty ( $euser ) ) {
-  $can_view =  access_user_calendar ( 'view', $euser, $login, $cal_type, $cal_access );
-  $can_edit = access_user_calendar ( 'edit', $euser, $login, $cal_type, $cal_access );
-  $can_approve = access_user_calendar ( 'approve', $euser, $login, $cal_type, $cal_access );
-  $time_only = access_user_calendar ( 'time', $euser );
-} else {
-  $time_only = 'N';
-}
-if ( $is_admin || $is_nonuser_admin || $is_assistant ) {
-  $can_view = true;
-}
-  if ( ($login != '__public__') && ($PUBLIC_ACCESS_OTHERS == 'Y') ) {
+if ( empty ( $error ) ) {
+  //don't shift date if All Day or Untimed
+  $display_date = ( $event_time > 0 || ($event_time == 0 && $duration != 1440 )  ? date ('Ymd', 
+    date_to_epoch ( $orig_date . sprintf( "%06d", $event_time ) ) ) :$orig_date );
+  
+  if ( ! empty ( $year ) ) {
+    $thisyear = $year;
+  }
+  if ( ! empty ( $month ) ) {
+    $thismonth = $month;
+  }
+  
+  //check UAC
+  if ( empty ( $user ) ) {
+    $euser =  ( $is_my_event == true ? $login : $create_by );
+  } else {
+    $euser =  ( ! empty ( $user ) && $login != $user ? $user : $login );
+  }
+  if ( access_is_enabled () && ! empty ( $euser ) ) {
+    $can_view =  access_user_calendar ( 'view', $euser, $login, $cal_type, $cal_access );
+    $can_edit = access_user_calendar ( 'edit', $euser, $login, $cal_type, $cal_access );
+    $can_approve = access_user_calendar ( 'approve', $euser, $login, $cal_type, $cal_access );
+    $time_only = access_user_calendar ( 'time', $euser );
+  } else {
+    $time_only = 'N';
+  }
+  if ( $is_admin || $is_nonuser_admin || $is_assistant ) {
     $can_view = true;
   }
- $can_edit = ( $can_edit || $is_admin || $is_nonuser_admin && ($user == $create_by) || 
-  ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
-  ( $readonly != 'Y' && ( $login == $create_by || $single_user == 'Y' ) ) );
+    if ( ($login != '__public__') && ($PUBLIC_ACCESS_OTHERS == 'Y') ) {
+      $can_view = true;
+    }
+   $can_edit = ( $can_edit || $is_admin || $is_nonuser_admin && ($user == $create_by) || 
+    ( $is_assistant && ! $is_private && ($user == $create_by) ) ||
+    ( $readonly != 'Y' && ( $login == $create_by || $single_user == 'Y' ) ) );
+    
+  if ( $readonly == 'Y' || $is_nonuser || 
+    ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' ) ) {
+    $can_edit = false;
+  }
   
-if ( $readonly == 'Y' || $is_nonuser || 
-  ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' ) ) {
-  $can_edit = false;
-}
-
-  if ( ! $can_view ) {
-    $check_group = false;
-    // if not a participant in the event, must be allowed to look at
-    // other user's calendar.
-    if ( $login == '__public__' ) {
-      if ( $PUBLIC_ACCESS_OTHERS == 'Y' ) {
-        $check_group = true;
-      }
-    } else {
-      if ( $ALLOW_VIEW_OTHER == 'Y' ) {
-        $check_group = true;
-      }
-    }
-    // If $check_group is true now, it means this user can look at the
-    // event only if they are in the same group as some of the people in
-    // the event.
-    // This gets kind of tricky.  If there is a participant from a different
-    // group, do we still show it?  For now, the answer is no.
-    // This could be configurable somehow, but how many lines of text would
-    // it need in the admin page to describe this scenario?  Would confuse
-    // 99.9% of users.
-    // In summary, make sure at least one event participant is in one of
-    // this user's groups.
-    $my_users = get_my_users ();
-    $my_usercnt = count ( $my_users );
-    if ( is_array ( $my_users ) && $my_usercnt ) {
-      $sql_params = array ();
-      $sql = 'SELECT webcal_entry.cal_id FROM webcal_entry, ' .
-        'webcal_entry_user WHERE webcal_entry.cal_id = ' .
-        'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
-        'AND webcal_entry_user.cal_login IN ( ';
-      $sql_params[] = $id;
-      for ( $i = 0; $i < $my_usercnt; $i++ ) {
-        if ( $i > 0 ) {
-          $sql .= ', ';
+    if ( ! $can_view ) {
+      $check_group = false;
+      // if not a participant in the event, must be allowed to look at
+      // other user's calendar.
+      if ( $login == '__public__' ) {
+        if ( $PUBLIC_ACCESS_OTHERS == 'Y' ) {
+          $check_group = true;
         }
-        $sql .= '?';
-        $sql_params[] = $my_users[$i]['cal_login'];
-      }
-      $sql .= ' )';
-      $res = dbi_execute ( $sql , $sql_params );
-      if ( $res ) {
-        $row = dbi_fetch_row ( $res );
-        if ( $row && $row[0] > 0 ) {
-          $can_view = true;
+      } else {
+        if ( $ALLOW_VIEW_OTHER == 'Y' ) {
+          $check_group = true;
         }
-        dbi_free_result ( $res );
       }
-    }
-    // If we didn't indicate we need to check groups, then this user
-    // can't view this event.
-    if ( ! $check_group || access_is_enabled ()  ) {
-      $can_view = false;
-    }
-}
+      // If $check_group is true now, it means this user can look at the
+      // event only if they are in the same group as some of the people in
+      // the event.
+      // This gets kind of tricky.  If there is a participant from a different
+      // group, do we still show it?  For now, the answer is no.
+      // This could be configurable somehow, but how many lines of text would
+      // it need in the admin page to describe this scenario?  Would confuse
+      // 99.9% of users.
+      // In summary, make sure at least one event participant is in one of
+      // this user's groups.
+      $my_users = get_my_users ();
+      $my_usercnt = count ( $my_users );
+      if ( is_array ( $my_users ) && $my_usercnt ) {
+        $sql_params = array ();
+        $sql = 'SELECT webcal_entry.cal_id FROM webcal_entry, ' .
+          'webcal_entry_user WHERE webcal_entry.cal_id = ' .
+          'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
+          'AND webcal_entry_user.cal_login IN ( ';
+        $sql_params[] = $id;
+        for ( $i = 0; $i < $my_usercnt; $i++ ) {
+          if ( $i > 0 ) {
+            $sql .= ', ';
+          }
+          $sql .= '?';
+          $sql_params[] = $my_users[$i]['cal_login'];
+        }
+        $sql .= ' )';
+        $res = dbi_execute ( $sql , $sql_params );
+        if ( $res ) {
+          $row = dbi_fetch_row ( $res );
+          if ( $row && $row[0] > 0 ) {
+            $can_view = true;
+          }
+          dbi_free_result ( $res );
+        }
+      }
+      // If we didn't indicate we need to check groups, then this user
+      // can't view this event.
+      if ( ! $check_group || access_is_enabled ()  ) {
+        $can_view = false;
+      }
+  }
+} //end $error test
 
 // If they still cannot view, make sure they are not looking at a nonuser
 // calendar event where the nonuser is the _only_ participant.
@@ -274,8 +278,7 @@ if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
 print_header ();
 
 if ( ! empty ( $error ) ) {
-  echo '<h2>' . translate ( 'Error' ) .
-    "</h2>\n" . $error;
+  echo print_error ( $error );
   echo print_trailer ();
   exit;
 }
@@ -330,9 +333,7 @@ if ( empty ( $event_status ) ) {
 // If we have no event status yet, it must have been deleted.
 if ( ( empty ( $event_status ) && ! $is_admin ) || 
   ( ! $can_view  && empty ( $rss_view ) ) ) {
-  echo '<h2>' . 
-    translate ( 'Error' ) . '</h2>' . 
-    translate ( 'You are not authorized' ) . ".\n";
+  echo print_not_auth ( true );
   echo print_trailer ();
   exit;
 }
@@ -766,22 +767,22 @@ if ( $single_user == 'N' && $show_participants ) { ?>
   for ( $i = 0; $i < $num_wait; $i++ ) {
     user_load_variables ( $waiting[$i], 'temp' );
     if ( strlen ( $tempemail ) ) {
-      echo '<br /><a href="mailto:' . $tempemail . "?subject=$subject\">" . 
-        $tempfullname . "</a> (?)\n";
+      echo '<a href="mailto:' . $tempemail . "?subject=$subject\">" . 
+        $tempfullname . "</a> (?)<br />\n";
       $allmails[] = $tempemail;
     } else {
-      echo '<br />' . $tempfullname . " (?)\n";
+      echo $tempfullname . " (?)<br />\n";
     }
   }
   for ( $i = 0; $i < $num_rej; $i++ ) {
     user_load_variables ( $rejected[$i], 'temp' );
     if ( strlen ( $tempemail ) ) {
-      echo '<br /><strike><a href="mailto:' . $tempemail .
+      echo '<strike><a href="mailto:' . $tempemail .
         "?subject=$subject\">" . $tempfullname .
-        '</a></strike> (' . translate( 'Rejected' ) . ")\n";
+        '</a></strike> (' . translate( 'Rejected' ) . ")<br />\n";
     } else {
-      echo "<br /><strike>$tempfullname</strike> (" . 
-        translate( 'Rejected' ) . ")\n";
+      echo "<strike>$tempfullname</strike> (" . 
+        translate( 'Rejected' ) . ")<br />\n";
     }
   }
   }

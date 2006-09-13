@@ -29,7 +29,7 @@ if ( empty ( $login) || $login == '__public__' ) {
 
 $INC = array('js/users.php/true','js/visible.php/true');
 $BodyX = ( ! empty ( $tab ) ?  "onload=\"showTab( '$tab' );\"" : '' );
-print_header($INC,'', $BodyX );
+print_header($INC,'', $BodyX, '', '', true );
 
 echo display_admin_link();
 ?>

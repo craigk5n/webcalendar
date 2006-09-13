@@ -8,74 +8,64 @@ echo $helpListStr;
 
 <h2><?php etranslate('Help')?>: <?php etranslate('Adding/Editing Calendar Entries')?></h2>
 
-<table>
- <tr><td class="help">
-  <?php etranslate('Brief Description')?>:</td><td>
-  <?php etranslate('brief-description-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Full Description')?>:</td><td>
-  <?php etranslate('full-description-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Date')?>:</td><td>
-  <?php etranslate('date-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Time')?>:</td><td>
-  <?php etranslate('time-help')?>
- </td></tr>
+ <p class="helptext">
+  <span class="helplabel"><?php etranslate('Brief Description')?>:</span>
+  <?php etranslate('brief-description-help')?></p>
+ <p class="helptext">
+  <span class="helplabel"><?php etranslate('Full Description')?>:</span>
+  <?php etranslate('full-description-help')?></p>
+ <p class="helptext">
+  <span class="helplabel"><?php etranslate('Date')?>:</span>
+  <?php etranslate('date-help')?></p>
+ <p class="helptext">
+  <span class="helplabel"><?php etranslate('Time')?>:</span>
+  <?php etranslate('time-help')?></p>
+ <p class="helptext">
+  <span class="helplabel">
    <?php if ( $TIMED_EVT_LEN != 'E' ) { ?>
- <tr><td class="help">
-  <?php etranslate('Duration')?>:</td><td>
-  <?php etranslate('duration-help')?>
- </td></tr>
+     <?php etranslate('Duration')?>:</span>
+     <?php etranslate('duration-help')?>
    <?php } else { ?>
- <tr><td class="help">
-   <?php etranslate('End Time')?>:</td><td>
-   <?php etranslate('end-time-help')?>
-  </td></tr>
-   <?php }
- if ( $DISABLE_PRIORITY_FIELD != 'Y' ) { ?>
-  <tr><td class="help">
-   <?php etranslate('Priority')?>:</td><td>
-   <?php etranslate('priority-help')?>
-  </td></tr>
+     <?php etranslate('End Time')?>:</span>
+     <?php etranslate('end-time-help')?>
+   <?php } ?></p>
+
+  <?php if ( $DISABLE_PRIORITY_FIELD != 'Y' ) { ?>
+   <p class="helptext">
+   <span class="helplabel"><?php etranslate('Priority')?>:</span>
+   <?php etranslate('priority-help')?></p>
  <?php }
  if ( $DISABLE_ACCESS_FIELD != 'Y' ) { ?>
-  <tr><td class="help">
-   <?php etranslate('Access')?>:</td><td>
-   <?php etranslate('access-help')?>
-  </td></tr>
+   <p class="helptext">
+   <span class="helplabel"><?php etranslate('Access')?>:</span>
+   <?php etranslate('access-help')?></p>
  <?php }
   $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
   if ( $is_admin )
    $show_participants = true;
   if ( $single_user == 'N' && $show_participants ) { ?>
-   <tr><td class="help">
-    <?php etranslate('Participants')?>:</td><td>
-    <?php etranslate('participants-help')?>
-   </td></tr>
+    <p class="helptext">
+    <span class="helplabel"><?php etranslate('Participants')?>:</span>
+    <?php etranslate('participants-help')?></p>
   <?php } 
   if ( $DISABLE_REPEATING_FIELD != 'Y' ) { ?>
-  <tr><td class="help">
-   <?php etranslate('Repeat Type')?>:</td><td>
+    <p class="helptext">
+    <span class="helplabel"><?php etranslate('Repeat Type')?>:</span>
    <?php etranslate('repeat-type-help')?>
-  </td></tr>
-  <tr><td class="help">
-   <?php etranslate('Repeat End Date')?>:</td><td>
-   <?php etranslate('repeat-end-date-help')?>
-  </td></tr>
-  <tr><td class="help">
-   <?php etranslate('Repeat Day')?>:</td><td>
-   <?php etranslate('repeat-day-help')?>
-  </td></tr>
-  <tr><td class="help">
-   <?php etranslate('Frequency')?>:</td><td>
-   <?php etranslate('repeat-frequency-help')?>
-  </td></tr>
- <?php } ?>
-</table>
+   <a class="underline" href="/docs/WebCalendar-UserManual.html#repeat"><?php 
+    etranslate( 'For More Information...') ?></a></p>
+    <p class="helptext">
+    <span class="helplabel"><?php etranslate('Repeat End Date')?>:</span>
+   <?php etranslate('repeat-end-date-help')?></p>
 
-<?php echo print_trailer( false, true, true ); ?>
+    <p class="helptext">
+    <span class="helplabel"><?php etranslate('Repeat Day')?>:</span>
+   <?php etranslate('repeat-day-help')?></p>
+
+    <p class="helptext">
+    <span class="helplabel"><?php etranslate('Frequency')?>:</span>
+   <?php etranslate('repeat-frequency-help')?></p>
+ <?php } 
+
+echo print_trailer( false, true, true ); ?>
 

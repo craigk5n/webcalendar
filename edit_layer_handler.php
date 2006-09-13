@@ -5,7 +5,7 @@ include_once 'includes/init.php';
 $error = '';
 
 if ( $ALLOW_VIEW_OTHER != 'Y' ) {
-  $error = translate( 'You are not authorized' );
+  $error = print_not_auth ();
 }
 
 if ( empty ( $dups ) )

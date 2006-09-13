@@ -19,6 +19,10 @@ echo $helpListStr;
  <?php etranslate('server-url-help')?>
 </td></tr>
 <tr><td class="help">
+ <?php etranslate( 'Home URL' )?>:</td><td>
+ <?php etranslate('home-url-help')?>
+</td></tr>
+<tr><td class="help">
  <?php etranslate( 'Language' )?>:</td><td>
  <?php etranslate('language-help')?>
 </td></tr>

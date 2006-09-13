@@ -179,7 +179,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     }
   } 
   if ( empty ( $error ) && ! $can_view ) {
-    $error = translate ( 'You are not authorized' );
+    $error = print_not_auth ();
   }
 }
 
