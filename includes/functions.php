@@ -459,6 +459,10 @@ function do_redirect ( $url ) {
 
 /**
  * Sends an HTTP login request to the browser and stops execution.
+ *
+ * @global string   name of language file
+ * @global string   Application Name
+ *
  */
 function send_http_login () {
   global $lang_file, $APPLICATION_NAME;
@@ -466,7 +470,7 @@ function send_http_login () {
   if ( strlen ( $lang_file ) ) {
     $title = translate( 'Title' );
     $unauthorized = translate( 'Unauthorized' );
-    $not_authorized = translate( 'You are not authorized' );
+    $not_authorized = print_not_auth ();
   } else {
     $title = 'Webcalendar';
     $unauthorized = 'Unauthorized';
@@ -490,6 +494,8 @@ function send_http_login () {
  *
  * We save this cookie so we can return to this same page after a user
  * edits/deletes/etc an event.
+ *
+ * @param bool $view  Determine if we are using a view_x.php file
  *
  * @global string Request string
  */
@@ -694,7 +700,6 @@ function load_user_preferences ( $guest='') {
  * @return string The list of external users for an event formated in HTML.
  */
 function event_get_external_users ( $event_id, $use_mailto=0 ) {
-  global $error;
   $ret = '';
 
   $rows = dbi_get_cached_rows ( 'SELECT cal_fullname, cal_email ' .
@@ -4929,6 +4934,8 @@ function languageToAbbrev ( $name ) {
  * @param string $date         Date to show the grid for
  * @param array  $participants Which users should be included in the grid
  * @param string $popup        Not used
+ *
+ * @return string              HTML to display matrix
  */
 function daily_matrix ( $date, $participants, $popup = '' ) {
   global $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TABLEBG;
@@ -5178,8 +5185,7 @@ function get_site_extras_names () {
  * @param string  $prefix   Prefix for select control's name
  * @param string  $tz  Current timezone of logged in user
  *
- * @return string  $ret
- *    html for select control
+ * @return string  $ret html for select control
 */
 function print_timezone_select_html ( $prefix, $tz ) {
   $ret = '';
@@ -5216,12 +5222,15 @@ function print_timezone_select_html ( $prefix, $tz ) {
    return $ret;
 }
 
-/*
-* Checks to see if user's IP in in the IP Domain
-* specified by the /icludes/blacklist.php file
-*
-* @return bool <b>Is user's IP in required domain?</b>
-*/
+/**
+ * Checks to see if user's IP in in the IP Domain
+ * specified by the /includes/blacklist.php file
+ *
+ * @return bool Is user's IP in required domain?
+ *
+ * @see /includes/blacklist.php
+ * @todo There has to be a way to vastly improve on this logic
+ */
 function validate_domain ( ) {
 
   $ip_authorized = false;
@@ -5247,7 +5256,8 @@ function validate_domain ( ) {
 
     // Split the data into lines.
     $blacklistLines = explode ( "\n", $data );
-    for ( $n = 0, $cnt = count ( $blacklistLines ); $n < $cnt; $n++ ) {
+    $cnt = count ( $blacklistLines );
+    for ( $n = 0; $n < $cnt; $n++ ) {
       $buffer = $blacklistLines[$n];
       $buffer = trim ( $buffer, "\r\n " );
       if ( preg_match ( "/^#/", $buffer ) )
@@ -5266,8 +5276,8 @@ function validate_domain ( ) {
               $deny_found[$i] = 0;      
             }    
           }
-          //This value will be true if rmt_ip is any deny network
-          // Once set, it can not be reset be other deny statements 
+          //This value will be true if rmt_ip is in any deny network
+          // Once set, it can not be reset be other allow statements 
           if ( ! array_search ( 0, $deny_found ) ) {
             $deny_true = true;   
           } 
@@ -5297,6 +5307,7 @@ function validate_domain ( ) {
 
 /**
  * Returns a custom header, stylesheet or tailer.
+ *
  * The data will be loaded from the webcal_user_template table.
  * If the global variable $ALLOW_EXTERNAL_HEADER is set to 'Y', then
  * we load an external file using include.
@@ -5367,7 +5378,18 @@ function load_template ( $login, $type )
   return $ret;
 }
 
-
+/**
+ * Check for errors and return required HTML for display
+ *
+ * @param string $nextURL   URL the redirect to
+ * @param bool   $redirect  Redirect OR popup Confirmation window 
+ *
+ * @return string           HTML to display
+ *
+ * @global string  $error    Current error message
+ *
+ * @uses print_error_header
+ */
 function error_check ( $nextURL, $redirect=true ) {
   global $error;
   $ret = '';
@@ -5385,14 +5407,49 @@ function error_check ( $nextURL, $redirect=true ) {
   return $ret;
 }
 
+/**
+ * Generate standardized error message
+ *
+ * @param string    $error  Message to display
+ * @param bool      $full   Include extra text in display
+ *
+ * @return string           HTML to display error 
+ *
+ * @uses print_error_header
+ */
 function print_error ( $error, $full=false ) {
-	$ret =  '<h2>' . translate( 'Error' ) . "</h2>\n";
+  $ret =  print_error_header ();
   if ( $full )
-	  $ret .=  translate( 'The following error occurred' ) . ':';
-	$ret .= "<blockquote>\n";
-	$ret .= $error;
-	$ret .= "</blockquote>\n";
+    $ret .=  translate( 'The following error occurred' ) . ':';
+  $ret .= "<blockquote>\n";
+  $ret .= $error;
+  $ret .= "</blockquote>\n";
   return $ret; 
+}
+
+/**
+ * Generate standardized Not Authorized message
+ *
+ * @param bool     $full  Include ERROR title
+ *
+ * @return string         HTML to display notice
+ *
+ * @uses print_error_header
+ */
+function print_not_auth ( $full=false ) {
+  $ret = '';
+  if ( $full )
+    $ret .=  print_error_header ();
+    $ret .=  translate ( 'You are not authorized' ) . "\n";
+  return $ret; 
+}
+
+/**
+ *
+ */
+function print_error_header () {
+  $ret = '<h2>' . translate( 'Error' ) . "</h2>\n";
+  return $ret;
 }
 
 /**
@@ -5451,7 +5508,24 @@ function combine_and_sort_events ( $ev, $rep ) {
   return $rep;
 } 
 
-//calculate rollover to next day and add partial event as needed
+/**
+ * Calculate event rollover to next day and add partial event as needed
+ *
+ * Create a cloned event on the fly as needed to display in next day slot.
+ * The event times will be adjusted so that the total of all times will
+ * equal the total time of the original event. This function will get called
+ * recursively until all time has been accounted for.
+ *
+ * @param mixed $item   Event Object
+ * @param int   $i      Current count of event array
+ * @param bool  $parent flag to keep track of the original event object
+ *
+ * $global array     $result      Array of events
+ * @global string    (Y/N) Do we want to use cross day display
+ * @staticvar int    $realEndTS   The true end of the original event
+ * @staticvar string $originalDate The start date of the original event
+ * @staticvar mixed  $originalItem The original event object
+*/
 function getOverLap ( $item, $i, $parent=true ) {
   global $result, $DISABLE_CROSSDAY_EVENTS;
   static $realEndTS, $originalDate, $originalItem;
@@ -5489,6 +5563,13 @@ function getOverLap ( $item, $i, $parent=true ) {
   if ( $recurse == 1 ) getOverLap ( $result[$i -1], $i, false );
 }
 
+/**
+ * Hack to implement clone() for php4.x
+ * 
+ * @param mixed    Event object
+ * 
+ * @return mixed   Clone of the original object
+ */
 if (version_compare(phpversion(), '5.0') < 0) {
     eval('
     function clone($item) {
@@ -5505,7 +5586,9 @@ if (version_compare(phpversion(), '5.0') < 0) {
  * @param int $year Year in YYYY format
  * @param int $month Month in m format Jan =1
  *
- * #returns array  $key = phase name, $val = Ymd value
+ * @return array  $key = phase name, $val = Ymd value
+ *
+ * @global string (Y/N) Display Moon Phases
  */
 function getMoonPhases ( $year, $month ) {
   global $DISPLAY_MOON_PHASES;
@@ -5527,8 +5610,8 @@ function getMoonPhases ( $year, $month ) {
  * @param int $id         cal_id of requested entry
  * @param bool $display   if true, will create a displayable string
  *
- * #returns string  $str  string to display Reminder value
- * #returns array   $reminder 
+ * @return string  $str  string to display Reminder value
+ * @return array   $reminder 
  */
 function getReminders ( $id, $display=false ) {
   $reminder = array();
@@ -5606,7 +5689,7 @@ function getReminders ( $id, $display=false ) {
  * @param string   $val   name of environment variable
  * @param string   $setting  value to assign
  *
- * #returns bool true= success false = not allowed
+ * @return bool true= success false = not allowed
  */
 function set_env ( $val, $setting ) {
   $ret = false;
@@ -5638,6 +5721,8 @@ function set_env ( $val, $setting ) {
  * @param int      $id       event id
  * @param string   $type     event type for logging
  *
+ * @global string  logged in user
+ * @global string  current error message
  */
 function update_status ( $status, $user, $id, $type='E' ) {
   global $login, $error;
@@ -5687,7 +5772,11 @@ function update_status ( $status, $user, $id, $type='E' ) {
  *
  * @param string   $hrefin  script name
  *
+ * @return string  URL to printer friendly page
  *
+ * @global array SERVER 
+ * @global string SCRIPT name
+ * @global string (Y/N) Top menu enabled
  */
 function generate_printer_friendly ( $hrefin='' ) {
   global $_SERVER, $SCRIPT, $MENU_ENABLED;
@@ -5712,7 +5801,7 @@ return $ret;
  *
  * @param string   $timestr  time value to shorten
  *
- *
+ * @global string  (Y/N) Display 00 if on the hour
  */
 function getShortTime ( $timestr ) {
   global $DISPLAY_MINUTES;
@@ -5728,7 +5817,8 @@ function getShortTime ( $timestr ) {
 /**
  * Display the <<Admin link on pages if menus are not enabled
  *
- * 
+ * @return string  HTML for Admin Home link
+ * @global string  (Y/N) Is the Top Menu Enabled 
  */
 function display_admin_link ( ) {
  global $MENU_ENABLED;
@@ -5747,6 +5837,8 @@ function display_admin_link ( ) {
  *
  * @param string   $cal_type the log entry type
  * @param string   $cal_text  addiitonal text to display
+ *
+ * @return string  HTML for one log entry 
  */
 function display_activity_log ( $cal_type, $cal_text='' ) {
 
