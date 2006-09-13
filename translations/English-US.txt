@@ -29,7 +29,7 @@
 #
 #
 #
-# Translation last updated on 09-11-2006
+# Translation last updated on 09-13-2006
 
 
 ###############################################
@@ -42,7 +42,6 @@ charset: iso-8859-1
 ###############################################
 # Page: access.php
 #
-You are not authorized: You are not authorized
 Database error: Database error
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Public Access: Public Access
@@ -380,13 +379,6 @@ Administrative Tools: Administrative Tools
 
 
 ###############################################
-# Page: admin_mod_security.php
-#
-Error: Error
-The following error occurred: The following error occurred
-
-
-###############################################
 # Page: ajax.php
 #
 Duplicate Name: Duplicate Name
@@ -413,6 +405,16 @@ Comments: Comments
 #
 Admin mode: Admin mode
 Your assistants: Your assistants
+
+
+###############################################
+# Page: availability.php
+#
+Program Error: Program Error
+No users specified!: No users specified!
+No year specified!: No year specified!
+No month specified!: No month specified!
+No day specified!: No day specified!
 
 
 ###############################################
@@ -500,7 +502,7 @@ brief-description-help: This should provide a short description (about 20 charac
 Brief Description: Brief Description
 full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
 Full Description: Full Description
-access-help: Specifies the access level of the event.<br /> <em>Public</em>: Everyone can see the full details of the event.  <br /><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
+access-help: Specifies the access level of the event. <ul><li><em>Public</em>: Everyone can see the full details of the event. </li><li><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.</li></ul>
 Access: Access
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
 Priority: Priority
@@ -522,8 +524,8 @@ Untimed event: Untimed event
 Timed event: Timed event
 All day event: All day event
 Timezone Offset: Timezone Offset
-time-help: Specifies the time of the event.<br />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
-duration-help: Specifies the duration (in hours;minutes) of the event.  <br /><em>This field can be left blank.</em>
+time-help: Specifies the time of the event. <ul><li>"Timed event" (for an event that is scheduled for a specific time on that day)</li><li>"Untimed event" (for an event this does not have a time (like a holiday)</li><li>"All day event" (for an event that takes all day (like being out of the office)</li></ul>
+duration-help: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
 end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
 Due Date: Due Date
@@ -532,7 +534,7 @@ participants-help: Lists the participants of this entry.
 Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: External Participants
-repeat-type-help: Select how often the event should repeat.<em>Monthly (by day)</em> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <em>Monthly (by date)</em> allows an event to repeat on the same day of the month.
+repeat-type-help: Select how often the event should repeat.
 Daily: Daily
 Weekly: Weekly
 Monthly: Monthly
@@ -649,6 +651,7 @@ Reload: Reload
 ###############################################
 # Page: edit_remotes_handler.php
 #
+Error: Error
 Import Results: Import Results
 Events successfully imported: Events successfully imported
 Create a new layer to view this calendar: Create a new layer to view this calendar
@@ -806,6 +809,7 @@ Report Bug: Report Bug
 #
 Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
 Repeat Type: Repeat Type
+For More Information...: For More Information...
 Repeat End Date: Repeat End Date
 Repeat Day: Repeat Day
 repeat-day-help: Specifies which days of the week the event should repeat on.
@@ -1048,12 +1052,6 @@ An appointment has been rejected by: An appointment has been rejected by
 
 
 ###############################################
-# Page: reject_entry_mod_security.php
-#
-Changes successfully saved: Changes successfully saved
-
-
-###############################################
 # Page: remotes.php
 #
 Add New Remote Calendar: Add New Remote Calendar
@@ -1124,6 +1122,8 @@ denotes administrative user: denotes administrative user
 ###############################################
 # Page: usersel.php
 #
+No form specified!: No form specified!
+No listid specified!: No listid specified!
 Reset: Reset
 
 
@@ -1304,6 +1304,9 @@ Schedule an appointment for: Schedule an appointment for
 All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
+Changes successfully saved: Changes successfully saved
+The following error occurred: The following error occurred
+You are not authorized: You are not authorized
 day: day
 before: before
 after: after
@@ -1598,7 +1601,7 @@ This installation wizard will guide you...: This installation wizard will guide 
 PHP Version Check: PHP Version Check
 Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
 PHP version: PHP version
-PHP Settings:PHP Settings
+PHP Settings: PHP Settings
 Detailed PHP Info: Detailed PHP Info
 Session Check: Session Check
 To test the proper operation of sessions, reload this page: To test the proper operation of sessions, reload this page
