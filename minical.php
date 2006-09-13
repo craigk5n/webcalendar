@@ -38,7 +38,7 @@ load_global_settings ();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  etranslate( 'You are not authorized' );
+  echo print_not_auth ();
   exit;
 }
 /*
@@ -81,7 +81,7 @@ $login = $user;
 
 
 if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' ) {
-  $error = translate ( 'You are not authorized' ) . '.';
+  $error = print_not_auth () . '.';
 }
 
 if ( $allow_user_override ) {

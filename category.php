@@ -24,7 +24,7 @@ if ( ! empty ( $id ) ) {
       if ( $row[0] != $id )
         $error = translate( 'Invalid entry id' ) . ': ' . $id;
       else if ( $row[1] != $login && ! $is_admin )
-        $error = translate ( 'You are not authorized' ) . '.';
+        $error = print_not_auth () . '.';
     }
     dbi_free_result ( $res );
   } else {
@@ -122,6 +122,6 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
 }
 
 if ( ! empty ( $error ) ) {
-  echo "<span class=\"bold\">" . translate ( 'Error' ) . ':</span>' . $error;
+  echo print_error ( $error );
 }
 echo print_trailer(); ?>

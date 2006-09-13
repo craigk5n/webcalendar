@@ -3,7 +3,7 @@
 include_once 'includes/init.php';
 
 if ( ! $is_admin ) {
-  $error = 'You are not authorized';
+  $error = print_not_auth ();
 } else  {
   $delete = getPostValue ( 'delete' );
   if ( ! empty ( $delete ) ) {

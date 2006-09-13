@@ -70,7 +70,7 @@ $WebCalendar->setLanguage();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  etranslate( 'You are not authorized' );
+  echo print_not_auth ();
   exit;
 }
 
@@ -97,7 +97,7 @@ load_user_preferences ();
 
 if ( empty ( $USER_PUBLISH_ENABLED ) || $USER_PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  etranslate( 'You are not authorized' );
+  echo print_not_auth ();
   exit;
 }
 

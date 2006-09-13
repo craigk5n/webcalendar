@@ -89,7 +89,7 @@ if ($file['size'] > 0) {
       break;
 
   }
-
+  $errorStr = translate( 'Error' );
   $count_con = $count_suc = $error_num = 0;
   if (! empty ($data) && empty ($errormsg) ) {
     import_data ( $data, $doOverwrite, $type );
@@ -101,14 +101,14 @@ if ($file['size'] > 0) {
     }
     echo translate ( 'Errors' ) . ": $error_num<br /><br />\n";
   } elseif (! empty ( $errormsg ) ) {
-    echo "<br /><br />\n<b>" . translate( 'Error' ) . ":</b> $errormsg<br />\n";
+    echo "<br /><br />\n<b>" . $errorStr . ":</b> $errormsg<br />\n";
   } else {
-    echo "<br /><br />\n<b>" . translate( 'Error' ) . ':</b> ' .
+    echo "<br /><br />\n<b>" . $errorStr . ':</b> ' .
       translate( 'There was an error parsing the import file or no events were returned' ) .
       ".<br />\n";
   }
 } else {
- echo "<br /><br />\n<b>" . translate( 'Error' ) . ":</b> " .
+ echo "<br /><br />\n<b>" . $errorStr . ":</b> " .
     translate( 'The import file contained no data' ) . ".<br />\n";
 }
 

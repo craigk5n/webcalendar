@@ -84,8 +84,7 @@ class WebCalMailer extends phpmailer {
         $errStr .= translate ( 'Changes successfully saved' ); 
       $errStr .= '</blockquote>';
     } else {
-      $errStr = '<h2>' . translate( 'Error' ) . "</h2>\n";
-      $errStr .= '<blockquote>' . $error . "</blockquote>\n";
+      $errStr = print_error ( $error );
     } 
     echo $errStr;
     echo print_trailer();

@@ -6,7 +6,7 @@ $newRemoteStr = translate( 'Add New Remote Calendar' );
 $targetStr = 'target="remotesiframe" onclick="javascript:show(\'remotesiframe\');">';
 
 if ( ! $NONUSER_PREFIX ) {
-  echo '<h2>' . translate( 'Error' ) . "</h2>\n" . 
+  echo print_error_header () . 
       translate( 'NONUSER_PREFIX not set' ) . ".\n";
   echo "</body>\n</html>";
   exit;

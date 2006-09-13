@@ -81,7 +81,7 @@ if ( ! $can_edit && access_is_enabled () && ! empty ( $user ) ) {
 }
 
 if ( ! $can_edit ) {
-  $error = translate ( 'You are not authorized' );
+  $error = print_not_auth ();
 }
 
 // Is this a repeating event?
@@ -259,7 +259,7 @@ if ( $id > 0 && empty ( $error ) ) {
         $del_user = $user;
       } else {
         // Error: user cannot delete from other user's calendar
-        $error = translate ( 'You are not authorized' );
+        $error = print_not_auth ();
       }
     }
     if ( empty ( $error ) ) {

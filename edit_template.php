@@ -139,8 +139,7 @@ if ( $user != '__system__' ) {
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo '<h2>' . translate( 'Error' ) . "</h2>\n" .
-    $error . "\n";
+  echo print_error ( $error );
 } else {
 ?>
 <form action="edit_template.php" method="post" name="reportform">

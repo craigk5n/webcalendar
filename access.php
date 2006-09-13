@@ -26,7 +26,7 @@ $allow_view_other = ( ! empty ( $ALLOW_VIEW_OTHER ) &&
   $ALLOW_VIEW_OTHER == 'Y' ? true : false );
 
 if ( ! access_is_enabled () ) {
-  etranslate ( 'You are not authorized' );
+  echo print_not_auth ();
   exit;  
 }
 

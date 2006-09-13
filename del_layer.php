@@ -6,7 +6,7 @@ $id = getGetValue ( 'id' );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' || empty ( $id )) {
   print_header ();
-  etranslate( 'You are not authorized' );
+  echo print_not_auth ();
   echo print_trailer ();
   exit;
 }

@@ -6,13 +6,12 @@ $newNonUserStr = translate( 'Add New NonUser Calendar' );
 $targetStr = 'target="nonusersiframe" onclick="javascript:show(\'nonusersiframe\');">';
 
 if ( ! $is_admin ) {
-  echo '<h2>' . translate( 'Error' ) . "</h2>\n" . 
-      translate( 'You are not authorized' ) . ".\n";
+  echo print_not_auth ( true );
   echo "</body>\n</html>";
   exit;
 }
 if ( ! $NONUSER_PREFIX ) {
-  echo '<h2>' . translate( 'Error' ) . "</h2>\n" . 
+  echo print_error_header () . 
       translate( 'NONUSER_PREFIX not set' ) . ".\n";
   echo "</body>\n</html>";
   exit;

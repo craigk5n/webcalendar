@@ -277,7 +277,7 @@ $login = $username;
 load_user_preferences ();
 
 if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' ) {
-  $error = translate ( 'You are not authorized' ) . '.';
+  $error = print_not_auth () . '.';
 }
 
 if ( $allow_user_override ) {
@@ -486,9 +486,8 @@ if ( ! empty ( $showPopups ) ) {
 <?php } //end test for direct call
 
 if ( ! empty ( $error ) ) {
-  echo '<h2>' . translate ( 'Error' ) .
-    "</h2>\n" . $error;
-  echo "\n<br /><br />\n</body></html>";
+  echo print_error ( $error );
+  echo "</body></html>";
 
   //restore previous working directory before exit
   if (strlen($save_current_working_dir)) chdir($save_current_working_dir);

@@ -30,7 +30,7 @@ load_user_preferences ( 'guest' );
 
 
 
-$notauth = translate ( 'You are not authorized' );
+$notauth = print_not_auth ();
 
 if ( empty ( $ALLOW_SELF_REGISTRATION ) || $ALLOW_SELF_REGISTRATION != 'Y' ) { 
   $error = $notauth;

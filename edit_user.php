@@ -17,25 +17,25 @@ if ( empty ( $user ) ) {
   if ( ! $is_admin ) {
     // must be admin...
     if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
-      $error = translate ( 'You are not authorized' );
+      $error = print_not_auth ();
     }
   }
   if ( ! $admin_can_add_user ) {
     // if adding users is not allowed...
-    $error = translate ( 'You are not authorized' );
+    $error = print_not_auth ();
   }
 } else {
   // User is editing their account info
   if ( ! access_can_access_function ( ACCESS_ACCOUNT_INFO ) )
-    $error = translate ( 'You are not authorized' );
+    $error = print_not_auth ();
 }
 
 $disableCustom = true;
 $INC = array('js/edit_user.php/false');
-print_header ( $INC, '', '', $disableCustom );
+print_header ( $INC, '', '', $disableCustom, '', true, false );
 
 if ( ! empty ( $error ) ) {
-  echo '<h2>' . translate ( 'Error' ) . "</h2>\n<p>" . $error . "</p>\n";
+  echo print_error ( $error );
 } else {
 ?>
 <table>

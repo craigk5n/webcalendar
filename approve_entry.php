@@ -8,7 +8,7 @@ load_user_categories();
 $error = '';
 
 if ( $readonly == 'Y' ) {
-  $error = translate( 'You are not authorized' );
+  $error = print_not_auth ();
 }
 
 

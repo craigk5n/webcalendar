@@ -77,14 +77,14 @@ if ( empty ( $error ) && ! empty ( $id ) ) {
 
 if ( $type == 'A' ) {
   if ( empty ( $ALLOW_ATTACH ) || $ALLOW_ATTACH != 'Y' )
-    $error = translate( 'You are not authorized' );
+    $error = print_not_auth ();
   else if ( empty ( $error ) && $ALLOW_ATTACH_PART == 'Y' && $is_my_event )
     $can_add = true;
   else if ( $ALLOW_ATTACH_ANY == 'Y' )
     $can_add = true;
 } else if ( $type == 'C' ) {
   if ( empty ( $ALLOW_COMMENTS ) || $ALLOW_COMMENTS != 'Y' )
-    $error = translate( 'You are not authorized' );
+    $error = print_not_auth ();
   else if ( empty ( $error ) && $ALLOW_COMMENTS_PART == 'Y' && $is_my_event )
     $can_add = true;
   else if ( $ALLOW_COMMENTS_ANY == 'Y' )
@@ -96,11 +96,11 @@ if ( access_is_enabled () ) {
 }
 
 if ( ! $can_add )
-  $error = translate ( 'You are not authorized' );
+  $error = print_not_auth ();
 
 if ( ! empty ( $error ) ) {
   print_header ();
-  echo '<h2>' . translate( 'Error' ) . '</h2>' . $error;
+  echo print_error ( $error );
   echo print_trailer ();
   exit;
 }
@@ -197,7 +197,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
 
   if ( ! empty ( $error ) ) {
     print_header ();
-    echo '<h2>' . translate( 'Error' ) . '</h2>' . $error;
+    echo print_error ( $error );
     echo print_trailer ();
     exit;
   }

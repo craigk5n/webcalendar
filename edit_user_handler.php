@@ -13,7 +13,7 @@ $error = '';
 if ( ! $is_admin )
   $user = $login;
 
-$notAuthStr = translate( 'You are not authorized' ) . '.';
+$notAuthStr = print_not_auth () . '.';
 $deleteStr = translate( 'Deleting users not supported' ) . '.';
 $notIdenticalStr = translate( 'The passwords were not identical' ) . '.';
 $noPasswordStr = translate( 'You have not entered a password' ) . '.';

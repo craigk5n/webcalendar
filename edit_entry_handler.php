@@ -197,7 +197,7 @@ if ( empty ( $error ) && ! $can_edit ) {
 }
 
 if ( ! $can_edit && empty ( $error ) ) {
-  $error = translate ( 'You are not authorized' );
+  $error = print_not_auth ();
 }
 
 // If display of participants is disabled, set the participant list

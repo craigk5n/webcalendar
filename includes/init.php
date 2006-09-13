@@ -87,9 +87,10 @@ $WebCalendar->initializeSecondPhase();
  *                             popup windows, such as color selection)
  * @param bool   $disableStyle Do not include the standard css?
  * @param bool   $disableRSS   Do not include the RSS link
+ * @param bool   $disableAJAX   Do not include the prototype.js link
  */
 function print_header($includes = '', $HeadX = '', $BodyX = '',
-  $disableCustom=false, $disableStyle=false, $disableRSS=false ) {
+  $disableCustom=false, $disableStyle=false, $disableRSS=false, $disableAJAX=true ) {
   global $APPLICATION_NAME;
   global $FONTS,$WEEKENDBG,$THFG,$THBG,$PHP_SELF;
   global $TABLECELLFG,$TODAYCELLBG,$TEXTCOLOR;
@@ -151,7 +152,8 @@ function print_header($includes = '', $HeadX = '', $BodyX = '',
   }
 
   $ret .= "<script type=\"text/javascript\" src=\"includes/js/util.js\"></script>\n";
-  $ret .= "<script type=\"text/javascript\" src=\"includes/js/prototype.js\"></script>\n";
+  if ( !$disableAJAX )
+   $ret .= "<script type=\"text/javascript\" src=\"includes/js/prototype.js\"></script>\n";
 
   // Any other includes?
   if ( is_array ( $includes ) ) {

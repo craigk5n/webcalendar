@@ -1,31 +1,34 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
-include_once 'includes/help_list.php';  
-print_header('', '', '', true);
+include_once 'includes/help_list.php'; 
+
+$helpStr = translate('Help');
+$titleStr = translate ( 'User Access Control' );
+$descStr = translate('User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.');
+$inviteStr = translate ( 'Can Invite' );
+$inviteTStr = translate('If disabled, this user will not see you in the participants list.');
+$emailStr = translate('Can Email');
+$emailTStr = translate('If disabled, this user will not be able to send you emails.');
+$timeStr = translate ( 'Can See Time Only' );
+$timeTStr = translate('If enabled, this user will not be able to view the details of any of your entries.');
+ 
+print_header('', '', '', true, false, true);
 echo $helpListStr;
-?>
+echo <<<EOT
 
-<h2><?php etranslate('Help')?>: <?php etranslate ( 'User Access Control' )?></h2>
+<div class="helpbody">
+  <h2>{$helpStr}:{$titleStr}</h2>
+  <p>{$descStr}</p>
+  <p><label>{$inviteStr}:</label>
+   {$inviteTStr}</p>
+  <p><label>{$emailStr}:</label>
+   {$emailTStr}</p>
+  <p><label>{$timeStr}:</label>
+   {$timeTStr}</p>
+</div>
 
-<table>
- <tr><td colspan="2">
- <p><?php etranslate('User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.')?></p>
- </td></tr>
- <tr><td colspan="2">&nbsp;</td></tr>
- <tr><td class="help">
-  <?php etranslate ( 'Can Invite' )?>:</td><td>
-  <?php etranslate('If disabled, this user will not see you in the participants list.')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Can Email')?>:</td><td>
-  <?php etranslate('If disabled, this user will not be able to send you emails.')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate ( 'Can See Time Only' )?>:</td><td>
-  <?php etranslate('If enabled, this user will not be able to view the details of any of your entries.')?>
- </td></tr>
-</table>
+EOT;
 
-<?php echo print_trailer( false, true, true ); ?>
+echo print_trailer( false, true, true ); ?>
 

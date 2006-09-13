@@ -203,7 +203,7 @@ if ( ! empty ( $user ) && $user != $login &&
 }
 
 if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' ) {
-  $error = translate ( 'You are not authorized' ) . '.';
+  $error = print_not_auth () . '.';
 }
 
 $updating_public = false;
@@ -221,7 +221,7 @@ if ( empty ( $offset ) ) {
 // If no report id is specified, then generate a list of reports for
 // the user to select from.
 if ( empty ( $error ) && empty ( $report_id ) && $login == '__public__' ) {
-  $error = translate ( 'You are not authorized' ) . '.';
+  $error = print_not_auth () . '.';
 }
 if ( empty ( $error ) && empty ( $report_id ) ) {
   $list = '';
@@ -281,7 +281,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) { 
       if ( $row[2] != 'Y' && $login != $row[0] ) {
-        $error = translate ( 'You are not authorized' ) . '.';
+        $error = print_not_auth () . '.';
       } else {
         $i = 0;
         $report_login = $row[$i++];
@@ -462,7 +462,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
   }
 }
 if ( ! empty ( $error ) ) {
-  echo '<h2>' . translate ( 'Error' ) . "</h2>\n" . $error;
+  echo print_error ( $error );
   echo print_trailer ();
   exit;
 }
