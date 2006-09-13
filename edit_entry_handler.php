@@ -1066,5 +1066,6 @@ onclick="history.back()" /><td>
 <?php } else {
 //process errors
 $mail->MailError ( $mailerError, $error );
+}
  ?>
 
