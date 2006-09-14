@@ -631,6 +631,8 @@ function dbi_get_blob ( $table, $column, $key ) {
   * @return bool True on success
   */
 function dbi_free_result ( $res ) {
+  if ( $res == 1 ) //Not needed for UPDATE, DELETE, etc
+    return;
   if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 ) {
     return mysql_free_result ( $res );
   } else if ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
