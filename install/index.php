@@ -181,23 +181,23 @@ function convert_server_to_GMT () {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $cal_date = $row[0];
       $cal_time = sprintf ( "%06d", $row[1] );
-   $cal_log_id = $row[2];
-   $sy = substr ( $cal_date, 0, 4 );
-   $sm = substr ( $cal_date, 4, 2 );
-   $sd = substr ( $cal_date, 6, 2 );
-   $sh = substr ( $cal_time, 0, 2 );
-   $si = substr ( $cal_time, 2, 2 );
-   $ss = substr ( $cal_time, 4, 2 );   
-   $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
-   $new_cal_date = gmdate ( 'Ymd', $new_datetime );
-   $new_cal_time = gmdate ( 'His', $new_datetime );
-   // Now update row with new data
-   if ( ! dbi_execute ( 'UPDATE webcal_entry_log SET cal_date = ?, ' .
-     ' cal_time = ? '.
-     'WHERE cal_log_id = ?' , array ( $new_cal_date , $new_cal_time , $cal_log_id ) ) ){
-     $error = "Error updating table 'webcal_entry_log' " . dbi_error ();
-    return $error;
-   }
+      $cal_log_id = $row[2];
+      $sy = substr ( $cal_date, 0, 4 );
+      $sm = substr ( $cal_date, 4, 2 );
+      $sd = substr ( $cal_date, 6, 2 );
+      $sh = substr ( $cal_time, 0, 2 );
+      $si = substr ( $cal_time, 2, 2 );
+      $ss = substr ( $cal_time, 4, 2 );   
+      $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
+      $new_cal_date = gmdate ( 'Ymd', $new_datetime );
+      $new_cal_time = gmdate ( 'His', $new_datetime );
+      // Now update row with new data
+      if ( ! dbi_execute ( 'UPDATE webcal_entry_log SET cal_date = ?, ' .
+        ' cal_time = ? '.
+        'WHERE cal_log_id = ?' , array ( $new_cal_date , $new_cal_time , $cal_log_id ) ) ){
+        $error = "Error updating table 'webcal_entry_log' " . dbi_error ();
+        return $error;
+      }
     }
     dbi_free_result ( $res );
   }
@@ -234,11 +234,10 @@ function get_installed_version ( $postinstall=false ) {
    $sql = $database_upgrade_matrix[$i][0];
    //echo "SQL: " .$sql . "<br />";
    if ( $sql != '' ) 
-     $res = @dbi_execute ( $sql, array(), false, $show_all_errors );
+     $res = dbi_execute ( $sql, array(), false, $show_all_errors );
    if  ( $res ) {
      $_SESSION['old_program_version'] = $database_upgrade_matrix[$i +1][2];
      $_SESSION['install_file'] = $database_upgrade_matrix[$i +1][3];
-     dbi_free_result ( $res );
      $res = '';
      $sql = $database_upgrade_matrix[$i][1];
      if ( $sql != '' )
@@ -288,6 +287,8 @@ function get_installed_version ( $postinstall=false ) {
    dbi_free_result ( $res );    
    // Insert webcal_config values only if blank
    db_load_config ();
+   //check if an Admin account exists
+   $_SESSION['admin_exists'] = db_check_admin ();
  }
  // Determine if old data has been converted to GMT
  // This seems lke a good place to put this
@@ -295,12 +296,23 @@ function get_installed_version ( $postinstall=false ) {
   "WHERE cal_setting  = 'WEBCAL_TZ_CONVERSION'", array(), false, $show_all_errors);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
+  dbi_free_result ( $res );
   // if not 'Y', we will prompt user to do conversion
   // from server time to GMT time
   if ( !empty ( $row[0] ) ) {
    $_SESSION['tz_conversion']  = $row[0];
-  } else {
-    $_SESSION['tz_conversion']  = 'NEEDED';
+  } else { //we'll test if any events even exist
+    $res = dbi_execute ( 'SELECT count(cal_id) FROM webcal_entry ', 
+      array(), false, $show_all_errors);
+    if ( $res ) {
+      $row = dbi_fetch_row ( $res );
+      dbi_free_result ( $res );
+    }
+    if ( $row[0] > 0 ) {
+      $_SESSION['tz_conversion']  = 'NEEDED';
+    } else {
+      $_SESSION['tz_conversion']  = 'Y';
+    }
   }
   dbi_free_result ( $res );
  }
@@ -669,7 +681,8 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
    if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
      if ( strlen ( $row[1] ) < 30 ) {
-      dbi_execute ('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?', array ( md5( $row[1] ) , $row[0] ) );
+      dbi_execute ('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?', 
+        array ( md5( $row[1] ) , $row[0] ) );
      }
     }
     dbi_free_result ( $res );
@@ -988,6 +1001,8 @@ if ( ! empty ( $y ) ) {
  if ( ! empty ( $do_load_admin ) ) {
   //add default admin user if not exists
   db_load_admin ();
+  //check if an Admin account exists
+  $_SESSION['admin_exists'] = db_check_admin ();
  }
  $setup_complete = true;
 }
@@ -1719,7 +1734,12 @@ if ( ! $exists || ! $canWrite ) { ?>
   <form action="index.php?action=switch&amp;page=4" method="post" enctype='multipart/form-data' name="form_app_settings">
     <input type="hidden" name="app_settings"  value="1"/>
     <td class="prompt"><?php etranslate ( 'Create Default Admin Account' ) ?>:</td>
-    <td><input type="checkbox" name="load_admin" value="Yes" <?php echo $will_load_admin ?> /></td></tr>
+    <td><input type="checkbox" name="load_admin" value="Yes" <?php 
+      echo $will_load_admin ?> /><?php 
+         if ( $_SESSION['admin_exists'] == 0 ) {
+           echo '<span class="notrecommended"> ( ' . 
+           translate ( 'Admin Account Not Found' ) . ' )</span>';
+         } ?></td></tr>
     <tr><td class="prompt"><?php etranslate ( 'Application Name' ) ?>:</td>
    <td>   
      <input type="text" size="40" name="form_application_name" id="form_application_name" value="<?php 
