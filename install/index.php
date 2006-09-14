@@ -269,27 +269,25 @@ function get_installed_version ( $postinstall=false ) {
    $show_all_errors );
  if ( $res ) {
    $row = dbi_fetch_row ( $res );
-  if ( isset ( $row[0] ) && $row[0] == 0 ) {  
-    $_SESSION['blank_database'] = true;
-  } else {
-   //make sure all existing values in config and pref tables are UPPERCASE
-   make_uppercase ();
+   if ( isset ( $row[0] ) && $row[0] == 0 ) {  
+     $_SESSION['blank_database'] = true;
+   } else {
+     //make sure all existing values in config and pref tables are UPPERCASE
+     make_uppercase ();
 
-   // Clear db_cache. This will prevent looping when launching WebCalendar
-   // if upgrading and WEBCAL_PROGRAM_VERSION is cached
-   if ( ! empty ( $settings['db_cachedir'] ) )
-     dbi_init_cache ( $settings['db_cachedir'] );
-   else if ( ! empty ( $settings['cachedir'] ) )
-     dbi_init_cache ( $settings['cachedir'] ); 
-   
-   //delete existing WEBCAL_PROGRAM_VERSION number 
-   dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
-      
+     // Clear db_cache. This will prevent looping when launching WebCalendar
+     // if upgrading and WEBCAL_PROGRAM_VERSION is cached
+     if ( ! empty ( $settings['db_cachedir'] ) )
+       dbi_init_cache ( $settings['db_cachedir'] );
+     else if ( ! empty ( $settings['cachedir'] ) )
+       dbi_init_cache ( $settings['cachedir'] ); 
+    
+     //delete existing WEBCAL_PROGRAM_VERSION number 
+     dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
+   }
+   dbi_free_result ( $res );    
    // Insert webcal_config values only if blank
    db_load_config ();
- 
- }
-  dbi_free_result ( $res );
  }
  // Determine if old data has been converted to GMT
  // This seems lke a good place to put this
@@ -626,7 +624,7 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
       $db_password, $db_database, false );
   // It's possible that the tables were created manually
   // and we just want to do the database population routines
-  if ( $c && isset ( $_SESSION['install_file'] )  ) {
+  if ( $c && ! empty ( $_SESSION['install_file'] )  ) {
    $sess_install = $_SESSION['install_file'];
     $install_filename = ( $sess_install == 'tables' ? 'tables':'upgrade');
     switch ( $db_type ) {
