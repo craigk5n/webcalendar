@@ -200,6 +200,17 @@ VALUES ( 'admin', 'YYYYYYYYYYYYYYYYYYYYYYYYYYY' );";
  }  
 }
 
+function db_check_admin () {
+ $res = dbi_execute ( 'SELECT count(cal_login) FROM webcal_user ' .
+ "WHERE cal_is_admin  = 'Y'", array() , false, false );
+ if ( $res ) {
+  $row = dbi_fetch_row ( $res );
+  dbi_free_result ( $res );
+   return ( $row[0] > 0 );
+ } 
+ return false; 
+}
+
 function do_v11b_updates () {
  $res = dbi_execute ( 'SELECT webcal_entry_user.cal_id, cal_category, cat_owner ' . 
    'FROM webcal_entry_user, webcal_categories ' . 
