@@ -1,4 +1,8 @@
 Version 1.1.1 (?? ??? 2006)
+ - Fixed bug 1431329: user_search_dn() uses call by ref and too many admins
+ - Fixed bug 1523439: Bug with admins in LDAP
+ - Fixed bug 1523442: Bug (Warning) with pass-by-reference
+ - Fixed some issues with installation script dealing with blank databases
  - Created commom error function to hopefully cleanup the code
  - Fixed bug 1554383: Times next to events during import is wrong
  - Fixed bug 1555860: SQL Error on import

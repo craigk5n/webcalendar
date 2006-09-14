@@ -73,9 +73,9 @@ $ldap_admin_group_type = 'posixgroup';
 $ldap_admin_group_attr = 'memberuid';
 
 
-//------ LDAP Search Settings ------//
+//------ LDAP Filter Settings ------//
 //
-// LDAP filter to find a user list.
+// LDAP filter used to limit search results and login authentication
 $ldap_user_filter = '(objectclass=person)';
 
 // Attributes to fetch from LDAP and corresponding user variables in the
@@ -100,15 +100,16 @@ $ldap_admin_group_type = strtolower($ldap_admin_group_type);
 // be placed in $error.
 // params:
 //   $login - user login
-//   $dn - complete dn for the user (must be given by ref )
 // return:
+//   $dn - complete dn for the user
 //   TRUE if the user is found, FALSE in other case
-function user_search_dn ( $login ,$dn ) {
-  global $error, $ds, $ldap_base_dn, $ldap_login_attr, $ldap_user_attr;
+function user_search_dn ( $login ) {
+  global $error, $ds, $ldap_base_dn, $ldap_login_attr, $ldap_user_attr, $ldap_user_filter;
 
   $ret = false;
   if ($r = connect_and_bind()) {
-    $sr = @ldap_search ( $ds, $ldap_base_dn, "($ldap_login_attr=$login)", $ldap_user_attr );
+    $sr = @ldap_search ( $ds, $ldap_base_dn, 
+      "(&($ldap_login_attr=$login)$ldap_user_filter )", $ldap_user_attr );
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {
@@ -116,8 +117,8 @@ function user_search_dn ( $login ,$dn ) {
       if ( $info['count'] != 1 ) {
         $error = 'Invalid login';
       } else {
-        $ret = true;
         $dn = $info[0]['dn'];
+        $ret = $dn;
       }
       @ldap_free_result ( $sr );
     }
@@ -154,7 +155,7 @@ function user_valid_login ( $login, $password ) {
       }
     }
 
-    if ( user_search_dn ( $login, &$dn) ) {
+    if ( ($dn = user_search_dn ( $login )) ) {
       $r = @ldap_bind ( $ds, $dn, $password );
       if (!$r) {
         $error = 'Invalid login';
@@ -486,7 +487,7 @@ function get_admins() {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {
       $admins = ldap_get_entries( $ds, $sr );
-      for( $x = 0; $x <= $admins[0][$ldap_admin_group_attr]['count']; $x ++ ) {
+      for( $x = 0; $x < $admins[0][$ldap_admin_group_attr]['count']; $x ++ ) {
        if ($ldap_admin_group_type != 'posixgroup') {
           $cached_admins[] = stripdn($admins[0][$ldap_admin_group_attr][$x]);
         } else {
