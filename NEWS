@@ -1,5 +1,8 @@
 Version 1.1.1 (?? ??? 2006)
   - Fixed the following bug reports on SourceForge:
+      1431329: user_search_dn() uses call by ref and too many admins
+      1523439: Bug with admins in LDAP
+      1523442: Bug (Warning) with pass-by-reference
       1554383: Times next to events during import is wrong
       1555860: SQL Error on import
       1554309: demo calendar event days are not the same
