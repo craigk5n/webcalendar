@@ -29,7 +29,7 @@
 #
 #
 #
-# Translation last updated on 09-13-2006
+# Translation last updated on 09-14-2006
 
 
 ###############################################
@@ -1663,6 +1663,7 @@ HTTP-based authentication was detected: HTTP-based authentication was detected
 User authentication is being handled by your web server: User authentication is being handled by your web server
 You should select 'Web Server' from the list of 'User Authentication' choices below: You should select 'Web Server' from the list of 'User Authentication' choices below
 Create Default Admin Account: Create Default Admin Account
+Admin Account Not Found: Admin Account Not Found
 User Authentication: User Authentication
 Web-based via WebCalendar (default): Web-based via WebCalendar (default)
 Web Server: Web Server
