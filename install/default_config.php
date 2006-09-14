@@ -155,11 +155,9 @@ $webcalConfig = array (
 function make_uppercase () {
   //make sure all cal_settings are UPPERCASE
   if ( ! dbi_execute ( 'UPDATE webcal_config SET cal_setting = UPPER(cal_setting)' ) )
-    echo translate( 'Error updating webcal_config') . ': ' . dbi_error ();       
-  dbi_free_result ( $res );    
+    echo translate( 'Error updating webcal_config') . ': ' . dbi_error ();
   if ( ! dbi_execute ( 'UPDATE webcal_user_pref SET cal_setting = UPPER(cal_setting)' ) )
-    echo translate( 'Error updating webcal_user_pref') . ': ' . dbi_error ();       
-  dbi_free_result ( $res );
+    echo translate( 'Error updating webcal_user_pref') . ': ' . dbi_error ();
 }
 
 function db_load_config () {
@@ -174,7 +172,7 @@ global $webcalConfig;
    } else { //Sqlite returns $res always
      $row = dbi_fetch_row ( $res );
      if ( ! isset ( $row[0] ) ){
-         dbi_execute ( $sql , array ( $key , $val ) );  
+       dbi_execute ( $sql , array ( $key , $val ) );  
      }
      dbi_free_result ( $res );
     }  
