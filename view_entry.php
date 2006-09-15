@@ -28,7 +28,7 @@ $is_private = $is_confidential = $unapproved = false;
 $event_status = '';
 $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
-$can_email = true;
+$can_email = 'Y';
 $rss_view = false;
 
 $error = '';
@@ -583,13 +583,16 @@ if ( $single_user == 'N' && ! empty ( $createby_fullname )  ) {
   } else   if ( $is_confidential  && ! access_is_enabled() ) {
     echo '[' . translate( 'Confidential' ) . "]\n</td></tr>";
   } else {
-    if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $create_by );
+    if ( access_is_enabled() ) 
+      $can_email = access_user_calendar ( 'email', $create_by );
     if ( strlen ( $email_addr ) && $can_email != 'N' ) {
       echo "<a href=\"mailto:$email_addr?subject=$subject\">" .
-        ( $row[0] == '__public__' ? translate( 'Public Access' ): $createby_fullname ) .
+        ( $row[0] == '__public__' ? 
+        translate( 'Public Access' ): $createby_fullname ) .
         "</a>$proxy_fullname\n</td></tr>";
     } else {
-      echo ( $row[0] == '__public__' ? translate( 'Public Access' ) : $createby_fullname ) .
+      echo ( $row[0] == '__public__' ? 
+        translate( 'Public Access' ) : $createby_fullname ) .
         "$proxy_fullname\n</td></tr>";
     }
   }
@@ -712,7 +715,8 @@ if ( $single_user == 'N' && $show_participants ) { ?>
     $others_complete = 'yes';
     for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
       user_load_variables ( $participants[$i][0], 'temp' );
-      if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
+      if ( access_is_enabled() ) 
+        $can_email = access_user_calendar ( 'email', $templogin );
       $spacer = 100 - $participants[$i][2];
       $percentage = $participants[$i][2];
       if ( $participants[$i][0] == $login ) {
@@ -739,8 +743,9 @@ if ( $single_user == 'N' && $show_participants ) { ?>
   } else {
   for ( $i = 0; $i < $num_app; $i++ ) {
     user_load_variables ( $approved[$i], 'temp' );
-    if ( access_is_enabled() ) $can_email = access_user_calendar ( 'email', $templogin );
-    if ( strlen ( $tempemail ) && $can_email != 'N' ) {
+    if ( access_is_enabled() ) 
+      $can_email = access_user_calendar ( 'email', $templogin );
+    if ( strlen ( $tempemail ) > 0 && $can_email != 'N' ) {
       echo '<a href="mailto:' . $tempemail . "?subject=$subject\">" . 
         $tempfullname . "</a><br />\n";
       $allmails[] = $tempemail;
@@ -766,7 +771,9 @@ if ( $single_user == 'N' && $show_participants ) { ?>
   }
   for ( $i = 0; $i < $num_wait; $i++ ) {
     user_load_variables ( $waiting[$i], 'temp' );
-    if ( strlen ( $tempemail ) ) {
+    if ( access_is_enabled() ) 
+      $can_email = access_user_calendar ( 'email', $templogin );
+    if ( strlen ( $tempemail ) > 0 && $can_email != 'N'  ) {
       echo '<a href="mailto:' . $tempemail . "?subject=$subject\">" . 
         $tempfullname . "</a> (?)<br />\n";
       $allmails[] = $tempemail;
@@ -776,7 +783,9 @@ if ( $single_user == 'N' && $show_participants ) { ?>
   }
   for ( $i = 0; $i < $num_rej; $i++ ) {
     user_load_variables ( $rejected[$i], 'temp' );
-    if ( strlen ( $tempemail ) ) {
+    if ( access_is_enabled() ) 
+      $can_email = access_user_calendar ( 'email', $templogin );
+    if ( strlen ( $tempemail ) > 0 && $can_email != 'N'  ) {
       echo '<strike><a href="mailto:' . $tempemail .
         "?subject=$subject\">" . $tempfullname .
         '</a></strike> (' . translate( 'Rejected' ) . ")<br />\n";
