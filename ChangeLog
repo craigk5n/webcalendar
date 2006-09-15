@@ -1,4 +1,5 @@
 Version 1.1.1 (?? ??? 2006)
+ - Fixed bug 1556705: Missing mailto links on view_entry.php
  - Fixed bug 1431329: user_search_dn() uses call by ref and too many admins
  - Fixed bug 1523439: Bug with admins in LDAP
  - Fixed bug 1523442: Bug (Warning) with pass-by-reference
