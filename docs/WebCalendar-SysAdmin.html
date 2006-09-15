@@ -96,6 +96,8 @@ h2 {
  <li><a href="#requirements">System Requirements</a></li>
  <li><a href="#fileunpacking">File Unpacking</a></li>
  <li><a href="#appsetup">Application Installation</a></li>
+ <li><a href="#eventcal">Configuring as Event Calendar</a></li>
+ <li><a href="#users">Creating Users</a></li>
  <li><a href="#reminders">Setting Up Email Reminders</a></li>
  <li><a href="#systemsettings">System Settings</a></li>
  <li><a href="#siteextras">Custom Event Fields</a></li>
@@ -442,6 +444,8 @@ h2 {
      directory should NOT be in the webserver document path to prevent unauthorized
      access to cached  sensitive data such as passwords hashes and private event
      details.
+    To disable this feature, leave this field blank.
+    However, this feature is recommended to enhance your system's performance.
   </td>
   </tr>
  </table> 
@@ -573,7 +577,38 @@ your system.</strong></p>
  <p class="ptip"><span class="tip">TIP</span> On a multi-user system, the only user account created
  during installation has the username of "admin" and a password of "admin". You should create 
  a new admin account and delete this one for security reasons.</p>
+
+
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+
+<hr />
+
+<a name="eventcal"></a>
+<h2>Configuring as Event Calendar</h2>
+
+<p>
+  If you intend to use WebCalendar as an event calendar, you will
+  need to enable "Public Access" in the System Settings with the following
+  steps:</p>
+   <ul>
+    <li>Login to WebCalendar as an administrator (the default username is
+        'admin' and password 'admin'). </li>
+   <li>Click on the "Admin" link at the bottom of any page.</li>
+   <li>Click on the "System Settings" button.</li>
+   <li>Click on the "Public Access" tab.</li>
+   <li>Select "Yes" for "Allow public access".</li>
+  </ul>
+<p>This will allow users to access WebCalendar without a username and
+password.  Only events that are created with the "Public User" as
+an event participant will show up in your event calendar for users
+who have not logged in.  If events are not showing up on your public
+calendar, make sure the events have the "Public User" as a participant
+and the event has been approved.
+<p>
+
+
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+
 <hr />
 
 <a name="users"></a>
