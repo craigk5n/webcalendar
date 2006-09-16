@@ -263,7 +263,7 @@ class WebCalendar {
       $single_user_login, $use_http_auth, $user_inc, $NONUSER_PREFIX;
 
     $PROGRAM_VERSION = 'v1.1.1';
-    $PROGRAM_DATE = '?? ??? 2006';
+    $PROGRAM_DATE = '15 Sep 2006';
     $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
     $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';
 
@@ -383,7 +383,7 @@ class WebCalendar {
    // Redirect user to install page if it is different from stored value
    // This will prevent running WebCalendar until UPGRADING.html has been
    // read and required upgrade actions completed
-   $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
+   $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database, false );
    if ( $c ) {
      $rows = dbi_get_cached_rows ( "SELECT  cal_value FROM webcal_config ".
        "WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'" );
@@ -392,15 +392,19 @@ class WebCalendar {
            Header ( 'Location: install/index.php?action=mismatch&version=UNKNOWN' );
            exit;
        } else {
-      $row = $rows[0];
-         if (  empty ( $row) || $row[0] != $PROGRAM_VERSION ) {
-           // & does not work here...leave it as &
-           $version = ( empty ($row )? "UNKNOWN" : $row[0] );
-           Header ( "Location: install/index.php?action=mismatch&version=$version" );
-           exit;
-     }
+           $row = $rows[0];
+           if (  empty ( $row) || $row[0] != $PROGRAM_VERSION ) {
+             // & does not work here...leave it as &
+             $version = ( empty ($row )? "UNKNOWN" : $row[0] );
+            Header ( "Location: install/index.php?action=mismatch&version=$version" );
+             exit;
+           }
        }
-   dbi_close ( $c );
+       dbi_close ( $c );
+    } else { //must mean we don't have a settings.php file
+        // & does not work here...leave it as &
+        Header ( 'Location: install/index.php?action=mismatch&version=UNKNOWN' );
+        exit;
     }
 
 
@@ -874,7 +878,7 @@ class WebCalendar {
         doDbSanityCheck ();
       }
    
-      // Check the current installtion version
+      // Check the current installation version
       // Redirect user to install page if it is different from stored value
       // This will prevent running WebCalendar until UPGRADING.html has been
       // read and required upgrade actions completed
