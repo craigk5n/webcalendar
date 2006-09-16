@@ -7,7 +7,10 @@
  * This page is used to create/update includes/settings.php.
  *
  * Input Parameters:
- * None
+ * OPTIONAL tzoffset   If after logging in, adding tzoffset to
+ * the URL ( http://yourserver/install/index.php?tzoffset=2 )
+ * will adjust all existing events in the database +2 hours.
+ * This is very handy if your server changes timezones after installation.
  *
  * Security:
  * The first time this page is accessed, there are no security
@@ -139,9 +142,14 @@ function show_errors ( $error_val=0 ) {
 }
 
 //We will convert from Server based storage to GMT time
-function convert_server_to_GMT () {
+//optionally, a tzoffset can be added to the URL and will
+//adjust all existing events by that amount
+function convert_server_to_GMT ( $offset=0 ) {
  //Default value 
  $error = '<b>Conversion Successful</b>';
+ //don't allow $offsets over 24
+ if ( $offset < -24 || $offset > 24 ) 
+   $offset = 0;
  // Do webcal_entry update
   $res = dbi_execute ( 'SELECT cal_date, cal_time, cal_id, cal_duration FROM webcal_entry' );
   if ( $res ) {
@@ -159,8 +167,12 @@ function convert_server_to_GMT () {
      $sd = substr ( $cal_date, 6, 2 );
      $sh = substr ( $cal_time, 0, 2 );
      $si = substr ( $cal_time, 2, 2 );
-     $ss = substr ( $cal_time, 4, 2 );   
-     $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
+     $ss = substr ( $cal_time, 4, 2 );
+     if ( ! empty ( $offset ) ) {   
+       $new_datetime = gmmktime ( $sh + $offset, $si, $ss, $sm, $sd, $sy );
+     } else {
+       $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
+     }
      $new_cal_date = gmdate ( 'Ymd', $new_datetime );
      $new_cal_time = gmdate ( 'His', $new_datetime );
      // Now update row with new data
@@ -858,6 +870,11 @@ if (  ! empty ( $post_action ) && $post_action == 'Test Settings'  &&
 }
 
 // Is this a Timezone Convert?
+//Manual tzoffset input in URL
+$tzoffset = getGetValue ( 'tzoffset' );
+if ( ! empty ( $tzoffset ) ) {
+  $action = 'tz_convert';
+}
 // If so, run it
 if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['validuser'] ) ) {
     $db_persistent = false;
@@ -873,7 +890,7 @@ if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['vali
       $db_password, $db_database, false );
  
     if ( $c ) {
-        $ret = convert_server_to_GMT ();
+        $ret = convert_server_to_GMT ( $tzoffset );
     if ( substr ( $ret, 3, 21 ) == 'Conversion Successful' ) {
       $_SESSION['tz_conversion']  = 'Success';
      $response_msg = translate ( 'Timezone Conversion Successful' );
