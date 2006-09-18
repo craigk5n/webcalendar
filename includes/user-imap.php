@@ -511,7 +511,7 @@ function user_delete_user ( $user ) {
  * @return array Array of user info
  */
 function user_get_users () {
-  global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME;
+  global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $USER_SORT_ORDER;
 
   $count = 0;
   $ret = array ();
@@ -526,7 +526,7 @@ function user_get_users () {
        'cal_fullname' => $PUBLIC_ACCESS_FULLNAME );
   $res = dbi_execute ( 'SELECT cal_login, cal_lastname, cal_firstname, ' .
     'cal_is_admin, cal_email, cal_passwd FROM webcal_user ' .
-    'ORDER BY cal_lastname, cal_firstname, cal_login' );
+    "ORDER BY $USER_SORT_ORDER, cal_login" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( strlen ( $row[1] ) && strlen ( $row[2] ) )

@@ -625,6 +625,17 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   <label><input type="radio" name="admin_DISABLE_CROSSDAY_EVENTS" value="Y" <?php if ( $s['DISABLE_CROSSDAY_EVENTS'] == 'Y' ) echo $checked;?> />&nbsp;<?php echo $Yes?></label> 
   <label><input type="radio" name="admin_DISABLE_CROSSDAY_EVENTS" value="N" <?php if ( $s['DISABLE_CROSSDAY_EVENTS'] != 'Y' ) echo $checked;?> />&nbsp;<?php echo $No?></label>
  </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip( 'user_sort-help' )?>">
+  <label for="admin_USER_SORT_ORDER"><?php etranslate( 'User Sort Order' )?>:</label></td><td>
+  <select name="admin_USER_SORT_ORDER" id="admin_USER_SORT_ORDER">
+   <option value="cal_lastname, cal_firstname" <?php 
+    if ( $s['USER_SORT_ORDER'] == "cal_lastname, cal_firstname" ) 
+     echo $selected?>><?php etranslate( 'Lastname, Firstname' )?></option>
+   <option value="cal_firstname, cal_lastname" <?php 
+    if ( $s['USER_SORT_ORDER'] == "cal_firstname, cal_lastname" ) 
+     echo $selected?>><?php etranslate( 'Firstname, Lastname' )?></option>
+  </select>
+ </td></tr>
 </table>
 </div>
 <!-- END SETTINGS -->

@@ -144,6 +144,7 @@ $webcalConfig = array (
 'TODAYCELLBG'=>'#FFFF33',
 'UAC_ENABLED'=>'N',
 'USER_SEES_ONLY_HIS_GROUPS'=>'Y',
+'USER_SORT_ORDER'=>'cal_lastname, cal_firstname',
 'WEBCAL_PROGRAM_VERSION'=>'v1.1.1',
 'WEEK_START'=>'0',
 'WEEKENDBG'=>'#D0D0D0',
