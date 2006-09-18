@@ -179,8 +179,8 @@ include "includes/styles.php";
   echo '<br /><strong>-- ' . 
    translate( 'Admin mode' ) . ': '.$nonuserfullname." --</strong>\n";
  }
- 
-$formaction = substr($self, strrpos($self, '/') + 1) . '?' . $_SERVER['QUERY_STRING'];
+$qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? '?' . $_SERVER['QUERY_STRING'] : '' ); 
+$formaction = substr($self, strrpos($self, '/') + 1) . $qryStr;
 
 ?>&nbsp;<img src="images/help.gif" alt="<?php etranslate( 'Help' )?>" class="help" onclick="window.open ( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 

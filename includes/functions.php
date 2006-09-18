@@ -5781,7 +5781,8 @@ function update_status ( $status, $user, $id, $type='E' ) {
 function generate_printer_friendly ( $hrefin='' ) {
   global $_SERVER, $SCRIPT, $MENU_ENABLED;
   $href = ( ! empty ( $href ) ? $hrefin : $SCRIPT );
-  $href .= '?' . $_SERVER['QUERY_STRING'];
+  $qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? $_SERVER['QUERY_STRING'] : '' );
+  $href .= '?' . $qryStr;
   $href .= ( substr ( $href, -1) == '?' ? '' : '&') . 'friendly=1';
   if ( empty ( $hrefin ) ) //menu will call this function without parameter
     return $href;

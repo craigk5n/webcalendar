@@ -14,10 +14,10 @@ if ( $readonly == 'Y' ) {
 if ( ! empty ( $_POST ) ) {
   $comments = getPostValue ( 'comments' ); 
 } else {
-   $q_string = $_SERVER['QUERY_STRING'];
+   $q_string = ( ! empty ( $_SERVER['QUERY_STRING'] ) ?  '?'. $_SERVER['QUERY_STRING'] : '' );
 
    print_header ();
-   echo "<form action=\"reject_entry.php?$q_string\" method=\"post\" name=\"add_comments\" >\n";
+   echo "<form action=\"reject_entry.php$q_string\" method=\"post\" name=\"add_comments\" >\n";
    echo "<table border=\"0\" cellspacing=\"5\">\n" .
      "<tr><td align=\"center\" valign=\"bottom\"><h3>" . 
      translate ( 'Additional Comments (optional)' ) . "</h3></td><tr>\n";
