@@ -1,6 +1,7 @@
 Version 1.1.2 (?? ??? 2006)
 Version 1.1.1 (15 Sep 2006)
   - Fixed the following bug reports on SourceForge:
+      1496930: 'userlist' will not be sorted as at your site
       1556705: Missing mailto links on view_entry.php
       1431329: user_search_dn() uses call by ref and too many admins
       1523439: Bug with admins in LDAP

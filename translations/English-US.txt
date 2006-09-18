@@ -29,7 +29,7 @@
 #
 #
 #
-# Translation last updated on 09-14-2006
+# Translation last updated on 09-18-2006
 
 
 ###############################################
@@ -243,6 +243,10 @@ lunar-help: If enabled, will display small icons representing the lunar phases e
 Display Lunar Phases in month view: Display Lunar Phases in month view
 crossday-help: If enabled, events that span days will be displayed on seperate days
 Disable Cross-Day Events: Disable Cross-Day Events
+user_sort-help: Determines sort order for User, Nonuser lists
+User Sort Order: User Sort Order
+Lastname, Firstname: Lastname, Firstname
+Firstname, Lastname: Firstname, Lastname
 Plugins: Plugins
 plugins-enabled-help: Enable plugin applications.
 Enable Plugins: Enable Plugins

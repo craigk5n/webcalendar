@@ -802,7 +802,7 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
  */
 function get_my_users ( $user='', $reason='invite') {
   global $login, $is_admin, $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
-  global $my_user_array, $is_nonuser, $is_nonuser_admin;
+  global $my_user_array, $is_nonuser, $is_nonuser_admin, $USER_SORT_ORDER;
 
   $this_user = ( ! empty ( $user ) ? $user : $login );
   // Return the global variable (cached)
@@ -858,7 +858,7 @@ function get_my_users ( $user='', $reason='invite') {
     }
       $sql .= "IN ( $placeholders )";
     }
-    $sql .= ' ORDER BY cal_lastname, cal_firstname, webcal_group_user.cal_login';
+    $sql .= " ORDER BY $USER_SORT_ORDER, webcal_group_user.cal_login";
     $rows = dbi_get_cached_rows ( $sql, $groups );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
@@ -911,7 +911,7 @@ function get_my_users ( $user='', $reason='invite') {
  */
 function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
   global $login, $is_admin, $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
-  global $my_nonuser_array, $is_nonuser, $is_nonuser_admin;
+  global $my_nonuser_array, $is_nonuser, $is_nonuser_admin, $USER_SORT_ORDER;
 
   $this_user = ( ! empty ( $user ) ? $user : $login );
   // Return the global variable (cached)
@@ -966,7 +966,7 @@ function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
     }
       $sql .= "IN ( $placeholders ) )";
     }
-    $sql .= ' ORDER BY cal_lastname, cal_firstname, webcal_group_user.cal_login';
+    $sql .= " ORDER BY $USER_SORT_ORDER, webcal_group_user.cal_login";
     //add $this_user to beginning of query params
     array_unshift ( $groups, $this_user );
     $rows = dbi_get_cached_rows ( $sql, $groups );
@@ -1014,7 +1014,7 @@ function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
  * - <var>cal_is_public</var>
  */
 function get_nonuser_cals ($user = '', $remote=false) {
-  global  $is_admin;
+  global  $is_admin, $USER_SORT_ORDER;
   $count = 0;
   $ret = array ();
   $sql = 'SELECT cal_login, cal_lastname, cal_firstname, ' .
@@ -1032,7 +1032,7 @@ function get_nonuser_cals ($user = '', $remote=false) {
     $query_params[] = $user;
   }
   
-  $sql .= 'ORDER BY cal_lastname, cal_firstname, cal_login';
+  $sql .= "ORDER BY $USER_SORT_ORDER, cal_login";
   
   $rows = dbi_get_cached_rows ( $sql, $query_params );
   if ( $rows ) {
