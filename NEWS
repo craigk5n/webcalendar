@@ -1,6 +1,7 @@
 Version 1.1.2 (?? ??? 2006)
 Version 1.1.1 (15 Sep 2006)
   - Fixed the following bug reports on SourceForge:
+      1559816: QUERY_STRING
       1560666: Current User is showing in pull down menu of
       1560712: date-selection popup-menu not properly adjusted
       1496930: 'userlist' will not be sorted as at your site
