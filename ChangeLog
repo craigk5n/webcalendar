@@ -1,4 +1,5 @@
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug 1560666: Current User is showing in pull down menu of
  - Fixed bug 1560712: date-selection popup-menu not properly adjusted
  - Fixed bug 1496930: 'userlist' will not be sorted as at your site
  - Fixed bug 1559567: v1.1.1 Fresh install Fails due to no database
