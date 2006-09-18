@@ -33,7 +33,11 @@ if ( ! empty ( $error ) ) {
   <select name="user" onchange="document.SelectUser.submit()">
   <?php
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-    echo '<option value="'.$userlist[$i]['cal_login'].'">'.$userlist[$i]['cal_fullname']."</option>\n";
+    //Don't list current user
+    if ( $login == $userlist[$i]['cal_login'] )
+      continue;
+    echo '<option value="'. $userlist[$i]['cal_login'].'">'.
+      $userlist[$i]['cal_fullname']."</option>\n";
   }
   ?>
   </select>
