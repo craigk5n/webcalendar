@@ -41,12 +41,12 @@ $href = "href=\"datesel.php?form={$form}&amp;fday={$fday}&amp;" .
   "fmonth={$fmonth}&amp;fyear={$fyear}&amp;date=";
 
 echo <<<EOT
- <div class="aligncenter">
+ <div align="center">
   <table class="aligncenter">
    <tr>
      <td><a title="{$previousStr}" class="prev" {$href}{$prevdate}>
      <img src="images/leftarrowsmall.gif"  alt="{$previousStr}" /></a></td>
-    <th colspan="5">{$monthStr}{$thisyear}</th>
+    <th colspan="5">&nbsp;{$monthStr}&nbsp;{$thisyear}&nbsp;</th>
       <td><a title="{$nextStr}"class="next"  {$href}{$nextdate}>
       <img src="images/rightarrowsmall.gif"  alt="{$nextStr}" /></a></td>
   </tr>
