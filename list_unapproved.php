@@ -58,6 +58,9 @@ if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; URL=" .
     $returl . "\" />\n";
 }
+//make sure we return after editing an event via this page
+remember_this_view();
+
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
 
