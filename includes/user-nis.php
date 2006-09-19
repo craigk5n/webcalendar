@@ -442,9 +442,10 @@ function user_get_users () {
        'cal_email' => '',
        'cal_password' => '',
        'cal_fullname' => $PUBLIC_ACCESS_FULLNAME );
+  $order1 = empty ( $USER_SORT_ORDER ) ? "" : "$USER_SORT_ORDER,";
   $res = dbi_execute ( "SELECT cal_login, cal_lastname, cal_firstname, " .
     "cal_is_admin, cal_email, cal_passwd FROM webcal_user " .
-    "ORDER BY $USER_SORT_ORDER, cal_login" );
+    "ORDER BY $order1 cal_login" );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( strlen ( $row[1] ) && strlen ( $row[2] ) )
