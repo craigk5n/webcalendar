@@ -128,8 +128,7 @@ textarea {
   font-size: 12px;
   overflow: auto;
 }
-table {
-  border-collapse: collapse; 
+table { 
   border-spacing: 0px;
   border-width:0px; 
 }
@@ -610,6 +609,7 @@ a.matrix img {
 }
 <?php //Styles for minicalendars
 ?>.minical {
+  border-collapse: collapse;
   font-size: 10px;
   margin: 0px 0px 5px 0px;
 }
