@@ -211,7 +211,7 @@ function export_time($date, $duration, $time, $texport, $vtype='E') {
 }
 //$simple allows for easy reading 
 function export_recurrence_ical( $id, $simple=false ) {
-  global $timestamp_RRULE, $TIMEZONE;
+  global $timestamp_RRULE, $TIMEZONE, $lang_file;
   
  $recurrance = '';
   $sql = 'SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = ?';
@@ -256,14 +256,35 @@ function export_recurrence_ical( $id, $simple=false ) {
       $bysetpos   = $row[9];
       $byweekno   = $row[10];
       $byyearday  = $row[11];
-      $wkst       = $row[12];
+      $wkst = $wkst2 = $row[12];
       $cal_count  = $row[13];
       $duration   = $row[14];
       
 
       $rrule = '';
    
-      if (! $simple ) $rrule = 'RRULE:';
+      if (! $simple ) {
+        $rrule = 'RRULE:';
+      } else { //translate byday and wkst string if needed
+        //make sure these get picked up by update_translation.pl
+        //translate('MO');
+        //translate('TU');
+        //translate('WE');
+        //translate('TH');
+        //translate('FR');
+        //translate('SA');
+        //translate('SU');
+        if ( ! empty ( $byday ) && ! empty ( $lang_file ) && 
+           $lang_file  != 'English-US.txt' ) {
+           $bydayArr = explode ( ',', $byday ); 
+           foreach ( $bydayArr as $bydayIdx ) {
+             $bydayOut[] =  translate ( $bydayIdx );
+           }
+           $byday = implode ( ',', $bydayOut );
+        }
+        if ( ! empty ( $wkst ) )
+          $wkst = translate ( $wkst );
+      }
 
       /* recurrence frequency */
       switch ($type) {
@@ -307,7 +328,7 @@ function export_recurrence_ical( $id, $simple=false ) {
          $rrule .= (! $simple ? ';BYSETPOS': ',' . translate ( 'Position' ) ) .
           "=$bysetpos";
    
-   if ( ! empty ( $wkst ) && $wkst != 'MO' ) 
+   if ( ! empty ( $wkst ) && $wkst2 != 'MO' ) 
          $rrule .= (! $simple ? ';WKST': ',' . translate ( 'Week Start' ) ) .
           "=$wkst";
 
