@@ -7,7 +7,7 @@
 # Last update: 31 July 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 12 Sept 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 14 Sept 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 09-14-2006
+# Translation last updated on 09-18-2006
 
 
 ###############################################
@@ -221,6 +221,20 @@ lunar-help: Wenn aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
 Display Lunar Phases in month view: Anzeigen der Mondphasen in der Monatsansicht
 crossday-help: Falls aktiv, werden tages&uuml;bergreifende Termine extra angezeigt
 Disable Cross-Day Events: Tages&uuml;bergreifende Termine deaktivieren
+#
+# << MISSING >>
+# user_sort-help:
+# English text: Determines sort order for User, Nonuser lists
+#
+#
+# << MISSING >>
+# User Sort Order:
+#
+# << MISSING >>
+# Lastname, Firstname:
+#
+# << MISSING >>
+# Firstname, Lastname:
 Plugins: "Plugins" (Erweiterungen)
 plugins-enabled-help: Hilfe f&uuml;r "Plugins" (Erweiterungen) aktivieren
 Enable Plugins: "Plugins" (Erweiterungen) aktivieren
@@ -1393,6 +1407,13 @@ no such user: kein solcher Benutzer
 ###############################################
 # Page: includes/xcal.php
 #
+MO: Mo
+TU: Di
+WE: Mi
+TH: Do
+FR: Fr
+SA: Sa
+SU: So
 Interval: Interval
 Months: Monate
 Month Days: Monatstage

@@ -1419,6 +1419,13 @@ no such user: no such user
 ###############################################
 # Page: includes/xcal.php
 #
+MO: MO
+TU: TU
+WE: WE
+TH: TH
+FR: FR
+SA: SA
+SU: SU
 Interval: Interval
 Months: Months
 Month Days: Month Days
