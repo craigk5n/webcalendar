@@ -8,7 +8,7 @@
  *
 */
 defined( '_ISVALID' ) or die( "You can't access this file directly!" );
-
+//DO NOT DELETE translate( 'Index' );
 $help_list = array (
 'Index'=>'help_index.php',
 'Adding/Editing Calendar Entries'=>'help_edit_entry.php',

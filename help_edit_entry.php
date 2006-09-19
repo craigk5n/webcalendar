@@ -22,11 +22,11 @@ echo $helpListStr;
   <?php etranslate('time-help')?></p>
  <p class="helptext">
   <span class="helplabel">
-   <?php if ( $TIMED_EVT_LEN != 'E' ) { ?>
-     <?php etranslate('Duration')?>:</span>
-     <?php etranslate('duration-help')?>
-   <?php } else { ?>
-     <?php etranslate('End Time')?>:</span>
+   <?php if ( $TIMED_EVT_LEN != 'E' ) { 
+     etranslate('Duration')?>:</span>
+     <?php etranslate('duration-help');
+    } else {
+     etranslate('End Time')?>:</span>
      <?php etranslate('end-time-help')?>
    <?php } ?></p>
 
