@@ -1344,6 +1344,7 @@ Attachment: Attachment
 ###############################################
 # Page: includes/help_list.php
 #
+Index: Index
 Page: Page
 
 
