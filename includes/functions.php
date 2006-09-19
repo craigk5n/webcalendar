@@ -858,7 +858,11 @@ function get_my_users ( $user='', $reason='invite') {
     }
       $sql .= "IN ( $placeholders )";
     }
-    $sql .= " ORDER BY $USER_SORT_ORDER, webcal_group_user.cal_login";
+    if ( ! empty ( $USER_SORT_ORDER ) ) {
+      $sql .= " ORDER BY $USER_SORT_ORDER, webcal_group_user.cal_login";
+    } else {
+      $sql .= " ORDER BY webcal_group_user.cal_login";
+    }
     $rows = dbi_get_cached_rows ( $sql, $groups );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
@@ -966,7 +970,11 @@ function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
     }
       $sql .= "IN ( $placeholders ) )";
     }
-    $sql .= " ORDER BY $USER_SORT_ORDER, webcal_group_user.cal_login";
+    if ( ! empty ( $USER_SORT_ORDER ) ) {
+      $sql .= " ORDER BY $USER_SORT_ORDER, webcal_group_user.cal_login";
+    } else {
+      $sql .= " ORDER BY webcal_group_user.cal_login";
+    }
     //add $this_user to beginning of query params
     array_unshift ( $groups, $this_user );
     $rows = dbi_get_cached_rows ( $sql, $groups );
@@ -1031,8 +1039,12 @@ function get_nonuser_cals ($user = '', $remote=false) {
     $sql .= 'AND  cal_admin = ? ';
     $query_params[] = $user;
   }
-  
-  $sql .= "ORDER BY $USER_SORT_ORDER, cal_login";
+
+  if ( ! empty ( $USER_SORT_ORDER ) ) {
+    $sql .= " ORDER BY $USER_SORT_ORDER, cal_login";
+  } else {
+    $sql .= " ORDER BY cal_login";
+  }
   
   $rows = dbi_get_cached_rows ( $sql, $query_params );
   if ( $rows ) {
