@@ -69,7 +69,8 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
     ? $user : $login, $wkend, $cat_id );
 }
 
-$untimedStr = $headerStr = $eventsStr = $minical_tasks = '';
+$untimedStr = $headerStr = $eventsStr = 
+  $minical_tasks = $filler = '';
 $navStr = display_navigation( 'week' );;
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = ( $wkstart + ( ONE_DAY * $i ) ) + ( 12 * 3600 );
@@ -162,7 +163,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   // Use the class 'hasevents' for any hour block that has events
   // in it.
   if ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] ) ) {
-    $class .= ' hasevents';
+    $class .= ' hasevents ';
   }
   
   $untimedStr .= " class=\"$class\">";
@@ -267,6 +268,7 @@ if ( empty ( $friendly ) ) {
 $trailerStr = print_trailer ();
 if ( $DISPLAY_TASKS == 'Y'  ) {
   $tableWidth = '80%';
+  $filler = '<td></td>';
   $minical_tasks .= '<td id="minicolumn" rowspan="2" valign="top">';
   $minical_tasks .= '<!-- START MINICAL -->';
   $minical_tasks .= '<div class="minicontainer">';
@@ -282,16 +284,16 @@ if ( $DISPLAY_TASKS == 'Y'  ) {
 }//end minical
 
 echo <<<EOT
-  <table width="100%"  cellpadding="1">
+  <table width="100%" cellpadding="1">
     <tr>
       <td id="printarea" style="vertical-align:top; width:{$tableWidth};" >
       {$navStr}
       </td>
-      <td></td>
+      {$filler}
     </tr>
     <tr>
       <td>
-        <table class="main ">
+        <table class="main">
           <tr>
             <th class="empty">&nbsp;</th>
             {$headerStr}
