@@ -1,4 +1,5 @@
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug 1519987: incomplete 'matrix' using week.php for Seamonkey & Firefox
  - Fixed bug 1559816: QUERY_STRING
  - Fixed bug 1560666: Current User is showing in pull down menu of
  - Fixed bug 1560712: date-selection popup-menu not properly adjusted
