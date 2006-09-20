@@ -558,20 +558,20 @@ if ( $CATEGORIES_ENABLED == 'Y' && ! empty ( $category ) ) { ?>
 
 // Display who originally created event
 // useful if assistant or Admin
-// @todo Don't work, if users are stored at LDAP.
 $proxy_fullname = '';  
 if ( !empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == 'Y' ) {
-  $res = dbi_execute ( 'SELECT wu.cal_firstname, wu.cal_lastname ' .
-    'FROM webcal_user wu INNER JOIN webcal_entry_log wel ON wu.cal_login = wel.cal_login ' .
-    'WHERE wel.cal_entry_id = ? ' .
-    "AND wel.cal_type = 'C'" , array ( $id ) );
+  $res = dbi_execute ( 'SELECT cal_login ' .
+    'FROM webcal_entry_log ' .
+    'WHERE webcal_entry_log.cal_entry_id = ? ' .
+    "AND webcal_entry_log.cal_type = 'C'" , array ( $id ) );
   if ( $res ) {
     $row3 = dbi_fetch_row ( $res ) ;
-    if ( !empty ( $row3 ) ) {
-   $proxy_fullname = $row3[0] . ' ' . $row3[1];
-   $proxy_fullname = ($createby_fullname == $proxy_fullname ? ''  :
+    if ( $row3 ) {
+      user_load_variables ( $row3[0], 'proxy_' );
+      $proxy_fullname = ($createby_fullname == $proxy_fullname ? ''  :
         ' ( ' . translate( 'by' ) . ' ' . $proxy_fullname . ' )');
     }
+    dbi_free_result ( $res );
   }
 }
 
