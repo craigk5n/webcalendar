@@ -1,4 +1,6 @@
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug 1559486: duplicate code redundancies - view_entry.php
+ - Fixed bug 1561612: DISPLAY_CREATED_BYPROXY doesn't work when using LDAP
  - Implemented RFE 1560698: redirected back to the unapproved list after edit
  - Fixed bug 1560705: repeated days displayed only in English not in the desired
  - Fixed bug 1519987: incomplete 'matrix' using week.php for Seamonkey & Firefox
