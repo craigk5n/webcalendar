@@ -1,4 +1,5 @@
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug 1559590: Colors wrong
  - Fixed bug 1559486: duplicate code redundancies - view_entry.php
  - Fixed bug 1561612: DISPLAY_CREATED_BYPROXY doesn't work when using LDAP
  - Implemented RFE 1560698: redirected back to the unapproved list after edit

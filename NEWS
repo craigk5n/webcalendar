@@ -1,6 +1,7 @@
 Version 1.1.2 (?? ??? 2006)
 Version 1.1.1 (15 Sep 2006)
   - Fixed the following bug reports on SourceForge:
+      1559590: Colors wrong
       1561612: DISPLAY_CREATED_BYPROXY doesn't work when using LDAP
       1560705: repeated days displayed only in English not in the desired
       1519987: incomplete 'matrix' using week.php for Seamonkey & Firefox
