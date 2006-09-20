@@ -576,15 +576,20 @@ function load_user_preferences ( $guest='') {
   $lang_found = false;
   $colors = array (
     'BGCOLOR' => 1,
-    'H2COLOR' => 1,
-    'THBG' => 1,
-    'THFG' => 1,
     'CELLBG' => 1,
-    'TODAYCELLBG' => 1,
-    'WEEKENDBG' => 1,
+    'H2COLOR' => 1,
+    'HASEVENTSBG' => 1,
+    'MYEVENTS' => 1,
     'OTHERMONTHBG' => 1,
     'POPUP_BG' => 1,
     'POPUP_FG' => 1,
+    'TABLEBG' => 1,
+    'TEXTCOLOR' => 1,
+    'THBG' => 1,
+    'THFG' => 1,
+    'TODAYCELLBG' => 1,
+    'WEEKENDBG' => 1,
+    'WEEKNUMBER' => 1,
   );
  
   //allow __public__ pref to be used if logging in or user not validated
