@@ -469,6 +469,10 @@ class WebCalendar {
     define ( 'LOG_NEWUSER_EMAIL', 'E' );
     define ( 'LOG_ATTACHMENT', 'T' );
     define ( 'LOG_COMMENT', 'M' );
+    define ( 'LOG_LOGIN_FAILURE', 'x' );
+    define ( 'LOG_USER_ADD', 'a' );
+    define ( 'LOG_USER_DELETE', 'd' );
+    define ( 'LOG_USER_UPDATE', 'u' );
     /**#@-*/
 
     /**

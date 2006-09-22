@@ -29,7 +29,7 @@
 #
 #
 #
-# Translation last updated on 09-18-2006
+# Translation last updated on 09-22-2006
 
 
 ###############################################
@@ -75,6 +75,8 @@ Private: Private
 ###############################################
 # Page: activity_log.php
 #
+#
+System Log: System Log
 Activity Log: Activity Log
 User: User
 Date: Date
@@ -1338,7 +1340,10 @@ Journal updated: Journal updated
 Journal deleted: Journal deleted
 Notification sent: Notification sent
 Reminder sent: Reminder sent
+New user (self registration): New user (self registration)
+New user via email (self registration): New user via email (self registration)
 Attachment: Attachment
+Delete User: Delete User
 
 
 ###############################################

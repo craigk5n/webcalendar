@@ -45,6 +45,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
   if ( access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
     if ( $admin_can_delete_user ) {
       user_delete_user ( $user ); // will also delete user's events
+      activity_log ( 0, $login, $user, LOG_USER_DELETE, '' );
     } else {
       $error = $deleteStr;
     }
@@ -63,6 +64,8 @@ else if ( $formtype == 'setpassword' && strlen ( $user ) ) {
   } else if ( strlen ( $upassword1 ) ) {
     if ( $user_can_update_password ) {
       user_update_user_password ( $user, $upassword1 );
+      activity_log ( 0, $login, $user, LOG_USER_UPDATE,
+        translate("Set Password") );
     } else {
       $error = $notAuthStr;
     }
@@ -87,6 +90,9 @@ else if ( $formtype == 'edituser' ) {
       } else {
         user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
           $uemail, $uis_admin );
+        activity_log ( 0, $login, $user, LOG_USER_ADD,
+          "$ufirstname $ulastname" . ( empty ( $uemail ) ? "" :
+          " <$uemail>" ) );
       }
     }
   } else if ( ! empty ( $add ) &&
@@ -99,6 +105,9 @@ else if ( $formtype == 'edituser' ) {
       $uis_admin = 'N';
     user_update_user ( $user, $ufirstname, $ulastname,
       $uemail, $uis_admin );
+    activity_log ( 0, $login, $user, LOG_USER_UPDATE,
+          "$ufirstname $ulastname" . ( empty ( $uemail ) ? "" :
+          " <$uemail>" ) );
   }
 }
 

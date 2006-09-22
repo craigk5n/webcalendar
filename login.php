@@ -133,6 +133,9 @@ if ( $single_user == 'Y' ) {
       if ( empty ( $error ) || ! $showLoginFailureReason ) {
         $error = translate('Invalid login', true );
       }
+      activity_log ( 0, 'system', '', LOG_LOGIN_FAILURE, 
+        translate("Username") . ": " . $login .
+        ", IP: " . $_SERVER['REMOTE_ADDR'] );
     }
   } else {
     // No login info... just present empty login page
