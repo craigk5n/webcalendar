@@ -1,492 +1,107 @@
+WebCalendar NEWS File
+Version: $Id$
+
+This file lists significant changes to WebCalendar.  For a more detailed
+list (that includes specific bugs fixed, please look at ChangeLog):
+
+http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/ChangeLog
+
+---------------------------------------------------------------------------
+
 Version 1.1.2 (?? ??? 2006)
+
   - New Features / Enhancements:
-    + Added 'System Log' in menu.  Added logging for adding/editing/deleting
-      users and invalid logins.
+    = User Interface
+      + Added 'System Log' in menu.  Added logging for adding/editing/deleting
+        users and invalid logins.
+
+---------------------------------------------------------------------------
+
 Version 1.1.1 (15 Sep 2006)
-  - Fixed the following bug reports on SourceForge:
-      1559590: Colors wrong
-      1561612: DISPLAY_CREATED_BYPROXY doesn't work when using LDAP
-      1560705: repeated days displayed only in English not in the desired
-      1519987: incomplete 'matrix' using week.php for Seamonkey & Firefox
-      1559816: QUERY_STRING
-      1560666: Current User is showing in pull down menu of
-      1560712: date-selection popup-menu not properly adjusted
-      1496930: 'userlist' will not be sorted as at your site
-      1556705: Missing mailto links on view_entry.php
-      1431329: user_search_dn() uses call by ref and too many admins
-      1523439: Bug with admins in LDAP
-      1523442: Bug (Warning) with pass-by-reference
-      1554383: Times next to events during import is wrong
-      1555860: SQL Error on import
-      1554309: demo calendar event days are not the same
-      1553518: events one day early in list_unapproved.php
-      1553639: Events missing from the 31st day of month
-      1510777: Standardize layout of help pages
-      1550117: UAC default settings that don't already exist in DB
-      1547474: duplicate code redundancies - js/edit_entry.php
-      1545314: duplicate code redundancies - edit_user_handler.php
-      1509458: Reminders are coming at the wrong time
-      1536288: URL missing folder name
-      1512310: Path Truncation in Windows
-      1522439: Wrong colors for 'Manage Calendar of'
-      1542228: Background for "days with events" color not working
-      1543579: typos and other minor glitches - view_entry.php
-      1522357: after upgrading 'categories' are enabled
-      1541558: Non-users ignore "NONUSER_AT_TOP" during import
-      1532286: UAC settings of 'admins' will be overwritten
-      1538312: get_my_users() may return incorrect cached data
-      1538669: UAC issue with "invite" permissions vs "view"
-      1540251: Activity log wrong for imported entries
-      1538055: UAC for "Default Configuration" does not show correct values
-      1539899: postgres problem
-      1538718: Logic typo in 'view_entry.php'
-      1536702: Repeated events don't show up in Availability window
-      1536755: Activity Log for single event shows incorrect time
-      1536785: Activity Log Report only shows times in GMT
-      1521837: no entries for 'deleted entries' at 'activity.log'
-      1522560: 'Scheduling Conflict events' will be displayed in mixed
-      1530179: 'Public Access' using UAC will not be translated
-      1518552: PHP5 and MySQLi Warnings
-      1520002: 'top-menue' are not at the left-margin for year.php
-      1516114: Javascript top menu does'nt work in french
-      1513448: Cannot Display Attachment
-      1511337: time-stamps at the 'activity-log' are incorrect
-      1511120: 'unapproved-icon' in 'top-menue' not properly displayed
-      1510761: missing 'back to my calendar' in the 'top-menue'
-      1497931: Weird repeating events - read on
-      1509045: repeated events seem to be shown out of order
-      1510599: Adding event to public access error.
-      1508681: 'convert to GMT' - button is missing
-      1507985: event participant shown in public popup
-      1506417: user-imap.php (rev 1.10) gave me a parse error on line 151
-      1503762: Table cell bg for current day not diplayed on weekends
-      1505083: get_weekday_before doesn't return a value on
-      1502420: daily repeat doesn't skip weekend
-      1414471: missing 'back to my calendar' in the trailer for 'non_user'
-      1366151: NUC's cannot be handled by their admins
-      1499150: Events Not Wordwrapping Correctly
-      1497840: Entries not shown in Day view for current day +GMT TZ only
-      1472286: Event Creation Aborted Upon Error
-      1476212: Conflict check with repeating events and DST
-      1428140: 'top-menue' - truncated using IE6
-      1496308: error message regarding 'cachedir'
-      1490641: 'Reports' out by 2 weeks
-      1493472: entered 'task' will not be displayed on day.php
-      1495426: grid incomplete at preview of colors
-      1457983: Assistants don't delete events for everyone
-      1487016: Events not listing in time order
-      1492216: Firefox 'Live Bookmark' shows '(Empty)'
-      1492208: Entries not displayed on last day of week in 'Week' view
-      1493481: 'small task list' is on the bottom of the month.php
-      1491490: cal_url is too short
-      1492792: Month-, Week- and Year-selection at trailer are missing
-      1493405: [_public_] won't be displayed in the proper language
-      1493446: 'Edit' - button not displayed in the proper language
-      1486953: 'Unapproved Entries' list shows every NUC
-      1492771: rejection of 'Themes' AND 'Menu themes' don't work
-      1492753: missing 'convert to GMT' at wizard 'step 4'
-      1491491: reload_remotes.php doesn't display any error message
-      1489354: installation wizard doesn't work after 'step3'
-      1490179: Error after upgrading to latest CVS 1.1
-      1491406: using 'Not yet registered? Register here!' cause an error
-      1490944: 1.1.0 works only with firefox
-      1490979: descriptions of preferences will not be <bold>
-      1490969: option 'Display tasks in Calendars:' enabled will not work
-      1490749: reminder-entry in pop-up couldn't be translated
-      1490046: Time zone problems
-      1474991: Can't see all participants in availability window
-      1476022: Availability Status
-      1434994: minitask leaks details on other user's private tasks
-      1489393: "Add Entry" defaults to first work hour
-      1488942: 'system settings' and 'preferences' couldn't be displayed
-      1462457: reminder form should have more conditionally disabled fields
-      1448727: Conflict changes national characters
-      1477303: CVS Cross-Day events bug
-      1474888: Timezone issue on updated timestamp (1.1.cvs)
-      1467713: report belongs to a deleted user remains in DB
-      1468170: Can't create Views with NUCs
-      1468558: view of deleted user remains in the database
-      1468877: <table> tag missing from 'Add Entry' site extras
-      1428558: Rejected Event in Views
-      1343631: Timezone / Summertime error
-      1454998: Wrong character in notification mails
-      1460511: 'Invalid Login' cannot be displayed correctly in German
-      1462428: repeated reminders not working when using date/time
-      1462455: reminder send-time offset from event end not beginning
-      1455193: problem with updating the translation file
-      1451583: Umlaut Event popup text together with FCKEditor-2.0
-      1279537: Don't display confidential events in upcoming.php
-      1448958: All day events incorrectly displayed in week view
-      1446790: user-ldap.php bug
-      1445762: "cyclic link" when trying to remote subscribe
-      1440066: Administrative Tools graphical problem in IE
-      1411755: Error after editing entry that has a reminder set
-      1445157: Canadian english not defined, fix included
-      1446262: Broken \n in functions.php
-      1366002: No 'all day' event with manual repeat at either DST change
-      1439655: cannot save permissions of public access using UAC
-      1438954: "Top menu" not working on view_entry.php
-      1438952: Description & Site Extras not showing in pop-ups - CVS
-      1416408: installation-wizard hang-up
-      1435533: No headers if $LANGUAGE empty
-      1435460: Extra '.txt' in includes/translate.php
-      1435576: Duplicate selectors, almost, in styles.php
-      1435793: Bug in admin.php
-      1420372: Cannot add event to public calendar
-      1434525: rss.php shows some events twice
-      1424599: too many events in rss feed
-      1433366: no reminders sent for repeated events without an end date
-      1418124: Ending of recurrence: Fields not editable
-      1430285: edit an event & time wrong
-      1430670: Undefined Index in functions.php
-      1430755: Lunar phases mssing when display all days selected
-      1430562: translation-file cannot be updated properly
-      1427479: Repated overlapping event (=2 days) will not be displayed
-      1340790: Return to proper view after edit or other action
-      1409552: Weekly repeating event shifts days
-      1424413: calling upcoming.php as include doesn't work after 02/03/06
-      1410156: Pop ups displaying incorrectly in IE6
-      1427068: SMTP mail doesn't accept admin authorization settings
-      1425311: saving system setting requires 2x clicks at the save-button
-      1425316: Event who needs 2 days cannot be translated correctly
-      1424190: SERVER_URL short if WC not top level folder
-      1414017: public prefs choice gives "Redirection limit exceeded" error
-      1413527: Public access not seeing unapproved events
-      1403574: upcoming.php does not work with HTTP Auth
-      1413327: repeated events appear out of order in various pages
-      1421389: user-app-: login-app opens wrong login file in _top.
-      1422509: Search doesn't search subject, only within description
-      1422507: Timezone upgrade fails with MySQL
-      1409412: Popup color chooser doesn't appear in preferences
-      1403568: patch for incorrect links in minical.php output
-      1421829: Next month skips a month
-      1418725: Change of User Template changes System Template instead
-      1418717: user-app-*.php does not show public access calendar (w soln)
-      1419183: Wrong login links with user-app-joomla.php
-      1420458: Percentage completion of tasks: one is set to all
-      1402930: Adding repeating event yields SQL error
-      1416212: admin_handler gives invalid admin settings name
-      1416850: reject email sometimes get incorrect time
-      1415709: Location is missing in report.php
-      1415717: Location doesn't show in view_entry.php (sometimes)
-      1415256: pop up 'invalid login' not properly displayed
-      1413308: can't set sane end date on recurring events
-      1413743: multi-byte's mail broken
-      1411628: links to some repeating entries off by a year
-      1412351: SQL error when saving repeated entry
-      1407891: patch for bugs in send_reminders.php
-      1411778: send_reminders.php sends a reminder every time it is run
-      1410478: patch for bugs in get_OverLap
-      1410828: Save w/ Conflicts not working in v1.1
-      1410487: ical export generates wrong escape sequences
-      1407377: Entry of a task in the 'activity log' is not correct
-      1403218: v1.1 Reminder Email not Formatted
-      1357358: Columns to narrow between 'date' and '%' in small task list
-      1364451: Site extras not displayed in pop-ups - v1.1.0-CVS
-      1314070: Some settings not required by Postgresql
-      1402931: Search error (using mssql)
-      1403070: Icalclient doubles external events
-      1398679: error in epeated event for 5th sunday
-      1401625: ERROR message not be translated (Partial fix)
-      1401426: Adding event time defaults to first work hour
-      1401537: 'German Date' not properly displayed at week.php
-      1400836: patch for SQL errors in current CVS
-      1400400: adding a task - header cannot be translated cpl.
-      1365600: 'unapproved events' are not properly explained
-      1365219: Highlighted "today" changes too early - v1.1.0-CVS
-      1397766: Tomorrow Report fails to This Week
-      1387646: Repeated events are not shown repeatedly
-      1386705: Two errors in install scripts (PostgreSQL)
-      1375089: Repeating evens miss final day of repeat
-      1379707: Repeating event ends one day early
-      1385557: calendar inputs can cause crash
-      1385433: External Users not deleted with event
-      1370871: public access - preferences cannot be saved
-      1366113: Accept/reject Missing
-      1369715: Event for groups hangs - javascript error perhaps
-      1368071: category pop-up for tasks will not work properly
-      1365435: "Availability...." has no action by clicking the button (tasks)
-      1368088: viewing tasks depends on their belonging selected categories
-      1365541: categories for tasks will not be saved
-      1365452: 'Category' - pop-up cannot be translated completely
-      1363734: 'Not available' will not be translated in admin.php
-      1362876: "all percentages" cannot be translated
-      1360780: register.php does not work
-      1327661: Better german date-formats
-      1350243: Wrong task order in upgrading.html (convert_passwords.php error)
-      1359872: Repeat daily error
-      1358775: Get an error 'Cannot find language file: translations/none.txt
-      1357953: rollover info translation grammar problem
-      1357943: short description length mismatch
-      1357946: translation problem on system settings page
-      1358124: popup: short description length problem
-      1354832: import ical - first edited event multiplies
-      1356024: event link in Activity log - NOT FOUND error
-      1356541: ics-import will not correctly handle 'private'-entries
-      1355655: Task Completed dates not stored properly
-      1313905: database password can't contain '#' chars
-      1353588: 4:30pm PST event bug
-      1353470: Events in day view shown incorrectly - CVS
-      1353363: publish.php logic error for public user?
-      1351971: "Delete"-Button won't work properly for reports
-      1277803: new untimed events - aren't
-      1346660: new entry: time check not informed correctly ->misspelling
-      1352513: Repeating Events interface is broken in Safari
-      1352504: fix for one type of Lost Connection to MySQL server error
-      1351971: "Delete"-Button won't work properly for reports
-      1282382: Del from NUC or Pub Acc deletes from all
-      1220225: 'layered events' cannot be shown by the public
-      1350151: New Entry: entered time check is buggy
-      1350764: RSS feed showing double entries
-      1349082: Week numbers wrong if Week Starts on Sun
-      1348068: "Check for event conflicts" not working for latest CVS
-      1346010: CVS version: Not possible to add/edit events
-      1120897: Conflict with exceptions
-      1347097: Latest CVS install wizard recreates default admin
-      1347166: javascript errors in 'Add Task'
-      1345106: Error in send_reminders.php
-      1342070: V1.1 - Month view, access.php.
-      1306964: Events cannot be added for hour 0
-      1306195: HML tags on "printer friendly"
-      1339312: Event approval for Non User Calendar
-      1343862: "ByMonth" using at a "repeating event" wrong displaying
-      1342056:  V1.1 – Button for testing the db con is not easy to find.
-      1340800: "Action entry" for task in activitylog is wrong
-      1337535: 'Server Timezone Selection' could not properly saved
-      1339201: Reminders set to yes results in error if editing appointment.
-      1337535: 'Server Timezone Selection' could not properly saved
-      1337570: offset on entries from November to April
-      1335631: Admin-Link on bottom of page shows with access control on
-      1275705: Typos in language files
-      1278023: Carriage returns break I-cal files in v1.1.0-CVS
-      1324505: Last hour of day (23:00 - 00:00) missing!
-      1334863: Week number in week dropdown does not show
-      1324156: reminders have GMT time
-      1324282: Import iCal US Holidays, wrong dates...
-      1283449: Participants able to edit entries they do not own
-      1249018: orphaned rows after deleting a user
-      1288923: Fix for bar width in print_entry_timebar
-      1296294: Javascript error when saving with empty description on IE
-      1276005: Events ending at midnight do not display properly
-      1276729: cal_mod_date/time not stored in GMT
-      1276782: icalclient defaults to __public__ permissions
-      1246913: cal_status incorrect when publish from iCal
-      1276709: week_details.php broke in revision 1.31 and up
-      1265900:  exportation to iCal. Newlines should not be escaped per RFC2445
-      1265575: Bug in get_all_dates()
-      1275972: First day of daily repeat missing
-      1272390: publish.php broken in v1.1-CVS
-      1259997: repeating events don't send reminder on last day
-      1259413: Check for event conflicts not working in latest CVS
-      1262236: Conflict checking broken in new TZ code
-      1261920: Email all participants link did not include external users
-      1261571: Overriding a conflict when name has double quotes
-      1214768: assistants can't see calendar if allow_view_other is N
-      1257544: Changing event end date
-      1256250: reject_entry.php error
-      1254880: the fill in of languages in system settings wrong
-      1246969: Clicking on Add New Entry was defaulting to
-        current date rather than what was passed in via URL
-      1254983: nulogin.php throws language errors
-      1249012: can't change timed to untimed events
-      1233798: Catagory settings don't work quite right for Boss/Assistant
-      1250870: repeatly entries for NUCs cannot be deleted correctly
-      1245755: Unbalanced span tags
-      1204920: DEFAULT language is not set correctly to new users
-      1245228: Error in db_load_admin() cannot open table
-      1245112: Entry will not be displayed properly for public access
-      1238066: Site Extras in popup problem v1.1.0-CVS
-      1244652: nonuser admins can't set prefs & assistants
-      1242309: New created user cannot be deleted
-      1232617: Views cannot be deleted
-      1242843: prefered view will not be properly displayed after Log in
-      1225818: Invalid login adds entry to webcal_user_pref
-      1220248: Get an Error using the 'Availability'
-      1220256: Get Error using the 'Select' button for assistents
-      1233739: Palm Datebook Import - conflicting events
-      1221727: error in documentation for using iframe with upcoming.php
-      1219427: icalclient fails to publish alarms
-      1218113: iCal ATTENDEE error if event is deleted
-      1211406: User Access Control enabled: has been displayed in 2 tabs
-      1212672: Install script - javascript errors
-      1212667: Install script - Database Type Problem
-      1209649: Undefined variable in html_for_event_day_at_a_glance
-      1205680: upcoming.php was including unapproved.  will now use
-        user preferences for displaying unapproved.
-      1205151: use of undefined variable in edit_entry.php
-  - Other bugs fixed:
-    + Fixed vuln in layers: published vulnerability in layers_toggle.php
-      was fixed
+
+  - Fixes:
     + Fixed vulnerablity: SQL injection possible in edit_template.php,
       activity_log.php, admin_handler.php, pref_handler.php, export_handler.php
-    + Corrected content type in publish.php and freebusy.php
-    + Applied PATCH 1297654: eliminate deprecated tags, excluding <b></b>
-    + Applied PATCH 1349875: Fix for WebCalendar.class
-    + Numerous tweaks to RRULE parsing for display of repeating events
-    + Implemented PATCH 1345138: Several bug fixes
-    + Implemented PATCH 1344304: Use default tzone in send_reminders for users w/out pref
-    + Numerous translation BUG fixes
-    + Fixed problem with participants not being populated when editing an event. Caused
-      during mod to allow multiple categories
-    + Fixed bug" Fixed default UAC settings. User's cal_admin value is now used vs $is_admin
-    + Fixed bug: Login loops forever. Changed the way cookies are encrypted.
-    + Fixed bug: Call to member function on a non-object intermittent error
-      when layers are in use
-    + Applied PATCH 1290583: No more crash in tz_import.php on install, and fixed quoted
-      int values in sql
-    + view_entry.php was displaying '&amp' instead of '&amp;'
     + Fixed security: exploit allows execution of code downloaded from
       remote server
-    + Fixed XHTML troubles with pop id starting with numbers
-    + Adjusted sending time in send_reminders to Server Time vs GMT
-    + Category was lost wan clicking on prev/next month in month.php
-    + Fixed small bug if using 59 minutes for event time
+    + HUGE list of fixes (see ChangeLog for details)
+
   - New Features / Enhancements / Changes:
-    + Implemented PATCH 1539603: Move </body></html> into print_trailer()
-    + Added hCalendar feature to Remote Calendars
-    + Implemented PATCH 1498087: Add simple navigation to help
-    + Implemented PATCH 1498201: Don't print ThemeMenubar
-    + Implemented RFE 1496319: Left align "Users" column in "Week (Users vertical)" view
-    + Implemented RFE 1176218: can not select category in year-view
-    + Implemented RFE 1075840: "Manage calendar of" during management
-    + Implemented PATCH 1470681: New preference: DISPLAY_TASKS_YEAR
-    + Implemented PATCH 1459888: New preference: DISPLAY_MINUTES
-    + Implemented RFE 1490058: export a certain category
-    + Implemented RFE 1379431: Global Layers!
-    + Implemented RFE 1337524: not proper display of "Repeating events" in 'view_entry.php'
-    + Implemented dropdown time entry fields based on PATCH 1276894
-    + Added option to set remote access permissions to publish.php and rss.php
-    + Impemented RFE 1470722: option to disable 2nd entry of cross-day event
-    + Implemented RFE 617965: approve/confirm/reject all events
-    + Implemented PATCH 1470047: Auto-Completing Tasks
-    + Changed gradients to save images in cache file and return real url if called
-      from background_css function in css files
-    + Changed css and javascript to external files and enabled caching
-    + Changed the Timezone calculations to use PHP putenv
-    + Added caching of db requests and parsed translations.
-    + Implemented improved reminder UI and added repeating functionality per RFC2445
-    + Implemented PATCH 1442317: view_entry.php: Disable $proxy_fullname for LDAP users
-    + RFE 1440366: Add a none option to Category Icons
-    + Implemented Patch 1440975: Use category name as title for category icons
-    + Upgraded UAC to allow users to grant permissions to their calendars
-    + Added event popups to upcoming.php (RFE 1179531)
-    + Moved all common images into images folder
-    + Added optional lunar phases to month.php
-    + Implemented patch 1418938: Upcoming.php updated to run as include or command line
-    + Added time selections to menu bar
-    + Added admin option to display All Timezones (approx 360)
-    + New top menu bar added
-    + Made "My event text" color an option instead of always using green
-    + Added tabs to pref.php
-    + Removed admin_handler.php and pref_handler.php
-    + New Joomla user authentication file (user-app-joomla.php)
-    + Implemented magic_quote independance patch
-    + Removed global table styles for activity_log.php page
-    + Added support for events overlspping into next day
-    + Added support for BLOBs for MSSQL DB
-    + Added support for BLOBs for postgreSQL DB
-    + Added option to upload category icons
-    + Added option to disable small months
-    + Added Previews to themes
-    + Imlemented PATCH 1380867: improved ical support
-    + Added feature to email ics attachment to external participants
-      This address bug 1384838 and RFE 1384842
-    + Changed 'Display Weekends' to affect all pages
-    + Added support for themes
-    + Added support for IBM DB2
-    + Added support for binary objects for MySQL and SQLite.  This includes
-      new support for event attachements and event comments.
-      (Still need to implement for other databases.)
-    + Implemented PATCH 1155607: Show all days in Month with config
-    + Implemented PATCH 1060025: New display_month() function
-    + Implemented PATCH 1294721: single file for mod date_formats
-    + Implemented RFE 1315740: German date styles
-    + Implemented PATCH 1221971: IMAP Authentication
-    + Modified upcoming.php to display tasks (see upcoming.php for details)
-    + Implemented RFE 1199126: Link Language and Time/Date Formats
-    + Implemented RFE 1357579: Link to 'Home' in trailer menu
-    + Added new translation decoding for HTML entities in javascript
-    + Adding logic to consume TZID settings in ics files. If the TZID used the Olson 
-      timezone database naming conventions, we will apply that TIMEZONE to that event
-    + Added new Repeat type 'Manual' that allows adding Inclusions/Exclusions 
-      without other repeat attributes.
-    + Implemented RFE 1337513: Add disable option to Location in 'edit_entry.php'
-    + Implemented RFE 802644: Allow to add a comment for reject/accept event
-    + Implemented RFE 1082995: Reject Event Email Message
-    + Implemented RFE 1030872: Notifications reflect user's setting for 12/24-hour time
-    + Implemented RFE 1170434: Disable popups
-    + Added logic to redirect to login from email links if needed
-    + Added support for SMTP mail using PHPMailer
-    + Added admin defined DELFAULT CONFIGURATION for user access control
-    + Added ability to disable RSS link inclusion in print_header(). Useful for popups
-    + Implemented a new repeating event system that incorporates most requirements
-      of RFC2445. All the ByXXX values are now supported except ByHour, ByMinute and
-      BySecond. Multiple Categories, multiple Alarms and RDATE are now supported,
-      along with the abiity to export VTIMEZONE elements if desired.
-    + Implemented VTODO support with floating display of due date per RFC2445 
-    + Added sending of HTML mail (for reminders only now)
-    + Added new time range options for reports: next 14/30/60/90/180/365 days
-      This allows reports to show events starting with current date
-    + Added a simple stylesheet to upcoming.php
-    + Added patch 1306191: Allow users to import from Outlook 2003/XP CSV file
-    + Added patch 1307029: Various mispellings in app and documentation
-    + Implemented RFE 1209445: single-day untimed events appear before multi-day
-    + Added minical.php for using in iframe in external site
-    + Added patch 1204988: view_v.php : vertical week, bg correction for today
-    + Added patch 1257167: Delete should select the user by default
-    + Added patch 1237485: FCKEditor for editing HTML event descriptions
-    + Added install/index and classes/*.class files to update_translation.pl files list
-    + Moved translation related functions to translate.php
-    + Added 'Timezone Notice' if Assistant and Boss are in defferent timezones
-    + Added end time calculation functions to Event.class
-    + Added circle.gif in week view to untimed or all day events
-    + Implemented RFE 1095248: Error check weekly repeating events
-    + Implemented PATCH [ 587965 ] Entry &quot;use end date&quot; auto-selection
-    + Added self-registration based on PATCH [1067168] User self registration,
-      blacklist and email notification are optional
-    + Modified trailer.php to prevent invalid dates (<1970 && > 2037) from 
-      being created in the pulldowm menus.
-    + Added 'Load Timezone Data' button to admin.php
-    + Added support for multiple public calendars by enabling nonuser calendars
-      to act as public calendar.
-    + Added ability to use custom header/stylesheet/trailer on a per-user
-      basis via user preferences.
-    + Added ability to change text Public Access in system settings.
-    + Added full timezone support including accurate DST calculations
-    + Added Auto-install functionality including upgrading from previous
-      versions
-    + Added patch 1208257: use event object for parameters
-    + Palm Desktop datebook import works for versions 4.1.1 and newer
-    + Added logic to only permit setting persistent connections if 
-      allowed and not CGI
-    + Added ability to delete user info from webcal tables for ldap and postnuke auth
-    + Applied patch 1021410: Unobtrusive JS for event popups
-    + Applied patch 810460: fix length of salt in call to crypt for
-      NIS authentication
-    + Added new view that will display similar to day.php and week.php do now
-      except for multiple users (each in their own column)
-    + Applied Patch 1090615: read/write remote ical subscriptions
-      with new icalclient.php file.  Can be enabled in user preferences
-      in the Subscripe/Publish area.
-    + Don't allow LDAP or NIS as option in install/index.php if modules are
-      not available.
-    + Applied patch 1206167: use define for constant variables
-    + Appleid patch 1206560: allow site extras in reports
-    + Added Development/Production environment setting on install page.
-      This will toggle assertion stacktraces and SQL errors being displayed
-      on the web browser.
-    + Applied patch 1175032: add advanced user access control
-    + Applied patch 1205023: fixed missing translation in import.php
-    + Applied patch 1156386: improved placement and sizing of event popups
-    + Applied patch 1111582: Add iCal FreeBusy support
-    + Applied patch 1163497: added RSS feed if admin and user preference
-      are enabled for it
-    + Applied patch 1171807: reminder sent late if cron run at exact
-      second of reminder (was accidentally not included in 1.0.0)
+    = Permissions
+      + User Access Control: fine grain setting of all user's permissions
+    = Import / Export / iCalendar / hCalendar / RSS
+      + Read/write remote ical subscriptions with new icalclient.php file.
+        Can be enabled in user preferences in the Subscripe/Publish area.
+      + Added Remote Calendars which allow a WebCalendar user to view
+        external iCalendar/ics (icalshare.com, etc.) or hCalendar files
+        from within WebCalendar.
+      + Improved iCal parsing
+      + Export only a specified category
+      + Implemented VTODO support with floating display of due date per RFC2445 
+      + Allow users to import from Outlook 2003/XP CSV file
+      + Palm Desktop datebook import works for versions 4.1.1 and newer
+      + Added iCal FreeBusy support
+      + Added RSS feed if admin and user preference are enabled for it.
+    = Performance
+      + Style sheets no longer included in each page (faster downloads)
+      + Added caching of db requests and parsed translations.
+    = Event Details
+      + Full timezone support rather than timezone offset
+      + Improved reminder UI and added repeating functionality per RFC2445
+      + Can attach comments and documents to events using database BLOBs
+      + Added support for events overlapping into next day
+      + Added new Repeat type 'Manual' that allows adding Inclusions/Exclusions 
+        without other repeat attributes.
+      + Implemented a new repeating event system that incorporates most
+        requirements of RFC2445.
+        Multiple Categories, multiple Alarms and RDATE are now supported,
+        along with the abiity to export VTIMEZONE elements if desired.
+    = Event Approval
+      + Approve/confirm/reject all unapproved events
+      + Can add a comment for reject/accept event
+    = User Interface
+      + Added install wizard functionality that will create or update
+        database tables.
+      + New JS/DHTML top menu bar added
+      + Use drop-down selection lists for selecting time
+      + Divided content of preferences pages into tabs
+      + Uploadable category icons
+      + Modified upcoming.php to display tasks (see upcoming.php for details)
+      + Layers can be global
+      + Allow date styles to be specified in translation file
+      + Use FCKEditor for editing HTML event descriptions
+      + Added new time range options for reports: next 14/30/60/90/180/365 days
+        This allows reports to show events starting with current date
+      + Added ability to use custom header/stylesheet/trailer on a per-user
+        basis via user preferences.
+      + Optional lunar phases to month view
+      + Allow site extras in reports
+      + Added minical.php for using in iframe in external site
+      + Added support for multiple public calendars by enabling
+        nonuser calendars to act as public calendar.
+      + Added ability to change text Public Access in system settings.
+      + Added new view that will display similar to day.php and week.php do now
+        except for multiple users (each in their own column)
+    = User Authentication
+      + User authentication by IMAP
+      + User authentication from Joomla file (user-app-joomla.php)
+      + Added user self-registration.
+        blacklist and email notification are optional
+    = Email
+      + Added support for SMTP mail using PHPMailer
+      + Email ics attachment to external event participants
+      + Added sending of HTML mail (for reminders only now)
+    = Database
+      + Added support for IBM DB2
+    = PHP
+      + Do not require magic_quote PHP setting
+
   - The following translations were updated:
     + Czech, Danish, French, German, Greek (new), Hungarian, Norwegian, Polish,
       Portuguese_BR, Japanese (switched to UTF-8), Japanese-sjis (new),
       Japanese-eucjp, Portuguese
+
+---------------------------------------------------------------------------
 
 Version 1.0.0 (17 May 2005) aka Buster
   - Fixed the following bug reports on SourceForge:
