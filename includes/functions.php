@@ -751,6 +751,12 @@ function event_get_external_users ( $event_id, $use_mailto=0 ) {
  *   - LOG_REMINDER
  *   - LOG_ATTACHMENT
  *   - LOG_COMMENT
+ *   - LOG_NEWUSER_FULL
+ *   - LOG_NEWUSEREMAIL
+ *   - LOG_LOGIN_FAILURE
+ *   - LOG_USER_ADD
+ *   - LOG_USER_UPDATE
+ *   - LOG_USER_DELETE
  * @param string $text     Text comment to add with activity log entry
  */
 function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
@@ -5892,22 +5898,31 @@ function display_activity_log ( $cal_type, $cal_text='' ) {
   } else if ( $cal_type == LOG_DELETE_J ) {
     $ret .= translate( 'Journal deleted' );    
   } else if ( $cal_type == LOG_NOTIFICATION ) {
-    etranslate( 'Notification sent' );
+    $ret .= translate( 'Notification sent' );
   } else if ( $cal_type == LOG_REMINDER ) {
     $ret .= translate( 'Reminder sent' );
-    if ( ! empty ( $cal_text ) )
-      $ret .=  ' (' . htmlentities ( $cal_text ) . ')';
+  } else if ( $cal_type == LOG_NEWUSER_FULL ) {
+    $ret .= translate( 'New user (self registration)' );
+  } else if ( $cal_type == LOG_NEWUSER_EMAIL ) {
+    $ret .= translate( 'New user via email (self registration)' );
   } else if ( $cal_type == LOG_ATTACHMENT ) {
     $ret .= translate( 'Attachment' );
-    if ( ! empty ( $cal_text ) )
-      $ret .=  '<br/>&nbsp;' . htmlentities ( $cal_text );
   } else if ( $cal_type == LOG_COMMENT ) {
     $ret .= translate( 'Comment' );
-    if ( ! empty ( $cal_text ) )
-      $ret .=  '<br/>&nbsp;' . htmlentities ( $cal_text );
+  } else if ( $cal_type == LOG_LOGIN_FAILURE ) {
+    $ret .= translate( 'Invalid login' );
+  } else if ( $cal_type == LOG_USER_ADD ) {
+    $ret .= translate( 'Add User' );
+  } else if ( $cal_type == LOG_USER_UPDATE ) {
+    $ret .= translate( 'Edit User' );
+  } else if ( $cal_type == LOG_USER_DELETE ) {
+    $ret .= translate( 'Delete User' );
   } else {
     $ret .=  '???';
   }
+
+  if ( ! empty ( $cal_text ) )
+    $ret .=  '<br/>&nbsp;' . htmlentities ( $cal_text );
   
   return $ret;
 }

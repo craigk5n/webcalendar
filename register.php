@@ -158,7 +158,7 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
  if ( empty ( $error ) ) {
    user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
      $uemail, $uis_admin );
-  activity_log ( 0, 'admin', $user, LOG_NEWUSER_FULL, 'New user via self-registration' );
+  activity_log ( 0, 'system', $user, LOG_NEWUSER_FULL, 'New user via self-registration' );
  }
 //Process account info for email submission
 } else if ( empty ( $error ) && ! empty ( $control ) && $control == 'email' ) {  
@@ -200,7 +200,7 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
   $mail->Send();
   $mail->ClearAll();
 
-  activity_log ( 0, 'admin', $user, LOG_NEWUSER_EMAIL, 'New user via email' ); 
+  activity_log ( 0, 'system', $user, LOG_NEWUSER_EMAIL, 'New user via email' ); 
  }
 }
 

@@ -1,4 +1,6 @@
 Version 1.1.2 (?? ??? 2006)
+ - Added 'System Log' in menu.  Added logging for adding/editing/deleting
+   users and invalid logins.
  - Fixed bug 1559590: Colors wrong
  - Fixed bug 1559486: duplicate code redundancies - view_entry.php
  - Fixed bug 1561612: DISPLAY_CREATED_BYPROXY doesn't work when using LDAP
