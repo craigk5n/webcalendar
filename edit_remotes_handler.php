@@ -53,7 +53,7 @@ if ( ! empty ( $reload ) ) {
         echo '<p>' . translate( 'Create a new layer to view this calendar' ) . ".</p>\n";
     } elseif (! empty ( $errormsg ) ) {
       echo translate ( 'Errors' ) . ": $error_num<br /><br />\n";
-      echo $errorStr$errormsg . "<br />\n";
+      echo $errorStr . $errormsg . "<br />\n";
     } else {
       echo $errorStr .
         translate( 'There was an error parsing the import file or no events were returned' ) .
