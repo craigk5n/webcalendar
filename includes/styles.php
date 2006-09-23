@@ -158,14 +158,14 @@ ul a {
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   vertical-align: top;
 }
-.main th.today {
-  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 15 ); ?>
-}
 .main th.weekend {
   <?php echo background_css ( $GLOBALS['THBG'], 15 ); ?>
 <?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
  display: none; 
 <?php } ?>
+}
+.main th.today {
+  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 15 ); ?>
 }
 .main td {
   <?php echo background_css ( $GLOBALS['CELLBG'], 100 ); ?>
@@ -747,6 +747,10 @@ a.matrix img {
   text-align: center;
   border-width: 0px;
   padding: 3px;
+}
+#datesel td.field {
+  font-size: 12px;
+  font-weight: bold;   
 }
 .glance {
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
