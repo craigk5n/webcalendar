@@ -138,7 +138,7 @@ function selectDate ( day, month, year, current, evt ) {
   date += "01";
   url = "datesel.php?form=editentryform&fday=" + day +
     "&fmonth=" + month + "&fyear=" + year + "&date=" + date;
-  var colorWindow = window.open(url,"DateSelection","width=300,height=200,"  + MyPosition);
+  var colorWindow = window.open(url,"DateSelection","width=300,height=180,"  + MyPosition);
 }
 
 <?php if ( $GROUPS_ENABLED == 'Y' ) { 
