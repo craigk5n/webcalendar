@@ -42,6 +42,9 @@ $href = "href=\"datesel.php?form={$form}&amp;fday={$fday}&amp;" .
 
 echo <<<EOT
  <div align="center">
+   <table class="aligncenter" width="100%" height="165px">
+   <tr>
+     <td align="center" valign="middle"> 
   <table class="aligncenter">
    <tr>
      <td><a title="{$previousStr}" class="prev" {$href}{$prevdate}>
@@ -75,7 +78,7 @@ for ( $i = $wkstart; date ( 'Ymd', $i ) <= date ( 'Ymd', $monthend );
       date ( 'Ymd', $date ) <= date ( 'Ymd', $monthend ) ) || 
       ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && 
       $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
-      echo "<td><a href=\"javascript:sendDate('" .
+      echo "<td class=\"field\"><a href=\"javascript:sendDate('" .
         date ( 'Ymd', $date ) . "')\">" .
         date ( 'j', $date ) . "</a></td>\n";
     } else {
@@ -86,6 +89,7 @@ for ( $i = $wkstart; date ( 'Ymd', $i ) <= date ( 'Ymd', $monthend );
 }
 ?>
 </table>
+</tr></td></table>
 </div>
 
 <?php echo print_trailer ( false, true, true ); ?>
