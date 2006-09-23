@@ -166,9 +166,10 @@ if ( empty ( $error ) ) {
     $euser =  ( ! empty ( $user ) && $login != $user ? $user : $login );
   }
   if ( access_is_enabled () && ! empty ( $euser ) ) {
-    $can_view =  access_user_calendar ( 'view', $euser, $login, $cal_type, $cal_access );
-    $can_edit = access_user_calendar ( 'edit', $euser, $login, $cal_type, $cal_access );
-    $can_approve = access_user_calendar ( 'approve', $euser, $login, $cal_type, $cal_access );
+    $tmp = "$euser, $login, $cal_type, $cal_access";
+    $can_view =  access_user_calendar ( 'view', $tmp );
+    $can_edit = access_user_calendar ( 'edit', $tmp );
+    $can_approve = access_user_calendar ( 'approve', $tmp );
     $time_only = access_user_calendar ( 'time', $euser );
   } else {
     $time_only = 'N';
