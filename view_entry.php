@@ -163,9 +163,9 @@ if ( empty ( $error ) ) {
   if ( empty ( $user ) ) {
     $euser =  ( $is_my_event == true ? $login : $create_by );
   } else {
-    $euser =  ( ! empty ( $user ) && $login != $user ? $user : $login );
+    $euser =  ( $login != $user ? $user : $login );
   }
-  if ( access_is_enabled () && ! empty ( $euser ) ) {
+  if ( access_is_enabled () && ! empty ( $user ) ) {
     $tmp = "$euser, $login, $cal_type, $cal_access";
     $can_view =  access_user_calendar ( 'view', $tmp );
     $can_edit = access_user_calendar ( 'edit', $tmp );
@@ -418,7 +418,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
   
 ?>
 <h2><?php echo  $name ; 
-  if ( $is_nonuser_admin )
+  if ( $is_nonuser_admin || ( $is_admin && ! empty( $user ) && $user == '__public__' ) )
     echo '  ( ' . translate('Admin mode') . ' )';
   if ( $is_assistant )
     echo '  ( ' . translate('Assistant mode') . ' )';
