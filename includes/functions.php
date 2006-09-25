@@ -3322,8 +3322,10 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
         if ( $over_limit ||
           times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
           $conflicts .= '<li>';
-          if ( $single_user != 'Y' )
-            $conflicts .= "$row[0]: ";
+          if ( $single_user != 'Y' ) {
+            user_load_variables ( $row[0], 'conflict_' );
+            $conflicts .= $GLOBALS['conflict_fullname'] . ': ';
+          }
           if ( $row[5] == 'R' && $row[0] != $login ) {
             $conflicts .=  '(' . $privateStr . ')';
           } else if ( $row[5] == 'C' && $row[0] != $login  && 
@@ -3388,8 +3390,10 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
           $duration2 = $row->getDuration();
           if ( times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
             $conflicts .= '<li>';
-            if ( $single_user != 'Y' )
-              $conflicts .= $row->getLogin() . ': ';
+            if ( $single_user != 'Y' ) {
+              user_load_variables ( $row->getLogin(), 'conflict_' );
+              $conflicts .= $GLOBALS['conflict_fullname'] . ': ';
+            }
             if ( $row->getAccess() == 'R' && $row->getLogin() != $login ) {
               $conflicts .=  '(' . $privateStr . ')';
             } else if ( $row->getAccess() == 'C' && $row->getLogin() != $login &&

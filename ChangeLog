@@ -1,4 +1,5 @@
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1564901 ] '__public__' at the 'conflict-view' not translated
  - Fixed bug [ 1563734 ] 8 days in view L (week)
  - Fixed bug 1563740: Background color for current day not shown at weekends
  - Added 'System Log' in menu.  Added logging for adding/editing/deleting
