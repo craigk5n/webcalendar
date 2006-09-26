@@ -62,301 +62,7 @@ $failure = '<b>' . translate ( 'Failure Reason' ) . ':</b><blockquote>';
 $selected = ' selected="selected" ';
 $checked = ' checked="checked" ';
 
-function do_debug ( $msg ) {
-  // log to /tmp/webcal-debug.log
-  //error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
-  //3, "d:\php\logs\debug.txt" );
-}
-
-// Get value from POST form
-function getPostValue ( $name ) {
-  global $HTTP_POST_VARS;
-
-  if ( isset ( $_POST ) && is_array ( $_POST ) && ! empty ( $_POST[$name] ) ) {
-  $_POST[$name] = ( get_magic_quotes_gpc () != 0? $_POST[$name]: addslashes ( $_POST[$name]) );
-   $HTTP_POST_VARS[$name] = $_POST[$name];
-    return $_POST[$name];
-  } else if ( ! isset ( $HTTP_POST_VARS ) ) {
-    return null;
-  } else if ( ! isset ( $HTTP_POST_VARS[$name] ) ) {
-    return null;
- }
-  return ( $HTTP_POST_VARS[$name] );
-}
-
-
-// Get value from GET form
-function getGetValue ( $name ) {
-  global $HTTP_GET_VARS;
-
-  if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) ) {
-  $_GET[$name] = ( get_magic_quotes_gpc () != 0? $_GET[$name]: addslashes ( $_GET[$name]) );
-    $HTTP_GET_VARS[$name] = $_GET[$name];
-  return $_GET[$name];
-  } else if ( ! isset ( $HTTP_GET_VARS ) ) {
-    return null;
-  } else if ( ! isset ( $HTTP_GET_VARS[$name] ) ){
-    return null;
- }
-  return ( $HTTP_GET_VARS[$name] );
-}
-
-function get_php_setting ( $val, $string=false ) {
-  $setting = ini_get ( $val );
-  if ( $string == false ) {
-    if ( $setting == '1' || $setting == 'ON' )
-      return 'ON';
-    else
-      return 'OFF';
-  } else {
-    //test for $string in ini value 
-    $string_found = array_search ( $string, explode ( ',', $setting ) );
-    if   ( $string_found )
-      return $string;
-    else
-      return false;
-  }
-}
-
-
-function get_php_modules ( $val ) {
-  $setting = function_exists ( $val );
-  if ( $setting  )
-    return 'ON';
-  else
-    return 'OFF';
-}
-
-// We will generate many errors while trying to test database
-// Disable them temporarily as needed
-function show_errors ( $error_val=0 ) {
-  global $show_all_errors;
-  
- if ( empty ( $_SESSION['error_reporting'] ) )
-    $_SESSION['error_reporting'] = get_php_setting ( 'error_reporting' ); 
-  if ( $show_all_errors == true ) {
-   ini_set ( 'error_reporting', 64 );
- } else {
-    ini_set ( 'error_reporting', ( $error_val? $_SESSION['error_reporting'] :64) );
- }
-}
-
-//We will convert from Server based storage to GMT time
-//optionally, a tzoffset can be added to the URL and will
-//adjust all existing events by that amount
-function convert_server_to_GMT ( $offset=0 ) {
- //Default value 
- $error = '<b>Conversion Successful</b>';
- //don't allow $offsets over 24
- if ( $offset < -24 || $offset > 24 ) 
-   $offset = 0;
- // Do webcal_entry update
-  $res = dbi_execute ( 'SELECT cal_date, cal_time, cal_id, cal_duration FROM webcal_entry' );
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $cal_date = $row[0];
-      $cal_time = sprintf ( "%06d", $row[1] );
-   $cal_id = $row[2];
-   $cal_duration = $row[3];
-   //  Skip Untimed or All Day events
-   if ( ( $cal_time == -1 ) || ( $cal_time == 0 && $cal_duration == 1440 ) ){
-     continue;
-   } else {
-     $sy = substr ( $cal_date, 0, 4 );
-     $sm = substr ( $cal_date, 4, 2 );
-     $sd = substr ( $cal_date, 6, 2 );
-     $sh = substr ( $cal_time, 0, 2 );
-     $si = substr ( $cal_time, 2, 2 );
-     $ss = substr ( $cal_time, 4, 2 );
-     if ( ! empty ( $offset ) ) {   
-       $new_datetime = gmmktime ( $sh + $offset, $si, $ss, $sm, $sd, $sy );
-     } else {
-       $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
-     }
-     $new_cal_date = gmdate ( 'Ymd', $new_datetime );
-     $new_cal_time = gmdate ( 'His', $new_datetime );
-     // Now update row with new data
-     if ( ! dbi_execute ( 'UPDATE webcal_entry SET cal_date = ?, ' .
-       ' cal_time = ? '.
-       'WHERE cal_id = ?' , array ( $new_cal_date , $new_cal_time , $cal_id ) ) ){
-       $error = "Error updating table 'webcal_entry' " . dbi_error ();
-     return $error;
-     }
-    }
-    }
-    dbi_free_result ( $res );
-  }
  
-  // Do webcal_entry_logs update
-  $res = dbi_execute ( 'SELECT cal_date, cal_time, cal_log_id FROM webcal_entry_log' );
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $cal_date = $row[0];
-      $cal_time = sprintf ( "%06d", $row[1] );
-      $cal_log_id = $row[2];
-      $sy = substr ( $cal_date, 0, 4 );
-      $sm = substr ( $cal_date, 4, 2 );
-      $sd = substr ( $cal_date, 6, 2 );
-      $sh = substr ( $cal_time, 0, 2 );
-      $si = substr ( $cal_time, 2, 2 );
-      $ss = substr ( $cal_time, 4, 2 );   
-      $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
-      $new_cal_date = gmdate ( 'Ymd', $new_datetime );
-      $new_cal_time = gmdate ( 'His', $new_datetime );
-      // Now update row with new data
-      if ( ! dbi_execute ( 'UPDATE webcal_entry_log SET cal_date = ?, ' .
-        ' cal_time = ? '.
-        'WHERE cal_log_id = ?' , array ( $new_cal_date , $new_cal_time , $cal_log_id ) ) ){
-        $error = "Error updating table 'webcal_entry_log' " . dbi_error ();
-        return $error;
-      }
-    }
-    dbi_free_result ( $res );
-  }
-   // Update Conversion Flag in webcal_config
-   //Delete any existing entry
-   $sql = "DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_TZ_CONVERSION'";
-   if ( ! dbi_execute ( $sql ) ) {
-    $error = 'Database error: ' . dbi_error ();
-    return $error;
-   }
-  $sql = "INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-   "VALUES ( 'WEBCAL_TZ_CONVERSION', 'Y' )";
-  if ( ! dbi_execute ( $sql ) ) {
-    $error = 'Database error: ' . dbi_error ();
-   return $error;
-  }
- return $error;
-}
-
-function get_installed_version ( $postinstall=false ) {
- global $settings, $database_upgrade_matrix, $show_all_errors, $PROGRAM_VERSION;
- 
-  //disable warnings
- //show_errors ();
- // Set this as the default value
- $_SESSION['application_name']  = 'Title';
- $_SESSION['old_program_version'] = ( $postinstall ? $PROGRAM_VERSION : 'new_install' );
- $_SESSION['blank_database'] = '';
- 
- //We will append the db_type to come up te proper filename
-  $_SESSION['install_file'] = 'tables';
- //This data is read from file upgrade_matrix.php
- for ( $i=0; $i < count( $database_upgrade_matrix); $i++ ) {
-   $sql = $database_upgrade_matrix[$i][0];
-   //echo "SQL: " .$sql . "<br />";
-   if ( $sql != '' ) 
-     $res = dbi_execute ( $sql, array(), false, $show_all_errors );
-   if  ( $res ) {
-     $_SESSION['old_program_version'] = $database_upgrade_matrix[$i +1][2];
-     $_SESSION['install_file'] = $database_upgrade_matrix[$i +1][3];
-     $res = '';
-     $sql = $database_upgrade_matrix[$i][1];
-     if ( $sql != '' )
-       dbi_execute ( $sql, array(), false, $show_all_errors );
-   }
-//echo $_SESSION['old_program_version'] . " " . $database_upgrade_matrix[$i][1] . "<br />";
- } 
- if ( $_SESSION['old_program_version'] == 'pre-v0.9.07' ) {
-   $response_msg = translate ( 'Perl script required' );
- } else {
-   $response_msg = translate ( 'Your previous version of WebCalendar requires updating several database tables.' ); 
- }
- // v1.1 and after will have an entry in webcal_config to make this easier
-// $res = dbi_execute ( "SELECT cal_value FROM webcal_config " .
-//  "WHERE cal_setting  = 'WEBCAL_PROGRAM_VERSION'", array(), false, false );
-// if ( $res ) {
-//   $row = dbi_fetch_row ( $res );
-//  if ( ! empty ( $row[0] ) ) {  
-//    $_SESSION['old_program_version'] = $row[0];
-//    $_SESSION['install_file']  = 'upgrade_' . $row[0];
-//  }
-//  dbi_free_result ( $res );
-// }
-
- //We need to determine this is a blank database
- // This may be due to a manual table setup
- $res = dbi_execute ( 'SELECT count(cal_value) FROM webcal_config' , array() , false,
-   $show_all_errors );
- if ( $res ) {
-   $row = dbi_fetch_row ( $res );
-   if ( isset ( $row[0] ) && $row[0] == 0 ) {  
-     $_SESSION['blank_database'] = true;
-   } else {
-     //make sure all existing values in config and pref tables are UPPERCASE
-     make_uppercase ();
-
-     // Clear db_cache. This will prevent looping when launching WebCalendar
-     // if upgrading and WEBCAL_PROGRAM_VERSION is cached
-     if ( ! empty ( $settings['db_cachedir'] ) )
-       dbi_init_cache ( $settings['db_cachedir'] );
-     else if ( ! empty ( $settings['cachedir'] ) )
-       dbi_init_cache ( $settings['cachedir'] ); 
-    
-     //delete existing WEBCAL_PROGRAM_VERSION number 
-     dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'WEBCAL_PROGRAM_VERSION'");
-   }
-   dbi_free_result ( $res );    
-   // Insert webcal_config values only if blank
-   db_load_config ();
-   //check if an Admin account exists
-   $_SESSION['admin_exists'] = db_check_admin ();
- }
- // Determine if old data has been converted to GMT
- // This seems lke a good place to put this
- $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
-  "WHERE cal_setting  = 'WEBCAL_TZ_CONVERSION'", array(), false, $show_all_errors);
- if ( $res ) {
-  $row = dbi_fetch_row ( $res );
-  dbi_free_result ( $res );
-  // if not 'Y', we will prompt user to do conversion
-  // from server time to GMT time
-  if ( !empty ( $row[0] ) ) {
-   $_SESSION['tz_conversion']  = $row[0];
-  } else { //we'll test if any events even exist
-    $res = dbi_execute ( 'SELECT count(cal_id) FROM webcal_entry ', 
-      array(), false, $show_all_errors);
-    if ( $res ) {
-      $row = dbi_fetch_row ( $res );
-      dbi_free_result ( $res );
-    }
-    if ( $row[0] > 0 ) {
-      $_SESSION['tz_conversion']  = 'NEEDED';
-    } else {
-      $_SESSION['tz_conversion']  = 'Y';
-    }
-  }
-  dbi_free_result ( $res );
- }
- //don't show TZ conversion if blank database
- if ( $_SESSION['blank_database'] == true )
-   $_SESSION['tz_conversion']  = 'Y';
-   
- // Get existing server URL
- // We could use the self-discvery value, but this 
- // may be a custom value
- $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
-  "WHERE cal_setting  = 'SERVER_URL'", array(), false, $show_all_errors);
- if ( $res ) {
-  $row = dbi_fetch_row ( $res );
-  if ( ! empty ( $row[0] ) && strlen ( $row[0] ) ) {
-   $_SESSION['server_url']  = $row[0];
-  }
-  dbi_free_result ( $res );
- }
- // Get existing application name
- $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
-  "WHERE cal_setting  = 'APPLICATION_NAME'", array(), false, $show_all_errors);
- if ( $res ) {
-  $row = dbi_fetch_row ( $res );
-  if ( ! empty ( $row[0] ) ) {
-   $_SESSION['application_name']  = $row[0];
-  }
-  dbi_free_result ( $res );
- }
- //enable warnings
- show_errors ( true );
-} // end get_installed_version 
 
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
@@ -559,77 +265,7 @@ if ( ! empty ( $action ) && $action == 'switch' ) {
  }
 }
 
-function parse_sql($sql) {
- $sql = trim($sql);
-  $sql = trim ( $sql, "\r\n " );
- $ret = array();
 
- $buffer_str = '';
- for($i=0; $i < strlen($sql); $i++) {
-    $buffer_str .= substr($sql, $i, 1);
-  if(substr( $sql,$i, 1) == ';') {
-   $ret[] = $buffer_str;
-   $buffer_str = '';
-  }
- }
- return($ret);
-}
-
-function db_populate ( $install_filename, $display_sql ) {
-  global $str_parsed_sql, $show_all_errors;
-  if ( $install_filename == '' ) return;
- $full_sql = '';
- $current_pointer = false;
- $magic = @get_magic_quotes_runtime();
- @set_magic_quotes_runtime(0);
- $fd = @fopen ( 'sql/' . $install_filename, 'r', true);
- //discard everything up to the required point in the upgrade file 
- while (!feof($fd) && empty ( $current_pointer ) ) {
-  $data = fgets($fd, 4096);
-  $data = trim ( $data, "\r\n " );
-  if ( strpos(  strtoupper ( $data ) , strtoupper ( $_SESSION['install_file'] ) )  || 
-    substr( $_SESSION['install_file'], 0, 6 ) == 'tables' ) {
-    $current_pointer = true;
-  }
- }
- //We already have a $data item from above
- if ( substr ( $data , 0 , 2 ) == "/*" && 
-   substr( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
-  //Do nothing...We skip over comments in upgrade files
- } else {
-  $full_sql .= $data;
- }
- // We need to strip out the comments from upgrade files
- while (!feof($fd)  ) {
-  $data = fgets($fd, 4096);
-  $data = trim ( $data, "\r\n " );
-  if ( substr ( $data , 0 , 2 ) == '/*' && 
-   substr( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
-    //Do nothing...We skip over comments in upgrade files
-  } else {
-    $full_sql .= $data;
-  }
- } 
- //echo $full_sql;
- @set_magic_quotes_runtime($magic);
- fclose ( $fd );
- $parsed_sql  = parse_sql($full_sql);
- //disable warnings
- //show_errors ();
- //string version of parsed_sql that is used if displaying sql only
- $str_parsed_sql = '';
-  for ( $i = 0; $i < count($parsed_sql); $i++ ) {
-    if ( empty ( $display_sql ) ){ 
-  if ( $show_all_errors == true ) echo $parsed_sql[$i] . '<br />';
-      dbi_execute ( $parsed_sql[$i], array(), false, $show_all_errors );   
-  } else {
-    $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
-  } 
-  }
- //echo "PARSED SQL " .  $str_parsed_sql;
- //enable warnings
- show_errors ( true );
-} //end db_populate
 
 // We're doing a database installation yea ha!
 if ( ! empty ( $action ) &&  $action == 'install' ){
@@ -731,7 +367,7 @@ $post_action = getPostValue ( 'action' );
 $post_action2 = getPostValue ( 'action2' );
 // Is this a db connection test?
 // If so, just test the connection, show the result and exit.
-if (  ! empty ( $post_action ) && $post_action == 'Test Settings'  && 
+if (  ! empty ( $post_action ) && $post_action == translate ( 'Test Settings' )  && 
   ! empty ( $_SESSION['validuser'] )  ) {
     $response_msg = '';
     $response_msg2 = '';
@@ -768,9 +404,9 @@ if (  ! empty ( $post_action ) && $post_action == 'Test Settings'  &&
      // See if user is valid, but database doesn't exist
      // The normal call to dbi_connect simply return false for both conditions
      if ( $db_type == 'mysql'  ) {
-       $c = mysql_connect ( $db_host, $db_login, $db_password, '' , false );
+       $c = mysql_connect ( $db_host, $db_login, $db_password );
      } else if ( $db_type == 'mssql'  ) {
-       $c = mssql_connect ( $db_host, $db_login, $db_password, '', false );
+       $c = mssql_connect ( $db_host, $db_login, $db_password );
      } else if ( $db_type == 'postgresql'  ) {
        $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1', false);
      } else if ( $db_type == 'ibase'  ) {
@@ -805,7 +441,7 @@ if (  ! empty ( $post_action ) && $post_action == 'Test Settings'  &&
 
 // Is this a db create?
 // If so, just test the connection, show the result and exit.
-} else if ( ! empty ( $post_action2 ) && $post_action2== 'Create New'  && 
+} else if ( ! empty ( $post_action2 ) && $post_action2== translate ( 'Create New' )  && 
   ! empty ( $_SESSION['validuser'] ) && ! empty ( $_SESSION['db_noexist'] )) {
     $_SESSION['db_success'] = false;
 
@@ -1043,7 +679,8 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     }
     fwrite ( $fd, "# end settings.php */\r\n?>\r\n" );
     fclose ( $fd );
-    if ( $post_action != 'Test Settings' && $post_action2 != 'Create New' ){
+    if ( $post_action != translate ( 'Test Settings' ) && 
+      $post_action2 != translate ( 'Create New' ) ){
       $onload .= "alert('" . translate ( 'Your settings have been saved', true ) . ".\\n\\n');";
     }
 
@@ -1561,7 +1198,8 @@ if ( ! $exists || ! $canWrite ) { ?>
   <?php 
     $class = ( ! empty ( $_SESSION['db_success'] ) ) ?
       'recommended' : 'notrecommended';
-    echo "<input name=\"action\" type=\"submit\" value=\"Test Settings\" class=\"$class\" />\n";
+    echo "<input name=\"action\" type=\"submit\" value=\"" . 
+      translate ( 'Test Settings' ) . "\" class=\"$class\" />\n";
 
    if ( ! empty ( $_SESSION['db_noexist'] ) &&  empty ( $_SESSION['db_success'] ) ){
        echo "<input name=\"action2\" type=\"submit\" value=\"" . 
