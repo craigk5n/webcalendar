@@ -5,6 +5,7 @@ include_once 'includes/xcal.php';
 require_once 'includes/classes/hKit/hkit.class.php';
 
 $error = '';
+$layer_found = false;
 
 $action = getPostValue ( 'action' );
 $delete = getPostValue ( 'delete' );
@@ -14,53 +15,6 @@ $nadmin = getPostValue ( 'nadmin' );
 $nurl = getPostValue ( 'nurl' );
 $nlayer = getPostValue ( 'nlayer' );
 $nlayercolor = getPostValue ( 'layercolor' );
-
-if ( ! empty ( $reload ) ) {
-    $data = array();
-    $calUser = $nid;
-    $overwrite = true;
-    $type = 'remoteics';
-    // we will check ics first
-    $data = parse_ical( $nurl, $type );
-    //TODO it may be a vcs file
-    //if ( count ( $data ) == 0 ) {
-    //  $data = parse_vcal( $nurl );
-    //}  
-    // we may be processing an hCalendar
-    if ( count ( $data ) == 0  && function_exists ( 'simplexml_load_string' ) ) {
-      $h  = new hKit;
-      $h->tidy_mode  = 'proxy';
-      $result  = $h->getByURL('hcal', $nurl);
-      $type= 'hcal';
-      $data = parse_hcal( $result, $type );
-    }
-    print_header( '','','',true,false,true);
-    $errorStr = "<br /><br />\n<b>" . translate( 'Error' ) . ':</b> ';
-    if ( count ($data) && empty ($errormsg) ) {
-      //delete existing events
-      delete_events ( $nid );
-      //import new events
-      import_data ( $data, $overwrite, $type );
-      echo '<p>' . translate( 'Import Results' ) . "</p>\n<br /><br />\n" .
-      translate( 'Events successfully imported' ) . ": $count_suc<br />\n";
-      load_user_layers();
-      $layer_found = false;
-      foreach ($layers as $layer) {
-        if($layer['cal_layeruser'] == $nid )
-          $layer_found = true;
-      }
-      if ( $layer_found == false )     
-        echo '<p>' . translate( 'Create a new layer to view this calendar' ) . ".</p>\n";
-    } elseif (! empty ( $errormsg ) ) {
-      echo translate ( 'Errors' ) . ": $error_num<br /><br />\n";
-      echo $errorStr . $errormsg . "<br />\n";
-    } else {
-      echo $errorStr .
-        translate( 'There was an error parsing the import file or no events were returned' ) .
-        ".<br />\n";
-    }
-    echo print_trailer ( false, true, true );   
-}
 
 if ( ! empty ( $delete ) ) {
   // delete events from this remote calendar
@@ -109,7 +63,7 @@ if ( ! empty ( $delete ) ) {
     if ( ! dbi_execute ( $sql, $query_params ) ) {
       $error = db_error ();
     }
-  } else if ( empty ( $nid ) ){
+  } else if ( $action == 'Add' || $action == translate( 'Add' ) ){
     // Adding    
     if (preg_match( "/^[\w]+$/", $nid )) {
       $nid = $NONUSER_PREFIX.$nid;
@@ -135,7 +89,7 @@ if ( ! empty ( $delete ) ) {
       dbi_execute ( 'INSERT INTO webcal_user_layers ( cal_layerid, cal_login, ' .
         'cal_layeruser, cal_color, cal_dups ) VALUES ( ?, ?, ?, ?, ? )', 
         array( $layerid, $login, $nid, $layercolor, 'N' ) );    
-    
+      $layer_found = true;    
     }
   }
   //Add entry in UAC access table for new admin and remove for old admin
@@ -150,6 +104,54 @@ if ( ! empty ( $delete ) ) {
     die_miserable_death ( translate ( 'Database error' ) . ': ' .
       dbi_error () );
   }  
+}
+
+if ( ! empty ( $reload ) ) {
+    $data = array();
+    $calUser = $nid;
+    $overwrite = true;
+    $type = 'remoteics';
+    // we will check ics first
+    $data = parse_ical( $nurl, $type );
+    //TODO it may be a vcs file
+    //if ( count ( $data ) == 0 ) {
+    //  $data = parse_vcal( $nurl );
+    //}  
+    // we may be processing an hCalendar
+    if ( count ( $data ) == 0  && function_exists ( 'simplexml_load_string' ) ) {
+      $h  = new hKit;
+      $h->tidy_mode  = 'proxy';
+      $result  = $h->getByURL('hcal', $nurl);
+      $type= 'hcal';
+      $data = parse_hcal( $result, $type );
+    }
+    print_header( '','','',true,false,true);
+    $errorStr = "<br /><br />\n<b>" . translate( 'Error' ) . ':</b> ';
+    if ( count ($data) && empty ($errormsg) ) {
+      //delete existing events
+      delete_events ( $nid );
+      //import new events
+      import_data ( $data, $overwrite, $type );
+      echo '<p>' . translate( 'Import Results' ) . "</p>\n<br /><br />\n" .
+      translate( 'Events successfully imported' ) . ": $count_suc<br />\n";
+      if ( $layer_found == false ) { //we may have just added layer
+        load_user_layers();     
+        foreach ($layers as $layer) {
+          if($layer['cal_layeruser'] == $nid )
+            $layer_found = true;
+        }
+      }
+      if ( $layer_found == false )     
+        echo '<p>' . translate( 'Create a new layer to view this calendar' ) . ".</p>\n";
+    } elseif (! empty ( $errormsg ) ) {
+      echo translate ( 'Errors' ) . ": $error_num<br /><br />\n";
+      echo $errorStr . $errormsg . "<br />\n";
+    } else {
+      echo $errorStr .
+        translate( 'There was an error parsing the import file or no events were returned' ) .
+        ".<br />\n";
+    }
+    echo print_trailer ( false, true, true );   
 }
 
 function delete_events ( $nid ){
@@ -207,5 +209,5 @@ function delete_events ( $nid ){
 
 }
 
-echo error_check('users.php?tab=remotes'); 
+echo error_check('users.php?tab=remotes', false); 
 ?>
