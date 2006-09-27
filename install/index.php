@@ -28,6 +28,7 @@ include_once '../includes/config.php';
 
 include_once '../includes/translate.php';
 include_once 'default_config.php';
+include_once 'install_functions.php';
 include_once 'sql/upgrade_matrix.php';
 $file = '../includes/settings.php';
 $fileDir = '../includes';
@@ -58,11 +59,27 @@ $lang = 'English-US'; // Default
 }
 
 $lang_file = 'translations/' . $lang . '.txt';
-$failure = '<b>' . translate ( 'Failure Reason' ) . ':</b><blockquote>';
+
+//Some common translations used in the install script
+$wizardStr = translate ( 'WebCalendar Installation Wizard' ) .':' . translate ( 'Step' );
+$passwordStr = translate ( 'Password' );
+$singleUserStr = translate ( 'Single-User' );
+$loginStr = translate ( 'Login' );
+$failureStr = '<b>' . translate ( 'Failure Reason' ) . ':</b>';
+$manualStr = translate ( 'You must manually create database' );
+$cachedirStr = translate ( 'Database Cache Directory' );
+$logoutStr = translate ( 'Logout' );
+$testSettingsStr = translate ( 'Test Settings' );
+$createNewStr = translate ( 'Create New' );
+$datebaseNameStr = translate ( 'Database Name' );
+$backStr = translate ( 'Back' );
+$nextStr = translate ( 'Next' );
+$tzSuccessStr = translate ( 'Timezone Conversion Successful' );
+$errorFileWriteStr = translate ( 'Error Unable to write to file', true ); 
+
+$failure = $failureStr . '<blockquote>';
 $selected = ' selected="selected" ';
 $checked = ' checked="checked" ';
-
- 
 
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
@@ -367,7 +384,7 @@ $post_action = getPostValue ( 'action' );
 $post_action2 = getPostValue ( 'action2' );
 // Is this a db connection test?
 // If so, just test the connection, show the result and exit.
-if (  ! empty ( $post_action ) && $post_action == translate ( 'Test Settings' )  && 
+if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  && 
   ! empty ( $_SESSION['validuser'] )  ) {
     $response_msg = '';
     $response_msg2 = '';
@@ -418,8 +435,7 @@ if (  ! empty ( $post_action ) && $post_action == translate ( 'Test Settings' ) 
        $_SESSION['db_noexist'] = true;
      } else {
        if ( $db_type == 'ibase'  ) {
-         $response_msg = $failure . translate ( 'You must manually create database' ) . 
-           "</blockquote>\n";
+         $response_msg = $failure . $manualStr . "</blockquote>\n";
        } else {
          $response_msg = $failure . dbi_error () . "</blockquote>\n" .
            translate ( 'Correct your entries and try again' );
@@ -430,18 +446,18 @@ if (  ! empty ( $post_action ) && $post_action == translate ( 'Test Settings' ) 
   //test db_cachedir directory for write permissions
   if ( strlen ( $db_cachedir ) > 0 ) {   
     if ( ! file_exists ( $db_cachedir ) ) {
-      $response_msg2 = '<b>' . translate ( 'Failure Reason' ) . ':</b>'.
-        translate ( 'Database Cache Directory' ) . ' ' . translate ( 'does not exist' );
+      $response_msg2 = $failureStr . $cachedirStr . ' ' . 
+        translate ( 'does not exist' );
     } else if ( ! is_writable ( $db_cachedir ) ) {
-      $response_msg2 = '<b>' . translate ( 'Failure Reason' ) . ':</b>' .
-        translate ( 'Database Cache Directory' ) . ' ' . translate ( 'is not writable' );
+      $response_msg2 = $failureStr . $cachedirStr . ' ' . 
+        translate ( 'is not writable' );
       } else {
     }      
   }
 
 // Is this a db create?
 // If so, just test the connection, show the result and exit.
-} else if ( ! empty ( $post_action2 ) && $post_action2== translate ( 'Create New' )  && 
+} else if ( ! empty ( $post_action2 ) && $post_action2== $createNewStr  && 
   ! empty ( $_SESSION['validuser'] ) && ! empty ( $_SESSION['db_noexist'] )) {
     $_SESSION['db_success'] = false;
 
@@ -497,8 +513,7 @@ if (  ! empty ( $post_action ) && $post_action == translate ( 'Test Settings' ) 
    }
   } else if ( $db_type == 'ibase' ) {
 
-      $response_msg = $failure . translate ( 'You must manually create database' ) . 
-     "</blockquote>\n";
+      $response_msg = $failure . $manualStr . "</blockquote>\n";
      
   } // TODO code remainig database types
   //allow bypass of TZ Conversion
@@ -529,7 +544,7 @@ if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['vali
         $ret = convert_server_to_GMT ( $tzoffset );
     if ( substr ( $ret, 3, 21 ) == 'Conversion Successful' ) {
       $_SESSION['tz_conversion']  = 'Success';
-     $response_msg = translate ( 'Timezone Conversion Successful' );
+     $response_msg = $tzSuccessStr;
     } else {
        $response_msg = translate ( 'Error Converting Timezone' );
     }
@@ -664,12 +679,14 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
   $fd = @fopen ( $file, 'w+b', false );
   if ( empty ( $fd ) ) {
     if ( file_exists ( $file ) ) {
-      $onload = "alert('" . translate ( 'Error Unable to write to file', true ) . 
-     $file . "\\n" . translate ( 'Please change the file permissions of this file', true ) . ".');";
+      $onloadDetailStr =  
+        translate ( 'Please change the file permissions of this file', true );
     } else {
-      $onload = "alert('" . translate ( 'Error Unable to write to file', true ) . 
-     $file. "\\n" . translate ( 'Please change includes dir premission', true ) . ".');";
+      $onloadDetailStr = 
+        translate ( 'Please change includes dir premission', true );
     }
+    $onload = "alert('" . $errorFileWriteStr . $file. "\\n" . 
+      $onloadDetailStr . ".');";
   } else {
     fwrite ( $fd, "<?php\r\n" );
     fwrite ( $fd, '/* updated via install/index.php on ' . date('r') . "\r\n" );
@@ -679,8 +696,8 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     }
     fwrite ( $fd, "# end settings.php */\r\n?>\r\n" );
     fclose ( $fd );
-    if ( $post_action != translate ( 'Test Settings' ) && 
-      $post_action2 != translate ( 'Create New' ) ){
+    if ( $post_action != $testSettingsStr && 
+      $post_action2 != $createNewStr ){
       $onload .= "alert('" . translate ( 'Your settings have been saved', true ) . ".\\n\\n');";
     }
 
@@ -770,11 +787,11 @@ function db_type_handler () {
   if ( selectvalue == "sqlite" || selectvalue == "ibase" ) {
       form.form_db_database.size = 65;
     document.getElementById("db_name").innerHTML = 
-    "<?php etranslate ( 'Database Name' ) ?>" + ": " +  
+    "<?php echo $datebaseNameStr ?>" + ": " +  
    "<?php etranslate ( 'Full Path (no backslashes)') ?>";
   } else {
       form.form_db_database.size = 20;
-    document.getElementById("db_name").innerHTML = "<?php etranslate ( 'Database Name' ) ?>" + ": ";
+    document.getElementById("db_name").innerHTML = "<?php echo $datebaseNameStr ?>" + ": ";
   }
 }
 function chkPassword () {
@@ -851,8 +868,7 @@ doc.li {
 <?php   //print_r ( $_SERVER );
 if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <table border="1" width="90%" align="center">
-<tr><th class="pageheader"  colspan="2"><?php echo 
-  translate ( 'WebCalendar Installation Wizard' ) . ':' . translate ( 'Step' ) ?> 1</th></tr>
+<tr><th class="pageheader"  colspan="2"><?php echo $wizardStr ?> 1</th></tr>
 <tr><td colspan="2" width="50%">
 <?php etranslate ( 'This installation wizard will guide you...' ) ?>:<br />
 <a href="../docs/WebCalendar-SysAdmin.html" target="_docs">System Administrator's Guide</a>,
@@ -990,9 +1006,9 @@ if ( ! $exists || ! $canWrite ) { ?>
   <form action="index.php" method="post" name="dblogin">
    <table>
     <tr><th>
-     <?php etranslate ( 'Password' ) ?>:</th><td>
+     <?php echo $passwordStr ?>:</th><td>
      <input name="password" type="password" />
-     <input type="submit" value="Login" />
+     <input type="submit" value="<?php echo $loginStr ?>" />
     </td></tr>
    </table>
   </form>
@@ -1003,7 +1019,7 @@ if ( ! $exists || ! $canWrite ) { ?>
      <?php etranslate ( 'Create Settings File Password' ) ?>
     </th></tr>
     <tr><th>
-     <?php etranslate ( 'Password' ) ?>:</th><td>
+     <?php echo $passwordStr ?>:</th><td>
      <input name="password1" type="password" />
     </td></tr>
     <tr><th>
@@ -1023,7 +1039,7 @@ if ( ! $exists || ! $canWrite ) { ?>
 <table border="0" width="90%" align="center">
  <tr><td align="center">
   <form action="index.php?action=switch&amp;page=2" method="post">
-   <input type="submit" value="<?php etranslate ( 'Next' ) ?> ->" />
+   <input type="submit" value="<?php echo $nextStr ?> ->" />
   </form>
  </td></tr>
 </table>
@@ -1034,8 +1050,7 @@ if ( ! $exists || ! $canWrite ) { ?>
 
 <table border="1" width="90%" align="center">
  <tr><th class="pageheader" colspan="2">
-  <?php echo translate ( 'WebCalendar Installation Wizard' ) . ': ' . 
-  translate ( 'Step' ) ?> 2
+  <?php echo $wizardStr ?> 2
  </th></tr>
  <tr><td colspan="2" width="50%">
   <?php echo translate ( 'db setup directions...' )?>.
@@ -1160,15 +1175,15 @@ if ( ! $exists || ! $canWrite ) { ?>
    <input name="form_db_host" id="server" size="20" value="<?php echo $settings['db_host'];?>" />
   </td></tr>
   <tr><td class="prompt">
-   <label for="login"><?php etranslate ( 'Login' ) ?>:</label></td><td colspan="2">
+   <label for="login"><?php echo $loginStr ?>:</label></td><td colspan="2">
    <input name="form_db_login" id="login" size="20" value="<?php echo $settings['db_login'];?>" />
   </td></tr>
   <tr><td class="prompt">
-   <label for="pass"><?php etranslate ( 'Password' ) ?>:</label></td><td colspan="2">
+   <label for="pass"><?php echo $passwordStr ?>:</label></td><td colspan="2">
    <input name="form_db_password" id="pass"  size="20" value="<?php echo $settings['db_password'];?>" />
   </td></tr>
   <tr><td class="prompt" id="db_name">
-   <label for="database"><?php etranslate ( 'Database Name' ) ?>:</label></td><td colspan="2">
+   <label for="database"><?php echo $datebaseNameStr ?>:</label></td><td colspan="2">
    <input name="form_db_database" id="database" size="20" value="<?php echo $settings['db_database'];?>" />
   </td></tr>
 
@@ -1189,7 +1204,7 @@ if ( ! $exists || ! $canWrite ) { ?>
    <input name="form_db_persistent" value="false" type="hidden" />
 <?php } ?>
   </td></tr>
-  <tr><td class="prompt"><?php etranslate ( 'Database Cache Directory' ) ?>:</td>
+  <tr><td class="prompt"><?php echo $cachedirStr ?>:</td>
    <td><?php if ( empty ( $settings['db_cachedir'] ) ) $settings['db_cachedir'] = '';  ?>
    <input  type="text" size="70" name="form_db_cachedir" id="form_db_cachedir" value="<?php 
      echo $settings['db_cachedir']; ?>"/></td></tr>  
@@ -1199,11 +1214,11 @@ if ( ! $exists || ! $canWrite ) { ?>
     $class = ( ! empty ( $_SESSION['db_success'] ) ) ?
       'recommended' : 'notrecommended';
     echo "<input name=\"action\" type=\"submit\" value=\"" . 
-      translate ( 'Test Settings' ) . "\" class=\"$class\" />\n";
+      $testSettingsStr . "\" class=\"$class\" />\n";
 
    if ( ! empty ( $_SESSION['db_noexist'] ) &&  empty ( $_SESSION['db_success'] ) ){
        echo "<input name=\"action2\" type=\"submit\" value=\"" . 
-      translate ( 'Create New' ). "\" class=\"recommended\" />\n";
+       $createNewStr. "\" class=\"recommended\" />\n";
    } 
   ?>
 </td></tr>
@@ -1216,15 +1231,15 @@ if ( ! $exists || ! $canWrite ) { ?>
 <table border="0" width="90%" align="center">
 <tr><td align="right" width="40%">
   <form action="index.php?action=switch&amp;page=1" method="post">
-    <input type="submit" value="<- <?php etranslate ( 'Back' ) ?>" />
+    <input type="submit" value="<- <?php echo $backStr ?>" />
   </form>
 </td><td align="center" width="20%">
   <form action="index.php?action=switch&amp;page=3" method="post">
-    <input type="submit" value="<?php etranslate ( 'Next' ) ?> ->" <?php echo ( ! empty ($_SESSION['db_success'] )? '' : 'disabled' ); ?> />
+    <input type="submit" value="<?php echo $nextStr ?> ->" <?php echo ( ! empty ($_SESSION['db_success'] )? '' : 'disabled' ); ?> />
   </form>
 </td><td align="left" width="40%">
   <form action="" method="post">
- <input type="button" value="<?php etranslate ( 'Logout' ) ?>" <?php echo ( ! empty ($_SESSION['validuser'] )? '' : 'disabled' ); ?> 
+ <input type="button" value="<?php echo $logoutStr ?>" <?php echo ( ! empty ($_SESSION['validuser'] )? '' : 'disabled' ); ?> 
   onclick="document.location.href='index.php?action=logout'" />
   </form>
 </td></tr>
@@ -1251,8 +1266,7 @@ if ( ! $exists || ! $canWrite ) { ?>
   }
 ?>
 <table border="1" width="90%" align="center">
-<tr><th class="pageheader" colspan="2"><?php echo translate ( 'WebCalendar Installation Wizard' ) . 
- ': ' . translate ( 'Step' ) ?> 3</th></tr>
+<tr><th class="pageheader" colspan="2"><?php echo $wizardStr ?> 3</th></tr>
 <tr><td colspan="2" width="50%">
 <?php echo translate ( 'In this section we will perform the required database changes to bring your database up to the required level' ) . ' ' .
   translate ( 'If you are using a fully supported database, this step will be performed automatically for you' ) . ' ' . 
@@ -1327,23 +1341,22 @@ if ( ! $exists || ! $canWrite ) { ?>
 <table border="0" width="90%" align="center">
 <tr><td align="right" width="40%">
   <form action="index.php?action=switch&amp;page=2" method="post">
-    <input type="submit" value="<- <?php etranslate ( 'Back' ) ?>" />
+    <input type="submit" value="<- <?php echo $backStr ?>" />
   </form>
 </td><td align="center" width="20%">
   <form action="index.php?action=switch&amp;page=4" method="post">
-    <input type="submit" value="<?php etranslate ( 'Next' ) ?> ->" <?php echo ( empty ($_SESSION['db_updated'] )? 'disabled' : '' ); ?> />
+    <input type="submit" value="<?php echo $nextStr ?> ->" <?php echo ( empty ($_SESSION['db_updated'] )? 'disabled' : '' ); ?> />
   </form>
 </td><td align="left" width="40%">
   <form action="" method="post">
-  <input type="button" value="<?php etranslate ( 'Logout' ) ?>" <?php echo ( ! empty ($_SESSION['validuser'] )? '' : 'disabled' ); ?>
+  <input type="button" value="<?php echo $logoutStr ?>" <?php echo ( ! empty ($_SESSION['validuser'] )? '' : 'disabled' ); ?>
    onclick="document.location.href='index.php?action=logout'" />
  </form>
 </td></tr>
 </table>
 <?php } else if ( $_SESSION['step'] == 4 ) { ?>
  <table border="1" width="90%" align="center">
-   <th class="pageheader" colspan="2"><?php echo translate ( 'WebCalendar Installation Wizard' ) . 
-    ': ' . translate ( 'Step' ) ?> 4</th>
+   <th class="pageheader" colspan="2"><?php echo $wizardStr ?> 4</th>
    <tr><td colspan="2" width="50%">
      <?php etranslate ( 'This is the final step in setting up your WebCalendar Installation' ) ?>.
    </td></tr>
@@ -1363,7 +1376,7 @@ if ( ! $exists || ! $canWrite ) { ?>
      <input  type="submit" value="<?php etranslate ( 'Convert Data to GMT') ?>:"  /></div>
    </form>
  <?php } else if ( $_SESSION['tz_conversion'] == 'Success' ) { ?>
-    <ul><li><?php etranslate ( 'Conversion Successful' ) ?></li></ul>
+    <ul><li><?php echo $tzSuccessStr ?></li></ul>
  <?php } ?>
  </td></tr>
   <?php } //end Timezone Conversion ?>
@@ -1444,7 +1457,8 @@ if ( ! $exists || ! $canWrite ) { ?>
     </td>
    </tr>
    <tr id="singleuser">
-    <td class="prompt">&nbsp;&nbsp;&nbsp;Single-User Login:</td>
+    <td class="prompt">&nbsp;&nbsp;&nbsp;<?php echo 
+     $singleUserStr . ' ' . $loginStr ?>:</td>
     <td>
      <input name="form_single_user_login" size="20" value="<?php echo $settings['single_user_login'];?>" /></td>
    </tr>
@@ -1486,7 +1500,7 @@ if ( ! $exists || ! $canWrite ) { ?>
    <?php }
   } 
   if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
-  <input type="button" value="<?php etranslate ( 'Logout' ) ?>"
+  <input type="button" value="<?php echo $logoutStr ?>"
    onclick="document.location.href='index.php?action=logout'" />
   <?php } ?>
  </form>
