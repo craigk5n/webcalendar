@@ -125,11 +125,11 @@ function access_get_function_description ( $function )
  *
  * @global array Stores permissions for viewing calendars
  */
-function access_load_user_permissions ()
+function access_load_user_permissions ( $useCache=true )
 {
   global $is_admin, $ADMIN_OVERRIDE_UAC, $access_other_cals;
   // Don't run this query twice
-  if ( ! empty ( $access_other_cals ) )
+  if ( ! empty ( $access_other_cals ) && $useCache == true )
     return $access_other_cals;
 
   $admin_override = ( $is_admin  &&  ! empty ( $ADMIN_OVERRIDE_UAC ) && 
@@ -141,7 +141,7 @@ function access_load_user_permissions ()
   $res = dbi_execute ( $sql );
   assert ( $res );
   while ( $row = dbi_fetch_row ( $res ) ) {
-    //TODO should we set admin_override here to apply to DEFAULT CONFIFURATION only?
+    //TODO should we set admin_override here to apply to DEFAULT CONFIGURATION only?
     //$admin_override = ( $row[1] == '__default__' && $is_admin  &&  
     //  ! empty ( $ADMIN_OVERRIDE_UAC ) && $ADMIN_OVERRIDE_UAC == 'Y' );
     $key = $row[0] . '.' . $row[1];
