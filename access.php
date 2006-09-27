@@ -121,18 +121,29 @@ if ( ! empty ( $otheruser ) ) {
     //turn off admin override so we see the users own settings
     $ADMIN_OVERRIDE_UAC = 'N';
     // Now load all the data from webcal_access_user
-    $allPermissions = access_load_user_permissions ();
+    $allPermissions = access_load_user_permissions ( false);
     //load default-default values if exist
     if ( ! empty ( $allPermissions['__default__.__default__'] ) ) {
       $op = $allPermissions['__default__.__default__'];
     }
-    //load defulat-user values if exist
-    if ( ! empty ( $allPermissions['__default__.' . $guser] ) ) {
-      $op = $allPermissions['__default__.' . $guser ];
-    }
-    //load otheruser-user values if exist
-    if ( ! empty ( $allPermissions[$otheruser . '.' . $guser] ) ) {
-      $op = $allPermissions[$otheruser . '.' . $guser];
+    if ( $is_admin ) {
+			//load user-default values if exist
+			if ( ! empty ( $allPermissions[ $guser . '.__default__' ] ) ) {
+				$op = $allPermissions[ $guser .'.__default__' ];
+			}
+			//load user-otheruser values if exist
+			if ( ! empty ( $allPermissions[ $guser . '.' . $otheruser  ] ) ) {
+				$op = $allPermissions[ $guser . '.' . $otheruser ];
+			}
+	  } else {
+			//load defualt-user values if exist
+			if ( ! empty ( $allPermissions['__default__.' . $guser] ) ) {
+				$op = $allPermissions['__default__.' . $guser ];
+			}
+			//load otheruser-user values if exist
+			if ( ! empty ( $allPermissions[$otheruser . '.' . $guser] ) ) {
+				$op = $allPermissions[$otheruser . '.' . $guser];
+			}
     }
   }
 }
