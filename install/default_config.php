@@ -313,12 +313,7 @@ function do_v11e_updates () {
  
 }
 
-//FUnction moved from index.php script
-function do_debug ( $msg ) {
-  // log to /tmp/webcal-debug.log
-  //error_log ( date ( "Y-m-d H:i:s" ) .  "> $msg\n",
-  //3, "d:\php\logs\debug.txt" );
-}
+//Functions moved from index.php script
 
 // Get value from POST form
 function getPostValue ( $name ) {
@@ -682,4 +677,14 @@ function db_populate ( $install_filename, $display_sql ) {
  show_errors ( true );
 } //end db_populate
 
+
+//Some common translations used in the install script
+$failureStr = '<b>' . translate ( 'Failure Reason' ) . ':</b>';
+$cachedirStr = translate ( 'Database Cache Directory' );
+$logoutStr = translate ( 'Logout' );
+$testSettingsStr = translate ( 'Test Settings' );
+$createNewStr = translate ( 'Create New' );
+$datebaseNameStr = translate ( 'Database Name' );
+$backStr = translate ( 'Back' );
+$nextStr = translate ( 'Next' );
 ?>
