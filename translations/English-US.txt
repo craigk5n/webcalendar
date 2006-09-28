@@ -1384,6 +1384,7 @@ Dutch: Dutch
 Estonian: Estonian
 Finnish: Finnish
 French: French
+French (UTF8): French (UTF8)
 Galician: Galician
 German: German
 Greek: Greek
