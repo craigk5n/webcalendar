@@ -1,3 +1,4 @@
+<?php /* $Id$  */ ?>
 <script type="text/javascript">
 <!-- <![CDATA[
 // The following code is used to support the small popups that
@@ -8,7 +9,7 @@
 // architecture on 02/25/2005
 //
 // 03/05/2005 Prevent popup from going off screen by setting
-// maximum width, which is cnfigurable
+// maximum width, which is configurable
 //
 // Bubblehelp infoboxes, (C) 2002 Klaus Knopper <infobox@knopper.net>
 // You can copy/modify and distribute this code under the conditions
@@ -46,28 +47,69 @@ function infoinit(){
   // obviously conqueror has a similar problem :-(
   if(ns4||kon){ nsfix() }
   if(ns4) { px=""; }
+
+  var entries = document.getElementsBySelector("a.entry");
+  entries = entries.concat(document.getElementsBySelector("a.layerentry"));
+  entries = entries.concat(document.getElementsBySelector("a.unapprovedentry"));
+  entries = entries.concat(document.getElementsBySelector("tr.task"));
+  for (var i = 0; i < entries.length; i++) {
+    entries[i].onmouseover = function(event) {
+   show(event, "eventinfo-" + this.id);
+   return true;
+  }
+    entries[i].onmouseout = function() {
+      hide("eventinfo-" + this.id);
+   return true;
+    }
+  }
+
 }
 
 function hide(name){
-  idiv.visibility=ns4?"hide":"hidden";
+  idiv.style.visibility=ns4?"hide":"hidden";
   idiv=null;
 }
 
-function gettip(name){return (document.layers&&document.layers[name])?document.layers[name]:(document.all&&document.all[name]&&document.all[name].style)?document.all[name].style:document[name]?document[name]:(document.getElementById(name)?document.getElementById(name).style:0);}
+function gettip(name) {
+  return (document.layers&&document.layers[name])?document.layers[name]:(document.all && document.all[name])?document.all[name]:document[name]?document[name]:(document.getElementById(name)?document.getElementById(name):0);
+}
 
 function show(evt, name){
   if(idiv) hide(name);
   idiv=gettip(name);
   if(idiv){
    scrollX =0; scrollY=0;
-   winW=(window.innerWidth)? window.innerWidth+window.pageXOffset-16:document.body.offsetWidth-20;
-   winH=(window.innerHeight)?window.innerHeight+window.pageYOffset  :document.body.offsetHeight;
+
    scrollX=(typeof window.pageXOffset == "number")? window.pageXOffset:(document.documentElement && document.documentElement.scrollLeft)?document.documentElement.scrollLeft:(document.body && document.body.scrollLeft)?document.body.scrollLeft:window.scrollX;
    scrollY=(typeof window.pageYOffset == "number")? window.pageYOffset:(document.documentElement && document.documentElement.scrollTop)?document.documentElement.scrollTop:(document.body && document.body.scrollTop)?document.body.scrollTop:window.scrollY;
-   popupW = document.getElementById(name).offsetWidth;
-   popupH = document.getElementById(name).offsetHeight;   
+   
+   winW=(window.innerWidth)? window.innerWidth+window.pageXOffset-16:document.body.offsetWidth-20;
+   winH=(window.innerHeight)?window.innerHeight+scrollY:document.body.offsetHeight+scrollY;
+   
+   popupW = idiv.offsetWidth;
+   popupH = idiv.offsetHeight;   
 
    showtip(evt);
+  }
+}
+
+function recursive_resize(ele, width, height) {
+  if (ele.nodeType != 1) {
+    return;
+  }
+
+  if (width != null && ele.offsetWidth > width) {
+    ele.style.width = width + px;
+  }
+
+  if (height != null && ele.offsetHeight > height) {
+    ele.style.height = height + px;
+  }
+
+  for (var i = 0; i < ele.childNodes.length; i++) {
+    recursive_resize(ele.childNodes[i],
+                     width - ele.childNodes[i].offsetLeft,
+                     height - ele.childNodes[i].offsetTop);
   }
 }
 
@@ -77,29 +119,36 @@ function showtip(e){
     if(e)   {
       x=e.pageX?e.pageX:e.clientX?e.clientX + scrollX:0; 
       y=e.pageY?e.pageY:e.clientY?e.clientY + scrollY:0;
-    }
-    else {
+    } else {
       x=0; y=0;
     }
-    // MAke sure we don't go off screen
-    if ( popupW > maxwidth ) { 
-      popupW = maxwidth;
-      idiv.width = maxwidth + px;
-    }  
-    idiv.left=(((x + popupW + xoffset)>winW)?x - popupW - xoffset:x + xoffset)+px;
-    if ((popupH + yoffset)>winH) {
-      idiv.top= yoffset + px;
+    // Make sure we don't go off screen
+    recursive_resize(idiv, maxwidth);
+    popupW = idiv.offsetWidth;
+    popupH = idiv.offsetHeight;
+    if (x + popupW + xoffset > winW - xoffset) {
+      idiv.style.left = (x - popupW - xoffset) + px;
     } else {
-      idiv.top=(((y + popupH + yoffset)>winH)?winH - popupH - yoffset:y + yoffset)+px;
+      idiv.style.left = (x + xoffset) + px;
     }
-    idiv.visibility=ns4?"show":"visible";
+    if (y + popupH + yoffset > winH - yoffset) {
+      if (winH - popupH - yoffset < 0) {
+        idiv.style.top = 0 + px;
+      } else {
+        idiv.style.top = (winH - popupH - yoffset) + px;
+      }
+    } else {
+      idiv.style.top = (y + yoffset) + px;
     }
+
+    idiv.style.visibility=ns4?"show":"visible";
+  }
 }
 
 function mousemove(e){
   showtip(e);
 }
 // Initialize after loading the page
-window.onload=infoinit;
+addLoadHandler(infoinit);
 //]]> -->
 </script>
