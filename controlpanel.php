@@ -77,7 +77,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
 <?php } else { ?>
     <?php if ( ! empty ( $login ) ) { ?>
     <argument>-user=<?php echo $login;?></argument>
-    <?php } ?>
-<?php } ?>
+    <?php } 
+ } ?>
   </application-desc>
 </jnlp>
