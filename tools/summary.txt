@@ -10,6 +10,7 @@ Dutch.txt:           15 (97.8% complete)
 English-US.txt:      Complete
 Estonian.txt:        215 (68.1% complete)
 Finnish.txt:         80 (88.1% complete)
+French-UTF8.txt:     Complete
 French.txt:          Complete
 Galician.txt:        407 (39.7% complete)
 German.txt:          9 (98.7% complete)

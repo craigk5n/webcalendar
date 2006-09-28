@@ -193,6 +193,7 @@ $languages = array (
   "Estonian" => "Estonian",
   "Finnish" =>"Finnish",
   "French" =>"French",
+  "French(UTF-8)" =>"French-UTF8",
   "Galician" => "Galician",
   "German" =>"German",
   "Greek" =>"Greek",
