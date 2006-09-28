@@ -256,6 +256,8 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 <div id="tabscontent" style="width: 98%;">
  <!-- DETAILS -->
 <div id="tabscontent_settings">
+<fieldset>
+ <legend><?php etranslate('Language')?></legend>
 <table  cellspacing="1" cellpadding="2"  border="0">
 <tr><td  class="tooltipselect" title="<?php etooltip("language-help");?>">
  <label for="pref_lang"><?php etranslate( 'Language' )?>:</label></td><td>
@@ -280,6 +282,11 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
  <?php echo translate( 'Your browser default language is' ) . ' ' . 
    get_browser_language ( true )  . '.'; ?>
 </td></tr>
+</table>
+</fieldset>
+<fieldset>
+ <legend><?php etranslate('Date and Time')?></legend>
+<table   cellspacing="1" cellpadding="2"  border="0">
 <?php if ( $can_set_timezone == true ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip( 'tz-help' )?>">
   <label for="pref_TIMEZONE"><?php etranslate( 'Timezone Selection' )?>:</label></td><td>
@@ -292,77 +299,6 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
   ?>
 </td></tr>
  <?php } //end $can_set_timezone ?>
-<tr><td class="tooltipselect" title="<?php etooltip( 'fonts-help' )?>">
- <label for="pref_font"><?php etranslate( 'Fonts')?>:</label></td><td>
- <input type="text" size="40" name="pref_FONTS" id="pref_font" value="<?php echo htmlspecialchars ( $prefarray['FONTS'] );?>" />
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip( 'preferred-view-help' );?>"><?php 
-etranslate( 'Preferred view' )?>:</td><td>
-<select name="pref_STARTVIEW">
-<?php
-// For backwards compatibility.  We used to store without the .php extension
-if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
-  $prefarray['STARTVIEW'] == 'week' || $prefarray['STARTVIEW'] == 'year' )
-  $prefarray['STARTVIEW'] .= '.php';
-$choices = array ();
-$choices_text = array ();
-if ( access_can_access_function ( ACCESS_DAY ) ) {
-  $choices[] = 'day.php';
-  $choices_text[] = translate ( 'Day' );
-}
-if ( access_can_access_function ( ACCESS_WEEK ) ) {
-  $choices[] = 'week.php';
-  $choices_text[] = translate ( 'Week' );
-}
-if ( access_can_access_function ( ACCESS_MONTH ) ) {
-  $choices[] = 'month.php';
-  $choices_text[] = translate ( 'Month' );
-}
-if ( access_can_access_function ( ACCESS_YEAR ) ) {
-  $choices[] = 'year.php';
-  $choices_text[] = translate ( 'Year' );
-}
-for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
-  echo '<option value="' . $choices[$i] . '" ';
-  if ( $prefarray['STARTVIEW'] == $choices[$i] )
-    echo $selected;
-  echo ' >' . htmlspecialchars ( $choices_text[$i] ) . "</option>\n";
-}
-// Allow user to select a view also
-for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
-  if ( $updating_public && $views[$i]['cal_is_global'] != 'Y' )
-    continue;
-  $xurl = $views[$i]['url'];
-  echo '<option value="';
-  echo $xurl . '" ';
-  $xurl_strip = str_replace ( '&amp;', '&', $xurl );
-  if ( $prefarray['STARTVIEW'] == $xurl_strip )
-    echo $selected;
-  echo '>' . htmlspecialchars ( $views[$i]['cal_name'] ) . "</option>\n";
-}
-?>
-</select>
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip( 'display-sm_month-help' );?>">
- <?php etranslate( 'Display small months' )?>:</td><td>
- <label><input type="radio" name="pref_DISPLAY_SM_MONTH" value="Y" <?php if ( $prefarray['DISPLAY_SM_MONTH'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label> 
- <label><input type="radio" name="pref_DISPLAY_SM_MONTH" value="N" <?php if ( $prefarray['DISPLAY_SM_MONTH'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip( 'display-weekends-help' );?>">
- <?php etranslate( 'Display weekends' )?>:</td><td>
- <label><input type="radio" name="pref_DISPLAY_WEEKENDS" value="Y" <?php if ( $prefarray['DISPLAY_WEEKENDS'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label> 
- <label><input type="radio" name="pref_DISPLAY_WEEKENDS" value="N" <?php if ( $prefarray['DISPLAY_WEEKENDS'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip( 'display-desc-print-day-help' );?>">
- <?php etranslate( 'Display description in printer day view' )?>:</td><td>
- <label><input type="radio" name="pref_DISPLAY_DESC_PRINT_DAY" value="Y" <?php if ( $prefarray['DISPLAY_DESC_PRINT_DAY'] == 'Y' ) echo $checked;?> /> <?php echo $Yes?></label> 
- <label><input type="radio" name="pref_DISPLAY_DESC_PRINT_DAY" value="N" <?php if ( $prefarray['DISPLAY_DESC_PRINT_DAY'] != 'Y' ) echo $checked;?> /> <?php echo $No?></label>
-</td></tr>
-
 <tr><td class="tooltipselect" title="<?php etooltip( 'date-format-help' );?>">
  <?php etranslate( 'Date format' )?>:</td><td>
  <select name="pref_DATE_FORMAT">
@@ -419,11 +355,186 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <label><input type="radio" name="pref_TIME_FORMAT" value="12" <?php if ( $prefarray['TIME_FORMAT'] == '12' ) echo $checked;?> /> <?php etranslate( '12 hour' )?></label> 
  <label><input type="radio" name="pref_TIME_FORMAT" value="24" <?php if ( $prefarray['TIME_FORMAT'] != '12' ) echo $checked;?> /> <?php etranslate( '24 hour' )?></label>
 </td></tr>
+<tr><td class="tooltip" title="<?php etooltip( 'display-week-starts-on' )?>">
+ <?php etranslate( 'Week starts on' )?>:</td><td>
+ <label><input type="radio" name="pref_WEEK_START" value="0" <?php if ( $prefarray['WEEK_START'] != "1" ) echo $checked;?> /> <?php etranslate( 'Sunday' )?></label>&nbsp;
+ <label><input type="radio" name="pref_WEEK_START" value="1" <?php if ( $prefarray['WEEK_START'] == "1" ) echo $checked;?> /> <?php etranslate( 'Monday' )?></label>
+</td></tr>
+<tr><td class="tooltip" title="<?php etooltip( 'work-hours-help' )?>">
+ <?php etranslate( 'Work hours' )?>:</td><td>
+ <label for="pref_starthr"><?php etranslate( 'From' )?></label> 
+ <select name="pref_WORK_DAY_START_HOUR" id="pref_starthr">
+<?php
+  for ( $i = 0; $i < 24; $i++ ) {
+    echo "<option value=\"$i\"" .
+      ( $i == $prefarray['WORK_DAY_START_HOUR'] ? $selected :'' ) .
+      ">" . display_time ( $i * 10000, 1 ) . "</option>\n";
+  }
+?>
+ </select> 
+ <label for="pref_endhr"><?php etranslate( 'to' )?></label>
+ <select name="pref_WORK_DAY_END_HOUR" id="pref_endhr">
+<?php
+ for ( $i = 0; $i <= 24; $i++ ) {
+  echo "<option value=\"$i\"" .
+   ( $i == $prefarray['WORK_DAY_END_HOUR'] ? $selected : '' ) .
+   ">" . display_time ( $i * 10000, 1 ) . "</option>\n";
+ }
+?>
+ </select>
+</td></tr>
+
+</table>
+</fieldset>
+<fieldset>
+ <legend><?php etranslate('Appearance')?></legend>
+<table   cellspacing="1" cellpadding="2"  border="0">
+<tr><td class="tooltip" title="<?php etooltip( 'preferred-view-help' );?>"><?php 
+etranslate( 'Preferred view' )?>:</td><td>
+<select name="pref_STARTVIEW">
+<?php
+// For backwards compatibility.  We used to store without the .php extension
+if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
+  $prefarray['STARTVIEW'] == 'week' || $prefarray['STARTVIEW'] == 'year' )
+  $prefarray['STARTVIEW'] .= '.php';
+$choices = array ();
+$choices_text = array ();
+if ( access_can_access_function ( ACCESS_DAY ) ) {
+  $choices[] = 'day.php';
+  $choices_text[] = translate ( 'Day' );
+}
+if ( access_can_access_function ( ACCESS_WEEK ) ) {
+  $choices[] = 'week.php';
+  $choices_text[] = translate ( 'Week' );
+}
+if ( access_can_access_function ( ACCESS_MONTH ) ) {
+  $choices[] = 'month.php';
+  $choices_text[] = translate ( 'Month' );
+}
+if ( access_can_access_function ( ACCESS_YEAR ) ) {
+  $choices[] = 'year.php';
+  $choices_text[] = translate ( 'Year' );
+}
+for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
+  echo '<option value="' . $choices[$i] . '" ';
+  if ( $prefarray['STARTVIEW'] == $choices[$i] )
+    echo $selected;
+  echo ' >' . htmlspecialchars ( $choices_text[$i] ) . "</option>\n";
+}
+// Allow user to select a view also
+for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
+  if ( $updating_public && $views[$i]['cal_is_global'] != 'Y' )
+    continue;
+  $xurl = $views[$i]['url'];
+  echo '<option value="';
+  echo $xurl . '" ';
+  $xurl_strip = str_replace ( '&amp;', '&', $xurl );
+  if ( $prefarray['STARTVIEW'] == $xurl_strip )
+    echo $selected;
+  echo '>' . htmlspecialchars ( $views[$i]['cal_name'] ) . "</option>\n";
+}
+?>
+</select>
+</td></tr>
+
+<tr><td class="tooltipselect" title="<?php etooltip( 'fonts-help' )?>">
+ <label for="pref_font"><?php etranslate( 'Fonts')?>:</label></td><td>
+ <input type="text" size="40" name="pref_FONTS" id="pref_font" value="<?php echo htmlspecialchars ( $prefarray['FONTS'] );?>" />
+</td></tr>
+
+<tr><td class="tooltip" title="<?php etooltip( 'display-sm_month-help' );?>">
+ <?php etranslate( 'Display small months' )?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_SM_MONTH" value="Y" <?php if ( $prefarray['DISPLAY_SM_MONTH'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label> 
+ <label><input type="radio" name="pref_DISPLAY_SM_MONTH" value="N" <?php if ( $prefarray['DISPLAY_SM_MONTH'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
+</td></tr>
+
+<tr><td class="tooltip" title="<?php etooltip( 'display-weekends-help' );?>">
+ <?php etranslate( 'Display weekends' )?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_WEEKENDS" value="Y" <?php if ( $prefarray['DISPLAY_WEEKENDS'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label> 
+ <label><input type="radio" name="pref_DISPLAY_WEEKENDS" value="N" <?php if ( $prefarray['DISPLAY_WEEKENDS'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
+</td></tr>
 <tr><td class="tooltip" title="<?php etooltip("display-minutes-help")?>">
  <?php etranslate( 'Display 00 minutes always' )?>:</td><td>
  <label><input type="radio" name="pref_DISPLAY_MINUTES" value="Y" <?php if (  $prefarray['DISPLAY_MINUTES'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
  <label><input type="radio" name="pref_DISPLAY_MINUTES" value="N" <?php if (  $prefarray['DISPLAY_MINUTES'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
 </td></tr>
+
+ <tr><td class="tooltip" title="<?php etooltip( 'display-alldays-help' );?>">
+  <?php etranslate( 'Display all days in month view' )?>:</td><td>
+  <label><input type="radio" name="pref_DISPLAY_ALL_DAYS_IN_MONTH" value="Y" <?php if ( $prefarray['DISPLAY_ALL_DAYS_IN_MONTH'] != 'N' ) echo $checked;?> />&nbsp;<?php echo $Yes?></label>&nbsp;
+  <label><input type="radio" name="pref_DISPLAY_ALL_DAYS_IN_MONTH" value="N" <?php if ( $prefarray['DISPLAY_ALL_DAYS_IN_MONTH'] == 'N' ) echo $checked;?> />&nbsp;<?php echo $No?></label>
+ </td></tr> 
+<tr><td class="tooltip" title="<?php etooltip( 'display-week-number-help' )?>">
+ <?php etranslate( 'Display week number' )?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_WEEKNUMBER" value="Y" <?php if ( $prefarray['DISPLAY_WEEKNUMBER']!= 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
+ <label><input type="radio" name="pref_DISPLAY_WEEKNUMBER" value="N" <?php if ( $prefarray['DISPLAY_WEEKNUMBER'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
+</td></tr>
+<tr><td class="tooltip" title="<?php etooltip( 'display-tasks-help' )?>">
+ <?php etranslate( 'Display small task list' )?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_TASKS" value="Y" <?php if ( $prefarray['DISPLAY_TASKS'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
+ <label><input type="radio" name="pref_DISPLAY_TASKS" value="N" <?php if ( $prefarray['DISPLAY_TASKS'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
+</td></tr>
+<tr><td class="tooltip" title="<?php etooltip( 'display-tasks-in-grid-help' )?>">
+ <?php etranslate( 'Display tasks in Calendars' )?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_TASKS_IN_GRID" value="Y" <?php if (  $prefarray['DISPLAY_TASKS_IN_GRID']  != 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
+ <label><input type="radio" name="pref_DISPLAY_TASKS_IN_GRID" value="N" <?php if (  $prefarray['DISPLAY_TASKS_IN_GRID'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
+</td></tr>
+
+<tr><td class="tooltip" title="<?php etooltip( 'lunar-help' )?>">
+ <?php etranslate( 'Display Lunar Phases in month view' )?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_MOON_PHASES" value="Y" <?php if (  $prefarray['DISPLAY_MOON_PHASES'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
+ <label><input type="radio" name="pref_DISPLAY_MOON_PHASES" value="N" <?php if (  $prefarray['DISPLAY_MOON_PHASES'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
+</td></tr>
+
+</table>
+</fieldset>
+<fieldset>
+ <legend><?php etranslate('Events')?></legend>
+<table   cellspacing="1" cellpadding="2"  border="0">
+
+<tr><td class="tooltip" title="<?php etooltip( 'display-unapproved-help' );?>">
+ <?php etranslate( 'Display unapproved' )?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_UNAPPROVED" value="Y" <?php if ( $prefarray['DISPLAY_UNAPPROVED'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
+ <label><input type="radio" name="pref_DISPLAY_UNAPPROVED" value="N" <?php if ( $prefarray['DISPLAY_UNAPPROVED'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
+</td></tr>
+
+<tr><td class="tooltip" title="<?php etooltip( 'timed-evt-len-help' );?>">
+ <?php etranslate( 'Specify timed event length by' )?>:</td><td>
+ <label><input type="radio" name="pref_TIMED_EVT_LEN" value="D" <?php if ( $prefarray['TIMED_EVT_LEN'] != "E" ) echo $checked;?> /> <?php etranslate( 'Duration' )?></label> 
+ <label><input type="radio" name="pref_TIMED_EVT_LEN" value="E" <?php if ( $prefarray['TIMED_EVT_LEN'] == "E" ) echo $checked;?> /> <?php etranslate( 'End Time' )?></label>
+</td></tr>
+
+<?php if ( ! empty ( $categories ) ) { ?>
+<tr><td>
+ <label for="pref_cat"><?php etranslate( 'Default Category' )?>:</label></td><td>
+ <select name="pref_CATEGORY_VIEW" id="pref_cat">
+<?php
+ echo '<option value=""';
+ if ( empty ( $prefarray['CATEGORY_VIEW'] ) ) echo $selected;
+ echo '>'.translate( 'All' )."</option>\n";
+ if ( ! empty ( $categories ) ) {
+  foreach( $categories as $K => $V ){
+   echo "<option value=\"$K\"";
+   if ( ! empty ( $prefarray['CATEGORY_VIEW'] ) &&
+    $prefarray['CATEGORY_VIEW'] == $K ) echo $selected;
+   echo ">$V</option>\n";
+  }
+ }
+?>
+ </select>
+</td></tr>
+<?php } //end if (! empty ($categories ) ) ?>
+<tr><td class="tooltip" title="<?php etooltip( 'crossday-help' )?>">
+ <?php etranslate( 'Disable Cross-Day Events' )?>:</td><td>
+ <label><input type="radio" name="pref_DISABLE_CROSSDAY_EVENTS" value="Y" <?php if (  $prefarray['DISABLE_CROSSDAY_EVENTS'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
+ <label><input type="radio" name="pref_DISABLE_CROSSDAY_EVENTS" value="N" <?php if (  $prefarray['DISABLE_CROSSDAY_EVENTS'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
+</td></tr>
+<tr><td class="tooltip" title="<?php etooltip( 'display-desc-print-day-help' );?>">
+ <?php etranslate( 'Display description in printer day view' )?>:</td><td>
+ <label><input type="radio" name="pref_DISPLAY_DESC_PRINT_DAY" value="Y" <?php if ( $prefarray['DISPLAY_DESC_PRINT_DAY'] == 'Y' ) echo $checked;?> /> <?php echo $Yes?></label> 
+ <label><input type="radio" name="pref_DISPLAY_DESC_PRINT_DAY" value="N" <?php if ( $prefarray['DISPLAY_DESC_PRINT_DAY'] != 'Y' ) echo $checked;?> /> <?php echo $No?></label>
+</td></tr>
+
 <tr><td class="tooltip" title="<?php etooltip( 'entry-interval-help' )?>">
  <?php etranslate( 'Entry interval' )?>:</td><td>
  <select name="pref_ENTRY_SLOTS">
@@ -458,6 +569,11 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   echo $selected?>>10 <?php etranslate( 'minutes' )?></option>
  </select>
 </td></tr>
+</table>
+</fieldset>
+<fieldset>
+ <legend><?php etranslate('Miscellaneous')?></legend>
+<table   cellspacing="1" cellpadding="2"  border="0">
 
 <tr><td class="tooltip" title="<?php etooltip( 'auto-refresh-help' );?>">
  <?php etranslate( 'Auto-refresh calendars' )?>:</td><td>
@@ -469,99 +585,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'Auto-refresh time' )?>:</td><td>
  <input type="text" name="pref_AUTO_REFRESH_TIME" size="4" value="<?php echo ( empty ( $prefarray['AUTO_REFRESH_TIME'] ) ? 0 : $prefarray['AUTO_REFRESH_TIME'] ); ?>" /> <?php etranslate( 'minutes' )?>
 </td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip( 'display-unapproved-help' );?>">
- <?php etranslate( 'Display unapproved' )?>:</td><td>
- <label><input type="radio" name="pref_DISPLAY_UNAPPROVED" value="Y" <?php if ( $prefarray['DISPLAY_UNAPPROVED'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
- <label><input type="radio" name="pref_DISPLAY_UNAPPROVED" value="N" <?php if ( $prefarray['DISPLAY_UNAPPROVED'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
-</td></tr>
- <tr><td class="tooltip" title="<?php etooltip( 'display-alldays-help' );?>">
-  <?php etranslate( 'Display all days in month view' )?>:</td><td>
-  <label><input type="radio" name="pref_DISPLAY_ALL_DAYS_IN_MONTH" value="Y" <?php if ( $prefarray['DISPLAY_ALL_DAYS_IN_MONTH'] != 'N' ) echo $checked;?> />&nbsp;<?php echo $Yes?></label>&nbsp;
-  <label><input type="radio" name="pref_DISPLAY_ALL_DAYS_IN_MONTH" value="N" <?php if ( $prefarray['DISPLAY_ALL_DAYS_IN_MONTH'] == 'N' ) echo $checked;?> />&nbsp;<?php echo $No?></label>
- </td></tr> 
-<tr><td class="tooltip" title="<?php etooltip( 'display-week-number-help' )?>">
- <?php etranslate( 'Display week number' )?>:</td><td>
- <label><input type="radio" name="pref_DISPLAY_WEEKNUMBER" value="Y" <?php if ( $prefarray['DISPLAY_WEEKNUMBER']!= 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
- <label><input type="radio" name="pref_DISPLAY_WEEKNUMBER" value="N" <?php if ( $prefarray['DISPLAY_WEEKNUMBER'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip( 'display-week-starts-on' )?>">
- <?php etranslate( 'Week starts on' )?>:</td><td>
- <label><input type="radio" name="pref_WEEK_START" value="0" <?php if ( $prefarray['WEEK_START'] != "1" ) echo $checked;?> /> <?php etranslate( 'Sunday' )?></label>&nbsp;
- <label><input type="radio" name="pref_WEEK_START" value="1" <?php if ( $prefarray['WEEK_START'] == "1" ) echo $checked;?> /> <?php etranslate( 'Monday' )?></label>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip( 'work-hours-help' )?>">
- <?php etranslate( 'Work hours' )?>:</td><td>
- <label for="pref_starthr"><?php etranslate( 'From' )?></label> 
- <select name="pref_WORK_DAY_START_HOUR" id="pref_starthr">
-<?php
-  for ( $i = 0; $i < 24; $i++ ) {
-    echo "<option value=\"$i\"" .
-      ( $i == $prefarray['WORK_DAY_START_HOUR'] ? $selected :'' ) .
-      ">" . display_time ( $i * 10000, 1 ) . "</option>\n";
-  }
-?>
- </select> 
- <label for="pref_endhr"><?php etranslate( 'to' )?></label>
- <select name="pref_WORK_DAY_END_HOUR" id="pref_endhr">
-<?php
- for ( $i = 0; $i <= 24; $i++ ) {
-  echo "<option value=\"$i\"" .
-   ( $i == $prefarray['WORK_DAY_END_HOUR'] ? $selected : '' ) .
-   ">" . display_time ( $i * 10000, 1 ) . "</option>\n";
- }
-?>
- </select>
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip( 'timed-evt-len-help' );?>">
- <?php etranslate( 'Specify timed event length by' )?>:</td><td>
- <label><input type="radio" name="pref_TIMED_EVT_LEN" value="D" <?php if ( $prefarray['TIMED_EVT_LEN'] != "E" ) echo $checked;?> /> <?php etranslate( 'Duration' )?></label> 
- <label><input type="radio" name="pref_TIMED_EVT_LEN" value="E" <?php if ( $prefarray['TIMED_EVT_LEN'] == "E" ) echo $checked;?> /> <?php etranslate( 'End Time' )?></label>
-</td></tr>
-
-<?php if ( ! empty ( $categories ) ) { ?>
-<tr><td>
- <label for="pref_cat"><?php etranslate( 'Default Category' )?>:</label></td><td>
- <select name="pref_CATEGORY_VIEW" id="pref_cat">
-<?php
- echo '<option value=""';
- if ( empty ( $prefarray['CATEGORY_VIEW'] ) ) echo $selected;
- echo '>'.translate( 'All' )."</option>\n";
- 
- if ( ! empty ( $categories ) ) {
-  foreach( $categories as $K => $V ){
-   echo "<option value=\"$K\"";
-   if ( ! empty ( $prefarray['CATEGORY_VIEW'] ) &&
-    $prefarray['CATEGORY_VIEW'] == $K ) echo $selected;
-   echo ">$V</option>\n";
-  }
- }
-?>
- </select>
-</td></tr>
-<?php } //end if (! empty ($categories ) ) ?>
-<tr><td class="tooltip" title="<?php etooltip( 'display-tasks-help' )?>">
- <?php etranslate( 'Display small task list' )?>:</td><td>
- <label><input type="radio" name="pref_DISPLAY_TASKS" value="Y" <?php if ( $prefarray['DISPLAY_TASKS'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
- <label><input type="radio" name="pref_DISPLAY_TASKS" value="N" <?php if ( $prefarray['DISPLAY_TASKS'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip( 'display-tasks-in-grid-help' )?>">
- <?php etranslate( 'Display tasks in Calendars' )?>:</td><td>
- <label><input type="radio" name="pref_DISPLAY_TASKS_IN_GRID" value="Y" <?php if (  $prefarray['DISPLAY_TASKS_IN_GRID']  != 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
- <label><input type="radio" name="pref_DISPLAY_TASKS_IN_GRID" value="N" <?php if (  $prefarray['DISPLAY_TASKS_IN_GRID'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip( 'lunar-help' )?>">
- <?php etranslate( 'Display Lunar Phases in month view' )?>:</td><td>
- <label><input type="radio" name="pref_DISPLAY_MOON_PHASES" value="Y" <?php if (  $prefarray['DISPLAY_MOON_PHASES'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
- <label><input type="radio" name="pref_DISPLAY_MOON_PHASES" value="N" <?php if (  $prefarray['DISPLAY_MOON_PHASES'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip( 'crossday-help' )?>">
- <?php etranslate( 'Disable Cross-Day Events' )?>:</td><td>
- <label><input type="radio" name="pref_DISABLE_CROSSDAY_EVENTS" value="Y" <?php if (  $prefarray['DISABLE_CROSSDAY_EVENTS'] != 'N' ) echo $checked;?> /> <?php echo $Yes?></label>&nbsp;
- <label><input type="radio" name="pref_DISABLE_CROSSDAY_EVENTS" value="N" <?php if (  $prefarray['DISABLE_CROSSDAY_EVENTS'] == 'N' ) echo $checked;?> /> <?php echo $No?></label>
-</td></tr>
 </table>
+</fieldset>
 </div>
 <!-- END SETTINGS -->
 

@@ -14,6 +14,7 @@ Version 1.1.2 (?? ??? 2006)
     = User Interface
       + Added 'System Log' in menu.  Added logging for adding/editing/deleting
         users and invalid logins.
+      + Reorganized and grouped System Settings and user preferences
 
   - The following translations were updated:
     French-UTF8(new), German, Russian

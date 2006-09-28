@@ -115,6 +115,9 @@ h2 {
 h3 {
   font-size: 18px;
 }
+fieldset {
+  width: 85%;
+}
 label {
   font-size: 11px;
   font-weight: bold;
