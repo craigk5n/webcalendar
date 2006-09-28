@@ -4,7 +4,9 @@
 # Translated by:
 #	Andre E. Bar'yudin <baryudin@pob.huji.ac.il>
 # Last update: Wed Oct 25 14:34:05 IST 2000
-# Translation last updated on 03-10-2004
+# Translation is continued by:
+#	Mike M Shirshov <mike@nino.ru>
+# Translation last updated on 07-27-2006
 
 
 ###############################################
@@ -15,620 +17,221 @@ charset: KOI8-R
 
 
 ###############################################
-# Page: admin.php
-#
-#
-# << MISSING >>
-# System Settings:
-You are not authorized: У вас нет права доступа
-#
-# << MISSING >>
-# Note:
-#
-# << MISSING >>
-# Your user preferences:
-#
-# << MISSING >>
-# may be affecting the appearance of this page.:
-#
-# << MISSING >>
-# Click here:
-#
-# << MISSING >>
-# to not use your user preferences when viewing this page:
-#
-# << MISSING >>
-# are being ignored while viewing this page.:
-#
-# << MISSING >>
-# to load your user preferences when viewing this page:
-Save: Сохранить
-Help: Подсказка
-Settings: Установки
-#
-# << MISSING >>
-# app-name-help:
-# English text: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
-#
-#
-# << MISSING >>
-# Application Name:
-#
-# << MISSING >>
-# server-url-help:
-# English text: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
-#
-#
-# << MISSING >>
-# Server URL:
-language-help: Определяет какой язык должен быть использован.
-Language: Язык
-#
-# << MISSING >>
-# Your browser default language is:
-#
-# << MISSING >>
-# fonts-help:
-# English text: Specifies a list of system fonts to use (such as "Arial, Helvetica")
-#
-#
-# << MISSING >>
-# Fonts:
-#
-# << MISSING >>
-# custom-script-help:
-# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
-#
-#
-# << MISSING >>
-# Custom script/stylesheet:
-Yes: Да
-No: Нет
-#
-# << MISSING >>
-# Edit:
-#
-# << MISSING >>
-# custom-header-help:
-# English text: Allows a custom HTML snippet to be included in the top of every page.
-#
-#
-# << MISSING >>
-# Custom header:
-#
-# << MISSING >>
-# custom-trailer-help:
-# English text: Allows a custom HTML snippet to be included at the end of every page.
-#
-#
-# << MISSING >>
-# Custom trailer:
-preferred-view-help: Определяет предпочтимый вид (день, неделя, месяц или год).
-Preferred view: Предпочимый вид
-Day: День
-Week: Неделя
-Month: Месяц
-Year: Год
-#
-# << MISSING >>
-# display-weekends-help:
-# English text: Include weekends when viewing a week.
-#
-#
-# << MISSING >>
-# Display weekends in week view:
-#
-# << MISSING >>
-# yearly-shows-events-help:
-# English text: On the yearly view, display days that contain events in a bold font.
-#
-#
-# << MISSING >>
-# Display days with events in bold in year view:
-#
-# << MISSING >>
-# display-desc-print-day-help:
-# English text: Include event descriptions in printer-friendly version of day view.
-#
-#
-# << MISSING >>
-# Display description in printer day view:
-#
-# << MISSING >>
-# date-format-help:
-# English text: Specifies the preferred date format.
-#
-#
-# << MISSING >>
-# Date format:
-December: Декабрь
-time-format-help: Определяет формат времени:<br /> <i>12-часовой:</i> или <i>24-часовой</i>.
-Time format: Формат времени
-12 hour: 12 часов
-24 hour: 24 часа
-#
-# << MISSING >>
-# time-interval-help:
-# English text: Specifies how long the time blocks in the week view and day view will be.
-#
-#
-# << MISSING >>
-# Time interval:
-#
-# << MISSING >>
-# hour:
-minutes: минуты
-#
-# << MISSING >>
-# auto-refresh-help:
-# English text: When enabled, the day view, week view, month view, and list aunapproved pages will all automatically refresh themselves periodically.
-#
-#
-# << MISSING >>
-# Auto-refresh calendars:
-#
-# << MISSING >>
-# auto-refresh-time-help:
-# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
-#
-#
-# << MISSING >>
-# Auto-refresh time:
-#
-# << MISSING >>
-# require-approvals-help:
-# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
-#
-#
-# << MISSING >>
-# Require event approvals:
-display-unapproved-help: Задает, видны ли неподтвержденные события в вашем календаре.<b> Если выбрано "Да", то они будут отображены в календаре, в цвете отличном от подтвержденных событий.<br />  При выборе "Нет", необходимо сперва подтвердить событие, прежде чем оно будет видно в календаре.
-Display unapproved: Показывать неподтвержденные
-display-week-number-help: Задает показывать ли нумерацию недель (1-52) в просмотре месяца и недели.
-Display week number: Показывать день недели
-display-week-starts-on: Задает первый день недели - воскресенье или понедельник (во многих странах, включая Америку и Израиль, первым днем недели считается воскресенье).  Если был выбран понедельник, то нумерация недель будет производиться по стандарту ISO.
-Week starts on: Неделя начинается в
-Sunday: Воскресенье
-Monday: Понедельник
-work-hours-help: Определяет временной промежуток используемый календарем.
-Work hours: Рабочие часы
-From: От
-to: до
-#
-# << MISSING >>
-# disable-priority-field-help:
-# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Priority field:
-#
-# << MISSING >>
-# disable-access-field-help:
-# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Access field:
-#
-# << MISSING >>
-# disable-participants-field-help:
-# English text: Selecting "Yes" will remove the "Particpants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
-#
-#
-# << MISSING >>
-# Disable Participants field:
-#
-# << MISSING >>
-# disable-repeating-field-help:
-# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
-#
-#
-# << MISSING >>
-# Disable Repeating field:
-#
-# << MISSING >>
-# popup-includes-siteextras-help:
-# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
-#
-#
-# << MISSING >>
-# Display Site Extras in popup:
-#
-# << MISSING >>
-# allow-html-description-help:
-# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
-#
-#
-# << MISSING >>
-# Allow HTML in Description:
-#
-# << MISSING >>
-# allow-view-other-help:
-# English text: Specifies whether one user may view another user's calendar.
-#
-#
-# << MISSING >>
-# Allow viewing other user's calendars:
-#
-# << MISSING >>
-# allow-public-access-help:
-# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
-#
-#
-# << MISSING >>
-# Allow public access:
-#
-# << MISSING >>
-# public-access-view-others-help:
-# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
-#
-#
-# << MISSING >>
-# Public access can view other users:
-#
-# << MISSING >>
-# public-access-can-add-help:
-# English text: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
-#
-#
-# << MISSING >>
-# Public access can add events:
-#
-# << MISSING >>
-# public-access-add-requires-approval-help:
-# English text: Specifies whether events added via the public access account require approval before being displayed.
-#
-#
-# << MISSING >>
-# Public access new events require approval:
-#
-# << MISSING >>
-# public-access-sees-participants-help:
-# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
-#
-#
-# << MISSING >>
-# Public access can view participants:
-#
-# << MISSING >>
-# allow-view-add-help:
-# English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
-#
-#
-# << MISSING >>
-# Include add event link in views:
-#
-# << MISSING >>
-# allow-external-users-help:
-# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
-#
-#
-# << MISSING >>
-# Allow external users:
-#
-# << MISSING >>
-# external-can-receive-notification-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
-#
-#
-# << MISSING >>
-# External users can receive email notifications:
-#
-# << MISSING >>
-# external-can-receive-reminder-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
-#
-#
-# << MISSING >>
-# External users can receive email reminders:
-#
-# << MISSING >>
-# remember-last-login-help:
-# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
-#
-#
-# << MISSING >>
-# Remember last login:
-#
-# << MISSING >>
-# conflict-check-help:
-# English text: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
-#
-#
-# << MISSING >>
-# Check for event conflicts:
-#
-# << MISSING >>
-# conflict-months-help:
-# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
-#
-#
-# << MISSING >>
-# Conflict checking months:
-#
-# << MISSING >>
-# conflict-check-override-help:
-# English text: Allows users to override event conflicts and schedule two or more events for the same time.
-#
-#
-# << MISSING >>
-# Allow users to override conflicts:
-#
-# << MISSING >>
-# limit-appts-help:
-# English text: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
-#
-#
-# << MISSING >>
-# Limit number of timed events per day:
-#
-# << MISSING >>
-# limit-appts-number-help:
-# English text: Specifies the maximum number of timed events a user can have in a single day.
-#
-#
-# << MISSING >>
-# Maximum timed events per day:
-#
-# << MISSING >>
-# Plugins:
-#
-# << MISSING >>
-# plugins-enabled-help:
-# English text: Enable plugin applications.
-#
-#
-# << MISSING >>
-# Enable Plugins:
-#
-# << MISSING >>
-# plugins-sort-key-help:
-# English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
-#
-#
-# << MISSING >>
-# Plugin:
-#
-# << MISSING >>
-# Groups:
-#
-# << MISSING >>
-# groups-enabled-help:
-# English text: Enables group support, allowing users to select users by groups.
-#
-#
-# << MISSING >>
-# Groups enabled:
-#
-# << MISSING >>
-# user-sees-his-group-help:
-# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
-#
-#
-# << MISSING >>
-# User sees only his groups:
-#
-# << MISSING >>
-# Categories:
-#
-# << MISSING >>
-# categories-enabled-help:
-# English text: Enables support for event categories.
-#
-#
-# << MISSING >>
-# Categories enabled:
-#
-# << MISSING >>
-# Nonuser:
-# English text: Nonuser Calendars
-#
-#
-# << MISSING >>
-# nonuser-enabled-help:
-# English text: If enabled, admins will have the option to add nonuser calendars
-#
-#
-# << MISSING >>
-# Nonuser enabled:
-# English text: Nonuser Calendars Enabled
-#
-#
-# << MISSING >>
-# nonuser-list-help:
-# English text: Where to display the nonuser calendars in the participant list
-#
-#
-# << MISSING >>
-# Nonuser list:
-# English text: Display in participants list at
-#
-#
-# << MISSING >>
-# Top:
-#
-# << MISSING >>
-# Bottom:
-#
-# << MISSING >>
-# Reports:
-#
-# << MISSING >>
-# reports-enabled-help:
-# English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
-#
-#
-# << MISSING >>
-# Reports enabled:
-#
-# << MISSING >>
-# Subscribe/Publish:
-#
-# << MISSING >>
-# subscriptions-enabled-help:
-# English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# Allow remote subscriptions:
-#
-# << MISSING >>
-# Email:
-#
-# << MISSING >>
-# email-enabled-help:
-# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
-#
-#
-# << MISSING >>
-# Email enabled:
-#
-# << MISSING >>
-# email-default-sender:
-# English text: Specifies the email address to specify as the sender when sending out reminders.
-#
-#
-# << MISSING >>
-# Default sender address:
-#
-# << MISSING >>
-# Default user settings:
-#
-# << MISSING >>
-# email-event-reminders-help:
-# English text: Specifies whether or not to send event reminders.
-#
-#
-# << MISSING >>
-# Event reminders:
-#
-# << MISSING >>
-# email-event-added:
-# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
-#
-#
-# << MISSING >>
-# Events added to my calendar:
-#
-# << MISSING >>
-# email-event-updated:
-# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
-#
-#
-# << MISSING >>
-# Events updated on my calendar:
-#
-# << MISSING >>
-# email-event-deleted:
-# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
-#
-#
-# << MISSING >>
-# Events removed from my calendar:
-#
-# << MISSING >>
-# email-event-rejected:
-# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
-#
-#
-# << MISSING >>
-# Event rejected by participant:
-colors-help: Все цвета дожны быть представлены в шестнадцатиричном формате "#RRGGBB", где RR - красная составляющая, GG - зеленая, BB - голубая.
-Colors: Цвета
-#
-# << MISSING >>
-# Allow user to customize colors:
-Document background: Фон документа
-Select: Выбрать
-Document title: Заголовок документа
-#
-# << MISSING >>
-# Document text:
-#
-# << MISSING >>
-# Table grid color:
-#
-# << MISSING >>
-# Table header background:
-#
-# << MISSING >>
-# Table header text:
-Table cell background: Фон таблицы
-Table cell background for current day: Фон клетки текущего дня
-#
-# << MISSING >>
-# Table cell background for weekends:
-#
-# << MISSING >>
-# Event popup background:
-#
-# << MISSING >>
-# Event popup text:
-
-
-###############################################
 # Page: activity_log.php
 #
-#
-# << MISSING >>
-# Activity Log:
-#
-# << MISSING >>
-# User:
-#
-# << MISSING >>
-# Calendar:
+Activity Log: Журнал событий
+Admin: Администратор
+User: Пользователь
+Calendar: Календарь
 Date: Дата
 Time: Время
-#
-# << MISSING >>
-# Event:
-#
-# << MISSING >>
-# Action:
-#
-# << MISSING >>
-# Event created:
-#
-# << MISSING >>
-# Event approved:
-#
-# << MISSING >>
-# Event rejected:
-#
-# << MISSING >>
-# Event updated:
-#
-# << MISSING >>
-# Event deleted:
-#
-# << MISSING >>
-# Notification sent:
-#
-# << MISSING >>
-# Reminder sent:
-#
-# << MISSING >>
-# Database error:
-#
-# << MISSING >>
-# Previous:
-#
-# << MISSING >>
-# Next:
+Event: Событие
+Action: Действие
+Event created: Событие создано
+Event approved: Событие одобрено
+Event rejected: Событие отвергнуто
+Event updated: Событие обновлено
+Event deleted: Событие удалено
+Notification sent: Уведомление послано
+Reminder sent: Напоминание послано
+Database error: Ошибка БД
+Previous: Предыдущее
+Events: События
+Next: Следующее
 
 
 ###############################################
 # Page: add_entry.php
 #
 Invalid entry id: Неправильный идентификатор записи
+This is a private event and may not be added to your calendar.: Это личное событие и не может быт добавлено в Ваш календарь
+Error adding event: Ошибка при добавлении события
+
+
+###############################################
+# Page: admin.php
 #
-# << MISSING >>
-# This is a private event and may not be added to your calendar.:
-#
-# << MISSING >>
-# Error adding event:
+System Settings: Системные установки
+Help: Справка
+You are not authorized: Вы не прошли авторизацию
+Note: Заметка
+Your user preferences: Ваши предпочтения
+may be affecting the appearance of this page.: могут быть не эффективными для данной страницы
+Click here: Нажмите здесь
+to not use your user preferences when viewing this page: , чтобы не применять Ваши настройки для просмотра этой страницы
+are being ignored while viewing this page.: будет игнорировано при просмотре этой страницы.
+to load your user preferences when viewing this page: , чтобы не применять Ваши настройки для просмотра этой страницы
+Save: Сохранить
+Settings: Установки
+Public Access: Общий Календарь
+Groups: Группы
+NonUser Calendars: Гость
+Other: Другое
+Email: Почта
+colors-help: Все цвета должны быть представлены в шестнадцатиричном формате "#RRGGBB", где RR - красная составляющая, GG - зеленая, BB - голубая.
+Colors: Цвета
+app-name-help: Определяет название приложения, которое будет влиять на заголовок браузера во всех страницах, а так же страницы регистрации. Определенное Вами значение, будет просматриваться в файле перевода и предоставлять различные заголовки для разных языков.
+Application Name: Название приложения
+server-url-help: Определяет основной путь для приложения. Ссылка будет включена в почтовые сообщения
+Server URL: Адрес сервера
+language-help: Определяет какой язык должен быть использован.
+Language: Язык
+Your browser default language is: Язык вашего браузера по умолчанию
+fonts-help: Определяет список используемых системой шрифтов
+Fonts: Шрифты
+custom-script-help: Позволяет настроить скрипты Java и стили, которые будут использоваться в заголовках HTML на каждой странице.
+Custom script/stylesheet: Настраиваемый скрипт/стиль
+Yes: Да
+No: Нет
+Edit: Изменить
+custom-header-help: Позволяет настроить HTML врезку для включения его вверху каждой страницы.
+Custom header: Настраиваемый заголовок
+custom-trailer-help: Позволяет настроить HTML врезку для включения его вверху каждой страницы. 
+Custom trailer: Настраиваемый трассировщик
+preferred-view-help: Определяет предпочтительный вид (день, неделя, месяц или год).
+Preferred view: Предпочитаемый вид
+Day: День
+Week: Неделя
+Month: Месяц
+Year: Год
+display-weekends-help: Отображение выходных дней в обзоре недели.
+Display weekends in week view: Показывать выходные в обзоре недели
+yearly-shows-events-help: В обзоре года, дни с событиями отображаются жирным шрифтом.
+Display days with events in bold in month and year views: В обзоре месяца и года отображает дни с событиями жирным шрифтом
+display-desc-print-day-help: Включает отображение описания событий при предпросмотре печатной версии в обзоре дня.
+Display description in printer day view: Описания в печатной версии обзора дня
+date-format-help: Предпочитаемый формат даты
+Date format: Формат даты
+December: Декабрь
+time-format-help: Определяет формат времени:<br /> <i>12-часовой</i> или <i>24-часовой</i>.
+Time format: Формат времени
+12 hour: 12 часов
+24 hour: 24 часа
+time-interval-help: Определяет продолжительность отрезка времени при обзоре недели и дня
+Time interval: Интервал времени
+hour: час
+minutes: минут
+auto-refresh-help: Если выбрано, обзоры недели, дня и месяца, а так же список неодобренных событий будет автоматически обновляться с указанным интервалом.
+Auto-refresh calendars: Автоматическое обновление календаря
+auto-refresh-time-help: Если автообновление включено, определяет время между каждым обновлением.
+Auto-refresh time: Интервал времени обновления
+require-approvals-help: Если выбрано, пользователь должен одобрить событие перед тем как оно будет показано (при включенном "Показывать неподтвержденные"). Заметьте, что установка "Нет" не приведет к выключению этого для Общих календарей (при разрешенном Общем календаре).
+Require event approvals: Требуется одобрение событий
+display-unapproved-help: Определяет, будут ли видны неподтвержденные события в вашем календаре.<b> Если выбрано "Да", то они будут отображены в календаре, в цвете отличном от подтвержденных событий.<br />  При выборе "Нет", необходимо сначала подтвердить событие, перед тем, как оно будет отображено.
+Display unapproved: Показывать неподтвержденные
+display-week-number-help: Определяет, показывать ли нумерацию недель (1-52) при обзоре месяца и недели.
+Display week number: Показывать день недели
+display-week-starts-on: Задает первый день недели - воскресенье или понедельник (во многих странах, включая Америку и Израиль, первым днем недели считается воскресенье).  Если был выбран понедельник, то нумерация недель будет производиться по стандарту ISO.
+Week starts on: Неделя начинается с
+Sunday: Воскресенье
+Monday: Понедельник
+work-hours-help: Определяет интервал времени для рабочего дня используемый календарем.
+Work hours: Рабочие часы
+From: с
+to: до
+disable-priority-field-help: Выбрав "Да" - будут удалены поля "Важность" со страницы событий, обеспечивая простой интерфейс для новичков.
+Disable Priority field: Отключить поле "Важность"
+disable-access-field-help: Выбрав "Да" - будут удалены поля "Доступ" со страницы событий, обеспечивая простой интерфейс для новичков. 
+Disable Access field: Отключить поле "Доступ"
+disable-participants-field-help: Выбрав "Да" - будут удалены поля "Участники" со страницы событий, препятствуя добавлению других пользователей к событиям. Включив эту опцию, воэможно вы пожелаете так же запретить "Разрешить просмотр другим пользователям календарей".
+Disable Participants field: Отключить поле "Участники"
+disable-repeating-field-help: Выбрав "Да" - будут удалены поля "Повторение" при создании событий. Это предоставит простой интерфейс для новичков.
+Disable Repeating field: Отключить поле "Повтор"
+popup-includes-siteextras-help: Если установлено, позволит настроить служебные поля, которые будут отображать подсказки для событий
+Display Site Extras in popup: Отображать дополнительные подсказки
+allow-html-description-help: Если разрешено, пользователи могут вводить HTML коды в поле описания события. Если запрещено, теги HTML будут пропускаться. Внимание: разрешив эту опцию, Вы позволите пользователям делать ссылки на другие вебсайты.
+Allow HTML in Description: Разрешить HTML в описаниях
+allow-view-other-help: Определяет возможность одного пользователя просматривать календарь других
+Allow viewing other user's calendars: Просмотр календарей других пользователелей 
+allow-view-add-help: Знак "+" (плюс) будет включен в просмотр, позволяя пользователям быстро добавлять события в календари.
+Include add event link in views: Вставить ссылку "Добавить событие"
+remember-last-login-help: Когда выбрано, имя пользователя будет вписано на его странице регистрации (но не пароль), а так же будут загружены его настройки (включая предпочитаемые цвета и выбранный язык).
+Remember last login: Запомнить последнюю регистрацию
+conflict-check-help: Проверять события на конфликт (два события, запланированные на одно времея некой персоналии). Если установить "Да" всеже будет  возможно запланировать два события, но только после подтверждения предупреждения. Если установить "Нет" проверка на конфликт событий производиться не будет. Вы возможно захотите установить "Да", для проверки на конфликтность событий.
+Check for event conflicts: Проверять события на конфликт
+conflict-months-help: Если проверка на конфликтующие события установлена ("Проверять события на конфликт" выбрано "Да"), определяет как много месяцев в будущем мы будем проверять на эти противоречия. Если Вы нашли события требующие большего времени для обработки, увеличьте это число.
+Conflict checking months: Количество месяцев контроля за конфликтами
+conflict-check-override-help: Позволяет пользователям аннулировать конфликты и запланировать два и более событий на одно время.
+Allow users to override conflicts: Разрешить пользователям аннулировать конфликт
+limit-appts-help: Позволяет системному администратору установить ограничение на количество событий, которые может иметь пользователь за любой один день.
+Limit number of timed events per day: Ограничить количество событий в день
+limit-appts-number-help: Определяет максимальное количество охарактеризованных по времени событий, которые может иметь пользователь в день. 
+Maximum timed events per day: Максимальное количество событий в день
+timed-evt-len-help: Определяет продолжительность времени для события
+Specify timed event length by: Специфицировать события по
+Duration: Продолжительность
+End Time: Времени окончания
+Plugins: Расширения
+plugins-enabled-help: Разрешить расширения для приложения.
+Enable Plugins: Разрешить расширения
+plugins-sort-key-help: Определяет сортировку расширений по ключу. Это позволяет расширениям появляться в определенном порядке.
+Plugin: Расширение
+allow-public-access-help: Если установлено, доступны Общие Календари и только для чтения и без требования регистрации.
+Allow public access: Разрешить Общий Календарь
+public-access-default-visible: События из Общего календаря будут автоматически появляться во всех календарях пользователей
+Public access visible by default: Общий Календарь видим по умолчанию
+public-access-default-selected: Общий Календарь выбран по умолчанию
+Public access is default participant: Общий Календарь по умолчанию для  Участников
+public-access-view-others-help: Когда существует общий доступ к системе, определяет возможность пользователя просматривать календарь другого.
+Public access can view other users: Общий Календарь могут видеть другие пользователи
+public-access-can-add-help: Когда разрешено, пользователи системы посредством Общего Календаря могут добавлять новые события, но они не будут показаны в календаре до тех пор, администратор не одобрит их.
+Public access can add events: Разрешить добавлять события в Общем Календаре
+public-access-add-requires-approval-help: Определяет, требует ли добавление новых событий посредством Общего Календаря подтверждения перед тем, как оно будет показано.
+Public access new events require approval: События в Общем Календаре требуют одобрения
+public-access-sees-participants-help: Если разрешено, пользователи имеющие доступ к Общему Календарю могут просматривать события Участников, если они просматривают детали их событий.
+Public access can view participants: Общий Календарь могут просматривать Участники
+groups-enabled-help: Разрешает поддержку групп, позволяя пользователям добавлять пользователей в группу.
+Groups enabled: Разрешить группы
+user-sees-his-group-help: Если разрешено, пользователи не увидят календарь другого если он не состоит хотя бы в одной группе
+User sees only his groups: Пользователи просматривают только свою группу
+nonuser-enabled-help: Если разрешено администратор будет иметь возможность добавлять учетную запись непривелигированного пользователя (Гостя)
+Nonuser enabled: Разрешить учетную запись Гостя
+nonuser-list-help: Где отображать Гостевые календари в листе участников
+Nonuser list: Список Гостей
+Top: Верх
+Bottom: Низ
+reports-enabled-help: Если разрешено, пользователи будут видеть "Отчеты" в нижней секции каждой страницы и смогут создавать пользовательские отчеты, дополнительно, пользователи с административными правами смогут создавать глобальные отчеты, которые будут предоставлены внизу всех пользовательских страниц.
+Reports enabled: Разрешить отчеты
+subscriptions-enabled-help: Определяет возможность подписаться на календарь пользователя WebCalendar, позволяя тем самым просматривать события в приложениях поддерживающтх формат iCalendar (таких как Apple's iCal или Mozilla Calendar)
+Allow remote subscriptions: Разрешить подписку
+categories-enabled-help: Разрешает поддержку категорий в календаре
+Categories enabled: Разрешить категории
+allow-external-users-help: Определяет возможность добавления событий учетной записью Гостя. Это так же позволит просматривать события Участников.
+Allow external users: Разрешить внешних пользователей (Гостей)
+external-can-receive-notification-help: Когда внешние пользователи (Гости) разрешены, а так же разрешено использование почты, Гости могут получать почтовые уведомления когда событие добавлено, обновлено или удалено (если указан почтовый адрес Гостя)
+External users can receive email notifications: Внешние пользователи могут принимать почтовые уведомления
+external-can-receive-reminder-help: Когда внешние пользователи (Гости) разрешены и разрешено использование почты, Гости могут получать почтовые напоминания когда событие добавлено, обновлено или удалено (если указан почтовый адрес Гостя)
+External users can receive email reminders: Внешние пользователи могут принимать почтовые напоминания
+email-enabled-help: Включает или запрещает посылку всем почтовых напоминаний и уведомлений. Установите "Нет", если ваш сервер не поддерживает отсылку почты
+Email enabled: Разрешить почтовые сообщения
+email-default-sender: Почтовый адрес отправителя по умолчанию при рассылке напоминаний.
+Default sender address: Адрес отправителя по умолчанию
+Default user settings: Пользовательские установки по умолчанию
+email-event-reminders-help: Посылать или нет напоминания о событиях
+Event reminders: Напоминания
+email-event-added: Посылать или нет почтовые уведомления когда события добавляются в Ваш календарь
+Events added to my calendar: События добавленные в мой календарь
+email-event-updated: Посылать или нет почтовые уведомления когда события обновляються в Вашем календаре
+Events updated on my calendar: События обновленные в моем календаре
+email-event-deleted: Посылать или нет почтовые уведомления когда события удаляются из Вашего календаря
+Events removed from my calendar: События удаленные из моего календаря
+email-event-rejected: Посылать или нет почтовые уведомления когда участник отверг событие из Вашего календаря
+Event rejected by participant: События отвергнутые участниками
+Allow user to customize colors: Позволить пользовательские цвета
+Enable gradient images for background colors: Разрешить градиентные цвета фона
+Not available: Не доступно
+Document background: Фон документа
+Select: Выбрать
+Document title: Заголовок документа
+Document text: Текст документа
+Table grid color: Цвет сетки таблицы
+Table header background: Цвет фона заголовка
+Table header text: Заголовок таблицы
+Table cell background: Фон таблицы
+Table cell background for current day: Фон клетки текущего дня
+Table cell background for weekends: Цвет фона ячейки выходных
+Event popup background: Цвет фона подсказок
+Event popup text: Цвет текста подсказок
 
 
 ###############################################
@@ -639,49 +242,50 @@ The following error occurred: Произошла следующая ошибка
 
 
 ###############################################
+# Page: adminhome.php
+#
+Preferences: Предпочтения
+Users: Пользователи
+Account: Учетная запись
+Assistants: Помощник
+Categories: Категории
+Views: Представление
+Layers: Слои
+Reports: Отчеты
+Delete Events: Удалить события
+Public Preferences: Общие предпочтения
+Unapproved Public Events: Неподтвержденные Общие события
+Administrative Tools: Инструменты администратора
+
+
+###############################################
 # Page: approve_entry.php
 #
 Error approving event: Ошибка в процессе подтверждения события
 
 
 ###############################################
+# Page: assistant_edit.php
+#
+Admin mode: Режим администратора
+Your assistants: Ваши помощники
+
+
+###############################################
 # Page: category.php
 #
-#
-# << MISSING >>
-# Add:
-#
-# << MISSING >>
-# Category Name:
-#
-# << MISSING >>
-# Global:
+Add: Добавить
+Category Name: Название категории
+Global: Общие
 Delete: Удалить
 Are you sure you want to delete this entry?: Вы уверены, что вы хотите удалить эту запись?
-#
-# << MISSING >>
-# Add New Category:
-
-
-###############################################
-# Page: category_handler.php
-#
-
-
-###############################################
-# Page: datesel.php
-#
+Add New Category: Добавить новую категорию
 
 
 ###############################################
 # Page: day.php
 #
-#
-# << MISSING >>
-# Admin mode:
-#
-# << MISSING >>
-# Assistant mode:
+Assistant mode: Режим помощника
 Generate printer-friendly version: Создать версию для печати
 Printer Friendly: Версия для печати
 
@@ -689,160 +293,141 @@ Printer Friendly: Версия для печати
 ###############################################
 # Page: del_entry.php
 #
-Hello: Привет
-#
-# << MISSING >>
-# An appointment has been canceled for you by:
-#
-# << MISSING >>
-# The subject was:
+Hello: Здравствуйте
+An appointment has been canceled for you by: Назначенное было отменено для Вас
+The subject was: Тема
 Notification: Уведомление
 
 
 ###############################################
-# Page: edit_entry.php
+# Page: edit_entry_handler.php
 #
-Edit Entry: Редактировать Запись
-Add Entry: Добавить Запись
-brief-description-help: Сдесь должно находиться краткое (около 20 символов) описание события.  Это описание будет видно при просмотре календаря.
-Brief Description: Краткое описание
-full-description-help: Сдесь следует разместить детальное описание события.  Эта информация будет видна при просмотре самого события.
-Full Description: Полное описание
-date-help: Задает дату события.
-time-help: Задает время события.<br /> <i>Это поле можно не заполнять.</i>
-am: am
-pm: pm
-#
-# << MISSING >>
-# Untimed event:
-#
-# << MISSING >>
-# Timed event:
-#
-# << MISSING >>
-# All day event:
-duration-help: Задает продолжительность события.  <br /><i>Это поле можно не заполнять.</i>
-Duration: Продолжительность
-#
-# << MISSING >>
-# hours:
-priority-help: Задает срочность события.  События с высокой срочностью будут выделены.
-Priority: Срочность
-Low: Низкая
-Medium: Средняя
-High: Высокая
-access-help: Задает уровень доступа к событию.<br /> <i>Общедоступный:</i> каждый может видеть все детали данного события.<br /> <i>Конфидециальный:</i> другие пользователи могут видеть, что у вас есть некая запись в данное время, но не имеют доступа к деталям.
-Access: Доступ
-Public: Общедоступный
-Confidential: Конфидециальный
-#
-# << MISSING >>
-# category-help:
-# English text: Specifies the category of the event.
-#
-#
-# << MISSING >>
-# Category:
-None: Никакой
-#
-# << MISSING >>
-# days:
-#
-# << MISSING >>
-# before event:
-participants-help: Список участников данного события.
-Participants: Участники
-#
-# << MISSING >>
-# external-participants-help:
-# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
-#
-#
-# << MISSING >>
-# External Participants:
-repeat-type-help: Выберите, с какой частотой это событие повторяется.  <i>Ежемесячное (день недели)</i> задает ежемесячное повторение типа 1-ое воскресенье, 2-ая пятница и т.д.  <i>Ежемесячное (дата)</i> позволяет повторения в заданное число месяца.
-Repeat Type: Вид повтора
-Daily: Ежедневно
-Weekly: Еженедельно
-Monthly: Ежемесячно
-by day: по дню недели
-#
-# << MISSING >>
-# by day (from end):
-by date: по дате
-Yearly: Ежегодно
-repeat-end-date-help: Задает день до которого событие должно повторятся.
-Repeat End Date: Последний день повтора
-Use end date: Использовать дату завершения
-repeat-day-help: Задает в какие дни недели это событие повторяется.  Используется только для еженедельного вида повторения событий.
-Repeat Day: День Повтора
-for weekly: для еженедельного
-Tuesday: Вторник
-Wednesday: Среда
-Thursday: Четверг
-Friday: Пятница
-Saturday: Суббота
-repeat-frequency-help: Задает как часто событие повторяется.  Значение по умолчанию 1 означает, что оно должно происходить каждый раз, когда наступает означеное время.  Значение 2 приведет к тому, что событие будет происходить через раз и т.д.
-Frequency: Частота
-Delete entry: Удалить запись
-You are not authorized to edit this entry: Вы не имеете прав доступа для удаления данной записи
+The following conflicts with the suggested time: Следующие записи конфликтуют с предложеным временем
+Unnamed Event: Без имени
+The description is: Описание
+A new appointment has been made for you by: Вам назначена новая встреча от
+An appointment has been updated by: Назначение было обновлено от
+The subject is: Тема
+Please look on: Смотрите далее
+to accept or reject this appointment: для подтверждения или отказа от этого назначения
+to view this appointment: для просмотра этого назначения
+Scheduling Conflict: Конфликт в расписании
+Your suggested time of: Предлагаемое Вами время
+All day event: Длится на весь день
+conflicts with the following existing calendar entries: конфликтует с нижеследующими календарными записями
+Cancel: Отменить
 
 
 ###############################################
 # Page: edit_layer.php
 #
-#
-# << MISSING >>
-# Edit Layer:
-#
-# << MISSING >>
-# Add Layer:
-#
-# << MISSING >>
-# Source:
-#
-# << MISSING >>
-# Color:
-#
-# << MISSING >>
-# Duplicates:
-#
-# << MISSING >>
-# Show layer events that are the same as your own:
-#
-# << MISSING >>
-# Are you sure you want to delete this layer?:
-#
-# << MISSING >>
-# Delete layer:
+Edit Layer: Изменить слой
+Add Layer: Добавить слой
+Source: Источник
+Color: Цвет
+Duplicates: Дубликаты
+Show layer events that are the same as your own: Показать слой событий в котором вы как организатор
+Delete layer: Удалить слой
+Are you sure you want to delete this layer?: Вы уверены, что хотите удалить этот слой?
 
 
 ###############################################
 # Page: edit_layer_handler.php
 #
+You cannot create a layer for yourself: У Вас нет прав на создание персонального слоя
+You can only create one layer for each user: Вы можете создать только один слой для каждого пользователя
+
+
+###############################################
+# Page: edit_nonusers.php
 #
-# << MISSING >>
-# You cannot create a layer for yourself:
+NONUSER_PREFIX not set: Префикс Гостя не установлен
+word characters only: Может содержать только печатные символы (a-z A-Z _ 0-9)
+Edit User: Изменить Пользователя
+Add User: Добавить Пользователя
+Calendar ID: ID Календаря
+First Name: Имя
+Last Name: Фамилия
+
+
+###############################################
+# Page: edit_nonusers_handler.php
 #
-# << MISSING >>
-# You can only create one layer for each user:
+Changes successfully saved: Изменения успешно сохранены
+
+
+###############################################
+# Page: edit_report.php
+#
+Tomorrow: Завтра
+Today: Сегодня
+Yesterday: Вчера
+Day before yesterday: Позавчера
+Next week: Следующая неделя
+This week: Эта неделя
+Last week: Последняя неделя
+Week before last: Предпоследняя неделя
+Next week and week after: Неделя до и после
+This week and next week: Эта и следующая недели
+Last week and this week: Последняя и эта недели
+Last two weeks: Последних 2-е недели
+Next month: Следующий месяц
+This month: Этот месяц
+Last month: Последний месяц
+Month before last: Предпоследний месяц
+Next year: Следующий год
+This year: Этот год
+Last year: Последний год
+Year before last: Предпоследний год
+Next 14 days: Следующие 14 дней
+Next 30 days: Следующие 30 дней
+Next 60 days: Следующие 60 дней
+Next 90 days: Следующие 90 дней
+Next 180 days: Следующие 180 дней
+Next 365 days: Следующие 365 дней
+Invalid report id: Неправильный ID отчета
+Unnamed Report: Без названия
+Add Report: Добавить отчет
+Edit Report: Изменить отчет
+Report name: Имя отчета
+Current User: Текущий пользователь
+Include link in trailer: Включить ссылку
+Include standard header/trailer: Включить стандартные заголовки
+Date range: Интервал дат
+Category: Категория
+None: Нет
+Include previous/next links: Включить предыдущую/следующую ссылку
+Include empty dates: Включить пустые даты
+Template variables: Переменные
+Page template: Шаблон страницы
+Day template: Шаблон дня
+Event template: Шаблон события
+Are you sure you want to delete this report?: Вы уверены, что хотите удалить это отчет?
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+Variable N not found: Переменная N не найдена
+
+
+###############################################
+# Page: edit_template.php
+#
+Edit Custom Script/Stylesheet: Изменить пользовательский скрипт/стиль
+Edit Custom Header: Изменить пользовательский заголовок
+Edit Custom Trailer: Изменить пользовательский трейлер
 
 
 ###############################################
 # Page: edit_user.php
 #
-Edit User: Редактировать Пользователя
-Add User: Добавить Пользователя
-Username: Имя пользователя
-First Name: Имя
-Last Name: Фамилия
+Username: Имя для входа
 E-mail address: Адрес электронной почты
 Password: Пароль
 again: еще раз
-Admin: Администратор
-#
-# << MISSING >>
-# Disabled for demo:
+Disabled for demo: Запрещено в демонстративном режиме
+Are you sure you want to delete this user?: Вы уверены, что хотите удалить этого пользователя?
 Change Password: Сменить пароль
 New Password: Новый пароль
 Set Password: Установить пароль
@@ -851,22 +436,20 @@ Set Password: Установить пароль
 ###############################################
 # Page: edit_user_handler.php
 #
-#
-# << MISSING >>
-# Deleting users not supported:
+Deleting users not supported: Удаление пользователя не поддерживается
 The passwords were not identical: Пароли не совпали
 You have not entered a password: Вы не ввели пароль
+Username can not be blank: Имя пользователя не может быть пустым
 
 
 ###############################################
 # Page: export.php
 #
-Export: Экспортировать
-Export format: Формат экспорта
-Palm Pilot: Palm Pilot
-#
-# << MISSING >>
-# Export all dates:
+Export: Экспорт
+Export format: Экспортируемый формат
+Palm Pilot: КПК
+Include all layers: Включая все слои
+Export all dates: Экспортировать все даты
 Start date: Дата начала
 End date: Дата завершения
 Modified since: Изменено
@@ -875,104 +458,200 @@ Modified since: Изменено
 ###############################################
 # Page: export_handler.php
 #
-#
-# << MISSING >>
-# export format not defined or incorrect:
+export format not defined or incorrect: Экспортируемый формат не поддерживается или некорректен
 
 
 ###############################################
 # Page: group_edit.php
 #
-#
-# << MISSING >>
-# Unnamed Group:
-#
-# << MISSING >>
-# Add Group:
-#
-# << MISSING >>
-# Edit Group:
-#
-# << MISSING >>
-# Group name:
+Unnamed Group: Без названия
+Add Group: Добавить группу
+Edit Group: Изменить группу
+Group name: Имя группы
 Updated: Обновлено
 Created by: Добавлено
-Users: Пользователи
 
 
 ###############################################
 # Page: group_edit_handler.php
 #
-#
-# << MISSING >>
-# You must specify a group name:
+You must specify a group name: Вы должны указать имя группы
 
 
 ###############################################
 # Page: groups.php
 #
-#
-# << MISSING >>
-# Add New Group:
+Add New Group: Добавить новую группу
 
 
 ###############################################
-# Page: icalfb.php
+# Page: help_admin.php
 #
+Display days with events in bold in year view: Подсвечивать жирным дни с событиями в режиме просмотра года
+Nonuser: Гость
+user-customize-color: Доступно ли пользователю изменить его цветовую схему.
+enable-gradient-help: Использовать градиентный цвет для фона ячеек
+Manually entering color values: Ввести значение цвета вручную
 
 
 ###############################################
-# Page: pref.php
+# Page: help_bug.php
 #
-Preferences: Предпочтения
+Report Bug: Отчет об ошибке.
+
+
+###############################################
+# Page: help_edit_entry.php
 #
-# << MISSING >>
-# to modify the preferences for the Public Access calendar:
+Adding/Editing Calendar Entries: Добавление/Редактирование записей
+Brief Description: Название
+brief-description-help: Здесь должно находиться краткое (около 20 символов) описание события.  Это описание будет видно при просмотре календаря.
+Full Description: Описание
+full-description-help: Здесь следует разместить детальное описание события.  Эта информация будет видна при просмотре самого события.
+date-help: Задает дату события.
+time-help: Задает время события.<br /> <i>Это поле можно не заполнять.</i>
+duration-help: Задает продолжительность события.  <br /><i>Это поле можно не заполнять.</i>
+end-time-help: Время ожидаемого завершения события
+Priority: Важность
+priority-help: Задает важность события.  События с высокой важностью будут выделены.
+Access: Доступ
+access-help: Задает уровень доступа к событию.<br /> <i>Общедоступный:</i> каждый может видеть все детали данного события.<br /> <i>Конфиденциальный:</i> другие пользователи могут видеть, что у вас есть некая запись в данное время, но не имеют доступа к ее деталям.
+Participants: Участники
+participants-help: Список участников события.
+Repeat Type: Вид переодичности
+repeat-type-help: Выберите, с какой частотой это событие повторяется.  <i>Ежемесячное (день недели)</i> задает ежемесячное повторение типа 1-ое воскресенье, 2-ая пятница и т.д.  <i>Ежемесячное (дата)</i> позволяет повторения в заданное число месяца.
+Repeat End Date: Дата окончания повторений
+repeat-end-date-help: Задает день до которого событие должно повторятся.
+Repeat Day: День Повтора
+repeat-day-help: Задает в какие дни недели это событие повторяется.  Используется только для еженедельного вида повторения событий.
+Frequency: Тип повторения
+repeat-frequency-help: Задает тип повторения и его переодичность. Значение "1" означает, что оно должно происходить каждый раз, когда наступает означенное время.  Значение "2" приведет к тому, что событие будет происходить через раз и т.д.
+
+
+###############################################
+# Page: help_import.php
 #
-# << MISSING >>
-# tz-help:
-# English text: Specifies how many hours to adjust the time from server time to local time.
+Import: Импорт
+Palm Desktop: Карманный персональный компьютер (КПК)
+This form will allow you to import entries from the Palm Desktop Datebook.: Эта форма позволит импортировать события из КПК
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Будет расположена в директории КПК <tt>datebook/datebook.dat</tt> поддиректории названном вашим именем.
+The following entries will not be imported: Следующие записи не будут импортированы
+Entries older than the current date: Записи старше текущей даты
+Entries created in the Palm Desktop that have not been HotSync'd: Записи созданные в КПК не предназначенные для синхронизации.
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Что-либо импортированное из КПК будет перезаписано в течении следущей процедуры импорта (если дата события не прошла)
+Therefore, updates should be made in the Palm Desktop.: Следовательно обновления должны будут сделаны на Компьютере с КПК
+vCal: vCal
+This form will import vCalendar (.vcs) 1.0 events: Импорт событий в формате vCalendar (.vcs) 1.0
+The following formats have been tested: Следующие форматы были протестированы
+Palm Desktop 4: Palm Desktop 4
+Lotus Organizer 6: Lotus Organizer 6
+Microsoft Outlook 2002: Microsoft Outlook 2002
+iCalendar: iCalendar
+This form will import iCalendar (.ics) events: Импорт событий в формате iCalendar (.ics)
+Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Разрешив перезапись <b>предшествующего импорта</b> приведет к тому, что события использующие такой же UID как и события в новом импортируемом файле будут помечены как удаленные. Это позволит скорректировать фаил iCalendar для импорта без создания дубликатов
+
+
+###############################################
+# Page: help_index.php
 #
+Help Index: Содержание Справки
+
+
+###############################################
+# Page: help_layers.php
 #
-# << MISSING >>
-# Timezone Offset:
+Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Слои удобны для отображения событий других пользователей на Ваш календарь. Определите пользователя и цвет событий для отображения
+Add/Edit/Delete: Добавить/Изменить/Удалить
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Щелкните ссылку "Изменить слой" в разделе администратора внизу страницы, чтобы добавлять/изменять/удалять слои.
+Specifies the user that you would like to see displayed in your calendar.: Определите пользователя, который будет отображаться в Вашем календаре.
+The text color of the new layer that will be displayed in your calendar.: Цвет текста нового слоя который будет отображен в Вашем календаре.
+If checked, events that are duplicates of your events will be shown.: Если выбрано, события которые являются копиями Ваших, будут отображаться.
+Disabling: Запретить
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Чтобы скрыть слой, нажмите ссылку "Отключить Слой" в разделе администратора внизу страницы.
+Enabling: Разрешить
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Чтобы отобразить слой, нажмите ссылку "Включить Слой" в разделе администратора внизу страницы.
+
+
+###############################################
+# Page: help_pref.php
 #
-# << MISSING >>
-# Add N hours to:
+Timezone Offset: Интервал смещения временной зоны
+tz-help: Определяет количество часов смещения локального времени относительно времени сервера.
+Default Category: Категория по умолчанию
+default-category-help: Определите категорию нового события по умолчанию.
+When I am the boss: Когда я организатор события
+Email me event notification: Отправить мне уведомление по почте
+email-boss-notifications-help: Определяет, принимать или нет почтовые напоминания
+I want to approve events: Я хочу одобрять события
+boss-approve-event-help: Определяет будет ли требоваться одобрение событий добавленных помощниками
+Subscribe/Publish: Подписаться/Публиковать
+allow-remote-subscriptions-help: Определяет возможность подписаться на календарь пользователя WebCalendar, позволяя тем самым просматривать события в приложениях поддерживающих формат iCalendar (таких как Apple's iCal или Mozilla Calendar) 
+URL: URL
+remote-subscriptions-url-help: Показывать ссылку для того, чтобы пользователи могли подписаться на Ваш календарь
+
+
+###############################################
+# Page: import.php
 #
-# << MISSING >>
-# Subtract N hours from:
+Disabled: Запрещено
+Import format: Формат для импорта
+Exclude private records: Исключая персональные события
+Overwrite Prior Import: Подтверждать перед импортом
+
+
+###############################################
+# Page: import_handler.php
 #
-# << MISSING >>
-# same as:
+Import Results: Результаты импорта
+Events successfully imported: События успешно импортированы
+Events from prior import marked as deleted: События от предыдущего импорта отмечены как удаленные
+Conflicting events: Конфликтующие события
+Errors: Ошибки
+There was an error parsing the import file or no events were returned: Произошла ошибка во время процедуры импорта или нет событий для него.
+The import file contained no data: Импортируемый файл не содержит данных
+Event Imported: События импортированы
+View this entry: Просмотр этой записи
+
+
+###############################################
+# Page: layers.php
 #
-# << MISSING >>
-# server time:
+Layers are currently: Текущие слои
+Enabled: Разрешено
+Disable Layers: Запретить слои
+Enable Layers: Разрешить слои
+to modify the layers settings for the: для изменения установок слоя
+calendar: календарь
+Add layer: Добавить слой
+Layer: Слой
+Edit layer: Изменить слой
+
+
+###############################################
+# Page: list_unapproved.php
 #
-# << MISSING >>
-# Default Category:
+Approve/Confirm: Одобрить/Подтердить
+Approve this entry?: Одобрить эту запись?
+Reject: Отвергнуть
+Reject this entry?: Отвергнуть эту запись?
+No unapproved events for: Нет неодобренных событий
+Unapproved Events: Неодобренные события
+
+
+###############################################
+# Page: login.php
 #
-# << MISSING >>
-# When I am the boss:
+Invalid login: Не верное имя
+You must enter a login and password: Необходимо ввести имя и пароль
+Save login via cookies so I don't have to login next time: Сохранить в браузере, чтобы облегчить регистрацию в следующий раз
+Login: Вход
+Access public calendar: Доступ к Общему Календарю
+cookies-note: <b>Замечание:</b> Для этого должны быть включены cookies в вашем браузере
+
+
+###############################################
+# Page: month.php
 #
-# << MISSING >>
-# Email me event notification:
-#
-# << MISSING >>
-# I want to approve events:
-#
-# << MISSING >>
-# allow-remote-subscriptions-help:
-# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# remote-subscriptions-url-help:
-# English text: Displays the URL remote users should use to subscribe to your calendar.
-#
-#
-# << MISSING >>
-# URL:
 Sun: Вск
 Mon: Пон
 Tue: Втр
@@ -980,261 +659,78 @@ Wed: Срд
 Thu: Чет
 Fri: Пят
 Sat: Суб
+
+
+###############################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Добавить Гостя
+
+
+###############################################
+# Page: pref.php
+#
 Save Preferences: Сохранить Предпочтения
+to modify the preferences for the Public Access calendar: для изменения установок Общего Календаря
+Add N hours to: Добавить N часов к
+Subtract N hours from: Убрать N часов от
+same as: 0 часов от
+server time: времени сервера
+All: Все
 
 
 ###############################################
-# Page: help_bug.php
+# Page: purge.php
 #
-#
-# << MISSING >>
-# Report Bug:
-
-
-###############################################
-# Page: help_edit_entry.php
-#
-Adding/Editing Calendar Entries: Добавление/Редактирование календарных записей
-
-
-###############################################
-# Page: help_index.php
-#
-Help Index: Индекс подсказки
-#
-# << MISSING >>
-# Layers:
-#
-# << MISSING >>
-# Import:
-
-
-###############################################
-# Page: help_layers.php
-#
-#
-# << MISSING >>
-# Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
-#
-# << MISSING >>
-# Add/Edit/Delete:
-#
-# << MISSING >>
-# Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
-#
-# << MISSING >>
-# Specifies the user that you would like to see displayed in your calendar.:
-#
-# << MISSING >>
-# The text color of the new layer that will be displayed in your calendar.:
-#
-# << MISSING >>
-# If checked, events that are duplicates of your events will be shown.:
-#
-# << MISSING >>
-# Disabling:
-#
-# << MISSING >>
-# Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
-#
-# << MISSING >>
-# Enabling:
-#
-# << MISSING >>
-# Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
-
-
-###############################################
-# Page: help_admin.php
-#
-
-
-###############################################
-# Page: week.php
-#
-#
-# << MISSING >>
-# cont.:
-
-
-###############################################
-# Page: layers.php
-#
-#
-# << MISSING >>
-# to modify the layers settings for the:
-#
-# << MISSING >>
-# Layers are currently:
-#
-# << MISSING >>
-# Enabled:
-#
-# << MISSING >>
-# Disabled:
-#
-# << MISSING >>
-# Disable Layers:
-#
-# << MISSING >>
-# Enable Layers:
-#
-# << MISSING >>
-# Layer:
-#
-# << MISSING >>
-# Edit layer:
-#
-# << MISSING >>
-# Add layer:
-
-
-###############################################
-# Page: layers_toggle.php
-#
-
-
-###############################################
-# Page: list_unapproved.php
-#
-View this entry: Просмотр этой записи
-Approve this entry?: Подтвердить эту запись?
-Approve/Confirm: Подтвердить
-Reject this entry?: Отвергнуть эту запись?
-Reject: Отвергнуть
-#
-# << MISSING >>
-# No unapproved events for:
-Unapproved Events: Не подтвержденные события
-#
-# << MISSING >>
-# Public Access:
-
-
-###############################################
-# Page: view_entry.php
-#
-#
-# << MISSING >>
-# every:
-#
-# << MISSING >>
-# 2nd:
-#
-# << MISSING >>
-# 3rd:
-#
-# << MISSING >>
-# 4th:
-#
-# << MISSING >>
-# 5th:
-#
-# << MISSING >>
-# 1st:
-#
-# << MISSING >>
-# last:
-Description: Описание
-#
-# << MISSING >>
-# Status:
-#
-# << MISSING >>
-# Waiting for approval:
-#
-# << MISSING >>
-# Deleted:
-Rejected: Отвергнуто
-#
-# << MISSING >>
-# External User:
-Approve/Confirm entry: Подтвердить запись
-Reject entry: Отвергнуть запись
-#
-# << MISSING >>
-# Set category:
-#
-# << MISSING >>
-# Edit repeating entry for all dates:
-#
-# << MISSING >>
-# Edit entry for this date:
-This will delete this entry for all users.: Данная операция удалит эту запись у всех пользователей.
-#
-# << MISSING >>
-# Delete repeating event for all dates:
-#
-# << MISSING >>
-# Delete entry only for this date:
-Edit entry: Редактировать запись
-#
-# << MISSING >>
-# This will delete the entry from your calendar.:
-#
-# << MISSING >>
-# Do you want to add this entry to your calendar?:
-#
-# << MISSING >>
-# This will add the entry to your calendar.:
-#
-# << MISSING >>
-# Add to My Calendar:
-#
-# << MISSING >>
-# Email all participants:
-#
-# << MISSING >>
-# Show activity log:
-#
-# << MISSING >>
-# Hide activity log:
-#
-# << MISSING >>
-# Export this entry to:
-
-
-###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
+Preview: Предпросмотр
+Purging events for: Очистить события для
+Finished: Завершено
+Check box to delete <b>ALL</b> events for a user: Удалить <b>Все</b> события Пользователя
+Delete all events before: Удалить все события до
+Preview delete: Предпросмотр удаления
+Are you sure you want to delete events for: Вы уверены, что хотите удалить события для
+Records deleted from: Запись удалена от
 
 
 ###############################################
 # Page: reject_entry.php
 #
-#
-# << MISSING >>
-# An appointment has been rejected by:
-#
-# << MISSING >>
-# The description is:
+An appointment has been rejected by: Назначение было отвергнуто
 Title: WebCalendar
+
+
+###############################################
+# Page: report.php
+#
+Untimed event: Бессрочное событие
+Private: Личное
+This event is confidential: Эта запись конфединциальна
+Low: Низкая
+Medium: Средняя
+High: Высокая
+Waiting for approval: Ожидание подтверждения
+Deleted: Удалено
+Rejected: Отвергнуто
+Approved: Подтверждено
+Unknown: Неизвестно
+to manage reports for the Public Access calendar: для изменения отчетов Общего календаря
+Add new report: Добавить отчет
+cont.: содержимое
+Manage Reports: Управление отчетами
 
 
 ###############################################
 # Page: search.php
 #
 Search: Поиск
-#
-# << MISSING >>
-# Advanced Search:
 Keywords: Ключевые слова
+Advanced Search: Расширенный поиск
 
 
 ###############################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Следует ввести одно ключевое слово или более
+You must enter one or more search keywords: Следует ввести одно или более слово для поиска
 Search Results: Результаты поиска
 match found: найдено соответствие
 matches found: найдены соответствия
@@ -1242,608 +738,193 @@ No matches found: Ничего не найдено
 
 
 ###############################################
-# Page: select_user.php
+# Page: set_entry_cat.php
 #
-View Another User's Calendar: Просмотреть календарь другого пользователя
-Go: Перейти
+You have not added any categories: Вы не можете добавлять категории
+Set Category: Установить категорию
 
 
 ###############################################
-# Page: publish.php
+# Page: upcoming.php
 #
+Confidential: Конфиденциальный
 
 
 ###############################################
 # Page: users.php
 #
-denotes administrative user: обозначает адмнинистративного пользователя
 Add New User: Добавить нового пользователя
+denotes administrative user: пользователь с правами администратора
 
 
 ###############################################
 # Page: usersel.php
 #
-#
-# << MISSING >>
-# All:
-#
-# << MISSING >>
-# Reset:
-#
-# << MISSING >>
-# Remove:
-#
-# << MISSING >>
-# Ok:
-#
-# << MISSING >>
-# Cancel:
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
-#
-# << MISSING >>
-# This form will import iCalendar (.ics) events:
-#
-# << MISSING >>
-# iCal File:
-#
-# << MISSING >>
-# Overwrite Prior Import:
-
-
-###############################################
-# Page: year.php
-#
+Reset: Очистить
+Remove: Убрать
+Ok: Ок
 
 
 ###############################################
 # Page: view_d.php
 #
+No users for this view: Нет пользователей для этого представления
 
 
 ###############################################
-# Page: view_m.php
+# Page: view_entry.php
 #
-
-
-###############################################
-# Page: view_w.php
-#
+every: каждый
+2nd: 2-й
+3rd: 3-й
+4th: 4-й
+5th: 5-й
+1st: первый
+last: последний
+by date: по дате
+Description: Описание
+Status: Состояние
+Public: Общий
+days: дни
+day: день
+hours: часы
+minute: минуты
+before event: перед событием
+External User: Внешний пользователь (Гость)
+Approve/Confirm entry: Одобрить/Подтвердить запись
+Reject entry: Отвергнуть запись
+Set category: Установить категорию
+Edit repeating entry for all dates: Изменить повторение записи для всех дат
+Edit entry for this date: Изменить запись для этой даты
+Delete repeating event for all dates: Удалить повторяющиеся события для всех дат
+This will delete this entry for all users.: Это удалит запись у всех пользователей.
+Delete entry only for this date: Удалить элемент только для этой даты
+Edit entry: Изменить запись
+Delete entry: Удалить запись
+Copy entry: Копировать запись
+This will delete the entry from your calendar.: Это удалит запись из Вашего календаря
+Add to My Calendar: Добавить в мой календарь
+Do you want to add this entry to your calendar?: Вы хотите добавить запись в Ваш календарь?
+This will add the entry to your calendar.: Это добавит элемент в Ваш календарь
+Email all participants: Отослать по почте участникам
+Show activity log: Показать журнал событий
+Hide activity log: Скрыть журнал событий
+Export this entry to: Экспортировать элемент для
 
 
 ###############################################
 # Page: views.php
 #
-#
-# << MISSING >>
-# Views:
-#
-# << MISSING >>
-# Add New View:
+Add New View: Добавить новое представление
 
 
 ###############################################
 # Page: views_edit.php
 #
-#
-# << MISSING >>
-# Unnamed View:
-#
-# << MISSING >>
-# Add View:
-#
-# << MISSING >>
-# Edit View:
-#
-# << MISSING >>
-# View Name:
-#
-# << MISSING >>
-# View Type:
-#
-# << MISSING >>
-# Week (Users horizontal):
-#
-# << MISSING >>
-# Week (Users vertical):
-#
-# << MISSING >>
-# Week (Timebar):
-#
-# << MISSING >>
-# Month (side by side):
-#
-# << MISSING >>
-# Month (on same calendar):
-
-
-###############################################
-# Page: nonusers.php
-#
-#
-# << MISSING >>
-# NONUSER_PREFIX not set:
-# English text: NONUSER_PREFIX has not been set in config.php.
-#
-#
-# << MISSING >>
-# NonUser:
-# English text: NonUser Calendars
-#
-#
-# << MISSING >>
-# Calendar ID:
-#
-# << MISSING >>
-# Add New NonUser Calendar:
-
-
-###############################################
-# Page: nonusers_handler.php
-#
-
-
-###############################################
-# Page: view_l.php
-#
-
-
-###############################################
-# Page: help_pref.php
-#
-#
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
-#
-
-
-###############################################
-# Page: report.php
-#
-Private: Личное
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Необходимо ввести имя и пароль
-Save login via cookies so I don't have to login next time: Сохранить имя в браузере, чтобы не нужно было совершать загрузку в следующий раз
-Login: Вход
-#
-# << MISSING >>
-# Access public calendar:
-cookies-note: <b>Note:</b> This application requires cookies to be enabled.
+Unnamed View: Без имени
+Add View: Добавить представление
+Edit View: Изменить представление
+View Name: Название представления
+View Type: Тип представления
+Week (Users horizontal): Неделя (Пользователи по горизонтали)
+Week (Users vertical): Неделя (Пользователи по вертикали)
+Week (Timebar): Неделя (шкала времени)
+Month (Timebar): Месяц (шкала времени)
+Month (side by side): Месяц (рядом)
+Month (on same calendar): Месяц (в том же календаре)
+preview: предпросмотр
+Selected: Отобрано
 
 
 ###############################################
 # Page: views_edit_handler.php
 #
-#
-# << MISSING >>
-# You must specify a view name:
+You must specify a view name: Определите название просмотра
 
 
 ###############################################
 # Page: week_details.php
 #
 New Entry: Новая запись
+am: am
+pm: pm
 
 
 ###############################################
-# Page: import_handler.php
+# Page: edit_entry.php
 #
-#
-# << MISSING >>
-# Import Results:
-#
-# << MISSING >>
-# Events successfully imported:
-#
-# << MISSING >>
-# Events from prior import marked as deleted:
-#
-# << MISSING >>
-# Conflicting events:
-#
-# << MISSING >>
-# Errors:
-Back to My Calendar: Вернуться к моему календалю
-#
-# << MISSING >>
-# There was an error parsing the import file or no events were returned:
-#
-# << MISSING >>
-# The import file contained no data:
-The following conflicts with the suggested time: Следующие записи конфликтуют с предложеным временем
-Unnamed Event: Событие без имени
-Scheduling Conflict: Конфликт в рассписании
-conflicts with the following existing calendar entries: конфликтует с нижеследующими календарными записями
-#
-# << MISSING >>
-# Event Imported:
+Edit Entry: Изменить Запись
+Add Entry: Добавить Запись
+Details: Подробно
+Repeat: Периодичность
+category-help: Определите категорию события
+Timed event: Ограниченное по времени событие
+Availability: Доступность
+external-participants-help: Определяет список внешних участников (Гостей) для события. Эти участники должны быть указаны каждый с новой строки и могут включать в себя адрес почты формата: "Имя <soma_name@exampe.com>". Если почтовый адрес указан - пользователь получит напоминания и уведомления.
+External Participants: Внешние участники (Гости)
+Daily: Ежедневно
+Weekly: Еженедельно
+Monthly: Ежемесячно
+by day: по дню недели
+by day (from end): по дням (с конца)
+Yearly: Ежегодно
+Use end date: Использовать дату завершения
+Tuesday: Вторник
+Wednesday: Среда
+Thursday: Четверг
+Friday: Пятница
+Saturday: Суббота
+You are not authorized to edit this entry: Вы не имеете прав для редактирования этой записи
 
 
 ###############################################
-# Page: edit_report.php
+# Page: select_user.php
 #
-#
-# << MISSING >>
-# Tomorrow:
-#
-# << MISSING >>
-# Today:
-#
-# << MISSING >>
-# Yesterday:
-#
-# << MISSING >>
-# Day before yesterday:
-#
-# << MISSING >>
-# Next week:
-#
-# << MISSING >>
-# This week:
-#
-# << MISSING >>
-# Last week:
-#
-# << MISSING >>
-# Week before last:
-#
-# << MISSING >>
-# Next week and week after:
-#
-# << MISSING >>
-# This week and next week:
-#
-# << MISSING >>
-# Last week and this week:
-#
-# << MISSING >>
-# Last two weeks:
-#
-# << MISSING >>
-# Next month:
-#
-# << MISSING >>
-# This month:
-#
-# << MISSING >>
-# Last month:
-#
-# << MISSING >>
-# Month before last:
-#
-# << MISSING >>
-# Next year:
-#
-# << MISSING >>
-# This year:
-#
-# << MISSING >>
-# Last year:
-#
-# << MISSING >>
-# Year before last:
-#
-# << MISSING >>
-# Unnamed Report:
-#
-# << MISSING >>
-# Add Report:
-#
-# << MISSING >>
-# Edit Report:
-#
-# << MISSING >>
-# Report name:
-Current User: Текущий пользователь
-#
-# << MISSING >>
-# Include link in trailer:
-#
-# << MISSING >>
-# Include standard header/trailer:
-#
-# << MISSING >>
-# Date range:
-#
-# << MISSING >>
-# Include previous/next links:
-#
-# << MISSING >>
-# Include empty dates:
-#
-# << MISSING >>
-# Template variables:
-#
-# << MISSING >>
-# Page template:
-#
-# << MISSING >>
-# Day template:
-#
-# << MISSING >>
-# Event template:
-#
-# << MISSING >>
-# Are you sure you want to delete this report?:
+View Another User's Calendar: Просмотреть календарь другого пользователя 
+Go: Переход
 
 
 ###############################################
-# Page: assistant_edit.php
+# Page: includes/config.php
 #
-#
-# << MISSING >>
-# Assistants:
-#
-# << MISSING >>
-# Yours assistants:
-
-
-###############################################
-# Page: view_t.php
-#
-
-
-###############################################
-# Page: assistant_edit_handler.php
-#
-
-
-###############################################
-# Page: adminhome.php
-#
-Account: Счет
-#
-# << MISSING >>
-# NonUser Calendars:
-#
-# << MISSING >>
-# Delete Events:
-#
-# << MISSING >>
-# Public Preferences:
-#
-# << MISSING >>
-# Unapproved Public Events:
-#
-# << MISSING >>
-# Administrative Tools:
-
-
-###############################################
-# Page: purge.php
-#
-#
-# << MISSING >>
-# Purging events for:
-#
-# << MISSING >>
-# Finished:
-#
-# << MISSING >>
-# Delete all events before:
-#
-# << MISSING >>
-# Check box to delete <b>ALL</b> events for a user:
-#
-# << MISSING >>
-# Are you sure you want to delete events for:
-
-
-###############################################
-# Page: help_import.php
-#
-#
-# << MISSING >>
-# Palm Desktop:
-#
-# << MISSING >>
-# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
-#
-# << MISSING >>
-# The following entries will not be imported:
-#
-# << MISSING >>
-# Entries older than the current date:
-#
-# << MISSING >>
-# Entries created in the Palm Desktop that have not been HotSync'd:
-#
-# << MISSING >>
-# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
-#
-# << MISSING >>
-# Therefore, updates should be made in the Palm Desktop.:
-#
-# << MISSING >>
-# vCal:
-#
-# << MISSING >>
-# The following formats have been tested:
-#
-# << MISSING >>
-# Palm Desktop 4:
-#
-# << MISSING >>
-# Lotus Organizer 6:
-#
-# << MISSING >>
-# Microsoft Outlook 2002:
-#
-# << MISSING >>
-# iCalendar:
-#
-# << MISSING >>
-# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
-
-
-###############################################
-# Page: edit_report_handler.php
-#
-#
-# << MISSING >>
-# Variable N not found:
-
-
-###############################################
-# Page: edit_entry_handler.php
-#
-A new appointment has been made for you by: Вам назначена новая встреча
-#
-# << MISSING >>
-# An appointment has been updated by:
-The subject is: Тема
-Please look on: Смотрите дальше
-to accept or reject this appointment: для подтверждения или отвержения этой встречи
-to view this appointment: для просмотра это встречи
-Your suggested time of: Ваше предлагаемое время
-
-
-###############################################
-# Page: set_entry_cat.php
-#
-#
-# << MISSING >>
-# You have not added any categories:
-#
-# << MISSING >>
-# Set Category:
-
-
-###############################################
-# Page: edit_template.php
-#
-#
-# << MISSING >>
-# Edit Custom Script/Stylesheet:
-#
-# << MISSING >>
-# Edit Custom Header:
-#
-# << MISSING >>
-# Edit Custom Trailer:
-
-
-###############################################
-# Page: includes/trailer.php
-#
-Go to: Перейти к
-My Calendar: Мой календарь
-Logout: Выход
-Another User's Calendar: Календарь другого пользователя
-Add New Entry: Добавить новую запись
-#
-# << MISSING >>
-# Manage Views:
-#
-# << MISSING >>
-# Manage calendar of:
-
-
-###############################################
-# Page: includes/connect.php
-#
-
-
-###############################################
-# Page: includes/user.php
-#
-#
-# << MISSING >>
-# Invalid login:
-#
-# << MISSING >>
-# Invalid user login:
-
-
-###############################################
-# Page: includes/site_extras.php
-#
-#
-# << MISSING >>
-# Send Reminder:
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-
-
-###############################################
-# Page: includes/help_trailer.php
-#
-
-
-###############################################
-# Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/init.php
-#
+English: Английский
+Basque: Бакский
+Bulgarian: Болгарский
+Catalan: Каталанский
+Chinese (Traditonal/Big5): Китайский (Традиционное письмо)
+Chinese (Simplified/GB2312): Китайский (Упрощенное письмо)
+Czech: Чешский
+Danish: Датский
+Dutch: Голланский
+Estonian: Эстонский
+Finnish: Финский
+French: Французский
+Galician: Галисийский
+German: Немецкий
+Greek: Греческий
+Holo (Taiwanese): Тайский
+Hungarian: Венгерский
+Icelandic: Исландский
+Italian: Итальянский
+Japanese: Японский
+Korean: Корейский
+Norwegian: Норвежский
+Polish: Польский
+Portuguese: Португальский
+Portuguese/Brazil: Португальский (Бразилия)
+Romanian: Румынский
+Russian: Русский
+Spanish: Испанский
+Swedish: Шведский
+Turkish: Турецкий
+Welsh: Уэльский
 
 
 ###############################################
 # Page: includes/functions.php
 #
-This event is confidential: Эта запись конфидециальна
-#
-# << MISSING >>
-# exceeds limit of XXX events per day:
-#
-# << MISSING >>
-# You have XXX unapproved events:
+exceeds limit of XXX events per day: превышает ограничение в ХХХ событий на каждый день
+You have XXX unapproved events: У вас XXX неподтвержденных событий
 January: Январь
 February: Февраль
 March: Март
@@ -1867,68 +948,83 @@ Sep: Сен
 Oct: Окт
 Nov: Ноя
 Dec: Дек
+All Attendees: Все посетители
+Busy: Занят
+Tentative: Предварительно
+
+
+###############################################
+# Page: includes/help_trailer.php
+#
+Go to: Перейти
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Напомнить
+
+
+###############################################
+# Page: includes/trailer.php
+#
+My Calendar: Мой календарь
+Back to My Calendar: Вернуться к моему календарю
+Another User's Calendar: Календарь другого пользователя
+Add New Entry: Добавить новую запись
+Logout: Выход
+Manage calendar of: Управление календарем
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+incorrect password: неправильный пароль
+no such user: нет такого пользователя
+Invalid user login: Не верное имя пользователя
 
 
 ###############################################
 # Page: includes/js/admin.php
 #
-#
-# << MISSING >>
-# Server URL is required:
-#
-# << MISSING >>
-# Server URL must end with '/':
+Server URL is required: Требуется ссылка
+Server URL must end with '/': Ссылка должна оканчиваться на '/'
+Invalid work hours: Неправильное рабочее время
 Invalid color for document background: Недопустимый цвет для фона документа
 Invalid color for document title: Недопустимый цвет для заголовка документа
 Invalid color for table cell background: Недопустимый цвет для фона таблицы
-#
-# << MISSING >>
-# Invalid color for table grid:
-#
-# << MISSING >>
-# Invalid color for table header background:
-#
-# << MISSING >>
-# Invalid color for table text background:
-#
-# << MISSING >>
-# Invalid color for event popup background:
-#
-# << MISSING >>
-# Invalid color for event popup text:
+Invalid color for table grid: Недопустимый цвет для сетки таблицы
+Invalid color for table header background: Недопустимый цвет фона заголовка таблицы
+Invalid color for table text background: Недопустимый цвет фона текста
+Invalid color for event popup background: Недопустимый цвет фона подсказок
+Invalid color for event popup text: Не допустимый цвет текста подсказок
 Invalid color for table cell background for today: Недопустимый цвет для фона клетки текущего дня
 Color format should be '#RRGGBB': Формат цвета должен быть вида '#RRGGBB'
+
+
+###############################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Изменить дату и время для этой записи?
 
 
 ###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Вы не ввели краткое описание
-You have not entered a valid time of day: Вы не ввели легальное время дня
-#
-# << MISSING >>
-# The time you have entered begins before your preferred work hours.  Is this correct?:
+You have not entered a valid time of day: Вы не ввели правильное время дня
+The time you have entered begins before your preferred work hours.  Is this correct?: Установлено время раньше предпочитаемого рабочего времени. Это правильно?
+Please add a participant: Пожалуйста, добавьте участников
 
 
 ###############################################
 # Page: includes/js/edit_layer.php
 #
-#
-# << MISSING >>
-# Invalid color:
-
-
-###############################################
-# Page: includes/js/pref.php
-#
+Invalid color: Недопустимый цвет
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
-#
-# << MISSING >>
-# This is a reminder for the event detailed below.:
-#
-# << MISSING >>
-# Reminder:
+This is a reminder for the event detailed below.: Это - напоминание для случая, детализированного ниже
+Reminder: Напоминание
