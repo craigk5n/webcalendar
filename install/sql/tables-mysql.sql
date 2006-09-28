@@ -5,7 +5,6 @@
  *
  * The comments in the table definitions will be parsed to
  * generate a document (in HTML) that describes these tables.
- *
  */
 
 /*
@@ -28,28 +27,32 @@ CREATE TABLE webcal_user (
 );
 
 # create a DEFAULT admin user
-INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'Default', 'Y' );
+INSERT INTO webcal_user
+  ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin )
+  VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator',
+  'Default', 'Y' );
 
 /*
- * Defines a calendar event.  Each event in the system has one entry
- * in this table unless the event starts before midnight and ends
- * after midnight. In that case a secondary event will be created with
- * cal_ext_for_id set to the cal_id of the original entry.
- * The following tables contain additional information about each
- * event:<ul>
- * <li><a href="#webcal_entry_user">webcal_entry_user</a> -
- *  lists participants in the event and specifies the status (accepted,
- *  rejected) and category of each participant.</li>
- * <li><a href="#webcal_entry_repeats">webcal_entry_repeats</a> -
- *  contains information if the event repeats.</li>
- * <li><a href="#webcal_entry_repeats_not">webcal_entry_repeats_not</a> -
- *  specifies which dates the repeating event does not repeat (because
- *  they were deleted or modified for just that date by the user)</li>
- * <li><a href="#webcal_entry_log">webcal_entry_log</a> -
- *  provides a history of changes to this event.</li>
- * <li><a href="#webcal_site_extras">webcal_site_extras</a> -
- *  stores event data as defined in site_extras.php (such as reminders and
- *  other custom event fields).</li>
+ * Defines a calendar event.  Each event in the system has one entry in
+ * this table unless the event starts before midnight and ends after
+ * midnight. In that case a secondary event will be created with
+ * cal_ext_for_id set to the cal_id of the original entry.  The following
+ * tables contain additional information about each event:
+ * <ul>
+ *   <li><a href="#webcal_entry_user">webcal_entry_user</a>
+ *     - lists participants in the event and specifies the status
+ *       (accepted, rejected) and category of each participant.</li>
+ *   <li><a href="#webcal_entry_repeats">webcal_entry_repeats</a>
+ *     - contains information if the event repeats.</li>
+ *   <li><a href="#webcal_entry_repeats_not">webcal_entry_repeats_not</a>
+ *     - specifies which dates the repeating event does not repeat
+ *       (because they were deleted or modified for just that date by the
+ *       user)</li>
+ *   <li><a href="#webcal_entry_log">webcal_entry_log</a>
+ *     - provides a history of changes to this event.</li>
+ *   <li><a href="#webcal_site_extras">webcal_site_extras</a>
+ *     - stores event data as defined in site_extras.php (such as
+ *       reminders and other custom event fields).</li>
  * </ul>
  */
 CREATE TABLE webcal_entry (
@@ -58,8 +61,8 @@ CREATE TABLE webcal_entry (
   /* cal_group_id: the parent event id if this event is overriding an */
   /* occurrence of a repeating event */
   cal_group_id INT NULL,
-  /* used when an event goes past midnight into the */
-  /* next day, in which case an additional entry in this table */
+  /* used when an event goes past midnight into the next day, */
+  /* in which case an additional entry in this table */
   /* will use this field to indicate the original event cal_id */
   cal_ext_for_id INT NULL,
   /* user login of user that created the event */
@@ -100,15 +103,16 @@ CREATE TABLE webcal_entry (
 );
 
 /*
- * Contains category foreign keys to enable multiple categoris
- * for each event or task
+ * Contains category foreign keys
+ * to enable multiple categories for each event or task
  */
 CREATE TABLE webcal_entry_categories (
   /* id of event. Not unique*/
   cal_id INT DEFAULT 0 NOT NULL,
   /* id of category. Not unique */
   cat_id INT DEFAULT 0 NOT NULL,
-  /* order that user requests their categories appear. Globals are always last */
+  /* order that user requests their categories appear. */
+  /* Globals are always last */
   cat_order INT DEFAULT 0 NOT NULL,
   /* user that owns this record. Global categories will be NULL */
   cat_owner varchar(25) DEFAULT NULL
@@ -121,13 +125,17 @@ CREATE TABLE webcal_entry_categories (
 CREATE TABLE webcal_entry_repeats (
   /* event id */
   cal_id INT DEFAULT 0 NOT NULL,
-  /* type of repeating:<ul> */
+  /* type of repeating: */
+  /* <ul> */
   /* <li>daily - repeats daily</li> */
   /* <li>monthlyByDate - repeats on same day of the month</li> */
-  /* <li>monthlyBySetPos - repeats based on position within other ByXXX values</li> */
-  /* <li>monthlyByDay - repeats on specified weekday (2nd Monday, for example)</li> */
+  /*   <li>monthlyBySetPos */
+  /*     - repeats based on position within other ByXXX values</li> */
+  /*   <li>monthlyByDay */
+  /*     - repeats on specified weekday (2nd Monday, for example)</li> */
   /* <li>weekly - repeats every week</li> */
-  /* <li>yearly - repeats on same date every year</li></ul> */
+  /*   <li>yearly - repeats on same date every year</li> */
+  /* </ul> */
   cal_type VARCHAR(20),
   /* end date for repeating event (in YYYYMMDD format) */
   cal_end INT,
@@ -150,12 +158,12 @@ CREATE TABLE webcal_entry_repeats (
 
 
 /*
- * This table specifies which dates in a repeating
- * event have either been deleted, included, or replaced with
- * a replacement event for that day.  When replaced, the cal_group_id
- * (I know... not the best name, but it was not being used) column will
- * be set to the original event.  That way the user can delete the original
- * event and (at the same time) delete any exception events.
+ * This table specifies which dates in a repeating event have either been
+ * deleted, included, or replaced with a replacement event for that day.
+ * When replaced, the cal_group_id (I know... not the best name, but it
+ * was not being used) column will be set to the original event.
+ * That way the user can delete the original event and (at the same time)
+ * delete any exception events.
  */
 CREATE TABLE webcal_entry_repeats_not (
   /* event id of repeating event */
@@ -169,21 +177,22 @@ CREATE TABLE webcal_entry_repeats_not (
 
 /*
  * This table associates one or more users with an event by the event id.
- * The event can be found in
- * <a href="#webcal_entry">webcal_entry</a>.
+ * The event can be found in <a href="#webcal_entry">webcal_entry</a>.
  */
 CREATE TABLE webcal_entry_user (
   /* event id */
   cal_id INT DEFAULT 0 NOT NULL,
   /* participant in the event */
   cal_login VARCHAR(25) NOT NULL,
-  /* status of event for this user: <ul> */
+  /* status of event for this user: */
+  /* <ul> */
   /* <li>A=Accepted</li> */
   /* <li>C=Completed</li> */
   /* <li>D=Deleted</li> */
   /* <li>P=In-Progress</li> */
   /* <li>R=Rejected/Declined</li> */
-  /* <li>W=Waiting</li>    </ul>*/
+  /*   <li>W=Waiting</li> */
+  /* </ul>*/
   cal_status CHAR(1) DEFAULT 'A',
   /* category of the event for this user */
   cal_category INT DEFAULT NULL,
@@ -194,12 +203,10 @@ CREATE TABLE webcal_entry_user (
 
 /*
  * This table associates one or more external users (people who do not
- * have a WebCalendar login) with an event by the event id.
- * An event must still have at least one WebCalendar user associated
- * with it.  This table is not used unless external users are enabled
- * in system settings.
- * The event can be found in
- * <a href="#webcal_entry">webcal_entry</a>.
+ * have a WebCalendar login) with an event by the event id.  An event must
+ * still have at least one WebCalendar user associated with it.  This table
+ * is not used unless external users are enabled* in system settings.  The
+ * event can be found in <a href="#webcal_entry">webcal_entry</a>.
  */
 CREATE TABLE webcal_entry_ext_user (
   /* event id */
@@ -268,7 +275,8 @@ CREATE TABLE webcal_site_extras (
  */
 CREATE TABLE webcal_reminders (
   cal_id INT  NOT NULL default '0',
-  /* timestamp that specifies send datetime. Use this or cal_offset, but not both */
+  /* timestamp that specifies send datetime. */
+  /* Use this or cal_offset, but not both */
   cal_date INT NOT NULL default '0',
   /* offset in minutes from the selected edge */
   cal_offset INT NOT NULL default '0',
@@ -318,9 +326,9 @@ CREATE TABLE webcal_group_user (
 );
 
 /*
- * A "view" allows a user to put the calendars of multiple users all on
- * one page.  A "view" is valid only for the owner (cal_owner) of the
- * view.  Users for the view are in
+ * A "view" allows a user to put the calendars of multiple users all on one
+ * page.  A "view" is valid only for the owner (cal_owner) of the view.
+ * Users for the view are in
  * <a href="#webcal_view_user">webcal_view_user</a>.
  */
 CREATE TABLE webcal_view (
@@ -372,13 +380,15 @@ CREATE TABLE webcal_entry_log (
   cal_login VARCHAR(25) NOT NULL,
   /* user of calendar affected */
   cal_user_cal VARCHAR(25) NULL,
-  /* log types:  <ul> */
+  /* log types: */
+  /* <ul> */
   /* <li>C: Created</li>  */
   /* <li>A: Approved/Confirmed by user</li>  */
   /* <li>R: Rejected by user</li>  */
   /* <li>U: Updated by user</li>  */
   /* <li>M: Mail Notification sent</li>  */
-  /* <li>E: Reminder sent</li>     </ul>*/
+  /*   <li>E: Reminder sent</li> */
+  /* </ul> */
   cal_type CHAR(1) NOT NULL,
   /* date in YYYYMMDD format */
   cal_date INT NOT NULL,
@@ -390,10 +400,9 @@ CREATE TABLE webcal_entry_log (
 );
 
 /*
- * Defines user categories.
- * Categories can be specific to a user or global.  When a category is global,
- * the cat_owner field will be NULL.  (Only an admin user can create
- * a global category.)
+ * Defines user categories.  Categories can be specific to a user or global.
+ * When a category is global, the cat_owner field will be NULL.
+ * (Only an admin user can create a global category.)
  */
 CREATE TABLE webcal_categories (
   /* unique category id */
@@ -465,7 +474,8 @@ CREATE TABLE webcal_import_data (
   cal_login VARCHAR(25) NOT NULL,
   /* type of import: 'palm', 'vcal', 'ical' or 'outlookcsv' */
   cal_import_type VARCHAR(15) NOT NULL,
-  /* external id used in external calendar system (for example, UID in iCal) */
+  /* external id used in external calendar system */
+  /* (for example, UID in iCal) */
   cal_external_id VARCHAR(200) NULL,
   PRIMARY KEY  ( cal_id, cal_login )
 );
@@ -479,7 +489,8 @@ CREATE TABLE webcal_report (
   cal_login VARCHAR(25) NOT NULL,
   /* unique id of this report */
   cal_report_id INT NOT NULL,
-  /* is this a global report (can it be accessed by other users) ('Y' or 'N') */
+  /* is this a global report (can it be accessed by other users) */
+  /* ('Y' or 'N') */
   cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
   /* format of report (html, plain or csv) */
   cal_report_type VARCHAR(20) NOT NULL,
@@ -488,7 +499,8 @@ CREATE TABLE webcal_report (
   cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
   /* name of the report */
   cal_report_name VARCHAR(50) NOT NULL,
-  /* time range for report:  <ul> */
+  /* time range for report: /*
+  /* <ul> */
   /* <li>0 = tomorrow</li> */
   /* <li>1 = today</li> */
   /* <li>2 = yesterday</li> */
@@ -513,14 +525,15 @@ CREATE TABLE webcal_report (
   cal_time_range INT NOT NULL,
   /* user calendar to display (NULL indicates current user) */
   cal_user VARCHAR(25) NULL,
-  /* allow user to navigate to different dates with next/previous ('Y' or 'N') */
+  /* allow user to navigate to different dates with next/previous */
+  /* ('Y' or 'N') */
   cal_allow_nav CHAR(1) DEFAULT 'Y',
   /* category to filter on (optional) */
   cal_cat_id INT NULL,
   /* include empty dates in report ('Y' or 'N') */
   cal_include_empty CHAR(1) DEFAULT 'N',
-  /* include a link for this report in the "Go to" section of the navigation */
-  /* in the page trailer ('Y' or 'N') */
+  /* include a link for this report in the "Go to" section of the */
+  /* navigation in the page trailer ('Y' or 'N') */
   cal_show_in_trailer CHAR(1) DEFAULT 'N',
   /* date created or last updated (in YYYYMMDD format) */
   cal_update_date INT NOT NULL,
@@ -534,7 +547,8 @@ CREATE TABLE webcal_report (
  * <li>Page template - Defines the entire page (except for header and
  *   footer).  The following variables can be defined:
  *   <ul>
- *     <li>${days}<sup>*</sup> - the HTML of all dates (generated from the Date template)</li>
+ *     <li>${days}<sup>*</sup>
+ *       - the HTML of all dates (generated from the Date template)</li>
  *   </ul></li>
  * <li>Date template - Defines events for one day.  If the report
  *   is for a week or month, then the results of each day will be
@@ -600,12 +614,13 @@ CREATE TABLE webcal_access_user (
   cal_see_time_only CHAR(1) DEFAULT 'N',
   PRIMARY KEY ( cal_login, cal_other_user )
 );
+
 /*
- * Specifies what WebCalendar functions a user can access.
- * Each function has a corresponding numeric value (specified in
- * the file includes/access.php).  For example, view event is 0, so the
- * very first character in the cal_permissions column will be either a
- * 'Y' if this user can view events or a 'N' if they cannot.
+ * Specifies what WebCalendar functions a user can access.  Each function
+ * has a corresponding numeric value (specified in the file
+ * includes/access.php).  For example, view event is 0, so the very first
+ * character in the cal_permissions column is either a "Y" if this user
+ * can view events or a "N" if they cannot.
  */
 CREATE TABLE webcal_access_function (
   /* user login */
@@ -616,9 +631,9 @@ CREATE TABLE webcal_access_function (
 );
 
 /*
- * This table stores the custom header/stylesheet/trailer.
- * If configured properly, each user (or nonuser cal) can have
- * their own custom header/trailer.
+ * This table stores the custom header/stylesheet/trailer.  If configured
+ * properly, each user (or nonuser cal) can have their own custom
+ * header/trailer.
  */
 CREATE TABLE webcal_user_template (
   /* user login (or nonuser cal name), the DEFAULT for all users is stored */
@@ -660,5 +675,3 @@ CREATE TABLE webcal_blob (
   cal_blob LONGBLOB,
   PRIMARY KEY ( cal_blob_id )
 );
-
-

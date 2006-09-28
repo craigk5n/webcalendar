@@ -894,8 +894,8 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
    ?>
 </td></tr>
 <tr><th class="header" colspan="2">
- <?php etranslate ( 'PHP Settings' ) ?>
-<?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
+ <?php etranslate ( 'PHP Settings' );
+ if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
   &nbsp;<input name="action" type="button" value="<?php etranslate ( 'Detailed PHP Info' ) ?>" onClick="testPHPInfo()" />
 <?php } ?>
 </th></tr>

@@ -159,8 +159,8 @@ ul a {
   vertical-align: top;
 }
 .main th.weekend {
-  <?php echo background_css ( $GLOBALS['THBG'], 15 ); ?>
-<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+  <?php echo background_css ( $GLOBALS['THBG'], 15 ); 
+ if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
  display: none; 
 <?php } ?>
 }
@@ -174,8 +174,8 @@ ul a {
   vertical-align: top;
 }
 .main td.weekend {
-  <?php echo background_css ( $GLOBALS['WEEKENDBG'], 100 ); ?>
-<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+  <?php echo background_css ( $GLOBALS['WEEKENDBG'], 100 ); 
+ if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
  display: none; 
 <?php } ?>
 }
