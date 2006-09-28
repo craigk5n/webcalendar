@@ -29,7 +29,7 @@
 #
 #
 #
-# Translation last updated on 09-22-2006
+# Translation last updated on 09-28-2006
 
 
 ###############################################
@@ -74,7 +74,6 @@ Private: Private
 
 ###############################################
 # Page: activity_log.php
-#
 #
 System Log: System Log
 Activity Log: Activity Log
@@ -1573,18 +1572,20 @@ Remote Calendars not enabled: Remote Calendars not enabled
 
 
 ###############################################
-# Page: install/default_config.php
-#
-Error updating webcal_config: Error updating webcal_config
-Error updating webcal_user_pref: Error updating webcal_user_pref
-
-
-###############################################
 # Page: install/index.php
 #
+WebCalendar Installation Wizard: WebCalendar Installation Wizard
+Step: Step
+Single-User: Single-User
 Failure Reason: Failure Reason
-Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
-Your previous version of WebCalendar requires updating several database tables.: Your previous version of WebCalendar requires updating several database tables.
+You must manually create database: You must manually create database
+Database Cache Directory: Database Cache Directory
+Test Settings: Test Settings
+Create New: Create New
+Database Name: Database Name
+Back: Back
+Timezone Conversion Successful: Timezone Conversion Successful
+Error Unable to write to file: Error Unable to write to file
 Successful Login: Successful Login
 Invalid Login: Invalid Login
 required only if Safe Mode is On: required only if Safe Mode is On
@@ -1596,24 +1597,17 @@ Password has been set: Password has been set
 Connection Successful: Connection Successful
 Please go to next page to continue installation: Please go to next page to continue installation
 Correct your entries or click the <b>Create New</b> button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
-You must manually create database: You must manually create database
 Correct your entries and try again: Correct your entries and try again
-Database Cache Directory: Database Cache Directory
 does not exist: does not exist
 is not writable: is not writable
-Timezone Conversion Successful: Timezone Conversion Successful
 Error Converting Timezone: Error Converting Timezone
-Error Unable to write to file: Error Unable to write to file
 Please change the file permissions of this file: Please change the file permissions of this file
 Please change includes dir premission: Please change the file permissions of your includes directory to allow writing by other users
 Your settings have been saved: Your settings have been saved
 Error you must specify a\\nSingle-User Login: Error you must specify a\\nSingle-User Login
 Server URL must end with: Server URL must end with
-Database Name: Database Name
 Full Path (no backslashes): Full Path (no backslashes)
 The password contains illegal characters.: The password contains illegal characters.
-WebCalendar Installation Wizard: WebCalendar Installation Wizard
-Step: Step
 This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
 PHP Version Check: PHP Version Check
 Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
@@ -1641,8 +1635,6 @@ Database Settings: Database Settings
 Database Type: Database Type
 Server: Server
 Connection Persistence: Connection Persistence
-Create New: Create New
-Back: Back
 All your database tables appear to be up to date. You may proceed to the: All your database tables appear to be up to date. You may proceed to the
 next page and complete your WebCalendar setup: next page and complete your WebCalendar setup
 This appears to be a new installation. If this is not correct, please: This appears to be a new installation. If this is not correct, please
@@ -1671,7 +1663,6 @@ converted your existing WebCalendar event data to GMT: converted your existing W
 If you have, you may ignore this notice and not proceed with the conversion: If you have, you may ignore this notice and not proceed with the conversion
 If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
 Convert Data to GMT: Convert Data to GMT
-Conversion Successful: Conversion Successful
 Application Settings: Application Settings
 HTTP-based authentication was not detected: HTTP-based authentication was not detected
 You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to
