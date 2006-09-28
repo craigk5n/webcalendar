@@ -891,7 +891,7 @@ English: Английский
 Basque: Бакский
 Bulgarian: Болгарский
 Catalan: Каталанский
-Chinese (Traditonal/Big5): Китайский (Традиционное письмо)
+Chinese (Traditional/Big5): Китайский (Традиционное письмо)
 Chinese (Simplified/GB2312): Китайский (Упрощенное письмо)
 Czech: Чешский
 Danish: Датский

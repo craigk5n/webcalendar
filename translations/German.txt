@@ -921,7 +921,7 @@ English: Englisch
 Basque: Baskisch
 Bulgarian: Bulgarisch
 Catalan: Katalanisch
-Chinese (Traditonal/Big5): Chinesisch (Traditionell)
+Chinese (Traditional/Big5): Chinesisch (Traditionell)
 Chinese (Simplified/GB2312): Chinesisch (Einfach)
 Czech: Tschechisch
 Danish: D&auml;nisch
