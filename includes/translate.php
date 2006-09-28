@@ -321,6 +321,7 @@ function etooltip ( $str ) {
       'Estonian' => 'Estonian',
       'Finnish' =>'Finnish',
       'French' =>'French',
+      'French (UTF8)' =>'French-UTF8',
       'Galician' => 'Galician',
       'German' =>'German',
       'Greek' =>'Greek',
@@ -416,6 +417,7 @@ function etooltip ( $str ) {
     // translate( 'Estonian' )
     // translate( 'Finnish' )
     // translate( 'French' )
+    // translate( 'French (UTF8)' )
     // translate( 'Galician' )
     // translate( 'German' )
     // translate( 'Greek' )
