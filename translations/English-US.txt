@@ -21,7 +21,7 @@
 #
 #
 #
-# Translation last updated on 10-14-2005
+# Translation last updated on 09-28-2006
 
 
 ###############################################
@@ -250,13 +250,6 @@ Event popup text: Event popup text
 
 
 ###############################################
-# Page: admin_handler.php
-#
-Error: Error
-The following error occurred: The following error occurred
-
-
-###############################################
 # Page: adminhome.php
 #
 Preferences: Preferences
@@ -271,6 +264,13 @@ Delete Events: Delete Events
 Public Preferences: Public Preferences
 Unapproved Public Events: Unapproved Public Events
 Administrative Tools: Administrative Tools
+
+
+###############################################
+# Page: admin_handler.php
+#
+Error: Error
+The following error occurred: The following error occurred
 
 
 ###############################################
@@ -533,6 +533,18 @@ Modified since: Modified since
 
 
 ###############################################
+# Page: export_handler.php
+#
+export format not defined or incorrect: export format not defined or incorrect
+
+
+###############################################
+# Page: groups.php
+#
+Add New Group: Add New Group
+
+
+###############################################
 # Page: group_edit.php
 #
 Unnamed Group: Unnamed Group
@@ -547,12 +559,6 @@ Created by: Created by
 # Page: group_edit_handler.php
 #
 You must specify a group name: You must specify a group name
-
-
-###############################################
-# Page: groups.php
-#
-Add New Group: Add New Group
 
 
 ###############################################
@@ -812,6 +818,36 @@ Ok: Ok
 
 
 ###############################################
+# Page: views.php
+#
+Add New View: Add New View
+
+
+###############################################
+# Page: views_edit.php
+#
+Unnamed View: Unnamed View
+Add View: Add View
+Edit View: Edit View
+View Name: View Name
+View Type: View Type
+Week (Users horizontal): Week (Users horizontal)
+Week (Users vertical): Week (Users vertical)
+Week (Timebar): Week (Timebar)
+Month (Timebar): Month (Timebar)
+Month (side by side): Month (side by side)
+Month (on same calendar): Month (on same calendar)
+preview: preview
+Selected: Selected
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: You must specify a view name
+
+
+###############################################
 # Page: view_d.php
 #
 No users for this view: No users for this view
@@ -853,45 +889,9 @@ Export this entry to: Export this entry to
 
 
 ###############################################
-# Page: views.php
-#
-Add New View: Add New View
-
-
-###############################################
-# Page: views_edit.php
-#
-Unnamed View: Unnamed View
-Add View: Add View
-Edit View: Edit View
-View Name: View Name
-View Type: View Type
-Week (Users horizontal): Week (Users horizontal)
-Week (Users vertical): Week (Users vertical)
-Week (Timebar): Week (Timebar)
-Month (Timebar): Month (Timebar)
-Month (side by side): Month (side by side)
-Month (on same calendar): Month (on same calendar)
-preview: preview
-Selected: Selected
-
-
-###############################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: You must specify a view name
-
-
-###############################################
 # Page: week_details.php
 #
 New Entry: New Entry
-
-
-###############################################
-# Page: export_handler.php
-#
-export format not defined or incorrect: export format not defined or incorrect
 
 
 ###############################################
@@ -911,6 +911,7 @@ Finnish: Finnish
 French: French
 Galician: Galician
 German: German
+Greek: Greek
 Holo (Taiwanese): Holo (Taiwanese)
 Hungarian: Hungarian
 Icelandic: Icelandic
@@ -994,15 +995,6 @@ Invalid user login: Invalid user login
 
 
 ###############################################
-# Page: includes/js/edit_entry.php
-#
-You have not entered a Brief Description: You have not entered a Brief Description
-You have not entered a valid time of day: You have not entered a valid time of day
-The time you have entered begins before your preferred work hours.  Is this correct?: The time you have entered begins before your preferred work hours.  Is this correct?
-Please add a participant: Please add a participant
-
-
-###############################################
 # Page: includes/js/admin.php
 #
 Server URL is required: Server URL is required
@@ -1024,6 +1016,15 @@ Color format should be '#RRGGBB': Color format should be '#RRGGBB'
 # Page: includes/js/availability.php
 #
 Change the date and time of this entry?: Change the date and time of this entry?
+
+
+###############################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: You have not entered a Brief Description
+You have not entered a valid time of day: You have not entered a valid time of day
+The time you have entered begins before your preferred work hours.  Is this correct?: The time you have entered begins before your preferred work hours.  Is this correct?
+Please add a participant: Please add a participant
 
 
 ###############################################
