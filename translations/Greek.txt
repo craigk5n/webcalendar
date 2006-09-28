@@ -901,7 +901,7 @@ English: Αγγλικά
 Basque: Βάσκικα
 Bulgarian: Βουλγαρικά
 Catalan: Καταλανικά
-Chinese (Traditonal/Big5): Κινέζικα (Παραδοσιακά/Big5)
+Chinese (Traditional/Big5): Κινέζικα (Παραδοσιακά/Big5)
 Chinese (Simplified/GB2312): Κινέζικα (Απλοποιημένα/GB2312)
 Czech: Τσέχικα
 Danish: Δανέζικα
