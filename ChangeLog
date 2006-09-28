@@ -1,4 +1,6 @@
 Version 1.1.2 (?? ??? 2006)
+ - Added patch [ 1531698 ] Reorganized and grouped System Settings
+   main options and user preferences
  - Added patch [ 1484538 ] Updated German translation
  - Added patch [ 1519611 ] Added new French-UTF8 translation
  - Added patch [ 1558537 ] Updated Russian translation

@@ -105,6 +105,21 @@ function updateColor ( input ) {
 }
 
 // Gets called on page load and when user changes setting for
+// "Disable popup".
+function popup_handler () {
+  var noPopups = document.prefform.admin_DISABLE_POPUPS[0].checked;
+  if ( noPopups ) {
+    // Popups disabled
+    makeInvisible ( "pop1" );
+    makeInvisible ( "pop2" );
+  } else {
+    // Popups disabled
+    makeVisible ( "pop1" );
+    makeVisible ( "pop2" );
+  }
+}
+
+// Gets called on page load and when user changes setting for
 // "Allow public access".
 function public_handler () {
   var enabled = document.prefform.admin_PUBLIC_ACCESS[0].checked;

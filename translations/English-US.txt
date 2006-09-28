@@ -110,6 +110,7 @@ NonUser Calendars: NonUser Calendars
 Other: Other
 Email: Email
 Colors: Colors
+System options: System options
 app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: Application Name
 Translated Name: Translated Name
@@ -121,24 +122,13 @@ Home URL: Home URL
 language-help: Specifies which language to use.
 Language: Language
 Your browser default language is: Your browser default language is
-tz-help: Specifies how many hours to adjust the time from server time to local time.
-Server Timezone Selection: Server Timezone Selection
-Your current GMT offset is: Your current GMT offset is
-hours: hours
 Allow user to use themes: Allow user to use themes
 themes-help: Allows mass update of configuration settings. Lower case labels are user pref only.
 Themes: Themes
 AVAILABLE THEMES: AVAILABLE THEMES
 None: None
 Preview: Preview
-Allow top menu: Allow top menu
-Date Selectors position: Date Selectors position
-Top: Top
-Bottom: Bottom
-menu-themes-help: Sets the colors and style of the top menu
-Menu theme: Menu theme
-fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
-Fonts: Fonts
+Site customization: Site customization
 custom-script-help: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
 Custom script/stylesheet: Custom script/stylesheet
 custom-header-help: Allows a custom HTML snippet to be included in the top of every page.
@@ -148,82 +138,72 @@ Custom trailer: Custom trailer
 enable-external-header-help: Allows the custom trailer to be loaded from an external file
 Allow external file for header/script/trailer: Allow external file for header/script/trailer
 Allow user to override header/trailer: Allow user to override header/trailer
+Date and Time: Date and Time
+tz-help: Specifies how many hours to adjust the time from server time to local time.
+Server Timezone Selection: Server Timezone Selection
+Your current GMT offset is: Your current GMT offset is
+hours: hours
+display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
+Display Common Use Date/Times as GMT: Display Common Use Date/Times as GMT
+date-format-help: Specifies the preferred date format.
+Date format: Date format
+Small Task Date: Small Task Date
+display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
+Week starts on: Week starts on
+Sunday: Sunday
+Monday: Monday
+time-format-help: Specifies which time format to use: <br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.  <br /><em>24 hour:</em> Display times as 300, 2030, etc.
+Time format: Time format
+12 hour: 12 hour
+24 hour: 24 hour
+timed-evt-len-help: Specifies input method for determining the length of a timed event.
+Specify timed event length by: Specify timed event length by
+Duration: Duration
+End Time: End Time
+work-hours-help: Specifies the time range to display for the day view.
+Work hours: Work hours
+From: From
+to: to
+Appearance: Appearance
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: Preferred view
 Day: Day
 Week: Week
 Month: Month
 Year: Year
+Allow top menu: Allow top menu
+Date Selectors position: Date Selectors position
+Top: Top
+Bottom: Bottom
+menu-themes-help: Sets the colors and style of the top menu
+Menu theme: Menu theme
+fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+Fonts: Fonts
 display-sm_month-help: If enabled, displays small months in month views
 Display small months: Display small months
 display-weekends-help: Include weekends when viewing a week.
 Display weekends: Display weekends
 display-alldays-help: Display previous and next months days in month views, filling all cells.
 Display all days in month view: Display all days in month view
-yearly-shows-events-help: On the yearly view, display days that contain events in a bold font.
-Display days with events in bold in month and year views: Display days with events in bold in month and year views
+display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
+Display week number: Display week number
 display-desc-print-day-help: Include event descriptions in printer-friendly version of day view.
 Display description in printer day view: Display description in printer day view
-display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
-Display Common Use Date/Times as GMT: Display Common Use Date/Times as GMT
-date-format-help: Specifies the preferred date format.
-Date format: Date format
-Small Task Date: Small Task Date
-time-format-help: Specifies which time format to use: <br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.  <br /><em>24 hour:</em> Display times as 300, 2030, etc.
-Time format: Time format
-12 hour: 12 hour
-24 hour: 24 hour
+yearly-shows-events-help: On the yearly view, display days that contain events in a bold font.
+Display days with events in bold in month and year views: Display days with events in bold in month and year views
 display-minutes-help: If enabled, minutes ending with :00 will always be displayed
 Display 00 minutes always: Display 00 minutes always
-entry-interval-help: Sets minute interval when editing entry times
-Entry interval: Entry interval
-hour: hour
-minutes: minutes
-minute: minute
-time-interval-help: Specifies how long the time blocks in the week view and day view will be.
-Time interval: Time interval
-auto-refresh-help: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
-Auto-refresh calendars: Auto-refresh calendars
-auto-refresh-time-help: If Auto-refresh is enabled, this specifies the time between each refresh.
-Auto-refresh time: Auto-refresh time
+allow-view-add-help: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+Include add event link in views: Include add event link in views
+lunar-help: If enabled, will display small icons representing the lunar phases each month
+Display Lunar Phases in month view: Display Lunar Phases in month view
+Restrictions: Restrictions
+allow-view-other-help: Specifies whether one user may view another user's calendar.
+Allow viewing other user's calendars: Allow viewing other user's calendars
 require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 Require event approvals: Require event approvals
 display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: Display unapproved
-display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
-Display week number: Display week number
-display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
-Week starts on: Week starts on
-Sunday: Sunday
-Monday: Monday
-work-hours-help: Specifies the time range to display for the day view.
-Work hours: Work hours
-From: From
-to: to
-disable-popups-help: Disable popups from calendar views
-Disable Pop-Ups: Disable Pop-Ups
-disable-location-field-help: Selecting "Yes" will remove the "Location" field from event information pages
-Disable Location field: Disable Location field
-disable-priority-field-help: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
-Disable Priority field: Disable Priority field
-disable-access-field-help: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
-Disable Access field: Disable Access field
-disable-participants-field-help: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
-Disable Participants field: Disable Participants field
-disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
-Disable Repeating field: Disable Repeating field
-popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
-Display Site Extras in popup: Display Site Extras in popup
-popup-includes-participants-help: If enabled, participants are displayed in event popups.
-Display Participants in popup: Display Participants in popup
-allow-html-description-help: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
-Allow HTML in Description: Allow HTML in Description
-allow-view-other-help: Specifies whether one user may view another user's calendar.
-Allow viewing other user's calendars: Allow viewing other user's calendars
-allow-view-add-help: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
-Include add event link in views: Include add event link in views
-remember-last-login-help: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
-Remember last login: Remember last login
 conflict-check-help: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
 Check for event conflicts: Check for event conflicts
 conflict-months-help: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
@@ -234,16 +214,32 @@ limit-appts-help: Allows the system administrator to set a system-wide limit on 
 Limit number of timed events per day: Limit number of timed events per day
 limit-appts-number-help: Specifies the maximum number of timed events a user can have in a single day.
 Maximum timed events per day: Maximum timed events per day
-timed-evt-len-help: Specifies input method for determining the length of a timed event.
-Specify timed event length by: Specify timed event length by
-Duration: Duration
-End Time: End Time
-summary_length-help: Maximum length of Brief Description in calendar views
-Brief Description Length: Brief Description Length
-lunar-help: If enabled, will display small icons representing the lunar phases each month
-Display Lunar Phases in month view: Display Lunar Phases in month view
 crossday-help: If enabled, events that span days will be displayed on seperate days
 Disable Cross-Day Events: Disable Cross-Day Events
+disable-location-field-help: Selecting "Yes" will remove the "Location" field from event information pages
+Disable Location field: Disable Location field
+disable-priority-field-help: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
+Disable Priority field: Disable Priority field
+disable-access-field-help: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
+Disable Access field: Disable Access field
+disable-participants-field-help: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+Disable Participants field: Disable Participants field
+disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
+Disable Repeating field: Disable Repeating field
+allow-html-description-help: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+Allow HTML in Description: Allow HTML in Description
+Popups: Popups
+disable-popups-help: Disable popups from calendar views
+Disable Pop-Ups: Disable Pop-Ups
+popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+Display Site Extras in popup: Display Site Extras in popup
+popup-includes-participants-help: If enabled, participants are displayed in event popups.
+Display Participants in popup: Display Participants in popup
+Miscellaneous: Miscellaneous
+remember-last-login-help: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
+Remember last login: Remember last login
+summary_length-help: Maximum length of Brief Description in calendar views
+Brief Description Length: Brief Description Length
 user_sort-help: Determines sort order for User, Nonuser lists
 User Sort Order: User Sort Order
 Lastname, Firstname: Lastname, Firstname
@@ -531,6 +527,7 @@ All day event: All day event
 Timezone Offset: Timezone Offset
 time-help: Specifies the time of the event. <ul><li>"Timed event" (for an event that is scheduled for a specific time on that day)</li><li>"Untimed event" (for an event this does not have a time (like a holiday)</li><li>"All day event" (for an event that takes all day (like being out of the office)</li></ul>
 duration-help: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
+minutes: minutes
 end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
 Due Date: Due Date
@@ -796,6 +793,12 @@ You must specify a group name: You must specify a group name
 #
 Display weekends in week view: Display weekends in week view
 Display days with events in bold in year view: Display days with events in bold in year view
+Time interval: Time interval
+time-interval-help: Specifies how long the time blocks in the week view and day view will be.
+Auto-refresh calendars: Auto-refresh calendars
+auto-refresh-help: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
+Auto-refresh time: Auto-refresh time
+auto-refresh-time-help: If Auto-refresh is enabled, this specifies the time between each refresh.
 Nonuser: Nonuser Calendars
 user-customize-color: Specifies whether users are allowed to modify their own color scheme.
 enable-gradient-help: Use gradient colors for cell backgrounds.
@@ -996,6 +999,10 @@ Modify Non User Calendar Preferences: Modify Non User Calendar Preferences
 Return to My Preferences: Return to My Preferences
 Custom Scripts: Custom Scripts
 Timezone Selection: Timezone Selection
+entry-interval-help: Sets minute interval when editing entry times
+Entry interval: Entry interval
+hour: hour
+minute: minute
 theme-reload-help: Due to CSS caching, a page reload may be required
 Page may need to be reloaded for new Theme to take effect: Page may need to be reloaded for new Theme to take effect
 Email format preference: Email format preference
