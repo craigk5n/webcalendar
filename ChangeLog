@@ -1,4 +1,5 @@
 Version 1.0.5 (?? ??? 2006)
+ - Patch 1519611: Added new French-UTF8 translation
  - Patch 1558537: Updated Russian translation
  - Patch 1520078: Fix for postgreSQL PHP warnings
  - Patch 1519610: Updated French translation
