@@ -752,8 +752,7 @@ a.matrix img {
   padding: 3px;
 }
 #datesel td.field {
-  font-size: 12px;
-  font-weight: bold;   
+  font-size: 12px;  
 }
 .glance {
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
