@@ -588,7 +588,7 @@ etranslate( 'Page may need to be reloaded for new Theme to take effect' )?></td>
  <label for="pref_THEME"><?php etranslate( 'Themes' )?>:</label></td><td>
  <select name="pref_THEME" id="pref_THEME">
 <?php
-  echo "<option value=\"none\" disabled  $selected>" . 
+  echo "<option value=\"none\" disabled=\"disabled\"  $selected>" . 
     translate( 'AVAILABLE THEMES' ) . "</option>\n";
   //always use 'none' as default so we don't overwrite manual settings
  // echo '<option value="none"' . $selected . translate( 'None' ) . "</option>\n";
@@ -691,7 +691,7 @@ $publish_access =  ( empty  ( $prefarray['USER_REMOTE_ACCESS'] ) ? 0 :
      $selected : '' ) . ' >' . translate ( 'Public' ) . ' ' .  
      translate( 'entries' )?></option>
    <option value="1" <?php echo ( $publish_access == '1' ? 
-     $selected : '' ) . ' >' . translate ( 'Public' ) . ' &' . 
+     $selected : '' ) . ' >' . translate ( 'Public' ) . ' &amp; ' . 
       translate( 'Confidential' ) . ' ' . translate( 'entries' )?></option>
    <option value="2" <?php echo ( $publish_access == '2' ? 
      $selected : '' ) . ' >' . translate( 'All' ) . ' ' . 
