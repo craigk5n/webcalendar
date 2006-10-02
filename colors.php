@@ -61,7 +61,10 @@ for ($gs=0; $gs < $graycnt; $gs++){
  
 ?>
 </tr></table>
-
+<br />
+  <form>
+    <input type="button" value="<?php etranslate( 'Cancel' )?>" onclick="window.close();" />
+  </form>
 </div>
 
 <?php echo print_trailer ( false, false, true ); ?>
