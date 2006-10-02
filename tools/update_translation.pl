@@ -229,7 +229,7 @@ if ( $plugin eq "" ) {
 # ignore these translations when not performing an installation
 # Please see includes/translate.php for details
 #
-  push( @files, "install/default_config.php" );
+  push( @files, "install/install_functions.php" );
   push( @files, "install/index.php" );
 }
 

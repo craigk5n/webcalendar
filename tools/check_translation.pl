@@ -70,7 +70,7 @@ foreach $f (@incfiles) {
 push( @files, "tools/send_reminders.php" );
 push( @files, "tools/reload_remotes.php" );
 push( @files, "includes/menu/index.php" );
-push( @files, "install/default_config.php" );
+push( @files, "install/install_functions.php" );
 push( @files, "install/index.php" );
 
 foreach $f (@files) {
