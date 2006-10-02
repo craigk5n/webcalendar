@@ -29,7 +29,7 @@
 #
 #
 #
-# Translation last updated on 09-28-2006
+# Translation last updated on 10-02-2006
 
 
 ###############################################
@@ -102,6 +102,10 @@ Error adding event: Error adding event
 Select: Select
 Yes: Yes
 No: No
+Day: Day
+Week: Week
+Month: Month
+Year: Year
 System Settings: System Settings
 Help: Help
 Settings: Settings
@@ -167,14 +171,8 @@ to: to
 Appearance: Appearance
 preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: Preferred view
-Day: Day
-Week: Week
-Month: Month
-Year: Year
 Allow top menu: Allow top menu
 Date Selectors position: Date Selectors position
-Top: Top
-Bottom: Bottom
 menu-themes-help: Sets the colors and style of the top menu
 Menu theme: Menu theme
 fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
@@ -1578,6 +1576,14 @@ for non-user calendar: for non-user calendar
 No Remote Calendars found: No Remote Calendars found
 Remote Calendars not enabled: Remote Calendars not enabled
 
+
+###############################################
+# Page: install/install_functions.php
+#
+Error updating webcal_config: Error updating webcal_config
+Error updating webcal_user_pref: Error updating webcal_user_pref
+Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
+Your previous version of WebCalendar requires updating several database tables.: Your previous version of WebCalendar requires updating several database tables.
 
 ###############################################
 # Page: install/index.php
