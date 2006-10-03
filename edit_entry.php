@@ -12,8 +12,6 @@
  * discontinued) or FCKEditor.  See the WebCalendar home page
  * for download and install instructions for these packages.
  *
- * TODO 
- *   Fix XHTML errors with duplicate ids and ids starting with numbers
  *
  */
 include_once 'includes/init.php';
@@ -274,9 +272,12 @@ if ( $readonly == 'Y' || $is_nonuser ) {
           }        
           $rpt_freq = $row[4];
           $byday = explode(',',$row[5]);
+          $bydayStr = $row[5];
           $bymonth = explode(',',$row[6]);
           $bymonthday = explode(',', $row[7]);
+          $bymonthdayStr = $row[7];
           $bysetpos = explode(',', $row[8]);
+          $bysetposStr = $row[8];
           $byweekno = $row[9];
           $byyearday = $row[10];
           $wkst = $row[11];
@@ -733,7 +734,8 @@ if ( $eType != 'task' ) {?>
   ?>:&nbsp;</span></td><td colspan="2">
   <input type="text" name="duration_h" id="duration_h" size="2" maxlength="2" value="<?php 
   if ( $allday != 'Y' ) printf ( "%d", $dur_h );
-  ?>" />:<input type="text" name="duration_m" id="duration_m" size="2" maxlength="2" value="<?php 
+  ?>" />:
+  <input type="text" name="duration_m" id="duration_m" size="2" maxlength="2" value="<?php 
    if ( $allday != 'Y' ) 
     printf ( "%02d", $dur_m );
   ?>" />&nbsp;(<label for="duration_h"><?php 
@@ -1047,18 +1049,21 @@ if ( $useTabs ) { ?>
   etooltip( 'repeat-bydayextended-help' )?>"><td class="tooltip">
  <label><?php echo translate( 'ByDay' ) ?>:</label></td>
     <td colspan="2" style="padding-left:0px">
+  <input type="hidden" name="bydayList" value="<?php echo $bydayStr ?>" />
+  <input type="hidden" name="bymonthdayList" value="<?php echo $bymonthdayStr ?>" />
+  <input type="hidden" name="bysetposList" value="<?php echo $bysetposStr ?>" />
+ <table class="byxxx" cellpadding="2" cellspacing="0" border="1"><tr><td></td>
  <?php
-   //display byday extended selection
-  //We use BUTTONS  in a triple state configuration, but this data will not get
-  //posted along with the form. So, we create hidden text fields to pass the data 
-  //to the form handler. If there is  a better/easier way to do this....let us know.
-   echo '<table class="byxxx" cellpadding="2" cellspacing="0" border="1"><tr><td></td>';
+  //display byday extended selection
+  //We use BUTTONS  in a triple state configuration, and store the values in
+  //a javascript array until form submission. We then set the hidden field
+  // bydayList to the string value of the array.
   for ( $rpt_byday_label =0;$rpt_byday_label <=6; $rpt_byday_label++){
     echo '<th width="50px"><label >' . translate($weekday_names[$rpt_byday_label]) . "</label></th>\n";
   }
   echo "</tr><tr>\n<th>" . translate ( 'All' ) . '</th>';
   for ( $rpt_byday_single =0;$rpt_byday_single <=6; $rpt_byday_single++){
-    echo '<td><input type="checkbox" name="bydayext1[]" id="' .
+    echo '<td><input type="checkbox" name="bydayAll[]" id="' .
     $byday_names[$rpt_byday_single] ."\" value=\"$byday_names[$rpt_byday_single]\"" 
      . (in_array($byday_names[$rpt_byday_single],$byday)? $checked:'') . " />\n</td>\n";
   }
@@ -1072,10 +1077,8 @@ if ( $useTabs ) { ?>
      : (in_array(($loop_ctr -6) . $byday_names[$rpt_byday],$byday)
      ?($loop_ctr -6) . $byday_names[$rpt_byday]:'        ')); 
 
-    echo "<td><input type=\"hidden\" name=\"bydayext2[]\"  " .
-      " id=\"$loop_ctr$byday_names[$rpt_byday]\" value=\"$buttonvalue\" />\n" .
-      " <input  type=\"button\" name=\"byday2[]\"" .
-      " id=\"$loop_ctr$byday_names[$rpt_byday]\"" .
+    echo "<td><input  type=\"button\" name=\"byday\"" .
+      " id=\"_$loop_ctr$byday_names[$rpt_byday]\"" .
       " value=\"$buttonvalue\"" .
       " onclick=\"toggle_byday(this)\" /></td>\n";
     }
@@ -1125,9 +1128,7 @@ if ( $useTabs ) { ?>
           "</label></th>\n";
       if ( $loop_ctr == 31 ) 
         echo '<th><label>31</label></th>' . "\n";
-    echo '<td><input type="hidden" name="bysetpos2[]"  ' .
-      " id=\"bysetpos$loop_ctr\" value=\"$buttonvalue\" />\n" .
-     ' <input  type="button" name="bysetpos[]"' .
+    echo '<td><input  type="button" name="bysetpos"' .
       " id=\"bysetpos$loop_ctr\" value=\"$buttonvalue\"" .
      ' onclick="toggle_bysetpos(this)" /></td>' . "\n";
        if (  $loop_ctr %10 == 0 ) echo  "</tr><tr>\n";
@@ -1157,9 +1158,7 @@ if ( $useTabs ) { ?>
           "</label></th>\n";
       if ( $loop_ctr == 31 ) 
         echo '<th><label>31</label></th>' . "\n";
-    echo '<td><input type="hidden" name="bymonthday[]"  ' .
-      " id=\"bymonthday$loop_ctr\" value=\"$buttonvalue\" />\n" .
-     ' <input  type="button" name="bymonthday2[]" id="bymonthday' . $loop_ctr . '"' .
+    echo '<td><input  type="button" name="bymonthday" id="bymonthday' . $loop_ctr . '"' .
       " value=\"$buttonvalue\"" .
      ' onclick="toggle_bymonthday(this)" /></td>' . "\n";
        if ( $loop_ctr %10 == 0 ) echo  "</tr><tr>\n";
@@ -1171,12 +1170,12 @@ if ( $useTabs ) { ?>
  $excepts = '';
  $exceptcnt = count ( $exceptions );
  for ( $i = 0; $i < $exceptcnt; $i++ ) {
-   $excepts .= '<option -' . $exceptions[$i] . '>-' . $exceptions[$i] . "</option>\n";
+   $excepts .= '<option value="-' . $exceptions[$i] . '">-' . $exceptions[$i] . "</option>\n";
  }
   //Populate Repeat Inclusions data for later use
  $includecnt = count ( $inclusions );
  for ( $i = 0; $i < $includecnt; $i++ ) {
-   $excepts .= '<option +' . $inclusions[$i] . '>+' . $inclusions[$i] . "</option>\n";
+   $excepts .= '<option value="+' . $inclusions[$i] . '">+' . $inclusions[$i] . "</option>\n";
  }
 ?>
  </td> 
@@ -1235,25 +1234,26 @@ if ( $useTabs ) { ?>
 
 <table border="0" cellspacing="0" cellpadding="3">
    <?php 
-    echo '<input type="hidden" name="rem_action" value="' . 
-      ( ! empty ( $reminder['action'] )? $reminder['action']: 'EMAIL' ) . '" />';
-    echo '<input type="hidden" name="rem_last_sent" value="' . 
-      ( ! empty ( $reminder['last_sent'] )? $reminder['last_sent']: 0 ) . '" />';
-    echo '<input type="hidden" name="rem_times_sent" value="' . 
-      ( ! empty ( $reminder['times_sent'] )? $reminder['times_sent']: 0 ) . '" />';
-    echo '<tr><td class="tooltip"><label>' . translate( 'Send Reminder' ) . ':</label></td>';  
+    echo '<thead><tr><td class="tooltip"><label>' . translate( 'Send Reminder' ) . ':</label></td>';  
     $rem_status = ( count ( $reminder) || $REMINDER_DEFAULT =='Y'?true:false );
     echo '<td colspan="3">';
+    echo '<input type="hidden" name="rem_action" value="' . 
+      ( ! empty ( $reminder['action'] )? $reminder['action']: 'EMAIL' ) . '" />' ."\n";
+    echo '<input type="hidden" name="rem_last_sent" value="' . 
+      ( ! empty ( $reminder['last_sent'] )? $reminder['last_sent']: 0 ) . '" />' ."\n";
+    echo '<input type="hidden" name="rem_times_sent" value="' . 
+      ( ! empty ( $reminder['times_sent'] )? $reminder['times_sent']: 0 ) . '" />' ."\n";
     echo '<label><input type="radio" name="reminder" id="reminderYes" value="1"';
 
     if ( $rem_status )
       echo $checked;
-    echo ' onclick="toggle_reminders()" />';
+    echo ' onclick="toggle_reminders()" />' ."\n";
     echo translate ( 'Yes' ) . '</label>&nbsp;<label>';
     echo '<input type="radio" name="reminder" id="reminderNo" value="0"';
     if ( ! $rem_status )
       echo $checked;
-    echo ' onclick="toggle_reminders()" />' . translate ( 'No' ) . '</label></td></tr>';
+    echo ' onclick="toggle_reminders()" />' . translate ( 'No' ) . 
+      '</label></td></tr></thead>' ."\n";
     $rem_use_date = ( ! empty ( $reminder['date'] ) || 
       ( $reminder_offset == 0 && $REMINDER_WITH_DATE == 'Y' )? true:false);
     ?> 
@@ -1263,7 +1263,7 @@ if ( $useTabs ) { ?>
      <input  type="radio" name="rem_when" id="rem_when_date" value="Y" <?php 
      if ( $rem_use_date )
        echo  $checked; 
- ?>  onclick="toggle_rem_when()" /><?php etranslate ( 'Use Date/Time' ); ?>&nbsp;<label>
+ ?>  onclick="toggle_rem_when()" /><?php etranslate ( 'Use Date/Time' ); ?>&nbsp;</label>
     </td><td class="boxtop boxright" nowrap="nowrap" colspan="2"> 
     <?php 
       echo date_selection ( 'reminder_', ( ! empty ( $reminder['date'] ) ?
@@ -1275,13 +1275,14 @@ if ( $useTabs ) { ?>
       echo time_selection ( 'reminder_', ( ! empty ( $reminder['time'] ) ? 
         $reminder['time'] : $cal_time ) );
     ?>  
+     </td></tr>
      <tr><td class="boxleft boxright"  height="20px" colspan="3">&nbsp;</td></tr>  
      <tr>
       <td class="boxleft"><label>
      <input  type="radio" name="rem_when" id="rem_when_offset" value="N" <?php 
      if ( ! $rem_use_date )
        echo $checked;  
- ?>  onclick="toggle_rem_when()" /><?php etranslate ( 'Use Offset' ); ?>&nbsp;<label>
+ ?>  onclick="toggle_rem_when()" /><?php etranslate ( 'Use Offset' ); ?>&nbsp;</label>
     </td><td class="boxright" nowrap="nowrap" colspan="2">
     <?php
         $rem_minutes = $reminder_offset;
@@ -1327,7 +1328,7 @@ if ( $useTabs ) { ?>
     if ( ! $rem_related )
       echo $checked;
     echo ' />' . translate ( 'End/Due' ) ."</label></td></tr>\n";    
-    echo '<tr><td colspan="4"></td></tr></tbody>';
+    echo '<tr><td colspan="4"></td></tr></tbody>' . "\n";
     //Reminder Repeats
       if ( isset (  $reminder['repeats'] ) )
         $rem_rep_count = $reminder['repeats'];
@@ -1345,19 +1346,19 @@ if ( $useTabs ) { ?>
     echo '<tbody  id="reminder_repeat"><tr>';
     echo '<td class="tooltip" rowspan="2"><label>' .translate( 'Repeat' ) . ":</label></td>\n";
     echo '<td class="boxleft boxtop">';
-    echo '&nbsp;&nbsp;&nbsp;<label>' . translate( 'Times' ) . '</label></td>';
+    echo '&nbsp;&nbsp;&nbsp;<label>' . translate( 'Times' ) . '</label></td>' ."\n";
     echo '<td class="boxright boxtop" colspan="2">';
     echo '<input type="text" size="2" name="rem_rep_count" '.
-      "value=\"$rem_rep_count\" onchange=\"toggle_rem_rep();\" /></label></td></tr>\n";
+      "value=\"$rem_rep_count\" onchange=\"toggle_rem_rep();\" /></td></tr>\n";
     echo '<tr id="rem_repeats"><td class="boxleft boxbottom">';
-    echo '&nbsp;&nbsp;&nbsp;<label>' . translate ( 'Every' ) . '</label></td>';
+    echo '&nbsp;&nbsp;&nbsp;<label>' . translate ( 'Every' ) . '</label></td>' ."\n";
     echo '<td class="boxright boxbottom" colspan="2">';
     echo '<label><input type="text" size="2" name="rem_rep_days" '.
       "value=\"$rem_rep_days\" /> " .  translate( 'days' ) . "</label>&nbsp;\n";
-    echo '<label><input type="text" size="2" name="rem_rep_hours" ' .
-      "value=\"$rem_rep_hours\" /> " .  translate( 'hours' ) . "</label>&nbsp;\n";
-    echo '<label><input type="text" size="2" name="rem_rep_minutes" ' .
-      "value=\"$rem_rep_minutes\" /> " .  translate( 'minutes' ) .'</label>';
+    echo '<input type="text" size="2" name="rem_rep_hours" ' .
+      "value=\"$rem_rep_hours\" /><label> " .  translate( 'hours' ) . "</label>&nbsp;\n";
+    echo '<input type="text" size="2" name="rem_rep_minutes" ' .
+      "value=\"$rem_rep_minutes\" /><label> " .  translate( 'minutes' ) .'</label>';
     echo "</td></tr></tbody>\n";
     
         

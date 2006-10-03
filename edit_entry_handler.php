@@ -218,40 +218,31 @@ if ( empty ( $participants[0] ) ) {
 
 if ( empty ( $DISABLE_REPEATING_FIELD ) ||
   $DISABLE_REPEATING_FIELD == 'N' ) {
-  //Convert $byxx arrays from form
-  rsort ($bydayext2);
-  
-  for ( $i=0; $i<35;$i++) {
-   if ( strlen ($bydayext2[$i]) < 2 || 
-     $bydayext2[$i] == '        ') unset  ($bydayext2[$i]);
-  }
-  if ( ! empty ( $bydayext1 ) ) {
-    $bydayext = array_merge($bydayext1,$bydayext2);
-    $byday = implode (',', $bydayext );
-  } else {
-    $byday = implode (',', $bydayext2 );
-  }
 
-  rsort ($bymonthday);
-  for ( $i=0; $i<31;$i++) {
-   if ( strlen ($bymonthday[$i] < 1 || 
-     $bymonthday[$i] == '      ' ) ) unset  ($bymonthday[$i]);
+  $bydayAr = explode ( ',', $bydayList );
+  if ( ! empty ( $bydayAll ) ) {
+    $bydayAr = array_merge($bydayAll,$bydayAr);
   }
-  $bymonthday = implode (',', $bymonthday );
-  
-  rsort ($bysetpos2);
-  for ( $i=0; $i<31;$i++) {
-   if ( strlen ($bysetpos2[$i]) < 1 || 
-     $bysetpos2[$i] == '      ') unset  ($bysetpos2[$i]);
-  }
-  if ( ! empty ( $bysetpos2) ) $bysetpos = implode (',', $bysetpos2 );
-  
-  $bymonth = ( ! empty ( $bymonth) ? implode (',', $bymonth ) : '' );
-  
+  sort ($bydayAr);
+  if ( ! empty ( $bydayAr) ) 
+    $byday = implode (',', $bydayAr );
   //This allows users to select on weekdays if daily
   if ( $rpt_type == 'daily' && ! empty ( $weekdays_only ) ) {
    $byday = 'MO,TU,WE,TH,FR';
   }
+
+  $bymonthdayAr = explode ( ',', $bymonthdayList );
+  sort ($bymonthdayAr);
+  if ( ! empty ( $bymonthdayAr) ) 
+    $bymonthday = implode (',', $bymonthdayAr );
+ 
+  $bysetposAr = explode ( ',', $bysetposList ); 
+  sort ($bysetposAr);
+  if ( ! empty ( $bysetposAr) ) 
+    $bysetpos = implode (',', $bysetposAr );
+  
+  $bymonth = ( ! empty ( $bymonth) ? implode (',', $bymonth ) : '' );
+  
   
   if ( ! empty ( $rpt_year ) ) {
     $rpt_hour +=  $rpt_ampm;  

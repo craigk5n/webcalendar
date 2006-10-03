@@ -4,30 +4,34 @@ defined( '_ISVALID' ) or die( "You can't access this file directly!" );
  global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
  $user = $arinc[3];
 ?>
+var bydayAr = new Object();
+var bymonthdayAr = new Object();
+var bysetposAr = new Object();
+
 // do a little form verifying
 function validate_and_submit () {
-  if ( document.editentryform.name.value == "" ) {
-    document.editentryform.name.select ();
+  if ( form.name.value == "" ) {
+    form.name.select ();
 <?php
     if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
       $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
     showTab ( "details" );
 <?php } ?>
-    document.editentryform.name.focus ();
+    form.name.focus ();
     alert ( "<?php etranslate( 'You have not entered a Brief Description', true)?>.");
     return false;
   }
-  if ( document.editentryform.timetype && 
-    document.editentryform.timetype.selectedIndex == 1 ) {
-    h = parseInt (isNumeric( document.editentryform.entry_hour.value ));
-    m = parseInt (isNumeric( document.editentryform.entry_minute.value ));  
+  if ( form.timetype && 
+    form.timetype.selectedIndex == 1 ) {
+    h = parseInt (isNumeric( form.entry_hour.value ));
+    m = parseInt (isNumeric( form.entry_minute.value ));  
 
     // Ask for confirmation for time of day if it is before the user's
     // preference for work hours.
     <?php if ($GLOBALS['TIME_FORMAT'] == "24") {
       echo "if ( h < $WORK_DAY_START_HOUR  ) {";
     }  else {
-      echo "if ( h < $WORK_DAY_START_HOUR && document.editentryform.entry_ampmA.checked ) {";
+      echo "if ( h < $WORK_DAY_START_HOUR && form.entry_ampmA.checked ) {";
     }
     ?>
     if ( ! confirm ( "<?php etranslate ( 'The time you have entered begins before your preferred work hours.  Is this correct?', true)?> "))
@@ -37,7 +41,6 @@ function validate_and_submit () {
  
   // is there really a change?
   changed = false;
-  form=document.editentryform;
   for ( i = 0; i < form.elements.length; i++ ) {
     field = form.elements[i];
     switch ( field.type ) {
@@ -71,55 +74,77 @@ function validate_and_submit () {
  if (typeof editor != "undefined") editor._textArea.value = editor.getHTML();
 
  //Check if Event date is valid
- var d = document.editentryform.day.selectedIndex;
-  var vald = document.editentryform.day.options[d].value;
-  var m = document.editentryform.month.selectedIndex;
-  var valm = document.editentryform.month.options[m].value;
-  var y = document.editentryform.year.selectedIndex;
-  var valy = document.editentryform.year.options[y].value;
+  var d = form.day.selectedIndex;
+  var vald = form.day.options[d].value;
+  var m = form.month.selectedIndex;
+  var valm = form.month.options[m].value;
+  var y = form.year.selectedIndex;
+  var valy = form.year.options[y].value;
   var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
    alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
-  document.editentryform.day.focus ();
+  form.day.focus ();
    return false;
  }
- //Select all Repeat Exception Dates
- for ( i = 0; i < document.editentryform.elements.length; i++ ) {
-  if ( document.editentryform.elements[i].name == "exceptions[]" )
-      exceptionid = i;
- }
- //Repeat Tab enabled
- if ( document.editentryform.rpttype ) {
-   for ( i = 0; i < document.editentryform.elements[exceptionid].length; i++ ) {
-     document.editentryform.elements[exceptionid].options[i].selected = true;
+ //Repeat Tab enabled, Select all of them
+ if ( form.rpttype ) {
+   for ( i = 0; i < elements['exceptions[]'].length; i++ ) {
+     elements['exceptions[]'].options[i].selected = true;
    }
  }
  
- if ( document.editentryform.due_day ) {
+ if ( form.due_day ) {
    //Check if Event due date is valid
-   var d = document.editentryform.due_day.selectedIndex;
-   var vald = document.editentryform.due_day.options[d].value;
-   var m = document.editentryform.due_month.selectedIndex;
-   var valm = document.editentryform.due_month.options[m].value;
-   var y = document.editentryform.due_year.selectedIndex;
-   var valy = document.editentryform.due_year.options[y].value;
+   var d = form.due_day.selectedIndex;
+   var vald = form.due_day.options[d].value;
+   var m = form.due_month.selectedIndex;
+   var valm = form.due_month.options[m].value;
+   var y = form.due_year.selectedIndex;
+   var valy = form.due_year.options[y].value;
    var c = new Date(valy,valm -1,vald);
    if ( c.getDate() != vald ) {
      alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
-     document.editentryform.due_day.focus ();
+     form.due_day.focus ();
      return false;
    }
  } 
+
+ //set byxxxList values for submission
+ var bydayStr = '';
+ for ( bydayKey in bydayAr ) {
+   if ( bydayAr[bydayKey].length < 8 )
+     bydayStr = bydayStr + ',' + bydayAr[bydayKey];
+ }
+ if ( bydayStr.length > 0 )
+   elements['bydayList'].value = bydayStr.substr(1);
+
+ //set bymonthday values for submission
+ var bymonthdayStr = '';
+ for ( bymonthdayKey in bymonthdayAr ) {
+   if ( bymonthdayAr[bymonthdayKey].length < 8 )
+     bymonthdayStr = bymonthdayStr + ',' + bydayAr[bydayKey];
+ }
+ if ( bymonthdayStr.length > 0 )
+   elements['bymonthdayList'].value = bymonthdayStr.substr(1);
+
+ //set bysetpos values for submission
+ var bysetposStr = '';
+ for ( bysetposKey in bysetposAr ) {
+   if ( bysetposAr[bysetposKey].length < 8 )
+     bysetposStr = bysetposStr + ',' + bysetposAr[bydayKey];
+ }
+ if ( bysetposStr.length > 0 )
+   elements['bysetposList'].value = bysetposStr.substr(1);
  
- document.editentryform.submit ();
+ form.submit ();
  return true;
 }
 
 function selectDate ( day, month, year, current, evt ) {
   // get currently selected day/month/year
-  monthobj = eval ( 'document.editentryform.' + month );
+  monthobj = eval ( 'form.' + month );
   curmonth = monthobj.options[monthobj.selectedIndex].value;
-  yearobj = eval ( 'document.editentryform.' + year );
+  yearobj = eval ( 'form.' + year );
   curyear = yearobj.options[yearobj.selectedIndex].value;
   date = curyear;
 
@@ -146,18 +171,18 @@ function selectDate ( day, month, year, current, evt ) {
   var user = "<?php echo $user ?>";
   // find id of user selection object
   var listid = 0;
-  for ( i = 0; i < document.editentryform.elements.length; i++ ) {
-    if ( document.editentryform.elements[i].name == "participants[]" )
+  for ( i = 0; i < elementlength; i++ ) {
+    if ( elements[i].name == "participants[]" )
       listid = i;
   }
   url = "usersel.php?form=editentryform&listid=" + listid + "&user=" + user + "&users=";
   // add currently selected users
-  for ( i = 0, j = 0; i < document.editentryform.elements[listid].length; i++ ) {
-    if ( document.editentryform.elements[listid].options[i].selected ) {
+  for ( i = 0, j = 0; i < elements[listid].length; i++ ) {
+    if ( elements[listid].options[i].selected ) {
       if ( j != 0 )
         url += ",";
       j++;
-      url += document.editentryform.elements[listid].options[i].value;
+      url += elements[listid].options[i].value;
     }
   }
   //alert ( "URL: " + url );
@@ -172,17 +197,17 @@ function selectDate ( day, month, year, current, evt ) {
  // If they change their mind & switch it back, the original 
  // values are restored for them
 ?>function timetype_handler () {
-  if ( ! document.editentryform.timetype )
+  if ( ! form.timetype )
    return true;
-  var i = document.editentryform.timetype.selectedIndex;
-  var val = document.editentryform.timetype.options[i].text;
+  var i = form.timetype.selectedIndex;
+  var val = form.timetype.options[i].text;
   if ( i != 1 ) {
     // Untimed/All Day
     makeInvisible ( "timeentrystart" );
-  if ( document.editentryform.timezonenotice ) {
+    if ( form.timezonenotice ) {
       makeInvisible ( "timezonenotice" );
-  }
-    if ( document.editentryform.duration_h ) {
+    }
+    if ( form.duration_h ) {
       makeInvisible ( "timeentryduration" );
     } else {
       makeInvisible ( "timeentryend" );
@@ -190,11 +215,11 @@ function selectDate ( day, month, year, current, evt ) {
   } else {
     // Timed Event
     makeVisible ( "timeentrystart" );
-  if ( document.editentryform.timezonenotice ) {
+    if ( form.timezonenotice ) {
       makeVisible ( "timezonenotice" );
-  }
+    }
 
-    if ( document.editentryform.duration_h ) {
+    if ( form.duration_h ) {
       makeVisible ( "timeentryduration" );
     } else {
       makeVisible ( "timeentryend" );
@@ -204,13 +229,12 @@ function selectDate ( day, month, year, current, evt ) {
 
 function rpttype_handler (  ) {
   //Repeat Tab disabled
-  if ( ! document.editentryform.rpttype ) {
+  if ( ! form.rpttype ) {
     return;
   }
-  var expertid = getElementId('rptmode');
-  var expert = document.editentryform.elements[expertid].checked;
-  var i = document.editentryform.rpttype.selectedIndex;
-  var val = document.editentryform.rpttype.options[i].text;
+  var expert = ( document.getElementById('rptmode').checked);
+  var i = form.rpttype.selectedIndex;
+  var val = form.rpttype.options[i].text;
   //alert ( "val " + i + " = " + val );
   //i == 0 none
   //i == 1 daily 
@@ -307,21 +331,21 @@ function rpttype_handler (  ) {
 }
 
 function rpttype_weekly () {
-  var i = document.editentryform.rpttype.selectedIndex;
-  var val = document.editentryform.rpttype.options[i].text;
+  var i = form.rpttype.selectedIndex;
+  var val = form.rpttype.options[i].text;
  if ( val == "Weekly" ) {
    var rpt_days = new Array("SU","MO","TU","WE","TH","FR","SA");
    //Get Event Date values
-   var d = document.editentryform.day.selectedIndex;
-   var vald = document.editentryform.day.options[d].value;
-   var m = document.editentryform.month.selectedIndex;
-   var valm = document.editentryform.month.options[m].value -1;
-   var y = document.editentryform.year.selectedIndex;
-   var valy = document.editentryform.year.options[y].value;
+   var d = form.day.selectedIndex;
+   var vald = form.day.options[d].value;
+   var m = form.month.selectedIndex;
+   var valm = form.month.options[m].value -1;
+   var y = form.year.selectedIndex;
+   var valy = form.year.options[y].value;
    var c = new Date(valy,valm,vald);
    var dayOfWeek = c.getDay();
    var rpt_day = rpt_days[dayOfWeek];
-   document.editentryform.elements[rpt_day].checked = true; 
+   elements[rpt_day].checked = true; 
  }
 }
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
@@ -335,21 +359,11 @@ tabs[3] = "reminder";
 
 var sch_win;
 
-function getElementId ( elename ) {
-  var listid = 0;
-  for ( i = 0; i < document.editentryform.elements.length; i++ ) {
-    if ( document.editentryform.elements[i].name == elename )
-      listid = i;
-  }
-  return listid;
-}
-
 // Show Availability for the first selection
 function showSchedule () {
   //var agent=navigator.userAgent.toLowerCase();
   //var agent_isIE=(agent.indexOf("msie") > -1);
-  var myForm = document.editentryform;
-  var userlist = myForm.elements[getElementId('participants[]')];
+  var userlist = form.elements['participants[]'];
   var delim = '';
   var users = '';
   var cols = <?php echo $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ?>;
@@ -370,9 +384,9 @@ function showSchedule () {
   var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=yes';
   var url = 'availability.php?users=' + users + 
            '&form='  + 'editentryform' +     
-           '&year='  + myForm.year.value + 
-           '&month=' + myForm.month.value + 
-           '&day='   + myForm.day.options[myForm.day.selectedIndex].text;
+           '&year='  + form.year.value + 
+           '&month=' + form.month.value + 
+           '&day='   + form.day.options[form.day.selectedIndex].text;
 
   if (sch_win != null && !sch_win.closed) {
      h = h + 30;
@@ -388,12 +402,12 @@ function add_exception (which) {
  if (which ) {
     sign = "+";
  }
- var d = document.editentryform.except_day.selectedIndex;
- var vald = document.editentryform.except_day.options[d].value;
- var m = document.editentryform.except_month.selectedIndex;
- var valm = document.editentryform.except_month.options[m].value;
- var y = document.editentryform.except_year.selectedIndex;
- var valy = document.editentryform.except_year.options[y].value;
+ var d = form.except_day.selectedIndex;
+ var vald = form.except_day.options[d].value;
+ var m = form.except_month.selectedIndex;
+ var valm = form.except_month.options[m].value;
+ var y = form.except_year.selectedIndex;
+ var valy = form.except_year.options[y].value;
  var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
    alert ("<?php etranslate( 'Invalid Date',true ) ?>");
@@ -403,9 +417,9 @@ function add_exception (which) {
  var exceptDate = String((c.getFullYear() * 100 + c.getMonth() +1) * 100 + c.getDate());
  var isUnique = true;
  //Test to see if this date is already in the list
-  with (document.editentryform)
+  with (form)
    { 
-      with (document.editentryform.elements['exceptions[]'])
+      with (elements['exceptions[]'])
       {
          for (i = 0; i < length; i++)
          {
@@ -416,15 +430,15 @@ function add_exception (which) {
    }
   } 
  if ( isUnique ) {
-    document.editentryform.elements['exceptions[]'].options[document.editentryform.elements['exceptions[]'].length]  = new Option( sign + exceptDate, sign + exceptDate );
+    elements['exceptions[]'].options[elements['exceptions[]'].length]  = new Option( sign + exceptDate, sign + exceptDate );
     makeVisible ( "select_exceptions" );
     makeInvisible ( "select_exceptions_not" );
  }
 }
 function del_selected () {
-   with (document.editentryform)
+   with (form)
    { 
-      with (document.editentryform.elements['exceptions[]'])
+      with (elements['exceptions[]'])
       {
          for (i = 0; i < length; i++)
          {
@@ -444,20 +458,15 @@ function del_selected () {
 function toggle_byday(ele){
   if (ele.value.length > 4 ) {
     //blank
-    ele.value = ele.id;
-  } else if (ele.value == ele.id) {
+    ele.value = ele.id.substr(1);
+  } else if (ele.value == ele.id.substr(1)) {
     //positive value
-    ele.value =  (parseInt(ele.id.substr(0,1)) -6 ) +  ele.id.substr(1,2);
-  } else if (ele.value ==  (parseInt(ele.id.substr(0,1)) -6 ) +  ele.id.substr(1,2)) {
+    ele.value =  (parseInt(ele.id.substr(1,1)) -6 ) +  ele.id.substr(2,2);
+  } else if (ele.value ==  (parseInt(ele.id.substr(1,1)) -6 ) +  ele.id.substr(2,2)) {
     //negative value
   ele.value = "        ";
   }
-  for ( i = 0; i < document.editentryform.elements.length; i++ ) {
-    if ( document.editentryform.elements[i].name == "bydayext2[]" ){
-      if ( document.editentryform.elements[i].id == ele.id ) 
-      document.editentryform.elements[i].value = ele. value;
-    }
-  }
+  bydayAr[ele.id.substr(1)] = ele.value;
 }
 
 function toggle_bymonthday(ele){
@@ -471,12 +480,7 @@ function toggle_bymonthday(ele){
     //negative value
   ele.value = "     ";
   }
-  for ( i = 0; i < document.editentryform.elements.length; i++ ) {
-    if ( document.editentryform.elements[i].name == "bymonthday[]" ){
-      if ( document.editentryform.elements[i].id == ele.id ) 
-      document.editentryform.elements[i].value = ele. value;
-    }
-  }
+  bymonthdayAr[ele.id] = ele.value;
 }
 
 function toggle_bysetpos(ele){
@@ -491,33 +495,28 @@ function toggle_bysetpos(ele){
     //negative value
   ele.value = "     ";
   }
-  for ( i = 0; i < document.editentryform.elements.length; i++ ) {
-    if ( document.editentryform.elements[i].name == "bysetpos2[]" ){
-      if ( document.editentryform.elements[i].id == ele.id ) 
-      document.editentryform.elements[i].value = ele. value;
-    }
-  }
+  bysetposAr[ele.id] = ele.value;
 }
 
 function toggle_until() {
   //Repeat Tab disabled
-  if ( ! document.editentryform.rpttype ) {
+  if ( ! form.rpttype ) {
     return;
   }
  //use date
- document.editentryform.elements['rpt_day'].disabled = 
-  document.editentryform.elements['rpt_month'].disabled =
-  document.editentryform.elements['rpt_year'].disabled =
-  document.editentryform.elements['rpt_btn'].disabled =
-  document.editentryform.elements['rpt_hour'].disabled =
-  document.editentryform.elements['rpt_minute'].disabled = 
-  ( document.editentryform.rpt_untilu.checked != true );
+ elements['rpt_day'].disabled = 
+  elements['rpt_month'].disabled =
+  elements['rpt_year'].disabled =
+  elements['rpt_btn'].disabled =
+  elements['rpt_hour'].disabled =
+  elements['rpt_minute'].disabled = 
+  ( form.rpt_untilu.checked != true );
 
  //use count
- document.editentryform.elements['rpt_count'].disabled = 
-  ( document.editentryform.rpt_untilc.checked != true ); 
- if ( document.editentryform.elements['rpt_ampmA'] ) {
-   if ( document.editentryform.rpt_untilu.checked ) { //use until date
+ elements['rpt_count'].disabled = 
+  ( form.rpt_untilc.checked != true ); 
+ if ( elements['rpt_ampmA'] ) {
+   if ( form.rpt_untilu.checked ) { //use until date
      document.getElementById('rpt_ampmA').disabled = false;
      document.getElementById('rpt_ampmP').disabled = false;
    } else {
@@ -529,11 +528,11 @@ function toggle_until() {
 
 function toggle_rem_when() {
   //Reminder Tab disabled
-  if ( ! document.editentryform.rem_when ) {
+  if ( ! form.rem_when ) {
     return;
   }
- if ( document.editentryform.elements['reminder_ampmA'] ) {
-   if ( document.editentryform.elements['rem_when_date'].checked == true ) {
+ if ( elements['reminder_ampmA'] ) {
+   if ( elements['rem_when_date'].checked == true ) {
    document.getElementById('reminder_ampmA').disabled = false;
    document.getElementById('reminder_ampmP').disabled = false;
   } else { 
@@ -541,43 +540,43 @@ function toggle_rem_when() {
    document.getElementById('reminder_ampmP').disabled = 'disabled';
   }
  }
- document.editentryform.elements['rem_days'].disabled =
-   document.editentryform.elements['rem_hours'].disabled =
-   document.editentryform.elements['rem_minutes'].disabled =
-   document.editentryform.elements['rem_beforeY'].disabled =
-   document.editentryform.elements['rem_relatedS'].disabled =
-   document.editentryform.elements['rem_beforeN'].disabled =
-   document.editentryform.elements['rem_relatedE'].disabled = 
-   document.editentryform.elements['rem_when_date'].checked;
+ elements['rem_days'].disabled =
+   elements['rem_hours'].disabled =
+   elements['rem_minutes'].disabled =
+   elements['rem_beforeY'].disabled =
+   elements['rem_relatedS'].disabled =
+   elements['rem_beforeN'].disabled =
+   elements['rem_relatedE'].disabled = 
+   elements['rem_when_date'].checked;
 
- document.editentryform.elements['reminder_day'].disabled =
-   document.editentryform.elements['reminder_month'].disabled =
-   document.editentryform.elements['reminder_year'].disabled =
-   document.editentryform.elements['reminder_btn'].disabled = 
-   document.editentryform.elements['reminder_hour'].disabled =
-   document.editentryform.elements['reminder_minute'].disabled = 
-  ( document.editentryform.elements['rem_when_date'].checked != true );
+ elements['reminder_day'].disabled =
+   elements['reminder_month'].disabled =
+   elements['reminder_year'].disabled =
+   elements['reminder_btn'].disabled = 
+   elements['reminder_hour'].disabled =
+   elements['reminder_minute'].disabled = 
+  ( elements['rem_when_date'].checked != true );
 }
 
 function toggle_reminders() {
   //Reminder Tab disabled
-  if ( ! document.editentryform.rem_when ) {
+  if ( ! form.rem_when ) {
     return;
   }
   toggle_rem_when();
   makeInvisible ( "reminder_when",true );
   makeInvisible ( "reminder_repeat", true );
-  if ( document.editentryform.elements['reminderYes'].checked == true ) { 
+  if ( elements['reminderYes'].checked == true ) { 
    makeVisible ( "reminder_when", true ); 
    makeVisible ( "reminder_repeat", true );
   }
 }
 
 function toggle_rem_rep(){
- var cnt = document.editentryform.elements['rem_rep_count'].value;
- document.editentryform.elements['rem_rep_days'].disabled = (cnt == 0 );
- document.editentryform.elements['rem_rep_hours'].disabled = (cnt == 0 );
- document.editentryform.elements['rem_rep_minutes'].disabled = (cnt == 0 );
+ elements['rem_rep_days'].disabled =
+ elements['rem_rep_hours'].disabled =
+ elements['rem_rep_minutes'].disabled = 
+ ( elements['rem_rep_count'].value == 0 );
 }
 
 
@@ -591,7 +590,7 @@ function editCats (  evt ) {
     mY = evt.pageY + 150;
   }
   var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY ;
-  var cat_ids = document.editentryform.elements['cat_id'].value;
+  var cat_ids = elements['cat_id'].value;
   var user = '<?php echo $user ?>';
   url = "catsel.php?form=editentryform&cats=" + cat_ids;
   if (user ) {
@@ -626,18 +625,52 @@ function isNumeric(sText)
 }
 
 function completed_handler () {
-  if ( document.editentryform.percent ) {
-    var mypercent = document.editentryform.percent.selectedIndex;
-    var others_complete = document.editentryform.others_complete.value;
-    document.editentryform.elements['completed_day'].disabled =
-      document.editentryform.elements['completed_month'].disabled =
-      document.editentryform.elements['completed_year'].disabled =
-      document.editentryform.elements['completed_btn'].disabled =
-      ( mypercent != 10 || others_complete != 'yes' );
+  if ( form.percent ) {
+    elements['completed_day'].disabled =
+      elements['completed_month'].disabled =
+      elements['completed_year'].disabled =
+      elements['completed_btn'].disabled =
+      ( form.percent.selectedIndex != 10 || form.others_complete.value != 'yes' );
   }
 }
 
 function onLoad () {
+  //define these variables here so they are valid
+  form = document.editentryform;
+  elements = document.editentryform.elements;
+  elementlength = document.editentryform.elements.length;
+  
+  //initialize byxxxAr Objects
+  bydayList = form.bydayList.value;
+  if ( bydayList.search( /,/ ) > -1 ) {
+    bydayList = bydayList.split ( ',' );
+    for ( key in bydayList ) {
+      bydayAr[bydayList[key]] = bydayList[key];
+    }
+  } else if ( bydayList.length > 0 ) {
+    bydayAr[bydayList] = bydayList;
+ }
+
+  bymonthdayList = form.bymonthdayList.value;
+  if ( bymonthdayList.search( /,/ ) > -1 ) {
+    bymonthdayList = bymonthdayList.split ( ',' );
+    for ( key in bymonthdayList ) {
+      bymonthdayAr[bymonthdayList[key]] = bymonthdayList[key];
+    }
+  } else if ( bymonthdayList.length > 0 ) {
+    bymonthdayAr[bymonthdayList] = bymonthdayList;
+ }
+
+  bysetposList = form.bysetposList.value;
+  if ( bysetposList.search( /,/ ) > -1 ) {
+    bysetposList = bysetposList.split ( ',' );
+    for ( key in bysetposList ) {
+      bysetposAr[bysetposList[key]] = bysetposList[key];
+    }
+  } else if ( bysetposList.length > 0 ){
+    bysetposAr[bysetposList] = bysetposList;
+ }
+
 	timetype_handler();
 	rpttype_handler();
 	toggle_until();
