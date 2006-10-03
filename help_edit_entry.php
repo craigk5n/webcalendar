@@ -52,7 +52,7 @@ echo $helpListStr;
     <p class="helptext">
     <span class="helplabel"><?php etranslate('Repeat Type')?>:</span>
    <?php etranslate('repeat-type-help')?>
-   <a class="underline" href="/docs/WebCalendar-UserManual.html#repeat"><?php 
+   <a class="underline" href="docs/WebCalendar-UserManual.html#repeat"><?php 
     etranslate( 'For More Information...') ?></a></p>
     <p class="helptext">
     <span class="helplabel"><?php etranslate('Repeat End Date')?>:</span>
