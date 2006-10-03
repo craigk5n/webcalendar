@@ -13,7 +13,6 @@
  * for download and install instructions for these packages.
  *
  * TODO 
- *   Add <fieldset></fieldset> grouping if $EVENT_EDIT_TABS = N
  *   Fix XHTML errors with duplicate ids and ids starting with numbers
  *
  */
@@ -101,7 +100,6 @@ load_user_categories ();
 if ( empty ( $EVENT_EDIT_TABS ) )
   $EVENT_EDIT_TABS = 'Y'; // default
 $useTabs = ( $EVENT_EDIT_TABS == 'Y' );
-
 // make sure this is not a read-only calendar
 $can_edit = false;
 
@@ -577,6 +575,9 @@ if ( $DISABLE_REMINDER_FIELD != 'Y' ) { ?>
  <!-- DETAILS -->
  <a name="tabdetails"></a>
  <div id="tabscontent_details">
+<?php } else { ?>
+<fieldset>
+ <legend><?php etranslate('Details')?></legend>
 <?php } ?>
   <table border="0">
    <tr><td style="width:14%;" class="tooltip" title="<?php 
@@ -635,10 +636,9 @@ if ( ! empty ( $categories ) && $CATEGORIES_ENABLED == 'Y' ) { ?>
    <label for="entry_categories"><?php etranslate( 'Category' )?>:<br /></label>
    <input type="button" value="<?php etranslate( 'Edit' ) ?>" onclick="editCats(event)" />
    </td><td valign="top">
-      <input  readonly="readonly" type="text" name="catnames" 
+      <input  readonly="readonly" type="text" name="catnames" id="entry_categories" 
      value="<?php echo $catNames ?>"  size="30" onclick="editCats(event)"/>
-   <input  type="hidden" name="cat_id" id="entry_categories" value="<?php 
-     echo $catList ?>" />
+   <input  type="hidden" name="cat_id" value="<?php echo $catList ?>" />
      </td></tr>
 <?php } //end if (! empty ($categories))
 if (( ! empty ( $categories ) ) || ( $DISABLE_ACCESS_FIELD != 'Y' ) || 
@@ -689,14 +689,14 @@ if ( $eType == 'task' ) { //only for tasks
   </td></tr>
 <?php if ( $DISABLE_LOCATION_FIELD != 'Y'  ){  ?>
  <tr><td class="tooltip" title="<?php etooltip( 'location-help' )?>">
-   <?php etranslate( 'Location' )?>:</td><td colspan="2">
-    <input type="text" name="location" size="55" 
+    <label for="entry_location"><?php etranslate( 'Location' )?>:</label></td><td colspan="2">
+    <input type="text" name="location" id="entry_location" size="55" 
    value="<?php echo htmlspecialchars ( $location ); ?>" />
   </td></tr>
 <?php } 
-echo '<tr><td class="tooltip" title="' . tooltip( 'date-help' ) . '">';
+echo '<tr><td class="tooltip" title="' . tooltip( 'date-help' ) . '"><label>';
 echo  ( $eType == 'task'? translate( 'Start Date' ):translate( 'Date' ) ) . 
-  ':</td><td colspan="2">' .  "\n";
+  ':</label></td><td colspan="2">' .  "\n";
 echo date_selection ( '', $cal_date );
 
 echo "</td></tr>\n";
@@ -860,12 +860,17 @@ if ( $site_extracnt )
 
 if ( $useTabs ) { ?>
 </div>
+<?php } else { ?>
+</fieldset>
 <?php } /* $useTabs */ ?>
 
 <!-- PARTICIPANTS -->
 <?php if ( $useTabs ) { ?>
 <a name="tabparticipants"></a>
 <div id="tabscontent_participants">
+<?php } else { ?>
+<fieldset>
+ <legend><?php etranslate('Participants')?></legend>
 <?php } /* $useTabs */ ?>
 <table>
 <?php
@@ -943,6 +948,8 @@ if ( $single_user == 'N' && $show_participants ) {
 </table>
 <?php if ( $useTabs ) { ?>
 </div>
+<?php } else { ?>
+</fieldset>
 <?php } /* $useTabs */ ?>
 
 <!-- REPEATING INFO -->
@@ -950,6 +957,9 @@ if ( $single_user == 'N' && $show_participants ) {
 if ( $useTabs ) { ?>
 <a name="tabpete"></a>
 <div id="tabscontent_pete">
+<?php } else { ?>
+<fieldset>
+ <legend><?php etranslate('Repeat')?></legend>
 <?php } /* $useTabs */ ?>
 
 <table border="0" cellspacing="0" cellpadding="3">
@@ -993,12 +1003,12 @@ if ( $useTabs ) { ?>
   <label for="rpt_day"><?php etranslate( 'Ending' )?>:</label></td>
  <td colspan="2" class="boxleft boxtop boxright"><input  type="radio" name="rpt_end_use" id="rpt_untilf" value="f" <?php 
   echo (  empty ( $rpt_end ) && empty ( $rpt_count )? $checked : '' ); 
- ?>  onclick="toggle_until()" /><label><?php etranslate( 'Forever' )?></label>
+ ?>  onclick="toggle_until()" /><label for="rpt_untilf"><?php etranslate( 'Forever' )?></label>
  </td></tr>
  <tr id="rptenddate2" style="visibility:hidden;"><td class="boxleft">
  <input  type="radio" name="rpt_end_use" id="rpt_untilu" value="u" <?php 
   echo ( ! empty ( $rpt_end ) ? $checked : '' ); 
- ?> onclick="toggle_until()" />&nbsp;<label><?php etranslate( 'Use end date' )?></label>
+ ?> onclick="toggle_until()" />&nbsp;<label for="rpt_untilu"><?php etranslate( 'Use end date' )?></label>
 </td><td class="boxright">
  <span class="end_day_selection" id="rpt_end_day_select"><?php
   echo date_selection ( 'rpt_', $rpt_end_date ? $rpt_end_date : $cal_date )
@@ -1010,7 +1020,7 @@ if ( $useTabs ) { ?>
 <tr id="rptenddate3" style="visibility:hidden;"><td class="boxleft boxbottom">
   <input type="radio" name="rpt_end_use" id="rpt_untilc" value="c" <?php 
   echo ( ! empty ( $rpt_count ) ? $checked : '' ); 
- ?> onclick="toggle_until()" />&nbsp;<label><?php etranslate( 'Number of times' )?></label>
+ ?> onclick="toggle_until()" />&nbsp;<label for="rpt_untilc"><?php etranslate( 'Number of times' )?></label>
  </td><td class="boxright boxbottom">
 
  <input type="text" name="rpt_count" id="rpt_count" size="4" maxlength="4" value="<?php echo $rpt_count; ?>" />
@@ -1187,8 +1197,8 @@ if ( $useTabs ) { ?>
 
  <tr id="rptexceptions" style="visibility:visible;"  title="<?php 
   etooltip( 'repeat-exceptions-help' )?>">
- <td class="tooltip">
- <?php echo translate( 'Exclusions' ) . '/<br />' . translate( 'Inclusions' )?>:</td>
+ <td class="tooltip"><label>
+ <?php echo translate( 'Exclusions' ) . '/<br />' . translate( 'Inclusions' )?>:</label></td>
  <td colspan="2" class="boxleft boxtop boxright boxbottom">
  <table border="0" width="250px">
  <tr ><td colspan="2">
@@ -1208,6 +1218,8 @@ if ( $useTabs ) { ?>
 </td></tr></table>
 <?php if ( $useTabs ) { ?>
 </div> <!-- End tabscontent_pete -->
+<?php } else { ?>
+</fieldset>
 <?php } /* $useTabs */ 
 } ?>
 
@@ -1216,6 +1228,9 @@ if ( $useTabs ) { ?>
 if ( $useTabs ) { ?>
 <a name="tabreminder"></a>
 <div id="tabscontent_reminder">
+<?php } else { ?>
+<fieldset>
+ <legend><?php etranslate('Reminders')?></legend>
 <?php } /* $useTabs */ ?>
 
 <table border="0" cellspacing="0" cellpadding="3">
@@ -1226,7 +1241,7 @@ if ( $useTabs ) { ?>
       ( ! empty ( $reminder['last_sent'] )? $reminder['last_sent']: 0 ) . '" />';
     echo '<input type="hidden" name="rem_times_sent" value="' . 
       ( ! empty ( $reminder['times_sent'] )? $reminder['times_sent']: 0 ) . '" />';
-    echo '<tr><td class="tooltip">' . translate( 'Send Reminder' ) . ':</td>';  
+    echo '<tr><td class="tooltip"><label>' . translate( 'Send Reminder' ) . ':</label></td>';  
     $rem_status = ( count ( $reminder) || $REMINDER_DEFAULT =='Y'?true:false );
     echo '<td colspan="3">';
     echo '<label><input type="radio" name="reminder" id="reminderYes" value="1"';
@@ -1243,7 +1258,7 @@ if ( $useTabs ) { ?>
       ( $reminder_offset == 0 && $REMINDER_WITH_DATE == 'Y' )? true:false);
     ?> 
     <tbody id="reminder_when"><tr>
-    <td class="tooltip" rowspan="6"><?php etranslate( 'When' ); ?>:</td>
+    <td class="tooltip" rowspan="6"><label><?php etranslate( 'When' ); ?>:</label></td>
     <td class="boxtop boxleft" width="20%"><label>
      <input  type="radio" name="rem_when" id="rem_when_date" value="Y" <?php 
      if ( $rem_use_date )
@@ -1328,7 +1343,7 @@ if ( $useTabs ) { ?>
       $rem_rep_hours = (int) ( $rem_rep_minutes / 60 );
       $rem_rep_minutes -= ( $rem_rep_hours * 60 );
     echo '<tbody  id="reminder_repeat"><tr>';
-    echo '<td class="tooltip" rowspan="2">' .translate( 'Repeat' ) . ":</td>\n";
+    echo '<td class="tooltip" rowspan="2"><label>' .translate( 'Repeat' ) . ":</label></td>\n";
     echo '<td class="boxleft boxtop">';
     echo '&nbsp;&nbsp;&nbsp;<label>' . translate( 'Times' ) . '</label></td>';
     echo '<td class="boxright boxtop" colspan="2">';
@@ -1350,6 +1365,8 @@ if ( $useTabs ) { ?>
       
 if ( $useTabs ) { ?>
 </div> <!-- End tabscontent_pete -->
+<?php } else { ?>
+</fieldset>
 <?php } /* $useTabs */ 
 } ?>
 </div> <!-- End tabscontent -->
