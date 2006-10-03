@@ -1,4 +1,5 @@
 Version 1.1.2 (?? ??? 2006)
+ - Applied patch [ 1567654 ] Add some <label> tags to edit_entry.php
  - Fixed bug [ 1566223 ] 25 hours in a day?
  - Added patch [ 1531698 ] Reorganized and grouped System Settings
    main options and user preferences
