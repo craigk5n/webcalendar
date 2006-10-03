@@ -219,7 +219,7 @@ ul a {
 }
 .tabfor a,
 .tabbak a {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   text-decoration: none;
 }
