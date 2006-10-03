@@ -1,4 +1,6 @@
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug: Not all yearly repeating events were not showing up in
+   year view and reports that spanned a year.
  - Applied patch [ 1567654 ] Add some <label> tags to edit_entry.php
  - Fixed bug [ 1566223 ] 25 hours in a day?
  - Added patch [ 1531698 ] Reorganized and grouped System Settings

@@ -423,16 +423,18 @@ if ( ! isset ( $report_time_range ) ) {
   exit;
 }
 
+// The read_repeated_events calculates all event repeat dates for
+// some time period after the values of $thismonth and $thisyear.
+$thismonth = date ( 'm', $end_date );
+$thisyear = date ( 'Y', $end_date );
+
 if ( empty ( $error ) && empty ( $list ) ) {
   $cat_id = empty ( $report_cat_id ) ? '' : $report_cat_id;
 
   $repeated_events = read_repeated_events ( $report_user, $cat_id, $start_date );
-
   $events = read_events ( $report_user, $start_date, $end_date, $cat_id );
 
   $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
-
-  //echo "Date Range: $start_date - $end_date <br /><br />\n";
 
   // Loop through each day
   // Get events for each day (both normal and repeating).
@@ -440,10 +442,9 @@ if ( empty ( $error ) && empty ( $list ) ) {
   for ( $cur_time = $start_date; $cur_time <= $end_date; $cur_time += ONE_DAY ) {
     $event_str = '';
     $dateYmd = date ( 'Ymd', $cur_time );
-    $rep = get_repeating_entries ( empty ( $user ) ? $login : $user, $dateYmd );
+    $rep = get_repeating_entries ( $report_user, $dateYmd );
     $ev = get_entries ( $dateYmd );
     $ev = combine_and_sort_events($ev, $rep);
-    //echo "DATE: $dateYmd <br />\n";
     for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
       if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
         $event_str .= event_to_text ( $ev[$i], $dateYmd );
