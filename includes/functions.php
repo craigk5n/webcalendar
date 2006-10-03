@@ -2227,7 +2227,10 @@ function get_tasks ( $date, $get_unapproved=true ) {
 /**
  * Reads events visible to a user.
  *
- * Includes layers and possibly public access if enabled
+ * Includes layers and possibly public access if enabled.
+ * NOTE: the values for the global variables $thisyear and $thismonth
+ * MUST be set!  (This will determine how far in the future to caclulate
+ * repeating event dates.)
  *
  * @param string $user          Username
  * @param bool   $want_repeated Get repeating events?
@@ -2427,7 +2430,9 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
   if ( $want_repeated ) {
      // Now load event exceptions/inclusions and store as array 
     $resultcnt =  count ( $result );
-    $max_until = mktime ( 0,0,0,$thismonth + 2,1, $thisyear);
+    // TODO: allow passing this max_until as param in case we create
+    // a custom report that shows N years of events.
+    $max_until = mktime ( 0,0,0,$thismonth + 2,1, $thisyear + 1);
     for ( $i = 0; $i < $resultcnt; $i++ ) {
       if ( $result[$i]->getID() != '' ) {
         $rows = dbi_get_cached_rows ( 'SELECT cal_date, cal_exdate ' .
@@ -2460,7 +2465,11 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
           if ( ! $result[$i]->getRepeatBySetPos()  && $until > $max_until )
             $until = $max_until; 
           $rpt_count = 999; //some BIG number
-          $jump = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear);
+          // End date... for year view and some reports we need whole year...
+          // So, let's do up to 365 days after current month.
+          // TODO: add this end time as a parameter in case someone creates
+          // a custom report that asks for N years of events.
+          $jump = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear + 1);
           if ( $result[$i]->getRepeatCount() ) 
             $rpt_count = $result[$i]->getRepeatCount() -1;
           $date = $result[$i]->getDateTimeTS();
@@ -2744,13 +2753,15 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
       $thismonth = substr($dateYmd, 4, 2);
       $thisyear  = substr($dateYmd, 0, 4);
       $thisday   = substr($dateYmd, 6, 2);
-   //skip to this year if called from query_events and we don't need count
-  if ( ! empty ( $jump) && $Count == 999 ) {
-     while ( date ( 'Y',$cdate ) < date ( 'Y', $jump ) ) {
-          $thisyear += $interval;
-     $cdate = mktime ( $hour, $minute, 0, 1, 1, $thisyear ) ;
-    }
-      }      
+      //skip to this year if called from query_events and we don't need count
+      // cek: commented out since it this is causing some events to not be
+      // loaded in year view and some reports.
+      //if ( ! empty ( $jump) && $Count == 999 ) {
+      //  while ( date ( 'Y',$cdate ) < date ( 'Y', $jump ) ) {
+      //    $thisyear += $interval;
+      //    $cdate = mktime ( $hour, $minute, 0, 1, 1, $thisyear ) ;
+      //  }
+      //}      
       $cdate = mktime ( $hour,  $minute, 0, $thismonth, $thisday, $thisyear ) ;
       while ($cdate <= $realend && $n <= $Count) {
         $yret = array();
