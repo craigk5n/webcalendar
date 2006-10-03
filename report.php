@@ -425,8 +425,10 @@ if ( ! isset ( $report_time_range ) ) {
 
 // The read_repeated_events calculates all event repeat dates for
 // some time period after the values of $thismonth and $thisyear.
-$thismonth = date ( 'm', $end_date );
-$thisyear = date ( 'Y', $end_date );
+if ( ! empty ( $end_date ) ) {
+  $thismonth = date ( 'm', $end_date );
+  $thisyear = date ( 'Y', $end_date );
+}
 
 if ( empty ( $error ) && empty ( $list ) ) {
   $cat_id = empty ( $report_cat_id ) ? '' : $report_cat_id;
