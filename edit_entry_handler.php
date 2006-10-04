@@ -222,24 +222,30 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
   $bydayAr = explode ( ',', $bydayList );
   if ( ! empty ( $bydayAll ) ) {
     $bydayAr = array_merge($bydayAll,$bydayAr);
+    $bydayAr = array_unique( $bydayAr );
   }
-  sort ($bydayAr);
-  if ( ! empty ( $bydayAr) ) 
+  if ( ! empty ( $bydayAr) ) {
+    sort ($bydayAr);
     $byday = implode (',', $bydayAr );
+  }
   //This allows users to select on weekdays if daily
   if ( $rpt_type == 'daily' && ! empty ( $weekdays_only ) ) {
    $byday = 'MO,TU,WE,TH,FR';
   }
 
   $bymonthdayAr = explode ( ',', $bymonthdayList );
-  sort ($bymonthdayAr);
-  if ( ! empty ( $bymonthdayAr) ) 
+  if ( ! empty ( $bymonthdayAr) ) {
+    sort ($bymonthdayAr);
+    $bymonthdayAr = array_unique( $bymonthdayAr );
     $bymonthday = implode (',', $bymonthdayAr );
- 
+  }
+
   $bysetposAr = explode ( ',', $bysetposList ); 
-  sort ($bysetposAr);
-  if ( ! empty ( $bysetposAr) ) 
+  if ( ! empty ( $bysetposAr) ) {
+    sort ($bysetposAr);
+    $bysetposAr = array_unique( $bysetposAr );
     $bysetpos = implode (',', $bysetposAr );
+  }
   
   $bymonth = ( ! empty ( $bymonth) ? implode (',', $bymonth ) : '' );
   
