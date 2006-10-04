@@ -604,7 +604,7 @@ an event participant will show up in your event calendar for users
 who have not logged in.  If events are not showing up on your public
 calendar, make sure the events have the "Public User" as a participant
 and the event has been approved.
-<p>
+</p>
 
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
@@ -1166,7 +1166,7 @@ and the event has been approved.
  If you don't want each individual user to have to import
  the holiday calendar, you can use nonuser calendars.
  First, make sure nonuser calendars are enabled in your
- system settings.  Then, from Admin->Users, you can
+ system settings.  Then, from Admin-&gt;Users, you can
  access nonuser calendars.  Create a new nonuser calendar
  (such as "usholidays").  Then, notify your users that they
  can add this nonuser calendar as a layer to their own
@@ -1211,7 +1211,7 @@ and the event has been approved.
     (These settings will likely move into System Settings in subsequent release.)
     You can then use an <tt>iframe</tt> elsewhere on your web site as
     in the example below:
-    <pre>&lt;iframe height="250" width="300" scrolling="yes" src="upcoming.php">&lt;/iframe></pre>
+    <pre>&lt;iframe height="250" width="300" scrolling="yes" src="upcoming.php"&gt;&lt;/iframe&gt;</pre>
     Include this HTML anywhere on any of your pages.
     By default, the events from the public calendar will be loaded (so
     you must have "Public Access" enabled in System Settings).
@@ -1222,7 +1222,7 @@ and the event has been approved.
     following example. There are some configuration options available in the top of this file as well.
     You can then use an <tt>iframe</tt> elsewhere on your web site as
     in the example below:
-    <pre>&lt;iframe height="200" width="180" scrolling="yes" src="minical.php">&lt;/iframe></pre>
+    <pre>&lt;iframe height="200" width="180" scrolling="yes" src="minical.php"&gt;&lt;/iframe&gt;</pre>
   </dd>
  <dt>How do I customize the appearance of WebCalendar so that it matches
      the rest of my site?</dt>
@@ -1265,14 +1265,14 @@ and the event has been approved.
      with your favorite text editor (like vi, vim, emacs, pico, Notepad, etc.).
      In particular look for places where missing translations are indicated.
      All missing translations should be marked with a
-  "&lt;&lt;&nbsp;MISSING&nbsp;>>" note.
+  "&lt;&lt;&nbsp;MISSING&nbsp;&gt;&gt;" note.
   and typically the English version of the translation will also be included on the following line (as in the example below):
-    <pre># &lt;&lt; MISSING >>
+    <pre># &lt;&lt; MISSING &gt;&gt;
 # Edit:
 #</pre><br />
   For some text, an abbreviation may be used rather than the English text.
   In those cases, the full text will be noted as in the following example:
-  <pre># &lt;&lt; MISSING >>
+  <pre># &lt;&lt; MISSING &gt;&gt;
 # custom-script-help:
 # English text: Allows entry of custom Javascript or stylesheet text that
 # will be inserted into the HTML "head" section of every page.
@@ -1580,10 +1580,10 @@ following steps to setup WebCalendar.
 <pre><strong>mysqladmin create intranet</strong></pre>
  <p>Next, create the database user account that will be used to access the database.</p>
  <pre><strong>mysql --user=root mysql</strong>
-mysql> <strong>GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost
+mysql&gt; <strong>GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost
 IDENTIFIED BY 'webcal01' WITH GRANT OPTION;</strong>
-mysql> <strong>FLUSH PRIVILEGES;</strong>
-mysql> <strong>QUIT</strong></pre>
+mysql&gt; <strong>FLUSH PRIVILEGES;</strong>
+mysql&gt; <strong>QUIT</strong></pre>
  <p>If you will be accessing MySQL from a different machine than
   the one running the web server, repeat the command above
   and replace 'localhost' with the hostname of the other machine.</p>
