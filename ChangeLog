@@ -1,4 +1,5 @@
 Version 1.1.2 (?? ??? 2006)
+ - Implemented PATCH [ 1534419 ] Make Docs Valid XHTML
  - Fixed bug [ 1559816 ] QUERY_STRING
  - Added patch [ 1518822 ] Faster access.php
  - Fixed bug: Not all yearly repeating events were not showing up in
