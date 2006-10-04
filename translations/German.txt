@@ -11,7 +11,8 @@
 # Last update: 19 Sept 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 25 Sept 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 29 Sept 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 10-02-2006
+# Last update: 3 Okt 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 10-04-2006
 
 
 ###############################################
@@ -25,17 +26,17 @@ charset: iso-8859-1
 # Page: access.php
 #
 Database error: Datenbank Fehler
-DEFAULT CONFIGURATION: GRUNDKONFIGURATION
-Public Access: &Ouml;ffentlicher Zugang
-User Access Control: Zugriffskontrolle
-Admin: Administration
 Cancel: Abbrechen
+DEFAULT CONFIGURATION: GRUNDKONFIGURATION
 Save: Speichern
-Grant This User Access to My Calendar: Erlaube Benutzerzugriff auf meinen Kalender
+Public Access: &Ouml;ffentlicher Zugang
+Admin: Administration
+User Access Control: Zugriffskontrolle
 Allow Access to Other Users' Calendar: Erlaube Zugriff auf Kalender anderer Benutzer
+Grant This User Access to My Calendar: Erlaube Benutzerzugriff auf meinen Kalender
 Go: Zeigen 
-Calendar: Kalender
 Type: Art
+Calendar: Kalender
 View Event: Termin ansehen
 View: Ansicht
 Edit: &Auml;ndern
@@ -108,9 +109,9 @@ Home URL: Haupt-URL
 language-help: Gibt die Standard Sprache an.
 Language: Sprache
 Your browser default language is: Ihre derzeitige Browser-Sprache ist
-Allow user to use themes: Erlaubt das Verwenden von 'Themen' f&uuml;r Benutzer
+Allow user to use themes: 'Themen' f&uuml;r Benutzer
 themes-help: Erlaubt eine Vielzahl von Updates f&uuml;r Konfigurationseinstellungen. Kleingeschriebene Eintr&auml;ge sind nur benutzereigene Voreinstellungen
-Themes: Themen
+Themes: Thema
 AVAILABLE THEMES: VERF&Uuml;GBARE THEMEN
 None: Keine
 Preview: Vorschau
@@ -122,15 +123,15 @@ Custom header: Benutzerdefinierte Kopfzeile
 custom-trailer-help: Erm&ouml;glicht benutzerdefinierte HTML-Abschnitte am ENDE jeder Seite.
 Custom trailer: Benutzerdefinierte Fu&szlig;zeile
 enable-external-header-help: Erlaubt das hochladen von einer externen Datei f&uuml;r eine benutzerdefinierte Fu&szlig;zeile
-Allow external file for header/script/trailer: Erlaubt externe Datei f&uuml;r Kopfzeile/Script/Fu&szlig;zeile
-Allow user to override header/trailer: Erlaubt den Benutzer Kopf- und Fu&szlig;zeile zu &uuml;berschreiben
+Allow external file for header/script/trailer: Externe Datei f&uuml;r Kopfzeile/Script/Fu&szlig;zeile
+Allow user to override header/trailer: Benutzer d&uuml;rfen Kopf- und Fu&szlig;zeilen &uuml;berschreiben
 Date and Time: Datum und Uhrzeit
 tz-help: Hilfe f&uuml;r Zeitzonen
 Server Timezone Selection: Zeitzonenauswahl am Server
 Your current GMT offset is: Ihre jetzige GMT-Zeitverschiebung ist
 hours: Stunden
 display-general-use-gmt-help: Falls aktiv, werden allg. Datums/Zeiten als GMT angezeigt
-Display Common Use Date/Times as GMT: Verwenden des allg. Datums/Zeiten als GMT
+Display Common Use Date/Times as GMT: Allg. Datums/Zeiten als GMT
 date-format-help: Legt ein spezielles Datumsformat fest.
 Date format: Datumsformat
 Small Task Date: Kleines Datumsformat f&uuml;r Aufgaben
@@ -143,7 +144,7 @@ Time format: Zeit-Format
 12 hour: 12-st&uuml;ndig
 24 hour: 24-st&uuml;ndig
 timed-evt-len-help: Spezifiziert die Methode der Zeitangabe als Zeitdauer oder Endzeitpunkt
-Specify timed event length by: Spezifiziert die Zeitspanne eines Termins als
+Specify timed event length by: Zeitspanne eines Termins als
 Duration: Dauer
 End Time: Endzeitpunkt
 work-hours-help: Zeitabschnitt f&uuml;r die Anzeige der Tagessicht.
@@ -154,7 +155,7 @@ Appearance: Erscheinungsbild
 preferred-view-help: Gibt die bevorzugte Ansicht an (Tag, Woche, Monat oder Jahr).
 Preferred view: Bevorzugte Ansicht
 Allow top menu: Erlaube Topmen&uuml;
-Date Selectors position: Position der Datumsauswahl im Topmen&uuml;
+Date Selectors position: Datumsauswahl im Topmen&uuml; anzeigen
 menu-themes-help: Stellt die Farben und die Art des oberen Men&uuml;s ein
 Menu theme: Men&uuml; Thema
 fonts-help: Definiert die Standard-Schriftarten (z.B. "Arial, Helvetica")
@@ -236,7 +237,7 @@ Public access visible by default: &ouml;ffentlicher Zugang f&uuml;r ALLE Benutze
 public-access-default-selected: Beim Hinzuf&uuml;gen eines neuen Termins wird "&ouml;ffentlicher Zugang" als Standard Benutzer ausgew&auml;hlt
 Public access is default participant: &ouml;ffentlicher Zugang als Standard Benutzer
 public-access-view-others-help: Gibt an ob ein &ouml;ffentlicher Benutzer die Kalender anderer Benutzer sehen kann.
-Public access can view other users: &ouml;ffentlicher Benutzer kann andere Benutzer ansehen
+Public access can view other users: &ouml;ffentlicher Benutzer kann andere Benutzer sehen
 public-access-can-add-help: Diese Einstellung erm&ouml;glicht es einem &ouml;ffentlichen Benutzer einen Termin einzutragen, dieser mu&szlig; jedoch durch den Administrator best&auml;tigt werden um angezeigt werden zu k&ouml;nnen 
 Public access can add events: &Ouml;ffentlicher Benutzer kann Termine hinzuf&uuml;gen
 public-access-add-requires-approval-help: Legt fest, ob hinzugef&uuml;gte Termine via &ouml;ffentlichen Zugang eine Genehmigung ben&ouml;tigen, bevor diese angezeigt werden
@@ -248,15 +249,15 @@ Override event name/description for public access: &Uuml;berschreiben von Termin
 public-access-override-text-help: Der Text der angezeigt wird wenn die obere Option aktiviert ist
 Text to display to public access: Text der im &ouml;ffentlichen Kalender angzeigt werden soll
 uac-enabled-help: Aktiviert die Zugriffskontrolle f&uuml;r den Benutzer
-User Access Control enabled: Zugriffskontrolle f&uuml;r den Benutzer aktivieren
+User Access Control enabled: Zugriffskontrolle f&uuml;r Benutzer aktivieren
 groups-enabled-help: Diese Einstellung erlaubt Benutzern andere Benutzer &uuml;ber Benutzergruppen auszuw&auml;hlen
 Groups enabled: Benutzergruppen aktivieren
 user-sees-his-group-help: Diese Einstellung verhindert, da&szlig; Benutzer Teilnehmer sehen, die nicht zu ihrer Benutzergruppe geh&ouml;ren.
-User sees only his groups: Teilnehmer k&ouml;nnen nur ihre eigene Benutzergruppe sehen
+User sees only his groups: Teilnehmer k&ouml;nnen nur ihre eigene Gruppe sehen
 nonuser-enabled-help: Falls aktiviert: Administratoren haben die M&ouml;glichkeit 'Zentrale'-Kalender hinzuzuf&uuml;gen
-Nonuser enabled: 'Zentrale'-Kalender aktiviert
-nonuser-list-help: Wo sollen die 'Zentralen'-Kalender in der Teilnehmerliste angezeigt werden?
-Nonuser list: Wo sollen die 'Zentralen' Kalender in der Teilnehmerliste angezeigt werden
+Nonuser enabled: 'Zentrale'-Kalender aktivieren
+nonuser-list-help: Sollen die 'Zentralen'-Kalender in der Teilnehmerliste am Anfang oder am Ende angezeigt werden?
+Nonuser list: Sollen die 'Zentralen' Kalender am Anfang der Teilnehmerliste angezeigt werden
 reports-enabled-help: Wenn aktiviert, finden die Benutzer am Ende jeder Seite einen Eintrag "Berichte" welcher f&uuml;r das Erstellen von Berichten verwendet werden kann. Zus&auml;tzlich kann der "Administrator" allgemeine Berichte erstellen, die f&uuml;r jeden Benutzer am Ende jeder Seite zur Verf&uuml;gung stehen.
 Reports enabled: Berichte aktivieren
 subscriptions-enabled-help: Bestimmt ob 'REMOTE'-Teilnehmer andere WebKalender von Teilnehmern abonnieren, und somit dessen Termine und ihre 'iCal'-aktiven Anwendungen (wie Apple's iCal oder Mozilla-Kalender) sehen k&ouml;nnen.
@@ -286,12 +287,12 @@ Restrict self-registration to blacklist: Einschr&auml;nkung der Selbstregistrier
 allow-self-registration-full-help: Erlaube Selbstregistrierungshilfe (Komplett)
 Use self-registration email notifications: Verwende Benachrichtigungsemail bei Selbstregistrierung
 allow-attachment-help: Erlaubt den Benutzern das Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen
-Allow file attachments to events: Das Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen erlauben
+Allow file attachments to events: Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen erlauben
 Admin and owner can always add attachments if enabled: Falls aktiviert, Administrator und Besitzer k&ouml;nnen immer Dateianh&auml;nge hinzuf&uuml;gen
 Participant: Benutzer
 Anyone: Jeder
 allow-comments-help: Erlaubt das Hinzuf&uuml;gen von Anmerkungen zu Terminen
-Allow comments to events: Das Hinzuf&uuml;gen von Anmerkungen zu Terminen erlauben
+Allow comments to events: Hinzuf&uuml;gen von Anmerkungen zu Terminen erlauben
 Admin and owner can always add comments if enabled: Falls aktiviert, Administrator und Besitzer k&ouml;nnen immer Anmerkungen hinzuf&uuml;gen
 email-enabled-help: Die Option "JA" erm&ouml;glicht das Versenden von Emails sowie von Erinnerungen &uuml;ber den Kalender. Wenn Sie keinen Mailserver installiert haben setzen Sie diese Option auf "NEIN".
 Email enabled: Email aktivieren
@@ -320,9 +321,9 @@ email-event-deleted: Gibt an ob Emailbenachrichtigungen versendet werden sollen,
 Events removed from my calendar: Termine, die von meinem Kalender ENTFERNT wurden
 email-event-rejected: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Benutzer die Teilnahme an einem Termin ABGELEHNT hat.
 Event rejected by participant: Termine, die von ANDEREN Benutzern ENTFERNT wurden
-Allow user to customize colors: Den Benutzern das &auml;ndern der Farbeinstellungen erlauben
+Allow user to customize colors: Benutzer d&uuml;rfen Farbeinstellungen &auml;ndern
 gradient-colors: Falls aktiviert, stufenweiser Farbverlauf (Farb&auml;nderung) m&ouml;glich. Das kann gro&szlig;e negative Auswirkung auf die Leistung haben.
-Enable gradient images for background colors: Aktiviern des stufenweisen Farbverlaufes (Farb&auml;nderung) f&uuml;r Hintergrundfarben
+Enable gradient images for background colors: Stufenweiser Farbverlauf (Farb&auml;nderung) f&uuml;r Hintergrundfarben
 Not available: Nicht verf&uuml;gbar
 Document background: Hintergrund
 Document title: Titel
@@ -697,9 +698,9 @@ Variable N not found: Variable N nicht gefunden
 ###############################################
 # Page: edit_template.php
 #
-Edit Custom Script/Stylesheet: &auml;ndern der benutzerdefinierten Scripte/Stylesheets
-Edit Custom Header: &auml;ndern der benutzerdefinierten KOPFZEILE
-Edit Custom Trailer: &auml;ndern der benutzerdefinierten FU&szlig;ZEILE
+Edit Custom Script/Stylesheet: &Auml;ndern der benutzerdefinierten Skripte/Stylesheets
+Edit Custom Header: &Auml;ndern der benutzerdefinierten KOPFZEILE
+Edit Custom Trailer: &Auml;ndern der benutzerdefinierten FU&szlig;ZEILE
 
 
 ###############################################
