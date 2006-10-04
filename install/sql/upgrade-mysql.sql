@@ -229,7 +229,7 @@ CREATE TABLE webcal_reminders (
   cal_offset INT NOT NULL DEFAULT '0',
   cal_related CHAR(1) NOT NULL DEFAULT 'S',
   cal_before CHAR(1) NOT NULL DEFAULT 'Y',
-  cal_last_sent INT DEFAULT NULL,
+  cal_last_sent INT NOT NULL DEFAULT '0',
   cal_repeats INT NOT NULL DEFAULT '0',
   cal_duration INT NOT NULL DEFAULT '0',
   cal_times_sent INT NOT NULL DEFAULT '0',

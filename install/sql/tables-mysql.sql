@@ -285,7 +285,7 @@ CREATE TABLE webcal_reminders (
   /* specifies whether reminder is sent before or after selected edge */
   cal_before CHAR(1) NOT NULL default 'Y',
   /* timestamp of last sent reminder */
-  cal_last_sent INT default NULL,
+  cal_last_sent INT NOT NULL default '0',
   /* number of times to repeat in addition to original occurance */
   cal_repeats INT NOT NULL default '0',
   /* time in ISO 8601 format that specifies time between repeated reminders */ 
