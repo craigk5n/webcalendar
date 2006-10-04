@@ -346,6 +346,10 @@ function get_installed_version ( $postinstall=false ) {
  
  //We will append the db_type to come up te proper filename
   $_SESSION['install_file'] = 'tables';
+
+  //suppress errors based on $show_all_errors
+ if ( ! $show_all_errors) 
+  show_errors (false);
  //This data is read from file upgrade_matrix.php
  for ( $i=0; $i < count( $database_upgrade_matrix); $i++ ) {
    $sql = $database_upgrade_matrix[$i][0];

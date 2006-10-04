@@ -21,13 +21,19 @@ if ( $id > 0 ) {
   }
     // if assistant is doing this, then we need to switch login
     // to user in the sql
+    $query_params = array();
+    $query_params[] = $id;
     $sqlparm = ( $is_assistant ? $user : $login );
     $sql = 'SELECT webcal_entry.cal_id, webcal_entry.cal_type FROM webcal_entry, ' .
       'webcal_entry_user WHERE webcal_entry.cal_id = ' .
-      'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
-      'AND (webcal_entry.cal_create_by = ? ' .
-      'OR webcal_entry_user.cal_login = ? OR ?)';
-    $res = dbi_execute ( $sql, array( $id, $sqlparm, $sqlparm, $is_admin ) );
+      'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ';
+    if ( ! $is_admin ) {
+      $sql .= 'AND (webcal_entry.cal_create_by = ? ' .
+      'OR webcal_entry_user.cal_login = ? )';
+      $query_params[] = $sqlparm;
+      $query_params[] = $sqlparm;
+     }
+    $res = dbi_execute ( $sql, $query_params );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( $row && $row[0] > 0 )
