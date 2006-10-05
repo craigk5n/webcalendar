@@ -117,6 +117,34 @@ $event_template = "<dt>\${name}</dt>\n<dd>" .
   '<b>' . translate ( 'Time' ) . ":</b> \${time}<br />\n" .
   "\${description}</dd>\n";
 
+//Setup option arrays
+$page_options = array ( 
+  'days', 'report_id' );
+$day_options = array ( 
+  'events', 'date', 'fulldate', 'report_id');
+$event_options = array ( 
+  'name',
+  'description',
+  'date',
+  'fulldate',
+  'time',
+  'starttime',
+  'endtime',
+  'duration',
+  'location',
+  'url',
+  'priority',
+  'href',
+  'user',
+  'report_id'
+);
+//generate clickable option lists
+function print_options ( $textarea, $option ) {
+  //use ASCII values for ${}
+  echo '<a onclick="addMe( \'' . $textarea . '\', \'${' .
+    $option . '}\' )">${' . $option . "}</a><br />\n";
+}
+
 if ( empty ( $error ) && $report_id >= 0 ) {
   $sql = 'SELECT cal_login, cal_report_id, cal_is_global, ' .
     'cal_report_type, cal_include_header, cal_report_name, ' .
@@ -352,49 +380,48 @@ if ( $is_admin ) {
 </table>
 
 <table>
- <tr><td>&nbsp;</td><td>&nbsp;</td><td><label>
+ <tr><td>&nbsp;</td><td>&nbsp;</td><td colspan="2"><label>
   <?php etranslate( 'Template variables' )?></label>
  </td></tr>
  <tr><td valign="top"><label>
   <?php etranslate( 'Page template' )?>:</label></td><td>
   <textarea rows="12" cols="60" name="page_template"><?php echo htmlentities ( $page_template, ENT_COMPAT, $charset )?></textarea>
-  </td><td class="aligntop">
-  <tt>${days}</tt><br />
-  <tt>${report_id}</tt><br />
+  </td><td class="aligntop cursoradd" colspan="2">
+<?php
+  foreach ( $page_options as $option ) { 
+   print_options ( 'page_template', $option );
+  }
+ ?>
  </td></tr>
  <tr><td valign="top"><label>
   <?php etranslate( 'Day template' )?>:</label></td><td>
   <textarea rows="12" cols="60" name="day_template"><?php echo htmlentities ( $day_template, ENT_COMPAT, $charset )?></textarea>
-  </td><td class="aligntop">
-  <tt>${events}</tt><br />
-  <tt>${date}</tt><br />
-  <tt>${fulldate}</tt><br />
-  <tt>${report_id}</tt><br />
+  </td><td class="aligntop cursoradd" colspan="2">
+<?php
+  foreach ( $day_options as $option ) { 
+   print_options ( 'day_template', $option );
+  }
+ ?>
  </td></tr>
  <tr><td valign="top"><label>
   <?php etranslate( 'Event template' )?>:</label></td><td>
-  <textarea rows="12" cols="60" name="event_template"><?php echo htmlentities ( $event_template, ENT_COMPAT, $charset )?></textarea>
-  </td><td class="aligntop">
-  <tt>${name}</tt><br />
-  <tt>${description}</tt><br />
-  <tt>${date}</tt><br />
-  <tt>${fulldate}</tt><br />
-  <tt>${time}</tt><br />
-  <tt>${starttime}</tt><br />
-  <tt>${endtime}</tt><br />
-  <tt>${duration}</tt><br />
-  <tt>${location}</tt><br />
-  <tt>${priority}</tt><br />
-  <tt>${href}</tt><br />
-  <tt>${user}</tt><br />
-  <tt>${report_id}</tt>
+  <textarea rows="12" cols="60" name="event_template" id="event_template"><?php 
+    echo htmlentities ( $event_template, ENT_COMPAT, $charset )?></textarea>
+  </td><td class="aligntop cursoradd" width="150px">
 <?php
+  foreach ( $event_options as $option ) { 
+   print_options ( 'event_template', $option );
+  }
+  echo '</td><td class="aligntop cursoradd">';
   $extra_names = get_site_extras_names();
-  foreach ( $extra_names as $name ) { ?>
-  <br /><tt>${extra:<?php echo $name; ?>}</tt>
-<?php } ?>
+  if ( count ( $extra_names ) > 0 ) 
+    echo '<label>' .translate( 'Site Extras' ). '</label><br />';
+  foreach ( $extra_names as $name ) { 
+    print_options ( 'event_template', 'extra:' . $name );
+ } 
+?>
  </td></tr>
- <tr><td colspan="2">
+ <tr><td colspan="4">
   <input type="submit" value="<?php etranslate( 'Save' )?>" />
 <?php if ( ! $adding_report ) { ?>
   &nbsp;&nbsp;<input type="submit" name="delete" value="<?php etranslate( 'Delete' );?>"
@@ -404,6 +431,13 @@ if ( $is_admin ) {
  </td></tr>
 </table>
 </form>
-
+<script type="text/javascript" language="javascript">
+<!-- <![CDATA[
+  function addMe ( areaname, addthis ) {
+    var textarea = document.reportform.elements[areaname];
+    textarea.value = textarea.value + addthis;  
+  }
+//]]> -->
+</script>
 <?php echo print_trailer(); ?>
 
