@@ -197,6 +197,9 @@ ul a {
 .underline {
  text-decoration: underline;
 }
+.cursoradd a {
+  cursor:pointer; 
+}
 #tabscontent {
   margin: -1px 2px;
   padding: 0.5em;
