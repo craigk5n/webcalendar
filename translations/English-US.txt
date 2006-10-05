@@ -29,7 +29,7 @@
 #
 #
 #
-# Translation last updated on 10-02-2006
+# Translation last updated on 10-05-2006
 
 
 ###############################################
@@ -43,17 +43,17 @@ charset: iso-8859-1
 # Page: access.php
 #
 Database error: Database error
-DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
-Public Access: Public Access
-User Access Control: User Access Control
-Admin: Admin
 Cancel: Cancel
+DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Save: Save
-Grant This User Access to My Calendar: Grant This User Access to My Calendar
+Public Access: Public Access
+Admin: Admin
+User Access Control: User Access Control
 Allow Access to Other Users' Calendar: Allow Access to Other Users' Calendar
+Grant This User Access to My Calendar: Grant This User Access to My Calendar
 Go: Go
-Calendar: Calendar
 Type: Type
+Calendar: Calendar
 View Event: View Event
 View: View
 Edit: Edit
@@ -1584,6 +1584,7 @@ Error updating webcal_config: Error updating webcal_config
 Error updating webcal_user_pref: Error updating webcal_user_pref
 Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
 Your previous version of WebCalendar requires updating several database tables.: Your previous version of WebCalendar requires updating several database tables.
+
 
 ###############################################
 # Page: install/index.php

@@ -4,7 +4,7 @@
 # Translated by:
 #	Andre E. Bar'yudin <baryudin@pob.huji.ac.il>
 # Last update: Wed Oct 25 14:34:05 IST 2000
-# Translation last updated on 09-28-2006
+# Translation last updated on 10-05-2006
 
 
 ###############################################
@@ -18,27 +18,27 @@ charset: KOI8-R
 # Page: access.php
 #
 Database error: Ошибка БД
+Cancel: Отменить
 #
 # << MISSING >>
 # DEFAULT CONFIGURATION:
+Save: Сохранить
 Public Access: Общий Календарь
+Admin: Администратор
 #
 # << MISSING >>
 # User Access Control:
-Admin: Администратор
-Cancel: Отменить
-Save: Сохранить
-#
-# << MISSING >>
-# Grant This User Access to My Calendar:
 #
 # << MISSING >>
 # Allow Access to Other Users' Calendar:
+#
+# << MISSING >>
+# Grant This User Access to My Calendar:
 Go: Переход
-Calendar: Календарь
 #
 # << MISSING >>
 # Type:
+Calendar: Календарь
 #
 # << MISSING >>
 # View Event:
@@ -115,6 +115,10 @@ Error adding event: Ошибка при добавлении события
 Select: Выбрать
 Yes: Да
 No: Нет
+Day: День
+Week: Неделя
+Month: Месяц
+Year: Год
 System Settings: Системные установки
 Help: Справка
 Settings: Установки
@@ -123,6 +127,9 @@ NonUser Calendars: Гость
 Other: Другое
 Email: Почта
 Colors: Цвета
+#
+# << MISSING >>
+# System options:
 app-name-help: Определяет название приложения, которое будет влиять на заголовок браузера во всех страницах, а так же страницы регистрации. Определенное Вами значение, будет просматриваться в файле перевода и предоставлять различные заголовки для разных языков.
 Application Name: Название приложения
 #
@@ -142,14 +149,6 @@ Server URL: Адрес сервера
 language-help: Определяет какой язык должен быть использован.
 Language: Язык
 Your browser default language is: Язык вашего браузера по умолчанию
-tz-help: Определяет количество часов смещения локального времени относительно времени сервера.
-#
-# << MISSING >>
-# Server Timezone Selection:
-#
-# << MISSING >>
-# Your current GMT offset is:
-hours: часы
 #
 # << MISSING >>
 # Allow user to use themes:
@@ -168,22 +167,7 @@ None: Нет
 Preview: Предпросмотр
 #
 # << MISSING >>
-# Allow top menu:
-#
-# << MISSING >>
-# Date Selectors position:
-Top: Верх
-Bottom: Низ
-#
-# << MISSING >>
-# menu-themes-help:
-# English text: Sets the colors and style of the top menu
-#
-#
-# << MISSING >>
-# Menu theme:
-fonts-help: Определяет список используемых системой шрифтов
-Fonts: Шрифты
+# Site customization:
 custom-script-help: Позволяет настроить скрипты Java и стили, которые будут использоваться в заголовках HTML на каждой странице.
 Custom script/stylesheet: Настраиваемый скрипт/стиль
 custom-header-help: Позволяет настроить HTML врезку для включения его вверху каждой страницы.
@@ -201,12 +185,67 @@ Custom trailer: Настраиваемый трассировщик
 #
 # << MISSING >>
 # Allow user to override header/trailer:
+#
+# << MISSING >>
+# Date and Time:
+tz-help: Определяет количество часов смещения локального времени относительно времени сервера.
+#
+# << MISSING >>
+# Server Timezone Selection:
+#
+# << MISSING >>
+# Your current GMT offset is:
+hours: часы
+#
+# << MISSING >>
+# display-general-use-gmt-help:
+# English text: If enabled, common dates/times are displayed as GMT
+#
+#
+# << MISSING >>
+# Display Common Use Date/Times as GMT:
+date-format-help: Предпочитаемый формат даты
+Date format: Формат даты
+#
+# << MISSING >>
+# Small Task Date:
+display-week-starts-on: Задает первый день недели - воскресенье или понедельник (во многих странах, включая Америку и Израиль, первым днем недели считается воскресенье).  Если был выбран понедельник, то нумерация недель будет производиться по стандарту ISO.
+Week starts on: Неделя начинается с
+Sunday: Воскресенье
+Monday: Понедельник
+time-format-help: Определяет формат времени:<br /> <i>12-часовой</i> или <i>24-часовой</i>.
+Time format: Формат времени
+12 hour: 12 часов
+24 hour: 24 часа
+timed-evt-len-help: Определяет продолжительность времени для события
+Specify timed event length by: Специфицировать события по
+Duration: Продолжительность
+End Time: Времени окончания
+work-hours-help: Определяет интервал времени для рабочего дня используемый календарем.
+Work hours: Рабочие часы
+From: с
+to: до
+#
+# << MISSING >>
+# Appearance:
 preferred-view-help: Определяет предпочтительный вид (день, неделя, месяц или год).
 Preferred view: Предпочитаемый вид
-Day: День
-Week: Неделя
-Month: Месяц
-Year: Год
+#
+# << MISSING >>
+# Allow top menu:
+#
+# << MISSING >>
+# Date Selectors position:
+#
+# << MISSING >>
+# menu-themes-help:
+# English text: Sets the colors and style of the top menu
+#
+#
+# << MISSING >>
+# Menu theme:
+fonts-help: Определяет список используемых системой шрифтов
+Fonts: Шрифты
 #
 # << MISSING >>
 # display-sm_month-help:
@@ -227,27 +266,12 @@ display-weekends-help: Отображение выходных дней в обзоре недели.
 #
 # << MISSING >>
 # Display all days in month view:
-yearly-shows-events-help: В обзоре года, дни с событиями отображаются жирным шрифтом.
-Display days with events in bold in month and year views: В обзоре месяца и года отображает дни с событиями жирным шрифтом
+display-week-number-help: Определяет, показывать ли нумерацию недель (1-52) при обзоре месяца и недели.
+Display week number: Показывать день недели
 display-desc-print-day-help: Включает отображение описания событий при предпросмотре печатной версии в обзоре дня.
 Display description in printer day view: Описания в печатной версии обзора дня
-#
-# << MISSING >>
-# display-general-use-gmt-help:
-# English text: If enabled, common dates/times are displayed as GMT
-#
-#
-# << MISSING >>
-# Display Common Use Date/Times as GMT:
-date-format-help: Предпочитаемый формат даты
-Date format: Формат даты
-#
-# << MISSING >>
-# Small Task Date:
-time-format-help: Определяет формат времени:<br /> <i>12-часовой</i> или <i>24-часовой</i>.
-Time format: Формат времени
-12 hour: 12 часов
-24 hour: 24 часа
+yearly-shows-events-help: В обзоре года, дни с событиями отображаются жирным шрифтом.
+Display days with events in bold in month and year views: В обзоре месяца и года отображает дни с событиями жирным шрифтом
 #
 # << MISSING >>
 # display-minutes-help:
@@ -256,45 +280,43 @@ Time format: Формат времени
 #
 # << MISSING >>
 # Display 00 minutes always:
+allow-view-add-help: Знак "+" (плюс) будет включен в просмотр, позволяя пользователям быстро добавлять события в календари.
+Include add event link in views: Вставить ссылку "Добавить событие"
 #
 # << MISSING >>
-# entry-interval-help:
-# English text: Sets minute interval when editing entry times
+# lunar-help:
+# English text: If enabled, will display small icons representing the lunar phases each month
 #
 #
 # << MISSING >>
-# Entry interval:
-hour: час
-minutes: минут
-minute: минуты
-time-interval-help: Определяет продолжительность отрезка времени при обзоре недели и дня
-Time interval: Интервал времени
-auto-refresh-help: Если выбрано, обзоры недели, дня и месяца, а так же список неодобренных событий будет автоматически обновляться с указанным интервалом.
-Auto-refresh calendars: Автоматическое обновление календаря
-auto-refresh-time-help: Если автообновление включено, определяет время между каждым обновлением.
-Auto-refresh time: Интервал времени обновления
+# Display Lunar Phases in month view:
+#
+# << MISSING >>
+# Restrictions:
+allow-view-other-help: Определяет возможность одного пользователя просматривать календарь других
+Allow viewing other user's calendars: Просмотр календарей других пользователелей 
 require-approvals-help: Если выбрано, пользователь должен одобрить событие перед тем как оно будет показано (при включенном "Показывать неподтвержденные"). Заметьте, что установка "Нет" не приведет к выключению этого для Общих календарей (при разрешенном Общем календаре).
 Require event approvals: Требуется одобрение событий
 display-unapproved-help: Определяет, будут ли видны неподтвержденные события в вашем календаре.<b> Если выбрано "Да", то они будут отображены в календаре, в цвете отличном от подтвержденных событий.<br />  При выборе "Нет", необходимо сначала подтвердить событие, перед тем, как оно будет отображено.
 Display unapproved: Показывать неподтвержденные
-display-week-number-help: Определяет, показывать ли нумерацию недель (1-52) при обзоре месяца и недели.
-Display week number: Показывать день недели
-display-week-starts-on: Задает первый день недели - воскресенье или понедельник (во многих странах, включая Америку и Израиль, первым днем недели считается воскресенье).  Если был выбран понедельник, то нумерация недель будет производиться по стандарту ISO.
-Week starts on: Неделя начинается с
-Sunday: Воскресенье
-Monday: Понедельник
-work-hours-help: Определяет интервал времени для рабочего дня используемый календарем.
-Work hours: Рабочие часы
-From: с
-to: до
+conflict-check-help: Проверять события на конфликт (два события, запланированные на одно времея некой персоналии). Если установить "Да" всеже будет  возможно запланировать два события, но только после подтверждения предупреждения. Если установить "Нет" проверка на конфликт событий производиться не будет. Вы возможно захотите установить "Да", для проверки на конфликтность событий.
+Check for event conflicts: Проверять события на конфликт
+conflict-months-help: Если проверка на конфликтующие события установлена ("Проверять события на конфликт" выбрано "Да"), определяет как много месяцев в будущем мы будем проверять на эти противоречия. Если Вы нашли события требующие большего времени для обработки, увеличьте это число.
+Conflict checking months: Количество месяцев контроля за конфликтами
+conflict-check-override-help: Позволяет пользователям аннулировать конфликты и запланировать два и более событий на одно время.
+Allow users to override conflicts: Разрешить пользователям аннулировать конфликт
+limit-appts-help: Позволяет системному администратору установить ограничение на количество событий, которые может иметь пользователь за любой один день.
+Limit number of timed events per day: Ограничить количество событий в день
+limit-appts-number-help: Определяет максимальное количество охарактеризованных по времени событий, которые может иметь пользователь в день. 
+Maximum timed events per day: Максимальное количество событий в день
 #
 # << MISSING >>
-# disable-popups-help:
-# English text: Disable popups from calendar views
+# crossday-help:
+# English text: If enabled, events that span days will be displayed on seperate days
 #
 #
 # << MISSING >>
-# Disable Pop-Ups:
+# Disable Cross-Day Events:
 #
 # << MISSING >>
 # disable-location-field-help:
@@ -311,6 +333,19 @@ disable-participants-field-help: Выбрав "Да" - будут удалены поля "Участники" со
 Disable Participants field: Отключить поле "Участники"
 disable-repeating-field-help: Выбрав "Да" - будут удалены поля "Повторение" при создании событий. Это предоставит простой интерфейс для новичков.
 Disable Repeating field: Отключить поле "Повтор"
+allow-html-description-help: Если разрешено, пользователи могут вводить HTML коды в поле описания события. Если запрещено, теги HTML будут пропускаться. Внимание: разрешив эту опцию, Вы позволите пользователям делать ссылки на другие вебсайты.
+Allow HTML in Description: Разрешить HTML в описаниях
+#
+# << MISSING >>
+# Popups:
+#
+# << MISSING >>
+# disable-popups-help:
+# English text: Disable popups from calendar views
+#
+#
+# << MISSING >>
+# Disable Pop-Ups:
 popup-includes-siteextras-help: Если установлено, позволит настроить служебные поля, которые будут отображать подсказки для событий
 Display Site Extras in popup: Отображать дополнительные подсказки
 #
@@ -321,28 +356,11 @@ Display Site Extras in popup: Отображать дополнительные подсказки
 #
 # << MISSING >>
 # Display Participants in popup:
-allow-html-description-help: Если разрешено, пользователи могут вводить HTML коды в поле описания события. Если запрещено, теги HTML будут пропускаться. Внимание: разрешив эту опцию, Вы позволите пользователям делать ссылки на другие вебсайты.
-Allow HTML in Description: Разрешить HTML в описаниях
-allow-view-other-help: Определяет возможность одного пользователя просматривать календарь других
-Allow viewing other user's calendars: Просмотр календарей других пользователелей 
-allow-view-add-help: Знак "+" (плюс) будет включен в просмотр, позволяя пользователям быстро добавлять события в календари.
-Include add event link in views: Вставить ссылку "Добавить событие"
+#
+# << MISSING >>
+# Miscellaneous:
 remember-last-login-help: Когда выбрано, имя пользователя будет вписано на его странице регистрации (но не пароль), а так же будут загружены его настройки (включая предпочитаемые цвета и выбранный язык).
 Remember last login: Запомнить последнюю регистрацию
-conflict-check-help: Проверять события на конфликт (два события, запланированные на одно времея некой персоналии). Если установить "Да" всеже будет  возможно запланировать два события, но только после подтверждения предупреждения. Если установить "Нет" проверка на конфликт событий производиться не будет. Вы возможно захотите установить "Да", для проверки на конфликтность событий.
-Check for event conflicts: Проверять события на конфликт
-conflict-months-help: Если проверка на конфликтующие события установлена ("Проверять события на конфликт" выбрано "Да"), определяет как много месяцев в будущем мы будем проверять на эти противоречия. Если Вы нашли события требующие большего времени для обработки, увеличьте это число.
-Conflict checking months: Количество месяцев контроля за конфликтами
-conflict-check-override-help: Позволяет пользователям аннулировать конфликты и запланировать два и более событий на одно время.
-Allow users to override conflicts: Разрешить пользователям аннулировать конфликт
-limit-appts-help: Позволяет системному администратору установить ограничение на количество событий, которые может иметь пользователь за любой один день.
-Limit number of timed events per day: Ограничить количество событий в день
-limit-appts-number-help: Определяет максимальное количество охарактеризованных по времени событий, которые может иметь пользователь в день. 
-Maximum timed events per day: Максимальное количество событий в день
-timed-evt-len-help: Определяет продолжительность времени для события
-Specify timed event length by: Специфицировать события по
-Duration: Продолжительность
-End Time: Времени окончания
 #
 # << MISSING >>
 # summary_length-help:
@@ -351,22 +369,6 @@ End Time: Времени окончания
 #
 # << MISSING >>
 # Brief Description Length:
-#
-# << MISSING >>
-# lunar-help:
-# English text: If enabled, will display small icons representing the lunar phases each month
-#
-#
-# << MISSING >>
-# Display Lunar Phases in month view:
-#
-# << MISSING >>
-# crossday-help:
-# English text: If enabled, events that span days will be displayed on seperate days
-#
-#
-# << MISSING >>
-# Disable Cross-Day Events:
 #
 # << MISSING >>
 # user_sort-help:
@@ -904,6 +906,7 @@ All day event: Длится на весь день
 Timezone Offset: Интервал смещения временной зоны
 time-help: Задает время события.<br /> <i>Это поле можно не заполнять.</i>
 duration-help: Задает продолжительность события.  <br /><i>Это поле можно не заполнять.</i>
+minutes: минут
 end-time-help: Время ожидаемого завершения события
 #
 # << MISSING >>
@@ -1277,6 +1280,12 @@ You must specify a group name: Вы должны указать имя группы
 #
 Display weekends in week view: Показывать выходные в обзоре недели
 Display days with events in bold in year view: Подсвечивать жирным дни с событиями в режиме просмотра года
+Time interval: Интервал времени
+time-interval-help: Определяет продолжительность отрезка времени при обзоре недели и дня
+Auto-refresh calendars: Автоматическое обновление календаря
+auto-refresh-help: Если выбрано, обзоры недели, дня и месяца, а так же список неодобренных событий будет автоматически обновляться с указанным интервалом.
+Auto-refresh time: Интервал времени обновления
+auto-refresh-time-help: Если автообновление включено, определяет время между каждым обновлением.
 Nonuser: Гость
 user-customize-color: Доступно ли пользователю изменить его цветовую схему.
 enable-gradient-help: Использовать градиентный цвет для фона ячеек
@@ -1563,6 +1572,16 @@ Save Preferences: Сохранить Предпочтения
 #
 # << MISSING >>
 # Timezone Selection:
+#
+# << MISSING >>
+# entry-interval-help:
+# English text: Sets minute interval when editing entry times
+#
+#
+# << MISSING >>
+# Entry interval:
+hour: час
+minute: минуты
 #
 # << MISSING >>
 # theme-reload-help:
@@ -2187,6 +2206,9 @@ Dutch: Голланский
 Estonian: Эстонский
 Finnish: Финский
 French: Французский
+#
+# << MISSING >>
+# French (UTF8):
 Galician: Галисийский
 German: Немецкий
 Greek: Греческий
@@ -2522,6 +2544,25 @@ Reminder: Напоминание
 #
 # << MISSING >>
 # Remote Calendars not enabled:
+
+
+###############################################
+# Page: install/install_functions.php
+#
+#
+# << MISSING >>
+# Error updating webcal_config:
+#
+# << MISSING >>
+# Error updating webcal_user_pref:
+#
+# << MISSING >>
+# Perl script required:
+# English text: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
+#
+#
+# << MISSING >>
+# Your previous version of WebCalendar requires updating several database tables.:
 
 
 ###############################################
