@@ -539,6 +539,10 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   <?php etranslate( 'Disable Location field' )?>:</td><td>
   <?php echo print_radio_html ( 'DISABLE_LOCATION_FIELD' ) ?>
  </td></tr>
+  <tr><td class="tooltip" title="<?php etooltip( 'disable-url-field-help' )?>">
+  <?php etranslate( 'Disable URL field' )?>:</td><td>
+  <?php echo print_radio_html ( 'DISABLE_URL_FIELD' ) ?>
+ </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'disable-priority-field-help' )?>">
   <?php etranslate( 'Disable Priority field' )?>:</td><td>
   <?php echo print_radio_html ( 'DISABLE_PRIORITY_FIELD' ) ?>

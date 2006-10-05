@@ -199,6 +199,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     $access = $row[8];
     $name = $row[9];
     $description = $row[10];
+    $parent = $row[11];
     $completed = ( ! empty ( $row[15] )? $row[15] : date ( 'Ymd'));
     $location = $row[12];
     $cal_url = $row[16];    
@@ -233,15 +234,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       $duration = '';
       $hour = -1;
     }
-    $priority = $row[6];
-    $type = $row[7];
-    $access = $row[8];
-    $name = $row[9];
-    $description = $row[10];
-    $parent = $row[11];
-    $location = $row[12];
-//  }
-//   dbi_free_result ( $res );
+
     // check for repeating event info...
     // but not if we are overriding a single entry of an already repeating
     // event... confusing, eh?
@@ -450,6 +443,8 @@ if ( empty ( $description ) || $description == '<br />' )
   $description = '';
 if ( empty ( $location ) )
   $location = '';
+if ( empty ( $url ) )
+  $url = '';
 if ( empty ( $priority ) )
   $priority = 0;
 if ( empty ( $access ) )
@@ -695,6 +690,13 @@ if ( $eType == 'task' ) { //only for tasks
    value="<?php echo htmlspecialchars ( $location ); ?>" />
   </td></tr>
 <?php } 
+if ( $DISABLE_URL_FIELD != 'Y'  ){  ?>
+ <tr><td class="tooltip" title="<?php etooltip( 'url-help' )?>">
+    <label for="entry_location"><?php etranslate( 'URL' )?>:</label></td><td colspan="2">
+    <input type="text" name="entry_url" id="entry_url" size="100" 
+   value="<?php echo htmlspecialchars ( $url ); ?>" />
+  </td></tr>
+<?php }
 echo '<tr><td class="tooltip" title="' . tooltip( 'date-help' ) . '"><label>';
 echo  ( $eType == 'task'? translate( 'Start Date' ):translate( 'Date' ) ) . 
   ':</label></td><td colspan="2">' .  "\n";
