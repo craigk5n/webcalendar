@@ -21,6 +21,7 @@
 # Last update: 18 May 2005 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
 #  -> http://sourceforge.net/tracker/?group_id=3870&atid=303870&func=detail&aid=1204204
 # 
+# Translation last updated on 10-05-2006
 
 
 ###############################################
@@ -31,160 +32,290 @@ charset: iso-8859-1
 
 
 ###############################################
+# Page: access.php
+#
+Database error: Feil i databasen
+Cancel: Avbryt
+#
+# << MISSING >>
+# DEFAULT CONFIGURATION:
+Save: Lagre
+Public Access: Offentlig tilgang
+Admin: Admin
+#
+# << MISSING >>
+# User Access Control:
+#
+# << MISSING >>
+# Allow Access to Other Users' Calendar:
+#
+# << MISSING >>
+# Grant This User Access to My Calendar:
+Go: Gå til
+#
+# << MISSING >>
+# Type:
+Calendar: Kalender
+#
+# << MISSING >>
+# View Event:
+#
+# << MISSING >>
+# View:
+Edit: Rediger
+#
+# << MISSING >>
+# Approve/Reject:
+Events: Aktiviteter
+#
+# << MISSING >>
+# Tasks:
+#
+# << MISSING >>
+# Journals:
+#
+# << MISSING >>
+# Can Invite:
+#
+# << MISSING >>
+# Can Email:
+#
+# << MISSING >>
+# Can See Time Only:
+#
+# << MISSING >>
+# Assistant:
+#
+# << MISSING >>
+# Select All:
+#
+# << MISSING >>
+# Clear All:
+Public: Offentlig
+Confidential: Privat
+Private: Privat
+
+
+###############################################
 # Page: activity_log.php
 #
+#
+# << MISSING >>
+# System Log:
 Activity Log: Aktivitetslogg
-Admin: Admin
 User: Bruker
-Calendar: Kalender
 Date: Dato
 Time: Klokken
 Event: Aktitivitet
 Action: Handling
-Event created: Aktivitet lagd
-Event approved: Aktivitet godkjent
-Event rejected: Aktivitet avvist
-Event updated: Aktivitet oppdatert
-Event deleted: Aktivitet slettet
-Notification sent: Medling sendt
-Reminder sent: Påminnelse sendt
-Database error: Feil i databasen
 Previous: Forrige
-Events: Aktiviteter
 Next: Neste
 
 
 ###############################################
 # Page: add_entry.php
 #
+#
+# << MISSING >>
+# is already on your calendar.:
 Invalid entry id: Ugyldig avtale-ID
 This is a private event and may not be added to your calendar.: Dette er en privat avtale og kan ikke legges til din kalender.
+#
+# << MISSING >>
+# This is a confidential event and may not be added to your calendar.:
 Error adding event: Feil ved innlegging av avtale
-
-
-###############################################
-# Page: admin_handler.php
-#
-You are not authorized: Du har ikke tillatelse
-Error: Feil
-The following error occurred: Følgende feil oppstod
-
-
-###############################################
-# Page: adminhome.php
-#
-System Settings: Systeminnstillinger
-Preferences: Innstillinger
-Users: Brukere
-Account: Konto
-Assistants: Assistenter
-Categories: Kategorier
-Views: Oversikter
-Layers: Lag
-Reports: Rapporter
-Delete Events: Slett aktiviteter
-Public Preferences: Offentlige innstillinger
-Unapproved Public Events: Ikke-godkjente offentlige aktiviteter
-Administrative Tools: Administrasjonsverktøy
 
 
 ###############################################
 # Page: admin.php
 #
-Help: Hjelp
-Note: OBS
-Your user preferences: Dine brukerpreferanser
-may be affecting the appearance of this page.: kan påvirke fremvisningen av denne siden
-Click here: Klikk her
-to not use your user preferences when viewing this page: for å ikke bruke dine brukerpreferanser når du ser på denne siden
-are being ignored while viewing this page.: blir ignorert når du ser på denne siden.
-to load your user preferences when viewing this page: for å laste inn dine brukerpreferanser når du ser på denne siden
-Save: Lagre
-Settings: Innstillinger
-Public Access: Offentlig tilgang
-Groups: Grupper
-NonUser Calendars: Ikke-bruker kalendere
-Other: Andre
-Email: E-post
-colors-help: Alle farger skal skrives inn som #RRGGBB hvor RR er hexkoden for rødt, GG er hexkoden for grønn og BB er hexkoden for den blå fargeen.
-Colors: Farger
-app-name-help: Setter navnet på programmet. Dette vil vises i nettlesertittelen for alle sider.
-Application Name: Programnavn
-server-url-help: Setter base-URLen for programmet. Denne vil bli inkludert ved utsending av påminnelser på e-post.
-Server URL: URL for serveren
-language-help: Angir hvilket språk som skal brukes.
-Language: Språk
-Your browser default language is: Standardspråk i nettleseren din er
-fonts-help: Angir en liste med systemskrifter som skal brukes (som "Arial, Helvetica")
-Fonts: Skrifter
-custom-script-help: Tillat innsetting av egendefinert skript eller stilsett i HTML "head"-seksjonen på hver side.
-Custom script/stylesheet: Egendefinert skript/stilsett
+Select: Velg
 Yes: Ja
 No: Nei
-Edit: Rediger
-custom-header-help: Tillatt innsetting av egendefinert HTML-kode på toppen av hver side. 
-Custom header: Egendefinert hode
-custom-trailer-help: Tillatt innsetting av egendefinert HTML-kode på slutten av hver side.
-Custom trailer: Egendefinert fot
-preferred-view-help: Angir standardvisning (dag, uke, måned eller år).
-Preferred view: Foretrukket visning
 Day: Dag
 Week: Uke
 Month: Måned
 Year: År
-display-weekends-help: Inkluder helg når uker skal vises
-Display weekends in week view: Viser helg i ukevisning
-yearly-shows-events-help: Vis dager med aktiviteter i fetskrift for årsvisning.
-Display days with events in bold in month and year views: Vis dager med aktiviteter i fetskrift for måneds- og årsvisning.
-display-desc-print-day-help: Inkluder aktivitetsbeskrivelser i utskriftsvennlig versjon av dagvisning.
-Display description in printer day view: Vis aktivitetsbeskrivelser i utskriftsvennlig dagvisning
+System Settings: Systeminnstillinger
+Help: Hjelp
+Settings: Innstillinger
+Groups: Grupper
+NonUser Calendars: Ikke-bruker kalendere
+Other: Andre
+Email: E-post
+Colors: Farger
+#
+# << MISSING >>
+# System options:
+app-name-help: Setter navnet på programmet. Dette vil vises i nettlesertittelen for alle sider.
+Application Name: Programnavn
+#
+# << MISSING >>
+# Translated Name:
+Title: Webkalenderen
+server-url-help: Setter base-URLen for programmet. Denne vil bli inkludert ved utsending av påminnelser på e-post.
+Server URL: URL for serveren
+#
+# << MISSING >>
+# home-url-help:
+# English text: Specifies the home URL for the applicaiton. This can be an absolute or relative
+#
+#
+# << MISSING >>
+# Home URL:
+language-help: Angir hvilket språk som skal brukes.
+Language: Språk
+Your browser default language is: Standardspråk i nettleseren din er
+#
+# << MISSING >>
+# Allow user to use themes:
+#
+# << MISSING >>
+# themes-help:
+# English text: Allows mass update of configuration settings. Lower case labels are user pref only.
+#
+#
+# << MISSING >>
+# Themes:
+#
+# << MISSING >>
+# AVAILABLE THEMES:
+None: Aldri
+Preview: Forhåndsvisning
+#
+# << MISSING >>
+# Site customization:
+custom-script-help: Tillat innsetting av egendefinert skript eller stilsett i HTML "head"-seksjonen på hver side.
+Custom script/stylesheet: Egendefinert skript/stilsett
+custom-header-help: Tillatt innsetting av egendefinert HTML-kode på toppen av hver side. 
+Custom header: Egendefinert hode
+custom-trailer-help: Tillatt innsetting av egendefinert HTML-kode på slutten av hver side.
+Custom trailer: Egendefinert fot
+#
+# << MISSING >>
+# enable-external-header-help:
+# English text: Allows the custom trailer to be loaded from an external file
+#
+#
+# << MISSING >>
+# Allow external file for header/script/trailer:
+#
+# << MISSING >>
+# Allow user to override header/trailer:
+#
+# << MISSING >>
+# Date and Time:
+tz-help: Angir hvor mange timer servertid må justeres i forhold til lokaltid.
+#
+# << MISSING >>
+# Server Timezone Selection:
+#
+# << MISSING >>
+# Your current GMT offset is:
+hours: timer
+#
+# << MISSING >>
+# display-general-use-gmt-help:
+# English text: If enabled, common dates/times are displayed as GMT
+#
+#
+# << MISSING >>
+# Display Common Use Date/Times as GMT:
 date-format-help: Angir datoformatet.
 Date format: Datoformat
-December: Desember
-time-format-help: Skal tiden vises i 12 eller 24-timer.
-Time format: Tidsformat
-12 hour: 12 timer
-24 hour: 24 timer
-time-interval-help: Angir hvor lang blokken med tid i uke- og dagvisning skal være.
-Time interval: Tidsinterval
-hour: time
-minutes: minutter
-auto-refresh-help: Hvis aktivert, vil dagsvisning, ukesvisning, månedsvisning og liste med ikke godkjente aktiviteter oppdateres automatisk periodisk.
-Auto-refresh calendars: Oppdater kalendere automatisk
-auto-refresh-time-help: Hvis auto-oppdatering er aktivert, så setter denne tiden mellom hver oppdatering. 
-Auto-refresh time: Auto-oppdateringsintervall
-require-approvals-help: Hvis aktivert, så må en bruker godkjenne en aktivitet før den vises i deres kalender (hvis ikke "Vis ikke-godkjent" er aktivert).
-Require event approvals: Krev godkjenning av aktiviteter
-display-unapproved-help: Angir om din kalender skal vise ikke-godkendte aktiviteter.
-Display unapproved: Vis ikke-godkjente.
-display-week-number-help: Angir om ukenumre skal være påklistret ukevisningene.
-Display week number: Vis ukenummer
+#
+# << MISSING >>
+# Small Task Date:
 display-week-starts-on: Vis om uken starter mandag eller søndag.
 Week starts on: Uken starter på
 Sunday: Søndag
 Monday: Mandag
+time-format-help: Skal tiden vises i 12 eller 24-timer.
+Time format: Tidsformat
+12 hour: 12 timer
+24 hour: 24 timer
+timed-evt-len-help: Angir input-metode for avgjøring av lengde for en tidsbegrenset aktivitet
+Specify timed event length by: Oppgi tidsbegrensede aktiviteters lengde ved
+Duration: Varighet
+End Time: Avslutningstidspunkt
 work-hours-help: Angir daglige arbeidstimer.
 Work hours: Arbeidstimer
 From: Fra
 to: til
-disable-priority-field-help: Valget "Ja" vil fjerne prioritetsfeltet fra sider med aktivitetsinformasjon, og dermed gjøre det enklere for nybegynnere.
-Disable Priority field: Deaktiver prioritetsfeltet
-disable-access-field-help: Valget "Ja" vil fjerne tilgangsfeltet fra sider med aktivitetsinformasjon, og dermed gjøre det enklere for nybegynnere.
-Disable Access field: Deaktiver tilgangsfeltet
-disable-participants-field-help: Valget "Ja" vil fjerne deltagerfeltet fra sider med aktivitetsinformasjon, og dermed hindre brukere fra å legge til andre bruker på deres aktiviteter. Hvis du aktiverer denne opsjonen, vil du kanskje også deaktivere feltet for "Tillat visning av andre brukere sine kalendere".
-Disable Participants field: Deaktiver deltagerfeltet
-disable-repeating-field-help: Valget "Ja" vil fjerne repetisjonsfeltet når man legger til en aktivitet, og dermed gjøre det enklere for nybegynnere.
-Disable Repeating field: Deaktiver repetisjonsfeltet
-popup-includes-siteextras-help: Hvis aktivert, vil egendefinert felter i site_extras.php bli vist i aktivitetssprettopp.
-Display Site Extras in popup: Vis nettstedstillegg i sprettopp
-allow-html-description-help: Setter om en bruker kan skrive HTML-kode i aktivitetsbeskrivelsene. Advarsel: Hvis tillat, kan brukere referere til bilder på andre nettsteder.
-Allow HTML in Description: Tillat HTML-kode i beskrivelser
-allow-view-other-help: Setter om en bruker kan se en annen bruker sin kalender.
-Allow viewing other user's calendars: Tillat visning av andre brukere sine kalendere
+#
+# << MISSING >>
+# Appearance:
+preferred-view-help: Angir standardvisning (dag, uke, måned eller år).
+Preferred view: Foretrukket visning
+#
+# << MISSING >>
+# Allow top menu:
+#
+# << MISSING >>
+# Date Selectors position:
+#
+# << MISSING >>
+# menu-themes-help:
+# English text: Sets the colors and style of the top menu
+#
+#
+# << MISSING >>
+# Menu theme:
+fonts-help: Angir en liste med systemskrifter som skal brukes (som "Arial, Helvetica")
+Fonts: Skrifter
+#
+# << MISSING >>
+# display-sm_month-help:
+# English text: If enabled, displays small months in month views
+#
+#
+# << MISSING >>
+# Display small months:
+display-weekends-help: Inkluder helg når uker skal vises
+#
+# << MISSING >>
+# Display weekends:
+#
+# << MISSING >>
+# display-alldays-help:
+# English text: Display previous and next months days in month views, filling all cells.
+#
+#
+# << MISSING >>
+# Display all days in month view:
+display-week-number-help: Angir om ukenumre skal være påklistret ukevisningene.
+Display week number: Vis ukenummer
+display-desc-print-day-help: Inkluder aktivitetsbeskrivelser i utskriftsvennlig versjon av dagvisning.
+Display description in printer day view: Vis aktivitetsbeskrivelser i utskriftsvennlig dagvisning
+yearly-shows-events-help: Vis dager med aktiviteter i fetskrift for årsvisning.
+Display days with events in bold in month and year views: Vis dager med aktiviteter i fetskrift for måneds- og årsvisning.
+#
+# << MISSING >>
+# display-minutes-help:
+# English text: If enabled, minutes ending with :00 will always be displayed
+#
+#
+# << MISSING >>
+# Display 00 minutes always:
 allow-view-add-help: Et '+' ikon vil bli inkludert i oversikter, slik at brukere fort kan legge til aktiviteter i andre brukere sine kalendere.
 Include add event link in views: Inkluder lenke for å legge til aktiviteter i oversikter
-remember-last-login-help: Hvis aktivert, vil brukerens navn bli fylt ut på innloggingssiden og preferansene lastet inn.
-Remember last login: Husk siste innlogging
+#
+# << MISSING >>
+# lunar-help:
+# English text: If enabled, will display small icons representing the lunar phases each month
+#
+#
+# << MISSING >>
+# Display Lunar Phases in month view:
+#
+# << MISSING >>
+# Restrictions:
+allow-view-other-help: Setter om en bruker kan se en annen bruker sin kalender.
+Allow viewing other user's calendars: Tillat visning av andre brukere sine kalendere
+require-approvals-help: Hvis aktivert, så må en bruker godkjenne en aktivitet før den vises i deres kalender (hvis ikke "Vis ikke-godkjent" er aktivert).
+Require event approvals: Krev godkjenning av aktiviteter
+display-unapproved-help: Angir om din kalender skal vise ikke-godkendte aktiviteter.
+Display unapproved: Vis ikke-godkjente.
 conflict-check-help: Sjekk for konflikter mellom aktiviteter, dvs to aktiviteter lagt til samme tid for samme bruker.
 Check for event conflicts: Sjekk for konflikter mellom aktiviteter
 conflict-months-help: Hvis sjekking for konflikter er aktivert, så vil denne sette hvor mange måneder frem i tid vi skal sjekke for konflikter. Hvis du oppdager at det tar lang tid å legge til en aktivitet, så bør du redusere dette tallet.
@@ -195,10 +326,80 @@ limit-appts-help: Tillater systemadministratoren å sette en øvre grense for anta
 Limit number of timed events per day: Begrens antall aktiviteter med tidsangivelse per dag
 limit-appts-number-help: Angir maskimalt antall aktiviteter med tidsangivelse en bruker kan ha på en enkelt dag.
 Maximum timed events per day: Maksimalt antall aktiviteter med tidsangivelse per dag
-timed-evt-len-help: Angir input-metode for avgjøring av lengde for en tidsbegrenset aktivitet
-Specify timed event length by: Oppgi tidsbegrensede aktiviteters lengde ved
-Duration: Varighet
-End Time: Avslutningstidspunkt
+#
+# << MISSING >>
+# crossday-help:
+# English text: If enabled, events that span days will be displayed on seperate days
+#
+#
+# << MISSING >>
+# Disable Cross-Day Events:
+#
+# << MISSING >>
+# disable-location-field-help:
+# English text: Selecting "Yes" will remove the "Location" field from event information pages
+#
+#
+# << MISSING >>
+# Disable Location field:
+disable-priority-field-help: Valget "Ja" vil fjerne prioritetsfeltet fra sider med aktivitetsinformasjon, og dermed gjøre det enklere for nybegynnere.
+Disable Priority field: Deaktiver prioritetsfeltet
+disable-access-field-help: Valget "Ja" vil fjerne tilgangsfeltet fra sider med aktivitetsinformasjon, og dermed gjøre det enklere for nybegynnere.
+Disable Access field: Deaktiver tilgangsfeltet
+disable-participants-field-help: Valget "Ja" vil fjerne deltagerfeltet fra sider med aktivitetsinformasjon, og dermed hindre brukere fra å legge til andre bruker på deres aktiviteter. Hvis du aktiverer denne opsjonen, vil du kanskje også deaktivere feltet for "Tillat visning av andre brukere sine kalendere".
+Disable Participants field: Deaktiver deltagerfeltet
+disable-repeating-field-help: Valget "Ja" vil fjerne repetisjonsfeltet når man legger til en aktivitet, og dermed gjøre det enklere for nybegynnere.
+Disable Repeating field: Deaktiver repetisjonsfeltet
+allow-html-description-help: Setter om en bruker kan skrive HTML-kode i aktivitetsbeskrivelsene. Advarsel: Hvis tillat, kan brukere referere til bilder på andre nettsteder.
+Allow HTML in Description: Tillat HTML-kode i beskrivelser
+#
+# << MISSING >>
+# Popups:
+#
+# << MISSING >>
+# disable-popups-help:
+# English text: Disable popups from calendar views
+#
+#
+# << MISSING >>
+# Disable Pop-Ups:
+popup-includes-siteextras-help: Hvis aktivert, vil egendefinert felter i site_extras.php bli vist i aktivitetssprettopp.
+Display Site Extras in popup: Vis nettstedstillegg i sprettopp
+#
+# << MISSING >>
+# popup-includes-participants-help:
+# English text: If enabled, participants are displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Participants in popup:
+#
+# << MISSING >>
+# Miscellaneous:
+remember-last-login-help: Hvis aktivert, vil brukerens navn bli fylt ut på innloggingssiden og preferansene lastet inn.
+Remember last login: Husk siste innlogging
+#
+# << MISSING >>
+# summary_length-help:
+# English text: Maximum length of Brief Description in calendar views
+#
+#
+# << MISSING >>
+# Brief Description Length:
+#
+# << MISSING >>
+# user_sort-help:
+# English text: Determines sort order for User, Nonuser lists
+#
+#
+# << MISSING >>
+# User Sort Order:
+#
+# << MISSING >>
+# Lastname, Firstname:
+#
+# << MISSING >>
+# Firstname, Lastname:
 Plugins: Plugins
 plugins-enabled-help: Aktiver plugin-programmer
 Enable Plugins: Aktiver plugins
@@ -218,6 +419,30 @@ public-access-add-requires-approval-help: Angir om aktiviteter lagt til ved hjel
 Public access new events require approval: Nye aktitiviteter ved offentlig tilgang krever godkjenning
 public-access-sees-participants-help: Hvis aktivert, kan brukere med offentlig tilgang se aktivitetsdeltagerne (ved detaljert visning).
 Public access can view participants: Offentlig tilgang kan se deltagere
+#
+# << MISSING >>
+# public-access-override-help:
+# English text: Allows event names and descriptions to be hidden on the public calendar
+#
+#
+# << MISSING >>
+# Override event name/description for public access:
+#
+# << MISSING >>
+# public-access-override-text-help:
+# English text: The text to display if the above option is enabled. If 'Not Available', it will be translated.
+#
+#
+# << MISSING >>
+# Text to display to public access:
+#
+# << MISSING >>
+# uac-enabled-help:
+# English text: Enables user-level access control
+#
+#
+# << MISSING >>
+# User Access Control enabled:
 groups-enabled-help: Aktiverer gruppestøtte, tillater brukerne å velge brukere ved gruppe
 Groups enabled: Grupper aktivert
 user-sees-his-group-help: Hvis aktivert, så vil brukerne ikke se kalendere som ikke er i minst en av deres grupper
@@ -226,24 +451,164 @@ nonuser-enabled-help: Hvis aktivert, så vil administratorer ha muligheten til å 
 Nonuser enabled: Ikke-bruker kalendere aktivert
 nonuser-list-help: Hvor ikke-bruker kalendere skal vises i deltagerlisten
 Nonuser list: Vis i deltagerlisten ved
-Top: Topp
-Bottom: Bunn
 reports-enabled-help: Hvis aktivert, så vil brukere se en "Rapporter"-seksjon
 Reports enabled: Rapporter aktivert
 subscriptions-enabled-help: Angir om eksterne brukere kan abonnere på en brukers kalender og tillate dem å se brukerens aktiviteter i en applikasjon som støtter iCal (som Apple sin iCal eller Mozilla Calendar).
 Allow remote subscriptions: Tillat eksterne abonnenter
+#
+# << MISSING >>
+# remotes-enabled-help:
+# English text: Allows users to load remote ics files using URL
+#
+#
+# << MISSING >>
+# Allow remote calendars:
+#
+# << MISSING >>
+# rss-enabled-help:
+# English text: Specifies if a user's calendar can be obtained from a RSS feed.
+#
+#
+# << MISSING >>
+# Enable RSS feed:
 categories-enabled-help: Velger støtte for aktivitetskategorier
 Categories enabled: Kategorier aktivert
+#
+# << MISSING >>
+# icon_upload-enabled-help:
+# English text: If enabled, users can upload category icons
+#
+#
+# << MISSING >>
+# Category Icon Upload enabled:
+#
+# << MISSING >>
+# display-tasks-help:
+# English text: Display small task window on month and day calendar
+#
+#
+# << MISSING >>
+# Display small task list:
+#
+# << MISSING >>
+# display-tasks-in-grid-help:
+# English text: Display tasks in calendars along with events
+#
+#
+# << MISSING >>
+# Display tasks in Calendars:
 allow-external-users-help: Angir om en ikke-kalender bruker kan bli lagt til en aktivitet. Dette muliggjør ikke-kalender brukere til å bli listed som deltagere på en aktivitet.
 Allow external users: Tillat eksterne (ikke-kalender) brukere
 external-can-receive-notification-help: Når eksterne brukere er aktivert (og e-post er aktivert), kan eksterne brukere motta e-postmeldinger når aktiviteten blir lagt til, oppdatert eller slettet (hvis den eksterne brukerens e-postadresse er oppgitt).
 External users can receive email notifications: Eksterne brukere kan motta e-postmeldinger
 external-can-receive-reminder-help: Når eksterne brukere er aktivert (og e-post er aktivert), kan eksterne brukere motta e-postpåminnelser (hvis den eksterne brukerens e-postadresse er oppgitt).
 External users can receive email reminders: Eksterne brukere kan motta e-postpåminnelser
+#
+# << MISSING >>
+# allow-self-registration-help:
+# English text: Permit new users to register themselves
+#
+#
+# << MISSING >>
+# Allow self-registration:
+#
+# << MISSING >>
+# use-blacklist-help:
+# English text: Limit access to WebCalendar functions based on IP address
+#
+#
+# << MISSING >>
+# Restrict self-registration to blacklist:
+#
+# << MISSING >>
+# allow-self-registration-full-help:
+# English text: Allow new users to complete the self-registration process on-line
+#
+#
+# << MISSING >>
+# Use self-registration email notifications:
+# English text: Generate passwords and send to new users. This should help eliminate spammers.
+#
+#
+# << MISSING >>
+# allow-attachment-help:
+# English text: Allow users to add file attachments to events.
+#
+#
+# << MISSING >>
+# Allow file attachments to events:
+#
+# << MISSING >>
+# Admin and owner can always add attachments if enabled:
+#
+# << MISSING >>
+# Participant:
+#
+# << MISSING >>
+# Anyone:
+#
+# << MISSING >>
+# allow-comments-help:
+# English text: Allow users to add comments to events.
+#
+#
+# << MISSING >>
+# Allow comments to events:
+#
+# << MISSING >>
+# Admin and owner can always add comments if enabled:
 email-enabled-help: Slå sending av e-post for påminnelser av eller på. Velg "nei" hvis serveren din ikke er satt opp til å sende e-post
 Email enabled: E-post aktivert
 email-default-sender: Setter e-postadresse som skal brukes som avsender ved utsending av påminnelse
 Default sender address: Standard avsenderadresse
+#
+# << MISSING >>
+# email-mailer:
+# English text: Choose email type (SMTP, PHP mail, sendmail)
+#
+#
+# << MISSING >>
+# Email Mailer:
+#
+# << MISSING >>
+# email-smtp-host:
+# English text: Hostname(s) of SMTP server(s) seperated by commas
+#
+#
+# << MISSING >>
+# SMTP Host name(s):
+#
+# << MISSING >>
+# email-smtp-port:
+# English text: SMTP Port Number (normally 25)
+#
+#
+# << MISSING >>
+# SMTP Port Number:
+#
+# << MISSING >>
+# email-smtp-auth:
+# English text: Use SMTP Authentication
+#
+#
+# << MISSING >>
+# SMTP Authentication:
+#
+# << MISSING >>
+# email-smtp-username:
+# English text: SMTP Username if using Authentication
+#
+#
+# << MISSING >>
+# SMTP Username:
+#
+# << MISSING >>
+# email-smtp-password:
+# English text: SMTP Password if using Authentication
+#
+#
+# << MISSING >>
+# SMTP Password:
 Default user settings: Standard brukerinnstillinger
 email-event-reminders-help: Angir om det skal sendes aktivitetspåminnelser.
 Event reminders: Aktivitetspåminnelser
@@ -256,26 +621,96 @@ Events removed from my calendar: Aktiviteter fjernet fra min kalender
 email-event-rejected: Angir om e-postmelding skal sendes når en deltager avviser en aktivitet som er i din kalender.
 Event rejected by participant: Aktivitet avvist av deltager 
 Allow user to customize colors: Tillat bruker å tilpasse farger
+#
+# << MISSING >>
+# gradient-colors:
+# English text: If enabled gradient colors are used. This can greatly impact performane.
+#
 Enable gradient images for background colors: Aktiver bilder med fargeovergang for bakgrunnsfarger
 Not available: Ikke tilgjengelig
 Document background: Dokumentbakgrunn
-Select: Velg
 Document title: Dokumenttittel
 Document text: Dokumenttekst
+#
+# << MISSING >>
+# My event text:
 Table grid color: Farge for tabellgridet
 Table header background: Farge for tabellheaderen
 Table header text: Tekst i tabellheaderen
 Table cell background: Tabellbakgrunn
 Table cell background for current day: Tabellbakgrunn for inneværende dag
+#
+# << MISSING >>
+# Table cell background for days with events:
 Table cell background for weekends: Tabellbakgrunn for helger
+#
+# << MISSING >>
+# Table cell background for other month:
+#
+# << MISSING >>
+# Week number color:
 Event popup background: Bakgrunn for aktivitetspopup
 Event popup text: Tekst for aktivitetspopup
 
 
 ###############################################
+# Page: adminhome.php
+#
+#
+# << MISSING >>
+# Control Panel:
+Preferences: Innstillinger
+Assistants: Assistenter
+Users: Brukere
+Account: Konto
+Categories: Kategorier
+Views: Oversikter
+Layers: Lag
+Reports: Rapporter
+Delete Events: Slett aktiviteter
+Public Preferences: Offentlige innstillinger
+Unapproved Public Events: Ikke-godkjente offentlige aktiviteter
+Administrative Tools: Administrasjonsverktøy
+
+
+###############################################
+# Page: ajax.php
+#
+#
+# << MISSING >>
+# Duplicate Name:
+#
+# << MISSING >>
+# Username already exists:
+#
+# << MISSING >>
+# Email address already exists:
+
+
+###############################################
 # Page: approve_entry.php
 #
-Error approving event: Feil ved godkjenning av aktivitet
+#
+# << MISSING >>
+# Additional Comments (optional):
+#
+# << MISSING >>
+# Approve and Send:
+#
+# << MISSING >>
+# Approve and Exit:
+#
+# << MISSING >>
+# (Your comments will be included in an email to the event creator):
+Hello: Hei
+#
+# << MISSING >>
+# An appointment has been approved and comments added by:
+The subject was: Emnet var
+The description is: Beskrivelsen er
+#
+# << MISSING >>
+# Comments:
 
 
 ###############################################
@@ -286,9 +721,23 @@ Your assistants: Dine assistenter
 
 
 ###############################################
-# Page: category_handler.php
+# Page: availability.php
 #
-Delete: Slett
+#
+# << MISSING >>
+# Program Error:
+#
+# << MISSING >>
+# No users specified!:
+#
+# << MISSING >>
+# No year specified!:
+#
+# << MISSING >>
+# No month specified!:
+#
+# << MISSING >>
+# No day specified!:
 
 
 ###############################################
@@ -296,34 +745,340 @@ Delete: Slett
 #
 Add: Legg til
 Category Name: Kategorinavn
+#
+# << MISSING >>
+# Category Icon:
+#
+# << MISSING >>
+# Remove Icon:
 Global: Global
+#
+# << MISSING >>
+# Add Icon to Category:
+#
+# << MISSING >>
+# Upload:
+#
+# << MISSING >>
+# gif 3kb max:
+#
+# << MISSING >>
+# Search for existing icons:
+Delete: Slett
 Are you sure you want to delete this entry?: Er du sikker på at du vil slette denne aktiviteten?
 Add New Category: Legg til ny kategori
 
 
 ###############################################
-# Page: day.php
+# Page: category_handler.php
 #
-Assistant mode: Assistent modus
-Generate printer-friendly version: Vis som utskriftsvennlig side
-Printer Friendly: Utskriftsvennlig
+#
+# << MISSING >>
+# File size exceeds maximum:
+#
+# << MISSING >>
+# File is not a gif image:
+
+
+###############################################
+# Page: catsel.php
+#
+#
+# << MISSING >>
+# ENTRY CATEGORIES:
+#
+# << MISSING >>
+# AVAILABLE CATEGORIES:
+Remove: Fjern
+#
+# << MISSING >>
+# Global Category:
+Ok: OK
 
 
 ###############################################
 # Page: del_entry.php
 #
-Hello: Hei
 An appointment has been canceled for you by: En avtale har blitt avlyst for deg av
-The subject was: Emnet var
-Notification: Påminnelse
+
+
+###############################################
+# Page: doc.php
+#
+#
+# << MISSING >>
+# Invalid blob id:
+
+
+###############################################
+# Page: docadd.php
+#
+#
+# << MISSING >>
+# Add Comment:
+#
+# << MISSING >>
+# Add Attachment:
+#
+# << MISSING >>
+# Subject:
+#
+# << MISSING >>
+# Comment:
+#
+# << MISSING >>
+# Upload file:
+Description: Beskrivelse
+
+
+###############################################
+# Page: docdel.php
+#
+#
+# << MISSING >>
+# Removed:
+
+
+###############################################
+# Page: edit_entry.php
+#
+am: am
+pm: pm
+#
+# << MISSING >>
+# You are not authorized to edit this task:
+#
+# << MISSING >>
+# hours ahead of you:
+#
+# << MISSING >>
+# hours behind you:
+#
+# << MISSING >>
+# hour ahead of you:
+#
+# << MISSING >>
+# hour behind you:
+#
+# << MISSING >>
+# is in a different timezone than you are. Currently:
+#
+# << MISSING >>
+# Time entered here is based on your Timezone:
+Edit Entry: Endre aktiviteten
+Add Entry: Legg til aktivitet
+Details: Detaljer
+Participants: Deltakere
+Repeat: Gjentagelse
+#
+# << MISSING >>
+# Reminders:
+brief-description-help: Her skal det stå en kort beskrivelse av aktiviteten - den blir vist når man står over aktiviteten i oversiktskalenderen.
+Brief Description: Kort beskrivelse
+full-description-help: Her kan det stå en komplett beskrivelse av aktiviteten.
+Full Description: Full beskrivelse
+access-help: Angi om aktiviteten skal kunne sees av alle eller om den er fortrolig.
+Access: Tilgang
+priority-help: Angi aktivitetens prioritet.
+Priority: Prioritet
+Low: Lav
+Medium: Medium
+High: Høy
+category-help: Setter kategorien for aktiviteten
+Category: Kategori
+#
+# << MISSING >>
+# completed-help:
+# English text: Date task is completed. Only enabled when all participants percentage equals 100%.
+#
+#
+# << MISSING >>
+# Date Completed:
+#
+# << MISSING >>
+# percent-help:
+# English text: Task completion percentage for this user
+#
+#
+# << MISSING >>
+# Percent Complete:
+#
+# << MISSING >>
+# All Percentages:
+#
+# << MISSING >>
+# location-help:
+# English text: Event location 
+#
+#
+# << MISSING >>
+# Location:
+date-help: Angir dato for aktiviteten.
+#
+# << MISSING >>
+# Start Date:
+Untimed event: Aktivitet uten tidsangivelse
+Timed event: Aktivitet med tidsangivelse
+All day event: Fulldagsaktivitet
+Timezone Offset: Tidssoneavvik
+time-help: Angir tidspunkt for aktiviteten.<br /><i>Dette feltet trenger ikke være utfylt.</i>
+duration-help: I dette feltet kan du angi varigheten på aktiviteten <br /><i>Dette feltet trenger ikke være utfylt.</i>
+minutes: minutter
+end-time-help: Angir tidspunktet aktiviteten forventes avsluttet.
+#
+# << MISSING >>
+# Start Time:
+#
+# << MISSING >>
+# Due Date:
+#
+# << MISSING >>
+# Due Time:
+participants-help: Vis deltagerne i dette innlegget.
+Availability: Tilgjengelighet
+external-participants-help: Angir en liste med deltagere for en aktivitet som
+External Participants: Eksterne deltagere
+repeat-type-help: Hvor ofte skal aktiviteten gjentas.
+Daily: Daglig
+Weekly: Ukentlig
+Monthly: Månedlig
+by day: etter dag
+by date: etter dato
+#
+# << MISSING >>
+# by position:
+Yearly: Årlig
+#
+# << MISSING >>
+# Manual:
+#
+# << MISSING >>
+# Expert Mode:
+repeat-end-date-help: Angir sluttdato for gjentakelse av denne aktiviteten.
+#
+# << MISSING >>
+# Ending:
+#
+# << MISSING >>
+# Forever:
+Use end date: Benytt sluttdato
+#
+# << MISSING >>
+# Number of times:
+repeat-frequency-help: Hvor ofte skal aktiviteten gjentas? Tallet 1 viser at det skal skje hver gang, 2 hver annen gang...
+Frequency: Hyppighet
+#
+# << MISSING >>
+# Weekdays Only:
+#
+# << MISSING >>
+# Week Start:
+#
+# << MISSING >>
+# repeat-bydayextended-help:
+# English text: Allows date selection based on day of week. 
+#
+#
+# << MISSING >>
+# ByDay:
+All: Alle
+#
+# << MISSING >>
+# repeat-month-help:
+# English text: Specifies which months the event should repeat in.
+#
+#
+# << MISSING >>
+# ByMonth:
+#
+# << MISSING >>
+# repeat-bysetpos-help:
+# English text: Allows date selection based on position withing the month.
+#
+#
+# << MISSING >>
+# BySetPos:
+#
+# << MISSING >>
+# repeat-bymonthdayextended-help:
+# English text: Allows date selection based on date.
+#
+#
+# << MISSING >>
+# ByMonthDay:
+#
+# << MISSING >>
+# repeat-byweekno-help:
+# English text: Allows user to specify a list of weeks to repeat event (1,2...53,-53,-52...-1).
+#
+#
+# << MISSING >>
+# ByWeekNo:
+#
+# << MISSING >>
+# repeat-byyearday-help:
+# English text: Allows user to specify a list of year days to repeat event (1,2...366,-366,-365...-1).
+#
+#
+# << MISSING >>
+# ByYearDay:
+#
+# << MISSING >>
+# repeat-exceptions-help:
+# English text: Additional days that this event should or should not occur on.
+#
+#
+# << MISSING >>
+# Exclusions:
+#
+# << MISSING >>
+# Inclusions:
+#
+# << MISSING >>
+# Add Exception:
+#
+# << MISSING >>
+# Add Inclusion:
+#
+# << MISSING >>
+# Delete Selected:
+Send Reminder: Send påminnelse
+#
+# << MISSING >>
+# When:
+#
+# << MISSING >>
+# Use Date/Time:
+#
+# << MISSING >>
+# Use Offset:
+days: dager
+#
+# << MISSING >>
+# Before:
+#
+# << MISSING >>
+# After:
+#
+# << MISSING >>
+# Start:
+#
+# << MISSING >>
+# End/Due:
+#
+# << MISSING >>
+# Times:
+#
+# << MISSING >>
+# Every:
+Delete entry: Slett aktiviteten
+You are not authorized to edit this entry: Du har ikke lov å redigere denne aktiviteten
 
 
 ###############################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: Følgende aktiviteter er i konflikt med det foreslåtte tidspunktet
-Unnamed Event: Aktivitet uten navn
-The description is: Beskrivelsen er
 A new appointment has been made for you by: En ny avtale er gjort for deg av
 An appointment has been updated by: En avtale har blitt oppdatert av
 The subject is: Emnet er 
@@ -332,80 +1087,7 @@ to accept or reject this appointment: for å akseptere eller avvise avtalen
 to view this appointment: for å se denne avtalen
 Scheduling Conflict: Tidskonflikt
 Your suggested time of: Den foreslåtte tiden for
-All day event: Fulldagsaktivitet
 conflicts with the following existing calendar entries: er i konflikt med eksisterende avtaler
-Cancel: Avbryt
-
-
-###############################################
-# Page: edit_entry.php
-#
-Edit Entry: Endre aktiviteten
-Add Entry: Legg til aktivitet
-Details: Detaljer
-Participants: Deltakere
-Repeat: Gjentagelse
-brief-description-help: Her skal det stå en kort beskrivelse av aktiviteten - den blir vist når man står over aktiviteten i oversiktskalenderen.
-Brief Description: Kort beskrivelse
-full-description-help: Her kan det stå en komplett beskrivelse av aktiviteten.
-Full Description: Full beskrivelse
-access-help: Angi om aktiviteten skal kunne sees av alle eller om den er fortrolig.
-Access: Tilgang
-Public: Offentlig
-Confidential: Privat
-priority-help: Angi aktivitetens prioritet.
-Priority: Prioritet
-Low: Lav
-Medium: Medium
-High: Høy
-category-help: Setter kategorien for aktiviteten
-Category: Kategori
-None: Aldri
-date-help: Angir dato for aktiviteten.
-Untimed event: Aktivitet uten tidsangivelse
-Timed event: Aktivitet med tidsangivelse
-time-help: Angir tidspunkt for aktiviteten.<br /><i>Dette feltet trenger ikke være utfylt.</i>
-am: am
-pm: pm
-duration-help: I dette feltet kan du angi varigheten på aktiviteten <br /><i>Dette feltet trenger ikke være utfylt.</i>
-hours: timer
-end-time-help: Angir tidspunktet aktiviteten forventes avsluttet.
-days: dager
-before event: før aktivitet
-participants-help: Vis deltagerne i dette innlegget.
-Availability: Tilgjengelighet
-external-participants-help: Angir en liste med deltagere for en aktivitet som
-External Participants: Eksterne deltagere
-repeat-type-help: Hvor ofte skal aktiviteten gjentas.
-Repeat Type: Gjenta type
-Daily: Daglig
-Weekly: Ukentlig
-Monthly: Månedlig
-by day: etter dag
-by day (from end): etter dag (fra slutten)
-by date: etter dato
-Yearly: Årlig
-repeat-end-date-help: Angir sluttdato for gjentakelse av denne aktiviteten.
-Repeat End Date: Gjenta sluttdato
-Use end date: Benytt sluttdato
-repeat-frequency-help: Hvor ofte skal aktiviteten gjentas? Tallet 1 viser at det skal skje hver gang, 2 hver annen gang...
-Frequency: Hyppighet
-repeat-day-help: Hvilke ukedager skal aktiviteten gjentas på.
-Repeat Day: Gjenta dato
-Tuesday: Tirsdag
-Wednesday: Onsdag
-Thursday: Torsdag
-Friday: Fredag
-Saturday: Lørdag
-Delete entry: Slett aktiviteten
-You are not authorized to edit this entry: Du har ikke lov å redigere denne aktiviteten
-
-
-###############################################
-# Page: edit_layer_handler.php
-#
-You cannot create a layer for yourself: Du kan ikke lag et lag for deg selv
-You can only create one layer for each user: Du kan bare lag et lag per bruker
 
 
 ###############################################
@@ -417,36 +1099,68 @@ Source: Kilde
 Color: Farge
 Duplicates: Duplikater
 Show layer events that are the same as your own: Vis lag som er lik dine egne
+#
+# << MISSING >>
+# Add to Others:
+Add to My Calendar: Legg til kalenderen min
 Delete layer: Slett lag
 Are you sure you want to delete this layer?: Er du sikker på du vil slette dette laget?
 
 
 ###############################################
-# Page: edit_nonusers_handler.php
+# Page: edit_layer_handler.php
 #
-Calendar ID: Kalender-ID
-word characters only: kan kun inneholde tall og bokstaver (a-å, A-Å, 0-9)
-Changes successfully saved: Vellykket lagring av endringer
+You cannot create a layer for yourself: Du kan ikke lag et lag for deg selv
+You can only create one layer for each user: Du kan bare lag et lag per bruker
 
 
 ###############################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX har ikke blitt satt i config.php.
+word characters only: kan kun inneholde tall og bokstaver (a-å, A-Å, 0-9)
 Edit User: Rediger bruker
 Add User: Ny bruker
+Calendar ID: Kalender-ID
 First Name: Fornavn
 Last Name: Etternavn
+#
+# << MISSING >>
+# Is public calendar:
 
 
 ###############################################
-# Page: edit_report_handler.php
+# Page: edit_remotes.php
 #
-Page template: Mal for siden
-Variable N not found: Variablen N ble ikke funnet
-Day template: Mal for dag
-Event template: Mal for aktivitet
-Unnamed Report: Rapport uten navn
+#
+# << MISSING >>
+# Edit Remote Calendar:
+#
+# << MISSING >>
+# Add Remote Calendar:
+URL: Adresse
+#
+# << MISSING >>
+# Create Layer:
+#
+# << MISSING >>
+# Required to View Remote Calendar:
+#
+# << MISSING >>
+# Reload:
+
+
+###############################################
+# Page: edit_remotes_handler.php
+#
+Error: Feil
+Import Results: Importeringsresultat
+Events successfully imported: Aktiviteter vellykket importert
+#
+# << MISSING >>
+# Create a new layer to view this calendar:
+Errors: Feil
+There was an error parsing the import file or no events were returned: Det oppstod en feil ved behandling av den importerte filen eller ingen aktiviteter ble returnert
 
 
 ###############################################
@@ -472,7 +1186,26 @@ Next year: Neste år
 This year: Dette året
 Last year: Forrige år
 Year before last: Året før forrige
+#
+# << MISSING >>
+# Next 14 days:
+#
+# << MISSING >>
+# Next 30 days:
+#
+# << MISSING >>
+# Next 60 days:
+#
+# << MISSING >>
+# Next 90 days:
+#
+# << MISSING >>
+# Next 180 days:
+#
+# << MISSING >>
+# Next 365 days:
 Invalid report id: Ugyldig rapport-ID
+Unnamed Report: Rapport uten navn
 Add Report: Legg til rapport
 Edit Report: Rediger rapport
 Report name: Rapportnavn
@@ -483,7 +1216,16 @@ Date range: Tidsrom
 Include previous/next links: Inkluder forrige/neste lenker
 Include empty dates: Inkluder tomme datoer
 Template variables: Variabler for malen
+Page template: Mal for siden
+Day template: Mal for dag
+Event template: Mal for aktivitet
 Are you sure you want to delete this report?: Er du sikker på at du vil slette denne rapporten?
+
+
+###############################################
+# Page: edit_report_handler.php
+#
+Variable N not found: Variablen N ble ikke funnet
 
 
 ###############################################
@@ -492,15 +1234,6 @@ Are you sure you want to delete this report?: Er du sikker på at du vil slette d
 Edit Custom Script/Stylesheet: Rediger egendefinert skript/stilsett
 Edit Custom Header: Rediger egendefinert hode
 Edit Custom Trailer: Rediger egendefinert fot
-
-
-###############################################
-# Page: edit_user_handler.php
-#
-Deleting users not supported: Sletting av brukere er ikke støttet
-The passwords were not identical: Passordene var ikke identiske
-You have not entered a password: Du har ikke oppgitt passord
-Username can not be blank: Brukernavn må fylles ut 
 
 
 ###############################################
@@ -518,15 +1251,21 @@ Set Password: Sett passord
 
 
 ###############################################
-# Page: export_handler.php
+# Page: edit_user_handler.php
 #
-Export: Eksporter
-export format not defined or incorrect: eksportformat ikke definert eller feil
+Deleting users not supported: Sletting av brukere er ikke støttet
+The passwords were not identical: Passordene var ikke identiske
+You have not entered a password: Du har ikke oppgitt passord
+#
+# << MISSING >>
+# Invalid characters in login:
+Username can not be blank: Brukernavn må fylles ut 
 
 
 ###############################################
 # Page: export.php
 #
+Export: Eksporter
 Export format: Eksportformat
 Palm Pilot: Palm Pilot
 Include all layers: Inkluder alle lag
@@ -537,9 +1276,15 @@ Modified since: Endret etter
 
 
 ###############################################
-# Page: group_edit_handler.php
+# Page: export_handler.php
 #
-You must specify a group name: Du må angi et gruppenavn
+export format not defined or incorrect: eksportformat ikke definert eller feil
+
+
+###############################################
+# Page: groups.php
+#
+Add New Group: Legg til ny gruppe
 
 
 ###############################################
@@ -554,19 +1299,27 @@ Created by: Opprettet av
 
 
 ###############################################
-# Page: groups.php
+# Page: group_edit_handler.php
 #
-Add New Group: Legg til ny gruppe
+You must specify a group name: Du må angi et gruppenavn
 
 
 ###############################################
 # Page: help_admin.php
 #
+Display weekends in week view: Viser helg i ukevisning
 Display days with events in bold in year view: Viser dager med aktiviteter i fetskrift for årvisning
+Time interval: Tidsinterval
+time-interval-help: Angir hvor lang blokken med tid i uke- og dagvisning skal være.
+Auto-refresh calendars: Oppdater kalendere automatisk
+auto-refresh-help: Hvis aktivert, vil dagsvisning, ukesvisning, månedsvisning og liste med ikke godkjente aktiviteter oppdateres automatisk periodisk.
+Auto-refresh time: Auto-oppdateringsintervall
+auto-refresh-time-help: Hvis auto-oppdatering er aktivert, så setter denne tiden mellom hver oppdatering. 
 Nonuser: Ikke-bruker kalendere
 user-customize-color: Angir om brukere har lov å endre deres eget fargeskjema.
 enable-gradient-help: Bruk gradert fargeovergang for tabellbakgrunn.
 Manually entering color values: Skriv inn fargeverdier manuelt
+colors-help: Alle farger skal skrives inn som #RRGGBB hvor RR er hexkoden for rødt, GG er hexkoden for grønn og BB er hexkoden for den blå fargeen.
 
 
 ###############################################
@@ -579,13 +1332,19 @@ Report Bug: Rapporter feil
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Legg til/endre aktivitet
+Repeat Type: Gjenta type
+#
+# << MISSING >>
+# For More Information...:
+Repeat End Date: Gjenta sluttdato
+Repeat Day: Gjenta dato
+repeat-day-help: Hvilke ukedager skal aktiviteten gjentas på.
 
 
 ###############################################
 # Page: help_import.php
 #
 Import: Importer
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Dette skjemaet gjør det mulig for deg å importere oppføringer fra Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den bør finnes i din Palm katalog i <tt>datebook/datebook.dat</tt> i en underkatalog med ditt brukernavn.
 The following entries will not be imported: Følgende oppføringer vil ikke bli importert
@@ -593,13 +1352,8 @@ Entries older than the current date: Oppføringer eldre enn nåværende dato
 Entries created in the Palm Desktop that have not been HotSync'd: Oppføringer opprettet i Palm Desktop-en som ikke har blitt HotSync'd
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alt som blir importert fra Palm vil bli overskrevet ved neste import (hvis ikke aktivitetsdatoen har passert)
 Therefore, updates should be made in the Palm Desktop.: Derfor bør oppdatering bli gjort i Palm Desktop-en.
-vCal: vCal
 This form will import vCalendar (.vcs) 1.0 events: Dette skjemaet vil importere vCalendar (.vcs) 1.0 aktiviteter
 The following formats have been tested: Følgende formater har blitt testet
-Palm Desktop 4: Palm Desktop 4
-Lotus Organizer 6: Lotus Organizer 6
-Microsoft Outlook 2002: Microsoft Outlook 2002
-iCalendar: iCalendar
 This form will import iCalendar (.ics) events: Dette skjemaet vil importere iCalendar (.vcs) aktiviteter
 Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Aktivering av <b>Skriv over tidligere importering</b> fører til at tidligere importerte aktiviteter som bruker samme UID som en aktivitet fra den nye import-filen, vil bli markert som slettede. Dermed bør en oppdatert iCal-fil kunne bli importert uten at det oppstår duplikater.  
 
@@ -613,7 +1367,9 @@ Help Index: Hjelpoversikt
 ###############################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Lag er nyttig for å vise andre brukere sine aktiviteter i din egen kalender. Du kan spesifisere brukeren og fargen som aktivitetene blir vist med. 
+#
+# << MISSING >>
+# Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.:
 Add/Edit/Delete: Legg til/Rediger/Slett
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Ved å klikke på "Rediger lag" i Admin seksjonen nederst på siden kan du legge til/redigere/slette lag.
 Specifies the user that you would like to see displayed in your calendar.: Angir brukeren du vil ha vist i din kalender.
@@ -628,8 +1384,6 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 ###############################################
 # Page: help_pref.php
 #
-Timezone Offset: Tidssoneavvik
-tz-help: Angir hvor mange timer servertid må justeres i forhold til lokaltid.
 Default Category: Standardkategori
 default-category-help: Angir den kategorien en ny aktivitet skal ha som standard
 When I am the boss: Når jeg er sjefen
@@ -639,22 +1393,79 @@ I want to approve events: Jeg vil godkjenne aktiviteter
 boss-approve-event-help: Angir om sjefen må godkjenne aktiviteter lagt til av assistenter.
 Subscribe/Publish: Abonnere/publisere
 allow-remote-subscriptions-help: Angir om eksterne brukere kan abonnere på din kalender og dermed tillate dem å se dine aktiviteter i en applikasjon som støtter iCal (som Apple sin iCal eller Mozilla Calendar).
-URL: Adresse
 remote-subscriptions-url-help: Viser adressen som eksterne brukere skal bruke for å abonnere på din kalender.
+#
+# << MISSING >>
+# Allow remote publishing:
+#
+# << MISSING >>
+# allow-remote-publishing-help:
+# English text: Specifies if a remote iCal client can publish events back to WebCalendar
+#
+#
+# << MISSING >>
+# remote-publishing-url-help:
+# English text: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
+#
+#
+# << MISSING >>
+# rss-feed-url-help:
+# English text: The URL to access the RSS feed
+#
+#
+# << MISSING >>
+# Enable FreeBusy publishing:
+#
+# << MISSING >>
+# freebusy-enabled-help:
+# English text: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
+#
+#
+# << MISSING >>
+# freebusy-url-help:
+# English text: The URL for accessing the user's FreeBusy list
+#
 
 
 ###############################################
-# Page: import_handler.php
+# Page: help_uac.php
 #
-Import Results: Importeringsresultat
-Events successfully imported: Aktiviteter vellykket importert
-Events from prior import marked as deleted: Aktiviteter fra tidligere importering markert som slettede
-Conflicting events: Aktiviteter som kolliderer
-Errors: Feil
-There was an error parsing the import file or no events were returned: Det oppstod en feil ved behandling av den importerte filen eller ingen aktiviteter ble returnert
-The import file contained no data: Den importerte filen inneholdt ikke noen data
-Event Imported: Aktivitet importert
-View this entry: Vis aktiviteten
+#
+# << MISSING >>
+# User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
+# English text: User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
+#
+#
+# << MISSING >>
+# If disabled, this user will not see you in the participants list.:
+#
+# << MISSING >>
+# If disabled, this user will not be able to send you emails.:
+#
+# << MISSING >>
+# If enabled, this user will not be able to view the details of any of your entries.:
+
+
+###############################################
+# Page: icalclient.php
+#
+#
+# << MISSING >>
+# Publishing Disabled (Admin):
+#
+# << MISSING >>
+# Publishing Disabled (User):
+
+
+###############################################
+# Page: icons.php
+#
+#
+# << MISSING >>
+# Click to Select:
+#
+# << MISSING >>
+# Current Icons on Server:
 
 
 ###############################################
@@ -664,6 +1475,17 @@ Disabled: Deaktivert
 Import format: Importeringsformat
 Exclude private records: Utelat private oppføringer
 Overwrite Prior Import: Skriv over tidligere importering
+#
+# << MISSING >>
+# Repeated items are imported separately. Prior imports are not overwritten.:
+
+
+###############################################
+# Page: import_handler.php
+#
+Events from prior import marked as deleted: Aktiviteter fra tidligere importering markert som slettede
+Conflicting events: Aktiviteter som kolliderer
+The import file contained no data: Den importerte filen inneholdt ikke noen data
 
 
 ###############################################
@@ -673,6 +1495,7 @@ Layers are currently: Lagene er nå
 Enabled: Aktivert
 Disable Layers: Deaktiver lag
 Enable Layers: Aktiver lag
+Click here: Klikk her
 to modify the layers settings for the: for å modifisere laginnstilling for
 calendar: kalender
 Add layer: Legg til lag
@@ -683,18 +1506,46 @@ Edit layer: Editer lag
 ###############################################
 # Page: list_unapproved.php
 #
+View this entry: Vis aktiviteten
 Approve/Confirm: Godkjenn/Bekreft
 Approve this entry?: Godkjenn aktiviteten?
 Reject: Avvis
 Reject this entry?: Avvis denne aktiviteten?
-No unapproved events for: Ingen ikke-godkjente aktiviteter for
-Unapproved Events: Ikke-godkjente aktiviteter
+#
+# << MISSING >>
+# Check All:
+#
+# << MISSING >>
+# Uncheck All:
+#
+# << MISSING >>
+# Approve Selected:
+#
+# << MISSING >>
+# Approve Selected entries?:
+#
+# << MISSING >>
+# Reject Selected:
+#
+# << MISSING >>
+# Reject Selected entries?:
+#
+# << MISSING >>
+# Emails Will Not Be Sent:
+#
+# << MISSING >>
+# No unapproved entries for:
+#
+# << MISSING >>
+# Unapproved Entries:
+#
+# << MISSING >>
+# Not authorized:
 
 
 ###############################################
-# Page: login.php
+# Page: login-app.php
 #
-Invalid login: Ugyldig innlogging
 You must enter a login and password: Vennligst oppgi brukernavn og passord
 Save login via cookies so I don't have to login next time: Husk brukernavn til neste gang
 Login: Logg inn
@@ -703,15 +1554,26 @@ cookies-note: <b>OBS:</b> Programmet krever at "cookies" er slått på
 
 
 ###############################################
-# Page: month.php
+# Page: login.php
 #
-Sun: Søn
-Mon: Man
-Tue: Tir
-Wed: Ons
-Thu: Tor
-Fri: Fre
-Sat: Lør
+Invalid login: Ugyldig innlogging
+#
+# << MISSING >>
+# You have been logged out:
+#
+# << MISSING >>
+# Not yet registered? Register here!:
+
+
+###############################################
+# Page: minical.php
+#
+#
+# << MISSING >>
+# No such nonuser calendar:
+#
+# << MISSING >>
+# This Calendar is not Public:
 
 
 ###############################################
@@ -724,18 +1586,80 @@ Add New NonUser Calendar: Legg til ny ikke-bruker kalender
 # Page: pref.php
 #
 Save Preferences: Lagre innstillinger
-to modify the preferences for the Public Access calendar: for å modifisere innstillingene for kalenderen med offentlig tilgang
-Add N hours to: Legg til N timer til
-Subtract N hours from: Trekk fra N timer fra
-same as: samme som
-server time: servertid
-All: Alle
+#
+# << MISSING >>
+# Public Access calendar:
+#
+# << MISSING >>
+# Modify Non User Calendar Preferences:
+#
+# << MISSING >>
+# Return to My Preferences:
+#
+# << MISSING >>
+# Custom Scripts:
+#
+# << MISSING >>
+# Timezone Selection:
+#
+# << MISSING >>
+# entry-interval-help:
+# English text: Sets minute interval when editing entry times
+#
+#
+# << MISSING >>
+# Entry interval:
+hour: time
+minute: minutt
+#
+# << MISSING >>
+# theme-reload-help:
+# English text: Due to CSS caching, a page reload may be required
+#
+#
+# << MISSING >>
+# Page may need to be reloaded for new Theme to take effect:
+#
+# << MISSING >>
+# Email format preference:
+#
+# << MISSING >>
+# HTML:
+#
+# << MISSING >>
+# Plain Text:
+#
+# << MISSING >>
+# display_byproxy-help:
+# English text: Display the real creator on view_entry page
+#
+#
+# << MISSING >>
+# Display if created by Assistant:
+#
+# << MISSING >>
+# allow-view-subscriptions-help:
+# English text: Allows restricting remote access to Private or Confidential entries 
+#
+#
+# << MISSING >>
+# Allow remote viewing of:
+#
+# << MISSING >>
+# entries:
+
+
+###############################################
+# Page: publish.php
+#
+#
+# << MISSING >>
+# No user specified:
 
 
 ###############################################
 # Page: purge.php
 #
-Preview: Forhåndsvisning
 Purging events for: Sletter aktiviteter for
 Finished: Ferdig
 Check box to delete <b>ALL</b> events for a user: Marker i boksen hvis <b>ALLE</b> aktiviteter skal slettes
@@ -746,16 +1670,87 @@ Records deleted from: Oppføringer slettet fra:
 
 
 ###############################################
+# Page: register.php
+#
+#
+# << MISSING >>
+# Email address can not be blank:
+#
+# << MISSING >>
+# Illegal characters in login:
+#
+# << MISSING >>
+# A new WebCalendar account has been set up for you:
+#
+# << MISSING >>
+# Your username is:
+#
+# << MISSING >>
+# Your password is:
+#
+# << MISSING >>
+# Please visit:
+#
+# << MISSING >>
+# to log in and start using your account:
+#
+# << MISSING >>
+# You may change your password after logging in the first time:
+#
+# << MISSING >>
+# If you received this email in error:
+# English text: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note 
+#
+#
+# << MISSING >>
+# Administrator:
+#
+# << MISSING >>
+# Welcome:
+#
+# << MISSING >>
+# Registration:
+#
+# << MISSING >>
+# Welcome to WebCalendar:
+#
+# << MISSING >>
+# Your email should arrive shortly:
+#
+# << MISSING >>
+# Return to Login screen:
+#
+# << MISSING >>
+# Your account information will be emailed to you:
+#
+# << MISSING >>
+# Submit:
+
+
+###############################################
 # Page: reject_entry.php
 #
+#
+# << MISSING >>
+# Continue:
+#
+# << MISSING >>
+# (Your comments will be included in an email to the other participants):
 An appointment has been rejected by: En avtale har blitt avvist av
-Title: Webkalenderen
+
+
+###############################################
+# Page: remotes.php
+#
+#
+# << MISSING >>
+# Add New Remote Calendar:
 
 
 ###############################################
 # Page: report.php
 #
-Private: Privat
+cont.: forts.
 This event is confidential: Denne aktiviteten er privat
 Waiting for approval: Venter på godkjenning
 Deleted: Slettet
@@ -764,8 +1759,15 @@ Approved: Godkjent
 Unknown: Ukjent
 to manage reports for the Public Access calendar: for å administrere kalenderen med offentlig tilgang
 Add new report: Legg til ny rapport
-cont.: forts.
 Manage Reports: Administrer rapporter
+
+
+###############################################
+# Page: search.php
+#
+Search: Søk
+Keywords: Nøkkelord
+Advanced Search: Avansert søk
 
 
 ###############################################
@@ -779,18 +1781,9 @@ No matches found: Ingen treff funnet
 
 
 ###############################################
-# Page: search.php
-#
-Search: Søk
-Keywords: Nøkkelord
-Advanced Search: Avansert søk
-
-
-###############################################
 # Page: select_user.php
 #
 View Another User's Calendar: Se en annen brukers kalender
-Go: Gå til
 
 
 ###############################################
@@ -798,21 +1791,77 @@ Go: Gå til
 #
 You have not added any categories: Du har ikke lagt til noen kategorier
 Set Category: Sett kategori
+#
+# << MISSING >>
+# Global Categories can not be changed:
 
 
 ###############################################
-# Page: usersel.php
+# Page: upcoming.php
 #
-Reset: Reset
-Remove: Fjern
-Ok: OK
+#
+# << MISSING >>
+# __month__ __dd__:
+#
+# << MISSING >>
+# more:
 
 
 ###############################################
 # Page: users.php
 #
+#
+# << MISSING >>
+# Remote Calendars:
 Add New User: Opprett bruker
 denotes administrative user: indikerer administrator
+
+
+###############################################
+# Page: usersel.php
+#
+#
+# << MISSING >>
+# No form specified!:
+#
+# << MISSING >>
+# No listid specified!:
+Reset: Reset
+
+
+###############################################
+# Page: views.php
+#
+Add New View: Legg til ny oversikt
+
+
+###############################################
+# Page: views_edit.php
+#
+Unnamed View: Ikke navngitt oversikt
+Add View: Legg til oversikt
+Edit View: Redigere oversikt
+View Name: Navn på oversikt
+View Type: Oversiktstype
+#
+# << MISSING >>
+# Day by Time:
+Week (Users horizontal): Uke (brukere horisontalt)
+#
+# << MISSING >>
+# Week by Time:
+Week (Users vertical): Uke (brukere vertikalt)
+Week (Timebar): Uke (tidsbar)
+Month (Timebar): Måned (tidsbar)
+Month (side by side): Måned (side ved side)
+Month (on same calendar): Måned (i samme kalender)
+Selected: Valgt
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Du må angi et oversiktnavn
 
 
 ###############################################
@@ -824,18 +1873,45 @@ No users for this view: Ingen brukere for denne visningen
 ###############################################
 # Page: view_entry.php
 #
-every: hver
-2nd: 2.
-3rd: 3.
-4th: 4.
-5th: 5.
-1st: 1.
-last: siste
-Description: Beskrivelse
+Assistant mode: Assistent modus
 Status: Status
-day: dag
-minute: minutt
+#
+# << MISSING >>
+# Accepted:
+#
+# << MISSING >>
+# Needs-Action:
+#
+# << MISSING >>
+# Declined:
+#
+# << MISSING >>
+# Completed:
+#
+# << MISSING >>
+# by:
+#
+# << MISSING >>
+# Percentage Complete:
 External User: Ekstern bruker
+#
+# << MISSING >>
+# Update Task Percentage:
+#
+# << MISSING >>
+# Update:
+#
+# << MISSING >>
+# Attachments:
+#
+# << MISSING >>
+# comments:
+#
+# << MISSING >>
+# Show:
+#
+# << MISSING >>
+# Hide:
 Approve/Confirm entry: Godkjenn/bekreft aktiviteten
 Reject entry: Avvis aktiviteten
 Set category: Sett kategori
@@ -845,9 +1921,17 @@ Delete repeating event for all dates: Slett repeterende aktiviteter for alle dat
 This will delete this entry for all users.: Dette vil slette aktiviteten for alle brukerene
 Delete entry only for this date: Slett aktiviteten for denne datoen
 Edit entry: Endre aktiviteten
+#
+# << MISSING >>
+# from calendar of:
 Copy entry: Kopier aktiviteten
+#
+# << MISSING >>
+# This will delete the entry from your boss\' calendar.:
 This will delete the entry from your calendar.: Dette vil slette aktiviteten fra kalenderen din.
-Add to My Calendar: Legg til kalenderen min
+#
+# << MISSING >>
+# from your boss' calendar:
 Do you want to add this entry to your calendar?: Vil du legge inn denne aktiviteten i kalenderen din?
 This will add the entry to your calendar.: Dette vil legge til aktiviteten i kalenderen din.
 Email all participants: E-post til alle deltakerne
@@ -857,33 +1941,11 @@ Export this entry to: Eksporter denne aktiviteten til
 
 
 ###############################################
-# Page: views_edit_handler.php
+# Page: view_r.php
 #
-You must specify a view name: Du må angi et oversiktnavn
-
-
-###############################################
-# Page: views_edit.php
 #
-Unnamed View: Ikke navngitt oversikt
-Add View: Legg til oversikt
-Edit View: Redigere oversikt
-View Name: Navn på oversikt
-View Type: Oversiktstype
-Week (Users horizontal): Uke (brukere horisontalt)
-Week (Users vertical): Uke (brukere vertikalt)
-Week (Timebar): Uke (tidsbar)
-Month (Timebar): Måned (tidsbar)
-Month (side by side): Måned (side ved side)
-Month (on same calendar): Måned (i samme kalender)
-preview: forhåndsvisning
-Selected: Valgt
-
-
-###############################################
-# Page: views.php
-#
-Add New View: Legg til ny oversikt
+# << MISSING >>
+# Double-click on empty cell to add new entry:
 
 
 ###############################################
@@ -893,44 +1955,113 @@ New Entry: Ny aktivitet
 
 
 ###############################################
+# Page: includes/access.php
+#
+#
+# << MISSING >>
+# Edit Event:
+#
+# << MISSING >>
+# Day View:
+#
+# << MISSING >>
+# Week View:
+#
+# << MISSING >>
+# Month View:
+#
+# << MISSING >>
+# Year View:
+#
+# << MISSING >>
+# Manage Views:
+#
+# << MISSING >>
+# Category Management:
+#
+# << MISSING >>
+# User Management:
+Another User's Calendar: Se en annen brukers kalender
+#
+# << MISSING >>
+# Common Trailer:
+
+
+###############################################
 # Page: includes/config.php
 #
-English: Engelsk
-Basque: Baskisk
-Bulgarian: Bulgarsk
-Catalan: Katalansk 
-Chinese (Traditional/Big5): Kinesisk
-Chinese (Simplified/GB2312): Kinesisk med enkle tegn
-Czech: Tsjekkisk
-Danish: Dansk
-Dutch: Nederlansk
-Estonian: Estisk
-Finnish: Finsk
-French: Fransk
-Galician: Galisisk
-German: Tysk
-Holo (Taiwanese): Taiwansk
-Hungarian: Ungarsk
-Icelandic: Islandsk
-Italian: Italiensk
-Japanese: Japansk
-Korean: Koreansk
-Norwegian: Norsk
-Polish: Polsk
-Portuguese: Portugisisk
-Portuguese/Brazil: Portugisisk/Brasiliansk
-Romanian: Rumensk
-Russian: Russisk
-Spanish: Spansk
-Swedish: Svensk
-Turkish: Tyrkisk
+#
+# << MISSING >>
+# Fatal Error:
+#
+# << MISSING >>
+# Troubleshooting Help:
+
+
+###############################################
+# Page: includes/date_formats.php
+#
+#
+# << MISSING >>
+# LANGUAGE DEFINED:
+December: Desember
+Dec: Des
 
 
 ###############################################
 # Page: includes/functions.php
 #
+#
+# << MISSING >>
+# Unauthorized:
+#
+# << MISSING >>
+# __month__ __dd__, __yyyy__:
+#
+# << MISSING >>
+# __month__ __yyyy__:
+#
+# << MISSING >>
+# __mm__/__dd__/__yyyy__:
+#
+# << MISSING >>
+# This event is private:
+#
+# << MISSING >>
+# Conf.:
+#
+# << MISSING >>
+# WK:
+#
+# << MISSING >>
+# Task Name:
+#
+# << MISSING >>
+# Task Due Date:
+#
+# << MISSING >>
+# TASKS:
+#
+# << MISSING >>
+# Task_Title:
+# English text: Title
+#
+#
+# << MISSING >>
+# Due:
+#
+# << MISSING >>
+# View this task:
+#
+# << MISSING >>
+# View this event:
 exceeds limit of XXX events per day: overgår grense på XXX aktiviteter per dag
-You have XXX unapproved events: Du har XXX ikke-godkjente aktiviteter
+#
+# << MISSING >>
+# on:
+#
+# << MISSING >>
+# You have XXX unapproved entries:
 January: Januar
 February: Februar
 March: Mars
@@ -953,33 +2084,196 @@ Aug: Aug
 Sep: Sep
 Oct: Okt
 Nov: Nov
-Dec: Des
+Tuesday: Tirsdag
+Wednesday: Onsdag
+Thursday: Torsdag
+Friday: Fredag
+Saturday: Lørdag
+Sun: Søn
+Mon: Man
+Tue: Tir
+Wed: Ons
+Thu: Tor
+Fri: Fre
+Sat: Lør
+#
+# << MISSING >>
+# Schedule an appointment for:
 All Attendees: Alle deltagere
 Busy: Opptatt
 Tentative: Tentativ
+Changes successfully saved: Vellykket lagring av endringer
+The following error occurred: Følgende feil oppstod
+You are not authorized: Du har ikke tillatelse
+day: dag
+#
+# << MISSING >>
+# before:
+#
+# << MISSING >>
+# after:
+#
+# << MISSING >>
+# start:
+#
+# << MISSING >>
+# end:
+Error approving event: Feil ved godkjenning av aktivitet
+#
+# << MISSING >>
+# Error deleting event:
+#
+# << MISSING >>
+# Error rejecting event:
+Generate printer-friendly version: Vis som utskriftsvennlig side
+Printer Friendly: Utskriftsvennlig
+Event created: Aktivitet lagd
+Event approved: Aktivitet godkjent
+Event rejected: Aktivitet avvist
+Event updated: Aktivitet oppdatert
+Event deleted: Aktivitet slettet
+#
+# << MISSING >>
+# Task created:
+#
+# << MISSING >>
+# Task approved:
+#
+# << MISSING >>
+# Task rejected:
+#
+# << MISSING >>
+# Task updated:
+#
+# << MISSING >>
+# Task deleted:
+#
+# << MISSING >>
+# Journal created:
+#
+# << MISSING >>
+# Journal approved:
+#
+# << MISSING >>
+# Journal rejected:
+#
+# << MISSING >>
+# Journal updated:
+#
+# << MISSING >>
+# Journal deleted:
+Notification sent: Medling sendt
+Reminder sent: Påminnelse sendt
+#
+# << MISSING >>
+# New user (self registration):
+#
+# << MISSING >>
+# New user via email (self registration):
+#
+# << MISSING >>
+# Attachment:
+#
+# << MISSING >>
+# Delete User:
 
 
 ###############################################
-# Page: includes/help_trailer.php
+# Page: includes/help_list.php
 #
-Go to: Gå til
-
-
-###############################################
-# Page: includes/site_extras.php
 #
-Send Reminder: Send påminnelse
+# << MISSING >>
+# Index:
+#
+# << MISSING >>
+# Page:
 
 
 ###############################################
 # Page: includes/trailer.php
 #
+#
+# << MISSING >>
+# Home:
 My Calendar: Min kalender
 Back to My Calendar: Tilbake til min kalender
-Another User's Calendar: Se en annen brukers kalender
 Add New Entry: Legg til aktivitet
+#
+# << MISSING >>
+# Add New Task:
+Go to: Gå til
 Logout: Logg ut
 Manage calendar of: Kontroller kalenderen til
+
+
+###############################################
+# Page: includes/translate.php
+#
+#
+# << MISSING >>
+# Browser Language Not Found:
+#
+# << MISSING >>
+# not supported:
+#
+# << MISSING >>
+# Browser-defined:
+English: Engelsk
+#
+# << MISSING >>
+# English-US:
+Basque: Baskisk
+Bulgarian: Bulgarsk
+Catalan: Katalansk 
+Chinese (Traditional/Big5): Kinesisk
+Chinese (Simplified/GB2312): Kinesisk med enkle tegn
+Czech: Tsjekkisk
+Danish: Dansk
+Dutch: Nederlansk
+Estonian: Estisk
+Finnish: Finsk
+French: Fransk
+#
+# << MISSING >>
+# French (UTF8):
+Galician: Galisisk
+German: Tysk
+#
+# << MISSING >>
+# Greek:
+Holo (Taiwanese): Taiwansk
+Hungarian: Ungarsk
+Icelandic: Islandsk
+Italian: Italiensk
+Japanese: Japansk
+Korean: Koreansk
+Norwegian: Norsk
+Polish: Polsk
+Portuguese: Portugisisk
+Portuguese/Brazil: Portugisisk/Brasiliansk
+Romanian: Rumensk
+Russian: Russisk
+Spanish: Spansk
+Swedish: Svensk
+Turkish: Tyrkisk
+#
+# << MISSING >>
+# Welsh:
+#
+# << MISSING >>
+# task:
+#
+# << MISSING >>
+# event:
+#
+# << MISSING >>
+# journal:
+
+
+###############################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Ugyldig brukerinnlogging
 
 
 ###############################################
@@ -987,7 +2281,64 @@ Manage calendar of: Kontroller kalenderen til
 #
 incorrect password: feil passord
 no such user: ingen slik bruker
-Invalid user login: Ugyldig brukerinnlogging
+
+
+###############################################
+# Page: includes/xcal.php
+#
+#
+# << MISSING >>
+# MO:
+#
+# << MISSING >>
+# TU:
+#
+# << MISSING >>
+# WE:
+#
+# << MISSING >>
+# TH:
+#
+# << MISSING >>
+# FR:
+#
+# << MISSING >>
+# SA:
+#
+# << MISSING >>
+# SU:
+#
+# << MISSING >>
+# Interval:
+#
+# << MISSING >>
+# Months:
+#
+# << MISSING >>
+# Month Days:
+#
+# << MISSING >>
+# Days:
+#
+# << MISSING >>
+# Weeks:
+#
+# << MISSING >>
+# Position:
+#
+# << MISSING >>
+# Until:
+#
+# << MISSING >>
+# Count:
+#
+# << MISSING >>
+# Inclusion Dates:
+#
+# << MISSING >>
+# Exclusion Dates:
+Unnamed Event: Aktivitet uten navn
+Event Imported: Aktivitet importert
 
 
 ###############################################
@@ -1018,9 +2369,15 @@ Change the date and time of this entry?: Endre datoen og tiden for denne aktivit
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Du har ikke oppgitt noen kort beskrivelse
-You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspunkt
 The time you have entered begins before your preferred work hours.  Is this correct?: Tidspunktet du har angitt er før din foretrukne arbeidstid. Er dette korrekt?
+#
+# << MISSING >>
+# Invalid Event Date:
 Please add a participant: Legg til en deltager
+#
+# << MISSING >>
+# Invalid Date:
+You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspunkt
 
 
 ###############################################
@@ -1030,7 +2387,553 @@ Invalid color: Ugyldig farge
 
 
 ###############################################
+# Page: includes/js/edit_nonuser.php
+#
+#
+# << MISSING >>
+# Calendar ID can not be blank:
+#
+# << MISSING >>
+# Both first and last names can not be blank:
+
+
+###############################################
+# Page: includes/js/edit_remotes.php
+#
+#
+# << MISSING >>
+# URL can not be blank:
+
+
+###############################################
+# Page: includes/js/export_import.php
+#
+#
+# << MISSING >>
+# File type does not match Import Format:
+
+
+###############################################
+# Page: includes/classes/Doc.class
+#
+#
+# << MISSING >>
+# bytes:
+#
+# << MISSING >>
+# kb:
+#
+# << MISSING >>
+# Mb:
+
+
+###############################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Påminnelse
+#
+# << MISSING >>
+# provide_address:
+# English text: You must provide at least one recipient email address
+#
+#
+# << MISSING >>
+# mailer_not_supported:
+# English text: mailer is not supported
+#
+#
+# << MISSING >>
+# execute:
+# English text: Could not execute:
+#
+#
+# << MISSING >>
+# instantiate:
+# English text: Could not instantiate mail function
+#
+#
+# << MISSING >>
+# authenticate:
+# English text: SMTP Error: Could not authenticate
+#
+#
+# << MISSING >>
+# from_failed:
+# English text: The following From address failed:
+#
+#
+# << MISSING >>
+# recipients_failed:
+# English text: SMTP Error: The following recipients failed:
+#
+#
+# << MISSING >>
+# data_not_accepted:
+# English text: SMTP Error: Data not accepted
+#
+#
+# << MISSING >>
+# connect_host:
+# English text: SMTP Error: Could not connect to SMTP host:
+#
+#
+# << MISSING >>
+# file_access:
+# English text: Could not access file:
+#
+#
+# << MISSING >>
+# file_open:
+# English text: File Error Could not open file:
+#
+#
+# << MISSING >>
+# encoding:
+# English text: Unknown encoding:
+#
+
+
+###############################################
+# Page: includes/menu/index.php
+#
+#
+# << MISSING >>
+# This Week:
+#
+# << MISSING >>
+# This Month:
+#
+# << MISSING >>
+# This Year:
+#
+# << MISSING >>
+# Exit:
+#
+# << MISSING >>
+# Add New Event:
+#
+# << MISSING >>
+# Delete Entries:
+#
+# << MISSING >>
+# Another User\'s Calendar:
+#
+# << MISSING >>
+# My Views:
+#
+# << MISSING >>
+# Manage Calendar of:
+#
+# << MISSING >>
+# My Reports:
+#
+# << MISSING >>
+# My Profile:
+#
+# << MISSING >>
+# Public Calendar:
+Unapproved Events: Ikke-godkjente aktiviteter
+#
+# << MISSING >>
+# User Manager:
+
+
+###############################################
 # Page: tools/send_reminders.php
 #
+#
+# << MISSING >>
+# This is a reminder for the task detailed below.:
 This is a reminder for the event detailed below.: Dette er en påminnelse for aktiviteten beskrevet nedenfor. 
+#
+# << MISSING >>
+# Pecentage Complete:
 Reminder: Påminnelse
+
+
+###############################################
+# Page: tools/reload_remotes.php
+#
+#
+# << MISSING >>
+# Include Path:
+#
+# << MISSING >>
+# Deleting events for:
+#
+# << MISSING >>
+# Importing events for:
+#
+# << MISSING >>
+# No data returned from:
+#
+# << MISSING >>
+# for non-user calendar:
+#
+# << MISSING >>
+# No Remote Calendars found:
+#
+# << MISSING >>
+# Remote Calendars not enabled:
+
+
+###############################################
+# Page: install/install_functions.php
+#
+#
+# << MISSING >>
+# Error updating webcal_config:
+#
+# << MISSING >>
+# Error updating webcal_user_pref:
+#
+# << MISSING >>
+# Perl script required:
+# English text: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
+#
+#
+# << MISSING >>
+# Your previous version of WebCalendar requires updating several database tables.:
+
+
+###############################################
+# Page: install/index.php
+#
+#
+# << MISSING >>
+# WebCalendar Installation Wizard:
+#
+# << MISSING >>
+# Step:
+#
+# << MISSING >>
+# Single-User:
+#
+# << MISSING >>
+# Failure Reason:
+#
+# << MISSING >>
+# You must manually create database:
+#
+# << MISSING >>
+# Database Cache Directory:
+#
+# << MISSING >>
+# Test Settings:
+#
+# << MISSING >>
+# Create New:
+#
+# << MISSING >>
+# Database Name:
+#
+# << MISSING >>
+# Back:
+#
+# << MISSING >>
+# Timezone Conversion Successful:
+#
+# << MISSING >>
+# Error Unable to write to file:
+#
+# << MISSING >>
+# Successful Login:
+#
+# << MISSING >>
+# Invalid Login:
+#
+# << MISSING >>
+# required only if Safe Mode is On:
+#
+# << MISSING >>
+# required only if Remote Calendars are used:
+#
+# << MISSING >>
+# needed for Gradient Image Backgrounds:
+#
+# << MISSING >>
+# Passwords do not match:
+#
+# << MISSING >>
+# Unable to write password to settings.php file:
+#
+# << MISSING >>
+# Password has been set:
+#
+# << MISSING >>
+# Connection Successful:
+#
+# << MISSING >>
+# Please go to next page to continue installation:
+#
+# << MISSING >>
+# Correct your entries or click the <b>Create New</b> button to continue installation:
+#
+# << MISSING >>
+# Correct your entries and try again:
+#
+# << MISSING >>
+# does not exist:
+#
+# << MISSING >>
+# is not writable:
+#
+# << MISSING >>
+# Error Converting Timezone:
+#
+# << MISSING >>
+# Please change the file permissions of this file:
+#
+# << MISSING >>
+# Please change includes dir premission:
+# English text: Please change the file permissions of your includes directory to allow writing by other users
+#
+#
+# << MISSING >>
+# Your settings have been saved:
+#
+# << MISSING >>
+# Error you must specify a\\nSingle-User Login:
+#
+# << MISSING >>
+# Server URL must end with:
+#
+# << MISSING >>
+# Full Path (no backslashes):
+#
+# << MISSING >>
+# The password contains illegal characters.:
+#
+# << MISSING >>
+# This installation wizard will guide you...:
+# English text: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
+#
+#
+# << MISSING >>
+# PHP Version Check:
+#
+# << MISSING >>
+# Check to see if PHP 4.1.0 or greater is installed:
+#
+# << MISSING >>
+# PHP version:
+#
+# << MISSING >>
+# PHP Settings:
+#
+# << MISSING >>
+# Detailed PHP Info:
+#
+# << MISSING >>
+# Session Check:
+#
+# << MISSING >>
+# To test the proper operation of sessions, reload this page:
+#
+# << MISSING >>
+# You should see the session counter increment each time:
+#
+# << MISSING >>
+# SESSION COUNTER:
+#
+# << MISSING >>
+# Settings.php Status:
+#
+# << MISSING >>
+# The file permissions of <b>settings.php</b> are set...:
+# English text: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
+#
+#
+# << MISSING >>
+# The file permissions of the <b>includes</b> directory are set...:
+# English text: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
+#
+#
+# << MISSING >>
+# Your <b>settings.php</b> file appears to be valid:
+#
+# << MISSING >>
+# Configuration Wizard Password:
+#
+# << MISSING >>
+# Create Settings File Password:
+#
+# << MISSING >>
+# Password (again):
+#
+# << MISSING >>
+# db setup directions...:
+# English text: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
+#
+#
+# << MISSING >>
+# Database Status:
+#
+# << MISSING >>
+# Supported databases for your PHP installation:
+#
+# << MISSING >>
+# Your current database settings are able to access the database:
+#
+# << MISSING >>
+# Please Test Settings:
+#
+# << MISSING >>
+# Your current database settings are <b>not</b> able to access the database or have not yet been tested:
+#
+# << MISSING >>
+# Database Settings:
+#
+# << MISSING >>
+# Database Type:
+#
+# << MISSING >>
+# Server:
+#
+# << MISSING >>
+# Connection Persistence:
+#
+# << MISSING >>
+# All your database tables appear to be up to date. You may proceed to the:
+#
+# << MISSING >>
+# next page and complete your WebCalendar setup:
+#
+# << MISSING >>
+# This appears to be a new installation. If this is not correct, please:
+#
+# << MISSING >>
+# go back to the previous page and correct your settings:
+#
+# << MISSING >>
+# The database requires some data input:
+#
+# << MISSING >>
+# Click <b>Update Database</b> to complete the upgrade:
+#
+# << MISSING >>
+# This appears to be an upgrade from version:
+#
+# << MISSING >>
+# In this section we will perform the required database changes to bring your database up to the required level:
+#
+# << MISSING >>
+# If you are using a fully supported database, this step will be performed automatically for you:
+#
+# << MISSING >>
+# If not, the required SQL can be displayed and you should be able:
+#
+# << MISSING >>
+# to cut &amp; paste it into your database server query window:
+#
+# << MISSING >>
+# No database actions are required:
+#
+# << MISSING >>
+# The following database actions are required:
+#
+# << MISSING >>
+# ODBC Underlying Database:
+#
+# << MISSING >>
+# Automatic installation not supported:
+# English text: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the sql supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
+#
+#
+# << MISSING >>
+# This may take several minutes to complete:
+#
+# << MISSING >>
+# Install Database:
+#
+# << MISSING >>
+# Update Database:
+#
+# << MISSING >>
+# Display Required SQL:
+#
+# << MISSING >>
+# Return to previous page after processing sql:
+# English text: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
+#
+#
+# << MISSING >>
+# This is the final step in setting up your WebCalendar Installation:
+#
+# << MISSING >>
+# Timezone Conversion:
+#
+# << MISSING >>
+# It appears that you have:
+#
+# << MISSING >>
+# NOT:
+#
+# << MISSING >>
+# converted your existing WebCalendar event data to GMT:
+#
+# << MISSING >>
+# If you have, you may ignore this notice and not proceed with the conversion:
+#
+# << MISSING >>
+# If this is a new installation, you may also ignore this notice.:
+#
+# << MISSING >>
+# Convert Data to GMT:
+#
+# << MISSING >>
+# Application Settings:
+#
+# << MISSING >>
+# HTTP-based authentication was not detected:
+#
+# << MISSING >>
+# You will need to reconfigure your web server if you wish to:
+#
+# << MISSING >>
+# select 'Web Server' from the 'User Authentication' choices below:
+#
+# << MISSING >>
+# HTTP-based authentication was detected:
+#
+# << MISSING >>
+# User authentication is being handled by your web server:
+#
+# << MISSING >>
+# You should select 'Web Server' from the list of 'User Authentication' choices below:
+#
+# << MISSING >>
+# Create Default Admin Account:
+#
+# << MISSING >>
+# Admin Account Not Found:
+#
+# << MISSING >>
+# User Authentication:
+#
+# << MISSING >>
+# Web-based via WebCalendar (default):
+#
+# << MISSING >>
+# Web Server:
+#
+# << MISSING >>
+# None (Single-User):
+#
+# << MISSING >>
+# Read-Only:
+#
+# << MISSING >>
+# Environment:
+#
+# << MISSING >>
+# Production:
+#
+# << MISSING >>
+# Development:
+#
+# << MISSING >>
+# Save Settings:
+#
+# << MISSING >>
+# Launch WebCalendar:

@@ -10,7 +10,7 @@
 # Mise à jour : Ivan Machetto
 # Title is what will appear in the title bar for pages
 #
-# Translation last updated on 09-11-2006
+# Translation last updated on 10-05-2006
 
 
 ###############################################
@@ -23,27 +23,26 @@ charset: iso-8859-1
 ###############################################
 # Page: access.php
 #
-You are not authorized: Vous n'êtes pas autorisé(e)
 Database error: Erreur de la base de données
+Cancel: Annuler
 #
 # << MISSING >>
 # DEFAULT CONFIGURATION:
-Public Access: Accès public 
-User Access Control: Contrôle d'accès Utilisateur
-Admin: Administration
-Cancel: Annuler
 Save: Sauvegarder
-#
-# << MISSING >>
-# Grant This User Access to My Calendar:
+Public Access: Accès public 
+Admin: Administration
+User Access Control: Contrôle d'accès Utilisateur
 #
 # << MISSING >>
 # Allow Access to Other Users' Calendar:
+#
+# << MISSING >>
+# Grant This User Access to My Calendar:
 Go: Afficher
-Calendar: Agenda
 #
 # << MISSING >>
 # Type:
+Calendar: Agenda
 #
 # << MISSING >>
 # View Event:
@@ -87,6 +86,9 @@ Private: Privé
 ###############################################
 # Page: activity_log.php
 #
+#
+# << MISSING >>
+# System Log:
 Activity Log: Journal de suivi
 User: Utilisateur
 Date: Date
@@ -117,6 +119,10 @@ Error adding event: Erreur en ajoutant l'événement
 Select: Sélectionner
 Yes: Oui
 No: Non
+Day: Jour
+Week: Semaine
+Month: Mois
+Year: Année
 System Settings: Réglages du système
 Help: Aide
 Settings: Réglages
@@ -125,6 +131,9 @@ NonUser Calendars: Agendas Non-Utilisateurs
 Other: Autre
 Email: Courrier électronique
 Colors: Couleurs
+#
+# << MISSING >>
+# System options:
 app-name-help: Spécifie le nom de l'application qui apparaîtra dans la barre de titre du navigateur pour toutes les pages (page de connexion incluse). La valeur que vous spécifiez ici sera recherchée dans le fichier de traduction vous permettant de fournir différents titres pour différentes langues. 
 Application Name: Nom de l'application
 #
@@ -144,10 +153,6 @@ Server URL: URL du serveur
 language-help: Spécifie la langue à utiliser.
 Language: Langue
 Your browser default language is: La langue utilisée par défaut par votre navigateur est
-tz-help: Spécifie le décalage horaire à adopter pour ajuster l'heure du serveur à l'heure locale.
-Server Timezone Selection: Sélection du fuseau horaire du serveur
-Your current GMT offset is: Votre décalage GMT est de
-hours: heures
 #
 # << MISSING >>
 # Allow user to use themes:
@@ -166,22 +171,7 @@ None: Aucune
 Preview: Aperçu
 #
 # << MISSING >>
-# Allow top menu:
-#
-# << MISSING >>
-# Date Selectors position:
-Top: En haut
-Bottom: En bas
-#
-# << MISSING >>
-# menu-themes-help:
-# English text: Sets the colors and style of the top menu
-#
-#
-# << MISSING >>
-# Menu theme:
-fonts-help: Permet de définir une liste de polices pour l'affichage (par exemple "Helvetica, Arial, sans-serif").
-Fonts: Polices
+# Site customization:
 custom-script-help: Autoriser l'utilisation de codes javascript personnalisés ou de feuilles de style qui seront inséré(e)s dans la section HTML "head" de chaque page.
 Custom script/stylesheet: Script/Feuille de style personnalisé(e)
 custom-header-help: Permet d'ajouter un code HTML personnalisé au haut de chaque page
@@ -197,12 +187,63 @@ Allow external file for header/script/trailer: Autoriser l'utilisation de fichie
 #
 # << MISSING >>
 # Allow user to override header/trailer:
+#
+# << MISSING >>
+# Date and Time:
+tz-help: Spécifie le décalage horaire à adopter pour ajuster l'heure du serveur à l'heure locale.
+Server Timezone Selection: Sélection du fuseau horaire du serveur
+Your current GMT offset is: Votre décalage GMT est de
+hours: heures
+#
+# << MISSING >>
+# display-general-use-gmt-help:
+# English text: If enabled, common dates/times are displayed as GMT
+#
+#
+# << MISSING >>
+# Display Common Use Date/Times as GMT:
+date-format-help: Spécifie le format d'affichage des dates.
+Date format: Format des dates
+#
+# << MISSING >>
+# Small Task Date:
+display-week-starts-on: Spécifie par quel jour commence la semaine. Si Lundi est choisi, les numéros des semaines seront à la norme ISO.
+Week starts on: La semaine commence le
+Sunday: Dimanche
+Monday: Lundi
+time-format-help: Spécifie quel format utiliser pour l'heure : <br /><i>12 heures:</i> Affiche l'heure de cette façon : 3am, 8:30pm, etc.  <br /><i>24 heures:</i> Affiche l'heure de cette façon 3:00, 20:30, etc.
+Time format: Format de l'heure
+12 hour: 12 heures
+24 hour: 24 heures
+timed-evt-len-help: Spécifie la méthode de saisie pour la durée d'un événement
+Specify timed event length by: Déterminer la fin d'un événement par
+Duration: Durée
+End Time: Fin
+work-hours-help: Spécifie les heures de début et de fin de travail.
+Work hours: Heures de travail
+From: de
+to: à
+#
+# << MISSING >>
+# Appearance:
 preferred-view-help: Spécifie la vue par défaut (par Jour, Semaine, Mois, ou Année).
 Preferred view: Vue préférée
-Day: Jour
-Week: Semaine
-Month: Mois
-Year: Année
+#
+# << MISSING >>
+# Allow top menu:
+#
+# << MISSING >>
+# Date Selectors position:
+#
+# << MISSING >>
+# menu-themes-help:
+# English text: Sets the colors and style of the top menu
+#
+#
+# << MISSING >>
+# Menu theme:
+fonts-help: Permet de définir une liste de polices pour l'affichage (par exemple "Helvetica, Arial, sans-serif").
+Fonts: Polices
 #
 # << MISSING >>
 # display-sm_month-help:
@@ -223,27 +264,12 @@ display-weekends-help: Inclure les week-ends lors de la visualisation de la sema
 #
 # << MISSING >>
 # Display all days in month view:
-yearly-shows-events-help: Sur la vue par année, affiche les jours contenant des événements en caractères gras
-Display days with events in bold in month and year views: Sur les vues par mois et par année, affiche les jours contenant des événements en caractères gras
+display-week-number-help: Spécifie si le numéro de la semaine (1-52) doit être affiché.
+Display week number: Afficher le numéro de semaine
 display-desc-print-day-help: Inclure les descriptions d'événements dans la version imprimable de la vue journalière.
 Display description in printer day view: Descriptions dans la version imprimable de la vue journalière
-#
-# << MISSING >>
-# display-general-use-gmt-help:
-# English text: If enabled, common dates/times are displayed as GMT
-#
-#
-# << MISSING >>
-# Display Common Use Date/Times as GMT:
-date-format-help: Spécifie le format d'affichage des dates.
-Date format: Format des dates
-#
-# << MISSING >>
-# Small Task Date:
-time-format-help: Spécifie quel format utiliser pour l'heure : <br /><i>12 heures:</i> Affiche l'heure de cette façon : 3am, 8:30pm, etc.  <br /><i>24 heures:</i> Affiche l'heure de cette façon 3:00, 20:30, etc.
-Time format: Format de l'heure
-12 hour: 12 heures
-24 hour: 24 heures
+yearly-shows-events-help: Sur la vue par année, affiche les jours contenant des événements en caractères gras
+Display days with events in bold in month and year views: Sur les vues par mois et par année, affiche les jours contenant des événements en caractères gras
 #
 # << MISSING >>
 # display-minutes-help:
@@ -252,45 +278,43 @@ Time format: Format de l'heure
 #
 # << MISSING >>
 # Display 00 minutes always:
+allow-view-add-help: L'icone '+' apparaitra dans les vues permettant aux utilisateurs d'ajouter rapidement des événements dans ceux d'autres utilisateurs
+Include add event link in views: Inclure le lien d'ajout d'événement dans les vues
 #
 # << MISSING >>
-# entry-interval-help:
-# English text: Sets minute interval when editing entry times
+# lunar-help:
+# English text: If enabled, will display small icons representing the lunar phases each month
 #
 #
 # << MISSING >>
-# Entry interval:
-hour: heure
-minutes: minutes
-minute: minute
-time-interval-help: Spécifie l'intervalle de temps pour l'affichage des vues par semaine et par jour.
-Time interval: Intervalle de temps (vues semaine et jour)
-auto-refresh-help: Activé, les pages de visualisation par jour, semaine, mois et la liste des événements en attente seront automatiquement périodiquement rafraichies.
-Auto-refresh calendars: Rafraichissement automatique de l'agenda
-auto-refresh-time-help: Spécifie la période de rafraichissement des pages.
-Auto-refresh time: Période de rafraichissement
+# Display Lunar Phases in month view:
+#
+# << MISSING >>
+# Restrictions:
+allow-view-other-help: Spécifie si un utilisateur peut visualiser l'agenda d'un autre utilisateur.
+Allow viewing other user's calendars: Autoriser la visualisation des agendas des autres personnes
 require-approvals-help: Activé, un utilisateur doit approuver un événement avant qu'il ne soit affiché dans l'agenda (à moins que « Afficher les événements en attente » ne soit activé). Notez que le réglage sur « Non » désactivera les approbations pour l'agenda à accès public (si l'accès public à l'agenda est activé).
 Require event approvals: Réclamer l'approbation des événements
 display-unapproved-help: Spécifie si vous voulez afficher dans votre agenda les événements en attente.<br /> Si vous choisissez « Oui », les événements en attente seront affichés dans votre agenda (dans une couleur différente).<br /> Si vous choisissez « Non », les événements en attente seront affichés dans votre agenda seulement quand vous les approuverez.
 Display unapproved: Afficher les événements en attente
-display-week-number-help: Spécifie si le numéro de la semaine (1-52) doit être affiché.
-Display week number: Afficher le numéro de semaine
-display-week-starts-on: Spécifie par quel jour commence la semaine. Si Lundi est choisi, les numéros des semaines seront à la norme ISO.
-Week starts on: La semaine commence le
-Sunday: Dimanche
-Monday: Lundi
-work-hours-help: Spécifie les heures de début et de fin de travail.
-Work hours: Heures de travail
-From: de
-to: à
+conflict-check-help: Vérifier les conflits d'événements (deux événements prévus au même moment pour la même personne). Si vous positionnez cette valeur à « Oui », vous pourrez introduire deux événements qui se chevauchent après confirmation. Si vous choisissez « Non », il ne sera effectué aucune vérification de conflit. Vous choisirez probablement « Oui » pour activer la vérification des conflits. 
+Check for event conflicts: Vérifier les conflits d'événements
+conflict-months-help: Si la vérification des conflits est activée (« Vérifier les conflits pour les événements » est positionné sur « Oui »), ceci spécifie sur combien de mois dans le futur les conflits seront vérifiés. Si vous trouvez que l'ajout d'événements prend trop de temps, réduisez ce nombre. 
+Conflict checking months: Période de vérification des conflits en mois
+conflict-check-override-help: Permet aux utilisateurs de passer outre les conflits d'agenda et de plannifier deux (ou plus) événements au même moment.
+Allow users to override conflicts: Permet aux utilisateurs de passer outre les conflits
+limit-appts-help: Permet à l'administrateur de fixer la limite générale du nombre d'événements par utilisateur et par jour.
+Limit number of timed events per day: Nombre maximum d'événements temporels par jour
+limit-appts-number-help: Détermine le nombre maximum d'événements temporels qu'un utilisateur peut avoir dans une journée.
+Maximum timed events per day: Nombre maximum d'événements temporels par jour
 #
 # << MISSING >>
-# disable-popups-help:
-# English text: Disable popups from calendar views
+# crossday-help:
+# English text: If enabled, events that span days will be displayed on seperate days
 #
 #
 # << MISSING >>
-# Disable Pop-Ups:
+# Disable Cross-Day Events:
 #
 # << MISSING >>
 # disable-location-field-help:
@@ -307,6 +331,19 @@ disable-participants-field-help: En sélectionnant « Oui », vous enlevez le champ
 Disable Participants field: Désactiver le champ Participants
 disable-repeating-field-help: En sélectionnant « Oui », vous enlevez le champ « Répétitions » lors de l'ajout d'événements, fournissant une interface plus simple pour les novices.
 Disable Repeating field: Désactiver le champ de Répétition
+allow-html-description-help: Si coché, les utilisateurs pourront ajouter du code HTML dans le champ descriptif d'événement.  Sinon, le HTML sera affiché textuellement.  Attention: Activer cette option permet aux utilisateurs d'inclure des images hébergées sur d'autres site web.
+Allow HTML in Description: Autoriser l'utilisation de code HTML dans les descriptions
+#
+# << MISSING >>
+# Popups:
+#
+# << MISSING >>
+# disable-popups-help:
+# English text: Disable popups from calendar views
+#
+#
+# << MISSING >>
+# Disable Pop-Ups:
 popup-includes-siteextras-help: Si coché, permet aux champs ajoutés dans site_extras.php de s'afficher dans les fenêtres d'alerte d'événements
 Display Site Extras in popup: Afficher les extras au site dans les fenêtres d'alerte
 #
@@ -317,28 +354,11 @@ Display Site Extras in popup: Afficher les extras au site dans les fenêtres d'al
 #
 # << MISSING >>
 # Display Participants in popup:
-allow-html-description-help: Si coché, les utilisateurs pourront ajouter du code HTML dans le champ descriptif d'événement.  Sinon, le HTML sera affiché textuellement.  Attention: Activer cette option permet aux utilisateurs d'inclure des images hébergées sur d'autres site web.
-Allow HTML in Description: Autoriser l'utilisation de code HTML dans les descriptions
-allow-view-other-help: Spécifie si un utilisateur peut visualiser l'agenda d'un autre utilisateur.
-Allow viewing other user's calendars: Autoriser la visualisation des agendas des autres personnes
-allow-view-add-help: L'icone '+' apparaitra dans les vues permettant aux utilisateurs d'ajouter rapidement des événements dans ceux d'autres utilisateurs
-Include add event link in views: Inclure le lien d'ajout d'événement dans les vues
+#
+# << MISSING >>
+# Miscellaneous:
 remember-last-login-help: Si activé, l'identifiant de l'utilisateur sera rempli pour son compte sur la page de connexion (sans le mot de passe), et les préférences de l'utilisateur seront chargées (y compris les couleurs préférées et la sélection de la langue). 
 Remember last login: Se souvenir de la dernière connexion
-conflict-check-help: Vérifier les conflits d'événements (deux événements prévus au même moment pour la même personne). Si vous positionnez cette valeur à « Oui », vous pourrez introduire deux événements qui se chevauchent après confirmation. Si vous choisissez « Non », il ne sera effectué aucune vérification de conflit. Vous choisirez probablement « Oui » pour activer la vérification des conflits. 
-Check for event conflicts: Vérifier les conflits d'événements
-conflict-months-help: Si la vérification des conflits est activée (« Vérifier les conflits pour les événements » est positionné sur « Oui »), ceci spécifie sur combien de mois dans le futur les conflits seront vérifiés. Si vous trouvez que l'ajout d'événements prend trop de temps, réduisez ce nombre. 
-Conflict checking months: Période de vérification des conflits en mois
-conflict-check-override-help: Permet aux utilisateurs de passer outre les conflits d'agenda et de plannifier deux (ou plus) événements au même moment.
-Allow users to override conflicts: Permet aux utilisateurs de passer outre les conflits
-limit-appts-help: Permet à l'administrateur de fixer la limite générale du nombre d'événements par utilisateur et par jour.
-Limit number of timed events per day: Nombre maximum d'événements temporels par jour
-limit-appts-number-help: Détermine le nombre maximum d'événements temporels qu'un utilisateur peut avoir dans une journée.
-Maximum timed events per day: Nombre maximum d'événements temporels par jour
-timed-evt-len-help: Spécifie la méthode de saisie pour la durée d'un événement
-Specify timed event length by: Déterminer la fin d'un événement par
-Duration: Durée
-End Time: Fin
 #
 # << MISSING >>
 # summary_length-help:
@@ -349,20 +369,18 @@ End Time: Fin
 # Brief Description Length:
 #
 # << MISSING >>
-# lunar-help:
-# English text: If enabled, will display small icons representing the lunar phases each month
+# user_sort-help:
+# English text: Determines sort order for User, Nonuser lists
 #
 #
 # << MISSING >>
-# Display Lunar Phases in month view:
+# User Sort Order:
 #
 # << MISSING >>
-# crossday-help:
-# English text: If enabled, events that span days will be displayed on seperate days
-#
+# Lastname, Firstname:
 #
 # << MISSING >>
-# Disable Cross-Day Events:
+# Firstname, Lastname:
 Plugins: Modules
 plugins-enabled-help: Autoriser les modules
 Enable Plugins: Autoriser les modules
@@ -578,8 +596,6 @@ Table cell background for weekends: Couleur de fond pour les week-ends
 # Week number color:
 Event popup background: Fond des détails d'événements
 Event popup text: Texte surgissant des événements
-Error: Erreur
-The following error occurred: L'erreur suivante est survenue
 
 
 ###############################################
@@ -638,7 +654,6 @@ The description is: La description est
 #
 # << MISSING >>
 # Comments:
-Changes successfully saved: Modifications sauvegardées avec succès
 
 
 ###############################################
@@ -646,6 +661,26 @@ Changes successfully saved: Modifications sauvegardées avec succès
 #
 Admin mode: Mode administrateur
 Your assistants: Vos assistants
+
+
+###############################################
+# Page: availability.php
+#
+#
+# << MISSING >>
+# Program Error:
+#
+# << MISSING >>
+# No users specified!:
+#
+# << MISSING >>
+# No year specified!:
+#
+# << MISSING >>
+# No month specified!:
+#
+# << MISSING >>
+# No day specified!:
 
 
 ###############################################
@@ -825,6 +860,7 @@ All day event: événement permanent
 Timezone Offset: Décalage horaire
 time-help: Spécification de l'heure de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
 duration-help: Spécification de la durée (en minutes) de l'événement.  <br /><i>Ce champ peut être laissé vide.</i>
+minutes: minutes
 end-time-help: Spécifie l'heure à laquelle l'événement est prévu se terminer
 #
 # << MISSING >>
@@ -1054,6 +1090,7 @@ URL: URL
 ###############################################
 # Page: edit_remotes_handler.php
 #
+Error: Erreur
 Import Results: Résultat de l'importation
 Events successfully imported: Événements importés avec succès
 #
@@ -1197,6 +1234,12 @@ You must specify a group name: Vous devez préciser un nom de groupe
 #
 Display weekends in week view: Afficher les week-ends dans la représentation de la semaine
 Display days with events in bold in year view: Afficher les jours avec événements en gras dans la vue annuelle
+Time interval: Intervalle de temps (vues semaine et jour)
+time-interval-help: Spécifie l'intervalle de temps pour l'affichage des vues par semaine et par jour.
+Auto-refresh calendars: Rafraichissement automatique de l'agenda
+auto-refresh-help: Activé, les pages de visualisation par jour, semaine, mois et la liste des événements en attente seront automatiquement périodiquement rafraichies.
+Auto-refresh time: Période de rafraichissement
+auto-refresh-time-help: Spécifie la période de rafraichissement des pages.
 Nonuser: Agenda Non-Utilisateur
 user-customize-color: Détermine si les utilisateurs peuvent modifier leurs couleurs d'affichage
 enable-gradient-help: Utiliser des dégradés comme couleurs de fond des cellules
@@ -1215,6 +1258,9 @@ Report Bug: Signaler un problème
 #
 Adding/Editing Calendar Entries: Ajouter/Modifier un événement
 Repeat Type: Type de répétition
+#
+# << MISSING >>
+# For More Information...:
 Repeat End Date: Date de fin de répétition
 Repeat Day: Répétition du Jour
 repeat-day-help: Spécifie quels jours de la semaine l'événement doit être répété. Vous devez l'utiliser seulement si <i>Type de répétition</i> est sur <i>Hebdomadaire</i>.
@@ -1460,6 +1506,16 @@ Save Preferences: Sauvegarder les préférences
 Timezone Selection: Sélection de fuseau horaire
 #
 # << MISSING >>
+# entry-interval-help:
+# English text: Sets minute interval when editing entry times
+#
+#
+# << MISSING >>
+# Entry interval:
+hour: heure
+minute: minute
+#
+# << MISSING >>
 # theme-reload-help:
 # English text: Due to CSS caching, a page reload may be required
 #
@@ -1667,6 +1723,12 @@ denotes administrative user: compte détenant les droits administrateur
 ###############################################
 # Page: usersel.php
 #
+#
+# << MISSING >>
+# No form specified!:
+#
+# << MISSING >>
+# No listid specified!:
 Reset: Réinitialiser
 
 
@@ -1870,13 +1932,6 @@ Dec: Déc
 #
 # << MISSING >>
 # Conf.:
-Sun: Dim
-Mon: Lun
-Tue: Mar
-Wed: Mer
-Thu: Jeu
-Fri: Ven
-Sat: Sam
 #
 # << MISSING >>
 # WK:
@@ -1937,12 +1992,22 @@ Wednesday: Mercredi
 Thursday: Jeudi
 Friday: Vendredi
 Saturday: Samedi
+Sun: Dim
+Mon: Lun
+Tue: Mar
+Wed: Mer
+Thu: Jeu
+Fri: Ven
+Sat: Sam
 #
 # << MISSING >>
 # Schedule an appointment for:
 All Attendees: Tous les participants
 Busy: Indisponible
 Tentative: Attente d'approbation
+Changes successfully saved: Modifications sauvegardées avec succès
+The following error occurred: L'erreur suivante est survenue
+You are not authorized: Vous n'êtes pas autorisé(e)
 day: jour
 #
 # << MISSING >>
@@ -2004,12 +2069,24 @@ Notification sent: Notification envoyée
 Reminder sent: Rappel envoyé
 #
 # << MISSING >>
+# New user (self registration):
+#
+# << MISSING >>
+# New user via email (self registration):
+#
+# << MISSING >>
 # Attachment:
+#
+# << MISSING >>
+# Delete User:
 
 
 ###############################################
 # Page: includes/help_list.php
 #
+#
+# << MISSING >>
+# Index:
 #
 # << MISSING >>
 # Page:
@@ -2061,6 +2138,9 @@ Dutch: Néerlandais
 Estonian: Estonien
 Finnish: Finnois
 French: Français
+#
+# << MISSING >>
+# French (UTF8):
 Galician: Galicien
 German: Allemand
 Greek: Grec
@@ -2107,6 +2187,27 @@ no such user: Utilisateur inexistant
 ###############################################
 # Page: includes/xcal.php
 #
+#
+# << MISSING >>
+# MO:
+#
+# << MISSING >>
+# TU:
+#
+# << MISSING >>
+# WE:
+#
+# << MISSING >>
+# TH:
+#
+# << MISSING >>
+# FR:
+#
+# << MISSING >>
+# SA:
+#
+# << MISSING >>
+# SU:
 #
 # << MISSING >>
 # Interval:
@@ -2378,11 +2479,14 @@ Reminder: Rappel
 
 
 ###############################################
-# Page: install/index.php
+# Page: install/install_functions.php
 #
 #
 # << MISSING >>
-# Failure Reason:
+# Error updating webcal_config:
+#
+# << MISSING >>
+# Error updating webcal_user_pref:
 #
 # << MISSING >>
 # Perl script required:
@@ -2391,6 +2495,47 @@ Reminder: Rappel
 #
 # << MISSING >>
 # Your previous version of WebCalendar requires updating several database tables.:
+
+
+###############################################
+# Page: install/index.php
+#
+#
+# << MISSING >>
+# WebCalendar Installation Wizard:
+#
+# << MISSING >>
+# Step:
+#
+# << MISSING >>
+# Single-User:
+#
+# << MISSING >>
+# Failure Reason:
+#
+# << MISSING >>
+# You must manually create database:
+#
+# << MISSING >>
+# Database Cache Directory:
+#
+# << MISSING >>
+# Test Settings:
+#
+# << MISSING >>
+# Create New:
+#
+# << MISSING >>
+# Database Name:
+#
+# << MISSING >>
+# Back:
+#
+# << MISSING >>
+# Timezone Conversion Successful:
+#
+# << MISSING >>
+# Error Unable to write to file:
 #
 # << MISSING >>
 # Successful Login:
@@ -2426,13 +2571,7 @@ Reminder: Rappel
 # Correct your entries or click the <b>Create New</b> button to continue installation:
 #
 # << MISSING >>
-# You must manually create database:
-#
-# << MISSING >>
 # Correct your entries and try again:
-#
-# << MISSING >>
-# Database Cache Directory:
 #
 # << MISSING >>
 # does not exist:
@@ -2441,13 +2580,7 @@ Reminder: Rappel
 # is not writable:
 #
 # << MISSING >>
-# Timezone Conversion Successful:
-#
-# << MISSING >>
 # Error Converting Timezone:
-#
-# << MISSING >>
-# Error Unable to write to file:
 #
 # << MISSING >>
 # Please change the file permissions of this file:
@@ -2467,19 +2600,10 @@ Reminder: Rappel
 # Server URL must end with:
 #
 # << MISSING >>
-# Database Name:
-#
-# << MISSING >>
 # Full Path (no backslashes):
 #
 # << MISSING >>
 # The password contains illegal characters.:
-#
-# << MISSING >>
-# WebCalendar Installation Wizard:
-#
-# << MISSING >>
-# Step:
 #
 # << MISSING >>
 # This installation wizard will guide you...:
@@ -2494,6 +2618,9 @@ Reminder: Rappel
 #
 # << MISSING >>
 # PHP version:
+#
+# << MISSING >>
+# PHP Settings:
 #
 # << MISSING >>
 # Detailed PHP Info:
@@ -2566,12 +2693,6 @@ Reminder: Rappel
 #
 # << MISSING >>
 # Connection Persistence:
-#
-# << MISSING >>
-# Create New:
-#
-# << MISSING >>
-# Back:
 #
 # << MISSING >>
 # All your database tables appear to be up to date. You may proceed to the:
@@ -2662,9 +2783,6 @@ Reminder: Rappel
 # Convert Data to GMT:
 #
 # << MISSING >>
-# Conversion Successful:
-#
-# << MISSING >>
 # Application Settings:
 #
 # << MISSING >>
@@ -2687,6 +2805,9 @@ Reminder: Rappel
 #
 # << MISSING >>
 # Create Default Admin Account:
+#
+# << MISSING >>
+# Admin Account Not Found:
 #
 # << MISSING >>
 # User Authentication:

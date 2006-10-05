@@ -17,7 +17,7 @@
 #
 #
 #
-# Translation last updated on 03-10-2004
+# Translation last updated on 10-05-2006
 
 # No charset specified (not needed for iso-8859-1)
 # "charset" is used in a meta tag, do not translate "charset" here.
@@ -26,29 +26,169 @@
 
 
 ###############################################
+# Page: access.php
+#
+Database error: Gwall cronfa ddata
+Cancel: Dileu 
+#
+# << MISSING >>
+# DEFAULT CONFIGURATION:
+Save: Arbed
+Public Access: Calendr Cyhoeddus
+Admin: Gweinyddu
+#
+# << MISSING >>
+# User Access Control:
+#
+# << MISSING >>
+# Allow Access to Other Users' Calendar:
+#
+# << MISSING >>
+# Grant This User Access to My Calendar:
+Go: Ewch
+#
+# << MISSING >>
+# Type:
+Calendar: Calendr
+#
+# << MISSING >>
+# View Event:
+#
+# << MISSING >>
+# View:
+#
+# << MISSING >>
+# Edit:
+#
+# << MISSING >>
+# Approve/Reject:
+#
+# << MISSING >>
+# Events:
+#
+# << MISSING >>
+# Tasks:
+#
+# << MISSING >>
+# Journals:
+#
+# << MISSING >>
+# Can Invite:
+#
+# << MISSING >>
+# Can Email:
+#
+# << MISSING >>
+# Can See Time Only:
+#
+# << MISSING >>
+# Assistant:
+#
+# << MISSING >>
+# Select All:
+#
+# << MISSING >>
+# Clear All:
+Public: Cyhoeddus
+Confidential: Cyfrinachol
+Private: Preifat
+
+
+###############################################
+# Page: activity_log.php
+#
+#
+# << MISSING >>
+# System Log:
+Activity Log: Log Actifedd
+User: Defnyddiwr
+Date: Dyddiad
+Time: Amser
+Event: Digwyddiad
+Action: Gweithred
+Previous: Blaenorol
+Next: Nesaf
+
+
+###############################################
+# Page: add_entry.php
+#
+#
+# << MISSING >>
+# is already on your calendar.:
+Invalid entry id: ID annilys 
+This is a private event and may not be added to your calendar.: Y mae hwn yn ddigwyddiad preifat a ni chaniateir i chi ei ychwanegu at eich calendr.
+#
+# << MISSING >>
+# This is a confidential event and may not be added to your calendar.:
+Error adding event: Camgymeriad wrth ychwanegu digwyddiad
+
+
+###############################################
 # Page: admin.php
 #
+Select: Dewis
+Yes: Ie
+No: Na
+Day: Dydd
+Week: Wythnos
+Month: Mis
+Year: Blwyddyn
 System Settings: Gosodiad System
-You are not authorized: Dim awdurdod
-Note: Noder
-Your user preferences: Efallai bod eich hoff dewisiadau
-may be affecting the appearance of this page.: yn effeithio ar ymddangosiad y dudalen yma.
-Click here: Cliciwch yma
-to not use your user preferences when viewing this page: i beidio a defnyddio eich hoff dewisiadau wrth wylio'r tudalen yma
-are being ignored while viewing this page.: yn cael eu hanwebyddu wrth gwylio'r tudalen yma.
-to load your user preferences when viewing this page: i llwytho eich hoff dewisiadau wrth wylio'r tudalen yma
-Save: Arbed
 Help: Help
 Settings: Gosodiadau
+Groups: Grwpiau
+#
+# << MISSING >>
+# NonUser Calendars:
+#
+# << MISSING >>
+# Other:
+Email: E-bost
+Colors: Lliwiau
+#
+# << MISSING >>
+# System options:
 app-name-help: Mae hwn yn dynodi enw'r cymwysiad (application) a fydd yn ymddangos ym mar teitl y porwr am bob tudalen a'r tudalen mewngofnodi yn ogystal.  Mi fydd yr hyn yr ydych yn cofnodi yma yn cael ei gymharu a chynnwys y ffeil cyfieithiadiau gan ganiatau i chi roi teitlau amrywiol i ieithoedd gwahanol.
 Application Name: Enw'r Cymwysiad (Application)
+#
+# << MISSING >>
+# Translated Name:
+Title: Calendar We
 server-url-help: Mae hwn yn dynodi y URL sylfaen i'r cymwysiad (application).  Cynnhywsir hwn wrth anfon e-byst sydd yn atgoffa neu yn nodi.
 Server URL: URL y gweinydd
+#
+# << MISSING >>
+# home-url-help:
+# English text: Specifies the home URL for the applicaiton. This can be an absolute or relative
+#
+#
+# << MISSING >>
+# Home URL:
 language-help: Mae hwn yn dynodi pa iaith i'w defnyddio.
 Language: Iaith
 Your browser default language is: Iaith arferol eich porwr yw
-fonts-help: Mae hwn yn dangos rhestr o ffontiau'r system a ellir eu defnyddio (megis "Arial, Helvetica")
-Fonts: Ffontiau
+#
+# << MISSING >>
+# Allow user to use themes:
+#
+# << MISSING >>
+# themes-help:
+# English text: Allows mass update of configuration settings. Lower case labels are user pref only.
+#
+#
+# << MISSING >>
+# Themes:
+#
+# << MISSING >>
+# AVAILABLE THEMES:
+None: Dim 
+#
+# << MISSING >>
+# Preview:
+#
+# << MISSING >>
+# Site customization:
 #
 # << MISSING >>
 # custom-script-help:
@@ -57,11 +197,6 @@ Fonts: Ffontiau
 #
 # << MISSING >>
 # Custom script/stylesheet:
-Yes: Ie
-No: Na
-#
-# << MISSING >>
-# Edit:
 #
 # << MISSING >>
 # custom-header-help:
@@ -78,22 +213,112 @@ No: Na
 #
 # << MISSING >>
 # Custom trailer:
+#
+# << MISSING >>
+# enable-external-header-help:
+# English text: Allows the custom trailer to be loaded from an external file
+#
+#
+# << MISSING >>
+# Allow external file for header/script/trailer:
+#
+# << MISSING >>
+# Allow user to override header/trailer:
+#
+# << MISSING >>
+# Date and Time:
+#
+# << MISSING >>
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
+#
+#
+# << MISSING >>
+# Server Timezone Selection:
+#
+# << MISSING >>
+# Your current GMT offset is:
+hours: awr
+#
+# << MISSING >>
+# display-general-use-gmt-help:
+# English text: If enabled, common dates/times are displayed as GMT
+#
+#
+# << MISSING >>
+# Display Common Use Date/Times as GMT:
+date-format-help: Mae hwn yn dynodi y fformat dyddiad arferol.
+Date format: Fformat dyddiad
+#
+# << MISSING >>
+# Small Task Date:
+display-week-starts-on: Mae hwn yn dynodi a yw wythnosau i ddechrau ar ddydd Sul neu Llun.  Os dynoder dydd Llun, yna defnyddir rhifau wythnos system ISO.
+Week starts on: Wythnos yn dechrau ar ddydd
+Sunday: Sul
+Monday: Llun
+time-format-help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio: <br /><i>12 awr:</i> Dangoser amserau megis 3am, 8:30pm, ac ati.  <br /><i>24 awr:</i> Dangoser amserau megis 300, 2030, ac ati.
+Time format: Fformat amser
+12 hour: 12 awr
+24 hour: 24 awr
+#
+# << MISSING >>
+# timed-evt-len-help:
+# English text: Specifies input method for determining the length of a timed event.
+#
+#
+# << MISSING >>
+# Specify timed event length by:
+Duration: Parhad
+#
+# << MISSING >>
+# End Time:
+work-hours-help: Mae hwn yn dynodi ystod yr amser a ddangosir yn y golwg dyddiol.
+Work hours: Oriau gweithio
+From: O
+to: hyd
+#
+# << MISSING >>
+# Appearance:
 preferred-view-help: Mae hwn yn dynodi y golwg arferol (Dydd, Wythnos, Mis, neu Blwyddyn).
 Preferred view: Golwg ffafriedig
-Day: Dydd
-Week: Wythnos
-Month: Mis
-Year: Blwyddyn
+#
+# << MISSING >>
+# Allow top menu:
+#
+# << MISSING >>
+# Date Selectors position:
+#
+# << MISSING >>
+# menu-themes-help:
+# English text: Sets the colors and style of the top menu
+#
+#
+# << MISSING >>
+# Menu theme:
+fonts-help: Mae hwn yn dangos rhestr o ffontiau'r system a ellir eu defnyddio (megis "Arial, Helvetica")
+Fonts: Ffontiau
+#
+# << MISSING >>
+# display-sm_month-help:
+# English text: If enabled, displays small months in month views
+#
+#
+# << MISSING >>
+# Display small months:
 display-weekends-help: Cynnhwysir penwythnosau yn y golwg wythnosol.
-Display weekends in week view: Dangoser penwythnosau yn y golwg wythnosol
 #
 # << MISSING >>
-# yearly-shows-events-help:
-# English text: On the yearly view, display days that contain events in a bold font.
+# Display weekends:
+#
+# << MISSING >>
+# display-alldays-help:
+# English text: Display previous and next months days in month views, filling all cells.
 #
 #
 # << MISSING >>
-# Display days with events in bold in year view:
+# Display all days in month view:
+display-week-number-help: Mae hwn yn dynodi os y dylid dangos rhif yr wythnos (1-52) yn y golwg misol neu wythnosol.
+Display week number: Dangoser rhif yr wythnos
 #
 # << MISSING >>
 # display-desc-print-day-help:
@@ -102,83 +327,22 @@ Display weekends in week view: Dangoser penwythnosau yn y golwg wythnosol
 #
 # << MISSING >>
 # Display description in printer day view:
-date-format-help: Mae hwn yn dynodi y fformat dyddiad arferol.
-Date format: Fformat dyddiad
-December: Rhagfyr
-time-format-help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio: <br /><i>12 awr:</i> Dangoser amserau megis 3am, 8:30pm, ac ati.  <br /><i>24 awr:</i> Dangoser amserau megis 300, 2030, ac ati.
-Time format: Fformat amser
-12 hour: 12 awr
-24 hour: 24 awr
-time-interval-help: Mae hwn yn dynodi hyd y blociau amser yn y golwg wythnosol a'r golwg dyddiol. 
-Time interval: Ystod Amser
-hour: awr
-minutes: munud
-auto-refresh-help: Pan ymlaen, mae'r golwg dyddiol, wythnosol neu misol, a rhestr tudalennau heb cymeradwyaeth, yn cael eu adfywio yn awtomatig yn rheolaidd.
-Auto-refresh calendars: Calendr yn adfywio yn awtomatig
-auto-refresh-time-help: Os yw adfywio awtomatig yn cael ei ddefnyddio, yna mae hwn yn pendefynnu'r amser rhwng pob adfywiad.
-Auto-refresh time: Amser i adfywio'n awtomatig
-require-approvals-help: Pan mae hwn yn cael ei ddefnyddio rhaid i'r defnyddwr cymeradwyo digwyddiad cyn iddo gael ei ddangos ar ei calendr (os nad yw 'Dangos heb Cymeradwyaeth' ymlaen) Noder wrth gosod hwn i 'Na' ni fydd hwn yn hepgor ar yr angen i cymeradwyo digwyddiadau i'r Calendr Cyhoeddus (os yw'r Calendr Cyhoeddus wedi ei 'alluogi').
-Require event approvals: Cymeradwyaeth i ddigwyddiadau'n angenrheidiol
-display-unapproved-help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth yn cael eu dangos yn eich calendr.<br /> Os goseder i "Ie", Yna fe ddangosir digwyddiadau heb cymeradwyaeth yn eich calendr (mewn lliw gwahanaol).<br /> Os gosoder i "Na", yna mae angen cymeradwyo digwyddiadau cyn iddynt gael eu dangos ar eich calendr.
-Display unapproved: Dangoser digwyddiadau heb cymeradwyaeth
-display-week-number-help: Mae hwn yn dynodi os y dylid dangos rhif yr wythnos (1-52) yn y golwg misol neu wythnosol.
-Display week number: Dangoser rhif yr wythnos
-display-week-starts-on: Mae hwn yn dynodi a yw wythnosau i ddechrau ar ddydd Sul neu Llun.  Os dynoder dydd Llun, yna defnyddir rhifau wythnos system ISO.
-Week starts on: Wythnos yn dechrau ar ddydd
-Sunday: Sul
-Monday: Llun
-work-hours-help: Mae hwn yn dynodi ystod yr amser a ddangosir yn y golwg dyddiol.
-Work hours: Oriau gweithio
-From: O
-to: hyd
-disable-priority-field-help: Os y dewisir "Ie" yna ceir gwared a'r dewis o "Blaenoriaeth" o'r tudalennau gwybodaeth am digwyddiad, gan wneud pethau'n haws i bobl heb profiad o'r meddalwedd.
-Disable Priority field: Dim dewis o Blaenoriaeth
-disable-access-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn "Mynediad" oddi wrth tudalennau gwybodaeth am ddigwyddiad, gan wneud pethau'n haws i bobl heb brofiad o'r meddalwedd.
-Disable Access field: Dim dewis o Mynediad
-disable-participants-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn "Cyfranogwyr" oddi wrth y tudalennau gwybodaeth am ddigwyddiad, gan atal defnyddwyr rhag ychwanegu digwyddiadau defnyddwyr eraill at eu calendrau.  Os y dewisir yr optiwn yma, yna dylswch ystyried cael gwared o'r optiwn i "Caniatau dangos calendrau defnyddwyr eraill" yn ogystal.
-Disable Participants field: Dim Cyfranogwyr
-disable-repeating-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn i "Ailgyflawni" wrth ychwanegu digywddiadau.  Mi fydd hyn yn gwneud pethau'n haws i bobl heb profiad o'r meddalwedd.
-Disable Repeating field: Dim Ailgyflawni
 #
 # << MISSING >>
-# popup-includes-siteextras-help:
-# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+# yearly-shows-events-help:
+# English text: On the yearly view, display days that contain events in a bold font.
 #
 #
 # << MISSING >>
-# Display Site Extras in popup:
+# Display days with events in bold in month and year views:
 #
 # << MISSING >>
-# allow-html-description-help:
-# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
-#
-#
-# << MISSING >>
-# Allow HTML in Description:
-allow-view-other-help: Mae hwn yn penderfynnu a yw un defnyddiwr yn gallu gwylio calendr defnyddiwr arall.
-Allow viewing other user's calendars: Caniatad i wylio calendr rhywun arall
-allow-public-access-help: Pan y dewisir yr optiwn yma gall y calendr yma ond cael ei ddefnyddio fel calendr cyhoeddus a ellir ei ddarllen yn unig, a sydd ddim yn gofyn i ddefnyddwyr i mewngofnodi.
-Allow public access: Caniatewch mynediad i'r cyhoedd 
-public-access-view-others-help: Wrth cael mynediad cyhoeddus i'r system, mae hwn yn dynodi a yw'r defnyddiwr yn gallu gwylio calendrau defnydwyr eraill.
-Public access can view other users: Rhywrai gyda mynediad cyhoeddus yn gallu gwylio calendrau defnyddwyr eraill
-public-access-can-add-help: Pan ymlaen, mi fydd defnyddwyr sydd wedi cael Mynediad Cyhoeddus i'r system yn gallu ychwanegu digwyddiadau newydd, ond ni fyddent yn dangos ar y Calendr Cyhoeddus nes bod gweinyddwr yn cymeradwyo'r digwyddiad newydd.
-Public access can add events: Gall rhai gyda Mynediad Cyhoeddus ychwanegu digwyddiad
-#
-# << MISSING >>
-# public-access-add-requires-approval-help:
-# English text: Specifies whether events added via the public access account require approval before being displayed.
+# display-minutes-help:
+# English text: If enabled, minutes ending with :00 will always be displayed
 #
 #
 # << MISSING >>
-# Public access new events require approval:
-#
-# << MISSING >>
-# public-access-sees-participants-help:
-# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
-#
-#
-# << MISSING >>
-# Public access can view participants:
+# Display 00 minutes always:
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -189,30 +353,21 @@ Public access can add events: Gall rhai gyda Mynediad Cyhoeddus ychwanegu digwyd
 # Include add event link in views:
 #
 # << MISSING >>
-# allow-external-users-help:
-# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+# lunar-help:
+# English text: If enabled, will display small icons representing the lunar phases each month
 #
 #
 # << MISSING >>
-# Allow external users:
+# Display Lunar Phases in month view:
 #
 # << MISSING >>
-# external-can-receive-notification-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
-#
-#
-# << MISSING >>
-# External users can receive email notifications:
-#
-# << MISSING >>
-# external-can-receive-reminder-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
-#
-#
-# << MISSING >>
-# External users can receive email reminders:
-remember-last-login-help: Pan y defnyddir hwn mi fydd mewngofnodiad y defnyddiwr yn cael ei lenwi drostynt ar y dudalen mewngofnodi (ond nid y gair cydd), a mi fydd hoff dewisiadau'r defnyddiwr yn cael eu llwytho (gan gynnwys ei hoff lliwiau a dewis o iaith).
-Remember last login: Cofier y mewngofnodiad diwethaf
+# Restrictions:
+allow-view-other-help: Mae hwn yn penderfynnu a yw un defnyddiwr yn gallu gwylio calendr defnyddiwr arall.
+Allow viewing other user's calendars: Caniatad i wylio calendr rhywun arall
+require-approvals-help: Pan mae hwn yn cael ei ddefnyddio rhaid i'r defnyddwr cymeradwyo digwyddiad cyn iddo gael ei ddangos ar ei calendr (os nad yw 'Dangos heb Cymeradwyaeth' ymlaen) Noder wrth gosod hwn i 'Na' ni fydd hwn yn hepgor ar yr angen i cymeradwyo digwyddiadau i'r Calendr Cyhoeddus (os yw'r Calendr Cyhoeddus wedi ei 'alluogi').
+Require event approvals: Cymeradwyaeth i ddigwyddiadau'n angenrheidiol
+display-unapproved-help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth yn cael eu dangos yn eich calendr.<br /> Os goseder i "Ie", Yna fe ddangosir digwyddiadau heb cymeradwyaeth yn eich calendr (mewn lliw gwahanaol).<br /> Os gosoder i "Na", yna mae angen cymeradwyo digwyddiadau cyn iddynt gael eu dangos ar eich calendr.
+Display unapproved: Dangoser digwyddiadau heb cymeradwyaeth
 conflict-check-help: Mae hwn yn rhybuddio am gwrthdrawiadau rhwng digwyddiadau (dau digwyddiad wedi eu dynodi am yr un amser ar calendr un person).  Os y dewisir "Ie", mi fydd hi dal yn bosib i drefnu dau digwyddiad ar yr un amser os y rhoddir cadarnhad ar ol rhybudd. Os y dewisir "Na", ni fydd yna unrhyw rybudd o gwrthdrawiadau rhwng digwyddiadau.  Mae hi'n arferol yn well i gosod hwn i "Ie", felly bod modd osgoi gwrthdrawiadau.
 Check for event conflicts: Edrycher am gwrthdrawiadau rhwng digwyddiadau
 conflict-months-help: Os yr edrycher am gwrthdrawiadau ("Edrycher am gwrthdrawiadau rhwng digwyddiadau" wedi ei osod i "Na"), mae hwn yn dynodi faint o fisoedd i'r dyfodol yr edrychir am wrthdrawiadau.  Os yw ychwanegu digwyddiadau yn cymryd amser hir, yna gostyngwch y rhif yma.
@@ -243,6 +398,92 @@ Conflict checking months: Nifer y misoedd i edrych am gwrthdrawiadau
 # Maximum timed events per day:
 #
 # << MISSING >>
+# crossday-help:
+# English text: If enabled, events that span days will be displayed on seperate days
+#
+#
+# << MISSING >>
+# Disable Cross-Day Events:
+#
+# << MISSING >>
+# disable-location-field-help:
+# English text: Selecting "Yes" will remove the "Location" field from event information pages
+#
+#
+# << MISSING >>
+# Disable Location field:
+disable-priority-field-help: Os y dewisir "Ie" yna ceir gwared a'r dewis o "Blaenoriaeth" o'r tudalennau gwybodaeth am digwyddiad, gan wneud pethau'n haws i bobl heb profiad o'r meddalwedd.
+Disable Priority field: Dim dewis o Blaenoriaeth
+disable-access-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn "Mynediad" oddi wrth tudalennau gwybodaeth am ddigwyddiad, gan wneud pethau'n haws i bobl heb brofiad o'r meddalwedd.
+Disable Access field: Dim dewis o Mynediad
+disable-participants-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn "Cyfranogwyr" oddi wrth y tudalennau gwybodaeth am ddigwyddiad, gan atal defnyddwyr rhag ychwanegu digwyddiadau defnyddwyr eraill at eu calendrau.  Os y dewisir yr optiwn yma, yna dylswch ystyried cael gwared o'r optiwn i "Caniatau dangos calendrau defnyddwyr eraill" yn ogystal.
+Disable Participants field: Dim Cyfranogwyr
+disable-repeating-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn i "Ailgyflawni" wrth ychwanegu digywddiadau.  Mi fydd hyn yn gwneud pethau'n haws i bobl heb profiad o'r meddalwedd.
+Disable Repeating field: Dim Ailgyflawni
+#
+# << MISSING >>
+# allow-html-description-help:
+# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+#
+#
+# << MISSING >>
+# Allow HTML in Description:
+#
+# << MISSING >>
+# Popups:
+#
+# << MISSING >>
+# disable-popups-help:
+# English text: Disable popups from calendar views
+#
+#
+# << MISSING >>
+# Disable Pop-Ups:
+#
+# << MISSING >>
+# popup-includes-siteextras-help:
+# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Site Extras in popup:
+#
+# << MISSING >>
+# popup-includes-participants-help:
+# English text: If enabled, participants are displayed in event popups.
+#
+#
+# << MISSING >>
+# Display Participants in popup:
+#
+# << MISSING >>
+# Miscellaneous:
+remember-last-login-help: Pan y defnyddir hwn mi fydd mewngofnodiad y defnyddiwr yn cael ei lenwi drostynt ar y dudalen mewngofnodi (ond nid y gair cydd), a mi fydd hoff dewisiadau'r defnyddiwr yn cael eu llwytho (gan gynnwys ei hoff lliwiau a dewis o iaith).
+Remember last login: Cofier y mewngofnodiad diwethaf
+#
+# << MISSING >>
+# summary_length-help:
+# English text: Maximum length of Brief Description in calendar views
+#
+#
+# << MISSING >>
+# Brief Description Length:
+#
+# << MISSING >>
+# user_sort-help:
+# English text: Determines sort order for User, Nonuser lists
+#
+#
+# << MISSING >>
+# User Sort Order:
+#
+# << MISSING >>
+# Lastname, Firstname:
+#
+# << MISSING >>
+# Firstname, Lastname:
+#
+# << MISSING >>
 # Plugins:
 #
 # << MISSING >>
@@ -260,19 +501,72 @@ Conflict checking months: Nifer y misoedd i edrych am gwrthdrawiadau
 #
 # << MISSING >>
 # Plugin:
-Groups: Grwpiau
+allow-public-access-help: Pan y dewisir yr optiwn yma gall y calendr yma ond cael ei ddefnyddio fel calendr cyhoeddus a ellir ei ddarllen yn unig, a sydd ddim yn gofyn i ddefnyddwyr i mewngofnodi.
+Allow public access: Caniatewch mynediad i'r cyhoedd 
+#
+# << MISSING >>
+# public-access-default-visible:
+# English text: Events from the public calendar will automatically appear on all users' calendars
+#
+#
+# << MISSING >>
+# Public access visible by default:
+#
+# << MISSING >>
+# public-access-default-selected:
+# English text: When adding a new event, the public user will be selected by default as a participant.
+#
+#
+# << MISSING >>
+# Public access is default participant:
+public-access-view-others-help: Wrth cael mynediad cyhoeddus i'r system, mae hwn yn dynodi a yw'r defnyddiwr yn gallu gwylio calendrau defnydwyr eraill.
+Public access can view other users: Rhywrai gyda mynediad cyhoeddus yn gallu gwylio calendrau defnyddwyr eraill
+public-access-can-add-help: Pan ymlaen, mi fydd defnyddwyr sydd wedi cael Mynediad Cyhoeddus i'r system yn gallu ychwanegu digwyddiadau newydd, ond ni fyddent yn dangos ar y Calendr Cyhoeddus nes bod gweinyddwr yn cymeradwyo'r digwyddiad newydd.
+Public access can add events: Gall rhai gyda Mynediad Cyhoeddus ychwanegu digwyddiad
+#
+# << MISSING >>
+# public-access-add-requires-approval-help:
+# English text: Specifies whether events added via the public access account require approval before being displayed.
+#
+#
+# << MISSING >>
+# Public access new events require approval:
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
+#
+# << MISSING >>
+# public-access-override-help:
+# English text: Allows event names and descriptions to be hidden on the public calendar
+#
+#
+# << MISSING >>
+# Override event name/description for public access:
+#
+# << MISSING >>
+# public-access-override-text-help:
+# English text: The text to display if the above option is enabled. If 'Not Available', it will be translated.
+#
+#
+# << MISSING >>
+# Text to display to public access:
+#
+# << MISSING >>
+# uac-enabled-help:
+# English text: Enables user-level access control
+#
+#
+# << MISSING >>
+# User Access Control enabled:
 groups-enabled-help: Os y dewisir hwn ceir cymorth grwp, gan ganiatau i ddefnyddwyr i ddewis defnyddwyr eraill wrth eu grwpiau.
 Groups enabled: Grwpiau 
 user-sees-his-group-help: Os y dewisir hwn, ni fydd defnyddiwr yn gallu gweld digwyddiadau defnyddwyr eraill nad ydynt yn bodoli yn o leiaf un o grwpiau y defnyddiwr.
 User sees only his groups: Defnyddiwr yn gweld ei grwpiau yn unig
-Categories: Dosbarthiadau
-categories-enabled-help: Mae hwn yn caniatau i digwyddiadau cael ei gosod mewn dosbarthiadau.
-Categories enabled: Dosbarthiadau
-#
-# << MISSING >>
-# Nonuser:
-# English text: Nonuser Calendars
-#
 #
 # << MISSING >>
 # nonuser-enabled-help:
@@ -295,15 +589,6 @@ Categories enabled: Dosbarthiadau
 #
 #
 # << MISSING >>
-# Top:
-#
-# << MISSING >>
-# Bottom:
-#
-# << MISSING >>
-# Reports:
-#
-# << MISSING >>
 # reports-enabled-help:
 # English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 #
@@ -312,20 +597,184 @@ Categories enabled: Dosbarthiadau
 # Reports enabled:
 #
 # << MISSING >>
-# Subscribe/Publish:
-#
-# << MISSING >>
 # subscriptions-enabled-help:
 # English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
 #
 #
 # << MISSING >>
 # Allow remote subscriptions:
-Email: E-bost
+#
+# << MISSING >>
+# remotes-enabled-help:
+# English text: Allows users to load remote ics files using URL
+#
+#
+# << MISSING >>
+# Allow remote calendars:
+#
+# << MISSING >>
+# rss-enabled-help:
+# English text: Specifies if a user's calendar can be obtained from a RSS feed.
+#
+#
+# << MISSING >>
+# Enable RSS feed:
+categories-enabled-help: Mae hwn yn caniatau i digwyddiadau cael ei gosod mewn dosbarthiadau.
+Categories enabled: Dosbarthiadau
+#
+# << MISSING >>
+# icon_upload-enabled-help:
+# English text: If enabled, users can upload category icons
+#
+#
+# << MISSING >>
+# Category Icon Upload enabled:
+#
+# << MISSING >>
+# display-tasks-help:
+# English text: Display small task window on month and day calendar
+#
+#
+# << MISSING >>
+# Display small task list:
+#
+# << MISSING >>
+# display-tasks-in-grid-help:
+# English text: Display tasks in calendars along with events
+#
+#
+# << MISSING >>
+# Display tasks in Calendars:
+#
+# << MISSING >>
+# allow-external-users-help:
+# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+#
+#
+# << MISSING >>
+# Allow external users:
+#
+# << MISSING >>
+# external-can-receive-notification-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email notifications:
+#
+# << MISSING >>
+# external-can-receive-reminder-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email reminders:
+#
+# << MISSING >>
+# allow-self-registration-help:
+# English text: Permit new users to register themselves
+#
+#
+# << MISSING >>
+# Allow self-registration:
+#
+# << MISSING >>
+# use-blacklist-help:
+# English text: Limit access to WebCalendar functions based on IP address
+#
+#
+# << MISSING >>
+# Restrict self-registration to blacklist:
+#
+# << MISSING >>
+# allow-self-registration-full-help:
+# English text: Allow new users to complete the self-registration process on-line
+#
+#
+# << MISSING >>
+# Use self-registration email notifications:
+# English text: Generate passwords and send to new users. This should help eliminate spammers.
+#
+#
+# << MISSING >>
+# allow-attachment-help:
+# English text: Allow users to add file attachments to events.
+#
+#
+# << MISSING >>
+# Allow file attachments to events:
+#
+# << MISSING >>
+# Admin and owner can always add attachments if enabled:
+#
+# << MISSING >>
+# Participant:
+#
+# << MISSING >>
+# Anyone:
+#
+# << MISSING >>
+# allow-comments-help:
+# English text: Allow users to add comments to events.
+#
+#
+# << MISSING >>
+# Allow comments to events:
+#
+# << MISSING >>
+# Admin and owner can always add comments if enabled:
 email-enabled-help: Defnyddir hwn i dewis a oes modd anfon e-byst i atgoffa defnyddwyr o digwyddiad.  Gosoder i "na", os yw'r gweinydd ddim yn medru anfon e-byst yn y ffordd yma.
 Email enabled: Anfoner E-byst
 email-default-sender: Mae hwn yn dynodi cyfeiriad e-bost yr anfonwr wrth anfon e-byst atgoffa allan.
 Default sender address: Cyfeiriad e-bost danfonwr arferol
+#
+# << MISSING >>
+# email-mailer:
+# English text: Choose email type (SMTP, PHP mail, sendmail)
+#
+#
+# << MISSING >>
+# Email Mailer:
+#
+# << MISSING >>
+# email-smtp-host:
+# English text: Hostname(s) of SMTP server(s) seperated by commas
+#
+#
+# << MISSING >>
+# SMTP Host name(s):
+#
+# << MISSING >>
+# email-smtp-port:
+# English text: SMTP Port Number (normally 25)
+#
+#
+# << MISSING >>
+# SMTP Port Number:
+#
+# << MISSING >>
+# email-smtp-auth:
+# English text: Use SMTP Authentication
+#
+#
+# << MISSING >>
+# SMTP Authentication:
+#
+# << MISSING >>
+# email-smtp-username:
+# English text: SMTP Username if using Authentication
+#
+#
+# << MISSING >>
+# SMTP Username:
+#
+# << MISSING >>
+# email-smtp-password:
+# English text: SMTP Password if using Authentication
+#
+#
+# << MISSING >>
+# SMTP Password:
 Default user settings: Dewisiadau arferol y defnyddiwr
 email-event-reminders-help: Mae hwn yn dynodi a ddylid anfon e-byst i atgoffa defnyddwyr o ddigwyddiadau.
 Event reminders: Atgofion o ddigwyddiadau
@@ -337,64 +786,144 @@ email-event-deleted: Mae hwn yn penderfynnu a ddylid anfon rhybudd ar ffurf e-bo
 Events removed from my calendar: Digwyddiadau a ddiddymwyd o fy nghalendr
 email-event-rejected: Mae hwn yn penderfynnu a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os yw defnyddiwr yn gwrthod derbyn digwyddiad sydd ar eich calendr.
 Event rejected by participant: Digwyddiad wedi ei wrthod gan ddefnyddiwr
-colors-help: Dylsai pob lliw gael ei dynodi trwy fformat hexadecimal "#RRGGBB" ble mae "RR" yn cynrychioli coch mewn hex, "GG" yn cynrychioli gwyrdd mewn hex, ac mae "BB" yn cynrychioli glas mewn hex.
-Colors: Lliwiau
 Allow user to customize colors: Caniatad i ddefnyddwyr dewis eu lliwiau
+#
+# << MISSING >>
+# gradient-colors:
+# English text: If enabled gradient colors are used. This can greatly impact performane.
+#
+#
+# << MISSING >>
+# Enable gradient images for background colors:
+#
+# << MISSING >>
+# Not available:
 Document background: Cefndir y ddogfen
-Select: Dewis
 Document title: Teitl y Ddogfen
 Document text: Testun y Ddogfen
+#
+# << MISSING >>
+# My event text:
 Table grid color: Lliw grid y tabl
 Table header background: Lliw cefndir pennawd y tabl
 Table header text: Lliw testun y pennawd i'r tabl
 Table cell background: Lliw cefndir celloedd y tabl
 Table cell background for current day: Lliw cefndir celloedd y tabl am y diwrnod presennol
+#
+# << MISSING >>
+# Table cell background for days with events:
 Table cell background for weekends: Lliw cefndir celloedd y tabl dros y penwythnosau
+#
+# << MISSING >>
+# Table cell background for other month:
+#
+# << MISSING >>
+# Week number color:
 Event popup background: Lliw cefndir 'popup'
 Event popup text: Lliw testun 'popup'
 
 
 ###############################################
-# Page: activity_log.php
+# Page: adminhome.php
 #
-Activity Log: Log Actifedd
-User: Defnyddiwr
-Calendar: Calendr
-Date: Dyddiad
-Time: Amser
-Event: Digwyddiad
-Action: Gweithred
-Event created: Ychwanegwyd Digwyddiad
-Event approved: Cymeradwywyd Digwyddiad
-Event rejected: Gwrthodwyd Digwyddiad
-Event updated: Diweddarwyd Digwyddiad
-Event deleted: Diddymwyd Digwyddiad
-Notification sent: Anfonwyd Hysbysiad
-Reminder sent: Anfonwyd Atgofiad
-Database error: Gwall cronfa ddata
-Previous: Blaenorol
-Next: Nesaf
+#
+# << MISSING >>
+# Control Panel:
+Preferences: Hoff Dewisiadau
+#
+# << MISSING >>
+# Assistants:
+Users: Defnyddwyr
+Account: Cyfrif
+Categories: Dosbarthiadau
+Views: Golygfeydd
+Layers: Haenau
+#
+# << MISSING >>
+# Reports:
+#
+# << MISSING >>
+# Delete Events:
+#
+# << MISSING >>
+# Public Preferences:
+#
+# << MISSING >>
+# Unapproved Public Events:
+#
+# << MISSING >>
+# Administrative Tools:
 
 
 ###############################################
-# Page: add_entry.php
+# Page: ajax.php
 #
-Invalid entry id: ID annilys 
-This is a private event and may not be added to your calendar.: Y mae hwn yn ddigwyddiad preifat a ni chaniateir i chi ei ychwanegu at eich calendr.
-Error adding event: Camgymeriad wrth ychwanegu digwyddiad
-
-
-###############################################
-# Page: admin_handler.php
 #
-Error: Camgymeriad
-The following error occurred: Mae'r camgymeriad canlynol wedi digwydd
+# << MISSING >>
+# Duplicate Name:
+#
+# << MISSING >>
+# Username already exists:
+#
+# << MISSING >>
+# Email address already exists:
 
 
 ###############################################
 # Page: approve_entry.php
 #
-Error approving event: Camgymeriad wrth cymeradwyo digwyddiad
+#
+# << MISSING >>
+# Additional Comments (optional):
+#
+# << MISSING >>
+# Approve and Send:
+#
+# << MISSING >>
+# Approve and Exit:
+#
+# << MISSING >>
+# (Your comments will be included in an email to the event creator):
+Hello: Helo
+#
+# << MISSING >>
+# An appointment has been approved and comments added by:
+The subject was: Y pwnc oedd
+The description is: Y disgrifiad yw
+#
+# << MISSING >>
+# Comments:
+
+
+###############################################
+# Page: assistant_edit.php
+#
+#
+# << MISSING >>
+# Admin mode:
+#
+# << MISSING >>
+# Your assistants:
+
+
+###############################################
+# Page: availability.php
+#
+#
+# << MISSING >>
+# Program Error:
+#
+# << MISSING >>
+# No users specified!:
+#
+# << MISSING >>
+# No year specified!:
+#
+# << MISSING >>
+# No month specified!:
+#
+# << MISSING >>
+# No day specified!:
 
 
 ###############################################
@@ -402,7 +931,25 @@ Error approving event: Camgymeriad wrth cymeradwyo digwyddiad
 #
 Add: Ychwanegu
 Category Name: Enw Dosbarth
+#
+# << MISSING >>
+# Category Icon:
+#
+# << MISSING >>
+# Remove Icon:
 Global: Hollfydol
+#
+# << MISSING >>
+# Add Icon to Category:
+#
+# << MISSING >>
+# Upload:
+#
+# << MISSING >>
+# gif 3kb max:
+#
+# << MISSING >>
+# Search for existing icons:
 Delete: Dileu
 Are you sure you want to delete this entry?: A ydych yn siwr eich bod eisiau dileu y digwyddiad yma?
 Add New Category: Ychwanegwch Dosbarth newydd 
@@ -411,48 +958,155 @@ Add New Category: Ychwanegwch Dosbarth newydd
 ###############################################
 # Page: category_handler.php
 #
+#
+# << MISSING >>
+# File size exceeds maximum:
+#
+# << MISSING >>
+# File is not a gif image:
 
 
 ###############################################
-# Page: datesel.php
-#
-
-
-###############################################
-# Page: day.php
+# Page: catsel.php
 #
 #
 # << MISSING >>
-# Admin mode:
+# ENTRY CATEGORIES:
 #
 # << MISSING >>
-# Assistant mode:
-Generate printer-friendly version: Cynhyrchu fersiwn addas i'w brintio
-Printer Friendly: Addas i'w brintio
+# AVAILABLE CATEGORIES:
+Remove: Dileu
+#
+# << MISSING >>
+# Global Category:
+Ok: Iawn
 
 
 ###############################################
 # Page: del_entry.php
 #
-Hello: Helo
 An appointment has been canceled for you by: Mae digwyddiad wedi ei dileu drostoch gan
-The subject was: Y pwnc oedd
-Notification: Rhybydd
+
+
+###############################################
+# Page: doc.php
+#
+#
+# << MISSING >>
+# Invalid blob id:
+
+
+###############################################
+# Page: docadd.php
+#
+#
+# << MISSING >>
+# Add Comment:
+#
+# << MISSING >>
+# Add Attachment:
+#
+# << MISSING >>
+# Subject:
+#
+# << MISSING >>
+# Comment:
+#
+# << MISSING >>
+# Upload file:
+Description: Disgrifiad
+
+
+###############################################
+# Page: docdel.php
+#
+#
+# << MISSING >>
+# Removed:
 
 
 ###############################################
 # Page: edit_entry.php
 #
+am: am
+pm: pm
+#
+# << MISSING >>
+# You are not authorized to edit this task:
+#
+# << MISSING >>
+# hours ahead of you:
+#
+# << MISSING >>
+# hours behind you:
+#
+# << MISSING >>
+# hour ahead of you:
+#
+# << MISSING >>
+# hour behind you:
+#
+# << MISSING >>
+# is in a different timezone than you are. Currently:
+#
+# << MISSING >>
+# Time entered here is based on your Timezone:
 Edit Entry: Newid Digwyddiad
 Add Entry: Ychwanegu Digwyddiad
+#
+# << MISSING >>
+# Details:
+Participants: Cyfranogwyr
+#
+# << MISSING >>
+# Repeat:
+#
+# << MISSING >>
+# Reminders:
 brief-description-help: Defnyddir hwn i roi disgrifiad byr (tua 20 llythyren) o'r digwyddiad.  Dangosir y wybodaeth yn uniongyrchol ar y calendr.
 Brief Description: Disgrifiad Byr
 full-description-help: Defnyddir hwn i gwblhau manylion y digwyddiad.  Mi all y defnyddiwr weld y wybodaeth yma wrth iddynt glicio ar y digwyddiad neu trwy symud y llygoden dros y digwyddiad.
 Full Description: Disgrifiad llawn
+access-help: Mae hwn yn dynodi lefel caniatad y digwyddiad.<br /> <i>Cyhoeddus</i>: Mae pawb yn gallu gweld holl fanylion y digwyddiad.  <br /><i>Cyfrinachol</i>: Gall eraill gweld fod ganddoch digwyddiad am amser a dyddiad penodol, ond nid ydynt yn gallu gweld y manylion. 
+Access: Caniatad
+priority-help: Mae hwn yn dynodi blaenoriaeth y digwyddiad. Mi fydd digwyddiadau gyda blaenoriaeth uchel yn cael ei dangos gyda llythrennau bras.
+Priority: Blaenoriaeth
+Low: Isel
+Medium: Canolig
+High: Uchel
+category-help: Mae hwn yn dynodi dosbarth y digwyddiad.
+Category: Dosbarth
+#
+# << MISSING >>
+# completed-help:
+# English text: Date task is completed. Only enabled when all participants percentage equals 100%.
+#
+#
+# << MISSING >>
+# Date Completed:
+#
+# << MISSING >>
+# percent-help:
+# English text: Task completion percentage for this user
+#
+#
+# << MISSING >>
+# Percent Complete:
+#
+# << MISSING >>
+# All Percentages:
+#
+# << MISSING >>
+# location-help:
+# English text: Event location 
+#
+#
+# << MISSING >>
+# Location:
 date-help: Mae hwn yn dynodi dyddiad y digwyddiad.
-time-help: Mae hwn yn dynodi amser y digwyddiad.<br /><i>Mi ellir gadael hwn yn wag.</i>
-am: am
-pm: pm
+#
+# << MISSING >>
+# Start Date:
 #
 # << MISSING >>
 # Untimed event:
@@ -462,59 +1116,188 @@ pm: pm
 #
 # << MISSING >>
 # All day event:
+#
+# << MISSING >>
+# Timezone Offset:
+time-help: Mae hwn yn dynodi amser y digwyddiad.<br /><i>Mi ellir gadael hwn yn wag.</i>
 duration-help: Mae hwn yn dynodi (mewn Oriau:Munudau) parhad y digwyddiad. <br /><i>Mi ellir gadael hwn yn wag.</i>
-Duration: Parhad
-hours: awr
-priority-help: Mae hwn yn dynodi blaenoriaeth y digwyddiad. Mi fydd digwyddiadau gyda blaenoriaeth uchel yn cael ei dangos gyda llythrennau bras.
-Priority: Blaenoriaeth
-Low: Isel
-Medium: Canolig
-High: Uchel
-access-help: Mae hwn yn dynodi lefel caniatad y digwyddiad.<br /> <i>Cyhoeddus</i>: Mae pawb yn gallu gweld holl fanylion y digwyddiad.  <br /><i>Cyfrinachol</i>: Gall eraill gweld fod ganddoch digwyddiad am amser a dyddiad penodol, ond nid ydynt yn gallu gweld y manylion. 
-Access: Caniatad
-Public: Cyhoeddus
-Confidential: Cyfrinachol
-category-help: Mae hwn yn dynodi dosbarth y digwyddiad.
-Category: Dosbarth
-None: Dim 
-days: diwrnod
-before event: cyn y digwyddiad
+minutes: munud
+#
+# << MISSING >>
+# end-time-help:
+# English text: Specifies the time the event is expected to end.
+#
+#
+# << MISSING >>
+# Start Time:
+#
+# << MISSING >>
+# Due Date:
+#
+# << MISSING >>
+# Due Time:
 participants-help: Rhestrir y defnyddwyr sydd a cofnod o'r digwyddiad.
-Participants: Cyfranogwyr
+#
+# << MISSING >>
+# Availability:
 #
 # << MISSING >>
 # external-participants-help:
-# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
+# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
 #
 #
 # << MISSING >>
 # External Participants:
 repeat-type-help: Dewiswch pa more aml y dylsai'r digwyddiad ailgyflawni. Wrth dewis <i>Misol (wrth dydd o'r wythnos)</i> mi all digwyddiad ailgyflawni ar y Llun 1af o'r mis, 3ydd Iau o'r mis, ayyb.  Wrth dewis <i>Misol (wrth dyddiad)</i> mi all digwyddiad ailgyflawni ar yr un diwrnod o'r mis (e.e. y 3ydd) 
-Repeat Type: Amlder Ailgyflawni
 Daily: Dyddiol
 Weekly: Wythnosol
 Monthly: Misol
 by day: wrth dydd yr wythnos
+by date: wrth dyddiad
 #
 # << MISSING >>
-# by day (from end):
-by date: wrth dyddiad
+# by position:
 Yearly: Blynyddol
+#
+# << MISSING >>
+# Manual:
+#
+# << MISSING >>
+# Expert Mode:
 repeat-end-date-help: Mae hwn yn dynodi y dyddiad olaf y gall y digwyddiad ailgyflawni hyd iddi.
-Repeat End Date: Diwrnod olaf a ailgyflawnir
+#
+# << MISSING >>
+# Ending:
+#
+# << MISSING >>
+# Forever:
 Use end date: Mae angen diwrnod diwethaf
-repeat-day-help: Mae hwn yn dynodi pa ddiwrnodau o'r wythnos y bydd y digwyddiad yn ailgyflawni arnynt.  Defnyddir hwn ond pan fod <i>Amlder Ailgyflawni</i> wedi ei osod i <i>Wythnosol</i>.
-Repeat Day: Diwrnod yr ailgyflawniad
-for weekly: os wythnosol
-Tuesday: Mawrth
-Wednesday: Mercher
-Thursday: Iau
-Friday: Gwener
-Saturday: Sadwrn
+#
+# << MISSING >>
+# Number of times:
 repeat-frequency-help: Mae hwn yn dynodi pa mor aml bydd y digwyddiad yn ailgyflawni. Wrth dewis 1 mi fydd y digwyddiad yn digwydd pob tro. Wrth dewis 2 mi fydd y digwyddiad yn digwydd bob yn ail wythnos (os yw <i>Amlder Ailgyflawni</i> wedi ei osod i <i>Wythnosol</i>), neu bob yn ail mis (os yw <i>Amlder Ailgyflawni</i> wedi ei osod i <i>Misol</i>), ayyb.
 Frequency: Amlder
+#
+# << MISSING >>
+# Weekdays Only:
+#
+# << MISSING >>
+# Week Start:
+#
+# << MISSING >>
+# repeat-bydayextended-help:
+# English text: Allows date selection based on day of week. 
+#
+#
+# << MISSING >>
+# ByDay:
+All: Pob
+#
+# << MISSING >>
+# repeat-month-help:
+# English text: Specifies which months the event should repeat in.
+#
+#
+# << MISSING >>
+# ByMonth:
+#
+# << MISSING >>
+# repeat-bysetpos-help:
+# English text: Allows date selection based on position withing the month.
+#
+#
+# << MISSING >>
+# BySetPos:
+#
+# << MISSING >>
+# repeat-bymonthdayextended-help:
+# English text: Allows date selection based on date.
+#
+#
+# << MISSING >>
+# ByMonthDay:
+#
+# << MISSING >>
+# repeat-byweekno-help:
+# English text: Allows user to specify a list of weeks to repeat event (1,2...53,-53,-52...-1).
+#
+#
+# << MISSING >>
+# ByWeekNo:
+#
+# << MISSING >>
+# repeat-byyearday-help:
+# English text: Allows user to specify a list of year days to repeat event (1,2...366,-366,-365...-1).
+#
+#
+# << MISSING >>
+# ByYearDay:
+#
+# << MISSING >>
+# repeat-exceptions-help:
+# English text: Additional days that this event should or should not occur on.
+#
+#
+# << MISSING >>
+# Exclusions:
+#
+# << MISSING >>
+# Inclusions:
+#
+# << MISSING >>
+# Add Exception:
+#
+# << MISSING >>
+# Add Inclusion:
+#
+# << MISSING >>
+# Delete Selected:
+Send Reminder: Anfoner atgofiad
+#
+# << MISSING >>
+# When:
+#
+# << MISSING >>
+# Use Date/Time:
+#
+# << MISSING >>
+# Use Offset:
+days: diwrnod
+#
+# << MISSING >>
+# Before:
+#
+# << MISSING >>
+# After:
+#
+# << MISSING >>
+# Start:
+#
+# << MISSING >>
+# End/Due:
+#
+# << MISSING >>
+# Times:
+#
+# << MISSING >>
+# Every:
 Delete entry: Dileu digwyddiad
 You are not authorized to edit this entry: Nid oes ganddo chi yr awdurdod i newid y digwyddiad yma
+
+
+###############################################
+# Page: edit_entry_handler.php
+#
+The following conflicts with the suggested time: Mae'r canlynol yn gwrthdaro gyda'r amser awgrymiedig
+A new appointment has been made for you by: Mae digwyddiad newydd wedi ei greu i chi gan
+An appointment has been updated by: Mae digwyddiad wedi ei newid gan
+The subject is: Y pwnc yw
+Please look on: Edrychwch ar 
+to accept or reject this appointment: i derbyn neu gwrthod y digwyddiad yma
+to view this appointment: i wylio'r digwyddiad yma
+Scheduling Conflict: Gwrthdrawiad Amserlen
+Your suggested time of: Mae eich amser awgrymiedig o
+conflicts with the following existing calendar entries: yn gwrthdaro gyda'r digwyddiadau canlynol sydd yn bodoli eisoes
 
 
 ###############################################
@@ -526,8 +1309,12 @@ Source: Ffynhonell
 Color: Lliw
 Duplicates: Dyblygiadau
 Show layer events that are the same as your own: Dangoser digwyddiadau haen sydd yn union fel rhai eich hunan
-Are you sure you want to delete this layer?: A ydych y siwr eich bod eisiau dileu'r haen yma?
+#
+# << MISSING >>
+# Add to Others:
+Add to My Calendar: Ychwanegu i Fy Nghalendr
 Delete layer: Dileu haen
+Are you sure you want to delete this layer?: A ydych y siwr eich bod eisiau dileu'r haen yma?
 
 
 ###############################################
@@ -538,418 +1325,7 @@ You can only create one layer for each user: Allwch ond creu un haen i pob defny
 
 
 ###############################################
-# Page: edit_user.php
-#
-Edit User: Newid Defnyddiwr
-Add User: Ychwanegu Defnyddiwr
-Username: Enw Defnyddiwr
-First Name: Enw Cyntaf
-Last Name: Cyfenw
-E-mail address: Cyfeiriad E-bost
-Password: Gair Cydd
-again: eto
-Admin: Gweinyddu
-Disabled for demo: Dim yn gweithio yn yr arddangosiad
-Change Password: Newid Gair Cydd
-New Password: Gair Cydd Newydd
-Set Password: Gosod Gair Cydd
-
-
-###############################################
-# Page: edit_user_handler.php
-#
-Deleting users not supported: Ni chanieteir diddymu defnyddwyr
-The passwords were not identical: Nid yw'r geiriau cyfrin yn cyfateb
-You have not entered a password: Nid ydych wedi cynnig gair cydd
-
-
-###############################################
-# Page: export.php
-#
-Export: Allforio
-Export format: Fformat Allforio
-Palm Pilot: Palm Pilot
-Export all dates: Allforio pob dyddiad
-Start date: Dyddiad cyntaf
-End date: Dyddiad olaf
-Modified since: Newidwyd ers
-
-
-###############################################
-# Page: export_handler.php
-#
-#
-# << MISSING >>
-# export format not defined or incorrect:
-
-
-###############################################
-# Page: group_edit.php
-#
-Unnamed Group: Grwp Di-enw
-Add Group: Ychwanegu Grwp
-Edit Group: Newid Grwp
-Group name: Enw grwp
-Updated: Newidwyd
-Created by: Crewyd gan
-Users: Defnyddwyr
-
-
-###############################################
-# Page: group_edit_handler.php
-#
-#
-# << MISSING >>
-# You must specify a group name:
-
-
-###############################################
-# Page: groups.php
-#
-Add New Group: Ychwanegu Grwp Newydd
-
-
-###############################################
-# Page: icalfb.php
-#
-
-
-###############################################
-# Page: pref.php
-#
-Preferences: Hoff Dewisiadau
-to modify the preferences for the Public Access calendar: i addasu yr optiynau a ddewisir gogyfer a'r Calendr Cyhoeddus 
-#
-# << MISSING >>
-# tz-help:
-# English text: Specifies how many hours to adjust the time from server time to local time.
-#
-#
-# << MISSING >>
-# Timezone Offset:
-#
-# << MISSING >>
-# Add N hours to:
-#
-# << MISSING >>
-# Subtract N hours from:
-#
-# << MISSING >>
-# same as:
-#
-# << MISSING >>
-# server time:
-Default Category: Dosbarth Arferol
-#
-# << MISSING >>
-# When I am the boss:
-#
-# << MISSING >>
-# Email me event notification:
-#
-# << MISSING >>
-# I want to approve events:
-#
-# << MISSING >>
-# allow-remote-subscriptions-help:
-# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# remote-subscriptions-url-help:
-# English text: Displays the URL remote users should use to subscribe to your calendar.
-#
-#
-# << MISSING >>
-# URL:
-Sun: Sul
-Mon: Llu
-Tue: Maw
-Wed: Mer
-Thu: Iau
-Fri: Gwe
-Sat: Sad
-Save Preferences: Arbed Dewisiadau
-
-
-###############################################
-# Page: help_bug.php
-#
-Report Bug: Cofnodi Problem
-
-
-###############################################
-# Page: help_edit_entry.php
-#
-Adding/Editing Calendar Entries: Ychwanegu/Newid Digwyddiadau Calendr
-
-
-###############################################
-# Page: help_index.php
-#
-Help Index: Indecs Cymorth
-Layers: Haenau
-#
-# << MISSING >>
-# Import:
-
-
-###############################################
-# Page: help_layers.php
-#
-Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.: Defnyddir haenau i ddangos digwyddiadau pobl eraill ar eich calendr. Allwch benderfynnu y defnyddwyr a ddangosir ac hefyd lliwiau testun y digwyddiadau.
-Add/Edit/Delete: Ychwanegu/Newid/Dileu
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Wrth glicio ar y cyswllt Newid Haenau yn yr adran weinyddol ar waelod y dudalen fe ganieteir i chi ychwanegu, newid neu dileu haenau.
-Specifies the user that you would like to see displayed in your calendar.: Mae hwn yn dynodi y defnyddiwr yr hoffech dangos ei ddigwyddiadau ar eich calendr.
-The text color of the new layer that will be displayed in your calendar.: Lliw testun yr haen newydd yn cael ei ddangos ar eich calendr.
-If checked, events that are duplicates of your events will be shown.: Os dewisir, mi fydd digwyddiadau sydd yr un fath a'ch digwyddiadau chi yn cael ei dangos.
-Disabling: Anablwch
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Gwasgwch y cyswllt Anablwch Haenau yn yr adran weinyddol ar waelod y tudalen i beidio a defnyddio haenau.
-Enabling: Defnyddiwch
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Gwasgwch y cyswllt Defnyddiwch Haenau yn yr adran weinyddol ar waelod y tudalen er mwyn defnyddio haenau.
-
-
-###############################################
-# Page: help_admin.php
-#
-
-
-###############################################
-# Page: week.php
-#
-#
-# << MISSING >>
-# cont.:
-
-
-###############################################
-# Page: layers.php
-#
-#
-# << MISSING >>
-# to modify the layers settings for the:
-Layers are currently: Mae haenau ar hyn o bryd  
-Enabled: Ymlaen
-Disabled: Ymaith
-Disable Layers: Dim haenau
-Enable Layers: Defnyddio haenau
-Layer: Haen
-Edit layer: Newid haen
-Add layer: Ychwanegu haen
-
-
-###############################################
-# Page: layers_toggle.php
-#
-
-
-###############################################
-# Page: list_unapproved.php
-#
-View this entry: Gwyliwch y digwyddiad hwn
-Approve this entry?: Cymeradwywch y digwyddiad hwn?
-Approve/Confirm: Cymeradwywch
-Reject this entry?: Gwrthodwch y digwyddiad hwn?
-Reject: Gwrthod
-No unapproved events for: Dim digwyddiad heb cymeradwyaeth gan
-Unapproved Events: Digwyddiadau heb Cymeradwyaeth
-Public Access: Calendr Cyhoeddus
-
-
-###############################################
-# Page: view_entry.php
-#
-every: pob
-2nd: 2il
-3rd: 3ydd
-4th: 4ydd
-5th: 5ed
-1st: 1af
-#
-# << MISSING >>
-# last:
-Description: Disgrifiad
-Status: Statws
-Waiting for approval: Aros as cymeradwyaeth
-Deleted: Diddymwyd
-Rejected: Gwrthodwyd
-#
-# << MISSING >>
-# External User:
-Approve/Confirm entry: Cymeradwyo digwyddiad
-Reject entry: Gwrthod digwyddiad
-Set category: Gosod dosbarth
-Edit repeating entry for all dates: Newid digwyddiad a ail-adroddir am pob dyddiad
-Edit entry for this date: Newid digwyddiad am y dyddiad yma'n unig
-This will delete this entry for all users.: Fydd hwn yn dileu y digwyddiad dros pob defnyddiwr.
-Delete repeating event for all dates: Dileu digwyddiad a ail-adroddir am pob dyddiad
-Delete entry only for this date: Dileu digwyddiad am y dyddiad yma'n unig
-Edit entry: Newid digwyddiad
-This will delete the entry from your calendar.: Fydd hwn yn dileu y digwyddiad o'ch calendr.
-Do you want to add this entry to your calendar?: A ydych eisiau ychwanegu'r digwyddiad yma i'ch calendr?
-This will add the entry to your calendar.: Fydd hwn yn ychwanegu'r digwyddiad yma i'ch calendr.
-Add to My Calendar: Ychwanegu i Fy Nghalendr
-Email all participants: E-bost at bob aelod
-Show activity log: Dangos cofnod gweithgarwch
-Hide activity log: Cyddio cofnod gweithgarwch
-#
-# << MISSING >>
-# Export this entry to:
-
-
-###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: Gwrthodwyd digwyddiad gan
-The description is: Y disgrifiad yw
-Title: Calendar We
-
-
-###############################################
-# Page: search.php
-#
-Search: Chwiliad
-Advanced Search: Chwiliad Manwl
-Keywords: Allweddeiriau
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: Rhaid i chi defnyddio un neu fwy allweddeiriau chwilio
-Search Results: Canlyniadau Archwiliad
-match found: Darganfyddwyd ateb cyfatebol
-matches found: Darganfyddwyd atebion cyfatebol
-No matches found: Dim byd yn cyfateb
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: Gwylio Calendr Defnyddiwr arall
-Go: Ewch
-
-
-###############################################
-# Page: publish.php
-#
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: Dynoder defnyddiwr gweinyddol
-Add New User: Ychwanegu Defnyddiwr Newydd
-
-
-###############################################
-# Page: usersel.php
-#
-All: Pob
-Reset: Ail-osod
-Remove: Dileu
-Ok: Iawn
-Cancel: Dileu 
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
-#
-# << MISSING >>
-# This form will import iCalendar (.ics) events:
-#
-# << MISSING >>
-# iCal File:
-#
-# << MISSING >>
-# Overwrite Prior Import:
-
-
-###############################################
-# Page: year.php
-#
-
-
-###############################################
-# Page: view_d.php
-#
-
-
-###############################################
-# Page: view_m.php
-#
-
-
-###############################################
-# Page: view_w.php
-#
-
-
-###############################################
-# Page: views.php
-#
-Views: Golygfeydd
-Add New View: Ychwanegu Golwg Newydd
-
-
-###############################################
-# Page: views_edit.php
-#
-Unnamed View: Golwg di-enw
-Add View: Ychwanegu Golwg
-Edit View: Newid Golwg
-View Name: Enw Golwg
-View Type: Math Golwg
-#
-# << MISSING >>
-# Week (Users horizontal):
-#
-# << MISSING >>
-# Week (Users vertical):
-#
-# << MISSING >>
-# Week (Timebar):
-#
-# << MISSING >>
-# Month (side by side):
-#
-# << MISSING >>
-# Month (on same calendar):
-
-
-###############################################
-# Page: nonusers.php
+# Page: edit_nonusers.php
 #
 #
 # << MISSING >>
@@ -958,84 +1334,48 @@ View Type: Math Golwg
 #
 #
 # << MISSING >>
-# NonUser:
-# English text: NonUser Calendars
+# word characters only:
+# English text: can only contain word characters (a-zA-Z_0-9)
 #
+Edit User: Newid Defnyddiwr
+Add User: Ychwanegu Defnyddiwr
 #
 # << MISSING >>
 # Calendar ID:
+First Name: Enw Cyntaf
+Last Name: Cyfenw
 #
 # << MISSING >>
-# Add New NonUser Calendar:
+# Is public calendar:
 
 
 ###############################################
-# Page: nonusers_handler.php
-#
-
-
-###############################################
-# Page: view_l.php
-#
-
-
-###############################################
-# Page: help_pref.php
-#
-default-category-help: Mae hwn yn dynodi pa dosbarth y bydd digwyddiad newydd yn perthyn i yn arferol.
-
-
-###############################################
-# Page: report.php
-#
-Private: Preifat
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Rhaid i chi cynnig mewngofnodiad a gair cydd
-Save login via cookies so I don't have to login next time: Arbedwch fy mewngofnodiad trwy 'cookies' fel nad oes raid i mi mewngofnodi y tro nesaf
-Login: Mewngofnodiad
-Access public calendar: Calendr Cyhoeddus
-cookies-note: <b>Note:</b> Mae'n hanfodol bod 'cookies' yn gweithio i'r meddalwedd yma redeg.
-
-
-###############################################
-# Page: views_edit_handler.php
+# Page: edit_remotes.php
 #
 #
 # << MISSING >>
-# You must specify a view name:
+# Edit Remote Calendar:
+#
+# << MISSING >>
+# Add Remote Calendar:
+#
+# << MISSING >>
+# URL:
+#
+# << MISSING >>
+# Create Layer:
+#
+# << MISSING >>
+# Required to View Remote Calendar:
+#
+# << MISSING >>
+# Reload:
 
 
 ###############################################
-# Page: week_details.php
+# Page: edit_remotes_handler.php
 #
-New Entry: Digwyddiad newydd
-
-
-###############################################
-# Page: import_handler.php
-#
+Error: Camgymeriad
 #
 # << MISSING >>
 # Import Results:
@@ -1044,27 +1384,13 @@ New Entry: Digwyddiad newydd
 # Events successfully imported:
 #
 # << MISSING >>
-# Events from prior import marked as deleted:
-#
-# << MISSING >>
-# Conflicting events:
+# Create a new layer to view this calendar:
 #
 # << MISSING >>
 # Errors:
-Back to My Calendar: Nol i Fy Nghalendr
 #
 # << MISSING >>
 # There was an error parsing the import file or no events were returned:
-#
-# << MISSING >>
-# The import file contained no data:
-The following conflicts with the suggested time: Mae'r canlynol yn gwrthdaro gyda'r amser awgrymiedig
-Unnamed Event: Digwyddiad di-enw
-Scheduling Conflict: Gwrthdrawiad Amserlen
-conflicts with the following existing calendar entries: yn gwrthdaro gyda'r digwyddiadau canlynol sydd yn bodoli eisoes
-#
-# << MISSING >>
-# Event Imported:
 
 
 ###############################################
@@ -1132,6 +1458,27 @@ conflicts with the following existing calendar entries: yn gwrthdaro gyda'r digw
 # Year before last:
 #
 # << MISSING >>
+# Next 14 days:
+#
+# << MISSING >>
+# Next 30 days:
+#
+# << MISSING >>
+# Next 60 days:
+#
+# << MISSING >>
+# Next 90 days:
+#
+# << MISSING >>
+# Next 180 days:
+#
+# << MISSING >>
+# Next 365 days:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -1176,65 +1523,156 @@ Current User: Defnyddiwr presennol
 
 
 ###############################################
-# Page: assistant_edit.php
+# Page: edit_report_handler.php
 #
 #
 # << MISSING >>
-# Assistants:
-#
-# << MISSING >>
-# Your assistants:
+# Variable N not found:
 
 
 ###############################################
-# Page: view_t.php
+# Page: edit_template.php
 #
+#
+# << MISSING >>
+# Edit Custom Script/Stylesheet:
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
 
 
 ###############################################
-# Page: assistant_edit_handler.php
+# Page: edit_user.php
 #
+Username: Enw Defnyddiwr
+E-mail address: Cyfeiriad E-bost
+Password: Gair Cydd
+again: eto
+Disabled for demo: Dim yn gweithio yn yr arddangosiad
+#
+# << MISSING >>
+# Are you sure you want to delete this user?:
+Change Password: Newid Gair Cydd
+New Password: Gair Cydd Newydd
+Set Password: Gosod Gair Cydd
 
 
 ###############################################
-# Page: adminhome.php
+# Page: edit_user_handler.php
 #
-Account: Cyfrif
-#
-# << MISSING >>
-# NonUser Calendars:
-#
-# << MISSING >>
-# Delete Events:
+Deleting users not supported: Ni chanieteir diddymu defnyddwyr
+The passwords were not identical: Nid yw'r geiriau cyfrin yn cyfateb
+You have not entered a password: Nid ydych wedi cynnig gair cydd
 #
 # << MISSING >>
-# Public Preferences:
+# Invalid characters in login:
 #
 # << MISSING >>
-# Unapproved Public Events:
-#
-# << MISSING >>
-# Administrative Tools:
+# Username can not be blank:
 
 
 ###############################################
-# Page: purge.php
+# Page: export.php
+#
+Export: Allforio
+Export format: Fformat Allforio
+Palm Pilot: Palm Pilot
+#
+# << MISSING >>
+# Include all layers:
+Export all dates: Allforio pob dyddiad
+Start date: Dyddiad cyntaf
+End date: Dyddiad olaf
+Modified since: Newidwyd ers
+
+
+###############################################
+# Page: export_handler.php
 #
 #
 # << MISSING >>
-# Purging events for:
+# export format not defined or incorrect:
+
+
+###############################################
+# Page: groups.php
+#
+Add New Group: Ychwanegu Grwp Newydd
+
+
+###############################################
+# Page: group_edit.php
+#
+Unnamed Group: Grwp Di-enw
+Add Group: Ychwanegu Grwp
+Edit Group: Newid Grwp
+Group name: Enw grwp
+Updated: Newidwyd
+Created by: Crewyd gan
+
+
+###############################################
+# Page: group_edit_handler.php
+#
 #
 # << MISSING >>
-# Finished:
+# You must specify a group name:
+
+
+###############################################
+# Page: help_admin.php
+#
+Display weekends in week view: Dangoser penwythnosau yn y golwg wythnosol
 #
 # << MISSING >>
-# Delete all events before:
+# Display days with events in bold in year view:
+Time interval: Ystod Amser
+time-interval-help: Mae hwn yn dynodi hyd y blociau amser yn y golwg wythnosol a'r golwg dyddiol. 
+Auto-refresh calendars: Calendr yn adfywio yn awtomatig
+auto-refresh-help: Pan ymlaen, mae'r golwg dyddiol, wythnosol neu misol, a rhestr tudalennau heb cymeradwyaeth, yn cael eu adfywio yn awtomatig yn rheolaidd.
+Auto-refresh time: Amser i adfywio'n awtomatig
+auto-refresh-time-help: Os yw adfywio awtomatig yn cael ei ddefnyddio, yna mae hwn yn pendefynnu'r amser rhwng pob adfywiad.
 #
 # << MISSING >>
-# Check box to delete <b>ALL</b> events for a user:
+# Nonuser:
+# English text: Nonuser Calendars
+#
 #
 # << MISSING >>
-# Are you sure you want to delete events for:
+# user-customize-color:
+# English text: Specifies whether users are allowed to modify their own color scheme.
+#
+#
+# << MISSING >>
+# enable-gradient-help:
+# English text: Use gradient colors for cell backgrounds.
+#
+#
+# << MISSING >>
+# Manually entering color values:
+colors-help: Dylsai pob lliw gael ei dynodi trwy fformat hexadecimal "#RRGGBB" ble mae "RR" yn cynrychioli coch mewn hex, "GG" yn cynrychioli gwyrdd mewn hex, ac mae "BB" yn cynrychioli glas mewn hex.
+
+
+###############################################
+# Page: help_bug.php
+#
+Report Bug: Cofnodi Problem
+
+
+###############################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Ychwanegu/Newid Digwyddiadau Calendr
+Repeat Type: Amlder Ailgyflawni
+#
+# << MISSING >>
+# For More Information...:
+Repeat End Date: Diwrnod olaf a ailgyflawnir
+Repeat Day: Diwrnod yr ailgyflawniad
+repeat-day-help: Mae hwn yn dynodi pa ddiwrnodau o'r wythnos y bydd y digwyddiad yn ailgyflawni arnynt.  Defnyddir hwn ond pan fod <i>Amlder Ailgyflawni</i> wedi ei osod i <i>Wythnosol</i>.
 
 
 ###############################################
@@ -1242,7 +1680,10 @@ Account: Cyfrif
 #
 #
 # << MISSING >>
-# Palm Desktop:
+# Import:
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
 #
 # << MISSING >>
 # It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
@@ -1263,45 +1704,514 @@ Account: Cyfrif
 # Therefore, updates should be made in the Palm Desktop.:
 #
 # << MISSING >>
-# vCal:
+# This form will import vCalendar (.vcs) 1.0 events:
 #
 # << MISSING >>
 # The following formats have been tested:
 #
 # << MISSING >>
-# Palm Desktop 4:
-#
-# << MISSING >>
-# Lotus Organizer 6:
-#
-# << MISSING >>
-# Microsoft Outlook 2002:
-#
-# << MISSING >>
-# iCalendar:
+# This form will import iCalendar (.ics) events:
 #
 # << MISSING >>
 # Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
-# Page: edit_report_handler.php
+# Page: help_index.php
 #
-#
-# << MISSING >>
-# Variable N not found:
+Help Index: Indecs Cymorth
 
 
 ###############################################
-# Page: edit_entry_handler.php
+# Page: help_layers.php
 #
-A new appointment has been made for you by: Mae digwyddiad newydd wedi ei greu i chi gan
-An appointment has been updated by: Mae digwyddiad wedi ei newid gan
-The subject is: Y pwnc yw
-Please look on: Edrychwch ar 
-to accept or reject this appointment: i derbyn neu gwrthod y digwyddiad yma
-to view this appointment: i wylio'r digwyddiad yma
-Your suggested time of: Mae eich amser awgrymiedig o
+#
+# << MISSING >>
+# Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.:
+Add/Edit/Delete: Ychwanegu/Newid/Dileu
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Wrth glicio ar y cyswllt Newid Haenau yn yr adran weinyddol ar waelod y dudalen fe ganieteir i chi ychwanegu, newid neu dileu haenau.
+Specifies the user that you would like to see displayed in your calendar.: Mae hwn yn dynodi y defnyddiwr yr hoffech dangos ei ddigwyddiadau ar eich calendr.
+The text color of the new layer that will be displayed in your calendar.: Lliw testun yr haen newydd yn cael ei ddangos ar eich calendr.
+If checked, events that are duplicates of your events will be shown.: Os dewisir, mi fydd digwyddiadau sydd yr un fath a'ch digwyddiadau chi yn cael ei dangos.
+Disabling: Anablwch
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Gwasgwch y cyswllt Anablwch Haenau yn yr adran weinyddol ar waelod y tudalen i beidio a defnyddio haenau.
+Enabling: Defnyddiwch
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Gwasgwch y cyswllt Defnyddiwch Haenau yn yr adran weinyddol ar waelod y tudalen er mwyn defnyddio haenau.
+
+
+###############################################
+# Page: help_pref.php
+#
+Default Category: Dosbarth Arferol
+default-category-help: Mae hwn yn dynodi pa dosbarth y bydd digwyddiad newydd yn perthyn i yn arferol.
+#
+# << MISSING >>
+# When I am the boss:
+#
+# << MISSING >>
+# Email me event notification:
+#
+# << MISSING >>
+# email-boss-notifications-help:
+# English text: Specifies if bosses receive emails as event notifications.
+#
+#
+# << MISSING >>
+# I want to approve events:
+#
+# << MISSING >>
+# boss-approve-event-help:
+# English text: Specifies whether the boss will be required to approve events added by assistants.
+#
+#
+# << MISSING >>
+# Subscribe/Publish:
+#
+# << MISSING >>
+# allow-remote-subscriptions-help:
+# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+#
+#
+# << MISSING >>
+# remote-subscriptions-url-help:
+# English text: Displays the URL remote users should use to subscribe to your calendar.
+#
+#
+# << MISSING >>
+# Allow remote publishing:
+#
+# << MISSING >>
+# allow-remote-publishing-help:
+# English text: Specifies if a remote iCal client can publish events back to WebCalendar
+#
+#
+# << MISSING >>
+# remote-publishing-url-help:
+# English text: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
+#
+#
+# << MISSING >>
+# rss-feed-url-help:
+# English text: The URL to access the RSS feed
+#
+#
+# << MISSING >>
+# Enable FreeBusy publishing:
+#
+# << MISSING >>
+# freebusy-enabled-help:
+# English text: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
+#
+#
+# << MISSING >>
+# freebusy-url-help:
+# English text: The URL for accessing the user's FreeBusy list
+#
+
+
+###############################################
+# Page: help_uac.php
+#
+#
+# << MISSING >>
+# User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
+# English text: User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
+#
+#
+# << MISSING >>
+# If disabled, this user will not see you in the participants list.:
+#
+# << MISSING >>
+# If disabled, this user will not be able to send you emails.:
+#
+# << MISSING >>
+# If enabled, this user will not be able to view the details of any of your entries.:
+
+
+###############################################
+# Page: icalclient.php
+#
+#
+# << MISSING >>
+# Publishing Disabled (Admin):
+#
+# << MISSING >>
+# Publishing Disabled (User):
+
+
+###############################################
+# Page: icons.php
+#
+#
+# << MISSING >>
+# Click to Select:
+#
+# << MISSING >>
+# Current Icons on Server:
+
+
+###############################################
+# Page: import.php
+#
+Disabled: Ymaith
+#
+# << MISSING >>
+# Import format:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Overwrite Prior Import:
+#
+# << MISSING >>
+# Repeated items are imported separately. Prior imports are not overwritten.:
+
+
+###############################################
+# Page: import_handler.php
+#
+#
+# << MISSING >>
+# Events from prior import marked as deleted:
+#
+# << MISSING >>
+# Conflicting events:
+#
+# << MISSING >>
+# The import file contained no data:
+
+
+###############################################
+# Page: layers.php
+#
+Layers are currently: Mae haenau ar hyn o bryd  
+Enabled: Ymlaen
+Disable Layers: Dim haenau
+Enable Layers: Defnyddio haenau
+Click here: Cliciwch yma
+#
+# << MISSING >>
+# to modify the layers settings for the:
+#
+# << MISSING >>
+# calendar:
+Add layer: Ychwanegu haen
+Layer: Haen
+Edit layer: Newid haen
+
+
+###############################################
+# Page: list_unapproved.php
+#
+View this entry: Gwyliwch y digwyddiad hwn
+Approve/Confirm: Cymeradwywch
+Approve this entry?: Cymeradwywch y digwyddiad hwn?
+Reject: Gwrthod
+Reject this entry?: Gwrthodwch y digwyddiad hwn?
+#
+# << MISSING >>
+# Check All:
+#
+# << MISSING >>
+# Uncheck All:
+#
+# << MISSING >>
+# Approve Selected:
+#
+# << MISSING >>
+# Approve Selected entries?:
+#
+# << MISSING >>
+# Reject Selected:
+#
+# << MISSING >>
+# Reject Selected entries?:
+#
+# << MISSING >>
+# Emails Will Not Be Sent:
+#
+# << MISSING >>
+# No unapproved entries for:
+#
+# << MISSING >>
+# Unapproved Entries:
+#
+# << MISSING >>
+# Not authorized:
+
+
+###############################################
+# Page: login-app.php
+#
+You must enter a login and password: Rhaid i chi cynnig mewngofnodiad a gair cydd
+Save login via cookies so I don't have to login next time: Arbedwch fy mewngofnodiad trwy 'cookies' fel nad oes raid i mi mewngofnodi y tro nesaf
+Login: Mewngofnodiad
+Access public calendar: Calendr Cyhoeddus
+cookies-note: <b>Note:</b> Mae'n hanfodol bod 'cookies' yn gweithio i'r meddalwedd yma redeg.
+
+
+###############################################
+# Page: login.php
+#
+Invalid login: Mewngofnodiad annilys
+#
+# << MISSING >>
+# You have been logged out:
+#
+# << MISSING >>
+# Not yet registered? Register here!:
+
+
+###############################################
+# Page: minical.php
+#
+#
+# << MISSING >>
+# No such nonuser calendar:
+#
+# << MISSING >>
+# This Calendar is not Public:
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: pref.php
+#
+Save Preferences: Arbed Dewisiadau
+#
+# << MISSING >>
+# Public Access calendar:
+#
+# << MISSING >>
+# Modify Non User Calendar Preferences:
+#
+# << MISSING >>
+# Return to My Preferences:
+#
+# << MISSING >>
+# Custom Scripts:
+#
+# << MISSING >>
+# Timezone Selection:
+#
+# << MISSING >>
+# entry-interval-help:
+# English text: Sets minute interval when editing entry times
+#
+#
+# << MISSING >>
+# Entry interval:
+hour: awr
+#
+# << MISSING >>
+# minute:
+#
+# << MISSING >>
+# theme-reload-help:
+# English text: Due to CSS caching, a page reload may be required
+#
+#
+# << MISSING >>
+# Page may need to be reloaded for new Theme to take effect:
+#
+# << MISSING >>
+# Email format preference:
+#
+# << MISSING >>
+# HTML:
+#
+# << MISSING >>
+# Plain Text:
+#
+# << MISSING >>
+# display_byproxy-help:
+# English text: Display the real creator on view_entry page
+#
+#
+# << MISSING >>
+# Display if created by Assistant:
+#
+# << MISSING >>
+# allow-view-subscriptions-help:
+# English text: Allows restricting remote access to Private or Confidential entries 
+#
+#
+# << MISSING >>
+# Allow remote viewing of:
+#
+# << MISSING >>
+# entries:
+
+
+###############################################
+# Page: publish.php
+#
+#
+# << MISSING >>
+# No user specified:
+
+
+###############################################
+# Page: purge.php
+#
+#
+# << MISSING >>
+# Purging events for:
+#
+# << MISSING >>
+# Finished:
+#
+# << MISSING >>
+# Check box to delete <b>ALL</b> events for a user:
+#
+# << MISSING >>
+# Delete all events before:
+#
+# << MISSING >>
+# Preview delete:
+#
+# << MISSING >>
+# Are you sure you want to delete events for:
+#
+# << MISSING >>
+# Records deleted from:
+
+
+###############################################
+# Page: register.php
+#
+#
+# << MISSING >>
+# Email address can not be blank:
+#
+# << MISSING >>
+# Illegal characters in login:
+#
+# << MISSING >>
+# A new WebCalendar account has been set up for you:
+#
+# << MISSING >>
+# Your username is:
+#
+# << MISSING >>
+# Your password is:
+#
+# << MISSING >>
+# Please visit:
+#
+# << MISSING >>
+# to log in and start using your account:
+#
+# << MISSING >>
+# You may change your password after logging in the first time:
+#
+# << MISSING >>
+# If you received this email in error:
+# English text: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note 
+#
+#
+# << MISSING >>
+# Administrator:
+#
+# << MISSING >>
+# Welcome:
+#
+# << MISSING >>
+# Registration:
+#
+# << MISSING >>
+# Welcome to WebCalendar:
+#
+# << MISSING >>
+# Your email should arrive shortly:
+#
+# << MISSING >>
+# Return to Login screen:
+#
+# << MISSING >>
+# Your account information will be emailed to you:
+#
+# << MISSING >>
+# Submit:
+
+
+###############################################
+# Page: reject_entry.php
+#
+#
+# << MISSING >>
+# Continue:
+#
+# << MISSING >>
+# (Your comments will be included in an email to the other participants):
+An appointment has been rejected by: Gwrthodwyd digwyddiad gan
+
+
+###############################################
+# Page: remotes.php
+#
+#
+# << MISSING >>
+# Add New Remote Calendar:
+
+
+###############################################
+# Page: report.php
+#
+#
+# << MISSING >>
+# cont.:
+This event is confidential: Mae'r digwyddiad yma yn gyfrinachol
+Waiting for approval: Aros as cymeradwyaeth
+Deleted: Diddymwyd
+Rejected: Gwrthodwyd
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
+# Page: search.php
+#
+Search: Chwiliad
+Keywords: Allweddeiriau
+Advanced Search: Chwiliad Manwl
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Rhaid i chi defnyddio un neu fwy allweddeiriau chwilio
+Search Results: Canlyniadau Archwiliad
+match found: Darganfyddwyd ateb cyfatebol
+matches found: Darganfyddwyd atebion cyfatebol
+No matches found: Dim byd yn cyfateb
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: Gwylio Calendr Defnyddiwr arall
 
 
 ###############################################
@@ -1309,95 +2219,303 @@ Your suggested time of: Mae eich amser awgrymiedig o
 #
 You have not added any categories: Nid ydych wedi ychwanegu unrhyw dosbarthiadau
 Set Category: Gosod Dosbarth
+#
+# << MISSING >>
+# Global Categories can not be changed:
 
 
 ###############################################
-# Page: edit_template.php
+# Page: upcoming.php
 #
 #
 # << MISSING >>
-# Edit Custom Script/Stylesheet:
+# __month__ __dd__:
 #
 # << MISSING >>
-# Edit Custom Header:
-#
-# << MISSING >>
-# Edit Custom Trailer:
+# more:
 
 
 ###############################################
-# Page: includes/trailer.php
+# Page: users.php
 #
-Go to: Ewch i 
-My Calendar: Fy Nghalendr
-Logout: Allgofnodiad
-Another User's Calendar: Calendr defnyddiwr arall
-Add New Entry: Ychwanegwch digwyddiad newydd
+#
+# << MISSING >>
+# Remote Calendars:
+Add New User: Ychwanegu Defnyddiwr Newydd
+denotes administrative user: Dynoder defnyddiwr gweinyddol
+
+
+###############################################
+# Page: usersel.php
+#
+#
+# << MISSING >>
+# No form specified!:
+#
+# << MISSING >>
+# No listid specified!:
+Reset: Ail-osod
+
+
+###############################################
+# Page: views.php
+#
+Add New View: Ychwanegu Golwg Newydd
+
+
+###############################################
+# Page: views_edit.php
+#
+Unnamed View: Golwg di-enw
+Add View: Ychwanegu Golwg
+Edit View: Newid Golwg
+View Name: Enw Golwg
+View Type: Math Golwg
+#
+# << MISSING >>
+# Day by Time:
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week by Time:
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+#
+# << MISSING >>
+# Month (Timebar):
+#
+# << MISSING >>
+# Month (side by side):
+#
+# << MISSING >>
+# Month (on same calendar):
+#
+# << MISSING >>
+# Selected:
+
+
+###############################################
+# Page: views_edit_handler.php
+#
+#
+# << MISSING >>
+# You must specify a view name:
+
+
+###############################################
+# Page: view_d.php
+#
+#
+# << MISSING >>
+# No users for this view:
+
+
+###############################################
+# Page: view_entry.php
+#
+#
+# << MISSING >>
+# Assistant mode:
+Status: Statws
+#
+# << MISSING >>
+# Accepted:
+#
+# << MISSING >>
+# Needs-Action:
+#
+# << MISSING >>
+# Declined:
+#
+# << MISSING >>
+# Completed:
+#
+# << MISSING >>
+# by:
+#
+# << MISSING >>
+# Percentage Complete:
+#
+# << MISSING >>
+# External User:
+#
+# << MISSING >>
+# Update Task Percentage:
+#
+# << MISSING >>
+# Update:
+#
+# << MISSING >>
+# Attachments:
+#
+# << MISSING >>
+# comments:
+#
+# << MISSING >>
+# Show:
+#
+# << MISSING >>
+# Hide:
+Approve/Confirm entry: Cymeradwyo digwyddiad
+Reject entry: Gwrthod digwyddiad
+Set category: Gosod dosbarth
+Edit repeating entry for all dates: Newid digwyddiad a ail-adroddir am pob dyddiad
+Edit entry for this date: Newid digwyddiad am y dyddiad yma'n unig
+Delete repeating event for all dates: Dileu digwyddiad a ail-adroddir am pob dyddiad
+This will delete this entry for all users.: Fydd hwn yn dileu y digwyddiad dros pob defnyddiwr.
+Delete entry only for this date: Dileu digwyddiad am y dyddiad yma'n unig
+Edit entry: Newid digwyddiad
+#
+# << MISSING >>
+# from calendar of:
+#
+# << MISSING >>
+# Copy entry:
+#
+# << MISSING >>
+# This will delete the entry from your boss\' calendar.:
+This will delete the entry from your calendar.: Fydd hwn yn dileu y digwyddiad o'ch calendr.
+#
+# << MISSING >>
+# from your boss' calendar:
+Do you want to add this entry to your calendar?: A ydych eisiau ychwanegu'r digwyddiad yma i'ch calendr?
+This will add the entry to your calendar.: Fydd hwn yn ychwanegu'r digwyddiad yma i'ch calendr.
+Email all participants: E-bost at bob aelod
+Show activity log: Dangos cofnod gweithgarwch
+Hide activity log: Cyddio cofnod gweithgarwch
+#
+# << MISSING >>
+# Export this entry to:
+
+
+###############################################
+# Page: view_r.php
+#
+#
+# << MISSING >>
+# Double-click on empty cell to add new entry:
+
+
+###############################################
+# Page: week_details.php
+#
+New Entry: Digwyddiad newydd
+
+
+###############################################
+# Page: includes/access.php
+#
+#
+# << MISSING >>
+# Edit Event:
+#
+# << MISSING >>
+# Day View:
+#
+# << MISSING >>
+# Week View:
+#
+# << MISSING >>
+# Month View:
+#
+# << MISSING >>
+# Year View:
 Manage Views: Rheolwch golygfeydd
 #
 # << MISSING >>
-# Manage calendar of:
-
-
-###############################################
-# Page: includes/connect.php
+# Category Management:
 #
-
-
-###############################################
-# Page: includes/user.php
+# << MISSING >>
+# User Management:
+Another User's Calendar: Calendr defnyddiwr arall
 #
-Invalid login: Mewngofnodiad annilys
-Invalid user login: Mewngofnodiad defnyddiwr annilys 
+# << MISSING >>
+# Common Trailer:
 
 
 ###############################################
-# Page: includes/site_extras.php
-#
-Send Reminder: Anfoner atgofiad
-
-
-###############################################
-# Page: includes/translate.php
-#
-
-
-###############################################
-# Page: includes/user-ldap.php
-#
-
-
-###############################################
-# Page: includes/user-nis.php
-#
-
-
-###############################################
-# Page: includes/help_trailer.php
-#
-
-
-###############################################
-# Page: includes/dbtable.php
-#
-
-
-###############################################
-# Page: includes/init.php
+# Page: includes/config.php
 #
 #
 # << MISSING >>
-# charset:
+# Fatal Error:
+#
+# << MISSING >>
+# Troubleshooting Help:
+
+
+###############################################
+# Page: includes/date_formats.php
+#
+#
+# << MISSING >>
+# LANGUAGE DEFINED:
+December: Rhagfyr
+Dec: Rha
 
 
 ###############################################
 # Page: includes/functions.php
 #
-This event is confidential: Mae'r digwyddiad yma yn gyfrinachol
+#
+# << MISSING >>
+# Unauthorized:
+#
+# << MISSING >>
+# __month__ __dd__, __yyyy__:
+#
+# << MISSING >>
+# __month__ __yyyy__:
+#
+# << MISSING >>
+# __mm__/__dd__/__yyyy__:
+#
+# << MISSING >>
+# This event is private:
+#
+# << MISSING >>
+# Conf.:
+#
+# << MISSING >>
+# WK:
+#
+# << MISSING >>
+# Task Name:
+#
+# << MISSING >>
+# Task Due Date:
+#
+# << MISSING >>
+# TASKS:
+#
+# << MISSING >>
+# Task_Title:
+# English text: Title
+#
+#
+# << MISSING >>
+# Due:
+#
+# << MISSING >>
+# View this task:
+#
+# << MISSING >>
+# View this event:
 #
 # << MISSING >>
 # exceeds limit of XXX events per day:
-You have XXX unapproved events: Mae ganddoch XXX digwyddiad heb cymerawdyaeth
+#
+# << MISSING >>
+# on:
+#
+# << MISSING >>
+# You have XXX unapproved entries:
 January: Ionawr
 February: Chwefror
 March: Mawrth
@@ -1420,7 +2538,337 @@ Aug: Awst
 Sep: Medi
 Oct: Hydref
 Nov: Tachwedd
-Dec: Rha
+Tuesday: Mawrth
+Wednesday: Mercher
+Thursday: Iau
+Friday: Gwener
+Saturday: Sadwrn
+Sun: Sul
+Mon: Llu
+Tue: Maw
+Wed: Mer
+Thu: Iau
+Fri: Gwe
+Sat: Sad
+#
+# << MISSING >>
+# Schedule an appointment for:
+#
+# << MISSING >>
+# All Attendees:
+#
+# << MISSING >>
+# Busy:
+#
+# << MISSING >>
+# Tentative:
+#
+# << MISSING >>
+# Changes successfully saved:
+The following error occurred: Mae'r camgymeriad canlynol wedi digwydd
+You are not authorized: Dim awdurdod
+#
+# << MISSING >>
+# day:
+#
+# << MISSING >>
+# before:
+#
+# << MISSING >>
+# after:
+#
+# << MISSING >>
+# start:
+#
+# << MISSING >>
+# end:
+Error approving event: Camgymeriad wrth cymeradwyo digwyddiad
+#
+# << MISSING >>
+# Error deleting event:
+#
+# << MISSING >>
+# Error rejecting event:
+Generate printer-friendly version: Cynhyrchu fersiwn addas i'w brintio
+Printer Friendly: Addas i'w brintio
+Event created: Ychwanegwyd Digwyddiad
+Event approved: Cymeradwywyd Digwyddiad
+Event rejected: Gwrthodwyd Digwyddiad
+Event updated: Diweddarwyd Digwyddiad
+Event deleted: Diddymwyd Digwyddiad
+#
+# << MISSING >>
+# Task created:
+#
+# << MISSING >>
+# Task approved:
+#
+# << MISSING >>
+# Task rejected:
+#
+# << MISSING >>
+# Task updated:
+#
+# << MISSING >>
+# Task deleted:
+#
+# << MISSING >>
+# Journal created:
+#
+# << MISSING >>
+# Journal approved:
+#
+# << MISSING >>
+# Journal rejected:
+#
+# << MISSING >>
+# Journal updated:
+#
+# << MISSING >>
+# Journal deleted:
+Notification sent: Anfonwyd Hysbysiad
+Reminder sent: Anfonwyd Atgofiad
+#
+# << MISSING >>
+# New user (self registration):
+#
+# << MISSING >>
+# New user via email (self registration):
+#
+# << MISSING >>
+# Attachment:
+#
+# << MISSING >>
+# Delete User:
+
+
+###############################################
+# Page: includes/help_list.php
+#
+#
+# << MISSING >>
+# Index:
+#
+# << MISSING >>
+# Page:
+
+
+###############################################
+# Page: includes/trailer.php
+#
+#
+# << MISSING >>
+# Home:
+My Calendar: Fy Nghalendr
+Back to My Calendar: Nol i Fy Nghalendr
+Add New Entry: Ychwanegwch digwyddiad newydd
+#
+# << MISSING >>
+# Add New Task:
+Go to: Ewch i 
+Logout: Allgofnodiad
+#
+# << MISSING >>
+# Manage calendar of:
+
+
+###############################################
+# Page: includes/translate.php
+#
+#
+# << MISSING >>
+# Browser Language Not Found:
+#
+# << MISSING >>
+# not supported:
+#
+# << MISSING >>
+# Browser-defined:
+#
+# << MISSING >>
+# English:
+#
+# << MISSING >>
+# English-US:
+#
+# << MISSING >>
+# Basque:
+#
+# << MISSING >>
+# Bulgarian:
+#
+# << MISSING >>
+# Catalan:
+#
+# << MISSING >>
+# Chinese (Traditional/Big5):
+#
+# << MISSING >>
+# Chinese (Simplified/GB2312):
+#
+# << MISSING >>
+# Czech:
+#
+# << MISSING >>
+# Danish:
+#
+# << MISSING >>
+# Dutch:
+#
+# << MISSING >>
+# Estonian:
+#
+# << MISSING >>
+# Finnish:
+#
+# << MISSING >>
+# French:
+#
+# << MISSING >>
+# French (UTF8):
+#
+# << MISSING >>
+# Galician:
+#
+# << MISSING >>
+# German:
+#
+# << MISSING >>
+# Greek:
+#
+# << MISSING >>
+# Holo (Taiwanese):
+#
+# << MISSING >>
+# Hungarian:
+#
+# << MISSING >>
+# Icelandic:
+#
+# << MISSING >>
+# Italian:
+#
+# << MISSING >>
+# Japanese:
+#
+# << MISSING >>
+# Korean:
+#
+# << MISSING >>
+# Norwegian:
+#
+# << MISSING >>
+# Polish:
+#
+# << MISSING >>
+# Portuguese:
+#
+# << MISSING >>
+# Portuguese/Brazil:
+#
+# << MISSING >>
+# Romanian:
+#
+# << MISSING >>
+# Russian:
+#
+# << MISSING >>
+# Spanish:
+#
+# << MISSING >>
+# Swedish:
+#
+# << MISSING >>
+# Turkish:
+#
+# << MISSING >>
+# Welsh:
+#
+# << MISSING >>
+# task:
+#
+# << MISSING >>
+# event:
+#
+# << MISSING >>
+# journal:
+
+
+###############################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Mewngofnodiad defnyddiwr annilys 
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+#
+# << MISSING >>
+# incorrect password:
+#
+# << MISSING >>
+# no such user:
+
+
+###############################################
+# Page: includes/xcal.php
+#
+#
+# << MISSING >>
+# MO:
+#
+# << MISSING >>
+# TU:
+#
+# << MISSING >>
+# WE:
+#
+# << MISSING >>
+# TH:
+#
+# << MISSING >>
+# FR:
+#
+# << MISSING >>
+# SA:
+#
+# << MISSING >>
+# SU:
+#
+# << MISSING >>
+# Interval:
+#
+# << MISSING >>
+# Months:
+#
+# << MISSING >>
+# Month Days:
+#
+# << MISSING >>
+# Days:
+#
+# << MISSING >>
+# Weeks:
+#
+# << MISSING >>
+# Position:
+#
+# << MISSING >>
+# Until:
+#
+# << MISSING >>
+# Count:
+#
+# << MISSING >>
+# Inclusion Dates:
+#
+# << MISSING >>
+# Exclusion Dates:
+Unnamed Event: Digwyddiad di-enw
+#
+# << MISSING >>
+# Event Imported:
 
 
 ###############################################
@@ -1428,6 +2876,9 @@ Dec: Rha
 #
 Server URL is required: Mae angen URL y gweinydd
 Server URL must end with '/': Rhaid i URL y gweinydd orffen gyda '/'
+#
+# << MISSING >>
+# Invalid work hours:
 Invalid color for document background: Lliw annerbyniol fel cefndir i'r ddogfen
 Invalid color for document title: Lliw annerbyniol fel teitl y ddogfen
 Invalid color for table cell background: Lliw annerbyniol fel cefndir y gell tabl
@@ -1441,11 +2892,28 @@ Color format should be '#RRGGBB': Mae angen fformat lliw megis '#RRGGBB'
 
 
 ###############################################
+# Page: includes/js/availability.php
+#
+#
+# << MISSING >>
+# Change the date and time of this entry?:
+
+
+###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Mae angen Disgrifiad Byr
-You have not entered a valid time of day: Nid yw'r amser yr ydych wedi dynodi yn gywir
 The time you have entered begins before your preferred work hours.  Is this correct?: Mae'r amser yr ydych wedi dynodi yn cychwyn cyn yr oriau gwaith yr ydych wedi dewis. A yw hyn yn gywir?
+#
+# << MISSING >>
+# Invalid Event Date:
+#
+# << MISSING >>
+# Please add a participant:
+#
+# << MISSING >>
+# Invalid Date:
+You have not entered a valid time of day: Nid yw'r amser yr ydych wedi dynodi yn gywir
 
 
 ###############################################
@@ -1455,12 +2923,553 @@ Invalid color: Lliw annerbyniol
 
 
 ###############################################
-# Page: includes/js/pref.php
+# Page: includes/js/edit_nonuser.php
 #
+#
+# << MISSING >>
+# Calendar ID can not be blank:
+#
+# << MISSING >>
+# Both first and last names can not be blank:
+
+
+###############################################
+# Page: includes/js/edit_remotes.php
+#
+#
+# << MISSING >>
+# URL can not be blank:
+
+
+###############################################
+# Page: includes/js/export_import.php
+#
+#
+# << MISSING >>
+# File type does not match Import Format:
+
+
+###############################################
+# Page: includes/classes/Doc.class
+#
+#
+# << MISSING >>
+# bytes:
+#
+# << MISSING >>
+# kb:
+#
+# << MISSING >>
+# Mb:
+
+
+###############################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Rhybydd
+#
+# << MISSING >>
+# provide_address:
+# English text: You must provide at least one recipient email address
+#
+#
+# << MISSING >>
+# mailer_not_supported:
+# English text: mailer is not supported
+#
+#
+# << MISSING >>
+# execute:
+# English text: Could not execute:
+#
+#
+# << MISSING >>
+# instantiate:
+# English text: Could not instantiate mail function
+#
+#
+# << MISSING >>
+# authenticate:
+# English text: SMTP Error: Could not authenticate
+#
+#
+# << MISSING >>
+# from_failed:
+# English text: The following From address failed:
+#
+#
+# << MISSING >>
+# recipients_failed:
+# English text: SMTP Error: The following recipients failed:
+#
+#
+# << MISSING >>
+# data_not_accepted:
+# English text: SMTP Error: Data not accepted
+#
+#
+# << MISSING >>
+# connect_host:
+# English text: SMTP Error: Could not connect to SMTP host:
+#
+#
+# << MISSING >>
+# file_access:
+# English text: Could not access file:
+#
+#
+# << MISSING >>
+# file_open:
+# English text: File Error Could not open file:
+#
+#
+# << MISSING >>
+# encoding:
+# English text: Unknown encoding:
+#
+
+
+###############################################
+# Page: includes/menu/index.php
+#
+#
+# << MISSING >>
+# This Week:
+#
+# << MISSING >>
+# This Month:
+#
+# << MISSING >>
+# This Year:
+#
+# << MISSING >>
+# Exit:
+#
+# << MISSING >>
+# Add New Event:
+#
+# << MISSING >>
+# Delete Entries:
+#
+# << MISSING >>
+# Another User\'s Calendar:
+#
+# << MISSING >>
+# My Views:
+#
+# << MISSING >>
+# Manage Calendar of:
+#
+# << MISSING >>
+# My Reports:
+#
+# << MISSING >>
+# My Profile:
+#
+# << MISSING >>
+# Public Calendar:
+Unapproved Events: Digwyddiadau heb Cymeradwyaeth
+#
+# << MISSING >>
+# User Manager:
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
+#
+# << MISSING >>
+# This is a reminder for the task detailed below.:
 This is a reminder for the event detailed below.: Y mae hwn yn eich atgoffa o'r digwydiad gyda'r manylion isod.
+#
+# << MISSING >>
+# Pecentage Complete:
 Reminder: Atgofiad
+
+
+###############################################
+# Page: tools/reload_remotes.php
+#
+#
+# << MISSING >>
+# Include Path:
+#
+# << MISSING >>
+# Deleting events for:
+#
+# << MISSING >>
+# Importing events for:
+#
+# << MISSING >>
+# No data returned from:
+#
+# << MISSING >>
+# for non-user calendar:
+#
+# << MISSING >>
+# No Remote Calendars found:
+#
+# << MISSING >>
+# Remote Calendars not enabled:
+
+
+###############################################
+# Page: install/install_functions.php
+#
+#
+# << MISSING >>
+# Error updating webcal_config:
+#
+# << MISSING >>
+# Error updating webcal_user_pref:
+#
+# << MISSING >>
+# Perl script required:
+# English text: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
+#
+#
+# << MISSING >>
+# Your previous version of WebCalendar requires updating several database tables.:
+
+
+###############################################
+# Page: install/index.php
+#
+#
+# << MISSING >>
+# WebCalendar Installation Wizard:
+#
+# << MISSING >>
+# Step:
+#
+# << MISSING >>
+# Single-User:
+#
+# << MISSING >>
+# Failure Reason:
+#
+# << MISSING >>
+# You must manually create database:
+#
+# << MISSING >>
+# Database Cache Directory:
+#
+# << MISSING >>
+# Test Settings:
+#
+# << MISSING >>
+# Create New:
+#
+# << MISSING >>
+# Database Name:
+#
+# << MISSING >>
+# Back:
+#
+# << MISSING >>
+# Timezone Conversion Successful:
+#
+# << MISSING >>
+# Error Unable to write to file:
+#
+# << MISSING >>
+# Successful Login:
+#
+# << MISSING >>
+# Invalid Login:
+#
+# << MISSING >>
+# required only if Safe Mode is On:
+#
+# << MISSING >>
+# required only if Remote Calendars are used:
+#
+# << MISSING >>
+# needed for Gradient Image Backgrounds:
+#
+# << MISSING >>
+# Passwords do not match:
+#
+# << MISSING >>
+# Unable to write password to settings.php file:
+#
+# << MISSING >>
+# Password has been set:
+#
+# << MISSING >>
+# Connection Successful:
+#
+# << MISSING >>
+# Please go to next page to continue installation:
+#
+# << MISSING >>
+# Correct your entries or click the <b>Create New</b> button to continue installation:
+#
+# << MISSING >>
+# Correct your entries and try again:
+#
+# << MISSING >>
+# does not exist:
+#
+# << MISSING >>
+# is not writable:
+#
+# << MISSING >>
+# Error Converting Timezone:
+#
+# << MISSING >>
+# Please change the file permissions of this file:
+#
+# << MISSING >>
+# Please change includes dir premission:
+# English text: Please change the file permissions of your includes directory to allow writing by other users
+#
+#
+# << MISSING >>
+# Your settings have been saved:
+#
+# << MISSING >>
+# Error you must specify a\\nSingle-User Login:
+#
+# << MISSING >>
+# Server URL must end with:
+#
+# << MISSING >>
+# Full Path (no backslashes):
+#
+# << MISSING >>
+# The password contains illegal characters.:
+#
+# << MISSING >>
+# This installation wizard will guide you...:
+# English text: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
+#
+#
+# << MISSING >>
+# PHP Version Check:
+#
+# << MISSING >>
+# Check to see if PHP 4.1.0 or greater is installed:
+#
+# << MISSING >>
+# PHP version:
+#
+# << MISSING >>
+# PHP Settings:
+#
+# << MISSING >>
+# Detailed PHP Info:
+#
+# << MISSING >>
+# Session Check:
+#
+# << MISSING >>
+# To test the proper operation of sessions, reload this page:
+#
+# << MISSING >>
+# You should see the session counter increment each time:
+#
+# << MISSING >>
+# SESSION COUNTER:
+#
+# << MISSING >>
+# Settings.php Status:
+#
+# << MISSING >>
+# The file permissions of <b>settings.php</b> are set...:
+# English text: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
+#
+#
+# << MISSING >>
+# The file permissions of the <b>includes</b> directory are set...:
+# English text: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
+#
+#
+# << MISSING >>
+# Your <b>settings.php</b> file appears to be valid:
+#
+# << MISSING >>
+# Configuration Wizard Password:
+#
+# << MISSING >>
+# Create Settings File Password:
+#
+# << MISSING >>
+# Password (again):
+#
+# << MISSING >>
+# db setup directions...:
+# English text: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
+#
+#
+# << MISSING >>
+# Database Status:
+#
+# << MISSING >>
+# Supported databases for your PHP installation:
+#
+# << MISSING >>
+# Your current database settings are able to access the database:
+#
+# << MISSING >>
+# Please Test Settings:
+#
+# << MISSING >>
+# Your current database settings are <b>not</b> able to access the database or have not yet been tested:
+#
+# << MISSING >>
+# Database Settings:
+#
+# << MISSING >>
+# Database Type:
+#
+# << MISSING >>
+# Server:
+#
+# << MISSING >>
+# Connection Persistence:
+#
+# << MISSING >>
+# All your database tables appear to be up to date. You may proceed to the:
+#
+# << MISSING >>
+# next page and complete your WebCalendar setup:
+#
+# << MISSING >>
+# This appears to be a new installation. If this is not correct, please:
+#
+# << MISSING >>
+# go back to the previous page and correct your settings:
+#
+# << MISSING >>
+# The database requires some data input:
+#
+# << MISSING >>
+# Click <b>Update Database</b> to complete the upgrade:
+#
+# << MISSING >>
+# This appears to be an upgrade from version:
+#
+# << MISSING >>
+# In this section we will perform the required database changes to bring your database up to the required level:
+#
+# << MISSING >>
+# If you are using a fully supported database, this step will be performed automatically for you:
+#
+# << MISSING >>
+# If not, the required SQL can be displayed and you should be able:
+#
+# << MISSING >>
+# to cut &amp; paste it into your database server query window:
+#
+# << MISSING >>
+# No database actions are required:
+#
+# << MISSING >>
+# The following database actions are required:
+#
+# << MISSING >>
+# ODBC Underlying Database:
+#
+# << MISSING >>
+# Automatic installation not supported:
+# English text: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the sql supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
+#
+#
+# << MISSING >>
+# This may take several minutes to complete:
+#
+# << MISSING >>
+# Install Database:
+#
+# << MISSING >>
+# Update Database:
+#
+# << MISSING >>
+# Display Required SQL:
+#
+# << MISSING >>
+# Return to previous page after processing sql:
+# English text: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
+#
+#
+# << MISSING >>
+# This is the final step in setting up your WebCalendar Installation:
+#
+# << MISSING >>
+# Timezone Conversion:
+#
+# << MISSING >>
+# It appears that you have:
+#
+# << MISSING >>
+# NOT:
+#
+# << MISSING >>
+# converted your existing WebCalendar event data to GMT:
+#
+# << MISSING >>
+# If you have, you may ignore this notice and not proceed with the conversion:
+#
+# << MISSING >>
+# If this is a new installation, you may also ignore this notice.:
+#
+# << MISSING >>
+# Convert Data to GMT:
+#
+# << MISSING >>
+# Application Settings:
+#
+# << MISSING >>
+# HTTP-based authentication was not detected:
+#
+# << MISSING >>
+# You will need to reconfigure your web server if you wish to:
+#
+# << MISSING >>
+# select 'Web Server' from the 'User Authentication' choices below:
+#
+# << MISSING >>
+# HTTP-based authentication was detected:
+#
+# << MISSING >>
+# User authentication is being handled by your web server:
+#
+# << MISSING >>
+# You should select 'Web Server' from the list of 'User Authentication' choices below:
+#
+# << MISSING >>
+# Create Default Admin Account:
+#
+# << MISSING >>
+# Admin Account Not Found:
+#
+# << MISSING >>
+# User Authentication:
+#
+# << MISSING >>
+# Web-based via WebCalendar (default):
+#
+# << MISSING >>
+# Web Server:
+#
+# << MISSING >>
+# None (Single-User):
+#
+# << MISSING >>
+# Read-Only:
+#
+# << MISSING >>
+# Environment:
+#
+# << MISSING >>
+# Production:
+#
+# << MISSING >>
+# Development:
+#
+# << MISSING >>
+# Save Settings:
+#
+# << MISSING >>
+# Launch WebCalendar:
