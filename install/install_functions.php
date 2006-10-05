@@ -52,25 +52,6 @@ function make_uppercase () {
     echo translate( 'Error updating webcal_user_pref') . ': ' . dbi_error ();
 }
 
-function db_load_config () {
-global $webcalConfig; 
-   while ( list ( $key, $val ) = each ( $webcalConfig ) ) {
-    $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
-     'WHERE cal_setting  = ?', array( $key ) , false, false );
-   $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) ' .
-       'VALUES (?,?)';
-     if ( ! $res ) {
-       dbi_execute  ( $sql , array ( $key , $val ) );
-   } else { //Sqlite returns $res always
-     $row = dbi_fetch_row ( $res );
-     if ( ! isset ( $row[0] ) ){
-       dbi_execute ( $sql , array ( $key , $val ) );  
-     }
-     dbi_free_result ( $res );
-    }  
- }
-}
-
 function db_load_admin () {
  $res = dbi_execute ( 'SELECT cal_login FROM webcal_user ' .
  "WHERE cal_login  = 'admin'", array() , false, false );

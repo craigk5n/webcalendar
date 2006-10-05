@@ -26,6 +26,8 @@ $timetype = getPostValue ( 'timetype' );
 $description = getPostValue ( 'description' );
 $description = ( strlen ( $description ) == 0  || 
   $description == '<br />' ? $name : $description );
+$location = getPostValue ( 'location' );
+$entry_url = getPostValue ( 'entry_url' );
 
 // Ensure  variables are not empty
 if ( empty ( $percent ) ) $percent = 0;
@@ -362,12 +364,17 @@ if ( empty ( $error ) ) {
     'cal_create_by, cal_date, cal_time, ' .
     ( ! empty ( $eventcomplete)? 'cal_completed, ': '' ) .
     'cal_due_date, cal_due_time, cal_mod_date, cal_mod_time, cal_duration, cal_priority, ' .
-    'cal_access, cal_type, cal_name, cal_description, cal_location ) ' .
-    'VALUES ( ?, ' .
+    'cal_access, cal_type, cal_name, cal_description ' .
+    ( ! empty ( $location )? ',cal_location ': '' ) .
+    ( ! empty ( $entry_url )? ',cal_url ': '' ) .
+    ' ) VALUES ( ?, ' .
     ( $old_id > 0 ? '?, ': '' ) .
     '?, ?, ?, ' . 
-  ( ! empty ( $eventcomplete ) ? '?, ': '' ) .
-  '?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
+   ( ! empty ( $eventcomplete ) ? '?, ': '' ) .
+   '?, ?, ?, ?, ?, ?, ?, ?, ?, ? ' .
+   ( ! empty ( $location ) ? ',? ': '' ) .
+   ( ! empty ( $entry_url ) ? ',? ': '' ) .
+   ')';
 
   $query_params = array();
   $query_params[] = $id;
@@ -406,7 +413,10 @@ if ( empty ( $error ) ) {
   }
   $query_params[] = ( strlen ( $name ) == 0 ) ? 'Unnamed Event' : $name;
   $query_params[] = $description;
-  $query_params[] = ( ! empty ( $location ) ) ? $location : '' ;
+  if ( ! empty ( $location ) )
+    $query_params[] = $location;
+  if ( ! empty ( $entry_url ) )
+    $query_params[] = $entry_url;
 
   if ( empty ( $error ) ) {
     if ( ! dbi_execute ( $sql, $query_params ) ) {

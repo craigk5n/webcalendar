@@ -163,6 +163,7 @@ function event_to_text ( $event, $date ) {
     $status_str = translate ( 'Unknown' );
   }
   $location = $event->getLocation();
+  $url = $event->getUrl();
   $href_str = "view_entry.php?id=$id";
 
   // Replace all variables in the event template.
@@ -182,6 +183,7 @@ function event_to_text ( $event, $date ) {
   $text = str_replace ( '${user}', $event->getLogin(), $text );
   $text = str_replace ( '${report_id}', $report_id, $text );
   $text = str_replace ( '${location}', $location, $text );
+  $text = str_replace ( '${url}', $url, $text );
 
   $text = replace_site_extras_in_template ( $text,
                                             format_site_extras (

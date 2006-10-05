@@ -136,10 +136,12 @@ if ( ! $res  ) {
       $name = $overrideStr;
       $description = $overrideStr;
       if ( ! empty ( $row[11] ) ) $location = $overrideStr;
+      if ( ! empty ( $row[12] ) ) $url = $overrideStr;
     } else {
       $name = $row[9];
       $description = $row[10];
-      $location = $row[11];    
+      $location = $row[11]; 
+      $url = $row[12];    
     }
   } else {
      $error = translate( 'Invalid entry id' ) . ": $id";
@@ -449,6 +451,11 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
     echo '<tr><td class="aligntop bold">';
     echo translate( 'Location' ) . ':</td><td>';
     echo $location . "</td><tr>\n";
+  }
+  if ( $DISABLE_URL_FIELD != 'Y' && ! empty ( $url ) ) { 
+    echo '<tr><td class="aligntop bold">';
+    echo translate( 'URL' ) . ':</td><td>';
+    echo activate_urls ( $url ) . "</td><tr>\n";
   }
     
  if ( $event_status != 'A' && ! empty ( $event_status ) ) { ?>

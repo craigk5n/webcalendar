@@ -51,6 +51,7 @@ $webcalConfig = array (
 'DISABLE_PRIORITY_FIELD'=>'N',
 'DISABLE_REMINDER_FIELD'=>'N',
 'DISABLE_REPEATING_FIELD'=>'N',
+'DISABLE_URL_FIELD'=>'Y',
 'DISPLAY_ALL_DAYS_IN_MONTH'=>'N',
 'DISPLAY_CREATED_BYPROXY'=>'Y',
 'DISPLAY_DESC_PRINT_DAY'=>'Y',
@@ -152,4 +153,23 @@ $webcalConfig = array (
 'WORK_DAY_START_HOUR'=>'8' 
  );
 
+//This function is defined here because admin.php calls it during startup
+function db_load_config () {
+global $webcalConfig; 
+   while ( list ( $key, $val ) = each ( $webcalConfig ) ) {
+    $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
+     'WHERE cal_setting  = ?', array( $key ) , false, false );
+   $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) ' .
+       'VALUES (?,?)';
+     if ( ! $res ) {
+       dbi_execute  ( $sql , array ( $key , $val ) );
+   } else { //Sqlite returns $res always
+     $row = dbi_fetch_row ( $res );
+     if ( ! isset ( $row[0] ) ){
+       dbi_execute ( $sql , array ( $key , $val ) );  
+     }
+     dbi_free_result ( $res );
+    }  
+ }
+}
 ?>
