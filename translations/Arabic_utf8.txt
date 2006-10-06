@@ -1,0 +1,80 @@
+# Translations by Karim Ratib, <Karim.Ratib@open-craft.com>, February 2005,
+# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# Translation last updated on 06-09-2006
+
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: UTF-8
+
+
+
+###############################################
+# Page: activity_log.php
+#
+Time: الوقت
+
+
+###############################################
+# Page: admin.php
+#
+Sunday: الأحد
+Monday: الإثنين
+
+
+###############################################
+# Page: edit_report.php
+#
+Today: اليوم الحالى
+Next month: الشهر التالى
+Next year: السنة التالية
+
+
+###############################################
+# Page: includes/date_formats.php
+#
+December: ديسمبر
+Dec: ديسمبر
+
+
+###############################################
+# Page: includes/functions.php
+#
+Sun: أحد
+Mon: إثنين
+Tue: ثلاثاء
+Wed: أربعاء
+Thu: خميس
+Fri: جمعة
+Sat: سبت
+WK: أسبوع
+January: يناير
+February: فبراير
+March: مارس
+April: ابريل
+May_: مايو
+June: يونيو
+July: يوليو
+August: اغسطس
+September: سبتمبر
+October: اكتوبر
+November: نوفمبر
+Jan: يناير
+Feb: فبراير
+Mar: مارس
+Apr: ابريل
+May: مايو
+Jun: يونيو
+Jul: يوليو
+Aug: اغسطس
+Sep: سبتمبر
+Oct: اكتوبر
+Nov: نوفمبر
+Tuesday: الثلاثاء
+Wednesday: الأربعاء
+Thursday: الخميس
+Friday: الجمعة
+Saturday: السبت

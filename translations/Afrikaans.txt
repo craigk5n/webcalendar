@@ -1,0 +1,83 @@
+# Translations anonymous, November 2003,
+# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# Translation last updated on 06-09-2006
+
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: iso-8859-1
+
+
+
+###############################################
+# Page: activity_log.php
+#
+Date: Datum
+Previous: Vorige
+Next: Volgende
+
+
+###############################################
+# Page: admin.php
+#
+Month: Maand
+Year: Jaar
+Sunday: Sondag
+Monday: Maandag
+
+
+###############################################
+# Page: edit_report.php
+#
+Today: Vandag
+Next month: Volgende maand
+Next year: Volgende jaar
+
+
+###############################################
+# Page: includes/date_formats.php
+#
+December: Desember
+Dec: Des
+
+
+###############################################
+# Page: includes/functions.php
+#
+Sun: Son
+Mon: Maa
+Tue: Din
+Wed: Woe
+Thu: Don
+Fri: Vry
+Sat: Sat
+January: Januarie
+February: Februarie
+March: Maart
+April: April
+May_: Mei
+June: Junie
+July: Julie
+August: Augustus
+September: September
+October: Oktober
+November: November
+Jan: Jan
+Feb: Feb
+Mar: Maa
+Apr: Apr
+May: Mei
+Jun: Jun
+Jul: Jul
+Aug: Aug
+Sep: Sep
+Oct: Okt
+Nov: Nov
+Tuesday: Dinsdag
+Wednesday: Woensdag
+Thursday: Donderdag
+Friday: Vrydag
+Saturday: Saterdag
