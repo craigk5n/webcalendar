@@ -1,0 +1,86 @@
+# Translated by: Martynas Majeris, <martynas@solmetra.lt>, March 2005,
+# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# Translation last updated on 06-09-2006
+
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: Windows-1257
+
+
+
+###############################################
+# Page: access.php
+#
+Calendar: Kalendoriø
+
+
+###############################################
+# Page: activity_log.php
+#
+Date: Pasirinkite datà
+
+
+###############################################
+# Page: admin.php
+#
+Sunday: Sekmadienis
+Monday: Pirmadienis
+
+
+###############################################
+# Page: edit_report.php
+#
+Today: Ðiandien
+Next month: Kitas mënuo
+Next year: Kiti metai
+
+
+###############################################
+# Page: includes/date_formats.php
+#
+December: Gruodis
+Dec: Gru
+
+
+###############################################
+# Page: includes/functions.php
+#
+Sun: Sek
+Mon: Pir
+Tue: Ant
+Wed: Tre
+Thu: Ket
+Fri: Pen
+Sat: Ðeð
+WK: sav
+January: Sausis
+February: Vasaris
+March: Kovas
+April: Balandis
+May_: Geguþë
+June: Birþelis
+July: Liepa
+August: Rugpjûtis
+September: Rugsëjis
+October: Spalis
+November: Lapkritis
+Jan: Sau
+Feb: Vas
+Mar: Kov
+Apr: Bal
+May: Geg
+Jun: Bir
+Jul: Lie
+Aug: Rgp
+Sep: Rgs
+Oct: Spa
+Nov: Lap
+Tuesday: Antradienis
+Wednesday: Treèiadienis
+Thursday: Ketvirtadienis
+Friday: Pentadienis
+Saturday: Ðeðtadienis
