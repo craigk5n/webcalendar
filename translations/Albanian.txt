@@ -1,0 +1,88 @@
+# Translations by Rigels Gordani rige@hotmail.com, February 2004,
+# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# Translation last updated on 06-09-2006
+
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: iso-8859-1
+
+
+
+###############################################
+# Page: access.php
+#
+Calendar: Kalendarin
+
+
+###############################################
+# Page: activity_log.php
+#
+Date: Daten
+Time: Koha
+
+
+###############################################
+# Page: admin.php
+#
+Month: Muaji
+Year: Viti
+Sunday: E Diele
+Monday: E Hene
+
+
+###############################################
+# Page: edit_report.php
+#
+Today: Sot
+Next month: Muaji i ardhshem
+Next year: Viti i ardhshem
+
+
+###############################################
+# Page: includes/date_formats.php
+#
+December: Dhjetor"
+Dec: Dhj
+
+
+###############################################
+# Page: includes/functions.php
+#
+Sun: Die
+Mon: Hen
+Tue: Mar
+Wed: Mer
+Thu: Enj
+Fri: Pre
+Sat: Sht
+WK: Java
+January: Janar
+February: Shkurt
+March: Mars
+April: Prill
+May_: Maj
+June: Qeshor
+July: Korrik
+August: Gusht
+September: Shtator
+October: Tetor
+November: Nentor
+Jan: Jan
+Feb: Shk
+Mar: Mar
+Apr: Pri
+May: Maj
+Jun: Qes
+Jul: Kor
+Aug: Gus
+Sep: Sht
+Oct: Tet
+Nov: Nen
+Tuesday: E Marte
+Wednesday: E Merkure
+Friday: E Premte
+Saturday: E Shtune
