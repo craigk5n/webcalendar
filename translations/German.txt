@@ -4,15 +4,9 @@
 #
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
-# Last update: 31 July 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 12 Sept 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 14 Sept 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 18 Sept 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 19 Sept 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 25 Sept 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 29 Sept 2006 by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 3 Okt 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 10-05-2006
+# Last update: 6 Okt 2006 by Markus Egartner <edv'at'kh-hallein.at>
+# Translation last updated on 10-06-2006
 
 
 ###############################################
@@ -199,6 +193,8 @@ crossday-help: Falls aktiv, werden tages&uuml;bergreifende Termine extra angezei
 Disable Cross-Day Events: Tages&uuml;bergreifende Termine deaktivieren
 disable-location-field-help: W&auml;hlen Sie "Ja" um das Feld "Ort" bei der Termineingabe zu entfernen
 Disable Location field: Das Feld "Ort" bei der Termineingabe entfernen
+disable-url-field-help: Wenn "JA" ausgew&auml;hlt ist, wird das "URL" Feld von der Informationsseite entfernt
+Disable URL field: "URL"-Feld deaktivieren
 disable-priority-field-help: Wenn sie mit "JA" best&auml;tigen wird das Priorit&auml;tenfeld von Ihren Termininformationsseiten entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
 Disable Priority field: Priorit&auml;tenfeld deaktivieren
 disable-access-field-help: Wenn sie mit "JA" best&auml;tigen wird das Zugriffsfeld von Ihren Termininformationsseiten entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
@@ -500,6 +496,8 @@ Percent Complete: Prozent erledigt
 All Percentages: <u><b>Erf&uuml;llungsgrad der Aufgabe (%)</b></u>
 location-help: Ort des Termines
 Location: Ort
+url-help: URL des Termins
+URL: URL
 date-help: Gibt das Datum des Termines an.
 Start Date: Startdatum
 Untimed event: Termin OHNE Zeitangabe
@@ -625,7 +623,6 @@ Is public calendar: Als &Ouml;ffentlichen Kalender freigeben
 #
 Edit Remote Calendar: Ver&auml;ndere entfernten (anderen) Kalender
 Add Remote Calendar: Hinzuf&uuml;gen entfernten (anderen) Kalender
-URL: URL
 Create Layer: Erstelle Layer
 Required to View Remote Calendar: Erfordere Ansicht des entfernten Kalenders
 Reload: Neuladen
@@ -686,6 +683,7 @@ Template variables: Vorlagen Variablen
 Page template: Seiten Vorlagen
 Day template: Tagesvorlage
 Event template: Terminvorlage
+Site Extras: Extrafelder
 Are you sure you want to delete this report?: Wollen Sie diese Bericht wirklich l&ouml;schen?
 
 
