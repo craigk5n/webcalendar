@@ -1,0 +1,87 @@
+# Translations by Srle Doberman <srleiqnet@hotmail.com>, September 2005
+# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# Translation last updated on 06-09-2006
+
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: UTF-8
+
+
+
+###############################################
+# Page: access.php
+#
+Calendar: kalendaru
+
+
+###############################################
+# Page: activity_log.php
+#
+Date: datum
+Time: Vreme
+
+
+###############################################
+# Page: admin.php
+#
+Sunday: Nedelja
+Monday: onedeljak
+
+
+###############################################
+# Page: edit_report.php
+#
+Today: Danas
+Next month: Sledeći mesec
+Next year: Sledeća godina
+
+
+###############################################
+# Page: includes/date_formats.php
+#
+December: Decembar
+Dec: Dec
+
+
+###############################################
+# Page: includes/functions.php
+#
+Sun: Ned
+Mon: Pon
+Tue: Uto
+Wed: Sre
+Thu: Čet
+Fri: Pet
+Sat: Sub
+WK: Nd
+January: Januar
+February: Februar
+March: Mart
+April: April
+May_: Maj
+June: Jun
+July: July
+August: Avgust
+September: Septembar
+October: Oktobar
+November: Novembar
+Jan: Jan
+Feb: Feb
+Mar: Mar
+Apr: Apr
+May: Maj
+Jun: Jun
+Jul: Jul
+Aug: Avg
+Sep: Sep
+Oct: Okt
+Nov: Nov
+Tuesday: Utorak
+Wednesday: Sreda
+Thursday: Četvrtak
+Friday: Petak
+Saturday: Subota
