@@ -165,7 +165,7 @@ function do_v11e_updates () {
        $reminder_log_exists = true;
        $row2 = dbi_fetch_row ( $res2 );
        $times_sent = 1;
-       $last_sent = $row2[0];
+       $last_sent = ( ! empty ( $row2[0] ) ? $row2[0] : 0 );
        dbi_free_result ( $res2 );
      }     
      dbi_execute ('INSERT INTO webcal_reminders ( cal_id, cal_date, ' .

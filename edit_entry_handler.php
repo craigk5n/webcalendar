@@ -531,6 +531,7 @@ if ( empty ( $error ) ) {
   if ( $DISABLE_REMINDER_FIELD != 'Y' && $reminder == true ) {
     if ( empty ( $rem_related ) ) $rem_related = 'S';
     if ( empty ( $rem_before ) ) $rem_before = 'Y';
+    if ( empty ( $rem_last_sent ) ) $rem_last_sent = '0';
     $reminder_date = $reminder_offset = $reminder_duration = $reminder_repeats = 0;
     if ( $rem_when == 'Y' ) { //use date
       $reminder_hour +=  $reminder_ampm;
