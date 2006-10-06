@@ -1,0 +1,80 @@
+# Translations by Oleg Marchuk, <kingoleg@mail.ru>, 6 April 2005 (approximately),
+# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# Translation last updated on 06-09-2006
+
+
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
+#
+charset: UTF-8
+
+
+
+###############################################
+# Page: activity_log.php
+#
+Time: Время:
+
+
+###############################################
+# Page: admin.php
+#
+Sunday: Воскресенье
+Monday: Понедельник
+
+
+###############################################
+# Page: edit_report.php
+#
+Today: Сегодня
+Next month: месяц
+Next year: год
+
+
+###############################################
+# Page: includes/date_formats.php
+#
+December: Декабрь
+Dec: Дек
+
+
+###############################################
+# Page: includes/functions.php
+#
+Sun: Вск
+Mon: Пнд
+Tue: Втр
+Wed: Срд
+Thu: Чтв
+Fri: Птн
+Sat: Сбт
+WK: нед
+January: Январь
+February: Февраль
+March: Март
+April: Апрель
+May_: Май
+June: Июнь
+July: Июль
+August: Август
+September: Сентябрь
+October: Октябрь
+November: Ноябрь
+Jan: Янв
+Feb: Фев
+Mar: Мар
+Apr: Апр
+May: Май
+Jun: Июн
+Jul: Июл
+Aug: Авг
+Sep: Сен
+Oct: Окт
+Nov: Ноя
+Tuesday: Вторник
+Wednesday: Среда
+Thursday: Четверг
+Friday: Пятница
+Saturday: Суббота
