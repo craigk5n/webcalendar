@@ -37,12 +37,11 @@ if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) != '' ) {
   $auser = getPostValue ( 'auser' );
   $perm = '';
   for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
-    $val = getPostValue ( 'access_' . $i );
-    $perm .= ( $val == 'Y' ? 'Y' : 'N' );
+    $perm .= ( getPostValue ( 'access_' . $i ) == 'Y' ? 'Y' : 'N' );
   }
 
   dbi_execute ( 'DELETE FROM webcal_access_function WHERE cal_login = ?',
-    array( $auser ) );
+    array ( $auser ) );
 
   if ( ! dbi_execute ( 'INSERT INTO webcal_access_function ( cal_login,
       cal_permissions ) VALUES ( ?, ? )', array ( $auser, $perm ) ) )
@@ -61,7 +60,7 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '' ) {
     // If user is not admin, reverse values so they are granting
     // access to their own calendar.
     if ( ! $is_admin )
-      list( $puser, $pouser ) = array( $pouser, $puser );
+      list ( $puser, $pouser ) = array ( $pouser, $puser );
 
     dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?
       AND cal_other_user = ?', array ( $puser, $pouser ) );
@@ -69,7 +68,7 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '' ) {
     if ( empty ( $pouser ) )
       break;
     $approve_total = $edit_total = $view_total = 0;
-    for ( $i = 1;$i <= 256; ) {
+    for ( $i = 1; $i <= 256; ) {
       $approve_total += getPostValue ( 'a_' . $i );
       $edit_total += getPostValue ( 'e_' . $i );
       $view_total += getPostValue ( 'v_' . $i );
@@ -147,7 +146,7 @@ print_header ( '', '',
 if ( ! empty ( $guser ) || ! $is_admin ) {
   if ( $is_admin ) {
     // Present a page to allow editing a user's rights
-    $adminStr = translate( 'Admin' );
+    $adminStr = translate ( 'Admin' );
     $uacStr = translate ( 'User Access Control' );
     user_load_variables ( $guser, 'user_' );
 
@@ -283,10 +282,13 @@ if ( ! empty ( $otheruser ) ) {
        . translate ( 'Approve/Reject' ) ) . '</th>
           </tr>';
 
-    $access_type = array();
-    $access_type[1] = translate ( 'Events' );
-    $access_type[2] = translate ( 'Tasks' );
-    $access_type[4] = translate ( 'Journals' );
+    $access_type = array (
+      '',
+      translate ( 'Events' ),
+      translate ( 'Tasks' ),
+      '',
+      translate ( 'Journals' )
+      );
     $gridStr = '';
 
     for ( $j = 1; $j < 5; $j++ ) {
@@ -308,7 +310,7 @@ if ( ! empty ( $otheruser ) ) {
       else {
         $gridStr .= '"time"'
          . ( ! empty ( $op['time'] ) && $op['time'] == 'Y' ? $checked : '' )
-         . ' onclick="enableAll(this.checked);" />'
+         . ' onclick="enableAll ( this.checked );" />'
          . translate ( 'Can See Time Only' );
         $bottomedge = 'boxbottom';
       }
@@ -317,40 +319,40 @@ if ( ! empty ( $otheruser ) ) {
        . $access_type[$j] . '</td>
             <td align="center" class="boxleft pub ' . $bottomedge . '">'
        . '<input type="checkbox" value="' . $j . '" name="v_' . $j . '"'
-       . ( ! empty ( $op['view'] ) && ( $op['view'] &$j ) ? $checked : '' )
+       . ( ! empty ( $op['view'] ) && ( $op['view'] & $j ) ? $checked : '' )
        . ' /></td>
             <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
        . $j * 8 . '" name="v_' . $j * 8 . '"'
-       . ( ! empty ( $op['view'] ) && ( $op['view'] &( $j * 8 ) )
+       . ( ! empty ( $op['view'] ) && ( $op['view'] & ( $j * 8 ) )
         ? $checked : '' ) . ' /></td>
             <td class="priv ' . $bottomedge . '"><input type="checkbox" value="'
        . $j * 64 . '" name="v_' . $j * 64 . '"'
-       . ( ! empty ( $op['view'] ) && ( $op['view'] &( $j * 64 ) )
+       . ( ! empty ( $op['view'] ) && ( $op['view'] & ( $j * 64 ) )
         ? $checked : '' ) . ' /></td>'
        . ( $guser != '__public__' ? '
             <td align="center" class="boxleft pub ' . $bottomedge . '"><input '
          . 'type="checkbox" value="' . $j . '" name="e_' . $j . '"'
-         . ( ! empty ( $op['edit'] ) && ( $op['edit'] &$j ) ? $checked : '' )
+         . ( ! empty ( $op['edit'] ) && ( $op['edit'] & $j ) ? $checked : '' )
          . ' /></td>
             <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
          . $j * 8 . '" name="e_' . $j * 8 . '"'
-         . ( ! empty ( $op['edit'] ) && ( $op['edit'] &( $j * 8 ) )
+         . ( ! empty ( $op['edit'] ) && ( $op['edit'] & ( $j * 8 ) )
           ? $checked : '' ) . ' /></td>
             <td class="priv ' . $bottomedge . '"><input type="checkbox" value="'
          . $j * 64 . '" name="e_' . $j * 64 . '"'
-         . ( ! empty ( $op['edit'] ) && ( $op['edit'] &( $j * 64 ) )
+         . ( ! empty ( $op['edit'] ) && ( $op['edit'] & ( $j * 64 ) )
           ? $checked : '' ) . ' /></td>
             <td align="center" class="boxleft pub ' . $bottomedge . '"><input '
          . 'type="checkbox" value="' . $j . '" name="a_' . $j . '"'
-         . ( ! empty ( $op['approve'] ) && ( $op['approve'] &$j )
+         . ( ! empty ( $op['approve'] ) && ( $op['approve'] & $j )
           ? $checked : '' ) . ' /></td>
             <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
          . $j * 8 . '" name="a_' . $j * 8 . '"'
-         . ( ! empty ( $op['approve'] ) && ( $op['approve'] &( $j * 8 ) )
+         . ( ! empty ( $op['approve'] ) && ( $op['approve'] & ( $j * 8 ) )
           ? $checked : '' ) . ' /></td>
             <td class="boxright priv ' . $bottomedge
          . '"><input type="checkbox" value="' . $j * 64 . '" name="a_' . $j * 64
-         . '"' . ( ! empty ( $op['approve'] ) && ( $op['approve'] &( $j * 64 ) )
+         . '"' . ( ! empty ( $op['approve'] ) && ( $op['approve'] & ( $j * 64 ) )
           ? $checked : '' ) . ' /></td>'
         : '' ) . '
           </tr>';
@@ -390,7 +392,7 @@ if ( ! empty ( $otheruser ) ) {
   ?>
 <script language="javascript" type="text/javascript">
 <!-- <![CDATA[
-function selectAll( limit ) {
+function selectAll ( limit ) {
   if ( limit == 0 )
     document.EditOther.time.checked = false;
 
@@ -471,16 +473,15 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__' ) ) {
 
   ob_end_flush ();
 } //end admin $guser !- default test
-echo print_trailer();
+echo print_trailer ();
 // Get the list of users that the specified user can see.
-function get_list_of_users ( $user )
-{
+function get_list_of_users ( $user ) {
   global $is_admin, $is_nonuser_admin;
   $u = get_my_users ( $user, 'view' );
   if ( $is_admin || $is_nonuser_admin ) {
     // get public NUCs also
     $nonusers = get_my_nonusers ( $user, true );
-    $u = array_merge( $nonusers, $u );
+    $u = array_merge ( $nonusers, $u );
   }
   return $u;
 }
