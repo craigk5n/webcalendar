@@ -161,8 +161,8 @@ latest code from CVS:</p>
 cvs -z3 -d:pserver:anonymous@webcalendar.cvs.sourceforge.net:/cvsroot/webcalendar co -P webcalendar</pre>
 
 <p>This will create a <tt>webcalendar</tt> directory.  NOTE:  To be useful, you
-> will need to upload this directory, with all sub-directories (except the ones
-> named 'CVS') and files, to your web server.</p>
+will need to upload this directory, with all sub-directories (except the ones
+named 'CVS') and files, to your web server.</p>
 
 <p>You only need to perform this checkout once.  After the initial checkout,
 you can update your code with the following command (run this command from
@@ -294,7 +294,7 @@ they have not been 100% implemented).</p>
    Curly brackets, {}, need only be used around multi-statement blocks.
    Any of the following is acceptable based on logic complexity:
 
-    <pre>bar = ( foo == 1 )? true : false ;
+    <pre>bar = ( foo == 1 ? true : false );
  
  <b>or</b>
  
@@ -324,7 +324,7 @@ Call: bar = getGetValue ( $name );</pre>
    <dt>Single quotes vs double quotes</dt>
    <dd>With the exception of XHTML attributes, use single quotes where possible.
  
- <pre>echo 'This is an example of single quoting.  ';
+ <pre> echo 'This is an example of single quoting.  ';
  echo 'But, sometimes it\'s not possible without escaping.  ';
  echo "Also it's not possible with $embedded variables.  ";
  echo 'Control characters such as linefeed "\n" and tab "\t" don\'t work either.  ';
