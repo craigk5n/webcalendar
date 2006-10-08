@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * This file loads configuration settings from the data file settings.php and
  * sets up some needed variables.
  *
@@ -20,66 +20,62 @@
  * @package WebCalendar
  */
 
-
-/**
+/*
  * Prints a fatal error message to the user along with a link to the
  * Troubleshooting section of the WebCalendar System Administrator's Guide.
  *
  * Execution is aborted.
  *
  * @param string $error The error message to display
- *
  * @internal We don't normally put functions in this file.  But, since this
  *           file is included before some of the others, this function either
  *           goes here or we repeat this code in multiple files.
  */
 function die_miserable_death ( $error ) {
-  global $TROUBLE_URL, $LANGUAGE, $APPLICATION_NAME;
-
+  global $APPLICATION_NAME, $LANGUAGE, $TROUBLE_URL;
   // Make sure app name is set
-  $app_name =  ( ! empty ( $APPLICATION_NAME )? $APPLICATION_NAME : 'Title' );
-  
-  if ( function_exists ( 'translate' ) ){
-    if ( empty ( $LANGUAGE ) ) {
-      load_user_preferences();
-      
-    }
+  $app_name = ( ! empty ( $APPLICATION_NAME ) ? $APPLICATION_NAME : 'Title' );
+
+  if ( function_exists ( 'translate' ) ) {
+    if ( empty ( $LANGUAGE ) )
+      load_user_preferences ();
+
     $app_name = translate ( $app_name );
     $title = $app_name . ': ' . translate ( 'Fatal Error' );
-    $h2_label = $app_name . ' '. translate ( 'Error' );  
+    $h2_label = $app_name . ' ' . translate ( 'Error' );
     $trouble_label = translate ( 'Troubleshooting Help' );
   } else {
     $app_name = 'WebCalendar';
     $title = $app_name . ': ' . 'Fatal Error';
-    $h2_label = $app_name . ' ' . 'Error';  
+    $h2_label = $app_name . ' ' . 'Error';
     $trouble_label = 'Troubleshooting Help';
   }
-    
+
   echo <<<EOT
-    <html><head><title>{$title}</title></head>
-    <body><h2>{$h2_label}</h2>
-    <p>{$error}</p>\n<hr />
-    <p><a href="{$TROUBLE_URL}" target="_blank">
-    {$trouble_label}</a></p></body></html>
+<html>
+  <head><title>{$title}</title></head>
+  <body>
+    <h2>{$h2_label}</h2>
+    <p>{$error}</p><hr />
+    <p><a href="{$TROUBLE_URL}" target="_blank">{$trouble_label}</a></p>
+  </body>
+</html>
 EOT;
   exit;
 }
 
-function db_error ( $doExit=false, $sql='' ) {
+function db_error ( $doExit = false, $sql = '' ) {
   global $settings;
-  
-  $ret = '';
-  $ret = translate('Database error') . ': ' . dbi_error ();
-  if ( ! empty ( $settings['mode'] ) && $settings['mode'] == 'dev'  && 
-    ! empty ( $sql ) ) {
-    $ret .= "<br />\nSQL:<br />\n$sql";
-  }
+
+  $ret = translate( 'Database error' ) . ': ' . dbi_error ()
+   . ( ! empty ( $settings['mode'] ) && $settings['mode'] == 'dev' && ! empty ( $sql )
+    ? '<br />SQL:<br />' . $sql : '' );
+
   if ( $doExit ) {
     echo $ret;
     exit;
-  } else {
+  } else
     return $ret;
-  }
 }
 
 ?>
