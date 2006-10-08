@@ -269,56 +269,68 @@ function tooltip ( $str, $decode = '' ) {
 function etooltip ( $str ) {
   echo tooltip ( $str );
 }
-// Language options. The first is the name presented to users while the second
-// is the filename (without the ".txt") that must exist in the translations
-// subdirectory.
-$languages = array (
-  translate ( 'Browser-defined' ) => 'none',
-  translate ( 'English' ) => 'English-US', // translate ( 'English-US' )
-  translate ( 'Afrikaans' ) => 'Afrikaans',
-  translate ( 'Albanian' ) => 'Albanian',
-  translate ( 'Arabic' ) . ' (UTF8)' => 'Arabic_utf8',
-  translate ( 'Basque' ) => 'Basque',
-  translate ( 'Bulgarian' ) => 'Bulgarian',
-  translate ( 'Catalan' ) => 'Catalan',
-  translate ( 'Chinese (Simplified/GB2312)' ) => 'Chinese-GB2312',
-  translate ( 'Chinese (Traditional/Big5)' ) => 'Chinese-Big5',
-  translate ( 'Croatian' ) . ' (UTF8)' => 'Croatian_utf8',
-  translate ( 'Czech' ) => 'Czech',
-  translate ( 'Danish' ) => 'Danish',
-  translate ( 'Dutch' ) => 'Dutch',
-  translate ( 'Estonian' ) => 'Estonian',
-  translate ( 'Finnish' ) => 'Finnish',
-  translate ( 'French' ) . ' (UTF8)' => 'French-UTF8',
-  translate ( 'French' ) => 'French',
-  translate ( 'Galician' ) => 'Galician',
-  translate ( 'German' ) => 'German',
-  translate ( 'Greek' ) => 'Greek',
-  translate ( 'Holo (Taiwanese)' ) => 'Holo-Big5',
-  translate ( 'Hungarian' ) => 'Hungarian',
-  translate ( 'Icelandic' ) => 'Icelandic',
-  translate ( 'Italian' ) => 'Italian',
-  translate ( 'Japanese' ) . ' (EUC-JP)' => 'Japanese-eucjp',
-  translate ( 'Japanese' ) . ' (SHIFT JIS)' => 'Japanese-sjis',
-  translate ( 'Japanese' ) . ' (UTF-8)' => 'Japanese',
-  translate ( 'Korean' ) => 'Korean',
-  translate ( 'Lithuanian' ) => 'Lithuanian',
-  translate ( 'Norwegian' ) => 'Norwegian',
-  translate ( 'Polish' ) => 'Polish',
-  translate ( 'Portuguese' ) => 'Portuguese',
-  translate ( 'Portuguese/Brazil' ) => 'Portuguese_BR',
-  translate ( 'Romanian' ) => 'Romanian',
-  translate ( 'Russian' ) . ' (UTF-8)' => 'Russian_utf8',
-  translate ( 'Russian' ) => 'Russian',
-  translate ( 'Serbian' ) . ' (UTF-8)' => 'Serbian_utf8',
-  translate ( 'Slovak' ) . ' (UTF-8)' => 'Slovak_utf8',
-  translate ( 'Slovenian' ) => 'Slovenian',
-  translate ( 'Spanish' ) => 'Spanish',
-  translate ( 'Swedish' ) => 'Swedish',
-  translate ( 'Turkish' ) => 'Turkish',
-  translate ( 'Welsh' ) => 'Welsh',
-  // add new languages here!
+
+/*
+ * Generate translated array of language names
+ *
+ * The first is the name presented to users while the second
+ * is the filename (without the ".txt") that must exist in 
+ * the translations subdirectory. 
+ * Only called from admin.php and pref.php
+ *
+ * @uses translate
+ */   
+function define_languages () {
+  global $languages;
+
+  $languages = array (
+    translate ( 'Browser-defined' ) => 'none',
+    translate ( 'English' ) => 'English-US', // translate ( 'English-US' )
+    translate ( 'Afrikaans' ) => 'Afrikaans',
+    translate ( 'Albanian' ) => 'Albanian',
+    translate ( 'Arabic' ) . ' (UTF8)' => 'Arabic_utf8',
+    translate ( 'Basque' ) => 'Basque',
+    translate ( 'Bulgarian' ) => 'Bulgarian',
+    translate ( 'Catalan' ) => 'Catalan',
+    translate ( 'Chinese (Simplified/GB2312)' ) => 'Chinese-GB2312',
+    translate ( 'Chinese (Traditional/Big5)' ) => 'Chinese-Big5',
+    translate ( 'Croatian' ) . ' (UTF8)' => 'Croatian_utf8',
+    translate ( 'Czech' ) => 'Czech',
+    translate ( 'Danish' ) => 'Danish',
+    translate ( 'Dutch' ) => 'Dutch',
+    translate ( 'Estonian' ) => 'Estonian',
+    translate ( 'Finnish' ) => 'Finnish',
+    translate ( 'French' ) . ' (UTF8)' => 'French-UTF8',
+    translate ( 'French' ) => 'French',
+    translate ( 'Galician' ) => 'Galician',
+    translate ( 'German' ) => 'German',
+    translate ( 'Greek' ) => 'Greek',
+    translate ( 'Holo (Taiwanese)' ) => 'Holo-Big5',
+    translate ( 'Hungarian' ) => 'Hungarian',
+    translate ( 'Icelandic' ) => 'Icelandic',
+    translate ( 'Italian' ) => 'Italian',
+    translate ( 'Japanese' ) . ' (EUC-JP)' => 'Japanese-eucjp',
+    translate ( 'Japanese' ) . ' (SHIFT JIS)' => 'Japanese-sjis',
+    translate ( 'Japanese' ) . ' (UTF-8)' => 'Japanese',
+    translate ( 'Korean' ) => 'Korean',
+    translate ( 'Lithuanian' ) => 'Lithuanian',
+    translate ( 'Norwegian' ) => 'Norwegian',
+    translate ( 'Polish' ) => 'Polish',
+    translate ( 'Portuguese' ) => 'Portuguese',
+    translate ( 'Portuguese/Brazil' ) => 'Portuguese_BR',
+    translate ( 'Romanian' ) => 'Romanian',
+    translate ( 'Russian' ) . ' (UTF-8)' => 'Russian_utf8',
+    translate ( 'Russian' ) => 'Russian',
+    translate ( 'Serbian' ) . ' (UTF-8)' => 'Serbian_utf8',
+    translate ( 'Slovak' ) . ' (UTF-8)' => 'Slovak_utf8',
+    translate ( 'Slovenian' ) => 'Slovenian',
+    translate ( 'Spanish' ) => 'Spanish',
+    translate ( 'Swedish' ) => 'Swedish',
+    translate ( 'Turkish' ) => 'Turkish',
+    translate ( 'Welsh' ) => 'Welsh'
+    // add new languages here!
   );
+}
 // If the user sets "Browser-defined" as their language setting, then use the
 // $HTTP_ACCEPT_LANGUAGE settings to determine the language. The array below
 // translates browser language abbreviations into our available language files.
