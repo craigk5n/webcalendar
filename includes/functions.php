@@ -1554,13 +1554,13 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
           date ('Ymd', $i + ONE_DAY ) .'"' );
         $ret .= '<td class="weekcell"><a class="weekcell" title="' .
           translate('Week') . '&nbsp;' .
-            date('W', $i + ONE_DAY ) . '"' . $href;
+            date('W', $i + ONE_DAY + ONE_DAY ) . '"' . $href;
         if ( ! empty ( $user) && $user != $login  )
           $ret .= "&amp;user=$user";
         if ( ! empty ( $cat_id ) )
           $ret .= "&amp;cat_id=$cat_id";
         $ret .= ' >';
-        $wkStr = translate('WK')  . date('W', $i + ONE_DAY );
+        $wkStr = translate('WK')  . date('W', $i + ONE_DAY + ONE_DAY );
         $wkStr2 = '';
         if ( translate('charset') == 'UTF-8' ) {
           $wkStr2 = $wkStr;
@@ -1759,9 +1759,9 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ) {
       $title = 'title="' . $weekStr . '&nbsp;' . 
         date('W', $i + ONE_DAY ) . '" ';
-      $href = 'href="week.php?' . $u_url . 'date=' .date ('Ymd', $i+ ONE_DAY). '" ';
+      $href = 'href="week.php?' . $u_url . 'date=' .date ('Ymd', $i+ ONE_DAY + ONE_DAY). '" ';
       $ret .= '<td class="weeknumber"><a class="weeknumber" ' . $title . $href . '>(' . 
-        date('W', $i + ONE_DAY ) . ')</a></td>' . "\n";
+        date('W', $i + ONE_DAY + ONE_DAY) . ')</a></td>' . "\n";
     }
     for ($j = 0; $j < 7; $j++) {
       $date = $i + ($j * ONE_DAY  + ( 12 * 3600 ));

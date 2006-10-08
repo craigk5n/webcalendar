@@ -73,7 +73,7 @@ for ( $i = $wkstart; date ( 'Ymd', $i ) <= date ( 'Ymd', $monthend );
   $i += ( ONE_DAY * 7 ) ) {
   echo "<tr>\n";
   for ( $j = 0; $j < 7; $j++ ) {
-    $date = $i + ( $j * ONE_DAY );
+    $date = $i + ( $j * ONE_DAY ) + ( 12 * 3600 );
     if ( ( date ( 'Ymd', $date ) >= date ( 'Ymd', $monthstart ) &&
       date ( 'Ymd', $date ) <= date ( 'Ymd', $monthend ) ) || 
       ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && 

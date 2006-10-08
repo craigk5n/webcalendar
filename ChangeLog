@@ -1,4 +1,5 @@
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1572511 ] Week Numbering in October
  - Fixed bug [ 1572098 ] install-wizward abort
  - Made edit_report variables auto-insert on click
  - Added URL as an option for events per RFC2445
