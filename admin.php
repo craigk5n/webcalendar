@@ -217,6 +217,7 @@ include "includes/styles.php";
   <label for="admin_LANGUAGE"><?php etranslate( 'Language' )?>:</label></td><td>
   <select name="admin_LANGUAGE" id="admin_LANGUAGE">
    <?php
+    define_languages (); //load the language list
     reset ( $languages );
     while ( list ( $key, $val ) = each ( $languages ) ) {
      echo '<option value="' . $val . '"';

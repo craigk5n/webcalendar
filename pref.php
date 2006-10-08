@@ -263,6 +263,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
  <label for="pref_lang"><?php etranslate( 'Language' )?>:</label></td><td>
  <select name="pref_LANGUAGE" id="pref_lang">
 <?php
+ define_languages (); //load the language list
  reset ( $languages );
  while ( list ( $key, $val ) = each ( $languages ) ) {
    // Don't allow users to select browser-defined.  We want them to pick
