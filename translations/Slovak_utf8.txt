@@ -1,9 +1,12 @@
+# See translations/English-US.txt for instructions.
+#
 # Translations by Peter Valach (pvalach@gmx.net)
 # Last update: 2003/10/29
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# Translation last updated on 06-09-2006
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -49,13 +52,6 @@ Dec: Dec
 ###############################################
 # Page: includes/functions.php
 #
-Sun: Ned
-Mon: Pon
-Tue: Uto
-Wed: Str
-Thu: Ĺ tv
-Fri: Pia
-Sat: Sob
 WK: tĂ˝Ĺľ
 January: JanuĂˇr
 February: FebruĂˇr
@@ -84,3 +80,10 @@ Wednesday: Streda
 Thursday: Ĺ tvrtok
 Friday: Piatok
 Saturday: Sobota
+Sun: Ned
+Mon: Pon
+Tue: Uto
+Wed: Str
+Thu: Ĺ tv
+Fri: Pia
+Sat: Sob

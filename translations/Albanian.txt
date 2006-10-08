@@ -1,8 +1,11 @@
+# See translations/English-US.txt for instructions.
+#
 # Translations by Rigels Gordani rige@hotmail.com, February 2004,
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# Translation last updated on 06-09-2006
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -52,13 +55,6 @@ Dec: Dhj
 ###############################################
 # Page: includes/functions.php
 #
-Sun: Die
-Mon: Hen
-Tue: Mar
-Wed: Mer
-Thu: Enj
-Fri: Pre
-Sat: Sht
 WK: Java
 January: Janar
 February: Shkurt
@@ -86,3 +82,10 @@ Tuesday: E Marte
 Wednesday: E Merkure
 Friday: E Premte
 Saturday: E Shtune
+Sun: Die
+Mon: Hen
+Tue: Mar
+Wed: Mer
+Thu: Enj
+Fri: Pre
+Sat: Sht

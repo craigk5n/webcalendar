@@ -1,35 +1,46 @@
-# Use this as a starting point to translate this application into
-# another language.  The format is "English text: translated text"
-# There cannot be a ': ' in the English text.
-# Translated by:
-# your name and email here...
-# Last update: 02 July 2002
-# Check out the tools directory which contains two perl scripts:
-#   check_translation.pl will tell you if you have successfully translated
-#        all required text
-#   update_translation.pl will take an old translation file and move the
-#        translations around so they are grouped by the page they appear in.
-#        It will also identify any missing translations and tag them
-#        with a comment.  If it is a non-english translation, the english
-#        translation will be included in the comment to simplify completing
-#        the translation.
+# Use this as a starting point to translate Webcalendar into other languages.
+# The format consists of an optional header:
 #
-# Note: You will notice the entry for "May_" below.  There's a reason for
-# this.  Translate "May_" to the full month name and "May" to the three-letter
-# month abbreviation (like "Oct" for "October").
+# Translated by: your name and email
+# Last update: the date of translation
+#   (Including the leading "# " and any comments made by previous translators.)
 #
-# Note: When translating the date formats
-#  __month__ __dd__, __yyyy__
-#  __month__ __yyyy__
-#  __mm__/__dd__/__yyyy__
-#  __month__ __dd__
-# Do not translate the words themselves, change only the format of the terms
-# For example in German.txt the proper translation would be
-#    __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+# Followed by as many as needed:
+#
+# English phrase: translation
+#   (One to a line. WITHOUT the leading "# ".
+#   The "English phrase: ", including the colon ":", is provided by the
+#   Webcalendar developers. Your part is the "translation".)
+#
+# The tools directory contains two perl scripts to help you:
+#   - check_translation.pl
+#       indicates if all text has been successfully translated.
+#   - update_translation.pl
+#       will parse the program files to find all translate('phrase') and
+#       tooltip('phrase'). It will arrange the phrases according to the page
+#       (file) that contains the first occurance. Optionally, it can tag the
+#       phrases that are not yet translated by putting
+#       << MISSING >>
+#       on the line above the phrase. And, if the phrase is an abbreviation,
+#       it will include the full English text on the line below the phrase.
 #
 #
+# Note:  You will notice the entry for "May_" below. There is a reason for this.
+#        Translate "May_" to the full month name and "May" to the,
+#        usually three-letter, month abbreviation (like "Oct" for "October").
 #
-# Translation last updated on 10-05-2006
+# Note:  When translating the date formats,
+#          __month__ __dd__, __yyyy__
+#          __month__ __yyyy__
+#          __mm__/__dd__/__yyyy__
+#          __month__ __dd__
+#        do not translate the words themselves, change only the format of the
+#        terms. For example in German.txt the proper translation would be
+#          __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+#
+#
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -517,7 +528,7 @@ Date Completed: Date Completed
 percent-help: Task completion percentage for this user
 Percent Complete: Percent Complete
 All Percentages: All Percentages
-location-help: Event location 
+location-help: Event location
 Location: Location
 url-help: Event URL
 URL: URL
@@ -557,7 +568,7 @@ repeat-frequency-help: Specifies how often the event should repeat.
 Frequency: Frequency
 Weekdays Only: Weekdays Only
 Week Start: Week Start
-repeat-bydayextended-help: Allows date selection based on day of week. 
+repeat-bydayextended-help: Allows date selection based on day of week.
 ByDay: ByDay
 All: All
 repeat-month-help: Specifies which months the event should repeat in.
@@ -1012,7 +1023,7 @@ HTML: HTML
 Plain Text: Plain Text
 display_byproxy-help: Display the real creator on view_entry page
 Display if created by Assistant: Display if created by Assistant
-allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries 
+allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries
 Allow remote viewing of: Allow remote viewing of
 entries: entries
 
@@ -1046,7 +1057,7 @@ Your password is: Your password is
 Please visit: Please visit
 to log in and start using your account: to log in and start using your account
 You may change your password after logging in the first time: You may change your password after logging in the first time
-If you received this email in error: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note 
+If you received this email in error: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note
 Administrator: Administrator
 Welcome: Welcome
 Registration: Registration
@@ -1382,18 +1393,21 @@ not supported: not supported
 Browser-defined: Browser-defined
 English: English
 English-US: English-US
+Afrikaans: Afrikaans
+Albanian: Albanian
+Arabic: Arabic
 Basque: Basque
 Bulgarian: Bulgarian
 Catalan: Catalan
-Chinese (Traditional/Big5): Chinese (Traditional/Big5)
 Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
+Chinese (Traditional/Big5): Chinese (Traditional/Big5)
+Croatian: Croatian
 Czech: Czech
 Danish: Danish
 Dutch: Dutch
 Estonian: Estonian
 Finnish: Finnish
 French: French
-French (UTF8): French (UTF8)
 Galician: Galician
 German: German
 Greek: Greek
@@ -1403,19 +1417,23 @@ Icelandic: Icelandic
 Italian: Italian
 Japanese: Japanese
 Korean: Korean
+Lithuanian: Lithuanian
 Norwegian: Norwegian
 Polish: Polish
 Portuguese: Portuguese
 Portuguese/Brazil: Portuguese/Brazil
 Romanian: Romanian
 Russian: Russian
+Serbian: Serbian
+Slovak: Slovak
+Slovenian: Slovenian
 Spanish: Spanish
 Swedish: Swedish
 Turkish: Turkish
 Welsh: Welsh
-task: task
 event: event
 journal: journal
+task: task
 
 
 ###############################################

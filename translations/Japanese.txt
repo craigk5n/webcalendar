@@ -1,16 +1,12 @@
-# Use this as a starting point to translate this application into
-# another language.  The format is "English text: translated text"
-# There cannot be a ":" in the English text.
+# See translations/English-US.txt for instructions.
+#
 # Translated by:
 #   Makoto Hamanaka <VYA04230@nifty.com>
-#   Tadashi Jokagi <elf2000@users.sourceforge.net> updated on 12-14-2004
-#   Tadashi Jokagi <elf2000@users.sourceforge.net> updated on 02-21-2005
-#   Tadashi Jokagi <elf2000@users.sourceforge.net> updated on 09-24-2005
-#   Tadashi Jokagi <elf2000@users.sourceforge.net> updated on 11-13-2005
-#   Tadashi Jokagi <elf2000@users.sourceforge.net> updated on 01-24-2006
-#   Tadashi Jokagi <elf2000@users.sourceforge.net> updated on 04-17-2006
+#   Updated many times by Tadashi Jokagi <elf2000@users.sourceforge.net>
+# Last updated: 04-17-2006
 #
-# Translation last updated on 10-05-2006
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -56,9 +52,6 @@ Private: プライベート
 ###############################################
 # Page: activity_log.php
 #
-#
-# << MISSING >>
-# System Log:
 Activity Log: 活動ログ
 User: ユーザ
 Date: 日付
@@ -72,9 +65,6 @@ Next: 次へ
 ###############################################
 # Page: add_entry.php
 #
-#
-# << MISSING >>
-# is already on your calendar.:
 Invalid entry id: エントリ ID が無効です
 This is a private event and may not be added to your calendar.: これはプライベートなイベントなので、あなたのカレンダーへの追加ができないことがあります
 This is a confidential event and may not be added to your calendar.: これは機密のイベントなので、あなたのカレンダーに追加されないかもしれません。
@@ -99,9 +89,6 @@ NonUser Calendars: 他のユーザーのカレンダー
 Other: その他
 Email: 電子メール
 Colors: 色
-#
-# << MISSING >>
-# System options:
 app-name-help: ログインページとすべてのページのブラウザータイトルバーの中で使用するアプリケーションの名前を指定します。The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: アプリケーション名
 Translated Name: ウェブカレンダー
@@ -119,9 +106,6 @@ Themes: テーマ
 AVAILABLE THEMES: 利用可能なテーマ
 None: なし
 Preview: プレビュー
-#
-# << MISSING >>
-# Site customization:
 custom-script-help: 各ページのHTMLで<head>に挿入するカスタム Javascript かスタイルシートテキストの入力を許可します。
 Custom script/stylesheet: カスタムスクリプト/スタイルシート
 custom-header-help: 各ページの上に HTML すにペットを含むことを許可します。
@@ -131,9 +115,6 @@ Custom trailer: カスタムフッター
 enable-external-header-help: カスタムフッターを外部ファイルから読み込むことを許可します。
 Allow external file for header/script/trailer: ヘッダー/スクリプト/フッターの外部ファイルを許可する
 Allow user to override header/trailer: ヘッダー/フッターをユーザーが上書きすることを許可する
-#
-# << MISSING >>
-# Date and Time:
 tz-help: サーバーの時間から現地の時間までの時間を調節すべきかどうかを指定します。
 Server Timezone Selection: サーバーのタイムゾーン選択
 Your current GMT offset is: 現在の GMT との差:
@@ -142,9 +123,6 @@ display-general-use-gmt-help: 有効にした場合、GMT として共通の日�
 Display Common Use Date/Times as GMT: GMT として共通の日付・時間を使って表示する
 date-format-help: 実行する日付の書式を指定します。
 Date format: 日付の書式
-#
-# << MISSING >>
-# Small Task Date:
 display-week-starts-on: 週が日曜日か月曜日でスタートするかどうか指定します。月曜が指定されれば、週番号は ISO 週番号になるでしょう。
 Week starts on: 週の始まり
 Sunday: 日曜日
@@ -161,20 +139,9 @@ work-hours-help: 日間表示の表示での時間範囲を指定します。
 Work hours: 勤務時間
 From: .
 to: 〜
-#
-# << MISSING >>
-# Appearance:
 preferred-view-help: デフォルトの表示を指定します (日間、週間、月間もしくは年間)
 Preferred view: 優先する表示
 Allow top menu: トップメニューを許可する
-#
-# << MISSING >>
-# Date Selectors position:
-#
-# << MISSING >>
-# menu-themes-help:
-# English text: Sets the colors and style of the top menu
-#
 Menu theme: メニューテーマ
 fonts-help: 使用するシステムフォントの一覧を指定します("Arial, Helvetica"のように)
 Fonts: フォント
@@ -190,117 +157,40 @@ display-desc-print-day-help: 印刷用の日間表示でイベントの説明を
 Display description in printer day view: 印刷用の日間表示で説明を表示する
 yearly-shows-events-help: 年間表意jで強調フォントでイベントを含む日を表示します。
 Display days with events in bold in month and year views: 年間表示と月間表示でイベント日を強調表示する
-#
-# << MISSING >>
-# display-minutes-help:
-# English text: If enabled, minutes ending with :00 will always be displayed
-#
-#
-# << MISSING >>
-# Display 00 minutes always:
-#
-# << MISSING >>
-# allow-view-add-help:
-# English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
-#
 Include add event link in views: 表示内で追加したイベントを含む
-#
-# << MISSING >>
-# lunar-help:
-# English text: If enabled, will display small icons representing the lunar phases each month
-#
 Display Lunar Phases in month view: 月間表示で月齢を表示する
-#
-# << MISSING >>
-# Restrictions:
 allow-view-other-help: ユーザーが他のユーザーのカレンダーを見てもいいかどうか指定します。
 Allow viewing other user's calendars: 他のユーザーのカレンダーを見ることを許可する
-#
-# << MISSING >>
-# require-approvals-help:
-# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
-#
 Require event approvals: イベントの承認を必要とする
 display-unapproved-help: 承認が済んでいないイベントをカレンダーに表示するかどうか指定します。<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: 未承認イベントを表示する
 conflict-check-help: イベントの衝突を確認します(同一人物の同じ時間で予定される 2 つのイベントスケジュール)これを「はい」に設定した場合、警告を確認した後に、同時に 2 つのイベントを予定することができるでしょう。これを「いいえ」に設定した場合、衝突の確認をしないでしょう。したがっておそらく衝突の発生を確認するためにこれを「はい」に設定したいでしょう。
 Check for event conflicts: イベント衝突を確認する
-#
-# << MISSING >>
-# conflict-months-help:
-# English text: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
-#
-#
-# << MISSING >>
-# Conflict checking months:
 conflict-check-override-help: イベントの衝突を無視し、同時に 2 つ以上のイベントを予定することをユーザーに許可します。
 Allow users to override conflicts: ユーザーの衝突の上書きを許可する
 limit-appts-help: ひとりのユーザーが任意の 1 日するができる予約数をシステム管理者がシステム全体に渡る制限を設定することを可能にします。
 Limit number of timed events per day: 1 日あたりの設定できるイベント数を制限する
 limit-appts-number-help: ユーザーが 1 日で指定できる、時限イベントの最大数を指定します。
 Maximum timed events per day: 1 日あたりの設定できる最大イベント
-#
-# << MISSING >>
-# crossday-help:
-# English text: If enabled, events that span days will be displayed on seperate days
-#
-#
-# << MISSING >>
-# Disable Cross-Day Events:
 disable-location-field-help: 「はい」にすることで、イベント情報のページから項目「場所」を削除します。
 Disable Location field: 場所の項目を無効にする
 disable-priority-field-help: 「はい」を選択することで項目「優先度」をイベント情報ページから削除し、初心者向けのシンプルなインターフェースを提供します。
 Disable Priority field: 優先度フィールド無効
 disable-access-field-help: 「はい」を選択することで項目「アクセス」をイベント情報ページから削除し、初心者向けのシンプルなインターフェースを提供します。
 Disable Access field: アクセス項目無効
-#
-# << MISSING >>
-# disable-participants-field-help:
-# English text: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
-#
 Disable Participants field: 参加者フィールド無効
 disable-repeating-field-help: 「はい」を選択した場合、イベントの追加時に「繰り返し」フィールドを削除するでしょう。
 Disable Repeating field: 繰り返しフィールド無効
 allow-html-description-help: 有効にした場合、ユーザーはイベントの項目「説明」で HTML を入力できます。有効でない場合、HTML タグは普通のテキストに見えるよう取り除かれます。警告: この機能を有効にすることにより、他のサイトの画像参照をユーザーに許可するでしょう。
 Allow HTML in Description: 説明で HTML を許可する
-#
-# << MISSING >>
-# Popups:
 disable-popups-help: カレンダー表示からポップアップを無効にします。
 Disable Pop-Ups: ポップアップを無効にする
-#
-# << MISSING >>
-# popup-includes-siteextras-help:
-# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
-#
 Display Site Extras in popup: 外部サイトはポップアップ表示
 popup-includes-participants-help: 有効にした場合、イベントポップアップで参加者を表示します。
 Display Participants in popup: ポップアップで参加者を表示する
-#
-# << MISSING >>
-# Miscellaneous:
-#
-# << MISSING >>
-# remember-last-login-help:
-# English text: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
-#
 Remember last login: 最終ログインを覚える
 summary_length-help: カレンダー表示での短い説明の最大長です。
 Brief Description Length: 短い説明の長さ
-#
-# << MISSING >>
-# user_sort-help:
-# English text: Determines sort order for User, Nonuser lists
-#
-#
-# << MISSING >>
-# User Sort Order:
-#
-# << MISSING >>
-# Lastname, Firstname:
-#
-# << MISSING >>
-# Firstname, Lastname:
 Plugins: プラグイン
 plugins-enabled-help: アプリケーションプラグインを有効にします。
 Enable Plugins: プラグイン有効
@@ -310,35 +200,10 @@ allow-public-access-help: 有効の場合、カレンダーは、ユーザーに
 Allow public access: 公開アクセス許可
 public-access-default-visible: 公開カレンダーのイベントは、自動的にすべてのユーザーのカレンダーで表示するでしょう。
 Public access visible by default: 公開アクセスはデフォルトで見える
-#
-# << MISSING >>
-# public-access-default-selected:
-# English text: When adding a new event, the public user will be selected by default as a participant.
-#
 Public access is default participant: 公開アクセスはデフォルト参加者
-#
-# << MISSING >>
-# public-access-view-others-help:
-# English text: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
-#
 Public access can view other users: 公開アクセスは他のユーザーを見ることができる
-#
-# << MISSING >>
-# public-access-can-add-help:
-# English text: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
-#
 Public access can add events: 公開アクセスはイベント追加できる
-#
-# << MISSING >>
-# public-access-add-requires-approval-help:
-# English text: Specifies whether events added via the public access account require approval before being displayed.
-#
 Public access new events require approval: 公開アクセスの新規イベントは認証を必要とする
-#
-# << MISSING >>
-# public-access-sees-participants-help:
-# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
-#
 Public access can view participants: 公開アクセスは参加者を見ることができる
 public-access-override-help: 公開カレンダーでイベント名と説明を隠すことを許可します
 Override event name/description for public access: 公開アクセスでのイベント名/説明を上書きする
@@ -348,41 +213,13 @@ uac-enabled-help: ユーザーレベルでのアクセス制御を有効にし�
 User Access Control enabled: ユーザーアクセス制御を有効にする
 groups-enabled-help: グループサポートを有効にしたら、ユーザーはグループでユーザーを選択することを許可します。
 Groups enabled: グループ有効
-#
-# << MISSING >>
-# user-sees-his-group-help:
-# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
-#
 User sees only his groups: ユーザーは自分のグループのみを見る
 nonuser-enabled-help: 有効にした場合、管理者が非ユーザーをカレンダーに追加するオプションを持つでしょう。
 Nonuser enabled: 非ユーザーを有効にする
 nonuser-list-help: 参加者一覧中の非ユーザーをカレンダーに表示するべき場所です。
 Nonuser list: 非ユーザー一覧
-#
-# << MISSING >>
-# reports-enabled-help:
-# English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
-#
 Reports enabled: レポート有効
-#
-# << MISSING >>
-# subscriptions-enabled-help:
-# English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
 Allow remote subscriptions: リモート申し込みを許可
-#
-# << MISSING >>
-# remotes-enabled-help:
-# English text: Allows users to load remote ics files using URL
-#
-#
-# << MISSING >>
-# Allow remote calendars:
-#
-# << MISSING >>
-# rss-enabled-help:
-# English text: Specifies if a user's calendar can be obtained from a RSS feed.
-#
 Enable RSS feed: RSS フィードを有効にする
 categories-enabled-help: 有効にするとイベントカテゴリをサポートします。
 Categories enabled: カテゴリ有効
@@ -390,25 +227,10 @@ icon_upload-enabled-help: 有効の場合、ユーザーはカテゴリアイコ
 Category Icon Upload enabled: カテゴリアイコンのアップロードは有効
 display-tasks-help: 月間と日間カレンダーに小さなタスクウィンドウを表示します．
 Display small task list: 小さなタスク一覧を表示する
-#
-# << MISSING >>
-# display-tasks-in-grid-help:
-# English text: Display tasks in calendars along with events
-#
 Display tasks in Calendars: カレンダーにタスクを表示する
 allow-external-users-help: これは、非カレンダーユーザーがイベント参加者として記録されることを許可します。
 Allow external users: 外部ユーザー許可
-#
-# << MISSING >>
-# external-can-receive-notification-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
-#
 External users can receive email notifications: 外部ユーザーは電子メール通知を受けることができる
-#
-# << MISSING >>
-# external-can-receive-reminder-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
-#
 External users can receive email reminders: 外部ユーザーは電子メールリマインダーを受けることができる
 allow-self-registration-help: 新規のユーザが登録することを可能にします。
 Allow self-registration: 自己登録を許可する
@@ -449,11 +271,6 @@ email-event-updated: カレンダーのイベントが更新された場合、�
 Events updated on my calendar: 自分のカレンダーのイベントを更新
 email-event-deleted: カレンダーのイベントが削除された場合、電子メール通知を送るかどうか指定します。
 Events removed from my calendar: 自分のカレンダーからイベントを削除
-#
-# << MISSING >>
-# email-event-rejected:
-# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
-#
 Event rejected by participant: 参加者のイベント拒否
 Allow user to customize colors: ユーザーの色設定を許可する
 gradient-colors: 有効にした場合、グラデーション色を使用します。これは非常に動作に影響を与えることができます。
@@ -471,9 +288,6 @@ Table cell background for current day: 今日のテーブルセル背景
 Table cell background for days with events: イベント日のテーブルセルの背景色
 Table cell background for weekends: 週末のテーブルセル背景
 Table cell background for other month: その他の月のテーブルセルの背景色
-#
-# << MISSING >>
-# Week number color:
 Event popup background: イベントポップアップの背景
 Event popup text: イベントポップアップのテキスト
 
@@ -499,9 +313,6 @@ Administrative Tools: 管理ツール
 ###############################################
 # Page: ajax.php
 #
-#
-# << MISSING >>
-# Duplicate Name:
 Username already exists: ユーザー名は既に存在します。
 Email address already exists: 電子メールアドレスは既に存在します。
 
@@ -512,13 +323,7 @@ Email address already exists: 電子メールアドレスは既に存在しま�
 Additional Comments (optional): 追加コメント(オプション)
 Approve and Send: 承認と送信
 Approve and Exit: 承認と終了
-#
-# << MISSING >>
-# (Your comments will be included in an email to the event creator):
 Hello: こんにちは!
-#
-# << MISSING >>
-# An appointment has been approved and comments added by:
 The subject was: 課題
 The description is: 詳細:
 Comments: コメント
@@ -529,26 +334,6 @@ Comments: コメント
 #
 Admin mode: 管理モード
 Your assistants: あなたのアシスタント
-
-
-###############################################
-# Page: availability.php
-#
-#
-# << MISSING >>
-# Program Error:
-#
-# << MISSING >>
-# No users specified!:
-#
-# << MISSING >>
-# No year specified!:
-#
-# << MISSING >>
-# No month specified!:
-#
-# << MISSING >>
-# No day specified!:
 
 
 ###############################################
@@ -592,14 +377,6 @@ An appointment has been canceled for you by: 課題:
 
 
 ###############################################
-# Page: doc.php
-#
-#
-# << MISSING >>
-# Invalid blob id:
-
-
-###############################################
 # Page: docadd.php
 #
 Add Comment: コメントを追加する
@@ -622,21 +399,6 @@ Removed: 削除しました
 am: AM
 pm: PM
 You are not authorized to edit this task: このタスクを編集することを許可されていません
-#
-# << MISSING >>
-# hours ahead of you:
-#
-# << MISSING >>
-# hours behind you:
-#
-# << MISSING >>
-# hour ahead of you:
-#
-# << MISSING >>
-# hour behind you:
-#
-# << MISSING >>
-# is in a different timezone than you are. Currently:
 Time entered here is based on your Timezone: ここで入力された時間は、あなたのタイムゾーンに基づきます。
 Edit Entry: エントリを編集
 Add Entry: エントリを追加
@@ -657,19 +419,12 @@ Medium: 中
 High: 高
 category-help: イベントのカテゴリを指定します。
 Category: カテゴリ
-#
-# << MISSING >>
-# completed-help:
-# English text: Date task is completed. Only enabled when all participants percentage equals 100%.
-#
-#
-# << MISSING >>
-# Date Completed:
 percent-help: このユーザーのタスク完了率
 Percent Complete: 完了率
 All Percentages: すべての割合
 location-help: イベントの場所
 Location: 場所
+URL: URL
 date-help: イベントの日付を指定します。
 Start Date: 開始日
 Untimed event: 非時限イベント
@@ -685,11 +440,6 @@ Due Date: 予定日
 Due Time: 予定時間
 participants-help: このエントリの参加者一覧です。
 Availability: 適用範囲
-#
-# << MISSING >>
-# external-participants-help:
-# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
-#
 External Participants: 外部参加者
 repeat-type-help: イベントをどれ位繰り返すか選択します。<i>月刊 (日付による)</i> イベントがその月の最初の月曜日、その月の 3 番目の木曜などに繰り返すことを許可します。  <i>月刊 (期日による)</i> イベントがその月の同じ日に繰り返すことを許可します。
 Daily: 毎日
@@ -697,9 +447,6 @@ Weekly: 毎週
 Monthly: 毎月
 by day: 第 1 月曜など
 by date: 日指定
-#
-# << MISSING >>
-# by position:
 Yearly: 毎年
 Manual: 手動
 Expert Mode: エキスパートモード
@@ -712,56 +459,9 @@ repeat-frequency-help: イベントがどれくらい頻繁に繰り返さなけ
 Frequency: 頻度
 Weekdays Only: 平日のみ
 Week Start: 週はじめ
-#
-# << MISSING >>
-# repeat-bydayextended-help:
-# English text: Allows date selection based on day of week. 
-#
 ByDay: 日で指定
 All: 全て
-#
-# << MISSING >>
-# repeat-month-help:
-# English text: Specifies which months the event should repeat in.
-#
 ByMonth: 月で指定
-#
-# << MISSING >>
-# repeat-bysetpos-help:
-# English text: Allows date selection based on position withing the month.
-#
-#
-# << MISSING >>
-# BySetPos:
-#
-# << MISSING >>
-# repeat-bymonthdayextended-help:
-# English text: Allows date selection based on date.
-#
-#
-# << MISSING >>
-# ByMonthDay:
-#
-# << MISSING >>
-# repeat-byweekno-help:
-# English text: Allows user to specify a list of weeks to repeat event (1,2...53,-53,-52...-1).
-#
-#
-# << MISSING >>
-# ByWeekNo:
-#
-# << MISSING >>
-# repeat-byyearday-help:
-# English text: Allows user to specify a list of year days to repeat event (1,2...366,-366,-365...-1).
-#
-#
-# << MISSING >>
-# ByYearDay:
-#
-# << MISSING >>
-# repeat-exceptions-help:
-# English text: Additional days that this event should or should not occur on.
-#
 Exclusions: 除外
 Inclusions: 内包
 Add Exception: 例外を追加する
@@ -806,9 +506,6 @@ Source: ソース
 Color: 色
 Duplicates: 複製
 Show layer events that are the same as your own: 自身と同じレイヤーイベントを見せる
-#
-# << MISSING >>
-# Add to Others:
 Add to My Calendar: マイカレンダーに追加
 Delete layer: レイヤーを削除する
 Are you sure you want to delete this layer?: このレイヤーを削除しても良いですか?
@@ -835,39 +532,12 @@ Is public calendar: カレンダーを公開しますか?
 
 
 ###############################################
-# Page: edit_remotes.php
-#
-#
-# << MISSING >>
-# Edit Remote Calendar:
-#
-# << MISSING >>
-# Add Remote Calendar:
-URL: URL
-#
-# << MISSING >>
-# Create Layer:
-#
-# << MISSING >>
-# Required to View Remote Calendar:
-#
-# << MISSING >>
-# Reload:
-
-
-###############################################
 # Page: edit_remotes_handler.php
 #
 Error: エラー
 Import Results: インポート結果
 Events successfully imported: イベントのインポートに成功しました。
-#
-# << MISSING >>
-# Create a new layer to view this calendar:
 Errors: エラー
-#
-# << MISSING >>
-# There was an error parsing the import file or no events were returned:
 
 
 ###############################################
@@ -951,9 +621,6 @@ Set Password: パスワードを設定
 Deleting users not supported: ユーザーの削除はサポートされていません
 The passwords were not identical: パスワードが一致しません
 You have not entered a password: パスワードを入力していません
-#
-# << MISSING >>
-# Invalid characters in login:
 Username can not be blank: ユーザー名は空にできません。
 
 
@@ -1007,19 +674,9 @@ Display days with events in bold in year view: 年間表示でイベントのあ
 Time interval: 時間間隔
 time-interval-help: 週間表示と日間表示で時間区画がどれくらいの時間あるか指定します。
 Auto-refresh calendars: カレンダーの自動更新
-#
-# << MISSING >>
-# auto-refresh-help:
-# English text: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
-#
 Auto-refresh time: 時間の自動更新
 auto-refresh-time-help: 自動更新を有効にした場合、これは自動更新の時間を指定します。
 Nonuser: 非ユーザーカレンダー
-#
-# << MISSING >>
-# user-customize-color:
-# English text: Specifies whether users are allowed to modify their own color scheme.
-#
 enable-gradient-help: Use gradient colors for cell backgrounds. セル背景に使用するグラデーション色です。
 Manually entering color values: 手動で色の値を入力
 colors-help: すべての色は「#RRGGBB」の 16 進数での書式で指定するべきで、「RR」は赤を 16 進数で、「GG」は緑を 16 進数で、「BB」は青を 16 進数で指定します。
@@ -1036,9 +693,6 @@ Report Bug: バグ報告
 #
 Adding/Editing Calendar Entries: カレンダーのエントリの追加/編集
 Repeat Type: 繰返しタイプ
-#
-# << MISSING >>
-# For More Information...:
 Repeat End Date: 繰返し終了日
 Repeat Day: 繰返し日
 repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
@@ -1048,27 +702,12 @@ repeat-day-help: Specifies which days of the week the event should repeat on.  T
 # Page: help_import.php
 #
 Import: インポート
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
 The following entries will not be imported: 次のエントリはインポートされなかったでしょう
 Entries older than the current date: エントリは現在の期日より古いです
-#
-# << MISSING >>
-# Entries created in the Palm Desktop that have not been HotSync'd:
-#
-# << MISSING >>
-# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
 Therefore, updates should be made in the Palm Desktop.: したがって、Palm デスクトップで更新されるべきです。
 This form will import vCalendar (.vcs) 1.0 events: このフォームは vCalendar (.vcs) 1.0 イベントとしてインポートするでしょう
 The following formats have been tested: 次の形式がテストされました。
 This form will import iCalendar (.ics) events: このフォームは iCalendar (.ics) イベントをインポートするでしょう
-#
-# << MISSING >>
-# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
@@ -1080,24 +719,12 @@ Help Index: ヘルプ索引
 ###############################################
 # Page: help_layers.php
 #
-#
-# << MISSING >>
-# Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.:
 Add/Edit/Delete: 追加/編集/削除
-#
-# << MISSING >>
-# Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
 Specifies the user that you would like to see displayed in your calendar.: カレンダーに表示され、見て欲しいユーザーを指定します。
 The text color of the new layer that will be displayed in your calendar.: あなたのカレンダーに表示される新しいレイヤーのテキスト色です。
 If checked, events that are duplicates of your events will be shown.: チェックした場合、イベントの複製であるイベントが表示されるでしょう。
 Disabling: 無効にする
-#
-# << MISSING >>
-# Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
 Enabling: 有効にする
-#
-# << MISSING >>
-# Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
 
 
 ###############################################
@@ -1109,50 +736,15 @@ When I am the boss: 上司の場合
 Email me event notification: イベント通知を自分にメールする
 email-boss-notifications-help: 上司がイベント通知として電子メールを受信する場合に指定します。
 I want to approve events: イベントの認証をしたい
-#
-# << MISSING >>
-# boss-approve-event-help:
-# English text: Specifies whether the boss will be required to approve events added by assistants.
-#
 Subscribe/Publish: 購読/公開
-#
-# << MISSING >>
-# allow-remote-subscriptions-help:
-# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# remote-subscriptions-url-help:
-# English text: Displays the URL remote users should use to subscribe to your calendar.
-#
 Allow remote publishing: リモート公開を許可する
-#
-# << MISSING >>
-# allow-remote-publishing-help:
-# English text: Specifies if a remote iCal client can publish events back to WebCalendar
-#
-#
-# << MISSING >>
-# remote-publishing-url-help:
-# English text: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
-#
 rss-feed-url-help: RSS フィードにアクセスするための URL
 Enable FreeBusy publishing: FreeBusy 公開を有効にする
-#
-# << MISSING >>
-# freebusy-enabled-help:
-# English text: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
-#
 freebusy-url-help: ユーザーの FreeBusy リストにアクセスするための URL
 
 
 ###############################################
 # Page: help_uac.php
-#
-#
-# << MISSING >>
-# User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
-# English text: User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
 #
 If disabled, this user will not see you in the participants list.: 無効の場合、このユーザーは参加者一覧を閲覧できないでしょう。
 If disabled, this user will not be able to send you emails.: 無効の場合、このユーザーは電子メールを送ることができないでしょう。
@@ -1186,9 +778,6 @@ Repeated items are imported separately. Prior imports are not overwritten.: 繰�
 ###############################################
 # Page: import_handler.php
 #
-#
-# << MISSING >>
-# Events from prior import marked as deleted:
 Conflicting events: イベントが衝突中
 The import file contained no data: インポートファイルの中身がありません。
 
@@ -1216,27 +805,6 @@ Approve/Confirm: 承認/確認
 Approve this entry?: エントリを承認しますか?
 Reject: 拒否
 Reject this entry?: エントリを拒否しますか?
-#
-# << MISSING >>
-# Check All:
-#
-# << MISSING >>
-# Uncheck All:
-#
-# << MISSING >>
-# Approve Selected:
-#
-# << MISSING >>
-# Approve Selected entries?:
-#
-# << MISSING >>
-# Reject Selected:
-#
-# << MISSING >>
-# Reject Selected entries?:
-#
-# << MISSING >>
-# Emails Will Not Be Sent:
 No unapproved entries for: 次のユーザーの未承認イベント:
 Unapproved Entries: 未承認イベント
 Not authorized: 認証していません
@@ -1277,63 +845,14 @@ Add New NonUser Calendar: 非ユーザーのカレンダーに新規追加
 # Page: pref.php
 #
 Save Preferences: 設定を保存
-#
-# << MISSING >>
-# Public Access calendar:
-#
-# << MISSING >>
-# Modify Non User Calendar Preferences:
-#
-# << MISSING >>
-# Return to My Preferences:
 Custom Scripts: カスタムスクリプト
 Timezone Selection: タイムゾーンの選択
-#
-# << MISSING >>
-# entry-interval-help:
-# English text: Sets minute interval when editing entry times
-#
-#
-# << MISSING >>
-# Entry interval:
 hour: 時間
 minute: 分
-#
-# << MISSING >>
-# theme-reload-help:
-# English text: Due to CSS caching, a page reload may be required
-#
-#
-# << MISSING >>
-# Page may need to be reloaded for new Theme to take effect:
 Email format preference: 電子メールの書式設定
 HTML: HTML
 Plain Text: ただのテキスト
-#
-# << MISSING >>
-# display_byproxy-help:
-# English text: Display the real creator on view_entry page
-#
 Display if created by Assistant: もしアシスタントの作成も表示
-#
-# << MISSING >>
-# allow-view-subscriptions-help:
-# English text: Allows restricting remote access to Private or Confidential entries 
-#
-#
-# << MISSING >>
-# Allow remote viewing of:
-#
-# << MISSING >>
-# entries:
-
-
-###############################################
-# Page: publish.php
-#
-#
-# << MISSING >>
-# No user specified:
 
 
 ###############################################
@@ -1353,21 +872,10 @@ Records deleted from: レコードを削除しました 対象:
 #
 Email address can not be blank: 電子メールアドレスは空にできません。
 Illegal characters in login: 間違った文字がログイン名にあります。
-#
-# << MISSING >>
-# A new WebCalendar account has been set up for you:
 Your username is: ユーザー名は
 Your password is: パスワードは
 Please visit: 訪問してください
-#
-# << MISSING >>
-# to log in and start using your account:
 You may change your password after logging in the first time: 最初をログインした後にパスワードを変更するでしょう。
-#
-# << MISSING >>
-# If you received this email in error:
-# English text: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note 
-#
 Administrator: 管理者
 Welcome: ようこそ
 Registration: 登録
@@ -1382,18 +890,7 @@ Submit: 送信
 # Page: reject_entry.php
 #
 Continue: 続ける
-#
-# << MISSING >>
-# (Your comments will be included in an email to the other participants):
 An appointment has been rejected by: 予定が以下の人によって拒否されました。
-
-
-###############################################
-# Page: remotes.php
-#
-#
-# << MISSING >>
-# Add New Remote Calendar:
 
 
 ###############################################
@@ -1453,9 +950,6 @@ more: もっと
 ###############################################
 # Page: users.php
 #
-#
-# << MISSING >>
-# Remote Calendars:
 Add New User: 新しいユーザーを追加
 denotes administrative user: 管理ユーザーを表示
 
@@ -1463,12 +957,6 @@ denotes administrative user: 管理ユーザーを表示
 ###############################################
 # Page: usersel.php
 #
-#
-# << MISSING >>
-# No form specified!:
-#
-# << MISSING >>
-# No listid specified!:
 Reset: リセット
 
 
@@ -1518,9 +1006,6 @@ Accepted: 許可済
 Needs-Action: 操作が必要
 Declined: 拒否済
 Completed: 完了しました
-#
-# << MISSING >>
-# by:
 Percentage Complete: パーセント完了
 External User: 外部ユーザー
 Update Task Percentage: タスク率を更新する
@@ -1540,13 +1025,7 @@ Delete entry only for this date: エントリを今回分だけ削除する
 Edit entry: エントリを編集する
 from calendar of: 次のカレンダーから:
 Copy entry: エントリをコピーする
-#
-# << MISSING >>
-# This will delete the entry from your boss\' calendar.:
 This will delete the entry from your calendar.: このエントリをあなたのカレンダーから削除します。
-#
-# << MISSING >>
-# from your boss' calendar:
 Do you want to add this entry to your calendar?: このエントリをあなたのカレンダーに追加しますか?
 This will add the entry to your calendar.: これによってこのエントリをあなたのカレンダーに追加します
 Email all participants: 参加者全員にメール送信する
@@ -1600,30 +1079,18 @@ Dec: 12 月
 ###############################################
 # Page: includes/functions.php
 #
-#
-# << MISSING >>
-# Unauthorized:
 __month__ __dd__, __yyyy__: __yyyy__ 年 __month__ __dd__ 日
 __month__ __yyyy__: __yyyy__ 年 __month__
 __mm__/__dd__/__yyyy__: __yyyy__ 年 __mm__ 月 __dd__ 日
 This event is private: このイベントはプライベートです
-#
-# << MISSING >>
-# Conf.:
 WK: 週
 Task Name: タスク名
-#
-# << MISSING >>
-# Task Due Date:
 TASKS: タスク一覧
 Task_Title: 題名
 Due: 予定
 View this task: このタスクを閲覧する
 View this event: このイベントを閲覧する
 exceeds limit of XXX events per day: 1 日のイベント数の制限である XXX 個を超えました。
-#
-# << MISSING >>
-# on:
 You have XXX unapproved entries: XXX 件の未承認エントリを持っています。
 January: 1 月
 February: 2 月
@@ -1659,9 +1126,6 @@ Wed: 水
 Thu: 木
 Fri: 金
 Sat: 土
-#
-# << MISSING >>
-# Schedule an appointment for:
 All Attendees: 全参加者
 Busy: 予約済み
 Tentative: 暫定的
@@ -1669,25 +1133,7 @@ Changes successfully saved: 変更の保存に成功しました。
 The following error occurred: 以下のエラーが起きました
 You are not authorized: 権限を与えられていません。
 day: 日
-#
-# << MISSING >>
-# before:
-#
-# << MISSING >>
-# after:
-#
-# << MISSING >>
-# start:
-#
-# << MISSING >>
-# end:
 Error approving event: イベント承認エラー
-#
-# << MISSING >>
-# Error deleting event:
-#
-# << MISSING >>
-# Error rejecting event:
 Generate printer-friendly version: 印刷用バージョンを作成
 Printer Friendly: 印刷用表示
 Event created: イベントを作成しました。
@@ -1707,27 +1153,7 @@ Journal updated: 記事を更新しました
 Journal deleted: 記事を削除しました
 Notification sent: 通知送信
 Reminder sent: リマインダー送信
-#
-# << MISSING >>
-# New user (self registration):
-#
-# << MISSING >>
-# New user via email (self registration):
 Attachment: 添付
-#
-# << MISSING >>
-# Delete User:
-
-
-###############################################
-# Page: includes/help_list.php
-#
-#
-# << MISSING >>
-# Index:
-#
-# << MISSING >>
-# Page:
 
 
 ###############################################
@@ -1746,36 +1172,21 @@ Manage calendar of: カレンダー管理:
 ###############################################
 # Page: includes/translate.php
 #
-#
-# << MISSING >>
-# Browser Language Not Found:
-#
-# << MISSING >>
-# not supported:
-#
-# << MISSING >>
-# Browser-defined:
 English: 英語
 English-US: 英語(米国)
 Basque: バスク語
 Bulgarian: ブルガリア語
 Catalan: カタロニア語
-Chinese (Traditional/Big5): 中国語 (Traditional/Big5)
 Chinese (Simplified/GB2312): 中国語 (Simplified/GB2312)
+Chinese (Traditional/Big5): 中国語 (Traditional/Big5)
 Czech: チェコ語
 Danish: デンマーク語
 Dutch: オランダ語
 Estonian: エストニア語
 Finnish: フィンランド語
 French: フランス語
-#
-# << MISSING >>
-# French (UTF8):
 Galician: ガリシア語
 German: ドイツ語
-#
-# << MISSING >>
-# Greek:
 Holo (Taiwanese): Holo (台湾語)
 Hungarian: ハンガリー語
 Icelandic: アイスランド語
@@ -1792,9 +1203,9 @@ Spanish: スペイン語
 Swedish: スウェーデン語
 Turkish: トルコ語
 Welsh: ウェールズ語
-task: タスク
 event: イベント
 journal: ジャーナル
+task: タスク
 
 
 ###############################################
@@ -1813,57 +1224,6 @@ no such user: ユーザーが居ません。
 ###############################################
 # Page: includes/xcal.php
 #
-#
-# << MISSING >>
-# MO:
-#
-# << MISSING >>
-# TU:
-#
-# << MISSING >>
-# WE:
-#
-# << MISSING >>
-# TH:
-#
-# << MISSING >>
-# FR:
-#
-# << MISSING >>
-# SA:
-#
-# << MISSING >>
-# SU:
-#
-# << MISSING >>
-# Interval:
-#
-# << MISSING >>
-# Months:
-#
-# << MISSING >>
-# Month Days:
-#
-# << MISSING >>
-# Days:
-#
-# << MISSING >>
-# Weeks:
-#
-# << MISSING >>
-# Position:
-#
-# << MISSING >>
-# Until:
-#
-# << MISSING >>
-# Count:
-#
-# << MISSING >>
-# Inclusion Dates:
-#
-# << MISSING >>
-# Exclusion Dates:
 Unnamed Event: 名称未設定イベント
 Event Imported: イベントをインポートしました。
 
@@ -1910,25 +1270,6 @@ Invalid color: 無効色
 
 
 ###############################################
-# Page: includes/js/edit_nonuser.php
-#
-#
-# << MISSING >>
-# Calendar ID can not be blank:
-#
-# << MISSING >>
-# Both first and last names can not be blank:
-
-
-###############################################
-# Page: includes/js/edit_remotes.php
-#
-#
-# << MISSING >>
-# URL can not be blank:
-
-
-###############################################
 # Page: includes/js/export_import.php
 #
 File type does not match Import Format: ファイルの種類がインポート形式と一致しません。
@@ -1950,46 +1291,6 @@ provide_address: 少なくとも 1 つの受取人の電子メールアドレス
 mailer_not_supported: メーラーをサポートしていません。
 execute: 実行できません。
 instantiate: Could not instantiate mail function mail 関数をインスタンスできません。
-#
-# << MISSING >>
-# authenticate:
-# English text: SMTP Error: Could not authenticate
-#
-#
-# << MISSING >>
-# from_failed:
-# English text: The following From address failed:
-#
-#
-# << MISSING >>
-# recipients_failed:
-# English text: SMTP Error: The following recipients failed:
-#
-#
-# << MISSING >>
-# data_not_accepted:
-# English text: SMTP Error: Data not accepted
-#
-#
-# << MISSING >>
-# connect_host:
-# English text: SMTP Error: Could not connect to SMTP host:
-#
-#
-# << MISSING >>
-# file_access:
-# English text: Could not access file:
-#
-#
-# << MISSING >>
-# file_open:
-# English text: File Error Could not open file:
-#
-#
-# << MISSING >>
-# encoding:
-# English text: Unknown encoding:
-#
 
 
 ###############################################
@@ -1998,16 +1299,10 @@ instantiate: Could not instantiate mail function mail 関数をインスタン�
 This Week: 今週
 This Month: 今月
 This Year: 今年
-#
-# << MISSING >>
-# Exit:
 Add New Event: 新規イベントを追加する
 Delete Entries: エントリを削除する
 Another User\'s Calendar: 他のユーザーのカレンダー
 My Views: 自分の表示
-#
-# << MISSING >>
-# Manage Calendar of:
 My Reports: 自分の報告
 My Profile: 自分のプロフィール
 Public Calendar: 公開カレンダー
@@ -2018,59 +1313,8 @@ User Manager: ユーザー管理
 ###############################################
 # Page: tools/send_reminders.php
 #
-#
-# << MISSING >>
-# This is a reminder for the task detailed below.:
 This is a reminder for the event detailed below.: これは以下のイベントのリマインダーです
-#
-# << MISSING >>
-# Pecentage Complete:
 Reminder: リマインダー
-
-
-###############################################
-# Page: tools/reload_remotes.php
-#
-#
-# << MISSING >>
-# Include Path:
-#
-# << MISSING >>
-# Deleting events for:
-#
-# << MISSING >>
-# Importing events for:
-#
-# << MISSING >>
-# No data returned from:
-#
-# << MISSING >>
-# for non-user calendar:
-#
-# << MISSING >>
-# No Remote Calendars found:
-#
-# << MISSING >>
-# Remote Calendars not enabled:
-
-
-###############################################
-# Page: install/install_functions.php
-#
-#
-# << MISSING >>
-# Error updating webcal_config:
-#
-# << MISSING >>
-# Error updating webcal_user_pref:
-#
-# << MISSING >>
-# Perl script required:
-# English text: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
-#
-#
-# << MISSING >>
-# Your previous version of WebCalendar requires updating several database tables.:
 
 
 ###############################################
@@ -2078,17 +1322,8 @@ Reminder: リマインダー
 #
 WebCalendar Installation Wizard: WebCalendar インストールウィザード
 Step: ステップ
-#
-# << MISSING >>
-# Single-User:
 Failure Reason: 失敗の理由
 You must manually create database: 手動でデータベースを作成しなければなりません
-#
-# << MISSING >>
-# Database Cache Directory:
-#
-# << MISSING >>
-# Test Settings:
 Create New: 新規作成
 Database Name: データベース名
 Back: 戻る
@@ -2096,12 +1331,6 @@ Timezone Conversion Successful: タイムゾーンの変換に成功しました
 Error Unable to write to file: ファイルの書き込みでエラーです
 Successful Login: ログインに成功しました。
 Invalid Login: 無効なログイン名
-#
-# << MISSING >>
-# required only if Safe Mode is On:
-#
-# << MISSING >>
-# required only if Remote Calendars are used:
 needed for Gradient Image Backgrounds: 背景のグラデーション画像に必要です。
 Passwords do not match: パスワードが一致しません。
 Unable to write password to settings.php file: ファイル settings.php に書き込めませんでした。
@@ -2110,60 +1339,26 @@ Connection Successful: 接続に成功しました。
 Please go to next page to continue installation: インストールを続けるには次のページに移動してください。
 Correct your entries or click the <b>Create New</b> button to continue installation: エントリを修正するか、インストールを継続するために<b>新規作成する</b>ボタンをクリックしてください。
 Correct your entries and try again: エントリを修正し、再度試みます。
-#
-# << MISSING >>
-# does not exist:
-#
-# << MISSING >>
-# is not writable:
 Error Converting Timezone: タイムゾーンの変換にエラーです。
 Please change the file permissions of this file: このファイルのパーミッションを変更してください。
-#
-# << MISSING >>
-# Please change includes dir premission:
-# English text: Please change the file permissions of your includes directory to allow writing by other users
-#
 Your settings have been saved: 設定を保存しました。
 Error you must specify a\\nSingle-User Login: エラーです。シングルユーザーログインを指定しなければなりません。
 Server URL must end with: Server URL は次の文字で終わらなければなりません:
 Full Path (no backslashes): フルパス (バックスラッシュは不要です)
 The password contains illegal characters.: パスワードに不当な文字が含まれています。
-#
-# << MISSING >>
-# This installation wizard will guide you...:
-# English text: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
-#
 PHP Version Check: PHP のバージョンを確認する
 Check to see if PHP 4.1.0 or greater is installed: PHP 4.1.0 以上がインストールされているか確認
 PHP version: PHP バージョン
-#
-# << MISSING >>
-# PHP Settings:
 Detailed PHP Info: PHP の詳細情報
 Session Check: セッションの確認
 To test the proper operation of sessions, reload this page: セションの適切な操作を確認するためには、このページに再読み込みしてください。
 You should see the session counter increment each time: セッションカウンターが毎回増加していることを確認するべきです。
 SESSION COUNTER: セッションカウンター
 Settings.php Status: Settings.php の状態
-#
-# << MISSING >>
-# The file permissions of <b>settings.php</b> are set...:
-# English text: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
-#
-#
-# << MISSING >>
-# The file permissions of the <b>includes</b> directory are set...:
-# English text: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
-#
 Your <b>settings.php</b> file appears to be valid: <b>settings.php</b> ファイルは有効に見えます。
 Configuration Wizard Password: ウィザードパスワードの設定
 Create Settings File Password: 設定ファイルのパスワードを作成する
 Password (again): パスワード (確認)
-#
-# << MISSING >>
-# db setup directions...:
-# English text: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
-#
 Database Status: データベースの状態
 Supported databases for your PHP installation: インストール済 PHP でサポートされたデータベース
 Your current database settings are able to access the database: 現在のデータベース設定はデータベースにアクセスできます。
@@ -2180,37 +1375,21 @@ go back to the previous page and correct your settings: 前のページに戻っ
 The database requires some data input: データベースはいくつかのデータの入力を要求します。
 Click <b>Update Database</b> to complete the upgrade: <b>データベースをアップグレードする</b> をクリックしてアップグレードを完了してください。
 This appears to be an upgrade from version: これは次のバージョンからのアップグレードに見えます:
-#
-# << MISSING >>
-# In this section we will perform the required database changes to bring your database up to the required level:
 If you are using a fully supported database, this step will be performed automatically for you: 全面的にサポートされたデータベースを使用していれば、このステップは自動的に実行されるでしょう。
 If not, the required SQL can be displayed and you should be able: そうでない場合、要求された SQL を表示することができます。
 to cut &amp; paste it into your database server query window: またそれを切り取り、データベースサーバーの照会ウィンドウに貼り付けできなければなりません。
 No database actions are required: データベース操作を要求しません
 The following database actions are required: 次のデータベース操作が必要です。
 ODBC Underlying Database: ODBC の元のデータベース
-#
-# << MISSING >>
-# Automatic installation not supported:
-# English text: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the sql supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
-#
 This may take several minutes to complete: これが完了するには数分かかるかもしれません。
 Install Database: データベースをインストールする
 Update Database: データベースをアップデートする
 Display Required SQL: 要求された SQL を表示する
-#
-# << MISSING >>
-# Return to previous page after processing sql:
-# English text: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
-#
 This is the final step in setting up your WebCalendar Installation: これは、WebCalendar のインストール設定における最終ステップです。
 Timezone Conversion: タイムゾーン変換
 It appears that you have: おそらく
 NOT: NOT
 converted your existing WebCalendar event data to GMT: 既存のWebCalendarイベントデータを GMT に変換しました。
-#
-# << MISSING >>
-# If you have, you may ignore this notice and not proceed with the conversion:
 If this is a new installation, you may also ignore this notice.: これが新規インストールの場合、この通知は無視するでしょう。
 Convert Data to GMT: GMT にデータを変換する
 Application Settings: アプリケーション設定
@@ -2221,9 +1400,6 @@ HTTP-based authentication was detected: HTTP ベースの認証を検知しま�
 User authentication is being handled by your web server: ユーザー認証はウェブサーバーで扱います。
 You should select 'Web Server' from the list of 'User Authentication' choices below: 「ユーザー認証」選択の一覧からから「ウェブサーバー」を選ばなければなりません
 Create Default Admin Account: デフォルト管理アカウントを作成する
-#
-# << MISSING >>
-# Admin Account Not Found:
 User Authentication: ユーザー認証
 Web-based via WebCalendar (default): WebCalendar でウェブベース(デフォルト)
 Web Server: ウェブサーバー

@@ -1,10 +1,10 @@
-# Use this as a starting point to translate this application into
-# another language.  The format is "English text: translated text"
-# There cannot be a ":" in the English text.
+# See translations/English-US.txt for instructions.
+#
 # Translated by: liaobin@jite.net shenyi@jite.net
 # Last update: 2003-8-5
+#
 # $Id$
-# Translation last updated on 10-05-2006
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -19,65 +19,11 @@ charset: gb2312
 #
 Database error: 数据库错误
 Cancel: 取消
-#
-# << MISSING >>
-# DEFAULT CONFIGURATION:
 Save: 保存
 Public Access: 公共的
 Admin: 管理
-#
-# << MISSING >>
-# User Access Control:
-#
-# << MISSING >>
-# Allow Access to Other Users' Calendar:
-#
-# << MISSING >>
-# Grant This User Access to My Calendar:
 Go: 前往
-#
-# << MISSING >>
-# Type:
 Calendar: 日历
-#
-# << MISSING >>
-# View Event:
-#
-# << MISSING >>
-# View:
-#
-# << MISSING >>
-# Edit:
-#
-# << MISSING >>
-# Approve/Reject:
-#
-# << MISSING >>
-# Events:
-#
-# << MISSING >>
-# Tasks:
-#
-# << MISSING >>
-# Journals:
-#
-# << MISSING >>
-# Can Invite:
-#
-# << MISSING >>
-# Can Email:
-#
-# << MISSING >>
-# Can See Time Only:
-#
-# << MISSING >>
-# Assistant:
-#
-# << MISSING >>
-# Select All:
-#
-# << MISSING >>
-# Clear All:
 Public: 公众的
 Confidential: 机密的
 Private: 私人的
@@ -86,9 +32,6 @@ Private: 私人的
 ###############################################
 # Page: activity_log.php
 #
-#
-# << MISSING >>
-# System Log:
 Activity Log: 活动日志
 User: 用户
 Date: 日期
@@ -102,14 +45,8 @@ Next: 下一页
 ###############################################
 # Page: add_entry.php
 #
-#
-# << MISSING >>
-# is already on your calendar.:
 Invalid entry id: 无效的纪录ID
 This is a private event and may not be added to your calendar.: 这是一个私人事件不能添加到您的日历中.
-#
-# << MISSING >>
-# This is a confidential event and may not be added to your calendar.:
 Error adding event: 添加事件错误
 
 
@@ -127,751 +64,86 @@ System Settings: 系统设置
 Help: 说明
 Settings: 设置
 Groups: 组
-#
-# << MISSING >>
-# NonUser Calendars:
-#
-# << MISSING >>
-# Other:
 Email: 邮件
 Colors: 颜色
-#
-# << MISSING >>
-# System options:
-#
-# << MISSING >>
-# app-name-help:
-# English text: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
-#
 Application Name: 应用名称
-#
-# << MISSING >>
-# Translated Name:
 Title: 标题
-#
-# << MISSING >>
-# server-url-help:
-# English text: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
-#
 Server URL: 系统URL
-#
-# << MISSING >>
-# home-url-help:
-# English text: Specifies the home URL for the applicaiton. This can be an absolute or relative
-#
-#
-# << MISSING >>
-# Home URL:
 language-help: 请选择使用的语言.
 Language: 语言
 Your browser default language is: 您的浏览器预设的语言是
-#
-# << MISSING >>
-# Allow user to use themes:
-#
-# << MISSING >>
-# themes-help:
-# English text: Allows mass update of configuration settings. Lower case labels are user pref only.
-#
-#
-# << MISSING >>
-# Themes:
-#
-# << MISSING >>
-# AVAILABLE THEMES:
 None: 无
-#
-# << MISSING >>
-# Preview:
-#
-# << MISSING >>
-# Site customization:
-#
-# << MISSING >>
-# custom-script-help:
-# English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
-#
-#
-# << MISSING >>
-# Custom script/stylesheet:
-#
-# << MISSING >>
-# custom-header-help:
-# English text: Allows a custom HTML snippet to be included in the top of every page.
-#
-#
-# << MISSING >>
-# Custom header:
-#
-# << MISSING >>
-# custom-trailer-help:
-# English text: Allows a custom HTML snippet to be included at the end of every page.
-#
-#
-# << MISSING >>
-# Custom trailer:
-#
-# << MISSING >>
-# enable-external-header-help:
-# English text: Allows the custom trailer to be loaded from an external file
-#
-#
-# << MISSING >>
-# Allow external file for header/script/trailer:
-#
-# << MISSING >>
-# Allow user to override header/trailer:
-#
-# << MISSING >>
-# Date and Time:
-#
-# << MISSING >>
-# tz-help:
-# English text: Specifies how many hours to adjust the time from server time to local time.
-#
-#
-# << MISSING >>
-# Server Timezone Selection:
-#
-# << MISSING >>
-# Your current GMT offset is:
 hours: 时
-#
-# << MISSING >>
-# display-general-use-gmt-help:
-# English text: If enabled, common dates/times are displayed as GMT
-#
-#
-# << MISSING >>
-# Display Common Use Date/Times as GMT:
 date-format-help: 描述合适的日期格式
 Date format: 日期格式
-#
-# << MISSING >>
-# Small Task Date:
-#
-# << MISSING >>
-# display-week-starts-on:
-# English text: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
-#
 Week starts on: 每周开始于
 Sunday: 星期日
 Monday: 星期一
-#
-# << MISSING >>
-# time-format-help:
-# English text: Specifies which time format to use: <br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.  <br /><em>24 hour:</em> Display times as 300, 2030, etc.
-#
 Time format: 时间格式
 12 hour: 12时制
 24 hour: 24时制
-#
-# << MISSING >>
-# timed-evt-len-help:
-# English text: Specifies input method for determining the length of a timed event.
-#
-#
-# << MISSING >>
-# Specify timed event length by:
 Duration: 持续时间
-#
-# << MISSING >>
-# End Time:
-#
-# << MISSING >>
-# work-hours-help:
-# English text: Specifies the time range to display for the day view.
-#
 Work hours: 月历可显示之工作时间
 From: 自
 to: 至
-#
-# << MISSING >>
-# Appearance:
 preferred-view-help: 描述默认的视图 (天, 周, 月, 或年).
 Preferred view: 查看选择
-#
-# << MISSING >>
-# Allow top menu:
-#
-# << MISSING >>
-# Date Selectors position:
-#
-# << MISSING >>
-# menu-themes-help:
-# English text: Sets the colors and style of the top menu
-#
-#
-# << MISSING >>
-# Menu theme:
 fonts-help: 字体帮助
 Fonts: 字体
-#
-# << MISSING >>
-# display-sm_month-help:
-# English text: If enabled, displays small months in month views
-#
-#
-# << MISSING >>
-# Display small months:
-#
-# << MISSING >>
-# display-weekends-help:
-# English text: Include weekends when viewing a week.
-#
-#
-# << MISSING >>
-# Display weekends:
-#
-# << MISSING >>
-# display-alldays-help:
-# English text: Display previous and next months days in month views, filling all cells.
-#
-#
-# << MISSING >>
-# Display all days in month view:
-#
-# << MISSING >>
-# display-week-number-help:
-# English text: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
-#
 Display week number: 显示周数(以年計算)
-#
-# << MISSING >>
-# display-desc-print-day-help:
-# English text: Include event descriptions in printer-friendly version of day view.
-#
-#
-# << MISSING >>
-# Display description in printer day view:
-#
-# << MISSING >>
-# yearly-shows-events-help:
-# English text: On the yearly view, display days that contain events in a bold font.
-#
-#
-# << MISSING >>
-# Display days with events in bold in month and year views:
-#
-# << MISSING >>
-# display-minutes-help:
-# English text: If enabled, minutes ending with :00 will always be displayed
-#
-#
-# << MISSING >>
-# Display 00 minutes always:
-#
-# << MISSING >>
-# allow-view-add-help:
-# English text: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
-#
 Include add event link in views: 包括在视图中添加事件联接
-#
-# << MISSING >>
-# lunar-help:
-# English text: If enabled, will display small icons representing the lunar phases each month
-#
-#
-# << MISSING >>
-# Display Lunar Phases in month view:
-#
-# << MISSING >>
-# Restrictions:
-#
-# << MISSING >>
-# allow-view-other-help:
-# English text: Specifies whether one user may view another user's calendar.
-#
 Allow viewing other user's calendars: 允许查看其他用户日历
-#
-# << MISSING >>
-# require-approvals-help:
-# English text: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
-#
 Require event approvals: 需要事件核准
-#
-# << MISSING >>
-# display-unapproved-help:
-# English text: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
-#
 Display unapproved: 显示未核准的
 conflict-check-help: 冲突-检查-帮助
 Check for event conflicts: 检查事件冲突
 conflict-months-help: 冲突-月-帮助
 Conflict checking months: 冲突检查月数
-#
-# << MISSING >>
-# conflict-check-override-help:
-# English text: Allows users to override event conflicts and schedule two or more events for the same time.
-#
 Allow users to override conflicts: 允许用户修改冲突
-#
-# << MISSING >>
-# limit-appts-help:
-# English text: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
-#
 Limit number of timed events per day: 限制每天已安排事件的数量
-#
-# << MISSING >>
-# limit-appts-number-help:
-# English text: Specifies the maximum number of timed events a user can have in a single day.
-#
 Maximum timed events per day: 每天最大已安排时间实践的数量
-#
-# << MISSING >>
-# crossday-help:
-# English text: If enabled, events that span days will be displayed on seperate days
-#
-#
-# << MISSING >>
-# Disable Cross-Day Events:
-#
-# << MISSING >>
-# disable-location-field-help:
-# English text: Selecting "Yes" will remove the "Location" field from event information pages
-#
-#
-# << MISSING >>
-# Disable Location field:
-#
-# << MISSING >>
-# disable-priority-field-help:
-# English text: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
-#
 Disable Priority field: 关闭优先级域
-#
-# << MISSING >>
-# disable-access-field-help:
-# English text: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
-#
 Disable Access field: 关闭访问域
-#
-# << MISSING >>
-# disable-participants-field-help:
-# English text: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
-#
-#
-# << MISSING >>
-# Disable Participants field:
-#
-# << MISSING >>
-# disable-repeating-field-help:
-# English text: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
-#
 Disable Repeating field: 关闭重复域
-#
-# << MISSING >>
-# allow-html-description-help:
-# English text: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
-#
-#
-# << MISSING >>
-# Allow HTML in Description:
-#
-# << MISSING >>
-# Popups:
-#
-# << MISSING >>
-# disable-popups-help:
-# English text: Disable popups from calendar views
-#
-#
-# << MISSING >>
-# Disable Pop-Ups:
-#
-# << MISSING >>
-# popup-includes-siteextras-help:
-# English text: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
-#
-#
-# << MISSING >>
-# Display Site Extras in popup:
-#
-# << MISSING >>
-# popup-includes-participants-help:
-# English text: If enabled, participants are displayed in event popups.
-#
-#
-# << MISSING >>
-# Display Participants in popup:
-#
-# << MISSING >>
-# Miscellaneous:
 remember-last-login-help: 记录最后一次登录
 Remember last login: 记住最后一次登录
-#
-# << MISSING >>
-# summary_length-help:
-# English text: Maximum length of Brief Description in calendar views
-#
-#
-# << MISSING >>
-# Brief Description Length:
-#
-# << MISSING >>
-# user_sort-help:
-# English text: Determines sort order for User, Nonuser lists
-#
-#
-# << MISSING >>
-# User Sort Order:
-#
-# << MISSING >>
-# Lastname, Firstname:
-#
-# << MISSING >>
-# Firstname, Lastname:
 Plugins: 插件
 plugins-enabled-help: 允许使用插件应用程序
 Enable Plugins: 允许使用插件
-#
-# << MISSING >>
-# plugins-sort-key-help:
-# English text: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
-#
 Plugin: 插件
-#
-# << MISSING >>
-# allow-public-access-help:
-# English text: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
-#
 Allow public access: 允许公共登录
-#
-# << MISSING >>
-# public-access-default-visible:
-# English text: Events from the public calendar will automatically appear on all users' calendars
-#
-#
-# << MISSING >>
-# Public access visible by default:
-#
-# << MISSING >>
-# public-access-default-selected:
-# English text: When adding a new event, the public user will be selected by default as a participant.
-#
-#
-# << MISSING >>
-# Public access is default participant:
 public-access-view-others-help: 可以为公共日历添加其他视图
 Public access can view other users: 公共登录能查询其他用户
 public-access-can-add-help: 可以设置为公共的
 Public access can add events: 公共登录能添加事件
-#
-# << MISSING >>
-# public-access-add-requires-approval-help:
-# English text: Specifies whether events added via the public access account require approval before being displayed.
-#
-#
-# << MISSING >>
-# Public access new events require approval:
-#
-# << MISSING >>
-# public-access-sees-participants-help:
-# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
-#
-#
-# << MISSING >>
-# Public access can view participants:
-#
-# << MISSING >>
-# public-access-override-help:
-# English text: Allows event names and descriptions to be hidden on the public calendar
-#
-#
-# << MISSING >>
-# Override event name/description for public access:
-#
-# << MISSING >>
-# public-access-override-text-help:
-# English text: The text to display if the above option is enabled. If 'Not Available', it will be translated.
-#
-#
-# << MISSING >>
-# Text to display to public access:
-#
-# << MISSING >>
-# uac-enabled-help:
-# English text: Enables user-level access control
-#
-#
-# << MISSING >>
-# User Access Control enabled:
-#
-# << MISSING >>
-# groups-enabled-help:
-# English text: Enables group support, allowing users to select users by groups.
-#
 Groups enabled: 使用组
-#
-# << MISSING >>
-# user-sees-his-group-help:
-# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
-#
 User sees only his groups: 用户只能看见自己的组
-#
-# << MISSING >>
-# nonuser-enabled-help:
-# English text: If enabled, admins will have the option to add nonuser calendars
-#
 Nonuser enabled: 允许非日历用户
-#
-# << MISSING >>
-# nonuser-list-help:
-# English text: Where to display the nonuser calendars in the participant list
-#
 Nonuser list: 非日历用户清单
-#
-# << MISSING >>
-# reports-enabled-help:
-# English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
-#
 Reports enabled: 允许报告
-#
-# << MISSING >>
-# subscriptions-enabled-help:
-# English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
 Allow remote subscriptions: 允许远程投递
-#
-# << MISSING >>
-# remotes-enabled-help:
-# English text: Allows users to load remote ics files using URL
-#
-#
-# << MISSING >>
-# Allow remote calendars:
-#
-# << MISSING >>
-# rss-enabled-help:
-# English text: Specifies if a user's calendar can be obtained from a RSS feed.
-#
-#
-# << MISSING >>
-# Enable RSS feed:
-#
-# << MISSING >>
-# categories-enabled-help:
-# English text: Enables support for event categories.
-#
 Categories enabled: 允许分类
-#
-# << MISSING >>
-# icon_upload-enabled-help:
-# English text: If enabled, users can upload category icons
-#
-#
-# << MISSING >>
-# Category Icon Upload enabled:
-#
-# << MISSING >>
-# display-tasks-help:
-# English text: Display small task window on month and day calendar
-#
-#
-# << MISSING >>
-# Display small task list:
-#
-# << MISSING >>
-# display-tasks-in-grid-help:
-# English text: Display tasks in calendars along with events
-#
-#
-# << MISSING >>
-# Display tasks in Calendars:
-#
-# << MISSING >>
-# allow-external-users-help:
-# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
-#
 Allow external users: 允许其他用户
-#
-# << MISSING >>
-# external-can-receive-notification-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
-#
 External users can receive email notifications: 其他用户能接受邮件提醒
-#
-# << MISSING >>
-# external-can-receive-reminder-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
-#
-#
-# << MISSING >>
-# External users can receive email reminders:
-#
-# << MISSING >>
-# allow-self-registration-help:
-# English text: Permit new users to register themselves
-#
-#
-# << MISSING >>
-# Allow self-registration:
-#
-# << MISSING >>
-# use-blacklist-help:
-# English text: Limit access to WebCalendar functions based on IP address
-#
-#
-# << MISSING >>
-# Restrict self-registration to blacklist:
-#
-# << MISSING >>
-# allow-self-registration-full-help:
-# English text: Allow new users to complete the self-registration process on-line
-#
-#
-# << MISSING >>
-# Use self-registration email notifications:
-# English text: Generate passwords and send to new users. This should help eliminate spammers.
-#
-#
-# << MISSING >>
-# allow-attachment-help:
-# English text: Allow users to add file attachments to events.
-#
-#
-# << MISSING >>
-# Allow file attachments to events:
-#
-# << MISSING >>
-# Admin and owner can always add attachments if enabled:
-#
-# << MISSING >>
-# Participant:
-#
-# << MISSING >>
-# Anyone:
-#
-# << MISSING >>
-# allow-comments-help:
-# English text: Allow users to add comments to events.
-#
-#
-# << MISSING >>
-# Allow comments to events:
-#
-# << MISSING >>
-# Admin and owner can always add comments if enabled:
-#
-# << MISSING >>
-# email-enabled-help:
-# English text: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
-#
 Email enabled: 使用邮件已启用
-#
-# << MISSING >>
-# email-default-sender:
-# English text: Specifies the email address to specify as the sender when sending out reminders.
-#
 Default sender address: 默认邮件地址
-#
-# << MISSING >>
-# email-mailer:
-# English text: Choose email type (SMTP, PHP mail, sendmail)
-#
-#
-# << MISSING >>
-# Email Mailer:
-#
-# << MISSING >>
-# email-smtp-host:
-# English text: Hostname(s) of SMTP server(s) seperated by commas
-#
-#
-# << MISSING >>
-# SMTP Host name(s):
-#
-# << MISSING >>
-# email-smtp-port:
-# English text: SMTP Port Number (normally 25)
-#
-#
-# << MISSING >>
-# SMTP Port Number:
-#
-# << MISSING >>
-# email-smtp-auth:
-# English text: Use SMTP Authentication
-#
-#
-# << MISSING >>
-# SMTP Authentication:
-#
-# << MISSING >>
-# email-smtp-username:
-# English text: SMTP Username if using Authentication
-#
-#
-# << MISSING >>
-# SMTP Username:
-#
-# << MISSING >>
-# email-smtp-password:
-# English text: SMTP Password if using Authentication
-#
-#
-# << MISSING >>
-# SMTP Password:
 Default user settings: 默认用户设置
 email-event-reminders-help: 描述是否允许发送事件提醒邮件
 Event reminders: 事件发生时通知
-#
-# << MISSING >>
-# email-event-added:
-# English text: Specifies whether or not to send email notifications when an event is added to your calendar.
-#
 Events added to my calendar: 事件添加到我的日历时通知
-#
-# << MISSING >>
-# email-event-updated:
-# English text: Specifies whether or not to send email notifications when an event is updated on your calendar.
-#
 Events updated on my calendar: 我的日历中事件更新时通知
-#
-# << MISSING >>
-# email-event-deleted:
-# English text: Specifies whether or not to send email notifications when an event is removed from your calendar.
-#
 Events removed from my calendar: 我的日历中事件删除时通知
-#
-# << MISSING >>
-# email-event-rejected:
-# English text: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
-#
 Event rejected by participant: 事件审核未通过时通知
 Allow user to customize colors: 允许用户个性化颜色
-#
-# << MISSING >>
-# gradient-colors:
-# English text: If enabled gradient colors are used. This can greatly impact performane.
-#
-#
-# << MISSING >>
-# Enable gradient images for background colors:
-#
-# << MISSING >>
-# Not available:
 Document background: 文件背景
 Document title: 文件标题
 Document text: 文档文本
-#
-# << MISSING >>
-# My event text:
 Table grid color: 表栅格颜色
 Table header background: 表头背景颜色
 Table header text: 表头文本颜色
 Table cell background: 表格背景
 Table cell background for current day: 当天颜色
-#
-# << MISSING >>
-# Table cell background for days with events:
 Table cell background for weekends: 设置周末背景色
-#
-# << MISSING >>
-# Table cell background for other month:
-#
-# << MISSING >>
-# Week number color:
 Event popup background: 事件弹出背景颜色
 Event popup text: 事件弹出文本颜色
 
@@ -879,9 +151,6 @@ Event popup text: 事件弹出文本颜色
 ###############################################
 # Page: adminhome.php
 #
-#
-# << MISSING >>
-# Control Panel:
 Preferences: 参数设置
 Assistants: 助理
 Users: 用户
@@ -890,58 +159,14 @@ Categories: 分类
 Views: 视图
 Layers: 层次结构
 Reports: 报告
-#
-# << MISSING >>
-# Delete Events:
-#
-# << MISSING >>
-# Public Preferences:
-#
-# << MISSING >>
-# Unapproved Public Events:
-#
-# << MISSING >>
-# Administrative Tools:
-
-
-###############################################
-# Page: ajax.php
-#
-#
-# << MISSING >>
-# Duplicate Name:
-#
-# << MISSING >>
-# Username already exists:
-#
-# << MISSING >>
-# Email address already exists:
 
 
 ###############################################
 # Page: approve_entry.php
 #
-#
-# << MISSING >>
-# Additional Comments (optional):
-#
-# << MISSING >>
-# Approve and Send:
-#
-# << MISSING >>
-# Approve and Exit:
-#
-# << MISSING >>
-# (Your comments will be included in an email to the event creator):
 Hello: 您好
-#
-# << MISSING >>
-# An appointment has been approved and comments added by:
 The subject was: 主题是
 The description is: 详细说明
-#
-# << MISSING >>
-# Comments:
 
 
 ###############################################
@@ -952,78 +177,20 @@ Your assistants: 您的助理
 
 
 ###############################################
-# Page: availability.php
-#
-#
-# << MISSING >>
-# Program Error:
-#
-# << MISSING >>
-# No users specified!:
-#
-# << MISSING >>
-# No year specified!:
-#
-# << MISSING >>
-# No month specified!:
-#
-# << MISSING >>
-# No day specified!:
-
-
-###############################################
 # Page: category.php
 #
 Add: 添加
 Category Name: 分类名称
-#
-# << MISSING >>
-# Category Icon:
-#
-# << MISSING >>
-# Remove Icon:
 Global: 全局
-#
-# << MISSING >>
-# Add Icon to Category:
-#
-# << MISSING >>
-# Upload:
-#
-# << MISSING >>
-# gif 3kb max:
-#
-# << MISSING >>
-# Search for existing icons:
 Delete: 删除
 Are you sure you want to delete this entry?: 您确定删除此事件吗?
 Add New Category: 新增分类
 
 
 ###############################################
-# Page: category_handler.php
-#
-#
-# << MISSING >>
-# File size exceeds maximum:
-#
-# << MISSING >>
-# File is not a gif image:
-
-
-###############################################
 # Page: catsel.php
 #
-#
-# << MISSING >>
-# ENTRY CATEGORIES:
-#
-# << MISSING >>
-# AVAILABLE CATEGORIES:
 Remove: 删除
-#
-# << MISSING >>
-# Global Category:
 Ok: 确认
 
 
@@ -1034,40 +201,9 @@ An appointment has been canceled for you by: 约会已经被取消, 取消者是
 
 
 ###############################################
-# Page: doc.php
-#
-#
-# << MISSING >>
-# Invalid blob id:
-
-
-###############################################
 # Page: docadd.php
 #
-#
-# << MISSING >>
-# Add Comment:
-#
-# << MISSING >>
-# Add Attachment:
-#
-# << MISSING >>
-# Subject:
-#
-# << MISSING >>
-# Comment:
-#
-# << MISSING >>
-# Upload file:
 Description: 描述
-
-
-###############################################
-# Page: docdel.php
-#
-#
-# << MISSING >>
-# Removed:
 
 
 ###############################################
@@ -1075,291 +211,35 @@ Description: 描述
 #
 am: 上午
 pm: 下午
-#
-# << MISSING >>
-# You are not authorized to edit this task:
-#
-# << MISSING >>
-# hours ahead of you:
-#
-# << MISSING >>
-# hours behind you:
-#
-# << MISSING >>
-# hour ahead of you:
-#
-# << MISSING >>
-# hour behind you:
-#
-# << MISSING >>
-# is in a different timezone than you are. Currently:
-#
-# << MISSING >>
-# Time entered here is based on your Timezone:
 Edit Entry: 编辑事件
 Add Entry: 新增事件
-#
-# << MISSING >>
-# Details:
 Participants: 参与者
-#
-# << MISSING >>
-# Repeat:
-#
-# << MISSING >>
-# Reminders:
-#
-# << MISSING >>
-# brief-description-help:
-# English text: This should provide a short description (about 20 characters) of the event.  This will represent the event when viewing the calendar.
-#
 Brief Description: 概要描述
-#
-# << MISSING >>
-# full-description-help:
-# English text: This should complete details of the event.  This information can be seen when a user views the event.
-#
 Full Description: 完整描述
-#
-# << MISSING >>
-# access-help:
-# English text: Specifies the access level of the event. <ul><li><em>Public</em>: Everyone can see the full details of the event. </li><li><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.</li></ul>
-#
 Access: 显示设置
-#
-# << MISSING >>
-# priority-help:
-# English text: Specifies the priority of the event.  High priority events will be displayed in bold.
-#
 Priority: 优先等級
 Low: 低
 Medium: 中
 High: 高
 category-help: 分类-帮助
 Category: 分类
-#
-# << MISSING >>
-# completed-help:
-# English text: Date task is completed. Only enabled when all participants percentage equals 100%.
-#
-#
-# << MISSING >>
-# Date Completed:
-#
-# << MISSING >>
-# percent-help:
-# English text: Task completion percentage for this user
-#
-#
-# << MISSING >>
-# Percent Complete:
-#
-# << MISSING >>
-# All Percentages:
-#
-# << MISSING >>
-# location-help:
-# English text: Event location 
-#
-#
-# << MISSING >>
-# Location:
-#
-# << MISSING >>
-# date-help:
-# English text: Specifies the date of the event.
-#
-#
-# << MISSING >>
-# Start Date:
 Untimed event: 无时间的事件
 Timed event: 有时间的事件
 All day event: 全天事件
 Timezone Offset: 时区设置
-#
-# << MISSING >>
-# time-help:
-# English text: Specifies the time of the event. <ul><li>"Timed event" (for an event that is scheduled for a specific time on that day)</li><li>"Untimed event" (for an event this does not have a time (like a holiday)</li><li>"All day event" (for an event that takes all day (like being out of the office)</li></ul>
-#
-#
-# << MISSING >>
-# duration-help:
-# English text: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
-#
 minutes: 分
-#
-# << MISSING >>
-# end-time-help:
-# English text: Specifies the time the event is expected to end.
-#
-#
-# << MISSING >>
-# Start Time:
-#
-# << MISSING >>
-# Due Date:
-#
-# << MISSING >>
-# Due Time:
-#
-# << MISSING >>
-# participants-help:
-# English text: Lists the participants of this entry.
-#
-#
-# << MISSING >>
-# Availability:
-#
-# << MISSING >>
-# external-participants-help:
-# English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
-#
 External Participants: 其他参与者
-#
-# << MISSING >>
-# repeat-type-help:
-# English text: Select how often the event should repeat.
-#
 Daily: 每日的
 Weekly: 每周的
 Monthly: 每月的
 by day: 按天
 by date: 按日期
-#
-# << MISSING >>
-# by position:
 Yearly: 每年的
-#
-# << MISSING >>
-# Manual:
-#
-# << MISSING >>
-# Expert Mode:
-#
-# << MISSING >>
-# repeat-end-date-help:
-# English text: Specifies the date the event should repeat until.
-#
-#
-# << MISSING >>
-# Ending:
-#
-# << MISSING >>
-# Forever:
 Use end date: 使用结束日期设置
-#
-# << MISSING >>
-# Number of times:
-#
-# << MISSING >>
-# repeat-frequency-help:
-# English text: Specifies how often the event should repeat.
-#
 Frequency: 重复次数
-#
-# << MISSING >>
-# Weekdays Only:
-#
-# << MISSING >>
-# Week Start:
-#
-# << MISSING >>
-# repeat-bydayextended-help:
-# English text: Allows date selection based on day of week. 
-#
-#
-# << MISSING >>
-# ByDay:
 All: 全部
-#
-# << MISSING >>
-# repeat-month-help:
-# English text: Specifies which months the event should repeat in.
-#
-#
-# << MISSING >>
-# ByMonth:
-#
-# << MISSING >>
-# repeat-bysetpos-help:
-# English text: Allows date selection based on position withing the month.
-#
-#
-# << MISSING >>
-# BySetPos:
-#
-# << MISSING >>
-# repeat-bymonthdayextended-help:
-# English text: Allows date selection based on date.
-#
-#
-# << MISSING >>
-# ByMonthDay:
-#
-# << MISSING >>
-# repeat-byweekno-help:
-# English text: Allows user to specify a list of weeks to repeat event (1,2...53,-53,-52...-1).
-#
-#
-# << MISSING >>
-# ByWeekNo:
-#
-# << MISSING >>
-# repeat-byyearday-help:
-# English text: Allows user to specify a list of year days to repeat event (1,2...366,-366,-365...-1).
-#
-#
-# << MISSING >>
-# ByYearDay:
-#
-# << MISSING >>
-# repeat-exceptions-help:
-# English text: Additional days that this event should or should not occur on.
-#
-#
-# << MISSING >>
-# Exclusions:
-#
-# << MISSING >>
-# Inclusions:
-#
-# << MISSING >>
-# Add Exception:
-#
-# << MISSING >>
-# Add Inclusion:
-#
-# << MISSING >>
-# Delete Selected:
 Send Reminder: 发送邮件通知
-#
-# << MISSING >>
-# When:
-#
-# << MISSING >>
-# Use Date/Time:
-#
-# << MISSING >>
-# Use Offset:
 days: 天
-#
-# << MISSING >>
-# Before:
-#
-# << MISSING >>
-# After:
-#
-# << MISSING >>
-# Start:
-#
-# << MISSING >>
-# End/Due:
-#
-# << MISSING >>
-# Times:
-#
-# << MISSING >>
-# Every:
 Delete entry: 删除事件
 You are not authorized to edit this entry: You are not authorized to edit this entry
 
@@ -1388,9 +268,6 @@ Source: 来源
 Color: 颜色
 Duplicates: 副本
 Show layer events that are the same as your own: 在您的日历中同时显示来源者的事件
-#
-# << MISSING >>
-# Add to Others:
 Add to My Calendar: 新增到我的日历
 Delete layer: 删除层
 Are you sure you want to delete this layer?: 您确定要删除这个层吗?
@@ -1406,66 +283,18 @@ You can only create one layer for each user: 您只能为一个用户来源设置一个层
 ###############################################
 # Page: edit_nonusers.php
 #
-#
-# << MISSING >>
-# NONUSER_PREFIX not set:
-# English text: NONUSER_PREFIX has not been set in config.php.
-#
-#
-# << MISSING >>
-# word characters only:
-# English text: can only contain word characters (a-zA-Z_0-9)
-#
 Edit User: 编辑用户资料
 Add User: 新增用户
 Calendar ID: 日历编号
 First Name: 姓
 Last Name: 名
-#
-# << MISSING >>
-# Is public calendar:
-
-
-###############################################
-# Page: edit_remotes.php
-#
-#
-# << MISSING >>
-# Edit Remote Calendar:
-#
-# << MISSING >>
-# Add Remote Calendar:
-#
-# << MISSING >>
-# URL:
-#
-# << MISSING >>
-# Create Layer:
-#
-# << MISSING >>
-# Required to View Remote Calendar:
-#
-# << MISSING >>
-# Reload:
 
 
 ###############################################
 # Page: edit_remotes_handler.php
 #
 Error: 错误
-#
-# << MISSING >>
-# Import Results:
-#
-# << MISSING >>
-# Events successfully imported:
-#
-# << MISSING >>
-# Create a new layer to view this calendar:
 Errors: 错误
-#
-# << MISSING >>
-# There was an error parsing the import file or no events were returned:
 
 
 ###############################################
@@ -1491,24 +320,6 @@ Next year: 明年
 This year: 今年
 Last year: 去年
 Year before last: 前年
-#
-# << MISSING >>
-# Next 14 days:
-#
-# << MISSING >>
-# Next 30 days:
-#
-# << MISSING >>
-# Next 60 days:
-#
-# << MISSING >>
-# Next 90 days:
-#
-# << MISSING >>
-# Next 180 days:
-#
-# << MISSING >>
-# Next 365 days:
 Invalid report id: 无效的报告编号
 Unnamed Report: 未命名的报告
 Add Report: 添加报告
@@ -1534,20 +345,6 @@ Variable N not found: 变量N未找到
 
 
 ###############################################
-# Page: edit_template.php
-#
-#
-# << MISSING >>
-# Edit Custom Script/Stylesheet:
-#
-# << MISSING >>
-# Edit Custom Header:
-#
-# << MISSING >>
-# Edit Custom Trailer:
-
-
-###############################################
 # Page: edit_user.php
 #
 Username: 用户名称
@@ -1555,9 +352,6 @@ E-mail address: 电子邮件地址
 Password: 密码
 again: 再次
 Disabled for demo: 关闭演示模式
-#
-# << MISSING >>
-# Are you sure you want to delete this user?:
 Change Password: 更改密码
 New Password: 新的密码
 Set Password: 设置密码
@@ -1569,12 +363,6 @@ Set Password: 设置密码
 Deleting users not supported: 不支持删除用户功能
 The passwords were not identical: 密码不一样
 You have not entered a password: 您没有输入密码
-#
-# << MISSING >>
-# Invalid characters in login:
-#
-# << MISSING >>
-# Username can not be blank:
 
 
 ###############################################
@@ -1583,9 +371,6 @@ You have not entered a password: 您没有输入密码
 Export: 输出
 Export format: 输出格式
 Palm Pilot: Palm Pilot
-#
-# << MISSING >>
-# Include all layers:
 Export all dates: 输出所有资料
 Start date: 开始日期
 End date: 结束日期
@@ -1625,41 +410,10 @@ You must specify a group name: 您必须指定一个组名
 # Page: help_admin.php
 #
 Display weekends in week view: 显示周末
-#
-# << MISSING >>
-# Display days with events in bold in year view:
 Time interval: 时间间隔
-#
-# << MISSING >>
-# time-interval-help:
-# English text: Specifies how long the time blocks in the week view and day view will be.
-#
 Auto-refresh calendars: 自动刷新日历
-#
-# << MISSING >>
-# auto-refresh-help:
-# English text: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
-#
 Auto-refresh time: 自动刷新时间
-#
-# << MISSING >>
-# auto-refresh-time-help:
-# English text: If Auto-refresh is enabled, this specifies the time between each refresh.
-#
 Nonuser: 非日历用户
-#
-# << MISSING >>
-# user-customize-color:
-# English text: Specifies whether users are allowed to modify their own color scheme.
-#
-#
-# << MISSING >>
-# enable-gradient-help:
-# English text: Use gradient colors for cell backgrounds.
-#
-#
-# << MISSING >>
-# Manually entering color values:
 colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 
 
@@ -1674,55 +428,14 @@ Report Bug: 报告错误
 #
 Adding/Editing Calendar Entries: 新增/编辑 日历項目
 Repeat Type: 周期性设置
-#
-# << MISSING >>
-# For More Information...:
 Repeat End Date: 周期结束日期
 Repeat Day: 重复于
-#
-# << MISSING >>
-# repeat-day-help:
-# English text: Specifies which days of the week the event should repeat on.
-#
 
 
 ###############################################
 # Page: help_import.php
 #
 Import: 输入
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
-#
-# << MISSING >>
-# The following entries will not be imported:
-#
-# << MISSING >>
-# Entries older than the current date:
-#
-# << MISSING >>
-# Entries created in the Palm Desktop that have not been HotSync'd:
-#
-# << MISSING >>
-# Anything imported from Palm will be overwritten during the next import (unless the event date has passed).:
-#
-# << MISSING >>
-# Therefore, updates should be made in the Palm Desktop.:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# The following formats have been tested:
-#
-# << MISSING >>
-# This form will import iCalendar (.ics) events:
-#
-# << MISSING >>
-# Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
@@ -1734,18 +447,9 @@ Help Index: 辅助索引
 ###############################################
 # Page: help_layers.php
 #
-#
-# << MISSING >>
-# Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.:
 Add/Edit/Delete: 添加/编辑/删除
-#
-# << MISSING >>
-# Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
 Specifies the user that you would like to see displayed in your calendar.: 选择用户使在你的日历中显示他的事件
 The text color of the new layer that will be displayed in your calendar.: 你的日历中显示的新层次的文本颜色
-#
-# << MISSING >>
-# If checked, events that are duplicates of your events will be shown.:
 Disabling: 正在关闭
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: 点击页面下端管理部分的停用层次架构不显示层次架构 
 Enabling: 正在打开
@@ -1756,135 +460,23 @@ Press the Enable Layers link in the admin section at the bottom of the page to t
 # Page: help_pref.php
 #
 Default Category: 默认分类
-#
-# << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
-#
 When I am the boss: 当我是老板
 Email me event notification: 给我事件的邮件通知
-#
-# << MISSING >>
-# email-boss-notifications-help:
-# English text: Specifies if bosses receive emails as event notifications.
-#
 I want to approve events: 我想参加这个事件
-#
-# << MISSING >>
-# boss-approve-event-help:
-# English text: Specifies whether the boss will be required to approve events added by assistants.
-#
 Subscribe/Publish: 投递/发布
-#
-# << MISSING >>
-# allow-remote-subscriptions-help:
-# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# remote-subscriptions-url-help:
-# English text: Displays the URL remote users should use to subscribe to your calendar.
-#
-#
-# << MISSING >>
-# Allow remote publishing:
-#
-# << MISSING >>
-# allow-remote-publishing-help:
-# English text: Specifies if a remote iCal client can publish events back to WebCalendar
-#
-#
-# << MISSING >>
-# remote-publishing-url-help:
-# English text: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
-#
-#
-# << MISSING >>
-# rss-feed-url-help:
-# English text: The URL to access the RSS feed
-#
-#
-# << MISSING >>
-# Enable FreeBusy publishing:
-#
-# << MISSING >>
-# freebusy-enabled-help:
-# English text: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
-#
-#
-# << MISSING >>
-# freebusy-url-help:
-# English text: The URL for accessing the user's FreeBusy list
-#
-
-
-###############################################
-# Page: help_uac.php
-#
-#
-# << MISSING >>
-# User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
-# English text: User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
-#
-#
-# << MISSING >>
-# If disabled, this user will not see you in the participants list.:
-#
-# << MISSING >>
-# If disabled, this user will not be able to send you emails.:
-#
-# << MISSING >>
-# If enabled, this user will not be able to view the details of any of your entries.:
-
-
-###############################################
-# Page: icalclient.php
-#
-#
-# << MISSING >>
-# Publishing Disabled (Admin):
-#
-# << MISSING >>
-# Publishing Disabled (User):
-
-
-###############################################
-# Page: icons.php
-#
-#
-# << MISSING >>
-# Click to Select:
-#
-# << MISSING >>
-# Current Icons on Server:
 
 
 ###############################################
 # Page: import.php
 #
 Disabled: 已停用
-#
-# << MISSING >>
-# Import format:
 Exclude private records: 不含个人纪录
-#
-# << MISSING >>
-# Overwrite Prior Import:
-#
-# << MISSING >>
-# Repeated items are imported separately. Prior imports are not overwritten.:
 
 
 ###############################################
 # Page: import_handler.php
 #
-#
-# << MISSING >>
-# Events from prior import marked as deleted:
 Conflicting events: 冲突事件
-#
-# << MISSING >>
-# The import file contained no data:
 
 
 ###############################################
@@ -1896,9 +488,6 @@ Disable Layers: 停用层
 Enable Layers: 使用层
 Click here: 点击此处
 to modify the layers settings for the: 修改层设置为：
-#
-# << MISSING >>
-# calendar:
 Add layer: 新增层次
 Layer: 层次
 Edit layer: 编辑层次
@@ -1912,36 +501,6 @@ Approve/Confirm: 核准/确定
 Approve this entry?: 核准此事件?
 Reject: 拒绝
 Reject this entry?: 拒绝此事件?
-#
-# << MISSING >>
-# Check All:
-#
-# << MISSING >>
-# Uncheck All:
-#
-# << MISSING >>
-# Approve Selected:
-#
-# << MISSING >>
-# Approve Selected entries?:
-#
-# << MISSING >>
-# Reject Selected:
-#
-# << MISSING >>
-# Reject Selected entries?:
-#
-# << MISSING >>
-# Emails Will Not Be Sent:
-#
-# << MISSING >>
-# No unapproved entries for:
-#
-# << MISSING >>
-# Unapproved Entries:
-#
-# << MISSING >>
-# Not authorized:
 
 
 ###############################################
@@ -1958,23 +517,6 @@ cookies-note: <b>注意:</b> 本程序需要 cookies 才能使用.
 # Page: login.php
 #
 Invalid login: 无效的登录
-#
-# << MISSING >>
-# You have been logged out:
-#
-# << MISSING >>
-# Not yet registered? Register here!:
-
-
-###############################################
-# Page: minical.php
-#
-#
-# << MISSING >>
-# No such nonuser calendar:
-#
-# << MISSING >>
-# This Calendar is not Public:
 
 
 ###############################################
@@ -1987,181 +529,13 @@ Add New NonUser Calendar: 添加新的非日历用户
 # Page: pref.php
 #
 Save Preferences: 保存参数
-#
-# << MISSING >>
-# Public Access calendar:
-#
-# << MISSING >>
-# Modify Non User Calendar Preferences:
-#
-# << MISSING >>
-# Return to My Preferences:
-#
-# << MISSING >>
-# Custom Scripts:
-#
-# << MISSING >>
-# Timezone Selection:
-#
-# << MISSING >>
-# entry-interval-help:
-# English text: Sets minute interval when editing entry times
-#
-#
-# << MISSING >>
-# Entry interval:
 hour: 小时
-#
-# << MISSING >>
-# minute:
-#
-# << MISSING >>
-# theme-reload-help:
-# English text: Due to CSS caching, a page reload may be required
-#
-#
-# << MISSING >>
-# Page may need to be reloaded for new Theme to take effect:
-#
-# << MISSING >>
-# Email format preference:
-#
-# << MISSING >>
-# HTML:
-#
-# << MISSING >>
-# Plain Text:
-#
-# << MISSING >>
-# display_byproxy-help:
-# English text: Display the real creator on view_entry page
-#
-#
-# << MISSING >>
-# Display if created by Assistant:
-#
-# << MISSING >>
-# allow-view-subscriptions-help:
-# English text: Allows restricting remote access to Private or Confidential entries 
-#
-#
-# << MISSING >>
-# Allow remote viewing of:
-#
-# << MISSING >>
-# entries:
-
-
-###############################################
-# Page: publish.php
-#
-#
-# << MISSING >>
-# No user specified:
-
-
-###############################################
-# Page: purge.php
-#
-#
-# << MISSING >>
-# Purging events for:
-#
-# << MISSING >>
-# Finished:
-#
-# << MISSING >>
-# Check box to delete <b>ALL</b> events for a user:
-#
-# << MISSING >>
-# Delete all events before:
-#
-# << MISSING >>
-# Preview delete:
-#
-# << MISSING >>
-# Are you sure you want to delete events for:
-#
-# << MISSING >>
-# Records deleted from:
-
-
-###############################################
-# Page: register.php
-#
-#
-# << MISSING >>
-# Email address can not be blank:
-#
-# << MISSING >>
-# Illegal characters in login:
-#
-# << MISSING >>
-# A new WebCalendar account has been set up for you:
-#
-# << MISSING >>
-# Your username is:
-#
-# << MISSING >>
-# Your password is:
-#
-# << MISSING >>
-# Please visit:
-#
-# << MISSING >>
-# to log in and start using your account:
-#
-# << MISSING >>
-# You may change your password after logging in the first time:
-#
-# << MISSING >>
-# If you received this email in error:
-# English text: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note 
-#
-#
-# << MISSING >>
-# Administrator:
-#
-# << MISSING >>
-# Welcome:
-#
-# << MISSING >>
-# Registration:
-#
-# << MISSING >>
-# Welcome to WebCalendar:
-#
-# << MISSING >>
-# Your email should arrive shortly:
-#
-# << MISSING >>
-# Return to Login screen:
-#
-# << MISSING >>
-# Your account information will be emailed to you:
-#
-# << MISSING >>
-# Submit:
 
 
 ###############################################
 # Page: reject_entry.php
 #
-#
-# << MISSING >>
-# Continue:
-#
-# << MISSING >>
-# (Your comments will be included in an email to the other participants):
 An appointment has been rejected by: 约会已经被拒绝, 拒绝者是
-
-
-###############################################
-# Page: remotes.php
-#
-#
-# << MISSING >>
-# Add New Remote Calendar:
 
 
 ###############################################
@@ -2208,28 +582,11 @@ View Another User's Calendar: 查看其他用户的日历
 #
 You have not added any categories: 您还没有添加任何分类
 Set Category: 设置分类
-#
-# << MISSING >>
-# Global Categories can not be changed:
-
-
-###############################################
-# Page: upcoming.php
-#
-#
-# << MISSING >>
-# __month__ __dd__:
-#
-# << MISSING >>
-# more:
 
 
 ###############################################
 # Page: users.php
 #
-#
-# << MISSING >>
-# Remote Calendars:
 Add New User: 新增用户
 denotes administrative user: 用户管理員
 
@@ -2237,12 +594,6 @@ denotes administrative user: 用户管理員
 ###############################################
 # Page: usersel.php
 #
-#
-# << MISSING >>
-# No form specified!:
-#
-# << MISSING >>
-# No listid specified!:
 Reset: 更新
 
 
@@ -2260,23 +611,11 @@ Add View: 新增视图
 Edit View: 编辑视图
 View Name: 视图名称
 View Type: 视图类型
-#
-# << MISSING >>
-# Day by Time:
 Week (Users horizontal): 周(用户水平)
-#
-# << MISSING >>
-# Week by Time:
 Week (Users vertical): 周(用户垂直)
 Week (Timebar): 周(时间条)
-#
-# << MISSING >>
-# Month (Timebar):
 Month (side by side): 月(一个接一个)
 Month (on same calendar): 月(在相同的日历上)
-#
-# << MISSING >>
-# Selected:
 
 
 ###############################################
@@ -2286,55 +625,11 @@ You must specify a view name: 您必须指定一个视图名称
 
 
 ###############################################
-# Page: view_d.php
-#
-#
-# << MISSING >>
-# No users for this view:
-
-
-###############################################
 # Page: view_entry.php
 #
 Assistant mode: 辅助模式
 Status: 状态
-#
-# << MISSING >>
-# Accepted:
-#
-# << MISSING >>
-# Needs-Action:
-#
-# << MISSING >>
-# Declined:
-#
-# << MISSING >>
-# Completed:
-#
-# << MISSING >>
-# by:
-#
-# << MISSING >>
-# Percentage Complete:
 External User: 其他用户
-#
-# << MISSING >>
-# Update Task Percentage:
-#
-# << MISSING >>
-# Update:
-#
-# << MISSING >>
-# Attachments:
-#
-# << MISSING >>
-# comments:
-#
-# << MISSING >>
-# Show:
-#
-# << MISSING >>
-# Hide:
 Approve/Confirm entry: 核准/确定 事件
 Reject entry: 拒绝事件
 Set category: 设置种类
@@ -2344,33 +639,13 @@ Delete repeating event for all dates: 删除所有时间的这个重复事件
 This will delete this entry for all users.: 对所有的用户也將會删除这个事件.
 Delete entry only for this date: 只有这个日期删除条目
 Edit entry: 编辑事件
-#
-# << MISSING >>
-# from calendar of:
-#
-# << MISSING >>
-# Copy entry:
-#
-# << MISSING >>
-# This will delete the entry from your boss\' calendar.:
 This will delete the entry from your calendar.: 这將會從您的日历删除这个事件.
-#
-# << MISSING >>
-# from your boss' calendar:
 Do you want to add this entry to your calendar?: 您要新增这个事件到您的日历吗?
 This will add the entry to your calendar.: 这將會新增这个事件到您的日历.
 Email all participants: 邮寄给所有的题者
 Show activity log: 显示活动日志
 Hide activity log: 隐藏活动日志
 Export this entry to: 输出此条目到
-
-
-###############################################
-# Page: view_r.php
-#
-#
-# << MISSING >>
-# Double-click on empty cell to add new entry:
 
 
 ###############################################
@@ -2382,51 +657,13 @@ New Entry: 新事件
 ###############################################
 # Page: includes/access.php
 #
-#
-# << MISSING >>
-# Edit Event:
-#
-# << MISSING >>
-# Day View:
-#
-# << MISSING >>
-# Week View:
-#
-# << MISSING >>
-# Month View:
-#
-# << MISSING >>
-# Year View:
 Manage Views: 管理视图
-#
-# << MISSING >>
-# Category Management:
-#
-# << MISSING >>
-# User Management:
 Another User's Calendar: 其他用户的日历
-#
-# << MISSING >>
-# Common Trailer:
-
-
-###############################################
-# Page: includes/config.php
-#
-#
-# << MISSING >>
-# Fatal Error:
-#
-# << MISSING >>
-# Troubleshooting Help:
 
 
 ###############################################
 # Page: includes/date_formats.php
 #
-#
-# << MISSING >>
-# LANGUAGE DEFINED:
 December: 十二月
 Dec: 12月
 
@@ -2434,57 +671,7 @@ Dec: 12月
 ###############################################
 # Page: includes/functions.php
 #
-#
-# << MISSING >>
-# Unauthorized:
-#
-# << MISSING >>
-# __month__ __dd__, __yyyy__:
-#
-# << MISSING >>
-# __month__ __yyyy__:
-#
-# << MISSING >>
-# __mm__/__dd__/__yyyy__:
-#
-# << MISSING >>
-# This event is private:
-#
-# << MISSING >>
-# Conf.:
-#
-# << MISSING >>
-# WK:
-#
-# << MISSING >>
-# Task Name:
-#
-# << MISSING >>
-# Task Due Date:
-#
-# << MISSING >>
-# TASKS:
-#
-# << MISSING >>
-# Task_Title:
-# English text: Title
-#
-#
-# << MISSING >>
-# Due:
-#
-# << MISSING >>
-# View this task:
-#
-# << MISSING >>
-# View this event:
 exceeds limit of XXX events per day: 超过每天XXX个事件
-#
-# << MISSING >>
-# on:
-#
-# << MISSING >>
-# You have XXX unapproved entries:
 January: 一月
 February: 二月
 March: 三月
@@ -2519,45 +706,9 @@ Wed: 周三
 Thu: 周四
 Fri: 周五
 Sat: 周六
-#
-# << MISSING >>
-# Schedule an appointment for:
-#
-# << MISSING >>
-# All Attendees:
-#
-# << MISSING >>
-# Busy:
-#
-# << MISSING >>
-# Tentative:
-#
-# << MISSING >>
-# Changes successfully saved:
 The following error occurred: 发生了下面的错误
 You are not authorized: 您未经授权
-#
-# << MISSING >>
-# day:
-#
-# << MISSING >>
-# before:
-#
-# << MISSING >>
-# after:
-#
-# << MISSING >>
-# start:
-#
-# << MISSING >>
-# end:
 Error approving event: 错误批准的事件
-#
-# << MISSING >>
-# Error deleting event:
-#
-# << MISSING >>
-# Error rejecting event:
 Generate printer-friendly version: 产生打印版本
 Printer Friendly: 打印
 Event created: 事件已创建
@@ -2565,202 +716,18 @@ Event approved: 事件已到达
 Event rejected: 事件已拒绝
 Event updated: 事件已经更新
 Event deleted: 事件已删除
-#
-# << MISSING >>
-# Task created:
-#
-# << MISSING >>
-# Task approved:
-#
-# << MISSING >>
-# Task rejected:
-#
-# << MISSING >>
-# Task updated:
-#
-# << MISSING >>
-# Task deleted:
-#
-# << MISSING >>
-# Journal created:
-#
-# << MISSING >>
-# Journal approved:
-#
-# << MISSING >>
-# Journal rejected:
-#
-# << MISSING >>
-# Journal updated:
-#
-# << MISSING >>
-# Journal deleted:
 Notification sent: 发送通知
 Reminder sent: 发送提醒
-#
-# << MISSING >>
-# New user (self registration):
-#
-# << MISSING >>
-# New user via email (self registration):
-#
-# << MISSING >>
-# Attachment:
-#
-# << MISSING >>
-# Delete User:
-
-
-###############################################
-# Page: includes/help_list.php
-#
-#
-# << MISSING >>
-# Index:
-#
-# << MISSING >>
-# Page:
 
 
 ###############################################
 # Page: includes/trailer.php
 #
-#
-# << MISSING >>
-# Home:
 My Calendar: 我的日历
 Back to My Calendar: 返回我的日历
 Add New Entry: 新增事件
-#
-# << MISSING >>
-# Add New Task:
 Go to: 到
 Logout: 注销
-#
-# << MISSING >>
-# Manage calendar of:
-
-
-###############################################
-# Page: includes/translate.php
-#
-#
-# << MISSING >>
-# Browser Language Not Found:
-#
-# << MISSING >>
-# not supported:
-#
-# << MISSING >>
-# Browser-defined:
-#
-# << MISSING >>
-# English:
-#
-# << MISSING >>
-# English-US:
-#
-# << MISSING >>
-# Basque:
-#
-# << MISSING >>
-# Bulgarian:
-#
-# << MISSING >>
-# Catalan:
-#
-# << MISSING >>
-# Chinese (Traditional/Big5):
-#
-# << MISSING >>
-# Chinese (Simplified/GB2312):
-#
-# << MISSING >>
-# Czech:
-#
-# << MISSING >>
-# Danish:
-#
-# << MISSING >>
-# Dutch:
-#
-# << MISSING >>
-# Estonian:
-#
-# << MISSING >>
-# Finnish:
-#
-# << MISSING >>
-# French:
-#
-# << MISSING >>
-# French (UTF8):
-#
-# << MISSING >>
-# Galician:
-#
-# << MISSING >>
-# German:
-#
-# << MISSING >>
-# Greek:
-#
-# << MISSING >>
-# Holo (Taiwanese):
-#
-# << MISSING >>
-# Hungarian:
-#
-# << MISSING >>
-# Icelandic:
-#
-# << MISSING >>
-# Italian:
-#
-# << MISSING >>
-# Japanese:
-#
-# << MISSING >>
-# Korean:
-#
-# << MISSING >>
-# Norwegian:
-#
-# << MISSING >>
-# Polish:
-#
-# << MISSING >>
-# Portuguese:
-#
-# << MISSING >>
-# Portuguese/Brazil:
-#
-# << MISSING >>
-# Romanian:
-#
-# << MISSING >>
-# Russian:
-#
-# << MISSING >>
-# Spanish:
-#
-# << MISSING >>
-# Swedish:
-#
-# << MISSING >>
-# Turkish:
-#
-# << MISSING >>
-# Welsh:
-#
-# << MISSING >>
-# task:
-#
-# << MISSING >>
-# event:
-#
-# << MISSING >>
-# journal:
 
 
 ###############################################
@@ -2770,70 +737,8 @@ Invalid user login: 登录用户无效
 
 
 ###############################################
-# Page: includes/user-nis.php
-#
-#
-# << MISSING >>
-# incorrect password:
-#
-# << MISSING >>
-# no such user:
-
-
-###############################################
 # Page: includes/xcal.php
 #
-#
-# << MISSING >>
-# MO:
-#
-# << MISSING >>
-# TU:
-#
-# << MISSING >>
-# WE:
-#
-# << MISSING >>
-# TH:
-#
-# << MISSING >>
-# FR:
-#
-# << MISSING >>
-# SA:
-#
-# << MISSING >>
-# SU:
-#
-# << MISSING >>
-# Interval:
-#
-# << MISSING >>
-# Months:
-#
-# << MISSING >>
-# Month Days:
-#
-# << MISSING >>
-# Days:
-#
-# << MISSING >>
-# Weeks:
-#
-# << MISSING >>
-# Position:
-#
-# << MISSING >>
-# Until:
-#
-# << MISSING >>
-# Count:
-#
-# << MISSING >>
-# Inclusion Dates:
-#
-# << MISSING >>
-# Exclusion Dates:
 Unnamed Event: 未命名的事件
 Event Imported: 事件已输入
 
@@ -2843,9 +748,6 @@ Event Imported: 事件已输入
 #
 Server URL is required: 填写系统URL
 Server URL must end with '/': 系统URL必须以'/'结尾
-#
-# << MISSING >>
-# Invalid work hours:
 Invalid color for document background: 无效的文档背景颜色
 Invalid color for document title: 无效的文档标题颜色
 Invalid color for table cell background: 无效的表格单元背景颜色
@@ -2859,27 +761,10 @@ Color format should be '#RRGGBB': 颜色格式需要是 '#RRGGBB'
 
 
 ###############################################
-# Page: includes/js/availability.php
-#
-#
-# << MISSING >>
-# Change the date and time of this entry?:
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: 您没有输入概要描述
 The time you have entered begins before your preferred work hours.  Is this correct?: 这个时段不在您自定的工作时间內.  这是正确的吗?
-#
-# << MISSING >>
-# Invalid Event Date:
-#
-# << MISSING >>
-# Please add a participant:
-#
-# << MISSING >>
-# Invalid Date:
 You have not entered a valid time of day: 您没有输入正确的时间
 
 
@@ -2890,553 +775,19 @@ Invalid color: 无效的颜色
 
 
 ###############################################
-# Page: includes/js/edit_nonuser.php
-#
-#
-# << MISSING >>
-# Calendar ID can not be blank:
-#
-# << MISSING >>
-# Both first and last names can not be blank:
-
-
-###############################################
-# Page: includes/js/edit_remotes.php
-#
-#
-# << MISSING >>
-# URL can not be blank:
-
-
-###############################################
-# Page: includes/js/export_import.php
-#
-#
-# << MISSING >>
-# File type does not match Import Format:
-
-
-###############################################
-# Page: includes/classes/Doc.class
-#
-#
-# << MISSING >>
-# bytes:
-#
-# << MISSING >>
-# kb:
-#
-# << MISSING >>
-# Mb:
-
-
-###############################################
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: 通告
-#
-# << MISSING >>
-# provide_address:
-# English text: You must provide at least one recipient email address
-#
-#
-# << MISSING >>
-# mailer_not_supported:
-# English text: mailer is not supported
-#
-#
-# << MISSING >>
-# execute:
-# English text: Could not execute:
-#
-#
-# << MISSING >>
-# instantiate:
-# English text: Could not instantiate mail function
-#
-#
-# << MISSING >>
-# authenticate:
-# English text: SMTP Error: Could not authenticate
-#
-#
-# << MISSING >>
-# from_failed:
-# English text: The following From address failed:
-#
-#
-# << MISSING >>
-# recipients_failed:
-# English text: SMTP Error: The following recipients failed:
-#
-#
-# << MISSING >>
-# data_not_accepted:
-# English text: SMTP Error: Data not accepted
-#
-#
-# << MISSING >>
-# connect_host:
-# English text: SMTP Error: Could not connect to SMTP host:
-#
-#
-# << MISSING >>
-# file_access:
-# English text: Could not access file:
-#
-#
-# << MISSING >>
-# file_open:
-# English text: File Error Could not open file:
-#
-#
-# << MISSING >>
-# encoding:
-# English text: Unknown encoding:
-#
 
 
 ###############################################
 # Page: includes/menu/index.php
 #
-#
-# << MISSING >>
-# This Week:
-#
-# << MISSING >>
-# This Month:
-#
-# << MISSING >>
-# This Year:
-#
-# << MISSING >>
-# Exit:
-#
-# << MISSING >>
-# Add New Event:
-#
-# << MISSING >>
-# Delete Entries:
-#
-# << MISSING >>
-# Another User\'s Calendar:
-#
-# << MISSING >>
-# My Views:
-#
-# << MISSING >>
-# Manage Calendar of:
-#
-# << MISSING >>
-# My Reports:
-#
-# << MISSING >>
-# My Profile:
-#
-# << MISSING >>
-# Public Calendar:
 Unapproved Events: 未核准的事件
-#
-# << MISSING >>
-# User Manager:
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
-#
-# << MISSING >>
-# This is a reminder for the task detailed below.:
 This is a reminder for the event detailed below.: 提醒有完整描述的事件
-#
-# << MISSING >>
-# Pecentage Complete:
 Reminder: 提醒
-
-
-###############################################
-# Page: tools/reload_remotes.php
-#
-#
-# << MISSING >>
-# Include Path:
-#
-# << MISSING >>
-# Deleting events for:
-#
-# << MISSING >>
-# Importing events for:
-#
-# << MISSING >>
-# No data returned from:
-#
-# << MISSING >>
-# for non-user calendar:
-#
-# << MISSING >>
-# No Remote Calendars found:
-#
-# << MISSING >>
-# Remote Calendars not enabled:
-
-
-###############################################
-# Page: install/install_functions.php
-#
-#
-# << MISSING >>
-# Error updating webcal_config:
-#
-# << MISSING >>
-# Error updating webcal_user_pref:
-#
-# << MISSING >>
-# Perl script required:
-# English text: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
-#
-#
-# << MISSING >>
-# Your previous version of WebCalendar requires updating several database tables.:
-
-
-###############################################
-# Page: install/index.php
-#
-#
-# << MISSING >>
-# WebCalendar Installation Wizard:
-#
-# << MISSING >>
-# Step:
-#
-# << MISSING >>
-# Single-User:
-#
-# << MISSING >>
-# Failure Reason:
-#
-# << MISSING >>
-# You must manually create database:
-#
-# << MISSING >>
-# Database Cache Directory:
-#
-# << MISSING >>
-# Test Settings:
-#
-# << MISSING >>
-# Create New:
-#
-# << MISSING >>
-# Database Name:
-#
-# << MISSING >>
-# Back:
-#
-# << MISSING >>
-# Timezone Conversion Successful:
-#
-# << MISSING >>
-# Error Unable to write to file:
-#
-# << MISSING >>
-# Successful Login:
-#
-# << MISSING >>
-# Invalid Login:
-#
-# << MISSING >>
-# required only if Safe Mode is On:
-#
-# << MISSING >>
-# required only if Remote Calendars are used:
-#
-# << MISSING >>
-# needed for Gradient Image Backgrounds:
-#
-# << MISSING >>
-# Passwords do not match:
-#
-# << MISSING >>
-# Unable to write password to settings.php file:
-#
-# << MISSING >>
-# Password has been set:
-#
-# << MISSING >>
-# Connection Successful:
-#
-# << MISSING >>
-# Please go to next page to continue installation:
-#
-# << MISSING >>
-# Correct your entries or click the <b>Create New</b> button to continue installation:
-#
-# << MISSING >>
-# Correct your entries and try again:
-#
-# << MISSING >>
-# does not exist:
-#
-# << MISSING >>
-# is not writable:
-#
-# << MISSING >>
-# Error Converting Timezone:
-#
-# << MISSING >>
-# Please change the file permissions of this file:
-#
-# << MISSING >>
-# Please change includes dir premission:
-# English text: Please change the file permissions of your includes directory to allow writing by other users
-#
-#
-# << MISSING >>
-# Your settings have been saved:
-#
-# << MISSING >>
-# Error you must specify a\\nSingle-User Login:
-#
-# << MISSING >>
-# Server URL must end with:
-#
-# << MISSING >>
-# Full Path (no backslashes):
-#
-# << MISSING >>
-# The password contains illegal characters.:
-#
-# << MISSING >>
-# This installation wizard will guide you...:
-# English text: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
-#
-#
-# << MISSING >>
-# PHP Version Check:
-#
-# << MISSING >>
-# Check to see if PHP 4.1.0 or greater is installed:
-#
-# << MISSING >>
-# PHP version:
-#
-# << MISSING >>
-# PHP Settings:
-#
-# << MISSING >>
-# Detailed PHP Info:
-#
-# << MISSING >>
-# Session Check:
-#
-# << MISSING >>
-# To test the proper operation of sessions, reload this page:
-#
-# << MISSING >>
-# You should see the session counter increment each time:
-#
-# << MISSING >>
-# SESSION COUNTER:
-#
-# << MISSING >>
-# Settings.php Status:
-#
-# << MISSING >>
-# The file permissions of <b>settings.php</b> are set...:
-# English text: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
-#
-#
-# << MISSING >>
-# The file permissions of the <b>includes</b> directory are set...:
-# English text: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
-#
-#
-# << MISSING >>
-# Your <b>settings.php</b> file appears to be valid:
-#
-# << MISSING >>
-# Configuration Wizard Password:
-#
-# << MISSING >>
-# Create Settings File Password:
-#
-# << MISSING >>
-# Password (again):
-#
-# << MISSING >>
-# db setup directions...:
-# English text: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
-#
-#
-# << MISSING >>
-# Database Status:
-#
-# << MISSING >>
-# Supported databases for your PHP installation:
-#
-# << MISSING >>
-# Your current database settings are able to access the database:
-#
-# << MISSING >>
-# Please Test Settings:
-#
-# << MISSING >>
-# Your current database settings are <b>not</b> able to access the database or have not yet been tested:
-#
-# << MISSING >>
-# Database Settings:
-#
-# << MISSING >>
-# Database Type:
-#
-# << MISSING >>
-# Server:
-#
-# << MISSING >>
-# Connection Persistence:
-#
-# << MISSING >>
-# All your database tables appear to be up to date. You may proceed to the:
-#
-# << MISSING >>
-# next page and complete your WebCalendar setup:
-#
-# << MISSING >>
-# This appears to be a new installation. If this is not correct, please:
-#
-# << MISSING >>
-# go back to the previous page and correct your settings:
-#
-# << MISSING >>
-# The database requires some data input:
-#
-# << MISSING >>
-# Click <b>Update Database</b> to complete the upgrade:
-#
-# << MISSING >>
-# This appears to be an upgrade from version:
-#
-# << MISSING >>
-# In this section we will perform the required database changes to bring your database up to the required level:
-#
-# << MISSING >>
-# If you are using a fully supported database, this step will be performed automatically for you:
-#
-# << MISSING >>
-# If not, the required SQL can be displayed and you should be able:
-#
-# << MISSING >>
-# to cut &amp; paste it into your database server query window:
-#
-# << MISSING >>
-# No database actions are required:
-#
-# << MISSING >>
-# The following database actions are required:
-#
-# << MISSING >>
-# ODBC Underlying Database:
-#
-# << MISSING >>
-# Automatic installation not supported:
-# English text: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the sql supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
-#
-#
-# << MISSING >>
-# This may take several minutes to complete:
-#
-# << MISSING >>
-# Install Database:
-#
-# << MISSING >>
-# Update Database:
-#
-# << MISSING >>
-# Display Required SQL:
-#
-# << MISSING >>
-# Return to previous page after processing sql:
-# English text: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
-#
-#
-# << MISSING >>
-# This is the final step in setting up your WebCalendar Installation:
-#
-# << MISSING >>
-# Timezone Conversion:
-#
-# << MISSING >>
-# It appears that you have:
-#
-# << MISSING >>
-# NOT:
-#
-# << MISSING >>
-# converted your existing WebCalendar event data to GMT:
-#
-# << MISSING >>
-# If you have, you may ignore this notice and not proceed with the conversion:
-#
-# << MISSING >>
-# If this is a new installation, you may also ignore this notice.:
-#
-# << MISSING >>
-# Convert Data to GMT:
-#
-# << MISSING >>
-# Application Settings:
-#
-# << MISSING >>
-# HTTP-based authentication was not detected:
-#
-# << MISSING >>
-# You will need to reconfigure your web server if you wish to:
-#
-# << MISSING >>
-# select 'Web Server' from the 'User Authentication' choices below:
-#
-# << MISSING >>
-# HTTP-based authentication was detected:
-#
-# << MISSING >>
-# User authentication is being handled by your web server:
-#
-# << MISSING >>
-# You should select 'Web Server' from the list of 'User Authentication' choices below:
-#
-# << MISSING >>
-# Create Default Admin Account:
-#
-# << MISSING >>
-# Admin Account Not Found:
-#
-# << MISSING >>
-# User Authentication:
-#
-# << MISSING >>
-# Web-based via WebCalendar (default):
-#
-# << MISSING >>
-# Web Server:
-#
-# << MISSING >>
-# None (Single-User):
-#
-# << MISSING >>
-# Read-Only:
-#
-# << MISSING >>
-# Environment:
-#
-# << MISSING >>
-# Production:
-#
-# << MISSING >>
-# Development:
-#
-# << MISSING >>
-# Save Settings:
-#
-# << MISSING >>
-# Launch WebCalendar:

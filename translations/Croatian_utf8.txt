@@ -1,8 +1,11 @@
+# See translations/English-US.txt for instructions.
+#
 # Translations by Krunoslav Zubrinic <krunoslav.zubrinic@vip.hr>, June 2003.
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# Translation last updated on 06-07-2006
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################

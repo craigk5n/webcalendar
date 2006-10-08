@@ -1,8 +1,11 @@
+# See translations/English-US.txt for instructions.
+#
 # Translations anonymous, November 2003,
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# Translation last updated on 06-09-2006
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -47,13 +50,6 @@ Dec: Des
 ###############################################
 # Page: includes/functions.php
 #
-Sun: Son
-Mon: Maa
-Tue: Din
-Wed: Woe
-Thu: Don
-Fri: Vry
-Sat: Sat
 January: Januarie
 February: Februarie
 March: Maart
@@ -81,3 +77,10 @@ Wednesday: Woensdag
 Thursday: Donderdag
 Friday: Vrydag
 Saturday: Saterdag
+Sun: Son
+Mon: Maa
+Tue: Din
+Wed: Woe
+Thu: Don
+Fri: Vry
+Sat: Sat

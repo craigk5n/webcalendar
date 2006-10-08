@@ -1,10 +1,12 @@
-# Use this as a starting point to translate this application into
-# another language.  The format is "English text: translated text"
-# There cannot be a ":" in the English text.
-# Translated by: Marieke Timmer / marieke.timmer@tijdhof.nl, Arnout Engelen / arnouten@bzzt.net, Oliver Heesakkers / dev@heesakkers.info
-# check out the tools directory which contains two perl scripts:
-# check_translation.pl will tell you if you have successfully translated all records
-# Translation last updated on 10-05-2006
+# See translations/English-US.txt for instructions.
+#
+# Translated by:
+#   Marieke Timmer / marieke.timmer@tijdhof.nl
+#   Arnout Engelen / arnouten@bzzt.net
+#   Oliver Heesakkers / dev@heesakkers.info
+#
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -50,9 +52,6 @@ Private: Prive-afspraak
 ###############################################
 # Page: activity_log.php
 #
-#
-# << MISSING >>
-# System Log:
 Activity Log: Logboek
 User: Gebruiker
 Date: Datum
@@ -91,9 +90,6 @@ NonUser Calendars: Losse kalenders
 Other: Overige
 Email: E-mail
 Colors: Kleuren
-#
-# << MISSING >>
-# System options:
 app-name-help: Hier wordt de naam van de applicatie gedefinieerd, deze naam verschijnt in het browservenster op elke pagina en op de login-pagina.
 Application Name: Programmanaam
 Translated Name: Vertaalde naam
@@ -111,9 +107,6 @@ Themes: Stijlen
 AVAILABLE THEMES: BESCHIKBARE STIJLEN
 None: Geen
 Preview: Preview
-#
-# << MISSING >>
-# Site customization:
 custom-script-help: Sta eigen Javascripts en stylesheets die in de HTML "head" van iedere pagina worden geplaatst toe.
 Custom script/stylesheet: Eigen script/stylesheet
 custom-header-help: Sta toe dat een eigen stukje HTML bovenaan iedere pagina wordt geplaatst.
@@ -123,9 +116,6 @@ Custom trailer: Eigen pagina-onderschrift
 enable-external-header-help: Helptekst-externe-header-inschakelen
 Allow external file for header/script/trailer: Permitteer extern bestand voor kop/script/staart
 Allow user to override header/trailer: Permitteer de gebruiker controle over kop/staart
-#
-# << MISSING >>
-# Date and Time:
 tz-help: Deze optie bepaalt het aantal uren tijdsverschil tussen de servertijd en de lokale tijd.
 Server Timezone Selection: Server tijdzone selectie
 Your current GMT offset is: Uw huidige afwijking van GMT is
@@ -151,9 +141,6 @@ work-hours-help: Specificeert hoe laat een normale dag begint en eindigt. <br />
 Work hours: Werktijden
 From: Van
 to: tot
-#
-# << MISSING >>
-# Appearance:
 preferred-view-help: Specificeert de standaard agendaview - dag, week, maand, jaar.
 Preferred view: Voorkeursweergave
 Allow top menu: Permitteer menu bovenin
@@ -180,9 +167,6 @@ allow-view-add-help: In alle views wordt een '+' getoond zodat sneller een afspr
 Include add event link in views: Toon icoon voor maken van afspraken in alle views
 lunar-help: helptekst-maanfasen
 Display Lunar Phases in month view: Maanfasen tonen in maandweergave
-#
-# << MISSING >>
-# Restrictions:
 allow-view-other-help: Definieert of een gebruiker de agenda van andere gebruikers mag inzien.
 Allow viewing other user's calendars: Inzage agenda andere gebruikers toestaan
 require-approvals-help: Indien ingeschakeld dient een gebruiker een afspraak te bevestigen voordat deze in de agenda wordt getoond tenzij Weergave onbevestigde items is geactiveerd. <br />Let op: door deze optie te de-activeren worden alle bevestigingen voor de publiek toegankelijke agenda uitgeschakeld indien deze is geactiveerd.
@@ -213,36 +197,16 @@ disable-repeating-field-help: Door [ja] te kiezen wordt het veld [herhalingspatr
 Disable Repeating field: De-activeer veld Herhalingspatroon
 allow-html-description-help: Als deze optie aan staat kunnen gebruiker HTML gebruiken in de beschrijvingen bij afspraken. Als hij uit staat worden HTML-tags ge-escaped zodat ze als gewone tekst worden weergegeven. Let op: als deze optie aan staat is het mogelijk te verwijzen naar afbeeldingen op andere websites.
 Allow HTML in Description: HTML toestaan in beschrijvingen
-#
-# << MISSING >>
-# Popups:
 disable-popups-help: Hiermee voorkomt u dat pop-ups worden getoond
 Disable Pop-Ups: Pop-ups uitschakelen
 popup-includes-siteextras-help: Laat de eigen afspraak-velden, geconfigureerd in het bestand site_extras.php, zien in afspraak-popups.
 Display Site Extras in popup: Toon Site Extra's in popup
 popup-includes-participants-help: helptekst bij pop-up deelnemers meenemen
 Display Participants in popup: Toon deelnemers in pop-up
-#
-# << MISSING >>
-# Miscellaneous:
 remember-last-login-help: Indien ingeschakeld zal, bij een volgend bezoek, de gebruikersnaam maar niet het password automatisch worden ingevoerd en worden de gebruikersinstellingen geladen inclusief kleurpatroon en taalselectie.
 Remember last login: Onthoud loginnaam
 summary_length-help: Helptekst samenvatting-lengte
 Brief Description Length: Lengte van korte omschrijving
-#
-# << MISSING >>
-# user_sort-help:
-# English text: Determines sort order for User, Nonuser lists
-#
-#
-# << MISSING >>
-# User Sort Order:
-#
-# << MISSING >>
-# Lastname, Firstname:
-#
-# << MISSING >>
-# Firstname, Lastname:
 Plugins: Plug-ins
 plugins-enabled-help: Sta het gebruik van plug-in-applicaties toe
 Enable Plugins: Plug-ins geactiveerd
@@ -408,26 +372,6 @@ Your assistants: Uw agenda-assistenten
 
 
 ###############################################
-# Page: availability.php
-#
-#
-# << MISSING >>
-# Program Error:
-#
-# << MISSING >>
-# No users specified!:
-#
-# << MISSING >>
-# No year specified!:
-#
-# << MISSING >>
-# No month specified!:
-#
-# << MISSING >>
-# No day specified!:
-
-
-###############################################
 # Page: category.php
 #
 Add: Voeg toe
@@ -528,6 +472,7 @@ Percent Complete: Procent compleet
 All Percentages: Alle percentages
 location-help: helptekst-locatie
 Location: Locatie
+URL: URL voor agendapublicatie
 date-help: Dit is de datum waarop de afspraak plaatsvindt.
 Start Date: Startdatum
 Untimed event: Afspraak zonder begin en eindtijd
@@ -653,7 +598,6 @@ Is public calendar: Is een publieke kalender
 #
 Edit Remote Calendar: Bewerk kalender op afstand
 Add Remote Calendar: Kalender op afstand toevoegen
-URL: URL voor agendapublicatie
 Create Layer: Maak een laag
 Required to View Remote Calendar: Nodig om Kalender op afstand te bekijken
 Reload: Opnieuw laden
@@ -826,9 +770,6 @@ Report Bug: Rapporteer een programmafout
 #
 Adding/Editing Calendar Entries: Afspraken toevoegen/wijzigen
 Repeat Type: Herhalingspatroon
-#
-# << MISSING >>
-# For More Information...:
 Repeat End Date: Einddatum herhaling
 Repeat Day: Herhalingsdag
 repeat-day-help: Indien uw afspraak wekelijks wordt herhaald, geeft u hier aan op welke weekdag de afspraak terugkeert. Dit is alleen mogelijk indien u hierboven bij <i>herhalingspatroon</i> de optie [wekelijks] heeft gekozen. <br />N.B.: u kunt meerdere weekdagen aanvinken.
@@ -1145,12 +1086,6 @@ denotes administrative user: Administrator
 ###############################################
 # Page: usersel.php
 #
-#
-# << MISSING >>
-# No form specified!:
-#
-# << MISSING >>
-# No listid specified!:
 Reset: Reset
 
 
@@ -1291,9 +1226,6 @@ Due: Af zijn
 View this task: Bekijk deze taak
 View this event: Bekijk deze afspraak
 exceeds limit of XXX events per day: de grens van XXX afspraken per dag is bereikt
-#
-# << MISSING >>
-# on:
 You have XXX unapproved entries: U heeft XXX onbevestigde afspraken
 January: Januari
 February: Februari
@@ -1363,24 +1295,12 @@ Journal updated: Journaal bijgewerkt
 Journal deleted: Journaal verwijderd
 Notification sent: Notificatie verzonden
 Reminder sent: Herinnering verzonden
-#
-# << MISSING >>
-# New user (self registration):
-#
-# << MISSING >>
-# New user via email (self registration):
 Attachment: Bijlage
-#
-# << MISSING >>
-# Delete User:
 
 
 ###############################################
 # Page: includes/help_list.php
 #
-#
-# << MISSING >>
-# Index:
 Page: Pagina
 
 
@@ -1408,17 +1328,14 @@ English-US: Engels-VS
 Basque: Baskisch
 Bulgarian: Bulgaars
 Catalan: Catalaans
-Chinese (Traditional/Big5): Chinees (Traditioneel/Big5)
 Chinese (Simplified/GB2312): Chinees (Vereenvoudigd/GB2312)
+Chinese (Traditional/Big5): Chinees (Traditioneel/Big5)
 Czech: Tsjechisch
 Danish: Deens
 Dutch: Nederlands
 Estonian: Estlands
 Finnish: Fins
 French: Frans
-#
-# << MISSING >>
-# French (UTF8):
 Galician: Gallicisch
 German: Duits
 Greek: Grieks
@@ -1438,9 +1355,9 @@ Spanish: Spaans
 Swedish: Zweeds
 Turkish: Turks
 Welsh: Waals(GB)
-task: taak
 event: afspraak
 journal: journaal
+task: taak
 
 
 ###############################################
@@ -1459,27 +1376,6 @@ no such user: Gebruiker bestaat niet
 ###############################################
 # Page: includes/xcal.php
 #
-#
-# << MISSING >>
-# MO:
-#
-# << MISSING >>
-# TU:
-#
-# << MISSING >>
-# WE:
-#
-# << MISSING >>
-# TH:
-#
-# << MISSING >>
-# FR:
-#
-# << MISSING >>
-# SA:
-#
-# << MISSING >>
-# SU:
 Interval: Interval
 Months: Maanden
 Month Days: Maand dagen
@@ -1623,12 +1519,6 @@ Remote Calendars not enabled: Kalenders op afstand niet ingeschakeld
 ###############################################
 # Page: install/install_functions.php
 #
-#
-# << MISSING >>
-# Error updating webcal_config:
-#
-# << MISSING >>
-# Error updating webcal_user_pref:
 Perl script required: Perl-script vereist
 Your previous version of WebCalendar requires updating several database tables.: Uw vorige versie van WebKalender vereist een opwaardering van diverse database-tabellen.
 
@@ -1638,15 +1528,9 @@ Your previous version of WebCalendar requires updating several database tables.:
 #
 WebCalendar Installation Wizard: Webkalender Installatie-wizard
 Step: Stap
-#
-# << MISSING >>
-# Single-User:
 Failure Reason: Reden van fout
 You must manually create database: U moet handmatig een database aanmaken
 Database Cache Directory: Database cache directory
-#
-# << MISSING >>
-# Test Settings:
 Create New: Maak nieuw
 Database Name: Database naam
 Back: Terug
@@ -1678,9 +1562,6 @@ This installation wizard will guide you...: De installatie-wizard zal u leiden..
 PHP Version Check: PHP Versiecontrole
 Check to see if PHP 4.1.0 or greater is installed: Controleer of PHP 4.1.0 of hoger is geinstalleerd
 PHP version: PHP versie
-#
-# << MISSING >>
-# PHP Settings:
 Detailed PHP Info: Gedetailleerde PHP informatie
 Session Check: Sessie-controle
 To test the proper operation of sessions, reload this page: Om de correcte werking van sessies te testen, herlaad (F5) deze pagina
@@ -1688,11 +1569,6 @@ You should see the session counter increment each time: U moet de sessie-teller 
 SESSION COUNTER: SESSIE TELLER
 Settings.php Status: Settings.php Status
 The file permissions of <b>settings.php</b> are set...: De bestandspermissies van <b>settings.php</b> zijn gezet op...
-#
-# << MISSING >>
-# The file permissions of the <b>includes</b> directory are set...:
-# English text: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
-#
 Your <b>settings.php</b> file appears to be valid: Uw <b>settings.php</b> bestand lijkt geldig te zijn
 Configuration Wizard Password: Configuratie wizard wachtwoord
 Create Settings File Password: Maak wachtwoord voor configuratiebestand
@@ -1716,9 +1592,6 @@ Click <b>Update Database</b> to complete the upgrade: Klik <b>Database bijwerken
 This appears to be an upgrade from version: Dit lijkt een opwaardering te zijn van versie
 In this section we will perform the required database changes to bring your database up to the required level: In deze sectie passen we uw database aan om deze op het benodigde niveau te krijgen
 If you are using a fully supported database, this step will be performed automatically for you: Indien u een volledig ondersteunde database gebruikt, zal deze stap automatisch worden uitgevoerd
-#
-# << MISSING >>
-# If not, the required SQL can be displayed and you should be able:
 to cut &amp; paste it into your database server query window: om het de knippen &amp; plakken in uw database server query venster
 No database actions are required: Er zijn geen database-acties vereist
 The following database actions are required: De volgende database acties zijn benodigd
@@ -1728,19 +1601,11 @@ This may take several minutes to complete: Dit kan enkele minuten duren om af te
 Install Database: Installeer database
 Update Database: Database bijwerken
 Display Required SQL: Toon benodigde SQL
-#
-# << MISSING >>
-# Return to previous page after processing sql:
-# English text: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
-#
 This is the final step in setting up your WebCalendar Installation: Dit is de laatste stap bij het instellen van uw WebKalender Installatie
 Timezone Conversion: Tijzone conversie
 It appears that you have: Het lijkt er op dat u heeft
 NOT: NIET
 converted your existing WebCalendar event data to GMT: uw bestaande tijden zijn geconverteerd naar GMT
-#
-# << MISSING >>
-# If you have, you may ignore this notice and not proceed with the conversion:
 If this is a new installation, you may also ignore this notice.: Indien dit een nieuwe installatie is, kunt u deze waarschuwing negeren.
 Convert Data to GMT: Converteer tijden naar GMT
 Application Settings: Programma instellingen
@@ -1751,9 +1616,6 @@ HTTP-based authentication was detected: Authenticatie gebaseerd op HTTP werd gev
 User authentication is being handled by your web server: Gebruikers Authenticatie wordt afgehandeld door de server
 You should select 'Web Server' from the list of 'User Authentication' choices below: U moet 'Webserver' uit de onderstaande lijst van 'Gebruikers Authenticatie' opties kiezen
 Create Default Admin Account: Maak een standaard beheer-account
-#
-# << MISSING >>
-# Admin Account Not Found:
 User Authentication: Gebruikers Authenticatie
 Web-based via WebCalendar (default): Web-based via WebKalender (standaard)
 Web Server: Webserver

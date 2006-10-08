@@ -1,12 +1,12 @@
-# Use this as a starting point to translate this application into
-# another language.  The format is 'English text: translated text'
-# There cannot be a ':' in the English text.
+# See translations/English-US.txt for instructions.
 #
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
-# Last update: 3 Okt 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 6 Okt 2006 by Markus Egartner <edv'at'kh-hallein.at>
-# Translation last updated on 10-06-2006
+# Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
+# Last update: 6 Okt 2006
+#
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -1362,15 +1362,14 @@ English-US: Englisch-US
 Basque: Baskisch
 Bulgarian: Bulgarisch
 Catalan: Katalanisch
-Chinese (Traditional/Big5): Chinesisch (Traditionel/Big5)
 Chinese (Simplified/GB2312): Chinesisch (Einfach/GB2312)
+Chinese (Traditional/Big5): Chinesisch (Traditionel/Big5)
 Czech: Tschechisch
 Danish: D&auml;nisch
 Dutch: Holl&auml;ndisch
 Estonian: Estnisch
 Finnish: Finnisch
 French: Franz&ouml;sisch
-French (UTF8): Franz&ouml;sisch (UTF8)
 Galician: G&auml;lisch
 German: Deutsch
 Greek: Griechisch
@@ -1390,9 +1389,9 @@ Spanish: Spanisch
 Swedish: Schwedisch
 Turkish: Turkisch
 Welsh: Wallisisch
-task: Aufgabe
 event: Termin
 journal: Journal
+task: Aufgabe
 
 
 ###############################################

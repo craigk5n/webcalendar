@@ -1,32 +1,23 @@
+# See translations/English-US.txt for instructions.
+#
 # Χρησιμοποιείστε το αρχείο αυτό για να μεταφράσετε το Ημερολόγιο σε άλλη
 # γλώσσα.  Η μορφή είναι "Αγγλικό κείμενο: Μεταφρασμένο κείμενο"
 # Δεν μπορεί να υπάρχει ":" στο αγγλικό κείμενο.
 # Μεταφραστής: Παύλος Γκέσος cham_gss@hotmail.com
 # Τελευταία ενημέρωση: 10 Μαρ 2006
-# Check out the tools directory which contains two perl scripts:
-#   check_translation.pl will tell you if you have successfully translated
-#        all required text
-#   update_translation.pl will take an old translation file and move the
-#        translations around so they age grouped by the page they appear in.
-#        It will also identify any missing translations and tag them
-#        with a comment.  If it is a non-english translation, the english
-#        translation will be included in the comment to simplify completing
-#        the translation.
 #
-# Note: You will notice the entry for "May_" below.  There's a reason for
-# this.  Translate "May_" to the full month name and "May" to the three-letter
-# month abbreviation (like "Oct" for "October").
+# Additional translations 'borrowed' from SourceForge project
+# 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
 #
-#
-#
-#
-# Translation last updated on 10-05-2006
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
 # Specify a charset (will be sent within meta tag for each page)
 #
-charset: utf8
+charset: UTF-8
 
 
 
@@ -35,61 +26,13 @@ charset: utf8
 #
 Database error: Σφάλμα στη βάση δεδομένων
 Cancel: Ακύρωση
-#
-# << MISSING >>
-# DEFAULT CONFIGURATION:
 Save: Αποθήκευση
 Public Access: Κοινή πρόσβαση
 Admin: Διαχειριστής
-#
-# << MISSING >>
-# User Access Control:
-#
-# << MISSING >>
-# Allow Access to Other Users' Calendar:
-#
-# << MISSING >>
-# Grant This User Access to My Calendar:
 Go: Πήγαινε
-#
-# << MISSING >>
-# Type:
 Calendar: Ημερολόγιο
-#
-# << MISSING >>
-# View Event:
-#
-# << MISSING >>
-# View:
 Edit: Επεξεργασία
-#
-# << MISSING >>
-# Approve/Reject:
 Events: Γεγονότα
-#
-# << MISSING >>
-# Tasks:
-#
-# << MISSING >>
-# Journals:
-#
-# << MISSING >>
-# Can Invite:
-#
-# << MISSING >>
-# Can Email:
-#
-# << MISSING >>
-# Can See Time Only:
-#
-# << MISSING >>
-# Assistant:
-#
-# << MISSING >>
-# Select All:
-#
-# << MISSING >>
-# Clear All:
 Public: Δημόσιο
 Confidential: Εμπιστευτικό
 Private: Ιδιωτικό
@@ -98,9 +41,6 @@ Private: Ιδιωτικό
 ###############################################
 # Page: activity_log.php
 #
-#
-# << MISSING >>
-# System Log:
 Activity Log: Αρχείο ενεργειών
 User: Χρήστης
 Date: Ημερομηνία
@@ -114,14 +54,8 @@ Next: Επόμενο
 ###############################################
 # Page: add_entry.php
 #
-#
-# << MISSING >>
-# is already on your calendar.:
 Invalid entry id: Εσφαλμένο id καταχώρησης
 This is a private event and may not be added to your calendar.: Αυτό είναι ιδιωτικό γεγονός και δεν μπορεί να προστεθεί στο ημερολόγιό σας.
-#
-# << MISSING >>
-# This is a confidential event and may not be added to your calendar.:
 Error adding event: Σφάλμα στην προσθήκη γεγονότος
 
 
@@ -143,88 +77,26 @@ NonUser Calendars: Ημερολόγια μη-χρηστών
 Other: Διάφορα
 Email: Email
 Colors: Χρώματα
-#
-# << MISSING >>
-# System options:
 app-name-help: Καθορίζει το όνομα της εφαρμογής που θα εμφανίζεται στη γραμμή τίτλου του browser σε όλες τις σελίδες.  Η επιλογή εδώ θα αναζητηθεί στα αρχεία μεταφράσεων για να μπορούν να δωθούν διαφορετικοί τίτλοι σε διαφορετικές γλώσσες.
 Application Name: Όνομα εφαρμογής
-#
-# << MISSING >>
-# Translated Name:
 Title: Web Ημερολόγιο
 server-url-help: Καθορίζει το URL της εφαρμογής.  Θα περιλαμβάνεται στα email υπενθυμίσεων και ειδοποιήσεων.
 Server URL: Server URL
-#
-# << MISSING >>
-# home-url-help:
-# English text: Specifies the home URL for the applicaiton. This can be an absolute or relative
-#
-#
-# << MISSING >>
-# Home URL:
 language-help: Καθορίζει το ποιά γλώσσα θα χρησιμοποιείται.
 Language: Γλώσσα
 Your browser default language is: Η default γλώσσα του browser σας είναι
-#
-# << MISSING >>
-# Allow user to use themes:
-#
-# << MISSING >>
-# themes-help:
-# English text: Allows mass update of configuration settings. Lower case labels are user pref only.
-#
-#
-# << MISSING >>
-# Themes:
-#
-# << MISSING >>
-# AVAILABLE THEMES:
 None: Όχι
 Preview: Προεπισκόπηση
-#
-# << MISSING >>
-# Site customization:
 custom-script-help: Επιτρέπει την καταχώρηση προσαρμοσμένου κειμένου Javascript ή stylesheet το οποίο θα εισαχθεί στο HTML "head" tag για κάθε σελίδα.
 Custom script/stylesheet: Προσαρμοσμένο script/stylesheet
 custom-header-help: Επιτρέπει σε ένα προσαρμοσμένο HTML snippet να εισαχθεί στην αρχή κάθε σελίδας.
 Custom header: Προσαρμοσμένος πρόλογος
 custom-trailer-help: Επιτρέπει σε ένα προσαρμοσμένο HTML snippet να εισαχθεί στο τέλος κάθε σελίδας.
 Custom trailer: Προσαρμοσμένος επίλογος
-#
-# << MISSING >>
-# enable-external-header-help:
-# English text: Allows the custom trailer to be loaded from an external file
-#
-#
-# << MISSING >>
-# Allow external file for header/script/trailer:
-#
-# << MISSING >>
-# Allow user to override header/trailer:
-#
-# << MISSING >>
-# Date and Time:
 tz-help: Καθορίζει τη διαφορά ώρας από το server στον client.
-#
-# << MISSING >>
-# Server Timezone Selection:
-#
-# << MISSING >>
-# Your current GMT offset is:
 hours: ώρες
-#
-# << MISSING >>
-# display-general-use-gmt-help:
-# English text: If enabled, common dates/times are displayed as GMT
-#
-#
-# << MISSING >>
-# Display Common Use Date/Times as GMT:
 date-format-help: Καθορίζει τη μορφή της ημερομηνίας.
 Date format: Μορφή ημερομηνίας
-#
-# << MISSING >>
-# Small Task Date:
 display-week-starts-on: Καθορίζει αν η εβδομάδα αρχίζει Κυριακή ή Δευτέρα.  Αν επιλέξετε Δευτέρα, τότε ο αριθμός εβδομάδας συμβαδίζει με τον αντίστοιχο ISO.
 Week starts on: Η εβδομάδα αρχίζει την
 Sunday: Κυριακή
@@ -241,74 +113,19 @@ work-hours-help: Καθορίζει το χρονικό διάστημα που 
 Work hours: Ώρες δουλειάς
 From: Από
 to: ως
-#
-# << MISSING >>
-# Appearance:
 preferred-view-help: Καθορίζει ποιά εμφάνιση θα είναι η default (Ημέρας, Εβδομάδας, Μήνα, ή Χρόνου).
 Preferred view: Προτιμόμενη εμφάνιση
-#
-# << MISSING >>
-# Allow top menu:
-#
-# << MISSING >>
-# Date Selectors position:
-#
-# << MISSING >>
-# menu-themes-help:
-# English text: Sets the colors and style of the top menu
-#
-#
-# << MISSING >>
-# Menu theme:
 fonts-help: Καθορίζει μια λίστα από γραμματοσειρές που θα χρησιμοποιούνται (π.χ. "Arial, Helvetica")
 Fonts: Γραμματοσειρές
-#
-# << MISSING >>
-# display-sm_month-help:
-# English text: If enabled, displays small months in month views
-#
-#
-# << MISSING >>
-# Display small months:
 display-weekends-help: Εμφάνιση και των Σαββατοκύριακων στην Εμφάνιση Εβδομάδας.
-#
-# << MISSING >>
-# Display weekends:
-#
-# << MISSING >>
-# display-alldays-help:
-# English text: Display previous and next months days in month views, filling all cells.
-#
-#
-# << MISSING >>
-# Display all days in month view:
 display-week-number-help: Καθορίζει αν θα εμφανίζεται ο αριθμός εβδομάδας (1-52) στην Εμφάνιση Μήνα και Εμφάνιση Εβδομάδας.
 Display week number: Εμφάνιση αριθμού εβδομάδας
 display-desc-print-day-help: Εμφάνιση της περιγραφής των γεγονότων στην έκδοση για εκτύπωση της Εμφάνισης Ημέρας.
 Display description in printer day view: Εμφάνιση περιγραφής στην εκτύπωση της Εμφάνισης Ημέρας
 yearly-shows-events-help: Στην Εμφάνιση Έτους, εμφάνιση των ημερών που περιέχουν γεγονότα με έντονη γραφή.
 Display days with events in bold in month and year views: Στην Εμφάνιση Μήνα και Έτους, εμφάνιση των ημερών που περιέχουν γεγονότα με έντονα
-#
-# << MISSING >>
-# display-minutes-help:
-# English text: If enabled, minutes ending with :00 will always be displayed
-#
-#
-# << MISSING >>
-# Display 00 minutes always:
 allow-view-add-help: Ένα εικονίδιο '+' εμφανίζεται στις διάφορες προβολές, το οποίο επιτρέπει στους χρήστες να εισάγουν γρήγορα γεγονότα σε ημερολόγια άλλων χρηστών.
 Include add event link in views: Εμφάνιση προσθήκης γεγονότος στις προβολές
-#
-# << MISSING >>
-# lunar-help:
-# English text: If enabled, will display small icons representing the lunar phases each month
-#
-#
-# << MISSING >>
-# Display Lunar Phases in month view:
-#
-# << MISSING >>
-# Restrictions:
 allow-view-other-help: Καθορίζει πότε ένας χρήστης θα μπορεί να δεί το ημερολόγιο άλλου χρήστη.
 Allow viewing other user's calendars: Επιτρέπεται η εμφάνιση ημερολογίων άλλων χρηστών
 require-approvals-help: Όταν είναι ενεργό, ο χρήστης πρέπει να αποδεχτεί ένα γεγονός πριν εμφανιστεί στο ημερολόγιό του (εκτός και αν το "Εμφάνιση των Γεγονότων σε Αναμονή Αποδοχής" είναι ενεργό).  Θέτοντάς το σε "Όχι" δεν απενεργοποιείτε τις αποδοχές για το Ημερολόγιο Δημόσιας Πρόσβασης (Αν το Ημερολόγιο Δημόσιας Πρόσβασης είναι ενεργό).
@@ -325,22 +142,6 @@ limit-appts-help: Επιτρέπει τον διαχειριστή να ορίσ
 Limit number of timed events per day: Περιορισμός, αριθμού γεγονότων με χρόνο, στη μέρα
 limit-appts-number-help: Ο μέγιστος αριθμός, γεγονότων με χρόνο, που μπορεί να έχει ένας χρήστης σε κάθε μέρα.
 Maximum timed events per day: Μέγιστος αριθμός, γεγονότων με χρόνο, στη μέρα
-#
-# << MISSING >>
-# crossday-help:
-# English text: If enabled, events that span days will be displayed on seperate days
-#
-#
-# << MISSING >>
-# Disable Cross-Day Events:
-#
-# << MISSING >>
-# disable-location-field-help:
-# English text: Selecting "Yes" will remove the "Location" field from event information pages
-#
-#
-# << MISSING >>
-# Disable Location field:
 disable-priority-field-help: Επιλέγοντας "Ναι" εξαφανίζεται η επιλογή "Προτεραιότητα" από τις πληροφορίες του γεγονότος, παρέχοντας ένα απλούστερο περιβάλλον για τους αρχάριους.
 Disable Priority field: Απενεργοποίηση επιλογής Προτεραιότητας
 disable-access-field-help: Επιλέγοντας "Ναι" εξαφανίζεται η επιλογή "Πρόσβαση" από τις πληροφορίες του γεγονότος, παρέχοντας ένα απλούστερο περιβάλλον για τους αρχάριους.
@@ -351,54 +152,10 @@ disable-repeating-field-help: Επιλέγοντας "Ναι" εξαφανίζε
 Disable Repeating field: Απενεργοποίηση επιλογής Επανάληψη
 allow-html-description-help: Αν είναι ενεργό, οι λεπτομέρειες των γεγονότων μπορούν να δίνοναι σε μορφή HTML Αν όχι, τα HTML tags εμφανίζονται σαν κανονικό κείμενο. Προειδοποίηση: Αν είναι ενεργό, επιτρέπεται στους χρήστες να αναφέρονται σε εικόνες που βρίσκονται σε εξωτερικές URL διευθύνσεις.
 Allow HTML in Description: Επιτρέπεται το HTML στην περιγραφή
-#
-# << MISSING >>
-# Popups:
-#
-# << MISSING >>
-# disable-popups-help:
-# English text: Disable popups from calendar views
-#
-#
-# << MISSING >>
-# Disable Pop-Ups:
 popup-includes-siteextras-help: Αν είναι ενεργό επιτρέπει προσαρμένα από το χρήστη πεδία στα γεγονότα τα οποία βρίσκονται στο αρχείο site_extras.php να εμφανίζονται στα αναδυόμενα μυνήματα των γεγονότων.
 Display Site Extras in popup: Εμφάνιση των επιπλέον πληροφοριών με αναδυόμενο μύνημα
-#
-# << MISSING >>
-# popup-includes-participants-help:
-# English text: If enabled, participants are displayed in event popups.
-#
-#
-# << MISSING >>
-# Display Participants in popup:
-#
-# << MISSING >>
-# Miscellaneous:
 remember-last-login-help: Όταν είναι ενεργό, το Όνομα Χρήστη θα συμπληρώνεται αυτόματα στη σελίδα εισόδου (όχι όμως και ο κωδικός), και οι ρυθμίσεις του χρήστη θα φορτώνονται (συμπεριλαμβανομένων των επιλεγμένων χρωμάτων και της γλώσσας).
 Remember last login: Μνήμη της τελευταίας εισόδου
-#
-# << MISSING >>
-# summary_length-help:
-# English text: Maximum length of Brief Description in calendar views
-#
-#
-# << MISSING >>
-# Brief Description Length:
-#
-# << MISSING >>
-# user_sort-help:
-# English text: Determines sort order for User, Nonuser lists
-#
-#
-# << MISSING >>
-# User Sort Order:
-#
-# << MISSING >>
-# Lastname, Firstname:
-#
-# << MISSING >>
-# Firstname, Lastname:
 Plugins: Plugins
 plugins-enabled-help: Επιτρέπονται plugin εφαρμογές.
 Enable Plugins: Επιτρέπονται τα Plugins
@@ -418,37 +175,8 @@ public-access-add-requires-approval-help: Καθορίζει αν τα γεγο�
 Public access new events require approval: Η δημόσια πρόσβαση χρειάζεται αποδοχή/έγκριση για προσθήκη γεγονότων
 public-access-sees-participants-help: Όταν είναι ενεργό, οι δημόσιοι χρήστες έχουν τη δυνατότητα να βλέπουνε τους συμμετέχοντες στο γεγονός αν βλέπουνε τις λεπτομέρειες ενός γεγονότος.
 Public access can view participants: Η δημόσια πρόσβαση μπορεί να βλέπει συμμετέχοντες
-#
-# << MISSING >>
-# public-access-override-help:
-# English text: Allows event names and descriptions to be hidden on the public calendar
-#
-#
-# << MISSING >>
-# Override event name/description for public access:
-#
-# << MISSING >>
-# public-access-override-text-help:
-# English text: The text to display if the above option is enabled. If 'Not Available', it will be translated.
-#
-#
-# << MISSING >>
-# Text to display to public access:
-#
-# << MISSING >>
-# uac-enabled-help:
-# English text: Enables user-level access control
-#
-#
-# << MISSING >>
-# User Access Control enabled:
 groups-enabled-help: Η ενεργοποίηση των ομάδων, επιτρέπει την επιλογή ομάδας χρηστών, επιλέγοντας την ομάδα στην οποία βρίσκονται.
 Groups enabled: Ομάδες
-#
-# << MISSING >>
-# user-sees-his-group-help:
-# English text: If enabled, users will not see calendar users that are not in at least one of their groups.
-#
 User sees only his groups: Ο χρήστης βλέπει μόνο την ομάδα του
 nonuser-enabled-help: Αν είναι ενεργό, οι διαχειριστές έχουν δικαίωμα να δημιουργούν ημερολόγια μη χρηστών.
 Nonuser enabled: Ενεργά ημερολόγια μη χρηστών
@@ -458,160 +186,18 @@ reports-enabled-help: Αν είναι ενεργό, οι χρήστες θα β�
 Reports enabled: Αναφορές
 subscriptions-enabled-help: Καθορίζει αν οι απομακρυσμένοι χρήστες μπορούν να συνδεθούν στο ημερολόγιο ενός χρήστη, επιτρέποντας τους να δούν τα γεγονότα του στη συμβατή με iCal εφαρμογή τους (όπως το iCal της Apple ή το Mozilla Calendar).
 Allow remote subscriptions: Επιτρέπονται απομακρυσμένες συνδέσεις
-#
-# << MISSING >>
-# remotes-enabled-help:
-# English text: Allows users to load remote ics files using URL
-#
-#
-# << MISSING >>
-# Allow remote calendars:
-#
-# << MISSING >>
-# rss-enabled-help:
-# English text: Specifies if a user's calendar can be obtained from a RSS feed.
-#
-#
-# << MISSING >>
-# Enable RSS feed:
 categories-enabled-help: Επιτρέπει υποστήριξη κατηγοριών γεγονότων.
 Categories enabled: Κατηγορίες
-#
-# << MISSING >>
-# icon_upload-enabled-help:
-# English text: If enabled, users can upload category icons
-#
-#
-# << MISSING >>
-# Category Icon Upload enabled:
-#
-# << MISSING >>
-# display-tasks-help:
-# English text: Display small task window on month and day calendar
-#
-#
-# << MISSING >>
-# Display small task list:
-#
-# << MISSING >>
-# display-tasks-in-grid-help:
-# English text: Display tasks in calendars along with events
-#
-#
-# << MISSING >>
-# Display tasks in Calendars:
 allow-external-users-help: Καθορίζει αν ένας τρίτος που δεν είναι χρήστης μπορεί να γίνει συμμετέχων σε ένα γεγονός.
 Allow external users: Επιτρέπονται εξωτερικοί χρήστες
 external-can-receive-notification-help: Όταν οι εξωτερικοί χρήστες είναι ενεργοί, καθώς και η χρήση email, οι εξωτερικοί χρήστες λαμβάνουν ειδοποίηση email όταν ένα γεγονός προστίθεται/τροποποιείται/διαγράφεται (Αν παρέχεται το email του εξωτερικού χρήστη).
 External users can receive email notifications: Οι εξωτερικοί χρήστες λαμβάνουν ειδοποιήσεις email
 external-can-receive-reminder-help: Όταν οι εξωτερικοί χρήστες είναι ενεργοί, καθώς και η χρήση email, οι εξωτερικοί χρήστες λαμβάνουν υπενθύμιση email (Αν παρέχεται το email του εξωτερικού χρήστη).
 External users can receive email reminders: Οι εξωτερικοί χρήστες λαμβάνουν υπενθυμίσεις email
-#
-# << MISSING >>
-# allow-self-registration-help:
-# English text: Permit new users to register themselves
-#
-#
-# << MISSING >>
-# Allow self-registration:
-#
-# << MISSING >>
-# use-blacklist-help:
-# English text: Limit access to WebCalendar functions based on IP address
-#
-#
-# << MISSING >>
-# Restrict self-registration to blacklist:
-#
-# << MISSING >>
-# allow-self-registration-full-help:
-# English text: Allow new users to complete the self-registration process on-line
-#
-#
-# << MISSING >>
-# Use self-registration email notifications:
-# English text: Generate passwords and send to new users. This should help eliminate spammers.
-#
-#
-# << MISSING >>
-# allow-attachment-help:
-# English text: Allow users to add file attachments to events.
-#
-#
-# << MISSING >>
-# Allow file attachments to events:
-#
-# << MISSING >>
-# Admin and owner can always add attachments if enabled:
-#
-# << MISSING >>
-# Participant:
-#
-# << MISSING >>
-# Anyone:
-#
-# << MISSING >>
-# allow-comments-help:
-# English text: Allow users to add comments to events.
-#
-#
-# << MISSING >>
-# Allow comments to events:
-#
-# << MISSING >>
-# Admin and owner can always add comments if enabled:
 email-enabled-help: Ενεργοποιεί ή απενεργοποιεί την αποστολή email για υπενθυμίσεις και ειδοποιήσεις. Αν ο server δεν μπορεί να στείλει mail, επιλέξτε "Όχι".
 Email enabled: Χρήση email
 email-default-sender: Καθορίζει την διεύθυνση email που θα φαίνεται ως αποστολέας, όταν αποστέλονται υπενθυμίσεις.
 Default sender address: Διεύθυνση αποστολέα
-#
-# << MISSING >>
-# email-mailer:
-# English text: Choose email type (SMTP, PHP mail, sendmail)
-#
-#
-# << MISSING >>
-# Email Mailer:
-#
-# << MISSING >>
-# email-smtp-host:
-# English text: Hostname(s) of SMTP server(s) seperated by commas
-#
-#
-# << MISSING >>
-# SMTP Host name(s):
-#
-# << MISSING >>
-# email-smtp-port:
-# English text: SMTP Port Number (normally 25)
-#
-#
-# << MISSING >>
-# SMTP Port Number:
-#
-# << MISSING >>
-# email-smtp-auth:
-# English text: Use SMTP Authentication
-#
-#
-# << MISSING >>
-# SMTP Authentication:
-#
-# << MISSING >>
-# email-smtp-username:
-# English text: SMTP Username if using Authentication
-#
-#
-# << MISSING >>
-# SMTP Username:
-#
-# << MISSING >>
-# email-smtp-password:
-# English text: SMTP Password if using Authentication
-#
-#
-# << MISSING >>
-# SMTP Password:
 Default user settings: Default ρυθμίσεις χρήστη
 email-event-reminders-help: Καθορίζει πότε θα αποστέλονται υπενθυμίσεις γεγονότων.
 Event reminders: Υπενθυμίσεις γεγονότων
@@ -624,34 +210,17 @@ Events removed from my calendar: Γεγονότα που διαγράφοντα�
 email-event-rejected: Καθορίζει αν θα αποστέλεται email ειδοποίηση όταν ένας συμμετέχων απορρίπτει γεγονός στο ημερολόγιό σας.
 Event rejected by participant: Γεγονότα που απορρίπτονται από τον συμμετέχοντα
 Allow user to customize colors: Αλλαγή χρωμάτων από τους χρήστες
-#
-# << MISSING >>
-# gradient-colors:
-# English text: If enabled gradient colors are used. This can greatly impact performane.
-#
 Enable gradient images for background colors: Ενεργοποίηση εικόνων για χρώμα background
 Not available: Μη διαθέσιμο
 Document background: Background κειμένου
 Document title: Τίτλος κειμένου
 Document text: Κείμενο
-#
-# << MISSING >>
-# My event text:
 Table grid color: Χρώμα του grid του πίνακα
 Table header background: Χρώμα του background της επικεφαλίδας του πίνακα
 Table header text: Κείμενο της επικεφαλίδας του πίνακα
 Table cell background: Background κελιών του πίνακα
 Table cell background for current day: Background κελιών του πίνακα για την τρέχουσα ημέρα
-#
-# << MISSING >>
-# Table cell background for days with events:
 Table cell background for weekends: Background κελιών του πίνακα για τα σαββατοκύριακα
-#
-# << MISSING >>
-# Table cell background for other month:
-#
-# << MISSING >>
-# Week number color:
 Event popup background: Background των αναδυόμενων κειμένων των γεγονότων
 Event popup text: Κείμενο των αναδυόμενων κειμένων των γεγονότων
 
@@ -659,9 +228,6 @@ Event popup text: Κείμενο των αναδυόμενων κειμένων 
 ###############################################
 # Page: adminhome.php
 #
-#
-# << MISSING >>
-# Control Panel:
 Preferences: Ρυθμίσεις
 Assistants: Συμμετέχοντες
 Users: Χρηστες
@@ -677,43 +243,11 @@ Administrative Tools: Βοηθήματα Διαχειριστή
 
 
 ###############################################
-# Page: ajax.php
-#
-#
-# << MISSING >>
-# Duplicate Name:
-#
-# << MISSING >>
-# Username already exists:
-#
-# << MISSING >>
-# Email address already exists:
-
-
-###############################################
 # Page: approve_entry.php
 #
-#
-# << MISSING >>
-# Additional Comments (optional):
-#
-# << MISSING >>
-# Approve and Send:
-#
-# << MISSING >>
-# Approve and Exit:
-#
-# << MISSING >>
-# (Your comments will be included in an email to the event creator):
 Hello: Καλημέρα
-#
-# << MISSING >>
-# An appointment has been approved and comments added by:
 The subject was: Το θέμα είναι
 The description is: Η περιγραφή είναι
-#
-# << MISSING >>
-# Comments:
 
 
 ###############################################
@@ -724,78 +258,20 @@ Your assistants: Οι βοηθοί σας
 
 
 ###############################################
-# Page: availability.php
-#
-#
-# << MISSING >>
-# Program Error:
-#
-# << MISSING >>
-# No users specified!:
-#
-# << MISSING >>
-# No year specified!:
-#
-# << MISSING >>
-# No month specified!:
-#
-# << MISSING >>
-# No day specified!:
-
-
-###############################################
 # Page: category.php
 #
 Add: Προσθήκη
 Category Name: Όνομα Κατηγορίας
-#
-# << MISSING >>
-# Category Icon:
-#
-# << MISSING >>
-# Remove Icon:
 Global: Δημόσιο
-#
-# << MISSING >>
-# Add Icon to Category:
-#
-# << MISSING >>
-# Upload:
-#
-# << MISSING >>
-# gif 3kb max:
-#
-# << MISSING >>
-# Search for existing icons:
 Delete: Διαγραφή
 Are you sure you want to delete this entry?: Είστε σίγουρος οτι θέλετε να σβύσετε την εγγραφή;
 Add New Category: Προσθήκη νέας κατηγορίας
 
 
 ###############################################
-# Page: category_handler.php
-#
-#
-# << MISSING >>
-# File size exceeds maximum:
-#
-# << MISSING >>
-# File is not a gif image:
-
-
-###############################################
 # Page: catsel.php
 #
-#
-# << MISSING >>
-# ENTRY CATEGORIES:
-#
-# << MISSING >>
-# AVAILABLE CATEGORIES:
 Remove: Διαγραφή
-#
-# << MISSING >>
-# Global Category:
 Ok: Εντάξει
 
 
@@ -806,40 +282,9 @@ An appointment has been canceled for you by: Μια συνάντηση ακυρ�
 
 
 ###############################################
-# Page: doc.php
-#
-#
-# << MISSING >>
-# Invalid blob id:
-
-
-###############################################
 # Page: docadd.php
 #
-#
-# << MISSING >>
-# Add Comment:
-#
-# << MISSING >>
-# Add Attachment:
-#
-# << MISSING >>
-# Subject:
-#
-# << MISSING >>
-# Comment:
-#
-# << MISSING >>
-# Upload file:
 Description: Περιγραφή
-
-
-###############################################
-# Page: docdel.php
-#
-#
-# << MISSING >>
-# Removed:
 
 
 ###############################################
@@ -847,35 +292,11 @@ Description: Περιγραφή
 #
 am: πμ
 pm: μμ
-#
-# << MISSING >>
-# You are not authorized to edit this task:
-#
-# << MISSING >>
-# hours ahead of you:
-#
-# << MISSING >>
-# hours behind you:
-#
-# << MISSING >>
-# hour ahead of you:
-#
-# << MISSING >>
-# hour behind you:
-#
-# << MISSING >>
-# is in a different timezone than you are. Currently:
-#
-# << MISSING >>
-# Time entered here is based on your Timezone:
 Edit Entry: Επεξεργασία Εγγραφής
 Add Entry: Προσθήκη Εγγραφής
 Details: Λεπτομέρειες
 Participants: Συμμετέχοντες
 Repeat: Επανάληψη
-#
-# << MISSING >>
-# Reminders:
 brief-description-help: Παρέχει μια σύντομη περιγραφή (περίπου 20 χαρακτήρες) του γεγονότος.  Εμφανίζεται όταν βλέπετε το ημερολόγιο.
 Brief Description: Σύντομη περιγραφή
 full-description-help: Η πλήρης περιγραφή του γεγονότος. Εμφανίζεται όταν ο χρήστης επιλέγει να δεί το γεγονός.
@@ -889,37 +310,8 @@ Medium: Μέτρια
 High: Υψηλή
 category-help: Καθορίζει την κατηγορία του γεγονότος.
 Category: Κατηγορία
-#
-# << MISSING >>
-# completed-help:
-# English text: Date task is completed. Only enabled when all participants percentage equals 100%.
-#
-#
-# << MISSING >>
-# Date Completed:
-#
-# << MISSING >>
-# percent-help:
-# English text: Task completion percentage for this user
-#
-#
-# << MISSING >>
-# Percent Complete:
-#
-# << MISSING >>
-# All Percentages:
-#
-# << MISSING >>
-# location-help:
-# English text: Event location 
-#
-#
-# << MISSING >>
-# Location:
+URL: URL
 date-help: Καθορίζει την ημερομηνία του γεγονότος.
-#
-# << MISSING >>
-# Start Date:
 Untimed event: Γεγονός δίχως ώρα
 Timed event: Γεγονός με ώρα
 All day event: Ολοήμερο γεγονός
@@ -928,15 +320,6 @@ time-help: Καθορίζει την ώρα του γεγονότος.<br />Επ
 duration-help: Καθορίζει τη διάρκεια (σε ώρες:λεπτά) του γεγονότος.  <br /><i>Η επιλογή μπορεί να μείνει κενή.</i>
 minutes: λεπτά
 end-time-help: Καθορίζει την ώρα που αναμένεται το γεγονός να τελειώσει.
-#
-# << MISSING >>
-# Start Time:
-#
-# << MISSING >>
-# Due Date:
-#
-# << MISSING >>
-# Due Time:
 participants-help: Εμφανίζει τους συμμετέχοντες στο γεγονός.
 Availability: Διαθεσιμότητα
 external-participants-help: Καθορίζει μια λίστα με συμμετέχοντες στο γεγονός, οι οποίοι δεν χρησιμοποιούν την εφαρμογή.  Οι χρήστες εμφανίζονται ένας ανα γραμμή και μπορούν να περιλαμβάνουν email.  Αν περιλαμβάνεται email, ο χρήστης μπορεί να λαμβάνει υπενθημίσεις και ειδοποιήσεις.
@@ -947,133 +330,14 @@ Weekly: Εβδομαδιαία
 Monthly: Μηνιαία
 by day: κατά ημέρα
 by date: κατά ημερομηνία
-#
-# << MISSING >>
-# by position:
 Yearly: Ετήσια
-#
-# << MISSING >>
-# Manual:
-#
-# << MISSING >>
-# Expert Mode:
 repeat-end-date-help: Καθορίζει την ημερομηνία μέχρι την οποία θα επαναλαμβάνεται το γεγονός.
-#
-# << MISSING >>
-# Ending:
-#
-# << MISSING >>
-# Forever:
 Use end date: Χρήση ημερομηνίας λήξης
-#
-# << MISSING >>
-# Number of times:
 repeat-frequency-help: Καθορίζει πόσο συχνά το γεγονός επαναλαμβάνεται. Το default 1 καθορίζει οτι θα συμβαίνει κάθε φορά. Δίνοντας 2, θα συμβαίνει κάθε δεύτερη εβδομάδα (αν η <i>Επανάληψη</i> έχει οριστεί <i>Εβδομαδιαία</i>), κάθε δεύτερο μήνα (αν η <i>Επανάληψη</i> έχει οριστεί <i>Μηνιαία</i>), κ.τ.λ.
 Frequency: Συχνότητα
-#
-# << MISSING >>
-# Weekdays Only:
-#
-# << MISSING >>
-# Week Start:
-#
-# << MISSING >>
-# repeat-bydayextended-help:
-# English text: Allows date selection based on day of week. 
-#
-#
-# << MISSING >>
-# ByDay:
 All: Όλα
-#
-# << MISSING >>
-# repeat-month-help:
-# English text: Specifies which months the event should repeat in.
-#
-#
-# << MISSING >>
-# ByMonth:
-#
-# << MISSING >>
-# repeat-bysetpos-help:
-# English text: Allows date selection based on position withing the month.
-#
-#
-# << MISSING >>
-# BySetPos:
-#
-# << MISSING >>
-# repeat-bymonthdayextended-help:
-# English text: Allows date selection based on date.
-#
-#
-# << MISSING >>
-# ByMonthDay:
-#
-# << MISSING >>
-# repeat-byweekno-help:
-# English text: Allows user to specify a list of weeks to repeat event (1,2...53,-53,-52...-1).
-#
-#
-# << MISSING >>
-# ByWeekNo:
-#
-# << MISSING >>
-# repeat-byyearday-help:
-# English text: Allows user to specify a list of year days to repeat event (1,2...366,-366,-365...-1).
-#
-#
-# << MISSING >>
-# ByYearDay:
-#
-# << MISSING >>
-# repeat-exceptions-help:
-# English text: Additional days that this event should or should not occur on.
-#
-#
-# << MISSING >>
-# Exclusions:
-#
-# << MISSING >>
-# Inclusions:
-#
-# << MISSING >>
-# Add Exception:
-#
-# << MISSING >>
-# Add Inclusion:
-#
-# << MISSING >>
-# Delete Selected:
 Send Reminder: Αποστολή υπενθυμιστή
-#
-# << MISSING >>
-# When:
-#
-# << MISSING >>
-# Use Date/Time:
-#
-# << MISSING >>
-# Use Offset:
 days: μέρες
-#
-# << MISSING >>
-# Before:
-#
-# << MISSING >>
-# After:
-#
-# << MISSING >>
-# Start:
-#
-# << MISSING >>
-# End/Due:
-#
-# << MISSING >>
-# Times:
-#
-# << MISSING >>
-# Every:
 Delete entry: Διαγραφή εγγραφής
 You are not authorized to edit this entry: Δεν είστε εξουσιοδοτημένος να επεξεργαστείτε αυτή την εγγραφή
 
@@ -1102,9 +366,6 @@ Source: Πηγή
 Color: Χρώμα
 Duplicates: Διπλές καταχωρήσεις
 Show layer events that are the same as your own: Εμφάνιση των γεγονότων του επιπέδου που είναι ίδια με τα δικά σας
-#
-# << MISSING >>
-# Add to Others:
 Add to My Calendar: Προσθήκη στο Ημερολόγιο μου
 Delete layer: Διαγραφή Επιπέδου
 Are you sure you want to delete this layer?: Είστε σίγουρος οτι θέλετε να διαγράψετε αυτό το Επίπεδο;
@@ -1127,30 +388,6 @@ Add User: Προσθήκη Χρήστη
 Calendar ID: ID Ημερολογίου
 First Name: Όνομα
 Last Name: Επίθετο
-#
-# << MISSING >>
-# Is public calendar:
-
-
-###############################################
-# Page: edit_remotes.php
-#
-#
-# << MISSING >>
-# Edit Remote Calendar:
-#
-# << MISSING >>
-# Add Remote Calendar:
-URL: URL
-#
-# << MISSING >>
-# Create Layer:
-#
-# << MISSING >>
-# Required to View Remote Calendar:
-#
-# << MISSING >>
-# Reload:
 
 
 ###############################################
@@ -1159,9 +396,6 @@ URL: URL
 Error: Σφάλμα
 Import Results: Αποτελέσματα Εισαγωγής
 Events successfully imported: Γεγονότα που εισάχθηκαν επιτυχώς
-#
-# << MISSING >>
-# Create a new layer to view this calendar:
 Errors: Σφάλματα
 There was an error parsing the import file or no events were returned: Σφάλμα κατά την ανάλυση του αρχείου εισαγωγής ή δεν υπήρχαν γεγονότα
 
@@ -1247,9 +481,6 @@ Set Password: Θέσετε τον κωδικό
 Deleting users not supported: Η διαγραφή χρηστών δεν υποστηρίζεται
 The passwords were not identical: Οι κωδικοί δεν είναι ίδιοι
 You have not entered a password: Δεν δώσατε κωδικό
-#
-# << MISSING >>
-# Invalid characters in login:
 Username can not be blank: Το όνομα χρήστη δεν μπορεί να είναι κενό
 
 
@@ -1324,9 +555,6 @@ Report Bug: Αναφέρετε ένα Bug
 #
 Adding/Editing Calendar Entries: Πρόσθεση/Επεξεργασία εγγραφών Ημερολογίου
 Repeat Type: Επανάληψη
-#
-# << MISSING >>
-# For More Information...:
 Repeat End Date: Ημερομηνία τέλους επανάληψης
 Repeat Day: Μέρα επανάληψης
 repeat-day-help: Καθορίζει ποιές μέρες της εβδομάδας θα επναλαμβάνεται το γεγονός.  Χρησιμοποιείται μόνο όταν η <i>Επανάλυψη</i> έχει τεθεί σε <i>Εβδομαδιαία</i>.
@@ -1358,9 +586,6 @@ Help Index: Περιεχόμενα Βοήθειας
 ###############################################
 # Page: help_layers.php
 #
-#
-# << MISSING >>
-# Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.:
 Add/Edit/Delete: Προσθήκη/Επεξεργασία/Διαγραφή
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Πατώντας το link Επεξεργασία Επιπέδων στην περιοχή διαχειριστή, κάτω στη σελίδα, σας επιτρέπει να προσθέσετε/επεξεργαστείτε/διαγράψετε επίπεδα.
 Specifies the user that you would like to see displayed in your calendar.: Καθορίζει το χρήστη που επιθυμείτε να εμφανίζεται στο ημερολόγιό σας.
@@ -1385,78 +610,6 @@ boss-approve-event-help: Καθορίζει αν το αφεντικό θα χρ
 Subscribe/Publish: Συνδρομή/Δημοσίευση
 allow-remote-subscriptions-help: Καθορίζει αν απομακρυσμένοι χρήστες θα μπορούν να συνδέονται στο ημερολόγιό σας, επιτρέποντας να δούνε τα γεγονότα σας σε μια εφαρμογή που υποστηρίζει iCal (σαν το iCal της Apple ή το Mozilla Calendar).
 remote-subscriptions-url-help: Εμφανίζει το URL που χρειάζονται οι απομακρυσμένοι χρήστες για να συνδεθούν στο ημερολόγιό σας.
-#
-# << MISSING >>
-# Allow remote publishing:
-#
-# << MISSING >>
-# allow-remote-publishing-help:
-# English text: Specifies if a remote iCal client can publish events back to WebCalendar
-#
-#
-# << MISSING >>
-# remote-publishing-url-help:
-# English text: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
-#
-#
-# << MISSING >>
-# rss-feed-url-help:
-# English text: The URL to access the RSS feed
-#
-#
-# << MISSING >>
-# Enable FreeBusy publishing:
-#
-# << MISSING >>
-# freebusy-enabled-help:
-# English text: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
-#
-#
-# << MISSING >>
-# freebusy-url-help:
-# English text: The URL for accessing the user's FreeBusy list
-#
-
-
-###############################################
-# Page: help_uac.php
-#
-#
-# << MISSING >>
-# User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
-# English text: User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
-#
-#
-# << MISSING >>
-# If disabled, this user will not see you in the participants list.:
-#
-# << MISSING >>
-# If disabled, this user will not be able to send you emails.:
-#
-# << MISSING >>
-# If enabled, this user will not be able to view the details of any of your entries.:
-
-
-###############################################
-# Page: icalclient.php
-#
-#
-# << MISSING >>
-# Publishing Disabled (Admin):
-#
-# << MISSING >>
-# Publishing Disabled (User):
-
-
-###############################################
-# Page: icons.php
-#
-#
-# << MISSING >>
-# Click to Select:
-#
-# << MISSING >>
-# Current Icons on Server:
 
 
 ###############################################
@@ -1466,9 +619,6 @@ Disabled: Μη ενεργό
 Import format: Format εισαγωγής
 Exclude private records: Αποκλείονται ιδιωτικές εγγραφές
 Overwrite Prior Import: Επικάλυψη της προηγούμενης εισαγωγής
-#
-# << MISSING >>
-# Repeated items are imported separately. Prior imports are not overwritten.:
 
 
 ###############################################
@@ -1502,36 +652,6 @@ Approve/Confirm: Αποδοχή/Έγκριση
 Approve this entry?: Αποδοχή της εγγραφής;
 Reject: Απόρριψη
 Reject this entry?: Απόρριψη της εγγραφής;
-#
-# << MISSING >>
-# Check All:
-#
-# << MISSING >>
-# Uncheck All:
-#
-# << MISSING >>
-# Approve Selected:
-#
-# << MISSING >>
-# Approve Selected entries?:
-#
-# << MISSING >>
-# Reject Selected:
-#
-# << MISSING >>
-# Reject Selected entries?:
-#
-# << MISSING >>
-# Emails Will Not Be Sent:
-#
-# << MISSING >>
-# No unapproved entries for:
-#
-# << MISSING >>
-# Unapproved Entries:
-#
-# << MISSING >>
-# Not authorized:
 
 
 ###############################################
@@ -1548,23 +668,6 @@ cookies-note: <b>Σημείωση:</b> Η εφαρμογή απαιτεί τα c
 # Page: login.php
 #
 Invalid login: Εσφαλμένη προσπάθεια εισόδου
-#
-# << MISSING >>
-# You have been logged out:
-#
-# << MISSING >>
-# Not yet registered? Register here!:
-
-
-###############################################
-# Page: minical.php
-#
-#
-# << MISSING >>
-# No such nonuser calendar:
-#
-# << MISSING >>
-# This Calendar is not Public:
 
 
 ###############################################
@@ -1577,75 +680,8 @@ Add New NonUser Calendar: Προσθήκη Νέου Ημερολογίου Μη 
 # Page: pref.php
 #
 Save Preferences: Αποθήκευση ρυθμίσεων
-#
-# << MISSING >>
-# Public Access calendar:
-#
-# << MISSING >>
-# Modify Non User Calendar Preferences:
-#
-# << MISSING >>
-# Return to My Preferences:
-#
-# << MISSING >>
-# Custom Scripts:
-#
-# << MISSING >>
-# Timezone Selection:
-#
-# << MISSING >>
-# entry-interval-help:
-# English text: Sets minute interval when editing entry times
-#
-#
-# << MISSING >>
-# Entry interval:
 hour: ώρα
 minute: λεπτό
-#
-# << MISSING >>
-# theme-reload-help:
-# English text: Due to CSS caching, a page reload may be required
-#
-#
-# << MISSING >>
-# Page may need to be reloaded for new Theme to take effect:
-#
-# << MISSING >>
-# Email format preference:
-#
-# << MISSING >>
-# HTML:
-#
-# << MISSING >>
-# Plain Text:
-#
-# << MISSING >>
-# display_byproxy-help:
-# English text: Display the real creator on view_entry page
-#
-#
-# << MISSING >>
-# Display if created by Assistant:
-#
-# << MISSING >>
-# allow-view-subscriptions-help:
-# English text: Allows restricting remote access to Private or Confidential entries 
-#
-#
-# << MISSING >>
-# Allow remote viewing of:
-#
-# << MISSING >>
-# entries:
-
-
-###############################################
-# Page: publish.php
-#
-#
-# << MISSING >>
-# No user specified:
 
 
 ###############################################
@@ -1661,81 +697,9 @@ Records deleted from: Οι εγγραφές θα διαγραφούν από τ�
 
 
 ###############################################
-# Page: register.php
-#
-#
-# << MISSING >>
-# Email address can not be blank:
-#
-# << MISSING >>
-# Illegal characters in login:
-#
-# << MISSING >>
-# A new WebCalendar account has been set up for you:
-#
-# << MISSING >>
-# Your username is:
-#
-# << MISSING >>
-# Your password is:
-#
-# << MISSING >>
-# Please visit:
-#
-# << MISSING >>
-# to log in and start using your account:
-#
-# << MISSING >>
-# You may change your password after logging in the first time:
-#
-# << MISSING >>
-# If you received this email in error:
-# English text: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note 
-#
-#
-# << MISSING >>
-# Administrator:
-#
-# << MISSING >>
-# Welcome:
-#
-# << MISSING >>
-# Registration:
-#
-# << MISSING >>
-# Welcome to WebCalendar:
-#
-# << MISSING >>
-# Your email should arrive shortly:
-#
-# << MISSING >>
-# Return to Login screen:
-#
-# << MISSING >>
-# Your account information will be emailed to you:
-#
-# << MISSING >>
-# Submit:
-
-
-###############################################
 # Page: reject_entry.php
 #
-#
-# << MISSING >>
-# Continue:
-#
-# << MISSING >>
-# (Your comments will be included in an email to the other participants):
 An appointment has been rejected by: Μια συνάντηση, απορρίφθηκε από το χρήστη:
-
-
-###############################################
-# Page: remotes.php
-#
-#
-# << MISSING >>
-# Add New Remote Calendar:
 
 
 ###############################################
@@ -1782,28 +746,11 @@ View Another User's Calendar: Δείτε το Ημερολόγιο άλλου χ
 #
 You have not added any categories: Δεν έχετε προσθέσει καμμία κατηγορία
 Set Category: Κατηγορία
-#
-# << MISSING >>
-# Global Categories can not be changed:
-
-
-###############################################
-# Page: upcoming.php
-#
-#
-# << MISSING >>
-# __month__ __dd__:
-#
-# << MISSING >>
-# more:
 
 
 ###############################################
 # Page: users.php
 #
-#
-# << MISSING >>
-# Remote Calendars:
 Add New User: Προσθήκη Νέου Χρήστη
 denotes administrative user: δείχνει χρήστη που είναι διαχειριστής
 
@@ -1811,12 +758,6 @@ denotes administrative user: δείχνει χρήστη που είναι δι�
 ###############################################
 # Page: usersel.php
 #
-#
-# << MISSING >>
-# No form specified!:
-#
-# << MISSING >>
-# No listid specified!:
 Reset: Επαναφορά
 
 
@@ -1834,13 +775,7 @@ Add View: Προσθήκη εμφάνισης
 Edit View: Επεξεργασία εμφάνισης
 View Name: Όνομα εμφάνισης
 View Type: Τύπος εμφάνισης
-#
-# << MISSING >>
-# Day by Time:
 Week (Users horizontal): Εβδομάδα (Χρήστες οριζόντια)
-#
-# << MISSING >>
-# Week by Time:
 Week (Users vertical): Εβδομάδα (Χρήστες κατακόρυφα)
 Week (Timebar): Εβδομάδα (Μπάρα ώρας)
 Month (Timebar): Μήνας (Μπάρα ώρας)
@@ -1866,43 +801,7 @@ No users for this view: Δεν υπάρχουν χρήστες για την ε�
 #
 Assistant mode: Κατάσταση βοηθού
 Status: Κατάσταση
-#
-# << MISSING >>
-# Accepted:
-#
-# << MISSING >>
-# Needs-Action:
-#
-# << MISSING >>
-# Declined:
-#
-# << MISSING >>
-# Completed:
-#
-# << MISSING >>
-# by:
-#
-# << MISSING >>
-# Percentage Complete:
 External User: Εξωτερικός Χρήστης
-#
-# << MISSING >>
-# Update Task Percentage:
-#
-# << MISSING >>
-# Update:
-#
-# << MISSING >>
-# Attachments:
-#
-# << MISSING >>
-# comments:
-#
-# << MISSING >>
-# Show:
-#
-# << MISSING >>
-# Hide:
 Approve/Confirm entry: Αποδοχή/Έγκριση εγγραφής
 Reject entry: Απόριψη εγγραφής
 Set category: Κατηγορία
@@ -1912,31 +811,14 @@ Delete repeating event for all dates: Διαγραφή επαναλαμβανό�
 This will delete this entry for all users.: Θα διαγραφεί η εγγραφή για όλους τους χρήστες.
 Delete entry only for this date: Διαγραφή εγγραφής μόνο για την τρέχουσα ημερομηνία
 Edit entry: Επεξεργασία εγγραφής
-#
-# << MISSING >>
-# from calendar of:
 Copy entry: Αντιγραφή εγγραφής
-#
-# << MISSING >>
-# This will delete the entry from your boss\' calendar.:
 This will delete the entry from your calendar.: Θα διαγραφεί η εγγραφή από το ημερολόγιό σας.
-#
-# << MISSING >>
-# from your boss' calendar:
 Do you want to add this entry to your calendar?: Θέλεις να προσθέσεις την εγγραφή στο ημερολόγιό σου;
 This will add the entry to your calendar.: Θα προσθέσει την εγγραφή στο ημερολόγιό σου.
 Email all participants: Στείλε email σε όλους τους συμμετέχοντες
 Show activity log: Εμφάνιση του αρχείου ενεργειών
 Hide activity log: Απόκρυψη του αρχείου ενεργειών
 Export this entry to: Εξαγωγή αυτής της εγγραφής σε
-
-
-###############################################
-# Page: view_r.php
-#
-#
-# << MISSING >>
-# Double-click on empty cell to add new entry:
 
 
 ###############################################
@@ -1948,53 +830,12 @@ New Entry: Νέα εγγραφή
 ###############################################
 # Page: includes/access.php
 #
-#
-# << MISSING >>
-# Edit Event:
-#
-# << MISSING >>
-# Day View:
-#
-# << MISSING >>
-# Week View:
-#
-# << MISSING >>
-# Month View:
-#
-# << MISSING >>
-# Year View:
-#
-# << MISSING >>
-# Manage Views:
-#
-# << MISSING >>
-# Category Management:
-#
-# << MISSING >>
-# User Management:
 Another User's Calendar: Ημερολόγια άλλων χρηστών
-#
-# << MISSING >>
-# Common Trailer:
-
-
-###############################################
-# Page: includes/config.php
-#
-#
-# << MISSING >>
-# Fatal Error:
-#
-# << MISSING >>
-# Troubleshooting Help:
 
 
 ###############################################
 # Page: includes/date_formats.php
 #
-#
-# << MISSING >>
-# LANGUAGE DEFINED:
 December: Δεκέμβριος
 Dec: Δεκ
 
@@ -2002,57 +843,8 @@ Dec: Δεκ
 ###############################################
 # Page: includes/functions.php
 #
-#
-# << MISSING >>
-# Unauthorized:
-#
-# << MISSING >>
-# __month__ __dd__, __yyyy__:
-#
-# << MISSING >>
-# __month__ __yyyy__:
-#
-# << MISSING >>
-# __mm__/__dd__/__yyyy__:
-#
-# << MISSING >>
-# This event is private:
-#
-# << MISSING >>
-# Conf.:
-#
-# << MISSING >>
-# WK:
-#
-# << MISSING >>
-# Task Name:
-#
-# << MISSING >>
-# Task Due Date:
-#
-# << MISSING >>
-# TASKS:
-#
-# << MISSING >>
-# Task_Title:
-# English text: Title
-#
-#
-# << MISSING >>
-# Due:
-#
-# << MISSING >>
-# View this task:
-#
-# << MISSING >>
-# View this event:
+WK: εβδ
 exceeds limit of XXX events per day: υπέρβαση του ορίου των XXX γεγονότων την ημέρα
-#
-# << MISSING >>
-# on:
-#
-# << MISSING >>
-# You have XXX unapproved entries:
 January: Ιανουάριος
 February: Φεβρουάριος
 March: Μάρτιος
@@ -2087,9 +879,6 @@ Wed: Τετ
 Thu: Πεμ
 Fri: Παρ
 Sat: Σαβ
-#
-# << MISSING >>
-# Schedule an appointment for:
 All Attendees: Όλοι οι παρευρισκόμενοι
 Busy: Απασχολημένο
 Tentative: Αβέβαιο
@@ -2097,25 +886,7 @@ Changes successfully saved: Οι αλλαγές αποθηκεύτηκαν επ�
 The following error occurred: Συνέβη το ακόλουθο σφάλμα
 You are not authorized: Δεν είστε εξουσιοδοτημένος
 day: ημέρα
-#
-# << MISSING >>
-# before:
-#
-# << MISSING >>
-# after:
-#
-# << MISSING >>
-# start:
-#
-# << MISSING >>
-# end:
 Error approving event: Σφάλμα στην αποδοχή γεγονότος
-#
-# << MISSING >>
-# Error deleting event:
-#
-# << MISSING >>
-# Error rejecting event:
 Generate printer-friendly version: Δημιουργία εμφάνισης για εκτύπωση
 Printer Friendly: Εμφάνιση για εκτύπωση
 Event created: Το γεγονός δημιουργήθηκε
@@ -2123,75 +894,16 @@ Event approved: Το γεγονός έγινε αποδεκτό
 Event rejected: Το γεγονός απορίφθηκε
 Event updated: Το γεγονός ενημερώθηκε
 Event deleted: Το γεγονός διαγράφτηκε
-#
-# << MISSING >>
-# Task created:
-#
-# << MISSING >>
-# Task approved:
-#
-# << MISSING >>
-# Task rejected:
-#
-# << MISSING >>
-# Task updated:
-#
-# << MISSING >>
-# Task deleted:
-#
-# << MISSING >>
-# Journal created:
-#
-# << MISSING >>
-# Journal approved:
-#
-# << MISSING >>
-# Journal rejected:
-#
-# << MISSING >>
-# Journal updated:
-#
-# << MISSING >>
-# Journal deleted:
 Notification sent: Η ειδοποίηση στάλθηκε
 Reminder sent: Η υπενθύμιση στάλθηκε
-#
-# << MISSING >>
-# New user (self registration):
-#
-# << MISSING >>
-# New user via email (self registration):
-#
-# << MISSING >>
-# Attachment:
-#
-# << MISSING >>
-# Delete User:
-
-
-###############################################
-# Page: includes/help_list.php
-#
-#
-# << MISSING >>
-# Index:
-#
-# << MISSING >>
-# Page:
 
 
 ###############################################
 # Page: includes/trailer.php
 #
-#
-# << MISSING >>
-# Home:
 My Calendar: Το Ημερολόγιό μου
 Back to My Calendar: Πίσω στο Ημερολόγιό μου
 Add New Entry: Προσθήκη νέας εγγραφής
-#
-# << MISSING >>
-# Add New Task:
 Go to: Πήγαινε
 Logout: Αποσύνδεση
 Manage calendar of: Διαχείρηση του Ημερολογίου του χρήστη:
@@ -2200,33 +912,18 @@ Manage calendar of: Διαχείρηση του Ημερολογίου του χ
 ###############################################
 # Page: includes/translate.php
 #
-#
-# << MISSING >>
-# Browser Language Not Found:
-#
-# << MISSING >>
-# not supported:
-#
-# << MISSING >>
-# Browser-defined:
 English: Αγγλικά
-#
-# << MISSING >>
-# English-US:
 Basque: Βάσκικα
 Bulgarian: Βουλγαρικά
 Catalan: Καταλανικά
-Chinese (Traditional/Big5): Κινέζικα (Παραδοσιακά/Big5)
 Chinese (Simplified/GB2312): Κινέζικα (Απλοποιημένα/GB2312)
+Chinese (Traditional/Big5): Κινέζικα (Παραδοσιακά/Big5)
 Czech: Τσέχικα
 Danish: Δανέζικα
 Dutch: Dutch
 Estonian: Εσθονικά
 Finnish: Φινλανδικά
 French: Γαλλικά
-#
-# << MISSING >>
-# French (UTF8):
 Galician: Galician
 German: Γερμανικά
 Greek: Ελληνικά
@@ -2246,15 +943,6 @@ Spanish: Ισπανικά
 Swedish: Ελβετικά
 Turkish: Τουρκικά
 Welsh: Ουαλλικά
-#
-# << MISSING >>
-# task:
-#
-# << MISSING >>
-# event:
-#
-# << MISSING >>
-# journal:
 
 
 ###############################################
@@ -2273,57 +961,6 @@ no such user: Ανύπαρκτος χρήστης
 ###############################################
 # Page: includes/xcal.php
 #
-#
-# << MISSING >>
-# MO:
-#
-# << MISSING >>
-# TU:
-#
-# << MISSING >>
-# WE:
-#
-# << MISSING >>
-# TH:
-#
-# << MISSING >>
-# FR:
-#
-# << MISSING >>
-# SA:
-#
-# << MISSING >>
-# SU:
-#
-# << MISSING >>
-# Interval:
-#
-# << MISSING >>
-# Months:
-#
-# << MISSING >>
-# Month Days:
-#
-# << MISSING >>
-# Days:
-#
-# << MISSING >>
-# Weeks:
-#
-# << MISSING >>
-# Position:
-#
-# << MISSING >>
-# Until:
-#
-# << MISSING >>
-# Count:
-#
-# << MISSING >>
-# Inclusion Dates:
-#
-# << MISSING >>
-# Exclusion Dates:
 Unnamed Event: Γεγονός χωρίς τίτλο
 Event Imported: Γεγονός Εισάχθηκε
 
@@ -2357,13 +994,7 @@ Change the date and time of this entry?: Να αλλαχθεί η ημερομη
 #
 You have not entered a Brief Description: Δεν δώσατε σύντομη περιγραφή
 The time you have entered begins before your preferred work hours.  Is this correct?: Η ώρα που δώσατε ξεκινάει πριν από τις ώρες εργασίας. Είναι σωστό;
-#
-# << MISSING >>
-# Invalid Event Date:
 Please add a participant: Παρακαλώ προσθέσετε ένα συμμετέχοντα
-#
-# << MISSING >>
-# Invalid Date:
 You have not entered a valid time of day: Δεν δώσατε σωστή ώρα
 
 
@@ -2374,553 +1005,19 @@ Invalid color: Μη έγκυρο χρώμα
 
 
 ###############################################
-# Page: includes/js/edit_nonuser.php
-#
-#
-# << MISSING >>
-# Calendar ID can not be blank:
-#
-# << MISSING >>
-# Both first and last names can not be blank:
-
-
-###############################################
-# Page: includes/js/edit_remotes.php
-#
-#
-# << MISSING >>
-# URL can not be blank:
-
-
-###############################################
-# Page: includes/js/export_import.php
-#
-#
-# << MISSING >>
-# File type does not match Import Format:
-
-
-###############################################
-# Page: includes/classes/Doc.class
-#
-#
-# << MISSING >>
-# bytes:
-#
-# << MISSING >>
-# kb:
-#
-# << MISSING >>
-# Mb:
-
-
-###############################################
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Ειδοποίηση
-#
-# << MISSING >>
-# provide_address:
-# English text: You must provide at least one recipient email address
-#
-#
-# << MISSING >>
-# mailer_not_supported:
-# English text: mailer is not supported
-#
-#
-# << MISSING >>
-# execute:
-# English text: Could not execute:
-#
-#
-# << MISSING >>
-# instantiate:
-# English text: Could not instantiate mail function
-#
-#
-# << MISSING >>
-# authenticate:
-# English text: SMTP Error: Could not authenticate
-#
-#
-# << MISSING >>
-# from_failed:
-# English text: The following From address failed:
-#
-#
-# << MISSING >>
-# recipients_failed:
-# English text: SMTP Error: The following recipients failed:
-#
-#
-# << MISSING >>
-# data_not_accepted:
-# English text: SMTP Error: Data not accepted
-#
-#
-# << MISSING >>
-# connect_host:
-# English text: SMTP Error: Could not connect to SMTP host:
-#
-#
-# << MISSING >>
-# file_access:
-# English text: Could not access file:
-#
-#
-# << MISSING >>
-# file_open:
-# English text: File Error Could not open file:
-#
-#
-# << MISSING >>
-# encoding:
-# English text: Unknown encoding:
-#
 
 
 ###############################################
 # Page: includes/menu/index.php
 #
-#
-# << MISSING >>
-# This Week:
-#
-# << MISSING >>
-# This Month:
-#
-# << MISSING >>
-# This Year:
-#
-# << MISSING >>
-# Exit:
-#
-# << MISSING >>
-# Add New Event:
-#
-# << MISSING >>
-# Delete Entries:
-#
-# << MISSING >>
-# Another User\'s Calendar:
-#
-# << MISSING >>
-# My Views:
-#
-# << MISSING >>
-# Manage Calendar of:
-#
-# << MISSING >>
-# My Reports:
-#
-# << MISSING >>
-# My Profile:
-#
-# << MISSING >>
-# Public Calendar:
 Unapproved Events: Γεγονότα σε αναμονή αποδοχής
-#
-# << MISSING >>
-# User Manager:
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
-#
-# << MISSING >>
-# This is a reminder for the task detailed below.:
 This is a reminder for the event detailed below.: Αυτός είναι υπενθυμιστής για το γεγονός που περιγράφεται παρακάτω.
-#
-# << MISSING >>
-# Pecentage Complete:
 Reminder: Υπενθυμιστή�
-
-
-###############################################
-# Page: tools/reload_remotes.php
-#
-#
-# << MISSING >>
-# Include Path:
-#
-# << MISSING >>
-# Deleting events for:
-#
-# << MISSING >>
-# Importing events for:
-#
-# << MISSING >>
-# No data returned from:
-#
-# << MISSING >>
-# for non-user calendar:
-#
-# << MISSING >>
-# No Remote Calendars found:
-#
-# << MISSING >>
-# Remote Calendars not enabled:
-
-
-###############################################
-# Page: install/install_functions.php
-#
-#
-# << MISSING >>
-# Error updating webcal_config:
-#
-# << MISSING >>
-# Error updating webcal_user_pref:
-#
-# << MISSING >>
-# Perl script required:
-# English text: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
-#
-#
-# << MISSING >>
-# Your previous version of WebCalendar requires updating several database tables.:
-
-
-###############################################
-# Page: install/index.php
-#
-#
-# << MISSING >>
-# WebCalendar Installation Wizard:
-#
-# << MISSING >>
-# Step:
-#
-# << MISSING >>
-# Single-User:
-#
-# << MISSING >>
-# Failure Reason:
-#
-# << MISSING >>
-# You must manually create database:
-#
-# << MISSING >>
-# Database Cache Directory:
-#
-# << MISSING >>
-# Test Settings:
-#
-# << MISSING >>
-# Create New:
-#
-# << MISSING >>
-# Database Name:
-#
-# << MISSING >>
-# Back:
-#
-# << MISSING >>
-# Timezone Conversion Successful:
-#
-# << MISSING >>
-# Error Unable to write to file:
-#
-# << MISSING >>
-# Successful Login:
-#
-# << MISSING >>
-# Invalid Login:
-#
-# << MISSING >>
-# required only if Safe Mode is On:
-#
-# << MISSING >>
-# required only if Remote Calendars are used:
-#
-# << MISSING >>
-# needed for Gradient Image Backgrounds:
-#
-# << MISSING >>
-# Passwords do not match:
-#
-# << MISSING >>
-# Unable to write password to settings.php file:
-#
-# << MISSING >>
-# Password has been set:
-#
-# << MISSING >>
-# Connection Successful:
-#
-# << MISSING >>
-# Please go to next page to continue installation:
-#
-# << MISSING >>
-# Correct your entries or click the <b>Create New</b> button to continue installation:
-#
-# << MISSING >>
-# Correct your entries and try again:
-#
-# << MISSING >>
-# does not exist:
-#
-# << MISSING >>
-# is not writable:
-#
-# << MISSING >>
-# Error Converting Timezone:
-#
-# << MISSING >>
-# Please change the file permissions of this file:
-#
-# << MISSING >>
-# Please change includes dir premission:
-# English text: Please change the file permissions of your includes directory to allow writing by other users
-#
-#
-# << MISSING >>
-# Your settings have been saved:
-#
-# << MISSING >>
-# Error you must specify a\\nSingle-User Login:
-#
-# << MISSING >>
-# Server URL must end with:
-#
-# << MISSING >>
-# Full Path (no backslashes):
-#
-# << MISSING >>
-# The password contains illegal characters.:
-#
-# << MISSING >>
-# This installation wizard will guide you...:
-# English text: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
-#
-#
-# << MISSING >>
-# PHP Version Check:
-#
-# << MISSING >>
-# Check to see if PHP 4.1.0 or greater is installed:
-#
-# << MISSING >>
-# PHP version:
-#
-# << MISSING >>
-# PHP Settings:
-#
-# << MISSING >>
-# Detailed PHP Info:
-#
-# << MISSING >>
-# Session Check:
-#
-# << MISSING >>
-# To test the proper operation of sessions, reload this page:
-#
-# << MISSING >>
-# You should see the session counter increment each time:
-#
-# << MISSING >>
-# SESSION COUNTER:
-#
-# << MISSING >>
-# Settings.php Status:
-#
-# << MISSING >>
-# The file permissions of <b>settings.php</b> are set...:
-# English text: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
-#
-#
-# << MISSING >>
-# The file permissions of the <b>includes</b> directory are set...:
-# English text: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
-#
-#
-# << MISSING >>
-# Your <b>settings.php</b> file appears to be valid:
-#
-# << MISSING >>
-# Configuration Wizard Password:
-#
-# << MISSING >>
-# Create Settings File Password:
-#
-# << MISSING >>
-# Password (again):
-#
-# << MISSING >>
-# db setup directions...:
-# English text: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
-#
-#
-# << MISSING >>
-# Database Status:
-#
-# << MISSING >>
-# Supported databases for your PHP installation:
-#
-# << MISSING >>
-# Your current database settings are able to access the database:
-#
-# << MISSING >>
-# Please Test Settings:
-#
-# << MISSING >>
-# Your current database settings are <b>not</b> able to access the database or have not yet been tested:
-#
-# << MISSING >>
-# Database Settings:
-#
-# << MISSING >>
-# Database Type:
-#
-# << MISSING >>
-# Server:
-#
-# << MISSING >>
-# Connection Persistence:
-#
-# << MISSING >>
-# All your database tables appear to be up to date. You may proceed to the:
-#
-# << MISSING >>
-# next page and complete your WebCalendar setup:
-#
-# << MISSING >>
-# This appears to be a new installation. If this is not correct, please:
-#
-# << MISSING >>
-# go back to the previous page and correct your settings:
-#
-# << MISSING >>
-# The database requires some data input:
-#
-# << MISSING >>
-# Click <b>Update Database</b> to complete the upgrade:
-#
-# << MISSING >>
-# This appears to be an upgrade from version:
-#
-# << MISSING >>
-# In this section we will perform the required database changes to bring your database up to the required level:
-#
-# << MISSING >>
-# If you are using a fully supported database, this step will be performed automatically for you:
-#
-# << MISSING >>
-# If not, the required SQL can be displayed and you should be able:
-#
-# << MISSING >>
-# to cut &amp; paste it into your database server query window:
-#
-# << MISSING >>
-# No database actions are required:
-#
-# << MISSING >>
-# The following database actions are required:
-#
-# << MISSING >>
-# ODBC Underlying Database:
-#
-# << MISSING >>
-# Automatic installation not supported:
-# English text: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the sql supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
-#
-#
-# << MISSING >>
-# This may take several minutes to complete:
-#
-# << MISSING >>
-# Install Database:
-#
-# << MISSING >>
-# Update Database:
-#
-# << MISSING >>
-# Display Required SQL:
-#
-# << MISSING >>
-# Return to previous page after processing sql:
-# English text: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
-#
-#
-# << MISSING >>
-# This is the final step in setting up your WebCalendar Installation:
-#
-# << MISSING >>
-# Timezone Conversion:
-#
-# << MISSING >>
-# It appears that you have:
-#
-# << MISSING >>
-# NOT:
-#
-# << MISSING >>
-# converted your existing WebCalendar event data to GMT:
-#
-# << MISSING >>
-# If you have, you may ignore this notice and not proceed with the conversion:
-#
-# << MISSING >>
-# If this is a new installation, you may also ignore this notice.:
-#
-# << MISSING >>
-# Convert Data to GMT:
-#
-# << MISSING >>
-# Application Settings:
-#
-# << MISSING >>
-# HTTP-based authentication was not detected:
-#
-# << MISSING >>
-# You will need to reconfigure your web server if you wish to:
-#
-# << MISSING >>
-# select 'Web Server' from the 'User Authentication' choices below:
-#
-# << MISSING >>
-# HTTP-based authentication was detected:
-#
-# << MISSING >>
-# User authentication is being handled by your web server:
-#
-# << MISSING >>
-# You should select 'Web Server' from the list of 'User Authentication' choices below:
-#
-# << MISSING >>
-# Create Default Admin Account:
-#
-# << MISSING >>
-# Admin Account Not Found:
-#
-# << MISSING >>
-# User Authentication:
-#
-# << MISSING >>
-# Web-based via WebCalendar (default):
-#
-# << MISSING >>
-# Web Server:
-#
-# << MISSING >>
-# None (Single-User):
-#
-# << MISSING >>
-# Read-Only:
-#
-# << MISSING >>
-# Environment:
-#
-# << MISSING >>
-# Production:
-#
-# << MISSING >>
-# Development:
-#
-# << MISSING >>
-# Save Settings:
-#
-# << MISSING >>
-# Launch WebCalendar:
