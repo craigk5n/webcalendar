@@ -1,27 +1,11 @@
-# WebCalendar translation for Romanian language. 
-# The format is "English text: translated text"
-# There cannot be a ":" in the English text.
+# See translations/English-US.txt for instructions.
+#
 # Translated by:
 #	 Dan Protopopescu <protopop@physics.gla.ac.uk>
 # Last update: 19 January 2005
-# Check out the tools directory which contains two perl scripts:
-#   check_translation.pl will tell you if you have successfully translated
-#        all required text
-#   update_translation.pl will take an old translation file and move the
-#        translations around so they age grouped by the page they appear in.
-#        It will also identify any missing translations and tag them
-#        with a comment.  If it is a non-english translation, the english
-#        translation will be included in the comment to simplify completing
-#        the translation.
 #
-# Note: You will notice the entry for "May_" below.  There's a reason for
-# this.  Translate "May_" to the full month name and "May" to the three-letter
-# month abbreviation (like "Oct" for "October").
-#
-#
-#
-#
-# Translation last updated on 10-05-2006
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -36,61 +20,13 @@ charset: iso-8859-2
 #
 Database error: Eroare in baza de date
 Cancel: Anuleaz&#259;
-#
-# << MISSING >>
-# DEFAULT CONFIGURATION:
 Save: Salveaz&#259;
 Public Access: Acces public
 Admin: Admin
-#
-# << MISSING >>
-# User Access Control:
-#
-# << MISSING >>
-# Allow Access to Other Users' Calendar:
-#
-# << MISSING >>
-# Grant This User Access to My Calendar:
 Go: Schimb&#259;
-#
-# << MISSING >>
-# Type:
 Calendar: Calendar
-#
-# << MISSING >>
-# View Event:
-#
-# << MISSING >>
-# View:
 Edit: Editeaz&#259;
-#
-# << MISSING >>
-# Approve/Reject:
 Events: Evenimente
-#
-# << MISSING >>
-# Tasks:
-#
-# << MISSING >>
-# Journals:
-#
-# << MISSING >>
-# Can Invite:
-#
-# << MISSING >>
-# Can Email:
-#
-# << MISSING >>
-# Can See Time Only:
-#
-# << MISSING >>
-# Assistant:
-#
-# << MISSING >>
-# Select All:
-#
-# << MISSING >>
-# Clear All:
 Public: Public
 Confidential: Confiden&#355;ial
 Private: Privat
@@ -99,9 +35,6 @@ Private: Privat
 ###############################################
 # Page: activity_log.php
 #
-#
-# << MISSING >>
-# System Log:
 Activity Log: Jurnal de activitate
 User: Utilizator
 Date: Data
@@ -115,14 +48,8 @@ Next: Urm&#259;toarea
 ###############################################
 # Page: add_entry.php
 #
-#
-# << MISSING >>
-# is already on your calendar.:
 Invalid entry id: Indetificatorul evenimentului este invalid
 This is a private event and may not be added to your calendar.: Acesta este un eveniment privat &#351;i s-ar putea s&#259; nu fie ad&#259;ugat &#238;n calendarul t&#259;u.
-#
-# << MISSING >>
-# This is a confidential event and may not be added to your calendar.:
 Error adding event: Eroare la ad&#259;ugarea evenimentului
 
 
@@ -144,90 +71,25 @@ NonUser Calendars: Calendare non-utilizator
 Other: Altele
 Email: Email
 Colors: Culori
-#
-# << MISSING >>
-# System options:
 app-name-help: Specific&#259; numele aplica&#355;iei care va ap&#259;rea &#238;n bara de titlu a browserului pentru toate paginile &#351;i pentru pagina de login.  Valoarea specificat&#259; aici va fi c&#259;utat&#259; &#238;n dic&#355;ionar &#238;n a&#351;a fel &#238;nc&#226;t se pot folosi titluri diferite pentru diferite limbi.
 Application Name: Numele aplica&#355;iei
-#
-# << MISSING >>
-# Translated Name:
 Title: WebCalendar
 server-url-help: Specific&#259; URL-ul de baz&#259; al aplica&#355;iei. Acesta va fi inclus c&#226;nd vor fi trimise aduceri-aminte sau notificari prin email.
 Server URL: URL-ul serverului
-#
-# << MISSING >>
-# home-url-help:
-# English text: Specifies the home URL for the applicaiton. This can be an absolute or relative
-#
-#
-# << MISSING >>
-# Home URL:
 language-help: Specific&#259; ce limba s&#259; se foloseasc&#259;.
 Language: Limba
 Your browser default language is: Limba implicit&#259; a browserului t&#259;u este
-#
-# << MISSING >>
-# Allow user to use themes:
-#
-# << MISSING >>
-# themes-help:
-# English text: Allows mass update of configuration settings. Lower case labels are user pref only.
-#
-#
-# << MISSING >>
-# Themes:
-#
-# << MISSING >>
-# AVAILABLE THEMES:
 None: Nici una
-#
-# << MISSING >>
-# Preview:
-#
-# << MISSING >>
-# Site customization:
 custom-script-help: Permite ad&#259;ugarea de text javascript/stylesheet care s&#259; fie inserat in sec&#355;iunea "head" a HTML-ului fiec&#259;rei pagini.
 Custom script/stylesheet: Folose&#351;te un script/stylesheet propriu
 custom-header-help: Permite ad&#259;ugarea unui fragment de HTML la &#238;nceputul fiecarei pagini.
 Custom header: Header propriu
 custom-trailer-help: Permite ad&#259;ugarea unui fragment de HTML la sf&#226;r&#351;itul fiecarei pagini.
 Custom trailer: Trailer propriu
-#
-# << MISSING >>
-# enable-external-header-help:
-# English text: Allows the custom trailer to be loaded from an external file
-#
-#
-# << MISSING >>
-# Allow external file for header/script/trailer:
-#
-# << MISSING >>
-# Allow user to override header/trailer:
-#
-# << MISSING >>
-# Date and Time:
 tz-help: Specific&#259; cu c&#238;te ore s&#259; trebuie ajustat&#259; ora serverului pentru ora local&#259;.
-#
-# << MISSING >>
-# Server Timezone Selection:
-#
-# << MISSING >>
-# Your current GMT offset is:
 hours: ore
-#
-# << MISSING >>
-# display-general-use-gmt-help:
-# English text: If enabled, common dates/times are displayed as GMT
-#
-#
-# << MISSING >>
-# Display Common Use Date/Times as GMT:
 date-format-help: Specific&#259; formatul preferat pentru dat&#259;.
 Date format: Formatul datei
-#
-# << MISSING >>
-# Small Task Date:
 display-week-starts-on: Specific&#259; dac&#259; s&#259;pt&#259;m&#226;na &#238;ncepe duminica sau lunea. Dac&#259; "Luni" este specificat, atunci numerele s&#259;pt&#259;m&#226;nilor vor fi numerele ISO.
 Week starts on: S&#259;pt&#259;m&#226;na &#238;ncepe 
 Sunday: Duminic&#259;
@@ -244,74 +106,19 @@ work-hours-help: Specific&#259; intervalul de timp afi&#351;at dintr-o zi
 Work hours: Ore de munc&#259;
 From: De la
 to: p&#226;n&#259; la
-#
-# << MISSING >>
-# Appearance:
 preferred-view-help: Specific&#259; vizualizarea implicit&#259; (zi, s&#259;pt&#259;m&#226;na, lun&#259; sau an).
 Preferred view: Vizualizarea preferat&#259;
-#
-# << MISSING >>
-# Allow top menu:
-#
-# << MISSING >>
-# Date Selectors position:
-#
-# << MISSING >>
-# menu-themes-help:
-# English text: Sets the colors and style of the top menu
-#
-#
-# << MISSING >>
-# Menu theme:
 fonts-help: Specific&#259; o list&#259; a fonturilor care pot fi folosite (de exemplu "Arial, Helvetica")
 Fonts: Fonturi
-#
-# << MISSING >>
-# display-sm_month-help:
-# English text: If enabled, displays small months in month views
-#
-#
-# << MISSING >>
-# Display small months:
 display-weekends-help: Include weekendurile &#238;n s&#259;pt&#259;m&#226;na.
-#
-# << MISSING >>
-# Display weekends:
-#
-# << MISSING >>
-# display-alldays-help:
-# English text: Display previous and next months days in month views, filling all cells.
-#
-#
-# << MISSING >>
-# Display all days in month view:
 display-week-number-help: Specific&#259; dac&#259; numarul s&#259;pt&#259;m&#226;nii (1-52) s&#259; va fi ar&#259;tat &#238;n vizualiz&#259;rile lunar&#259; &#351;i s&#259;pt&#259;m&#226;nal&#259;.
 Display week number: Afi&#351;eaz&#259; numarul s&#259;pt&#259;m&#226;nii
 display-desc-print-day-help: Include descrierea evenimentului &#238;n versiunea pentru tip&#259;rit a vizualizarii pe zile
 Display description in printer day view: Afi&#351;eaz&#259; descrierea &#238;n versiunea pentru tip&#259;rit a vizualizarii pe zile
 yearly-shows-events-help: &#206;n vizualizarea pe an, afi&#351;eaza cu litere ingro&#351;ate datele cu evenimente.
 Display days with events in bold in month and year views: Afi&#351;eaza cu litere &#238;ngro&#351;ate datele cu evenimente &#238;n vizualizarile lunara &#351;i anuala 
-#
-# << MISSING >>
-# display-minutes-help:
-# English text: If enabled, minutes ending with :00 will always be displayed
-#
-#
-# << MISSING >>
-# Display 00 minutes always:
 allow-view-add-help: O iconi&#355;&#259; '+' va fi inclus&#259; &#238;n vizualiz&#259;ri, permi&#355;&#226;nd utilizatorilor s&#259; adauge u&#351;or evenimente la calendarele altora.
 Include add event link in views: Include op&#355;iunea adauga evenimente &#238;n vizualiz&#259;ri
-#
-# << MISSING >>
-# lunar-help:
-# English text: If enabled, will display small icons representing the lunar phases each month
-#
-#
-# << MISSING >>
-# Display Lunar Phases in month view:
-#
-# << MISSING >>
-# Restrictions:
 allow-view-other-help: Specific&#259; dac&#259; un utilizator poate s&#259; vad&#259; calendarul altuia.
 Allow viewing other user's calendars: Permite vizualizarea calendarelor altor utilizatori
 require-approvals-help: C&#226;nd activat&#259;, utilizatorul trebuie s&#259; aprobe evenimentele care vor fie afi&#351;ate in calendarul sau (&#238;n afar&#259; de cazul c&#226;nd "afi&#351;eaz&#259; neaprobatele" este activat). Nepun&#226;nd aici "Nu" va dezactiva aprobarile pentru calendarul cu access public (&#238;n cazul &#238;n care calendarul cu access public este activat).
@@ -328,22 +135,6 @@ limit-appts-help: Permite ca administratorul s&#259; poat&#259; fixa o limit&#25
 Limit number of timed events per day: Limiteaza numarul de evenimente programate pentru o singur&#259; zi 
 limit-appts-number-help: Specific&#259; numarul maxim number de evenimente pe care un utilizator le poate programa &#238;ntr-o zi.
 Maximum timed events per day: Numarul de maxim de evenimente ce pot fi programate pentru o singur&#259; zi 
-#
-# << MISSING >>
-# crossday-help:
-# English text: If enabled, events that span days will be displayed on seperate days
-#
-#
-# << MISSING >>
-# Disable Cross-Day Events:
-#
-# << MISSING >>
-# disable-location-field-help:
-# English text: Selecting "Yes" will remove the "Location" field from event information pages
-#
-#
-# << MISSING >>
-# Disable Location field:
 disable-priority-field-help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Prioritate" din paginile cu informatie despre evenimente, f&#259;c&#238;nd interfa&#355;a mai simpl&#259; pentru &#238;ncep&#259;tori.
 Disable Priority field: Dezactiveaz&#259; op&#355;iunea "Prioritate"
 disable-access-field-help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Acces" din paginile cu informatie despre evenimente, f&#259;c&#238;nd interfa&#355;a mai simpl&#259; pentru &#238;ncep&#259;tori.
@@ -354,54 +145,10 @@ disable-repeating-field-help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#35
 Disable Repeating field: Dezactiveaz&#259; op&#355;iunea "Repeti&#355;ii"
 allow-html-description-help: C&#226;nd aceast&#259; proprietate este activat&#259;, utilizatorii pot include HTML &#238;n descrierea evenimentelor. Dezactivat&#259;, simbolurile HTML vor fi transformate in a&#351;a fel &#238;nc&#226;t s&#259; apar&#259; ca simplu text. Aten&#355;ie! Activ&#226;nd aceast&#259; proprietate permite utilizatorilor s&#259; linkeze imagini de pe alte situri.
 Allow HTML in Description: Permite HTML &#238;n descrieri
-#
-# << MISSING >>
-# Popups:
-#
-# << MISSING >>
-# disable-popups-help:
-# English text: Disable popups from calendar views
-#
-#
-# << MISSING >>
-# Disable Pop-Ups:
 popup-includes-siteextras-help: C&#226;nd aceast&#259; op&#355;iune este activat&#259;, permite ca op&#355;iunile speciale din site_extras.php s&#259; fie ar&#259;tate &#238;n popup-uri.
 Display Site Extras in popup: Afi&#351;eaz&#259; op&#355;iunile speciale &#238;n popup-uri 
-#
-# << MISSING >>
-# popup-includes-participants-help:
-# English text: If enabled, participants are displayed in event popups.
-#
-#
-# << MISSING >>
-# Display Participants in popup:
-#
-# << MISSING >>
-# Miscellaneous:
 remember-last-login-help: C&#226;nd aceast&#259; proprietate este activat&#259;, numele utilizatorului va fi auto-inserat &#238;n pagina de login (dar nu &#351;i parola), iar dup&#259; login preferin&#355;ele utilizatorului vor fi &#238;nc&#259;rcate (incluz&#226;nd culorile &#351;i limba selectate).
 Remember last login: &#354;ine minte ultimul login
-#
-# << MISSING >>
-# summary_length-help:
-# English text: Maximum length of Brief Description in calendar views
-#
-#
-# << MISSING >>
-# Brief Description Length:
-#
-# << MISSING >>
-# user_sort-help:
-# English text: Determines sort order for User, Nonuser lists
-#
-#
-# << MISSING >>
-# User Sort Order:
-#
-# << MISSING >>
-# Lastname, Firstname:
-#
-# << MISSING >>
-# Firstname, Lastname:
 Plugins: Plugin-uri
 plugins-enabled-help: Activeaz&#259; aplica&#355;ii plugin.
 Enable Plugins: Activeaz&#259; plugin-uri.
@@ -421,30 +168,6 @@ public-access-add-requires-approval-help: Specific&#259; dac&#259; evenimentele 
 Public access new events require approval: Evenimentele ad&#259;ugate via acces public necesit&#259; aprobare
 public-access-sees-participants-help: Dac&#259; se alege aceast&#259; optiune, utilizatori care acceseaz&#259; sistemul prin acces public vor putea vedea participan&#355;ii &#238;n detaliile fiec&#259;rui eveniment.
 Public access can view participants: Participan&#355;ii pot fi v&#259;zu&#355;i prin acces public
-#
-# << MISSING >>
-# public-access-override-help:
-# English text: Allows event names and descriptions to be hidden on the public calendar
-#
-#
-# << MISSING >>
-# Override event name/description for public access:
-#
-# << MISSING >>
-# public-access-override-text-help:
-# English text: The text to display if the above option is enabled. If 'Not Available', it will be translated.
-#
-#
-# << MISSING >>
-# Text to display to public access:
-#
-# << MISSING >>
-# uac-enabled-help:
-# English text: Enables user-level access control
-#
-#
-# << MISSING >>
-# User Access Control enabled:
 groups-enabled-help: Activeaz&#259; suport pentru grupuri, prmi&#355;&#226;nd utilizatorilor s&#259; selecteze grupuri de utilizatori.
 Groups enabled: Activeaz&#259; grupuri
 user-sees-his-group-help: Dac&#259; se alege aceast&#259; op&#355;iune, utilizatorii nu vor putea vedea al&#355;i utilizatori cu care nu au nici un grup &#238;n comun.
@@ -457,160 +180,18 @@ reports-enabled-help: Dac&#259; aceast&#259; op&#355;iune este aleas&#259;, util
 Reports enabled: Rapoartele sunt activate
 subscriptions-enabled-help: Specific&#259; daca utilizatorii nelocali se pot abona la un calendar utilizator WebCalendar, permi&#355;&#238;ndu-le s&#259; vad&#259; evenimentele de tip WebCalendar &#238;n aplica&#355;ii compatibile cu iCal (ca de exemplu iCal-ul lui Apple sau Mozilla Calendar).
 Allow remote subscriptions: Permite abonamente nelocale
-#
-# << MISSING >>
-# remotes-enabled-help:
-# English text: Allows users to load remote ics files using URL
-#
-#
-# << MISSING >>
-# Allow remote calendars:
-#
-# << MISSING >>
-# rss-enabled-help:
-# English text: Specifies if a user's calendar can be obtained from a RSS feed.
-#
-#
-# << MISSING >>
-# Enable RSS feed:
 categories-enabled-help: Adaug&#259; suport pentru categorii de evenimente.
 Categories enabled: Activeaz&#259; categorii
-#
-# << MISSING >>
-# icon_upload-enabled-help:
-# English text: If enabled, users can upload category icons
-#
-#
-# << MISSING >>
-# Category Icon Upload enabled:
-#
-# << MISSING >>
-# display-tasks-help:
-# English text: Display small task window on month and day calendar
-#
-#
-# << MISSING >>
-# Display small task list:
-#
-# << MISSING >>
-# display-tasks-in-grid-help:
-# English text: Display tasks in calendars along with events
-#
-#
-# << MISSING >>
-# Display tasks in Calendars:
 allow-external-users-help: Specific&#259; daca un utilizator non-calendar poate fi ad&#259;ugat la un eveniment, permi&#355;&#226;ndu-i s&#259; fie listat ca participant.
 Allow external users: Accept&#259; utilizatori externi
 external-can-receive-notification-help: C&#226;nd utilizatorii externi sunt acceptati iar utilizarea emailului este activat&#259;, utilizatorii externi pot primi notifica&#355;ii prin email c&#226;nd un eveniment este ad&#259;ugat, actualizat sau &#351;ters (dac&#259; adresa utilizatorului extern este cunoscut&#259;).
 External users can receive email notifications: Utilizatorii externi pot primi email
 external-can-receive-reminder-help: C&#226;nd utilizatorii externi sunt acceptati iar utilizarea emailului este activat&#259;,  utilizatorii externi pot primi aduceri-aminte (dac&#259; adresa utilizatorului extern este cunoscut&#259;).
 External users can receive email reminders: Utilizatorii externi pot primi aduceri-aminte
-#
-# << MISSING >>
-# allow-self-registration-help:
-# English text: Permit new users to register themselves
-#
-#
-# << MISSING >>
-# Allow self-registration:
-#
-# << MISSING >>
-# use-blacklist-help:
-# English text: Limit access to WebCalendar functions based on IP address
-#
-#
-# << MISSING >>
-# Restrict self-registration to blacklist:
-#
-# << MISSING >>
-# allow-self-registration-full-help:
-# English text: Allow new users to complete the self-registration process on-line
-#
-#
-# << MISSING >>
-# Use self-registration email notifications:
-# English text: Generate passwords and send to new users. This should help eliminate spammers.
-#
-#
-# << MISSING >>
-# allow-attachment-help:
-# English text: Allow users to add file attachments to events.
-#
-#
-# << MISSING >>
-# Allow file attachments to events:
-#
-# << MISSING >>
-# Admin and owner can always add attachments if enabled:
-#
-# << MISSING >>
-# Participant:
-#
-# << MISSING >>
-# Anyone:
-#
-# << MISSING >>
-# allow-comments-help:
-# English text: Allow users to add comments to events.
-#
-#
-# << MISSING >>
-# Allow comments to events:
-#
-# << MISSING >>
-# Admin and owner can always add comments if enabled:
 email-enabled-help: Activeaz&#259;/dezactiveaz&#259; trimiterea de email pentru notifica&#355;ii sau aduceri-aminte. Pune aici "nu" daca serverul t&#259;u nu este configurat s&#259; trimit&#259; email.
 Email enabled: Email activat
 email-default-sender: Specific&#259; adresa de email implicit&#259; a expeditorului la trimiterea de aduceri-aminte.
 Default sender address: Adresa de email implicit&#259; a expeditorului
-#
-# << MISSING >>
-# email-mailer:
-# English text: Choose email type (SMTP, PHP mail, sendmail)
-#
-#
-# << MISSING >>
-# Email Mailer:
-#
-# << MISSING >>
-# email-smtp-host:
-# English text: Hostname(s) of SMTP server(s) seperated by commas
-#
-#
-# << MISSING >>
-# SMTP Host name(s):
-#
-# << MISSING >>
-# email-smtp-port:
-# English text: SMTP Port Number (normally 25)
-#
-#
-# << MISSING >>
-# SMTP Port Number:
-#
-# << MISSING >>
-# email-smtp-auth:
-# English text: Use SMTP Authentication
-#
-#
-# << MISSING >>
-# SMTP Authentication:
-#
-# << MISSING >>
-# email-smtp-username:
-# English text: SMTP Username if using Authentication
-#
-#
-# << MISSING >>
-# SMTP Username:
-#
-# << MISSING >>
-# email-smtp-password:
-# English text: SMTP Password if using Authentication
-#
-#
-# << MISSING >>
-# SMTP Password:
 Default user settings: Configuratia implicit&#259; pentru utilizatori
 email-event-reminders-help: Specific&#259; dac&#259; s&#259; fie trimise aduceri-aminte.
 Event reminders: Aduceri-aminte
@@ -623,38 +204,15 @@ Events removed from my calendar: Evenimente &#351;terse din calendarul meu.
 email-event-rejected: Specific&#259; dac&#259; s&#259; se trimit&#259; notifica&#355;ii prin email c&#226;nd un utilizator refuz&#259; un eveniment din calendarul t&#259;u.
 Event rejected by participant: Eveniment refuzat de c&#259;tre participant
 Allow user to customize colors: Permite utilizatorilor sa-&#351;i aleag&#259; culorile
-#
-# << MISSING >>
-# gradient-colors:
-# English text: If enabled gradient colors are used. This can greatly impact performane.
-#
-#
-# << MISSING >>
-# Enable gradient images for background colors:
-#
-# << MISSING >>
-# Not available:
 Document background: Fundalul documentului
 Document title: Titlul documentului
 Document text: Textul documentului
-#
-# << MISSING >>
-# My event text:
 Table grid color: Culoarea liniilor tabelului
 Table header background: Fundalul legendei tabelului
 Table header text: Textul legendei tabelului
 Table cell background: Fundalul casu&#355;elor tabelului
 Table cell background for current day: Fundalul casu&#355;elor tabelului pentru ziua curent&#259;
-#
-# << MISSING >>
-# Table cell background for days with events:
 Table cell background for weekends: Fundalul casu&#355;elor tabelului pentru weekend
-#
-# << MISSING >>
-# Table cell background for other month:
-#
-# << MISSING >>
-# Week number color:
 Event popup background: Fundalul popup-urilor
 Event popup text: Textul popup-urilor
 
@@ -662,9 +220,6 @@ Event popup text: Textul popup-urilor
 ###############################################
 # Page: adminhome.php
 #
-#
-# << MISSING >>
-# Control Panel:
 Preferences: Preferin&#355;e
 Assistants: Asisten&#355;i
 Users: Utilizatori
@@ -680,43 +235,11 @@ Administrative Tools: Unelte administrative
 
 
 ###############################################
-# Page: ajax.php
-#
-#
-# << MISSING >>
-# Duplicate Name:
-#
-# << MISSING >>
-# Username already exists:
-#
-# << MISSING >>
-# Email address already exists:
-
-
-###############################################
 # Page: approve_entry.php
 #
-#
-# << MISSING >>
-# Additional Comments (optional):
-#
-# << MISSING >>
-# Approve and Send:
-#
-# << MISSING >>
-# Approve and Exit:
-#
-# << MISSING >>
-# (Your comments will be included in an email to the event creator):
 Hello: Buna
-#
-# << MISSING >>
-# An appointment has been approved and comments added by:
 The subject was: Subiectul era
 The description is: Descrierea este
-#
-# << MISSING >>
-# Comments:
 
 
 ###############################################
@@ -727,78 +250,20 @@ Your assistants: Asisten&#355;ii t&#259;i
 
 
 ###############################################
-# Page: availability.php
-#
-#
-# << MISSING >>
-# Program Error:
-#
-# << MISSING >>
-# No users specified!:
-#
-# << MISSING >>
-# No year specified!:
-#
-# << MISSING >>
-# No month specified!:
-#
-# << MISSING >>
-# No day specified!:
-
-
-###############################################
 # Page: category.php
 #
 Add: Adaug&#259;
 Category Name: Numele categoriei
-#
-# << MISSING >>
-# Category Icon:
-#
-# << MISSING >>
-# Remove Icon:
 Global: Global&#259;
-#
-# << MISSING >>
-# Add Icon to Category:
-#
-# << MISSING >>
-# Upload:
-#
-# << MISSING >>
-# gif 3kb max:
-#
-# << MISSING >>
-# Search for existing icons:
 Delete: &#350;terge
 Are you sure you want to delete this entry?: Sigur vrei s&#259; &#351;tergi ?
 Add New Category: Adaug&#259; o nou&#259; categorie
 
 
 ###############################################
-# Page: category_handler.php
-#
-#
-# << MISSING >>
-# File size exceeds maximum:
-#
-# << MISSING >>
-# File is not a gif image:
-
-
-###############################################
 # Page: catsel.php
 #
-#
-# << MISSING >>
-# ENTRY CATEGORIES:
-#
-# << MISSING >>
-# AVAILABLE CATEGORIES:
 Remove: &#350;terge
-#
-# << MISSING >>
-# Global Category:
 Ok: OK
 
 
@@ -809,40 +274,9 @@ An appointment has been canceled for you by: O programare de-a ta a fost anulat&
 
 
 ###############################################
-# Page: doc.php
-#
-#
-# << MISSING >>
-# Invalid blob id:
-
-
-###############################################
 # Page: docadd.php
 #
-#
-# << MISSING >>
-# Add Comment:
-#
-# << MISSING >>
-# Add Attachment:
-#
-# << MISSING >>
-# Subject:
-#
-# << MISSING >>
-# Comment:
-#
-# << MISSING >>
-# Upload file:
 Description: Descriere
-
-
-###############################################
-# Page: docdel.php
-#
-#
-# << MISSING >>
-# Removed:
 
 
 ###############################################
@@ -850,35 +284,11 @@ Description: Descriere
 #
 am: am
 pm: pm
-#
-# << MISSING >>
-# You are not authorized to edit this task:
-#
-# << MISSING >>
-# hours ahead of you:
-#
-# << MISSING >>
-# hours behind you:
-#
-# << MISSING >>
-# hour ahead of you:
-#
-# << MISSING >>
-# hour behind you:
-#
-# << MISSING >>
-# is in a different timezone than you are. Currently:
-#
-# << MISSING >>
-# Time entered here is based on your Timezone:
 Edit Entry: Editeaz&#259; eveniment
 Add Entry: Adaug&#259; eveniment
 Details: Detalii
 Participants: Participan&#355;i
 Repeat: Repet&#259;
-#
-# << MISSING >>
-# Reminders:
 brief-description-help: Aceasta ar trebui s&#259; fie o scurt&#259; descriere (cam 20 de litere) a evenimentului. Aceasta va reprezenta evenimentul c&#226;nd ne uitam &#238;n calendar.
 Brief Description: Scurt&#259; descriere
 full-description-help: Aceasta ar trebui s&#259; descrie complet evenimentul. Aceste informa&#355;tii pot fi v&#259;zute c&#226;nd utilizatorul cite&#351;te despre eveniment.
@@ -892,37 +302,8 @@ Medium: Medie
 High: Ridicat&#259;
 category-help: Specific&#259; tipul evenimentului.
 Category: Categorie
-#
-# << MISSING >>
-# completed-help:
-# English text: Date task is completed. Only enabled when all participants percentage equals 100%.
-#
-#
-# << MISSING >>
-# Date Completed:
-#
-# << MISSING >>
-# percent-help:
-# English text: Task completion percentage for this user
-#
-#
-# << MISSING >>
-# Percent Complete:
-#
-# << MISSING >>
-# All Percentages:
-#
-# << MISSING >>
-# location-help:
-# English text: Event location 
-#
-#
-# << MISSING >>
-# Location:
+URL: URL
 date-help: Specific&#259; data evenimentului.
-#
-# << MISSING >>
-# Start Date:
 Untimed event: Eveniment far&#259; ora fixata
 Timed event: Eveniment cu ora fixat&#259;
 All day event: Eveniment cuprinz&#226;nd toat&#259; ziua
@@ -931,19 +312,7 @@ time-help: Specific&#259; ora evenimentului. Selecteaz&#259; fie "Eveniment cu o
 duration-help: Specific&#259; durata (in ore:minute) a evenimentului.  <br /><i>Poate fi l&#259;sat gol.</i>
 minutes: minute
 end-time-help: Specific&#259; ora la care se a&#351;teapt&#259; ca evenimentul s&#259; se termine.
-#
-# << MISSING >>
-# Start Time:
-#
-# << MISSING >>
-# Due Date:
-#
-# << MISSING >>
-# Due Time:
 participants-help: Listeaz&#259; participan&#355;ii din aceast&#259; &#238;nregistrare.
-#
-# << MISSING >>
-# Availability:
 external-participants-help: Specific&#259; o list&#259; de participan&#355;i la eveniment care nu sunt utilizatori ai calendarului. Ace&#351;ti utilizatori trebuie listati c&#226;te unul pe linie &#351;i se pot include cu adrese de email. Daca adresa de email este specificata, utilizatorul poate primi notificari &#351;i aduceri-aminte.
 External Participants: Participan&#355;i externi
 repeat-type-help: Selecteaz&#259; c&#226;t de des un eveniment trebuie repetat. <i>Lunar (pe zile)</i> permite ca un eveniment s&#259; fie repetat de exemplu &#238;n fiecare prim&#259; Mar&#355;i a lunii sau a treia Joi a lunii, etc. <i>Lunar (pe date)</i> permite repetarea pe o dat&#259; fix&#259; a lunii. 
@@ -952,133 +321,14 @@ Weekly: S&#259;pt&#259;m&#226;nal
 Monthly: Lunar
 by day: pe zile
 by date: dup&#259; data
-#
-# << MISSING >>
-# by position:
 Yearly: Anual
-#
-# << MISSING >>
-# Manual:
-#
-# << MISSING >>
-# Expert Mode:
 repeat-end-date-help: Specific&#259; p&#226;n&#259; la ce dat&#259; s&#259; se repete evenimentul.
-#
-# << MISSING >>
-# Ending:
-#
-# << MISSING >>
-# Forever:
 Use end date: Folose&#351;te data final&#259;
-#
-# << MISSING >>
-# Number of times:
 repeat-frequency-help: Spune c&#226;t de des un eveniment trebuie repetat. Cifra implicit&#259; 1 arat&#259; ca trebuie repetat de fiecare dat&#259;. Specific&#226;nd 2 va face ca evenimentul s&#259; se repete la fiecare dou&#259; s&#259;pt&#259;m&#226;ni (dac&#259; <i>Tipul repeti&#355;iei</i> este <i>S&#259;pt&#259;m&#226;nal&#259;</i>), din dou&#259; &#238;n dou&#259; luni (dac&#259; <i>Tipul repeti&#355;iei</i> este <i>Lunar&#259;</i>), etc. 
 Frequency: Frecven&#355;a
-#
-# << MISSING >>
-# Weekdays Only:
-#
-# << MISSING >>
-# Week Start:
-#
-# << MISSING >>
-# repeat-bydayextended-help:
-# English text: Allows date selection based on day of week. 
-#
-#
-# << MISSING >>
-# ByDay:
 All: Toate
-#
-# << MISSING >>
-# repeat-month-help:
-# English text: Specifies which months the event should repeat in.
-#
-#
-# << MISSING >>
-# ByMonth:
-#
-# << MISSING >>
-# repeat-bysetpos-help:
-# English text: Allows date selection based on position withing the month.
-#
-#
-# << MISSING >>
-# BySetPos:
-#
-# << MISSING >>
-# repeat-bymonthdayextended-help:
-# English text: Allows date selection based on date.
-#
-#
-# << MISSING >>
-# ByMonthDay:
-#
-# << MISSING >>
-# repeat-byweekno-help:
-# English text: Allows user to specify a list of weeks to repeat event (1,2...53,-53,-52...-1).
-#
-#
-# << MISSING >>
-# ByWeekNo:
-#
-# << MISSING >>
-# repeat-byyearday-help:
-# English text: Allows user to specify a list of year days to repeat event (1,2...366,-366,-365...-1).
-#
-#
-# << MISSING >>
-# ByYearDay:
-#
-# << MISSING >>
-# repeat-exceptions-help:
-# English text: Additional days that this event should or should not occur on.
-#
-#
-# << MISSING >>
-# Exclusions:
-#
-# << MISSING >>
-# Inclusions:
-#
-# << MISSING >>
-# Add Exception:
-#
-# << MISSING >>
-# Add Inclusion:
-#
-# << MISSING >>
-# Delete Selected:
 Send Reminder: Trimite aducere-aminte
-#
-# << MISSING >>
-# When:
-#
-# << MISSING >>
-# Use Date/Time:
-#
-# << MISSING >>
-# Use Offset:
 days: zile
-#
-# << MISSING >>
-# Before:
-#
-# << MISSING >>
-# After:
-#
-# << MISSING >>
-# Start:
-#
-# << MISSING >>
-# End/Due:
-#
-# << MISSING >>
-# Times:
-#
-# << MISSING >>
-# Every:
 Delete entry: &#350;terge aceast&#259; &#238;nregistrare
 You are not authorized to edit this entry: Nu e&#351;ti autorizat(&#259;) s&#259; editezi acest eveniment
 
@@ -1107,9 +357,6 @@ Source: Sursa
 Color: Culoarea
 Duplicates: Duplicate
 Show layer events that are the same as your own: Afi&#351;eaz&#259; evenimentele din acest strat care sunt identice cu ale tale 
-#
-# << MISSING >>
-# Add to Others:
 Add to My Calendar: Adaug&#259; la calendarul meu
 Delete layer: &#350;terge stratul
 Are you sure you want to delete this layer?: Sigur vrei s&#259; &#351;tergi acest strat?
@@ -1132,30 +379,6 @@ Add User: Adaug&#259; utilizator
 Calendar ID: ID-ul calendarului
 First Name: Prenume 
 Last Name: Nume (de familie)
-#
-# << MISSING >>
-# Is public calendar:
-
-
-###############################################
-# Page: edit_remotes.php
-#
-#
-# << MISSING >>
-# Edit Remote Calendar:
-#
-# << MISSING >>
-# Add Remote Calendar:
-URL: URL
-#
-# << MISSING >>
-# Create Layer:
-#
-# << MISSING >>
-# Required to View Remote Calendar:
-#
-# << MISSING >>
-# Reload:
 
 
 ###############################################
@@ -1164,9 +387,6 @@ URL: URL
 Error: Eroare
 Import Results: Rezultatul importului
 Events successfully imported: Evenimentele au fost importate cu succes
-#
-# << MISSING >>
-# Create a new layer to view this calendar:
 Errors: Erori
 There was an error parsing the import file or no events were returned: Eroare la citirea fi&#351;ierului importat sau lips&#259; de evenimente
 
@@ -1194,24 +414,6 @@ Next year: Anul urmator
 This year: Anul acesta
 Last year: Anul trecut
 Year before last: Cu doi ani &#238;n urm&#226;
-#
-# << MISSING >>
-# Next 14 days:
-#
-# << MISSING >>
-# Next 30 days:
-#
-# << MISSING >>
-# Next 60 days:
-#
-# << MISSING >>
-# Next 90 days:
-#
-# << MISSING >>
-# Next 180 days:
-#
-# << MISSING >>
-# Next 365 days:
 Invalid report id: ID-ul acestui raport este invalid
 Unnamed Report: Raport fara nume
 Add Report: Adaug&#259; raport
@@ -1264,12 +466,6 @@ Set Password: Seteaz&#259; parola
 Deleting users not supported: &#350;tergerea utilizatorilor nu este permis&#259;
 The passwords were not identical: Parolele nu erau identice
 You have not entered a password: Nu a fost introdus&#259; parola
-#
-# << MISSING >>
-# Invalid characters in login:
-#
-# << MISSING >>
-# Username can not be blank:
 
 
 ###############################################
@@ -1326,19 +522,6 @@ auto-refresh-help: C&#226;nd activat&#259;, vizualiz&#259;rile pe zile, s&#259;p
 Auto-refresh time: Intervalul de auto-actualizare
 auto-refresh-time-help: Daca auto-actualizarea este activat&#259;, aici se specific&#259; timpul &#238;ntre dou&#259; reactualiz&#259;ri.
 Nonuser: Calendare non-utilizator
-#
-# << MISSING >>
-# user-customize-color:
-# English text: Specifies whether users are allowed to modify their own color scheme.
-#
-#
-# << MISSING >>
-# enable-gradient-help:
-# English text: Use gradient colors for cell backgrounds.
-#
-#
-# << MISSING >>
-# Manually entering color values:
 colors-help: Toate culorile trebuie specificate in format hexazecimal "#RRGGBB" unde "RR" este valoarea hexazecimala pentru ro&#351;u, "GG" pentru verde &#351;i "BB" pentru albastru.
 
 
@@ -1353,9 +536,6 @@ Report Bug: Anunt&#259; o eroare de programare
 #
 Adding/Editing Calendar Entries: Adaug&#259;/Editeaz&#259; evenimente din calendar
 Repeat Type: Tipul repeti&#355;iei
-#
-# << MISSING >>
-# For More Information...:
 Repeat End Date: Data final&#259; a repeti&#355;iei
 Repeat Day: Ziua de repeti&#355;ie
 repeat-day-help: Specifica &#238;n ce zile ale saptamanii s&#259; se repete evenimentul. Acesta se folose&#351;te doar c&#226;nd <i>Tipul repeti&#355;iei</i> este saptamanal.
@@ -1387,9 +567,6 @@ Help Index: Index
 ###############################################
 # Page: help_layers.php
 #
-#
-# << MISSING >>
-# Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.:
 Add/Edit/Delete: Adaug&#259;/Editeaz&#259;/&#350;terge
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Daca alegi linkul "Editeaz&#259; straturi" din sectiunea admin din josul paginii vei putea s&#259; adaugi, editezi sau &#351;tergi straturi.  
 Specifies the user that you would like to see displayed in your calendar.: Specific&#259;  utilizatorul pe care ai vrea s&#259;-l vezi &#238;n calendarul t&#259;u.
@@ -1408,92 +585,10 @@ Default Category: Categoria implicit&#259;
 default-category-help: Specific&#259; &#238;n ce categorie se &#238;ncadrezeaza implicit un nou eveniment.
 When I am the boss: C&#226;nd sunt liderul
 Email me event notification: Trimite o notifica&#355;ie prin email 
-#
-# << MISSING >>
-# email-boss-notifications-help:
-# English text: Specifies if bosses receive emails as event notifications.
-#
 I want to approve events: Vreau s&#259; aprob evenimente
-#
-# << MISSING >>
-# boss-approve-event-help:
-# English text: Specifies whether the boss will be required to approve events added by assistants.
-#
 Subscribe/Publish: Abonare/Publicare
 allow-remote-subscriptions-help: Specific&#259; dac&#259; utilizatorii nelocali pot s&#259; se aboneze la acest calendar, permi&#355;&#238;ndu-le s&#259; vad&#259; evenimentele &#238;ntr-o aplica&#355;ie compatibil&#259; cu iCal (ca de exemplu iCal-ul lui Apple sau Mozilla Calendar).
 remote-subscriptions-url-help: Afi&#351;eaz&#259; URL-ul pe care utilizatorii nelocali trebuie s&#259;-l foloseasc&#259; pentru a se abona la acest calendar.
-#
-# << MISSING >>
-# Allow remote publishing:
-#
-# << MISSING >>
-# allow-remote-publishing-help:
-# English text: Specifies if a remote iCal client can publish events back to WebCalendar
-#
-#
-# << MISSING >>
-# remote-publishing-url-help:
-# English text: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
-#
-#
-# << MISSING >>
-# rss-feed-url-help:
-# English text: The URL to access the RSS feed
-#
-#
-# << MISSING >>
-# Enable FreeBusy publishing:
-#
-# << MISSING >>
-# freebusy-enabled-help:
-# English text: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
-#
-#
-# << MISSING >>
-# freebusy-url-help:
-# English text: The URL for accessing the user's FreeBusy list
-#
-
-
-###############################################
-# Page: help_uac.php
-#
-#
-# << MISSING >>
-# User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
-# English text: User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
-#
-#
-# << MISSING >>
-# If disabled, this user will not see you in the participants list.:
-#
-# << MISSING >>
-# If disabled, this user will not be able to send you emails.:
-#
-# << MISSING >>
-# If enabled, this user will not be able to view the details of any of your entries.:
-
-
-###############################################
-# Page: icalclient.php
-#
-#
-# << MISSING >>
-# Publishing Disabled (Admin):
-#
-# << MISSING >>
-# Publishing Disabled (User):
-
-
-###############################################
-# Page: icons.php
-#
-#
-# << MISSING >>
-# Click to Select:
-#
-# << MISSING >>
-# Current Icons on Server:
 
 
 ###############################################
@@ -1503,9 +598,6 @@ Disabled: Dezactivate
 Import format: Formatul de import
 Exclude private records: Exclude datele private 
 Overwrite Prior Import: Rescrie importul anterior
-#
-# << MISSING >>
-# Repeated items are imported separately. Prior imports are not overwritten.:
 
 
 ###############################################
@@ -1525,9 +617,6 @@ Disable Layers: Dezactiveaz&#259; straturile
 Enable Layers: Activeaz&#259; straturile
 Click here: F&#259; click aici
 to modify the layers settings for the: ca s&#259; modifici configurarea straturilor pentru
-#
-# << MISSING >>
-# calendar:
 Add layer: Adaug&#259; un strat
 Layer: Strat
 Edit layer: Editeaz&#259; stratul
@@ -1541,36 +630,6 @@ Approve/Confirm: Aprob&#259;/Confirm&#259;
 Approve this entry?: Aprob&#259;?
 Reject: Refuz&#259;
 Reject this entry?: Refuz&#259;?
-#
-# << MISSING >>
-# Check All:
-#
-# << MISSING >>
-# Uncheck All:
-#
-# << MISSING >>
-# Approve Selected:
-#
-# << MISSING >>
-# Approve Selected entries?:
-#
-# << MISSING >>
-# Reject Selected:
-#
-# << MISSING >>
-# Reject Selected entries?:
-#
-# << MISSING >>
-# Emails Will Not Be Sent:
-#
-# << MISSING >>
-# No unapproved entries for:
-#
-# << MISSING >>
-# Unapproved Entries:
-#
-# << MISSING >>
-# Not authorized:
 
 
 ###############################################
@@ -1587,23 +646,6 @@ cookies-note: <b>Nota:</b> Aceast&#259; aplica&#355;ie necesit&#259; cookie-uri.
 # Page: login.php
 #
 Invalid login: Login invalid
-#
-# << MISSING >>
-# You have been logged out:
-#
-# << MISSING >>
-# Not yet registered? Register here!:
-
-
-###############################################
-# Page: minical.php
-#
-#
-# << MISSING >>
-# No such nonuser calendar:
-#
-# << MISSING >>
-# This Calendar is not Public:
 
 
 ###############################################
@@ -1616,75 +658,8 @@ Add New NonUser Calendar: Adaug&#259; un nou calendar non-utilizator
 # Page: pref.php
 #
 Save Preferences: Salveaz&#259; preferin&#355;ele
-#
-# << MISSING >>
-# Public Access calendar:
-#
-# << MISSING >>
-# Modify Non User Calendar Preferences:
-#
-# << MISSING >>
-# Return to My Preferences:
-#
-# << MISSING >>
-# Custom Scripts:
-#
-# << MISSING >>
-# Timezone Selection:
-#
-# << MISSING >>
-# entry-interval-help:
-# English text: Sets minute interval when editing entry times
-#
-#
-# << MISSING >>
-# Entry interval:
 hour: ora
 minute: minut
-#
-# << MISSING >>
-# theme-reload-help:
-# English text: Due to CSS caching, a page reload may be required
-#
-#
-# << MISSING >>
-# Page may need to be reloaded for new Theme to take effect:
-#
-# << MISSING >>
-# Email format preference:
-#
-# << MISSING >>
-# HTML:
-#
-# << MISSING >>
-# Plain Text:
-#
-# << MISSING >>
-# display_byproxy-help:
-# English text: Display the real creator on view_entry page
-#
-#
-# << MISSING >>
-# Display if created by Assistant:
-#
-# << MISSING >>
-# allow-view-subscriptions-help:
-# English text: Allows restricting remote access to Private or Confidential entries 
-#
-#
-# << MISSING >>
-# Allow remote viewing of:
-#
-# << MISSING >>
-# entries:
-
-
-###############################################
-# Page: publish.php
-#
-#
-# << MISSING >>
-# No user specified:
 
 
 ###############################################
@@ -1694,89 +669,14 @@ Purging events for: Cura&#355;&#226;nd evenimente pentru
 Finished: Terminat
 Check box to delete <b>ALL</b> events for a user: Bifeaz&#259; aceast&#259; casu&#355;&#259; ca s&#259; &#351;tergi <b>TOATE</b> evenimentele utilizatorului
 Delete all events before: &#350;terge toate evenimentele dinainte de
-#
-# << MISSING >>
-# Preview delete:
 Are you sure you want to delete events for: Sigur vrei s&#259; &#351;tergi evenimentele lui
 Records deleted from: &#206;nregistrari au fost &#351;terse &#238;ncep&#226;nd de la
 
 
 ###############################################
-# Page: register.php
-#
-#
-# << MISSING >>
-# Email address can not be blank:
-#
-# << MISSING >>
-# Illegal characters in login:
-#
-# << MISSING >>
-# A new WebCalendar account has been set up for you:
-#
-# << MISSING >>
-# Your username is:
-#
-# << MISSING >>
-# Your password is:
-#
-# << MISSING >>
-# Please visit:
-#
-# << MISSING >>
-# to log in and start using your account:
-#
-# << MISSING >>
-# You may change your password after logging in the first time:
-#
-# << MISSING >>
-# If you received this email in error:
-# English text: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note 
-#
-#
-# << MISSING >>
-# Administrator:
-#
-# << MISSING >>
-# Welcome:
-#
-# << MISSING >>
-# Registration:
-#
-# << MISSING >>
-# Welcome to WebCalendar:
-#
-# << MISSING >>
-# Your email should arrive shortly:
-#
-# << MISSING >>
-# Return to Login screen:
-#
-# << MISSING >>
-# Your account information will be emailed to you:
-#
-# << MISSING >>
-# Submit:
-
-
-###############################################
 # Page: reject_entry.php
 #
-#
-# << MISSING >>
-# Continue:
-#
-# << MISSING >>
-# (Your comments will be included in an email to the other participants):
 An appointment has been rejected by: O programare a fost refuzat&#259; de c&#259;tre
-
-
-###############################################
-# Page: remotes.php
-#
-#
-# << MISSING >>
-# Add New Remote Calendar:
 
 
 ###############################################
@@ -1823,28 +723,11 @@ View Another User's Calendar: Vizualizeaz&#259; calendarul unui alt utilizator
 #
 You have not added any categories: Nu ai ad&#259;ugat nici o categorie
 Set Category: Define&#351;te o categorie
-#
-# << MISSING >>
-# Global Categories can not be changed:
-
-
-###############################################
-# Page: upcoming.php
-#
-#
-# << MISSING >>
-# __month__ __dd__:
-#
-# << MISSING >>
-# more:
 
 
 ###############################################
 # Page: users.php
 #
-#
-# << MISSING >>
-# Remote Calendars:
 Add New User: Adaug&#259; un nou utilizator
 denotes administrative user: desemneaz&#259; utilizatorul administrativ
 
@@ -1852,12 +735,6 @@ denotes administrative user: desemneaz&#259; utilizatorul administrativ
 ###############################################
 # Page: usersel.php
 #
-#
-# << MISSING >>
-# No form specified!:
-#
-# << MISSING >>
-# No listid specified!:
 Reset: Reseteaz&#259;
 
 
@@ -1875,21 +752,12 @@ Add View: Adaug&#259; o vizualizare
 Edit View: Editeaz&#259; o vizualizare
 View Name: Afi&#351;eaz&#259; numele
 View Type: Afi&#351;eaz&#259; tipul
-#
-# << MISSING >>
-# Day by Time:
 Week (Users horizontal): S&#259;pt&#259;m&#226;n&#259;(utilizatorii pe orizontal&#259;)
-#
-# << MISSING >>
-# Week by Time:
 Week (Users vertical): S&#259;pt&#259;m&#226;n&#259; (utilizatorii pe vertical&#259;)
 Week (Timebar): S&#259;pt&#259;m&#226;n&#259; (ora pe orizontal&#259;)
 Month (Timebar): Lun&#259; (ora pe orizontal&#259;)
 Month (side by side): Lun&#259; (una lang&#259; alta)
 Month (on same calendar): Lun&#259; (pe acela&#351;i calendar)
-#
-# << MISSING >>
-# Selected:
 
 
 ###############################################
@@ -1899,55 +767,11 @@ You must specify a view name: Trebuie specificat numele vizualizarii
 
 
 ###############################################
-# Page: view_d.php
-#
-#
-# << MISSING >>
-# No users for this view:
-
-
-###############################################
 # Page: view_entry.php
 #
 Assistant mode: Modul 'asistent'
 Status: Statut
-#
-# << MISSING >>
-# Accepted:
-#
-# << MISSING >>
-# Needs-Action:
-#
-# << MISSING >>
-# Declined:
-#
-# << MISSING >>
-# Completed:
-#
-# << MISSING >>
-# by:
-#
-# << MISSING >>
-# Percentage Complete:
 External User: Utilizator extern
-#
-# << MISSING >>
-# Update Task Percentage:
-#
-# << MISSING >>
-# Update:
-#
-# << MISSING >>
-# Attachments:
-#
-# << MISSING >>
-# comments:
-#
-# << MISSING >>
-# Show:
-#
-# << MISSING >>
-# Hide:
 Approve/Confirm entry: Aprob&#259;/Confirm&#259;  &#238;nregistrarea 
 Reject entry: Refuz&#259;  &#238;nregistrarea 
 Set category: Specific&#259; o categorie
@@ -1957,31 +781,14 @@ Delete repeating event for all dates: &#350;terge toate repeti&#355;iile evenime
 This will delete this entry for all users.: Aceasta va &#351;terge &#238;nregistrarea pentru to&#355;i utilizatorii.
 Delete entry only for this date: &#350;terge &#238;nregistrarea doar pentru aceast&#259; dat&#259;  
 Edit entry: Editeaz&#259; aceast&#259; &#238;nregistrare
-#
-# << MISSING >>
-# from calendar of:
 Copy entry: Copiaz&#259; aceast&#259; &#238;nregistrare
-#
-# << MISSING >>
-# This will delete the entry from your boss\' calendar.:
 This will delete the entry from your calendar.: Va &#351;terge aceast&#259; &#238;nregistrare din calendarul t&#259;u.
-#
-# << MISSING >>
-# from your boss' calendar:
 Do you want to add this entry to your calendar?: Vrei s&#259; adaugi aceast&#259; &#238;nregistrare la calendarul t&#259;u?
 This will add the entry to your calendar.: Aceasta va ad&#259;uga &#238;nregistrarea la calendarul t&#259;u.
 Email all participants: Trimite email tuturor participan&#355;ilor
 Show activity log: Afi&#351;eaz&#259; jurnalul de activitate
 Hide activity log: Ascunde jurnalul de activitate
 Export this entry to: Export&#259; aceast&#259; &#238;nregistrare &#238;n
-
-
-###############################################
-# Page: view_r.php
-#
-#
-# << MISSING >>
-# Double-click on empty cell to add new entry:
 
 
 ###############################################
@@ -1993,53 +800,12 @@ New Entry: Nou eveniment
 ###############################################
 # Page: includes/access.php
 #
-#
-# << MISSING >>
-# Edit Event:
-#
-# << MISSING >>
-# Day View:
-#
-# << MISSING >>
-# Week View:
-#
-# << MISSING >>
-# Month View:
-#
-# << MISSING >>
-# Year View:
-#
-# << MISSING >>
-# Manage Views:
-#
-# << MISSING >>
-# Category Management:
-#
-# << MISSING >>
-# User Management:
 Another User's Calendar: Calendarul altcuiva 
-#
-# << MISSING >>
-# Common Trailer:
-
-
-###############################################
-# Page: includes/config.php
-#
-#
-# << MISSING >>
-# Fatal Error:
-#
-# << MISSING >>
-# Troubleshooting Help:
 
 
 ###############################################
 # Page: includes/date_formats.php
 #
-#
-# << MISSING >>
-# LANGUAGE DEFINED:
 December: Decembrie
 Dec: Dec
 
@@ -2047,57 +813,7 @@ Dec: Dec
 ###############################################
 # Page: includes/functions.php
 #
-#
-# << MISSING >>
-# Unauthorized:
-#
-# << MISSING >>
-# __month__ __dd__, __yyyy__:
-#
-# << MISSING >>
-# __month__ __yyyy__:
-#
-# << MISSING >>
-# __mm__/__dd__/__yyyy__:
-#
-# << MISSING >>
-# This event is private:
-#
-# << MISSING >>
-# Conf.:
-#
-# << MISSING >>
-# WK:
-#
-# << MISSING >>
-# Task Name:
-#
-# << MISSING >>
-# Task Due Date:
-#
-# << MISSING >>
-# TASKS:
-#
-# << MISSING >>
-# Task_Title:
-# English text: Title
-#
-#
-# << MISSING >>
-# Due:
-#
-# << MISSING >>
-# View this task:
-#
-# << MISSING >>
-# View this event:
 exceeds limit of XXX events per day: dep&#259;&#351;e&#351;te limita de XXX evenimente pe zi
-#
-# << MISSING >>
-# on:
-#
-# << MISSING >>
-# You have XXX unapproved entries:
 January: Ianuarie
 February: Februarie
 March: Martie
@@ -2132,41 +848,11 @@ Wed: Miercuri
 Thu: Joi
 Fri: Vineri
 Sat: S&#226;mb&#259;t&#259;
-#
-# << MISSING >>
-# Schedule an appointment for:
-#
-# << MISSING >>
-# All Attendees:
-#
-# << MISSING >>
-# Busy:
-#
-# << MISSING >>
-# Tentative:
 Changes successfully saved: Modificarile au fost salvate cu succes
 The following error occurred: Urm&#259;toarea eroare s-a petrecut
 You are not authorized: Nu e&#351;ti autorizat(&#259;)
 day: zi
-#
-# << MISSING >>
-# before:
-#
-# << MISSING >>
-# after:
-#
-# << MISSING >>
-# start:
-#
-# << MISSING >>
-# end:
 Error approving event: Eroare la aprobarea evenimentului
-#
-# << MISSING >>
-# Error deleting event:
-#
-# << MISSING >>
-# Error rejecting event:
 Generate printer-friendly version: Genereaz&#259; o versiune u&#351;or de tip&#259;rit
 Printer Friendly: Pentru tip&#259;rit
 Event created: Eveniment creat
@@ -2174,75 +860,16 @@ Event approved: Eveniment aprobat
 Event rejected: Eveniment refuzat
 Event updated: Eveniment actualizat
 Event deleted: Eveniment &#351;ters
-#
-# << MISSING >>
-# Task created:
-#
-# << MISSING >>
-# Task approved:
-#
-# << MISSING >>
-# Task rejected:
-#
-# << MISSING >>
-# Task updated:
-#
-# << MISSING >>
-# Task deleted:
-#
-# << MISSING >>
-# Journal created:
-#
-# << MISSING >>
-# Journal approved:
-#
-# << MISSING >>
-# Journal rejected:
-#
-# << MISSING >>
-# Journal updated:
-#
-# << MISSING >>
-# Journal deleted:
 Notification sent: A fost trimis&#259; o notificare 
 Reminder sent: A fost trimis&#259; o aducere-aminte
-#
-# << MISSING >>
-# New user (self registration):
-#
-# << MISSING >>
-# New user via email (self registration):
-#
-# << MISSING >>
-# Attachment:
-#
-# << MISSING >>
-# Delete User:
-
-
-###############################################
-# Page: includes/help_list.php
-#
-#
-# << MISSING >>
-# Index:
-#
-# << MISSING >>
-# Page:
 
 
 ###############################################
 # Page: includes/trailer.php
 #
-#
-# << MISSING >>
-# Home:
 My Calendar: Calendarul meu
 Back to My Calendar: &#206;napoi la calendarul meu
 Add New Entry: Adaug&#259; un nou eveniment
-#
-# << MISSING >>
-# Add New Task:
 Go to: Schimb&#259; cu
 Logout: Logout
 Manage calendar of: Lucreaz&#259; cu calendarul lui 
@@ -2251,38 +878,20 @@ Manage calendar of: Lucreaz&#259; cu calendarul lui
 ###############################################
 # Page: includes/translate.php
 #
-#
-# << MISSING >>
-# Browser Language Not Found:
-#
-# << MISSING >>
-# not supported:
-#
-# << MISSING >>
-# Browser-defined:
 English: Englez&#259;
-#
-# << MISSING >>
-# English-US:
 Basque: Basc&#259;
 Bulgarian: Bulgar&#259;
 Catalan: Catalan&#259;
-Chinese (Traditional/Big5): Chinez&#259; (Traditional&#259;/Big5)
 Chinese (Simplified/GB2312): Chinez&#259; (Simplificat&#259;/GB2312)
+Chinese (Traditional/Big5): Chinez&#259; (Traditional&#259;/Big5)
 Czech: Ceh&#259;
 Danish: Danez&#259;
 Dutch: Olandez&#259;
 Estonian: Estonian&#259;
 Finnish: Finlandez&#259;
 French: Francez&#259;
-#
-# << MISSING >>
-# French (UTF8):
 Galician: Galic&#259;
 German: German&#259;
-#
-# << MISSING >>
-# Greek:
 Holo (Taiwanese): Holo (Taivanez&#259;)
 Hungarian: Ungar&#259;
 Icelandic: Islandic&#259;
@@ -2298,18 +907,6 @@ Russian: Rus&#259;
 Spanish: Spaniol&#259;
 Swedish: Suedez&#259;
 Turkish: Turc&#259;
-#
-# << MISSING >>
-# Welsh:
-#
-# << MISSING >>
-# task:
-#
-# << MISSING >>
-# event:
-#
-# << MISSING >>
-# journal:
 
 
 ###############################################
@@ -2328,57 +925,6 @@ no such user: utilizator inexistent
 ###############################################
 # Page: includes/xcal.php
 #
-#
-# << MISSING >>
-# MO:
-#
-# << MISSING >>
-# TU:
-#
-# << MISSING >>
-# WE:
-#
-# << MISSING >>
-# TH:
-#
-# << MISSING >>
-# FR:
-#
-# << MISSING >>
-# SA:
-#
-# << MISSING >>
-# SU:
-#
-# << MISSING >>
-# Interval:
-#
-# << MISSING >>
-# Months:
-#
-# << MISSING >>
-# Month Days:
-#
-# << MISSING >>
-# Days:
-#
-# << MISSING >>
-# Weeks:
-#
-# << MISSING >>
-# Position:
-#
-# << MISSING >>
-# Until:
-#
-# << MISSING >>
-# Count:
-#
-# << MISSING >>
-# Inclusion Dates:
-#
-# << MISSING >>
-# Exclusion Dates:
 Unnamed Event: Eveniment f&#259;r&#259; nume
 Event Imported: Eveniment importat
 
@@ -2402,27 +948,10 @@ Color format should be '#RRGGBB': Formatul culorii trebuie s&#259; fie '#RRGGBB'
 
 
 ###############################################
-# Page: includes/js/availability.php
-#
-#
-# << MISSING >>
-# Change the date and time of this entry?:
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Nu ai scris o scurt&#259; descriere
 The time you have entered begins before your preferred work hours.  Is this correct?: Ora pe care ai dat-o este inainte de orele tale preferate de lucru. E corect a&#351;a?
-#
-# << MISSING >>
-# Invalid Event Date:
-#
-# << MISSING >>
-# Please add a participant:
-#
-# << MISSING >>
-# Invalid Date:
 You have not entered a valid time of day: Nu ai specificat o or&#259; corect&#259;
 
 
@@ -2433,553 +962,19 @@ Invalid color: Culoare invalid&#259;
 
 
 ###############################################
-# Page: includes/js/edit_nonuser.php
-#
-#
-# << MISSING >>
-# Calendar ID can not be blank:
-#
-# << MISSING >>
-# Both first and last names can not be blank:
-
-
-###############################################
-# Page: includes/js/edit_remotes.php
-#
-#
-# << MISSING >>
-# URL can not be blank:
-
-
-###############################################
-# Page: includes/js/export_import.php
-#
-#
-# << MISSING >>
-# File type does not match Import Format:
-
-
-###############################################
-# Page: includes/classes/Doc.class
-#
-#
-# << MISSING >>
-# bytes:
-#
-# << MISSING >>
-# kb:
-#
-# << MISSING >>
-# Mb:
-
-
-###############################################
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Notificare
-#
-# << MISSING >>
-# provide_address:
-# English text: You must provide at least one recipient email address
-#
-#
-# << MISSING >>
-# mailer_not_supported:
-# English text: mailer is not supported
-#
-#
-# << MISSING >>
-# execute:
-# English text: Could not execute:
-#
-#
-# << MISSING >>
-# instantiate:
-# English text: Could not instantiate mail function
-#
-#
-# << MISSING >>
-# authenticate:
-# English text: SMTP Error: Could not authenticate
-#
-#
-# << MISSING >>
-# from_failed:
-# English text: The following From address failed:
-#
-#
-# << MISSING >>
-# recipients_failed:
-# English text: SMTP Error: The following recipients failed:
-#
-#
-# << MISSING >>
-# data_not_accepted:
-# English text: SMTP Error: Data not accepted
-#
-#
-# << MISSING >>
-# connect_host:
-# English text: SMTP Error: Could not connect to SMTP host:
-#
-#
-# << MISSING >>
-# file_access:
-# English text: Could not access file:
-#
-#
-# << MISSING >>
-# file_open:
-# English text: File Error Could not open file:
-#
-#
-# << MISSING >>
-# encoding:
-# English text: Unknown encoding:
-#
 
 
 ###############################################
 # Page: includes/menu/index.php
 #
-#
-# << MISSING >>
-# This Week:
-#
-# << MISSING >>
-# This Month:
-#
-# << MISSING >>
-# This Year:
-#
-# << MISSING >>
-# Exit:
-#
-# << MISSING >>
-# Add New Event:
-#
-# << MISSING >>
-# Delete Entries:
-#
-# << MISSING >>
-# Another User\'s Calendar:
-#
-# << MISSING >>
-# My Views:
-#
-# << MISSING >>
-# Manage Calendar of:
-#
-# << MISSING >>
-# My Reports:
-#
-# << MISSING >>
-# My Profile:
-#
-# << MISSING >>
-# Public Calendar:
 Unapproved Events: Evenimente neaprobate
-#
-# << MISSING >>
-# User Manager:
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
-#
-# << MISSING >>
-# This is a reminder for the task detailed below.:
 This is a reminder for the event detailed below.: Aceasta este o aducere-aminte pentru evenimentul detaliat mai jos.
-#
-# << MISSING >>
-# Pecentage Complete:
 Reminder: Aducere-aminte
-
-
-###############################################
-# Page: tools/reload_remotes.php
-#
-#
-# << MISSING >>
-# Include Path:
-#
-# << MISSING >>
-# Deleting events for:
-#
-# << MISSING >>
-# Importing events for:
-#
-# << MISSING >>
-# No data returned from:
-#
-# << MISSING >>
-# for non-user calendar:
-#
-# << MISSING >>
-# No Remote Calendars found:
-#
-# << MISSING >>
-# Remote Calendars not enabled:
-
-
-###############################################
-# Page: install/install_functions.php
-#
-#
-# << MISSING >>
-# Error updating webcal_config:
-#
-# << MISSING >>
-# Error updating webcal_user_pref:
-#
-# << MISSING >>
-# Perl script required:
-# English text: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
-#
-#
-# << MISSING >>
-# Your previous version of WebCalendar requires updating several database tables.:
-
-
-###############################################
-# Page: install/index.php
-#
-#
-# << MISSING >>
-# WebCalendar Installation Wizard:
-#
-# << MISSING >>
-# Step:
-#
-# << MISSING >>
-# Single-User:
-#
-# << MISSING >>
-# Failure Reason:
-#
-# << MISSING >>
-# You must manually create database:
-#
-# << MISSING >>
-# Database Cache Directory:
-#
-# << MISSING >>
-# Test Settings:
-#
-# << MISSING >>
-# Create New:
-#
-# << MISSING >>
-# Database Name:
-#
-# << MISSING >>
-# Back:
-#
-# << MISSING >>
-# Timezone Conversion Successful:
-#
-# << MISSING >>
-# Error Unable to write to file:
-#
-# << MISSING >>
-# Successful Login:
-#
-# << MISSING >>
-# Invalid Login:
-#
-# << MISSING >>
-# required only if Safe Mode is On:
-#
-# << MISSING >>
-# required only if Remote Calendars are used:
-#
-# << MISSING >>
-# needed for Gradient Image Backgrounds:
-#
-# << MISSING >>
-# Passwords do not match:
-#
-# << MISSING >>
-# Unable to write password to settings.php file:
-#
-# << MISSING >>
-# Password has been set:
-#
-# << MISSING >>
-# Connection Successful:
-#
-# << MISSING >>
-# Please go to next page to continue installation:
-#
-# << MISSING >>
-# Correct your entries or click the <b>Create New</b> button to continue installation:
-#
-# << MISSING >>
-# Correct your entries and try again:
-#
-# << MISSING >>
-# does not exist:
-#
-# << MISSING >>
-# is not writable:
-#
-# << MISSING >>
-# Error Converting Timezone:
-#
-# << MISSING >>
-# Please change the file permissions of this file:
-#
-# << MISSING >>
-# Please change includes dir premission:
-# English text: Please change the file permissions of your includes directory to allow writing by other users
-#
-#
-# << MISSING >>
-# Your settings have been saved:
-#
-# << MISSING >>
-# Error you must specify a\\nSingle-User Login:
-#
-# << MISSING >>
-# Server URL must end with:
-#
-# << MISSING >>
-# Full Path (no backslashes):
-#
-# << MISSING >>
-# The password contains illegal characters.:
-#
-# << MISSING >>
-# This installation wizard will guide you...:
-# English text: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
-#
-#
-# << MISSING >>
-# PHP Version Check:
-#
-# << MISSING >>
-# Check to see if PHP 4.1.0 or greater is installed:
-#
-# << MISSING >>
-# PHP version:
-#
-# << MISSING >>
-# PHP Settings:
-#
-# << MISSING >>
-# Detailed PHP Info:
-#
-# << MISSING >>
-# Session Check:
-#
-# << MISSING >>
-# To test the proper operation of sessions, reload this page:
-#
-# << MISSING >>
-# You should see the session counter increment each time:
-#
-# << MISSING >>
-# SESSION COUNTER:
-#
-# << MISSING >>
-# Settings.php Status:
-#
-# << MISSING >>
-# The file permissions of <b>settings.php</b> are set...:
-# English text: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
-#
-#
-# << MISSING >>
-# The file permissions of the <b>includes</b> directory are set...:
-# English text: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
-#
-#
-# << MISSING >>
-# Your <b>settings.php</b> file appears to be valid:
-#
-# << MISSING >>
-# Configuration Wizard Password:
-#
-# << MISSING >>
-# Create Settings File Password:
-#
-# << MISSING >>
-# Password (again):
-#
-# << MISSING >>
-# db setup directions...:
-# English text: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
-#
-#
-# << MISSING >>
-# Database Status:
-#
-# << MISSING >>
-# Supported databases for your PHP installation:
-#
-# << MISSING >>
-# Your current database settings are able to access the database:
-#
-# << MISSING >>
-# Please Test Settings:
-#
-# << MISSING >>
-# Your current database settings are <b>not</b> able to access the database or have not yet been tested:
-#
-# << MISSING >>
-# Database Settings:
-#
-# << MISSING >>
-# Database Type:
-#
-# << MISSING >>
-# Server:
-#
-# << MISSING >>
-# Connection Persistence:
-#
-# << MISSING >>
-# All your database tables appear to be up to date. You may proceed to the:
-#
-# << MISSING >>
-# next page and complete your WebCalendar setup:
-#
-# << MISSING >>
-# This appears to be a new installation. If this is not correct, please:
-#
-# << MISSING >>
-# go back to the previous page and correct your settings:
-#
-# << MISSING >>
-# The database requires some data input:
-#
-# << MISSING >>
-# Click <b>Update Database</b> to complete the upgrade:
-#
-# << MISSING >>
-# This appears to be an upgrade from version:
-#
-# << MISSING >>
-# In this section we will perform the required database changes to bring your database up to the required level:
-#
-# << MISSING >>
-# If you are using a fully supported database, this step will be performed automatically for you:
-#
-# << MISSING >>
-# If not, the required SQL can be displayed and you should be able:
-#
-# << MISSING >>
-# to cut &amp; paste it into your database server query window:
-#
-# << MISSING >>
-# No database actions are required:
-#
-# << MISSING >>
-# The following database actions are required:
-#
-# << MISSING >>
-# ODBC Underlying Database:
-#
-# << MISSING >>
-# Automatic installation not supported:
-# English text: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the sql supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
-#
-#
-# << MISSING >>
-# This may take several minutes to complete:
-#
-# << MISSING >>
-# Install Database:
-#
-# << MISSING >>
-# Update Database:
-#
-# << MISSING >>
-# Display Required SQL:
-#
-# << MISSING >>
-# Return to previous page after processing sql:
-# English text: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
-#
-#
-# << MISSING >>
-# This is the final step in setting up your WebCalendar Installation:
-#
-# << MISSING >>
-# Timezone Conversion:
-#
-# << MISSING >>
-# It appears that you have:
-#
-# << MISSING >>
-# NOT:
-#
-# << MISSING >>
-# converted your existing WebCalendar event data to GMT:
-#
-# << MISSING >>
-# If you have, you may ignore this notice and not proceed with the conversion:
-#
-# << MISSING >>
-# If this is a new installation, you may also ignore this notice.:
-#
-# << MISSING >>
-# Convert Data to GMT:
-#
-# << MISSING >>
-# Application Settings:
-#
-# << MISSING >>
-# HTTP-based authentication was not detected:
-#
-# << MISSING >>
-# You will need to reconfigure your web server if you wish to:
-#
-# << MISSING >>
-# select 'Web Server' from the 'User Authentication' choices below:
-#
-# << MISSING >>
-# HTTP-based authentication was detected:
-#
-# << MISSING >>
-# User authentication is being handled by your web server:
-#
-# << MISSING >>
-# You should select 'Web Server' from the list of 'User Authentication' choices below:
-#
-# << MISSING >>
-# Create Default Admin Account:
-#
-# << MISSING >>
-# Admin Account Not Found:
-#
-# << MISSING >>
-# User Authentication:
-#
-# << MISSING >>
-# Web-based via WebCalendar (default):
-#
-# << MISSING >>
-# Web Server:
-#
-# << MISSING >>
-# None (Single-User):
-#
-# << MISSING >>
-# Read-Only:
-#
-# << MISSING >>
-# Environment:
-#
-# << MISSING >>
-# Production:
-#
-# << MISSING >>
-# Development:
-#
-# << MISSING >>
-# Save Settings:
-#
-# << MISSING >>
-# Launch WebCalendar:

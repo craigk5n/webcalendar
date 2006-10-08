@@ -1,11 +1,18 @@
-# Catalan.txt
+# See translations/English-US.txt for instructions.
+#
 # Translated by:
 #       Traduït
 #       traduit.com
 #       info@traduit.com
 #
 # Last update: 12 May 2004
-# Translation last updated on 10-05-2006
+#
+# Additional translations 'borrowed' from SourceForge project
+# 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -20,63 +27,12 @@ charset: iso-8859-1
 #
 Database error: Error de base de dades
 Cancel: Cancel·la
-#
-# << MISSING >>
-# DEFAULT CONFIGURATION:
 Save: Desa
 Public Access: Accés públic
 Admin: Administrador
-#
-# << MISSING >>
-# User Access Control:
-#
-# << MISSING >>
-# Allow Access to Other Users' Calendar:
-#
-# << MISSING >>
-# Grant This User Access to My Calendar:
 Go: Vés
-#
-# << MISSING >>
-# Type:
 Calendar: Calendari
-#
-# << MISSING >>
-# View Event:
-#
-# << MISSING >>
-# View:
 Edit: Edita
-#
-# << MISSING >>
-# Approve/Reject:
-#
-# << MISSING >>
-# Events:
-#
-# << MISSING >>
-# Tasks:
-#
-# << MISSING >>
-# Journals:
-#
-# << MISSING >>
-# Can Invite:
-#
-# << MISSING >>
-# Can Email:
-#
-# << MISSING >>
-# Can See Time Only:
-#
-# << MISSING >>
-# Assistant:
-#
-# << MISSING >>
-# Select All:
-#
-# << MISSING >>
-# Clear All:
 Public: Públic
 Confidential: Confidencial
 Private: Privat
@@ -85,13 +41,10 @@ Private: Privat
 ###############################################
 # Page: activity_log.php
 #
-#
-# << MISSING >>
-# System Log:
 Activity Log: Registre d'activitats
 User: Usuari
 Date: Data
-Time: Hora 
+Time: Hora
 Event: Esdeveniment
 Action: Acció
 Previous: Anterior
@@ -101,14 +54,8 @@ Next: Següent
 ###############################################
 # Page: add_entry.php
 #
-#
-# << MISSING >>
-# is already on your calendar.:
 Invalid entry id: Identificació incorrecta
 This is a private event and may not be added to your calendar.: Aquest esdeveniment és privat i no el pots afegir al teu calendari.
-#
-# << MISSING >>
-# This is a confidential event and may not be added to your calendar.:
 Error adding event: Error en afegir un esdeveniment
 
 
@@ -127,95 +74,27 @@ Help: Ajuda
 Settings: Paràmetres
 Groups: Grups
 NonUser Calendars: Calendaris no d'usuari
-#
-# << MISSING >>
-# Other:
 Email: Correu electrònic
 Colors: Colors
-#
-# << MISSING >>
-# System options:
 app-name-help: Especifica el nom de l'aplicació que es mostrarà a la barra de títol del navegador a totes les pàgines i a la pàgina d'entrada.  A l'arxiu de traduccions es mirarà el valor que s'especifiqui aquí per poder oferir títols diferents per a diverses llengües.
 Application Name: Nom de l'aplicació
-#
-# << MISSING >>
-# Translated Name:
 Title: WebCalendar
 server-url-help: Especifica la URL principal de l'aplicació.  Això s'inclourà en enviar recordatoris i notificacions per correu electrònic.
 Server URL: URL del servidor
-#
-# << MISSING >>
-# home-url-help:
-# English text: Specifies the home URL for the applicaiton. This can be an absolute or relative
-#
-#
-# << MISSING >>
-# Home URL:
 language-help: Especifica l'idioma que s'utilitza.
 Language: Idioma
 Your browser default language is: L'idioma per defecte del teu navegador és
-#
-# << MISSING >>
-# Allow user to use themes:
-#
-# << MISSING >>
-# themes-help:
-# English text: Allows mass update of configuration settings. Lower case labels are user pref only.
-#
-#
-# << MISSING >>
-# Themes:
-#
-# << MISSING >>
-# AVAILABLE THEMES:
 None: Cap
-#
-# << MISSING >>
-# Preview:
-#
-# << MISSING >>
-# Site customization:
 custom-script-help: Permet introduir JavaScript o text de full d'estil personalitzats que s'incerirà a la capçalera HTML de cada pàgina.
 Custom script/stylesheet: Script/full d'estil personalitzat
 custom-header-help: Permet incloure un fragment HTML personalitzat a l'inici de cada pàgina.
 Custom header: Capçalera personalitzada
 custom-trailer-help: Permet incloure un fragment HTML personalitzat al peu de cada pàgina.
 Custom trailer: Peu personalitzat
-#
-# << MISSING >>
-# enable-external-header-help:
-# English text: Allows the custom trailer to be loaded from an external file
-#
-#
-# << MISSING >>
-# Allow external file for header/script/trailer:
-#
-# << MISSING >>
-# Allow user to override header/trailer:
-#
-# << MISSING >>
-# Date and Time:
 tz-help: Especifica les hores de diferència per ajustar l'hora del servidor a l'hora local
-#
-# << MISSING >>
-# Server Timezone Selection:
-#
-# << MISSING >>
-# Your current GMT offset is:
 hours: hores
-#
-# << MISSING >>
-# display-general-use-gmt-help:
-# English text: If enabled, common dates/times are displayed as GMT
-#
-#
-# << MISSING >>
-# Display Common Use Date/Times as GMT:
 date-format-help: Especifica el format preferit de la data.
 Date format: Format de la data
-#
-# << MISSING >>
-# Small Task Date:
 display-week-starts-on: Especifica si la setmana comença diumenge o dilluns   Si s'especifica dilluns, aleshores els números de setmana seran un número de setmana ISO.
 Week starts on: La setmana comença
 Sunday: Diumenge
@@ -224,98 +103,29 @@ time-format-help: Especifica el format d'hora que s'utilitza: <br /><i>12 hores:
 Time format: Format d'hora
 12 hour: 12 hores
 24 hour: 24 hores
-#
-# << MISSING >>
-# timed-evt-len-help:
-# English text: Specifies input method for determining the length of a timed event.
-#
-#
-# << MISSING >>
-# Specify timed event length by:
 Duration: Durada
-#
-# << MISSING >>
-# End Time:
 work-hours-help: Especifica l'interval de temps que es mostrarà a la visualització de dia.
 Work hours: Horari laboral
 From: Des de les
 to: a les
-#
-# << MISSING >>
-# Appearance:
 preferred-view-help: Especifica la visualització per defecte (Dia, Setmana, Mes, o Any).
 Preferred view: Visualització preferida
-#
-# << MISSING >>
-# Allow top menu:
-#
-# << MISSING >>
-# Date Selectors position:
-#
-# << MISSING >>
-# menu-themes-help:
-# English text: Sets the colors and style of the top menu
-#
-#
-# << MISSING >>
-# Menu theme:
 fonts-help: Especifica una llista de tipus de lletra del sistema que es vol fer servir (com ara "Arial,Helvetica")
 Fonts: Tipus de lletra
-#
-# << MISSING >>
-# display-sm_month-help:
-# English text: If enabled, displays small months in month views
-#
-#
-# << MISSING >>
-# Display small months:
 display-weekends-help: Inclou caps de setmana quan es visualitzen les setmanes.
-#
-# << MISSING >>
-# Display weekends:
-#
-# << MISSING >>
-# display-alldays-help:
-# English text: Display previous and next months days in month views, filling all cells.
-#
-#
-# << MISSING >>
-# Display all days in month view:
 display-week-number-help: Especifica si el número de setmana (1-52) es mostra a la visualització de mes i a la de setmana.
 Display week number: Mostra número de setmana
 display-desc-print-day-help: Inclou la descripció dels esdeveniments a la versió per imprimir de la visualització de dia.
 Display description in printer day view: Descripció a la versió per imprimir de la visualització de dia
 yearly-shows-events-help: En la visualització d'any, mostra en negreta els dies amb esdeveniments.
-#
-# << MISSING >>
-# Display days with events in bold in month and year views:
-#
-# << MISSING >>
-# display-minutes-help:
-# English text: If enabled, minutes ending with :00 will always be displayed
-#
-#
-# << MISSING >>
-# Display 00 minutes always:
 allow-view-add-help: S'inclourà una icona '+' a les visualitzacions, permetent als usuaris afegir esdeveniments ràpidament als calendaris d'altres usuaris.
 Include add event link in views: Inclou a les visualitzacions enllaç per afegir esdeveniment
-#
-# << MISSING >>
-# lunar-help:
-# English text: If enabled, will display small icons representing the lunar phases each month
-#
-#
-# << MISSING >>
-# Display Lunar Phases in month view:
-#
-# << MISSING >>
-# Restrictions:
 allow-view-other-help: Especifica si un usuari pot visualitzar el calendari d'un altre usuari.
 Allow viewing other user's calendars: Permet veure els calendaris d'altres usuaris
 require-approvals-help: Si està activat, l'usuari ha d'aprovar l'esdeveniment abans que es mostri en el seu ( llevat que s'hagi activat Mostrar pendents d'aprovar).  Fixeu-vos que configurar-ho a "No", no ocultarà les aprovacions per al calendari d'Accés Públic (si el calendari d'Accés Públic està habilitat).
 Require event approvals: Requereix aprovació d'esdeveniments
 display-unapproved-help: Especifica si els esdeveniments pendents d'aprovació es mostren al calendari.<br /> Si s'ajusta a "Sí", els esdeveniments pendents d'aprovació es mostraran al calendari (amb el text en un color diferent). <br /> Si s'ajusta a  "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
-Display unapproved: Mostra pendents d'aprovar 
+Display unapproved: Mostra pendents d'aprovar
 conflict-check-help: Comprova els conflictes entre esdeveniments (dos esdeveniments programats per a la mateixa hora i la mateixa persona).  Si ho configures com a "Sí", podràs planificar igualment dos esdeveniments alhora després de confirmar un avís. Si ho configures com a "no", no es comprovaran els possibles conflictes entre esdeveniments.  Probablement vulguis posar "Sí", a fi que es produeixin les comprovacions.
 Check for event conflicts: Comprova conflictes entre esdeveniments
 conflict-months-help: Si està posada la comprovació de conflictes ("Comprova conflictes entre esdeveniments" està configurat com a "No"), aquí s'especifica el nombre de mesos endavant que cal fer aquesta comprovació.  Si trobes que afegir esdeveniments triga molt a processar-se, redueix aquest número.
@@ -326,22 +136,6 @@ limit-appts-help: Permet que l'administrador del sistema pugui marcar a tot el s
 Limit number of timed events per day: Nombre límit d'esdeveniments amb hora en un dia
 limit-appts-number-help: Especifica el nombre màxim d'esdeveniments amb hora que un usuari pot tenir en un sol dia.
 Maximum timed events per day: Màxim d'esdeveniments amb hora en un dia
-#
-# << MISSING >>
-# crossday-help:
-# English text: If enabled, events that span days will be displayed on seperate days
-#
-#
-# << MISSING >>
-# Disable Cross-Day Events:
-#
-# << MISSING >>
-# disable-location-field-help:
-# English text: Selecting "Yes" will remove the "Location" field from event information pages
-#
-#
-# << MISSING >>
-# Disable Location field:
 disable-priority-field-help: Si es selecciona "Sí", s'eliminarà el camp "Prioritat" de les pàgines d'informació de l'esdeveniment, tot oferint una interfície més simple per als novells.
 Disable Priority field: Desactiva el camp Prioritat
 disable-access-field-help: Si es selecciona "Sí", s'eliminarà el camp "Accés" de les pàgines d'informació de l'esdeveniment, tot oferint  una interfície més simple per als novells.
@@ -352,77 +146,17 @@ disable-repeating-field-help: Si es selecciona "Sí", s'eliminarà el camp "Repeti
 Disable Repeating field: Desactiva el camp Repetició
 allow-html-description-help: Si està habilitat, els usuaris poden introduir HTML al camp de descripció de l'esdeveniment.   Si no s'habilita, s'ignoraran les etiquetes HTML i es mostrarà com a text net.  Avís:  Activar aquesta opció permet els usuaris vincular imatges d'altres llocs web.
 Allow HTML in Description: Permet HTML a la Descripció
-#
-# << MISSING >>
-# Popups:
-#
-# << MISSING >>
-# disable-popups-help:
-# English text: Disable popups from calendar views
-#
-#
-# << MISSING >>
-# Disable Pop-Ups:
 popup-includes-siteextras-help: Si està habilitat, als missatges emergents es mostrarà la configuració de permetre personalitzar camps d'esdeveniment al fitxer site_extras.php.
 Display Site Extras in popup: Mostra els Extres del Lloc al requadre emergent
-#
-# << MISSING >>
-# popup-includes-participants-help:
-# English text: If enabled, participants are displayed in event popups.
-#
-#
-# << MISSING >>
-# Display Participants in popup:
-#
-# << MISSING >>
-# Miscellaneous:
 remember-last-login-help: Quan està habilitat, la identificació de l'usuari s'omplirà automàticament a la pàgina d'entrada (però no la contrasenya), i es carregaran les preferències de l'usuari (incloent-hi les preferències de colors i idioma).
 Remember last login: Recorda la darrera identificació
-#
-# << MISSING >>
-# summary_length-help:
-# English text: Maximum length of Brief Description in calendar views
-#
-#
-# << MISSING >>
-# Brief Description Length:
-#
-# << MISSING >>
-# user_sort-help:
-# English text: Determines sort order for User, Nonuser lists
-#
-#
-# << MISSING >>
-# User Sort Order:
-#
-# << MISSING >>
-# Lastname, Firstname:
-#
-# << MISSING >>
-# Firstname, Lastname:
 Plugins: Connectors
 plugins-enabled-help: Habilitar connectors.
 Enable Plugins: Habilita connectors
 plugins-sort-key-help: Especifica una tecla d'ordenació per al connector.  Permet que els connectors s'ordenin en un ordre específic.
 Plugin: Connector
 allow-public-access-help: Si està activat, el calendari es pot fer servir com un calendari públic només de lectura que no requereix identificació d'usuaris.
-Allow public access: Permetre l'accés públic 
-#
-# << MISSING >>
-# public-access-default-visible:
-# English text: Events from the public calendar will automatically appear on all users' calendars
-#
-#
-# << MISSING >>
-# Public access visible by default:
-#
-# << MISSING >>
-# public-access-default-selected:
-# English text: When adding a new event, the public user will be selected by default as a participant.
-#
-#
-# << MISSING >>
-# Public access is default participant:
+Allow public access: Permetre l'accés públic
 public-access-view-others-help: En cas d'accés públic, s'especifica si l'usuari pot veure el calendari d'un altre usuari.
 Public access can view other users: L'accés públic pot visualitzar altres usuaris
 public-access-can-add-help: Si està habilitat, els usuaris que accedeixen al sistema mitjançant l'Accés Públic podran afegir nous esdeveniments, però no es mostraran al calendari fins que un administrador l'aprovi.
@@ -431,30 +165,6 @@ public-access-add-requires-approval-help: Especifica si els esdeveniments afegit
 Public access new events require approval: Cal aprovar els esdeveniments nous d'accés públic
 public-access-sees-participants-help: Si està habilitat, els usuaris que accedeixen al calendari des del compte públic podran veure els participants de l'esdeveniment si en visualitzen els detalls.
 Public access can view participants: L'accés públic pot veure els participants
-#
-# << MISSING >>
-# public-access-override-help:
-# English text: Allows event names and descriptions to be hidden on the public calendar
-#
-#
-# << MISSING >>
-# Override event name/description for public access:
-#
-# << MISSING >>
-# public-access-override-text-help:
-# English text: The text to display if the above option is enabled. If 'Not Available', it will be translated.
-#
-#
-# << MISSING >>
-# Text to display to public access:
-#
-# << MISSING >>
-# uac-enabled-help:
-# English text: Enables user-level access control
-#
-#
-# << MISSING >>
-# User Access Control enabled:
 groups-enabled-help: Habilita el suport de grups, permetent que els usuaris seleccionin usuaris per grups.
 Groups enabled: Grups habilitats
 user-sees-his-group-help: Si està habilitat, els usuaris no veuran els usuaris de calendari que no estiguin almenys en un dels seus grups.
@@ -467,163 +177,21 @@ reports-enabled-help: Si està habilitat, els usuaris veuran una secció "Informes
 Reports enabled: Informes habilitats
 subscriptions-enabled-help: Especifica si els usuaris remots es poden subscriure al calendari d'un usuari de WebCalendar, permetent-los veure els esdeveniments de l'usuari WebCalendar a la seva aplicació d'iCal (com ara l'iCal d'Apple o el Mozilla Calendar).
 Allow remote subscriptions: Permet subscripcions remotes
-#
-# << MISSING >>
-# remotes-enabled-help:
-# English text: Allows users to load remote ics files using URL
-#
-#
-# << MISSING >>
-# Allow remote calendars:
-#
-# << MISSING >>
-# rss-enabled-help:
-# English text: Specifies if a user's calendar can be obtained from a RSS feed.
-#
-#
-# << MISSING >>
-# Enable RSS feed:
 categories-enabled-help: Habilita el suport per a les categories d'esdeveniments
 Categories enabled: Categories habilitades
-#
-# << MISSING >>
-# icon_upload-enabled-help:
-# English text: If enabled, users can upload category icons
-#
-#
-# << MISSING >>
-# Category Icon Upload enabled:
-#
-# << MISSING >>
-# display-tasks-help:
-# English text: Display small task window on month and day calendar
-#
-#
-# << MISSING >>
-# Display small task list:
-#
-# << MISSING >>
-# display-tasks-in-grid-help:
-# English text: Display tasks in calendars along with events
-#
-#
-# << MISSING >>
-# Display tasks in Calendars:
-allow-external-users-help: Especifica si es pot afegir a un esdeveniment un no-usuari de calendari.  Permet incloure com a participants d'un esdeveniment no-usuaris de calendari. 
+allow-external-users-help: Especifica si es pot afegir a un esdeveniment un no-usuari de calendari.  Permet incloure com a participants d'un esdeveniment no-usuaris de calendari.
 Allow external users: Permet usuaris externs
 external-can-receive-notification-help: Quan s'habiliten els usuaris externs i l'ús de correu electrònic, els usuaris externs poden rebre notificacions per correu electrònic en afegir, actualitzar o esborrar un esdeveniment (si se'n facilita l'adreça electrònica).
 External users can receive email notifications: Els usuaris externs poden rebre notificacions per correu electrònic
 external-can-receive-reminder-help: Quan els usuaris externs i l'ús de correu electrònic estan habilitats, els usuaris externs poden rebre recordatoris per correu electrònic (si es facilita l'adreça electrònica de l'usuari extern).
 External users can receive email reminders: Els usuaris externs poden rebre recordatoris per correu electrònic
-#
-# << MISSING >>
-# allow-self-registration-help:
-# English text: Permit new users to register themselves
-#
-#
-# << MISSING >>
-# Allow self-registration:
-#
-# << MISSING >>
-# use-blacklist-help:
-# English text: Limit access to WebCalendar functions based on IP address
-#
-#
-# << MISSING >>
-# Restrict self-registration to blacklist:
-#
-# << MISSING >>
-# allow-self-registration-full-help:
-# English text: Allow new users to complete the self-registration process on-line
-#
-#
-# << MISSING >>
-# Use self-registration email notifications:
-# English text: Generate passwords and send to new users. This should help eliminate spammers.
-#
-#
-# << MISSING >>
-# allow-attachment-help:
-# English text: Allow users to add file attachments to events.
-#
-#
-# << MISSING >>
-# Allow file attachments to events:
-#
-# << MISSING >>
-# Admin and owner can always add attachments if enabled:
-#
-# << MISSING >>
-# Participant:
-#
-# << MISSING >>
-# Anyone:
-#
-# << MISSING >>
-# allow-comments-help:
-# English text: Allow users to add comments to events.
-#
-#
-# << MISSING >>
-# Allow comments to events:
-#
-# << MISSING >>
-# Admin and owner can always add comments if enabled:
 email-enabled-help: Activa o desactiva tots els enviaments de correu electrònic per a notificacions o recordatoris.  Posa "No" si el teu servidor no està configurat adequadament per enviar correu.
 Email enabled: Correu electrònic habilitat
 email-default-sender: Especifica l'adreça electrònica que constarà com a remitent en enviar recordatoris.
 Default sender address: Adreça remitent per defecte
-#
-# << MISSING >>
-# email-mailer:
-# English text: Choose email type (SMTP, PHP mail, sendmail)
-#
-#
-# << MISSING >>
-# Email Mailer:
-#
-# << MISSING >>
-# email-smtp-host:
-# English text: Hostname(s) of SMTP server(s) seperated by commas
-#
-#
-# << MISSING >>
-# SMTP Host name(s):
-#
-# << MISSING >>
-# email-smtp-port:
-# English text: SMTP Port Number (normally 25)
-#
-#
-# << MISSING >>
-# SMTP Port Number:
-#
-# << MISSING >>
-# email-smtp-auth:
-# English text: Use SMTP Authentication
-#
-#
-# << MISSING >>
-# SMTP Authentication:
-#
-# << MISSING >>
-# email-smtp-username:
-# English text: SMTP Username if using Authentication
-#
-#
-# << MISSING >>
-# SMTP Username:
-#
-# << MISSING >>
-# email-smtp-password:
-# English text: SMTP Password if using Authentication
-#
-#
-# << MISSING >>
-# SMTP Password:
 Default user settings: Paràmetres usuari per defecte
-email-event-reminders-help: Especifica si s'envien o no recordatoris d'esdeveniments. 
-Event reminders: Recordatoris d'esdeveniment 
+email-event-reminders-help: Especifica si s'envien o no recordatoris d'esdeveniments.
+Event reminders: Recordatoris d'esdeveniment
 email-event-added: Especifica si s'envien o no notificacions per correu electrònic quan s'afegeixi un esdeveniment al teu calendari.
 Events added to my calendar: Esdeveniments afegits al meu calendari
 email-event-updated: Especifica si s'envien o no notificacions per correu electrònic quan s'actualitzi un esdeveniment al teu calendari.
@@ -633,38 +201,15 @@ Events removed from my calendar: Esdeveniments esborrats del meu calendari
 email-event-rejected: Especifica si s'envien o no notificacions per correu electrònic quan un participant rebutgi un esdeveniment del teu calendari.
 Event rejected by participant: Esdeveniment rebutjat pel participant
 Allow user to customize colors: Permet que l'usuari personalitzi els colors
-#
-# << MISSING >>
-# gradient-colors:
-# English text: If enabled gradient colors are used. This can greatly impact performane.
-#
-#
-# << MISSING >>
-# Enable gradient images for background colors:
-#
-# << MISSING >>
-# Not available:
 Document background: Fons del document
 Document title: Títol del document
 Document text: Text del document
-#
-# << MISSING >>
-# My event text:
 Table grid color: Color de la taula
 Table header background: Color del fons de la capçalera de la taula
 Table header text: Text capçalera taula
 Table cell background: Fons de la cel·la de la taula
 Table cell background for current day: Fons de la cel·la del dia actual
-#
-# << MISSING >>
-# Table cell background for days with events:
 Table cell background for weekends: Fons de les cel·les de caps de setmana
-#
-# << MISSING >>
-# Table cell background for other month:
-#
-# << MISSING >>
-# Week number color:
 Event popup background: Fons del requadre emergent de l'esdeveniment
 Event popup text: Text del missatge emergent de l'esdeveniment
 
@@ -672,9 +217,6 @@ Event popup text: Text del missatge emergent de l'esdeveniment
 ###############################################
 # Page: adminhome.php
 #
-#
-# << MISSING >>
-# Control Panel:
 Preferences: Preferències
 Assistants: Assistents
 Users: Usuaris
@@ -690,43 +232,11 @@ Administrative Tools: Eines administratives
 
 
 ###############################################
-# Page: ajax.php
-#
-#
-# << MISSING >>
-# Duplicate Name:
-#
-# << MISSING >>
-# Username already exists:
-#
-# << MISSING >>
-# Email address already exists:
-
-
-###############################################
 # Page: approve_entry.php
 #
-#
-# << MISSING >>
-# Additional Comments (optional):
-#
-# << MISSING >>
-# Approve and Send:
-#
-# << MISSING >>
-# Approve and Exit:
-#
-# << MISSING >>
-# (Your comments will be included in an email to the event creator):
 Hello: Hola
-#
-# << MISSING >>
-# An appointment has been approved and comments added by:
 The subject was: L'assumpte era
 The description is: La descripció és
-#
-# << MISSING >>
-# Comments:
 
 
 ###############################################
@@ -737,78 +247,20 @@ Your assistants: Els vostres assistents
 
 
 ###############################################
-# Page: availability.php
-#
-#
-# << MISSING >>
-# Program Error:
-#
-# << MISSING >>
-# No users specified!:
-#
-# << MISSING >>
-# No year specified!:
-#
-# << MISSING >>
-# No month specified!:
-#
-# << MISSING >>
-# No day specified!:
-
-
-###############################################
 # Page: category.php
 #
 Add: Afegeix
 Category Name: Nom de categoria
-#
-# << MISSING >>
-# Category Icon:
-#
-# << MISSING >>
-# Remove Icon:
 Global: Global
-#
-# << MISSING >>
-# Add Icon to Category:
-#
-# << MISSING >>
-# Upload:
-#
-# << MISSING >>
-# gif 3kb max:
-#
-# << MISSING >>
-# Search for existing icons:
 Delete: Suprimeix
 Are you sure you want to delete this entry?: Esteu segur que voleu suprimir aquesta entrada?
 Add New Category: Afegir nova categoria
 
 
 ###############################################
-# Page: category_handler.php
-#
-#
-# << MISSING >>
-# File size exceeds maximum:
-#
-# << MISSING >>
-# File is not a gif image:
-
-
-###############################################
 # Page: catsel.php
 #
-#
-# << MISSING >>
-# ENTRY CATEGORIES:
-#
-# << MISSING >>
-# AVAILABLE CATEGORIES:
 Remove: Elimina
-#
-# << MISSING >>
-# Global Category:
 Ok: D'acord
 
 
@@ -819,40 +271,9 @@ An appointment has been canceled for you by: S'ha cancel·lat una cita cancel·la 
 
 
 ###############################################
-# Page: doc.php
-#
-#
-# << MISSING >>
-# Invalid blob id:
-
-
-###############################################
 # Page: docadd.php
 #
-#
-# << MISSING >>
-# Add Comment:
-#
-# << MISSING >>
-# Add Attachment:
-#
-# << MISSING >>
-# Subject:
-#
-# << MISSING >>
-# Comment:
-#
-# << MISSING >>
-# Upload file:
 Description: Descripció
-
-
-###############################################
-# Page: docdel.php
-#
-#
-# << MISSING >>
-# Removed:
 
 
 ###############################################
@@ -860,39 +281,9 @@ Description: Descripció
 #
 am: am
 pm: pm
-#
-# << MISSING >>
-# You are not authorized to edit this task:
-#
-# << MISSING >>
-# hours ahead of you:
-#
-# << MISSING >>
-# hours behind you:
-#
-# << MISSING >>
-# hour ahead of you:
-#
-# << MISSING >>
-# hour behind you:
-#
-# << MISSING >>
-# is in a different timezone than you are. Currently:
-#
-# << MISSING >>
-# Time entered here is based on your Timezone:
 Edit Entry: Edita Entrada
 Add Entry: Afegeix una entrada
-#
-# << MISSING >>
-# Details:
 Participants: Participants
-#
-# << MISSING >>
-# Repeat:
-#
-# << MISSING >>
-# Reminders:
 brief-description-help: Aquest camp permet una descripció breu (d'uns 20 caràcters) de l'esdeveniment.  Així és com es mostrarà l'esdeveniment en visualitzar el calendari.
 Brief Description: Descripció breu
 full-description-help: Aquí cal completar els detalls de l'esdeveniment.  Es pot veure aquesta informació quan un usuari visualitza l'esdeveniment.
@@ -906,37 +297,8 @@ Medium: Mitjana
 High: Alta
 category-help: Especifica la categoria de l'esdeveniment.
 Category: Categoria
-#
-# << MISSING >>
-# completed-help:
-# English text: Date task is completed. Only enabled when all participants percentage equals 100%.
-#
-#
-# << MISSING >>
-# Date Completed:
-#
-# << MISSING >>
-# percent-help:
-# English text: Task completion percentage for this user
-#
-#
-# << MISSING >>
-# Percent Complete:
-#
-# << MISSING >>
-# All Percentages:
-#
-# << MISSING >>
-# location-help:
-# English text: Event location 
-#
-#
-# << MISSING >>
-# Location:
+URL: URL
 date-help: Especifica la data de l'esdeveniment.
-#
-# << MISSING >>
-# Start Date:
 Untimed event: Esdeveniment sense hora
 Timed event: Esdeveniment amb hora
 All day event: Esdeveniment de dia complet
@@ -944,24 +306,7 @@ Timezone Offset: Franja horària
 time-help: Especifica l'hora de l'esdeveniment.<br />Seleccioneu "Esdeveniment amb hora" (per a un esdeveniment programat per a una hora determinada del dia), o bé "Esdeveniment sense hora" (per a un esdeveniment sense hora determinada (com ara un festiu), o bé "Esdeveniment dia complet" (per a un esdeveniment que ocupa tot el dia, com ara haver de sortir fora de l'oficina).
 duration-help: Especifica la durada (en hores:minuts) de l'esdeveniment.  <br /><i>Aquest camp es pot deixar en blanc.</i>
 minutes: minuts
-#
-# << MISSING >>
-# end-time-help:
-# English text: Specifies the time the event is expected to end.
-#
-#
-# << MISSING >>
-# Start Time:
-#
-# << MISSING >>
-# Due Date:
-#
-# << MISSING >>
-# Due Time:
 participants-help: Mostra la llista de participants en aquesta entrada.
-#
-# << MISSING >>
-# Availability:
 external-participants-help: Especifica una llista de participants per a l'esdeveniment que no són usuaris de calendari.   S'indicaran un usuari per línia i s'en pot incloure una adreça de correu electrònic.   Si s'especifica una adreça electrònica, l'usuari podrà rebre notificacions i recordatoris
 External Participants: Participants externs
 repeat-type-help: Seleccioneu amb quina assiduïtat caldria repetir l'esdeveniment. <i>Mensualment (per dia)</i> permet repetir un esdeveniment cada primer dilluns de mes, 3r dijous de mes, etc.  <i>Mensualment (per data)</i> permet repetir un esdeveniment el mateix dia de cada mes.
@@ -970,133 +315,14 @@ Weekly: Setmanalment
 Monthly: Mensualment
 by day: per dia
 by date: per data
-#
-# << MISSING >>
-# by position:
 Yearly: Anualment
-#
-# << MISSING >>
-# Manual:
-#
-# << MISSING >>
-# Expert Mode:
 repeat-end-date-help: Especifica la data fins a la qual cal repetir l'esdeveniment.
-#
-# << MISSING >>
-# Ending:
-#
-# << MISSING >>
-# Forever:
 Use end date: Utilitza data final
-#
-# << MISSING >>
-# Number of times:
 repeat-frequency-help: Especifica amb quina assiduïtat cal repetir l'esdeveniment.   El valor per defecte 1 indica que es repetirà cada vegada.   Si s'especifica 2, l'esdeveniment es repetirà cada dues setmanes (si el <i>Tipus de repetició</i> està configurat com a <i>Setmanalment</i>), cada dos mesos (si el <i>Tipus de repetició</i> està configurat com a <i>Mensualment</i>), etc.
 Frequency: Freqüència
-#
-# << MISSING >>
-# Weekdays Only:
-#
-# << MISSING >>
-# Week Start:
-#
-# << MISSING >>
-# repeat-bydayextended-help:
-# English text: Allows date selection based on day of week. 
-#
-#
-# << MISSING >>
-# ByDay:
 All: Totes
-#
-# << MISSING >>
-# repeat-month-help:
-# English text: Specifies which months the event should repeat in.
-#
-#
-# << MISSING >>
-# ByMonth:
-#
-# << MISSING >>
-# repeat-bysetpos-help:
-# English text: Allows date selection based on position withing the month.
-#
-#
-# << MISSING >>
-# BySetPos:
-#
-# << MISSING >>
-# repeat-bymonthdayextended-help:
-# English text: Allows date selection based on date.
-#
-#
-# << MISSING >>
-# ByMonthDay:
-#
-# << MISSING >>
-# repeat-byweekno-help:
-# English text: Allows user to specify a list of weeks to repeat event (1,2...53,-53,-52...-1).
-#
-#
-# << MISSING >>
-# ByWeekNo:
-#
-# << MISSING >>
-# repeat-byyearday-help:
-# English text: Allows user to specify a list of year days to repeat event (1,2...366,-366,-365...-1).
-#
-#
-# << MISSING >>
-# ByYearDay:
-#
-# << MISSING >>
-# repeat-exceptions-help:
-# English text: Additional days that this event should or should not occur on.
-#
-#
-# << MISSING >>
-# Exclusions:
-#
-# << MISSING >>
-# Inclusions:
-#
-# << MISSING >>
-# Add Exception:
-#
-# << MISSING >>
-# Add Inclusion:
-#
-# << MISSING >>
-# Delete Selected:
 Send Reminder: Envia recordatori
-#
-# << MISSING >>
-# When:
-#
-# << MISSING >>
-# Use Date/Time:
-#
-# << MISSING >>
-# Use Offset:
 days: dies
-#
-# << MISSING >>
-# Before:
-#
-# << MISSING >>
-# After:
-#
-# << MISSING >>
-# Start:
-#
-# << MISSING >>
-# End/Due:
-#
-# << MISSING >>
-# Times:
-#
-# << MISSING >>
-# Every:
 Delete entry: Suprimeix l'entrada
 You are not authorized to edit this entry: No tens autorització per editar aquesta entrada
 
@@ -1106,7 +332,7 @@ You are not authorized to edit this entry: No tens autorització per editar aques
 #
 The following conflicts with the suggested time: Hi ha un conflicte amb l'hora suggerida
 A new appointment has been made for you by: T'ha estat assignada una nova cita per
-An appointment has been updated by: Una cita ha estat actualitzada per 
+An appointment has been updated by: Una cita ha estat actualitzada per
 The subject is: L'assumpte és
 Please look on: Sisplau comprova
 to accept or reject this appointment: per acceptar o rebutjar aquesta cita
@@ -1125,9 +351,6 @@ Source: Font
 Color: Color
 Duplicates: Duplicats
 Show layer events that are the same as your own: Mostra els esdeveniments de capa que coincideixen amb els teus
-#
-# << MISSING >>
-# Add to Others:
 Add to My Calendar: Afegeix al meu Calendari
 Delete layer: Suprimeix la capa
 Are you sure you want to delete this layer?: Esteu segur que voleu suprimir aquest capa?
@@ -1144,40 +367,11 @@ You can only create one layer for each user: Només es pot crear una capa per usu
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: No s'ha configurat NONUSER_PREFIX a config.php.
-#
-# << MISSING >>
-# word characters only:
-# English text: can only contain word characters (a-zA-Z_0-9)
-#
 Edit User: Edita usuari
 Add User: Afegir usuari
-Calendar ID: ID de Calendari 
+Calendar ID: ID de Calendari
 First Name: Nom
 Last Name: Cognom
-#
-# << MISSING >>
-# Is public calendar:
-
-
-###############################################
-# Page: edit_remotes.php
-#
-#
-# << MISSING >>
-# Edit Remote Calendar:
-#
-# << MISSING >>
-# Add Remote Calendar:
-URL: URL
-#
-# << MISSING >>
-# Create Layer:
-#
-# << MISSING >>
-# Required to View Remote Calendar:
-#
-# << MISSING >>
-# Reload:
 
 
 ###############################################
@@ -1186,9 +380,6 @@ URL: URL
 Error: Error
 Import Results: Importar resultats
 Events successfully imported: Esdeveniments importats correctament
-#
-# << MISSING >>
-# Create a new layer to view this calendar:
 Errors: Errors
 There was an error parsing the import file or no events were returned: S'ha produït un error en processar el fitxer d'importació o no s'ha recuperat cap esdeveniment
 
@@ -1205,7 +396,7 @@ This week: Aquesta setmana
 Last week: Setmana passada
 Week before last: Setmana abans de la darrera
 Next week and week after: Propera setmana i la següent
-This week and next week: Aquesta setmana i la següent 
+This week and next week: Aquesta setmana i la següent
 Last week and this week: Setmana passada i aquesta
 Last two weeks: Les darreres dues setmanes
 Next month: Mes vinent
@@ -1216,26 +407,8 @@ Next year: Any vinent
 This year: Aquest any
 Last year: Any passat
 Year before last: Any abans de l'últim
-#
-# << MISSING >>
-# Next 14 days:
-#
-# << MISSING >>
-# Next 30 days:
-#
-# << MISSING >>
-# Next 60 days:
-#
-# << MISSING >>
-# Next 90 days:
-#
-# << MISSING >>
-# Next 180 days:
-#
-# << MISSING >>
-# Next 365 days:
 Invalid report id: Id d'informe invàlida
-Unnamed Report: Informe sense nom 
+Unnamed Report: Informe sense nom
 Add Report: Afegir Informe
 Edit Report: Edita Informe
 Report name: Informe Program class as used by the window manager
@@ -1248,7 +421,7 @@ Include empty dates: Inclou dates buides
 Template variables: Variables de plantilla
 Page template: Plantilla de pàgina
 Day template: Plantilla de dia
-Event template: Plantilla d'esdeveniment 
+Event template: Plantilla d'esdeveniment
 Are you sure you want to delete this report?: Esteu segur que voleu suprimir aquest informe?
 
 
@@ -1274,9 +447,6 @@ E-mail address: Adreça electrònica
 Password: Contrasenya
 again: una altra vegada
 Disabled for demo: Inhabilitat per a la demo
-#
-# << MISSING >>
-# Are you sure you want to delete this user?:
 Change Password: Canvia la contrasenya
 New Password: Nova contrasenya
 Set Password: Defineix la contrasenya
@@ -1288,12 +458,6 @@ Set Password: Defineix la contrasenya
 Deleting users not supported: L'eliminació d'usuaris no està suportada
 The passwords were not identical: Les contrasenyes no eren idèntiques
 You have not entered a password: No has introduït cap contrasenya
-#
-# << MISSING >>
-# Invalid characters in login:
-#
-# << MISSING >>
-# Username can not be blank:
 
 
 ###############################################
@@ -1302,9 +466,6 @@ You have not entered a password: No has introduït cap contrasenya
 Export: Exporta
 Export format: Format d'exportació
 Palm Pilot: Palm Pilot
-#
-# << MISSING >>
-# Include all layers:
 Export all dates: Exporta totes les dates
 Start date: Data inicial
 End date: Data final
@@ -1326,7 +487,7 @@ Add New Group: Afegeix grup nou
 ###############################################
 # Page: group_edit.php
 #
-Unnamed Group: Grup sense nom 
+Unnamed Group: Grup sense nom
 Add Group: Afegeix un grup
 Edit Group: Edita Grup
 Group name: Nom de grup
@@ -1352,19 +513,6 @@ auto-refresh-help: Si està activat, les pàgines per a visualització de dia, setm
 Auto-refresh time: Interval d'auto-refrescament
 auto-refresh-time-help: Si l'auto Auto-refrescament està habilitat, aquí s'especifica l'interval entre cada refrescament.
 Nonuser: Calendaris no d'usuari
-#
-# << MISSING >>
-# user-customize-color:
-# English text: Specifies whether users are allowed to modify their own color scheme.
-#
-#
-# << MISSING >>
-# enable-gradient-help:
-# English text: Use gradient colors for cell backgrounds.
-#
-#
-# << MISSING >>
-# Manually entering color values:
 colors-help: Cal especificar tots els colors en format hexadecimal "#RRGGBB" en què "RR" és el valor hexadecimal per al vermell, "GG" el valor per al verd, i "BB" per al blau.
 
 
@@ -1379,9 +527,6 @@ Report Bug: Notifica l'error
 #
 Adding/Editing Calendar Entries: Afegir/Editar entrades de calendari
 Repeat Type: Tipus de repetició
-#
-# << MISSING >>
-# For More Information...:
 Repeat End Date: Data final de repetició
 Repeat Day: Dia de repetició
 repeat-day-help: Especifica quins dies de la setmana cal repetir l'esdeveniment  Aquest camp només s'ha de fer servir quan <i>Tipus de repetició</i> està configurat com a <i>Setmanalment</i>.
@@ -1413,9 +558,6 @@ Help Index: Índex de l'ajuda
 ###############################################
 # Page: help_layers.php
 #
-#
-# << MISSING >>
-# Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.:
 Add/Edit/Delete: Afegeix/Edita/Suprimeix
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: En clicar l'enllaç Edita Capes a la secció d'administració al peu de la pàgina podràs afegir/editar/suprimir capes.
 Specifies the user that you would like to see displayed in your calendar.: Especifica l'usuari que t'agradaria que es mostrés al teu calendari.
@@ -1434,106 +576,18 @@ Default Category: Categoria per defecte
 default-category-help: Especifica la categoria per defecte de cada nou esdeveniment.
 When I am the boss: Quan sóc <i>qui talla el bacallà</i>
 Email me event notification: Notificació per correu electrònic
-#
-# << MISSING >>
-# email-boss-notifications-help:
-# English text: Specifies if bosses receive emails as event notifications.
-#
 I want to approve events: Vull aprovar els esdeveniments
-#
-# << MISSING >>
-# boss-approve-event-help:
-# English text: Specifies whether the boss will be required to approve events added by assistants.
-#
 Subscribe/Publish: Subscriu-te/Publica
 allow-remote-subscriptions-help: Especifica si els usuaris remots es poden subscriure al teu calendari, permetent-los de veure el teu calendari amb una aplicació habilitada per a iCal (com ara l'Ical d'Apple o el Mozilla Calendar).
 remote-subscriptions-url-help: Mostra la URL que haurien de fer servir els usuaris remots per subscriure's al teu calendari.
-#
-# << MISSING >>
-# Allow remote publishing:
-#
-# << MISSING >>
-# allow-remote-publishing-help:
-# English text: Specifies if a remote iCal client can publish events back to WebCalendar
-#
-#
-# << MISSING >>
-# remote-publishing-url-help:
-# English text: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
-#
-#
-# << MISSING >>
-# rss-feed-url-help:
-# English text: The URL to access the RSS feed
-#
-#
-# << MISSING >>
-# Enable FreeBusy publishing:
-#
-# << MISSING >>
-# freebusy-enabled-help:
-# English text: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
-#
-#
-# << MISSING >>
-# freebusy-url-help:
-# English text: The URL for accessing the user's FreeBusy list
-#
-
-
-###############################################
-# Page: help_uac.php
-#
-#
-# << MISSING >>
-# User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
-# English text: User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
-#
-#
-# << MISSING >>
-# If disabled, this user will not see you in the participants list.:
-#
-# << MISSING >>
-# If disabled, this user will not be able to send you emails.:
-#
-# << MISSING >>
-# If enabled, this user will not be able to view the details of any of your entries.:
-
-
-###############################################
-# Page: icalclient.php
-#
-#
-# << MISSING >>
-# Publishing Disabled (Admin):
-#
-# << MISSING >>
-# Publishing Disabled (User):
-
-
-###############################################
-# Page: icons.php
-#
-#
-# << MISSING >>
-# Click to Select:
-#
-# << MISSING >>
-# Current Icons on Server:
 
 
 ###############################################
 # Page: import.php
 #
 Disabled: Inhabilitat
-#
-# << MISSING >>
-# Import format:
 Exclude private records: Exclou registres privats
 Overwrite Prior Import: Sobreescriu Importació Prèvia
-#
-# << MISSING >>
-# Repeated items are imported separately. Prior imports are not overwritten.:
 
 
 ###############################################
@@ -1551,11 +605,8 @@ Layers are currently: Les capes ara estan
 Enabled: Habilitat
 Disable Layers: Desactiva les capes
 Enable Layers: Activa les capes
-Click here: Fes clic 
+Click here: Fes clic
 to modify the layers settings for the: per modificar la configuració de les capes per a
-#
-# << MISSING >>
-# calendar:
 Add layer: Afegeix capa
 Layer: Capa
 Edit layer: Edita capa
@@ -1569,36 +620,6 @@ Approve/Confirm: Aprova/Confirma
 Approve this entry?: Vols aprovar aquesta entrada?
 Reject: Rebutja
 Reject this entry?: Rebutges aquesta entrada?
-#
-# << MISSING >>
-# Check All:
-#
-# << MISSING >>
-# Uncheck All:
-#
-# << MISSING >>
-# Approve Selected:
-#
-# << MISSING >>
-# Approve Selected entries?:
-#
-# << MISSING >>
-# Reject Selected:
-#
-# << MISSING >>
-# Reject Selected entries?:
-#
-# << MISSING >>
-# Emails Will Not Be Sent:
-#
-# << MISSING >>
-# No unapproved entries for:
-#
-# << MISSING >>
-# Unapproved Entries:
-#
-# << MISSING >>
-# Not authorized:
 
 
 ###############################################
@@ -1615,23 +636,6 @@ cookies-note: <b>Nota:</b>: Aquesta aplicació requereix tenir les galetes habili
 # Page: login.php
 #
 Invalid login: Usuari invàlid
-#
-# << MISSING >>
-# You have been logged out:
-#
-# << MISSING >>
-# Not yet registered? Register here!:
-
-
-###############################################
-# Page: minical.php
-#
-#
-# << MISSING >>
-# No such nonuser calendar:
-#
-# << MISSING >>
-# This Calendar is not Public:
 
 
 ###############################################
@@ -1644,77 +648,7 @@ Add New NonUser Calendar: Afegeix Nou Calendari de No-Usuari
 # Page: pref.php
 #
 Save Preferences: Desa Preferències
-#
-# << MISSING >>
-# Public Access calendar:
-#
-# << MISSING >>
-# Modify Non User Calendar Preferences:
-#
-# << MISSING >>
-# Return to My Preferences:
-#
-# << MISSING >>
-# Custom Scripts:
-#
-# << MISSING >>
-# Timezone Selection:
-#
-# << MISSING >>
-# entry-interval-help:
-# English text: Sets minute interval when editing entry times
-#
-#
-# << MISSING >>
-# Entry interval:
 hour: hora
-#
-# << MISSING >>
-# minute:
-#
-# << MISSING >>
-# theme-reload-help:
-# English text: Due to CSS caching, a page reload may be required
-#
-#
-# << MISSING >>
-# Page may need to be reloaded for new Theme to take effect:
-#
-# << MISSING >>
-# Email format preference:
-#
-# << MISSING >>
-# HTML:
-#
-# << MISSING >>
-# Plain Text:
-#
-# << MISSING >>
-# display_byproxy-help:
-# English text: Display the real creator on view_entry page
-#
-#
-# << MISSING >>
-# Display if created by Assistant:
-#
-# << MISSING >>
-# allow-view-subscriptions-help:
-# English text: Allows restricting remote access to Private or Confidential entries 
-#
-#
-# << MISSING >>
-# Allow remote viewing of:
-#
-# << MISSING >>
-# entries:
-
-
-###############################################
-# Page: publish.php
-#
-#
-# << MISSING >>
-# No user specified:
 
 
 ###############################################
@@ -1724,91 +658,13 @@ Purging events for: Depura els esdeveniments per a
 Finished: Ha finalitzat
 Check box to delete <b>ALL</b> events for a user: Marca la casella per suprimir <b>TOTS</b> els esdeveniments d'un usuari
 Delete all events before: Suprimeix tots els esdeveniments abans de
-#
-# << MISSING >>
-# Preview delete:
 Are you sure you want to delete events for: Esteu segur que voleu suprimir els esdeveniments per a
-#
-# << MISSING >>
-# Records deleted from:
-
-
-###############################################
-# Page: register.php
-#
-#
-# << MISSING >>
-# Email address can not be blank:
-#
-# << MISSING >>
-# Illegal characters in login:
-#
-# << MISSING >>
-# A new WebCalendar account has been set up for you:
-#
-# << MISSING >>
-# Your username is:
-#
-# << MISSING >>
-# Your password is:
-#
-# << MISSING >>
-# Please visit:
-#
-# << MISSING >>
-# to log in and start using your account:
-#
-# << MISSING >>
-# You may change your password after logging in the first time:
-#
-# << MISSING >>
-# If you received this email in error:
-# English text: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note 
-#
-#
-# << MISSING >>
-# Administrator:
-#
-# << MISSING >>
-# Welcome:
-#
-# << MISSING >>
-# Registration:
-#
-# << MISSING >>
-# Welcome to WebCalendar:
-#
-# << MISSING >>
-# Your email should arrive shortly:
-#
-# << MISSING >>
-# Return to Login screen:
-#
-# << MISSING >>
-# Your account information will be emailed to you:
-#
-# << MISSING >>
-# Submit:
 
 
 ###############################################
 # Page: reject_entry.php
 #
-#
-# << MISSING >>
-# Continue:
-#
-# << MISSING >>
-# (Your comments will be included in an email to the other participants):
 An appointment has been rejected by: Una cita ha estat rebutjatda per
-
-
-###############################################
-# Page: remotes.php
-#
-#
-# << MISSING >>
-# Add New Remote Calendar:
 
 
 ###############################################
@@ -1816,7 +672,7 @@ An appointment has been rejected by: Una cita ha estat rebutjatda per
 #
 cont.: cont.
 This event is confidential: Aquest esdeveniment és confidencial
-Waiting for approval: Pendent d'aprovació 
+Waiting for approval: Pendent d'aprovació
 Deleted: Suprimit
 Rejected: Rebutjat
 Approved: Aprovat
@@ -1855,28 +711,11 @@ View Another User's Calendar: Visualitza el calendari d'un altre usuari
 #
 You have not added any categories: No has afegit cap categoria
 Set Category: Fixa Categoria
-#
-# << MISSING >>
-# Global Categories can not be changed:
-
-
-###############################################
-# Page: upcoming.php
-#
-#
-# << MISSING >>
-# __month__ __dd__:
-#
-# << MISSING >>
-# more:
 
 
 ###############################################
 # Page: users.php
 #
-#
-# << MISSING >>
-# Remote Calendars:
 Add New User: Afegeix usuari nou
 denotes administrative user: vol dir usuari administratiu
 
@@ -1884,12 +723,6 @@ denotes administrative user: vol dir usuari administratiu
 ###############################################
 # Page: usersel.php
 #
-#
-# << MISSING >>
-# No form specified!:
-#
-# << MISSING >>
-# No listid specified!:
 Reset: Reinicialitza
 
 
@@ -1907,23 +740,11 @@ Add View: Afegeix visualització
 Edit View: Edita visualització
 View Name: Nom de visualització
 View Type: Tipus de visualització
-#
-# << MISSING >>
-# Day by Time:
 Week (Users horizontal): Setmana (Usuaris horitzontal)
-#
-# << MISSING >>
-# Week by Time:
 Week (Users vertical): Setmana (Usuaris vertical)
 Week (Timebar): Setmana (Línia del temps)
-#
-# << MISSING >>
-# Month (Timebar):
 Month (side by side): Mes (de costat)
 Month (on same calendar): Mes (del mateix calendari)
-#
-# << MISSING >>
-# Selected:
 
 
 ###############################################
@@ -1933,55 +754,11 @@ You must specify a view name: Cal especificar un nom de visualització
 
 
 ###############################################
-# Page: view_d.php
-#
-#
-# << MISSING >>
-# No users for this view:
-
-
-###############################################
 # Page: view_entry.php
 #
 Assistant mode: Mode assistent
 Status: Estat
-#
-# << MISSING >>
-# Accepted:
-#
-# << MISSING >>
-# Needs-Action:
-#
-# << MISSING >>
-# Declined:
-#
-# << MISSING >>
-# Completed:
-#
-# << MISSING >>
-# by:
-#
-# << MISSING >>
-# Percentage Complete:
 External User: Usuari extern
-#
-# << MISSING >>
-# Update Task Percentage:
-#
-# << MISSING >>
-# Update:
-#
-# << MISSING >>
-# Attachments:
-#
-# << MISSING >>
-# comments:
-#
-# << MISSING >>
-# Show:
-#
-# << MISSING >>
-# Hide:
 Approve/Confirm entry: Aprova/Confirma entrada
 Reject entry: Rebutja entrada
 Set category: Fixa categoria
@@ -1991,33 +768,13 @@ Delete repeating event for all dates: Suprimeix l'esdeveniment per a totes les d
 This will delete this entry for all users.: Això suprimirà aquesta entrada per a tots els usuaris.
 Delete entry only for this date: Suprimeix l'entrada només per a aquesta data
 Edit entry: Edita entrada
-#
-# << MISSING >>
-# from calendar of:
-#
-# << MISSING >>
-# Copy entry:
-#
-# << MISSING >>
-# This will delete the entry from your boss\' calendar.:
 This will delete the entry from your calendar.: Suprimeix l'entrada del teu calendari.
-#
-# << MISSING >>
-# from your boss' calendar:
 Do you want to add this entry to your calendar?: Vols afegir aquesta entrada al teu calendari?
 This will add the entry to your calendar.: Afegeix l'entrada al teu calendari.
 Email all participants: Envia un correu electrònic a tots els participants
-Show activity log: Mostra el registre d'activitat 
+Show activity log: Mostra el registre d'activitat
 Hide activity log: Oculta el registre d'activitat
 Export this entry to: Exporta aquesta entrada a
-
-
-###############################################
-# Page: view_r.php
-#
-#
-# << MISSING >>
-# Double-click on empty cell to add new entry:
 
 
 ###############################################
@@ -2029,51 +786,13 @@ New Entry: Nova Entrada
 ###############################################
 # Page: includes/access.php
 #
-#
-# << MISSING >>
-# Edit Event:
-#
-# << MISSING >>
-# Day View:
-#
-# << MISSING >>
-# Week View:
-#
-# << MISSING >>
-# Month View:
-#
-# << MISSING >>
-# Year View:
 Manage Views: Gestiona Visualitzacions
-#
-# << MISSING >>
-# Category Management:
-#
-# << MISSING >>
-# User Management:
 Another User's Calendar: Calendari d'un altre usuari
-#
-# << MISSING >>
-# Common Trailer:
-
-
-###############################################
-# Page: includes/config.php
-#
-#
-# << MISSING >>
-# Fatal Error:
-#
-# << MISSING >>
-# Troubleshooting Help:
 
 
 ###############################################
 # Page: includes/date_formats.php
 #
-#
-# << MISSING >>
-# LANGUAGE DEFINED:
 December: Desembre
 Dec: Des
 
@@ -2081,57 +800,8 @@ Dec: Des
 ###############################################
 # Page: includes/functions.php
 #
-#
-# << MISSING >>
-# Unauthorized:
-#
-# << MISSING >>
-# __month__ __dd__, __yyyy__:
-#
-# << MISSING >>
-# __month__ __yyyy__:
-#
-# << MISSING >>
-# __mm__/__dd__/__yyyy__:
-#
-# << MISSING >>
-# This event is private:
-#
-# << MISSING >>
-# Conf.:
-#
-# << MISSING >>
-# WK:
-#
-# << MISSING >>
-# Task Name:
-#
-# << MISSING >>
-# Task Due Date:
-#
-# << MISSING >>
-# TASKS:
-#
-# << MISSING >>
-# Task_Title:
-# English text: Title
-#
-#
-# << MISSING >>
-# Due:
-#
-# << MISSING >>
-# View this task:
-#
-# << MISSING >>
-# View this event:
+WK: st
 exceeds limit of XXX events per day: excedeix el límit de XXX esdeveniments per dia.
-#
-# << MISSING >>
-# on:
-#
-# << MISSING >>
-# You have XXX unapproved entries:
 January: Gener
 February: Febrer
 March: Març
@@ -2161,251 +831,34 @@ Friday: Divendres
 Saturday: Dissabte
 Sun: Dg
 Mon: Dl
-Tue: Dm  
+Tue: Dm
 Wed: Dx
 Thu: Dj
 Fri: Dv
 Sat: Ds
-#
-# << MISSING >>
-# Schedule an appointment for:
-#
-# << MISSING >>
-# All Attendees:
-#
-# << MISSING >>
-# Busy:
-#
-# << MISSING >>
-# Tentative:
-#
-# << MISSING >>
-# Changes successfully saved:
 The following error occurred: S'ha produït un error
 You are not authorized: No tens autorització
-#
-# << MISSING >>
-# day:
-#
-# << MISSING >>
-# before:
-#
-# << MISSING >>
-# after:
-#
-# << MISSING >>
-# start:
-#
-# << MISSING >>
-# end:
 Error approving event: Error en aprovar esdeveniment
-#
-# << MISSING >>
-# Error deleting event:
-#
-# << MISSING >>
-# Error rejecting event:
 Generate printer-friendly version: Generar versió per a impressora
-Printer Friendly: Versió per a impressora 
+Printer Friendly: Versió per a impressora
 Event created: Esdeveniment creat
 Event approved: Esdeveniment aprovat
 Event rejected: Esdeveniment rebutjat
 Event updated: Esdeveniment actualitzat
 Event deleted: Esdeveniment eliminat
-#
-# << MISSING >>
-# Task created:
-#
-# << MISSING >>
-# Task approved:
-#
-# << MISSING >>
-# Task rejected:
-#
-# << MISSING >>
-# Task updated:
-#
-# << MISSING >>
-# Task deleted:
-#
-# << MISSING >>
-# Journal created:
-#
-# << MISSING >>
-# Journal approved:
-#
-# << MISSING >>
-# Journal rejected:
-#
-# << MISSING >>
-# Journal updated:
-#
-# << MISSING >>
-# Journal deleted:
 Notification sent: Notificació enviada
 Reminder sent: Recordatori enviat
-#
-# << MISSING >>
-# New user (self registration):
-#
-# << MISSING >>
-# New user via email (self registration):
-#
-# << MISSING >>
-# Attachment:
-#
-# << MISSING >>
-# Delete User:
-
-
-###############################################
-# Page: includes/help_list.php
-#
-#
-# << MISSING >>
-# Index:
-#
-# << MISSING >>
-# Page:
 
 
 ###############################################
 # Page: includes/trailer.php
 #
-#
-# << MISSING >>
-# Home:
 My Calendar: El meu Calendari
 Back to My Calendar: Endarrere al meu Calendari
 Add New Entry: Afegeix entrada nova
-#
-# << MISSING >>
-# Add New Task:
 Go to: Vés a
 Logout: Sortida
 Manage calendar of: Gestiona calendari de
-
-
-###############################################
-# Page: includes/translate.php
-#
-#
-# << MISSING >>
-# Browser Language Not Found:
-#
-# << MISSING >>
-# not supported:
-#
-# << MISSING >>
-# Browser-defined:
-#
-# << MISSING >>
-# English:
-#
-# << MISSING >>
-# English-US:
-#
-# << MISSING >>
-# Basque:
-#
-# << MISSING >>
-# Bulgarian:
-#
-# << MISSING >>
-# Catalan:
-#
-# << MISSING >>
-# Chinese (Traditional/Big5):
-#
-# << MISSING >>
-# Chinese (Simplified/GB2312):
-#
-# << MISSING >>
-# Czech:
-#
-# << MISSING >>
-# Danish:
-#
-# << MISSING >>
-# Dutch:
-#
-# << MISSING >>
-# Estonian:
-#
-# << MISSING >>
-# Finnish:
-#
-# << MISSING >>
-# French:
-#
-# << MISSING >>
-# French (UTF8):
-#
-# << MISSING >>
-# Galician:
-#
-# << MISSING >>
-# German:
-#
-# << MISSING >>
-# Greek:
-#
-# << MISSING >>
-# Holo (Taiwanese):
-#
-# << MISSING >>
-# Hungarian:
-#
-# << MISSING >>
-# Icelandic:
-#
-# << MISSING >>
-# Italian:
-#
-# << MISSING >>
-# Japanese:
-#
-# << MISSING >>
-# Korean:
-#
-# << MISSING >>
-# Norwegian:
-#
-# << MISSING >>
-# Polish:
-#
-# << MISSING >>
-# Portuguese:
-#
-# << MISSING >>
-# Portuguese/Brazil:
-#
-# << MISSING >>
-# Romanian:
-#
-# << MISSING >>
-# Russian:
-#
-# << MISSING >>
-# Spanish:
-#
-# << MISSING >>
-# Swedish:
-#
-# << MISSING >>
-# Turkish:
-#
-# << MISSING >>
-# Welsh:
-#
-# << MISSING >>
-# task:
-#
-# << MISSING >>
-# event:
-#
-# << MISSING >>
-# journal:
 
 
 ###############################################
@@ -2415,71 +868,9 @@ Invalid user login: Identificació d'usuari invàlida
 
 
 ###############################################
-# Page: includes/user-nis.php
-#
-#
-# << MISSING >>
-# incorrect password:
-#
-# << MISSING >>
-# no such user:
-
-
-###############################################
 # Page: includes/xcal.php
 #
-#
-# << MISSING >>
-# MO:
-#
-# << MISSING >>
-# TU:
-#
-# << MISSING >>
-# WE:
-#
-# << MISSING >>
-# TH:
-#
-# << MISSING >>
-# FR:
-#
-# << MISSING >>
-# SA:
-#
-# << MISSING >>
-# SU:
-#
-# << MISSING >>
-# Interval:
-#
-# << MISSING >>
-# Months:
-#
-# << MISSING >>
-# Month Days:
-#
-# << MISSING >>
-# Days:
-#
-# << MISSING >>
-# Weeks:
-#
-# << MISSING >>
-# Position:
-#
-# << MISSING >>
-# Until:
-#
-# << MISSING >>
-# Count:
-#
-# << MISSING >>
-# Inclusion Dates:
-#
-# << MISSING >>
-# Exclusion Dates:
-Unnamed Event: Esdeveniment sense nom 
+Unnamed Event: Esdeveniment sense nom
 Event Imported: Esdeveniment importat
 
 
@@ -2488,9 +879,6 @@ Event Imported: Esdeveniment importat
 #
 Server URL is required: Cal URL de Servidor
 Server URL must end with '/': La URL del Servidor ha d'acabar amb '/'
-#
-# << MISSING >>
-# Invalid work hours:
 Invalid color for document background: Color invàlid per al fons del document
 Invalid color for document title: Color invàlid per al títol del document
 Invalid color for table cell background: Color invàlid per al fons de cel·les de taula
@@ -2504,27 +892,10 @@ Color format should be '#RRGGBB': El format del color hauria de ser '#RRGGBB'
 
 
 ###############################################
-# Page: includes/js/availability.php
-#
-#
-# << MISSING >>
-# Change the date and time of this entry?:
-
-
-###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: No has introduït cap Descripció Breu
 The time you have entered begins before your preferred work hours.  Is this correct?: L'hora introduïda comença abans de les teves hores laborals indicades a les preferències   És correcte?
-#
-# << MISSING >>
-# Invalid Event Date:
-#
-# << MISSING >>
-# Please add a participant:
-#
-# << MISSING >>
-# Invalid Date:
 You have not entered a valid time of day: No has introduït cap hora vàlida
 
 
@@ -2535,553 +906,19 @@ Invalid color: Color invàlid
 
 
 ###############################################
-# Page: includes/js/edit_nonuser.php
-#
-#
-# << MISSING >>
-# Calendar ID can not be blank:
-#
-# << MISSING >>
-# Both first and last names can not be blank:
-
-
-###############################################
-# Page: includes/js/edit_remotes.php
-#
-#
-# << MISSING >>
-# URL can not be blank:
-
-
-###############################################
-# Page: includes/js/export_import.php
-#
-#
-# << MISSING >>
-# File type does not match Import Format:
-
-
-###############################################
-# Page: includes/classes/Doc.class
-#
-#
-# << MISSING >>
-# bytes:
-#
-# << MISSING >>
-# kb:
-#
-# << MISSING >>
-# Mb:
-
-
-###############################################
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Notificació
-#
-# << MISSING >>
-# provide_address:
-# English text: You must provide at least one recipient email address
-#
-#
-# << MISSING >>
-# mailer_not_supported:
-# English text: mailer is not supported
-#
-#
-# << MISSING >>
-# execute:
-# English text: Could not execute:
-#
-#
-# << MISSING >>
-# instantiate:
-# English text: Could not instantiate mail function
-#
-#
-# << MISSING >>
-# authenticate:
-# English text: SMTP Error: Could not authenticate
-#
-#
-# << MISSING >>
-# from_failed:
-# English text: The following From address failed:
-#
-#
-# << MISSING >>
-# recipients_failed:
-# English text: SMTP Error: The following recipients failed:
-#
-#
-# << MISSING >>
-# data_not_accepted:
-# English text: SMTP Error: Data not accepted
-#
-#
-# << MISSING >>
-# connect_host:
-# English text: SMTP Error: Could not connect to SMTP host:
-#
-#
-# << MISSING >>
-# file_access:
-# English text: Could not access file:
-#
-#
-# << MISSING >>
-# file_open:
-# English text: File Error Could not open file:
-#
-#
-# << MISSING >>
-# encoding:
-# English text: Unknown encoding:
-#
 
 
 ###############################################
 # Page: includes/menu/index.php
 #
-#
-# << MISSING >>
-# This Week:
-#
-# << MISSING >>
-# This Month:
-#
-# << MISSING >>
-# This Year:
-#
-# << MISSING >>
-# Exit:
-#
-# << MISSING >>
-# Add New Event:
-#
-# << MISSING >>
-# Delete Entries:
-#
-# << MISSING >>
-# Another User\'s Calendar:
-#
-# << MISSING >>
-# My Views:
-#
-# << MISSING >>
-# Manage Calendar of:
-#
-# << MISSING >>
-# My Reports:
-#
-# << MISSING >>
-# My Profile:
-#
-# << MISSING >>
-# Public Calendar:
 Unapproved Events: Esdeveniments pendents d'aprovar
-#
-# << MISSING >>
-# User Manager:
 
 
 ###############################################
 # Page: tools/send_reminders.php
 #
-#
-# << MISSING >>
-# This is a reminder for the task detailed below.:
 This is a reminder for the event detailed below.: Això és un recordatori per a l'esdeveniment detallat a continuació.
-#
-# << MISSING >>
-# Pecentage Complete:
 Reminder: Recordatori
-
-
-###############################################
-# Page: tools/reload_remotes.php
-#
-#
-# << MISSING >>
-# Include Path:
-#
-# << MISSING >>
-# Deleting events for:
-#
-# << MISSING >>
-# Importing events for:
-#
-# << MISSING >>
-# No data returned from:
-#
-# << MISSING >>
-# for non-user calendar:
-#
-# << MISSING >>
-# No Remote Calendars found:
-#
-# << MISSING >>
-# Remote Calendars not enabled:
-
-
-###############################################
-# Page: install/install_functions.php
-#
-#
-# << MISSING >>
-# Error updating webcal_config:
-#
-# << MISSING >>
-# Error updating webcal_user_pref:
-#
-# << MISSING >>
-# Perl script required:
-# English text: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
-#
-#
-# << MISSING >>
-# Your previous version of WebCalendar requires updating several database tables.:
-
-
-###############################################
-# Page: install/index.php
-#
-#
-# << MISSING >>
-# WebCalendar Installation Wizard:
-#
-# << MISSING >>
-# Step:
-#
-# << MISSING >>
-# Single-User:
-#
-# << MISSING >>
-# Failure Reason:
-#
-# << MISSING >>
-# You must manually create database:
-#
-# << MISSING >>
-# Database Cache Directory:
-#
-# << MISSING >>
-# Test Settings:
-#
-# << MISSING >>
-# Create New:
-#
-# << MISSING >>
-# Database Name:
-#
-# << MISSING >>
-# Back:
-#
-# << MISSING >>
-# Timezone Conversion Successful:
-#
-# << MISSING >>
-# Error Unable to write to file:
-#
-# << MISSING >>
-# Successful Login:
-#
-# << MISSING >>
-# Invalid Login:
-#
-# << MISSING >>
-# required only if Safe Mode is On:
-#
-# << MISSING >>
-# required only if Remote Calendars are used:
-#
-# << MISSING >>
-# needed for Gradient Image Backgrounds:
-#
-# << MISSING >>
-# Passwords do not match:
-#
-# << MISSING >>
-# Unable to write password to settings.php file:
-#
-# << MISSING >>
-# Password has been set:
-#
-# << MISSING >>
-# Connection Successful:
-#
-# << MISSING >>
-# Please go to next page to continue installation:
-#
-# << MISSING >>
-# Correct your entries or click the <b>Create New</b> button to continue installation:
-#
-# << MISSING >>
-# Correct your entries and try again:
-#
-# << MISSING >>
-# does not exist:
-#
-# << MISSING >>
-# is not writable:
-#
-# << MISSING >>
-# Error Converting Timezone:
-#
-# << MISSING >>
-# Please change the file permissions of this file:
-#
-# << MISSING >>
-# Please change includes dir premission:
-# English text: Please change the file permissions of your includes directory to allow writing by other users
-#
-#
-# << MISSING >>
-# Your settings have been saved:
-#
-# << MISSING >>
-# Error you must specify a\\nSingle-User Login:
-#
-# << MISSING >>
-# Server URL must end with:
-#
-# << MISSING >>
-# Full Path (no backslashes):
-#
-# << MISSING >>
-# The password contains illegal characters.:
-#
-# << MISSING >>
-# This installation wizard will guide you...:
-# English text: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
-#
-#
-# << MISSING >>
-# PHP Version Check:
-#
-# << MISSING >>
-# Check to see if PHP 4.1.0 or greater is installed:
-#
-# << MISSING >>
-# PHP version:
-#
-# << MISSING >>
-# PHP Settings:
-#
-# << MISSING >>
-# Detailed PHP Info:
-#
-# << MISSING >>
-# Session Check:
-#
-# << MISSING >>
-# To test the proper operation of sessions, reload this page:
-#
-# << MISSING >>
-# You should see the session counter increment each time:
-#
-# << MISSING >>
-# SESSION COUNTER:
-#
-# << MISSING >>
-# Settings.php Status:
-#
-# << MISSING >>
-# The file permissions of <b>settings.php</b> are set...:
-# English text: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
-#
-#
-# << MISSING >>
-# The file permissions of the <b>includes</b> directory are set...:
-# English text: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
-#
-#
-# << MISSING >>
-# Your <b>settings.php</b> file appears to be valid:
-#
-# << MISSING >>
-# Configuration Wizard Password:
-#
-# << MISSING >>
-# Create Settings File Password:
-#
-# << MISSING >>
-# Password (again):
-#
-# << MISSING >>
-# db setup directions...:
-# English text: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
-#
-#
-# << MISSING >>
-# Database Status:
-#
-# << MISSING >>
-# Supported databases for your PHP installation:
-#
-# << MISSING >>
-# Your current database settings are able to access the database:
-#
-# << MISSING >>
-# Please Test Settings:
-#
-# << MISSING >>
-# Your current database settings are <b>not</b> able to access the database or have not yet been tested:
-#
-# << MISSING >>
-# Database Settings:
-#
-# << MISSING >>
-# Database Type:
-#
-# << MISSING >>
-# Server:
-#
-# << MISSING >>
-# Connection Persistence:
-#
-# << MISSING >>
-# All your database tables appear to be up to date. You may proceed to the:
-#
-# << MISSING >>
-# next page and complete your WebCalendar setup:
-#
-# << MISSING >>
-# This appears to be a new installation. If this is not correct, please:
-#
-# << MISSING >>
-# go back to the previous page and correct your settings:
-#
-# << MISSING >>
-# The database requires some data input:
-#
-# << MISSING >>
-# Click <b>Update Database</b> to complete the upgrade:
-#
-# << MISSING >>
-# This appears to be an upgrade from version:
-#
-# << MISSING >>
-# In this section we will perform the required database changes to bring your database up to the required level:
-#
-# << MISSING >>
-# If you are using a fully supported database, this step will be performed automatically for you:
-#
-# << MISSING >>
-# If not, the required SQL can be displayed and you should be able:
-#
-# << MISSING >>
-# to cut &amp; paste it into your database server query window:
-#
-# << MISSING >>
-# No database actions are required:
-#
-# << MISSING >>
-# The following database actions are required:
-#
-# << MISSING >>
-# ODBC Underlying Database:
-#
-# << MISSING >>
-# Automatic installation not supported:
-# English text: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the sql supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
-#
-#
-# << MISSING >>
-# This may take several minutes to complete:
-#
-# << MISSING >>
-# Install Database:
-#
-# << MISSING >>
-# Update Database:
-#
-# << MISSING >>
-# Display Required SQL:
-#
-# << MISSING >>
-# Return to previous page after processing sql:
-# English text: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
-#
-#
-# << MISSING >>
-# This is the final step in setting up your WebCalendar Installation:
-#
-# << MISSING >>
-# Timezone Conversion:
-#
-# << MISSING >>
-# It appears that you have:
-#
-# << MISSING >>
-# NOT:
-#
-# << MISSING >>
-# converted your existing WebCalendar event data to GMT:
-#
-# << MISSING >>
-# If you have, you may ignore this notice and not proceed with the conversion:
-#
-# << MISSING >>
-# If this is a new installation, you may also ignore this notice.:
-#
-# << MISSING >>
-# Convert Data to GMT:
-#
-# << MISSING >>
-# Application Settings:
-#
-# << MISSING >>
-# HTTP-based authentication was not detected:
-#
-# << MISSING >>
-# You will need to reconfigure your web server if you wish to:
-#
-# << MISSING >>
-# select 'Web Server' from the 'User Authentication' choices below:
-#
-# << MISSING >>
-# HTTP-based authentication was detected:
-#
-# << MISSING >>
-# User authentication is being handled by your web server:
-#
-# << MISSING >>
-# You should select 'Web Server' from the list of 'User Authentication' choices below:
-#
-# << MISSING >>
-# Create Default Admin Account:
-#
-# << MISSING >>
-# Admin Account Not Found:
-#
-# << MISSING >>
-# User Authentication:
-#
-# << MISSING >>
-# Web-based via WebCalendar (default):
-#
-# << MISSING >>
-# Web Server:
-#
-# << MISSING >>
-# None (Single-User):
-#
-# << MISSING >>
-# Read-Only:
-#
-# << MISSING >>
-# Environment:
-#
-# << MISSING >>
-# Production:
-#
-# << MISSING >>
-# Development:
-#
-# << MISSING >>
-# Save Settings:
-#
-# << MISSING >>
-# Launch WebCalendar:

@@ -1,8 +1,11 @@
-# Translations by Oleg Marchuk, <kingoleg@mail.ru>, 6 April 2005 (approximately),
+# See translations/English-US.txt for instructions.
+#
+# Translations by Oleg Marchuk, <kingoleg@mail.ru>, April 2005
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# Translation last updated on 06-09-2006
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -43,13 +46,6 @@ Dec: Дек
 ###############################################
 # Page: includes/functions.php
 #
-Sun: Вск
-Mon: Пнд
-Tue: Втр
-Wed: Срд
-Thu: Чтв
-Fri: Птн
-Sat: Сбт
 WK: нед
 January: Январь
 February: Февраль
@@ -78,3 +74,10 @@ Wednesday: Среда
 Thursday: Четверг
 Friday: Пятница
 Saturday: Суббота
+Sun: Вск
+Mon: Пнд
+Tue: Втр
+Wed: Срд
+Thu: Чтв
+Fri: Птн
+Sat: Сбт

@@ -1,8 +1,11 @@
+# See translations/English-US.txt for instructions.
+#
 # Translated by: Martynas Majeris, <martynas@solmetra.lt>, March 2005,
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# Translation last updated on 06-09-2006
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -49,13 +52,6 @@ Dec: Gru
 ###############################################
 # Page: includes/functions.php
 #
-Sun: Sek
-Mon: Pir
-Tue: Ant
-Wed: Tre
-Thu: Ket
-Fri: Pen
-Sat: Ðeð
 WK: sav
 January: Sausis
 February: Vasaris
@@ -84,3 +80,10 @@ Wednesday: Treèiadienis
 Thursday: Ketvirtadienis
 Friday: Pentadienis
 Saturday: Ðeðtadienis
+Sun: Sek
+Mon: Pir
+Tue: Ant
+Wed: Tre
+Thu: Ket
+Fri: Pen
+Sat: Ðeð

@@ -1,8 +1,11 @@
+# See translations/English-US.txt for instructions.
+#
 # Translations by Karim Ratib, <Karim.Ratib@open-craft.com>, February 2005,
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# Translation last updated on 06-09-2006
+# $Id$
+# Translation last updated on 10-08-2006
 
 
 ###############################################
@@ -43,13 +46,6 @@ Dec: ديسمبر
 ###############################################
 # Page: includes/functions.php
 #
-Sun: أحد
-Mon: إثنين
-Tue: ثلاثاء
-Wed: أربعاء
-Thu: خميس
-Fri: جمعة
-Sat: سبت
 WK: أسبوع
 January: يناير
 February: فبراير
@@ -78,3 +74,10 @@ Wednesday: الأربعاء
 Thursday: الخميس
 Friday: الجمعة
 Saturday: السبت
+Sun: أحد
+Mon: إثنين
+Tue: ثلاثاء
+Wed: أربعاء
+Thu: خميس
+Fri: جمعة
+Sat: سبت
