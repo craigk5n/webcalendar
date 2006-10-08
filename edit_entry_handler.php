@@ -230,6 +230,10 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
     sort ($bydayAr);
     $byday = implode (',', $bydayAr );
   }
+  //strip off leading comma if present
+  if ( substr ( $byday, 0, 1 ) == "," )
+    $byday = substr ( $byday, 1 );
+
   //This allows users to select on weekdays if daily
   if ( $rpt_type == 'daily' && ! empty ( $weekdays_only ) ) {
    $byday = 'MO,TU,WE,TH,FR';

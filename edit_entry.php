@@ -1051,9 +1051,12 @@ if ( $useTabs ) { ?>
   etooltip( 'repeat-bydayextended-help' )?>"><td class="tooltip">
  <label><?php echo translate( 'ByDay' ) ?>:</label></td>
     <td colspan="2" style="padding-left:0px">
-  <input type="hidden" name="bydayList" value="<?php echo $bydayStr ?>" />
-  <input type="hidden" name="bymonthdayList" value="<?php echo $bymonthdayStr ?>" />
-  <input type="hidden" name="bysetposList" value="<?php echo $bysetposStr ?>" />
+  <input type="text" name="bydayList" value="<?php 
+    echo ( !empty ( $bydayStr )? $bydayStr : '' ) ?>" />
+  <input type="hidden" name="bymonthdayList" value="<?php 
+    echo ( !empty ( $bymonthdayStr )? $bymonthdayStr : '' ) ?>" />
+  <input type="hidden" name="bysetposList" value="<?php 
+   echo ( !empty ( $bysetposStr )? $bysetposStr : '' ) ?>" />
  <table class="byxxx" cellpadding="2" cellspacing="0" border="1"><tr><td></td>
  <?php
   //display byday extended selection
