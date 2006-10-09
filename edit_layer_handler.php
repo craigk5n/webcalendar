@@ -14,10 +14,9 @@ if ( empty ( $dups ) )
 $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
-  $layer_user = '__public__';
+  save_layer ( '__public__', $layeruser, $layercolor, $dups, $id );
 } else if ( empty ( $cal_login ) ){
-  $layer_user = $login;
-  save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id );
+  save_layer ( $login, $layeruser, $layercolor, $dups, $id );
 } else 
 //see if we are processing multiple layer_users as admin
 if ( $is_admin && ! empty ( $cal_login ) ) {
