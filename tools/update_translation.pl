@@ -151,6 +151,7 @@ if ( -f $infile ) {
     }
   }
 }
+$trans{'direction'} = 'ltr' if ( !defined( $trans{'direction'} ) );
 if ( $plugin ne "" ) {
   print "Reading current WebCalendar translations from $b_infile\n"
     if ($verbose);
@@ -225,7 +226,7 @@ if ( $plugin eq "" ) {
   push( @files, "tools/send_reminders.php" );
   push( @files, "tools/reload_remotes.php" );
 #
-# Do not add any files below this point. We want to be able to 
+# Do not add any files below this point. We want to be able to
 # ignore these translations when not performing an installation
 # Please see includes/translate.php for details
 #
