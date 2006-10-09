@@ -132,6 +132,7 @@ textarea {
   overflow: auto;
 }
 table { 
+  border-collapse: collapse; 
   border-spacing: 0px;
   border-width:0px; 
 }
