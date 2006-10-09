@@ -108,7 +108,7 @@ if ( $single_user == 'N' ) {
 </td></tr>
 <?php
 // If admin and adding a new layer, add ability to select other users
-if ( $is_admin && empty ( $layers[$id]['cal_layeruser'] ) )  {
+if ( $is_admin && empty ( $layers[$id]['cal_layeruser'] ) && empty ( $public ) )  {
 $addStr = translate ( 'Add to Others' );
 $addmyStr = translate ( 'Add to My Calendar' );
 echo <<<EOT
