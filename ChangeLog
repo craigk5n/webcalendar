@@ -1,4 +1,6 @@
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1573582 ] grids at preview-colours will not be displayed
+ - Fixed bug [ 1573679 ] 'repeating month per day' will not proper translated
  - Fixed bug [ 1567363 ] ICal Import and Publish Does not properly use mozilla timezone
  - Fixed bug [ 1554326 ] All events not imported using ical (when conflicting)
  - Fixed bug [ 1572678 ] only ONE Layer for Public Access possible
