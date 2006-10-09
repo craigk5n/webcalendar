@@ -1,45 +1,41 @@
 $Id$
 
-Things to do as part of WebCalendar 1.1
+Things to do as part of the WebCalendar 1.1 development cycle
 
 Com
 ple     Description
 te?
 --- -------------------------------------
 
-[ ] Either (A) don't use any global variables or (B) rename all the
-    global variables with a "webcalendar_" prefix.
-    (This includes $login, $user and other variables.)
-[X] Allow forms in custom header (right now we reference our forms by
-    number as in document.forms[0], which will not work if the user
-    has a form in the custom header)
-[X] User self-registration with optional email and/or admin validation
 [ ] Better handling of large numbers of users (1000+).
     We have one user who claims the JS chokes the browser with 1000+
     users when you press the "Select..." button
-[X] Web-based MySQL database install/upgrade.
-    I still don't think this is possible with non-mysql databases,
-    but I could be wrong...  This would add on to the existing
-    db config web page.
-[X] Add UI for adding category icons
+[ ] Added cal_fullname (or cal_display_name) column to webcal_user
+    and webcal_nonuser_cals so nonuser cals do not need to specify
+    first and last name (since it does not usually make sense).
 [ ] Add support for category colors
 [ ] Setup wizard (web-based) that would guide the admin through setting
     up what is now in System Settings and explain why they would want
     to use any particular option.
     It could start with primary use (Home Single User, Small Biz,
     Large Enterprise, Events Calendar, etc...)
-[X] Improve the popup code.
-    (I do like the Knoppix code and it is also GPL, so that would be
-    a good place to start)
 [ ] Add email notification for submission of new public events
     (ideally, multiple email recipients will be possible)
-[ ] Better user sorting.  Admin could then select sort priority
-    (login or lastname).
-[ ] Added cal_fullname (or cal_display_name) column to webcal_user
-    and webcal_nonuser_cals so nonuser cals do not need to specify
-    first and last name (since it does not usually make sense).
-[X] Theme or color scheme selection.
-    We would pre-populate some good color schemes.
+[ ] Allowing nonuser public calendar to have anonymous users submit
+    events like the public calendar does.  Allow for a a list of users
+    to receive email notifications... perhaps all users who have
+    approve permissions on the nonuser calendar.
+[ ] Add all features of public calendar to nonuser public calendarr.
+    Remove the public calendar and transition users to a public
+    nonuser calendar as part of the upgrade process.
+[ ] Always have "User Access Control" enabled.  We might need to work
+    on help docs or the UI so newbiews can understand this.
+[ ] Update upcoming.php to support linking to an event on a nonuser
+    public calendar.  URLs need to go through nulogin.php first and
+    use return_path to specify the event URL.
+[ ] Either (A) don't use any global variables or (B) rename all the
+    global variables with a "webcalendar_" prefix.
+    (This includes $login, $user and other variables.)
 
 Here are some other ideas for the next or perhaps later releases:
 [ ] Switch all the html over to a template system.  Smarty seems to be
@@ -49,25 +45,14 @@ Here are some other ideas for the next or perhaps later releases:
   + send a test mail message
   + help debug login problems
   + help debug send reminder problem
-[X] "Real" ACL with new security/access API.
-    Each page would just call a function and pass in the current user
-    and the request, and the API would either grant or deny access.
 [ ] Ability to support a reservation system (for either a single resource
     or multiple resources) as the primary use.  Most likely, this would
     involve reserving an entire day rather than a time period.
-[X] Add a mini-cal iframe using the new mini-cal code
-    (but it should include event popups)
 [ ] Java-based tool (web start) for monitoring and approving new
     public events (would run in background until new event is submitted,
     then popup for accept/reject)
 [ ] Admin tool for importing a large number of users (CSV, tab-delimeted, etc.)
-[X] Support for remote calendar subscriptions (ical) for each user.
-    Would need to add a new cron job to periodically update/re-import
-    the remote ics file.
-[X] Add iCal client publish so Mozilla Calendar (or Apple iCal) can
-    create events and publish back to WebCalendar.
-    (This has a very high cool factor.)
-[X] Allow custom header/trailer to be evaluated as PHP or to be an include
+    (Someone has contributed a patch for this.)
 [ ] Use SyncML to sync WebCalendar with SyncML-supported devices (PocketPC)
 [ ] Create Google Desktop plug-in that will allow WebCalendar events to
     be indexed so that they show up in Google Desktop search results.
