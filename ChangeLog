@@ -1,4 +1,5 @@
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1573929 ] view users vertically - vertical jump of Monday´s event
  - Begin support of new languages: Afrikaans, Albanian, Arabic, Croatian,
    Hebrew, Lithuanian, Serbian, Slovak, Slovenian
  - Fixed bug [ 1573582 ] grids at preview-colours will not be displayed
