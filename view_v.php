@@ -108,13 +108,11 @@ if ( ! empty ( $error ) ) {
 $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
-  /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], '', $wkstart );
-  $re_save[$i] = $repeated_events;
+  /* Pre-Load the repeated events for quicker access */
+  $re_save[$i] = read_repeated_events ( $viewusers[$i], '', $wkstart );
   /* Pre-load the non-repeating events for quicker access 
      subtracting ONE_WEEK to allow cross-dat events to display*/
-  $events = read_events ( $viewusers[$i], $wkstart - ONE_WEEK, $wkend );
-  $e_save[$i] = $events;
+  $e_save[$i] = read_events ( $viewusers[$i], $wkstart - ONE_WEEK, $wkend );
 }
 
 for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
@@ -143,6 +141,8 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   }
   echo "</tr>\n";
   for ( $i = 0; $i < $viewusercnt; $i++ ) {
+    $events = $e_save[$i];
+    $repeated_events = $re_save[$i];
     echo "\n<tr>\n";
     $user = $viewusers[$i];
     user_load_variables ( $user, 'temp' );
@@ -163,8 +163,6 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
         $class = '';
       }
       echo "<td $class style=\"width:$tdw%;\">";
-      $events = $e_save[$i];
-      $repeated_events = $re_save[$i];
       if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' ) {
         echo html_for_add_icon ( date ( 'Ymd', $date ), '', '', $user );
       }
