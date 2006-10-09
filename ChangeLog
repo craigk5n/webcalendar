@@ -1,4 +1,8 @@
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1567973 ] UAC settings public access / no edit = no entries?
+ - Fixed bug [ 1567901 ] User has no rights to see entry by public
+ - Fixed bug [ 1573642 ] detailed view for public access cannot be activated
+ - Fixed bug [ 1572704 ] no event-details for PublicAccess if cal included via layers
  - Fixed bug [ 1573929 ] view users vertically - vertical jump of Monday´s event
  - Begin support of new languages: Afrikaans, Albanian, Arabic, Croatian,
    Hebrew, Lithuanian, Serbian, Slovak, Slovenian

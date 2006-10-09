@@ -168,11 +168,10 @@ if ( empty ( $error ) ) {
     $euser =  ( $login != $user ? $user : $login );
   }
   if ( access_is_enabled () && ! empty ( $user ) ) {
-    $tmp = "$euser, $login, $cal_type, $cal_access";
-    $can_view =  access_user_calendar ( 'view', $tmp );
-    $can_edit = access_user_calendar ( 'edit', $tmp );
-    $can_approve = access_user_calendar ( 'approve', $tmp );
-    $time_only = access_user_calendar ( 'time', $euser );
+    $can_view =  access_user_calendar ( 'view', $euser, $login, $cal_type, $cal_access );
+    $can_edit = access_user_calendar ( 'edit', $euser, $login, $cal_type, $cal_access );
+    $can_approve = access_user_calendar ( 'approve', $euser, $login, $cal_type, $cal_access );
+    $time_only = access_user_calendar ( 'time', $euser, $login, $cal_type, $cal_access );
   } else {
     $time_only = 'N';
   }
@@ -189,8 +188,7 @@ if ( empty ( $error ) ) {
   if ( $readonly == 'Y' || $is_nonuser || 
     ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' ) ) {
     $can_edit = false;
-  }
-  
+  }  
     if ( ! $can_view ) {
       $check_group = false;
       // if not a participant in the event, must be allowed to look at
