@@ -1,4 +1,6 @@
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1567363 ] ICal Import and Publish Does not properly use mozilla timezone
+ - Fixed bug [ 1554326 ] All events not imported using ical (when conflicting)
  - Fixed bug [ 1572678 ] only ONE Layer for Public Access possible
  - Fixed bug [ 1572511 ] Week Numbering in October
  - Fixed bug [ 1572098 ] install-wizward abort
