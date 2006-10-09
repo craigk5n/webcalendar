@@ -257,10 +257,12 @@ function export_recurrence_ical( $id, $simple = false ) {
         // translate('FR');
         // translate('SA');
         // translate('SU');
-        if ( ! empty ( $byday ) && ! empty ( $lang_file ) && $lang_file != 'English-US.txt' ) {
+        if ( ! empty ( $byday ) && ! empty ( $lang_file ) && 
+          $lang_file != 'English-US.txt' ) {
           $bydayArr = explode ( ',', $byday );
           foreach ( $bydayArr as $bydayIdx ) {
-            $bydayOut[] = translate ( $bydayIdx );
+            $bydayOut[] = substr ( $bydayIdx, 0, strlen ( $bydayIdx ) -2 ) 
+              . translate ( substr ( $bydayIdx, -2 ) );
           }
           $byday = implode ( ',', $bydayOut );
         }
