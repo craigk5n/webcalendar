@@ -426,7 +426,7 @@ function print_menu_dates ( $menu = false ) {
   }
   $ret .= '
           <form action="' . $yearUrl
-   . '" method="get" name="SelectYear" id=year"'
+   . '" method="get" name="SelectYear" id="year'
    . ( $menu == true ? 'menu' : 'form' ) . '">' . $urlArgs
    . ( ! empty ( $user ) && $user != $login ? '
             <input type="hidden" name="user" value="' . $user . '" />' : '' )
