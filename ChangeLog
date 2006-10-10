@@ -1,4 +1,6 @@
 Version 1.1.2 (?? ??? 2006)
+$Id$
+
  - Fixed bug [ 1574432 ] 'date selectors' missing at the bottom if using UAC
  - Fixed bug [ 1574297 ] meaning of date selector position false
  - Fixed bug [ 1567973 ] UAC settings public access / no edit = no entries?
