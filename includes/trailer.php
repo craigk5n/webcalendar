@@ -9,9 +9,7 @@ $tret = '';
 if ( access_can_access_function ( ACCESS_TRAILER ) ) { 
 
 $tret .= '<div id="trailer">';
-if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' ) {
-  $tret .= print_menu_dates ();
-} 
+ 
 $tret .= '<div id="menu">' . "\n";
 
 $goto_link = array ( );
