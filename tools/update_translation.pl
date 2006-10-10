@@ -1,13 +1,17 @@
 #!/usr/bin/perl
+# $Id$
 #
 # This tool will update a translation file by doing the following:
-# - When a missing translation is found, the phrase will have
-#   "<< MISSING >>"
-#   right before it to make it easy to find.
-# - Show the English text (in a comment) after an untranslated phrase,
-#   when the "phrase" is not the same as the "translation",
-#   making it easier to translate.
-# - Phrases are organized by the page on which they appear.
+# - Phrases are organized by the page on which they first appear.
+# - When a missing translation is found, the phrase can optionally have
+#   << MISSING >>
+#   right above it. And, when the "phrase" is an abbreviation of the
+#   full English text, show the English text (in a comment) below.
+#
+# Example:
+#   << MISSING >>
+#   custom-script-help:
+#   English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
 #
 # Note: you will lose any comments you put in the translation file
 # when using this tool (except for the comments at the very beginning).
