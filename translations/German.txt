@@ -3,16 +3,22 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 6 Okt 2006
+# Last update: 9 Okt 2006
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-10-2006
 
 
 ###############################################
+###  DO NOT TRANSLATE THIS SECTION  ###
 # Specify a charset (will be sent within meta tag for each page)
 #
 charset: iso-8859-1
+
+# direction need only be changed if using right to left language
+# Options are: ltr (left to right) or rlt (right to left)
+#
+direction: ltr
 
 
 
@@ -150,6 +156,8 @@ preferred-view-help: Gibt die bevorzugte Ansicht an (Tag, Woche, Monat oder Jahr
 Preferred view: Bevorzugte Ansicht
 Allow top menu: Erlaube Topmen&uuml;
 Date Selectors position: Datumsauswahl im Topmen&uuml; anzeigen
+Top: Oben
+Bottom: Unten
 menu-themes-help: Stellt die Farben und die Art des oberen Men&uuml;s ein
 Menu theme: Men&uuml; Thema
 fonts-help: Definiert die Standard-Schriftarten (z.B. "Arial, Helvetica")
@@ -1359,11 +1367,15 @@ not supported: nicht unterst&uuml;tzt
 Browser-defined: Browser-definiert
 English: Englisch
 English-US: Englisch-US
+Afrikaans: Afrikanisch
+Albanian: Albanisch
+Arabic: Arabisch
 Basque: Baskisch
 Bulgarian: Bulgarisch
 Catalan: Katalanisch
 Chinese (Simplified/GB2312): Chinesisch (Einfach/GB2312)
 Chinese (Traditional/Big5): Chinesisch (Traditionel/Big5)
+Croatian: Kroatisch
 Czech: Tschechisch
 Danish: D&auml;nisch
 Dutch: Holl&auml;ndisch
@@ -1373,18 +1385,23 @@ French: Franz&ouml;sisch
 Galician: G&auml;lisch
 German: Deutsch
 Greek: Griechisch
+Hebrew: Hebräisch
 Holo (Taiwanese): Taiwanesisch
 Hungarian: Ungarisch
 Icelandic: Isl&auml;ndisch
 Italian: Italienisch
 Japanese: Japanisch
 Korean: Koreanisch
+Lithuanian: Lithauisch
 Norwegian: Norwegisch
 Polish: Polnisch
 Portuguese: Portugiesisch
 Portuguese/Brazil: Portugiesisch/Brasilianisch
 Romanian: Rum&auml;nisch
 Russian: Russisch
+Serbian: Serbisch
+Slovak: Slowakisch
+Slovenian: Slowenisch
 Spanish: Spanisch
 Swedish: Schwedisch
 Turkish: Turkisch
