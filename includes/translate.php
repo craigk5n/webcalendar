@@ -305,6 +305,7 @@ function define_languages () {
     translate ( 'Galician' ) => 'Galician',
     translate ( 'German' ) => 'German',
     translate ( 'Greek' ) => 'Greek',
+    translate ( 'Hebrew' ) . ' (UTF-8)' => 'Hebrew_utf8',
     translate ( 'Holo (Taiwanese)' ) => 'Holo-Big5',
     translate ( 'Hungarian' ) => 'Hungarian',
     translate ( 'Icelandic' ) => 'Icelandic',
@@ -331,6 +332,23 @@ function define_languages () {
     // add new languages here!
   );
 }
+
+/**
+ * Converts language names to their abbreviation.
+ *
+ * @param string $name Name of the language (such as "French")
+ *
+ * @return string The abbreviation ("fr" for "French")
+ */
+function languageToAbbrev ( $name ) {
+  global $browser_languages;
+  foreach ( $browser_languages as $abbrev => $langname ) {
+    if ( $langname == $name )
+      return $abbrev;
+  }
+  return false;
+}
+
 // If the user sets "Browser-defined" as their language setting, then use the
 // $HTTP_ACCEPT_LANGUAGE settings to determine the language. The array below
 // translates browser language abbreviations into our available language files.

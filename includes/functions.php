@@ -4949,21 +4949,6 @@ function clean_whitespace($data) {
   return preg_replace("/\s/", '', $data);
 }
 
-/**
- * Converts language names to their abbreviation.
- *
- * @param string $name Name of the language (such as "French")
- *
- * @return string The abbreviation ("fr" for "French")
- */
-function languageToAbbrev ( $name ) {
-  global $browser_languages;
-  foreach ( $browser_languages as $abbrev => $langname ) {
-    if ( $langname == $name )
-      return $abbrev;
-  }
-  return false;
-}
 
 /**
  * Draws a daily outlook style availability grid showing events that are
