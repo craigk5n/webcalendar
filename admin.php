@@ -427,7 +427,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  </td></tr>
  <tr><td><label>
  <?php etranslate( 'Date Selectors position' )?>:</label></td><td colspan="3">
- <?php echo print_radio_html ( 'MENU_DATE_TOP' ) ?>
+ <?php echo print_radio_html ( 'MENU_DATE_TOP', '', 'admin_', 'Y', 'N'
+ ,  translate ( 'Top' ), translate ( 'Bottom' ) ) ?>
  </td></tr> 
  
   <tr><td  class="tooltip" title="<?php etooltip( 'menu-themes-help' );?>">

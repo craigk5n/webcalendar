@@ -40,13 +40,19 @@
 #
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-10-2006
 
 
 ###############################################
+###  DO NOT TRANSLATE THIS SECTION  ###
 # Specify a charset (will be sent within meta tag for each page)
 #
 charset: iso-8859-1
+
+# direction need only be changed if using right to left language
+# Options are: ltr (left to right) or rlt (right to left)
+#
+direction: ltr
 
 
 
@@ -184,6 +190,8 @@ preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: Preferred view
 Allow top menu: Allow top menu
 Date Selectors position: Date Selectors position
+Top: Top
+Bottom: Bottom
 menu-themes-help: Sets the colors and style of the top menu
 Menu theme: Menu theme
 fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
@@ -1411,6 +1419,7 @@ French: French
 Galician: Galician
 German: German
 Greek: Greek
+Hebrew: Hebrew
 Holo (Taiwanese): Holo (Taiwanese)
 Hungarian: Hungarian
 Icelandic: Icelandic
