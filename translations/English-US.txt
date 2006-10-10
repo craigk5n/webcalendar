@@ -43,20 +43,25 @@
 # Translation last updated on 10-10-2006
 
 
-###############################################
-###  DO NOT TRANSLATE THIS SECTION  ###
+################################################################################
+################################################################################
+#                        DO NOT TRANSLATE THIS SECTION                         #
+#          "drection" is language "left to right" or "right to left"?          #
+
+direction: ltr
+
+#                                                                              #
+#                                                                              #
+################################################################################
+################################################################################
+
+
+########################################
 # Specify a charset (will be sent within meta tag for each page)
 #
 charset: iso-8859-1
 
-# direction need only be changed if using right to left language
-# Options are: ltr (left to right) or rlt (right to left)
-#
-direction: ltr
-
-
-
-###############################################
+########################################
 # Page: access.php
 #
 Database error: Database error
@@ -88,8 +93,7 @@ Public: Public
 Confidential: Confidential
 Private: Private
 
-
-###############################################
+########################################
 # Page: activity_log.php
 #
 System Log: System Log
@@ -102,8 +106,7 @@ Action: Action
 Previous: Previous
 Next: Next
 
-
-###############################################
+########################################
 # Page: add_entry.php
 #
 is already on your calendar.: is already on your calendar.
@@ -112,8 +115,7 @@ This is a private event and may not be added to your calendar.: This is a privat
 This is a confidential event and may not be added to your calendar.: This is a confidential event and may not be added to your calendar.
 Error adding event: Error adding event
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Select
@@ -379,8 +381,7 @@ Week number color: Week number color
 Event popup background: Event popup background
 Event popup text: Event popup text
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Control Panel: Control Panel
@@ -397,16 +398,14 @@ Public Preferences: Public Preferences
 Unapproved Public Events: Unapproved Public Events
 Administrative Tools: Administrative Tools
 
-
-###############################################
+########################################
 # Page: ajax.php
 #
 Duplicate Name: Duplicate Name
 Username already exists: Username already exists
 Email address already exists: Email address already exists
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Additional Comments (optional): Additional Comments (optional)
@@ -419,15 +418,13 @@ The subject was: The subject was
 The description is: The description is
 Comments: Comments
 
-
-###############################################
+########################################
 # Page: assistant_edit.php
 #
 Admin mode: Admin mode
 Your assistants: Your assistants
 
-
-###############################################
+########################################
 # Page: availability.php
 #
 Program Error: Program Error
@@ -436,8 +433,7 @@ No year specified!: No year specified!
 No month specified!: No month specified!
 No day specified!: No day specified!
 
-
-###############################################
+########################################
 # Page: category.php
 #
 Add: Add
@@ -453,15 +449,13 @@ Delete: Delete
 Are you sure you want to delete this entry?: Are you sure you want to delete this entry?
 Add New Category: Add New Category
 
-
-###############################################
+########################################
 # Page: category_handler.php
 #
 File size exceeds maximum: File size exceeds maximum
 File is not a gif image: File is not a gif image
 
-
-###############################################
+########################################
 # Page: catsel.php
 #
 ENTRY CATEGORIES: ENTRY CATEGORIES
@@ -470,20 +464,17 @@ Remove: Remove
 Global Category: Global Category
 Ok: Ok
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: An appointment has been canceled for you by
 
-
-###############################################
+########################################
 # Page: doc.php
 #
 Invalid blob id: Invalid blob id
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Add Comment: Add Comment
@@ -493,14 +484,12 @@ Comment: Comment
 Upload file: Upload file
 Description: Description
 
-
-###############################################
+########################################
 # Page: docdel.php
 #
 Removed: Removed
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: am
@@ -609,8 +598,7 @@ Every: Every
 Delete entry: Delete entry
 You are not authorized to edit this entry: You are not authorized to edit this entry
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: The following conflicts with the suggested time
@@ -624,8 +612,7 @@ Scheduling Conflict: Scheduling Conflict
 Your suggested time of: Your suggested time of
 conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: Edit Layer
@@ -639,15 +626,13 @@ Add to My Calendar: Add to My Calendar
 Delete layer: Delete layer
 Are you sure you want to delete this layer?: Are you sure you want to delete this layer?
 
-
-###############################################
+########################################
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: You cannot create a layer for yourself
 You can only create one layer for each user: You can only create one layer for each user
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
@@ -659,8 +644,7 @@ First Name: First Name
 Last Name: Last Name
 Is public calendar: Is public calendar
 
-
-###############################################
+########################################
 # Page: edit_remotes.php
 #
 Edit Remote Calendar: Edit Remote Calendar
@@ -669,8 +653,7 @@ Create Layer: Create Layer
 Required to View Remote Calendar: Required to View Remote Calendar
 Reload: Reload
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: Error
@@ -680,8 +663,7 @@ Create a new layer to view this calendar: Create a new layer to view this calend
 Errors: Errors
 There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Tomorrow: Tomorrow
@@ -728,22 +710,19 @@ Event template: Event template
 Site Extras: Site Extras
 Are you sure you want to delete this report?: Are you sure you want to delete this report?
 
-
-###############################################
+########################################
 # Page: edit_report_handler.php
 #
 Variable N not found: Variable N not found
 
-
-###############################################
+########################################
 # Page: edit_template.php
 #
 Edit Custom Script/Stylesheet: Edit Custom Script/Stylesheet
 Edit Custom Header: Edit Custom Header
 Edit Custom Trailer: Edit Custom Trailer
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: Username
@@ -756,8 +735,7 @@ Change Password: Change Password
 New Password: New Password
 Set Password: Set Password
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Deleting users not supported
@@ -766,8 +744,7 @@ You have not entered a password: You have not entered a password
 Invalid characters in login: Invalid characters in login
 Username can not be blank: Username can not be blank
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Export
@@ -779,20 +756,17 @@ Start date: Start date
 End date: End date
 Modified since: Modified since
 
-
-###############################################
+########################################
 # Page: export_handler.php
 #
 export format not defined or incorrect: export format not defined or incorrect
 
-
-###############################################
+########################################
 # Page: groups.php
 #
 Add New Group: Add New Group
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Unnamed Group
@@ -802,14 +776,12 @@ Group name: Group name
 Updated: Updated
 Created by: Created by
 
-
-###############################################
+########################################
 # Page: group_edit_handler.php
 #
 You must specify a group name: You must specify a group name
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 Display weekends in week view: Display weekends in week view
@@ -826,14 +798,12 @@ enable-gradient-help: Use gradient colors for cell backgrounds.
 Manually entering color values: Manually entering color values
 colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 
-
-###############################################
+########################################
 # Page: help_bug.php
 #
 Report Bug: Report Bug
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
@@ -843,8 +813,7 @@ Repeat End Date: Repeat End Date
 Repeat Day: Repeat Day
 repeat-day-help: Specifies which days of the week the event should repeat on.
 
-
-###############################################
+########################################
 # Page: help_import.php
 #
 Import: Import
@@ -860,14 +829,12 @@ The following formats have been tested: The following formats have been tested
 This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
 Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Help Index
 
-
-###############################################
+########################################
 # Page: help_layers.php
 #
 Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.: Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.
@@ -881,8 +848,7 @@ Press the Disable Layers link in the admin section at the bottom of the page to 
 Enabling: Enabling
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.
 
-
-###############################################
+########################################
 # Page: help_pref.php
 #
 Default Category: Default Category
@@ -903,8 +869,7 @@ Enable FreeBusy publishing: Enable FreeBusy publishing
 freebusy-enabled-help: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
 freebusy-url-help: The URL for accessing the user's FreeBusy list
 
-
-###############################################
+########################################
 # Page: help_uac.php
 #
 User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.: User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.:
@@ -912,22 +877,19 @@ If disabled, this user will not see you in the participants list.: If disabled, 
 If disabled, this user will not be able to send you emails.: If disabled, this user will not be able to send you emails.
 If enabled, this user will not be able to view the details of any of your entries.: If enabled, this user will not be able to view the details of any of your entries.
 
-
-###############################################
+########################################
 # Page: icalclient.php
 #
 Publishing Disabled (Admin): Publishing Disabled (Admin)
 Publishing Disabled (User): Publishing Disabled (User)
 
-
-###############################################
+########################################
 # Page: icons.php
 #
 Click to Select: Click to Select
 Current Icons on Server: Current Icons on Server
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: Disabled
@@ -936,16 +898,14 @@ Exclude private records: Exclude private records
 Overwrite Prior Import: Overwrite Prior Import
 Repeated items are imported separately. Prior imports are not overwritten.: Repeated items are imported separately. Prior imports are not overwritten.
 
-
-###############################################
+########################################
 # Page: import_handler.php
 #
 Events from prior import marked as deleted: Events from prior import marked as deleted
 Conflicting events: Conflicting events
 The import file contained no data: The import file contained no data
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: Layers are currently
@@ -959,8 +919,7 @@ Add layer: Add layer
 Layer: Layer
 Edit layer: Edit layer
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: View this entry
@@ -979,8 +938,7 @@ No unapproved entries for: No unapproved entries for
 Unapproved Entries: Unapproved Entries
 Not authorized: Not authorized
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: You must enter a login and password
@@ -989,29 +947,25 @@ Login: Login
 Access public calendar: Access public calendar
 cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 
-
-###############################################
+########################################
 # Page: login.php
 #
 Invalid login: Invalid login
 You have been logged out: You have been logged out
 Not yet registered? Register here!: Not yet registered? Register here!
 
-
-###############################################
+########################################
 # Page: minical.php
 #
 No such nonuser calendar: No such nonuser calendar
 This Calendar is not Public: This Calendar is not Public
 
-
-###############################################
+########################################
 # Page: nonusers.php
 #
 Add New NonUser Calendar: Add New NonUser Calendar
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Save Preferences
@@ -1035,14 +989,12 @@ allow-view-subscriptions-help: Allows restricting remote access to Private or Co
 Allow remote viewing of: Allow remote viewing of
 entries: entries
 
-
-###############################################
+########################################
 # Page: publish.php
 #
 No user specified: No user specified
 
-
-###############################################
+########################################
 # Page: purge.php
 #
 Purging events for: Purging events for
@@ -1053,8 +1005,7 @@ Preview delete: Preview delete
 Are you sure you want to delete events for: Are you sure you want to delete events for
 Records deleted from: Records deleted from
 
-
-###############################################
+########################################
 # Page: register.php
 #
 Email address can not be blank: Email address can not be blank
@@ -1075,22 +1026,19 @@ Return to Login screen: Return to Login screen
 Your account information will be emailed to you: Your account information will be emailed to you
 Submit: Submit
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 Continue: Continue
 (Your comments will be included in an email to the other participants): (Your comments will be included in an email to the other participants)
 An appointment has been rejected by: An appointment has been rejected by
 
-
-###############################################
+########################################
 # Page: remotes.php
 #
 Add New Remote Calendar: Add New Remote Calendar
 
-
-###############################################
+########################################
 # Page: report.php
 #
 cont.: cont.
@@ -1104,16 +1052,14 @@ to manage reports for the Public Access calendar: to manage reports for the Publ
 Add new report: Add new report
 Manage Reports: Manage Reports
 
-
-###############################################
+########################################
 # Page: search.php
 #
 Search: Search
 Keywords: Keywords
 Advanced Search: Advanced Search
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: You must enter one or more search keywords
@@ -1122,51 +1068,44 @@ match found: match found
 matches found: matches found
 No matches found: No matches found
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User's Calendar: View Another User's Calendar
 
-
-###############################################
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories: You have not added any categories
 Set Category: Set Category
 Global Categories can not be changed: Global Categories can not be changed
 
-
-###############################################
+########################################
 # Page: upcoming.php
 #
 __month__ __dd__: __month__ __dd__
 more: more
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Remote Calendars: Remote Calendars
 Add New User: Add New User
 denotes administrative user: denotes administrative user
 
-
-###############################################
+########################################
 # Page: usersel.php
 #
 No form specified!: No form specified!
 No listid specified!: No listid specified!
 Reset: Reset
 
-
-###############################################
+########################################
 # Page: views.php
 #
 Add New View: Add New View
 
-
-###############################################
+########################################
 # Page: views_edit.php
 #
 Unnamed View: Unnamed View
@@ -1184,20 +1123,17 @@ Month (side by side): Month (side by side)
 Month (on same calendar): Month (on same calendar)
 Selected: Selected
 
-
-###############################################
+########################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: You must specify a view name
 
-
-###############################################
+########################################
 # Page: view_d.php
 #
 No users for this view: No users for this view
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Assistant mode: Assistant mode
@@ -1236,20 +1172,17 @@ Show activity log: Show activity log
 Hide activity log: Hide activity log
 Export this entry to: Export this entry to
 
-
-###############################################
+########################################
 # Page: view_r.php
 #
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: New Entry
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
 Edit Event: Edit Event
@@ -1263,23 +1196,20 @@ User Management: User Management
 Another User's Calendar: Another User's Calendar
 Common Trailer: Common Trailer
 
-
-###############################################
+########################################
 # Page: includes/config.php
 #
 Fatal Error: Fatal Error
 Troubleshooting Help: Troubleshooting Help
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 LANGUAGE DEFINED: LANGUAGE DEFINED
 December: December
 Dec: Dec
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 Unauthorized: Unauthorized
@@ -1372,15 +1302,13 @@ New user via email (self registration): New user via email (self registration)
 Attachment: Attachment
 Delete User: Delete User
 
-
-###############################################
+########################################
 # Page: includes/help_list.php
 #
 Index: Index
 Page: Page
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
 Home: Home
@@ -1392,8 +1320,7 @@ Go to: Go to
 Logout: Logout
 Manage calendar of: Manage calendar of
 
-
-###############################################
+########################################
 # Page: includes/translate.php
 #
 Browser Language Not Found: Browser Language Not Found
@@ -1444,21 +1371,18 @@ event: event
 journal: journal
 task: task
 
-
-###############################################
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: Invalid user login
 
-
-###############################################
+########################################
 # Page: includes/user-nis.php
 #
 incorrect password: incorrect password
 no such user: no such user
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 MO: MO
@@ -1481,76 +1405,14 @@ Exclusion Dates: Exclusion Dates
 Unnamed Event: Unnamed Event
 Event Imported: Event Imported
 
-
-###############################################
-# Page: includes/js/admin.php
-#
-Server URL is required: Server URL is required
-Server URL must end with '/': Server URL must end with '/'
-Invalid work hours: Invalid work hours
-Invalid color for document background: Invalid color for document background
-Invalid color for document title: Invalid color for document title
-Invalid color for table cell background: Invalid color for table cell background
-Invalid color for table grid: Invalid color for table grid
-Invalid color for table header background: Invalid color for table header background
-Invalid color for table text background: Invalid color for table text background
-Invalid color for event popup background: Invalid color for event popup background
-Invalid color for event popup text: Invalid color for event popup text
-Invalid color for table cell background for today: Invalid color for table cell background for today
-Color format should be '#RRGGBB': Color format should be '#RRGGBB'
-
-
-###############################################
-# Page: includes/js/availability.php
-#
-Change the date and time of this entry?: Change the date and time of this entry?
-
-
-###############################################
-# Page: includes/js/edit_entry.php
-#
-You have not entered a Brief Description: You have not entered a Brief Description
-The time you have entered begins before your preferred work hours.  Is this correct?: The time you have entered begins before your preferred work hours.  Is this correct?
-Invalid Event Date: Invalid Event Date
-Please add a participant: Please add a participant
-Invalid Date: Invalid Date
-You have not entered a valid time of day: You have not entered a valid time of day
-
-
-###############################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: Invalid color
-
-
-###############################################
-# Page: includes/js/edit_nonuser.php
-#
-Calendar ID can not be blank: Calendar ID can not be blank
-Both first and last names can not be blank: Both first and last names can not be blank
-
-
-###############################################
-# Page: includes/js/edit_remotes.php
-#
-URL can not be blank: URL can not be blank
-
-
-###############################################
-# Page: includes/js/export_import.php
-#
-File type does not match Import Format: File type does not match Import Format
-
-
-###############################################
+########################################
 # Page: includes/classes/Doc.class
 #
 bytes: bytes
 kb: kb
 Mb: Mb
 
-
-###############################################
+########################################
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Notification
@@ -1567,8 +1429,60 @@ file_access: Could not access file:
 file_open: File Error Could not open file:
 encoding: Unknown encoding:
 
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required: Server URL is required
+Server URL must end with '/': Server URL must end with '/'
+Invalid work hours: Invalid work hours
+Invalid color for document background: Invalid color for document background
+Invalid color for document title: Invalid color for document title
+Invalid color for table cell background: Invalid color for table cell background
+Invalid color for table grid: Invalid color for table grid
+Invalid color for table header background: Invalid color for table header background
+Invalid color for table text background: Invalid color for table text background
+Invalid color for event popup background: Invalid color for event popup background
+Invalid color for event popup text: Invalid color for event popup text
+Invalid color for table cell background for today: Invalid color for table cell background for today
+Color format should be '#RRGGBB': Color format should be '#RRGGBB'
 
-###############################################
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Change the date and time of this entry?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: You have not entered a Brief Description
+The time you have entered begins before your preferred work hours.  Is this correct?: The time you have entered begins before your preferred work hours.  Is this correct?
+Invalid Event Date: Invalid Event Date
+Please add a participant: Please add a participant
+Invalid Date: Invalid Date
+You have not entered a valid time of day: You have not entered a valid time of day
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Invalid color
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID can not be blank: Calendar ID can not be blank
+Both first and last names can not be blank: Both first and last names can not be blank
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+URL can not be blank: URL can not be blank
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: File type does not match Import Format
+
+########################################
 # Page: includes/menu/index.php
 #
 This Week: This Week
@@ -1586,38 +1500,7 @@ Public Calendar: Public Calendar
 Unapproved Events: Unapproved Events
 User Manager: User Manager
 
-
-###############################################
-# Page: tools/send_reminders.php
-#
-This is a reminder for the task detailed below.: This is a reminder for the task detailed below.
-This is a reminder for the event detailed below.: This is a reminder for the event detailed below.
-Pecentage Complete: Pecentage Complete
-Reminder: Reminder
-
-
-###############################################
-# Page: tools/reload_remotes.php
-#
-Include Path: Include Path
-Deleting events for: Deleting events for
-Importing events for: Importing events for
-No data returned from: No data returned from
-for non-user calendar: for non-user calendar
-No Remote Calendars found: No Remote Calendars found
-Remote Calendars not enabled: Remote Calendars not enabled
-
-
-###############################################
-# Page: install/install_functions.php
-#
-Error updating webcal_config: Error updating webcal_config
-Error updating webcal_user_pref: Error updating webcal_user_pref
-Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
-Your previous version of WebCalendar requires updating several database tables.: Your previous version of WebCalendar requires updating several database tables.
-
-
-###############################################
+########################################
 # Page: install/index.php
 #
 WebCalendar Installation Wizard: WebCalendar Installation Wizard
@@ -1728,3 +1611,30 @@ Production: Production
 Development: Development
 Save Settings: Save Settings
 Launch WebCalendar: Launch WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating webcal_config: Error updating webcal_config
+Error updating webcal_user_pref: Error updating webcal_user_pref
+Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
+Your previous version of WebCalendar requires updating several database tables.: Your previous version of WebCalendar requires updating several database tables.
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Include Path: Include Path
+Deleting events for: Deleting events for
+Importing events for: Importing events for
+No data returned from: No data returned from
+for non-user calendar: for non-user calendar
+No Remote Calendars found: No Remote Calendars found
+Remote Calendars not enabled: Remote Calendars not enabled
+
+########################################
+# Page: tools/send_reminders.php
+#
+This is a reminder for the task detailed below.: This is a reminder for the task detailed below.
+This is a reminder for the event detailed below.: This is a reminder for the event detailed below.
+Pecentage Complete: Pecentage Complete
+Reminder: Reminder
