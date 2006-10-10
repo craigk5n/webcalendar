@@ -294,11 +294,12 @@ ul a {
   display: none;
   font-size: 18px;
 }
+#dateselector,
 #trailer {
   margin: 0px;
   padding: 0px;
 }
-#trailer form {
+#dateselector form {
   float: left;
   width: 33%;
 <?php if ( $MENU_ENABLED == 'N' ) { ?>
@@ -308,6 +309,7 @@ ul a {
   margin-top: 5px;
   margin-bottom: 25px;
 }
+#dateselector label,
 #trailer label {
   margin: 0px;
   padding: 0px;
