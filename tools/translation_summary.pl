@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# $Id$
 #
 # Examine all translation files to create a report that shows how
 # many translations are missing from each translation file.
@@ -26,7 +27,7 @@ foreach $f ( @files ) {
     @lines = split ( /\n/, $out );
     ( $l ) = grep ( / translation.s. missing/, @lines );
     if ( $l =~ /^(\d+).*\((\d\S+)% complete/ ) {
-      printf "%-20s %d (%1.1f%% complete)\n", $f . ":", $1, $2;
+      printf "%-20s %4d (%4.1f%% complete)\n", $f . ":", $1, $2;
     }
   } else {
     # all translations found :-)
