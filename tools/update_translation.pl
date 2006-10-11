@@ -164,8 +164,16 @@ if ( -f $infile ) {
   }
 }
 
-$trans{'direction'} = 'ltr' if ( !defined( $trans{'direction'} ) );
-$trans{'charset'} = 'iso-8859-1' if ( !defined( $trans{'charset'} ) );
+$trans { 'charset' } = 'iso-8859-1' if ( !defined ( $trans { 'charset' } ) );
+$trans { 'direction' } = 'ltr' if ( !defined ( $trans { 'direction' } ) );
+$trans { '__mm__/__dd__/__yyyy__' } = '__mm__/__dd__/__yyyy__'
+  if ( !defined( $trans{'__mm__/__dd__/__yyyy__'} ) );
+$trans { '__month__ __dd__' } = '__month__ __dd__'
+  if ( !defined ( $trans { '__month__ __dd__' } ) );
+$trans { '__month__ __dd__, __yyyy__' } = '__month__ __dd__, __yyyy__'
+  if ( !defined ( $trans { '__month__ __dd__, __yyyy__' } ) );
+$trans { '__month__ __yyyy__' } = '__month__ __yyyy__'
+  if ( !defined ( $trans { '__month__ __yyyy__' } ) );
 
 if ( $plugin ne '' ) {
   print "Reading current WebCalendar translations from $b_infile\n"
@@ -207,28 +215,46 @@ $notfound = 0;
 open( OUT, ">$infile" ) || die "Error writing $infile: ";
 print OUT $header;
 if ( $plugin eq '' ) {
-  $text{ 'charset' }    = $text{ 'direction' }    = 1;
-  $foundin{ 'charset' } = $foundin{ 'direction' } = ' top of this file';
+  $foundin { 'charset' } =
+  $foundin { 'direction' } =
+  $foundin { '__mm__/__dd__/__yyyy__' } =
+  $foundin { '__month__ __dd__' } =
+  $foundin { '__month__ __dd__, __yyyy__' } =
+  $foundin { '__month__ __yyyy__' } =  ' top of this file';
+
+  $text { 'charset' } =
+  $text { 'direction' } =
+  $text { '__mm__/__dd__/__yyyy__' } =
+  $text { '__month__ __dd__' } =
+  $text { '__month__ __dd__, __yyyy__' } =
+  $text { '__month__ __yyyy__' } =  1;
 
   print OUT '
 
 ################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-#                        DO NOT TRANSLATE THIS SECTION                         #
-#          "drection" is language "left to right" or "right to left"?          #
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: ' . $trans{'charset'} . '
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
 
 direction: ' . $trans{'direction'} . '
 
-#                                                                              #
-#                                                                              #
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: ' . $trans { '__mm__/__dd__/__yyyy__' } . '
+__month__ __dd__: ' . $trans { '__month__ __dd__' } . '
+__month__ __dd__, __yyyy__: ' . $trans { '__month__ __dd__, __yyyy__' } . '
+__month__ __yyyy__: ' . $trans { '__month__ __yyyy__' } . '
+
 ################################################################################
 ################################################################################
 
-
-########################################
-# Specify a charset (will be sent within meta tag for each page)
-#
-charset: ' . $trans{'charset'} . '
 ';
 }
 
