@@ -36,7 +36,8 @@ $catSelectStr = '';
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events (
-    ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login, $cat_id, $startdate );
+    ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login
+    , $cat_id, $startdate, $enddate );
 
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
@@ -79,7 +80,7 @@ $asstModeStr = ( $is_assistant ? '-- ' .
 if ( empty ( $friendly ) ) {
   $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
     $is_nonuser_admin ? $user : $login ) );
-  $printerStr = generate_printer_friendly ( 'month.php' );
+  $printerStr = generate_printer_friendly ( 'year.php' );
 } else {
   $unapprovedStr = $printerStr = '';
 }

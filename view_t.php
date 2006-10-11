@@ -351,7 +351,7 @@ $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], '', $wkstart );
+  $repeated_events = read_repeated_events ( $viewusers[$i], '', $wkstart, $wkend );
   $re_save = array_merge($re_save, $repeated_events);
   /* Pre-load the non-repeating events for quicker access 
       subtracting ONE_WEEK to allow cross-day events to display*/
