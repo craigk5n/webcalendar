@@ -1078,6 +1078,10 @@ a.weekcell {
 .boxbottom {
  border-bottom: 1px solid #888888;
 }
+.boxall {
+ padding-left:3px;
+ border: 1px solid #888888;
+}
 .leftpadded {
  padding-left:50px;
  text-align:left;

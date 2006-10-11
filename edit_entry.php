@@ -518,7 +518,6 @@ if ( $ALLOW_HTML_DESCRIPTION == 'Y' ){
   }
 }
 print_header ( $INC, '', $BodyX );
-
 $eType_label = ' ( ' . translate ( $eType ) . ' )';
 ?>
 <h2><?php  echo ( $id? translate( 'Edit Entry' ): translate( 'Add Entry' )) . $eType_label;?>&nbsp;<img src="images/help.gif" alt="<?php etranslate( 'Help' )?>" class="help" onclick="window.open ( 'help_edit_entry.php<?php if ( empty ( $id ) ) echo '?add=1'; ?>', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
@@ -1033,7 +1032,8 @@ if ( $useTabs ) { ?>
 
  <tr id="rptfreq" style="visibility:hidden;" title="<?php 
   etooltip( 'repeat-frequency-help' )?>"><td class="tooltip">
- <label for="entry_freq"><?php etranslate( 'Frequency' )?>:</label></td><td colspan="2">
+ <label for="entry_freq"><?php etranslate( 'Frequency' )?>:</label></td>
+ <td colspan="2">
  <input type="text" name="rpt_freq" id="entry_freq" size="4" maxlength="4" value="<?php echo $rpt_freq; ?>" />
  &nbsp;&nbsp;&nbsp;&nbsp;
  <label id="weekdays_only"><input  type="checkbox" name="weekdays_only" value="y" <?php echo ( ! empty ( $weekdays_only )? $checked : "" ) ?> />
@@ -1041,23 +1041,25 @@ if ( $useTabs ) { ?>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <span id="rptwkst">
  <select   name="wkst">
-    <option value="MO" <?php ( strcmp ( $wkst, 'MO' ) == 0 ? $selected : '' ) ?>>MO</option>
-    <option value="SU" <?php ( strcmp ( $wkst, 'SU' ) == 0 ? $selected : '' ) ?>>SU</option>
+    <option value="MO" <?php echo ( strcmp ( $wkst, 'MO' ) == 0 
+      ? $selected : '' ) . '>' . translate ( 'MO' ) ?></option>
+    <option value="SU" <?php echo ( strcmp ( $wkst, 'SU' ) == 0 
+      ? $selected : '' ) . '>' . translate ( 'SU' ) ?></option>
  </select>&nbsp;&nbsp;<label for="rptwkst" ><?php etranslate( 'Week Start' )?></label></span>
  </td>
  </tr>
-
+<tr><td colspan="4"></td></tr>
  <tr id="rptbydayextended" style="visibility:hidden;" title="<?php 
   etooltip( 'repeat-bydayextended-help' )?>"><td class="tooltip">
  <label><?php echo translate( 'ByDay' ) ?>:</label></td>
-    <td colspan="2" style="padding-left:0px">
-  <input type="text" name="bydayList" value="<?php 
+    <td colspan="2" class="boxall">
+  <input type="hidden" name="bydayList" value="<?php 
     echo ( !empty ( $bydayStr )? $bydayStr : '' ) ?>" />
   <input type="hidden" name="bymonthdayList" value="<?php 
     echo ( !empty ( $bymonthdayStr )? $bymonthdayStr : '' ) ?>" />
   <input type="hidden" name="bysetposList" value="<?php 
    echo ( !empty ( $bysetposStr )? $bysetposStr : '' ) ?>" />
- <table class="byxxx" cellpadding="2" cellspacing="0" border="1"><tr><td></td>
+ <table class="byxxx" cellpadding="2" cellspacing="2" border="1"><tr><td></td>
  <?php
   //display byday extended selection
   //We use BUTTONS  in a triple state configuration, and store the values in
@@ -1078,12 +1080,12 @@ if ( $useTabs ) { ?>
      '</label></th>' . "\n";
     for ( $rpt_byday =0;$rpt_byday <=6; $rpt_byday++){
        $buttonvalue = (in_array($loop_ctr . $byday_names[$rpt_byday],$byday) 
-      ?$loop_ctr . $byday_names[$rpt_byday]
+      ?$loop_ctr . translate ( $byday_names[$rpt_byday] )
      : (in_array(($loop_ctr -6) . $byday_names[$rpt_byday],$byday)
-     ?($loop_ctr -6) . $byday_names[$rpt_byday]:'        ')); 
+     ?($loop_ctr -6) . translate ( $byday_names[$rpt_byday] ):'        ')); 
 
-    echo "<td><input  type=\"button\" name=\"byday\"" .
-      " id=\"_$loop_ctr$byday_names[$rpt_byday]\"" .
+    echo '<td><input  type="button" name="byday"' .
+      " id=\"_$loop_ctr$rpt_byday\"" .
       " value=\"$buttonvalue\"" .
       " onclick=\"toggle_byday(this)\" /></td>\n";
     }
@@ -1093,14 +1095,14 @@ if ( $useTabs ) { ?>
  }
    echo '</table>';
 ?></td></tr>
-
+ <tr><td colspan="4"></td></tr>
 <tr id="rptbymonth" style="visibility:hidden;" title="<?php 
   etooltip( 'repeat-month-help' )?>"><td class="tooltip">
  <?php etranslate( 'ByMonth' )?>:&nbsp;</td>
-    <td colspan="2" style="padding-left:0px">
+    <td colspan="2"  class="boxall">
  <?php
    //display bymonth selection
-   echo '<table cellpadding="5" cellspacing="0" border="1"><tr>';
+   echo '<table cellpadding="5" cellspacing="0"><tr>';
   for ( $rpt_month =1;$rpt_month <=12; $rpt_month++){
      echo "<td><label><input type=\"checkbox\" name=\"bymonth[]\" value=\"$rpt_month\"" 
       . (in_array($rpt_month,$bymonth)? $checked:'') . ' />&nbsp;' . 
@@ -1110,13 +1112,12 @@ if ( $useTabs ) { ?>
   }
    echo '</tr></table>';
 ?></td></tr>
- 
- 
+ <tr><td colspan="4"></td></tr>
   <tr  id="rptbysetpos" style="visibility:hidden;" title="<?php 
   etooltip( 'repeat-bysetpos-help' )?>">
  <td class="tooltip" id="BySetPoslabel">
 <?php etranslate( 'BySetPos' )?>:&nbsp;</td>
-   <td colspan="2" style="padding-left:0px;padding-right:0px">
+   <td colspan="2" class="boxall">
  <?php
    //display bysetpos selection
    echo '<table  class="byxxx" cellpadding="2" cellspacing="0" border="1" ><tr><td></td>';
@@ -1141,12 +1142,12 @@ if ( $useTabs ) { ?>
  }
    echo '</tr></table>';
  ?></td></tr>
-
+<tr><td colspan="4"></td></tr>
  <tr  id="rptbymonthdayextended" style="visibility:hidden;" title="<?php 
   etooltip( 'repeat-bymonthdayextended-help' )?>">
  <td class="tooltip" id="ByMonthDaylabel">
 <?php etranslate( 'ByMonthDay' )?>:&nbsp;
-  </td><td colspan="2" style="padding-left:0px;padding-right:0px">
+  </td><td colspan="2" class="boxall">
  <?php
    //display bymonthday extended selection
    echo '<table class="byxxx" cellpadding="2" cellspacing="0" border="1" ><tr><td></td>';

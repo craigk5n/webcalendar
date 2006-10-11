@@ -7,7 +7,15 @@ defined( '_ISVALID' ) or die( "You can't access this file directly!" );
 var bydayAr = new Object();
 var bymonthdayAr = new Object();
 var bysetposAr = new Object();
-
+var bydayLabels = new Array("SU","MO","TU","WE","TH","FR","SA");
+var bydayTrans = new Array ( "<?php etranslate ( 'SU' ) ?>"
+, "<?php etranslate ( 'MO' ) ?>"
+, "<?php etranslate ( 'TU' ) ?>"
+, "<?php etranslate ( 'WE' ) ?>"
+, "<?php etranslate ( 'TH' ) ?>"
+, "<?php etranslate ( 'FR' ) ?>"
+, "<?php etranslate ( 'SA' ) ?>"
+);
 // do a little form verifying
 function validate_and_submit () {
   if ( form.name.value == "" ) {
@@ -122,7 +130,7 @@ function validate_and_submit () {
  var bymonthdayStr = '';
  for ( bymonthdayKey in bymonthdayAr ) {
    if ( bymonthdayAr[bymonthdayKey].length < 8 )
-     bymonthdayStr = bymonthdayStr + ',' + bydayAr[bydayKey];
+     bymonthdayStr = bymonthdayStr + ',' + bydayAr[bymonthdayKey];
  }
  if ( bymonthdayStr.length > 0 )
    elements['bymonthdayList'].value = bymonthdayStr.substr(1);
@@ -131,7 +139,7 @@ function validate_and_submit () {
  var bysetposStr = '';
  for ( bysetposKey in bysetposAr ) {
    if ( bysetposAr[bysetposKey].length < 8 )
-     bysetposStr = bysetposStr + ',' + bysetposAr[bydayKey];
+     bysetposStr = bysetposStr + ',' + bysetposAr[bysetposKey];
  }
  if ( bysetposStr.length > 0 )
    elements['bysetposList'].value = bysetposStr.substr(1);
@@ -334,7 +342,6 @@ function rpttype_weekly () {
   var i = form.rpttype.selectedIndex;
   var val = form.rpttype.options[i].text;
  if ( val == "Weekly" ) {
-   var rpt_days = new Array("SU","MO","TU","WE","TH","FR","SA");
    //Get Event Date values
    var d = form.day.selectedIndex;
    var vald = form.day.options[d].value;
@@ -344,7 +351,7 @@ function rpttype_weekly () {
    var valy = form.year.options[y].value;
    var c = new Date(valy,valm,vald);
    var dayOfWeek = c.getDay();
-   var rpt_day = rpt_days[dayOfWeek];
+   var rpt_day = bydayLabels[dayOfWeek];
    elements[rpt_day].checked = true; 
  }
 }
@@ -456,17 +463,23 @@ function del_selected () {
 
 
 function toggle_byday(ele){
+  var bydaytext = bydayTrans[ele.id.substr(2,1)];
+  var bydayVal = bydayLabels[ele.id.substr(2,1)];
+  var tmp = '';
   if (ele.value.length > 4 ) {
     //blank
-    ele.value = ele.id.substr(1);
-  } else if (ele.value == ele.id.substr(1)) {
+    ele.value = ele.id.substr(1,1) + bydaytext;
+    tmp = ele.id.substr(1,1) + bydayVal;
+  } else if (ele.value == ele.id.substr(1,1) + bydaytext) {
     //positive value
-    ele.value =  (parseInt(ele.id.substr(1,1)) -6 ) +  ele.id.substr(2,2);
-  } else if (ele.value ==  (parseInt(ele.id.substr(1,1)) -6 ) +  ele.id.substr(2,2)) {
+    ele.value =  (parseInt(ele.id.substr(1,1)) -6 ) +  bydaytext;
+    tmp = (parseInt(ele.id.substr(1,1)) -6 ) +  bydayVal;
+  } else if (ele.value ==  (parseInt(ele.id.substr(1,1)) -6 ) +  bydaytext) {
     //negative value
   ele.value = "        ";
+  tmp = '';
   }
-  bydayAr[ele.id.substr(1)] = ele.value;
+  bydayAr[ele.id.substr(1)] = tmp;
 }
 
 function toggle_bymonthday(ele){
@@ -493,7 +506,7 @@ function toggle_bysetpos(ele){
   ele.value =  parseInt(ele.id.substr(8)) -32;
   } else if (ele.value ==  (parseInt(ele.id.substr(8)) -32 )) {
     //negative value
-  ele.value = "     ";
+  ele.value = "    ";
   }
   bysetposAr[ele.id] = ele.value;
 }
