@@ -1258,7 +1258,7 @@ function import_data ( $data, $overwrite, $type ) {
 
         $dates = get_all_dates( $Entry['StartTime'] 
           , RepeatType( $Entry['Repeat']['Frequency'] ) 
-          , $Entry['Repeat']['Interval'], $rep_bymonth, $rep_byweekno 
+          , $rep_interval, $rep_bymonth, $rep_byweekno 
           , $rep_byyearday, $rep_bymonthday, $rep_byday, $rep_bysetpos 
           , $rep_count, $rep_until, $rep_wkst, $ex_days, $inc_days );
 
