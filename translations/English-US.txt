@@ -29,37 +29,34 @@
 #        Translate "May_" to the full month name and "May" to the,
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
-# Note:  When translating the date formats,
-#          __month__ __dd__, __yyyy__
-#          __month__ __yyyy__
-#          __mm__/__dd__/__yyyy__
-#          __month__ __dd__
-#        do not translate the words themselves, change only the format of the
-#        terms. For example in German.txt the proper translation would be
-#          __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
-#
-#
 # $Id$
-# Translation last updated on 10-10-2006
+# Translation last updated on 10-11-2006
 
 
 ################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-#                        DO NOT TRANSLATE THIS SECTION                         #
-#          "drection" is language "left to right" or "right to left"?          #
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: iso-8859-1
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
 
 direction: ltr
 
-#                                                                              #
-#                                                                              #
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
 ################################################################################
 ################################################################################
 
-
-########################################
-# Specify a charset (will be sent within meta tag for each page)
-#
-charset: iso-8859-1
 
 ########################################
 # Page: access.php
@@ -1083,7 +1080,6 @@ Global Categories can not be changed: Global Categories can not be changed
 ########################################
 # Page: upcoming.php
 #
-__month__ __dd__: __month__ __dd__
 more: more
 
 ########################################
@@ -1213,9 +1209,6 @@ Dec: Dec
 # Page: includes/functions.php
 #
 Unauthorized: Unauthorized
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
 This event is private: This event is private
 Conf.: Conf.
 WK: WK
