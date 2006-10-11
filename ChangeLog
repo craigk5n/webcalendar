@@ -1,5 +1,6 @@
 Version 1.1.2 (?? ??? 2006)
 $Id$
+ - Added enddate parameter to function read_repeated_events()
  - Fixed bug [ 1575180 ] Repeating Entries are not longer displayed
  - Fixed bug [ 1574432 ] 'date selectors' missing at the bottom if using UAC
  - Fixed bug [ 1574297 ] meaning of date selector position false
