@@ -249,14 +249,14 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
 
   $ret = '';
 
-  if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' ) {
-    $ret .= '<div id="dateselector">';
-    $ret .= print_menu_dates ();
-    $ret .= '</div>';
-  } 
-
-  if ( $include_nav_links ) // TODO Add test for $MENU_ENABLED == 'N'
+  if ( $include_nav_links ) { // TODO Add test for $MENU_ENABLED == 'N'
+    if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' ) {
+      $ret .= '<div id="dateselector">';
+      $ret .= print_menu_dates ();
+      $ret .= '</div>';
+    } 
     include_once 'includes/trailer.php';
+  }
 
   if ( ! empty ( $tret ) )
     $ret .= $tret; //data from trailer
