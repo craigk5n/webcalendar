@@ -61,7 +61,7 @@ $startdate = date ( 'Ymd', $wkstart );
 $enddate = date ( 'Ymd', $wkend );
 
 /* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( $login, '', $startdate );
+$repeated_events = read_repeated_events ( $login, '', $startdate, $enddate );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $login, $startdate, $enddate );

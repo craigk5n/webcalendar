@@ -109,7 +109,7 @@ $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quicker access */
-  $re_save[$i] = read_repeated_events ( $viewusers[$i], '', $wkstart );
+  $re_save[$i] = read_repeated_events ( $viewusers[$i], '', $wkstart, $wkend );
   /* Pre-load the non-repeating events for quicker access 
      subtracting ONE_WEEK to allow cross-dat events to display*/
   $e_save[$i] = read_events ( $viewusers[$i], $wkstart - ONE_WEEK, $wkend );

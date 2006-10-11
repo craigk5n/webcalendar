@@ -435,7 +435,7 @@ if ( ! empty ( $end_date ) ) {
 if ( empty ( $error ) && empty ( $list ) ) {
   $cat_id = empty ( $report_cat_id ) ? '' : $report_cat_id;
 
-  $repeated_events = read_repeated_events ( $report_user, $cat_id, $start_date );
+  $repeated_events = read_repeated_events ( $report_user, $cat_id, $start_date, $end_date );
   $events = read_events ( $report_user, $start_date, $end_date, $cat_id );
 
   $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );

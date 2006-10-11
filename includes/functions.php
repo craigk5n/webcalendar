@@ -2132,6 +2132,42 @@ function read_events ( $user, $startdate, $enddate, $cat_id = '') {
 }
 
 /**
+ * Reads all the repeated events for a user.
+ *
+ * This is only called once per page request to improve performance. All the
+ * events get loaded into the array <var>$repeated_events</var> sorted by time of day (not
+ * date).
+ *
+ * This will load all the repeated events into memory.
+ *
+ * <b>Notes:</b>
+ * - To get which events repeat on a specific date, use
+ *   {@link get_repeating_entries()}.
+ * - To get all the dates that one specific event repeats on, call
+ *   {@link get_all_dates()}.
+ *
+ * @param string $user   Username
+ * @param int    $cat_id Category ID to filter on  (May be empty)
+ * @param int $date      Cutoff date for repeating event cal_end in timestamp
+ *                       format (may be empty)
+ *
+ * @return array Array of RepeatingEvents sorted by time of day
+ *
+ * @uses query_events
+ */
+function read_repeated_events ( $user, $cat_id = '', $date = '', $enddate='' ) {
+  global $login, $layers, $jumpdate, $max_until;
+  
+  //this date should help speed up things by eliminating events that 
+  //won't display anyway
+  $jumpdate = $date;
+  $max_until = $enddate + ONE_DAY;
+  if ( $date != '') $date = date ('Ymd', $date );
+  $filter = ($date != '') ? "AND (webcal_entry_repeats.cal_end >= $date OR webcal_entry_repeats.cal_end IS NULL) " : '';
+  return query_events ( $user, true, $filter, $cat_id );
+}
+
+/**
  * Reads all the tasks for a user with due date within the specified range of dates.
  *
  * This is only called once per page request to improve performance.  All the
@@ -2242,7 +2278,7 @@ function get_tasks ( $date, $get_unapproved=true ) {
  * @return array Array of Events sorted by time of day
  */
 function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_task=false ) {
-  global $login, $thisyear, $thismonth, $layers, $result;
+  global $login, $thisyear, $thismonth, $layers, $result, $jumpdate, $max_until;
   global $PUBLIC_ACCESS_DEFAULT_VISIBLE, $db_connection_info;
 
   $cloneRepeats = array();
@@ -2432,7 +2468,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
     $resultcnt =  count ( $result );
     // TODO: allow passing this max_until as param in case we create
     // a custom report that shows N years of events.
-    $max_until = mktime ( 0,0,0,$thismonth + 2,1, $thisyear);
+    if ( empty ( $max_until ) )
+      $max_until = mktime ( 0,0,0,$thismonth + 2,1, $thisyear);
     for ( $i = 0; $i < $resultcnt; $i++ ) {
       if ( $result[$i]->getID() != '' ) {
         $rows = dbi_get_cached_rows ( 'SELECT cal_date, cal_exdate ' .
@@ -2469,7 +2506,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
           // So, let's do up to 365 days after current month.
           // TODO: add this end time as a parameter in case someone creates
           // a custom report that asks for N years of events.
-          $jump = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear);
+          //$jump = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear);
           if ( $result[$i]->getRepeatCount() ) 
             $rpt_count = $result[$i]->getRepeatCount() -1;
           $date = $result[$i]->getDateTimeTS();
@@ -2493,7 +2530,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
               $result[$i]->getRepeatByDay(), $result[$i]->getRepeatBySetPos(),
               $rpt_count, $until, $result[$i]->getRepeatWkst(),
               $result[$i]->getRepeatExceptions(), 
-              $result[$i]->getRepeatInclusions(), $jump );
+              $result[$i]->getRepeatInclusions(), $jumpdate );
             $result[$i]->addRepeatAllDates($dates);
             // serialize and save in cache for later use
             // if ( ! empty ( $db_connection_info['cachedir'] ) ) {
@@ -2520,38 +2557,6 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
     }    
   }
   return $result;
-}
-
-/**
- * Reads all the repeated events for a user.
- *
- * This is only called once per page request to improve performance. All the
- * events get loaded into the array <var>$repeated_events</var> sorted by time of day (not
- * date).
- *
- * This will load all the repeated events into memory.
- *
- * <b>Notes:</b>
- * - To get which events repeat on a specific date, use
- *   {@link get_repeating_entries()}.
- * - To get all the dates that one specific event repeats on, call
- *   {@link get_all_dates()}.
- *
- * @param string $user   Username
- * @param int    $cat_id Category ID to filter on  (May be empty)
- * @param int $date      Cutoff date for repeating event cal_end in timestamp
- *                       format (may be empty)
- *
- * @return array Array of RepeatingEvents sorted by time of day
- *
- * @uses query_events
- */
-function read_repeated_events ( $user, $cat_id = '', $date = ''  ) {
-  global $login;
-  global $layers;
-  if ( $date != '') $date = date ('Ymd', $date );
-  $filter = ($date != '') ? "AND (webcal_entry_repeats.cal_end >= $date OR webcal_entry_repeats.cal_end IS NULL) " : '';
-  return query_events ( $user, true, $filter, $cat_id );
 }
 
 /**
@@ -2754,14 +2759,12 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
       $thisyear  = substr($dateYmd, 0, 4);
       $thisday   = substr($dateYmd, 6, 2);
       //skip to this year if called from query_events and we don't need count
-      // cek: commented out since it this is causing some events to not be
-      // loaded in year view and some reports.
-      //if ( ! empty ( $jump) && $Count == 999 ) {
-      //  while ( date ( 'Y',$cdate ) < date ( 'Y', $jump ) ) {
-      //    $thisyear += $interval;
-      //    $cdate = mktime ( $hour, $minute, 0, 1, 1, $thisyear ) ;
-      //  }
-      //}      
+      if ( ! empty ( $jump) && $Count == 999 ) {
+        while ( date ( 'Y',$cdate ) < date ( 'Y', $jump ) ) {
+          $thisyear += $interval;
+          $cdate = mktime ( $hour, $minute, 0, 1, 1, $thisyear ) ;
+        }
+      }      
       $cdate = mktime ( $hour,  $minute, 0, $thismonth, $thisday, $thisyear ) ;
       while ($cdate <= $realend && $n <= $Count) {
         $yret = array();
@@ -4989,9 +4992,9 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $cnt = count ( $participants );
   for ( $i = 0; $i < $cnt; $i++ ) {
     /* Pre-Load the repeated events for quckier access */
-    $repeated_events = read_repeated_events ( $participants[$i], '', $dateTS );
+    $repeated_events = read_repeated_events ( $participants[$i], '', $dateTS, $dateTS );
     /* Pre-load the non-repeating events for quicker access */
-    $events = read_events ( $participants[$i], $dateTS , $dateTS );
+    $events = read_events ( $participants[$i], $dateTS, $dateTS );
 
     // get all the repeating events for this date and store in array $rep
     $rep = get_repeating_entries ( $participants[$i], $date );
@@ -5101,7 +5104,7 @@ EOT;
   array_unshift($participants, '_all_');
   // Javascript for cells
   //$MouseOut = 'onmouseout="this.style.backgroundColor=\'' . $CELLBG. '\';"';
-$MouseOut = '';
+  $MouseOut = '';
   $viewMsg = translate ( 'View this entry' );
   // Display each participant
   for ( $i = 0; $i <= $cnt; $i++ ) {
@@ -5137,9 +5140,9 @@ $MouseOut = '';
            // This is the first line for 'all' users.  No event here.
            $space = "<span class=\"matrix\"><img src=\"images/pix.gif\" alt=\"\" /></span>";
          } else if ($master[$participants[$i]][$r]['stat'] == "A") {
-           $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"images/pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
+           $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}&friendly=1\"><img src=\"images/pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
          } else if ($master[$participants[$i]][$r]['stat'] == "W") {
-           $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}\"><img src=\"images/pixb.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
+           $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}&friendly=1\"><img src=\"images/pixb.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
          }
 
          $ret .= "<td class=\"matrixappts$border\" $style_width ";

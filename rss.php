@@ -235,7 +235,7 @@ $endDate = date ( 'Ymd', $endTime );
 
 /* Pre-Load the repeated events for quicker access */
 if (  $allow_repeats == true )
-  $repeated_events = read_repeated_events ( $username, $cat_id, $startTime );
+  $repeated_events = read_repeated_events ( $username, $cat_id, $startTime, $endTime );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $username, $startTime, $endTime, $cat_id );
