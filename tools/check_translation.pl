@@ -1,10 +1,9 @@
 #!/usr/bin/perl
+# $Id$
 #
-# This tool helps with the translation into other languages by verifying that
-# all text specified in translate(), etranslate() and etooltip()
-# within the application has a corresponding entry in the translation
-# data file.  In short, this makes sure all text has a correspoding
-# translation.
+# This tool helps with the translation into other languages by indicating whether
+# all text specified in translate() and tooltip() within the application has a
+# corresponding entry in the translation data file.
 #
 # Usage:
 #	check_translation.pl languagefile
@@ -16,65 +15,47 @@
 # Note: this utility should be run from this directory (tools).
 #
 ###########################################################################
+use File::Find;
 
-$trans_dir = "../translations";
+sub find_pgm_files {
+# Skipping non Webcalendar plugins,
+# if the filename ends in .class or .php, add it to @files.
+  push( @files, "$File::Find::name" )
+    if ( $_ =~ /\.(class|php)$/i
+    && $File::Find::dir !~ /(fckeditor|htmlarea|phpmailer)/i );
+}
+
+$trans_dir = '../translations';
 
 $infile = $ARGV[0];
 
-if ( $infile eq "" ) {
+if ( $infile eq '' ) {
   opendir( DIR, $trans_dir ) || die "error opening $trans_dir";
   @files = grep ( /\.txt$/, readdir(DIR) );
   closedir(DIR);
   $last_mtime = 0;
   foreach $f (@files) {
-    ($mtime) = ( stat("../translations/$f") )[9];
+    ($mtime) = ( stat("$trans_dir/$f") )[9];
     if ( $mtime > $last_mtime ) {
       $last_mtime = $mtime;
-      $infile     = "../translations/$f";
+      $infile     = "$trans_dir/$f";
     }
   }
 }
 
-if ( $infile ne "" && !-f $infile && -f "$trans_dir/$infile" ) {
-  $infile = "$trans_dir/$infile";
-}
-
-if ( $infile ne "" && !-f $infile && -f "$trans_dir/$infile.txt" ) {
-  $infile = "$trans_dir/$infile.txt";
+if ( $infile ne '' && !-f $infile ) {
+  if ( -f "$trans_dir/$infile" ) {
+    $infile = "$trans_dir/$infile";
+  } else {
+    $infile = "$trans_dir/$infile.txt";
+  }
 }
 
 # First get the list of .php and .inc files.
-opendir( DIR, ".." ) || die "Error opening ..";
-@files = grep ( /\.php$/, readdir(DIR) );
-closedir(DIR);
-
-opendir( DIR, "../includes" ) || die "Error opening ../includes";
-@incfiles = grep ( /\.php$/, readdir(DIR) );
-closedir(DIR);
-foreach $f (@incfiles) {
-  push( @files, "includes/$f" );
-}
-opendir( DIR, "../includes/js" ) || die "Error opening ../includes/js";
-@incfiles = grep ( /\.php$/, readdir(DIR) );
-closedir(DIR);
-foreach $f (@incfiles) {
-  push( @files, "includes/js/$f" );
-}
-opendir( DIR, "../includes/classes" )
-  || die "Error opening ../includes/classes";
-@incfiles = grep ( /\.class$/, readdir(DIR) );
-closedir(DIR);
-foreach $f (@incfiles) {
-  push( @files, "includes/classes/$f" );
-}
-push( @files, "tools/send_reminders.php" );
-push( @files, "tools/reload_remotes.php" );
-push( @files, "includes/menu/index.php" );
-push( @files, "install/install_functions.php" );
-push( @files, "install/index.php" );
+find \&find_pgm_files, '..';
 
 foreach $f (@files) {
-  $file = "../$f";
+  $file = $f;
   open( F, $file ) || die "Error reading $file";
 
   #print "Checking $f for text.\n";
@@ -111,14 +92,13 @@ while (<F>) {
   }
 }
 
-$notfound = 0;
-$total    = 0;
+$notfound = $total = 0;
 foreach $text ( sort { uc($a) cmp uc($b) } keys(%text) ) {
   if ( !defined( $trans{$text} ) ) {
-    if ( !$notfound ) {
-      print "The following text did not have a translation in $infile:\n\n";
-    }
-    print "$text\n";
+#    if ( !$notfound ) {
+#      print "The following text did not have a translation in $infile:\n\n";
+#    }
+#    print "$text\n";
     $notfound++;
   }
   $total++;
@@ -128,10 +108,10 @@ foreach $text ( sort { uc($a) cmp uc($b) } keys(%text) ) {
 $extra = 0;
 foreach $text ( sort { uc($a) cmp uc($b) } keys(%trans) ) {
   if ( !defined( $text{$text} ) ) {
-    if ( !$extra ) {
-      print "\nThe following translation text is not needed in $infile:\n\n";
-    }
-    print "$text\n";
+#    if ( !$extra ) {
+#      print "\nThe following translation text is not needed in $infile:\n\n";
+#    }
+#    print "$text\n";
     $extra++;
   }
 }
@@ -140,7 +120,7 @@ if ( !$notfound ) {
   print "All text was found in $infile.  Good job :-)\n";
 }
 else {
-  printf "\n$notfound of $total translation(s) missing. (%1.1f%% complete)\n",
+  printf "\n$notfound of $total translation(s) missing. (%4.1f%% complete)\n",
     ( 100 * ( $total - $notfound ) / $total );
 }
 
