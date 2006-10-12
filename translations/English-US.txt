@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-11-2006
+# Translation last updated on 10-12-2006
 
 
 ################################################################################
@@ -307,6 +307,8 @@ categories-enabled-help: Enables support for event categories.
 Categories enabled: Categories enabled
 icon_upload-enabled-help: If enabled, users can upload category icons
 Category Icon Upload enabled: Category Icon Upload enabled
+Requires: Requires
+folder to exist: folder to exist
 display-tasks-help: Display small task window on month and day calendar
 Display small task list: Display small task list
 display-tasks-in-grid-help: Display tasks in calendars along with events
@@ -561,6 +563,8 @@ Number of times: Number of times
 repeat-frequency-help: Specifies how often the event should repeat.
 Frequency: Frequency
 Weekdays Only: Weekdays Only
+MO: MO
+SU: SU
 Week Start: Week Start
 repeat-bydayextended-help: Allows date selection based on day of week.
 ByDay: ByDay
@@ -1378,13 +1382,11 @@ no such user: no such user
 ########################################
 # Page: includes/xcal.php
 #
-MO: MO
 TU: TU
 WE: WE
 TH: TH
 FR: FR
 SA: SA
-SU: SU
 Interval: Interval
 Months: Months
 Month Days: Month Days
