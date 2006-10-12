@@ -388,7 +388,7 @@ function print_menu_dates ( $menu = false ) {
   $thisdate = date ( 'Ymd', $d_time );
   $wday = date ( 'w', $d_time );
   // $WEEK_START equals 1 or 0
-  $wkstart = mktime ( 0, 0, 0, $m, $d - ( $wday - $WEEK_START ), $y );
+  $wkstart = mktime ( 12, 0, 0, $m, $d - ( $wday - $WEEK_START ), $y );
   $lastDay = ( $DISPLAY_WEEKENDS == 'N' ? 4 : 6 );
   for ( $i = -5; $i <= 9; $i++ ) {
     $twkstart = $wkstart + ( 604800 * $i );
