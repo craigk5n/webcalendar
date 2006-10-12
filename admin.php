@@ -767,6 +767,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <tr><td class="tooltip" title="<?php etooltip( 'icon_upload-enabled-help' )?>">
   <?php etranslate( 'Category Icon Upload enabled' )?>:</td><td>
   <?php echo print_radio_html ( 'ENABLE_ICON_UPLOADS' ) ?>
+  &nbsp;<?php if ( ! is_dir ( 'icons/' ) ) echo '( ' . translate( 'Requires' ) 
+    . " 'icons' " . translate( 'folder to exist' ) . ' )'?>
  </td></tr>
  
 <!-- Display Task Preferences -->
