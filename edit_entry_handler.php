@@ -220,39 +220,56 @@ if ( empty ( $participants[0] ) ) {
 
 if ( empty ( $DISABLE_REPEATING_FIELD ) ||
   $DISABLE_REPEATING_FIELD == 'N' ) {
+  //process only if Expert Mode or Weekly
+  if ($rpt_type == 'weekly' || ! empty ( $rptmode ) ) {
+    $bydayAr = explode ( ',', $bydayList );
+    if ( ! empty ( $bydayAr) ) {
+      foreach (  $bydayAr as $bydayElement ) {
+        if ( strlen ( $bydayElement ) > 2 ) 
+          $bydayAll[] = $bydayElement;
+       }
+    }
 
-  $bydayAr = explode ( ',', $bydayList );
-  if ( ! empty ( $bydayAll ) ) {
-    $bydayAr = array_merge($bydayAll,$bydayAr);
-    $bydayAr = array_unique( $bydayAr );
+    if ( ! empty ( $bydayAll ) ) {
+      $bydayAll = array_unique( $bydayAll );
+      sort ($bydayAll);
+      $byday = implode (',', $bydayAll );
+    }
+    //strip off leading comma if present
+    if ( substr ( $byday, 0, 1 ) == "," )
+      $byday = substr ( $byday, 1 );
   }
-  if ( ! empty ( $bydayAr) ) {
-    sort ($bydayAr);
-    $byday = implode (',', $bydayAr );
-  }
-  //strip off leading comma if present
-  if ( substr ( $byday, 0, 1 ) == "," )
-    $byday = substr ( $byday, 1 );
 
   //This allows users to select on weekdays if daily
   if ( $rpt_type == 'daily' && ! empty ( $weekdays_only ) ) {
    $byday = 'MO,TU,WE,TH,FR';
   }
-
-  $bymonthdayAr = explode ( ',', $bymonthdayList );
-  if ( ! empty ( $bymonthdayAr) ) {
-    sort ($bymonthdayAr);
-    $bymonthdayAr = array_unique( $bymonthdayAr );
-    $bymonthday = implode (',', $bymonthdayAr );
+  //process only if expert mode and MonthbyDate or Yearly
+  if ( ( $rpt_type == 'monthlyByDate' || $rpt_type == 'yearly' ) 
+    && ! empty ( $rptmode ) ) {
+    $bymonthdayAr = explode ( ',', $bymonthdayList );
+    if ( ! empty ( $bymonthdayAr) ) {
+      sort ($bymonthdayAr);
+      $bymonthdayAr = array_unique( $bymonthdayAr );
+      $bymonthday = implode (',', $bymonthdayAr );
+    }
+    //strip off leading comma if present
+    if ( substr ( $bymonthday, 0, 1 ) == "," )
+      $bymonthday = substr ( $bymonthday, 1 );
   }
 
-  $bysetposAr = explode ( ',', $bysetposList ); 
-  if ( ! empty ( $bysetposAr) ) {
-    sort ($bysetposAr);
-    $bysetposAr = array_unique( $bysetposAr );
-    $bysetpos = implode (',', $bysetposAr );
+  if ( $rpt_type == 'monthlyBySetPos' ) {
+    $bysetposAr = explode ( ',', $bysetposList ); 
+    if ( ! empty ( $bysetposAr) ) {
+      sort ($bysetposAr);
+      $bysetposAr = array_unique( $bysetposAr );
+      $bysetpos = implode (',', $bysetposAr );
+    }
+    //strip off leading comma if present
+    if ( substr ( $bysetpos, 0, 1 ) == "," )
+      $bysetpos = substr ( $bysetpos, 1 );
   }
-  
+ 
   $bymonth = ( ! empty ( $bymonth) ? implode (',', $bymonth ) : '' );
   
   

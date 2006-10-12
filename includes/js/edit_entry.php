@@ -129,8 +129,8 @@ function validate_and_submit () {
  //set bymonthday values for submission
  var bymonthdayStr = '';
  for ( bymonthdayKey in bymonthdayAr ) {
-   if ( bymonthdayAr[bymonthdayKey].length < 8 )
-     bymonthdayStr = bymonthdayStr + ',' + bydayAr[bymonthdayKey];
+   if ( bymonthdayAr[bymonthdayKey].length < 4 )
+     bymonthdayStr = bymonthdayStr + ',' + bymonthdayAr[bymonthdayKey];
  }
  if ( bymonthdayStr.length > 0 )
    elements['bymonthdayList'].value = bymonthdayStr.substr(1);
@@ -143,7 +143,7 @@ function validate_and_submit () {
  }
  if ( bysetposStr.length > 0 )
    elements['bysetposList'].value = bysetposStr.substr(1);
- 
+
  form.submit ();
  return true;
 }
@@ -310,7 +310,6 @@ function rpttype_handler (  ) {
    }
 
    if ( i == 5 ) { //monthly (by position)
-      makeVisible ( "rptbydayextended", true );
       makeVisible ( "rptbysetpos", true );
    }
    
@@ -483,32 +482,36 @@ function toggle_byday(ele){
 }
 
 function toggle_bymonthday(ele){
+  var tmp = '';
   if (ele.value .length > 3) {
     //blank
-  ele.value = ele.id.substr(10);
+  ele.value = tmp = ele.id.substr(10);
   } else if (ele.value == ele.id.substr(10)) {
     //positive value
-  ele.value =  parseInt(ele.id.substr(10)) -32;
+  ele.value =  tmp = parseInt(ele.id.substr(10)) -32;
   } else if (ele.value ==  (parseInt(ele.id.substr(10)) -32 )) {
     //negative value
   ele.value = "     ";
+  tmp = '';
   }
-  bymonthdayAr[ele.id] = ele.value;
+  bymonthdayAr[ele.id] = tmp;
 }
 
 function toggle_bysetpos(ele){
-  //alert(ele.id.substr(10)); 
+  var tmp = '';
   if (ele.value .length > 3) {
     //blank
-  ele.value = ele.id.substr(8);
+  ele.value = tmp = ele.id.substr(8);
+ 
   } else if (ele.value == ele.id.substr(8)) {
     //positive value
-  ele.value =  parseInt(ele.id.substr(8)) -32;
+  ele.value =  tmp = parseInt(ele.id.substr(8)) -32;
   } else if (ele.value ==  (parseInt(ele.id.substr(8)) -32 )) {
     //negative value
   ele.value = "    ";
+  tmp = '';
   }
-  bysetposAr[ele.id] = ele.value;
+  bysetposAr[ele.id.substr(8)] = tmp;
 }
 
 function toggle_until() {
@@ -662,7 +665,7 @@ function onLoad () {
     }
   } else if ( bydayList.length > 0 ) {
     bydayAr[bydayList] = bydayList;
- }
+  }
 
   bymonthdayList = form.bymonthdayList.value;
   if ( bymonthdayList.search( /,/ ) > -1 ) {
@@ -672,7 +675,7 @@ function onLoad () {
     }
   } else if ( bymonthdayList.length > 0 ) {
     bymonthdayAr[bymonthdayList] = bymonthdayList;
- }
+  }
 
   bysetposList = form.bysetposList.value;
   if ( bysetposList.search( /,/ ) > -1 ) {
@@ -682,12 +685,12 @@ function onLoad () {
     }
   } else if ( bysetposList.length > 0 ){
     bysetposAr[bysetposList] = bysetposList;
- }
+  }
 
-	timetype_handler();
-	rpttype_handler();
-	toggle_until();
-	toggle_reminders();
-	toggle_rem_rep();
-	completed_handler();
+  timetype_handler();
+  rpttype_handler();
+  toggle_until();
+  toggle_reminders();
+  toggle_rem_rep();
+  completed_handler();
 }

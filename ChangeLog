@@ -1,5 +1,6 @@
 Version 1.1.2 (?? ??? 2006)
 $Id$
+ - Fixed several issues with repeating events using multiple byxxx values
  - Fixed bug [ 1573679 ] 'repeating month per day' will not proper translated
  - Added enddate parameter to function read_repeated_events()
  - Fixed bug [ 1575180 ] Repeating Entries are not longer displayed

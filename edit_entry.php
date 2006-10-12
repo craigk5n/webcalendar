@@ -264,12 +264,16 @@ if ( $readonly == 'Y' || $is_nonuser ) {
             $rpt_end_time = $cal_time;
           }        
           $rpt_freq = $row[4];
-          $byday = explode(',',$row[5]);
+          if ( ! empty ( $row[5] ) )
+            $byday = explode( ',', $row[5] );
           $bydayStr = $row[5];
-          $bymonth = explode(',',$row[6]);
-          $bymonthday = explode(',', $row[7]);
+          if ( ! empty ( $row[6] ) )
+            $bymonth = explode( ',', $row[6] );
+          if ( ! empty ( $row[7] ) )
+            $bymonthday = explode( ',', $row[7] );
           $bymonthdayStr = $row[7];
-          $bysetpos = explode(',', $row[8]);
+          if ( ! empty ( $row[8] ) )
+            $bysetpos = explode( ',', $row[8] );
           $bysetposStr = $row[8];
           $byweekno = $row[9];
           $byyearday = $row[10];
@@ -278,7 +282,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
                
           //Check to see if Weekends Only is applicable
           $weekdays_only = ( $rpt_type == 'daily' &&
-    $byday == 'MO,TU,WE,TH,FR' ? true : false );
+            $byday == 'MO,TU,WE,TH,FR' ? true : false );
         }
         dbi_free_result ( $res );
       }
@@ -298,11 +302,11 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     dbi_free_result ( $res ); 
  }
  
-    //determine if Expert mode needs to be set
-    $expert_mode = ( isset ( $rpt_count ) || isset ($byyearday ) || isset($byweekno) ||
-      isset ($bysetpos) || isset($bymonthday) || isset ($bymonth) || isset($byday));
-  
-    //Get Repeat Exceptions
+  //determine if Expert mode needs to be set
+  $expert_mode = ( isset ( $rpt_count ) || isset ($byyearday ) || isset($byweekno) ||
+    count ($bysetpos) || count($bymonthday) || count ($bymonth) || count($byday));
+
+  //Get Repeat Exceptions
   $sql = 'SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not WHERE cal_id = ?';
     $res = dbi_execute ( $sql, array( $id ) );
     if ( $res ) {
