@@ -2707,23 +2707,23 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear ) ;
       $mdate = $cdate;
       while ($cdate <= $realend && $n <= $Count) {
+
         $yret = array();         
         $bydayvalues = $bymonthdayvalues = array();
         if ( isset($byday) )
           $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
         if ( isset($bymonthday) ) 
           $bymonthdayvalues = get_bymonthday ( $bymonthday, $mdate, $date, $realend );
-        if ( ! empty ( $bydayvalues ) && ! empty ( $bymonthdayvalues )){
+        if ( isset($byday) && isset($bymonthday) ){
           $bydaytemp = array_intersect ( $bymonthdayvalues, $bydayvalues );       
           $yret = array_merge ( $yret, $bydaytemp );  
-        } else if ( ! empty ( $bymonthdayvalues ) ) {
+        } else if ( isset($bymonthday) ) {
           $yret = array_merge ( $yret, $bymonthdayvalues );
-        } else if ( ! empty ( $bydayvalues ) ) {
+        } else if ( isset($byday) ) {
           $yret = array_merge ( $yret, $bydayvalues );      
         } else if ( ! isset($byday) && ! isset($bymonthday)  ) {
           $yret[] = $cdate;      
         }
-
         if ( isset ( $bysetpos ) ){ //must wait till all other BYxx are processed
           $mth = date('m', $cdate);
           sort ($yret);  
@@ -2732,7 +2732,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
           $dim = date('t',$setposdate); //days in month
           $yretcnt =  count($yret);
           $bysetposcnt =  count ($bysetpos);       
-          for ( $i = 0; $i < $bysetposcnt; $i++ ){ 
+          for ( $i = 0; $i < $bysetposcnt; $i++ ){
             if ($bysetpos[$i] > 0 && $bysetpos[$i] <= $yretcnt ) {
               $ret[] = $yret[$bysetpos[$i] -1];
             } else if ( abs( $bysetpos[$i] ) <= $yretcnt ) {
@@ -2783,12 +2783,12 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
              $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
             if ( isset($bymonthday) ) 
              $bymonthdayvalues = get_bymonthday ( $bymonthday, $mdate, $date, $realend );
-            if ( ! empty ( $bydayvalues ) && ! empty ( $bymonthdayvalues )){
+            if ( isset($byday) && isset($bymonthday) ){
               $bydaytemp = array_intersect ( $bymonthdayvalues, $bydayvalues );       
               $yret = array_merge ( $yret, $bydaytemp );  
-            } else if ( ! empty ( $bymonthdayvalues ) ) {
+            } else if ( isset($bymonthday) ) {
               $yret = array_merge ( $yret, $bymonthdayvalues );
-            } else if ( ! empty ( $bydayvalues ) ) {
+            } else if ( isset($byday) ) {
               $yret = array_merge ( $yret, $bydayvalues );      
             } else {
               $yret[] = mktime( $hour, $minute, 0, $month, $thisday, $ycd);      
@@ -2999,12 +2999,12 @@ function get_bymonthday ( $bymonthday, $cdate, $date, $realend ) {
   $minute = date ('i', $cdate);
   $dim = date('t',$cdate); //days in month
   foreach ( $bymonthday as $monthday) { 
-  $adjustedDay = ( $monthday > 0 )? $monthday : $dim + $monthday +1;     
-  $byxxxDay = mktime ( $hour, $minute,0, $mth , $adjustedDay, $yr);
-  if ( $byxxxDay >= $date )
-    $ret[] = $byxxxDay;
- }
- return $ret;
+    $adjustedDay = ( $monthday > 0 )? $monthday : $dim + $monthday +1;     
+    $byxxxDay = mktime ( $hour, $minute,0, $mth , $adjustedDay, $yr);
+    if ( $byxxxDay > $date )
+      $ret[] = $byxxxDay;
+  }
+  return $ret;
 }
 
 /**
