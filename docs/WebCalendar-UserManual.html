@@ -61,6 +61,9 @@
   .top {
     text-align: right;
   }
+  #rpt_matrix td{
+    text-align: center;
+  }
 </style>
 </head>
 <body>
@@ -253,7 +256,225 @@ allows the user to enter days of the year to repeat separated by commas (1,2,...
 <h3> Exclusions/Inclusions</h3>
 <p>This option allows the exclusion or inclusion of dates for the repeat sequence. This setting is applied
 after all ByXXX values are evaluated.</p>
-
+<p>&nbsp;</p>
+<table id="rpt_matrix"  border="1" cellspacing="1" cellpadding="3" width="100%">
+  <tr><th colspan="12">Available Repeat Option Matrix</th>
+  </tr>
+  <tr align="center">
+    <td>Repeat&nbsp;/&nbsp;Repeat<br />&nbsp;&nbsp;Type&nbsp;&nbsp;&nbsp;/&nbsp;Options</td>
+    <td>Ending</td>
+    <td>Frequency</td>
+    <td>Weekdays<br />Only </td>
+    <td>Week<br />Start </td>
+    <td>ByDay</td>
+    <td>ByMonth</td>
+    <td>ByMonthDay</td>
+    <td>BySetPos</td>
+    <td>ByWeekNo</td>
+    <td>ByYearDay</td>
+    <td>Exclusions/<br />Inclusions</td>
+  </tr>
+  <tr>
+    <td>None</td>
+    <td></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Daily</td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Daily ( Expert ) </td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Weekly</td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Weekly (Expert ) </td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Monthly by Day </td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Monthly by Day<br />(Expert ) </td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+    <td>X*</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Monthly by Date</td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Monthly by Date<br />(Expert ) </td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Monthly by<br />Position </td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Monthly by<br />
+      Position<br />( Expert ) </td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Yearly</td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Yearly ( Expert ) </td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X*</td>
+    <td>X</td>
+    <td>X</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>Manual</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td colspan="12" style="text-align:left">* Expanded ByDay Option allowing more granular selection</td>
+  </tr>
+</table>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
@@ -347,7 +568,7 @@ on a category. When you select a category from this menu, only events associated
 with that category will appear on your calendar.</p>
 
 <p>If enabled, icons can also be uploaded and assigned to categories to be displayed 
-before the event name. You will also be able to choose an icon from existing icons that have already been uploaded.</p>
+before the event name. You will also be able to choose an icon from existing icons that have already been uploaded. This requires that a folder named <tt>icons</tt> exist in the WebCalendar directory.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 
