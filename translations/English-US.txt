@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-12-2006
+# Translation last updated on 10-13-2006
 
 
 ################################################################################
@@ -1618,6 +1618,7 @@ Your previous version of WebCalendar requires updating several database tables.:
 ########################################
 # Page: tools/reload_remotes.php
 #
+Error connecting to database: Error connecting to database
 Include Path: Include Path
 Deleting events for: Deleting events for
 Importing events for: Importing events for
