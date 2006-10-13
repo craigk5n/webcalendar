@@ -70,7 +70,7 @@ $debug = false; // set to true to print debug info...
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
 if ( ! $c ) {
-  echo translate ( 'Error connecting to database: ' ) . dbi_error ();
+  echo translate ( 'Error connecting to database' ) . ': ' . dbi_error ();
   exit;
 }
 
