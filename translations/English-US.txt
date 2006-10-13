@@ -1630,7 +1630,8 @@ Remote Calendars not enabled: Remote Calendars not enabled
 ########################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the task detailed below.: This is a reminder for the task detailed below.
-This is a reminder for the event detailed below.: This is a reminder for the event detailed below.
+could not find event id: could not find event id
+could not find event id XXX in database.: could not find event id XXX in database.
+This is a reminder for the XXX detailed below.: This is a reminder for the XXX detailed below.
 Pecentage Complete: Pecentage Complete
 Reminder: Reminder
