@@ -1,6 +1,6 @@
 <?php
-/**
- *  $Id$
+/*
+ * $Id$
  * This page produces search results.
  *
  * "Advanced Search" adds the ability to search other users' calendars.
@@ -19,36 +19,37 @@ $error = '';
 $keywords = getValue ( 'keywords' );
 
 if ( strlen ( $keywords ) == 0 )
-  $error = translate( 'You must enter one or more search keywords' ) . '.';
+  $error = translate ( 'You must enter one or more search keywords' ) . '.';
 
 $matches = 0;
-
 // Determine if this user is allowed to search the calendar of other users
 $search_others = false; // show "Advanced Search"
 if ( $single_user == 'Y' )
   $search_others = false;
+
 if ( $is_admin )
   $search_others = true;
-else if ( access_is_enabled () )
+else
+if ( access_is_enabled () )
   $search_others = access_can_access_function ( ACCESS_ADVANCED_SEARCH );
-else if ( $login != '__public__' && ! empty ( $ALLOW_VIEW_OTHER ) &&
-  $ALLOW_VIEW_OTHER == 'Y' )
+else
+if ( $login != '__public__' && ! empty ( $ALLOW_VIEW_OTHER ) &&
+    $ALLOW_VIEW_OTHER == 'Y' )
   $search_others = true;
-else if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
-  $PUBLIC_ACCESS_OTHERS == 'Y' )
+else
+if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
+    $PUBLIC_ACCESS_OTHERS == 'Y' )
   $search_others = true;
 
 if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
-
 // Security precaution -- make sure users listed in participants list
 // was not hacked up to include users that they don't really have access to.
 if ( $search_others ) {
-  // If user can only see users in his group, then remove users not
-  // in his group.
+  // If user can only see users in his group, then remove users not in his group.
   if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
-    $USER_SEES_ONLY_HIS_GROUPS == 'Y'
-    && ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' ) {
+      $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! empty ( $GROUPS_ENABLED ) &&
+      $GROUPS_ENABLED == 'Y' ) {
     $myusers = get_my_users ( '', 'view' );
     $userlookup = array ();
     for ( $i = 0, $cnt = count ( $myusers ); $i < $cnt; $i++ ) {
@@ -76,63 +77,76 @@ if ( $search_others ) {
 if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
 
-print_header();
-?>
+print_header ();
+echo '
+    <h2>' . translate ( 'Search Results' ) . '</h2>';
 
-<h2><?php etranslate( 'Search Results' )?></h2>
-
-<?php echo '<p>';
-if ( ! empty ( $error ) ) {
+if ( ! empty ( $error ) )
   echo print_error ( $error );
-} else {
+else {
   $ids = array ();
+// *** "Phrase" feature by Steve Weyer saweyer@comcast.net 4-May-2005
+// check if keywords is surrounded by quotes
+// an alternative might be to add a checkbox/list on search.php
+// to indicate Phrase or other mode via an arg
+// if a phrase, use (after removing quotes) rather than split into words
+// also add query (keywords) to "match results" heading near end
+// e.g., search_handler.php?keywords=%22Location:%20Arts%20and%20Crafts%22
+
+// begin Phrase modification
+$klen = strlen ( $keywords );
+$phrasedelim = "\\\"";
+$plen = strlen ( $phrasedelim );
+
+if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
+    substr ( $keywords, $klen - $plen ) == $phrasedelim ) {
+  $phrase = substr ( $keywords, $plen, $klen - ( $plen * 2 ) );
+  $words = array ( $phrase );
+} else {
+  // original (default) behavior
   $words = split ( ' ', $keywords );
+}
+// end Phrase modification
+
   $word_cnt = count ( $words );
   for ( $i = 0; $i < $word_cnt; $i++ ) {
-    $sql_params = array();
-    // Note: we only search approved/waiting events (not deleted)
-    $sql = 'SELECT webcal_entry.cal_id, webcal_entry.cal_name, ' .
-      'webcal_entry.cal_date ' .
-      'FROM webcal_entry, webcal_entry_user ' .
-      'WHERE webcal_entry.cal_id = webcal_entry_user.cal_id ' .
-      "AND webcal_entry_user.cal_status in ( 'A','W' ) " .
-      'AND webcal_entry_user.cal_login IN ( ';
+    $sql_params = array ();
+    // Note: we only search approved/waiting events (not deleted).
+    $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date
+      FROM webcal_entry AS we, webcal_entry_user AS weu
+      WHERE we.cal_id = weu.cal_id AND weu.cal_status in ( "A","W" )
+      AND weu.cal_login IN ( ?';
     if ( $search_others ) {
       if ( empty ( $users[0] ) )
-        $users[0] = $login;
+        $sql_params[0] = $users[0] = $login;
       $user_cnt = count ( $users );
-      for ( $j = 0; $j < $user_cnt; $j++ ) {
-        if ( $j > 0 )
-          $sql .= ', ';
-        $sql .= ' ?';
+      for ( $j = 1; $j < $user_cnt; $j++ ) {
+        $sql .= ', ?';
         $sql_params[] = $users[$j];
       }
-    } else {
-      $sql .= ' ? ';
+    } else
       $sql_params[] = $login;
-    }
+
     $sql .= ' ) ';
     if ( $search_others ) {
       // Don't search confidential entries of other users.
-      $sql .= 'AND ( webcal_entry_user.cal_login = ? OR ' .
-        '( webcal_entry_user.cal_login != ? AND ' .
-        "webcal_entry.cal_access = 'P' ) ) ";
-        $sql_params[] = $login;
-        $sql_params[] = $login;
+      $sql .= 'AND ( weu.cal_login = ?
+        OR ( weu.cal_login != ? AND we.cal_access = "P" ) ) ';
+      $sql_params[] = $login;
+      $sql_params[] = $login;
     }
-    //we get an error using mssql trying to read text column as varchar
-    //this workaround seems to fix it up ROJ
-    //this only will search the first ikb of the description
-    $sql .= 'AND ( UPPER(webcal_entry.cal_name) ' .
-      'LIKE UPPER(?) ' .
-      ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0?
-        'OR UPPER( CAST ( webcal_entry.cal_description AS varchar(1024) ) ) ':
-        'OR UPPER(webcal_entry.cal_description ) ' ).
-      'LIKE UPPER(?) ) ORDER BY cal_date';
+    // We get an error using mssql trying to read text column as varchar.
+    // This workaround seems to fix it up ROJ
+    // but, will search the first ikb of the description.
+    $sql .= 'AND ( UPPER ( we.cal_name ) LIKE UPPER ( ? ) OR UPPER ( '
+     . ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0
+      ? 'CAST ( we.cal_description AS varchar (1024) )'
+      : 'we.cal_description' )
+     . ' ) LIKE UPPER ( ? ) ) ORDER BY cal_date';
     $sql_params[] = '%' . $words[$i] . '%';
     $sql_params[] = '%' . $words[$i] . '%';
-    //echo "SQL: $sql<br /><br />";
-    //print_r ( $sql_params );
+    // echo "SQL: $sql<br /><br />";
+    // print_r ( $sql_params );
     $res = dbi_execute ( $sql, $sql_params );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -142,33 +156,43 @@ if ( ! empty ( $error ) ) {
           $ids[$idstr] = 1;
         else
           $ids[$idstr]++;
-        $info[$idstr] = "$row[1] ( " . date_to_str ($row[2]) . ' )';
+
+        $info[$idstr] = "$row[1] ( " . date_to_str ( $row[2] ) . ' )';
       }
     }
     dbi_free_result ( $res );
   }
 }
 
+ob_start ();
+echo '
+    <p><strong>';
 if ( $matches > 0 ) {
   $matches = count ( $ids );
-  // let translations get picked up
+  // Let update_translation.pl pick up translations.
   // translate ( 'match found' ) translate ( 'matches found' )
-  echo '<span class="bold">' . $matches . ' ' .
-    translate( $matches == 1 ? 'match found' : 'matches found' )
-     . '.</span><br /><br />';
-} else {
-  echo translate( 'No matches found' ) . '.';
-}
-echo '</p>';
+  echo $matches . ' '
+   . translate ( // line break to bypass update_translation.pl here.
+    'match' . ( $matches == 1 ? '' : 'es' ) . ' found' );
+} else
+  echo translate ( 'No matches found' );
+
+echo ": $keywords" . '</strong>.</p>';
 // now sort by number of hits
 if ( empty ( $error ) ) {
   arsort ( $ids );
-  echo "<ul>\n";
+  echo '
+    <ul>';
   for ( reset ( $ids ); $key = key ( $ids ); next ( $ids ) ) {
-    echo "<li><a class=\"nav\" href=\"view_entry.php?id=$key\">" . $info[$key] . "</a></li>\n";
+    echo '
+      <li><a class="nav" href="view_entry.php?id=' . $key . '">' . $info[$key]
+     . '</a></li>';
   }
-  echo "</ul>\n";
+  echo '
+    </ul>';
 }
 
-echo print_trailer(); ?>
+ob_end_flush ();
+echo print_trailer ();
 
+?>

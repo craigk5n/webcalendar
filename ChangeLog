@@ -1,5 +1,7 @@
 Version 1.1.2 (?? ??? 2006)
 $Id$
+ - Applied PATCH [ 1207304 ] Search "phrase"; display keywords in results.
+   Cut some dupe code. Lines < 80 chars.
  - Finished Implementing PATCH [ 1536655 ]  Use better HTML for Search
  - Fixed several issues with repeating events using multiple byxxx values
  - Fixed bug [ 1573679 ] 'repeating month per day' will not proper translated
