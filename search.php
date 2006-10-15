@@ -19,7 +19,7 @@ else if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
   $show_others = true;
 
 if ( $show_others ) {
-  $INC = array ('js/search.php/true');
+  $INC = array ( 'js/search.php/true' );
 } else {
   $INC = '';
 }
@@ -30,26 +30,25 @@ print_header ( $INC );
 
 <form action="search_handler.php" method="post" name="searchformentry" style="margin-left:13px;">
 
-<label for="keywordsadv"><?php etranslate( 'Keywords' )?>:&nbsp;</label>
+<p><label for="keywordsadv"><?php etranslate( 'Keywords' )?>:&nbsp;</label>
 <input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
-<input type="submit" value="<?php etranslate( 'Search' )?>" /><br />
-<?php 
+<input type="submit" value="<?php etranslate( 'Search' )?>" /></p>
+<?php
 if ( ! $show_others ) {
   echo '</form>';
 } else {
 ?>
-<br /><br />
-<div id="advlink"><a title="<?php etranslate( 'Advanced Search' );?>"
-   href="javascript:show('adv'); hide('advlink');"><?php
-    etranslate( 'Advanced Search' );?></a></div>
+<p id="advlink"><a title="<?php etranslate( 'Advanced Search' );?>"
+   href="javascript:show( 'adv' ); hide( 'advlink' );"><?php
+    etranslate( 'Advanced Search' );?></a></p>
 <table id="adv" style="display:none;">
 <tr><td class="aligntop alignright bold" width="60px">
- <?php etranslate( 'Users' ); ?>:&nbsp;</td><td>
+ <label for="usersadv"><?php etranslate( 'Users' ); ?>:&nbsp;</td><td>
 <?php
   $users = get_my_users ( '', 'view' );
   // Get non-user calendars (if enabled)
   if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
-    $nonusers = get_my_nonusers ( $login , true, 'view' );
+    $nonusers = get_my_nonusers ( $login, true, 'view' );
     if ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == 'Y' )
       $users = array_merge ( $nonusers, $users );
     else
@@ -71,8 +70,8 @@ if ( ! $show_others ) {
   else
     $size = $cnt;
 ?>
-<select name="users[]" size="<?php echo $size;?>" multiple="multiple"><?php echo $out; ?></select>
-<?php 
+<select name="users[]" id="usersadv" size="<?php echo $size;?>" multiple="multiple"><?php echo $out; ?></select>
+<?php
   if ( $GROUPS_ENABLED == 'Y' ) {
    echo '<input type="button" onclick="selectUsers()" value="' .
       translate( 'Select' ) . '..." />' . "\n";
