@@ -1,6 +1,6 @@
 <?php
 /**
- *  $Id$ 
+ *  $Id$
  * This page produces search results.
  *
  * "Advanced Search" adds the ability to search other users' calendars.
@@ -46,7 +46,7 @@ if ( empty ( $users ) || empty ( $users[0] ) )
 if ( $search_others ) {
   // If user can only see users in his group, then remove users not
   // in his group.
-  if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) && 
+  if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
     $USER_SEES_ONLY_HIS_GROUPS == 'Y'
     && ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' ) {
     $myusers = get_my_users ( '', 'view' );
@@ -64,7 +64,7 @@ if ( $search_others ) {
   }
   // Now, use access control to remove more users :-)
   if ( access_is_enabled () && ! $is_admin ) {
-    $newlist = array ( );
+    $newlist = array ();
     for ( $i = 0; $i < $cnt; $i++ ) {
       if ( access_user_calendar ( 'view', $users[$i] ) )
         $newlist[] = $users[$i];
@@ -81,7 +81,7 @@ print_header();
 
 <h2><?php etranslate( 'Search Results' )?></h2>
 
-<?php
+<?php echo '<p>';
 if ( ! empty ( $error ) ) {
   echo print_error ( $error );
 } else {
@@ -95,7 +95,7 @@ if ( ! empty ( $error ) ) {
       'webcal_entry.cal_date ' .
       'FROM webcal_entry, webcal_entry_user ' .
       'WHERE webcal_entry.cal_id = webcal_entry_user.cal_id ' .
-      "AND webcal_entry_user.cal_status in ('A','W') " .
+      "AND webcal_entry_user.cal_status in ( 'A','W' ) " .
       'AND webcal_entry_user.cal_login IN ( ';
     if ( $search_others ) {
       if ( empty ( $users[0] ) )
@@ -111,7 +111,7 @@ if ( ! empty ( $error ) ) {
       $sql .= ' ? ';
       $sql_params[] = $login;
     }
-    $sql .= ') ';
+    $sql .= ' ) ';
     if ( $search_others ) {
       // Don't search confidential entries of other users.
       $sql .= 'AND ( webcal_entry_user.cal_login = ? OR ' .
@@ -125,15 +125,15 @@ if ( ! empty ( $error ) ) {
     //this only will search the first ikb of the description
     $sql .= 'AND ( UPPER(webcal_entry.cal_name) ' .
       'LIKE UPPER(?) ' .
-      ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0? 
-        'OR UPPER( CAST ( webcal_entry.cal_description AS varchar(1024) ) ) ': 
+      ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0?
+        'OR UPPER( CAST ( webcal_entry.cal_description AS varchar(1024) ) ) ':
         'OR UPPER(webcal_entry.cal_description ) ' ).
       'LIKE UPPER(?) ) ORDER BY cal_date';
     $sql_params[] = '%' . $words[$i] . '%';
     $sql_params[] = '%' . $words[$i] . '%';
     //echo "SQL: $sql<br /><br />";
     //print_r ( $sql_params );
-    $res = dbi_execute ( $sql , $sql_params );
+    $res = dbi_execute ( $sql, $sql_params );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $matches++;
@@ -142,7 +142,7 @@ if ( ! empty ( $error ) ) {
           $ids[$idstr] = 1;
         else
           $ids[$idstr]++;
-        $info[$idstr] = "$row[1] (" . date_to_str ($row[2]) . ')';
+        $info[$idstr] = "$row[1] ( " . date_to_str ($row[2]) . ' )';
       }
     }
     dbi_free_result ( $res );
@@ -154,11 +154,12 @@ if ( $matches > 0 ) {
   // let translations get picked up
   // translate ( 'match found' ) translate ( 'matches found' )
   echo '<span class="bold">' . $matches . ' ' .
-    translate( $matches == 1 ? 'match found' : 'matches found' ) 
+    translate( $matches == 1 ? 'match found' : 'matches found' )
      . '.</span><br /><br />';
 } else {
   echo translate( 'No matches found' ) . '.';
 }
+echo '</p>';
 // now sort by number of hits
 if ( empty ( $error ) ) {
   arsort ( $ids );
@@ -169,8 +170,5 @@ if ( empty ( $error ) ) {
   echo "</ul>\n";
 }
 
-?>
-<br /><br />
-
-<?php echo print_trailer(); ?>
+echo print_trailer(); ?>
 
