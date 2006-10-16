@@ -65,7 +65,7 @@ if ( $show_others ) {
       <table id="adv" style="display:none;">
         <tr>
           <td class="aligntop alignright bold" width="60px"><label for="usersadv">'
-   . translate( 'Users' ) . ':&nbsp;</td>
+   . translate( 'Users' ) . ':&nbsp;</label></td>
           <td>
             <select name="users[]" id="usersadv" size="' . $size
    . '" multiple="multiple">' . $out . '
