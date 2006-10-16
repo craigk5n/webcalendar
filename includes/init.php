@@ -128,7 +128,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   if ( empty ( $charset ) || $charset == 'charset' )
     $charset = 'iso-8859-1';
 
-  $ret .= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN
+  $ret .= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="'
  . $lang . '">
@@ -254,7 +254,7 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
       $ret .= '<div id="dateselector">';
       $ret .= print_menu_dates ();
       $ret .= '</div>';
-    } 
+    }
     include_once 'includes/trailer.php';
   }
 
