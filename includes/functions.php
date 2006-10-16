@@ -5931,7 +5931,7 @@ function display_activity_log ( $cal_type, $cal_text='' ) {
   return $ret;
 }
 
-/**
+/*
  * Generates HTML to for radio buttons in admin and pref pages
  *
  * @param string   $variable the name of the variable to display
@@ -5944,26 +5944,26 @@ function display_activity_log ( $cal_type, $cal_text='' ) {
  *
  * @return string  HTML for the radio control
  */
-function print_radio_html ( $variable, $onclick = '', $pref='admin_', 
-  $valY='Y', $valN='N', $dispY='', $dispN='' ) {
-  global $s, $prefarray, $checked, $Yes, $No;
-  
-  $setting = ( $pref == 'admin_' ?$s[$variable] : $prefarray[$variable] );
-  $YStr = ( empty ( $dispY ) ? $Yes : $dispY );
-  $NStr = ( empty ( $dispN ) ? $No : $dispN );
-  $onclickStr = ( ! empty ( $onclick ) ? ' onclick="' . $onclick . '()" ' : '' );
-  $openingStr = '<label><input type="radio" name="' . $pref . $variable . '" value=';
-  $ret = $openingStr . "\"$valY\"";
-  if ( $setting == $valY )
-    $ret .= $checked;
-  $ret .= $onclickStr . ' />&nbsp;' .  $YStr . "</label>&nbsp;\n";
-  $ret .= $openingStr . "\"$valN\"";
-  if ( $setting != $valY ) 
-    $ret .= $checked;
-  $ret .= $onclickStr . ' />&nbsp;' . $NStr . "</label>\n";
+function print_radio_html ( $variable, $onclick = '', $pref = 'admin_',
+  $valY = 'Y', $valN = 'N', $dispY = '', $dispN = '' ) {
+  global $checked, $prefarray, $s, $Yes, $No;
 
-  return $ret;
-}
+  $onclickStr = ( ! empty ( $onclick )
+    ? ' onclick="' . $onclick . ' ()" ' : '' ) . ' />&nbsp;';
+  $openingStr = '<label><input type="radio" name="'
+   . $pref . $variable . '" value=';
+  $setting = ( $pref == 'admin_' ? $s[$variable] : $prefarray[$variable] );
+
+  return $openingStr . "\"$valY\""
+   . ( $setting == $valY ? $checked : '' )
+   . $onclickStr
+   . ( empty ( $dispY ) ? $Yes : $dispY )
+   . '</label>&nbsp;' . "\n" . $openingStr . "\"$valN\""
+   . ( $setting != $valY ? $checked :'' )
+   . $onclickStr
+   . ( empty ( $dispN ) ? $No : $dispN )
+   . '</label>&nbsp;' . "\n";
+} 
 
 /**
  * Generates HTML for color chooser options in admin and pref pages
