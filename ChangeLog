@@ -1,5 +1,6 @@
 Version 1.1.2 (?? ??? 2006)
 $Id$
+ - Fixed bug [ 1578146 ] not proper displaying of 'date' and 'time' in view_etnry.php
  - Fixed bug [ 1577999 ] SQL error after patch 1207304
  - Fixed bug [ 1578177 ] Fresh install missed table
  - Applied updated PATCH (bug fix) [ 1536655 ] Use better HTML for Search
