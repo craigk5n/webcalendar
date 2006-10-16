@@ -1,10 +1,16 @@
 <?php
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
-/* 
+/**
+ * CSS styles used in WebCalendar
+ *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
 
                    HOW TO READ THIS DOCUMENT
 
-  Below are CSS styles used in WebCalendar.
   There are two main parts to every CSS style: 'selector' & 'declaration'
     EXAMPLE:
       body {
