@@ -499,7 +499,7 @@ CREATE TABLE webcal_report (
   cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
   /* name of the report */
   cal_report_name VARCHAR(50) NOT NULL,
-  /* time range for report: /*
+  /* time range for report: */
   /* <ul> */
   /* <li>0 = tomorrow</li> */
   /* <li>1 = today</li> */
