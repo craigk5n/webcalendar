@@ -44,6 +44,8 @@ printf ( "%-25s:</td><td> %s\n", 'Web Browser', $HTTP_USER_AGENT );
 echo $rowStr;
 printf ( "%-25s:</td><td> %s\n", 'PHP Version', phpversion() );
 echo $rowStr;
+printf ( "%-25s:</td><td> %s\n", 'Default Encoding', ini_get ( 'default_charset' ) );
+echo $rowStr;
 printf ( "%-25s:</td><td> %s\n", 'db_type', $db_type );
 echo $rowStr;
 printf ( "%-25s:</td><td> %s\n", 'readonly', $readonly );
