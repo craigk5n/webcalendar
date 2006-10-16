@@ -118,8 +118,8 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
       if ( empty ( $users[0] ) )
         $sql_params[0] = $users[0] = $login;
       $user_cnt = count ( $users );
-      for ( $j = 1; $j < $user_cnt; $j++ ) {
-        $sql .= ', ?';
+      for ( $j = 0; $j < $user_cnt; $j++ ) {
+        if ( $j > 0 ) $sql .= ', ?';
         $sql_params[] = $users[$j];
       }
     } else
@@ -136,11 +136,11 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     // We get an error using mssql trying to read text column as varchar.
     // This workaround seems to fix it up ROJ
     // but, will only search the first 1kb of the description.
-    $sql .= 'AND ( UPPER ( we.cal_name ) LIKE UPPER ( ? ) OR UPPER ( '
+    $sql .= 'AND ( UPPER( we.cal_name ) LIKE UPPER( ? ) OR UPPER( '
      . ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0
       ? 'CAST ( we.cal_description AS varchar (1024) )'
       : 'we.cal_description' )
-     . ' ) LIKE UPPER ( ? ) ) ORDER BY cal_date';
+     . ' ) LIKE UPPER( ? ) ) ORDER BY cal_date';
     $sql_params[] = '%' . $words[$i] . '%';
     $sql_params[] = '%' . $words[$i] . '%';
     // echo "SQL: $sql<br /><br />";
