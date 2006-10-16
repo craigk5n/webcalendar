@@ -118,7 +118,9 @@ if ( ! empty ( $reload ) ) {
     //  $data = parse_vcal( $nurl );
     //}  
     // we may be processing an hCalendar
-    if ( count ( $data ) == 0  && function_exists ( 'simplexml_load_string' ) ) {
+    //$data sometimes has a count of 1 but is not a valid array
+    if ( ( count ( $data ) == 0 || ! isset ( $data[0] ) )
+      && function_exists ( 'simplexml_load_string' ) ) {
       $h  = new hKit;
       $h->tidy_mode  = 'proxy';
       $result  = $h->getByURL('hcal', $nurl);
