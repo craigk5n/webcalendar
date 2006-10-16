@@ -173,6 +173,12 @@ class Event {
    */
   var $_allDay;
  /**
+   * Is this an Timed event?
+   * @var bool
+   * @access private
+   */
+  var $_timed;
+ /**
    * Is this an Untimed event?
    * @var bool
    * @access private
@@ -663,6 +669,19 @@ class Event {
   function isAllDay () {
    $this->_allDay = ( $this->_time == 0 && $this->_duration == 1440? true : false); 
     return $this->_allDay;
+  }
+
+ /**
+   * Determine if event is Timed 
+   *
+   * @return bool True if event is Timed
+   *
+   * @access public
+   */
+  function isTimed () {
+   $this->_timed = ( $this->_time > 0 || ( $this->_time == 0 
+     && $this->_duration != 1440 )? true : false); 
+    return $this->_timed;
   }
  
  /**
