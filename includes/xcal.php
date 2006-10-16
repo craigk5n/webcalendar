@@ -194,7 +194,7 @@ function export_time( $date, $duration, $time, $texport, $vtype = 'E' ) {
 }
 // $simple allows for easy reading
 function export_recurrence_ical( $id, $simple = false ) {
-  global $timestamp_RRULE, $TIMEZONE, $lang_file;
+  global $timestamp_RRULE, $TIMEZONE, $DATE_FORMAT_TASK, $lang_file;
 
   $recurrance = '';
   $sql = 'SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not '
@@ -319,7 +319,9 @@ function export_recurrence_ical( $id, $simple = false ) {
       if ( !empty( $end ) ) {
         $endtime = ( ! empty ( $endtime )? $endtime:0 );
         $rrule .= ';' . ( ! $simple ? 'UNTIL': translate ( 'Until' ) ) . '=';
-        $utc = export_get_utc_date( $end, $endtime );
+        $utc = ( ! $simple ? export_get_utc_date( $end, $endtime ) 
+          : date_to_str ( $end, $DATE_FORMAT_TASK, false ) 
+          . ' ' . display_time ( $endtime ) );
         $rrule .= $utc;
       } else if ( ! empty ( $cal_count ) && $cal_count != 999 ) {
         $rrule .= ';' . ( ! $simple ? 'COUNT' : translate ( 'Count' ) ) . "=$cal_count";
@@ -551,7 +553,7 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
     if ( empty ( $reminder['date'] ) ) { // offset may be zero
       // before edge needs a '-'
       $sign = ( $reminder['before'] == 'Y' ? '-' : '' );
-      $ret .= ': ' . $sign . 'PT' . $reminder['offset'] . "M\r\n";
+      $ret .= ':' . $sign . 'PT' . $reminder['offset'] . "M\r\n";
     }
 
     if ( ! empty ( $reminder['repeats'] ) ) {
@@ -2256,6 +2258,7 @@ function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0' , $plus_m = '
 // Put all ical data into import hash structure
 function format_ical( $event ) {
   global $login;
+
   // Set Calendar Type for easier processing later
   $fevent['CalendarType'] = $event['state'];
 
