@@ -1,6 +1,5 @@
 <?php
 /*
- * $Id$
  * This page produces search results.
  *
  * "Advanced Search" adds the ability to search other users' calendars.
@@ -102,10 +101,9 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     substr ( $keywords, $klen - $plen ) == $phrasedelim ) {
   $phrase = substr ( $keywords, $plen, $klen - ( $plen * 2 ) );
   $words = array ( $phrase );
-} else {
+} else
   // original (default) behavior
   $words = split ( ' ', $keywords );
-}
 // end Phrase modification
 
   $word_cnt = count ( $words );
@@ -137,7 +135,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     }
     // We get an error using mssql trying to read text column as varchar.
     // This workaround seems to fix it up ROJ
-    // but, will search the first ikb of the description.
+    // but, will only search the first 1kb of the description.
     $sql .= 'AND ( UPPER ( we.cal_name ) LIKE UPPER ( ? ) OR UPPER ( '
      . ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0
       ? 'CAST ( we.cal_description AS varchar (1024) )'
