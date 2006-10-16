@@ -725,7 +725,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'nonuser-list-help' )?>">
   <?php etranslate( 'Nonuser list' )?>:</td><td>
-  <?php echo print_radio_html ( 'NONUSER_AT_TOP' ) ?>
+  <?php echo print_radio_html ( 'NONUSER_AT_TOP', '', 'admin_', 'Y', 'N'
+ ,  translate ( 'Top' ), translate ( 'Bottom' ) ) ?>
 </td></tr>
 </table>
 </div>
