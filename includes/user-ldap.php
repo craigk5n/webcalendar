@@ -1,5 +1,5 @@
 <?php
-defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
 // LDAP user functions.
 // This file is intended to be used instead of the standard user.php

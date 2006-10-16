@@ -1,5 +1,5 @@
 <?php
-defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
 // This file contains all the functions for getting information
 // about users from Joomla 1.0.8 and logging in/out

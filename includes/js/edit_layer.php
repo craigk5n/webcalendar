@@ -1,5 +1,5 @@
 <?php /* $Id$  */ 
-defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 ?>
 function valid_color ( str ) {
   var ch, j;

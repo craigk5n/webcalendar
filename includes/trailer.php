@@ -1,5 +1,5 @@
 <?php
-defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
 // NOTE: This file is included within the print_trailer function found
 // in includes/init.php.  If you add a global variable somewhere in this

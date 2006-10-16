@@ -18,7 +18,7 @@
  * @package WebCalendar
  * @subpackage Authentication
  */
-defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
 
 // Set some global config variables about your system.
