@@ -6,7 +6,7 @@
  *   - Most icons by everaldo at http://en.crystalxp.net/ (with his permission)
  *   - Javascript & CSS by JSCookMenu at http://www.cs.ucla.edu/~heng/JSCookMenu/ 
  */ 
-defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
 global $readonly, $is_nonuser, $is_nonuser_admin, $is_assistant, $single_user, 
        $user, $REQUIRE_APPROVALS, $PUBLIC_ACCESS, $PUBLIC_ACCESS_OTHERS, $login,

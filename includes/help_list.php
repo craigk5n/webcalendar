@@ -7,7 +7,7 @@
  *
  *
 */
-defined( '_ISVALID' ) or die( "You can't access this file directly!" );
+defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 //DO NOT DELETE translate( 'Index' );
 $help_list = array (
 'Index'=>'help_index.php',
