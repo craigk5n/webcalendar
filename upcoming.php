@@ -49,16 +49,17 @@
  * before including upcoming.php (you can't use URL parameters when calling 
  * an include file).  Remember that after debugging you can use @include to suppress
  * PHP warnings.
- *     $numDays              default 30
- *     $cat_id               default ALL
- *     $username             default __public__
- *     $maxEvents            default 10   
- *     $showTasks (boolean)  default true
- *     $showTitle (boolean)  default true
- *     $upcoming_title       default "Upcoming Events"
- *     $showMore (boolean)   default true
- *     $showTime (boolean)   default false
- *     $showPopups (boolean)  default true
+ *     $numDays               default 30
+ *     $cat_id                default ALL
+ *     $username              default __public__
+ *     $maxEvents             default 10   
+ *     $showTasks bool        default true
+ *     $showTitle bool        default true
+ *     $upcoming_title        default "Upcoming Events"
+ *     $showMore bool         default true
+ *     $showTime bool         default false
+ *     $showPopups bool       default true
+ *     $hcalendar_output bool default false
  *
  * To do: Cache results, used cached results mostly, only update occasionally.  This
  * is pretty simple to do and greatly speeds up the include file if you have a large
@@ -67,6 +68,13 @@
  * Security:
  * TBD
  */
+
+//set default hCalendar but allow it to be overridden
+//this will include hidden values that can gleaned by hCalendar
+// clients
+if ( empty( $hcalendar_output ) ) 
+  $hcalendar_output = false;
+
 
 //only go through the requires & includes & function declarations once, 
 // in case upcoming.php is included twice on one page
@@ -95,9 +103,12 @@ include 'includes/functions.php';
 $WebCalendar->initializeFirstPhase();    
  
 include "includes/$user_inc"; 
-include 'includes/translate.php';    
-   
-include 'includes/site_extras.php';    
+include 'includes/translate.php';       
+include 'includes/site_extras.php';
+
+//added to support hCalendar 
+if ( $hcalendar_output )   
+ include 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 //This must contain the file name that this file is saved under.  It is 
@@ -124,7 +135,7 @@ $WebCalendar->setLanguage();
 // declared twice in case of this file being included twice or more within the same doc.
 function print_upcoming_event ( $e, $date ) {
   global $display_link, $link_target, $SERVER_URL, $charset,
-    $display_tzid, $showTime, $showPopups, $eventinfo, $user;
+    $display_tzid, $showTime, $showPopups, $eventinfo, $username, $hcalendar_output;
 
   $popupid = 'pop' . $e->getId() . '-' . $date;
 
@@ -150,11 +161,11 @@ function print_upcoming_event ( $e, $date ) {
           $timestr .= ' - ' .  display_time ( $e->getEndDateTime() );
         }
       }
-      $eventinfo .= build_entry_popup ( 'eventinfo-' . $popupid, $user,
+      $eventinfo .= build_entry_popup ( 'eventinfo-' . $popupid, $username,
         $e->getDescription(), $timestr, site_extras_for_popup ( $e->getId() ),
         $e->getLocation(), $e->getName(), $e->getId() );
     }
-    echo "<a class=\"entry\" id=\"$popupid\" title=\"" . 
+    echo "<div class=\"vevent\">\n<a class=\"entry\" id=\"$popupid\" title=\"" . 
       htmlspecialchars ( $e->getName() ) . '" href="' . 
       $SERVER_URL . 'view_entry.php?id=' . 
         $e->getID() . "&amp;date=$date\"";
@@ -168,12 +179,32 @@ function print_upcoming_event ( $e, $date ) {
   } else if ( $confidential ) {
     echo '[' . translate( 'Confidential' ) . ']';
   } else {
-    echo htmlspecialchars ( $e->getName() );
+    echo '<span class="summary">' . htmlspecialchars ( $e->getName() ) . '</span>';
   }
   if ( $display_link && ! empty ( $SERVER_URL ) && ! $private ) {
     echo '</a>';
   }
-  
+
+  //added for hCalendar
+  if ( $hcalendar_output ) {  
+    echo '<abbr class="dtstart" title="'. export_ts_utc_date ($e->getDateTImeTS() ) 
+      .'">' . $e->getDateTIme() . "</abbr>\n";
+    echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTImeTS() ) 
+      . '">' . $e->getEndDateTImeTS() . "</abbr>\n";
+    echo '<span class="description">' . $e->getDescription() . "</span>\n";
+    if ( strlen ( $e->getLocation() ) > 0 )
+    echo '<span class="location">' . $e->getLocation() . "</span>\n";
+    $categories = get_categories_by_id ( $e->getId(), $username );
+    $category = implode ( ', ', $categories);
+    if ( strlen ( $category  ) > 0 )
+      echo '<span class="categories">' . $category . "</span>\n";
+    if ( strlen ( $e->getUrl() ) > 0 )
+      echo '<span class="url">' . $e->getUrl() . "</span>\n";
+    $rrule = export_recurrence_ical( $e->getId() );
+    if ( strlen ( $rrule ) > 6 )
+      echo '<span class="rrule">' . substr ( $rrule, 6 ) . "</span>\n";
+  }
+
   if ( $showTime ) {  //show event time if requested (default=don't show)
     if ( $e->isAllDay() ) {
       echo ' (' . translate( 'All day event' ) . ")\n";
@@ -182,7 +213,7 @@ function print_upcoming_event ( $e, $date ) {
     }
   }
 
-  echo "<br />\n";
+  echo "</div>\n";
 
  }  //end function
 
@@ -207,7 +238,6 @@ $public_must_be_enabled = false;
 // should we use.
 $display_link = true;
 $link_target = '_top';
-
 
 // Default time window of events to load
 // Can override with "upcoming.php?days=60"
@@ -384,33 +414,25 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
 //If called directly print  header stuff
 if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) { 
 // Print header without custom header and no style sheet
-if ( ! empty ( $LANGUAGE ) ) {
-  $charset = translate ( 'charset' );
-  $lang = languageToAbbrev ( ( $LANGUAGE == 'Browser-defined' || 
-    $LANGUAGE == 'none' )? $lang : $LANGUAGE );
-  if ( $charset != 'charset' ) {
-    echo "<?xml version=\"1.0\" encoding=\"$charset\"?>\n" .
-      "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
-      "\"DTD/xhtml1-transitional.dtd\">\n" .
-      "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
-      "xml:lang=\"$lang\" lang=\"$lang\">\n" .
-      "<head>\n" .
-      "<meta http-equiv=\"Content-Type\" content=\"text/html; " .
-      "charset=$charset\" />\n";
-  } else {
-    echo "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" .
-      "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" " .
-      "\"DTD/xhtml1-transitional.dtd\">\n" .
-      "<html xmlns=\"http://www.w3.org/1999/xhtml\" " .
-      "xml:lang=\"en\" lang=\"en\">\n" .
-      "<head>\n";
-  }
-} else {
-  echo "<html>\n";
+$lang = '';
+if ( ! empty ( $LANGUAGE ) )
+  $lang = languageToAbbrev ( $LANGUAGE );
+if ( empty ( $lang ) )
+  $lang = 'en';
+// Start the header & specify the charset
+// The charset is defined in the translation file
+$charset = translate ( 'charset' );
+if ( empty ( $charset ) || $charset == 'charset' )
   $charset = 'iso-8859-1';
-}
 
-echo '<title>'.translate($APPLICATION_NAME)."</title>\n";
+echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "DTD/xhtml1-transitional.dtd">' . "\n" 
+  . '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' 
+  . $lang . '" lang="' . $lang . '">' . "\n" 
+  . '<head>' 
+  . '<meta http-equiv="Content-Type" content="text/html; charset=' 
+  . $charset . '" />'
+  . '<title>' . translate ( $APPLICATION_NAME ) . '</title>' . "\n";
 
 ?>
 <!-- This style sheet is here mostly to make it easier for others
@@ -470,6 +492,15 @@ a:hover {
   margin-left: 20px;
   color: #fff;
 }
+.dtstart,
+.dtend,
+.description,
+.location,
+.categories,
+.url,
+.rrule {
+  visibility:hidden;
+}
 </style>
 
 <?php
@@ -498,7 +529,7 @@ if ( ! empty ( $error ) ) {
 if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate($upcoming_title) . '</h3>';
 ?>
 
-<div class="cal_upcoming">
+<div class="vcalendar">
 <?php
 echo "<dl>\n";
 
