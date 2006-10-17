@@ -305,6 +305,8 @@ if ( $viewusercnt == 0 ) {
   $error = translate ( 'No users for this view' ) ;
 }
 
+$printerStr = generate_printer_friendly ( 'view_t.php' );
+
 $INC = array('js/popups.php/false');
 print_header($INC);
 
@@ -397,7 +399,7 @@ if ( ! empty ( $eventinfo ) ) {
   echo $eventinfo;
 }
 
-echo generate_printer_friendly ( 'view_t.php' );
+echo $printerStr;
 echo print_trailer (); 
 ?>
 

@@ -28,6 +28,7 @@ $error = '';
 $USERS_PER_TABLE = 6;
 
 view_init ( $id );
+$printerStr = generate_printer_friendly ( 'view_m.php' );
 
 $INC = array('js/popups.php');
 print_header($INC);
@@ -183,7 +184,6 @@ if ( ! empty ( $eventinfo ) ) {
   echo $eventinfo;
 }
 
-echo generate_printer_friendly ( 'view_m.php' );
-
+echo $printerStr;
 echo print_trailer (); ?>
 

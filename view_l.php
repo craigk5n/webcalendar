@@ -33,6 +33,13 @@ $error = '';
 
 view_init ( $id );
 
+$printerStr = $unapprovedStr = '';
+if ( empty ( $friendly ) ) {
+  $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
+    $is_nonuser_admin ? $user : $login ) );
+  $printerStr = generate_printer_friendly ( 'month.php' );
+}
+
 $INC = array('js/popups.php');
 print_header($INC);
 $trailerStr = print_trailer ();
@@ -116,12 +123,7 @@ for ( $i = 0; $i < count ( $re_save ); $i++ ) {
     array_push ( $repeated_events, $re_save[$i] );
   }
 }
-$printerStr = $unapprovedStr = '';
-if ( empty ( $friendly ) ) {
-  $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
-    $is_nonuser_admin ? $user : $login ) );
-  $printerStr = generate_printer_friendly ( 'month.php' );
-}
+
 if ( $DISPLAY_SM_MONTH != 'N') {
   $prevMonth = display_small_month ( $prevmonth, $prevyear, true, true, 'prevmonth',
     "view_l.php?id=$id&amp;" );

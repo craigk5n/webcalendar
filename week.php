@@ -43,17 +43,6 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) / $interval );
 $untimed_found = false;
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
-$HeadX = '';
-if ( ! empty ( $AUTO_REFRESH ) && $AUTO_REFRESH == 'Y' &&
-  ! empty ( $AUTO_REFRESH_TIME ) ) {
-  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
-  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week.php?$u_url" .
-    "date=$startdate$caturl" . 
-    ( ! empty ( $friendly ) ? '&amp;friendly=1': '') . "\" />\n";
-}
-$INC = array('js/popups.php');
-print_header($INC,$HeadX);
-
 /* Pre-Load the repeated events for quckier access */
 $repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login,
   $cat_id, $wkstart, $wkend );
@@ -282,6 +271,17 @@ if ( $DISPLAY_TASKS == 'Y'  ) {
   $minical_tasks .= '</div>';
   $minical_tasks .= '</td>';
 }//end minical
+
+$HeadX = '';
+if ( ! empty ( $AUTO_REFRESH ) && $AUTO_REFRESH == 'Y' &&
+  ! empty ( $AUTO_REFRESH_TIME ) ) {
+  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
+  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week.php?$u_url" .
+    "date=$startdate$caturl" . 
+    ( ! empty ( $friendly ) ? '&amp;friendly=1': '') . "\" />\n";
+}
+$INC = array('js/popups.php');
+print_header($INC,$HeadX);
 
 echo <<<EOT
   <table width="100%" cellpadding="1">

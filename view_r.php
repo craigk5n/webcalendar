@@ -90,6 +90,8 @@ $col_pixels = ( $is_day_view ? $col_pixels_day : $col_pixels_week );
 $fit_to_window = ( $is_day_view ? $fit_to_window_day : $fit_to_window_week );
 $show_time = ( $is_day_view ? $show_time_day : $show_time_week );
 
+$printerStr = generate_printer_friendly ( 'view_r.php' );
+
 $INC = array ( 'js/popups.php' );
 print_header ( $INC );
 
@@ -627,6 +629,6 @@ $user = ''; // reset
 
 if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
-echo generate_printer_friendly ( 'view_r.php' );
+echo $printerStr;
 echo print_trailer (); ?>
 
