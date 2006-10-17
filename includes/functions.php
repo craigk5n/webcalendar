@@ -1952,6 +1952,10 @@ function print_entry ( $event, $date ) {
     $can_access = CAN_DOALL;
   }
   
+  //no need to display if show time only and not a timed event
+  if ( $time_only == 'Y' && ! $event->Istimed() )
+    return false;
+
   $padding = '';
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     $class = 'layerentry';
@@ -2398,17 +2402,10 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
         continue;  // don't show rejected/deleted ones
       }
       //get primary category for this event, used for icon and color
-      $primary_cat = '';
-      $sql2 = 'SELECT webcal_entry_categories.cat_id ' .
-        ' FROM webcal_entry_categories ' .
-        ' WHERE webcal_entry_categories.cal_id = ? ' . 
-        ' ORDER BY webcal_entry_categories.cat_order';
-      $rows2 = dbi_get_cached_rows ( $sql2, array( $row[4] ) );
-      if ( $rows2 ) {
-        $row2 = $rows2[0]; //return first row only
-        $primary_cat = $row2[0];
-      }  
-    
+      $categories = get_categories_by_id ( $row[4], $user );
+      $cat_keys = array_keys ( $categories );
+      $primary_cat = ( ! empty ( $cat_keys[0] ) ? $cat_keys[0] : '' );
+  
       if ( $want_repeated && ! empty ( $row[20] ) ) {//row[20] = cal_type
         $item =& new RepeatingEvent ( $row[0], $row[1], $row[2], $row[3],
         $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], 
@@ -4496,6 +4493,41 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   "</span>\n";
 
   return $ret;
+}
+
+/**
+ * Get categories for a given event id
+ *
+ * @param int      $id  Id of event 
+ * @param string   $user normally this is $login
+ * @param bool     $asterisk Include '*' if Global
+ *
+ * @return array   Array containing category names
+ */
+function get_categories_by_id ( $id, $user, $asterisk=false ) {
+  global $login;
+
+  if ( empty ( $id ) )
+    return false;  
+  
+  $categories =  array();
+  $cat_user = ( ! empty ( $user ) ? $user : $login );  
+
+  $sql = 'SELECT wc.cat_name,  wc.cat_id, wec.cat_owner '
+   . ' FROM webcal_categories wc, webcal_entry_categories wec '
+   . ' WHERE wec.cal_id = ? '
+   . ' AND wec.cat_id = wc.cat_id '
+   . ' AND (wec.cat_owner = ? OR wec.cat_owner IS NULL)'
+   . ' ORDER BY wec.cat_order';
+  $res = dbi_execute ( $sql , array ( $id, $cat_user ) );
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    $cat_idx = ( empty ( $row[2] ) ? -$row[1] : $row[1] );
+    $cat_name = $row[0] . ( $asterisk && empty ( $row[2] ) ? '*' : '' );
+    $categories[$cat_idx] = $cat_name;
+  }
+  dbi_free_result ( $res );
+ 
+  return $categories;
 }
 
 /**

@@ -43,41 +43,17 @@ $cat_name = array();
 $catNames = '';
 
 //get user's categories for this event
-$sql = 'SELECT  DISTINCT cal_login, webcal_entry_categories.cat_id, ' .
- ' webcal_entry_categories.cat_owner, cat_name ' .
- ' FROM webcal_entry_user, webcal_entry_categories, webcal_categories ' .
- ' WHERE ( webcal_entry_user.cal_id = webcal_entry_categories.cal_id AND ' .
- ' webcal_entry_categories.cat_id = webcal_categories.cat_id AND ' .
- ' webcal_entry_user.cal_id = ? ) AND ' . 
- ' webcal_categories.cat_owner = ?'.
- ' ORDER BY webcal_entry_categories.cat_order';
-$res = dbi_execute ( $sql , array ( $id , $login ) );
-if ( $res ) {
- while ( $row = dbi_fetch_row ( $res ) ) {
-   $cat_ids[] = $row[1];
-   $cat_name[] = $row[3];    
- }
- dbi_free_result ( $res );
-}
-//get global categories
 $globals_found = false;
-$sql = 'SELECT  webcal_entry_categories.cat_id, cat_name ' .
-  ' FROM webcal_entry_categories, webcal_categories ' .
-  ' WHERE webcal_entry_categories.cat_id = webcal_categories.cat_id AND ' .
-  ' webcal_entry_categories.cal_id = ? AND ' . 
-  ' webcal_categories.cat_owner IS NULL ';
-$res = dbi_execute ( $sql , array ( $id ) );
-if ( $res ) {
- while ( $row = dbi_fetch_row ( $res ) ) {
-   $cat_ids[] = '-' .$row[0];
-   $cat_name[] = $row[1] . '*';  
-   $globals_found = true;  
- }
- dbi_free_result ( $res );
+$categories = get_categories_by_id ( $id, $login, true );
+if ( ! empty ( $categories ) ) {
+  $catNames = implode(', ' , $categories );
+  $keys = array_keys ( $categories );
+  $catList = implode(',', $keys );
+  sort ( $keys );
+  if ( $keys[0] < 0 )
+    $globals_found = true;    
 }
-$catNames = $catList = '';
-if ( ! empty ( $cat_name ) ) $catNames = implode(', ' , array_unique($cat_name));
-if ( ! empty ( $cat_ids ) ) $catList = implode(', ', array_unique($cat_ids));
+
 // Get event name and make sure event exists
 $event_name = '';
 $res = dbi_execute ( 'SELECT cal_name FROM webcal_entry ' .
