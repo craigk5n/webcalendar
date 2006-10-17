@@ -137,8 +137,7 @@ textarea {
   font-size: 12px;
   overflow: auto;
 }
-table { 
-  border-collapse: collapse; 
+table {  
   border-spacing: 0px;
   border-width:0px; 
 }
