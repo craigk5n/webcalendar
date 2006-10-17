@@ -321,39 +321,10 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     }
   }
   if ( $CATEGORIES_ENABLED == 'Y' ) {
-    //get global categories
-    $sql = 'SELECT  webcal_entry_categories.cat_id, cat_name ' .
-      ' FROM webcal_entry_categories, webcal_categories ' .
-      ' WHERE webcal_entry_categories.cat_id = webcal_categories.cat_id AND ' .
-      ' webcal_entry_categories.cal_id = ?  AND ' . 
-      ' webcal_categories.cat_owner IS NULL ';
-    $res = dbi_execute ( $sql, array( $id ) );
-    if ( $res ) {
-      while ( $row = dbi_fetch_row ( $res ) ) {
-       $cat_id[] = '-' .$row[0];
-       $cat_name[] = $row[1] . '*';    
-      }
-    dbi_free_result ( $res );
-   }
-    //get user's categories 
-    $sql = 'SELECT  webcal_entry_categories.cat_id, ' .
-      ' webcal_entry_categories.cat_owner, webcal_entry_categories.cat_order, cat_name ' .
-      ' FROM webcal_entry_categories, webcal_categories ' .
-      ' WHERE ( webcal_entry_categories.cat_id = webcal_categories.cat_id AND ' .
-      ' webcal_entry_categories.cal_id = ? ) AND ' . 
-      ' webcal_categories.cat_owner = ?'.
-      ' ORDER BY webcal_entry_categories.cat_order';
-    $res = dbi_execute ( $sql, array( $id, $real_user ) );
-    if ( $res ) {
-      while ( $row = dbi_fetch_row ( $res ) ) {
-        if ( empty ( $user ) || $login == $user || $is_assistant  || $is_admin ) {
-          $cat_id[] = $row[0];
-          $cat_name[] = $row[3];    
-        }
-      }
-      dbi_free_result ( $res );
-      if ( ! empty ( $cat_name ) ) $catNames = implode(',' , array_unique($cat_name));
-      if ( ! empty ( $cat_id ) ) $catList = implode(',', array_unique($cat_id));
+    $categories = get_categories_by_id ( $id, $real_user, true );
+    if ( ! empty ( $categories ) ) {
+      $catNames = implode(', ' , $categories );
+      $catList = implode(',', array_keys ( $categories ) );
     }
   } //end CATEGORIES_ENABLED test
 

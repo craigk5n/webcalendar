@@ -395,22 +395,10 @@ else
 
 // Get category Info
 if ( $CATEGORIES_ENABLED == 'Y' ) {
-  $categories = array();
   $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
     $is_admin ) ) ? $user : $login;  
-  $sql = 'SELECT cat_name FROM webcal_categories, webcal_entry_categories ' .
-    'WHERE ( webcal_entry_categories.cat_owner = ? OR ' .
-    'webcal_entry_categories.cat_owner IS NULL) AND webcal_entry_categories.cal_id = ? ' .
-    'AND webcal_entry_categories.cat_id = webcal_categories.cat_id ' .
-    'ORDER BY webcal_entry_categories.cat_order';
-  $res2 = dbi_execute ( $sql , array ( $cat_owner , $id ) );
-  if ( $res2 ) {
-    while ($row2 = dbi_fetch_row ( $res2 )) { 
-      $categories[] = $row2[0];
-  }
-    dbi_free_result ( $res2 );
+  $categories = get_categories_by_id ( $id, $cat_owner, true );
   $category = implode ( ', ', $categories);
-  }
 }
 
   //get reminders 

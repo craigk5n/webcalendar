@@ -827,6 +827,7 @@ function export_vcal ( $id ) {
   if ( count( $entry_array ) > 0 )
     echo "END:VCALENDAR\r\n";
 } //end function
+
 function export_ical ( $id = 'all', $attachment = false ) {
   global $publish_fullname, $login, $PROGRAM_VERSION,
   $PROGRAM_NAME, $cal_type, $timestamp_RRULE, $cat_filter;
@@ -879,21 +880,8 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $url = $row[16];
     $cal_type = $row[17];
     // Figure out Categories
-    $categories = $catids = array();
-    $catids[0] = ''; //this simplifies array_search later
-    $sql = 'SELECT wc.cat_name, ' . ' wc.cat_id '
-     . ' FROM webcal_categories wc, webcal_entry_categories wec '
-     . ' WHERE wec.cal_id = ? AND '
-     . ' wec.cat_id = wc.cat_id AND '
-     . ' (wec.cat_owner = ? OR  '
-     . ' wec.cat_owner IS NULL) '
-     . ' ORDER BY wec.cat_order';
-    $res = dbi_execute ( $sql , array ( $id , $login ) );
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $categories[] = $row[0];
-      $catids[] = $row[1];
-    }
-    dbi_free_result ( $res );
+    $categories = get_categories_by_id ( $id, $login );
+
     // Add entry in webcal_import_data if it does not exist.
     // Even thought we're exporting, this data needs to be valid
     // for proper parsing of response from iCal client.
@@ -942,7 +930,8 @@ function export_ical ( $id = 'all', $attachment = false ) {
     // if Categories were selected as an export filter, then abort this
     // event if it does not contain that category
     if ( ! empty ( $cat_filter ) ) {
-      if ( count ( $catids ) == 1 || ! array_search ( $cat_filter, $catids ) )
+      if ( count ( $categories ) == 0 || 
+        ! array_key_exists ( $cat_filter, $categories ) )
         continue;
     }
 
@@ -1483,7 +1472,8 @@ function import_data ( $data, $overwrite, $type ) {
          . '( cal_id, cal_login, cal_status, cal_percent ) '
          . 'VALUES ( ?, ?, ?, ? )';
         // do_debug ( "SQL> $sql" );
-        if ( ! dbi_execute ( $sql , array ( $id , $participants[0] , $status , $percent ) ) ) {
+        if ( ! dbi_execute ( $sql , array ( $id , $participants[0] 
+          , $status , $percent ) ) ) {
           $error = db_error ();
           // do_debug ( "Error: " . $error );
           break;
@@ -1507,7 +1497,8 @@ function import_data ( $data, $overwrite, $type ) {
             break;
           }
         }
-        dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cal_id = ?' , array ( $id ) );
+        dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cal_id = ?' 
+          , array ( $id ) );
       }
       // update Categories
       if ( ! empty ( $Entry['Categories'] ) ) {
@@ -1527,8 +1518,10 @@ function import_data ( $data, $overwrite, $type ) {
       // Add repeating info
       if ( $updateMode ) {
         // remove old repeating info
-        dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?' , array ( $id ) );
-        dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?' , array ( $id ) );
+        dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?' 
+          , array ( $id ) );
+        dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?' 
+          , array ( $id ) );
       }
       $names = array();
       $values = array();
