@@ -1,8 +1,6 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
-include_once 'includes/date_formats.php';
-
 
 //force the css cache to clear by incrementing webcalendar_csscache cookie
 $webcalendar_csscache = 1;
@@ -110,6 +108,8 @@ if ( $res ) {
 //this will force $LANGUAGE to to the current value and eliminate having
 //to double click the 'SAVE' buton
 reset_language ( get_pref_setting ( $login, 'LANGUAGE' ) );
+//move this include here to allow proper tranlation
+include 'includes/date_formats.php';
 
 //get list of theme files from /themes directory
 $themes = array();
