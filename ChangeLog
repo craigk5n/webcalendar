@@ -1,5 +1,6 @@
-Version 1.1.2 (?? ??? 2006)
 $Id$
+Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1578686 ] Missing space in SQL in send_reminders.php (CVS)
  - Fixed bug [ 1578146 ] not proper displaying of 'date' and 'time' in view_etnry.php
  - Fixed bug [ 1577999 ] SQL error after patch 1207304
  - Fixed bug [ 1578177 ] Fresh install missed table
