@@ -5838,7 +5838,10 @@ function update_status ( $status, $user, $id, $type='E' ) {
  * @global string (Y/N) Top menu enabled
  */
 function generate_printer_friendly ( $hrefin='' ) {
-  global $_SERVER, $SCRIPT, $MENU_ENABLED;
+  global $_SERVER, $SCRIPT, $MENU_ENABLED, $show_printer;
+
+  //set this to enable printer icon in top menu
+  $show_printer = true;
   $href = ( ! empty ( $href ) ? $hrefin : $SCRIPT );
   $qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? $_SERVER['QUERY_STRING'] : '' );
   $href .= '?' . $qryStr;

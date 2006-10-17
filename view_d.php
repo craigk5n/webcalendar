@@ -30,6 +30,8 @@ $error = '';
 
 view_init ( $id );
 
+$printerStr = generate_printer_friendly ( 'view_d.php' );
+
 $INC = array ( 'js/view_d.php/true' );
 print_header ( $INC );
 
@@ -64,7 +66,6 @@ $nextStr = translate ( 'Next' );
 $nowStr = date_to_str ( $nowYmd );
 $matrixStr = daily_matrix($date,$participants);
 $partStr = implode ( ',', $participants );
-$printerStr = generate_printer_friendly ( 'view_d.php' );
 $trailerStr = print_trailer (); 
 
 echo <<<EOT

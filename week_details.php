@@ -39,6 +39,8 @@ if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week_details.php?$u_url" .
     "date=$thisdate$caturl\" />\n";
 }
+$printerStr = generate_printer_friendly ( 'week_details.php' );
+
 $INC = array('js/popups.php');
 print_header($INC,$HeadX);
 
@@ -140,7 +142,7 @@ for ( $d = 0; $d < 7; $d++ ) {
 if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 echo '<br />';
 
-echo generate_printer_friendly ( 'week_details.php' );
+echo $printerStr;
 echo print_trailer(); 
 
 

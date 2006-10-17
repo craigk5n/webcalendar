@@ -357,6 +357,8 @@ $include_header = ( ! empty ( $report_include_header ) &&
   $report_include_header == 'Y'? true : false );
 
 if ( $include_header || ! empty ( $list ) || ! empty ( $error ) ) {
+  $printerStr = ( ! empty ( $report_id ) 
+    ? generate_printer_friendly ( 'report.php' ) : '' );
   print_header();
 }
 
@@ -475,12 +477,8 @@ if ( ! empty ( $error ) ) {
 $prevStr = translate ( 'Previous' );
 $nextStr = translate ( 'Next' );
 
-if ( $include_header ) {
-  $reportNameStr = '<h2>' . $report_name . '</h2>';
-  $printerStr =  generate_printer_friendly ( 'report.php' );
-} else { 
-$reportNameStr = $printerStr = '';
-}
+$reportNameStr = ( $include_header ? '<h2>' . $report_name . '</h2>' : '' );
+
 if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
   $prevLinkStr =  '<a class="nav" title="' . $prevStr . '" href="report.php?report_id=' . 
     $report_id .$u_url . "&amp;offset=$prev\">" . $prevStr . '</a>';

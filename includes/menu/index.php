@@ -12,7 +12,7 @@ global $readonly, $is_nonuser, $is_nonuser_admin, $is_assistant, $single_user,
        $user, $REQUIRE_APPROVALS, $PUBLIC_ACCESS, $PUBLIC_ACCESS_OTHERS, $login,
        $ALLOW_VIEW_OTHER, $DISPLAY_TASKS, $thisyear, $thismonth, $thisday,
        $views, $REPORTS_ENABLED, $use_http_auth, $login_return_path,
-       $NONUSER_ENABLED, $has_boss, $is_admin, $CATEGORIES_ENABLED,
+       $NONUSER_ENABLED, $has_boss, $is_admin, $CATEGORIES_ENABLED, $show_printer,
        $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL, $START_VIEW,
        $REMOTES_ENABLED, $DISPLAY_TASKS_IN_GRID, $HOME_LINK, $MENU_DATE_TOP;
 
@@ -558,8 +558,10 @@ var myMenu =
     jscMenu_item ( 'unapproved.png', '', $unapproved_url );
  
   // Generate Printer Friendly Icon 
-  $href = generate_printer_friendly ();
-  jscMenu_item ( 'printer.gif', '', $href, 'cal_printer_friendly' );
+  if ( $show_printer ) {
+    $href = generate_printer_friendly ();
+    jscMenu_item ( 'printer.gif', '', $href, 'cal_printer_friendly' );
+  }
 
 ?>  
 ];

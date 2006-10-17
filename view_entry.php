@@ -276,6 +276,8 @@ if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
   }
 }
 
+$printerStr = generate_printer_friendly ( 'view_entry.php' );
+
 print_header ();
 
 if ( ! empty ( $error ) ) {
@@ -947,7 +949,7 @@ if ( $event_repeats ) {
 
 // Show a printer-friendly link
 if ( empty ( $friendly ) ) {
-  echo generate_printer_friendly ( 'view_entry.php' );
+  echo $printerStr;
 }
 
 if ( empty ( $event_status ) ) {
