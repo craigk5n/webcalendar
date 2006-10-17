@@ -14,6 +14,9 @@ if ( $CATEGORIES_ENABLED == 'N' ) {
   exit;
 }
 
+$catIconStr = translate ( 'Category Icon' );
+$globalStr = translate ( 'Global' );
+
 // If editing, make sure they are editing their own
 // (or they are an admin user).
 if ( ! empty ( $id ) ) {
@@ -60,12 +63,13 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   etranslate( 'Category Name' )?>: <input type="text" name="catname" size="20" value="<?php   echo htmlspecialchars ( $catname ); ?>" />
   <br />
   <?php if ( ! empty ( $catIcon ) && file_exists ( $catIcon ) ){
-      echo '<br />' . translate ( 'Category Icon' ) . ":  <img src=\"$catIcon\" alt=\"" . translate( 'Category Icon' ) . "\" /><br />\n";
+      echo '<br />' . $catIconStr . ":  <img src=\"$catIcon\" alt=\"" 
+        . $catIconStr . "\" /><br />\n";
       echo translate( 'Remove Icon' ) . 
         ':&nbsp;<input type="checkbox" name="delIcon" value="Y" />';
   }
   if ( $is_admin && empty ( $id ) ) {
-    etranslate( 'Global' )?>:
+    echo $globalStr?>:
       <label><input type="radio" name="isglobal" value="N" <?php if ( ! empty ( $catowner ) || empty ( $id ) ) echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'No')?></label>&nbsp;&nbsp;
       <label><input type="radio" name="isglobal" value="Y" <?php if ( empty ( $catowner ) && ! empty ( $id ) ) echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'Yes' )?></label>
   <?php } ?>
@@ -108,17 +112,17 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
         $global_found = true;
       }
       if ( file_exists ( $catIcon ) ){
-        echo "&nbsp;&nbsp;<img src=\"$catIcon\" alt=\"" . 
-          translate( 'Category Icon' ) . '" title="' . 
-          translate( 'Category Icon' ) . "\" />\n";
+        echo "&nbsp;&nbsp;<img src=\"$catIcon\" alt=\"" 
+          . $catIconStr. '" title="' . $catIconStr . "\" />\n";
       }
       echo "</li>\n";
     }
     echo '</ul>';
   }
   if ( $global_found )
-    echo "<br /><br />\n<sup>*</sup> " . translate ( 'Global' );
-  echo '<p><a href="category.php?add=1">' . translate( 'Add New Category' ) . "</a></p><br />\n";
+    echo "<br /><br />\n<sup>*</sup> " . $globalStr;
+  echo '<p><a href="category.php?add=1">' . translate( 'Add New Category' ) 
+    . "</a></p><br />\n";
 }
 
 if ( ! empty ( $error ) ) {
