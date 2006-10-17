@@ -167,7 +167,7 @@ $enddate = date ( 'Ymd', $enddateTS );
 // Now read events all the repeating events (for all users)
 $repeated_events = query_events ( '', true,
   'AND ( webcal_entry_repeats.cal_end >= ' . $startdate
-   . 'OR webcal_entry_repeats.cal_end IS NULL ) ' );
+   . ' OR webcal_entry_repeats.cal_end IS NULL ) ' );
 $repcnt = count ( $repeated_events );
 // Read non-repeating events (for all users)
 if ( $debug )
