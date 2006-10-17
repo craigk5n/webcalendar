@@ -47,9 +47,11 @@ if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) != '' ) {
       cal_permissions ) VALUES ( ?, ? )', array ( $auser, $perm ) ) )
     die_miserable_death ( translate ( 'Database error' ) . ': ' . dbi_error () );
 }
-$cancelStr = translate ( 'Cancel' );
+$uacStr = translate ( 'User Access Control' );
+$cancelStr = '<< ' .translate ( 'Cancel' );
 $defaultStr = translate ( 'DEFAULT CONFIGURATION' );
 $saveStr = translate ( 'Save' );
+$goStr = translate ( 'Go' );
 // Are we handling the other user form?
 // If so, do that, then redirect.
 if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '' ) {
@@ -147,7 +149,6 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
   if ( $is_admin ) {
     // Present a page to allow editing a user's rights
     $adminStr = translate ( 'Admin' );
-    $uacStr = translate ( 'User Access Control' );
     user_load_variables ( $guser, 'user_' );
 
     $access = access_load_user_functions ( $guser );
@@ -155,7 +156,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     ob_start ();
 
     echo '
-    <h2>' . $uacStr . ':' . $user_fullname . '</h2>
+    <h2>' . $uacStr . ': ' . $user_fullname . '</h2>
     ' . display_admin_link () . '
     <form action="access.php" method="post" name="accessform">
       <input type="hidden" name="auser" value="' . $guser . '" />
@@ -246,7 +247,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     }
     echo $str . '
       </select>
-      <input type="submit" value="' . translate ( 'Go' ) . '" />
+      <input type="submit" value="' . $goStr . '" />
     </form>';
 
     if ( empty ( $otheruser ) ) {
@@ -447,7 +448,7 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__' ) ) {
   ob_start ();
 
   echo '
-    <h2>' . translate ( 'User Access Control' ) . '</h2>
+    <h2>' . $uacStr . '</h2>
     ' . display_admin_link () . '
     <form action="access.php" method="post" name="SelectUser">
       <select name="guser" onchange="document.SelectUser.submit()">'
@@ -468,7 +469,7 @@ if ( $is_admin && ( empty ( $guser ) || $guser != '__default__' ) ) {
 
   echo '
       </select>
-      <input type="submit" value="' . translate ( 'Go' ) . '" />
+      <input type="submit" value="' . $goStr . '" />
     </form>';
 
   ob_end_flush ();
