@@ -289,21 +289,21 @@ For full menu options see JSCookMenu documentation
 function jscMenu_menu ( $title, $url = false ) {
   $bracket = ( $url ? ']' : '' );
   $title = ( $title != '' ? translate( $title, true ) : '' );
-  echo "\n  [null,\"" . $title . "\",'$url',null,null" . $bracket . ",\n";
+  echo "\n  [null,'" . $title . "','$url',null,null" . $bracket . ",\n";
 }
 
 // Dropdown menu item
 function jscMenu_item ( $icon, $title, $url, $target='' ) {
   $title = ( $title != '' ? translate( $title, true ) : '' );
-  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />',\"".
-    $title ."\",'$url','$target',''],\n";
+  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','".
+    $title ."','$url','$target',''],\n";
 }
 
 // Dropdown menu item that has a sub menu
 function jscMenu_sub_menu ( $icon, $title ) {
   $title = ( $title != '' ? translate( $title, true ) : '' );
-  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />',\"".
-    $title ."\",'',null,'',\n";
+  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','".
+    $title ."','',null,'',\n";
 }
 
 // Dropdown menu item is custom html
