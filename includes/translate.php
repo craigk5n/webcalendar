@@ -75,7 +75,10 @@ function reset_language ( $new_language ) {
  */
 function load_translation_text () {
   global $basedir, $fullname, $lang_file, $PUBLIC_ACCESS_FULLNAME,
-  $settings, $translations;
+  $settings, $translations, $translation_loaded;
+  
+  if ( $translation_loaded == true ) //no need to run this twice
+    return;
   $translations = array ();
   if ( ! empty ( $basedir ) ) {
     $lang_file_2 = "$basedir/$lang_file";
@@ -214,7 +217,7 @@ function get_browser_language ( $pref = false ) {
  */
 function translate ( $str, $decode = '' ) {
   global $translation_loaded, $translations;
-  
+
   if ( ! $translation_loaded ) {
     $translation_loaded = true;
     load_translation_text ();
