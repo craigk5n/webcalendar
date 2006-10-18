@@ -1,5 +1,7 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Applied PATCH [ 1445931 ] Put calendar owner's name on browser tab
+   modified to check if $APPLICATION_NAME == 'myname'
  - Fixed bug [ 1578910 ] changing 'browser-language' doesn't refresh the 'pull-down'
  - Fixed bug [ 1578686 ] Missing space in SQL in send_reminders.php (CVS)
  - Fixed bug [ 1578146 ] not proper displaying of 'date' and 'time' in view_etnry.php

@@ -51,7 +51,7 @@ require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+$WebCalendar = &new WebCalendar ( __FILE__ );
 
 include_once 'includes/assert.php';
 include_once 'includes/config.php';
@@ -93,7 +93,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG, $PHP_SELF,
   $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG,
-  $TODAYCELLBG, $WEEKENDBG;
+  $TODAYCELLBG, $user_fullname, $WEEKENDBG;
   $ret = '';
   // Determine the page direction (left-to-right or right-to-left)
   $direction = translate ( 'direction' );
@@ -131,11 +131,13 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $ret .= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="'
- . $lang . '">
+   . $lang . '">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=' . $charset
-     . '" />
-    <title>' . translate ( $APPLICATION_NAME ) . '</title>';
+   . '" />
+    <title>' . ( $user_fullname != '' && $APPLICATION_NAME == 'myname'
+    ? $user_fullname : translate ( $APPLICATION_NAME ) )
+   . '</title>';
   // Includes needed for the top menu
   if ( $MENU_ENABLED == 'Y' ) {
     $MENU_THEME = ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none'
@@ -150,7 +152,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     <script type="text/javascript" src="includes/js/util.js"></script>'
    . ( !$disableAJAX ? '
     <script type="text/javascript" src="includes/js/prototype.js"></script>'
-     : '' );
+    : '' );
   // Any other includes?
   if ( is_array ( $includes ) ) {
     foreach ( $includes as $inc ) {
@@ -160,7 +162,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
       } else
         $ret .= '
     <script type="text/javascript" src="js_cacher.php?inc=' . $inc
-     . '"></script>';
+         . '"></script>';
     }
   }
   // Do we need anything else inside the header tag?
@@ -443,7 +445,7 @@ function print_menu_dates ( $menu = false ) {
    . 'href="javascript:document.SelectYear.submit()">'
    . translate ( 'Year' ) . '</a>:&nbsp;</label>
             <select name="year" id="yearselect" '
-             . 'onchange="document.SelectYear.submit()">';
+   . 'onchange="document.SelectYear.submit()">';
 
   $y = ( ! empty ( $thisyear ) ? $thisyear : date ( 'Y' ) );
 
