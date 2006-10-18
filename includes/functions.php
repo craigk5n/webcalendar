@@ -1538,8 +1538,10 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
     $ret .= "<th$thclass>" . $thname . "</th>\n";
   }
   $ret .= "</tr>\n";
-  
-  
+  $weekStr = translate('Week');
+  $WKStr = translate('WK');
+  $charset = translate('charset');
+
   $wkstart = get_weekday_before ( $thisyear, $thismonth );
   
   // generate values for first day and last day of month
@@ -1553,16 +1555,16 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
         $href = ( $demo? 'href=""': 'href="week.php?date='. 
           date ('Ymd', $i + ONE_DAY ) .'"' );
         $ret .= '<td class="weekcell"><a class="weekcell" title="' .
-          translate('Week') . '&nbsp;' .
+          $weekStr . '&nbsp;' .
             date('W', $i + ONE_DAY + ONE_DAY ) . '"' . $href;
         if ( ! empty ( $user) && $user != $login  )
           $ret .= "&amp;user=$user";
         if ( ! empty ( $cat_id ) )
           $ret .= "&amp;cat_id=$cat_id";
         $ret .= ' >';
-        $wkStr = translate('WK')  . date('W', $i + ONE_DAY + ONE_DAY );
+        $wkStr = $WKStr  . date('W', $i + ONE_DAY + ONE_DAY );
         $wkStr2 = '';
-        if ( translate('charset') == 'UTF-8' ) {
+        if ( $charset == 'UTF-8' ) {
           $wkStr2 = $wkStr;
         } else {
           for ( $w=0;$w < strlen( $wkStr );$w++) {
@@ -1938,6 +1940,12 @@ function print_entry ( $event, $date ) {
    $is_assistant, $is_nonuser_admin, $TIME_SPACER, $categories;
 
   static $key = 0;
+  static $viewEventStr, $viewTaskStr;
+
+  if ( empty ( $viewEventStr ) ) {
+    $viewEventStr = translate ( 'View this event' );
+    $viewTaskStr = translate ( 'View this task' );
+  }
   $ret = '';
   $cal_type = $event->getCalTypeName();
     
@@ -1978,9 +1986,9 @@ function print_entry ( $event, $date ) {
 
   $cal_link = 'view_entry.php';
   if ( $cal_type == 'task' ) {
-    $view_text = translate ( 'View this task' );
+    $view_text = $viewEventStr;
   } else {
-    $view_text = translate ( 'View this event' );    
+    $view_text = $viewEventStr;    
   }
     
     
@@ -3133,6 +3141,10 @@ function print_date_entries ( $date, $user, $ssi ) {
   global $events, $readonly, $is_admin, $login, $tasks, $DISPLAY_UNAPPROVED,
     $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD, $cat_id, $is_nonuser,
     $DISPLAY_TASKS_IN_GRID, $WEEK_START;
+  static $newEntryStr;
+
+  if ( empty ( $newEntryStr ) )
+    $newEntryStr = translate('New Entry');
 
   $cnt = 0;
   $ret = '';
@@ -3152,14 +3164,13 @@ function print_date_entries ( $date, $user, $ssi ) {
   if ( $is_nonuser )
     $can_add = false;
   if ( ! $ssi && $can_add ) {
-    $ret = '<a title="' .
-      translate('New Entry') . '" href="edit_entry.php?';
+    $ret = '<a title="' . $newEntryStr . '" href="edit_entry.php?';
     if ( strcmp ( $user, $login ) )
       $ret .= "user=$user&amp;";
     if ( ! empty ( $cat_id ) )
       $ret .= "cat_id=$cat_id&amp;";
     $ret .= "date=$date\"><img src=\"images/new.gif\" alt=\"" .
-      translate('New Entry') . '" class="new" /></a>';
+      $newEntryStr . '" class="new" /></a>';
     $cnt++;
   }
   if ( ! $ssi ) {
@@ -3495,6 +3506,11 @@ function calc_time_slot ( $time, $round_down = false ) {
  */
 function html_for_add_icon ( $date=0,$hour='', $minute='', $user='' ) {
   global $login, $readonly, $cat_id;
+  static $newEntryStr;
+
+  if ( empty ( $newEntryStr ) )
+    $newEntryStr = translate('New Entry');
+  
   $u_url = '';
 
   if ( $readonly == 'Y' )
@@ -3507,13 +3523,13 @@ function html_for_add_icon ( $date=0,$hour='', $minute='', $user='' ) {
   if ( ! empty ( $user ) && $user != $login )
     $u_url = "user=$user&amp;";
   return '<a title="' . 
-    translate('New Entry') . '" href="edit_entry.php?' . $u_url .
+    $newEntryStr . '" href="edit_entry.php?' . $u_url .
     "date=$date" . ( strlen ( $hour ) > 0 ? "&amp;hour=$hour": '' ) .
     ( $minute > 0 ? "&amp;minute=$minute": '' ) .
     ( empty ( $user ) ? '': "&amp;defusers=$user" ) .
     ( empty ( $cat_id ) ? '': "&amp;cat_id=$cat_id" ) .
     '"><img src="images/new.gif" class="new" alt="' . 
-    translate('New Entry') . "\" /></a>\n";
+    $newEntryStr . "\" /></a>\n";
 }
 
 /**
@@ -4169,20 +4185,27 @@ function display_time ( $time='', $control=0, $timestamp='', $format='' ) {
  * @see month_short_name
  */
 function month_name ( $m ) {
-  switch ( $m ) {
-    case 0: return translate('January');
-    case 1: return translate('February');
-    case 2: return translate('March');
-    case 3: return translate('April');
-    case 4: return translate('May_'); // needs to be different than "May"
-    case 5: return translate('June');
-    case 6: return translate('July');
-    case 7: return translate('August');
-    case 8: return translate('September');
-    case 9: return translate('October');
-    case 10: return translate('November');
-    case 11: return translate('December');
-  }
+  static $month_names;
+  
+  if ( empty ( $month_names[0] ) )
+    $month_names = array (
+      0 => translate('January'),
+      1 => translate('February'),
+      2 => translate('March'),
+      3 => translate('April'),
+      4 => translate('May_'), // needs to be different than "May",
+      5 => translate('June'),
+      6 => translate('July'),
+      7 => translate('August'),
+      8 => translate('September'),
+      9 => translate('October'),
+      10 => translate('November'),
+      11 => translate('December')
+    );
+       
+  if ( $m >=0 && $m < 12 )
+    return $month_names[$m];
+
   return "unknown-month($m)";
 }
 
@@ -4198,20 +4221,27 @@ function month_name ( $m ) {
  * @see month_name
  */
 function month_short_name ( $m ) {
-  switch ( $m ) {
-    case 0: return translate('Jan');
-    case 1: return translate('Feb');
-    case 2: return translate('Mar');
-    case 3: return translate('Apr');
-    case 4: return translate('May');
-    case 5: return translate('Jun');
-    case 6: return translate('Jul');
-    case 7: return translate('Aug');
-    case 8: return translate('Sep');
-    case 9: return translate('Oct');
-    case 10: return translate('Nov');
-    case 11: return translate('Dec');
-  }
+  static $monthshort_names;
+  
+  if ( empty ( $monthshort_names[0] ) )
+    $monthshort_names = array (
+      0 => translate('Jan'),
+      1 => translate('Feb'),
+      2 => translate('Mar'),
+      3 => translate('Apr'),
+      4 => translate('May'),
+      5 => translate('Jun'),
+      6 => translate('Jul'),
+      7 => translate('Aug'),
+      8 => translate('Sep'),
+      9 => translate('Oct'),
+      10 => translate('Nov'),
+      11 => translate('Dec')
+    );
+       
+  if ( $m >=0 && $m < 12 )
+    return $monthshort_names[$m]; 
+
   return "unknown-month($m)";
 }
 
@@ -4227,15 +4257,22 @@ function month_short_name ( $m ) {
  * @see weekday_short_name
  */
 function weekday_name ( $w ) {
-  switch ( $w ) {
-    case 0: return translate('Sunday');
-    case 1: return translate('Monday');
-    case 2: return translate('Tuesday');
-    case 3: return translate('Wednesday');
-    case 4: return translate('Thursday');
-    case 5: return translate('Friday');
-    case 6: return translate('Saturday');
-  }
+  static $weekday_names;
+  
+  if ( empty ( $weekday_names[0] ) )
+    $weekday_names = array (
+      0 => translate('Sunday'),
+      1 => translate('Monday'),
+      2 => translate('Tuesday'),
+      3 => translate('Wednesday'),
+      4 => translate('Thursday'),
+      5 => translate('Friday'),
+      6 => translate('Saturday')
+    );
+       
+  if ( $w >=0 && $w < 7 )
+    return $weekday_names[$w]; 
+
   return "unknown-weekday($w)";
 }
 
@@ -4249,15 +4286,22 @@ function weekday_name ( $w ) {
  * @return string The abbreviated weekday name ("Sun")
  */
 function weekday_short_name ( $w ) {
-  switch ( $w ) {
-    case 0: return translate('Sun');
-    case 1: return translate('Mon');
-    case 2: return translate('Tue');
-    case 3: return translate('Wed');
-    case 4: return translate('Thu');
-    case 5: return translate('Fri');
-    case 6: return translate('Sat');
-  }
+  static $week_names;
+  
+  if ( empty ( $week_names[0] ) )
+    $week_names = array (
+      0 => translate('Sun'),
+      1 => translate('Mon'),
+      2 => translate('Tue'),
+      3 => translate('Wed'),
+      4 => translate('Thu'),
+      5 => translate('Fri'),
+      6 => translate('Sat')
+    );
+       
+  if ( $w >=0 && $w < 7 )
+    return $week_names[$w];
+
   return "unknown-weekday($w)";
 }
 
