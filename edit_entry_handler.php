@@ -10,6 +10,30 @@ $error = '';
 
 $do_override = false;
 $old_id = -1;
+
+//put byday values in logical sequence
+function sort_byday ( $a, $b ) {
+  global $byday_values;
+  
+  $len_a = strlen ( $a );
+  $len_b = strlen ( $b );
+  $val_a = $byday_values[substr ($a, -2 )];
+  $val_b = $byday_values[substr ($b, -2 )];
+  if ( $len_a != $len_b  ) { 
+    return ( $len_a < $len_b ? -1 : 1 );
+  } else if ( $len_a == 2 ) {
+    return strcmp ( $val_a, $val_b );
+  } else { //they start with numeric offsets
+    $offset_a = substr ( $a, 0, $len_a - 2 ); 
+    $offset_b = substr ( $b, 0, $len_b - 2 );
+    if ( $offset_a == $offset_b ) {
+      return strcmp ( $val_a, $val_b );
+    } else { //add weight to weekday value to help sort
+      return strcmp ( abs($offset_a) + $val_a * 10, abs($offset_b) + $val_b * 10 );
+    }
+   }
+}
+
 if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
   // override date specified.  user is going to create an exception
   // to a repeating event.
@@ -232,7 +256,8 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
 
     if ( ! empty ( $bydayAll ) ) {
       $bydayAll = array_unique( $bydayAll );
-      sort ($bydayAll);
+      //call special sort algorithm
+      usort ($bydayAll , 'sort_byday');
       $byday = implode (',', $bydayAll );
     }
     //strip off leading comma if present
