@@ -17,6 +17,21 @@ $views_link = array ( );
 $reports_link = array ( );
 $manage_calendar_link = array ( );
 
+$myCalStr = translate( 'My Calendar' );
+$todayStr = translate( 'Today' );
+$adminStr = translate( 'Admin' );
+$unapprovedStr = translate( 'Unapproved Entries' );
+$searchStr = translate( 'Search' );
+$importStr = translate( 'Import' );
+$exportStr = translate( 'Export' );
+$addNewEntryStr = translate( 'Add New Entry' );
+$addNewTaskStr = translate( 'Add New Task' );
+$loginStr = translate( 'Login' );
+$logoutStr = translate( 'Logout' );
+$currentUserStr = translate( 'Current User' );
+$helpStr = translate( 'Help' );
+$publicStr = $PUBLIC_ACCESS_FULLNAME;
+
 // Go To links
 $can_add = true;
 if ( $readonly == 'Y' )
@@ -33,10 +48,9 @@ else {
 // get HOME URL and text 
 if ( ! empty ( $GLOBALS['HOME_LINK'] ) ) {
   $home = $GLOBALS['HOME_LINK'];
-  $goto_link[] = '<a title="' . 
-    translate( 'Home' ) . '" class="bold" ' .
-    "href=\"$home\">" . 
-    translate( 'Home' ) . '</a>';
+  $homeStr = translate( 'Home' );
+  $goto_link[] = '<a title="' . $homeStr . '" class="bold" ' 
+    . "href=\"$home\">$homeStr" . '</a>';
 }
 
 
@@ -67,33 +81,27 @@ if ( ! access_can_view_page ( $todayURL ) ) {
 
 if ( $single_user != 'Y' ) {
   if ( ! empty ( $user ) && $user != $login ) {
-    $goto_link[] = '<a title="' . 
-      translate( 'My Calendar' ) . '" class="bold" ' .
-      "href=\"$mycal\">" . 
-      translate( 'Back to My Calendar' ) . '</a>';
+    $goto_link[] = '<a title="' . $myCalStr . '" class="bold" ' 
+      . "href=\"$mycal\">" . translate( 'Back to My Calendar' ) . '</a>';
   } else {
     $goto_link[] = '<a title="' . 
-      translate( 'My Calendar' ) . '" class="bold" ' .
-      "href=\"$mycal\">" . 
-      translate( 'My Calendar' ) . '</a>';
+      $myCalStr . '" class="bold" ' 
+        . "href=\"$mycal\">$myCalStr" . '</a>';
   }
   if ( ! empty ( $user ) && $user != $login && ! empty ( $todayURL ) ) {
     $todayURL .= '?user=' . $user;
   }
   if ( ! empty ( $todayURL ) ) {
-    $goto_link[] = '<a title="' . 
-      translate( 'Today' ) . '" class="bold" ' .
-      "href=\"$todayURL\">" . 
-      translate( 'Today' ) . '</a>';
+    $goto_link[] = '<a title="' . $todayStr . '" class="bold" ' 
+      . "href=\"$todayURL\">$todayStr" . '</a>';
   }
   if ( $login != '__public__' && ! $is_nonuser && $readonly == 'N' ) {
     if ( ! access_is_enabled () || access_can_access_function ( ACCESS_ADMIN_HOME ) ||
     access_can_access_function ( ACCESS_PREFERENCES )) {
       $url = 'adminhome.php';
       if ($is_nonuser_admin) $url .= "?user=$user";
-      $goto_link[] = '<a title="' . 
-        translate( 'Admin' ) . '" class="bold" ' .
-        "href=\"$url\">" . translate( 'Admin' ) . '</a>';
+      $goto_link[] = '<a title="' . $adminStr. '" class="bold" ' 
+        . "href=\"$url\">$adminStr" . '</a>';
     }
   }
   if ( $login != '__public__' && ! $is_nonuser &&  $readonly == 'N' &&
@@ -102,9 +110,8 @@ if ( $single_user != 'Y' ) {
     if ( $is_nonuser_admin ) {
       $url .= "?user=" . getValue ( 'user' );
     }
-    $goto_link[] = '<a title="' . 
-      translate( 'Unapproved Entries' ) . "\" href=\"$url\">" . 
-      translate( 'Unapproved Entries' ) . '</a>';
+    $goto_link[] = '<a title="' . $unapprovedStr 
+      . "\" href=\"$url\">$unapprovedStr" . '</a>';
   }
   if ( ( $login == '__public__' && $PUBLIC_ACCESS_OTHERS != 'Y' ) ||
     ( $is_nonuser && ! access_is_enabled () ) ) {
@@ -118,52 +125,45 @@ if ( $single_user != 'Y' ) {
       // get count of users this user can see.  if > 1, then...
       $ulist = array_merge ( get_my_users(), get_my_nonusers ( $login , true ) );
       if ( count ( $ulist ) > 1 ) {
-        $goto_link[] = '<a title="' . 
-          translate("Another User's Calendar") .
-          "\" href=\"select_user.php\">" . 
-          translate("Another User's Calendar") . '</a>';
+        $calStr = translate("Another User's Calendar");
+        $goto_link[] = '<a title="' .  $calStr 
+          . '" href="select_user.php">' . $calStr . '</a>';
       }
     }
   }
 } else {
-  $goto_link[] = '<a title="' . 
-    translate( 'My Calendar' ) . '" class="bold" ' .
-    "href=\"$mycal\">" . 
-    translate( 'My Calendar' ) . '</a>';
-  $goto_link[] = '<a title="' . 
-    translate( 'Today' ) . '" class="bold" ' .
-    "href=\"$todayURL\">" . 
-    translate( 'Today' ) . '</a>';
+  $goto_link[] = '<a title="' . $myCalStr . '" class="bold" ' 
+    . "href=\"$mycal\">$myCalStr" . '</a>';
+  $goto_link[] = '<a title="' . $todayStr . '" class="bold" ' 
+    . "href=\"$todayURL\">$todayStr" . '</a>';
   if ( $readonly == 'N' ) {
-    $goto_link[] = '<a title="' . 
-      translate( 'Admin' ) . '" class="bold" ' .
-      'href="adminhome.php">' . 
-      translate( 'Admin' ) . '</a>';
+    $goto_link[] = '<a title="' .  $adminStr . '" class="bold" ' 
+      . 'href="adminhome.php">' . $adminStr . '</a>';
   }
 }
 // only display some links if we're viewing our own calendar.
 if ( empty ( $user ) || $user == $login ) {
   if ( access_can_access_function ( ACCESS_SEARCH ) ) {
     $goto_link[] = '<a title="' . 
-      translate( 'Search' ) . '" href="search.php">' .
-      translate( 'Search' ) . '</a>';
+      $searchStr . '" href="search.php">' .
+      $searchStr . '</a>';
   }
   if ( $login != '__public__' && ! $is_nonuser
     && $readonly != 'Y' ) {
     if ( access_can_access_function ( ACCESS_IMPORT ) ) {
       $goto_link[] = '<a title="' . 
-        translate( 'Import' ) . '" href="import.php">' . 
-        translate( 'Import' ) . '</a>';
+        $importStr . '" href="import.php">' . 
+        $importStr . '</a>';
     }
     if ( access_can_access_function ( ACCESS_EXPORT ) ) {
       $goto_link[] = '<a title="' . 
-        translate( 'Export' ) . '" href="export.php">' . 
-        translate( 'Export' ) . '</a>';
+        $exportStr . '" href="export.php">' . 
+        $exportStr . '</a>';
     }
   }
   if ( $can_add ) {
     $url = '<a title="' . 
-      translate( 'Add New Entry' ) . '" href="edit_entry.php';
+      $addNewEntryStr . '" href="edit_entry.php';
     if ( ! empty ( $thisyear ) ) {
       $url .= "?year=$thisyear";
       if ( ! empty ( $thismonth ) ) {
@@ -173,12 +173,12 @@ if ( empty ( $user ) || $user == $login ) {
         $url .= "&amp;day=$thisday";
       }
     }
-    $url .= '">' . translate( 'Add New Entry' ) . '</a>';
+    $url .= '">' . $addNewEntryStr . '</a>';
     $goto_link[] = $url;
   }
   if ( $can_add && ( $DISPLAY_TASKS_IN_GRID == 'Y' || $DISPLAY_TASKS == 'Y' ) ) {
     $url = '<a title="' . 
-      translate( 'Add New Task' ) . '" href="edit_entry.php?eType=task';
+      $addNewTaskStr . '" href="edit_entry.php?eType=task';
     if ( ! empty ( $thisyear ) ) {
       $url .= "&amp;year=$thisyear";
       if ( ! empty ( $thismonth ) ) {
@@ -188,7 +188,7 @@ if ( empty ( $user ) || $user == $login ) {
         $url .= "&amp;day=$thisday";
       }
     }
-    $url .= '">' . translate( 'Add New Task' ) . '</a>';
+    $url .= '">' . $addNewTaskStr . '</a>';
     $goto_link[] = $url;
   }
 }
@@ -199,11 +199,11 @@ if ( access_is_enabled () ) {
 }
 if ( $showHelp ) {
   $goto_link[] = '<a title="' . 
-    translate( 'Help' ) . '" href="#" onclick="window.open ' .
+    $helpStr . '" href="#" onclick="window.open ' .
     "( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars, " .
     "height=500,width=600,innerHeight=520,outerWidth=620' ); \" " .
     "onmouseover=\"window.status=''; return true\">" .
-    translate( 'Help' ) . '</a>';
+    $helpStr . '</a>';
 }
 
 if ( count ( $goto_link ) > 0 ) {
@@ -304,16 +304,16 @@ if ( ! $use_http_auth ) {
   if ( $readonly != 'Y' ) {
     if ( strlen ( $login ) && $login != '__public__' ) {
      $tret .= '<br /><span class="prefix">' .
-      translate( 'Current User' ) . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
-      translate( 'Logout' ) . "\" href=\"$logout_url\">" . 
-      translate( 'Logout' ) . "</a>)\n";
+      $currentUserStr . ":</span>&nbsp;$fullname&nbsp;(<a title=\"" . 
+      $logoutStr . "\" href=\"$logout_url\">" . 
+      $logoutStr . "</a>)\n";
     } else {
      // For public user (who did not actually login)
      $tret .= '<br /><span class="prefix">' .
-      translate( 'Current User' ) . ':</span>&nbsp;' . 
-      translate( 'Public Access' ) . '&nbsp;(<a title="' . 
-      translate( 'Login' ) . "\" href=\"$login_url\">" . 
-      translate( 'Login' ) . "</a>)\n";
+      $currentUserStr . ':</span>&nbsp;' . 
+      $publicStr . '&nbsp;(<a title="' . 
+      $loginStr . "\" href=\"$login_url\">" . 
+      $loginStr . "</a>)\n";
     }
   }
 }
@@ -339,7 +339,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
   if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
     $public = array (
       'cal_login' => '__public__',
-      'cal_fullname' => translate( 'Public Access' )
+      'cal_fullname' => $publicStr
     );
     array_unshift ( $grouplist, $public );
   }
