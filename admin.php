@@ -227,7 +227,7 @@ include "includes/styles.php";
    ?>
   </select>&nbsp;&nbsp;
   <?php echo translate( 'Your browser default language is' ) . ' ' . 
-   get_browser_language ( true )  . '.'; ?>
+   translate ( get_browser_language ( true ) )  . '.'; ?>
  </td></tr>
 <tr><td><label>
  <?php etranslate( 'Allow user to use themes' )?>:</label></td><td colspan="3">
