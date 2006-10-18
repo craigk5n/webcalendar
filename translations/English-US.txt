@@ -1486,7 +1486,6 @@ This Year: This Year
 Exit: Exit
 Add New Event: Add New Event
 Delete Entries: Delete Entries
-Another User\'s Calendar: Another User\'s Calendar
 My Views: My Views
 Manage Calendar of: Manage Calendar of
 My Reports: My Reports
