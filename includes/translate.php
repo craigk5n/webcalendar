@@ -33,7 +33,7 @@ function unhtmlentities ( $string ) {
 
   //don't munge utf-8 encoded pages
   if ( ini_get ( 'default_charset' ) == 'utf-8' )
-    return $string;
+    return addslashes ( $string );
   // html_entity_decode available PHP 4 >= 4.3.0, PHP 5
   if ( function_exists ( 'html_entity_decode' ) )
     return html_entity_decode ( $string );
