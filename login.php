@@ -74,6 +74,15 @@ if ( empty ( $lang ) ) {
   $lang = 'en';
 }
 
+// If Application Name is set to Title then get translation
+// If not, use the Admin defined Application Name
+if ( ! empty ( $APPLICATION_NAME ) &&  
+  ( $APPLICATION_NAME == 'Title' || $APPLICATION_NAME == 'myname' ) ) {
+  $appStr = translate( 'Title' );
+} else {
+  $appStr = htmlspecialchars ( $APPLICATION_NAME );
+} 
+
 $login = getPostValue ( 'login' );
 $password = getPostValue ( 'password' );
 
@@ -159,7 +168,7 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>' . "\n";
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" lang="<?php echo $lang; ?>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
-<title><?php etranslate( $APPLICATION_NAME )?></title>
+<title><?php echo $appStr ?></title>
 <?php if ( ! $logout ) { ?>
 <script type="text/javascript">
 // error check login/password
@@ -199,15 +208,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 }
 ?>
 
-<h2><?php 
-// If Application Name is set to Title then get translation
-// If not, use the Admin defined Application Name
-if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME == 'Title' ) {
-  etranslate($APPLICATION_NAME);
-} else {
-  echo htmlspecialchars ( $APPLICATION_NAME );
-}  
-?></h2>
+<h2><?php echo $appStr?></h2>
 
 <?php
 if ( ! empty ( $error ) ) {
