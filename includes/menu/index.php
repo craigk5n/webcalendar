@@ -380,7 +380,7 @@ var myMenu =
 
   // Views Menu
   // translate ( 'Views');
-  // translate ( 'Another User\'s Calendar');
+  // translate ( "Another User's Calendar");
   // translate ( 'My Views');
   // translate ( 'Manage Calendar of');
   // translate ( 'Manage Views');
