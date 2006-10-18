@@ -1,5 +1,8 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1525230 ] Publish does not work with use_http_auth=true
+ - Fixed bug [ 1575484 ] Remote publish/subscribe doesn't authenticate correctly
+ - Fixed bug [ 1577365 ] icalclient.php dont work with http auth setting
  - Applied PATCH [ 1445931 ] Put calendar owner's name on browser tab
    modified to check if $APPLICATION_NAME == 'myname'
  - Fixed bug [ 1578910 ] changing 'browser-language' doesn't refresh the 'pull-down'
