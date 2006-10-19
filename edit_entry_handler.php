@@ -259,10 +259,10 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
       //call special sort algorithm
       usort ($bydayAll , 'sort_byday');
       $byday = implode (',', $bydayAll );
+      //strip off leading comma if present
+      if ( substr ( $byday, 0, 1 ) == "," )
+        $byday = substr ( $byday, 1 );
     }
-    //strip off leading comma if present
-    if ( substr ( $byday, 0, 1 ) == "," )
-      $byday = substr ( $byday, 1 );
   }
 
   //This allows users to select on weekdays if daily
