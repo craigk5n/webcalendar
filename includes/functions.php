@@ -1644,8 +1644,7 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
   return $ret;
 }
 
-/**
- * Prints out a minicalendar for a month.
+/* Prints out a minicalendar for a month.
  *
  * @todo Make day.php NOT be a special case
  *
@@ -1659,188 +1658,178 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
  *                              month.php?  or  view_l.php?id=7&amp;)
  */
 function display_small_month ( $thismonth, $thisyear, $showyear,
-  $show_weeknums=false, $minical_id='', $month_link='month.php?' ) {
-  global $WEEK_START, $user, $login, $boldDays, $get_unapproved;
-  global $DISPLAY_WEEKNUMBER, $DATE_FORMAT_MY, $DISPLAY_TASKS;
-  global $SCRIPT, $thisday; // Needed for day.php
-  global $caturl, $today, $DISPLAY_ALL_DAYS_IN_MONTH, $use_http_auth;
-  global $MINI_TARGET; // Used by minical.php
+  $show_weeknums = false, $minical_id = '', $month_link = 'month.php?' ) {
+  global $boldDays, $caturl, $DATE_FORMAT_MY, $DISPLAY_ALL_DAYS_IN_MONTH,
+  $DISPLAY_TASKS, $DISPLAY_WEEKNUMBER, $get_unapproved, $login,
+  $MINI_TARGET, // Used by minical.php
+  $SCRIPT,
+  $thisday, // Needed for day.php
+  $today, $use_http_auth, $user, $WEEK_START;
 
-  if ( $user != $login && ! empty ( $user ) ) {
-    $u_url = "user=$user" . '&amp;';
-  } else {
-    $u_url = '';
-  }
+  $nextStr = translate ( 'Next' );
+  $prevStr = translate ( 'Previous' );
+
+  $u_url = ( $user != $login && ! empty ( $user )
+    ? 'user=' . $user . '&amp;' : '' );
+
   $ret = '';
-  $header_span = ( $DISPLAY_WEEKNUMBER == true? 8:7 );
-  $weekStr = translate('Week');
-  //start the minical table for each month
-  $ret .= "\n<table class=\"minical\"";
-  if ( $minical_id != '' ) {
-    $ret .= " id=\"$minical_id\"";
-  }
-  $ret .= ">\n";
+  $weekStr = translate ( 'Week' ); 
+  // start the minical table for each month
+  $ret .= '
+    <table class="minical"'
+   . ( $minical_id != '' ? ' id="' . $minical_id . '"' : '' );
 
-  $monthstart = date ('Ymd', mktime( 0,0,0,$thismonth,1,$thisyear) );
-  $monthend = date ('Ymd', mktime( 0,0,0,$thismonth + 1,0,$thisyear) );
+  $monthstart = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
+  $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
+
+  // determine if the week starts on sunday or monday
+  $wkstart = get_weekday_before ( $thisyear, $thismonth );
 
   if ( $SCRIPT == 'day.php' ) {
-    $month_ago = date ('Ymd',
+    $month_ago = date ( 'Ymd',
       mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear ) );
-    $month_ahead = date ('Ymd',
+    $month_ahead = date ( 'Ymd',
       mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear ) );
-    $ret .= "<caption>$thisday</caption>\n";
-    $ret .= "<thead>\n";
-    $ret .= "<tr class=\"monthnav\"><th colspan=\"$header_span\">\n";
-    $ret .= '<a title="' . 
-      translate('Previous') . '" class="prev" href="day.php?' . $u_url  .
-      "date=$month_ago$caturl\"><img src=\"images/leftarrowsmall.gif\" alt=\"" .
-      translate('Previous') . "\" /></a>\n";
-    $ret .= '<a title="' . 
-      translate('Next') . '" class="next" href="day.php?' . $u_url .
-      "date=$month_ahead$caturl\"><img src=\"images/rightarrowsmall.gif\" alt=\"" .
-      translate('Next') . "\" /></a>\n";
-    $ret .= date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
-      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ),
-      false );
-    $ret .= "</th></tr>\n<tr>\n";
-  } else   if ( $SCRIPT == 'minical.php' ) {
-    $month_ago = date ('Ymd',
+
+    $ret .= '
+      <caption>' . $thisday . '</caption>
+      <thead>
+        <tr class="monthnav">
+          <th colspan="' . ( $DISPLAY_WEEKNUMBER == true ? 8 : 7 ) . '">
+            <a title="' . $prevStr . '" class="prev" href="day.php?' . $u_url
+     . 'date=' . $month_ago . $caturl
+     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
+            <a title="' . $nextStr . '" class="next" href="day.php?' . $u_url
+     . 'date=' . $month_ahead . $caturl
+     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
+     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
+      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
+          </th>
+        </tr>';
+  } elseif ( $SCRIPT == 'minical.php' ) {
+    $month_ago = date ( 'Ymd',
       mktime ( 0, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
-    $month_ahead = date ('Ymd',
+    $month_ahead = date ( 'Ymd',
       mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
 
-    $ret .= "<thead>\n";
-    $ret .= '<tr class="monthnav"><th colspan="7">' . "\n";
-    $ret .= '<a title="' . 
-      translate('Previous') . '" class="prev" href="minical.php?' . $u_url  .
-      "date=$month_ago\"><img src=\"images/leftarrowsmall.gif\" alt=\"" .
-      translate('Previous') . "\" /></a>\n";
-    $ret .= '<a title="' . 
-      translate('Next') . '" class="next" href="minical.php?' . $u_url .
-      "date=$month_ahead\"><img src=\"images/rightarrowsmall.gif\" alt=\"" .
-      translate('Next') . "\" /></a>\n";
-    $ret .= date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
-      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ),
-      false );
-    $ret .= "</th></tr>\n<tr>\n";
-    } else {  //not day or minical script
-    //print the month name
-    $ret .= "<caption><a href=\"{$month_link}{$u_url}year=$thisyear&amp;month=$thismonth\">";
-   $ret .= date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
-      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__'),
-      false );
-    $ret .= "</a></caption>\n";
-
-    $ret .= "<thead>\n<tr>\n";
-  }
-
-  //determine if the week starts on sunday or monday
-  $wkstart = get_weekday_before ( $thisyear, $thismonth );
-  
-  //print the headers to display the day of the week (sun, mon, tues, etc.)
+    $ret .= '
+      <thead>
+        <tr class="monthnav">
+          <th colspan="7">
+            <a title="' . $prevStr . '" class="prev" href="minical.php?'
+     . $u_url . 'date=' . $month_ago
+     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
+            <a title="' . $nextStr . '" class="next" href="minical.php?'
+     . $u_url . 'date=' . $month_ahead
+     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
+     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
+      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
+          </th>
+        </tr>';
+  } else { // not day or minical script
+    // print the month name
+    $ret .= '
+      <caption><a href="' . $month_link . $u_url . 'year=' . $thisyear
+     . '&amp;month=' . $thismonth . '">'
+     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
+      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false )
+     . '</a></caption>
+      <thead>';
+  } 
+  $ret .= '
+        <tr>' 
+  // print the headers to display the day of the week (sun, mon, tues, etc.)
   // if we're showing week numbers we need an extra column
-  if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' )
-    $ret .= "<th class=\"empty\">&nbsp;</th>\n";
-  //if the week doesn't start on monday, print the day
-  if ( $WEEK_START == 0 ) $ret .= '<th class="weekend">' .
-    weekday_short_name ( 0 ) . "</th>\n";
-  //cycle through each day of the week until gone
+  . ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ? '
+          <th class="empty">&nbsp;</th>' : '' ) 
+  // if the week doesn't start on monday, print the day
+  . ( $WEEK_START == 0 ? '
+          <th class="weekend">' . weekday_short_name ( 0 ) . '</th>' : '' ); 
+  // cycle through each day of the week until gone
   for ( $i = 1; $i < 7; $i++ ) {
-    $ret .= "<th" . ($i==6?' class="weekend"':'') . '>' .  
-      weekday_short_name ( $i ) .  "</th>\n";
-  }
-  //if the week DOES start on monday, print sunday
-  if ( $WEEK_START == 1 )
-    $ret .= '<th class="weekend">' .  weekday_short_name ( 0 ) .  "</th>\n";
-  //end the header row
-  $ret .= "</tr>\n</thead>\n<tbody>\n";
-  for ($i = $wkstart; date ('Ymd',$i) <= $monthend;
-    $i += (ONE_DAY * 7) ) {
-    $ret .= "<tr>\n";
-    if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ) {
-      $title = 'title="' . $weekStr . '&nbsp;' . 
-        date('W', $i + ONE_DAY ) . '" ';
-      $href = 'href="week.php?' . $u_url . 'date=' .date ('Ymd', $i+ ONE_DAY + ONE_DAY). '" ';
-      $ret .= '<td class="weeknumber"><a class="weeknumber" ' . $title . $href . '>(' . 
-        date('W', $i + ONE_DAY + ONE_DAY) . ')</a></td>' . "\n";
-    }
-    for ($j = 0; $j < 7; $j++) {
-      $date = $i + ($j * ONE_DAY  + ( 12 * 3600 ));
-      $dateYmd = date ('Ymd', $date );
+    $ret .= '
+          <th' . ( $i == 6 ? ' class="weekend"' : '' ) . '>'
+     . weekday_short_name ( $i ) . '</th>';
+  } 
+  // if the week DOES start on monday, print sunday
+  $ret .= ( $WEEK_START == 1 ? '
+          <th class="weekend">' . weekday_short_name ( 0 ) . '</th>' : '' ) 
+  // end the header row
+  . '
+        </tr>
+      </thead>
+      <tbody>';
+  for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthend;
+    $i += ( 604800 ) ) {
+    $ret .= '
+        <tr>';
+    if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' )
+      $ret .= '
+          <td class="weeknumber"><a class="weeknumber" ' . 'title="' . $weekStr
+       . '&nbsp;' . date ( 'W', $i + 86400 ) . '" ' . 'href="week.php?' . $u_url
+       . 'date=' . date ( 'Ymd', $i + 86400 * 2 ) . '" ' . '> ( '
+       . date ( 'W', $i + 86400 * 2 ) . ' )</a></td>';
+
+    for ( $j = 0; $j < 7; $j++ ) {
+      $date = $i + ( $j * ( 86400 * 1.5 ) );
+      $dateYmd = date ( 'Ymd', $date );
       $wday = date ( 'w', $date );
       $hasEvents = false;
       $title = '';
+      $ret .= '
+          <td';
+
       if ( $boldDays ) {
         $ev = get_entries ( $dateYmd, $get_unapproved, true, true );
         if ( count ( $ev ) > 0 ) {
           $hasEvents = true;
-        $title = $ev[0]->getName();
+          $title = $ev[0]->getName ();
         } else {
           $rep = get_repeating_entries ( $user, $dateYmd, $get_unapproved );
           if ( count ( $rep ) > 0 ) {
             $hasEvents = true;
-            $title = $rep[0]->getName();
-          }
-        }
-      }
-      if ( ( $dateYmd >= $monthstart && $dateYmd <= $monthend )  || 
-        ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && 
-          $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
-        $ret .= '<td';
-        $class = '';
-       //add class="weekend" if it's saturday or sunday
-        if ( $wday == 0 || $wday == 6 ) {
-          if ( $class != '' ) {
-            $class .= ' ';
-          }
-          $class = 'weekend';
-        }
-        //if the day being viewed is today's date AND script = day.php
-        if ( $dateYmd == $thisyear . $thismonth . $thisday &&
-          $SCRIPT == 'day.php'  ) {
-        //if it's also a weekend, add a space between class names to combine styles
-        if ( $class != '' ) {
-            $class .= ' ';
-          }
-          $class .= 'selectedday';
-        }
-        if ( $hasEvents ) {
-          if ( $class != '' ) {
-            $class .= ' ';
-          }
-          $class .= 'hasevents';
-        }
-        if ( $class != '' ) {
-          $ret .= " class=\"$class\"";
-        }
-        if ( $dateYmd == date ('Ymd', $today ) ){
-          $ret .= ' id="today"';
-        }
+            $title = $rep[0]->getName ();
+          } 
+        } 
+      } 
+      if ( ( $dateYmd >= $monthstart && $dateYmd <= $monthend ) ||
+          ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) &&
+            $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
+        $class = 
+        // If it's a weekend.
+        ( $wday == 0 || $wday == 6 ? 'weekend' : '' ) 
+        // If the day being viewed is today's date AND script = day.php
+        . ( $dateYmd == $thisyear . $thismonth . $thisday && $SCRIPT == 'day.php'
+          ? ' selectedday' : '' ) 
+        // Are there any events scheduled for this date?
+        . ( $hasEvents ? ' hasevents' : '' );
+
+        $ret .= ( $class != '' ? ' class="' . $class . '"' : '' )
+         . ( $dateYmd == date ( 'Ymd', $today ) ? ' id="today"' : '' )
+         . '><a href="';
+
         if ( $SCRIPT == 'minical.php' ) {
-          $ret .= '><a href="';
-          if ( $use_http_auth ) {
-            $ret .= 'day.php?user=' .  $user . '&amp;';
-          } else {
-            $ret .= 'nulogin.php?login=' . $user . '&amp;return_path=day.php&amp;';
-          }
-          $ret .= 'date=' .  $dateYmd. '"' . 
-            ( ! empty ( $MINI_TARGET )? " target=\"$MINI_TARGET\"": '') . 
-            ( ! empty ( $title )? " title=\"$title\"": '') .
-            '>';    
-        } else {
-          $ret .= '><a href="day.php?' .$u_url  . 'date=' .  $dateYmd . '">';
-        }
-        $ret .= date ( 'j', $date ) . "</a></td>\n";
-       } else {
-          $ret .= "<td class=\"empty\">&nbsp;</td>\n";
-       }
-      }                 // end for $j
-      $ret .= "</tr>\n";
-    }                         // end for $i
-  $ret .= "</tbody>\n</table>\n";
-  return $ret;
-}
+          $ret .= ( $use_http_auth
+            ? 'day.php?user=' . $user
+            : 'nulogin.php?login=' . $user . '&amp;return_path=day.php' )
+           . '&amp;date=' . $dateYmd . '"' . ( ! empty ( $MINI_TARGET )
+            ? ' target="' . $MINI_TARGET . '"' : '' )
+           . ( ! empty ( $title ) ? ' title="' . $title . '"': '' );
+        } else
+          $ret .= 'day.php?' . $u_url . 'date=' . $dateYmd . '"';
+
+        $ret .= '>' . date ( 'j', $date ) . '</a></td>';
+      } else
+        $ret .= ' class="empty">&nbsp;</td>';
+    } // end for $j
+    $ret .= '
+        </tr>';
+  } // end for $i
+  return $ret . '
+      </tbody>
+    </table>
+';
+} 
 
 /**
  * Prints small task list for this $login user
