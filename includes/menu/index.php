@@ -292,7 +292,7 @@ function jscMenu_divider () {
 <!-- <![CDATA[
 function openHelp () {
   window.open ( 'help_index.php', 'cal_help','dependent,menubar,scrollbars,'
-  . 'height=500,width=600,innerHeight=520,outerWidth=620' );
+  + 'height=500,width=600,innerHeight=520,outerWidth=620' );
 }
 
 var myMenu =
