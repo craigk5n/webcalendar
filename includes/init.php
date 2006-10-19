@@ -93,7 +93,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG, $PHP_SELF,
   $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG,
-  $TODAYCELLBG, $user_fullname, $WEEKENDBG;
+  $TODAYCELLBG, $fullname, $WEEKENDBG;
   $ret = '';
   // Determine the page direction (left-to-right or right-to-left)
   $direction = translate ( 'direction' );
@@ -135,8 +135,8 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=' . $charset
    . '" />
-    <title>' . ( $user_fullname != '' && $APPLICATION_NAME == 'myname'
-    ? $user_fullname : translate ( $APPLICATION_NAME ) )
+    <title>' . ( $fullname != '' && $APPLICATION_NAME == 'myname'
+    ? $fullname : translate ( $APPLICATION_NAME ) )
    . '</title>';
   // Includes needed for the top menu
   if ( $MENU_ENABLED == 'Y' ) {
@@ -247,7 +247,7 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
   $MENU_DATE_TOP, $MENU_ENABLED, $NONUSER_ENABLED, $PUBLIC_ACCESS,
   $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_OTHERS, $readonly, $REPORTS_ENABLED,
   $REQUIRE_APPROVALS, $single_user, $STARTVIEW, $thisday, $thismonth, $thisyear,
-  $use_http_auth, $user, $views, $WEEK_START;
+  $use_http_auth, $user, $views, $WEEK_START, $PUBLIC_ACCESS_FULLNAME;
 
   $ret = '';
 
