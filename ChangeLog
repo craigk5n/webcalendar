@@ -1,5 +1,7 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Applied PATCH [ 1580572 ] Russian.txt file update (Russian and Russian_utf8)
+   (after running tools/update_translation.pl on them).
  - Fixed bug [ 1525230 ] Publish does not work with use_http_auth=true
  - Fixed bug [ 1575484 ] Remote publish/subscribe doesn't authenticate correctly
  - Fixed bug [ 1577365 ] icalclient.php dont work with http auth setting
