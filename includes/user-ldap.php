@@ -1,22 +1,21 @@
 <?php
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
-
-// LDAP user functions.
-// This file is intended to be used instead of the standard user.php
-// file.  I have not tested this yet (I do not have an LDAP server
-// running yet), so please provide feedback.
-//
-// This file contains all the functions for getting information
-// about users.  So, if you want to use an authentication scheme
-// other than the webcal_user table, you can just create a new
-// version of each function found below.
-//
-// Note: this application assumes that usernames (logins) are unique.
-//
-// Note #2: If you are using HTTP-based authentication, then you still
-// need these functions and you will still need to add users to
-// webcal_user.
-
+/*
+ * $Id$
+ * LDAP user functions.
+ * This file is intended to be used instead of the standard user.php file.
+ * I have not tested this yet (I do not have an LDAP server running yet),
+ * so please provide feedback.
+ * 
+ * This file contains all the functions for getting information about users.
+ * So, if you want to use an authentication scheme other than the webcal_user
+ * table, you can just create a new version of each function found below.
+ * 
+ * Note: this application assumes that usernames (logins) are unique.
+ * 
+ * Note #2: If you are using HTTP-based authentication, then you still need
+ * these functions and you will still need to add users to webcal_user.
+ */
 
 /***************************** Config *******************************/
 // Set some global config variables about your system.
@@ -190,8 +189,8 @@ function user_valid_crypt ( $login, $crypt_password ) {
 //   $user - user login
 //   $prefix - variable prefix to use
 function user_load_variables ( $login, $prefix ) {
-  global $error, $ds, $ldap_base_dn, $ldap_login_attr, $ldap_user_attr;
-  global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX;
+  global $ds, $error, $ldap_base_dn, $ldap_login_attr, $ldap_user_attr,
+  $ldap_user_filter, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME;
 
   if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX ) {
     nonuser_load_variables ( $login, $prefix );
@@ -211,7 +210,9 @@ function user_load_variables ( $login, $prefix ) {
 
   $ret =  false;
   if ($r = connect_and_bind()) {
-    $sr = @ldap_search ( $ds, $ldap_base_dn, "($ldap_login_attr=$login)", $ldap_user_attr );
+    $sr = @ldap_search ( $ds, $ldap_base_dn,
+      "(&($ldap_login_attr=$login)$ldap_user_filter )", $ldap_user_attr );
+
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {
