@@ -5,6 +5,7 @@
 #  Ilya G. Teterev <remirran@gmail.com>
 # Last update: Wed Oct 25 14:34:05 IST 2000
 #
+# $Id$
 # Translation last updated on 10-19-2006
 
 
