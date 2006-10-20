@@ -1,5 +1,6 @@
 # See translations/English-US.txt for instructions.
 #
+# $Id$
 # Translation last updated on 10-08-2006
 
 
