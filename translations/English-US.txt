@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-13-2006
+# Translation last updated on 10-20-2006
 
 
 ################################################################################
@@ -62,15 +62,15 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: access.php
 #
 Database error: Database error
+User Access Control: User Access Control
 Cancel: Cancel
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Save: Save
+Go: Go
 Public Access: Public Access
 Admin: Admin
-User Access Control: User Access Control
 Allow Access to Other Users' Calendar: Allow Access to Other Users' Calendar
 Grant This User Access to My Calendar: Grant This User Access to My Calendar
-Go: Go
 Type: Type
 Calendar: Calendar
 View Event: View Event
@@ -93,6 +93,8 @@ Private: Private
 ########################################
 # Page: activity_log.php
 #
+Next: Next
+Previous: Previous
 System Log: System Log
 Activity Log: Activity Log
 User: User
@@ -100,8 +102,6 @@ Date: Date
 Time: Time
 Event: Event
 Action: Action
-Previous: Previous
-Next: Next
 
 ########################################
 # Page: add_entry.php
@@ -435,11 +435,11 @@ No day specified!: No day specified!
 ########################################
 # Page: category.php
 #
+Category Icon: Category Icon
+Global: Global
 Add: Add
 Category Name: Category Name
-Category Icon: Category Icon
 Remove Icon: Remove Icon
-Global: Global
 Add Icon to Category: Add Icon to Category
 Upload: Upload
 gif 3kb max: gif 3kb max
@@ -1056,9 +1056,9 @@ Manage Reports: Manage Reports
 ########################################
 # Page: search.php
 #
+Advanced Search: Advanced Search
 Search: Search
 Keywords: Keywords
-Advanced Search: Advanced Search
 
 ########################################
 # Page: search_handler.php
@@ -1221,8 +1221,8 @@ Task Due Date: Task Due Date
 TASKS: TASKS
 Task_Title: Title
 Due: Due
-View this task: View this task
 View this event: View this event
+View this task: View this task
 exceeds limit of XXX events per day: exceeds limit of XXX events per day
 on: on
 You have XXX unapproved entries: You have XXX unapproved entries
@@ -1248,6 +1248,7 @@ Aug: Aug
 Sep: Sep
 Oct: Oct
 Nov: Nov
+unknown-month: unknown-month
 Tuesday: Tuesday
 Wednesday: Wednesday
 Thursday: Thursday
@@ -1260,6 +1261,7 @@ Wed: Wed
 Thu: Thu
 Fri: Fri
 Sat: Sat
+unknown-weekday: unknown-weekday
 Schedule an appointment for: Schedule an appointment for
 All Attendees: All Attendees
 Busy: Busy
@@ -1308,13 +1310,13 @@ Page: Page
 ########################################
 # Page: includes/trailer.php
 #
-Home: Home
 My Calendar: My Calendar
-Back to My Calendar: Back to My Calendar
 Add New Entry: Add New Entry
 Add New Task: Add New Task
-Go to: Go to
 Logout: Logout
+Home: Home
+Back to My Calendar: Back to My Calendar
+Go to: Go to
 Manage calendar of: Manage calendar of
 
 ########################################
