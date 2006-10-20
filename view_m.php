@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Page Description:
  * Display a month view with users side by side.
@@ -135,7 +134,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     $date += ONE_DAY, $wday++ ) {
  $wday = strftime ("%w", $date);
  if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
- $weekday = weekday_short_name ($wday);
+ $weekday = weekday_name ($wday, 'D' );
  echo '<tr><th';
  if ( date ('Ymd', $date) == date ('Ymd', $today) ) {
    echo ' class="today">';

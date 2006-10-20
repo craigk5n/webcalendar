@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Page Description:
  * This is the "Week by Time" and "Week by Day" view.
@@ -153,9 +152,9 @@ if ( $is_day_view ) {
 // values for each date.
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = ( $wkstart + ONE_DAY * $i ) + ( 12 * 3600 );
-  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
+  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, 'D' );
   $header[$i] = $weekdays[$i] . '<br />' .
-     month_short_name ( date ( 'm', $days[$i] ) - 1 ) .
+     month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
      ' ' . date ( 'd', $days[$i] );
   if ( empty ( $first_date ) )
     $first_date = date_to_str ( date ( 'Ymd', $days[$i] ), '', false );
@@ -297,7 +296,7 @@ if ( ! $fit_to_window ) { ?>
   for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     $wday = date ( 'w', $days[$i] );
     if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
-    $weekday = weekday_short_name ( $wday );
+    $weekday = weekday_name ( $wday, 'D' );
     if ( $todayYmd == date ( 'Ymd', $days[$i] ) ) {
       echo "<th class=\"today\" style=\"width:$tdwf;\" colspan=\"$num_users\">";
     } else {

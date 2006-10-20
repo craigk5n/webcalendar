@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Page Description:
  * This page will display a timebar for a week or month as
@@ -290,9 +289,9 @@ $thisdate = date ( 'Ymd', $wkstart );
 
 for ( $i = 0; $i < $val_boucle; $i++ ) {
   $days[$i] = $wkstart + ONE_DAY * $i;
-  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % $val_boucle );
+  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % $val_boucle, 'D' );
   $header[$i] = $weekdays[$i] . "<br />\n" .
-     month_short_name ( date ( 'm', $days[$i] ) - 1 ) .
+     month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
      ' ' . date ( 'd', $days[$i] );
 }
 
@@ -372,7 +371,7 @@ for ( $date = $wkstart, $h = 0;
   $date += ONE_DAY, $h++ ) {
   $wday = strftime ( "%w", $date );
   if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
-  $weekday = weekday_short_name ( $wday );
+  $weekday = weekday_name ( $wday, 'D' );
   if ( date ( 'Ymd', $date ) == date ( 'Ymd', $today ) ) {
     echo "<tr><th class=\"today\">";
   } else if ( $wday == 0 || $wday == 6 ) {
