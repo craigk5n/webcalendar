@@ -68,9 +68,9 @@ $events = read_events ( $login, $startdate, $enddate );
 
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ONE_DAY * $i;
-  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
+  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, 'D' );
   $header[$i] = $weekdays[$i] . '<br />' .
-     month_short_name ( date ( 'm', $days[$i] ) - 1 ) .
+     month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
      ' ' . date ( 'd', $days[$i] );
 }
 

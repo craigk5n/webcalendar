@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Page Description:
  * This page will display the month "view" with all users's events
@@ -59,9 +58,9 @@ $thisdate = date ( 'Ymd', $wkstart );
 
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ONE_DAY * $i;
-  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
+  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, 'D' );
   $header[$i] = $weekdays[$i] . '<br />' .
-     month_short_name ( date ( 'm', $days[$i] ) - 1 ) .
+     month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
      ' ' . date ( 'd', $days[$i] );
 }
 ?>
@@ -131,7 +130,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     $date += ONE_DAY, $h++ ) {
     $wday = strftime ( "%w", $date );
     if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
-    $weekday = weekday_short_name ( $wday );
+    $weekday = weekday_name ( $wday, 'D' );
     if ( date ( 'Ymd', $date ) == date ( 'Ymd', $today ) ) {
       echo "<th class=\"today\" style=\"width:$tdw%;\">";
     } else {

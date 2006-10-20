@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Page Description:
  * Display view of a week with users side by side.
@@ -57,9 +56,9 @@ $thisdate = date ( 'Ymd', $wkstart );
 
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = $wkstart + ONE_DAY * $i;
-  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
+  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, 'D' );
   $header[$i] = $weekdays[$i] . '<br />' .
-     month_short_name ( date ( 'm', $days[$i] ) - 1 ) .
+     month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
      ' ' . date ( 'd', $days[$i] );
 }
 
@@ -158,7 +157,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     $xdate += ONE_DAY, $h++ ) {
     $wday = strftime ( "%w", $xdate );
     if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue;
-    $weekday = weekday_short_name ( $wday );
+    $weekday = weekday_name ( $wday, 'D' );
     if ( date ( 'Ymd', $xdate ) == date ( 'Ymd', $today ) ) {
       echo '<tr><th class="today">';
     } else {

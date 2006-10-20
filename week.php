@@ -63,7 +63,7 @@ $untimedStr = $headerStr = $eventsStr =
 $navStr = display_navigation( 'week' );;
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = ( $wkstart + ( ONE_DAY * $i ) ) + ( 12 * 3600 );
-  $weekdays[$i] = weekday_short_name ( ( $i + $WEEK_START ) % 7 );
+  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, 'D' );
   $thiswday = date ( 'w', $days[$i] );
   $dateYmd = date ( 'Ymd', $days[$i] );
 

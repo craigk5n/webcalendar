@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  * Page Description:
  * This page will present the user with forms for exporting calendar
  *  events.
@@ -83,7 +82,7 @@ print_header($INC);
    $month = $datem;
    $year = $dateY;
    for ( $i = 1; $i <= 12; $i++ ) {
-    $m = month_short_name ( $i - 1 );
+    $m = month_name ( $i - 1, 'M' );
     echo "<option value=\"$i\"" . ( $i == $month ? $selected : '' ) . ">$m</option>\n";
    }
   ?>
@@ -113,7 +112,7 @@ print_header($INC);
    $month = $datem;
    $year = $dateY;
    for ( $i = 1; $i <= 12; $i++ ) {
-    $m = month_short_name ( $i - 1 );
+    $m = month_name ( $i - 1, 'M' );
     echo "<option value=\"$i\"" . ( $i == $month ? $selected : '') . ">$m</option>\n";
    }
   ?>
@@ -144,7 +143,7 @@ print_header($INC);
    $month = date ( 'm', $week_ago );
    $year = date ( 'Y', $week_ago );
    for ( $i = 1; $i <= 12; $i++ ) {
-    $m = month_short_name ( $i - 1 );
+    $m = month_name ( $i - 1, 'M' );
     echo "<option value=\"$i\"" . ( $i == $month ? $selected : '' ) . ">$m</option>\n";
    }
   ?>

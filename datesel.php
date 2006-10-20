@@ -57,13 +57,13 @@ echo <<<EOT
 EOT;
 
 if ( $WEEK_START == 0 ) echo '<td>' .
-  weekday_short_name ( 0 ) . "</td>\n";
+  weekday_name ( 0, 'D' ) . "</td>\n";
 for ( $i = 1; $i < 7; $i++ ) {
   echo "<td>" .
-    weekday_short_name ( $i ) . "</td>\n";
+    weekday_name ( $i, 'D' ) . "</td>\n";
 }
 if ( $WEEK_START == 1 ) echo '<td>' .
-  weekday_short_name ( 0 ) . "</td>\n";
+  weekday_name ( 0, 'D' ) . "</td>\n";
 echo "</tr>\n";
 $wkstart = get_weekday_before ( $thisyear, $thismonth );
 

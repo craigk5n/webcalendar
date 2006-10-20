@@ -1,6 +1,5 @@
 <?php
-/**
- * All of WebCalendar's functions
+/* Most of WebCalendar's functions
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
@@ -1437,7 +1436,7 @@ function date_selection ( $prefix, $date, $trigger=false ) {
   $ret .= "</select>\n<select name=\"" . $prefix . 'month"' .
    (! empty ( $trigger_str )? 'onchange="$trigger_str"': '') . " >\n";
   for ( $i = 1; $i <= 12; $i++ ) {
-    $m = month_short_name ( $i - 1 );
+    $m = month_name ( $i - 1, 'M' );
     $ret .= "<option value=\"$i\"" .
       ( $i == $thismonth ? ' selected="selected"' : '' ) . ">$m</option>\n";
   }
@@ -1533,7 +1532,7 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
   for ( $i = 0; $i < 7; $i++ ) {
     $thday = ( $i + $WEEK_START ) % 7;
     $thname = ( $DISPLAY_LONG_WEEKDAYS  == 'Y'? 
-      weekday_name ( $thday ) : weekday_short_name ( $thday ) );
+      weekday_name ( $thday ) : weekday_name ( $thday, 'D' ) );
     $thclass = ( $thday == 0 || $thday == 6 ? ' class="weekend"' :'' );
     $ret .= "<th$thclass>" . $thname . "</th>\n";
   }
@@ -1744,16 +1743,16 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
           <th class="empty">&nbsp;</th>' : '' ) 
   // if the week doesn't start on monday, print the day
   . ( $WEEK_START == 0 ? '
-          <th class="weekend">' . weekday_short_name ( 0 ) . '</th>' : '' ); 
+          <th class="weekend">' . weekday_name ( 0, 'D' ) . '</th>' : '' ); 
   // cycle through each day of the week until gone
   for ( $i = 1; $i < 7; $i++ ) {
     $ret .= '
           <th' . ( $i == 6 ? ' class="weekend"' : '' ) . '>'
-     . weekday_short_name ( $i ) . '</th>';
+     . weekday_name ( $i, 'D' ) . '</th>';
   } 
   // if the week DOES start on monday, print sunday
   $ret .= ( $WEEK_START == 1 ? '
-          <th class="weekend">' . weekday_short_name ( 0 ) . '</th>' : '' ) 
+          <th class="weekend">' . weekday_name ( 0, 'D' ) . '</th>' : '' ) 
   // end the header row
   . '
         </tr>
@@ -4162,137 +4161,91 @@ function display_time ( $time='', $control=0, $timestamp='', $format='' ) {
   return $ret;
 }
 
-/**
- * Returns the full name of the specified month.
+/* Returns the either the full name or the abbreviation of the specified month.
  *
- * Use {@link month_short_name()} to get the abbreviated name of the month.
+ * @param int     $m       Number of the month (0-11)
+ * @param string  $format  'F' = full, 'M' = abbreviation
  *
- * @param int $m Number of the month (0-11)
- *
- * @return string The full name of the specified month
- *
- * @see month_short_name
+ * @return string The name of the specified month.
  */
-function month_name ( $m ) {
-  static $month_names;
-  
+function month_name ( $m, $format = 'F' ) {
+  static $month_names, $monthshort_names;
+
   if ( empty ( $month_names[0] ) )
-    $month_names = array (
-      0 => translate('January'),
-      1 => translate('February'),
-      2 => translate('March'),
-      3 => translate('April'),
-      4 => translate('May_'), // needs to be different than "May",
-      5 => translate('June'),
-      6 => translate('July'),
-      7 => translate('August'),
-      8 => translate('September'),
-      9 => translate('October'),
-      10 => translate('November'),
-      11 => translate('December')
-    );
-       
-  if ( $m >=0 && $m < 12 )
-    return $month_names[$m];
+    $month_names = array ( 
+      translate ( 'January' ),
+      translate ( 'February' ),
+      translate ( 'March' ),
+      translate ( 'April' ),
+      translate ( 'May_' ), // needs to be different than "May",
+      translate ( 'June' ),
+      translate ( 'July' ),
+      translate ( 'August' ),
+      translate ( 'September' ),
+      translate ( 'October' ),
+      translate ( 'November' ),
+      translate ( 'December' ) 
+      );
 
-  return "unknown-month($m)";
-}
-
-/**
- * Returns the abbreviated name of the specified month (such as "Jan").
- *
- * Use {@link month_name()} to get the full name of the month.
- *
- * @param int $m Number of the month (0-11)
- *
- * @return string The abbreviated name of the specified month (example: "Jan")
- *
- * @see month_name
- */
-function month_short_name ( $m ) {
-  static $monthshort_names;
-  
   if ( empty ( $monthshort_names[0] ) )
-    $monthshort_names = array (
-      0 => translate('Jan'),
-      1 => translate('Feb'),
-      2 => translate('Mar'),
-      3 => translate('Apr'),
-      4 => translate('May'),
-      5 => translate('Jun'),
-      6 => translate('Jul'),
-      7 => translate('Aug'),
-      8 => translate('Sep'),
-      9 => translate('Oct'),
-      10 => translate('Nov'),
-      11 => translate('Dec')
-    );
-       
-  if ( $m >=0 && $m < 12 )
-    return $monthshort_names[$m]; 
+    $monthshort_names = array ( 
+      translate ( 'Jan' ),
+      translate ( 'Feb' ),
+      translate ( 'Mar' ),
+      translate ( 'Apr' ),
+      translate ( 'May' ),
+      translate ( 'Jun' ),
+      translate ( 'Jul' ),
+      translate ( 'Aug' ),
+      translate ( 'Sep' ),
+      translate ( 'Oct' ),
+      translate ( 'Nov' ),
+      translate ( 'Dec' ) 
+      );
 
-  return "unknown-month($m)";
-}
+  if ( $m >= 0 && $m < 12 )
+    return ( $format == 'F' ? $month_names[$m] : $monthshort_names[$m] );
 
-/**
- * Returns the full weekday name.
+  return translate ( 'unknown-month' ) . " ($m)";
+} 
+
+/* Returns either the full name or the abbreviation of the day.
  *
- * Use {@link weekday_short_name()} to get the abbreviated weekday name.
+ * @param int     $w       Number of the day in the week (0=Sun,...,6=Sat)
+ * @param string  $format  'l' (lowercase L) = Full, 'D' = abbreviation.
  *
- * @param int $w Number of the day in the week (0=Sunday,...,6=Saturday)
- *
- * @return string The full weekday name ("Sunday")
- *
- * @see weekday_short_name
+ * @return string The weekday name ("Sunday" or "Sun")
  */
-function weekday_name ( $w ) {
-  static $weekday_names;
-  
+function weekday_name ( $w, $format = 'l' ) {
+  static $week_names, $weekday_names;
+
   if ( empty ( $weekday_names[0] ) )
-    $weekday_names = array (
-      0 => translate('Sunday'),
-      1 => translate('Monday'),
-      2 => translate('Tuesday'),
-      3 => translate('Wednesday'),
-      4 => translate('Thursday'),
-      5 => translate('Friday'),
-      6 => translate('Saturday')
-    );
-       
-  if ( $w >=0 && $w < 7 )
-    return $weekday_names[$w]; 
+    $weekday_names = array ( 
+      translate ( 'Sunday' ),
+      translate ( 'Monday' ),
+      translate ( 'Tuesday' ),
+      translate ( 'Wednesday' ),
+      translate ( 'Thursday' ),
+      translate ( 'Friday' ),
+      translate ( 'Saturday' ) 
+      );
 
-  return "unknown-weekday($w)";
-}
-
-/**
- * Returns the abbreviated weekday name.
- *
- * Use {@link weekday_name()} to get the full weekday name.
- *
- * @param int $w Number of the day in the week (0=Sunday,...,6=Saturday)
- *
- * @return string The abbreviated weekday name ("Sun")
- */
-function weekday_short_name ( $w ) {
-  static $week_names;
-  
   if ( empty ( $week_names[0] ) )
-    $week_names = array (
-      0 => translate('Sun'),
-      1 => translate('Mon'),
-      2 => translate('Tue'),
-      3 => translate('Wed'),
-      4 => translate('Thu'),
-      5 => translate('Fri'),
-      6 => translate('Sat')
-    );
-       
-  if ( $w >=0 && $w < 7 )
-    return $week_names[$w];
+    $week_names = array ( 
+      translate ( 'Sun' ),
+      translate ( 'Mon' ),
+      translate ( 'Tue' ),
+      translate ( 'Wed' ),
+      translate ( 'Thu' ),
+      translate ( 'Fri' ),
+      translate ( 'Sat' ) 
+      );
 
-  return "unknown-weekday($w)";
-}
+  if ( $w >= 0 && $w < 7 )
+    return ( $format == 'l' ? $weekday_names[$w] : $week_names[$w] );
+
+  return translate ( 'unknown-weekday' ) . " ($w)";
+} 
 
 /**
  * Converts a date in YYYYMMDD format into "Friday, December 31, 1999",
@@ -4328,10 +4281,10 @@ function date_to_str ( $indate, $format='', $show_weekday=true, $short_months=fa
   $j = (int) $d ;
   $date = mktime ( 0, 0, 0, $m, $d, $y );
   $wday = strftime ( "%w", $date );
-  $mon = month_short_name ( $m - 1 );
+  $mon = month_name ( $m - 1, 'M' );
   
   if ( $short_months ) {
-    $weekday = weekday_short_name ( $wday );
+    $weekday = weekday_name ( $wday, 'D' );
     $month = $mon;
   } else {
     $weekday = weekday_name ( $wday );
