@@ -1414,13 +1414,15 @@ function build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only
  * @param string $date   Currently selected date (in YYYYMMDD format)
  * @param bool $trigger   Add onchange event trigger that
  *  calls javascript function $prefix_datechanged()
+ * @param int  $num_years  Number of years to display
  *
  * @return string HTML for the selection box
  */
-function date_selection ( $prefix, $date, $trigger=false ) {
+function date_selection ( $prefix, $date, $trigger=false, $num_years=20 ) {
   $ret = '';
-  $num_years = 20;
+ $selected = ' selected="selected"';
  $trigger_str = ( ! empty ( $trigger )? $prefix . 'datechanged()' : '');
+ $onchange = (! empty ( $trigger_str )? 'onchange="$trigger_str"': '');
   if ( strlen ( $date ) != 8 )
     $date = date ( 'Ymd' );
   $thisyear = $year = substr ( $date, 0, 4 );
@@ -1429,29 +1431,30 @@ function date_selection ( $prefix, $date, $trigger=false ) {
   if ( $thisyear - date (  'Y' ) >= ( $num_years - 1 ) )
     $num_years = $thisyear - date (  'Y' ) + 2;
   $ret .= '<select name="' . $prefix . 'day" id="' . $prefix .
-   'day"' . (! empty ( $trigger_str )? 'onchange="$trigger_str"': '') . " >\n";
+   'day"' . $onchange . " >\n";
   for ( $i = 1; $i <= 31; $i++ )
     $ret .= "<option value=\"$i\"" .
-      ( $i == $thisday ? ' selected="selected"' : '' ) . ">$i</option>\n";
+      ( $i == $thisday ? $selected : '' ) . ">$i</option>\n";
   $ret .= "</select>\n<select name=\"" . $prefix . 'month"' .
-   (! empty ( $trigger_str )? 'onchange="$trigger_str"': '') . " >\n";
+   $onchange . " >\n";
   for ( $i = 1; $i <= 12; $i++ ) {
     $m = month_name ( $i - 1, 'M' );
     $ret .= "<option value=\"$i\"" .
-      ( $i == $thismonth ? ' selected="selected"' : '' ) . ">$m</option>\n";
+      ( $i == $thismonth ? $selected : '' ) . ">$m</option>\n";
   }
   $ret .= "</select>\n<select name=\"" . $prefix . 'year"' .
-    (! empty ( $trigger_str )? "onchange=\"$trigger_str\"": '') . " >\n";
+    $onchange . " >\n";
   for ( $i = -10; $i < $num_years; $i++ ) {
     $y = $thisyear + $i;
     $ret .= "<option value=\"$y\"" .
-      ( $y == $thisyear ? ' selected="selected"' : '' ) . ">$y</option>\n";
+      ( $y == $thisyear ? $selected : '' ) . ">$y</option>\n";
   }
   $ret .= "</select>\n";
-  $ret .= '<input type="button" name="' . $prefix. 
-    "btn\" onclick=\"$trigger_str;selectDate( '" .
-    $prefix . "day','" . $prefix . "month','" . $prefix . "year',$date, event)\" value=\"" .
-    translate('Select') . "...\" />\n";
+  $ret .= '<input type="button" name="' . $prefix
+    . "btn\" onclick=\"$trigger_str;selectDate( '" 
+    . $prefix . "day','" . $prefix . "month','" . $prefix 
+    . "year',$date, event, this.form)\" value=\"" 
+    . translate('Select') . "...\" />\n";
 
   return $ret;
 }
@@ -1770,7 +1773,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
        . date ( 'W', $i + 86400 * 2 ) . ' )</a></td>';
 
     for ( $j = 0; $j < 7; $j++ ) {
-      $date = $i + ( $j * ( 86400 * 1.5 ) );
+      //add 12 hours just so we don't have DST problems
+      $date = $i + ($j * ONE_DAY  + ( 12 * 3600 ) );
       $dateYmd = date ( 'Ymd', $date );
       $wday = date ( 'w', $date );
       $hasEvents = false;
@@ -1859,7 +1863,7 @@ function display_small_tasks ( $cat_id ) {
   $task_list = query_events ( $task_user, false, $filter, $cat_id, true  );
   $row_cnt = 1;
   $task_html= '<table class="minitask" cellspacing="0" cellpadding="2">' . "\n";
-  $task_html .= '<tr class="header"><th colspan="3" align="left">' . 
+  $task_html .= '<tr class="header"><th colspan="3" >' . 
     translate ( 'TASKS' ) . '</th><th align="right">' .
     '<a href="edit_entry.php?' . $u_url . 'eType=task">' . 
     '<img src="images/new.gif" alt="+" class="new"/></a></th></tr>' . "\n";
