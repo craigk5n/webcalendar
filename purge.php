@@ -18,7 +18,8 @@
 include_once 'includes/init.php';
 
 // Set this to true do show the SQL at the bottom of the page
-$purgeDebug = true;
+$purgeDebug = false;
+
 $sqlLog = '';
 
 if ( ! $is_admin ) {
@@ -29,13 +30,19 @@ if ( ! $is_admin ) {
 
 $ALL = 0;
 
+$previewStr = translate( 'Preview' );
+$allStr = translate( 'All' );
+$purgingStr = translate( 'Purging events for' );
+$deleteStr = translate( 'Delete' );
+
 $action = getPostValue ( 'action' );
 $do_purge = false;
-if ( $action == translate( 'Delete' ) ) {
+if ( $action == $deleteStr ) {
  $do_purge = true;
 }
 
 $purge_all = getPostValue ( 'purge_all' );
+$purge_deleted = getPostValue ( 'purge_deleted' );
 $end_year = getPostValue ( 'end_year' );
 $end_month = getPostValue ( 'end_month' );
 $end_day = getPostValue ( 'end_day' );
@@ -43,15 +50,9 @@ $user = getPostValue ( 'user' );
 $preview = getPostValue ( 'preview' );
 $preview = ( empty ( $preview ) ? false : true );
 
-$INC = array('js/purge.php/true','js/visible.php/true');
+$INC = array( 'js/visible.php/true' );
 
-if ( $do_purge ) {
-  $BodyX = '';
-} else {
-  $BodyX = 'onload="all_handler();"';
-}
-
-print_header ( $INC, '', $BodyX );
+print_header ( $INC );
 ?>
 
 <table>
@@ -59,41 +60,46 @@ print_header ( $INC, '', $BodyX );
 <?php
 echo '<h2>' . translate( 'Delete Events' );
 if ( $preview )
-  echo '[ ' . translate( 'Preview' ) . ']';
+  echo '[ ' . $previewStr . ']';
 echo "</h2>\n";
 echo display_admin_link();
 
 if ( $do_purge ) {
   if ( $preview ) {
-    echo '<h2> [' .  translate( 'Preview' ) . '] ' .
-      translate( 'Purging events for' ) . " $user...</h2>\n";
+    echo '<h2> [' .  $previewStr . '] ' .
+      $purgingStr . " $user...</h2>\n";
   } else {
-    echo '<h2>' .  translate( 'Purging events for' ) . ": $user</h2>\n";
+    echo '<h2>' .  $purgingStr . ": $user</h2>\n";
   }
   $ids = '';
   $end_date = sprintf ( "%04d%02d%02d", $end_year, $end_month, $end_day );
+  $tail = '';
+  if ( $purge_deleted == 'Y' ) {
+    $tail = " AND webcal_entry_user.cal_status = 'D' "; 
+  }
   if ( $purge_all == 'Y' ) {
     if ( $user == 'ALL' ) {
       $ids = array ( 'ALL' );
     } else {
-      $ids = get_ids (
-        "SELECT cal_id FROM webcal_entry WHERE cal_create_by = '$user'" );
+      $ids = get_ids ( 'SELECT cal_id FROM webcal_entry, '
+        . "webcal_entry_user WHERE cal_create_by = '$user' $tail" );
     }
   } elseif ( $end_date ) {
     if ( $user != 'ALL' ) {
-      $tail = " AND webcal_entry.cal_create_by = '$user'";
+      $tail = " AND webcal_entry.cal_create_by = '$user' $tail";
     } else {
       $tail = '';
       $ALL = 1;  // Need this to tell get_ids to ignore participant check
     }
-    $E_ids = get_ids ( 'SELECT cal_id FROM webcal_entry ' .
+    $E_ids = get_ids ( 'SELECT webcal_entry.cal_id FROM webcal_entry, webcal_entry_user ' .
       "WHERE cal_type = 'E' AND cal_date < '$end_date' $tail",
       $ALL );
-    $M_ids = get_ids ( 'SELECT webcal_entry.cal_id FROM webcal_entry ' .
-      'INNER JOIN webcal_entry_repeats ON ' .
-      'webcal_entry.cal_id = webcal_entry_repeats.cal_id ' .
-      "WHERE webcal_entry.cal_type = 'M' AND " .
-      "cal_end IS NOT NULL AND cal_end < '$end_date' $tail",
+    $M_ids = get_ids ( 'SELECT DISTINCT webcal_entry.cal_id FROM webcal_entry ' 
+      . ', webcal_entry_user, webcal_entry_repeats ' 
+      . "WHERE webcal_entry.cal_type = 'M' "
+      . 'AND webcal_entry.cal_id = webcal_entry_repeats.cal_id '
+      . 'AND webcal_entry.cal_id = webcal_entry_repeats.cal_id '
+      . "AND cal_end IS NOT NULL AND cal_end < '$end_date' $tail",
       $ALL );
     $ids = array_merge ( $E_ids, $M_ids );
   }
@@ -104,6 +110,10 @@ if ( $do_purge ) {
     echo translate( 'None' );
   }
   echo '<h2>...' .  translate( 'Finished' ) . ".</h2>\n";
+?>
+  <form><input type="button" value="<?php etranslate( 'Back' )?>" 
+onclick="history.back()" /></form
+><?php
   if ( $purgeDebug ) {
     echo '<div style="border: 1px solid #000;background-color: #fff;"><tt>' .
   $sqlLog . '</tt></div>' ."\n";
@@ -130,18 +140,22 @@ if ( $do_purge ) {
  echo '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
-<option value="ALL"><?php etranslate( 'All' )?></option>
+<option value="ALL"><?php echo $allStr ?></option>
   </select>
  </td></tr>
  <tr><td><label for="purge_all">
   <?php etranslate( 'Check box to delete <b>ALL</b> events for a user' )?>:</label></td>
   <td valign="bottom">
-  <input type="checkbox" name="purge_all" value="Y"
-                onclick="all_handler()" />
+  <input type="checkbox" name="purge_all" value="Y" id="purge_all" onchange="toggle_datefields( 'dateArea', this );" />
  </td></tr>
  <tr id="dateArea"><td><label>
   <?php etranslate( 'Delete all events before' );?>:</label></td><td>
   <?php echo date_selection ( 'end_', date ( 'Ymd' ) ) ?>
+ </td></tr>
+ <tr><td><label for="deleted">
+  <?php etranslate( 'Purge deleted only' )?>:</label></td>
+  <td valign="bottom">
+  <input type="checkbox" name="purge_deleted" value="Y"  />
  </td></tr>
  <tr><td><label for="preview">
   <?php etranslate( 'Preview delete' )?>:</label></td>
@@ -149,7 +163,10 @@ if ( $do_purge ) {
   <input type="checkbox" name="preview" value="Y" checked="checked" />
  </td></tr>
  <tr><td colspan="2">
-  <input type="submit" name="action" value="<?php etranslate( 'Delete' )?>" onclick="return confirm('<?php etranslate( 'Are you sure you want to delete events for', true);?> ' + document.forms[0].user.value + '?')" />
+  <input type="submit" name="action" value="<?php 
+    echo $deleteStr?>" onclick="return confirm('<?php 
+    etranslate( 'Are you sure you want to delete events for'
+    , true);?> ' + document.forms[0].user.value + '?')" />
  </td></tr>
 </table>
 </form>
@@ -160,7 +177,7 @@ if ( $do_purge ) {
 <?php echo print_trailer(); 
 
 function purge_events ( $ids ) {
-  global $preview, $c; // db connection
+  global $preview, $previewStr, $c; // db connection
   global $sqlLog;
 
   $tables = array (
@@ -204,7 +221,7 @@ function purge_events ( $ids ) {
         $sqlLog .= $sql . "<br />\n";
         $res = dbi_execute ( $sql );
         if ( $cal_id == 'ALL' ) {
-          $num[$i] = translate ( 'All' );
+          $num[$i] = $allStr;
         } else {
           $num[$i] += dbi_affected_rows ( $c, $res );
         }
@@ -213,7 +230,7 @@ function purge_events ( $ids ) {
   }
   for ( $i = 0; $i < $cnt; $i++ ) {
     $table = $tables[$i][0];
-    echo '[' . translate ( 'Preview' ) . '] ' .
+    echo '[' . $previewStr . '] ' .
       translate( 'Records deleted from' ) .
       " $table: $num[$i]<br />\n";
   }
