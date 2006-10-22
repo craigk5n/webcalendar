@@ -873,10 +873,10 @@ freebusy-url-help: Die URL f&uuml;r den Benutzerzugang zur FreeBusy - Liste
 ###############################################
 # Page: help_uac.php
 #
-User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.: Die Zugriffskontrolle erlaubt eine bessere Steuerung der Anwenderzugriffe und deren Berechtigungen. Benutzer k&ouml;nnen Ihre Berechtigungen &auml;ndern sofern Sie vom Administrator authorisiert wurden.
-If disabled, this user will not see you in the participants list.: Wenn deaktiviert, kann Sie dieser Benutzer nicht in der Teilnehmerliste sehen
-If disabled, this user will not be able to send you emails.: Wenn deaktiviert, der Benutzer kann Ihnen kein Mail senden
-If enabled, this user will not be able to view the details of any of your entries.: Falls aktiviert, kann dieser Benutzer keine Details Ihrer Eintr&auml;ge sehen
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Die Zugriffskontrolle erlaubt eine bessere Steuerung der Anwenderzugriffe und deren Berechtigungen. Benutzer k&ouml;nnen Ihre Berechtigungen &auml;ndern sofern Sie vom Administrator authorisiert wurden.
+If disabled, this user cannot see you in the participants list.: Wenn deaktiviert, kann Sie dieser Benutzer nicht in der Teilnehmerliste sehen
+If disabled, this user cannot send you emails.: Wenn deaktiviert, der Benutzer kann Ihnen kein Mail senden
+If enabled, this user cannot view the details of any of your entries.: Falls aktiviert, kann dieser Benutzer keine Details Ihrer Eintr&auml;ge sehen
 
 
 ###############################################

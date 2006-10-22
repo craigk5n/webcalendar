@@ -838,10 +838,10 @@ freebusy-url-help: helptekst-freebusy-url
 ###############################################
 # Page: help_uac.php
 #
-User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.: Gebruikerstoegang controle maakt het mogelijk nauwkeuriger gebruikerstoegang en -permissies te regelen dan voorheen mogelijk was. Gebruikers kunnen ook standaard en per individu permissies verlenen indien geauthoriseerd door de beheerder.
-If disabled, this user will not see you in the participants list.: Indien uitgeschakeld, zal deze gebruiker u niet zien in de deelnemers-lijst
-If disabled, this user will not be able to send you emails.: Indien uitgeschakeld, zal deze gebruiker u geen email kunnen sturen.
-If enabled, this user will not be able to view the details of any of your entries.: Indien ingeschakeld, zal deze gebruiker geen details kunnen zien van iedere afspraak die u maakt.
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Gebruikerstoegang controle maakt het mogelijk nauwkeuriger gebruikerstoegang en -permissies te regelen dan voorheen mogelijk was. Gebruikers kunnen ook standaard en per individu permissies verlenen indien geauthoriseerd door de beheerder.
+If disabled, this user cannot see you in the participants list.: Indien uitgeschakeld, zal deze gebruiker u niet zien in de deelnemers-lijst
+If disabled, this user cannot send you emails.: Indien uitgeschakeld, zal deze gebruiker u geen email kunnen sturen.
+If enabled, this user cannot view the details of any of your entries.: Indien ingeschakeld, zal deze gebruiker geen details kunnen zien van iedere afspraak die u maakt.
 
 
 ###############################################
