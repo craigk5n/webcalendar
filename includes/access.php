@@ -387,6 +387,7 @@ function access_can_view_page ( $page='', $user='' )
 
 function get_default_function_access ( $page_id, $user )
 {
+  global $user_is_admin;
   
   user_load_variables ( $user, 'user_' );
   switch ( $page_id ) {
@@ -394,7 +395,7 @@ function get_default_function_access ( $page_id, $user )
     case ACCESS_ACTIVITY_LOG:
     case ACCESS_USER_MANAGEMENT:
     case ACCESS_SYSTEM_SETTINGS:
-      return ( $GLOBALS['user_is_admin'] == 'Y' ? 'Y' : 'N');
+      return ( ! empty ( $user_is_admin ) && $user_is_admin == 'Y' ? 'Y' : 'N');
       break;
     default:
       return 'Y';
