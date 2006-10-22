@@ -1,6 +1,5 @@
 <?php
-/*
- $Id$
+/* $Id$
 
  Page Description:
   Serves as the home page for administrative functions.
@@ -13,185 +12,158 @@ include_once 'includes/init.php';
 
 define ( 'COLUMNS', 3 );
 
-$style = '<style type="text/css">
- table.admin {
- padding: 5px;
- border: 1px solid #000000;
-';
-if ( ( function_exists ( 'imagepng' ) || function_exists ( 'imagegif' ) )&&
-  ( empty ($ENABLE_GRADIENTS) || $ENABLE_GRADIENTS == 'Y' ) ) {
- //$style .= background_css ( $CELLBG, 400 );
-  $style .= " background-color: $CELLBG;\n";
-} else {
- $style .= " background-color: $CELLBG;\n";
-}
-$style .= "
-}
-table.admin td {
- padding: 20px;
- text-align: center;
-}
-.admin td a {
- padding: 10px;
- text-align: center;
- background-color: $CELLBG;
- border-top: 1px solid #EEEEEE;
- border-left: 1px solid #EEEEEE;
- border-bottom: 1px solid #777777;
- border-right: 1px solid #777777;
-}
-.admin td a:hover {
- padding: 10px;
- text-align: center;
- background-color: #AAAAAA;
- border-top: 1px solid #777777;
- border-left: 1px solid #777777;
- border-bottom: 1px solid #EEEEEE;
- border-right: 1px solid #EEEEEE;
-}
-</style>
-";
-print_header('', $style);
+print_header ( '', '
+    <style type="text/css">
+      table.admin {
+        border: 1px solid #000;
+        padding: 5px;
+        background-color: ' . $CELLBG . ';
+      }
+      table.admin td {
+        padding: 20px;
+        text-align: center;
+      }
+      .admin td a {
+        border: 1px solid #EEE;
+        border-color: #EEE #777 #777 #EEE;
+        padding: 10px;
+        background-color: ' . $CELLBG . ';
+        text-align: center;
+      }
+      .admin td a:hover {
+        border-color: #777 #EEE #EEE #777;
+        background-color: #AAA;
+      }
+    </style>
+'
+  );
 
-$names = array ();
-$links = array ();
+$names = $links = array ();
 
-if ( $is_admin && ! empty ( $SERVER_URL )
-  && access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) ) {
+if ( $is_admin && ! empty ( $SERVER_URL ) &&
+    access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) ) {
   $names[] = translate ( 'Control Panel' );
   $links[] = 'controlpanel.php';
 }
 
-if ($is_nonuser_admin) {
+if ( $is_nonuser_admin ) {
   if ( ! access_is_enabled () ||
-    access_can_access_function ( ACCESS_PREFERENCES ) ) {
-    $names[] = translate( 'Preferences' );
-    $links[] = "pref.php?user=$user";
+      access_can_access_function ( ACCESS_PREFERENCES ) ) {
+    $names[] = translate ( 'Preferences' );
+    $links[] = 'pref.php?user=' . $user;
   }
-  
+
   if ( $single_user != 'Y' ) {
     if ( ! access_is_enabled () ||
-      access_can_access_function ( ACCESS_ASSISTANTS ) ) {
-        $names[] = translate( 'Assistants' );
-        $links[] = "assistant_edit.php?user=$user";
+        access_can_access_function ( ACCESS_ASSISTANTS ) ) {
+      $names[] = translate ( 'Assistants' );
+      $links[] = 'assistant_edit.php?user=' . $user;
     }
   }
 } else {
-
   if ( ( $is_admin && ! access_is_enabled () ) || ( access_is_enabled () &&
-    access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) ) ) {
-    $names[] = translate( 'System Settings' );
+        access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) ) ) {
+    $names[] = translate ( 'System Settings' );
     $links[] = 'admin.php';
   }
-  
+
   if ( ! access_is_enabled () ||
-    access_can_access_function ( ACCESS_PREFERENCES ) ) {
-    $names[] = translate( 'Preferences' );
+      access_can_access_function ( ACCESS_PREFERENCES ) ) {
+    $names[] = translate ( 'Preferences' );
     $links[] = 'pref.php';
   }
-  
-  if ( $is_admin ) {
-    $names[] = translate( 'Users' );
-    $links[] = 'users.php';
-  } else {
-    $names[] = translate( 'Account' );
-    $links[] = 'users.php';
-  }
-  
+
+  $names[] = ( $is_admin ? translate ( 'Users' ) : translate ( 'Account' ) );
+  $links[] = 'users.php';
+
   if ( access_is_enabled () &&
-    access_can_access_function ( ACCESS_ACCESS_MANAGEMENT ) ) {
-      $names[] = translate ( 'User Access Control' );
-      $links[] = 'access.php';
+      access_can_access_function ( ACCESS_ACCESS_MANAGEMENT ) ) {
+    $names[] = translate ( 'User Access Control' );
+    $links[] = 'access.php';
   }
-  
+
   if ( $single_user != 'Y' ) {
     if ( ! access_is_enabled () ||
-      access_can_access_function ( ACCESS_ASSISTANTS ) ) {
-        $names[] = translate( 'Assistants' );
-        $links[] = 'assistant_edit.php';
+        access_can_access_function ( ACCESS_ASSISTANTS ) ) {
+      $names[] = translate ( 'Assistants' );
+      $links[] = 'assistant_edit.php';
     }
   }
-  
+
   if ( $CATEGORIES_ENABLED == 'Y' ) {
-    if ( ! access_is_enabled () || 
-      access_can_access_function ( ACCESS_CATEGORY_MANAGEMENT ) ) {
-        $names[] = translate( 'Categories' );
-        $links[] = 'category.php';
-     }
+    if ( ! access_is_enabled () ||
+        access_can_access_function ( ACCESS_CATEGORY_MANAGEMENT ) ) {
+      $names[] = translate ( 'Categories' );
+      $links[] = 'category.php';
+    }
   }
-  
-  if ( ! access_is_enabled () || 
-    access_can_access_function ( ACCESS_VIEW_MANAGEMENT ) ) {
-    $names[] = translate( 'Views' );
+
+  if ( ! access_is_enabled () ||
+      access_can_access_function ( ACCESS_VIEW_MANAGEMENT ) ) {
+    $names[] = translate ( 'Views' );
     $links[] = 'views.php';
   }
-  
-  if ( ! access_is_enabled () || 
-    access_can_access_function ( ACCESS_LAYERS ) ) {
-    $names[] = translate( 'Layers' );
+
+  if ( ! access_is_enabled () ||
+      access_can_access_function ( ACCESS_LAYERS ) ) {
+    $names[] = translate ( 'Layers' );
     $links[] = 'layers.php';
   }
-  
+
   if ( $REPORTS_ENABLED == 'Y' &&
-    ( ! access_is_enabled () || access_can_access_function ( ACCESS_REPORT ) ) ) {
-    $names[] = translate( 'Reports' );
+    ( ! access_is_enabled () ||
+        access_can_access_function ( ACCESS_REPORT ) ) ) {
+    $names[] = translate ( 'Reports' );
     $links[] = 'report.php';
   }
-  
+
   if ( $is_admin ) {
-   $names[] = translate( 'Delete Events' );
-   $links[] = 'purge.php';
+    $names[] = translate ( 'Delete Events' );
+    $links[] = 'purge.php';
   }
-  
-  // This Activity Log link shows ALL activity for ALL events, so you
-  // really need to be an admin user for this.  Enabling "Activity Log"
-  // in UAC just gives you access to the log for your _own_ events or
-  // other events you have access to.
-  if ( $is_admin && ( ! access_is_enabled () || 
-    access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) ) {
-    $names[] = translate( 'Activity Log' );
+  // This Activity Log link shows ALL activity for ALL events, so you really need
+  // to be an admin user for this. Enabling "Activity Log" in UAC just gives you
+  // access to the log for your _own_ events or other events you have access to.
+  if ( $is_admin && ( ! access_is_enabled () ||
+        access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) ) {
+    $names[] = translate ( 'Activity Log' );
     $links[] = 'activity_log.php';
   }
-  
-  if ( $is_admin && ! empty ($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y' ) {
-   $names[] = translate( 'Public Preferences' );
-   $links[] = 'pref.php?public=1';
+
+  if ( $is_admin && ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) {
+    $names[] = translate ( 'Public Preferences' );
+    $links[] = 'pref.php?public=1';
   }
-  
+
   if ( $is_admin && ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' &&
-   $PUBLIC_ACCESS_CAN_ADD == 'Y' && $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y' ) {
-   $names[] = translate( 'Unapproved Public Events' );
-   $links[] = 'list_unapproved.php?user=__public__';
+    $PUBLIC_ACCESS_CAN_ADD == 'Y' && $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y' ) {
+    $names[] = translate ( 'Unapproved Public Events' );
+    $links[] = 'list_unapproved.php?user=__public__';
   }
-}  
-?>
+}
 
-<h2><?php etranslate( 'Administrative Tools' )?></h2>
+echo '
+    <h2>' . translate ( 'Administrative Tools' ) . '</h2>
+    <table class="admin">';
 
-<table class="admin">
-<?php
- for ( $i = 0, $cnt = count ($names); $i < $cnt; $i++ ) {
-  if ( $i % COLUMNS == 0 )
-   echo "<tr>\n";
-   echo '<td>';
-  if ( ! empty ($links[$i]) )
-   echo "<a href=\"$links[$i]\">";
-  echo $names[$i];
-  if ( ! empty ($links[$i]) )
-   echo '</a>';
-  echo "</td>\n";
-  if ($i % COLUMNS == COLUMNS - 1)
-   echo "</tr>\n";
- }
- 
- if ( $i % COLUMNS != 0 )
+for ( $i = 0, $cnt = count ( $names ); $i < $cnt; $i++ ) {
+  echo ( $i % COLUMNS == 0 ? '
+      <tr>' : '' ) . '
+        <td>' . ( ! empty ( $links[$i] ) ? '<a href="' . $links[$i] . '">' : '' )
+   . $names[$i] . ( ! empty ( $links[$i] ) ? '</a>' : '' ) . '</td>'
+   . ( $i % COLUMNS == COLUMNS - 1 ? '
+      </tr>' : '' );
+}
+
+if ( $i % COLUMNS != 0 )
   while ( $i % COLUMNS != 0 ) {
-    echo "<td>&nbsp;</td>\n";
-    $i++;
-  }
-  echo "</tr >\n";
+  echo '
+        <td>&nbsp;</td>';
+  $i++;
+}
+echo '
+      </tr >
+    </table>
+    ' . print_trailer ();
+
 ?>
-</table>
-
-<?php echo print_trailer(); ?>
-
