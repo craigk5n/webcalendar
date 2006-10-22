@@ -714,9 +714,10 @@ class WebCalendar {
     /* If WebCalendar is configured to use http authentication, then we can
      * use _initValidate().  If we are not using http auth, icalclient.php will
      * create its own http auth since an iCal client cannot login via a
-     * web-based login.
+     * web-based login. Publish.php does need to validate if not http_auth
      */
-    if ( $this->_filename == 'icalclient.php' && !$use_http_auth ) {
+    if ( ( $this->_filename == 'icalclient.php' || $this->_filename == 'publish.php' ) 
+      && !$use_http_auth ) {
       return;
     }
 
