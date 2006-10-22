@@ -28,8 +28,8 @@ Calendar: Calendar
 Edit: Editeaz&#259;
 Events: Evenimente
 Public: Public
-Confidential: Confiden&#355;ial
-Private: Privat
+confidential: confiden&#355;ial
+private: privat
 
 
 ###############################################

@@ -582,9 +582,9 @@ if ( $DISABLE_ACCESS_FIELD != 'Y' ) { ?>
         <option value="P"<?php if ( $access == 'P' || ! strlen ( $access ) ) 
   echo $selected;?>><?php etranslate ( 'Public' )?></option>
         <option value="R"<?php if ( $access == 'R' ) 
-  echo $selected;?>><?php etranslate( 'Private' )?></option>
+  echo $selected;?>><?php echo ucfirst ( translate( 'private' ) )?></option>
         <option value="C"<?php if ( $access == 'C' ) 
-  echo $selected;?>><?php etranslate( 'Confidential' )?></option>        
+  echo $selected;?>><?php echo ucfirst ( translate( 'confidential' ) )?></option>        
        </select>
        </td></tr>
 <?php } 

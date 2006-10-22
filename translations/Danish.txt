@@ -37,8 +37,8 @@ Calendar: Kalender
 Edit: Redigér
 Events: Aftaler
 Public: Offentlig	 
-Confidential: Fortrolig
-Private: Privat
+confidential: fortrolig
+private: privat
 
 
 ###############################################

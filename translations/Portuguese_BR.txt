@@ -40,8 +40,8 @@ Calendar: Calendário
 Edit: Editar
 Events: Eventos
 Public: Público
-Confidential: Confidencial
-Private: Pessoal
+confidential: confidencial
+private: pessoal
 
 
 ###############################################

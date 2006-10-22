@@ -59,8 +59,8 @@ Assistant: עוזר
 Select All: בחר הכל
 Clear All: נקה הכל
 Public: ציבורי
-Confidential: סודי
-Private: פרטי
+confidential: סודי
+private: פרטי
 
 ########################################
 # Page: activity_log.php

@@ -30,8 +30,8 @@ Calendar: Kalendá?
 Edit: Uprav
 Events: Události
 Public: ve?ejný
-Confidential: d?v?rný
-Private: Soukromé
+confidential: d?v?rný
+private: soukromé
 
 
 ###############################################

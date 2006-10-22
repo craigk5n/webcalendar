@@ -21,8 +21,8 @@ Save: Vista
 Admin: Stjórnandi
 Go: Velja
 Public: Allir
-Confidential: Trúnaðarmál
-Private: Einka
+confidential: trúnaðarmál
+private: einka
 
 
 ###############################################

@@ -373,8 +373,8 @@ if ( ! empty ( $otheruser ) ) {
               <table border="0" align="center" cellpadding="5" cellspacing="2">
                 <tr>
                   <td class="pub">' . translate ( 'Public' ) . '</td>
-                  <td class="conf">' . translate ( 'Confidential' ) . '</td>
-                  <td class="priv">' . translate ( 'Private' ) . '</td>
+                  <td class="conf">' . ucfirst ( translate ( 'confidential' ) ) . '</td>
+                  <td class="priv">' . ucfirst ( translate ( 'private' ) ) . '</td>
                 </tr>
               </table>
             </td>

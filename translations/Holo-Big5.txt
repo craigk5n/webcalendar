@@ -24,8 +24,8 @@ Admin: 管理
 Go: 來去
 Calendar: 行事曆
 Public: 公眾 e 
-Confidential: 機密 e 
-Private: 私人 e 
+confidential: 機密 e 
+private: 私人 e 
 
 
 ###############################################

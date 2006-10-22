@@ -33,8 +33,8 @@ Calendar: Calendario
 Edit: Modifica
 Events: Eventi
 Public: Pubblico
-Confidential: Confidenziale
-Private: Privato
+confidential: confidenziale
+private: privato
 
 
 ###############################################

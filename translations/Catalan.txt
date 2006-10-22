@@ -34,8 +34,8 @@ Go: Vés
 Calendar: Calendari
 Edit: Edita
 Public: Públic
-Confidential: Confidencial
-Private: Privat
+confidential: confidencial
+private: privat
 
 
 ###############################################

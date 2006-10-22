@@ -45,8 +45,8 @@ Assistant: アシスタント
 Select All: すべて選択する
 Clear All: すべて削除する
 Public: 公開
-Confidential: 非公開
-Private: プライベート
+confidential: 非公開
+private: プライベート
 
 
 ###############################################

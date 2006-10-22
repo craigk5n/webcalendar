@@ -47,8 +47,8 @@ Assistant: Titkár
 Select All: Mindent kijelöl
 Clear All: Mindent töröl
 Public: Nyilvános
-Confidential: Bizalmas
-Private: Magán
+confidential: bizalmas
+private: magán
 
 
 ###############################################

@@ -18,8 +18,8 @@ Save: Kayit
 Admin: Sef
 Go: göster 
 Public: acik
-Confidential: özel 
-Private: özel
+confidential: özel 
+private: özel
 
 
 ###############################################

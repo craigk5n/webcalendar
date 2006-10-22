@@ -40,9 +40,9 @@ if ( empty ( $ret ) ) {
           </td>
         </tr>
         <tr>
-          <td>'
-   . translate ( ' (Your comments will be included in an email to the event creator)' )
-   . '</td>
+          <td>('
+   . translate ( 'Your comments will be included in an email to the event creator.' )
+   . ')</td>
         </tr>
       </table>
     </form>
