@@ -45,8 +45,8 @@ Assistant: Assistent
 Select All: Selecteer Alles
 Clear All: Alle wissen
 Public: Publiekelijk
-Confidential: Vertrouwelijk
-Private: Prive-afspraak
+confidential: vertrouwelijk
+private: prive-afspraak
 
 
 ###############################################

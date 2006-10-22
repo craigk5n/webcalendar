@@ -26,8 +26,8 @@ Go: Gå till
 Calendar: Kalender
 Edit: Redigera
 Public: Offentlig
-Confidential: Privat
-Private: Privat
+confidential: privat
+private: privat
 
 
 ###############################################

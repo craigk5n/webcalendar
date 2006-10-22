@@ -32,8 +32,8 @@ View Event: Ogl±danie zdarzeñ
 Edit: Edytuj
 Events: Zdarzenia
 Public: Dla wszystkich
-Confidential: Poufny
-Private: Prywatne
+confidential: poufny
+private: prywatne
 
 
 ###############################################

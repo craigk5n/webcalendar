@@ -35,8 +35,8 @@ Calendar: Agenda
 Edit: Éditer
 Events: Événements
 Public: Public
-Confidential: Confidentiel
-Private: Privé
+confidential: confidentiel
+private: privé
 
 
 ###############################################

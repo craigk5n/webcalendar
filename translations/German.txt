@@ -51,8 +51,8 @@ Assistant: Assistent
 Select All: Alle ausw&auml;hlen
 Clear All: Alles l&ouml;schen
 Public: &Ouml;ffentlich(e)
-Confidential: Vertraulich(e)
-Private: Privat
+confidential: vertraulich(e)
+private: privat
 
 
 ###############################################

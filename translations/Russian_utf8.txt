@@ -63,8 +63,8 @@ Assistant: Ассистент
 Select All: Выбрать Все
 Clear All: Очистить Все
 Public: Общедоступный
-Confidential: Конфидециальный
-Private: Личное
+confidential: Конфидециальный
+private: Личное
 
 ########################################
 # Page: activity_log.php

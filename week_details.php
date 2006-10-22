@@ -206,9 +206,9 @@ function print_detailed_entry ( $event, $date ) {
  }
 
   if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
-    $PN =  $PD = '(' . translate( 'Private' ) . ')';
+    $PN =  $PD = '(' . ucfirst ( translate ( 'private' ) ) . ')';
   } elseif ( $login != $event->getLogin() && $event->getAccess() == 'R' && strlen ( $event->getLogin() ) ) {
-    $PN = $PD = '(' . translate( 'Private' ) . ')';
+    $PN = $PD = '(' . ucfirst ( translate ( 'private' ) ) . ')';
   } elseif ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     $PN = htmlspecialchars ( $name );
     $PD = activate_urls ( htmlspecialchars ( $event->getDescription() ) );

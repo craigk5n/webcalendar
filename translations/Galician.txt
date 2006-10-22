@@ -23,8 +23,8 @@ Save: Gravar
 Admin: Xestión
 Go: Ir
 Public: Público
-Confidential: Confidencial
-Private: Privado
+confidential: confidencial
+private: privado
 
 
 ###############################################

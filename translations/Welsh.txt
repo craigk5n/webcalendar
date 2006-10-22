@@ -23,8 +23,8 @@ Admin: Gweinyddu
 Go: Ewch
 Calendar: Calendr
 Public: Cyhoeddus
-Confidential: Cyfrinachol
-Private: Preifat
+confidential: cyfrinachol
+private: preifat
 
 
 ###############################################

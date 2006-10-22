@@ -693,7 +693,7 @@ $publish_access =  ( empty  ( $prefarray['USER_REMOTE_ACCESS'] ) ? 0 :
      translate( 'entries' )?></option>
    <option value="1" <?php echo ( $publish_access == '1' ? 
      $selected : '' ) . ' >' . translate ( 'Public' ) . ' &amp; ' . 
-      translate( 'Confidential' ) . ' ' . translate( 'entries' )?></option>
+      ucfirst ( translate( 'confidential' ) ) . ' ' . translate( 'entries' )?></option>
    <option value="2" <?php echo ( $publish_access == '2' ? 
      $selected : '' ) . ' >' . translate( 'All' ) . ' ' . 
      translate( 'entries' )?></option>  

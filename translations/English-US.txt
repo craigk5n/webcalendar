@@ -87,8 +87,8 @@ Assistant: Assistant
 Select All: Select All
 Clear All: Clear All
 Public: Public
-Confidential: Confidential
-Private: Private
+confidential: confidential
+private: private
 
 ########################################
 # Page: activity_log.php
@@ -109,8 +109,6 @@ Action: Action
 is already on your calendar.: is already on your calendar.
 Invalid entry id: Invalid entry id
 This is a XXX event and may not be added to your calendar.: This is a XXX event and may not be added to your calendar
-private: private
-confidential: confidential
 Error adding event: Error adding event
 
 ########################################
@@ -411,7 +409,7 @@ Email address already exists: Email address already exists
 Additional Comments (optional): Additional Comments (optional)
 Approve and Send: Approve and Send
 Approve and Exit: Approve and Exit
-(Your comments will be included in an email to the event creator): (Your comments will be included in an email to the event creator)
+Your comments will be included in an email to the event creator.: Your comments will be included in an email to the event creator.
 Hello: Hello
 An appointment has been approved and comments added by: An appointment has been approved and comments added by
 The subject was: The subject was

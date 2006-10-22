@@ -25,8 +25,8 @@ Admin: 管理
 Go: 前往
 Calendar: 日历
 Public: 公众的
-Confidential: 机密的
-Private: 私人的
+confidential: 机密的
+private: 私人的
 
 
 ###############################################

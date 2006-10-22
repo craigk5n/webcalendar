@@ -170,7 +170,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
     $out .= "  <priority>" . $pri[$row[6]] . "</priority>\n";
   if ( ! empty ( $DISABLE_ACCESS_FIELD ) && $DISABLE_ACCESS_FIELD == 'Y' )
     $out .= "  <access>" . 
-      ( $row[8] == "P" ? translate ( 'Public' ) : translate( 'Confidential' ) ) .
+      ( $row[8] == "P" ? translate ( 'Public' ) : ucfirst ( translate( 'confidential' ) ) ) .
       "</access>\n";
   if ( ! strlen ( $single_user_login ) )
     $out .= "  <createdBy>" . $row[0] . "</createdBy>\n";

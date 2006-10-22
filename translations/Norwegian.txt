@@ -29,8 +29,8 @@ Calendar: Kalender
 Edit: Rediger
 Events: Aktiviteter
 Public: Offentlig
-Confidential: Privat
-Private: Privat
+confidential: privat
+private: privat
 
 
 ###############################################

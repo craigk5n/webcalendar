@@ -28,8 +28,8 @@ Admin: Admin
 Go: Joan
 Calendar: Egutegia
 Public: Publikoa
-Confidential: Konfidentziala
-Private: Pribatua
+confidential: konfidentziala
+private: pribatua
 
 
 ###############################################

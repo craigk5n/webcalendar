@@ -381,13 +381,13 @@ $email_addr = empty ( $createby_email ) ? '' : $createby_email;
 //if ( $row[8] == "R" && ! $is_my_event && ! $is_admin ) {
 if ( $cal_access == 'R' && ! $is_my_event && ! access_is_enabled() ) {
   $is_private = true;
-  $name = '[' . translate( 'Private' ) . ']';
-  $description = '[' . translate( 'Private' ) . ']';
+    $description = $name = '[' . ucfirst ( translate( 'private' ) ) . ']';
+
 } else if ( $cal_access == 'C' &&  ! $is_my_event && 
   ! $is_assistant  && ! access_is_enabled() ) {
   $is_confidential = true;
-  $name = '[' . translate( 'Confidential' ) . ']';
-  $description = '[' . translate( 'Confidential' ) . ']';
+  $description = $name = '[' . ucfirst ( translate( 'confidential' ) ) . ']';
+
 }
 if ( $event_repeats && ! empty ( $date ) )
   $event_date = $date;
@@ -542,7 +542,11 @@ if ( $DISABLE_PRIORITY_FIELD != 'Y' ) { ?>
 if ( $DISABLE_ACCESS_FIELD != 'Y' ) { ?>
 <tr><td class="aligntop bold">
  <?php etranslate( 'Access' )?>:</td><td>
- <?php echo ( $cal_access == "P" ) ? translate ( 'Public' ) : ( $cal_access == 'C' ? translate( 'Confidential' ) : translate( 'Private' )  ); ?>
+ <?php echo ( $cal_access == "P"
+   ? translate ( 'Public' )
+   : ( $cal_access == 'C'
+     ? ucfirst ( translate( 'confidential' ) )
+     : ucfirst ( translate( 'private' ) ) ) ); ?>
 </td></tr>
 <?php }
 if ( $CATEGORIES_ENABLED == 'Y' && ! empty ( $category ) ) { ?>
@@ -575,9 +579,9 @@ if ( $single_user == 'N' && ! empty ( $createby_fullname )  ) {
   echo '<tr><td class="aligntop bold">' . 
  translate( 'Created by' ) . ":</td><td>\n";
   if ( $is_private  && ! access_is_enabled() ) {
-    echo '[' . translate( 'Private' ) . "]\n</td></tr>";
+    echo '[' . ucfirst ( translate( 'private' ) ) . "]\n</td></tr>";
   } else   if ( $is_confidential  && ! access_is_enabled() ) {
-    echo '[' . translate( 'Confidential' ) . "]\n</td></tr>";
+    echo '[' . ucfirst ( translate( 'confidential' ) ) . "]\n</td></tr>";
   } else {
     if ( access_is_enabled() ) 
       $can_email = access_user_calendar ( 'email', $create_by );
@@ -669,9 +673,9 @@ if ( $single_user == 'N' && $show_participants ) { ?>
   <?php
   $num_app = $num_wait = $num_rej = 0;
   if ( $is_private && ! access_is_enabled() ) {
-    echo '[' . translate( 'Private' ) . ']';
+    echo '[' . ucfirst ( translate( 'private' ) ) . ']';
   } else   if ( $is_confidential  && ! access_is_enabled() ) {
-    echo '[' . translate( 'Confidential' ) . ']';
+    echo '[' . ucfirst ( translate( 'confidential' ) ) . ']';
   } else {
     $sql = 'SELECT cal_login, cal_status, cal_percent FROM webcal_entry_user ' .
       'WHERE cal_id = ?';

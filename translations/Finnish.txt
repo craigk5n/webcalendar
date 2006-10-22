@@ -30,8 +30,8 @@ Go: Mene
 Calendar: Kalenteri
 Edit: Muokkaa
 Public: Julkinen
-Confidential: Luottamuksellinen
-Private: Yksityinen
+confidential: luottamuksellinen
+private: yksityinen
 
 
 ###############################################
