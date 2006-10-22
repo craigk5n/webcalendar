@@ -746,9 +746,9 @@ freebusy-url-help: ユーザーの FreeBusy リストにアクセスするための URL
 ###############################################
 # Page: help_uac.php
 #
-If disabled, this user will not see you in the participants list.: 無効の場合、このユーザーは参加者一覧を閲覧できないでしょう。
-If disabled, this user will not be able to send you emails.: 無効の場合、このユーザーは電子メールを送ることができないでしょう。
-If enabled, this user will not be able to view the details of any of your entries.: 無効の場合、このユーザーはエントリのいくつかの詳細を閲覧できないでしょう。
+If disabled, this user cannot see you in the participants list.: 無効の場合、このユーザーは参加者一覧を閲覧できないでしょう。
+If disabled, this user cannot send you emails.: 無効の場合、このユーザーは電子メールを送ることができないでしょう。
+If enabled, this user cannot view the details of any of your entries.: 無効の場合、このユーザーはエントリのいくつかの詳細を閲覧できないでしょう。
 
 
 ###############################################

@@ -907,10 +907,10 @@ freebusy-url-help: כתובת URL לגישה אל בזמינות של המשתמ
 ########################################
 # Page: help_uac.php
 #
-User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.: בקרת גישת משתמשים מאפשרת בקרה טובה יותר על גישת משתמשים וניהול הרשאות מאשר היה אפשר בעבר. גם משתמשים יכולים לנהל גישת משתמשים והרשאות באם המנהל אפשר זאת.
-If disabled, this user will not see you in the participants list.: אם לא מאופשר, משתמש זה לא יוכל לראות אותך ברשימת המשתתפים.
-If disabled, this user will not be able to send you emails.: אם לא מאופשר, משתמש זה לא יוכל לשלוח לך דוא"ל.
-If enabled, this user will not be able to view the details of any of your entries.: אם מאופשר, משתמש זה לא יוכל לצפות בפרטים של הרשומות שלך.
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: בקרת גישת משתמשים מאפשרת בקרה טובה יותר על גישת משתמשים וניהול הרשאות מאשר היה אפשר בעבר. גם משתמשים יכולים לנהל גישת משתמשים והרשאות באם המנהל אפשר זאת.
+If disabled, this user cannot see you in the participants list.: אם לא מאופשר, משתמש זה לא יוכל לראות אותך ברשימת המשתתפים.
+If disabled, this user cannot send you emails.: אם לא מאופשר, משתמש זה לא יוכל לשלוח לך דוא"ל.
+If enabled, this user cannot view the details of any of your entries.: אם מאופשר, משתמש זה לא יוכל לצפות בפרטים של הרשומות שלך.
 
 ########################################
 # Page: icalclient.php

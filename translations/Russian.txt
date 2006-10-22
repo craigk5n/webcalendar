@@ -849,10 +849,10 @@ freebusy-url-help: Адрес для доступа к пользовательскому списку FreeBusy
 ########################################
 # Page: help_uac.php
 #
-User Access Control allows for finer control of user access and permissions than possible before. Users can also grant default and per individual permission if authorized by the administrator.: Контроль Доступа Пользователей позволяет более тонкую настройку доступа для пользователей чем было раньше. Пользователи могут иметь разрешения по умолчанию и индивидуальные, установленные Администратором.
-If disabled, this user will not see you in the participants list.: Если выключено, пользователь не увидит вас в списке участников.
-If disabled, this user will not be able to send you emails.: Если выключено, пользователь не сможет слать вам письма.
-If enabled, this user will not be able to view the details of any of your entries.: Если включено, пользователь не сможет увидеть детали любой из ваших записей.
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Контроль Доступа Пользователей позволяет более тонкую настройку доступа для пользователей чем было раньше. Пользователи могут иметь разрешения по умолчанию и индивидуальные, установленные Администратором.
+If disabled, this user cannot see you in the participants list.: Если выключено, пользователь не увидит вас в списке участников.
+If disabled, this user cannot send you emails.: Если выключено, пользователь не сможет слать вам письма.
+If enabled, this user cannot view the details of any of your entries.: Если включено, пользователь не сможет увидеть детали любой из ваших записей.
 
 ########################################
 # Page: icalclient.php
