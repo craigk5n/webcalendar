@@ -9,6 +9,7 @@
  *
  */
 include_once 'includes/init.php';
+include_once 'includes/xcal.php';
 
 if ( empty ( $login) || $login == '__public__' ) {
   // do not allow public access
@@ -32,27 +33,7 @@ print_header($INC);
 <table>
 <tr><td>
  <label for="exformat"><?php etranslate( 'Export format' )?>:</label></td><td>
- <select name="format" id="exformat" onchange="toggel_catfilter();">
-  <option value="ical">iCalendar</option>
-  <option value="vcal">vCalendar</option>
-  <option value="pilot-csv">Pilot-datebook CSV (<?php etranslate( 'Palm Pilot' )?>)</option>
-  <option value="pilot-text">Install-datebook (<?php etranslate( 'Palm Pilot' )?>)</option>
- </select>
-</td></tr>
-<?php  // Only include layers if they are enabled.
- if ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ) {
-?>
-<tr><td>&nbsp;
- </td><td>
- <input type="checkbox" name="include_layers" id="include_layers" value="y" />
- <label for="include_layers"><?php etranslate( 'Include all layers' )?></label>
-</td></tr>
-<?php } ?>
-
-<tr><td>&nbsp;
- </td><td>
- <input type="checkbox" name="use_all_dates" id="exportall" value="y" />
- <label for="exportall"><?php etranslate( 'Export all dates' )?></label>
+ <?php echo generate_export_select ( 'toggel_catfilter' ); ?>
 </td></tr>
 <?php
   if (  is_array ( $categories ) ) { ?>
@@ -68,98 +49,45 @@ print_header($INC);
    ?>
  </select>
  </td></tr>
+<?php } 
+ // Only include layers if they are enabled.
+ if ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ) {
+?>
+<tr><td>&nbsp;
+ </td><td>
+ <input type="checkbox" name="include_layers" id="include_layers" value="y" />
+ <label for="include_layers"><?php etranslate( 'Include all layers' )?></label>
+</td></tr>
 <?php } ?>
-<tr><td>
+<tr><td>&nbsp;
+  </td><td>
+ <input type="checkbox" name="include_deleted" id="include_deleted" value="y" />
+ <label for="include_deleted"><?php etranslate( 'Include deleted entries' )?></label>
+</td></tr>
+<tr><td>&nbsp;
+ </td><td>
+ <input type="checkbox" name="use_all_dates" id="exportall" value="y"  onchange="toggle_datefields( 'dateArea', this );"/>
+ <label for="exportall"><?php etranslate( 'Export all dates' )?></label>
+</td></tr>
+<tr><td colspan="2">
+<table id="dateArea">
+ <tr><td>
  <label><?php etranslate( 'Start date' )?>:</label></td><td>
- <select name="fromday">
-  <?php
-   $day = date ( 'd' );
-   for ( $i = 1; $i <= 31; $i++ ) echo '<option' . ( $i == $day ? $selected : '' ) . ">$i</option>\n";
-  ?>
- </select>
- <select name="frommonth">
-  <?php
-   $month = $datem;
-   $year = $dateY;
-   for ( $i = 1; $i <= 12; $i++ ) {
-    $m = month_name ( $i - 1, 'M' );
-    echo "<option value=\"$i\"" . ( $i == $month ? $selected : '' ) . ">$m</option>\n";
-   }
-  ?>
- </select>
- <select name="fromyear">
-  <?php
-   $year = $dateY - 1;
-   for ( $i = -1; $i < 5; $i++ ) {
-    $y = $dateY + $i;
-    echo "<option value=\"$y\"" . ( $y == $year ? $selected : '' ) . ">$y</option>\n";
-   }
-  ?>
- </select>
- <input type="button" onclick="selectDate('fromday','frommonth','fromyear', '', event)" value="<?php etranslate( 'Select' )?>..." />
+   <?php echo date_selection ( 'from_', date ( 'Ymd' ) ) ?>
 </td></tr>
 
 <tr><td>
  <label><?php etranslate( 'End date' )?>:</label></td><td>
- <select name="endday">
-  <?php
-   $day = date ( 'd' );
-   for ( $i = 1; $i <= 31; $i++ ) echo '<option' . ( $i == $day ? $selected : '' ) . ">$i</option>\n";
-  ?>
- </select>
- <select name="endmonth">
-  <?php
-   $month = $datem;
-   $year = $dateY;
-   for ( $i = 1; $i <= 12; $i++ ) {
-    $m = month_name ( $i - 1, 'M' );
-    echo "<option value=\"$i\"" . ( $i == $month ? $selected : '') . ">$m</option>\n";
-   }
-  ?>
- </select>
- <select name="endyear">
-  <?php
-   $year = $dateY + 1;
-   for ( $i = -1; $i < 5; $i++ ) {
-    $y = $dateY + $i;
-    echo "<option value=\"$y\"" . ( $y == $year ? $selected : '' ) . ">$y</option>\n";
-   }
-  ?>
- </select>
- <input type="button" onclick="selectDate('endday','endmonth','endyear', '', event)" value="<?php etranslate( 'Select' )?>..." />
+   <?php echo date_selection ( 'end_', date ( 'Ymd' ) ) ?>
 </td></tr>
 
 <tr><td>
  <label><?php etranslate( 'Modified since' )?>:</label></td><td>
- <select name="modday">
-  <?php
-   $week_ago = mktime ( 0, 0, 0, $datem, date ( 'd' ) - 7, $dateY );
-   $day = date ( 'd', $week_ago );
-   for ( $i = 1; $i <= 31; $i++ ) echo '<option' . ( $i == $day ? $selected : '' ) . ">$i</option>\n";
-  ?>
- </select>
- <select name="modmonth">
-  <?php
-   $month = date ( 'm', $week_ago );
-   $year = date ( 'Y', $week_ago );
-   for ( $i = 1; $i <= 12; $i++ ) {
-    $m = month_name ( $i - 1, 'M' );
-    echo "<option value=\"$i\"" . ( $i == $month ? $selected : '' ) . ">$m</option>\n";
-   }
-  ?>
- </select>
- <select name="modyear">
-  <?php
-   $year = date ( 'Y', $week_ago );
-   for ( $i = -1; $i < 5; $i++ ) {
-    $y = $dateY + $i;
-    echo "<option value=\"$y\"" . ( $y == $year ? $selected : '' ) . ">$y</option>\n";
-   }
-  ?>
- </select>
- <input type="button" onclick="selectDate('modday','modmonth','modyear', '', event)" value="<?php etranslate( 'Select' )?>..." />
+  <?php $week_ago = mktime ( 0, 0, 0, $datem, date ( 'd' ) - 7, $dateY );
+   echo date_selection ( 'mod_', $week_ago ) ?>
 </td></tr>
-
+</table> 
+</td></tr>
 <tr><td colspan="2">
  <input type="submit" value="<?php etranslate( 'Export' );?>" />
 </td></tr>
