@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Implemented RFE [ 1529290 ] Purge Deleted events
  - Applied PATCH [ 1557394 ] patch for LDAP to use ldap_user_filter for login (updated)
  - Applied PATCH [ 1580572 ] Russian.txt file update (Russian and Russian_utf8)
    (after running tools/update_translation.pl on them).
