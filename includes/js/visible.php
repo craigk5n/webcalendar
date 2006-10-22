@@ -75,6 +75,42 @@ function visByClass(classname, state){
        alltags[i].style.display = "";     
  }
 } 
+//these common function is placed here because all the files that use it 
+//also use visibility functions
+function selectDate (  day, month, year, current, evt, form ) {
+  // get currently selected day/month/year
+  monthobj = eval ( 'document.' + form.name + '.' + month );
+  curmonth = monthobj.options[monthobj.selectedIndex].value;
+  yearobj = eval ( 'document.' + form.name + '.' + year );
+  curyear = yearobj.options[yearobj.selectedIndex].value;
+  date = curyear;
+
+    if (document.getElementById) {
+    mX = evt.clientX   + 40;
+    mY = evt.clientY  + 120;
+  }
+  else {
+    mX = evt.pageX + 40;
+    mY = evt.pageY +130;
+  }
+  var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY ;
+  if ( curmonth < 10 )
+    date += "0";
+  date += curmonth;
+  date += "01";
+  url = "datesel.php?form=" + form.name + "&fday=" + day +
+    "&fmonth=" + month + "&fyear=" + year + "&date=" + date;
+  var colorWindow = window.open(url,"DateSelection","width=300,height=180,"  + MyPosition);
+}
+
+function toggle_datefields( name, ele ) {
+  var enabled = document.getElementById(ele.id).checked;
+  if ( enabled ) { 
+      makeInvisible ( name );
+  } else {
+      makeVisible ( name ); 
+  }
+}
 
 function callEdit() {
   var features = 'width=600,height=500,resizable=yes,scrollbars=no';
