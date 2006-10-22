@@ -1179,16 +1179,12 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
    $exportThisStr = translate( 'Export this entry to' );
    $palmStr = translate ( 'Palm Pilot' );
    $exportStr = translate ( 'Export' );
+   $selectStr = generate_export_select ( );
    echo <<<EOT
    <br />
    <form method="post" name="exportform" action="export_handler.php">
      <label for="exformat">{$exportThisStr}:&nbsp;</label>
-     <select name="format" id="exformat">
-      <option value="ical">iCalendar</option>
-      <option value="vcal">vCalendar</option>
-      <option value="pilot-csv">Pilot-datebook CSV ({$palmStr})</option>
-      <option value="pilot-text">Install-datebook ({$palmStr})</option>
-     </select>
+     {$selectStr}
      <input type="hidden" name="id" value="{$id}" />
      <input type="submit" value="{$exportStr}" />
    </form>
