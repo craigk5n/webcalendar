@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 #
+# $Id$
+#
 # sql2html.pl
 #
 # Description:
@@ -19,30 +21,36 @@ $verbose = 0;
 
 sub th {
   ( $s ) = @_;
-  return "\n          <th>$s</th>";
+  return '
+          <th>' . $s . '</th>';
 }
 
 sub td {
   ( $s ) = @_;
-  return "\n          <td>$s</td>";
+  return '
+          <td>' . $s . '</td>';
 }
 
 sub print_table {
-  $out{ $name } =
-    "\n    <h3><a name=\"$name\">$name</a></h3>\n    <blockquote>";
-  $out{ $name } .= "$description<br /><br />"
+  $out{ $name } = '
+    <h3><a name="' . $name . '">' . $name . '</a></h3>
+    <blockquote>';
+  $out{ $name } .= '
+      ' . $description . '<br /><br />'
     if ( defined ( $description ) );
-  $out{ $name } .=
-      "\n      <table>\n        <tr>"
+  $out{ $name } .= '
+      <table summary="Schema for table ' . $name . '">
+        <tr>'
     . th( 'Column Name' )
     . th( 'Type' )
     . th( 'Length' )
     . th( 'Null' )
     . th( 'Default' )
-    . th( 'Description' )
-    . "\n        </tr>";
+    . th( 'Description' ) . '
+        </tr>';
   for ( $i = 0; $i < @column_name; $i++ ) {
-    $out{ $name } .= "\n        <tr>";
+    $out{ $name } .= '
+        <tr>';
     if ( defined ( $table_keys{$column_name[$i]} ) ) {
       $out{ $name } .= td( '<span>' . $column_name[ $i ] . '</span>' );
     }
@@ -54,15 +62,17 @@ sub print_table {
       . td( $column_size[ $i ] )
       . td( $column_null[ $i ] )
       . td( $column_default[ $i ] )
-      . td( $column_descr[ $i ] )
-      . "\n        </tr>";
+      . td( $column_descr[ $i ] ) . '
+        </tr>';
   }
-  $out{ $name } .= "\n      </table>\n    </blockquote>";
+  $out{ $name } .= '
+      </table>
+    </blockquote>';
 }
 
 # first, get WebCalendar version
 open( F, '../includes/classes/WebCalendar.class' )
-  || die 'Error reading WebCalendar.class: ' . "$!\n";
+  || die 'Error reading WebCalendar.class:' . "$!\n";
 while ( <F> ) {
   if ( /PROGRAM_VERSION =/ ) {
     if ( /'/ ) {
@@ -80,7 +90,7 @@ $line = 1;
 while ( <> ) {
   chop;
   $line++;
-  #print "Line: $line\n" if ( $verbose );
+  #print "Line:$line\n" if ( $verbose );
   if ( $in_create_table ) {
     if ( /\/\*/ ) {
       $cmt = $';
@@ -145,7 +155,7 @@ while ( <> ) {
       $descr =~ s/<u/\n            <u/g;
       $descr =~ s/<l/\n              <l/g;
       push ( @column_descr, $descr );
-      print "Column descr: $descr\n" if ( $verbose );
+      print "Column descr:$descr\n" if ( $verbose );
       $descr = '';
     }
   }
@@ -166,7 +176,7 @@ while ( <> ) {
       $name = $1;
       $description = $descr;
       $descr           = '';
-      print "Begin table: $name\n" if ( $verbose );
+      print "Begin table:$name\n" if ( $verbose );
     }
     elsif ( /\/*/ ) {
       $in_comment = 1;
@@ -179,94 +189,89 @@ while ( <> ) {
   }
 }
 
-@months = (
-  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-);
-( $mday, $mon, $year ) = ( localtime ( time ) )[3,4,5];
-$now = sprintf "%02d-%s-%04d", $mday, $months[ $mon ], $year + 1900;
-
 print<<EOF;
-<?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>WebCalendar Database Documentation</title>
-<style type="text/css">
-<!--
-body {
-  background-color:#FFFFFF;
-}
-table {
-        border-width:0;
-  padding:1px;
-}
-th {
-  vertical-align:top;
-  background-color:#C0C0C0;
-}
-td {
-  vertical-align:top; 
-  background-color:#E0E0E0;
-  padding:2px;
-}
-span {
-  font-weight:bold; 
-  color:#A00000;
-}
--->
+    <style type="text/css"> <!--
+      body {
+        background-color:#FFF;
+      }
+      #DB_Doc blockquote {
+        left-margin:15px;
+      }
+      #DB_Doc p {
+        margin:0;
+        padding:0;
+      }
+      #DB_Doc label {
+        clear:left;
+        float:left;
+        width:13%;
+        font-weight:bold;
+        line-height:120%;
+      }
+      table {
+        border:0;
+        padding:1px;
+      }
+      th {
+        vertical-align:top;
+        background-color:#C0C0C0;
+      }
+      td {
+        vertical-align:top;
+        padding:2px;
+        background-color:#E0E0E0;
+      }
+      span {
+        font-weight:bold;
+        color:#A00000;
+      } -->
     </style>
   </head>
   <body>
     <h2>WebCalendar Database Documentation</h2>
-    <table>
-      <tr>
-        <td>Home Page:</td>
-        <td>
-  <a href="http://www.k5n.us/webcalendar.php">http://www.k5n.us/webcalendar.php</a>
-        </td>
-      </tr>
-      <tr>
-        <td>Author:</td>
-        <td>
-          <a href="http://www.k5n.us">Craig Knudsen</a>,
-          <a href="mailto:&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;">&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;</a>
-        </td>
-      </tr>
-      <tr>
-        <td>Version:</td>
-        <td>$v<br />\$Id\$</td>
-      </tr>
-      <tr>
-        <td>Last updated:</td>
-        <td>\$Date\$<br/>(by \$Author\$)</td>
-      </tr>
-    </table>
-<blockquote>
-      This file is generated from <tt>tables-mysql.sql</tt>.
-      Below are the definitions of all WebCalendar tables, along with some
-      descriptions of how each table is used.  Column names shown in red are
-      the primary keys for that table.
- <br /><br />
-      If you update the SQL for WebCalendar, use the sql2html.pl script to
-      regenerate this file.
-</blockquote>
-<br /><br />
-<h2>List of Tables</h2>
-<ul>
+    <div id="DB_Doc">
+      <p><label>Home Page:</label>
+        <a href="http://www.k5n.us/webcalendar.php">http://www.k5n.us/webcalendar.php</a></p>
+      <p><label>Author:</label><a href="http://www.k5n.us">Craig Knudsen</a>,
+        <a href="mailto:&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;">&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;</a></p>
+      <p></p><label>Version:</label>$v, &nbsp; \$Id\$</p>
+    </div>
+    <blockquote>
+      <p>This file is generated from <tt>tables-mysql.sql</tt>. Below are the
+      definitions of all WebCalendar tables, along with some descriptions of how
+      each table is used. Column names shown in red are the primary keys for
+      that table.</p>
+      <p>If you update the SQL for WebCalendar, use the sql2html.pl script to
+      regenerate this file.</p>
+    </blockquote>
+    <br /><br />
+    <h2>List of Tables</h2>
+    <ul>
 EOF
 
 foreach $name ( sort keys ( %out ) ) {
-  print "<li><a href=\"#$name\">$name</a></li>\n";
+  print '
+      <li><a href="#' . "$name\">$name" . '</a></li>';
 }
 
-print "    </ul>\n    <hr />";
+print '
+    </ul>
+    <hr />';
 
 foreach $name ( sort keys ( %out ) ) {
-  print "\n    <br /><br />" . $out{ $name };
+  print '
+    <br /><br />
+    ' . $out{ $name };
 }
 
-print "\n  </body>\n</html>\n";
+print '
+  </body>
+</html>
+';
 
 exit 0;
