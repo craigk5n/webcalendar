@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-20-2006
+# Translation last updated on 10-22-2006
 
 
 ################################################################################
@@ -108,8 +108,9 @@ Action: Action
 #
 is already on your calendar.: is already on your calendar.
 Invalid entry id: Invalid entry id
-This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
-This is a confidential event and may not be added to your calendar.: This is a confidential event and may not be added to your calendar.
+This is a XXX event and may not be added to your calendar.: This is a XXX event and may not be added to your calendar
+private: private
+confidential: confidential
 Error adding event: Error adding event
 
 ########################################
@@ -750,8 +751,8 @@ Username can not be blank: Username can not be blank
 #
 Export: Export
 Export format: Export format
-Palm Pilot: Palm Pilot
 Include all layers: Include all layers
+Include deleted entries: Include deleted entries
 Export all dates: Export all dates
 Start date: Start date
 End date: End date
@@ -1000,10 +1001,11 @@ No user specified: No user specified
 #
 Purging events for: Purging events for
 Finished: Finished
+Back: Back
 Check box to delete <b>ALL</b> events for a user: Check box to delete <b>ALL</b> events for a user
 Delete all events before: Delete all events before
+Purge deleted only: Purge deleted only
 Preview delete: Preview delete
-Are you sure you want to delete events for: Are you sure you want to delete events for
 Records deleted from: Records deleted from
 
 ########################################
@@ -1171,6 +1173,7 @@ Email all participants: Email all participants
 Show activity log: Show activity log
 Hide activity log: Hide activity log
 Export this entry to: Export this entry to
+Palm Pilot: Palm Pilot
 
 ########################################
 # Page: view_r.php
@@ -1508,7 +1511,6 @@ Database Cache Directory: Database Cache Directory
 Test Settings: Test Settings
 Create New: Create New
 Database Name: Database Name
-Back: Back
 Timezone Conversion Successful: Timezone Conversion Successful
 Error Unable to write to file: Error Unable to write to file
 Successful Login: Successful Login
