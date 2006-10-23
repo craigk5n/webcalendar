@@ -1,7 +1,6 @@
 <?php
-/**
- * This file implements the assertion handler this is called anytime
- * a WebCalendar call to assert() fails.
+/* This file implements the assertion handler.
+ * This is called anytime a WebCalendar call to assert () fails.
  *
  * @todo Create a link that will pass all the bug details to a form hosted on
  *       k5n.us so that it can be easily submitted.
@@ -13,9 +12,7 @@
  * @package WebCalendar
  */
 
-
-/**
- * Gets the CVS file version for a specific file.
+/* Gets the CVS file version for a specific file.
  *
  * Searches through the file and looks for the CVS Id tag.
  *
@@ -23,14 +20,13 @@
  *
  * @return string File's CVS version string
  */
-function assert_get_cvs_file_version ( $file )
-{
+function assert_get_cvs_file_version ( $file ) {
   $version = 'v?.?';
   $path = array ( '', 'includes/', '../' );
   for ( $i = 0, $cnt = count ( $path ); $i < $cnt; $i++ ) {
     $newfile = $path[$i] . $file;
     if ( file_exists ( $newfile ) ) {
-      $fd = @fopen ( $newfile, "rb", false );
+      $fd = @fopen ( $newfile, 'rb', false );
       if ( $fd ) {
         while ( ! feof ( $fd ) ) {
           $data = fgets ( $fd, 1024 );
@@ -47,56 +43,52 @@ function assert_get_cvs_file_version ( $file )
   return $version;
 }
 
-/**
- * Return a backtrace.
+/* Return a backtrace.
  *
  * Each entry is separated by a newline. This function requires PHP 4.3/5.0.
  *
  * @return string Backtrace
  */
-function assert_backtrace ()
-{
+function assert_backtrace () {
   global $settings;
 
-  if ( empty ( $settings ) || empty ( $settings['mode'] ) ||
-    $settings['mode'] == 'prod' ) {
+  if ( empty ( $settings ) ||
+      empty ( $settings['mode'] ) || $settings['mode'] == 'prod' )
     return 'No stack trace [production mode]';
-  }
 
   if ( ! function_exists ( 'debug_backtrace' ) )
-    return '[stacktrack requires PHP 4.3/5.0.  ' .
-      'Not available in PHP ' . phpversion() . ']';
+    return '[stacktrack requires PHP 4.3/5.0. Not available in PHP '
+     . phpversion () . ']';
   $bt = debug_backtrace ();
-  //print_r ( $bt );
+  // print_r ( $bt );
   $file = array ();
-  for ( $i = 0, $cnt = count ( $bt ); $i < $cnt; $i++ ) {
+  for ( $i = 2, $cnt = count ( $bt ); $i < $cnt; $i++ ) {
     // skip the first two, since it's always this func and assert_handler
-    if ( $i < 2 )
-      continue;
     $afile = $bt[$i];
-    
-    $line = basename ( $afile['file'] ) . ':' . $afile['line'];
-    $line .= ' [' . assert_get_cvs_file_version ( $afile['file'] ) . ']';
+
+    $line = basename ( $afile['file'] ) . ':' . $afile['line']
+     . ' [' . assert_get_cvs_file_version ( $afile['file'] ) . ']';
     if ( ! empty ( $afile['function'] ) ) {
       $line .= ' ' . $afile['function'] . ' ( ';
-      for ( $j = 0; $j < count ( $afile['args'] ); $j++) {
-        if ( $j ) $line .= ', ';
+      for ( $j = 0, $cnt_args = count ( $afile['args'] ); $j < $cnt_args; $j++ ) {
+        if ( $j )
+          $line .= ', ';
         $v = $afile['args'][$j];
         if ( is_null ( $v ) )
           $line .= 'null';
-        else if ( is_array ( $v ) )
+        else
+        if ( is_array ( $v ) )
           $line .= 'Array[' . sizeof ( $v ) . ']';
-        else if ( is_object ( $v ) )
+        else
+        if ( is_object ( $v ) )
           $line .= 'Object:' . get_class ( $v );
-        else if ( is_bool ( $v ) )
+        else
+        if ( is_bool ( $v ) )
           $line .= $v ? 'true' : 'false';
         else {
-          $line .= '"';
-          $v = (string) @$v;
-          $line .= htmlspecialchars ( substr ( $v, 0, 40 ) );
-          if ( strlen ( $v ) > 40 )
-            $line .= '...';
-          $line .= '"';
+          $v = ( string ) @$v;
+          $line .= '"' . htmlspecialchars ( substr ( $v, 0, 40 ) )
+           . ( strlen ( $v ) > 40 ? '...' : '' ) . '"';
         }
       }
       $line .= ' )';
@@ -105,36 +97,30 @@ function assert_backtrace ()
   }
   return implode ( "\n", $out );
 }
-  
 
-/**
- * Report an assertion failure.
+/* Report an assertion failure.
  *
  * Abort execution, print the specified error message along with a stack trace.
  *
- * @param string $script Pathname where assertion failed
- * @param int    $line   Line number where assertion failed
- * @param string $msg    Failed assertion expression
+ * @param string  $script  Pathname where assertion failed
+ * @param int     $line    Line number where assertion failed
+ * @param string  $msg     Failed assertion expression
  */
-function assert_handler ( $script, $line, $msg )
-{
+function assert_handler ( $script, $line, $msg ) {
   if ( empty ( $msg ) )
-    $msg = "Assertion failed<br />\n";
-  if ( function_exists ( 'debug_backtrace' ) )
-    $trace = assert_backtrace ();
-  else
-    $trace = basename ( $script ) . ': ' . $line . ' ' . $msg;
-  $msg .= "<b>Stack Trace:</b><br /><br /><blockquote><tt>\n" .
-    nl2br ( $trace ) .
-    "\n</tt></blockquote>\n";
-  if ( function_exists ( 'die_miserable_death' ) ) {
+    $msg = 'Assertion failed<br />' . "\n";
+  $trace = ( function_exists ( 'debug_backtrace' )
+    ? assert_backtrace () : basename ( $script ) . ': ' . $line . ' ' . $msg );
+  $msg .= '<b>Stack Trace:</b><br /><br /><blockquote><tt>' . nl2br ( $trace )
+   . '</tt></blockquote>';
+  if ( function_exists ( 'die_miserable_death' ) )
     die_miserable_death ( $msg );
-  } else {
-    echo "<html><head><title>WebCalendar Error</title></head>\n" .
-      "<body><h2>WebCalendar Error</h2><p>" . $Msg . "</p></body></html>\n";
+  else {
+    echo '<html><head><title>WebCalendar Error</title></head>
+  <body><h2>WebCalendar Error</h2><p>' . $Msg . '</p></body></html>
+';
     exit;
   }
 }
-
 
 ?>
