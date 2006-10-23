@@ -51,14 +51,7 @@ if ( ! empty (  $_SERVER['PHP_AUTH_USER'] ) )
   $PHP_AUTH_USER= $_SERVER['PHP_AUTH_USER'];
 
 //We'll always use browser defined languages 
-$lang = get_browser_language ();
-if ( $lang == 'none' )
- $lang = '';
-if ( strlen ( $lang ) == 0 ) {
-$lang = 'English-US'; // Default
-}
-
-$lang_file = 'translations/' . $lang . '.txt';
+reset_language ( 'none' );
 
 //Some common translations used in the install script
 $wizardStr = translate ( 'WebCalendar Installation Wizard' ) .':' . translate ( 'Step' );
