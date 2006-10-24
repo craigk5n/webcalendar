@@ -36,6 +36,11 @@ $eType = '';
 $pri[1] = translate( 'Low' );
 $pri[2] = translate( 'Medium' );
 $pri[3] = translate( 'High' );
+$privateStr = translate( 'private' );
+$confidentialStr = translate( 'confidential' );
+$rejectedStr = translate( 'Rejected' );
+$areYouSureStr = translate ( 'Are you sure you want to delete this entry?', true );
+$deleteStr = translate ( 'Delete' );
 
 if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) ) {
   $error = translate( 'Invalid entry id' ) . '.'; 
@@ -167,7 +172,7 @@ if ( empty ( $error ) ) {
   } else {
     $euser =  ( $login != $user ? $user : $login );
   }
-  if ( access_is_enabled () && ! empty ( $user ) ) {
+  if ( access_is_enabled () ) {
     $can_view =  access_user_calendar ( 'view', $euser, $login, $cal_type, $cal_access );
     $can_edit = access_user_calendar ( 'edit', $euser, $login, $cal_type, $cal_access );
     $can_approve = access_user_calendar ( 'approve', $euser, $login, $cal_type, $cal_access );
@@ -381,12 +386,12 @@ $email_addr = empty ( $createby_email ) ? '' : $createby_email;
 //if ( $row[8] == "R" && ! $is_my_event && ! $is_admin ) {
 if ( $cal_access == 'R' && ! $is_my_event && ! access_is_enabled() ) {
   $is_private = true;
-    $description = $name = '[' . ucfirst ( translate( 'private' ) ) . ']';
+    $description = $name = '[' . ucfirst ( $privateStr ) . ']';
 
 } else if ( $cal_access == 'C' &&  ! $is_my_event && 
   ! $is_assistant  && ! access_is_enabled() ) {
   $is_confidential = true;
-  $description = $name = '[' . ucfirst ( translate( 'confidential' ) ) . ']';
+  $description = $name = '[' . ucfirst ( $confidentialStr ) . ']';
 
 }
 if ( $event_repeats && ! empty ( $date ) )
@@ -444,8 +449,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
     echo '<tr><td class="aligntop bold">';
     echo translate( 'URL' ) . ':</td><td>';
     echo activate_urls ( $url ) . "</td><tr>\n";
-  }
-    
+  }    
  if ( $event_status != 'A' && ! empty ( $event_status ) ) { ?>
 <tr><td class="aligntop bold">
  <?php etranslate( 'Status' )?>:</td><td>
@@ -459,7 +463,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
      if ( $event_status == 'D' )
       echo ( $eType == 'task' ? translate( 'Declined' ) : translate( 'Deleted' ) );
      else if ( $event_status == 'R' )
-       etranslate( 'Rejected' );
+       echo $rejectedStr;
       ?>
 </td></tr>
 <?php } ?>
@@ -545,8 +549,8 @@ if ( $DISABLE_ACCESS_FIELD != 'Y' ) { ?>
  <?php echo ( $cal_access == "P"
    ? translate ( 'Public' )
    : ( $cal_access == 'C'
-     ? ucfirst ( translate( 'confidential' ) )
-     : ucfirst ( translate( 'private' ) ) ) ); ?>
+     ? ucfirst ( $confidentialStr )
+     : ucfirst ( $privateStr ) ) ); ?>
 </td></tr>
 <?php }
 if ( $CATEGORIES_ENABLED == 'Y' && ! empty ( $category ) ) { ?>
@@ -579,9 +583,9 @@ if ( $single_user == 'N' && ! empty ( $createby_fullname )  ) {
   echo '<tr><td class="aligntop bold">' . 
  translate( 'Created by' ) . ":</td><td>\n";
   if ( $is_private  && ! access_is_enabled() ) {
-    echo '[' . ucfirst ( translate( 'private' ) ) . "]\n</td></tr>";
+    echo '[' . ucfirst ( $privateStr ) . "]\n</td></tr>";
   } else   if ( $is_confidential  && ! access_is_enabled() ) {
-    echo '[' . ucfirst ( translate( 'confidential' ) ) . "]\n</td></tr>";
+    echo '[' . ucfirst ( $confidentialStr ) . "]\n</td></tr>";
   } else {
     if ( access_is_enabled() ) 
       $can_email = access_user_calendar ( 'email', $create_by );
@@ -673,9 +677,9 @@ if ( $single_user == 'N' && $show_participants ) { ?>
   <?php
   $num_app = $num_wait = $num_rej = 0;
   if ( $is_private && ! access_is_enabled() ) {
-    echo '[' . ucfirst ( translate( 'private' ) ) . ']';
+    echo '[' . ucfirst ( $privateStr ) . ']';
   } else   if ( $is_confidential  && ! access_is_enabled() ) {
-    echo '[' . ucfirst ( translate( 'confidential' ) ) . ']';
+    echo '[' . ucfirst ( $confidentialStr ) . ']';
   } else {
     $sql = 'SELECT cal_login, cal_status, cal_percent FROM webcal_entry_user ' .
       'WHERE cal_id = ?';
@@ -788,10 +792,10 @@ if ( $single_user == 'N' && $show_participants ) { ?>
     if ( strlen ( $tempemail ) > 0 && $can_email != 'N'  ) {
       echo '<strike><a href="mailto:' . $tempemail .
         "?subject=$subject\">" . $tempfullname .
-        '</a></strike> (' . translate( 'Rejected' ) . ")<br />\n";
+        '</a></strike> (' . $rejectedStr . ")<br />\n";
     } else {
       echo "<strike>$tempfullname</strike> (" . 
-        translate( 'Rejected' ) . ")<br />\n";
+        $rejectedStr . ")<br />\n";
     }
   }
   }
@@ -825,7 +829,6 @@ if ( $single_user == 'N' && $show_participants ) { ?>
   }
 }
 
-
 if ( Doc::attachmentsEnabled () && $rss_view == false ) { ?>
   <tr><td class="aligntop bold">
   <?php etranslate( 'Attachments' )?>:</td><td>
@@ -840,9 +843,8 @@ if ( Doc::attachmentsEnabled () && $rss_view == false ) { ?>
       $login == $create_by ||
       user_is_assistant ( $login, $create_by ) ) {
         echo ' [<a href="docdel.php?blid=' . $a->getId() .
-          "\" onclick=\"return confirm('" .
-          translate ( 'Are you sure you want to delete this entry?', true ) .
-          "');\">" . translate ( 'Delete' ) . '</a>]';
+          "\" onclick=\"return confirm('" . $areYouSureStr .
+          "');\">" . $deleteStr . '</a>]';
     }
     echo "<br/>\n";
   }
@@ -876,9 +878,8 @@ if ( Doc::commentsEnabled () ) { ?>
         $login == $create_by ||
         user_is_assistant ( $login, $create_by ) ) {
           $comment_text .= ' [<a href="docdel.php?blid=' . $cmt->getId() .
-            "\" onclick=\"return confirm('" .
-            translate ( 'Are you sure you want to delete this entry?', true ) .
-            "');\">" . translate ( 'Delete' ) . '</a>]';
+            "\" onclick=\"return confirm('" . $areYouSureStr .
+            "');\">" . $deleteStr . '</a>]';
       }
       $comment_text .= "<br/>\n" .
         '<blockquote id="eventcomment">' . nl2br ( activate_urls (
@@ -971,28 +972,28 @@ if ( ! empty ( $user ) && $login != $user ) {
 
 if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) && 
   $unapproved && $readonly == 'N' ) {
-  echo '<a title="' . 
-    translate( 'Approve/Confirm entry' ) . 
+  $approveStr = translate( 'Approve/Confirm entry' );
+  $rejectStr = translate( 'Reject entry' );
+  echo '<a title="' . $approveStr . 
     "\" class=\"nav\" href=\"approve_entry.php?id=$id$u_url&amp;type=E\" " .
     "onclick=\"return confirm('" . 
     translate( 'Approve this entry?', true) . "');\">" . 
-    translate( 'Approve/Confirm entry' ) . "</a><br />\n";
-  echo '<a title="' . 
-    translate( 'Reject entry' ) .
+    $approveStr . "</a><br />\n";
+  echo '<a title="' . $rejectStr .
     "\"  class=\"nav\" href=\"reject_entry.php?id=$id$u_url&amp;type=E\" " .
     "onclick=\"return confirm('" .
     translate( 'Reject this entry?', true) . "');\">" . 
-    translate( 'Reject entry') . "</a><br />\n";
+    $rejectStr . "</a><br />\n";
 }
 
-
+//TODO add these permissions to the UAC list
 $can_add_attach = false;
 if ( Doc::attachmentsEnabled () ) {
   if ( $can_edit )
     $can_add_attach = true;
   else if ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' )
     $can_add_attach = true;
-  else if ( $ALLOW_ATTACH_ANY == 'Y' )
+  else if ( $ALLOW_ATTACH_ANY == 'Y' && $login != '__public__' )
     $can_add_attach = true;
 }
   
@@ -1002,22 +1003,24 @@ if ( Doc::commentsEnabled () ) {
     $can_add_comment = true;
   else if ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' )
     $can_add_comment = true;
-  else if ( $ALLOW_COMMENTS_ANY == 'Y' )
+  else if ( $ALLOW_COMMENTS_ANY == 'Y'  && $login != '__public__' )
     $can_add_comment = true;
 }
   
 if ( $can_add_attach ) {
-  echo '<a title="' . translate( 'Add Attachment' ) .
+  $addAttchStr = translate( 'Add Attachment' );
+  echo '<a title="' . $addAttchStr .
     "\" class=\"nav\" href=\"docadd.php?type=A&amp;id=$id" . 
     ( $login != $user? "&amp;user=$user": '')  . '">' .
-  translate ( 'Add Attachment' ) . "</a><br/>\n";
+    $addAttchStr . "</a><br/>\n";
 }
 
 if ( $can_add_comment ) {
-  echo '<a title="' . translate( 'Add Comment' ) .
+  $addCommentStr = translate( 'Add Comment' );
+  echo '<a title="' . $addCommentStr .
     "\" class=\"nav\" href=\"docadd.php?type=C&amp;id=$id" . 
     ( $login != $user? "&amp;user=$user":'')  . '">' .
-  translate ( 'Add Comment' ) . "</a><br/>\n";
+    $addCommentStr . "</a><br/>\n";
 }
 
 // If approved, but event category not set (and user does not have permission
@@ -1026,105 +1029,100 @@ if ( $can_add_comment ) {
 if ( empty ( $user ) && $CATEGORIES_ENABLED == 'Y' &&
   $readonly != 'Y' && $is_my_event && $login != '__public__' &&
   ! $is_nonuser && $event_status != 'D' && ! $can_edit )  {
-  echo '<a title="' . 
-    translate( 'Set category' ) . "\" class=\"nav\" " .
+  $setCatStr = translate( 'Set category' );
+  echo '<a title="' . $setCatStr . "\" class=\"nav\" " .
     "href=\"set_entry_cat.php?id=$id$rdate\">" .
-    translate( 'Set category' ) . "</a><br />\n";
+    $setCatStr . "</a><br />\n";
 }
 
+$editEntryStr = translate( 'Edit entry' );
+$deleteEntryStr = translate( 'Delete entry' );
+$copyStr = translate( 'Copy entry' );
+$addToMineStr = translate( 'Add to My Calendar' );
+$deleteAllStr = translate( 'This will delete this entry for all users.', true);
 if ( $can_edit && $event_status != 'D' && ! $is_nonuser
   && $readonly != 'Y' ) {
   if ( $event_repeats ) {
-    echo '<a title="' .
-      translate( 'Edit repeating entry for all dates' ) . 
+    $editAllDatesStr = translate( 'Edit repeating entry for all dates' );
+    $deleteAllDatesStr = translate( 'Delete repeating event for all dates' );
+    echo '<a title="' . $editAllDatesStr . 
       "\" class=\"nav\" href=\"edit_entry.php?id=$id$u_url\">" . 
-      translate( 'Edit repeating entry for all dates' ) . "</a><br />\n";
+      $editAllDatesStr . "</a><br />\n";
     // Don't allow override of first event
     if ( ! empty ( $date ) && $date != $orig_date ) {
-      echo '<a title="' .
-        translate( 'Edit entry for this date' ) . '" class="nav" ' . 
+      $editThisDateStr = translate( 'Edit entry for this date' );
+      echo '<a title="' . $editThisDateStr . '" class="nav" ' . 
         "href=\"edit_entry.php?id=$id$u_url$rdate&amp;override=1\">" .
-        translate( 'Edit entry for this date' ) . "</a><br />\n";
+        $editThisDateStr . "</a><br />\n";
     }
-    echo '<a title="' . 
-      translate( 'Delete repeating event for all dates' ) . 
+    echo '<a title="' . $deleteAllDatesStr . 
       "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url&amp;override=1\" " .
-      "onclick=\"return confirm('" . 
-      translate( 'Are you sure you want to delete this entry?', true) . "\\n\\n" . 
-      translate( 'This will delete this entry for all users.', true) . "');\">" . 
-      translate( 'Delete repeating event for all dates' ) . "</a><br />\n";
+      "onclick=\"return confirm('" . $areYouSureStr . "\\n\\n" . 
+      $deleteAllStr . "');\">" . $deleteAllDatesStr . "</a><br />\n";
     // Don't allow deletion of first event
     if ( ! empty ( $date ) && $date != $orig_date ) {
-      echo '<a title="' . 
-        translate( 'Delete entry only for this date' ) . 
+      $deleteOnlyStr = translate( 'Delete entry only for this date' );
+      echo '<a title="' . $deleteOnlyStr . 
         "\" class=\"nav\" href=\"del_entry.php?id=$id$u_url$rdate&amp;override=1\" " .
-        "onclick=\"return confirm('" .
-        translate( 'Are you sure you want to delete this entry?', true) . "\\n\\n" . 
-        translate( 'This will delete this entry for all users.', true) . "');\">" . 
-        translate( 'Delete entry only for this date' ) . "</a><br />\n";
+        "onclick=\"return confirm('" . $areYouSureStr . "\\n\\n" . 
+        $deleteAllStr . "');\">" . $deleteOnlyStr . "</a><br />\n";
     }
   } else {
-    echo '<a title="' .
-      translate( 'Edit entry' ) . '" class="nav" ' .
+    echo '<a title="' . $editEntryStr . '" class="nav" ' .
       "href=\"edit_entry.php?id=$id$u_url\">" .
-      translate( 'Edit entry' ) . "</a><br />\n";
-    echo '<a title="' . 
-      translate( 'Delete entry' ) . '" class="nav" ' .
+      $editEntryStr . "</a><br />\n";
+    echo '<a title="' . $deleteEntryStr . '" class="nav" ' .
       "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
-       translate( 'Are you sure you want to delete this entry?', true) . "\\n\\n";
+       $areYouSureStr . "\\n\\n";
     if ( empty ( $user ) || $user == $login || $is_assistant )
-      echo translate( 'This will delete this entry for all users.' , true);
-    echo "');\">" .  translate( 'Delete entry' );
+      echo $deleteAllStr;
+    echo "');\">" .  $deleteEntryStr;
     if ( ! empty ( $user ) &&  $user != $login  && ! $is_assistant ) {
       user_load_variables ( $user, 'temp_' );
       echo ' ' . translate ( 'from calendar of' ) . ' ' . $temp_fullname;
     }
     echo "</a><br />\n";
   }
-  echo '<a title="' . 
-    translate( 'Copy entry' ) . '" class="nav" ' .
+  echo '<a title="' . $copyStr . '" class="nav" ' .
     "href=\"edit_entry.php?id=$id$u_url&amp;copy=1\">" . 
-    translate( 'Copy entry' ) . "</a><br />\n";  
+    $copyStr . "</a><br />\n";  
 } elseif ( $readonly != 'Y' && ( $is_my_event || $is_nonuser_admin || 
   $can_edit ) && $login != '__public__' &&
   ! $is_nonuser && $event_status != 'D' )  {
-  echo '<a title="' . 
-    translate( 'Delete entry' ) . '" class="nav" ' .
+  echo '<a title="' .  $deleteEntryStr . '" class="nav" ' .
     "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
-    translate( 'Are you sure you want to delete this entry?', true) . "\\n\\n";
+    $areYouSureStr . "\\n\\n";
   if ( $is_assistant ) {
-    echo translate( "This will delete the entry from your boss\' calendar.", true) . 
+    echo translate( "This will delete the entry from your boss' calendar.", true) . 
       "');\">";
   } else {
     echo translate( 'This will delete the entry from your calendar.', true) . 
       "');\">";
   }
-  echo translate( 'Delete entry' );
+  echo $deleteEntryStr;
   if ( $is_assistant ) {
     echo  ' ' . translate ( "from your boss' calendar" );
   }
   echo "</a><br />\n";
-  echo '<a title="' . 
-    translate( 'Copy entry' ) . '" class="nav" ' .
+  echo '<a title="' . $copyStr . '" class="nav" ' .
     "href=\"edit_entry.php?id=$id&amp;copy=1\">" . 
-    translate( 'Copy entry' ) . "</a><br />\n";
+    $copyStr . "</a><br />\n";
 }
 if ( $readonly != 'Y' && ! $is_my_event && ! $is_private && ! $is_confidential &&
   $event_status != 'D' && $login != '__public__' && ! $is_nonuser )  {
-  echo '<a title="' . 
-    translate( 'Add to My Calendar' ) . '" class="nav" ' .
+  echo '<a title="' . $addToMineStr . '" class="nav" ' .
     "href=\"add_entry.php?id=$id\" onclick=\"return confirm('" . 
     translate( 'Do you want to add this entry to your calendar?', true) . "\\n\\n" . 
     translate( 'This will add the entry to your calendar.', true) . "');\">" . 
-    translate( 'Add to My Calendar' ) . "</a><br />\n";
+    $addToMineStr . "</a><br />\n";
 }
 
 if ( $login != '__public__' && count ( $allmails ) > 0 ) {
-  echo '<a title="' . 
-    translate( 'Email all participants' ) . '" class="nav" ' .
+  $emailAllStr = translate( 'Email all participants' );
+  echo '<a title="' . $emailAllStr . '" class="nav" ' .
     'href="mailto:' . implode ( ',', $allmails ) .
     '?subject=' . rawurlencode($subject) . '">' . 
-    translate( 'Email all participants' ) . "</a><br />\n";
+    $emailAllStr . "</a><br />\n";
 }
 
 $can_show_log = $is_admin; // default if access control is not enabled
@@ -1134,47 +1132,21 @@ if ( access_is_enabled () ) {
 
 if ( $can_show_log ) {
   if ( ! $show_log ) {
-    echo '<a title="' . 
-      translate( 'Show activity log' ) . '" class="nav" ' .
+    $showActivityStr = translate( 'Show activity log' );
+    echo '<a title="' . $showActivityStr . '" class="nav" ' .
       "href=\"view_entry.php?id=$id&amp;log=1\">" . 
-      translate( 'Show activity log' ) . "</a><br />\n";
+      $showActivityStr . "</a><br />\n";
   } else {
-    echo '<a title="' . 
-      translate( 'Hide activity log' ) . '" class="nav" ' .
-      "href=\"view_entry.php?id=$id\">" . 
-       translate( 'Hide activity log' ) . "</a><br />\n";
+    $hideActivityStr = translate( 'Hide activity log' );
+    echo '<a title="' . $hideActivityStr . '" class="nav" ' .
+      "href=\"view_entry.php?id=$id\">" 
+      . $hideActivityStr . "</a><br />\n";
   }
 }
 
 if ( $can_show_log && $show_log ) {
-  echo '<h3>' . translate( 'Activity Log' ) . "</h3>\n";
-  echo '<table class="embactlog">' .  "\n";
-  echo '<tr><th class="usr">' . "\n";
-  echo translate( 'User' ) . '</th><th class="cal">' . "\n";
-  echo translate( 'Calendar' ) . '</th><th class="date">' . "\n";
-  echo translate( 'Date' ) . '/' . 
-   translate( 'Time' ) . '</th><th class="action">' . "\n";
-  echo translate( 'Action' ) . "\n</th></tr>\n";
-
-  $res = dbi_execute ( 'SELECT cal_login, cal_user_cal, cal_type, ' .
-    'cal_date, cal_time, cal_text ' .
-    'FROM webcal_entry_log WHERE cal_entry_id = ? ' .
-    'ORDER BY cal_log_id DESC' , array ( $id ) );
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      echo "<tr><td valign=\"top\">\n";
-      echo $row[0] . "</td><td valign=\"top\">\n";
-      echo $row[1] . "</td><td valign=\"top\">\n" . 
-        date_to_str ( $row[3] ) . '&nbsp;' ;
-      $use_gmt = ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y'? 3 : 2 );    
-      echo display_time ( $row[3] . $row[4], $use_gmt ) ;
-      echo "</td><td valign=\"top\">\n";
-      echo display_activity_log ( $row[2], $row[5] );
-      echo "</td></tr>\n";
-    }
-    dbi_free_result ( $res );
-  }
-  echo "</table>\n";
+  $PAGE_SIZE = 25; // number of entries to show at once
+  echo generate_activity_log ( $id );
 }
 
 if ( access_can_access_function ( ACCESS_EXPORT ) && 
