@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1582942 ] Javascript errors in edit_entry.php if Repeats disabled
  - Fixed bug [ 1582745 ] 'Public Access' nor more translated in the participants-list
  - Fixed bug [ 1582686 ] installation-wizard didn't start with the proper language
  - Implemented RFE [ 1529290 ] Purge Deleted events

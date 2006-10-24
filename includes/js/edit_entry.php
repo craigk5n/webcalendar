@@ -657,34 +657,40 @@ function onLoad () {
   elementlength = document.editentryform.elements.length;
   
   //initialize byxxxAr Objects
-  bydayList = form.bydayList.value;
-  if ( bydayList.search( /,/ ) > -1 ) {
-    bydayList = bydayList.split ( ',' );
-    for ( key in bydayList ) {
-      bydayAr[bydayList[key]] = bydayList[key];
+  if ( form.bydayList ) {
+    bydayList = form.bydayList.value;
+    if ( bydayList.search( /,/ ) > -1 ) {
+      bydayList = bydayList.split ( ',' );
+      for ( key in bydayList ) {
+        bydayAr[bydayList[key]] = bydayList[key];
+      }
+    } else if ( bydayList.length > 0 ) {
+      bydayAr[bydayList] = bydayList;
     }
-  } else if ( bydayList.length > 0 ) {
-    bydayAr[bydayList] = bydayList;
+  }
+  
+  if ( form.bymonthdayList ) {
+    bymonthdayList = form.bymonthdayList.value;
+    if ( bymonthdayList.search( /,/ ) > -1 ) {
+      bymonthdayList = bymonthdayList.split ( ',' );
+      for ( key in bymonthdayList ) {
+        bymonthdayAr[bymonthdayList[key]] = bymonthdayList[key];
+      }
+    } else if ( bymonthdayList.length > 0 ) {
+      bymonthdayAr[bymonthdayList] = bymonthdayList;
+    }
   }
 
-  bymonthdayList = form.bymonthdayList.value;
-  if ( bymonthdayList.search( /,/ ) > -1 ) {
-    bymonthdayList = bymonthdayList.split ( ',' );
-    for ( key in bymonthdayList ) {
-      bymonthdayAr[bymonthdayList[key]] = bymonthdayList[key];
+  if ( form.bysetposList ) {
+    bysetposList = form.bysetposList.value;
+    if ( bysetposList.search( /,/ ) > -1 ) {
+      bysetposList = bysetposList.split ( ',' );
+      for ( key in bysetposList ) {
+        bysetposAr[bysetposList[key]] = bysetposList[key];
+      }
+    } else if ( bysetposList.length > 0 ){
+      bysetposAr[bysetposList] = bysetposList;
     }
-  } else if ( bymonthdayList.length > 0 ) {
-    bymonthdayAr[bymonthdayList] = bymonthdayList;
-  }
-
-  bysetposList = form.bysetposList.value;
-  if ( bysetposList.search( /,/ ) > -1 ) {
-    bysetposList = bysetposList.split ( ',' );
-    for ( key in bysetposList ) {
-      bysetposAr[bysetposList[key]] = bysetposList[key];
-    }
-  } else if ( bysetposList.length > 0 ){
-    bysetposAr[bysetposList] = bysetposList;
   }
 
   timetype_handler();
