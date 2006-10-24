@@ -142,10 +142,10 @@ class WebCalendar {
       $is_assistant;
     load_global_settings ();
 
+    $this->setLanguage();
+
     if ( empty ( $ovrd ) )
       load_user_preferences ();
-
-    $this->setLanguage();
 
     // error-check some commonly used form variable names
     $id = getValue ( 'id', '[0-9]+', true );
@@ -1325,7 +1325,6 @@ class WebCalendar {
     $steps = $this->_getSteps ( $phase );
     foreach ( $steps as $step ) {
       $function = "_init$step";
-
       $this->$function();
     }
   }
