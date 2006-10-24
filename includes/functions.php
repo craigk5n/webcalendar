@@ -5876,7 +5876,7 @@ function getShortTime ( $timestr ) {
 function display_admin_link ( ) {
  global $MENU_ENABLED;
  
- $ret = '<br />';
+ $ret = '';
  if ( $MENU_ENABLED == 'N' ) {
    $adminStr = translate( 'Admin' );
    $ret = '<a title="' . $adminStr . '" class="nav" href="adminhome.php">&laquo;&nbsp; ' .
@@ -6014,5 +6014,92 @@ function print_color_input_html ( $variable, $title, $pref='admin_' ) {
     . '\')" value="' . $select . '" />'. "\n";
 
  return $ret;
+}
+
+/**
+ * Generate activity log
+ *
+ *  @paran  int   $id       Event id if called from view_entry.php
+ *  @param  bool  $sys      Display System Log ro Event Log
+ *  @param  int   $startid  Event number to start off list
+ *
+ *  @return string          HTML to diplay log 
+ */
+function generate_activity_log ( $id='', $sys=false, $startid='' ){
+  global $GENERAL_USE_GMT, $PAGE_SIZE, $nextpage;
+
+  $size = ( $id ? 'h3' : 'h2' );
+  $ret = "<$size>" . ( $sys ? translate ( 'System Log' ) 
+    : translate ( 'Activity Log' ) ) . "</$size>" 
+    . display_admin_link () 
+    . '<table class="embactlog"><tr><th class="usr">' 
+    . translate ( 'User' ) . '</th><th class="cal">' 
+    . translate ( 'Calendar' ) . '</th><th class="scheduled">' 
+    . translate ( 'Date' ) . '/'
+    . translate ( 'Time' ) . '</th>' 
+    . ( $sys || $id ? '' : '<th class="dsc">' 
+    . translate ( 'Event' ) . '</th>' ) . '<th class="action">' 
+    . translate ( 'Action' ) . "</th></tr>\n";
+
+  $sql =  'SELECT wel.cal_login, wel.cal_user_cal, wel.cal_type, '
+    . 'wel.cal_date, wel.cal_time, wel.cal_text, '
+    . ( $sys ? 'wel.cal_log_id FROM webcal_entry_log AS wel '
+    . ' WHERE wel.cal_entry_id = 0' : 'we.cal_id, we.cal_name, '
+    . ' wel.cal_log_id, we.cal_type '
+    . ' FROM webcal_entry_log AS wel, webcal_entry AS we '
+    . ' WHERE wel.cal_entry_id = we.cal_id' )
+    . ( ! empty ( $id ) ? ' AND we.cal_id = ?' :'' )
+    . ( ! empty ( $startid ) ? ' AND wel.cal_log_id <= ?' :'' )
+    . ' ORDER BY wel.cal_log_id DESC';
+  $sql_params = array();
+  if ( ! empty ( $id ) )
+    $sql_params[] = $id;
+  $sql_params[] = $startid;  
+  $res = dbi_execute ( $sql, $sql_params );
+  $nextpage = '';
+
+  if ( $res ) {
+    $num = 0;
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      $l_login = $row[0];
+      $l_user = $row[1];
+      $l_type = $row[2];
+      $l_date = $row[3];
+      $l_time = $row[4];
+      $l_text = $row[5];
+
+      if ( $sys )
+        $l_id = $row[6];
+      else {
+        $l_eid = $row[6];
+        $l_ename = $row[7];
+        $l_id = $row[8];
+        $l_etype = $row[9];
+      }
+      $num++;
+      if ( $num > $PAGE_SIZE ) {
+        $nextpage = $l_id;
+        break;
+      } else {
+        $ret .= '
+        <tr' . ( $num % 2 ? ' class="odd"' : '' ) . '>
+        <td>' . $l_login . '</td>
+        <td>' . $l_user . '</td>
+        <td>' . date_to_str ( $l_date ) . '&nbsp;'
+       . display_time ( $l_date . $l_time,
+        // Added TZ conversion
+        ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y' ? 3 : 2 ) )
+       . '</td>
+        <td>' . ( ! $sys && ! $id ? '<a title="' . htmlspecialchars ( $l_ename )
+         . '" href="view_entry.php?id=' . $l_eid . '">'
+         . htmlspecialchars ( $l_ename ) . '</a></td>
+        <td>' : '' ) . display_activity_log ( $l_type, $l_text ) 
+       . "</td></tr>\n";
+      }
+    }
+    dbi_free_result ( $res );
+  }
+  $ret .= "</table>\n";
+  return $ret;
 }
 ?>
