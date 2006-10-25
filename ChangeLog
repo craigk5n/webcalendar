@@ -1,5 +1,9 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1584275 ] extra week day in VIEW week
+ - Fixed bug [ 1584284 ] disappearing URLs if edit entry
+ - Fixed bug [ 1573642 ] detailed view for public access cannot be activated by UAC
+ - Fixed bug [ 1572685 ] no add attachment for users not-logged in
  - Temporary fix for bug [ 1580720 ] Missing menus
    While we look for more elegant solutions.
  - Fixed bug [ 1582942 ] Javascript errors in edit_entry.php if Repeats disabled
