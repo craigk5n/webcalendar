@@ -668,7 +668,7 @@ if ( $DISABLE_URL_FIELD != 'Y'  ){  ?>
  <tr><td class="tooltip" title="<?php etooltip( 'url-help' )?>">
     <label for="entry_location"><?php etranslate( 'URL' )?>:</label></td><td colspan="2">
     <input type="text" name="entry_url" id="entry_url" size="100" 
-   value="<?php echo htmlspecialchars ( $url ); ?>" />
+   value="<?php echo htmlspecialchars ( $cal_url ); ?>" />
   </td></tr>
 <?php }
 echo '<tr><td class="tooltip" title="' . tooltip( 'date-help' ) . '"><label>';
