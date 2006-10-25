@@ -30,6 +30,9 @@ include_once 'includes/views.php';
 $error = '';
 $DAYS_PER_TABLE = 7;
 
+//TODO this will be placed in admin and pref
+$DISPLAY_LONG_WEEKDAYS = 'N';
+
 view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_v.php');
 
@@ -38,31 +41,13 @@ print_header($INC);
 
 set_today($date);
 
-$next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
-$nextyear = date ( 'Y', $next );
-$nextmonth = date ( 'm', $next );
-$nextday = date ( 'd', $next );
-$nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
-
-$prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
-$prevyear = date ( 'Y', $prev );
-$prevmonth = date ( 'm', $prev );
-$prevday = date ( 'd', $prev );
-$prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
+$nextdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
+$prevdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
-$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 5 : 7 ) );
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 4 : 6 ) );
 $thisdate = date ( 'Ymd', $wkstart );
-
-
-for ( $i = 0; $i < 7; $i++ ) {
-  $days[$i] = $wkstart + ONE_DAY * $i;
-  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, 'D' );
-  $header[$i] = $weekdays[$i] . '<br />' .
-     month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
-     ' ' . date ( 'd', $days[$i] );
-}
 ?>
 
 <div style="width:99%;">
@@ -75,7 +60,7 @@ for ( $i = 0; $i < 7; $i++ ) {
   <img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate ( 'Next' )?>" /></a>
 <div class="title">
 <span class="date"><?php
-  echo date_to_str ( date ( 'Ymd', $wkstart ), '', false ) .
+  echo date_to_str ( $thisdate, '', false ) .
     '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;' .
     date_to_str ( date ( 'Ymd', $wkend ), '', false );
 ?></span><br />
@@ -125,54 +110,50 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 <table class="main">
 <tr><th class="empty">&nbsp;</th>
 <?php
-  for ( $date = $wkstart, $h = 0;
-    date ( 'Ymd', $date ) <= date ( 'Ymd', $wkend );
-    $date += ONE_DAY, $h++ ) {
-    $wday = strftime ( "%w", $date );
-    if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
-    $weekday = weekday_name ( $wday, 'D' );
-    if ( date ( 'Ymd', $date ) == date ( 'Ymd', $today ) ) {
-      echo "<th class=\"today\" style=\"width:$tdw%;\">";
-    } else {
-      echo "<th style=\"width:$tdw%;\">";
-    }
-    echo $weekday . " " .
-    round ( date ( 'd', $date ) ) . "</th>\n";
-  }
-  echo "</tr>\n";
+  $todayYmd = date ( 'Ymd', $today );
+  $header = $body = '';
   for ( $i = 0; $i < $viewusercnt; $i++ ) {
     $events = $e_save[$i];
     $repeated_events = $re_save[$i];
-    echo "\n<tr>\n";
+    $body .= "\n<tr>\n";
     $user = $viewusers[$i];
     user_load_variables ( $user, 'temp' );
-    echo "<th class=\"row\" style=\"width:$tdw%;\">$tempfullname</th>";
-    for ( $date = $wkstart, $h = 0;
-      date ( 'Ymd', $date ) <= date ( 'Ymd', $wkend );
-      $date += ONE_DAY, $h++ ) {
-      $wday = strftime ( "%w", $date );
-      $entryStr = print_date_entries ( date ( 'Ymd', $date ), $user, true );
+    $body .= "<th class=\"row\" style=\"width:$tdw%;\">$tempfullname</th>\n";
+    for ( $date = $wkstart; $date <= $wkend; $date += ONE_DAY ) {
+      if ( is_weekend ( $date ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
+      $dayYmd = date ( 'Ymd', $date );
+      $entryStr = print_date_entries ( $dayYmd, $user, true );
+      $todayClass = ( $dayYmd == $todayYmd ? 'class="today"' : '' );
+      //build header row
+      if ( $i == 0 ) {
+        $header .= "<th $todayClass style=\"width:$tdw%;\">"
+          . weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_WEEKDAYS ) . " " 
+          . date ( 'd', $date ) . "</th>\n";
+      }
       // JCJ Correction for today class
       if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' ) {
         $class = 'class="hasevents"';
-      } else if ( date ( 'Ymd', $date ) == date ( 'Ymd', $today ) ) {
-        $class = 'class="today"';
-      } else if ( $wday == 0 || $wday == 6 ) {
+      } else if ( $dayYmd == $todayYmd ) {
+        $class = $todayClass;
+      } else if ( is_weekend ( $date ) ) {
         $class = 'class="weekend"';
       } else {
         $class = '';
       }
-      echo "<td $class style=\"width:$tdw%;\">";
+      $body .= "<td $class style=\"width:$tdw%;\">";
       if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' ) {
-        echo html_for_add_icon ( date ( 'Ymd', $date ), '', '', $user );
+        $body .= html_for_add_icon ( $dayYmd, '', '', $user ) . "\n";
       }
-      echo $entryStr;
-      echo '</td>';
+      $body .= $entryStr;
+      $body .= "</td>\n";
     }
-    echo "</tr>\n";
+    $body .= "</tr>\n";
   }
-  echo "</table>\n";
+
+  //output all
+  echo $header . "</tr>\n" . $body . "</table>\n";
 }
+
 
 $user = ''; // reset
 
