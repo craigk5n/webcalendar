@@ -418,8 +418,8 @@ if ( empty ( $description ) || $description == '<br />' )
   $description = '';
 if ( empty ( $location ) )
   $location = '';
-if ( empty ( $url ) )
-  $url = '';
+if ( empty ( $cal_url ) )
+  $cal_url = '';
 if ( empty ( $priority ) )
   $priority = 0;
 if ( empty ( $access ) )
