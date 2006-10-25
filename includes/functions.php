@@ -1543,8 +1543,7 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
   }
   for ( $i = 0; $i < 7; $i++ ) {
     $thday = ( $i + $WEEK_START ) % 7;
-    $thname = ( $DISPLAY_LONG_WEEKDAYS  == 'Y'? 
-      weekday_name ( $thday ) : weekday_name ( $thday, 'D' ) );
+    $thname = weekday_name ( $thday, $DISPLAY_LONG_WEEKDAYS );
     $thclass = ( $thday == 0 || $thday == 6 ? ' class="weekend"' :'' );
     $ret .= "<th$thclass>" . $thname . "</th>\n";
   }
@@ -4232,6 +4231,10 @@ function month_name ( $m, $format = 'F' ) {
 function weekday_name ( $w, $format = 'l' ) {
   static $week_names, $weekday_names;
 
+  //we may pass $DISPLAY_LONG_WEEKDAYS as $format
+  if ( $format == 'N' ) $format = 'D';
+  if ( $format == 'Y' ) $format = 'l';
+
   if ( empty ( $weekday_names[0] ) )
     $weekday_names = array ( 
       translate ( 'Sunday' ),
@@ -6110,5 +6113,24 @@ function generate_activity_log ( $id='', $sys=false, $startid='' ){
   }
   $ret .= "</table>\n";
   return $ret;
+}
+
+/**
+ * Determine if date is a weekend
+ *
+ * @param int  $date    Timestamp of subject date
+ *
+ * @return bool         True = Date is weekend
+ *                      False = Date is not weekend
+ */
+function is_weekend ( $date ) {
+  global $WEEKEND_START;
+
+  if ( empty ( $date ) )
+    return false;
+  if ( empty ( $WEEKEND_START ) )
+    $WEEKEND_START = 6;
+  $wday = date ( 'w', $date );
+  return ( $wday == $WEEKEND_START %7 || $wday ==  ( $WEEKEND_START +1 ) %7 );
 }
 ?>
