@@ -861,7 +861,7 @@ New Entry: Nouvel événement
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Agenda d'un autre utilisateur
+Another User&#39;s Calendar: Agenda d'un autre utilisateur
 
 
 ###############################################

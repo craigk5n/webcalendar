@@ -817,7 +817,7 @@ New Entry: Ny aftale
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Anden brugers kalender
+Another User&#39;s Calendar: Anden brugers kalender
 
 
 ###############################################

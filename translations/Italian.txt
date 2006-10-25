@@ -805,7 +805,7 @@ New Entry: Nuova Nota
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Calendario di altro utente
+Another User&#39;s Calendar: Calendario di altro utente
 
 
 ###############################################

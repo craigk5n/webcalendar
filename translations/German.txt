@@ -1226,7 +1226,7 @@ Year View: Jahresansicht
 Manage Views: Ansichten verwalten
 Category Management: Kategorien verwalten
 User Management: Benutzer verwalten
-Another User's Calendar: Kalender anderer Benutzer 
+Another User&#39;s Calendar: Kalender anderer Benutzer 
 Common Trailer: Allgemeine Navigationsleiste
 
 

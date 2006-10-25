@@ -332,12 +332,12 @@ if ( $import_url != '' )
   jscMenu_item ( 'down.png', 'Import', $import_url );
 jscMenu_close ();
 // Views Menu
-// translate ( 'Views' ) translate ( "Another User's Calendar" )
+// translate ( 'Views' ) translate ( 'Another User&#39;s Calendar' )
 // translate ( 'My Views' ) translate ( 'Manage Calendar of' );
 // translate ( 'Manage Views' );
 jscMenu_menu ( 'Views' );
 if ( $select_user_url != '' )
-  jscMenu_item ( 'display.png', "Another User's Calendar", $select_user_url );
+  jscMenu_item ( 'display.png', 'Another User&#39;s Calendar', $select_user_url );
 
 if ( $login != '__public__' ) {
   if ( ! empty ( $views_link ) && $views_linkcnt > 0 ) {

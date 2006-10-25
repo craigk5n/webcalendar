@@ -566,7 +566,7 @@ New Entry: Sarrera berria
 # Page: includes/access.php
 #
 Manage Views: Ikus era administratu
-Another User's Calendar: Beste erabiltzaile baten egutegia ikusi
+Another User&#39;s Calendar: Beste erabiltzaile baten egutegia ikusi
 
 
 ###############################################

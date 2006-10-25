@@ -787,7 +787,7 @@ New Entry: Nova Entrada
 # Page: includes/access.php
 #
 Manage Views: Gestiona Visualitzacions
-Another User's Calendar: Calendari d'un altre usuari
+Another User&#39;s Calendar: Calendari d'un altre usuari
 
 
 ###############################################

@@ -571,7 +571,7 @@ New Entry: Digwyddiad newydd
 # Page: includes/access.php
 #
 Manage Views: Rheolwch golygfeydd
-Another User's Calendar: Calendr defnyddiwr arall
+Another User&#39;s Calendar: Calendr defnyddiwr arall
 
 
 ###############################################

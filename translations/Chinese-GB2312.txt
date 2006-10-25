@@ -658,7 +658,7 @@ New Entry: 新事件
 # Page: includes/access.php
 #
 Manage Views: 管理视图
-Another User's Calendar: 其他用户的日历
+Another User&#39;s Calendar: 其他用户的日历
 
 
 ###############################################

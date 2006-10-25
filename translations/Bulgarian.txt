@@ -734,7 +734,7 @@ New Entry: New Entry
 # Page: includes/access.php
 #
 Manage Views: #?@02;5=85 =0 873;548B5
-Another User's Calendar: 0;5=40@ =0 4@C3 ?>B@518B5;
+Another User&#39;s Calendar: 0;5=40@ =0 4@C3 ?>B@518B5;
 
 
 ###############################################

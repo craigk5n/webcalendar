@@ -820,7 +820,7 @@ New Entry: Ny aktivitet
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Se en annen brukers kalender
+Another User&#39;s Calendar: Se en annen brukers kalender
 
 
 ###############################################

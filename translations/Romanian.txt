@@ -800,7 +800,7 @@ New Entry: Nou eveniment
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Calendarul altcuiva 
+Another User&#39;s Calendar: Calendarul altcuiva 
 
 
 ###############################################

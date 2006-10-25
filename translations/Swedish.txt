@@ -786,7 +786,7 @@ New Entry: Ny händelse
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Annans kalender
+Another User&#39;s Calendar: Annans kalender
 
 
 ###############################################

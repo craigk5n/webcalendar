@@ -320,7 +320,7 @@ New Entry: Nýtt atriði
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Dagatal annarra
+Another User&#39;s Calendar: Dagatal annarra
 
 
 ###############################################

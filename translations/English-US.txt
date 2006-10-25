@@ -1194,7 +1194,7 @@ Year View: Year View
 Manage Views: Manage Views
 Category Management: Category Management
 User Management: User Management
-Another User's Calendar: Another User's Calendar
+Another User&#39;s Calendar: Another User&#39;s Calendar
 Common Trailer: Common Trailer
 
 ########################################

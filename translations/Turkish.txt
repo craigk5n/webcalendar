@@ -309,7 +309,7 @@ New Entry: Yeni islem
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Baska Kullanicilarin Takvimi 
+Another User&#39;s Calendar: Baska Kullanicilarin Takvimi 
 
 
 ###############################################
