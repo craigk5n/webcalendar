@@ -88,11 +88,11 @@ function dbi_connect ( $host, $login, $password, $database, $lazy = true ) {
   $db_connection_info['database'] = $database;
   $db_connection_info['connected'] = false;
   $db_connection_info['connection'] = 0;
-  // .
+
   // mysqli requires $db_connection_info['connection'] to be set
   if ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 )
     $lazy == false;
-  // .
+
   // Lazy connections... do not connect until 1st call to dbi_query
   if ( $lazy )
     // echo "<!-- Waiting on db connection made (lazy) -->\nRETURN!<br />";
@@ -306,7 +306,7 @@ function dbi_query ( $sql, $fatalOnError = true, $showError = true ) {
 
   if ( ! empty ( $db_connection_info['debug'] ) )
     $SQLLOG[] = $sql;
-  // .
+
   // echo "dbi_query!: " . htmlentities ( $sql ) . "<br />";
   // Connect now if not connected.
   if ( is_array ( $db_connection_info ) && ! $db_connection_info['connected'] ) {
@@ -322,7 +322,7 @@ function dbi_query ( $sql, $fatalOnError = true, $showError = true ) {
     // echo '<!-- Created delayed db connection (lazy) -->' . "\n";
   }
   $db_query_count++;
-  // .
+
   // If caching is enabled, then clear out the cache for any request
   // that may update the datatabase.
   if ( ! empty ( $db_connection_info['cachedir'] ) ) {
@@ -332,7 +332,7 @@ function dbi_query ( $sql, $fatalOnError = true, $showError = true ) {
         $SQLLOG[] = translate ( 'Cache cleared from previous SQL!' );
     }
   }
-  // .
+
   // do_debug ( "SQL:" . $sql);
   if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 ) {
     $res = mysql_query ( $sql );
@@ -661,7 +661,7 @@ function dbi_fatal_error ( $msg, $doExit = true, $showError = true ) {
  */
 function dbi_escape_string ( $string ) {
   global $db_connection_info;
-  // .
+
   // Return the string in original form; all possible escapings by
   // magic_quotes_gpc (and possibly magic_quotes_sybase) will be rolled back.
   // But, also, we may roll back escaping we have done ourselves.

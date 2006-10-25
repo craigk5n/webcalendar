@@ -137,7 +137,8 @@ function access_load_user_permissions ( $useCache = true ) {
     // $admin_override = ( $row[1] == '__default__' && $is_admin &&
     // ! empty ( $ADMIN_OVERRIDE_UAC ) && $ADMIN_OVERRIDE_UAC == 'Y' );
     $key = $row[0] . '.' . $row[1];
-    $access_other_cals[$key] = array ( 'cal_login' => $row[0],
+    $access_other_cals[$key] = array (
+      'cal_login' => $row[0],
       'cal_other_user' => $row[1],
       'view' => ( $admin_override ? CAN_DOALL : $row[2] ),
       'edit' => ( $admin_override ? CAN_DOALL : $row[3] ),
@@ -205,10 +206,10 @@ function access_load_user_functions ( $user ) {
 
     dbi_free_result ( $res );
   }
-  // .
+
   // If still no setting found, then assume access to everything
   // if an admin user, otherwise access to all non-admin functions.
-  // .
+
   if ( ! empty ( $rets[$user] ) )
     $ret = $rets[$user];
   else
@@ -326,9 +327,9 @@ function access_can_view_page ( $page = '', $user = '' ) {
         preg_match ( "/$page_lookup[$i]/", $page ) )
       $page_id = $i;
   }
-  // .
+
   // echo "page_id = $page_id <br />page = $page<br />\n";
-  // .
+
   // If the specified user is the currently logged in user, then we have already
   // loaded this user's access, stored in the global variable $access_user.
   $access = '';
@@ -339,20 +340,20 @@ function access_can_view_page ( $page = '', $user = '' ) {
     $access = access_load_user_functions ( $user );
 
   assert ( '! empty ( $access )' );
-  // .
+
   // If we did not find a page id, then this is also a WebCalendar bug.
   // (Someone needs to add another entry in the $page_lookup[] array.)
   assert ( '$page_id >= 0' );
-  // .
+
   // Now that we know which function (page_id), see if the user can access it.
   $access = access_load_user_functions ( $user );
 
   $yesno = substr ( $access, $page_id, 1 );
-  // .
+
   // No setting found. Use default values.
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $page_id, $user );
-  // .
+
   // echo "yesno = $yesno <br />\n";
   assert ( '! empty ( $yesno )' );
 
@@ -408,7 +409,7 @@ function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
   else
   if ( isset ( $access_other_cals[$key3][$cal_can_xxx] ) )
     $ret = $access_other_cals[$key3][$cal_can_xxx];
-  // .
+
   // check type and access levels
   if ( ! empty ( $access ) && ! empty ( $type ) ) {
     if ( $access == 'C' )
