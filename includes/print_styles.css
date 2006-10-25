@@ -1,17 +1,17 @@
-#trailer,
-form,
-#month .minical,
-#week .minical,
 #minicolumn,
+#month .minical,
+#trailer,
+#week .minical,
+.bullet,
 .minitask,
+.nav,
+.new,
+.next,
 .popup,
+.prev,
 .printer,
 .ThemeMenubar,
-.nav,
-.bullet,
-.new,
-.prev,
-.next {
+form {
   display: none !important;
 }
 a {
@@ -20,13 +20,13 @@ a {
 #cat {
   display: inline !important;
 }
-.entry, 
-.layerentry, 
+.entry,
+.layerentry,
 .unapprovedentry {
   font-size: 12px;
 }
-#viewt .entry, 
-#viewt .layerentry, 
+#viewt .entry,
+#viewt .layerentry,
 #viewt .unapprovedentry {
   font-size: 13px !important;
 }
