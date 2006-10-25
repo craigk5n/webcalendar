@@ -465,7 +465,7 @@ New Entry: 新 e 記事
 # Page: includes/access.php
 #
 Manage Views: 管理檢視
-Another User's Calendar: 別人 e 行事曆
+Another User&#39;s Calendar: 別人 e 行事曆
 
 
 ###############################################

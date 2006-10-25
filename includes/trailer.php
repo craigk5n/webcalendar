@@ -125,7 +125,7 @@ if ( $single_user != 'Y' ) {
       // get count of users this user can see.  if > 1, then...
       $ulist = array_merge ( get_my_users(), get_my_nonusers ( $login , true ) );
       if ( count ( $ulist ) > 1 ) {
-        $calStr = translate("Another User's Calendar");
+        $calStr = translate ( 'Another User&#39;s Calendar' );
         $goto_link[] = '<a title="' .  $calStr 
           . '" href="select_user.php">' . $calStr . '</a>';
       }

@@ -1057,7 +1057,7 @@ Year View: 年間表示
 Manage Views: 表示管理
 Category Management: カテゴリ管理
 User Management: ユーザー管理
-Another User's Calendar: 他ユーザーのカレンダー
+Another User&#39;s Calendar: 他ユーザーのカレンダー
 Common Trailer: 共通のフッター
 
 

@@ -831,7 +831,7 @@ New Entry: Nova entrada
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Calendário de Outro Usuário
+Another User&#39;s Calendar: Calendário de Outro Usuário
 
 
 ###############################################

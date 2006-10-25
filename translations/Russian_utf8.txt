@@ -1169,7 +1169,7 @@ Year View: Просмотр Года
 Manage Views: Управлять Видами
 Category Management: Управлять Категориями
 User Management: Управлять Пользователями
-Another User's Calendar: Календарь другого пользователя
+Another User&#39;s Calendar: Календарь другого пользователя
 Common Trailer: Другой Низ страницы
 
 ########################################

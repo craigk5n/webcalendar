@@ -808,7 +808,7 @@ New Entry: Nuevo registro
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Ver calendario de otro usuario
+Another User&#39;s Calendar: Ver calendario de otro usuario
 
 
 ###############################################

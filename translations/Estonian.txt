@@ -624,7 +624,7 @@ New Entry: uus kanne
 # Page: includes/access.php
 #
 Manage Views: Tegele vaadetega
-Another User's Calendar: Teise kasutaja kalender
+Another User&#39;s Calendar: Teise kasutaja kalender
 
 
 ###############################################

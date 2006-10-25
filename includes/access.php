@@ -63,7 +63,7 @@ function access_get_function_description ( $function ) {
     case ACCESS_ADVANCED_SEARCH:
       return translate ( 'Advanced Search' );
     case ACCESS_ANOTHER_CALENDAR:
-      return translate ( "Another User's Calendar" );
+      return translate ( 'Another User&#39;s Calendar' );
     case ACCESS_ASSISTANTS:
       return translate ( 'Assistants' );
     case ACCESS_CATEGORY_MANAGEMENT:

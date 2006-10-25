@@ -786,7 +786,7 @@ New Entry: Uusi merkitä
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Toisen käyttäjän kalenteri
+Another User&#39;s Calendar: Toisen käyttäjän kalenteri
 
 
 ###############################################

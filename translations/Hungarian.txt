@@ -1125,7 +1125,7 @@ Year View: Év nézet
 Manage Views: Nézetek kezelése
 Category Management: Kategória kezelés
 User Management: Felhasználó kezelés
-Another User's Calendar: Másik felhasználó naptára
+Another User&#39;s Calendar: Másik felhasználó naptára
 Common Trailer: Általános előzetes
 
 

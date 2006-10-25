@@ -286,7 +286,7 @@ New Entry: 새 항목
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: 다른 사용자 달력
+Another User&#39;s Calendar: 다른 사용자 달력
 
 
 ###############################################

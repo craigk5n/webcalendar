@@ -805,7 +805,7 @@ New Entry: Nový záznam
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: Kalendá? jiného uživatele
+Another User&#39;s Calendar: Kalendá? jiného uživatele
 
 
 ###############################################

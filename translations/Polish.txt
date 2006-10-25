@@ -919,7 +919,7 @@ Year View: Widok roku
 Manage Views: Zarz±dzaj widokami
 Category Management: Zarz±dzanie kategoriami
 User Management: Zarz±dzanie u¿ytkownikami
-Another User's Calendar: Kalendarze innych u¿ytkowników
+Another User&#39;s Calendar: Kalendarze innych u¿ytkowników
 Common Trailer: Wspólny skrypt/styl/nag³ówek/stopka
 
 

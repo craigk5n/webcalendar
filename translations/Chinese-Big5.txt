@@ -383,7 +383,7 @@ New Entry: 新的記事
 ###############################################
 # Page: includes/access.php
 #
-Another User's Calendar: 別人的行事曆
+Another User&#39;s Calendar: 別人的行事曆
 
 
 ###############################################

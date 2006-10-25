@@ -1189,7 +1189,7 @@ Year View: Jaar weergave
 Manage Views: Beheer weergaves
 Category Management: Categorie-beheer
 User Management: Gebruikersbeheer
-Another User's Calendar: Agenda andere gebruiker
+Another User&#39;s Calendar: Agenda andere gebruiker
 Common Trailer: Meestvoorkomende aansluiting
 
 
