@@ -1,4 +1,5 @@
-<?php 
+<?php
+/* $Id$ */ 
 // Do a sanity check. Make sure we can access webcal_config table. We call this
 // right after the first call to dbi_connect ()
 // (from either the WebCalendar class or here in validate.php).
