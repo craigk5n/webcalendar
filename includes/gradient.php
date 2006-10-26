@@ -53,6 +53,12 @@
  *  request a 10Gb image 8-)
  */
 
+
+//we don't really need it if calling gradients.php standalone
+if ( file_exists ( 'includes/getGetValue.php' ) )
+  include_once 'includes/getGetValue.php';
+
+
 $MIN_COLORS = 4;
 $MAX_COLORS = 256;
 $MAX_HEIGHT = $MAX_WIDTH = 600;
@@ -71,39 +77,31 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) && !
   $PHP_SELF = $_SERVER['PHP_SELF'];
 // are we calling this file directly with GET parameters
 if ( ! empty ( $_GET ) && ! empty ( $PHP_SELF ) &&
-    preg_match ( "/\/includes\/gradient.php/", $PHP_SELF ) ) {
-  $base = getGetValue ( 'base' );
-  $direction = getGetValue ( 'direction' );
-  $height = getGetValue ( 'height' );
-  $numcolors = getGetValue ( 'colors' );
-  $percent = getGetValue ( 'percent' );
-  $width = getGetValue ( 'width' );
+    preg_match ( "/\/includes\/gradient.php/", $PHP_SELF )  ) {
+  if ( function_exists ( 'getGetValue' ) ) {
+    $base = getGetValue ( 'base' );
+    $direction = getGetValue ( 'direction' );
+    $height = getGetValue ( 'height' );
+    $numcolors = getGetValue ( 'colors' );
+    $percent = getGetValue ( 'percent' );
+    $width = getGetValue ( 'width' );
+    $color1 = getGetValue ( 'color1' );
+    $color2 = getGetValue ( 'color2' );
+  } else {
+    $base = ( ! empty ( $base ) ? $base : '');
+    $direction = ( ! empty ( $direction ) ? $direction : '');
+    $height = ( ! empty ( $height ) ? $height : '');
+    $numcolors = ( ! empty ( $colors ) ? $colors : '');
+    $percent = ( ! empty ( $percent ) ? $percent : '');
+    $width = ( ! empty ( $width ) ? $width : '');
+    $color1 = ( ! empty ( $color1 ) ? $color1 : '');
+    $color2 = ( ! empty ( $color2 ) ? $color2 : '');
+  }
 
-  create_image ( '', $base, $height, $percent, $width, $direction, $numcolors );
+  create_image ( '', $base, $height, $percent, $width
+    , $direction, $numcolors, $color1, $color2 );
 }
 
-/*
-// To use this file in another application, un-comment this function and
-//  comment out the 'include_once' line below.
-
-// Get a value from a GET URL
-function getGetValue ( $name ) {
-  global $HTTP_GET_VARS;
- 
-  if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) ) {
-  $_GET[$name] = ( get_magic_quotes_gpc () != 0
-   ? $_GET[$name] : addslashes ( $_GET[$name]) );
-    $HTTP_GET_VARS[$name] = $_GET[$name];
-  return $_GET[$name];
-  } else
-  if ( ! isset ( $HTTP_GET_VARS ) || ! isset ( $HTTP_GET_VARS[$name] ) ) {
-    return null;
- }
-  return ( $HTTP_GET_VARS[$name] );
-}
-*/
-
-include_once 'includes/getGetValue.php';
 
 /* Turn an HTML color (like 'AABBCC') into an array of decimal RGB values
  *
@@ -145,18 +143,17 @@ function background_css ( $base, $height = '', $percent = '' ) {
 
   $ret = 'background';
   if ( $type != '' && $ENABLE_GRADIENTS == 'Y' ) {
-    $ret .= ': ' . $base . ' url ( ';
+    $ret .= ': ' . $base . ' url( ';
     if ( ! file_exists ( 'images/cache' ) || ! is_writable ( 'images/cache' ) )
       $ret .= '"includes/gradient.php?base=' . substr ( $base, 1 )
        . ( $height != '' ? '&height=' . $height : '' )
        . ( $percent != '' ? '&percent=' . $percent : '' ) . '"';
     else {
-      $file_name = '"images/cache/' . substr ( $base, 1, 6 )
+      $file_name = 'images/cache/' . substr ( $base, 1, 6 )
        . ( $height != '' ? '-' . $height : '' )
-       . ( $percent != ''? '-' . $percent : '' ) . "$type\"";
+       . ( $percent != ''? '-' . $percent : '' ) . $type;
       if ( ! file_exists ( $file_name ) )
         $tmp = create_image ( $file_name, $base, $height, $percent );
-
       $ret .= $file_name;
     } 
     $ret .= ' ) repeat-x;' . "\n";
@@ -166,16 +163,12 @@ function background_css ( $base, $height = '', $percent = '' ) {
   return $ret;
 } 
 
-function create_image ( $file_name, $base = '', $height = '',
-  $percent = '', $width = '', $direction = '', $numcolors = '' ) {
-  global $_GET, $DEFAULTS, $MAX_COLORS, $MAX_HEIGHT, $MAX_WIDTH, $MIN_COLORS;
+function create_image ( $file_name, $base = '', $height = '', $percent = ''
+  , $width = '', $direction = '', $numcolors = '', $color1='', $color2='' ) {
+  global $DEFAULTS, $MAX_COLORS, $MAX_HEIGHT, $MAX_WIDTH, $MIN_COLORS;
 
-  if ( $base == '' ) {
-    $color1 = getGetValue ( 'color1' );
-    $color2 = getGetValue ( 'color2' );
-  } else {
-    $color1 = $base;
-    $color2 = $color1;
+  if ( $base != '' ) {
+    $color1 = $color2 = $base;
   } 
   $color1 = ( $color1 == ''
     ? colorToRGB ( $DEFAULTS['color1'] )

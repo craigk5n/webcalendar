@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1584656 ] Bug in Gradient Backroundcolors
  - Fixed bug [ 1584275 ] extra week day in VIEW week
  - Fixed bug [ 1584284 ] disappearing URLs if edit entry
  - Fixed bug [ 1573642 ] detailed view for public access cannot be activated by UAC
