@@ -41,7 +41,7 @@ Save: שמור
 Go: בצע
 Public Access: גישה ציבורית
 Admin: מנהל
-Allow Access to Other Users' Calendar: הרשה גישה ללוחות שנה של משתמשים אחרים
+Allow Access to Other Users&#39; Calendar: הרשה גישה ללוחות שנה של משתמשים אחרים
 Grant This User Access to My Calendar: הרשה למשתמש זה גישה ללוח השנה שלי
 Type: סוג
 Calendar: לוח שנה
@@ -203,7 +203,7 @@ Display Lunar Phases in month view: הצג פאזות הירח בתצוגה חו
 # << MISSING >>
 # Restrictions:
 allow-view-other-help: קובע אם למשתמש אחד מותר לצפות בלוח שנה של משתמש אחר.
-Allow viewing other user's calendars: אפשר צפייה בלוחות שנה של אחרים
+Allow viewing other user&#39;s calendars: אפשר צפייה בלוחות שנה של אחרים
 require-approvals-help: כאשר מאופשר, על המשתמש לאשר ארוע לפני שהוא יוצג בלוח השנה שלו (אלא אם הצג לא מאושרים מופעל). הערה: כאשר זה במצב "לא", זה לא ייכבה אישורים ללוחות בעלי גישה ציבורית (אם מאופשרים לוחות שנה עם גישה ציבורית).
 Require event approvals: לחייב אישורי אירועים
 display-unapproved-help: קובע אם ארועים לא מאושרים מוצגים בלוח השנה שלך.<br />כאשר נבחר "כן", אזי ארועים לא מאושרים יוצגו בלוח שלך (בצבע שונה).<br />אם נבחר "לא", אזי חייבים לאשר אירוע לפני שיוצג בלוח השנה שלך.
@@ -856,7 +856,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: טו
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: הוא אמור להמצא במחיצה ב-Palm שלך ב- <tt>datebook/datebook.dat</tt>  בתת ספריה על שם שם המשתמש שלך
 The following entries will not be imported: הרשומות הבאות לא ייובוא
 Entries older than the current date: רשומות ישנות מהתאריך של היום
-Entries created in the Palm Desktop that have not been HotSync'd: רשומות בשולחן העבודה של ה-Palm שלא סונכרנו
+Entries created in the Palm Desktop that have not been HotSync&#39;d: רשומות בשולחן העבודה של ה-Palm שלא סונכרנו
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: כל דבר שמיובא מה-Palm יישכתב מחדש בפעולת הייבוא הבא (אלא אם עבר תאריך הארוע).
 Therefore, updates should be made in the Palm Desktop.: לכן יש לעדכן אותם בשולחן העבודה של ה-Palm.
 This form will import vCalendar (.vcs) 1.0 events: טופס זה יאפשר ייבוא של ארועים של vCalendar (.vcs) 1.0
@@ -872,7 +872,7 @@ Help Index: אינדקס העזרה
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.: שכבות משמשות לתצוגת ארועים של משתמשים אחרים בלוח השנה שלך. ניתן לציין את המשתמש ואת צבע הצגת הארועים שלו.
+Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: שכבות משמשות לתצוגת ארועים של משתמשים אחרים בלוח השנה שלך. ניתן לציין את המשתמש ואת צבע הצגת הארועים שלו.
 Add/Edit/Delete: הוסף/ערוך/מחק
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: הקלקה על קישור עריכת שכבות באזור הנהול בתחתית הדף תאפשר הוספה/עריכה/מחיקה של שכבות.
 Specifies the user that you would like to see displayed in your calendar.: קובע את המשתמש שהנך רוצה להציג בלוח השנה שלך.
@@ -977,7 +977,7 @@ Not authorized: לא מורשה
 # Page: login-app.php
 #
 You must enter a login and password: עליך להקליד שם משתמש וסיסמא
-Save login via cookies so I don't have to login next time: שמור שם משתמש בעזרת עוגיות כדי שלא אצטרך להקליד אותו בפעם הבאה
+Save login via cookies so I don&#39;t have to login next time: שמור שם משתמש בעזרת עוגיות כדי שלא אצטרך להקליד אותו בפעם הבאה
 Login: כניסה
 Access public calendar: גישה ללוח שנה ציבורית
 cookies-note: <b>הערה:</b> יישום זה מחייב שימוש בעוגיות.
@@ -1106,7 +1106,7 @@ No matches found: לא נמצאו התאמות
 ########################################
 # Page: select_user.php
 #
-View Another User's Calendar: צפה בלוח שנה של משתמש אחר
+View Another User&#39;s Calendar: צפה בלוח שנה של משתמש אחר
 
 ########################################
 # Page: set_entry_cat.php
@@ -1202,7 +1202,7 @@ from calendar of: מלוח השנה של
 Copy entry: העתק רשומה
 This will delete the entry from your boss\' calendar.: זה ימחוק את הרשומה מלוח השנה של המנהל שלך.
 This will delete the entry from your calendar.: זה ימחוק את הרשומה מלוח השנה שלך.
-from your boss' calendar: מלוח השנה של המנהל שלך
+from your boss&#39; calendar: מלוח השנה של המנהל שלך
 Do you want to add this entry to your calendar?: האם ברצונך להוסיף את הרשומה ללוח השנה שלך?
 This will add the entry to your calendar.: זה יוסיף את הרשומה ללוח השנה שלך.
 Email all participants: שלח דוא"ל לכל המשתתפים
@@ -1504,7 +1504,7 @@ encoding: קידוד לא מוכר~
 # Page: includes/js/admin.php
 #
 Server URL is required: URL של השרת חובה
-Server URL must end with '/': URL של השרת חייב להסתיים ב-'/'
+Server URL must end with &#39;/&#39;: URL של השרת חייב להסתיים ב-'/'
 Invalid work hours: שעות עבודה לא חוקיות
 Invalid color for document background: צבע רקע מסמך לא חוקי
 Invalid color for document title: צבע כותרת מסמך לא חוקי
@@ -1515,7 +1515,7 @@ Invalid color for table text background: צבע רקע הטקסט של טבלה 
 Invalid color for event popup background: צבע רקע חלונית ארוע קופצת לא חוקי
 Invalid color for event popup text: צבע טקסט של חלונית ארוע קופצת לא חוקי
 Invalid color for table cell background for today: צבע רקע טבלה של היום לא חוקי
-Color format should be '#RRGGBB': תצורת הצבע צריכה להיות '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: תצורת הצבע צריכה להיות '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php
@@ -1674,10 +1674,10 @@ Convert Data to GMT: המר מידע לשעון גרניץ'
 Application Settings: הגדרות יישום
 HTTP-based authentication was not detected: לצאתי אימות מבוסס HTML
 You will need to reconfigure your web server if you wish to: עליך להגדיר מחדש את שרת הווב שלך אם ברצונך
-select 'Web Server' from the 'User Authentication' choices below: לבחור 'שרת ווב' מאפשריות 'אימות משתמשים' בהמשך
+select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: לבחור 'שרת ווב' מאפשריות 'אימות משתמשים' בהמשך
 HTTP-based authentication was detected: נמצא אמות מבוסס HTML
 User authentication is being handled by your web server: שרת הווב שלך מטפל באימות משתמשים
-You should select 'Web Server' from the list of 'User Authentication' choices below: עליך לבחור ב'שרת ווב' מרשימת בחירות ,אימות משתמשים' בהמשך
+You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: עליך לבחור ב'שרת ווב' מרשימת בחירות ,אימות משתמשים' בהמשך
 Create Default Admin Account: צור חשבון מנהל ברירת מחדל
 #
 # << MISSING >>

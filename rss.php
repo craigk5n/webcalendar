@@ -246,6 +246,8 @@ $lang = languageToAbbrev ( ( $LANGUAGE == 'Browser-defined' ||
   $LANGUAGE == 'none' )? $lang : $LANGUAGE );
 if ( $lang == 'en' ) $lang = 'en-us'; //the RSS 2.0 default
 
+$appStr =  generate_application_name ();
+
 //header('Content-type: application/rss+xml');
 header('Content-type: text/xml');
 echo '<?xml version="1.0" encoding="' . $charset . '"?>';
@@ -253,14 +255,14 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>';
 <rss version="2.0" xml:lang="<?php echo $lang ?>">
  
 <channel>
-<title><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></title>
+<title><![CDATA[<?php echo $appStr ?>]]></title>
 <link><?php echo $SERVER_URL; ?></link>
-<description><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></description>
+<description><![CDATA[<?php echo $appStr ?>]]></description>
 <language><?php echo $lang; ?></language>
 <generator>:"http://www.k5n.us/webcalendar.php?v=<?php 
 echo $PROGRAM_VERSION; ?>"</generator>
 <image>
-<title><![CDATA[<?php etranslate ( $APPLICATION_NAME ); ?>]]></title>
+<title><![CDATA[<?php echo $appStr ?>]]></title>
 <link><?php echo $SERVER_URL; ?></link>
 <url>http://www.k5n.us/k5n_small.gif</url>
 </image>

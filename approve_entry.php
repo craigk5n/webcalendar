@@ -115,20 +115,9 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
       $msg .= "\n\n" . translate ( 'Comments' ) . ': ' . $comments;
 
     $from = ( strlen ( $login_email ) ? $login_email : $EMAIL_FALLBACK_FROM );
-
-    if ( strlen ( $from ) ) {
-      $mail->From = $from;
-      $mail->FromName = $login_fullname;
-    } else
-      $mail->From = $login_fullname;
-
-    $mail->IsHTML ( $htmlmail == 'Y' ? true : false );
-    $mail->AddAddress ( $tempemail, $tempfullname );
-    $mail->WCSubject ( $name );
-    $mail->Body = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;
-    $mail->Send ();
-    $mail->ClearAll ();
-
+    //send mail
+    $mail->WC_Send ( $login_fullname, $tempemail, 
+      $tempfullname, $name, $msg, $htmlmail, $from );
     activity_log ( $id, $login, $creator, LOG_NOTIFICATION,
       'Approved w/Comments by ' . $app_user );
   }

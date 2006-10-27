@@ -353,7 +353,7 @@ $thismonth = ( $orig_date / 100 ) % 100;
 $thisday = $orig_date % 100;
 
 // $subject is used for mailto URLs
-$subject = translate($APPLICATION_NAME) . ': ' . $name;
+$subject = generate_application_name () . ': ' . $name;
 // Remove the '"' character since it causes some mailers to barf
 $subject = str_replace ( ' "', '', $subject );
 $subject = htmlspecialchars ( $subject );
@@ -1093,7 +1093,7 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser
     "href=\"del_entry.php?id=$id$u_url$rdate\" onclick=\"return confirm('" . 
     $areYouSureStr . "\\n\\n";
   if ( $is_assistant ) {
-    echo translate( "This will delete the entry from your boss' calendar.", true) . 
+    echo translate( 'This will delete the entry from your boss&#39; calendar.', true) . 
       "');\">";
   } else {
     echo translate( 'This will delete the entry from your calendar.', true) . 
@@ -1101,7 +1101,7 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser
   }
   echo $deleteEntryStr;
   if ( $is_assistant ) {
-    echo  ' ' . translate ( "from your boss' calendar" );
+    echo  ' ' . translate ( 'from your boss&#39; calendar' );
   }
   echo "</a><br />\n";
   echo '<a title="' . $copyStr . '" class="nav" ' .

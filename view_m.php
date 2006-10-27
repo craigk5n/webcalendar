@@ -29,7 +29,7 @@ $USERS_PER_TABLE = 6;
 view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_m.php' );
 
-$INC = array('js/popups.php');
+$INC = array('js/popups.php/true');
 print_header($INC);
 
 set_today($date);

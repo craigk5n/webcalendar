@@ -59,7 +59,7 @@ function print_user_list () {
       $size = 5;
     echo '<tr><td class="aligntop">' . "\n";
     echo '<label for="caluser">' . 
-     translate( 'Calendar' ) . "</label></td><td>\n";
+     translate( 'Calendar' ) . ":</label></td><td>\n";
     echo '<select name="calUser" id="caluser" size="' .$size. "\">$users\n";
     echo '</select></td></tr>' . "\n";
   }

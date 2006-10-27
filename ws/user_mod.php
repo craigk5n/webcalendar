@@ -87,12 +87,12 @@ $delete = ( ! empty ( $deleteIn ) && $deleteIn == '1' );
 // This error should not happen in a properly written client, so no need to
 // translate it.
 if ( empty ( $error ) && empty ( $user_login ) ) {
-  $error = translate ( "Username can not be blank" );
+  $error = translate ( 'Username can not be blank' );
 }
 
 // Check for invalid characters in the login
 if ( empty ( $error ) && addslashes ( $user_login ) != $user_login ) {
-  $error = "Invalid characters in login.";
+  $error = 'Invalid characters in login.';
 }
 
 // Check to see if username exists
@@ -117,7 +117,7 @@ if ( empty ( $error ) ) {
 
 // If adding a user, make sure a password was provided
 if ( empty ( $error ) && $add && empty ( $user_password ) ) {
-  $error = translate("You have not entered a password");
+  $error = translate( 'You have not entered a password' );
 }
 
 if ( empty ( $error ) && ! $add && ! $delete ) {

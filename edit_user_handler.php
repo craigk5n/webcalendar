@@ -65,7 +65,7 @@ else if ( $formtype == 'setpassword' && strlen ( $user ) ) {
     if ( $user_can_update_password ) {
       user_update_user_password ( $user, $upassword1 );
       activity_log ( 0, $login, $user, LOG_USER_UPDATE,
-        translate("Set Password") );
+        translate( 'Set Password' ) );
     } else {
       $error = $notAuthStr;
     }

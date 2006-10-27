@@ -174,7 +174,7 @@ if ( $id > 0 && empty ( $error ) ) {
             } else {
                reset_language ( $user_language );
             }
-          $msg = translate( 'Hello' ) . ', ' . unhtmlentities( $tempfullname ). ".\n\n" .
+          $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
             translate( 'An appointment has been canceled for you by' ) .
             ' ' . $login_fullname .  ".\n" .
             translate( 'The subject was' ) . ' "' . $name . "\"\n" .
@@ -184,23 +184,9 @@ if ( $id > 0 && empty ( $error ) ) {
              // Apply user's GMT offset and display their TZID
              display_time ( '', 2, $eventstart, $t_format );
             $msg .= "\n\n";
-            $msg = stripslashes ( $msg );
             //use WebCalMailer class
-            $from = $login_email;
-            if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
-              $from = $EMAIL_FALLBACK_FROM;
-            if ( strlen ( $from ) ) {
-              $mail->From = $from;
-              $mail->FromName = $login_fullname;
-            } else {
-              $mail->From = $login_fullname;
-            }
-            $mail->IsHTML( $htmlmail == 'Y' ? true : false );
-            $mail->AddAddress( $tempemail, unhtmlentities( $tempfullname ) );
-            $mail->WCSubject ( $name );
-            $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;                    
-            $mail->Send();
-            $mail->ClearAll();
+            $mail->WC_Send ( $login_fullname, $tempemail, 
+              $tempfullname, $name, $msg, $htmlmail, $login_email );
         }
       }
     }

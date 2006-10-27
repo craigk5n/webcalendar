@@ -74,7 +74,7 @@ if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
   $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=day.php?$u_url" .
     "date=$nowYmd$caturl" . ( ! empty ( $friendly ) ? '&amp;friendly=1' : '') . "\" />\n";
 }
-$INC = array('js/popups.php');
+$INC = array('js/popups.php/true');
 print_header($INC,$HeadX);
 
 echo <<<EOT

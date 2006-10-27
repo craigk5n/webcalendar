@@ -121,7 +121,7 @@ yearly-shows-events-help: En la visualització d'any, mostra en negreta els dies 
 allow-view-add-help: S'inclourà una icona '+' a les visualitzacions, permetent als usuaris afegir esdeveniments ràpidament als calendaris d'altres usuaris.
 Include add event link in views: Inclou a les visualitzacions enllaç per afegir esdeveniment
 allow-view-other-help: Especifica si un usuari pot visualitzar el calendari d'un altre usuari.
-Allow viewing other user's calendars: Permet veure els calendaris d'altres usuaris
+Allow viewing other user&#39;s calendars: Permet veure els calendaris d'altres usuaris
 require-approvals-help: Si està activat, l'usuari ha d'aprovar l'esdeveniment abans que es mostri en el seu ( llevat que s'hagi activat Mostrar pendents d'aprovar).  Fixeu-vos que configurar-ho a "No", no ocultarà les aprovacions per al calendari d'Accés Públic (si el calendari d'Accés Públic està habilitat).
 Require event approvals: Requereix aprovació d'esdeveniments
 display-unapproved-help: Especifica si els esdeveniments pendents d'aprovació es mostren al calendari.<br /> Si s'ajusta a "Sí", els esdeveniments pendents d'aprovació es mostraran al calendari (amb el text en un color diferent). <br /> Si s'ajusta a  "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
@@ -540,7 +540,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Aque
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Hauria d'estar en el teu directori Palm a <tt>datebook/datebook.dat</tt> en un subdirectori amb el teu nom d'usuari.
 The following entries will not be imported: Les entrades següents no s'importaran
 Entries older than the current date: Entrades anteriors a la data actual
-Entries created in the Palm Desktop that have not been HotSync'd: Entrades creades al Palm Desktop que no han estat sincronitzades mitjançant HotSync
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Entrades creades al Palm Desktop que no han estat sincronitzades mitjançant HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Qualsevol cosa importada des del Palm quedarà sobreescrita durant la propera importació (llevat que ja s'hagi superat la data de l'esdeveniment).
 Therefore, updates should be made in the Palm Desktop.: Per tant, caldria realitzar les actualitzacions al Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Aquest formulari importa esdeveniments de vCalendar 1.0 (.vcs).
@@ -626,7 +626,7 @@ Reject this entry?: Rebutges aquesta entrada?
 # Page: login-app.php
 #
 You must enter a login and password: Cal introduir un usuari i contrasenya
-Save login via cookies so I don't have to login next time: Desa la identificació mitjançant galetes per no haver d'introduir-ho la propera vegada
+Save login via cookies so I don&#39;t have to login next time: Desa la identificació mitjançant galetes per no haver d'introduir-ho la propera vegada
 Login: Entrada
 Access public calendar: Calendari d'accés públic
 cookies-note: <b>Nota:</b>: Aquesta aplicació requereix tenir les galetes habilitades.
@@ -703,7 +703,7 @@ No matches found: No s'han trobat coincidències
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Visualitza el calendari d'un altre usuari
+View Another User&#39;s Calendar: Visualitza el calendari d'un altre usuari
 
 
 ###############################################
@@ -878,7 +878,7 @@ Event Imported: Esdeveniment importat
 # Page: includes/js/admin.php
 #
 Server URL is required: Cal URL de Servidor
-Server URL must end with '/': La URL del Servidor ha d'acabar amb '/'
+Server URL must end with &#39;/&#39;: La URL del Servidor ha d'acabar amb '/'
 Invalid color for document background: Color invàlid per al fons del document
 Invalid color for document title: Color invàlid per al títol del document
 Invalid color for table cell background: Color invàlid per al fons de cel·les de taula
@@ -888,7 +888,7 @@ Invalid color for table text background: Color invàlid per al fons del text de l
 Invalid color for event popup background: Color invàlid per al fons d'un missatge emergent
 Invalid color for event popup text: Color invàlid per al text del missatge emergent
 Invalid color for table cell background for today: Color invàlid per al fons de la cel·la d'avui
-Color format should be '#RRGGBB': El format del color hauria de ser '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: El format del color hauria de ser '#RRGGBB'
 
 
 ###############################################

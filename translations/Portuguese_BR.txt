@@ -133,7 +133,7 @@ Display days with events in bold in month and year views: Na visualização anual,
 allow-view-add-help: Um ícone '+' será incluido nas visualizações, permitindo usuários rápidamente adicionar eventos a calendários de outros usuários.
 Include add event link in views: Incluir adicionar eventos em visualizações
 allow-view-other-help: Especifica um usuário que poderá visualizar o calendário
-Allow viewing other user's calendars: Permitir visualização do calendário de outro usuário
+Allow viewing other user&#39;s calendars: Permitir visualização do calendário de outro usuário
 require-approvals-help: Quando habilitada, um usuário precisa aprovar um evento antes dele ser exibido no seu calendário (a não ser que Exibir não-aprovados esteja habilitado). Configurar aqui para "Não" não desligará as aprovações para o calendário de Acesso Público (se o claendário público estiver habilitado).
 Require event approvals: Requer aprovação do evento
 display-unapproved-help: Especifica se eventos não-aprovados são exibidos em seu calendário.<br /> Se configurado para "Sim", então eventos não-aprovados serão exibidos em seu calendário (em uma cor de texto diferente. <br /> Se configurado para "Não", então eventos precisam ser aprovados antes deles serem exibidos no seu calendário.
@@ -569,7 +569,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Perm
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Deverá ser localizado no diretório do seu Palm em <tt>datebook/datebook.dat</tt> no subdiretório do usuário
 The following entries will not be imported: Os seguintes eventos não serão importados
 Entries older than the current date: Eventos anteriores a data corrente
-Entries created in the Palm Desktop that have not been HotSync'd: Entradas geradas no Palm Desktop que não foram sincronizados
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Entradas geradas no Palm Desktop que não foram sincronizados
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Qualquer evento importado do Palm será sobrescrito durante a próxima importação
 Therefore, updates should be made in the Palm Desktop.: Por isso, atualizações deverão ser feitas no Palm Desktop
 This form will import vCalendar (.vcs) 1.0 events: Este formulário importa do vCalendar (.vcs)
@@ -659,7 +659,7 @@ Reject this entry?: Rejeitar esta entrada?
 # Page: login-app.php
 #
 You must enter a login and password: Você deve digitar um usuário e senha
-Save login via cookies so I don't have to login next time: Gravar usuário e senha
+Save login via cookies so I don&#39;t have to login next time: Gravar usuário e senha
 Login: Entrar
 Access public calendar: Calendário de acesso público
 cookies-note: <b>Nota:</b> Esta opção requer a opção de 'cookies' no seu browser habilitada.
@@ -739,7 +739,7 @@ No matches found: Ocorrências não encontradas
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Ver o calendário de outro usuário
+View Another User&#39;s Calendar: Ver o calendário de outro usuário
 
 
 ###############################################
@@ -968,7 +968,7 @@ Event Imported: Evento Importado
 # Page: includes/js/admin.php
 #
 Server URL is required: Endereço do Servidor é Necessário
-Server URL must end with '/': Endereço do Servidor deve acabar com /
+Server URL must end with &#39;/&#39;: Endereço do Servidor deve acabar com /
 Invalid work hours: Horário de trabalho inválido
 Invalid color for document background: Cor de fundo inválida para o documento
 Invalid color for document title: Cor inválida para o título do documento
@@ -979,7 +979,7 @@ Invalid color for table text background: Cor de fundo inválida para o texto da t
 Invalid color for event popup background: Cor de fundo inválida para o evento popup
 Invalid color for event popup text: Cor inválida para evento popup
 Invalid color for table cell background for today: Cor de fundo inválida para a celula de hoje
-Color format should be '#RRGGBB': Formato da cor deve ser '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Formato da cor deve ser '#RRGGBB'
 
 
 ###############################################

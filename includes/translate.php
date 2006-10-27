@@ -26,23 +26,24 @@
  * Borrowed from http://us2.php.net/manual/en/function.html-entity-decode.php
  *
  * @param string $string Text to convert
+ * @paran bool   $ignore Ignore the charset when decoding
  *
  * #return string The converted text string
  */
-function unhtmlentities ( $string ) {
+function unhtmlentities ( $string, $ignore=false ) {
 
-  //don't munge utf-8 encoded pages
-  if ( ini_get ( 'default_charset' ) == 'utf-8' )
-    return addslashes ( $string );
+  //sometimes we need to ignore the charset
+  $charset = ( $ignore && translate ( 'charset' ) != 'UTF-8' 
+    ? '' : ini_get ( 'default_charset' ) );
   // html_entity_decode available PHP 4 >= 4.3.0, PHP 5
   if ( function_exists ( 'html_entity_decode' ) )
-    return html_entity_decode ( $string );
+    return html_entity_decode ( $string, ENT_QUOTES, $charset );
   else { // for php < 4.3
     // replace numeric entities
     $string = preg_replace ( '~&#x([0-9a-f]+);~ei', 'chr(hexdec("\\1"))', $string );
     $string = preg_replace ( '~&#([0-9]+);~e', 'chr(\\1)', $string );
     // replace literal entities
-    $trans_tbl = get_html_translation_table ( HTML_ENTITIES );
+    $trans_tbl = get_html_translation_table ( HTML_ENTITIES, ENT_QUOTES );
     $trans_tbl = array_flip ( $trans_tbl );
     return strtr ( $string, $trans_tbl );
   }
@@ -55,16 +56,22 @@ function unhtmlentities ( $string ) {
  *                             no directory or file suffix. Example:  "French")
  */
 function reset_language ( $new_language ) {
-  global $basedir, $lang, $lang_file, $translation_loaded, $translations;
+  global $basedir, $lang, $lang_file, $translation_loaded, $translations,
+  $PUBLIC_ACCESS_FULLNAME, $fullname ;
+do_debug ( "RESET LANGUAGE " . $translation_loaded . ' ' . $new_language);
   if ( $new_language == 'none' )
     $new_language = get_browser_language ();
   if ( $new_language != $lang || ! $translation_loaded ) {
     $translations = array ();
+    $translation_loaded = false;
     $lang = $new_language;
     $lang_file = 'translations/' . $lang . '.txt';
     load_translation_text ();
     $translation_loaded = true;
   }
+  $PUBLIC_ACCESS_FULLNAME = translate ( 'Public Access' );
+  if ( $fullname == 'Public Access' )
+      $fullname = $PUBLIC_ACCESS_FULLNAME;
 }
 
 /*
@@ -74,9 +81,9 @@ function reset_language ( $new_language ) {
  * {@link translate ()} the first time it is called.
  */
 function load_translation_text () {
-  global $basedir, $fullname, $lang_file, $PUBLIC_ACCESS_FULLNAME,
+  global $basedir, $lang_file, 
   $settings, $translations, $translation_loaded;
-  
+  do_debug ( "LOAD TRANSLATION" . $translation_loaded . ' ' .$lang_file );
   if ( $translation_loaded == true ) //no need to run this twice
     return;
   $translations = array ();
@@ -140,6 +147,10 @@ function load_translation_text () {
       // If so, we may have to make this configurable.
       if ( get_magic_quotes_runtime () )
         $buffer = stripslashes ( $buffer );
+
+      //Convert quotes to entities
+      $buffer = str_replace ( '"', "&quot;", $buffer );
+      $buffer = str_replace ( "'", "&#39;", $buffer );
       // Skip installation translations unless we're running install/index.php
       if ( substr ( $buffer, 0, 7 ) == '# Page:' ) {
         $inInstallTrans = ( substr ( $buffer, 0, 15 ) == '# Page: install' );
@@ -152,9 +163,6 @@ function load_translation_text () {
       $translations[$abbrev] = trim ( substr ( $buffer, $pos + 1 ) );
     }
     fclose ( $fp );
-    $PUBLIC_ACCESS_FULLNAME = translate ( 'Public Access' );
-    if ( $fullname == 'Public Access' )
-      $fullname = $PUBLIC_ACCESS_FULLNAME;
 
     if ( ! empty ( $cached_file ) && $save_to_cache ) {
       $fd = @fopen ( $cached_file, "w+b", false );
@@ -182,6 +190,7 @@ function load_translation_text () {
 function get_browser_language ( $pref = false ) {
   global $HTTP_ACCEPT_LANGUAGE, $browser_languages;
   $ret = '';
+do_debug ( "GET BROWSER LANGUAGE " ); 
   if ( empty ( $HTTP_ACCEPT_LANGUAGE ) &&
       isset ( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) )
     $HTTP_ACCEPT_LANGUAGE = $_SERVER['HTTP_ACCEPT_LANGUAGE'];

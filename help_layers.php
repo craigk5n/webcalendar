@@ -10,7 +10,7 @@ echo $helpListStr;
 
 <table>
  <tr><td colspan="2">
-  <p><?php etranslate("Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.")?></p>
+  <p><?php etranslate( 'Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.')?></p>
  </td></tr>
  <tr><td colspan="2">&nbsp;</td></tr>
  <tr><td class="help">

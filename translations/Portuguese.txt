@@ -113,7 +113,7 @@ Display description in printer day view: Mostrar descrição na vista de impressor
 Display days with events in bold in month and year views: Mostrar dias com eventos a negrito nas vistas mensais e anuais
 Include add event link in views: Incluir link para adicionar eventos nas vistas
 allow-view-other-help: Especifica se um utilizador pode ou não ver o calendário de outro utilizador.
-Allow viewing other user's calendars: Permitir ver calendário de outro utilizador
+Allow viewing other user&#39;s calendars: Permitir ver calendário de outro utilizador
 require-approvals-help: Quando activo, um utilizador deverá aprovar um evento antes de ser mostrado no seu calendário (excepto se <I>Mostra não-aprovados</I> estiver activo).
 Require event approvals: Requer aprovação de eventos
 display-unapproved-help: Especifica se os eventos não aprovados são mostrados no calendário
@@ -524,7 +524,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Este
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Deverá estar localizado no directório Palm em <tt>datebook/datebook.dat</tt> dentro de subdirectório com o seu nome de utilizador
 The following entries will not be imported: As seguintes entradas serão importadas
 Entries older than the current date: Entradas mais antigas do que a data corrente
-Entries created in the Palm Desktop that have not been HotSync'd: Entradas criadas no Palm Desktop que não foram HotSync'd
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Entradas criadas no Palm Desktop que não foram HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Informação importada do Palm será sobreescrita na próxima importação (excepto se a data do evento tiver passado).
 Therefore, updates should be made in the Palm Desktop.: Assim sendo, deverão ser feitas actualizações no Palm.
 This form will import vCalendar (.vcs) 1.0 events: Este formulário permite importar eventos vCalendar 1.0 (.vcs)
@@ -609,7 +609,7 @@ Reject this entry?: Rejeitar esta entrada?
 # Page: login-app.php
 #
 You must enter a login and password: Tem de introduzir um Utilizador e uma Password
-Save login via cookies so I don't have to login next time: Gravar Utilizador e Password para sessões futuras (não recomendado se este computador for utilizado por mais pessoas)
+Save login via cookies so I don&#39;t have to login next time: Gravar Utilizador e Password para sessões futuras (não recomendado se este computador for utilizado por mais pessoas)
 Login: Entrar
 Access public calendar: Calendário de acesso público
 cookies-note: <B>Nota:</B> Esta opção requer a activação da opção de 'cookies' no seu navegador.
@@ -688,7 +688,7 @@ No matches found: Ocorrências não encontradas
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Ver Calendário de Outro Utilizador
+View Another User&#39;s Calendar: Ver Calendário de Outro Utilizador
 
 
 ###############################################
@@ -878,7 +878,7 @@ Event Imported: Evento Importado
 # Page: includes/js/admin.php
 #
 Server URL is required: É necessário o URL do servidor
-Server URL must end with '/': O URL do servidor deve terminar com '/'
+Server URL must end with &#39;/&#39;: O URL do servidor deve terminar com '/'
 Invalid work hours: Horas de trabalho incorrectas
 Invalid color for document background: Cor inválida para o fundo do documento
 Invalid color for document title: Cor inválida para o título do documento
@@ -889,7 +889,7 @@ Invalid color for table text background: Cor inválida para o fundo do texto da t
 Invalid color for event popup background: Cor inválida para o fundo da caixa de aviso
 Invalid color for event popup text: Cor inválida para o texto da caixa de aviso
 Invalid color for table cell background for today: Cor inválida para o fundo da célula da tabela (para o dia actual)
-Color format should be '#RRGGBB': O formato do código de cor deve ser '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: O formato do código de cor deve ser '#RRGGBB'
 
 
 ###############################################

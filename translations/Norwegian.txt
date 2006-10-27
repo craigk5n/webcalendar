@@ -122,7 +122,7 @@ Display days with events in bold in month and year views: Vis dager med aktivite
 allow-view-add-help: Et '+' ikon vil bli inkludert i oversikter, slik at brukere fort kan legge til aktiviteter i andre brukere sine kalendere.
 Include add event link in views: Inkluder lenke for å legge til aktiviteter i oversikter
 allow-view-other-help: Setter om en bruker kan se en annen bruker sin kalender.
-Allow viewing other user's calendars: Tillat visning av andre brukere sine kalendere
+Allow viewing other user&#39;s calendars: Tillat visning av andre brukere sine kalendere
 require-approvals-help: Hvis aktivert, så må en bruker godkjenne en aktivitet før den vises i deres kalender (hvis ikke "Vis ikke-godkjent" er aktivert).
 Require event approvals: Krev godkjenning av aktiviteter
 display-unapproved-help: Angir om din kalender skal vise ikke-godkendte aktiviteter.
@@ -558,7 +558,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Dett
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den bør finnes i din Palm katalog i <tt>datebook/datebook.dat</tt> i en underkatalog med ditt brukernavn.
 The following entries will not be imported: Følgende oppføringer vil ikke bli importert
 Entries older than the current date: Oppføringer eldre enn nåværende dato
-Entries created in the Palm Desktop that have not been HotSync'd: Oppføringer opprettet i Palm Desktop-en som ikke har blitt HotSync'd
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Oppføringer opprettet i Palm Desktop-en som ikke har blitt HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alt som blir importert fra Palm vil bli overskrevet ved neste import (hvis ikke aktivitetsdatoen har passert)
 Therefore, updates should be made in the Palm Desktop.: Derfor bør oppdatering bli gjort i Palm Desktop-en.
 This form will import vCalendar (.vcs) 1.0 events: Dette skjemaet vil importere vCalendar (.vcs) 1.0 aktiviteter
@@ -648,7 +648,7 @@ Reject this entry?: Avvis denne aktiviteten?
 # Page: login-app.php
 #
 You must enter a login and password: Vennligst oppgi brukernavn og passord
-Save login via cookies so I don't have to login next time: Husk brukernavn til neste gang
+Save login via cookies so I don&#39;t have to login next time: Husk brukernavn til neste gang
 Login: Logg inn
 Access public calendar: Gå til offentlig kalender
 cookies-note: <b>OBS:</b> Programmet krever at "cookies" er slått på
@@ -728,7 +728,7 @@ No matches found: Ingen treff funnet
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Se en annen brukers kalender
+View Another User&#39;s Calendar: Se en annen brukers kalender
 
 
 ###############################################
@@ -956,7 +956,7 @@ Event Imported: Aktivitet importert
 # Page: includes/js/admin.php
 #
 Server URL is required: URL for server er påkrevd
-Server URL must end with '/': URL for server må slutte på '/'
+Server URL must end with &#39;/&#39;: URL for server må slutte på '/'
 Invalid work hours: Ugyldige arbeidstid
 Invalid color for document background: Ugyldig bakgrunnsfarge
 Invalid color for document title: Ugyldig tittelfarge
@@ -967,7 +967,7 @@ Invalid color for table text background: Ugyldig farge for bakgrunnen til tabell
 Invalid color for event popup background: Ugyldig farge for bakgrunnen i aktivitetspopups
 Invalid color for event popup text: Ugyldig farge for teksten i aktivitetspopups
 Invalid color for table cell background for today: Ugyldig farge for dagens tabellbakgrunn
-Color format should be '#RRGGBB': Fargen skal skrives som '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Fargen skal skrives som '#RRGGBB'
 
 
 ###############################################

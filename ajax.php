@@ -22,9 +22,8 @@ include 'includes/translate.php';
 $WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
-
-$WebCalendar->setLanguage();
 load_user_preferences ();
+$WebCalendar->setLanguage();
 
 $page = getPostValue ( 'page' );
 $name = getPostValue ( 'name' );

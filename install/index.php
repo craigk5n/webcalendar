@@ -1378,12 +1378,12 @@ if ( ! $exists || ! $canWrite ) { ?>
   <?php if ( empty ( $PHP_AUTH_USER ) ) { ?>
    <li><?php echo translate ( 'HTTP-based authentication was not detected' ) . '. ' .
      translate ( 'You will need to reconfigure your web server if you wish to' ) . ' ' .
-     translate ( "select 'Web Server' from the 'User Authentication' choices below" ) ?>.
+     translate ( 'select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below' ) ?>.
    </li>
   <?php } else { ?>
    <li><?php echo translate ( 'HTTP-based authentication was detected' ) . '. ' .
      translate ( 'User authentication is being handled by your web server' ) . '. ' .
-     translate ( "You should select 'Web Server' from the list of 'User Authentication' choices below" ) ?>.
+     translate ( 'You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below' ) ?>.
    </li>
   <?php } ?>
  </ul></td></tr>

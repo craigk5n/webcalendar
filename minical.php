@@ -25,16 +25,14 @@
  * $PUBLISH_ENABLED must be set true
  * 
  */
- 
-//These values will be used by styles.php to customize the size of this calendar
-$MINICALWIDTH = '160px';
-$MINICALFONT = '11px';
-$DISPLAY_WEEKENDS = true;
-
 include_once 'includes/init.php';
 
 load_global_settings ();
 
+//These values will be used by styles.php to customize the size of this calendar
+$MINICALWIDTH = '160px';
+$MINICALFONT = '11px';
+$DISPLAY_WEEKENDS = true;
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );

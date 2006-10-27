@@ -32,7 +32,7 @@ Save: Speichern
 Public Access: &Ouml;ffentlicher Zugang
 Admin: Administration
 User Access Control: Zugriffskontrolle
-Allow Access to Other Users' Calendar: Erlaube Zugriff auf Kalender anderer Benutzer
+Allow Access to Other Users&#39; Calendar: Erlaube Zugriff auf Kalender anderer Benutzer
 Grant This User Access to My Calendar: Erlaube Benutzerzugriff auf meinen Kalender
 Go: Zeigen 
 Type: Art
@@ -182,7 +182,7 @@ lunar-help: Wenn aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
 Display Lunar Phases in month view: Anzeigen der Mondphasen in der Monatsansicht
 Restrictions: Beschr&auml;nkungen
 allow-view-other-help: Gibt an, ob die Benutzer die Kalender anderer Teilnehmer sehen kann.
-Allow viewing other user's calendars: Ansicht anderer Benutzer-Kalender zulassen
+Allow viewing other user&#39;s calendars: Ansicht anderer Benutzer-Kalender zulassen
 require-approvals-help: Wenn diese Option ausgew&auml;hlt ist, mu&szlig; der Benutzer den Termin best&auml;tigen, um auf seinem Kalender anzeigen zu lassen (vorausgesetzt "unbest&auml;tigte Termine anzeigen"). Anmerkung: Wenn diese Option auf "Nein" gesetzt ist, wirkt sich dies nicht auf etwaige aktiverte "&Ouml;ffentliche Kalender" aus.
 Require event approvals: Terminbest&auml;tigung verlangen
 display-unapproved-help: Gibt an, ob unbest&auml;tigte Termine in Ihrem Kalender angezeigt werden sollen. Wenn "Ja", werden unbest&auml;tigte Termine in einer anderen Farbe angezeigt. Wenn "Nein", m&uuml;ssen unbest&auml;tigte Termine erst best&auml;tigt werden, um angezeigt zu werden. 
@@ -818,7 +818,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Dies
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner <tt>datebook/datebook.dat</tt> in einem Unterverzeichnis mit Ihrem Usernamen sein.
 The following entries will not be imported: Folgende Eintr&auml;ge werden nicht importiert
 Entries older than the current date: Eintr&auml;ge die &auml;lter als das aktuelle Datum sind
-Entries created in the Palm Desktop that have not been HotSync'd: Hinzugef&uuml;gte Eintr&auml;ge im Palm Desktop die nicht synchronisiert wurden (HotSync'd)
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Hinzugef&uuml;gte Eintr&auml;ge im Palm Desktop die nicht synchronisiert wurden (HotSync&#39;d)
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er das Datum des Termines ist vorbei).
 Therefore, updates should be made in the Palm Desktop.: Deshalb sollten &Auml;nderungen auf dem Palm/Desktop durchgef&uuml;hrt werden.
 This form will import vCalendar (.vcs) 1.0 events: Dieses Formular importiert vCalendar (.vcs) 1.0 Eintr&auml;ge
@@ -836,7 +836,7 @@ Help Index: Hilfe-Index
 ###############################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benutzern im eigenen Kalender anzuzeigen. Sie k&ouml;nnen den Benutzer und die Farbe des Termines selber spezifizieren.
+Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benutzern im eigenen Kalender anzuzeigen. Sie k&ouml;nnen den Benutzer und die Farbe des Termines selber spezifizieren.
 Add/Edit/Delete: Hinzuf&uuml;gen/&Auml;ndern/L&ouml;schen
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Dr&uuml;cken Sie "Layer editieren" im Admin-User um Layers HINZUF&Uuml;GEN/&Auml;NDERN/L&Ouml;SCHEN zu k&ouml;nnen (am Ende der Seite).
 Specifies the user that you would like to see displayed in your calendar.: Definieren Sie Ihren gew&uuml;nschten Benutzer den Sie in Ihren Kalender sehen m&ouml;chten.
@@ -950,7 +950,7 @@ Not authorized: Keine Berechtigung
 # Page: login-app.php
 #
 You must enter a login and password: Sie m&uuml;ssen einen Benutzernamen und ein Kennwort eingeben.
-Save login via cookies so I don't have to login next time: Login in Cookies abspeichern, um die Anmeldung beim n&auml;chsten Mal automatisch zu &uuml;berspringen.
+Save login via cookies so I don&#39;t have to login next time: Login in Cookies abspeichern, um die Anmeldung beim n&auml;chsten Mal automatisch zu &uuml;berspringen.
 Login: Anmelden
 Access public calendar: Zugang &Ouml;ffentlicher Kalender
 cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Cookies akzeptieren.
@@ -1092,7 +1092,7 @@ No matches found: Keine Eintr&auml;ge gefunden
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Kalender anderer Benutzer anzeigen 
+View Another User&#39;s Calendar: Kalender anderer Benutzer anzeigen 
 
 
 ###############################################
@@ -1194,7 +1194,7 @@ from calendar of: vom Kalender
 Copy entry: Eintrag kopieren
 This will delete the entry from your boss\' calendar.: Dieser Eintrag wird von Ihrem 'Boss'-Kalender gel&ouml;scht.
 This will delete the entry from your calendar.: Dieser Eintrag wird von Ihrem Kalender gel&ouml;scht.
-from your boss' calendar: von Ihrem 'Boss'-Kalender
+from your boss&#39; calendar: von Ihrem 'Boss'-Kalender
 Do you want to add this entry to your calendar?: Wollen Sie diesen Eintrag zu Ihrem Kalender hinzuf&uuml;gen?
 This will add the entry to your calendar.: Bitte best&auml;tigen, um den Eintrag hinzuzuf&uuml;gen.
 Email all participants: Email an alle Benutzer
@@ -1385,7 +1385,7 @@ French: Franz&ouml;sisch
 Galician: G&auml;lisch
 German: Deutsch
 Greek: Griechisch
-Hebrew: Hebräisch
+Hebrew: Hebr&auml;isch
 Holo (Taiwanese): Taiwanesisch
 Hungarian: Ungarisch
 Icelandic: Isl&auml;ndisch
@@ -1452,7 +1452,7 @@ Event Imported: Termin importiert
 # Page: includes/js/admin.php
 #
 Server URL is required: Server URL wird ben&ouml;tigt
-Server URL must end with '/': Server URL mu&szlig; mit einem '/' enden
+Server URL must end with &#39;/&#39;: Server URL mu&szlig; mit einem '/' enden
 Invalid work hours: Ung&uuml;ltige Arbeitszeit
 Invalid color for document background: Ung&uuml;ltige Farbe f&uuml;r Hintergrund
 Invalid color for document title: Ung&uuml;ltige Farbe f&uuml;r Titel
@@ -1463,7 +1463,7 @@ Invalid color for table text background: Ung&uuml;ltige Farbe f&uuml;r Tabellent
 Invalid color for event popup background: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Hintergrund
 Invalid color for event popup text: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Text
 Invalid color for table cell background for today: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund 'Heute'
-Color format should be '#RRGGBB': Farbformat sollte '#RRGGBB' sein
+Color format should be &#39;#RRGGBB&#39;: Farbformat sollte '#RRGGBB' sein
 
 
 ###############################################
@@ -1475,7 +1475,7 @@ Change the date and time of this entry?: Datum und Uhrzeit f&uuml;r diesen Eintr
 ###############################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben
+You have not entered a Brief Description: Sie h&#xFC;ben keine Kurzbeschreibung eingegeben
 The time you have entered begins before your preferred work hours.  Is this correct?: Die eingetragene Zeit beginnt vor der normalen Arbeitszeit. Ist das korrekt?
 Invalid Event Date: Ung&uuml;tiges Datum f&uuml;r Termin
 Please add a participant: Bitte einen Teilnehmer hinzuf&uuml;gen
@@ -1556,8 +1556,7 @@ User Manager: Benutzermanager
 ###############################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the task detailed below.: Das ist eine Erinnerung f&uuml;r den unten aufgef&uuml;hrten (detailierten) Aufgabe
-This is a reminder for the event detailed below.: Das ist eine Erinnerung f&uuml;r den unten aufgef&uuml;hrten (detailierten) Termin
+This is a reminder for the XXX detailed below.: Das ist eine Erinnerung f&uuml;r den unten aufgef&uuml;hrten (detailierten) XXX
 Pecentage Complete: Prozentsatz abgeschlossen
 Reminder: Erinnerung
 
@@ -1678,10 +1677,10 @@ Convert Data to GMT: Konvertieren nach GMT
 Application Settings: Anwendungseinstellung
 HTTP-based authentication was not detected: HTTP-basierende Authentisierung wurde nicht erkannt
 You will need to reconfigure your web server if you wish to: Sie m&uuml;ssen Ihren Webserver nochmals konfigurieren.
-select 'Web Server' from the 'User Authentication' choices below: W&auml;hlen Sie den 'Web Server' von 'Benutzer Authentisierung' unten aus
+select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: W&auml;hlen Sie den 'Web Server' von 'Benutzer Authentisierung' unten aus
 HTTP-based authentication was detected: HTTP-basierende Authentisierung wurde erkannt
 User authentication is being handled by your web server: Benutzer Authentisierung wird durch Ihren Web Server abgehandelt
-You should select 'Web Server' from the list of 'User Authentication' choices below: Sie sollten 'Web Server' von der Liste 'Benutzer Authentisierung' von unten ausw&auml;hlen
+You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: Sie sollten 'Web Server' von der Liste 'Benutzer Authentisierung' von unten ausw&auml;hlen
 Create Default Admin Account: Ein Administratorkonto einrichten
 Admin Account Not Found: Administratorkonto nicht gefunden
 User Authentication: Benutzer Authentisierung

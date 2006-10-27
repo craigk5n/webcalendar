@@ -735,7 +735,7 @@ if ( empty ( $error ) ) {
           $fmtdate = ( $timetype == 'T' ? 
             date ( 'Ymd', $eventstart ): gmdate ( 'Ymd', $eventstart ) ); 
           $msg = translate( 'Hello', true) . ', ' .
-            unhtmlentities( $tempfullname ) . ".\n\n" .
+            unhtmlentities( $tempfullname, true ) . ".\n\n" .
             translate( 'An appointment has been canceled for you by', true) .
             ' ' . $login_fullname .  ".\n" .
             translate( 'The subject was', true) . ' "' . $name . "\"\n\n" .
@@ -745,7 +745,6 @@ if ( empty ( $error ) ) {
             translate( 'Time' ) . ': ' .
             // Apply user's GMT offset and display their TZID
             display_time ( '', 2, $eventstart, $t_format ) . "\n\n\n");
-          $msg = stripslashes ( $msg );
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
             //DON'T change & to &amp; here. email will handle it
@@ -755,18 +754,8 @@ if ( empty ( $error ) ) {
             }
             $msg .= $url . "\n\n";
           }
-          if ( strlen ( $from ) ) {
-            $mail->From = $from;
-            $mail->FromName = $login_fullname;
-          } else {
-            $mail->From = $login_fullname;
-          }
-          $mail->IsHTML( $htmlmail == 'Y' ? true : false );
-          $mail->AddAddress( $tempemail, unhtmlentities ( $tempfullname ) );
-          $mail->WCSubject ( $name );
-          $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );
-          $mail->Send();
-          $mail->ClearAll();          
+          $mail->WC_Send ( $login_fullname, $tempemail, 
+            $tempfullname, $name, $msg, $htmlmail, $from );      
           activity_log ( $id, $login, $old_participant, LOG_NOTIFICATION,
             'User removed from participants list' );
         }
@@ -874,7 +863,7 @@ if ( empty ( $error ) ) {
           $fmtdate = ( $timetype == 'T' ? 
             date ( 'Ymd', $eventstart ): gmdate ( 'Ymd', $eventstart ) ); 
           $msg = translate( 'Hello', true) . ', ' .
-            unhtmlentities ( $tempfullname ) . ".\n\n";
+            unhtmlentities ( $tempfullname, true ) . ".\n\n";
           if ( $newevent || ( empty ( $old_status[$participants[$i]] ) ) ) {
             $msg .= translate( 'A new appointment has been made for you by', true);
           } else {
@@ -888,11 +877,10 @@ if ( empty ( $error ) ) {
             translate( 'Time' ) . ': ' .
             // Apply user's GMT offset and display their TZID
             display_time ( '', 2, $eventstart, $t_format ) . "\n" ) .
-            translate( 'Please look on', true) . ' ' . translate($APPLICATION_NAME) . 
+            translate( 'Please look on', true) . ' ' . generate_application_name () . 
             ' ' . ( $REQUIRE_APPROVALS == 'Y' ?
             translate( 'to accept or reject this appointment', true) :
             translate( 'to view this appointment', true) ) . '.';
-          $msg = stripslashes ( $msg );
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
             //DON'T change & to &amp; here. email will handle it
@@ -903,19 +891,8 @@ if ( empty ( $error ) ) {
             $msg .= "\n\n" . $url;
           }
           //use WebCalMailer class
-          if ( strlen ( $from ) ) {
-            $mail->From = $from;
-            $mail->FromName = $login_fullname;
-          } else {
-            $mail->From = $login_fullname;
-          }
-          $mail->IsHTML( $htmlmail == 'Y' ? true : false );
-          $mail->AddAddress( $tempemail, unhtmlentities ( $tempfullname ) );
-          $mail->WCSubject ( $name );
-          $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );                    
-          $mail->Send();
-          $mail->ClearAll();
-          
+          $mail->WC_Send ( $login_fullname, $tempemail, 
+            $tempfullname, $name, $msg, $htmlmail, $from );          
           activity_log ( $id, $login, $participants[$i], LOG_NOTIFICATION, '' );
         }
       }
@@ -1018,23 +995,10 @@ if ( $single_user == 'N' &&
                   // Display time in server's timezone
                   $msg .= display_time ( '', 6, $eventstart);              
                 }
-              }
-            $msg = stripslashes ( $msg );          
-            //don't send HTML to external adresses
-            $htmlmail = false;
-            if ( strlen ( $from ) ) {
-              $mail->From = $from;
-              $mail->FromName = $login_fullname;
-            } else {
-              $mail->From = $login_fullname;
-            }  
-            $mail->IsHTML($htmlmail == 'Y');
-            $mail->AddAddress( $ext_emails[$i], $ext_names[$i] );
-            $mail->WCSubject ( $name );                     
-            $mail->IcsAttach ( $id ) ;
-            $mail->Body  = ( $htmlmail == 'Y' ? nl2br ( $msg ) : $msg );
-            $mail->Send();
-            $mail->ClearAll();          
+              }          
+            //don't send HTML to external adresses  
+            $mail->WC_Send ( $login_fullname, $ext_emails[$i], 
+              $ext_names[$i], $name, $msg, 'N', $from, $id );       
           }
         } 
       }

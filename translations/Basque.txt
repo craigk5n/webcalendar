@@ -102,7 +102,7 @@ display-weekends-help: Astebukaerak erakusten ditu asteroko ikus aukeran
 display-week-number-help: Asteari dagokion zenbakia erakutsiko den adierazten du
 Display week number: Aste zenbakia erakutsi
 allow-view-other-help: Beste erabiltzaileen egutegia ikusi daiteken ala ez adierazten du
-Allow viewing other user's calendars: Beste erabiltzaileen egutegiak ikustea baimendu
+Allow viewing other user&#39;s calendars: Beste erabiltzaileen egutegiak ikustea baimendu
 require-approvals-help: Aktibatu ez gero, onespena behar da.
 Require event approvals: Gertaeraren onespena eskatu
 display-unapproved-help: Onetsi gabeko gertaerak erakutsiko diren adierazten du.
@@ -442,7 +442,7 @@ Reject this entry?: Gaitzetsi sarrera hau?
 # Page: login-app.php
 #
 You must enter a login and password: Erabiltzaile eta pasahitz bat sartu behar dituzu
-Save login via cookies so I don't have to login next time: Datuak gorde
+Save login via cookies so I don&#39;t have to login next time: Datuak gorde
 Login: Sartu
 Access public calendar: Egutegi publikora joan
 cookies-note: <b>Oharra:</b> Aplikazio honek cookiak gaituak egotea behar du.
@@ -497,7 +497,7 @@ No matches found: Ez da asmatzerik topatu
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Beste partaide baten egutegia ikusi
+View Another User&#39;s Calendar: Beste partaide baten egutegia ikusi
 
 
 ###############################################
@@ -654,7 +654,7 @@ Unnamed Event: Izengabeko gertaera
 # Page: includes/js/admin.php
 #
 Server URL is required: Zerbitzariaren URL-a falta da
-Server URL must end with '/': Zerbitzariaren URL-a '/'-z bukatu behar du
+Server URL must end with &#39;/&#39;: Zerbitzariaren URL-a '/'-z bukatu behar du
 Invalid color for document background: Kolore desegokia dokumentuaren atzerako
 Invalid color for document title: Kolore desegokia dokumentuaren izenbururako
 Invalid color for table cell background: Kolore desegokia taulako gelaxken atzerako
@@ -663,7 +663,7 @@ Invalid color for table text background: Kolore desegokia taularen textuaren atz
 Invalid color for event popup background: Kolore desegokia gertaera popup-aren atzerako
 Invalid color for event popup text: Kolore desegokia gertaera popup-aren texturako
 Invalid color for table cell background for today: Kolore desegokia gaurko egunaren atzerako
-Color format should be '#RRGGBB': Kolorearen formatua hamaseitarra izan beharko luke adibidez, '#RRGGB
+Color format should be &#39;#RRGGBB&#39;: Kolorearen formatua hamaseitarra izan beharko luke adibidez, '#RRGGB
 
 
 ###############################################

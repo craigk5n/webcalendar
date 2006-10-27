@@ -97,7 +97,7 @@ display-weekends-help: Cynnhwysir penwythnosau yn y golwg wythnosol.
 display-week-number-help: Mae hwn yn dynodi os y dylid dangos rhif yr wythnos (1-52) yn y golwg misol neu wythnosol.
 Display week number: Dangoser rhif yr wythnos
 allow-view-other-help: Mae hwn yn penderfynnu a yw un defnyddiwr yn gallu gwylio calendr defnyddiwr arall.
-Allow viewing other user's calendars: Caniatad i wylio calendr rhywun arall
+Allow viewing other user&#39;s calendars: Caniatad i wylio calendr rhywun arall
 require-approvals-help: Pan mae hwn yn cael ei ddefnyddio rhaid i'r defnyddwr cymeradwyo digwyddiad cyn iddo gael ei ddangos ar ei calendr (os nad yw 'Dangos heb Cymeradwyaeth' ymlaen) Noder wrth gosod hwn i 'Na' ni fydd hwn yn hepgor ar yr angen i cymeradwyo digwyddiadau i'r Calendr Cyhoeddus (os yw'r Calendr Cyhoeddus wedi ei 'alluogi').
 Require event approvals: Cymeradwyaeth i ddigwyddiadau'n angenrheidiol
 display-unapproved-help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth yn cael eu dangos yn eich calendr.<br /> Os goseder i "Ie", Yna fe ddangosir digwyddiadau heb cymeradwyaeth yn eich calendr (mewn lliw gwahanaol).<br /> Os gosoder i "Na", yna mae angen cymeradwyo digwyddiadau cyn iddynt gael eu dangos ar eich calendr.
@@ -446,7 +446,7 @@ Reject this entry?: Gwrthodwch y digwyddiad hwn?
 # Page: login-app.php
 #
 You must enter a login and password: Rhaid i chi cynnig mewngofnodiad a gair cydd
-Save login via cookies so I don't have to login next time: Arbedwch fy mewngofnodiad trwy 'cookies' fel nad oes raid i mi mewngofnodi y tro nesaf
+Save login via cookies so I don&#39;t have to login next time: Arbedwch fy mewngofnodiad trwy 'cookies' fel nad oes raid i mi mewngofnodi y tro nesaf
 Login: Mewngofnodiad
 Access public calendar: Calendr Cyhoeddus
 cookies-note: <b>Note:</b> Mae'n hanfodol bod 'cookies' yn gweithio i'r meddalwedd yma redeg.
@@ -501,7 +501,7 @@ No matches found: Dim byd yn cyfateb
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Gwylio Calendr Defnyddiwr arall
+View Another User&#39;s Calendar: Gwylio Calendr Defnyddiwr arall
 
 
 ###############################################
@@ -658,7 +658,7 @@ Unnamed Event: Digwyddiad di-enw
 # Page: includes/js/admin.php
 #
 Server URL is required: Mae angen URL y gweinydd
-Server URL must end with '/': Rhaid i URL y gweinydd orffen gyda '/'
+Server URL must end with &#39;/&#39;: Rhaid i URL y gweinydd orffen gyda '/'
 Invalid color for document background: Lliw annerbyniol fel cefndir i'r ddogfen
 Invalid color for document title: Lliw annerbyniol fel teitl y ddogfen
 Invalid color for table cell background: Lliw annerbyniol fel cefndir y gell tabl
@@ -668,7 +668,7 @@ Invalid color for table text background: Lliw annerbyniol fel cefndir testun y t
 Invalid color for event popup background: Lliw annerbyniol fel cefndir digwyddiad ar ffurf popup
 Invalid color for event popup text: Lliw annerbyniol fel testun digwyddiad ar ffurf popup
 Invalid color for table cell background for today: Lliw annerbyniol fel cefndir cell tabl heddiw
-Color format should be '#RRGGBB': Mae angen fformat lliw megis '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Mae angen fformat lliw megis '#RRGGBB'
 
 
 ###############################################

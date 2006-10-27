@@ -83,7 +83,7 @@ if ( $single_user != 'Y' ) {
     if ( $is_nonuser_admin )
       $unapproved_url .= '?user=' . getValue ( 'user' );
   }
-  // Another User's Calendar
+  // Another User&#39;s Calendar
   if ( ( $login == '__public__' && $PUBLIC_ACCESS_OTHERS != 'Y' ) ||
       ( $is_nonuser && ! access_is_enabled () ) ) {
     // don't allow them to see other people's calendar
@@ -193,7 +193,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
   if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
     $public = array (
       'cal_login' => '__public__',
-      'cal_fullname' => translate ( 'Public Access', true )
+      'cal_fullname' => translate ( 'Public Access' )
       );
     array_unshift ( $grouplist, $public );
   }
@@ -250,18 +250,18 @@ For full menu options see JSCookMenu documentation
 // A menu link
 function jscMenu_menu ( $title, $url = false ) {
   $bracket = ( $url ? ']' : '' );
-  $title = ( $title != '' ? translate ( $title, true ) : '' );
+  $title = ( $title != '' ? translate ( $title ) : '' );
   echo "\n  [null,'" . $title . "','$url',null,null" . $bracket . ",\n";
 }
 // Dropdown menu item
 function jscMenu_item ( $icon, $title, $url, $target = '' ) {
-  $title = ( $title != '' ? translate ( $title, true ) : '' );
+  $title = ( $title != '' ? translate ( $title ) : '' );
   echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','" . $title
    . "','$url','$target',''],\n";
 }
 // Dropdown menu item that has a sub menu
 function jscMenu_sub_menu ( $icon, $title ) {
-  $title = ( $title != '' ? translate ( $title, true ) : '' );
+  $title = ( $title != '' ? translate ( $title) : '' );
   echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','" . $title
    . "','',null,'',\n";
 }
@@ -483,7 +483,7 @@ if ( $search_url != '' ) {
   jscMenu_custom ( '<td class="ThemeMenuItemLeft"><img src="includes/menu/icons'
      . '/spacer.gif" /></td><td colspan="2"><form action="search_handler.php" '
      . 'method="post"><input type="text" name="keywords" size="25" /><input '
-     . 'type="submit" value="' . translate ( 'Search', true )
+     . 'type="submit" value="' . translate ( 'Search' )
      . '" /></form></td>' );
   jscMenu_close ();
 }
@@ -518,8 +518,8 @@ echo '
 <td class="ThemeMenubackgr ThemeMenu" align="right">';
 
 if ( ! empty ( $logout_url ) ) { // using http_auth
-  $loginStr = translate ( 'Login', true );
-  $logoutStr = translate ( 'Logout', true );
+  $loginStr = translate ( 'Login');
+  $logoutStr = translate ( 'Logout' );
   echo '<a style="font-size: 12px" title="'
    . ( strlen ( $login ) && $login != '__public__'
     ? $logoutStr . '" href="' . $logout_url . '">' . $logoutStr

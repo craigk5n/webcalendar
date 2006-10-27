@@ -211,7 +211,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     </form>';
 
     ob_end_flush ();
-    $pagetitle = translate ( "Allow Access to Other Users' Calendar" );
+    $pagetitle = translate ( 'Allow Access to Other Users&#39; Calendar' );
   } //end is_admin test
   else {
     // Get list of users that this user can see (may depend on group settings)

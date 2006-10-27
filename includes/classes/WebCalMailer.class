@@ -25,16 +25,36 @@ class WebCalMailer extends phpmailer {
 
   //constructor function
   function WebCalMailer () {
-    global $APPLICATION_NAME, $SMTP_HOST, $SMTP_AUTH,
-      $SMTP_USERNAME, $SMTP_PASSWORD, $EMAIL_MAILER, $mailerError;
+    global $SMTP_HOST, $SMTP_AUTH, $SMTP_USERNAME, $SMTP_PASSWORD, 
+      $EMAIL_MAILER, $mailerError;
     $mailerError = '';
-    $this->Version .= " extended by " . translate($APPLICATION_NAME);
+    $this->Version .= " extended by " . generate_application_name ( false );
     $this->Host     = $SMTP_HOST;
     $this->Mailer   = $EMAIL_MAILER;
-    $this->CharSet  = translate ( "charset");
-    $this->SMTPAuth = ( $SMTP_AUTH == 'Y'? true : false );     // turn on SMTP authentication
+    $this->CharSet  = translate ( 'charset');
+    $this->SMTPAuth = ( $SMTP_AUTH == 'Y'? true : false );// turn on SMTP authentication
     $this->Username = $SMTP_USERNAME;  // SMTP username
     $this->Password = $SMTP_PASSWORD; // SMTP password 
+  }
+
+  //Build email from single via single class call
+  function WC_Send ( $from_name, $to_email, 
+    $to_name, $subject, $msg, $html='N', $from_email='', $id='' ) {
+
+		if ( strlen ( $from_email ) ) {
+			$this->From = $from_email;
+			$this->FromName = $from_name;
+		} else {
+			$this->From = $from_name;
+		}
+		$this->IsHTML( $html == 'Y' ? true : false );
+		$this->AddAddress( $to_email, unhtmlentities ( $to_name, true ) );
+		$this->WCSubject ( $subject );
+		$this->Body ( $msg );
+		if ( ! empty ( $id ) )
+			$this->IcsAttach ( $id ) ;
+		$this->Send();
+		$this->ClearAll(); 
   }
   
   // Replace the default language handler to use WebCalendar's function
@@ -51,11 +71,21 @@ class WebCalMailer extends phpmailer {
     $mailerError .= $msg . '<br />';
   }
   
-  //Strip slashes from subject
-  function WCSubject ($name) {
-    global $APPLICATION_NAME;
-    $this->Subject = translate($APPLICATION_NAME) . " " .
-      translate("Notification", true) . ": " . stripslashes ( $name );  
+  //Strip slashes from subject and pass thru unhtmlentities
+  function WCSubject ( $subject ) {
+    $this->Subject = unhtmlentities ( generate_application_name ( false )  . ' ' .
+      translate( 'Notification' ) . ': ' . stripslashes ( $subject ), true );  
+  }
+
+  //Clean up msg as needed
+  function Body ( $msg ) {
+    $msg = stripslashes ( $msg );
+    if ( $this->ContentType  == 'text/html' ) {
+      $msg = nl2br ( $msg );
+    } else {
+      $msg = unhtmlentities ( $msg, true );
+    }
+    $this->Body = $msg;
   }
 
   //Send ics file Attachment

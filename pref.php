@@ -107,8 +107,9 @@ if ( $res ) {
 
 //this will force $LANGUAGE to to the current value and eliminate having
 //to double click the 'SAVE' buton
+$translation_loaded = false;
 reset_language ( get_pref_setting ( $login, 'LANGUAGE' ) );
-//move this include here to allow proper tranlation
+//move this include here to allow proper translation
 include 'includes/date_formats.php';
 
 //get list of theme files from /themes directory
@@ -162,6 +163,8 @@ $selected = ' selected="selected" ';
 $select = translate( 'Select') . '...';
 $Yes = translate ( 'Yes' );
 $No = translate ( 'No' );
+$minutesStr = translate( 'minutes' );
+
 $openStr ="\"window.open('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
 $BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' )\"" : '' );
 $INC = array('js/visible.php/true', 'js/pref.php');
@@ -531,15 +534,15 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   <option value="24" <?php if ( $prefarray['ENTRY_SLOTS'] == "24" ) 
     echo $selected?>>1 <?php etranslate( 'hour' )?></option>
   <option value="48" <?php if ( $prefarray['ENTRY_SLOTS'] == "48" ) 
-    echo $selected?>>30 <?php etranslate( 'minutes' )?></option>
+    echo $selected?>>30 <?php echo $minutesStr ?></option>
   <option value="72" <?php if ( $prefarray['ENTRY_SLOTS'] == "72" ) 
-    echo $selected?>>20 <?php etranslate( 'minutes' )?></option>
+    echo $selected?>>20 <?php echo $minutesStr ?></option>
   <option value="96" <?php if ( $prefarray['ENTRY_SLOTS'] == "96" ) 
-    echo $selected?>>15 <?php etranslate( 'minutes' )?></option>
+    echo $selected?>>15 <?php echo $minutesStr ?></option>
   <option value="144" <?php if ( $prefarray['ENTRY_SLOTS'] == "144" ) 
-    echo $selected?>>10 <?php etranslate( 'minutes' )?></option>
+    echo $selected?>>10 <?php echo $minutesStr ?></option>
   <option value="288" <?php if ( $prefarray['ENTRY_SLOTS'] == "288" ) 
-    echo $selected?>>5 <?php etranslate( 'minutes' )?></option>
+    echo $selected?>>5 <?php echo $minutesStr ?></option>
   <option value="1440" <?php if ( $prefarray['ENTRY_SLOTS'] == "1440" ) 
     echo $selected?>>1 <?php etranslate( 'minute' )?></option>
  </select>
@@ -550,13 +553,13 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   <option value="24" <?php if ( $prefarray['TIME_SLOTS'] == "24" ) 
   echo $selected?>>1 <?php etranslate( 'hour' )?></option>
   <option value="48" <?php if ( $prefarray['TIME_SLOTS'] == "48" ) 
-  echo $selected?>>30 <?php etranslate( 'minutes' )?></option>
+  echo $selected?>>30 <?php echo $minutesStr ?></option>
   <option value="72" <?php if ( $prefarray['TIME_SLOTS'] == "72" ) 
-  echo $selected?>>20 <?php etranslate( 'minutes' )?></option>
+  echo $selected?>>20 <?php echo $minutesStr ?></option>
   <option value="96" <?php if ( $prefarray['TIME_SLOTS'] == "96" ) 
-  echo $selected?>>15 <?php etranslate( 'minutes' )?></option>
+  echo $selected?>>15 <?php echo $minutesStr ?></option>
   <option value="144" <?php if ( $prefarray['TIME_SLOTS'] == "144" ) 
-  echo $selected?>>10 <?php etranslate( 'minutes' )?></option>
+  echo $selected?>>10 <?php echo $minutesStr ?></option>
  </select>
 </td></tr>
 </table>

@@ -122,7 +122,7 @@ Display days with events in bold in month and year views: V m?sí?ním a ro?ním po
 allow-view-add-help: V náhledu na kalendá?e jiných uživatel? p?ibude '+' pro rychlé vkládání nových událostí do jejich kalendá??.
 Include add event link in views: P?idej odkaz na vkládání v jiných pohledech
 allow-view-other-help: Ur?uje, zda si m?že uživatel prohlížet kalendá? n?koho jiného.
-Allow viewing other user's calendars: Povol prohlížení kalendá?? jiných uživatel?
+Allow viewing other user&#39;s calendars: Povol prohlížení kalendá?? jiných uživatel?
 require-approvals-help: Pokud je povoleno, uživatel bude muset danou událost nejprve potvrdit a teprve pak se mu zobrazí v kalendá?i (samoz?ejm?, pokud nemá povoleno zobrazování nepotvrzených). Poznemenejme, že nastavením tohoto na "Ne" nevypne nutnost potvrzování událostí pro ve?ejn? p?ístupné kalendá?e (pokud jsou ve?ejn? p?ístupné kalendá?e povoleny...).
 Require event approvals: Vyžaduj potvrzování událostí
 display-unapproved-help: Tímto ur?íš, jestli se mají v tvém kalendá?i zobrazovat nepotvrzené události<br /> Pokud je nastaveno na "Ano", pak se nepotvrzené události zobrazí v kalendá?i (jinou barvou písma).<br /> Pokud je nastaveno na "Ne", nebudou nepotvrzené události zobrazeny, dokud je n?kdo nepotvrdí.
@@ -553,7 +553,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Tent
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Datový soubor by se m?l nacházet v adresá?i Palm v souboru <tt>datebook/datebook.dat</tt> v podadresá?i se tvým jménem.
 The following entries will not be imported: Následující záznamy nebudou importovány
 Entries older than the current date: Záznamy starší, než aktuální datum
-Entries created in the Palm Desktop that have not been HotSync'd: Záznamy vytvo?ené Palm Desktopem, které nebyly synchronizovány HotSyncem
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Záznamy vytvo?ené Palm Desktopem, které nebyly synchronizovány HotSyncem
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Cokoli importovaného z Palmu bude p?epsáno následujícím importem (ledaže by již prošla platnost záznamu).
 Therefore, updates should be made in the Palm Desktop.: Proto, m?l by provést aktualizaci v Palm Desktopu.
 This form will import vCalendar (.vcs) 1.0 events: Tímto formulá?em lze importovat události z vCalendar (.vcs) 1.0
@@ -641,7 +641,7 @@ Reject this entry?: Odmítnout tuto událost?
 # Page: login-app.php
 #
 You must enter a login and password: Musíš zadat sv?j platný login a heslo
-Save login via cookies so I don't have to login next time: Abych se p?íšt?  nemusel p?ihlašovat, zapamatuj si p?ihlašovací údaje do cookies
+Save login via cookies so I don&#39;t have to login next time: Abych se p?íšt?  nemusel p?ihlašovat, zapamatuj si p?ihlašovací údaje do cookies
 Login: Login
 Access public calendar: P?ístup k ve?ejným kalendá??m
 cookies-note: <b>Poznámka:</b> Pro p?ihlášení a správný b?h je pot?eba mít v prohlížeci povolena cookies.
@@ -720,7 +720,7 @@ No matches found: Žádné záznamy nenalezeny
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Prohlédnou si kalendá? jiného uživatele
+View Another User&#39;s Calendar: Prohlédnou si kalendá? jiného uživatele
 
 
 ###############################################
@@ -938,7 +938,7 @@ Event Imported: Importované události
 # Page: includes/js/admin.php
 #
 Server URL is required: Je nutno zadat cestu (URL) k serveru
-Server URL must end with '/': Cesta k serveru (URL) musí kon?it na '/'
+Server URL must end with &#39;/&#39;: Cesta k serveru (URL) musí kon?it na '/'
 Invalid work hours: Neplatná pracovní doba
 Invalid color for document background: Neplatná barva pro pozadí dokumentu
 Invalid color for document title: Neplatná barva pro záhlaví dokumentu
@@ -949,7 +949,7 @@ Invalid color for table text background: Neplatná barva textu v tabulce
 Invalid color for event popup background: Neplatná barva pozadí u vyskakovacích (popup) událostí
 Invalid color for event popup text: Neplatná barva textu u vyskakovacích (popup) událostí
 Invalid color for table cell background for today: Neplatná barva pozadí bu?ky tabulky p?i zobrazení dne
-Color format should be '#RRGGBB': Formát barvy by nap?íklad m?l být '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Formát barvy by nap?íklad m?l být '#RRGGBB'
 
 
 ###############################################

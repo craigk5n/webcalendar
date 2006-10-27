@@ -31,7 +31,7 @@ function valid_form ( form ) {
   }
   if ( colorErr ) {
     alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + err + "\n\n<?php 
-  etranslate("Color format should be '#RRGGBB'", true)?>" );
+  etranslate( 'Color format should be &#39;#RRGGBB&#39;', true)?>" );
     return false;
   } else if ( err.length > 0 ) {
     alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + err );

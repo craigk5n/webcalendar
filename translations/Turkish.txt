@@ -243,7 +243,7 @@ Reject this entry?: Isleme ret?
 # Page: login-app.php
 #
 You must enter a login and password: Kullanici Adi ve Sifre vermeniz gerekiyor.
-Save login via cookies so I don't have to login next time: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
+Save login via cookies so I don&#39;t have to login next time: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
 Login: Giris
 cookies-note: <b>Not:</b> Takvimi kullanmak icin, Browser'inizde Cookie'leri kabul etmeniz gerekiyor.
 
@@ -281,7 +281,7 @@ No matches found: Bulunmiyor
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Baska Kullanicilarin Takvimini göster 
+View Another User&#39;s Calendar: Baska Kullanicilarin Takvimini göster 
 
 
 ###############################################
@@ -386,7 +386,7 @@ Invalid color for document background: Renk Sayfa-arkasi icin gecerli degil
 Invalid color for document title: Renk Baslik icin gecerli degil
 Invalid color for table cell background: Renk Tabela-arkasi icin gecerli degil
 Invalid color for table cell background for today: Renk Tabela-arkasi 'Bugün' icin gecerli degil
-Color format should be '#RRGGBB': Renkler sadece '#RRGGBB' seklinde verilebilir.
+Color format should be &#39;#RRGGBB&#39;: Renkler sadece '#RRGGBB' seklinde verilebilir.
 
 
 ###############################################

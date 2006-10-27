@@ -17,15 +17,6 @@
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
 
-$prodid = 'PRODID:-//WebCalendar-';
-if ( ! empty ( $PROGRAM_VERSION ) ) {
-  $prodid .= $PROGRAM_VERSION;
-} else if ( preg_match ( "/v(\d\S+) /", $GLOBALS['PROGRAM_NAME'], $matches ) ) {
-  $prodid .= $matches[1];
-} else {
-  $prodid .= 'UnknownVersion';
-}
-
 if ( empty ( $user ) || $user == $login )
   load_user_layers ();
 
@@ -192,8 +183,8 @@ function export_pilot_csv ($id) {
 } //end function
 
 function transmit_header ( $mime, $file ) {
-  header ( 'Content-Type: application/octet-stream' );
-  //header ( "Content-Type: $mime" );
+  //header ( 'Content-Type: application/octet-stream' );
+  header ( "Content-Type: $mime" );
   header ( 'Content-Disposition: attachment; filename="' . $file .  '"');
   header ( 'Pragma: no-cache');
   header ( 'Cache-Control: no-cache' );
@@ -217,6 +208,10 @@ $include_layers = getPostValue  ( 'include_layers' );
 if ( $include_layers != 'y' )
  $include_layers = '';
 
+$include_deleted = getPostValue  ( 'include_deleted' );
+if ( $include_deleted != 'y' )
+ $include_deleted = '';
+
 $cat_filter = getPostValue  ( 'cat_filter' );
 if ( $cat_filter == 0 )
  $cat_filter = '';
@@ -237,20 +232,20 @@ if (empty($id)) {
   $id = 'all';
 }
 
-if ($format == 'ical') {
-  transmit_header ( 'text/ical', "webcalendar-$id.ics" );
+$outputName = "webcalendar-$login-$id";
+if ( substr ( $format, 0, 4 ) == 'ical') {
+  transmit_header ( 'text/calendar', $outputName . '.ics' );
   export_ical($id);
 } elseif ($format == 'vcal') {
-  transmit_header ( 'text/vcal', "webcalendar-$id.vcs" );
+  transmit_header ( 'text/x-vCalendar', $outputName . '.vcs' );
   export_vcal($id);
 } elseif ($format == 'pilot-csv') {
-  transmit_header ( 'text/csv', "webcalendar-$id.csv" );
+  transmit_header ( 'text/csv', $outputName . '.csv' );
   export_pilot_csv ( $id );
 } elseif ($format == 'pilot-text') {
-  transmit_header('text/plain', "webcalendar-$id.txt" );
+  transmit_header('text/plain', $outputName . '.txt' );
   export_install_datebook($id);
 } else {
-  //exit;
 
   print_header();
   $errorStr = translate( 'Error' );

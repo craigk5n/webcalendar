@@ -316,7 +316,7 @@ Reject this entry?: ¿Rexeitar esta entrada?
 # Page: login-app.php
 #
 You must enter a login and password: Debe introducir un login e un contrasinal
-Save login via cookies so I don't have to login next time: Gravar login mediante cookies para non ter que volver introducilo a próxima vez
+Save login via cookies so I don&#39;t have to login next time: Gravar login mediante cookies para non ter que volver introducilo a próxima vez
 Login: Entrar
 cookies-note: <b>Nota:</b> Este programa necesita que as cookies estean activadas.
 
@@ -366,7 +366,7 @@ No matches found: Non se atoparon coincidencias
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Ve-lo Calendario de outro Usuario
+View Another User&#39;s Calendar: Ve-lo Calendario de outro Usuario
 
 
 ###############################################
@@ -474,7 +474,7 @@ Invalid color for document background: Color non válido para o fondo do document
 Invalid color for document title: Color non válido para o título do documento
 Invalid color for table cell background: Color non válido para o fondo da cela
 Invalid color for table cell background for today: Color non válido para o fondo da cela de hoxe
-Color format should be '#RRGGBB': O formato da cor debería ser '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: O formato da cor debería ser '#RRGGBB'
 
 
 ###############################################

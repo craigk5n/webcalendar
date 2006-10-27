@@ -91,7 +91,7 @@ $show_time = ( $is_day_view ? $show_time_day : $show_time_week );
 
 $printerStr = generate_printer_friendly ( 'view_r.php' );
 
-$INC = array ( 'js/popups.php' );
+$INC = array ( 'js/popups.php/true' );
 print_header ( $INC );
 
 set_today ( $date );

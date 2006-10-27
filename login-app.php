@@ -19,10 +19,10 @@ $WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
 
-$WebCalendar->setLanguage();
-
 load_global_settings ();
 load_user_preferences ( 'guest' );
+
+$WebCalendar->setLanguage();
 
 // Look for action=logout
 $logout = false;
@@ -39,18 +39,7 @@ if ( ! empty ( $action ) && $action == 'logout' ) {
     SetCookie ( 'webcalendar_last_view', '', 0 );
 }
 
-// Set default language
-$lang = '';
-if ( ! empty ( $LANGUAGE ) &&  $LANGUAGE != 'Browser-defined' && $LANGUAGE != 'none' ) {
-  $lang = languageToAbbrev ( $LANGUAGE );
-} else {
-  $lang_long = get_browser_language ();
-  $lang = languageToAbbrev ( $lang_long );
-}
-
-if ( empty ( $lang ) ) {
-  $lang = 'en';
-}
+$appStr =  generate_application_name ();
 
 $charset = ( ! empty ( $LANGUAGE )?translate( 'charset' ): 'iso-8859-1' );
 echo '<?xml version="1.0" encoding="' . $charset . '"?>' . "\n";
@@ -67,7 +56,7 @@ if ( $return_path != '') {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" lang="<?php echo $lang; ?>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
-<title><?php etranslate($APPLICATION_NAME)?></title>
+<title><?php echo $appStr ?></title>
 <?php if ( ! $logout ) { ?>
 <script type="text/javascript">
 // error check login/password
@@ -90,7 +79,7 @@ function myOnLoad() {
 </script>
 <?php 
 }
- include 'includes/styles.php';
+  echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login" />';
 
  // Print custom header (since we do not call print_header function)
  if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
@@ -106,15 +95,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 }
 ?>
 
-<h2><?php 
-// If Application Name is set to Title then get translation
-// If not, use the Admin defined Application Name
-if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME == 'Title' ) {
-  etranslate($APPLICATION_NAME);
-} else {
-  echo htmlspecialchars ( $APPLICATION_NAME );
-}  
-?></h2>
+<h2><?php echo $appStr; ?></h2>
 
 <?php
 if ( ! empty ( $error ) ) {
@@ -146,7 +127,7 @@ if ( ! empty ( $error ) ) {
  <input type="checkbox" name="<?php echo $app_login_page['remember'] ?>" id="remember" tabindex="3" 
    value="yes" <?php if ( ! empty ( $remember ) && $remember == 'yes' ) {
      echo 'checked="checked"'; }?> /><label for="remember">&nbsp;
-   <?php etranslate("Save login via cookies so I don't have to login next time")?></label>
+   <?php etranslate( 'Save login via cookies so I don&#39;t have to login next time' )?></label>
 </td></tr>
 <?php } ?>
 <tr><td colspan="4" class="aligncenter">

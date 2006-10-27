@@ -119,20 +119,9 @@ if ( empty ( $error ) && $id > 0 ) {
       }
       $from = $EMAIL_FALLBACK_FROM;
       if ( strlen ( $login_email ) ) $from = $login_email;
-
-      if ( strlen ( $from ) ) {
-        $mail->From = $from;
-        $mail->FromName = $login_fullname;
-      } else {
-        $mail->From = $login_fullname;
-      }
-      $mail->IsHTML( $htmlmail == 'Y' ? true : false );
-      $mail->AddAddress( $tempemail, $tempfullname );
-      $mail->WCSubject ( $name );
-      $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;
-      $mail->Send();
-      $mail->ClearAll();
-
+      //send via WebCalMailer class
+      $mail->WC_Send ( $login_fullname, $tempemail, 
+        $tempfullname, $name, $msg, $htmlmail, $from );
       activity_log ( $id, $login, $partlogin[$i], LOG_NOTIFICATION,
         "Rejected by $app_user" );
     }

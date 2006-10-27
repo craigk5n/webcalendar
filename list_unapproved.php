@@ -61,7 +61,7 @@ if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
 //make sure we return after editing an event via this page
 remember_this_view();
 
-$INC = array('js/popups.php');
+$INC = array('js/popups.php/true');
 print_header($INC,$HeadX);
 
 $key =  0;

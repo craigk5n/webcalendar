@@ -19,8 +19,6 @@ $WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
 
-$WebCalendar->setLanguage();
-
 require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
 //TODO make this an option for external users
@@ -28,7 +26,9 @@ $htmlmail = false;
 
 load_user_preferences ( 'guest' );
 
+$WebCalendar->setLanguage();
 
+$appStr =  generate_application_name ();
 
 $notauth = print_not_auth ();
 
@@ -173,7 +173,7 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
    $msg .= translate( 'A new WebCalendar account has been set up for you' ). ".\n\n";
    $msg .= translate( 'Your username is' ) . ' "' . $user . "\"\n\n";
    $msg .= translate( 'Your password is' ) . ' "' . $new_pass . "\"\n\n";
-   $msg .= translate( 'Please visit' ) . ' ' . translate( $APPLICATION_NAME ) . ' ' .
+   $msg .= translate( 'Please visit' ) . ' ' . $appStr . ' ' .
      translate( 'to log in and start using your account' ) . "!\n";
    // add URL to event, if we can figure it out
    if ( ! empty ( $SERVER_URL ) ) {
@@ -185,21 +185,11 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
    }
   $msg .= "\n\n" . translate( 'You may change your password after logging in the first time' ) . ".\n\n";
   $msg .= translate( 'If you received this email in error' ) . ".\n\n"; 
-  
-  if ( ! empty ( $EMAIL_FALLBACK_FROM ) ) {
-    $mail->From = $EMAIL_FALLBACK_FROM;
-    $mail->FromName = translate( 'Administrator' );
-  } else {
-    $mail->From = translate( 'Administrator' );
-  }
-  $mail->IsHTML( $htmlmail == 'Y' ? true : false );
-  $mail->AddAddress( $uemail, $ufirstname .  ' ' . $ulastname );
-  $mail->Subject = translate($APPLICATION_NAME) . ' ' .
-    translate( 'Welcome' ) . ': ' . $ufirstname;
-  $mail->Body  = $htmlmail == 'Y' ? nl2br ( $msg ) : $msg;
-  $mail->Send();
-  $mail->ClearAll();
-
+  $adminStr = translate( 'Administrator', true );
+  $name = $appStr . ' ' . translate( 'Welcome' ) . ': ' . $ufirstname;
+  //send  via WebCalMailer class
+  $mail->WC_Send ( $adminStr, $uemail, $ufirstname .  ' ' 
+    . $ulastname, $name, $msg, $htmlmail, $EMAIL_FALLBACK_FROM );
   activity_log ( 0, 'system', $user, LOG_NEWUSER_EMAIL, 'New user via email' ); 
  }
 }
@@ -212,7 +202,7 @@ echo "<?xml version=\"1.0\" encoding=\"$charset\"?>" . "\n";
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" lang="<?php echo $lang; ?>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
-<title><?php etranslate( $APPLICATION_NAME )?></title>
+<title><?php echo $appStr ?></title>
 <script type="text/javascript" src="includes/js/prototype.js"></script>
 <script type="text/javascript">
 var validform = false;
@@ -273,7 +263,7 @@ function showResponse(originalRequest) {
 
 </script>
 <?php 
- include 'includes/styles.php';
+  echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login" />';
 
  // Print custom header (since we do not call print_header function)
  if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
@@ -282,16 +272,7 @@ function showResponse(originalRequest) {
 ?>
 </head>
 <body id="register">
-<h2><?php 
-// If Application Name is set to Title then get translation
-// If not, use the Admin defined Application Name
-if ( ! empty ( $APPLICATION_NAME ) &&  $APPLICATION_NAME == 'Title' ) {
-  etranslate($APPLICATION_NAME);
-} else {
-  echo htmlspecialchars ( $APPLICATION_NAME );
-} 
-echo " " . translate ( 'Registration' ); 
-?></h2>
+<h2><?php  echo $appStr . " " . translate ( 'Registration' ); ?></h2>
 
 <?php
 if ( ! empty ( $error ) ) {

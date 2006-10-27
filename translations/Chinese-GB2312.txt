@@ -92,7 +92,7 @@ fonts-help: 字体帮助
 Fonts: 字体
 Display week number: 显示周数(以年計算)
 Include add event link in views: 包括在视图中添加事件联接
-Allow viewing other user's calendars: 允许查看其他用户日历
+Allow viewing other user&#39;s calendars: 允许查看其他用户日历
 Require event approvals: 需要事件核准
 Display unapproved: 显示未核准的
 conflict-check-help: 冲突-检查-帮助
@@ -507,7 +507,7 @@ Reject this entry?: 拒绝此事件?
 # Page: login-app.php
 #
 You must enter a login and password: 您必须输入用户名称及密码
-Save login via cookies so I don't have to login next time: 将登录资料存储于 cookies 中，下次就不需要再登录系统。
+Save login via cookies so I don&#39;t have to login next time: 将登录资料存储于 cookies 中，下次就不需要再登录系统。
 Login: 登录
 Access public calendar: 进入公共日历
 cookies-note: <b>注意:</b> 本程序需要 cookies 才能使用.
@@ -574,7 +574,7 @@ No matches found: 查无资料
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: 查看其他用户的日历
+View Another User&#39;s Calendar: 查看其他用户的日历
 
 
 ###############################################
@@ -747,7 +747,7 @@ Event Imported: 事件已输入
 # Page: includes/js/admin.php
 #
 Server URL is required: 填写系统URL
-Server URL must end with '/': 系统URL必须以'/'结尾
+Server URL must end with &#39;/&#39;: 系统URL必须以'/'结尾
 Invalid color for document background: 无效的文档背景颜色
 Invalid color for document title: 无效的文档标题颜色
 Invalid color for table cell background: 无效的表格单元背景颜色
@@ -757,7 +757,7 @@ Invalid color for table text background: 无效的表头文本颜色
 Invalid color for event popup background: 无效的背景颜色
 Invalid color for event popup text: 无效的文本颜色
 Invalid color for table cell background for today: 无效的当天表格单元背景颜色
-Color format should be '#RRGGBB': 颜色格式需要是 '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: 颜色格式需要是 '#RRGGBB'
 
 
 ###############################################

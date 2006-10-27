@@ -35,10 +35,10 @@ if ( $REMEMBER_LAST_LOGIN == 'Y' && empty ( $login ) ) {
   $last_login = $login = $webcalendar_login;
 }
 
-$WebCalendar->setLanguage();
-
 load_global_settings ();
 load_user_preferences ( 'guest' );
+
+$WebCalendar->setLanguage();
 
 // Look for action=logout
 $logout = false;
@@ -62,26 +62,9 @@ if ( ! empty ( $return_path ) ) {
   $url = 'index.php';
 }
 
-$lang = '';
-if ( ! empty ( $LANGUAGE ) &&  $LANGUAGE != 'Browser-defined' && $LANGUAGE != 'none' ) {
-  $lang = languageToAbbrev ( $LANGUAGE );
-} else {
-  $lang_long = get_browser_language ();
-  $lang = languageToAbbrev ( $lang_long );
-}
-
-if ( empty ( $lang ) ) {
-  $lang = 'en';
-}
-
 // If Application Name is set to Title then get translation
 // If not, use the Admin defined Application Name
-if ( ! empty ( $APPLICATION_NAME ) &&  
-  ( $APPLICATION_NAME == 'Title' || $APPLICATION_NAME == 'myname' ) ) {
-  $appStr = translate( 'Title' );
-} else {
-  $appStr = htmlspecialchars ( $APPLICATION_NAME );
-} 
+$appStr =  generate_application_name ();
 
 $login = getPostValue ( 'login' );
 $password = getPostValue ( 'password' );
@@ -143,7 +126,7 @@ if ( $single_user == 'Y' ) {
         $error = translate('Invalid login', true );
       }
       activity_log ( 0, 'system', '', LOG_LOGIN_FAILURE, 
-        translate("Username") . ": " . $login .
+        translate( 'Username' ) . ": " . $login .
         ", IP: " . $_SERVER['REMOTE_ADDR'] );
     }
   } else {
@@ -191,8 +174,7 @@ function myOnLoad() {
 </script>
 <?php 
 }
-
- include "includes/styles.php";
+  echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login" />';
 
  // Print custom header (since we do not call print_header function)
  if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
@@ -256,7 +238,7 @@ if ( ! empty ( $return_path ) ) {
  <input type="checkbox" name="remember" id="remember" tabindex="3" 
    value="yes" <?php if ( ! empty ( $remember ) && $remember == 'yes' ) {
      echo 'checked="checked"'; }?> /><label for="remember">&nbsp;
-   <?php etranslate("Save login via cookies so I don't have to login next time")?></label>
+   <?php etranslate( 'Save login via cookies so I don&#39;t have to login next time' )?></label>
 </td></tr>
 <tr><td colspan="4" class="aligncenter">
  <input type="submit" value="<?php etranslate( 'Login' )?>" tabindex="4" />

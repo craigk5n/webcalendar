@@ -15,7 +15,7 @@ echo $helpListStr;
 <p><?php etranslate('The following entries will not be imported')?>:</p>
   <ul>
     <li><?php etranslate('Entries older than the current date')?></li>
-    <li><?php etranslate("Entries created in the Palm Desktop that have not been HotSync'd")?></li>
+    <li><?php etranslate( 'Entries created in the Palm Desktop that have not been HotSync&#39;d' )?></li>
   </ul>
 
   <p><?php etranslate('Anything imported from Palm will be overwritten during the next import (unless the event date has passed).') .
