@@ -172,14 +172,14 @@ function create_image ( $file_name, $base = '', $height = '', $percent = ''
   } 
   $color1 = ( $color1 == ''
     ? colorToRGB ( $DEFAULTS['color1'] )
-    : ( preg_match ( "/^#? ([0-9a-fA-F]{3,6})/", $color1, $matches )
+    : ( preg_match ( "/^#?([0-9a-fA-F]{3,6})/", $color1, $matches )
       ? colorToRGB ( $matches[1] )
       : colorToRGB ( $DEFAULTS['color1'] ) ) 
     );
 
   $color2 = ( $color2 == ''
     ? colorToRGB ( $DEFAULTS['color2'] )
-    : ( preg_match ( "/^#? ([0-9a-fA-F]{3,6})/", $color2, $matches )
+    : ( preg_match ( "/^#?([0-9a-fA-F]{3,6})/", $color2, $matches )
       ? colorToRGB ( $matches[1] )
       : colorToRGB ( $DEFAULTS['color2'] ) ) 
     );
