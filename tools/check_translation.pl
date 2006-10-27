@@ -1,14 +1,15 @@
 #!/usr/bin/perl
 # $Id$
 #
-# This tool helps with the translation into other languages by indicating whether
-# all text specified in translate() and tooltip() within the application has a
-# corresponding entry in the translation data file.
+# This tool helps with the translation into other languages by indicating
+# whether all text specified in translate() and tooltip() within the application
+# has a corresponding entry in the translation data file.
 #
 # Usage:
 #	check_translation.pl languagefile
 #	  ... or to check the most recently modified translation file
 #	check_translation.pl
+#
 # Example:
 #	check_translation.pl ../translations/English-US.txt
 #
@@ -30,7 +31,7 @@ $trans_dir = '../translations';
 $infile = $ARGV[0];
 
 if ( $infile eq '' ) {
-  opendir( DIR, $trans_dir ) || die "error opening $trans_dir";
+  opendir( DIR, $trans_dir ) || die 'error opening ' . $trans_dir;
   @files = grep ( /\.txt$/, readdir(DIR) );
   closedir(DIR);
   $last_mtime = 0;
@@ -51,12 +52,13 @@ if ( $infile ne '' && !-f $infile ) {
   }
 }
 
-# First get the list of .php and .inc files.
+@files = ();
+
+# First get the list of .class and .php files.
 find \&find_pgm_files, '..';
 
 foreach $f (@files) {
-  $file = $f;
-  open( F, $file ) || die "Error reading $file";
+  open( F, $f ) || die 'Error reading ' . $f;
 
   #print "Checking $f for text.\n";
   while (<F>) {
@@ -82,7 +84,7 @@ foreach $f (@files) {
 if ( !-f $infile ) {
   die "Usage: $0 translation-file\n";
 }
-open( F, $infile ) || die "Error opening $infile";
+open( F, $infile ) || die 'Error opening ' . $infile;
 while (<F>) {
   chop;
   next if (/^#/);
