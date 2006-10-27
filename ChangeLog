@@ -1,5 +1,12 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Created common mail function in WebCalMailer.class
+ - Created new generate_application_name() function
+ - Created new is_weekend() function
+ - Created new generate_activity_log() funciton
+ - Fixed bug [ 1580720 ] Missing menus
+ - Fixed bug [ 1583074 ] Switching between 'Languages' will erase the entries
+ - Fixed bug [ 1585625 ] 'register.php' didn't displayed in the proper language
  - Fixed bug [ 1584656 ] Bug in Gradient Backroundcolors
  - Fixed bug [ 1584275 ] extra week day in VIEW week
  - Fixed bug [ 1584284 ] disappearing URLs if edit entry
