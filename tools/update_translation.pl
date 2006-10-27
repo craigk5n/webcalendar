@@ -56,7 +56,7 @@ $trans_dir = '../translations';
 $base_trans_file = "$trans_dir/English-US.txt";
 $plugin          = '';
 
-$show_missing = 1; # set to 0 to minimize translation file.
+$show_missing = 0; # set to 0 to minimize translation file.
 $show_dups    = 0; # set to 0 to minimize translation file.
 $verbose      = 0;
 
@@ -164,16 +164,16 @@ if ( -f $infile ) {
   }
 }
 
-$trans { 'charset' } = 'iso-8859-1' if ( !defined ( $trans { 'charset' } ) );
-$trans { 'direction' } = 'ltr' if ( !defined ( $trans { 'direction' } ) );
-$trans { '__mm__/__dd__/__yyyy__' } = '__mm__/__dd__/__yyyy__'
-  if ( !defined( $trans{'__mm__/__dd__/__yyyy__'} ) );
-$trans { '__month__ __dd__' } = '__month__ __dd__'
-  if ( !defined ( $trans { '__month__ __dd__' } ) );
-$trans { '__month__ __dd__, __yyyy__' } = '__month__ __dd__, __yyyy__'
-  if ( !defined ( $trans { '__month__ __dd__, __yyyy__' } ) );
-$trans { '__month__ __yyyy__' } = '__month__ __yyyy__'
-  if ( !defined ( $trans { '__month__ __yyyy__' } ) );
+$trans{ 'charset' }   = 'iso-8859-1' if ( !defined( $trans{ 'charset' } ) );
+$trans{ 'direction' } = 'ltr'        if ( !defined( $trans{ 'direction' } ) );
+$trans{ '__mm__/__dd__/__yyyy__' } = '__mm__/__dd__/__yyyy__'
+  if ( !defined( $trans{ '__mm__/__dd__/__yyyy__' } ) );
+$trans{ '__month__ __dd__' } = '__month__ __dd__'
+  if ( !defined( $trans{ '__month__ __dd__' } ) );
+$trans{ '__month__ __dd__, __yyyy__' } = '__month__ __dd__, __yyyy__'
+  if ( !defined( $trans{ '__month__ __dd__, __yyyy__' } ) );
+$trans{ '__month__ __yyyy__' } = '__month__ __yyyy__'
+  if ( !defined( $trans{ '__month__ __yyyy__' } ) );
 
 if ( $plugin ne '' ) {
   print "Reading current WebCalendar translations from $b_infile\n"
@@ -215,19 +215,14 @@ $notfound = 0;
 open( OUT, ">$infile" ) || die "Error writing $infile: ";
 print OUT $header;
 if ( $plugin eq '' ) {
-  $foundin { 'charset' } =
-  $foundin { 'direction' } =
-  $foundin { '__mm__/__dd__/__yyyy__' } =
-  $foundin { '__month__ __dd__' } =
-  $foundin { '__month__ __dd__, __yyyy__' } =
-  $foundin { '__month__ __yyyy__' } =  ' top of this file';
+  $foundin{ 'charset' }                  = $foundin{ 'direction' } =
+    $foundin{ '__mm__/__dd__/__yyyy__' } = $foundin{ '__month__ __dd__' } =
+    $foundin{ '__month__ __dd__, __yyyy__' } =
+    $foundin{ '__month__ __yyyy__' } = ' top of this file';
 
-  $text { 'charset' } =
-  $text { 'direction' } =
-  $text { '__mm__/__dd__/__yyyy__' } =
-  $text { '__month__ __dd__' } =
-  $text { '__month__ __dd__, __yyyy__' } =
-  $text { '__month__ __yyyy__' } =  1;
+  $text{ 'charset' }                      = $text{ 'direction' } =
+    $text{ '__mm__/__dd__/__yyyy__' }     = $text{ '__month__ __dd__' } =
+    $text{ '__month__ __dd__, __yyyy__' } = $text{ '__month__ __yyyy__' } = 1;
 
   print OUT '
 
@@ -236,21 +231,21 @@ if ( $plugin eq '' ) {
 ################################################################################
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: ' . $trans{'charset'} . '
+charset: ' . $trans{ 'charset' } . '
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ' . $trans{'direction'} . '
+direction: ' . $trans{ 'direction' } . '
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: ' . $trans { '__mm__/__dd__/__yyyy__' } . '
-__month__ __dd__: ' . $trans { '__month__ __dd__' } . '
-__month__ __dd__, __yyyy__: ' . $trans { '__month__ __dd__, __yyyy__' } . '
-__month__ __yyyy__: ' . $trans { '__month__ __yyyy__' } . '
+__mm__/__dd__/__yyyy__: ' . $trans{ '__mm__/__dd__/__yyyy__' } . '
+__month__ __dd__: ' . $trans{ '__month__ __dd__' } . '
+__month__ __dd__, __yyyy__: ' . $trans{ '__month__ __dd__, __yyyy__' } . '
+__month__ __yyyy__: ' . $trans{ '__month__ __yyyy__' } . '
 
 ################################################################################
 ################################################################################
@@ -261,8 +256,7 @@ __month__ __yyyy__: ' . $trans { '__month__ __yyyy__' } . '
 foreach $f ( @files ) {
   open( F, $f ) || die "Error reading $f";
   $f =~ s,^\.\.\/,,;
-  $pageHeader =
-    "\n########################################\n# Page: $f\n#\n";
+  $pageHeader = "\n########################################\n# Page: $f\n#\n";
   print "Searching $f\n" if ( $verbose );
   %thispage = ();
   while ( <F> ) {
@@ -276,16 +270,15 @@ foreach $f ( @files ) {
         }
         elsif ( defined( $text{ $text } ) ) {
           if ( !show_dups ) {
-            print OUT $pageHeader;
             print OUT "# \"$text\" previously defined (in $foundin{$text})\n";
-            $pageHeader = '';
           }
           $thispage{ $text } = 1;
         }
         else {
-          print OUT $pageHeader;
           if ( !length( $trans{ $text } ) ) {
             if ( $show_missing ) {
+              print OUT $pageHeader;
+              $pageHeader = '';
               if ( length( $webcaltrans{ $text } ) ) {
                 print OUT "# \"$text\" defined in WebCalendar translation\n";
               }
@@ -299,11 +292,12 @@ foreach $f ( @files ) {
             $notfound++ if ( !length( $webcaltrans{ $text } ) );
           }
           else {
+            print OUT $pageHeader;
+            $pageHeader = '';
             printf OUT ( "%s: %s\n", $text, $trans{ $text } );
           }
           $foundin{ $text } = $f;
-          $pageHeader       = '';
-          $text{ $text }    = $thispage{ $text } = 1;
+          $text{ $text } = $thispage{ $text } = 1;
         }
         $data = $';
       }
