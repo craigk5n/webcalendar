@@ -16,7 +16,6 @@ closedir ( DIR );
 printf "%-20s %s\n", 'Language file', 'No. missing translations';
 
 foreach $f ( @files ) {
-print $f;
   $out = `perl check_translation.pl $transdir/$f`;
   if ( $out =~ / missing./ ) {
     # missing some translations
