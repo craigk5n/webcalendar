@@ -334,9 +334,12 @@ function export_recurrence_ical( $id, $simple = false ) {
       if ( $type == 'manual' ) $recurrance = '';
 
       if ( count( $rdate ) > 0 ) {
-        $string = ( ! $simple ? 'RDATE;VALUE=DATE:' : ','
-           . translate ( 'Inclusion Dates' ) . '=' )
-         . implode ( ',', $rdate );
+        $rdatesStr = '';
+        foreach ( $rdate as $rdates ) { 
+          $rdatesStr .= date_to_str ( $rdates, $DATE_FORMAT_TASK, false ) . ' '; 
+        }
+        $string = ( ! $simple ? 'RDATE;VALUE=DATE:' . implode ( ',', $rdate ) : 
+          ',' . translate ( 'Inclusion Dates' ) . '=' . $rdatesStr );
         $string = export_fold_lines( $string );
         while ( list( $key, $value ) = each( $string ) )
         $recurrance .= "$value\r\n";
@@ -344,9 +347,12 @@ function export_recurrence_ical( $id, $simple = false ) {
       if ( $simple ) $recurrance .= '<br />';
 
       if ( count( $exdate ) > 0 ) {
-        $string = ( ! $simple ? 'EXDATE;VALUE=DATE:' :
-          ',' . translate ( 'Exclusion Dates' ) . '=' )
-         . implode ( ',', $exdate );
+        $exdatesStr = '';
+        foreach ( $exdate as $exdates ) { 
+          $exdatesStr .= date_to_str ( $exdates, $DATE_FORMAT_TASK, false ) . ' '; 
+        }
+        $string = ( ! $simple ? 'EXDATE;VALUE=DATE:' . implode ( ',', $exdate ) :
+          ',' . translate ( 'Exclusion Dates' ) . '=' . $exdatesStr );
         $string = export_fold_lines( $string );
         while ( list( $key, $value ) = each( $string ) )
         $recurrance .= "$value\r\n";
