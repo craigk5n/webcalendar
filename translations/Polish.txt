@@ -7,26 +7,44 @@
 # Last time updated on 09-18-2005
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: iso-8859-2
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Database error: B³±d bazy danych
+User Access Control: Kontrola dostêpu u¿ytkownika
 Cancel: Anuluj
 Save: Zapisz
+Go: Id¼
 Public Access: Dostep Publiczny
 Admin: Administrator
-User Access Control: Kontrola dostêpu u¿ytkownika
-Go: Id¼
 Calendar: Kalendarz
 View Event: Ogl±danie zdarzeñ
 Edit: Edytuj
@@ -35,29 +53,20 @@ Public: Dla wszystkich
 confidential: poufny
 private: prywatne
 
-
-###############################################
+########################################
 # Page: activity_log.php
 #
-Activity Log: dzieñnik
-User: U¿ytkownik
-Date: Data
-Time: Czas
-Event: Zdarzenie
-Action: Akcja
-Previous: Poprzedni
 Next: Nastepny
+Previous: Poprzedni
 
-
-###############################################
+########################################
 # Page: add_entry.php
 #
+Event: Zdarzenie
 Invalid entry id: Niepoprawny id wydarzenia
-This is a private event and may not be added to your calendar.: To jest prywatne zdarzenie i mo¿e nie bya dodane do twojego kalendarza
 Error adding event: B³±d dodawania zdarzenia
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Wybierz
@@ -241,8 +250,7 @@ Table cell background for weekends: T³o komórki weekendów
 Event popup background: Zdarzenie pojawiaj±cego siê t³a
 Event popup text: Zdarzenie pojawiaj±cego siê tekstu
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Control Panel: Panel Kontolny
@@ -255,65 +263,60 @@ Views: Widoki
 Layers: Warstwy
 Reports: Raporty
 Delete Events: Kasuj zdarzenia
+Activity Log: dzieñnik
 Public Preferences: Publiczne W³a¶ciwo¶ci
 Unapproved Public Events: Niezatwierdzone Publiczne zdarzenia
 Administrative Tools: Narzedzia Administracyjne
 
-
-###############################################
+########################################
 # Page: ajax.php
 #
 Username already exists: Podana nazwa u¿ytkownika jest ju¿ zajêta
 Email address already exists: Podany email jest ju¿ przypisany do innego u¿ytkownika
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Hello: Witaj
 The subject was: Tematem by³o
 The description is: Opis jest
+Date: Data
+Time: Czas
 
-
-###############################################
+########################################
 # Page: assistant_edit.php
 #
 Admin mode: Tryb administratora
 Your assistants: Twoi asystenci
 
-
-###############################################
+########################################
 # Page: category.php
 #
+Global: Globalny
 Add: Dodaj
 Category Name: Nazwa kategorii
-Global: Globalny
 Delete: Skasuj
 Are you sure you want to delete this entry?: Czy jeste¶ pewny ¿e chcesz skasowaæ ten wpis?
 Add New Category: Dodaj now± kategorie
 
-
-###############################################
+########################################
 # Page: catsel.php
 #
 Remove: Usun
 Ok: Ok
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Twoje spotkanie zosta³o skasowane przez
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Upload file: Wy¶lij plik
 Description: Opis
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: Przed po³udniem
@@ -371,8 +374,7 @@ days: dni
 Delete entry: Skasuj wpis
 You are not authorized to edit this entry: Nie masz autoryzacji by skasowaæ ten wpis
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: Nastepuj±ce wydarzenia koliduj± z sugerowanym czasem
@@ -386,8 +388,7 @@ Scheduling Conflict: Konflikt
 Your suggested time of: Twój sugerowany czas
 conflicts with the following existing calendar entries: koliduje z nastepuj±cymi wpisami kalendarza
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: Warstwa edycji
@@ -400,15 +401,13 @@ Add to My Calendar: Dodaj do mojego kalendarza
 Delete layer: Skasuj warstwe
 Are you sure you want to delete this layer?: Jeste¶ pewny, ¿e chesz usun±a t± warstwe?
 
-
-###############################################
+########################################
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: Mo¿esz stworzya warstwe dla siebie
 You can only create one layer for each user: Mo¿esz tylko  stworzya jedna warstwe dla ka¿dego u¿ytkownika
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX nie zosta³ ustawiony w pliku config.php
@@ -420,8 +419,7 @@ First Name: Imie
 Last Name: Nazwisko
 Is public calendar: Jest kalendarzem publicznym
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: Error
@@ -430,8 +428,7 @@ Events successfully imported: Wydarzenia pomy¶lnie zaimportowano
 Errors: B³edy
 There was an error parsing the import file or no events were returned: B³±d przekazania importowanego pliku lub brak zdarzeñ zwróconych
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Tomorrow: Jutro
@@ -460,6 +457,7 @@ Add Report: Dodaj raport
 Edit Report: Edytuj raport
 Report name: Nazwa raportu
 Current User: Bie¿±cy u¿ytkownik
+User: U¿ytkownik
 Include link in trailer: W³±cz ³±cze w zwiastunie
 Include standard header/trailer: W³±cz standardowy nag³ówek/zwiastun
 Date range: Przedia³ daty
@@ -471,22 +469,19 @@ Day template: Szablon dnia
 Event template: Szablon zdarzenia
 Are you sure you want to delete this report?: Jeste¶ pewny, ¿e chcesz usun±a ten raport?
 
-
-###############################################
+########################################
 # Page: edit_report_handler.php
 #
 Variable N not found: Zmienna N nie zosta³a znaleziona
 
-
-###############################################
+########################################
 # Page: edit_template.php
 #
 Edit Custom Script/Stylesheet: Ustaw w³asny skrypt/styl
 Edit Custom Header: Edytuj w³asny nag³ówek
 Edit Custom Trailer: Edytuj w³asn± stopke
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: U¿ytkownik
@@ -499,8 +494,7 @@ Change Password: Zmien has³o
 New Password: Nowe has³o
 Set Password: Zmien has³o
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Brak obs³ugi usuwania u¿ytkowników
@@ -508,33 +502,28 @@ The passwords were not identical: Has³a nie s± takie same
 You have not entered a password: Nie wprowadzi³e¶ has³a
 Username can not be blank: Nazwa u¿ytkownika nie mo¿e bya pusta
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Eksportuj
 Export format: Format eksportu
-Palm Pilot: Palm Pilot
 Include all layers: Zawiera wszystkie wartswy
 Export all dates: Eksportuj wszystkie daty
 Start date: Zaczyna siê
 End date: Koñczy siê
 Modified since: Czas modyfikacji
 
-
-###############################################
+########################################
 # Page: export_handler.php
 #
 export format not defined or incorrect: format eksportu niezdefiniowany lub niepoprawny
 
-
-###############################################
+########################################
 # Page: groups.php
 #
 Add New Group: Dodaj now± grupe
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Grupa bezimienna
@@ -544,14 +533,12 @@ Group name: Nazwa grupy
 Updated: Zaktualizowany
 Created by: Stworzony przez
 
-
-###############################################
+########################################
 # Page: group_edit_handler.php
 #
 You must specify a group name: Musisz podaæ nazwe grupy
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 Display weekends in week view: Wy¶wietl weekendy w widoku tygodniowym
@@ -568,14 +555,12 @@ enable-gradient-help: U¿ywaj gradientów podczas wype³niania komórek tabeli.
 Manually entering color values: Rêczne wprowadzanie warto¶ci kolorów
 colors-help: Wszystkie kolory powinny bya okre¶lone w heksagonalnym formacie "#RRGGBB" gdzie "RR" jestt warto¶ci± czerwieni, "GG" jest warto¶ci± zielonego i "BB" jest warto¶ci± niebieskiego.
 
-
-###############################################
+########################################
 # Page: help_bug.php
 #
 Report Bug: B³±d raportu
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Dodawanie/edycja wpisów kalendarza
@@ -584,8 +569,7 @@ Repeat End Date: Powtórz date zakonczenia
 Repeat Day: Powtórz dzieñ
 repeat-day-help: Okresla w które dni tygodnia wydarzenie ma bya powtarzane.  U¿ywane jest tylko gdy <i>Typ powtarzania</i> jest ustawiony na <i>Co tydzieñ</i>.
 
-
-###############################################
+########################################
 # Page: help_import.php
 #
 Import: Importuj
@@ -600,14 +584,12 @@ This form will import vCalendar (.vcs) 1.0 events: Ten formularz zaimportuje zda
 The following formats have been tested: Podane formaty zosta³y przetestowane
 This form will import iCalendar (.ics) events: Ten formularz zaimportujec zdarzenia iCalendar (.ics)
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Indeks pomocy
 
-
-###############################################
+########################################
 # Page: help_layers.php
 #
 Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Warstwy to u¿yteczny dodatek, który pozwala na wy¶wietlanie zdarzeñ innych u¿ytkowników w Twoim w³asnym kalendarzu. Mo¿esz ustaliæ u¿ytkownika i kolor jego zdarzeñ, które maj± byæ pokazywane.
@@ -621,8 +603,7 @@ Press the Disable Layers link in the admin section at the bottom of the page to 
 Enabling: W³±czanie
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Naci¶nij ³±cze W³±cz Warstwy w seksji administracyjnej na dole strony aby w³±czya warstwy.
 
-
-###############################################
+########################################
 # Page: help_pref.php
 #
 Default Category: Domy¶lna kategoria
@@ -643,15 +624,13 @@ Enable FreeBusy publishing: W³±cz FreeBusy
 freebusy-enabled-help: Ustala, czy u¿ytkownik jest dostêpny za pomoc± standardu iCal FreeBusy
 freebusy-url-help: Adres dostêpu do listy FreeBusy
 
-
-###############################################
+########################################
 # Page: icalclient.php
 #
 Publishing Disabled (Admin): Publikacja wy³±czona (admin)
 Publishing Disabled (User): Publikacja wy³±czona (u¿ytkownik)
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: Wy³±czone
@@ -659,16 +638,14 @@ Import format: Format importu
 Exclude private records: Wyklucz prywatne wpisy
 Overwrite Prior Import: Otwórz przed zaimportowaniem
 
-
-###############################################
+########################################
 # Page: import_handler.php
 #
 Events from prior import marked as deleted: Zdarzenia z wcze¶niejszego imporu zosta³y zaznaczone jak skasowane
 Conflicting events: Wydarzenia konfliktowe
 The import file contained no data: Plik importowany nie zawiera³ ¿adnych danych
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: Warstwy s± aktualnie
@@ -682,8 +659,7 @@ Add layer: Dodaj warstwe
 Layer: Warstwa
 Edit layer: Edytuj warstwe
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: Ogl±daj ten wpis
@@ -693,8 +669,7 @@ Reject: Odrzuæ
 Reject this entry?: Odrzuciæ wpis?
 Not authorized: Nieautoryzowane
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: Musisz wprowadzia nazwe u¿ytkownika i has³o
@@ -703,29 +678,25 @@ Login: Login
 Access public calendar: Dostep do kalendarza publicznego
 cookies-note: <b>Uwaga!</b> Ta aplikacja wymaga w³±czonych cookies!
 
-
-###############################################
+########################################
 # Page: login.php
 #
 Invalid login: Nieprawod³owy login
 You have been logged out: Zosta³e¶ wylogowany
 Not yet registered? Register here!: Niezarejestrowany? Zarejestruj siê tutaj!
 
-
-###############################################
+########################################
 # Page: minical.php
 #
 No such nonuser calendar: Nie ma takiego kalendarza bez w³a¶ciciela
 This Calendar is not Public: Ten kalendarz nie jest publiczny
 
-
-###############################################
+########################################
 # Page: nonusers.php
 #
 Add New NonUser Calendar: Dodaj nowy kalendarz bez w³a¶ciciela
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Zapisz ustawienia
@@ -735,20 +706,18 @@ minute: minuta
 display_byproxy-help: Wy¶wietl w³a¶ciwego twórcê zdarzenia na stronie "view_entry"
 Display if created by Assistant: Wy¶wietl, je¶li stworzone przez Asystenta
 
-
-###############################################
+########################################
 # Page: purge.php
 #
 Purging events for: Wyczy¶æ zdarzenia dla
 Finished: Zakonczone
+Back: Wstecz
 Check box to delete <b>ALL</b> events for a user: Zaznacz aby skasowa <b>WSZYSTKIE</b> zdarzenia dla u¿ytkownika
 Delete all events before: Kasuj wszystkie zdarzenia przed
 Preview delete: Usuniecie podgl±du
-Are you sure you want to delete events for: Jeste¶ pewny ¿e chcesz skasowaæ wszystkie zdarzenia dla
 Records deleted from: Pola usuniete z
 
-
-###############################################
+########################################
 # Page: register.php
 #
 Email address can not be blank: Adres email nie mo¿e byæ pusty
@@ -768,14 +737,12 @@ Return to Login screen: Powrót do ekranu logowania
 Your account information will be emailed to you: Informacje o Twoim koncie zostan± do Ciebie wys³ane mailem.
 Submit: Wy¶lij
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: Spotkanie zosta³o odrzucone przez
 
-
-###############################################
+########################################
 # Page: report.php
 #
 This event is confidential: To zdarznie jest poufne
@@ -788,16 +755,14 @@ to manage reports for the Public Access calendar: aby zarz±dzaæ raportami kalend
 Add new report: Dodaj nowy raport
 Manage Reports: Zarz±dzaj raportami
 
-
-###############################################
+########################################
 # Page: search.php
 #
+Advanced Search: Zaæwansowane szukanie
 Search: Szukaj
 Keywords: S³owa kluczowe
-Advanced Search: Zaæwansowane szukanie
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: Musisz wprowadzia jedno lub wiecej s³ów kluczowych
@@ -806,40 +771,34 @@ match found: znaleziono
 matches found: znaleziono
 No matches found: Nie znaleziono
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: Poka¿ kalendarz innego u¿ytkownika
 
-
-###############################################
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories: nie doda³e¶ ¿anych kategorii
 Set Category: Ustaw kategorie
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Add New User: Dodaj nowego u¿ytkownika
 denotes administrative user: wskazuje administratora
 
-
-###############################################
+########################################
 # Page: usersel.php
 #
 Reset: Resetuj
 
-
-###############################################
+########################################
 # Page: views.php
 #
 Add New View: Dodaj nowy widok
 
-
-###############################################
+########################################
 # Page: views_edit.php
 #
 Unnamed View: Widok bez nazwy
@@ -857,20 +816,17 @@ Month (side by side): Miesi±c (obok siebie)
 Month (on same calendar): Miesi±c (na tym samym kalendarzu)
 Selected: Wybrane
 
-
-###############################################
+########################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Musisz okre¶lia nazwe widoku
 
-
-###############################################
+########################################
 # Page: view_d.php
 #
 No users for this view: Brak u¿ytkowników dla tego widoku
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Assistant mode: Tryb asystenta
@@ -879,14 +835,14 @@ External User: Zewnetrzny u¿ytkownik
 Approve/Confirm entry: Zatwierd¼/Potwierd¼ wpis
 Reject entry: Odrzua wpis
 Set category: Ustaw kategorie
-Edit repeating entry for all dates: Edytuj powtarzaj±ce wpisy dla wszystkich dat
-Edit entry for this date: Edytuj wpis dla tej daty
-Delete repeating event for all dates: Kasuj powtarzaj±ce zdarzenia dla wszystkich dat
-This will delete this entry for all users.: Skasujesz ten wpis WSZYSTKIM u¿ytkownikom.
-Delete entry only for this date: Kasuj wpis tylko dla tej daty
 Edit entry: Edytuj wpis
-from calendar of: Z kalendarza
 Copy entry: Kopiuj wpis
+This will delete this entry for all users.: Skasujesz ten wpis WSZYSTKIM u¿ytkownikom.
+Edit repeating entry for all dates: Edytuj powtarzaj±ce wpisy dla wszystkich dat
+Delete repeating event for all dates: Kasuj powtarzaj±ce zdarzenia dla wszystkich dat
+Edit entry for this date: Edytuj wpis dla tej daty
+Delete entry only for this date: Kasuj wpis tylko dla tej daty
+from calendar of: Z kalendarza
 This will delete the entry from your calendar.: Zostanie skasowany wpis z twojego kalendarza
 Do you want to add this entry to your calendar?: Czy chcesz dodac wpis do twojego kalendarza?
 This will add the entry to your calendar.: Zostanie dodany wpis do twojego kalendarza
@@ -894,43 +850,39 @@ Email all participants: Wy¶lij do wszystkich uczestników
 Show activity log: Poka¿ dzieñnik zdarzeñ
 Hide activity log: Ukryj dzieñnik zdarzeñ
 Export this entry to: Eksportuj ten wpis do
+Palm Pilot: Palm Pilot
 
-
-###############################################
+########################################
 # Page: view_r.php
 #
 Double-click on empty cell to add new entry: Podwójne klikniêcie na pustej komórce dodaje nowy wpis
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: Nowy wpis
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
-Edit Event: Edycja zdarzeñ
-Day View: Widok dnia
-Week View: Widok tygodnia
-Month View: Widok miesi±ca
-Year View: Widok roku
-Manage Views: Zarz±dzaj widokami
-Category Management: Zarz±dzanie kategoriami
-User Management: Zarz±dzanie u¿ytkownikami
 Another User&#39;s Calendar: Kalendarze innych u¿ytkowników
+Category Management: Zarz±dzanie kategoriami
+Day View: Widok dnia
+Edit Event: Edycja zdarzeñ
+Month View: Widok miesi±ca
 Common Trailer: Wspólny skrypt/styl/nag³ówek/stopka
+User Management: Zarz±dzanie u¿ytkownikami
+Manage Views: Zarz±dzaj widokami
+Week View: Widok tygodnia
+Year View: Widok roku
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 December: Grudzieñ
 Dec: Gru
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: Przekroczono limit XXX zdarzeñ na dzieñ
@@ -984,20 +936,19 @@ Event updated: Zdarzenie zaktualizowane
 Event deleted: Zdarzenie skasowane
 Notification sent: Zawiadomienie wys³ane
 Reminder sent: Przypomnienie wys³ane
+Action: Akcja
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
 My Calendar: Mój kalendarz
-Back to My Calendar: Powrót do mojego kalendarza
 Add New Entry: Dodaj nowy wpis
-Go to: Id¼ do
 Logout: Logout
+Back to My Calendar: Powrót do mojego kalendarza
+Go to: Id¼ do
 Manage calendar of: Zarz±dzaj kalendarzem od
 
-
-###############################################
+########################################
 # Page: includes/translate.php
 #
 English: Angielski
@@ -1030,28 +981,29 @@ Spanish: Hiszpanski
 Swedish: Szwedzki
 Turkish: Turecki
 
-
-###############################################
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: Nieprawid³owy login u¿ytkownika
 
-
-###############################################
+########################################
 # Page: includes/user-nis.php
 #
 incorrect password: nieprawid³owe has³o
 no such user: nie ma takiego u¿ytkownika
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Nienazwane wydzrzenie
 Event Imported: Zdarzenia zaimportowane
 
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Zawiadomienie
 
-###############################################
+########################################
 # Page: includes/js/admin.php
 #
 Server URL is required: Wymagany adres internetowy serwera
@@ -1068,14 +1020,12 @@ Invalid color for event popup text: Nieprawid³owy kolor dla tekstu pojawiaj±cego
 Invalid color for table cell background for today: Nieprawid³owy kolor t³a komórki dla bie¿±cego dnia
 Color format should be &#39;#RRGGBB&#39;: Format koloru powinien bya '#RRGGBB'
 
-
-###############################################
+########################################
 # Page: includes/js/availability.php
 #
 Change the date and time of this entry?: Zmienia date i czas tego wpisu?
 
-
-###############################################
+########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Nie wprowadzi³e¶ krótkiego opisu
@@ -1083,33 +1033,17 @@ The time you have entered begins before your preferred work hours.  Is this corr
 Please add a participant: Podaj wspó³uczestnika
 You have not entered a valid time of day: Nie wprowadzi³e¶ poprawnego czasu
 
-
-###############################################
+########################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Nieprawid³owy kolor
 
-
-###############################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: Zawiadomienie
-
-
-###############################################
+########################################
 # Page: includes/menu/index.php
 #
 Unapproved Events: Niezatwierdzone wydarzenia
 
-
-###############################################
-# Page: tools/send_reminders.php
-#
-This is a reminder for the event detailed below.: To jest przypomnienie dla zdarzenia o podanych w³a¶ciwo¶ciach poni¿ej
-Reminder: Przypomnienie
-
-
-###############################################
+########################################
 # Page: install/index.php
 #
 WebCalendar Installation Wizard: Kreator Instalacji WebCalendara
@@ -1117,7 +1051,6 @@ Step: Krok
 Failure Reason: Powód niepowodzenia
 Create New: Stwórz nowy
 Database Name: Nazwa bazy danych
-Back: Wstecz
 Timezone Conversion Successful: Konwersja strefy czasowej zakoñczona powodzeniem
 Error Unable to write to file: B³±d podczas zapisu pliku
 Invalid Login: B³êdna nazwa u¿ytkownika
@@ -1198,3 +1131,8 @@ Production: Produkcja
 Development: Rozwój
 Save Settings: Zapisz ustawienia
 Launch WebCalendar: Uruchom WebCalendar
+
+########################################
+# Page: tools/send_reminders.php
+#
+Reminder: Przypomnienie

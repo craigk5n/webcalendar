@@ -1,41 +1,50 @@
 # See translations/English-US.txt for instructions.
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: iso-8859-9
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Save: Kayit
-Admin: Sef
 Go: göster 
+Admin: Sef
 Public: acik
 confidential: özel 
 private: özel
 
-
-###############################################
-# Page: activity_log.php
-#
-Date: Tarih
-Time: Saat
-
-
-###############################################
+########################################
 # Page: add_entry.php
 #
 Invalid entry id: gecersiz Islem
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Sec
@@ -73,35 +82,32 @@ Document title: Baslik
 Table cell background: Tabela Sayfa-arkasi
 Table cell background for current day: Tabela-arkasi 'Bugün' icin
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Preferences: Ana Ayar
 Users: Kullanici
 Account: Account
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Hello: Iyi günler 
+Date: Tarih
+Time: Saat
 
-
-###############################################
+########################################
 # Page: category.php
 #
 Delete: Sil
 Are you sure you want to delete this entry?: Islemi sahiden silmek istiyormusunuz?
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Description: Anlam
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: am
@@ -136,8 +142,7 @@ Frequency: defa
 Delete entry: Islemi sil
 You are not authorized to edit this entry: Sizin bu Islemi silmek icin hak sahibiz yok.
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: Önerilen Terminde saat carpismasi
@@ -150,8 +155,7 @@ Scheduling Conflict: Termin carpismasi
 Your suggested time of: Isleminiz 
 conflicts with the following existing calendar entries: takiben Takvimde baska bir Islemle carpisiyor.
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 Edit User: Kullanici ayar
@@ -159,20 +163,17 @@ Add User: Kullanici ekle
 First Name: Ad
 Last Name: Soyad
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: Hata
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Current User: aktüel Kullanici
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: Kullanici Adi
@@ -183,15 +184,13 @@ Change Password: Sifre degistir
 New Password: Yeni Sifre
 Set Password: Sifreyi kullan
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 The passwords were not identical: Verilen Sifreler esit degil
 You have not entered a password: Sifre vermediniz
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Veriler export
@@ -200,21 +199,18 @@ Start date: Baslangic tarihi
 End date: Bitis tarihi
 Modified since: Degistirimler
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Updated: degistirme tarihi
 Created by: kuran kisi
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 colors-help: Tüm renkler "#RRGGBB" olarak verilebilir. "RR" Kirmizi icin hexadesimal olarak, "GG" Yesil icin ve "BB" Mavi icin.
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Takvim-Islemi ekle/degistir
@@ -222,14 +218,12 @@ Repeat Type: Tekrar türü
 Repeat End Date: Termin tekrarinin sonu
 Repeat Day: Tekrarin günü
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Yardim-Endeksi
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: Islemi gör
@@ -238,8 +232,7 @@ Approve this entry?: Islem onaylansin?
 Reject: Ret
 Reject this entry?: Isleme ret?
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: Kullanici Adi ve Sifre vermeniz gerekiyor.
@@ -247,28 +240,24 @@ Save login via cookies so I don&#39;t have to login next time: Tanimlamayi Cooki
 Login: Giris
 cookies-note: <b>Not:</b> Takvimi kullanmak icin, Browser'inizde Cookie'leri kabul etmeniz gerekiyor.
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Ayarlari kayit et
 
-
-###############################################
+########################################
 # Page: report.php
 #
 This event is confidential: özel Termin 
 Rejected: Islem onaylanmadi, eklenmeyecek  
 
-
-###############################################
+########################################
 # Page: search.php
 #
 Search: Arama
 Keywords: Kelimeler
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: En az bir Kelime girmeniz gerekiyor
@@ -277,49 +266,42 @@ match found: Bulunan
 matches found: Bulunan
 No matches found: Bulunmiyor
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: Baska Kullanicilarin Takvimini göster 
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Add New User: Yeni Kullanici ekle
 denotes administrative user: Sef Kullaniciyi gösterir
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Approve/Confirm entry: Islem onaylansin?
 Reject entry: Isleme ret?
-This will delete this entry for all users.: Bu Islem tüt Kullanicilar icin siliniyor.
 Edit entry: Islem degistir
+This will delete this entry for all users.: Bu Islem tüt Kullanicilar icin siliniyor.
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: Yeni islem
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
 Another User&#39;s Calendar: Baska Kullanicilarin Takvimi 
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 December: Aralik
 Dec: Ara
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 January: Ocak
@@ -362,24 +344,26 @@ Error approving event: Islem onayinda hata
 Generate printer-friendly version: Baski verziyonu üret
 Printer Friendly: Dostca Baski
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
 My Calendar: Benim Takvimim
-Back to My Calendar: Takvimime geri
 Add New Entry: Islem ekle
-Go to: Git
 Logout: Cikis
+Back to My Calendar: Takvimime geri
+Go to: Git
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: isimsiz olay
 
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Not
 
-###############################################
+########################################
 # Page: includes/js/admin.php
 #
 Invalid color for document background: Renk Sayfa-arkasi icin gecerli degil
@@ -388,21 +372,13 @@ Invalid color for table cell background: Renk Tabela-arkasi icin gecerli degil
 Invalid color for table cell background for today: Renk Tabela-arkasi 'Bugün' icin gecerli degil
 Color format should be &#39;#RRGGBB&#39;: Renkler sadece '#RRGGBB' seklinde verilebilir.
 
-
-###############################################
+########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Özet Anlami vermediniz
 You have not entered a valid time of day: Gecerli saat vermediniz
 
-
-###############################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: Not
-
-
-###############################################
+########################################
 # Page: includes/menu/index.php
 #
 Unapproved Events: Onaylanmamis Termin

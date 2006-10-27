@@ -6,29 +6,47 @@
 #   Oliver Heesakkers / dev@heesakkers.info
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: iso-8859-15
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Database error: Databasefout
+User Access Control: Gebruikerstoegang controle
 Cancel: Annuleer
 DEFAULT CONFIGURATION: STANDAARD INSTELLINGEN
 Save: Opslaan
+Go: Tonen
 Public Access: Publieke Toegang
 Admin: Beheer
-User Access Control: Gebruikerstoegang controle
 Allow Access to Other Users&#39; Calendar: Permitteer toegang tot kalender van andere gebruikers
 Grant This User Access to My Calendar: Geef deze gebruiker toegang tot mijn kalender
-Go: Tonen
 Type: Type
 Calendar: Kalender
 View Event: Bekijk afspraak
@@ -48,31 +66,21 @@ Public: Publiekelijk
 confidential: vertrouwelijk
 private: prive-afspraak
 
-
-###############################################
+########################################
 # Page: activity_log.php
 #
-Activity Log: Logboek
-User: Gebruiker
-Date: Datum
-Time: Tijd
-Event: Afspraak
-Action: Handeling
-Previous: Vorige
 Next: Volgende
+Previous: Vorige
 
-
-###############################################
+########################################
 # Page: add_entry.php
 #
+Event: Afspraak
 is already on your calendar.: is reeds in uw kalender.
 Invalid entry id: Ongeldige afspraak-ID
-This is a private event and may not be added to your calendar.: Dit is een prive-afspraak die niet aan uw agenda kan worden toegevoegd.
-This is a confidential event and may not be added to your calendar.: Dit is een vertrouwelijke afspraak en mag niet aan uw kalender worden toegevoegd.
 Error adding event: Fout bij toevoegen afspraak
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Kies
@@ -323,8 +331,7 @@ Week number color: Weeknummer kleur
 Event popup background: Achtergrondkleur afspraak-popup
 Event popup text: Tekstkleur afspraak-popup
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Control Panel: Controlepaneel
@@ -337,48 +344,46 @@ Views: Overzichten
 Layers: Lagen
 Reports: Rapportages
 Delete Events: Afspraken verwijderen
+Activity Log: Logboek
 Public Preferences: Publieke voorkeuren
 Unapproved Public Events: Openstaande publieke afspraken
 Administrative Tools: Administratieve gereedschappen
 
-
-###############################################
+########################################
 # Page: ajax.php
 #
 Duplicate Name: Dubbele naam
 Username already exists: Gebruikersnaam bestaat al
 Email address already exists: Email-adres bestaat al
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Additional Comments (optional): Extra opmerkingen (optioneel
 Approve and Send: Goedkeuren en verzenden
 Approve and Exit: Goedkeuren en afsluiten
-(Your comments will be included in an email to the event creator): (Uw opmerkingen worden ingevoegd bij een email aan de maker van de afspraak)
 Hello: Hallo
 An appointment has been approved and comments added by: Er is een afspraak goedgekeurd en commentaar bijgevoegd door
 The subject was: Het betreft afspraak
 The description is: De omschrijving van de afspraak luidt
+Date: Datum
+Time: Tijd
 Comments: Opmerkingen
 
-
-###############################################
+########################################
 # Page: assistant_edit.php
 #
 Admin mode: Admin-modus
 Your assistants: Uw agenda-assistenten
 
-
-###############################################
+########################################
 # Page: category.php
 #
+Category Icon: Categorie-ikoon
+Global: Publieke categorie
 Add: Voeg toe
 Category Name: Categorienaam
-Category Icon: Categorie-ikoon
 Remove Icon: Ikoon verwijderen
-Global: Publieke categorie
 Add Icon to Category: Ikoon aan categorie toevoegen
 Upload: Uploaden
 gif 3kb max: gif maximaal 3 kilobyte
@@ -387,15 +392,13 @@ Delete: Verwijderen
 Are you sure you want to delete this entry?: Weet u zeker dat u dit item wilt verwijderen?
 Add New Category: Categorie toevoegen
 
-
-###############################################
+########################################
 # Page: category_handler.php
 #
 File size exceeds maximum: Bestand is groter dan toegestaan
 File is not a gif image: Bestand is geen gif-afbeelding
 
-
-###############################################
+########################################
 # Page: catsel.php
 #
 ENTRY CATEGORIES: AFSPRAAK CATEGORIEN
@@ -404,20 +407,17 @@ Remove: Verwijderen
 Global Category: Globale categorie
 Ok: OK
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Er is een afspraak voor u geannuleerd door
 
-
-###############################################
+########################################
 # Page: doc.php
 #
 Invalid blob id: Ongeldig blob ID
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Add Comment: Opmerking toevoegen
@@ -427,14 +427,12 @@ Comment: Opmerking
 Upload file: Upload bestand
 Description: Omschrijving
 
-
-###############################################
+########################################
 # Page: docdel.php
 #
 Removed: Verwijderd
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: a.m. (ante meridiem), 's morgens
@@ -542,8 +540,7 @@ Every: Iedere
 Delete entry: Afspraak verwijderen
 You are not authorized to edit this entry: U heeft geen toestemming deze afspraak te bewerken.
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: De voorgestelde tijd conflicteert met de volgende afspraak
@@ -557,8 +554,7 @@ Scheduling Conflict: Agendaconflict
 Your suggested time of: De door u voorgestelde tijd
 conflicts with the following existing calendar entries: conflicteert met de volgende bestaande afspraken
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: Laag wijzigen
@@ -572,15 +568,13 @@ Add to My Calendar: Zet afspraak ook in mijn eigen agenda
 Delete layer: Laag verwijderen
 Are you sure you want to delete this layer?: Weet u zeker dat u deze laag wilt verwijderen?
 
-
-###############################################
+########################################
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: U kunt geen laag voor uzelf aanmaken
 You can only create one layer for each user: U kunt slechts een laag per gebruiker aanmaken
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: Code voor losse agenda onjuist of niet aanwezig in config.php
@@ -592,8 +586,7 @@ First Name: Voornaam
 Last Name: Achternaam
 Is public calendar: Is een publieke kalender
 
-
-###############################################
+########################################
 # Page: edit_remotes.php
 #
 Edit Remote Calendar: Bewerk kalender op afstand
@@ -602,8 +595,7 @@ Create Layer: Maak een laag
 Required to View Remote Calendar: Nodig om Kalender op afstand te bekijken
 Reload: Opnieuw laden
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: fout
@@ -613,8 +605,7 @@ Create a new layer to view this calendar: Maak een nieuwe laag om deze kalender 
 Errors: Fouten
 There was an error parsing the import file or no events were returned: Er heeft zich een fout voorgedaan bij het verwerken van het importbestand of er zijn geen items aangetroffen
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Tomorrow: morgen
@@ -649,6 +640,7 @@ Add Report: rapportage toevoegen
 Edit Report: rapportage wijzigen
 Report name: naam rapportage
 Current User: Huidige gebruiker
+User: Gebruiker
 Include link in trailer: plaats rapportage in menubalk
 Include standard header/trailer: gebruik standaard kop- en voettekst
 Date range: rapportageperiode
@@ -660,22 +652,19 @@ Day template: sjabloon dag
 Event template: sjabloon agendaitems
 Are you sure you want to delete this report?: Weet u zeker dat u deze rapportage wilt verwijderen?
 
-
-###############################################
+########################################
 # Page: edit_report_handler.php
 #
 Variable N not found: Variabele N niet gevonden
 
-
-###############################################
+########################################
 # Page: edit_template.php
 #
 Edit Custom Script/Stylesheet: Eigen Script/Stylesheet aanpassen
 Edit Custom Header: Eigen paginahoofd aanpassen
 Edit Custom Trailer: Eigen pagina-onderschrift aanpassen
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: Gebruikersnaam
@@ -688,8 +677,7 @@ Change Password: Wijzig wachtwoord
 New Password: Nieuw wachtwoord
 Set Password: Bewaar wachtwoord
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Het verwijderen van gebruikers is niet mogelijk
@@ -698,33 +686,28 @@ You have not entered a password: U heeft geen wachtwoord ingevuld.
 Invalid characters in login: Ongeldige karakters in login
 Username can not be blank: Gebruikersnaam kan niet leeg zijn
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Exporteren
 Export format: Exportformaat
-Palm Pilot: Palm Pilot
 Include all layers: Inclusief alle lagen
 Export all dates: Alles exporteren
 Start date: Startdatum
 End date: Einddatum
 Modified since: Wijzigingen vanaf
 
-
-###############################################
+########################################
 # Page: export_handler.php
 #
 export format not defined or incorrect: Exportformaat niet gedefinieerd of incorrect
 
-
-###############################################
+########################################
 # Page: groups.php
 #
 Add New Group: Groep toevoegen
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Naamloze groep
@@ -734,14 +717,12 @@ Group name: Groepsnaam
 Updated: Gewijzigd
 Created by: Aangemaakt door
 
-
-###############################################
+########################################
 # Page: group_edit_handler.php
 #
 You must specify a group name: Specificeer een groepsnaam
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 Display weekends in week view: Toon ook weekends in week-view
@@ -758,14 +739,12 @@ enable-gradient-help: Helptekst-overlopen-inschakelen
 Manually entering color values: Handmatig kleurwaarden ingeven
 colors-help: Alle kleuren moeten worden aangegeven als #RRGGBB hexadecimaal formaat waarin RR de hexadecimale waarde is voor rood, GG voor groen en BB voor blauw
 
-
-###############################################
+########################################
 # Page: help_bug.php
 #
 Report Bug: Rapporteer een programmafout
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Afspraken toevoegen/wijzigen
@@ -774,8 +753,7 @@ Repeat End Date: Einddatum herhaling
 Repeat Day: Herhalingsdag
 repeat-day-help: Indien uw afspraak wekelijks wordt herhaald, geeft u hier aan op welke weekdag de afspraak terugkeert. Dit is alleen mogelijk indien u hierboven bij <i>herhalingspatroon</i> de optie [wekelijks] heeft gekozen. <br />N.B.: u kunt meerdere weekdagen aanvinken.
 
-
-###############################################
+########################################
 # Page: help_import.php
 #
 Import: Importeren
@@ -791,14 +769,12 @@ The following formats have been tested: De volgende bestandsformaten zijn getest
 This form will import iCalendar (.ics) events: Met dit formulier importeert u iCalendar (.ics) afspraken
 Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Door <b>Vorige import overschrijven</b> zal eerder geimporteerde afspraken die hetzelfde UID hebben als een afspraak uit de nieuwe import markeren als 'verwijderd'. Hierdoor zou het mogelijk moeten zijn een geupdate iCalendar te importeren zonder duplicaten te maken.
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Overzicht help-onderwerpen
 
-
-###############################################
+########################################
 # Page: help_layers.php
 #
 Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Lagen zijn nuttig om andermans afpsraken in uw eigen agenda te tonen. U kunt de gebruiker en kleur kiezen waarin die afspraken worden getoond.
@@ -812,8 +788,7 @@ Press the Disable Layers link in the admin section at the bottom of the page to 
 Enabling: activeer
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Activeer lagen door naar menu [beheer] onderin beeld te gaan en te klikken op [lagen activeren].
 
-
-###############################################
+########################################
 # Page: help_pref.php
 #
 Default Category: Toon de volgende categorieen in mijn agenda
@@ -834,8 +809,7 @@ Enable FreeBusy publishing: FreeBusy publicatie inschakelen
 freebusy-enabled-help: helptekst-freebusye-ingeschakeld
 freebusy-url-help: helptekst-freebusy-url
 
-
-###############################################
+########################################
 # Page: help_uac.php
 #
 Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Gebruikerstoegang controle maakt het mogelijk nauwkeuriger gebruikerstoegang en -permissies te regelen dan voorheen mogelijk was. Gebruikers kunnen ook standaard en per individu permissies verlenen indien geauthoriseerd door de beheerder.
@@ -843,22 +817,19 @@ If disabled, this user cannot see you in the participants list.: Indien uitgesch
 If disabled, this user cannot send you emails.: Indien uitgeschakeld, zal deze gebruiker u geen email kunnen sturen.
 If enabled, this user cannot view the details of any of your entries.: Indien ingeschakeld, zal deze gebruiker geen details kunnen zien van iedere afspraak die u maakt.
 
-
-###############################################
+########################################
 # Page: icalclient.php
 #
 Publishing Disabled (Admin): Publiceren is uitgeschakeld (Admin)
 Publishing Disabled (User): Publiceren is uitgeschakeld (Gebruiker)
 
-
-###############################################
+########################################
 # Page: icons.php
 #
 Click to Select: Klik om te selecteren
 Current Icons on Server: Hiudige ikonen op de server
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: niet weergegeven
@@ -867,16 +838,14 @@ Exclude private records: Negeer privégegevens
 Overwrite Prior Import: Vorige import overschrijven
 Repeated items are imported separately. Prior imports are not overwritten.: Herhaalde afspraken worden apart geimporteerd. Vorige imports worden niet overschreven.
 
-
-###############################################
+########################################
 # Page: import_handler.php
 #
 Events from prior import marked as deleted: Afspraken van vorige import gemarkeerd als verwijderd
 Conflicting events: Conflicterende afspraken
 The import file contained no data: Het importbestand bevat geen gegevens.
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: Lagen worden momenteel
@@ -890,8 +859,7 @@ Add layer: Laag toevoegen
 Layer: Laag
 Edit layer: Laag wijzigen
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: Afspraak bekijken
@@ -910,8 +878,7 @@ No unapproved entries for: Geen openstaande vermeldingen voor
 Unapproved Entries: Openstaande vermeldingen
 Not authorized: Niet geauthoriseerd
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: U moet een gebruikersnaam en een wachtwoord invullen.
@@ -920,29 +887,25 @@ Login: Aanmelden
 Access public calendar: Ga naar publieke agenda
 cookies-note: <b>NB:</b> Deze applicatie maakt gebruik van cookies.
 
-
-###############################################
+########################################
 # Page: login.php
 #
 Invalid login: Ongeldige login
 You have been logged out: U bent uitgelogd
 Not yet registered? Register here!: Nog niet geregistreerd? Registreer hier!
 
-
-###############################################
+########################################
 # Page: minical.php
 #
 No such nonuser calendar: Onbekende niet-gebruikers kalender
 This Calendar is not Public: Deze kalender is niet openbaar
 
-
-###############################################
+########################################
 # Page: nonusers.php
 #
 Add New NonUser Calendar: Losse agenda toevoegen
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Voorkeuren opslaan
@@ -966,26 +929,23 @@ allow-view-subscriptions-help: Met deze functie wordt het mogelijk om geregistre
 Allow remote viewing of: Permitteer inzage op afstand
 entries: afspraken
 
-
-###############################################
+########################################
 # Page: publish.php
 #
 No user specified: Geen gebruiker gekozen
 
-
-###############################################
+########################################
 # Page: purge.php
 #
 Purging events for: Afspraken geheel verwijderen voor
 Finished: Klaar
+Back: Terug
 Check box to delete <b>ALL</b> events for a user: Vinkje om <b>ALLE</b> afspraken van een gebruiker te verwijderen
 Delete all events before: Alle afspraken verwijderen voor
 Preview delete: Preview verwijderen
-Are you sure you want to delete events for: Weet u zeker dat u alle afspraken wilt verwijderen voor
 Records deleted from: Afspraken verwijderd van
 
-
-###############################################
+########################################
 # Page: register.php
 #
 Email address can not be blank: Email-adres kan niet leeg zijn
@@ -1006,22 +966,19 @@ Return to Login screen: Terugkeren naar login-scherm
 Your account information will be emailed to you: Uw accountinformatie wordt u toegestuurd via E-mail
 Submit: Invoeren
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 Continue: Doorgaan
 (Your comments will be included in an email to the other participants): (Uw opmerkingen worden ingevoegd bij een email aan de andere deelnemers)
 An appointment has been rejected by: Er is een afspraak geweigerd door
 
-
-###############################################
+########################################
 # Page: remotes.php
 #
 Add New Remote Calendar: Nieuwe kalender op afstand toevoegen
 
-
-###############################################
+########################################
 # Page: report.php
 #
 cont.: cont.
@@ -1035,16 +992,14 @@ to manage reports for the Public Access calendar: om rapportages voor de publiek
 Add new report: Rapportage toevoegen
 Manage Reports: Rapportagebeheer
 
-
-###############################################
+########################################
 # Page: search.php
 #
+Advanced Search: Uitgebreid zoeken
 Search: Zoeken
 Keywords: Trefwoorden
-Advanced Search: Uitgebreid zoeken
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: Vul een of meer trefwoorden in
@@ -1053,49 +1008,41 @@ match found: afspraak gevonden die overeenkomst met de trefwoorden
 matches found: afspraken gevonden die overeenkomen met de trefwoorden
 No matches found: Helaas, geen match aangetroffen
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: Bekijk de agenda van een andere gebruiker
 
-
-###############################################
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories: U heeft geen categorie toegevoegd
 Set Category: Bepaal categorie
 Global Categories can not be changed: Globale categorien kunnen niet worden gewijzigd
 
-
-###############################################
+########################################
 # Page: upcoming.php
 #
-__month__ __dd__: __month__ __dd__
 more: meer
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Remote Calendars: Kalenders op afstand
 Add New User: Gebruiker toevoegen
 denotes administrative user: Administrator
 
-
-###############################################
+########################################
 # Page: usersel.php
 #
 Reset: Reset
 
-
-###############################################
+########################################
 # Page: views.php
 #
 Add New View: Overzicht toevoegen
 
-
-###############################################
+########################################
 # Page: views_edit.php
 #
 Unnamed View: Naamloos overzicht
@@ -1113,20 +1060,17 @@ Month (side by side): Maandoverzicht - gebruikers boven naast elkaar
 Month (on same calendar): Maandoverzicht -  gebruikers in één agenda
 Selected: Geselecteerd
 
-
-###############################################
+########################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Bepaal de naam voor dit overzicht
 
-
-###############################################
+########################################
 # Page: view_d.php
 #
 No users for this view: Geen gebruikers voor deze weergave
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Assistant mode: Assistentiemodus
@@ -1147,15 +1091,14 @@ Hide: Verbergen
 Approve/Confirm entry: Afspraak bevestigen
 Reject entry: Afspraak weigeren
 Set category: Bepaal categorie
-Edit repeating entry for all dates: Wijzig de gehele reeks met afspraken
-Edit entry for this date: Wijzig alleen de afspraak op deze datum
-Delete repeating event for all dates: Verwijder de gehele reeks met afspraken
-This will delete this entry for all users.: De afspraak wordt uit de agenda verwijderd.
-Delete entry only for this date: Verwijder alleen de afspraak op deze datum (NB: niet mogelijk voor de eerste dag)
 Edit entry: Afspraak wijzigen
-from calendar of: uit de kalender van
 Copy entry: Kopie maken van afspraak
-This will delete the entry from your boss\' calendar.: Dit zal de afspraak verwijderen uit de kalender van uw baas.
+This will delete this entry for all users.: De afspraak wordt uit de agenda verwijderd.
+Edit repeating entry for all dates: Wijzig de gehele reeks met afspraken
+Delete repeating event for all dates: Verwijder de gehele reeks met afspraken
+Edit entry for this date: Wijzig alleen de afspraak op deze datum
+Delete entry only for this date: Verwijder alleen de afspraak op deze datum (NB: niet mogelijk voor de eerste dag)
+from calendar of: uit de kalender van
 This will delete the entry from your calendar.: De afspraak wordt uit de agenda verwijderd.
 from your boss&#39; calendar: Uit de kalender van de baas
 Do you want to add this entry to your calendar?: Deze afspraak ook in uw eigen agenda plaatsen?
@@ -1164,57 +1107,49 @@ Email all participants: Stuur emailbericht naar alle aanwezigen
 Show activity log: Toon logboek
 Hide activity log: Verberg logboek
 Export this entry to: Exporteer afspraak naar
+Palm Pilot: Palm Pilot
 
-
-###############################################
+########################################
 # Page: view_r.php
 #
 Double-click on empty cell to add new entry: Dubbelklik een lege cel om een nieuwe afspraak te maken
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: Nieuwe afspraak
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
-Edit Event: Afspraak bewerken
-Day View: Dagweergave
-Week View: Week weergava
-Month View: Maandweergave
-Year View: Jaar weergave
-Manage Views: Beheer weergaves
-Category Management: Categorie-beheer
-User Management: Gebruikersbeheer
 Another User&#39;s Calendar: Agenda andere gebruiker
+Category Management: Categorie-beheer
+Day View: Dagweergave
+Edit Event: Afspraak bewerken
+Month View: Maandweergave
 Common Trailer: Meestvoorkomende aansluiting
+User Management: Gebruikersbeheer
+Manage Views: Beheer weergaves
+Week View: Week weergava
+Year View: Jaar weergave
 
-
-###############################################
+########################################
 # Page: includes/config.php
 #
 Fatal Error: Fatale fout
 Troubleshooting Help: Probleemoplossing
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 LANGUAGE DEFINED: TAAL GEDEFINIEERD
 December: December
 Dec: dec
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 Unauthorized: Niet geauthoriseerd
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
 This event is private: Deze afspraak is prive
 Conf.: Conf.
 WK: WK
@@ -1223,8 +1158,8 @@ Task Due Date: Taak moet af zijn op
 TASKS: TAKEN
 Task_Title: Taak_Titel
 Due: Af zijn
-View this task: Bekijk deze taak
 View this event: Bekijk deze afspraak
+View this task: Bekijk deze taak
 exceeds limit of XXX events per day: de grens van XXX afspraken per dag is bereikt
 You have XXX unapproved entries: U heeft XXX onbevestigde afspraken
 January: Januari
@@ -1296,28 +1231,26 @@ Journal deleted: Journaal verwijderd
 Notification sent: Notificatie verzonden
 Reminder sent: Herinnering verzonden
 Attachment: Bijlage
+Action: Handeling
 
-
-###############################################
+########################################
 # Page: includes/help_list.php
 #
 Page: Pagina
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
-Home: Thuis
 My Calendar: MIJN KALENDER
-Back to My Calendar: Terug naar Mijn Kalender
 Add New Entry: Afspraak toevoegen
 Add New Task: Nieuwe taak toevoegen
-Go to: Ga naar
 Logout: Afmelden
+Home: Thuis
+Back to My Calendar: Terug naar Mijn Kalender
+Go to: Ga naar
 Manage calendar of: Beheer de agenda van
 
-
-###############################################
+########################################
 # Page: includes/translate.php
 #
 Browser Language Not Found: Taal van de browser niet gevonden
@@ -1359,21 +1292,18 @@ event: afspraak
 journal: journaal
 task: taak
 
-
-###############################################
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: Ongeldige gebruikerslogin
 
-
-###############################################
+########################################
 # Page: includes/user-nis.php
 #
 incorrect password: Onjuist wachtwoord
 no such user: Gebruiker bestaat niet
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Interval: Interval
@@ -1389,76 +1319,14 @@ Exclusion Dates: Uitgesloten data
 Unnamed Event: Naamloze afspraak
 Event Imported: Item geimporteerd
 
-
-###############################################
-# Page: includes/js/admin.php
-#
-Server URL is required: Server-URL wordt vereist
-Server URL must end with &#39;/&#39;: Server-URL moet eindigen op '/'
-Invalid work hours: Ongeldige werktijden
-Invalid color for document background: Ongeldige kleur voor de achtergrond
-Invalid color for document title: Ongeldige kleur voor de agendatitel
-Invalid color for table cell background: Ongeldige kleur voor de tabelcel
-Invalid color for table grid: Ongeldige kleur voor tabelraster
-Invalid color for table header background: Ongeldige kleur voor achtergrond agendatitel
-Invalid color for table text background: Ongeldige kleur voor tekstachtergrond
-Invalid color for event popup background: Ongeldige achtergrondkleur voor afspraak-popup
-Invalid color for event popup text: Ongeldige tekstkleur voor afspraak-popup
-Invalid color for table cell background for today: Ongeldige achtergrondkleur voor huidige datum
-Color format should be &#39;#RRGGBB&#39;: Kleur weergeven in #RRGGBB-formaat
-
-
-###############################################
-# Page: includes/js/availability.php
-#
-Change the date and time of this entry?: Wilt u de datum en tijd van deze afspraak wijzigen?
-
-
-###############################################
-# Page: includes/js/edit_entry.php
-#
-You have not entered a Brief Description: U heeft geen korte omschrijving ingevuld
-The time you have entered begins before your preferred work hours.  Is this correct?: De tijd die u heeft ingevoerd is eerder dan uw normale werkdag. Is dit juist?
-Invalid Event Date: Ongeldige afspraak-datum
-Please add a participant: Voeg a.u.b. een deelnemer toe
-Invalid Date: Ongeldige datum
-You have not entered a valid time of day: U heeft geen geldige tijd ingevuld
-
-
-###############################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: Ongeldige kleur
-
-
-###############################################
-# Page: includes/js/edit_nonuser.php
-#
-Calendar ID can not be blank: Kalender ID kan niet leeg zijn
-Both first and last names can not be blank: Zowel voor- als achternaam kunnen niet leeg zijn
-
-
-###############################################
-# Page: includes/js/edit_remotes.php
-#
-URL can not be blank: URL kan niet leeg zijn
-
-
-###############################################
-# Page: includes/js/export_import.php
-#
-File type does not match Import Format: Bestandstype komt niet overeen met import-formaat
-
-
-###############################################
+########################################
 # Page: includes/classes/Doc.class
 #
 bytes: bytes
 kb: kb
 Mb: Mb
 
-
-###############################################
+########################################
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Notificatie
@@ -1475,8 +1343,60 @@ file_access: bestandstoegang
 file_open: bestand-open
 encoding: encodering
 
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required: Server-URL wordt vereist
+Server URL must end with &#39;/&#39;: Server-URL moet eindigen op '/'
+Invalid work hours: Ongeldige werktijden
+Invalid color for document background: Ongeldige kleur voor de achtergrond
+Invalid color for document title: Ongeldige kleur voor de agendatitel
+Invalid color for table cell background: Ongeldige kleur voor de tabelcel
+Invalid color for table grid: Ongeldige kleur voor tabelraster
+Invalid color for table header background: Ongeldige kleur voor achtergrond agendatitel
+Invalid color for table text background: Ongeldige kleur voor tekstachtergrond
+Invalid color for event popup background: Ongeldige achtergrondkleur voor afspraak-popup
+Invalid color for event popup text: Ongeldige tekstkleur voor afspraak-popup
+Invalid color for table cell background for today: Ongeldige achtergrondkleur voor huidige datum
+Color format should be &#39;#RRGGBB&#39;: Kleur weergeven in #RRGGBB-formaat
 
-###############################################
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Wilt u de datum en tijd van deze afspraak wijzigen?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: U heeft geen korte omschrijving ingevuld
+The time you have entered begins before your preferred work hours.  Is this correct?: De tijd die u heeft ingevoerd is eerder dan uw normale werkdag. Is dit juist?
+Invalid Event Date: Ongeldige afspraak-datum
+Please add a participant: Voeg a.u.b. een deelnemer toe
+Invalid Date: Ongeldige datum
+You have not entered a valid time of day: U heeft geen geldige tijd ingevuld
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Ongeldige kleur
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID can not be blank: Kalender ID kan niet leeg zijn
+Both first and last names can not be blank: Zowel voor- als achternaam kunnen niet leeg zijn
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+URL can not be blank: URL kan niet leeg zijn
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Bestandstype komt niet overeen met import-formaat
+
+########################################
 # Page: includes/menu/index.php
 #
 This Week: Deze week
@@ -1485,7 +1405,6 @@ This Year: Dit jaar
 Exit: Uitgang
 Add New Event: Nieuwe afspraak toevoegen
 Delete Entries: Verwijder afspraken
-Another User\'s Calendar: Kalender van andere gebruiker
 My Views: Mijn weergaves
 Manage Calendar of: Beheer de kalender van
 My Reports: Mijn rapporten
@@ -1494,36 +1413,7 @@ Public Calendar: Openbare agenda
 Unapproved Events: Openstaande afspraken
 User Manager: Gebruikersbeheerder
 
-
-###############################################
-# Page: tools/send_reminders.php
-#
-This is a reminder for the task detailed below.: Dit is een herinnering voor de onder omschreven taak.
-This is a reminder for the event detailed below.: Dit is een herinnering voor het hieronder vermelde agendapunt.
-Pecentage Complete: Percentage compleet
-Reminder: Herinnering
-
-
-###############################################
-# Page: tools/reload_remotes.php
-#
-Include Path: Include Pad
-Deleting events for: Afspraken aan het verwijderen voor
-Importing events for: Afspraken importeren voor
-No data returned from: Geen data teruggekomen van
-for non-user calendar: voor niet-gebruikers kalender
-No Remote Calendars found: Geen kalenders op afstand gevonden
-Remote Calendars not enabled: Kalenders op afstand niet ingeschakeld
-
-
-###############################################
-# Page: install/install_functions.php
-#
-Perl script required: Perl-script vereist
-Your previous version of WebCalendar requires updating several database tables.: Uw vorige versie van WebKalender vereist een opwaardering van diverse database-tabellen.
-
-
-###############################################
+########################################
 # Page: install/index.php
 #
 WebCalendar Installation Wizard: Webkalender Installatie-wizard
@@ -1533,7 +1423,6 @@ You must manually create database: U moet handmatig een database aanmaken
 Database Cache Directory: Database cache directory
 Create New: Maak nieuw
 Database Name: Database naam
-Back: Terug
 Timezone Conversion Successful: Tijdzone conversie succesvol
 Error Unable to write to file: Fout Niet mogelijk om bestand te schrijven
 Successful Login: Succesvol ingelogd
@@ -1626,3 +1515,26 @@ Production: Productie
 Development: Ontwikkeling
 Save Settings: Instellingen Opslaan
 Launch WebCalendar: Lanceer WebKalender
+
+########################################
+# Page: install/install_functions.php
+#
+Perl script required: Perl-script vereist
+Your previous version of WebCalendar requires updating several database tables.: Uw vorige versie van WebKalender vereist een opwaardering van diverse database-tabellen.
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Include Path: Include Pad
+Deleting events for: Afspraken aan het verwijderen voor
+Importing events for: Afspraken importeren voor
+No data returned from: Geen data teruggekomen van
+for non-user calendar: voor niet-gebruikers kalender
+No Remote Calendars found: Geen kalenders op afstand gevonden
+Remote Calendars not enabled: Kalenders op afstand niet ingeschakeld
+
+########################################
+# Page: tools/send_reminders.php
+#
+Pecentage Complete: Percentage compleet
+Reminder: Herinnering

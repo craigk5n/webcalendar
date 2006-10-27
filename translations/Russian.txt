@@ -6,7 +6,7 @@
 # Last update: Wed Oct 25 14:34:05 IST 2000
 #
 # $Id$
-# Translation last updated on 10-19-2006
+# Translation last updated on 10-27-2006
 
 
 ################################################################################
@@ -71,21 +71,13 @@ private: Личное
 #
 Next: Дальше
 Previous: Раньше
-System Log: Системный Журнал
-Activity Log: Монитор Активности
-User: Пользователь
-Date: Дата
-Time: Время
-Event: Событие
-Action: Действие
 
 ########################################
 # Page: add_entry.php
 #
+Event: Событие
 is already on your calendar.: уже существует в вамшем календаре.
 Invalid entry id: Неправильный идентификатор записи
-This is a private event and may not be added to your calendar.: Это личная запись и она не может быть добавлена в ваш календарь.
-This is a confidential event and may not be added to your calendar.: Это конфиденциальная запись и она не может быть добавлена в ваш календарь.
 Error adding event: Ошибка в процессе создания события
 
 ########################################
@@ -369,6 +361,7 @@ Views: Виды
 Layers: Слои
 Reports: Отчеты
 Delete Events: Удалить События
+Activity Log: Монитор Активности
 Public Preferences: Общие Параметры
 Unapproved Public Events: Неутвержденные Общие События
 Administrative Tools: Инструменты Администратора
@@ -386,11 +379,12 @@ Email address already exists: Адрес электронной почты уже существует
 Additional Comments (optional): Дополнительные Комментарии (опционально)
 Approve and Send: Подтвердить и Послать
 Approve and Exit: Подтвердить и Выйти
-(Your comments will be included in an email to the event creator): (Ваши комментарии будут включены в письмо к автору события)
 Hello: Привет
 An appointment has been approved and comments added by: Встреча была подтверждена и комментарии добавлены
 The subject was: Тема была
 The description is: Описание
+Date: Дата
+Time: Время
 Comments: Комментарии
 
 ########################################
@@ -675,6 +669,7 @@ Add Report: Добавить Отчет
 Edit Report: Редактировать Отчет
 Report name: Наименование отчета
 Current User: Текущий пользователь
+User: Пользователь
 Include link in trailer: Добавлять ссылку в конец
 Include standard header/trailer: Добавлять стандартный заголовок/конец
 Date range: Диапазон дат
@@ -726,7 +721,6 @@ Username can not be blank: Имя пользователя не может быть пустым
 #
 Export: Экспортировать
 Export format: Формат экспорта
-Palm Pilot: Palm Pilot
 Include all layers: Включая все слои
 Export all dates: Экспортировать все даты
 Start date: Дата начала
@@ -976,10 +970,10 @@ No user specified: Не указан пользователь
 #
 Purging events for: Удалить события для
 Finished: Закончено
+Back: Назад
 Check box to delete <b>ALL</b> events for a user: Отметить для удаления <b>ВСЕХ</b> событий пользователя
 Delete all events before: Удалить все события до
 Preview delete: Предпросмотр удаления
-Are you sure you want to delete events for: Вы уверены, что хотите удалить события для
 Records deleted from: Записи удалены из
 
 ########################################
@@ -1130,15 +1124,14 @@ Hide: Спрятать
 Approve/Confirm entry: Подтвердить запись
 Reject entry: Отвергнуть запись
 Set category: Задать категорию
-Edit repeating entry for all dates: Редактировать повторяющееся событие для всех дат
-Edit entry for this date: Редактидовать событие на эту дату
-Delete repeating event for all dates: Удалить повторяющееся событие для всех дат
-This will delete this entry for all users.: Данная операция удалит эту запись у всех пользователей.
-Delete entry only for this date: Удалить событие только на эту дату
 Edit entry: Редактировать запись
-from calendar of: из календаря
 Copy entry: Скопировать запись
-This will delete the entry from your boss\' calendar.: Это удалит данную запись из календаря вашего начальника.
+This will delete this entry for all users.: Данная операция удалит эту запись у всех пользователей.
+Edit repeating entry for all dates: Редактировать повторяющееся событие для всех дат
+Delete repeating event for all dates: Удалить повторяющееся событие для всех дат
+Edit entry for this date: Редактидовать событие на эту дату
+Delete entry only for this date: Удалить событие только на эту дату
+from calendar of: из календаря
 This will delete the entry from your calendar.: Это удалит данную запись из вашего календаря.
 from your boss&#39; calendar: из календаря вашего начальника
 Do you want to add this entry to your calendar?: Вы хотите добавить эту запись в ваш календарь?
@@ -1147,6 +1140,7 @@ Email all participants: Отправить сообщение всем участникам
 Show activity log: Показать монитор активности
 Hide activity log: Спрятать монитор активности
 Export this entry to: Экспортировать данную запись в
+Palm Pilot: Palm Pilot
 
 ########################################
 # Page: view_r.php
@@ -1161,16 +1155,16 @@ New Entry: Новая запись
 ########################################
 # Page: includes/access.php
 #
-Edit Event: Изменить Событие
-Day View: Просмотр Дня
-Week View: Просмотр Недели
-Month View: Просмотр Месяца
-Year View: Просмотр Года
-Manage Views: Управлять Видами
-Category Management: Управлять Категориями
-User Management: Управлять Пользователями
 Another User&#39;s Calendar: Календарь другого пользователя
+Category Management: Управлять Категориями
+Day View: Просмотр Дня
+Edit Event: Изменить Событие
+Month View: Просмотр Месяца
 Common Trailer: Другой Низ страницы
+User Management: Управлять Пользователями
+Manage Views: Управлять Видами
+Week View: Просмотр Недели
+Year View: Просмотр Года
 
 ########################################
 # Page: includes/config.php
@@ -1184,6 +1178,11 @@ Troubleshooting Help: Помощь в решении проблем
 LANGUAGE DEFINED: ОПРЕДЕЛЕННЫЙ ЯЗЫКОМ
 December: Декабрь
 Dec: Дек
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database: Ошибка соединения с базой данных
 
 ########################################
 # Page: includes/functions.php
@@ -1274,6 +1273,8 @@ New user (self registration): Новый пользователь (саморегистрация)
 New user via email (self registration): Новый пользователь по почте (саморегистрация)
 Attachment: Вложение
 Delete User: Удалить Пользователя
+System Log: Системный Журнал
+Action: Действие
 
 ########################################
 # Page: includes/help_list.php
@@ -1482,7 +1483,6 @@ Database Cache Directory: Путь к кэшу базы данных
 Test Settings: Проверить Настройки
 Create New: Создать новую
 Database Name: Имя базы данных
-Back: Назад
 Timezone Conversion Successful: Успешное Преобразование Временной Зоны
 Error Unable to write to file: Ошибка. Невозможно записать в файл
 Successful Login: Вход успешен
@@ -1593,7 +1593,6 @@ Your previous version of WebCalendar requires updating several database tables.:
 ########################################
 # Page: tools/reload_remotes.php
 #
-Error connecting to database: Ошибка соединения с базой данных
 Include Path: Включить путь
 Deleting events for: Удаление событий для
 Importing events for: Загрузка событий для

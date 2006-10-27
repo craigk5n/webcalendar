@@ -4,53 +4,62 @@
 # Last update: 14.03.2003
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: iso-8859-4
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Database error: Andmebaasi viga
 Cancel: Loobu
 Save: Salvestame
+Go: Mine
 Public Access: Avalik ligipääs
 Admin: Admin
-Go: Mine
 Calendar: Kalender
 Public: Avalik
 confidential: isiklik
 private: isiklik
 
-
-###############################################
+########################################
 # Page: activity_log.php
 #
-Activity Log: Kasutamise ajalugu
-User: Kasutaja
-Date: Kuupäev
-Time: Aeg
-Event: Sündmus
-Action: Tegevus
-Previous: Eelmine
 Next: Järgmine
+Previous: Eelmine
 
-
-###############################################
+########################################
 # Page: add_entry.php
 #
+Event: Sündmus
 Invalid entry id: Vale kande id
-This is a private event and may not be added to your calendar.: See on isiklik sündmus ja seda ei saa sinu kalendrisse lisada.
 Error adding event: Viga sündmuse lisamisel
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Vali
@@ -180,8 +189,7 @@ Table cell background for weekends: Tabeli ruudu taust nädalavahetuseks
 Event popup background: Sündmuse akna taust
 Event popup text: Sündmuse tekst
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Preferences: Eelistused
@@ -191,53 +199,49 @@ Account: Konto
 Categories: Kategooriad
 Views: Views
 Layers: Kihid
+Activity Log: Kasutamise ajalugu
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Hello: Halloo
 The subject was: Teema oli
 The description is: Kirjeldus on
+Date: Kuupäev
+Time: Aeg
 
-
-###############################################
+########################################
 # Page: assistant_edit.php
 #
 Your assistants: Sinu abiline
 
-
-###############################################
+########################################
 # Page: category.php
 #
+Global: Üleüldine
 Add: Lisa
 Category Name: Kategooria nimi
-Global: Üleüldine
 Delete: Kustuta
 Are you sure you want to delete this entry?: Kas oled kindel et tahad kustutada seda kannet?
 Add New Category: Lisa uus kategooria
 
-
-###############################################
+########################################
 # Page: catsel.php
 #
 Remove: Eemalda
 Ok: Ok
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Sinu kokkusaamise jättis ära
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Description: Kirjeldus
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: am
@@ -286,8 +290,7 @@ days: päevi
 Delete entry: Kustuta kanne
 You are not authorized to edit this entry: Sul ei ole lubatud muuta seda kannet
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: Järgmised sündmused on vastuolus soovitud ajaga
@@ -301,8 +304,7 @@ Scheduling Conflict: Kavandame vastuolu
 Your suggested time of: Sinu soovitud aeg
 conflicts with the following existing calendar entries: on vastuolus järgmiste kalendri kannetega
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: Muuda kihti
@@ -315,15 +317,13 @@ Add to My Calendar: Lisa minu kalendrisse
 Delete layer: Kustuta kiht
 Are you sure you want to delete this layer?: Kas oled kindel et kustutad selle kihi?
 
-
-###############################################
+########################################
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: Sa ei saa ise kihti kustutada
 You can only create one layer for each user: Saad teha vaid ühe kihi kasutaja kohta
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 Edit User: Muuda kasutajat
@@ -331,20 +331,18 @@ Add User: Lisa kasutaja
 First Name: Eesnimi
 Last Name: Perenimi
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: Viga
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Current User: Käesolev kasutaja
+User: Kasutaja
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: Kasutajanimi
@@ -356,34 +354,29 @@ Change Password: Muuda salasõna
 New Password: Uus salasõna
 Set Password: Sea salasõna
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Kasutajate kustutamine pole lubatud
 The passwords were not identical: Salasõnad pole samased
 You have not entered a password: Salasõna sisestamata
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Eksport
 Export format: Ekspordi määrangud
-Palm Pilot: Palm Pilot
 Export all dates: Ekspordi kõik kuupäevad
 Start date: Algus kuupäev
 End date: Lõpp kuupäev
 Modified since: Muudetud alates
 
-
-###############################################
+########################################
 # Page: groups.php
 #
 Add New Group: Lisa uus grupp
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Nimeta grupp
@@ -393,14 +386,12 @@ Group name: Grupi nimi
 Updated: Uuendatud
 Created by: Loodud
 
-
-###############################################
+########################################
 # Page: group_edit_handler.php
 #
 You must specify a group name: Pead määrama grupi nime
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 Display weekends in week view: näita nädalavahetusi nädala vaates
@@ -412,14 +403,12 @@ Auto-refresh time: Automaatse värskenduse aeg
 auto-refresh-time-help: Kui automaatne värskendus on lubatud, siis määrame värskenduste sageduse.
 colors-help: Kõik värvid tuleb näidata kaheksandsüsteemis kujul "#RRGGBB" kus "RR" on kaheksandsüsteemi väärtus punasele, "GG" rohelisele ja "BB" sinisele.
 
-
-###############################################
+########################################
 # Page: help_bug.php
 #
 Report Bug: Teata veast
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Lisame/Muudame kalendri kirjeid
@@ -428,14 +417,12 @@ Repeat End Date: Korduse lõppkuupäev
 Repeat Day: Korduse päev
 repeat-day-help: Määrab missugustel nädalapäevadel sündmust korrata. Kehtib vaid siis kui <i>Korduse tüüp</i> on <i>nädalati</i>.
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Abiinfo sisu
 
-
-###############################################
+########################################
 # Page: help_layers.php
 #
 Add/Edit/Delete: Lisa/Muuda/Kustuta
@@ -448,21 +435,18 @@ Press the Disable Layers link in the admin section at the bottom of the page to 
 Enabling: Lubame
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Vajuta 'Luba kihid' viidet admin osas lehe all kihtide näitamiseks
 
-
-###############################################
+########################################
 # Page: help_pref.php
 #
 Default Category: Vaikimisi kategooria
 default-category-help: Määrab kategooria kuhu uus sündmus väikimisi kuulub.
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: Keelatud
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: Kihid on praegu
@@ -475,8 +459,7 @@ Add layer: Lisa kiht
 Layer: Kiht
 Edit layer: Muuda kihti
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: Vaata seda kannet
@@ -485,8 +468,7 @@ Approve this entry?: Kiida see kanne heaks?
 Reject: Hülgame
 Reject this entry?: Lükkame kande tagasi?
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: Pead sisestama kasutajanime ja salasõna
@@ -495,27 +477,23 @@ Login: Sisenemine
 Access public calendar: Kasuta avalikku kalendrit
 cookies-note: <b>Märkus:</b> See rakendus nõuab küpsiste kasutamise lubamist.
 
-
-###############################################
+########################################
 # Page: login.php
 #
 Invalid login: Ebasobiv kasutaja
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Salvesta eelistused
 hour: tund
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: Kohtumise lükkas tagasi
 
-
-###############################################
+########################################
 # Page: report.php
 #
 cont.: jätkub.
@@ -524,16 +502,14 @@ Waiting for approval: Ootab heakskiitu
 Deleted: Kustutatud
 Rejected: Tagasi lükatud
 
-
-###############################################
+########################################
 # Page: search.php
 #
+Advanced Search: Keerulisem otsing
 Search: Otsi
 Keywords: Võtmesõnad
-Advanced Search: Keerulisem otsing
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: Pead sisestama ühe või mitu võtmesõna
@@ -542,40 +518,34 @@ match found: vaste leitud
 matches found: vasteid leitud
 No matches found: Ühtegi vastet ei leitud
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: Vaata teise kasutaja kalendrit
 
-
-###############################################
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories: Ssa pole lisanud ühtegi kategooriat
 Set Category: Määra kategooria
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Add New User: Lisa uus kasutaja
 denotes administrative user: määrab administratiivse kasutaja
 
-
-###############################################
+########################################
 # Page: usersel.php
 #
 Reset: Tühista
 
-
-###############################################
+########################################
 # Page: views.php
 #
 Add New View: Lisa uus vaade
 
-
-###############################################
+########################################
 # Page: views_edit.php
 #
 Unnamed View: Nimeta vaade
@@ -584,14 +554,12 @@ Edit View: Muuda vaadet
 View Name: Vaata vaadet
 View Type: Vaata tüüpi
 
-
-###############################################
+########################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Pead näitama vaate nime
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Assistant mode: Abistav olek
@@ -600,41 +568,38 @@ External User: Väline kasutaja
 Approve/Confirm entry: Kiida heaks/kinnita kanne
 Reject entry: Hülga kanne
 Set category: Määra kategooria
-Edit repeating entry for all dates: Muuda korduvat kannet kõikidel kuupäevadel
-Edit entry for this date: Muuda kanne sellel kuupäeval
-Delete repeating event for all dates: Kustuta korduv kanne kõikidel kuupäevadel
-This will delete this entry for all users.: See kustutab kande kõikide kasutajate jaoks
-Delete entry only for this date: Kustuta kanne ainult sellel kuupäeval
 Edit entry: Muuda kannet
+This will delete this entry for all users.: See kustutab kande kõikide kasutajate jaoks
+Edit repeating entry for all dates: Muuda korduvat kannet kõikidel kuupäevadel
+Delete repeating event for all dates: Kustuta korduv kanne kõikidel kuupäevadel
+Edit entry for this date: Muuda kanne sellel kuupäeval
+Delete entry only for this date: Kustuta kanne ainult sellel kuupäeval
 This will delete the entry from your calendar.: See kustutab kande sinu kalendrist
 Do you want to add this entry to your calendar?: Kas tahad lisada kande oma kalendrisse?
 This will add the entry to your calendar.: See lisab kande sinu kalendrisse.
 Email all participants: Saada email kõigile osalejaile
 Show activity log: Näita kasutamise ajalugu
 Hide activity log: Peida kasutamise ajalugu
+Palm Pilot: Palm Pilot
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: uus kanne
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
-Manage Views: Tegele vaadetega
 Another User&#39;s Calendar: Teise kasutaja kalender
+Manage Views: Tegele vaadetega
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 December: detsember
 Dec: dets
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: ületab päeva piiri XXX sündmust päevas
@@ -684,32 +649,34 @@ Event updated: Sündmus muudetud
 Event deleted: Sündmus kustutatud
 Notification sent: Teade saadetud
 Reminder sent: Meeldetuletus saadetud
+Action: Tegevus
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
 My Calendar: Minu kalender
-Back to My Calendar: Tagasi minu kalendrisse
 Add New Entry: Lisa uus kanne
-Go to: Mine
 Logout: Väljume
+Back to My Calendar: Tagasi minu kalendrisse
+Go to: Mine
 Manage calendar of: Tegele kalendriga
 
-
-###############################################
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: Ebasobiva kasutaja sisenemine
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Nimetu sündmus
 
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Teadustus
 
-###############################################
+########################################
 # Page: includes/js/admin.php
 #
 Server URL is required: Serveri URL on puudu
@@ -725,35 +692,24 @@ Invalid color for event popup text: Vigane värv sündmuse akna teksti jaoks
 Invalid color for table cell background for today: Vigane värv tänase päeva tabeli ruudu tausta jaoks
 Color format should be &#39;#RRGGBB&#39;: Värvi esitusviis peab olema kujul '#RRGGBB'
 
-
-###############################################
+########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Sa ei ole kirjutanud lühikirjeldust
 The time you have entered begins before your preferred work hours.  Is this correct?: Sisestatud aeg algab enne tööpäeva. Kas see on õige?
 You have not entered a valid time of day: Sa ei ole kirjutanud õiget kellaaega
 
-
-###############################################
+########################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Vale värv
 
-
-###############################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: Teadustus
-
-
-###############################################
+########################################
 # Page: includes/menu/index.php
 #
 Unapproved Events: Heakskiitmata sündmused
 
-
-###############################################
+########################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the event detailed below.: See on meeldetuletus alljärgnevale sündmusele.
 Reminder: Meeldetuletus

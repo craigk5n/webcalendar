@@ -8,44 +8,51 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: Big5
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Save: 儲存
-Admin: 管理
 Go: 前往
+Admin: 管理
 Public: 公眾的
 confidential: 機密的
 private: 私人的
 
-
-###############################################
-# Page: activity_log.php
-#
-User: 使&nbsp;用&nbsp;者
-Date: 日&nbsp;期
-Time: 時&nbsp;間
-
-
-###############################################
+########################################
 # Page: add_entry.php
 #
 Invalid entry id: Invalid entry id
-This is a private event and may not be added to your calendar.: This is a private event and may not be added to your calendar.
 Error adding event: Error adding event
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: 選擇
@@ -88,8 +95,7 @@ Document title: 文件標題
 Table cell background: 表格背景
 Table cell background for current day: 當日顏色
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Preferences: 參數設定
@@ -97,34 +103,31 @@ Users: 使用者
 Account: 編輯個人資料
 Layers: 階層架構
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Hello: 你好
 The subject was: 主題是
+Date: 日&nbsp;期
+Time: 時&nbsp;間
 
-
-###############################################
+########################################
 # Page: category.php
 #
 Delete: 刪除
 Are you sure you want to delete this entry?: 你確定要刪除這個記事嗎?
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: 約會已經被取消, 取消者是
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Description: 描&nbsp;述
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: 上午
@@ -162,8 +165,7 @@ Frequency: 重複次數
 Delete entry: 刪除記事
 You are not authorized to edit this entry: You are not authorized to edit this entry
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: The following conflicts with the suggested time
@@ -176,8 +178,7 @@ Scheduling Conflict: Scheduling Conflict
 Your suggested time of: Your suggested time of
 conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: 編輯階層
@@ -190,8 +191,7 @@ Add to My Calendar: 新增到我的行事曆
 Delete layer: 刪除階層
 Are you sure you want to delete this layer?: 你確定要刪除這個階層嗎?
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 Edit User: 編輯使用者資料
@@ -199,23 +199,21 @@ Add User: 新增使用者
 First Name: 姓
 Last Name: 名
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: 錯誤
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Today: 今日
 Next month: 上一月
 Next year: 下一月
 Current User: 目前使用者
+User: 使&nbsp;用&nbsp;者
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: 使用者名稱
@@ -227,40 +225,34 @@ Change Password: 變更密碼
 New Password: 新的密碼
 Set Password: 設定密碼
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 The passwords were not identical: 密碼不一樣
 You have not entered a password: 你沒有輸入密碼
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: 輸出
 Export format: 輸出格式
-Palm Pilot: Palm Pilot
 Export all dates: 輸出所有資料
 Start date: 開始日期
 End date: 結束日期
 Modified since: 更改自
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Updated: 更新
 Created by: 公布者
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: 新增/編輯 行事曆項目
@@ -269,20 +261,17 @@ Repeat End Date: 週期結束日期
 Repeat Day: 重複於
 repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: 輔助索引
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: 停用的
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: 階層架構目前是
@@ -293,8 +282,7 @@ Add layer: 新增階層
 Layer: 階層
 Edit layer: 編輯階層
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: 檢視這個記事
@@ -303,8 +291,7 @@ Approve this entry?: 核准這個記事?
 Reject: 拒絕
 Reject this entry?: 拒絕這個記事?
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: 你必須輸入使用者名稱及密碼
@@ -312,34 +299,29 @@ Save login via cookies so I don&#39;t have to login next time: 將登入資料儲存於 
 Login: 登入
 cookies-note: <b>注意:</b> 本程式須要 cookies 才能使用.
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: 儲存參數
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: 約會已經被拒絕, 拒絕者是
 
-
-###############################################
+########################################
 # Page: report.php
 #
 This event is confidential: 這個記事是機密的
 Rejected: 拒絕的
 
-
-###############################################
+########################################
 # Page: search.php
 #
 Search: 搜尋
 Keywords: 關鍵字
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: 你至少要輸入一個搜尋文字或句子
@@ -348,52 +330,46 @@ match found: 筆符合查詢
 matches found: 筆符合查詢
 No matches found: 查無資料
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: 檢視其他人的月曆
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Add New User: 新增使用者
 denotes administrative user: 使用者管理員
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Approve/Confirm entry: 核准/確定 記事
 Reject entry: 拒絕記事
-This will delete this entry for all users.: 對所有的使用者也將會刪除這個記事.
 Edit entry: 編輯記事
+This will delete this entry for all users.: 對所有的使用者也將會刪除這個記事.
 This will delete the entry from your calendar.: 這將會從你的行事曆刪除這個記事.
 Do you want to add this entry to your calendar?: 你要新增這個記事到你的行事曆嗎?
 This will add the entry to your calendar.: 這將會新增這個記事到你的行事曆.
+Palm Pilot: Palm Pilot
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: 新的記事
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
 Another User&#39;s Calendar: 別人的行事曆
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 December: 十二月
 Dec: 12月
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 WK: 週
@@ -437,24 +413,26 @@ Error approving event: Error approving event
 Generate printer-friendly version: Generate printer-friendly version
 Printer Friendly: 友善列印
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
 My Calendar: 我的行事曆
-Back to My Calendar: 回到我的行事曆
 Add New Entry: 新增記事
-Go to: 功能選擇
 Logout: 登出
+Back to My Calendar: 回到我的行事曆
+Go to: 功能選擇
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Unnamed Event
 
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: 通告
 
-###############################################
+########################################
 # Page: includes/js/admin.php
 #
 Invalid color for document background: Invalid color for document background
@@ -463,28 +441,19 @@ Invalid color for table cell background: Invalid color for table cell background
 Invalid color for table cell background for today: Invalid color for table cell background for today
 Color format should be &#39;#RRGGBB&#39;: Color format should be &#39;#RRGGBB&#39;
 
-
-###############################################
+########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: 你沒有輸入概要描述
 The time you have entered begins before your preferred work hours.  Is this correct?: 這個時段不在你自定的工作時間內.  這是正確的嗎?
 You have not entered a valid time of day: 你沒有輸入正確的時間
 
-
-###############################################
+########################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Invalid color
 
-
-###############################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: 通告
-
-
-###############################################
+########################################
 # Page: includes/menu/index.php
 #
 Unapproved Events: 未核准的記事

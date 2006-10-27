@@ -7,53 +7,62 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: iso-8859-1
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Database error: Akatsa datu basean
 Cancel: Utzi
 Save: Gorde
+Go: Joan
 Public Access: Atzipen publikoa
 Admin: Admin
-Go: Joan
 Calendar: Egutegia
 Public: Publikoa
 confidential: konfidentziala
 private: pribatua
 
-
-###############################################
+########################################
 # Page: activity_log.php
 #
-Activity Log: Jardunaren erregistroa
-User: Erabiltzailea
-Date: Data
-Time: Ordua
-Event: Gertaera
-Action: Ekintza
-Previous: Aurrekoa
 Next: Hurrengoa
+Previous: Aurrekoa
 
-
-###############################################
+########################################
 # Page: add_entry.php
 #
+Event: Gertaera
 Invalid entry id: Sarrera desegokia
-This is a private event and may not be added to your calendar.: Gertaera hau pribatua da eta ezin da zure egutegian gehitu
 Error adding event: Akatsa gertaera gehitzean
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Aukeratu
@@ -160,8 +169,7 @@ Table cell background for weekends: Astebukaerako gelaxken atzea
 Event popup background: Gertaera popup-aren atzea
 Event popup text: Gertaera popup-aren testua
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Preferences: Lehenetsiak
@@ -170,47 +178,44 @@ Account: Kontua
 Categories: Kategoria
 Views: Ikus erak
 Layers: Geruzak
+Activity Log: Jardunaren erregistroa
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Hello: Kaixo
 The subject was: Izeburua zen
 The description is: Deskribapena da
+Date: Data
+Time: Ordua
 
-
-###############################################
+########################################
 # Page: category.php
 #
+Global: Orokorra
 Add: Gehitu
 Category Name: Atalaren izena
-Global: Orokorra
 Delete: Ezabatu
 Are you sure you want to delete this entry?: Seguru al zaude sarrera hau ezabatu nahi duzula?
 Add New Category: Atal berria gehitu
 
-
-###############################################
+########################################
 # Page: catsel.php
 #
 Remove: Kendu
 Ok: Ados
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Bilera bat bertan bera utzi dizu
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Description: Deskribapena
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: am
@@ -252,8 +257,7 @@ days: egunak
 Delete entry: Sarrera ezabatu
 You are not authorized to edit this entry: Ez zaude baimenduta gertaera hau editatzeko
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: Hondokoa ez dator bat gomendatutako orduarekin
@@ -267,8 +271,7 @@ Scheduling Conflict: Bilera arteko talka
 Your suggested time of: Zure ordu gomendatua da
 conflicts with the following existing calendar entries: hondoko sarrerekin egiten du talka
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: Geruza editatu
@@ -281,15 +284,13 @@ Add to My Calendar: Egutegiari gehitu
 Delete layer: Geruza ezabatu
 Are you sure you want to delete this layer?: Seguru al zaude geruza hau ezabatu nahi duzula?
 
-
-###############################################
+########################################
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: Ezin duzu zeuretzako geruza bat sortu
 You can only create one layer for each user: Erabiltzaile bakoitzeko geruza bakarra osa dezakezu
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 Edit User: Erabiltzailea editatu
@@ -297,23 +298,21 @@ Add User: Erabiltzailea gehitu
 First Name: Izena
 Last Name: Abizena
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: Akatsa
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Today: Gaur
 Next month: Hurrengo hilabetea
 Next year: Hurrengo urtea
 Current User: Une hontako erabiltzailea
+User: Erabiltzailea
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: Erabiltzaile izena
@@ -325,34 +324,29 @@ Change Password: Pasahitza aldatu
 New Password: Pasahitz berria
 Set Password: Pasahitza jarri
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Erabiltzaileak ezabatzea debekatua
 The passwords were not identical: Pasahitza hauek ez dira berdinak
 You have not entered a password: Ez duzu pasahitz bat sartu
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Exportatu
 Export format: Exportatzeko formatua
-Palm Pilot: Palm Pilot
 Export all dates: Data guztiak exportatu
 Start date: Hasiera data
 End date: Bukaera data
 Modified since: Azken eguneratze data
 
-
-###############################################
+########################################
 # Page: groups.php
 #
 Add New Group: Talde berria gehitu
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Izengabeko taldea
@@ -362,8 +356,7 @@ Group name: Taldearen izena
 Updated: Eguneratua
 Created by: Sortzailea
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 Display weekends in week view: Astebukaerak erakusten ditu hilabeteroko ikus aukeran
@@ -375,14 +368,12 @@ Auto-refresh time: Eguneratze automatiko denbora
 auto-refresh-time-help: Aktibatu ez gero, eguneraketa zenbatero egingo den
 colors-help: Kolore guztiak formatu hamaseitarrean adierazi behar dira "#RRG
 
-
-###############################################
+########################################
 # Page: help_bug.php
 #
 Report Bug: Bug informea
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Gehitu/Editatu egutegi sarrerak
@@ -391,14 +382,12 @@ Repeat End Date: Errepikapenen bukaera data
 Repeat Day: Eguna errepikatu
 repeat-day-help: Gertaera hilabetearen zein egunetan errepikatu behar den adierazten du.
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Laguntza
 
-
-###############################################
+########################################
 # Page: help_layers.php
 #
 Add/Edit/Delete: Gehitu/Editatu/Ezabatu
@@ -408,14 +397,12 @@ If checked, events that are duplicates of your events will be shown.: Gaitu ez g
 Disabling: Desgaitzen
 Enabling: Gaitzen
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: Desgaitua
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: Geruzak orain
@@ -427,8 +414,7 @@ Add layer: Geruza gehitu
 Layer: Geruza
 Edit layer: Geruza editatu
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: Sarrera hau ikusi
@@ -437,8 +423,7 @@ Approve this entry?: Sarrera hau onetsi
 Reject: Gaitzetsi
 Reject this entry?: Gaitzetsi sarrera hau?
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: Erabiltzaile eta pasahitz bat sartu behar dituzu
@@ -447,27 +432,23 @@ Login: Sartu
 Access public calendar: Egutegi publikora joan
 cookies-note: <b>Oharra:</b> Aplikazio honek cookiak gaituak egotea behar du.
 
-
-###############################################
+########################################
 # Page: login.php
 #
 Invalid login: Erabiltzaile/pasahitz desegokia
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Lehenetsiak gorde
 hour: Ordua
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: Gertaera bat gaitzetsia izan da
 
-
-###############################################
+########################################
 # Page: report.php
 #
 This event is confidential: Gertaera hau konfidentziala da
@@ -475,16 +456,14 @@ Waiting for approval: Onespenaren zai
 Deleted: Ezabatuak
 Rejected: Gaitzetsiak
 
-
-###############################################
+########################################
 # Page: search.php
 #
+Advanced Search: Bilaketa aurreratua
 Search: Bilatu
 Keywords: Hitz gakoa
-Advanced Search: Bilaketa aurreratua
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: Hitz gako bat edo gehiago sartu behar duzu
@@ -493,40 +472,34 @@ match found: asmatze topatua
 matches found: asmatze topatuak
 No matches found: Ez da asmatzerik topatu
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: Beste partaide baten egutegia ikusi
 
-
-###############################################
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories: Ez duzu atalik gehitu
 Set Category: Atala ezarri
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Add New User: Erabiltzaile berria gehitu
 denotes administrative user: erabiltzaile administraria adierazten du
 
-
-###############################################
+########################################
 # Page: usersel.php
 #
 Reset: Berhasieratu
 
-
-###############################################
+########################################
 # Page: views.php
 #
 Add New View: Ikus era berria
 
-
-###############################################
+########################################
 # Page: views_edit.php
 #
 Unnamed View: Izen gabeko ikus era
@@ -535,48 +508,44 @@ Edit View: Ikus era editatu
 View Name: Izena ikusi
 View Type: Mota ikusi
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Status: Egoera
 Approve/Confirm entry: Onetsi/Konfirmatu erregistroa
 Reject entry: Erregistroa gaitzetsi
 Set category: Atala ezarri
-Edit repeating entry for all dates: Data guztietarako errepikatutako gertaera editatu
-Edit entry for this date: Egun honetarako sarrera editatu
-Delete repeating event for all dates: Errepikatutako gertaera data guztietarako ezabatu
-This will delete this entry for all users.: Ekintza honek gertaera hau ezabatuko du egun baterako
 Edit entry: Sarrera editatu
+This will delete this entry for all users.: Ekintza honek gertaera hau ezabatuko du egun baterako
+Edit repeating entry for all dates: Data guztietarako errepikatutako gertaera editatu
+Delete repeating event for all dates: Errepikatutako gertaera data guztietarako ezabatu
+Edit entry for this date: Egun honetarako sarrera editatu
 This will delete the entry from your calendar.: Ekintza honek sarrera ezabatuko du egutegitik
 Do you want to add this entry to your calendar?: Sarrera hau gehitu nahi al duzu zure egutegian?
 This will add the entry to your calendar.: Ekintza honek sarrera gehituko du zure egutegian
 Email all participants: Partaide guztiei e-posta bidez jakinarazi
 Show activity log: Mostrar bitácora de actividad
 Hide activity log: Jardunaren erregistroa ezkutatu
+Palm Pilot: Palm Pilot
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: Sarrera berria
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
-Manage Views: Ikus era administratu
 Another User&#39;s Calendar: Beste erabiltzaile baten egutegia ikusi
+Manage Views: Ikus era administratu
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 December: Abendua
 Dec: Abe
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 WK: ast
@@ -626,31 +595,33 @@ Event updated: Gertaera eguneratua
 Event deleted: Gertaera ezabatua
 Notification sent: Jakinarazpen mezua bidalia
 Reminder sent: Gogorarazteko mezua bidalia
+Action: Ekintza
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
 My Calendar: Nire egutegia
-Back to My Calendar: Nire egutegira itzuli
 Add New Entry: Sarrera berria gehitu
-Go to: Joan
 Logout: Irten
+Back to My Calendar: Nire egutegira itzuli
+Go to: Joan
 
-
-###############################################
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: Erabiltzaile/pasahitz desegokia
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Izengabeko gertaera
 
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Abixua
 
-###############################################
+########################################
 # Page: includes/js/admin.php
 #
 Server URL is required: Zerbitzariaren URL-a falta da
@@ -665,34 +636,23 @@ Invalid color for event popup text: Kolore desegokia gertaera popup-aren textura
 Invalid color for table cell background for today: Kolore desegokia gaurko egunaren atzerako
 Color format should be &#39;#RRGGBB&#39;: Kolorearen formatua hamaseitarra izan beharko luke adibidez, '#RRGGB
 
-
-###############################################
+########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Ez duzu deskribapen laburrik sartu
 You have not entered a valid time of day: Ez duzu ordu egoki bat sartu
 
-
-###############################################
+########################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Kolore desegokia
 
-
-###############################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: Abixua
-
-
-###############################################
+########################################
 # Page: includes/menu/index.php
 #
 Unapproved Events: Gertaera ez onetsiak
 
-
-###############################################
+########################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the event detailed below.: Hau hondoko gertaera oroitarazteko abixu bat da.
 Reminder: Oroigarria

@@ -6,25 +6,43 @@
 # Last update: 18 May 2005
 # 
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: iso-8859-1
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Database error: Feil i databasen
 Cancel: Avbryt
 Save: Lagre
+Go: Gå til
 Public Access: Offentlig tilgang
 Admin: Admin
-Go: Gå til
 Calendar: Kalender
 Edit: Rediger
 Events: Aktiviteter
@@ -32,29 +50,20 @@ Public: Offentlig
 confidential: privat
 private: privat
 
-
-###############################################
+########################################
 # Page: activity_log.php
 #
-Activity Log: Aktivitetslogg
-User: Bruker
-Date: Dato
-Time: Klokken
-Event: Aktitivitet
-Action: Handling
-Previous: Forrige
 Next: Neste
+Previous: Forrige
 
-
-###############################################
+########################################
 # Page: add_entry.php
 #
+Event: Aktitivitet
 Invalid entry id: Ugyldig avtale-ID
-This is a private event and may not be added to your calendar.: Dette er en privat avtale og kan ikke legges til din kalender.
 Error adding event: Feil ved innlegging av avtale
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Velg
@@ -220,8 +229,7 @@ Table cell background for weekends: Tabellbakgrunn for helger
 Event popup background: Bakgrunn for aktivitetspopup
 Event popup text: Tekst for aktivitetspopup
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Preferences: Innstillinger
@@ -233,57 +241,53 @@ Views: Oversikter
 Layers: Lag
 Reports: Rapporter
 Delete Events: Slett aktiviteter
+Activity Log: Aktivitetslogg
 Public Preferences: Offentlige innstillinger
 Unapproved Public Events: Ikke-godkjente offentlige aktiviteter
 Administrative Tools: Administrasjonsverktøy
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Hello: Hei
 The subject was: Emnet var
 The description is: Beskrivelsen er
+Date: Dato
+Time: Klokken
 
-
-###############################################
+########################################
 # Page: assistant_edit.php
 #
 Admin mode: Administratormodus
 Your assistants: Dine assistenter
 
-
-###############################################
+########################################
 # Page: category.php
 #
+Global: Global
 Add: Legg til
 Category Name: Kategorinavn
-Global: Global
 Delete: Slett
 Are you sure you want to delete this entry?: Er du sikker på at du vil slette denne aktiviteten?
 Add New Category: Legg til ny kategori
 
-
-###############################################
+########################################
 # Page: catsel.php
 #
 Remove: Fjern
 Ok: OK
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: En avtale har blitt avlyst for deg av
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Description: Beskrivelse
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: am
@@ -337,8 +341,7 @@ days: dager
 Delete entry: Slett aktiviteten
 You are not authorized to edit this entry: Du har ikke lov å redigere denne aktiviteten
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: Følgende aktiviteter er i konflikt med det foreslåtte tidspunktet
@@ -352,8 +355,7 @@ Scheduling Conflict: Tidskonflikt
 Your suggested time of: Den foreslåtte tiden for
 conflicts with the following existing calendar entries: er i konflikt med eksisterende avtaler
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: Editer lag
@@ -366,15 +368,13 @@ Add to My Calendar: Legg til kalenderen min
 Delete layer: Slett lag
 Are you sure you want to delete this layer?: Er du sikker på du vil slette dette laget?
 
-
-###############################################
+########################################
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: Du kan ikke lag et lag for deg selv
 You can only create one layer for each user: Du kan bare lag et lag per bruker
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX har ikke blitt satt i config.php.
@@ -385,8 +385,7 @@ Calendar ID: Kalender-ID
 First Name: Fornavn
 Last Name: Etternavn
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: Feil
@@ -395,8 +394,7 @@ Events successfully imported: Aktiviteter vellykket importert
 Errors: Feil
 There was an error parsing the import file or no events were returned: Det oppstod en feil ved behandling av den importerte filen eller ingen aktiviteter ble returnert
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Tomorrow: I morgen
@@ -425,6 +423,7 @@ Add Report: Legg til rapport
 Edit Report: Rediger rapport
 Report name: Rapportnavn
 Current User: Nåværende bruker
+User: Bruker
 Include link in trailer: Inkluder lenke i foten
 Include standard header/trailer: Inkluder standard hode/for
 Date range: Tidsrom
@@ -436,22 +435,19 @@ Day template: Mal for dag
 Event template: Mal for aktivitet
 Are you sure you want to delete this report?: Er du sikker på at du vil slette denne rapporten?
 
-
-###############################################
+########################################
 # Page: edit_report_handler.php
 #
 Variable N not found: Variablen N ble ikke funnet
 
-
-###############################################
+########################################
 # Page: edit_template.php
 #
 Edit Custom Script/Stylesheet: Rediger egendefinert skript/stilsett
 Edit Custom Header: Rediger egendefinert hode
 Edit Custom Trailer: Rediger egendefinert fot
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: Brukernavn
@@ -464,8 +460,7 @@ Change Password: Endre passord
 New Password: Nytt passord
 Set Password: Sett passord
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Sletting av brukere er ikke støttet
@@ -473,33 +468,28 @@ The passwords were not identical: Passordene var ikke identiske
 You have not entered a password: Du har ikke oppgitt passord
 Username can not be blank: Brukernavn må fylles ut 
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Eksporter
 Export format: Eksportformat
-Palm Pilot: Palm Pilot
 Include all layers: Inkluder alle lag
 Export all dates: Eksporter alle datoer
 Start date: Startdato
 End date: Sluttdato
 Modified since: Endret etter
 
-
-###############################################
+########################################
 # Page: export_handler.php
 #
 export format not defined or incorrect: eksportformat ikke definert eller feil
 
-
-###############################################
+########################################
 # Page: groups.php
 #
 Add New Group: Legg til ny gruppe
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Ikke navngitt gruppe
@@ -509,14 +499,12 @@ Group name: Gruppenavn
 Updated: Oppdatert
 Created by: Opprettet av
 
-
-###############################################
+########################################
 # Page: group_edit_handler.php
 #
 You must specify a group name: Du må angi et gruppenavn
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 Display weekends in week view: Viser helg i ukevisning
@@ -533,14 +521,12 @@ enable-gradient-help: Bruk gradert fargeovergang for tabellbakgrunn.
 Manually entering color values: Skriv inn fargeverdier manuelt
 colors-help: Alle farger skal skrives inn som #RRGGBB hvor RR er hexkoden for rødt, GG er hexkoden for grønn og BB er hexkoden for den blå fargeen.
 
-
-###############################################
+########################################
 # Page: help_bug.php
 #
 Report Bug: Rapporter feil
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Legg til/endre aktivitet
@@ -549,8 +535,7 @@ Repeat End Date: Gjenta sluttdato
 Repeat Day: Gjenta dato
 repeat-day-help: Hvilke ukedager skal aktiviteten gjentas på.
 
-
-###############################################
+########################################
 # Page: help_import.php
 #
 Import: Importer
@@ -566,14 +551,12 @@ The following formats have been tested: Følgende formater har blitt testet
 This form will import iCalendar (.ics) events: Dette skjemaet vil importere iCalendar (.vcs) aktiviteter
 Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Aktivering av <b>Skriv over tidligere importering</b> fører til at tidligere importerte aktiviteter som bruker samme UID som en aktivitet fra den nye import-filen, vil bli markert som slettede. Dermed bør en oppdatert iCal-fil kunne bli importert uten at det oppstår duplikater.  
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Hjelpoversikt
 
-
-###############################################
+########################################
 # Page: help_layers.php
 #
 Add/Edit/Delete: Legg til/Rediger/Slett
@@ -586,8 +569,7 @@ Press the Disable Layers link in the admin section at the bottom of the page to 
 Enabling: Aktiverer
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Klikk "Aktiver lag" i Admin seksjonen nederst på siden for å slå på lag.
 
-
-###############################################
+########################################
 # Page: help_pref.php
 #
 Default Category: Standardkategori
@@ -601,8 +583,7 @@ Subscribe/Publish: Abonnere/publisere
 allow-remote-subscriptions-help: Angir om eksterne brukere kan abonnere på din kalender og dermed tillate dem å se dine aktiviteter i en applikasjon som støtter iCal (som Apple sin iCal eller Mozilla Calendar).
 remote-subscriptions-url-help: Viser adressen som eksterne brukere skal bruke for å abonnere på din kalender.
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: Deaktivert
@@ -610,16 +591,14 @@ Import format: Importeringsformat
 Exclude private records: Utelat private oppføringer
 Overwrite Prior Import: Skriv over tidligere importering
 
-
-###############################################
+########################################
 # Page: import_handler.php
 #
 Events from prior import marked as deleted: Aktiviteter fra tidligere importering markert som slettede
 Conflicting events: Aktiviteter som kolliderer
 The import file contained no data: Den importerte filen inneholdt ikke noen data
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: Lagene er nå
@@ -633,8 +612,7 @@ Add layer: Legg til lag
 Layer: Lag
 Edit layer: Editer lag
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: Vis aktiviteten
@@ -643,8 +621,7 @@ Approve this entry?: Godkjenn aktiviteten?
 Reject: Avvis
 Reject this entry?: Avvis denne aktiviteten?
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: Vennligst oppgi brukernavn og passord
@@ -653,28 +630,24 @@ Login: Logg inn
 Access public calendar: Gå til offentlig kalender
 cookies-note: <b>OBS:</b> Programmet krever at "cookies" er slått på
 
-
-###############################################
+########################################
 # Page: login.php
 #
 Invalid login: Ugyldig innlogging
 
-
-###############################################
+########################################
 # Page: nonusers.php
 #
 Add New NonUser Calendar: Legg til ny ikke-bruker kalender
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Lagre innstillinger
 hour: time
 minute: minutt
 
-
-###############################################
+########################################
 # Page: purge.php
 #
 Purging events for: Sletter aktiviteter for
@@ -682,17 +655,14 @@ Finished: Ferdig
 Check box to delete <b>ALL</b> events for a user: Marker i boksen hvis <b>ALLE</b> aktiviteter skal slettes
 Delete all events before: Slett alle aktiviteter før
 Preview delete: Forhåndsvisning for sletting
-Are you sure you want to delete events for: Er du sikker
 Records deleted from: Oppføringer slettet fra:
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: En avtale har blitt avvist av
 
-
-###############################################
+########################################
 # Page: report.php
 #
 cont.: forts.
@@ -706,16 +676,14 @@ to manage reports for the Public Access calendar: for å administrere kalenderen 
 Add new report: Legg til ny rapport
 Manage Reports: Administrer rapporter
 
-
-###############################################
+########################################
 # Page: search.php
 #
+Advanced Search: Avansert søk
 Search: Søk
 Keywords: Nøkkelord
-Advanced Search: Avansert søk
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: Vennligst oppgi ett eller flere søkeord
@@ -724,40 +692,34 @@ match found: treff funnet
 matches found: treff funnet
 No matches found: Ingen treff funnet
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: Se en annen brukers kalender
 
-
-###############################################
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories: Du har ikke lagt til noen kategorier
 Set Category: Sett kategori
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Add New User: Opprett bruker
 denotes administrative user: indikerer administrator
 
-
-###############################################
+########################################
 # Page: usersel.php
 #
 Reset: Reset
 
-
-###############################################
+########################################
 # Page: views.php
 #
 Add New View: Legg til ny oversikt
 
-
-###############################################
+########################################
 # Page: views_edit.php
 #
 Unnamed View: Ikke navngitt oversikt
@@ -773,20 +735,17 @@ Month (side by side): Måned (side ved side)
 Month (on same calendar): Måned (i samme kalender)
 Selected: Valgt
 
-
-###############################################
+########################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Du må angi et oversiktnavn
 
-
-###############################################
+########################################
 # Page: view_d.php
 #
 No users for this view: Ingen brukere for denne visningen
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Assistant mode: Assistent modus
@@ -795,13 +754,13 @@ External User: Ekstern bruker
 Approve/Confirm entry: Godkjenn/bekreft aktiviteten
 Reject entry: Avvis aktiviteten
 Set category: Sett kategori
-Edit repeating entry for all dates: Rediger repeterende aktivitet for alle datoer
-Edit entry for this date: Rediger aktiviteten for denne datoen
-Delete repeating event for all dates: Slett repeterende aktiviteter for alle datoer
-This will delete this entry for all users.: Dette vil slette aktiviteten for alle brukerene
-Delete entry only for this date: Slett aktiviteten for denne datoen
 Edit entry: Endre aktiviteten
 Copy entry: Kopier aktiviteten
+This will delete this entry for all users.: Dette vil slette aktiviteten for alle brukerene
+Edit repeating entry for all dates: Rediger repeterende aktivitet for alle datoer
+Delete repeating event for all dates: Slett repeterende aktiviteter for alle datoer
+Edit entry for this date: Rediger aktiviteten for denne datoen
+Delete entry only for this date: Slett aktiviteten for denne datoen
 This will delete the entry from your calendar.: Dette vil slette aktiviteten fra kalenderen din.
 Do you want to add this entry to your calendar?: Vil du legge inn denne aktiviteten i kalenderen din?
 This will add the entry to your calendar.: Dette vil legge til aktiviteten i kalenderen din.
@@ -809,28 +768,25 @@ Email all participants: E-post til alle deltakerne
 Show activity log: Vis aktivitetslogg
 Hide activity log: Skjul aktivitetslogg
 Export this entry to: Eksporter denne aktiviteten til
+Palm Pilot: Palm Pilot
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: Ny aktivitet
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
 Another User&#39;s Calendar: Se en annen brukers kalender
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 December: Desember
 Dec: Des
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: overgår grense på XXX aktiviteter per dag
@@ -885,20 +841,19 @@ Event updated: Aktivitet oppdatert
 Event deleted: Aktivitet slettet
 Notification sent: Medling sendt
 Reminder sent: Påminnelse sendt
+Action: Handling
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
 My Calendar: Min kalender
-Back to My Calendar: Tilbake til min kalender
 Add New Entry: Legg til aktivitet
-Go to: Gå til
 Logout: Logg ut
+Back to My Calendar: Tilbake til min kalender
+Go to: Gå til
 Manage calendar of: Kontroller kalenderen til
 
-
-###############################################
+########################################
 # Page: includes/translate.php
 #
 English: Engelsk
@@ -931,28 +886,29 @@ Spanish: Spansk
 Swedish: Svensk
 Turkish: Tyrkisk
 
-
-###############################################
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: Ugyldig brukerinnlogging
 
-
-###############################################
+########################################
 # Page: includes/user-nis.php
 #
 incorrect password: feil passord
 no such user: ingen slik bruker
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Aktivitet uten navn
 Event Imported: Aktivitet importert
 
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Påminnelse
 
-###############################################
+########################################
 # Page: includes/js/admin.php
 #
 Server URL is required: URL for server er påkrevd
@@ -969,14 +925,12 @@ Invalid color for event popup text: Ugyldig farge for teksten i aktivitetspopups
 Invalid color for table cell background for today: Ugyldig farge for dagens tabellbakgrunn
 Color format should be &#39;#RRGGBB&#39;: Fargen skal skrives som '#RRGGBB'
 
-
-###############################################
+########################################
 # Page: includes/js/availability.php
 #
 Change the date and time of this entry?: Endre datoen og tiden for denne aktiviteten?
 
-
-###############################################
+########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Du har ikke oppgitt noen kort beskrivelse
@@ -984,27 +938,17 @@ The time you have entered begins before your preferred work hours.  Is this corr
 Please add a participant: Legg til en deltager
 You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspunkt
 
-
-###############################################
+########################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Ugyldig farge
 
-
-###############################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: Påminnelse
-
-
-###############################################
+########################################
 # Page: includes/menu/index.php
 #
 Unapproved Events: Ikke-godkjente aktiviteter
 
-
-###############################################
+########################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the event detailed below.: Dette er en påminnelse for aktiviteten beskrevet nedenfor. 
 Reminder: Påminnelse
