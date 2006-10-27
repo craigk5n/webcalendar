@@ -8,29 +8,47 @@
 # Updated to 1.1 by Istvan Bubreg bubreg_at_freemail_hu
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: UTF-8
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __yyyy__/__mm__/__dd__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __yyyy__ __month__ 
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Database error: Adatbázis hiba
+User Access Control: User Access Control
 Cancel: Mégsem
 DEFAULT CONFIGURATION: ALAPÉRTELMEZETT BEÁLLÍTÁSOK
 Save: Mentés
+Go: Mehet
 Public Access: Nyilvános naptár
 Admin: Adminisztráció
-User Access Control: User Access Control
 Allow Access to Other Users&#39; Calendar: Hozzáférés engedélyezése más felhasználóknak
 Grant This User Access to My Calendar: Hozzáférés engedélyezése a naptáramhoz
-Go: Mehet
 Type: Típus
 Calendar: Naptár
 View Event: Esemény megnézése
@@ -50,30 +68,20 @@ Public: Nyilvános
 confidential: bizalmas
 private: magán
 
-
-###############################################
+########################################
 # Page: activity_log.php
 #
-Activity Log: Tevékenységi napló
-User: Felhasználó
-Date: Dátum
-Time: Idõ
-Event: Esemény
-Action: Tevékenység
-Previous: Elõzõ
 Next: Következõ
+Previous: Elõzõ
 
-
-###############################################
+########################################
 # Page: add_entry.php
 #
+Event: Esemény
 Invalid entry id: Érvénytelen bejegyzés-azonosító
-This is a private event and may not be added to your calendar.: Ez magánprogram, nem adhatod hozzá a naptáradhoz.
-This is a confidential event and may not be added to your calendar.: Ez bizalmas program, nem adhatod hozzá a naptáradhoz.
 Error adding event: Esemény hozzáadási hiba
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Válassz
@@ -315,8 +323,7 @@ Table cell background for other month: Táblacella háttere más hónapokhoz
 Event popup background: Felugró eseményablak háttere
 Event popup text: Felugró eseményablak szövegszíne
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Control Panel: Vezérlőpult
@@ -329,47 +336,45 @@ Views: Nézetek
 Layers: Rétegek
 Reports: Riportok
 Delete Events: Események törlése
+Activity Log: Tevékenységi napló
 Public Preferences: Nyilvános beállítások
 Unapproved Public Events: Jóváhagyás nélküli nyilvános események
 Administrative Tools: Adminisztrációs eszközök
 
-
-###############################################
+########################################
 # Page: ajax.php
 #
 Username already exists: A felhasználónév foglalt
 Email address already exists: Az Email cím már létezik
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Additional Comments (optional): További megjegyzések (opcionális)
 Approve and Send: Elfogadás és küldés
 Approve and Exit: Elfogadás és kilépés
-(Your comments will be included in an email to the event creator): (az események benne lesznek a készítőnek küldendő emailben)
 Hello: Szia
 An appointment has been approved and comments added by: Egy találkozót elfogadott és megjegyzést írt
 The subject was: A tárgy
 The description is: Leírás
+Date: Dátum
+Time: Idõ
 Comments: Megjegyzések
 
-
-###############################################
+########################################
 # Page: assistant_edit.php
 #
 Admin mode: Adminisztrációs mód
 Your assistants: Titkáraid
 
-
-###############################################
+########################################
 # Page: category.php
 #
+Category Icon: Kategória ikon
+Global: Globális
 Add: Hozzáadás
 Category Name: Kategórianév
-Category Icon: Kategória ikon
 Remove Icon: Ikon eltávolítása
-Global: Globális
 Add Icon to Category: Ikon felvétele a kategóriába
 Upload: Feltöltés
 gif 3kb max: gif 3kb max
@@ -378,15 +383,13 @@ Delete: Törlés
 Are you sure you want to delete this entry?: Biztos, hogy törölni akarod ezt a bejegyzést?
 Add New Category: Új kategória hozzáadása
 
-
-###############################################
+########################################
 # Page: category_handler.php
 #
 File size exceeds maximum: A fájlméret túllépi a megengedettet
 File is not a gif image: A fájl nem gif kép
 
-
-###############################################
+########################################
 # Page: catsel.php
 #
 ENTRY CATEGORIES: BEJEGYZÉS KATEGÓRIÁK
@@ -395,14 +398,12 @@ Remove: Törlés
 Global Category: Globális kategória
 Ok: OK
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Egy találkozót lemondott veled
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Add Comment: Új megjegyzés
@@ -412,14 +413,12 @@ Comment: MEgjegyzés
 Upload file: Fájl feltöltés
 Description: Leírás
 
-
-###############################################
+########################################
 # Page: docdel.php
 #
 Removed: Eltávolítva
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: de
@@ -523,8 +522,7 @@ Every: Minden
 Delete entry: Bejegyzés törlése
 You are not authorized to edit this entry: Nincs jogosultságod a szerkesztéshez
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: A következők ütköznek a tervezett idővel
@@ -538,8 +536,7 @@ Scheduling Conflict: Ütemezési ütközés
 Your suggested time of: Az általad javasolt
 conflicts with the following existing calendar entries: -es idõpont ütközik a következõ eseményekkel
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: Réteg módosítása
@@ -552,15 +549,13 @@ Add to My Calendar: Hozzáadás a saját naptárhoz
 Delete layer: Réteg törlése
 Are you sure you want to delete this layer?: Biztos törölni akarod ezt a réteget?
 
-
-###############################################
+########################################
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: Nem hozhatsz létre réteget saját magadnak
 You can only create one layer for each user: Csak egy réteget hozhatsz létre felhasználónként
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: A NONUSER_PREFIX-et nem állítottad be a config.php-ben.
@@ -572,8 +567,7 @@ First Name: Vezetéknév
 Last Name: Keresztnév
 Is public calendar: Publikus naptár
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: Hiba
@@ -582,8 +576,7 @@ Events successfully imported: események rendben importálva.
 Errors: Hibák
 There was an error parsing the import file or no events were returned: Hiba történt az importálandó fájl feldolgozásakor, vagy nem volt benne esemény
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Tomorrow: Holnap
@@ -618,6 +611,7 @@ Add Report: Jelentés hozzáadása
 Edit Report: Jelentés szerkesztése
 Report name: Jelentés neve
 Current User: Felhasználó
+User: Felhasználó
 Include link in trailer: Link beszúrása a láblécbe
 Include standard header/trailer: Standard fejléc/lábléc beszúrása
 Date range: Dátumtartomány
@@ -629,22 +623,19 @@ Day template: Nap sablon
 Event template: Eseménysablon
 Are you sure you want to delete this report?: Valóban törölni akarod ezt a jelentést?
 
-
-###############################################
+########################################
 # Page: edit_report_handler.php
 #
 Variable N not found: N változót nem találom
 
-
-###############################################
+########################################
 # Page: edit_template.php
 #
 Edit Custom Script/Stylesheet: Egyedi szkript/stíluslap szerkesztése
 Edit Custom Header: Egyedi fejléc szerkesztése
 Edit Custom Trailer: Egyedi lábléc szerkesztése
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: Azonosító
@@ -657,8 +648,7 @@ Change Password: Jelszó változtatás
 New Password: Új jelszó
 Set Password: Jelszó beállítás
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Felhasználók törlése nem támogatott
@@ -666,33 +656,28 @@ The passwords were not identical: A jelszavak nem egyeznek meg
 You have not entered a password: Nem írtad be a jelszót
 Username can not be blank: A felhasználónév nem lehet üres
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Export
 Export format: Exportálás formátuma
-Palm Pilot: Palm Pilot
 Include all layers: Tartlamazzon minden réteget
 Export all dates: Minden dátum exportálása
 Start date: Kezdõ dátum
 End date: Befejezõ dátum
 Modified since: Módosítva
 
-
-###############################################
+########################################
 # Page: export_handler.php
 #
 export format not defined or incorrect: nem adtál meg exportformátumot, vagy az hibás
 
-
-###############################################
+########################################
 # Page: groups.php
 #
 Add New Group: Új csoport hozzáadása
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Névtelen csoport
@@ -702,14 +687,12 @@ Group name: Csoportnév
 Updated: Frissítve
 Created by: Létrehozta
 
-
-###############################################
+########################################
 # Page: group_edit_handler.php
 #
 You must specify a group name: Meg kell adnod egy csoportnevet
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 Display weekends in week view: Hétvégék megjelenítése hét nézetben
@@ -726,14 +709,12 @@ enable-gradient-help: Use gradient colors for cell backgrounds.
 Manually entering color values: Színkódok megadása kézzel
 colors-help: A színeket "#RRGGBB" hexadecimális formátumban kell megadni, ahol az "RR" a vörös, a "GG" a zöld, a "BB" a kék szín értékét adja meg.
 
-
-###############################################
+########################################
 # Page: help_bug.php
 #
 Report Bug: Hibabejelentés
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Naptárbejegyzések hozzáadása/módosítása
@@ -742,8 +723,7 @@ Repeat End Date: Ismétlés vége
 Repeat Day: Ismétlés napja
 repeat-day-help: Megadja, hogy a hét melyik napján ismétlődjön az esemény
 
-
-###############################################
+########################################
 # Page: help_import.php
 #
 Import: Import
@@ -759,14 +739,12 @@ The following formats have been tested: A következõ formátumok lettek tesztel
 This form will import iCalendar (.ics) events: Ezen az ûrlapon tudsz iCalendar (.ics) eseményeket importálni.
 Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Ha bekapcsolod <b>Elõzõ import felülírását</b>, akkor a korábban azonos UID-del importált események az új importálás során törlõdnek. Így lehetõvé válik egy frissített iCalendar fájl importálása másolatok létrehozása nélkül.
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Súgó tartalomjegyzék
 
-
-###############################################
+########################################
 # Page: help_layers.php
 #
 Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: A rétegek hasznosak mások eseményeinek megjelenítésekor. Megadhatod a felhasználót és az ő eseményeinek színét.
@@ -780,8 +758,7 @@ Press the Disable Layers link in the admin section at the bottom of the page to 
 Enabling: Engedélyezés
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Az oldal alján az adminisztrációs részben kattints a Rétegek engedélyezése linkre a rétegek bekapcsolásához.
 
-
-###############################################
+########################################
 # Page: help_pref.php
 #
 Default Category: Alapértelmezett kategória
@@ -802,8 +779,7 @@ Enable FreeBusy publishing: Elfoglaltság publikálása
 freebusy-enabled-help: Megadja, hogy a felhasználó foglaltsága elérhető legyen-e iCal-ból
 freebusy-url-help: Az elfoglaltság URL címe
 
-
-###############################################
+########################################
 # Page: help_uac.php
 #
 Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: A felhasználószintű hozzáférés-szabályozás részletesen beállíthatók a jogosultságok.A felhasználók is módosíthatják, ha az adminisztrátor engedélyezi. 
@@ -811,22 +787,19 @@ If disabled, this user cannot see you in the participants list.: Kikapcsolva a f
 If disabled, this user cannot send you emails.: Kikapcsolva nem fog tudni emailt küldeni. 
 If enabled, this user cannot view the details of any of your entries.: Bekapcsolva a felhasználó nem fogja látni a bejegyzéseid részleteit.
 
-
-###############################################
+########################################
 # Page: icalclient.php
 #
 Publishing Disabled (Admin): Publikálás kikapcsolva (Admin)
 Publishing Disabled (User): Publikálás kikapcsolva (Felhasználó)
 
-
-###############################################
+########################################
 # Page: icons.php
 #
 Click to Select: Kattints a kiválasztáshoz
 Current Icons on Server: Ikonok a szerveren
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: Letiltva
@@ -835,16 +808,14 @@ Exclude private records: Saját rekordok kizárása
 Overwrite Prior Import: Elõzõ import felülírása
 Repeated items are imported separately. Prior imports are not overwritten.: Az ismétlődő elemek külön importálódtak. A meglévő elemek nem lettek felülírva.
 
-
-###############################################
+########################################
 # Page: import_handler.php
 #
 Events from prior import marked as deleted: elõzõ importból származó eredmények töröltnek jelzése
 Conflicting events: Ütközõ események
 The import file contained no data: Az importálandó fájl nem tartalmaz adatot.
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: A rétegek megjelenítése jelenleg
@@ -858,8 +829,7 @@ Add layer: Réteg hozzáadása
 Layer: Réteg
 Edit layer: Réteg módosítása
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: Bejegyzés megtekintése
@@ -871,8 +841,7 @@ No unapproved entries for: Nincs jóváhagyás nélküli bejegyzés
 Unapproved Entries: Jóváhagyás nélküli bejegyzések
 Not authorized: Nincs jogosultságod
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: Add meg az azonosítódat és jelszavadat
@@ -881,29 +850,25 @@ Login: Bejelentkezés
 Access public calendar: Nyilvános naptár elérése
 cookies-note: <b>Megjegyzés:</b> A sütiket engedélyezni kell a naptár használatához.
 
-
-###############################################
+########################################
 # Page: login.php
 #
 Invalid login: Érvénytelen azonosító
 You have been logged out: Sikeresen kijelentkeztél
 Not yet registered? Register here!: Még nem regisztráltál ? Tedd meg itt!
 
-
-###############################################
+########################################
 # Page: minical.php
 #
 No such nonuser calendar: Nincs felhasználó nélküli naptár
 This Calendar is not Public: Ez a naptár nem nyilvános
 
-
-###############################################
+########################################
 # Page: nonusers.php
 #
 Add New NonUser Calendar: Új felhasználó nélküli naptár hozzáadása
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Beállítások mentése
@@ -917,20 +882,18 @@ Plain Text: Egyszerű szöveg
 display_byproxy-help: Az eredeti szerző megjelenítése a view_entry oldalon
 Display if created by Assistant: Megjelenítés, ha titkár hozta létre
 
-
-###############################################
+########################################
 # Page: purge.php
 #
 Purging events for: A következõ eseményeinek törlése:
 Finished: Kész
+Back: Back
 Check box to delete <b>ALL</b> events for a user: Jelöld be a felhasználó <b>ÖSSZES</b> eseményének törléséhez
 Delete all events before: Az összes ezelõtti esemény törlése
 Preview delete: Törlendők előnézete
-Are you sure you want to delete events for: Biztosan törölni akarod a következõ felhasználó eseményeit:
 Records deleted from: Rekordok törölve a következõbõl
 
-
-###############################################
+########################################
 # Page: register.php
 #
 Email address can not be blank: Az Email cím nem lehet üres
@@ -951,16 +914,14 @@ Return to Login screen: Vissza bejelentkezéshez
 Your account information will be emailed to you: A hozzáférésed adatait emailben kapod meg
 Submit: Elküld
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 Continue: Folytatás
 (Your comments will be included in an email to the other participants): (A megjegyzés el lesz küldve emailben a többi résztvevőnek)
 An appointment has been rejected by: Egy találkozót elutasított
 
-
-###############################################
+########################################
 # Page: report.php
 #
 cont.: folyt.
@@ -974,16 +935,14 @@ to manage reports for the Public Access calendar: kezelheti a nyilvános naptár
 Add new report: Új jelentés hozzáadása
 Manage Reports: Jelentések kezelése
 
-
-###############################################
+########################################
 # Page: search.php
 #
+Advanced Search: Bõvített keresés
 Search: Keresés
 Keywords: Kulcsszavak
-Advanced Search: Bõvített keresés
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: Legalább egy kulcsszót meg kell adnod
@@ -992,48 +951,40 @@ match found: egyezést találtam
 matches found: egyezést találtam
 No matches found: Nincs találat
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: Betekintés más felhasználók naptárába
 
-
-###############################################
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories: Még nem adtál hozzá kategóriát
 Set Category: Kategória beállítása
 Global Categories can not be changed: Globális kategóriát nem lehet módosításani
 
-
-###############################################
+########################################
 # Page: upcoming.php
 #
-__month__ __dd__: __month__ __dd__
 more: tovább
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Add New User: Új felhasználó hozzáadása
 denotes administrative user: adminisztrátor
 
-
-###############################################
+########################################
 # Page: usersel.php
 #
 Reset: Alaphelyzet
 
-
-###############################################
+########################################
 # Page: views.php
 #
 Add New View: Új nézet hozzáadása
 
-
-###############################################
+########################################
 # Page: views_edit.php
 #
 Unnamed View: Névtelen nézet
@@ -1051,20 +1002,17 @@ Month (side by side): Havi (egymás mellett)
 Month (on same calendar): Havi (ugyanazon naptáron)
 Selected: Kiválasztott
 
-
-###############################################
+########################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Adj meg egy nézetnevet
 
-
-###############################################
+########################################
 # Page: view_d.php
 #
 No users for this view: Nincs felhasználó a nézethez
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Assistant mode: Titkár mód
@@ -1085,14 +1033,14 @@ Hide: Elrejt
 Approve/Confirm entry: Bejegyzés jóváhagyása/Beleegyezés
 Reject entry: Bejegyzés elutasítása
 Set category: Kategória beállítása
-Edit repeating entry for all dates: Az összes dátum ismétlõdõ bejegyzésének szerkesztése
-Edit entry for this date: Ezen dátum bejegyzésének szerkesztése
-Delete repeating event for all dates: Az összes dátum ismétlõdõ bejegyzésének törlése
-This will delete this entry for all users.: Ez a bejegyzés minden felhasználó számára törölve lesz.
-Delete entry only for this date: Ezen dátum bejegyzésének törlése
 Edit entry: Bejegyzés módosítása
-from calendar of: a következő naptárából
 Copy entry: Bejegyzés másolása
+This will delete this entry for all users.: Ez a bejegyzés minden felhasználó számára törölve lesz.
+Edit repeating entry for all dates: Az összes dátum ismétlõdõ bejegyzésének szerkesztése
+Delete repeating event for all dates: Az összes dátum ismétlõdõ bejegyzésének törlése
+Edit entry for this date: Ezen dátum bejegyzésének szerkesztése
+Delete entry only for this date: Ezen dátum bejegyzésének törlése
+from calendar of: a következő naptárából
 This will delete the entry from your calendar.: A bejegyzés törölve lesz a naptáradból.
 Do you want to add this entry to your calendar?: Hozzá akarod adni ezt a bejegyzést a saját naptáradhoz?
 This will add the entry to your calendar.: A bejegyzés hozzá lesz adva a saját naptáradhoz.
@@ -1100,56 +1048,48 @@ Email all participants: Email minden résztvevõnek
 Show activity log: Tevékenységi napló megjelenítése
 Hide activity log: Tevékenységi napló elrejtése
 Export this entry to: Ezen esemény exportálása a következõbe
+Palm Pilot: Palm Pilot
 
-
-###############################################
+########################################
 # Page: view_r.php
 #
 Double-click on empty cell to add new entry: Kattints duplán egy üres cellán új bejegyzés hozzáadásához
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: Új bejegyzés
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
-Edit Event: Esemény szerkesztése
-Day View: Napi nézet
-Week View: Heti nézet
-Month View: Hónap nézet
-Year View: Év nézet
-Manage Views: Nézetek kezelése
-Category Management: Kategória kezelés
-User Management: Felhasználó kezelés
 Another User&#39;s Calendar: Másik felhasználó naptára
+Category Management: Kategória kezelés
+Day View: Napi nézet
+Edit Event: Esemény szerkesztése
+Month View: Hónap nézet
 Common Trailer: Általános előzetes
+User Management: Felhasználó kezelés
+Manage Views: Nézetek kezelése
+Week View: Heti nézet
+Year View: Év nézet
 
-
-###############################################
+########################################
 # Page: includes/config.php
 #
 Fatal Error: Súlyos hiba
 Troubleshooting Help: Problémamegoldó help
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 LANGUAGE DEFINED: NYELV ALAPJÁN
 December: December
 Dec: Dec
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __yyyy__ __month__ 
-__mm__/__dd__/__yyyy__: __yyyy__/__mm__/__dd__
 This event is private: Ez privát esemény
 Conf.: Biz.
 WK: H
@@ -1158,8 +1098,8 @@ Task Due Date: Feladat esedékes
 TASKS: FELADATOK
 Task_Title: Cím
 Due: Esedékes
-View this task: Feladat megnézése
 View this event: Esemény megnézése
+View this task: Feladat megnézése
 exceeds limit of XXX events per day: túllépte a napi XXX esemény korlátját
 You have XXX unapproved entries: Neked XXX nem jóváhagyott bejegyzésed van
 January: Január
@@ -1228,22 +1168,21 @@ Journal deleted: Napló törölve
 Notification sent: Értesítés elküldve
 Reminder sent: Emlékeztetõ elküldve
 Attachment: Melléklet
+Action: Tevékenység
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
-Home: Kezdőlap
 My Calendar: Saját naptáram
-Back to My Calendar: Vissza a Saját Naptáramhoz
 Add New Entry: Új bejegyzés hozzáadása
 Add New Task: Új feladat hozzáadása
-Go to: Ugrás
 Logout: Kijelentkezés
+Home: Kezdőlap
+Back to My Calendar: Vissza a Saját Naptáramhoz
+Go to: Ugrás
 Manage calendar of: A következõ naptárának kezelése
 
-
-###############################################
+########################################
 # Page: includes/translate.php
 #
 Browser Language Not Found: A böngésző nyelve nem található
@@ -1284,83 +1223,31 @@ event: esemény
 journal: napló
 task: feladat
 
-
-###############################################
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: Sikertelen bejelentkezés
 
-
-###############################################
+########################################
 # Page: includes/user-nis.php
 #
 incorrect password: hibás jelszó
 no such user: nincs ilyen felhasználó
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Névtelen esemény
 Event Imported: Esemény importálva
 
-
-###############################################
-# Page: includes/js/admin.php
-#
-Server URL is required: Szerver URL-t meg kell adni
-Server URL must end with &#39;/&#39;: Szerver URL-nek '/'-rel kell végzõdnie
-Invalid work hours: Érvénytelen munkaidõ
-Invalid color for document background: Érvénytelen háttérszín
-Invalid color for document title: Érvénytelen címsorszín
-Invalid color for table cell background: Érvénytelen táblacella-háttérszín
-Invalid color for table grid: Érvénytelen táblarács-szín
-Invalid color for table header background: Érvénytelen táblafejléc-háttérszín
-Invalid color for table text background: Érvénytelen táblaszöveg-háttérszín
-Invalid color for event popup background: Érvénytelen felugró eseményablak-háttérszín
-Invalid color for event popup text: Érvénytelen felugró eseményablak-szövegszín
-Invalid color for table cell background for today: Érvénytelen táblacella-háttérszín a MAI napra
-Color format should be &#39;#RRGGBB&#39;: A színeket '#RRGGBB' formátumban kell megadni
-
-
-###############################################
-# Page: includes/js/availability.php
-#
-Change the date and time of this entry?: Változzon a bejegyzés dátuma és ideje?
-
-
-###############################################
-# Page: includes/js/edit_entry.php
-#
-You have not entered a Brief Description: Nem írtál rövid leírást
-The time you have entered begins before your preferred work hours.  Is this correct?: Az idõpont, amit megadtál, munkaidõn kívül van. Jó így?
-Invalid Event Date: Érvénytelen esemény dátum
-Please add a participant: Kérlek adj meg egy résztvevőt
-Invalid Date: Érvénytelen dátum
-You have not entered a valid time of day: Érvénytelen időt adtál meg
-
-
-###############################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: Érvénytelen szín
-
-
-###############################################
-# Page: includes/js/export_import.php
-#
-File type does not match Import Format: A fájl formátuma miatt nem importálható
-
-
-###############################################
+########################################
 # Page: includes/classes/Doc.class
 #
 bytes: bájt
 kb: kb
 Mb: Mb
 
-
-###############################################
+########################################
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Emlékeztető
@@ -1377,8 +1264,49 @@ file_access: Sikertelen fájlhozzáférés~
 file_open: Fájl hiba sikertelen megnyitás~
 encoding: Ismeretlen kódolás~
 
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required: Szerver URL-t meg kell adni
+Server URL must end with &#39;/&#39;: Szerver URL-nek '/'-rel kell végzõdnie
+Invalid work hours: Érvénytelen munkaidõ
+Invalid color for document background: Érvénytelen háttérszín
+Invalid color for document title: Érvénytelen címsorszín
+Invalid color for table cell background: Érvénytelen táblacella-háttérszín
+Invalid color for table grid: Érvénytelen táblarács-szín
+Invalid color for table header background: Érvénytelen táblafejléc-háttérszín
+Invalid color for table text background: Érvénytelen táblaszöveg-háttérszín
+Invalid color for event popup background: Érvénytelen felugró eseményablak-háttérszín
+Invalid color for event popup text: Érvénytelen felugró eseményablak-szövegszín
+Invalid color for table cell background for today: Érvénytelen táblacella-háttérszín a MAI napra
+Color format should be &#39;#RRGGBB&#39;: A színeket '#RRGGBB' formátumban kell megadni
 
-###############################################
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Változzon a bejegyzés dátuma és ideje?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Nem írtál rövid leírást
+The time you have entered begins before your preferred work hours.  Is this correct?: Az idõpont, amit megadtál, munkaidõn kívül van. Jó így?
+Invalid Event Date: Érvénytelen esemény dátum
+Please add a participant: Kérlek adj meg egy résztvevőt
+Invalid Date: Érvénytelen dátum
+You have not entered a valid time of day: Érvénytelen időt adtál meg
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Érvénytelen szín
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: A fájl formátuma miatt nem importálható
+
+########################################
 # Page: includes/menu/index.php
 #
 This Week: Heti nézet
@@ -1386,7 +1314,6 @@ This Month: Hónap nézet
 This Year: Egész év
 Add New Event: Új esemény
 Delete Entries: Bejegyzések törlése
-Another User\'s Calendar: Másik felhasználó naptára
 My Views: Saját nézetek
 Manage Calendar of: A következő naptárának kezelése
 My Reports: Saját riportok
@@ -1395,15 +1322,7 @@ Public Calendar: Nyilvános naptár
 Unapproved Events: Jóváhagyás nélküli események
 User Manager: Felhasználó karbantartás
 
-
-###############################################
-# Page: tools/send_reminders.php
-#
-This is a reminder for the event detailed below.: Ez egy emlékeztetõ az alábbi eseményre.
-Reminder: Emlékeztetõ
-
-
-###############################################
+########################################
 # Page: install/index.php
 #
 WebCalendar Installation Wizard: WebCalendar Installation Wizard
@@ -1412,7 +1331,6 @@ Failure Reason: Hibaok
 You must manually create database: You must manually create database
 Create New: Create New
 Database Name: Database Name
-Back: Back
 Timezone Conversion Successful: Timezone Conversion Successful
 Error Unable to write to file: Error Unable to write to file
 Successful Login: Sikeres bejelentkezés
@@ -1500,3 +1418,8 @@ Production: Production
 Development: Development
 Save Settings: Save Settings
 Launch WebCalendar: Launch WebCalendar
+
+########################################
+# Page: tools/send_reminders.php
+#
+Reminder: Emlékeztetõ

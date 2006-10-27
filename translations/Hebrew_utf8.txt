@@ -2,7 +2,7 @@
 # Last update: 22 July 2006
 #
 # $Id$
-# Translation last updated on 10-17-2006
+# Translation last updated on 10-27-2006
 
 
 ################################################################################
@@ -65,25 +65,15 @@ private: פרטי
 ########################################
 # Page: activity_log.php
 #
-#
-# << MISSING >>
-# System Log:
-Activity Log: יומן ארועים
-User: משתמש
-Date: תאריך
-Time: שעה
-Event: ארוע
-Action: פעולה
-Previous: הקודם
 Next: הבא
+Previous: הקודם
 
 ########################################
 # Page: add_entry.php
 #
+Event: ארוע
 is already on your calendar.: נמצא כבר בלוח השנה שלך
 Invalid entry id: זיהוי רשומה לא חוקי
-This is a private event and may not be added to your calendar.: זהו ארוע פרטי ואין אפשרות להוסיף אותו ללוח השנה שלך.
-This is a confidential event and may not be added to your calendar.: זהו ארוע סודי ואין אפשרות להוסיף אותו ללוח השנה שלך.
 Error adding event: שגיאה בהוספת הארוע
 
 ########################################
@@ -104,9 +94,6 @@ NonUser Calendars: לוחות שנה ללא משתמש
 Other: אחר
 Email: דוא"ל
 Colors: צבעים
-#
-# << MISSING >>
-# System options:
 app-name-help: קובע את שם היישום שיופיע בפס הכותרת של הדפדפן עבור כל הדפים ועל דף הכניסה. הערך שתקבע כאן יימצא בקובץ התרגום מה שיאפשר כותרות שונות עבור שפות שונות.
 Application Name: שם היישום
 Translated Name: שם מתורגם
@@ -124,9 +111,6 @@ Themes: ערכות תצורה
 AVAILABLE THEMES: ערכות תצורה זמינות
 None: ללא
 Preview: תצוגה מקדימה
-#
-# << MISSING >>
-# Site customization:
 custom-script-help: מאפשר הכנסת סקריפט ג'אבה או טקסט של דף סגנון שייכנס אל איזור HTML "head" בכל דף.
 Custom script/stylesheet: סקריפט אישי/דף סגנון
 custom-header-help: מאפשר לכלול קטע HTML המותאם אישית בראש כל דף.
@@ -136,9 +120,6 @@ Custom trailer: סיומת המותאמת אישית
 enable-external-header-help: מאפשר טעינת סיומת מותאמת אישית מקובץ חיצוני
 Allow external file for header/script/trailer: מאפשר שימוש בקובץ חיצוני עבור כותרת/סקריפט/סיומת
 Allow user to override header/trailer: מותר למשתמש לדרוס כותרת/סיומת
-#
-# << MISSING >>
-# Date and Time:
 tz-help: קובע את השעון המקומי (לעומת השעון בשרת).
 Server Timezone Selection: בחירת איזור זמן של השרת
 Your current GMT offset is: ההיסט הנוכחי משעון גרניץ' הינו
@@ -164,19 +145,10 @@ work-hours-help: קובע את תווך השעות להציג בתצוגה הי�
 Work hours: שעות עבודה
 From: מאת
 to: אל
-#
-# << MISSING >>
-# Appearance:
 preferred-view-help: קובע את התצוגה ברירת המחדל (יום, שבוע, חודש או שנה).
 Preferred view: תצוגה מועדפת
 Allow top menu: אפשר תפריט עליונה
 Date Selectors position: מיקום בוחר תאריכים
-#
-# << MISSING >>
-# Top:
-#
-# << MISSING >>
-# Bottom:
 menu-themes-help: קובע את הצבעים ואת הסגנון של התפריט העליונה
 Menu theme: ערכת תצורה של התפריט
 fonts-help: קובע רשימה של גופנים לשימוש המערכת (כדוגמת "Arial, Helvetica")
@@ -199,9 +171,6 @@ allow-view-add-help: צלמית "+" יכלל בתצוגות, ויאפשר למש
 Include add event link in views: לכלול קישור הוספת ארועים בתצוגות
 lunar-help: אם נבחר, יציג צלמיות קטנות המייצגות את פאזת הירח כל חודש
 Display Lunar Phases in month view: הצג פאזות הירח בתצוגה חודשית
-#
-# << MISSING >>
-# Restrictions:
 allow-view-other-help: קובע אם למשתמש אחד מותר לצפות בלוח שנה של משתמש אחר.
 Allow viewing other user&#39;s calendars: אפשר צפייה בלוחות שנה של אחרים
 require-approvals-help: כאשר מאופשר, על המשתמש לאשר ארוע לפני שהוא יוצג בלוח השנה שלו (אלא אם הצג לא מאושרים מופעל). הערה: כאשר זה במצב "לא", זה לא ייכבה אישורים ללוחות בעלי גישה ציבורית (אם מאופשרים לוחות שנה עם גישה ציבורית).
@@ -222,14 +191,6 @@ crossday-help: אם נבחר, ארוע החוצה גבול יום יוצג בי�
 Disable Cross-Day Events: בטל ארועים החוצים יום
 disable-location-field-help: בחירת "כן" יסיר את שדה "מקום" מדפי המידע אודות ארועים
 Disable Location field: בטל שדה מקום
-#
-# << MISSING >>
-# disable-url-field-help:
-# English text: Selecting "Yes" will remove the "URL" field from event information pages
-#
-#
-# << MISSING >>
-# Disable URL field:
 disable-priority-field-help: בחירת "כן" יסיר את שדה "עדיפות" מדפי מידע אודות ארועים, מה שיספק ממשק פשוט יותר עבור משתמשים חדשים.
 Disable Priority field: הסר שדה עדיפות
 disable-access-field-help: בחירת "כן" יסיר את השדה "גישה" מדפי מידע אודות אירועים, מה שיספק ממשק פשוט יותר עבור משתמשים חדשים.
@@ -240,36 +201,16 @@ disable-repeating-field-help: בחירת "כן" יסיר את השדה "חוזר
 Disable Repeating field: הסר שדה חוזר
 allow-html-description-help: אם נבחר, מאפשר למשתמשים להקליד HTML בשדה תאור ארוע. אם לא נבחר, טגים של HTML יופיעו כטקסט פשוט. אזהרה: אפשור תכונה זו יאפשר למשתמשים להציג תמונות מאתרים חיצוניים.
 Allow HTML in Description: אפשר HTML בתאורים
-#
-# << MISSING >>
-# Popups:
 disable-popups-help: בטל הצגת חלוניות קפצות בתצוגת לוח השנה
 Disable Pop-Ups: בטל חנוניות קופצות
 popup-includes-siteextras-help: אם נבחר, מאפשר תצוגת שדה הגדרות אתר המותאמות אישית בקובץ site_extras.php בחלונית קופצת.
 Display Site Extras in popup: הצג תוספות אתר בחלונית קופצת
 popup-includes-participants-help: אם נבחר, משתתפים מוצגים בחלוניות קופצות של ארועים
 Display Participants in popup: הצג משתתפים בחלונית קופצת
-#
-# << MISSING >>
-# Miscellaneous:
 remember-last-login-help: כאשר נבחר, שם המשתמש יופיעה אוטומטית עם פתיחת דף הכניסה (אך לא הסיסמא), והעדיפויות של המשתמש ייטענו (כולל צבעים מועדפים ובחירת שפה).
 Remember last login: זכור שם משתמש קודם
 summary_length-help: האורך המירבי של תאור קצר בתצוגת לוחות שנה
 Brief Description Length: אורך תאור קצר
-#
-# << MISSING >>
-# user_sort-help:
-# English text: Determines sort order for User, Nonuser lists
-#
-#
-# << MISSING >>
-# User Sort Order:
-#
-# << MISSING >>
-# Lastname, Firstname:
-#
-# << MISSING >>
-# Firstname, Lastname:
 Plugins: מתוספים
 plugins-enabled-help: אפשר יישומים מתוספים
 Enable Plugins: אפשר מצורפים
@@ -315,12 +256,6 @@ categories-enabled-help: מאפשר שימוש בסיווגי ארועים
 Categories enabled: סיווגים מאופשרים
 icon_upload-enabled-help: אם מאופשר, למשתששים מותר לעלות צלמיות עבור סיווגים
 Category Icon Upload enabled: העלת צלמיות לסיווגים מותרת
-#
-# << MISSING >>
-# Requires:
-#
-# << MISSING >>
-# folder to exist:
 display-tasks-help: הצג חלונית קטנה למשימות בלוח יומי ובלוח חודשי
 Display small task list: הצג רשימה קטנה של משימות
 display-tasks-in-grid-help: הצג משימות בלוח ביחד עם ארועים
@@ -405,6 +340,7 @@ Views: תצוגות
 Layers: שכבות
 Reports: דו"חות
 Delete Events: מחק ארועים
+Activity Log: יומן ארועים
 Public Preferences: עדיפויות ציבוריות
 Unapproved Public Events: ארועים ציבוריים לא מאושרים
 Administrative Tools: כלי ניהול
@@ -422,11 +358,12 @@ Email address already exists: כתובת דוא"ל קיימת כבר
 Additional Comments (optional): הערות נוספות (אופציונלי)
 Approve and Send: אשר ושלח
 Approve and Exit: אשר וצא
-(Your comments will be included in an email to the event creator): (ההערות שלך ייכלו בדוא"ל שישלח אל יוצר הארוע)
 Hello: שלום
 An appointment has been approved and comments added by: אושרה פגישה והוספו הערות על ידי
 The subject was: הנושא הוא
 The description is: התאור הינו
+Date: תאריך
+Time: שעה
 Comments: הערות
 
 ########################################
@@ -434,25 +371,6 @@ Comments: הערות
 #
 Admin mode: מצב מנהל
 Your assistants: העוזרים שלך
-
-########################################
-# Page: availability.php
-#
-#
-# << MISSING >>
-# Program Error:
-#
-# << MISSING >>
-# No users specified!:
-#
-# << MISSING >>
-# No year specified!:
-#
-# << MISSING >>
-# No month specified!:
-#
-# << MISSING >>
-# No day specified!:
 
 ########################################
 # Page: category.php
@@ -548,11 +466,6 @@ Percent Complete: אחוז ביצוע
 All Percentages: כל האחוזים
 location-help: מקום הארוע
 Location: מקום
-#
-# << MISSING >>
-# url-help:
-# English text: Event URL
-#
 URL: URL
 date-help: קובע את תאריך הארוע.
 Start Date: תאריך התחלה
@@ -589,12 +502,6 @@ Number of times: מספר פעמים
 repeat-frequency-help: קובע כל כמה זמן יש לחזור על הארוע. ברירת המחדל 1 קובע שעליו לחזור בכל פעם. ציון 2 יגרום לכך שהארוע יחזור כל שבוע שני (אם סוג החזרה הנו שבועית או כל חודש שני אם סוג החזרה הוא חודשי, וכך הלאה.
 Frequency: תדירות
 Weekdays Only: ימי חול בלבד
-#
-# << MISSING >>
-# MO:
-#
-# << MISSING >>
-# SU:
 Week Start: תחילת השבוע
 repeat-bydayextended-help: מאפשר בחירת יום המבוססת על היום בשבוע
 ByDay: לפי יום
@@ -729,6 +636,7 @@ Add Report: הוסף דו"ח
 Edit Report: ערוך דו"ח
 Report name: שם הדו"ח
 Current User: המשתמש הנוכחי
+User: משתמש
 Include link in trailer: לכלול קישור בסיומת
 Include standard header/trailer: לכלול כותרת/סיומת סטנדרטית
 Date range: טווח תאריכים
@@ -738,9 +646,6 @@ Template variables: משתני התבנית
 Page template: תבנית הדף
 Day template: תבנית היום
 Event template: תבנית ארוע
-#
-# << MISSING >>
-# Site Extras:
 Are you sure you want to delete this report?: בטוח שהנך רוצש למחוק דו"ח זה?
 
 ########################################
@@ -782,7 +687,6 @@ Username can not be blank: שם משתמש לא יכול להיות ריק
 #
 Export: ייצוא
 Export format: פורמאט ייצוא
-Palm Pilot: Palm Pilot
 Include all layers: כולל כל השכבות
 Export all dates: לייצא את כל התאריכים
 Start date: תאריך התחלה
@@ -841,9 +745,6 @@ Report Bug: דווח על באג
 #
 Adding/Editing Calendar Entries: הוספה/עריכה של רשומות לוחות שנה
 Repeat Type: סוג חזרה
-#
-# << MISSING >>
-# For More Information...:
 Repeat End Date: תאריך סיום החזרה
 Repeat Day: יום החזרה
 repeat-day-help: קובע באיזה מימי השבוע על הארוע להופיע. משתמשים בזה רק כאשר סוג החזרה הוא שבועי.
@@ -1034,10 +935,10 @@ No user specified: לא ציינת משתמש
 #
 Purging events for: מוחק ארועים עבור
 Finished: סיימתי
+Back: חזור
 Check box to delete <b>ALL</b> events for a user: סמן משבצת כדי למחוק את <b>כל</b> הארועים של משתמש אחד
 Delete all events before: מחק את כל הארועים מלפני
 Preview delete: תצוגה מקדימה של המחיקה
-Are you sure you want to delete events for: בטוח שהנך רוצה למחוק ארועים עבור
 Records deleted from: רשומות נמחקו מ-
 
 ########################################
@@ -1130,12 +1031,6 @@ denotes administrative user: מציין מנהל
 ########################################
 # Page: usersel.php
 #
-#
-# << MISSING >>
-# No form specified!:
-#
-# << MISSING >>
-# No listid specified!:
 Reset: נקה
 
 ########################################
@@ -1192,15 +1087,14 @@ Hide: הסתר
 Approve/Confirm entry: אשר רשומה
 Reject entry: דחה רשומה
 Set category: קבע סיווג
-Edit repeating entry for all dates: ערוך רשומה חוזרת עבור כל התאריכים
-Edit entry for this date: ערוך רשומה עבור תאריך זה בלבד
-Delete repeating event for all dates: מחק רשומה חוזרת עבור כל התאריכים
-This will delete this entry for all users.: זה ימחוק את הרשומה עבור כל המשתמשים.
-Delete entry only for this date: מחק רשומה עבור תאריך זה בלבד
 Edit entry: ערוך רשומה
-from calendar of: מלוח השנה של
 Copy entry: העתק רשומה
-This will delete the entry from your boss\' calendar.: זה ימחוק את הרשומה מלוח השנה של המנהל שלך.
+This will delete this entry for all users.: זה ימחוק את הרשומה עבור כל המשתמשים.
+Edit repeating entry for all dates: ערוך רשומה חוזרת עבור כל התאריכים
+Delete repeating event for all dates: מחק רשומה חוזרת עבור כל התאריכים
+Edit entry for this date: ערוך רשומה עבור תאריך זה בלבד
+Delete entry only for this date: מחק רשומה עבור תאריך זה בלבד
+from calendar of: מלוח השנה של
 This will delete the entry from your calendar.: זה ימחוק את הרשומה מלוח השנה שלך.
 from your boss&#39; calendar: מלוח השנה של המנהל שלך
 Do you want to add this entry to your calendar?: האם ברצונך להוסיף את הרשומה ללוח השנה שלך?
@@ -1209,6 +1103,7 @@ Email all participants: שלח דוא"ל לכל המשתתפים
 Show activity log: הצג יומן פעילויות
 Hide activity log: הסתר יומן פעילויות
 Export this entry to: ייצא רשומה זו ל-
+Palm Pilot: Palm Pilot
 
 ########################################
 # Page: view_r.php
@@ -1223,16 +1118,16 @@ New Entry: רשומה חדשה
 ########################################
 # Page: includes/access.php
 #
-Edit Event: ערוך ארוע
-Day View: תצוגה יומית
-Week View: תצוגה שבועית
-Month View: תצוגה חודשית
-Year View: תצוגה שנתית
-Manage Views: ניהול תצוגות
-Category Management: ניהול סיווגים
-User Management: ניהול משתמשים
 Another User&#39;s Calendar: לוח שנה של משתמש אחר
+Category Management: ניהול סיווגים
+Day View: תצוגה יומית
+Edit Event: ערוך ארוע
+Month View: תצוגה חודשית
 Common Trailer: סיומת משותפת
+User Management: ניהול משתמשים
+Manage Views: ניהול תצוגות
+Week View: תצוגה שבועית
+Year View: תצוגה שנתית
 
 ########################################
 # Page: includes/config.php
@@ -1259,12 +1154,9 @@ Task Due Date: תאריך יעד המשימה
 TASKS: משימות
 Task_Title: כותרת
 Due: יעד
-View this task: צפה במשימה זו
 View this event: צפה בארוע זה
+View this task: צפה במשימה זו
 exceeds limit of XXX events per day: חורג מהמגבלה של XXX ארועים ליום
-#
-# << MISSING >>
-# on:
 You have XXX unapproved entries: יש לך XXX רשומות לא מאושרות
 January: ינואר
 February: פברואר
@@ -1334,35 +1226,24 @@ Journal updated: היומן עודכן
 Journal deleted: היומן נמחק
 Notification sent: הודעה נשלחה
 Reminder sent: תזכורת נשלחה
-#
-# << MISSING >>
-# New user (self registration):
-#
-# << MISSING >>
-# New user via email (self registration):
 Attachment: מצורף
-#
-# << MISSING >>
-# Delete User:
+Action: פעולה
 
 ########################################
 # Page: includes/help_list.php
 #
-#
-# << MISSING >>
-# Index:
 Page: דף
 
 ########################################
 # Page: includes/trailer.php
 #
-Home: הביתה
 My Calendar: לוח השנה שלי
-Back to My Calendar: חזור אל לוח השנה שלי
 Add New Entry: הוסף רשומה חדשה
 Add New Task: הוסף משימה חדשה
-Go to: לך אל
 Logout: ניתוק
+Home: הביתה
+Back to My Calendar: חזור אל לוח השנה שלי
+Go to: לך אל
 Manage calendar of: נהל לוח שנה של
 
 ########################################
@@ -1373,23 +1254,11 @@ not supported: אינו נתמך
 Browser-defined: מוגדר על ידי הדפדפן
 English: English
 English-US: English-US
-#
-# << MISSING >>
-# Afrikaans:
-#
-# << MISSING >>
-# Albanian:
-#
-# << MISSING >>
-# Arabic:
 Basque: Basque
 Bulgarian: Bulgarian
 Catalan: Catalan
 Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
 Chinese (Traditional/Big5): Chinese (Traditional/Big5)
-#
-# << MISSING >>
-# Croatian:
 Czech: Czech
 Danish: Danish
 Dutch: Dutch
@@ -1399,33 +1268,18 @@ French: French
 Galician: Galician
 German: German
 Greek: Greek
-#
-# << MISSING >>
-# Hebrew:
 Holo (Taiwanese): Holo (Taiwanese)
 Hungarian: Hungarian
 Icelandic: Icelandic
 Italian: Italian
 Japanese: Japanese
 Korean: Korean
-#
-# << MISSING >>
-# Lithuanian:
 Norwegian: Norwegian
 Polish: Polish
 Portuguese: Portuguese
 Portuguese/Brazil: Portuguese/Brazil
 Romanian: Romanian
 Russian: Russian
-#
-# << MISSING >>
-# Serbian:
-#
-# << MISSING >>
-# Slovak:
-#
-# << MISSING >>
-# Slovenian:
 Spanish: Spanish
 Swedish: Swedish
 Turkish: Turkish
@@ -1448,21 +1302,6 @@ no such user: אין משתמש כזה
 ########################################
 # Page: includes/xcal.php
 #
-#
-# << MISSING >>
-# TU:
-#
-# << MISSING >>
-# WE:
-#
-# << MISSING >>
-# TH:
-#
-# << MISSING >>
-# FR:
-#
-# << MISSING >>
-# SA:
 Interval: פרק זמן
 Months: חודשים
 Month Days: ימי החודש
@@ -1562,7 +1401,6 @@ This Year: השנה
 Exit: צא
 Add New Event: הוסף ארוע חדש
 Delete Entries: מחק רשומות
-Another User\'s Calendar: לוח שנה של משתמש אחר
 My Views: התצוגות שלי
 Manage Calendar of: ניהול לוח השנה של
 My Reports: הדו"חות שלי
@@ -1576,18 +1414,11 @@ User Manager: ניהול משתמשים
 #
 WebCalendar Installation Wizard: אשף ההתקנה של לוח השנה
 Step: צעד
-#
-# << MISSING >>
-# Single-User:
 Failure Reason: סיבת הכשלון
 You must manually create database: עליך ליצור את בסיס הנתונים ידנית
 Database Cache Directory: מחיצת מטמון של בסיס הנתונים
-#
-# << MISSING >>
-# Test Settings:
 Create New: צור חדש
 Database Name: שם בסיס הנתונים
-Back: חזור
 Timezone Conversion Successful: המרת איזור זמן הצליחה
 Error Unable to write to file: שגיאה, לא הצלחתי לכתוב לקובץ
 Successful Login: כניסה מוצלחת
@@ -1616,9 +1447,6 @@ This installation wizard will guide you...: אשף ההתקנה יוביל או�
 PHP Version Check: בדיקת גרסת PHP
 Check to see if PHP 4.1.0 or greater is installed: בודק לוודא שמותקן PHP בגרסה 4.1.0 או יותר
 PHP version: גרסת PHP
-#
-# << MISSING >>
-# PHP Settings:
 Detailed PHP Info: מידע PHP מפורט
 Session Check: בדיקת סשן
 To test the proper operation of sessions, reload this page: כדי לבדוק את הפעולה התקינה של הסשן, טען דף זה מחדש
@@ -1651,9 +1479,6 @@ This appears to be an upgrade from version: זה נראה כעדכון מגרס�
 In this section we will perform the required database changes to bring your database up to the required level: בחלק זה נבצע את השינויים המתבקשים לבסיס הנתונים כדי להביא את בסיס הנתונים שלך אל הרמה הדרושה
 If you are using a fully supported database, this step will be performed automatically for you: אם הנך משתמש בבסיס נתונים עם תמיכה מלאה, צעד זה יתבצע באופן אוטומטי
 If not, the required SQL can be displayed and you should be able: אם לא, יוצג ה-SQL הדרוש, ואתה אמור להיות מסוגללחתוך &amp; הדבק אותו אל תוך חלון השאילתות של בסיס הנתונים שלך
-#
-# << MISSING >>
-# to cut &amp; paste it into your database server query window:
 No database actions are required: לא נדרשות כל פעולות בבסיס הנתונים
 The following database actions are required: פעולות בסיס הנתונים הבאות נדרשות
 ODBC Underlying Database: בסיס נתונים על בסיס ODBC
@@ -1679,9 +1504,6 @@ HTTP-based authentication was detected: נמצא אמות מבוסס HTML
 User authentication is being handled by your web server: שרת הווב שלך מטפל באימות משתמשים
 You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: עליך לבחור ב'שרת ווב' מרשימת בחירות ,אימות משתמשים' בהמשך
 Create Default Admin Account: צור חשבון מנהל ברירת מחדל
-#
-# << MISSING >>
-# Admin Account Not Found:
 User Authentication: אימות משתמשים
 Web-based via WebCalendar (default): מבוסס ווב באמצעות לוח השנה (ברירת המחדל)
 Web Server: שרת ווב
@@ -1696,21 +1518,12 @@ Launch WebCalendar: הפעל את לוח השנה
 ########################################
 # Page: install/install_functions.php
 #
-#
-# << MISSING >>
-# Error updating webcal_config:
-#
-# << MISSING >>
-# Error updating webcal_user_pref:
 Perl script required: הגירסה הקודמת של לוח השנה שלך מחייבת הרצת סקריפט של PERL כדי להמיר את המידע שלך.נא להריץ את /tools/upgrade_to_0.9.7.pl ואחרי זה חזור לדף הזה.
 Your previous version of WebCalendar requires updating several database tables.: הגירסה הקודמת של לוח השנה שלך מחייבת עדכון מספר טבלאות בבסיס הנתונים שלך.
 
 ########################################
 # Page: tools/reload_remotes.php
 #
-#
-# << MISSING >>
-# Error connecting to database:
 Include Path: Include Path
 Deleting events for: מוחק ארועים עבור
 Importing events for: מייבא ארועים עבור
@@ -1722,14 +1535,5 @@ Remote Calendars not enabled: לוחות שנה מרוקים לא מאופשרי
 ########################################
 # Page: tools/send_reminders.php
 #
-#
-# << MISSING >>
-# could not find event id:
-#
-# << MISSING >>
-# could not find event id XXX in database.:
-#
-# << MISSING >>
-# This is a reminder for the XXX detailed below.:
 Pecentage Complete: אחוז מושלם
 Reminder: תזכורת

@@ -10,25 +10,43 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: iso-8859-1
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Database error: Error en base de datos
 Cancel: Cancelar
 Save: Guardar
+Go: Ir
 Public Access: Usuario anónimo
 Admin: Administración
-Go: Ir
 Calendar: Calendario
 Edit: Editar
 Events: Eventos
@@ -36,29 +54,20 @@ Public: Público
 confidential: confidencial
 private: privado
 
-
-###############################################
+########################################
 # Page: activity_log.php
 #
-Activity Log: Registro de actividad
-User: Usuario
-Date: Fecha
-Time: Hora
-Event: Evento
-Action: Acción
-Previous: Previo
 Next: Siguiente
+Previous: Previo
 
-
-###############################################
+########################################
 # Page: add_entry.php
 #
+Event: Evento
 Invalid entry id: Identificador de entrada inválida
-This is a private event and may not be added to your calendar.: Este es un evento privado y no puedes ser añadido a su calendario.
 Error adding event: Error al añadir evento
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Elegir
@@ -223,8 +232,7 @@ Table cell background for weekends: Fondo de una celda de fin de semana
 Event popup background: Fondo de un popup de evento
 Event popup text: Texto del popup de evento
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Preferences: Preferencias
@@ -236,57 +244,53 @@ Views: Vistas
 Layers: Capas
 Reports: Informes
 Delete Events: Borrar eventos
+Activity Log: Registro de actividad
 Public Preferences: Preferencias públicas
 Unapproved Public Events: Eventos públicos no aprobados
 Administrative Tools: Herramientas administrativas
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Hello: Hola
 The subject was: El título era
 The description is: La descripción es
+Date: Fecha
+Time: Hora
 
-
-###############################################
+########################################
 # Page: assistant_edit.php
 #
 Admin mode: Modo administrador
 Your assistants: Tus ayudantes
 
-
-###############################################
+########################################
 # Page: category.php
 #
+Global: Global
 Add: Añadir
 Category Name: Nombre de la categoría
-Global: Global
 Delete: Borrar
 Are you sure you want to delete this entry?: Está seguro de querer borrar esta entrada?
 Add New Category: Añadir nueva categoría
 
-
-###############################################
+########################################
 # Page: catsel.php
 #
 Remove: Quitar
 Ok: Ok
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Una cita/evento suyo ha sido cancelado por
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Description: Descripción
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: am
@@ -339,8 +343,7 @@ days: días
 Delete entry: Borrar entrada
 You are not authorized to edit this entry: No estás autorizado para editar esta entrada
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: Lo siguiente hace conflicto con la hora indicada
@@ -354,8 +357,7 @@ Scheduling Conflict: Conflicto entre citas
 Your suggested time of: Su hora sugerida es
 conflicts with the following existing calendar entries: no encaja con las siguiente entradas existentes en el calendario
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: Editar Capa
@@ -368,15 +370,13 @@ Add to My Calendar: Agregar a mi calendario
 Delete layer: Eliminar capa
 Are you sure you want to delete this layer?: ¿Está seguro que desea eliminar esta capa?
 
-
-###############################################
+########################################
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: No puede crear una capa para usted mismo
 You can only create one layer for each user: Sólo puede crear una capa para cada usuario
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX no ha sido configurado
@@ -387,8 +387,7 @@ Calendar ID: ID de calendario
 First Name: Nombre
 Last Name: Apellido
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: Error
@@ -397,8 +396,7 @@ Events successfully imported: Eventos importados correctamente
 Errors: Errores
 There was an error parsing the import file or no events were returned: Ha habido un error al analizar el archivo de importación o no se devolvió ningún acontecimiento
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Tomorrow: Mañana
@@ -427,6 +425,7 @@ Add Report: Añadir informe
 Edit Report: Editar informe
 Report name: Nombre del informe
 Current User: Usuario Actual
+User: Usuario
 Include link in trailer: Incluir enlace en final
 Include standard header/trailer: Incluir cabecera/final estándar
 Date range: Rango fecha
@@ -438,22 +437,19 @@ Day template: Día plantilla
 Event template: Evento plantilla
 Are you sure you want to delete this report?: ¿Estás seguro que quieres borrar este informe?
 
-
-###############################################
+########################################
 # Page: edit_report_handler.php
 #
 Variable N not found: Variable N no encontrada
 
-
-###############################################
+########################################
 # Page: edit_template.php
 #
 Edit Custom Script/Stylesheet: Editar código/hoja de estilos personalizada
 Edit Custom Header: Editar cabecera personalizada
 Edit Custom Trailer: Editar final personalizado
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: Nombre de usuario
@@ -466,41 +462,35 @@ Change Password: Cambiar contraseña
 New Password: Nueva contraseña
 Set Password: Ajustar contraseña
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Borrado de usuarios no soportado
 The passwords were not identical: Estas contraseña no son idénticas
 You have not entered a password: Usted no ha introducido una contraseña
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Exportar
 Export format: Formato de exportación
-Palm Pilot: Palm Pilot
 Include all layers: Incluir todas las capas
 Export all dates: Exportar todas las fechas
 Start date: Fecha inicio
 End date: Fecha fin
 Modified since: Modificado desde
 
-
-###############################################
+########################################
 # Page: export_handler.php
 #
 export format not defined or incorrect: Formato de exportación no definido o incorrecto
 
-
-###############################################
+########################################
 # Page: groups.php
 #
 Add New Group: Agregar nuevo grupo
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Grupo sin nombre
@@ -510,14 +500,12 @@ Group name: Nombre del grupo
 Updated: Actualizado
 Created by: Creado por
 
-
-###############################################
+########################################
 # Page: group_edit_handler.php
 #
 You must specify a group name: Debe especificar un nombre de grupo
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 Display weekends in week view: Mostrar fines de semana en vista semanal
@@ -531,14 +519,12 @@ auto-refresh-time-help: Si el refresco automático está habilitado, este campo es
 Nonuser: NoUsuario
 colors-help: Todos los colores deben especificarse en formato hexadecimal "#RRGGBB" donde "RR" es el valor hexadecimal del rojo, "GG"  es el valor hexadecimal del verde y "BB" es el valor hexadecimal del azul.
 
-
-###############################################
+########################################
 # Page: help_bug.php
 #
 Report Bug: Informe de error
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Añadir/editar entradas del calendario
@@ -547,8 +533,7 @@ Repeat End Date: Fecha final de repetición
 Repeat Day: Día repetición
 repeat-day-help: Especifica en que dias del mes debe repetirse el evento. Para usar sólo cuando <i>Tipo de repetición</i> está ajustado a <i>Semanal</i>. 
 
-
-###############################################
+########################################
 # Page: help_import.php
 #
 Import: Importar
@@ -564,14 +549,12 @@ The following formats have been tested: Los siguientes formatos se han comprobad
 This form will import iCalendar (.ics) events: Este formulario importará eventos iCalendar (.ics)
 Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Activar <b>Sobreescribir importación anterior</b> provocará que los eventos importados anteriormente que usen el mismo UID que un evento del nuevo fichero de importación se marcarán como borrados. Esto debería permitir importar un fichero iCalendar actualizado sin que se creen duplicados.
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Ayuda
 
-
-###############################################
+########################################
 # Page: help_layers.php
 #
 Add/Edit/Delete: Añadir/editar/eliminar
@@ -584,8 +567,7 @@ Press the Disable Layers link in the admin section at the bottom of the page to 
 Enabling: Habilitando
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Haz click en el enlace de deshabilitar capas en la sección de adminstración al pie de página para habilitar las capas.
 
-
-###############################################
+########################################
 # Page: help_pref.php
 #
 Default Category: Categoría por defecto
@@ -597,8 +579,7 @@ Subscribe/Publish: Suscribir/publicar
 allow-remote-subscriptions-help: Especifica si usuarios remotos pueden suscribirse a tu calendario, permitiéndoles ver tus eventos en una aplicación i-Cal (como Apple's iCal o Mozilla Calendar).
 remote-subscriptions-url-help: Muestra la URL que los usuarios remotos deben utilizar para suscribirse a tu calendario
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: Deshabilitadas
@@ -606,16 +587,14 @@ Import format: Formato de importación
 Exclude private records: Excluir eventos privados
 Overwrite Prior Import: Sobreescribir importación anterior
 
-
-###############################################
+########################################
 # Page: import_handler.php
 #
 Events from prior import marked as deleted: Eventos de la importación anterior marcados como borrados
 Conflicting events: Eventos que están en conflicto
 The import file contained no data: El fichero de importación no contiene datos
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: Las capas están actualmente
@@ -629,8 +608,7 @@ Add layer: Agregar capa
 Layer: Capa
 Edit layer: Editar capa
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: Ver esta entrada
@@ -639,8 +617,7 @@ Approve this entry?: ¿Aprueba esta entrada?
 Reject: Rechazar
 Reject this entry?: ¿Rechazar este registro?
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: Usted debe introducor nombre de usuario y contraseña
@@ -649,45 +626,38 @@ Login: Entrar
 Access public calendar: Acceso a calendario público
 cookies-note: <b>Nota:</b> Esta aplicación requiere tener habilitado cookies.
 
-
-###############################################
+########################################
 # Page: login.php
 #
 Invalid login: Usuario/contraseña incorrectos
 
-
-###############################################
+########################################
 # Page: nonusers.php
 #
 Add New NonUser Calendar: Añadir nuevo calendario de NoUsuario
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Guardar preferencias
 hour: hora
 minute: minuto
 
-
-###############################################
+########################################
 # Page: purge.php
 #
 Purging events for: Eliminando eventos para
 Finished: Terminado
 Check box to delete <b>ALL</b> events for a user: Marcar la casilla para borrar <b>TODOS</b> los eventos de un usuario
 Delete all events before: Borrar todos los eventos antes de
-Are you sure you want to delete events for: ¿Estás seguro de querer borrar los eventos de
 Records deleted from: Registros borrados de
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: Un evento ha sido rechazado por
 
-
-###############################################
+########################################
 # Page: report.php
 #
 cont.: cont.
@@ -701,16 +671,14 @@ to manage reports for the Public Access calendar: para manejar informes para el 
 Add new report: Añadir nuevo informe
 Manage Reports: Manejar informes
 
-
-###############################################
+########################################
 # Page: search.php
 #
+Advanced Search: Búsqueda avanzada
 Search: Buscar
 Keywords: Palabra clave
-Advanced Search: Búsqueda avanzada
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: Debes introducir una ó más palabras clave
@@ -719,40 +687,34 @@ match found: acierto encontrado
 matches found: aciertos encontrados
 No matches found: no se encontraron aciertos
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: Ver calendario de otro usuario
 
-
-###############################################
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories: No has creado categorías
 Set Category: Asignar categoría
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Add New User: Agregar nuevo usuario
 denotes administrative user: indica usuario administrativo
 
-
-###############################################
+########################################
 # Page: usersel.php
 #
 Reset: Resetear
 
-
-###############################################
+########################################
 # Page: views.php
 #
 Add New View: Agregar nueva vista
 
-
-###############################################
+########################################
 # Page: views_edit.php
 #
 Unnamed View: Vista sin nombre
@@ -767,14 +729,12 @@ Month (Timebar): Mes (barra)
 Month (side by side): Mes (de lado a lado)
 Month (on same calendar): Mes (en el mismo calendario)
 
-
-###############################################
+########################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Debes especificar un nombre de vista
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Assistant mode: Modo ayudante
@@ -783,13 +743,13 @@ External User: Usuario externo
 Approve/Confirm entry: Aprobar/Confirmar registro
 Reject entry: Rechazar registro
 Set category: Fijar categoría
-Edit repeating entry for all dates: Editar registro repetitivo para todas las fechas
-Edit entry for this date: Editar entrada para este día
-Delete repeating event for all dates: Eliminar eventos repetitivos para todas las fechas
-This will delete this entry for all users.: Esta acción borrará esta entrada para todos los usuarios
-Delete entry only for this date: Borrar entrada sólo para esta fecha
 Edit entry: Editar entrada
 Copy entry: Copiar entrada
+This will delete this entry for all users.: Esta acción borrará esta entrada para todos los usuarios
+Edit repeating entry for all dates: Editar registro repetitivo para todas las fechas
+Delete repeating event for all dates: Eliminar eventos repetitivos para todas las fechas
+Edit entry for this date: Editar entrada para este día
+Delete entry only for this date: Borrar entrada sólo para esta fecha
 This will delete the entry from your calendar.: Esta acción eliminara el registro de tu calendario.
 Do you want to add this entry to your calendar?: ¿Desea agregar este registro a su calendario?
 This will add the entry to your calendar.: Esto agregara el registro a tu calendario.
@@ -797,28 +757,25 @@ Email all participants: Enviar email a todos los participantes
 Show activity log: Mostrar registro de actividad
 Hide activity log: Esconder registro de actividad
 Export this entry to: Exportar esta entrada a
+Palm Pilot: Palm Pilot
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: Nuevo registro
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
 Another User&#39;s Calendar: Ver calendario de otro usuario
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 December: Diciembre
 Dec: Dic
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 WK: sem
@@ -871,20 +828,19 @@ Event updated: Evento actualizado
 Event deleted: Evento eliminado
 Notification sent: Notificación enviada
 Reminder sent: Recordatorio enviado
+Action: Acción
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
 My Calendar: Mi Calendario
-Back to My Calendar: Regresar a Mi Calendario
 Add New Entry: Agregar nueva entrada
-Go to: Ir a
 Logout: Salir
+Back to My Calendar: Regresar a Mi Calendario
+Go to: Ir a
 Manage calendar of: Manejar calendario de
 
-
-###############################################
+########################################
 # Page: includes/translate.php
 #
 English: Inglés
@@ -917,28 +873,29 @@ Spanish: Español
 Swedish: Sueco
 Turkish: Turco
 
-
-###############################################
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: Usuario/contraseña incorrectos
 
-
-###############################################
+########################################
 # Page: includes/user-nis.php
 #
 incorrect password: contraseña incorrecta
 no such user: no existe el usuario
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Evento sin nombre
 Event Imported: Evento importado
 
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Notificación
 
-###############################################
+########################################
 # Page: includes/js/admin.php
 #
 Server URL is required: Falta la URL del servidor
@@ -955,35 +912,24 @@ Invalid color for event popup text: Color de texto para popup de evento inválido
 Invalid color for table cell background for today: Color inválido para fondo de celda 'hoy'
 Color format should be &#39;#RRGGBB&#39;: Formato de Color debe ser Hexadecimal '#RRGGB
 
-
-###############################################
+########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: No has escrito una Breve descripción
 The time you have entered begins before your preferred work hours.  Is this correct?: La hora que ha introducido comienza antes de tus horas laborables preferidas. ¿Es correcto?
 You have not entered a valid time of day: No has dado una hora válida
 
-
-###############################################
+########################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Color no válido
 
-
-###############################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: Notificación
-
-
-###############################################
+########################################
 # Page: includes/menu/index.php
 #
 Unapproved Events: Eventos no aprobados
 
-
-###############################################
+########################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the event detailed below.: Este es un recordatorio para el evento detallado debajo
 Reminder: Recordatorio

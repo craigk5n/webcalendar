@@ -8,54 +8,63 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: iso-8859-1
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Database error: Tietokantavirhe
 Cancel: Kumoa
 Save: Talleta
+Go: Mene
 Public Access: Yleinen käyttö
 Admin: Ylläpito
-Go: Mene
 Calendar: Kalenteri
 Edit: Muokkaa
 Public: Julkinen
 confidential: luottamuksellinen
 private: yksityinen
 
-
-###############################################
+########################################
 # Page: activity_log.php
 #
-Activity Log: Käyttökirjanpito
-User: Käyttäjä
-Date: Pvm
-Time: Klo
-Event: Tapahtuma
-Action: Toiminto
-Previous: Edellinen
 Next: Seuraava
+Previous: Edellinen
 
-
-###############################################
+########################################
 # Page: add_entry.php
 #
+Event: Tapahtuma
 Invalid entry id: Väärä tunnus
-This is a private event and may not be added to your calendar.: Tämä on henkilökohtainen merkintä, eikä sitä voi kopioida kalenteriisi.
 Error adding event: Virhe merkintää lisättäessä
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Valitse
@@ -211,8 +220,7 @@ Table cell background for weekends: Taulukon solut viikonlopuille
 Event popup background: Tapahtuma-popupin tausta
 Event popup text: Tapahtuma-popupin teksti
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Preferences: Asetukset
@@ -224,56 +232,52 @@ Views: Näkymät
 Layers: Tasoja
 Reports: Raportit
 Delete Events: Poistetut tapahtumat
+Activity Log: Käyttökirjanpito
 Public Preferences: Julkiset asetukset
 Unapproved Public Events: Hyväksymättömiä julkisia tapahtumia
 Administrative Tools: Hallintatyökalut
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Hello: Hei
 The subject was: Otsikko
 The description is: Puuttuva kuvaus on
+Date: Pvm
+Time: Klo
 
-
-###############################################
+########################################
 # Page: assistant_edit.php
 #
 Admin mode: Pääkäyttäjä-tila
 
-
-###############################################
+########################################
 # Page: category.php
 #
+Global: Globaali
 Add: Lisää
 Category Name: Tapahtumaluokan nimi
-Global: Globaali
 Delete: Poista
 Are you sure you want to delete this entry?: Haluatko varmasti poistaa tämän merkinnän?
 Add New Category: Lisää uusi tapahtumaluokka
 
-
-###############################################
+########################################
 # Page: catsel.php
 #
 Remove: Poista
 Ok: Ok
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Kalenterimerkintäsi poisti
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Description: Kuvaus
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: am
@@ -325,8 +329,7 @@ days: päivää
 Delete entry: Poista merkintä
 You are not authorized to edit this entry: Sinulla ei ole oikeutta muokata tätä merkintää
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: Ehdotettuna aikana on seuraavat muut merkinnät
@@ -340,8 +343,7 @@ Scheduling Conflict: Aikataulussa ristiriita
 Your suggested time of: Ehdottamasi aika
 conflicts with the following existing calendar entries: on ristiriidassa seuraavien merkintöjen kanssa
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: Muokattava taso
@@ -354,15 +356,13 @@ Add to My Calendar: Lisää kalenteriin
 Delete layer: Poista taso
 Are you sure you want to delete this layer?: Haluatko poistaa tämän tason?
 
-
-###############################################
+########################################
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: Et voi luoda tasoa itsellesi
 You can only create one layer for each user: Voit luoda vain yhden tason käyttäjää kohti
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX ei määritetty tiedostossa config.php.
@@ -372,8 +372,7 @@ Calendar ID: Kalenterin nimi
 First Name: Etunimi
 Last Name: Sukunimi
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: Virhe
@@ -382,8 +381,7 @@ Events successfully imported: Tuodut tapahtumat
 Errors: Virheet
 There was an error parsing the import file or no events were returned: Virhe luettaessa tuontitiedostoa tai ei tapahtumia
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Tomorrow: Huomenna
@@ -412,6 +410,7 @@ Add Report: Lisää raportti
 Edit Report: Muokkaa raporttia
 Report name: Raportin nimi
 Current User: Käyttäjä
+User: Käyttäjä
 Include link in trailer: Lisää linkki alatunnisteeseen
 Include standard header/trailer: Lisää vakio ylä- ja alatunniste
 Date range: Päivämäärärajaus
@@ -423,22 +422,19 @@ Day template: Päiväraportin pohja
 Event template: Tapahtumaraportin pohja
 Are you sure you want to delete this report?: Haluatko varmasti poistaa tämän raportin?
 
-
-###############################################
+########################################
 # Page: edit_report_handler.php
 #
 Variable N not found: Muuttujaa N ei löydy
 
-
-###############################################
+########################################
 # Page: edit_template.php
 #
 Edit Custom Script/Stylesheet: Muokkaa oma skripti/tyylisivu
 Edit Custom Header: Muokkaa oma otsake
 Edit Custom Trailer: Muokkaa oma alatunniste
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: Käyttäjätunnus
@@ -450,40 +446,34 @@ Change Password: Vaihda salasana
 New Password: Uusi salasana
 Set Password: Aseta salasana
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Käyttäjien poisto ei ole tuettuna järjestelmässä
 The passwords were not identical: Salasanat eivät vastaa toisiaan
 You have not entered a password: salasanaa ei ole syötetty
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Talleta
 Export format: Tallennusmuoto
-Palm Pilot: Palm Pilot
 Export all dates: Talleta kaikki päiväysmerkinnät
 Start date: Alkupäivä
 End date: Lopetustuspäivä
 Modified since: Viimeksi muokattu
 
-
-###############################################
+########################################
 # Page: export_handler.php
 #
 export format not defined or incorrect: vientimuotoa ei määritelty tai se ei kelpaa
 
-
-###############################################
+########################################
 # Page: groups.php
 #
 Add New Group: Lisää uusi ryhmä
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Nimetön ryhmä
@@ -493,14 +483,12 @@ Group name: Ryhmän nimi
 Updated: Päivittänyt
 Created by: Luonut
 
-
-###############################################
+########################################
 # Page: group_edit_handler.php
 #
 You must specify a group name: Sinun täytyy määrittää ryhmälle nimi
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 Display weekends in week view: Näytä viikonloput viikkoa katseltaessa
@@ -514,14 +502,12 @@ auto-refresh-time-help: Tauko päivitysten välillä.
 Nonuser: Ei-kenenkään kalenterit
 colors-help: Kaikki värit määritellään koodaamalla ne heksadesimaalinumeroksi #RRGGBB-muotoon. (RR-punainen, GG-vihreä ja BB-sininen arvo (00-FF)). 
 
-
-###############################################
+########################################
 # Page: help_bug.php
 #
 Report Bug: Ilmoita bugista
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Lisää/Muuta kalenterimerkintöjä
@@ -530,8 +516,7 @@ Repeat End Date: Toiston lopetuspäivä
 Repeat Day: Toista viikonpäivittäin
 repeat-day-help: Määrittelee viikonpäivä, joina tapahtumaa toistetaan. Käytettävissä vain kun <i>Toistotyypiksi</i> on asetettu <i>Viikottain</i>.
 
-
-###############################################
+########################################
 # Page: help_import.php
 #
 Import: Tuo
@@ -547,14 +532,12 @@ The following formats have been tested: Seuraavat tiedostomuodot on testattu
 This form will import iCalendar (.ics) events: Tuo iCalendar (.ics) tällä lomakkeella
 Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Jos valitset <b>Tuo ylikirjoittaen</b>, poistetaan samalla UID:lla olevat tapahtumat ennen tuontia. Näin voit tuoda päivitetyn iCalendar -tiedoston ilman, että samasta tapahtumasta syntyy useita kopioita.
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Ohjehakemisto
 
-
-###############################################
+########################################
 # Page: help_layers.php
 #
 Add/Edit/Delete: Lisää/Muokkaa/Poista
@@ -567,8 +550,7 @@ Press the Disable Layers link in the admin section at the bottom of the page to 
 Enabling: Otetaan käyttöön
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Paina 'Otetaan käyttöön'-linkkiä pääkäyttäjä-kohdassa sivun alaosassa asettaaksesi tasot käyttöön
 
-
-###############################################
+########################################
 # Page: help_pref.php
 #
 Default Category: Oletusluokka
@@ -580,8 +562,7 @@ Subscribe/Publish: Tilaa/Julkaise
 allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
 remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: Poistettu käytöstä
@@ -589,16 +570,14 @@ Import format: Tuontitiedon muoto
 Exclude private records: Ei yksityisiä merkintöjä
 Overwrite Prior Import: Tuo ylikirjoittaen
 
-
-###############################################
+########################################
 # Page: import_handler.php
 #
 Events from prior import marked as deleted: Tuonnissa poistetut tapahtumat
 Conflicting events: Päällekkäiset tapahtumat
 The import file contained no data: Tuontitiedostossa ei ollut tapahtumia
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: Tasot ovat
@@ -611,8 +590,7 @@ Add layer: Lisättävä taso
 Layer: Taso
 Edit layer: Muokkaa tasoa
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: Näytä merkintä
@@ -621,8 +599,7 @@ Approve this entry?: Hyväksytäänkö merkintä?
 Reject: Hylkää
 Reject this entry?: Hylätäänkö merkintä?
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: Syötä käyttäjätunnus ja salasana
@@ -631,43 +608,36 @@ Login: Kirjoittaudu
 Access public calendar: Salli yleinen kalenteri
 cookies-note: <b>Huom:</b> Tätä sovellusta käytettäessä (joulu)piparien pitää olla käytössä.
 
-
-###############################################
+########################################
 # Page: login.php
 #
 Invalid login: Kirjoittauminen järjestelmään ei onnistunut
 
-
-###############################################
+########################################
 # Page: nonusers.php
 #
 Add New NonUser Calendar: Lisää uusi ulkoinen käyttäjä
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Talleta asetukset
 hour: tuntia
 
-
-###############################################
+########################################
 # Page: purge.php
 #
 Purging events for: Tuhotaan tapahtumia kohteesta
 Finished: Valmis
 Check box to delete <b>ALL</b> events for a user: Laita rasti ruutuun poistaaksesi <b>KAIKKI</b> käyttäjän tapahtumat
 Delete all events before: Poista tapahtumat ennen
-Are you sure you want to delete events for: Haluatko varmasti poistaa kaikki tapahtumat käyttäjältä
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: Kalenterimerkintä on hylätty
 
-
-###############################################
+########################################
 # Page: report.php
 #
 cont.: jatk.
@@ -681,16 +651,14 @@ to manage reports for the Public Access calendar: hallinnoidaksesi Julkisen kale
 Add new report: Lisää uusi raportti
 Manage Reports: Hallinnoi raportteja
 
-
-###############################################
+########################################
 # Page: search.php
 #
+Advanced Search: Laajennettu haku
 Search: Etsi
 Keywords: Hakusanat
-Advanced Search: Laajennettu haku
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: Syötä yksi tai useampi hakusana
@@ -699,40 +667,34 @@ match found: kohde löytyi
 matches found: kohdetta löytyi
 No matches found: Kohteita ei löytynyt
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: Näytä toisen käyttäjän kalenteri
 
-
-###############################################
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories: Et ole lisännyt tapahtumaluokkia
 Set Category: Aseta luokka
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Add New User: Lisää uusi käyttäjä
 denotes administrative user: tarvitaan pääkäyttäjän oikeudet
 
-
-###############################################
+########################################
 # Page: usersel.php
 #
 Reset: Resetoi
 
-
-###############################################
+########################################
 # Page: views.php
 #
 Add New View: Lisää uusi näkymä
 
-
-###############################################
+########################################
 # Page: views_edit.php
 #
 Unnamed View: Nimetön näkymä
@@ -746,14 +708,12 @@ Week (Timebar): Viikko (aikajana)
 Month (side by side): Kuukausi (rinnakkain)
 Month (on same calendar): Kuukausi (samassa kalenterissa)
 
-
-###############################################
+########################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Sinun täytyy määrittää näkymän nimi
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Assistant mode: Avustaja-tila
@@ -762,12 +722,12 @@ External User: Ulkoinen käyttäjä
 Approve/Confirm entry: Hyväksy/Vahvista merkintä
 Reject entry: Hylkää merkintä
 Set category: Aseta luokka
-Edit repeating entry for all dates: Muokkaa toistuvaa entryä kaikille päiville
-Edit entry for this date: Muokkaa tämän päivän entryä
-Delete repeating event for all dates: Poista toistuvat tapahtumat kaikilta päiviltä
-This will delete this entry for all users.: Tämä merkintä poistetaan kaikilta käyttäjiltä.
-Delete entry only for this date: Poista vain tämän päivän entryt
 Edit entry: Muokkaa merkintää
+This will delete this entry for all users.: Tämä merkintä poistetaan kaikilta käyttäjiltä.
+Edit repeating entry for all dates: Muokkaa toistuvaa entryä kaikille päiville
+Delete repeating event for all dates: Poista toistuvat tapahtumat kaikilta päiviltä
+Edit entry for this date: Muokkaa tämän päivän entryä
+Delete entry only for this date: Poista vain tämän päivän entryt
 This will delete the entry from your calendar.: Poistetaan merkintä kalenteristasi.
 Do you want to add this entry to your calendar?: Haluatko lisätä tämän merkinnän kalenteriisi?
 This will add the entry to your calendar.: Lisätään merkintä kalenteriisi.
@@ -775,28 +735,25 @@ Email all participants: Lähetä sähköpostia kaikille osallistujille
 Show activity log: Näytä aktiviteettiloki
 Hide activity log: Piilota aktiviteettiloki
 Export this entry to: Lähetä tämä tapahtuma
+Palm Pilot: Palm Pilot
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: Uusi merkitä
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
 Another User&#39;s Calendar: Toisen käyttäjän kalenteri
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 December: Joulukuu
 Dec: Joulu
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 WK: Vko
@@ -847,33 +804,35 @@ Event updated: Tapahtuma päivitetty
 Event deleted: Tapahtuma poistettu
 Notification sent: Tiedote lähetetty
 Reminder sent: Muistuttaja lähetetty
+Action: Toiminto
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
 My Calendar: Kalenteri
-Back to My Calendar: Palaa kalenterisivulle
 Add New Entry: Lisää uusi merkintä
-Go to: Siirry
 Logout: Lopeta
+Back to My Calendar: Palaa kalenterisivulle
+Go to: Siirry
 Manage calendar of: Hallitse henkilön kalenteria
 
-
-###############################################
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: Väärä käyttäjänimi
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Nimetön merkintä
 Event Imported: Tapahtuma tuotu
 
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Muistutus
 
-###############################################
+########################################
 # Page: includes/js/admin.php
 #
 Server URL is required: Palvelimien URL on pakollinen
@@ -889,35 +848,24 @@ Invalid color for event popup text: Popup-ikkunan tekstin väri on virheellinen
 Invalid color for table cell background for today: Kuluvan päivän taustaväri on virheellinen
 Color format should be &#39;#RRGGBB&#39;: Värikoodin tulee olla muotoa '#RRGGBB'
 
-
-###############################################
+########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Selite puuttuu
 The time you have entered begins before your preferred work hours.  Is this correct?: Alkuaika on ennen normaalin työajan alkua. Onko se oikein?
 You have not entered a valid time of day: Kellonaika puuttuu
 
-
-###############################################
+########################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Virheellinen värikoodi
 
-
-###############################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: Muistutus
-
-
-###############################################
+########################################
 # Page: includes/menu/index.php
 #
 Unapproved Events: Hyväksymättömät tapahtumat
 
-
-###############################################
+########################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the event detailed below.: Muistutus alla esitetystä tapahtumasta.
 Reminder: Muistutus

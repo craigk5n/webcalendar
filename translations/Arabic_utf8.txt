@@ -5,45 +5,59 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: UTF-8
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
-# Page: activity_log.php
-#
-Time: الوقت
-
-
-###############################################
+########################################
 # Page: admin.php
 #
 Sunday: الأحد
 Monday: الإثنين
 
+########################################
+# Page: approve_entry.php
+#
+Time: الوقت
 
-###############################################
+########################################
 # Page: edit_report.php
 #
 Today: اليوم الحالى
 Next month: الشهر التالى
 Next year: السنة التالية
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 December: ديسمبر
 Dec: ديسمبر
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 WK: أسبوع

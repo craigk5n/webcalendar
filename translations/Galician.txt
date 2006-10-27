@@ -4,46 +4,53 @@
 # Last update: 20 May 2001
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: iso-8859-1
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Database error: Erro da base de datos
 Cancel: Cancelar
 Save: Gravar
-Admin: Xestión
 Go: Ir
+Admin: Xestión
 Public: Público
 confidential: confidencial
 private: privado
 
-
-###############################################
-# Page: activity_log.php
-#
-User: Usuario
-Date: Data
-Time: Hora
-
-
-###############################################
+########################################
 # Page: add_entry.php
 #
 Invalid entry id: id de entrada non válido
-This is a private event and may not be added to your calendar.: Este evento é privado e non o pode engadir ó seu calendario.
 Error adding event: Erro ó engadi-lo evento
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Seleccionar
@@ -97,8 +104,7 @@ Document title: Título do documento
 Table cell background: Fondo da cela da táboa
 Table cell background for current day: Fondo da cela para hoxe
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Preferences: Preferencias
@@ -106,34 +112,31 @@ Users: Usuarios
 Account: Conta
 Layers: Capas
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Hello: Ola
 The subject was: O tema era
+Date: Data
+Time: Hora
 
-
-###############################################
+########################################
 # Page: category.php
 #
 Delete: Borrar
 Are you sure you want to delete this entry?: ¿Está seguro de que quere borrar esta entrada?
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Foille cancelada unha cita por
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Description: Descrición
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: am
@@ -172,8 +175,7 @@ days: días
 Delete entry: Borrar entrada
 You are not authorized to edit this entry: Non está autorizado para modificar esta entrada
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: O seguinte entra en conflicto coa hora suxerida
@@ -187,8 +189,7 @@ Scheduling Conflict: Conflicto de horario
 Your suggested time of: A súa hora suxerida de
 conflicts with the following existing calendar entries: entra en conflicto coas seguintes entradas existentes no calendario
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: Modificar Capa
@@ -201,8 +202,7 @@ Add to My Calendar: Engadir ó meu Calendario
 Delete layer: Borrar capa
 Are you sure you want to delete this layer?: ¿Está seguro de que quere borrar esta capa?
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 Edit User: Modificar Usuario
@@ -210,20 +210,18 @@ Add User: Engadir Usuario
 First Name: Nome
 Last Name: Apelido
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: Erro
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Current User: Usuario actual
+User: Usuario
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: Nome de usuario
@@ -235,40 +233,34 @@ Change Password: Cambiar contrasinal
 New Password: Novo contrasinal
 Set Password: Fixar contrasinal
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 The passwords were not identical: Os contrasinais non eran idénticos
 You have not entered a password: Non introduciu ningún contrasinal
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Exportar
 Export format: Formato ó que exportar
-Palm Pilot: Palm Pilot
 Export all dates: Exportar tódalas datas
 Start date: Data de comezo
 End date: Data final
 Modified since: Modificado dende
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Updated: Actualizado
 Created by: Creado por
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 colors-help: Tódolas cores deben especificarse no formato hexadecimal "#RRGGBB" onde "RR" é o valor hexadecimal para o vermello, "GG" é o valor hexadecimal para o verde e "BB" é o valor hexadecimal para o azul
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Engadindo/Modificando Entradas do Calendario
@@ -277,20 +269,17 @@ Repeat End Date: Data final de repetición
 Repeat Day: Día de repetición
 repeat-day-help: Especifica qué días da semana se repetirá o evento. Esta opción só se pode usar cando en <i>Tipo de Repetición</i> se selecciona <i>Semanalmente</i>.
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Índice da axuda
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: Desactivado
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: As capas están actualmente
@@ -301,8 +290,7 @@ Add layer: Engadir capa
 Layer: Capa
 Edit layer: Modificar capa
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: Ver esta entrada
@@ -311,8 +299,7 @@ Approve this entry?: ¿Aprobar esta entrada?
 Reject: Rexeitar
 Reject this entry?: ¿Rexeitar esta entrada?
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: Debe introducir un login e un contrasinal
@@ -320,40 +307,34 @@ Save login via cookies so I don&#39;t have to login next time: Gravar login medi
 Login: Entrar
 cookies-note: <b>Nota:</b> Este programa necesita que as cookies estean activadas.
 
-
-###############################################
+########################################
 # Page: login.php
 #
 Invalid login: Login inválido
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Gravar preferencias
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: Foille rexeitada unha cita por
 
-
-###############################################
+########################################
 # Page: report.php
 #
 This event is confidential: Este evento é confidencial
 Rejected: Rexeitada
 
-
-###############################################
+########################################
 # Page: search.php
 #
 Search: Buscar
 Keywords: Palabras clave
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: Debe introducir unha ou máis palabras clave para a busca
@@ -362,52 +343,46 @@ match found: coincidencia atopada
 matches found: coincidencias atopadas
 No matches found: Non se atoparon coincidencias
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: Ve-lo Calendario de outro Usuario
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Add New User: Engadir Novo Usuario
 denotes administrative user: denota usuario administrativo
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Approve/Confirm entry: Aprobar/Confirmar entrada
 Reject entry: Rexeitar entrada
-This will delete this entry for all users.: Esto borrará esta entrada para tódolos usuarios.
 Edit entry: Modificar entrada
+This will delete this entry for all users.: Esto borrará esta entrada para tódolos usuarios.
 This will delete the entry from your calendar.: Esto borrará a entrada do seu calendario.
 Do you want to add this entry to your calendar?: ¿Quere engadir esta entrada ó seu calendario?
 This will add the entry to your calendar.: Esto engadirá a entrada ó seu calendario.
+Palm Pilot: Palm Pilot
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: Nova entrada
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
 Another User&#39;s Calendar: Calendario de outro usuario
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 December: Decembro
 Dec: Dec
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 January: Xaneiro
@@ -450,24 +425,26 @@ Error approving event: Erro ó aproba-lo evento
 Generate printer-friendly version: Xenerar versión para imprimir
 Printer Friendly: Versión para imprimir
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
 My Calendar: O Meu Calendario
-Back to My Calendar: Volver ó meu Calendario
 Add New Entry: Engadir nova entrada
-Go to: Ir a
 Logout: Saír
+Back to My Calendar: Volver ó meu Calendario
+Go to: Ir a
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Evento sen nome
 
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Notificación
 
-###############################################
+########################################
 # Page: includes/js/admin.php
 #
 Invalid color for document background: Color non válido para o fondo do documento
@@ -476,35 +453,24 @@ Invalid color for table cell background: Color non válido para o fondo da cela
 Invalid color for table cell background for today: Color non válido para o fondo da cela de hoxe
 Color format should be &#39;#RRGGBB&#39;: O formato da cor debería ser '#RRGGBB'
 
-
-###############################################
+########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Non introduciu ningunha descrición breve
 The time you have entered begins before your preferred work hours.  Is this correct?: A hora que introduciu comeza antes das súas horas de traballo indicadas. ¿Está ben?
 You have not entered a valid time of day: Non introduciu unha hora válida do día
 
-
-###############################################
+########################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Color non válido
 
-
-###############################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: Notificación
-
-
-###############################################
+########################################
 # Page: includes/menu/index.php
 #
 Unapproved Events: Eventos sen aprobar
 
-
-###############################################
+########################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the event detailed below.: Esto é un recordatorio para o evento descrito máis abaixo.
 Reminder: Recordatorio

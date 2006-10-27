@@ -7,25 +7,43 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-08-2006
+# Translation last updated on 10-27-2006
 
 
-###############################################
-# Specify a charset (will be sent within meta tag for each page)
-#
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
 charset: UTF-8
 
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
 
 
-###############################################
+########################################
 # Page: access.php
 #
 Database error: Chyba databáze
 Cancel: Zrušit
 Save: Uložit
+Go: Jdi
 Public Access: Ve?ejný p?ístup
 Admin: Admin
-Go: Jdi
 Calendar: Kalendá?
 Edit: Uprav
 Events: Události
@@ -33,29 +51,20 @@ Public: ve?ejný
 confidential: d?v?rný
 private: soukromé
 
-
-###############################################
+########################################
 # Page: activity_log.php
 #
-Activity Log: Protokol o aktivitách
-User: Uživatel
-Date: Datum
-Time: ÄŒas
-Event: Událost
-Action: Událost
-Previous: P?edchozí
 Next: Další
+Previous: P?edchozí
 
-
-###############################################
+########################################
 # Page: add_entry.php
 #
+Event: Událost
 Invalid entry id: Neplatné id záznamu
-This is a private event and may not be added to your calendar.: Toto je bohužel soukromá událost a nem?žeš si jej p?idat do svého kalendá?e.
 Error adding event: Chyba p?i p?idávání události
 
-
-###############################################
+########################################
 # Page: admin.php
 #
 Select: Vyber
@@ -220,8 +229,7 @@ Table cell background for weekends: Pozadí tabulky pro víkendy
 Event popup background: Pozadí vyskakovacího okna události
 Event popup text: Text vyskakovacího okna události
 
-
-###############################################
+########################################
 # Page: adminhome.php
 #
 Preferences: Možnosti
@@ -233,57 +241,53 @@ Views: Náhledy
 Layers: Vrstvy
 Reports: Sestavy
 Delete Events: Mazání události
+Activity Log: Protokol o aktivitách
 Public Preferences: Ve?ejné p?edvolby
 Unapproved Public Events: Neschválené ve?ejné události
 Administrative Tools: Administra?ní nástroje
 
-
-###############################################
+########################################
 # Page: approve_entry.php
 #
 Hello: Ahoj
 The subject was: P?edm?t byl
 The description is: Popis je
+Date: Datum
+Time: ÄŒas
 
-
-###############################################
+########################################
 # Page: assistant_edit.php
 #
 Admin mode: Admin mód
 Your assistants: Tví asistenti
 
-
-###############################################
+########################################
 # Page: category.php
 #
+Global: Globální
 Add: P?idat
 Category Name: Jméno kategorie
-Global: Globální
 Delete: Smazat
 Are you sure you want to delete this entry?: Opravdu si p?eješ smazat tento záznam?
 Add New Category: P?idat novou kategorii
 
-
-###############################################
+########################################
 # Page: catsel.php
 #
 Remove: Odstranit
 Ok: OK
 
-
-###############################################
+########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Tvá sch?zka byla zrušena uživatelem
 
-
-###############################################
+########################################
 # Page: docadd.php
 #
 Description: Popis
 
-
-###############################################
+########################################
 # Page: edit_entry.php
 #
 am: dop.
@@ -336,8 +340,7 @@ days: dn?
 Delete entry: Smaž záznam
 You are not authorized to edit this entry: Nemáš oprávn?ni upravovat tento záznam
 
-
-###############################################
+########################################
 # Page: edit_entry_handler.php
 #
 The following conflicts with the suggested time: Následují konfliky s navrhovaným ?asem
@@ -351,8 +354,7 @@ Scheduling Conflict: Naplánování konfliktu
 Your suggested time of: Tebou navrhovaný ?as 
 conflicts with the following existing calendar entries: konflikt s následujícími záznamy v kalendá?i
 
-
-###############################################
+########################################
 # Page: edit_layer.php
 #
 Edit Layer: Upravit vrstvu
@@ -365,15 +367,13 @@ Add to My Calendar: P?idej do mého kalendá?e
 Delete layer: Smaž vrstvu
 Are you sure you want to delete this layer?: Opravdu chceš smazat tuto vrstvu?
 
-
-###############################################
+########################################
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: Nem?žeš vytvá?et vrstvu sám na sebe
 You can only create one layer for each user: Každého uživatele je možno dát jen do jedné vrstvy
 
-
-###############################################
+########################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: Prom?nná NONUSER_PREFIX nebyla v config.php nastavena.
@@ -384,8 +384,7 @@ Calendar ID: ID kalendá?e
 First Name: Jméno
 Last Name: P?íjmení
 
-
-###############################################
+########################################
 # Page: edit_remotes_handler.php
 #
 Error: Chyba
@@ -394,8 +393,7 @@ Events successfully imported: Úsp?šn? importované události
 Errors: Chyby
 There was an error parsing the import file or no events were returned: Nastala chyba p?i rozboru importovaného souboru a nebo nebyly vráceny žádné události
 
-
-###############################################
+########################################
 # Page: edit_report.php
 #
 Tomorrow: Zítra
@@ -424,6 +422,7 @@ Add Report: P?idej sestavu
 Edit Report: Uprav sestavu
 Report name: Jméno sestavy
 Current User: Sou?asný uživatel
+User: Uživatel
 Include link in trailer: V?etn? odkazu v zápatí
 Include standard header/trailer: V?etn? standardního záhlaví/zápatí
 Date range: Rozsah
@@ -435,22 +434,19 @@ Day template: Šablona pro den
 Event template: Šablona pro událost
 Are you sure you want to delete this report?: Opravdu chceš smazat tuto sestavu?
 
-
-###############################################
+########################################
 # Page: edit_report_handler.php
 #
 Variable N not found: Prom?nná N nebyla nalezena
 
-
-###############################################
+########################################
 # Page: edit_template.php
 #
 Edit Custom Script/Stylesheet: Uprav vlastní skript/styl
 Edit Custom Header: Uprav si vlastní hlavi?ku
 Edit Custom Trailer: Uprav si vlastní pati?ku
 
-
-###############################################
+########################################
 # Page: edit_user.php
 #
 Username: Uživatelské jméno
@@ -463,41 +459,35 @@ Change Password: Zm?nit heslo
 New Password: Nové heslo
 Set Password: Nastavit heslo
 
-
-###############################################
+########################################
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Mazání uživatel? není podporováno
 The passwords were not identical: Hesla nebyla shodná
 You have not entered a password: Nezadal jsi heslo
 
-
-###############################################
+########################################
 # Page: export.php
 #
 Export: Export
 Export format: Formát pro export
-Palm Pilot: Palm Pilot
 Include all layers: Zahrnout všechny vrstvy
 Export all dates: Exportuj všechna data
 Start date: Po?áte?ní datum
 End date: Koncové datum
 Modified since: Zm?n?né od
 
-
-###############################################
+########################################
 # Page: export_handler.php
 #
 export format not defined or incorrect: nebyl ur?en formát exportu a nebo není platný
 
-
-###############################################
+########################################
 # Page: groups.php
 #
 Add New Group: P?idej novou skupinu
 
-
-###############################################
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Nepojmenovaná skupina
@@ -507,14 +497,12 @@ Group name: Jméno skupiny
 Updated: Aktualizováno
 Created by: Vytvo?il
 
-
-###############################################
+########################################
 # Page: group_edit_handler.php
 #
 You must specify a group name: Musíš zadat jméno skupiny
 
-
-###############################################
+########################################
 # Page: help_admin.php
 #
 Display weekends in week view: Zobrazovat víkend v týdením pohledu
@@ -528,14 +516,12 @@ auto-refresh-time-help: Pokud je automatické obnovování povoleno, tímto lze ur?i
 Nonuser: Neuživatelský kalendá?
 colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 
-
-###############################################
+########################################
 # Page: help_bug.php
 #
 Report Bug: Oznam chybu
 
-
-###############################################
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: P?idávání/editování záznam? v kalendá?i
@@ -544,8 +530,7 @@ Repeat End Date: Datum konce opakování
 Repeat Day: Den opakování
 repeat-day-help: Ur?uje, které dny týdne by se událost m?la opakovat. Použije se jen tehdy, pokud <i>typ opakování</i> je <i>týdn?</i>.
 
-
-###############################################
+########################################
 # Page: help_import.php
 #
 Import: Import
@@ -561,14 +546,12 @@ The following formats have been tested: Tyto formáty soubor? byly otestovány
 This form will import iCalendar (.ics) events: Tímto formulá?em lze importovat události z iCalendar (.ics)
 Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Zaškrtnutím <b>p?epsat data p?edchozího importu</b> zap?í?iní, že události již d?íve importované se stejným UID jako importovaná událost, budou ozna?eny jako smazány.
 
-
-###############################################
+########################################
 # Page: help_index.php
 #
 Help Index: Index nápov?dy
 
-
-###############################################
+########################################
 # Page: help_layers.php
 #
 Add/Edit/Delete: P?idat/Upravit/Smazat
@@ -581,8 +564,7 @@ Press the Disable Layers link in the admin section at the bottom of the page to 
 Enabling: Povolení
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Pro zapnutí vrstev sta?í kliknout na povolení vrstev v administra?nní sekci "Vrstvy" v dolní ?ásti stránky.
 
-
-###############################################
+########################################
 # Page: help_pref.php
 #
 Default Category: Výchozí kategorie
@@ -594,8 +576,7 @@ Subscribe/Publish: P?ijmout vzdálený/publikovat
 allow-remote-subscriptions-help: Ur?uje, zda si m?žou externí uživatelé zapsat k odb?ru tvého kalendá?e. Umožní jim to vid?t tvé události v aplikaci porpodujícím standard iCal (jako je iCal od Apple nebo Mozilla Calendar).
 remote-subscriptions-url-help: Ukazuje URL pro externí uživatele, kterou m?žou použít pro zapsání se k odb?ru tvého kalendá?e.
 
-
-###############################################
+########################################
 # Page: import.php
 #
 Disabled: Zakázáno
@@ -603,16 +584,14 @@ Import format: Datový formát importu
 Exclude private records: Vyjmout soukromé záznamy
 Overwrite Prior Import: P?epsat data p?edchozího importu
 
-
-###############################################
+########################################
 # Page: import_handler.php
 #
 Events from prior import marked as deleted: Události ozna?ené v p?edchozím importu za smazané
 Conflicting events: Konfliktní události
 The import file contained no data: Importovaný soubor neobsahoval žádná data
 
-
-###############################################
+########################################
 # Page: layers.php
 #
 Layers are currently: Stav vrstev:
@@ -626,8 +605,7 @@ Add layer: P?idej vrstvu
 Layer: Vrstva
 Edit layer: Uprav vrstvu
 
-
-###############################################
+########################################
 # Page: list_unapproved.php
 #
 View this entry: Prohlédnout tento záznam
@@ -636,8 +614,7 @@ Approve this entry?: Potvrdit tento záznam?
 Reject: Odmítnout
 Reject this entry?: Odmítnout tuto událost?
 
-
-###############################################
+########################################
 # Page: login-app.php
 #
 You must enter a login and password: Musíš zadat sv?j platný login a heslo
@@ -646,45 +623,38 @@ Login: Login
 Access public calendar: P?ístup k ve?ejným kalendá??m
 cookies-note: <b>Poznámka:</b> Pro p?ihlášení a správný b?h je pot?eba mít v prohlížeci povolena cookies.
 
-
-###############################################
+########################################
 # Page: login.php
 #
 Invalid login: Neplatné p?ihlášení
 
-
-###############################################
+########################################
 # Page: nonusers.php
 #
 Add New NonUser Calendar: P?idej nový obecný (ne pro uživatele) kalendá?
 
-
-###############################################
+########################################
 # Page: pref.php
 #
 Save Preferences: Uložit nastavení
 hour: hodina
 minute: minuta
 
-
-###############################################
+########################################
 # Page: purge.php
 #
 Purging events for: ?išt?ní událostí pro
 Finished: Dokon?eno
 Check box to delete <b>ALL</b> events for a user: Zaškrtnout pro smazání <b>VŠECH</b> událostí a záznam? uživatele
 Delete all events before: Smazat všechny události p?ed
-Are you sure you want to delete events for: Opravdu si p?eješ smazat události uživatele
 Records deleted from: Záznamy smazány z
 
-
-###############################################
+########################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: Sch?zka byla odmítnuta uživatelem
 
-
-###############################################
+########################################
 # Page: report.php
 #
 cont.: pokr.
@@ -698,16 +668,14 @@ to manage reports for the Public Access calendar: pro správu report? u ve?ejn? p
 Add new report: P?idej nový report
 Manage Reports: Správa sestav
 
-
-###############################################
+########################################
 # Page: search.php
 #
+Advanced Search: Rozší?ené hledání
 Search: Hledat
 Keywords: Klí?ová slova
-Advanced Search: Rozší?ené hledání
 
-
-###############################################
+########################################
 # Page: search_handler.php
 #
 You must enter one or more search keywords: Musíte vložit jedno nebo více klí?ových slov pro vyhledávání
@@ -716,40 +684,34 @@ match found: nalezen záznam
 matches found: nalezeny záznamy
 No matches found: Žádné záznamy nenalezeny
 
-
-###############################################
+########################################
 # Page: select_user.php
 #
 View Another User&#39;s Calendar: Prohlédnou si kalendá? jiného uživatele
 
-
-###############################################
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories: Nep?idával jsi žádné kategorie
 Set Category: P?i?a? kategorii
 
-
-###############################################
+########################################
 # Page: users.php
 #
 Add New User: P?idat nového uživatele
 denotes administrative user: ozna?uje uživatele s administrátorskými právy
 
-
-###############################################
+########################################
 # Page: usersel.php
 #
 Reset: Reset
 
-
-###############################################
+########################################
 # Page: views.php
 #
 Add New View: P?idej nový náhled
 
-
-###############################################
+########################################
 # Page: views_edit.php
 #
 Unnamed View: Nepojmenovaný náhled
@@ -764,14 +726,12 @@ Month (Timebar): M?síc (s rozd?lením ?asu)
 Month (side by side): M?síc (vedle sebe)
 Month (on same calendar): M?síc (v jednom kalendá?i)
 
-
-###############################################
+########################################
 # Page: views_edit_handler.php
 #
 You must specify a view name: Musíš zadat jméno náhledu
 
-
-###############################################
+########################################
 # Page: view_entry.php
 #
 Assistant mode: Mód asistenta
@@ -780,13 +740,13 @@ External User: Externí uživatel
 Approve/Confirm entry: Potvrdit/schválit záznam
 Reject entry: Zamítnout záznam
 Set category: Uprav kategorii
-Edit repeating entry for all dates: Uprav opakující se událost pro všechna data
-Edit entry for this date: Uprav záznam k tomuto datu
-Delete repeating event for all dates: Smaž opakující se záznam pro všechna data
-This will delete this entry for all users.: Tímto smažeš tento záznam pro všechny uživatel?.
-Delete entry only for this date: Smaž záznam pouze k tomuto datu
 Edit entry: Editovat záznam
 Copy entry: Kopíruj záznam
+This will delete this entry for all users.: Tímto smažeš tento záznam pro všechny uživatel?.
+Edit repeating entry for all dates: Uprav opakující se událost pro všechna data
+Delete repeating event for all dates: Smaž opakující se záznam pro všechna data
+Edit entry for this date: Uprav záznam k tomuto datu
+Delete entry only for this date: Smaž záznam pouze k tomuto datu
 This will delete the entry from your calendar.: Tímto smažeš záznam ze svého kalendá?e.
 Do you want to add this entry to your calendar?: P?eješ si p?idat tento záznam do svého kalendá?e?
 This will add the entry to your calendar.: Tímto si p?idáš záznam do svého kalendá?e.
@@ -794,28 +754,25 @@ Email all participants: Pošli email všem zá?astn?ným
 Show activity log: Zobraz protokol o aktivit?
 Hide activity log: Skryj protokol o aktivit?
 Export this entry to: Exportuj tento záznam do
+Palm Pilot: Palm Pilot
 
-
-###############################################
+########################################
 # Page: week_details.php
 #
 New Entry: Nový záznam
 
-
-###############################################
+########################################
 # Page: includes/access.php
 #
 Another User&#39;s Calendar: Kalendá? jiného uživatele
 
-
-###############################################
+########################################
 # Page: includes/date_formats.php
 #
 December: prosinec
 Dec: pro
 
-
-###############################################
+########################################
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: p?ekro?ení omezení na XXX událostí denn?
@@ -867,20 +824,19 @@ Event updated: Událost byla aktualizována
 Event deleted: Událost byla zm?n?na
 Notification sent: Bylo odesláno upozorn?ní
 Reminder sent: Byla odeslána upopomínka
+Action: Událost
 
-
-###############################################
+########################################
 # Page: includes/trailer.php
 #
 My Calendar: M?j kalendá?
-Back to My Calendar: Zp?t k mému kalendá?i
 Add New Entry: P?idat nový záznam
-Go to: Jít na
 Logout: Odhlášení
+Back to My Calendar: Zp?t k mému kalendá?i
+Go to: Jít na
 Manage calendar of: Správa kalendá?e uživatele
 
-
-###############################################
+########################################
 # Page: includes/translate.php
 #
 English: English
@@ -913,28 +869,29 @@ Spanish: Spanish
 Swedish: Swedish
 Turkish: Turkish
 
-
-###############################################
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: Chybné p?ihlášení uživatele
 
-
-###############################################
+########################################
 # Page: includes/user-nis.php
 #
 incorrect password: neplatné heslo
 no such user: neznámý uživatel
 
-
-###############################################
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Nepojmenovaná událost
 Event Imported: Importované události
 
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Oznámení
 
-###############################################
+########################################
 # Page: includes/js/admin.php
 #
 Server URL is required: Je nutno zadat cestu (URL) k serveru
@@ -951,35 +908,24 @@ Invalid color for event popup text: Neplatná barva textu u vyskakovacích (popup)
 Invalid color for table cell background for today: Neplatná barva pozadí bu?ky tabulky p?i zobrazení dne
 Color format should be &#39;#RRGGBB&#39;: Formát barvy by nap?íklad m?l být '#RRGGBB'
 
-
-###############################################
+########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Nevložil jste stru?ný popis
 The time you have entered begins before your preferred work hours.  Is this correct?: Zadaný ?as je p?ed zá?átkem nastavené pracovní doby. Je to v po?ádku?
 You have not entered a valid time of day: Nevložil jste platný ?as
 
-
-###############################################
+########################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Neplatná barva
 
-
-###############################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: Oznámení
-
-
-###############################################
+########################################
 # Page: includes/menu/index.php
 #
 Unapproved Events: Nepotvrzené události
 
-
-###############################################
+########################################
 # Page: tools/send_reminders.php
 #
-This is a reminder for the event detailed below.: Toto je p?ipomínka události, podrobnosti následují.
 Reminder: P?ipomínka
