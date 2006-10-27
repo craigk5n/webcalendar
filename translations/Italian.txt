@@ -125,7 +125,7 @@ Display days with events in bold in month and year views: Mostra i giorni con de
 allow-view-add-help: Un'icona raffigurante un '+'sar&agrave; inclusa nelle viste, permettendo agli utenti di aggiungere velocemente eventi ai calendari degli altri utenti
 Include add event link in views: Includi il link che permette di aggiungere un evento nelle viste
 allow-view-other-help: Specifica se un utente pu&ograve; visualizzare il calendario di un altro utente.
-Allow viewing other user's calendars: Permetti la visione dei calendari degli altri utenti
+Allow viewing other user&#39;s calendars: Permetti la visione dei calendari degli altri utenti
 require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad accesso pubblico (se il calendario ad accesso pubblico &egrave; abilitato) 
 Require event approvals: Richiedi che gli eventi siano approvati
 display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se settato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se settato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
@@ -554,7 +554,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Ques
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Dovrebbe essere localizzato nel tuo Palm, nella directory <tt>datebook/datebook.dat</tt> in una sottodirectory col tuo nome utente
 The following entries will not be imported: I record seguenti non saranno importati
 Entries older than the current date: Record pi&ugrave; vecchi della data odierna
-Entries created in the Palm Desktop that have not been HotSync'd: Record nel Palm Desktop che non sono stati sincronizzati con HotSync
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Record nel Palm Desktop che non sono stati sincronizzati con HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Qualunque cosa importata dal Palm sar&agrave; sovrascritta durante l'importazione successiva (a meno che la data dell'evento non sia gi&agrave; passata)
 Therefore, updates should be made in the Palm Desktop.: Quindi, gli aggiornamenti dovrebbero essere fatti sul Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Questo form importer&agrave; eventi vCalendar (.vcs) 1.0
@@ -641,7 +641,7 @@ Reject this entry?: Rifiuta questo inserimento?
 # Page: login-app.php
 #
 You must enter a login and password: Inserire nome utente e password
-Save login via cookies so I don't have to login next time: Salvare le informazioni di login tramite i cookie cos&igrave; da non doversi pi&ugrave; registrare la prossima volta
+Save login via cookies so I don&#39;t have to login next time: Salvare le informazioni di login tramite i cookie cos&igrave; da non doversi pi&ugrave; registrare la prossima volta
 Login: Entra
 Access public calendar: Accedi al calendario pubblico
 cookies-note: <b>Nota:</b> Questo applicativo necessita dei cookie abilitati.
@@ -720,7 +720,7 @@ No matches found: Nessuna corrispondenza trovata
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Visualizza calendario di un altro utente
+View Another User&#39;s Calendar: Visualizza calendario di un altro utente
 
 
 ###############################################
@@ -938,7 +938,7 @@ Event Imported: Eventi importati
 # Page: includes/js/admin.php
 #
 Server URL is required: L'URL del server &egrave; necessario
-Server URL must end with '/': L'URL del server deve finire con '/'
+Server URL must end with &#39;/&#39;: L'URL del server deve finire con '/'
 Invalid work hours: Ore di lavoro non valide
 Invalid color for document background: Il colore dello sfondo del documento non &egrave; valido
 Invalid color for document title: Il colore del titolo del documento non &egrave; valido
@@ -949,7 +949,7 @@ Invalid color for table text background: Il colore di sfondo per il testo della 
 Invalid color for event popup background: Il colore di sfondo per i popup di un evento non &egrave; valido
 Invalid color for event popup text: Il colore del testo per i popup di un evento non &egrave; valido
 Invalid color for table cell background for today: Il colore dello sfondo della cella della data odierna non &egrave; valido
-Color format should be '#RRGGBB': Il fomrato del colore deve essere '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Il fomrato del colore deve essere '#RRGGBB'
 
 
 ###############################################

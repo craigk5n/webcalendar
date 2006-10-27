@@ -26,7 +26,7 @@ Save: Opslaan
 Public Access: Publieke Toegang
 Admin: Beheer
 User Access Control: Gebruikerstoegang controle
-Allow Access to Other Users' Calendar: Permitteer toegang tot kalender van andere gebruikers
+Allow Access to Other Users&#39; Calendar: Permitteer toegang tot kalender van andere gebruikers
 Grant This User Access to My Calendar: Geef deze gebruiker toegang tot mijn kalender
 Go: Tonen
 Type: Type
@@ -168,7 +168,7 @@ Include add event link in views: Toon icoon voor maken van afspraken in alle vie
 lunar-help: helptekst-maanfasen
 Display Lunar Phases in month view: Maanfasen tonen in maandweergave
 allow-view-other-help: Definieert of een gebruiker de agenda van andere gebruikers mag inzien.
-Allow viewing other user's calendars: Inzage agenda andere gebruikers toestaan
+Allow viewing other user&#39;s calendars: Inzage agenda andere gebruikers toestaan
 require-approvals-help: Indien ingeschakeld dient een gebruiker een afspraak te bevestigen voordat deze in de agenda wordt getoond tenzij Weergave onbevestigde items is geactiveerd. <br />Let op: door deze optie te de-activeren worden alle bevestigingen voor de publiek toegankelijke agenda uitgeschakeld indien deze is geactiveerd.
 Require event approvals: Afspraakbevestigingen worden vereist
 display-unapproved-help: Geeft aan of openstaande, onbevestigde afspraken moeten worden weergegeven in uw agenda. <br />Indien u [ja] kiest worden openstaande afspraken in een andere tekstkleur in uw agenda weergegeven. <br />Indien u [nee] kiest moeten openstaande afspraken eerst bevestigd worden voordat deze in uw agenda worden getoond.
@@ -783,7 +783,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Hier
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Al uw Palm Datebook-afspraken zijn opgeslagen in een bestand met de naam datebook.dat. U kunt dit bestand vinden in de Palm-directory op uw computer. In deze directory vindt u een subdirectory met uw gebruikersnaam als naam. Hierin vindt u het bestand <tt>datebook/datebook.dat</tt> - dit bestand heeft u nodig om uw Palm Desktop datebookgegevens in uw WebCalendar agenda te kunnen importeren.
 The following entries will not be imported: De volgende items zullen niet worden geimporteerd
 Entries older than the current date: items ouder dan de huidige datum
-Entries created in the Palm Desktop that have not been HotSync'd: Items gemaakt in de Palm Desktop agenda die nog niet met HotSync gesynchroniseerd zijn
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Items gemaakt in de Palm Desktop agenda die nog niet met HotSync gesynchroniseerd zijn
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Telkens als u uw Palm Datebook in uw WebCalendar agenda importeert zullen de gegevens van een vorige import-activiteit worden overschreven. Dit geldt niet voor afspraken in het verleden - items ouder dan de huidige datum worden immers niet geimporteerd.
 Therefore, updates should be made in the Palm Desktop.: &nbsp;Derhalve dient u <b>nieuwe afspraken in de Palm Desktop agenda toe te voegen</b> en niet in uw WebCalendar agenda.
 This form will import vCalendar (.vcs) 1.0 events: Hier kunt u afspraken uit vCalendar (.vcs) 1.0 in uw agenda importeren
@@ -801,7 +801,7 @@ Help Index: Overzicht help-onderwerpen
 ###############################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.: Lagen zijn nuttig om andermans afpsraken in uw eigen agenda te tonen. U kunt de gebruiker en kleur kiezen waarin die afspraken worden getoond.
+Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Lagen zijn nuttig om andermans afpsraken in uw eigen agenda te tonen. U kunt de gebruiker en kleur kiezen waarin die afspraken worden getoond.
 Add/Edit/Delete: toevoegen / wijzigen / verwijderen
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Selecteer [wijzig lagen] in menu [beheer] om lagen toe te voegen, wijzigen of verwijderen.
 Specifies the user that you would like to see displayed in your calendar.: Specificeert de gebruiker wiens agenda je in als laag aan je eigen agenda wilt toevoegen.
@@ -915,7 +915,7 @@ Not authorized: Niet geauthoriseerd
 # Page: login-app.php
 #
 You must enter a login and password: U moet een gebruikersnaam en een wachtwoord invullen.
-Save login via cookies so I don't have to login next time: Bewaar inloggegevens
+Save login via cookies so I don&#39;t have to login next time: Bewaar inloggegevens
 Login: Aanmelden
 Access public calendar: Ga naar publieke agenda
 cookies-note: <b>NB:</b> Deze applicatie maakt gebruik van cookies.
@@ -1057,7 +1057,7 @@ No matches found: Helaas, geen match aangetroffen
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Bekijk de agenda van een andere gebruiker
+View Another User&#39;s Calendar: Bekijk de agenda van een andere gebruiker
 
 
 ###############################################
@@ -1157,7 +1157,7 @@ from calendar of: uit de kalender van
 Copy entry: Kopie maken van afspraak
 This will delete the entry from your boss\' calendar.: Dit zal de afspraak verwijderen uit de kalender van uw baas.
 This will delete the entry from your calendar.: De afspraak wordt uit de agenda verwijderd.
-from your boss' calendar: Uit de kalender van de baas
+from your boss&#39; calendar: Uit de kalender van de baas
 Do you want to add this entry to your calendar?: Deze afspraak ook in uw eigen agenda plaatsen?
 This will add the entry to your calendar.: Bevestig om de afspraak in uw eigen agenda te plaatsen.
 Email all participants: Stuur emailbericht naar alle aanwezigen
@@ -1394,7 +1394,7 @@ Event Imported: Item geimporteerd
 # Page: includes/js/admin.php
 #
 Server URL is required: Server-URL wordt vereist
-Server URL must end with '/': Server-URL moet eindigen op '/'
+Server URL must end with &#39;/&#39;: Server-URL moet eindigen op '/'
 Invalid work hours: Ongeldige werktijden
 Invalid color for document background: Ongeldige kleur voor de achtergrond
 Invalid color for document title: Ongeldige kleur voor de agendatitel
@@ -1405,7 +1405,7 @@ Invalid color for table text background: Ongeldige kleur voor tekstachtergrond
 Invalid color for event popup background: Ongeldige achtergrondkleur voor afspraak-popup
 Invalid color for event popup text: Ongeldige tekstkleur voor afspraak-popup
 Invalid color for table cell background for today: Ongeldige achtergrondkleur voor huidige datum
-Color format should be '#RRGGBB': Kleur weergeven in #RRGGBB-formaat
+Color format should be &#39;#RRGGBB&#39;: Kleur weergeven in #RRGGBB-formaat
 
 
 ###############################################
@@ -1611,10 +1611,10 @@ Convert Data to GMT: Converteer tijden naar GMT
 Application Settings: Programma instellingen
 HTTP-based authentication was not detected: Authenticatie gebaseerd op HTTP werd niet gevonden
 You will need to reconfigure your web server if you wish to: U moet uw webserver anders configureren indien u wilt
-select 'Web Server' from the 'User Authentication' choices below: Selecteer 'Web Server' in de 'Gebruiker authenticatie' opties hieronder
+select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: Selecteer 'Web Server' in de 'Gebruiker authenticatie' opties hieronder
 HTTP-based authentication was detected: Authenticatie gebaseerd op HTTP werd gevonden
 User authentication is being handled by your web server: Gebruikers Authenticatie wordt afgehandeld door de server
-You should select 'Web Server' from the list of 'User Authentication' choices below: U moet 'Webserver' uit de onderstaande lijst van 'Gebruikers Authenticatie' opties kiezen
+You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: U moet 'Webserver' uit de onderstaande lijst van 'Gebruikers Authenticatie' opties kiezen
 Create Default Admin Account: Maak een standaard beheer-account
 User Authentication: Gebruikers Authenticatie
 Web-based via WebCalendar (default): Web-based via WebKalender (standaard)

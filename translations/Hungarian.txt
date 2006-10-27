@@ -28,7 +28,7 @@ Save: Mentés
 Public Access: Nyilvános naptár
 Admin: Adminisztráció
 User Access Control: User Access Control
-Allow Access to Other Users' Calendar: Hozzáférés engedélyezése más felhasználóknak
+Allow Access to Other Users&#39; Calendar: Hozzáférés engedélyezése más felhasználóknak
 Grant This User Access to My Calendar: Hozzáférés engedélyezése a naptáramhoz
 Go: Mehet
 Type: Típus
@@ -165,7 +165,7 @@ Include add event link in views: Esemény hozzáadása link minden nézetben
 lunar-help: A holdfázisok kis ikonok formájában jelennek meg
 Display Lunar Phases in month view: Holdfázisok megjelenítése hónap nézetben
 allow-view-other-help: Megadja, hogy egyik felhasználó láthatja-e a másik naptárát.
-Allow viewing other user's calendars: Más felhasználók naptárának megtekintése
+Allow viewing other user&#39;s calendars: Más felhasználók naptárának megtekintése
 require-approvals-help: Bekapcsolva a felhasználónak jóvá kell hagynia az eseményt, mielõtt megjelenne a naptárában (hacsak a jóváhagyás nélküliek megjelenítése nincs bekapcsolva). Megjegyzés: ha ezt kikapcsolod, attól még a nyilvános naptár eseményeit jóvá kell hagynod (már ha a nyilvános naptár be van kapcsolva).
 Require event approvals: Események jóváhagyásának megkövetelése
 display-unapproved-help: Megadja, hogy a jóváhagyatlan események megjelenjenek-e.<br /> Ha "Igen", a jóváhagyatlan események megjelennek (más színnel).<br /> Ha "Nem", az eseményeket jóvá kell hagyni ahhoz, hogy megjelenjenek a naptáradban.
@@ -751,7 +751,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Ezen
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: A Palm könyvtáradban kell lennie <tt>datebook/datebook.dat</tt>-ként egy, a felhasználói nevedrõl elnevezett könyvtárban.
 The following entries will not be imported: A következõ bejegyzések nem importálhatók
 Entries older than the current date: Mainál régebbi bejegyzések
-Entries created in the Palm Desktop that have not been HotSync'd: A Palm Desktopon létrehozott bejegyzések, amiket még nem HotSync-eltél
+Entries created in the Palm Desktop that have not been HotSync&#39;d: A Palm Desktopon létrehozott bejegyzések, amiket még nem HotSync-eltél
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Minden Palm-ból importált adat felülíródik a következõ importálás során (hacsak az esemény dátuma el nem múlt).
 Therefore, updates should be made in the Palm Desktop.: Tehát készíts frissítést a Palm Desktopon.
 This form will import vCalendar (.vcs) 1.0 events: Ezen az ûrlapon tudsz vCalendar (.vcs) 1.0 eseményeket importálni.
@@ -769,7 +769,7 @@ Help Index: Súgó tartalomjegyzék
 ###############################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.: A rétegek hasznosak mások eseményeinek megjelenítésekor. Megadhatod a felhasználót és az ő eseményeinek színét.
+Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: A rétegek hasznosak mások eseményeinek megjelenítésekor. Megadhatod a felhasználót és az ő eseményeinek színét.
 Add/Edit/Delete: Hozzáadás/Szerkesztés/Törlés
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: A lap alján az adminisztrációs részben a Rétegek szerkesztése linkre kattintva hozzáadhatsz/szerkeszthetsz/törölhetsz rétegeket.
 Specifies the user that you would like to see displayed in your calendar.: Megadja, hogy mely felhasználót szeretnéd megjeleníteni a naptáradban.
@@ -876,7 +876,7 @@ Not authorized: Nincs jogosultságod
 # Page: login-app.php
 #
 You must enter a login and password: Add meg az azonosítódat és jelszavadat
-Save login via cookies so I don't have to login next time: A bejelentkezési jelszó mentése, így errõl a géprõl legközelebb nem kell megadni
+Save login via cookies so I don&#39;t have to login next time: A bejelentkezési jelszó mentése, így errõl a géprõl legközelebb nem kell megadni
 Login: Bejelentkezés
 Access public calendar: Nyilvános naptár elérése
 cookies-note: <b>Megjegyzés:</b> A sütiket engedélyezni kell a naptár használatához.
@@ -996,7 +996,7 @@ No matches found: Nincs találat
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Betekintés más felhasználók naptárába
+View Another User&#39;s Calendar: Betekintés más felhasználók naptárába
 
 
 ###############################################
@@ -1309,7 +1309,7 @@ Event Imported: Esemény importálva
 # Page: includes/js/admin.php
 #
 Server URL is required: Szerver URL-t meg kell adni
-Server URL must end with '/': Szerver URL-nek '/'-rel kell végzõdnie
+Server URL must end with &#39;/&#39;: Szerver URL-nek '/'-rel kell végzõdnie
 Invalid work hours: Érvénytelen munkaidõ
 Invalid color for document background: Érvénytelen háttérszín
 Invalid color for document title: Érvénytelen címsorszín
@@ -1320,7 +1320,7 @@ Invalid color for table text background: Érvénytelen táblaszöveg-háttérsz�
 Invalid color for event popup background: Érvénytelen felugró eseményablak-háttérszín
 Invalid color for event popup text: Érvénytelen felugró eseményablak-szövegszín
 Invalid color for table cell background for today: Érvénytelen táblacella-háttérszín a MAI napra
-Color format should be '#RRGGBB': A színeket '#RRGGBB' formátumban kell megadni
+Color format should be &#39;#RRGGBB&#39;: A színeket '#RRGGBB' formátumban kell megadni
 
 
 ###############################################
@@ -1485,10 +1485,10 @@ Convert Data to GMT: Convert Data to GMT
 Application Settings: Application Settings
 HTTP-based authentication was not detected: HTTP-based authentication was not detected
 You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to
-select 'Web Server' from the 'User Authentication' choices below: select 'Web Server' from the 'User Authentication' choices below
+select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below
 HTTP-based authentication was detected: HTTP-based authentication was detected
 User authentication is being handled by your web server: User authentication is being handled by your web server
-You should select 'Web Server' from the list of 'User Authentication' choices below: You should select 'Web Server' from the list of 'User Authentication' choices below
+You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below
 Create Default Admin Account: Create Default Admin Account
 User Authentication: User Authentication
 Web-based via WebCalendar (default): Web-based via WebCalendar (default)

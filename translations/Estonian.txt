@@ -102,7 +102,7 @@ Display week number: Näita nädala numbrit
 allow-view-add-help: '+' ikoon on lisatud vaadetesse lubamaks kasutajal kiiresti lisada sündmusi teiste kasutajate kalendritesse.
 Include add event link in views: Kaasa lisa sündmus viide vaadetesse
 allow-view-other-help: Määrab kas kasutaja saab näha teiste kalendreid.
-Allow viewing other user's calendars: Luba näha teiste kalendreid
+Allow viewing other user&#39;s calendars: Luba näha teiste kalendreid
 require-approvals-help: Kui on lubatud siis peab kasutaja sündmuse heaks kiitma enne kui seda näidatakse kalendris (kehtib, kui 'Näita heakskiitmatuid' on keelatud). Märkus - seade 'Ei' ei keela näitamist Avalikult Ligipääsetavas kalendris kui see on lubatud.
 Require event approvals: Nõua sündmuse heakskiitu
 display-unapproved-help: Määrab kas heakskiitmata sündmused näidatakse kalendris.<br /> Kui on 'Jah', siis näidatakse heakskiitmata sündmusi kalendris (erineva teksti värviga).<br /> Kui on 'Ei', siis peab heakskiitmata sündmused enne kalendris näitamist lubama.
@@ -490,7 +490,7 @@ Reject this entry?: Lükkame kande tagasi?
 # Page: login-app.php
 #
 You must enter a login and password: Pead sisestama kasutajanime ja salasõna
-Save login via cookies so I don't have to login next time: Salvesta kasutajatunnused küpsisesse et ma ei peaks enam neid sisestama
+Save login via cookies so I don&#39;t have to login next time: Salvesta kasutajatunnused küpsisesse et ma ei peaks enam neid sisestama
 Login: Sisenemine
 Access public calendar: Kasuta avalikku kalendrit
 cookies-note: <b>Märkus:</b> See rakendus nõuab küpsiste kasutamise lubamist.
@@ -546,7 +546,7 @@ No matches found: Ühtegi vastet ei leitud
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Vaata teise kasutaja kalendrit
+View Another User&#39;s Calendar: Vaata teise kasutaja kalendrit
 
 
 ###############################################
@@ -713,7 +713,7 @@ Unnamed Event: Nimetu sündmus
 # Page: includes/js/admin.php
 #
 Server URL is required: Serveri URL on puudu
-Server URL must end with '/': Serveri URL peab lõppema '/' märgiga
+Server URL must end with &#39;/&#39;: Serveri URL peab lõppema '/' märgiga
 Invalid color for document background: Vigane värv dokumendi tausta jaoks
 Invalid color for document title: Vigane värv dokumendi tiitli jaoks
 Invalid color for table cell background: Vigane värv tabeli ruudu tausta jaoks
@@ -723,7 +723,7 @@ Invalid color for table text background: Vigane värv tabeli teksti tausta jaoks
 Invalid color for event popup background: Vigane värv sündmuse akna tausta jaoks
 Invalid color for event popup text: Vigane värv sündmuse akna teksti jaoks
 Invalid color for table cell background for today: Vigane värv tänase päeva tabeli ruudu tausta jaoks
-Color format should be '#RRGGBB': Värvi esitusviis peab olema kujul '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Värvi esitusviis peab olema kujul '#RRGGBB'
 
 
 ###############################################

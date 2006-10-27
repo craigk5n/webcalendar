@@ -280,7 +280,7 @@ if ( ! empty ( $AUTO_REFRESH ) && $AUTO_REFRESH == 'Y' &&
     "date=$startdate$caturl" . 
     ( ! empty ( $friendly ) ? '&amp;friendly=1': '') . "\" />\n";
 }
-$INC = array('js/popups.php');
+$INC = array('js/popups.php/true');
 print_header($INC,$HeadX);
 
 echo <<<EOT

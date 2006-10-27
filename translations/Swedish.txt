@@ -116,7 +116,7 @@ yearly-shows-events-help: Vid visning av år, visa dagar som innehåller aktivitet
 allow-view-add-help: En '+'-ikon kommer att läggas till i visningar, vilket tillåter användare att snabbt lägga till aktiviteter till andra användares kalendrar.
 Include add event link in views: Lägg till 'Lägg till händelse'-länk i visningar
 allow-view-other-help: Anger om en användare ska kunna se en annan användares kalender.
-Allow viewing other user's calendars: Tillåt visning av andra användares kalendrar
+Allow viewing other user&#39;s calendars: Tillåt visning av andra användares kalendrar
 require-approvals-help: Om aktiverat måste en användare godkänna en aktivitet innan den visas på deras kalender (om inte "Visa icke godkända aktiviteter" är aktiverad). Notera att sätta denna till "Nej" kommer inte att stänga av godkännanden för offentliga kalendrar (om "Offentlig kalender" är tillåten).
 Require event approvals: Kräver aktivitetsgodkännande
 display-unapproved-help: Specificera om din kalender skall visa icke godkända aktiviteter.
@@ -538,7 +538,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Dett
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Det bör vara placerat i din Palm-mapp <tt>"datebook/datebook.dat"</tt> i en undermapp benämnd med ditt användarnamn.
 The following entries will not be imported: Följande händelser kommer inte att importeras
 Entries older than the current date: Händelser äldre än dagens datum
-Entries created in the Palm Desktop that have not been HotSync'd: Händelser skapade i Palm Desktop som inte har blivit "HotSynkroniserade"
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Händelser skapade i Palm Desktop som inte har blivit "HotSynkroniserade"
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Allting som importerats från Palm kommer att skrivas över vid nästa import (om inte händelsedatumet har passerats).
 Therefore, updates should be made in the Palm Desktop.: Därför bör uppdateringar göras i Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Detta formulär kommer att importera vCalendar (.vcs) 1.0 aktiviteter
@@ -624,7 +624,7 @@ Reject this entry?: Avböj denna händelse?
 # Page: login-app.php
 #
 You must enter a login and password: Ange användarnamn och lösenord
-Save login via cookies so I don't have to login next time: Kom ihåg användarnamnet till nästa gång (cookie)
+Save login via cookies so I don&#39;t have to login next time: Kom ihåg användarnamnet till nästa gång (cookie)
 Login: Logga in
 Access public calendar: Tillträde till offentlig kalender
 cookies-note: <strong>OBS:</strong> Programmet kräver att din webbläsare tillåter cookies, om inte - ändra dina inställningar i webbläsaren.
@@ -702,7 +702,7 @@ No matches found: Inga träffar hittades
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Titta på en annan användares kalender
+View Another User&#39;s Calendar: Titta på en annan användares kalender
 
 
 ###############################################
@@ -909,7 +909,7 @@ Event Imported: Händelse importerad
 # Page: includes/js/admin.php
 #
 Server URL is required: Server-URL krävs
-Server URL must end with '/': Server-URL måste slute med '/'
+Server URL must end with &#39;/&#39;: Server-URL måste slute med '/'
 Invalid work hours: Ogiltig arbetstid
 Invalid color for document background: Ogiltig bakgrundsfärg
 Invalid color for document title: Ogiltig färg för dokumenttiteln
@@ -920,7 +920,7 @@ Invalid color for table text background: Ogiltig färg för tabelltextens bakgrund
 Invalid color for event popup background: Ogiltig färg för händelsepopp-uppens bakgrund
 Invalid color for event popup text: Ogiltig färg för händelsepopp-uppens text
 Invalid color for table cell background for today: Ogiltig färg för dagens tabellcellsbakgrund
-Color format should be '#RRGGBB': Färgen skall skrivas som '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Färgen skall skrivas som '#RRGGBB'
 
 
 ###############################################

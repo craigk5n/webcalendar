@@ -26,7 +26,7 @@ Save: 保存
 Public Access: 公開アクセス
 Admin: 管理
 User Access Control: ユーザーアクセス制御
-Allow Access to Other Users' Calendar: 他のユーザーのカレンダーへのアクセスを許可する
+Allow Access to Other Users&#39; Calendar: 他のユーザーのカレンダーへのアクセスを許可する
 Grant This User Access to My Calendar: 自分のカレンダーへのこのユーザーのアクセスを許可する
 Go: 表示
 Type: 種類
@@ -160,7 +160,7 @@ Display days with events in bold in month and year views: 年間表示と月間�
 Include add event link in views: 表示内で追加したイベントを含む
 Display Lunar Phases in month view: 月間表示で月齢を表示する
 allow-view-other-help: ユーザーが他のユーザーのカレンダーを見てもいいかどうか指定します。
-Allow viewing other user's calendars: 他のユーザーのカレンダーを見ることを許可する
+Allow viewing other user&#39;s calendars: 他のユーザーのカレンダーを見ることを許可する
 Require event approvals: イベントの承認を必要とする
 display-unapproved-help: 承認が済んでいないイベントをカレンダーに表示するかどうか指定します。<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: 未承認イベントを表示する
@@ -814,7 +814,7 @@ Not authorized: 認証していません
 # Page: login-app.php
 #
 You must enter a login and password: ユーザー名とパスワードを入力してください。
-Save login via cookies so I don't have to login next time: 次回からログインしなくても良いように、ユーザー情報をクッキーにセーブする
+Save login via cookies so I don&#39;t have to login next time: 次回からログインしなくても良いように、ユーザー情報をクッキーにセーブする
 Login: ログイン
 Access public calendar: 公開カレンダーアクセス
 cookies-note: <b>注意:</b> このアプリケーションはクッキーが有効でなければ正常に動作しません。
@@ -929,7 +929,7 @@ No matches found: 該当項目が見つかりませんでした。
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: 他のユーザーのカレンダーを見る
+View Another User&#39;s Calendar: 他のユーザーのカレンダーを見る
 
 
 ###############################################
@@ -1232,7 +1232,7 @@ Event Imported: イベントをインポートしました。
 # Page: includes/js/admin.php
 #
 Server URL is required: サーバー URL が必須です。
-Server URL must end with '/': サーバー URL は「/」で終わらなければいけません。
+Server URL must end with &#39;/&#39;: サーバー URL は「/」で終わらなければいけません。
 Invalid work hours: 無効な勤務時間です。
 Invalid color for document background: 書類の背景色が無効です。
 Invalid color for document title: 書類のタイトル色が無効です。
@@ -1243,7 +1243,7 @@ Invalid color for table text background: テーブルテキストの背景色が
 Invalid color for event popup background: イベントポップアップの背景色が無効です。
 Invalid color for event popup text: イベントポップアップの色が無効です。
 Invalid color for table cell background for today: 今日のテーブルセルの背景色が無効です。
-Color format should be '#RRGGBB': 色は '#RRGGBB'の書式で設定してください。
+Color format should be &#39;#RRGGBB&#39;: 色は '#RRGGBB'の書式で設定してください。
 
 
 ###############################################
@@ -1395,10 +1395,10 @@ Convert Data to GMT: GMT にデータを変換する
 Application Settings: アプリケーション設定
 HTTP-based authentication was not detected: HTTPに基づいた認証は検知されませんでした。
 You will need to reconfigure your web server if you wish to: もしウェブサーバーを再設定する必要があるなら、
-select 'Web Server' from the 'User Authentication' choices below: 「ユーザー認証」より「ウェブサーバー」を選択してください。
+select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: 「ユーザー認証」より「ウェブサーバー」を選択してください。
 HTTP-based authentication was detected: HTTP ベースの認証を検知しました
 User authentication is being handled by your web server: ユーザー認証はウェブサーバーで扱います。
-You should select 'Web Server' from the list of 'User Authentication' choices below: 「ユーザー認証」選択の一覧からから「ウェブサーバー」を選ばなければなりません
+You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: 「ユーザー認証」選択の一覧からから「ウェブサーバー」を選ばなければなりません
 Create Default Admin Account: デフォルト管理アカウントを作成する
 User Authentication: ユーザー認証
 Web-based via WebCalendar (default): WebCalendar でウェブベース(デフォルト)

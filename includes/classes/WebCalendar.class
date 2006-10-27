@@ -53,7 +53,7 @@ class WebCalendar {
   var $_filePhaseMap = array('/^(nulogin|login|login-app|controlpanel|upcoming)\.php$/' =>
   array(array('Config', 'PHPDBI', 'Functions'),
   array('User', 'Connect')),
-'/^(ajax|icalclient|freebusy|publish|register|rss|get_reminders|get_events|ws)\.php$/' =>
+'/^(css_cacher|js_cacher|ajax|icalclient|freebusy|publish|register|rss|get_reminders|get_events|ws)\.php$/' =>
   array(array('Config', 'PHPDBI', 'Functions'),
   array('User', 'Validate', 'Connect', 'SiteExtras')),
 '/^convert_passwords\.php$/' =>
@@ -133,7 +133,7 @@ class WebCalendar {
    */
   function _initInitSecondPhase() {
     global $ovrd, $id, $user, $date, $year, $month, $hour, $minute,
-      $cat_id, $friendly, $PUBLIC_ACCESS, $APPLICATION_NAME, $DMW,
+      $cat_id, $friendly, $PUBLIC_ACCESS, $DMW,
       $ALLOW_VIEW_OTHER, $is_admin, $can_add, $readonly, $login,
       $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_OTHERS, $can_add, $GROUPS_ENABLED,
       $USER_SEES_ONLY_HIS_GROUPS, $valid_user, $userlist, $NONUSER_ENABLED,
@@ -163,7 +163,7 @@ class WebCalendar {
     // is allowed to view the current page.
     access_init ( );
     if ( ! access_can_view_page ( ) ) {
-      echo "<html>\n<head>\n<title>" . translate ( $APPLICATION_NAME ) . ' ' .
+      echo "<html>\n<head>\n<title>" . generate_application_name () . ' ' .
         translate( 'Error' ) .  "</title></head>\n" .
         "<body>\n" . print_not_auth ( true );
       exit;

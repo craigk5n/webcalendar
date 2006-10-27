@@ -45,7 +45,7 @@ Save: Сохранить
 Go: Перейти
 Public Access: Общий Доступ
 Admin: Администратор
-Allow Access to Other Users' Calendar: Разрешить Доступ к Календарям Других Пользователей
+Allow Access to Other Users&#39; Calendar: Разрешить Доступ к Календарям Других Пользователей
 Grant This User Access to My Calendar: Дать Этому Пользователю Доступ к Моему Календарю
 Type: Тип
 Calendar: Календарь
@@ -191,7 +191,7 @@ lunar-help: Если включено, будут отображены малениькие картинки, показывающие фа
 Display Lunar Phases in month view: Показывать фазу луны при просмотре месяца
 Restrictions: Ограничения
 allow-view-other-help: Определяет может ли один пользователь смотреть календари других пользователей.
-Allow viewing other user's calendars: Разрешить просматривать календари других пользователей
+Allow viewing other user&#39;s calendars: Разрешить просматривать календари других пользователей
 require-approvals-help: Когда включено, пользоветель должен утвердить событие, прежде чем оно появится на его календаре(пока не включено отображение неподтвержденного). Внимание, ответ "Нет" для данного поля не выключает подтверждения для календаря Общего Доступа (если календарь Общего Доступа включен).
 Require event approvals: Требуется подтверждение событий
 display-unapproved-help: Задает, видны ли неподтвержденные события в вашем календаре.<b> Если выбрано "Да", то они будут отображены в календаре, в цвете отличном от подтвержденных событий.<br />  При выборе "Нет", необходимо сперва подтвердить событие, прежде чем оно будет видно в календаре.
@@ -798,7 +798,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Эта 
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Оно должно располагаться в каталоге вашего Palm <tt>datebook/datebook.dat</tt> в каталоге вашего пользователя.
 The following entries will not be imported: Следующие записи не будут загружены
 Entries older than the current date: Записи до текущей даты
-Entries created in the Palm Desktop that have not been HotSync'd: Записи созданные в Palm Desktop, которые еще не были обработаны HotSync
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Записи созданные в Palm Desktop, которые еще не были обработаны HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Все загруженное с Palm будет переписано в процессе следующей загрузки (пока не пройдет дата события).
 Therefore, updates should be made in the Palm Desktop.: Таким образом обновления должны быть сделаны в Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Эта форма загрузит события в формате vCalendar (.vcs) 1.0
@@ -814,7 +814,7 @@ Help Index: Индекс подсказки
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.: Слои удобны для отображения событий других пользователей в своем календаре. Вы можете указать пользователя и цвет которым его события будут отображены.
+Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Слои удобны для отображения событий других пользователей в своем календаре. Вы можете указать пользователя и цвет которым его события будут отображены.
 Add/Edit/Delete: Добавить/Редактировать/Удалить
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Щелчек на ссылке Редактировать Слои в секции администрирования внизу страницы позволит вам добавлять/редактировать/удалять слои.
 Specifies the user that you would like to see displayed in your calendar.: Указать пользователя, чьи события вы хотите видеть у себя в календаре.
@@ -919,7 +919,7 @@ Not authorized: Не авторизован
 # Page: login-app.php
 #
 You must enter a login and password: Необходимо ввести имя и пароль
-Save login via cookies so I don't have to login next time: Сохранить имя в браузере, чтобы не нужно было совершать загрузку в следующий раз
+Save login via cookies so I don&#39;t have to login next time: Сохранить имя в браузере, чтобы не нужно было совершать загрузку в следующий раз
 Login: Вход
 Access public calendar: Вход в общий календарь
 cookies-note: <b>Внимание:</b> Этому приложению требуются включенные cookies.
@@ -1048,7 +1048,7 @@ No matches found: Ничего не найдено
 ########################################
 # Page: select_user.php
 #
-View Another User's Calendar: Просмотреть календарь другого пользователя
+View Another User&#39;s Calendar: Просмотреть календарь другого пользователя
 
 ########################################
 # Page: set_entry_cat.php
@@ -1140,7 +1140,7 @@ from calendar of: из календаря
 Copy entry: Скопировать запись
 This will delete the entry from your boss\' calendar.: Это удалит данную запись из календаря вашего начальника.
 This will delete the entry from your calendar.: Это удалит данную запись из вашего календаря.
-from your boss' calendar: из календаря вашего начальника
+from your boss&#39; calendar: из календаря вашего начальника
 Do you want to add this entry to your calendar?: Вы хотите добавить эту запись в ваш календарь?
 This will add the entry to your calendar.: Это добавит данную запись в ваш календарь.
 Email all participants: Отправить сообщение всем участникам
@@ -1404,7 +1404,7 @@ encoding: Неизвестная кодировка
 # Page: includes/js/admin.php
 #
 Server URL is required: Необходим адрес сервера
-Server URL must end with '/': Адрес сервера должен заканчиваться '/'
+Server URL must end with &#39;/&#39;: Адрес сервера должен заканчиваться '/'
 Invalid work hours: Неправильные рабочие часы
 Invalid color for document background: Недопустимый цвет для фона документа
 Invalid color for document title: Недопустимый цвет для заголовка документа
@@ -1415,7 +1415,7 @@ Invalid color for table text background: Недопустимый цвет для фона текста табли
 Invalid color for event popup background: Недопустимый цвет для фона окна события
 Invalid color for event popup text: Недопустимый цвет для текста окна события
 Invalid color for table cell background for today: Недопустимый цвет для фона клетки текущего дня
-Color format should be '#RRGGBB': Формат цвета должен быть вида '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Формат цвета должен быть вида '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php
@@ -1565,10 +1565,10 @@ Convert Data to GMT: Преобразовать данные в GMT
 Application Settings: Настройки Приложения
 HTTP-based authentication was not detected: Авторизация на основе HTTP не обнаружена
 You will need to reconfigure your web server if you wish to: Вам надо перенастроить ваш веб сервер если вы хотите
-select 'Web Server' from the 'User Authentication' choices below: Использовать "Веб Сервер" из списка "Авторизация Пользователей"
+select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: Использовать "Веб Сервер" из списка "Авторизация Пользователей"
 HTTP-based authentication was detected: Авторизация на основе HTTP поддерживается
 User authentication is being handled by your web server: Авторизация пользователей может обрабатываться вашим веб сервером
-You should select 'Web Server' from the list of 'User Authentication' choices below: Вам нужно использовать "Веб Сервер" из списка "Авторизация Пользователей"
+You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: Вам нужно использовать "Веб Сервер" из списка "Авторизация Пользователей"
 Create Default Admin Account: Создать учетную запись Администратора по умолчанию
 Admin Account Not Found: Учетная запись Администратора не обнаружена
 User Authentication: Авторизация Пользователей

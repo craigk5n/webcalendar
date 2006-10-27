@@ -69,7 +69,7 @@ function ws_escape_xml ( $str )
 // This will include all participants (with status)
 function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   global $site_extras, $WS_DEBUG,
-    $SERVER_URL, $APPLICATION_NAME, $single_user, $single_user_login,
+    $SERVER_URL, $single_user, $single_user_login,
     $DISABLE_PRIORITY_FIELD, $DISABLE_PARTICIPANTS_FIELD,
     $ALLOW_EXTERNAL_USERS, $EXTERNAL_REMINDERS;
 

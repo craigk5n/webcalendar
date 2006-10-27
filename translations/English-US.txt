@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-22-2006
+# Translation last updated on 10-27-2006
 
 
 ################################################################################
@@ -69,7 +69,7 @@ Save: Save
 Go: Go
 Public Access: Public Access
 Admin: Admin
-Allow Access to Other Users' Calendar: Allow Access to Other Users' Calendar
+Allow Access to Other Users&#39; Calendar: Allow Access to Other Users' Calendar
 Grant This User Access to My Calendar: Grant This User Access to My Calendar
 Type: Type
 Calendar: Calendar
@@ -95,17 +95,11 @@ private: private
 #
 Next: Next
 Previous: Previous
-System Log: System Log
-Activity Log: Activity Log
-User: User
-Date: Date
-Time: Time
-Event: Event
-Action: Action
 
 ########################################
 # Page: add_entry.php
 #
+Event: Event
 is already on your calendar.: is already on your calendar.
 Invalid entry id: Invalid entry id
 This is a XXX event and may not be added to your calendar.: This is a XXX event and may not be added to your calendar
@@ -214,7 +208,7 @@ lunar-help: If enabled, will display small icons representing the lunar phases e
 Display Lunar Phases in month view: Display Lunar Phases in month view
 Restrictions: Restrictions
 allow-view-other-help: Specifies whether one user may view another user's calendar.
-Allow viewing other user's calendars: Allow viewing other user's calendars
+Allow viewing other user&#39;s calendars: Allow viewing other user's calendars
 require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 Require event approvals: Require event approvals
 display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
@@ -392,6 +386,7 @@ Views: Views
 Layers: Layers
 Reports: Reports
 Delete Events: Delete Events
+Activity Log: Activity Log
 Public Preferences: Public Preferences
 Unapproved Public Events: Unapproved Public Events
 Administrative Tools: Administrative Tools
@@ -414,6 +409,8 @@ Hello: Hello
 An appointment has been approved and comments added by: An appointment has been approved and comments added by
 The subject was: The subject was
 The description is: The description is
+Date: Date
+Time: Time
 Comments: Comments
 
 ########################################
@@ -698,6 +695,7 @@ Add Report: Add Report
 Edit Report: Edit Report
 Report name: Report name
 Current User: Current User
+User: User
 Include link in trailer: Include link in trailer
 Include standard header/trailer: Include standard header/trailer
 Date range: Date range
@@ -821,7 +819,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: This
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
 The following entries will not be imported: The following entries will not be imported
 Entries older than the current date: Entries older than the current date
-Entries created in the Palm Desktop that have not been HotSync'd: Entries created in the Palm Desktop that have not been HotSync'd
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Entries created in the Palm Desktop that have not been HotSync'd
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
 Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
@@ -837,7 +835,7 @@ Help Index: Help Index
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.: Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.
+Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.
 Add/Edit/Delete: Add/Edit/Delete
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
 Specifies the user that you would like to see displayed in your calendar.: Specifies the user that you would like to see displayed in your calendar.
@@ -942,7 +940,7 @@ Not authorized: Not authorized
 # Page: login-app.php
 #
 You must enter a login and password: You must enter a login and password
-Save login via cookies so I don't have to login next time: Save login via cookies so I don't have to login next time
+Save login via cookies so I don&#39;t have to login next time: Save login via cookies so I don't have to login next time
 Login: Login
 Access public calendar: Access public calendar
 cookies-note: <b>Note:</b> This application requires cookies to be enabled.
@@ -1072,7 +1070,7 @@ No matches found: No matches found
 ########################################
 # Page: select_user.php
 #
-View Another User's Calendar: View Another User's Calendar
+View Another User&#39;s Calendar: View Another User's Calendar
 
 ########################################
 # Page: set_entry_cat.php
@@ -1154,17 +1152,17 @@ Hide: Hide
 Approve/Confirm entry: Approve/Confirm entry
 Reject entry: Reject entry
 Set category: Set category
-Edit repeating entry for all dates: Edit repeating entry for all dates
-Edit entry for this date: Edit entry for this date
-Delete repeating event for all dates: Delete repeating event for all dates
-This will delete this entry for all users.: This will delete this entry for all users.
-Delete entry only for this date: Delete entry only for this date
 Edit entry: Edit entry
-from calendar of: from calendar of
 Copy entry: Copy entry
-This will delete the entry from your boss\' calendar.: This will delete the entry from your boss\' calendar.
+This will delete this entry for all users.: This will delete this entry for all users.
+Edit repeating entry for all dates: Edit repeating entry for all dates
+Delete repeating event for all dates: Delete repeating event for all dates
+Edit entry for this date: Edit entry for this date
+Delete entry only for this date: Delete entry only for this date
+from calendar of: from calendar of
+This will delete the entry from your boss&#39; calendar.: This will delete the entry from your boss' calendar.
 This will delete the entry from your calendar.: This will delete the entry from your calendar.
-from your boss' calendar: from your boss' calendar
+from your boss&#39; calendar: from your boss' calendar
 Do you want to add this entry to your calendar?: Do you want to add this entry to your calendar?
 This will add the entry to your calendar.: This will add the entry to your calendar.
 Email all participants: Email all participants
@@ -1186,16 +1184,16 @@ New Entry: New Entry
 ########################################
 # Page: includes/access.php
 #
-Edit Event: Edit Event
-Day View: Day View
-Week View: Week View
-Month View: Month View
-Year View: Year View
-Manage Views: Manage Views
+Another User&#39;s Calendar: Another User's Calendar
 Category Management: Category Management
-User Management: User Management
-Another User&#39;s Calendar: Another User&#39;s Calendar
+Day View: Day View
+Edit Event: Edit Event
+Month View: Month View
 Common Trailer: Common Trailer
+User Management: User Management
+Manage Views: Manage Views
+Week View: Week View
+Year View: Year View
 
 ########################################
 # Page: includes/config.php
@@ -1209,6 +1207,12 @@ Troubleshooting Help: Troubleshooting Help
 LANGUAGE DEFINED: LANGUAGE DEFINED
 December: December
 Dec: Dec
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database: Error connecting to database
+Cache cleared from previous SQL!: Cache cleared from previous SQL!
 
 ########################################
 # Page: includes/functions.php
@@ -1301,6 +1305,8 @@ New user (self registration): New user (self registration)
 New user via email (self registration): New user via email (self registration)
 Attachment: Attachment
 Delete User: Delete User
+System Log: System Log
+Action: Action
 
 ########################################
 # Page: includes/help_list.php
@@ -1431,7 +1437,7 @@ encoding: Unknown encoding:
 # Page: includes/js/admin.php
 #
 Server URL is required: Server URL is required
-Server URL must end with '/': Server URL must end with '/'
+Server URL must end with &#39;/&#39;: Server URL must end with '/'
 Invalid work hours: Invalid work hours
 Invalid color for document background: Invalid color for document background
 Invalid color for document title: Invalid color for document title
@@ -1442,7 +1448,7 @@ Invalid color for table text background: Invalid color for table text background
 Invalid color for event popup background: Invalid color for event popup background
 Invalid color for event popup text: Invalid color for event popup text
 Invalid color for table cell background for today: Invalid color for table cell background for today
-Color format should be '#RRGGBB': Color format should be '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Color format should be '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php
@@ -1591,10 +1597,10 @@ Convert Data to GMT: Convert Data to GMT
 Application Settings: Application Settings
 HTTP-based authentication was not detected: HTTP-based authentication was not detected
 You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to
-select 'Web Server' from the 'User Authentication' choices below: select 'Web Server' from the 'User Authentication' choices below
+select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: select 'Web Server' from the 'User Authentication' choices below
 HTTP-based authentication was detected: HTTP-based authentication was detected
 User authentication is being handled by your web server: User authentication is being handled by your web server
-You should select 'Web Server' from the list of 'User Authentication' choices below: You should select 'Web Server' from the list of 'User Authentication' choices below
+You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: You should select 'Web Server' from the list of 'User Authentication' choices below
 Create Default Admin Account: Create Default Admin Account
 Admin Account Not Found: Admin Account Not Found
 User Authentication: User Authentication
@@ -1619,7 +1625,6 @@ Your previous version of WebCalendar requires updating several database tables.:
 ########################################
 # Page: tools/reload_remotes.php
 #
-Error connecting to database: Error connecting to database
 Include Path: Include Path
 Deleting events for: Deleting events for
 Importing events for: Importing events for

@@ -130,7 +130,7 @@ Display days with events in bold in month and year views: Pogrubiaj dni z wpisam
 allow-view-add-help: Dzieki wy¶wietlanej ikonie plusa ("+") bedzie mo¿na szybko dodawaæ zdarzenia do kalendarzy innych u¿ytkowników
 Include add event link in views: W³±cz przycisk dodawania zdarzenia
 allow-view-other-help: W³±cza mo¿liwo¶æ ogl±dania kalendarzy innych u¿ytkowników
-Allow viewing other user's calendars: Zezwalaj na ogladanie kalendarzy innych u¿ytkowników
+Allow viewing other user&#39;s calendars: Zezwalaj na ogladanie kalendarzy innych u¿ytkowników
 require-approvals-help: Wymaga zatwierdzenia zdarzenia przez u¿ytkownika
 Require event approvals: Wymagaj zatwierdzania zdarzeñ
 display-unapproved-help: Okre¶la czy niezatwierdzone wydarzenia bed± wy¶wietlane w twoim kalendarzu.<br /> Je¶li "tak" wtedy niezatwierdzone wydarzenia bed± wy¶wietlane (innym kolorem).<br /> Je¶li "Nie" wtedy najpierw bed± musia³y zostaæ zatwierdzone nim pojawi± siê w Twoim kalendarzu.
@@ -593,7 +593,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Ten 
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Powinien bya umieszczony w katalogu <tt>datebook/datebook.dat</tt> w podkatalogu wg. nazwy u¿ytkownika
 The following entries will not be imported: Nastepuj±ce wpisy nie zostan± zaimportowane
 Entries older than the current date: Wpisy starsze od bie¿±cej daty
-Entries created in the Palm Desktop that have not been HotSync'd: Wpisy utworzone w Palmtopie które nie zosta³y HotSync'owane
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Wpisy utworzone w Palmtopie które nie zosta³y HotSync'owane
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Wszystko zaimportowane z Palmtopa bedzie nadpisane podczas kolejnego importu (chyba ¿e data zdarzenia mine³a).
 Therefore, updates should be made in the Palm Desktop.: Dlatego, aktualizacje powinny bya robione w Palmtopie
 This form will import vCalendar (.vcs) 1.0 events: Ten formularz zaimportuje zdarzenia vCalendar (.vcs) 1.0
@@ -610,7 +610,7 @@ Help Index: Indeks pomocy
 ###############################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.: Warstwy to u¿yteczny dodatek, który pozwala na wy¶wietlanie zdarzeñ innych u¿ytkowników w Twoim w³asnym kalendarzu. Mo¿esz ustaliæ u¿ytkownika i kolor jego zdarzeñ, które maj± byæ pokazywane.
+Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Warstwy to u¿yteczny dodatek, który pozwala na wy¶wietlanie zdarzeñ innych u¿ytkowników w Twoim w³asnym kalendarzu. Mo¿esz ustaliæ u¿ytkownika i kolor jego zdarzeñ, które maj± byæ pokazywane.
 Add/Edit/Delete: Dodaj/Edytuj/Usun
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Klikaj±c na ³±cze Edytuj Warstwy w sekcji administracyjnej na dole strony pozwoli ci na dodanie/edycje/kasowanie warstw.
 Specifies the user that you would like to see displayed in your calendar.: Okre¶la u¿ytkownika ktrego chcia³by¶ widziea w swoim kalendarzu
@@ -698,7 +698,7 @@ Not authorized: Nieautoryzowane
 # Page: login-app.php
 #
 You must enter a login and password: Musisz wprowadzia nazwe u¿ytkownika i has³o
-Save login via cookies so I don't have to login next time: Zapisz nazwe u¿ytkownika przez cookies
+Save login via cookies so I don&#39;t have to login next time: Zapisz nazwe u¿ytkownika przez cookies
 Login: Login
 Access public calendar: Dostep do kalendarza publicznego
 cookies-note: <b>Uwaga!</b> Ta aplikacja wymaga w³±czonych cookies!
@@ -810,7 +810,7 @@ No matches found: Nie znaleziono
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Poka¿ kalendarz innego u¿ytkownika
+View Another User&#39;s Calendar: Poka¿ kalendarz innego u¿ytkownika
 
 
 ###############################################
@@ -1055,7 +1055,7 @@ Event Imported: Zdarzenia zaimportowane
 # Page: includes/js/admin.php
 #
 Server URL is required: Wymagany adres internetowy serwera
-Server URL must end with '/': Adres serwera musi koñczyæ siê na '/'
+Server URL must end with &#39;/&#39;: Adres serwera musi koñczyæ siê na '/'
 Invalid work hours: Niepoprawne godziny pracy
 Invalid color for document background: Nieprawid³owy kolor t³a dokumentu
 Invalid color for document title: Nieprawid³owy kolor tytu³u dokumentu
@@ -1066,7 +1066,7 @@ Invalid color for table text background: Nieprawid³owy kolor dla t³a tekstu tabe
 Invalid color for event popup background: Nieprawid³owy kolor dla t³a zdarzenia pojawiaj±cego siê
 Invalid color for event popup text: Nieprawid³owy kolor dla tekstu pojawiaj±cego siê zdarzenia
 Invalid color for table cell background for today: Nieprawid³owy kolor t³a komórki dla bie¿±cego dnia
-Color format should be '#RRGGBB': Format koloru powinien bya '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Format koloru powinien bya '#RRGGBB'
 
 
 ###############################################
@@ -1184,10 +1184,10 @@ Convert Data to GMT: Zamieñ datê na GMT
 Application Settings: Ustawienia aplikacji
 HTTP-based authentication was not detected: Autoryzacja HTTP nie wykryta
 You will need to reconfigure your web server if you wish to: Bêdziesz musia³ przekonfigurowaæ swój serwer, je¶li chcesz
-select 'Web Server' from the 'User Authentication' choices below: wybraæ "Serwer" z listy "Autoryzacja u¿ytkownika"
+select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: wybraæ "Serwer" z listy "Autoryzacja u¿ytkownika"
 HTTP-based authentication was detected: Autoryzacja HTTP zosta³a wykryta
 User authentication is being handled by your web server: Autoryzacja u¿ytkownika jest w³±czona na Twoim serwerze
-You should select 'Web Server' from the list of 'User Authentication' choices below: Powiniene¶ wybraæ "Serwer" z listy "Autoryzacja u¿ytkownika"
+You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: Powiniene¶ wybraæ "Serwer" z listy "Autoryzacja u¿ytkownika"
 User Authentication: Autoryzacja u¿ytkownika
 Web-based via WebCalendar (default): Standardowa poprzez WebCalendar
 Web Server: Serwer

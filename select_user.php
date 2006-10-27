@@ -4,7 +4,7 @@ include_once 'includes/init.php';
 print_header();
 ?>
 
-<h2><?php etranslate("View Another User's Calendar"); ?></h2>
+<h2><?php etranslate( 'View Another User&#39;s Calendar' ); ?></h2>
 
 <?php
 if (( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||

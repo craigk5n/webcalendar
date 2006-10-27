@@ -48,6 +48,7 @@ if ( empty ( $_SERVER['PHP_SELF'] ) ||
   die ( 'You cannot access this file directly!' );
 
 require_once 'includes/classes/WebCalendar.class';
+
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
 
@@ -89,11 +90,11 @@ $WebCalendar->initializeSecondPhase();
 function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $disableCustom = false, $disableStyle = false, $disableRSS = false,
   $disableAJAX = true ) {
-  global $APPLICATION_NAME, $BGCOLOR, $browser, $CUSTOM_HEADER, $CUSTOM_SCRIPT,
+  global $BGCOLOR, $browser, $CUSTOM_HEADER, $CUSTOM_SCRIPT,
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG, $PHP_SELF,
   $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG,
-  $TODAYCELLBG, $fullname, $WEEKENDBG;
+  $TODAYCELLBG, $WEEKENDBG;
   $ret = '';
   // Determine the page direction (left-to-right or right-to-left)
   $direction = translate ( 'direction' );
@@ -128,16 +129,15 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   if ( empty ( $charset ) || $charset == 'charset' )
     $charset = 'iso-8859-1';
 
+  $appStr = generate_application_name ( true );
+
   $ret .= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="'
    . $lang . '">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=' . $charset
-   . '" />
-    <title>' . ( $fullname != '' && $APPLICATION_NAME == 'myname'
-    ? $fullname : translate ( $APPLICATION_NAME ) )
-   . '</title>';
+   . '" /><title>' . $appStr . '</title>';
   // Includes needed for the top menu
   if ( $MENU_ENABLED == 'Y' ) {
     $MENU_THEME = ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none'
@@ -156,7 +156,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // Any other includes?
   if ( is_array ( $includes ) ) {
     foreach ( $includes as $inc ) {
-      if ( $inc == 'js/popups.php' && !
+      if ( substr ( $inc, 0, 13 )  == 'js/popups.php' && !
         empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
         // don't load popups.php javascript if DISABLE_POPUPS
       } else
@@ -203,7 +203,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     ( $login == '__public__' ) || ( ! empty ( $GLOBALS['USER_RSS_ENABLED'] ) &&
       ( $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) ) && $disableRSS == false ? '
     <link rel="alternate" type="application/rss+xml" title="'
-     . htmlentities ( $APPLICATION_NAME ) . ' [RSS 2.0]" href="rss.php'
+     . $appStr . ' [RSS 2.0]" href="rss.php'
     // TODO: single-user mode, etc.
     . ( $login != '__public__' ? '?user=' . $login : '' ) . '" />' : '' )
   // Link to favicon

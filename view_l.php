@@ -40,7 +40,7 @@ if ( empty ( $friendly ) ) {
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
 
-$INC = array('js/popups.php');
+$INC = array('js/popups.php/true');
 print_header($INC);
 $trailerStr = print_trailer ();
 set_today($date);

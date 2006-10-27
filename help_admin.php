@@ -123,7 +123,7 @@ echo $helpListStr;
  <?php etranslate('allow-html-description-help')?>
 </td></tr>
 <tr><td class="help">
- <?php etranslate("Allow viewing other user's calendars")?>:</td><td>
+ <?php etranslate( 'Allow viewing other user&#39;s calendars' )?>:</td><td>
  <?php etranslate('allow-view-other-help')?>
 </td></tr>
 <tr><td class="help">

@@ -51,7 +51,8 @@ function getPostValue ( $name ) {
   return ( $HTTP_POST_VARS[$name] );
 }
 
-include_once 'includes/getGetValue.php';
+$includedir = ( ! empty ( $includedir ) ? $includedir :'includes' ); 
+include_once "$includedir/getGetValue.php";
 
 /* The 'include_once' line above should work. Both here and includes/gradient.php.
 But, just in case, I'm only commenting out this function instead of removing it.
@@ -172,7 +173,7 @@ function getIntValue ( $name, $fatal=false ) {
  * @global array  Server variables
  */
 function load_global_settings () {
-  global $login, $readonly, $HTTP_HOST, $SERVER_PORT, $REQUEST_URI, $_SERVER;
+  global $HTTP_HOST, $SERVER_PORT, $REQUEST_URI, $_SERVER;
   global $SERVER_URL, $APPLICATION_NAME, $FONTS, $LANGUAGE;
   // Note: when running from the command line (send_reminders.php),
   // these variables are (obviously) not set.
@@ -340,8 +341,8 @@ function get_web_browser () {
  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-  //error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
-  //3, 'd:/php/logs/debug.txt' );
+  error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
+  3, 'd:/php/logs/debug.txt' );
   //fwrite ( $fd, date ( 'Y-m-d H:i:s' ) .  "> $msg\n" );
   //fclose ( $fd );
   //  3, '/tmp/webcal-debug.log' );
@@ -473,7 +474,7 @@ function do_redirect ( $url ) {
  *
  */
 function send_http_login () {
-  global $lang_file, $APPLICATION_NAME;
+  global $lang_file;
 
   if ( strlen ( $lang_file ) ) {
     $title = translate( 'Title' );
@@ -581,6 +582,9 @@ function load_user_preferences ( $guest='') {
     $DATE_FORMAT_MY, $DATE_FORMAT, $DATE_FORMAT_MD, $DATE_FORMAT_TASK,
     $LANGUAGE, $lang_file, $has_boss, $user, $is_nonuser_admin, $is_nonuser,
     $ALLOW_COLOR_CUSTOMIZATION;
+
+do_debug ( "LOAD USER PREF " . $guest . ' ' . $LANGUAGE );
+$guest = '';
   $lang_found = false;
   $colors = array (
     'BGCOLOR' => 1,
@@ -1687,7 +1691,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   // start the minical table for each month
   $ret .= '
     <table class="minical"'
-   . ( $minical_id != '' ? ' id="' . $minical_id . '"' : '' );
+   . ( $minical_id != '' ? ' id="' . $minical_id . '"' : '' ). '>';
 
   $monthstart = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
   $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
@@ -1701,8 +1705,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     $month_ahead = date ( 'Ymd',
       mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear ) );
 
-    $ret .= '
-      <caption>' . $thisday . '</caption>
+    $ret .= '<caption>' . $thisday . '</caption>
       <thead>
         <tr class="monthnav">
           <th colspan="' . ( $DISPLAY_WEEKNUMBER == true ? 8 : 7 ) . '">
@@ -4181,7 +4184,13 @@ function display_time ( $time='', $control=0, $timestamp='', $format='' ) {
  * @return string The name of the specified month.
  */
 function month_name ( $m, $format = 'F' ) {
-  static $month_names, $monthshort_names;
+  global $lang;
+  static $month_names, $monthshort_names, $local_lang;
+
+  //we may have switched languages
+  if ( $local_lang != $lang )
+    $month_names = $monthshort_names = array();
+  $local_lang = $lang;
 
   if ( empty ( $month_names[0] ) )
     $month_names = array ( 
@@ -4229,7 +4238,13 @@ function month_name ( $m, $format = 'F' ) {
  * @return string The weekday name ("Sunday" or "Sun")
  */
 function weekday_name ( $w, $format = 'l' ) {
-  static $week_names, $weekday_names;
+  global $lang;
+  static $week_names, $weekday_names, $local_lang;
+
+  //we may have switched languages
+  if ( $local_lang != $lang )
+    $week_names = $weekday_names = array();
+  $local_lang = $lang;
 
   //we may pass $DISPLAY_LONG_WEEKDAYS as $format
   if ( $format == 'N' ) $format = 'D';
@@ -5888,7 +5903,7 @@ function getShortTime ( $timestr ) {
 function display_admin_link ( ) {
  global $MENU_ENABLED;
  
- $ret = '';
+ $ret = '<br />';
  if ( $MENU_ENABLED == 'N' ) {
    $adminStr = translate( 'Admin' );
    $ret = '<a title="' . $adminStr . '" class="nav" href="adminhome.php">&laquo;&nbsp; ' .
@@ -6132,5 +6147,25 @@ function is_weekend ( $date ) {
     $WEEKEND_START = 6;
   $wday = date ( 'w', $date );
   return ( $wday == $WEEKEND_START %7 || $wday ==  ( $WEEKEND_START +1 ) %7 );
+}
+
+/**
+ * Generate Application Name
+ *
+ * @param bool $custom  Allow user name to be displayed
+ */
+function generate_application_name ( $custom=true ) {
+  global $APPLICATION_NAME, $fullname;
+
+  if ( empty ( $APPLICATION_NAME ) )
+    $APPLICATION_NAME = 'Title';
+
+  if ( $custom == true && ! empty ( $fullname ) && $APPLICATION_NAME == 'myname' ) {
+    return $fullname;
+  } else if ( $APPLICATION_NAME == 'Title' || $APPLICATION_NAME == 'myname' ) {
+    return translate( 'Title' );
+  } else {
+    return htmlspecialchars ( $APPLICATION_NAME );
+  } 
 }
 ?>

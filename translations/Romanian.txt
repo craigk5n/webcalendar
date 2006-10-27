@@ -120,7 +120,7 @@ Display days with events in bold in month and year views: Afi&#351;eaza cu liter
 allow-view-add-help: O iconi&#355;&#259; '+' va fi inclus&#259; &#238;n vizualiz&#259;ri, permi&#355;&#226;nd utilizatorilor s&#259; adauge u&#351;or evenimente la calendarele altora.
 Include add event link in views: Include op&#355;iunea adauga evenimente &#238;n vizualiz&#259;ri
 allow-view-other-help: Specific&#259; dac&#259; un utilizator poate s&#259; vad&#259; calendarul altuia.
-Allow viewing other user's calendars: Permite vizualizarea calendarelor altor utilizatori
+Allow viewing other user&#39;s calendars: Permite vizualizarea calendarelor altor utilizatori
 require-approvals-help: C&#226;nd activat&#259;, utilizatorul trebuie s&#259; aprobe evenimentele care vor fie afi&#351;ate in calendarul sau (&#238;n afar&#259; de cazul c&#226;nd "afi&#351;eaz&#259; neaprobatele" este activat). Nepun&#226;nd aici "Nu" va dezactiva aprobarile pentru calendarul cu access public (&#238;n cazul &#238;n care calendarul cu access public este activat).
 Require event approvals: Necesit&#259; aprobare pentru evenimente
 display-unapproved-help: Specific&#259; daca evenimentele neaprobate sunt afi&#351;ate &#238;n calendarul t&#259;u. <br /> Dac&#259; aici este "Da", atunci evenimentele neaprobate for fi afi&#351;ate &#238;n calendarul t&#259;u (intr-o alta culoare). <br /> Dac&#259; aici este "Nu", atunci evenimentele neaprobate trebuie aprobate &#238;nainte de a ap&#259;rea &#238;n calendarul t&#259;u.
@@ -549,7 +549,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Aces
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Ar trebui s&#259; fie localizat &#238;n directorul <tt>datebook/datebook.dat</tt> de pe Palm, &#238;ntr-un subdirector cu numele t&#259;u de utilizator.
 The following entries will not be imported: Urmatoarele date nu vor fi importate
 Entries older than the current date: &#206;nregistr&#259;ri mai vechi dec&#226;t data curent&#259;
-Entries created in the Palm Desktop that have not been HotSync'd: &#206;nregistr&#259;ri create pe Palm dar care nu au fost HotSync-ate
+Entries created in the Palm Desktop that have not been HotSync&#39;d: &#206;nregistr&#259;ri create pe Palm dar care nu au fost HotSync-ate
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Orice a fost importat de pe Palm va fi rescris la urmatorul import (dac&#259; data nu este trecut&#259;).
 Therefore, updates should be made in the Palm Desktop.: De aceea actualiz&#259;rile ar trebui f&#259;cute pe Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Acest formular va importa evenimente de tip vCalendar (.vcs) 1.0
@@ -636,7 +636,7 @@ Reject this entry?: Refuz&#259;?
 # Page: login-app.php
 #
 You must enter a login and password: Este nevoie de login &#351;i parol&#259; 
-Save login via cookies so I don't have to login next time: Salveaz&#259; loginul &#238;ntr-un cookie pentru data viitoare
+Save login via cookies so I don&#39;t have to login next time: Salveaz&#259; loginul &#238;ntr-un cookie pentru data viitoare
 Login: Login
 Access public calendar: Acceseaz&#259; calendarul public
 cookies-note: <b>Nota:</b> Aceast&#259; aplica&#355;ie necesit&#259; cookie-uri.
@@ -715,7 +715,7 @@ No matches found: Nimic nu se potrive&#351;te
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Vizualizeaz&#259; calendarul unui alt utilizator
+View Another User&#39;s Calendar: Vizualizeaz&#259; calendarul unui alt utilizator
 
 
 ###############################################
@@ -933,7 +933,7 @@ Event Imported: Eveniment importat
 # Page: includes/js/admin.php
 #
 Server URL is required: Este necesar URL-ul serverului
-Server URL must end with '/': URL-ul serverului trebuie s&#259; se termine &#238;n '/'
+Server URL must end with &#39;/&#39;: URL-ul serverului trebuie s&#259; se termine &#238;n '/'
 Invalid work hours: Ore de lucru invalide
 Invalid color for document background: Culoare invalid&#259; pentru fundalul documentului
 Invalid color for document title: Culoare invalid&#259; pentru titlul documentului
@@ -944,7 +944,7 @@ Invalid color for table text background: Culoare invalid&#259; pentru fundalul t
 Invalid color for event popup background: Culoare invalid&#259; pentru fundalul popup-urilor
 Invalid color for event popup text: Culoare invalid&#259; pentru textul popup-urilor
 Invalid color for table cell background for today: Culoare invalid&#259; pentru fundalul casu&#355;ei de azi a tabelului
-Color format should be '#RRGGBB': Formatul culorii trebuie s&#259; fie '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Formatul culorii trebuie s&#259; fie '#RRGGBB'
 
 
 ###############################################

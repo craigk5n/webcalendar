@@ -58,13 +58,13 @@ if ( empty ( $error ) && empty ( $id ) ) {
 
 // If public user, they cannot do this...
 if ( empty ( $error ) && $login == '__public__' ) {
-  $error = translate("Not authorized");
+  $error = translate( 'Not authorized' );
 }
 
 // Only admin users can modify events on the public calendar
 if ( empty ( $error ) && $PUBLIC_ACCESS == 'Y' && $user == '__public__' &&
   ! $is_admin ) {
-  $error = translate("Not authorized") . ' ' . "(not admin)";
+  $error = translate( 'Not authorized' ) . ' ' . "(not admin)";
 }
 
 if ( empty ( $error ) && ! $is_admin && $user != $login ) {
@@ -72,11 +72,11 @@ if ( empty ( $error ) && ! $is_admin && $user != $login ) {
   // the user is not an admin user.
   if ( access_is_enabled () ) {
     if ( ! access_user_calendar ( 'approve', $user ) ) {
-      $error = translate("Not authorized");
+      $error = translate( 'Not authorized' );
     }
   } else {
     // TODO: support boss/assistant when UAC is not enabled
-    $error = translate("Not authorized");
+    $error = translate( 'Not authorized' );
   }
 }
 

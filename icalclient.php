@@ -110,12 +110,9 @@
  
 include_once 'includes/xcal.php';
 
- $WebCalendar->initializeSecondPhase();
+$WebCalendar->initializeSecondPhase();
  
-
-if ( empty ( $APPLICATION_NAME ) ) {
-  $APPLICATION_NAME = "WebCalendar";
-}
+$appStr = generate_application_name ();
 
 // If WebCalendar is using http auth, then $login will be set in
 // validate.php.
@@ -139,7 +136,7 @@ unset ($_ENV['REMOTE_USER']);
 if ( empty ( $login ) ) {
   if (!isset($_SERVER['PHP_AUTH_USER'])) {
     unset($_SERVER['PHP_AUTH_PW']);
-    header('WWW-Authenticate: Basic realm="' . $APPLICATION_NAME . '"' );
+    header('WWW-Authenticate: Basic realm="' . $appStr . '"' );
     header('HTTP/1.0 401 Unauthorized');
     exit;
   } else {
@@ -150,7 +147,7 @@ if ( empty ( $login ) ) {
       unset($_SERVER['PHP_AUTH_USER']);
       unset($_SERVER['PHP_AUTH_PW']);
       //TODO should be able code this better to eliminate duplicate code
-      header('WWW-Authenticate: Basic realm="' . $APPLICATION_NAME . '"' );
+      header('WWW-Authenticate: Basic realm="' . $appStr . '"' );
       header('HTTP/1.0 401 Unauthorized');
       exit;
     }

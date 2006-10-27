@@ -254,7 +254,7 @@ Reject this entry?: Hafna þessu atriði?
 # Page: login-app.php
 #
 You must enter a login and password: Þú verður að slá inn notandanafn og lykilorð
-Save login via cookies so I don't have to login next time: Vista upplýsingar með kökum
+Save login via cookies so I don&#39;t have to login next time: Vista upplýsingar með kökum
 Login: Skrá inn
 cookies-note: <b>Athugið:</b> Kökur verða að vera virkar
 
@@ -292,7 +292,7 @@ No matches found: Ekkert fannst
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Skoða dagatal annarra
+View Another User&#39;s Calendar: Skoða dagatal annarra
 
 
 ###############################################
@@ -397,7 +397,7 @@ Invalid color for document background: Ólöglegur litur í bakgrunni
 Invalid color for document title: Ólöglegur litur í titli
 Invalid color for table cell background: Ólöglegur litur í bakgrunni taflna
 Invalid color for table cell background for today: Ólöglegur litur í bakgrunni taflna núverandi dags
-Color format should be '#RRGGBB': Form lita á að vera '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Form lita á að vera '#RRGGBB'
 
 
 ###############################################

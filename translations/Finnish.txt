@@ -120,7 +120,7 @@ yearly-shows-events-help: On the yearly view, display days that contain events i
 allow-view-add-help: Asettaa '+'-merkin ilmestymään näkymiin, jolloin käyttäjä voi helposti lisätä uuden tapahtuman toisen(kin) käyttäjän kalenteriin.
 Include add event link in views: Lisää linkki "Lisää tapahtuma" kaikkiin näkymiin
 allow-view-other-help: Määrittää, salliiko kalenteri käyttäjän tarkastella toisen käyttäjän kalenteria.
-Allow viewing other user's calendars: Salli muiden henkilöiden kalenterien tarkastelu
+Allow viewing other user&#39;s calendars: Salli muiden henkilöiden kalenterien tarkastelu
 require-approvals-help: Jos päällä, käyttäjän on vahvistettava tapahtuma ennenkuin se näkyy kalenterissa.
 Require event approvals: Vaadi tapahtumien vahvistus
 display-unapproved-help: Määrittelee näytetäänkö hyväksymättömät tapahtumat kalenterissa. <br />Jos valittu "Kyllä", niin hyväksymättömät tapahtumat näytetään (eri värillä).<br />Jos valittu "Ei", niin tapahtumat tulee hyväksyä ennenkuin ne näkyvät kalenterissa. 
@@ -539,7 +539,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Täll
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Sen pitäisi olla Palmissasi hakemistossa <tt>datebook/datebook.dat</tt> käyttäjätunnuksesi mukaisesti nimetyssä alihakemistossa.
 The following entries will not be imported: Seuraavia tapahtumia ei tuoda
 Entries older than the current date: Kuluvaa päivää vanhemmat tapahtumat
-Entries created in the Palm Desktop that have not been HotSync'd: Palmissa luodut tapahtumat, joita ei ole synkronoitu HotSync:llä
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Palmissa luodut tapahtumat, joita ei ole synkronoitu HotSync:llä
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Kaikki Palmista tuodut tapahtumat pyyhkiytyvät seuraavassa tuonnissa (ellei tapahtuma ole jo mennyt ohi).
 Therefore, updates should be made in the Palm Desktop.: Siksi päivitykset tulisi tehdä Palmin kautta.
 This form will import vCalendar (.vcs) 1.0 events: Tuo vCalendar (.vcs) 1.0 tällä lomakkeella
@@ -626,7 +626,7 @@ Reject this entry?: Hylätäänkö merkintä?
 # Page: login-app.php
 #
 You must enter a login and password: Syötä käyttäjätunnus ja salasana
-Save login via cookies so I don't have to login next time: Kirjaa minut automaattisesti sisään
+Save login via cookies so I don&#39;t have to login next time: Kirjaa minut automaattisesti sisään
 Login: Kirjoittaudu
 Access public calendar: Salli yleinen kalenteri
 cookies-note: <b>Huom:</b> Tätä sovellusta käytettäessä (joulu)piparien pitää olla käytössä.
@@ -703,7 +703,7 @@ No matches found: Kohteita ei löytynyt
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Näytä toisen käyttäjän kalenteri
+View Another User&#39;s Calendar: Näytä toisen käyttäjän kalenteri
 
 
 ###############################################
@@ -877,7 +877,7 @@ Event Imported: Tapahtuma tuotu
 # Page: includes/js/admin.php
 #
 Server URL is required: Palvelimien URL on pakollinen
-Server URL must end with '/': Palvelimen URL täytyy päättyä merkkiin '/'
+Server URL must end with &#39;/&#39;: Palvelimen URL täytyy päättyä merkkiin '/'
 Invalid color for document background: Taustaväri on virheellinen
 Invalid color for document title: Otsikon väri on virheellinen
 Invalid color for table cell background: Ruudukon taustaväri on virheellinen
@@ -887,7 +887,7 @@ Invalid color for table text background: Tekstin taustaväri on virheellinen
 Invalid color for event popup background: Popup-ikkunan taustaväri on virheellinen
 Invalid color for event popup text: Popup-ikkunan tekstin väri on virheellinen
 Invalid color for table cell background for today: Kuluvan päivän taustaväri on virheellinen
-Color format should be '#RRGGBB': Värikoodin tulee olla muotoa '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Värikoodin tulee olla muotoa '#RRGGBB'
 
 
 ###############################################

@@ -346,7 +346,7 @@ Reject this entry?: 拒絕這個記事?
 # Page: login-app.php
 #
 You must enter a login and password: 你著輸入用者名稱及密碼
-Save login via cookies so I don't have to login next time: 將登入資料儲存佇 cookies 中，後擺就免重登入。
+Save login via cookies so I don&#39;t have to login next time: 將登入資料儲存佇 cookies 中，後擺就免重登入。
 Login: 登入
 Access public calendar: 入去公眾行事曆
 cookies-note: <b>注意:</b> 本程式須要 cookies 才會得使用。
@@ -394,7 +394,7 @@ No matches found: 查無資料
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: 檢視其他人 e 月曆
+View Another User&#39;s Calendar: 檢視其他人 e 月曆
 
 
 ###############################################
@@ -550,7 +550,7 @@ Invalid color for document background: Invalid color for document background
 Invalid color for document title: Invalid color for document title
 Invalid color for table cell background: Invalid color for table cell background
 Invalid color for table cell background for today: Invalid color for table cell background for today
-Color format should be '#RRGGBB': Color format should be '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Color format should be &#39;#RRGGBB&#39;
 
 
 ###############################################

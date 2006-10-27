@@ -36,7 +36,7 @@ $DISPLAY_LONG_WEEKDAYS = 'N';
 view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_v.php');
 
-$INC = array('js/popups.php');
+$INC = array('js/popups.php/true');
 print_header($INC);
 
 set_today($date);

@@ -306,7 +306,7 @@ if ( $viewusercnt == 0 ) {
 
 $printerStr = generate_printer_friendly ( 'view_t.php' );
 
-$INC = array('js/popups.php/false');
+$INC = array('js/popups.php/true');
 print_header($INC);
 
 if ( ! empty ( $error ) ) {

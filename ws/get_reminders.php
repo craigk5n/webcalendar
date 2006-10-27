@@ -101,7 +101,7 @@ if ( $WS_DEBUG )
 // Send a reminder for a single event for a single day.
 function process_reminder ( $id, $event_date, $remind_time ) {
   global $site_extras, $WS_DEBUG,
-    $SERVER_URL, $APPLICATION_NAME, $single_user, $single_user_login,
+    $SERVER_URL, $single_user, $single_user_login,
     $DISABLE_PRIORITY_FIELD, $DISABLE_ACCESS_FIELD,
     $DISABLE_PARTICIPANTS_FIELD;
 

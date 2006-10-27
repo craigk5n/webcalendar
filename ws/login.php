@@ -60,9 +60,7 @@ if ( $single_user == 'Y' ) {
       $out .= "  <cookieValue>$encoded_login</cookieValue>\n";
       if ( $is_admin )
         $out .= "  <admin>1</admin>\n";
-      if ( empty ( $APPLICATION_NAME ) )
-        $APPLICATION_NAME = "WebCalendar";
-      $out .= "  <calendarName>" . htmlspecialchars ( $APPLICATION_NAME ) .
+      $out .= "  <calendarName>" . generate_application_name () .
         "</calendarName>\n";
       $out .= "  <appName>" .  htmlspecialchars ( $PROGRAM_NAME ) .
         "</appName>\n";

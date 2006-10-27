@@ -127,7 +127,7 @@ Display days with events in bold in month and year views: Στην Εμφάνι�
 allow-view-add-help: Ένα εικονίδιο '+' εμφανίζεται στις διάφορες προβολές, το οποίο επιτρέπει στους χρήστες να εισάγουν γρήγορα γεγονότα σε ημερολόγια άλλων χρηστών.
 Include add event link in views: Εμφάνιση προσθήκης γεγονότος στις προβολές
 allow-view-other-help: Καθορίζει πότε ένας χρήστης θα μπορεί να δεί το ημερολόγιο άλλου χρήστη.
-Allow viewing other user's calendars: Επιτρέπεται η εμφάνιση ημερολογίων άλλων χρηστών
+Allow viewing other user&#39;s calendars: Επιτρέπεται η εμφάνιση ημερολογίων άλλων χρηστών
 require-approvals-help: Όταν είναι ενεργό, ο χρήστης πρέπει να αποδεχτεί ένα γεγονός πριν εμφανιστεί στο ημερολόγιό του (εκτός και αν το "Εμφάνιση των Γεγονότων σε Αναμονή Αποδοχής" είναι ενεργό).  Θέτοντάς το σε "Όχι" δεν απενεργοποιείτε τις αποδοχές για το Ημερολόγιο Δημόσιας Πρόσβασης (Αν το Ημερολόγιο Δημόσιας Πρόσβασης είναι ενεργό).
 Require event approvals: Απαιτεί αποδοχή γεγονότων
 display-unapproved-help: Καθορίζει αν τα, σε αναμονή αποδοχής γεγονότα, θα εμφανίζονται στο ημερολόγιό σας.<br /> Αν το θέσετε σε "Ναι", τότε τα γεγονότα αυτά θα εμφανίζονται στο ημερολόγιό σας (με διαφορετικό χρώμα).<br /> Αν το θέσετε σε "Όχι", τα γεγονότα θα αυτά πρέπει να τα αποδεκτείτε για να εμφανιστούν στο ημερολόγιό σας.
@@ -568,7 +568,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: Η �
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Πρέπει να βρίσκεται στο Palm σας, στο directory <tt>datebook/datebook.dat</tt> σε ένα subdirectory με όνομα ίδιο με το όνομα χρήστη.
 The following entries will not be imported: Οι ακόλουθες εγγραφές δεν θα εισαχθούν
 Entries older than the current date: Εγγραφές παλαιότερες από σήμερα
-Entries created in the Palm Desktop that have not been HotSync'd: Εγγραφές που δημιουργήθηκαν στο Palm Desktop και δεν έχουν γίνει HotSync'd
+Entries created in the Palm Desktop that have not been HotSync&#39;d: Εγγραφές που δημιουργήθηκαν στο Palm Desktop και δεν έχουν γίνει HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Ότι εισάγεται από το Palm θα διαγραφεί και ξαναγραφεί στην επόμενη εισαγωγή (εκτός και αν η ημερομηνία του γεγονότος έχει περάσει).
 Therefore, updates should be made in the Palm Desktop.: Αλλιώς, πρέπει να γίνουν τροποποιήσεις στο Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Η σελίδα αυτή εισάγει γεγονότα από vCalendar (.vcs) 1.0
@@ -658,7 +658,7 @@ Reject this entry?: Απόρριψη της εγγραφής;
 # Page: login-app.php
 #
 You must enter a login and password: Πρέπει να δώσετε Όνομα Χρήστη και Κωδικό
-Save login via cookies so I don't have to login next time: Αποθήκευση της εισόδου με cookies για να μην χρειαστεί η διαδικασία εισόδου την επόμενη φορά
+Save login via cookies so I don&#39;t have to login next time: Αποθήκευση της εισόδου με cookies για να μην χρειαστεί η διαδικασία εισόδου την επόμενη φορά
 Login: Είσοδος
 Access public calendar: Πρόσβαση στο Δημόσιο Ημερολόγιο
 cookies-note: <b>Σημείωση:</b> Η εφαρμογή απαιτεί τα cookies να είναι ενεργά.
@@ -738,7 +738,7 @@ No matches found: Δεν βρέθηκαν ταιριάσματα
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: Δείτε το Ημερολόγιο άλλου χρήστη
+View Another User&#39;s Calendar: Δείτε το Ημερολόγιο άλλου χρήστη
 
 
 ###############################################
@@ -969,7 +969,7 @@ Event Imported: Γεγονός Εισάχθηκε
 # Page: includes/js/admin.php
 #
 Server URL is required: Το URL του Server είναι απαραίτητο
-Server URL must end with '/': Το URL του Server πρέπει να τελειώνει σε '/'
+Server URL must end with &#39;/&#39;: Το URL του Server πρέπει να τελειώνει σε '/'
 Invalid work hours: Εσφαλμένες ώρες εργασίας
 Invalid color for document background: Εσφαλμένο χρώμα για το background του κειμένου
 Invalid color for document title: Εσφαλμένο χρώμα για τον τίτλο του κειμένου
@@ -980,7 +980,7 @@ Invalid color for table text background: Εσφαλμένο χρώμα για τ
 Invalid color for event popup background: Εσφαλμένο χρώμα για το background του αναδυόμενου μύνηματος του γεγονότος
 Invalid color for event popup text: Εσφαλμένο χρώμα για το κείμενο του αναδυόμενου μύνηματος του γεγονότος
 Invalid color for table cell background for today: Εσφαλμένο χρώμα για το background του κελιού του πίνακα για σήμερα
-Color format should be '#RRGGBB': Η μορφή του χρώματος πρέπει να είναι '#RRGGBB'
+Color format should be &#39;#RRGGBB&#39;: Η μορφή του χρώματος πρέπει να είναι '#RRGGBB'
 
 
 ###############################################

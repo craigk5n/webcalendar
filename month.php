@@ -80,7 +80,7 @@ if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
     "year=$thisyear&amp;month=$thismonth$caturl" . 
     ( ! empty ( $friendly ) ? '&amp;friendly=1' : '') . "\" />\n";
 }
-$INC =  array('js/popups.php', 'js/visible.php/true');
+$INC =  array('js/popups.php/true', 'js/visible.php/true');
 print_header($INC,$HeadX);
 
 echo <<<EOT

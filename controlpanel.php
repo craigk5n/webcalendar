@@ -46,8 +46,7 @@ $WebCalendar->setLanguage();
 header ( "Content-type: application/x-java-jnlp-file" );
 
 // Make sure app name is set
-if ( empty ( $APPLICATION_NAME ) )
-  $APPLICATION_NAME = 'WebCalendar';
+$appStr = generate_application_name ();
 
 echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
 ?>
@@ -57,7 +56,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
   href="controlpanel.php">
   <information>
     <title><?php echo translate ( 'Control Panel' ) .
-      ': ' . htmlentities ( $APPLICATION_NAME );?></title>
+      ': ' . htmlentities ( $appStr );?></title>
     <vendor>k5n.us</vendor>
     <homepage href="http://www.k5n.us"/>
     <description>WebCalendar Control Panel</description>

@@ -497,7 +497,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <legend><?php etranslate('Restrictions')?></legend>
  <table>
  <tr><td class="tooltip" title="<?php etooltip( 'allow-view-other-help' )?>">
-  <?php etranslate( "Allow viewing other user's calendars" )?>:</td><td>
+  <?php etranslate( 'Allow viewing other user&#39;s calendars' )?>:</td><td>
   <?php echo print_radio_html ( 'ALLOW_VIEW_OTHER' ) ?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'require-approvals-help' );?>">

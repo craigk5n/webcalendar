@@ -41,7 +41,7 @@ if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
 }
 $printerStr = generate_printer_friendly ( 'week_details.php' );
 
-$INC = array('js/popups.php');
+$INC = array('js/popups.php/true');
 print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quckier access */

@@ -136,6 +136,21 @@ function do_v11b_updates () {
    }
    dbi_free_result ( $res );
  }
+ //repeat end dates are now exclusive so we need to add 1 day to each
+ $res = dbi_execute ( 'SELECT cal_end, cal_id FROM webcal_entry_repeats');
+ if (  $res ) {
+   while( $row = dbi_fetch_row ( $res ) ) {
+     if ( ! empty ( $row[0]  ) ) { 
+       $dm = substr ( $row[0], 4, 2 );
+       $dd = substr ( $row[0], 6, 2 );
+       $dY =  substr ( $row[0], 0, 4 );
+       $new_date = date ( 'Ymd', gmmktime ( 0, 0, 0, $dm, $dd, $dY ) + ( 24 * 3600 ) );      
+       dbi_execute ('UPDATE webcal_entry_repeats  SET cal_end = ?' .
+       ' WHERE cal_id = ?' , array ( $new_date , $row[1] ) );
+     }
+   }
+   dbi_free_result ( $res );
+ } 
 }
 
 //convert site_extra reminders to webcal_reminders

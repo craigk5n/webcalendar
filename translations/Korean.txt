@@ -222,7 +222,7 @@ Approve this entry?: 이 항목을 승인함.
 # Page: login-app.php
 #
 You must enter a login and password: 아이디와 비밀번호를 입력해야 합니다.
-Save login via cookies so I don't have to login next time: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
+Save login via cookies so I don&#39;t have to login next time: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
 Login: 로그인
 cookies-note: <b>주:</b> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
 
@@ -259,7 +259,7 @@ No matches found: 찾은 항목 없음
 ###############################################
 # Page: select_user.php
 #
-View Another User's Calendar: 다른 사용자의 달력 보기
+View Another User&#39;s Calendar: 다른 사용자의 달력 보기
 
 
 ###############################################
@@ -362,7 +362,7 @@ Invalid color for document background: 배경 색상 틀림
 Invalid color for document title: 제목 색상 틀림
 Invalid color for table cell background: 테이블 셀 배경색 틀림
 Invalid color for table cell background for today: 오늘 날짜 표시 색상 틀림
-Color format should be '#RRGGBB': 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000" (빨강)
+Color format should be &#39;#RRGGBB&#39;: 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000" (빨강)
 
 
 ###############################################

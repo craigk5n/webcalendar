@@ -432,7 +432,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   . '<head>' 
   . '<meta http-equiv="Content-Type" content="text/html; charset=' 
   . $charset . '" />'
-  . '<title>' . translate ( $APPLICATION_NAME ) . '</title>' . "\n";
+  . '<title>' . generate_application_name () . '</title>' . "\n";
 
 ?>
 <!-- This style sheet is here mostly to make it easier for others
@@ -508,7 +508,7 @@ if ( ! empty ( $showPopups ) ) {
   echo '<script type="text/javascript" src="includes/js/util.js"></script>' . "\n";
   
   echo '<script type="text/javascript">' . "\n";
-  include_once 'includes/js/popups.php';
+  include_once 'includes/js/popups.php/true';
   echo "</script>\n";
 }
 ?>
