@@ -1,8 +1,10 @@
 <?php
-/* Gets the value resulting from an HTTP GET method.
+/* $Id$
+ *
+ * Gets the value resulting from an HTTP GET method.
  *
  * Since this function is used in more than one place, with different names,
- *  let's make it a seperate 'include' file on it's own.
+ * let's make it a seperate 'include' file on it's own.
  *
  * <b>Note:</b> The return value will be affected by the value of
  * <var>magic_quotes_gpc</var> in the php.ini file.

@@ -53,11 +53,9 @@
  *  request a 10Gb image 8-)
  */
 
-
-//we don't really need it if calling gradients.php standalone
+// We don't really need it if calling gradients.php standalone.
 if ( file_exists ( 'includes/getGetValue.php' ) )
   include_once 'includes/getGetValue.php';
-
 
 $MIN_COLORS = 4;
 $MAX_COLORS = 256;
@@ -77,33 +75,32 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) && !
   $PHP_SELF = $_SERVER['PHP_SELF'];
 // are we calling this file directly with GET parameters
 if ( ! empty ( $_GET ) && ! empty ( $PHP_SELF ) &&
-    preg_match ( "/\/includes\/gradient.php/", $PHP_SELF )  ) {
+    preg_match ( "/\/includes\/gradient.php/", $PHP_SELF ) ) {
   if ( function_exists ( 'getGetValue' ) ) {
     $base = getGetValue ( 'base' );
+    $color1 = getGetValue ( 'color1' );
+    $color2 = getGetValue ( 'color2' );
     $direction = getGetValue ( 'direction' );
     $height = getGetValue ( 'height' );
     $numcolors = getGetValue ( 'colors' );
     $percent = getGetValue ( 'percent' );
     $width = getGetValue ( 'width' );
-    $color1 = getGetValue ( 'color1' );
-    $color2 = getGetValue ( 'color2' );
   } else {
-    $base = ( ! empty ( $base ) ? $base : '');
-    $direction = ( ! empty ( $direction ) ? $direction : '');
-    $height = ( ! empty ( $height ) ? $height : '');
-    $numcolors = ( ! empty ( $colors ) ? $colors : '');
-    $percent = ( ! empty ( $percent ) ? $percent : '');
-    $width = ( ! empty ( $width ) ? $width : '');
-    $color1 = ( ! empty ( $color1 ) ? $color1 : '');
-    $color2 = ( ! empty ( $color2 ) ? $color2 : '');
-  }
+    $base = ( ! empty ( $base ) ? $base : '' );
+    $color1 = ( ! empty ( $color1 ) ? $color1 : '' );
+    $color2 = ( ! empty ( $color2 ) ? $color2 : '' );
+    $direction = ( ! empty ( $direction ) ? $direction : '' );
+    $height = ( ! empty ( $height ) ? $height : '' );
+    $numcolors = ( ! empty ( $colors ) ? $colors : '' );
+    $percent = ( ! empty ( $percent ) ? $percent : '' );
+    $width = ( ! empty ( $width ) ? $width : '' );
+  } 
 
-  create_image ( '', $base, $height, $percent, $width
-    , $direction, $numcolors, $color1, $color2 );
-}
+  create_image ( '', $base, $height, $percent, $width,
+    $direction, $numcolors, $color1, $color2 );
+} 
 
-
-/* Turn an HTML color (like 'AABBCC') into an array of decimal RGB values
+/* Turn an HTML color (like 'AABBCC') into an array of decimal RGB values.
  *
  * Parameters:
  *  $color - HTML color specification in 'RRGGBB' or 'RGB' format
@@ -156,33 +153,31 @@ function background_css ( $base, $height = '', $percent = '' ) {
         $tmp = create_image ( $file_name, $base, $height, $percent );
       $ret .= $file_name;
     } 
-    $ret .= ' ) repeat-x;' . "\n";
+    $ret .= ' ) repeat-x';
   } else
-    $ret .= '-color: ' . "$base;\n";
+    $ret .= '-color: ' . $base;
 
-  return $ret;
+  return $ret . ";\n";
 } 
 
-function create_image ( $file_name, $base = '', $height = '', $percent = ''
-  , $width = '', $direction = '', $numcolors = '', $color1='', $color2='' ) {
+function create_image ( $file_name, $base = '', $height = '', $percent = '',
+  $width = '', $direction = '', $numcolors = '', $color1 = '', $color2 = '' ) {
   global $DEFAULTS, $MAX_COLORS, $MAX_HEIGHT, $MAX_WIDTH, $MIN_COLORS;
 
-  if ( $base != '' ) {
+  if ( $base != '' )
     $color1 = $color2 = $base;
-  } 
+
   $color1 = ( $color1 == ''
     ? colorToRGB ( $DEFAULTS['color1'] )
     : ( preg_match ( "/^#?([0-9a-fA-F]{3,6})/", $color1, $matches )
       ? colorToRGB ( $matches[1] )
-      : colorToRGB ( $DEFAULTS['color1'] ) ) 
-    );
+      : colorToRGB ( $DEFAULTS['color1'] ) ) );
 
   $color2 = ( $color2 == ''
     ? colorToRGB ( $DEFAULTS['color2'] )
     : ( preg_match ( "/^#?([0-9a-fA-F]{3,6})/", $color2, $matches )
       ? colorToRGB ( $matches[1] )
-      : colorToRGB ( $DEFAULTS['color2'] ) ) 
-    );
+      : colorToRGB ( $DEFAULTS['color2'] ) ) );
 
   if ( empty ( $height ) )
     $height = $DEFAULTS['height'];
@@ -233,8 +228,8 @@ function create_image ( $file_name, $base = '', $height = '', $percent = ''
 
   if ( $percent == '' || $percent < 0 || $percent > 100 )
     $percent = $DEFAULTS['percent'];
-    
-  $percent *=  2.55;
+
+  $percent *= 2.55;
 
   $color2['red'] = min ( $color2['red'] + $percent, 255 );
   $color2['green'] = min ( $color2['green'] + $percent, 255 );
@@ -248,19 +243,17 @@ function create_image ( $file_name, $base = '', $height = '', $percent = ''
   $deltagreen = $color2['green'] - $color1['green'];
   $deltablue = $color2['blue'] - $color1['blue'];
 
+  $tmp_c = $numcolors - 1;
+
   for ( $i = 0; $i < $numcolors; $i++ ) {
     $thisred =
-    min ( $color1['red'] + ( $deltared * $i / ( $numcolors - 1 ) ), 255 );
+    floor ( min ( $color1['red'] + ( $deltared * $i / $tmp_c ), 255 ) );
 
     $thisgreen =
-    min ( $color1['green'] + ( $deltagreen * $i / ( $numcolors - 1 ) ), 255 );
+    floor ( min ( $color1['green'] + ( $deltagreen * $i / $tmp_c ), 255 ) );
 
     $thisblue =
-    min ( $color1['blue'] + ( $deltablue * $i / ( $numcolors - 1 ) ), 255 );
-
-    $thisred = floor ( $thisred );
-    $thisgreen = floor ( $thisgreen );
-    $thisblue = floor ( $thisblue );
+    floor ( min ( $color1['blue'] + ( $deltablue * $i / $tmp_c ), 255 ) );
 
     $colors[$i] = imagecolorallocate ( $image, $thisred, $thisgreen, $thisblue );
   } 
@@ -298,9 +291,9 @@ function create_image ( $file_name, $base = '', $height = '', $percent = ''
       $y2 = 0;
       break;
   } while ( $x1 >= 0 && $x1 < $width
-          && $x2 >= 0 && $x2 < $width
-          && $y1 >= 0 && $y1 < $height
-          && $y2 >= 0 && $y2 < $height ) {
+         && $x2 >= 0 && $x2 < $width
+         && $y1 >= 0 && $y1 < $height
+         && $y2 >= 0 && $y2 < $height ) {
     // Which color for this line?
     $ind = floor ( $numcolors * $i / $dim );
     if ( $ind >= $numcolors )
