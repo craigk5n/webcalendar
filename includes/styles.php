@@ -1020,9 +1020,6 @@ a.weekcell {
 #viewt table.timebar {
   width: 100%;
 }
-#viewt table.timebar td {
-  text-align: center;
-}
 #viewt td.timebar {
   width: 90%;
   background-color: #FFFFFF;
@@ -1036,8 +1033,10 @@ a.weekcell {
 }
 #viewt td.entry {
   padding: 0px;
-  text-align: center;
   <?php echo background_css ( $GLOBALS['THBG'], 10 ); ?>
+}
+#viewt table.timebar a {
+  text-align: inherit !important;
 }
 .viewnav {
   border-width:0px; 
