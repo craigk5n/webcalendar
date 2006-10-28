@@ -1548,7 +1548,7 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
   for ( $i = 0; $i < 7; $i++ ) {
     $thday = ( $i + $WEEK_START ) % 7;
     $thname = weekday_name ( $thday, $DISPLAY_LONG_WEEKDAYS );
-    $thclass = ( $thday == 0 || $thday == 6 ? ' class="weekend"' :'' );
+    $thclass = ( is_weekend ( $thday ) ? ' class="weekend"' :'' );
     $ret .= "<th$thclass>" . $thname . "</th>\n";
   }
   $ret .= "</tr>\n";
@@ -1593,7 +1593,7 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
       $dateYmd = date ('Ymd', $date );
       $dateD = date ( 'd', $date );
       $thiswday = date('w', $date  );
-      $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
+      $is_weekend = is_weekend ( $date );
       if ( empty ( $WEEKENDBG ) ) {
         $is_weekend = false;
       }
@@ -1749,37 +1749,29 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
      . '</a></caption>
       <thead>';
   } 
-  $ret .= '
-        <tr>' 
+  $ret .= '<tr>'; 
   // print the headers to display the day of the week (sun, mon, tues, etc.)
   // if we're showing week numbers we need an extra column
-  . ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ? '
-          <th class="empty">&nbsp;</th>' : '' ) 
-  // if the week doesn't start on monday, print the day
-  . ( $WEEK_START == 0 ? '
-          <th class="weekend">' . weekday_name ( 0, 'D' ) . '</th>' : '' ); 
-  // cycle through each day of the week until gone
-  for ( $i = 1; $i < 7; $i++ ) {
-    $ret .= '
-          <th' . ( $i == 6 ? ' class="weekend"' : '' ) . '>'
-     . weekday_name ( $i, 'D' ) . '</th>';
-  } 
-  // if the week DOES start on monday, print sunday
-  $ret .= ( $WEEK_START == 1 ? '
-          <th class="weekend">' . weekday_name ( 0, 'D' ) . '</th>' : '' ) 
+  if ( $show_weeknums &&$DISPLAY_WEEKNUMBER == 'Y' )
+      $ret .= '<th class="empty">&nbsp;</th>' . "\n"; 
+  for ( $i = 0; $i < 7; $i++ ) {
+    $thday = ( $i + $WEEK_START ) % 7;
+    $thname = weekday_name ( $thday, 'D' );
+    $thclass = ( is_weekend ( $thday ) ? ' class="weekend"' :'' );
+    $ret .= "<th$thclass>" . $thname . "</th>\n";
+  }
+  $ret .= "</tr>\n";
+ 
   // end the header row
-  . '
-        </tr>
-      </thead>
-      <tbody>';
+  $ret .= '</thead><tbody>';
   for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthend;
     $i += ( 604800 ) ) {
     $ret .= '
         <tr>';
     if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' )
-      $ret .= '
-          <td class="weeknumber"><a class="weeknumber" ' . 'title="' . $weekStr
-       . '&nbsp;' . date ( 'W', $i + 86400 ) . '" ' . 'href="week.php?' . $u_url
+      $ret .= '<td class="weeknumber"><a class="weeknumber" ' 
+       . 'title="' . $weekStr . '&nbsp;' . date ( 'W', $i + 86400 ) 
+       . '" ' . 'href="week.php?' . $u_url
        . 'date=' . date ( 'Ymd', $i + 86400 * 2 ) . '" ' . '> ( '
        . date ( 'W', $i + 86400 * 2 ) . ' )</a></td>';
 
@@ -1787,7 +1779,6 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       //add 12 hours just so we don't have DST problems
       $date = $i + ($j * ONE_DAY  + ( 12 * 3600 ) );
       $dateYmd = date ( 'Ymd', $date );
-      $wday = date ( 'w', $date );
       $hasEvents = false;
       $title = '';
       $ret .= '
@@ -1811,7 +1802,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
             $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
         $class = 
         // If it's a weekend.
-        ( $wday == 0 || $wday == 6 ? 'weekend' : '' ) 
+        ( is_weekend ( $date ) ? 'weekend' : '' ) 
         // If the day being viewed is today's date AND script = day.php
         . ( $dateYmd == $thisyear . $thismonth . $thisday && $SCRIPT == 'day.php'
           ? ' selectedday' : '' ) 
@@ -3094,6 +3085,10 @@ function get_weekday_before ( $year, $month, $day=2 ) {
   $laststr = ( $WEEK_START == 1 || $DISPLAY_WEEKENDS == 'N' ? 'last Monday':'last Sunday' );
   //we default day=2 so if the 1ast is Sunday or Monday it will return the 1st
   $newdate = strtotime ( $laststr, mktime ( 0, 0, 0, $month, $day, $year ) );
+  //check DST and adjust newdate
+  while ( date ( 'w', $newdate )  == date ( 'w', $newdate + ONE_DAY ) ) {
+    $newdate += 3600;
+  }
   return $newdate;
 }
 
@@ -6134,6 +6129,7 @@ function generate_activity_log ( $id='', $sys=false, $startid='' ){
  * Determine if date is a weekend
  *
  * @param int  $date    Timestamp of subject date
+ *                      OR a weekday number 0-6
  *
  * @return bool         True = Date is weekend
  *                      False = Date is not weekend
@@ -6141,10 +6137,17 @@ function generate_activity_log ( $id='', $sys=false, $startid='' ){
 function is_weekend ( $date ) {
   global $WEEKEND_START;
 
-  if ( empty ( $date ) )
+  //we can't test for empty because $date may equal 0
+  if ( ! strlen ( $date ) )
     return false;
   if ( empty ( $WEEKEND_START ) )
     $WEEKEND_START = 6;
+  //we may have been passed a weekday 0-6
+  if ( $date < 7 ) {
+    return ( $date == $WEEKEND_START %7 || $date == ( ( $WEEKEND_START +1 ) %7  ) );
+
+  } 
+  //we were passed a timestamp 
   $wday = date ( 'w', $date );
   return ( $wday == $WEEKEND_START %7 || $wday ==  ( $WEEKEND_START +1 ) %7 );
 }
