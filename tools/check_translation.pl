@@ -122,7 +122,7 @@ if ( !$notfound ) {
   print "All text was found in $infile.  Good job :-)\n";
 }
 else {
-  printf "\n$notfound of $total translation(s) missing. (%4.1f%% complete)\n",
+  printf "\n$notfound of $total translation(s) missing. (%2.1f%% complete)\n",
     ( 100 * ( $total - $notfound ) / $total );
 }
 
