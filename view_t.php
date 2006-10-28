@@ -283,18 +283,6 @@ $prevmonth = date ( 'm', $prev );
 $prevday = date ( 'd', $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
-
-$thisdate = date ( 'Ymd', $wkstart );
-
-
-for ( $i = 0; $i < $val_boucle; $i++ ) {
-  $days[$i] = $wkstart + ONE_DAY * $i;
-  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % $val_boucle, 'D' );
-  $header[$i] = $weekdays[$i] . "<br />\n" .
-     month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
-     ' ' . date ( 'd', $days[$i] );
-}
-
 // get users in this view
 $viewusers = view_get_user_list ( $id );
 $viewusercnt = count ( $viewusers );
@@ -366,26 +354,25 @@ $timeBarHeader = print_header_timebar( );
 
 <table class="main">
 <?php
-for ( $date = $wkstart, $h = 0;
-  date ( 'Ymd', $date ) <= date ( 'Ymd', $wkend );
-  $date += ONE_DAY, $h++ ) {
-  $wday = strftime ( "%w", $date );
-  if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
-  $weekday = weekday_name ( $wday, 'D' );
-  if ( date ( 'Ymd', $date ) == date ( 'Ymd', $today ) ) {
+for ( $date = $wkstart; $date <= $wkend; $date += ONE_DAY ) {
+  $dateYmd = date ( 'Ymd', $date );
+  $is_weekend = is_weekend ( $date );
+  if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue; 
+  $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_WEEKDAYS );
+  if ( $dateYmd == date ( 'Ymd', $today ) ) {
     echo "<tr><th class=\"today\">";
-  } else if ( $wday == 0 || $wday == 6 ) {
+  } else if ( $is_weekend ) {
       echo '<tr class="weekend"><th class="weekend">';
   } else {
     echo "<tr><th class=\"row\">";
   }
   if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' )  {
-    echo html_for_add_icon ( date ( 'Ymd', $date ), '', '', $user );
+    echo html_for_add_icon ( $dateYmd, '', '', $user );
   }
-  echo $weekday . '&nbsp;' . round ( date ( 'd', $date ) ) . "</th>\n";
+  echo $weekday . '&nbsp;' . date ( 'd', $date ) . "</th>\n";
   echo '<td class="timebar">'; 
   echo $timeBarHeader;
-  echo print_date_entries_timebar ( date ( 'Ymd', $date ), $login, true );
+  echo print_date_entries_timebar ( $dateYmd, $login, true );
   echo '</table></td>';
   echo "</tr>\n";
 }
