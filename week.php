@@ -64,16 +64,14 @@ $navStr = display_navigation( 'week' );;
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = ( $wkstart + ( ONE_DAY * $i ) ) + ( 12 * 3600 );
   $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, 'D' );
-  $thiswday = date ( 'w', $days[$i] );
   $dateYmd = date ( 'Ymd', $days[$i] );
 
-  $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
   $header[$i] = $weekdays[$i] . '<br />' .
     date_to_str ( $dateYmd, $DATE_FORMAT_MD, false, true );
   
   $class = '';
   //generate header row
-  if ( $is_weekend ) { $class .= 'weekend '; }
+  if ( is_weekend ( $days[$i] ) ) { $class .= 'weekend '; }
   if ( $dateYmd == date ( 'Ymd', $today ) ) { $class .= 'today'; }
   $headerStr .=  '<th';
   if ( $class != '') { $headerStr .= " class=\"$class\""; }
@@ -177,10 +175,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
   $eventsStr .= "<tr>\n<th class=\"row\">" .  $time . "</th>\n";
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-    $thiswday = date ( 'w', $days[$d] );
     $dateYmd = date ( 'Ymd', $days[$d] );
-    $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-    $class = ( $is_weekend ? 'weekend': '' );
+    $class = ( is_weekend ( $days[$d] ) ? 'weekend': '' );
     if ( $dateYmd == date ( 'Ymd', $today ) ) {
       if ( $class != '' ) {
         $class .= ' ';

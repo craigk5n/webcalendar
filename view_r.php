@@ -152,7 +152,7 @@ if ( $is_day_view ) {
 // values for each date.
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = ( $wkstart + ONE_DAY * $i ) + ( 12 * 3600 );
-  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, 'D' );
+  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_WEEKDAYS );
   $header[$i] = $weekdays[$i] . '<br />' .
      month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
      ' ' . date ( 'd', $days[$i] );
@@ -270,12 +270,8 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
 </div></div><br />
 
 <?php
-if ( $can_add ) {
-  $help = 'title="' .
-    translate ( 'Double-click on empty cell to add new entry' ) . '"';
-} else {
-  $help = '';
-}
+$help = ( $can_add ? 'title="' .
+    translate ( 'Double-click on empty cell to add new entry' ) . '"' : '' );
  
 if ( ! $fit_to_window ) { ?>
 <table <?php echo $help;?> class="main" style="width:<?php 
@@ -294,14 +290,14 @@ if ( ! $fit_to_window ) { ?>
     $tdwf = sprintf ( "%0.2f", $tdw ) . "%";
   $todayYmd = date ( 'Ymd', $today );
   for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
-    $wday = date ( 'w', $days[$i] );
-    if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
-    $weekday = weekday_name ( $wday, 'D' );
-    if ( $todayYmd == date ( 'Ymd', $days[$i] ) ) {
-      echo "<th class=\"today\" style=\"width:$tdwf;\" colspan=\"$num_users\">";
-    } else {
-      echo "<th style=\"width:$tdwf;\" colspan=\"$num_users\">";
-    }
+    if ( is_weekend ( $days[$i] ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
+    if ( $todayYmd == date ( 'Ymd', $days[$i] ) )
+      $class = 'class="today"';
+    else if ( is_weekend ( $days[$i] ) )
+      $class = 'class="weekend"';
+    else 
+      $class = '';
+    echo "<th $class style=\"width:$tdwf;\" colspan=\"$num_users\">";
     echo $header[$i];
     echo "</th>\n";
   }
@@ -342,8 +338,8 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $events = $e_save[$u];
     $repeated_events = $re_save[$u];
     // get all the repeating events for this date and store in array $rep
-    $adate = date ( 'Ymd', $days[$d] );
-    $rep = get_repeating_entries ( $user, $adate );
+    $dateYmd = date ( 'Ymd', $days[$d] );
+    $rep = get_repeating_entries ( $user, $dateYmd );
     $repcnt = count ( $rep );
     for ( $j = 0; $j < $repcnt; $j++ ) {
       if ( ! isset ( $am_part[$rep[$j]->getID()] ) ) {
@@ -360,7 +356,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         }
       }
     }
-    $ev = get_entries ( $adate, $get_unapproved , 1, 1);
+    $ev = get_entries ( $dateYmd, $get_unapproved , 1, 1);
     $evcnt = count ( $ev );
     for ( $j = 0; $j < $evcnt; $j++ ) {
       if ( ! isset ( $am_part[$ev[$j]->getID()] ) ) {
@@ -385,12 +381,12 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $events = $e_save[$u];
     $repeated_events = $re_save[$u];
     // get all the repeating events for this date and store in array $rep
-    $adate = date ( 'Ymd', $days[$d] );
-    $rep = get_repeating_entries ( $user, $adate );
+    $dateYmd = date ( 'Ymd', $days[$d] );
+    $rep = get_repeating_entries ( $user, $dateYmd );
     $cur_rep = 0;
 
     // Get static non-repeating events
-    $ev = get_entries ( $adate, $get_unapproved, 1, 1 );
+    $ev = get_entries ( $dateYmd, $get_unapproved, 1, 1 );
     $hour_arr = array (  );
     $rowspan_arr = array (  );
     $evcnt = count ( $ev );
@@ -402,15 +398,15 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
           if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) )
             $all_day[$d] = 1;
-          html_for_event_week_at_a_glance ( $rep[$cur_rep], $adate, 'small', $show_time );
+          html_for_event_week_at_a_glance ( $rep[$cur_rep], $dateYmd, 'small', $show_time );
         }
         $cur_rep++;
       }
       if ( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
         if ( $ev[$i]->getDuration() == ( 24 * 60 ) )
           $all_day[$d] = 1;
-        html_for_event_week_at_a_glance ( $ev[$i], $adate, 'small', $show_time );
-        //echo "Found event date=$adate name='$viewname'<br />\n";
+        html_for_event_week_at_a_glance ( $ev[$i], $dateYmd, 'small', $show_time );
+        //echo "Found event date=$dateYmd name='$viewname'<br />\n";
         //print_r ( $rowspan_arr );
       }
     }
@@ -419,7 +415,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
       if ( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
         if ( $rep[$cur_rep]->getDuration() == ( 24 * 60 ) )
           $all_day[$d] = 1;
-        html_for_event_week_at_a_glance ( $rep[$cur_rep], $adate, 'small', $show_time );
+        html_for_event_week_at_a_glance ( $rep[$cur_rep], $dateYmd, 'small', $show_time );
       }
       $cur_rep++;
     }
@@ -469,38 +465,26 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 if ( $untimed_found || $show_untimed_row_always ) {
   echo "<tr><th class=\"empty\" width=\"$time_w\" style=\"width:$time_w;\">&nbsp;</th>\n";
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-    $thiswday = date ( 'w', $days[$d] );
-
-    $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
+    $dateYmd = date ( 'Ymd', $days[$d] );
+    $is_weekend = is_weekend ( $days[$d] );
     if ( $is_weekend  && $DISPLAY_WEEKENDS == 'N' ) continue; 
+    if ( $dateYmd == $todayYmd )
+      $class .= 'class="today"';
+    else if ( $is_weekend )
+      $class .= 'class="weekend"';
+    else
+      $class = '';
     for ( $u = 0; $u < $viewusercnt; $u++ ) {
       $untimed = $save_untimed[$u][$d];
-
-      echo '<td';
-
-      $class = ( $is_weekend ) ? 'weekend': '';
-
-      if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
-        if ( $class != '' )
-          $class .= ' ';
-        $class .= 'today';
-      }
       // Use the class 'hasevents' for any hour block that has events
       // in it.
       if ( !empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
-        $class = 'hasevents';
+        $class = 'class="hasevents"';
       }
-      if ( ! empty ( $class ) )
-        $class .= ' ';
-      $class .= 'small';
 
-      if ( $class != '' ) {
-        echo " class=\"$class\"";
-      }
+      echo "<td $class ";
       if ( $can_add ) {
-        $add_url = 'edit_entry.php?date=' . date ( 'Ymd', $days[$d] ) .
-          '&amp;defusers=' . $viewusers[$u] . '&amp;duration=1440';
-        echo " ondblclick='document.location.href=\"$add_url\"' ";
+        echo " ondblclick=\"dblclick( '$dateYmd', '$viewusers[$u]' )\"";
       }
       echo '>';
 
@@ -530,81 +514,67 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   //echo "<tr>\n<th valign=\"top\">" .  $time . "</th>\n";
 
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
-    $thiswday = date ( 'w', $days[$d] );
-
+    $dateYmd = date ( 'Ymd', $days[$d] );
     for ( $u = 0; $u < $viewusercnt; $u++ ) {
-
       $hour_arr = $save_hour_arr[$u][$d];
       $rowspan_arr = $save_rowspan_arr[$u][$d];
-
-      $is_weekend = ( $thiswday == 0 || $thiswday == 6 );
-      $class = $is_weekend ? 'weekend': '';
-      if ( date ( 'Ymd', $days[$d] ) == date ( 'Ymd', $today ) ) {
-        if ( $class != '' )
-          $class .= ' ';
-        $class .= 'today';
-      }
+      $is_weekend = is_weekend ( $days[$d] );
+      if ( $dateYmd == $todayYmd )
+        $class .= 'class="today"';
+      else if ( $is_weekend )
+        $class .= 'class="weekend"';
+      else
+        $class = '';
       // Use the class 'hasevents' for any hour block that has events
       // in it.
       if ( !empty ( $hour_arr[$i] ) && strlen ( $hour_arr[$i] ) ) {
-        $class = 'hasevents';
+        $class = 'class="hasevents"';
       }
   
       if ( $rowspan_day[$u][$d] > 1 ) {
         // this might mean there's an overlap, or it could mean one event
         // ends at 11:15 and another starts at 11:30.
         if ( !empty ( $hour_arr[$i] ) ) {
-          echo '<td';
-          echo ( empty ( $class ) ) ? '': " class=\"$class\"";
-          echo '>' . $hour_arr[$i]."</td>\n";
+          echo "<td $class>" . $hour_arr[$i]. "</td>\n";
         }
         $rowspan_day[$u][$d]--;
       } else {
         if ( empty ( $hour_arr[$i] ) ) {
-          echo '<td';
-          echo ( empty ( $class ) ) ? '': " class=\"$class\"";
+          echo "<td $class ";
           if ( $can_add ) {
-            $add_url = 'edit_entry.php?date=' . date ( 'Ymd', $days[$d] ) .
-              '&amp;defusers=' . $viewusers[$u] .
-              "&amp;hour=$time_h&amp;minute=$time_m";
-            echo " ondblclick='document.location.href=\"$add_url\"' ";
+            echo " ondblclick=\"dblclick( '$dateYmd', " 
+              . "'$viewusers[$u]', '$time_h', '$time_m' )\"";
           }
           echo '>';
           //if ( $can_add ) {        //if user can add events...
-          //  echo html_for_add_icon ( date ( 'Ymd', $days[$d] ),
+          //  echo html_for_add_icon ( $dateYmd,
           //    $time_h, $time_m, $user );        //..then echo the add event icon
           //}
           echo "&nbsp;</td>\n";
         } else {
           $rowspan_day[$u][$d] = $save_rowspan_arr[$u][$d][$i];
           if ( $rowspan_day[$u][$d] > 1 ) {
-            echo '<td';
-            echo ( empty ( $class ) ) ? '': " class=\"$class\"";
+            echo "<td $class ";
             echo ' rowspan="' . $rowspan_day[$u][$d] . '"';
             if ( $can_add ) {
-              $add_url = "edit_entry.php?date=" . date ( 'Ymd', $days[$d] ) .
-                "&amp;defusers=$user" .
-                "&amp;hour=$time_h&amp;minute=$time_m";
-              echo " ondblclick='document.location.href=\"$add_url\"' ";
+              echo " ondblclick=\"dblclick( '$dateYmd', " 
+                . "'$user', '$time_h', '$time_m' )\"";
             }
             echo '>';
             //if ( $can_add ) {
-            //  echo html_for_add_icon ( date ( 'Ymd', $days[$d] ), $time_h,
+            //  echo html_for_add_icon ( $dateYmd, $time_h,
             //    $time_m, $user );
             //}
             echo $hour_arr[$i]."</td>\n";
           } else {
-            echo '<td';
-            echo ( empty ( $class ) ) ? '': " class=\"$class\"";
+            echo "<td $class ";
             if ( $can_add ) {
-              $add_url = 'edit_entry.php?date=' . date ( 'Ymd', $days[$d] ) .
-                "&amp;defusers=$user" .
-                "&amp;hour=$time_h&amp;minute=$time_m";
-              echo " ondblclick='document.location.href=\"$add_url\"' ";
+              echo " ondblclick=\"dblclick( '$dateYmd', " 
+                . "'$user', '$time_h', '$time_m' )\"";
             }
             echo '>';
             //if ( $can_add ) {
-            //  echo html_for_add_icon ( date ( 'Ymd', $days[$d] ), $time_h,
+            //  echo html_for_add_icon ( $dateYmd, $time_h,
             //    $time_m, $user );
             //}
             echo $hour_arr[$i]."</td>\n";
@@ -621,7 +591,22 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 ?>
 
 </table>
+<script language="javascript" type="text/javascript">
+function dblclick ( date, name, hour, minute ) {
 
+ if ( ! minute )
+  minute = 0;
+ if ( hour ){
+   time = "&hour=" + hour + "&minute=" + minute;
+ } else { 
+   time = "&duration=1440";
+ }
+ var url = 'edit_entry.php?date=' + date 
+   + '&defusers=' + name + time;
+
+ window.location.href  = url;
+}
+</script>
 <?php
 
 $user = ''; // reset

@@ -110,7 +110,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 <table class="main">
 <tr><th class="empty">&nbsp;</th>
 <?php
-  $todayYmd = date ( 'Ymd', $today );
+  $todateYmd = date ( 'Ymd', $today );
   $header = $body = '';
   for ( $i = 0; $i < $viewusercnt; $i++ ) {
     $events = $e_save[$i];
@@ -120,29 +120,28 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     user_load_variables ( $user, 'temp' );
     $body .= "<th class=\"row\" style=\"width:$tdw%;\">$tempfullname</th>\n";
     for ( $date = $wkstart; $date <= $wkend; $date += ONE_DAY ) {
-      if ( is_weekend ( $date ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
-      $dayYmd = date ( 'Ymd', $date );
-      $entryStr = print_date_entries ( $dayYmd, $user, true );
-      $todayClass = ( $dayYmd == $todayYmd ? 'class="today"' : '' );
+      $is_weekend = is_weekend ( $date );
+      if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue; 
+      $dateYmd = date ( 'Ymd', $date );
+      $entryStr = print_date_entries ( $dateYmd, $user, true );
+      if ( $dateYmd == $todateYmd )
+        $class = 'class="today"';
+      else if ( $is_weekend )
+        $class = 'class="weekend"';
+      else
+        $class = '';
       //build header row
       if ( $i == 0 ) {
-        $header .= "<th $todayClass style=\"width:$tdw%;\">"
+        $header .= "<th $class style=\"width:$tdw%;\">"
           . weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_WEEKDAYS ) . " " 
           . date ( 'd', $date ) . "</th>\n";
       }
       // JCJ Correction for today class
-      if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' ) {
+      if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
         $class = 'class="hasevents"';
-      } else if ( $dayYmd == $todayYmd ) {
-        $class = $todayClass;
-      } else if ( is_weekend ( $date ) ) {
-        $class = 'class="weekend"';
-      } else {
-        $class = '';
-      }
       $body .= "<td $class style=\"width:$tdw%;\">";
       if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' ) {
-        $body .= html_for_add_icon ( $dayYmd, '', '', $user ) . "\n";
+        $body .= html_for_add_icon ( $dateYmd, '', '', $user ) . "\n";
       }
       $body .= $entryStr;
       $body .= "</td>\n";

@@ -130,48 +130,42 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   } //end for
   echo "</tr>\n";
 
-  for ( $date = $startdate; date ('Ymd', $date) <= date ('Ymd', $enddate);
-    $date += ONE_DAY, $wday++ ) {
- $wday = strftime ("%w", $date);
- if ( ( $wday == 0 || $wday == 6 ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
- $weekday = weekday_name ($wday, 'D' );
- echo '<tr><th';
- if ( date ('Ymd', $date) == date ('Ymd', $today) ) {
-   echo ' class="today">';
- } else {
-  if ($wday == 0 || $wday == 6) {
-    echo ' class="weekend">';
-  } else {
-    echo ' class="row">';
-  }
- }
- //non-breaking space below keeps event from wrapping prematurely
- echo $weekday . '&nbsp;' .
-  round ( date ('d', $date) ) . "</th>\n";
-    for ( $i = $j, $k = 0;
-      $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
- $user = $viewusers[$i];
- $events = $e_save[$i];
- $repeated_events = $re_save[$i];
- $entryStr = print_date_entries ( date ('Ymd', $date), $user, true );
- if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' ) {
-   $class = 'class="hasevents"';
- } else if ( date ('Ymd', $date) == date ('Ymd', $today) ) {
-  $class = 'class="today"';
- } else if ($wday == 0 || $wday == 6) {
-   $class = 'class="weekend"';
- } else {
-   $class = '';
- }
- echo "<td $class style=\"width:$tdw%;\">";
- //echo date ( 'D, m-d-Y H:i:s', $date ) . '<br />';
-      if ( empty ($ADD_LINK_IN_VIEWS) || $ADD_LINK_IN_VIEWS != 'N' ) {
-        echo html_for_add_icon ( date ('Ymd', $date), '', '', $user );
-      }
-      echo $entryStr;
-      echo '</td>';
-    } //end for
-    echo "</tr>\n";
+ for ( $date = $startdate; $date <= $enddate; $date += ONE_DAY ) {
+   $dateYmd = date ('Ymd', $date);
+   $todayYmd = date ('Ymd', $today);
+   $is_weekend = is_weekend( $date ); 
+   if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue; 
+   $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_WEEKDAYS );
+   if ( $dateYmd == $todayYmd )
+     $class = 'class="today"';
+   else if ( $is_weekend )
+     $class = 'class="weekend"';
+   else
+     $class = 'class="row"';
+    
+   //non-breaking space below keeps event from wrapping prematurely
+   echo "<tr><th $class>" . $weekday . '&nbsp;' .
+   date ('d', $date) . "</th>\n";
+   for ( $i = $j, $k = 0;
+     $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
+     $user = $viewusers[$i];
+     $events = $e_save[$i];
+     $repeated_events = $re_save[$i];
+     $entryStr = print_date_entries ( $dateYmd, $user, true );
+     if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
+       $class = 'class="hasevents"';
+     //unset class from above if needed
+     if ( $class == 'class="row"' )
+       $class = '';
+     echo "<td $class style=\"width:$tdw%;\">";
+     //echo date ( 'D, m-d-Y H:i:s', $date ) . '<br />';
+     if ( empty ($ADD_LINK_IN_VIEWS) || $ADD_LINK_IN_VIEWS != 'N' ) {
+       echo html_for_add_icon ( $dateYmd, '', '', $user );
+     }
+     echo $entryStr;
+     echo '</td>';
+   } //end for
+   echo "</tr>\n";
   }
 
   echo "</table>\n";
