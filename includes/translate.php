@@ -33,8 +33,8 @@
 function unhtmlentities ( $string, $ignore=false ) {
 
   //sometimes we need to ignore the charset
-  $charset = ( $ignore && translate ( 'charset' ) != 'UTF-8' 
-    ? '' : ini_get ( 'default_charset' ) );
+  $charset = ( ! $ignore && ini_get ( 'default_charset' ) == 'UTF-8' 
+    ? 'UTF-8' : '' );
   // html_entity_decode available PHP 4 >= 4.3.0, PHP 5
   if ( function_exists ( 'html_entity_decode' ) )
     return html_entity_decode ( $string, ENT_QUOTES, $charset );
@@ -58,7 +58,7 @@ function unhtmlentities ( $string, $ignore=false ) {
 function reset_language ( $new_language ) {
   global $basedir, $lang, $lang_file, $translation_loaded, $translations,
   $PUBLIC_ACCESS_FULLNAME, $fullname ;
-do_debug ( "RESET LANGUAGE " . $translation_loaded . ' ' . $new_language);
+
   if ( $new_language == 'none' )
     $new_language = get_browser_language ();
   if ( $new_language != $lang || ! $translation_loaded ) {
@@ -83,7 +83,7 @@ do_debug ( "RESET LANGUAGE " . $translation_loaded . ' ' . $new_language);
 function load_translation_text () {
   global $basedir, $lang_file, 
   $settings, $translations, $translation_loaded;
-  do_debug ( "LOAD TRANSLATION" . $translation_loaded . ' ' .$lang_file );
+
   if ( $translation_loaded == true ) //no need to run this twice
     return;
   $translations = array ();
@@ -190,7 +190,7 @@ function load_translation_text () {
 function get_browser_language ( $pref = false ) {
   global $HTTP_ACCEPT_LANGUAGE, $browser_languages;
   $ret = '';
-do_debug ( "GET BROWSER LANGUAGE " ); 
+ 
   if ( empty ( $HTTP_ACCEPT_LANGUAGE ) &&
       isset ( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) )
     $HTTP_ACCEPT_LANGUAGE = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
