@@ -378,7 +378,11 @@ ul a {
   padding-right: 3px;
 }
 .nounapproved {
-  padding-left: 20px;
+  font-weight: bold;
+  font-size: 14px;  
+}
+#listunapproved .odd {
+  background-color: <?php echo $GLOBALS['TODAYCELLBG']; ?>;
 }
 <?php //links to entries/events on layers
 ?>.layerentry {
