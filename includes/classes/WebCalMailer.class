@@ -74,7 +74,7 @@ class WebCalMailer extends phpmailer {
   //Strip slashes from subject and pass thru unhtmlentities
   function WCSubject ( $subject ) {
     $this->Subject = unhtmlentities ( generate_application_name ( false )  . ' ' .
-      translate( 'Notification' ) . ': ' . stripslashes ( $subject ), true );  
+      translate( 'Notification' ) . ': ' . stripslashes ( $subject ) );  
   }
 
   //Clean up msg as needed
@@ -83,7 +83,7 @@ class WebCalMailer extends phpmailer {
     if ( $this->ContentType  == 'text/html' ) {
       $msg = nl2br ( $msg );
     } else {
-      $msg = unhtmlentities ( $msg, true );
+      $msg = unhtmlentities ( $msg );
     }
     $this->Body = $msg;
   }

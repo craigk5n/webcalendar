@@ -30,14 +30,14 @@
  *
  * #return string The converted text string
  */
-function unhtmlentities ( $string, $ignore=false ) {
+function unhtmlentities ( $string ) {
+  global $charset;
 
-  //sometimes we need to ignore the charset
-  $charset = ( ! $ignore && ini_get ( 'default_charset' ) == 'UTF-8' 
-    ? 'UTF-8' : '' );
+ //TODO Not sure what to do here re: UTF-8 encoding
+
   // html_entity_decode available PHP 4 >= 4.3.0, PHP 5
   if ( function_exists ( 'html_entity_decode' ) )
-    return html_entity_decode ( $string, ENT_QUOTES, $charset );
+    return html_entity_decode ( $string, ENT_QUOTES );
   else { // for php < 4.3
     // replace numeric entities
     $string = preg_replace ( '~&#x([0-9a-f]+);~ei', 'chr(hexdec("\\1"))', $string );
