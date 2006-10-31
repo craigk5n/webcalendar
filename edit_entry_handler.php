@@ -734,12 +734,11 @@ if ( empty ( $error ) ) {
   
           $fmtdate = ( $timetype == 'T' ? 
             date ( 'Ymd', $eventstart ): gmdate ( 'Ymd', $eventstart ) ); 
-          $msg = translate( 'Hello', true) . ', ' .
-            unhtmlentities( $tempfullname, true ) . ".\n\n" .
-            translate( 'An appointment has been canceled for you by', true) .
+          $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
+            translate( 'An appointment has been canceled for you by' ) .
             ' ' . $login_fullname .  ".\n" .
-            translate( 'The subject was', true) . ' "' . $name . "\"\n\n" .
-            translate( 'The description is', true) . ' "' . $description . "\"\n" .
+            translate( 'The subject was' ) . ' "' . $name . "\"\n\n" .
+            translate( 'The description is' ) . ' "' . $description . "\"\n" .
             translate( 'Date') . ': ' . date_to_str ( $fmtdate ) . "\n" .
              ( $timetype != 'T'  ? '' :
             translate( 'Time' ) . ': ' .
@@ -862,25 +861,24 @@ if ( empty ( $error ) ) {
 
           $fmtdate = ( $timetype == 'T' ? 
             date ( 'Ymd', $eventstart ): gmdate ( 'Ymd', $eventstart ) ); 
-          $msg = translate( 'Hello', true) . ', ' .
-            unhtmlentities ( $tempfullname, true ) . ".\n\n";
+          $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n";
           if ( $newevent || ( empty ( $old_status[$participants[$i]] ) ) ) {
-            $msg .= translate( 'A new appointment has been made for you by', true);
+            $msg .= translate( 'A new appointment has been made for you by' );
           } else {
-            $msg .= translate( 'An appointment has been updated by', true);
+            $msg .= translate( 'An appointment has been updated by' );
           }
           $msg .= ' ' . $login_fullname .  ".\n" .
-            translate( 'The subject is', true) . ' "' . $name . "\"\n\n" .
-            translate( 'The description is', true) . ' "' . $description . "\"\n" .
+            translate( 'The subject is' ) . ' "' . $name . "\"\n\n" .
+            translate( 'The description is' ) . ' "' . $description . "\"\n" .
             translate( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .
             ( $timetype != 'T' ? '' :
             translate( 'Time' ) . ': ' .
             // Apply user's GMT offset and display their TZID
             display_time ( '', 2, $eventstart, $t_format ) . "\n" ) .
-            translate( 'Please look on', true) . ' ' . generate_application_name () . 
+            translate( 'Please look on' ) . ' ' . generate_application_name () . 
             ' ' . ( $REQUIRE_APPROVALS == 'Y' ?
-            translate( 'to accept or reject this appointment', true) :
-            translate( 'to view this appointment', true) ) . '.';
+            translate( 'to accept or reject this appointment' ) :
+            translate( 'to view this appointment' ) ) . '.';
           // add URL to event, if we can figure it out
           if ( ! empty ( $SERVER_URL ) ) {
             //DON'T change & to &amp; here. email will handle it
@@ -976,15 +974,15 @@ if ( $single_user == 'N' &&
               date ( 'Ymd', $eventstart ): gmdate ( 'Ymd', $eventstart ) ); 
             // Strip [\d] from duplicate Names before emailing
             $ext_names[$i] = trim(preg_replace( '/\[[\d]]/', '', $ext_names[$i]) );
-            $msg = translate( 'Hello', true) . ', ' . $ext_names[$i] . ".\n\n";
+            $msg = translate( 'Hello' ) . ', ' . $ext_names[$i] . ".\n\n";
             if ( $newevent ) {
-              $msg .= translate( 'A new appointment has been made for you by', true);
+              $msg .= translate( 'A new appointment has been made for you by' );
             } else {
-              $msg .= translate( 'An appointment has been updated by', true);
+              $msg .= translate( 'An appointment has been updated by' );
             }
             $msg .= ' ' . $login_fullname .  ".\n" .
-              translate( 'The subject is', true) . ' "' . $name . "\"\n\n" .
-              translate( 'The description is', true) . ' "' . $description . "\"\n\n" .
+              translate( 'The subject is' ) . ' "' . $name . "\"\n\n" .
+              translate( 'The description is' ) . ' "' . $description . "\"\n\n" .
               translate( 'Date') . ': ' . date_to_str ( $fmtdate ) . "\n";
               if ( $timetype == 'T')  {
                 $msg .= translate( 'Time' ) . ': ';

@@ -1,5 +1,10 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1588205 ] Warning in preferences re ANSI_X3.4-1968
+ - Fixed bug [ 1587046 ] error messages during to use the 'installation-wizard'
+ - Fixed bug [ 1582833 ] list_unapproved.php can't approve group of events
+ - Fixed bug [ 1587041 ] error messages during the 'login.php'
+ - Fixed bug [ 1587046 ] error messages during to use the 'installation-wizard'
  - Created common mail function in WebCalMailer.class
  - Created new generate_application_name() function
  - Created new is_weekend() function
