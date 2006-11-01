@@ -640,7 +640,7 @@ function load_user_preferences ( $guest='') {
   // get views for this user and global views
   // if NUC and not authorized by UAC, disallow global views
   $getGlobal = ( $is_nonuser && ( ! access_is_enabled () || 
-    access_is_enabled () && ! access_can_access_function ( ACCESS_VIEWS ) ) ?
+    access_is_enabled () && ! access_can_access_function ( ACCESS_VIEW ) ) ?
      '' : " OR cal_is_global = 'Y' " );
   $rows = dbi_get_cached_rows (
     'SELECT cal_view_id, cal_name, cal_view_type, cal_is_global ' .
