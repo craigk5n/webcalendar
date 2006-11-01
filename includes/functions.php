@@ -1994,8 +1994,11 @@ function print_entry ( $event, $date ) {
     $linkDate = (  $event->getClone()?$event->getClone(): $date );
     $title = " title=\"$view_text\" ";
     $href = "href=\"$cal_link?id=$id&amp;date=$linkDate";
-    if ( strlen ( $user ) > 0 )
+    if ( strlen ( $user ) > 0 ) {
       $href .= '&amp;user=' . $user;
+    } else if ( $class == 'layerentry' ) {
+      $href .= '&amp;user=' . $event->getLogin();
+    }
     $href .= '"';
   } else {
     $title = '';
@@ -3630,8 +3633,11 @@ function html_for_event_week_at_a_glance ( $event, $date,
   }   
 
   $hour_arr[$ind] .= $title .  " class=\"$class\" id=\"$linkid\" " . $href;
-  if ( strlen ( $GLOBALS['user'] ) > 0 )
-    $hour_arr[$ind] .= "&amp;user=" . $GLOBALS['user'];
+  if ( strlen ( $GLOBALS['user'] ) > 0 ) {
+    $hour_arr[$ind] .= '&amp;user=' . $GLOBALS['user'];
+  } else if ( $class == 'layerentry' ) {
+    $hour_arr[$ind] .= '&amp;user=' . $event->getLogin();
+  }
   $hour_arr[$ind] .= '">';
   if ( $event->getPriority() == 3 )
     $hour_arr[$ind] .= '<strong>';
@@ -3788,9 +3794,12 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $href = '';
     if (  $can_access != 0 && $time_only != 'Y') {
       $href = "href=\"$cal_link?id=$id&amp;date=$linkDate";
-      if ( strlen ( $GLOBALS['user'] ) > 0 )
-       $href .= '&amp;user=' . $GLOBALS['user'];
-       $href .= '"';
+      if ( strlen ( $GLOBALS['user'] ) > 0 ) {
+        $href .= '&amp;user=' . $GLOBALS['user'];
+      } else if ( $class == 'layerentry' ) {
+        $href .= '&amp;user=' . $event->getLogin();
+      }
+      $href .= '"';
     }
     $hour_arr[$ind] .= '<a title="' . $view_text .
       "\" class=\"$class\" id=\"$linkid\" $href";

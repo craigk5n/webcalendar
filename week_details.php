@@ -183,8 +183,11 @@ function print_detailed_entry ( $event, $date ) {
 
   echo '<a title="' . translate( 'View this entry' ) . 
     "\" class=\"$class\" id=\"$linkid\"  href=\"view_entry.php?id=$id&amp;date=$date";
-  if ( strlen ( $user ) > 0 )
+  if ( strlen ( $user ) > 0 ) {
     echo '&amp;user=' . $user;
+  } else if ( $class == 'layerentry' ) {
+    echo '&amp;user=' . $event->getLogin();
+  }
   echo '<img src="images/circle.gif" class="bullet" alt="view icon" />';
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     if ($layers) foreach ($layers as $layer) {
