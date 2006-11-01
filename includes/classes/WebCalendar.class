@@ -55,7 +55,7 @@ class WebCalendar {
   array('User', 'Connect')),
 '/^(css_cacher|js_cacher|ajax|icalclient|freebusy|publish|register|rss|get_reminders|get_events|ws)\.php$/' =>
   array(array('Config', 'PHPDBI', 'Functions'),
-  array('User', 'Validate', 'Connect', 'SiteExtras')),
+  array('User', 'Validate', 'Connect', 'SiteExtras', 'Access')),
 '/^convert_passwords\.php$/' =>
   array(array('Config', 'PHPDBI'),
   array()),
