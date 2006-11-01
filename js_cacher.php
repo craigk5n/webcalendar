@@ -32,7 +32,7 @@ if ( $caching == true ) {
   $WebCalendar->initializeFirstPhase();    
      
   include "includes/$user_inc";
-    
+  include_once 'includes/access.php';    
   include_once 'includes/validate.php';    
   include 'includes/translate.php';  
   include_once 'includes/gradient.php';
