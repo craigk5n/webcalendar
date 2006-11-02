@@ -508,7 +508,7 @@ if ( ! empty ( $showPopups ) ) {
   echo '<script type="text/javascript" src="includes/js/util.js"></script>' . "\n";
   
   echo '<script type="text/javascript">' . "\n";
-  include_once 'includes/js/popups.php/true';
+  include_once 'includes/js/popups.php';
   echo "</script>\n";
 }
 ?>
