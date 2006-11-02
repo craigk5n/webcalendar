@@ -22,7 +22,7 @@ include 'includes/classes/CommentList.class';
 
 // Make sure this user is allowed to look at this calendar.
 $can_approve = $can_edit = $can_view = false;
-$is_my_event = // Is this user owner or participant?
+$is_my_event = false; // Is this user owner or participant?
 $is_confidential = $is_private = $rss_view = $unapproved = false;
 $error = $eType = $event_status = '';
 $log = getGetValue ( 'log' );
@@ -83,6 +83,7 @@ if ( $res ) {
 
   dbi_free_result ( $res );
 }
+
 // Update the task percentage for this user.
 if ( ! empty ( $_POST ) && $is_my_event ) {
   $upercent = getPostValue ( 'upercent' );
@@ -159,21 +160,22 @@ if ( empty ( $error ) ) {
   $euser = ( empty ( $user )
     ? ( $is_my_event == true ? $login : $create_by )
     : ( $login != $user ? $user : $login ) );
-
   if ( access_is_enabled () ) {
-    $canParams = "$euser, $login, $cal_type, $cal_access";
-    $can_approve = access_user_calendar ( 'approve', $canParams );
-    $can_edit = access_user_calendar ( 'edit', $canParams );
-    $can_view = access_user_calendar ( 'view', $canParams );
-    $time_only = access_user_calendar ( 'time', $canParams );
+    $can_view =  access_user_calendar ( 'view', $euser, $login, $cal_type, $cal_access );
+    $can_edit = access_user_calendar ( 'edit', $create_by, $login, $cal_type, $cal_access );
+    $can_approve = access_user_calendar ( 'approve', $euser, $login, $cal_type, $cal_access );
+    $time_only = access_user_calendar ( 'time', $euser, $login, $cal_type, $cal_access );
+
   } else
     $time_only = 'N';
 
   if ( $is_admin || $is_nonuser_admin || $is_assistant )
     $can_view = true;
 
-  if ( ( $login != '__public__' ) && ( $PUBLIC_ACCESS_OTHERS == 'Y' ) )
-    $can_view = true;
+ // Commented out by RJ. Not sure of the reason for this code
+ //   if ( ($login != '__public__') && ($PUBLIC_ACCESS_OTHERS == 'Y') ) {
+ //     $can_view = true;
+ //   }
 
   $can_edit = ( $can_edit || $is_admin || $is_nonuser_admin &&
     $user == $create_by ||
@@ -259,8 +261,6 @@ if ( ! empty ( $error ) ) {
   echo print_error ( $error ) . print_trailer ();
   exit;
 }
-// Try to determine the event status.
-$event_status = '';
 
 if ( ! empty ( $user ) && $login != $user ) {
   // If viewing another user's calendar, check the status of the
@@ -277,29 +277,31 @@ if ( ! empty ( $user ) && $login != $user ) {
   // We are viewing event on user's own calendar, so check the
   // status on their own calendar.
   $res = dbi_execute ( 'SELECT cal_id, cal_status FROM webcal_entry_user
-    WHERE cal_login = ? AND cal_id = ?', array ( $user , $id ) );
+    WHERE cal_login = ? AND cal_id = ?', array ( $login , $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     $event_status = $row[1];
     dbi_free_result ( $res );
   }
 }
+// This section commented out by RJ
+// This code allows viewing events not otherwise authorized
 
 // At this point, if we don't have the event status, then this user is not
 // viewing an event from his own calendar and not viewing an event from someone
 // else's calendar. They probably got here from the search results page
 // (or possibly by hand typing in the URL.)
 // Check to make sure that it hasn't been deleted from everyone's calendar.
-if ( empty ( $event_status ) ) {
-  $res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
-    WHERE cal_status <> "D" ORDER BY cal_status', array () );
-  if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) )
-      $event_status = $row[0];
+//if ( empty ( $event_status ) ) {
+//  $res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
+//    WHERE cal_status <> "D" ORDER BY cal_status', array () );
+ // if ( $res ) {
+//    if ( $row = dbi_fetch_row ( $res ) )
+//      $event_status = $row[0];
 
-    dbi_free_result ( $res );
-  }
-}
+//    dbi_free_result ( $res );
+//  }
+//}
 
 // If we have no event status yet, it must have been deleted.
 if ( ( empty ( $event_status ) && ! $is_admin ) ||
@@ -744,6 +746,13 @@ $can_edit = ( $can_edit || $is_admin || $is_nonuser_admin &&
   ( $is_assistant && ! $is_private && ( $user == $create_by ) ) ||
   ( $readonly != 'Y' && ( $login == $create_by || $single_user == 'Y' ) ) );
 
+if ( empty ( $event_status ) ) {
+  // this only happens when an admin views a deleted event that he is
+  // not a participant for.  Set to $event_status to "D" just to get
+  // rid of all the edit/delete links below.
+  $event_status = 'D';
+}
+
 if ( $eType == 'task' ) {
   // allow user to update their task completion percentage
   if ( empty ( $user ) && $readonly != 'Y' && $is_my_event &&
@@ -789,13 +798,13 @@ if ( Doc::attachmentsEnabled () && $rss_view == false ) {
       user_is_assistant ( $login, $create_by )
       ? ' [<a href="docdel.php?blid=' . $a->getId ()
        . '" onclick="return confirm (\'' . $areYouSureStr . '\');">'
-       . $deleteStr . '</a>]' : '' ) . '<br/>';
+       . $deleteStr . '</a>]' : '' ) . '<br />';
   }
   $num_app = $num_rej = $num_wait = 0;
   $num_attach = $attList->getSize ();
 
   echo ( $num_attach == 0 ? '
-          ' . translate ( 'None' ) . '<br/>' :'' ) . '
+          ' . translate ( 'None' ) . '<br />' :'' ) . '
         </td>
       </tr>';
 }
@@ -822,20 +831,20 @@ if ( Doc::commentsEnabled () ) {
       user_is_assistant ( $login, $create_by ) ? ' [<a href="docdel.php?blid='
        . $cmt->getId () . '" onclick="return confirm (\'' . $areYouSureStr
        . '\');">' . $deleteStr . '</a>]' : '' )// end show delete link
-     . '<br/>
+     . '<br />
           <blockquote id="eventcomment">' . nl2br ( activate_urls (
         htmlspecialchars ( $cmt->getData () ) ) ) . '</blockquote>';
   }
 
   if ( $num_comment == 0 )
-    echo translate ( 'None' ) . '<br/>';
+    echo translate ( 'None' ) . '<br />';
   else {
     echo '
           ' . $num_comment . ' ' . translate ( 'comments' ) . '
           <input id="showbutton" type="button" value="' . translate ( 'Show' )
      . '" onclick="showComments ();" />
           <input id="hidebutton" type="button" value="' . translate ( 'Hide' )
-     . '" onclick="hideComments ();" /><br/>
+     . '" onclick="hideComments ();" /><br />
           <div id="comtext">' . $comment_text . '</div>';
     // We could put the following JS in includes/js/view_entry.php,
     // but we won't need it in many cases and we don't know whether
@@ -886,6 +895,8 @@ hideComments ();
 
 $rdate = ( $event_repeats ? '&amp;date=' . $event_date : '' );
 
+$u_url = ( ! empty ( $user ) && $login != $user ? "&amp;user=$user" : '' );
+
 echo '
     </table><br />
     <ul class="nav">';
@@ -894,13 +905,6 @@ echo '
 if ( empty ( $friendly ) )
   echo $printerStr;
 
-if ( empty ( $event_status ) )
-  // This only happens when an admin views a deleted event that he is
-  // not a participant for.  Set $event_status to "D" just to get
-  // rid of all the edit/delete links below.
-  $event_status = 'D';
-
-$u_url = ( ! empty ( $user ) && $login != $user ? "&amp;user=$user" : '' );
 
 if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) &&
     ( $unapproved ) && $readonly == 'N' ) {
@@ -926,21 +930,21 @@ $can_add_comment = ( Doc::commentsEnabled () &&
   ( $can_edit || ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
     ( $ALLOW_COMMENTS_ANY == 'Y' && $login != '__public__' ) ) );
 
-if ( $can_add_attach ) {
+if ( $can_add_attach && $event_status != 'D' ) {
   $addAttchStr = translate ( 'Add Attachment' );
   echo '
       <li><a title="' . $addAttchStr
    . '" class="nav" href="docadd.php?type=A&amp;id=' . $id
-   . ( $login != $user ? '&amp;user=' . $user : '' ) . '">' . $addAttchStr
+   . $u_url . '">' . $addAttchStr
    . '</a></li>';
 }
 
-if ( $can_add_comment ) {
+if ( $can_add_comment && $event_status != 'D' ) {
   $addCommentStr = translate ( 'Add Comment' );
   echo '
       <li><a title="' . $addCommentStr
    . '" class="nav" href="docadd.php?type=C&amp;id=' . $id
-   . ( $login != $user ? '&amp;user=' . $user : '' ) . '">' . $addCommentStr
+   . $u_url . '">' . $addCommentStr
    . '</a></li>';
 }
 
@@ -948,7 +952,7 @@ if ( $can_add_comment ) {
 // to edit where they could also set the category), then allow them to
 // set it through set_cat.php.
 if ( empty ( $user ) && $CATEGORIES_ENABLED == 'Y' && $readonly != 'Y' &&
-    ( $is_my_event ) && $login != '__public__' && !
+    $is_my_event && $login != '__public__' && !
     $is_nonuser && $event_status != 'D' && ! $can_edit ) {
   $setCatStr = translate ( 'Set category' );
   echo '
@@ -962,6 +966,8 @@ $deleteAllStr = translate ( 'This will delete this entry for all users.', true )
 $deleteEntryStr = translate ( 'Delete entry' );
 $editEntryStr = translate ( 'Edit entry' );
 
+//TODO Don't show if $user != $login and not assistant
+// This will be easier with UAC always on
 if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
   if ( $event_repeats ) {
     $editAllDatesStr = translate ( 'Edit repeating entry for all dates' );

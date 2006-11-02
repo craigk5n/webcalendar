@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1521851 ] 'deleted entries' can be reactivate by 'activity.php'
  - Applied PATCH [ 1570573 ] Use <ul> list in view_entry.php
  - Fixed bug [ 1588205 ] Warning in preferences re ANSI_X3.4-1968
  - Fixed bug [ 1587046 ] error messages during to use the 'installation-wizard'
