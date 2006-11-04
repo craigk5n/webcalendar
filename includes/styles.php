@@ -112,7 +112,7 @@ abbr {
   cursor: help;
 }
 div {
-  border-width:0px; 
+  border: 0;
 }
 h2 {
   font-size: 20px;
@@ -138,14 +138,14 @@ textarea {
   overflow: auto;
 }
 table {  
-  border-spacing: 0px;
-  border-width:0px; 
+  border-spacing: 0;
+  border: 0;
 }
 th {
   font-size: 13px;
   color: <?php echo $GLOBALS['THFG']; ?>;
   background-color: <?php echo $GLOBALS['THBG']; ?>;
-  padding: 0px;
+  padding: 0;
 }
 td {
   font-size: 11px;
@@ -204,7 +204,7 @@ ul a {
  text-decoration: underline;
 }
 .cursoradd a {
-  cursor:pointer; 
+  cursor: pointer; 
 }
 #tabscontent {
   margin: -1px 2px;
@@ -218,7 +218,7 @@ ul a {
 .tabfor,
 .tabbak  {
   padding: 0.2em 0.2em 0.1em 0.2em;
-  margin: 0px 0px 0px 0.1em;
+  margin: 0 0 0 0.1em;
   border-top: 2px ridge #C0C0C0;
   border-left: 2px ridge #C0C0C0;
   border-right: 2px ridge #C0C0C0;
@@ -290,19 +290,19 @@ ul a {
 }
 <?php //transparent images used for visual color-selection
 ?>img.color {
-  border-width: 0px;
+  border: 0;;
   width: 15px;
   height: 15px;
 }
-<?php //display:none; is unhidden by includes/print_styles.css for printer-friendly pages 
+<?php //display: none; is unhidden by includes/print_styles.css for printer-friendly pages 
 ?>#cat {
   display: none;
   font-size: 18px;
 }
 #dateselector,
 #trailer {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 #dateselector form {
   float: left;
@@ -316,29 +316,29 @@ ul a {
 }
 #dateselector label,
 #trailer label {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   font-weight: bold;
 }
 #monthform {
   clear: left;
-  margin-bottom:0px;
+  margin-bottom: 0;
 }
 #weekform {
   text-align: center;
-  margin-bottom:0px;
+  margin-bottom: 0;
 }
 #weekmenu,
 #monthmenu,
 #yearmenu {
   font-size: 9px;
   text-align: right;
-  margin-bottom:0px;
+  margin-bottom: 0;
 }
 #yearform {
   text-align: right;
   clear: right;
-  margin-bottom:0px;
+  margin-bottom: 0;
 }
 #menu {
   font-size: 14px;  
@@ -367,7 +367,7 @@ ul a {
 }
 <?php //new event icon (i.e. '+' symbol)
 ?>.new {
-  border-width: 0px;
+  border: 0;;
   float: right;
 }
 <?php //links to unapproved entries/events
@@ -402,7 +402,7 @@ ul a {
 ?>.entry img,
 .layerentry img,
 .unapprovedentry img {
-  border-width: 0px;
+  border: 0;;
   margin-left: 2px;
   margin-right: 2px;
 }
@@ -411,12 +411,12 @@ ul a {
   color: <?php echo $GLOBALS['TABLEBG']; ?>;
   font-weight: bold;
   text-decoration: none;
-  border-top-width: 0px;
-  border-left-width: 0px;
+  border-top-width: 0;
+  border-left-width: 0;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  padding: 0px 2px 0px 3px;
-  vertical-align:top;
+  padding: 0 2px 0 3px;
+  vertical-align: top;
 }
 <?php //numerical date links in main calendars on hover
 ?>.dayofmonth:hover {
@@ -426,14 +426,14 @@ ul a {
 }
 <?php //left arrow images
 ?>.prev img {
-  border-width: 0px;
+  border: 0;;
   margin-left: 3px;
   margin-top: 7px;
   float: left;
 }
 <?php //right arrow images
 ?>.next img {
-  border-width: 0px;
+  border: 0;;
   margin-right: 3px;
   margin-top: 7px;
   float: right;
@@ -441,37 +441,37 @@ ul a {
 #activitylog .prev {
   font-size: 14px;
   font-weight: bold;
-  border-width: 0px;
+  border: 0;;
   float: left;
 }
 #activitylog .next {
   font-size: 14px;
   font-weight: bold;
-  border-width: 0px;
+  border: 0;;
   float: right;
 }
 <?php //left arrow image in day.php
 ?>#day .prev img {
-  border-width: 0px;
+  border: 0;;
   margin-top: 37px;
   float: left;
 }
 <?php //right arrow image in day.php
 ?>#day .next img {
-  border-width: 0px;
+  border: 0;;
   margin-top: 37px;
   float: right;
 }
 <?php //left arrow image in day.php
 ?>#day .monthnav .prev img {
-  border-width: 0px;
-  margin: 0px;
+  border: 0;;
+  margin: 0;
   float: left;
 }
 <?php //right arrow image in day.php
 ?>#day .monthnav .next img {
-  border-width: 0px;
-  margin: 0px;
+  border: 0;;
+  margin: 0;
   float: right;
 }
 .dailymatrix {
@@ -482,29 +482,29 @@ ul a {
   background-color: <?php echo $GLOBALS['THBG']; ?>;
 }
 .dailymatrix:hover {
-  background-color:#CCFFCC;
+  background-color: #CCFFCC;
 }
 td.matrixappts {
   cursor: pointer;
   text-align: left;
   background-color: <?php echo $GLOBALS['CELLBG']; ?>;
   vertical-align: middle;
-  width:0%;
+  width: 0%;
 }
 td.matrixappts:hover {
-  background-color:#CCFFCC;
+  background-color: #CCFFCC;
 }
 td.matrix {
   height: 1px;
   background-color: #000000;
 }
 .matrix img {
-  border-width: 0px;
+  border: 0;;
   width: 100%;
   height: 1px;
 }
 a.matrix img {
-  border-width: 0px;
+  border: 0;;
   width: 100%;
   height: 8px;
 }
@@ -527,7 +527,7 @@ a.matrix img {
   border: 1px solid #000000;
 }
 .matrixlegend img {
-  border-width: 0px;
+  border: 0;;
   width: 10px;
   height: 10px;
 }
@@ -544,20 +544,20 @@ a.matrix img {
   position: absolute;
   z-index: 20;
   visibility: hidden;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   border: 1px solid <?php echo $GLOBALS['POPUP_FG']; ?>;
   padding: 3px;
   -moz-border-radius: 6px;
 }
 .popup dl {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 .popup dt {
   font-weight: bold;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 .popup dd {
   margin-left: 20px;
@@ -567,7 +567,7 @@ a.matrix img {
   cursor: help;
   text-decoration: none;
   font-weight: bold;
-  width:120px;
+  width: 120px;
 }
 .tooltipselect {
   font-size: 11px;
@@ -583,7 +583,7 @@ a.matrix img {
   text-align: center;
 }
 .asstmode {
-  font-weight:bold;
+  font-weight: bold;
   color: <?php echo $GLOBALS['H2COLOR']; ?>;
   text-align: center;
 }
@@ -594,15 +594,15 @@ a.matrix img {
 }
 .helpbody {
   vertical-align: top;
-  font-weight:normal;
+  font-weight: normal;
 }
 .helpbody label {
   vertical-align: top;
-  clear:left;
-  float:left;
-  width:150px;
+  clear: left;
+  float: left;
+  width: 150px;
   font-size: 1.1em;
-  font-weight:bold;
+  font-weight: bold;
 }
 .helplist {
   text-align: center;
@@ -611,7 +611,7 @@ a.matrix img {
 }
 <?php //question mark img linking to help sections
 ?>img.help {
-  border-width: 0px;
+  border: 0;;
   cursor: help;
 }
 <?php //standard table appearing mainly in prefs.php & admin.php 
@@ -622,14 +622,14 @@ a.matrix img {
 }
 .standard th {
   font-size: 18px;
-  padding: 0px;
+  padding: 0;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
 }
 <?php //Styles for minicalendars
 ?>.minical {
   border-collapse: collapse;
   font-size: 10px;
-  margin: 0px 0px 5px 0px;
+  margin: 0 0 5px 0;
 }
 .minical caption a {
   font-weight: bold;
@@ -651,13 +651,13 @@ a.matrix img {
 }
 <?php } ?>
 .minical td {
-  padding: 0px 2px;
+  padding: 0 2px;
   border: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
 }
 .minical td a {
   display: block;
   text-align: center;
-  margin: 0px;
+  margin: 0;
   padding: 3px;
 }
 .minical td.weekend {
@@ -674,26 +674,26 @@ a.matrix img {
 }
 <?php // table appearing in small task window 
 ?>.minitask {
-  width:98%;
+  width: 98%;
   border: 1px solid #000000;
   margin-left: 1px;
 }
 .minitask tr.header th {
   background-color: <?php echo $GLOBALS['CELLBG']; ?>;
   font-size: 12px;
-  padding: 0px;
+  padding: 0;
   border-bottom: 2px solid #000000;
 }
 .minitask  td {
   color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
   font-size: 12px;
-  padding: 0px;
+  padding: 0;
   border-bottom: 1px solid #000000;
   text-align: center;
 }
 .minitask td.filler {
-  padding: 0px;
-  border-bottom: 0px;
+  padding: 0;
+  border-bottom: 0;
 }
 .task {
   color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
@@ -703,7 +703,7 @@ a.matrix img {
   cursor: help;
   text-decoration: none;
   font-weight: bold;
-  width:175px;
+  width: 175px;
 }
 #minicalendar table {
   width: <?php echo ( ! empty ( $GLOBALS['MINICALWIDTH'])?$GLOBALS['MINICALWIDTH']: '160px'); ?>;
@@ -718,7 +718,7 @@ a.matrix img {
   width: 100%;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
   border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-spacing: 0px;
+  border-spacing: 0;
 }
 .embactlog tr {
   background-color: #FFFFFF;
@@ -743,16 +743,16 @@ a.matrix img {
   padding: 1px 3px;
 }
 #day div.minicalcontainer {
-  vertical-align:top;
+  vertical-align: top;
   border: 1px solid #000000;
   padding: 3px;
 }
 #day table.minical {
-  margin-left:auto; margin-right:auto;
+  margin-left: auto; margin-right: auto;
 }
 <?php //the really big number above the minicalendar in day.php
 ?>#day .minical caption {
-  margin-left:auto; margin-right:auto;
+  margin-left: auto; margin-right: auto;
   font-weight: bold;
   color: <?php echo $GLOBALS['THFG']; ?>;
   background-color: <?php echo $GLOBALS['THBG']; ?>;
@@ -763,7 +763,7 @@ a.matrix img {
 }
 #day .monthnav th {
   text-align: center;
-  border-width: 0px;
+  border: 0;;
   padding: 3px;
 }
 #datesel td.field {
@@ -796,14 +796,14 @@ a.matrix img {
 <?php //display: none; is unhidden by includes/print_styles.css for printer-friendly pages
 ?>#day dl.desc {
   display: none;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 #day dl.desc dt {
   font-weight: bold;
 }
 #day dl.desc dd {
-  margin: 0px;
+  margin: 0;
   padding-left: 20px;
 }
 <?php //contains ALL months
@@ -842,8 +842,8 @@ a.weekcell {
 #month .main th.weekcell{
   background: <?php echo $GLOBALS['BGCOLOR']; ?>;
   background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
-  border-left: 0px;
-  border-top: 0px;
+  border-left: 0;
+  border-top: 0;
   width: 1%;
 }
 #admin .main td.weekcell,
@@ -852,9 +852,9 @@ a.weekcell {
 #month .main td.weekcell {
   <?php echo background_css ( $GLOBALS['THBG'], 50 ); ?>
   width: 1%;
-  margin: 0px 0px 0px 0px;
-  vertical-align:middle;
-  text-align:center;
+  margin: 0;
+  vertical-align: middle;
+  text-align: center;
   font-size: 12px;
   color: <?php echo $GLOBALS['H2COLOR']; ?>;
   text-decoration: none;
@@ -876,8 +876,8 @@ a.weekcell {
   height: 40px;
 }
 #viewt.main {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 #vieww .main th.row,
 #viewv .main th.row,
@@ -896,10 +896,10 @@ a.weekcell {
 }
 #viewv .main th.row {
   text-align: left;
-  padding: 0px 5px;
+  padding: 0 5px;
 }
 #viewd .main th.row {
-  border-right-width: 0px;
+  border-right-width: 0;
   text-align: left;
 }
 #viewr th.row {
@@ -929,7 +929,7 @@ a.weekcell {
 }
 #year .minical td {
   text-align: center;
-  padding: 0px 3px;
+  padding: 0 3px;
 }
 #admin .main td,
 #pref .main td{
@@ -941,8 +941,8 @@ a.weekcell {
   font-size: 12px;
   height: 75px;
   vertical-align: top;
-  table-layout:fixed;
-  overflow:auto;
+  table-layout: fixed;
+  overflow: auto;
 }
 #vieww .main td,
 #week .main td,
@@ -968,21 +968,21 @@ a.weekcell {
 #viewl .minical caption {
   margin-left: 4ex;
 }
-<?php //keep font-size:12px; for IE6 rendering
+<?php //keep font-size: 12px; for IE6 rendering
       //display: block; keeps the caption vertically close to the day names
 ?>#year .minical {
   margin: 5px auto;
   display: block;
 }
 #year .minical caption {
-  margin: 0px auto;
+  margin: 0 auto;
 }
 #viewl .minical,
 #month .minical {
-  border-width: 0px;
+  border: 0;;
 }
 .topnav {
-  border-width:0px;
+  border: 0;;
 }
 .title {
   width: 99%;
@@ -1032,19 +1032,19 @@ a.weekcell {
   font-size: 10px;
 }
 #viewt .yardstick td {
-  padding: 0px;
+  padding: 0;
   border: 1px solid #999999;
 }
 #viewt td.entry {
-  padding: 0px;
+  padding: 0;
   <?php echo background_css ( $GLOBALS['THBG'], 10 ); ?>
 }
 #viewt table.timebar a {
   text-align: inherit !important;
 }
 .viewnav {
-  border-width:0px; 
-  width:99%;
+  border: 0;
+  width: 99%;
 }
 #login {
   margin-top: 30px;
@@ -1063,16 +1063,16 @@ a.weekcell {
   text-decoration : line-through;
 }
 .pub {
-  background-color:#80FF80;
-  text-align:center;
+  background-color: #80FF80;
+  text-align: center;
 }
 .conf {
-  background-color:#FFFF80;
-  text-align:center;
+  background-color: #FFFF80;
+  text-align: center;
 }
 .priv {
-  background-color:#FF5050;
-  text-align:center;
+  background-color: #FF5050;
+  text-align: center;
 }
 .boxtop {
  border-top: 1px solid #888888;
@@ -1087,12 +1087,12 @@ a.weekcell {
  border-bottom: 1px solid #888888;
 }
 .boxall {
- padding-left:3px;
+ padding-left: 3px;
  border: 1px solid #888888;
 }
 .leftpadded {
- padding-left:50px;
- text-align:left;
+ padding-left: 50px;
+ text-align: left;
 }
 .location {
  font-size: 10px;
@@ -1102,21 +1102,21 @@ a.weekcell {
  text-align: center;  
 }
 .icon_text {
- border-width:0px; 
- width:10px; 
- height:10px;
+ border: 0;
+ width: 10px; 
+ height: 10px;
 }
 .alignright {
- text-align:right;
+ text-align: right;
 }
 .alignleft {
- text-align:left;
+ text-align: left;
 }
 .aligncenter {
- text-align:center;
+ text-align: center;
 }
 .aligntop {
- vertical-align:top;
+ vertical-align: top;
 }
 .bold {
  font-weight: bold;
