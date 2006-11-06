@@ -5,13 +5,17 @@
  */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
+// Configure your menu using this file
+include_once 'includes/menu/menu_config.php';
+
 global $ALLOW_VIEW_OTHER, $CATEGORIES_ENABLED, $DISPLAY_TASKS,
 $DISPLAY_TASKS_IN_GRID, $has_boss, $HOME_LINK, $is_admin, $is_assistant,
 $is_nonuser, $is_nonuser_admin, $login, $login_return_path, $MENU_DATE_TOP,
 $NONUSER_ENABLED, $PUBLIC_ACCESS, $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL,
 $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_OTHERS, $readonly, $REMOTES_ENABLED,
 $REPORTS_ENABLED, $REQUIRE_APPROVALS, $show_printer, $single_user, $START_VIEW,
-$thisday, $thismonth, $thisyear, $use_http_auth, $user, $views;
+$thisday, $thismonth, $thisyear, $use_http_auth, $user, $views, 
+$menuScript, $menuHtml, $BodyX, $fullname;
 
 /* -----------------------------------------------------------------------------
          First figure out what options are on and privileges we have
@@ -247,100 +251,111 @@ Custom actions inside a menu can be done with:
 
 For full menu options see JSCookMenu documentation
 */
+$menuScript = $menuHtml = '';
 // A menu link
 function jscMenu_menu ( $title, $url = false ) {
+  global $menuScript;
   $bracket = ( $url ? ']' : '' );
   $title = ( $title != '' ? translate ( $title ) : '' );
-  echo "\n  [null,'" . $title . "','$url',null,null" . $bracket . ",\n";
+  $menuScript .= "\n  [null,'" . $title . "','$url',null,null" . $bracket . ",\n";
 }
 // Dropdown menu item
 function jscMenu_item ( $icon, $title, $url, $target = '' ) {
+  global $menuScript;
   $title = ( $title != '' ? translate ( $title ) : '' );
-  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','" . $title
+  $menuScript .= "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','" . $title
    . "','$url','$target',''],\n";
 }
 // Dropdown menu item that has a sub menu
 function jscMenu_sub_menu ( $icon, $title ) {
+  global $menuScript;
   $title = ( $title != '' ? translate ( $title) : '' );
-  echo "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','" . $title
+  $menuScript .= "    ['<img src=\"includes/menu/icons/$icon\" alt=\"\" />','" . $title
    . "','',null,'',\n";
 }
 // Dropdown menu item is custom html
 function jscMenu_custom ( $html ) {
-  echo "    [_cmNoClick,'$html']\n";
+  global $menuScript;
+  $menuScript .= "    [_cmNoClick,'$html']\n";
 }
 // Closing tag
 function jscMenu_close () {
-  echo "  ],\n";
+  global $menuScript;
+  $menuScript .= "  ],\n";
 }
 // A divider line
 function jscMenu_divider () {
-  echo "    _cmSplit,\n";
+  global $menuScript;
+  $menuScript .= "    _cmSplit,\n";
 }
 
 /* -----------------------------------------------------------------------------
                         Now we need to print the menu
 ----------------------------------------------------------------------------- */
-?>
 
-<table width="100%" class="ThemeMenubar">
-  <tr>
-   <td class="ThemeMenubackgr">
-<div id="myMenuID"></div>
+$menuScript .= "\n" . '<script language="JavaScript" type="text/javascript">' 
+  . "\n" . '<!-- <![CDATA[' . "\n"
+  . 'function openHelp () { ' . "\n"
+  . "window.open ( 'help_index.php', 'cal_help','dependent,menubar,scrollbars,"
+  . "height=500,width=600,innerHeight=520,outerWidth=620' );\n"
+  . '}' ."\n";
 
-<script language="JavaScript" type="text/javascript">
-<!-- <![CDATA[
-function openHelp () {
-  window.open ( 'help_index.php', 'cal_help','dependent,menubar,scrollbars,'
-  + 'height=500,width=600,innerHeight=520,outerWidth=620' );
-}
+$menuScript .= 'var myMenu =' . "\n"
+  .'[';
 
-var myMenu =
-[
-<?php
+// Add Menu Extra if defined
+if ( ! empty ( $menuExtras[0] ) )
+  $menuScript .= parse_menu_extras ( $menuExtras[0] );
 // My Calendar Menu
 // translate ( 'My Calendar' ) translate ( 'Today' ) translate ( 'Home' )
 // translate ( 'This Week' ) translate ( 'This Month' )
 // translate ( 'This Year' ) translate ( 'Exit' )
-jscMenu_menu ( 'My Calendar' );
-jscMenu_item ( 'home.png', 'Home', $mycal );
-if ( $today_url != '' )
-  jscMenu_item ( 'today.png', 'Today', $today_url );
-jscMenu_item ( 'week.png', 'This Week', $week_url );
-jscMenu_item ( 'month.png', 'This Month', $month_url );
-jscMenu_item ( 'year.png', 'This Year', $year_url );
-if ( ! empty ( $HOME_LINK ) )
+if ( $menuConfig['My Calendar'] ) jscMenu_menu ( 'My Calendar' );
+if ( $menuConfig['Home'] ) jscMenu_item ( 'home.png', 'Home', $mycal );
+if ( $menuConfig['Today'] ) jscMenu_item ( 'today.png', 'Today', $today_url );
+if ( $menuConfig['This Week'] ) jscMenu_item ( 'week.png', 'This Week', $week_url );
+if ( $menuConfig['This Month'] ) jscMenu_item ( 'month.png', 'This Month', $month_url );
+if ( $menuConfig['This Year'] ) jscMenu_item ( 'year.png', 'This Year', $year_url );
+if ( ! empty ( $HOME_LINK ) && $menuConfig['Exit'] )
   jscMenu_item ( 'exit.png', 'Exit', $HOME_LINK );
 jscMenu_close ();
+
+// Add Menu Extra if defined
+if ( ! empty ( $menuExtras[1] ) )
+  $menuScript .= parse_menu_extras ( $menuExtras[1] );
 // Events Menu
 // translate ( 'Events' ) translate ( 'Add New Event' )
 // translate ( 'Add New Task' ) translate ( 'Delete Entries' )
 // translate ( 'Unapproved Entries' ) translate ( 'Export' )
 // translate ( 'Import' );
-jscMenu_menu ( 'Events' );
-if ( $new_entry_url != '' )
+if ( $menuConfig['Events'] ) jscMenu_menu ( 'Events' );
+if ( $new_entry_url != '' && $menuConfig['Add New Event'] )
   jscMenu_item ( 'add.png', 'Add New Event', $new_entry_url );
-if ( $new_task_url != '' )
+if ( $new_task_url != '' && $menuConfig['Add New Task'] )
   jscMenu_item ( 'newtodo.png', 'Add New Task', $new_task_url );
-if ( $is_admin && $readonly != 'Y' )
+if ( $is_admin && $readonly != 'Y' && $menuConfig['Delete Entries'] )
   jscMenu_item ( 'delete.png', 'Delete Entries', 'purge.php' );
-if ( $unapproved_url != '' )
+if ( $unapproved_url != '' && $menuConfig['Unapproved Entries'] )
   jscMenu_item ( 'unapproved.png', 'Unapproved Entries', $unapproved_url );
-if ( $export_url != '' )
+if ( $export_url != '' && $menuConfig['Export'] )
   jscMenu_item ( 'up.png', 'Export', $export_url );
-if ( $import_url != '' )
+if ( $import_url != '' && $menuConfig['Import'] )
   jscMenu_item ( 'down.png', 'Import', $import_url );
 jscMenu_close ();
+
+// Add Menu Extra if defined
+if ( ! empty ( $menuExtras[2] ) )
+  $menuScript .= parse_menu_extras ( $menuExtras[2] );
 // Views Menu
 // translate ( 'Views' ) translate ( 'Another User&#39;s Calendar' )
 // translate ( 'My Views' ) translate ( 'Manage Calendar of' );
 // translate ( 'Manage Views' );
-jscMenu_menu ( 'Views' );
-if ( $select_user_url != '' )
+if ( $menuConfig['Views'] ) jscMenu_menu ( 'Views' );
+if ( $select_user_url != '' && $menuConfig['Another Users Calendar'] )
   jscMenu_item ( 'display.png', 'Another User&#39;s Calendar', $select_user_url );
 
 if ( $login != '__public__' ) {
-  if ( ! empty ( $views_link ) && $views_linkcnt > 0 ) {
+  if ( ! empty ( $views_link ) && $views_linkcnt > 0 && $menuConfig['My Views'] ) {
     jscMenu_sub_menu ( 'views.png', 'My Views' );
     for ( $i = 0; $i < $views_linkcnt; $i++ ) {
       jscMenu_item ( 'views.png', $views_link[$i]['name'],
@@ -349,7 +364,7 @@ if ( $login != '__public__' ) {
     jscMenu_close ();
   }
 
-  if ( ! empty ( $groups ) ) {
+  if ( ! empty ( $groups ) && $menuConfig['Manage Calendar of'] ) {
     jscMenu_sub_menu ( 'manage_cal.png', 'Manage Calendar of' );
     $groupcnt = count ( $groups );
     for ( $i = 0; $i < $groupcnt; $i++ ) {
@@ -360,25 +375,29 @@ if ( $login != '__public__' ) {
 
   if ( ! $is_nonuser && ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_VIEW_MANAGEMENT, $user ) ) &&
-        $readonly != 'Y' ) {
+        $readonly != 'Y' && $menuConfig['Manage Views'] ) {
     jscMenu_divider ();
     jscMenu_item ( 'manage_views.png', 'Manage Views', 'views.php' );
   }
 }
 jscMenu_close ();
+
+// Add Menu Extra if defined
+if ( ! empty ( $menuExtras[3] ) )
+  $menuScript .= parse_menu_extras ( $menuExtras[3] );
 // Reports Menu
 // translate ( 'Reports' ) translate ( 'Activity Log' );
 // translate ( 'My Reports' ) translate ( 'Manage Reports' );
 if ( $login != '__public__' ) {
-  jscMenu_menu ( 'Reports' );
-  if ( $is_admin && ( ! access_is_enabled () ||
+  if ( $menuConfig['Reports'] ) jscMenu_menu ( 'Reports' );
+  if ( $is_admin && $menuConfig['Activity Log'] && ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_ACTIVITY_LOG, $user ) ) )
     jscMenu_item ( 'log.png', 'Activity Log', 'activity_log.php' );
-  if ( $is_admin && ( ! access_is_enabled () ||
+  if ( $is_admin && $menuConfig['System Log'] && ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_ACTIVITY_LOG, $user ) ) )
     jscMenu_item ( 'log.png', 'System Log', 'activity_log.php?system=1' );
 
-  if ( ! empty ( $reports_link ) && $reports_linkcnt > 0 ) {
+  if ( ! empty ( $reports_link ) && $reports_linkcnt > 0 && $menuConfig['My Reports'] ) {
     jscMenu_sub_menu ( 'reports.png', 'My Reports' );
     for ( $i = 0; $i < $reports_linkcnt; $i++ ) {
       jscMenu_item ( 'document.png', $reports_link[$i]['name'],
@@ -388,13 +407,17 @@ if ( $login != '__public__' ) {
   }
 
   if ( ! $is_nonuser && $REPORTS_ENABLED == 'Y' && $readonly != 'Y' &&
-    ( ! access_is_enabled () ||
-        access_can_access_function ( ACCESS_REPORT, $user ) ) ) {
+    $menuConfig['Manage Reports'] && ( ! access_is_enabled () ||
+    access_can_access_function ( ACCESS_REPORT, $user ) ) ) {
     jscMenu_divider ();
     jscMenu_item ( 'manage_reports.png', 'Manage Reports', 'report.php' );
   }
   jscMenu_close ();
 }
+
+// Add Menu Extra if defined
+if ( ! empty ( $menuExtras[4] ) )
+  $menuScript .= parse_menu_extras ( $menuExtras[4] );
 // Settings Menu
 // translate ( 'Settings' ) translate ( 'Assistants' )
 // translate ( 'Preferences' ) translate ( 'Categories' ) translate ( 'Layers' )
@@ -402,81 +425,88 @@ if ( $login != '__public__' ) {
 // translate ( 'Public Calendar' ) translate ( 'Unapproved Events' );
 // translate ( 'System Settings' ) translate ( 'User Manager' );
 if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' ) {
-  jscMenu_menu ( 'Settings' );
+  if ( $menuConfig['Settings'] ) jscMenu_menu ( 'Settings' );
   // Nonuser Admin Settings
   if ( $is_nonuser_admin ) {
-    if ( $single_user != 'Y' && $readonly != 'Y' ) {
+    if ( $single_user != 'Y' && $readonly != 'Y' && $menuConfig['NUC_Assistants'] ) {
       if ( ! access_is_enabled () ||
           access_can_access_function ( ACCESS_ASSISTANTS, $user ) )
         jscMenu_item ( 'users.png', 'Assistants',
           "assistant_edit.php?user=$user" );
     }
-    if ( ! access_is_enabled () ||
-        access_can_access_function ( ACCESS_PREFERENCES, $user ) ) {
+    if ( $menuConfig['NUC_Preferences'] && ( ! access_is_enabled () ||
+        access_can_access_function ( ACCESS_PREFERENCES, $user ) ) ) {
       jscMenu_item ( 'settings.png', 'Preferences', 'pref.php?user=' . $user );
     }
     // Normal User Settings
   } else {
     if ( $single_user != 'Y' ) {
-      if ( ! access_is_enabled () ||
-          access_can_access_function ( ACCESS_ASSISTANTS, $user ) )
+      if ( $menuConfig['Assistants'] && ( ! access_is_enabled () ||
+          access_can_access_function ( ACCESS_ASSISTANTS, $user ) ) )
         jscMenu_item ( 'users.png', 'Assistants', 'assistant_edit.php' );
     }
 
-    if ( $CATEGORIES_ENABLED == 'Y' ) {
+    if ( $CATEGORIES_ENABLED == 'Y' && $menuConfig['Categories'] ) {
       if ( ! access_is_enabled () ||
           access_can_access_function ( ACCESS_CATEGORY_MANAGEMENT, $user ) )
         jscMenu_item ( 'folder.png', 'Categories', 'category.php' );
     }
 
-    if ( ! access_is_enabled () ||
-        access_can_access_function ( ACCESS_LAYERS, $user ) ) {
+    if ( $menuConfig['Layers'] && ( ! access_is_enabled () ||
+        access_can_access_function ( ACCESS_LAYERS, $user ) ) ) {
       jscMenu_item ( 'layers.png', 'Layers', 'layers.php' );
     }
 
-    if ( ! $is_admin )
+    if ( ! $is_admin && $menuConfig['My Profile'] )
       jscMenu_item ( 'profile.png', 'My Profile', 'users.php' );
 
-    if ( $REMOTES_ENABLED == 'Y' && ( ! access_is_enabled () ||
-          access_can_access_function ( ACCESS_IMPORT ) ) )
+    if ( $REMOTES_ENABLED == 'Y' && $menuConfig['Remote Calendars'] && 
+      ( ! access_is_enabled () || access_can_access_function ( ACCESS_IMPORT ) ) )
       jscMenu_item ( 'vcalendar.png', 'Remote Calendars',
         'users.php?tab=remotes' );
 
-    if ( ! access_is_enabled () ||
-        access_can_access_function ( ACCESS_PREFERENCES, $user ) )
+    if ( $menuConfig['Preferences'] && ( ! access_is_enabled () ||
+        access_can_access_function ( ACCESS_PREFERENCES, $user ) ) )
       jscMenu_item ( 'settings.png', 'Preferences', 'pref.php' );
 
-    if ( $is_admin && ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) {
+    if ( $menuConfig['Public Calendar'] && $is_admin && 
+      ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) {
       jscMenu_sub_menu ( 'public.png', 'Public Calendar' );
-      jscMenu_item ( 'settings.png', 'Preferences', 'pref.php?public=1' );
-      if ( $PUBLIC_ACCESS_CAN_ADD == 'Y' &&
-        $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y' ) {
+      if ( $menuConfig['Public Preferences'] )
+        jscMenu_item ( 'settings.png', 'Preferences', 'pref.php?public=1' );
+      if ( $PUBLIC_ACCESS_CAN_ADD == 'Y' && $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y'
+        && $menuConfig['Public Unapproved Events'] ) {
         jscMenu_item ( 'unapproved.png', 'Unapproved Events',
           'list_unapproved.php?user=__public__' );
       }
       jscMenu_close ();
     }
 
-    if ( ( $is_admin && ! access_is_enabled () ) ||
-        ( access_is_enabled () &&
-          access_can_access_function ( ACCESS_SYSTEM_SETTINGS, $user ) ) )
+    if ( ( $is_admin && $menuConfig['System Settings'] && 
+      ! access_is_enabled () ) || ( access_is_enabled () &&
+      access_can_access_function ( ACCESS_SYSTEM_SETTINGS, $user ) ) )
       jscMenu_item ( 'config.png', 'System Settings', 'admin.php' );
 
-    if ( access_is_enabled () && ( $is_admin ||
-          access_can_access_function ( ACCESS_ACCESS_MANAGEMENT, $user ) ) )
+    if ( $menuConfig['User Access Control'] && access_is_enabled () && 
+     ( $is_admin || access_can_access_function ( ACCESS_ACCESS_MANAGEMENT, $user ) ) )
       jscMenu_item ( 'access.png', 'User Access Control', 'access.php' );
 
-    if ( $is_admin )
+    if ( $is_admin && $menuConfig['User Manager'] )
       jscMenu_item ( 'user.png', 'User Manager', 'users.php' );
   }
   jscMenu_close ();
 }
+
+// Add Menu Extra if defined
+if ( ! empty ( $menuExtras[5] ) )
+  $menuScript .= parse_menu_extras ( $menuExtras[5] );
 // Search Menu
 // translate ( 'Search' ) translate ( 'Advanced Search' );
-if ( $search_url != '' ) {
+if ( $search_url != '' && $menuConfig['Search'] ) {
   jscMenu_menu ( 'Search' );
-  if ( $login != '__public__' && ( ! $is_nonuser || access_is_enabled () &&
-        access_can_access_function ( ACCESS_ADVANCED_SEARCH ) ) ) {
+  if ( $menuConfig['Advanced Search'] && $login != '__public__' && 
+    ( ! $is_nonuser || access_is_enabled () &&
+    access_can_access_function ( ACCESS_ADVANCED_SEARCH ) ) ) {
     jscMenu_item ( 'search.png', 'Advanced Search', 'search.php' );
     jscMenu_divider ();
   }
@@ -487,50 +517,93 @@ if ( $search_url != '' ) {
      . '" /></form></td>' );
   jscMenu_close ();
 }
+
+// Add Menu Extra if defined
+if ( ! empty ( $menuExtras[6] ) )
+  $menuScript .= parse_menu_extras ( $menuExtras[6] );
 // Help Menu (Link )
 // translate ( 'Help' );
-if ( $help_url != '' )
-  jscMenu_menu ( 'Help', 'javascript:openHelp ()' );
+if ( $menuConfig['Help'] ) jscMenu_menu ( 'Help', 'javascript:openHelp ()' );
 // Add spacer
-echo "[_cmNoAction, '<td>&nbsp;&nbsp;</td>'],";
+$menuScript .= "[_cmNoAction, '<td>&nbsp;&nbsp;</td>'],";
 // Unapproved Icon if any exist
 $unapprovedStr = display_unapproved_events ( ( $is_assistant || $is_nonuser_admin
     ? $user : $login ) );
-if ( $unapprovedStr == '<br />' && $unapproved_url != '' )
-  jscMenu_item ( 'unapproved.png', '', $unapproved_url );
+if ( $unapprovedStr == '<br />' && $unapproved_url != '' && 
+  $menuConfig['Unapproved Icon'] )
+  jscMenu_item ( 'unapproved_large.png', '', $unapproved_url );
 // Generate Printer Friendly Icon
-if ( $show_printer ) {
+if ( $show_printer  && $menuConfig['Printer'] ) {
   $href = generate_printer_friendly ();
-  jscMenu_item ( 'printer.gif', '', $href, 'cal_printer_friendly' );
+  jscMenu_item ( 'printer.png', '', $href, 'cal_printer_friendly' );
 }
 
-?>
-];
-cmDraw ( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );
-//]]> -->
-</script>
-<?php
-echo '
-</td>
-<td class="ThemeMenubackgr ThemeMenu" align="right">'
- . ( $MENU_DATE_TOP == 'Y' ? print_menu_dates ( true ) : '' )
- . '</td>
-<td class="ThemeMenubackgr ThemeMenu" align="right">';
+// Add Menu Extra if defined
+if ( ! empty ( $menuExtras[7] ) )
+  $menuScript .= parse_menu_extras ( $menuExtras[7] );
 
-if ( ! empty ( $logout_url ) ) { // using http_auth
+$menuScript .= '];' . "\n"
+  . '//]]> -->' . "\n"
+  . '</script>' . "\n";
+
+
+$menuHtml .= '<table width="100%" class="ThemeMenubar">' . "\n"
+  . '<tr>'
+  . '<td class="ThemeMenubackgr">' . "\n"
+  . '<div id="myMenuID"></div></td>' . "\n"
+  . ( $MENU_DATE_TOP == 'Y' && $menuConfig[MENU_DATE_TOP] ? 
+    '<td class="ThemeMenubackgr ThemeMenu" align="right">'
+    . print_menu_dates ( true ) . '</td>' : '' )
+  . '<td class="ThemeMenubackgr ThemeMenu" align="right">';
+
+if ( ! empty ( $logout_url ) && $menuConfig['Login'] ) { // using http_auth
   $loginStr = translate ( 'Login');
   $logoutStr = translate ( 'Logout' );
-  echo '<a style="font-size: 12px" title="'
+  $loginName = ( $menuConfig['Login Fullname'] ? $fullname : $login ); 
+  $menuHtml .= '<a class="menuhref" title="'
    . ( strlen ( $login ) && $login != '__public__'
     ? $logoutStr . '" href="' . $logout_url . '">' . $logoutStr
-     . ':</a> <label>' . $login . '</label>'
+     . ':</a>&nbsp;<label>' . $loginName . '</label>'
     : // For public user
     $loginStr . '" href="' . $login_url . '">' . $loginStr . '</a>' ) . '
     ';
 } else
-  echo '&nbsp;&nbsp;&nbsp;'; //TODO replace with something???
+  $menuHtml .= '&nbsp;&nbsp;&nbsp;'; //TODO replace with something???
 
 
+$menuHtml .= '&nbsp;</td>' . "\n"
+  . '</tr></table>';
+
+//add function to onload string as needed
+$BodyX = ( ! empty ( $BodyX ) ? substr ( $BodyX, 0, -1 ) : 'onload="' ) 
+ . "cmDraw ( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );\"";
+
+// This function allows admins to add static content to their menu
+function parse_menu_extras ( $menuA ) {
+  $ret = '';
+    if ($menuA[0] == 'menu' ) {
+      $ret .=  jscMenu_menu ( $menuA[1], $menuA[2] );
+      if ( is_array ( $menuA[3] ) ) {
+        foreach ( $menuA[3] as $menuB ) {
+          if ($menuB[0] == 'item' ) { 
+            $ret .=  jscMenu_item ( $menuB[1], $menuB[2], $menuB[3], $menuB[4] );
+          } else if ($menuB[0] == 'submenu' ) {
+            $ret .=  jscMenu_sub_menu ( $menuB[1], $menuB[2] );
+            foreach ( $menuB[3] as $menuC ) {   
+              $ret .=  jscMenu_item ( $menuC[1], $menuC[2], $menuC[3], $menuC[4] );
+            }
+            $ret .= jscMenu_close (); 
+          } else if ($menuB[0] == 'divider' ) { 
+            $ret .=  jscMenu_divider (); 
+          } else if ($menuB[0] == 'spacer' ) { 
+            $ret .=  "[_cmNoAction, '<td>&nbsp;&nbsp;</td>'],";
+          }               
+        }
+      }
+      $ret .= jscMenu_close ();
+    } else if ($menuA[0] == 'item' ) {
+        $ret .=  jscMenu_item ( $menuA[1], $menuA[2], $menuA[3], $menuA[4] );
+    }
+  return $ret;
+}
 ?>
- &nbsp;</td>
-</tr></table>
