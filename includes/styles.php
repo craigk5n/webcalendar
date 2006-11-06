@@ -1,3 +1,4 @@
+<?php
 /* CSS styles used in WebCalendar
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
@@ -121,7 +122,7 @@
  *   Results: <body id="editentry">
  */
 
-<?php defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
+ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 // If called directly from a script,
 // this will wrap the CSS with the proper mimetype tags.
 if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
@@ -924,6 +925,10 @@ img.help {
   border: 0;
   padding: 3px;
 }
+.menuhref {
+  font-family:  arial, verdana, sans-serif;
+  font-size: 12px;
+}
 #datesel td.field {
   font-size: 12px;
 }
@@ -1342,7 +1347,7 @@ a.weekcell {
 }
 <?php
 if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
-    preg_match ( "/css_cacher/", $_SERVER['PHP_SELF'] ) ) {
+    preg_match ( "/css_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
   echo "\n-->\n</style>";
 }
 
