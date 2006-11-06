@@ -294,7 +294,14 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
     if ( substr ( $bysetpos, 0, 1 ) == "," )
       $bysetpos = substr ( $bysetpos, 1 );
   }
- 
+
+  //If expert mode not selected, we need to set the basic value
+  //for monthlyByDay events
+  if ( $rpt_type == 'monthlyByDay' && empty ( $rptmode ) &&
+    empty ( $byday ) ) {
+    $byday = ceil( $day / 7 ) . $byday_names[ date ( 'w', $eventstart ) ];
+  }
+
   $bymonth = ( ! empty ( $bymonth) ? implode (',', $bymonth ) : '' );
   
   
