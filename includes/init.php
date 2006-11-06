@@ -170,10 +170,12 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     $ret .= $HeadX . "\n";
   // Include the styles
   // Include CSS needed for the top menu
-  if ( $MENU_ENABLED == 'Y' )
+  if ( $MENU_ENABLED == 'Y' ) {
+     include_once 'includes/menu/index.php';
     $ret .= '
     <link rel="stylesheet" type="text/css" href="includes/menu/themes/'
      . $MENU_THEME . '/theme.css" />';
+  }
   // If loading admin.php, we will not use an exrternal file because we need to
   // override the global colors and this is impossible if loading external file.
   // We will still increment the webcalendar_csscache cookie though.
@@ -207,9 +209,9 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     // TODO: single-user mode, etc.
     . ( $login != '__public__' ? '?user=' . $login : '' ) . '" />' : '' )
   // Link to favicon
-  . '
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  ' // Finish the header
+  . '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />'
+  . ( $MENU_ENABLED == 'Y' ? $menuScript : '' ) 
+   // Finish the header
   . '</head>
   <body'
   // Add the page direction if right-to-left
@@ -217,15 +219,18 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // Add <body> id
   . ' id="' . $thisPageId . '"'
   // Add any extra parts to the <body> tag
-  . ( ! empty ( $BodyX ) ? " $BodyX" : '' ) . '>' . "\n"
+  . ( ! empty ( $BodyX ) ? " $BodyX" : '' ) . '>' . "\n";
+  //If menu is enabled, place menu above custom header is desired
+  if ( $MENU_ENABLED == 'Y' && $menuConfig['Above Custom Header'] )
+    $ret .= $menuHtml;
   // Add custom header if enabled
-  . ( $CUSTOM_HEADER == 'Y' && ! $disableCustom
+  $ret .= ( $CUSTOM_HEADER == 'Y' && ! $disableCustom
     ? load_template ( $login, 'H' ) : '' );
+  // Add the top menu if enabled
+  if ( $MENU_ENABLED == 'Y' && ! $menuConfig['Above Custom Header'] )
+    $ret .= $menuHtml;
   // TODO convert this to return value
   echo $ret;
-  // Add the top menu if enabled
-  if ( $MENU_ENABLED == 'Y' )
-    include_once 'includes/menu/index.php';
 }
 
 /*
@@ -251,13 +256,13 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
 
   $ret = '';
 
-  if ( $include_nav_links ) { // TODO Add test for $MENU_ENABLED == 'N'
+  if ( $include_nav_links ) { //TODO turn off bottom menu if top menu enabled
     if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' ) {
       $ret .= '<div id="dateselector">';
       $ret .= print_menu_dates ();
       $ret .= '</div>';
     }
-    include_once 'includes/trailer.php';
+      include_once 'includes/trailer.php';
   }
 
   if ( ! empty ( $tret ) )
