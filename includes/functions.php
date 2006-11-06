@@ -1626,7 +1626,7 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
           //Since we base this calendar on the current month, 
           //the placement of the days always change so 
           //set 3rd Thursday as "today" for the demo
-          if ( $dateD >= 16 && $dateD <= 23 && $thiswday == 4 ) {
+          if ( $dateD >= 16 && $dateD < 23 && $thiswday == 4 ) {
             $ret_events = translate('Today');
             $class = 'today';
           }
