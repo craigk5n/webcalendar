@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1591329 ] preview-view of the calendar in 'system-settings' has 2 'today
  - Fixed bug [ 1590474 ] Webcalendar 1.1.1 Repeat
  - Fixed bug [ 1521851 ] 'deleted entries' can be reactivate by 'activity.php'
  - Applied PATCH [ 1570573 ] Use <ul> list in view_entry.php
@@ -7,7 +8,6 @@ Version 1.1.2 (?? ??? 2006)
  - Fixed bug [ 1587046 ] error messages during to use the 'installation-wizard'
  - Fixed bug [ 1582833 ] list_unapproved.php can't approve group of events
  - Fixed bug [ 1587041 ] error messages during the 'login.php'
- - Fixed bug [ 1587046 ] error messages during to use the 'installation-wizard'
  - Created common mail function in WebCalMailer.class
  - Created new generate_application_name() function
  - Created new is_weekend() function
