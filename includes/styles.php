@@ -1,108 +1,149 @@
-<?php
-defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
-/**
- * CSS styles used in WebCalendar
+/* CSS styles used in WebCalendar
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @version $Id$
  * @package WebCalendar
+ *
+ *                         HOW TO READ THIS DOCUMENT
+ *
+ * There are two main parts to every CSS style: 'selector' & 'declaration'.
+ *   EXAMPLE:
+ *     body {
+ *       color: red;
+ *     }
+ * The selector in the example above is 'body',
+ * while its declaration is 'color: red;'.
+ * Each declaration has two parts: 'property' & 'value'.
+ *
+ * In the example above, there is only one declaraion ("color: red;").
+ * For that declaration, the PROPERTY is "color" and the VALUE is "red".
+ *
+ * NOTE: Each property must be followed by a colon (:),
+ *       and each value must be followed by a semi-colon (;).
+ *
+ * Each selector can contain multiple declarations.
+ *   EXAMPLE:
+ *     body {
+ *       background: black;
+ *       color: red;
+ *       font-size: 12px;
+ *     }
+ * In the example above, there are three declarations:
+ *   background: black;
+ *   color: red;
+ *   font-size: 12px;
+ *
+ * NOTE: The declarations for a given style must be contained
+ *       within curly brackets ({ }).
+ *
+ *                  PHP VARIABLES USED TO STYLE WEBCALENDAR
+ *
+ * BGCOLOR      - background-color for the page
+ * CELLBG       - background-color for normal cells
+ *                (not weekends, today, or any other types of cells)
+ * FONTS        - default font-family
+ * H2COLOR      - text color for text within h2 tags
+ * MYEVENTS     - text color for users' events
+ * OTHERMONTHBG - background-color for cells that belong to other month
+ * POPUP_BG     - background-color for event popups
+ * POPUP_FG     - text color for event popups
+ * TABLEBG      - background-color for tables
+ *                (typically used when the table also has cellspacing,
+ *                thereby creating a border effect)
+ * TEXTCOLOR    - default text color
+ * THBG         - background-color for table headers
+ * THFG         - text color for table headers
+ * TODAYCELLBG  - background-color for cells that make up today's date
+ * WEEKENDBG    - background-color for cells that make up the weekend
+ *
+ *           SOME OF THE CSS IDS AND CLASSES USED IN WEBCALENDAR
+ *  #programname         - link to webcalendar site
+ *                         NOTE: modifying this can make this link disappear
+ *  #viewd .main th      - participants cell
+ *  #year.minical        - contains ALL months
+ *                         NOTE: display: block; here
+ *                         keeps the caption vertically close to the day names
+ *  .dayofmonth          - numerical date links in main calendars
+ *  .dayofmonth:hover    - numerical date links in main calendars on hover
+ *  .entry               - links to entries/events
+ *  .entry img
+ *  .layerentry img
+ *  .unapprovedentry img - event (or bullet) icon;
+ *                         NOTE: must be defined AFTER the .entry, .layerentry,
+ *                         and .unapprovedentry classes.
+ *  .layerentry          - links to entries/events on layers
+ *  .main                - most display pages use this for calendar content
+ *  .main td.hasevents   - only use HASEVENTSBG if it differs from CELLBG
+ *  .minical             - styles for minicalendars
+ *  .minical caption     - really big number above the minicalendar in day.php
+ *  .minical th          - formats the day name (i.e. Sun, Mon, etc) in minicals
+ *  .minitask            - table appearing in small task window
+ *  .new                 - new event icon (i.e. '+' symbol)
+ *  .next img            - right arrow images
+ *  .prev img            - left arrow images
+ *  .printer             - printer-friendly links
+ *  .standard            - standard table mainly in prefs.php & admin.php
+ *  .unapprovedentry     - links to unapproved entries/events
+ *  .weeknumber          - week number in monthview & such
+ *  a                    - links that don't have a specific class must be
+ *                         defined BEFORE all other link-related classes for
+ *                         those classes to work.
+ *  img.color            - transparent images used for visual color-selection
+ *  img.help             - question mark img linking to help sections
+ *
+ * display: none; is unhidden by includes/print_styles.css
+ * for printer-friendly pages and where else needed.
+ *
+ *                            PHP FUNCTION CALLS
+ * A special function, background_css(), will allow the dynamic creation of
+ * gradient images to be used for the background of that selector. The image
+ * file will be created and cached (if enabled) for faster processing and the
+ * url will be returned for inclusion into the final CSS file.
+ *   Example: background_css ( $GLOBALS['CELLBG'], 50 );
+ *   Yields : background: #FFFFFF url( images/cache/FFFFFF-50.png ) repeat-x;
+ *
+ *                          CSS CACHING AND VIEWING
+ * A caching scheme has been implemented to improve performance and reduce
+ * download payloads. This file is now called from a helper file called
+ * 'css_cacher.php'. Its function is to control cache expiration and compress
+ * the data if possible.
+ *
+ * To view the current CSS definitions from your browser, simply run
+ *   http://yourserver/css_cacher.php
+ * The resulting file will contain the color and layout preferences for the
+ * logged in user or the default values if not logged in.
+ *
+ * Each page in WebCalendar is assigned a unique ID. This unique ID is
+ * determined by taking the name of the page & removing any underscores (_).
+ *   Example: edit_entry.php
+ *   Results: <body id="editentry">
+ */
 
-                   HOW TO READ THIS DOCUMENT
-
-  There are two main parts to every CSS style: 'selector' & 'declaration'
-    EXAMPLE:
-      body {
-        color: red;
-      }
-  The selector in the example above is 'body', while its
-  declaration is 'color: red;'
-  Each declaration has two parts: 'property' & 'value'
-
-  In the example above, there is only one declaraion ("color: red;")
-  For that declaration, the PROPERTY is "color" and the VALUE is "red"
-
-  NOTE: Each property must be followed by a colon (:), 
-    and each value must be followed by a semi-colon (;)
-
-  Each selector can contain multiple declarations
-    EXAMPLE:
-      body {
-        color: red;
-        font-size: 12px;
-        background-color: black;
-      }
-  In the example above, there are three declarations:
-      color: red;
-      font-size: 12px;
-      background-color: black;
-
-  NOTE: The declarations for a given style must be contained within
-    curly brackets ({ })
-
-                  PHP VARIABLES USED TO STYLE WEBCALENDAR
-
-  TEXTCOLOR - default text color
-  FONTS - default font-family
-  BGCOLOR - background-color for the page
-  TABLEBG - background-color for tables
-    (typically used when the table also has cellspacing, thereby
-    creating a border effect)
-  CELLBG - background-color for normal cells
-    (not weekends, today, or any other types of cells)
-  TODAYCELLBG - background-color for cells that make up today's date
-  WEEKENDBG - background-color for cells that make up the weekend
-  OTHERMONTHBG - background-color for cells that belong to other month  
-  THFG - text color for table headers
-  THBG - background-color for table headers
-  POPUP_FG - text color for event popups
-  POPUP_BG - background-color for event popups
-  H2COLOR - text color for text within h2 tags
-  MYEVENTS - text color for users' events
-
-                           PHP FUNCTION CALLS
-  A special function  background_css() will allow the dynamic creation of
-  gradient images to be used for the background of that selector. The image file
-  will be created and cached (if enabled) for faster processing and the url will
-  be returned for inclusion into the final CSS file. 
-    Example:  background_css ( $GLOBALS['CELLBG'], 50 );
-    Yields :  background: #FFFFFF url( images/cache/FFFFFF-50.png ) repeat-x;
-
-                          CSS CACHING AND VIEWING
-  A caching scheme has been implemented to improve performance and reduce download
-  payloads. This file is now called from a helper file called 'css_cacher.php'. Its
-  function is to control cache expiration and compress the data if possible.
-
-  To view the current CSS definitions from your browser, simply run
-     http://yourserver/css_cacher.php
-  The resulting file will contain the color and layout preferences for the logged
-  in user or the default values if not logged in.
-
-
-  Each page in WebCalendar is assigned a unique ID. This unique ID is
-  determined by taking the name of the page & removing any underscores (_).
-      Example: edit_entry.php
-      Results: <body id="editentry">
-
-*/
-
-// if called directly from a script, this will wrap the CSS with the
-// proper mimitype tags
-if ( ! empty ( $_SERVER['PHP_SELF'] ) && 
-  ! preg_match ( "/css_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
+<?php defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
+// If called directly from a script,
+// this will wrap the CSS with the proper mimetype tags.
+if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
+    preg_match ( "/css_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
   echo "<style type=\"text/css\">\n<!--\n";
 }
+
 ?>body {
-  color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
-  font-family: <?php echo $GLOBALS['FONTS']; ?>;
-  background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+  color: <?php echo $GLOBALS['TEXTCOLOR'];
+
+?>;
+  font-family: <?php echo $GLOBALS['FONTS'];
+
+?>;
+  background-color: <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
 }
-<?php //links that don't have a specific class
-//NOTE: these must appear ABOVE  all other 
-//link-related classes for those classes to work 
-?>a {
-  color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+a {
+  color: <?php echo $GLOBALS['TEXTCOLOR'];
+
+?>;
   text-decoration: none;
 }
 a:hover {
@@ -116,7 +157,9 @@ div {
 }
 h2 {
   font-size: 20px;
-  color: <?php echo $GLOBALS['H2COLOR']; ?>;
+  color: <?php echo $GLOBALS['H2COLOR'];
+
+?>;
 }
 h3 {
   font-size: 18px;
@@ -137,14 +180,18 @@ textarea {
   font-size: 12px;
   overflow: auto;
 }
-table {  
+table {
   border-spacing: 0;
   border: 0;
 }
 th {
   font-size: 13px;
-  color: <?php echo $GLOBALS['THFG']; ?>;
-  background-color: <?php echo $GLOBALS['THBG']; ?>;
+  color: <?php echo $GLOBALS['THFG'];
+
+?>;
+  background-color: <?php echo $GLOBALS['THBG'];
+
+?>;
   padding: 0;
 }
 td {
@@ -154,57 +201,92 @@ ul,
 ul a {
   font-size: 12px;
 }
-<?php //most display pages use the main class for calendar content ?>
+
 .main {
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   width: 100%;
   clear: both;
 }
 .main th {
-  <?php echo background_css ( $GLOBALS['THBG'], 15 ); ?>
-  border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  <?php echo background_css ( $GLOBALS['THBG'], 15 );
+
+?>
+  border-top: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  border-left: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   vertical-align: top;
 }
 .main th.weekend {
-  <?php echo background_css ( $GLOBALS['THBG'], 15 ); 
- if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
- display: none; 
-<?php } ?>
+  <?php echo background_css ( $GLOBALS['THBG'], 15 );
+if ( $DISPLAY_WEEKENDS == 'N' ) {
+
+  ?>
+ display: none;
+<?php }
+
+?>
 }
 .main th.today {
-  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 15 ); ?>
+  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 15 );
+
+?>
 }
 .main td {
-  <?php echo background_css ( $GLOBALS['CELLBG'], 100 ); ?>
-  border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  <?php echo background_css ( $GLOBALS['CELLBG'], 100 );
+
+?>
+  border-top: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  border-left: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   vertical-align: top;
 }
 .main td.weekend {
-  <?php echo background_css ( $GLOBALS['WEEKENDBG'], 100 ); 
- if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
- display: none; 
-<?php } ?>
+  <?php echo background_css ( $GLOBALS['WEEKENDBG'], 100 );
+if ( $DISPLAY_WEEKENDS == 'N' ) {
+
+  ?>
+ display: none;
+<?php }
+
+?>
 }
-<?php if ( $GLOBALS['HASEVENTSBG'] != $GLOBALS['CELLBG'] )  { 
-  //only use HASEVENTSBG if it differs form CELLBG  ?>
+<?php if ( $GLOBALS['HASEVENTSBG'] != $GLOBALS['CELLBG'] ) {
+
+  ?>
 .main td.hasevents {
-  <?php echo background_css ( $GLOBALS['HASEVENTSBG'], 100 ); ?>
-} 
-<?php } ?>
+  <?php echo background_css ( $GLOBALS['HASEVENTSBG'], 100 );
+
+  ?>
+}
+<?php }
+
+?>
 .main td.today {
-  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 ); ?>
+  <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 100 );
+
+?>
 }
 .main td.othermonth {
-  <?php echo background_css ( $GLOBALS['OTHERMONTHBG'], 100 ); ?>
+  <?php echo background_css ( $GLOBALS['OTHERMONTHBG'], 100 );
+
+?>
 }
 .underline {
  text-decoration: underline;
 }
 .cursoradd a {
-  cursor: pointer; 
+  cursor: pointer;
 }
 #tabscontent {
   margin: -1px 2px;
@@ -233,10 +315,12 @@ ul a {
   text-decoration: none;
 }
 .tabfor a {
-  color: <?php echo $GLOBALS['H2COLOR']; ?>;
+  color: <?php echo $GLOBALS['H2COLOR'];
+
+?>;
 }
 .tabbak a {
-  color: #999999; 
+  color: #999999;
 }
 .tabfor {
   background-color: #F8F8FF;
@@ -281,21 +365,20 @@ ul a {
 .sample {
   border-style: groove;
 }
-<?php //week number in monthview & such 
-?>.weeknumber,
+.weeknumber,
 .weeknumber a {
   font-size: 10px;
-  color: <?php echo $GLOBALS['WEEKNUMBER']; ?>;
+  color: <?php echo $GLOBALS['WEEKNUMBER'];
+
+?>;
   text-decoration: none;
 }
-<?php //transparent images used for visual color-selection
-?>img.color {
-  border: 0;;
+img.color {
+  border: 0;
   width: 15px;
   height: 15px;
 }
-<?php //display: none; is unhidden by includes/print_styles.css for printer-friendly pages 
-?>#cat {
+#cat {
   display: none;
   font-size: 18px;
 }
@@ -307,9 +390,15 @@ ul a {
 #dateselector form {
   float: left;
   width: 33%;
-<?php if ( $MENU_ENABLED == 'N' ) { ?>
-  border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-<?php } ?>
+<?php if ( $MENU_ENABLED == 'N' ) {
+
+  ?>
+  border-top: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+  ?>;
+<?php }
+
+?>
   padding-top: 5px;
   margin-top: 5px;
   margin-bottom: 25px;
@@ -341,7 +430,7 @@ ul a {
   margin-bottom: 0;
 }
 #menu {
-  font-size: 14px;  
+  font-size: 14px;
   clear: both;
 }
 #menu a {
@@ -351,27 +440,25 @@ ul a {
   font-weight: bold;
   font-size: 14px;
 }
-<?php //link to webcalendar site -- NOTE: by modifying this style, you can make this link disappear
-?>a#programname {
+a#programname {
   margin-top: 10px;
   font-size: 10px;
 }
-<?php //printer-friendly links 
-?>.printer {
+.printer {
   font-size: 14px;
-  color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+  color: <?php echo $GLOBALS['TEXTCOLOR'];
+
+?>;
   text-decoration: none;
   clear: both;
   display: block;
   width: 15ex;
 }
-<?php //new event icon (i.e. '+' symbol)
-?>.new {
-  border: 0;;
+.new {
+  border: 0;
   float: right;
 }
-<?php //links to unapproved entries/events
-?>.unapprovedentry {
+.unapprovedentry {
   font-size: 12px;
   color: #800000;
   text-decoration: none;
@@ -379,61 +466,64 @@ ul a {
 }
 .nounapproved {
   font-weight: bold;
-  font-size: 14px;  
+  font-size: 14px;
 }
 #listunapproved .odd {
-  background-color: <?php echo $GLOBALS['TODAYCELLBG']; ?>;
+  background-color: <?php echo $GLOBALS['TODAYCELLBG'];
+
+?>;
 }
-<?php //links to entries/events on layers
-?>.layerentry {
+.layerentry {
   font-size: 12px;
   color: #006060;
   text-decoration: none;
   padding-right: 3px;
 }
-<?php //links to entries/events
-?>.entry {
+.entry {
   font-size: 12px;
-  color: <?php echo $GLOBALS['MYEVENTS']; ?>;
+  color: <?php echo $GLOBALS['MYEVENTS'];
+
+?>;
   text-decoration: none;
   padding-right: 3px;
 }
-<?php //event (or bullet) icon; NOTE: must appear AFTER the .entry, .layerentry, and .unapprovedentry classes
-?>.entry img,
+.entry img,
 .layerentry img,
 .unapprovedentry img {
-  border: 0;;
+  border: 0;
   margin-left: 2px;
   margin-right: 2px;
 }
-<?php //numerical date links in main calendars
-?>.dayofmonth {
-  color: <?php echo $GLOBALS['TABLEBG']; ?>;
+.dayofmonth {
+  color: <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   font-weight: bold;
   text-decoration: none;
   border-top-width: 0;
   border-left-width: 0;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   padding: 0 2px 0 3px;
   vertical-align: top;
 }
-<?php //numerical date links in main calendars on hover
-?>.dayofmonth:hover {
+.dayofmonth:hover {
   color: #0000FF;
   border-right: 1px solid #0000FF;
   border-bottom: 1px solid #0000FF;
 }
-<?php //left arrow images
-?>.prev img {
-  border: 0;;
+.prev img {
+  border: 0;
   margin-left: 3px;
   margin-top: 7px;
   float: left;
 }
-<?php //right arrow images
-?>.next img {
-  border: 0;;
+.next img {
+  border: 0;
   margin-right: 3px;
   margin-top: 7px;
   float: right;
@@ -441,36 +531,32 @@ ul a {
 #activitylog .prev {
   font-size: 14px;
   font-weight: bold;
-  border: 0;;
+  border: 0;
   float: left;
 }
 #activitylog .next {
   font-size: 14px;
   font-weight: bold;
-  border: 0;;
+  border: 0;
   float: right;
 }
-<?php //left arrow image in day.php
-?>#day .prev img {
-  border: 0;;
+#day .prev img {
+  border: 0;
   margin-top: 37px;
   float: left;
 }
-<?php //right arrow image in day.php
-?>#day .next img {
-  border: 0;;
+#day .next img {
+  border: 0;
   margin-top: 37px;
   float: right;
 }
-<?php //left arrow image in day.php
-?>#day .monthnav .prev img {
-  border: 0;;
+#day .monthnav .prev img {
+  border: 0;
   margin: 0;
   float: left;
 }
-<?php //right arrow image in day.php
-?>#day .monthnav .next img {
-  border: 0;;
+#day .monthnav .next img {
+  border: 0;
   margin: 0;
   float: right;
 }
@@ -479,7 +565,9 @@ ul a {
   font-size: 12px;
   text-decoration: none;
   text-align: right;
-  background-color: <?php echo $GLOBALS['THBG']; ?>;
+  background-color: <?php echo $GLOBALS['THBG'];
+
+?>;
 }
 .dailymatrix:hover {
   background-color: #CCFFCC;
@@ -487,7 +575,9 @@ ul a {
 td.matrixappts {
   cursor: pointer;
   text-align: left;
-  background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+  background-color: <?php echo $GLOBALS['CELLBG'];
+
+?>;
   vertical-align: middle;
   width: 0%;
 }
@@ -499,19 +589,23 @@ td.matrix {
   background-color: #000000;
 }
 .matrix img {
-  border: 0;;
+  border: 0;
   width: 100%;
   height: 1px;
 }
 a.matrix img {
-  border: 0;;
+  border: 0;
   width: 100%;
   height: 8px;
 }
 .matrixd {
-  border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  margin-left: auto; 
+  border-left: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  margin-left: auto;
   margin-right: auto;
 }
 .matrixledge {
@@ -522,31 +616,39 @@ a.matrix img {
   padding: 5px;
   text-align: center;
   background: #ffffff;
-  margin-left: auto; 
+  margin-left: auto;
   margin-right: auto;
   border: 1px solid #000000;
 }
 .matrixlegend img {
-  border: 0;;
+  border: 0;
   width: 10px;
   height: 10px;
 }
 .nav {
   font-size: 14px;
-  color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+  color: <?php echo $GLOBALS['TEXTCOLOR'];
+
+?>;
   text-decoration: none;
 }
 .popup {
   font-size: 12px;
-  color: <?php echo $GLOBALS['POPUP_FG']; ?>;
-  <?php echo background_css ( $GLOBALS['POPUP_BG'], 200 ); ?>
+  color: <?php echo $GLOBALS['POPUP_FG'];
+
+?>;
+  <?php echo background_css ( $GLOBALS['POPUP_BG'], 200 );
+
+?>
   text-decoration: none;
   position: absolute;
   z-index: 20;
   visibility: hidden;
   top: 0;
   left: 0;
-  border: 1px solid <?php echo $GLOBALS['POPUP_FG']; ?>;
+  border: 1px solid <?php echo $GLOBALS['POPUP_FG'];
+
+?>;
   padding: 3px;
   -moz-border-radius: 6px;
 }
@@ -579,16 +681,19 @@ a.matrix img {
 .user,
 .categories {
   font-size: 18px;
-  color: <?php echo $GLOBALS['H2COLOR']; ?>;
+  color: <?php echo $GLOBALS['H2COLOR'];
+
+?>;
   text-align: center;
 }
 .asstmode {
   font-weight: bold;
-  color: <?php echo $GLOBALS['H2COLOR']; ?>;
+  color: <?php echo $GLOBALS['H2COLOR'];
+
+?>;
   text-align: center;
 }
-<?php //left column in help sections 
-?>.help {
+.help {
   vertical-align: top;
   font-weight: bold;
 }
@@ -609,50 +714,64 @@ a.matrix img {
   font-size: 1.2em;
   font-weight: bold;
 }
-<?php //question mark img linking to help sections
-?>img.help {
-  border: 0;;
+img.help {
+  border: 0;
   cursor: help;
 }
-<?php //standard table appearing mainly in prefs.php & admin.php 
-?>.standard {
-  border: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+.standard {
+  border: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  background-color: <?php echo $GLOBALS['CELLBG'];
+
+?>;
   font-size: 12px;
 }
 .standard th {
   font-size: 18px;
   padding: 0;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
 }
-<?php //Styles for minicalendars
-?>.minical {
+.minical {
   border-collapse: collapse;
   font-size: 10px;
   margin: 0 0 5px 0;
 }
 .minical caption a {
   font-weight: bold;
-  color: <?php echo $GLOBALS['CAPTIONS']; ?>;
+  color: <?php echo $GLOBALS['CAPTIONS'];
+
+?>;
 }
 .minical caption a:hover {
   color: #0000FF;
 }
-<?php //formats the day name (i.e. Sun, Mon, etc) in minicals
-?>.minical th, 
+.minical th,
 .minical td.empty {
-  color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+  color: <?php echo $GLOBALS['TEXTCOLOR'];
+
+?>;
   text-align: center;
-  background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+  background-color: <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
 }
-<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+<?php if ( $DISPLAY_WEEKENDS == 'N' ) {
+
+  ?>
 .minical th.weekend {
   display: none;
 }
-<?php } ?>
+<?php }
+
+?>
 .minical td {
   padding: 0 2px;
-  border: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
+  border: 1px solid <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
 }
 .minical td a {
   display: block;
@@ -661,31 +780,42 @@ a.matrix img {
   padding: 3px;
 }
 .minical td.weekend {
-  background-color: <?php echo $GLOBALS['WEEKENDBG']; ?>;
-<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+  background-color: <?php echo $GLOBALS['WEEKENDBG'];
+
+?>;
+<?php if ( $DISPLAY_WEEKENDS == 'N' ) {
+
+  ?>
   display: none;
-<?php } ?>
+<?php }
+
+?>
 }
 .minical td#today {
-  background-color: <?php echo $GLOBALS['TODAYCELLBG']; ?>;
+  background-color: <?php echo $GLOBALS['TODAYCELLBG'];
+
+?>;
 }
 .minical td.hasevents {
   font-weight: bold;
 }
-<?php // table appearing in small task window 
-?>.minitask {
+.minitask {
   width: 98%;
   border: 1px solid #000000;
   margin-left: 1px;
 }
 .minitask tr.header th {
-  background-color: <?php echo $GLOBALS['CELLBG']; ?>;
+  background-color: <?php echo $GLOBALS['CELLBG'];
+
+?>;
   font-size: 12px;
   padding: 0;
   border-bottom: 2px solid #000000;
 }
 .minitask  td {
-  color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+  color: <?php echo $GLOBALS['TEXTCOLOR'];
+
+?>;
   font-size: 12px;
   padding: 0;
   border-bottom: 1px solid #000000;
@@ -696,7 +826,9 @@ a.matrix img {
   border-bottom: 0;
 }
 .task {
-  color: <?php echo $GLOBALS['TEXTCOLOR']; ?>;
+  color: <?php echo $GLOBALS['TEXTCOLOR'];
+
+?>;
 }
 #admin .tooltip,
 #pref .tooltip{
@@ -706,18 +838,31 @@ a.matrix img {
   width: 175px;
 }
 #minicalendar table {
-  width: <?php echo ( ! empty ( $GLOBALS['MINICALWIDTH'])?$GLOBALS['MINICALWIDTH']: '160px'); ?>;
+  width: <?php echo ( ! empty ( $GLOBALS['MINICALWIDTH'] )
+  ? $GLOBALS['MINICALWIDTH'] : '160px' );
+
+?>;
 }
 #minicalendar th{
-  font-size: <?php echo ( ! empty ( $GLOBALS['MINICALFONT'])?$GLOBALS['MINICALFONT']: '11px'); ?>;
+  font-size: <?php echo ( ! empty ( $GLOBALS['MINICALFONT'] )
+  ? $GLOBALS['MINICALFONT'] : '11px' );
+
+?>;
 }
 #minicalendar td {
-  font-size: <?php echo ( ! empty ( $GLOBALS['MINICALFONT'])?$GLOBALS['MINICALFONT']: '11px'); ?>;
+  font-size: <?php echo ( ! empty ( $GLOBALS['MINICALFONT'] )
+  ? $GLOBALS['MINICALFONT'] : '11px' );
+
+?>;
 }
 .embactlog {
   width: 100%;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   border-spacing: 0;
 }
 .embactlog tr {
@@ -728,9 +873,15 @@ a.matrix img {
 }
 .embactlog th {
   width: 14%;
-  border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-top: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  border-left: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   padding: 1px 3px;
 }
 .embactlog th.usr,
@@ -739,7 +890,9 @@ a.matrix img {
   width: 7%;
 }
 .embactlog td {
-  border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-left: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   padding: 1px 3px;
 }
 #day div.minicalcontainer {
@@ -750,51 +903,75 @@ a.matrix img {
 #day table.minical {
   margin-left: auto; margin-right: auto;
 }
-<?php //the really big number above the minicalendar in day.php
-?>#day .minical caption {
+#day .minical caption {
   margin-left: auto; margin-right: auto;
   font-weight: bold;
-  color: <?php echo $GLOBALS['THFG']; ?>;
-  background-color: <?php echo $GLOBALS['THBG']; ?>;
+  color: <?php echo $GLOBALS['THFG'];
+
+?>;
+  background-color: <?php echo $GLOBALS['THBG'];
+
+?>;
   font-size: 47px;
 }
 #day .minical td.selectedday {
-  border: 2px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border: 2px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
 }
 #day .monthnav th {
   text-align: center;
-  border: 0;;
+  border: 0;
   padding: 3px;
 }
 #datesel td.field {
-  font-size: 12px;  
+  font-size: 12px;
 }
 .glance {
-  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   width: 100%;
 }
 .glance th.empty {
-  border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
-  border-left: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
-  background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+  border-top: 1px solid <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
+  border-left: 1px solid <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
+  background-color: <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
 }
 .glance th.row {
-  border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  border-top: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  border-left: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   height: 40px;
   width: 14%;
   vertical-align: top;
 }
 .glance td {
   vertical-align: top;
-  <?php echo background_css ( $GLOBALS['CELLBG'], 50 ); ?>
-  border-top: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  border-left: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+  <?php echo background_css ( $GLOBALS['CELLBG'], 50 );
+
+?>
+  border-top: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  border-left: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   padding-left: 3px;
 }
-<?php //display: none; is unhidden by includes/print_styles.css for printer-friendly pages
-?>#day dl.desc {
+#day dl.desc {
   display: none;
   margin: 0;
   padding: 0;
@@ -806,15 +983,14 @@ a.matrix img {
   margin: 0;
   padding-left: 20px;
 }
-<?php //contains ALL months
-?>#year .minical tr {
+#year .minical tr {
   vertical-align: top;
 }
 #admin th td {
   padding: 3px;
 }
-#admin .main th, 
-#pref .main th, 
+#admin .main th,
+#pref .main th,
 #viewv .main th,
 #viewl .main th,
 #month .main th {
@@ -828,20 +1004,27 @@ a.matrix img {
   background: none;
   font-size: 8px;
 }
-<?php //participants cell
-?>#viewd .main th {
-  border-right: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
+#viewd .main th {
+  border-right: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
   padding: 1px;
 }
 a.weekcell {
-  color: <?php echo $GLOBALS['WEEKNUMBER']; ?>;
+  color: <?php echo $GLOBALS['WEEKNUMBER'];
+
+?>;
 }
 #admin .main th.weekcell,
 #pref .main th.weekcell,
 #viewl .main th.weekcell,
 #month .main th.weekcell{
-  background: <?php echo $GLOBALS['BGCOLOR']; ?>;
-  background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
+  background: <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
+  background-color: <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
   border-left: 0;
   border-top: 0;
   width: 1%;
@@ -850,13 +1033,17 @@ a.weekcell {
 #pref .main td.weekcell,
 #viewl .main td.weekcell,
 #month .main td.weekcell {
-  <?php echo background_css ( $GLOBALS['THBG'], 50 ); ?>
+  <?php echo background_css ( $GLOBALS['THBG'], 50 );
+
+?>
   width: 1%;
   margin: 0;
   vertical-align: middle;
   text-align: center;
   font-size: 12px;
-  color: <?php echo $GLOBALS['H2COLOR']; ?>;
+  color: <?php echo $GLOBALS['H2COLOR'];
+
+?>;
   text-decoration: none;
 }
 #viewv .main th.empty,
@@ -866,9 +1053,15 @@ a.weekcell {
 #week .main th.empty {
   width: 5%;
   background: none;
-  background-color: <?php echo $GLOBALS['BGCOLOR']; ?>;
-  border-top: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
-  border-left: 1px solid <?php echo $GLOBALS['BGCOLOR']; ?>;
+  background-color: <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
+  border-top: 1px solid <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
+  border-left: 1px solid <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
 }
 #week .main th.row {
   width: 5%;
@@ -886,13 +1079,19 @@ a.weekcell {
   width: 10%;
   vertical-align: top;
 }
-<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+<?php if ( $DISPLAY_WEEKENDS == 'N' ) {
+
+  ?>
 #viewt .main tr.weekend {
  display: none;
-} 
-<?php } ?>
+}
+<?php }
+
+?>
 #viewt .main th.weekend {
-  <?php echo background_css ( $GLOBALS['WEEKENDBG'], 15 ); ?>
+  <?php echo background_css ( $GLOBALS['WEEKENDBG'], 15 );
+
+?>
 }
 #viewv .main th.row {
   text-align: left;
@@ -920,7 +1119,9 @@ a.weekcell {
 #viewr .main th a,
 #week .main th a,
 #weekdetails .main th a {
-  color: <?php echo $GLOBALS['THFG']; ?>;
+  color: <?php echo $GLOBALS['THFG'];
+
+?>;
 }
 #viewr .main th a:hover,
 #week .main th a:hover,
@@ -952,15 +1153,23 @@ a.weekcell {
   font-size: 12px;
   padding-left: 3px;
 }
-<?php if ( $DISPLAY_TASKS != 'Y' ) { ?>
+<?php if ( $DISPLAY_TASKS != 'Y' ) {
+
+  ?>
 #month #prevmonth,
-<?php } ?>
+<?php }
+
+?>
 #viewl #prevmonth {
   float: left;
 }
-<?php if ( $DISPLAY_TASKS != 'Y' ) { ?>
+<?php if ( $DISPLAY_TASKS != 'Y' ) {
+
+  ?>
 #month #nextmonth,
-<?php } ?>
+<?php }
+
+?>
 #viewl #nextmonth {
   float: right;
 }
@@ -968,9 +1177,7 @@ a.weekcell {
 #viewl .minical caption {
   margin-left: 4ex;
 }
-<?php //keep font-size: 12px; for IE6 rendering
-      //display: block; keeps the caption vertically close to the day names
-?>#year .minical {
+#year .minical {
   margin: 5px auto;
   display: block;
 }
@@ -979,10 +1186,10 @@ a.weekcell {
 }
 #viewl .minical,
 #month .minical {
-  border: 0;;
+  border: 0;
 }
 .topnav {
-  border: 0;;
+  border: 0;
 }
 .title {
   width: 99%;
@@ -997,18 +1204,24 @@ a.weekcell {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-  color: <?php echo $GLOBALS['H2COLOR']; ?>;
+  color: <?php echo $GLOBALS['H2COLOR'];
+
+?>;
 }
 .title .titleweek {
   font-size: 20px;
-  color: <?php echo $GLOBALS['H2COLOR']; ?>;
+  color: <?php echo $GLOBALS['H2COLOR'];
+
+?>;
 }
 .title .viewname,
 #day .title .user,
 .title .user {
   font-size: 18px;
   font-weight: bold;
-  color: <?php echo $GLOBALS['H2COLOR']; ?>;
+  color: <?php echo $GLOBALS['H2COLOR'];
+
+?>;
   text-align: center;
 }
 #weekdetails .main {
@@ -1037,7 +1250,9 @@ a.weekcell {
 }
 #viewt td.entry {
   padding: 0;
-  <?php echo background_css ( $GLOBALS['THBG'], 10 ); ?>
+  <?php echo background_css ( $GLOBALS['THBG'], 10 );
+
+?>
 }
 #viewt table.timebar a {
   text-align: inherit !important;
@@ -1051,9 +1266,13 @@ a.weekcell {
   margin-bottom: 50px;
 }
 #register table,
-#login table { 
-  border: 1px solid <?php echo $GLOBALS['TABLEBG']; ?>;
-  <?php echo background_css ( $GLOBALS['CELLBG'], 200 ); ?>
+#login table {
+  border: 1px solid <?php echo $GLOBALS['TABLEBG'];
+
+?>;
+  <?php echo background_css ( $GLOBALS['CELLBG'], 200 );
+
+?>
   font-size: 12px;
 }
 .cookies {
@@ -1099,11 +1318,11 @@ a.weekcell {
 }
 .byxxx th,
 .byxxx td {
- text-align: center;  
+ text-align: center;
 }
 .icon_text {
  border: 0;
- width: 10px; 
+ width: 10px;
  height: 10px;
 }
 .alignright {
@@ -1122,8 +1341,9 @@ a.weekcell {
  font-weight: bold;
 }
 <?php
-if ( ! empty ( $_SERVER['PHP_SELF'] ) && 
-  ! preg_match ( "/css_cacher/", $_SERVER['PHP_SELF'] ) ) {
+if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
+    preg_match ( "/css_cacher/", $_SERVER['PHP_SELF'] ) ) {
   echo "\n-->\n</style>";
 }
+
 ?>
