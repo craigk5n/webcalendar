@@ -1,5 +1,8 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed "bug" [ 1591243 ] perl-script 'check_translation.pl' and
+   'update_translation.pl' doesn't work properly.
+   Changed $show_missing = 0 back to $show_missing = 1.
  - Fixed bug [ 1591329 ] preview-view of the calendar in 'system-settings' has 2 'today
  - Fixed bug [ 1590474 ] Webcalendar 1.1.1 Repeat
  - Fixed bug [ 1521851 ] 'deleted entries' can be reactivate by 'activity.php'
@@ -11,7 +14,7 @@ Version 1.1.2 (?? ??? 2006)
  - Created common mail function in WebCalMailer.class
  - Created new generate_application_name() function
  - Created new is_weekend() function
- - Created new generate_activity_log() funciton
+ - Created new generate_activity_log() function
  - Fixed bug [ 1580720 ] Missing menus
  - Fixed bug [ 1583074 ] Switching between 'Languages' will erase the entries
  - Fixed bug [ 1585625 ] 'register.php' didn't displayed in the proper language
