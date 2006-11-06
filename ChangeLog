@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1590474 ] Webcalendar 1.1.1 Repeat
  - Fixed bug [ 1521851 ] 'deleted entries' can be reactivate by 'activity.php'
  - Applied PATCH [ 1570573 ] Use <ul> list in view_entry.php
  - Fixed bug [ 1588205 ] Warning in preferences re ANSI_X3.4-1968
