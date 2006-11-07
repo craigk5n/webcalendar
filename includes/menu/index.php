@@ -560,7 +560,7 @@ $menuHtml .= '<table width="100%" class="ThemeMenubar">' . "\n"
   . '<tr>'
   . '<td class="ThemeMenubackgr">' . "\n"
   . '<div id="myMenuID"></div></td>' . "\n"
-  . ( $MENU_DATE_TOP == 'Y' && $menuConfig[MENU_DATE_TOP] ? 
+  . ( $MENU_DATE_TOP == 'Y' && $menuConfig['MENU_DATE_TOP'] ? 
     '<td class="ThemeMenubackgr ThemeMenu" align="right">'
     . print_menu_dates ( true ) . '</td>' : '' )
   . '<td class="ThemeMenubackgr ThemeMenu" align="right">';
