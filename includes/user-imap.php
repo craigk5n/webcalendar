@@ -547,7 +547,8 @@ function user_get_users () {
       );
     }
     dbi_free_result ( $res );
-  }
+  } 
+  //no need to call sort_users() as the sql can sort for us
   return $ret;
 }
 

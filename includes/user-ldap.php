@@ -453,6 +453,7 @@ function user_get_users () {
     }
     @ldap_close ( $ds );
   }
+  usort ( $ret, 'sort_users');
   return $ret;
 }
 
