@@ -8,8 +8,8 @@
 */
 
 //To disable a menu item, simply set it's value to 0
-//If you disable a root menu item, be sure to disable all it's
-//children (item's indented directly below it)
+//If you disable a root menu item, all it's
+//children (item's indented directly below it) will also be disabled
 $menuConfig = array (
 'My Calendar'=>1,
   'Home'=>1,
@@ -58,7 +58,7 @@ $menuConfig = array (
 'Login Fullname'=>1,  //Display user's fullname
 'MENU_DATE_TOP'=>1,   //Display Month/Week/Year Selectors See also $MENU_DATE_TOP
 'Login'=>1,
-'Above Custom Header'=>1 //Display Menu before custom header
+'Above Custom Header'=>0 //Display Menu before custom header
  );
 
 $menuExtras = array ();
