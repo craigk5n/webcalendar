@@ -310,15 +310,17 @@ if ( ! empty ( $menuExtras[0] ) )
 // translate ( 'My Calendar' ) translate ( 'Today' ) translate ( 'Home' )
 // translate ( 'This Week' ) translate ( 'This Month' )
 // translate ( 'This Year' ) translate ( 'Exit' )
-if ( $menuConfig['My Calendar'] ) jscMenu_menu ( 'My Calendar' );
-if ( $menuConfig['Home'] ) jscMenu_item ( 'home.png', 'Home', $mycal );
-if ( $menuConfig['Today'] ) jscMenu_item ( 'today.png', 'Today', $today_url );
-if ( $menuConfig['This Week'] ) jscMenu_item ( 'week.png', 'This Week', $week_url );
-if ( $menuConfig['This Month'] ) jscMenu_item ( 'month.png', 'This Month', $month_url );
-if ( $menuConfig['This Year'] ) jscMenu_item ( 'year.png', 'This Year', $year_url );
-if ( ! empty ( $HOME_LINK ) && $menuConfig['Exit'] )
-  jscMenu_item ( 'exit.png', 'Exit', $HOME_LINK );
-jscMenu_close ();
+if ( $menuConfig['My Calendar'] ) {
+  jscMenu_menu ( 'My Calendar' );
+  if ( $menuConfig['Home'] ) jscMenu_item ( 'home.png', 'Home', $mycal );
+  if ( $menuConfig['Today'] ) jscMenu_item ( 'today.png', 'Today', $today_url );
+  if ( $menuConfig['This Week'] ) jscMenu_item ( 'week.png', 'This Week', $week_url );
+  if ( $menuConfig['This Month'] ) jscMenu_item ( 'month.png', 'This Month', $month_url );
+  if ( $menuConfig['This Year'] ) jscMenu_item ( 'year.png', 'This Year', $year_url );
+  if ( ! empty ( $HOME_LINK ) && $menuConfig['Exit'] )
+    jscMenu_item ( 'exit.png', 'Exit', $HOME_LINK );
+  jscMenu_close ();
+}
 
 // Add Menu Extra if defined
 if ( ! empty ( $menuExtras[1] ) )
@@ -328,68 +330,74 @@ if ( ! empty ( $menuExtras[1] ) )
 // translate ( 'Add New Task' ) translate ( 'Delete Entries' )
 // translate ( 'Unapproved Entries' ) translate ( 'Export' )
 // translate ( 'Import' );
-if ( $menuConfig['Events'] ) jscMenu_menu ( 'Events' );
-if ( $new_entry_url != '' && $menuConfig['Add New Event'] )
-  jscMenu_item ( 'add.png', 'Add New Event', $new_entry_url );
-if ( $new_task_url != '' && $menuConfig['Add New Task'] )
-  jscMenu_item ( 'newtodo.png', 'Add New Task', $new_task_url );
-if ( $is_admin && $readonly != 'Y' && $menuConfig['Delete Entries'] )
-  jscMenu_item ( 'delete.png', 'Delete Entries', 'purge.php' );
-if ( $unapproved_url != '' && $menuConfig['Unapproved Entries'] )
-  jscMenu_item ( 'unapproved.png', 'Unapproved Entries', $unapproved_url );
-if ( $export_url != '' && $menuConfig['Export'] )
-  jscMenu_item ( 'up.png', 'Export', $export_url );
-if ( $import_url != '' && $menuConfig['Import'] )
-  jscMenu_item ( 'down.png', 'Import', $import_url );
-jscMenu_close ();
+if ( $menuConfig['Events'] ) {
+  jscMenu_menu ( 'Events' );
+  if ( $new_entry_url != '' && $menuConfig['Add New Event'] )
+    jscMenu_item ( 'add.png', 'Add New Event', $new_entry_url );
+  if ( $new_task_url != '' && $menuConfig['Add New Task'] )
+    jscMenu_item ( 'newtodo.png', 'Add New Task', $new_task_url );
+  if ( $is_admin && $readonly != 'Y' && $menuConfig['Delete Entries'] )
+    jscMenu_item ( 'delete.png', 'Delete Entries', 'purge.php' );
+  if ( $unapproved_url != '' && $menuConfig['Unapproved Entries'] )
+    jscMenu_item ( 'unapproved.png', 'Unapproved Entries', $unapproved_url );
+  if ( $export_url != '' && $menuConfig['Export'] )
+    jscMenu_item ( 'up.png', 'Export', $export_url );
+  if ( $import_url != '' && $menuConfig['Import'] )
+    jscMenu_item ( 'down.png', 'Import', $import_url );
+  jscMenu_close ();
+}
 
 // Add Menu Extra if defined
 if ( ! empty ( $menuExtras[2] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[2] );
+
 // Views Menu
 // translate ( 'Views' ) translate ( 'Another User&#39;s Calendar' )
 // translate ( 'My Views' ) translate ( 'Manage Calendar of' );
 // translate ( 'Manage Views' );
-if ( $menuConfig['Views'] ) jscMenu_menu ( 'Views' );
-if ( $select_user_url != '' && $menuConfig['Another Users Calendar'] )
-  jscMenu_item ( 'display.png', 'Another User&#39;s Calendar', $select_user_url );
+if ( $menuConfig['Views'] ) {
+  jscMenu_menu ( 'Views' );
+  if ( $select_user_url != '' && $menuConfig['Another Users Calendar'] )
+    jscMenu_item ( 'display.png', 'Another User&#39;s Calendar', $select_user_url );
 
-if ( $login != '__public__' ) {
-  if ( ! empty ( $views_link ) && $views_linkcnt > 0 && $menuConfig['My Views'] ) {
-    jscMenu_sub_menu ( 'views.png', 'My Views' );
-    for ( $i = 0; $i < $views_linkcnt; $i++ ) {
-      jscMenu_item ( 'views.png', $views_link[$i]['name'],
-        $views_link[$i]['url'] );
+  if ( $login != '__public__' ) {
+    if ( ! empty ( $views_link ) && $views_linkcnt > 0 && $menuConfig['My Views'] ) {
+      jscMenu_sub_menu ( 'views.png', 'My Views' );
+      for ( $i = 0; $i < $views_linkcnt; $i++ ) {
+        jscMenu_item ( 'views.png', $views_link[$i]['name'],
+          $views_link[$i]['url'] );
+      }
+      jscMenu_close ();
     }
-    jscMenu_close ();
-  }
 
-  if ( ! empty ( $groups ) && $menuConfig['Manage Calendar of'] ) {
-    jscMenu_sub_menu ( 'manage_cal.png', 'Manage Calendar of' );
-    $groupcnt = count ( $groups );
-    for ( $i = 0; $i < $groupcnt; $i++ ) {
-      jscMenu_item ( 'display.png', $groups[$i]['name'], $groups[$i]['url'] );
+    if ( ! empty ( $groups ) && $menuConfig['Manage Calendar of'] ) {
+      jscMenu_sub_menu ( 'manage_cal.png', 'Manage Calendar of' );
+      $groupcnt = count ( $groups );
+      for ( $i = 0; $i < $groupcnt; $i++ ) {
+        jscMenu_item ( 'display.png', $groups[$i]['name'], $groups[$i]['url'] );
+      }
+      jscMenu_close ();
     }
-    jscMenu_close ();
-  }
 
-  if ( ! $is_nonuser && ( ! access_is_enabled () ||
-        access_can_access_function ( ACCESS_VIEW_MANAGEMENT, $user ) ) &&
-        $readonly != 'Y' && $menuConfig['Manage Views'] ) {
-    jscMenu_divider ();
-    jscMenu_item ( 'manage_views.png', 'Manage Views', 'views.php' );
+    if ( ! $is_nonuser && ( ! access_is_enabled () ||
+      access_can_access_function ( ACCESS_VIEW_MANAGEMENT, $user ) ) &&
+      $readonly != 'Y' && $menuConfig['Manage Views'] ) {
+      jscMenu_divider ();
+      jscMenu_item ( 'manage_views.png', 'Manage Views', 'views.php' );
+    }
   }
+  jscMenu_close ();
 }
-jscMenu_close ();
 
 // Add Menu Extra if defined
 if ( ! empty ( $menuExtras[3] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[3] );
+
 // Reports Menu
 // translate ( 'Reports' ) translate ( 'Activity Log' );
 // translate ( 'My Reports' ) translate ( 'Manage Reports' );
-if ( $login != '__public__' ) {
-  if ( $menuConfig['Reports'] ) jscMenu_menu ( 'Reports' );
+if ( $login != '__public__' && $menuConfig['Reports'] ) {
+  jscMenu_menu ( 'Reports' );
   if ( $is_admin && $menuConfig['Activity Log'] && ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_ACTIVITY_LOG, $user ) ) )
     jscMenu_item ( 'log.png', 'Activity Log', 'activity_log.php' );
@@ -424,8 +432,9 @@ if ( ! empty ( $menuExtras[4] ) )
 // translate ( 'My Profile' ) translate ( 'Remote Calendars' );
 // translate ( 'Public Calendar' ) translate ( 'Unapproved Events' );
 // translate ( 'System Settings' ) translate ( 'User Manager' );
-if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' ) {
-  if ( $menuConfig['Settings'] ) jscMenu_menu ( 'Settings' );
+if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' && 
+  $menuConfig['Settings'] ) {
+  jscMenu_menu ( 'Settings' );
   // Nonuser Admin Settings
   if ( $is_nonuser_admin ) {
     if ( $single_user != 'Y' && $readonly != 'Y' && $menuConfig['NUC_Assistants'] ) {
