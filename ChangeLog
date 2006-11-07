@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1561485 ] User sorting doesn't work with LDAP users
  - Fixed bug [ 1592079 ] undefined constant MENU_DATE_TOP
  - Fixed bug [ 1591892 ] disabling one 'root'-item the whole menue-items are
  - Implemented RFE [ 1425299 ] location of the 'topmenu' below customize header

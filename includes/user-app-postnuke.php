@@ -260,7 +260,7 @@ function user_get_users () {
   }
   // if postnuke is in a separate db, we have to connect back to the webcal db
   if ($app_same_db != '1') $c = dbi_connect($db_host, $db_login, $db_password, $db_database);
-
+  usort ( $ret, 'sort_users');
   return $ret;
 }
 

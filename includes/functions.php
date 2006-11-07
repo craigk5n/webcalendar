@@ -879,11 +879,10 @@ function get_my_users ( $user='', $reason='invite') {
     }
       $sql .= "IN ( $placeholders )";
     }
-    if ( ! empty ( $USER_SORT_ORDER ) ) {
-      $sql .= " ORDER BY $USER_SORT_ORDER, webcal_group_user.cal_login";
-    } else {
-      $sql .= " ORDER BY webcal_group_user.cal_login";
-    }
+
+    $order = ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER," : '' );
+    $sql .= " ORDER BY $order webcal_group_user.cal_login";
+
     $rows = dbi_get_cached_rows ( $sql, $groups );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
@@ -991,11 +990,10 @@ function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
     }
       $sql .= "IN ( $placeholders ) )";
     }
-    if ( ! empty ( $USER_SORT_ORDER ) ) {
-      $sql .= " ORDER BY $USER_SORT_ORDER, webcal_group_user.cal_login";
-    } else {
-      $sql .= " ORDER BY webcal_group_user.cal_login";
-    }
+
+    $order = ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER," : '' );
+    $sql .= " ORDER BY $order webcal_group_user.cal_login";
+
     //add $this_user to beginning of query params
     array_unshift ( $groups, $this_user );
     $rows = dbi_get_cached_rows ( $sql, $groups );
@@ -1061,11 +1059,9 @@ function get_nonuser_cals ($user = '', $remote=false) {
     $query_params[] = $user;
   }
 
-  if ( ! empty ( $USER_SORT_ORDER ) ) {
-    $sql .= " ORDER BY $USER_SORT_ORDER, cal_login";
-  } else {
-    $sql .= " ORDER BY cal_login";
-  }
+  $order = ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER," : '' );
+  $sql .= " ORDER BY $order cal_login";
+
   
   $rows = dbi_get_cached_rows ( $sql, $query_params );
   if ( $rows ) {
@@ -6194,5 +6190,28 @@ function generate_refresh_meta () {
     $ret .= "<meta http-equiv=\"refresh\" content=\"$refresh; url=$REQUEST_URI\" />";
   }
   return $ret;
+}
+
+/**
+ * Sort user array based on $USER_SORT_ORDER
+ * <b>Note:</b> This is a user-defined comparison function for usort()
+ * that will be called from user-xxx.php
+ * @TODO move to user.php along with migration to user.class
+ *
+ * @params passed automatically by usort, don't pass them in your call
+ */
+function sort_users ( $a, $b ) {
+  global $USER_SORT_ORDER;
+
+  $order = empty ( $USER_SORT_ORDER ) ? 
+    'cal_lastname, cal_firstname,' : "$USER_SORT_ORDER,";
+  $first = strnatcmp ( $a['cal_firstname'], $b['cal_firstname'] );
+  $last  = strnatcmp ( $a['cal_lastname'],  $b['cal_lastname'] );
+  if ( $order =='cal_lastname, cal_firstname,' ) {
+    return ( empty ( $last ) ? $first : $last );
+  } else {
+    return ( empty ( $first ) ? $last : $first );
+  }
+  return $retval;
 }
 ?>
