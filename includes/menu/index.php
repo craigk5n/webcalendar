@@ -540,7 +540,7 @@ $unapprovedStr = display_unapproved_events ( ( $is_assistant || $is_nonuser_admi
     ? $user : $login ) );
 if ( $unapprovedStr == '<br />' && $unapproved_url != '' && 
   $menuConfig['Unapproved Icon'] )
-  jscMenu_item ( 'unapproved_large.png', '', $unapproved_url );
+  jscMenu_item ( 'unapproved.png', '', $unapproved_url );
 // Generate Printer Friendly Icon
 if ( $show_printer  && $menuConfig['Printer'] ) {
   $href = generate_printer_friendly ();
