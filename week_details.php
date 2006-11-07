@@ -33,12 +33,7 @@ if ( $DISPLAY_WEEKENDS == 'N' ) {
   $end_ind = 6;
 }
 
-$HeadX = '';
-if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
-  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
-  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=week_details.php?$u_url" .
-    "date=$thisdate$caturl\" />\n";
-}
+$HeadX = generate_refresh_meta ();
 $printerStr = generate_printer_friendly ( 'week_details.php' );
 
 $INC = array('js/popups.php/true');

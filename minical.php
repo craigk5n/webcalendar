@@ -116,13 +116,7 @@ $boldDays = true;
 $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 
-
-$HeadX = '';
-if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
-  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
-  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=minical.php?$u_url" .
-    "year=$thisyear&amp;month=$thismonth  \" />\n";
-}
+$HeadX = generate_refresh_meta ();
 
 $INC = '';
 $BodyX = '';

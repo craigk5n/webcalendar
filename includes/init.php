@@ -167,7 +167,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   }
   // Do we need anything else inside the header tag?
   if ( $HeadX )
-    $ret .= $HeadX . "\n";
+    $ret .=  "\n    " . $HeadX;
   // Include the styles
   // Include CSS needed for the top menu
   if ( $MENU_ENABLED == 'Y' ) {
@@ -207,12 +207,12 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     <link rel="alternate" type="application/rss+xml" title="'
      . $appStr . ' [RSS 2.0]" href="rss.php'
     // TODO: single-user mode, etc.
-    . ( $login != '__public__' ? '?user=' . $login : '' ) . '" />' : '' )
+    . ( $login != '__public__' ? '?user=' . $login : '' ) . '" />' : '' ) . "\n"
   // Link to favicon
-  . '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />'
+  . '    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />'. "\n"
   . ( $MENU_ENABLED == 'Y' ? $menuScript : '' ) 
    // Finish the header
-  . '</head>
+  . '  </head>
   <body'
   // Add the page direction if right-to-left
   . ( $direction == 'rtl' ? ' dir="rtl"' : '' )
