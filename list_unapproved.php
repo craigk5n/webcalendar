@@ -42,15 +42,7 @@ if ( ! $is_admin && $user != $login  && ! $is_assistant &&
   ! access_is_enabled () )
   $user = $login;
 
-$HeadX = '';
-if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
-  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
-  $returl = "list_unapproved.php";
-  if ( ! empty ( $user ) && $user != $login )
-    $returl .= "?user=" . $user;
-  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; URL=" .
-    $returl . "\" />\n";
-}
+$HeadX = generate_refresh_meta ();
 //make sure we return after editing an event via this page
 remember_this_view();
 

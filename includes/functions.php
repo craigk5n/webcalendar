@@ -6178,4 +6178,21 @@ function generate_application_name ( $custom=true ) {
     return htmlspecialchars ( $APPLICATION_NAME );
   } 
 }
+
+/**
+ * Generate Refresh Meta Tag
+ *
+ * @return HTML for Meta Tag
+ */
+function generate_refresh_meta () {
+  global $AUTO_REFRESH, $AUTO_REFRESH_TIME, $REQUEST_URI;
+
+  $ret = '';
+  if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) && 
+    ! empty ( $REQUEST_URI )) {
+    $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
+    $ret .= "<meta http-equiv=\"refresh\" content=\"$refresh; url=$REQUEST_URI\" />";
+  }
+  return $ret;
+}
 ?>

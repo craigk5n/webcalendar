@@ -66,7 +66,7 @@ if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y' && $friendly !=1 ) {
 $navStr = display_navigation( 'month' );
 $monthStr = display_month ( $thismonth, $thisyear );
 $eventinfo = ( ! empty ( $eventinfo )? $eventinfo : '' );
-$HeadX = '';
+
 if ( empty ( $friendly ) ) {
   $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
     $is_nonuser_admin ? $user : $login ) );
@@ -74,12 +74,8 @@ if ( empty ( $friendly ) ) {
 }
 $trailerStr = print_trailer ();
 
-if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) ) {
-  $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
-  $HeadX = "<meta http-equiv=\"refresh\" content=\"$refresh; url=month.php?$u_url" .
-    "year=$thisyear&amp;month=$thismonth$caturl" . 
-    ( ! empty ( $friendly ) ? '&amp;friendly=1' : '') . "\" />\n";
-}
+$HeadX = generate_refresh_meta ();
+
 $INC =  array('js/popups.php/true', 'js/visible.php/true');
 print_header($INC,$HeadX);
 
