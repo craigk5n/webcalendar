@@ -278,15 +278,14 @@ if ( $DEMO_MODE == 'Y' ) {
  }
  if ( ! empty ( $valid_ip ) || empty ( $SELF_REGISTRATION_DOMAIN ) ) {
     echo '<b><a href="register.php">' . translate ( 'Not yet registered? Register here!' ) . 
-     '</a></b><br /><br />';
+     '</a></b><br />';
   }
 }
 ?>
 <span class="cookies"><?php etranslate( 'cookies-note' )?></span><br />
 <hr />
-<br /><br />
+<br />
 <a href="<?php echo $PROGRAM_URL ?>" id="programname"><?php echo $PROGRAM_NAME?></a>
-
 <?php // Print custom trailer (since we do not call print_trailer function)
 if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
   echo load_template ( $login, 'T' );
