@@ -77,23 +77,23 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) && !
 if ( ! empty ( $_GET ) && ! empty ( $PHP_SELF ) &&
     preg_match ( "/\/includes\/gradient.php/", $PHP_SELF ) ) {
   if ( function_exists ( 'getGetValue' ) ) {
-    $base = getGetValue ( 'base' );
-    $color1 = getGetValue ( 'color1' );
-    $color2 = getGetValue ( 'color2' );
+    $base      = getGetValue ( 'base' );
+    $color1    = getGetValue ( 'color1' );
+    $color2    = getGetValue ( 'color2' );
     $direction = getGetValue ( 'direction' );
-    $height = getGetValue ( 'height' );
+    $height    = getGetValue ( 'height' );
     $numcolors = getGetValue ( 'colors' );
-    $percent = getGetValue ( 'percent' );
-    $width = getGetValue ( 'width' );
+    $percent   = getGetValue ( 'percent' );
+    $width     = getGetValue ( 'width' );
   } else {
-    $base = ( ! empty ( $base ) ? $base : '' );
-    $color1 = ( ! empty ( $color1 ) ? $color1 : '' );
-    $color2 = ( ! empty ( $color2 ) ? $color2 : '' );
-    $direction = ( ! empty ( $direction ) ? $direction : '' );
-    $height = ( ! empty ( $height ) ? $height : '' );
-    $numcolors = ( ! empty ( $colors ) ? $colors : '' );
-    $percent = ( ! empty ( $percent ) ? $percent : '' );
-    $width = ( ! empty ( $width ) ? $width : '' );
+    $base      = ( ! empty ( $_GET['base'] ) ? $_GET['base'] : '' );
+    $color1    = ( ! empty ( $_GET['color1'] ) ? $_GET['color1'] : '' );
+    $color2    = ( ! empty ( $_GET['color2'] ) ? $_GET['color2'] : '' );
+    $direction = ( ! empty ( $_GET['direction'] ) ? $_GET['direction'] : '' );
+    $height    = ( ! empty ( $_GET['height'] ) ? $_GET['height'] : '' );
+    $numcolors = ( ! empty ( $_GET['colors'] ) ? $_GET['colors'] : '' );
+    $percent   = ( ! empty ( $_GET['percent'] ) ? $_GET['percent'] : '' );
+    $width     = ( ! empty ( $_GET['width'] ) ? $_GET['width'] : '' );
   } 
 
   create_image ( '', $base, $height, $percent, $width,
