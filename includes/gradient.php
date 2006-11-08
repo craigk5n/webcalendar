@@ -56,6 +56,9 @@
 // We don't really need it if calling gradients.php standalone.
 if ( file_exists ( 'includes/getGetValue.php' ) )
   include_once 'includes/getGetValue.php';
+//we may be calling gradients directly, so the path will be different
+if ( file_exists ( 'getGetValue.php' ) )
+  include_once 'getGetValue.php';
 
 $MIN_COLORS = 4;
 $MAX_COLORS = 256;
