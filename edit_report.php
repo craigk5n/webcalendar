@@ -136,6 +136,7 @@ $event_options = array (
   'priority',
   'href',
   'user',
+  'fullname',
   'report_id'
 );
 //generate clickable option lists
@@ -433,10 +434,26 @@ if ( $is_admin ) {
 </form>
 <script type="text/javascript" language="javascript">
 <!-- <![CDATA[
-  function addMe ( areaname, addthis ) {
+  //This script borrowed from phpMyAdmin with some mofification
+	function addMe (areaname, myValue) {
     var textarea = document.reportform.elements[areaname];
-    textarea.value = textarea.value + addthis;  
-  }
+	  //IE support
+	  if (document.selection) {
+	    textarea.focus();
+	    sel = document.selection.createRange();
+	    sel.text = myValue;
+	  }
+	  //MOZILLA/NETSCAPE support
+	  else if (textarea.selectionStart || textarea.selectionStart == '0') {
+	    var startPos = textarea.selectionStart;
+	    var endPos = textarea.selectionEnd;
+	    textarea.value = textarea.value.substring(0, startPos)
+	    + myValue
+	    + textarea.value.substring(endPos, textarea.value.length);
+	  } else {
+	    textarea.value += myValue;
+	  }
+	}
 //]]> -->
 </script>
 <?php echo print_trailer(); ?>

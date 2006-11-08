@@ -166,6 +166,9 @@ function event_to_text ( $event, $date ) {
   $url = $event->getUrl();
   $href_str = "view_entry.php?id=$id";
 
+  //Get user's fullname
+  user_load_variables ( $event->getLogin(), 'report_' );
+  $fullname = $GLOBALS['report_fullname'];
   // Replace all variables in the event template.
   $text = $event_template;
   $text = str_replace ( '${name}', $name_str, $text );
@@ -181,6 +184,7 @@ function event_to_text ( $event, $date ) {
   $text = str_replace ( '${href}', $href_str, $text );
   $text = str_replace ( '${id}', $id, $text );
   $text = str_replace ( '${user}', $event->getLogin(), $text );
+  $text = str_replace ( '${fullname}', $fullname, $text );
   $text = str_replace ( '${report_id}', $report_id, $text );
   $text = str_replace ( '${location}', $location, $text );
   $text = str_replace ( '${url}', $url, $text );
@@ -319,7 +323,7 @@ if ( empty ( $report_user ) ) {
 
 // Set default templates (in case there are none in the database for
 // this report.)
-$day_str = '';
+$day_str = $printerStr = '';
 $page_template = '<dl>${days}</dl>';
 $day_template = '<dt><b>${date}</b></dt><dd><dl>${events}</dl></dd>';
 $event_template = '<dt>${name}</dt><dd>' .
