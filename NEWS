@@ -12,6 +12,9 @@ Version 1.1.2 (?? ??? 2006)
 
   - New Features / Enhancements:
     = User Interface
+      + Reports can now contain 'fullname'
+      + When creating Reports, you can now simply click desired value
+        and it will auto-insert at the cursor.
       + The top menu is now fully configurable and custom menus can be
         added easily. See includes/menu/menu_config.php for details.
       + Added 'System Log' in menu.  Added logging for adding/editing/deleting
