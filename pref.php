@@ -166,7 +166,7 @@ $No = translate ( 'No' );
 $minutesStr = translate( 'minutes' );
 
 $openStr ="\"window.open('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
-$BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' )\"" : '' );
+$BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' );\"" : '' );
 $INC = array('js/visible.php/true', 'js/pref.php');
 //disable css here and include it manually so other user pref will display properly
 print_header($INC, '' , $BodyX, false, true);
