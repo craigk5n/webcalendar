@@ -321,6 +321,8 @@ function get_user_plugin_list () {
  * @ignore
  */
 function get_web_browser () {
+  if ( ereg ( "MSIE 7", getenv ( 'HTTP_USER_AGENT' ) ) )
+    return 'MSIE7';
   if ( ereg ( "MSIE [0-9]", getenv ( 'HTTP_USER_AGENT' ) ) )
     return 'MSIE';
   if ( ereg ( "Mozilla/[234]", getenv ( 'HTTP_USER_AGENT' ) ) )
@@ -1476,16 +1478,20 @@ function display_navigation( $name, $show_arrows=true, $show_cats=true ){
   $u_url = '';
   if ( ! empty ( $user ) && $user != $login )
     $u_url = "user=$user&amp;";
-      
-  $ret = '<div class="topnav">';
+
+  $nextStr = translate('Next');
+  $prevStr = translate('Previous');
+  //Hack to prevent giant space between minicals and navigation in IE7
+  $ie7_hack = ( get_web_browser() == 'MSIE7' ? 'style="zoom:1"' : '' );    
+  $ret = "<div class=\"topnav\" $ie7_hack>";
   if ( $show_arrows && ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || 
     $DISPLAY_TASKS == 'Y' ) ){
-    $ret .= '<a title="' . translate('Next') . '" class="next" href="' . 
-      "$name.php?" . $u_url . "date=$nextYmd$caturl\"><img src=\"images/rightarrow.gif\" alt=\"" .
-      translate('Next') . "\" /></a>\n";
-    $ret .= '<a title="' . translate('Previous') . '" class="prev" href="' .
-      "$name.php?" . $u_url . "date=$prevYmd$caturl\"><img src=\"images/leftarrow.gif\" alt=\"" .
-      translate('Previous') . "\" /></a>\n";
+    $ret .= '<a title="' . $nextStr . '" class="next" href="' . "$name.php?" 
+      . $u_url . "date=$nextYmd$caturl\"><img src=\"images/rightarrow.gif\" alt=\"" 
+      . $nextStr . "\" /></a>\n";
+    $ret .= '<a title="' . $prevStr . '" class="prev" href="' . "$name.php?" 
+      . $u_url . "date=$prevYmd$caturl\"><img src=\"images/leftarrow.gif\" alt=\"" 
+      . $prevStr . "\" /></a>\n";
   }
   $ret .= '<div class="title">';
   $ret .= '<span class="date">'; 
