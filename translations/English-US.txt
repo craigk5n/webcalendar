@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 11-09-2006
 
 
 ################################################################################
@@ -57,6 +57,15 @@ __month__ __yyyy__: __month__ __yyyy__
 ################################################################################
 ################################################################################
 
+
+########################################
+# Page: about.php
+#
+About: About
+Credits: Credits
+Title: WebCalendar
+version: version
+Ok: Ok
 
 ########################################
 # Page: access.php
@@ -127,7 +136,6 @@ System options: System options
 app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: Application Name
 Translated Name: Translated Name
-Title: WebCalendar
 server-url-help: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
 Server URL: Server URL
 home-url-help: Specifies the home URL for the applicaiton. This can be an absolute or relative
@@ -457,7 +465,6 @@ ENTRY CATEGORIES: ENTRY CATEGORIES
 AVAILABLE CATEGORIES: AVAILABLE CATEGORIES
 Remove: Remove
 Global Category: Global Category
-Ok: Ok
 
 ########################################
 # Page: del_entry.php
@@ -922,19 +929,19 @@ Edit layer: Edit layer
 #
 View this entry: View this entry
 Approve/Confirm: Approve/Confirm
-Approve this entry?: Approve this entry?
 Reject: Reject
-Reject this entry?: Reject this entry?
 Check All: Check All
 Uncheck All: Uncheck All
 Approve Selected: Approve Selected
-Approve Selected entries?: Approve Selected entries?
 Reject Selected: Reject Selected
-Reject Selected entries?: Reject Selected entries?
 Emails Will Not Be Sent: Emails Will Not Be Sent
 No unapproved entries for: No unapproved entries for
 Unapproved Entries: Unapproved Entries
 Not authorized: Not authorized
+Approve this entry?: Approve this entry?
+Reject this entry?: Reject this entry?
+Approve Selected entries?: Approve Selected entries?
+Reject Selected entries?: Reject Selected entries?
 
 ########################################
 # Page: login-app.php
@@ -1136,9 +1143,8 @@ No users for this view: No users for this view
 #
 Assistant mode: Assistant mode
 Status: Status
-Accepted: Accepted
-Needs-Action: Needs-Action
 Declined: Declined
+Needs-Action: Needs-Action
 Completed: Completed
 by: by
 Percentage Complete: Percentage Complete
@@ -1152,22 +1158,24 @@ Hide: Hide
 Approve/Confirm entry: Approve/Confirm entry
 Reject entry: Reject entry
 Set category: Set category
-Edit entry: Edit entry
 Copy entry: Copy entry
 This will delete this entry for all users.: This will delete this entry for all users.
+Edit entry: Edit entry
 Edit repeating entry for all dates: Edit repeating entry for all dates
 Delete repeating event for all dates: Delete repeating event for all dates
 Edit entry for this date: Edit entry for this date
 Delete entry only for this date: Delete entry only for this date
 from calendar of: from calendar of
+This will delete the entry from your XXX calendar.: This will delete the entry from your XXX calendar.
+boss&#39;: boss&#39;
 This will delete the entry from your boss&#39; calendar.: This will delete the entry from your boss' calendar.
 This will delete the entry from your calendar.: This will delete the entry from your calendar.
 from your boss&#39; calendar: from your boss' calendar
 Do you want to add this entry to your calendar?: Do you want to add this entry to your calendar?
 This will add the entry to your calendar.: This will add the entry to your calendar.
 Email all participants: Email all participants
-Show activity log: Show activity log
 Hide activity log: Hide activity log
+Show activity log: Show activity log
 Export this entry to: Export this entry to
 Palm Pilot: Palm Pilot
 
@@ -1502,6 +1510,7 @@ My Profile: My Profile
 Public Calendar: Public Calendar
 Unapproved Events: Unapproved Events
 User Manager: User Manager
+Help Contents: Help Contents
 
 ########################################
 # Page: install/index.php
