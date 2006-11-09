@@ -97,14 +97,15 @@ if ( $single_user != 'Y' ) {
     // If not, then there is no way to view another user's calendar except
     // a custom view.
     if ( ! access_is_enabled () ||
-        access_can_access_function ( ACCESS_ANOTHER_CALENDAR, $user ) ) {
+        access_can_access_function ( ACCESS_ANOTHER_CALENDAR ) ) {
       // get count of users this user can see. if > 1, then...
-      $ulist = array_merge ( get_my_users (), get_my_nonusers ( $login, true ) );
+      $ulist = array_merge ( get_my_users ( $login, 'view'), get_my_nonusers ( $login, true ) );
       if ( count ( $ulist ) > 1 )
         $select_user_url = 'select_user.php';
     }
   }
 }
+
 // only display some links if we're viewing our own calendar.
 if ( empty ( $user ) || $user == $login ) {
   // Search
@@ -367,7 +368,7 @@ if ( ! empty ( $menuExtras[2] ) )
 // translate ( 'Views' ) translate ( 'Another User&#39;s Calendar' )
 // translate ( 'My Views' ) translate ( 'Manage Calendar of' );
 // translate ( 'Manage Views' );
-if ( $menuConfig['Views'] ) {
+if ( $menuConfig['Views'] && ( $select_user_url != '' || ! empty ( $views_link ) ) ) {   
   jscMenu_menu ( 'Views' );
   if ( $select_user_url != '' && $menuConfig['Another Users Calendar'] )
     jscMenu_item ( 'display.png', 'Another User&#39;s Calendar', $select_user_url );
