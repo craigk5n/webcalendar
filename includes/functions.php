@@ -6072,10 +6072,10 @@ function generate_activity_log ( $id='', $sys=false, $startid='' ){
 
   $sql =  'SELECT wel.cal_login, wel.cal_user_cal, wel.cal_type, '
     . 'wel.cal_date, wel.cal_time, wel.cal_text, '
-    . ( $sys ? 'wel.cal_log_id FROM webcal_entry_log AS wel '
+    . ( $sys ? 'wel.cal_log_id FROM webcal_entry_log wel '
     . ' WHERE wel.cal_entry_id = 0' : 'we.cal_id, we.cal_name, '
     . ' wel.cal_log_id, we.cal_type '
-    . ' FROM webcal_entry_log AS wel, webcal_entry AS we '
+    . ' FROM webcal_entry_log wel, webcal_entry we '
     . ' WHERE wel.cal_entry_id = we.cal_id' )
     . ( ! empty ( $id ) ? ' AND we.cal_id = ?' :'' )
     . ( ! empty ( $startid ) ? ' AND wel.cal_log_id <= ?' :'' )

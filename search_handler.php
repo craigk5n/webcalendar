@@ -111,7 +111,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     $sql_params = array ();
     // Note: we only search approved/waiting events (not deleted).
     $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date
-      FROM webcal_entry AS we, webcal_entry_user AS weu
+      FROM webcal_entry we, webcal_entry_user weu
       WHERE we.cal_id = weu.cal_id AND weu.cal_status in ( "A","W" )
       AND weu.cal_login IN ( ?';
     if ( $search_others ) {
