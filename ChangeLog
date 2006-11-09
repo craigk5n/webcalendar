@@ -1,5 +1,7 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Added new About WebCalendar page
+ - Fixed problem with AS used in sql table aliases
  - Fixed bug [ 1561485 ] User sorting doesn't work with LDAP users
  - Fixed bug [ 1592079 ] undefined constant MENU_DATE_TOP
  - Fixed bug [ 1591892 ] disabling one 'root'-item the whole menue-items are
