@@ -835,7 +835,7 @@ Public Access calendar: &Ouml;ffentlicher Kalender
 Modify Non User Calendar Preferences: &Auml;ndern der Einstellungen von Zentralen Kalendern
 Return to My Preferences: Zur&uuml;ck zu meinen Einstellungen
 When I am the boss: Wenn ich der Chef bin
-Subscribe/Publish: Abonieren/Ver&ouml;ffentlichen
+Subscribe/Publish: Abonnieren/Ver&ouml;ffentlichen
 Custom Scripts: Eigene Scripte
 Timezone Selection: Auswahl der Zeitzone
 Default Category: Standard Kategorie
@@ -859,7 +859,7 @@ allow-remote-subscriptions-help: Bestimmt ob &#39;REMOTE&#39;-Teilnehmer IHREN W
 remote-subscriptions-url-help: Zeigt die URL, die ein &#39;REMOTE&#39;-Teilnehmer zum Abonnieren Ihres Kalenders verwenden soll
 allow-remote-publishing-help: Bestimmt, ob ein entfernter iCal - Klient Termine im Webkalender ver&ouml;ffentlichen darf
 Allow remote publishing: Erlaube das Ver&ouml;ffentlichen von &#39;REMOTE&#39;-Terminen
-remote-publishing-url-help: Zeigt die URL (Adresse) die im iCal-Client zum abonieren und ver&ouml;ffentlichen im Webkalender notwendig ist.
+remote-publishing-url-help: Zeigt die URL (Adresse) die im iCal-Client zum abonnieren und ver&ouml;ffentlichen im Webkalender notwendig ist.
 rss-feed-url-help: Die URL f&uuml;r den Zugang zum RSS-Feed
 freebusy-enabled-help: Sepzifiziert die Zeit der Verf&uuml;gbarkeit eines Benutzers bei Verwendung des iCal FreeBusy - Standart.
 Enable FreeBusy publishing: Aktivieren der FreeBusy Ver&ouml;ffentlichung
@@ -1023,7 +1023,7 @@ Modified since: &Auml;nderungen ab
 ########################################
 # Page: users.php
 #
-Remote Calendars: Entfernte Kalender (Fernzugriff)
+Remote Calendars: Externe Kalender (Fernzugriff)
 Add New User: Neuen Benutzer hinzuf&uuml;gen
 denotes administrative user: Kennzeichnet Benutzer mit administrativen Rechten
 
