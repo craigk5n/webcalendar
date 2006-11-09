@@ -12,6 +12,7 @@ Version 1.1.2 (?? ??? 2006)
 
   - New Features / Enhancements:
     = User Interface
+      + Added new About WebCalendar page
       + Reports can now contain 'fullname'
       + When creating Reports, you can now simply click desired value
         and it will auto-insert at the cursor.
