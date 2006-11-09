@@ -321,8 +321,6 @@ function get_user_plugin_list () {
  * @ignore
  */
 function get_web_browser () {
-  if ( ereg ( "MSIE 7", getenv ( 'HTTP_USER_AGENT' ) ) )
-    return 'MSIE7';
   if ( ereg ( "MSIE [0-9]", getenv ( 'HTTP_USER_AGENT' ) ) )
     return 'MSIE';
   if ( ereg ( "Mozilla/[234]", getenv ( 'HTTP_USER_AGENT' ) ) )
@@ -1481,9 +1479,9 @@ function display_navigation( $name, $show_arrows=true, $show_cats=true ){
 
   $nextStr = translate('Next');
   $prevStr = translate('Previous');
-  //Hack to prevent giant space between minicals and navigation in IE7
-  $ie7_hack = ( get_web_browser() == 'MSIE7' ? 'style="zoom:1"' : '' );    
-  $ret = "<div class=\"topnav\" $ie7_hack>";
+  //Hack to prevent giant space between minicals and navigation in IE
+  $ie_hack = ( get_web_browser() == 'MSIE' ? 'style="zoom:1"' : '' );    
+  $ret = "<div class=\"topnav\" $ie_hack>";
   if ( $show_arrows && ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || 
     $DISPLAY_TASKS == 'Y' ) ){
     $ret .= '<a title="' . $nextStr . '" class="next" href="' . "$name.php?" 
