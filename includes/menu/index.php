@@ -294,11 +294,23 @@ function jscMenu_divider () {
 ----------------------------------------------------------------------------- */
 
 $menuScript .= "\n" . '<script language="JavaScript" type="text/javascript">' 
-  . "\n" . '<!-- <![CDATA[' . "\n"
-  . 'function openHelp () { ' . "\n"
+  . "\n" . '<!-- <![CDATA[' . "\n";
+
+if ( $menuConfig['Help Contents'] ) {
+  $menuScript .= 'function openHelp () { ' . "\n"
   . "window.open ( 'help_index.php', 'cal_help','dependent,menubar,scrollbars,"
   . "height=500,width=600,innerHeight=520,outerWidth=620' );\n"
   . '}' ."\n";
+}
+if ( $menuConfig['About WebCalendar'] ) {
+  $menuScript .= 'function openAbout () { ' . "\n"
+  . 'var mX = (screen.width / 2) -123;'. "\n"
+  . 'var mY = 200;'. "\n"
+  . "var MyPosition = 'left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;\n"
+  . "window.open ( 'about.php', 'cal_about','dependent,toolbar=0,"
+  . "height=300,width=245,innerHeight=310,outerWidth=255,location=0,' + MyPosition );\n"
+  . '}' ."\n";
+}
 
 $menuScript .= 'var myMenu =' . "\n"
   .'[';
@@ -531,8 +543,17 @@ if ( $search_url != '' && $menuConfig['Search'] ) {
 if ( ! empty ( $menuExtras[6] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[6] );
 // Help Menu (Link )
-// translate ( 'Help' );
-if ( $menuConfig['Help'] ) jscMenu_menu ( 'Help', 'javascript:openHelp ()' );
+// translate ( 'Help' ) translate ( 'Help Contents' )
+if ( $menuConfig['Help'] ) {
+  jscMenu_menu ( 'Help');
+  if ( $menuConfig['Help Contents'] )
+    jscMenu_item ( 'help.png', 'Help Contents', 'javascript:openHelp ()' );
+  if ( $menuConfig['About WebCalendar'] && $menuConfig['Help Contents'] ) 
+    jscMenu_divider ();
+  if ( $menuConfig['About WebCalendar'] ) 
+    jscMenu_item ( 'k5n.png', 'About WebCalendar', 'javascript:openAbout ()' );
+  jscMenu_close ();
+}
 // Add spacer
 $menuScript .= "[_cmNoAction, '<td>&nbsp;&nbsp;</td>'],";
 // Unapproved Icon if any exist
@@ -556,7 +577,8 @@ $menuScript .= '];' . "\n"
   . '</script>' . "\n";
 
 
-$menuHtml .= '<table width="100%" class="ThemeMenubar">' . "\n"
+$menuHtml .= '<table width="100%" class="ThemeMenubar" '
+  . 'cellspacing="0" cellpadding="0">' . "\n"
   . '<tr>'
   . '<td class="ThemeMenubackgr">' . "\n"
   . '<div id="myMenuID"></div></td>' . "\n"
