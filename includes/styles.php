@@ -131,6 +131,7 @@ if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
 }
 
 ?>body {
+  margin: 2px;
   color: <?php echo $GLOBALS['TEXTCOLOR'];
 
 ?>;
@@ -306,8 +307,8 @@ if ( $DISPLAY_WEEKENDS == 'N' ) {
   border-left: 2px ridge #C0C0C0;
   border-right: 2px ridge #C0C0C0;
   border-bottom: 2px solid #F8F8FF;
-  -moz-border-radius: .75em .75em 0em 0em;
   position: relative;
+  -moz-border-radius: .75em .75em 0em 0em;
 }
 .tabfor a,
 .tabbak a {
@@ -461,9 +462,13 @@ a#programname {
 }
 .unapprovedentry {
   font-size: 12px;
+/* Remove comments to set unapproved italics
+  font-style: italic;
+*/
   color: #800000;
   text-decoration: none;
   padding-right: 3px;
+  
 }
 .nounapproved {
   font-weight: bold;
@@ -1344,6 +1349,18 @@ a.weekcell {
 }
 .bold {
  font-weight: bold;
+}
+#about {
+  background-image: url("images/kn5.jpg");
+  background-repeat: no-repeat;
+}
+#about p {
+  margin:1px; 
+  color:#333333;
+}
+#scroller {
+  position:absolute;
+  width:100%;
 }
 <?php
 if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
