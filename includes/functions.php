@@ -907,7 +907,6 @@ function get_my_users ( $user='', $reason='invite') {
     }
     $ret = $newlist;
   }
-
   $my_user_array[$this_user][$reason] = $ret;
   return $ret;
 }
@@ -1280,13 +1279,19 @@ function build_entry_popup ( $popupid, $user, $description='', $time,
   
  if ( ! empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) 
     return;
- 
+ //restrict info if time only set
+ $details = true;
+ if ( access_is_enabled () ) {
+   $time_only = access_user_calendar ( 'time', $user );
+   $details = ( $time_only == 'N' ? 1 : 0 );
+ }
+
  $ret = "<dl id=\"$popupid\" class=\"popup\">\n";
 
   if ( empty ( $popup_fullnames ) )
     $popup_fullnames = array ();  
   $partList = array();
-  if ( $id != '' && ! empty ( $PARTICIPANTS_IN_POPUP  ) && 
+  if ( $details && $id != '' && ! empty ( $PARTICIPANTS_IN_POPUP )  && 
     $PARTICIPANTS_IN_POPUP == 'Y' && 
     ! ( $PUBLIC_ACCESS_VIEW_PART == 'N' && $login == '__public__' )  ) {
     $sql = 'SELECT cal_login, cal_status FROM webcal_entry_user ' .
@@ -1323,24 +1328,24 @@ function build_entry_popup ( $popupid, $user, $description='', $time,
     $ret .= '<dt>' . translate ('User') .
       ":</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
   }
-  if ( $SUMMARY_LENGTH < 80 && strlen ( $name ) )
+  if ( $SUMMARY_LENGTH < 80 && strlen ( $name ) && $details )
     $ret .= '<dt>' . htmlspecialchars ( substr ( $name, 0 , 40 ) ) . "</dt>\n";  
   if ( strlen ( $time ) )
     $ret .= '<dt>' . translate ('Time') . ":</dt>\n<dd>$time</dd>\n";
-  if ( ! empty ( $location ) )
+  if ( ! empty ( $location ) && $details )
   $ret .= '<dt>' . translate ('Location') . ":</dt>\n<dd> $location</dd>\n";
 
-  if ( ! empty ( $reminder ) )
+  if ( ! empty ( $reminder ) && $details )
   $ret .= '<dt>' . translate ('Send Reminder') . ":</dt>\n<dd> $reminder</dd>\n";
   
-  if ( ! empty ( $partList ) ) {
+  if ( ! empty ( $partList ) && $details ) {
     $ret .= '<dt>' . translate ('Participants') . ":</dt>\n";
     foreach ( $partList as $parts ) {
       $ret .= "<dd> $parts</dd>\n";
     }
   }
   
-  if ( ! empty ( $description ) ) {
+  if ( ! empty ( $description )  && $details ) {
     $ret .= '<dt>' . translate ('Description') . ":</dt>\n<dd>";
     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
       $str = str_replace ( "&", "&amp;", $description );
