@@ -72,7 +72,7 @@ if ( ! empty ( $rssuser ) ) {
 // If assistant is doing this, then we need to switch login to user in the sql.
 $sqlparm = ( $is_assistant ? $user : $login );
 $res = dbi_execute ( 'SELECT we.cal_id
-  FROM webcal_entry AS we, webcal_entry_user AS weu
+  FROM webcal_entry we, webcal_entry_user weu
   WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
   AND ( we.cal_create_by = ? OR weu.cal_login = ? )',
   array ( $id , $sqlparm, $sqlparm ) );
@@ -203,7 +203,7 @@ if ( empty ( $error ) ) {
     $my_usercnt = count ( $my_users );
     if ( is_array ( $my_users ) && $my_usercnt ) {
       $sql_params = array ();
-      $sql = 'SELECT we.cal_id FROM webcal_entry AS we, webcal_entry_user AS weu
+      $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
         WHERE we.cal_id = weu.cal_id AND we.cal_id = ? AND weu.cal_login IN ( ';
       $sql_params[] = $id;
       for ( $i = 0; $i < $my_usercnt; $i++ ) {
