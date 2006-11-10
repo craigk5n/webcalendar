@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Closed bug [ 1508701 ] starting 'ControlPanel' creates an error
  - Fixed bug [ 1593524 ] No CSS for "login.php" since "css_cacher-php" update
  - Added new About WebCalendar page
  - Fixed problem with AS used in sql table aliases
