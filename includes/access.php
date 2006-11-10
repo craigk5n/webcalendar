@@ -271,7 +271,7 @@ function access_can_access_function ( $function, $user = '' ) {
   assert ( 'isset ( $function )' );
 
   $access = access_load_user_functions ( $user );
-
+  //echo $function . ' ' . $access . '<br>';
   $yesno = substr ( $access, $function, 1 );
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $function, $user );
@@ -296,7 +296,8 @@ function access_can_access_function ( $function, $user = '' ) {
  * @global bool    Is the currently logged-in user an administrator?
  */
 function access_can_view_page ( $page = '', $user = '' ) {
-  global $is_admin, $login, $page_lookup, $page_lookup_ex, $PHP_SELF;
+  global $access_user, $is_admin, $login, 
+    $page_lookup, $page_lookup_ex, $PHP_SELF;
   $page_id = -1;
 
   if ( ! access_is_enabled () )
@@ -345,11 +346,8 @@ function access_can_view_page ( $page = '', $user = '' ) {
   // (Someone needs to add another entry in the $page_lookup[] array.)
   assert ( '$page_id >= 0' );
 
-  // Now that we know which function (page_id), see if the user can access it.
-  $access = access_load_user_functions ( $user );
-
   $yesno = substr ( $access, $page_id, 1 );
-
+  //echo $page . '  ' . $page_id . ' ' . $access . '<br>';
   // No setting found. Use default values.
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $page_id, $user );
