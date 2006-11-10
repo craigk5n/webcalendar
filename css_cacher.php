@@ -11,7 +11,7 @@
  $WebCalendar->initializeFirstPhase();    
      
  include "includes/$user_inc";
- include_once 'includes/access.php';    
+ include_once 'includes/access.php'; 
  include_once 'includes/validate.php';    
  include 'includes/translate.php';  
  include_once 'includes/gradient.php';
@@ -19,7 +19,10 @@
 $WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
-load_user_preferences ();
+
+//if calling script uses 'guest', we must also
+$guest = ( ! empty ( $_GET['login'] ) ? 'guest' : '' );
+load_user_preferences ( $guest );
 
 //we will cache css as default, but override from admin and pref
 //by incrementing the webcalendar_csscache cookie value
