@@ -1281,7 +1281,7 @@ function build_entry_popup ( $popupid, $user, $description='', $time,
     return;
  //restrict info if time only set
  $details = true;
- if ( access_is_enabled () ) {
+ if ( access_is_enabled () &&  $user != $login ) {
    $time_only = access_user_calendar ( 'time', $user );
    $details = ( $time_only == 'N' ? 1 : 0 );
  }
@@ -5523,7 +5523,7 @@ function print_not_auth ( $full=false ) {
   $ret = '';
   if ( $full )
     $ret .=  print_error_header ();
-    $ret .=  translate ( 'You are not authorized' ) . "\n";
+  $ret .=  translate ( 'You are not authorized' ) . "\n";
   return $ret; 
 }
 
