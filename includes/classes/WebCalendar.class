@@ -721,6 +721,7 @@ class WebCalendar {
       return;
     }
 
+
     $validate_redirect = false;
     $session_not_found = false;
 
@@ -1065,12 +1066,6 @@ class WebCalendar {
         strstr ( $PHP_SELF, 'import_handler.php' ) ||
         strstr ( $PHP_SELF, 'edit_template.php' ) ) {
         $not_auth = true;
-      }
-      if ( $PUBLIC_ACCESS_CAN_ADD != 'Y' ) { // do not allow add
-        if ( strstr ( $PHP_SELF, 'edit_entry.php' ) ||
-          strstr ( $PHP_SELF, 'edit_entry_handler.php' ) ) {
-          $not_auth = true;
-        }
       }
     }
 
