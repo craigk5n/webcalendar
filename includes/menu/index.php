@@ -21,17 +21,15 @@ $menuScript, $menuHtml, $BodyX, $fullname;
          First figure out what options are on and privileges we have
 ----------------------------------------------------------------------------- */
 $can_add = true;
-if ( $readonly == 'Y' )
+if ( $readonly == 'Y' ) 
   $can_add = false;
-else
-if ( access_is_enabled () )
+if ( access_is_enabled () ) 
   $can_add = access_can_access_function ( ACCESS_EVENT_EDIT, $user );
-else {
-  if ( $login == '__public__' )
-    $can_add = $GLOBALS['PUBLIC_ACCESS_CAN_ADD'] == 'Y';
-  if ( $is_nonuser )
-    $can_add = false;
-}
+if ( $login == '__public__' )
+  $can_add = ( access_is_enabled () ? $can_add : $PUBLIC_ACCESS_CAN_ADD == 'Y' );
+if ( $is_nonuser )
+  $can_add = false;
+
 $export_url = $import_url = $new_entry_url = $new_task_url = '';
 $search_url = $select_user_url = $unapproved_url = '';
 $help_url = 'help_index.php';
@@ -112,7 +110,7 @@ if ( empty ( $user ) || $user == $login ) {
   if ( access_can_access_function ( ACCESS_SEARCH, $user ) )
     $search_url = 'search.php';
   // Import/Export
-  if ( $login != '__public__' && ! $is_nonuser ) {
+  if ( access_is_enabled () || ( $login != '__public__' && ! $is_nonuser ) ) {
     if ( $readonly != 'Y' &&
       access_can_access_function ( ACCESS_IMPORT, $user ) )
       $import_url = 'import.php';
