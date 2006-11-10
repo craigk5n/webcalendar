@@ -39,13 +39,13 @@ print_header ( '', '
   );
 
 $names = $links = array ();
-
+/* Disabled for now...will move to menu when working properly
 if ( $is_admin && ! empty ( $SERVER_URL ) &&
     access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) ) {
   $names[] = translate ( 'Control Panel' );
   $links[] = 'controlpanel.php';
 }
-
+*/
 if ( $is_nonuser_admin ) {
   if ( ! access_is_enabled () ||
       access_can_access_function ( ACCESS_PREFERENCES ) ) {
