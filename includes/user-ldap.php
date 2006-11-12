@@ -190,7 +190,11 @@ function user_valid_crypt ( $login, $crypt_password ) {
 //   $prefix - variable prefix to use
 function user_load_variables ( $login, $prefix ) {
   global $ds, $error, $ldap_base_dn, $ldap_login_attr, $ldap_user_attr,
-  $ldap_user_filter, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME;
+  $ldap_user_filter, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME, $cached_user_var;
+
+  if ( ! empty ( $cached_user_var[$login][$prefix] ) )
+    return  $cached_user_var[$login][$prefix];
+  $cached_user_var = array();
 
   if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX ) {
     nonuser_load_variables ( $login, $prefix );
@@ -232,6 +236,8 @@ function user_load_variables ( $login, $prefix ) {
     }
     @ldap_close ( $ds );
   }
+  //save these results
+  $cached_user_var[$login][$prefix] = $ret;
   return $ret;
 }
 

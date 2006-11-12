@@ -205,8 +205,12 @@ function user_valid_crypt ( $login, $crypt_password ) {
  * @return bool True on success
  */
 function user_load_variables ( $login, $prefix ) {
-  global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX;
+  global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX, $cached_user_var;
   $ret = false;
+
+  if ( ! empty ( $cached_user_var[$login][$prefix] ) )
+    return  $cached_user_var[$login][$prefix];
+  $cached_user_var = array();
 
   if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
@@ -246,6 +250,8 @@ function user_load_variables ( $login, $prefix ) {
     $error = db_error ();
     return false;
   }
+  //save these results
+  $cached_user_var[$login][$prefix] = $ret;
   return $ret;
 }
 
