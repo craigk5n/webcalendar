@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1594714 ] upcomming.php doesn't work
  - Closed bug [ 1508701 ] starting 'ControlPanel' creates an error
  - Fixed bug [ 1593524 ] No CSS for "login.php" since "css_cacher-php" update
  - Added new About WebCalendar page
