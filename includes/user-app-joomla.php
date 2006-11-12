@@ -260,9 +260,13 @@ function user_get_users () {
 //   $user - user login
 //   $prefix - variable prefix to use
 function user_load_variables ( $login, $prefix ) {
-  global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX;
+  global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX, $cached_user_var;
   global $app_host, $app_login, $app_pass, $app_db, $app_user_table;
   global $c, $db_host, $db_login, $db_password, $db_database, $app_same_db;
+
+  if ( ! empty ( $cached_user_var[$login][$prefix] ) )
+    return  $cached_user_var[$login][$prefix];
+  $cached_user_var = array();
   
   if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
@@ -304,7 +308,8 @@ function user_load_variables ( $login, $prefix ) {
 
   // if application is in a separate db, we have to connect back to the webcal db
   if ($app_same_db != '1') $c = dbi_connect($db_host, $db_login, $db_password, $db_database);
-
+  //save these results
+  $cached_user_var[$login][$prefix] = true;
   return true;
 }
 
