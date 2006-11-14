@@ -41,10 +41,6 @@ function valid_form ( form ) {
 
 }
 
-function selectColor ( color ) {
-  url = "colors.php?color=" + color;
-  var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
-}
 
 function toggle_layercolor() {
  if ( document.prefform.nlayer.checked == true) {

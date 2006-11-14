@@ -96,7 +96,7 @@ if ( $single_user == 'N' ) {
  <label for="layercolor"><?php etranslate( 'Color' )?>:</label></td><td>
  <input type="text" name="layercolor" id="layercolor" size="7" maxlength="7" value="<?php 
   echo empty ( $layers[$id]['cal_color'] ) ? '':  $layers[$id]['cal_color']; ?>" />
- <input type="button" onclick="selectColor('layercolor')" value="<?php 
+ <input type="button" onclick="selectColor('layercolor', event )" value="<?php 
   etranslate( 'Select' )?>..." />
 </td></tr>
 <tr><td class="bold">

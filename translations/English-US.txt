@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-09-2006
+# Translation last updated on 11-14-2006
 
 
 ################################################################################
@@ -465,6 +465,15 @@ ENTRY CATEGORIES: ENTRY CATEGORIES
 AVAILABLE CATEGORIES: AVAILABLE CATEGORIES
 Remove: Remove
 Global Category: Global Category
+
+########################################
+# Page: colors.php
+#
+Basic Colors: Basic Colors
+Custom Colors: Custom Colors
+Add Custom: Add Custom
+Current Color: Current Color
+Old Color: Old Color
 
 ########################################
 # Page: del_entry.php

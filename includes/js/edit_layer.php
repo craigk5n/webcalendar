@@ -32,11 +32,6 @@ function valid_form ( form ) {
   return true;
 }
 
-function selectColor ( color ) {
-  url = "colors.php?color=" + color;
-  var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
-}
-
 function show_others () {
  var ismine = document.prefform.is_mine.checked;
  var dups = document.prefform.dups;

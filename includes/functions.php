@@ -6046,7 +6046,7 @@ function print_color_input_html ( $variable, $title, $pref='admin_' ) {
     . 'style="background-color:' . $setting . ';">'
     . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>' . "\n" . '<td>'
     . '<input type="button" onclick="selectColor(\'' . $pref . $variable 
-    . '\')" value="' . $select . '" />'. "\n";
+    . '\', event )" value="' . $select . '" />'. "\n";
 
  return $ret;
 }
