@@ -2,70 +2,103 @@
 /* $Id$ */
 include_once 'includes/init.php';
 $color = getGetValue ( 'color' );
-$INC = array("js/colors.php/false/$color");
-print_header($INC,'','',true);
+if ( empty ( $color ) ) exit;
 
-$colors = array('00', '33', '66', '99', 'CC', 'FF');
-$grayscale = array('FFFFFF','DDDDDD','C0C0C0','969696','808080','646464','4B4B4B','242424','000000');
-$green1 = array('FF', 'CC', '99');
-$green2 = array('66', '33', '00');
-$colorcnt = count($colors);
-$green1cnt = count($green1);
-$green2cnt = count($green2);
-$graycnt = count($grayscale);
-$rgb = '000000';
+$basicStr = translate ( 'Basic Colors' );
+$customStr = translate ( 'Custom Colors' );
+$addcustomStr = translate ( 'Add Custom' );
+$currentStr = translate ( 'Current Color' );
+$oldStr = translate ( 'Old Color' );
+$okStr = '&nbsp;&nbsp;&nbsp;' . translate ( 'Ok' ). '&nbsp;&nbsp;&nbsp;';
+$cancelStr = translate ( 'Cancel' );
+
+
+$INC = array('js/colors.php/true');
+$BodyX = 'style="background-color:#CCCCCC" onload="fillhtml();setInit();"';
+print_header($INC, '', $BodyX, true, false ,true);
+
+/*
+  HTML Color Editor v1.2 (c) 2000 by Sebastian Weber <webersebastian@yahoo.de>
+  Modified by Ray Jones for inclusion into WebCalendar
+
+*/
 ?>
-
-<div  align="center">
-<table style="border-collapse: separate;border: none;background-color:#000000;border-spacing: 1px;">
-<?php
-// First green array 
-for ($r=0; $r < $colorcnt; $r++){     //the red colors loop
-  echo "<tr>\n"; 
-  for ($g=0; $g < $green1cnt; $g++){   //the green colors loop
-    for ($b=0; $b < $colorcnt; $b++){ //iterate through the six blue colors
-      $rgb = $colors[$r].$green1[$g].$colors[$b];
-      echo '<td style="background-color:#' . $rgb . 
-        ';"><a href="javascript:sendColor(\'#' . $rgb .
-        '\')"><img src="images/spacer.gif" class="color" alt="" /></a></td>' . "\n";
-    } //End of b-blue innermost loop
-  } //End of g-green loop
-  echo "</tr>\n"; // close row 
-} //End of r-red outermost loop
-
-// second green array
-for ($r=0; $r < $colorcnt; $r++){     //the red colors loop
-  echo "<tr>\n"; 
-  for ($g=0; $g < $green2cnt; $g++){   //the green colors loop
-    for ($b=0; $b < $colorcnt; $b++){ //iterate through the six blue colors
-      $rgb = $colors[$r].$green2[$g].$colors[$b];
-      echo '<td style="background-color:#' . $rgb . 
-        ';"><a href="javascript:sendColor(\'#' . $rgb .
-        '\')"><img src="images/spacer.gif" class="color" alt="" /></a></td>' . "\n";
-    } //End of b-blue innermost loop
-  } //End of g-green loop
-  echo "</tr>\n"; // close row 
-} //End of r-red outermost loop
-
-?>
+<form action="colors.php" name="colorpicker" >
+  <input type="hidden" id="colorcell" value="<?php echo $color ?>" />
+<table cellspacing="2" cellpadding="0" align="center">
+  <tr>
+    <td colspan="3"><img height="1" src="images/blank.gif" border="0"alt="" /></td></tr>
+  <tr>
+    <td align="center"><?php echo $basicStr ?></td>
+    <!--  COLORS PICTURE  -->
+    <td rowspan="5" width="220" align="center">
+      <img id="colorpic" height="192" width="192" src="images/colors.jpg" border="0" onclick="setFromImage(event);" alt="" /></td>
+  <!-- ***** SLIDER **** -->
+    <td rowspan="5">
+      <table cellspacing="0" cellpadding="0" width="24" onclick="setFromSlider(event);">
+        <tr>
+          <td id="slider" ></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><!--  BASIC COLORS PALETTE  -->
+    <td align="center" id="colorchoices"></td>
+  </tr>
+  <tr>
+    <td align="center"><?php echo $customStr ?></td>
+  </tr>
+  <tr><!--  Custom Colors  -->
+    <td align="center" id="colorcustom"></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <input type="button" value="<?php 
+        echo $addcustomStr ?>" onclick="definePreColor()" />
+    </td>
+  </tr>
+  <tr>
+  <td valign="top" colspan="3">
+    <table cellpadding="2" cellspacing="0" width="100%">
+      <tr align="center">
+        <td colspan="2" height="30" valign="bottom"><?php echo $currentStr ?></td>
+        <td valign="bottom"><?php echo $oldStr ?></td>
+      </tr>
+      <tr>
+<!--  RGB INPUT  -->
+          <td  class="boxtop boxleft boxbottom" valign="top" align="right">
+          R:<input id="rgb_r" type="text" size="3" maxlength="3" value="255" onchange="setFromRGB()" /><br />
+          G:<input id="rgb_g" type="text" size="3" maxlength="3" value="255" onchange="setFromRGB()" /><br />
+          B:<input id="rgb_b" type="text" size="3" maxlength="3" value="255" onchange="setFromRGB()" /><br />
+          HTML:<input id="htmlcolor" type="text" size="6" maxlength="6" value="FFFFFF" onchange="setFromHTML()" /></td>
+        <td class="boxtop boxright boxbottom" width="120">
+          <table id="thecell" bgcolor="#ffffff" align="center"
+      border="1" cellspacing="0" cellpadding="0"><tr><td><img src="images/blank.gif"
+      width="55" height="53" border="0" alt="" /></td></tr></table></td>
+        <td valign="middle" align="center" class="boxtop boxright boxbottom">
+        <!--  Display New Color  -->
+        <table  id="theoldcell" bgcolor="#ffffff" border="1" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><img src="images/blank.gif" width="55" height="53" border="0" alt="" /></td>
+          </tr>
+         </table>
+        </td>
+      </tr>
+    </table>
+ </td>
+ </tr>
+ <tr>
+  <td colspan="3" align="center" height="30">
+    <input type="button" value="<?php 
+      echo $okStr ?>" onclick="transferColor();window.close()" />
+    &nbsp;&nbsp;&nbsp;
+    <input type="button" value="<?php 
+      echo $cancelStr ?>" onclick="window.close()" /></td>
+  </tr>
 </table>
-<br />
-<table style="border-collapse: separate;border: none;background-color:#000000;border-spacing: 1px;"><tr>
-<?php
-for ($gs=0; $gs < $graycnt; $gs++){     
-  $rgb = $grayscale[$gs];
-      echo '<td style="background-color:#' . $rgb . 
-        ';"><a href="javascript:sendColor(\'#' . $rgb .
-        '\')"><img src="images/spacer.gif" class="color" alt="" /></a></td>' . "\n";
-}
- 
-?>
-</tr></table>
-<br />
-  <form>
-    <input type="button" value="<?php etranslate( 'Cancel' )?>" onclick="window.close();" />
-  </form>
-</div>
-
-<?php echo print_trailer ( false, false, true ); ?>
+</form>
+<img id="cross" src="images/cross.gif" alt="" style="position:absolute; left:0px; top:0px" />
+<img id="sliderarrow" src="images/arrow.gif" alt="" style="position:absolute; left:0px; top:0px" />
+</body>
+</html>
 

@@ -97,7 +97,7 @@ echo <<<EOT
      <label for="layercolor">{$colorStr}:</label></td><td>
      <input type="hidden" name="reload" id="reload" value="true" />
      <input type="text" name="layercolor" id="layercolor" size="7" maxlength="7" value="" />
-     <input type="button" onclick="selectColor('layercolor')" value="{$selectStr}..." /></td></tr> 
+     <input type="button" onclick="selectColor('layercolor' , event)" value="{$selectStr}..." /></td></tr> 
 EOT;
 }
 echo <<<EOT

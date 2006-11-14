@@ -94,7 +94,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG, $PHP_SELF,
   $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG,
-  $TODAYCELLBG, $WEEKENDBG;
+  $TODAYCELLBG, $WEEKENDBG, $show_printer;
   $ret = '';
   // Determine the page direction (left-to-right or right-to-left)
   $direction = translate ( 'direction' );
@@ -196,12 +196,14 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // including this as a normal stylesheet so they can see how it will look
   // when printed. This maintains backwards-compatibility for browsers that
   // don't support media="print" stylesheets
-  $ret .= '
-    <link rel="stylesheet" type="text/css"'
-   . ( empty ( $friendly ) ? ' media="print"' : '' )
-   . ' href="includes/print_styles.css" />'
+  if ( ! empty ( $show_printer ) )
+    $ret .= '
+      <link rel="stylesheet" type="text/css"'
+     . ( empty ( $friendly ) ? ' media="print"' : '' )
+     . ' href="includes/print_styles.css" />';
   // Add RSS feed if publishing is enabled
-  . ( ! empty ( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y' &&
+  $ret .= 
+    ( ! empty ( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y' &&
     ( $login == '__public__' ) || ( ! empty ( $GLOBALS['USER_RSS_ENABLED'] ) &&
       ( $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) ) && $disableRSS == false ? '
     <link rel="alternate" type="application/rss+xml" title="'

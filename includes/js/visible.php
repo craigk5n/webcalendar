@@ -103,6 +103,19 @@ function selectDate (  day, month, year, current, evt, form ) {
   var colorWindow = window.open(url,"DateSelection","width=300,height=180,"  + MyPosition);
 }
 
+function selectColor ( color, evt ) {
+  url = "colors.php?color=" + color;
+  if (document.getElementById) {
+    mX = evt.clientX   + 40;
+  }
+  else {
+    mX = evt.pageX + 40;
+  }
+  var mY = 100;
+  var MyOptions = 'width=390,height=365,scrollbars=0,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;
+  var colorWindow = window.open(url,"ColorSelection","width=390,height=365," + MyOptions );
+}
+
 function toggle_datefields( name, ele ) {
   var enabled = document.getElementById(ele.id).checked;
   if ( enabled ) { 

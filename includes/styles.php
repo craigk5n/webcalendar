@@ -129,7 +129,6 @@ if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
     preg_match ( "/css_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
   echo "<style type=\"text/css\">\n<!--\n";
 }
-
 ?>body {
   margin: 2px;
   color: <?php echo $GLOBALS['TEXTCOLOR'];

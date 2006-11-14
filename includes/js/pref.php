@@ -45,11 +45,6 @@ function validWorkHours ( form ) {
     parseInt ( form.pref_WORK_DAY_END_HOUR.value ) );
 }
 
-function selectColor ( color ) {
-  url = "colors.php?color=" + color;
-  var colorWindow = window.open(url,"ColorSelection","width=390,height=350,resizable=yes,scrollbars=yes");
-}
-
 // Updates the background-color of a table cell
 // Parameters:
 //    input - <input> element containing the new color value
