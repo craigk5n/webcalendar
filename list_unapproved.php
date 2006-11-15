@@ -21,7 +21,6 @@ send_no_cache_header ();
 if ( empty ( $user ) )
   $user = $login;
 
-//we must be doing a batch process
 if ( ! empty ( $_POST ) ) {
   $process_action = getPostValue ( 'process_action' );
   $process_user = getPostValue ( 'process_user' );
@@ -101,13 +100,14 @@ function list_unapproved ( $user ) {
       $status = $row[8];
       $type = $row[9];
       $view_link = 'view_entry';      
+      $entryID = 'entry' . $type . $id;
 
       if ($count == 0 ) { 
         $ret .= '<tr><td colspan="5"><h3>' . $temp_fullname . "</h3></td></tr>\n";       
       }
       $tribbon =  ( $count %2 == 0 ? '' :'class="odd"' );
       $ret .= "<tr $tribbon><td width=\"5%\" align=\"right\">";
-      $ret .= "<input type=\"checkbox\" name=\"entry$type$id\"  value=\"$user\"/></td>\n";
+      $ret .= "<input type=\"checkbox\" name=\"$entryID\"  value=\"$user\"/></td>\n";
       $divname = "eventinfo-pop$id-$key";
       $linkid  = "pop$id-$key";
       $ret .= '<td><a  title="' . $viewStr .
@@ -135,17 +135,17 @@ function list_unapproved ( $user ) {
       //approve
       $ret .= ':</td><td align="center">' . "\n"
         . '<input type="image" src="images/check.gif" title="' . $appConStr 
-        . "\" onclick=\"return do_confirm('approve','$cal_user');\" /></td>\n";
+        . "\" onclick=\"return do_confirm('approve','$cal_user', '$entryID');\" /></td>\n";
       //reject
       $ret .= '<td align="center">' . "\n"
         . '<input type="image" src="images/rejected.gif" title="' . $rejectStr 
-        . "\" onclick=\"return do_confirm('reject','$cal_user');\" /></td>\n";
+        . "\" onclick=\"return do_confirm('reject','$cal_user', '$entryID');\" /></td>\n";
       //delete
       if ( ! access_is_enabled () ||
         access_user_calendar ( 'edit', $user ) ) {
         $ret .= '<td align="center">' . "\n"
         . '<input type="image" src="images/delete.png" title="' . $deleteStr 
-        . "\" onclick=\"return do_confirm('delete','$cal_user');\" /></td>\n";
+        . "\" onclick=\"return do_confirm('delete','$cal_user', '$entryID');\" /></td>\n";
       }
       $eventinfo .= build_entry_popup ( $divname, $cal_user, $description,
         $timestr, site_extras_for_popup ( $id ));
@@ -275,7 +275,7 @@ function uncheck_all(user) {
     }
   }
 }
-function do_confirm ( phrase, user ) {
+function do_confirm ( phrase, user, id ) {
   
   form = document.listunapproved;
   switch ( phrase ) {
@@ -298,18 +298,17 @@ function do_confirm ( phrase, user ) {
     case "rejectSelected":
       str = "<?php etranslate( 'Reject Selected entries?', true) ?>";
       action = 'R';
+      break;
     default:
       str = action = '';
   }
   form.process_action.value = action;
   form.process_user.value = user;
   conf = confirm(str);
-//alert ( phrase + ' ' + conf );
-//  if ( conf ) {
- //   form.submit ();
-//  } else {
-    return conf;
-//  }
+  //We need this if only single operation
+  if ( id  && conf )
+    form.elements[id].checked = true;
+  return conf;
 }
 //]]> -->
 </script>
