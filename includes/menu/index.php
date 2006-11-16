@@ -558,7 +558,7 @@ $menuScript .= "[_cmNoAction, '<td>&nbsp;&nbsp;</td>'],";
 // Unapproved Icon if any exist
 $unapprovedStr = display_unapproved_events ( ( $is_assistant || $is_nonuser_admin
     ? $user : $login ) );
-if ( $unapprovedStr == '<br />' && $unapproved_url != '' && 
+if ( ! empty ( $unapprovedStr ) && $unapproved_url != '' && 
   $menuConfig['Unapproved Icon'] )
   jscMenu_item ( 'unapproved.png', '', $unapproved_url );
 // Generate Printer Friendly Icon
