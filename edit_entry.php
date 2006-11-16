@@ -487,7 +487,7 @@ if ( $ALLOW_HTML_DESCRIPTION == 'Y' ){
   if ( $use_fckeditor ) {
     $textareasize = 'rows="20" cols="50"';
   } else if ( $use_htmlarea ) {
-    $BodyX = 'onload="initEditor();onLoad()"';
+    $BodyX = 'onload="initEditor();onLoad();"';
     $INC[] = 'htmlarea/htmlarea.php/true';
     $INC[] = 'htmlarea/core.php/true';
   }
