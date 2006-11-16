@@ -57,9 +57,9 @@ if ( empty ( $DISPLAY_TASKS ) ||  $DISPLAY_TASKS == 'N' && $DISPLAY_SM_MONTH != 
 
 if ( ! empty ( $DISPLAY_TASKS ) && $DISPLAY_TASKS == 'Y' && $friendly !=1 ) {
   $prevMonth2 = display_small_month ( $prevmonth, $prevyear, true, false, 'prevmonth',
-    $monthURL );
+    $monthURL ) . '<br />';
   $nextMonth2 = display_small_month ( $nextmonth, $nextyear, true, false, 'nextmonth',
-    $monthURL );
+    $monthURL ) . '<br />';
   $smallTasks = display_small_tasks ( $cat_id );
   $tableWidth = '80%';
 }
@@ -88,7 +88,7 @@ echo <<<EOT
       {$monthStr}
      </td>
      <td valign="top" align="center">
-      {$prevMonth2}<br />{$nextMonth2}<br />{$smallTasks}
+      {$prevMonth2}{$nextMonth2}{$smallTasks}
      </td>
     </tr>
   </table>
