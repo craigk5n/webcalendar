@@ -27,9 +27,11 @@ load_user_preferences ( $guest );
 //we will cache css as default, but override from admin and pref
 //by incrementing the webcalendar_csscache cookie value
 
+$cookie = ( isset ( $_COOKIE['webcalendar_csscache'] ) ?
+    $_COOKIE['webcalendar_csscache'] : 0 );
 
 header( 'Content-type: text/css' ); 
-header('Last-Modified: '.date('r'));
+header('Last-Modified: '. date('r', time() + $cookie ) );
 header('Expires: ' . date( 'D, j M Y H:i:s', time() +  86400 ) . ' UTC');
 header('Cache-Control: Public');
 header('Pragma: Public');
