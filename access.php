@@ -29,11 +29,17 @@ if ( ! access_is_enabled () ) {
   echo print_not_auth ();
   exit;
 }
+$uacStr = translate ( 'User Access Control' );
+$cancelStr = translate ( 'Cancel' );
+$defaultStr = translate ( 'DEFAULT CONFIGURATION' );
+$saveStr = translate ( 'Save' );
+$goStr = translate ( 'Go' );
+
 // print_r ( $_POST );
 // Are we handling the access form?
 // If so, do that, then redirect.
 // Handle function access first.
-if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) != '' ) {
+if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) == $saveStr ) {
   $auser = getPostValue ( 'auser' );
   $perm = '';
   for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
@@ -47,14 +53,10 @@ if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) != '' ) {
       cal_permissions ) VALUES ( ?, ? )', array ( $auser, $perm ) ) )
     die_miserable_death ( translate ( 'Database error' ) . ': ' . dbi_error () );
 }
-$uacStr = translate ( 'User Access Control' );
-$cancelStr = '<< ' .translate ( 'Cancel' );
-$defaultStr = translate ( 'DEFAULT CONFIGURATION' );
-$saveStr = translate ( 'Save' );
-$goStr = translate ( 'Go' );
+
 // Are we handling the other user form?
 // If so, do that, then redirect.
-if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '' ) {
+if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) == $saveStr ) {
   $puser = getPostValue ( 'guser' );
   $pouser = getPostValue ( 'otheruser' );
   if ( $allow_view_other ) {
@@ -99,6 +101,7 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) != '' ) {
 }
 $otheruser = '';
 $checked = ' checked="checked" ';
+$selected = ' selected="selected"';
 $guser = getPostValue ( 'guser' );
 if ( $guser == '__default__' ) {
   $user_fullname = $defaultStr;
@@ -145,19 +148,61 @@ print_header ( '', '',
   ( ! empty ( $op['time'] ) && $op['time'] == 'Y'
     ? 'onload="enableAll ( true );"' : '' ) );
 
+if ( ! empty ( $guser ) && $is_admin ) 
+   user_load_variables ( $guser, 'user_' );
+ 
+if ( $is_admin ) {
+  $adminStr = translate ( 'Admin' );
+  $userlist = get_my_users ();
+  $nonuserlist = get_nonuser_cals ();
+  // If we are here... we must need to print out a list of users
+//  ob_start ();
+
+  echo '
+    <h2>' . $uacStr . ( ! empty ( $user_fullname ) ? ': ' . $user_fullname : '' ) 
+    . '</h2>' . display_admin_link ( false ) 
+    . '<form action="access.php" method="post" name="SelectUser">
+      <select name="guser" onchange="document.SelectUser.submit()">'
+  // add a DEFAULT CONFIGURATION to be used as a mask
+  . '
+        <option value="__default__"' 
+  . ( $guser == '__default__' ? $selected  : '' ) 
+  . '>' . $defaultStr . '</option>';
+  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
+    echo '
+        <option value="' . $userlist[$i]['cal_login'] . '"' 
+      . ( $guser == $userlist[$i]['cal_login'] ? $selected  : '' ) . '>'
+     . $userlist[$i]['cal_fullname'] . '</option>';
+  }
+  for ( $i = 0, $cnt = count ( $nonuserlist ); $i < $cnt; $i++ ) {
+    echo '
+        <option value="' . $nonuserlist[$i]['cal_login'] . '"'
+     . ( $guser == $nonuserlist[$i]['cal_login'] ? $selected  : '' ) . '>'
+     . $nonuserlist[$i]['cal_fullname'] . ' '
+     . ( $nonuserlist[$i]['cal_is_public'] == 'Y' ? '*' : '' ) . '</option>';
+  }
+
+  echo '
+      </select>
+      <input type="submit" value="' . $goStr . '" />
+    </form>';
+
+//  ob_end_flush ();
+} //end admin $guser !- default test
+
 if ( ! empty ( $guser ) || ! $is_admin ) {
   if ( $is_admin ) {
     // Present a page to allow editing a user's rights
-    $adminStr = translate ( 'Admin' );
-    user_load_variables ( $guser, 'user_' );
-
     $access = access_load_user_functions ( $guser );
     $div = ceil ( ACCESS_NUMBER_FUNCTIONS / 4 );
+
+    //We can reorder the display of user rights here
+    $order = array ( 1,0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
+      17,18,19,20,21,22,23,24,25,26);
     ob_start ();
 
     echo '
-    <h2>' . $uacStr . ': ' . $user_fullname . '</h2>
-    ' . display_admin_link () . '
+    <div class="boxall" style="margin-top: 5px;padding: 5px; width: 70%">
     <form action="access.php" method="post" name="accessform">
       <input type="hidden" name="auser" value="' . $guser . '" />
       <input type="hidden" name="guser" value="' . $guser . '" />
@@ -169,8 +214,8 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
       // Public access and NUCs can never use some of these functions.
       $show = true;
-      if ( $guser == '__public__' || $is_nonuser ) {
-        switch ( $i ) {
+      if ( $guser == '__public__' || substr ( $guser, 0 , 5 ) == $NONUSER_PREFIX ) {
+        switch ( $order[$i] ) {
           case ACCESS_ACCESS_MANAGEMENT:
           case ACCESS_ACCOUNT_INFO:
           case ACCESS_ACTIVITY_LOG:
@@ -189,10 +234,11 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
       }
       if ( $show )
         echo '
-              <label for="access_' . $i
-         . '"><input type="checkbox" name="access_' . $i . '" id="access_' . $i
-         . '" value="Y" ' . ( substr ( $access, $i, 1 ) != 'N' ? $checked : '' )
-         . '/>' . access_get_function_description ( $i ) . '</label><br />';
+              <label for="access_' . $order[$i]
+         . '"><input type="checkbox" name="access_' . $order[$i] 
+         . '" id="access_' . $order[$i]
+         . '" value="Y" ' . ( substr ( $access, $order[$i], 1 ) != 'N' ? $checked : '' )
+         . '/>' . access_get_function_description ( $order[$i] ) . '</label><br />';
 
       if ( ( $i + 1 ) % $div == 0 )
         echo '
@@ -205,10 +251,9 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
           </tr>
         </tbody>
       </table>
-      <input type="button" value="' . $cancelStr
-     . '" onclick="document.location.href=\'access.php\'" />
+      <input type="submit" value="' . $cancelStr . '"/>
       <input type="submit" name="submit" value="' . $saveStr . '" />
-    </form>';
+    </form></div>';
 
     ob_end_flush ();
     $pagetitle = translate ( 'Allow Access to Other Users&#39; Calendar' );
@@ -229,31 +274,28 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
   if ( $allow_view_other ) {
     $userlist = get_list_of_users ( $guser );
     $str = '
-    <h2>' . $pagetitle . '</h2>
+    <h2 style="margin-bottom: 2px;">' . $pagetitle . '</h2>
     <form action="access.php" method="post" name="SelectOther">
       <input type="hidden" name="guser" value="' . $guser . '" />
       <select name="otheruser" onchange="document.SelectOther.submit()">'
     // add a DEFAULT CONFIGURATION to be used as a mask
     . '
-        <option value="__default__">' . $defaultStr . '</option>';
+        <option value="__default__"'
+    . ( $otheruser == '__default__' ? $selected  : '' ) . '>' 
+    . $defaultStr . '</option>';
 
     for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       if ( $userlist[$i]['cal_login'] != $guser )
         $str .= '
         <option value="' . $userlist[$i]['cal_login'] . '"'
          . ( ! empty ( $otheruser ) && $otheruser == $userlist[$i]['cal_login']
-          ? ' selected="selected"' : '' )
+          ? $selected : '' )
          . '>' . $userlist[$i]['cal_fullname'] . '</option>';
     }
     echo $str . '
       </select>
       <input type="submit" value="' . $goStr . '" />
     </form>';
-
-    if ( empty ( $otheruser ) ) {
-      echo print_trailer ();
-      exit;
-    }
   }
 }
 
@@ -264,10 +306,10 @@ if ( ! empty ( $otheruser ) ) {
     <form action="access.php" method="post" name="EditOther">
       <input type="hidden" name="guser" value="' . $guser . '" />
       <input type="hidden" name="otheruser" value="' . $otheruser . '" /><br />
-      <table cellpadding="5" cellspacing="0">
+      <table cellpadding="5" cellspacing="0" width="70%">
         <tbody>
           <tr>
-            <th class="boxtop boxbottom" width='
+            <th class="boxleft boxtop boxbottom" width='
      . ( $guser == '__public__'
       ? '"60%" align="center">' . translate ( 'Calendar' ) . '</th>
             <th class="boxtop boxbottom" width="20%">' . $typeStr . '</th>
@@ -360,16 +402,16 @@ if ( ! empty ( $otheruser ) ) {
     }
     echo $gridStr . '
           <tr>
-            <td colspan="2" class="alignright">'
+            <td colspan="2" class="boxleft alignright">'
      . ( $otheruser != '__default__' && $otheruser != '__public__' ? '
               <input type="button" value="' . translate ( 'Assistant' )
-       . '" onclick="selectAll(63);" />&nbsp;&nbsp;' : '' ) . '
+     . '" onclick="selectAll(63);" />&nbsp;&nbsp;' : '' ) . '
               <input type="button" value="' . translate ( 'Select All' )
      . '" onclick="selectAll(256);" />&nbsp;&nbsp;
               <input type="button" value="' . translate ( 'Clear All' )
      . '" onclick="selectAll(0);" />
             </td>
-            <td colspan="9">
+            <td colspan="9" class="boxright">
               <table border="0" align="center" cellpadding="5" cellspacing="2">
                 <tr>
                   <td class="pub">' . translate ( 'Public' ) . '</td>
@@ -378,17 +420,14 @@ if ( ! empty ( $otheruser ) ) {
                 </tr>
               </table>
             </td>
-          </tr>
-        </tbody>
-      </table>
-      <br /><br />';
+          </tr>';
   }
 
   echo '
-      <input type="button" value="' . $cancelStr
-   . '" onclick="document.location.href=\'access.php\'" />
+      <tr><td colspan="11" class="boxleft boxbottom boxright">
+      <input type="submit" value="' . $cancelStr . '"/>
       <input type="submit" name="submit" value="' . $saveStr . '" />
-    </form>';
+    </td></tr></table></form>';
 
   ?>
 <script language="javascript" type="text/javascript">
@@ -437,43 +476,9 @@ function enableAll ( on ) {
 }
 //]]> -->
 </script>
-  <?php
-  echo print_trailer ();
-  exit;
+<?php
 }
-if ( $is_admin && ( empty ( $guser ) || $guser != '__default__' ) ) {
-  $userlist = get_my_users ();
-  $nonuserlist = get_nonuser_cals ();
-  // If we are here... we must need to print out a list of users
-  ob_start ();
 
-  echo '
-    <h2>' . $uacStr . '</h2>
-    ' . display_admin_link () . '
-    <form action="access.php" method="post" name="SelectUser">
-      <select name="guser" onchange="document.SelectUser.submit()">'
-  // add a DEFAULT CONFIGURATION to be used as a mask
-  . '
-        <option value="__default__">' . $defaultStr . '</option>';
-  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-    echo '
-        <option value="' . $userlist[$i]['cal_login'] . '">'
-     . $userlist[$i]['cal_fullname'] . '</option>';
-  }
-  for ( $i = 0, $cnt = count ( $nonuserlist ); $i < $cnt; $i++ ) {
-    echo '
-        <option value="' . $nonuserlist[$i]['cal_login'] . '">'
-     . $nonuserlist[$i]['cal_fullname'] . ' '
-     . ( $nonuserlist[$i]['cal_is_public'] == 'Y' ? '*' : '' ) . '</option>';
-  }
-
-  echo '
-      </select>
-      <input type="submit" value="' . $goStr . '" />
-    </form>';
-
-  ob_end_flush ();
-} //end admin $guser !- default test
 echo print_trailer ();
 // Get the list of users that the specified user can see.
 function get_list_of_users ( $user ) {
