@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Added new user option 'Display Long Day Names'
  - Added new Color Picker
  - Fixed bug [ 1573961 ] Excessive LDAP connections for single calendar query
  - Fixed bug [ 1594714 ] upcomming.php doesn't work

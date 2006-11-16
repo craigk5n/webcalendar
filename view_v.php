@@ -30,8 +30,6 @@ include_once 'includes/views.php';
 $error = '';
 $DAYS_PER_TABLE = 7;
 
-//TODO this will be placed in admin and pref
-$DISPLAY_LONG_WEEKDAYS = 'N';
 
 view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_v.php');
@@ -133,7 +131,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
       //build header row
       if ( $i == 0 ) {
         $header .= "<th $class style=\"width:$tdw%;\">"
-          . weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_WEEKDAYS ) . " " 
+          . weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS ) . " " 
           . date ( 'd', $date ) . "</th>\n";
       }
       // JCJ Correction for today class

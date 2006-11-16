@@ -60,7 +60,7 @@ $events = read_events ( strlen ( $user ) ? $user : $login, $wkstart, $wkend, $ca
 if (  $WEEK_START == 0 && $DISPLAY_WEEKENDS == 'N' ) $wkstart = $wkstart - ONE_DAY;
 for ( $i = 0; $i < 7; $i++ ) {
   $days[$i] = ( $wkstart + ONE_DAY * $i ) + ( 12 * 3600 );
-  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, 'D' );
+  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS );
   $header[$i] = $weekdays[$i] . ' ' .
     date_to_str ( date ( 'Ymd', $days[$i] ), $DATE_FORMAT_MD, false );
 }

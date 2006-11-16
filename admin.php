@@ -140,6 +140,8 @@ $GLOBALS['TEXTCOLOR'] = $s['TEXTCOLOR'];
 $GLOBALS['H2COLOR'] = $s['H2COLOR'];
 $GLOBALS['HASEVENTSBG'] = $s['HASEVENTSBG'];
 $GLOBALS['WEEKNUMBER'] = $s['WEEKNUMBER'];
+$GLOBALS['MENU_THEME'] = $s['MENU_THEME'];
+
 
 //determine if we can set timezones, if not don't display any options
 $can_set_timezone = set_env ( 'TZ', $s['SERVER_TIMEZONE'] );
@@ -160,7 +162,8 @@ $allow_url_fopen = preg_match ( "/(On|1|true|yes)/i", ini_get ( 'allow_url_fopen
 $BodyX = 'onload="popup_handler(); public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();';
 $BodyX .= ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );\"" : '"' );
 $INC = array('js/admin.php','js/visible.php/true');
-print_header ( $INC, '', $BodyX );
+//We need to load CSS inline so we can override GLOBALS
+print_header ( $INC, '', $BodyX, false, false );
 include "includes/styles.php";
 ?>
 
@@ -353,18 +356,18 @@ include "includes/styles.php";
 
  <tr><td class="tooltip" title="<?php etooltip( 'display-week-starts-on' )?>">
   <?php etranslate( 'Week starts on' )?>:</td><td>
-  <?php echo print_radio_html ( 'WEEK_START' , '' , 'admin_', '0', '1', 
+  <?php echo print_radio_html ( 'WEEK_START' , '' , '0', '1', 
     translate( 'Sunday' ), translate( 'Monday' ) ) ?>
  </td></tr>
 
  <tr><td class="tooltip" title="<?php etooltip( 'time-format-help' )?>">
   <?php etranslate( 'Time format' )?>:</td><td>
-  <?php echo print_radio_html ( 'TIME_FORMAT' , '' , 'admin_', '12', '24', 
+  <?php echo print_radio_html ( 'TIME_FORMAT' , '' , '12', '24', 
     translate( '12 hour' ), translate( '24 hour' ) ) ?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'timed-evt-len-help' )?>">
   <?php etranslate( 'Specify timed event length by' )?>:</td><td>
-  <?php echo print_radio_html ( 'TIMED_EVT_LEN' , '' , 'admin_', 'D', 'E', 
+  <?php echo print_radio_html ( 'TIMED_EVT_LEN' , '' , 'D', 'E', 
     translate( 'Duration' ), translate( 'End Time' ) ) ?>
  </td></tr>
 
@@ -427,7 +430,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  </td></tr>
  <tr><td><label>
  <?php etranslate( 'Date Selectors position' )?>:</label></td><td colspan="3">
- <?php echo print_radio_html ( 'MENU_DATE_TOP', '', 'admin_', 'Y', 'N'
+ <?php echo print_radio_html ( 'MENU_DATE_TOP', '', 'Y', 'N'
  ,  translate ( 'Top' ), translate ( 'Bottom' ) ) ?>
  </td></tr> 
  
@@ -457,6 +460,10 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <tr><td class="tooltip" title="<?php etooltip( 'display-weekends-help' );?>">
   <?php etranslate( 'Display weekends' )?>:</td><td>
   <?php echo print_radio_html ( 'DISPLAY_WEEKENDS' ) ?>
+ </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip( 'display-long-daynames-help' );?>">
+  <?php etranslate( 'Display long day names' )?>:</td><td>
+  <?php echo print_radio_html ( 'DISPLAY_LONG_DAYS' ) ?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'display-alldays-help' );?>">
   <?php etranslate( 'Display all days in month view' )?>:</td><td>
@@ -726,7 +733,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'nonuser-list-help' )?>">
   <?php etranslate( 'Nonuser list' )?>:</td><td>
-  <?php echo print_radio_html ( 'NONUSER_AT_TOP', '', 'admin_', 'Y', 'N'
+  <?php echo print_radio_html ( 'NONUSER_AT_TOP', '', 'Y', 'N'
  ,  translate ( 'Top' ), translate ( 'Bottom' ) ) ?>
 </td></tr>
 </table>

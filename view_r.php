@@ -152,7 +152,7 @@ if ( $is_day_view ) {
 // values for each date.
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = ( $wkstart + ONE_DAY * $i ) + ( 12 * 3600 );
-  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_WEEKDAYS );
+  $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS );
   $header[$i] = $weekdays[$i] . '<br />' .
      month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
      ' ' . date ( 'd', $days[$i] );

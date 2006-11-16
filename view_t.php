@@ -358,7 +358,7 @@ for ( $date = $wkstart; $date <= $wkend; $date += ONE_DAY ) {
   $dateYmd = date ( 'Ymd', $date );
   $is_weekend = is_weekend ( $date );
   if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue; 
-  $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_WEEKDAYS );
+  $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS );
   if ( $dateYmd == date ( 'Ymd', $today ) ) {
     echo "<tr><th class=\"today\">";
   } else if ( $is_weekend ) {
