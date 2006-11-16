@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-14-2006
+# Translation last updated on 11-16-2006
 
 
 ################################################################################
@@ -70,12 +70,12 @@ Ok: Ok
 ########################################
 # Page: access.php
 #
-Database error: Database error
 User Access Control: User Access Control
 Cancel: Cancel
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Save: Save
 Go: Go
+Database error: Database error
 Public Access: Public Access
 Admin: Admin
 Allow Access to Other Users&#39; Calendar: Allow Access to Other Users' Calendar
@@ -200,6 +200,8 @@ display-sm_month-help: If enabled, displays small months in month views
 Display small months: Display small months
 display-weekends-help: Include weekends when viewing a week.
 Display weekends: Display weekends
+display-long-daynames-help: If enabled, long day names are displayed
+Display long day names: Display long day names
 display-alldays-help: Display previous and next months days in month views, filling all cells.
 Display all days in month view: Display all days in month view
 display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.

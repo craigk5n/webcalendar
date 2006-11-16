@@ -135,7 +135,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
    $todayYmd = date ('Ymd', $today);
    $is_weekend = is_weekend( $date ); 
    if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue; 
-   $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_WEEKDAYS );
+   $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS );
    if ( $dateYmd == $todayYmd )
      $class = 'class="today"';
    else if ( $is_weekend )

@@ -341,8 +341,8 @@ function get_web_browser () {
  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-  //error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
-  //3, 'd:/php/logs/debug.txt' );
+  error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
+  3, 'd:/php/logs/debug.txt' );
   //fwrite ( $fd, date ( 'Y-m-d H:i:s' ) .  "> $msg\n" );
   //fclose ( $fd );
   //  3, '/tmp/webcal-debug.log' );
@@ -1540,18 +1540,15 @@ function display_navigation( $name, $show_arrows=true, $show_cats=true ){
  */
 function display_month ( $thismonth, $thisyear, $demo='' ){
  global $WEEK_START, $WEEKENDBG, $user, $login, $today,
-   $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_WEEKNUMBER, $DISPLAY_LONG_WEEKDAYS;
+   $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_WEEKNUMBER, $DISPLAY_LONG_DAYS;
 
- //TODO Add this option to System Settings and Preferences
- //Display long Weeekday names
-  $DISPLAY_LONG_WEEKDAYS = 'N';
   $ret = '<table class="main"  cellspacing="0" cellpadding="0" id="month_main"><tr>';
   if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
       $ret .= '<th class="weekcell" width="5%"></th>' . "\n"; 
   }
   for ( $i = 0; $i < 7; $i++ ) {
     $thday = ( $i + $WEEK_START ) % 7;
-    $thname = weekday_name ( $thday, $DISPLAY_LONG_WEEKDAYS );
+    $thname = weekday_name ( $thday, $DISPLAY_LONG_DAYS );
     $thclass = ( is_weekend ( $thday ) ? ' class="weekend"' :'' );
     $ret .= "<th$thclass>" . $thname . "</th>\n";
   }
@@ -1561,7 +1558,6 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
   $charset = translate('charset');
 
   $wkstart = get_weekday_before ( $thisyear, $thismonth );
-  
   // generate values for first day and last day of month
   $monthstart = date ('Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
   $monthend = date ('Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
@@ -4031,7 +4027,7 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
 function display_unapproved_events ( $user ) {
   global $PUBLIC_ACCESS, $NONUSER_ENABLED, $MENU_ENABLED,
     $login, $is_nonuser, $is_admin;
-  
+  static $retval;
   $app_users = array ();
   $app_user_hash = array ( );
   $ret = '';
@@ -4039,7 +4035,11 @@ function display_unapproved_events ( $user ) {
   // events if UAC is not enabled
   if ( $user == '__public__' || $is_nonuser )
     return;
-  
+
+  //don't run this more than once
+  if ( ! empty ( $retval[$user] ) )
+    return $retval[$user];
+
   $query_params = array();
   $sql = 'SELECT COUNT(webcal_entry_user.cal_id) ' .
     'FROM webcal_entry_user, webcal_entry ' .
@@ -4097,12 +4097,12 @@ function display_unapproved_events ( $user ) {
         } else { 
           //return something that won't display in bottom menu 
           // but still has strlen >0
-          $ret .= '<br />';
+          $ret .= '<!--NOP-->';
         }
       }
     }
   }
-
+  $retval[$user] = $ret;
   return $ret;
 }
 
@@ -4254,7 +4254,7 @@ function weekday_name ( $w, $format = 'l' ) {
     $week_names = $weekday_names = array();
   $local_lang = $lang;
 
-  //we may pass $DISPLAY_LONG_WEEKDAYS as $format
+  //we may pass $DISPLAY_LONG_DAYS as $format
   if ( $format == 'N' ) $format = 'D';
   if ( $format == 'Y' ) $format = 'l';
 
@@ -5905,13 +5905,14 @@ function getShortTime ( $timestr ) {
 /**
  * Display the <<Admin link on pages if menus are not enabled
  *
+ * @param bool     $break If true, include break if empty
  * @return string  HTML for Admin Home link
  * @global string  (Y/N) Is the Top Menu Enabled 
  */
-function display_admin_link ( ) {
+function display_admin_link ( $break=true ) {
  global $MENU_ENABLED;
  
- $ret = '<br />';
+ $ret = ( $break ? '<br />' : '' );
  if ( $MENU_ENABLED == 'N' ) {
    $adminStr = translate( 'Admin' );
    $ret = '<a title="' . $adminStr . '" class="nav" href="adminhome.php">&laquo;&nbsp; ' .
@@ -6004,10 +6005,11 @@ function display_activity_log ( $cal_type, $cal_text='' ) {
  *
  * @return string  HTML for the radio control
  */
-function print_radio_html ( $variable, $onclick = '', $pref = 'admin_',
+function print_radio_html ( $variable, $onclick = '',
   $valY = 'Y', $valN = 'N', $dispY = '', $dispN = '' ) {
-  global $checked, $prefarray, $s, $Yes, $No;
+  global $checked, $prefarray, $s, $Yes, $No, $SCRIPT;
 
+  $pref = ( $SCRIPT == 'admin.php' ? 'admin_' : 'pref_' );
   $onclickStr = ( ! empty ( $onclick )
     ? ' onclick="' . $onclick . ' ()" ' : '' ) . ' />&nbsp;';
   $openingStr = '<label><input type="radio" name="'
