@@ -180,10 +180,6 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // override the global colors and this is impossible if loading external file.
   // We will still increment the webcalendar_csscache cookie though.
   if ( ! $disableStyle ) {
-    if ( $thisPage == 'admin.php' || $thisPage == 'pref.php' )
-      // this will always force a reload of CSS
-      $webcalendar_csscache = $webcalendar_csscache . 'adminpref';
-
     $ret .= '
     <link rel="stylesheet" type="text/css" href="css_cacher.php?' . $login
      . $webcalendar_csscache . '" />';
@@ -248,7 +244,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
 function print_trailer ( $include_nav_links = true, $closeDb = true,
   $disableCustom = false ) {
   global $ALLOW_VIEW_OTHER, $c, $cat_id, $CATEGORIES_ENABLED, $CUSTOM_TRAILER,
-  $DATE_FORMAT_MD, $DATE_FORMAT_MY, $DEMO_MODE, $DISPLAY_TASKS,
+  $DATE_FORMAT_MD, $DATE_FORMAT_MY, $DEMO_MODE, $DISPLAY_TASKS, $friendly,
   $DISPLAY_TASKS_IN_GRID, $fullname, $GROUPS_ENABLED, $has_boss, $is_admin,
   $is_nonuser, $is_nonuser_admin, $LAYER_STATUS, $login, $login_return_path,
   $MENU_DATE_TOP, $MENU_ENABLED, $NONUSER_ENABLED, $PUBLIC_ACCESS,
@@ -258,13 +254,14 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
 
   $ret = '';
 
-  if ( $include_nav_links ) { //TODO turn off bottom menu if top menu enabled
+  if ( $include_nav_links && ! $friendly ) { 
     if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' ) {
       $ret .= '<div id="dateselector">';
       $ret .= print_menu_dates ();
       $ret .= '</div>';
     }
-      include_once 'includes/trailer.php';
+      if ( $MENU_ENABLED == 'N' )
+       include_once 'includes/trailer.php';
   }
 
   if ( ! empty ( $tret ) )
@@ -297,6 +294,7 @@ function print_menu_dates ( $menu = false ) {
   $DISPLAY_WEEKENDS, $login, $thismonth, $thisyear, $user, $WEEK_START;
   $goStr = translate ( 'Go' );
   $ret = '';
+  $selected = ' selected="selected" ';
   if ( access_can_view_page ( 'month.php' ) ) {
     $monthUrl = 'month.php';
     $urlArgs = '';
@@ -347,7 +345,7 @@ function print_menu_dates ( $menu = false ) {
       $dateYmd = date ( 'Ymd', $d );
       $ret .= '
                 <option value="' . $dateYmd . '"'
-       . ( $dateYmd == $thisdate ? ' selected="selected" ' : '' ) . '>'
+       . ( $dateYmd == $thisdate ? $selected : '' ) . '>'
        . date_to_str ( $dateYmd, $DATE_FORMAT_MY, false, true, 0 ) . '</option>';
     }
   }
@@ -409,7 +407,7 @@ function print_menu_dates ( $menu = false ) {
       $ret .= '
               <option value="' . $dateSYmd . '"'
        . ( $dateSYmd <= $thisdate && $dateEYmd >= $thisdate
-        ? ' selected="selected" ' : '' ) . '>'
+        ? $selected : '' ) . '>'
        . ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
         ( $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y' )
         ? '( ' . date( 'W', $twkstart + 86400 ) . ' )&nbsp;&nbsp;' : '' )
@@ -460,7 +458,7 @@ function print_menu_dates ( $menu = false ) {
     if ( $i >= 1970 && $i < 2038 )
       $ret .= '
               <option value="' . $i . '"'
-       . ( $i == $y ? ' selected="selected" ' : '' ) . ">$i" . '</option>';
+       . ( $i == $y ? $selected : '' ) . ">$i" . '</option>';
   }
 
   $ret .= '
