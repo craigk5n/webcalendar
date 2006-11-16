@@ -16,7 +16,7 @@
  * "work".
  */
 include_once 'includes/init.php';
-$BodyX = 'onload="toggle_import()"';
+$BodyX = 'onload="toggle_import();"';
 $INC = array('js/export_import.php', 'js/visible.php/true');
 print_header($INC, '', $BodyX);
 
@@ -43,13 +43,8 @@ function print_user_list () {
       $l = $userlist[$i]['cal_login'];
       $size++;
       $users .= '<option value="' . $l . '"';
-      if ( ! empty ( $id ) && $id > 0 ) {
-        if ( ! empty ( $participants[$l] ) )
-          $users .= ' selected="selected"';
-      } else {
-        if ( $l == $login && ! $is_assistant  && ! $is_nonuser_admin )
-          $users .= ' selected="selected"';
-      }
+      if ( $l == $login && ! $is_assistant  && ! $is_nonuser_admin )
+        $users .= ' selected="selected"';
       $users .= '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
     }
   

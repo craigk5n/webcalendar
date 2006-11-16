@@ -67,6 +67,7 @@ if ( $login == '__public__' ) {
 $charset = ( ! empty ( $LANGUAGE )?translate( 'charset' ): 'iso-8859-1' );
 
 $checked = ' checked="checked"';
+$selected = ' selected="selected" ';
 // Set date range options
 $ranges = array (
   '0' => translate ( 'Tomorrow' ),
@@ -277,14 +278,14 @@ if ( ! $adding_report ) { ?>
 if ( $show_participants ) {
   $users = '<option value=""';
   if ( empty ( $report_user ) ) {
-    $users .= ' selected="selected"';
+    $users .= $selected;
   }
   $users .= '>' . translate ( 'Current User' ) . "</option>\n";
   for ( $i = 0; $i < $userlistcnt; $i++ ) {
     $users .= '<option value="' . $userlist[$i]['cal_login'] . '"';
     if ( ! empty ( $report_user ) ) {
       if ( $report_user == $userlist[$i]['cal_login'] ) {
-        $users .= ' selected="selected"';
+        $users .= $selected;
       }
     } 
     $users .= '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
@@ -340,7 +341,7 @@ if ( $is_admin ) {
     while ( list ( $num, $descr ) = each ( $ranges ) ) {
       echo "<option value=\"$num\"";
       if ( $report_time_range == $num ) {
-        echo ' selected="selected"';
+        echo $selected;
       }
       echo ">$descr</option>\n";
     }
@@ -354,7 +355,7 @@ if ( $is_admin ) {
     while ( list ( $cat_id, $descr ) = each ( $categories ) ) {
       echo "<option value=\"$cat_id\"";
       if ( $report_cat_id == $cat_id ) {
-        echo ' selected="selected"';
+        echo $selected;
       }
       echo ">$descr</option>\n";
     }

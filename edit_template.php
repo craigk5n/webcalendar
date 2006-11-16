@@ -75,7 +75,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
     dbi_execute ( 'DELETE FROM webcal_user_template ' .
       'WHERE cal_type = ? ' .
       'AND cal_login = ?', array( $type, $user ) );
-    echo "<html><body onload=\"window.close()\"></body></html>\n";
+    echo "<html><body onload=\"window.close();\"></body></html>\n";
     exit;
   }
   $template = getPostValue ( 'template' );

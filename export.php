@@ -19,7 +19,7 @@ if ( empty ( $login) || $login == '__public__' ) {
 
 load_user_categories ();
 
-$selected = ' selected="selected"';
+$selected = ' selected="selected" ';
 $datem = date ( 'm' );
 $dateY = date ( 'Y' );
 
@@ -41,7 +41,7 @@ print_header($INC);
   <label for="cat_filter"><?php etranslate( 'Categories' )?>:</label></td><td>
  <select name="cat_filter" id="cat_filter"> 
    <?php  
-    echo '<option value="" selected="selected">' . translate( 'All' ) . "</option>\n";
+    echo '<option value=""' . $selected . '>' . translate( 'All' ) . "</option>\n";
     foreach ( $categories as $K => $V ){
       if ( $K  > 0 )
         echo "<option value=\"$K\">$V</option>\n";
