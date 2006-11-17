@@ -202,7 +202,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     ob_start ();
 
     echo '
-    <div class="boxall" style="margin-top: 5px;padding: 5px; width: 70%">
+    <div class="boxall" style="margin-top: 5px;padding: 5px;>
     <form action="access.php" method="post" name="accessform">
       <input type="hidden" name="auser" value="' . $guser . '" />
       <input type="hidden" name="guser" value="' . $guser . '" />
@@ -306,7 +306,7 @@ if ( ! empty ( $otheruser ) ) {
     <form action="access.php" method="post" name="EditOther">
       <input type="hidden" name="guser" value="' . $guser . '" />
       <input type="hidden" name="otheruser" value="' . $otheruser . '" /><br />
-      <table cellpadding="5" cellspacing="0" width="70%">
+      <table cellpadding="5" cellspacing="0">
         <tbody>
           <tr>
             <th class="boxleft boxtop boxbottom" width='
