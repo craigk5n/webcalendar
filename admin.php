@@ -518,7 +518,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <tr><td class="tooltip" title="<?php etooltip( 'conflict-check-help' )?>">
   <?php etranslate( 'Check for event conflicts' )?>:</td><td>
   <?php //this control is logically reversed
-    echo print_radio_html ( 'ALLOW_CONFLICTS', '' ,'admin_', 'N', 'Y' ) ?>
+    echo print_radio_html ( 'ALLOW_CONFLICTS', '', 'N', 'Y' ) ?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'conflict-months-help' )?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'Conflict checking months' )?>:</td><td>
