@@ -365,6 +365,8 @@ if ( $DISPLAY_WEEKENDS == 'N' ) {
 }
 .sample {
   border-style: groove;
+  text-align: left;
+  width: 18px;
 }
 .weeknumber,
 .weeknumber a {

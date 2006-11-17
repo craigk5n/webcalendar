@@ -6030,24 +6030,34 @@ function print_radio_html ( $variable, $onclick = '',
 /**
  * Generates HTML for color chooser options in admin and pref pages
  *
- * @param string   $variable    the name of the variable to display
- * @param string   $title       color description
- * @param string   $pref        prefix to attach to $variable
+ * @param string   $varname    the name of the variable to display
+ * @param string   $title      color description
+ * @param string   $varval     the default value to display
  *
  * @return string  HTML for the color selector
  */
-function print_color_input_html ( $variable, $title, $pref='admin_' ) {
- global $s, $prefarray, $select;
+function print_color_input_html ( $varname, $title, $varval='' ) {
+ global $s, $prefarray, $select, $SCRIPT;
 
-  $setting = ( $pref == 'admin_' ?$s[$variable] : $prefarray[$variable] );
-  $ret = '<label for="' . $pref . $variable . '">' . $title
-    . ':</label></td>' . "\n" . '<td>'
-    . '<input type="text" name="' . $pref . $variable . '" id="'
-    . $pref . $variable .'" size="8" maxlength="7" value="' . $setting
-    . '" onkeyup="updateColor(this);" /></td><td class="sample" '
-    . 'style="background-color:' . $setting . ';">'
-    . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>' . "\n" . '<td>'
-    . '<input type="button" onclick="selectColor(\'' . $pref . $variable 
+  if ( $SCRIPT =='admin.php' ) {
+    $pref = 'admin_';
+    $setting = $s[$varname];
+  } else if ( $SCRIPT == 'pref.php' ) {
+    $pref = 'pref_';
+    $setting = $prefarray[$varname];
+  } else {
+    $pref = '';
+    $setting = $varval;
+  }
+  $ret = '<label for="' . $pref . $varname . '">' . $title
+    . ':</label></td>
+       <td width="50">
+       <input type="text" name="' . $pref . $varname . '" id="'
+    . $pref . $varname .'" size="7" maxlength="7" value="' . $setting
+    . '" onchange="updateColor(this);" /></td>
+      <td class="sample" style="background-color:' . $setting . ';">'
+    . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+       <td><input type="button" onclick="selectColor(\'' . $pref . $varname 
     . '\', event )" value="' . $select . '" />'. "\n";
 
  return $ret;

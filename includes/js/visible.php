@@ -116,6 +116,35 @@ function selectColor ( color, evt ) {
   var colorWindow = window.open(url,"ColorSelection","width=390,height=365," + MyOptions );
 }
 
+function valid_color ( str ) {
+ var validColor = /^#[0-9a-fA-F]{3}$|^#[0-9a-fA-F]{6}$/;
+
+ return validColor.test ( str );
+}
+
+// Updates the background-color of a table cell
+// Parameters:
+//    input - <input> element containing the new color value
+// Note: this function relies on the following structure:
+//   <td><input onchange="updateColor(this);" /></td>
+//   <td>(this is the cell to be updated)</td>
+function updateColor ( input ) {
+ // The cell to be updated
+ var colorCell = input.parentNode.nextSibling;
+ // The new color
+ var color = input.value;
+
+ if (!valid_color ( color ) ) {
+   // Color specified is invalid; use black instead
+  colorCell.style.backgroundColor = "#000000";
+  input.select();
+  input.focus();
+  alert ( '<?php etranslate( 'Invalid Color', true ) ?>');
+ } else {
+  colorCell.style.backgroundColor = color;
+ }
+}
+
 function toggle_datefields( name, ele ) {
   var enabled = document.getElementById(ele.id).checked;
   if ( enabled ) { 

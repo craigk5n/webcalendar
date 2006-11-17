@@ -479,7 +479,7 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
 }
 
 $textareasize = 'rows="15" cols="50"';
-$INC = array (  'js/visible.php/true', "js/edit_entry.php/false/$user" );
+$INC = array (  'js/visible.php', "js/edit_entry.php/false/$user" );
 $BodyX = 'onload="onLoad();"';
 if ( $ALLOW_HTML_DESCRIPTION == 'Y' ){
   // Allow HTML in description

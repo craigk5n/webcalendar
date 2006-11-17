@@ -2,23 +2,6 @@
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 ?>
 var validform = true;
-function valid_color ( str ) {
-  var ch, j;
-  var valid = "0123456789abcdefABCDEF";
-
-  if ( str.length == 0 )
-    return true;
-
-  if ( str.charAt ( 0 ) != '#' || str.length != 7 )
-    return false;
-
-  for ( j = 1; j < str.length; j++ ) {
-   ch = str.charAt ( j );
-   if ( valid.indexOf ( ch ) < 0 )
-     return false;
-  }
-  return true;
-}
 
 function valid_form ( form ) {
   var err = "";
