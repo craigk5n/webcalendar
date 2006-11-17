@@ -5,7 +5,7 @@ include_once 'includes/init.php';
 if ( ! $is_admin )
   $user = $login;
 
-$INC = array('js/views.php/true','js/visible.php/true');
+$INC = array('js/views.php/true','js/visible.php');
 print_header($INC);
 
 echo display_admin_link();

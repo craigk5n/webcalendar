@@ -17,7 +17,7 @@
  */
 include_once 'includes/init.php';
 $BodyX = 'onload="toggle_import();"';
-$INC = array('js/export_import.php', 'js/visible.php/true');
+$INC = array('js/export_import.php', 'js/visible.php');
 print_header($INC, '', $BodyX);
 
 // Generate the selection list for calendar user selection.

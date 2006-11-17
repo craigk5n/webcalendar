@@ -50,7 +50,7 @@ $user = getPostValue ( 'user' );
 $preview = getPostValue ( 'preview' );
 $preview = ( empty ( $preview ) ? false : true );
 
-$INC = array( 'js/visible.php/true' );
+$INC = array( 'js/visible.php' );
 
 print_header ( $INC );
 ?>

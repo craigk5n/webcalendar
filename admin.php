@@ -161,7 +161,7 @@ $allow_url_fopen = preg_match ( "/(On|1|true|yes)/i", ini_get ( 'allow_url_fopen
 
 $BodyX = 'onload="popup_handler(); public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();';
 $BodyX .= ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );\"" : '"' );
-$INC = array('js/admin.php','js/visible.php/true');
+$INC = array('js/admin.php','js/visible.php');
 //We need to load CSS inline so we can override GLOBALS
 print_header ( $INC, '', $BodyX, false, false );
 include "includes/styles.php";
@@ -958,8 +958,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <?php echo print_color_input_html ( 'BGCOLOR',
    translate( 'Document background' ) ) ?>
 </td>
-<td rowspan="14" width="1%">&nbsp;</td>
-<td rowspan="14" width="45%" class="aligncenter ligntop">
+<td rowspan="15" width="1%">&nbsp;</td>
+<td rowspan="15" width="45%" class="aligncenter ligntop">
 <!-- BEGIN EXAMPLE MONTH -->
 <table style="width:90%; background-color:<?php echo $BGCOLOR?>"><tr>
 <td width="1%" rowspan="3">&nbsp;</td>
@@ -979,7 +979,7 @@ echo display_month ( date ('m') , date('Y') , true);
 </td>
 </tr>
 <tr><td>
- <?php echo print_color_input_html ( 'H2COLOR', 
+ <?php echo print_color_input_html ( 'H2COLOR',
    translate( 'Document title' ) ) ?>
 </td></tr>
 <tr><td>

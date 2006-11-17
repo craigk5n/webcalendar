@@ -19,6 +19,10 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 
 load_user_layers ( $layer_user, 1 );
 
+$color = ( ! empty ( $layers[$id]['cal_color'] ) ? 
+  $layers[$id]['cal_color'] : '#000000' );
+$select = translate( 'Select' ) . '...';
+
 $INC = array('js/edit_layer.php', 'js/visible.php');
 print_header($INC);
 ?>
@@ -39,7 +43,7 @@ else
  <input type="hidden" name="public" value="1" />
 <?php } ?>
 
-<table>
+<table cellspacing="2" cellpadding="3">
 <?php
 if ( $single_user == 'N' ) {
   $userlist =  $otherlist = get_my_users ( '', 'view' );
@@ -85,7 +89,7 @@ if ( $single_user == 'N' ) {
     $osize = 5;
   if ( $size >= 1 ) {
     echo"<tr><td class=\"aligntop\">\n<label for=\"layeruser\">" .
-      translate( 'Source' ) . ":</label></td><td>\n";
+      translate( 'Source' ) . ":</label></td><td colspan=\"3\">\n";
     echo "<select name=\"layeruser\" id=\"layeruser\" size=\"1\">\n$users\n";
     echo "</select>\n";
     echo "</td></tr>\n";
@@ -93,14 +97,11 @@ if ( $single_user == 'N' ) {
 }
 ?>
 <tr><td>
- <label for="layercolor"><?php etranslate( 'Color' )?>:</label></td><td>
- <input type="text" name="layercolor" id="layercolor" size="7" maxlength="7" value="<?php 
-  echo empty ( $layers[$id]['cal_color'] ) ? '':  $layers[$id]['cal_color']; ?>" />
- <input type="button" onclick="selectColor('layercolor', event )" value="<?php 
-  etranslate( 'Select' )?>..." />
+<?php echo print_color_input_html ( 'layercolor', 
+   translate( 'Color' ), $color ) ?>
 </td></tr>
 <tr><td class="bold">
- <?php etranslate( 'Duplicates' )?>:</td><td>
+ <?php etranslate( 'Duplicates' )?>:</td><td colspan="3">
  <label><input type="checkbox" name="dups" value="Y"<?php 
   if (! empty ($layers[$id]['cal_dups']) && $layers[$id]['cal_dups'] == 'Y') 
    echo ' checked="checked"';
@@ -113,11 +114,11 @@ $addStr = translate ( 'Add to Others' );
 $addmyStr = translate ( 'Add to My Calendar' );
 echo <<<EOT
   <tr><td class="bold"> 
-  {$addmyStr}:</td><td>
+  {$addmyStr}:</td><td colspan="3">
   <input type="checkbox" name="is_mine"  checked="checked" onclick="show_others();" />
   </td></tr> 
   <tr id="others" style="visibility:hidden;"><td class="aligntop">
-   <label for="cal_login">{$addStr}:</label></td><td>
+   <label for="cal_login">{$addStr}:</label></td><td colspan="3">
    <select name="cal_login[]" id="cal_login" size="{$osize}" multiple="multiple" >{$others}
    </select>
   </td></tr>
@@ -126,20 +127,17 @@ EOT;
 
 ?>
 
-<tr><td colspan="2">
+<tr><td colspan="4">
  <input type="submit" value="<?php etranslate( 'Save' )?>" />
-</td></tr>
 <?php
 // If a layer already exists put a 'Delete Layer' link
 if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) { ?>
-<tr><td>
- <br /><a title="<?php etranslate( 'Delete layer' )?>" href="del_layer.php?id=<?php echo $id; if ( $updating_public ) echo '&amp;public=1'; ?>" onclick="return confirm('<?php 
-etranslate( 'Are you sure you want to delete this layer?', true)?>');"><?php 
-  etranslate( 'Delete layer' )?></a><br />
-</td></tr>
+&nbsp;&nbsp;&nbsp;<input type="button" value="<?php 
+  etranslate( 'Delete layer' )?>" onclick="return deleteLayer( 'del_layer.php?id=<?php 
+  echo $id; if ( $updating_public ) echo '&amp;public=1'; ?>')" />
 <?php }  // end 'Delete Layer' link ?>
+</td></tr>
 </table>
-
 <?php if ( ! empty ( $layers[$id]['cal_layeruser'] ) )
  echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
 ?>

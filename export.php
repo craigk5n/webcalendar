@@ -23,7 +23,7 @@ $selected = ' selected="selected" ';
 $datem = date ( 'm' );
 $dateY = date ( 'Y' );
 
-$INC = array('js/export_import.php', 'js/visible.php/true');
+$INC = array('js/export_import.php', 'js/visible.php');
 print_header($INC);
 ?>
 

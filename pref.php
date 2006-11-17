@@ -167,7 +167,7 @@ $minutesStr = translate( 'minutes' );
 
 $openStr ="\"window.open('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
 $BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' );\"" : '' );
-$INC = array('js/visible.php/true', 'js/pref.php');
+$INC = array('js/visible.php', 'js/pref.php');
 print_header($INC, '' , $BodyX);
 
 ?>
@@ -811,66 +811,66 @@ if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
 <div id="tabscontent_colors">
 <table   width="100%">
 <tr><td class="aligntop">
-<table  cellspacing="1" cellpadding="2">
+<table cellspacing="1" cellpadding="2">
  <tr><td>
   <?php echo print_color_input_html ( 'BGCOLOR', 
-    translate( 'Document background' ), 'pref_' ) ?>
+    translate( 'Document background' ) ) ?>
  </td></tr>
  <tr><td>
   <?php echo print_color_input_html ( 'H2COLOR', 
-    translate( 'Document title' ), 'pref_' ) ?>
+    translate( 'Document title' ) ) ?>
  </td></tr>
  <tr><td>
   <?php echo print_color_input_html ( 'TEXTCOLOR', 
-    translate( 'Document text' ), 'pref_' ) ?>
+    translate( 'Document text' ) ) ?>
 </td></tr>
  <tr><td>
   <?php echo print_color_input_html ( 'MYEVENTS', 
-    translate( 'My event text' ), 'pref_' ) ?>
+    translate( 'My event text' ) ) ?>
  </td></tr>
  <tr><td>
   <?php echo print_color_input_html ( 'TABLEBG', 
-    translate( 'Table grid color' ), 'pref_' ) ?>
+    translate( 'Table grid color' ) ) ?>
  </td></tr>
  <tr><td>
   <?php echo print_color_input_html ( 'THBG', 
-    translate( 'Table header background' ), 'pref_' ) ?>
+    translate( 'Table header background' ) ) ?>
  </td></tr>
  <tr><td>
   <?php echo print_color_input_html ( 'THFG', 
-    translate( 'Table header text' ), 'pref_' ) ?>
+    translate( 'Table header text' ) ) ?>
  </td></tr>
  <tr><td>
   <?php echo print_color_input_html ( 'CELLBG', 
-    translate( 'Table cell background' ), 'pref_' ) ?>
+    translate( 'Table cell background' ) ) ?>
  </td></tr>
  <tr><td>
   <?php echo print_color_input_html ( 'TODAYCELLBG', 
-    translate( 'Table cell background for current day' ), 'pref_' ) ?>
+    translate( 'Table cell background for current day' ) ) ?>
  </td></tr>
  <tr><td>
   <?php echo print_color_input_html ( 'HASEVENTSBG', 
-    translate( 'Table cell background for days with events' ), 'pref_' ) ?>
+    translate( 'Table cell background for days with events' ) ) ?>
 </td></tr>
  <tr><td>
    <?php echo print_color_input_html ( 'WEEKENDBG',
-     translate( 'Table cell background for weekends' ), 'pref_' ) ?>
+     translate( 'Table cell background for weekends' ) ) ?>
  </td></tr>
    <tr><td>
   <?php echo print_color_input_html ( 'OTHERMONTHBG',
-    translate( 'Table cell background for other month' ), 'pref_' ) ?>
+    translate( 'Table cell background for other month' ) ) ?>
   </td></tr>
 <tr><td>
   <?php echo print_color_input_html ( 'WEEKNUMBER',
-    translate( 'Table cell background for other month' ), 'pref_' ) ?>
+    translate( 'Table cell background for other month' ) ) ?>
 </td></tr>
    <tr><td>
      <?php echo print_color_input_html ( 'POPUP_BG',
-       translate( 'Event popup background' ), 'pref_' ) ?>
+       translate( 'Event popup background' ) ) ?>
   </td></tr>
    <tr><td>
     <?php echo print_color_input_html ( 'POPUP_FG',
-      translate( 'Event popup text' ), 'pref_' ) ?>
+      translate( 'Event popup text' ) ) ?>
   </td></tr>
 </table>
 

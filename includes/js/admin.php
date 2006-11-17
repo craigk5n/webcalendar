@@ -1,12 +1,6 @@
 <?php /* $Id$  */  
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 ?>
-function valid_color ( str ) {
- var validColor = /^#[0-9a-fA-F]{3}$|^#[0-9a-fA-F]{6}$/;
-
- return validColor.test ( str );
-}
-
 function valid_form ( form ) {
   var err = "";
 
@@ -78,26 +72,6 @@ function valid_form ( form ) {
     return false;
   }
   return true;
-}
-
-// Updates the background-color of a table cell
-// Parameters:
-//    input - <input> element containing the new color value
-// Note: this function relies on the following structure:
-//   <td><input onkeyup="updateColor(this);" /></td>
-//   <td>(this is the cell to be updated)</td>
-function updateColor ( input ) {
- // The cell to be updated
- var colorCell = input.parentNode.nextSibling;
- // The new color
- var color = input.value;
-
- if (!valid_color ( color ) ) {
-   // Color specified is invalid; use black instead
-  colorCell.style.backgroundColor = "#000000";
- } else {
-  colorCell.style.backgroundColor = color;
- }
 }
 
 // Gets called on page load and when user changes setting for

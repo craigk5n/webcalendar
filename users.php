@@ -27,7 +27,7 @@ if ( empty ( $login) || $login == '__public__' ) {
   exit;
 }
 
-$INC = array('js/users.php/true','js/visible.php/true');
+$INC = array('js/users.php/true','js/visible.php');
 $BodyX = ( ! empty ( $tab ) ?  "onload=\"showTab( '$tab' );\"" : '' );
 print_header($INC,'', $BodyX, '', '', true );
 

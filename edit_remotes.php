@@ -18,7 +18,7 @@
  * if UAC is enabled, then the user must be allowed to ACCESS_IMPORT 
 */
 include_once 'includes/init.php';
-$INC = array('js/edit_remotes.php/false', 'js/visible.php/true');
+$INC = array('js/edit_remotes.php/false', 'js/visible.php');
 print_header( $INC, '', '', true );
 
 $error = '';
@@ -74,33 +74,33 @@ $reloadStr = translate( 'Reload' );
 echo <<<EOT
   <h2>{$lableStr}</h2>
   <form action="edit_remotes_handler.php" method="post"  name="prefform" onsubmit="return valid_form(this);">
-  <table>
+  <table cellspacing="0" cellpadding="2">
     <tr><td>
       <label for="calid">{$calIdStr}:</label></td>
-      <td>{$id_display}</td></tr>
+      <td colspan="3">{$id_display}</td></tr>
     <tr><td>
-      <label for="nfirstname">{$firstNameStr}:</label></td><td>
+      <label for="nfirstname">{$firstNameStr}:</label></td><td colspan="3">
       <input type="text" name="nfirstname" id="nfirstname" size="20" maxlength="25" value="{$firstNameValue}" /></td></tr>
     <tr><td>
-      <label for="nlastname">{$lastNameStr}:</label></td><td>
+      <label for="nlastname">{$lastNameStr}:</label></td><td colspan="3">
       <input type="text" name="nlastname" id="nlastname" size="20" maxlength="25" value="{$lastNameValue}" /></td></tr>
     <tr><td>
-      <label for="nurl">{$urlStr}:</label></td><td>
+      <label for="nurl">{$urlStr}:</label></td><td colspan="3">
       <input type="text" name="nurl" id="nurl" size="75" maxlength="255" value="{$urlValue}" /></td></tr>
 EOT;
 if ( empty ( $nid ) ) {
 echo <<<EOT
    <tr><td>
-     <label for="nlayer">{$createLayerStr}:</label></td><td>
+     <label for="nlayer">{$createLayerStr}:</label></td><td colspan="3">
+     <input type="hidden" name="reload" id="reload" value="true" />
      <input type="checkbox" name="nlayer" id="nlayer"  value="Y"  onchange="toggle_layercolor();"/>{$requiredStr}</td></tr>
    <tr id="nlayercolor" style="visibility:hidden" ><td>
-     <label for="layercolor">{$colorStr}:</label></td><td>
-     <input type="hidden" name="reload" id="reload" value="true" />
-     <input type="text" name="layercolor" id="layercolor" size="7" maxlength="7" value="" />
-     <input type="button" onclick="selectColor('layercolor' , event)" value="{$selectStr}..." /></td></tr> 
 EOT;
+echo print_color_input_html ( 'layercolor', 
+   $colorStr, '#000000' );
 }
 echo <<<EOT
+   </td></tr>
   </table>
   <input type="hidden" name="nadmin" id="nadmin" value="{$login}" />
   <input type="submit" name="action" value="{$button}" />

@@ -88,11 +88,11 @@ function transferColor () {
 	expires.setTime(today.getTime() + 1000*60*60*24*365)
 	setCookie("webcalendar_custom_colors",precol.join(","),expires);
 	thisInput.value = '#' + document.getElementById("htmlcolor").value.toUpperCase();
-	if (thisInput.onkeyup) {
+	if (thisInput.onchange) {
 	// This updates the color swatch for this color input.  It relies on the
 	// <input>s of the prefform having onkeyup="updateColor(this);" as an
 	// attribute
-		thisInput.onkeyup();
+		thisInput.onchange();
 	 }
 	window.close ();
 }

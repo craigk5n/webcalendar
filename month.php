@@ -76,7 +76,7 @@ $trailerStr = print_trailer ();
 
 $HeadX = generate_refresh_meta ();
 
-$INC =  array('js/popups.php/true', 'js/visible.php/true');
+$INC =  array('js/popups.php/true', 'js/visible.php');
 print_header($INC,$HeadX);
 
 echo <<<EOT
