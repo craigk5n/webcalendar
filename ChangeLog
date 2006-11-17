@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1578813 ] very compl. handling of UAC for selecting participant
  - Fixed bug [ 1598283 ] 'access.php' is shrinked in German
  - Stanardized use of print_color_input_html() function for all color selections
  - Modified access.php to allow easier switching between users

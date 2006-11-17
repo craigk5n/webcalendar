@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-16-2006
+# Translation last updated on 11-17-2006
 
 
 ################################################################################
@@ -71,7 +71,7 @@ Ok: Ok
 # Page: access.php
 #
 User Access Control: User Access Control
-Cancel: Cancel
+Undo: Undo
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Save: Save
 Go: Go
@@ -467,6 +467,7 @@ ENTRY CATEGORIES: ENTRY CATEGORIES
 AVAILABLE CATEGORIES: AVAILABLE CATEGORIES
 Remove: Remove
 Global Category: Global Category
+Cancel: Cancel
 
 ########################################
 # Page: colors.php
@@ -639,7 +640,6 @@ Show layer events that are the same as your own: Show layer events that are the 
 Add to Others: Add to Others
 Add to My Calendar: Add to My Calendar
 Delete layer: Delete layer
-Are you sure you want to delete this layer?: Are you sure you want to delete this layer?
 
 ########################################
 # Page: edit_layer_handler.php
@@ -934,6 +934,7 @@ calendar: calendar
 Add layer: Add layer
 Layer: Layer
 Edit layer: Edit layer
+Are you sure you want to delete this layer?: Are you sure you want to delete this layer?
 
 ########################################
 # Page: list_unapproved.php
@@ -1504,6 +1505,11 @@ URL can not be blank: URL can not be blank
 # Page: includes/js/export_import.php
 #
 File type does not match Import Format: File type does not match Import Format
+
+########################################
+# Page: includes/js/visible.php
+#
+Invalid Color: Invalid Color
 
 ########################################
 # Page: includes/menu/index.php

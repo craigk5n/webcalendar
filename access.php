@@ -30,7 +30,7 @@ if ( ! access_is_enabled () ) {
   exit;
 }
 $uacStr = translate ( 'User Access Control' );
-$cancelStr = translate ( 'Cancel' );
+$cancelStr = translate ( 'Undo' );
 $defaultStr = translate ( 'DEFAULT CONFIGURATION' );
 $saveStr = translate ( 'Save' );
 $goStr = translate ( 'Go' );
