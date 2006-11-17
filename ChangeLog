@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Stanardized use of print_color_input_html() function for all color selections
  - Modified access.php to allow easier switching between users
  - Moved access DEFINEs into includes/access.php
  - Added new user option 'Display Long Day Names'
