@@ -103,7 +103,7 @@ echo <<<EOT
   <br />
  
   <div align="center">
-  <table>
+  <table id="monthgrid">
     <tr>
       <td>{$month1}</td>
       <td>{$month2}</td>
