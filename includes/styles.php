@@ -755,6 +755,9 @@ img.help {
 .minical caption a:hover {
   color: #0000FF;
 }
+.minical th {
+ padding: 0px 2px;
+}
 .minical th,
 .minical td.empty {
   color: <?php echo $GLOBALS['TEXTCOLOR'];
@@ -994,6 +997,10 @@ img.help {
   margin: 0;
   padding-left: 20px;
 }
+#year #monthgrid td {
+  vertical-align: top;
+  padding: 0px 5px;
+}
 #year .minical tr {
   vertical-align: top;
 }
@@ -1141,7 +1148,7 @@ a.weekcell {
 }
 #year .minical td {
   text-align: center;
-  padding: 0 3px;
+  vertical-align: top;
 }
 #admin .main td,
 #pref .main td{
@@ -1189,7 +1196,6 @@ a.weekcell {
   margin-left: 4ex;
 }
 #year .minical {
-  margin: 5px auto;
   display: block;
 }
 #year .minical caption {
@@ -1197,6 +1203,7 @@ a.weekcell {
 }
 #viewl .minical,
 #month .minical {
+  margin: 0px 10px;
   border: 0;
 }
 .topnav {

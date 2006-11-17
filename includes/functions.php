@@ -341,8 +341,8 @@ function get_web_browser () {
  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-  error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
-  3, 'd:/php/logs/debug.txt' );
+  //error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
+  //3, 'd:/php/logs/debug.txt' );
   //fwrite ( $fd, date ( 'Y-m-d H:i:s' ) .  "> $msg\n" );
   //fclose ( $fd );
   //  3, '/tmp/webcal-debug.log' );
@@ -1562,7 +1562,7 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
   $monthstart = date ('Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
   $monthend = date ('Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
   
-  for ( $i = $wkstart; date ('Ymd', $i ) <= $monthend;
+  for ( $i = $wkstart; date ('Ymd', $i ) < $monthend;
     $i += ( ONE_DAY * 7 ) ) {
     $ret .= "<tr>\n";
      if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
@@ -1764,7 +1764,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
  
   // end the header row
   $ret .= '</thead><tbody>';
-  for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthend;
+  for ( $i = $wkstart; date ( 'Ymd', $i ) < $monthend;
     $i += ( 604800 ) ) {
     $ret .= '
         <tr>';
@@ -1825,7 +1825,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
 
         $ret .= '>' . date ( 'j', $date ) . '</a></td>';
       } else
-        $ret .= ' class="empty">&nbsp;</td>';
+        $ret .= ' class="empty ' . 
+          ( is_weekend ( $date ) ? 'weekend' : '' ) .'">&nbsp;</td>';
     } // end for $j
     $ret .= '
         </tr>';
@@ -3083,9 +3084,10 @@ function date_to_epoch ( $d ) {
  *
  */
 function get_weekday_before ( $year, $month, $day=2 ) {
-  global $WEEK_START, $DISPLAY_WEEKENDS;
+  global $WEEK_START, $DISPLAY_WEEKENDS, $weekday_names;
   
-  $laststr = ( $WEEK_START == 1 || $DISPLAY_WEEKENDS == 'N' ? 'last Monday':'last Sunday' );
+  //construct string like 'last Sun'
+  $laststr = 'last ' . $weekday_names[$WEEK_START];
   //we default day=2 so if the 1ast is Sunday or Monday it will return the 1st
   $newdate = strtotime ( $laststr, mktime ( 0, 0, 0, $month, $day, $year ) );
   //check DST and adjust newdate
