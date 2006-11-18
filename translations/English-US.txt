@@ -843,7 +843,9 @@ Therefore, updates should be made in the Palm Desktop.: Therefore, updates shoul
 This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
 The following formats have been tested: The following formats have been tested
 This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.
+Enabling: Enabling
+Overwrite Prior Import: Overwrite Prior Import
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.
 
 ########################################
 # Page: help_index.php
@@ -853,7 +855,7 @@ Help Index: Help Index
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.
+Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.
 Add/Edit/Delete: Add/Edit/Delete
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
 Specifies the user that you would like to see displayed in your calendar.: Specifies the user that you would like to see displayed in your calendar.
