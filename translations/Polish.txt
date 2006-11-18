@@ -592,7 +592,7 @@ Help Index: Indeks pomocy
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Warstwy to u¿yteczny dodatek, który pozwala na wy¶wietlanie zdarzeñ innych u¿ytkowników w Twoim w³asnym kalendarzu. Mo¿esz ustaliæ u¿ytkownika i kolor jego zdarzeñ, które maj± byæ pokazywane.
+Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Warstwy to u¿yteczny dodatek, który pozwala na wy¶wietlanie zdarzeñ innych u¿ytkowników w Twoim w³asnym kalendarzu. Mo¿esz ustaliæ u¿ytkownika i kolor jego zdarzeñ, które maj± byæ pokazywane.
 Add/Edit/Delete: Dodaj/Edytuj/Usun
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Klikaj±c na ³±cze Edytuj Warstwy w sekcji administracyjnej na dole strony pozwoli ci na dodanie/edycje/kasowanie warstw.
 Specifies the user that you would like to see displayed in your calendar.: Okre¶la u¿ytkownika ktrego chcia³by¶ widziea w swoim kalendarzu

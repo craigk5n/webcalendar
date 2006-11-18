@@ -775,7 +775,7 @@ Help Index: אינדקס העזרה
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: שכבות משמשות לתצוגת ארועים של משתמשים אחרים בלוח השנה שלך. ניתן לציין את המשתמש ואת צבע הצגת הארועים שלו.
+Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: שכבות משמשות לתצוגת ארועים של משתמשים אחרים בלוח השנה שלך. ניתן לציין את המשתמש ואת צבע הצגת הארועים שלו.
 Add/Edit/Delete: הוסף/ערוך/מחק
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: הקלקה על קישור עריכת שכבות באזור הנהול בתחתית הדף תאפשר הוספה/עריכה/מחיקה של שכבות.
 Specifies the user that you would like to see displayed in your calendar.: קובע את המשתמש שהנך רוצה להציג בלוח השנה שלך.
