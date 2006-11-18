@@ -1,296 +1,171 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
-include_once 'includes/help_list.php';  
-print_header('', '', '', true);
-echo $helpListStr;
+include_once 'includes/help_list.php';
+
+print_header ( '', '', '', true );
+ob_start ();
+echo $helpListStr . '
+    <h2>' . translate ( 'Help' ) . ': ' . translate ( 'System Settings' )
+ . '</h2>
+    <h3>' . translate ( 'Settings' ) . '</h3>
+    <div class="helpbody">
+      <div>';
+$tmp_arr = array (
+  translate ( 'Allow HTML in Description' ) =>
+  translate ( 'allow-html-description-help' ),
+  translate ( 'Allow users to override conflicts' ) =>
+  translate ( 'conflict-check-override-help' ),
+  translate ( 'Allow viewing other user&#39;s calendars' ) =>
+  translate ( 'allow-view-other-help' ),
+  translate ( 'Application Name' ) =>
+  translate ( 'app-name-help' ),
+  translate ( 'Auto-refresh calendars' ) => translate ( 'auto-refresh-help' ),
+  translate ( 'Auto-refresh time' ) => translate ( 'auto-refresh-time-help' ),
+  translate ( 'Check for event conflicts' ) =>
+  translate ( 'conflict-check-help' ),
+  translate ( 'Conflict checking months' ) =>
+  translate ( 'conflict-months-help' ),
+  translate ( 'Custom header' ) => translate ( 'custom-header-help' ),
+  translate ( 'Custom script/stylesheet' ) =>
+  translate ( 'custom-script-help' ),
+  translate ( 'Custom trailer' ) => translate ( 'custom-trailer-help' ),
+  translate ( 'Date format' ) => translate ( 'date-format-help' ),
+  translate ( 'Disable Access field' ) =>
+  translate ( 'disable-access-field-help' ),
+  translate ( 'Disable Participants field' ) =>
+  translate ( 'disable-participants-field-help' ),
+  translate ( 'Disable Priority field' ) =>
+  translate ( 'disable-priority-field-help' ),
+  translate ( 'Disable Repeating field' ) =>
+  translate ( 'disable-repeating-field-help' ),
+  translate ( 'Display days with events in bold in year view' ) =>
+  translate ( 'yearly-shows-events-help' ),
+  translate ( 'Display description in printer day view' ) =>
+  translate ( 'display-desc-print-day-help' ),
+  translate ( 'Display Site Extras in popup' ) =>
+  translate ( 'popup-includes-siteextras-help' ),
+  translate ( 'Display unapproved' ) => translate ( 'display-unapproved-help' ),
+  translate ( 'Display week number' ) =>
+  translate ( 'display-week-number-help' ),
+  translate ( 'Display weekends in week view' ) =>
+  translate ( 'display-weekends-help' ),
+  translate ( 'Fonts' ) => translate ( 'fonts-help' ),
+  translate ( 'Home URL' ) => translate ( 'home-url-help' ),
+  translate ( 'Include add event link in views' ) =>
+  translate ( 'allow-view-add-help' ),
+  translate ( 'Language' ) => translate ( 'language-help' ),
+  translate ( 'Limit number of timed events per day' ) =>
+  translate ( 'limit-appts-help' ),
+  translate ( 'Maximum timed events per day' ) =>
+  translate ( 'limit-appts-number-help' ),
+  translate ( 'Preferred view' ) => translate ( 'preferred-view-help' ),
+  translate ( 'Remember last login' ) =>
+  translate ( 'remember-last-login-help' ),
+  translate ( 'Require event approvals' ) =>
+  translate ( 'require-approvals-help' ),
+  translate ( 'Server URL' ) => translate ( 'server-url-help' ),
+  translate ( 'Specify timed event length by' ) =>
+  translate ( 'timed-evt-len-help' ),
+  translate ( 'Time format' ) => translate ( 'time-format-help' ),
+  translate ( 'Time interval' ) => translate ( 'time-interval-help' ),
+  translate ( 'Week starts on' ) => translate ( 'display-week-starts-on' ),
+  translate ( 'Work hours' ) => translate ( 'work-hours-help' ),
+  );
+list_help ( $tmp_arr );
+echo '
+      </div>
+      <h3>' . translate ( 'Public Access' ) . '</h3>
+      <div>';
+$tmp_arr = array (
+  translate ( 'Allow public access' ) =>
+  translate ( 'allow-public-access-help' ),
+  translate ( 'Public access can add events' ) =>
+  translate ( 'public-access-can-add-help' ),
+  translate ( 'Public access can view other users' ) =>
+  translate ( 'public-access-view-others-help' ),
+  translate ( 'Public access can view participants' ) =>
+  translate ( 'public-access-sees-participants-help' ),
+  translate ( 'Public access is default participant' ) =>
+  translate ( 'public-access-default-selected' ),
+  translate ( 'Public access new events require approval' ) =>
+  translate ( 'public-access-add-requires-approval-help' ),
+  translate ( 'Public access visible by default' ) =>
+  translate ( 'public-access-default-visible' ),
+  );
+list_help ( $tmp_arr );
+echo '
+      </div>
+      <h3>' . translate ( 'Groups' ) . '</h3>
+      <div>';
+$tmp_arr = array (
+  translate ( 'Groups enabled' ) => translate ( 'groups-enabled-help' ),
+  translate ( 'User sees only his groups' ) =>
+  translate ( 'user-sees-his-group-help' ),
+  );
+list_help ( $tmp_arr );
+echo '
+      </div>
+      <h3>' . translate ( 'Nonuser' ) . '</h3>
+      <div>';
+$tmp_arr = array (
+  translate ( 'Nonuser enabled' ) => translate ( 'nonuser-enabled-help' ),
+  translate ( 'Nonuser list' ) => translate ( 'nonuser-list-help' ),
+  );
+list_help ( $tmp_arr );
+echo '
+      </div>
+      <h3>' . translate ( 'Other' ) . '</h3>
+      <div>';
+$tmp_arr = array (
+  translate ( 'Allow external users' ) =>
+  translate ( 'allow-external-users-help' ),
+  translate ( 'Allow remote subscriptions' ) =>
+  translate ( 'subscriptions-enabled-help' ),
+  translate ( 'Categories enabled' ) => translate ( 'categories-enabled-help' ),
+  translate ( 'External users can receive email notifications' ) =>
+  translate ( 'external-can-receive-notification-help' ),
+  translate ( 'External users can receive email reminders' ) =>
+  translate ( 'external-can-receive-reminder-help' ),
+  translate ( 'Reports enabled' ) => translate ( 'reports-enabled-help' ),
+  );
+list_help ( $tmp_arr );
+echo '
+      </div>
+      <h3>' . translate ( 'Email' ) . '</h3>
+      <div>';
+$tmp_arr = array (
+  translate ( 'Default sender address' ) =>
+  translate ( 'email-default-sender' ),
+  translate ( 'Email enabled' ) => translate ( 'email-enabled-help' ),
+  translate ( 'Event rejected by participant' ) =>
+  translate ( 'email-event-rejected' ),
+  translate ( 'Event reminders' ) =>
+  translate ( 'email-event-reminders-help' ),
+  translate ( 'Events added to my calendar' ) =>
+  translate ( 'email-event-added' ),
+  translate ( 'Events removed from my calendar' ) =>
+  translate ( 'email-event-deleted' ),
+  translate ( 'Events updated on my calendar' ) =>
+  translate ( 'email-event-updated' ),
+  );
+list_help ( $tmp_arr );
+echo '
+      </div>
+      <h3>' . translate ( 'Colors' ) . '</h3>
+      <div>';
+$tmp_arr = array (
+  translate ( 'Allow user to customize colors' ) =>
+  translate ( 'user-customize-color' ),
+  translate ( 'Enable gradient images for background colors' ) =>
+  translate ( 'enable-gradient-help' ),
+  translate ( 'Manually entering color values' ) => translate ( 'colors-help' ),
+  );
+list_help ( $tmp_arr );
+ob_end_flush ();
+echo '
+      </div>
+    </div>
+    ' . print_trailer ( false, true, true );
+
 ?>
-
-<h2><?php etranslate('Help')?>: <?php etranslate('System Settings')?></h2>
-
-<h3><?php etranslate('Settings')?></h3>
-<table class='standard'>
-<tr><td class="help">
- <?php etranslate('Application Name')?>:</td><td>
- <?php etranslate('app-name-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate( 'Server URL' )?>:</td><td>
- <?php etranslate('server-url-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate( 'Home URL' )?>:</td><td>
- <?php etranslate('home-url-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate( 'Language' )?>:</td><td>
- <?php etranslate('language-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Fonts')?>:</td><td>
- <?php etranslate('fonts-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Custom script/stylesheet')?>:</td><td>
- <?php etranslate('custom-script-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Custom header')?>:</td><td>
- <?php etranslate('custom-header-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Custom trailer')?>:</td><td>
- <?php etranslate('custom-trailer-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Preferred view')?>:</td><td>
- <?php etranslate('preferred-view-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Display weekends in week view')?>:</td><td>
- <?php etranslate('display-weekends-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Display days with events in bold in year view')?>:</td><td>
- <?php etranslate('yearly-shows-events-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Display description in printer day view')?>:</td><td>
- <?php etranslate('display-desc-print-day-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Date format')?>:</td><td>
- <?php etranslate('date-format-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Time format')?>:</td><td>
- <?php etranslate('time-format-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Time interval')?>:</td><td>
- <?php etranslate('time-interval-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Auto-refresh calendars')?>:</td><td>
- <?php etranslate('auto-refresh-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Auto-refresh time')?>:</td><td>
- <?php etranslate('auto-refresh-time-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Require event approvals')?>:</td><td>
- <?php etranslate('require-approvals-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Display unapproved')?>:</td><td>
- <?php etranslate('display-unapproved-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Display week number')?>:</td><td>
- <?php etranslate('display-week-number-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Week starts on')?>:</td><td>
- <?php etranslate('display-week-starts-on')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Work hours')?>:</td><td>
- <?php etranslate('work-hours-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Disable Priority field')?>:</td><td>
- <?php etranslate('disable-priority-field-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Disable Access field')?>:</td><td>
- <?php etranslate('disable-access-field-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Disable Participants field')?>:</td><td>
- <?php etranslate('disable-participants-field-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Disable Repeating field')?>:</td><td>
- <?php etranslate('disable-repeating-field-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Display Site Extras in popup')?>:</td><td>
- <?php etranslate('popup-includes-siteextras-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Allow HTML in Description')?>:</td><td>
- <?php etranslate('allow-html-description-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate( 'Allow viewing other user&#39;s calendars' )?>:</td><td>
- <?php etranslate('allow-view-other-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Include add event link in views')?>:</td><td>
- <?php etranslate('allow-view-add-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Remember last login')?>:</td><td>
- <?php etranslate('remember-last-login-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Check for event conflicts')?>:</td><td>
- <?php etranslate('conflict-check-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Conflict checking months')?>:</td><td>
- <?php etranslate('conflict-months-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Allow users to override conflicts')?>:</td><td>
- <?php etranslate('conflict-check-override-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Limit number of timed events per day')?>:</td><td>
- <?php etranslate('limit-appts-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Maximum timed events per day')?>:</td><td>
- <?php etranslate('limit-appts-number-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Specify timed event length by')?>:</td><td>
- <?php etranslate('timed-evt-len-help')?>
-</td></tr>
-</table>
-<h3><?php etranslate( 'Public Access' )?></h3>
-<table class='standard'>
-<tr><td class="help">
- <?php etranslate('Allow public access')?>:</td><td>
- <?php etranslate('allow-public-access-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Public access visible by default')?>:</td><td>
- <?php etranslate('public-access-default-visible')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Public access is default participant')?>:</td><td>
- <?php etranslate('public-access-default-selected')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Public access can view other users')?>:</td><td>
- <?php etranslate('public-access-view-others-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Public access can add events')?>:</td><td>
- <?php etranslate('public-access-can-add-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Public access new events require approval')?>:</td><td>
- <?php etranslate('public-access-add-requires-approval-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Public access can view participants')?>:</td><td>
- <?php etranslate('public-access-sees-participants-help')?>
-</td></tr>
-</table>
-<h3><?php etranslate( 'Groups' )?></h3>
-<table class='standard'>
-<tr><td class="help">
- <?php etranslate('Groups enabled')?>:</td><td>
- <?php etranslate('groups-enabled-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('User sees only his groups')?>:</td><td>
- <?php etranslate('user-sees-his-group-help')?>
-</td></tr>
-</table>
-
-
-<h3><?php etranslate('Nonuser')?></h3>
-<table class='standard'>
-<tr><td class="help">
- <?php etranslate('Nonuser enabled')?>:</td><td>
- <?php etranslate('nonuser-enabled-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Nonuser list')?>:</td><td>
- <?php etranslate('nonuser-list-help')?>
-</td></tr>
-</table>
-
-<h3><?php etranslate( 'Other' )?></h3>
-<table class='standard'>
-<tr><td class="help">
- <?php etranslate('Reports enabled')?>:</td><td>
- <?php etranslate('reports-enabled-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Allow remote subscriptions')?>:</td><td>
- <?php etranslate('subscriptions-enabled-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Categories enabled')?>:</td><td>
- <?php etranslate('categories-enabled-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Allow external users')?>:</td><td>
- <?php etranslate('allow-external-users-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('External users can receive email notifications')?>:</td><td>
- <?php etranslate('external-can-receive-notification-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('External users can receive email reminders')?>:</td><td>
- <?php etranslate('external-can-receive-reminder-help')?>
-</td></tr>
-</table>
-
-
-<h3><?php etranslate( 'Email' )?></h3>
-<table class='standard'>
-<tr><td class="help">
- <?php etranslate('Email enabled')?>:</td><td>
- <?php etranslate('email-enabled-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Default sender address')?>:</td><td>
- <?php etranslate('email-default-sender')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Event reminders')?>:</td><td>
- <?php etranslate('email-event-reminders-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Events added to my calendar')?>:</td><td>
- <?php etranslate('email-event-added')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Events updated on my calendar')?>:</td><td>
- <?php etranslate('email-event-updated')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Events removed from my calendar')?>:</td><td>
- <?php etranslate('email-event-deleted')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Event rejected by participant')?>:</td><td>
- <?php etranslate('email-event-rejected')?>
-</td></tr>
-</table>
-
-<h3><?php etranslate( 'Colors' )?></h3>
-<table class='standard'>
-<tr><td class="help">
- <?php etranslate('Allow user to customize colors')?>:</td><td>
- <?php etranslate('user-customize-color')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Enable gradient images for background colors')?>:</td><td>
- <?php etranslate('enable-gradient-help')?>
-</td></tr>
-<tr><td class="help">
- <?php etranslate('Manually entering color values')?>:</td><td>
- <?php etranslate('colors-help')?>
-</td></tr>
-</table>
-
-<?php echo print_trailer( false, true, true ); ?>
-
