@@ -868,7 +868,7 @@ freebusy-url-help: Die URL f&uuml;r den Benutzerzugang zur FreeBusy - Liste
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benutzern im eigenen Kalender anzuzeigen.  Sie k&ouml;nnen den Benutzer und die Farbe des Termines selber spezifizieren.
+Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benutzern im eigenen Kalender anzuzeigen.  Sie k&ouml;nnen den Benutzer und die Farbe des Termines selber spezifizieren.
 Add/Edit/Delete: Hinzuf&uuml;gen/&Auml;ndern/L&ouml;schen
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Dr&uuml;cken Sie "Layer editieren" im Admin-User um Layers HINZUF&Uuml;GEN/&Auml;NDERN/L&Ouml;SCHEN zu k&ouml;nnen (am Ende der Seite).
 Specifies the user that you would like to see displayed in your calendar.: Definieren Sie Ihren gew&uuml;nschten Benutzer den Sie in Ihren Kalender sehen m&ouml;chten.
@@ -1001,7 +1001,9 @@ Therefore, updates should be made in the Palm Desktop.: Deshalb sollten &Auml;nd
 This form will import vCalendar (.vcs) 1.0 events: Dieses Formular importiert vCalendar (.vcs) 1.0 Eintr&auml;ge
 The following formats have been tested: Folgende Formate wurden getestet
 This form will import iCalendar (.ics) events: Dieses Formular importiert iCalendar (.ics) Eintr&auml;ge
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Aktiviertes <b>Vorigen Import &uuml;berschreiben</b> bewirkt, da&szlig; vorige importierte Termine, welche die selbe UID verwenden, wie ein Termin von der neuen Import-Datei, als "l&ouml;schen" markiert sind. Das erlaubt ein Importieren einer aktuellen iCalendar Datei ohne Duplikate zu erzeugen.
+Enabling: Aktiviertes
+Overwrite Prior Import: Vorigen Import &uuml;berschreiben
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: bewirkt, da&szlig; vorige importierte Termine, welche die selbe UID verwenden, wie ein Termin von der neuen Import-Datei, als "l&ouml;schen" markiert sind. Das erlaubt ein Importieren einer aktuellen iCalendar Datei ohne Duplikate zu erzeugen.
 
 ########################################
 # Page: icalclient.php

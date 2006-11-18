@@ -469,7 +469,7 @@ a#programname {
   color: #800000;
   text-decoration: none;
   padding-right: 3px;
-  
+
 }
 .nounapproved {
   font-weight: bold;
@@ -705,21 +705,45 @@ a.matrix img {
   font-weight: bold;
 }
 .helpbody {
-  vertical-align: top;
+  margin-bottom: 1em;
   font-weight: normal;
+  vertical-align: top;
+}
+.helpbody div {
+  border: 1px solid #000;
 }
 .helpbody label {
-  vertical-align: top;
-  clear: left;
-  float: left;
-  width: 150px;
-  font-size: 1.1em;
   font-weight: bold;
+  font-size: 1.1em;
+  vertical-align: top;
+}
+.helpbody p {
+  margin: 1em;
 }
 .helplist {
-  text-align: center;
-  font-size: 1.2em;
+  border: 0;
   font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+}
+.helplist a {
+  font-weight: normal;
+  text-decoration: underline;
+}
+.helplist a.current {
+  font-weight: bold;
+  text-decoration: none;
+}
+#helpbug form {
+  margin-bottom: 1em;
+}
+#helpbug label {
+  clear: left;
+  float: left;
+  width: 32%;
+}
+#helpbug p {
+  margin: 0 1em;
 }
 img.help {
   border: 0;
@@ -1363,7 +1387,7 @@ a.weekcell {
   background-repeat: no-repeat;
 }
 #about p {
-  margin:1px; 
+  margin:1px;
   color:#333333;
 }
 #scroller {
