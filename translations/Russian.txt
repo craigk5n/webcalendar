@@ -798,7 +798,9 @@ Therefore, updates should be made in the Palm Desktop.: Таким образом обновления
 This form will import vCalendar (.vcs) 1.0 events: Эта форма загрузит события в формате vCalendar (.vcs) 1.0
 The following formats have been tested: Следующие форматы были проверены
 This form will import iCalendar (.ics) events: Эта форма загрузит события в формате iCalendar (.ics)
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Включая <b>Перезапись Предыдущей Загрузки</b> возможно повреждение событий предыдущей загрузки, содержащих тот же UID что и события из нового файла. Старые будут помечены как удаленные. Это должно позволить обновленному файлу iCalendar быть загруженным без создания дубликатов.
+Enabling: Включая
+Overwrite Prior Import: Перезапись Предыдущей Загрузки
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: возможно повреждение событий предыдущей загрузки, содержащих тот же UID что и события из нового файла. Старые будут помечены как удаленные. Это должно позволить обновленному файлу iCalendar быть загруженным без создания дубликатов.
 
 ########################################
 # Page: help_index.php
@@ -808,7 +810,7 @@ Help Index: Индекс подсказки
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Слои удобны для отображения событий других пользователей в своем календаре. Вы можете указать пользователя и цвет которым его события будут отображены.
+Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Слои удобны для отображения событий других пользователей в своем календаре. Вы можете указать пользователя и цвет которым его события будут отображены.
 Add/Edit/Delete: Добавить/Редактировать/Удалить
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Щелчек на ссылке Редактировать Слои в секции администрирования внизу страницы позволит вам добавлять/редактировать/удалять слои.
 Specifies the user that you would like to see displayed in your calendar.: Указать пользователя, чьи события вы хотите видеть у себя в календаре.

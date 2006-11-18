@@ -559,7 +559,9 @@ Therefore, updates should be made in the Palm Desktop.: Αλλιώς, πρέπε
 This form will import vCalendar (.vcs) 1.0 events: Η σελίδα αυτή εισάγει γεγονότα από vCalendar (.vcs) 1.0
 The following formats have been tested: Τα παρακάτω formats έχουν ελεγχθεί
 This form will import iCalendar (.ics) events: Η σελίδα αυτή εισάγει γεγονότα από iCalendar (.ics)
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Αν ενεργοποιήσετε το <b>Overwrite πριν την Εισαγωγή</b>, όλα τα γεγονότα που εισάχθηκαν προηγουμένως χρησιμοποιούν το ίδιο UID με τα γεγονότα από τη νέα εισαγωγή που μαρκαρίστηκαν για διαγραφή. Αυτό επιτρέπει ένα αρχείο iCalendar να εισαχθεί χωρίς να δημιουργεί διπλοεγγραφές.
+Enabling:  Αν ενεργοποιήσετε το
+Overwrite Prior Import: Overwrite πριν την Εισαγωγή
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: όλα τα γεγονότα που εισάχθηκαν προηγουμένως χρησιμοποιούν το ίδιο UID με τα γεγονότα από τη νέα εισαγωγή που μαρκαρίστηκαν για διαγραφή. Αυτό επιτρέπει ένα αρχείο iCalendar να εισαχθεί χωρίς να δημιουργεί διπλοεγγραφές.
 
 ########################################
 # Page: help_index.php

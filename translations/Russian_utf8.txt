@@ -808,7 +808,7 @@ Help Index: Индекс подсказки
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Слои удобны для отображения событий других пользователей в своем календаре. Вы можете указать пользователя и цвет которым его события будут отображены.
+Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Слои удобны для отображения событий других пользователей в своем календаре. Вы можете указать пользователя и цвет которым его события будут отображены.
 Add/Edit/Delete: Добавить/Редактировать/Удалить
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Щелчек на ссылке Редактировать Слои в секции администрирования внизу страницы позволит вам добавлять/редактировать/удалять слои.
 Specifies the user that you would like to see displayed in your calendar.: Указать пользователя, чьи события вы хотите видеть у себя в календаре.

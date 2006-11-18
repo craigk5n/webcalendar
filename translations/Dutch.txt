@@ -767,7 +767,9 @@ Therefore, updates should be made in the Palm Desktop.: &nbsp;Derhalve dient u <
 This form will import vCalendar (.vcs) 1.0 events: Hier kunt u afspraken uit vCalendar (.vcs) 1.0 in uw agenda importeren
 The following formats have been tested: De volgende bestandsformaten zijn getest
 This form will import iCalendar (.ics) events: Met dit formulier importeert u iCalendar (.ics) afspraken
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Door <b>Vorige import overschrijven</b> zal eerder geimporteerde afspraken die hetzelfde UID hebben als een afspraak uit de nieuwe import markeren als 'verwijderd'. Hierdoor zou het mogelijk moeten zijn een geupdate iCalendar te importeren zonder duplicaten te maken.
+Enabling: Door
+Overwrite Prior Import: Vorige import overschrijven
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: zal eerder geimporteerde afspraken die hetzelfde UID hebben als een afspraak uit de nieuwe import markeren als 'verwijderd'. Hierdoor zou het mogelijk moeten zijn een geupdate iCalendar te importeren zonder duplicaten te maken.
 
 ########################################
 # Page: help_index.php
@@ -777,7 +779,7 @@ Help Index: Overzicht help-onderwerpen
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: Lagen zijn nuttig om andermans afpsraken in uw eigen agenda te tonen. U kunt de gebruiker en kleur kiezen waarin die afspraken worden getoond.
+Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Lagen zijn nuttig om andermans afpsraken in uw eigen agenda te tonen. U kunt de gebruiker en kleur kiezen waarin die afspraken worden getoond.
 Add/Edit/Delete: toevoegen / wijzigen / verwijderen
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Selecteer [wijzig lagen] in menu [beheer] om lagen toe te voegen, wijzigen of verwijderen.
 Specifies the user that you would like to see displayed in your calendar.: Specificeert de gebruiker wiens agenda je in als laag aan je eigen agenda wilt toevoegen.

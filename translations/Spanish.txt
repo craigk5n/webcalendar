@@ -547,7 +547,9 @@ Therefore, updates should be made in the Palm Desktop.: Por lo tanto, se debe re
 This form will import vCalendar (.vcs) 1.0 events: Este formulario importará eventos vCalendar (.vcs) 1.0
 The following formats have been tested: Los siguientes formatos se han comprobado
 This form will import iCalendar (.ics) events: Este formulario importará eventos iCalendar (.ics)
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Activar <b>Sobreescribir importación anterior</b> provocará que los eventos importados anteriormente que usen el mismo UID que un evento del nuevo fichero de importación se marcarán como borrados. Esto debería permitir importar un fichero iCalendar actualizado sin que se creen duplicados.
+Enabling: Activar
+Overwrite Prior Import: Sobreescribir importación anterior
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: provocará que los eventos importados anteriormente que usen el mismo UID que un evento del nuevo fichero de importación se marcarán como borrados. Esto debería permitir importar un fichero iCalendar actualizado sin que se creen duplicados.
 
 ########################################
 # Page: help_index.php

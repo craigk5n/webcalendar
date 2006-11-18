@@ -747,7 +747,7 @@ Help Index: Súgó tartalomjegyzék
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar.  You can specify the user and the color the events will be displayed in.: A rétegek hasznosak mások eseményeinek megjelenítésekor. Megadhatod a felhasználót és az ő eseményeinek színét.
+Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: A rétegek hasznosak mások eseményeinek megjelenítésekor. Megadhatod a felhasználót és az ő eseményeinek színét.
 Add/Edit/Delete: Hozzáadás/Szerkesztés/Törlés
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: A lap alján az adminisztrációs részben a Rétegek szerkesztése linkre kattintva hozzáadhatsz/szerkeszthetsz/törölhetsz rétegeket.
 Specifies the user that you would like to see displayed in your calendar.: Megadja, hogy mely felhasználót szeretnéd megjeleníteni a naptáradban.

@@ -1,163 +1,101 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
-include_once 'includes/help_list.php';  
-print_header('', '', '', true);
-echo $helpListStr;
+include_once 'includes/help_list.php';
+print_header ( '', '', '', true );
+ob_start ();
+echo $helpListStr . '
+    <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Preferences' ) . '</h2>
+    <h3>' . translate ( 'Settings' ) . '</h3>
+    <div class="helpbody">
+      <div>';
+$tmp_arr = array (
+  translate ( 'Auto-refresh calendars' ) => translate ( 'auto-refresh-help' ),
+  translate ( 'Auto-refresh time' ) => translate ( 'auto-refresh-time-help' ),
+  translate ( 'Date format' ) => translate ( 'date-format-help' ),
+  translate ( 'Default Category' ) => translate ( 'default-category-help' ),
+  translate ( 'Display description in printer day view' ) =>
+  translate ( 'display-desc-print-day-help' ),
+  translate ( 'Display unapproved' ) => translate ( 'display-unapproved-help' ),
+  translate ( 'Display week number' ) =>
+  translate ( 'display-week-number-help' ),
+  translate ( 'Display weekends in week view' ) =>
+  translate ( 'display-weekends-help' ),
+  translate ( 'Fonts' ) => translate ( 'fonts-help' ),
+  translate ( 'Language' ) => translate ( 'language-help' ),
+  translate ( 'Preferred view' ) => translate ( 'preferred-view-help' ),
+  translate ( 'Specify timed event length by' ) =>
+  translate ( 'timed-evt-len-help' ),
+  translate ( 'Time format' ) => translate ( 'time-format-help' ),
+  translate ( 'Time interval' ) => translate ( 'time-interval-help' ),
+  translate ( 'Timezone Offset' ) => translate ( 'tz-help' ),
+  translate ( 'Week starts on' ) => translate ( 'display-week-starts-on' ),
+  translate ( 'Work hours' ) => translate ( 'work-hours-help' ),
+  );
+list_help ( $tmp_arr );
+echo '
+      </div>
+      <h3>' . translate ( 'Email' ) . '</h3>
+      <div>';
+$tmp_arr = array (
+  translate ( 'Event rejected by participant' ) =>
+  translate ( 'email-event-rejected' ),
+  translate ( 'Event reminders' ) =>
+  translate ( 'email-event-reminders-help' ),
+  translate ( 'Events added to my calendar' ) =>
+  translate ( 'email-event-added' ),
+  translate ( 'Events removed from my calendar' ) =>
+  translate ( 'email-event-deleted' ),
+  translate ( 'Events updated on my calendar' ) =>
+  translate ( 'email-event-updated' ),
+  );
+list_help ( $tmp_arr );
+echo '
+      </div>
+      <h3>' . translate ( 'When I am the boss' ) . '</h3>
+      <div>';
+$tmp_arr = array (
+  translate ( 'Email me event notification' ) =>
+  translate ( 'email-boss-notifications-help' ),
+  translate ( 'I want to approve events' ) =>
+  translate ( 'boss-approve-event-help' ),
+  );
+list_help ( $tmp_arr );
+echo '
+      </div>';
+if ( $PUBLISH_ENABLED == 'Y' ) {
+  $urlStr = translate ( 'URL' );
+  echo '
+      <h3>' . translate ( 'Subscribe/Publish' ) . '</h3>
+      <div>';
+  $tmp_arr = array (
+    translate ( 'Allow remote publishing' ) =>
+    translate ( 'allow-remote-publishing-help' ),
+    $urlStr => translate ( 'remote-publishing-url-help' ),
+    translate ( 'Allow remote subscriptions' ) =>
+    translate ( 'allow-remote-subscriptions-help' ),
+    $urlStr => translate ( 'remote-subscriptions-url-help' ),
+    translate ( 'Enable FreeBusy publishing' ) =>
+    translate ( 'freebusy-enabled-help' ),
+    $urlStr => translate ( 'freebusy-url-help' ),
+    translate ( 'Enable RSS feed' ) => translate ( 'rss-enabled-help' ),
+    $urlStr => translate ( 'rss-feed-url-help' ),
+    );
+  list_help ( $tmp_arr );
+  echo '
+      </div';
+}
+
+if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' )
+  echo '
+      <h3>' . translate ( 'Colors' ) . '</h3>
+      <p>' . translate ( 'colors-help' ) . '</p>';
+
+echo '
+    </div>';
+
+ob_end_flush ();
+echo print_trailer ( false, true, true );
+
 ?>
-
-<h2><?php etranslate('Help')?>: <?php etranslate('Preferences')?></h2>
-
-<h3><?php etranslate('Settings')?></h3>
-<table class='standard'>
- <tr><td class="help">
-  <?php etranslate( 'Language' )?>:</td><td>
-  <?php etranslate('language-help')?>
- </td></tr>
-  <tr><td class="help">
-  <?php etranslate('Timezone Offset')?>:</td><td>
-  <?php etranslate('tz-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Fonts')?>:</td><td>
-  <?php etranslate('fonts-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Preferred view')?>:</td><td>
-  <?php etranslate('preferred-view-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Display weekends in week view')?>:</td><td>
-  <?php etranslate('display-weekends-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Display description in printer day view')?>:</td><td>
-  <?php etranslate('display-desc-print-day-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Date format')?>:</td><td>
-  <?php etranslate('date-format-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Time format')?>:</td><td>
-  <?php etranslate('time-format-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Time interval')?>:</td><td>
-  <?php etranslate('time-interval-help')?>
- </td></tr>
-  <tr><td class="help">
-  <?php etranslate('Auto-refresh calendars')?>:</td><td>
-  <?php etranslate('auto-refresh-help')?>
- </td></tr>
-  <tr><td class="help">
-  <?php etranslate('Auto-refresh time')?>:</td><td>
-  <?php etranslate('auto-refresh-time-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Display unapproved')?>:</td><td>
-  <?php etranslate('display-unapproved-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Display week number')?>:</td><td>
-  <?php etranslate('display-week-number-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Week starts on')?>:</td><td>
-  <?php etranslate('display-week-starts-on')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Work hours')?>:</td><td>
-  <?php etranslate('work-hours-help')?>
- </td></tr>
- <tr><td class="help">
-   <?php etranslate('Specify timed event length by')?>:</td><td>
-   <?php etranslate('timed-evt-len-help')?>
-  </td></tr>
- <tr><td class="help">
-  <?php etranslate('Default Category')?>:</td><td>
-  <?php etranslate('default-category-help')?>
- </td></tr>
-</table>
-<br /><br />
-
-<h3><?php etranslate( 'Email' )?></h3>
-<table class='standard'>
- <tr><td class="help">
-  <?php etranslate('Event reminders')?>:</td><td>
-  <?php etranslate('email-event-reminders-help')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Events added to my calendar')?>:</td><td>
-  <?php etranslate('email-event-added')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Events updated on my calendar')?>:</td><td>
-  <?php etranslate('email-event-updated')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Events removed from my calendar')?>:</td><td>
-  <?php etranslate('email-event-deleted')?>
- </td></tr>
- <tr><td class="help">
-  <?php etranslate('Event rejected by participant')?>:</td><td>
-  <?php etranslate('email-event-rejected')?>
- </td></tr>
-</table>
-
-<h3><?php etranslate('When I am the boss')?></h3>
-<table class='standard'>
- <tr class='even'><td class="help">
-  <?php etranslate('Email me event notification')?>:</td><td>
-  <?php etranslate('email-boss-notifications-help')?>
- </td></tr>
- <tr class='odd'><td class="help">
-  <?php etranslate('I want to approve events')?>:</td><td>
-  <?php etranslate('boss-approve-event-help')?>
- </td></tr>
-</table>
-
-<?php if ( $PUBLISH_ENABLED == 'Y' ) { ?>
- <h3><?php etranslate('Subscribe/Publish')?></h3>
- <table class='standard'>
-  <tr><td class="help">
-   <?php etranslate('Allow remote subscriptions')?>:</td><td>
-   <?php etranslate('allow-remote-subscriptions-help')?>
-  </td></tr>
-  <tr><td class="help">&nbsp;&nbsp;
-   <?php etranslate('URL')?>:</td><td>
-   <?php etranslate('remote-subscriptions-url-help')?>
-  </td></tr>
-  <tr><td class="help">
-   <?php etranslate('Allow remote publishing')?>:</td><td>
-   <?php etranslate('allow-remote-publishing-help')?>
-  </td></tr>
-  <tr><td class="help">&nbsp;&nbsp;
-   <?php etranslate('URL')?>:</td><td>
-   <?php etranslate('remote-publishing-url-help')?>
-  </td></tr>
-  <tr><td class="help">
-   <?php etranslate('Enable RSS feed')?>:</td><td>
-   <?php etranslate('rss-enabled-help')?>
-  </td></tr>
-  <tr><td class="help">&nbsp;&nbsp;
-   <?php etranslate('URL')?>:</td><td>
-   <?php etranslate('rss-feed-url-help')?>
-  </td></tr>
-  <tr><td class="help">
-   <?php etranslate('Enable FreeBusy publishing')?>:</td><td>
-   <?php etranslate('freebusy-enabled-help')?>
-  </td></tr>
-  <tr><td class="help">&nbsp;&nbsp;
-   <?php etranslate('URL')?>:</td><td>
-   <?php etranslate('freebusy-url-help')?>
-  </td></tr>
- </table>
-<?php }
-
- if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
- <h3><?php etranslate( 'Colors' )?></h3>
- <p><?php etranslate('colors-help')?></p>
-<?php } // if $ALLOW_COLOR_CUSTOMIZATION 
-echo print_trailer( false, true, true ); ?>
 
