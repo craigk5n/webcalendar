@@ -5,6 +5,11 @@ CREATE TABLE webcal_user (
   cal_firstname VARCHAR2(25),
   cal_is_admin CHAR(1) DEFAULT 'N',
   cal_email VARCHAR2(75) NULL,
+  cal_enabled CHAR(1) DEFAULT 'Y',
+  cal_telephone VARCHAR(50) NULL,
+  cal_address VARCHAR(75) NULL,
+  cal_title VARCHAR(75) NULL,
+  cal_birthday INT NULL,
   PRIMARY KEY ( cal_login )
 );
 INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'Default', 'Y' );
@@ -147,6 +152,7 @@ CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
   cat_owner VARCHAR2(25),
   cat_name VARCHAR2(80) NOT NULL,
+  cat_color VARCHAR(8) NULL,
   PRIMARY KEY ( cat_id )
 );
 CREATE TABLE webcal_asst (

@@ -640,10 +640,10 @@ function load_user_preferences ( $guest='') {
   // get views for this user and global views
   // if NUC and not authorized by UAC, disallow global views
   $getGlobal = ( $is_nonuser && ( ! access_is_enabled () || 
-    access_is_enabled () && ! access_can_access_function ( ACCESS_VIEW ) ) ?
+    access_is_enabled () && ! access_can_access_function ( ACCESS_VIEW, $guest ) ) ?
      '' : " OR cal_is_global = 'Y' " );
   $rows = dbi_get_cached_rows (
-    'SELECT cal_view_id, cal_name, cal_view_type, cal_is_global ' .
+    'SELECT cal_view_id, cal_name, cal_view_type, cal_is_global, cal_owner ' .
     'FROM webcal_view ' .
     "WHERE cal_owner = ? $getGlobal " .
     'ORDER BY cal_name', array( $tmp_login ) );
@@ -664,6 +664,7 @@ function load_user_preferences ( $guest='') {
         'cal_name' => $row[1],
         'cal_view_type' => $row[2],
         'cal_is_global' => $row[3],
+        'cal_owner' => $row[4],
         'url' => $url
         );
       $views[] = $v;
@@ -1959,7 +1960,7 @@ function print_entry ( $event, $date ) {
   if ( $time_only == 'Y' && ! $event->Istimed() )
     return false;
 
-  $padding = '';
+  $padding = $in_span ='';
   if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
     $class = 'layerentry';
   } else {
@@ -2011,8 +2012,9 @@ function print_entry ( $event, $date ) {
 
   $icon =  $cal_type . '.gif';
   $catIcon = '';
-  if ( $event->getCategory() > 0 ) {
-    $catIcon = "icons/cat-" . $event->getCategory() . '.gif';
+  $catNum = $event->getCategory();
+  if ( $catNum > 0 ) {
+    $catIcon = "icons/cat-" . $catNum . '.gif';
     if ( ! file_exists ( $catIcon ) )
       $catIcon = '';
   }
@@ -2023,8 +2025,8 @@ function print_entry ( $event, $date ) {
   } else {
     // Use category icon
     $catAlt = '';
-    if ( ! empty ( $categories[$event->getCategory()] ) )
-      $catAlt = translate ( 'Category' ) . ': ' . $categories[$event->getCategory()];
+    if ( ! empty ( $categories[$catNum] ) )
+      $catAlt = translate ( 'Category' ) . ': ' . $categories[$catNum]['cat_name'];
     $ret .= "<img src=\"$catIcon\" alt=\"$catAlt\" title=\"$catAlt\" />";
   }
 
@@ -2032,8 +2034,16 @@ function print_entry ( $event, $date ) {
     if ($layers) foreach ($layers as $layer) {
       if ($layer['cal_layeruser'] == $event->getLogin() ) {
         $ret .=('<span style="color:' . $layer['cal_color'] . ';">');
+        $in_span = true;
       }
     }
+  //check to see if Category Colors are set
+  } else if ( ! empty ( $categories[$catNum]['cat_color'] ) ) {
+      $cat_color = $categories[$catNum]['cat_color'];
+      if ( $cat_color != '#000000' ) {
+        $ret .=('<span style="color:' . $cat_color . ';">');
+        $in_span = true;
+      }
   }
 
    $time_spacer = ( $time_only == 'Y' ? '' : $TIME_SPACER );
@@ -2056,13 +2066,9 @@ function print_entry ( $event, $date ) {
    $ret .= '<br /><span class="location">(' . htmlspecialchars ( $location ) . ')</span>';
   }
  
-  if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
-    if ($layers) foreach ($layers as $layer) {
-        if($layer['cal_layeruser'] == $event->getLogin() ) {
-            $ret .= '</span>';
-        }
-    }
-  }
+  if ( $in_span == true )
+    $ret .= '</span>';
+
   $ret .= "</a>\n";
   if ( $event->getPriority() == 3 ) $ret .= "</strong>\n"; //end font-weight span
   $ret .= "<br />";
@@ -3568,7 +3574,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
   }
 
 
-    
+  $catAlt = '';  
   $id = $event->getID();
   $name = $event->getName();
 
@@ -3605,10 +3611,10 @@ function html_for_event_week_at_a_glance ( $event, $date,
   // avoid php warning for undefined array index
   if ( empty ( $hour_arr[$ind] ) )
     $hour_arr[$ind] = '';
-
-  $catIcon = 'icons/cat-' . $event->getCategory() . '.gif';
-  if ( $event->getCategory() > 0 && file_exists ( $catIcon ) ) {
-    $catAlt = translate ( 'Category' ) . ': ' . $categories[$event->getCategory()];
+  $catNum = $event->getCategory();
+  $catIcon = 'icons/cat-' . $catNum . '.gif';
+  if ( $catNum > 0 && file_exists ( $catIcon ) ) {
+    $catAlt = translate ( 'Category' ) . ': ' . $categories[$catNum]['cat_name'];
     $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catAlt\" title=\"$catAlt\" />";
   }
 
@@ -3627,7 +3633,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
       $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';    
     } else { //must be event
       $title  = '<a title="' . translate ( 'View this event' ) . '"';        
-      if ( $event->isAllDay()  || $event->isUntimed()) {
+      if ( $event->isAllDay()  || $event->isUntimed() && $catAlt == '') {
         $hour_arr[$ind] .= '<img src="images/circle.gif" class="bullet" alt="*" /> ';
       }
     }
@@ -3653,6 +3659,13 @@ function html_for_event_week_at_a_glance ( $event, $date,
         $hour_arr[$ind] .= '<span style="color:' . $layer['cal_color'] . ';">';
       }
     }
+  //check to see if Category Colors are set
+  } else if ( ! empty ( $categories[$catNum]['cat_color'] ) ) {
+      $cat_color = $categories[$catNum]['cat_color'];
+      if ( $cat_color != '#000000' ) {
+        $hour_arr[$ind] .=('<span style="color:' . $cat_color . ';">');
+        $in_span = true;
+      }
   }
   if ( $event->isAllDay() ) {
     $timestr = translate('All day event');
@@ -3778,10 +3791,10 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $popupid = "eventinfo-pop$id-$key";
   $linkid  = "pop$id-$key";
   $key++;
-  
-  $catIcon = 'icons/cat-' . $event->getCategory() . '.gif';
-  if ( $event->getCategory() > 0 && file_exists ( $catIcon ) ) {
-    $catAlt = translate ( 'Category' ) . ': ' . $categories[$event->getCategory()];
+  $catNum = $event->getCategory(); 
+  $catIcon = 'icons/cat-' . $catNum . '.gif';
+  if ( $catNum > 0 && file_exists ( $catIcon ) ) {
+    $catAlt = translate ( 'Category' ) . ': ' . $categories[$catNum]['cat_name'];
     $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catAlt\" title=\"$catAlt\" />";
   }  
 
@@ -3818,6 +3831,13 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
         $hour_arr[$ind] .= '<span style="color:' . $layer['cal_color'] . ';">';
       }
     }
+  //check to see if Category Colors are set
+  } else if ( ! empty ( $categories[$catNum]['cat_color'] ) ) {
+      $cat_color = $categories[$catNum]['cat_color'];
+      if ( $cat_color != '#000000' ) {
+        $hour_arr[$ind] .=('<span style="color:' . $cat_color . ';">');
+        $in_span = true;
+      }
   }
 
   if ( $event->isAllDay() ) {
@@ -4448,16 +4468,15 @@ function encode_string ( $instr ) {
  */
 function load_user_categories ($ex_global = '') {
   global $login, $user, $is_assistant;
-  global $categories, $category_owners;
-  global $CATEGORIES_ENABLED, $is_admin;
+  global $categories, $CATEGORIES_ENABLED, $is_admin;
 
   $cat_owner =  ( ( ! empty ( $user ) && strlen ( $user ) ) &&  ( $is_assistant  ||
     $is_admin ) ) ? $user : $login;  
   $categories = array ();
-  $categories[-1] = translate ( 'None' );
-  $category_owners = array ();
+  $categories[0]['cat_name'] = translate ( 'All' );
+  $categories[-1]['cat_name'] = translate ( 'None' );
   if ( $CATEGORIES_ENABLED == 'Y' ) {
-    $sql = 'SELECT cat_id, cat_name, cat_owner FROM webcal_categories WHERE ';
+    $sql = 'SELECT cat_id, cat_name, cat_owner, cat_color FROM webcal_categories WHERE ';
     $query_params = array();
     if ( $ex_global == '' ) {
       $sql .= ' (cat_owner = ?) OR (cat_owner IS NULL) ORDER BY cat_owner, cat_name';
@@ -4469,9 +4488,11 @@ function load_user_categories ($ex_global = '') {
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
-        $cat_id = $row[0];
-        $categories[$cat_id] = $row[1];
-        $category_owners[$cat_id] = $row[2];
+        $categories[$row[0]] =array (
+          'cat_name'  => $row[1],
+          'cat_owner' => $row[2],
+          'cat_color' => ( ! empty ( $row[3] ) ? $row[3] : '#000000' )
+        );
       }
     }
   } else {
@@ -4487,7 +4508,7 @@ function load_user_categories ($ex_global = '') {
  * @param int    $cat_id Category id that should be pre-selected
  */
 function print_category_menu ( $form, $date = '', $cat_id = '' ) {
-  global $categories, $category_owners, $user, $login;
+  global $categories, $user, $login;
   $ret = '';
   $ret .= "<form action=\"{$form}.php\" method=\"get\" name=\"SelectCategory\" class=\"categories\">\n";
   if ( ! empty($date) )
@@ -4499,18 +4520,15 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   if ( ! empty ( $user ) && $user != $login )
     $ret .= "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
   $ret .= translate ('Category') . ': <select name="cat_id" onchange="document.SelectCategory.submit()">' . "\n";
-  $ret .= '<option value=""';
-  if ( $cat_id == '' ) $ret .= ' selected="selected"';
-  $ret .= ">" . translate('All') . "</option>\n";
-  //'None' is added during load_user_categories
+  //'None' and 'All' are added during load_user_categories
   $cat_owner =  ( ! empty ( $user ) && strlen ( $user ) ) ? $user : $login;
   if (  is_array ( $categories ) ) {
     foreach ( $categories as $K => $V ){
       if ( $cat_owner ||
-        empty ( $category_owners[$K] ) ) {
+        empty ( $categories[$K]['cat_owner'] ) ) {
         $ret .= "<option value=\"$K\"";
         if ( $cat_id == $K ) $ret .= ' selected="selected"';
-        $ret .= ">$V</option>\n";
+        $ret .= ">{$V['cat_name']}</option>\n";
       }
     }
   }
@@ -4524,6 +4542,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
 
 /**
  * Get categories for a given event id
+ * Global categories are changed to negative numbers
  *
  * @param int      $id  Id of event 
  * @param string   $user normally this is $login
@@ -5514,6 +5533,26 @@ function print_error ( $error, $full=false ) {
 }
 
 /**
+ * Generate standardized Success message
+ *
+ * @param bool    $saved  
+ *
+ * @return string     HTML to display error 
+ *
+ */
+function print_success ( $saved ) {
+  $ret =  '';
+  if ( $saved )
+    $ret .=  '<script language="javascript" type="text/javascript">
+      <!-- <![CDATA[
+      alert(\'' . translate('Changes successfully saved', true) . 
+      '\');
+     //]]> -->
+     </script>'; 
+  return $ret; 
+}
+
+/**
  * Generate standardized Not Authorized message
  *
  * @param bool     $full  Include ERROR title
@@ -6042,24 +6081,24 @@ function print_color_input_html ( $varname, $title, $varval='' ) {
  global $s, $prefarray, $select, $SCRIPT;
 
   if ( $SCRIPT =='admin.php' ) {
-    $pref = 'admin_';
+    $name = 'admin_'. $varname;
     $setting = $s[$varname];
   } else if ( $SCRIPT == 'pref.php' ) {
-    $pref = 'pref_';
+    $name = 'pref_' . $varname;
     $setting = $prefarray[$varname];
   } else {
-    $pref = '';
+    $name = $varname;
     $setting = $varval;
   }
-  $ret = '<label for="' . $pref . $varname . '">' . $title
+  $ret = '<label for="' . $name . '">' . $title
     . ':</label></td>
        <td width="50">
-       <input type="text" name="' . $pref . $varname . '" id="'
-    . $pref . $varname .'" size="7" maxlength="7" value="' . $setting
-    . '" onchange="updateColor(this);" /></td>
-      <td class="sample" style="background-color:' . $setting . ';">'
-    . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-       <td><input type="button" onclick="selectColor(\'' . $pref . $varname 
+       <input type="text" name="' . $name . '" id="'
+    . $name .'" size="7" maxlength="7" value="' . $setting
+    . '" onchange="updateColor(this, \'' . $varname . '_sample\');" /></td>
+      <td class="sample" id="' . $varname . '_sample" style="background-color:' 
+    . $setting . ';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+       <td><input type="button" onclick="selectColor(\'' . $name 
     . '\', event )" value="' . $select . '" />'. "\n";
 
  return $ret;

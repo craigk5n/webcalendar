@@ -266,6 +266,15 @@ CREATE TABLE webcal_reminders (
   cal_action VARCHAR(12) NOT NULL DEFAULT 'EMAIL',
   PRIMARY KEY ( cal_id )
 );
+
 /*upgrade_v1.1.1*/
 ALTER TABLE webcal_nonuser_cals ADD cal_url VARCHAR(75) DEFAULT NULL;
+
+/*upgrade_v1.1.2*/
+ALTER TABLE webcal_categories ADD cat_color VARCHAR(8) DEFAULT NULL;
+ALTER TABLE webcal_user ADD cal_enabled CHAR(1) DEFAULT 'Y';
+ALTER TABLE webcal_user ADD cal_telephone VARCHAR(50) NULL;
+ALTER TABLE webcal_user ADD cal_address VARCHAR(75) NULL;
+ALTER TABLE webcal_user ADD cal_title VARCHAR(75) NULL;
+ALTER TABLE webcal_user ADD cal_birthday INT NULL;
 

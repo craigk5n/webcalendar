@@ -3,8 +3,6 @@
 include_once 'includes/init.php';
 require ( 'includes/classes/WebCalMailer.class' );
 
-load_user_categories ();
-
 $error = '';
 
 if ( $readonly == 'Y' )

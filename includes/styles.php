@@ -137,6 +137,10 @@ if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
   font-family: <?php echo $GLOBALS['FONTS'];
 
 ?>;
+<?php if ( ! empty ( $GLOBALS['BGIMAGE'] ) ) { ?>
+  background: url('<?php echo $GLOBALS['BGIMAGE'];?>') <?php 
+    echo $GLOBALS['BGREPEAT'];?>;
+<?php } ?>
   background-color: <?php echo $GLOBALS['BGCOLOR'];
 
 ?>;

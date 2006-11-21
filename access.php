@@ -29,6 +29,7 @@ if ( ! access_is_enabled () ) {
   echo print_not_auth ();
   exit;
 }
+$saved = '';
 $uacStr = translate ( 'User Access Control' );
 $cancelStr = translate ( 'Undo' );
 $defaultStr = translate ( 'DEFAULT CONFIGURATION' );
@@ -52,6 +53,7 @@ if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) == $saveStr ) {
   if ( ! dbi_execute ( 'INSERT INTO webcal_access_function ( cal_login,
       cal_permissions ) VALUES ( ?, ? )', array ( $auser, $perm ) ) )
     die_miserable_death ( translate ( 'Database error' ) . ': ' . dbi_error () );
+  $saved = true;
 }
 
 // Are we handling the other user form?
@@ -97,6 +99,7 @@ if ( getPostValue ( 'otheruser' ) != '' && getPostValue ( 'submit' ) == $saveStr
       die_miserable_death ( translate ( 'Database error' ) . ': '
          . dbi_error () );
     }
+    $saved = true;
   }
 }
 $otheruser = '';
@@ -148,6 +151,8 @@ print_header ( '', '',
   ( ! empty ( $op['time'] ) && $op['time'] == 'Y'
     ? 'onload="enableAll ( true );"' : '' ) );
 
+echo print_success ( $saved );
+
 if ( ! empty ( $guser ) && $is_admin ) 
    user_load_variables ( $guser, 'user_' );
  
@@ -156,7 +161,7 @@ if ( $is_admin ) {
   $userlist = get_my_users ();
   $nonuserlist = get_nonuser_cals ();
   // If we are here... we must need to print out a list of users
-//  ob_start ();
+  ob_start ();
 
   echo '
     <h2>' . $uacStr . ( ! empty ( $user_fullname ) ? ': ' . $user_fullname : '' ) 
@@ -187,7 +192,7 @@ if ( $is_admin ) {
       <input type="submit" value="' . $goStr . '" />
     </form>';
 
-//  ob_end_flush ();
+  ob_end_flush ();
 } //end admin $guser !- default test
 
 if ( ! empty ( $guser ) || ! $is_admin ) {
@@ -202,7 +207,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     ob_start ();
 
     echo '
-    <div class="boxall" style="margin-top: 5px;padding: 5px;>
+    <div class="boxall" style="margin-top: 5px;padding: 5px;">
     <form action="access.php" method="post" name="accessform">
       <input type="hidden" name="auser" value="' . $guser . '" />
       <input type="hidden" name="guser" value="' . $guser . '" />

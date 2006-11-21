@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-17-2006
+# Translation last updated on 11-21-2006
 
 
 ################################################################################
@@ -169,10 +169,10 @@ Display Common Use Date/Times as GMT: Display Common Use Date/Times as GMT
 date-format-help: Specifies the preferred date format.
 Date format: Date format
 Small Task Date: Small Task Date
-display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
+display-week-starts-on: Specifies day of week that the week starts on. If Monday is specified, then week numbers will be ISO week numbers.
 Week starts on: Week starts on
-Sunday: Sunday
-Monday: Monday
+display-weekend-starts-on: Sets the day of the week for weekends to start
+Weekend starts on: Weekend starts on
 time-format-help: Specifies which time format to use: <br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.  <br /><em>24 hour:</em> Display times as 300, 2030, etc.
 Time format: Time format
 12 hour: 12 hour
@@ -363,6 +363,7 @@ email-event-deleted: Specifies whether or not to send email notifications when a
 Events removed from my calendar: Events removed from my calendar
 email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Event rejected by participant: Event rejected by participant
+Color options: Color options
 Allow user to customize colors: Allow user to customize colors
 gradient-colors: If enabled gradient colors are used. This can greatly impact performane.
 Enable gradient images for background colors: Enable gradient images for background colors
@@ -382,6 +383,11 @@ Table cell background for other month: Table cell background for other month
 Week number color: Week number color
 Event popup background: Event popup background
 Event popup text: Event popup text
+Background Image options: Background Image options
+bgimage-help: URL of desired background image. May be relative link.
+Background Image: Background Image
+bgrepeat-help: Controls repeat behavior of background image.
+Background Repeat: Background Repeat
 
 ########################################
 # Page: adminhome.php
@@ -443,8 +449,8 @@ No day specified!: No day specified!
 #
 Category Icon: Category Icon
 Global: Global
-Add: Add
 Category Name: Category Name
+Color: Color
 Remove Icon: Remove Icon
 Add Icon to Category: Add Icon to Category
 Upload: Upload
@@ -634,7 +640,6 @@ conflicts with the following existing calendar entries: conflicts with the follo
 Edit Layer: Edit Layer
 Add Layer: Add Layer
 Source: Source
-Color: Color
 Duplicates: Duplicates
 Show layer events that are the same as your own: Show layer events that are the same as your own
 Add to Others: Add to Others
@@ -651,6 +656,7 @@ You can only create one layer for each user: You can only create one layer for e
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
+Add: Add
 word characters only: can only contain word characters (a-zA-Z_0-9)
 Edit User: Edit User
 Add User: Add User
@@ -800,14 +806,14 @@ You must specify a group name: You must specify a group name
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: Display weekends in week view
-Display days with events in bold in year view: Display days with events in bold in year view
-Time interval: Time interval
-time-interval-help: Specifies how long the time blocks in the week view and day view will be.
 Auto-refresh calendars: Auto-refresh calendars
 auto-refresh-help: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
 Auto-refresh time: Auto-refresh time
 auto-refresh-time-help: If Auto-refresh is enabled, this specifies the time between each refresh.
+Display days with events in bold in year view: Display days with events in bold in year view
+Display weekends in week view: Display weekends in week view
+Time interval: Time interval
+time-interval-help: Specifies how long the time blocks in the week view and day view will be.
 Nonuser: Nonuser Calendars
 user-customize-color: Specifies whether users are allowed to modify their own color scheme.
 enable-gradient-help: Use gradient colors for cell backgrounds.
@@ -833,6 +839,7 @@ repeat-day-help: Specifies which days of the week the event should repeat on.
 # Page: help_import.php
 #
 Import: Import
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
 The following entries will not be imported: The following entries will not be imported
@@ -840,12 +847,13 @@ Entries older than the current date: Entries older than the current date
 Entries created in the Palm Desktop that have not been HotSync&#39;d: Entries created in the Palm Desktop that have not been HotSync'd
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
 Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
+vCal: vCal
 This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
 The following formats have been tested: The following formats have been tested
 This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
 Enabling: Enabling
 Overwrite Prior Import: Overwrite Prior Import
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted . This should allow an updated iCalendar file to be imported without creating duplicates.: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted . This should allow an updated iCalendar file to be imported without creating duplicates.
 
 ########################################
 # Page: help_index.php
@@ -858,13 +866,12 @@ Help Index: Help Index
 Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.
 Add/Edit/Delete: Add/Edit/Delete
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
-Specifies the user that you would like to see displayed in your calendar.: Specifies the user that you would like to see displayed in your calendar.
 The text color of the new layer that will be displayed in your calendar.: The text color of the new layer that will be displayed in your calendar.
-If checked, events that are duplicates of your events will be shown.: If checked, events that are duplicates of your events will be shown.
 Disabling: Disabling
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.
-Enabling: Enabling
+If checked, events that are duplicates of your events will be shown.: If checked, events that are duplicates of your events will be shown.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.
+Specifies the user that you would like to see displayed in your calendar.: Specifies the user that you would like to see displayed in your calendar.
 
 ########################################
 # Page: help_pref.php
@@ -877,22 +884,22 @@ email-boss-notifications-help: Specifies if bosses receive emails as event notif
 I want to approve events: I want to approve events
 boss-approve-event-help: Specifies whether the boss will be required to approve events added by assistants.
 Subscribe/Publish: Subscribe/Publish
-allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
 Allow remote publishing: Allow remote publishing
 allow-remote-publishing-help: Specifies if a remote iCal client can publish events back to WebCalendar
 remote-publishing-url-help: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
-rss-feed-url-help: The URL to access the RSS feed
+allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
 Enable FreeBusy publishing: Enable FreeBusy publishing
 freebusy-enabled-help: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
 freebusy-url-help: The URL for accessing the user's FreeBusy list
+rss-feed-url-help: The URL to access the RSS feed
 
 ########################################
 # Page: help_uac.php
 #
 Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.:
-If disabled, this user cannot see you in the participants list.: If disabled, this user cannot see you in the participants list.
 If disabled, this user cannot send you emails.: If disabled, this user cannot send you emails.
+If disabled, this user cannot see you in the participants list.: If disabled, this user cannot see you in the participants list.
 If enabled, this user cannot view the details of any of your entries.: If enabled, this user cannot view the details of any of your entries.
 
 ########################################
@@ -913,7 +920,6 @@ Current Icons on Server: Current Icons on Server
 Disabled: Disabled
 Import format: Import format
 Exclude private records: Exclude private records
-Overwrite Prior Import: Overwrite Prior Import
 Repeated items are imported separately. Prior imports are not overwritten.: Repeated items are imported separately. Prior imports are not overwritten.
 
 ########################################
@@ -1276,6 +1282,8 @@ Sep: Sep
 Oct: Oct
 Nov: Nov
 unknown-month: unknown-month
+Sunday: Sunday
+Monday: Monday
 Tuesday: Tuesday
 Wednesday: Wednesday
 Thursday: Thursday

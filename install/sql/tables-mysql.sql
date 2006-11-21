@@ -13,7 +13,7 @@
 CREATE TABLE webcal_user (
   /* the unique user login */
   cal_login VARCHAR(25) NOT NULL,
-  /* the user's password. (not used for http or ldap authentication) */
+  /* the user's password. (not used for http) */
   cal_passwd VARCHAR(32),
   /* user's last name */
   cal_lastname VARCHAR(25),
@@ -23,6 +23,16 @@ CREATE TABLE webcal_user (
   cal_is_admin CHAR(1) DEFAULT 'N',
   /* user's email address */
   cal_email VARCHAR(75) NULL,
+  /* allow admin to disable account ('Y' = yes, 'N' = no) */
+  cal_enabled CHAR(1) DEFAULT 'Y',
+  /* user's telephone */
+  cal_telephone VARCHAR(50) NULL,
+  /* user's address */
+  cal_address VARCHAR(75) NULL,
+  /* user's title */
+  cal_title VARCHAR(75) NULL,
+  /* user's birthday */
+  cal_birthday INT NULL,
   PRIMARY KEY ( cal_login )
 );
 
@@ -412,6 +422,8 @@ CREATE TABLE webcal_categories (
   cat_owner VARCHAR(25) NULL,
   /* category name */
   cat_name VARCHAR(80) NOT NULL,
+  /* RGB color for category */
+  cat_color VARCHAR(8) NULL,
   PRIMARY KEY ( cat_id )
 );
 

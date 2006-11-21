@@ -16,8 +16,7 @@ $form = getGetValue ( 'form' );
 $cats = getGetValue ( 'cats' );
 $header_text = translate( 'ENTRY CATEGORIES' );
 
-$catNames = implode(',' , $categories);
-$catList = implode(',', array_keys($categories) );
+
 $eventcats = explode(',' , $cats);
 
 $INC = array("js/catsel.php/false/$form");
@@ -33,12 +32,12 @@ print_header($INC,'','',true, false, true);
     '<option disabled>' . translate( 'AVAILABLE CATEGORIES' ) . "</option>\n";
     foreach ( $categories as $K => $V ) {
       //None is index -1 and needs to be ignored
-      if ( $K > 0 && ( $category_owners[$K] == $login || $is_admin || 
+      if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin || 
         substr ( $form, 0, 4 ) == 'edit' ) ) {
-        if ( empty ( $category_owners[$K] ) ) {
-          echo "<option value=\"-$K\" name=\"$V\">$V<sup>*</sup>";
+        if ( empty ( $V['cat_owner'] ) ) {
+          echo "<option value=\"-$K\" name=\"{$V['cat_name']}\">{$V['cat_name']}<sup>*</sup>";
         } else {
-          echo "<option value=\"$K\" name=\"$V\">$V";
+          echo "<option value=\"$K\" name=\"{$V['cat_name']}\">{$V['cat_name']}";
         }
         echo "</option>\n";
       }
@@ -52,14 +51,14 @@ print_header($INC,'','',true, false, true);
   foreach ( $eventcats as $K) {  
    //disable if not creator and category is Global
    $neg_num = $show_ast = '';
-   $disabled = ( empty ( $category_owners[abs($K)] ) && 
+   $disabled = ( empty ( $categories[abs($K)]['cat_owner'] ) && 
      substr($form,0,4) != 'edit'? 'disabled': '');
-     if ( empty ( $category_owners[abs($K)] ) ) {
+     if ( empty ( $categories[abs($K)]['cat_owner'] ) ) {
        $neg_num = "-";
        $show_ast = "*";
      }
-   echo "<option value=\"$neg_num$K\" name=\"$V\" $disabled>" . 
-    $categories[abs($K)] . $show_ast . "</option>\n";
+   echo "<option value=\"$neg_num$K\"  $disabled>" . 
+    $categories[abs($K)]['cat_name'] . $show_ast . "</option>\n";
   }
  }
  echo "</select>\n"; 

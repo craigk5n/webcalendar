@@ -12,9 +12,9 @@ CREATE TABLE webcal_entry_repeats (
 /*upgrade_v0.9.22*/
 CREATE TABLE webcal_user_layers (
   cal_layerid INT DEFAULT 0 NOT NULL,
-  cal_login varchar(25) NOT NULL,
-  cal_layeruser varchar(25) NOT NULL,
-  cal_color varchar(25),
+  cal_login VARCHAR(25) NOT NULL,
+  cal_layeruser VARCHAR(25) NOT NULL,
+  cal_color VARCHAR(25),
   cal_dups CHAR(1) DEFAULT 'N',
   PRIMARY KEY ( cal_login, cal_layeruser )
 );
@@ -268,5 +268,13 @@ CREATE TABLE webcal_reminders (
 );
 /*upgrade_v1.1.1*/
 ALTER TABLE webcal_nonuser_cals ADD cal_url VARCHAR(255) DEFAULT NULL;
+
+/*upgrade_v1.1.2*/
+ALTER TABLE webcal_categories ADD cat_color VARCHAR(8) DEFAULT NULL;
+ALTER TABLE webcal_user ADD cal_enabled CHAR(1) DEFAULT 'Y';
+ALTER TABLE webcal_user ADD cal_telephone VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_user ADD cal_address VARCHAR(75) DEFAULT NULL;
+ALTER TABLE webcal_user ADD cal_title VARCHAR(75) DEFAULT NULL;
+ALTER TABLE webcal_user ADD cal_birthday INT NULL;
 
 

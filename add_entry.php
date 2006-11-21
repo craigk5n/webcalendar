@@ -1,7 +1,6 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
-load_user_categories ();
 
 $error = '';
 // Only proceed if id was passed

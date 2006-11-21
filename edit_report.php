@@ -352,12 +352,12 @@ if ( $is_admin ) {
  <select name="cat_id" id="rpt_cat_id">
   <option value=""><?php etranslate( 'None' ) ?></option>
   <?php
-    while ( list ( $cat_id, $descr ) = each ( $categories ) ) {
-      echo "<option value=\"$cat_id\"";
-      if ( $report_cat_id == $cat_id ) {
+    while ( list ( $K, $V ) = each ( $categories ) ) {
+      echo "<option value=\"$K\"";
+      if ( $report_cat_id == $K ) {
         echo $selected;
       }
-      echo ">$descr</option>\n";
+      echo ">{$V['cat_name']}</option>\n";
     }
   ?></select>
 </td></tr>

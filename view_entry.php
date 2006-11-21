@@ -494,7 +494,7 @@ echo ( $DISABLE_PRIORITY_FIELD != 'Y' ? '
 $proxy_fullname = '';
 if ( !empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == 'Y' ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_log
-    WHERE webcal_entry_log.cal_entry_id = ? AND webcal_entry_log.cal_type = "C"',
+    WHERE webcal_entry_log.cal_entry_id = ? AND webcal_entry_log.cal_type = \'C\'',
     array ( $id ) );
   if ( $res ) {
     $row3 = dbi_fetch_row ( $res ) ;

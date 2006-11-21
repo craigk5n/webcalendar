@@ -21,7 +21,7 @@ translate ( 'Entries created in the Palm Desktop that have not been HotSync&#39;
     </ul>
     <p>' .
 translate ( 'Anything imported from Palm will be overwritten during the next import (unless the event date has passed).' )
- . translate ( 'Therefore, updates should be made in the Palm Desktop . ' )
+ . translate ( 'Therefore, updates should be made in the Palm Desktop.' )
  . '</p>
     <h3>' . translate ( 'vCal' ) . '</h3>
     <p>' . translate ( 'This form will import vCalendar (.vcs) 1.0 events' )

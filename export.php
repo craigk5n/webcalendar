@@ -44,7 +44,7 @@ print_header($INC);
     echo '<option value=""' . $selected . '>' . translate( 'All' ) . "</option>\n";
     foreach ( $categories as $K => $V ){
       if ( $K  > 0 )
-        echo "<option value=\"$K\">$V</option>\n";
+        echo "<option value=\"$K\">{$V['cat_name']}</option>\n";
     }
    ?>
  </select>
