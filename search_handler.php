@@ -112,7 +112,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     // Note: we only search approved/waiting events (not deleted).
     $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date
       FROM webcal_entry we, webcal_entry_user weu
-      WHERE we.cal_id = weu.cal_id AND weu.cal_status in ( "A","W" )
+      WHERE we.cal_id = weu.cal_id AND weu.cal_status in ( \'A\',\'W\' )
       AND weu.cal_login IN ( ?';
     if ( $search_others ) {
       if ( empty ( $users[0] ) )
@@ -129,7 +129,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     if ( $search_others ) {
       // Don't search confidential entries of other users.
       $sql .= 'AND ( weu.cal_login = ?
-        OR ( weu.cal_login != ? AND we.cal_access = "P" ) ) ';
+        OR ( weu.cal_login != ? AND we.cal_access = \'P\' ) ) ';
       $sql_params[] = $login;
       $sql_params[] = $login;
     }

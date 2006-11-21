@@ -13,7 +13,7 @@ te?
 [ ] Added cal_fullname (or cal_display_name) column to webcal_user
     and webcal_nonuser_cals so nonuser cals do not need to specify
     first and last name (since it does not usually make sense).
-[ ] Add support for category colors
+[X] Add support for category colors
 [ ] Setup wizard (web-based) that would guide the admin through setting
     up what is now in System Settings and explain why they would want
     to use any particular option.

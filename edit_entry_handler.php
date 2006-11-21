@@ -503,7 +503,6 @@ if ( empty ( $error ) ) {
   if ( ! empty ( $cat_id ) ) {
     $categories = explode (',', $cat_id );
     $categorycnt = count( $categories );
-    sort ( $categories);
     for ( $i =0; $i < $categorycnt; $i++ ) {
       $names = array();
       $values = array(); 

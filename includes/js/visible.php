@@ -124,13 +124,11 @@ function valid_color ( str ) {
 
 // Updates the background-color of a table cell
 // Parameters:
-//    input - <input> element containing the new color value
-// Note: this function relies on the following structure:
-//   <td><input onchange="updateColor(this);" /></td>
-//   <td>(this is the cell to be updated)</td>
-function updateColor ( input ) {
+//    input - element containing the new color value
+//    target - id of sample
+function updateColor ( input, target ) {
  // The cell to be updated
- var colorCell = input.parentNode.nextSibling;
+ var colorCell = document.getElementById(target);
  // The new color
  var color = input.value;
 

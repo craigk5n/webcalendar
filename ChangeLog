@@ -1,5 +1,11 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Implemented Category Color RFE and PATCH ( many seperate entries )
+ - Implemented RFE [ 468275 ] a variable for background picture
+ - Fixed bug [ 1600208 ] send_reminders.php and postgresql
+ - Fixed bug [ 1599634 ] 'colors.php' doesn't work properly
+ - Fixed bug [ 1600194 ] Minical dropping date in URL parsing
+ - Implemented RFE [ 468275 ] a variable for background picture
  - Implemented RFE [ 765824 ] Start week on other days as well
  - Fixed bug [ 1578813 ] very compl. handling of UAC for selecting participant
  - Fixed bug [ 1598283 ] 'access.php' is shrinked in German

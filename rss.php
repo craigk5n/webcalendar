@@ -182,7 +182,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
   if ( ! empty ( $x ) ) {
     load_user_categories ();
     $cat_id = $x;
-    $category = $categories[$cat_id];
+    $category = $categories[$cat_id]['cat_name'];
   }
 }
 

@@ -8,7 +8,8 @@ $can_edit = ( is_dir($icon_path) && ( ! empty ( $ENABLE_ICON_UPLOADS ) &&
   
 if ( ! $can_edit ) do_redirect ( 'category.php' );
 
-print_header('','','',true);
+$INC = array('js/visible.php');
+print_header($INC,'','',true);
 
 $icons = array();
 
@@ -37,10 +38,14 @@ if($d = dir($icon_path)) {
   function sendURL ( url ) {
     var thisInput = window.opener.document.catform.urlname;
     var thisPic = window.opener.document.images.urlpic;
+    var thistr1 = window.opener.document.getElementById('cat_icon');
+    var thistr2 = window.opener.document.getElementById('remove_icon');
     thisInput.value = url.substring (6);
     thisPic.src = url;
+    thistr1.style.visibility = "visible";
+    thistr2.style.visibility = "visible";
     window.close ();
-  }\       
+  }     
   //]]> -->
   </script> 
   

@@ -962,6 +962,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <!-- BEGIN COLORS -->
 <div id="tabscontent_colors">
+<fieldset>
+ <legend><?php etranslate('Color options')?></legend>
 <table   width="100%">
 <tr><td width="30%"><label>
  <?php etranslate( 'Allow user to customize colors' )?>:</label></td><td colspan="5">
@@ -1056,6 +1058,24 @@ echo display_month ( date ('m') , date('Y') , true);
     translate( 'Event popup text' ) ) ?>
 </td></tr>
 </table>
+</fieldset>
+<fieldset>
+ <legend><?php etranslate('Background Image options')?></legend>
+<table>
+ <tr><td class="tooltip" title="<?php etooltip( 'bgimage-help' )?>">
+  <label for="admin_BGIMAGE"><?php etranslate( 'Background Image' )?>:</label></td><td>
+  <input type="text" size="75" name="admin_BGIMAGE" id="admin_BGIMAGE" value="<?php 
+   echo ( ! empty ( $s['BGIMAGE'] )? htmlspecialchars ( $s['BGIMAGE'] ): '');
+  ?>" />
+ </td></tr>
+ <tr><td class="tooltip" title="<?php etooltip( 'bgrepeat-help' )?>">
+  <label for="admin_BGREPEAT"><?php etranslate( 'Background Repeat' )?>:</label></td><td>
+  <input type="text" size="30" name="admin_BGREPEAT" id="admin_BGREPEAT" value="<?php 
+   echo ( ! empty ( $s['BGREPEAT'] )? $s['BGREPEAT']: '');
+  ?>" />
+ </td></tr>
+</table>
+</fieldset>
 </div>
 </div>
 

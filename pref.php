@@ -60,7 +60,7 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $prefuser = '__public__';
 } elseif ( ! empty ( $user ) && $user != $login && ($is_admin || $is_nonuser_admin)) {
   $prefuser = $user;
-    load_user_preferences ();
+    load_user_preferences ( $user );
 } else {
   $prefuser = $login;
   // Reload preferences so any css changes will take effect
@@ -84,7 +84,8 @@ if ($user != $login)
   $user = (($is_admin || $is_nonuser_admin) && $user) ? $user : $login;
 
 // Load categories only if editing our own calendar
-if (!$user || $user == $login) load_user_categories ();
+//if (!$user || $user == $login) load_user_categories ();
+load_user_categories ();
 // Reload preferences into $prefarray[].
 // Get system settings first.
 $prefarray = array ();
@@ -422,19 +423,19 @@ if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
   $prefarray['STARTVIEW'] .= '.php';
 $choices = array ();
 $choices_text = array ();
-if ( access_can_access_function ( ACCESS_DAY ) ) {
+if ( access_can_access_function ( ACCESS_DAY, $user ) ) {
   $choices[] = 'day.php';
   $choices_text[] = translate ( 'Day' );
 }
-if ( access_can_access_function ( ACCESS_WEEK ) ) {
+if ( access_can_access_function ( ACCESS_WEEK, $user ) ) {
   $choices[] = 'week.php';
   $choices_text[] = translate ( 'Week' );
 }
-if ( access_can_access_function ( ACCESS_MONTH ) ) {
+if ( access_can_access_function ( ACCESS_MONTH, $user ) ) {
   $choices[] = 'month.php';
   $choices_text[] = translate ( 'Month' );
 }
-if ( access_can_access_function ( ACCESS_YEAR ) ) {
+if ( access_can_access_function ( ACCESS_YEAR, $user ) ) {
   $choices[] = 'year.php';
   $choices_text[] = translate ( 'Year' );
 }
@@ -446,7 +447,7 @@ for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
 }
 // Allow user to select a view also
 for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
-  if ( $updating_public && $views[$i]['cal_is_global'] != 'Y' )
+  if ( $views[$i]['cal_owner'] != $user && $views[$i]['cal_is_global'] != 'Y' )
     continue;
   $xurl = $views[$i]['url'];
   echo '<option value="';
@@ -527,15 +528,12 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <label for="pref_cat"><?php etranslate( 'Default Category' )?>:</label></td><td>
  <select name="pref_CATEGORY_VIEW" id="pref_cat">
 <?php
- echo '<option value=""';
- if ( empty ( $prefarray['CATEGORY_VIEW'] ) ) echo $selected;
- echo '>'.translate( 'All' )."</option>\n";
  if ( ! empty ( $categories ) ) {
   foreach( $categories as $K => $V ){
    echo "<option value=\"$K\"";
    if ( ! empty ( $prefarray['CATEGORY_VIEW'] ) &&
     $prefarray['CATEGORY_VIEW'] == $K ) echo $selected;
-   echo ">$V</option>\n";
+   echo ">{$V['cat_name']}</option>\n";
   }
  }
 ?>

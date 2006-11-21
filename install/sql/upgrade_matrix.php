@@ -1,7 +1,7 @@
 <?php
 
 //Program Version for this release
-$PROGRAM_VERSION = "v1.1.1";
+$PROGRAM_VERSION = "v1.1.2";
 
 
 //array element[0] = sql insertion testy
@@ -66,6 +66,9 @@ array ( "INSERT INTO webcal_reminders ( cal_id ) VALUES( -999 )",
 array ( "INSERT INTO webcal_nonuser_cals ( cal_login, cal_admin, cal_url ) VALUES ( 'zzz', 'zzz', 'zzz' )",
         "DELETE FROM webcal_nonuser_cals WHERE cal_login = 'zzz'", 
         "v1.1.0e-CVS", "upgrade_v1.1.1"),
+array ( "INSERT INTO webcal_categories ( cat_id, cat_name, cat_color ) VALUES ( '999', 'zzz', '#FFFFFF' )",
+        "DELETE FROM webcal_categories WHERE cat_id = 999", 
+        "v1.1.1", "upgrade_v1.1.2"),
 
 
 //don't change this array element

@@ -109,11 +109,11 @@ $htmlmail = $languages = $noemail = $t_format = $tz = array ();
 
 $res = dbi_execute ( 'SELECT cal_login, cal_value, cal_setting
   FROM webcal_user_pref
-  WHERE ( cal_setting = "EMAIL_HTML" AND cal_value = "Y" )
-  OR ( cal_setting = "EMAIL_REMINDER" AND cal_value = "N" )
-  OR cal_setting = "LANGUAGE"
-  OR cal_setting = "TIME_FORMAT"
-  OR cal_setting = "TIMEZONE"
+  WHERE ( cal_setting = \'EMAIL_HTML\' AND cal_value = \'Y\' )
+  OR ( cal_setting = \'EMAIL_REMINDER\' AND cal_value = \'N\' )
+  OR cal_setting = \'LANGUAGE\'
+  OR cal_setting = \'TIME_FORMAT\'
+  OR cal_setting = \'TIMEZONE\'
   ORDER BY cal_login, cal_setting' );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {

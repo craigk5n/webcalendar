@@ -12,6 +12,8 @@ Version 1.1.2 (?? ??? 2006)
 
   - New Features / Enhancements:
     = User Interface
+      + Added Category Color option
+      + Admin can now specify a background image for inclusion into CSS
       + Added new feature 'Display Long Day Names'
       + Added new Color Picker with many options
       + Added new About WebCalendar page

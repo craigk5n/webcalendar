@@ -64,9 +64,9 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
 } else if ( empty ( $error ) ) {
   if ( ! empty ( $id ) ) {
     # update (don't let them change global status)
-    $sql = 'UPDATE webcal_categories SET cat_name = ? ' .
+    $sql = 'UPDATE webcal_categories SET cat_name = ?, cat_color = ? ' .
       'WHERE cat_id = ?';
-    if ( ! dbi_execute ( $sql, array( $catname, $id ) ) ) {
+    if ( ! dbi_execute ( $sql, array( $catname, $catcolor, $id ) ) ) {
       $error = db_error ();
     }
     $delIcon = getPostValue ( 'delIcon' );
@@ -89,17 +89,16 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
       } else
         $catowner = $login;
       $sql = 'INSERT INTO webcal_categories ' .
-        '( cat_id, cat_owner, cat_name ) ' .
-        'VALUES ( ?, ?, ? )';
-      if ( ! dbi_execute ( $sql, array( $id, $catowner, $catname ) ) ) {
+        '( cat_id, cat_owner, cat_name, cat_color ) ' .
+        'VALUES ( ?, ?, ?, ? )';
+      if ( ! dbi_execute ( $sql, array( $id, $catowner, $catname, $catcolor ) ) ) {
         $error = db_error ();
       }
     } else {
       $error = db_error ();
     }
   }
-
-  if (  is_dir($icon_path) && ( ! empty ( $ENABLE_ICON_UPLOADS ) && 
+  if ( empty ( $delIcon ) && is_dir($icon_path) && ( ! empty ( $ENABLE_ICON_UPLOADS ) && 
     $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) ) { 
     //Save icon if uploaded
     if ( ! empty ( $file['tmp_name'] ) && $file['type'] == 'image/gif' &&

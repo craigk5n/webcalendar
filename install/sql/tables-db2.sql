@@ -5,6 +5,11 @@ CREATE TABLE webcal_user (
   cal_firstname VARCHAR(25),
   cal_is_admin CHAR(1) DEFAULT 'N',
   cal_email VARCHAR(75),
+  cal_enabled CHAR(1) DEFAULT 'Y',
+  cal_telephone VARCHAR(50),
+  cal_address VARCHAR(75),
+  cal_title VARCHAR(75),
+  cal_birthday INT,
   PRIMARY KEY ( cal_login )
 );
 CREATE TABLE webcal_entry (
@@ -146,6 +151,7 @@ CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
   cat_owner VARCHAR(25),
   cat_name VARCHAR(80) NOT NULL,
+  cat_color VARCHAR(8),
   PRIMARY KEY ( cat_id )
 );
 CREATE TABLE webcal_asst (
