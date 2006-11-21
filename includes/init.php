@@ -1,6 +1,5 @@
 <?php
-/*
- * Does various initialization tasks and includes all needed files.
+/* Does various initialization tasks and includes all needed files.
  *
  * This page is included by most WebCalendar pages as the only include file.
  * This greatly simplifies the other PHP pages since they don't need to worry
@@ -72,8 +71,7 @@ include_once 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
 
-/*
- * Prints the HTML header and opening HTML body tag.
+/* Prints the HTML header and opening HTML body tag.
  *
  * @param array  $includes     Array of additional files to include referenced
  *                             from the includes directory
@@ -85,7 +83,7 @@ $WebCalendar->initializeSecondPhase();
  *                             popup windows, such as color selection)
  * @param bool   $disableStyle Do not include the standard css?
  * @param bool   $disableRSS   Do not include the RSS link
- * @param bool   $disableAJAX   Do not include the prototype.js link
+ * @param bool   $disableAJAX  Do not include the prototype.js link
  */
 function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $disableCustom = false, $disableStyle = false, $disableRSS = false,
@@ -93,15 +91,15 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   global $BGCOLOR, $browser, $CUSTOM_HEADER, $CUSTOM_SCRIPT, $charset,
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG, $PHP_SELF,
-  $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG,
-  $TODAYCELLBG, $WEEKENDBG, $show_printer;
-  $ret = '';
+  $POPUP_FG, $REQUEST_URI, $self, $show_printer, $TABLECELLFG, $TEXTCOLOR,
+  $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
+  $lang = $ret = '';
   // Determine the page direction (left-to-right or right-to-left)
   $direction = translate ( 'direction' );
   // get script name for later use
-  $thisPage = substr ( $self, strrpos( $self, '/' ) + 1 );
+  $thisPage = substr ( $self, strrpos ( $self, '/' ) + 1 );
   // Calculate the <body> id value
-  $thisPageId = preg_replace ( "/(_|.php)/", '', $thisPage );
+  $thisPageId = preg_replace ( '/(_|.php)/', '', $thisPage );
   // remember this view if the file is a view_x.php script
   if ( ! strstr ( $REQUEST_URI, 'view_entry' ) )
     remember_this_view ( true );
@@ -118,7 +116,6 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   if ( ! empty ( $friendly ) || $disableCustom )
     $MENU_ENABLED = 'N';
 
-  $lang = '';
   if ( ! empty ( $LANGUAGE ) )
     $lang = languageToAbbrev ( $LANGUAGE );
   if ( empty ( $lang ) )
@@ -136,8 +133,9 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="'
    . $lang . '">
   <head>
+    <title>' . $appStr . '</title>
     <meta http-equiv="Content-Type" content="text/html; charset=' . $charset
-   . '" /><title>' . $appStr . '</title>';
+   . '" />';
   // Includes needed for the top menu
   if ( $MENU_ENABLED == 'Y' ) {
     $MENU_THEME = ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none'
@@ -150,14 +148,14 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
 
   $ret .= '
     <script type="text/javascript" src="includes/js/util.js"></script>'
-   . ( !$disableAJAX ? '
+   . ( ! $disableAJAX ? '
     <script type="text/javascript" src="includes/js/prototype.js"></script>'
     : '' );
   // Any other includes?
   if ( is_array ( $includes ) ) {
     foreach ( $includes as $inc ) {
-      if ( substr ( $inc, 0, 13 )  == 'js/popups.php' && !
-        empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
+      if ( substr ( $inc, 0, 13 ) == 'js/popups.php' && !
+          empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
         // don't load popups.php javascript if DISABLE_POPUPS
       } else
         $ret .= '
@@ -167,11 +165,11 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   }
   // Do we need anything else inside the header tag?
   if ( $HeadX )
-    $ret .=  "\n    " . $HeadX;
-  // Include the styles
-  // Include CSS needed for the top menu
+    $ret .= '
+    ' . $HeadX;
+  // Include the CSS needed for the top menu and themes.
   if ( $MENU_ENABLED == 'Y' ) {
-     include_once 'includes/menu/index.php';
+    include_once 'includes/menu/index.php';
     $ret .= '
     <link rel="stylesheet" type="text/css" href="includes/menu/themes/'
      . $MENU_THEME . '/theme.css" />';
@@ -194,22 +192,23 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // don't support media="print" stylesheets
   if ( ! empty ( $show_printer ) )
     $ret .= '
-      <link rel="stylesheet" type="text/css"'
+    <link rel="stylesheet" type="text/css"'
      . ( empty ( $friendly ) ? ' media="print"' : '' )
      . ' href="includes/print_styles.css" />';
   // Add RSS feed if publishing is enabled
-  $ret .= 
-    ( ! empty ( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y' &&
+  $ret .=
+  ( ! empty ( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y' &&
     ( $login == '__public__' ) || ( ! empty ( $GLOBALS['USER_RSS_ENABLED'] ) &&
-      ( $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) ) && $disableRSS == false ? '
+      $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) && $disableRSS == false ? '
     <link rel="alternate" type="application/rss+xml" title="'
      . $appStr . ' [RSS 2.0]" href="rss.php'
     // TODO: single-user mode, etc.
-    . ( $login != '__public__' ? '?user=' . $login : '' ) . '" />' : '' ) . "\n"
+    . ( $login != '__public__' ? '?user=' . $login : '' ) . '" />' : '' )
   // Link to favicon
-  . '    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />'. "\n"
-  . ( $MENU_ENABLED == 'Y' ? $menuScript : '' ) 
-   // Finish the header
+  . '
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    ' . ( $MENU_ENABLED == 'Y' ? $menuScript : '' )
+  // Finish the header
   . '  </head>
   <body'
   // Add the page direction if right-to-left
@@ -218,7 +217,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   . ' id="' . $thisPageId . '"'
   // Add any extra parts to the <body> tag
   . ( ! empty ( $BodyX ) ? " $BodyX" : '' ) . '>' . "\n";
-  //If menu is enabled, place menu above custom header is desired
+  // If menu is enabled, place menu above custom header is desired
   if ( $MENU_ENABLED == 'Y' && $menuConfig['Above Custom Header'] )
     $ret .= $menuHtml;
   // Add custom header if enabled
@@ -231,8 +230,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   echo $ret;
 }
 
-/*
- * Prints the common trailer.
+/* Prints the common trailer.
  *
  * @param bool $include_nav_links Should the standard navigation links be
  *                                included in the trailer?
@@ -248,18 +246,18 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
   $DISPLAY_TASKS_IN_GRID, $fullname, $GROUPS_ENABLED, $has_boss, $is_admin,
   $is_nonuser, $is_nonuser_admin, $LAYER_STATUS, $login, $login_return_path,
   $MENU_DATE_TOP, $MENU_ENABLED, $NONUSER_ENABLED, $PUBLIC_ACCESS,
-  $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_OTHERS, $readonly, $REPORTS_ENABLED,
-  $REQUIRE_APPROVALS, $single_user, $STARTVIEW, $thisday, $thismonth, $thisyear,
-  $use_http_auth, $user, $views, $WEEK_START, $PUBLIC_ACCESS_FULLNAME;
+  $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_FULLNAME, $PUBLIC_ACCESS_OTHERS,
+  $readonly, $REPORTS_ENABLED, $REQUIRE_APPROVALS, $single_user, $STARTVIEW,
+  $thisday, $thismonth, $thisyear, $use_http_auth, $user, $views, $WEEK_START;
 
   $ret = '';
 
-  if ( $include_nav_links && ! $friendly ) { 
-    if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' ) {
-      $ret .= '<div id="dateselector">';
-      $ret .= print_menu_dates ();
-      $ret .= '</div>';
-    }
+  if ( $include_nav_links && ! $friendly ) {
+    if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' )
+      $ret .= '<div id="dateselector">'
+        . print_menu_dates ()
+        . '</div>';
+
       if ( $MENU_ENABLED == 'N' )
        include_once 'includes/trailer.php';
   }
