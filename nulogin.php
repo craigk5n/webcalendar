@@ -38,6 +38,10 @@ if ( $use_http_auth ) {
 $login = getValue ( 'login' );
 $return_path = getValue ( 'return_path' );
 
+$date = getValue ( 'date' );
+if ( ! empty ( $date ) && ! empty ( $return_path ) )
+  $return_path .= '?date=' . $date; 
+
 if ( empty ( $login ) ) {
   die_miserable_death ( 'A login must be specified' );
 }
