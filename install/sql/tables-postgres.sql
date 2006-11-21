@@ -10,6 +10,7 @@ CREATE TABLE webcal_user (
   cal_address VARCHAR(75) DEFAULT NULL,
   cal_title VARCHAR(75) DEFAULT NULL,
   cal_birthday INT DEFAULT NULL,
+  cal_last_login INT DEFAULT NULL,
   PRIMARY KEY ( cal_login )
 );
 INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) 
