@@ -33,6 +33,8 @@ CREATE TABLE webcal_user (
   cal_title VARCHAR(75) NULL,
   /* user's birthday */
   cal_birthday INT NULL,
+ /* user's last log in date */
+  cal_last_login INT NULL,
   PRIMARY KEY ( cal_login )
 );
 

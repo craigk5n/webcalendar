@@ -10,6 +10,7 @@ CREATE TABLE webcal_user (
   cal_address VARCHAR(75),
   cal_title VARCHAR(75),
   cal_birthday INT,
+  cal_last_login INT,
   PRIMARY KEY ( cal_login )
 );
 CREATE TABLE webcal_entry (

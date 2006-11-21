@@ -276,5 +276,6 @@ ALTER TABLE webcal_user ADD cal_telephone VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_user ADD cal_address VARCHAR(75) DEFAULT NULL;
 ALTER TABLE webcal_user ADD cal_title VARCHAR(75) DEFAULT NULL;
 ALTER TABLE webcal_user ADD cal_birthday INT NULL;
+ALTER TABLE webcal_user ADD cal_last_login INT NULL;
 
 
