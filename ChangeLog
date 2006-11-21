@@ -1,7 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
  - Implemented Category Color RFE and PATCH ( many seperate entries )
- - Implemented RFE [ 468275 ] a variable for background picture
  - Fixed bug [ 1600208 ] send_reminders.php and postgresql
  - Fixed bug [ 1599634 ] 'colors.php' doesn't work properly
  - Fixed bug [ 1600194 ] Minical dropping date in URL parsing
