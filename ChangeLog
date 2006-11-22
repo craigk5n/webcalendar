@@ -1,5 +1,8 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1600914 ] Some tasks omitted from calendar display
+ - Fixed bug [ 1600907 ] Small task list popup Due time is in GMT not local time
+ - Fixed bug  [ 1600909 ] Cannot make weekend start on Sunday
  - Implemented Category Color RFE and PATCH ( many seperate entries )
  - Fixed bug [ 1600208 ] send_reminders.php and postgresql
  - Fixed bug [ 1599634 ] 'colors.php' doesn't work properly
