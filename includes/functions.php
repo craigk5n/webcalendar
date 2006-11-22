@@ -1904,11 +1904,11 @@ function display_small_tasks ( $cat_id ) {
     $row_cnt++;
    //build special string to pass to popup
    // TODO move this logic into build_entry_popup() 
-    $timeStr = translate ( 'Due Time' ) . ':' . display_time( $E->getDueTime()) .
-      '</dd><dd>' . 
-      translate ( 'Due Date' ) . ':' . date_to_str( $E->getDueDate(),'', false ).
-      '</dd></dt><dt>' . translate ( 'Percent Complete' ) .
-      ':<dt><dd>' . $E->getPercent() . '%' ;
+    $timeStr = translate ( 'Due Time' ) . ':' 
+      . display_time( '', 0, $E->getDueDateTimeTS () ) . '</dd><dd>' 
+      . translate ( 'Due Date' ) . ':' . date_to_str( $E->getDueDate(),'', false )
+      . '</dd></dt><dt>' . translate ( 'Percent Complete' ) 
+      . ':<dt><dd>' . $E->getPercent() . '%' ;
 
     $eventinfo .= build_entry_popup ( $popupid, $E->getLogin(), $E->getDescription(), 
       $timeStr, '', $E->getLocation(), $E->getName(), $cal_id ); 
@@ -2259,7 +2259,7 @@ function get_entries ( $date, $get_unapproved=true ) {
 function get_tasks ( $date, $get_unapproved=true ) {
   global $tasks;
   $ret = array ();
-  $today = gmdate ('Ymd' );
+  $today = date ('Ymd' );
   $tskcnt = count ( $tasks );
   for ( $i = 0; $i < $tskcnt; $i++ ) {
     // In case of data corruption (or some other bug...)
@@ -2267,7 +2267,7 @@ function get_tasks ( $date, $get_unapproved=true ) {
       continue;
     if ( ! $get_unapproved && $tasks[$i]->getStatus() == 'W' )
       continue;
-    $due_date = gmdate ('Ymd', $tasks[$i]->getDueDateTimeTS() );
+    $due_date = date ('Ymd', $tasks[$i]->getDueDateTimeTS() );
     //make overdue tasks float to today
     if ( ( $date == $today && $due_date < $today ) || ( $due_date == $date ) ) {
       $ret[] = $tasks[$i];
@@ -6206,7 +6206,7 @@ function is_weekend ( $date ) {
   //we can't test for empty because $date may equal 0
   if ( ! strlen ( $date ) )
     return false;
-  if ( empty ( $WEEKEND_START ) )
+  if ( ! isset ( $WEEKEND_START ) )
     $WEEKEND_START = 6;
   //we may have been passed a weekday 0-6
   if ( $date < 7 ) {
