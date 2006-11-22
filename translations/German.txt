@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 6 Nov 2006
+# Last update: 22 Nov 2006
 #
 # $Id$
-# Translation last updated on 11-06-2006
+# Translation last updated on 11-22-2006
 
 
 ################################################################################
@@ -40,7 +40,7 @@ __month__ __yyyy__: __month__ __yyyy__
 Error: Fehler
 Import Results: Importierte Ergebnisse
 Events successfully imported: Termine erfolgreich importiert
-Events from prior import marked as deleted: Termine vom vorigen Import als "gel&ouml;scht" markieren
+Events from prior import marked as deleted: Termine vom vorigen Import als &#34;gel&ouml;scht&#34; markieren
 Conflicting events: Termin&uuml;berschneidung
 Errors: Fehler
 There was an error parsing the import file or no events were returned: Beim Einlesen der Import-Datei trat ein Fehler auf oder es wurden keine Eintr&auml;ge zur&uuml;ckgegeben
@@ -224,15 +224,15 @@ Comments: Anmerkungen
 # Page: edit_remotes.php
 #
 NONUSER_PREFIX not set: &#39;NONUSER_PREFIX&#39; nicht definiert
-Edit Remote Calendar: Ver&auml;ndere entfernten (anderen) Kalender
-Add Remote Calendar: Hinzuf&uuml;gen entfernten (anderen) Kalender
+Edit Remote Calendar: Externen Kalender &auml;ndern
+Add Remote Calendar: Externen Kalender hinzuf&uuml;gen
 word characters only: K&ouml;nnen nur Buchstaben und Ziffern sein (a-zA-Z_0-9)
 Calendar ID: Kalender ID
 First Name: Vorname
 Last Name: Nachname
 URL: URL
 Create Layer: Erstelle Layer
-Required to View Remote Calendar: Erfordere Ansicht des entfernten Kalenders
+Required to View Remote Calendar: Erfordert Ansicht des externen Kalenders
 Color: Farbe
 Reload: Neuladen
 
@@ -431,7 +431,7 @@ Themes: Thema
 AVAILABLE THEMES: VERF&Uuml;GBARE THEMEN
 Preview: Vorschau
 Site customization: Benutzerdefinierte Seiteneinstellungen
-custom-script-help: Erlaubt Eintr&auml;ge von benutzerdefinierten Javascript- oder Stylesheet Texten welche im HTML "Kopf"-Abschnitt auf jeder Seite eingef&uuml;gt werden.
+custom-script-help: Erlaubt Eintr&auml;ge von benutzerdefinierten Javascript- oder Stylesheet Texten welche im HTML &#34;Kopf&#34;-Abschnitt auf jeder Seite eingef&uuml;gt werden.
 Custom script/stylesheet: Benutzerdefinierte Scripte/Stylesheets
 custom-header-help: Erm&ouml;glicht benutzerdefinierte HTML-Abschnitte am ANFANG jeder Seite
 Custom header: Benutzerdefinierte Kopfzeile
@@ -452,8 +452,8 @@ Date format: Datumsformat
 Small Task Date: Kleines Datumsformat f&uuml;r Aufgaben
 display-week-starts-on: Gibt an ob die Wochenansicht am Sonntag oder Montag beginnen soll. Wenn Montag gew&auml;hlt wird, werden die Wochennummern als ISO Wochennummern ausgegeben.
 Week starts on: Wochenbeginn am
-Sunday: Sonntag
-Monday: Montag
+display-weekend-starts-on: Setzt den Tag an dem das Wochenende beginnt
+Weekend starts on: Das Wochenende beginnt am
 time-format-help: Gibt an welches Zeit-Format benutzt wird - 12-st&uuml;ndiges - Zeigt Zeiten als 3am, 8:30pm, etc. 24-st&uuml;ndiges - Zeigt Zeiten als 3:00, 20:30, etc.
 Time format: Zeit-Format
 12 hour: 12-st&uuml;ndig
@@ -474,12 +474,14 @@ Top: Oben
 Bottom: Unten
 menu-themes-help: Stellt die Farben und die Art des oberen Men&uuml;s ein
 Menu theme: Men&uuml; Thema
-fonts-help: Definiert die Standard-Schriftarten (z.B. "Arial, Helvetica")
+fonts-help: Definiert die Standard-Schriftarten (z.B. &#34;Arial, Helvetica&#34;)
 Fonts: Schriftart
 display-sm_month-help: Falls aktiviert, werden kleine Monate in der Monatsansichten angezeigt
 Display small months: Kleine Monate anzeigen
 display-weekends-help: Zeigt die Wochenenden in der Wochenansicht an.
 Display weekends: Wochenenden anzeigen
+display-long-daynames-help: Falls aktiviert, werden lange Wochentagsnamen angezeigt
+Display long day names: Lange Wochentagsnamen anzeigen
 display-alldays-help: Zeigt und bef&uuml;llt die Tage des vorhergehenden und folgenden Monats in der aktuellen Monatsansichten
 Display all days in month view: Anzeigen <b>aller</b> Tage in der Monatsansicht
 display-week-number-help: Gibt an, ob die Wochennummer (1-52) in der Monats- und Wochenansicht angezeigt werden soll.
@@ -490,18 +492,18 @@ yearly-shows-events-help: Zeigt Tage mit Terminen in der Monats- und Jahresansic
 Display days with events in bold in month and year views: Zeigt Tage mit Terminen in der Monats- und Jahresansicht HERVORGEHOBEN (FETT) an
 display-minutes-help: Falls aktiviert, werden die ganzen Stunden auch mit :00 Minuten angezeigt
 Display 00 minutes always: Anzeigen auch von &#39;:00&#39; Minuten
-allow-view-add-help: Ein "+" Icon wird bei Ansichten beigef&uuml;gt, welches Teilnehmern ein schnelles hinzuf&uuml;gen von Terminen bei anderen Kalendern erm&ouml;glicht
+allow-view-add-help: Ein &#34;+&#34; Icon wird bei Ansichten beigef&uuml;gt, welches Teilnehmern ein schnelles hinzuf&uuml;gen von Terminen bei anderen Kalendern erm&ouml;glicht
 Include add event link in views: Beeinhaltet LINK-Adressen von Terminen bei den Ansichten
 lunar-help: Wenn aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
 Display Lunar Phases in month view: Anzeigen der Mondphasen in der Monatsansicht
 Restrictions: Beschr&auml;nkungen
 allow-view-other-help: Gibt an, ob die Benutzer die Kalender anderer Teilnehmer sehen kann.
 Allow viewing other user&#39;s calendars: Ansicht anderer Benutzer-Kalender zulassen
-require-approvals-help: Wenn diese Option ausgew&auml;hlt ist, mu&szlig; der Benutzer den Termin best&auml;tigen, um auf seinem Kalender anzeigen zu lassen (vorausgesetzt "unbest&auml;tigte Termine anzeigen"). Anmerkung: Wenn diese Option auf "Nein" gesetzt ist, wirkt sich dies nicht auf etwaige aktiverte "&Ouml;ffentliche Kalender" aus.
+require-approvals-help: Wenn diese Option ausgew&auml;hlt ist, mu&szlig; der Benutzer den Termin best&auml;tigen, um auf seinem Kalender anzeigen zu lassen (vorausgesetzt &#34;unbest&auml;tigte Termine anzeigen&#34;). Anmerkung: Wenn diese Option auf &#34;Nein&#34; gesetzt ist, wirkt sich dies nicht auf etwaige aktiverte &#34;&Ouml;ffentliche Kalender&#34; aus.
 Require event approvals: Terminbest&auml;tigung verlangen
-display-unapproved-help: Gibt an, ob unbest&auml;tigte Termine in Ihrem Kalender angezeigt werden sollen. Wenn "Ja", werden unbest&auml;tigte Termine in einer anderen Farbe angezeigt. Wenn "Nein", m&uuml;ssen unbest&auml;tigte Termine erst best&auml;tigt werden, um angezeigt zu werden. 
+display-unapproved-help: Gibt an, ob unbest&auml;tigte Termine in Ihrem Kalender angezeigt werden sollen. Wenn &#34;Ja&#34;, werden unbest&auml;tigte Termine in einer anderen Farbe angezeigt. Wenn &#34;Nein&#34;, m&uuml;ssen unbest&auml;tigte Termine erst best&auml;tigt werden, um angezeigt zu werden. 
 Display unapproved: Unbest&auml;tigte Termine anzeigen
-conflict-check-help: Pr&uuml;ft Termin&uuml;berschneidungen (Zwei Termine die f&uuml;r dieselbe Person zur gleichen Zeit gesetzt wurden). Wenn die Option auf "JA" gesetzt wurde kann man Termin&uuml;berschneidungen &uuml;ber ein Eingabefenster zulassen. Wenn Sie "NEIN" gew&auml;hlt wurde werden Konflikte nicht gepr&uuml;ft. Es wird empfohlen die Option auf "JA" zu setzen.
+conflict-check-help: Pr&uuml;ft Termin&uuml;berschneidungen (Zwei Termine die f&uuml;r dieselbe Person zur gleichen Zeit gesetzt wurden). Wenn die Option auf &#34;JA&#34; gesetzt wurde kann man Termin&uuml;berschneidungen &uuml;ber ein Eingabefenster zulassen. Wenn Sie &#34;NEIN&#34; gew&auml;hlt wurde werden Konflikte nicht gepr&uuml;ft. Es wird empfohlen die Option auf &#34;JA&#34; zu setzen.
 Check for event conflicts: Termin&uuml;berschneidungen pr&uuml;fen
 conflict-months-help: Gibt an wie viele Monate im voraus auf Zeit&uuml;berschneidungen gepr&uuml;ft werden soll. Wenn das Hinzuf&uuml;gen von Eintr&auml;gen zu lange dauert verringern Sie die Anzahl der Monate die im voraus gepr&uuml;ft werden sollen.
 Conflict checking months: Termin&uuml;berschneidungspr&uuml;fung (in Monaten)
@@ -514,17 +516,17 @@ Maximum timed events per day: Maximale Anzahl der zu vergebenen Termine pro Tag
 crossday-help: Falls aktiv, werden tages&uuml;bergreifende Termine extra angezeigt
 Disable Cross-Day Events: Tages&uuml;bergreifende Termine deaktivieren
 Events: Termine
-disable-location-field-help: W&auml;hlen Sie "Ja" um das Feld "Ort" bei der Termineingabe zu entfernen
-Disable Location field: Das Feld "Ort" bei der Termineingabe entfernen
-disable-url-field-help: Wenn "JA" ausgew&auml;hlt ist, wird das "URL" Feld von der Informationsseite entfernt
-Disable URL field: "URL"-Feld deaktivieren
-disable-priority-field-help: Wenn sie mit "JA" best&auml;tigen wird das Priorit&auml;tenfeld von Ihren Termininformationsseiten entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
+disable-location-field-help: W&auml;hlen Sie &#34;Ja&#34; um das Feld &#34;Ort&#34; bei der Termineingabe zu entfernen
+Disable Location field: Das Feld &#34;Ort&#34; bei der Termineingabe entfernen
+disable-url-field-help: Wenn &#34;JA&#34; ausgew&auml;hlt ist, wird das &#34;URL&#34; Feld von der Informationsseite entfernt
+Disable URL field: &#34;URL&#34;-Feld deaktivieren
+disable-priority-field-help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Priorit&auml;tenfeld von Ihren Termininformationsseiten entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
 Disable Priority field: Priorit&auml;tenfeld deaktivieren
-disable-access-field-help: Wenn sie mit "JA" best&auml;tigen wird das Zugriffsfeld von Ihren Termininformationsseiten entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
+disable-access-field-help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Zugriffsfeld von Ihren Termininformationsseiten entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
 Disable Access field: Zugriffsfeld deaktivieren
-disable-participants-field-help: Wenn sie mit "JA" best&auml;tigen wird das Teilnehmerfeld von Ihren Termininformationsseiten entfernt, um zu verhindern das Benutzer Eintr&auml;ge anderer Teilnehmer zu Ihrem Kalender hinzuf&uuml;gen. Au&szlig;erdem k&ouml;nnen Sie mit der Option "Ansicht anderer Benutzer-Kalender zulassen" verhindern das Benutzer den Kalender anderer Teilnehmer sehen k&ouml;nnen.
+disable-participants-field-help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Teilnehmerfeld von Ihren Termininformationsseiten entfernt, um zu verhindern das Benutzer Eintr&auml;ge anderer Teilnehmer zu Ihrem Kalender hinzuf&uuml;gen. Au&szlig;erdem k&ouml;nnen Sie mit der Option &#34;Ansicht anderer Benutzer-Kalender zulassen&#34; verhindern das Benutzer den Kalender anderer Teilnehmer sehen k&ouml;nnen.
 Disable Participants field: Benutzerfeld deaktivieren
-disable-repeating-field-help: Wenn sie mit "JA" best&auml;tigen wird das Wiederholungsfeld bei "Eintr&auml;ge hinzuf&uuml;gen" entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
+disable-repeating-field-help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Wiederholungsfeld bei &#34;Eintr&auml;ge hinzuf&uuml;gen&#34; entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
 Disable Repeating field: Terminwiederholungsfeld deaktivieren
 allow-html-description-help: Falls aktiviert -  Benutzer kann HTML in der Beschreibung der Termine eintragen. Wenn nicht aktiviert, werden die HTML-Tags als Plain Text angezeigt. Warnung, bei Aktivierung erm&ouml;glicht es dem Benutzer Bildverkn&uuml;pfungen auf andere Webseiten.
 Allow HTML in Description: Erm&ouml;glicht HTML-Beschreibung der Termine
@@ -544,16 +546,16 @@ user_sort-help: Legt die Art der Sortierung von Teilnehmer- und &#39;Zentralen&#
 User Sort Order: Sortierung der Teilnehmerliste
 Lastname, Firstname: Zuname, Vorname
 Firstname, Lastname: Vorname, Zuname
-Plugins: "Plugins" (Erweiterungen)
-plugins-enabled-help: Hilfe f&uuml;r "Plugins" (Erweiterungen) aktivieren
-Enable Plugins: "Plugins" (Erweiterungen) aktivieren
-plugins-sort-key-help: Hilfe f&uuml;r "Sortierschl&uuml;ssel-Plugins" (Erweiterungen)
-Plugin: "Plugin" (Erweiterung)
-allow-public-access-help: Wenn diese Option gew&auml;hlt ist, kann der Kalender als "&ouml;ffentlicher Kalender" ohne Schreibzugriff und ohne Login verwendet werden.
+Plugins: &#34;Plugins&#34; (Erweiterungen)
+plugins-enabled-help: Hilfe f&uuml;r &#34;Plugins&#34; (Erweiterungen) aktivieren
+Enable Plugins: &#34;Plugins&#34; (Erweiterungen) aktivieren
+plugins-sort-key-help: Hilfe f&uuml;r &#34;Sortierschl&uuml;ssel-Plugins&#34; (Erweiterungen)
+Plugin: &#34;Plugin&#34; (Erweiterung)
+allow-public-access-help: Wenn diese Option gew&auml;hlt ist, kann der Kalender als &#34;&ouml;ffentlicher Kalender&#34; ohne Schreibzugriff und ohne Login verwendet werden.
 Allow public access: &ouml;ffentlichen Zugriff erlauben
 public-access-default-visible: Termine vom &ouml;ffentlichen Kalender werden automatisch bei jedem Benutzer angezeigt
 Public access visible by default: &ouml;ffentlicher Zugang f&uuml;r ALLE Benutzer sichtbar
-public-access-default-selected: Beim Hinzuf&uuml;gen eines neuen Termins wird "&ouml;ffentlicher Zugang" als Standard Benutzer ausgew&auml;hlt
+public-access-default-selected: Beim Hinzuf&uuml;gen eines neuen Termins wird &#34;&ouml;ffentlicher Zugang&#34; als Standard Benutzer ausgew&auml;hlt
 Public access is default participant: &ouml;ffentlicher Zugang als Standard Benutzer
 public-access-view-others-help: Gibt an ob ein &ouml;ffentlicher Benutzer die Kalender anderer Benutzer sehen kann.
 Public access can view other users: &ouml;ffentlicher Benutzer kann andere Benutzer sehen
@@ -577,12 +579,12 @@ nonuser-enabled-help: Falls aktiviert: Administratoren haben die M&ouml;glichkei
 Nonuser enabled: &#39;Zentrale&#39;-Kalender aktivieren
 nonuser-list-help: Sollen die &#39;Zentralen&#39;-Kalender in der Teilnehmerliste am Anfang oder am Ende angezeigt werden?
 Nonuser list: Sollen die &#39;Zentralen&#39; Kalender am Anfang der Teilnehmerliste angezeigt werden
-reports-enabled-help: Wenn aktiviert, finden die Benutzer am Ende jeder Seite einen Eintrag "Berichte" welcher f&uuml;r das Erstellen von Berichten verwendet werden kann. Zus&auml;tzlich kann der "Administrator" allgemeine Berichte erstellen, die f&uuml;r jeden Benutzer am Ende jeder Seite zur Verf&uuml;gung stehen.
+reports-enabled-help: Wenn aktiviert, finden die Benutzer am Ende jeder Seite einen Eintrag &#34;Berichte&#34; welcher f&uuml;r das Erstellen von Berichten verwendet werden kann. Zus&auml;tzlich kann der &#34;Administrator&#34; allgemeine Berichte erstellen, die f&uuml;r jeden Benutzer am Ende jeder Seite zur Verf&uuml;gung stehen.
 Reports enabled: Berichte aktivieren
 subscriptions-enabled-help: Bestimmt ob &#39;REMOTE&#39;-Teilnehmer andere WebKalender von Teilnehmern abonnieren, und somit dessen Termine und ihre &#39;iCal&#39;-aktiven Anwendungen (wie Apple&#39;s iCal oder Mozilla-Kalender) sehen k&ouml;nnen.
 Allow remote subscriptions: &#39;REMOTE&#39;-Abos aktivieren
 remotes-enabled-help: Erm&ouml;glicht das Laden von ICS Dateien unter Verwendung einer URL
-Allow remote calendars: Erm&ouml;gliche entferntere (andere) Kalender 
+Allow remote calendars: Erm&ouml;gliche externe (andere) Kalender 
 rss-enabled-help: Bestimmt, ob ein Kalender &uuml;ber RRS-Feed erreicht werden kann.
 Enable RSS feed: RRS-Feed aktivieren
 categories-enabled-help: Aktiviert Unterst&uuml;tzung f&uuml;r Terminkategorien.
@@ -615,7 +617,7 @@ Anyone: Jeder
 allow-comments-help: Erlaubt das Hinzuf&uuml;gen von Anmerkungen zu Terminen
 Allow comments to events: Hinzuf&uuml;gen von Anmerkungen zu Terminen erlauben
 Admin and owner can always add comments if enabled: Falls aktiviert, Administrator und Besitzer k&ouml;nnen immer Anmerkungen hinzuf&uuml;gen
-email-enabled-help: Die Option "JA" erm&ouml;glicht das Versenden von Emails sowie von Erinnerungen &uuml;ber den Kalender. Wenn Sie keinen Mailserver installiert haben setzen Sie diese Option auf "NEIN".
+email-enabled-help: Die Option &#34;JA&#34; erm&ouml;glicht das Versenden von Emails sowie von Erinnerungen &uuml;ber den Kalender. Wenn Sie keinen Mailserver installiert haben setzen Sie diese Option auf &#34;NEIN&#34;.
 Email enabled: Email aktivieren
 email-default-sender: Standard Email-Absender
 Default sender address: Standard Absenderadresse
@@ -642,6 +644,7 @@ email-event-deleted: Gibt an ob Emailbenachrichtigungen versendet werden sollen,
 Events removed from my calendar: Termine, die von meinem Kalender ENTFERNT wurden
 email-event-rejected: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Benutzer die Teilnahme an einem Termin ABGELEHNT hat.
 Event rejected by participant: Termine, die von ANDEREN Benutzern ENTFERNT wurden
+Color options: Farbenauswahl
 Allow user to customize colors: Benutzer d&uuml;rfen Farbeinstellungen &auml;ndern
 gradient-colors: Falls aktiviert, stufenweiser Farbverlauf (Farb&auml;nderung) m&ouml;glich. Das kann gro&szlig;e negative Auswirkung auf die Leistung haben.
 Enable gradient images for background colors: Stufenweiser Farbverlauf (Farb&auml;nderung) f&uuml;r Hintergrundfarben
@@ -654,13 +657,18 @@ Table grid color: Tabellen-Gitterfarbe
 Table header background: Hintergrund Tabellen-Kopfzeile
 Table header text: Textfarbe Tabellen-Kopfzeile
 Table cell background: Tabellen-Hintergrund
-Table cell background for current day: Tabellen-Hintergrund f&uuml;r "Heute"
+Table cell background for current day: Tabellen-Hintergrund f&uuml;r &#34;Heute&#34;
 Table cell background for days with events: Tabellen-Hintergrund f&uuml;r Tage mit Terminen
 Table cell background for weekends: Hintergrundfarbe f&uuml;r Wochenenden
 Table cell background for other month: Tabellen-Hintergrund f&uuml;r anderen Monat
 Week number color: Farbe f&uuml;r Wochennummer
 Event popup background: Hintergrundfarbe Termin-PopUp
 Event popup text: Textfarbe Termin-PopUp
+Background Image options: Auswahl eines m&ouml;glichen Hintergrundbildes
+bgimage-help: URL-Adresse des Hintergrundbildes eingeben. Kann auch ein relativer LINK sein.
+Background Image: Hintergrundbild
+bgrepeat-help: Regelt das Verhalten des wiederholenden Hintergrundbildes
+Background Repeat: Hintergrundbild wiederholen
 
 ########################################
 # Page: category_handler.php
@@ -671,19 +679,19 @@ File is not a gif image: Datei ist kein &#39;gif&#39; Bild
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: Wochenenden in der Wochenansicht anzeigen
-Display days with events in bold in year view: Zeigt Tage MIT Terminen in der Jahres&uuml;bersicht HERVORGEHOBEN (FETT) an
-Time interval: Zeitintervall
-time-interval-help: Legt das Zeitintervall in der Tages,- Wochen- und Monatsansicht fest.
 Auto-refresh calendars: Kalender aktualisieren
-auto-refresh-help: Falls aktiviert, Tages,- Wochen- und Monats-Ansicht, und "unbest&auml;tigte Termine" werden automatisch aktualisiert.
+auto-refresh-help: Falls aktiviert, Tages,- Wochen- und Monats-Ansicht, und &#34;unbest&auml;tigte Termine&#34; werden automatisch aktualisiert.
 Auto-refresh time: Aktualisierungsintervall
 auto-refresh-time-help: Falls die Kalenderaktualisierung aktiviert ist, kann hier das Intervall der Aktualisierung bestimmt werden.
+Display days with events in bold in year view: Zeigt Tage MIT Terminen in der Jahres&uuml;bersicht HERVORGEHOBEN (FETT) an
+Display weekends in week view: Wochenenden in der Wochenansicht anzeigen
+Time interval: Zeitintervall
+time-interval-help: Legt das Zeitintervall in der Tages,- Wochen- und Monatsansicht fest.
 Nonuser: &#39;Zentrale&#39;-Kalender
 user-customize-color: Spezifiziert, ob Benutzern erlaubt wird, ihre eigenen Farbeneinstellungen zu &auml;ndern
 enable-gradient-help: Verwendet die stufenweise Farb&auml;nderungen f&uuml;r Zellenhintergr&uuml;nde
 Manually entering color values: Eigene eingegebene Farbwerte
-colors-help: Alle Farben k&ouml;nnen im Format "#RRGGBB" eingegeben werden. Hierbei steht "RR" f&uuml;r den hexadezimalen Wert von Rot, "GG" f&uuml;r Gr&uuml;n und "BB" f&uuml;r Blau.
+colors-help: Alle Farben k&ouml;nnen im Format &#34;#RRGGBB&#34; eingegeben werden. Hierbei steht &#34;RR&#34; f&uuml;r den hexadezimalen Wert von Rot, &#34;GG&#34; f&uuml;r Gr&uuml;n und &#34;BB&#34; f&uuml;r Blau.
 
 ########################################
 # Page: usersel.php
@@ -710,17 +718,17 @@ Add New View: Neue Ansicht hinzuf&uuml;gen
 # Page: help_uac.php
 #
 Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: L&auml;&szlig;t eine feiner Steuerung des Anwenderzugriffs und deren Berechtigungen zu. Benutzer k&ouml;nnen Ihre Grundeinstellung, aber auch einzelne Berechtigungen bewilligen, sofern sie durch den Administrator dazu autorisiert wurden.
-Can Invite: Kann Einladen
-If disabled, this user cannot see you in the participants list.: Falls deaktiviert, kann dieser Benutzer Sie in der Benutzerliste nicht sehen
 Can Email: Kann Emailen
 If disabled, this user cannot send you emails.: Falls deaktiviert, kann dieser Benutzer Ihnen keine Emails senden
+Can Invite: Kann Einladen
+If disabled, this user cannot see you in the participants list.: Falls deaktiviert, kann dieser Benutzer Sie in der Benutzerliste nicht sehen
 Can See Time Only: Kann nur Zeit sehen
 If enabled, this user cannot view the details of any of your entries.: Falls aktiviert, kann dieser Benutzer KEINE detailierten Informationen Ihrer Eintr&auml;ge ansehen
 
 ########################################
 # Page: remotes.php
 #
-Add New Remote Calendar: Neuen Fernzugriff-Kalender (Remote-Kalender) hinzuf&uuml;gen
+Add New Remote Calendar: Neuen EXTERNEN Kalender (Remote-Kalender) hinzuf&uuml;gen
 
 ########################################
 # Page: import.php
@@ -729,8 +737,8 @@ Calendar: Kalender
 Import: Import
 Import format: Importformat
 Exclude private records: Private Eintr&auml;ge ausschlie&szlig;en
-Overwrite Prior Import: Vorigen Import &uuml;berschreiben
-Repeated items are imported separately. Prior imports are not overwritten.: Wiederkehrende Objekte werden extra importiert. Vorige Importe werden nicht &uuml;berschrieben.
+Overwrite Prior Import: &#34;Vorigen Import &uuml;berschreiben&#34;
+Repeated items are imported separately. Prior imports are not overwritten.: Wiederkehrende Objekte werden extra importiert. Vorige Importierungen werden nicht &uuml;berschrieben.
 
 ########################################
 # Page: edit_template.php
@@ -742,6 +750,7 @@ Edit Custom Trailer: &Auml;ndern der benutzerdefinierten FU&szlig;ZEILE
 ########################################
 # Page: access.php
 #
+Undo: R&uuml;cksetzen
 DEFAULT CONFIGURATION: GRUNDKONFIGURATION
 Go: Zeigen 
 Admin: Administration
@@ -809,7 +818,7 @@ repeat-end-date-help: Gibt an bis zu welchem Datum der Termin wiederholt werden 
 Repeat Day: Tag der Wiederholung
 repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden soll. Dies gilt nur wenn Art der Wiederholung auf W&ouml;chentlich gesetzt ist.
 Frequency: H&auml;ufigkeit
-repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist&nbsp; "1",  der Termin wird immer wiederholt. Wenn sie&nbsp; "2" ausw&auml;hlen wird der Termin jede 2. Woche wiederholt (wenn Art der Wiederholung auf W&ouml;chentlich gesetzt ist), jeden 2. Monat (wenn Art der Wiederholung auf Monatlich gesetzt ist), etc.
+repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist&nbsp; &#34;1&#34;,  der Termin wird immer wiederholt. Wenn sie&nbsp; &#34;2&#34; ausw&auml;hlen wird der Termin jede 2. Woche wiederholt (wenn Art der Wiederholung auf W&ouml;chentlich gesetzt ist), jeden 2. Monat (wenn Art der Wiederholung auf Monatlich gesetzt ist), etc.
 
 ########################################
 # Page: edit_user_handler.php
@@ -852,12 +861,12 @@ Email me event notification: Benachrichtigen bei Terminbest&auml;tigung
 I want to approve events: Ich m&ouml;chte Termine &uuml;berpr&uuml;fen
 display_byproxy-help: Anzeige durch Proxyhilfe
 Display if created by Assistant: Anzeigen wenn durch Assistent eingegeben
-allow-view-subscriptions-help: Erlaubt eingeschr&auml;nkten Fernzugriff auf Private oder Vertrauliche Eintr&auml;ge
-Allow remote viewing of: Erlaubt Ansicht via Fernzugriff auf
+allow-view-subscriptions-help: Erlaubt eingeschr&auml;nkten EXTERNEN Zugriff auf Private oder Vertrauliche Eintr&auml;ge
+Allow remote viewing of: Erlaubt Ansicht EXTERNEN Zugriff auf
 entries: Eintr&auml;ge
 allow-remote-subscriptions-help: Bestimmt ob &#39;REMOTE&#39;-Teilnehmer IHREN WebKalender abonnieren d&uuml;rfen, und somit dessen Termine und ihre &#39;iCal&#39;-aktiven Anwendungen (wie Apple&#39;s iCal oder Mozilla-Kalender) sehen k&ouml;nnen.
 remote-subscriptions-url-help: Zeigt die URL, die ein &#39;REMOTE&#39;-Teilnehmer zum Abonnieren Ihres Kalenders verwenden soll
-allow-remote-publishing-help: Bestimmt, ob ein entfernter iCal - Klient Termine im Webkalender ver&ouml;ffentlichen darf
+allow-remote-publishing-help: Bestimmt, ob ein externer iCal - Klient Termine im Webkalender ver&ouml;ffentlichen darf
 Allow remote publishing: Erlaube das Ver&ouml;ffentlichen von &#39;REMOTE&#39;-Terminen
 remote-publishing-url-help: Zeigt die URL (Adresse) die im iCal-Client zum abonnieren und ver&ouml;ffentlichen im Webkalender notwendig ist.
 rss-feed-url-help: Die URL f&uuml;r den Zugang zum RSS-Feed
@@ -866,18 +875,34 @@ Enable FreeBusy publishing: Aktivieren der FreeBusy Ver&ouml;ffentlichung
 freebusy-url-help: Die URL f&uuml;r den Benutzerzugang zur FreeBusy - Liste
 
 ########################################
+# Page: colors.php
+#
+Basic Colors: Grundlegende Farben
+Custom Colors: Eigene Farben
+Add Custom: Eigene Farben hinzuf&uuml;gen
+Current Color: Derzeitige Farben
+Old Color: Alte Farben
+
+########################################
+# Page: about.php
+#
+About: &Uuml;ber
+Credits: Abspann
+version: Version
+
+########################################
 # Page: help_layers.php
 #
 Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Layers sind sinnvoll um andere Termine von anderen Benutzern im eigenen Kalender anzuzeigen.  Sie k&ouml;nnen den Benutzer und die Farbe des Termines selber spezifizieren.
 Add/Edit/Delete: Hinzuf&uuml;gen/&Auml;ndern/L&ouml;schen
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Dr&uuml;cken Sie "Layer editieren" im Admin-User um Layers HINZUF&Uuml;GEN/&Auml;NDERN/L&Ouml;SCHEN zu k&ouml;nnen (am Ende der Seite).
-Specifies the user that you would like to see displayed in your calendar.: Definieren Sie Ihren gew&uuml;nschten Benutzer den Sie in Ihren Kalender sehen m&ouml;chten.
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Dr&uuml;cken Sie &#34;Layer editieren&#34; im Admin-User um Layers HINZUF&Uuml;GEN/&Auml;NDERN/L&Ouml;SCHEN zu k&ouml;nnen (am Ende der Seite).
 The text color of the new layer that will be displayed in your calendar.: Die Farbe Ihres neuen Layers wird in Ihrem Kalender angezeigt.
-If checked, events that are duplicates of your events will be shown.: Wenn aktiviert, werden Ihre etwaigen doppelten Termine angezeigt. 
 Disabling: Deaktivieren
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Dr&uuml;cken Sie "Layer abschalten" im Admin-User um die Layers ABZUSCHALTEN (am Ende der Seite).
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Dr&uuml;cken Sie &#34;Layer abschalten&#34; im Admin-User um die Layers ABZUSCHALTEN (am Ende der Seite).
+If checked, events that are duplicates of your events will be shown.: Wenn aktiviert, werden Ihre etwaigen doppelten Termine angezeigt. 
 Enabling: Aktivieren
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Dr&uuml;cken Sie "Layer aktivieren" im Admin-User um die Layers zu AKTIVIEREN (am Ende der Seite).
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Dr&uuml;cken Sie &#34;Layer aktivieren&#34; im Admin-User um die Layers zu AKTIVIEREN (am Ende der Seite).
+Specifies the user that you would like to see displayed in your calendar.: Definieren Sie Ihren gew&uuml;nschten Benutzer den Sie in Ihren Kalender sehen m&ouml;chten.
 
 ########################################
 # Page: edit_entry_handler.php
@@ -932,8 +957,8 @@ Add to Others: Zu Anderen hinzuf&uuml;gen
 ########################################
 # Page: help_pref.php
 #
-Timezone Offset: Zeitzonenausgleich
 default-category-help: Legt eine Standardkategorie f&uuml;r einen neuen Termin fest.
+Timezone Offset: Zeitzonenausgleich
 email-boss-notifications-help: Legt fest ob Chefs Terminbenachrichtigungen als Email bekommen.
 boss-approve-event-help: Legt fest ob der Chef die eingetragenen Termine des Assistenten best&auml;tigen (genehmigen) mu&szlig;
 
@@ -991,6 +1016,7 @@ New Password: Neues Kennwort
 ########################################
 # Page: help_import.php
 #
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Dieses Formular erlaubt das Importieren der Kalendereintr&auml;ge ihres Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner <tt>datebook/datebook.dat</tt> in einem Unterverzeichnis mit Ihrem Usernamen sein.
 The following entries will not be imported: Folgende Eintr&auml;ge werden nicht importiert
@@ -998,12 +1024,11 @@ Entries older than the current date: Eintr&auml;ge die &auml;lter als das aktuel
 Entries created in the Palm Desktop that have not been HotSync&#39;d: Hinzugef&uuml;gte Eintr&auml;ge im Palm Desktop die nicht synchronisiert wurden (HotSync&#39;d)
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er das Datum des Termines ist vorbei).
 Therefore, updates should be made in the Palm Desktop.: Deshalb sollten &Auml;nderungen auf dem Palm/Desktop durchgef&uuml;hrt werden.
+vCal: vCal
 This form will import vCalendar (.vcs) 1.0 events: Dieses Formular importiert vCalendar (.vcs) 1.0 Eintr&auml;ge
 The following formats have been tested: Folgende Formate wurden getestet
 This form will import iCalendar (.ics) events: Dieses Formular importiert iCalendar (.ics) Eintr&auml;ge
-Enabling: Aktiviertes
-Overwrite Prior Import: Vorigen Import &uuml;berschreiben
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: bewirkt, da&szlig; vorige importierte Termine, welche die selbe UID verwenden, wie ein Termin von der neuen Import-Datei, als "l&ouml;schen" markiert sind. Das erlaubt ein Importieren einer aktuellen iCalendar Datei ohne Duplikate zu erzeugen.
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted . This should allow an updated iCalendar file to be imported without creating duplicates.: bewirkt, da&szlig; vorige <b>&#34;importierte Termine&#34;</b>, welche die <u>selbe UID</u> verwenden, als <b>&#34;gel&ouml;scht&#34;</b> markiert sind. Das erm&ouml;glicht ein importieren einer aktuellen iCalendar Datei <b>ohne Duplikate</b> zu erzeugen.
 
 ########################################
 # Page: icalclient.php
@@ -1025,7 +1050,7 @@ Modified since: &Auml;nderungen ab
 ########################################
 # Page: users.php
 #
-Remote Calendars: Externe Kalender (Fernzugriff)
+Remote Calendars: Externe Kalender (Remote)
 Add New User: Neuen Benutzer hinzuf&uuml;gen
 denotes administrative user: Kennzeichnet Benutzer mit administrativen Rechten
 
@@ -1184,8 +1209,8 @@ Deleting events for: Gel&ouml;schte Termine f&uuml;r
 Importing events for: Importierte Termine f&uuml;r
 No data returned from: Keine Daten erhalten von
 for non-user calendar: f&uuml;r &#39;Zentrale&#39;-Benutzerkalender
-No Remote Calendars found: Kein &#39;Remote&#39;(Fernzugriff)-Kalender gefunden
-Remote Calendars not enabled: &#39;Remote&#39;(Fernzugriffs)-Kalender nicht m&ouml;glich
+No Remote Calendars found: Kein &#39;Externer&#39;-Kalender (Remote) gefunden
+Remote Calendars not enabled: &#39;Externer&#39;-Kalender (Remote) nicht aktiv
 
 ########################################
 # Page: includes/help_list.php
@@ -1261,6 +1286,8 @@ Oct: Okt
 Nov: Nov
 Dec: Dez
 unknown-month: unbekannter Monat
+Sunday: Sonntag
+Monday: Montag
 Tuesday: Dienstag
 Wednesday: Mittwoch
 Thursday: Donnerstag
@@ -1312,7 +1339,7 @@ New user (self registration): Neuer Teilnehmer (Selbstregistrierung)
 New user via email (self registration): Neuer Teilnehmer via Email (Selbstregistrierung)
 Attachment: Anhang
 Delete User: Teilnehmer l&ouml;schen
-System Log: System Log
+System Log: System Protokoll
 Action: Aktion
 
 ########################################
@@ -1452,6 +1479,11 @@ Invalid color for table cell background for today: Ung&uuml;ltige Farbe f&uuml;r
 Change the date and time of this entry?: Datum und Uhrzeit f&uuml;r diesen Eintrag &auml;ndern?
 
 ########################################
+# Page: includes/js/visible.php
+#
+Invalid Color: Ung&uuml;ltige Farbe
+
+########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben
@@ -1477,6 +1509,7 @@ My Profile: Mein Profil
 Public Calendar: &Ouml;ffentlicher Kalender
 Unapproved Events: Unbest&auml;tigte Termine
 User Manager: Benutzermanager
+Help Contents: Hilfe Inhaltsverzeichnis
 
 ########################################
 # Page: includes/classes/Doc.class
@@ -1494,7 +1527,7 @@ mailer_not_supported: Dieser Mailtyp wird nicht unterst&uuml;tzt
 execute: Kann nicht ausgef&uuml;hrt werden
 instantiate: Kann die Emailfunktion nicht d&uuml;rchf&uuml;hren
 authenticate: SMTP Fehler - Kann nicht authentisiert werden
-from_failed: Die folgenden "Von:" - Adresse(n) ist(sind) ung&uuml;tig
+from_failed: Die folgenden &#34;Von:&#34; - Adresse(n) ist(sind) ung&uuml;tig
 recipients_failed: SMTP Fehler - Die (der) folgende(n) Empf&auml;nger sind (ist) ung&uuml;tig
 data_not_accepted: SMTP Fehler - Daten nicht angenommen
 connect_host: SMTP Fehler - Kann nicht nicht zum SMTP HOST verbunden werden
@@ -1527,7 +1560,7 @@ Error Unable to write to file: Fehler beim Schreiben auf Datei
 Successful Login: Erfolgreiches Login
 Invalid Login: Ung&uuml;ltiges Login
 required only if Safe Mode is On: nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist
-required only if Remote Calendars are used: nur erforderlich wenn Fernzugriff-Kalender (Remote-Kalender) verwendet werden
+required only if Remote Calendars are used: nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden
 needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig
 Passwords do not match: Passw&ouml;rter stimmen nicht &uuml;berein
 Unable to write password to settings.php file: Passwort kann nicht in die &#39;settings.php&#39;-Datei geschrieben werden
@@ -1620,3 +1653,5 @@ Production: Produktion
 Development: Entwicklung
 Save Settings: Einstellung speichern
 Launch WebCalendar: Webkalender starten
+
+ 	  	 
