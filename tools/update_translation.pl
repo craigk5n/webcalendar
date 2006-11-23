@@ -269,8 +269,10 @@ foreach $f ( @files ) {
 # already found
         }
         elsif ( defined( $text{ $text } ) ) {
-          if ( !show_dups ) {
-            print OUT "# \"$text\" previously defined (in $foundin{$text})\n";
+          if ( $show_dups ) {
+            print OUT $pageHeader
+             . "# \"$text\" previously defined (in $foundin{$text})\n";
+            $pageHeader = '';
           }
           $thispage{ $text } = 1;
         }
