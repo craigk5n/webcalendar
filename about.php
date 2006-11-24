@@ -9,11 +9,8 @@ $data = '';
 
 if ( ! empty ( $credits ) ) {
   //Get Names from AUTHORS file
-  if ( !$fd = @fopen( 'AUTHORS', 'r' ) ) {
-    $data = '';
-  } else {
+  if ( $fd = @fopen( 'AUTHORS', 'r' ) ) {
 		// Read in contents of entire file first
-		$data = '';
 		while ( !feof( $fd ) && empty( $error ) ) {
 			$data .= fgets( $fd, 4096 );
 		}
@@ -54,14 +51,15 @@ function populate(){
   actualH=cross_scroll.offsetHeight; 
   lefttime=setInterval("scrollMe()",30);
 }
+
 window.onload=populate; 
 
 function scrollMe(){ 
   if (parseInt(cross_scroll.style.top)>(actualH*(-1)+8)) 
-    cross_scroll.style.top=parseInt(cross_scroll.style.top)-copyS+"px" ;
+    cross_scroll.style.top=parseInt(cross_scroll.style.top)-copyS+"px";
   else 
-    cross_scroll.style.top=parseInt(scrollH)+8+"px" 
-}; 
+    cross_scroll.style.top=parseInt(scrollH)+8+"px"; 
+} 
  
 with (document){ 
  write('<div style="position:relative;width:'+scrollW+';height:'+scrollH+';overflow:hidden" onMouseover="copyS=pauseS" onMouseout="copyS=scrollS">');
