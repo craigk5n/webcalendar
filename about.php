@@ -60,11 +60,12 @@ function scrollMe(){
   if (parseInt(cross_scroll.style.top)>(actualH*(-1)+8)) 
     cross_scroll.style.top=parseInt(cross_scroll.style.top)-copyS+"px" ;
   else 
-    cross_scroll.style.top=parseInt(scrollH)+8+"px" }; 
+    cross_scroll.style.top=parseInt(scrollH)+8+"px" 
+}; 
  
-  with (document){ 
-    write('<div style="position:relative;width:'+scrollW+';height:'+scrollH+';overflow:hidden" onMouseover="copyS=pauseS" onMouseout="copyS=scrollS">');
-  write('<div id="scroller"></div></div>');
+with (document){ 
+ write('<div style="position:relative;width:'+scrollW+';height:'+scrollH+';overflow:hidden" onMouseover="copyS=pauseS" onMouseout="copyS=scrollS">');
+ write('<div id="scroller"></div></div>');
 } 
 </script> 
 <?php } ?>
