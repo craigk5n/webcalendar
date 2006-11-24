@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-21-2006
+# Translation last updated on 11-24-2006
 
 
 ################################################################################
@@ -65,6 +65,7 @@ About: About
 Credits: Credits
 Title: WebCalendar
 version: version
+Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.: Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.
 Ok: Ok
 
 ########################################
