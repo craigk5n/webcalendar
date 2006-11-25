@@ -1084,6 +1084,7 @@ $Entry[Description]        =  Full Description (string)
 $Entry[Untimed]            =  1 = true  0 = false
 $Entry[Class]              =  R = PRIVATE,C = CONFIDENTIAL  P = PUBLIC
 $Entry[Location]           =  Location of event
+$Entry[Priority]           =  1 = Highest 5=Normal 9=Lowest
 $Entry[Tranparency]        =  1 = Transparent, 0 = Opaque (Used for Free/Busy)
 $Entry[Categories]         =  String containing Categories
 $Entry[Due]                =  UTC datetime when VTODO is due
@@ -1147,7 +1148,6 @@ function import_data ( $data, $overwrite, $type ) {
     return false;
   foreach ( $data as $Entry ) {
     // do_debug ( "Entry Array " . print_r ( $Entry , true ) );
-    $priority = 2;
     $participants[0] = $calUser;
     // $participants[0] = $login;
     $Entry['start_date'] = gmdate ( 'Ymd', $Entry['StartTime'] );
@@ -1172,6 +1172,9 @@ function import_data ( $data, $overwrite, $type ) {
       $Entry['end_time'] = 0;
       $Entry['Duration'] = '1440';
     }
+
+    $priority = ( ! empty (  $Entry['Priority'] ) ? 
+      $Entry['Priority'] : 5 );
 
     if ( ! empty ( $Entry['Completed'] ) ) {
       $cal_completed = substr ( $Entry['Completed'], 0, 8 );
@@ -2398,6 +2401,10 @@ function format_ical( $event ) {
 
   if ( ! empty ( $event['url'] ) ) {
     $fevent['URL'] = $event['url'];
+  }
+
+  if ( ! empty ( $event['priority'] ) ) {
+    $fevent['PRIORITY'] = $event['priority'];
   }
 
   if ( ! empty ( $event['transparency'] ) ) {

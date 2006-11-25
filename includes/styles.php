@@ -843,6 +843,7 @@ img.help {
   margin-left: 1px;
 }
 .minitask tr.header th {
+  text-align: center;
   background-color: <?php echo $GLOBALS['CELLBG'];
 
 ?>;
@@ -1371,9 +1372,11 @@ a.weekcell {
  width: 10px;
  height: 10px;
 }
+.minitask td.pct,
 .alignright {
  text-align: right;
 }
+.minitask td.name,
 .alignleft {
  text-align: left;
 }

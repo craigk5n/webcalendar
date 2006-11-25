@@ -73,10 +73,6 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
     $DISABLE_PRIORITY_FIELD, $DISABLE_PARTICIPANTS_FIELD,
     $ALLOW_EXTERNAL_USERS, $EXTERNAL_REMINDERS;
 
-  $pri[1] = translate("Low");
-  $pri[2] = translate("Medium");
-  $pri[3] = translate("High");
-
   // get participants first...
   $sql = "SELECT cal_login, cal_status FROM webcal_entry_user " .
     "WHERE cal_id = ? AND cal_status IN ('A','W') " .
@@ -166,8 +162,12 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   }
   if ( $row[5] > 0 )
     $out .= "  <duration>" . $row[5] . "</duration>\n";
-  if ( ! empty ( $DISABLE_PRIORITY_FIELD ) && $DISABLE_PRIORITY_FIELD == 'Y' )
-    $out .= "  <priority>" . $pri[$row[6]] . "</priority>\n";
+  if ( ! empty ( $DISABLE_PRIORITY_FIELD ) && $DISABLE_PRIORITY_FIELD == 'Y' ) {
+    $pri[1] = translate ( 'High' );
+    $pri[2] = translate ( 'Medium' );
+    $pri[3] = translate ( 'Low' );
+    $out .= "  <priority>" . $row[6] . '-' . $pri[ceil($row[6]/3)] . "</priority>\n";
+  }
   if ( ! empty ( $DISABLE_ACCESS_FIELD ) && $DISABLE_ACCESS_FIELD == 'Y' )
     $out .= "  <access>" . 
       ( $row[8] == "P" ? translate ( 'Public' ) : ucfirst ( translate( 'confidential' ) ) ) .

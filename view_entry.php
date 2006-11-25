@@ -33,9 +33,9 @@ $areYouSureStr =
 translate ( 'Are you sure you want to delete this entry?', true );
 $confidentialStr = translate ( 'confidential' );
 $deleteStr = translate ( 'Delete' );
-$pri[1] = translate ( 'Low' );
+$pri[1] = translate ( 'High' );
 $pri[2] = translate ( 'Medium' );
-$pri[3] = translate ( 'High' );
+$pri[3] = translate ( 'Low' );
 $privateStr = translate ( 'private' );
 $rejectedStr = translate ( 'Rejected' );
 
@@ -474,7 +474,7 @@ if ( $duration > 0 && $duration != 1440 ) {
 echo ( $DISABLE_PRIORITY_FIELD != 'Y' ? '
       <tr>
         <td class="aligntop bold">' . translate ( 'Priority' ) . ':</td>
-        <td>' . $pri[$cal_priority] . '</td>
+        <td>' . $cal_priority . '-' . $pri[ceil($cal_priority/3)] .'</td>
       </tr>' : '' ) . ( $DISABLE_ACCESS_FIELD != 'Y' ? '
       <tr>
         <td class="aligntop bold">' . translate ( 'Access' ) . ':</td>

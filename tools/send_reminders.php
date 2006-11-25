@@ -244,9 +244,9 @@ function send_reminder ( $id, $event_date ) {
   $ext_participants = $participants = array ();
   $num_ext_participants = $num_participants = 0;
   
-  $pri[1] = translate ( 'Low' );
+  $pri[1] = translate ( 'High' );
   $pri[2] = translate ( 'Medium' );
-  $pri[3] = translate ( 'High' );
+  $pri[3] = translate ( 'Low' );
 
   // get participants first...
   $res = dbi_execute ( 'SELECT cal_login, cal_percent FROM webcal_entry_user
@@ -402,8 +402,8 @@ function send_reminder ( $id, $event_date ) {
        . "%\n"
       : '' )
      . ( empty ( $DISABLE_PRIORITY_FIELD ) || $DISABLE_PRIORITY_FIELD != 'Y'
-      ? translate ( 'Priority' ) . ': ' . translate ( $pri[$row[6]] ) . "\n"
-      : '' );
+      ? translate ( 'Priority' ) . ': ' . $row[6] . '-' 
+      . translate ( ceil($pri[$row[6]/3)] )  . "\n" : '' );
 
     if ( empty ( $DISABLE_ACCESS_FIELD ) || $DISABLE_ACCESS_FIELD != 'Y' ) {
       $body .= translate ( 'Access' ) . ': ';
