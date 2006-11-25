@@ -332,4 +332,97 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
   return;
 } 
 
+//General purpose functions to convert RGB to HSL and HSL to RBG
+function  rgb2hsl ( $rgb ) {
+  if ( substr ($rgb, 0,1 ) == '#' )
+     $rgb = substr ( $rgb,1,6);
+
+  $R = ( hexdec (substr ( $rgb,0,2) ) / 255 );     
+  $G = ( hexdec (substr ( $rgb,2,2) ) / 255 );
+  $B = ( hexdec (substr ( $rgb,4,2) ) / 255 );
+ 
+  $Min = min( $R, $G, $B );    //Min. value of RGB
+  $Max = max( $R, $G, $B );    //Max. value of RGB
+  $deltaMax = $Max - $Min;     //Delta RGB value  
+  $L = ( $Max + $Min ) / 2;
+  
+  if ( $deltaMax == 0 )      //This is a gray, no chroma...
+  {
+     $H = 0;                  //HSL results = 0 ÷ 1
+     $S = 0;
+  }
+  else                        //Chromatic data...
+  {
+     if ( $L < 0.5 ) 
+       $S = $deltaMax / ( $Max + $Min );
+     else           
+       $S = $deltaMax / ( 2 - $Max - $Min );
+  
+     $deltaR = ( ( ( $Max - $R ) / 6 ) + ( $deltaMax / 2 ) ) / $deltaMax;
+     $deltaG = ( ( ( $Max - $G ) / 6 ) + ( $deltaMax / 2 ) ) / $deltaMax;
+     $deltaB = ( ( ( $Max - $B ) / 6 ) + ( $deltaMax / 2 ) ) / $deltaMax;
+  
+     if ( $R == $Max ) 
+       $H = $deltaB - $deltaG;
+     else if ( $G == $Max ) 
+       $H = ( 1 / 3 ) + $deltaR - $deltaB;
+     else if ( $B == $Max ) 
+      $H = ( 2 / 3 ) + $deltaG - $deltaR;
+  
+     if ( $H < 0 ) $H += 1;
+     if ( $H > 1 ) $H -= 1;
+  }
+  return array ( $H, $S, $L);
+}
+
+function hsl2rgb ( $hsl ){
+
+  if ( $hsl[1] == 0 )              
+  {
+     $R = $hsl[2] * 255;          
+     $G = $hsl[2] * 255;
+     $B = $hsl[2] * 255;
+  }
+  else
+  {
+     if ( $hsl[2] < 0.5 ) 
+       $var_2 = $hsl[2] * ( 1 + $hsl[1] );
+     else           
+       $var_2 = ( $hsl[2] + $hsl[1] ) - ( $hsl[1] * $hsl[2] );
+  
+     $var_1 = 2 * $hsl[2]- $var_2;
+  
+     $R = 255 * Hue_2_RGB( $var_1, $var_2, $hsl[0] + ( 1 / 3 ) );
+     $G = 255 * Hue_2_RGB( $var_1, $var_2, $hsl[0] );
+     $B = 255 * Hue_2_RGB( $var_1, $var_2, $hsl[0] - ( 1 / 3 ) );
+  }
+  $R = sprintf("%02X",round($R));;
+  $G = sprintf("%02X",round($G));;
+  $B = sprintf("%02X",round($B));;
+
+  $rgb = '#' . $R . $G . $B;
+
+  return $rgb;
+}
+
+function Hue_2_RGB( $v1, $v2, $vH ) {
+   if ( $vH < 0 ) $vH += 1;
+   if ( $vH > 1 ) $vH -= 1;
+   if ( ( 6 * $vH ) < 1 ) return ( $v1 + ( $v2 - $v1 ) * 6 * $vH );
+   if ( ( 2 * $vH ) < 1 ) return ( $v2 );
+   if ( ( 3 * $vH ) < 2 ) return ( $v1 + ( $v2 - $v1 ) * ( ( 2 / 3 ) - $vH ) * 6 );
+   return ( $v1 );
+}
+
+//Given an RGB value, return it's luminance adjusted by scale
+// scale range = 0 to 9
+function rgb_luminance ( $rgb, $scale=5) {
+  $luminance =  array( .44, .50, .56, .62, .68, .74, .80, .86, .92, .98 );
+  if ( $scale < 0 ) $scale = 0;
+  if ( $scale > 9 ) $scale = 9;
+  $new = rgb2hsl ( $rgb );
+  $new[2] = $luminance[ round ( $scale )];
+  $newColor = hsl2rgb( $new );
+  return $newColor;
+}
 ?>

@@ -421,7 +421,7 @@ if ( empty ( $location ) )
 if ( empty ( $cal_url ) )
   $cal_url = '';
 if ( empty ( $priority ) )
-  $priority = 0;
+  $priority = 5;
 if ( empty ( $access ) )
   $access = '';
 if ( empty ( $rpt_freq ) )
@@ -592,12 +592,17 @@ if ( $DISABLE_PRIORITY_FIELD != 'Y' ) { ?>
   <tr><td class="tooltip" title="<?php etooltip( 'priority-help' )?>">
   <label for="entry_prio"><?php etranslate( 'Priority' )?>:&nbsp;</label></td><td>
       <select name="priority" id="entry_prio">
-       <option value="1"<?php if ( $priority == 1 ) 
-  echo $selected;?>><?php etranslate( 'Low' )?></option>
-       <option value="2"<?php if ( $priority == 2 || $priority == 0 ) 
-  echo $selected;?>><?php etranslate( 'Medium' )?></option>
-       <option value="3"<?php if ( $priority == 3 ) 
-  echo $selected;?>><?php etranslate( 'High' )?></option>
+      <?php 
+       $pri[1] = translate ( 'High' );
+       $pri[2] = translate ( 'Medium' );
+       $pri[3] = translate ( 'Low' );
+       for ( $i=1;$i<=9;$i++){ 
+         echo '<option  value="' .$i .'"' 
+           . ( $priority == $i ? $selected : '' ) . '>' 
+           . $i . '-' .$pri[ceil($i/3)] . '</option>
+           ';
+       }
+       ?>
       </select>
      </td></tr>
 <?php } 

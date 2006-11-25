@@ -448,7 +448,7 @@ if ( empty ( $error ) ) {
   $query_params[] = gmdate ( 'Ymd' );
   $query_params[] = gmdate ( 'Gis' );
   $query_params[] = sprintf ( "%d", $duration );
-  $query_params[] = ( ! empty ( $priority ) ) ? sprintf ( "%d", $priority ) : '2';
+  $query_params[] = ( ! empty ( $priority ) ) ? sprintf ( "%d", $priority ) : '5';
   
   $query_params[] = empty ( $access ) ? 'P' : $access;
   if ( ! empty ( $rpt_type ) && $rpt_type != 'none' && $eType == 'event' ) {

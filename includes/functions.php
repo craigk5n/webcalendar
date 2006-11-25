@@ -1849,6 +1849,9 @@ function display_small_tasks ( $cat_id ) {
     return false;
   }
  
+  $pri[1] = translate ( 'High' );
+  $pri[2] = translate ( 'Medium' );
+  $pri[3] = translate ( 'Low' );
  
   if ( $user != $login && ! empty ( $user ) ) {
     $u_url = "user=$user" . '&amp;';
@@ -1857,12 +1860,15 @@ function display_small_tasks ( $cat_id ) {
     $u_url = '';
     $task_user = $login;
   }
-
+  $titleStr = translate ( 'Task_Title' );
   $priorityStr = translate ( 'Priority' );
   $taskStr = translate ( 'Task Name' );
   $dueStr = translate ( 'Task Due Date' );
+  $dueDateStr = translate ( 'Due Date' );
+  $dueTimeStr = translate ( 'Due Time' );
   $dateFormatStr = $DATE_FORMAT_TASK;
   $completedStr = translate ( 'Completed' );
+  $percentStr = translate ( 'Percent Complete' );
   $filter = '';
   $task_list = query_events ( $task_user, false, $filter, $cat_id, true  );
   $row_cnt = 1;
@@ -1871,7 +1877,7 @@ function display_small_tasks ( $cat_id ) {
     translate ( 'TASKS' ) . '</th><th align="right">' .
     '<a href="edit_entry.php?' . $u_url . 'eType=task">' . 
     '<img src="images/new.gif" alt="+" class="new"/></a></th></tr>' . "\n";
-  $task_html .= '<tr class="header"><th>!</th><th>'.  translate ( 'Task_Title' ) . 
+  $task_html .= '<tr class="header"><th>&nbsp;!</th><th>'. $titleStr . 
     '</th><th>' . translate ('Due' ) . '</th><th>&nbsp;%&nbsp;</th></tr>' . "\n";
   foreach ( $task_list as $E )  {  
     //check UAC
@@ -1891,23 +1897,27 @@ function display_small_tasks ( $cat_id ) {
     $link = '<a href="view_entry.php?' . $t_url .'id=' . $cal_id . '"';
     $priority = $link  . ' title="' . $priorityStr . '">' . 
       $E->getPriority() . '</a>';
-    $dots = ( strlen ( $E->getName() ) > 10 ? '...': '' );
+    $dots = ( strlen ( $E->getName() ) > 15 ? '...': '' );
     $name = $link  . ' title="' . $taskStr . ': ' . $E->getName() . 
-      '" >'. substr( $E->getName(), 0, 10 ) . $dots .'</a>';
+      '" >'. substr( $E->getName(), 0, 15 ) . $dots .'</a>';
     $due_date = $link  . " title=\"" . $dueStr . '" >'. 
       date_to_str( $E->getDueDate(), $dateFormatStr, false, false) . 
         '</a>';
     $percent = $link . ' title="% ' . $completedStr . '">'. 
       $E->getPercent() . '</a>';
-    $task_html .= "<tr class=\"task\" id=\"$linkid\"><td>$priority</td><td>$name</td>" .
-      "<td>$due_date</td><td>&nbsp;&nbsp;$percent</td></tr>\n";
+    $task_html .= "<tr class=\"task\" id=\"$linkid\" style=\"background-color:"
+       . rgb_luminance (  $GLOBALS['BGCOLOR'], $E->getPriority()) 
+       . "\"><td>$priority</td>\n"
+       .  "<td class=\"name\">&nbsp;$name</td>" .
+      "<td>$due_date</td><td class=\"pct\">$percent</td></tr>\n";
     $row_cnt++;
    //build special string to pass to popup
    // TODO move this logic into build_entry_popup() 
-    $timeStr = translate ( 'Due Time' ) . ':' 
-      . display_time( '', 0, $E->getDueDateTimeTS () ) . '</dd><dd>' 
-      . translate ( 'Due Date' ) . ':' . date_to_str( $E->getDueDate(),'', false )
-      . '</dd></dt><dt>' . translate ( 'Percent Complete' ) 
+    $timeStr = $dueTimeStr . ':' 
+      . display_time( '', 0, $E->getDueDateTimeTS () ) . '</dd><dd>'
+      . $dueDateStr . ':' . date_to_str( $E->getDueDate(),'', false )
+      . '</dd></dt><dt>'. $priorityStr . ':</dt<dd>' . $E->getPriority() 
+      . '-' . $pri[ceil($E->getPriority()/3)] . '</dd><dt>' . $percentStr 
       . ':<dt><dd>' . $E->getPercent() . '%' ;
 
     $eventinfo .= build_entry_popup ( $popupid, $E->getLogin(), $E->getDescription(), 
@@ -4322,6 +4332,7 @@ function weekday_name ( $w, $format = 'l' ) {
  * @return string Date in the specified format
  *
  * @global string Preferred date format
+ * @TODO Add other date() parameters like ( j, n )
  */
 function date_to_str ( $indate, $format='', $show_weekday=true, $short_months=false ) {
   global $DATE_FORMAT;
@@ -4353,6 +4364,7 @@ function date_to_str ( $indate, $format='', $show_weekday=true, $short_months=fa
   }
   $yyyy = $y;
   $yy = sprintf ( "%02d", $y %= 100 );
+  $n = sprintf ( "%02d", $m );
 
   $ret = $format;
   $ret = str_replace ( "__yyyy__", $yyyy, $ret );
@@ -4362,6 +4374,7 @@ function date_to_str ( $indate, $format='', $show_weekday=true, $short_months=fa
   $ret = str_replace ( "__dd__", $d, $ret );
   $ret = str_replace ( "__j__", $j, $ret );  
   $ret = str_replace ( "__mm__", $m, $ret );
+  $ret = str_replace ( "__n__", $n, $ret );
 
   if ( $show_weekday )
     return "$weekday, $ret";
@@ -6277,4 +6290,5 @@ function sort_users ( $a, $b ) {
   }
   return $retval;
 }
+
 ?>
