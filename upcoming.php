@@ -134,7 +134,7 @@ $WebCalendar->setLanguage();
 // file is included within an external document, so that the function isn't 
 // declared twice in case of this file being included twice or more within the same doc.
 function print_upcoming_event ( $e, $date ) {
-  global $display_link, $link_target, $SERVER_URL, $charset,
+  global $display_link, $link_target, $SERVER_URL, $charset, $login,
     $display_tzid, $showTime, $showPopups, $eventinfo, $username, $hcalendar_output;
 
   $popupid = 'pop' . $e->getId() . '-' . $date;
@@ -168,9 +168,11 @@ function print_upcoming_event ( $e, $date ) {
     echo "<div class=\"vevent\">\n<a class=\"entry\" id=\"$popupid\" title=\"" . 
       htmlspecialchars ( $e->getName() ) . '" href="' . 
       $SERVER_URL . 'view_entry.php?id=' . 
-        $e->getID() . "&amp;date=$date\"";
+        $e->getID() . "&amp;date=$date";
+      if ( $e->getLogin() != $login )
+        echo "&amp;user=" . $e->getLogin();
       if ( ! empty ( $link_target ) ) {
-      echo " target=\"$link_target\"";
+      echo "\" target=\"$link_target\"";
     }
     echo '>';
   }

@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1601250 ] detail view of a layered events from upcomming.php doesn't
  - Fixed bug [ 1600914 ] Some tasks omitted from calendar display
  - Fixed bug [ 1600907 ] Small task list popup Due time is in GMT not local time
  - Fixed bug  [ 1600909 ] Cannot make weekend start on Sunday
