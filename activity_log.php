@@ -23,10 +23,9 @@ if ( ! $is_admin || ( access_is_enabled () && !
   die_miserable_death ( print_not_auth () );
 
 $PAGE_SIZE = 25; // number of entries to show at once
-$startid = getIntValue ( 'startid', true );
+$startid = getValue ( 'startid', '-?[0-9]+', true );
 $sys = ( $is_admin && getGetValue ( 'system' ) != '' );
 
-$evntStr = translate ( 'Events' );
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
@@ -37,24 +36,25 @@ echo '
     <div class="navigation">'
 // go BACK in time
  . ( ! empty ( $nextpage ) ? '
-      <a title="' . $prevStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $evntStr
-   . '" class="prev" href="activity_log.php?startid=' . $nextpage
-   . ( $sys ? '&amp;system=1' : '' ) . '">' . $prevStr . '&nbsp;' . $PAGE_SIZE
-   . '&nbsp;' . $evntStr . '</a>' : '' );
+      <a title="' . $prevStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
+   . $translations['Events'] . '" class="prev" href="activity_log.php?startid='
+   . $nextpage . ( $sys ? '&amp;system=1' : '' ) . '">' . $prevStr . '&nbsp;'
+   . $PAGE_SIZE . '&nbsp;' . $translations['Events'] . '</a>' : '' );
 
 if ( ! empty ( $startid ) ) {
   $previd = $startid + $PAGE_SIZE;
-  $res = dbi_execute ( 'SELECT MAX(cal_log_id) FROM webcal_entry_log' );
+  $res = dbi_execute ( 'SELECT MAX( cal_log_id ) FROM webcal_entry_log' );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
       // go FORWARD in time
-      echo '<a title="' . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $evntStr
-       . '" class="next" href="activity_log.php'
+      echo '
+      <a title="' . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
+       . $translations['Events'] . '" class="next" href="activity_log.php'
        . ( $row[0] <= $previd
         ? ( $sys ? '?system=1' : '' )
         : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) )
-       . '">' . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $evntStr
-       . '</a><br />';
+       . '">' . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
+       . $translations['Events'] . '</a><br />';
 
     dbi_free_result ( $res );
   }
