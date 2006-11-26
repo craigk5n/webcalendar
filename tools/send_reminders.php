@@ -76,7 +76,7 @@ include $includedir . '/translate.php';
 
 $WebCalendar->initializeSecondPhase ();
 
-$debug = true;// set to true to print debug info...
+$debug = false;// set to true to print debug info...
 $only_testing = false; // just pretend to send -- for debugging
 
 // Establish a database connection.
@@ -403,7 +403,7 @@ function send_reminder ( $id, $event_date ) {
       : '' )
      . ( empty ( $DISABLE_PRIORITY_FIELD ) || $DISABLE_PRIORITY_FIELD != 'Y'
       ? translate ( 'Priority' ) . ': ' . $row[6] . '-' 
-      . translate ( ceil($pri[$row[6]/3)] )  . "\n" : '' );
+      . ceil($pri[$row[6]/3] )  . "\n" : '' );
 
     if ( empty ( $DISABLE_ACCESS_FIELD ) || $DISABLE_ACCESS_FIELD != 'Y' ) {
       $body .= translate ( 'Access' ) . ': ';
