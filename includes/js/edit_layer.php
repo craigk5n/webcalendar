@@ -28,7 +28,7 @@ function show_others () {
 
 function deleteLayer( loc ) {
   if ( confirm('<?php 
-    etranslate( 'Are you sure you want to delete this layer?', true )?>' ) )
+     echo str_replace ( 'XXX', translate ( 'layer', true ), $translations['Are you sure you want to delete this XXX?'] )?>' ) )
     location.href = loc;
   return false; 
 }

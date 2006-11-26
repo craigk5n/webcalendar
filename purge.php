@@ -124,7 +124,7 @@ onclick="history.back()" /></form
 <form action="purge.php" method="post" name="purgeform">
 <table>
  <tr><td><label for="user">
-  <?php etranslate( 'User' );?>:</label></td>
+  <?php echo ucfirst ( translate ( 'user' ) );?>:</label></td>
  <td><select name="user">
 <?php
   $userlist = get_my_users ();

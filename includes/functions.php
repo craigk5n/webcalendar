@@ -3140,7 +3140,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
   if ( $can_delete && ( $readonly == 'N' || $is_admin ) )
     $ret .= '<a title="' . 
       translate('Delete entry') . "\" href=\"del_entry.php?id=$id\" onclick=\"return confirm('" .
-  translate('Are you sure you want to delete this entry?', true) . "\\n\\n" . 
+  str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] ) . "\\n\\n" . 
   translate('This will delete this entry for all users.') . '\');\"><img src="images/delete.gif" alt="' . 
   translate('Delete entry') . '" class="icon_text" /></a>';
   return $ret;

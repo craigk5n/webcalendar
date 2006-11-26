@@ -177,7 +177,7 @@ if ( $newview ) {
 <br />
 <input type="submit" name="action" value="<?php if ( $newview ) etranslate( 'Add' ); else etranslate( 'Save' ); ?>" />
 <?php if ( ! $newview ) { ?>
- <input type="submit" name="delete" value="<?php etranslate( 'Delete' )?>" onclick="return confirm('<?php etranslate( 'Are you sure you want to delete this entry?', true); ?>')" />
+ <input type="submit" name="delete" value="<?php etranslate( 'Delete' )?>" onclick="return confirm('<?php str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] ); ?>')" />
 <?php } ?>
 </td></tr>
 </table>

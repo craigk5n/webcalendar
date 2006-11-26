@@ -30,7 +30,7 @@ $show_log = ! empty ( $log );
 $can_email = 'Y';
 
 $areYouSureStr =
-translate ( 'Are you sure you want to delete this entry?', true );
+str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] );
 $confidentialStr = translate ( 'confidential' );
 $deleteStr = translate ( 'Delete' );
 $pri[1] = translate ( 'High' );

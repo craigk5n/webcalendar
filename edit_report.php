@@ -291,7 +291,7 @@ if ( $show_participants ) {
     $users .= '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
   echo '<tr><td><label for="rpt_user">' .
-    translate( 'User' ) . ":</label></td>\n";
+    ucfirst ( translate ( 'user' ) ) . ":</label></td>\n";
   echo "<td><select name=\"report_user\" id=\"rpt_user\" size=\"1\">$users\n";
   echo "</select>\n";
   echo "</td></tr>\n";
@@ -428,7 +428,7 @@ if ( $is_admin ) {
 <?php if ( ! $adding_report ) { ?>
   &nbsp;&nbsp;<input type="submit" name="delete" value="<?php etranslate( 'Delete' );?>"
   onclick="return confirm('<?php 
-  etranslate( 'Are you sure you want to delete this report?', true)?>');" />
+  echo str_replace ( 'XXX', translate ( 'report' ), $translations['Are you sure you want to delete this XXX?'] ) ?>');" />
 <?php } ?>
  </td></tr>
 </table>

@@ -78,13 +78,13 @@ if ($layers_enabled) { ?>
        $layeruser = $layer['cal_layeruser'];
        user_load_variables ( $layeruser, 'layer' );
 ?>
- <span class="bold"><?php etranslate( 'Layer' )?>&nbsp;<?php echo ($layer_count); ?></span>
+ <span class="bold"><?php echo ucfirst ( translate ( 'layer' ) )?>&nbsp;<?php echo ($layer_count); ?></span>
  (<a title="<?php 
   etranslate( 'Edit layer' ); ?>" href="edit_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>"><?php 
   etranslate( 'Edit' ); ?></a> / 
  <a title="<?php 
   etranslate( 'Delete layer' )?>" href="del_layer.php?id=<?php echo $layer['cal_layerid'] . $u_url; ?>" onclick="return confirm('<?php 
- etranslate( 'Are you sure you want to delete this layer?', true)?>');"><?php 
+ echo str_replace ( 'XXX', $translations['layer'], $translations['Are you sure you want to delete this XXX?'] ) ?>');"><?php 
   etranslate( 'Delete' )?></a>)
 
 <table style="margin-left:20px; border-width:0px;">
