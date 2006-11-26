@@ -945,6 +945,11 @@ layer: layer
 Edit layer: Edit layer
 
 ########################################
+# Page: layers_toggle.php
+#
+Unable to update preference: Unable to update preferenc
+
+########################################
 # Page: list_unapproved.php
 #
 View this entry: View this entry
