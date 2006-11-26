@@ -1,44 +1,56 @@
 <?php
 /* $Id$ */
-defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
-
-$newNonUserStr = translate( 'Add New NonUser Calendar' );
-$targetStr = 'target="nonusersiframe" onclick="javascript:show(\'nonusersiframe\');">';
+defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 if ( ! $is_admin ) {
-  echo print_not_auth ( true );
-  echo "</body>\n</html>";
+  echo print_not_auth ( true ) . '
+  </body>
+</html>';
   exit;
 }
 if ( ! $NONUSER_PREFIX ) {
-  echo print_error_header () . 
-      translate( 'NONUSER_PREFIX not set' ) . ".\n";
-  echo "</body>\n</html>";
+  echo print_error_header () . $translations['NONUSER_PREFIX not set'] . '
+  </body>
+</html>';
   exit;
 }
+
 $add = getValue ( 'add' );
-?>
+$newNonUserStr = translate ( 'Add New NonUser Calendar' );
+$targetStr =
+'target="nonusersiframe" onclick="javascript:show (\'nonusersiframe\');">';
+
+ob_start ();
+
+echo '
   <a name="tabnonusers"></a>
-  <div id="tabscontent_nonusers">
-<?php
-if ( empty ($error) ) {
-  echo '<a title="' . 
-  $newNonUserStr . '" href="edit_nonusers.php?add=1"' . $targetStr . 
-  $newNonUserStr . "</a><br />\n";
+  <div id="tabscontent_nonusers">';
+
+if ( empty ( $error ) ) {
+  echo '
+    <a title="' . $newNonUserStr . '" href="edit_nonusers.php?add=1"'
+   . $targetStr . $newNonUserStr . '</a><br />';
   // Displaying NonUser Calendars
   $userlist = get_nonuser_cals ();
   if ( ! empty ( $userlist ) ) {
-    echo '<ul>';
+    echo '
+    <ul>';
     for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-      echo '<li><a title="' . 
-        $userlist[$i]['cal_fullname'] . '" href="edit_nonusers.php?nid=' . 
-  $userlist[$i]['cal_login'] . '"' . $targetStr . 
-  $userlist[$i]['cal_fullname'] . "</a></li>\n";
+      echo '
+      <li><a title="' . $userlist[$i]['cal_fullname']
+       . '" href="edit_nonusers.php?nid=' . $userlist[$i]['cal_login'] . '"'
+       . $targetStr . $userlist[$i]['cal_fullname'] . '</a></li>';
     }
-    echo '</ul>';
+    echo '
+    </ul>';
   }
 }
 
-echo '<iframe name="nonusersiframe" id="nonusersiframe" style="width:90%;border-width:0px; height:250px;"></iframe>';
+echo '
+    <iframe name="nonusersiframe" id="nonusersiframe" style="width: 90%; '
+ . 'border: 0; height: 250px;"></iframe>
+  </div>';
+
+ob_end_flush ();
+
 ?>
-</div>
