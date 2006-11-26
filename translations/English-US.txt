@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-24-2006
+# Translation last updated on 11-26-2006
 
 
 ################################################################################
@@ -71,18 +71,18 @@ Ok: Ok
 ########################################
 # Page: access.php
 #
-User Access Control: User Access Control
 Undo: Undo
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
-Save: Save
 Go: Go
+Save: Save
 Database error: Database error
 Public Access: Public Access
 Admin: Admin
+User Access Control: User Access Control
 Allow Access to Other Users&#39; Calendar: Allow Access to Other Users' Calendar
 Grant This User Access to My Calendar: Grant This User Access to My Calendar
 Type: Type
-Calendar: Calendar
+calendar: calendar
 View Event: View Event
 View: View
 Edit: Edit
@@ -109,7 +109,7 @@ Previous: Previous
 ########################################
 # Page: add_entry.php
 #
-Event: Event
+event: event
 is already on your calendar.: is already on your calendar.
 Invalid entry id: Invalid entry id
 This is a XXX event and may not be added to your calendar.: This is a XXX event and may not be added to your calendar
@@ -450,6 +450,7 @@ No day specified!: No day specified!
 #
 Category Icon: Category Icon
 Global: Global
+Add: Add
 Category Name: Category Name
 Color: Color
 Remove Icon: Remove Icon
@@ -458,7 +459,8 @@ Upload: Upload
 gif 3kb max: gif 3kb max
 Search for existing icons: Search for existing icons
 Delete: Delete
-Are you sure you want to delete this entry?: Are you sure you want to delete this entry?
+entry: entry
+Are you sure you want to delete this XXX?: Are you sure you want to delete this XXX?
 Add New Category: Add New Category
 
 ########################################
@@ -536,9 +538,9 @@ access-help: Specifies the access level of the event. <ul><li><em>Public</em>: E
 Access: Access
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
 Priority: Priority
-Low: Low
-Medium: Medium
 High: High
+Medium: Medium
+Low: Low
 category-help: Specifies the category of the event.
 Category: Category
 completed-help: Date task is completed. Only enabled when all participants percentage equals 100%.
@@ -618,6 +620,7 @@ Start: Start
 End/Due: End/Due
 Times: Times
 Every: Every
+Are you sure you want to delete this entry?: Are you sure you want to delete this entry?
 Delete entry: Delete entry
 You are not authorized to edit this entry: You are not authorized to edit this entry
 
@@ -657,7 +660,6 @@ You can only create one layer for each user: You can only create one layer for e
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
-Add: Add
 word characters only: can only contain word characters (a-zA-Z_0-9)
 Edit User: Edit User
 Add User: Add User
@@ -918,6 +920,7 @@ Current Icons on Server: Current Icons on Server
 ########################################
 # Page: import.php
 #
+Calendar: Calendar
 Disabled: Disabled
 Import format: Import format
 Exclude private records: Exclude private records
@@ -939,7 +942,6 @@ Disable Layers: Disable Layers
 Enable Layers: Enable Layers
 Click here: Click here
 to modify the layers settings for the: to modify the layers settings for the
-calendar: calendar
 Add layer: Add layer
 Layer: Layer
 Edit layer: Edit layer
@@ -1250,10 +1252,10 @@ Unauthorized: Unauthorized
 This event is private: This event is private
 Conf.: Conf.
 WK: WK
+Task_Title: Title
 Task Name: Task Name
 Task Due Date: Task Due Date
 TASKS: TASKS
-Task_Title: Title
 Due: Due
 View this event: View this event
 View this task: View this task
@@ -1337,6 +1339,7 @@ New user via email (self registration): New user via email (self registration)
 Attachment: Attachment
 Delete User: Delete User
 System Log: System Log
+Event: Event
 Action: Action
 
 ########################################
@@ -1404,7 +1407,6 @@ Spanish: Spanish
 Swedish: Swedish
 Turkish: Turkish
 Welsh: Welsh
-event: event
 journal: journal
 task: task
 
