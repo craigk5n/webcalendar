@@ -7,42 +7,36 @@ $status = getValue ( 'status', '(on|off)', true );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   print_header ();
-  echo print_not_auth ();
-  echo print_trailer ();
+  echo print_not_auth () . print_trailer ();
   exit;
 }
 
 $updating_public = false;
+$url = 'layers.php';
+
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
   $layer_user = '__public__';
-  $url = 'layers.php?public=1';
-} else {
+  $url .= '?public=1';
+} else
   $layer_user = $login;
-  $url = 'layers.php';
-}
 
-$sql = 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
-  "AND cal_setting = 'LAYERS_STATUS'";
-dbi_execute ( $sql , array ( $layer_user ) );
+dbi_execute ( 'DELETE FROM webcal_user_pref WHERE cal_login = ?
+  AND cal_setting = \'LAYERS_STATUS\'', array ( $layer_user ) );
 
-$value = ( $status == 'off' ? 'N': 'Y' );
-
-$sql = 'INSERT INTO webcal_user_pref ' .
-  '( cal_login, cal_setting, cal_value ) VALUES ' .
-  "( ?, 'LAYERS_STATUS', ? )";
-if ( ! dbi_execute ( $sql , array ( $layer_user, $value ) ) ) {
-  $error = 'Unable to update preference: ' . dbi_error () .
-    "<br /><br /><span class=\"bold\">SQL:</span> $sql";
+$sql = 'INSERT INTO webcal_user_pref ( cal_login, cal_setting, cal_value )
+  VALUES ( ?, \'LAYERS_STATUS\', ? )';
+if ( ! dbi_execute ( $sql, array ( $layer_user,
+      ( $status == 'off' ? 'N': 'Y' ) ) ) ) {
+  $error = translate ( 'Unable to update preference' ) . ': ' . dbi_error ()
+   . '<br /><br /><span class="bold">SQL:</span> ' . $sql;
   break;
 }
 
-if ( empty ( $error ) ) {
+if ( empty ( $error ) )
   do_redirect ( $url );
-}
 
 print_header();
-echo print_error ( $error, true);
-echo print_trailer(); 
-?>
+echo print_error ( $error, true ) . print_trailer();
 
+?>
