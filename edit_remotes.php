@@ -68,7 +68,7 @@ $requiredStr = translate( 'Required to View Remote Calendar' );
 $colorStr = translate( 'Color' );
 $selectStr = translate( 'Select' );
 $deleteStr = translate( 'Delete' );
-$confirmStr = translate( 'Are you sure you want to delete this entry?', true);
+$confirmStr = str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] );
 $reloadStr = translate( 'Reload' );
 
 echo <<<EOT

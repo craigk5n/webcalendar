@@ -122,7 +122,7 @@ if ( $is_admin ) { ?>
     if ( $admin_can_delete_user ) ?>
     <input type="submit" name="delete" value="<?php 
     etranslate( 'Delete' )?>" onclick="return confirm('<?php 
-    etranslate( 'Are you sure you want to delete this user?', true); ?>')" />
+    echo str_replace ( 'XXX', translate ( 'user' ), $translations['Are you sure you want to delete this XXX?'] ) ?>')" />
    <?php }
   } ?>
  </td></tr>

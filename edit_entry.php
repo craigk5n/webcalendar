@@ -1386,7 +1386,7 @@ if ( $useTabs ) { ?>
 
 <?php if ( $id > 0 && ( $login == $create_by || $single_user == 'Y' || $is_admin ) ) { ?>
  <a href="del_entry.php?id=<?php echo $id;?>" onclick="return confirm('<?php 
-  etranslate( 'Are you sure you want to delete this entry?', true)?>');"><?php 
+  echo str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] )?>');"><?php 
   etranslate( 'Delete entry')?></a><br />
 <?php 
  } //end if clause for delete link

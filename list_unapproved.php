@@ -288,7 +288,7 @@ function do_confirm ( phrase, user, id ) {
       action = 'R';
       break;
     case "delete":
-      str = "<?php etranslate( 'Are you sure you want to delete this entry?', true) ?>";
+      str = "<?php str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] ) ?>";
       action = 'D';
       break;
     case "approveSelected":

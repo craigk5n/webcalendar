@@ -160,7 +160,7 @@ if ( ! empty ( $error ) ) {
 <?php if ( ! empty ( $user ) ) { ?>
   <input name="delete" type="submit" value="<?php 
   etranslate( 'Delete' )?>" onclick="return confirm('<?php 
-  etranslate( 'Are you sure you want to delete this entry?', true);?>');" />
+  str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] );?>');" />
 <?php } ?>
 
 </form>
