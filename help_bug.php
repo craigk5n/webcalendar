@@ -19,7 +19,7 @@ if ( empty ( $HTTP_USER_AGENT ) )
   translate ( 'Please include all the information below when reporting a bug.' )
    . ( $LANGUAGE != 'English-US' ? ' '
      . translate ( 'Also, please use <strong>English</strong> rather than' )
-     . ' ' . get_browser_language ( true ) . '.' : '' ) . '</p>
+     . ' ' . translate ( get_browser_language ( true ) ) . '.' : '' ) . '</p>
     <form action="http://sourceforge.net/tracker/" target="_new">
       <input type="hidden" name="func" value="add" />
       <input type="hidden" name="group_id" value="3870" />
