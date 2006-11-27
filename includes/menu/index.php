@@ -542,7 +542,7 @@ if ( $search_url != '' && $menuConfig['Search'] ) {
 if ( ! empty ( $menuExtras[6] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[6] );
 // Help Menu (Link )
-// translate ( 'Help' ) translate ( 'Help Contents' )
+// translate ( 'Help' ) translate ( 'Help Contents' )  translate ( 'About WebCalendar' )
 if ( $menuConfig['Help'] ) {
   jscMenu_menu ( 'Help');
   if ( $menuConfig['Help Contents'] )
