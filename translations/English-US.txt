@@ -825,6 +825,8 @@ colors-help: All colors should be specified in "#RRGGBB" hexadecimal format wher
 # Page: help_bug.php
 #
 Report Bug: Report Bug
+Please include all the information below when reporting a bug.: Please include all the information below when reporting a bug.
+Also, please use <strong>English</strong> rather than: Also, please use <strong>English</strong> rather than
 
 ########################################
 # Page: help_edit_entry.php
