@@ -68,14 +68,9 @@ else {
         }
 
         with (document){
-          write('
-    <div style="position: relative;
-        width: '+scrollW+';
-        height: '+scrollH+';
-        overflow: hidden;"
-      onMouseover="copyS=pauseS" onMouseout="copyS=scrollS">
-      <div id="scroller"></div>
-    </div>');
+          write('<div style="position: relative;width: '+scrollW+';height: '
+            + scrollH +';overflow: hidden;" onMouseover="copyS=pauseS" '
+            + 'onMouseout="copyS=scrollS"><div id="scroller"></div></div>');
         }
       </script>
 <?php
