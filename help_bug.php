@@ -2,32 +2,32 @@
 /* $Id$ */
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
+
 if ( empty ( $SERVER_SOFTWARE ) )
   $SERVER_SOFTWARE = $_SERVER['SERVER_SOFTWARE'];
+
 if ( empty ( $HTTP_USER_AGENT ) )
   $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
 
 print_header ( '', '', '', true );
+
 ob_start ();
+
 echo $helpListStr . '
-    <h2>' . translate ( 'Report Bug' ) . '</h2>'
-// No need to translate the text below
-// since I want all bug reports in English.
-// Americans only speak English, of course. ;-)
- . '
-    <p>Please include all the information below when reporting a bug.'
- . ( $LANGUAGE != 'English-US'
-  ? ' Also, please use <strong>English</strong> rather than ' . $LANGUAGE . '.'
-  : '' ) . '</p>
+    <h2>' . translate ( 'Report Bug' ) . '</h2>
+    <p>' .
+translate ( 'Please include all the information below when reporting a bug.' )
+ . ( $LANGUAGE != 'English-US' ? ' '
+   . translate ( 'Also, please use <strong>English</strong> rather than' )
+   . " $LANGUAGE." : '' ) . '</p>
     <form action="http://sourceforge.net/tracker/" target="_new">
       <input type="hidden" name="func" value="add" />
       <input type="hidden" name="group_id" value="3870" />
       <input type="hidden" name="atid" value="103870" />
-      <input type="submit" value="' . translate ( 'Report Bug' ) . '" />
+      <input type="submit" value="' . $translations['Report Bug'] . '" />
     </form>
-    <h3>' . translate ( 'System Settings' ) . '</h3>
+    <h3>' . $translations['System Settings'] . '</h3>
     <div>';
-
 $tmp_arr = array ( 'PROGRAM_NAME' => $PROGRAM_NAME,
   'SERVER_SOFTWARE' => $SERVER_SOFTWARE,
   'Web Browser' => $HTTP_USER_AGENT,
@@ -48,6 +48,7 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
+
 list_help ( $tmp_arr );
 ob_end_flush ();
 echo '
