@@ -1,24 +1,23 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
-print_header();
-?>
+print_header ();
+echo '
+    <h2>' . translate ( 'View Another User&#39;s Calendar' ) . '</h2>';
 
-<h2><?php etranslate( 'View Another User&#39;s Calendar' ); ?></h2>
-
-<?php
-if (( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
-   ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' && $PUBLIC_ACCESS_OTHERS != 'Y')) {
+if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
+    ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' &&
+      $PUBLIC_ACCESS_OTHERS != 'Y' ) ) {
   $error = print_not_auth ();
-}
-
-if ( ! empty ( $error ) ) {
-  echo "<blockquote>$error</blockquote>\n";
+  echo '
+    <blockquote>' . $error . '</blockquote>';
 } else {
-  $userlist = get_my_users ( '', 'view');
-  if ($NONUSER_ENABLED == 'Y' ) {
-    $nonusers = get_my_nonusers ( $login , true );
-    $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+  $userlist = get_my_users ( '', 'view' );
+  if ( $NONUSER_ENABLED == 'Y' ) {
+    $nonusers = get_my_nonusers ( $login, true );
+    $userlist = ( $NONUSER_AT_TOP == 'Y'
+      ? array_merge ( $nonusers, $userlist )
+      : array_merge ( $userlist, $nonusers ) );
   }
 
   if ( strstr ( $STARTVIEW, 'view' ) )
@@ -28,25 +27,31 @@ if ( ! empty ( $error ) ) {
     if ( $url == 'month' || $url == 'day' || $url == 'week' || $url == 'year' )
       $url .= '.php';
   }
-  ?>
-  <form action="<?php echo $url;?>" method="get" name="SelectUser">
-  <select name="user" onchange="document.SelectUser.submit()">
-  <?php
+
+  ob_start ();
+
+  echo '
+    <form action="' . $url . '" method="get" name="SelectUser">
+      <select name="user" onchange="document.SelectUser.submit ()">';
+
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-    //Don't list current user
+    // Don't list current user
     if ( $login == $userlist[$i]['cal_login'] )
       continue;
-    echo '<option value="'. $userlist[$i]['cal_login'].'">'.
-      $userlist[$i]['cal_fullname']."</option>\n";
+    echo '
+        <option value="' . $userlist[$i]['cal_login'] . '">'
+     . $userlist[$i]['cal_fullname'] . '</option>';
   }
-  ?>
-  </select>
-  <input type="submit" value="<?php etranslate( 'Go' )?>" /></form>
-  <?php
+
+  echo '
+      </select>
+      <input type="submit" value="' . $translations['Go'] . '" />
+    </form>';
+
+  ob_end_flush ();
 }
 
+echo '<br /><br />
+    ' . print_trailer ();
+
 ?>
-<br /><br />
-
-<?php echo print_trailer(); ?>
-
