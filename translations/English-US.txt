@@ -118,7 +118,6 @@ Error adding event: Error adding event
 ########################################
 # Page: admin.php
 #
-Select: Select
 Yes: Yes
 No: No
 Day: Day
@@ -566,6 +565,7 @@ Start Time: Start Time
 Due Date: Due Date
 Due Time: Due Time
 participants-help: Lists the participants of this entry.
+Select: Select
 Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: External Participants
@@ -753,6 +753,7 @@ Username: Username
 E-mail address: E-mail address
 Password: Password
 again: again
+Enabled: Enabled
 Disabled for demo: Disabled for demo
 Change Password: Change Password
 New Password: New Password
@@ -937,7 +938,6 @@ The import file contained no data: The import file contained no data
 # Page: layers.php
 #
 Layers are currently: Layers are currently
-Enabled: Enabled
 Disable Layers: Disable Layers
 Enable Layers: Enable Layers
 Click here: Click here
@@ -1551,6 +1551,7 @@ Public Calendar: Public Calendar
 Unapproved Events: Unapproved Events
 User Manager: User Manager
 Help Contents: Help Contents
+About WebCalendar: About WebCalendar
 
 ########################################
 # Page: install/index.php
