@@ -19,7 +19,7 @@ echo $helpListStr . '
 translate ( 'Please include all the information below when reporting a bug.' )
  . ( $LANGUAGE != 'English-US' ? ' '
    . translate ( 'Also, please use <strong>English</strong> rather than' )
-   . " $LANGUAGE." : '' ) . '</p>
+   . ' ' . translate ( $LANGUAGE ) . '.' : '' ) . '</p>
     <form action="http://sourceforge.net/tracker/" target="_new">
       <input type="hidden" name="func" value="add" />
       <input type="hidden" name="group_id" value="3870" />
