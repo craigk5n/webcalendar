@@ -3,9 +3,9 @@
 include_once 'includes/init.php';
 
 $error = '';
-// Only proceed if id was passed
+// Only proceed if id was passed.
 if ( $id > 0 ) {
-  // double check to make sure user doesn't already have the event
+  // Double check to make sure user doesn't already have the event.
   $is_my_event = false;
   $res = dbi_execute ( 'SELECT cal_id FROM webcal_entry_user
     WHERE cal_login = ? AND cal_id = ?', array ( $login, $id ) );
@@ -19,7 +19,7 @@ if ( $id > 0 ) {
     }
     dbi_free_result ( $res );
   }
-  // Now lets make sure the user is allowed to add the event (not private)
+  // Now lets make sure the user is allowed to add the event (not private).
   $res = dbi_execute ( 'SELECT cal_access FROM webcal_entry WHERE cal_id = ?',
     array ( $id ) );
   if ( ! $res ) {
@@ -37,7 +37,7 @@ if ( $id > 0 ) {
       exit;
     } else
     if ( $row[0] == 'C' && ! $is_assistant && ! $is_nonuser_admin ) {
-      // assistants are allowed to see confidential stuff
+      // Assistants are allowed to see confidential stuff.
       $is_private = true;
       echo str_replace ( 'XXX', $translations['confidential'], $mayNotAddStr );
       exit;
