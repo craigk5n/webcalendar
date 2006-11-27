@@ -6091,7 +6091,11 @@ function print_radio_html ( $variable, $onclick = '',
  * @return string  HTML for the color selector
  */
 function print_color_input_html ( $varname, $title, $varval='' ) {
- global $s, $prefarray, $select, $SCRIPT;
+ global $s, $prefarray, $SCRIPT;
+ static $select;
+
+  if ( empty ( $select ) ) 
+    $select = translate( 'Select' ) . '...';
 
   if ( $SCRIPT =='admin.php' ) {
     $name = 'admin_'. $varname;
