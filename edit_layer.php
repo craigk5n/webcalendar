@@ -21,7 +21,6 @@ load_user_layers ( $layer_user, 1 );
 
 $color = ( ! empty ( $layers[$id]['cal_color'] ) ? 
   $layers[$id]['cal_color'] : '#000000' );
-$select = translate( 'Select' ) . '...';
 
 $INC = array('js/edit_layer.php', 'js/visible.php');
 print_header($INC);
