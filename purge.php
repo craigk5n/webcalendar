@@ -81,8 +81,8 @@ if ( $do_purge ) {
     if ( $user == 'ALL' ) {
       $ids = array ( 'ALL' );
     } else {
-      $ids = get_ids ( 'SELECT cal_id FROM webcal_entry, '
-        . "webcal_entry_user WHERE cal_create_by = '$user' $tail" );
+      $ids = get_ids ( 'SELECT cal_id FROM webcal_entry '
+        . " WHERE cal_create_by = '$user' $tail" );
     }
   } elseif ( $end_date ) {
     if ( $user != 'ALL' ) {
@@ -178,7 +178,7 @@ onclick="history.back()" /></form
 
 function purge_events ( $ids ) {
   global $preview, $previewStr, $c; // db connection
-  global $sqlLog;
+  global $sqlLog, $allStr;
 
   $tables = array (
     array ( 'webcal_entry_user', 'cal_id' ),
