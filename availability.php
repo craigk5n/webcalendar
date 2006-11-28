@@ -1,5 +1,5 @@
 <?php
-/* $Id$ 
+/* $Id$
  * Page Description:
  * Display a timebar view of a single day.
  *
@@ -16,56 +16,63 @@
  */
 
 include_once 'includes/init.php';
-
-// Don't allow users to use this feature if "allow view others" is
-// disabled.
-if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin ) {
+// Don't allow users to use this feature if "allow view others" is disabled.
+if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
   // not allowed...
   exit;
-}
 
 // input args in URL
 // users: list of comma-separated users
-$programStr = translate ( 'Program Error' )  . ': ';
+$programStr = translate ( 'Program Error' ) . ': ';
 if ( empty ( $users ) ) {
-  echo $programStr . translate ( 'No users specified!' ); exit;
-} else if ( empty ( $year ) ) {
-  echo $programStr . translate ( 'No year specified!' ); exit;
-} else if ( empty ( $month ) ) {
-  echo $programStr . translate ( 'No month specified!' ); exit;
-} else if ( empty ( $day ) ) {
-  echo $programStr . translate ( 'No day specified!' ); exit;
+  echo $programStr . str_replace ( 'XXX', translate ( 'user' ),
+    translate ( 'No XXX specified!' ) );
+  exit;
+} elseif ( empty ( $year ) ) {
+  echo $programStr . str_replace ( 'XXX', translate ( 'year' ),
+    $translations['No XXX specified!'] );
+  exit;
+} elseif ( empty ( $month ) ) {
+  echo $programStr . str_replace ( 'XXX', translate ( 'month' ),
+    $translations['No XXX specified!'] );
+  exit;
+} elseif ( empty ( $day ) ) {
+  echo $programStr . str_replace ( 'XXX', translate ( 'day' ),
+    $translations['No XXX specified!'] );
+  exit;
 }
 
-$parent_form = getGetValue ('form');
+print_header (
+  array ( 'js/availability.php/false/' . "$month/$day/$year/"
+   . getGetValue ( 'form' ) ), '', 'onload="focus ();"', true, false, true );
 
-$INC = array ( "js/availability.php/false/$month/$day/$year/$parent_form" );
-print_header($INC, '', 'onload="focus();"', true, false, true );
-
-$span = ($WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR) * 3 + 1;
-$time = mktime(0,0,0,$month,$day,$year);
+$next_url = $prev_url = '?users=' . $users;
 $date = date ( 'Ymd', $time );
-$wday = strftime ( "%w", $time );
-$base_url = "?users=$users";
-$prev_url = $base_url . strftime('&amp;year=%Y&amp;month=%m&amp;day=%d', $time - ONE_DAY);
-$next_url = $base_url . strftime('&amp;year=%Y&amp;month=%m&amp;day=%d', $time + ONE_DAY);
+$time = mktime ( 0, 0, 0, $month, $day, $year );
+$next_url .= strftime ( '&amp;year=%Y&amp;month=%m&amp;day=%d', $time + 86400 );
+$prev_url .= strftime ( '&amp;year=%Y&amp;month=%m&amp;day=%d', $time - 86400 );
+$span = ( $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ) * 3 + 1;
 
-$users = explode(',',$users);
+$users = explode ( ',', $users );
+
+echo '
+    <div style="width:99%;">
+      <a title="' . $translations['Previous'] . '" class="prev" href="'
+ . $prev_url . '"><img src="images/leftarrow.gif" class="prevnext" alt="'
+ . $translations['Previous'] . '" /></a>
+      <a title="' . $translations['Next'] . '" class="next" href="' . $next_url
+ . '"><img src="images/rightarrow.gif" class="prevnext" alt="'
+ . $translations['Next'] . '" /></a>
+      <div class="title">
+        <span class="date">';
+printf ( "%s, %s %d, %d", weekday_name ( strftime ( "%w", $time ) ),
+  month_name ( $month - 1 ), $day, $year );
+echo '</span><br />
+      </div>
+    </div><br />
+    <form action="availability.php" method="post">
+      ' . daily_matrix ( $date, $users ) . '
+    </form>
+    ' . print_trailer ( false, true, true );
+
 ?>
-
-<div style="width:99%;">
-<a title="<?php etranslate( 'Previous' )?>" class="prev" href="<?php echo $prev_url ?>"><img src="images/leftarrow.gif" class="prevnext" alt="<?php etranslate( 'Previous' )?>" /></a>
-<a title="<?php etranslate( 'Next' )?>" class="next" href="<?php echo $next_url ?>"><img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate( 'Next' )?>" /></a>
-<div class="title">
-<span class="date"><?php 
-  printf ( "%s, %s %d, %d", weekday_name ( $wday ), month_name ( $month - 1 ), $day, $year ); 
-?></span><br />
-</div></div>
-<br />
-
-<form action="availability.php" method="post">
-<?php echo daily_matrix($date,$users); ?>
-</form>
-
-<?php echo print_trailer ( false, true, true ); ?>
-
