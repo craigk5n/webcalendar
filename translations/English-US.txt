@@ -118,6 +118,7 @@ Error adding event: Error adding event
 ########################################
 # Page: admin.php
 #
+Select: Select
 Yes: Yes
 No: No
 Day: Day
@@ -439,10 +440,11 @@ Your assistants: Your assistants
 # Page: availability.php
 #
 Program Error: Program Error
-No users specified!: No users specified!
-No year specified!: No year specified!
-No month specified!: No month specified!
-No day specified!: No day specified!
+user: user
+No XXX specified!: No XXX specified!
+year: year
+month: month
+day: day
 
 ########################################
 # Page: category.php
@@ -565,7 +567,6 @@ Start Time: Start Time
 Due Date: Due Date
 Due Time: Due Time
 participants-help: Lists the participants of this entry.
-Select: Select
 Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: External Participants
@@ -721,7 +722,6 @@ Add Report: Add Report
 Edit Report: Edit Report
 Report name: Report name
 Current User: Current User
-user: user
 Include link in trailer: Include link in trailer
 Include standard header/trailer: Include standard header/trailer
 Date range: Date range
@@ -753,7 +753,6 @@ Username: Username
 E-mail address: E-mail address
 Password: Password
 again: again
-Enabled: Enabled
 Disabled for demo: Disabled for demo
 Change Password: Change Password
 New Password: New Password
@@ -938,6 +937,7 @@ The import file contained no data: The import file contained no data
 # Page: layers.php
 #
 Layers are currently: Layers are currently
+Enabled: Enabled
 Disable Layers: Disable Layers
 Enable Layers: Enable Layers
 Click here: Click here
@@ -1317,7 +1317,6 @@ Tentative: Tentative
 Changes successfully saved: Changes successfully saved
 The following error occurred: The following error occurred
 You are not authorized: You are not authorized
-day: day
 before: before
 after: after
 start: start
