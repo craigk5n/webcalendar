@@ -3389,7 +3389,9 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
                 display_time ( $row[7] . add_duration ( $time2, $duration2 ) );
             $conflicts .= ')';
           }
-          $conflicts .= ' ' . $onStr . ' ' . date_to_str( $row[7] );
+          $usersDate = date ('Ymd', date_to_epoch( $row[7]
+            . sprintf ( "%06d", $row[1] ) ) );
+          $conflicts .= ' ' . $onStr . ' ' . date_to_str( $usersDate );
           if ( $over_limit ) {
             $tmp = str_replace ( 'XXX', $LIMIT_APPTS_NUMBER, $exceedsStr );
             $conflicts .= ' (' . $tmp . ')';

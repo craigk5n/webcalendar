@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1601664 ] Spurious scheduling conflict
  - Fixed bug [ 1603582 ] bug at 'help_bug.php' missing language
  - Fixed bug [ 1603583 ] 'credits' at 'about.php' didn't work
  - Fixed bug [ 1603594 ] missing button label for choosing color at 'categories'
