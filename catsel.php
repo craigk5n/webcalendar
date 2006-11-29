@@ -29,20 +29,19 @@ print_header($INC,'','',true, false, true);
   echo "<tr><td valign=\"top\">\n";
   if ( ! empty ( $categories ) ) {
    echo '<select name="cats[]" size="10">' . "\n" . 
-    '<option disabled>' . translate( 'AVAILABLE CATEGORIES' ) . "</option>\n";
+    '<option disabled>' . translate( 'AVAILABLE CATEGORIES' ) . '</option>';
     foreach ( $categories as $K => $V ) {
       //None is index -1 and needs to be ignored
-      if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin || 
-        substr ( $form, 0, 4 ) == 'edit' ) ) {
-        if ( empty ( $V['cat_owner'] ) ) {
-          echo "<option value=\"-$K\" name=\"{$V['cat_name']}\">{$V['cat_name']}<sup>*</sup>";
-        } else {
-          echo "<option value=\"$K\" name=\"{$V['cat_name']}\">{$V['cat_name']}";
-        }
-        echo "</option>\n";
+      if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin ||
+          substr ( $form, 0, 4 ) == 'edit' ) ) {
+        $tmpStr = $K . '" name="' . $V['cat_name'] . '">' . $V['cat_name'];
+        echo '
+              <option value="' . ( empty ( $V['cat_owner'] )
+          ? "-$tmpStr" . '<sup>*</sup>' : $tmpStr ) . '</option>';
       }
     }
-  echo "</select>\n</td>";
+  echo '</select>
+  </td>';
   }
   echo '<td valign="center"><input type="button" value=">>" onclick="selAdd()" /></td>';
   echo '<td align="center" valign="top"><select name="eventcats[]" size="9" multiple>' ."\n" . 
