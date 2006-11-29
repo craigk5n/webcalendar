@@ -2,7 +2,7 @@
 /* $Id$ */
 
 include_once 'includes/init.php';
-// Determine if this user is allowed to search the calendar of other users
+// Is this user allowed to search the calendars of other users?
 $show_others = false; // show "Advanced Search"
 if ( $single_user == 'Y' )
   $show_others = false;
@@ -14,22 +14,25 @@ if ( access_is_enabled () )
   $show_others = access_can_access_function ( ACCESS_ADVANCED_SEARCH );
 else
 if ( $login != '__public__' && ! $is_nonuser && ! empty ( $ALLOW_VIEW_OTHER ) &&
-    $ALLOW_VIEW_OTHER == 'Y' )
+  $ALLOW_VIEW_OTHER == 'Y' )
   $show_others = true;
 else
-if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
-    $PUBLIC_ACCESS_OTHERS == 'Y' )
+if ( $login == '__public__' && !
+  empty ( $PUBLIC_ACCESS_OTHERS ) && $PUBLIC_ACCESS_OTHERS == 'Y' )
   $show_others = true;
 
-$advSearchStr = translate( 'Advanced Search' );
+$advSearchStr = translate ( 'Advanced Search' );
 $searchStr = translate ( 'Search' );
-$INC = ( $show_others ? array ( 'js/search.php/true' ) : '' );
 
-print_header ( $INC );
+print_header ( ( $show_others ? array ( 'js/search.php/true' ) : '' ) );
+
+ob_start ();
+
 echo '    <h2>' . $searchStr . '</h2>
     <form action="search_handler.php" method="post" id="searchformentry" '
- . 'name="searchformentry" style="margin-left:13px;">
-      <p><label for="keywordsadv">' . translate ( 'Keywords' ) . ':&nbsp;</label>
+ . 'name="searchformentry" style="margin-left: 13px;">
+      <p><label for="keywordsadv">' . translate ( 'Keywords' )
+ . ':&nbsp;</label>
         <input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
         <input type="submit" value="' . $searchStr . '" /></p>';
 
@@ -38,10 +41,9 @@ if ( $show_others ) {
   // Get non-user calendars (if enabled)
   if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_my_nonusers ( $login, true, 'view' );
-    if ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == 'Y' )
-      $users = array_merge ( $nonusers, $users );
-    else
-      $users = array_merge ( $users, $nonusers );
+    $users = ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == 'Y'
+      ? array_merge ( $nonusers, $users )
+      : array_merge ( $users, $nonusers ) );
   }
   $cnt = count ( $users );
   if ( $cnt > 50 )
@@ -51,34 +53,38 @@ if ( $show_others ) {
   else
     $size = $cnt;
 
-  $out = '';
-  for ( $i = 0; $i < $cnt; $i++ ) {
-    $out .= '
-              <option value="' . $users[$i]['cal_login'] . '"'
-     . ( $users[$i]['cal_login'] == $login ? ' selected="selected"' : '' )
-     . '>' . $users[$i]['cal_fullname'] . '</option>';
-  }
   echo '
       <p id="advlink"><a title="' . $advSearchStr
-   . '" href="javascript:show ( \'adv\' ); hide( \'advlink\' );">'
+   . '" href="javascript:show ( \'adv\' ); hide ( \'advlink\' );">'
    . $advSearchStr . '</a></p>
       <table id="adv" style="display:none;">
         <tr>
           <td class="aligntop alignright bold" width="60px"><label for="usersadv">'
-   . translate( 'Users' ) . ':&nbsp;</label></td>
+   . $translations['Users'] . ':&nbsp;</label></td>
           <td>
             <select name="users[]" id="usersadv" size="' . $size
-   . '" multiple="multiple">' . $out . '
+   . '" multiple="multiple">';
+
+  for ( $i = 0; $i < $cnt; $i++ ) {
+    echo '
+              <option value="' . $users[$i]['cal_login'] . '"'
+     . ( $users[$i]['cal_login'] == $login ? ' selected="selected"' : '' )
+     . '>' . $users[$i]['cal_fullname'] . '</option>';
+  }
+
+  echo '
             </select>'
    . ( $GROUPS_ENABLED == 'Y'
-    ? '<input type="button" onclick="selectUsers()" value="'
-     . translate( 'Select' ) . '..." />' : '' ) . '
+    ? '<input type="button" onclick="selectUsers ()" value="'
+     . $translations['Select'] . '..." />' : '' ) . '
           </td>
         </tr>
       </table>';
 }
+ob_end_flush ();
+
 echo '
     </form>
-    ' . print_trailer();
+    ' . print_trailer ();
 
 ?>
