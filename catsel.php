@@ -40,10 +40,10 @@ print_header($INC,'','',true, false, true);
           ? "-$tmpStr" . '<sup>*</sup>' : $tmpStr ) . '</option>';
       }
     }
-  echo '</select>
-  </td>';
+  echo '</select>';
   }
-  echo '<td valign="center"><input type="button" value=">>" onclick="selAdd()" /></td>';
+  echo '
+  </td><td valign="center"><input type="button" value=">>" onclick="selAdd()" /></td>';
   echo '<td align="center" valign="top"><select name="eventcats[]" size="9" multiple>' ."\n" . 
     '<option disabled>' . $header_text . "</option>\n";
   if ( strlen ( $cats ) ) {
