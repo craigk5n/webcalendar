@@ -2022,7 +2022,7 @@ function print_entry ( $event, $date ) {
 
   $icon =  $cal_type . '.gif';
   $catIcon = '';
-  $catNum = $event->getCategory();
+  $catNum = abs ( $event->getCategory() );
   if ( $catNum > 0 ) {
     $catIcon = "icons/cat-" . $catNum . '.gif';
     if ( ! file_exists ( $catIcon ) )
@@ -3623,7 +3623,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
   // avoid php warning for undefined array index
   if ( empty ( $hour_arr[$ind] ) )
     $hour_arr[$ind] = '';
-  $catNum = $event->getCategory();
+  $catNum = abs ( $event->getCategory() );
   $catIcon = 'icons/cat-' . $catNum . '.gif';
   if ( $catNum > 0 && file_exists ( $catIcon ) ) {
     $catAlt = translate ( 'Category' ) . ': ' . $categories[$catNum]['cat_name'];
@@ -3803,7 +3803,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $popupid = "eventinfo-pop$id-$key";
   $linkid  = "pop$id-$key";
   $key++;
-  $catNum = $event->getCategory(); 
+  $catNum = abs ( $event->getCategory() ); 
   $catIcon = 'icons/cat-' . $catNum . '.gif';
   if ( $catNum > 0 && file_exists ( $catIcon ) ) {
     $catAlt = translate ( 'Category' ) . ': ' . $categories[$catNum]['cat_name'];
