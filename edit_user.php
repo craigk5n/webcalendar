@@ -106,6 +106,15 @@ if ( $is_admin ) { ?>
   if ( empty ( $uis_admin ) || $uis_admin != 'Y' ) 
   echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'No' )?></label>
  </td></tr>
+ <tr><td class="bold">
+  <?php etranslate( 'Enabled' )?>:</td><td>
+  <label><input type="radio" name="u_enabled" value="Y"<?php 
+  if ( ! empty ( $uenabled ) && $uenabled == 'Y' ) 
+  echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'Yes' )?></label> 
+  <label><input type="radio" name="u_enabled" value="N"<?php 
+  if ( empty ( $uenabled ) || $uenabled != 'Y' ) 
+  echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'No' )?></label>
+ </td></tr>
 <?php } //end if ($is_admin ) ?>
  <tr><td colspan="2">
   <?php if ( $DEMO_MODE == 'Y' ) { ?>
