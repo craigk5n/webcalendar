@@ -1,15 +1,13 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Description:
- * Creates the iCal output for a single user's calendar so
- * that remote users can "subscribe" to a WebCalendar calendar.
- * Both Apple iCal and Mozilla's Calendar support subscribing
- * to remote calendars.
+ * Creates the iCal output for a single user's calendar so that remote users can
+ * "subscribe" to a WebCalendar calendar. Both Apple iCal and Mozilla's Calendar
+ * support subscribing to remote calendars.
  *
- * Note that unlink the export to iCal, this page does not include
- * attendee info.  This improves the performance considerably, BTW.
+ * Note that unlike the export to iCal, this page does not include
+ * attendee info. This improves the performance considerably, BTW.
  *
  * Notes:
  * Does anyone know when a client (iCal, for example) refreshes its
@@ -21,39 +19,38 @@
  * or /xxx/publish.php?user=username
  *
  * Security:
- * If $PUBLISH_ENABLED is not 'Y' (set in Admin System Settings),
- *   do not allow.
- * If $USER_PUBLISH_ENABLED is not 'Y' (set in each user's
- *   Preferences), do not allow.
+ * DO NOT ALLOW if either;
+ * $PUBLISH_ENABLED is not 'Y' (set in Admin System Settings).
+ * $USER_PUBLISH_ENABLED is not 'Y' (set in each user's Preferences).
  */
 
 require_once 'includes/classes/WebCalendar.class';
-   
-$WebCalendar =& new WebCalendar ( __FILE__ );    
-   
-include 'includes/config.php';    
-include 'includes/dbi4php.php';    
-include 'includes/functions.php';    
-   
-$WebCalendar->initializeFirstPhase();    
- 
-include "includes/$user_inc";
-include 'includes/validate.php';    
-include 'includes/translate.php';    
-   
-include 'includes/site_extras.php';    
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/functions.php';
+
+$WebCalendar->initializeFirstPhase ();
+
+include 'includes/' . $user_inc;
+include 'includes/validate.php';
+include 'includes/translate.php';
+
+include 'includes/site_extras.php';
 include_once 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase();
+$WebCalendar->initializeSecondPhase ();
 
 // Calculate username.
-//if using http_auth, use those credentials
-if ( $use_http_auth && empty ( $user ) ) {
-  $user = $login; 
-}
+// If using http_auth, use those credentials.
+if ( $use_http_auth && empty ( $user ) )
+  $user = $login;
+
 if ( empty ( $user ) ) {
   $arr = explode ( '/', $PHP_SELF );
-  $user = $arr[count($arr)-1];
+  $user = $arr[count ( $arr )-1];
   # remove any trailing ".ics" in user name
   $user = preg_replace ( "/\.[iI][cC][sS]$/", '', $user );
 }
@@ -63,10 +60,10 @@ if ( $user == 'publish.php' )
 
 if ( $user == 'public' )
   $user = '__public__';
-  
+
 load_global_settings ();
 
-$WebCalendar->setLanguage();
+$WebCalendar->setLanguage ();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
@@ -74,18 +71,20 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   exit;
 }
 
- $error = translate( 'Error' );
- $nouser = translate( 'No user specified' );
+$nouser = translate ( 'No user specified' );
 // Make sure they specified a username
 if ( empty ( $user ) ) {
   echo <<<EOT
-   <?xml version="1.0" encoding="utf8"?>
-   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-   <head><title>{$error}</title></head>
-    <body>
-    <h2>{$error}</h2>
-    {$nouser}.</body></html>
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head><title>{$translations['Error']}</title></head>
+  <body>
+    <h2>{$translations['Error']}</h2>
+    {$nouser}.
+  </body>
+</html>
 EOT;
   exit;
 }
@@ -104,11 +103,11 @@ if ( empty ( $USER_PUBLISH_ENABLED ) || $USER_PUBLISH_ENABLED != 'Y' ) {
 // Load user name, etc.
 user_load_variables ( $user, 'publish_' );
 
-
-//header ( 'Content-Type: text/plain' );
+// header ( 'Content-Type: text/plain' );
 header ( 'Content-Type: text/calendar' );
-header ( 'Content-Disposition: attachment; filename="' . $user .  '.ics"' );
+header ( 'Content-Disposition: attachment; filename="' . $user . '.ics"' );
 $use_all_dates = true;
 $type = 'publish';
-export_ical();
+export_ical ();
+
 ?>
