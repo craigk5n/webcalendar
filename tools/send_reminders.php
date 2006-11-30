@@ -403,7 +403,7 @@ function send_reminder ( $id, $event_date ) {
       : '' )
      . ( empty ( $DISABLE_PRIORITY_FIELD ) || $DISABLE_PRIORITY_FIELD != 'Y'
       ? translate ( 'Priority' ) . ': ' . $row[6] . '-' 
-      . ceil($pri[$row[6]/3] )  . "\n" : '' );
+      . $pri[ceil($row[6]/3 )]  . "\n" : '' );
 
     if ( empty ( $DISABLE_ACCESS_FIELD ) || $DISABLE_ACCESS_FIELD != 'Y' ) {
       $body .= translate ( 'Access' ) . ': ';
@@ -425,17 +425,24 @@ function send_reminder ( $id, $event_date ) {
     $extras = get_site_extra_fields ( $id );
     $site_extracnt = count ( $site_extras );
     for ( $i = 0; $i < $site_extracnt; $i++ ) {
+      if ( $site_extras[$i] == 'FIELDSET' ) continue;
       $extra_name = $site_extras[$i][0];
       $extra_descr = $site_extras[$i][1];
       $extra_type = $site_extras[$i][2];
+      $extra_arg1 = $site_extras[$i][3];
+      $extra_arg2 = $site_extras[$i][4];
+      if ( ! empty ( $site_extras[$i][5] ) )
+        $extra_view = $site_extras[$i][5] & EXTRA_DISPLAY_REMINDER;
       if ( ! empty ( $extras[$extra_name]['cal_name'] ) &&
-          $extras[$extra_name]['cal_name'] != '' ) {
+          $extras[$extra_name]['cal_name'] != '' && ! empty ( $extra_view ) ) {
         $val = '';
         $body .= $extra_descr;
         if ( $extra_type == EXTRA_DATE )
           $body .= ': ' . $extras[$extra_name]['cal_date'] . "\n";
         elseif ( $extra_type == EXTRA_MULTILINETEXT )
           $body .= "\n" . $padding . $extras[$extra_name]['cal_data'] . "\n";
+        elseif ( $extra_type == EXTRA_RADIO  )
+          $body.= ': ' . $extra_arg1[$extras[$extra_name]['cal_data']] . "\n";
         else
           // default method for EXTRA_URL, EXTRA_TEXT, etc...
           $body .= ': ' . $extras[$extra_name]['cal_data'] . "\n";
