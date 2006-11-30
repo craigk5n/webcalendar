@@ -1,5 +1,8 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Implemented RFE [ 1502773 ] Creator emails requested
+ - Implemented RFE [ 1097294 ] Allow 'site_extra' fields to be included in emails
+ - Implemented RFE [ 886520 ] Support for multiple selections in site_extras
  - Implemented RFE [ 1561653 ] Only a few site extras in the popup
  - Implemented RFE [ 1603169 ] Add checkbox option to site_extras
  - Fixed bug [ 1603599 ] color of definied-global-category will not be displayed as
