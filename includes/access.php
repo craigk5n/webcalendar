@@ -480,8 +480,12 @@ function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
   if ( empty ( $cur_user ) && ! empty ( $login ) )
     $cur_user = $login;
 
-  if ( $cur_user == $other_user )
-    return CAN_DOALL;
+  if ( $cur_user == $other_user ) {
+    if ( $cal_can_xxx == 'email' || $cal_can_xxx == 'invite' )
+      return 'Y';
+    else
+      return CAN_DOALL;
+  }
 
   assert ( '! empty ( $other_user )' );
   assert ( '! empty ( $cur_user )' );
