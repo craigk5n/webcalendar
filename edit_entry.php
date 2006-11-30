@@ -671,7 +671,7 @@ if ( $eType == 'task' ) { //only for tasks
 <?php } 
 if ( $DISABLE_URL_FIELD != 'Y'  ){  ?>
  <tr><td class="tooltip" title="<?php etooltip( 'url-help' )?>">
-    <label for="entry_location"><?php etranslate( 'URL' )?>:</label></td><td colspan="2">
+    <label for="entry_url"><?php etranslate( 'URL' )?>:</label></td><td colspan="2">
     <input type="text" name="entry_url" id="entry_url" size="100" 
    value="<?php echo htmlspecialchars ( $cal_url ); ?>" />
   </td></tr>
@@ -765,19 +765,27 @@ if ( $eType != 'task' ) {?>
 if ( $id > 0 )
   $extras = get_site_extra_fields ( $id );
 $site_extracnt = count ( $site_extras );
-if ( $site_extracnt ) 
+
+if ( $site_extracnt && ! empty ( $site_extras[0]['FIELDSET'] ) ) {
+  echo '<div><fieldset>';
+  echo '<legend>' . translate('Site Extras') .'</legend>';
+}
+if ( $site_extracnt )
   echo '<table>';
 for ( $i = 0; $i < $site_extracnt; $i++ ) {
+  if ( $site_extras[$i] == 'FIELDSET' ) continue;
   $extra_name = $site_extras[$i][0];
   $extra_descr = $site_extras[$i][1];
   $extra_type = $site_extras[$i][2];
   $extra_arg1 = $site_extras[$i][3];
   $extra_arg2 = $site_extras[$i][4];
+  //Default value if needed
+  $defIdx = ( empty ( $extras[$extra_name]['cal_data'] ) ? $extra_arg2
+      : $extras[$extra_name]['cal_data'] );
 
+  echo '<tr><td class="aligntop bold">';
   if ( $extra_type == EXTRA_MULTILINETEXT )
-    echo '<tr><td class="aligntop bold"><br />' ."\n";
-  else
-    echo '<tr><td class="bold">';
+    echo '<br />' ."\n";
   echo translate ( $extra_descr ) .  ":</td><td>\n";
   if ( $extra_type == EXTRA_URL ) {
     echo '<input type="text" size="50" name="' . $extra_name .
@@ -821,24 +829,48 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
     }
     echo "</select>\n";
   } else if ( $extra_type == EXTRA_SELECTLIST ) {
-    // show custom select list.
-    echo '<select name="' . $extra_name . "\">\n";
+    // show custom select list. 
+    $multiselect =  $isMultiple = $extraSelectArr = '';   
     if ( is_array ( $extra_arg1 ) ) {
       $extra_arg1cnt = count ( $extra_arg1 ); 
+      if ( $extra_arg2 > 0 ) {
+        $multiselect = ' multiple="multiple" size="' 
+          . min($extra_arg2, $extra_arg1cnt ) . '" ';
+        $isMultiple = '[]';
+        if ( ! empty ( $extras ) )
+          $extraSelectArr = explode ( ',', $extras[$extra_name]['cal_data'] );
+      }
+ 
+      echo '<select name="' . $extra_name . $isMultiple .'"' . $multiselect . ">\n";
       for ( $j = 0; $j < $extra_arg1cnt; $j++ ) {
-        echo "<option";
-        if ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
-          $extra_arg1[$j] == $extras[$extra_name]['cal_data'] )
-          echo $selected;
+        echo '<option value="' . $extra_arg1[$j] . '" ';
+        if ( ! empty ( $extras[$extra_name]['cal_data'] ) ) {
+          if ( $extra_arg2 > 0 && 
+            $extra_arg1[$j] == $extras[$extra_name]['cal_data'] )
+            echo $selected;
+          else if ( $extra_arg2 > 0 && strlen (
+             array_search ( $extra_arg1[$j], $extraSelectArr ) ) )
+            echo $selected;
+        } else if ( $j == 0 )
+            echo $selected; 
         echo '>' . $extra_arg1[$j] . "</option>\n";
       }
     }
     echo "</select>\n";
+  } else if ( $extra_type == EXTRA_RADIO ) {
+    // show custom radio selections.  
+    echo print_radio ( $extra_name, $extra_arg1, '', $defIdx ); 
+  } else if ( $extra_type == EXTRA_CHECKBOX ) { 
+    // show custom checkbox option.
+    echo print_checkbox ( array ( $extra_name, $extra_arg1, '', $defIdx ) ); 
   }
   echo "</td></tr>\n"; 
 }
-if ( $site_extracnt )
+if ( $site_extracnt ) {
   echo "</table>\n";
+  if ( ! empty ( $site_extras[0]['FIELDSET'] ) )
+    echo "</fieldset></div>\n";
+}
 // end site-specific extra fields
 
 if ( $useTabs ) { ?>

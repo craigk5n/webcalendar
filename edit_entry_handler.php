@@ -52,8 +52,20 @@ $description = ( strlen ( $description ) == 0  ||
   $description == '<br />' ? $name : $description );
 $location = getPostValue ( 'location' );
 $entry_url = getPostValue ( 'entry_url' );
+$eType = getPostValue ( 'eType' );
+$rpt_type = getPostValue ( 'rpt_type' );
+$reminder = getPostValue ( 'reminder' );
+
+//Pass all numeric values through getPostValue
+$entry_hour = getPostValue ( 'entry_hour' );
+$entry_ampm = getPostValue ( 'entry_ampm' );
+$entry_minute = getPostValue ( 'entry_minute' );
+$day = getPostValue ( 'day' );
+$month = getPostValue ( 'month' );
+$year = getPostValue ( 'year' );
 
 // Ensure  variables are not empty
+if ( empty ( $eType ) ) $eType = 'event';
 if ( empty ( $percent ) ) $percent = 0;
 
 if ( empty ( $timetype ) ) $timetype = 'T';
@@ -534,31 +546,43 @@ if ( empty ( $error ) ) {
         break;
       }
     }
-  }     
+  }  
   // add site extras
   $site_extracnt = count ( $site_extras );
+  $extra_email_data = '';
   for ( $i = 0; $i < $site_extracnt && empty ( $error ); $i++ ) {
     $sql = '';
+    if ( $site_extras[$i] == 'FIELDSET' ) continue;
     $extra_name = $site_extras[$i][0];
     $extra_type = $site_extras[$i][2];
     $extra_arg1 = $site_extras[$i][3];
     $extra_arg2 = $site_extras[$i][4];
+    if ( ! empty ( $site_extras[$i][5] ) )
+      $extra_email = $site_extras[$i][5] & EXTRA_DISPLAY_EMAIL;
     $value = $$extra_name;
     //echo "Looking for $extra_name... value = " . $value . " ... type = " .
     // $extra_type . "<br />\n";
     
-  $sql = '';
-  $query_params = array();
+    $sql = '';
+    $query_params = array();
 
-  if ( strlen ( $extra_name ) || $extra_type == EXTRA_DATE ) {
+    if ( strlen ( $extra_name ) || $extra_type == EXTRA_DATE ) {
       if ( $extra_type == EXTRA_URL || $extra_type == EXTRA_EMAIL ||
         $extra_type == EXTRA_TEXT || $extra_type == EXTRA_USER ||
         $extra_type == EXTRA_MULTILINETEXT ||
-        $extra_type == EXTRA_SELECTLIST  ) {
+        $extra_type == EXTRA_SELECTLIST || $extra_type == EXTRA_RADIO ||
+         $extra_type == EXTRA_CHECKBOX ) {
+        // We were passed an array instead of a string
+        if ( $extra_type == EXTRA_SELECTLIST && $extra_arg2 > 0 )
+          $value = implode ( ',', $value );
 
         $sql = 'INSERT INTO webcal_site_extras ' .
           '( cal_id, cal_name, cal_type, cal_data ) VALUES ( ?, ?, ?, ? )';
-    $query_params = array( $id, $extra_name, $extra_type, $value );
+        $query_params = array( $id, $extra_name, $extra_type, $value );
+        if ( ! empty ( $extra_email ) ) {
+          $value = ( $extra_type == EXTRA_RADIO ? $extra_arg1[$value] : $value );
+          $extra_email_data .= $extra_name . ': ' . $value . "\n";
+        }
       } else if ( $extra_type == EXTRA_DATE )  {
         $yname = $extra_name . 'year';
         $mname = $extra_name . 'month';
@@ -566,7 +590,9 @@ if ( empty ( $error ) ) {
         $edate = sprintf ( "%04d%02d%02d", $$yname, $$mname, $$dname );
         $sql = 'INSERT INTO webcal_site_extras ' .
           '( cal_id, cal_name, cal_type, cal_date ) VALUES ( ?, ?, ?, ? )';
-    $query_params = array( $id, $extra_name, $extra_type, $edate );
+        $query_params = array( $id, $extra_name, $extra_type, $edate );
+        if ( ! empty ( $extra_email ) )
+          $extra_email_data .= $extra_name . ': ' . $edate . "\n";
       }
     }
     if ( strlen ( $sql ) && empty ( $error ) ) {
@@ -576,7 +602,6 @@ if ( empty ( $error ) ) {
       }
     }
   } //end for site_extras loop
-
   //process reminder
   if ( ! dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id = ?', array( $id ) ) )
     $error = $dberror . dbi_error ();
@@ -696,6 +721,7 @@ if ( empty ( $error ) ) {
        }
       } //end exceptions    
   } 
+  //EMAIL PROCESSING
   $partcnt = count ( $participants );
   $from = $login_email;
   if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
@@ -767,7 +793,7 @@ if ( empty ( $error ) ) {
       }
     }
   }
-
+  $send_own =  get_pref_setting ( $login, 'EMAIL_EVENT_CREATE' );
   // now add participants and send out notifications
   for ( $i = 0; $i < $partcnt; $i++ ) {
     // Is the person adding the nonuser calendar admin
@@ -853,12 +879,12 @@ if ( empty ( $error ) ) {
         set_env ( 'TZ', $user_TIMEZONE );
         $user_language = get_pref_setting ( $participants[$i], 'LANGUAGE' );
         user_load_variables ( $participants[$i], 'temp' );
-        if ( $participants[$i] != $login && 
-          boss_must_be_notified ( $login, $participants[$i] ) && 
+        if ( boss_must_be_notified ( $login, $participants[$i] ) && 
           ! empty ( $tempemail ) &&
           $do_send == 'Y' && $send_user_mail && $SEND_EMAIL != 'N' ) {
-
-
+          // We send to creator if they want it
+          if ( $send_own != 'Y' && ( $participants[$i] == $login ) )
+            continue; 
           if ( empty ( $user_language ) || ( $user_language == 'none' )) {
              reset_language ( $LANGUAGE );
           } else {
@@ -881,6 +907,8 @@ if ( empty ( $error ) ) {
             translate( 'Time' ) . ': ' .
             // Apply user's GMT offset and display their TZID
             display_time ( '', 2, $eventstart, $t_format ) . "\n" ) .
+            // Add Site Extra Date if permitted
+            $extra_email_data .
             translate( 'Please look on' ) . ' ' . generate_application_name () . 
             ' ' . ( $REQUIRE_APPROVALS == 'Y' ?
             translate( 'to accept or reject this appointment' ) :
@@ -999,7 +1027,9 @@ if ( $single_user == 'N' &&
                   // Display time in server's timezone
                   $msg .= display_time ( '', 6, $eventstart);              
                 }
-              }          
+              } 
+              // Add Site Extra Date if permitted
+              $msg .= $extra_email_data;         
             //don't send HTML to external adresses  
             $mail->WC_Send ( $login_fullname, $ext_emails[$i], 
               $ext_names[$i], $name, $msg, 'N', $from, $id );       
