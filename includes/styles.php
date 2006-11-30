@@ -869,12 +869,17 @@ img.help {
 
 ?>;
 }
+#admin table,
+#pref table{
+  vertical-align: top;
+}
 #admin .tooltip,
 #pref .tooltip{
   cursor: help;
   text-decoration: none;
   font-weight: bold;
   width: 175px;
+  vertical-align: top;
 }
 #minicalendar table {
   width: <?php echo ( ! empty ( $GLOBALS['MINICALWIDTH'] )
