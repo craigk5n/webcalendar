@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 27 Nov 2006
+# Last update: 30 Nov 2006
 #
 # $Id$
-# Translation last updated on 11-27-2006
+# Translation last updated on 11-28-2006
 
 
 ################################################################################
@@ -791,10 +791,10 @@ View Another User&#39;s Calendar: Kalender anderer Benutzer anzeigen
 ########################################
 # Page: availability.php
 #
-No users specified!: Keine Teilnehmer spezifiziert!
-No year specified!: Kein Jahr spezifiziert!
-No month specified!: Keinen Monat spezifiziert!
-No day specified!: Kein Tag spezifiziert!
+No XXX specified!: Kein XXX spezifiziert
+year: Jahr
+month: Monat
+day: Tag
 
 ########################################
 # Page: help_edit_entry.php
@@ -862,7 +862,7 @@ freebusy-url-help: Die URL f&uuml;r den Benutzerzugang zur FreeBusy - Liste
 ########################################
 # Page: colors.php
 #
-Basic Colors: Grundlegende Farben
+Basic Colors: Grundfarben
 Custom Colors: Eigene Farben
 Add Custom: Eigene Farben hinzuf&uuml;gen
 Current Color: Derzeitige Farben
@@ -874,7 +874,7 @@ Old Color: Alte Farben
 About: &Uuml;ber
 Credits: Abspann
 version: Version
-Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.: Webcalendar ist eine PHP Anwendung welche zum Warten eines Kalenders fr einen einzelnen Benutzer oder einer Gruppe von Internet / Intranet Benutzer. Er kann aber auch als Terminkalender konfiguriert werden.
+Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.: Webcalendar ist eine PHP Anwendung welche zum Warten eines Kalenders f&uuml;r einen einzelnen Benutzer oder einer Gruppe von Internet / Intranet Benutzer. Er kann aber auch als Terminkalender konfiguriert werden.
 
 ########################################
 # Page: help_layers.php
@@ -1066,13 +1066,13 @@ Add New NonUser Calendar: Neuen &#39;Zentralen-Kalender&#39; hinzuf&uuml;gen
 ########################################
 # Page: category.php
 #
-Category Icon: Kategorie Icon
-Category Name: Kategorie Name
+Category Icon: Icon f&uuml;r Kategorie
+Category Name: Name der Kategorie 
 Remove Icon: Icon entfernen
 Add Icon to Category: Icon f&uuml;r Kategorie hinzuf&uuml;gen
 Upload: Hochladen
 gif 3kb max: gif max. 3kb gro&szlig;
-Search for existing icons: Suche nach bereits vorhandene Icons
+Search for existing icons: Suche nach bereits vorhandenen Icons
 entry: Eintrag
 Are you sure you want to delete this XXX?: Sind Sie sicher, da&slzig; Sie XXX l&ouml;schen wollen?
 Add New Category: Neue Kategorie hinzuf&uuml;gen
@@ -1316,7 +1316,6 @@ Tentative: Vorl&auml;ufig
 Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
 The following error occurred: Folgender Fehler trat auf
 You are not authorized: Sie haben daf&uuml;r keine Berechtigung
-day: Tag
 before: vor
 after: nach
 start: Beginn
@@ -1519,6 +1518,7 @@ Public Calendar: &Ouml;ffentlicher Kalender
 Unapproved Events: Unbest&auml;tigte Termine
 User Manager: Benutzermanager
 Help Contents: Hilfe Inhaltsverzeichnis
+About WebCalendar: &Uuml;ber Webkalender
 
 ########################################
 # Page: includes/classes/Doc.class
