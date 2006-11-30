@@ -1190,15 +1190,17 @@ function load_user_layers ($user='',$force=0) {
  *
  * @param array $extras Array of site_extras for an event as returned by
  *                      {@link get_site_extra_fields()}
+ * @param int    $filter CONSTANT 'view settings' values from site_extras.php
  *
  * @return array Array of formatted extras.
  */
-function format_site_extras ( $extras ) {
-  global $SITE_EXTRAS_IN_POPUP, $site_extras;
+function format_site_extras ( $extras, $filter='' ) {
+  global $site_extras;
 
-  if ( empty ($site_extras ) ) return;
+  if ( empty ($site_extras ) || empty ($extras ) ) return;
+
   $ret = array();
-
+  $extra_view = 1;
   foreach ( $site_extras as $site_extra ) {
     $data = '';
     $extra_name = $site_extra[0];
@@ -1206,9 +1208,10 @@ function format_site_extras ( $extras ) {
     $extra_type = $site_extra[2];
     $extra_arg1 = $site_extra[3];
     $extra_arg2 = $site_extra[4];
-
+    if ( ! empty ( $site_extra[5] )  && ! empty ( $filter ) );
+      $extra_view = $site_extra[5] & $filter;
     if ( ! empty ( $extras[$extra_name] ) && 
-      ! empty ( $extras[$extra_name]['cal_name'] ) ) {
+      ! empty ( $extras[$extra_name]['cal_name'] )&& ! empty ( $extra_view ) ) {
 
       $name = translate ( $extra_desc );
 
@@ -1223,6 +1226,9 @@ function format_site_extras ( $extras ) {
 
         $data = nl2br ( $extras[$extra_name]['cal_data'] );
 
+      } else if ( $extra_type == EXTRA_RADIO && 
+          ! empty ( $extra_arg1[$extras[$extra_name]['cal_data']] ) ) {
+          $data .=  $extra_arg1[$extras[$extra_name]['cal_data']];
       } else {
         $data .= $extras[$extra_name]['cal_data'];
       }
@@ -1230,7 +1236,6 @@ function format_site_extras ( $extras ) {
       $ret[$extra_name] = array ( 'name' => $name, 'data' => $data );
     }
   }
-
   return $ret;
 }
 
@@ -1249,7 +1254,7 @@ function site_extras_for_popup ( $id ) {
     return '';
   }
 
-  $extras = format_site_extras ( get_site_extra_fields ( $id ) );
+  $extras = format_site_extras ( get_site_extra_fields ( $id ), EXTRA_DISPLAY_POPUP );
   if ( empty ( $extras ) ) return '';
   
   $ret = '';
@@ -5285,14 +5290,19 @@ function add_duration ( $time, $duration ) {
 /**
  * Extract the names of all site_extras
  *
+ * @param int    $filter CONSTANT 'view setting' from site_extras.php
+ * 
  * @return array Array of site_extras names
  */
-function get_site_extras_names () {
+function get_site_extras_names ( $filter='' ) {
   global $site_extras;
 
   $ret = array();
 
   foreach ( $site_extras as $extra ) {
+    if ( $extra == 'FIELDSET' ) continue;
+    if ( ! empty ( $extra[5] ) && ! empty ( $filter ) 
+      && ! ( $extra[5] & $filter ) ) continue; 
     $ret[] = $extra[0];
   }
 
@@ -6049,39 +6059,97 @@ function display_activity_log ( $cal_type, $cal_text='' ) {
 }
 
 /*
- * Generates HTML to for radio buttons in admin and pref pages
+ * Generates HTML for radio buttons
  *
  * @param string   $variable the name of the variable to display
+ * @param array   $vals the value and display variables
+ *                if empty ( Yes/No options will be displayed )
  * @param string   $onclick  javascript function to call if needed
- * @param string   $pref     prefix to attach to $variable
- * @param string   $valY     name of first radio value
- * @param string   $valN     name of second radio value
- * @param string   $dispY    text to display next to first radio
- * @param string   $dispN    text to display next to second radio
+ * @param string   $defIdx default array index to select
+ * @param string   $sep html value between radio options(&nbsp;, <br />)
  *
  * @return string  HTML for the radio control
  */
-function print_radio_html ( $variable, $onclick = '',
-  $valY = 'Y', $valN = 'N', $dispY = '', $dispN = '' ) {
-  global $checked, $prefarray, $s, $Yes, $No, $SCRIPT;
+function print_radio ( $variable, $vals='', $onclick='', $defIdx='', $sep='&nbsp;' ) {
+  global $prefarray, $s, $SCRIPT;
+  static $checked, $Yes, $No;
+  
+  $ret = '';
+  $setting = $defIdx;
+  if ( empty ( $checked ) ) {
+    $checked = ' checked="checked" ';
+    $Yes = translate ( 'Yes' );
+    $No = translate ( 'No' );
+  }
+  if ( empty ( $vals ) )
+    $vals = array ( 'Y'=> $Yes, 'N'=> $No );
 
-  $pref = ( $SCRIPT == 'admin.php' ? 'admin_' : 'pref_' );
+  if ( $SCRIPT == 'admin.php' )  {
+    $setting = $s[$variable];
+    $variable = 'admin_' . $variable;
+  }
+  if ( $SCRIPT == 'pref.php' )  {
+    $setting = $prefarray[$variable];
+    $variable = 'pref_'  . $variable;    
+  }
+
   $onclickStr = ( ! empty ( $onclick )
     ? ' onclick="' . $onclick . ' ()" ' : '' ) . ' />&nbsp;';
-  $openingStr = '<label><input type="radio" name="'
-   . $pref . $variable . '" value=';
-  $setting = ( $pref == 'admin_' ? $s[$variable] : $prefarray[$variable] );
+  $openingStr = '<label><input type="radio" name="';
 
-  return $openingStr . "\"$valY\""
-   . ( $setting == $valY ? $checked : '' )
-   . $onclickStr
-   . ( empty ( $dispY ) ? $Yes : $dispY )
-   . '</label>&nbsp;' . "\n" . $openingStr . "\"$valN\""
-   . ( $setting != $valY ? $checked :'' )
-   . $onclickStr
-   . ( empty ( $dispN ) ? $No : $dispN )
-   . '</label>&nbsp;' . "\n";
+  foreach ( $vals as $K => $V ) {
+    $ret .= $openingStr . $variable . '" value="' . $K . '" '
+     . ( $setting == $K ? $checked : '' )
+     . $onclickStr . $V . '</label>' . $sep . "\n"; 
+  }
+  return $ret;
 } 
+
+/*
+ * Generates HTML to for checkbox form controls
+ *
+ * @param array    $vals (name, value, display, setting)
+ * @param string   $id the id of the control
+ * @param string   $onchange  javascript function to call if needed
+ *
+ * @return string  HTML for the checkbox control
+ */
+function print_checkbox ( $vals, $id='', $onchange='' ) {
+  global $prefarray, $s, $SCRIPT;
+  static $checked, $Yes, $No;
+  
+  $ret = '';
+  $setting = ( ! empty ( $vals[3] ) ? $vals[3] : $vals[0] );
+  $variable = $vals[0];
+
+  if ( ! empty ( $id ) && $id = 'dito' )
+    $id = $vals[0];
+  if ( empty ( $checked ) ) {
+    $checked = ' checked="checked" ';
+    $Yes = translate ( 'Yes' );
+    $No = translate ( 'No' );
+  }
+
+  if ( $SCRIPT == 'admin.php' )  {
+    $setting = $s[$vals[0]];
+    $variable = 'admin_' . $vals[0];
+  }
+  if ( $SCRIPT == 'pref.php' )  {
+    $setting = $prefarray[$vals[0]];
+    $variable = 'pref_'  . $vals[0];    
+  }
+
+  $onchangeStr = ( ! empty ( $onchange )
+    ? ' onchange="' . $onchange . ' ()" ' : '' ) . ' />&nbsp;';
+  $openingStr = '<label><input type="checkbox" name="';
+  $idStr = ( ! empty ( $id ) ? 'id="' . $id . '" ' : '' ) ;
+
+  $ret .= $openingStr . $variable . '" value="' . $vals[1] . '" '
+     . $idStr . ( $setting == $vals[1] ? $checked : '' )
+     . $onchangeStr . $vals[2] . '</label>' . "\n"; 
+
+  return $ret;
+}
 
 /**
  * Generates HTML for color chooser options in admin and pref pages
