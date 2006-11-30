@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-27-2006
+# Translation last updated on 11-30-2006
 
 
 ################################################################################
@@ -119,8 +119,6 @@ Error adding event: Error adding event
 # Page: admin.php
 #
 Select: Select
-Yes: Yes
-No: No
 Day: Day
 Week: Week
 Month: Month
@@ -226,6 +224,8 @@ display-unapproved-help: Specifies whether unapproved events are displayed in yo
 Display unapproved: Display unapproved
 conflict-check-help: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
 Check for event conflicts: Check for event conflicts
+Yes: Yes
+No: No
 conflict-months-help: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
 Conflict checking months: Conflict checking months
 conflict-check-override-help: Allows users to override event conflicts and schedule two or more events for the same time.
@@ -364,6 +364,8 @@ email-event-deleted: Specifies whether or not to send email notifications when a
 Events removed from my calendar: Events removed from my calendar
 email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Event rejected by participant: Event rejected by participant
+email-event-create: Specifies whether the creator of emails will receive an email
+Event that I create: Event that I create
 Color options: Color options
 Allow user to customize colors: Allow user to customize colors
 gradient-colors: If enabled gradient colors are used. This can greatly impact performane.
@@ -473,8 +475,8 @@ File is not a gif image: File is not a gif image
 ########################################
 # Page: catsel.php
 #
-ENTRY CATEGORIES: ENTRY CATEGORIES
 AVAILABLE CATEGORIES: AVAILABLE CATEGORIES
+ENTRY CATEGORIES: ENTRY CATEGORIES
 Remove: Remove
 Global Category: Global Category
 Cancel: Cancel
@@ -566,6 +568,7 @@ end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
 Due Date: Due Date
 Due Time: Due Time
+Site Extras: Site Extras
 participants-help: Lists the participants of this entry.
 Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
@@ -731,7 +734,6 @@ Template variables: Template variables
 Page template: Page template
 Day template: Day template
 Event template: Event template
-Site Extras: Site Extras
 report: report
 
 ########################################
@@ -753,6 +755,7 @@ Username: Username
 E-mail address: E-mail address
 Password: Password
 again: again
+Enabled: Enabled
 Disabled for demo: Disabled for demo
 Change Password: Change Password
 New Password: New Password
@@ -937,7 +940,6 @@ The import file contained no data: The import file contained no data
 # Page: layers.php
 #
 Layers are currently: Layers are currently
-Enabled: Enabled
 Disable Layers: Disable Layers
 Enable Layers: Enable Layers
 Click here: Click here
