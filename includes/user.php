@@ -156,8 +156,8 @@ function user_load_variables ( $login, $prefix ) {
     return true;
   }
   $sql =
-    'SELECT cal_firstname, cal_lastname, cal_is_admin, cal_email, cal_passwd ' .
-    'FROM webcal_user WHERE cal_login = ?';
+    'SELECT cal_firstname, cal_lastname, cal_is_admin, cal_email, cal_passwd, ' .
+    'cal_enabled FROM webcal_user WHERE cal_login = ?';
   $rows = dbi_get_cached_rows ( $sql , array ( $login ) );
   if ( $rows ) {
     $row = $rows[0]; 
@@ -171,6 +171,7 @@ function user_load_variables ( $login, $prefix ) {
     else
       $GLOBALS[$prefix . 'fullname'] = $login;
     $GLOBALS[$prefix . 'password'] = $row[4];
+    $GLOBALS[$prefix . 'enabled'] = $row[5];
     $ret = true;
   } else {
     return false;
@@ -241,12 +242,13 @@ function user_add_user ( $user, $password, $firstname,
  * @param string $lastname  User last name
  * @param string $mail      User email address
  * @param string $admin     Is the user an administrator? ('Y' or 'N')
+ * @param string $enabled   Is the user account enabled? ('Y' or 'N')
  *
  * @return bool True on success
  *
  * @global string Error message
  */
-function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
+function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabled='Y' ) {
   global $error;
 
   if ( $user == '__public__' ) {
@@ -270,8 +272,9 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
 
   $sql = 'UPDATE webcal_user SET cal_lastname = ?, ' .
     'cal_firstname = ?, cal_email = ?,' .
-    'cal_is_admin = ? WHERE cal_login = ?';
-  if ( ! dbi_execute ( $sql , array ( $ulastname , $ufirstname , $uemail , $admin , $user  ) ) ) {
+    'cal_is_admin = ?,cal_enabled = ? WHERE cal_login = ?';
+  if ( ! dbi_execute ( $sql , 
+    array ( $ulastname , $ufirstname , $uemail , $admin , $enabled, $user  ) ) ) {
     $error = db_error ();
     return false;
   }
