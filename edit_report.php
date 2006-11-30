@@ -415,7 +415,7 @@ if ( $is_admin ) {
    print_options ( 'event_template', $option );
   }
   echo '</td><td class="aligntop cursoradd">';
-  $extra_names = get_site_extras_names();
+  $extra_names = get_site_extras_names( EXTRA_DISPLAY_REPORT );
   if ( count ( $extra_names ) > 0 ) 
     echo '<label>' .translate( 'Site Extras' ). '</label><br />';
   foreach ( $extra_names as $name ) { 

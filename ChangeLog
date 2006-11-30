@@ -1,5 +1,7 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Implemented RFE [ 1561653 ] Only a few site extras in the popup
+ - Implemented RFE [ 1603169 ] Add checkbox option to site_extras
  - Fixed bug [ 1603599 ] color of definied-global-category will not be displayed as
  - Fixed bug [ 1601664 ] Spurious scheduling conflict
  - Fixed bug [ 1603582 ] bug at 'help_bug.php' missing language

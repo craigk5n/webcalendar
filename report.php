@@ -143,12 +143,12 @@ function event_to_text ( $event, $date ) {
     $duration_str = '';
   }
 
-  if ( $event->getPriority() == 1 ) {
+  if ( $event->getPriority() >= 7 ) {
     $pri_str = translate ( 'Low' );
-  } else if ( $event->getPriority() == 2 ) {
-    $pri_str = translate ( 'Medium' );
-  } else if ( $event->getPriority() == 3 ) {
+  } else if ( $event->getPriority() <= 3 ) {
     $pri_str = translate ( 'High' );
+  } else {
+    $pri_str = translate ( 'Medium' );
   }
 
   if ( $event->getStatus() == 'W' ) {
@@ -190,8 +190,7 @@ function event_to_text ( $event, $date ) {
   $text = str_replace ( '${url}', $url, $text );
 
   $text = replace_site_extras_in_template ( $text,
-                                            format_site_extras (
-                                              get_site_extra_fields ( $id ) ) );
+    format_site_extras ( get_site_extra_fields ( $id ), EXTRA_DISPLAY_REPORT ) );
 
   return $text;
 }

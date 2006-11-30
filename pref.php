@@ -159,10 +159,8 @@ $GLOBALS['MYEVENTS'] = $prefarray['MYEVENTS'];
 //determine if we can set timezones, if not don't display any options
 $can_set_timezone = set_env ( 'TZ', $prefarray['TIMEZONE'] );
 
-$checked = ' checked="checked" ';
 $selected = ' selected="selected" ';
-$Yes = translate ( 'Yes' );
-$No = translate ( 'No' );
+
 $minutesStr = translate( 'minutes' );
 
 $openStr ="\"window.open('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
@@ -355,8 +353,8 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 
 <tr><td class="tooltip" title="<?php etooltip( 'time-format-help' )?>">
  <?php etranslate( 'Time format' )?>:</td><td>
- <?php echo print_radio_html ( 'TIME_FORMAT' , '' , '12', '24', 
-    translate( '12 hour' ), translate( '24 hour' ) ) ?>
+ <?php echo print_radio ( 'TIME_FORMAT',
+   array ( '12'=>translate( '12 hour' ), '24'=>translate( '24 hour' ) ) ) ?>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip( 'display-week-starts-on' )?>">
  <?php etranslate( 'Week starts on' )?>:</td><td>
@@ -467,42 +465,42 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <tr><td class="tooltip" title="<?php etooltip( 'display-sm_month-help' );?>">
  <?php etranslate( 'Display small months' )?>:</td><td>
- <?php echo print_radio_html ( 'DISPLAY_SM_MONTH' ) ?>
+ <?php echo print_radio ( 'DISPLAY_SM_MONTH' ) ?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip( 'display-weekends-help' );?>">
  <?php etranslate( 'Display weekends' )?>:</td><td>
- <?php echo print_radio_html ( 'DISPLAY_WEEKENDS' ) ?>
+ <?php echo print_radio ( 'DISPLAY_WEEKENDS' ) ?>
 </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'display-long-daynames-help' );?>">
   <?php etranslate( 'Display long day names' )?>:</td><td>
-  <?php echo print_radio_html ( 'DISPLAY_LONG_DAYS' ) ?>
+  <?php echo print_radio ( 'DISPLAY_LONG_DAYS' ) ?>
  </td></tr>
 <tr><td class="tooltip" title="<?php etooltip("display-minutes-help")?>">
  <?php etranslate( 'Display 00 minutes always' )?>:</td><td>
- <?php echo print_radio_html ( 'DISPLAY_MINUTES' ) ?>
+ <?php echo print_radio ( 'DISPLAY_MINUTES' ) ?>
 </td></tr>
 
  <tr><td class="tooltip" title="<?php etooltip( 'display-alldays-help' );?>">
   <?php etranslate( 'Display all days in month view' )?>:</td><td>
-  <?php echo print_radio_html ( 'DISPLAY_ALL_DAYS_IN_MONTH' ) ?>
+  <?php echo print_radio ( 'DISPLAY_ALL_DAYS_IN_MONTH' ) ?>
  </td></tr> 
 <tr><td class="tooltip" title="<?php etooltip( 'display-week-number-help' )?>">
  <?php etranslate( 'Display week number' )?>:</td><td>
- <?php echo print_radio_html ( 'DISPLAY_WEEKNUMBER' ) ?>
+ <?php echo print_radio ( 'DISPLAY_WEEKNUMBER' ) ?>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip( 'display-tasks-help' )?>">
  <?php etranslate( 'Display small task list' )?>:</td><td>
- <?php echo print_radio_html ( 'DISPLAY_TASKS' ) ?>
+ <?php echo print_radio ( 'DISPLAY_TASKS' ) ?>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip( 'display-tasks-in-grid-help' )?>">
  <?php etranslate( 'Display tasks in Calendars' )?>:</td><td>
- <?php echo print_radio_html ( 'DISPLAY_TASKS_IN_GRID' ) ?>
+ <?php echo print_radio ( 'DISPLAY_TASKS_IN_GRID' ) ?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip( 'lunar-help' )?>">
  <?php etranslate( 'Display Lunar Phases in month view' )?>:</td><td>
- <?php echo print_radio_html ( 'DISPLAY_MOON_PHASES' ) ?>
+ <?php echo print_radio ( 'DISPLAY_MOON_PHASES' ) ?>
 </td></tr>
 
 </table>
@@ -513,13 +511,13 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <tr><td class="tooltip" title="<?php etooltip( 'display-unapproved-help' );?>">
  <?php etranslate( 'Display unapproved' )?>:</td><td>
- <?php echo print_radio_html ( 'DISPLAY_UNAPPROVED' ) ?>
+ <?php echo print_radio ( 'DISPLAY_UNAPPROVED' ) ?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip( 'timed-evt-len-help' );?>">
  <?php etranslate( 'Specify timed event length by' )?>:</td><td>
- <label><input type="radio" name="pref_TIMED_EVT_LEN" value="D" <?php if ( $prefarray['TIMED_EVT_LEN'] != "E" ) echo $checked;?> /> <?php etranslate( 'Duration' )?></label> 
- <label><input type="radio" name="pref_TIMED_EVT_LEN" value="E" <?php if ( $prefarray['TIMED_EVT_LEN'] == "E" ) echo $checked;?> /> <?php etranslate( 'End Time' )?></label>
+ <?php echo print_radio ( 'TIMED_EVT_LEN',
+   array ( 'D'=>translate( 'Duration' ), 'E'=>translate( 'End Time' ) ) ) ?>
 </td></tr>
 
 <?php if ( ! empty ( $categories ) ) { ?>
@@ -541,11 +539,11 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <?php } //end if (! empty ($categories ) ) ?>
 <tr><td class="tooltip" title="<?php etooltip( 'crossday-help' )?>">
  <?php etranslate( 'Disable Cross-Day Events' )?>:</td><td>
- <?php echo print_radio_html ( 'DISABLE_CROSSDAY_EVENTS' ) ?>
+ <?php echo print_radio ( 'DISABLE_CROSSDAY_EVENTS' ) ?>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip( 'display-desc-print-day-help' );?>">
  <?php etranslate( 'Display description in printer day view' )?>:</td><td>
- <?php echo print_radio_html ( 'DISPLAY_DESC_PRINT_DAY' ) ?>
+ <?php echo print_radio ( 'DISPLAY_DESC_PRINT_DAY' ) ?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip( 'entry-interval-help' )?>">
@@ -590,7 +588,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <tr><td class="tooltip" title="<?php etooltip( 'auto-refresh-help' );?>">
  <?php etranslate( 'Auto-refresh calendars' )?>:</td><td>
- <?php echo print_radio_html ( 'AUTO_REFRESH' ) ?>
+ <?php echo print_radio ( 'AUTO_REFRESH' ) ?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip( 'auto-refresh-time-help' );?>">
@@ -650,33 +648,38 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <table  cellspacing="1" cellpadding="2">
 <tr><td class="tooltip">
  <?php etranslate( 'Email format preference' )?>:</td><td>
- <?php echo print_radio_html ( 'EMAIL_HTML', '', 'Y', 'N', 
-  translate( 'HTML' ), translate( 'Plain Text' ) ) ?>
+ <?php echo print_radio ( 'EMAIL_HTML',
+   array ( 'Y'=> translate( 'HTML' ), 'N'=>translate( 'Plain Text' ) ) ) ?>
 </td></tr>
 
 <tr><td class="tooltip">
  <?php etranslate( 'Event reminders' )?>:</td><td>
- <?php echo print_radio_html ( 'EMAIL_REMINDER' ) ?>
+ <?php echo print_radio ( 'EMAIL_REMINDER' ) ?>
 </td></tr>
 
 <tr><td class="tooltip">
  <?php etranslate( 'Events added to my calendar' )?>:</td><td>
- <?php echo print_radio_html ( 'EMAIL_EVENT_ADDED' ) ?>
+ <?php echo print_radio ( 'EMAIL_EVENT_ADDED' ) ?>
 </td></tr>
 
 <tr><td class="tooltip">
  <?php etranslate( 'Events updated on my calendar' )?>:</td><td>
- <?php echo print_radio_html ( 'EMAIL_EVENT_UPDATED' ) ?>
+ <?php echo print_radio ( 'EMAIL_EVENT_UPDATED' ) ?>
 </td></tr>
 
 <tr><td class="tooltip">
  <?php etranslate( 'Events removed from my calendar' )?>:</td><td>
- <?php echo print_radio_html ( 'EMAIL_EVENT_DELETED' ) ?>
+ <?php echo print_radio ( 'EMAIL_EVENT_DELETED' ) ?>
 </td></tr>
 
 <tr><td class="tooltip">
  <?php etranslate( 'Event rejected by participant' )?>:</td><td>
- <?php echo print_radio_html ( 'EMAIL_EVENT_REJECTED' ) ?>
+ <?php echo print_radio ( 'EMAIL_EVENT_REJECTED' ) ?>
+</td></tr>
+
+<tr><td class="tooltip">
+ <?php etranslate( 'Event that I create' )?>:</td><td>
+ <?php echo print_radio ( 'EMAIL_EVENT_CREATE' ) ?>
 </td></tr>
 </table>
 </div>
@@ -687,16 +690,16 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <table  cellspacing="1" cellpadding="2">
 <?php if ( $SEND_EMAIL == 'Y' ) { ?>
 <tr><td class="tooltip"><?php etranslate( 'Email me event notification' )?>:</td><td>
- <?php echo print_radio_html ( 'EMAIL_ASSISTANT_EVENTS' ) ?>
+ <?php echo print_radio ( 'EMAIL_ASSISTANT_EVENTS' ) ?>
 </td></tr>
 <?php } //end email ?>
 <tr><td class="tooltip"><?php etranslate( 'I want to approve events' )?>:</td><td>
- <?php echo print_radio_html ( 'APPROVE_ASSISTANT_EVENT' ) ?>
+ <?php echo print_radio ( 'APPROVE_ASSISTANT_EVENT' ) ?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip( 'display_byproxy-help' )?>"><?php 
   etranslate( 'Display if created by Assistant' )?>:</td><td>
-  <?php echo print_radio_html ( 'DISPLAY_CREATED_BYPROXY' ) ?>
+  <?php echo print_radio ( 'DISPLAY_CREATED_BYPROXY' ) ?>
 </td></tr>
 </table>
 </div>
@@ -725,7 +728,7 @@ $publish_access =  ( empty  ( $prefarray['USER_REMOTE_ACCESS'] ) ? 0 :
 <?php } 
 if ( $PUBLISH_ENABLED == 'Y' ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip( 'allow-remote-subscriptions-help' )?>"><?php etranslate( 'Allow remote subscriptions' )?>:</td><td>
-  <?php echo print_radio_html ( 'USER_PUBLISH_ENABLED' ) ?>
+  <?php echo print_radio ( 'USER_PUBLISH_ENABLED' ) ?>
 </td></tr>
 <?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip( 'remote-subscriptions-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'URL' )?>:</td>
@@ -743,7 +746,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
  etooltip( 'allow-remote-publishing-help' )?>"><?php 
  etranslate( 'Allow remote publishing' )?>:</td>
   <td>
-  <?php echo print_radio_html ( 'USER_PUBLISH_RW_ENABLED' ) ?>
+  <?php echo print_radio ( 'USER_PUBLISH_RW_ENABLED' ) ?>
 </td></tr>
 <?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip( 'remote-publishing-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'URL' )?>:</td>
@@ -760,7 +763,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip( 'rss-enabled-help' )?>"><?php 
   etranslate( 'Enable RSS feed' )?>:</td>
   <td>
-  <?php echo print_radio_html ( 'USER_RSS_ENABLED' ) ?>
+  <?php echo print_radio ( 'USER_RSS_ENABLED' ) ?>
 </td></tr>
 <?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip( 'rss-feed-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'URL' )?>:</td>
@@ -774,7 +777,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
 
 <tr><td class="tooltipselect" title="<?php etooltip( 'freebusy-enabled-help' )?>"><?php etranslate( 'Enable FreeBusy publishing' )?>:</td>
   <td>
-  <?php echo print_radio_html ( 'FREEBUSY_ENABLED' ) ?>
+  <?php echo print_radio ( 'FREEBUSY_ENABLED' ) ?>
 </td></tr>
 <?php if ( ! empty ( $SERVER_URL ) ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip( 'freebusy-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'URL' )?>:</td>

@@ -555,21 +555,25 @@ echo '
 $extras = get_site_extra_fields ( $id );
 $site_extracnt = count ( $site_extras );
 for ( $i = 0; $i < $site_extracnt; $i++ ) {
+  if ( $site_extras[$i] == 'FIELDSET' ) continue;
   $extra_name = $site_extras[$i][0];
   $extra_type = $site_extras[$i][2];
   $extra_arg1 = $site_extras[$i][3];
   $extra_arg2 = $site_extras[$i][4];
-  if ( ! empty ( $extras[$extra_name]['cal_name'] ) ) {
+  if ( ! empty ( $site_extras[$i][5] ) )
+    $extra_view = $site_extras[$i][5] & EXTRA_DISPLAY_VIEW;
+  if ( ! empty ( $extras[$extra_name]['cal_name'] )  && ! empty ( $extra_view ) ) {
     echo '
       <tr>
         <td class="aligntop bold">' . translate ( $site_extras[$i][1] ) . ':</td>
         <td>';
 
-    if ( $extra_type == EXTRA_URL )
+    if ( $extra_type == EXTRA_URL ) {
+      $target = ( ! empty ( $extra_arg1 ) ? ' target="' . $extra_arg1 . '" ' : '' );
       echo ( strlen ( $extras[$extra_name]['cal_data'] ) ? '<a href="'
-         . $extras[$extra_name]['cal_data'] . '">'
+         . $extras[$extra_name]['cal_data'] . '"' . $target . '>'
          . $extras[$extra_name]['cal_data'] . '</a>' : '' );
-    elseif ( $extra_type == EXTRA_EMAIL )
+     } elseif ( $extra_type == EXTRA_EMAIL )
       echo ( strlen ( $extras[$extra_name]['cal_data'] ) ? '<a href="mailto:'
          . $extras[$extra_name]['cal_data'] . '?subject=' . $subject . '">'
          . $extras[$extra_name]['cal_data'] . '</a>' : '' );
@@ -578,8 +582,11 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
         ? date_to_str ( $extras[$extra_name]['cal_date'] ) : '' );
     elseif ( $extra_type == EXTRA_TEXT || $extra_type == EXTRA_MULTILINETEXT )
       echo nl2br ( $extras[$extra_name]['cal_data'] );
-    elseif ( $extra_type == EXTRA_USER || $extra_type == EXTRA_SELECTLIST )
+    elseif ( $extra_type == EXTRA_USER || $extra_type == EXTRA_SELECTLIST 
+      || $extra_type == EXTRA_CHECKBOX )
       echo $extras[$extra_name]['cal_data'];
+    elseif ( $extra_type == EXTRA_RADIO  )
+      echo $extra_arg1[$extras[$extra_name]['cal_data']];
 
     echo '</td>
       </tr>';
