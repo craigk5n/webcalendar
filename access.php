@@ -236,12 +236,9 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
         }
       }
       if ( $show )
-        echo '
-                <label for="access_' . $order[$i]
-         . '"><input type="checkbox" name="access_' . $order[$i]
-         . '" id="access_' . $order[$i] . '" value="Y" '
-         . ( substr ( $access, $order[$i], 1 ) != 'N' ? $checked : '' ) . '/>'
-         . access_get_function_description ( $order[$i] ) . '</label><br />';
+        echo print_checkbox ( array ( 'access_' . $order[$i], 'Y', 
+          access_get_function_description ( $order[$i] ), 
+          substr ( $access, $order[$i], 1 ) ), 'dito' ) . '<br />';
 
       if ( ( $i + 1 ) % $div == 0 )
         echo '
