@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-30-2006
+# Translation last updated on 12-01-2006
 
 
 ################################################################################
@@ -932,6 +932,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: Repe
 ########################################
 # Page: import_handler.php
 #
+Error deleting palm events from webcalendar.: Error deleting palm events from webcalendar.
 Events from prior import marked as deleted: Events from prior import marked as deleted
 Conflicting events: Conflicting events
 The import file contained no data: The import file contained no data
@@ -1135,8 +1136,8 @@ denotes administrative user: denotes administrative user
 ########################################
 # Page: usersel.php
 #
-No form specified!: No form specified!
-No listid specified!: No listid specified!
+form: form
+listid: listid
 Reset: Reset
 
 ########################################
