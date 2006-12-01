@@ -2215,7 +2215,9 @@ function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0' , $plus_m = '
     $tzArCnt = count ( $tzAr );
     $tzid = $tzAr[3];
     // we may recieve a 2 word tzid
-    if ( $tzArCnt = 5 ) $tzid .= '/' . $tzAr[4];
+    if ( $tzArCnt == 5 ) $tzid .= '/' . $tzAr[4];
+    // and even maybe a 3 word tzid 
+    if ( $tzArCnt == 6 ) $tzid .= '/' . $tzAr[4] . '/' . $tzAr[5]; 
   }
   // Sunbird does not do Timezone right so...
   // We'll just hardcode their GMT timezone def here
