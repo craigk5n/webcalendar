@@ -10,7 +10,7 @@ if ( $CATEGORIES_ENABLED == 'N' ) {
   exit;
 }
 
-$catname = $error = $idStr = '';
+$catname = $error = $idStr = $catIcon = '';
 $catIconStr = translate ( 'Category Icon' );
 $globalStr = translate ( 'Global' );
 $icon_path = 'icons/';
