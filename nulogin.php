@@ -62,10 +62,14 @@ $login = trim ( $login );
 if ( $login != addslashes ( $login ) )
   die_miserable_death ( translate ( 'Illegal characters in login' )
      . ' <tt>' . htmlentities ( $login ) . '</tt>.' );
+
+// Allow proper login using NUC name
+$encoded_login = encode_string ( $login . '|nonuser' );
+
 // set login to expire in 365 days
-SetCookie ( 'webcalendar_session',
-  encode_string ( $login . ' | nonuser' ),
-  ( $remember == 'yes' ? 86400 * 365 + time () : 0 ), $cookie_path );
+SetCookie ( 'webcalendar_session', $encoded_login,
+  ( ! empty ( $remember ) && $remember == 'yes' ? 
+  86400 * 365 + time () : 0 ), $cookie_path );
 
 do_redirect ( $url );
 
