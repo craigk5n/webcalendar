@@ -364,7 +364,7 @@ email-event-deleted: Specifies whether or not to send email notifications when a
 Events removed from my calendar: Events removed from my calendar
 email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Event rejected by participant: Event rejected by participant
-email-event-create: Specifies whether the creator of emails will receive an email
+email-event-create: Specifies whether the creator of entries will receive an email
 Event that I create: Event that I create
 Color options: Color options
 Allow user to customize colors: Allow user to customize colors
