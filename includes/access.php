@@ -64,11 +64,11 @@ define ( 'CAN_DOALL', 511 ); // Can access all types and levels.
     define ( 'ACCESS_PUBLISH', 22 );
     define ( 'ACCESS_ASSISTANTS', 23 );
     define ( 'ACCESS_TRAILER', 24 );
-    define ( 'ACCESS_HELP', 25 ); 
-    define ( 'ACCESS_ANOTHER_CALENDAR', 26 );      
+    define ( 'ACCESS_HELP', 25 );
+    define ( 'ACCESS_ANOTHER_CALENDAR', 26 );
     define ( 'ACCESS_NUMBER_FUNCTIONS', 27 ); // How many function did we define?
     /**#@-*/
-        
+
     // The following pages will be handled differently than the others
     // since they have different uses.  For example, edit_user.php
     // adds a user when the user is an admin.  If the user is not an
@@ -393,7 +393,7 @@ function access_can_access_function ( $function, $user = '' ) {
  * @global bool    Is the currently logged-in user an administrator?
  */
 function access_can_view_page ( $page = '', $user = '' ) {
-  global $access_user, $is_admin, $login, 
+  global $access_user, $is_admin, $login,
     $page_lookup, $page_lookup_ex, $PHP_SELF;
   $page_id = -1;
 
@@ -433,7 +433,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
   $access = ( ! empty ( $login ) && $user == $login && ! empty ( $access_user )
    ? $access_user
    : // User is not the user logged in. Need to load info from db now.
-    $access = access_load_user_functions ( $user ) );
+     access_load_user_functions ( $user ) );
 
   assert ( '! empty ( $access )' );
 
