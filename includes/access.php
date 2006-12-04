@@ -33,7 +33,7 @@ define ( 'PUBLIC_WT', 7 );
 define ( 'CONF_WT', 56 );
 define ( 'PRIVATE_WT', 448 );
 
-define ( 'CAN_DOALL', 511 ); //Can access all types and levels
+define ( 'CAN_DOALL', 511 ); // Can access all types and levels.
 
  /**#@+
      * Constants for use with cal_permissions column in
@@ -66,7 +66,7 @@ define ( 'CAN_DOALL', 511 ); //Can access all types and levels
     define ( 'ACCESS_TRAILER', 24 );
     define ( 'ACCESS_HELP', 25 ); 
     define ( 'ACCESS_ANOTHER_CALENDAR', 26 );      
-    define ( 'ACCESS_NUMBER_FUNCTIONS', 27 ); // how many function did we define?
+    define ( 'ACCESS_NUMBER_FUNCTIONS', 27 ); // How many function did we define?
     /**#@-*/
         
     // The following pages will be handled differently than the others
@@ -104,7 +104,8 @@ define ( 'CAN_DOALL', 511 ); //Can access all types and levels
     $GLOBALS['page_lookup'] = array (
       ACCESS_EVENT_VIEW =>
         '(view_entry.php|select_user.php|purge.php|category*php|doc.php)',
-      ACCESS_EVENT_EDIT => '(entry|list_unapproved|usersel|availability|datesel|catsel|docadd|docdel)',
+      ACCESS_EVENT_EDIT =>
+        '(entry|list_unapproved|usersel|availability|datesel|catsel|docadd|docdel)',
       ACCESS_DAY => 'day.php',
       ACCESS_WEEK => '(week.php|week_details.php)',
       ACCESS_MONTH => 'month.php',
@@ -124,7 +125,8 @@ define ( 'CAN_DOALL', 511 ); //Can access all types and levels
       ACCESS_SYSTEM_SETTINGS => '(admin.php|admin_handler.php|controlpanel.php)',
       ACCESS_IMPORT => '(import.*php|edit_remotes.php|edit_remotes_handler.php)',
       ACCESS_EXPORT => 'export.*php',
-      ACCESS_PUBLISH => '(publish.php|freebusy.php|icalclient.php|rss.php|minical.php|upcoming.php)',
+      ACCESS_PUBLISH =>
+        '(publish.php|freebusy.php|icalclient.php|rss.php|minical.php|upcoming.php)',
       ACCESS_ASSISTANTS => 'assist.*php',
       ACCESS_HELP => 'help_.*php'
     );
@@ -141,25 +143,25 @@ function access_is_enabled () {
 
 /* Return the name of a specific function.
  *
- * @param  int   $function  the function (ACCESS_DAY, etc.)
- * @return string           The text description of the function
+ * @param  int   $function  The function (ACCESS_DAY, etc.).
+ * @return string           The text description of the function.
  */
 function access_get_function_description ( $function ) {
   switch ( $function ) {
     case ACCESS_ACCESS_MANAGEMENT:
-      return translate ( 'User Access Control' );
+      return $translations['User Access Control'];
     case ACCESS_ACCOUNT_INFO:
-      return translate ( 'Account' );
+      return $translations['Account'];
     case ACCESS_ACTIVITY_LOG:
-      return translate ( 'Activity Log' );
+      return $translations['Activity Log'];
     case ACCESS_ADMIN_HOME:
-      return translate ( 'Administrative Tools' );
+      return $translations['Administrative Tools'];
     case ACCESS_ADVANCED_SEARCH:
-      return translate ( 'Advanced Search' );
+      return $translations['Advanced Search'];
     case ACCESS_ANOTHER_CALENDAR:
       return translate ( 'Another User&#39;s Calendar' );
     case ACCESS_ASSISTANTS:
-      return translate ( 'Assistants' );
+      return $translations['Assistants'];
     case ACCESS_CATEGORY_MANAGEMENT:
       return translate ( 'Category Management' );
     case ACCESS_DAY:
@@ -167,33 +169,33 @@ function access_get_function_description ( $function ) {
     case ACCESS_EVENT_EDIT:
       return translate ( 'Edit Event' );
     case ACCESS_EVENT_VIEW:
-      return translate( 'View Event' );
+      return $translations['View Event'];
     case ACCESS_EXPORT:
-      return translate ( 'Export' );
+      return $translations['Export'];
     case ACCESS_HELP:
-      return translate ( 'Help' );
+      return $translations['Help'];
     case ACCESS_IMPORT:
-      return translate ( 'Import' );
+      return $translations['Import'];
     case ACCESS_LAYERS:
-      return translate ( 'Layers' );
+      return $translations['Layers'];
     case ACCESS_MONTH:
       return translate ( 'Month View' );
     case ACCESS_PREFERENCES:
-      return translate ( 'Preferences' );
+      return $translations['Preferences'];
     case ACCESS_PUBLISH:
-      return translate ( 'Subscribe/Publish' );
+      return $translations['Subscribe/Publish'];
     case ACCESS_REPORT:
-      return translate ( 'Reports' );
+      return $translations['Reports'];
     case ACCESS_SEARCH:
-      return translate ( 'Search' );
+      return $translations['Search'];
     case ACCESS_SYSTEM_SETTINGS:
-      return translate ( 'System Settings' );
+      return $translations['System Settings'];
     case ACCESS_TRAILER:
       return translate ( 'Common Trailer' );
     case ACCESS_USER_MANAGEMENT:
       return translate ( 'User Management' );
     case ACCESS_VIEW:
-      return translate ( 'Views' );
+      return $translations['Views'];
     case ACCESS_VIEW_MANAGEMENT:
       return translate ( 'Manage Views' );
     case ACCESS_WEEK:
@@ -201,7 +203,8 @@ function access_get_function_description ( $function ) {
     case ACCESS_YEAR:
       return translate ( 'Year View' );
     default:
-      die_miserable_death ( 'Invalid function id: ' . $function );
+      die_miserable_death ( translate ( 'Invalid function id' ) . ': '
+       . $function );
   }
 }
 
@@ -215,7 +218,7 @@ function access_get_function_description ( $function ) {
  */
 function access_load_user_permissions ( $useCache = true ) {
   global $access_other_cals, $ADMIN_OVERRIDE_UAC, $is_admin;
-  // Don't run this query twice
+  // Don't run this query twice.
   if ( ! empty ( $access_other_cals ) && $useCache == true )
     return $access_other_cals;
 
@@ -427,12 +430,10 @@ function access_can_view_page ( $page = '', $user = '' ) {
 
   // If the specified user is the currently logged in user, then we have already
   // loaded this user's access, stored in the global variable $access_user.
-  $access = '';
-  if ( ! empty ( $login ) && $user == $login && ! empty ( $access_user ) )
-    $access = $access_user;
-  else
-    // User is not the user logged in. Need to load info from db now.
-    $access = access_load_user_functions ( $user );
+  $access = ( ! empty ( $login ) && $user == $login && ! empty ( $access_user )
+   ? $access_user
+   : // User is not the user logged in. Need to load info from db now.
+    $access = access_load_user_functions ( $user ) );
 
   assert ( '! empty ( $access )' );
 
@@ -481,10 +482,8 @@ function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
     $cur_user = $login;
 
   if ( $cur_user == $other_user ) {
-    if ( $cal_can_xxx == 'email' || $cal_can_xxx == 'invite' )
-      return 'Y';
-    else
-      return CAN_DOALL;
+    return ( $cal_can_xxx == 'email' || $cal_can_xxx == 'invite'
+     ? 'Y' : CAN_DOALL );
   }
 
   assert ( '! empty ( $other_user )' );
