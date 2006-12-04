@@ -360,6 +360,19 @@ if ( $readonly == 'Y' || $is_nonuser ) {
  $completed = '';
  $overall_percent =  array();
  
+ //get category if passed in URL as cat_id 
+ $cat_id = getGetValue ( 'cat_id');
+ if ( ! empty ( $cat_id ) ) {
+  $sql = 'SELECT cat_name FROM webcal_categories '
+    . ' WHERE cat_id = ? AND ( cat_owner = ? OR cat_owner IS NULL )';
+  $res = dbi_execute ( $sql, array( $cat_id, $real_user  ) );
+  if ( $res ) {
+    $row = dbi_fetch_row ( $res );
+    $catNames = $row[0];
+    $catList = $cat_id;
+  }
+ }
+
  //reminder settings
  $reminder_offset = ($REMINDER_WITH_DATE =='N' ? $REMINDER_OFFSET:0);
  
