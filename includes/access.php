@@ -147,6 +147,7 @@ function access_is_enabled () {
  * @return string           The text description of the function.
  */
 function access_get_function_description ( $function ) {
+global $translations;
   switch ( $function ) {
     case ACCESS_ACCESS_MANAGEMENT:
       return $translations['User Access Control'];
