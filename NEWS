@@ -11,6 +11,18 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 Version 1.1.2 (?? ??? 2006)
 
   - New Features / Enhancements:
+    = Site Extras
+      + Radio control are now available 
+      + Checkbox controls are now available. 
+      + Multi-Select Select controls are now available. 
+      + Site-Extra fields are now included in emails. 
+      + You can now set where each Site Extra fields show up. 
+        - All 
+        - Email 
+        - View (view_entry) 
+        - Reports 
+        - Reminders 
+        Any combination of the above is possible using bitwise operators.
     = User Interface
       + Added Category Color option
       + Admin can now specify a background image for inclusion into CSS
