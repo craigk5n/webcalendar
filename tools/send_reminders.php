@@ -76,8 +76,8 @@ include $includedir . '/translate.php';
 
 $WebCalendar->initializeSecondPhase ();
 
-$debug = false;// set to true to print debug info...
-$only_testing = false; // just pretend to send -- for debugging
+$debug = false;// Set to true to print debug info...
+$only_testing = false; // Just pretend to send -- for debugging.
 
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
@@ -164,12 +164,12 @@ $enddateTS = $startdateTS + ( $DAYS_IN_ADVANCE * 86400 );
 $startdate = date ( 'Ymd', $startdateTS );
 $enddate = date ( 'Ymd', $enddateTS );
 
-// Now read events all the repeating events (for all users)
+// Now read events all the repeating events (for all users).
 $repeated_events = query_events ( '', true,
   'AND ( webcal_entry_repeats.cal_end >= ' . $startdate
    . ' OR webcal_entry_repeats.cal_end IS NULL ) ' );
 $repcnt = count ( $repeated_events );
-// Read non-repeating events (for all users)
+// Read non-repeating events (for all users).
 if ( $debug )
   echo "Checking for events from date $startdate to date $enddate.<br />\n";
 $events = read_events ( '', $startdateTS, $enddateTS );
@@ -189,7 +189,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.
   $ev = get_entries ( $date );
-  // Keep track of duplicates
+  // Keep track of duplicates.
   $completed_ids = array ();
   $evcnt = count ( $ev );
   for ( $i = 0; $i < $evcnt; $i++ ) {
@@ -203,7 +203,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   // Get tasks for this date.
   // A task will be included one time for each participant.
   $tks = get_tasks ( $date );
-  // Keep track of duplicates
+  // Keep track of duplicates.
   $completed_ids = array ();
   $tkscnt = count ( $tks );
   for ( $i = 0; $i < $tkscnt; $i++ ) {
@@ -216,7 +216,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
       $tks[$i]->getDueDateTimeTS (), $date );
   }
   $is_task = false;
-  // Get repeating events...tasks are not included at this time
+  // Get repeating events...tasks are not included at this time.
   $rep = get_repeating_entries ( '', $date );
   $repcnt = count ( $rep );
   for ( $i = 0; $i < $repcnt; $i++ ) {
@@ -250,7 +250,7 @@ function send_reminder ( $id, $event_date ) {
 
   // get participants first...
   $res = dbi_execute ( 'SELECT cal_login, cal_percent FROM webcal_entry_user
-    WHERE cal_id = ? AND cal_status IN ( "A","W" ) ORDER BY cal_login',
+    WHERE cal_id = ? AND cal_status IN ( \'A\',\'W\' ) ORDER BY cal_login',
     array ( $id ) );
 
   if ( $res ) {
@@ -260,7 +260,7 @@ function send_reminder ( $id, $event_date ) {
     }
   }
   $partcnt = count ( $participants );
-  // get external participants
+  // Get external participants.
   if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' && !
       empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == 'Y' ) {
     $res = dbi_execute ( 'SELECT cal_fullname, cal_email
@@ -281,7 +281,7 @@ function send_reminder ( $id, $event_date ) {
   }
 
 
-  // get event details
+  // Get event details.
   $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
     cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, cal_name,
     cal_description, cal_due_date, cal_due_time FROM webcal_entry
@@ -298,7 +298,7 @@ function send_reminder ( $id, $event_date ) {
     return;
   }
 
-  // send mail. we send one user at a time so that we can switch
+  // send mail. We send one user at a time so that we can switch
   // languages between users if needed (as well as html vs plain text).
   $mailusers = $recipients = array ();
   if ( isset ( $single_user ) && $single_user == 'Y' ) {
@@ -521,8 +521,8 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
     $repeats = $reminder['repeats'];
     $lastsent = $reminder['last_sent'];
     $related = $reminder['related'];
-    // if we are working with a repeat or overdue task, and we have sent all the
-    // reminders for the basic event, then reset the counter to 0
+    // If we are working with a repeat or overdue task, and we have sent all the
+    // reminders for the basic event, then reset the counter to 0.
     if ( ! empty ( $new_date ) ) {
       if ( $times_sent == $repeats + 1 ) {
         if ( $is_task == false ||
@@ -539,19 +539,19 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
         $id, $name, gmdate ( 'Ymd', $start ), gmdate ( 'H:i:s', $start ) );
 
 
-    // it is pointless to send reminders after this time!
+    // It is pointless to send reminders after this time!
     $pointless = $end;
-    if ( ! empty ( $reminder['date'] ) ) { // we're using a date
+    if ( ! empty ( $reminder['date'] ) ) // We're using a date.
       $remind_time = $reminder['timestamp'];
-    } else { // we're using offsets
-      $offset = $reminder['offset'] * 60; //convert to seconds
-      if ( $related == 'S' ) { // relative to start
+    else { // We're using offsets.
+      $offset = $reminder['offset'] * 60; // Convert to seconds.
+      if ( $related == 'S' ) { // Relative to start.
         $offset_msg = ( $reminder['before'] == 'Y'
           ? '  Mins Before Start: ' : '  Mins After Start: ' )
          . $reminder['offset'];
         $remind_time = ( $reminder['before'] == 'Y'
           ? $start - $offset : $start + $offset );
-      } else { // relative to end/due
+      } else { // Relative to end/due.
         $offset_msg = ( $reminder['before'] == 'Y'
           ? '  Mins Before End: ': '  Mins After End:' ) . $reminder['offset'];
         $remind_time = ( $reminder['before'] == 'Y'
@@ -559,7 +559,7 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
         $pointless = ( $reminder['before'] == 'Y' ? $end : $end + $offset );
       }
     }
-    // factor in repeats if set
+    // Factor in repeats if set.
     if ( $repeats > 0 && $times_sent <= $repeats )
       $remind_time += ( $reminder['duration'] * 60 * $times_sent );
 
