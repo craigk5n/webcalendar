@@ -128,6 +128,9 @@ if ( $is_nonuser_admin ) {
         access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) ) {
     $names[] = translate ( 'Activity Log' );
     $links[] = 'activity_log.php';
+
+    $names[] = translate ( 'System Log' );
+    $links[] = 'activity_log.php?system=1';
   }
 
   if ( $is_admin && ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) {
