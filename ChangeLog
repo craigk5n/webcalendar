@@ -1,6 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
- - Fixed bug [ 1600208 ] send_reminders.php and postgresql
+ - Finished fixing bug [ 1600208 ] send_reminders.php and postgresql
  - Implemented RFE [ 1502773 ] Creator emails requested
  - Implemented RFE [ 1097294 ] Allow 'site_extra' fields to be included in emails
  - Implemented RFE [ 886520 ] Support for multiple selections in site_extras
