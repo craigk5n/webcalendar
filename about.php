@@ -2,19 +2,17 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
-$fullname = translate ( 'About' );
-$creditStr = translate ( 'Credits' );
 $credits = getPostValue ( 'Credits' );
 $data = '';
 
 if ( ! empty ( $credits ) ) {
   // Get Names from AUTHORS file
-  if ( $fd = @fopen( 'AUTHORS', 'r' ) ) {
+  if ( $fd = @fopen ( 'AUTHORS', 'r' ) ) {
     // Read in contents of entire file first
-    while ( !feof( $fd ) && empty( $error ) ) {
-      $data .= fgets( $fd, 4096 );
+    while ( ! feof ( $fd ) && empty ( $error ) ) {
+      $data .= fgets ( $fd, 4096 );
     }
-    fclose( $fd );
+    fclose ( $fd );
   }
   // $data = unhtmlentities ( $data );
   $data = preg_replace ( "/<.+>+/", '', $data );
@@ -22,16 +20,17 @@ if ( ! empty ( $credits ) ) {
   $data = preg_replace ( '/\s\s+/', '&nbsp;&nbsp;', $data );
   $data = preg_replace ( '/\n/', '<br />', $data );
 }
+
 $version = '<a title="' . $GLOBALS['PROGRAM_NAME'] . '" '
  . 'id="programname" href="' . $GLOBALS['PROGRAM_URL'] . '" target="_blank">'
  . $GLOBALS['PROGRAM_NAME'] . "</a>\n";
 
-print_header( '', '', '', true, false, true );
+print_header ( '', '', '', true, false, true );
 echo '
-    <div align="left" style="margin-left:4px; position:absolute; bottom:0" >';
+    <div align="left" style="margin-left: 4px; position: absolute; bottom: 0" >';
 if ( empty ( $credits ) )
   echo '
-      <h2 style="margin:0">' . translate ( 'Title' ) . '</h2>
+      <h2 style="margin: 0">' . translate ( 'Title' ) . '</h2>
       <p>' . translate ( 'version' ) . ' ' . $PROGRAM_VERSION . '</p>
       <p>' . $PROGRAM_DATE . '</p>
       <p>&nbsp;</p>
@@ -55,13 +54,13 @@ else {
           cross_scroll=document.getElementById("scroller");
           cross_scroll.innerHTML=scrollcontent;
           actualH=cross_scroll.offsetHeight;
-          lefttime=setInterval("scrollMe()",30);
+          lefttime=setInterval("scrollMe ()",30);
         }
 
         window.onload=populate;
 
         function scrollMe(){
-          if (parseInt(cross_scroll.style.top)>(actualH*(-1)+8))
+          if (parseInt (cross_scroll.style.top)>(actualH* (-1)+8))
             cross_scroll.style.top=parseInt(cross_scroll.style.top)-copyS+"px";
           else
             cross_scroll.style.top=parseInt(scrollH)+8+"px";
@@ -78,13 +77,14 @@ else {
 
 echo '
       <hr />
-      <div align="center" style="margin: 10px; ">
+      <div align="center" style="margin: 10px;">
         <form action="about.php" name="aboutform" method="post">
           <input type="submit" name=' . ( empty ( $credits )
-  ? '"Credits" value="' . $creditStr : '"About" value="<< ' . $fullname )
+  ? '"Credits" value="' . translate ( 'Credits' )
+  : '"About" value="<< ' . translate ( 'About' ) )
  . '" />' . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input type="button" name="ok" value="' . translate ( 'Ok' )
- . '" onclick="window.close()" />
+ . '" onclick="window.close ()" />
         </form>
       </div>
     </div>
