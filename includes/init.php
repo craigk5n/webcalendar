@@ -291,11 +291,10 @@ function print_menu_dates ( $menu = false ) {
   global $cat_id, $CATEGORIES_ENABLED, $DATE_FORMAT_MD, $DATE_FORMAT_MY,
   $DISPLAY_WEEKENDS, $login, $thismonth, $thisyear, $user, $WEEK_START;
   $goStr = translate ( 'Go' );
-  $ret = '';
+  $ret = $urlArgs = '';
   $selected = ' selected="selected" ';
   if ( access_can_view_page ( 'month.php' ) ) {
     $monthUrl = 'month.php';
-    $urlArgs = '';
   } else {
     $monthUrl = $GLOBALS['STARTVIEW'];
     if ( preg_match ( "/[?&](\S+)=(\S+)/", $monthUrl, $match ) ) {
