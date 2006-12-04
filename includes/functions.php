@@ -3161,7 +3161,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
  * @param string $user Username
  * @param bool   $ssi  Is this being called from week_ssi.php?
  */
-function print_date_entries ( $date, $user, $ssi ) {
+function print_date_entries ( $date, $user, $ssi=false ) {
   global $events, $readonly, $is_admin, $login, $tasks, $DISPLAY_UNAPPROVED,
     $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD, $cat_id, $is_nonuser,
     $DISPLAY_TASKS_IN_GRID, $WEEK_START;
@@ -4009,41 +4009,25 @@ function print_day_at_a_glance ( $date, $user, $can_add=0 ) {
     $time_h = (int) ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
     $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
+    $addIcon = ( $can_add ? html_for_add_icon ( $date, $time_h, $time_m, $user ) : '' );
     $ret .= "<tr>\n<th class=\"row\">" . $time . "</th>\n";
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $hour_arr[$i] ) ) {
-        $ret .= '<td class="hasevents">';
-        if ( $can_add )
-          $ret .= html_for_add_icon ( $date, $time_h, $time_m, $user );
-        $ret .= "$hour_arr[$i]</td>\n";
+        $ret .= '<td class="hasevents">' . $addIcon . $hour_arr[$i] . "</td>\n";
       }
       $rowspan--;
     } else {
       if ( empty ( $hour_arr[$i] ) ) {
-        $ret .= "<td $class>";
-        if ( $can_add ) {
-          $ret .= html_for_add_icon ( $date, $time_h, $time_m, $user ) . '</td>';
-        } else {
-          $ret .= "&nbsp;</td>";
-        }
+        $ret .= "<td $class>" . ( $can_add ? $addIcon : '&nbsp;' ) .'</td>';
       } else {
         if ( empty ( $rowspan_arr[$i] ) )
           $rowspan = '';
         else
           $rowspan = $rowspan_arr[$i];
-        if ( $rowspan > 1 ) {
-          $ret .= "<td rowspan=\"$rowspan\" class=\"hasevents\">";
-          if ( $can_add )
-            $ret .= html_for_add_icon ( $date, $time_h, $time_m, $user );
-          $ret .= "$hour_arr[$i]</td>\n";
-        } else {
-          $ret .= '<td class="hasevents">';
-          if ( $can_add )
-            $ret .= html_for_add_icon ( $date, $time_h, $time_m, $user );
-          $ret .= "$hour_arr[$i]</td>\n";
-        }
+        $ret .= '<td ' . ( $rowspan > 1 ? 'rowspan="' . $rowspan . '"' : '' ) 
+          . 'class="hasevents">' . $addIcon . $hour_arr[$i] . "</td>\n";
       }
     }
     $ret .= "</tr>\n";    
