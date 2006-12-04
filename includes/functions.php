@@ -363,7 +363,7 @@ function do_debug ( $msg ) {
  * @return string URL of the user's preferred view
  */
 function get_preferred_view ( $indate='', $args='' ) {
-  global $STARTVIEW, $thisdate, $ALLOW_VIEW_OTHER, $is_admin;
+  global $STARTVIEW, $thisdate, $ALLOW_VIEW_OTHER, $is_admin, $views;
     
   //we want user's to set  their pref on first login
   if ( empty ( $STARTVIEW ) ) return false;
