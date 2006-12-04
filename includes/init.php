@@ -91,7 +91,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   global $BGCOLOR, $browser, $CUSTOM_HEADER, $CUSTOM_SCRIPT, $charset,
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG, $PHP_SELF,
-  $POPUP_FG, $REQUEST_URI, $self, $show_printer, $TABLECELLFG, $TEXTCOLOR,
+  $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR,
   $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
   $lang = $ret = '';
   // Determine the page direction (left-to-right or right-to-left)
@@ -190,7 +190,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // including this as a normal stylesheet so they can see how it will look
   // when printed. This maintains backwards-compatibility for browsers that
   // don't support media="print" stylesheets
-  if ( ! empty ( $show_printer ) )
+  if ( ! empty ( $friendly ) )
     $ret .= '
     <link rel="stylesheet" type="text/css"'
      . ( empty ( $friendly ) ? ' media="print"' : '' )
