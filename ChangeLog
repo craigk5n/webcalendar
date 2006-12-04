@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1608533 ] unable to use 'System Log' if not using 'top-menue'
  - Finished fixing bug [ 1600208 ] send_reminders.php and postgresql
  - Implemented RFE [ 1502773 ] Creator emails requested
  - Implemented RFE [ 1097294 ] Allow 'site_extra' fields to be included in emails
