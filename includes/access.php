@@ -35,101 +35,96 @@ define ( 'PRIVATE_WT', 448 );
 
 define ( 'CAN_DOALL', 511 ); // Can access all types and levels.
 
- /**#@+
-     * Constants for use with cal_permissions column in
-     * webcal_access_function table.
-     */
-    define ( 'ACCESS_EVENT_VIEW', 0 );
-    define ( 'ACCESS_EVENT_EDIT', 1 );
-    define ( 'ACCESS_DAY', 2 );
-    define ( 'ACCESS_WEEK', 3 );
-    define ( 'ACCESS_MONTH', 4 );
-    define ( 'ACCESS_YEAR', 5 );
-    define ( 'ACCESS_ADMIN_HOME', 6 );
-    define ( 'ACCESS_REPORT', 7 );
-    define ( 'ACCESS_VIEW', 8 );
-    define ( 'ACCESS_VIEW_MANAGEMENT', 9 );
-    define ( 'ACCESS_CATEGORY_MANAGEMENT', 10 );
-    define ( 'ACCESS_LAYERS', 11 );
-    define ( 'ACCESS_SEARCH', 12 );
-    define ( 'ACCESS_ADVANCED_SEARCH', 13 );
-    define ( 'ACCESS_ACTIVITY_LOG', 14 );
-    define ( 'ACCESS_USER_MANAGEMENT', 15 );
-    define ( 'ACCESS_ACCOUNT_INFO', 16 );
-    define ( 'ACCESS_ACCESS_MANAGEMENT', 17);
-    define ( 'ACCESS_PREFERENCES', 18 );
-    define ( 'ACCESS_SYSTEM_SETTINGS', 19 );
-    define ( 'ACCESS_IMPORT', 20 );
-    define ( 'ACCESS_EXPORT', 21 );
-    define ( 'ACCESS_PUBLISH', 22 );
-    define ( 'ACCESS_ASSISTANTS', 23 );
-    define ( 'ACCESS_TRAILER', 24 );
-    define ( 'ACCESS_HELP', 25 );
-    define ( 'ACCESS_ANOTHER_CALENDAR', 26 );
-    define ( 'ACCESS_NUMBER_FUNCTIONS', 27 ); // How many function did we define?
-    /**#@-*/
+/*#@+
+ * Constants for use with cal_permissions column in webcal_access_function table.
+ */
+define ( 'ACCESS_EVENT_VIEW', 0 );
+define ( 'ACCESS_EVENT_EDIT', 1 );
+define ( 'ACCESS_DAY', 2 );
+define ( 'ACCESS_WEEK', 3 );
+define ( 'ACCESS_MONTH', 4 );
+define ( 'ACCESS_YEAR', 5 );
+define ( 'ACCESS_ADMIN_HOME', 6 );
+define ( 'ACCESS_REPORT', 7 );
+define ( 'ACCESS_VIEW', 8 );
+define ( 'ACCESS_VIEW_MANAGEMENT', 9 );
+define ( 'ACCESS_CATEGORY_MANAGEMENT', 10 );
+define ( 'ACCESS_LAYERS', 11 );
+define ( 'ACCESS_SEARCH', 12 );
+define ( 'ACCESS_ADVANCED_SEARCH', 13 );
+define ( 'ACCESS_ACTIVITY_LOG', 14 );
+define ( 'ACCESS_USER_MANAGEMENT', 15 );
+define ( 'ACCESS_ACCOUNT_INFO', 16 );
+define ( 'ACCESS_ACCESS_MANAGEMENT', 17 );
+define ( 'ACCESS_PREFERENCES', 18 );
+define ( 'ACCESS_SYSTEM_SETTINGS', 19 );
+define ( 'ACCESS_IMPORT', 20 );
+define ( 'ACCESS_EXPORT', 21 );
+define ( 'ACCESS_PUBLISH', 22 );
+define ( 'ACCESS_ASSISTANTS', 23 );
+define ( 'ACCESS_TRAILER', 24 );
+define ( 'ACCESS_HELP', 25 );
+define ( 'ACCESS_ANOTHER_CALENDAR', 26 );
+define ( 'ACCESS_NUMBER_FUNCTIONS', 27 ); // How many function did we define?
+/*#@-*/
 
-    // The following pages will be handled differently than the others
-    // since they have different uses.  For example, edit_user.php
-    // adds a user when the user is an admin.  If the user is not an
-    // admin, it updates account info. Register is just for new users.
-    // Most of the pages have dual uses, so we will have access checks within
-    // these files.
-    $GLOBALS['page_lookup_ex'] = array (
-      'about.php' => 1,
-      'colors.php' => 1,
-      'icons.php' => 1,
-      'index.php' => 1,
-      'edit_template.php' => 1,
-      'edit_user.php' => 1,
-      'edit_user_handler.php' => 1,
-      'register.php' => 1,
-      'nulogin.php' =>1,
-      'css_cacher.php' =>1,
-      'js_cacher.php' =>1
-    );
+// The following pages will be handled differently than the others since they
+// have different uses.  For example, edit_user.php adds a user when the user is
+// an admin.  If the user is not an admin, it updates account info. Register is
+// just for new users. Most of the pages have dual uses, so we will have access
+// checks within these files.
+$GLOBALS['page_lookup_ex'] = array (
+  'about.php' => 1,
+  'colors.php' => 1,
+  'css_cacher.php' => 1,
+  'edit_template.php' => 1,
+  'edit_user.php' => 1,
+  'edit_user_handler.php' => 1,
+  'icons.php' => 1,
+  'index.php' => 1,
+  'js_cacher.php' => 1,
+  'nulogin.php' => 1,
+  'register.php' => 1
+  );
 
-    /**
-     * The following array provides a way to convert a page filename into
-     * a numeric $ACCESS_XXX number.
-     * The array key is a regular expression.  If the page matches the
-     * regular expression, then it will use the corresponding access id.
-     * There are some pages that have more than one use (edit_template.php
-     * is used for editing a report and editing the custom header).  These
-     * pages will be handled differently and are listed in
-     * the $page_lookup_ex[] array.
-     * @global array $GLOBAL['page_lookup']
-     * @name $page_lookup
-     */
-    $GLOBALS['page_lookup'] = array (
-      ACCESS_EVENT_VIEW =>
-        '(view_entry.php|select_user.php|purge.php|category*php|doc.php)',
-      ACCESS_EVENT_EDIT =>
-        '(entry|list_unapproved|usersel|availability|datesel|catsel|docadd|docdel)',
-      ACCESS_DAY => 'day.php',
-      ACCESS_WEEK => '(week.php|week_details.php)',
-      ACCESS_MONTH => 'month.php',
-      ACCESS_YEAR => 'year.php',
-      ACCESS_ADMIN_HOME => '(adminhome.php|users.php)',
-      ACCESS_REPORT => 'report',
-      ACCESS_VIEW => 'view_..php',
-      ACCESS_VIEW_MANAGEMENT => '(views.php|views_edit)',
-      ACCESS_CATEGORY_MANAGEMENT => 'category.*php',
-      ACCESS_LAYERS => 'layer',
-      ACCESS_SEARCH => 'search',
-      ACCESS_ACTIVITY_LOG => 'activity_log.php',
-      ACCESS_USER_MANAGEMENT => '(edit.*user.*.php|nonusers.*php|group.*php)',
-      ACCESS_ACCOUNT_INFO => 'XYZXYZ_special_case',
-      ACCESS_ACCESS_MANAGEMENT => '(access.*php)',
-      ACCESS_PREFERENCES => 'pref.*php',
-      ACCESS_SYSTEM_SETTINGS => '(admin.php|admin_handler.php|controlpanel.php)',
-      ACCESS_IMPORT => '(import.*php|edit_remotes.php|edit_remotes_handler.php)',
-      ACCESS_EXPORT => 'export.*php',
-      ACCESS_PUBLISH =>
-        '(publish.php|freebusy.php|icalclient.php|rss.php|minical.php|upcoming.php)',
-      ACCESS_ASSISTANTS => 'assist.*php',
-      ACCESS_HELP => 'help_.*php'
-    );
+/* The following array provides a way to convert a page filename into a numeric
+ * $ACCESS_XXX number.  The array key is a regular expression.  If the page
+ * matches the regular expression, then it will use the corresponding access id.
+ * There are some pages that have more than one use (edit_template.php is used
+ * for editing a report and editing the custom header).  These pages will be
+ * handled differently and are listed in the $page_lookup_ex[] array.
+ * @global array $GLOBAL['page_lookup']
+ * @name $page_lookup
+ */
+$GLOBALS['page_lookup'] = array (
+  ACCESS_EVENT_VIEW =>
+  ' (view_entry.php|select_user.php|purge.php|category*php|doc.php)',
+  ACCESS_EVENT_EDIT =>
+  ' (entry|list_unapproved|usersel|availability|datesel|catsel|docadd|docdel)',
+  ACCESS_DAY => 'day.php',
+  ACCESS_WEEK => ' (week.php|week_details.php)',
+  ACCESS_MONTH => 'month.php',
+  ACCESS_YEAR => 'year.php',
+  ACCESS_ADMIN_HOME => ' (adminhome.php|users.php)',
+  ACCESS_REPORT => 'report',
+  ACCESS_VIEW => 'view_..php',
+  ACCESS_VIEW_MANAGEMENT => ' (views.php|views_edit)',
+  ACCESS_CATEGORY_MANAGEMENT => 'category.*php',
+  ACCESS_LAYERS => 'layer',
+  ACCESS_SEARCH => 'search',
+  ACCESS_ACTIVITY_LOG => 'activity_log.php',
+  ACCESS_USER_MANAGEMENT => ' (edit.*user.*.php|nonusers.*php|group.*php)',
+  ACCESS_ACCOUNT_INFO => 'XYZXYZ_special_case',
+  ACCESS_ACCESS_MANAGEMENT => ' (access.*php)',
+  ACCESS_PREFERENCES => 'pref.*php',
+  ACCESS_SYSTEM_SETTINGS => ' (admin.php|admin_handler.php|controlpanel.php)',
+  ACCESS_IMPORT => ' (import.*php|edit_remotes.php|edit_remotes_handler.php)',
+  ACCESS_EXPORT => 'export.*php',
+  ACCESS_PUBLISH =>
+  ' (publish.php|freebusy.php|icalclient.php|rss.php|minical.php|upcoming.php)',
+  ACCESS_ASSISTANTS => 'assist.*php',
+  ACCESS_HELP => 'help_.*php'
+  );
 
 /* Is user access control enabled?
  *
@@ -147,7 +142,8 @@ function access_is_enabled () {
  * @return string           The text description of the function.
  */
 function access_get_function_description ( $function ) {
-global $translations;
+  global $translations;
+
   switch ( $function ) {
     case ACCESS_ACCESS_MANAGEMENT:
       return $translations['User Access Control'];
@@ -205,7 +201,7 @@ global $translations;
       return translate ( 'Year View' );
     default:
       die_miserable_death ( translate ( 'Invalid function id' ) . ': '
-       . $function );
+         . $function );
   }
 }
 
@@ -219,6 +215,7 @@ global $translations;
  */
 function access_load_user_permissions ( $useCache = true ) {
   global $access_other_cals, $ADMIN_OVERRIDE_UAC, $is_admin;
+
   // Don't run this query twice.
   if ( ! empty ( $access_other_cals ) && $useCache == true )
     return $access_other_cals;
@@ -259,6 +256,7 @@ function access_load_user_permissions ( $useCache = true ) {
  */
 function access_get_viewable_users ( $user ) {
   global $access_other_cals, $login;
+
   $ret = array ();
 
   if ( empty ( $user ) )
@@ -266,8 +264,9 @@ function access_get_viewable_users ( $user ) {
 
   if ( empty ( $access_other_cals ) )
     access_load_user_permissions ();
+
   for ( $i = 0, $cnt = count ( $access_other_cals ); $i < $cnt; $i++ ) {
-    if ( preg_match ( "/" . $user . "\.(\S+)/", $access_other_cals[$i],
+    if ( preg_match ( "/" . $user . "\. (\S+)/", $access_other_cals[$i],
         $matches ) )
       $ret[] = $matches[1];
   }
@@ -293,28 +292,26 @@ function access_load_user_functions ( $user ) {
     return $permissions[$user];
 
   $ret = '';
-  $rets = array();
+  $rets = array ();
   $users = array ( $user, '__default__' );
+
   for ( $i = 0, $cnt = count ( $users ); $i < $cnt && empty ( $ret ); $i++ ) {
     $res = dbi_execute ( 'SELECT cal_permissions FROM webcal_access_function
-      WHERE cal_login = ?', array( $users[$i] ) );
+      WHERE cal_login = ?', array ( $users[$i] ) );
     assert ( '$res' );
     if ( $row = dbi_fetch_row ( $res ) )
       $rets[$users[$i]] = $row[0];
 
     dbi_free_result ( $res );
   }
-
   // If still no setting found, then assume access to everything
   // if an admin user, otherwise access to all non-admin functions.
-
   if ( ! empty ( $rets[$user] ) )
     $ret = $rets[$user];
   else
-  if ( empty ( $rets[$user] ) && ! empty ( $rets['__default__'] ) )
+  if ( ! empty ( $rets['__default__'] ) )
     $ret = $rets['__default__'];
-  else
-  if ( empty ( $rets[$user] ) ) {
+  else {
     for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
       $ret .= get_default_function_access ( $i, $user );
     }
@@ -369,8 +366,9 @@ function access_can_access_function ( $function, $user = '' ) {
   assert ( 'isset ( $function )' );
 
   $access = access_load_user_functions ( $user );
-  //echo $function . ' ' . $access . '<br>';
+  // echo $function . ' ' . $access . '<br>';
   $yesno = substr ( $access, $function, 1 );
+
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $function, $user );
   // echo "yesno = $yesno <br />\n";
@@ -382,20 +380,22 @@ function access_can_access_function ( $function, $user = '' ) {
 /* Check to see if a user can access the specified page
  * (or the current page if no page is specified).
  *
- * @param string  $page  Page to check access to
- * @param string  $user  User login
+ * @param string  $page  Page to check access to.
+ * @param string  $user  User login.
  *
- * @return bool True if user can access the page
+ * @return bool True if user can access the page.
  *
- * @global string  The page currently being viewed by the user.
- * @global string  The username of the currently logged-in user.
- * @global string
- * @global string
- * @global bool    Is the currently logged-in user an administrator?
+ * @global string  $access_user     The user we're trying to access.
+ * @global string  $PHP_SELF        The page currently being viewed by the user.
+ * @global string  $login           The username of the currently logged-in user.
+ * @global array   $page_lookup     Rules for access.
+ * @global array   $page_lookup_ex  Exceptions to our rules.
+ * @global bool    $is_admin        Is the currently logged-in user an administrator?
  */
 function access_can_view_page ( $page = '', $user = '' ) {
   global $access_user, $is_admin, $login,
-    $page_lookup, $page_lookup_ex, $PHP_SELF;
+  $page_lookup, $page_lookup_ex, $PHP_SELF;
+
   $page_id = -1;
 
   if ( ! access_is_enabled () )
@@ -412,12 +412,12 @@ function access_can_view_page ( $page = '', $user = '' ) {
   assert ( '! empty ( $page )' );
 
   $page = basename ( $page );
-  // handle special cases for publish.php and freebusy.php
+  // Handle special cases for publish.php and freebusy.php.
   if ( substr ( $page, -3 ) == 'ics' )
     $page = 'publish.php';
   if ( substr ( $page, -3 ) == 'ifb' )
     $page = 'freebusy.php';
-  // First, check list of exceptions to our rules
+  // First, check list of exceptions to our rules.
   if ( ! empty ( $page_lookup_ex[$page] ) )
     return true;
 
@@ -432,9 +432,9 @@ function access_can_view_page ( $page = '', $user = '' ) {
   // If the specified user is the currently logged in user, then we have already
   // loaded this user's access, stored in the global variable $access_user.
   $access = ( ! empty ( $login ) && $user == $login && ! empty ( $access_user )
-   ? $access_user
-   : // User is not the user logged in. Need to load info from db now.
-     access_load_user_functions ( $user ) );
+    ? $access_user
+    : // User is not the user logged in. Need to load info from db now.
+    access_load_user_functions ( $user ) );
 
   assert ( '! empty ( $access )' );
 
@@ -443,7 +443,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
   assert ( '$page_id >= 0' );
 
   $yesno = substr ( $access, $page_id, 1 );
-  //echo $page . '  ' . $page_id . ' ' . $access . '<br>';
+  // echo $page . '  ' . $page_id . ' ' . $access . '<br>';
   // No setting found. Use default values.
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $page_id, $user );
@@ -458,6 +458,7 @@ function get_default_function_access ( $page_id, $user ) {
   global $user_is_admin;
 
   user_load_variables ( $user, 'user_' );
+
   switch ( $page_id ) {
     case ACCESS_ACTIVITY_LOG:
     case ACCESS_ADMIN_HOME:
@@ -474,8 +475,8 @@ function get_default_function_access ( $page_id, $user ) {
 function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
   $type = '', $access = '' ) {
   global $access_other_cals, $access_users, $login;
-  $ret = 0;
-  $type_wt = $access_wt = 0;
+
+  $access_wt = $ret = $type_wt = 0;
   if ( empty ( $cur_user ) && empty ( $login ) )
     $cur_user = '__public__';
 
@@ -484,7 +485,7 @@ function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
 
   if ( $cur_user == $other_user ) {
     return ( $cal_can_xxx == 'email' || $cal_can_xxx == 'invite'
-     ? 'Y' : CAN_DOALL );
+      ? 'Y' : CAN_DOALL );
   }
 
   assert ( '! empty ( $other_user )' );
@@ -494,7 +495,7 @@ function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
     access_load_user_permissions ();
 
   $key1 = $cur_user . '.' . $other_user;
-  $key2 = $cur_user .'.__default__';
+  $key2 = $cur_user . '.__default__';
   $key3 = '__default__.' . $other_user;
   $key4 = '__default__.__default__';
 
@@ -510,7 +511,7 @@ function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
   if ( isset ( $access_other_cals[$key4][$cal_can_xxx] ) )
     $ret = $access_other_cals[$key4][$cal_can_xxx];
 
-  // check type and access levels
+  // Check type and access levels.
   if ( ! empty ( $access ) && ! empty ( $type ) ) {
     if ( $access == 'C' )
       $access_wt = CONF_WT;
@@ -526,7 +527,7 @@ function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
     if ( $type == 'T' || $type == 'N' )
       $type_wt = TASK_WT;
 
-    $total_wt = $type_wt &$access_wt;
+    $total_wt = $type_wt & $access_wt;
     $ret = ( $ret &$total_wt ? $ret : 0 );
   }
 
