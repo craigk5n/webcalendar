@@ -97,31 +97,28 @@ $GLOBALS['page_lookup_ex'] = array (
  * @name $page_lookup
  */
 $GLOBALS['page_lookup'] = array (
-  ACCESS_EVENT_VIEW =>
-  ' (view_entry.php|select_user.php|purge.php|category*php|doc.php)',
-  ACCESS_EVENT_EDIT =>
-  ' (entry|list_unapproved|usersel|availability|datesel|catsel|docadd|docdel)',
+  ACCESS_EVENT_VIEW =>'(view_entry.php|select_user.php|purge.php|category*php|doc.php)',
+  ACCESS_EVENT_EDIT =>'(entry|list_unapproved|usersel|availability|datesel|catsel|docadd|docdel)',
   ACCESS_DAY => 'day.php',
-  ACCESS_WEEK => ' (week.php|week_details.php)',
+  ACCESS_WEEK => '(week.php|week_details.php)',
   ACCESS_MONTH => 'month.php',
   ACCESS_YEAR => 'year.php',
-  ACCESS_ADMIN_HOME => ' (adminhome.php|users.php)',
+  ACCESS_ADMIN_HOME => '(adminhome.php|users.php)',
   ACCESS_REPORT => 'report',
   ACCESS_VIEW => 'view_..php',
-  ACCESS_VIEW_MANAGEMENT => ' (views.php|views_edit)',
+  ACCESS_VIEW_MANAGEMENT => '(views.php|views_edit)',
   ACCESS_CATEGORY_MANAGEMENT => 'category.*php',
   ACCESS_LAYERS => 'layer',
   ACCESS_SEARCH => 'search',
   ACCESS_ACTIVITY_LOG => 'activity_log.php',
-  ACCESS_USER_MANAGEMENT => ' (edit.*user.*.php|nonusers.*php|group.*php)',
+  ACCESS_USER_MANAGEMENT => '(edit.*user.*.php|nonusers.*php|group.*php)',
   ACCESS_ACCOUNT_INFO => 'XYZXYZ_special_case',
-  ACCESS_ACCESS_MANAGEMENT => ' (access.*php)',
+  ACCESS_ACCESS_MANAGEMENT => '(access.*php)',
   ACCESS_PREFERENCES => 'pref.*php',
-  ACCESS_SYSTEM_SETTINGS => ' (admin.php|admin_handler.php|controlpanel.php)',
-  ACCESS_IMPORT => ' (import.*php|edit_remotes.php|edit_remotes_handler.php)',
+  ACCESS_SYSTEM_SETTINGS => '(admin.php|admin_handler.php|controlpanel.php)',
+  ACCESS_IMPORT => '(import.*php|edit_remotes.php|edit_remotes_handler.php)',
   ACCESS_EXPORT => 'export.*php',
-  ACCESS_PUBLISH =>
-  ' (publish.php|freebusy.php|icalclient.php|rss.php|minical.php|upcoming.php)',
+  ACCESS_PUBLISH =>'(publish.php|freebusy.php|icalclient.php|rss.php|minical.php|upcoming.php)',
   ACCESS_ASSISTANTS => 'assist.*php',
   ACCESS_HELP => 'help_.*php'
   );
@@ -420,8 +417,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
   // First, check list of exceptions to our rules.
   if ( ! empty ( $page_lookup_ex[$page] ) )
     return true;
-
-  for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS && $page_id < 0; $i++ ) {
+  for ( $i = 0, $cnt = count ( $page_lookup ); $i < $cnt && $page_id < 0; $i++ ) {
     if ( ! empty ( $page_lookup[$i] ) &&
         preg_match ( "/$page_lookup[$i]/", $page ) )
       $page_id = $i;
