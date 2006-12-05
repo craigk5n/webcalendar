@@ -1848,7 +1848,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
  *
  */
 function display_small_tasks ( $cat_id ) {
-  global $user, $login, $is_assistant, $eventinfo, $DATE_FORMAT_TASK;
+  global $user, $login, $is_assistant, $eventinfo, $DATE_FORMAT_TASK, $caturl;
   static $key = 0;
   if ( ! empty ( $user ) && $user != $login  && ! $is_assistant ) {
     return false;
@@ -1880,7 +1880,7 @@ function display_small_tasks ( $cat_id ) {
   $task_html= '<table class="minitask" cellspacing="0" cellpadding="2">' . "\n";
   $task_html .= '<tr class="header"><th colspan="3" >' . 
     translate ( 'TASKS' ) . '</th><th align="right">' .
-    '<a href="edit_entry.php?' . $u_url . 'eType=task">' . 
+    '<a href="edit_entry.php?' . $u_url . 'eType=task' . $caturl . '">' . 
     '<img src="images/new.gif" alt="+" class="new"/></a></th></tr>' . "\n";
   $task_html .= '<tr class="header"><th>&nbsp;!</th><th>'. $titleStr . 
     '</th><th>' . translate ('Due' ) . '</th><th>&nbsp;%&nbsp;</th></tr>' . "\n";
