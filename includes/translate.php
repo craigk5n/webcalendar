@@ -81,7 +81,7 @@ function reset_language ( $new_language ) {
  * {@link translate ()} the first time it is called.
  */
 function load_translation_text () {
-  global $basedir, $lang_file, 
+  global $basedir, $lang_file,
   $settings, $translations, $translation_loaded;
 
   if ( $translation_loaded == true ) //no need to run this twice
@@ -190,7 +190,7 @@ function load_translation_text () {
 function get_browser_language ( $pref = false ) {
   global $HTTP_ACCEPT_LANGUAGE, $browser_languages;
   $ret = '';
- 
+
   if ( empty ( $HTTP_ACCEPT_LANGUAGE ) &&
       isset ( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) )
     $HTTP_ACCEPT_LANGUAGE = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
@@ -282,20 +282,20 @@ function tooltip ( $str, $decode = '' ) {
  * @param string $str Text to translate and print
  * @uses tooltip
  */
-function etooltip ( $str ) {
-  echo tooltip ( $str );
+function etooltip ( $str, $decode = '' ) {
+  echo tooltip ( $str, $decode );
 }
 
 /*
  * Generate translated array of language names
  *
  * The first is the name presented to users while the second
- * is the filename (without the ".txt") that must exist in 
- * the translations subdirectory. 
+ * is the filename (without the ".txt") that must exist in
+ * the translations subdirectory.
  * Only called from admin.php and pref.php
  *
  * @uses translate
- */   
+ */
 function define_languages () {
   global $languages;
 
