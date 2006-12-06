@@ -138,7 +138,7 @@ if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
 
 ?>;
 <?php if ( ! empty ( $GLOBALS['BGIMAGE'] ) ) { ?>
-  background: url('<?php echo $GLOBALS['BGIMAGE'];?>') <?php 
+  background: url('<?php echo $GLOBALS['BGIMAGE'];?>') <?php
     echo $GLOBALS['BGREPEAT'];?>;
 <?php } ?>
   background-color: <?php echo $GLOBALS['BGCOLOR'];
@@ -1409,6 +1409,23 @@ a.weekcell {
   position:absolute;
   width:100%;
 }
+.layers {
+  float: left;
+  margin: 2px 1px;
+  padding: 5px;
+  background: <?php echo $CELLBG ?>;
+}
+.layers h4{
+  margin: 0 0 5px;
+}
+.layers p {
+  margin: 0;
+  padding-left: 5px;
+  font-size: 12px;
+}
+.layers p label {
+  font-size: 13px;
+|
 <?php
 if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
     preg_match ( "/css_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
