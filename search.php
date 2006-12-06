@@ -21,21 +21,95 @@ if ( $login == '__public__' && !
   empty ( $PUBLIC_ACCESS_OTHERS ) && $PUBLIC_ACCESS_OTHERS == 'Y' )
   $show_others = true;
 
+$show_advanced = getValue ( 'adv' );
+if ( empty ( $show_advanced ) ) $show_advanced = 0;
+$avdStyle = array ( 'hidden', 'visible' );
+
+load_user_categories ();
+$selected = ' selected="selected" ';
+
 $advSearchStr = translate ( 'Advanced Search' );
 $searchStr = translate ( 'Search' );
-
-print_header ( ( $show_others ? array ( 'js/search.php/true' ) : '' ) );
+$INC = array();
+if ( $show_advanced ) $INC[] = 'js/visible.php';
+if ( $show_others ) $INC[] = 'js/search.php/true';
+print_header ( $INC );
 
 ob_start ();
 
-echo '    <h2>' . $searchStr . '</h2>
+echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
     <form action="search_handler.php" method="post" id="searchformentry" '
  . 'name="searchformentry" style="margin-left: 13px;">
-      <p><label for="keywordsadv">' . translate ( 'Keywords' )
- . ':&nbsp;</label>
-        <input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
-        <input type="submit" value="' . $searchStr . '" /></p>';
+      <input type="hidden" name="advanced" value="' . $show_advanced . '" />
+      <table><tr><td><label for="keywordsadv">' . translate ( 'Keywords' )
+ . ':&nbsp;</label></td>
+        <td><input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
+        <input type="submit" value="' . $searchStr . '" /></td></tr>';
 
+
+if ( is_array ( $categories ) && $show_advanced ) {
+  echo '
+        <tr id="catfilter" style="visibility:' . $avdStyle[$show_advanced] 
+   . ';">
+          <td><label for="cat_filter">' . $translations['Categories']
+   . ':</label></td>
+          <td>
+            <select name="cat_filter" id="cat_filter">
+              <option value=""' . $selected . '>' . $translations['All']
+   . '</option>';
+
+  foreach ( $categories as $K => $V ) {
+    if ( $K > 0 )
+      echo '
+              <option value="' . $K . '">' . $V['cat_name'] . '</option>';
+  }
+
+  echo '
+            </select>
+          </td>
+        </tr>';
+}
+if (  count ( $site_extras ) > 0 ) {
+  echo '
+        <tr id="extrafilter" style="visibility:' . $avdStyle[$show_advanced] 
+   . ';">
+          <td><label for="extra_filter">' 
+   . translate ( 'Include' ) . '<br />' . $translations['Site Extras']
+   . ':</label></td>
+          <td><input type="checkbox" name="extra_filter" value="Y" />
+          </td></tr>';
+}
+if (  $show_advanced ) {
+  echo '
+        <tr id="datefilter" style="visibility:' . $avdStyle[$show_advanced] 
+   . ';">
+          <td><label for="date_filter">' . translate ('Filter by Date')
+   . ':</label></td>
+          <td>
+            <select name="date_filter" id="date_filter" onchange="toggleDateRange()">
+              <option value="0"' . $selected . '>' . translate ( 'All' )
+   . '</option>
+              <option value="1">' . translate ( 'Past' ) . '</option>
+              <option value="2">' . translate ( 'Upcoming' ) . '</option>
+              <option value="3">' . translate ( 'Range' ) . '</option>
+            </select>
+          </td>
+        </tr>
+        <tr id="startDate" style="visibility:hidden">
+          <td>&nbsp;&nbsp;<label>' . $translations['Start date']
+   . ':</label></td>
+          <td>'
+   . date_selection ( 'from_', date ( 'Ymd' ) )
+   .      '</td>
+        </tr>
+        <tr id="endDate" style="visibility:hidden">
+          <td>&nbsp;&nbsp;<label>' . $translations['End date']
+   . ':</label></td>
+          <td>'
+   . date_selection ( 'until_', date ( 'Ymd' ) )
+   .      '</td>
+        </tr>';
+}
 if ( $show_others ) {
   $users = get_my_users ( '', 'view' );
   // Get non-user calendars (if enabled)
@@ -54,12 +128,13 @@ if ( $show_others ) {
     $size = $cnt;
 
   echo '
-      <p id="advlink"><a title="' . $advSearchStr
-   . '" href="javascript:show ( \'adv\' ); hide ( \'advlink\' );">'
-   . $advSearchStr . '</a></p>
-      <table id="adv" style="display:none;">
-        <tr>
-          <td class="aligntop alignright bold" width="60px"><label for="usersadv">'
+      <tr id="advlink" style="visibility:' . $avdStyle[!$show_advanced] 
+   . ';"><td colspan="2"><a title="' . $advSearchStr
+   . '" href="search.php?adv=1">'
+   . $advSearchStr . '</a></td></tr>
+        <tr  id="adv" style="visibility:' . $avdStyle[$show_advanced] 
+   . ';">
+          <td class="aligntop"><label for="usersadv">'
    . $translations['Users'] . ':&nbsp;</label></td>
           <td>
             <select name="users[]" id="usersadv" size="' . $size
@@ -78,13 +153,12 @@ if ( $show_others ) {
     ? '<input type="button" onclick="selectUsers ()" value="'
      . $translations['Select'] . '..." />' : '' ) . '
           </td>
-        </tr>
-      </table>';
+        </tr>';
 }
 ob_end_flush ();
 
 echo '
-    </form>
+    </table></form>
     ' . print_trailer ();
 
 ?>

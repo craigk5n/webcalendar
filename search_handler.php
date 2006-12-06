@@ -76,6 +76,19 @@ if ( $search_others ) {
 if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
 
+//Get advanced filters
+$cat_filter = getPostValue ( 'cat_filter' );
+$extra_filter = getPostValue ( 'extra_filter' );
+$date_filter = getPostValue ( 'date_filter' );
+$start_day = getPostValue ( 'from_day' );
+$start_month = getPostValue ( 'from_month' );
+$start_year = getPostValue ( 'from_year' );
+$end_day = getPostValue ( 'until_day' );
+$end_month = getPostValue ( 'until_month' );
+$end_year = getPostValue ( 'until_year' );
+$startDate =  gmdate ( 'Ymd', gmmktime ( 0, 0, 0, $start_month, $start_day, $start_year ) );
+$endDate =  gmdate ( 'Ymd', gmmktime ( 23, 59, 59, $end_month, $end_day, $end_year ) );
+
 print_header ();
 echo '
     <h2>' . translate ( 'Search Results' ) . '</h2>';
@@ -103,16 +116,19 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
   $words = array ( $phrase );
 } else
   // original (default) behavior
-  $words = split ( ' ', $keywords );
-// end Phrase modification
-
+  $words = explode ( ' ', $keywords );
+// end Phrase modification 
+  $order = 'DESC';
   $word_cnt = count ( $words );
   for ( $i = 0; $i < $word_cnt; $i++ ) {
     $sql_params = array ();
     // Note: we only search approved/waiting events (not deleted).
-    $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date
-      FROM webcal_entry we, webcal_entry_user weu
-      WHERE we.cal_id = weu.cal_id AND weu.cal_status in ( \'A\',\'W\' )
+    $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date '
+      . ( ! empty ( $extra_filter ) ? ', wse.cal_data ' : '' )
+      . 'FROM webcal_entry we, webcal_entry_user weu '
+      . ( ! empty ( $cat_filter ) ? ', webcal_entry_categories wec ' : '')
+      . ( ! empty ( $extra_filter ) ? ', webcal_site_extras wse ' : '')
+      . ' WHERE we.cal_id = weu.cal_id AND weu.cal_status in ( \'A\',\'W\' )
       AND weu.cal_login IN ( ?';
     if ( $search_others ) {
       if ( empty ( $users[0] ) )
@@ -140,11 +156,43 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
      . ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0
       ? 'CAST ( we.cal_description AS varchar (1024) )'
       : 'we.cal_description' )
-     . ' ) LIKE UPPER( ? ) ) ORDER BY cal_date';
+     . ' ) LIKE UPPER( ? ) ';
     $sql_params[] = '%' . $words[$i] . '%';
     $sql_params[] = '%' . $words[$i] . '%';
-    // echo "SQL: $sql<br /><br />";
-    // print_r ( $sql_params );
+
+    //process advanced filters
+    if ( ! empty ( $extra_filter ) ) {
+      $sql .= ' OR wse.cal_data LIKE UPPER( ? )';
+      $sql_params[] = '%' . $words[$i] . '%';
+    }
+    //close AND statement from above
+    $sql .= ')';
+    if ( ! empty ( $cat_filter ) ) {
+      $sql .= ' AND wec.cat_id = ? AND we.cal_id = wec.cal_id ';
+      $sql_params[] = $cat_filter;
+    }
+    if ( ! empty ( $extra_filter ) )
+      $sql .= ' AND we.cal_id = wse.cal_id ';
+    if ( ! empty ( $date_filter ) ) {
+      if ( $date_filter == 1 ) { //Past entries
+        $sql .= 'AND we.cal_date < ? ';
+        $sql_params[] = date ( 'Ymd' );
+      }
+      if ( $date_filter == 2 ) {//Upcoming entries
+        $sql .= 'AND we.cal_date >= ? ';
+        $sql_params[] = date ( 'Ymd' );
+        $order = 'ASC';
+      }
+      if ( $date_filter == 3 ) {//Use Date Range
+        $sql .= 'AND ( we.cal_date >= ? AND we.cal_date <= ? )';
+        $sql_params[] = $startDate; 
+        $sql_params[] = $endDate;      
+      }
+    }
+
+    $sql .= ' ORDER BY we.cal_date ' . $order . ', we.cal_name';
+     //echo "SQL: $sql<br /><br />";
+     //print_r ( $sql_params );
     $res = dbi_execute ( $sql, $sql_params );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -155,7 +203,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
         else
           $ids[$idstr]++;
 
-        $info[$idstr] = "$row[1] ( " . date_to_str ( $row[2] ) . ' )';
+        $info[$idstr] = $row[1] . ' ( ' . date_to_str ( $row[2] ) . ' )';
       }
     }
     dbi_free_result ( $res );
@@ -178,7 +226,7 @@ if ( $matches > 0 ) {
 echo ": $keywords" . '</strong>.</p>';
 // now sort by number of hits
 if ( empty ( $error ) ) {
-  arsort ( $ids );
+  //arsort ( $ids );
   echo '
     <ul>';
   for ( reset ( $ids ); $key = key ( $ids ); next ( $ids ) ) {
@@ -189,7 +237,11 @@ if ( empty ( $error ) ) {
   echo '
     </ul>';
 }
-
+echo '
+      <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' ) 
+        . '"  style="margin-left: 13px;" method="post">
+       <input type="submit" value="'
+        . translate ( 'New Search' ) . '" /></form>';
 ob_end_flush ();
 echo print_trailer ();
 

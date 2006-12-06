@@ -527,7 +527,7 @@ if ( $search_url != '' && $menuConfig['Search'] ) {
   if ( $menuConfig['Advanced Search'] && $login != '__public__' && 
     ( ! $is_nonuser || access_is_enabled () &&
     access_can_access_function ( ACCESS_ADVANCED_SEARCH ) ) ) {
-    jscMenu_item ( 'search.png', 'Advanced Search', 'search.php' );
+    jscMenu_item ( 'search.png', 'Advanced Search', 'search.php?adv=1' );
     jscMenu_divider ();
   }
   jscMenu_custom ( '<td class="ThemeMenuItemLeft"><img src="includes/menu/icons'
