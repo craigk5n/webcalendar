@@ -1567,8 +1567,8 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
   // generate values for first day and last day of month
   $monthstart = date ('Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
   $monthend = date ('Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
-  
-  for ( $i = $wkstart; date ('Ymd', $i ) < $monthend;
+  $monthend2 = date ('Ymd His', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );  
+  for ( $i = $wkstart; date ('Ymd', $i + ( 12 * 3600 ) ) <= $monthend;
     $i += ( ONE_DAY * 7 ) ) {
     $ret .= "<tr>\n";
      if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
@@ -1770,7 +1770,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
  
   // end the header row
   $ret .= '</thead><tbody>';
-  for ( $i = $wkstart; date ( 'Ymd', $i ) < $monthend;
+  for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthend;
     $i += ( 604800 ) ) {
     $ret .= '
         <tr>';
