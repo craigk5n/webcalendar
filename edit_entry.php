@@ -321,10 +321,10 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     }
   }
   if ( $CATEGORIES_ENABLED == 'Y' ) {
-    $categories = get_categories_by_id ( $id, $real_user, true );
-    if ( ! empty ( $categories ) ) {
-      $catNames = implode(', ' , $categories );
-      $catList = implode(',', array_keys ( $categories ) );
+    $catById = get_categories_by_id ( $id, $real_user, true );
+    if ( ! empty ( $catById ) ) {
+      $catNames = implode(', ' , $catById );
+      $catList = implode(',', array_keys ( $catById ) );
     }
   } //end CATEGORIES_ENABLED test
 
