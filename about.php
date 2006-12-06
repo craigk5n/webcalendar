@@ -21,10 +21,6 @@ if ( ! empty ( $credits ) ) {
   $data = preg_replace ( '/\n/', '<br />', $data );
 }
 
-$version = '<a title="' . $GLOBALS['PROGRAM_NAME'] . '" '
- . 'id="programname" href="' . $GLOBALS['PROGRAM_URL'] . '" target="_blank">'
- . $GLOBALS['PROGRAM_NAME'] . "</a>\n";
-
 print_header ( '', '', '', true, false, true );
 echo '
     <div align="left" style="margin-left: 4px; position: absolute; bottom: 0" >';
