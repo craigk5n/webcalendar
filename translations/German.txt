@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 30 Nov 2006
+# Last update: 5. Dec. 2006
 #
 # $Id$
-# Translation last updated on 11-28-2006
+# Translation last updated on 12-04-2006
 
 
 ################################################################################
@@ -37,13 +37,9 @@ __month__ __yyyy__: __month__ __yyyy__
 ########################################
 # Page: import_handler.php
 #
-Error: Fehler
-Import Results: Importierte Ergebnisse
-Events successfully imported: Termine erfolgreich importiert
+Error deleting palm events from webcalendar.: Fehler beim L&ouml;schen der Palm-Termine vom Webkalender
 Events from prior import marked as deleted: Termine vom vorigen Import als &#34;gel&ouml;scht&#34; markieren
 Conflicting events: Termin&uuml;berschneidung
-Errors: Fehler
-There was an error parsing the import file or no events were returned: Beim Einlesen der Import-Datei trat ein Fehler auf oder es wurden keine Eintr&auml;ge zur&uuml;ckgegeben
 The import file contained no data: Die importierte Datei enthielt keine Daten
 
 ########################################
@@ -84,7 +80,7 @@ Next 60 days: N&auml;chsten 60 Tage
 Next 90 days: N&auml;chsten 90 Tage
 Next 180 days: N&auml;chsten 180 Tage
 Next 365 days: N&auml;chsten 365 Tage
-Invalid report id: Ung&uuml;ltige Bericht ID
+Invalid report id: Ung&uuml;ltige &#39;Bericht ID&#39;
 Unnamed Report: Neuer Bericht
 Add Report: Bericht hinzuf&uuml;gen
 Edit Report: Bericht editieren
@@ -151,12 +147,13 @@ Reject Selected entries?: Ausgew&auml;hlte Eintr&auml;ge ablehnen?
 # Page: doc.php
 #
 Invalid blob id: Ung&uuml;ltige &#39;blob&#39; id
-Invalid entry id: Ung&uuml;ltiger id-Eintrag
+Invalid entry id: Ung&uuml;ltiger &#39;ID-Eintrag&#39;
 
 ########################################
 # Page: login-app.php
 #
 You must enter a login and password: Sie m&uuml;ssen einen Benutzernamen und ein Kennwort eingeben.
+Error: Fehler
 Username: Benutzername
 Password: Kennwort
 Save login via cookies so I don&#39;t have to login next time: Login in Cookies abspeichern, um die Anmeldung beim n&auml;chsten Mal automatisch zu &uuml;berspringen.
@@ -185,7 +182,7 @@ Month (side by side): Monat (Seitenweise)
 Month (on same calendar): Monat (am gleichen Kalender)
 Users: Benutzer
 Selected: Ausgew&auml;hlte(r)
-All: Jeden
+All: Alle
 Select: Ausw&auml;hlen 
 Add: Hinzuf&uuml;gen
 
@@ -244,8 +241,8 @@ private: Privat
 This event is confidential: Dieser Termin ist&nbsp; <b>VERTRAULICH</b>
 minutes: Minute(n)
 Low: Niedrig
-Medium: Normal
 High: Hoch
+Medium: Normal
 Waiting for approval: Warten auf &Uuml;berpr&uuml;fung
 Deleted: Gel&ouml;scht
 Rejected: Eintrag abgelehnt, wird nicht teilnehmen
@@ -644,6 +641,8 @@ email-event-deleted: Gibt an ob Emailbenachrichtigungen versendet werden sollen,
 Events removed from my calendar: Termine, die von meinem Kalender ENTFERNT wurden
 email-event-rejected: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Benutzer die Teilnahme an einem Termin ABGELEHNT hat.
 Event rejected by participant: Termine, die von ANDEREN Benutzern ENTFERNT wurden
+email-event-create: Legt fest ob der Ersteller von Terminen Emails empf&auml;ngt
+Event that I create: Termine die ich erstelle
 Color options: Farbenauswahl
 Allow user to customize colors: Benutzer d&uuml;rfen Farbeinstellungen &auml;ndern
 gradient-colors: Falls aktiviert, stufenweiser Farbverlauf (Farb&auml;nderung) m&ouml;glich. Das kann gro&szlig;e negative Auswirkung auf die Leistung haben.
@@ -696,13 +695,9 @@ colors-help: Alle Farben k&ouml;nnen im Format &#34;#RRGGBB&#34; eingegeben werd
 ########################################
 # Page: usersel.php
 #
-Program Error: Programmfehler
-No form specified!: Kein Blatt spezifiziert!
-No listid specified!: Keine &#39;listid&#39; spezifiziert!
+form: Blatt
+listid: &#39;Listen-Id&#39;
 Reset: Zur&uuml;cksetzen
-Remove: Entfernen
-Ok: Ok
-Cancel: Abbrechen
 
 ########################################
 # Page: assistant_edit.php
@@ -743,6 +738,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: Wied
 Edit Custom Script/Stylesheet: &Auml;ndern der benutzerdefinierten Skripte/Stylesheets
 Edit Custom Header: &Auml;ndern der benutzerdefinierten KOPFZEILE
 Edit Custom Trailer: &Auml;ndern der benutzerdefinierten FU&szlig;ZEILE
+Cancel: Abbrechen
 
 ########################################
 # Page: access.php
@@ -791,6 +787,7 @@ View Another User&#39;s Calendar: Kalender anderer Benutzer anzeigen
 ########################################
 # Page: availability.php
 #
+Program Error: Programmfehler
 No XXX specified!: Kein XXX spezifiziert
 year: Jahr
 month: Monat
@@ -867,14 +864,15 @@ Custom Colors: Eigene Farben
 Add Custom: Eigene Farben hinzuf&uuml;gen
 Current Color: Derzeitige Farben
 Old Color: Alte Farben
+Ok: Ok
 
 ########################################
 # Page: about.php
 #
-About: &Uuml;ber
-Credits: Abspann
 version: Version
 Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.: Webcalendar ist eine PHP Anwendung welche zum Warten eines Kalenders f&uuml;r einen einzelnen Benutzer oder einer Gruppe von Internet / Intranet Benutzer. Er kann aber auch als Terminkalender konfiguriert werden.
+Credits: Abspann
+About: &Uuml;ber
 
 ########################################
 # Page: help_layers.php
@@ -944,7 +942,6 @@ Add to Others: Zu Anderen hinzuf&uuml;gen
 # Page: help_pref.php
 #
 default-category-help: Legt eine Standardkategorie f&uuml;r einen neuen Termin fest.
-Timezone Offset: Zeitzonenausgleich
 email-boss-notifications-help: Legt fest ob Chefs Terminbenachrichtigungen als Email bekommen.
 boss-approve-event-help: Legt fest ob der Chef die eingetragenen Termine des Assistenten best&auml;tigen (genehmigen) mu&szlig;
 
@@ -1080,7 +1077,11 @@ Add New Category: Neue Kategorie hinzuf&uuml;gen
 ########################################
 # Page: edit_remotes_handler.php
 #
+Import Results: Importierte Ergebnisse
+Events successfully imported: Termine erfolgreich importiert
 Create a new layer to view this calendar: Erstelle neuen Layer um diesen Kalendar anzuzeigen.
+Errors: Fehler
+There was an error parsing the import file or no events were returned: Beim Einlesen der Import-Datei trat ein Fehler auf oder es wurden keine Eintr&auml;ge zur&uuml;ckgegeben
 
 ########################################
 # Page: help_bug.php
@@ -1120,6 +1121,7 @@ location-help: Ort des Termines
 url-help: URL des Termins
 date-help: Gibt das Datum des Termines an.
 Timed event: Termin MIT Zeitangabe
+Timezone Offset: Zeitzonenausgleich
 time-help: Gibt die Uhrzeit des Termines an. Kann leer gelassen werden.
 duration-help: Gibt die Dauer des Termines in Minuten an. Kann leer gelassen werden.
 end-time-help: Definiert die Zeit des Termines als Endzeitpunkt.
@@ -1193,8 +1195,9 @@ Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
 ########################################
 # Page: catsel.php
 #
-ENTRY CATEGORIES: EINGETRAGENE KATEGORIEN
 AVAILABLE CATEGORIES: VERF&Uuml;GBARE KATEGORIEN
+ENTRY CATEGORIES: EINGETRAGENE KATEGORIEN
+Remove: Entfernen
 Global Category: Allg. Kategorie
 
 ########################################
@@ -1379,6 +1382,7 @@ User Management: Benutzer verwalten
 Manage Views: Ansichten verwalten
 Week View: Wochenansicht
 Year View: Jahresansicht
+Invalid function id: Ung&uuml;ltige &#39;Funktions-ID&#39;
 
 ########################################
 # Page: includes/translate.php
