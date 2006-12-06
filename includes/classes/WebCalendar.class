@@ -163,9 +163,10 @@ class WebCalendar {
     // is allowed to view the current page.
     access_init ( );
     if ( ! access_can_view_page ( ) ) {
+      $user_BGCOLOR = get_pref_setting ( $login, 'BGCOLOR' );
       echo "<html>\n<head>\n<title>" . generate_application_name () . ' ' .
         translate( 'Error' ) .  "</title></head>\n" .
-        "<body>\n" . print_not_auth ( true );
+        "<body  bgcolor=\"$user_BGCOLOR\">\n" . print_not_auth ( true );
       exit;
     }
 
@@ -232,10 +233,7 @@ class WebCalendar {
       } else {
         $cat_id = '';
       }
-      if ( empty ( $cat_id ) )
-        $caturl = '';
-      else
-        $caturl = "&amp;cat_id=$cat_id";
+      $caturl = ( ! empty ( $cat_id ) ? "&amp;cat_id=$cat_id": '' );
     }
   }
 
