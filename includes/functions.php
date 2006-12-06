@@ -974,11 +974,12 @@ function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
       return $ret;
     }
     // get list of users in the same groups as current user
-    $public = ( $add_public ? "webcal_nonuser_cals.cal_is_public = 'Y'  OR " : '' );
-    $sql = 'SELECT DISTINCT(webcal_nonuser_cals.cal_login), cal_lastname, cal_firstname, ' .
-      ' cal_is_public FROM webcal_group_user, webcal_nonuser_cals ' .
+    $public = ( $add_public ? "wnc.cal_is_public = 'Y'  OR " : '' );
+    $sql = 'SELECT DISTINCT(wnc.cal_login), cal_lastname, ' .
+      ' cal_firstname, cal_is_public ' .
+      ' FROM webcal_group_user wgu, webcal_nonuser_cals wnc' .
       " WHERE $public cal_admin = ? OR  " .
-      ' ( webcal_group_user.cal_login = webcal_nonuser_cals.cal_login AND ' .
+      ' ( wgu.cal_login = wnc.cal_login AND ' .
       ' cal_group_id ';
     if ( $groupcnt == 1 )
       $sql .= '= ? )' ;
@@ -991,8 +992,8 @@ function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
       $sql .= "IN ( $placeholders ) )";
     }
 
-    $order = ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER," : '' );
-    $sql .= " ORDER BY $order webcal_group_user.cal_login";
+    $order = ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER" : '' );
+    $sql .= ' ORDER BY ' . $order;
 
     //add $this_user to beginning of query params
     array_unshift ( $groups, $this_user );
