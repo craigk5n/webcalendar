@@ -45,7 +45,7 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
     } else {
       // new layer entry
       // Check for existing layer for user. Can only have one layer per user.
-      $res = dbi_execute ( 'SELECT COUNT (cal_layerid) FROM webcal_user_layers
+      $res = dbi_execute ( 'SELECT COUNT(cal_layerid) FROM webcal_user_layers
         WHERE cal_login = ? AND cal_layeruser = ?',
         array ( $layer_user, $layeruser ) );
       if ( $res ) {
