@@ -208,6 +208,7 @@ ul a {
 }
 
 .main {
+  border-collapse: collapse;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG'];
 
 ?>;
@@ -1048,6 +1049,7 @@ img.help {
 #month .main th {
   width: 14%;
 }
+
 #vieww .main th,
 #week .main th {
   width: 12%;
@@ -1287,6 +1289,7 @@ a.weekcell {
   height: 75px;
 }
 #viewt table.timebar {
+  border-collapse: collapse;
   width: 100%;
 }
 #viewt td.timebar {
