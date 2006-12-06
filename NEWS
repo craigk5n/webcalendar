@@ -24,6 +24,9 @@ Version 1.1.2 (?? ??? 2006)
         - Reminders 
         Any combination of the above is possible using bitwise operators.
     = User Interface
+      + Date Range Searches have been added
+      + Site Extra Seaches have been added
+      + Category Filter has beed added to Advanced Search
       + Added Category Color option
       + Admin can now specify a background image for inclusion into CSS
       + Added new feature 'Display Long Day Names'
