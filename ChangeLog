@@ -1,5 +1,7 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Impemented PATCH [ 1562620 ] Date Range Search
+ - Impemented RFE [ 903167 ] Advanced Search by Category/Date Range
  - Fixed bug [ 1608335 ] incomplete display of access.php (using UAC)
  - Fixed bug [ 1607603 ] Display description in printer day view no longer works
  - Fixed bug [ 1608365 ] default category should be suggested if adding any entries

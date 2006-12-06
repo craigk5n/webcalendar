@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 12-01-2006
+# Translation last updated on 12-06-2006
 
 
 ################################################################################
@@ -61,11 +61,11 @@ __month__ __yyyy__: __month__ __yyyy__
 ########################################
 # Page: about.php
 #
-About: About
-Credits: Credits
 Title: WebCalendar
 version: version
 Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.: Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.
+Credits: Credits
+About: About
 Ok: Ok
 
 ########################################
@@ -406,6 +406,7 @@ Layers: Layers
 Reports: Reports
 Delete Events: Delete Events
 Activity Log: Activity Log
+System Log: System Log
 Public Preferences: Public Preferences
 Unapproved Public Events: Unapproved Public Events
 Administrative Tools: Administrative Tools
@@ -644,8 +645,8 @@ conflicts with the following existing calendar entries: conflicts with the follo
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: Edit Layer
-Add Layer: Add Layer
+Add layer: Add layer
+Edit layer: Edit layer
 Source: Source
 Duplicates: Duplicates
 Show layer events that are the same as your own: Show layer events that are the same as your own
@@ -945,9 +946,7 @@ Disable Layers: Disable Layers
 Enable Layers: Enable Layers
 Click here: Click here
 to modify the layers settings for the: to modify the layers settings for the
-Add layer: Add layer
 layer: layer
-Edit layer: Edit layer
 
 ########################################
 # Page: layers_toggle.php
@@ -1099,6 +1098,11 @@ Manage Reports: Manage Reports
 Advanced Search: Advanced Search
 Search: Search
 Keywords: Keywords
+Include: Include
+Filter by Date: Filter by Date
+Past: Past
+Upcoming: Upcoming
+Range: Range
 
 ########################################
 # Page: search_handler.php
@@ -1108,6 +1112,7 @@ Search Results: Search Results
 match found: match found
 matches found: matches found
 No matches found: No matches found
+New Search: New Search
 
 ########################################
 # Page: select_user.php
@@ -1237,6 +1242,7 @@ User Management: User Management
 Manage Views: Manage Views
 Week View: Week View
 Year View: Year View
+Invalid function id: Invalid function id
 
 ########################################
 # Page: includes/config.php
@@ -1350,7 +1356,6 @@ New user (self registration): New user (self registration)
 New user via email (self registration): New user via email (self registration)
 Attachment: Attachment
 Delete User: Delete User
-System Log: System Log
 Event: Event
 Action: Action
 
