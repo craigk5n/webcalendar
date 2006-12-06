@@ -30,7 +30,7 @@
  *           goes here or we repeat this code in multiple files.
  */
 function die_miserable_death ( $error ) {
-  global $APPLICATION_NAME, $LANGUAGE, $TROUBLE_URL;
+  global $APPLICATION_NAME, $LANGUAGE, $TROUBLE_URL, $login;
   // Make sure app name is set
   if ( function_exists ( 'generate_application_name' ) ) {
     $appStr = generate_application_name ();
@@ -45,17 +45,19 @@ function die_miserable_death ( $error ) {
     $title = $appStr . ': ' . translate ( 'Fatal Error' );
     $h2_label = $appStr . ' ' . translate ( 'Error' );
     $trouble_label = translate ( 'Troubleshooting Help' );
+    $user_BGCOLOR = get_pref_setting ( $login, 'BGCOLOR' );
   } else {
     $appStr = 'WebCalendar';
     $title = $appStr . ': ' . 'Fatal Error';
     $h2_label = $appStr . ' ' . 'Error';
     $trouble_label = 'Troubleshooting Help';
+    $user_BGCOLOR = '#FFFFFF';
   }
 
   echo <<<EOT
 <html>
   <head><title>{$title}</title></head>
-  <body>
+  <body bgcolor ="{$user_BGCOLOR}">
     <h2>{$h2_label}</h2>
     <p>{$error}</p><hr />
     <p><a href="{$TROUBLE_URL}" target="_blank">{$trouble_label}</a></p>
