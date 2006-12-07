@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1610829 ] view_entry.php and postgres issue
  - Fixed bug [ 1605992 ] matrix-grid-thickness not correct displayed for IE
  - Fixed bug [ 1607264 ] login problem for non-admin user v1.1.2
  - Impemented PATCH [ 1562620 ] Date Range Search
