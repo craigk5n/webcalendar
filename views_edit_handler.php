@@ -4,9 +4,9 @@ include_once 'includes/init.php';
 
 $error = '';
 
-$viewisglobal = ( ! $is_admin || $viewisglobal != 'Y'
-  ? 'N' // only admin can create global view
-  : getPostValue ( 'is_global' ) );
+$viewisglobal = getPostValue ( 'is_global' );
+if ( ! $is_admin || $viewisglobal != 'Y' )
+  $viewisglobal = 'N'; // only admin can create global view
 
 $delete = getPostValue ( 'delete' );
 if ( ! empty ( $delete ) )
