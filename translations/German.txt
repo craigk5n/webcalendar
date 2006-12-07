@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 5. Dec. 2006
+# Last update: 7. Dec. 2006
 #
 # $Id$
-# Translation last updated on 12-04-2006
+# Translation last updated on 12-07-2006
 
 
 ################################################################################
@@ -201,6 +201,7 @@ Layers: Layers
 Reports: Berichte
 Delete Events: Eintr&auml;ge l&ouml;schen (endg&uuml;ltig)
 Activity Log: Aktivit&auml;ten Protokoll
+System Log: System Protokoll
 Public Preferences: Voreinstellungen &Ouml;ffentl. Zugang 
 Unapproved Public Events: Unbest&auml;tigte &Ouml;ffentl. Termine
 Administrative Tools: Administrative Werkzeuge
@@ -311,20 +312,11 @@ Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie
 ########################################
 # Page: layers.php
 #
-Help: Hilfe
 Layers are currently: Layers sind derzeit
-Enabled: Aktiv
 Disable Layers: Layers abschalten
-Disabled: Inaktiv
-Enable Layers: Layers aktivieren
 to modify the layers settings for the: um die Layer Einstellungen zu &auml;ndern f&uuml;r den
-Add layer: Layer hinzuf&uuml;gen
 layer: Layer
-Edit layer: Layer editieren
-Edit: &Auml;ndern
-Delete layer: Layer l&ouml;schen
-Source: Quelle
-Duplicates: Duplikate
+Enable Layers: Layers aktivieren
 
 ########################################
 # Page: minical.php
@@ -404,6 +396,7 @@ Email address already exists: Emailadresse existiert bereits
 #
 Month: Monat
 Year: Jahr
+Help: Hilfe
 Settings: Einstellungen
 Groups: Benutzergruppen
 NonUser Calendars: &#39;Zentrale&#39; - Kalender
@@ -430,6 +423,7 @@ Preview: Vorschau
 Site customization: Benutzerdefinierte Seiteneinstellungen
 custom-script-help: Erlaubt Eintr&auml;ge von benutzerdefinierten Javascript- oder Stylesheet Texten welche im HTML &#34;Kopf&#34;-Abschnitt auf jeder Seite eingef&uuml;gt werden.
 Custom script/stylesheet: Benutzerdefinierte Scripte/Stylesheets
+Edit: &Auml;ndern
 custom-header-help: Erm&ouml;glicht benutzerdefinierte HTML-Abschnitte am ANFANG jeder Seite
 Custom header: Benutzerdefinierte Kopfzeile
 custom-trailer-help: Erm&ouml;glicht benutzerdefinierte HTML-Abschnitte am ENDE jeder Seite.
@@ -727,6 +721,7 @@ Add New Remote Calendar: Neuen EXTERNEN Kalender (Remote-Kalender) hinzuf&uuml;g
 #
 Calendar: Kalender
 Import: Import
+Disabled: Inaktiv
 Import format: Importformat
 Exclude private records: Private Eintr&auml;ge ausschlie&szlig;en
 Overwrite Prior Import: &#34;Vorigen Import &uuml;berschreiben&#34;
@@ -914,6 +909,11 @@ Is public calendar: Als &Ouml;ffentlichen Kalender freigeben
 Advanced Search: Erweiterte Suche
 Search: Suche
 Keywords: Stichw&ouml;rter
+Include: Inklusive
+Filter by Date: Datumsfilter
+Past: Vor dem heutigen Datum
+Upcoming: Demn&auml;chst anstehend
+Range: Datumsbereich
 
 ########################################
 # Page: set_entry_cat.php
@@ -933,10 +933,13 @@ Current Icons on Server: Derzeitige Icons am Server
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: Layer editieren
-Add Layer: Layer hinzuf&uuml;gen
+Add layer: Layer hinzuf&uuml;gen
+Edit layer: Layer editieren
+Source: Quelle
+Duplicates: Duplikate
 Show layer events that are the same as your own: Zeige Layer welche die gleichen Termine sind wie die eigenen
 Add to Others: Zu Anderen hinzuf&uuml;gen
+Delete layer: Layer l&ouml;schen
 
 ########################################
 # Page: help_pref.php
@@ -990,6 +993,7 @@ Submit: Senden
 ########################################
 # Page: edit_user.php
 #
+Enabled: Aktiv
 Disabled for demo: F&uuml;r DEMO deaktiviert
 Change Password: Kennwort &auml;ndern
 New Password: Neues Kennwort
@@ -1049,6 +1053,7 @@ Search Results: Suchergebnis
 match found: Eintrag gefunden
 matches found: Eintr&auml;ge gefunden
 No matches found: Keine Eintr&auml;ge gefunden
+New Search: Neue Suche
 
 ########################################
 # Page: views_edit_handler.php
@@ -1349,7 +1354,6 @@ New user (self registration): Neuer Teilnehmer (Selbstregistrierung)
 New user via email (self registration): Neuer Teilnehmer via Email (Selbstregistrierung)
 Attachment: Anhang
 Delete User: Teilnehmer l&ouml;schen
-System Log: System Protokoll
 Event: Termin
 Action: Aktion
 
