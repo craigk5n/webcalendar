@@ -236,7 +236,7 @@ if ( empty ( $error ) && ! $can_view && !
     $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
   }
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
-    WHERE cal_id = ? AND cal_status in ("A","W")', array ( $id ) );
+    WHERE cal_id = ? AND cal_status IN (\'A\',\'W\')', array ( $id ) );
   $found_nonuser_cal = $found_reg_user = false;
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -618,7 +618,7 @@ if ( $single_user == 'N' && $show_participants ) {
   else {
     $res = dbi_execute ( 'SELECT cal_login, cal_status, cal_percent
         FROM webcal_entry_user WHERE cal_id = ?'
-       . ( $eType == 'task' ? ' AND cal_status IN ( "A", "W" )' : '' ),
+       . ( $eType == 'task' ? ' AND cal_status IN ( \'A\', \'W\' )' : '' ),
       array ( $id ) );
     $first = 1;
     if ( $res ) {
