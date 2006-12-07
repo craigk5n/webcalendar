@@ -13,7 +13,7 @@ echo display_admin_link () . '
 <!-- TABS -->
     <div id="tabs">
       <span class="tabfor" id="tab_views"><a href="#tabviews" onclick="return '
- . 'showTab (\'views\')>' . $translations['Views'] . '</a></span>
+ . 'showTab (\'views\')">' . $translations['Views'] . '</a></span>
     </div>
 
 <!-- TABS BODY -->
