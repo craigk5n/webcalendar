@@ -6340,8 +6340,10 @@ function sort_users ( $a, $b ) {
 
   $order = empty ( $USER_SORT_ORDER ) ? 
     'cal_lastname, cal_firstname,' : "$USER_SORT_ORDER,";
-  $first = strnatcmp ( $a['cal_firstname'], $b['cal_firstname'] );
-  $last  = strnatcmp ( $a['cal_lastname'],  $b['cal_lastname'] );
+  $first = strnatcmp ( strtolower ( $a['cal_firstname'] ), 
+    strtolower ( $b['cal_firstname'] ) );
+  $last  = strnatcmp ( strtolower ( $a['cal_lastname'] ),  
+    strtolower ( $b['cal_lastname'] ) );
   if ( $order =='cal_lastname, cal_firstname,' ) {
     return ( empty ( $last ) ? $first : $last );
   } else {
