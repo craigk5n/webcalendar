@@ -1426,6 +1426,32 @@ a.weekcell {
 .layers p label {
   font-size: 13px;
 }
+#colors {
+  background: #CCC;
+}
+#colors td img {
+  border: 0;
+}
+#colorpic {
+  width: 192px;
+  height: 192px;
+}
+#thecell,
+#theoldcell {
+  border: 1px;
+  backgcound: #FFF;
+}
+#thecell td img,
+#theoldcell td img {
+  width: 55px;
+  height: 53px;
+}
+#cross,
+#sliderarrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 <?php
 if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
     preg_match ( "/css_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
