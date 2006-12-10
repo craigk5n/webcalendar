@@ -1425,7 +1425,7 @@ a.weekcell {
 }
 .layers p label {
   font-size: 13px;
-|
+}
 <?php
 if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
     preg_match ( "/css_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
