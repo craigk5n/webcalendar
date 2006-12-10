@@ -1,5 +1,7 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Implemented PATCH [ 1611288 ] Japanese translation updated
+ - Added translate() to some phrases in dbi4php.php.
  - Implemented PATCH [ 1503321 ] Modify dbi4php.php to enable concurrent MySQL connections
  - Implemented PATCH [ 1436533 ] Case insensitive sorting from LDAP users
  - Fixed bug [ 1610829 ] view_entry.php and postgres issue
