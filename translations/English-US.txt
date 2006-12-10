@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 12-06-2006
+# Translation last updated on 12-09-2006
 
 
 ################################################################################
@@ -943,10 +943,10 @@ The import file contained no data: The import file contained no data
 #
 Layers are currently: Layers are currently
 Disable Layers: Disable Layers
-Enable Layers: Enable Layers
 Click here: Click here
 to modify the layers settings for the: to modify the layers settings for the
 layer: layer
+Enable Layers: Enable Layers
 
 ########################################
 # Page: layers_toggle.php
@@ -1261,7 +1261,18 @@ Dec: Dec
 # Page: includes/dbi4php.php
 #
 Error connecting to database: Error connecting to database
+db_type not defined.: db_type not defined.
+invalid db_type: invalid db_type
 Cache cleared from previous SQL!: Cache cleared from previous SQL!
+Error executing query.: Error executing query.
+Unfortunately, XXX is not implemented for: Unfortunately, XXX is not implemented for
+Unknown ODBC error.: Unknown ODBC error.
+Unknown error.: Unknown error.
+Cache error: Cache error
+write: write
+Could not XXX file: Could not XXX file
+Error opening cache dir: Error opening cache dir
+delete: delete
 
 ########################################
 # Page: includes/functions.php
