@@ -141,7 +141,7 @@ if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
   background: url('<?php echo $GLOBALS['BGIMAGE'];?>') <?php
     echo $GLOBALS['BGREPEAT'];?>;
 <?php } ?>
-  background-color: <?php echo $GLOBALS['BGCOLOR'];
+  background: <?php echo $GLOBALS['BGCOLOR'];
 
 ?>;
 }
@@ -152,7 +152,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #0000FF;
+  color: #00F;
 }
 abbr {
   cursor: help;
@@ -194,7 +194,7 @@ th {
   color: <?php echo $GLOBALS['THFG'];
 
 ?>;
-  background-color: <?php echo $GLOBALS['THBG'];
+  background: <?php echo $GLOBALS['THBG'];
 
 ?>;
   padding: 0;
@@ -299,20 +299,18 @@ if ( $DISPLAY_WEEKENDS == 'N' ) {
   padding: 0.5em;
   border: 2px groove #C0C0C0;
   width: 98%;
-  background-color: #F8F8FF;
+  background: #F8F8FF;
   position: relative;
   z-index: 50;
 }
 .tabfor,
 .tabbak  {
-  padding: 0.2em 0.2em 0.1em 0.2em;
-  margin: 0 0 0 0.1em;
-  border-top: 2px ridge #C0C0C0;
-  border-left: 2px ridge #C0C0C0;
-  border-right: 2px ridge #C0C0C0;
+  margin: 0 0 0 .1em;
+  border: 2px ridge #C0C0C0;
   border-bottom: 2px solid #F8F8FF;
+  padding: .2em .2em .1em;
   position: relative;
-  -moz-border-radius: .75em .75em 0em 0em;
+  -moz-border-radius: .75em .75em 0 0;
 }
 .tabfor a,
 .tabbak a {
@@ -326,14 +324,14 @@ if ( $DISPLAY_WEEKENDS == 'N' ) {
 ?>;
 }
 .tabbak a {
-  color: #999999;
+  color: #999;
 }
 .tabfor {
-  background-color: #F8F8FF;
+  background: #F8F8FF;
   z-index: 51;
 }
 .tabbak {
-  background-color: #E0E0E0;
+  background: #E0E0E0;
   z-index: 49;
 }
 #editnonusers,
@@ -342,29 +340,29 @@ if ( $DISPLAY_WEEKENDS == 'N' ) {
 #edituser,
 #groupedit,
 #viewsedit {
-  background-color: #F8F8FF;
+  background: #F8F8FF;
 }
-#tabscontent_public,
-#tabscontent_uac,
-#tabscontent_groups,
-#tabscontent_nonuser,
-#tabscontent_other,
-#tabscontent_email,
-#tabscontent_colors,
-#tabscontent_participants,
-#tabscontent_reminder,
-#tabscontent_sched,
-#tabscontent_pete,
-#tabscontent_nonusers,
-#tabscontent_remotes,
-#tabscontent_themes,
-#tabscontent_boss,
-#tabscontent_subscribe,
-#tabscontent_header,
-#useriframe,
 #grpiframe,
 #nonusersiframe,
 #remotesiframe,
+#tabscontent_boss,
+#tabscontent_colors,
+#tabscontent_email,
+#tabscontent_groups,
+#tabscontent_header,
+#tabscontent_nonuser,
+#tabscontent_nonusers,
+#tabscontent_other,
+#tabscontent_participants,
+#tabscontent_pete,
+#tabscontent_public,
+#tabscontent_reminder,
+#tabscontent_remotes,
+#tabscontent_sched,
+#tabscontent_subscribe,
+#tabscontent_themes,
+#tabscontent_uac,
+#useriframe,
 #viewiframe {
   display: none;
 }
@@ -481,7 +479,7 @@ a#programname {
   font-size: 14px;
 }
 #listunapproved .odd {
-  background-color: <?php echo $GLOBALS['TODAYCELLBG'];
+  background: <?php echo $GLOBALS['TODAYCELLBG'];
 
 ?>;
 }
@@ -524,9 +522,9 @@ a#programname {
   vertical-align: top;
 }
 .dayofmonth:hover {
-  color: #0000FF;
-  border-right: 1px solid #0000FF;
-  border-bottom: 1px solid #0000FF;
+  color: #00F;
+  border-right: 1px solid #00F;
+  border-bottom: 1px solid #00F;
 }
 .prev img {
   border: 0;
@@ -577,28 +575,28 @@ a#programname {
   font-size: 12px;
   text-decoration: none;
   text-align: right;
-  background-color: <?php echo $GLOBALS['THBG'];
+  background: <?php echo $GLOBALS['THBG'];
 
 ?>;
 }
 .dailymatrix:hover {
-  background-color: #CCFFCC;
+  background: #CFC;
 }
 td.matrixappts {
   cursor: pointer;
   text-align: left;
-  background-color: <?php echo $GLOBALS['CELLBG'];
+  background: <?php echo $GLOBALS['CELLBG'];
 
 ?>;
   vertical-align: middle;
   width: 0%;
 }
 td.matrixappts:hover {
-  background-color: #CCFFCC;
+  background: #CFC;
 }
 td.matrix {
   height: 1px;
-  background-color: #000000;
+  background: #000;
 }
 .matrix img {
   border: 0;
@@ -621,16 +619,16 @@ a.matrix img {
   margin-right: auto;
 }
 .matrixledge {
-  border-left: 1px solid #000000;
+  border-left: 1px solid #000;
 }
 .matrixlegend {
   margin-top: 25px;
   padding: 5px;
   text-align: center;
-  background: #ffffff;
+  background: #FFF;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid #000000;
+  border: 1px solid #000;
 }
 .matrixlegend img {
   border: 0;
@@ -758,7 +756,7 @@ img.help {
   border: 1px solid <?php echo $GLOBALS['TABLEBG'];
 
 ?>;
-  background-color: <?php echo $GLOBALS['CELLBG'];
+  background: <?php echo $GLOBALS['CELLBG'];
 
 ?>;
   font-size: 12px;
@@ -782,10 +780,10 @@ img.help {
 ?>;
 }
 .minical caption a:hover {
-  color: #0000FF;
+  color: #00F;
 }
 .minical th {
- padding: 0px 2px;
+ padding: 0 2px;
 }
 .minical th,
 .minical td.empty {
@@ -793,7 +791,7 @@ img.help {
 
 ?>;
   text-align: center;
-  background-color: <?php echo $GLOBALS['BGCOLOR'];
+  background: <?php echo $GLOBALS['BGCOLOR'];
 
 ?>;
 }
@@ -819,7 +817,7 @@ img.help {
   padding: 3px;
 }
 .minical td.weekend {
-  background-color: <?php echo $GLOBALS['WEEKENDBG'];
+  background: <?php echo $GLOBALS['WEEKENDBG'];
 
 ?>;
 <?php if ( $DISPLAY_WEEKENDS == 'N' ) {
@@ -831,7 +829,7 @@ img.help {
 ?>
 }
 .minical td#today {
-  background-color: <?php echo $GLOBALS['TODAYCELLBG'];
+  background: <?php echo $GLOBALS['TODAYCELLBG'];
 
 ?>;
 }
@@ -840,17 +838,17 @@ img.help {
 }
 .minitask {
   width: 98%;
-  border: 1px solid #000000;
+  border: 1px solid #000;
   margin-left: 1px;
 }
 .minitask tr.header th {
   text-align: center;
-  background-color: <?php echo $GLOBALS['CELLBG'];
+  background: <?php echo $GLOBALS['CELLBG'];
 
 ?>;
   font-size: 12px;
   padding: 0;
-  border-bottom: 2px solid #000000;
+  border-bottom: 2px solid #000;
 }
 .minitask  td {
   color: <?php echo $GLOBALS['TEXTCOLOR'];
@@ -858,7 +856,7 @@ img.help {
 ?>;
   font-size: 12px;
   padding: 0;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #000;
   text-align: center;
 }
 .minitask td.filler {
@@ -911,10 +909,10 @@ img.help {
   border-spacing: 0;
 }
 .embactlog tr {
-  background-color: #FFFFFF;
+  background: #FFF;
 }
 .embactlog .odd {
-  background-color: #EEEEEE;
+  background: #EEE;
 }
 .embactlog th {
   width: 14%;
@@ -942,19 +940,21 @@ img.help {
 }
 #day div.minicalcontainer {
   vertical-align: top;
-  border: 1px solid #000000;
+  border: 1px solid #000;
   padding: 3px;
 }
 #day table.minical {
-  margin-left: auto; margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 #day .minical caption {
-  margin-left: auto; margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
   font-weight: bold;
   color: <?php echo $GLOBALS['THFG'];
 
 ?>;
-  background-color: <?php echo $GLOBALS['THBG'];
+  background: <?php echo $GLOBALS['THBG'];
 
 ?>;
   font-size: 47px;
@@ -992,7 +992,7 @@ img.help {
   border-left: 1px solid <?php echo $GLOBALS['BGCOLOR'];
 
 ?>;
-  background-color: <?php echo $GLOBALS['BGCOLOR'];
+  background: <?php echo $GLOBALS['BGCOLOR'];
 
 ?>;
 }
@@ -1034,7 +1034,7 @@ img.help {
 }
 #year #monthgrid td {
   vertical-align: top;
-  padding: 0px 5px;
+  padding: 0 5px;
 }
 #year .minical tr {
   vertical-align: top;
@@ -1076,7 +1076,7 @@ a.weekcell {
   background: <?php echo $GLOBALS['BGCOLOR'];
 
 ?>;
-  background-color: <?php echo $GLOBALS['BGCOLOR'];
+  background: <?php echo $GLOBALS['BGCOLOR'];
 
 ?>;
   border-left: 0;
@@ -1107,7 +1107,7 @@ a.weekcell {
 #week .main th.empty {
   width: 5%;
   background: none;
-  background-color: <?php echo $GLOBALS['BGCOLOR'];
+  background: <?php echo $GLOBALS['BGCOLOR'];
 
 ?>;
   border-top: 1px solid <?php echo $GLOBALS['BGCOLOR'];
@@ -1180,7 +1180,7 @@ a.weekcell {
 #viewr .main th a:hover,
 #week .main th a:hover,
 #weekdetails .main th a:hover {
-  color: #0000FF;
+  color: #00F;
 }
 #year .minical td {
   text-align: center;
@@ -1239,7 +1239,7 @@ a.weekcell {
 }
 #viewl .minical,
 #month .minical {
-  margin: 0px 10px;
+  margin: 0 10px;
   border: 0;
 }
 .topnav {
@@ -1294,14 +1294,14 @@ a.weekcell {
 }
 #viewt td.timebar {
   width: 90%;
-  background-color: #FFFFFF;
+  background: #FFF;
   text-align: center;
-  color: #999999;
+  color: #999;
   font-size: 10px;
 }
 #viewt .yardstick td {
   padding: 0;
-  border: 1px solid #999999;
+  border: 1px solid #999;
 }
 #viewt td.entry {
   padding: 0;
@@ -1337,32 +1337,32 @@ a.weekcell {
   text-decoration : line-through;
 }
 .pub {
-  background-color: #80FF80;
+  background: #80FF80;
   text-align: center;
 }
 .conf {
-  background-color: #FFFF80;
+  background: #FFFF80;
   text-align: center;
 }
 .priv {
-  background-color: #FF5050;
+  background: #FF5050;
   text-align: center;
 }
 .boxtop {
- border-top: 1px solid #888888;
+ border-top: 1px solid #888;
 }
 .boxleft {
- border-left: 1px solid #888888;
+ border-left: 1px solid #888;
 }
 .boxright {
- border-right: 1px solid #888888;
+ border-right: 1px solid #888;
 }
 .boxbottom {
- border-bottom: 1px solid #888888;
+ border-bottom: 1px solid #888;
 }
 .boxall {
  padding-left: 3px;
- border: 1px solid #888888;
+ border: 1px solid #888;
 }
 .leftpadded {
  padding-left: 50px;
@@ -1403,7 +1403,7 @@ a.weekcell {
 }
 #about p {
   margin:1px;
-  color:#333333;
+  color:#333;
 }
 #scroller {
   position:absolute;
@@ -1451,6 +1451,17 @@ a.weekcell {
   position: absolute;
   top: 0;
   left: 0;
+}
+#accountiframe,
+#useriframe {
+  width: 90%;
+  border: 0;
+}
+#accountiframe {
+  height: 210px;
+}
+#useriframe {
+  height: 280px;
 }
 <?php
 if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
