@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fix typo [webcalendar - Help / Troubleshooting] Tiny error in "styles.php" v.1.197
  - Applied PATCH [ 1221369 ] upgrade docs <-> Postgresql
    but, to install/sql/upgrade-postgres.sql instead of UPGRADING.html
  - Fix bug [ 1612985 ] new installation get an error using the installation-wizard
