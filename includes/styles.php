@@ -1439,7 +1439,7 @@ a.weekcell {
 #thecell,
 #theoldcell {
   border: 1px;
-  backgcound: #FFF;
+  background: #FFF;
 }
 #thecell td img,
 #theoldcell td img {
