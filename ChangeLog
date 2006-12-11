@@ -1,5 +1,7 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fix bug [ 1612985 ] new installation get an error using the installation-wizard
+ - Fix bug [ 1612973 ] error during using 'update_translation.pl'
  - Implemented PATCH [ 1611288 ] Japanese translation updated
  - Added translate() to some phrases in dbi4php.php.
  - Implemented PATCH [ 1503321 ] Modify dbi4php.php to enable concurrent MySQL connections
