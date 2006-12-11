@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 7. Dec. 2006
+# Last update: 11. Dec. 2006
 #
 # $Id$
-# Translation last updated on 12-07-2006
+# Translation last updated on 12-11-2006
 
 
 ################################################################################
@@ -45,8 +45,8 @@ The import file contained no data: Die importierte Datei enthielt keine Daten
 ########################################
 # Page: del_entry.php
 #
-Hello: Guten Tag 
-An appointment has been canceled for you by: Eine Verabredung wurde storniert von 
+Hello: Guten Tag
+An appointment has been canceled for you by: Eine Verabredung wurde storniert von
 The subject was: Der Betreff lautete
 Date: Datum
 Time: Uhrzeit
@@ -183,7 +183,7 @@ Month (on same calendar): Monat (am gleichen Kalender)
 Users: Benutzer
 Selected: Ausgew&auml;hlte(r)
 All: Alle
-Select: Ausw&auml;hlen 
+Select: Ausw&auml;hlen
 Add: Hinzuf&uuml;gen
 
 ########################################
@@ -202,7 +202,7 @@ Reports: Berichte
 Delete Events: Eintr&auml;ge l&ouml;schen (endg&uuml;ltig)
 Activity Log: Aktivit&auml;ten Protokoll
 System Log: System Protokoll
-Public Preferences: Voreinstellungen &Ouml;ffentl. Zugang 
+Public Preferences: Voreinstellungen &Ouml;ffentl. Zugang
 Unapproved Public Events: Unbest&auml;tigte &Ouml;ffentl. Termine
 Administrative Tools: Administrative Werkzeuge
 
@@ -361,7 +361,7 @@ This will delete this entry for all users.: Dieser Eintrag wird f&uuml;r alle Be
 Delete entry: Eintrag l&ouml;schen
 Edit entry: Eintrag &auml;ndern
 Edit repeating entry for all dates: &Auml;ndern ALLER wiederkehrenden Termine des Eintrages
-Delete repeating event for all dates: L&ouml;schen ALLER wiederkehrenden Termine des Eintrages 
+Delete repeating event for all dates: L&ouml;schen ALLER wiederkehrenden Termine des Eintrages
 Edit entry for this date: &Auml;ndern des Termines f&uuml;r DIESES Datum
 Delete entry only for this date: L&ouml;schen des Termines nur f&uuml;r DIESES Datum
 from calendar of: vom Kalender
@@ -492,7 +492,7 @@ allow-view-other-help: Gibt an, ob die Benutzer die Kalender anderer Teilnehmer 
 Allow viewing other user&#39;s calendars: Ansicht anderer Benutzer-Kalender zulassen
 require-approvals-help: Wenn diese Option ausgew&auml;hlt ist, mu&szlig; der Benutzer den Termin best&auml;tigen, um auf seinem Kalender anzeigen zu lassen (vorausgesetzt &#34;unbest&auml;tigte Termine anzeigen&#34;). Anmerkung: Wenn diese Option auf &#34;Nein&#34; gesetzt ist, wirkt sich dies nicht auf etwaige aktiverte &#34;&Ouml;ffentliche Kalender&#34; aus.
 Require event approvals: Terminbest&auml;tigung verlangen
-display-unapproved-help: Gibt an, ob unbest&auml;tigte Termine in Ihrem Kalender angezeigt werden sollen. Wenn &#34;Ja&#34;, werden unbest&auml;tigte Termine in einer anderen Farbe angezeigt. Wenn &#34;Nein&#34;, m&uuml;ssen unbest&auml;tigte Termine erst best&auml;tigt werden, um angezeigt zu werden. 
+display-unapproved-help: Gibt an, ob unbest&auml;tigte Termine in Ihrem Kalender angezeigt werden sollen. Wenn &#34;Ja&#34;, werden unbest&auml;tigte Termine in einer anderen Farbe angezeigt. Wenn &#34;Nein&#34;, m&uuml;ssen unbest&auml;tigte Termine erst best&auml;tigt werden, um angezeigt zu werden.
 Display unapproved: Unbest&auml;tigte Termine anzeigen
 conflict-check-help: Pr&uuml;ft Termin&uuml;berschneidungen (Zwei Termine die f&uuml;r dieselbe Person zur gleichen Zeit gesetzt wurden). Wenn die Option auf &#34;JA&#34; gesetzt wurde kann man Termin&uuml;berschneidungen &uuml;ber ein Eingabefenster zulassen. Wenn Sie &#34;NEIN&#34; gew&auml;hlt wurde werden Konflikte nicht gepr&uuml;ft. Es wird empfohlen die Option auf &#34;JA&#34; zu setzen.
 Check for event conflicts: Termin&uuml;berschneidungen pr&uuml;fen
@@ -550,7 +550,7 @@ public-access-default-selected: Beim Hinzuf&uuml;gen eines neuen Termins wird &#
 Public access is default participant: &ouml;ffentlicher Zugang als Standard Benutzer
 public-access-view-others-help: Gibt an ob ein &ouml;ffentlicher Benutzer die Kalender anderer Benutzer sehen kann.
 Public access can view other users: &ouml;ffentlicher Benutzer kann andere Benutzer sehen
-public-access-can-add-help: Diese Einstellung erm&ouml;glicht es einem &ouml;ffentlichen Benutzer einen Termin einzutragen, dieser mu&szlig; jedoch durch den Administrator best&auml;tigt werden um angezeigt werden zu k&ouml;nnen 
+public-access-can-add-help: Diese Einstellung erm&ouml;glicht es einem &ouml;ffentlichen Benutzer einen Termin einzutragen, dieser mu&szlig; jedoch durch den Administrator best&auml;tigt werden um angezeigt werden zu k&ouml;nnen
 Public access can add events: &Ouml;ffentlicher Benutzer kann Termine hinzuf&uuml;gen
 public-access-add-requires-approval-help: Legt fest, ob hinzugef&uuml;gte Termine via &ouml;ffentlichen Zugang eine Genehmigung ben&ouml;tigen, bevor diese angezeigt werden
 Public access new events require approval: Erfordert Genehmigung bei einem NEUEN &ouml;ffentlichen Termin
@@ -575,7 +575,7 @@ Reports enabled: Berichte aktivieren
 subscriptions-enabled-help: Bestimmt ob &#39;REMOTE&#39;-Teilnehmer andere WebKalender von Teilnehmern abonnieren, und somit dessen Termine und ihre &#39;iCal&#39;-aktiven Anwendungen (wie Apple&#39;s iCal oder Mozilla-Kalender) sehen k&ouml;nnen.
 Allow remote subscriptions: &#39;REMOTE&#39;-Abos aktivieren
 remotes-enabled-help: Erm&ouml;glicht das Laden von ICS Dateien unter Verwendung einer URL
-Allow remote calendars: Erm&ouml;gliche externe (andere) Kalender 
+Allow remote calendars: Erm&ouml;gliche externe (andere) Kalender
 rss-enabled-help: Bestimmt, ob ein Kalender &uuml;ber RRS-Feed erreicht werden kann.
 Enable RSS feed: RRS-Feed aktivieren
 categories-enabled-help: Aktiviert Unterst&uuml;tzung f&uuml;r Terminkategorien.
@@ -586,7 +586,7 @@ Requires: Ben&ouml;tigt
 folder to exist: vorhandener Ordner
 display-tasks-help: Zeigt eine kleine Aufgabenliste bei Monats- und Tagesansicht
 Display small task list: Kleine Aufgabenliste anzeigen
-display-tasks-in-grid-help: Anzeigen der Aufgaben zusammen mit den Terminen in den Kalendern 
+display-tasks-in-grid-help: Anzeigen der Aufgaben zusammen mit den Terminen in den Kalendern
 Display tasks in Calendars: Aufgaben in den Kalendern anzeigen
 allow-external-users-help: Externer Benutzer k&ouml;nnen die Hilfe aufrufen
 Allow external users: Externe Benutzer zulassen
@@ -740,7 +740,7 @@ Cancel: Abbrechen
 #
 Undo: R&uuml;cksetzen
 DEFAULT CONFIGURATION: GRUNDKONFIGURATION
-Go: Zeigen 
+Go: Zeigen
 Admin: Administration
 Allow Access to Other Users&#39; Calendar: Erlaube Zugriff auf Kalender anderer Benutzer
 Grant This User Access to My Calendar: Erlaube Benutzerzugriff auf meinen Kalender
@@ -859,7 +859,6 @@ Custom Colors: Eigene Farben
 Add Custom: Eigene Farben hinzuf&uuml;gen
 Current Color: Derzeitige Farben
 Old Color: Alte Farben
-Ok: Ok
 
 ########################################
 # Page: about.php
@@ -868,6 +867,7 @@ version: Version
 Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.: Webcalendar ist eine PHP Anwendung welche zum Warten eines Kalenders f&uuml;r einen einzelnen Benutzer oder einer Gruppe von Internet / Intranet Benutzer. Er kann aber auch als Terminkalender konfiguriert werden.
 Credits: Abspann
 About: &Uuml;ber
+Ok: Ok
 
 ########################################
 # Page: help_layers.php
@@ -878,7 +878,7 @@ Clicking the Edit Layers link in the admin section at the bottom of the page wil
 The text color of the new layer that will be displayed in your calendar.: Die Farbe Ihres neuen Layers wird in Ihrem Kalender angezeigt.
 Disabling: Deaktivieren
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Dr&uuml;cken Sie &#34;Layer abschalten&#34; im Admin-User um die Layers ABZUSCHALTEN (am Ende der Seite).
-If checked, events that are duplicates of your events will be shown.: Wenn aktiviert, werden Ihre etwaigen doppelten Termine angezeigt. 
+If checked, events that are duplicates of your events will be shown.: Wenn aktiviert, werden Ihre etwaigen doppelten Termine angezeigt.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Dr&uuml;cken Sie &#34;Layer aktivieren&#34; im Admin-User um die Layers zu AKTIVIEREN (am Ende der Seite).
 Specifies the user that you would like to see displayed in your calendar.: Definieren Sie Ihren gew&uuml;nschten Benutzer den Sie in Ihren Kalender sehen m&ouml;chten.
 
@@ -888,12 +888,12 @@ Specifies the user that you would like to see displayed in your calendar.: Defin
 The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
 A new appointment has been made for you by: Es wurde Ihnen eine neue Verabredung eingetragen von -->
 An appointment has been updated by: Eine Verabredung wurde ge&auml;ndert von
-The subject is: Die Beschreibung lautet 
+The subject is: Die Beschreibung lautet
 Please look on: Bitte konsultieren Sie Ihren
 to accept or reject this appointment: um die Verabredung zu best&auml;tigen/abzulehnen.
 to view this appointment: Verabredung anschauen
 Scheduling Conflict: Termin&uuml;berschneidung
-Your suggested time of: Ihre Eintragung von 
+Your suggested time of: Ihre Eintragung von
 conflicts with the following existing calendar entries: &uuml;berschneidet sich mit folgenden Kalendereintr&auml;gen
 
 ########################################
@@ -1069,7 +1069,7 @@ Add New NonUser Calendar: Neuen &#39;Zentralen-Kalender&#39; hinzuf&uuml;gen
 # Page: category.php
 #
 Category Icon: Icon f&uuml;r Kategorie
-Category Name: Name der Kategorie 
+Category Name: Name der Kategorie
 Remove Icon: Icon entfernen
 Add Icon to Category: Icon f&uuml;r Kategorie hinzuf&uuml;gen
 Upload: Hochladen
@@ -1132,7 +1132,7 @@ duration-help: Gibt die Dauer des Termines in Minuten an. Kann leer gelassen wer
 end-time-help: Definiert die Zeit des Termines als Endzeitpunkt.
 participants-help: Gibt die Benutzer des Termines an.
 Availability: Verf&uuml;gbarkeit
-external-participants-help: Spezifiziert eine Teilnehmerliste f&uuml;r Benutzer die keinen eigenen Webkalenderzugang haben. Die Benutzer sollten pro Zeile aufgef&uuml;hrt werden und k&ouml;nnen auch Emailadressen miteinschlie&szlig;en bzw. enthalten.  Wenn ein Emailadresse eingetragen wurde, ist der Benutzer in der Lage, Benachrichtigungen und Erinnerungen zu empfangen. 
+external-participants-help: Spezifiziert eine Teilnehmerliste f&uuml;r Benutzer die keinen eigenen Webkalenderzugang haben. Die Benutzer sollten pro Zeile aufgef&uuml;hrt werden und k&ouml;nnen auch Emailadressen miteinschlie&szlig;en bzw. enthalten.  Wenn ein Emailadresse eingetragen wurde, ist der Benutzer in der Lage, Benachrichtigungen und Erinnerungen zu empfangen.
 External Participants: Externe Benutzer
 repeat-type-help: W&auml;hlen Sie wie oft ein Termin wiederholt werden soll. Monatlich (tagesorientiert) wiederholt einen Termin jeden 1. Montag des Monats, jeden 3. Donnerstag des Monats, etc.
 Daily: T&auml;glich
@@ -1236,7 +1236,18 @@ Page: Seite
 ########################################
 # Page: includes/dbi4php.php
 #
+db_type not defined.: db_type nicht definiert
+invalid db_type: ung&uuml;tige db_type
 Cache cleared from previous SQL!: Cache wird von voriger SQL geleert!
+Error executing query.: Fehler beim Ausf&uuml;hren des Query
+Unfortunately, XXX is not implemented for: Ungew&ouml;hnliches, XXX ist nicht implementiert
+Unknown ODBC error.: Unbekannter ODBC Fehler
+Unknown error.: Unbekannter Fehler
+Cache error: Cache Fehler
+write: schreiben
+Could not XXX file: Kann Datei XXX nicht
+Error opening cache dir: Fehler beim &Ouml;ffnen des Cache-Verzeichnis
+delete: l&ouml;schen
 
 ########################################
 # Page: includes/xcal.php
@@ -1539,7 +1550,7 @@ Mb: Mb
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Benachrichtigung
-provide_address: Sie m&uuml;ssen mindestens eine Emailadresse als Empf&auml;nger angeben 
+provide_address: Sie m&uuml;ssen mindestens eine Emailadresse als Empf&auml;nger angeben
 mailer_not_supported: Dieser Mailtyp wird nicht unterst&uuml;tzt
 execute: Kann nicht ausgef&uuml;hrt werden
 instantiate: Kann die Emailfunktion nicht d&uuml;rchf&uuml;hren
@@ -1613,7 +1624,7 @@ Your <b>settings.php</b> file appears to be valid: Ihre <b>settings.php</b> Date
 Configuration Wizard Password: Assitenten - Konfigurationspasswort
 Create Settings File Password: Erzeuge Passwort f&uuml;r die Settings Datei
 Password (again): Passwort (wiederholen)
-db setup directions...: In diesem Abschnitt stellen (und &uuml;berpr&uuml;fen) Sie die Verbindung zum Datenbankserver her. Die gelieferten Kontoinformationen sollten VOLLE Erlaubnis haben um Datenbanken, Tabellen und Benutzer zu erstellen. Wenn dies nicht m&ouml;glich oder Ihr Datenbankzugriff begrenzt ist, m&uuml;ssen Sie manuell Ihre Datenbank justieren. 
+db setup directions...: In diesem Abschnitt stellen (und &uuml;berpr&uuml;fen) Sie die Verbindung zum Datenbankserver her. Die gelieferten Kontoinformationen sollten VOLLE Erlaubnis haben um Datenbanken, Tabellen und Benutzer zu erstellen. Wenn dies nicht m&ouml;glich oder Ihr Datenbankzugriff begrenzt ist, m&uuml;ssen Sie manuell Ihre Datenbank justieren.
 Database Status: Datenbank Status
 Supported databases for your PHP installation: Unterst&uuml;zte Datenbanken f&uuml;r Ihre PHP Installation
 Your current database settings are able to access the database: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie in der Lage auf Ihre Datenbank zuzugreifen.
@@ -1671,4 +1682,4 @@ Development: Entwicklung
 Save Settings: Einstellung speichern
 Launch WebCalendar: Webkalender starten
 
- 	  	 
+
