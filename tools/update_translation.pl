@@ -56,7 +56,7 @@ $trans_dir = '../translations';
 $base_trans_file = "$trans_dir/English-US.txt";
 $plugin          = '';
 
-$show_missing = 1 # set to 0 to minimize translation file.
+$show_missing = 1; # set to 0 to minimize translation file.
 $show_dups    = 0; # set to 0 to minimize translation file.
 $verbose      = 0;
 
