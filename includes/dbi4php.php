@@ -654,7 +654,7 @@ function dbi_escape_string ( $string ) {
         ? addslashes ( $string )
         : ( version_compare ( phpversion (), '4.3.0' ) >= 0
           ? mysql_real_escape_string ( $string, $db_connection_info['connection'] )
-          : mysql_escape_string ( $string, $db_connection_info['connection'] ) ) );
+          : mysql_escape_string ( $string ) ) );
 
     case 'mysqli':
       return mysqli_real_escape_string ( $db_connection_info['connection'],
