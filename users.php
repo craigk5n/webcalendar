@@ -1,5 +1,6 @@
 <?php
-/*
+/* $Id$
+
  NOTE:
  There are THREE components that make up the functionality of users.php.
  1. users.php
@@ -15,100 +16,96 @@
   - refreshes the parent frame (users.php)
 
  This structure is mirrored for groups & nonusers
-*/
-
-/* $Id$ */
+ */
 
 include_once 'includes/init.php';
 
-if ( empty ( $login) || $login == '__public__' ) {
-  // do not allow public access
+if ( empty ( $login ) || $login == '__public__' ) {
+  // Do not allow public access.
   do_redirect ( empty ( $STARTVIEW ) ? 'month.php' : $STARTVIEW );
   exit;
 }
 
-$INC = array('js/users.php/true','js/visible.php');
-$BodyX = ( ! empty ( $tab ) ?  "onload=\"showTab( '$tab' );\"" : '' );
-print_header($INC,'', $BodyX, '', '', true );
+$doGroups = $doNUCS = false;
+$doRemotes = ( ! empty ( $REMOTES_ENABLED ) && $REMOTES_ENABLED == 'Y' &&
+  ( ! access_is_enabled () || access_can_access_function ( ACCESS_IMPORT ) ) );
+if ( $is_admin ) {
+  $doGroups = ( ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' );
+  $doNUCS = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' );
+}
 
-echo display_admin_link();
-?>
+print_header ( array ( 'js/users.php/true', 'js/visible.php' ), '',
+  ( ! empty ( $tab ) ? "onload=\"showTab ( '$tab' );\"" : '' ), '', '', true );
 
+ob_start ();
+
+echo display_admin_link () . '
 <!-- TABS -->
-<div id="tabs">
- <span class="tabfor" id="tab_users"><a href="#tabusers" onclick="return showTab('users')"><?php 
-  if ($is_admin) {
-   echo translate( 'Users' );
-  } else {
-   echo translate( 'Account' );
-  }
- ?></a></span>
- <?php if ($GROUPS_ENABLED == 'Y' && $is_admin) { ?>
-  <span class="tabbak" id="tab_groups"><a href="#tabgroups" onclick="return showTab('groups')"><?php etranslate( 'Groups' )?></a></span>
- <?php } 
- if ($NONUSER_ENABLED == 'Y' && $is_admin) { ?>
-  <span class="tabbak" id="tab_nonusers"><a href="#tabnonusers" onclick="return showTab('nonusers')"><?php etranslate( 'NonUser Calendars' )?></a></span>
- <?php } 
- if ($REMOTES_ENABLED == 'Y'  && ( ! access_is_enabled () || 
-   access_can_access_function ( ACCESS_IMPORT ) )) { ?>
-  <span class="tabbak" id="tab_remotes"><a href="#tabremotes" onclick="return showTab('remotes')"><?php etranslate( 'Remote Calendars' )?></a></span>
- <?php } ?>
-</div>
-
+    <div id="tabs">
+      <span class="tabfor" id="tab_users"><a href="#tabusers" onclick="return '
+ . 'showTab (\'users\')>'
+ . ( $is_admin ? $translations['Users'] : $translations['Account'] )
+ . '</a></span>' . ( $doGroups ? '
+      <span class="tabbak" id="tab_groups"><a href="#tabgroups" '
+   . 'onclick="return showTab (\'groups\')">' . $translations['Groups']
+   . '</a></span>' : '' ) . ( $doNUCS ? '
+      <span class="tabbak" id="tab_nonusers"><a href="#tabnonusers" '
+   . 'onclick="return showTab (\'nonusers\')">'
+   . $translations['NonUser Calendars'] . '</a></span>' : '' )
+ . ( $doRemotes ? '
+      <span class="tabbak" id="tab_remotes"><a href="#tabremotes" '
+   . 'onclick="return showTab (\'remotes\')">'
+   . translate ( 'Remote Calendars' ) . '</a></span>' : '' ) . '
+    </div>
 <!-- TABS BODY -->
-<div id="tabscontent">
- <!-- USERS -->
- <a name="tabusers"></a>
- <div id="tabscontent_users">
- <?php if ( $is_admin ) {
-  
-   if ( $admin_can_add_user )
-    echo '<a title="' . 
-     translate( 'Add New User' ) . "\" href=\"edit_user.php\" target=\"useriframe\" onclick=\"javascript:show('useriframe');\">" . 
-     translate( 'Add New User' ) . "</a><br />\n";
-  ?>
-  <ul>
-   <?php
-    $userlist = user_get_users ();
-    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-     if ( $userlist[$i]['cal_login'] != '__public__' ) {
-      echo '<li><a title="' . 
-       $userlist[$i]['cal_fullname'] . '" href="edit_user.php?user=' . 
-       $userlist[$i]['cal_login'] . 
-       "\" target=\"useriframe\" onclick=\"javascript:show('useriframe');\">";
-      echo $userlist[$i]['cal_fullname'];
-      echo '</a>';
-      if (  $userlist[$i]['cal_is_admin'] == 'Y' )
-       echo '&nbsp;<abbr title="' . translate( 'denotes administrative user' ) . 
-       '">*</abbr>';
-      echo "</li>\n";
-     }
-    }
-   ?>
-  </ul>
- *&nbsp;<?php etranslate( 'denotes administrative user' )?><br />
+    <div id="tabscontent">
+<!-- USERS -->
+      <a name="tabusers"></a>
+      <div id="tabscontent_users">';
 
-  <?php 
-   echo '<iframe name="useriframe" id="useriframe" style="width:90%;border-width:0px; height:280px;"></iframe>';
+if ( $is_admin ) {
+  echo ( $admin_can_add_user ? '
+        <a href="edit_user.php" target="useriframe" onclick="javascript:show '
+     . '(\'useriframe\');">' . translate ( 'Add New User' )
+     . '</a><br />' : '' ) . '
+        <ul>';
 
-} else { ?>
-<iframe src="edit_user.php" name="accountiframe" id="accountiframe" style="width:90%;border-width:0px; height:210px;"></iframe>
-<?php } ?>
-</div>
+  $userlist = user_get_users ();
+  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
+    if ( $userlist[$i]['cal_login'] != '__public__' )
+      echo '
+          <li><a href="edit_user.php?user=' . $userlist[$i]['cal_login']
+       . '" target="useriframe" onclick="javascript:show (\'useriframe\');">'
+       . $userlist[$i]['cal_fullname'] . '</a>'
+       . ( $userlist[$i]['cal_is_admin'] == 'Y' ? '&nbsp;<abbr title="'
+         . translate ( 'denotes administrative user' ) . '">*</abbr>' : '' )
+       . '</li>';
+  }
+  echo '
+        </ul>
+        *&nbsp;' . $translations['denotes administrative user'] . '.<br />
+        <iframe name="useriframe" id="useriframe"></iframe>';
+} else
+  echo '
+        <iframe src="edit_user.php" name="accountiframe" id="accountiframe">'
+   . '</iframe>';
 
-<?php 
- if ($GROUPS_ENABLED == 'Y' && $is_admin) { 
+echo '
+      </div>';
+
+if ( $doGroups )
   include_once 'groups.php';
- } 
- if ($NONUSER_ENABLED == 'Y' && $is_admin) {
+
+if ( $doNUCS )
   include_once 'nonusers.php';
- }
-  if ($REMOTES_ENABLED == 'Y' && ( ! access_is_enabled () ||
-    access_can_access_function ( ACCESS_IMPORT ) ) ) {
+
+if ( $doRemotes )
   include_once 'remotes.php';
- }
+
+ob_end_flush ();
+
+echo '
+    </div>
+    ' . print_trailer ();
+
 ?>
-</div>
-
-<?php echo print_trailer(); ?>
-
