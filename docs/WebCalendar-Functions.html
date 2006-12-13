@@ -1129,7 +1129,7 @@ h3 {
 <br /><br />
 <br /><br />
 <h3><a name="read_repeated_events">read_repeated_events</a></h3>
-<tt>read_repeated_events ( $user, $cat_id, $date )</tt><br /><br />
+<tt>read_repeated_events ( $user, $date, $cat_id )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Read all the repeated events for a user. This is only called once per page request to improve performance. All the events get loaded into the array $repeated_events sorted by time of day (not date). This will load all the repeated events into memory. <br /><br /><span class="note">Notes</span>  <ul> <li> To get which events repeat on a specific date, use the <a href="#get_repeating_entries"><tt>get_repeating_entries</tt></a> function.</li> <li> To get all the dates that one specific event repeats on, the <a href="#get_all_dates"><tt>get_all_dates</tt></a> function should be called.  </li> </ul></blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
