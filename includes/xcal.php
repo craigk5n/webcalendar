@@ -849,9 +849,9 @@ function export_ical ( $id = 'all', $attachment = false ) {
   // Always output something, even if no records come back
   // This prevents errors on the iCal client
   $ret = "BEGIN:VCALENDAR\r\n";
-  $title = 'X-WR-CALNAME;VALUE=TEXT:' .
+  $title = 'X-WR-CALNAME;VALUE=TEXT:' . 
   ( empty ( $publish_fullname ) ? $login : translate( $publish_fullname ) );
-  $title = str_replace ( ',', "\\,", $title );
+  $title = utf8_encode( str_replace ( ',', "\\,", $title ) );
   $ret .= "$title\r\n";
   if ( ! empty ( $PROGRAM_VERSION ) ) {
     $ret .= "PRODID:-//WebCalendar-$PROGRAM_VERSION\r\n";
