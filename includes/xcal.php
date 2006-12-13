@@ -36,7 +36,7 @@ function export_fold_lines( $string, $encoding = 'none', $limit = 76 ) {
   $start_encode = 0; // we start encoding only after the ': ' character is encountered
   if ( strcmp( $encoding, 'quotedprintable' ) == 0 )
     $fold--; // must take into account the soft line break
-  for ( $i = 0; $i < $len; $i++ ) {
+ for ( $i = 0; $i < $len; $i++ ) {
     $enc = $string[$i];
 
     if ( $start_encode ) {
@@ -45,8 +45,7 @@ function export_fold_lines( $string, $encoding = 'none', $limit = 76 ) {
       else if ( strcmp( $encoding, 'utf8' ) == 0 )
         $enc = utf8_encode( $string[$i] );
     }
-
-    if ( $string[$i] == ': ' )
+    if ( $string[$i] == ':' )
       $start_encode = 1;
 
     if ( ( strlen( $row ) + strlen( $enc ) ) > $fold ) {
@@ -79,7 +78,7 @@ function export_fold_lines( $string, $encoding = 'none', $limit = 76 ) {
     if ( $string[$i] == ' ' || $string[$i] == "\t" || $string[$i] == ';' || $string[$i] == ',' )
       $lwsp = strlen( $row ) - 1;
 
-    if ( $string[$i] == ': ' && ( strcmp( $encoding, 'quotedprintable' ) == 0 ) )
+    if ( $string[$i] == ':' && ( strcmp( $encoding, 'quotedprintable' ) == 0 ) )
       $lwsp = strlen( $row ) - 1; // we cut at ':' only for quoted printable
   } //end for ($i = 0; $i < $len; $i++)
   $res[$res_ind] = $row; // Add last row (or first if no folding is necessary)
@@ -194,7 +193,7 @@ function export_time( $date, $duration, $time, $texport, $vtype = 'E' ) {
 }
 // $simple allows for easy reading
 function export_recurrence_ical( $id, $simple = false ) {
-  global $timestamp_RRULE, $TIMEZONE, $DATE_FORMAT_TASK, $lang_file;
+  global $timestamp_RRULE, $DATE_FORMAT_TASK, $lang_file;
 
   $recurrance = '';
   $sql = 'SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not '
@@ -1195,11 +1194,11 @@ function import_data ( $data, $overwrite, $type ) {
     // NOTE: (cek) commented out 'publish'.  Will not work if event
     // was originally created from importing.
     if ( ! empty ( $Entry['UID'] ) ) {
-      $res = dbi_execute ( 'SELECT webcal_import_data.cal_id '
-         . 'FROM webcal_import_data, webcal_entry_user WHERE '
+      $res = dbi_execute ( 'SELECT wid.cal_id '
+         . 'FROM webcal_import_data wid, webcal_entry_user weu WHERE '
         // "cal_import_type = 'publish' AND " .
-        . 'webcal_import_data.cal_id = webcal_entry_user.cal_id AND '
-         . 'webcal_entry_user.cal_login = ? AND '
+        . 'wid.cal_id = weu.cal_id AND '
+         . 'weu.cal_login = ? AND '
          . 'cal_external_id = ?' , array ( $login , $Entry['UID'] ) );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
@@ -2271,7 +2270,7 @@ function format_ical( $event ) {
   if ( isset ( $event['categories'] ) ) {
     // $fevent['Categories']  will contain an array of cat_id(s) that match the
     // category_names
-    $fevent['Categories'] = get_categories_id_byname ( $event['categories'] );
+    $fevent['Categories'] = get_categories_id_byname ( utf8_decode ( $event['categories'] ) );
   }
   // Start and end time
   /* Snippet from RFC2445
@@ -2322,11 +2321,11 @@ function format_ical( $event ) {
 
   if ( empty ( $event['summary'] ) )
     $event['summary'] = translate( 'Unnamed Event' );
-  $fevent['Summary'] = $event['summary'];
+  $fevent['Summary'] = utf8_decode ( $event['summary'] );
   if ( ! empty ( $event['description'] ) ) {
-    $fevent['Description'] = $event['description'];
+    $fevent['Description'] = utf8_decode ( $event['description'] );
   } else {
-    $fevent['Description'] = $event['summary'];
+    $fevent['Description'] = $fevent['summary'];
   }
 
   if ( ! empty ( $event['class'] ) ) {
@@ -2398,11 +2397,11 @@ function format_ical( $event ) {
   }
 
   if ( ! empty ( $event['location'] ) ) {
-    $fevent['Location'] = $event['location'];
+    $fevent['Location'] = utf8_decode ( $event['location'] );
   }
 
   if ( ! empty ( $event['url'] ) ) {
-    $fevent['URL'] = $event['url'];
+    $fevent['URL'] = utf8_decode ( $event['url'] );
   }
 
   if ( ! empty ( $event['priority'] ) ) {
