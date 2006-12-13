@@ -91,15 +91,15 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
             <table id="dateArea">
               <tr>
                 <td><label>' . translate ( 'Start date' ) . ':</label></td>
-                <td>' . date_selection ( 'from_', date ( 'Ymd' ) ) . '</td>
+                <td>' . date_selection ( 'from', date ( 'Ymd' ) ) . '</td>
               </tr>
               <tr>
                 <td><label>' . translate ( 'End date' ) . ':</label></td>
-                <td>' . date_selection ( 'end_', date ( 'Ymd' ) ) . '</td>
+                <td>' . date_selection ( 'end', date ( 'Ymd' ) ) . '</td>
               </tr>
               <tr>
                 <td><label>' . translate ( 'Modified since' ) . ':</label></td>
-                <td>' . date_selection ( 'mod_',
+                <td>' . date_selection ( 'mod',
   mktime ( 0, 0, 0, $datem, date ( 'd' ) - 7, $dateY ) // week ago
   ) . '</td>
               </tr>
