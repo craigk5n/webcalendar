@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Description:
  * Creates the iCal free/busy schedule a single user.
@@ -114,7 +113,7 @@ $startdate = mktime ( 0, 0, 0, date('m'), 1, date('Y') );
 $enddate = mktime ( 0, 0, 0, date('m'), 1, date('Y') + 1 );
 
 /* Pre-Load the repeated events for quicker access */
-$repeated_events = read_repeated_events ( $user, '', $startdate, $enddate );
+$repeated_events = read_repeated_events ( $user, $startdate, $enddate, '' );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $user, $startdate, $enddate);

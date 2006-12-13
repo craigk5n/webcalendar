@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Description:
  * This script is intended to be used outside of normal WebCalendar
@@ -235,7 +234,7 @@ $endDate = date ( 'Ymd', $endTime );
 
 /* Pre-Load the repeated events for quicker access */
 if (  $allow_repeats == true )
-  $repeated_events = read_repeated_events ( $username, $cat_id, $startTime, $endTime );
+  $repeated_events = read_repeated_events ( $username, $startTime, $endTime, $cat_id );
 
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $username, $startTime, $endTime, $cat_id );

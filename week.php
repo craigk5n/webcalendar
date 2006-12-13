@@ -44,8 +44,8 @@ $untimed_found = false;
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
 /* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( strlen ( $user ) ? $user : $login,
-  $cat_id, $wkstart, $wkend );
+$repeated_events = read_repeated_events ( strlen ( $user )
+ ? $user : $login, $wkstart, $wkend, $cat_id );
 
 /* Pre-load the non-repeating events for quicker access */
 //Start the search one week early to account for cross-day events

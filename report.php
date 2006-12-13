@@ -1,6 +1,5 @@
 <?php
-/**
- * Lists a user's reports or displays a specific report.
+/* Lists a user's reports or displays a specific report.
  *
  * Input Parameters:
  * - <var>report_id</var> (optional) - specified report id in webcal_report
@@ -20,7 +19,6 @@
  * @version $Id$
  * @package WebCalendar
  * @subpackage Reports
- *
  */
 
 /*
@@ -440,7 +438,7 @@ if ( ! empty ( $end_date ) ) {
 if ( empty ( $error ) && empty ( $list ) ) {
   $cat_id = empty ( $report_cat_id ) ? '' : $report_cat_id;
 
-  $repeated_events = read_repeated_events ( $report_user, $cat_id, $start_date, $end_date );
+  $repeated_events = read_repeated_events ( $report_user, $start_date, $end_date, $cat_id );
   $events = read_events ( $report_user, $start_date, $end_date, $cat_id );
 
   $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
