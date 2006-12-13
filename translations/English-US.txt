@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 12-09-2006
+# Translation last updated on 12-13-2006
 
 
 ################################################################################
@@ -665,8 +665,8 @@ You can only create one layer for each user: You can only create one layer for e
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
 word characters only: can only contain word characters (a-zA-Z_0-9)
-Edit User: Edit User
 Add User: Add User
+Edit User: Edit User
 Calendar ID: Calendar ID
 First Name: First Name
 Last Name: Last Name
@@ -768,7 +768,6 @@ Set Password: Set Password
 Deleting users not supported: Deleting users not supported
 The passwords were not identical: The passwords were not identical
 You have not entered a password: You have not entered a password
-Invalid characters in login: Invalid characters in login
 Username can not be blank: Username can not be blank
 
 ########################################
@@ -1709,3 +1708,18 @@ could not find event id XXX in database.: could not find event id XXX in databas
 This is a reminder for the XXX detailed below.: This is a reminder for the XXX detailed below.
 Pecentage Complete: Pecentage Complete
 Reminder: Reminder
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action: Unsupported action
+No event id specified: No event id specified
+not admin: not admin
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Invalid characters in login
+already exists: already exists
+You cannot remove admin rights from yourself!: You cannot remove admin rights from yourself!
+Unknown error saving user: Unknown error saving user
