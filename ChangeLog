@@ -1,5 +1,7 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fix bug [ 1614167 ] adjusted bg-image not working at views
+   Cut the wrong set of dupe code the first time.
  - Updated German.txt. Thanks Markus.
  - Fix typo [webcalendar - Help / Troubleshooting] Tiny error in "styles.php" v.1.197
  - Applied PATCH [ 1221369 ] upgrade docs <-> Postgresql

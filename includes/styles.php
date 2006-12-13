@@ -122,13 +122,14 @@
  *   Results: <body id="editentry">
  */
 
- defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
+defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 // If called directly from a script,
 // this will wrap the CSS with the proper mimetype tags.
 if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
     preg_match ( "/css_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
   echo "<style type=\"text/css\">\n<!--\n";
 }
+
 ?>body {
   margin: 2px;
   color: <?php echo $GLOBALS['TEXTCOLOR'];
@@ -137,11 +138,9 @@ if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
   font-family: <?php echo $GLOBALS['FONTS'];
 
 ?>;
-<?php if ( ! empty ( $GLOBALS['BGIMAGE'] ) ) { ?>
-  background: url('<?php echo $GLOBALS['BGIMAGE'];?>') <?php
-    echo $GLOBALS['BGREPEAT'];?>;
-<?php } ?>
-  background: <?php echo $GLOBALS['BGCOLOR'];
+  background: <?php echo $GLOBALS['BGCOLOR']
+ . ( ! empty ( $GLOBALS['BGIMAGE'] )
+  ? ' url(\'' . $GLOBALS['BGIMAGE'] . '\') ' . $GLOBALS['BGREPEAT'] : '' );
 
 ?>;
 }
@@ -1438,7 +1437,7 @@ a.weekcell {
 }
 #thecell,
 #theoldcell {
-  border: 1px;
+  border: 1px solid #000;
   background: #FFF;
 }
 #thecell td img,
