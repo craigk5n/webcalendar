@@ -88,7 +88,7 @@ $re_save = array ();
 $viewusercnt = count ( $viewusers );
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], '', $startdate, $enddate );
+  $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' );
   $re_save[$i] = $repeated_events;
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $viewusers[$i], $startdate, $enddate );

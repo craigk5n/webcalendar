@@ -2187,7 +2187,7 @@ function read_events ( $user, $startdate, $enddate, $cat_id = '') {
  *
  * @uses query_events
  */
-function read_repeated_events ( $user, $cat_id = '', $date = '', $enddate='' ) {
+function read_repeated_events ( $user, $date = '', $enddate='', $cat_id = '' ) {
   global $login, $layers, $jumpdate, $max_until;
   
   //this date should help speed up things by eliminating events that 
@@ -5075,7 +5075,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $cnt = count ( $participants );
   for ( $i = 0; $i < $cnt; $i++ ) {
     /* Pre-Load the repeated events for quckier access */
-    $repeated_events = read_repeated_events ( $participants[$i], '', $dateTS, $dateTS );
+    $repeated_events = read_repeated_events ( $participants[$i], $dateTS, $dateTS, '' );
     /* Pre-load the non-repeating events for quicker access */
     $events = read_events ( $participants[$i], $dateTS, $dateTS );
 
