@@ -43,7 +43,7 @@ echo display_admin_link () . '
 <!-- TABS -->
     <div id="tabs">
       <span class="tabfor" id="tab_users"><a href="#tabusers" onclick="return '
- . 'showTab (\'users\')>'
+ . 'showTab (\'users\')">'
  . ( $is_admin ? $translations['Users'] : $translations['Account'] )
  . '</a></span>' . ( $doGroups ? '
       <span class="tabbak" id="tab_groups"><a href="#tabgroups" '
