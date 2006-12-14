@@ -30,7 +30,8 @@ if ( $d = dir ( $icon_path ) ) {
   $d->close ();
   // Remove duplicates and replace keys with 0...n.
   $icons = array_unique ( $icons );
-  sort ( $icons );
+  //Convert associative array into numeric array
+  $icons = array_values ( $icons );
   $title_str = translate ( 'Click to Select' );
 
   ?>
@@ -53,7 +54,6 @@ if ( $d = dir ( $icon_path ) ) {
 
 <?php
   ob_start ();
-
   echo '
     <table align="center" border="0">
       <tr>
