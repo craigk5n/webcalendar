@@ -64,16 +64,12 @@ function list_unapproved ( $user ) {
   user_load_variables ( $user, 'temp_' );
   //echo "Listing events for $user<br />";
 
-  $sql = 'SELECT webcal_entry.cal_id, webcal_entry.cal_name, ' .
-    'webcal_entry.cal_description, webcal_entry_user.cal_login, ' .
-    'webcal_entry.cal_priority, webcal_entry.cal_date, ' .
-    'webcal_entry.cal_time, webcal_entry.cal_duration, ' .
-    'webcal_entry_user.cal_status, webcal_entry.cal_type ' .
-    'FROM webcal_entry, webcal_entry_user ' .
-    'WHERE webcal_entry.cal_id = webcal_entry_user.cal_id ' .
-    'AND webcal_entry_user.cal_login = ? ' .
-    'AND webcal_entry_user.cal_status = \'W\' ' .
-    'ORDER BY webcal_entry_user.cal_login, webcal_entry.cal_date';
+  $sql = 'SELECT we.cal_id, we.cal_name, we.cal_description, weu.cal_login,
+    we.cal_priority, we.cal_date, we.cal_time, we.cal_duration,
+    weu.cal_status, we.cal_type
+    FROM webcal_entry we, webcal_entry_user weu
+    WHERE we.cal_id = weu.cal_id AND weu.cal_login = ? AND weu.cal_status = \'W\'
+    ORDER BY weu.cal_login, we.cal_date';
   $rows = dbi_get_cached_rows ( $sql , array ( $user ) );
   if ( $rows ) {
     $viewStr = translate( 'View this entry' );
