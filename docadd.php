@@ -60,11 +60,9 @@ if ( $is_admin )
 // Get event details if this is associated with an event
 if ( empty ( $error ) && ! empty ( $id ) ) {
   // is this user a participant or the creator of the event?
-  $sql = 'SELECT webcal_entry.cal_id FROM webcal_entry, ' .
-    'webcal_entry_user WHERE webcal_entry.cal_id = ' .
-    'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ' .
-    'AND (webcal_entry.cal_create_by = ? ' .
-    'OR webcal_entry_user.cal_login = ?)';
+  $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu 
+    WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
+    AND (we.cal_create_by = ? OR weu.cal_login = ?)';
   $res = dbi_execute ( $sql, array( $id, $login, $login ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -126,10 +124,10 @@ if ( $REQUEST_METHOD == 'POST' ) {
     // Comment
     $description = getValue ( 'description' );
     $comment = getValue ( 'comment' );
-    $sql = 'INSERT INTO webcal_blob ( cal_blob_id, ' .
-      'cal_id, cal_login, cal_name, cal_description, ' .
-      'cal_size, cal_mime_type, cal_type, cal_mod_date, ' .
-      'cal_mod_time, cal_blob ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
+    $sql = 'INSERT INTO webcal_blob ( cal_blob_id, cal_id, cal_login, 
+      cal_name, cal_description, cal_size, cal_mime_type, cal_type, 
+      cal_mod_date, cal_mod_time, cal_blob ) 
+      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
     if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, NULL, 
       $description, 0, 'text/plain', 'C', date('Ymd'), date( 'His' ), NULL ) ) ) {
       $error = db_error ();
@@ -174,10 +172,10 @@ if ( $REQUEST_METHOD == 'POST' ) {
     fclose ( $fd );
 
     $comment = getValue ( 'description' );
-    $sql = 'INSERT INTO webcal_blob ( cal_blob_id, ' .
-      'cal_id, cal_login, cal_name, cal_description, ' .
-      'cal_size, cal_mime_type, cal_type, cal_mod_date, ' .
-      'cal_mod_time, cal_blob ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
+    $sql = 'INSERT INTO webcal_blob ( cal_blob_id, cal_id, cal_login, 
+      cal_name, cal_description, cal_size, cal_mime_type, cal_type, 
+      cal_mod_date, cal_mod_time, cal_blob ) 
+      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
     if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, $filename, 
       $description, $filesize, $mimetype, 'A', date('Ymd'), date( 'His' ), NULL ) ) ) {
       $error = db_error ();

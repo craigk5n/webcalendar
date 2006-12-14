@@ -24,12 +24,10 @@ if ( $id > 0 ) {
     $query_params = array();
     $query_params[] = $id;
     $sqlparm = ( $is_assistant ? $user : $login );
-    $sql = 'SELECT webcal_entry.cal_id, webcal_entry.cal_type FROM webcal_entry, ' .
-      'webcal_entry_user WHERE webcal_entry.cal_id = ' .
-      'webcal_entry_user.cal_id AND webcal_entry.cal_id = ? ';
+    $sql = 'SELECT we.cal_id, we.cal_type FROM webcal_entry we, webcal_entry_user weu 
+      WHERE we.cal_id = weu.cal_id AND we.cal_id = ? ';
     if ( ! $is_admin ) {
-      $sql .= 'AND (webcal_entry.cal_create_by = ? ' .
-      'OR webcal_entry_user.cal_login = ? )';
+      $sql .= ' AND (we.cal_create_by = ? OR weu.cal_login = ? )';
       $query_params[] = $sqlparm;
       $query_params[] = $sqlparm;
      }
@@ -92,8 +90,8 @@ if ( ! $can_edit ) {
 
 // Is this a repeating event?
 $event_repeats = false;
-$res = dbi_execute ( 'SELECT COUNT(cal_id) FROM webcal_entry_repeats ' .
-  'WHERE cal_id = ?', array( $id ) );
+$res = dbi_execute ( 'SELECT COUNT(cal_id) FROM webcal_entry_repeats
+  WHERE cal_id = ?', array( $id ) );
 if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( $row[0] > 0 )
@@ -136,8 +134,8 @@ if ( $id > 0 && empty ( $error ) ) {
       dbi_free_result($res);
     }
     // Get event name
-    $sql = 'SELECT cal_name, cal_date, cal_time ' .
-      'FROM webcal_entry WHERE cal_id = ?';
+    $sql = 'SELECT cal_name, cal_date, cal_time
+      FROM webcal_entry WHERE cal_id = ?';
     $res = dbi_execute( $sql, array( $id ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
@@ -195,15 +193,15 @@ if ( $id > 0 && empty ( $error ) ) {
     // by setting the status for each participant to "D" (instead
     // of "A"/Accepted, "W"/Waiting-on-approval or "R"/Rejected)
     if ( $override_repeat ) {
-      dbi_execute ( 'INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate ) ' .
-        'VALUES ( ?, ?, ? )', array( $id, $date, 1 ) );
+      dbi_execute ( 'INSERT INTO webcal_entry_repeats_not ( cal_id, cal_date, cal_exdate )
+        VALUES ( ?, ?, ? )', array( $id, $date, 1 ) );
       // Should we log this to the activity log???
     } else {
       // If it's a repeating event, delete any event exceptions
       // that were entered.
       if ( $event_repeats ) {
-        $res = dbi_execute ( 'SELECT cal_id FROM webcal_entry ' .
-          'WHERE cal_group_id = ?', array( $id ) );
+        $res = dbi_execute ( 'SELECT cal_id FROM webcal_entry
+          WHERE cal_group_id = ?', array( $id ) );
         if ( $res ) {
           $ex_events = array ();
           while ( $row = dbi_fetch_row ( $res ) ) {
@@ -211,8 +209,8 @@ if ( $id > 0 && empty ( $error ) ) {
           }
           dbi_free_result ( $res );
           for ( $i = 0, $cnt = count ( $ex_events );  $i < $cnt; $i++ ) {
-            $res = dbi_execute ( 'SELECT cal_login FROM ' .
-              'webcal_entry_user WHERE cal_id = ?', array( $ex_events[$i] ) );
+            $res = dbi_execute ( 'SELECT cal_login FROM
+              webcal_entry_user WHERE cal_id = ?', array( $ex_events[$i] ) );
             if ( $res ) {
               $delusers = array ();
               while ( $row = dbi_fetch_row ( $res ) ) {
@@ -223,8 +221,8 @@ if ( $id > 0 && empty ( $error ) ) {
                 // Log the deletion
                 activity_log ( $ex_events[$i], $login, $delusers[$j],
                   $log_delete, '' );
-                dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ? ' .
-                  'WHERE cal_id = ? AND cal_login = ?', 
+                dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
+                  WHERE cal_id = ? AND cal_login = ?', 
                   array( 'D', $ex_events[$i], $delusers[$j] ) );
               }
             }
@@ -237,8 +235,8 @@ if ( $id > 0 && empty ( $error ) ) {
         "WHERE cal_id = ?", array( $id ) );
         
       // Delete External users for this event
-      dbi_execute ( 'DELETE FROM webcal_entry_ext_user ' .
-        'WHERE cal_id = ?', array( $id ) );
+      dbi_execute ( 'DELETE FROM webcal_entry_ext_user
+        WHERE cal_id = ?', array( $id ) );
     }
   } else {
     // Not the owner of the event, but participant or noncal_admin
@@ -255,8 +253,8 @@ if ( $id > 0 && empty ( $error ) ) {
       }
     }
     if ( empty ( $error ) ) {
-      dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ? ' .
-        'WHERE cal_id = ? AND cal_login = ?', array( 'D', $id, $del_user ) );
+      dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
+        WHERE cal_id = ? AND cal_login = ?', array( 'D', $id, $del_user ) );
       activity_log ( $id, $login, $login, $log_reject, '' );
     }
   }
