@@ -75,7 +75,7 @@ if ( $do_purge ) {
   $end_date = sprintf ( "%04d%02d%02d", $end_year, $end_month, $end_day );
   $tail = '';
   if ( $purge_deleted == 'Y' ) {
-    $tail = " AND webcal_entry_user.cal_status = 'D' "; 
+    $tail = " AND weu.cal_status = 'D' "; 
   }
   if ( $purge_all == 'Y' ) {
     if ( $user == 'ALL' ) {
@@ -86,19 +86,18 @@ if ( $do_purge ) {
     }
   } elseif ( $end_date ) {
     if ( $user != 'ALL' ) {
-      $tail = " AND webcal_entry.cal_create_by = '$user' $tail";
+      $tail = " AND we.cal_create_by = '$user' $tail";
     } else {
       $tail = '';
       $ALL = 1;  // Need this to tell get_ids to ignore participant check
     }
-    $E_ids = get_ids ( 'SELECT webcal_entry.cal_id FROM webcal_entry, webcal_entry_user ' .
+    $E_ids = get_ids ( 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu ' .
       "WHERE cal_type = 'E' AND cal_date < '$end_date' $tail",
       $ALL );
-    $M_ids = get_ids ( 'SELECT DISTINCT webcal_entry.cal_id FROM webcal_entry ' 
-      . ', webcal_entry_user, webcal_entry_repeats ' 
-      . "WHERE webcal_entry.cal_type = 'M' "
-      . 'AND webcal_entry.cal_id = webcal_entry_repeats.cal_id '
-      . 'AND webcal_entry.cal_id = webcal_entry_repeats.cal_id '
+    $M_ids = get_ids ( 'SELECT DISTINCT(we.cal_id) FROM webcal_entry we, 
+      webcal_entry_user weu, webcal_entry_repeats wer
+      WHERE we.cal_type = \'M\'
+      AND we.cal_id = wer.cal_id AND we.cal_id = wer.cal_id '
       . "AND cal_end IS NOT NULL AND cal_end < '$end_date' $tail",
       $ALL );
     $ids = array_merge ( $E_ids, $M_ids );
@@ -134,10 +133,9 @@ onclick="history.back()" /></form
   }
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '<option value="' . $userlist[$i]['cal_login'] . '"';
- if ( $login == $userlist[$i]['cal_login'] ) {
-  echo ' selected="selected"';
- } 
- echo '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
+    if ( $login == $userlist[$i]['cal_login'] )
+      echo ' selected="selected"';
+    echo '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
 <option value="ALL"><?php echo $allStr ?></option>
@@ -249,8 +247,8 @@ function get_ids ( $sql, $ALL = '' ) {
       } else {
         //ONLY Delete event if no other participants.
         $ID = $row[0];
-        $res2 = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user ' .
-          'WHERE cal_id = ?' , array ( $ID ) );
+        $res2 = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user
+          WHERE cal_id = ?' , array ( $ID ) );
         if ( $res2 ) {
           if ( $row2 = dbi_fetch_row ( $res2 ) ) {
             if ( $row2[0] == 1 ) $ids[] = $ID;
