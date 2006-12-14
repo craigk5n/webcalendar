@@ -87,7 +87,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
      . translate ( 'Upload' ) . '&nbsp;<span style="font-size:small;">('
      . translate ( 'gif 3kb max' ) . ')</span>:
             <input type="file" name="FileName" id="fileupload" size="45" '
-     . 'maxlength="50" />
+     . 'maxlength="50" value=""/>
           </td>
         </tr>
         </tr>
