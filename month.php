@@ -8,6 +8,7 @@ else
 if ( empty ( $user ) )
   load_user_layers ();
 
+$cat_id = getGetValue ( 'cat_id' );
 load_user_categories ();
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
