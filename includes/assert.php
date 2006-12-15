@@ -12,6 +12,12 @@
  * @package WebCalendar
  */
 
+/*
+ * Setup callback function only if $settings.php mode == dev
+ */
+if ( ! empty ( $run_mode ) &&  $run_mode == 'dev' )
+  assert_options( ASSERT_CALLBACK, 'assert_handler');
+
 /* Gets the CVS file version for a specific file.
  *
  * Searches through the file and looks for the CVS Id tag.
@@ -106,18 +112,18 @@ function assert_backtrace () {
  * @param int     $line    Line number where assertion failed
  * @param string  $msg     Failed assertion expression
  */
-function assert_handler ( $script, $line, $msg ) {
+function assert_handler ( $script, $line, $msg='' ) {
   if ( empty ( $msg ) )
     $msg = 'Assertion failed<br />' . "\n";
   $trace = ( function_exists ( 'debug_backtrace' )
     ? assert_backtrace () : basename ( $script ) . ': ' . $line . ' ' . $msg );
-  $msg .= '<b>Stack Trace:</b><br /><br /><blockquote><tt>' . nl2br ( $trace )
-   . '</tt></blockquote>';
+  $msg .= ( function_exists ( 'debug_backtrace' ) ? '<b>Stack Trace:</b><br /><br />' : '' ) 
+    . '<blockquote><tt>' . nl2br ( $trace ) . '</tt></blockquote>';
   if ( function_exists ( 'die_miserable_death' ) )
     die_miserable_death ( $msg );
   else {
     echo '<html><head><title>WebCalendar Error</title></head>
-  <body><h2>WebCalendar Error</h2><p>' . $Msg . '</p></body></html>
+  <body><h2>WebCalendar Error</h2><p>' . $msg . '</p></body></html>
 ';
     exit;
   }
