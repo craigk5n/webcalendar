@@ -1,5 +1,10 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Created new function get_users_event_ids ()
+ - Created new getPredefinedVariable.php that contains all getXxxValue functions
+ - Fixed bug [ 1612332 ] empty exports with date limits
+ - Fixed bug [ 1445428 ] Import needs utf8_decode()
+ - Fixed bug [ 1614644 ] Remote subscriptions don't work with umlauts (Sunbird)
  - Implemented PATCH [ webcalendar-Bugs-1615738 ] EMAIL_EVENT_CREATE pref don't get invisible
  - Updated German.txt for ws/event_mod.php and ws/user_mod.php.
  - Fix bug [ 1614167 ] adjusted bg-image not working at views
