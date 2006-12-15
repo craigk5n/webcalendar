@@ -385,16 +385,7 @@ function user_is_admin($uid,$Admins) {
 //   $user - user to delete
 function user_delete_user ( $user ) {
   // Get event ids for all events this user is a participant
-  $events = array ();
-  $res = dbi_query ( "SELECT webcal_entry.cal_id " .
-    "FROM webcal_entry, webcal_entry_user " .
-    "WHERE webcal_entry.cal_id = webcal_entry_user.cal_id " .
-    "AND webcal_entry_user.cal_login = '$user'" );
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $events[] = $row[0];
-    }
-  }
+  $events = get_users_event_ids ( $user );
 
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
