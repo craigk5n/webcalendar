@@ -151,11 +151,11 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   if ( $is_admin ) {
     $can_edit = true;
   }
-  $sql = 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date, ' .
-    'cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, ' .
-    ' cal_name, cal_description, cal_group_id, cal_location,  ' .
-    ' cal_due_date, cal_due_time, cal_completed, cal_url ' .
-    'FROM webcal_entry WHERE cal_id = ?';
+  $sql = 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
+    cal_mod_time, cal_duration, cal_priority, cal_type, cal_access,
+    cal_name, cal_description, cal_group_id, cal_location,
+    cal_due_date, cal_due_time, cal_completed, cal_url
+    FROM webcal_entry WHERE cal_id = ?';
 
   $res = dbi_execute ( $sql, array( $id ) );
   if ( $res ) {
@@ -244,10 +244,10 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       $rpt_end_date = $cal_date;
       $rpt_freq = 1;
     } else {
-      $res = dbi_execute ( 'SELECT cal_id, cal_type, cal_end, cal_endtime, ' .
-        'cal_frequency, cal_byday, cal_bymonth, cal_bymonthday, cal_bysetpos, ' .  
-        'cal_byweekno, cal_byyearday, cal_wkst, cal_count  ' .
-        'FROM webcal_entry_repeats WHERE cal_id = ?', array( $id ) );
+      $res = dbi_execute ( 'SELECT cal_id, cal_type, cal_end, cal_endtime,
+        cal_frequency, cal_byday, cal_bymonth, cal_bymonthday, cal_bysetpos, 
+        cal_byweekno, cal_byyearday, cal_wkst, cal_count
+        FROM webcal_entry_repeats WHERE cal_id = ?', array( $id ) );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
           $rpt_type = $row[1];
@@ -288,8 +288,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       }
     }
    
-  $sql = 'SELECT cal_login,  cal_percent, cal_status ' .
-   ' FROM webcal_entry_user WHERE cal_id = ?';
+  $sql = 'SELECT cal_login,  cal_percent, cal_status
+    FROM webcal_entry_user WHERE cal_id = ?';
   $res = dbi_execute ( $sql, array( $id ) );
  if ( $res ) {
    while ( $row = dbi_fetch_row ( $res ) ) {
@@ -363,8 +363,8 @@ if ( $readonly == 'Y' || $is_nonuser ) {
  //get category if passed in URL as cat_id 
  $cat_id = getGetValue ( 'cat_id');
  if ( ! empty ( $cat_id ) ) {
-  $sql = 'SELECT cat_name FROM webcal_categories '
-    . ' WHERE cat_id = ? AND ( cat_owner = ? OR cat_owner IS NULL )';
+  $sql = 'SELECT cat_name FROM webcal_categories
+    WHERE cat_id = ? AND ( cat_owner = ? OR cat_owner IS NULL )';
   $res = dbi_execute ( $sql, array( $cat_id, $real_user  ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
@@ -404,7 +404,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     }
   }
 }
-
+$dateYmd = date ( 'Ymd' );
 $thisyear = $year;
 $thismonth = $month;
 $thisday = $day;
@@ -448,12 +448,12 @@ if ( empty ( $cal_date ) ) {
   if ( ! empty ( $date ) && $eType != 'task' )
     $cal_date = $date;
   else
-    $cal_date = date ( 'Ymd' );
+    $cal_date = $dateYmd;
   if ( empty ( $due_date ) )
-    $due_date = date ( 'Ymd' );
+    $due_date = $dateYmd;
 }
 if ( empty ( $thisyear ) )
-  $thisdate = date ( 'Ymd' );
+  $thisdate = $dateYmd;
 else {
   $thisdate = sprintf ( "%04d%02d%02d",
     empty ( $thisyear ) ? date ( 'Y' ) : $thisyear,
@@ -470,6 +470,7 @@ if ( empty ( $due_date ) || ! $due_date )
 //Even though event is stored in GMT, an Assistant may need to know that
 //the boss is in a different Timezone
 if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
+  //don't change this to date
   $tz_offset = date ( 'Z', date_to_epoch ( $cal_date . $cal_time ) );   
   $user_TIMEZONE = get_pref_setting ( $user, 'TIMEZONE' );
   set_env ( 'TZ', $user_TIMEZONE );
@@ -1131,7 +1132,7 @@ if ( $useTabs ) { ?>
   for ( $rpt_month =1;$rpt_month <=12; $rpt_month++){
      echo "<td><label><input type=\"checkbox\" name=\"bymonth[]\" value=\"$rpt_month\"" 
       . (in_array($rpt_month,$bymonth)? $checked:'') . ' />&nbsp;' . 
-   translate (date( 'M', mktime( 0,0,0,$rpt_month,1 ) ) ) . 
+   translate ( date ( 'M', mktime ( 0,0,0, $rpt_month,1 ) ) ) . 
      "</label>\n</td>";
     if ( $rpt_month == 6 ) echo  '</tr><tr>';
   }

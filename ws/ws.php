@@ -239,7 +239,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
 function ws_log_message ( $msg )
 {
   $fd = fopen ( "/tmp/webcal-ws.log", "a+", true );
-  fwrite ( $fd, date ( "Y-m-d H:i:s" )  );
+  fwrite ( $fd, gmdate ( "Y-m-d H:i:s" )  );
   fwrite ( $fd, "\n" . $msg . "\n\n" );
   fclose ( $fd );
 }
