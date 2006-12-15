@@ -70,21 +70,22 @@ echo ( $WEEK_START == 1 ? '
               </tr>';
 $wkstart = get_weekday_before ( $thisyear, $thismonth );
 
-$monthstart = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
-$monthend = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
-for ( $i = $wkstart; date ( 'Ymd', $i ) <= date ( 'Ymd', $monthend );
+$monthstartYmd = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
+$monthendYmd = date ( 'Ymd', mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear ) );
+for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthendYmd;
   $i += ( 86400 * 7 ) ) {
   echo '
               <tr>';
   for ( $j = 0; $j < 7; $j++ ) {
     $date = $i + ( $j * 86400 ) + 43200;
+    $dateYmd = date ( 'Ymd', $date );
     echo '
                 <td'
-     . ( ( date ( 'Ymd', $date ) >= date ( 'Ymd', $monthstart ) &&
-        date ( 'Ymd', $date ) <= date ( 'Ymd', $monthend ) ) ||
+     . ( ( $dateYmd >= $monthstartYmd &&
+        $dateYmd <= $monthendYmd ) ||
       $DISPLAY_ALL_DAYS_IN_MONTH == 'Y'
       ? ' class="field"><a href="javascript:sendDate (\''
-       . date ( 'Ymd', $date ) . '\')">' . date ( 'j', $date ) . '</a>'
+       . $dateYmd . '\')">' . date ( 'j', $date ) . '</a>'
       : '>' ) . '</td>';
   }
   echo '

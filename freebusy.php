@@ -104,13 +104,14 @@ if ( empty ( $user ) ) {
 }
 
 $get_unapproved = false;
-
+$datem = date('m');
+$dateY = date('Y');
 // Start date is beginning of this month
-$startdate = mktime ( 0, 0, 0, date('m'), 1, date('Y') );
+$startdate = mktime ( 0, 0, 0, $datem, 1, $dateY );
 
 // End date is one year from now
 // Seems kind of arbitrary, eh?
-$enddate = mktime ( 0, 0, 0, date('m'), 1, date('Y') + 1 );
+$enddate = mktime ( 0, 0, 0, $datem, 1, $dateY + 1 );
 
 /* Pre-Load the repeated events for quicker access */
 $repeated_events = read_repeated_events ( $user, $startdate, $enddate, '' );
@@ -142,12 +143,8 @@ echo "BEGIN:VCALENDAR\r\n";
   $title = "X-WR-CALNAME;VALUE=TEXT:" .
   ( empty ( $publish_fullname ) ? $user : translate($publish_fullname) );
 $title = str_replace ( ",", "\\,", $title );
-  echo "$title\r\n";
-if ( preg_match ( "/WebCalendar v(\S+)/", $PROGRAM_NAME, $match ) ) {
-  echo "PRODID:-//WebCalendar-$match[1]\r\n";
-} else {
-  echo "PRODID:-//WebCalendar-UnknownVersion\r\n";
-}
+echo "$title\r\n";
+echo generate_prodid ();
 echo "VERSION:2.0\r\n";
 //echo "METHOD:PUBLISH\r\n";
 echo "BEGIN:VFREEBUSY\r\n";
