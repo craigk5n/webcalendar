@@ -541,7 +541,8 @@ echo "<!-- \nstartTime: startDate\nendTime: $endDate\nstartDate: " .
 
 $eventinfo = '';
 $numEvents = 0;
-for ( $i = $startDate; date ( 'Ymd', $i ) <= date ( 'Ymd', $endDate ) &&
+$endDateYmd = date ( 'Ymd', $endDate );
+for ( $i = $startDate; date ( 'Ymd', $i ) <= $endDateYmd &&
   $numEvents < $maxEvents; $i += ONE_DAY ) {
   $d = date ( 'Ymd', $i );
   $entries = get_entries ( $d, $get_unapproved );

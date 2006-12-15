@@ -80,6 +80,7 @@ if (  count ( $site_extras ) > 0 ) {
           </td></tr>';
 }
 if (  $show_advanced ) {
+  $dateYmd = date ( 'Ymd' );
   echo '
         <tr id="datefilter" style="visibility:' . $avdStyle[$show_advanced] 
    . ';">
@@ -99,14 +100,14 @@ if (  $show_advanced ) {
           <td>&nbsp;&nbsp;<label>' . $translations['Start date']
    . ':</label></td>
           <td>'
-   . date_selection ( 'from_', date ( 'Ymd' ) )
+   . date_selection ( 'from_', $dateYmd )
    .      '</td>
         </tr>
         <tr id="endDate" style="visibility:hidden">
           <td>&nbsp;&nbsp;<label>' . $translations['End date']
    . ':</label></td>
           <td>'
-   . date_selection ( 'until_', date ( 'Ymd' ) )
+   . date_selection ( 'until_', $dateYmd )
    .      '</td>
         </tr>';
 }
