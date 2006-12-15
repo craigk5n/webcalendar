@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 12-13-2006
+# Translation last updated on 12-15-2006
 
 
 ################################################################################
@@ -1333,6 +1333,10 @@ Schedule an appointment for: Schedule an appointment for
 All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
+Add N hours to: Add N hours to
+Subtract N hours from: Subtract N hours from
+same as: same as
+server time: server time
 Changes successfully saved: Changes successfully saved
 The following error occurred: The following error occurred
 You are not authorized: You are not authorized
@@ -1368,6 +1372,11 @@ Attachment: Attachment
 Delete User: Delete User
 Event: Event
 Action: Action
+
+########################################
+# Page: includes/getPredefinedVariables.php
+#
+Invalid data format for: Invalid data format for
 
 ########################################
 # Page: includes/help_list.php
