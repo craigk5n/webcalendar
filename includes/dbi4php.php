@@ -626,6 +626,7 @@ function dbi_error () {
  *                            the SQL that caused the error)?
  */
 function dbi_fatal_error ( $msg, $doExit = true, $showError = true ) {
+  global $translations;
   if ( $showError ) {
     echo '<h2>' . $translations['Error'] . '</h2>
 <!--begin_error (dbierror)-->
@@ -798,7 +799,7 @@ function dbi_get_debug () {
  * Return the number of files deleted.
  */
 function dbi_clear_cache () {
-  global $db_connection_info;
+  global $db_connection_info, $translations;
 
   if ( empty ( $db_connection_info['cachedir'] ) )
     return 0;
