@@ -35,11 +35,8 @@ if ( empty ( $id ) ) {
 
 }
 
-if ( ! empty ( $_FILES['FileName'] ) ) {
+if ( ! empty ( $_FILES['FileName'] ) )
   $file = $_FILES['FileName'];
-} else if ( ! empty ( $HTTP_POST_FILES['FileName'] ) ) {
-  $file = $HTTP_POST_FILES['FileName'];
-}
 //Make sure we clear $file if no file was upoaded
 if ( ! empty ( $file['tmp_name'] )  && $file['tmp_name'] == 'none' )
   $file = ''; 
