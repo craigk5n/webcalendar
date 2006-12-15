@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 11. Dec. 2006
+# Last update: 14. Dec. 2006
 #
 # $Id$
-# Translation last updated on 12-11-2006
+# Translation last updated on 12-14-2006
 
 
 ################################################################################
@@ -803,9 +803,7 @@ repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden so
 Deleting users not supported: Gel&ouml;schte Benutzer werden nicht unterst&uuml;tzt
 The passwords were not identical: Die eingebenen Kennw&ouml;rter stimmten nicht &uuml;berein
 You have not entered a password: Sie haben kein Kennwort eingegeben
-Invalid characters in login: Ung&uml;ltige Zeichen im Login
 Username can not be blank: Benutzername darf nicht LEER sein
-Set Password: Setze Kennwort
 
 ########################################
 # Page: edit_layer_handler.php
@@ -899,8 +897,8 @@ conflicts with the following existing calendar entries: &uuml;berschneidet sich 
 ########################################
 # Page: edit_nonusers.php
 #
-Edit User: Benutzer &auml;ndern
 Add User: Benutzer hinzuf&uuml;gen
+Edit User: Benutzer &auml;ndern
 Is public calendar: Als &Ouml;ffentlichen Kalender freigeben
 
 ########################################
@@ -997,6 +995,7 @@ Enabled: Aktiv
 Disabled for demo: F&uuml;r DEMO deaktiviert
 Change Password: Kennwort &auml;ndern
 New Password: Neues Kennwort
+Set Password: Setze Kennwort
 
 ########################################
 # Page: help_import.php
@@ -1043,7 +1042,7 @@ Modified since: &Auml;nderungen ab
 #
 Remote Calendars: Externe Kalender (Remote)
 Add New User: Neuen Benutzer hinzuf&uuml;gen
-denotes administrative user: Kennzeichnet Benutzer mit administrativen Rechten
+denotes administrative user: Kennzeichnet Benutzer mit Administrator-Rechten
 
 ########################################
 # Page: search_handler.php
@@ -1204,6 +1203,21 @@ AVAILABLE CATEGORIES: VERF&Uuml;GBARE KATEGORIEN
 ENTRY CATEGORIES: EINGETRAGENE KATEGORIEN
 Remove: Entfernen
 Global Category: Allg. Kategorie
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action: Nicht unterst&uuml;tzte Aktion
+No event id specified: Keine Termin id festgestellt
+not admin: kein Administrator
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Ung&uml;ltige Zeichen im Login
+already exists: Existiert bereits
+You cannot remove admin rights from yourself!: Sie k&ouml;nnen sich selbst keine &#39Admin&#39-Rechte entziehen!
+Unknown error saving user: Unbekannter Fehler beim Speichern des Benutzers
 
 ########################################
 # Page: tools/send_reminders.php
@@ -1682,4 +1696,4 @@ Development: Entwicklung
 Save Settings: Einstellung speichern
 Launch WebCalendar: Webkalender starten
 
-
+ 	  	 
