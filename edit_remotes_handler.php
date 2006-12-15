@@ -2,7 +2,10 @@
 /* $Id$ */
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
-require_once 'includes/classes/hKit/hkit.class.php';
+
+//Only available in php 5.x Used for hCalendar parsing
+if ( function_exists ( 'simplexml_load_string' ) )
+  require_once 'includes/classes/hKit/hkit.class.php';
 
 $error = '';
 $layer_found = false;
@@ -67,9 +70,9 @@ if ( ! empty ( $delete ) ) {
     // Adding    
     if (preg_match( "/^[\w]+$/", $nid )) {
       $nid = $NONUSER_PREFIX.$nid;
-      $sql = 'INSERT INTO webcal_nonuser_cals ' .
-      '( cal_login, cal_firstname, cal_lastname, cal_admin, cal_is_public, cal_url ) ' .
-      'VALUES ( ?, ?, ?, ?, ?, ? )';
+      $sql = 'INSERT INTO webcal_nonuser_cals
+        ( cal_login, cal_firstname, cal_lastname, cal_admin, cal_is_public, cal_url )
+        VALUES ( ?, ?, ?, ?, ?, ? )';
       if ( ! dbi_execute ( $sql, 
         array( $nid, $nfirstname, $nlastname, $nadmin, 'N', $nurl ) ) ) {
         $error = db_error ();
@@ -86,8 +89,8 @@ if ( ! empty ( $delete ) ) {
       } else {
         $layerid = 1;
       }
-      dbi_execute ( 'INSERT INTO webcal_user_layers ( cal_layerid, cal_login, ' .
-        'cal_layeruser, cal_color, cal_dups ) VALUES ( ?, ?, ?, ?, ? )', 
+      dbi_execute ( 'INSERT INTO webcal_user_layers ( cal_layerid, cal_login,
+        cal_layeruser, cal_color, cal_dups ) VALUES ( ?, ?, ?, ?, ? )', 
         array( $layerid, $login, $nid, $layercolor, 'N' ) );    
       $layer_found = true;    
     }
@@ -96,10 +99,10 @@ if ( ! empty ( $delete ) ) {
   //first delete any record for this user/nuc combo
   dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ? ' .
     'AND cal_other_user = ?', array( $nadmin, $nid ) );  
-  $sql = 'INSERT INTO webcal_access_user ' .
-    '( cal_login, cal_other_user, cal_can_view, cal_can_edit, ' .
-    'cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only ) VALUES ' .
-    '( ?, ?, ?, ?, ?, ?, ?, ? )';
+  $sql = 'INSERT INTO webcal_access_user
+    ( cal_login, cal_other_user, cal_can_view, cal_can_edit,
+    cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only ) 
+    VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) ) {
     die_miserable_death ( translate ( 'Database error' ) . ': ' .
       dbi_error () );
@@ -159,16 +162,7 @@ if ( ! empty ( $reload ) ) {
 function delete_events ( $nid ){
 
   // Get event ids for all events this user is a participant
-  $events = array ();
-  $res = dbi_execute ( 'SELECT webcal_entry.cal_id ' .
-    'FROM webcal_entry, webcal_entry_user ' .
-    'WHERE webcal_entry.cal_id = webcal_entry_user.cal_id ' .
-    'AND webcal_entry_user.cal_login = ?', array( $nid ) );
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      $events[] = $row[0];
-    }
-  }
+  $events = get_users_event_ids ( $nid );
 
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
