@@ -623,17 +623,7 @@ class Event {
    * @access public
    */
   function getEndDateTime () {
-    $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 ); 
-    $day = substr ( $this->_date, 6, 2 );
-    if ( $this->_time > 0 ) {
-      $h = (int) ( $this->_time / 10000 );
-      $m = ( $this->_time / 100 ) % 100;
-    } else {
-      $h = $m = 0;
-    }
-    $dur = ( $this->_duration > 0 ? $this->_duration : 0 );
-    $this->_endDateTime = gmdate ( "YmdHis", gmmktime ( $h, $m + $dur, 0, $month, $day, $year ) );
+    $this->_endDateTime = gmdate ( 'YmdHis', $this->getEndDateTimeTS() );
     return $this->_endDateTime;
   }
 
