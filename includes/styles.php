@@ -207,7 +207,6 @@ ul a {
 }
 
 .main {
-  border-collapse: collapse;
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG'];
 
 ?>;
@@ -1040,6 +1039,13 @@ img.help {
 }
 #admin th td {
   padding: 3px;
+}
+#viewm .main,
+#viewr .main,
+#viewt .main,
+#viewv .main,
+#week .main {
+border-collapse: collapse;
 }
 #admin .main th,
 #pref .main th,
