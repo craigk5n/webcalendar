@@ -612,7 +612,7 @@ if ( empty ( $error ) ) {
     $reminder_date = $reminder_offset = $reminder_duration = $reminder_repeats = 0;
     if ( $rem_when == 'Y' ) { //use date
       $reminder_hour +=  $reminder_ampm;
-      $reminder_date = mktime ( $reminder_hour, $reminder_minute, 0, $reminder_month,
+      $reminder_date = gmmktime ( $reminder_hour, $reminder_minute, 0, $reminder_month,
         $reminder_day, $reminder_year ); 
     } else { //use offset
       $reminder_offset = ($rem_days * 60 * 24 ) + ( $rem_hours * 60 ) + 
@@ -1080,8 +1080,6 @@ print_header();
 <?php
 // user can confirm conflicts
   echo '<form name="confirm" method="post">' . "\n";
-  if ( ! is_array ( $_POST ) && is_array ( $HTTP_POST_VARS ) )
-    $_POST = $HTTP_POST_VARS;
   foreach ($_POST as $xkey=>$xval ) {
     if (is_array($xval)) {
       $xkey.="[]";
