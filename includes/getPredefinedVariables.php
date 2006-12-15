@@ -1,7 +1,7 @@
 <?php
 /* WebCalendar's functions to retrieve Predefined Variables
- * 
- * See http://www.php.net/manual/en/reserved.variables.php 
+ *
+ * See http://www.php.net/manual/en/reserved.variables.php
  * for a complete description and examples
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
@@ -11,12 +11,11 @@
  * @package WebCalendar
  */
 
-/**
- * Gets the value resulting from an HTTP POST method.
- * 
+/* Gets the value resulting from an HTTP POST method.
+ *
  * <b>Note:</b> The return value will be affected by the value of
  * <var>magic_quotes_gpc</var> in the php.ini file.
- * 
+ *
  * @param string $name Name used in the HTML form
  *
  * @return string The value used in the HTML form
@@ -24,16 +23,14 @@
  * @see getGetValue
  */
 function getPostValue ( $name ) {
-
-  $postName = NULL;
+  $postName = null;
   if ( isset ( $_POST ) && is_array ( $_POST ) && ! empty ( $_POST[$name] ) )
-  $postName = ( get_magic_quotes_gpc () != 0 ? 
-    $_POST[$name]: addslashes ( $_POST[$name]) );
+    $postName = ( get_magic_quotes_gpc () != 0
+      ? $_POST[$name] : addslashes ( $_POST[$name] ) );
   return $postName;
 }
 
-/**
- * Gets the value resulting from an HTTP GET method.
+/* Gets the value resulting from an HTTP GET method.
  *
  * Since this function is used in more than one place, with different names,
  * let's make it a seperate 'include' file on it's own.
@@ -51,16 +48,14 @@ function getPostValue ( $name ) {
  * @see getPostValue
  */
 function getGetValue ( $name ) {
- 
-  $getName = NULL;
+  $getName = null;
   if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) )
     $getName = ( get_magic_quotes_gpc () != 0
       ? $_GET[$name] : addslashes ( $_GET[$name] ) );
   return $getName;
 }
 
-/**
- * Gets the value resulting from either HTTP GET method or HTTP POST method.
+/* Gets the value resulting from either HTTP GET method or HTTP POST method.
  *
  * <b>Note:</b> The return value will be affected by the value of
  * <var>magic_quotes_gpc</var> in the php.ini file.
@@ -84,20 +79,23 @@ function getGetValue ( $name ) {
  * @uses getGetValue
  * @uses getPostValue
  */
-function getValue ( $name, $format='', $fatal=false ) {
+function getValue ( $name, $format = '', $fatal = false ) {
+  global $translations;
+
   $val = getPostValue ( $name );
   if ( ! isset ( $val ) )
     $val = getGetValue ( $name );
   // for older PHP versions...
-  if ( ! isset ( $val  ) && get_magic_quotes_gpc () == 1 &&
-    ! empty ( $GLOBALS[$name] ) )
+  if ( ! isset ( $val ) && get_magic_quotes_gpc () == 1 && !
+      empty ( $GLOBALS[$name] ) )
     $val = $GLOBALS[$name];
-  if ( ! isset ( $val  ) )
+  if ( ! isset ( $val ) )
     return '';
-  if ( ! empty ( $format ) && ! preg_match ( "/^" . $format . "$/", $val ) ) {
+  if ( ! empty ( $format ) && ! preg_match ( '/^' . $format . '$/', $val ) ) {
     // does not match
     if ( $fatal ) {
-      die_miserable_death ( 'Fatal Error: Invalid data format for' . $name );
+      die_miserable_death ( $translations['Fatal Error'] . ': '
+         . translate ( 'Invalid data format for' ) . $name );
     }
     // ignore value
     return '';
@@ -105,8 +103,7 @@ function getValue ( $name, $format='', $fatal=false ) {
   return $val;
 }
 
-/**
- * Gets an integer value resulting from an HTTP GET or HTTP POST method.
+/* Gets an integer value resulting from an HTTP GET or HTTP POST method.
  *
  * <b>Note:</b> The return value will be affected by the value of
  * <var>magic_quotes_gpc</var> in the php.ini file.
@@ -120,8 +117,8 @@ function getValue ( $name, $format='', $fatal=false ) {
  *
  * @uses getValue
  */
-function getIntValue ( $name, $fatal=false ) {
-  $val = getValue ( $name, "-?[0-9]+", $fatal );
-  return $val;
+function getIntValue ( $name, $fatal = false ) {
+  return getValue ( $name, '-?[0-9]+', $fatal );
 }
+
 ?>
