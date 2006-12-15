@@ -108,7 +108,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 <table class="main">
 <tr><th class="empty">&nbsp;</th>
 <?php
-  $todateYmd = date ( 'Ymd', $today );
+  $todayYmd = date ( 'Ymd', $today );
   $header = $body = '';
   for ( $i = 0; $i < $viewusercnt; $i++ ) {
     $events = $e_save[$i];
@@ -122,7 +122,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
       if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue; 
       $dateYmd = date ( 'Ymd', $date );
       $entryStr = print_date_entries ( $dateYmd, $user, true );
-      if ( $dateYmd == $todateYmd )
+      if ( $dateYmd == $todayYmd )
         $class = 'class="today"';
       else if ( $is_weekend )
         $class = 'class="weekend"';

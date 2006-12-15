@@ -86,8 +86,10 @@ $start_year = getPostValue ( 'from_year' );
 $end_day = getPostValue ( 'until_day' );
 $end_month = getPostValue ( 'until_month' );
 $end_year = getPostValue ( 'until_year' );
-$startDate =  gmdate ( 'Ymd', gmmktime ( 0, 0, 0, $start_month, $start_day, $start_year ) );
-$endDate =  gmdate ( 'Ymd', gmmktime ( 23, 59, 59, $end_month, $end_day, $end_year ) );
+$startDate =  gmdate ( 'Ymd', gmmktime ( 0, 0, 0, 
+  $start_month, $start_day, $start_year ) );
+$endDate =  gmdate ( 'Ymd', gmmktime ( 23, 59, 59, 
+  $end_month, $end_day, $end_year ) );
 
 print_header ();
 echo '
