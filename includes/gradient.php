@@ -54,11 +54,11 @@
  */
 
 // We don't really need it if calling gradients.php standalone.
-if ( file_exists ( 'includes/getGetValue.php' ) )
-  include_once 'includes/getGetValue.php';
+if ( file_exists ( 'includes/getPredefinedVariables.php' ) )
+  include_once 'includes/getPredefinedVariables.php';
 //we may be calling gradients directly, so the path will be different
-if ( file_exists ( 'getGetValue.php' ) )
-  include_once 'getGetValue.php';
+if ( file_exists ( 'getPredefinedVariables.php' ) )
+  include_once 'getPredefinedVariables.php';
 
 $MIN_COLORS = 4;
 $MAX_COLORS = 256;
