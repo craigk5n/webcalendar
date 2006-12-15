@@ -121,13 +121,13 @@ function get_unapproved ( $user )
   user_load_variables ( $user, 'temp_' );
   //echo "Listing events for $user<br />";
 
-  $sql = 'SELECT webcal_entry.cal_id, webcal_entry.cal_name, ' .
-    'webcal_entry.cal_date, webcal_entry.cal_time ' .
-    'FROM webcal_entry, webcal_entry_user ' .
-    'WHERE webcal_entry.cal_id = webcal_entry_user.cal_id ' .
-    'AND webcal_entry_user.cal_login = ? ' .
-    'AND webcal_entry_user.cal_status = \'W\' ' .
-    'ORDER BY webcal_entry.cal_date';
+  $sql = 'SELECT we.cal_id, we.cal_name, ' .
+    'we.cal_date, we.cal_time ' .
+    'FROM webcal_entry we, webcal_entry_user weu' .
+    'WHERE we.cal_id = weu.cal_id ' .
+    'AND weu.cal_login = ? ' .
+    'AND weu.cal_status = \'W\' ' .
+    'ORDER BY we.cal_date';
   $rows = dbi_get_cached_rows ( $sql , array ( $user ) );
   echo "<!-- SQL:\n $sql \n-->\n";
   if ( $rows ) {
