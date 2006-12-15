@@ -144,11 +144,8 @@ if ( $REQUEST_METHOD == 'POST' ) {
   } else if ( $type == 'A' ) {
     // Attachment
     $description = getValue ( 'description' );
-    if ( ! empty ( $_FILES['FileName'] ) ) {
+    if ( ! empty ( $_FILES['FileName'] ) )
       $file = $_FILES['FileName'];
-    } else if ( ! empty ( $HTTP_POST_FILES['FileName'] ) ) {
-      $file = $HTTP_POST_FILES['FileName'];
-    }
     if ( empty ( $file['file'] ) )
       $error = 'File Upload error!<br/>';
 
