@@ -57,6 +57,7 @@ if ( is_array ( $categories ) ) {
         </tr>';
 }
 // Only include layers if they are enabled.
+$dateYmd = date ( 'Ymd' );
 echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
         <tr>
           <td>&nbsp;</td>
@@ -91,17 +92,16 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
             <table id="dateArea">
               <tr>
                 <td><label>' . translate ( 'Start date' ) . ':</label></td>
-                <td>' . date_selection ( 'from', date ( 'Ymd' ) ) . '</td>
+                <td>' . date_selection ( 'from', $dateYmd ) . '</td>
               </tr>
               <tr>
                 <td><label>' . translate ( 'End date' ) . ':</label></td>
-                <td>' . date_selection ( 'end', date ( 'Ymd' ) ) . '</td>
+                <td>' . date_selection ( 'end', $dateYmd ) . '</td>
               </tr>
               <tr>
                 <td><label>' . translate ( 'Modified since' ) . ':</label></td>
-                <td>' . date_selection ( 'mod',
-  mktime ( 0, 0, 0, $datem, date ( 'd' ) - 7, $dateY ) // week ago
-  ) . '</td>
+                <td>' . date_selection ( 'mod', mktime ( 0, 0, 0, 
+                  $datem, date ( 'd' ) - 7, $dateY ) ) . '</td>
               </tr>
             </table>
           </td>

@@ -226,6 +226,10 @@ $modyear = getIntValue  ( 'modyear', true );
 $modmonth = getIntValue  ( 'modmonth', true );
 $modday = getIntValue  ( 'modday', true );
 
+$startdate = sprintf ( "%04d%02d%02d", $fromyear, $frommonth, $fromday );
+$enddate = sprintf ( "%04d%02d%02d", $endyear, $endmonth, $endday );
+$moddate = sprintf ( "%04d%02d%02d", $modyear, $modmonth, $modday );
+
 mt_srand((float) microtime()*1000000);
 
 if (empty($id)) {
