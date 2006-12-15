@@ -222,7 +222,7 @@ function access_load_user_permissions ( $useCache = true ) {
   $res = dbi_execute ( 'SELECT cal_login, cal_other_user, cal_can_view,
     cal_can_edit, cal_can_approve, cal_can_email, cal_can_invite,
     cal_see_time_only FROM webcal_access_user' );
-  assert ( $res );
+  assert ( '$res' );
   while ( $row = dbi_fetch_row ( $res ) ) {
     // TODO should we set admin_override here to apply to
     // DEFAULT CONFIGURATION only?
@@ -417,7 +417,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
   // First, check list of exceptions to our rules.
   if ( ! empty ( $page_lookup_ex[$page] ) )
     return true;
-  for ( $i = 0, $cnt = count ( $page_lookup ); $i < $cnt && $page_id < 0; $i++ ) {
+  for ( $i = 0; $i <= ACCESS_NUMBER_FUNCTIONS && $page_id < 0; $i++ ) {
     if ( ! empty ( $page_lookup[$i] ) &&
         preg_match ( "/$page_lookup[$i]/", $page ) )
       $page_id = $i;
