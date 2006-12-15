@@ -49,7 +49,7 @@ $events = read_events ( strlen ( $user ) ? $user : $login, $wkstart, $wkend, $ca
 ?>
 
 <div class="title">
-<a title="Previous" class="prev" href="week_details.php?<?php echo $u_url; ?>date=<?php echo date('Ymd', $prev ) . $caturl;?>"><img src="images/leftarrow.gif" alt="Previous" /></a>
+<a title="Previous" class="prev" href="week_details.php?<?php echo $u_url; ?>date=<?php echo date ('Ymd', $prev ) . $caturl;?>"><img src="images/leftarrow.gif" alt="Previous" /></a>
 <a title="Next" class="next" href="week_details.php?<?php echo $u_url;?>date=<?php echo date ('Ymd', $next ) . $caturl;?>"><img src="images/rightarrow.gif" alt="Next" /></a>
 <span class="date"><?php
   echo date_to_str ( date ( 'Ymd', $wkstart ), '', false ) .
@@ -67,7 +67,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 
 if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
   echo "<br />\n<span class=\"titleweek\">(" .
-    translate ( 'Week' ) . ' ' . date( 'W', $wkstart + ONE_DAY ) . ')</span>';
+    translate ( 'Week' ) . ' ' . date ( 'W', $wkstart + ONE_DAY ) . ')</span>';
 }
 ?>
 <span class="user"><?php
@@ -114,7 +114,7 @@ for ( $d = 0; $d < 7; $d++ ) {
   echo '<a title="' .
     $header[$d] . '" href="day.php?' . 
     $u_url . 'date=' . 
-    date('Ymd', $days[$d] ) . "$caturl\">" .
+    date ('Ymd', $days[$d] ) . "$caturl\">" .
     $header[$d] . "</a></th>\n</tr>\n";
 
   echo "<tr>\n<td";

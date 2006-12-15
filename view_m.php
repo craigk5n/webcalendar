@@ -145,7 +145,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     
    //non-breaking space below keeps event from wrapping prematurely
    echo "<tr><th $class>" . $weekday . '&nbsp;' .
-   date ('d', $date) . "</th>\n";
+     date ('d', $date) . "</th>\n";
    for ( $i = $j, $k = 0;
      $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
      $user = $viewusers[$i];
@@ -158,7 +158,6 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
      if ( $class == 'class="row"' )
        $class = '';
      echo "<td $class style=\"width:$tdw%;\">";
-     //echo date ( 'D, m-d-Y H:i:s', $date ) . '<br />';
      if ( empty ($ADD_LINK_IN_VIEWS) || $ADD_LINK_IN_VIEWS != 'N' ) {
        echo html_for_add_icon ( $dateYmd, '', '', $user );
      }

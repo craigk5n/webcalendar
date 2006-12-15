@@ -168,7 +168,6 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       if ( $class == 'class="row"' )
         $class = '';
       echo "<td $class style=\"width:$tdw%;\">";
-      //echo date ( 'D, m-d-Y H:i:s', $date ) . '<br />';
       if ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' ) {
         echo html_for_add_icon ( date ( 'Ymd', $date ), '', '', $user );
       }
