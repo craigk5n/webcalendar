@@ -194,9 +194,9 @@ function dump_globals ()
   }
   foreach ( $GLOBALS['HTTP_POST_VARS'] as $K => $V ) {
     if ( strlen ( $V ) < 70 )
-      do_debug ( "GLOBALS[$HTTP_POST_VARS[$K]] => $V" );
+      do_debug ( "GLOBALS[$_POST[$K]] => $V" );
     else
-      do_debug ( "GLOBALS[$HTTP_POST_VARS[$K]] => (too long)" );
+      do_debug ( "GLOBALS[$_POST[$K]] => (too long)" );
   }
 }
 

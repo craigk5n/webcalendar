@@ -34,9 +34,6 @@ $numDeleted = 0;
 
 if ( ! empty ( $_FILES['FileName'] ) )
   $file = $_FILES['FileName'];
-else
-if ( ! empty ( $HTTP_POST_FILES['FileName'] ) )
-  $file = $HTTP_POST_FILES['FileName'];
 
 if ( empty ( $file ) )
   echo $translations['No file'] . '!<br />';
@@ -56,7 +53,7 @@ if ( $file['size'] > 0 ) {
 /*
     case 'MODULE':
       include "import_module.php";
-      $data = parse_module ( $HTTP_POST_FILES['FileName']['tmp_name'] );
+      $data = parse_module ( $_FILES['FileName']['tmp_name'] );
       break;
 */
 
