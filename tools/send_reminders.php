@@ -161,13 +161,13 @@ if ( empty ( $GENERAL_USE_GMT ) || $GENERAL_USE_GMT != 'Y' )
 $startdateTS = time ( 0, 0, 0 );
 $enddateTS = $startdateTS + ( $DAYS_IN_ADVANCE * 86400 );
 
-$startdate = date ( 'Ymd', $startdateTS );
-$enddate = date ( 'Ymd', $enddateTS );
+$startdate = gmdate ( 'Ymd', $startdateTS );
+$enddate = gmdate ( 'Ymd', $enddateTS );
 
 // Now read events all the repeating events (for all users).
 $repeated_events = query_events ( '', true,
-  'AND ( webcal_entry_repeats.cal_end >= ' . $startdate
-   . ' OR webcal_entry_repeats.cal_end IS NULL ) ' );
+  'AND ( wer.cal_end >= ' . $startdate
+   . ' OR wer.cal_end IS NULL ) ' );
 $repcnt = count ( $repeated_events );
 // Read non-repeating events (for all users).
 if ( $debug )
@@ -569,8 +569,6 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
         ? 'start time is: ' . gmdate ( 'm/d/Y H:i', $start )
         : 'end time is: ' . gmdate ( 'm/d/Y H:i', $end ) ) . ' GMT<br />
   Remind time is: ' . gmdate ( 'm/d/Y H:i', $remind_time ) . ' GMT<br />
-  Server Timezone: ' . $GLOBALS['SERVER_TIMEZONE'] . '<br />
-  Server Difference from GMT (hours) : ' . date ( 'Z', $start ) / 3600 . '<br />
   Effective delivery time is: ' . date ( 'm/d/Y H:i T', $remind_time ) . '<br />
   Last sent on: '
        . ( $lastsent == 0 ? 'NEVER' : date ( 'm/d/Y H:i T', $lastsent ) )
