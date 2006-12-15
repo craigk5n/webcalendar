@@ -1,4 +1,4 @@
-<?php /* $Id$  */  
+<?php /* $Id$  */
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 ?>
 function valid_form ( form ) {
@@ -67,7 +67,7 @@ function valid_form ( form ) {
   }
 
   if ( err.length > 0 ) {
-    alert ( "<?php etranslate ( 'Error', true ) ?>" + ":\n\n" + err + "\n\n<?php 
+    alert ( "<?php etranslate ( 'Error', true ) ?>" + ":\n\n" + err + "\n\n<?php
   etranslate('Color format should be &#39;#RRGGBB&#39;', true)?>" );
     return false;
   }
@@ -190,19 +190,19 @@ function email_handler () {
       makeVisible ( "em3" );
       makeVisible ( "em3a" );
       makeVisible ( "em4" );
-      if ( auth ) {      
+      if ( auth ) {
         makeVisible ( "em5" )
         makeVisible ( "em6" );
       } else {
         makeInvisible ( "em5" )
-        makeInvisible ( "em6" );      
+        makeInvisible ( "em6" );
       }
     } else {
       makeInvisible ( "em3" );
       makeInvisible ( "em3a" );
       makeInvisible ( "em4" );
       makeInvisible ( "em5" )
-      makeInvisible ( "em6" );    
+      makeInvisible ( "em6" );
     }
     makeVisible ( "em7" );
     makeVisible ( "em8" );
@@ -210,6 +210,7 @@ function email_handler () {
     makeVisible ( "em10" );
     makeVisible ( "em11" );
     makeVisible ( "em12" );
+    makeVisible ( "em13" );
   } else {
     makeInvisible ( "em1" );
     makeInvisible ( "em2" );
@@ -224,6 +225,7 @@ function email_handler () {
     makeInvisible ( "em10" );
     makeInvisible ( "em11" );
     makeInvisible ( "em12" );
+    makeInvisible ( "em13" );
   }
 }
 
