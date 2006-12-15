@@ -953,7 +953,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'Event rejected by participant' )?>:</td><td>
  <?php echo print_radio ( 'EMAIL_EVENT_REJECTED' ) ?>
 </td></tr>
-<tr id="em12"><td class="tooltip" title="<?php etooltip( 'email-event-create' )?>">
+<tr id="em13"><td class="tooltip" title="<?php etooltip( 'email-event-create' )?>">
  &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'Event that I create' )?>:</td><td>
  <?php echo print_radio ( 'EMAIL_EVENT_CREATE' ) ?>
 </td></tr>

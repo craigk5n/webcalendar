@@ -1,5 +1,7 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Implemented PATCH [ webcalendar-Bugs-1615738 ] EMAIL_EVENT_CREATE pref don't get invisible
+ - Updated German.txt for ws/event_mod.php and ws/user_mod.php.
  - Fix bug [ 1614167 ] adjusted bg-image not working at views
    Cut the wrong set of dupe code the first time.
  - Updated German.txt. Thanks Markus.
