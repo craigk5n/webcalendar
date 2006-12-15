@@ -11,39 +11,6 @@ function do_debug ( $msg ) {
   //3, "d:\php\logs\debug.txt" );
 }
 
-// Get value from POST form
-function getPostValue ( $name ) {
-  global $HTTP_POST_VARS;
-
-  if ( isset ( $_POST ) && is_array ( $_POST ) && ! empty ( $_POST[$name] ) ) {
-  $_POST[$name] = ( get_magic_quotes_gpc () != 0? $_POST[$name]: addslashes ( $_POST[$name]) );
-   $HTTP_POST_VARS[$name] = $_POST[$name];
-    return $_POST[$name];
-  } else if ( ! isset ( $HTTP_POST_VARS ) ) {
-    return null;
-  } else if ( ! isset ( $HTTP_POST_VARS[$name] ) ) {
-    return null;
- }
-  return ( $HTTP_POST_VARS[$name] );
-}
-
-
-// Get value from GET form
-function getGetValue ( $name ) {
-  global $HTTP_GET_VARS;
-
-  if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) ) {
-  $_GET[$name] = ( get_magic_quotes_gpc () != 0? $_GET[$name]: addslashes ( $_GET[$name]) );
-    $HTTP_GET_VARS[$name] = $_GET[$name];
-  return $_GET[$name];
-  } else if ( ! isset ( $HTTP_GET_VARS ) ) {
-    return null;
-  } else if ( ! isset ( $HTTP_GET_VARS[$name] ) ){
-    return null;
- }
-  return ( $HTTP_GET_VARS[$name] );
-}
-
 function make_uppercase () {
   //make sure all cal_settings are UPPERCASE
   if ( ! dbi_execute ( 'UPDATE webcal_config SET cal_setting = UPPER(cal_setting)' ) )
@@ -53,13 +20,15 @@ function make_uppercase () {
 }
 
 function db_load_admin () {
- $res = dbi_execute ( 'SELECT cal_login FROM webcal_user ' .
- "WHERE cal_login  = 'admin'", array() , false, false );
- $sql = "INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) 
-VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ADMINISTRATOR', 'DEFAULT', 'Y' );";
+ $res = dbi_execute ( "SELECT cal_login FROM webcal_user
+   WHERE cal_login  = 'admin'", array() , false, false );
+ $sql = "INSERT INTO webcal_user ( cal_login, cal_passwd, 
+   cal_lastname, cal_firstname, cal_is_admin ) 
+   VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 
+   'ADMINISTRATOR', 'DEFAULT', 'Y' );";
  //Preload access_function premissions
  $sql2 = "INSERT INTO webcal_access_function ( cal_login, cal_permissions ) 
-VALUES ( 'admin', 'YYYYYYYYYYYYYYYYYYYYYYYYYYY' );"; 
+   VALUES ( 'admin', 'YYYYYYYYYYYYYYYYYYYYYYYYYYY' );"; 
  if ( ! $res ) {
   dbi_execute ( $sql );
   dbi_execute ( $sql2 );
@@ -74,8 +43,8 @@ VALUES ( 'admin', 'YYYYYYYYYYYYYYYYYYYYYYYYYYY' );";
 }
 
 function db_check_admin () {
- $res = dbi_execute ( 'SELECT count(cal_login) FROM webcal_user ' .
- "WHERE cal_is_admin  = 'Y'", array() , false, false );
+ $res = dbi_execute ( "SELECT count(cal_login) FROM webcal_user
+   WHERE cal_is_admin  = 'Y'", array() , false, false );
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   dbi_free_result ( $res );
@@ -85,28 +54,28 @@ function db_check_admin () {
 }
 
 function do_v11b_updates () {
- $res = dbi_execute ( 'SELECT webcal_entry_user.cal_id, cal_category, cat_owner ' . 
-   'FROM webcal_entry_user, webcal_categories ' . 
-   'WHERE webcal_entry_user.cal_category = webcal_categories.cat_id');
+ $res = dbi_execute ( 'SELECT weu.cal_id, cal_category, cat_owner
+   FROM webcal_entry_user weu, webcal_categories wc
+   WHERE weu.cal_category = wc.cat_id');
  if (  $res ) {
    while( $row = dbi_fetch_row ( $res ) ) {
      if (  ! empty ( $row[2] ) ) {
-     dbi_execute ('INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) ' .
-       ' VALUES (?,?,?)' , array ( $row[0], $row[1], $row[2] ) );  
+     dbi_execute ('INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner )
+       VALUES (?,?,?)' , array ( $row[0], $row[1], $row[2] ) );  
       } else {
-     dbi_execute ('INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_order ) ' .
-       ' VALUES (?,?,?)' , array ( $row[0], $row[1], 99 ) );        
+     dbi_execute ('INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_order )
+       VALUES (?,?,?)' , array ( $row[0], $row[1], 99 ) );        
       }     
    }
    dbi_free_result ( $res );
  }
 
  //update LANGUAGE settings from Browser-Defined to none
- dbi_execute ("UPDATE webcal_config  SET cal_value = 'none'" .
-    " WHERE cal_setting = 'LANGUAGE' AND cal_value = 'Browser-defined'");
+ dbi_execute ("UPDATE webcal_config  SET cal_value = 'none'
+   WHERE cal_setting = 'LANGUAGE' AND cal_value = 'Browser-defined'");
 
- dbi_execute ("UPDATE webcal_user_pref  SET cal_value = 'none'" .
-    " WHERE cal_setting = 'LANGUAGE' AND cal_value = 'Browser-defined'");
+ dbi_execute ("UPDATE webcal_user_pref  SET cal_value = 'none'
+   WHERE cal_setting = 'LANGUAGE' AND cal_value = 'Browser-defined'");
          
  //clear old category values
  dbi_execute ( 'UPDATE webcal_entry_user SET cal_category = NULL');  
@@ -115,8 +84,8 @@ function do_v11b_updates () {
  //change cal_days format to cal_cal_byday format
  
  //deprecate monthlyByDayR to simply monthlyByDay
- dbi_execute ("UPDATE webcal_entry_repeats  SET cal_type = 'monthlyByDay'" .
-    " WHERE cal_type = 'monthlybByDayR'");
+ dbi_execute ("UPDATE webcal_entry_repeats  SET cal_type = 'monthlyByDay'
+   WHERE cal_type = 'monthlybByDayR'");
  $res = dbi_execute ( 'SELECT cal_id, cal_days FROM webcal_entry_repeats ');
  if (  $res ) {
    while( $row = dbi_fetch_row ( $res ) ) {
@@ -145,8 +114,8 @@ function do_v11b_updates () {
        $dd = substr ( $row[0], 6, 2 );
        $dY =  substr ( $row[0], 0, 4 );
        $new_date = date ( 'Ymd', gmmktime ( 0, 0, 0, $dm, $dd, $dY ) + ( 24 * 3600 ) );      
-       dbi_execute ('UPDATE webcal_entry_repeats  SET cal_end = ?' .
-       ' WHERE cal_id = ?' , array ( $new_date , $row[1] ) );
+       dbi_execute ('UPDATE webcal_entry_repeats  SET cal_end = ?
+         WHERE cal_id = ?' , array ( $new_date , $row[1] ) );
      }
    }
    dbi_free_result ( $res );
@@ -156,8 +125,8 @@ function do_v11b_updates () {
 //convert site_extra reminders to webcal_reminders
 function do_v11e_updates () {
  $reminder_log_exists = false;
- $res = dbi_execute ( 'SELECT webcal_site_extras.cal_id, webcal_site_extras.cal_data ' . 
-   "FROM webcal_site_extras WHERE webcal_site_extras.cal_type = '7'");
+ $res = dbi_execute ( "SELECT cal_id, cal_data
+   FROM webcal_site_extras WHERE cal_type = '7'");
  $done = array ();
  if (  $res ) {
    while( $row = dbi_fetch_row ( $res ) ) {
@@ -173,8 +142,8 @@ function do_v11e_updates () {
      } else {
        $offset = $row[1];
      }
-     $res2 = dbi_execute ( 'SELECT cal_last_sent ' . 
-       'FROM webcal_reminder_log WHERE cal_id = ? AND cal_last_sent > 0',
+     $res2 = dbi_execute ( 'SELECT cal_last_sent
+       FROM webcal_reminder_log WHERE cal_id = ? AND cal_last_sent > 0',
        array (  $row[0] ) );
      if (  $res2 ) {
        $reminder_log_exists = true;
@@ -183,8 +152,8 @@ function do_v11e_updates () {
        $last_sent = ( ! empty ( $row2[0] ) ? $row2[0] : 0 );
        dbi_free_result ( $res2 );
      }     
-     dbi_execute ('INSERT INTO webcal_reminders ( cal_id, cal_date, ' .
-       'cal_offset, cal_last_sent, cal_times_sent ) VALUES (?,?,?,?,?)' , 
+     dbi_execute ('INSERT INTO webcal_reminders ( cal_id, cal_date,
+       cal_offset, cal_last_sent, cal_times_sent ) VALUES (?,?,?,?,?)' , 
        array ( $row[0], $date, $offset, $last_sent, $times_sent) );       
      $done[$row[0]] = true;
    }
@@ -277,9 +246,8 @@ function convert_server_to_GMT ( $offset=0 ) {
      $new_cal_date = gmdate ( 'Ymd', $new_datetime );
      $new_cal_time = gmdate ( 'His', $new_datetime );
      // Now update row with new data
-     if ( ! dbi_execute ( 'UPDATE webcal_entry SET cal_date = ?, ' .
-       ' cal_time = ? '.
-       'WHERE cal_id = ?' , array ( $new_cal_date , $new_cal_time , $cal_id ) ) ){
+     if ( ! dbi_execute ( 'UPDATE webcal_entry SET cal_date = ?, cal_time = ?
+       WHERE cal_id = ?' , array ( $new_cal_date , $new_cal_time , $cal_id ) ) ){
        $error = "Error updating table 'webcal_entry' " . dbi_error ();
      return $error;
      }
@@ -305,9 +273,8 @@ function convert_server_to_GMT ( $offset=0 ) {
       $new_cal_date = gmdate ( 'Ymd', $new_datetime );
       $new_cal_time = gmdate ( 'His', $new_datetime );
       // Now update row with new data
-      if ( ! dbi_execute ( 'UPDATE webcal_entry_log SET cal_date = ?, ' .
-        ' cal_time = ? '.
-        'WHERE cal_log_id = ?' , array ( $new_cal_date , $new_cal_time , $cal_log_id ) ) ){
+      if ( ! dbi_execute ( 'UPDATE webcal_entry_log SET cal_date = ?, cal_time = ?
+        WHERE cal_log_id = ?' , array ( $new_cal_date , $new_cal_time , $cal_log_id ) ) ){
         $error = "Error updating table 'webcal_entry_log' " . dbi_error ();
         return $error;
       }
@@ -321,8 +288,8 @@ function convert_server_to_GMT ( $offset=0 ) {
     $error = 'Database error: ' . dbi_error ();
     return $error;
    }
-  $sql = "INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-   "VALUES ( 'WEBCAL_TZ_CONVERSION', 'Y' )";
+  $sql = "INSERT INTO webcal_config ( cal_setting, cal_value )
+    VALUES ( 'WEBCAL_TZ_CONVERSION', 'Y' )";
   if ( ! dbi_execute ( $sql ) ) {
     $error = 'Database error: ' . dbi_error ();
    return $error;
@@ -409,8 +376,8 @@ function get_installed_version ( $postinstall=false ) {
  }
  // Determine if old data has been converted to GMT
  // This seems lke a good place to put this
- $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
-  "WHERE cal_setting  = 'WEBCAL_TZ_CONVERSION'", array(), false, $show_all_errors);
+ $res = dbi_execute ( "SELECT cal_value FROM webcal_config
+   WHERE cal_setting  = 'WEBCAL_TZ_CONVERSION'", array(), false, $show_all_errors);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   dbi_free_result ( $res );
@@ -440,8 +407,8 @@ function get_installed_version ( $postinstall=false ) {
  // Get existing server URL
  // We could use the self-discvery value, but this 
  // may be a custom value
- $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
-  "WHERE cal_setting  = 'SERVER_URL'", array(), false, $show_all_errors);
+ $res = dbi_execute ( "SELECT cal_value FROM webcal_config
+   WHERE cal_setting  = 'SERVER_URL'", array(), false, $show_all_errors);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( ! empty ( $row[0] ) && strlen ( $row[0] ) ) {
@@ -450,8 +417,8 @@ function get_installed_version ( $postinstall=false ) {
   dbi_free_result ( $res );
  }
  // Get existing application name
- $res = dbi_execute ( 'SELECT cal_value FROM webcal_config ' .
-  "WHERE cal_setting  = 'APPLICATION_NAME'", array(), false, $show_all_errors);
+ $res = dbi_execute ( "SELECT cal_value FROM webcal_config
+   WHERE cal_setting  = 'APPLICATION_NAME'", array(), false, $show_all_errors);
  if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( ! empty ( $row[0] ) ) {
