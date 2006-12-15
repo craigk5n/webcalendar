@@ -13,7 +13,7 @@ else {
     dbi_execute ( 'DELETE FROM webcal_group_user WHERE cal_group_id = ? ',
       array ( $id ) );
   } else {
-    $date = date ( 'Ymd' );
+    $dateYmd = date ( 'Ymd' );
     if ( empty ( $groupname ) )
       $error = translate ( 'You must specify a group name' );
     else
@@ -21,7 +21,7 @@ else {
       # update
       if ( ! dbi_execute ( 'UPDATE webcal_group SET cal_name = ?,
         cal_last_update = ? WHERE cal_group_id = ?',
-          array ( $groupname, $date, $id ) ) )
+          array ( $groupname, $dateYmd, $id ) ) )
         $error = db_error ();
     } else {
       # new... get new id first
@@ -33,7 +33,7 @@ else {
         dbi_free_result ( $res );
         if ( ! dbi_execute ( 'INSERT INTO webcal_group ( cal_group_id, cal_owner,
           cal_name, cal_last_update ) VALUES ( ?, ?, ?, ? )',
-            array ( $id, $login, $groupname, $date ) ) )
+            array ( $id, $login, $groupname, $dateYmd ) ) )
           $error = db_error ();
       } else
         $error = db_error ();

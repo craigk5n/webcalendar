@@ -68,10 +68,8 @@ function ParseLine ( $line ) {
 
   // Adjust times to users Timezone if not Untimed
   if ( isset ( $Entry['Untimed'] ) && $Entry['Untimed'] == 0 ) {
-    $tz_offset = date ( 'Z', $Entry['StartTime'] );
-    $Entry['StartTime'] -= $tz_offset;
-    $tz_offset = date ( 'Z', $Entry['EndTime'] );
-    $Entry['EndTime'] -= $tz_offset;
+    $Entry['StartTime'] -= date ( 'Z', $Entry['StartTime'] );
+    $Entry['EndTime'] -= date ( 'Z', $Entry['EndTime'] );
   }
 
   if ( $Exceptions )

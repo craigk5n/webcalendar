@@ -12,14 +12,14 @@ $cat_id = getGetValue ( 'cat_id' );
 load_user_categories ();
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
-$nextmonth = date ( 'm', $next );
-$nextyear = date ( 'Y', $next );
 $nextYmd = date ( 'Ymd', $next );
+$nextyear = substr ( $nextYmd, 0, 4 );
+$nextmonth = substr ( $nextYmd, 4, 2 );
 
 $prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
-$prevmonth = date ( 'm', $prev );
-$prevyear = date ( 'Y', $prev );
 $prevYmd = date ( 'Ymd', $prev );
+$prevyear = substr ( $prevYmd, 0, 4 );
+$prevmonth = substr ( $prevYmd, 4, 2 );
 
 if ( $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;

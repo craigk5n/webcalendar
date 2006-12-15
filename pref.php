@@ -158,7 +158,7 @@ $GLOBALS['MYEVENTS'] = $prefarray['MYEVENTS'];
 
 //determine if we can set timezones, if not don't display any options
 $can_set_timezone = set_env ( 'TZ', $prefarray['TIMEZONE'] );
-
+$dateYmd = date ( 'Ymd' );
 $selected = ' selected="selected" ';
 
 $minutesStr = translate( 'minutes' );
@@ -293,10 +293,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
   <label for="pref_TIMEZONE"><?php etranslate( 'Timezone Selection' )?>:</label></td><td>
   <?php 
    if ( empty ( $prefarray['TIMEZONE'] ) ) $prefarray['TIMEZONE'] = $SERVER_TIMEZONE;
-   $tz_offset = date('Z') / ONE_HOUR;
    echo print_timezone_select_html ( 'pref_', $prefarray['TIMEZONE']); 
-   echo  translate( 'Your current GMT offset is' ) . '&nbsp;' .
-     $tz_offset . '&nbsp;' .translate( 'hours' ) . '.';
   ?>
 </td></tr>
  <?php } //end $can_set_timezone ?>
@@ -311,7 +308,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
     echo '>' . $datestyles[$i + 1] . "</option>\n";
   }
   ?>
-</select>&nbsp;<?php echo date_to_str ( date ( 'Ymd' ), 
+</select>&nbsp;<?php echo date_to_str ( $dateYmd, 
     $DATE_FORMAT, false, false );?>
 <br />
 <select name="pref_DATE_FORMAT_MY">
@@ -323,7 +320,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
     echo '>' . $datestyles_my[$i + 1] . "</option>\n";
   }
 ?>
-</select>&nbsp;<?php echo date_to_str ( date ( 'Ymd' ), 
+</select>&nbsp;<?php echo date_to_str ( $dateYmd, 
     $DATE_FORMAT_MY, false, false );?>
 <br />
 <select name="pref_DATE_FORMAT_MD">
@@ -335,7 +332,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
     echo '>' . $datestyles_md[$i + 1] . "</option>\n";
   }
 ?>
-</select>&nbsp;<?php echo date_to_str ( date ( 'Ymd' ), 
+</select>&nbsp;<?php echo date_to_str ( $dateYmd, 
     $DATE_FORMAT_MD, false, false );?>
 <br />
 <select name="pref_DATE_FORMAT_TASK">
@@ -348,7 +345,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
   }
 ?>
 </select>&nbsp;<?php echo translate ( 'Small Task Date' ) . ' ' .
-  date_to_str ( date ( 'Ymd' ),  $DATE_FORMAT_TASK, false, false );?>
+  date_to_str ( $dateYmd,  $DATE_FORMAT_TASK, false, false );?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip( 'time-format-help' )?>">
@@ -901,11 +898,11 @@ if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
 <td width="1%" rowspan="3">&nbsp;</td>
 <td style="text-align:center; color:<?php 
   echo $H2COLOR?>; font-weight:bold;"><?php
-  echo date_to_str ( date ('Ymd'), $DATE_FORMAT_MY, false );?></td>
+  echo date_to_str ( $dateYmd, $DATE_FORMAT_MY, false );?></td>
 <td width="1%" rowspan="3">&nbsp;</td></tr>
 <tr><td bgcolor="<?php echo $BGCOLOR?>">
 <?php 
-set_today( date ( 'Ymd' ) );
+set_today( $dateYmd );
 echo display_month ( date ( 'm' ) , date( 'Y' ) , true );
 ?>
 </td></tr>

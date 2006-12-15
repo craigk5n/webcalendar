@@ -268,8 +268,8 @@ echo $PROGRAM_VERSION; ?>"</generator>
 <?php
 $numEvents = 0;
 $reventIds = array();
-
-for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
+$endtimeYmd = date ( 'Ymd', $endTime );
+for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
   $numEvents < $maxEvents; $i += ONE_DAY ) {
   $eventIds=array();
   $d = date ( 'Ymd', $i );
@@ -287,8 +287,8 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
         $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
         if ( $date_in_title ) {
           $itemtime = ( $entries[$j]->isAllDay() || $entries[$j]->isUntimed() ?
-            $time_separator . date( $time_format, $unixtime ): '' ) . ' ';
-          $dateinfo = date( $date_format, $unixtime ) . $itemtime;
+            $time_separator . date ( $time_format, $unixtime ): '' ) . ' ';
+          $dateinfo = date ( $date_format, $unixtime ) . $itemtime;
         } else {
           $dateinfo = '';
         }
@@ -341,8 +341,8 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
         $unixtime = date_to_epoch ( $rentries[$j]->getDateTime() );
         if ( $date_in_title == true ) {
           $itemtime = ( $rentries[$j]->isAllDay() || $rentries[$j]->isUntimed() ?
-            $time_separator . date( $time_format, $unixtime ): '' ) . ' ';
-          $dateinfo = date( $date_format, $unixtime ) . $itemtime;
+            $time_separator . date ( $time_format, $unixtime ): '' ) . ' ';
+          $dateinfo = date ( $date_format, $unixtime ) . $itemtime;
         } else {
           $dateinfo = '';
         }
@@ -356,7 +356,8 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= date ( 'Ymd', $endTime ) &&
         if ( ! empty ( $category ) )
           echo "<category><![CDATA[" . $category . "]]></category>\n";
        // echo '<creator><![CDATA[' . $creator . "]]></creator>\n";
-        echo '<pubDate>' . $pubDate . ' ' . gmdate ( 'H:i:s', $unixtime ) . " GMT</pubDate>\n";
+        echo '<pubDate>' . $pubDate . ' ' . gmdate ( 'H:i:s', $unixtime ) 
+         . " GMT</pubDate>\n";
         echo '<guid>' . $SERVER_URL . 'view_entry.php?id=' . 
           $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" . 
           $d . "</guid>\n";
