@@ -157,17 +157,16 @@ if ( empty ( $error ) ) {
     $thismonth = $month;
 
   // check UAC
-  $euser = ( empty ( $user )
-    ? ( $is_my_event == true ? $login : $create_by )
-    : ( $login != $user ? $user : $login ) );
-  if ( access_is_enabled () ) {
-    $can_view =  access_user_calendar ( 'view', $euser, $login, $cal_type, $cal_access );
-    $can_edit = access_user_calendar ( 'edit', $create_by, $login, $cal_type, $cal_access );
-    $can_approve = access_user_calendar ( 'approve', $euser, $login, $cal_type, $cal_access );
-    $time_only = access_user_calendar ( 'time', $euser, $login, $cal_type, $cal_access );
+  $euser = ( empty ( $user ) ? ( $is_my_event ? $login : $create_by ) : $user );
+  $time_only = 'N';
 
-  } else
-    $time_only = 'N';
+  if ( access_is_enabled () ) {
+    $tmpStr = "$login, $cal_type, $cal_access";
+    $can_approve = access_user_calendar ( 'approve', $euser, $tmpStr );
+    $can_edit = access_user_calendar ( 'edit', $create_by, $tmpStr );
+    $can_view = access_user_calendar ( 'view', $euser, $tmpStr );
+    $time_only = access_user_calendar ( 'time', $euser, $tmpStr );
+  } 
 
   if ( $is_admin || $is_nonuser_admin || $is_assistant )
     $can_view = true;
