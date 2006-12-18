@@ -23,19 +23,20 @@ if ( strlen ( $date ) > 0 ) {
   $thismonth = date ( 'm' );
 }
 
+$href = 'href="datesel.php?form=' . $form . '&amp;fday=' . $fday
+ . '&amp;fmonth=' . $fmonth . '&amp;fyear=' . $fyear . '&amp;date=';
+
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
-$nextdate = date ( 'Ym', $next ) . '01"';
+$nextdate = $href . date ( 'Ym', $next ) . '01"';
 $nextmonth = date ( 'm', $next );
 $nextyear = date ( 'Y', $next );
 
 $prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
-$prevdate = date ( 'Ym', $prev ) . '01"';
+$prevdate = $href . date ( 'Ym', $prev ) . '01"';
 $prevmonth = date ( 'm', $prev );
 $prevyear = date ( 'Y', $prev );
 
 $monthStr = month_name ( $thismonth - 1 );
-$href = 'href="datesel.php?form=' . $form . '&amp;fday=' . $fday
- . '&amp;fmonth=' . $fmonth . '&amp;fyear=' . $fyear . '&amp;date=';
 
 print_header ( array ( 'js/datesel.php/false/' . "$form/$fmonth/$fday/$fyear" ),
   '', '', true, false, true );
@@ -47,12 +48,12 @@ echo <<<EOT
           <td align="center" valign="middle">
             <table class="aligncenter">
               <tr>
-                <td><a title="{$translations['Previous']}" class="prev" {$href}
-                  {$prevdate}><img src="images/leftarrowsmall.gif"
+                <td><a title="{$translations['Previous']}" class="prev" {$prevdate}>
+                  <img src="images/leftarrowsmall.gif"
                      alt="{$translations['Previous']}" /></a></td>
                 <th colspan="5">&nbsp;{$monthStr}&nbsp;{$thisyear}&nbsp;</th>
-                <td><a title="{$translations['Next']}"class="next" {$href}
-                  {$nextdate}><img src="images/rightarrowsmall.gif"
+                <td><a title="{$translations['Next']}"class="next" {$nextdate}>
+                  <img src="images/rightarrowsmall.gif"
                      alt="{$translations['Next']}" /></a></td>
               </tr>
               <tr class="day">
