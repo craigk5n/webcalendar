@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1617805 ] missing LINK to Craig's site if using 'top-menue'
  - Fixed bug [ 1617595 ] edit_template.php Error
  - Fixed bug [ 1617983 ] 'previous' and 'next' arrows didn't work at 'pop-up'-minical
  - Fix in dbi4php.php when translate is not yet defined
