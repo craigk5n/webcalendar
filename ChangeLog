@@ -1,5 +1,6 @@
 $Id$
-Version 1.1.2 (?? ??? 2006)
+Version 1.1.2 (18 Dec 2006)
+ - Fix in dbi4php.php when translate is not yet defined
  - Created new function get_users_event_ids ()
  - Created new getPredefinedVariable.php that contains all getXxxValue functions
  - Fixed bug [ 1612332 ] empty exports with date limits
