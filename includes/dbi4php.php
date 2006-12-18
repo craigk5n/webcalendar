@@ -751,10 +751,17 @@ function dbi_get_cached_rows ( $sql, $params = array (),
     // Serialize and save in cache for later use.
     if ( ! empty ( $file ) && $save_query ) {
       $fd = @fopen ( $file, 'w+b', false );
-      if ( empty ( $fd ) )
-        dbi_fatal_error ( translate ( 'Cache error' ) . ': '
-           . str_replace ( 'XXX', translate ( 'write' ),
-            translate ( 'Could not XXX file' ) ) . " $file." );
+      if ( empty ( $fd ) ) {
+        if ( function_exists ( "translate" ) ) {
+          dbi_fatal_error ( translate ( 'Cache error' ) . ': '
+             . str_replace ( 'XXX', translate ( 'write' ),
+              translate ( 'Could not XXX file' ) ) . " $file." );
+        } else {
+          dbi_fatal_error ( 'Cache error' . ': '
+             . str_replace ( 'XXX', 'write',
+              'Could not XXX file' ) . " $file." );
+        }
+      }
 
       fwrite ( $fd, serialize ( $rows ) );
       fclose ( $fd );
