@@ -26,7 +26,8 @@ echo '
     <div align="left" style="margin-left: 4px; position: absolute; bottom: 0" >';
 if ( empty ( $credits ) )
   echo '
-      <h2 style="margin: 0">' . translate ( 'Title' ) . '</h2>
+      <h2 style="margin: 0"><a title=" ' . $PROGRAM_NAME . '" href="' 
+        . $PROGRAM_URL . '">' . translate ( 'Title' ) . '</a></h2>
       <p>' . translate ( 'version' ) . ' ' . $PROGRAM_VERSION . '</p>
       <p>' . $PROGRAM_DATE . '</p>
       <p>&nbsp;</p>
