@@ -1,7 +1,9 @@
 #
 # FitBak ( http://www.fitbak.com ) -ek itzulia
+# Sergio Lozano Sangrador (sergiolozano@euskalerria.org)-ek zuzenduta eta osotut
+a
 #
-# Translation last updated on 03-10-2004
+# Translation last updated on 12-19-2006
 
 
 ###############################################
@@ -12,9 +14,44 @@ charset: iso-8859-1
 
 
 ###############################################
+# Page: activity_log.php
+#
+Activity Log: Jardunaren erregistroa
+Admin: Konfigurazioa
+User: Erabiltzailea
+Calendar: Egutegia
+Date: Data
+Time: Ordua
+Event: Gertaera
+Action: Ekintza
+Event created: Gertaera sortua
+Event approved: Gertaera onetsia
+Event rejected: Gertaera gaitzetsia
+Event updated: Gertaera eguneratua
+Event deleted: Gertaera ezabatua
+Notification sent: Jakinarazpen mezua bidalia
+Reminder sent: Gogorarazteko mezua bidalia
+Database error: Akatsa datu basean
+Previous: Aurrekoa
+#
+# << MISSING >>
+# Events:
+Next: Hurrengoa
+
+
+###############################################
+# Page: add_entry.php
+#
+Invalid entry id: Sarrera desegokia
+This is a private event and may not be added to your calendar.: Gertaera hau pribatua da eta ezin da zure egutegian gehitu
+Error adding event: Akatsa gertaera gehitzean
+
+
+###############################################
 # Page: admin.php
 #
 System Settings: Sistemaren aukerak
+Help: Laguntza
 You are not authorized: Ez zaude baimenduta
 Note: Oharra
 Your user preferences: Zure lehenetsiak
@@ -26,8 +63,18 @@ to not use your user preferences when viewing this page: zure lehenetsiak ez era
 # are being ignored while viewing this page.:
 to load your user preferences when viewing this page: zure lehenetsiak erabiltzeko orri hau ikustean
 Save: Gorde
-Help: Laguntza
 Settings: Aukerak
+Public Access: Atzipen publikoa
+Groups: Taldeak
+#
+# << MISSING >>
+# NonUser Calendars:
+#
+# << MISSING >>
+# Other:
+Email: E-posta
+colors-help: Kolore guztiak formatu hamaseitarrean adierazi behar dira "#RRG
+Colors: Koloreak
 app-name-help: Izenburuan azalduko den testua adierazten du
 Application Name: Aplikazioaren izena
 server-url-help: Aplikazioaren oinarri URL-a adierazten du 
@@ -81,15 +128,13 @@ Display weekends in week view: Astebukaerak erakusten ditu hilabeteroko ikus auk
 #
 #
 # << MISSING >>
-# Display days with events in bold in year view:
+# Display days with events in bold in month and year views:
 #
 # << MISSING >>
 # display-desc-print-day-help:
 # English text: Include event descriptions in printer-friendly version of day view.
 #
-#
-# << MISSING >>
-# Display description in printer day view:
+Display description in printer day view: Egunaren inprimatzeko ikus eran deskribapena adierazi
 date-format-help: Dataren formatua adierazten du
 Date format: Data formatua
 December: Abendua
@@ -145,28 +190,6 @@ Disable Repeating field: Desgaitu errepikapen ezabatzea
 # Allow HTML in Description:
 allow-view-other-help: Beste erabiltzaileen egutegia ikusi daiteken ala ez adierazten du
 Allow viewing other user's calendars: Beste erabiltzaileen egutegiak ikustea baimendu
-allow-public-access-help: Egutegiak atzipen publikoa izan dezaken edo ez adierazten du.
-Allow public access: Atzipen publikoa baimendu
-public-access-view-others-help: Beste erabiltzaile batzuen egutegiak ikus daitezken adierazten du
-Public access can view other users: Beste erabiltzaileen gertaerak ikus daitezke
-public-access-can-add-help: Aukeratuz gero erabiltzaile publikoak gertaerak gehi ditzazke
-Public access can add events: Erabiltzaile publikoak gertaerak gehi ditzazke
-#
-# << MISSING >>
-# public-access-add-requires-approval-help:
-# English text: Specifies whether events added via the public access account require approval before being displayed.
-#
-#
-# << MISSING >>
-# Public access new events require approval:
-#
-# << MISSING >>
-# public-access-sees-participants-help:
-# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
-#
-#
-# << MISSING >>
-# Public access can view participants:
 #
 # << MISSING >>
 # allow-view-add-help:
@@ -175,30 +198,6 @@ Public access can add events: Erabiltzaile publikoak gertaerak gehi ditzazke
 #
 # << MISSING >>
 # Include add event link in views:
-#
-# << MISSING >>
-# allow-external-users-help:
-# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
-#
-#
-# << MISSING >>
-# Allow external users:
-#
-# << MISSING >>
-# external-can-receive-notification-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
-#
-#
-# << MISSING >>
-# External users can receive email notifications:
-#
-# << MISSING >>
-# external-can-receive-reminder-help:
-# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
-#
-#
-# << MISSING >>
-# External users can receive email reminders:
 remember-last-login-help: Aukeratzen bada azken login informazioa gogoratuko du
 Remember last login: Login informazioa gogoratu
 #
@@ -235,6 +234,14 @@ Conflict checking months: Hilak aztertzean talkak
 # Maximum timed events per day:
 #
 # << MISSING >>
+# timed-evt-len-help:
+# English text: Specifies input method for determining the length of a timed event.
+#
+Specify timed event length by: Bileren iraupena nola zehaztu
+Duration: Iraupena
+End Time: Amaitzeko ordua
+#
+# << MISSING >>
 # Plugins:
 #
 # << MISSING >>
@@ -252,19 +259,48 @@ Conflict checking months: Hilak aztertzean talkak
 #
 # << MISSING >>
 # Plugin:
-Groups: Taldeak
+allow-public-access-help: Egutegiak atzipen publikoa izan dezaken edo ez adierazten du.
+Allow public access: Atzipen publikoa baimendu
+#
+# << MISSING >>
+# public-access-default-visible:
+# English text: Events from the public calendar will automatically appear on all users' calendars
+#
+#
+# << MISSING >>
+# Public access visible by default:
+#
+# << MISSING >>
+# public-access-default-selected:
+# English text: When adding a new event, the public user will be selected by default as a participant.
+#
+#
+# << MISSING >>
+# Public access is default participant:
+public-access-view-others-help: Beste erabiltzaile batzuen egutegiak ikus daitezken adierazten du
+Public access can view other users: Beste erabiltzaileen gertaerak ikus daitezke
+public-access-can-add-help: Aukeratuz gero erabiltzaile publikoak gertaerak gehi ditzazke
+Public access can add events: Erabiltzaile publikoak gertaerak gehi ditzazke
+#
+# << MISSING >>
+# public-access-add-requires-approval-help:
+# English text: Specifies whether events added via the public access account require approval before being displayed.
+#
+#
+# << MISSING >>
+# Public access new events require approval:
+#
+# << MISSING >>
+# public-access-sees-participants-help:
+# English text: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+#
+#
+# << MISSING >>
+# Public access can view participants:
 groups-enabled-help: Taldekako antolaketa ahalbideratzen du
 Groups enabled: Taldeak gaituak
 user-sees-his-group-help: Taldekideek bere taldearen gertaerak soilik ikusiko dituzte
 User sees only his groups: Erabiltzaileak bere taldea ikusten du soilik
-Categories: Kategoria
-categories-enabled-help: Kategori sistema gaitzen du
-Categories enabled: Kategoriak gaituak
-#
-# << MISSING >>
-# Nonuser:
-# English text: Nonuser Calendars
-#
 #
 # << MISSING >>
 # nonuser-enabled-help:
@@ -293,9 +329,6 @@ Categories enabled: Kategoriak gaituak
 # Bottom:
 #
 # << MISSING >>
-# Reports:
-#
-# << MISSING >>
 # reports-enabled-help:
 # English text: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 #
@@ -304,16 +337,36 @@ Categories enabled: Kategoriak gaituak
 # Reports enabled:
 #
 # << MISSING >>
-# Subscribe/Publish:
-#
-# << MISSING >>
 # subscriptions-enabled-help:
 # English text: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
 #
+Allow remote subscriptions: Urrutiko harpidetzak baimendu
+categories-enabled-help: Kategori sistema gaitzen du
+Categories enabled: Kategoriak gaituak
 #
 # << MISSING >>
-# Allow remote subscriptions:
-Email: E-posta
+# allow-external-users-help:
+# English text: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+#
+#
+# << MISSING >>
+# Allow external users:
+#
+# << MISSING >>
+# external-can-receive-notification-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email notifications:
+#
+# << MISSING >>
+# external-can-receive-reminder-help:
+# English text: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+#
+#
+# << MISSING >>
+# External users can receive email reminders:
 email-enabled-help: E-posta bidezko notifikazioak gaitzen edo desgaitzen ditu
 Email enabled: E-posta gaitua
 email-default-sender: Defektuz postak zeinek bidaliko dituen adierazten du.
@@ -329,9 +382,13 @@ email-event-deleted: Gertaeren ezabatzea e-posta bidez jakinarazten den ala ez.
 Events removed from my calendar: Egutegitik ezabatutako gertaerak.
 email-event-rejected: Kide batek gertaera bati uko egiten dionean e-posta bidezko notifikazioa.
 Event rejected by participant: Partaideak uko egindako gertaera
-colors-help: Kolore guztiak formatu hamaseitarrean adierazi behar dira "#RRG
-Colors: Koloreak
 Allow user to customize colors: Erabiltzaileei kolore esleipena egitea baimendu
+#
+# << MISSING >>
+# Enable gradient images for background colors:
+#
+# << MISSING >>
+# Not available:
 Document background: Dokumentuaren atzea
 Select: Aukeratu
 Document title: Izenburua
@@ -347,33 +404,30 @@ Event popup text: Gertaera popup-aren testua
 
 
 ###############################################
-# Page: activity_log.php
+# Page: adminhome.php
 #
-Activity Log: Jardunaren erregistroa
-User: Erabiltzailea
-Calendar: Egutegia
-Date: Data
-Time: Ordua
-Event: Gertaera
-Action: Ekintza
-Event created: Gertaera sortua
-Event approved: Gertaera onetsia
-Event rejected: Gertaera gaitzetsia
-Event updated: Gertaera eguneratua
-Event deleted: Gertaera ezabatua
-Notification sent: Jakinarazpen mezua bidalia
-Reminder sent: Gogorarazteko mezua bidalia
-Database error: Akatsa datu basean
-Previous: Aurrekoa
-Next: Hurrengoa
-
-
-###############################################
-# Page: add_entry.php
+Preferences: Lehenetsiak
+Users: Erabiltzaileak
+Account: Kontua
 #
-Invalid entry id: Sarrera desegokia
-This is a private event and may not be added to your calendar.: Gertaera hau pribatua da eta ezin da zure egutegian gehitu
-Error adding event: Akatsa gertaera gehitzean
+# << MISSING >>
+# Assistants:
+Categories: Kategoria
+Views: Ikus erak
+Layers: Geruzak
+#
+# << MISSING >>
+# Reports:
+#
+# << MISSING >>
+# Delete Events:
+#
+# << MISSING >>
+# Public Preferences:
+#
+# << MISSING >>
+# Unapproved Public Events:
+Administrative Tools: Konfigurazio-tresnak
 
 
 ###############################################
@@ -390,6 +444,17 @@ Error approving event: Akatsa gertaera onestean
 
 
 ###############################################
+# Page: assistant_edit.php
+#
+#
+# << MISSING >>
+# Admin mode:
+#
+# << MISSING >>
+# Your assistants:
+
+
+###############################################
 # Page: category.php
 #
 Add: Gehitu
@@ -401,21 +466,8 @@ Add New Category: Atal berria gehitu
 
 
 ###############################################
-# Page: category_handler.php
-#
-
-
-###############################################
-# Page: datesel.php
-#
-
-
-###############################################
 # Page: day.php
 #
-#
-# << MISSING >>
-# Admin mode:
 #
 # << MISSING >>
 # Assistant mode:
@@ -437,35 +489,22 @@ Notification: Abixua
 #
 Edit Entry: Sarrera editatu
 Add Entry: Sarrera gehitu
+Details: Zehaztasunak
+Participants: Partaideak
+Repeat: Errepikatu
 brief-description-help: Deskribapen motza ( 20 bat karaktere )
 Brief Description: Deskribapen laburra
 full-description-help: Gertaeraren deskribapen luze, zabal eta mamitsua.
 Full Description: Deskribapen zabala
-date-help: Gertaeraren data adierazten du.
-time-help: Gertaeraren iraupena adierazten du ( hutsik utz liteke )
-am: am
-pm: pm
-#
-# << MISSING >>
-# Untimed event:
-#
-# << MISSING >>
-# Timed event:
-#
-# << MISSING >>
-# All day event:
-duration-help: Gertaeraren iraupena minutuetan adierazirik
-Duration: Iraupena
-hours: orduak
+access-help: Gertaeraren atzigarritasun maila adierazten du.
+Access: Atzitu
+Public: Publikoa
+Confidential: Konfidentziala
 priority-help: Gertaeraren lehentasuna adierazten du-
 Priority: Lehentasuna
 Low: Baxua
 Medium: Ertaina
 High: Altua
-access-help: Gertaeraren atzigarritasun maila adierazten du.
-Access: Atzitu
-Public: Publikoa
-Confidential: Konfidentziala
 #
 # << MISSING >>
 # category-help:
@@ -473,44 +512,71 @@ Confidential: Konfidentziala
 #
 Category: Atala
 None: Bat ere ez
+date-help: Gertaeraren data adierazten du.
+Untimed event: Denbora-mugarik gabe
+Timed event: Denboraz mugatua
+All day event: Egun osokoa
+time-help: Gertaeraren iraupena adierazten du ( hutsik utz liteke )
+am: am
+pm: pm
+duration-help: Gertaeraren iraupena minutuetan adierazirik
+hours: orduak
+#
+# << MISSING >>
+# end-time-help:
+# English text: Specifies the time the event is expected to end.
+#
 days: egunak
 before event: gertaeraren aurretik
 participants-help: Gertaeran honetan partaide direnen lista.
-Participants: Partaideak
+Availability: Libre egotea
 #
 # << MISSING >>
 # external-participants-help:
 # English text: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notications and reminders.
 #
-#
-# << MISSING >>
-# External Participants:
+External Participants: Kanpo partaideak
 repeat-type-help: Gertaera bat zenbatero errepikatzen den adierazi.
 Repeat Type: Mota errepikatu
 Daily: Egunero
 Weekly: Astero
 Monthly: Hilabetero
 by day: eguneko
-#
-# << MISSING >>
-# by day (from end):
+by day (from end): eguneko (amaiera-datatik aurrera)
 by date: dataren arabera
 Yearly: Urtero
 repeat-end-date-help: Gertaera noiz arte errepikatu behar den adierazten du.
 Repeat End Date: Errepikapenen bukaera data
 Use end date: Bukaera data erabili
+repeat-frequency-help: Gertaera zenbatero errepikatu behar den adierazten du.
+Frequency: Maiztasuna
 repeat-day-help: Gertaera hilabetearen zein egunetan errepikatu behar den adierazten du.
 Repeat Day: Eguna errepikatu
-for weekly: asterorako
 Tuesday: Asteartea
 Wednesday: Asteazkena
 Thursday: Osteguna
 Friday: Ostirala
 Saturday: Larunbata
-repeat-frequency-help: Gertaera zenbatero errepikatu behar den adierazten du.
-Frequency: Maiztasuna
 Delete entry: Sarrera ezabatu
 You are not authorized to edit this entry: Ez zaude baimenduta gertaera hau editatzeko
+
+
+###############################################
+# Page: edit_entry_handler.php
+#
+The following conflicts with the suggested time: Hondokoa ez dator bat gomendatutako orduarekin
+Unnamed Event: Izengabeko gertaera
+The description is: Deskribapena da
+A new appointment has been made for you by: Bilera bat ezartzen dizu
+An appointment has been updated by: Bilera bat eguneratu du
+The subject is: Gaia da
+Please look on: Mesedez bilatu
+to accept or reject this appointment: bilera hau onartzeko edo uko egiteko
+to view this appointment: bilera hau ikusteko
+Scheduling Conflict: Bilera arteko talka
+Your suggested time of: Zure ordu gomendatua da
+conflicts with the following existing calendar entries: hondoko sarrerekin egiten du talka
+Cancel: Utzi
 
 
 ###############################################
@@ -522,8 +588,8 @@ Source: Iturburua
 Color: Kolorea
 Duplicates: Bikoiztuak
 Show layer events that are the same as your own: Zure gertaeren berdinak direnak erakutsi
-Are you sure you want to delete this layer?: Seguru al zaude geruza hau ezabatu nahi duzula?
 Delete layer: Geruza ezabatu
+Are you sure you want to delete this layer?: Seguru al zaude geruza hau ezabatu nahi duzula?
 
 
 ###############################################
@@ -534,430 +600,7 @@ You can only create one layer for each user: Erabiltzaile bakoitzeko geruza baka
 
 
 ###############################################
-# Page: edit_user.php
-#
-Edit User: Erabiltzailea editatu
-Add User: Erabiltzailea gehitu
-Username: Erabiltzaile izena
-First Name: Izena
-Last Name: Abizena
-E-mail address: E-posta
-Password: Pasahitza
-again: berriz
-Admin: Admin
-Disabled for demo: Demoan desgaitua
-Change Password: Pasahitza aldatu
-New Password: Pasahitz berria
-Set Password: Pasahitza jarri
-
-
-###############################################
-# Page: edit_user_handler.php
-#
-Deleting users not supported: Erabiltzaileak ezabatzea debekatua
-The passwords were not identical: Pasahitza hauek ez dira berdinak
-You have not entered a password: Ez duzu pasahitz bat sartu
-
-
-###############################################
-# Page: export.php
-#
-Export: Exportatu
-Export format: Exportatzeko formatua
-Palm Pilot: Palm Pilot
-Export all dates: Data guztiak exportatu
-Start date: Hasiera data
-End date: Bukaera data
-Modified since: Azken eguneratze data
-
-
-###############################################
-# Page: export_handler.php
-#
-#
-# << MISSING >>
-# export format not defined or incorrect:
-
-
-###############################################
-# Page: group_edit.php
-#
-Unnamed Group: Izengabeko taldea
-Add Group: Taldea gehitu
-Edit Group: Taldea editatu
-Group name: Taldearen izena
-Updated: Eguneratua
-Created by: Sortzailea
-Users: Erabiltzaileak
-
-
-###############################################
-# Page: group_edit_handler.php
-#
-#
-# << MISSING >>
-# You must specify a group name:
-
-
-###############################################
-# Page: groups.php
-#
-Add New Group: Talde berria gehitu
-
-
-###############################################
-# Page: icalfb.php
-#
-
-
-###############################################
-# Page: pref.php
-#
-Preferences: Lehenetsiak
-to modify the preferences for the Public Access calendar: Atzipen publikoko egutegiaren lehenetsiak eguneratzeko
-#
-# << MISSING >>
-# tz-help:
-# English text: Specifies how many hours to adjust the time from server time to local time.
-#
-#
-# << MISSING >>
-# Timezone Offset:
-#
-# << MISSING >>
-# Add N hours to:
-#
-# << MISSING >>
-# Subtract N hours from:
-#
-# << MISSING >>
-# same as:
-#
-# << MISSING >>
-# server time:
-#
-# << MISSING >>
-# Default Category:
-#
-# << MISSING >>
-# When I am the boss:
-#
-# << MISSING >>
-# Email me event notification:
-#
-# << MISSING >>
-# I want to approve events:
-#
-# << MISSING >>
-# allow-remote-subscriptions-help:
-# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
-#
-#
-# << MISSING >>
-# remote-subscriptions-url-help:
-# English text: Displays the URL remote users should use to subscribe to your calendar.
-#
-#
-# << MISSING >>
-# URL:
-Sun: Iga
-Mon: Atl
-Tue: Atr
-Wed: Azk
-Thu: Otg
-Fri: Otr
-Sat: Lar
-Save Preferences: Lehenetsiak gorde
-
-
-###############################################
-# Page: help_bug.php
-#
-Report Bug: Bug informea
-
-
-###############################################
-# Page: help_edit_entry.php
-#
-Adding/Editing Calendar Entries: Gehitu/Editatu egutegi sarrerak
-
-
-###############################################
-# Page: help_index.php
-#
-Help Index: Laguntza
-Layers: Geruzak
-#
-# << MISSING >>
-# Import:
-
-
-###############################################
-# Page: help_layers.php
-#
-#
-# << MISSING >>
-# Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
-Add/Edit/Delete: Gehitu/Editatu/Ezabatu
-#
-# << MISSING >>
-# Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
-Specifies the user that you would like to see displayed in your calendar.: Zure egutegian azaltzea gustatuko litzaizuken erabiltzailea adierazten du
-The text color of the new layer that will be displayed in your calendar.: Geruza berriaren textuaren kolorea
-If checked, events that are duplicates of your events will be shown.: Gaitu ez gero zure gertaeren berdinak diren gertaerak ere erakutsi dira
-Disabling: Desgaitzen
-#
-# << MISSING >>
-# Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
-Enabling: Gaitzen
-#
-# << MISSING >>
-# Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
-
-
-###############################################
-# Page: help_admin.php
-#
-
-
-###############################################
-# Page: week.php
-#
-#
-# << MISSING >>
-# cont.:
-
-
-###############################################
-# Page: layers.php
-#
-#
-# << MISSING >>
-# to modify the layers settings for the:
-Layers are currently: Geruzak orain
-Enabled: Gaitua
-Disabled: Desgaitua
-Disable Layers: Geruzak desgaitu
-Enable Layers: Geruzak gaitu
-Layer: Geruza
-Edit layer: Geruza editatu
-Add layer: Geruza gehitu
-
-
-###############################################
-# Page: layers_toggle.php
-#
-
-
-###############################################
-# Page: list_unapproved.php
-#
-View this entry: Sarrera hau ikusi
-Approve this entry?: Sarrera hau onetsi
-Approve/Confirm: Onetsi/Konfirmatu
-Reject this entry?: Gaitzetsi sarrera hau?
-Reject: Gaitzetsi
-No unapproved events for: Ez daude onetsi gabeko gertaerak
-Unapproved Events: Gertaera ez onetsiak
-Public Access: Atzipen publikoa
-
-
-###############################################
-# Page: view_entry.php
-#
-every: maiztasuna
-2nd: 2garrena
-3rd: 3garrena
-4th: 4garrena
-5th: 5garrena
-1st: 1goa
-#
-# << MISSING >>
-# last:
-Description: Deskribapena
-Status: Egoera
-Waiting for approval: Onespenaren zai
-Deleted: Ezabatuak
-Rejected: Gaitzetsiak
-#
-# << MISSING >>
-# External User:
-Approve/Confirm entry: Onetsi/Konfirmatu erregistroa
-Reject entry: Erregistroa gaitzetsi
-Set category: Atala ezarri
-Edit repeating entry for all dates: Data guztietarako errepikatutako gertaera editatu
-Edit entry for this date: Egun honetarako sarrera editatu
-This will delete this entry for all users.: Ekintza honek gertaera hau ezabatuko du egun baterako
-Delete repeating event for all dates: Errepikatutako gertaera data guztietarako ezabatu
-#
-# << MISSING >>
-# Delete entry only for this date:
-Edit entry: Sarrera editatu
-This will delete the entry from your calendar.: Ekintza honek sarrera ezabatuko du egutegitik
-Do you want to add this entry to your calendar?: Sarrera hau gehitu nahi al duzu zure egutegian?
-This will add the entry to your calendar.: Ekintza honek sarrera gehituko du zure egutegian
-Add to My Calendar: Egutegiari gehitu
-Email all participants: Partaide guztiei e-posta bidez jakinarazi
-Show activity log: Mostrar bitácora de actividad
-Hide activity log: Jardunaren erregistroa ezkutatu
-#
-# << MISSING >>
-# Export this entry to:
-
-
-###############################################
-# Page: view_v.php
-#
-
-
-###############################################
-# Page: month.php
-#
-
-
-###############################################
-# Page: pref_handler.php
-#
-
-
-###############################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: Gertaera bat gaitzetsia izan da
-The description is: Deskribapena da
-Title: WebCalendar
-
-
-###############################################
-# Page: search.php
-#
-Search: Bilatu
-Advanced Search: Bilaketa aurreratua
-Keywords: Hitz gakoa
-
-
-###############################################
-# Page: search_handler.php
-#
-You must enter one or more search keywords: Hitz gako bat edo gehiago sartu behar duzu
-Search Results: Bilaketaren emaitzak
-match found: asmatze topatua
-matches found: asmatze topatuak
-No matches found: Ez da asmatzerik topatu
-
-
-###############################################
-# Page: select_user.php
-#
-View Another User's Calendar: Beste partaide baten egutegia ikusi
-Go: Joan
-
-
-###############################################
-# Page: publish.php
-#
-
-
-###############################################
-# Page: users.php
-#
-denotes administrative user: erabiltzaile administraria adierazten du
-Add New User: Erabiltzaile berria gehitu
-
-
-###############################################
-# Page: usersel.php
-#
-All: Denak
-Reset: Berhasieratu
-Remove: Kendu
-Ok: Ados
-Cancel: Utzi
-
-
-###############################################
-# Page: import.php
-#
-#
-# << MISSING >>
-# This form will allow you to import entries from the Palm Desktop Datebook.:
-#
-# << MISSING >>
-# Exclude private records:
-#
-# << MISSING >>
-# Datebook File:
-#
-# << MISSING >>
-# This form will import vCalendar (.vcs) 1.0 events:
-#
-# << MISSING >>
-# vCal File:
-#
-# << MISSING >>
-# This form will import iCalendar (.ics) events:
-#
-# << MISSING >>
-# iCal File:
-#
-# << MISSING >>
-# Overwrite Prior Import:
-
-
-###############################################
-# Page: year.php
-#
-
-
-###############################################
-# Page: view_d.php
-#
-
-
-###############################################
-# Page: view_m.php
-#
-
-
-###############################################
-# Page: view_w.php
-#
-
-
-###############################################
-# Page: views.php
-#
-Views: Ikus erak
-Add New View: Ikus era berria
-
-
-###############################################
-# Page: views_edit.php
-#
-Unnamed View: Izen gabeko ikus era
-Add View: Ikus era gehitu
-Edit View: Ikus era editatu
-View Name: Izena ikusi
-View Type: Mota ikusi
-#
-# << MISSING >>
-# Week (Users horizontal):
-#
-# << MISSING >>
-# Week (Users vertical):
-#
-# << MISSING >>
-# Week (Timebar):
-#
-# << MISSING >>
-# Month (side by side):
-#
-# << MISSING >>
-# Month (on same calendar):
-
-
-###############################################
-# Page: nonusers.php
+# Page: edit_nonusers.php
 #
 #
 # << MISSING >>
@@ -966,117 +609,24 @@ View Type: Mota ikusi
 #
 #
 # << MISSING >>
-# NonUser:
-# English text: NonUser Calendars
+# word characters only:
+# English text: can only contain word characters (a-zA-Z_0-9)
 #
+Edit User: Erabiltzailea editatu
+Add User: Erabiltzailea gehitu
 #
 # << MISSING >>
 # Calendar ID:
-#
-# << MISSING >>
-# Add New NonUser Calendar:
+First Name: Izena
+Last Name: Abizena
 
 
 ###############################################
-# Page: nonusers_handler.php
-#
-
-
-###############################################
-# Page: view_l.php
-#
-
-
-###############################################
-# Page: help_pref.php
+# Page: edit_nonusers_handler.php
 #
 #
 # << MISSING >>
-# default-category-help:
-# English text: Specifies the category a new event should default to.
-#
-
-
-###############################################
-# Page: report.php
-#
-Private: Pribatua
-#
-# << MISSING >>
-# Approved:
-#
-# << MISSING >>
-# Unknown:
-#
-# << MISSING >>
-# to manage reports for the Public Access calendar:
-#
-# << MISSING >>
-# Add new report:
-#
-# << MISSING >>
-# Invalid report id:
-#
-# << MISSING >>
-# Manage Reports:
-
-
-###############################################
-# Page: login.php
-#
-You must enter a login and password: Erabiltzaile eta pasahitz bat sartu behar dituzu
-Save login via cookies so I don't have to login next time: Datuak gorde
-Login: Sartu
-Access public calendar: Egutegi publikora joan
-cookies-note: <b>Oharra:</b> Aplikazio honek cookiak gaituak egotea behar du.
-
-
-###############################################
-# Page: views_edit_handler.php
-#
-#
-# << MISSING >>
-# You must specify a view name:
-
-
-###############################################
-# Page: week_details.php
-#
-New Entry: Sarrera berria
-
-
-###############################################
-# Page: import_handler.php
-#
-#
-# << MISSING >>
-# Import Results:
-#
-# << MISSING >>
-# Events successfully imported:
-#
-# << MISSING >>
-# Events from prior import marked as deleted:
-#
-# << MISSING >>
-# Conflicting events:
-#
-# << MISSING >>
-# Errors:
-Back to My Calendar: Nire egutegira itzuli
-#
-# << MISSING >>
-# There was an error parsing the import file or no events were returned:
-#
-# << MISSING >>
-# The import file contained no data:
-The following conflicts with the suggested time: Hondokoa ez dator bat gomendatutako orduarekin
-Unnamed Event: Izengabeko gertaera
-Scheduling Conflict: Bilera arteko talka
-conflicts with the following existing calendar entries: hondoko sarrerekin egiten du talka
-#
-# << MISSING >>
-# Event Imported:
+# Changes successfully saved:
 
 
 ###############################################
@@ -1085,9 +635,7 @@ conflicts with the following existing calendar entries: hondoko sarrerekin egite
 #
 # << MISSING >>
 # Tomorrow:
-#
-# << MISSING >>
-# Today:
+Today: Gaur
 #
 # << MISSING >>
 # Yesterday:
@@ -1144,6 +692,27 @@ conflicts with the following existing calendar entries: hondoko sarrerekin egite
 # Year before last:
 #
 # << MISSING >>
+# Next 14 days:
+#
+# << MISSING >>
+# Next 30 days:
+#
+# << MISSING >>
+# Next 60 days:
+#
+# << MISSING >>
+# Next 90 days:
+#
+# << MISSING >>
+# Next 180 days:
+#
+# << MISSING >>
+# Next 365 days:
+#
+# << MISSING >>
+# Invalid report id:
+#
+# << MISSING >>
 # Unnamed Report:
 #
 # << MISSING >>
@@ -1188,73 +757,150 @@ Current User: Une hontako erabiltzailea
 
 
 ###############################################
-# Page: assistant_edit.php
+# Page: edit_report_handler.php
 #
 #
 # << MISSING >>
-# Assistants:
-#
-# << MISSING >>
-# Yours assistants:
+# Variable N not found:
 
 
 ###############################################
-# Page: view_t.php
+# Page: edit_template.php
 #
+#
+# << MISSING >>
+# Edit Custom Script/Stylesheet:
+#
+# << MISSING >>
+# Edit Custom Header:
+#
+# << MISSING >>
+# Edit Custom Trailer:
 
 
 ###############################################
-# Page: assistant_edit_handler.php
+# Page: edit_user.php
 #
+Username: Erabiltzaile izena
+E-mail address: E-posta
+Password: Pasahitza
+again: berriz
+Disabled for demo: Demoan desgaitua
+#
+# << MISSING >>
+# Are you sure you want to delete this user?:
+Change Password: Pasahitza aldatu
+New Password: Pasahitz berria
+Set Password: Pasahitza jarri
 
 
 ###############################################
-# Page: adminhome.php
+# Page: edit_user_handler.php
 #
-Account: Kontua
-#
-# << MISSING >>
-# NonUser Calendars:
-#
-# << MISSING >>
-# Delete Events:
+Deleting users not supported: Erabiltzaileak ezabatzea debekatua
+The passwords were not identical: Pasahitza hauek ez dira berdinak
+You have not entered a password: Ez duzu pasahitz bat sartu
 #
 # << MISSING >>
-# Public Preferences:
-#
-# << MISSING >>
-# Unapproved Public Events:
-#
-# << MISSING >>
-# Administrative Tools:
+# Username can not be blank:
 
 
 ###############################################
-# Page: purge.php
+# Page: export.php
+#
+Export: Exportatu
+Export format: Exportatzeko formatua
+Palm Pilot: Palm Pilot
+#
+# << MISSING >>
+# Include all layers:
+Export all dates: Data guztiak exportatu
+Start date: Hasiera data
+End date: Bukaera data
+Modified since: Azken eguneratze data
+
+
+###############################################
+# Page: export_handler.php
 #
 #
 # << MISSING >>
-# Purging events for:
+# export format not defined or incorrect:
+
+
+###############################################
+# Page: groups.php
+#
+Add New Group: Talde berria gehitu
+
+
+###############################################
+# Page: group_edit.php
+#
+Unnamed Group: Izengabeko taldea
+Add Group: Taldea gehitu
+Edit Group: Taldea editatu
+Group name: Taldearen izena
+Updated: Eguneratua
+Created by: Sortzailea
+
+
+###############################################
+# Page: group_edit_handler.php
+#
 #
 # << MISSING >>
-# Finished:
+# You must specify a group name:
+
+
+###############################################
+# Page: help_admin.php
+#
 #
 # << MISSING >>
-# Delete all events before:
+# Display days with events in bold in year view:
 #
 # << MISSING >>
-# Check box to delete <b>ALL</b> events for a user:
+# Nonuser:
+# English text: Nonuser Calendars
+#
 #
 # << MISSING >>
-# Are you sure you want to delete events for:
+# user-customize-color:
+# English text: Specifies whether users are allowed to modify their own color scheme.
+#
+#
+# << MISSING >>
+# enable-gradient-help:
+# English text: Use gradient colors for cell backgrounds.
+#
+#
+# << MISSING >>
+# Manually entering color values:
+
+
+###############################################
+# Page: help_bug.php
+#
+Report Bug: Bug informea
+
+
+###############################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Gehitu/Editatu egutegi sarrerak
 
 
 ###############################################
 # Page: help_import.php
 #
+Import: Inportatu
 #
 # << MISSING >>
 # Palm Desktop:
+#
+# << MISSING >>
+# This form will allow you to import entries from the Palm Desktop Datebook.:
 #
 # << MISSING >>
 # It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.:
@@ -1278,6 +924,9 @@ Account: Kontua
 # vCal:
 #
 # << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events:
+#
+# << MISSING >>
 # The following formats have been tested:
 #
 # << MISSING >>
@@ -1293,27 +942,301 @@ Account: Kontua
 # iCalendar:
 #
 # << MISSING >>
+# This form will import iCalendar (.ics) events:
+#
+# << MISSING >>
 # Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.:
 
 
 ###############################################
-# Page: edit_report_handler.php
+# Page: help_index.php
 #
-#
-# << MISSING >>
-# Variable N not found:
+Help Index: Laguntza
 
 
 ###############################################
-# Page: edit_entry_handler.php
+# Page: help_layers.php
 #
-A new appointment has been made for you by: Bilera bat ezartzen dizu
-An appointment has been updated by: Bilera bat eguneratu du
-The subject is: Gaia da
-Please look on: Mesedez bilatu
-to accept or reject this appointment: bilera hau onartzeko edo uko egiteko
-to view this appointment: bilera hau ikusteko
-Your suggested time of: Zure ordu gomendatua da
+#
+# << MISSING >>
+# Layers are useful for displaying other users' events in your own calendar.  You can specifiy the user and the color the events will be displayed in.:
+Add/Edit/Delete: Gehitu/Editatu/Ezabatu
+#
+# << MISSING >>
+# Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.:
+Specifies the user that you would like to see displayed in your calendar.: Zure egutegian azaltzea gustatuko litzaizuken erabiltzailea adierazten du
+The text color of the new layer that will be displayed in your calendar.: Geruza berriaren textuaren kolorea
+If checked, events that are duplicates of your events will be shown.: Gaitu ez gero zure gertaeren berdinak diren gertaerak ere erakutsi dira
+Disabling: Desgaitzen
+#
+# << MISSING >>
+# Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.:
+Enabling: Gaitzen
+#
+# << MISSING >>
+# Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.:
+
+
+###############################################
+# Page: help_pref.php
+#
+#
+# << MISSING >>
+# Timezone Offset:
+#
+# << MISSING >>
+# tz-help:
+# English text: Specifies how many hours to adjust the time from server time to local time.
+#
+#
+# << MISSING >>
+# Default Category:
+#
+# << MISSING >>
+# default-category-help:
+# English text: Specifies the category a new event should default to.
+#
+When I am the boss: Bilera neuk sortzen dudanean
+Email me event notification: Bidali e-posta neuri ere
+#
+# << MISSING >>
+# email-boss-notifications-help:
+# English text: Specifies if bosses receive emails as event notifications.
+#
+I want to approve events: Bilera onartu nahi dut
+#
+# << MISSING >>
+# boss-approve-event-help:
+# English text: Specifies whether the boss will be required to approve events added by assistants.
+#
+Subscribe/Publish: Harpidetu/Zabaldu
+#
+# << MISSING >>
+# allow-remote-subscriptions-help:
+# English text: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+#
+#
+# << MISSING >>
+# URL:
+#
+# << MISSING >>
+# remote-subscriptions-url-help:
+# English text: Displays the URL remote users should use to subscribe to your calendar.
+#
+
+
+###############################################
+# Page: import.php
+#
+Disabled: Desgaitua
+#
+# << MISSING >>
+# Import format:
+#
+# << MISSING >>
+# Exclude private records:
+#
+# << MISSING >>
+# Overwrite Prior Import:
+
+
+###############################################
+# Page: import_handler.php
+#
+#
+# << MISSING >>
+# Import Results:
+#
+# << MISSING >>
+# Events successfully imported:
+#
+# << MISSING >>
+# Events from prior import marked as deleted:
+#
+# << MISSING >>
+# Conflicting events:
+#
+# << MISSING >>
+# Errors:
+#
+# << MISSING >>
+# There was an error parsing the import file or no events were returned:
+#
+# << MISSING >>
+# The import file contained no data:
+#
+# << MISSING >>
+# Event Imported:
+View this entry: Sarrera hau ikusi
+
+
+###############################################
+# Page: layers.php
+#
+Layers are currently: Geruzak orain
+Enabled: Gaitua
+Disable Layers: Geruzak desgaitu
+Enable Layers: Geruzak gaitu
+#
+# << MISSING >>
+# to modify the layers settings for the:
+#
+# << MISSING >>
+# calendar:
+Add layer: Geruza gehitu
+Layer: Geruza
+Edit layer: Geruza editatu
+
+
+###############################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Onetsi/Konfirmatu
+Approve this entry?: Sarrera hau onetsi
+Reject: Gaitzetsi
+Reject this entry?: Gaitzetsi sarrera hau?
+No unapproved events for: Ez daude onetsi gabeko gertaerak
+Unapproved Events: Gertaera ez onetsiak
+
+
+###############################################
+# Page: login.php
+#
+Invalid login: Erabiltzaile/pasahitz desegokia
+You must enter a login and password: Erabiltzaile eta pasahitz bat sartu behar dituzu
+Save login via cookies so I don't have to login next time: Datuak gorde
+Login: Sartu
+Access public calendar: Egutegi publikora joan
+cookies-note: <b>Oharra:</b> Aplikazio honek cookiak gaituak egotea behar du.
+
+
+###############################################
+# Page: month.php
+#
+Sun: Iga
+Mon: Atl
+Tue: Atr
+Wed: Azk
+Thu: Otg
+Fri: Otr
+Sat: Lar
+
+
+###############################################
+# Page: nonusers.php
+#
+#
+# << MISSING >>
+# Add New NonUser Calendar:
+
+
+###############################################
+# Page: pref.php
+#
+Save Preferences: Lehenetsiak gorde
+to modify the preferences for the Public Access calendar: Atzipen publikoko egutegiaren lehenetsiak eguneratzeko
+#
+# << MISSING >>
+# Add N hours to:
+#
+# << MISSING >>
+# Subtract N hours from:
+#
+# << MISSING >>
+# same as:
+#
+# << MISSING >>
+# server time:
+All: Denak
+
+
+###############################################
+# Page: purge.php
+#
+#
+# << MISSING >>
+# Preview:
+#
+# << MISSING >>
+# Purging events for:
+#
+# << MISSING >>
+# Finished:
+#
+# << MISSING >>
+# Check box to delete <b>ALL</b> events for a user:
+#
+# << MISSING >>
+# Delete all events before:
+#
+# << MISSING >>
+# Preview delete:
+#
+# << MISSING >>
+# Are you sure you want to delete events for:
+#
+# << MISSING >>
+# Records deleted from:
+
+
+###############################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: Gertaera bat gaitzetsia izan da
+Title: WebCalendar
+
+
+###############################################
+# Page: report.php
+#
+Private: Pribatua
+This event is confidential: Gertaera hau konfidentziala da
+Waiting for approval: Onespenaren zai
+Deleted: Ezabatuak
+Rejected: Gaitzetsiak
+#
+# << MISSING >>
+# Approved:
+#
+# << MISSING >>
+# Unknown:
+#
+# << MISSING >>
+# to manage reports for the Public Access calendar:
+#
+# << MISSING >>
+# Add new report:
+#
+# << MISSING >>
+# cont.:
+#
+# << MISSING >>
+# Manage Reports:
+
+
+###############################################
+# Page: search.php
+#
+Search: Bilatu
+Keywords: Hitz gakoa
+Advanced Search: Bilaketa aurreratua
+
+
+###############################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Hitz gako bat edo gehiago sartu behar duzu
+Search Results: Bilaketaren emaitzak
+match found: asmatze topatua
+matches found: asmatze topatuak
+No matches found: Ez da asmatzerik topatu
+
+
+###############################################
+# Page: select_user.php
+#
+View Another User's Calendar: Beste partaide baten egutegia ikusi
+Go: Joan
 
 
 ###############################################
@@ -1324,85 +1247,226 @@ Set Category: Atala ezarri
 
 
 ###############################################
-# Page: edit_template.php
+# Page: users.php
+#
+Add New User: Erabiltzaile berria gehitu
+denotes administrative user: erabiltzaile administraria adierazten du
+
+
+###############################################
+# Page: usersel.php
+#
+Reset: Berhasieratu
+Remove: Kendu
+Ok: Ados
+
+
+###############################################
+# Page: views.php
+#
+Add New View: Ikus era berria
+
+
+###############################################
+# Page: views_edit.php
+#
+Unnamed View: Izen gabeko ikus era
+Add View: Ikus era gehitu
+Edit View: Ikus era editatu
+View Name: Izena ikusi
+View Type: Mota ikusi
+#
+# << MISSING >>
+# Week (Users horizontal):
+#
+# << MISSING >>
+# Week (Users vertical):
+#
+# << MISSING >>
+# Week (Timebar):
+#
+# << MISSING >>
+# Month (Timebar):
+#
+# << MISSING >>
+# Month (side by side):
+#
+# << MISSING >>
+# Month (on same calendar):
+#
+# << MISSING >>
+# preview:
+#
+# << MISSING >>
+# Selected:
+
+
+###############################################
+# Page: views_edit_handler.php
 #
 #
 # << MISSING >>
-# Edit Custom Script/Stylesheet:
+# You must specify a view name:
+
+
+###############################################
+# Page: view_d.php
+#
 #
 # << MISSING >>
-# Edit Custom Header:
+# No users for this view:
+
+
+###############################################
+# Page: view_entry.php
+#
+every: maiztasuna
+2nd: 2garrena
+3rd: 3garrena
+4th: 4garrena
+5th: 5garrena
+1st: 1goa
 #
 # << MISSING >>
-# Edit Custom Trailer:
-
-
-###############################################
-# Page: includes/trailer.php
-#
-Go to: Joan
-My Calendar: Nire egutegia
-Logout: Irten
-Another User's Calendar: Beste erabiltzaile baten egutegia ikusi
-Add New Entry: Sarrera berria gehitu
-Manage Views: Ikus era administratu
+# last:
+Description: Deskribapena
+Status: Egoera
 #
 # << MISSING >>
-# Manage calendar of:
+# day:
+#
+# << MISSING >>
+# minute:
+#
+# << MISSING >>
+# External User:
+Approve/Confirm entry: Onetsi/Konfirmatu erregistroa
+Reject entry: Erregistroa gaitzetsi
+Set category: Atala ezarri
+Edit repeating entry for all dates: Data guztietarako errepikatutako gertaera editatu
+Edit entry for this date: Egun honetarako sarrera editatu
+Delete repeating event for all dates: Errepikatutako gertaera data guztietarako ezabatu
+This will delete this entry for all users.: Ekintza honek gertaera hau ezabatuko du egun baterako
+Delete entry only for this date: Data honetako sarrera ezabatu
+Edit entry: Sarrera editatu
+Copy entry: Sarrera kopiatu
+This will delete the entry from your calendar.: Ekintza honek sarrera ezabatuko du egutegitik
+Add to My Calendar: Egutegiari gehitu
+Do you want to add this entry to your calendar?: Sarrera hau gehitu nahi al duzu zure egutegian?
+This will add the entry to your calendar.: Ekintza honek sarrera gehituko du zure egutegian
+Email all participants: Partaide guztiei e-posta bidez jakinarazi
+Show activity log: Mostrar bitácora de actividad
+Hide activity log: Jardunaren erregistroa ezkutatu
+Export this entry to: Sarrera hau exportatu
 
 
 ###############################################
-# Page: includes/connect.php
+# Page: week_details.php
 #
+New Entry: Sarrera berria
 
 
 ###############################################
-# Page: includes/user.php
+# Page: includes/config.php
 #
-Invalid login: Erabiltzaile/pasahitz desegokia
-Invalid user login: Erabiltzaile/pasahitz desegokia
-
-
-###############################################
-# Page: includes/site_extras.php
 #
-Send Reminder: Gogorarazteko abixua bidali
-
-
-###############################################
-# Page: includes/translate.php
+# << MISSING >>
+# English:
 #
-
-
-###############################################
-# Page: includes/user-ldap.php
+# << MISSING >>
+# Basque:
 #
-
-
-###############################################
-# Page: includes/user-nis.php
+# << MISSING >>
+# Bulgarian:
 #
-
-
-###############################################
-# Page: includes/help_trailer.php
+# << MISSING >>
+# Catalan:
 #
-
-
-###############################################
-# Page: includes/dbtable.php
+# << MISSING >>
+# Chinese (Traditonal/Big5):
 #
-
-
-###############################################
-# Page: includes/init.php
+# << MISSING >>
+# Chinese (Simplified/GB2312):
 #
+# << MISSING >>
+# Czech:
+#
+# << MISSING >>
+# Danish:
+#
+# << MISSING >>
+# Dutch:
+#
+# << MISSING >>
+# Estonian:
+#
+# << MISSING >>
+# Finnish:
+#
+# << MISSING >>
+# French:
+#
+# << MISSING >>
+# Galician:
+#
+# << MISSING >>
+# German:
+#
+# << MISSING >>
+# Greek:
+#
+# << MISSING >>
+# Holo (Taiwanese):
+#
+# << MISSING >>
+# Hungarian:
+#
+# << MISSING >>
+# Icelandic:
+#
+# << MISSING >>
+# Italian:
+#
+# << MISSING >>
+# Japanese:
+#
+# << MISSING >>
+# Korean:
+#
+# << MISSING >>
+# Norwegian:
+#
+# << MISSING >>
+# Polish:
+#
+# << MISSING >>
+# Portuguese:
+#
+# << MISSING >>
+# Portuguese/Brazil:
+#
+# << MISSING >>
+# Romanian:
+#
+# << MISSING >>
+# Russian:
+#
+# << MISSING >>
+# Spanish:
+#
+# << MISSING >>
+# Swedish:
+#
+# << MISSING >>
+# Turkish:
+#
+# << MISSING >>
+# Welsh:
 
 
 ###############################################
 # Page: includes/functions.php
 #
-This event is confidential: Gertaera hau konfidentziala da
 #
 # << MISSING >>
 # exceeds limit of XXX events per day:
@@ -1430,6 +1494,52 @@ Sep: Ira
 Oct: Urr
 Nov: Aza
 Dec: Abe
+#
+# << MISSING >>
+# All Attendees:
+#
+# << MISSING >>
+# Busy:
+#
+# << MISSING >>
+# Tentative:
+
+
+###############################################
+# Page: includes/help_trailer.php
+#
+Go to: Joan
+
+
+###############################################
+# Page: includes/site_extras.php
+#
+Send Reminder: Gogorarazteko abixua bidali
+
+
+###############################################
+# Page: includes/trailer.php
+#
+My Calendar: Nire egutegia
+Back to My Calendar: Nire egutegira itzuli
+Another User's Calendar: Beste erabiltzaile baten egutegia ikusi
+Add New Entry: Sarrera berria gehitu
+Logout: Irten
+#
+# << MISSING >>
+# Manage calendar of:
+
+
+###############################################
+# Page: includes/user-nis.php
+#
+#
+# << MISSING >>
+# incorrect password:
+#
+# << MISSING >>
+# no such user:
+Invalid user login: Erabiltzaile/pasahitz desegokia
 
 
 ###############################################
@@ -1437,6 +1547,9 @@ Dec: Abe
 #
 Server URL is required: Zerbitzariaren URL-a falta da
 Server URL must end with '/': Zerbitzariaren URL-a '/'-z bukatu behar du
+#
+# << MISSING >>
+# Invalid work hours:
 Invalid color for document background: Kolore desegokia dokumentuaren atzerako
 Invalid color for document title: Kolore desegokia dokumentuaren izenbururako
 Invalid color for table cell background: Kolore desegokia taulako gelaxken atzerako
@@ -1452,6 +1565,14 @@ Color format should be '#RRGGBB': Kolorearen formatua hamaseitarra izan beharko 
 
 
 ###############################################
+# Page: includes/js/availability.php
+#
+#
+# << MISSING >>
+# Change the date and time of this entry?:
+
+
+###############################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Ez duzu deskribapen laburrik sartu
@@ -1459,17 +1580,15 @@ You have not entered a valid time of day: Ez duzu ordu egoki bat sartu
 #
 # << MISSING >>
 # The time you have entered begins before your preferred work hours.  Is this correct?:
+#
+# << MISSING >>
+# Please add a participant:
 
 
 ###############################################
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Kolore desegokia
-
-
-###############################################
-# Page: includes/js/pref.php
-#
 
 
 ###############################################
