@@ -26,10 +26,10 @@ echo '
     <div align="left" style="margin-left: 4px; position: absolute; bottom: 0" >';
 if ( empty ( $credits ) )
   echo '
-      <h2 style="margin: 0"><a title=" ' . $PROGRAM_NAME . '" href="' 
-        . $PROGRAM_URL . '">' . translate ( 'Title' ) . '</a></h2>
+      <a title="' . $PROGRAM_NAME . '" href="' . $PROGRAM_URL . '" target="_blank">
+      <h2 style="margin: 0">' . translate ( 'Title' ) . '</h2>
       <p>' . translate ( 'version' ) . ' ' . $PROGRAM_VERSION . '</p>
-      <p>' . $PROGRAM_DATE . '</p>
+      <p>' . $PROGRAM_DATE . '</p></a>
       <p>&nbsp;</p>
       <p>'
    . translate ( 'Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.' )
