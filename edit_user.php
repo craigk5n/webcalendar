@@ -96,25 +96,23 @@ if ( ! empty ( $error ) ) {
   <input name="upassword2" id="pass2" size="15" value="" type="password" />
  </td></tr>
 <?php }
-if ( $is_admin ) { ?>
+// An admin can't change their own Admin or Enabled status
+if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
  <tr><td class="bold">
   <?php etranslate( 'Admin' )?>:</td><td>
-  <label><input type="radio" name="uis_admin" value="Y"<?php 
-  if ( ! empty ( $uis_admin ) && $uis_admin == 'Y' ) 
-  echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'Yes' )?></label> 
-  <label><input type="radio" name="uis_admin" value="N"<?php 
-  if ( empty ( $uis_admin ) || $uis_admin != 'Y' ) 
-  echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'No' )?></label>
+  <?php 
+    $defIdx = ( ! empty ( $uis_admin ) && $uis_admin == 'Y' ? 'Y' : 'N' );
+    echo print_radio ( 'uis_admin', '', '' , $defIdx ) ?>
  </td></tr>
  <tr><td class="bold">
   <?php etranslate( 'Enabled' )?>:</td><td>
-  <label><input type="radio" name="u_enabled" value="Y"<?php 
-  if ( ! empty ( $uenabled ) && $uenabled == 'Y' ) 
-  echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'Yes' )?></label> 
-  <label><input type="radio" name="u_enabled" value="N"<?php 
-  if ( empty ( $uenabled ) || $uenabled != 'Y' ) 
-  echo ' checked="checked"';?> />&nbsp;<?php etranslate ( 'No' )?></label>
+  <?php 
+    $defIdx = ( ! empty ( $uenabled ) && $uenabled == 'Y' ? 'Y' : 'N' );
+    echo print_radio ( 'u_enabled', '', '' , $defIdx ) ?>
  </td></tr>
+<?php }  else if ( $is_admin ) {  ?>
+  <input type="hidden" name="uis_admin" value="Y" />
+  <input type="hidden" name="u_enabled" value="Y" />
 <?php } //end if ($is_admin ) ?>
  <tr><td colspan="2">
   <?php if ( $DEMO_MODE == 'Y' ) { ?>
@@ -127,7 +125,7 @@ if ( $is_admin ) { ?>
    <?php } //end if ( $DEMO_MODE == 'Y' ) 
    } else { ?>
    <input type="submit" value="<?php etranslate( 'Save' )?>" />
-   <?php if ( $is_admin && ! empty ( $user ) ) {
+   <?php if ( $is_admin && ! empty ( $user ) && $user != $login ) {
     if ( $admin_can_delete_user ) ?>
     <input type="submit" name="delete" value="<?php 
     etranslate( 'Delete' )?>" onclick="return confirm('<?php 
