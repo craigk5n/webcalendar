@@ -13,7 +13,7 @@
  *	  EXTRA_EMAIL - will be presented as a mailto URL
  *	  EXTRA_USER - most be a calendar user name; will be presented
  *	               with a pulldown
- *	  EXTRA_SELECTION_LIST - allows a custom selection list.  Can use
+ *	  EXTRA_SELECTIONLIST - allows a custom selection list.  Can use
  *	    this to specify a list of possible locations, etc.
  *
  * Comments:
