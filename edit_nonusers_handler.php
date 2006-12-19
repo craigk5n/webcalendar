@@ -14,6 +14,8 @@ $delete = getPostValue ( 'delete' );
 $nid = getPostValue ( 'nid' );
 $nadmin = getPostValue ( 'nadmin' );
 $old_admin = getPostValue ( 'old_admin' );
+$ispublic = getPostValue ( 'ispublic' );
+if ( empty ( $ispublic ) ) $ispublic = 'N';
 
 if ( ! empty ( $delete ) ) {
   // delete this nonuser calendar
