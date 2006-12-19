@@ -71,31 +71,38 @@ if ( ! empty ( $rssuser ) ) {
 // Is this user a participant or the creator of the event?
 // If assistant is doing this, then we need to switch login to user in the sql.
 $sqlparm = ( $is_assistant ? $user : $login );
-$res = dbi_execute ( 'SELECT we.cal_id
+$res = dbi_execute ( 'SELECT we.cal_id, we.cal_create_by
   FROM webcal_entry we, webcal_entry_user weu
   WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
   AND ( we.cal_create_by = ? OR weu.cal_login = ? )',
   array ( $id , $sqlparm, $sqlparm ) );
 if ( $res ) {
   $row = dbi_fetch_row ( $res );
-  if ( $row && $row[0] > 0 )
+  if ( $row && $row[0] > 0 ) {
     $can_view = $is_my_event = true;
-
+    $creator = $row[1];
+  }
   dbi_free_result ( $res );
 }
 
 // Update the task percentage for this user.
 if ( ! empty ( $_POST ) && $is_my_event ) {
   $upercent = getPostValue ( 'upercent' );
-  if ( $upercent >= 0 && $upercent <= 100 )
+  if ( $upercent >= 0 && $upercent <= 100 ) {
     dbi_execute ( 'UPDATE webcal_entry_user SET cal_percent = ?
       WHERE cal_login = ? AND cal_id = ?',
       array ( $upercent , $login, $id ) );
+    activity_log ( $id, $login, $creator, LOG_UPDATE_T, 
+      translate ( 'Update Task Percentage' ) . ' ' . $upercent . '%' );
+   }
   // Check if all other user percent is 100%, if so, set cal_complete date.
   $others_complete = getPostValue ( 'others_complete' );
-  if ( $upercent == 100 && $others_complete == 'yes' )
+  if ( $upercent == 100 && $others_complete == 'yes' ) {
     dbi_execute ( 'UPDATE webcal_entry SET cal_completed = ?
       WHERE cal_id = ?', array ( gmdate ( 'Ymd', time () ), $id ) );
+    activity_log ( $id, $login, $creator, LOG_UPDATE_T, 
+      translate ( 'Completed' ) );
+  }
 }
 
 // Load event info now.
