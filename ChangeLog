@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1618864 ] EXTRA_SELECTION_LIST versus EXTRA_SELECTLIST in site_extras
  - Fixed bug [ 1615896 ] Repeating Event Exclusions Broken
  - Fixed bug [ 1617800 ] 'Update Task Precentage' doesn't create activity log
  - Fixed bug [ 1618335 ] "Column 'cal_is_public' cannot be null" when adding NUC
