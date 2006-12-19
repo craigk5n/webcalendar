@@ -11,10 +11,12 @@
  *	  EXTRA_URL - will be displayed as a link
  *	  EXTRA_DATE - will be presented with date pulldown menus when entering
  *	  EXTRA_EMAIL - will be presented as a mailto URL
- *	  EXTRA_USER - most be a calendar user name; will be presented
+ *	  EXTRA_USER - must be a calendar user name; will be presented
  *	               with a pulldown
- *	  EXTRA_SELECTIONLIST - allows a custom selection list.  Can use
+ *	  EXTRA_RADIO - will display 1-n radio controls
+ *	  EXTRA_SELECTLIST - allows a custom selection list.  Can use
  *	    this to specify a list of possible locations, etc.
+ *	  EXTRA_CHECKBOX - will display a checkbox control
  *
  * Comments:
  *	If you want to fully support using languages other than what
