@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.2 (?? ??? 2006)
+ - Fixed bug [ 1617800 ] 'Update Task Precentage' doesn't create activity log
  - Fixed bug [ 1618335 ] "Column 'cal_is_public' cannot be null" when adding NUC
  - Fixed bug [ 1617805 ] missing LINK to Craig's site if using 'top-menue'
  - Fixed bug [ 1617595 ] edit_template.php Error
