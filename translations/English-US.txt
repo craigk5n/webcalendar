@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 12-15-2006
+# Translation last updated on 12-19-2006
 
 
 ################################################################################
@@ -161,8 +161,6 @@ Allow user to override header/trailer: Allow user to override header/trailer
 Date and Time: Date and Time
 tz-help: Specifies how many hours to adjust the time from server time to local time.
 Server Timezone Selection: Server Timezone Selection
-Your current GMT offset is: Your current GMT offset is
-hours: hours
 display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
 Display Common Use Date/Times as GMT: Display Common Use Date/Times as GMT
 date-format-help: Specifies the preferred date format.
@@ -564,6 +562,7 @@ All day event: All day event
 Timezone Offset: Timezone Offset
 time-help: Specifies the time of the event. <ul><li>"Timed event" (for an event that is scheduled for a specific time on that day)</li><li>"Untimed event" (for an event this does not have a time (like a holiday)</li><li>"All day event" (for an event that takes all day (like being out of the office)</li></ul>
 duration-help: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
+hours: hours
 minutes: minutes
 end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
@@ -1099,6 +1098,7 @@ Search: Search
 Keywords: Keywords
 Include: Include
 Filter by Date: Filter by Date
+All Dates: All
 Past: Past
 Upcoming: Upcoming
 Range: Range
@@ -1180,15 +1180,15 @@ No users for this view: No users for this view
 ########################################
 # Page: view_entry.php
 #
+Update Task Percentage: Update Task Percentage
+Completed: Completed
 Assistant mode: Assistant mode
 Status: Status
 Declined: Declined
 Needs-Action: Needs-Action
-Completed: Completed
 by: by
 Percentage Complete: Percentage Complete
 External User: External User
-Update Task Percentage: Update Task Percentage
 Update: Update
 Attachments: Attachments
 comments: comments
@@ -1337,6 +1337,7 @@ Add N hours to: Add N hours to
 Subtract N hours from: Subtract N hours from
 same as: same as
 server time: server time
+Your current GMT offset is: Your current GMT offset is
 Changes successfully saved: Changes successfully saved
 The following error occurred: The following error occurred
 You are not authorized: You are not authorized
