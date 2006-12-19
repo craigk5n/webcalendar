@@ -43,14 +43,22 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) / $interval );
 $untimed_found = false;
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
-/* Pre-Load the repeated events for quckier access */
+//make sure all days with events are bold if mini cal is displayed
+if  ( $DISPLAY_SM_MONTH == 'Y' && $BOLD_DAYS_IN_YEAR == 'Y' ) {
+  $evStart = get_weekday_before ( $thisyear, $thismonth );
+  $evEnd = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
+} else {
+  $evStart = $wkstart;
+  $evEnd =  $wkend;
+}
+/* Pre-Load the repeated events for quickier access */
 $repeated_events = read_repeated_events ( strlen ( $user )
- ? $user : $login, $wkstart, $wkend, $cat_id );
+ ? $user : $login, $evStart, $evEnd, $cat_id );
 
 /* Pre-load the non-repeating events for quicker access */
 //Start the search one week early to account for cross-day events
 $events = read_events ( strlen ( $user ) ? $user : $login,
-  $wkstart - ONE_WEEK, $wkend, $cat_id );
+  $evStart - ONE_WEEK, $evEnd, $cat_id );
 
 if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
   /* Pre-load tasks for quicker access */
