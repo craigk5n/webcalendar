@@ -2732,7 +2732,7 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
         $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear ) ;
       }
     } //end if rpt_type
-  } 
+  }
   if ( ! empty ( $ex_days )  ) {
     foreach ($ex_days as $ex_day ) {
       for ( $i =0, $cnt = count($ret); $i< $cnt;$i++ ) {
@@ -2741,6 +2741,8 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
           unset ($ret[$i]);
         }
       }
+      //remove any unset elements
+      sort ( $ret );
     }
   }
   if ( ! empty (  $inc_days ) ) {
