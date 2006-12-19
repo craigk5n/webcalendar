@@ -5,7 +5,7 @@ Version 1.0.5 (?? ??? 2006)
   - Patch 1558537: Updated Russian translation
   - Patch 1520078: Fix for postgreSQL PHP warnings
   - The following translations were updated:
-    French
+    Basque, French
 Version 1.0.4 (07 Jun 2006)
   - Security fix: do not allow setting of "includedir" via URL when
     register_globals is enabled in php.ini
