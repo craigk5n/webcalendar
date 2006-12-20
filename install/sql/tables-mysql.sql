@@ -1,4 +1,5 @@
-/*
+/* $Id$
+ *
  * Description:
  * This file is used to create all tables used by WebCalendar and
  * initialize some of those tables with the required data.

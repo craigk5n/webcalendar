@@ -1,5 +1,6 @@
 <?php
-/*
+/* $Id$ 
+ *
  * Description:
  * This file will create a SQLite database file
  * 
