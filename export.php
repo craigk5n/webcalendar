@@ -32,7 +32,8 @@ echo '
         <tr>
           <td><label for="exformat">' . translate ( 'Export format' )
  . ':</label></td>
-          <td>' . generate_export_select ( 'toggel_catfilter' ) . '</td>
+          <td>' . generate_export_select ( 'toggel_catfilter' ) . '
+          </td>
         </tr>';
 
 if ( is_array ( $categories ) ) {
