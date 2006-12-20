@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 14. Dec. 2006
+# Last update: 20. Dec. 2006
 #
 # $Id$
-# Translation last updated on 12-14-2006
+# Translation last updated on 12-20-2006
 
 
 ################################################################################
@@ -327,6 +327,8 @@ This Calendar is not Public: Dies ist kein &Ouml;ffentlicher Kalender
 ########################################
 # Page: view_entry.php
 #
+Update Task Percentage: Aktualisierung des Aufgabenprozentsatzes
+Completed: Abgeschlossen
 Location: Ort
 Status: Status
 Declined: Abgenommen
@@ -335,7 +337,6 @@ Start Date: Startdatum
 Start Time: Startzeit
 Due Date: F&auml;lligkeitsdatum
 Due Time: F&auml;lligkeitszeit
-Completed: Abgeschlossen
 Repeat Type: Art der Wiederholung
 Duration: Dauer
 Priority: Priorit&auml;t
@@ -346,7 +347,6 @@ Send Reminder: Erinnerung senden
 Participants: Teilnehmer
 Percentage Complete: Prozentsatz erledigt
 External User: Externer Benutzer
-Update Task Percentage: Aktualisierung des Aufgabenprozentsatzes
 Update: Aktualisieren
 Attachments: Anh&auml;nge
 comments: Anmerkung(en)
@@ -909,6 +909,7 @@ Search: Suche
 Keywords: Stichw&ouml;rter
 Include: Inklusive
 Filter by Date: Datumsfilter
+All Dates: Jedes Datum
 Past: Vor dem heutigen Datum
 Upcoming: Demn&auml;chst anstehend
 Range: Datumsbereich
@@ -1075,7 +1076,7 @@ Upload: Hochladen
 gif 3kb max: gif max. 3kb gro&szlig;
 Search for existing icons: Suche nach bereits vorhandenen Icons
 entry: Eintrag
-Are you sure you want to delete this XXX?: Sind Sie sicher, da&slzig; Sie XXX l&ouml;schen wollen?
+Are you sure you want to delete this XXX?: Sind Sie sicher, da&szlig; Sie diesen XXX l&ouml;schen wollen?
 Add New Category: Neue Kategorie hinzuf&uuml;gen
 
 ########################################
@@ -1346,6 +1347,10 @@ Schedule an appointment for: Eine Verabredungsliste festlegen f&uuml;r
 All Attendees: Alle Teilnehmer
 Busy: Besch&auml;ftigt
 Tentative: Vorl&auml;ufig
+Add N hours to: Zuz&uuml;glich N Stunden von
+Subtract N hours from: Abz&uuml;glich N Stunden von
+same as: gleich wie
+server time: Serverzeit
 Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
 The following error occurred: Folgender Fehler trat auf
 You are not authorized: Sie haben daf&uuml;r keine Berechtigung
@@ -1397,6 +1402,11 @@ Troubleshooting Help: Fehlersuche (Hilfe)
 # Page: includes/user-imap.php
 #
 Invalid user login: Ung&uuml;ltige Anmeldung
+
+########################################
+# Page: includes/getPredefinedVariables.php
+#
+Invalid data format for: Ung&uuml;ltiges Datenformat f&uuml;r
 
 ########################################
 # Page: includes/access.php
