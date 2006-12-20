@@ -2899,21 +2899,17 @@ function fb_export_time ( $date, $duration, $time, $texport ) {
   }
   return $ret;
 }
-//generate export select
-function generate_export_select ( $jsaction='', $name='exformat' ) {
-
- $onchange = ( ! empty ( $jsaction ) ? 'onchange="' 
-   . $jsaction . '();"' : '' );
- $palmStr = translate( 'Palm Pilot' );
- $ret = '<select name="format" id="' . $name . '" ' . $onchange 
-   . '>' . "\n" . '<option value="ical">iCalendar</option>' . "\n"
-   . '<option value="vcal">vCalendar</option>' . "\n"
-   . '<option value="pilot-csv">Pilot-datebook CSV ('
-   . $palmStr . ')</option>' . "\n"
-   . '<option value="pilot-text">Install-datebook ('
-   . $palmStr . ')</option>' . "\n" . '</select>';
-
-  return $ret;
-}
+// Generate export select.
+function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
+  $palmStr = translate ( 'Palm Pilot' );
+  return '
+      <select name="format" id="' . $name . '"'
+   . ( ! empty ( $jsaction ) ? 'onchange="' . $jsaction . '();"' : '' ) . '>
+        <option value="ical">iCalendar</option>
+        <option value="vcal">vCalendar</option>
+        <option value="pilot-csv">Pilot-datebook CSV (' . $palmStr . ')</option>
+        <option value="pilot-text">Install-datebook (' . $palmStr . ')</option>
+      </select>';
+} 
 
 ?>
