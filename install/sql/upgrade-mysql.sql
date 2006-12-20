@@ -1,3 +1,4 @@
+/* $Id$ */
 /*upgrade_v0.9.14*/
 UPDATE webcal_entry SET cal_time = -1 WHERE cal_time IS NULL;
 ALTER TABLE webcal_entry MODIFY cal_time INT NOT NULL DEFAULT -1;
