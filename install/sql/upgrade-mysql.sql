@@ -212,8 +212,8 @@ CREATE TABLE webcal_blob (
 /*upgrade_v1.1.0d-CVS*/
 DROP TABLE IF EXISTS webcal_access_user;
 CREATE TABLE webcal_access_user (
-  cal_login VARCHAR(50) NOT NULL,
-  cal_other_user VARCHAR(50) NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_other_user VARCHAR(25) NOT NULL,
   cal_can_view INT NOT NULL DEFAULT '0',
   cal_can_edit INT NOT NULL DEFAULT '0',
   cal_can_approve INT NOT NULL DEFAULT '0',

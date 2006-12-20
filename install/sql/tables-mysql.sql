@@ -610,10 +610,10 @@ CREATE TABLE webcal_report_template (
  */
 CREATE TABLE webcal_access_user (
   /* the current user who is attempting to look at another user's calendar */
-  cal_login VARCHAR(50) NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
   /* the login of the other user whose calendar the current user */
   /* wants to access */
-  cal_other_user VARCHAR(50) NOT NULL,
+  cal_other_user VARCHAR(25) NOT NULL,
   /* can current user view events on the other user's calendar? */
   cal_can_view INT NOT NULL DEFAULT '0',
   /* can current user edit events on the other user's calendar?  */
@@ -638,7 +638,7 @@ CREATE TABLE webcal_access_user (
  */
 CREATE TABLE webcal_access_function (
   /* user login */
-  cal_login VARCHAR(50) NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
   /* a string of 'Y' or 'N' for the various functions */
   cal_permissions VARCHAR(64) NOT NULL,
   PRIMARY KEY ( cal_login )

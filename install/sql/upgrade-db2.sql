@@ -178,13 +178,13 @@ UPDATE webcal_config SET cal_value = 'week.php'
 
 /*upgrade_v1.1.0-CVS*/
 CREATE TABLE webcal_access_function (
-  cal_login VARCHAR(50) NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
   cal_permissions VARCHAR(64) NOT NULL,
   PRIMARY KEY ( cal_login )
 );
 CREATE TABLE webcal_access_user (
-  cal_login VARCHAR(50) NOT NULL,
-  cal_other_user VARCHAR(50) NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_other_user VARCHAR(25) NOT NULL,
   PRIMARY KEY ( cal_login, cal_other_user )
 );
 ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1) DEFAULT 'N' NOT NULL;
@@ -241,8 +241,8 @@ CREATE TABLE webcal_blob (
 /*upgrade_v1.1.0d-CVS*/
 DROP TABLE webcal_access_user;
 CREATE TABLE webcal_access_user (
-  cal_login VARCHAR(50) NOT NULL,
-  cal_other_user VARCHAR(50) NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_other_user VARCHAR(25) NOT NULL,
   cal_can_view INT DEFAULT '0' NOT NULL,
   cal_can_edit INT DEFAULT '0' NOT NULL,
   cal_can_approve INT DEFAULT '0' NOT NULL,
