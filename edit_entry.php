@@ -111,10 +111,10 @@ if ( $login == '__public__' && $id > 0 ) {
 
 $eType = getGetValue ( 'eType');
 if ( empty ( $eType ) ) $eType =  'event';
-$month = getIntValue ( 'month' );
-$day = getIntValue ( 'day' );
-$year = getIntValue ( 'year' );
-$date = getIntValue ( 'date' );
+$date = getValue ( 'date', '-?[0-9]+' );
+$day = getValue ( 'day', '-?[0-9]+' );
+$month = getValue ( 'month', '-?[0-9]+' );
+$year = getValue ( 'year', '-?[0-9]+' );
 if ( empty ( $date ) && empty ( $month ) ) {
   if ( empty ( $year ) ) $year = date ( 'Y' );
   if ( empty ( $month ) ) $month = date ( 'm' );

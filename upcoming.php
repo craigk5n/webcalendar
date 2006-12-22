@@ -327,7 +327,7 @@ if ( $allow_user_override ) {
 $get_unapproved = ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y' );
 
 if ( $CATEGORIES_ENABLED == 'Y' ) {
-  $x = getIntValue ( 'cat_id', true );
+  $x = getValue ( 'cat_id', '-?[0-9]+', true );
   if ( ! empty ( $x ) ) {
     $cat_id = $x;
   }
@@ -362,7 +362,7 @@ if ( $load_layers ) {
 //load_user_categories ();
 
 // Calculate date range
-$date = getIntValue ( 'date', true );
+$date = getValue ( 'date', '-?[0-9]+', true );
 if ( empty ( $date ) || strlen ( $date ) != 8 ) {
   // If no date specified, start with today
   $date = date ( 'Ymd' );
@@ -373,7 +373,7 @@ $thisday = substr ( $date, 6, 2 );
 
 $startDate = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 
-$x = getIntValue ( 'days', true );
+$x = getValue ( 'days', '-?[0-9]+', true );
 if ( ! empty ( $x ) ) {
   $numDays = $x;
 }

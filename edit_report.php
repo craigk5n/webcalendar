@@ -44,7 +44,7 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $report_user = '';
 }
 
-$report_id = getIntValue ( 'report_id', true );
+$report_id = getValue ( 'report_id', '-?[0-9]+', true );
 
 $adding_report = false;
 if ( empty ( $report_id ) ) {

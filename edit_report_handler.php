@@ -38,7 +38,7 @@ include_once 'includes/init.php';
 load_user_categories ();
 
 $error = '';
-$report_id = getIntValue ( 'report_id', true );
+$report_id = getValue ( 'report_id', '-?[0-9]+', true );
 
 if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' ) {
   $error = print_not_auth () . '.';

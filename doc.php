@@ -13,7 +13,7 @@
 include_once 'includes/init.php';
 include_once 'includes/classes/Doc.class';
 
-$blid = getIntValue ( 'blid', true );
+$blid = getValue ( 'blid', '-?[0-9]+', true );
 $error = $res = '';
 
 if ( empty ( $blid ) ) {
