@@ -215,11 +215,11 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $report_user = '__public__';
 }
 
-$report_id = getIntValue ( 'report_id', true );
-$offset = getIntValue ( 'offset', true );
+$offset = getValue ( 'offset', '-?[0-9]+', true );
 if ( empty ( $offset ) ) {
   $offset = 0;
 }
+$report_id = getValue ( 'report_id', '-?[0-9]+', true );
 
 // If no report id is specified, then generate a list of reports for
 // the user to select from.

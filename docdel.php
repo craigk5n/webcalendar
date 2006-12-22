@@ -19,7 +19,7 @@
 include_once 'includes/init.php';
 include_once 'includes/classes/Doc.class';
 
-$blid = getIntValue ( 'blid', true );
+$blid = getValue ( 'blid', '-?[0-9]+', true );
 $can_delete = false; // until proven otherwise
 $error = $name = $owner = $type = '';
 $event_id = -1;

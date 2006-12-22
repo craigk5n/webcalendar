@@ -26,7 +26,7 @@
  */
 include_once 'includes/init.php';
 
-$id = getIntValue ( 'id' );
+$id = getValue ( 'id', '-?[0-9]+' );
 $type = getValue ( 'type' );
 $user = getValue ( 'user' );
 $error = '';

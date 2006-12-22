@@ -177,7 +177,7 @@ if ( $username != '__public__' && ( empty ( $USER_RSS_ENABLED ) ||
 
 $cat_id = '';
 if ( $CATEGORIES_ENABLED == 'Y' ) {
-  $x = getIntValue ( 'cat_id', true );
+  $x = getValue ( 'cat_id', '-?[0-9]+', true );
   if ( ! empty ( $x ) ) {
     load_user_categories ();
     $cat_id = $x;
@@ -191,7 +191,7 @@ if ( $load_layers ) {
 
 
 // Calculate date range
-$date = getIntValue ( 'date', true );
+$date = getValue ( 'date', '-?[0-9]+', true );
 if ( empty ( $date ) || strlen ( $date ) != 8 ) {
   // If no date specified, start with today
   $date = date ( 'Ymd' );
@@ -202,7 +202,7 @@ $thisday = substr ( $date, 6, 2 );
 
 $startTime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 
-$x = getIntValue ( 'days', true );
+$x = getValue ( 'days', '-?[0-9]+', true );
 if ( ! empty ( $x ) ) {
   $numDays = $x;
 }
@@ -210,7 +210,7 @@ if ( ! empty ( $x ) ) {
 if ( $numDays > 365 ) {
   $numDays = 365;
 }
-$x = getIntValue ( 'max', true );
+$x = getValue ( 'max', '-?[0-9]+', true );
 if ( ! empty ( $x ) ) {
   $maxEvents = $x;
 }
@@ -219,7 +219,7 @@ if ( $maxEvents > 100 ) {
   $maxEvents = 100;
 }
 
-$x = getIntValue ( 'repeats', true );
+$x = getValue ( 'repeats', '-?[0-9]+', true );
 if ( ! empty ( $x ) ) {
   $allow_repeats = $x;
   if ( $x==2 ) {

@@ -194,11 +194,11 @@ function transmit_header ( $mime, $file ) {
 /*** Let's go ***/
 /*******************************************/
 
-$id = getIntValue  ( 'id', true );
 $format = getValue  ( 'format' );
 if ( $format != 'ical' && $format != 'vcal' && $format != 'pilot-csv' &&
   $format != 'pilot-text' )
   die_miserable_death ( "Invalid format '" . $format . "'" );
+$id = getValue  ( 'id', '-?[0-9]+', true );
 
 $use_all_dates = getPostValue  ( 'use_all_dates' );
 if ( $use_all_dates != 'y' )
@@ -216,15 +216,15 @@ $cat_filter = getPostValue  ( 'cat_filter' );
 if ( $cat_filter == 0 )
  $cat_filter = '';
 
-$fromyear = getIntValue  ( 'fromyear', true );
-$frommonth = getIntValue  ( 'frommonth', true );
-$fromday = getIntValue  ( 'fromday', true );
-$endyear = getIntValue  ( 'endyear', true );
-$endmonth = getIntValue  ( 'endmonth', true );
-$endday = getIntValue  ( 'endday', true );
-$modyear = getIntValue  ( 'modyear', true );
-$modmonth = getIntValue  ( 'modmonth', true );
-$modday = getIntValue  ( 'modday', true );
+$endday = getValue  ( 'endday', '-?[0-9]+', true );
+$endmonth = getValue  ( 'endmonth', true );
+$endyear = getValue  ( 'endyear', '-?[0-9]+', true );
+$fromday = getValue  ( 'fromday', '-?[0-9]+', true );
+$frommonth = getValue  ( 'frommonth', '-?[0-9]+', true );
+$fromyear = getValue  ( 'fromyear', '-?[0-9]+', true );
+$modday = getValue  ( 'modday', '-?[0-9]+', true );
+$modmonth = getValue  ( 'modmonth', '-?[0-9]+', true );
+$modyear = getValue  ( 'modyear', '-?[0-9]+', true );
 
 $startdate = sprintf ( "%04d%02d%02d", $fromyear, $frommonth, $fromday );
 $enddate = sprintf ( "%04d%02d%02d", $endyear, $endmonth, $endday );
