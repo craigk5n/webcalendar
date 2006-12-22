@@ -217,7 +217,7 @@ if ( $cat_filter == 0 )
  $cat_filter = '';
 
 $endday = getValue  ( 'endday', '-?[0-9]+', true );
-$endmonth = getValue  ( 'endmonth', true );
+$endmonth = getValue  ( 'endmonth', '-?[0-9]+', true );
 $endyear = getValue  ( 'endyear', '-?[0-9]+', true );
 $fromday = getValue  ( 'fromday', '-?[0-9]+', true );
 $frommonth = getValue  ( 'frommonth', '-?[0-9]+', true );
