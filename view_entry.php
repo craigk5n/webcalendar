@@ -168,11 +168,14 @@ if ( empty ( $error ) ) {
   $time_only = 'N';
 
   if ( access_is_enabled () ) {
-    $tmpStr = "$login, $cal_type, $cal_access";
-    $can_approve = access_user_calendar ( 'approve', $euser, $tmpStr );
-    $can_edit = access_user_calendar ( 'edit', $create_by, $tmpStr );
-    $can_view = access_user_calendar ( 'view', $euser, $tmpStr );
-    $time_only = access_user_calendar ( 'time', $euser, $tmpStr );
+    $can_approve =
+     access_user_calendar ( 'approve', $euser, $login, $cal_type, $cal_access );
+    $can_edit =
+     access_user_calendar ( 'edit', $create_by, $login, $cal_type, $cal_access );
+    $can_view =
+     access_user_calendar ( 'view', $euser, $login, $cal_type, $cal_access );
+    $time_only =
+     access_user_calendar ( 'time', $euser, $login, $cal_type, $cal_access );
   } 
 
   if ( $is_admin || $is_nonuser_admin || $is_assistant )
