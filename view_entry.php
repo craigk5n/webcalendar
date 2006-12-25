@@ -803,7 +803,7 @@ if ( Doc::attachmentsEnabled () && $rss_view == false ) {
         <td class="aligntop bold">' . translate ( 'Attachments' ) . ':</td>
         <td>';
 
-  $attList = &new AttachmentList ( $id );
+  $attList =& new AttachmentList ( $id );
   for ( $i = 0; $i < $attList->getSize (); $i++ ) {
     $a = $attList->getDoc ( $i );
     echo '
@@ -831,7 +831,7 @@ if ( Doc::commentsEnabled () ) {
         <td class="aligntop bold">' . translate ( 'Comments' ) . ':</td>
         <td>';
 
-  $comList = &new CommentList ( $id );
+  $comList =& new CommentList ( $id );
   $num_comment = $comList->getSize ();
   $comment_text = '';
   for ( $i = 0; $i < $num_comment; $i++ ) {
