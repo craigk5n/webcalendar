@@ -19,6 +19,7 @@
  *
  * What gets called:
  *
+ * - include_once 'includes/translate.php';
  * - require_once 'includes/classes/WebCalendar.class';
  * - require_once 'includes/classes/Event.class';
  * - require_once 'includes/classes/RptEvent.class';
@@ -30,7 +31,6 @@
  * - include_once 'includes/validate.php';
  * - include_once 'includes/site_extras.php';
  * - include_once 'includes/access.php';
- * - include_once 'includes/translate.php';
  *
  * Also, for month.php, day.php, week.php, week_details.php:
  * - {@link send_no_cache_header()};
@@ -46,8 +46,8 @@ if ( empty ( $_SERVER['PHP_SELF'] ) ||
       preg_match ( "/\/includes\//", $_SERVER['PHP_SELF'] ) ) )
   die ( 'You cannot access this file directly!' );
 
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
-
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
 
@@ -64,9 +64,6 @@ include_once 'includes/' . $user_inc;
 include_once 'includes/validate.php';
 include_once 'includes/site_extras.php';
 include_once 'includes/access.php';
-
-include_once 'includes/translate.php';
-
 include_once 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
@@ -93,17 +90,12 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG, $PHP_SELF,
   $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR,
   $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
+
   $lang = $ret = '';
-  // Determine the page direction (left-to-right or right-to-left)
-  $direction = translate ( 'direction' );
-  // get script name for later use
-  $thisPage = substr ( $self, strrpos ( $self, '/' ) + 1 );
-  // Calculate the <body> id value
-  $thisPageId = preg_replace ( '/(_|.php)/', '', $thisPage );
-  // remember this view if the file is a view_x.php script
+  // Remember this view if the file is a view_x.php script.
   if ( ! strstr ( $REQUEST_URI, 'view_entry' ) )
     remember_this_view ( true );
-  // check the css version for cache clearing if needed
+  // Check the css version for cache clearing if needed.
   if ( ! $disableStyle ) {
     if ( isset ( $_COOKIE['webcalendar_csscache'] ) )
       $webcalendar_csscache = $_COOKIE['webcalendar_csscache'];
@@ -118,10 +110,10 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
 
   if ( ! empty ( $LANGUAGE ) )
     $lang = languageToAbbrev ( $LANGUAGE );
+
   if ( empty ( $lang ) )
     $lang = 'en';
-  // Start the header & specify the charset
-  // The charset is defined in the translation file
+  // Start the header & specify the charset defined in the translation file.
   $charset = translate ( 'charset' );
   if ( empty ( $charset ) || $charset == 'charset' )
     $charset = 'iso-8859-1';
@@ -156,7 +148,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     foreach ( $includes as $inc ) {
       if ( substr ( $inc, 0, 13 ) == 'js/popups.php' && !
           empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
-        // don't load popups.php javascript if DISABLE_POPUPS
+        // Don't load popups.php javascript if DISABLE_POPUPS.
       } else
         $ret .= '
     <script type="text/javascript" src="js_cacher.php?inc=' . $inc
@@ -182,10 +174,10 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     <link rel="stylesheet" type="text/css" href="css_cacher.php?' . $login
      . $webcalendar_csscache . '" />';
   }
-  // Add custom script/stylesheet if enabled
+  // Add custom script/stylesheet if enabled.
   if ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom )
     $ret .= load_template ( $login, 'S' );
-  // Include includes/print_styles.css as a media="print" stylesheet. When the
+  // Include includes/print_styles.css as a media="print" stylesheet.  When the
   // user clicks on the "Printer Friendly" link, $friendly will be non-empty,
   // including this as a normal stylesheet so they can see how it will look
   // when printed. This maintains backwards-compatibility for browsers that
@@ -195,10 +187,10 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     <link rel="stylesheet" type="text/css"'
      . ( empty ( $friendly ) ? ' media="print"' : '' )
      . ' href="includes/print_styles.css" />';
-  // Add RSS feed if publishing is enabled
+  // Add RSS feed if publishing is enabled.
   $ret .=
   ( ! empty ( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y' &&
-    ( $login == '__public__' ) || ( ! empty ( $GLOBALS['USER_RSS_ENABLED'] ) &&
+    $login == '__public__' || ( ! empty ( $GLOBALS['USER_RSS_ENABLED'] ) &&
       $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) && $disableRSS == false ? '
     <link rel="alternate" type="application/rss+xml" title="'
      . $appStr . ' [RSS 2.0]" href="rss.php'
@@ -211,10 +203,11 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // Finish the header
   . '  </head>
   <body'
-  // Add the page direction if right-to-left
-  . ( $direction == 'rtl' ? ' dir="rtl"' : '' )
+  // Determine the page direction (left-to-right or right-to-left).
+  . ( $translations['direction'] == 'rtl' ? ' dir="rtl"' : '' )
   // Add <body> id
-  . ' id="' . $thisPageId . '"'
+  . ' id="' . preg_replace ( '/(_|.php)/', '',
+    substr ( $self, strrpos ( $self, '/' ) + 1 ) ) . '"'
   // Add any extra parts to the <body> tag
   . ( ! empty ( $BodyX ) ? " $BodyX" : '' ) . '>' . "\n";
   // If menu is enabled, place menu above custom header is desired
@@ -255,11 +248,11 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
   if ( $include_nav_links && ! $friendly ) {
     if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' )
       $ret .= '<div id="dateselector">'
-        . print_menu_dates ()
-        . '</div>';
+       . print_menu_dates ()
+       . '</div>';
 
-      if ( $MENU_ENABLED == 'N' )
-       include_once 'includes/trailer.php';
+    if ( $MENU_ENABLED == 'N' )
+      include_once 'includes/trailer.php';
   }
 
   if ( ! empty ( $tret ) )
@@ -313,7 +306,8 @@ function print_menu_dates ( $menu = false ) {
             <input type="hidden" name="user" value="' . $user . '" />' : '' )
    . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
     ( ! $user || $user == $login ) ? '
-            <input type="hidden" name="cat_id" value="' . $cat_id . '" />' : '' ) . '
+            <input type="hidden" name="cat_id" value="'
+   . $cat_id . '" />' : '' ) . '
             <label for="monthselect"><a '
    . 'href="javascript:document.SelectMonth.submit()">'
    . translate ( 'Month' ) . '</a>:&nbsp;</label>
@@ -374,7 +368,8 @@ function print_menu_dates ( $menu = false ) {
             <input type="hidden" name="user" value="' . $user . '" />' : '' )
    . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
     ( ! $user || $user == $login ) ? '
-            <input type="hidden" name="cat_id" value="' . $cat_id . '" />' : '' ) . '
+            <input type="hidden" name="cat_id" value="'
+   . $cat_id . '" />' : '' ) . '
             <label for="weekselect"><a '
    . 'href="javascript:document.SelectWeek.submit()">'
    . translate ( 'Week' ) . '</a>:&nbsp;</label>
@@ -442,7 +437,8 @@ function print_menu_dates ( $menu = false ) {
             <input type="hidden" name="user" value="' . $user . '" />' : '' )
    . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
     ( ! $user || $user == $login ) ? '
-            <input type="hidden" name="cat_id" value="' . $cat_id . '" />' : '' ) . '
+            <input type="hidden" name="cat_id" value="'
+   . $cat_id . '" />' : '' ) . '
             <label for="yearselect"><a '
    . 'href="javascript:document.SelectYear.submit()">'
    . translate ( 'Year' ) . '</a>:&nbsp;</label>
