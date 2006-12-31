@@ -6199,19 +6199,20 @@ function is_weekend ( $date ) {
  *
  * @param bool $custom  Allow user name to be displayed
  */
-function generate_application_name ( $custom=true ) {
+function generate_application_name ( $custom = true ) {
   global $APPLICATION_NAME, $fullname;
 
   if ( empty ( $APPLICATION_NAME ) )
     $APPLICATION_NAME = 'Title';
 
-  if ( $custom == true && ! empty ( $fullname ) && $APPLICATION_NAME == 'myname' ) {
+  if ( $custom == true && !
+    empty ( $fullname ) && $APPLICATION_NAME == 'myname' )
     return $fullname;
-  } else if ( $APPLICATION_NAME == 'Title' || $APPLICATION_NAME == 'myname' ) {
-    return translate( 'Title' );
-  } else {
+  else
+  if ( $APPLICATION_NAME == 'Title' || $APPLICATION_NAME == 'myname' )
+    return ( function_exists ( translate ) ? translate ( 'Title' ) : 'Title' );
+  else
     return htmlspecialchars ( $APPLICATION_NAME );
-  } 
 }
 
 /**
