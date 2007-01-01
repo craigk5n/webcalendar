@@ -25,6 +25,7 @@ if ( $caching == true ) {
 
   $WebCalendar =& new WebCalendar ( __FILE__ );
 
+  include 'includes/translate.php';
   include 'includes/config.php';
   include 'includes/dbi4php.php';
   include 'includes/functions.php';
@@ -34,7 +35,6 @@ if ( $caching == true ) {
   include 'includes/' . $user_inc;
   include_once 'includes/access.php';
   include_once 'includes/validate.php';
-  include 'includes/translate.php';
   include_once 'includes/gradient.php';
 
   $WebCalendar->initializeSecondPhase ();

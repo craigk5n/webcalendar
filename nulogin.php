@@ -7,6 +7,7 @@ require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
+include 'includes/translate.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/functions.php';
@@ -15,7 +16,6 @@ $WebCalendar->initializeFirstPhase ();
 
 include 'includes/' . $user_inc;
 include_once 'includes/access.php';
-include 'includes/translate.php';
 include 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase ();

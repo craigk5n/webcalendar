@@ -25,6 +25,7 @@ require_once 'includes/classes/RptEvent.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
+include 'includes/translate.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/functions.php';
@@ -32,7 +33,6 @@ include 'includes/functions.php';
 $WebCalendar->initializeFirstPhase ();
 
 include 'includes/' . $user_inc;
-include 'includes/translate.php';
 
 $WebCalendar->initializeSecondPhase ();
 

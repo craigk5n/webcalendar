@@ -64,6 +64,7 @@ require_once $includedir . '/classes/WebCalMailer.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
+include $includedir . '/translate.php';
 include $includedir . '/config.php';
 include $includedir . '/dbi4php.php';
 include $includedir . '/functions.php';
@@ -72,7 +73,6 @@ $WebCalendar->initializeFirstPhase ();
 
 include "$includedir/$user_inc";
 include $includedir . '/site_extras.php';
-include $includedir . '/translate.php';
 
 $WebCalendar->initializeSecondPhase ();
 
@@ -243,7 +243,7 @@ function send_reminder ( $id, $event_date ) {
 
   $ext_participants = $participants = array ();
   $num_ext_participants = $num_participants = 0;
-  
+
   $pri[1] = translate ( 'High' );
   $pri[2] = translate ( 'Medium' );
   $pri[3] = translate ( 'Low' );
@@ -402,7 +402,7 @@ function send_reminder ( $id, $event_date ) {
        . "%\n"
       : '' )
      . ( empty ( $DISABLE_PRIORITY_FIELD ) || $DISABLE_PRIORITY_FIELD != 'Y'
-      ? translate ( 'Priority' ) . ': ' . $row[6] . '-' 
+      ? translate ( 'Priority' ) . ': ' . $row[6] . '-'
       . $pri[ceil($row[6]/3 )]  . "\n" : '' );
 
     if ( empty ( $DISABLE_ACCESS_FIELD ) || $DISABLE_ACCESS_FIELD != 'Y' ) {
@@ -484,7 +484,7 @@ From:' . $adminStr . '
       $recipName = ( $isExt ? $user : $GLOBALS ['tempfullname'] );
       // send ics attachment to External Users
       $attach = ( $isExt ? $id : '' );
-      $mail->WC_Send ( $adminStr, $recip, $recipName, $subject, 
+      $mail->WC_Send ( $adminStr, $recip, $recipName, $subject,
         $body, $useHtml, $GLOBALS['EMAIL_FALLBACK_FROM'], $attach  );
       $cal_text = ( $isExt ? translate ( 'External User' ) : '' );
       activity_log ( $id, 'system', $user, LOG_REMINDER, $cal_text );
