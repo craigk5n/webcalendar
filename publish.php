@@ -28,6 +28,7 @@ require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
+include 'includes/translate.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/functions.php';
@@ -36,7 +37,6 @@ $WebCalendar->initializeFirstPhase ();
 
 include 'includes/' . $user_inc;
 include 'includes/validate.php';
-include 'includes/translate.php';
 
 include 'includes/site_extras.php';
 include_once 'includes/xcal.php';

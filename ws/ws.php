@@ -30,6 +30,7 @@ function ws_init ( )
 
   $WebCalendar =& new WebCalendar ( __FILE__ );
 
+  include_once "$includedir/translate.php";
   include_once "$includedir/config.php";
   include_once "$includedir/dbi4php.php";
   include_once "$includedir/access.php";
@@ -40,7 +41,6 @@ function ws_init ( )
   include_once "$includedir/$user_inc";
   include_once "$includedir/validate.php";
   include_once "$includedir/site_extras.php";
-  include_once "$includedir/translate.php";
 
   $WebCalendar->initializeSecondPhase();
 
@@ -112,7 +112,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   }
 
   // get event details
-  $res = dbi_execute ( 
+  $res = dbi_execute (
     "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
     "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
     "cal_name, cal_description FROM webcal_entry WHERE cal_id = ?" , array( $id )
@@ -169,7 +169,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
     $out .= "  <priority>" . $row[6] . '-' . $pri[ceil($row[6]/3)] . "</priority>\n";
   }
   if ( ! empty ( $DISABLE_ACCESS_FIELD ) && $DISABLE_ACCESS_FIELD == 'Y' )
-    $out .= "  <access>" . 
+    $out .= "  <access>" .
       ( $row[8] == "P" ? translate ( 'Public' ) : ucfirst ( translate( 'confidential' ) ) ) .
       "</access>\n";
   if ( ! strlen ( $single_user_login ) )

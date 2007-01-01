@@ -51,6 +51,7 @@ require_once $includedir . '/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
+include $includedir . '/translate.php';
 include $includedir . '/config.php';
 include $includedir . '/dbi4php.php';
 include $includedir . '/functions.php';
@@ -59,7 +60,6 @@ $WebCalendar->initializeFirstPhase ();
 
 include "$includedir/$user_inc";
 include $includedir . '/xcal.php';
-include $includedir . '/translate.php';
 
 $WebCalendar->initializeSecondPhase ();
 // used for hCal parsing
