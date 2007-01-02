@@ -132,6 +132,22 @@ function colorToRGB ( $color ) {
   return array ( 'red' => $red, 'green' => $green, 'blue' => $blue );
 } 
 
+
+function can_write_to_dir ($path)
+{
+  if ($path{strlen($path)-1}=='/') //Start function again with tmp file...
+    return can_write_to_dir($path.uniqid(mt_rand()).'.tmp');
+  else if (ereg('.tmp', $path)) { //Check tmp file for read/write capabilities
+    if (!($f = @fopen($path, 'w+')))
+      return false;
+    fclose($f);
+    unlink($path);
+    return true;
+  }
+  else //We have a path error.
+   return 0; // Or return error - invalid path...
+}
+
 function background_css ( $base, $height = '', $percent = '' ) {
   global $ENABLE_GRADIENTS;
   $ret = $type = '';
@@ -144,7 +160,7 @@ function background_css ( $base, $height = '', $percent = '' ) {
   $ret = 'background';
   if ( $type != '' && $ENABLE_GRADIENTS == 'Y' ) {
     $ret .= ': ' . $base . ' url( ';
-    if ( ! file_exists ( 'images/cache' ) || ! is_writable ( 'images/cache' ) )
+    if ( ! file_exists ( 'images/cache' ) || ! can_write_to_dir ( 'images/cache/' ) )
       $ret .= '"includes/gradient.php?base=' . substr ( $base, 1 )
        . ( $height != '' ? '&height=' . $height : '' )
        . ( $percent != '' ? '&percent=' . $percent : '' ) . '"';
