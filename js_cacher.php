@@ -5,6 +5,8 @@
 $caching = false;
 if ( empty ( $inc ) )
   $inc = $_GET['inc'];
+if ( empty ( $inc ) && ! empty ( $_REQUEST['inc'] ) )
+  $inc = $_REQUEST['inc'];
 
 $arinc = explode ( '/', $inc );
 

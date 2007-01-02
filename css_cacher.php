@@ -21,8 +21,13 @@ $WebCalendar->initializeSecondPhase();
 load_global_settings ();
 
 //if calling script uses 'guest', we must also
-$guest = ( ! empty ( $_GET['login'] ) ? 'guest' : '' );
-load_user_preferences ( $guest );
+if ( ! empty ( $_GET['login'] ) )
+  $login = $_GET['login'];
+else if ( ! empty ( $_REQUEST['login'] ) )
+  $login = $_REQUEST['login'];
+else
+  $login = 'guest';
+load_user_preferences ( $login );
 
 //we will cache css as default, but override from admin and pref
 //by incrementing the webcalendar_csscache cookie value
