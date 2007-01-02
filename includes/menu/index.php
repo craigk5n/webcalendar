@@ -17,7 +17,7 @@ $MENU_DATE_TOP, $menuHtml, $menuScript, $NONUSER_ENABLED, $PUBLIC_ACCESS,
 $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL, $PUBLIC_ACCESS_CAN_ADD,
 $PUBLIC_ACCESS_OTHERS, $readonly, $REMOTES_ENABLED, $REPORTS_ENABLED,
 $REQUIRE_APPROVALS, $show_printer, $single_user, $START_VIEW, $thisday,
-$thismonth, $thisyear, $use_http_auth, $user, $views;
+$thismonth, $thisyear, $use_http_auth, $user, $views, $translations;
 
 /* -----------------------------------------------------------------------------
          First figure out what options are on and privileges we have
@@ -260,10 +260,8 @@ $menuScript = $menuHtml = '';
 function jscMenu_menu ( $title, $url = false ) {
   global $menuScript;
 
-  $menuScript .= '
-  [null,\'' . ( $title != '' ? translate ( $title ) : '' )
-   . "','$url'" . ',null,null' . ( $url ? ']' : '' ) . ',
-';
+  $menuScript .= '[null,\'' . ( $title != '' ? translate ( $title ) : '' )
+   . "','$url'" . ',null,null' . ( $url ? ']' : '' ) . ',';
 }
 
 /* Dropdown menu item
@@ -271,7 +269,7 @@ function jscMenu_menu ( $title, $url = false ) {
 function jscMenu_item ( $icon, $title, $url, $target = '' ) {
   global $menuScript;
 
-  $menuScript .= '    [\'<img src="includes/menu/icons/' . $icon
+  $menuScript .= '[\'<img src="includes/menu/icons/' . $icon
    . '" alt="" />\',\'' . ( $title != '' ? translate ( $title ) : '' )
    . "','$url','$target',''],\n";
 }
@@ -281,7 +279,7 @@ function jscMenu_item ( $icon, $title, $url, $target = '' ) {
 function jscMenu_sub_menu ( $icon, $title ) {
   global $menuScript;
 
-  $menuScript .= '    [\'<img src="includes/menu/icons/' . $icon
+  $menuScript .= '[\'<img src="includes/menu/icons/' . $icon
    . '" alt="" />\',\'' . ( $title != '' ? translate ( $title ) : '' )
    . "','',null,'',\n";
 }
@@ -291,7 +289,7 @@ function jscMenu_sub_menu ( $icon, $title ) {
 function jscMenu_custom ( $html ) {
   global $menuScript;
 
-  $menuScript .= '    [_cmNoClick,' . "'$html']\n";
+  $menuScript .= '[_cmNoClick,' . "'$html']\n";
 }
 
 /* Closing tag
@@ -299,7 +297,7 @@ function jscMenu_custom ( $html ) {
 function jscMenu_close () {
   global $menuScript;
 
-  $menuScript .= '  ],
+  $menuScript .= '],
 ';
 }
 
@@ -308,7 +306,7 @@ function jscMenu_close () {
 function jscMenu_divider () {
   global $menuScript;
 
-  $menuScript .= '    _cmSplit,
+  $menuScript .= '_cmSplit,
 ';
 }
 
@@ -567,15 +565,11 @@ if ( $search_url != '' && $menuConfig['Search'] ) {
     jscMenu_item ( 'search.png', 'Advanced Search', 'search.php?adv=1' );
     jscMenu_divider ();
   }
-  jscMenu_custom ( '
-          <td class="ThemeMenuItemLeft"><img src="includes/menu/icons'
-     . '/spacer.gif" /></td>
-          <td colspan="2">
-            <form action="search_handler.php" method="post">
-              <input type="text" name="keywords" size="25" />
-              <input type="submit" value="' . $translations['Search'] . '" />
-            </form>
-          </td>' );
+  jscMenu_custom ( '<td class="ThemeMenuItemLeft"><img src="includes/menu/icons'
+     . '/spacer.gif" /></td><td colspan="2"><form action="search_handler.php" '
+     . 'method="post"><input type="text" name="keywords" size="25" /><input '
+     . 'type="submit" value="' . translate ( 'Search' )
+     . '" /></form></td>' );
   jscMenu_close ();
 }
 
@@ -600,8 +594,7 @@ if ( $menuConfig['Help'] ) {
   jscMenu_close ();
 }
 // Add spacer
-$menuScript .= '[_cmNoAction, \'
-          <td>&nbsp;&nbsp;</td>\'],';
+$menuScript .= "[_cmNoAction, '<td>&nbsp;&nbsp;</td>'],";
 // Unapproved Icon if any exist
 $unapprovedStr = display_unapproved_events ( ( $is_assistant ||
   $is_nonuser_admin
@@ -620,7 +613,7 @@ if ( $show_printer && $menuConfig['Printer'] ) {
 if ( ! empty ( $menuExtras[7] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[7] );
 
-$menuScript .= ']
+$menuScript .= '];
 //]]> -->
     </script>' . "\n";
 
