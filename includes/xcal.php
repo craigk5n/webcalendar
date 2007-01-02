@@ -2212,7 +2212,7 @@ function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0' , $plus_m = '
     $Z = substr( $vdate, 15, 1 );
   }
   // if we get a Mozilla TZID we try to parse it
-  if ( strstr ( $tzid, 'ozilla.org' ) ) {
+  if ( strstr ( $tzid, 'ozilla.org' ) or strstr ( $tzid, 'softwarestudio.org' ) ) {
     $tzAr = explode ( '/', $tzid );
     $tzArCnt = count ( $tzAr );
     $tzid = $tzAr[3];
