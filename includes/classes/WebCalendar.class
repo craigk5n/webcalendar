@@ -50,10 +50,10 @@ class WebCalendar {
    *
    * @todo Make it possible to distinguish between files in different directories (e.g. login.php and ws/login.php).
    */
-  var $_filePhaseMap = array('/^(about|nulogin|login|login-app|controlpanel|upcoming)\.php$/' =>
+  var $_filePhaseMap = array('/^(about|nulogin|login|login-app|register|controlpanel|upcoming)\.php$/' =>
   array(array('Config', 'PHPDBI', 'Functions'),
   array('User', 'Connect')),
-'/^(ajax|css_cacher|js_cacher|icalclient|freebusy|publish|register|rss|get_reminders|get_events|ws)\.php$/' =>
+'/^(ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|get_reminders|get_events|ws)\.php$/' =>
   array(array('Config', 'PHPDBI', 'Functions'),
   array('User', 'Validate', 'Connect', 'SiteExtras', 'Access')),
 '/^convert_passwords\.php$/' =>
