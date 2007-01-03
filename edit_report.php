@@ -1,6 +1,5 @@
 <?php
-/**
- * Presents a HTML form to add or edit a report.
+/* Presents a HTML form to add or edit a report.
  * 
  * Input Parameters:
  * - <var>report_id</var> (optional) - the report id of the report to edit.  If
@@ -291,7 +290,7 @@ if ( $show_participants ) {
     $users .= '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
   echo '<tr><td><label for="rpt_user">' .
-    ucfirst ( translate ( 'user' ) ) . ":</label></td>\n";
+    translate ( 'User' ) . ":</label></td>\n";
   echo "<td><select name=\"report_user\" id=\"rpt_user\" size=\"1\">$users\n";
   echo "</select>\n";
   echo "</td></tr>\n";

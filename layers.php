@@ -65,7 +65,7 @@ else {
 
         echo '
     <div class="layers" style="color: ' . $layer['cal_color'] . '">
-      <h4>' . ucfirst ( translate ( 'layer' ) ) . '&nbsp;' . $layer_count . '
+      <h4>' . translate ( 'Layer' ) . '&nbsp;' . $layer_count . '
         (<a title="' . $translations['Edit layer']
          . '" href="edit_layer.php?id=' . $layer['cal_layerid'] . $u_url . '">'
          . $translations['Edit'] . '</a> /

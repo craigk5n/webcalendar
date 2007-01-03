@@ -1274,7 +1274,7 @@ function build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only
         
   if ( $not_my_entry && $event->getAccess() == 'R' && 
     ! ($can_access & PRIVATE_WT  )) {
-    if ( $time_only != 'Y' ) $ret = '(' . ucfirst ( translate ( 'private' ) ) . ')';
+    if ( $time_only != 'Y' ) $ret = '(' . $translations['Private'] . ')';
     $eventinfo .= build_entry_popup ( $popupid, $event->getLogin(),
       translate('This event is private'), '' );
   } else if ( $not_my_entry && $event->getAccess() == 'C' && 
@@ -3199,8 +3199,8 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
   $res = dbi_execute ( $sql, $query_params );
   $found = array();
   $count = 0;
-  $privateStr = ucfirst ( translate ( 'private' ) );
-  $confidentialStr = ucfirst ( translate ( 'confidential' ) );
+  $privateStr = $translations['Private'];
+  $confidentialStr = $translations['Confidential'];
   $allDayStr = translate('All day event');
   $exceedsStr = translate ( 'exceeds limit of XXX events per day' );
   $onStr = translate ( 'on' );

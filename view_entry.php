@@ -29,18 +29,14 @@ $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
 $can_email = 'Y';
 
-$areYouSureStr =
-str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] );
-$confidentialStr = translate ( 'confidential' );
-$deleteStr = translate ( 'Delete' );
-$pri[1] = translate ( 'High' );
-$pri[2] = translate ( 'Medium' );
-$pri[3] = translate ( 'Low' );
-$privateStr = translate ( 'private' );
-$rejectedStr = translate ( 'Rejected' );
+$areYouSureStr = str_replace ( 'XXX', $translations['entry'],
+  $translations['Are you sure you want to delete this XXX?'] );
+$pri[1] = $translations['High'];
+$pri[2] = $translations['Medium'];
+$pri[3] = $translations['Low'];
 
 if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) )
-  $error = translate ( 'Invalid entry id' ) . '.';
+  $error = translate ( 'Invalid entry id.' );
 
 $hide_details = ( $login == '__public__' && !
   empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC == 'Y' );
@@ -112,7 +108,7 @@ $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
   cal_due_time, cal_completed FROM webcal_entry WHERE cal_id = ?',
   array ( $id ) );
 if ( ! $res )
-  $error = translate ( 'Invalid entry id' ) . ": $id";
+  $error = str_replace ('XXX', $id, translate ( 'Invalid entry id&#58; XXX.' ) );
 else {
   $row = dbi_fetch_row ( $res );
   if ( $row ) {
@@ -356,11 +352,11 @@ $email_addr = empty ( $createby_email ) ? '' : $createby_email;
 // if ( $row[8] == "R" && ! $is_my_event && ! $is_admin ) {
 if ( $cal_access == 'R' && ! $is_my_event && ! access_is_enabled () ) {
   $is_private = true;
-  $description = $name = '[' . ucfirst ( $privateStr ) . ']';
+  $description = $name = '[' . $translations['Private'] . ']';
 } else if ( $cal_access == 'C' && ! $is_my_event && ! $is_assistant && !
   access_is_enabled () ) {
   $is_confidential = true;
-  $description = $name = '[' . ucfirst ( $confidentialStr ) . ']';
+  $description = $name = '[' . $translations['Confidential'] . ']';
 }
 $event_date = ( $event_repeats && ! empty ( $date ) ? $date : $orig_date );
 
@@ -419,7 +415,7 @@ if ( $event_status != 'A' && ! empty ( $event_status ) ) {
     echo ( $eType == 'task'
       ? translate ( 'Declined' ) : translate ( 'Deleted' ) );
   elseif ( $event_status == 'R' )
-    echo $rejectedStr;
+    echo $translations['Rejected'];
   elseif ( $event_status == 'W' )
     echo ( $eType == 'task'
       ? translate ( 'Needs-Action' ) : translate ( 'Waiting for approval' ) );
@@ -490,8 +486,8 @@ echo ( $DISABLE_PRIORITY_FIELD != 'Y' ? '
         <td>' . ( $cal_access == "P"
     ? translate ( 'Public' )
     : ( $cal_access == 'C'
-      ? ucfirst ( $confidentialStr )
-      : ucfirst ( $privateStr ) ) ) . '</td>
+      ? $translations['Confidential']
+      : $translations['Private'] ) ) . '</td>
       </tr>' : '' ) . ( $CATEGORIES_ENABLED == 'Y' && ! empty ( $category ) ? '
       <tr>
         <td class="aligntop bold">' . translate ( 'Category' ) . ':</td>
@@ -522,11 +518,11 @@ if ( $single_user == 'N' && ! empty ( $createby_fullname ) ) {
         <td class="aligntop bold">' . translate ( 'Created by' ) . ':</td>
         <td>';
   if ( $is_private && ! access_is_enabled () )
-    echo '[' . ucfirst ( $privateStr ) . ']</td>
+    echo '[' . $translations['Private'] . ']</td>
       </tr>';
   else
   if ( $is_confidential && ! access_is_enabled () )
-    echo '[' . ucfirst ( $confidentialStr ) . ']</td>
+    echo '[' . $translations['Confidential'] . ']</td>
       </tr>';
   else {
     if ( access_is_enabled () )
@@ -620,10 +616,10 @@ if ( $single_user == 'N' && $show_participants ) {
 
   $num_app = $num_rej = $num_wait = 0;
   if ( $is_private && ! access_is_enabled () )
-    echo '[' . ucfirst ( $privateStr ) . ']';
+    echo '[' . $translations['Private'] . ']';
   else
   if ( $is_confidential && ! access_is_enabled () )
-    echo '[' . ucfirst ( $confidentialStr ) . ']';
+    echo '[' . $translations['Confidential'] . ']';
   else {
     $res = dbi_execute ( 'SELECT cal_login, cal_status, cal_percent
         FROM webcal_entry_user WHERE cal_id = ?'
@@ -748,7 +744,7 @@ if ( $single_user == 'N' && $show_participants ) {
           <strike>' . ( strlen ( $tempemail ) > 0 && $can_email != 'N'
         ? '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
          . $tempfullname . '</a>'
-        : $tempfullname ) . '</strike> (' . $rejectedStr . ')<br />';
+        : $tempfullname ) . '</strike> (' . $translations['Rejected'] . ')<br />';
     }
   }
 
@@ -814,7 +810,7 @@ if ( Doc::attachmentsEnabled () && $rss_view == false ) {
       user_is_assistant ( $login, $create_by )
       ? ' [<a href="docdel.php?blid=' . $a->getId ()
        . '" onclick="return confirm (\'' . $areYouSureStr . '\');">'
-       . $deleteStr . '</a>]' : '' ) . '<br />';
+       . $translations['Delete'] . '</a>]' : '' ) . '<br />';
   }
   $num_app = $num_rej = $num_wait = 0;
   $num_attach = $attList->getSize ();
@@ -846,7 +842,7 @@ if ( Doc::commentsEnabled () ) {
       user_is_assistant ( $login, $cmt->getLogin () ) || $login == $create_by ||
       user_is_assistant ( $login, $create_by ) ? ' [<a href="docdel.php?blid='
        . $cmt->getId () . '" onclick="return confirm (\'' . $areYouSureStr
-       . '\');">' . $deleteStr . '</a>]' : '' )// end show delete link
+       . '\');">' . $translations['Delete'] . '</a>]' : '' )// end show delete link
      . '<br />
           <blockquote id="eventcomment">' . nl2br ( activate_urls (
         htmlspecialchars ( $cmt->getData () ) ) ) . '</blockquote>';

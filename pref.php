@@ -713,13 +713,13 @@ $publish_access =  ( empty  ( $prefarray['USER_REMOTE_ACCESS'] ) ? 0 :
   <select name="pref_USER_REMOTE_ACCESS">
    <option value="0" <?php echo ( $publish_access == '0' ?
      $selected : '' ) . ' >' . translate ( 'Public' ) . ' ' .  
-     translate( 'entries' )?></option>
+     translate ( 'entries' )?></option>
    <option value="1" <?php echo ( $publish_access == '1' ? 
      $selected : '' ) . ' >' . translate ( 'Public' ) . ' &amp; ' . 
-      ucfirst ( translate( 'confidential' ) ) . ' ' . translate( 'entries' )?></option>
+      $translations['Confidential'] . ' ' . translate ( 'entries' )?></option>
    <option value="2" <?php echo ( $publish_access == '2' ? 
      $selected : '' ) . ' >' . translate( 'All' ) . ' ' . 
-     translate( 'entries' )?></option>  
+     translate ( 'entries' )?></option>  
   </select>  
   </td></tr>
 <?php } 

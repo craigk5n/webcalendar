@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 12-19-2006
+# Translation last updated on 01-03-2007
 
 
 ################################################################################
@@ -82,7 +82,7 @@ User Access Control: User Access Control
 Allow Access to Other Users&#39; Calendar: Allow Access to Other Users' Calendar
 Grant This User Access to My Calendar: Grant This User Access to My Calendar
 Type: Type
-calendar: calendar
+Calendar: Calendar
 View Event: View Event
 View: View
 Edit: Edit
@@ -97,8 +97,8 @@ Assistant: Assistant
 Select All: Select All
 Clear All: Clear All
 Public: Public
-confidential: confidential
-private: private
+Confidential: Confidential
+Private: Private
 
 ########################################
 # Page: activity_log.php
@@ -109,9 +109,8 @@ Previous: Previous
 ########################################
 # Page: add_entry.php
 #
-event: event
-is already on your calendar.: is already on your calendar.
-Invalid entry id: Invalid entry id
+Event XXX is already on your calendar.: Event XXX is already on your calendar.
+Invalid entry id&#58; XXX.: Invalid entry id&#58; XXX.
 This is a XXX event and may not be added to your calendar.: This is a XXX event and may not be added to your calendar
 Error adding event: Error adding event
 
@@ -161,6 +160,8 @@ Allow user to override header/trailer: Allow user to override header/trailer
 Date and Time: Date and Time
 tz-help: Specifies how many hours to adjust the time from server time to local time.
 Server Timezone Selection: Server Timezone Selection
+Your current GMT offset is: Your current GMT offset is
+hours: hours
 display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
 Display Common Use Date/Times as GMT: Display Common Use Date/Times as GMT
 date-format-help: Specifies the preferred date format.
@@ -498,6 +499,7 @@ An appointment has been canceled for you by: An appointment has been canceled fo
 # Page: doc.php
 #
 Invalid blob id: Invalid blob id
+Invalid entry id: Invalid entry id
 
 ########################################
 # Page: docadd.php
@@ -562,7 +564,6 @@ All day event: All day event
 Timezone Offset: Timezone Offset
 time-help: Specifies the time of the event. <ul><li>"Timed event" (for an event that is scheduled for a specific time on that day)</li><li>"Untimed event" (for an event this does not have a time (like a holiday)</li><li>"All day event" (for an event that takes all day (like being out of the office)</li></ul>
 duration-help: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
-hours: hours
 minutes: minutes
 end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
@@ -644,8 +645,8 @@ conflicts with the following existing calendar entries: conflicts with the follo
 ########################################
 # Page: edit_layer.php
 #
-Add layer: Add layer
-Edit layer: Edit layer
+Add Layer: Add Layer
+Edit Layer: Edit Layer
 Source: Source
 Duplicates: Duplicates
 Show layer events that are the same as your own: Show layer events that are the same as your own
@@ -725,6 +726,7 @@ Add Report: Add Report
 Edit Report: Edit Report
 Report name: Report name
 Current User: Current User
+User: User
 Include link in trailer: Include link in trailer
 Include standard header/trailer: Include standard header/trailer
 Date range: Date range
@@ -922,7 +924,6 @@ Current Icons on Server: Current Icons on Server
 ########################################
 # Page: import.php
 #
-Calendar: Calendar
 Disabled: Disabled
 Import format: Import format
 Exclude private records: Exclude private records
@@ -943,7 +944,7 @@ Layers are currently: Layers are currently
 Disable Layers: Disable Layers
 Click here: Click here
 to modify the layers settings for the: to modify the layers settings for the
-layer: layer
+Layer: Layer
 Enable Layers: Enable Layers
 
 ########################################
@@ -977,6 +978,7 @@ You must enter a login and password: You must enter a login and password
 Save login via cookies so I don&#39;t have to login next time: Save login via cookies so I don't have to login next time
 Login: Login
 Access public calendar: Access public calendar
+calendar: calendar
 cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 
 ########################################
@@ -1042,6 +1044,7 @@ Check box to delete <b>ALL</b> events for a user: Check box to delete <b>ALL</b>
 Delete all events before: Delete all events before
 Purge deleted only: Purge deleted only
 Preview delete: Preview delete
+Are you sure you want to delete events for: Are you sure you want to delete events for
 Records deleted from: Records deleted from
 
 ########################################
@@ -1180,6 +1183,7 @@ No users for this view: No users for this view
 ########################################
 # Page: view_entry.php
 #
+Invalid entry id.: Invalid entry id.
 Update Task Percentage: Update Task Percentage
 Completed: Completed
 Assistant mode: Assistant mode
@@ -1277,7 +1281,6 @@ delete: delete
 # Page: includes/functions.php
 #
 Unauthorized: Unauthorized
-User: User
 This event is private: This event is private
 Conf.: Conf.
 WK: WK
@@ -1337,7 +1340,6 @@ Add N hours to: Add N hours to
 Subtract N hours from: Subtract N hours from
 same as: same as
 server time: server time
-Your current GMT offset is: Your current GMT offset is
 Changes successfully saved: Changes successfully saved
 The following error occurred: The following error occurred
 You are not authorized: You are not authorized
@@ -1444,6 +1446,7 @@ Spanish: Spanish
 Swedish: Swedish
 Turkish: Turkish
 Welsh: Welsh
+event: event
 journal: journal
 task: task
 
@@ -1539,6 +1542,7 @@ You have not entered a valid time of day: You have not entered a valid time of d
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Invalid color
+layer: layer
 
 ########################################
 # Page: includes/js/edit_nonuser.php

@@ -311,7 +311,7 @@ if ( ! empty ( $otheruser ) ) {
           <tr>
             <th class="boxleft boxtop boxbottom" width='
      . ( $guser == '__public__'
-      ? '"60%" align="center">' . ucfirst ( translate ( 'calendar' ) ) . '</th>
+      ? '"60%" align="center">' . translate ( 'Calendar' ) . '</th>
             <th class="boxtop boxbottom" width="20%">' . $typeStr . '</th>
             <th class="boxtop boxbottom boxright" colspan="3" width="20%">'
        . translate ( 'View Event' )
@@ -414,9 +414,9 @@ if ( ! empty ( $otheruser ) ) {
               <table border="0" align="center" cellpadding="5" cellspacing="2">
                 <tr>
                   <td class="pub">' . translate ( 'Public' ) . '</td>
-                  <td class="conf">' . ucfirst ( translate ( 'confidential' ) )
+                  <td class="conf">' . translate ( 'Confidential' )
      . '</td>
-                  <td class="priv">' . ucfirst ( translate ( 'private' ) )
+                  <td class="priv">' . translate ( 'Private' )
      . '</td>
                 </tr>
               </table>

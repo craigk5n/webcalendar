@@ -1,6 +1,5 @@
 <?php
-/**
- * This file includes functions needed by WebCalendar web services.
+/* This file includes functions needed by WebCalendar web services.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
@@ -170,7 +169,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   }
   if ( ! empty ( $DISABLE_ACCESS_FIELD ) && $DISABLE_ACCESS_FIELD == 'Y' )
     $out .= "  <access>" .
-      ( $row[8] == "P" ? translate ( 'Public' ) : ucfirst ( translate( 'confidential' ) ) ) .
+      ( $row[8] == "P" ? translate ( 'Public' ) : $translations['Confidential'] ) .
       "</access>\n";
   if ( ! strlen ( $single_user_login ) )
     $out .= "  <createdBy>" . $row[0] . "</createdBy>\n";
