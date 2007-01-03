@@ -107,11 +107,11 @@ function event_to_text ( $event, $date ) {
   }
 
   if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
-    $name_str = '(' . ucfirst ( translate ( 'private' ) ) . ')';
+    $name_str = '(' . $translations['Private'] . ')';
     $description_str = translate( 'This event is confidential' );
   } else if ( $login != $event->getLogin() && $event->getAccess() == 'R' &&
     strlen ( $event->getLogin() ) ) {
-    $name_str = '(' . ucfirst ( translate ( 'private' ) ). ')';
+    $name_str = '(' . $translations['Private']. ')';
     $description_str = translate( 'This event is confidential' );
   } else {
     $name_str = htmlspecialchars ( $name );

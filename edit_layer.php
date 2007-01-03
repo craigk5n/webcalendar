@@ -28,8 +28,8 @@ ob_start ();
 echo '
     <h2>'
  . ( $updating_public ? translate ( $PUBLIC_ACCESS_FULLNAME ) . ' ' : '' )
- . ucwords ( empty ( $layers[$id]['cal_layeruser'] )
-  ? translate ( 'Add layer' ) : translate ( 'Edit layer' ) )
+ . empty ( $layers[$id]['cal_layeruser'] )
+  ? translate ( 'Add Layer' ) : translate ( 'Edit Layer' )
  . ' &nbsp;<img src="images/help.gif" alt="' . $translations['Help']
  . '" class="help" onclick="window.open ( \'help_layers.php\', \'cal_help\', '
  . '\'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,'

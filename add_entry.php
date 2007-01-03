@@ -13,8 +13,8 @@ if ( $id > 0 ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $id ) {
       $is_my_event = true;
-      echo ucfirst ( translate ( 'event' ) ) . " # $id"
-       . translate ( 'is already on your calendar.' );
+      echo str_replace ('XXX', $id, 
+       translate ( 'Event XXX is already on your calendar.' ) );
       exit;
     }
     dbi_free_result ( $res );
@@ -23,7 +23,7 @@ if ( $id > 0 ) {
   $res = dbi_execute ( 'SELECT cal_access FROM webcal_entry WHERE cal_id = ?',
     array ( $id ) );
   if ( ! $res ) {
-    echo translate ( 'Invalid entry id' ) . ": $id";
+    echo str_replace ('XXX', $id, translate ( 'Invalid entry id&#58; XXX.' ) );
     exit;
   }
   $mayNotAddStr =

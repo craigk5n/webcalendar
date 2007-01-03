@@ -408,11 +408,11 @@ function send_reminder ( $id, $event_date ) {
     if ( empty ( $DISABLE_ACCESS_FIELD ) || $DISABLE_ACCESS_FIELD != 'Y' ) {
       $body .= translate ( 'Access' ) . ': ';
       if ( $row[8] == 'C' )
-        $body .= ucfirst ( translate ( 'confidential' ) ) . "\n";
+        $body .= $translations['Confidential'] . "\n";
       elseif ( $row[8] == 'P' )
         $body .= translate ( 'Public' ) . "\n";
       elseif ( $row[8] == 'R' )
-        $body .= ucfirst ( translate ( 'private' ) ) . "\n";
+        $body .= $translations['Private'] . "\n";
     }
 
     $body .= ( ! empty ( $single_user_login ) && $single_user_login == false

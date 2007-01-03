@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Description:
  * Purge events page and handler.
@@ -123,7 +122,7 @@ onclick="history.back()" /></form
 <form action="purge.php" method="post" name="purgeform">
 <table>
  <tr><td><label for="user">
-  <?php echo ucfirst ( translate ( 'user' ) );?>:</label></td>
+  <?php echo translate ( 'User' );?>:</label></td>
  <td><select name="user">
 <?php
   $userlist = get_my_users ();
@@ -163,8 +162,8 @@ onclick="history.back()" /></form
  <tr><td colspan="2">
   <input type="submit" name="action" value="<?php 
     echo $deleteStr?>" onclick="return confirm('<?php 
-    etranslate( 'Are you sure you want to delete events for'
-    , true);?> ' + document.forms[0].user.value + '?')" />
+    etranslate( 'Are you sure you want to delete events for', true);
+    ?> ' + document.forms[0].user.value + '?')" />
  </td></tr>
 </table>
 </form>

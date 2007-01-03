@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Description:
  * Presents page to edit/add an event/task/journal
@@ -596,9 +595,9 @@ if ( $DISABLE_ACCESS_FIELD != 'Y' ) { ?>
         <option value="P"<?php if ( $access == 'P' || ! strlen ( $access ) ) 
   echo $selected;?>><?php etranslate ( 'Public' )?></option>
         <option value="R"<?php if ( $access == 'R' ) 
-  echo $selected;?>><?php echo ucfirst ( translate( 'private' ) )?></option>
+  echo $selected;?>><?php echo $translations['Private']?></option>
         <option value="C"<?php if ( $access == 'C' ) 
-  echo $selected;?>><?php echo ucfirst ( translate( 'confidential' ) )?></option>        
+  echo $selected;?>><?php echo $translations['Confidential']?></option>        
        </select>
        </td></tr>
 <?php } 
