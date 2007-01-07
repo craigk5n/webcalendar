@@ -19,23 +19,20 @@
  */
 include_once 'includes/init.php';
 
-$allow_view_other = ( ! empty ( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );
+$allow_view_other =
+( ! empty ( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );
 
 if ( ! access_is_enabled () ) {
   echo print_not_auth ();
   exit;
 }
 $saved = '';
-$cancelStr = translate ( 'Undo' );
-$defaultStr = translate ( 'DEFAULT CONFIGURATION' );
-$goStr = translate ( 'Go' );
-$saveStr = translate ( 'Save' );
-
 // print_r ( $_POST );
 // Are we handling the access form?
 // If so, do that, then redirect.
 // Handle function access first.
-if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) == $saveStr ) {
+if ( getPostValue ( 'auser' ) != '' &&
+    getPostValue ( 'submit' ) == translate ( 'Save' ) ) {
   $auser = getPostValue ( 'auser' );
   $perm = '';
   for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
@@ -47,16 +44,19 @@ if ( getPostValue ( 'auser' ) != '' && getPostValue ( 'submit' ) == $saveStr ) {
 
   if ( ! dbi_execute ( 'INSERT INTO webcal_access_function ( cal_login,
       cal_permissions ) VALUES ( ?, ? )', array ( $auser, $perm ) ) )
-    die_miserable_death ( translate ( 'Database error' ) . ': ' . dbi_error () );
+    // translate ( 'Database error' )
+    die_miserable_death ( str_replace ( 'XXX', dbi_error (),
+        translate ( 'Database error&#58; XXX.' ) ) );
   $saved = true;
 }
 
 // Are we handling the other user form?
 // If so, do that, then redirect.
 if ( getPostValue ( 'otheruser' ) != '' &&
-    getPostValue ( 'submit' ) == $saveStr ) {
+    getPostValue ( 'submit' ) == $translations['Save'] ) {
   $puser = getPostValue ( 'guser' );
   $pouser = getPostValue ( 'otheruser' );
+
   if ( $allow_view_other ) {
     // Handle access to other users' calendars
     // If user is not admin, reverse values so they are granting
@@ -85,7 +85,7 @@ if ( getPostValue ( 'otheruser' ) != '' &&
       cal_other_user, cal_can_view, cal_can_edit, cal_can_approve,
       cal_can_invite, cal_can_email, cal_see_time_only )
       VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )',
-        array(
+        array (
           $puser,
           $pouser,
           ( $view_total > 0 ? $view_total : 0 ),
@@ -94,24 +94,24 @@ if ( getPostValue ( 'otheruser' ) != '' &&
           ( strlen ( $invite ) ? $invite : 'N' ),
           ( strlen ( $email ) ? $email : 'N' ),
           ( strlen ( $time ) ? $time : 'N' ) ) ) ) {
-      die_miserable_death ( translate ( 'Database error' ) . ': '
-         . dbi_error () );
+      die_miserable_death ( str_replace ( 'XXX', dbi_error (),
+          $translations['Database error&#58; XXX.'] ) );
     }
     $saved = true;
   }
 }
-$otheruser = '';
 $checked = ' checked="checked" ';
-$selected = ' selected="selected"';
 $guser = getPostValue ( 'guser' );
+$selected = ' selected="selected"';
+
 if ( $guser == '__default__' ) {
-  $user_fullname = $defaultStr;
+  $user_fullname = translate ( 'DEFAULT CONFIGURATION' );
   $otheruser = '__default__';
 } else
   $otheruser = getPostValue ( 'otheruser' );
 
 if ( $otheruser == '__default__' ) {
-  $otheruser_fullname = $defaultStr;
+  $otheruser_fullname = $translations['DEFAULT CONFIGURATION'];
   $otheruser_login = '__default__';
 } elseif ( $otheruser == '__public__' ) {
   $otheruser_fullname = translate ( 'Public Access' );
@@ -120,26 +120,26 @@ if ( $otheruser == '__default__' ) {
 if ( ! empty ( $otheruser ) ) {
   if ( $allow_view_other ) {
     user_load_variables ( $otheruser, 'otheruser_' );
-    // turn off admin override so we see the users own settings
+    // Turn off admin override so we see the users own settings.
     $ADMIN_OVERRIDE_UAC = 'N';
-    // Now load all the data from webcal_access_user
+    // Now load all the data from webcal_access_user.
     $allPermissions = access_load_user_permissions ( false );
-    // load default-default values if exist
+    // Load default-default values if exist.
     if ( ! empty ( $allPermissions['__default__.__default__'] ) )
       $op = $allPermissions['__default__.__default__'];
 
     if ( $is_admin ) {
-      // load user-default values if exist
+      // Load user-default values if exist.
       if ( ! empty ( $allPermissions[ $guser . '.__default__' ] ) )
         $op = $allPermissions[ $guser . '.__default__' ];
-      // load user-otheruser values if exist
+      // Load user-otheruser values if exist.
       if ( ! empty ( $allPermissions[ $guser . '.' . $otheruser ] ) )
         $op = $allPermissions[ $guser . '.' . $otheruser ];
     } else {
-      // load defualt-user values if exist
+      // Load defualt-user values if exist.
       if ( ! empty ( $allPermissions['__default__.' . $guser] ) )
         $op = $allPermissions['__default__.' . $guser ];
-      // load otheruser-user values if exist
+      // Load otheruser-user values if exist.
       if ( ! empty ( $allPermissions[$otheruser . '.' . $guser] ) )
         $op = $allPermissions[$otheruser . '.' . $guser];
     }
@@ -160,35 +160,35 @@ if ( $is_admin ) {
   $adminStr = translate ( 'Admin' );
   $userlist = get_my_users ();
   $nonuserlist = get_nonuser_cals ();
-  // If we are here... we must need to print out a list of users
+  // If we are here... we must need to print out a list of users.
   echo '
     <h2>' . translate ( 'User Access Control' )
    . ( ! empty ( $user_fullname ) ? ': ' . $user_fullname : '' ) . '</h2>
     ' . display_admin_link ( false ) . '
     <form action="access.php" method="post" name="SelectUser">
       <select name="guser" onchange="document.SelectUser.submit()">'
-  // add a DEFAULT CONFIGURATION to be used as a mask
+  // Add a DEFAULT CONFIGURATION to be used as a mask.
   . '
         <option value="__default__"'
    . ( $guser == '__default__' ? $selected : '' )
-   . '>' . $defaultStr . '</option>';
+   . '>' . $translations['DEFAULT CONFIGURATION'] . '</option>';
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '
         <option value="' . $userlist[$i]['cal_login'] . '"'
-     . ( $guser == $userlist[$i]['cal_login'] ? $selected : '' ) . '>'
-     . $userlist[$i]['cal_fullname'] . '</option>';
+     . ( $guser == $userlist[$i]['cal_login'] ? $selected : '' )
+     . '>' . $userlist[$i]['cal_fullname'] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $nonuserlist ); $i < $cnt; $i++ ) {
     echo '
         <option value="' . $nonuserlist[$i]['cal_login'] . '"'
-     . ( $guser == $nonuserlist[$i]['cal_login'] ? $selected : '' ) . '>'
-     . $nonuserlist[$i]['cal_fullname'] . ' '
+     . ( $guser == $nonuserlist[$i]['cal_login'] ? $selected : '' )
+     . '>' . $nonuserlist[$i]['cal_fullname'] . ' '
      . ( $nonuserlist[$i]['cal_is_public'] == 'Y' ? '*' : '' ) . '</option>';
   }
 
   echo '
       </select>
-      <input type="submit" value="' . $goStr . '" />
+      <input type="submit" value="' . translate ( 'Go' ) . '" />
     </form>';
 } //end admin $guser !- default test
 
@@ -197,8 +197,8 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     // Present a page to allow editing a user's rights
     $access = access_load_user_functions ( $guser );
     $div = ceil ( ACCESS_NUMBER_FUNCTIONS / 4 );
-    //.
-    // We can reorder the display of user rights here
+
+    // We can reorder the display of user rights here.
     $order = array (
       1, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
       15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 );
@@ -236,9 +236,9 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
         }
       }
       if ( $show )
-        echo print_checkbox ( array ( 'access_' . $order[$i], 'Y', 
-          access_get_function_description ( $order[$i] ), 
-          substr ( $access, $order[$i], 1 ) ), 'dito' ) . '<br />';
+        echo print_checkbox ( array ( 'access_' . $order[$i], 'Y',
+            access_get_function_description ( $order[$i] ),
+            substr ( $access, $order[$i], 1 ) ), 'dito' ) . '<br />';
 
       if ( ( $i + 1 ) % $div == 0 )
         echo '
@@ -251,16 +251,16 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
             </tr>
           </tbody>
         </table>
-        <input type="submit" value="' . $cancelStr . '"/>
-        <input type="submit" name="submit" value="' . $saveStr . '" />
+        <input type="submit" value="' . translate ( 'Undo' ) . '"/>
+        <input type="submit" name="submit" value="'
+     . $translations['Save'] . '" />
       </form>
     </div>';
 
     $pagetitle = translate ( 'Allow Access to Other Users&#39; Calendar' );
-  } //end is_admin test
-  else {
+  } else {
     // Get list of users that this user can see (may depend on group settings)
-    // along with all nonuser calendars
+    // along with all nonuser calendars.
     // if ( $guser != '__default__' ) {
     $guser = $login;
     $pagetitle = translate ( 'Grant This User Access to My Calendar' );
@@ -269,7 +269,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
   if ( $guser == '__default__' ) {
     $userlist = array ( '__default__' );
     $otheruser = $otheruser_login = '__default__';
-    $otheruser_fullname = $defaultStr;
+    $otheruser_fullname = $translations['DEFAULT CONFIGURATION'];
   } else
   if ( $allow_view_other ) {
     $userlist = get_list_of_users ( $guser );
@@ -278,11 +278,11 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     <form action="access.php" method="post" name="SelectOther">
       <input type="hidden" name="guser" value="' . $guser . '" />
       <select name="otheruser" onchange="document.SelectOther.submit()">'
-    // add a DEFAULT CONFIGURATION to be used as a mask
+    // Add a DEFAULT CONFIGURATION to be used as a mask.
     . '
         <option value="__default__"'
      . ( $otheruser == '__default__' ? $selected : '' )
-     . '>' . $defaultStr . '</option>';
+     . '>' . $translations['DEFAULT CONFIGURATION'] . '</option>';
 
     for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       if ( $userlist[$i]['cal_login'] != $guser )
@@ -294,7 +294,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     }
     echo '
       </select>
-      <input type="submit" value="' . $goStr . '" />
+      <input type="submit" value="' . $translations['Go'] . '" />
     </form>';
   }
 }
@@ -414,10 +414,8 @@ if ( ! empty ( $otheruser ) ) {
               <table border="0" align="center" cellpadding="5" cellspacing="2">
                 <tr>
                   <td class="pub">' . translate ( 'Public' ) . '</td>
-                  <td class="conf">' . translate ( 'Confidential' )
-     . '</td>
-                  <td class="priv">' . translate ( 'Private' )
-     . '</td>
+                  <td class="conf">' . translate ( 'Confidential' ) . '</td>
+                  <td class="priv">' . translate ( 'Private' ) . '</td>
                 </tr>
               </table>
             </td>
@@ -427,8 +425,9 @@ if ( ! empty ( $otheruser ) ) {
   echo '
           <tr>
             <td colspan="11" class="boxleft boxbottom boxright">
-              <input type="submit" value="' . $cancelStr . '"/>
-              <input type="submit" name="submit" value="' . $saveStr . '" />
+              <input type="submit" value="' . $translations['Undo'] . '"/>
+              <input type="submit" name="submit" value="'
+   . $translations['Save'] . '" />
             </td>
           </tr>
         </tbody>
@@ -493,7 +492,7 @@ function get_list_of_users ( $user ) {
   global $is_admin, $is_nonuser_admin;
   $u = get_my_users ( $user, 'view' );
   if ( $is_admin || $is_nonuser_admin ) {
-    // get public NUCs also
+    // Get public NUCs also.
     $nonusers = get_my_nonusers ( $user, true );
     $u = array_merge ( $nonusers, $u );
   }
