@@ -26,39 +26,42 @@ $PAGE_SIZE = 25; // number of entries to show at once
 $startid = getValue ( 'startid', '-?[0-9]+', true );
 $sys = ( $is_admin && getGetValue ( 'system' ) != '' );
 
-$nextStr = translate ( 'Next' );
-$prevStr = translate ( 'Previous' );
-
 print_header ();
+
+ob_start ();
+
 echo generate_activity_log ( '', $sys, $startid );
 
 echo '
     <div class="navigation">'
-// go BACK in time
+// Go BACK in time.
  . ( ! empty ( $nextpage ) ? '
-      <a title="' . $prevStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
+      <a title="' . translate ( 'Previous' ) . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
    . $translations['Events'] . '" class="prev" href="activity_log.php?startid='
-   . $nextpage . ( $sys ? '&amp;system=1' : '' ) . '">' . $prevStr . '&nbsp;'
-   . $PAGE_SIZE . '&nbsp;' . $translations['Events'] . '</a>' : '' );
+   . $nextpage . ( $sys ? '&amp;system=1' : '' ) . '">'
+   . $translations['Previous'] . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
+   . $translations['Events'] . '</a>' : '' );
 
 if ( ! empty ( $startid ) ) {
   $previd = $startid + $PAGE_SIZE;
   $res = dbi_execute ( 'SELECT MAX( cal_log_id ) FROM webcal_entry_log' );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
-      // go FORWARD in time
+      // Go FORWARD in time.
       echo '
-      <a title="' . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
+      <a title="' . translate ( 'Next' ) . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
        . $translations['Events'] . '" class="next" href="activity_log.php'
        . ( $row[0] <= $previd
         ? ( $sys ? '?system=1' : '' )
         : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) )
-       . '">' . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
+       . '">' . $translations['Next'] . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
        . $translations['Events'] . '</a><br />';
 
     dbi_free_result ( $res );
   }
 }
+
+ob_end_flush ();
 
 echo '
     </div>
