@@ -1055,33 +1055,7 @@ if ( ! $exists || ! $canWrite ) { ?>
   <ul>
   <!-- <li><?php etranslate ( 'Supported databases for your PHP installation' ) ?>: 
  -->
-<?php
-  $dbs = array ();
-  if ( function_exists ( 'mysql_connect' ) )
-    $dbs[] = 'mysql';
-  if ( function_exists ( 'mysqli_connect' ) )
-    $dbs[] = 'mysqli';
-  if ( function_exists ( 'OCIPLogon' ) )
-    $dbs[] = 'oracle';
-  if ( function_exists ( 'pg_pconnect' ) )
-    $dbs[] = 'postgresql';
-  if ( function_exists ( 'odbc_pconnect' ) )
-    $dbs[] = 'odbc';
-  if ( function_exists ( 'ibase_connect' ) )
-    $dbs[] = 'ibase';
-  if ( function_exists ( 'mssql_connect' ) )
-    $dbs[] = 'mssql';
-  if ( function_exists ( 'sqlite_open' ) )
-    $dbs[] = 'sqlite';
-  if ( function_exists ( 'db2_pconnect' ) )
-    $dbs[] = 'ibm_db2';
-
-  for ( $i = 0; $i < count ( $dbs ); $i++ ) {
- //   if ( $i ) echo ', ';
-  //echo  $dbs[$i] ;
-    $supported[$dbs[$i]] = true;
-  }
-?></li>
+</li>
 
 <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  ) { ?>
   <li class="recommended"><img src="recommended.gif" alt=""/>&nbsp;<?php 
@@ -1116,50 +1090,35 @@ if ( ! $exists || ! $canWrite ) { ?>
    <label for="db_type"><?php etranslate ( 'Database Type' ) ?>:</label></td><td valign="bottom">
    <select name="form_db_type" id="db_type" onChange="db_type_handler();">
 <?php
-  if ( ! empty ( $supported['mysql'] ) )
-    echo '  <option value="mysql" ' .
-      ( $settings['db_type'] == 'mysql' ? $selected : '' ) .
-      ">MySQL</option>\n";
-      
-  if ( ! empty ( $supported['mysqli'] ) )
-    echo '  <option value="mysqli" ' .
-      ( $settings['db_type'] == 'mysqli' ? $selected : '' ) .
-      ">MySQL (Improved)</option>\n";
+  $supported = array ();
+  if ( function_exists ( 'db2_pconnect' ) )
+    $supported['ibm_db2'] = 'IBM DB2 Universal Database';
+  if ( function_exists ( 'ibase_connect' ) )
+    $supported['ibase'] = 'Interbase';
+  if ( function_exists ( 'mssql_connect' ) )
+    $supported['mssql'] = 'MS SQL Server';
+  if ( function_exists ( 'mysql_connect' ) )
+    $supported['mysql'] = 'MySQL';
+  if ( function_exists ( 'mysqli_connect' ) )
+    $supported['mysqli'] = 'MySQL (Improved)';
+  if ( function_exists ( 'OCIPLogon' ) )
+    $supported['oracle'] = 'Oracle (OCI)';
+  if ( function_exists ( 'odbc_pconnect' ) )
+    $supported['odbc'] = 'ODBC';
+  if ( function_exists ( 'pg_pconnect' ) )
+    $supported['postgresql'] = 'PostgreSQL';
+  if ( function_exists ( 'sqlite_open' ) )
+    $supported['sqlite'] = 'SQLite';
 
-  if ( ! empty ( $supported['oracle'] ) )
-    echo '  <option value="oracle" ' .
-      ( $settings['db_type'] == 'oracle' ? $selected : '' ) .
-      ">Oracle (OCI)</option>\n";
+  asort ( $supported );
+  foreach ( $supported as $key => $value ) {
+    echo '
+     <option value="' . $key . '" '
+     . ( $settings['db_type'] == $key ? $selected : '' )
+     . '>' . $value . '</option>';
+  }
+  $supported = array ();
 
-  if ( ! empty ( $supported['postgresql'] ) )
-    echo '  <option value="postgresql" ' .
-      ( $settings['db_type'] == 'postgresql' ? $selected : '' ) .
-      ">PostgreSQL</option>\n";
-
-  if ( ! empty ( $supported['ibm_db2'] ) )
-    echo '  <option value="ibm_db" ' .
-      ( $settings['db_type'] == 'ibm_db2' ? $selected : '' ) .
-      ">IBM DB2 Universal Database</option>\n";
-
-  if ( ! empty ( $supported['odbc'] ) )
-    echo '  <option value="odbc" ' .
-      ( $settings['db_type'] == 'odbc' ? $selected : '' ) .
-      ">ODBC</option>\n";
-
-  if ( ! empty ( $supported['ibase'] ) )
-    echo '  <option value="ibase" ' .
-      ( $settings['db_type'] == 'ibase' ? $selected : '' ) .
-      ">Interbase</option>\n";
-
-  if ( ! empty ( $supported['mssql'] ) )
-    echo '  <option value="mssql" ' .
-      ( $settings['db_type'] == 'mssql' ? $selected : '' ) .
-      ">MS SQL Server</option>\n";
-      
-  if ( ! empty ( $supported['sqlite'] ) )
-    echo '  <option value="sqlite" ' .
-      ( $settings['db_type'] == 'sqlite' ? $selected : '' ) .
-      ">SQLite</option>\n";
 ?>
    </select>
   </td></tr>
