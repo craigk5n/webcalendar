@@ -258,12 +258,12 @@ if ( ! empty ( $action ) && $action == 'switch' ) {
     $onload = 'db_type_handler();';
     }
    break;
-  case 3;
+  case 3:
      if ( ! empty ( $_SESSION['validuser'] ) && ! empty ( $_SESSION['db_success'] ) ){  
        $_SESSION['step'] = $page;
     }
    break;
-  case 4;
+  case 4:
      if ( ! empty ( $_SESSION['validuser'] ) && ! empty ( $_SESSION['db_success'] )  &&
       empty ( $_SESSION['db_create'] ) ){  
        $_SESSION['step'] = $page;
@@ -298,37 +298,37 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
    $sess_install = $_SESSION['install_file'];
     $install_filename = ( $sess_install == 'tables' ? 'tables':'upgrade');
     switch ( $db_type ) {
-       case 'mysql';
+       case 'mysql':
       $install_filename .= '-mysql.sql';    
         break;
-       case 'mysqli';
+       case 'mysqli':
       $install_filename .= '-mysql.sql';    
         break;      
-       case 'mssql';
+       case 'mssql':
       $install_filename .= '-mssql.sql';    
         break;
-       case 'ibm_db2';
+       case 'ibm_db2':
       $install_filename .= '-db2.sql';    
         break;
-     case 'oracle';
+     case 'oracle':
       $install_filename .= '-oracle.sql';    
       break;
-       case 'ibase';
+       case 'ibase':
       $install_filename .= '-ibase.sql';    
         break;
-       case 'postgresql';
+       case 'postgresql':
       $install_filename .= '-postgres.sql';    
         break;
-     case 'odbc';
+     case 'odbc':
        $underlying_db = "-" . $_SESSION['odbc_db'] . '.sql';
       $install_filename .= $underlying_db;        
       break;
-     case 'sqlite';
+     case 'sqlite':
        include_once 'sql/tables-sqlite.php';
       populate_sqlite_db ( $db_database, $c );
       $install_filename =  '';      
       break;      
-     default; 
+     default: 
     }
      db_populate ( $install_filename , $display_sql );
   }
