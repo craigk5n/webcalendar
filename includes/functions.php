@@ -5770,14 +5770,14 @@ function update_status ( $status, $user, $id, $type='E' ) {
   $log_type = '';  
   switch ( $type ) {
     case 'T':
-    case 'N';
+    case 'N':
       $log_type = '_T';
       break;
     case 'J':
-    case 'O';
+    case 'O':
       $log_type = '_J';
       break;
-    default;
+    default:
       break;  
   }
   switch ( $status ) {
@@ -5785,11 +5785,11 @@ function update_status ( $status, $user, $id, $type='E' ) {
         $log_type = constant ( 'LOG_APPROVE' . $log_type );
         $error_msg = translate('Error approving event');
       break;
-    case 'D';
+    case 'D':
       $log_type = constant ( 'LOG_DELETE' . $log_type );
       $error_msg = translate('Error deleting event');
       break;
-    case 'R';
+    case 'R':
       $log_type = constant ( 'LOG_REJECT' . $log_type );
       $error_msg = translate('Error rejecting event');
       break;  
