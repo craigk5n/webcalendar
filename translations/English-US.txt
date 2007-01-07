@@ -76,6 +76,7 @@ DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Go: Go
 Save: Save
 Database error: Database error
+Database error&#58; XXX.: Database error&#58; XXX.
 Public Access: Public Access
 Admin: Admin
 User Access Control: User Access Control
@@ -113,6 +114,7 @@ Event XXX is already on your calendar.: Event XXX is already on your calendar.
 Invalid entry id&#58; XXX.: Invalid entry id&#58; XXX.
 This is a XXX event and may not be added to your calendar.: This is a XXX event and may not be added to your calendar
 Error adding event: Error adding event
+Error adding event&#58; XXX.: Error adding event&#58; XXX.
 
 ########################################
 # Page: admin.php
