@@ -13,7 +13,7 @@ if ( $id > 0 ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $id ) {
       $is_my_event = true;
-      echo str_replace ('XXX', $id, 
+      echo str_replace ('XXX', $id,
        translate ( 'Event XXX is already on your calendar.' ) );
       exit;
     }
@@ -48,7 +48,9 @@ if ( $id > 0 ) {
   if ( $readonly == 'N' && ! $is_my_event && ! $is_private ) {
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
       cal_status ) VALUES ( ?, ?, ? )', array ( $id, $login, 'A' ) ) )
-      $error = translate ( 'Error adding event' ) . ': ' . dbi_error ();
+// translate ( 'Error adding event' )
+      $error = str_replace ('XXX', dbi_error (),
+        translate ( 'Error adding event&#58; XXX.' ) );
   }
 }
 
