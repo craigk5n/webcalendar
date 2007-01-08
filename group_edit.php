@@ -57,7 +57,7 @@ echo '" />
         </tr>' : '' ) . '
         <tr>
           <td class="aligntop bold"><label for="users">'
- . $translations['Users'] . ':</label></td>
+ . translate ( 'Users' ) . ':</label></td>
           <td>
             <select name="users[]" id="users" size="10" multiple="multiple">';
 // .
@@ -95,12 +95,12 @@ echo '
         <tr>
           <td colspan="2" class="aligncenter"><br />
             <input type="submit" name="action" value="'
- . ( $newgroup ? $translations['Add'] : $translations['Save'] ) . '" />'
+ . ( $newgroup ? translate ( 'Add' ) : translate ( 'Save' ) ) . '" />'
  . ( ! $newgroup ? '
             <input type="submit" name="delete" value="'
-   . $translations['Delete'] . '" onclick="return confirm (\''
-   . str_replace ( 'XXX', $translations['entry'],
-    $translations['Are you sure you want to delete this XXX?'] )
+   . translate ( 'Delete' ) . '" onclick="return confirm (\''
+   . str_replace ( 'XXX', translate ( 'entry' ),
+    translate ( 'Are you sure you want to delete this XXX?' ) )
    . '\')" />' : '' ) . '
           </td>
         </tr>

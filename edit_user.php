@@ -102,13 +102,13 @@ if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
   <?php etranslate( 'Admin' )?>:</td><td>
   <?php 
     $defIdx = ( ! empty ( $uis_admin ) && $uis_admin == 'Y' ? 'Y' : 'N' );
-    echo print_radio ( 'uis_admin', '', '' , $defIdx ) ?>
+    echo print_radio ( 'uis_admin', '', '', $defIdx ) ?>
  </td></tr>
  <tr><td class="bold">
   <?php etranslate( 'Enabled' )?>:</td><td>
   <?php 
     $defIdx = ( ! empty ( $uenabled ) && $uenabled == 'Y' ? 'Y' : 'N' );
-    echo print_radio ( 'u_enabled', '', '' , $defIdx ) ?>
+    echo print_radio ( 'u_enabled', '', '', $defIdx ) ?>
  </td></tr>
 <?php }  else if ( $is_admin ) {  ?>
   <input type="hidden" name="uis_admin" value="Y" />
@@ -129,7 +129,8 @@ if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
     if ( $admin_can_delete_user ) ?>
     <input type="submit" name="delete" value="<?php 
     etranslate( 'Delete' )?>" onclick="return confirm('<?php 
-    echo str_replace ( 'XXX', translate ( 'user' ), $translations['Are you sure you want to delete this XXX?'] ) ?>')" />
+    echo str_replace ( 'XXX', translate ( 'user' ),
+      translate ( 'Are you sure you want to delete this XXX?' ) ) ?>')" />
    <?php }
   } ?>
  </td></tr>

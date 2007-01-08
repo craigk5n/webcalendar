@@ -102,7 +102,7 @@ if ( empty ( $error ) && $show_participants ) {
   $userlist = get_my_users ( '', 'view' );
   if ($NONUSER_ENABLED == 'Y' ) {
     //restrict NUC list if groups are enabled
-    $nonusers = get_my_nonusers ( $login , true, 'view' );
+    $nonusers = get_my_nonusers ( $login, true, 'view' );
     $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : 
       array_merge($userlist, $nonusers);
   }
@@ -427,7 +427,8 @@ if ( $is_admin ) {
 <?php if ( ! $adding_report ) { ?>
   &nbsp;&nbsp;<input type="submit" name="delete" value="<?php etranslate( 'Delete' );?>"
   onclick="return confirm('<?php 
-  echo str_replace ( 'XXX', translate ( 'report' ), $translations['Are you sure you want to delete this XXX?'] ) ?>');" />
+  echo str_replace ( 'XXX', translate ( 'report' ),
+    translate ( 'Are you sure you want to delete this XXX?' ) ) ?>');" />
 <?php } ?>
  </td></tr>
 </table>

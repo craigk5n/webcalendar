@@ -39,11 +39,11 @@ echo '
 if ( is_array ( $categories ) ) {
   echo '
         <tr id="catfilter">
-          <td><label for="cat_filter">' . $translations['Categories']
+          <td><label for="cat_filter">' . translate ( 'Categories' )
    . ':</label></td>
           <td>
             <select name="cat_filter" id="cat_filter">
-              <option value=""' . $selected . '>' . $translations['All']
+              <option value=""' . $selected . '>' . translate ( 'All' )
    . '</option>';
 
   foreach ( $categories as $K => $V ) {
@@ -109,7 +109,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
         </tr>
         <tr>
           <td colspan="2"><input type="submit" value="'
- . $translations['Export'] . '" /></td>
+ . translate ( 'Export' ) . '" /></td>
         </tr>
       </table>
     </form>
