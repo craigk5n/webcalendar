@@ -1,7 +1,5 @@
 <?php
-/*  
- * 
- * Allows a user to specify a remote calendar by URL that can
+/* Allows a user to specify a remote calendar by URL that can
  * be imported manually into the NUC calendar specified. The user
  * will also be allowed to create a layer to display this calendar 
  * on top of their own calendar.
@@ -24,7 +22,7 @@ print_header( $INC, '', '', true );
 $error = '';
 
 if ( ! $NONUSER_PREFIX ) {
-  $error = translate( 'NONUSER_PREFIX not set' );
+  $error = translate ( 'NONUSER_PREFIX not set' );
 }
 
  if ($REMOTES_ENABLED != 'Y'  || ( access_is_enabled () && 
@@ -43,33 +41,34 @@ $nid = getValue ( 'nid' );
 // Adding/Editing remote calendar
 if (( ($add == '1') || (! empty ($nid)) ) && empty ($error)) {
   $userlist = get_nonuser_cals ( $login, true);
-  $button = translate( 'Add' );
+  $button = translate ( 'Add' );
   $nid = clean_html($nid);
 
 if ( ! empty ( $nid ) ) {
   nonuser_load_variables ( $nid, 'remotestemp_' );
-  $lableStr = translate( 'Edit Remote Calendar' );
+  $lableStr = translate ( 'Edit Remote Calendar' );
   $id_display = "$nid <input type=\"hidden\" name=\"nid\" id=\"nid\" value=\"$nid\" />";
-  $button = translate( 'Save' );
+  $button = translate ( 'Save' );
   $remotestemp_login = substr($remotestemp_login, strlen($NONUSER_PREFIX));
 } else {
-  $lableStr = translate( 'Add Remote Calendar' );
+  $lableStr = translate ( 'Add Remote Calendar' );
   $id_display = '<input type="text" name="nid" id="nid" size="20" maxlength="20" onchange="check_name();" /> ' . translate ( 'word characters only' );
 }
-$calIdStr = translate( 'Calendar ID' );
-$firstNameStr = translate( 'First Name' );
-$lastNameStr = translate( 'Last Name' );
+$calIdStr = translate ( 'Calendar ID' );
+$firstNameStr = translate ( 'First Name' );
+$lastNameStr = translate ( 'Last Name' );
 $firstNameValue = ( empty ( $remotestemp_firstname ) ? '' : htmlspecialchars ( $remotestemp_firstname ) );
 $lastNameValue = ( empty ( $remotestemp_lastname ) ? '' : htmlspecialchars ( $remotestemp_lastname ) );
-$urlStr = translate( 'URL' );
+$urlStr = translate ( 'URL' );
 $urlValue = ( empty ( $remotestemp_url ) ? '' : htmlspecialchars ( $remotestemp_url ) );
-$createLayerStr = translate( 'Create Layer' );
-$requiredStr = translate( 'Required to View Remote Calendar' );
-$colorStr = translate( 'Color' );
-$selectStr = translate( 'Select' );
-$deleteStr = translate( 'Delete' );
-$confirmStr = str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] );
-$reloadStr = translate( 'Reload' );
+$createLayerStr = translate ( 'Create Layer' );
+$requiredStr = translate ( 'Required to View Remote Calendar' );
+$colorStr = translate ( 'Color' );
+$selectStr = translate ( 'Select' );
+$deleteStr = translate ( 'Delete' );
+$confirmStr = str_replace ( 'XXX', translate ( 'entry' ),
+  translate ( 'Are you sure you want to delete this XXX?' ) );
+$reloadStr = translate ( 'Reload' );
 
 echo <<<EOT
   <h2>{$lableStr}</h2>

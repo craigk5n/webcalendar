@@ -30,7 +30,7 @@ echo '
  . ( $updating_public ? translate ( $PUBLIC_ACCESS_FULLNAME ) . ' ' : '' )
  . empty ( $layers[$id]['cal_layeruser'] )
   ? translate ( 'Add Layer' ) : translate ( 'Edit Layer' )
- . ' &nbsp;<img src="images/help.gif" alt="' . $translations['Help']
+ . ' &nbsp;<img src="images/help.gif" alt="' . translate ( 'Help' )
  . '" class="help" onclick="window.open ( \'help_layers.php\', \'cal_help\', '
  . '\'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,'
  . 'outerWidth=420\' );" /></h2>
@@ -43,7 +43,7 @@ if ( $single_user == 'N' ) {
   $otherlist = $userlist = get_my_users ( '', 'view' );
   if ( $NONUSER_ENABLED == 'Y' ) {
     // Restrict NUC list if groups are enabled.
-    $nonusers = get_my_nonusers ( $login , true, 'view' );
+    $nonusers = get_my_nonusers ( $login, true, 'view' );
     $userlist = ( $NONUSER_AT_TOP == 'Y'
       ? array_merge ( $nonusers, $userlist )
       : array_merge ( $userlist, $nonusers ) );
@@ -105,7 +105,7 @@ EOT;
 
 echo '
         <tr>
-          <td>' . print_color_input_html ( 'layercolor', $translations['Color'],
+          <td>' . print_color_input_html ( 'layercolor', translate ( 'Color' ),
   $color ) . '</td>
         </tr>
         <tr>
@@ -142,7 +142,7 @@ EOT;
 echo '
         <tr>
           <td colspan="4">
-            <input type="submit" value="' . $translations['Save'] . '" />'
+            <input type="submit" value="' . translate ( 'Save' ) . '" />'
 // If a layer already exists put a 'Delete Layer' link.
  . ( ! empty ( $layers[$id]['cal_layeruser'] ) ? '&nbsp;&nbsp;&nbsp;
             <input type="button" value="' . translate ( 'Delete layer' )

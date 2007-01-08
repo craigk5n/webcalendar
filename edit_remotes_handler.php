@@ -41,7 +41,7 @@ if ( ! empty ( $delete ) ) {
     $error = db_error ();
 } else {
   if ( ! empty ( $nid ) && $action == 'Save' ||
-    $action == $translations['Save'] ) {
+    $action == translate ( 'Save' ) ) {
     // Updating
     $query_params = array ();
     $sql = 'UPDATE webcal_nonuser_cals SET ';
@@ -63,7 +63,7 @@ if ( ! empty ( $delete ) ) {
     if ( ! dbi_execute ( $sql, $query_params ) )
       $error = db_error ();
   } else
-  if ( $action == 'Add' || $action == $translations['Add'] ) {
+  if ( $action == 'Add' || $action == translate ( 'Add' ) ) {
     // Adding
     if ( preg_match ( '/^[\w]+$/', $nid ) ) {
       $nid = $NONUSER_PREFIX . $nid;
@@ -99,7 +99,7 @@ if ( ! empty ( $delete ) ) {
     cal_other_user, cal_can_view, cal_can_edit, cal_can_approve, cal_can_invite,
     cal_can_email, cal_see_time_only ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )',
       array ( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) )
-    die_miserable_death ( $translations['Database error'] . ': '
+    die_miserable_death ( translate ( 'Database error' ) . ': '
        . dbi_error () );
 }
 

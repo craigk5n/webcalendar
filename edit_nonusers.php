@@ -22,14 +22,14 @@ $nid = getValue ( 'nid' );
 // Adding/Editing nonuser calendar.
 if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
   $userlist = user_get_users ();
-  $button = $translations['Add'];
+  $button = translate ( 'Add' );
   $nid = clean_html ( $nid );
 
   if ( ! empty ( $nid ) ) {
     nonuser_load_variables ( $nid, 'nonusertemp_' );
     $id_display = $nid . '
       <input type="hidden" name="nid" value="' . $nid . '" />';
-    $button = $translations['Save'];
+    $button = translate ( 'Save' );
     $nonusertemp_login = substr ( $nonusertemp_login,
       strlen ( $NONUSER_PREFIX ) );
   } else
@@ -71,7 +71,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     ? '' : htmlspecialchars ( $nonusertemp_lastname ) ) . '" /></td>
         </tr>
         <tr>
-          <td><label for="nadmin">' . $translations['Admin'] . ':</label></td>
+          <td><label for="nadmin">' . translate ( 'Admin' ) . ':</label></td>
           <td>
             <select name="nadmin" id="nadmin">';
 
@@ -97,10 +97,10 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
           <td>
             <input type="radio" name="ispublic" value="Y" '
      . ( ! empty ( $nonusertemp_is_public ) && $nonusertemp_is_public == 'Y'
-      ? ' checked="checked"' : '' ) . ' /> ' . $translations['Yes']
+      ? ' checked="checked"' : '' ) . ' /> ' . translate ( 'Yes' )
      . '&nbsp;&nbsp;<input type="radio" name="ispublic" value="N" '
      . ( empty ( $nonusertemp_is_public ) || $nonusertemp_is_public != 'Y'
-      ? ' checked="checked"' : '' ) . ' /> ' . $translations['No'] . '<br />';
+      ? ' checked="checked"' : '' ) . ' /> ' . translate ( 'No' ) . '<br />';
 
     if ( ! empty ( $nonusertemp_login ) ) {
       $nu_url = $SERVER_URL . 'nulogin.php?login=' . $nonusertemp_login;
@@ -117,10 +117,10 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
       </table><br />
       <input type="submit" name="action" value="' . $button . '" />'
    . ( empty ( $nid ) ? '' : '
-      <input type="submit" name="delete" value="' . $translations['Delete']
+      <input type="submit" name="delete" value="' . translate ( 'Delete' )
      . '" onclick="return confirm (\''
-     . str_replace ( 'XXX', $translations['entry'],
-      $translations['Are you sure you want to delete this XXX?'] )
+     . str_replace ( 'XXX', translate ( 'entry' ),
+      translate ( 'Are you sure you want to delete this XXX?' ) )
      . '\')" />' ) . '
     </form>
     ';

@@ -322,7 +322,7 @@ if ( $readonly == 'Y' || $is_nonuser ) {
   if ( $CATEGORIES_ENABLED == 'Y' ) {
     $catById = get_categories_by_id ( $id, $real_user, true );
     if ( ! empty ( $catById ) ) {
-      $catNames = implode(', ' , $catById );
+      $catNames = implode(', ', $catById );
       $catList = implode(',', array_keys ( $catById ) );
     }
   } //end CATEGORIES_ENABLED test
@@ -595,9 +595,9 @@ if ( $DISABLE_ACCESS_FIELD != 'Y' ) { ?>
         <option value="P"<?php if ( $access == 'P' || ! strlen ( $access ) ) 
   echo $selected;?>><?php etranslate ( 'Public' )?></option>
         <option value="R"<?php if ( $access == 'R' ) 
-  echo $selected;?>><?php echo $translations['Private']?></option>
+  echo $selected;?>><?php echo translate ( 'Private' )?></option>
         <option value="C"<?php if ( $access == 'C' ) 
-  echo $selected;?>><?php echo $translations['Confidential']?></option>        
+  echo $selected;?>><?php echo translate ( 'Confidential' )?></option>        
        </select>
        </td></tr>
 <?php } 
@@ -648,7 +648,7 @@ if ( $eType == 'task' ) { //only for tasks
     <label for="task_percent"><?php etranslate( 'Percent Complete' )?>:&nbsp;</label></td><td>
     <select name="percent" id="task_percent" onchange="completed_handler()">
    <?php  
-     for ( $i=0; $i<=100 ; $i+=10 ){ 
+     for ( $i=0; $i<=100; $i+=10 ){ 
        echo "<option value=\"$i\" " .
          ($task_percent == $i? $selected:''). ' >' .
           $i . "</option>\n";
@@ -1419,11 +1419,11 @@ if ( $useTabs ) { ?>
 <?php if ( $use_fckeditor ) { ?>
 <script type="text/javascript" src="includes/FCKeditor-2.0/fckeditor.js"></script>
 <script type="text/javascript">
-   var myFCKeditor = new FCKeditor( 'description' ) ;
-   myFCKeditor.BasePath = 'includes/FCKeditor-2.0/' ;
-   myFCKeditor.ToolbarSet = 'Medium' ;
-   myFCKeditor.Config['SkinPath'] = './skins/office2003/' ;
-   myFCKeditor.ReplaceTextarea() ;
+   var myFCKeditor = new FCKeditor( 'description' );
+   myFCKeditor.BasePath = 'includes/FCKeditor-2.0/';
+   myFCKeditor.ToolbarSet = 'Medium';
+   myFCKeditor.Config['SkinPath'] = './skins/office2003/';
+   myFCKeditor.ReplaceTextarea();
 </script>
 <?php /* $use_fckeditor */ } ?>
 
@@ -1431,12 +1431,14 @@ if ( $useTabs ) { ?>
 
 <?php if ( $id > 0 && ( $login == $create_by || $single_user == 'Y' || $is_admin ) ) { ?>
  <a href="del_entry.php?id=<?php echo $id;?>" onclick="return confirm('<?php 
-  echo str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] )?>');"><?php 
+  echo str_replace ( 'XXX', translate ( 'entry' ),
+    translate ( 'Are you sure you want to delete this XXX?' ) )?>');"><?php 
   etranslate( 'Delete entry')?></a><br />
 <?php 
  } //end if clause for delete link
 } else { 
-  echo translate( 'You are not authorized to edit this entry' ) . '.';
+// translate( 'You are not authorized to edit this entry' )
+  echo translate( 'You are not authorized to edit this entry.' );
 } //end if ( $can_edit )
 
 echo print_trailer(); ?>

@@ -41,7 +41,7 @@ else {
       $can_delete = true;
   } else
     // document not found
-    $error = $translations['Invalid entry id'] . " '$blid'";
+    $error = translate ( 'Invalid entry id' ) . " '$blid'";
 
   dbi_free_result ( $res );
 }
@@ -74,7 +74,7 @@ if ( empty ( $error ) && $can_delete ) {
           translate ( 'Removed' ) . ': ' . $name );
       elseif ( $type == 'C' )
         activity_log ( $event_id, $login, $login, LOG_COMMENT,
-          $translations['Removed'] );
+          translate ( 'Removed' ) );
     }
     if ( $event_id > 0 )
       do_redirect ( 'view_entry.php?id=' . $event_id );
