@@ -53,7 +53,7 @@ if ( getPostValue ( 'auser' ) != '' &&
 // Are we handling the other user form?
 // If so, do that, then redirect.
 if ( getPostValue ( 'otheruser' ) != '' &&
-    getPostValue ( 'submit' ) == $translations['Save'] ) {
+    getPostValue ( 'submit' ) == translate ( 'Save' ) ) {
   $puser = getPostValue ( 'guser' );
   $pouser = getPostValue ( 'otheruser' );
 
@@ -95,7 +95,7 @@ if ( getPostValue ( 'otheruser' ) != '' &&
           ( strlen ( $email ) ? $email : 'N' ),
           ( strlen ( $time ) ? $time : 'N' ) ) ) ) {
       die_miserable_death ( str_replace ( 'XXX', dbi_error (),
-          $translations['Database error&#58; XXX.'] ) );
+          translate ( 'Database error&#58; XXX.' ) ) );
     }
     $saved = true;
   }
@@ -111,7 +111,7 @@ if ( $guser == '__default__' ) {
   $otheruser = getPostValue ( 'otheruser' );
 
 if ( $otheruser == '__default__' ) {
-  $otheruser_fullname = $translations['DEFAULT CONFIGURATION'];
+  $otheruser_fullname = translate ( 'DEFAULT CONFIGURATION' );
   $otheruser_login = '__default__';
 } elseif ( $otheruser == '__public__' ) {
   $otheruser_fullname = translate ( 'Public Access' );
@@ -171,7 +171,7 @@ if ( $is_admin ) {
   . '
         <option value="__default__"'
    . ( $guser == '__default__' ? $selected : '' )
-   . '>' . $translations['DEFAULT CONFIGURATION'] . '</option>';
+   . '>' . translate ( 'DEFAULT CONFIGURATION' ) . '</option>';
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '
         <option value="' . $userlist[$i]['cal_login'] . '"'
@@ -253,7 +253,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
         </table>
         <input type="submit" value="' . translate ( 'Undo' ) . '"/>
         <input type="submit" name="submit" value="'
-     . $translations['Save'] . '" />
+     . translate ( 'Save' ) . '" />
       </form>
     </div>';
 
@@ -269,7 +269,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
   if ( $guser == '__default__' ) {
     $userlist = array ( '__default__' );
     $otheruser = $otheruser_login = '__default__';
-    $otheruser_fullname = $translations['DEFAULT CONFIGURATION'];
+    $otheruser_fullname = translate ( 'DEFAULT CONFIGURATION' );
   } else
   if ( $allow_view_other ) {
     $userlist = get_list_of_users ( $guser );
@@ -282,7 +282,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     . '
         <option value="__default__"'
      . ( $otheruser == '__default__' ? $selected : '' )
-     . '>' . $translations['DEFAULT CONFIGURATION'] . '</option>';
+     . '>' . translate ( 'DEFAULT CONFIGURATION' ) . '</option>';
 
     for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       if ( $userlist[$i]['cal_login'] != $guser )
@@ -294,7 +294,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     }
     echo '
       </select>
-      <input type="submit" value="' . $translations['Go'] . '" />
+      <input type="submit" value="' . translate ( 'Go' )  . '" />
     </form>';
   }
 }
@@ -425,9 +425,9 @@ if ( ! empty ( $otheruser ) ) {
   echo '
           <tr>
             <td colspan="11" class="boxleft boxbottom boxright">
-              <input type="submit" value="' . $translations['Undo'] . '"/>
+              <input type="submit" value="' . translate ( 'Undo' ) . '"/>
               <input type="submit" name="submit" value="'
-   . $translations['Save'] . '" />
+   . translate ( 'Save' ) . '" />
             </td>
           </tr>
         </tbody>
