@@ -11,7 +11,9 @@ function valid_form ( form ) {
   }
   else if ( form.admin_SERVER_URL.value.charAt (
     form.admin_SERVER_URL.value.length - 1 ) != '/' ) {
-    err += "<?php etranslate( 'Server URL must end with &#39;/&#39;', true)?>.\n";
+    err += "<?php
+// translate ( 'Server URL must end with &#39;/&#39;' )
+     etranslate( 'Server URL must end with &quot;/&quot;.', true ) ?>\n";
     form.admin_SERVER_URL.select ();
     form.admin_SERVER_URL.focus ();
   }
