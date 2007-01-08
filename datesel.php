@@ -30,11 +30,13 @@ $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextdate = $href . date ( 'Ym', $next ) . '01"';
 $nextmonth = date ( 'm', $next );
 $nextyear = date ( 'Y', $next );
+$nextStr = translate ( 'Next' );
 
 $prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
 $prevdate = $href . date ( 'Ym', $prev ) . '01"';
 $prevmonth = date ( 'm', $prev );
 $prevyear = date ( 'Y', $prev );
+$previousStr = translate ( 'Previous' );
 
 $monthStr = month_name ( $thismonth - 1 );
 
@@ -48,13 +50,13 @@ echo <<<EOT
           <td align="center" valign="middle">
             <table class="aligncenter">
               <tr>
-                <td><a title="{$translations['Previous']}" class="prev" {$prevdate}>
+                <td><a title="{$previousStr}" class="prev" {$prevdate}>
                   <img src="images/leftarrowsmall.gif"
-                     alt="{$translations['Previous']}" /></a></td>
+                     alt="{$previousStr}" /></a></td>
                 <th colspan="5">&nbsp;{$monthStr}&nbsp;{$thisyear}&nbsp;</th>
-                <td><a title="{$translations['Next']}"class="next" {$nextdate}>
+                <td><a title="{$nextStr}"class="next" {$nextdate}>
                   <img src="images/rightarrowsmall.gif"
-                     alt="{$translations['Next']}" /></a></td>
+                     alt="{$nextStr}" /></a></td>
               </tr>
               <tr class="day">
 EOT;
