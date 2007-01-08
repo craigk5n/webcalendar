@@ -37,10 +37,10 @@ echo '
 // Go BACK in time.
  . ( ! empty ( $nextpage ) ? '
       <a title="' . translate ( 'Previous' ) . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
-   . $translations['Events'] . '" class="prev" href="activity_log.php?startid='
+   . translate ( 'Events' ) . '" class="prev" href="activity_log.php?startid='
    . $nextpage . ( $sys ? '&amp;system=1' : '' ) . '">'
-   . $translations['Previous'] . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
-   . $translations['Events'] . '</a>' : '' );
+   . translate ( 'Previous' ) . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
+   . translate ( 'Events' ) . '</a>' : '' );
 
 if ( ! empty ( $startid ) ) {
   $previd = $startid + $PAGE_SIZE;
@@ -50,12 +50,12 @@ if ( ! empty ( $startid ) ) {
       // Go FORWARD in time.
       echo '
       <a title="' . translate ( 'Next' ) . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
-       . $translations['Events'] . '" class="next" href="activity_log.php'
+       . translate ( 'Events' ) . '" class="next" href="activity_log.php'
        . ( $row[0] <= $previd
         ? ( $sys ? '?system=1' : '' )
         : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) )
-       . '">' . $translations['Next'] . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
-       . $translations['Events'] . '</a><br />';
+       . '">' . translate ( 'Next' ) . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
+       . translate ( 'Events' ) . '</a><br />';
 
     dbi_free_result ( $res );
   }

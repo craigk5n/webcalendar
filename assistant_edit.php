@@ -22,7 +22,7 @@ echo '
 
 if ( $is_nonuser_admin ) {
   nonuser_load_variables ( $user, 'nonuser' );
-  echo $nonuserfullname . ' ' . $translations['Assistants'] . '<br />
+  echo $nonuserfullname . ' ' . translate ( 'Assistants' ) . '<br />
       -- ' . translate ( 'Admin mode' ) . ' --';
 } else
   echo translate ( 'Your assistants' );
@@ -32,7 +32,7 @@ echo '</h2>
       <table>
         <tr>
           <td class="aligntop"><label for="users">'
- . $translations['Assistants'] . ':</label></td>
+ . translate ( 'Assistants' ) . ':</label></td>
           <td>
             <select name="users[]" id="users" size="10" multiple="multiple">';
 
@@ -62,12 +62,12 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
 echo '
             </select>' . ( $GROUPS_ENABLED == 'Y' ? '
             <input type="button" onclick="selectUsers ()" value="'
-   . $translations['Select'] . '..." />' : '' ) . '
+   . translate ( 'Select' ) . '..." />' : '' ) . '
           </td>
         </tr>
         <tr>
           <td colspan="2" class="aligncenter""><br /><input type="submit" '
- . 'name="action" value="' . $translations['Save'] . '" />
+ . 'name="action" value="' . translate ( 'Save' ) . '" />
           </td>
         </tr>
       </table>

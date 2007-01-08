@@ -30,15 +30,15 @@ if ( empty ( $users ) ) {
   exit;
 } elseif ( empty ( $year ) ) {
   echo $programStr . str_replace ( 'XXX', translate ( 'year' ),
-    $translations['No XXX specified!'] );
+    translate ( 'No XXX specified!' ) );
   exit;
 } elseif ( empty ( $month ) ) {
   echo $programStr . str_replace ( 'XXX', translate ( 'month' ),
-    $translations['No XXX specified!'] );
+    translate ( 'No XXX specified!' ) );
   exit;
 } elseif ( empty ( $day ) ) {
   echo $programStr . str_replace ( 'XXX', translate ( 'day' ),
-    $translations['No XXX specified!'] );
+    translate ( 'No XXX specified!' ) );
   exit;
 }
 
@@ -57,12 +57,12 @@ $users = explode ( ',', $users );
 
 echo '
     <div style="width:99%;">
-      <a title="' . $translations['Previous'] . '" class="prev" href="'
+      <a title="' . translate ( 'Previous' ) . '" class="prev" href="'
  . $prev_url . '"><img src="images/leftarrow.gif" class="prevnext" alt="'
- . $translations['Previous'] . '" /></a>
-      <a title="' . $translations['Next'] . '" class="next" href="' . $next_url
+ . translate ( 'Previous' ) . '" /></a>
+      <a title="' . translate ( 'Next' ) . '" class="next" href="' . $next_url
  . '"><img src="images/rightarrow.gif" class="prevnext" alt="'
- . $translations['Next'] . '" /></a>
+ . translate ( 'Next' ) . '" /></a>
       <div class="title">
         <span class="date">';
 printf ( "%s, %s %d, %d", weekday_name ( strftime ( "%w", $time ) ),

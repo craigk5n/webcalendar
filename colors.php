@@ -5,20 +5,22 @@ $color = getGetValue ( 'color' );
 if ( empty ( $color ) )
   exit;
 
-$basicStr = translate ( 'Basic Colors' );
-$customStr = translate ( 'Custom Colors' );
 $addcustomStr = translate ( 'Add Custom' );
+$basicStr = translate ( 'Basic Colors' );
+$cancelStr = translate ( 'Cancel' );
 $currentStr = translate ( 'Current Color' );
+$customStr = translate ( 'Custom Colors' );
+$okStr = translate ( 'Ok');
 $oldStr = translate ( 'Old Color' );
 
 print_header ( array ( 'js/colors.php/true' ), '',
-  'onload="fillhtml (); setInit ();"', true, false , true );
+  'onload="fillhtml (); setInit ();"', true, false, true );
 
 /*
   HTML Color Editor v1.2 (c) 2000 by Sebastian Weber <webersebastian@yahoo.de>
   Modified by Ray Jones for inclusion into WebCalendar.
-
 */
+
 echo <<<EOT
     <form action="colors.php" name="colorpicker">
       <input type="hidden" id="colorcell" value="{$color}" />
@@ -101,10 +103,10 @@ echo <<<EOT
         <tr>
           <td colspan="3" align="center" height="30">
             <input type="button"
-              value="&nbsp;&nbsp;&nbsp;{$translations['Ok']}&nbsp;&nbsp;&nbsp;"
+              value="&nbsp;&nbsp;&nbsp;{$okStr}&nbsp;&nbsp;&nbsp;"
               onclick="transferColor (); window.close ()"
               />&nbsp;&nbsp;&nbsp;<input type="button"
-              value="{$translations['Cancel']}" onclick="window.close ()" />
+              value="{$cancelStr}" onclick="window.close ()" />
           </td>
         </tr>
       </table>

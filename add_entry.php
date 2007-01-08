@@ -33,13 +33,13 @@ if ( $id > 0 ) {
   if ( ! $is_my_event ) {
     if ( $row[0] == 'R' ) {
       $is_private = true;
-      echo str_replace ( 'XXX', $translations['private'], $mayNotAddStr );
+      echo str_replace ( 'XXX', translate ( 'private' ), $mayNotAddStr );
       exit;
     } else
     if ( $row[0] == 'C' && ! $is_assistant && ! $is_nonuser_admin ) {
       // Assistants are allowed to see confidential stuff.
       $is_private = true;
-      echo str_replace ( 'XXX', $translations['confidential'], $mayNotAddStr );
+      echo str_replace ( 'XXX', translate ( 'confidential' ), $mayNotAddStr );
       exit;
     }
   } else
