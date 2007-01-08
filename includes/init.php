@@ -204,7 +204,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   . '  </head>
   <body'
   // Determine the page direction (left-to-right or right-to-left).
-  . ( $translations['direction'] == 'rtl' ? ' dir="rtl"' : '' )
+  . ( translate ( 'direction' ) == 'rtl' ? ' dir="rtl"' : '' )
   // Add <body> id
   . ' id="' . preg_replace ( '/(_|.php)/', '',
     substr ( $self, strrpos ( $self, '/' ) + 1 ) ) . '"'

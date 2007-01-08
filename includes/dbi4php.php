@@ -266,7 +266,7 @@ function dbi_close ( $conn ) {
     return sqlite_close ( $conn );
   else
     dbi_fatal_error ( 'dbi_close (): '
-       . $translations['db_type not defined.'] );
+       . translate ( 'db_type not defined.' ) );
 }
 
 /* Return the number of database queries that were executed.
@@ -373,13 +373,13 @@ function dbi_query ( $sql, $fatalOnError = true, $showError = true ) {
 
   if ( $found_db_type ) {
     if ( ! $res )
-      dbi_fatal_error ( $translations['Error executing query.']
+      dbi_fatal_error ( translate ( 'Error executing query.' )
          . ( $phpdbiVerbose ? ( dbi_error () . "\n\n<br />\n" . $sql ) : '' ),
         $fatalOnError, $showError );
 
     return $res;
   } else
-    dbi_fatal_error ( 'dbi_query (): ' . $translations['db_type not defined.'] );
+    dbi_fatal_error ( 'dbi_query (): ' . translate ( 'db_type not defined.' ) );
 }
 
 /* Retrieves a single row from the database and returns it as an array.
@@ -421,7 +421,7 @@ function dbi_fetch_row ( $res ) {
     return sqlite_fetch_array ( $res );
   else
     dbi_fatal_error ( 'dbi_fetch_row (): '
-       . $translations['db_type not defined.'] );
+       . translate ( 'db_type not defined.' ) );
 }
 
 /* Returns the number of rows affected by the last INSERT, UPDATE or DELETE.
@@ -458,7 +458,7 @@ function dbi_affected_rows ( $conn, $res ) {
     return sqlite_changes ( $conn );
   else
     dbi_fatal_error ( 'dbi_free_result (): '
-       . $translations['db_type not defined.'] );
+       . translate ( 'db_type not defined.' ) );
 }
 
 /* Update a BLOB (binary large object) in the database with the contents
@@ -580,7 +580,7 @@ function dbi_free_result ( $res ) {
     // Not supported
   } else
     dbi_fatal_error ( 'dbi_free_result (): '
-       . $translations['db_type not defined.'] );
+       . translate ( 'db_type not defined.' ) );
 }
 
 /* Gets the latest database error message.
@@ -613,7 +613,7 @@ function dbi_error () {
   } elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite' ) == 0 )
     $ret = sqlite_last_error ( $GLOBALS['sqlite_c'] );
   else
-    $ret = 'dbi_error (): ' . $translations['db_type not defined.'];
+    $ret = 'dbi_error (): ' . translate ( 'db_type not defined.' );
 
   return ( strlen ( $ret ) ? $ret : translate ( 'Unknown error.' ) );
 }
@@ -628,7 +628,7 @@ function dbi_error () {
 function dbi_fatal_error ( $msg, $doExit = true, $showError = true ) {
   global $translations;
   if ( $showError ) {
-    echo '<h2>' . $translations['Error'] . '</h2>
+    echo '<h2>' . translate ( 'Error' ) . '</h2>
 <!--begin_error (dbierror)-->
 ' . $msg . '
 <!--end_error-->
@@ -825,9 +825,9 @@ function dbi_clear_cache () {
       $fullpath = $db_connection_info['cachedir'] . '/' . $file;
       $b += filesize ( $fullpath );
       if ( ! unlink ( $fullpath ) )
-        echo '<!-- ' . $translations['Error'] . ': '
+        echo '<!-- ' . translate ( 'Error' ) . ': '
          . str_replace ( 'XXX', translate ( 'delete' ),
-          $translations['Could not XXX file'] ) . " $file. -->\n";
+          translate ( 'Could not XXX file' ) ) . " $file. -->\n";
       // TODO: log this somewhere???
     }
   }

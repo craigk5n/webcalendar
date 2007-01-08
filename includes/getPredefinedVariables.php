@@ -94,7 +94,7 @@ function getValue ( $name, $format = '', $fatal = false ) {
   if ( ! empty ( $format ) && ! preg_match ( '/^' . $format . '$/', $val ) ) {
     // does not match
     if ( $fatal ) {
-      die_miserable_death ( $translations['Fatal Error'] . ': '
+      die_miserable_death ( translate ( 'Fatal Error' ) . ': '
          . translate ( 'Invalid data format for' ) . $name );
     }
     // ignore value

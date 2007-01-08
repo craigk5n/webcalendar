@@ -197,7 +197,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
   if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
     $public = array (
       'cal_login' => '__public__',
-      'cal_fullname' => $translations['Public Access']
+      'cal_fullname' => translate ( 'Public Access' )
       );
     array_unshift ( $grouplist, $public );
   }
@@ -629,12 +629,12 @@ $menuHtml .= '
  . ( ! empty ( $logout_url ) && $menuConfig['Login'] // using http_auth
   ? '<a class="menuhref" title="'
    . ( strlen ( $login ) && $login != '__public__'
-    ? $translations['Logout'] . '" href="' . $logout_url . '">'
-     . $translations['Logout'] . ':</a>&nbsp;<label>'
+    ? translate ( 'Logout' ) . '" href="' . $logout_url . '">'
+     . translate ( 'Logout' ) . ':</a>&nbsp;<label>'
      . ( $menuConfig['Login Fullname'] ? $fullname : $login ) . '</label>'
     : // For public user
-    $translations['Login'] . '" href="' . $login_url . '">'
-     . $translations['Login'] . '</a>' )
+    translate ( 'Login' ) . '" href="' . $login_url . '">'
+     . translate ( 'Login' ) . '</a>' )
   : '&nbsp;&nbsp;&nbsp;' // TODO replace with something???
   ) . '&nbsp;</td>
         </tr>
