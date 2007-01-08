@@ -52,7 +52,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>
   codebase="' . $SERVER_URL . '"
   href="controlpanel.php">
   <information>
-    <title>' . $translations['Control Panel'] . ': ' . htmlentities ( $appStr );
+    <title>' . translate ( 'Control Panel' ) . ': ' . htmlentities ( $appStr );
 
 ?></title>
     <vendor>k5n.us</vendor>

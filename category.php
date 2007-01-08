@@ -17,9 +17,9 @@ $icon_path = 'icons/';
 // If editing, make sure they are editing their own (or they are an admin user).
 if ( ! empty ( $id ) ) {
   if ( empty ( $categories[$id] ) )
-    $error = $translations['Invalid entry id'] . ': ' . $id;
+    $error = translate ( 'Invalid entry id' ) . ': ' . $id;
 
-  $button = $translations['Save'];
+  $button = translate ( 'Save' );
   $catcolor = $categories[$id]['cat_color'];
   $catname = $categories[$id]['cat_name'];
   $catowner = $categories[$id]['cat_owner'];
@@ -34,13 +34,13 @@ $showIcon = ( ! empty ( $catIcon ) && file_exists ( $catIcon )
 print_header ( array ( 'js/visible.php' ) );
 ob_start ();
 echo '
-    <h2>' . $translations['Categories'] . '</h2>
+    <h2>' . translate ( 'Categories' ) . '</h2>
     ' . display_admin_link ();
 
 if ( empty ( $add ) )
   $add = 0;
 // Adding/Editing category
-$button = ( $add == '1' ? translate ( 'Add' ) : $translations['Save'] );
+$button = ( $add == '1' ? translate ( 'Add' ) : translate ( 'Save' ) );
 
 if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   echo '
@@ -58,10 +58,10 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
           <td colspan="3">
             <label><input type="radio" name="isglobal" value="N" '
      . ( ! empty ( $catowner ) || empty ( $id ) ? ' checked = "checked"' : '' )
-     . ' />&nbsp;' . $translations['No'] . '</label>&nbsp;&nbsp;
+     . ' />&nbsp;' . translate ( 'No' ) . '</label>&nbsp;&nbsp;
             <label><input type="radio" name="isglobal" value="Y" '
      . ( empty ( $catowner ) && ! empty ( $id ) ? ' checked = "checked"' : '' )
-     . ' />&nbsp;' . $translations['Yes'] . '</label>
+     . ' />&nbsp;' . translate ( 'Yes' ) . '</label>
           </td>
         </tr>' : '' ) . '
         <tr>
