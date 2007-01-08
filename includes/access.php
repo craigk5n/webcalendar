@@ -143,19 +143,19 @@ function access_get_function_description ( $function ) {
 
   switch ( $function ) {
     case ACCESS_ACCESS_MANAGEMENT:
-      return $translations['User Access Control'];
+      return translate ( 'User Access Control' );
     case ACCESS_ACCOUNT_INFO:
-      return $translations['Account'];
+      return translate ( 'Account' );
     case ACCESS_ACTIVITY_LOG:
-      return $translations['Activity Log'];
+      return translate ( 'Activity Log' );
     case ACCESS_ADMIN_HOME:
-      return $translations['Administrative Tools'];
+      return translate ( 'Administrative Tools' );
     case ACCESS_ADVANCED_SEARCH:
-      return $translations['Advanced Search'];
+      return translate ( 'Advanced Search' );
     case ACCESS_ANOTHER_CALENDAR:
       return translate ( 'Another User&#39;s Calendar' );
     case ACCESS_ASSISTANTS:
-      return $translations['Assistants'];
+      return translate ( 'Assistants' );
     case ACCESS_CATEGORY_MANAGEMENT:
       return translate ( 'Category Management' );
     case ACCESS_DAY:
@@ -163,33 +163,33 @@ function access_get_function_description ( $function ) {
     case ACCESS_EVENT_EDIT:
       return translate ( 'Edit Event' );
     case ACCESS_EVENT_VIEW:
-      return $translations['View Event'];
+      return translate ( 'View Event' );
     case ACCESS_EXPORT:
-      return $translations['Export'];
+      return translate ( 'Export' );
     case ACCESS_HELP:
-      return $translations['Help'];
+      return translate ( 'Help' );
     case ACCESS_IMPORT:
-      return $translations['Import'];
+      return translate ( 'Import' );
     case ACCESS_LAYERS:
-      return $translations['Layers'];
+      return translate ( 'Layers' );
     case ACCESS_MONTH:
       return translate ( 'Month View' );
     case ACCESS_PREFERENCES:
-      return $translations['Preferences'];
+      return translate ( 'Preferences' );
     case ACCESS_PUBLISH:
-      return $translations['Subscribe/Publish'];
+      return translate ( 'Subscribe/Publish' );
     case ACCESS_REPORT:
-      return $translations['Reports'];
+      return translate ( 'Reports' );
     case ACCESS_SEARCH:
-      return $translations['Search'];
+      return translate ( 'Search' );
     case ACCESS_SYSTEM_SETTINGS:
-      return $translations['System Settings'];
+      return translate ( 'System Settings' );
     case ACCESS_TRAILER:
       return translate ( 'Common Trailer' );
     case ACCESS_USER_MANAGEMENT:
       return translate ( 'User Management' );
     case ACCESS_VIEW:
-      return $translations['Views'];
+      return translate ( 'Views' );
     case ACCESS_VIEW_MANAGEMENT:
       return translate ( 'Manage Views' );
     case ACCESS_WEEK:
