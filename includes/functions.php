@@ -215,7 +215,7 @@ function get_web_browser () {
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
   //error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
-  //3, 'd:/php/logs/debug.txt' );
+  //  3, 'd:/php/logs/debug.txt' );
   //fwrite ( $fd, date ( 'Y-m-d H:i:s' ) .  "> $msg\n" );
   //fclose ( $fd );
   //  3, '/tmp/webcal-debug.log' );
@@ -1342,7 +1342,7 @@ function date_selection ( $prefix, $date, $trigger=false, $num_years=20 ) {
   $ret .= '<input type="button" name="' . $prefix
     . "btn\" onclick=\"$trigger_str;selectDate( '" 
     . $prefix . "day','" . $prefix . "month','" . $prefix 
-    . "year',$date, event, this.form)\" value=\"" 
+    . "year',$date, event, this.form )\" value=\"" 
     . translate('Select') . "...\" />\n";
 
   return $ret;
@@ -5493,6 +5493,9 @@ function print_error_header () {
  * @params passed automatically by usort, don't pass them in your call
  */
 function sort_events ( $a, $b ) { 
+  //handle untimed events first
+  if ( $a->isUntimed() || $b->isUntimed() )
+    return strnatcmp( $b->isUntimed(), $a->isUntimed() );
   $retval = strnatcmp( 
     display_time( '',0,$a->getDateTimeTS(),24), 
     display_time( '',0,$b->getDateTimeTS(),24) ); 
@@ -6210,7 +6213,7 @@ function generate_application_name ( $custom = true ) {
     return $fullname;
   else
   if ( $APPLICATION_NAME == 'Title' || $APPLICATION_NAME == 'myname' )
-    return ( function_exists ( translate ) ? translate ( 'Title' ) : 'Title' );
+    return ( function_exists ( 'translate' ) ? translate ( 'Title' ) : 'Title' );
   else
     return htmlspecialchars ( $APPLICATION_NAME );
 }
