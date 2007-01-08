@@ -24,9 +24,9 @@ if ( empty ( $HTTP_USER_AGENT ) )
       <input type="hidden" name="func" value="add" />
       <input type="hidden" name="group_id" value="3870" />
       <input type="hidden" name="atid" value="103870" />
-      <input type="submit" value="' . $translations['Report Bug'] . '" />
+      <input type="submit" value="' . translate ( 'Report Bug' ) . '" />
     </form>
-    <h3>' . $translations['System Settings'] . '</h3>
+    <h3>' . translate ( 'System Settings' ) . '</h3>
     <div>';
   $tmp_arr = array ( 'PROGRAM_NAME' => $PROGRAM_NAME,
     'SERVER_SOFTWARE' => $SERVER_SOFTWARE,

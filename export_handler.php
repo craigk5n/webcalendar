@@ -177,7 +177,7 @@ function export_pilot_csv ( $id ) {
       echo $ext[3], ','; // repeatFrequency
       switch ( $repType ) {
         case 2: // weekly
-          echo '0,', bindec ( strtr ( strrev ( $ext[4] ), 'yn', '10' ) ) , ",1\n";
+          echo '0,', bindec ( strtr ( strrev ( $ext[4] ), 'yn', '10' ) ), ",1\n";
           break;
         case 3: // monthly/weekday
           // repeatDay (0..6=Sun..Sat 1st, 7..13 2nd, 14..20 3rd,
@@ -263,9 +263,9 @@ if ( substr ( $format, 0, 4 ) == 'ical' ) {
   export_install_datebook ( $id );
 } else {
   print_header ();
-  $errorStr = $translations['Error'];
+  $errorStr = translate ( 'Error' );
   echo '
-    <h2>' . $translations['Export'] . ' ' . $errorStr . '</h2>
+    <h2>' . translate ( 'Export' ) . ' ' . $errorStr . '</h2>
     <span class="bold">' . $errorStr . ':</span> '
    . translate ( 'export format not defined or incorrect' ) . '.<br />
     ' . print_trailer ();
