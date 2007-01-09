@@ -81,9 +81,9 @@ function event_to_text ( $event, $date ) {
   $time_str = $start_time_str = $end_time_str = '';
 
   if ( $event->isAllDay() ) {
-    $time_str = translate( 'All day event' );
+    $time_str = translate ( 'All day event' );
   } else if ( $event->isUntimed() ) {
-    $time_str = translate( 'Untimed event' );
+    $time_str = translate ( 'Untimed event' );
   } else {
     $time_str = display_time ( $event->getDateTime() );
     $start_time_str = $time_str;
@@ -107,12 +107,12 @@ function event_to_text ( $event, $date ) {
   }
 
   if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
-    $name_str = '(' . $translations['Private'] . ')';
-    $description_str = translate( 'This event is confidential' );
+    $name_str = '(' . translate ( 'Private' ) . ')';
+    $description_str = translate ( 'This event is confidential' );
   } else if ( $login != $event->getLogin() && $event->getAccess() == 'R' &&
     strlen ( $event->getLogin() ) ) {
-    $name_str = '(' . $translations['Private']. ')';
-    $description_str = translate( 'This event is confidential' );
+    $name_str = '(' . translate ( 'Private' ) . ')';
+    $description_str = translate ( 'This event is confidential' );
   } else {
     $name_str = htmlspecialchars ( $name );
     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) &&
@@ -232,19 +232,20 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   if ( $is_admin ) {
     if ( ! $updating_public ) {
       if ( $PUBLIC_ACCESS == 'Y') {
-        $clickStr = translate( 'Click here' ) . ' ' .
-          translate( 'to manage reports for the Public Access calendar' ) . '.';
+// translate ( 'Click here' )
+// translate ( 'to manage reports for the Public Access calendar' )
+        $clickStr = translate ( 'Click here to manage reports for the Public Access calendar.' );
         $list .= '<p><a title="' . $clickStr .
            '" href="report.php?public=1">' . $clickStr . "</a></p>\n";
       }
-      $sql = 'SELECT cal_report_id, cal_report_name ' .
-        'FROM webcal_report WHERE cal_login = ? OR ' .
-        "cal_is_global = 'Y' ORDER BY cal_update_date DESC, cal_report_name";
+      $sql = 'SELECT cal_report_id, cal_report_name FROM webcal_report
+        WHERE cal_login = ? OR cal_is_global = \'Y\'
+        ORDER BY cal_update_date DESC, cal_report_name';
       $sql_params[] = $login;
     } else {
-      $sql = 'SELECT cal_report_id, cal_report_name ' .
-        "FROM webcal_report WHERE cal_login = '__public__' " .
-        'ORDER BY cal_update_date DESC, cal_report_name';
+      $sql = 'SELECT cal_report_id, cal_report_name FROM webcal_report
+        WHERE cal_login = \'__public__\'
+        ORDER BY cal_update_date DESC, cal_report_name';
     }
   } else {
     $sql = 'SELECT cal_report_id, cal_report_name ' .
@@ -252,11 +253,11 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
       'ORDER BY cal_update_date DESC, cal_report_name';
     $sql_params[] = $login;
   }
-  $res = dbi_execute ( $sql , $sql_params );
+  $res = dbi_execute ( $sql, $sql_params );
   $list .= "<ul>\n";
   if ( $res ) {
     $unnamesStr = translate ( 'Unnamed Report' );
-    $addStr = translate( 'Add new report' );
+    $addStr = translate ( 'Add new report' );
     while ( $row = dbi_fetch_row ( $res ) ){
       $rep_name = trim ( $row[1] );
       if ( empty ( $rep_name ) )
@@ -280,7 +281,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
     'cal_report_type, cal_include_header, cal_report_name, ' .
     'cal_time_range, cal_user, ' .
     'cal_allow_nav, cal_cat_id, cal_include_empty, cal_update_date ' .
-    'FROM webcal_report WHERE cal_report_id = ?' , array ( $report_id ) );
+    'FROM webcal_report WHERE cal_report_id = ?', array ( $report_id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) { 
       if ( $row[2] != 'Y' && $login != $row[0] ) {
@@ -332,7 +333,7 @@ $event_template = '<dt>${name}</dt><dd>' .
 if ( empty ( $error ) && empty ( $list ) ) {
   $res = dbi_execute ( 'SELECT cal_template_type, cal_template_text ' .
     'FROM webcal_report_template ' .
-    'WHERE cal_report_id = ?' , array ( $report_id ) );
+    'WHERE cal_report_id = ?', array ( $report_id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] == 'P' ) {
@@ -484,9 +485,9 @@ if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
 }
 if ( ! empty ( $list ) ) {
   $textStr = '';
-  $manageStr = translate( 'Manage Reports' ); 
+  $manageStr = translate ( 'Manage Reports' ); 
   if ( $updating_public ) {
-    $manageStr = translate($PUBLIC_ACCESS_FULLNAME) . ' ' . $manageStr;
+    $manageStr = translate ( $PUBLIC_ACCESS_FULLNAME) . ' ' . $manageStr;
   } 
   $adminLinkStr = display_admin_link();
   $trailerStr = print_trailer ( );

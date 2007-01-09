@@ -33,13 +33,13 @@ function save_pref( $prefs, $src) {
         $my_theme = strtolower ( $value ); 
       $sql = 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
         'AND cal_setting = ?';
-      dbi_execute ( $sql , array ( $prefuser , $setting ) );
+      dbi_execute ( $sql, array ( $prefuser, $setting ) );
       if ( strlen ( $value ) > 0 ) {
       $setting = strtoupper ( $setting );
         $sql = 'INSERT INTO webcal_user_pref ' .
           '( cal_login, cal_setting, cal_value ) VALUES ' .
           '( ?, ?, ? )';
-        if ( ! dbi_execute ( $sql , array ( $prefuser , $setting , $value ) ) ) {
+        if ( ! dbi_execute ( $sql, array ( $prefuser, $setting, $value ) ) ) {
           $error = 'Unable to update preference: ' . dbi_error () .
    '<br /><br /><span class="bold">SQL:</span>' . $sql;
           break;
@@ -98,7 +98,7 @@ if ( $res ) {
 }
 //get user settings
 $res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_user_pref ' .
-    'WHERE cal_login = ?' , array ( $prefuser ) );
+    'WHERE cal_login = ?', array ( $prefuser ) );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $prefarray[$row[0]] = $row[1];
@@ -166,7 +166,7 @@ $minutesStr = translate( 'minutes' );
 $openStr ="\"window.open('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
 $BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' );\"" : '' );
 $INC = array('js/visible.php', 'js/pref.php');
-print_header($INC, '' , $BodyX);
+print_header($INC, '', $BodyX);
 
 ?>
 
@@ -716,7 +716,7 @@ $publish_access =  ( empty  ( $prefarray['USER_REMOTE_ACCESS'] ) ? 0 :
      translate ( 'entries' )?></option>
    <option value="1" <?php echo ( $publish_access == '1' ? 
      $selected : '' ) . ' >' . translate ( 'Public' ) . ' &amp; ' . 
-      $translations['Confidential'] . ' ' . translate ( 'entries' )?></option>
+      translate ( 'Confidential' ) . ' ' . translate ( 'entries' )?></option>
    <option value="2" <?php echo ( $publish_access == '2' ? 
      $selected : '' ) . ' >' . translate( 'All' ) . ' ' . 
      translate ( 'entries' )?></option>  
@@ -903,7 +903,7 @@ if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
 <tr><td bgcolor="<?php echo $BGCOLOR?>">
 <?php 
 set_today( $dateYmd );
-echo display_month ( date ( 'm' ) , date( 'Y' ) , true );
+echo display_month ( date ( 'm' ), date( 'Y' ), true );
 ?>
 </td></tr>
 <tr><td>&nbsp;</td></tr>

@@ -51,11 +51,11 @@ if ( is_array ( $categories ) && $show_advanced ) {
   echo '
         <tr id="catfilter" style="visibility:' . $avdStyle[$show_advanced] 
    . ';">
-          <td><label for="cat_filter">' . $translations['Categories']
+          <td><label for="cat_filter">' . translate ( 'Categories' )
    . ':</label></td>
           <td>
             <select name="cat_filter" id="cat_filter">
-              <option value=""' . $selected . '>' . $translations['All']
+              <option value=""' . $selected . '>' . translate ( 'All' )
    . '</option>';
 
   foreach ( $categories as $K => $V ) {
@@ -74,7 +74,7 @@ if (  count ( $site_extras ) > 0 ) {
         <tr id="extrafilter" style="visibility:' . $avdStyle[$show_advanced] 
    . ';">
           <td><label for="extra_filter">' 
-   . translate ( 'Include' ) . '<br />' . $translations['Site Extras']
+   . translate ( 'Include' ) . '<br />' . translate ( 'Site Extras' )
    . ':</label></td>
           <td><input type="checkbox" name="extra_filter" value="Y" />
           </td></tr>';
@@ -97,14 +97,14 @@ if (  $show_advanced ) {
           </td>
         </tr>
         <tr id="startDate" style="visibility:hidden">
-          <td>&nbsp;&nbsp;<label>' . $translations['Start date']
+          <td>&nbsp;&nbsp;<label>' . translate ( 'Start date' )
    . ':</label></td>
           <td>'
    . date_selection ( 'from_', $dateYmd )
    .      '</td>
         </tr>
         <tr id="endDate" style="visibility:hidden">
-          <td>&nbsp;&nbsp;<label>' . $translations['End date']
+          <td>&nbsp;&nbsp;<label>' . translate ( 'End date' )
    . ':</label></td>
           <td>'
    . date_selection ( 'until_', $dateYmd )
@@ -136,7 +136,7 @@ if ( $show_others ) {
         <tr  id="adv" style="visibility:' . $avdStyle[$show_advanced] 
    . ';">
           <td class="aligntop"><label for="usersadv">'
-   . $translations['Users'] . ':&nbsp;</label></td>
+   . translate ( 'Users' ) . ':&nbsp;</label></td>
           <td>
             <select name="users[]" id="usersadv" size="' . $size
    . '" multiple="multiple">';
@@ -152,7 +152,7 @@ if ( $show_others ) {
             </select>'
    . ( $GROUPS_ENABLED == 'Y'
     ? '<input type="button" onclick="selectUsers ()" value="'
-     . $translations['Select'] . '..." />' : '' ) . '
+     . translate ( 'Select' ) . '..." />' : '' ) . '
           </td>
         </tr>';
 }

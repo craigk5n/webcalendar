@@ -71,6 +71,7 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   exit;
 }
 
+$errorStr = translate ( 'Error' );
 $nouser = translate ( 'No user specified' );
 // Make sure they specified a username
 if ( empty ( $user ) ) {
@@ -79,9 +80,9 @@ if ( empty ( $user ) ) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head><title>{$translations['Error']}</title></head>
+  <head><title>{$errorStr}</title></head>
   <body>
-    <h2>{$translations['Error']}</h2>
+    <h2>{$errorStr}</h2>
     {$nouser}.
   </body>
 </html>
