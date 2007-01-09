@@ -13,7 +13,7 @@ echo display_admin_link () . '
 <!-- TABS -->
     <div id="tabs">
       <span class="tabfor" id="tab_views"><a href="#tabviews" onclick="return '
- . 'showTab (\'views\')">' . $translations['Views'] . '</a></span>
+ . 'showTab (\'views\')">' . translate ( 'Views' ) . '</a></span>
     </div>
 
 <!-- TABS BODY -->
@@ -23,7 +23,7 @@ echo display_admin_link () . '
       <div id="tabscontent_views">
         <a title="' . translate ( 'Add New View' )
  . '" href="views_edit.php" target="viewiframe" onclick="javascript:show '
- . '(\'viewiframe\');">' . $translations['Add New View'] . '</a>
+ . '(\'viewiframe\');">' . translate ( 'Add New View' ) . '</a>
         <ul>';
 
 $global_found = false;
@@ -35,7 +35,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
      . '" target="viewiframe" onclick="javascript:show (\'viewiframe\');">'
      . htmlspecialchars ( $views[$i]['cal_name'] ) . '</a>';
     if ( $views[$i]['cal_is_global'] == 'Y' ) {
-      echo '&nbsp;<abbr title="' . $translations['Global'] . '">*</abbr>';
+      echo '&nbsp;<abbr title="' . translate ( 'Global' ) . '">*</abbr>';
       $global_found = true;
     }
     echo '</li>';
@@ -46,7 +46,7 @@ ob_end_flush ();
 
 echo '
         </ul>' . ( $global_found ? '<br />
-        *&nbsp;' . $translations['Global'] : '' ) . '<br />
+        *&nbsp;' . translate ( 'Global' ) : '' ) . '<br />
         <iframe name="viewiframe" id="viewiframe" style="width: 90%; border: 0;'
  . ' height: 343px;"></iframe>
       </div>

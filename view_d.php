@@ -58,16 +58,19 @@ $partStr = implode ( ',', $participants );
 $trailerStr = print_trailer ();
 $wday = strftime ( '%w', mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
 
+$nextStr = translate ( 'Next' );
+$previousStr = translate ( 'Previous' );
+
 echo <<<EOT
     <div class="viewnav">
-      <a title="{$translations['Previous']}" class="prev"
+      <a title="{$previousStr}" class="prev"
         href="view_d.php?id={$id}&amp;date={$prevdate}">
         <img src="images/leftarrow.gif" class="prevnext"
-          alt="{$translations['Previous']}" /></a>
-      <a title="{$translations['Next']}" class="next"
+          alt="{$previousStr}" /></a>
+      <a title="{$nextStr}" class="next"
         href="view_d.php?id={$id}&amp;date={$nextdate}">
         <img src="images/rightarrow.gif" class="prevnext"
-          alt="{$translations['Next']}" /></a>
+          alt="{$nextStr}" /></a>
       <div class="title">
         <span class="date">{$nowStr}</span><br />
         <span class="viewname">{$view_name}</span>

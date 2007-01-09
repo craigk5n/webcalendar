@@ -44,14 +44,14 @@ echo display_admin_link () . '
     <div id="tabs">
       <span class="tabfor" id="tab_users"><a href="#tabusers" onclick="return '
  . 'showTab (\'users\')">'
- . ( $is_admin ? $translations['Users'] : $translations['Account'] )
+ . ( $is_admin ? translate ( 'Users' ) : translate ( 'Account' ) )
  . '</a></span>' . ( $doGroups ? '
       <span class="tabbak" id="tab_groups"><a href="#tabgroups" '
-   . 'onclick="return showTab (\'groups\')">' . $translations['Groups']
+   . 'onclick="return showTab (\'groups\')">' . translate ( 'Groups' )
    . '</a></span>' : '' ) . ( $doNUCS ? '
       <span class="tabbak" id="tab_nonusers"><a href="#tabnonusers" '
    . 'onclick="return showTab (\'nonusers\')">'
-   . $translations['NonUser Calendars'] . '</a></span>' : '' )
+   . translate ( 'NonUser Calendars' ) . '</a></span>' : '' )
  . ( $doRemotes ? '
       <span class="tabbak" id="tab_remotes"><a href="#tabremotes" '
    . 'onclick="return showTab (\'remotes\')">'
@@ -83,7 +83,7 @@ if ( $is_admin ) {
   }
   echo '
         </ul>
-        *&nbsp;' . $translations['denotes administrative user'] . '.<br />
+        *&nbsp;' . translate ( 'denotes administrative user' ) . '.<br />
         <iframe name="useriframe" id="useriframe"></iframe>';
 } else
   echo '
