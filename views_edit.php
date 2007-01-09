@@ -66,7 +66,7 @@ if ( empty( $viewname ) ) {
 $all_users = false;
 if ( ! $newview ) {
   $sql = 'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?';
-    $res = dbi_execute ( $sql , array ( $id ) );
+    $res = dbi_execute ( $sql, array ( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $viewuser[$row[0]] = 1;
@@ -155,7 +155,7 @@ if ( $newview ) {
   // get list of all users
   $users = get_my_users ( '', 'view' );
   if ($NONUSER_ENABLED == 'Y' ) {
-    $nonusers = get_my_nonusers ( $user , true, 'view' );
+    $nonusers = get_my_nonusers ( $user, true, 'view' );
     $users = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
   }
   for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
@@ -177,7 +177,9 @@ if ( $newview ) {
 <br />
 <input type="submit" name="action" value="<?php if ( $newview ) etranslate( 'Add' ); else etranslate( 'Save' ); ?>" />
 <?php if ( ! $newview ) { ?>
- <input type="submit" name="delete" value="<?php etranslate( 'Delete' )?>" onclick="return confirm('<?php str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] ); ?>')" />
+ <input type="submit" name="delete" value="<?php etranslate( 'Delete' )?>" onclick="return confirm('<?php str_replace ( 'XXX',
+  translate ( 'entry' ),
+  translate ( 'Are you sure you want to delete this XXX?' ) ); ?>')" />
 <?php } ?>
 </td></tr>
 </table>

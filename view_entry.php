@@ -29,11 +29,11 @@ $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
 $can_email = 'Y';
 
-$areYouSureStr = str_replace ( 'XXX', $translations['entry'],
-  $translations['Are you sure you want to delete this XXX?'] );
-$pri[1] = $translations['High'];
-$pri[2] = $translations['Medium'];
-$pri[3] = $translations['Low'];
+$areYouSureStr = str_replace ( 'XXX', translate ( 'entry' ),
+  translate ( 'Are you sure you want to delete this XXX?' ) );
+$pri[1] = translate ( 'High' );
+$pri[2] = translate ( 'Medium' );
+$pri[3] = translate ( 'Low' );
 
 if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) )
   $error = translate ( 'Invalid entry id.' );
@@ -71,7 +71,7 @@ $res = dbi_execute ( 'SELECT we.cal_id, we.cal_create_by
   FROM webcal_entry we, webcal_entry_user weu
   WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
   AND ( we.cal_create_by = ? OR weu.cal_login = ? )',
-  array ( $id , $sqlparm, $sqlparm ) );
+  array ( $id, $sqlparm, $sqlparm ) );
 if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( $row && $row[0] > 0 ) {
@@ -87,7 +87,7 @@ if ( ! empty ( $_POST ) && $is_my_event ) {
   if ( $upercent >= 0 && $upercent <= 100 ) {
     dbi_execute ( 'UPDATE webcal_entry_user SET cal_percent = ?
       WHERE cal_login = ? AND cal_id = ?',
-      array ( $upercent , $login, $id ) );
+      array ( $upercent, $login, $id ) );
     activity_log ( $id, $login, $creator, LOG_UPDATE_T, 
       translate ( 'Update Task Percentage' ) . ' ' . $upercent . '%' );
    }
@@ -271,7 +271,7 @@ if ( ! empty ( $user ) && $login != $user ) {
   // If viewing another user's calendar, check the status of the
   // event on their calendar (to see if it's deleted).
   $res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
-    WHERE cal_login = ? AND cal_id = ?', array ( $user , $id ) );
+    WHERE cal_login = ? AND cal_id = ?', array ( $user, $id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
       $event_status = $row[0];
@@ -282,7 +282,7 @@ if ( ! empty ( $user ) && $login != $user ) {
   // We are viewing event on user's own calendar, so check the
   // status on their own calendar.
   $res = dbi_execute ( 'SELECT cal_id, cal_status FROM webcal_entry_user
-    WHERE cal_login = ? AND cal_id = ?', array ( $login , $id ) );
+    WHERE cal_login = ? AND cal_id = ?', array ( $login, $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     $event_status = $row[1];
@@ -352,11 +352,11 @@ $email_addr = empty ( $createby_email ) ? '' : $createby_email;
 // if ( $row[8] == "R" && ! $is_my_event && ! $is_admin ) {
 if ( $cal_access == 'R' && ! $is_my_event && ! access_is_enabled () ) {
   $is_private = true;
-  $description = $name = '[' . $translations['Private'] . ']';
+  $description = $name = '[' . translate ( 'Private' ) . ']';
 } else if ( $cal_access == 'C' && ! $is_my_event && ! $is_assistant && !
   access_is_enabled () ) {
   $is_confidential = true;
-  $description = $name = '[' . $translations['Confidential'] . ']';
+  $description = $name = '[' . translate ( 'Confidential' ) . ']';
 }
 $event_date = ( $event_repeats && ! empty ( $date ) ? $date : $orig_date );
 
@@ -383,7 +383,7 @@ echo '
         <td>';
 
 if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
-  $str = $description ;
+  $str = $description;
   // $str = str_replace ( '&', '&amp;', $description );
   $str = str_replace ( '&amp;amp;', '&amp;', $str );
   // If there is no HTML found, then go ahead and replace
@@ -415,7 +415,7 @@ if ( $event_status != 'A' && ! empty ( $event_status ) ) {
     echo ( $eType == 'task'
       ? translate ( 'Declined' ) : translate ( 'Deleted' ) );
   elseif ( $event_status == 'R' )
-    echo $translations['Rejected'];
+    echo translate ( 'Rejected' );
   elseif ( $event_status == 'W' )
     echo ( $eType == 'task'
       ? translate ( 'Needs-Action' ) : translate ( 'Waiting for approval' ) );
@@ -452,7 +452,7 @@ echo '
       </tr>' . ( $event_repeats ? '
       <tr>
         <td class="aligntop bold">' . translate ( 'Repeat Type' ) . ':</td>
-        <td>' . export_recurrence_ical ( $id , true ) . '</td>
+        <td>' . export_recurrence_ical ( $id, true ) . '</td>
       </tr>' : '' ) . ( $eType != 'task' && $event_time >= 0 ? '
       <tr>
         <td class="aligntop bold">' . translate ( 'Time' ) . ':</td>
@@ -486,8 +486,8 @@ echo ( $DISABLE_PRIORITY_FIELD != 'Y' ? '
         <td>' . ( $cal_access == "P"
     ? translate ( 'Public' )
     : ( $cal_access == 'C'
-      ? $translations['Confidential']
-      : $translations['Private'] ) ) . '</td>
+      ? translate ( 'Confidential' )
+      : translate ( 'Private' ) ) ) . '</td>
       </tr>' : '' ) . ( $CATEGORIES_ENABLED == 'Y' && ! empty ( $category ) ? '
       <tr>
         <td class="aligntop bold">' . translate ( 'Category' ) . ':</td>
@@ -502,7 +502,7 @@ if ( !empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == 'Y' ) {
     WHERE webcal_entry_log.cal_entry_id = ? AND webcal_entry_log.cal_type = \'C\'',
     array ( $id ) );
   if ( $res ) {
-    $row3 = dbi_fetch_row ( $res ) ;
+    $row3 = dbi_fetch_row ( $res );
     if ( $row3 ) {
       user_load_variables ( $row3[0], 'proxy_' );
       $proxy_fullname = ( $createby_fullname == $proxy_fullname
@@ -518,11 +518,11 @@ if ( $single_user == 'N' && ! empty ( $createby_fullname ) ) {
         <td class="aligntop bold">' . translate ( 'Created by' ) . ':</td>
         <td>';
   if ( $is_private && ! access_is_enabled () )
-    echo '[' . $translations['Private'] . ']</td>
+    echo '[' . translate ( 'Private' ) . ']</td>
       </tr>';
   else
   if ( $is_confidential && ! access_is_enabled () )
-    echo '[' . $translations['Confidential'] . ']</td>
+    echo '[' . translate ( 'Confidential' ) . ']</td>
       </tr>';
   else {
     if ( access_is_enabled () )
@@ -616,10 +616,10 @@ if ( $single_user == 'N' && $show_participants ) {
 
   $num_app = $num_rej = $num_wait = 0;
   if ( $is_private && ! access_is_enabled () )
-    echo '[' . $translations['Private'] . ']';
+    echo '[' . translate ( 'Private' ) . ']';
   else
   if ( $is_confidential && ! access_is_enabled () )
-    echo '[' . $translations['Confidential'] . ']';
+    echo '[' . translate ( 'Confidential' ) . ']';
   else {
     $res = dbi_execute ( 'SELECT cal_login, cal_status, cal_percent
         FROM webcal_entry_user WHERE cal_id = ?'
@@ -744,7 +744,7 @@ if ( $single_user == 'N' && $show_participants ) {
           <strike>' . ( strlen ( $tempemail ) > 0 && $can_email != 'N'
         ? '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
          . $tempfullname . '</a>'
-        : $tempfullname ) . '</strike> (' . $translations['Rejected'] . ')<br />';
+        : $tempfullname ) . '</strike> (' . translate ( 'Rejected' ) . ')<br />';
     }
   }
 
@@ -779,7 +779,7 @@ if ( $eType == 'task' ) {
         </td>
         <td>
             <select name="upercent" id="task_percent">';
-    for ( $i = 0; $i <= 100 ; $i += 10 ) {
+    for ( $i = 0; $i <= 100; $i += 10 ) {
       echo '
               <option value="' . "$i\" " . ( $login_percentage == $i
         ? ' selected="selected"':'' ) . ' >' . $i . '</option>';
@@ -810,7 +810,7 @@ if ( Doc::attachmentsEnabled () && $rss_view == false ) {
       user_is_assistant ( $login, $create_by )
       ? ' [<a href="docdel.php?blid=' . $a->getId ()
        . '" onclick="return confirm (\'' . $areYouSureStr . '\');">'
-       . $translations['Delete'] . '</a>]' : '' ) . '<br />';
+       . translate ( 'Delete' ) . '</a>]' : '' ) . '<br />';
   }
   $num_app = $num_rej = $num_wait = 0;
   $num_attach = $attList->getSize ();
@@ -842,7 +842,7 @@ if ( Doc::commentsEnabled () ) {
       user_is_assistant ( $login, $cmt->getLogin () ) || $login == $create_by ||
       user_is_assistant ( $login, $create_by ) ? ' [<a href="docdel.php?blid='
        . $cmt->getId () . '" onclick="return confirm (\'' . $areYouSureStr
-       . '\');">' . $translations['Delete'] . '</a>]' : '' )// end show delete link
+       . '\');">' . translate ( 'Delete' ) . '</a>]' : '' )// end show delete link
      . '<br />
           <blockquote id="eventcomment">' . nl2br ( activate_urls (
         htmlspecialchars ( $cmt->getData () ) ) ) . '</blockquote>';

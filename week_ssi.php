@@ -25,8 +25,8 @@ if ( strlen ( $login ) == 0 ) {
     $login = $user = $webcalendar_login;
   else {
     echo '<span style="color:#F00;"><span style="font-weight: bold;">'
-     . $translations['Error'] . ':</span>'
-     . $translations['No user specified'] . '.</span>';
+     . translate ( 'Error' ) . ':</span>'
+     . translate ( 'No user specified' ) . '.</span>';
     exit;
   }
 }

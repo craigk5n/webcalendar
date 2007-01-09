@@ -176,9 +176,9 @@ function print_upcoming_event ( $e, $date ) {
     echo '>';
   }
   if ( $private ) {
-    echo '[' . $translations['Private'] . ']';
+    echo '[' . translate ( 'Private' ) . ']';
   } else if ( $confidential ) {
-    echo '[' . $translations['Confidential'] . ']';
+    echo '[' . translate ( 'Confidential' ) . ']';
   } else {
     echo '<span class="summary">' . htmlspecialchars ( $e->getName() ) . '</span>';
   }
