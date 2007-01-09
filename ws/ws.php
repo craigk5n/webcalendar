@@ -76,7 +76,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   $sql = "SELECT cal_login, cal_status FROM webcal_entry_user " .
     "WHERE cal_id = ? AND cal_status IN ('A','W') " .
     "ORDER BY cal_login";
-  $res = dbi_execute ( $sql , array( $id ) );
+  $res = dbi_execute ( $sql, array( $id ) );
   $participants = array ();
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -95,7 +95,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
     $sql = "SELECT cal_fullname, cal_email FROM webcal_entry_ext_user " .
       "WHERE cal_id = ? AND cal_email IS NOT NULL " .
       "ORDER BY cal_fullname";
-    $res = dbi_execute ( $sql , array( $id ) );
+    $res = dbi_execute ( $sql, array( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $ext_participants[$num_ext_participants] = $row[0];
@@ -111,10 +111,9 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   }
 
   // get event details
-  $res = dbi_execute (
-    "SELECT cal_create_by, cal_date, cal_time, cal_mod_date, " .
-    "cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, " .
-    "cal_name, cal_description FROM webcal_entry WHERE cal_id = ?" , array( $id )
+  $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
+    cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, cal_name,
+    cal_description FROM webcal_entry WHERE cal_id = ?', array( $id )
   );
   if ( ! $res ) {
     $out .= "Db error: could not find event id $id.\n";
@@ -169,7 +168,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags='' ) {
   }
   if ( ! empty ( $DISABLE_ACCESS_FIELD ) && $DISABLE_ACCESS_FIELD == 'Y' )
     $out .= "  <access>" .
-      ( $row[8] == "P" ? translate ( 'Public' ) : $translations['Confidential'] ) .
+      ( $row[8] == "P" ? translate ( 'Public' ) : translate ( 'Confidential' ) ) .
       "</access>\n";
   if ( ! strlen ( $single_user_login ) )
     $out .= "  <createdBy>" . $row[0] . "</createdBy>\n";

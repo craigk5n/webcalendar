@@ -299,7 +299,7 @@ function send_reminder ( $id, $event_date ) {
   }
 
   // send mail. We send one user at a time so that we can switch
-  // languages between users if needed (as well as html vs plain text).
+  // languages between users if needed (as well as HTML vs plain text).
   $mailusers = $recipients = array ();
   if ( isset ( $single_user ) && $single_user == 'Y' ) {
     $mailusers[] = $emails[$single_user_login];
@@ -408,11 +408,11 @@ function send_reminder ( $id, $event_date ) {
     if ( empty ( $DISABLE_ACCESS_FIELD ) || $DISABLE_ACCESS_FIELD != 'Y' ) {
       $body .= translate ( 'Access' ) . ': ';
       if ( $row[8] == 'C' )
-        $body .= $translations['Confidential'] . "\n";
+        $body .= translate ( 'Confidential' ) . "\n";
       elseif ( $row[8] == 'P' )
         $body .= translate ( 'Public' ) . "\n";
       elseif ( $row[8] == 'R' )
-        $body .= $translations['Private'] . "\n";
+        $body .= translate ( 'Private' ) . "\n";
     }
 
     $body .= ( ! empty ( $single_user_login ) && $single_user_login == false

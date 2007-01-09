@@ -60,12 +60,12 @@ $out = '<result>';
 
 // If not an admin user, they cannot do this...
 if ( ! $is_admin )
-  $error = $translations['Not authorized'] . ' ('
-   . $transltions['not admin'] . ')';
+  $error = translate ( 'Not authorized' ) . ' ('
+   . translate ( 'not admin' ) . ')';
 
 // Some installs do not allow
 if ( empty ( $error ) && ! $admin_can_add_user )
-  $error = $translations['Not authorized'];
+  $error = translate ( 'Not authorized' );
 
 $addIn = getGetValue ( 'add' );
 $add = ( ! empty ( $addIn ) && $addIn == '1' );
@@ -96,19 +96,19 @@ if ( empty ( $error ) ) {
   if ( user_load_variables ( $user_login, 'old_' ) ) {
     // username does already exist
     if ( $add )
-      $error = $translations['User'] . ' ' . ws_escape_xml ( $user_login )
+      $error = translate ( 'User' ) . ' ' . ws_escape_xml ( $user_login )
        . ' ' . translate ( 'already exists' );
   } else {
     // username does not already exist
     if ( ! $add || $delete )
-      $error = $translations['User'] . ' ' . ws_escape_xml ( $user_login ) . ' '
-       . $translations['does not exist'];
+      $error = translate ( 'User' ) . ' ' . ws_escape_xml ( $user_login ) . ' '
+       . translate ( 'does not exist' );
   }
 }
 
 // If adding a user, make sure a password was provided
 if ( empty ( $error ) && $add && empty ( $user_password ) )
-  $error = $translations['You have not entered a password'];
+  $error = translate ( 'You have not entered a password' );
 
 if ( empty ( $error ) && ! $add && ! $delete && empty ( $user_password ) )
   $user_password = $old_password;
@@ -144,7 +144,7 @@ if ( empty ( $error ) ) {
   } else
     // error
     $error = ( empty ( $error )
-      ? $translations['Unknown error saving user']
+      ? translate ( 'Unknown error saving user' )
       :// In case there are any strange chars in a db error message.
       ws_escape_xml ( $error ) );
 }
