@@ -23,7 +23,7 @@ ob_start ();
 echo '
     <table align="center" border="0" width="250px">
       <tr>
-        <th colspan="3">' . $translations['Categories'] . '</th>
+        <th colspan="3">' . translate ( 'Categories' ) . '</th>
       </tr>
       <form action="" method="post" name="editCategories" '
  . 'onSubmit="sendCats (this)">
@@ -83,7 +83,7 @@ echo '
       </tr>
       <tr>
         <td valign="top" align="right">*' . translate ( 'Global Category' )
- . '&nbsp;&nbsp;&nbsp;<input type="button" value="' . $translations['Ok']
+ . '&nbsp;&nbsp;&nbsp;<input type="button" value="' . translate ( 'Ok' )
  . '" onclick="sendCats ()" /></td>
         <td colspan="2" align="left">&nbsp;&nbsp;<input type="button" value="'
  . translate ( 'Cancel' ) . '" onclick="window.close ()" /></td>

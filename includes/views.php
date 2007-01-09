@@ -59,7 +59,7 @@ function view_get_user_list ( $view_id ) {
 
   // get users in this view
   $res = dbi_execute (
-    'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?' , array ( $view_id ) );
+    'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?', array ( $view_id ) );
   $ret = array ();
   $all_users = false;
   if ( $res ) {
@@ -83,7 +83,7 @@ function view_get_user_list ( $view_id ) {
     $myusers = get_my_users ( '', 'view' );
      
     if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
-      $myusers = array_merge ( $myusers, get_my_nonusers ( $login , true, 'view' ) );
+      $myusers = array_merge ( $myusers, get_my_nonusers ( $login, true, 'view' ) );
     } 
     // Make sure this user is allowed to see all users in this view
     // If this is a global view, it may include users that this user

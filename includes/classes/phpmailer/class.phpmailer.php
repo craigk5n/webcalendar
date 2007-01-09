@@ -663,7 +663,7 @@ class PHPMailer
 
         $line = explode($this->LE, $message);
         $message = "";
-        for ($i=0 ;$i < count($line); $i++)
+        for ($i=0; $i < count($line); $i++)
         {
           $line_part = explode(" ", $line[$i]);
           $buf = "";

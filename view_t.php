@@ -67,7 +67,7 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
     $can_add = false;
 
   // get all the repeating events for this date and store in array $rep
-  $rep = get_repeating_entries ( $user, $date ) ;
+  $rep = get_repeating_entries ( $user, $date );
   $cur_rep = 0;
 
   // get all the non-repeating events for this date and store in $ev
@@ -150,7 +150,7 @@ function print_entry_timebar ( $event, $date ) {
       }
     } 
   }
-  $end_padding = $totalSlots - $start_padding - $ev_duration + 1 ;
+  $end_padding = $totalSlots - $start_padding - $ev_duration + 1;
   //if event is past viewing area
   if ( $start_padding >= $totalSlots ) {
     $start_padding = $totalSlots -1;
@@ -167,7 +167,7 @@ function print_entry_timebar ( $event, $date ) {
   $ret .= ($start_padding > 0 ?  "<td class=\"alignright\" colspan=\"$start_padding\">": '' );
   if ( $pos > 0 ) {
     if ( ! $event->isUntimed() ) {
-      $ret .= ($start_padding > 0 ?  "&nbsp;</td>\n": '' ) ;
+      $ret .= ($start_padding > 0 ?  "&nbsp;</td>\n": '' );
       $ret .= "<td  class=\"entry\" colspan=\"$ev_duration\">\n";
       if ( $pos > 1 ) {
         $ret .= "$fill</td>\n";
@@ -289,7 +289,7 @@ $viewusercnt = count ( $viewusers );
 if ( $viewusercnt == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view
-  $error = translate ( 'No users for this view' ) ;
+  $error = translate ( 'No users for this view' );
 }
 
 $printerStr = generate_printer_friendly ( 'view_t.php' );

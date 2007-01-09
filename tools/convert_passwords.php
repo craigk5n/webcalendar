@@ -80,7 +80,7 @@ $res = dbi_execute ( $sql );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $sql2 = "UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?";
-    $res2 = dbi_execute ( $sql2 , array ( md5 ( $row[1] ) , $row[0] ) );
+    $res2 = dbi_execute ( $sql2, array ( md5 ( $row[1] ), $row[0] ) );
     if ($res2)
       echo "Password updated for: ".$row[0]."<br />\n";
   }
