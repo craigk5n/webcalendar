@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 01-03-2007
+# Translation last updated on 01-08-2007
 
 
 ################################################################################
@@ -71,15 +71,15 @@ Ok: Ok
 ########################################
 # Page: access.php
 #
-Undo: Undo
-DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
-Go: Go
 Save: Save
 Database error: Database error
 Database error&#58; XXX.: Database error&#58; XXX.
+DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Public Access: Public Access
 Admin: Admin
 User Access Control: User Access Control
+Go: Go
+Undo: Undo
 Allow Access to Other Users&#39; Calendar: Allow Access to Other Users' Calendar
 Grant This User Access to My Calendar: Grant This User Access to My Calendar
 Type: Type
@@ -104,8 +104,8 @@ Private: Private
 ########################################
 # Page: activity_log.php
 #
-Next: Next
 Previous: Previous
+Next: Next
 
 ########################################
 # Page: add_entry.php
@@ -113,6 +113,8 @@ Previous: Previous
 Event XXX is already on your calendar.: Event XXX is already on your calendar.
 Invalid entry id&#58; XXX.: Invalid entry id&#58; XXX.
 This is a XXX event and may not be added to your calendar.: This is a XXX event and may not be added to your calendar
+private: private
+confidential: confidential
 Error adding event: Error adding event
 Error adding event&#58; XXX.: Error adding event&#58; XXX.
 
@@ -455,6 +457,7 @@ day: day
 #
 Category Icon: Category Icon
 Global: Global
+Invalid entry id: Invalid entry id
 Add: Add
 Category Name: Category Name
 Color: Color
@@ -486,10 +489,10 @@ Cancel: Cancel
 ########################################
 # Page: colors.php
 #
-Basic Colors: Basic Colors
-Custom Colors: Custom Colors
 Add Custom: Add Custom
+Basic Colors: Basic Colors
 Current Color: Current Color
+Custom Colors: Custom Colors
 Old Color: Old Color
 
 ########################################
@@ -501,7 +504,6 @@ An appointment has been canceled for you by: An appointment has been canceled fo
 # Page: doc.php
 #
 Invalid blob id: Invalid blob id
-Invalid entry id: Invalid entry id
 
 ########################################
 # Page: docadd.php
@@ -629,6 +631,7 @@ Times: Times
 Every: Every
 Delete entry: Delete entry
 You are not authorized to edit this entry: You are not authorized to edit this entry
+You are not authorized to edit this entry.: You are not authorized to edit this entry.
 
 ########################################
 # Page: edit_entry_handler.php
@@ -934,6 +937,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: Repe
 ########################################
 # Page: import_handler.php
 #
+No file: No file
 Error deleting palm events from webcalendar.: Error deleting palm events from webcalendar.
 Events from prior import marked as deleted: Events from prior import marked as deleted
 Conflicting events: Conflicting events
@@ -946,7 +950,11 @@ Layers are currently: Layers are currently
 Disable Layers: Disable Layers
 Click here: Click here
 to modify the layers settings for the: to modify the layers settings for the
+calendar: calendar
+Add layer: Add layer
 Layer: Layer
+Edit layer: Edit layer
+layer: layer
 Enable Layers: Enable Layers
 
 ########################################
@@ -980,7 +988,6 @@ You must enter a login and password: You must enter a login and password
 Save login via cookies so I don&#39;t have to login next time: Save login via cookies so I don't have to login next time
 Login: Login
 Access public calendar: Access public calendar
-calendar: calendar
 cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 
 ########################################
@@ -1092,6 +1099,7 @@ Rejected: Rejected
 Approved: Approved
 Unknown: Unknown
 to manage reports for the Public Access calendar: to manage reports for the Public Access calendar
+Click here to manage reports for the Public Access calendar.: Click here to manage reports for the Public Access calendar.
 Add new report: Add new report
 Manage Reports: Manage Reports
 
@@ -1513,6 +1521,7 @@ encoding: Unknown encoding:
 #
 Server URL is required: Server URL is required
 Server URL must end with &#39;/&#39;: Server URL must end with '/'
+Server URL must end with &quot;/&quot;.: Server URL must end with &quot;/&quot;.
 Invalid work hours: Invalid work hours
 Invalid color for document background: Invalid color for document background
 Invalid color for document title: Invalid color for document title
@@ -1544,7 +1553,6 @@ You have not entered a valid time of day: You have not entered a valid time of d
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Invalid color
-layer: layer
 
 ########################################
 # Page: includes/js/edit_nonuser.php
