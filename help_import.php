@@ -8,7 +8,7 @@ print_header ( '', '', '', true );
 ob_start ();
 
 echo $helpListStr . '
-    <h2>' . $translations['Help'] . ': ' . translate ( 'Import' ) . '</h2>
+    <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Import' ) . '</h2>
     <h3>' . translate ( 'Palm Desktop' ) . '</h3>
     <p>' .
 translate ( 'This form will allow you to import entries from the Palm Desktop Datebook.' )

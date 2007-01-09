@@ -70,7 +70,7 @@ function list_unapproved ( $user ) {
     FROM webcal_entry we, webcal_entry_user weu
     WHERE we.cal_id = weu.cal_id AND weu.cal_login = ? AND weu.cal_status = \'W\'
     ORDER BY weu.cal_login, we.cal_date';
-  $rows = dbi_get_cached_rows ( $sql , array ( $user ) );
+  $rows = dbi_get_cached_rows ( $sql, array ( $user ) );
   if ( $rows ) {
     $viewStr = translate( 'View this entry' );
     $allDayStr = translate('All day event');
@@ -114,7 +114,7 @@ function list_unapproved ( $user ) {
         $eventstop = $eventstart + $duration;
         $timestr = display_time ('', 0, $eventstart);
         if ( $duration > 0 ) {
-          $timestr .= ' - ' . display_time ( '', 0 , $eventstop );
+          $timestr .= ' - ' . display_time ( '', 0, $eventstop );
         }
         $eventdate = date_to_str ( date ('Ymd', $eventstart) );
       } else {
@@ -284,7 +284,8 @@ function do_confirm ( phrase, user, id ) {
       action = 'R';
       break;
     case "delete":
-      str = "<?php str_replace ( 'XXX', $translations['entry'], $translations['Are you sure you want to delete this XXX?'] ) ?>";
+      str = "<?php str_replace ( 'XXX', translate ( 'entry' ),
+        translate ( 'Are you sure you want to delete this XXX?' ) ) ?>";
       action = 'D';
       break;
     case "approveSelected":
