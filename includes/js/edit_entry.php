@@ -164,7 +164,7 @@ function selectDate ( day, month, year, current, evt ) {
     mX = evt.pageX + 40;
     mY = evt.pageY +130;
   }
-  var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY ;
+  var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;
   if ( curmonth < 10 )
     date += "0";
   date += curmonth;
@@ -605,7 +605,7 @@ function editCats (  evt ) {
     mX = evt.pageX  -160;
     mY = evt.pageY + 150;
   }
-  var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY ;
+  var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;
   var cat_ids = elements['cat_id'].value;
   var user = '<?php echo $user ?>';
   url = "catsel.php?form=editentryform&cats=" + cat_ids;

@@ -53,7 +53,7 @@ function check_username ( $user ) {
   return false;
  } 
   $sql='SELECT cal_login FROM webcal_user WHERE cal_login = ?';
-  $res = dbi_execute ( $sql , array ( $user ) );
+  $res = dbi_execute ( $sql, array ( $user ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $user ) {
@@ -74,7 +74,7 @@ function check_email ( $uemail ) {
   return false;
  } 
   $sql='SELECT cal_email FROM webcal_user WHERE cal_email = ?';
-  $res = dbi_execute ( $sql , array ( $uemail ) );
+  $res = dbi_execute ( $sql, array ( $uemail ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $uemail ) {

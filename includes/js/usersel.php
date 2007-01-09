@@ -61,8 +61,8 @@ function toggleGroup ( state ) {
   <?php
     for ( $i = 0; $i < count ( $groups ); $i++ ) {
       echo "\n  if ( selNum == $i ) {\n";
-      $res = dbi_execute ( 'SELECT cal_login from webcal_group_user ' .
-        'WHERE cal_group_id = ?' , array ( $groups[$i]['cal_group_id'] ) );
+      $res = dbi_execute ( 'SELECT cal_login from webcal_group_user
+        WHERE cal_group_id = ?', array ( $groups[$i]['cal_group_id'] ) );
       if ( $res ) {
         while ( $row = dbi_fetch_row ( $res ) ) {
           echo "    selectByLogin ( \"$row[0]\", state );\n";

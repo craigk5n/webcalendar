@@ -23,7 +23,7 @@ else if ( empty ( $categories ) )
 
 // make sure user is a participant
 $res = dbi_execute ( 'SELECT  cal_status FROM webcal_entry_user ' .
-  'WHERE cal_id = ? AND cal_login = ?' , array ( $id , $login ) );
+  'WHERE cal_id = ? AND cal_login = ?', array ( $id, $login ) );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     if ( $row[0] == 'D' ) // User deleted themself
@@ -46,7 +46,7 @@ $catNames = '';
 $globals_found = false;
 $categories = get_categories_by_id ( $id, $login, true );
 if ( ! empty ( $categories ) ) {
-  $catNames = implode(', ' , $categories );
+  $catNames = implode(', ', $categories );
   $keys = array_keys ( $categories );
   $catList = implode(',', $keys );
   sort ( $keys );
@@ -57,7 +57,7 @@ if ( ! empty ( $categories ) ) {
 // Get event name and make sure event exists
 $event_name = '';
 $res = dbi_execute ( 'SELECT cal_name FROM webcal_entry ' .
-  'WHERE cal_id = ?' , array ( $id ) );
+  'WHERE cal_id = ?', array ( $id ) );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     $event_name = $row[0];
@@ -73,7 +73,7 @@ if ( $res ) {
 // If this is the form handler, then save now
 if ( ! empty ( $cat_id ) && empty ( $error ) ) {
  dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cal_id = ? ' .
-    'AND ( cat_owner = ? )' , array ( $id , $login ) );
+    'AND ( cat_owner = ? )', array ( $id, $login ) );
  $categories = explode (',', $cat_id );
 
  $sql_params = array();
@@ -100,7 +100,7 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
  }
  $view_type = 'view_entry';  
   
- if ( ! dbi_execute ( $sql , $sql_params ) ) {
+ if ( ! dbi_execute ( $sql, $sql_params ) ) {
     $error = db_error ();
   } else {
     $url = $view_type .".php?id=$id";

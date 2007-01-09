@@ -150,7 +150,7 @@ if (  $eType == 'task') {
   // Combine all values to create completed date 
   if ( ! empty ( $completed_year )  && ! empty ( $completed_month ) &&
       ! empty ( $completed_day ) ) 
-      $eventcomplete =  sprintf( "%04d%02d%02d" , $completed_year, 
+      $eventcomplete =  sprintf( "%04d%02d%02d", $completed_year, 
         $completed_month, $completed_day );
 }
 
@@ -269,7 +269,7 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) ||
     if ( ! empty ( $bydayAll ) ) {
       $bydayAll = array_unique( $bydayAll );
       //call special sort algorithm
-      usort ($bydayAll , 'sort_byday');
+      usort ($bydayAll, 'sort_byday');
       $byday = implode (',', $bydayAll );
       //strip off leading comma if present
       if ( substr ( $byday, 0, 1 ) == "," )
@@ -973,7 +973,7 @@ if ( $single_user == 'N' &&
         }
         // Test for duplicate Names
         if ( $i > 0 ) {
-          for ( $k = $i ; $k > 0 ; $k-- ) {
+          for ( $k = $i; $k > 0; $k-- ) {
             if ( $ext_names[$i] == $ext_names[$k] ) { 
               $ext_names[$i]  .= "[$k]";     
             }

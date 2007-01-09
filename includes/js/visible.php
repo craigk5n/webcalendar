@@ -93,7 +93,7 @@ function selectDate (  day, month, year, current, evt, form ) {
     mX = evt.pageX + 40;
     mY = evt.pageY +130;
   }
-  var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY ;
+  var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;
   if ( curmonth < 10 )
     date += "0";
   date += curmonth;

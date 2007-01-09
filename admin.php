@@ -993,7 +993,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <tr><td bgcolor="<?php echo $BGCOLOR?>">
 <?php 
 set_today( date ('Ymd') );
-echo display_month ( date ('m') , date('Y') , true);
+echo display_month ( date ('m'), date('Y'), true);
 ?>
 </td></tr>
 <tr><td>&nbsp;</td></tr>

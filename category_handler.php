@@ -109,12 +109,12 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
       $catIcon =  $icon_path . 'cat-' . $id . '.gif';
       $fullIcon = $path_parts['dirname'] . '/' .$catIcon;
       renameIcon ( $id );
-      $file_result = move_uploaded_file ( $file['tmp_name'] , $fullIcon );
+      $file_result = move_uploaded_file ( $file['tmp_name'], $fullIcon );
       //echo "Upload Result:" . $file_result;
     } else if ( ! empty ( $file['tmp_name'] ) && $file['size'] > $icon_max_size ){
-      $error = translate ( 'File size exceeds maximum' ) ;
+      $error = translate ( 'File size exceeds maximum' );
     } else if ( ! empty ( $file['tmp_name'] ) && $file['type'] != 'image/gif' ){
-      $error = translate ( 'File is not a gif image' ) ;
+      $error = translate ( 'File is not a gif image' );
     }
     //Copy icon if local file specified
     $urlname = getPostvalue ( 'urlname' );

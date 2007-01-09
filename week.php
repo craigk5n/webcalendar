@@ -68,7 +68,7 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
 
 $untimedStr = $headerStr = $eventsStr = 
   $minical_tasks = $filler = '';
-$navStr = display_navigation( 'week' );;
+$navStr = display_navigation( 'week' );
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = ( $wkstart + ( ONE_DAY * $i ) ) + ( 12 * 3600 );
   $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS );
@@ -133,7 +133,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
         }
         // this will move entries apart that appear in one field,
         // yet start on different hours
-        for ( $u = $diff_start_time ; $u > 0 ; $u-- ) {
+        for ( $u = $diff_start_time; $u > 0; $u-- ) {
           $hour_arr[$last_row] .= "<br />\n"; 
         }
         $hour_arr[$last_row] .= $hour_arr[$j];
@@ -175,7 +175,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $rowspan_day[$i] = 0;
 }
 $untimedStr = ( $untimed_found ? '<tr><th class="empty">&nbsp;</th>'. 
-  $untimedStr . "</tr>\n": '') ;
+  $untimedStr . "</tr>\n": '');
 for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = (int) ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;

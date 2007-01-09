@@ -356,7 +356,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         }
       }
     }
-    $ev = get_entries ( $dateYmd, $get_unapproved , 1, 1);
+    $ev = get_entries ( $dateYmd, $get_unapproved, 1, 1);
     $evcnt = count ( $ev );
     for ( $j = 0; $j < $evcnt; $j++ ) {
       if ( ! isset ( $am_part[$ev[$j]->getID()] ) ) {

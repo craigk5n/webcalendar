@@ -123,7 +123,7 @@ if ( $single_user != 'Y' ) {
     if ( ! access_is_enabled () ||
       access_can_access_function ( ACCESS_ANOTHER_CALENDAR ) ) {
       // get count of users this user can see.  if > 1, then...
-      $ulist = array_merge ( get_my_users(), get_my_nonusers ( $login , true ) );
+      $ulist = array_merge ( get_my_users(), get_my_nonusers ( $login, true ) );
       if ( count ( $ulist ) > 1 ) {
         $calStr = translate ( 'Another User&#39;s Calendar' );
         $goto_link[] = '<a title="' .  $calStr 
@@ -272,7 +272,7 @@ $reports_link = array ();
   if ( $reports_linkcnt  > 0 ) {
     $tret .= '<br /><span class="prefix">' . 
       translate( 'Reports' ) . ':</span>&nbsp;' . "\n";
-    for ( $i = 0; $i < $reports_linkcnt ; $i++ ) {
+    for ( $i = 0; $i < $reports_linkcnt; $i++ ) {
       if ( $i > 0 )
         $tret .= ' | ';
       $tret .= $reports_link[$i] . "\n";

@@ -52,7 +52,7 @@ class WebCalMailer extends phpmailer {
 		$this->WCSubject ( $subject );
 		$this->Body ( $msg );
 		if ( ! empty ( $id ) )
-			$this->IcsAttach ( $id ) ;
+			$this->IcsAttach ( $id );
 		$this->Send();
 		$this->ClearAll(); 
   }
@@ -92,7 +92,7 @@ class WebCalMailer extends phpmailer {
   function IcsAttach ($id) {
     if ( function_exists ('export_ical') )
       $this->AddStringAttachment ( export_ical ( $id, true ),
-        'WebCalendar.ics', 'base64', 'text/ical' ) ;
+        'WebCalendar.ics', 'base64', 'text/ical' );
   
   }
     

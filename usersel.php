@@ -8,13 +8,13 @@ include_once 'includes/init.php';
 // listid: element id of user selection object in form
 //         ... to be used like form.elements[$listid]
 if ( empty ( $form ) ) {
-  echo $translations['Program Error'] . ': ' . str_replace ( 'XXX',
-    translate ( 'form' ), $translations['No XXX specified!'] );
+  echo translate ( 'Program Error' ) . ': ' . str_replace ( 'XXX',
+    translate ( 'form' ), translate ( 'No XXX specified!' ) );
   exit;
 }
 if ( empty ( $listid ) ) {
-  echo $translations['Program Error'] . ': ' . str_replace ( 'XXX',
-    translate ( 'listid' ), $translations['No XXX specified!'] );
+  echo translate ( 'Program Error' ) . ': ' . str_replace ( 'XXX',
+    translate ( 'listid' ), translate ( 'No XXX specified!' ) );
   exit;
 }
 
@@ -63,12 +63,12 @@ echo '
         <table style="borderh: 0; width: 100%;">
           <tr>
             <td class="aligntop">
-              <b>' . $translations['Users'] . ':</b><br />
+              <b>' . translate ( 'Users' ) . ':</b><br />
               <select name="users" size="15" multiple="multiple">';
 
 $users = get_my_users ();
 if ( $NONUSER_ENABLED == 'Y' ) {
-  $nonusers = get_my_nonusers ( $login , true );
+  $nonusers = get_my_nonusers ( $login, true );
   $users = ( $NONUSER_AT_TOP == 'Y'
     ? array_merge ( $nonusers, $users ) : array_merge ( $users, $nonusers ) );
 }
@@ -82,14 +82,14 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
 
 echo '
               </select><br />
-              <input type="button" value="' . $translations['All']
+              <input type="button" value="' . translate ( 'All' )
  . '" onclick="selectAll ()" />
-              <input type="button" value="' . $translations['None']
+              <input type="button" value="' . translate ( 'None' )
  . '" onclick="selectNone ()" />
               <input type="reset" value="' . translate ( 'Reset' ) . '" />
             </td>
             <td valign="top">
-              <b>' . $translations['Groups'] . ':</b><br />
+              <b>' . translate ( 'Groups' ) . ':</b><br />
               <select name="groups" size="15">';
 
 for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
@@ -100,17 +100,17 @@ for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
 
 echo '
               </select><br />
-              <input type="button" value="' . $translations['Add']
+              <input type="button" value="' . translate ( 'Add' )
  . '" onclick="selectGroupMembers ();" />
-              <input type="button" value="' . $translations['Remove']
+              <input type="button" value="' . translate ( 'Remove' )
  . '" onclick="deselectGroupMembers ();" />
             </td>
           </tr>
           <tr>
             <td style="text-align:center;" colspan="2"><br /><br />
-              <input type="button" value="' . $translations['Ok']
+              <input type="button" value="' . translate ( 'Ok' )
  . '" onclick="OkButton ()" />
-              <input type="button" value="' . $translations['Cancel']
+              <input type="button" value="' . translate ( 'Cancel' )
  . '" onclick="window.close ()" />
             </td>
           </tr>

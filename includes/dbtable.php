@@ -188,7 +188,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
             $first = 0;
           else
             $sql .= " AND ";
-          $sql .= $tablear[$i]['name'] . " = ?" ;
+          $sql .= $tablear[$i]['name'] . " = ?";
       $query_params[] = $keys[$tablear[$i]['name']];
         }
       }
@@ -280,7 +280,7 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
           $first = 0;
         else
           $sql .= " AND ";
-        $sql .= $tablear[$i]['name'] . " = ?" ;
+        $sql .= $tablear[$i]['name'] . " = ?";
         $query_params[] = $keys[$tablear[$i]['name']];
       }
     }
@@ -331,7 +331,7 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
           $first = 0;
         else
           $sql .= " AND ";
-        $sql .= $tablear[$i]['name'] . " = ?" ;
+        $sql .= $tablear[$i]['name'] . " = ?";
     $query_params[] = $keys[$tablear[$i]['name']];
       }
     }

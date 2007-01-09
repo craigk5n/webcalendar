@@ -54,7 +54,7 @@ if ( empty ( $error ) && $id > 0 ) {
   // Get list of participants
   $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? and cal_status = 'A'";
   //echo $sql."<br />";
-  $res = dbi_execute ( $sql , array ( $id ) );
+  $res = dbi_execute ( $sql, array ( $id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) )
       $partlogin[] = $row[0];
@@ -64,7 +64,7 @@ if ( empty ( $error ) && $id > 0 ) {
   // Get the name of the event
   $sql = 'SELECT cal_name, cal_description, cal_date, cal_time ' .
     'FROM webcal_entry WHERE cal_id = ?';
-  $res = dbi_execute ( $sql , array ( $id ) );
+  $res = dbi_execute ( $sql, array ( $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     $name = $row[0];
@@ -105,7 +105,7 @@ if ( empty ( $error ) && $id > 0 ) {
       translate( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .
       ( ( empty ( $hour ) && empty ( $minute ) ? '' : translate( 'Time' ) . ': ' .
       // Display using user's TIMEZONE and display TZID
-      display_time ( '', 2, $eventstart , $t_format ) ) ). "\n";
+      display_time ( '', 2, $eventstart, $t_format ) ) ). "\n";
       if ( ! empty ( $SERVER_URL ) ) {
         //DON'T change & to &amp; here. email will handle it
         $url = $SERVER_URL .  $view_type . '.php?id=' .  $id . '&em=1';

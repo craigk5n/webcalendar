@@ -247,7 +247,7 @@ function get_ids ( $sql, $ALL = '' ) {
         //ONLY Delete event if no other participants.
         $ID = $row[0];
         $res2 = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user
-          WHERE cal_id = ?' , array ( $ID ) );
+          WHERE cal_id = ?', array ( $ID ) );
         if ( $res2 ) {
           if ( $row2 = dbi_fetch_row ( $res2 ) ) {
             if ( $row2[0] == 1 ) $ids[] = $ID;

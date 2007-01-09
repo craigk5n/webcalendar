@@ -72,7 +72,7 @@ if ( ! empty ( $startid ) )
 $sql .= "ORDER BY wel.cal_log_id DESC";
 if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG )
   ws_log_message ( "SQL> " . $sql . "\n\n" );
-$res = dbi_execute ( $sql , $sql_params );
+$res = dbi_execute ( $sql, $sql_params );
 
 $out .= "<activitylog>\n";
 if ( $res ) {

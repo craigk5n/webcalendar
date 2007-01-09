@@ -58,7 +58,7 @@ function parse_outlookcsv ( $cal_file ) {
       /*
        * Start New Section For Outlook CSV
        */
-      //$tmp_data['RecordID']           =  ;
+      //$tmp_data['RecordID']           = ;
       $tmp_data['StartTime']          =  strtotime($start); //In seconds since 1970 (Unix Epoch)
       $tmp_data['EndTime']            =  strtotime($end);//In seconds since 1970 (Unix Epoch)
       $tmp_data['Summary']            =  $subject; //Summary of event (string)

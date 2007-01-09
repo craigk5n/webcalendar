@@ -128,7 +128,7 @@ function get_unapproved ( $user )
     'AND weu.cal_login = ? ' .
     'AND weu.cal_status = \'W\' ' .
     'ORDER BY we.cal_date';
-  $rows = dbi_get_cached_rows ( $sql , array ( $user ) );
+  $rows = dbi_get_cached_rows ( $sql, array ( $user ) );
   echo "<!-- SQL:\n $sql \n-->\n";
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
