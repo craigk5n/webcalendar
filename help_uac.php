@@ -9,15 +9,15 @@ translate ( 'Allows for fine control of user access and permissions. Users can a
 print_header ( '', '', '', true, false, true );
 echo $helpListStr . '
     <div class="helpbody">
-      <h2>' . $translations['Help'] . ': '
-       . $translations['User Access Control'] . '</h2>
+      <h2>' . translate ( 'Help' ) . ': '
+       . translate ( 'User Access Control' ) . '</h2>
       <p>' . $descStr . '</p>';
 $tmp_arr = array (
-  $translations['Can Email'] =>
+  translate ( 'Can Email' ) =>
   translate ( 'If disabled, this user cannot send you emails.' ),
-  $translations['Can Invite'] =>
+  translate ( 'Can Invite' ) =>
   translate ( 'If disabled, this user cannot see you in the participants list.' ),
-  $translations['Can See Time Only'] =>
+  translate ( 'Can See Time Only' ) =>
   translate ( 'If enabled, this user cannot view the details of any of your entries.' ),
   );
 list_help ( $tmp_arr );

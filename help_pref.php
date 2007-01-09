@@ -8,54 +8,54 @@ print_header ( '', '', '', true );
 ob_start ();
 
 echo $helpListStr . '
-    <h2>' . $translations['Help'] . ': ' . $translations['Preferences'] . '</h2>
-    <h3>' . $translations['Settings'] . '</h3>
+    <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Preferences' ) . '</h2>
+    <h3>' . translate ( 'Settings' ) . '</h3>
     <div class="helpbody">
       <div>';
 
 $tmp_arr = array (
-  $translations['Auto-refresh calendars'] => $translations['auto-refresh-help'],
-  $translations['Auto-refresh time'] => $translations['auto-refresh-time-help'],
-  $translations['Date format'] => $translations['date-format-help'],
+  translate ( 'Auto-refresh calendars' ) => translate ( 'auto-refresh-help' ),
+  translate ( 'Auto-refresh time' ) => translate ( 'auto-refresh-time-help' ),
+  translate ( 'Date format' ) => translate ( 'date-format-help' ),
   translate ( 'Default Category' ) => translate ( 'default-category-help' ),
-  $translations['Display description in printer day view'] =>
-  $translations['display-desc-print-day-help'],
-  $translations['Display unapproved'] =>
-  $translations['display-unapproved-help'],
-  $translations['Display week number'] =>
-  $translations['display-week-number-help'],
-  $translations['Display weekends in week view'] =>
-  $translations['display-weekends-help'],
-  $translations['Fonts'] => $translations['fonts-help'],
-  $translations['Language'] => $translations['language-help'],
-  $translations['Preferred view'] => $translations['preferred-view-help'],
-  $translations['Specify timed event length by'] =>
-  $translations['timed-evt-len-help'],
-  $translations['Time format'] => $translations['time-format-help'],
-  $translations['Time interval'] => $translations['time-interval-help'],
-  $translations['Timezone Offset'] => $translations['tz-help'],
-  $translations['Week starts on'] => $translations['display-week-starts-on'],
-  $translations['Work hours'] => $translations['work-hours-help'],
+  translate ( 'Display description in printer day view' ) =>
+  translate ( 'display-desc-print-day-help' ),
+  translate ( 'Display unapproved' ) =>
+  translate ( 'display-unapproved-help' ),
+  translate ( 'Display week number' ) =>
+  translate ( 'display-week-number-help' ),
+  translate ( 'Display weekends in week view' ) =>
+  translate ( 'display-weekends-help' ),
+  translate ( 'Fonts' ) => translate ( 'fonts-help' ),
+  translate ( 'Language' ) => translate ( 'language-help' ),
+  translate ( 'Preferred view' ) => translate ( 'preferred-view-help' ),
+  translate ( 'Specify timed event length by' ) =>
+  translate ( 'timed-evt-len-help' ),
+  translate ( 'Time format' ) => translate ( 'time-format-help' ),
+  translate ( 'Time interval' ) => translate ( 'time-interval-help' ),
+  translate ( 'Timezone Offset' ) => translate ( 'tz-help' ),
+  translate ( 'Week starts on' ) => translate ( 'display-week-starts-on' ),
+  translate ( 'Work hours' ) => translate ( 'work-hours-help' ),
   );
 
 list_help ( $tmp_arr );
 
 echo '
       </div>
-      <h3>' . $translations['Email'] . '</h3>
+      <h3>' . translate ( 'Email' ) . '</h3>
       <div>';
 
 $tmp_arr = array (
-  $translations['Event rejected by participant'] =>
-  $translations['email-event-rejected'],
-  $translations['Event reminders'] =>
-  $translations['email-event-reminders-help'],
-  $translations['Events added to my calendar'] =>
-  $translations['email-event-added'],
-  $translations['Events removed from my calendar'] =>
-  $translations['email-event-deleted'],
-  $translations['Events updated on my calendar'] =>
-  $translations['email-event-updated'],
+  translate ( 'Event rejected by participant' ) =>
+  translate ( 'email-event-rejected' ),
+  translate ( 'Event reminders' ) =>
+  translate ( 'email-event-reminders-help' ),
+  translate ( 'Events added to my calendar' ) =>
+  translate ( 'email-event-added' ),
+  translate ( 'Events removed from my calendar' ) =>
+  translate ( 'email-event-deleted' ),
+  translate ( 'Events updated on my calendar' ) =>
+  translate ( 'email-event-updated' ),
   );
 
 list_help ( $tmp_arr );
@@ -85,15 +85,15 @@ if ( $PUBLISH_ENABLED == 'Y' ) {
   $tmp_arr = array (
     translate ( 'Allow remote publishing' ) =>
     translate ( 'allow-remote-publishing-help' ),
-    $translations['URL'] => translate ( 'remote-publishing-url-help' ),
-    $translations['Allow remote subscriptions'] =>
+    translate ( 'URL' ) => translate ( 'remote-publishing-url-help' ),
+    translate ( 'Allow remote subscriptions' ) =>
     translate ( 'allow-remote-subscriptions-help' ),
-    $translations['URL'] => translate ( 'remote-subscriptions-url-help' ),
+    translate ( 'URL' ) => translate ( 'remote-subscriptions-url-help' ),
     translate ( 'Enable FreeBusy publishing' ) =>
     translate ( 'freebusy-enabled-help' ),
-    $translations['URL'] => translate ( 'freebusy-url-help' ),
-    $translations['Enable RSS feed'] => $translations['rss-enabled-help'],
-    $translations['URL'] => translate ( 'rss-feed-url-help' ),
+    translate ( 'URL' ) => translate ( 'freebusy-url-help' ),
+    translate ( 'Enable RSS feed' ) => translate ( 'rss-enabled-help' ),
+    translate ( 'URL' ) => translate ( 'rss-feed-url-help' ),
     );
 
   list_help ( $tmp_arr );
@@ -104,8 +104,8 @@ if ( $PUBLISH_ENABLED == 'Y' ) {
 
 if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' )
   echo '
-      <h3>' . $translations['Colors'] . '</h3>
-      <p>' . $translations['colors-help'] . '</p>';
+      <h3>' . translate ( 'Colors' ) . '</h3>
+      <p>' . translate ( 'colors-help' ) . '</p>';
 
 echo '
     </div>';

@@ -35,15 +35,15 @@ else {
   echo '
     <h2>' . ( $updating_public
     ? translate ( $PUBLIC_ACCESS_FULLNAME ) . '&nbsp;' : '' )
-   . $translations['Layers'] . '&nbsp;<img src="images/help.gif" alt="'
-   . $translations['Help'] . '" class="help" onclick="window.open ( '
+   . translate ( 'Layers' ) . '&nbsp;<img src="images/help.gif" alt="'
+   . translate ( 'Help' ) . '" class="help" onclick="window.open ( '
    . '\'help_layers.php\', \'cal_help\', \'dependent,menubar,scrollbars,'
    . 'height=400,width=400,innerHeight=420,outerWidth=420\');" /></h2>
     ' . display_admin_link () . translate ( 'Layers are currently' )
    . '&nbsp;<strong>';
 
   if ( $layers_enabled ) {
-    echo $translations['Enabled'] . '</strong>. (<a class="nav" '
+    echo translate ( 'Enabled' ) . '</strong>. (<a class="nav" '
      . 'href="layers_toggle.php?status=off' . $u_url . '">'
      . translate ( 'Disable Layers' ) . '</a>)<br />'
      . ( $is_admin && empty ( $public ) &&
@@ -52,11 +52,11 @@ else {
       <a href="layers.php?public=1">'
        . translate ( 'Click here' ) . '&nbsp;'
        . translate ( 'to modify the layers settings for the' ) . '&nbsp;'
-       . $translations[$PUBLIC_ACCESS_FULLNAME] . '&nbsp;'
-       . $translations['calendar'] . '.</a>
+       . translate ( $PUBLIC_ACCESS_FULLNAME ) . '&nbsp;'
+       . translate ( 'calendar' ) . '.</a>
     </blockquote>' : '' ) . '
     <a href="edit_layer.php' . ( $updating_public ? '?public=1' : '' )
-     . '">' . $translations['Add layer'] . '</a><br />';
+     . '">' . translate ( 'Add layer' ) . '</a><br />';
 
     $layer_count = 1;
     if ( $layers ) {
@@ -66,29 +66,29 @@ else {
         echo '
     <div class="layers" style="color: ' . $layer['cal_color'] . '">
       <h4>' . translate ( 'Layer' ) . '&nbsp;' . $layer_count . '
-        (<a title="' . $translations['Edit layer']
+        (<a title="' . translate ( 'Edit layer' )
          . '" href="edit_layer.php?id=' . $layer['cal_layerid'] . $u_url . '">'
-         . $translations['Edit'] . '</a> /
-        <a title="' . $translations['Delete layer']
+         . translate ( 'Edit' ) . '</a> /
+        <a title="' . translate ( 'Delete layer' )
          . '" href="del_layer.php?id=' . $layer['cal_layerid'] . $u_url
          . '" onclick="return confirm (\''
-         . str_replace ( 'XXX', $translations['layer'],
-          $translations['Are you sure you want to delete this XXX?'] )
-         . '\');">' . $translations['Delete'] . '</a>)</h4>
-      <p><label>' . $translations['Source'] . ': </label>' . $layerfullname
+         . str_replace ( 'XXX', translate ( 'layer' ),
+          translate ( 'Are you sure you want to delete this XXX?' ) )
+         . '\');">' . translate ( 'Delete' ) . '</a>)</h4>
+      <p><label>' . translate ( 'Source' ) . ': </label>' . $layerfullname
          . '</p>
-      <p><label>' . $translations['Color'] . ': </label>'
+      <p><label>' . translate ( 'Color' ) . ': </label>'
          . $layer['cal_color'] . ')</p>
-      <p><label>' . $translations['Duplicates'] . ': </label>'
+      <p><label>' . translate ( 'Duplicates' ) . ': </label>'
          . ( $layer['cal_dups'] == 'N'
-          ? $translations['No'] : $translations['Yes'] ) . '</p>
+          ? translate ( 'No' ) : translate ( 'Yes' ) ) . '</p>
     </div>';
 
         $layer_count++;
       }
     }
   } else
-    echo $translations['Disabled'] . '</strong>. (<a class="nav" '
+    echo translate ( 'Disabled' ) . '</strong>. (<a class="nav" '
      . 'href="layers_toggle.php?status=on' . $u_url . '">'
      . translate ( 'Enable Layers' ) . '</a>)<br />';
 }

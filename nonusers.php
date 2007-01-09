@@ -9,7 +9,7 @@ if ( ! $is_admin ) {
   exit;
 }
 if ( ! $NONUSER_PREFIX ) {
-  echo print_error_header () . $translations['NONUSER_PREFIX not set'] . '
+  echo print_error_header () . translate ( 'NONUSER_PREFIX not set' ) . '
   </body>
 </html>';
   exit;
