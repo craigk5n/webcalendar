@@ -9,7 +9,7 @@ if ( ! $is_admin ) {
 }
 $error = '';
 
-if ( $action == 'Delete' || $action == $translations['Delete'] ) {
+if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
   // delete this nonuser calendar
   $user = $nid;
 
@@ -47,7 +47,7 @@ if ( $action == 'Delete' || $action == $translations['Delete'] ) {
       array ( $user ) ) )
     $error = db_error ();
 } else {
-  if ( $action == 'Save' || $action == $translations['Save'] ) {
+  if ( $action == 'Save' || $action == translate ( 'Save' ) ) {
     // Updating
     $sql_params = array ();
     $sql = 'UPDATE webcal_nonuser_cals SET';
@@ -73,8 +73,8 @@ if ( $action == 'Delete' || $action == $translations['Delete'] ) {
           array ( $nid, $nfirstname, $nlastname, $nadmin ) ) )
         $error = db_error ();
     } else
-      $error = $translations['Calendar ID'] . ' '
-       . $translations['word characters only'] . '.';
+      $error = translate ( 'Calendar ID' ) . ' '
+       . translate ( 'word characters only' ) . '.';
   }
 }
 if ( empty ( $error ) )

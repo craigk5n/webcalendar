@@ -45,7 +45,7 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
 
   echo '
       </select>
-      <input type="submit" value="' . $translations['Go'] . '" />
+      <input type="submit" value="' . translate ( 'Go' ) . '" />
     </form>';
 
   ob_end_flush ();
