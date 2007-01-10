@@ -17,7 +17,7 @@
  */
 
 /*
-   The following define statements are based the this matrix
+   The following define statements are based on this matrix
           PUBLIC   CONFIDENTIAL   PRIVATE
    EVENT     1           8           64     =  73
    TASK      2          16          128     = 146
@@ -139,7 +139,6 @@ function access_is_enabled () {
  * @return string           The text description of the function.
  */
 function access_get_function_description ( $function ) {
-  global $translations;
 
   switch ( $function ) {
     case ACCESS_ACCESS_MANAGEMENT:
@@ -479,7 +478,7 @@ function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
   if ( empty ( $cur_user ) && ! empty ( $login ) )
     $cur_user = $login;
 
-  if ( $cur_user == $other_user ) {
+  if ( $cur_user == $other_user && $login != '__public__' ) {
     return ( $cal_can_xxx == 'email' || $cal_can_xxx == 'invite'
       ? 'Y' : CAN_DOALL );
   }
