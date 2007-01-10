@@ -1,5 +1,10 @@
 $Id$
 Version 1.1.3+CVS (?? ??? 2006)
+ - Fixed bug [ 1629758 ] Edit Event goes to Add Event
+ - Fixed bug [ 1631416 ] Reports not displayed for 'Public Access' using UAC
+ - Fixed bug [ 1631478 ] Edit/Add Layer has the same 'Headline' and no <br>
+ - Fixed bug [ 1631492 ] OK-Button of pop-up color.php doesn't work properly
+ - Fixed bug [ 1631505 ] categories are activated although not definied using categor
  - Fixed bug [ 1627932 ] issue sorting untimed events in month view
  - Fixed bug [ 1620626 ] Self Register broke in v1.1.2 (requires public)
  - Fixed bug [ 1623662 ] Additional Timezone for ical parsing logic
