@@ -97,11 +97,11 @@ if ( $newview ) {
 
 <table>
 <tr><td>
- <label for="viewname"><?php etranslate( 'View Name' )?>:</label></td><td>
+ <label for="viewname"><?php etranslate( 'View Name' )?>:</label></td><td colspan="3">
  <input name="viewname" id="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>" />
 </td></tr>
 <tr><td>
- <label for="viewtype"><?php etranslate( 'View Type' )?>:</label></td><td>
+ <label for="viewtype"><?php etranslate( 'View Type' )?>:</label></td><td colspan="3">
  <select name="viewtype" id="viewtype">
   <option value="D" <?php if ( $viewtype == 'D' ) 
   echo $selected;?>><?php etranslate( 'Day' ); ?></option>
@@ -124,30 +124,24 @@ if ( $newview ) {
       </select>&nbsp;
   </td></tr>
 
-<?php if ( $is_admin ) { ?>
-<tr><td><label>
- <?php etranslate( 'Global' )?>:</label></td><td>
- <label><input type="radio" name="is_global" value="Y"
-  <?php if ( $viewisglobal != 'N' ) echo $checked; ?> />&nbsp;<?php etranslate ( 'Yes') ?></label>
-  &nbsp;&nbsp;&nbsp;
-   <label><input type="radio" name="is_global" value="N"
-  <?php if ( $viewisglobal == 'N' ) echo $checked; ?> />&nbsp;<?php etranslate ( 'No') ?></label>
-</td></tr>
-<?php } ?>
+<?php if ( $is_admin ) {
+  $defIdx = ( ! empty ( $viewisglobal ) && $viewisglobal == 'Y' ? 'Y' : 'N' );
+  echo '<tr><td><label>'
+  . translate( 'Global' ) . ":</label></td>\n<td>"
+  . print_radio ( 'is_global', '', '' , $defIdx, '</td><td>' ) 
+  . "</td></tr>\n";
+ } 
 
-<tr><td valign="top">
- <label for="viewusers"><?php etranslate( 'Users' ); ?>:</label></td><td>
- <label><input type="radio" name="viewuserall" value="N" onclick="usermode_handler()"<?php
-  if ( ! $all_users ) {
-    echo $checked;
-  }
-?> /><?php etranslate( 'Selected' );?></label>&nbsp;&nbsp;
- <label><input type="radio" name="viewuserall" value="Y" onclick="usermode_handler()"<?php
-  if ( $all_users ) {
-    echo $checked;
-  }
-?> /><?php etranslate( 'All' );?></label>
-<br />
+
+$defIdx = ( ! empty ( $all_users ) && $all_users == true ? 'Y' : 'N' );
+echo '<tr><td><label>'
+  . translate( 'Users' ) . ":</label></td>\n<td>"
+  . print_radio ( 'viewuserall', array ( 'N'=>'Selected', 'Y'=>'All'),
+    'usermode_handler' , $defIdx, '</td><td>' ) 
+  . "</td></tr>\n";
+?>
+
+<tr><td colspan="4">
 <div id="viewuserlist">
 &nbsp;&nbsp;
  <select name="users[]" id="viewusers" size="10" multiple="multiple">
@@ -173,7 +167,7 @@ if ( $newview ) {
 <?php } ?>
 </div>
 </td></tr>
-<tr><td colspan="2" class="aligncenter">
+<tr><td colspan="4" class="aligncenter">
 <br />
 <input type="submit" name="action" value="<?php if ( $newview ) etranslate( 'Add' ); else etranslate( 'Save' ); ?>" />
 <?php if ( ! $newview ) { ?>
