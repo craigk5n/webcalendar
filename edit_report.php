@@ -169,7 +169,7 @@ if ( empty ( $error ) && $report_id >= 0 ) {
       $report_allow_nav = $row[$i++];
       $report_cat_id = $row[$i++];
       $report_include_empty = $row[$i++];
-      $report_show_in_trailer = $row[$i++];
+      $report_show_in_menu = $row[$i++];
       $report_update_date = $row[$i++];
 
       // Check permissions.
@@ -229,7 +229,7 @@ if ( empty ( $error ) && $report_id >= 0 ) {
   $report_allow_nav = 'Y';
   $report_cat_id = '';
   $report_include_empty = 'N';
-  $report_show_in_trailer = 'N';
+  $report_show_in_menu = 'N';
   $report_update_date = '';
 }
 
@@ -296,43 +296,45 @@ if ( $show_participants ) {
   echo "</td></tr>\n";
 }
 
-if ( $is_admin ) { ?>
-<tr><td><label>
- <?php etranslate( 'Global' )?>:</label></td><td>
- <label><input type="radio" name="is_global" value="Y"
-  <?php if ( $report_is_global != 'N' ) echo $checked; ?> 
-    />&nbsp;<?php etranslate ( 'Yes') ?></label>&nbsp;&nbsp;&nbsp;
-  <label><input type="radio" name="is_global" value="N"
-    <?php if ( $report_is_global == 'N' ) echo $checked; ?>
-    />&nbsp;<?php etranslate ( 'No') ?></label>
-</td></tr>
-<?php } 
+if ( $is_admin ) { 
+  $defIdx = ( ! empty ( $report_is_global ) && $report_is_global == 'Y' ? 'Y' : 'N' );
+  echo '<tr><td><label>'
+  . translate( 'Global' ) . ":</label></td>\n<td>"
+  . print_radio ( 'is_global', '', '' , $defIdx ) 
+  . "</td></tr>\n";
 
-// The report will always be shown in the trailer for the creator
+// The report will always be shown in the menu for the creator
 // of the report.  For admin users who create a global report,
-// allow option of adding to all users trailer.
-if ( $is_admin ) {
+// allow option of adding to all users menu.
+  $defIdx = ( ! empty ( $report_show_in_menu ) && 
+    $report_show_in_menu == 'Y' ? 'Y' : 'N' );
+  echo '<tr><td><label>'
+  . translate( 'Include link in menu' ) . ":</label></td>\n<td>"
+  . print_radio ( 'show_in_trailer', '', '' , $defIdx ) 
+  . "</td></tr>\n";
+} 
+
+$defIdx = ( ! empty ( $report_include_header ) && 
+	$report_include_header == 'Y' ? 'Y' : 'N' );
+echo '<tr><td><label>'
+. translate( 'Include standard header/trailer' ) . ":</label></td>\n<td>"
+. print_radio ( 'include_header', '', '' , $defIdx ) 
+. "</td></tr>\n";
+
+$defIdx = ( ! empty ( $report_allow_nav ) && 
+	$report_allow_nav == 'Y' ? 'Y' : 'N' );
+echo '<tr><td><label>'
+. translate( 'Include previous/next links' ) . ":</label></td>\n<td>"
+. print_radio ( 'allow_nav', '', '' , $defIdx ) 
+. "</td></tr>\n";
+
+$defIdx = ( ! empty ( $report_include_empty ) && 
+	$report_include_empty == 'Y' ? 'Y' : 'N' );
+echo '<tr><td><label>'
+. translate( 'Include empty dates' ) . ":</label></td>\n<td>"
+. print_radio ( 'include_empty', '', '' , $defIdx ) 
+. "</td></tr>\n";
 ?>
-<tr><td><label>
- <?php etranslate( 'Include link in trailer' )?>:</label></td><td>
- <label><input type="radio" name="show_in_trailer" value="Y"
-  <?php if ( $report_show_in_trailer != 'N' ) echo $checked; ?> 
-  />&nbsp;<?php etranslate ( 'Yes') ?></label>&nbsp;&nbsp;&nbsp;
- <label><input type="radio" name="show_in_trailer" value="N"
-  <?php if ( $report_show_in_trailer == 'N' ) echo $checked; ?> 
-  />&nbsp;<?php etranslate ( 'No') ?></label>
-</td></tr>
-<?php } ?>
-<tr><td><label>
- <?php etranslate( 'Include standard header/trailer' )?>:&nbsp;&nbsp;&nbsp;&nbsp;
-   </label></td><td>
- <label><input type="radio" name="include_header" value="Y"
-   <?php if ( $report_include_header != 'N' ) echo $checked; ?> 
-   />&nbsp;<?php etranslate ( 'Yes') ?></label>&nbsp;&nbsp;&nbsp;
- <label><input type="radio" name="include_header" value="N"
-   <?php if ( $report_include_header == 'N' ) echo $checked; ?> 
-   />&nbsp;<?php etranslate ( 'No') ?></label>
-</td></tr>
 <tr><td>
  <label for="rpt_time_range"><?php etranslate( 'Date range' )?>:</label></td><td>
  <select name="time_range" id="rpt_time_range">
@@ -346,6 +348,7 @@ if ( $is_admin ) {
     }
   ?></select>
 </td></tr>
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
 <tr><td>
  <label for="rpt_cat_id"><?php etranslate( 'Category' )?>:</label></td><td>
  <select name="cat_id" id="rpt_cat_id">
@@ -360,24 +363,7 @@ if ( $is_admin ) {
     }
   ?></select>
 </td></tr>
-<tr><td><label>
- <?php etranslate( 'Include previous/next links' )?>:</label></td><td>
- <label><input type="radio" name="allow_nav" value="Y"
-   <?php if ( $report_allow_nav != 'N' ) echo $checked; ?> 
-   />&nbsp;<?php etranslate ( 'Yes') ?></label>&nbsp;&nbsp;&nbsp;
- <label><input type="radio" name="allow_nav" value="N"
-   <?php if ( $report_allow_nav == 'N' ) echo $checked; ?> 
-   />&nbsp;<?php etranslate ( 'No') ?></label>
-</td></tr>
-<tr><td><label>
- <?php etranslate( 'Include empty dates' )?>:</label></td><td>
- <label><input type="radio" name="include_empty" value="Y"
-   <?php if ( $report_include_empty != 'N' ) echo $checked; ?> 
-   />&nbsp;<?php etranslate ( 'Yes') ?></label>&nbsp;&nbsp;&nbsp;
- <label><input type="radio" name="include_empty" value="N"
-   <?php if ( $report_include_empty == 'N' ) echo $checked; ?> 
-   />&nbsp;<?php etranslate ( 'No') ?></label>
-</td></tr>
+<?php  } //end $CATEGORIES_ENABLED test  ?>
 </table>
 
 <table>
