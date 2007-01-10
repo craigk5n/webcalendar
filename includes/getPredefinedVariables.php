@@ -80,7 +80,6 @@ function getGetValue ( $name ) {
  * @uses getPostValue
  */
 function getValue ( $name, $format = '', $fatal = false ) {
-  global $translations;
 
   $val = getPostValue ( $name );
   if ( ! isset ( $val ) )
