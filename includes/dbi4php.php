@@ -226,7 +226,7 @@ function dbi_connect ( $host, $login, $password, $database, $lazy = true ) {
  */
 function dbi_close ( $conn ) {
   global $db_connection_info, $db_query_count,
-  $old_textlimit, $old_textsize, $SQLLOG, $translations;
+  $old_textlimit, $old_textsize, $SQLLOG;
 
   if ( is_array ( $db_connection_info ) ) {
     if ( ! $db_connection_info['connected'] )
@@ -301,8 +301,7 @@ function dbi_num_cached_queries () {
  *               results), or true/false on insert or delete queries.
  */
 function dbi_query ( $sql, $fatalOnError = true, $showError = true ) {
-  global $c, $db_connection_info, $db_query_count, $phpdbiVerbose, $SQLLOG,
-    $translations;
+  global $c, $db_connection_info, $db_query_count, $phpdbiVerbose, $SQLLOG;
 
   if ( ! isset ( $SQLLOG ) && ! empty ( $db_connection_info['debug'] ) )
     $SQLLOG = array ();
@@ -397,7 +396,6 @@ function dbi_query ( $sql, $fatalOnError = true, $showError = true ) {
  *               the query result or false on an error.
  */
 function dbi_fetch_row ( $res ) {
-  global $translations;
   if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 )
     return mysql_fetch_array ( $res, MYSQL_NUM );
   elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 )
@@ -436,7 +434,6 @@ function dbi_fetch_row ( $res ) {
  * @return int The number or database rows affected.
  */
 function dbi_affected_rows ( $conn, $res ) {
-  global $translations;
   if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 )
     return mysql_affected_rows ( $conn );
   elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 )
@@ -553,7 +550,6 @@ function dbi_get_blob ( $table, $column, $key ) {
  * @return bool True on success
  */
 function dbi_free_result ( $res ) {
-  global $translations;
   if ( $res == 1 ) // Not needed for UPDATE, DELETE, etc
     return;
   if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 )
@@ -589,7 +585,6 @@ function dbi_free_result ( $res ) {
  *                varies depending on which type of database is being used.)
  */
 function dbi_error () {
-  global $translations;
   if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 )
     $ret = mysql_error ();
   elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 )
@@ -626,7 +621,6 @@ function dbi_error () {
  *                            the SQL that caused the error)?
  */
 function dbi_fatal_error ( $msg, $doExit = true, $showError = true ) {
-  global $translations;
   if ( $showError ) {
     echo '<h2>' . translate ( 'Error' ) . '</h2>
 <!--begin_error (dbierror)-->
@@ -806,7 +800,7 @@ function dbi_get_debug () {
  * Return the number of files deleted.
  */
 function dbi_clear_cache () {
-  global $db_connection_info, $translations;
+  global $db_connection_info;
 
   if ( empty ( $db_connection_info['cachedir'] ) )
     return 0;
