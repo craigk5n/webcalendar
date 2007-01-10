@@ -1431,32 +1431,6 @@ a.weekcell {
 .layers p label {
   font-size: 13px;
 }
-#colors {
-  background: #CCC;
-}
-#colors td img {
-  border: 0;
-}
-#colorpic {
-  width: 192px;
-  height: 192px;
-}
-#thecell,
-#theoldcell {
-  border: 1px solid #000;
-  background: #FFF;
-}
-#thecell td img,
-#theoldcell td img {
-  width: 55px;
-  height: 53px;
-}
-#cross,
-#sliderarrow {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 #accountiframe,
 #useriframe {
   width: 90%;

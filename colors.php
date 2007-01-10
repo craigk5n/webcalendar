@@ -10,15 +10,15 @@ $basicStr = translate ( 'Basic Colors' );
 $cancelStr = translate ( 'Cancel' );
 $currentStr = translate ( 'Current Color' );
 $customStr = translate ( 'Custom Colors' );
-$okStr = translate ( 'Ok');
 $oldStr = translate ( 'Old Color' );
-
+$okStr = '&nbsp;&nbsp;&nbsp;' . translate ( 'Ok' ). '&nbsp;&nbsp;&nbsp;';
 print_header ( array ( 'js/colors.php/true' ), '',
-  'onload="fillhtml (); setInit ();"', true, false, true );
+  'onload="fillhtml(); setInit();"', true, false, true );
 
 /*
   HTML Color Editor v1.2 (c) 2000 by Sebastian Weber <webersebastian@yahoo.de>
   Modified by Ray Jones for inclusion into WebCalendar.
+  NOTE: In-line CSS styles must remain in this file for proper operation
 */
 
 echo <<<EOT
@@ -27,18 +27,18 @@ echo <<<EOT
       <table cellspacing="2" cellpadding="0" align="center">
         <tr>
           <td colspan="3">
-            <img height="1" src="images/blank.gif" alt="" /></td>
+            <img height="1" src="images/blank.gif" border="0" alt="" /></td>
         </tr>
         <tr>
           <td align="center">{$basicStr}</td>
 <!-- COLORS PICTURE -->
           <td rowspan="5" width="220" align="center">
-            <img id="colorpic" src="images/colors.jpg"
-              onclick="setFromImage (event);" alt="" /></td>
+            <img id="colorpic" height="192" width="192" src="images/colors.jpg"
+              onclick="setFromImage(event);" alt="" /></td>
 <!-- ***** SLIDER **** -->
           <td rowspan="5">
             <table cellspacing="0" cellpadding="0" width="24"
-              onclick="setFromSlider (event);">
+              onclick="setFromSlider(event);">
               <tr>
                 <td id="slider"></td>
               </tr>
@@ -80,19 +80,19 @@ echo <<<EOT
                     value="FFFFFF" onchange="setFromHTML ()" />
                 </td>
                 <td class="boxtop boxright boxbottom" width="120">
-                  <table id="thecell" align="center" cellspacing="0"
-                    cellpadding="0">
+          <table id="thecell" bgcolor="#ffffff" align="center"
+border="1" cellspacing="0" cellpadding="0">
                     <tr>
-                      <td><img src="images/blank.gif" alt="" /></td>
+                      <td><img src="images/blank.gif" width="55" height="53" border="0" alt="" /></td>
                     </tr>
                   </table>
                 </td>
                 <td valign="middle" align="center" class="boxtop boxright
                   boxbottom">
 <!--  Display New Color  -->
-                  <table id="theoldcell" cellspacing="0" cellpadding="0">
+        <table  id="theoldcell" bgcolor="#ffffff" border="1" cellspacing="0" cellpadding="0">
                     <tr>
-                      <td><img src="images/blank.gif" alt="" /></td>
+            <td><img src="images/blank.gif" width="55" height="53" border="0" alt="" /></td>
                     </tr>
                   </table>
                 </td>
@@ -111,8 +111,8 @@ echo <<<EOT
         </tr>
       </table>
     </form>
-    <img id="cross" src="images/cross.gif" alt="" />
-    <img id="sliderarrow" src="images/arrow.gif" alt="" />
+<img id="cross" src="images/cross.gif" alt="" style="position:absolute; left:0px; top:0px" />
+<img id="sliderarrow" src="images/arrow.gif" alt="" style="position:absolute; left:0px; top:0px" />
   </body>
 </html>
 EOT;
