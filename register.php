@@ -38,9 +38,9 @@ if ( empty ( $ALLOW_SELF_REGISTRATION ) || $ALLOW_SELF_REGISTRATION != 'Y' ) {
 
 if ( empty ( $SELF_REGISTRATION_FULL ) || $SELF_REGISTRATION_FULL == 'N' ) { 
   $SELF_REGISTRATION_FULL = 'N';
- $form_control = 'email';
-} else if ( $SELF_REGISTRATION_FULL = 'Y' ) {
  $form_control = 'full';
+} else if ( $SELF_REGISTRATION_FULL = 'Y' ) {
+ $form_control = 'email';
 }
 
 //See if new username is unique
@@ -263,7 +263,7 @@ function showResponse(originalRequest) {
 
 </script>
 <?php 
-  echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login" />';
+  echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login=1" />';
 
  // Print custom header (since we do not call print_header function)
  if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
@@ -288,7 +288,7 @@ if ( ! empty ($control ) && empty ( $error ) ) { ?>
 <tr><td rowspan="3"><img src="images/register.gif"></td>
 
 <td><?php etranslate( 'Welcome to WebCalendar' )?></td></tr>
-<?php if ( $SELF_REGISTRATION_FULL == 'N' ) { ?>
+<?php if ( $SELF_REGISTRATION_FULL == 'Y' ) { ?>
   <tr><td colspan="3" align="center"><label><?php 
   etranslate( 'Your email should arrive shortly' )?></label><td></tr> 
 <?php } ?>
@@ -314,7 +314,7 @@ if ( ! empty ($control ) && empty ( $error ) ) { ?>
 <tr><td  align="right" colspan="2">
   <label><?php etranslate( 'E-mail address' )?>:</label></td>
   <td align="left"><input type="text" name="uemail" id="uemail" value="<?php echo $uemail ?>" size="40"  maxlength="75" onchange="check_uemail();" /></td></tr>
-<?php if ( $SELF_REGISTRATION_FULL == 'Y' ) { ?>
+<?php if ( $SELF_REGISTRATION_FULL == 'N' ) { ?>
   <tr><td  align="right" colspan="2">
     <label><?php etranslate( 'Password' )?>:</label></td>
     <td align="left"><input name="upassword1" value="<?php echo $upassword1 ?>" size="15"  type="password" /></td></tr>
