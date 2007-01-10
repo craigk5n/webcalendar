@@ -756,7 +756,8 @@ if ( $single_user == 'N' && $show_participants ) {
 $can_edit = ( $can_edit || $is_admin || $is_nonuser_admin &&
   ( $user == $create_by ) ||
   ( $is_assistant && ! $is_private && ( $user == $create_by ) ) ||
-  ( $readonly != 'Y' && ( $login == $create_by || $single_user == 'Y' ) ) );
+  ( $readonly != 'Y' && ( $login != '__public__' && $login == $create_by || 
+  $single_user == 'Y' ) ) );
 
 if ( empty ( $event_status ) ) {
   // this only happens when an admin views a deleted event that he is
@@ -935,12 +936,12 @@ if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) &&
 
 // TODO add these permissions to the UAC list
 $can_add_attach = ( Doc::attachmentsEnabled () &&
-  ( $can_edit || ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
-    ( $ALLOW_ATTACH_ANY == 'Y' && $login != '__public__' ) ) );
+  $can_edit && ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
+  ( $ALLOW_ATTACH_ANY == 'Y' && $login != '__public__' ) );
 
 $can_add_comment = ( Doc::commentsEnabled () &&
-  ( $can_edit || ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
-    ( $ALLOW_COMMENTS_ANY == 'Y' && $login != '__public__' ) ) );
+  $can_edit && ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
+  ( $ALLOW_COMMENTS_ANY == 'Y' && $login != '__public__' ) );
 
 if ( $can_add_attach && $event_status != 'D' ) {
   $addAttchStr = translate ( 'Add Attachment' );
