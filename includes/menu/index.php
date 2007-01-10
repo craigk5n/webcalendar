@@ -17,7 +17,7 @@ $MENU_DATE_TOP, $menuHtml, $menuScript, $NONUSER_ENABLED, $PUBLIC_ACCESS,
 $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL, $PUBLIC_ACCESS_CAN_ADD,
 $PUBLIC_ACCESS_OTHERS, $readonly, $REMOTES_ENABLED, $REPORTS_ENABLED,
 $REQUIRE_APPROVALS, $show_printer, $single_user, $START_VIEW, $thisday,
-$thismonth, $thisyear, $use_http_auth, $user, $views, $translations;
+$thismonth, $thisyear, $use_http_auth, $user, $views;
 
 /* -----------------------------------------------------------------------------
          First figure out what options are on and privileges we have
@@ -138,7 +138,6 @@ if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
     access_can_access_function ( ACCESS_REPORT, $user ) ) {
   $reports_link = array ();
   $u_url = ( ! empty ( $user ) && $user != $login ? '&user=' . $user : '' );
-
   $rows = dbi_get_cached_rows ( 'SELECT cal_report_name, cal_report_id
     FROM webcal_report WHERE cal_login = ? OR ( cal_is_global = \'Y\'
     AND cal_show_in_trailer = \'Y\' ) ORDER BY cal_report_id',
@@ -437,7 +436,7 @@ if ( ! empty ( $menuExtras[3] ) )
 
 // Reports Menu
 // translate ( 'My Reports' )
-if ( $login != '__public__' && $menuConfig['Reports'] ) {
+if ( ( $login != '__public__' || $reports_linkcnt > 0 ) && $menuConfig['Reports'] ) {
   jscMenu_menu ( 'Reports' );
 
   if ( $is_admin && $menuConfig['Activity Log'] && ( ! access_is_enabled () ||
@@ -459,8 +458,8 @@ if ( $login != '__public__' && $menuConfig['Reports'] ) {
     jscMenu_close ();
   }
 
-  if ( ! $is_nonuser && $REPORTS_ENABLED == 'Y' && $readonly != 'Y' &&
-    $menuConfig['Manage Reports'] && ( ! access_is_enabled () ||
+  if ( $login != '__public__' && ! $is_nonuser && $REPORTS_ENABLED == 'Y' && 
+    $readonly != 'Y' && $menuConfig['Manage Reports'] && ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_REPORT, $user ) ) ) {
     jscMenu_divider ();
     jscMenu_item ( 'manage_reports.png', 'Manage Reports', 'report.php' );
