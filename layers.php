@@ -25,9 +25,24 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
+$layerStr = translate ( 'Layer' );
+$editLayerStr = translate ( 'Edit layer' );
+$editStr = translate ( 'Edit' );
+$deleteStr = translate ( 'Delete' );
+$deleteLayerStr = translate ( 'Delete layer' );
+$areYouSureStr = translate ( 'Are you sure you want to delete this XXX?' );
+$sourceStr = translate ( 'Source' );
+$colorStr = translate ( 'Color' );
+$duplicatesStr = translate ( 'Duplicates' );
+$noStr = translate ( 'No' );
+$yesStr = translate ( 'Yes' );
+$disabledStr = translate ( 'Disabled' );
+$enableLayersStr = translate ( 'Enable layers' );
+
 print_header ();
 
 ob_start ();
+
 
 if ( $ALLOW_VIEW_OTHER != 'Y' )
   echo print_not_auth ();
@@ -56,7 +71,7 @@ else {
        . translate ( 'calendar' ) . '.</a>
     </blockquote>' : '' ) . '
     <a href="edit_layer.php' . ( $updating_public ? '?public=1' : '' )
-     . '">' . translate ( 'Add layer' ) . '</a><br />';
+     . '">' . translate ( 'Add layer') . '</a><br />';
 
     $layer_count = 1;
     if ( $layers ) {
@@ -65,32 +80,31 @@ else {
 
         echo '
     <div class="layers" style="color: ' . $layer['cal_color'] . '">
-      <h4>' . translate ( 'Layer' ) . '&nbsp;' . $layer_count . '
-        (<a title="' . translate ( 'Edit layer' )
+      <h4>' . $layerStr . '&nbsp;' . $layer_count . '
+        (<a title="' . $editLayerStr
          . '" href="edit_layer.php?id=' . $layer['cal_layerid'] . $u_url . '">'
-         . translate ( 'Edit' ) . '</a> /
-        <a title="' . translate ( 'Delete layer' )
+         . $editStr . '</a> /
+        <a title="' . $deleteLayerStr
          . '" href="del_layer.php?id=' . $layer['cal_layerid'] . $u_url
          . '" onclick="return confirm (\''
-         . str_replace ( 'XXX', translate ( 'layer' ),
-          translate ( 'Are you sure you want to delete this XXX?' ) )
-         . '\');">' . translate ( 'Delete' ) . '</a>)</h4>
-      <p><label>' . translate ( 'Source' ) . ': </label>' . $layerfullname
+         . str_replace ( 'XXX', $layerStr, $areYouSureStr )
+         . '\');">' . $deleteStr . '</a>)</h4>
+      <p><label>' . $sourceStr . ': </label>' . $layerfullname
          . '</p>
-      <p><label>' . translate ( 'Color' ) . ': </label>'
+      <p><label>' . $colorStr . ': </label>'
          . $layer['cal_color'] . ')</p>
-      <p><label>' . translate ( 'Duplicates' ) . ': </label>'
+      <p><label>' . $duplicatesStr . ': </label>'
          . ( $layer['cal_dups'] == 'N'
-          ? translate ( 'No' ) : translate ( 'Yes' ) ) . '</p>
+          ? $noStr : $yesStr ) . '</p>
     </div>';
 
         $layer_count++;
       }
     }
   } else
-    echo translate ( 'Disabled' ) . '</strong>. (<a class="nav" '
+    echo $disabledStr . '</strong>. (<a class="nav" '
      . 'href="layers_toggle.php?status=on' . $u_url . '">'
-     . translate ( 'Enable Layers' ) . '</a>)<br />';
+     . $enableLayersStr . '</a>)<br />';
 }
 
 ob_end_flush ();
