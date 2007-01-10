@@ -492,7 +492,7 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
 }
 
 $textareasize = 'rows="15" cols="50"';
-$INC = array (  'js/visible.php', "js/edit_entry.php/false/$user" );
+$INC = array ( "js/edit_entry.php/false/$user", 'js/visible.php' );
 $BodyX = 'onload="onLoad();"';
 if ( $ALLOW_HTML_DESCRIPTION == 'Y' ){
   // Allow HTML in description
@@ -1198,7 +1198,7 @@ if ( $useTabs ) { ?>
    echo '</tr></table>';
 
  //Populate Repeat Exceptions data for later use
- $excepts = '';
+ $excepts = '<option></option>';
  $exceptcnt = count ( $exceptions );
  for ( $i = 0; $i < $exceptcnt; $i++ ) {
    $excepts .= '<option value="-' . $exceptions[$i] . '">-' . $exceptions[$i] . "</option>\n";
@@ -1402,6 +1402,16 @@ if ( $useTabs ) { ?>
 <?php } /* $useTabs */ 
 } ?>
 </div> <!-- End tabscontent -->
+<?php
+if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__public__' ) {
+  if ( function_exists ( 'imagecreatetruecolor' ) ) {
+    include_once 'includes/classes/captcha/captcha.php';
+    echo captcha::form();
+  } else {
+    echo "<b>Warning:</b> Cannot use CAPTCHA without PHP's GD extension!<br />\n";
+  }
+}
+?>
 <table>
 <tr><td>
  <script type="text/javascript">

@@ -238,6 +238,19 @@ if ( ! $can_edit && empty ( $error ) ) {
   $error = print_not_auth ();
 }
 
+// CAPTCHA
+if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__public__' ) {
+  if ( function_exists ( 'imagecreatetruecolor' ) ) {
+    include_once 'includes/classes/captcha/captcha.php';
+    $res = captcha::check ();
+    if ( ! $res ) {
+      $error = translate ( 'You must enter the anti-spam text on the previous page' );
+    }
+  } else {
+    // Should have seen warning on edit_entry.php, so no warning here...
+  }
+}
+
 // If display of participants is disabled, set the participant list
 // to the event creator.  This also works for single-user mode.
 // Basically, if no participants were selected (because there
