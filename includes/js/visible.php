@@ -75,30 +75,69 @@ function visByClass(classname, state){
        alltags[i].style.display = "";     
  }
 } 
+
+function getScrollingPosition()
+{
+ var position = [0, 0];
+
+ if (typeof window.pageYOffset != 'undefined')
+ {
+   position = [
+       window.pageXOffset,
+       window.pageYOffset
+   ];
+ }
+
+ else if (typeof document.documentElement.scrollTop
+     != 'undefined' && document.documentElement.scrollTop > 0)
+ {
+   position = [
+       document.documentElement.scrollLeft,
+       document.documentElement.scrollTop
+   ];
+ }
+
+ else if (typeof document.body.scrollTop != 'undefined')
+ {
+   position = [
+       document.body.scrollLeft,
+       document.body.scrollTop
+   ];
+ }
+
+ return position;
+}
+
 //these common function is placed here because all the files that use it 
 //also use visibility functions
-function selectDate (  day, month, year, current, evt, form ) {
+function selectDate ( day, month, year, current, evt, frm ) {
   // get currently selected day/month/year
-  monthobj = eval ( 'document.' + form.name + '.' + month );
+  monthobj = eval( 'document.' + frm.id + '.' + month);
   curmonth = monthobj.options[monthobj.selectedIndex].value;
-  yearobj = eval ( 'document.' + form.name + '.' + year );
+  yearobj = eval( 'document.' + frm.id + '.' + year );
   curyear = yearobj.options[yearobj.selectedIndex].value;
   date = curyear;
+  evt = evt? evt: window.event;
+  var scrollingPosition = getScrollingPosition();
 
-    if (document.getElementById) {
-    mX = evt.clientX   + 40;
-    mY = evt.clientY  + 120;
-  }
-  else {
-    mX = evt.pageX + 40;
-    mY = evt.pageY +130;
-  }
-  var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;
+  if (typeof evt.pageX != "undefined" &&
+     typeof evt.x != "undefined")
+ {
+   mX = evt.pageX + 40;
+   mY = self.screen.availHeight - evt.pageY;
+ }
+ else
+ {
+   mX = evt.clientX + scrollingPosition[0] + 40;
+   mY = evt.clientY + scrollingPosition[1];
+ }
+//alert ( mX + ' ' + mY );
+  var MyPosition = 'scrollbars=no,toolbar=no,screenx=' + mX + ',screeny=' + mY + ',left=' + mX + ',top=' + mY ;
   if ( curmonth < 10 )
     date += "0";
   date += curmonth;
   date += "01";
-  url = "datesel.php?form=" + form.name + "&fday=" + day +
+  url = "datesel.php?form=" + form.id + "&fday=" + day +
     "&fmonth=" + month + "&fyear=" + year + "&date=" + date;
   var colorWindow = window.open(url,"DateSelection","width=300,height=180,"  + MyPosition);
 }
