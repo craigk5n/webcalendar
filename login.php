@@ -17,6 +17,10 @@ include 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
 
+@session_start ();
+session_destroy ();
+//$_SESSION['webcal_login'] = '';
+
 load_global_settings ();
 
 // Change this to true to show "no such user" or "invalid password" on
