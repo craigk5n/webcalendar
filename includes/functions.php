@@ -1310,7 +1310,7 @@ function build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only
 function date_selection ( $prefix, $date, $trigger=false, $num_years=20 ) {
   $ret = '';
  $selected = ' selected="selected"';
- $trigger_str = ( ! empty ( $trigger )? $prefix . 'datechanged()' : '');
+ $trigger_str = ( ! empty ( $trigger )? $prefix . 'datechanged();' : '');
  $onchange = (! empty ( $trigger_str )? 'onchange="$trigger_str"': '');
   if ( strlen ( $date ) != 8 )
     $date = date ( 'Ymd' );
@@ -1340,9 +1340,9 @@ function date_selection ( $prefix, $date, $trigger=false, $num_years=20 ) {
   }
   $ret .= "</select>\n";
   $ret .= '<input type="button" name="' . $prefix
-    . "btn\" onclick=\"$trigger_str;selectDate( '" 
+    . "btn\" onclick=\"selectDate('" 
     . $prefix . "day','" . $prefix . "month','" . $prefix 
-    . "year',$date, event, this.form )\" value=\"" 
+    . "year','$date', event, this.form );\" value=\"" 
     . translate('Select') . "...\" />\n";
 
   return $ret;
