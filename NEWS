@@ -10,6 +10,9 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 Version 1.1.3 (?? ??? 2006)
 
+  - New Features / Enhancements:
+    = User Interface
+      + Added CAPTCHA validation option  to Public Access event creation
   - The following translations were updated:
     Basque
 
