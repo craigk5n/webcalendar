@@ -11,9 +11,13 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 Version 1.1.3 (?? ??? 2006)
 
   - New Features / Enhancements:
+    = Import / Export / iCalendar / hCalendar / RSS
+      + VTIMEZONE information is now captured from imported ics files and can be reused
+        for future exports. This greatly simplifies the process and speeds up exports.
     = User Interface
       + Added CAPTCHA validation option  to Public Access event creation
   - The following translations were updated:
+    German
     Basque
 
 Version 1.1.2 (18 Dec 2006)

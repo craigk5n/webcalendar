@@ -249,3 +249,10 @@ CREATE TABLE webcal_blob (
   cal_blob BLOB,
   PRIMARY KEY ( cal_blob_id )
 );
+CREATE TABLE webcal_timezones (
+  tzid VARCHAR(100) DEFAULT ''  NOT NULL,
+  dtstart VARCHAR(25) DEFAULT NULL,
+  dtend VARCHAR(25) DEFAULT NULL,
+  vtimezone VARCHAR(500),
+  PRIMARY KEY  ( tzid )
+);

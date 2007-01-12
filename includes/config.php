@@ -85,7 +85,7 @@ function do_config ( $fileLoc ) {
     $readonly, $run_mode, $phpdbiVerbose, $single_user,
     $single_user_login, $use_http_auth, $user_inc, $NONUSER_PREFIX;
 
-   $PROGRAM_VERSION = 'v1.1.2';
+   $PROGRAM_VERSION = 'v1.1.3';
     $PROGRAM_DATE = '?? ??? 2006 / CVS Snapshot';
     $PROGRAM_NAME = "WebCalendar $PROGRAM_VERSION ($PROGRAM_DATE)";
     $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';

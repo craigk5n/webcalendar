@@ -10,6 +10,9 @@
  * OPTIONAL tzoffset   If after logging in, adding tzoffset to
  * the URL ( http://yourserver/install/index.php?tzoffset=2 )
  * will adjust all existing events in the database +2 hours.
+ * OPTIONAL cutoffdate (YYYYMMDD)  When adjusting the tzoffset
+ * the URL ( http://yourserver/install/index.php?tzoffset=2&cutoffdate=20070110 )
+ * will adjust all events <= 20070110 in the database +2 hours.
  * This is very handy if your server changes timezones after installation.
  *
  * Security:
@@ -521,6 +524,7 @@ if ( ! empty ( $tzoffset ) ) {
 }
 // If so, run it
 if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['validuser'] ) ) {
+    $cutoffdate = getIntValue ( 'cutoffdate' );
     $db_persistent = false;
     $db_type = $settings['db_type'];
     $db_host = $settings['db_host'];
@@ -534,7 +538,7 @@ if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['vali
       $db_password, $db_database, false );
  
     if ( $c ) {
-        $ret = convert_server_to_GMT ( $tzoffset );
+        $ret = convert_server_to_GMT ( $tzoffset, $cutoffdate );
     if ( substr ( $ret, 3, 21 ) == 'Conversion Successful' ) {
       $_SESSION['tz_conversion']  = 'Success';
      $response_msg = $tzSuccessStr;
