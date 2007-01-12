@@ -289,7 +289,7 @@ class captcha {
          $t_kill = time() - CAPTCHA_TIMEOUT;
          while($fn = readdir($dh)) if ($fn[0] != ".") {
             if (filemtime("$dir/$fn") < $t_kill) {
-               unlink("$dir/$fn");
+               @unlink("$dir/$fn");
             }
          }
       }
