@@ -1,0 +1,205 @@
+
+minimal CAPTCHA class
+---------------------
+
+As you might know, this PHP script provides a graphical human
+verification test, which can be integrated into web submission
+forms. A CAPTCHA (Completely Automated Public Turing to tell
+Computers from Humans Apart) helps enormous to differentiate
+real people from unwanted bots/spiders.
+
+Link spammers preferrably target unlocked/open web sites ("the
+editable and user-driven Web"), like comment features in blogs,
+forum software, boards and Wikis of course. Often simple check-
+boxes suffice to get rid of comment-spambots, but for really
+motivated attackers only such a CAPTCHA can prevent massive page
+corruption.
+
+It should however be used as last resort only, because it hinders
+visually impaired from using your site. This variant throws out
+some readable text behind the generated image, but that won't
+help much.
+
+
+Integration
+-----------
+
+The static class contained within the script is pretty easy to
+use.
+On a page that contains a form (maybe even just a login or
+registration mask), you simply call the ::form() function to get
+a CAPTCHA image and input box generated:
+
+ <form action="...
+   <textarea>...
+   ...
+   <?php
+     echo captcha::form();
+   ?>
+   ...
+   <input type="submit"...
+ </form>
+
+The generated graphic will be linked or directly embedded into the
+page (if you enabled the "data:"-URIs) and you do not need to care
+about the additional form fields either.
+
+On the receiving CGI/PHP script, you then simply invoke the
+"captcha::check()" function, which will return a boolean value of
+true, if the user correctly specified the displayed letters and
+numbers.
+You then simply proceed with processing the submitted <form>
+data, and for example store the given text into the database or
+so.
+
+The ::check() function knows the correct POST variables, you don't
+have to care here either.
+
+Your application and form processing logic must however accomodate
+to not call the CAPTCHA form generation or check repeatedly, but
+that it also cannot be circumvented with another hidden form field
+(which holds a multi-page form processing state e.g.).
+
+It is recommended to simply integrate this into existing forms, but
+you could also use it as a secondary pre-login form (= first the
+captcha, then the real form). But take care, that it's often safer
+and simpler to integrate the image+check() with another form.
+
+
+Customization
+-------------
+
+Take care to prepare at least one .ttf (font) file. There is one
+distributed with the tarball, which you should use (it's a very
+small freeware font, which looks good for our purposes). It
+should be placed in the same directory as the "captcha.php" script
+so it can be found easily.
+Else define() the "EWIKI_FONT_DIR" constant to something else (the
+EWIKI here just refers to where it was first used, don't care).
+
+Take note that the "captcha.php" script has some built-in defaults
+which filter out certain possible letters from the CAPTCHAs. This
+is because those don't look well with the default "COLLEGE.ttf"
+font. You may want to tweak the ::mkpass() function, if you choose
+a different font.
+
+To make the CAPTCHA better match your site look and feel, you could
+set the CAPTCHA_INVERSE constant to 1. This will yield a dark
+image, whereas the default 0 would make it generate a bright/white
+graphic.
+
+Moreover you can style the form field from within your stylesheet
+using simply the class ".captcha". There is a table within it, and
+of course the input box - though that has a few direct formatting
+styles set.
+
+When invoking captcha::form() you could also override the default
+text strings. The first sets the "-> retype that here" title, and
+a second the explanaition on the right (you could for example use
+"" as ::form()s second param to remove it).
+
+Because there is probably no need to upgrade this ever(!) again,
+you should do all customizations within the code. The size of the
+generated images can only be changed that way for example.
+
+
+Safety
+------
+
+The colors choosen in the CAPTCHA make it easier to read, but of
+course also easy to scan in fact. Though dissecting such images
+proves difficult, it is actually possible to do. And for this
+captcha class it's easier, because of the easily distinguishable
+colorspaces used. You probably notice that with the _INVERSE
+version.
+
+I don't want to scare you; this class will work - it's yet too
+difficult for link spammers to program bots which could overcome
+it; but be aware, that it is indeed possible.
+
+What's more, the generated alt= text could be deciphered. As you
+will see in the source it's actually a rather weird text, and so
+decoding would be unpleasent; but it's possible nevertheless.
+
+We use a MD5 hashsum for the actual text data, so that's surely
+the safest part of this script ;)  The code, btw, will time out
+after a few hours - replay attacks are possible, but only within a
+limited time frame of ca. 3 hours. We skimp on a tracking database
+table by that.
+
+
+
+Advanced integration
+--------------------
+
+This captcha is likely to frustrate users, if you keep it enabled
+everywhere and always - you should take precautions to disable the
+captcha check automatically.
+
+Set a cookie once it was solved, so your users only need to see
+it once in a month (hint: good cookies shouldn't have a lifetime
+longer than that, and sessions are evil, btw).
+
+
+Compatibility
+-------------
+
+Since version 0.9 the generated CAPTCHA images get stored into
+temporary files - like everyone else does.
+
+You can however still enable (CAPTCHA_DATA_URLS) the embedding of
+image data directly into pages. This is not compatible to all browsers
+and MSIE in particular, even though this was standardized back in 1998
+(see RFC2397).
+The JavaScript/ActiveX workaround for MSIE has been removed from this
+version, because the temporary file method is more reliable anyhow.
+
+Other browsers (even text-based like 'w3m') do not have problems with
+data:-URLs, so if you do not need to support MSIE users, it is still
+recommended to enable it, because it enhances security slightly (does
+not allow to fill a servers hard disk with temporary files from extra
+page requests).
+
+
+License
+-------
+
+This mini-script is Public Domain -> "free" as in dictionary.
+
+If you rebrand, repackage and redistribute it, you're however politely
+asked to modify the fragments in the ::textual_riddle() function. Too
+widespread adoption would allow bot writers to overcome it else.
+
+
+Notes
+-----
+
+Some boringly technical implementation notes and lame excuses for how
+things were done here:
+
+- downscaling the generated images to fit the desired $maxsize
+   - needed for MSIE, which whines about lengthy <img src= URLs
+   - works by accident - libgd's JPEG generation quality parameter scales
+     down the file size nearly linearly
+   - the * and - parameters are arbitrary, but now it mostly seems to
+     need three trials only (that is really good)
+   - matches the wanted length quite well (max 200 bytes away)
+   - but regeneration of course adds to the overall wasted time
+
+
+Alternatives
+------------
+
+There is a clean CAPTCHA test implementation in the PEAR collection,
+http://pear.php.net/ - which is already used in many web apps.
+
+On the <blink>free registration</blink>-phpclasses.org-site another
+implementation (GPLed lib) can be read about. NucleusCMS ships with
+it freely.
+
+_This_ captcha.php class is used with ewiki+ for example (or there's
+at least a plugin for it).
+
+Other implementations are linked and documented on
+http://en.wikipedia.org/wiki/Captcha
+
