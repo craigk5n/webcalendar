@@ -239,7 +239,8 @@ if ( ! $can_edit && empty ( $error ) ) {
 }
 
 // CAPTCHA
-if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__public__' ) {
+if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__public__' && 
+  ! empty ( $ENABLE_CAPTCHA ) && $ENABLE_CAPTCHA == 'Y' ) {
   if ( function_exists ( 'imagecreatetruecolor' ) ) {
     include_once 'includes/classes/captcha/captcha.php';
     $res = captcha::check ();

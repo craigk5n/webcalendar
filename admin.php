@@ -717,6 +717,12 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'Text to display to public access' )?>:</td><td>
    <label><input name="admin_OVERRIDE_PUBLIC_TEXT" value="<?php echo $s['OVERRIDE_PUBLIC_TEXT'];?>" size="25" /></label>
   </td></tr>
+  <tr id="pa8" valign="top"><td class="tooltip" title="<?php 
+   etooltip( 'public-access-captcha-help' )?>">
+   &nbsp;&nbsp;&nbsp;&nbsp;<?php 
+   etranslate( 'Require CAPTCHA validation for public access new events' )?>:</td><td>
+   <?php echo print_radio ( 'ENABLE_CAPTCHA' ) ?>
+  </td></tr>
 </table>
 </div>
 

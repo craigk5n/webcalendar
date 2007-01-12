@@ -107,6 +107,7 @@ function public_handler () {
     makeVisible ( "pa6" );
     makeVisible ( "pa7" );
     makeVisible ( "pa7a" );
+    makeVisible ( "pa8" );
   } else {
     // Public Access disabled
     makeInvisible ( "pa1" );
@@ -117,6 +118,7 @@ function public_handler () {
     makeInvisible ( "pa6" );
     makeInvisible ( "pa7" );
     makeInvisible ( "pa7a" );
+    makeInvisible ( "pa8" );
   }
 }
 

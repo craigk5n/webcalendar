@@ -513,7 +513,7 @@ $eType_label = ' ( ' . translate ( $eType ) . ' )';
 <?php
    if ( $can_edit ) {
 ?>
-<form action="edit_entry_handler.php" method="post" name="editentryform">
+<form action="edit_entry_handler.php" method="post" name="editentryform" id="editentryform">
 
 <?php
 echo "<input type=\"hidden\" name=\"eType\" value=\"$eType\" />\n";
@@ -1198,7 +1198,7 @@ if ( $useTabs ) { ?>
    echo '</tr></table>';
 
  //Populate Repeat Exceptions data for later use
- $excepts = '<option></option>';
+ $excepts = '';
  $exceptcnt = count ( $exceptions );
  for ( $i = 0; $i < $exceptcnt; $i++ ) {
    $excepts .= '<option value="-' . $exceptions[$i] . '">-' . $exceptions[$i] . "</option>\n";
@@ -1403,7 +1403,8 @@ if ( $useTabs ) { ?>
 } ?>
 </div> <!-- End tabscontent -->
 <?php
-if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__public__' ) {
+if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__public__' && 
+  ! empty ( $ENABLE_CAPTCHA ) && $ENABLE_CAPTCHA == 'Y' ) {
   if ( function_exists ( 'imagecreatetruecolor' ) ) {
     include_once 'includes/classes/captcha/captcha.php';
     echo captcha::form();
