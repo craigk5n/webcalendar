@@ -52,7 +52,10 @@ function showTab (name) {
  for (var i=0; i<tabs.length; i++) {
   var tname = tabs[i];
   var tab = document.getElementById("tab_" + tname);
-  if (tab) {
+  //we might call without parameter, if so display tabfor div
+  if (tab && !name) {
+    if ( tab.className == "tabfor" ) name = tname;
+  } else if (tab) {
    tab.className = (tname == name) ? "tabfor" : "tabbak";
   }
   var div = document.getElementById("tabscontent_" + tname);

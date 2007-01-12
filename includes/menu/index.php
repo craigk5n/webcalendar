@@ -544,7 +544,9 @@ if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' &&
           access_can_access_function ( ACCESS_ACCESS_MANAGEMENT, $user ) ) )
       jscMenu_item ( 'access.png', 'User Access Control', 'access.php' );
 
-    if ( $is_admin && $menuConfig['User Manager'] )
+    if ( $is_admin && $menuConfig['User Manager'] && ( ( !access_is_enabled () ||
+      ( access_is_enabled () && 
+      access_can_access_function ( ACCESS_USER_MANAGEMENT, $user ) ) ) ) )
       jscMenu_item ( 'user.png', 'User Manager', 'users.php' );
   }
   jscMenu_close ();
