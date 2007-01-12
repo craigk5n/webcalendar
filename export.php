@@ -27,7 +27,7 @@ ob_start ();
 
 echo '
     <h2>' . translate ( 'Export' ) . '</h2>
-    <form action="export_handler.php" method="post" name="exportform">
+    <form action="export_handler.php" method="post" name="exportform" id="exportform">
       <table>
         <tr>
           <td><label for="exformat">' . translate ( 'Export format' )

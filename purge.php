@@ -119,7 +119,7 @@ onclick="history.back()" /></form
 } else {
 ?>
 
-<form action="purge.php" method="post" name="purgeform">
+<form action="purge.php" method="post" name="purgeform" id="purgeform">
 <table>
  <tr><td><label for="user">
   <?php echo translate ( 'User' );?>:</label></td>
