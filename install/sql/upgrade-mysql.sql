@@ -247,7 +247,14 @@ ALTER TABLE webcal_user ADD cal_address VARCHAR(75) DEFAULT NULL;
 ALTER TABLE webcal_user ADD cal_title VARCHAR(75) DEFAULT NULL;
 ALTER TABLE webcal_user ADD cal_birthday INT NULL;
 ALTER TABLE webcal_user ADD cal_last_login INT NULL;
-
+/*upgrade_v1.1.3*/
+CREATE TABLE webcal_timezones (
+  tzid varchar(100) NOT NULL default '',
+  dtstart varchar(25) default NULL,
+  dtend varchar(25) default NULL,
+  vtimezone text,
+  PRIMARY KEY  ( tzid )
+);
 
   
 

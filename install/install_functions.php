@@ -213,8 +213,9 @@ function show_errors ( $error_val=0 ) {
 
 //We will convert from Server based storage to GMT time
 //optionally, a tzoffset can be added to the URL and will
-//adjust all existing events by that amount
-function convert_server_to_GMT ( $offset=0 ) {
+//adjust all existing events by that amount. If cutoffdate is supplied,
+//only dates prior to that date are affected
+function convert_server_to_GMT ( $offset=0, $cutoffdate='' ) {
  //Default value 
  $error = '<b>Conversion Successful</b>';
  //don't allow $offsets over 24
@@ -245,9 +246,11 @@ function convert_server_to_GMT ( $offset=0 ) {
      }
      $new_cal_date = gmdate ( 'Ymd', $new_datetime );
      $new_cal_time = gmdate ( 'His', $new_datetime );
+     $cutoff = ( ! empty ( $cutoffdate ) ? ' AND cal_date <= ?' : '' );
      // Now update row with new data
      if ( ! dbi_execute ( 'UPDATE webcal_entry SET cal_date = ?, cal_time = ?
-       WHERE cal_id = ?' , array ( $new_cal_date , $new_cal_time , $cal_id ) ) ){
+       WHERE cal_id = ?' . $cutoff , 
+       array ( $new_cal_date , $new_cal_time , $cal_id, $cutoffdate ) ) ){
        $error = "Error updating table 'webcal_entry' " . dbi_error ();
      return $error;
      }

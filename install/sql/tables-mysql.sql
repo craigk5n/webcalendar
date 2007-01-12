@@ -690,3 +690,14 @@ CREATE TABLE webcal_blob (
   cal_blob LONGBLOB,
   PRIMARY KEY ( cal_blob_id )
 );
+CREATE TABLE webcal_timezones (
+  /* Unique name of timezone, try to use Olsen naming conventions */
+  tzid varchar(100) NOT NULL default '',
+  /* earliest date this timezone represents YYYYMMDDTHHMMSSZ format */
+  dtstart varchar(25) default NULL,
+  /* last date this timezone represents YYYYMMDDTHHMMSSZ format */
+  dtend varchar(25) default NULL,
+  /* Complete VTIMEZONE text gleaned from imported ics files */
+  vtimezone text,
+  PRIMARY KEY  ( tzid )
+);

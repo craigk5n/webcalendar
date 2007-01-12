@@ -280,3 +280,10 @@ CREATE TABLE webcal_blob (
   cal_blob IMAGE NULL,
   PRIMARY KEY ( cal_blob_id )
 );
+CREATE TABLE webcal_timezones (
+  tzid VARCHAR(100) NOT NULL DEFAULT '',
+  dtstart VARCHAR(25) DEFAULT NULL,
+  dtend VARCHAR(25) DEFAULT NULL,
+  vtimezone TEXT,
+  PRIMARY KEY  ( tzid )
+);

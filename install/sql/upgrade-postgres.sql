@@ -292,3 +292,12 @@ ALTER TABLE webcal_user ADD cal_enabled CHAR(1) DEFAULT 'Y';
 ALTER TABLE webcal_user ADD cal_last_login INT NULL;
 ALTER TABLE webcal_user ADD cal_telephone VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_user ADD cal_title VARCHAR(75) DEFAULT NULL;
+
+/*upgrade_v1.1.3*/
+CREATE TABLE webcal_timezones (
+  tzid VARCHAR(100) DEFAULT ''  NOT NULL,
+  dtstart VARCHAR(25) DEFAULT NULL,
+  dtend VARCHAR(25) DEFAULT NULL,
+  vtimezone TEXT,
+  PRIMARY KEY  ( tzid )
+);
