@@ -86,14 +86,14 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
           $ret .= " checked=\"checked\"";
         $ret .= ">" . translate ( 'No');
       } else if ( $tablear[$i]['type'] == "date" ) {
-        $ret .= date_selection_html ( $tablear[$i]['name'], $valuesar[$i] );
+        $ret .= date_selection ( $tablear[$i]['name'], $valuesar[$i] );
       } else if ( $tablear[$i]['type'] == "dbdate" ) {
         // '2002-12-31'
         $y = substr ( $valuesar[$i], 0, 4 );
         $m = substr ( $valuesar[$i], 5, 2 );
         $d = substr ( $valuesar[$i], 8, 2 );
         $date = sprintf ( "%04d%02d%02d", $y, $m, $d );
-        $ret .= date_selection_html ( $tablear[$i]['name'], $date );
+        $ret .= date_selection ( $tablear[$i]['name'], $date );
       } else {
         $ret .= "(type " . $tablear[$i]['type'] . " not supported)";
       }
