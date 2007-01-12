@@ -12,7 +12,7 @@ load_user_categories ();
 $wday = strftime ( '%w', mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
 
 $now = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
-
+$nowYmd = date ( 'Ymd', $now);
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 1, $thisyear );
 $nextday = date ( 'd', $next );
 $nextmonth = date ( 'm', $next );
@@ -51,7 +51,7 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
 if ( $DISPLAY_TASKS == 'Y' )
   $smallTasks = display_small_tasks ( $cat_id );
 
-$dayStr = print_day_at_a_glance ( date ( 'Ymd', $now ), empty ( $user )
+$dayStr = print_day_at_a_glance ( $nowYmd, empty ( $user )
   ? $login : $user, $can_add );
 $navStr = display_navigation ( 'day' );
 $smallMonthStr = display_small_month ( $thismonth, $thisyear, true );
