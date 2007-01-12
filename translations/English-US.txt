@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 01-08-2007
+# Translation last updated on 01-11-2007
 
 
 ################################################################################
@@ -292,6 +292,8 @@ public-access-override-help: Allows event names and descriptions to be hidden on
 Override event name/description for public access: Override event name/description for public access
 public-access-override-text-help: The text to display if the above option is enabled. If 'Not Available', it will be translated.
 Text to display to public access: Text to display to public access
+public-access-captcha-help: If enabled, new events added by Public require passing a CAPTCHA  validation.
+Require CAPTCHA validation for public access new events: Require CAPTCHA validation for public access new events
 uac-enabled-help: Enables user-level access control
 User Access Control enabled: User Access Control enabled
 groups-enabled-help: Enables group support, allowing users to select users by groups.
@@ -636,6 +638,7 @@ You are not authorized to edit this entry.: You are not authorized to edit this 
 ########################################
 # Page: edit_entry_handler.php
 #
+You must enter the anti-spam text on the previous page: You must enter the anti-spam text on the previous page
 The following conflicts with the suggested time: The following conflicts with the suggested time
 A new appointment has been made for you by: A new appointment has been made for you by
 An appointment has been updated by: An appointment has been updated by
@@ -732,11 +735,11 @@ Edit Report: Edit Report
 Report name: Report name
 Current User: Current User
 User: User
-Include link in trailer: Include link in trailer
+Include link in menu: Include link in menu
 Include standard header/trailer: Include standard header/trailer
-Date range: Date range
 Include previous/next links: Include previous/next links
 Include empty dates: Include empty dates
+Date range: Date range
 Template variables: Template variables
 Page template: Page template
 Day template: Day template
@@ -946,16 +949,15 @@ The import file contained no data: The import file contained no data
 ########################################
 # Page: layers.php
 #
+Layer: Layer
+Edit layer: Edit layer
+Enable layers: Enable layers
 Layers are currently: Layers are currently
 Disable Layers: Disable Layers
 Click here: Click here
 to modify the layers settings for the: to modify the layers settings for the
 calendar: calendar
 Add layer: Add layer
-Layer: Layer
-Edit layer: Edit layer
-layer: layer
-Enable Layers: Enable Layers
 
 ########################################
 # Page: layers_toggle.php
@@ -1178,7 +1180,6 @@ Week (Timebar): Week (Timebar)
 Month (Timebar): Month (Timebar)
 Month (side by side): Month (side by side)
 Month (on same calendar): Month (on same calendar)
-Selected: Selected
 
 ########################################
 # Page: views_edit_handler.php
@@ -1517,6 +1518,13 @@ file_open: File Error Could not open file:
 encoding: Unknown encoding:
 
 ########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Enter Characters Seen in Graphic
+Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read.: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read.
+Challenge/Response: Challenge/Response
+
+########################################
 # Page: includes/js/admin.php
 #
 Server URL is required: Server URL is required
@@ -1553,6 +1561,7 @@ You have not entered a valid time of day: You have not entered a valid time of d
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Invalid color
+layer: layer
 
 ########################################
 # Page: includes/js/edit_nonuser.php

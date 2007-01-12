@@ -77,6 +77,7 @@ $webcalConfig = array (
   'EMAIL_REMINDER' => 'Y',
   'ENABLE_GRADIENTS' => 'N',
   'ENABLE_ICON_UPLOADS' => 'N',
+  'ENABLE_CAPTCHA' => 'N',
   'ENTRY_SLOTS' => '144',
   'EXTERNAL_NOTIFICATIONS' => 'N',
   'EXTERNAL_REMINDERS' => 'N',
