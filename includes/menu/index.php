@@ -134,6 +134,7 @@ if ( ( access_can_access_function ( ACCESS_VIEW, $user ) &&
   $tmp = '';
 }
 // Reports
+$reports_linkcnt = 0;
 if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
     access_can_access_function ( ACCESS_REPORT, $user ) ) {
   $reports_link = array ();
