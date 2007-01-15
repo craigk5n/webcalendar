@@ -34,9 +34,9 @@ $allStr = translate( 'All' );
 $purgingStr = translate( 'Purging events for' );
 $deleteStr = translate( 'Delete' );
 
-$action = getPostValue ( 'action' );
+$delete = getPostValue ( 'delete' );
 $do_purge = false;
-if ( $action == $deleteStr ) {
+if ( ! empty ( $delete ) ) {
  $do_purge = true;
 }
 
@@ -149,7 +149,7 @@ onclick="history.back()" /></form
   <?php etranslate( 'Delete all events before' );?>:</label></td><td>
   <?php echo date_selection ( 'end_', date ( 'Ymd' ) ) ?>
  </td></tr>
- <tr><td><label for="deleted">
+ <tr><td><label for="purge_deleted">
   <?php etranslate( 'Purge deleted only' )?>:</label></td>
   <td valign="bottom">
   <input type="checkbox" name="purge_deleted" value="Y"  />
@@ -160,7 +160,7 @@ onclick="history.back()" /></form
   <input type="checkbox" name="preview" value="Y" checked="checked" />
  </td></tr>
  <tr><td colspan="2">
-  <input type="submit" name="action" value="<?php 
+  <input type="submit" name="delete" value="<?php 
     echo $deleteStr?>" onclick="return confirm('<?php 
     etranslate( 'Are you sure you want to delete events for', true);
     ?> ' + document.forms[0].user.value + '?')" />
