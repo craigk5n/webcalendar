@@ -18,7 +18,7 @@ include 'includes/gradient.php';
 $WebCalendar->initializeSecondPhase();
 
 @session_start ();
-session_destroy ();
+@session_destroy ();
 //$_SESSION['webcal_login'] = '';
 
 load_global_settings ();
