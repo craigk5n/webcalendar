@@ -1444,14 +1444,15 @@ function display_month ( $thismonth, $thisyear, $demo='' ){
     $ret .= "<tr>\n";
      if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
         $href = ( $demo? 'href=""': 'href="week.php?date='. 
-          date ('Ymd', $i + ONE_DAY ) .'"' );
+          date ('Ymd', $i + ONE_DAY ) );
+        if ( ! empty ( $user) && $user != $login  )
+          $href .= "&amp;user=$user";
+        if ( ! empty ( $cat_id ) )
+          $href .= "&amp;cat_id=$cat_id";
+        $href .= '"';
         $ret .= '<td class="weekcell"><a class="weekcell" title="' .
           $weekStr . '&nbsp;' .
-            date('W', $i + ONE_DAY + ONE_DAY ) . '"' . $href;
-        if ( ! empty ( $user) && $user != $login  )
-          $ret .= "&amp;user=$user";
-        if ( ! empty ( $cat_id ) )
-          $ret .= "&amp;cat_id=$cat_id";
+            date('W', $i + ONE_DAY + ONE_DAY ) . '" ' . $href;
         $ret .= ' >';
         $wkStr = $WKStr  . date('W', $i + ONE_DAY + ONE_DAY );
         $wkStr2 = '';
