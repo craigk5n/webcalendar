@@ -1652,7 +1652,7 @@ Correct your entries and try again: Korrigieren Sie Ihre Eintr&auml;ge und versi
 is not writable: ist schreibgesch&uuml;tzt
 Error Converting Timezone: Fehler bei der Zeitzonenkonvertierung
 Please change the file permissions of this file: Bitte &auml;ndern Sie die Rechte dieser Datei
-Please change includes dir premission: Bitte &auml;ndern Sie die Dateiberechtigungen von Ihrem &#39;includes&#39;-Verzeichnis um &#39;Schreibrechte&#39; f&uuml;r &#39;andere Benutzer&#39; zu haben.
+Please change includes dir permission: Bitte &auml;ndern Sie die Dateiberechtigungen von Ihrem &#39;includes&#39;-Verzeichnis um &#39;Schreibrechte&#39; f&uuml;r &#39;andere Benutzer&#39; zu haben.
 Your settings have been saved: Ihre Einstellungen wurden gespeichert.
 Error you must specify a\\nSingle-User Login: Fehler, Sie m&uuml;ssen ein Single-User Login definieren
 Server URL must end with: Server URL mu&szlig; enden mit

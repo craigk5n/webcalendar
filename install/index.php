@@ -680,7 +680,7 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
         translate ( 'Please change the file permissions of this file', true );
     } else {
       $onloadDetailStr = 
-        translate ( 'Please change includes dir premission', true );
+        translate ( 'Please change includes dir permission', true );
     }
     $onload = "alert('" . $errorFileWriteStr . $file. "\\n" . 
       $onloadDetailStr . ".');";

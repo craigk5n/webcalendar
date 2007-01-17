@@ -3328,7 +3328,7 @@ Unapproved Events: Gertaera ez onetsiak
 # Please change the file permissions of this file:
 #
 # << MISSING >>
-# Please change includes dir premission:
+# Please change includes dir permission:
 # English text: Please change the file permissions of your includes directory to allow writing by other users
 #
 #

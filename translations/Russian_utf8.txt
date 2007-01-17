@@ -1501,7 +1501,7 @@ does not exist: не существует
 is not writable: не доступна запись
 Error Converting Timezone: Ошибка преобразования Временной Зоны
 Please change the file permissions of this file: Пожалуйста измените права доступа к файлу
-Please change includes dir premission: Пожалуйста установите права на запись для других пользователей в каталог includes 
+Please change includes dir permission: Пожалуйста установите права на запись для других пользователей в каталог includes 
 Your settings have been saved: Ваши настройки сохранены
 Error you must specify a\\nSingle-User Login: Ошибка. Вы должны указать имя для\\nоднопользовательского режима
 Server URL must end with: Адрес сервера должен заканчиваться

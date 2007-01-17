@@ -1439,7 +1439,7 @@ does not exist: אינו קיים
 is not writable: לא פתוח לכתיבה
 Error Converting Timezone: שגיאה בהמרת איזור הזמן
 Please change the file permissions of this file: נא לשנות את ההרשאות של הקובץ הזה
-Please change includes dir premission: נא לשנות את ההרשאות של מחיצת includes כדי לאפשר כתיבה על ידי משתמשים אחרים
+Please change includes dir permission: נא לשנות את ההרשאות של מחיצת includes כדי לאפשר כתיבה על ידי משתמשים אחרים
 Your settings have been saved: העדיפויות שלך נשמרו
 Error you must specify a\\nSingle-User Login: שגיאה, עליך לציין \\nכניסת משתמש יחיד
 Server URL must end with: כתובת URL של השרת חייב להסתיים ב-
