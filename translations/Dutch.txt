@@ -1443,7 +1443,7 @@ does not exist: bestaat niet
 is not writable: is niet schrijfbaar
 Error Converting Timezone: Fout bij converteren tijdzone
 Please change the file permissions of this file: Wijzig de bestandspermissies van dit bestand
-Please change includes dir premission: Wijzig includes directory permissies
+Please change includes dir permission: Wijzig includes directory permissies
 Your settings have been saved: Uw instellingen zijn opgeslagen
 Error you must specify a\\nSingle-User Login: Fout u moet een\\nEnkele-Gebruikers Login
 Server URL must end with: Server-URL moet eindige op
