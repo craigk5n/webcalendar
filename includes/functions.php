@@ -2883,10 +2883,10 @@ function get_bymonthday ( $bymonthday, $cdate, $date, $realend ) {
  if ( empty ( $bymonthday ) ) return;
   $ret = array();
   $dateYmHi = date ( 'YmHi', $cdate);
-  $yr = substr ( $dateYmdHi, 0, 4 );
-  $mth = substr ( $dateYmdHi, 4, 2 );
-  $hour = substr ( $dateYmdHi, 6, 2 );
-  $minute = substr ( $dateYmdHi, 8, 2 );
+  $yr = substr ( $dateYmHi, 0, 4 );
+  $mth = substr ( $dateYmHi, 4, 2 );
+  $hour = substr ( $dateYmHi, 6, 2 );
+  $minute = substr ( $dateYmHi, 8, 2 );
   $dim = date ('t',$cdate); //days in month
   foreach ( $bymonthday as $monthday) { 
     $adjustedDay = ( $monthday > 0 )? $monthday : $dim + $monthday +1;     
