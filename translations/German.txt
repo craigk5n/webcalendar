@@ -901,7 +901,7 @@ Old Color: Alte Farben
 # Page: about.php
 #
 version: Version
-Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.: Webcalendar ist eine PHP Anwendung welche zum Warten eines Kalenders f&uuml;r einen einzelnen Benutzer oder einer Gruppe von Internet / Intranet Benutzer. Er kann aber auch als Terminkalender konfiguriert werden.
+Webcalendar is a PHP application used...: Webcalendar ist eine PHP Anwendung welche zum Warten eines Kalenders f&uuml;r einen einzelnen Benutzer oder einer Gruppe von Internet / Intranet Benutzer. Er kann aber auch als Terminkalender konfiguriert werden.
 Credits: Abspann
 About: &Uuml;ber
 

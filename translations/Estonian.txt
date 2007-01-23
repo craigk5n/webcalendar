@@ -229,7 +229,7 @@ Add New Category: Lisa uus kategooria
 # Page: catsel.php
 #
 Remove: Eemalda
-Ok: Ok
+OK: OK
 
 ########################################
 # Page: del_entry.php

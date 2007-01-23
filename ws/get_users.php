@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Description:
  *	Web Service functionality to get a list of all users.
@@ -36,8 +35,7 @@ $out = "<users>\n";
 // If login is public user, make sure public can view others...
 if ( $login == '__public__' && $login != $user ) {
   if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
-    $out .= "<error>" . translate("Not authorized") . "</error>\n";
-    $out .= "</events>\n";
+    $out .= '<error>' . translate ( 'Not authorized' ) . "</error>\n</events>\n";
     exit;
   }
 }

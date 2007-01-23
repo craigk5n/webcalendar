@@ -248,7 +248,7 @@ Add New Category: Adicionar Nova Categoria
 # Page: catsel.php
 #
 Remove: Apagar
-Ok: Ok
+OK: OK
 
 ########################################
 # Page: del_entry.php

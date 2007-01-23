@@ -265,7 +265,7 @@ Add New Category: Lägg till ny kategori
 # Page: catsel.php
 #
 Remove: Ta bort
-Ok: OK
+OK: OK
 
 ########################################
 # Page: del_entry.php

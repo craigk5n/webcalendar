@@ -11,7 +11,7 @@ $cancelStr = translate ( 'Cancel' );
 $currentStr = translate ( 'Current Color' );
 $customStr = translate ( 'Custom Colors' );
 $oldStr = translate ( 'Old Color' );
-$okStr = '&nbsp;&nbsp;&nbsp;' . translate ( 'Ok' ). '&nbsp;&nbsp;&nbsp;';
+$okStr = '&nbsp;&nbsp;&nbsp;' . translate ( 'OK' ). '&nbsp;&nbsp;&nbsp;';
 print_header ( array ( 'js/colors.php/true' ), '',
   'onload="fillhtml(); setInit();"', true, false, true );
 

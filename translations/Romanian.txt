@@ -271,7 +271,7 @@ Add New Category: Adaug&#259; o nou&#259; categorie
 # Page: catsel.php
 #
 Remove: &#350;terge
-Ok: OK
+OK: OK
 
 ########################################
 # Page: del_entry.php

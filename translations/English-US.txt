@@ -63,10 +63,10 @@ __month__ __yyyy__: __month__ __yyyy__
 #
 Title: WebCalendar
 version: version
-Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.: Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.
+Webcalendar is a PHP application used...: Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.
 Credits: Credits
 About: About
-Ok: Ok
+OK: OK
 
 ########################################
 # Page: access.php

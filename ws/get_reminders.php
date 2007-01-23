@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Description:
  *  Web Service functionality for reminders.
@@ -54,9 +53,7 @@ $out = "<reminders>\n";
 // If login is public user, make sure public can view others...
 if ( $login == '__public__' && $login != $user ) {
   if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
-    $out .= "<error>" . translate("Not authorized") . "</error>\n";
-    $out .= "</reminders>\n";
-    echo $out;
+    echo '<error>' . translate ( 'Not authorized' ) . "</error>\n</reminders>\n";
     exit;
   }
   $out .= "<!-- Allowing public user to view other user's calendar -->\n";
@@ -68,9 +65,7 @@ if ( empty ( $user ) )
 // If viewing different user then yourself...
 if ( $login != $user ) {
   if ( $ALLOW_VIEW_OTHER != 'Y' ) {
-    $out .= "<error>" . translate("Not authorized") . "</error>\n";
-    $out .= "</reminders>\n";
-    echo $out;
+    echo '<error>' . translate ( 'Not authorized' ) . "</error>\n</reminders>\n";
     exit;
   }
   $out .= "<!-- Allowing user to view other user's calendar -->\n";
