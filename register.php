@@ -263,7 +263,7 @@ function showResponse(originalRequest) {
 
 </script>
 <?php 
-  echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login=1" />';
+  echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login=__public__" />';
 
  // Print custom header (since we do not call print_header function)
  if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {

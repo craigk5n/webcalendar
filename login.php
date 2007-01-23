@@ -1,5 +1,15 @@
 <?php
 /* $Id$ */
+@session_start ();
+foreach($_SESSION as $key=>$value) {
+  $dummy[$key]=$value;  // copy to a dummy array
+}
+if ( ! empty ( $dummy ) ) 
+  foreach ($dummy as $key=>$value) {
+   if ( substr( $key, 0 , 6 ) == 'webcal' )
+     unset( $_SESSION[$key] );
+  }
+
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
@@ -16,10 +26,6 @@ include_once 'includes/access.php';
 include 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
-
-@session_start ();
-@session_destroy ();
-//$_SESSION['webcal_login'] = '';
 
 load_global_settings ();
 
@@ -177,7 +183,7 @@ function myOnLoad() {
 </script>
 <?php 
 }
-  echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login=1" />';
+  echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login=__public__" />';
 
  // Print custom header (since we do not call print_header function)
  if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {

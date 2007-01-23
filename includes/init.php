@@ -170,8 +170,9 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // override the global colors and this is impossible if loading external file.
   // We will still increment the webcalendar_csscache cookie though.
   if ( ! $disableStyle ) {
+    $css_login = ( ! empty ( $_SESSION['webcal_tmp_login'] ) ? $_SESSION['webcal_tmp_login'] : $login );
     $ret .= '
-    <link rel="stylesheet" type="text/css" href="css_cacher.php?' . $login
+    <link rel="stylesheet" type="text/css" href="css_cacher.php?' . $css_login
      . $webcalendar_csscache . '" />';
   }
   // Add custom script/stylesheet if enabled.

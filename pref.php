@@ -163,11 +163,13 @@ $selected = ' selected="selected" ';
 
 $minutesStr = translate( 'minutes' );
 
+//allow css_cache to display public or NUC values
+@session_start (); 
+$_SESSION['webcal_tmp_login'] = $prefuser;
 $openStr ="\"window.open('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
 $BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' );\"" : '' );
 $INC = array('js/visible.php', 'js/pref.php');
 print_header($INC, '', $BodyX);
-
 ?>
 
 <h2><?php
@@ -233,7 +235,7 @@ if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
 <!-- TABS -->
 <div id="tabs">
  <span class="tabfor" id="tab_settings"><a href="" onclick="return setTab('settings');"><?php etranslate( 'Settings' )?></a></span>
- <?php if ( $ALLOW_USER_THEMES == 'Y' || $MENU_ENABLED == 'Y' ) { ?>
+ <?php if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) { ?>
  <span class="tabbak" id="tab_themes"><a href="" onclick="return setTab('themes');"><?php etranslate( 'Themes' )?></a></span>
 <?php }
  if ( $SEND_EMAIL == 'Y' ) { ?>
@@ -597,10 +599,9 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 </div>
 <!-- END SETTINGS -->
 
-<?php if ( $ALLOW_USER_THEMES == 'Y' || $MENU_ENABLED == 'Y' ) { ?>
+<?php if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) { ?>
 <div id="tabscontent_themes">
 <table  cellspacing="1" cellpadding="2"  border="0" width="35%">
-<?php if ( $ALLOW_USER_THEMES == 'Y' ) { ?>
 <tr><td class="tooltip"  title="<?php etooltip( 'theme-reload-help' );?>"colspan="3"><?php 
 etranslate( 'Page may need to be reloaded for new Theme to take effect' )?></td></tr>
 <tr><td  class="tooltipselect" title="<?php etooltip( 'themes-help' );?>">
@@ -610,15 +611,15 @@ etranslate( 'Page may need to be reloaded for new Theme to take effect' )?></td>
   echo "<option value=\"none\" disabled=\"disabled\"  $selected>" . 
     translate( 'AVAILABLE THEMES' ) . "</option>\n";
   //always use 'none' as default so we don't overwrite manual settings
- // echo '<option value="none"' . $selected . translate( 'None' ) . "</option>\n";
-    foreach ( $themes as $theme ) {
-     echo '<option value="' . $theme . '">' . $theme . "</option>\n";
+  // echo '<option value="none"' . $selected . translate( 'None' ) . "</option>\n";
+  foreach ( $themes as $theme ) {
+   echo '<option value="' . $theme . '">' . $theme . "</option>\n";
   }
 ?>
  </select></td><td>
  <input type="button" name="preview" value="<?php etranslate ( 'Preview' ) ?>" onclick="return showPreview()" />
 </td></tr>
-<?php } if ( $MENU_ENABLED == 'Y' ) { ?>
+<?php  if ( $MENU_ENABLED == 'Y' ) { ?>
  <tr><td  class="tooltip" title="<?php etooltip( 'menu-themes-help' );?>">
  <label for="pref_MENU_THEME"><?php etranslate( 'Menu theme' )?>:</label></td><td>
  <select name="pref_MENU_THEME" id="pref_MENU_THEME">
@@ -633,7 +634,7 @@ etranslate( 'Page may need to be reloaded for new Theme to take effect' )?></td>
 ?>
  </select>
  </td></tr> 
-<?php } ?>
+<?php } //end Menu enabled test ?>
 </table>
 </div>
 <!-- END THEMES -->
