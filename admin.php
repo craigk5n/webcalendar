@@ -151,6 +151,10 @@ $selected = ' selected="selected" ';
 $select = translate( 'Select' ) . '...';
 $option = '</option>' . "\n";
 
+//allow css_cache to webcal_config values
+@session_start (); 
+$_SESSION['webcal_tmp_login'] = 'blahblahblah';
+
 $openStr ="\"window.open('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
 $choices = array ( 'day.php', 'week.php', 'month.php', 'year.php' );
 $choices_text = array ( translate ( 'Day' ), translate ( 'Week' ),
@@ -161,9 +165,8 @@ $allow_url_fopen = preg_match ( "/(On|1|true|yes)/i", ini_get ( 'allow_url_fopen
 $BodyX = 'onload="popup_handler(); public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();';
 $BodyX .= ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );\"" : '"' );
 $INC = array('js/admin.php','js/visible.php');
-//We need to load CSS inline so we can override GLOBALS
-print_header ( $INC, '', $BodyX, false, false );
-include "includes/styles.php";
+print_header ( $INC, '', $BodyX );
+
 ?>
 
 <h2><?php etranslate( 'System Settings' )?>&nbsp;<img src="images/help.gif" alt="<?php etranslate( 'Help' )?>" class="help" onclick="window.open ( 'help_admin.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>

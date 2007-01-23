@@ -620,19 +620,16 @@ class WebCalendar {
         if (! $login = user_logged_in())
           $session_not_found = true;
       } else {
-        if ( ! empty ( $settings['session'] ) && $settings['session'] == 'php' ) {
-          @session_start ();
-          if ( ! empty ( $_SESSION['webcalendar_session'] ) ) {
-            $webcalendar_session = $_SESSION['webcalendar_session'];
-          }
-          if ( ! empty ( $_SESSION['webcal_login'] ) ) {
-            $login = $_SESSION['webcal_login'];
-          }
-        }
+	    @session_start ();
+	    if ( ! empty ( $_SESSION['webcalendar_session'] ) ) {
+		  $webcalendar_session = $_SESSION['webcalendar_session'];
+	    }
+	    if ( ! empty ( $_SESSION['webcal_login'] ) ) {
+		  $login = $_SESSION['webcal_login'];
+	    }
         if ( empty ( $webcalendar_session ) && empty ( $login ) ) {
           $session_not_found = true;
-        } else if ( ! empty ( $settings['session'] ) && $settings['session'] == 'php' 
-            && empty ( $_SESSION['webcal_login'] ) ) {
+        } else if ( empty ( $_SESSION['webcal_login'] ) ) {
           // Check for cookie...
           if ( ! empty ( $webcalendar_session ) ) {
             $encoded_login = $webcalendar_session;
@@ -681,11 +678,9 @@ class WebCalendar {
                 else
                   do_redirect ( "login.php?return_path=$login_return_path" );
               }
-              if ( ! empty ( $settings['session'] ) && $settings['session'] == 'php' ) {
-                @session_start ();
-                $_SESSION['webcalendar_session'] = $webcalendar_session;
-                $_SESSION['webcal_login'] = $login;
-              }
+              @session_start ();
+              $_SESSION['webcalendar_session'] = $webcalendar_session;
+              $_SESSION['webcal_login'] = $login;
               //do_debug ( "Decoded login from cookie: $login" );
             }
           }
