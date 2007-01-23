@@ -286,7 +286,7 @@ Add New Category: Nova categoria
 # Page: catsel.php
 #
 Remove: Remover
-Ok: OK
+OK: OK
 
 ########################################
 # Page: del_entry.php

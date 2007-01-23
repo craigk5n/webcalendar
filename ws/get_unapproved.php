@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Description:
  *  Web Service functionality to get unapproved events.
@@ -38,8 +37,7 @@ $out = '';
 
 // Public is not allowed to approve anything
 if ( $login == '__public__' ) {
-  $out .= "<error>" . translate("Not authorized") . "</error>\n";
-  $out .= "</events>\n";
+  $out .= '<error>' . translate ( 'Not authorized' ) . "</error>\n</events>\n";
   exit;
 }
 
@@ -49,8 +47,7 @@ if ( empty ( $user ) )
 // If viewing different user then yourself...
 if ( $login != $user ) {
   if ( $ALLOW_VIEW_OTHER != 'Y' ) {
-    $out .= "<error>" . translate("Not authorized") . "</error>\n";
-    $out .= "</events>\n";
+    $out .= '<error>' . translate ( 'Not authorized' ) . "</error>\n</events>\n";
     exit;
   }
   //$out .= "<!-- Allowing user to view other user's calendar -->\n";
@@ -115,8 +112,8 @@ function process_event ( $id, $name, $event_date, $event_time ) {
 function get_unapproved ( $user )
 {
   global $temp_fullname, $key, $login, $NONUSER_ENABLED;
-  
-  $count = 0; 
+
+  $count = 0;
   $ret = '';
   user_load_variables ( $user, 'temp_' );
   //echo "Listing events for $user<br />";

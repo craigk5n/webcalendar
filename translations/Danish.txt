@@ -283,7 +283,7 @@ Add New Category: Tilføj ny kategori
 # Page: catsel.php
 #
 Remove: Fjern
-Ok: Ok
+OK: OK
 
 ########################################
 # Page: del_entry.php

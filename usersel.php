@@ -108,7 +108,7 @@ echo '
           </tr>
           <tr>
             <td style="text-align:center;" colspan="2"><br /><br />
-              <input type="button" value="' . translate ( 'Ok' )
+              <input type="button" value="' . translate ( 'OK' )
  . '" onclick="OkButton ()" />
               <input type="button" value="' . translate ( 'Cancel' )
  . '" onclick="window.close ()" />

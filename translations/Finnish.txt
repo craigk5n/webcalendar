@@ -265,7 +265,7 @@ Add New Category: Lis‰‰ uusi tapahtumaluokka
 # Page: catsel.php
 #
 Remove: Poista
-Ok: Ok
+OK: OK
 
 ########################################
 # Page: del_entry.php

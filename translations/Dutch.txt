@@ -405,7 +405,7 @@ ENTRY CATEGORIES: AFSPRAAK CATEGORIEN
 AVAILABLE CATEGORIES: BESCHIKBARE CATEGORIEN
 Remove: Verwijderen
 Global Category: Globale categorie
-Ok: OK
+OK: OK
 
 ########################################
 # Page: del_entry.php

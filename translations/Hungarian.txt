@@ -396,7 +396,7 @@ ENTRY CATEGORIES: BEJEGYZÉS KATEGÓRIÁK
 AVAILABLE CATEGORIES: ELÉRHETŐ KATEGÓRIÁK
 Remove: Törlés
 Global Category: Globális kategória
-Ok: OK
+OK: OK
 
 ########################################
 # Page: del_entry.php

@@ -36,8 +36,7 @@ $out = "<events>\n";
 // If login is public user, make sure public can view others...
 if ( $login == '__public__' && $login != $user ) {
   if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
-    $out .= "<error>" . translate("Not authorized") . "</error>\n";
-    $out .= "</events>\n";
+    $out .= '<error>' . translate ( 'Not authorized' ) . "</error>\n</events>\n";
     exit;
   }
   //$out .= "<!-- Allowing public user to view other user's calendar -->\n";
@@ -49,8 +48,7 @@ if ( empty ( $user ) )
 // If viewing different user then yourself...
 if ( $login != $user ) {
   if ( $ALLOW_VIEW_OTHER != 'Y' ) {
-    $out .= "<error>" . translate("Not authorized") . "</error>\n";
-    $out .= "</events>\n";
+    $out .= '<error>' . translate ( 'Not authorized' ) . "</error>\n</events>\n";
     exit;
   }
   //$out .= "<!-- Allowing user to view other user's calendar -->\n";

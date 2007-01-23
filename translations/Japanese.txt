@@ -39,7 +39,7 @@ __month__ __yyyy__: __yyyy__ 年 __month__
 #
 Title: WebCalendar
 version: バージョン
-Ok: OK
+OK: OK
 
 ########################################
 # Page: access.php

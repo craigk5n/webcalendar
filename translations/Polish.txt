@@ -303,7 +303,7 @@ Add New Category: Dodaj now± kategorie
 # Page: catsel.php
 #
 Remove: Usun
-Ok: Ok
+OK: OK
 
 ########################################
 # Page: del_entry.php
