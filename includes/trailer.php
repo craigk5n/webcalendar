@@ -199,10 +199,8 @@ if ( access_is_enabled () ) {
 }
 if ( $showHelp ) {
   $goto_link[] = '<a title="' . 
-    $helpStr . '" href="#" onclick="window.open ' .
-    "( 'help_index.php', 'cal_help', 'dependent,menubar,scrollbars, " .
-    "height=500,width=600,innerHeight=520,outerWidth=620' ); \" " .
-    "onmouseover=\"window.status=''; return true\">" .
+    $helpStr . '" href="#" onclick="javascript:openHelp()"' .
+    " onmouseover=\"window.status=''; return true\">" .
     $helpStr . '</a>';
 }
 

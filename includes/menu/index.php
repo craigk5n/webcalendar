@@ -316,23 +316,7 @@ function jscMenu_divider () {
 
 $menuScript .= '
     <script language="JavaScript" type="text/javascript">
-<!-- <![CDATA[' . ( $menuConfig['Help Contents'] ? '
-      function openHelp () {
-        window.open ( \'help_index.php\', \'cal_help\',\'dependent,menubar,'
-   . 'scrollbars,height=500,width=600,innerHeight=520,outerWidth=620\' );
-      }' : '' ) . ( $menuConfig['About WebCalendar'] ? '
-
-      function openAbout () {
-        var
-          mX = (screen.width / 2) -123,
-          mY = 200,
-          MyPosition = \'left=\' + mX + \',top=\' + mY + \',screenx=\' + mX'
-   . ' + \',screeny=\' + mY;
-        window.open ( \'about.php\', \'cal_about\',\'dependent,toolbar=0,'
-   . 'height=300,width=245,innerHeight=310,outerWidth=255,location=0,\' + '
-   . 'MyPosition );
-      }' : '' ) . '
-
+<!-- <![CDATA[
       var myMenu =
 ['
 
