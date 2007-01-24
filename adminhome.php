@@ -14,25 +14,29 @@ define ( 'COLUMNS', 3 );
 
 print_header ( '', '
     <style type="text/css">
+      table.admin,
+      .admin td a {
+      	background:' . $CELLBG . '
+      }
       table.admin {
-        border: 1px solid #000;
-        padding: 5px;
-        background-color: ' . $CELLBG . ';
+      	border:1px solid #000;
+      	padding:5px
       }
       table.admin td {
-        padding: 20px;
-        text-align: center;
+      	padding:20px
+      }
+      table.admin td,
+      .admin td a {
+      	text-align:center
       }
       .admin td a {
-        border: 1px solid #EEE;
-        border-color: #EEE #777 #777 #EEE;
-        padding: 10px;
-        background-color: ' . $CELLBG . ';
-        text-align: center;
+      	border:1px solid #EEE;
+      	border-color:#EEE #777 #777 #EEE;
+      	padding:10px
       }
       .admin td a:hover {
-        border-color: #777 #EEE #EEE #777;
-        background-color: #AAA;
+      	border-color:#777 #EEE #EEE #777
+      	background:#AAA;
       }
     </style>
 '
@@ -121,9 +125,11 @@ if ( $is_nonuser_admin ) {
     $names[] = translate ( 'Delete Events' );
     $links[] = 'purge.php';
   }
-  // This Activity Log link shows ALL activity for ALL events, so you really need
-  // to be an admin user for this. Enabling "Activity Log" in UAC just gives you
-  // access to the log for your _own_ events or other events you have access to.
+  /*
+ This Activity Log link shows ALL activity for ALL events, so you really need
+ to be an admin user for this.  Enabling "Activity Log" in UAC just gives you
+ access to the log for your _own_ events or other events you have access to.
+ */
   if ( $is_admin && ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) ) {
     $names[] = translate ( 'Activity Log' );
@@ -158,11 +164,12 @@ for ( $i = 0, $cnt = count ( $names ); $i < $cnt; $i++ ) {
       </tr>' : '' );
 }
 
-if ( $i % COLUMNS != 0 )
+if ( $i % COLUMNS != 0 ) {
   while ( $i % COLUMNS != 0 ) {
-  echo '
+    echo '
         <td>&nbsp;</td>';
-  $i++;
+    $i++;
+  }
 }
 echo '
       </tr >
