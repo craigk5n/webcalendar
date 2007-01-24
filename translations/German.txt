@@ -764,7 +764,7 @@ Edit Custom Trailer: &Auml;ndern der benutzerdefinierten FU&szlig;ZEILE
 ########################################
 # Page: access.php
 #
-Database error&#58; XXX.: Datenbankfehler XXX.
+Database error XXX: Datenbankfehler XXX.
 DEFAULT CONFIGURATION: GRUNDKONFIGURATION
 Admin: Administration
 Go: Zeigen
@@ -1621,7 +1621,7 @@ Challenge/Response: Aufforderung/Beantwortung
 Error updating webcal_config: Fehler beim Updaten der &#39;webcal_config&#39;
 Error updating webcal_user_pref: Fehler beim Updaten der &#39;webcal_user_pref&#39;
 Perl script required: Ihre vorhergehende Version des Webkalenders erfordert das Durchf&uuml;hren eines PERL Skriptes um Ihre Dateien umzuwandeln. &#39;/tools/upgrade_to_0.9.7.pl&#39; bitte laufen lassen danach zu dieser Seite zur&uuml;ckkehren um fortzufahren.
-Your previous version of WebCalendar requires updating several database tables.: Ihre vorhergehende Version vom Webkalender erfordert die Aktualisierung einiger Datenbanktabellen.
+previous version requires updating several tables: Ihre vorhergehende Version vom Webkalender erfordert die Aktualisierung einiger Datenbanktabellen.
 
 ########################################
 # Page: install/index.php

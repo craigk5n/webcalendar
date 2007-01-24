@@ -1590,7 +1590,7 @@ Launch WebCalendar: Запустить WebCalendar
 Error updating webcal_config: Ошибка при обновлении webcal_config
 Error updating webcal_user_pref: Ошибка при обновлении webcal_user_pref
 Perl script required: Ваша предыдущая версия WebCalendar требует запущенного PERL скрипта для преобразования ваших данных. Пожалуйса запустите /tools/upgrade_to_0.9.7.pl потом вернитесь на эту страницу для продолжения.
-Your previous version of WebCalendar requires updating several database tables.: Ваша предыдущая версия WebCalendar требует обновления некоторых таблиц базы.
+previous version requires updating several tables: Ваша предыдущая версия WebCalendar требует обновления некоторых таблиц базы.
 
 ########################################
 # Page: tools/reload_remotes.php
