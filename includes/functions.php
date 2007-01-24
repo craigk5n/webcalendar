@@ -2517,32 +2517,32 @@ function get_all_dates ( $date, $rpt_type, $interval=1, $ByMonth ='',
       while ($cdate <= $realend && $n <= $Count) { 
         //check RRULE items
         if ( ! empty ( $bymonth ) ) {
-          if ( ! strlen ( array_search ( date ( 'n', $cdate ), $bymonth ) ) ) 
+          if ( ! in_array ( date ( 'n', $cdate ), $bymonth ) )
             $date_excluded = true;
         }
         if ( ! empty ( $byweekno ) ) {
-          if ( ! strlen ( array_search ( date ( 'W', $cdate ), $byweekno ) ) )
+          if ( ! in_array ( date ( 'W', $cdate ), $byweekno ) )
             $date_excluded = true;
         }  
         if ( ! empty ( $byyearday ) ) {
           $doy = date ( 'z', $cdate ); //day of year
           $diy = date ('L',$cdate) + 365; //days in year
           $diyReverse = $doy - $diy -1;
-          if ( ! array_search ( $doy, $byyearday ) && 
-            ! array_search ( $diyReverse, $byyearday ))
+          if ( ! in_array ( $doy, $byyearday ) && 
+            ! in_array ( $diyReverse, $byyearday ))
             $date_excluded = true;
         } 
         if ( ! empty ( $bymonthday ) ) {
           $dom = date ( 'j', $cdate ); //day of month
           $dim = date ('t',$cdate); //days in month
           $dimReverse = $dom - $dim -1;
-          if ( ! array_search ( $dom, $bymonthday ) && 
-            ! array_search ( $dimReverse, $bymonthday ))
+          if ( ! in_array ( $dom, $bymonthday ) && 
+            ! in_array ( $dimReverse, $bymonthday ))
             $date_excluded = true;
         }
         if ( ! empty ( $byday ) ) {
           $bydayvalues = get_byday ( $byday, $cdate, 'daily', $date );
-          if (  ! strlen ( array_search ( $cdate, $bydayvalues ) ) ){
+          if (  ! in_array ( $cdate, $bydayvalues ) ) {
             $date_excluded = true;
           }      
         }     
@@ -5247,13 +5247,16 @@ function print_timezone_select_html ( $prefix, $tz ) {
  * @todo There has to be a way to vastly improve on this logic
  */
 function validate_domain ( ) {
-
-  $ip_authorized = false;
-  $deny_found = array();
-  $deny_true = false;
-  $allow_found = array();
-  $allow_true = false;
-  $rmt_ip = explode( '.',  $_SERVER['REMOTE_ADDR'] );
+ global $SELF_REGISTRATION_BLACKLIST;
+ 
+ if ( empty ( $SELF_REGISTRATION_BLACKLIST ) || 
+   $SELF_REGISTRATION_BLACKLIST == 'N' )
+   return true;
+	 
+  $ip_authorized =  false;
+  $deny_true =  array();
+  $allow_true = array();
+  $rmt_long = ip2long($_SERVER['REMOTE_ADDR']);
   $fd = @fopen ( 'includes/blacklist.php', 'rb', false );
   if ( ! empty ( $fd ) ) {
     // We don't use fgets() since it seems to have problems with Mac-formatted
@@ -5279,42 +5282,21 @@ function validate_domain ( ) {
         continue; 
       if ( preg_match ( "/(\S+):\s*(\S+):\s*(\S+)/", $buffer, $matches ) ) {
         $permission = $matches[1];
-        $blacklist_ip = explode( '.',  $matches[2] );
-        $blacklist_nm = explode( '.',  $matches[3] );
-        if ( $permission == 'deny' ) {
-          for ( $i = 0; $i < 4; $i++ ) {
-            // Do bitwise AND on IP and Netmask
-            if ( (abs($rmt_ip[$i]) & abs($blacklist_nm[$i])) == 
-              (abs($blacklist_ip[$i]) & abs($blacklist_nm[$i])) ) {
-              $deny_found[$i] = 1;          
-            } else {
-              $deny_found[$i] = 0;      
-            }    
-          }
-          //This value will be true if rmt_ip is in any deny network
-          // Once set, it can not be reset be other allow statements 
-          if ( ! array_search ( 0, $deny_found ) ) {
-            $deny_true = true;   
-          } 
-        } else if ( $permission == 'allow') {
-          for ( $i = 0; $i < 4; $i++ ) {
-            // Do bitwise AND on IP and Netmask
-            if ( (abs($rmt_ip[$i]) & abs($blacklist_nm[$i])) == 
-              (abs($blacklist_ip[$i]) & abs($blacklist_nm[$i])) ) {
-              $allow_found[$i] = 1;           
-            } else {
-              $allow_found[$i] = 0;     
-            }    
-          }
-          //This value will be true if rmt_ip is any allow network
-          // Once set, it can not be reset be other allow statements 
-          if ( ! array_search ( 0, $allow_found ) ) {
-            $allow_true = true;    
-          }
-        }
+        $black_long   = ip2long($matches[2]);
+        $mask   = ip2long($matches[3]);
+		if ( $matches[2] == '255.255.255.255' )
+		  $black_long = $rmt_long;
+        if ( ( $black_long & $mask ) == ( $rmt_long & $mask ) )	{
+          if ( $permission == 'deny' ) {
+            $deny_true[] = true;   
+          } else if ( $permission == 'allow') {
+            $allow_true[] = true;    
+         }
+		}
       }
     } //end for loop
-    $ip_authorized = ( $deny_true == true && $allow_true == false? false : true ); 
+    $ip_authorized = ( count ($deny_true ) && 
+	  ! count ($allow_true ) ? false : true ); 
   } // if fd not empty
   return $ip_authorized;
 }
@@ -5737,7 +5719,7 @@ function set_env ( $val, $setting ) {
   //safe_mode_allowed_env_vars for $val
   if( ini_get('safe_mode') ){
     $allowed_vars = explode ( ',', ini_get('safe_mode_allowed_env_vars') );
-    if ( array_search ( $val, $allowed_vars ) >=0 ) {
+    if ( in_array ( $val, $allowed_vars ) ) {
       $ret = true;
     }
   } else {
