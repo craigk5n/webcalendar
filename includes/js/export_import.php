@@ -31,6 +31,7 @@ function checkExtension () {
   var type = document.importform.ImportType.selectedIndex;
   var filename = document.importform.FileName.value;
   var extension = filename.substr ( filename.length -3, 3 );
+  extension = extension.toLowerCase();
   var pass = true;
   switch  ( type ) {
     case 0:
