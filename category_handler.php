@@ -2,133 +2,127 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
-$icon_path = 'icons/';
 $icon_max_size = '3000';
+$icon_path = 'icons/';
 
-//Rename any icons associated with this cat_id
+/* Rename any icons associated with this cat_id. */
 function renameIcon ( $id ) {
   global $icon_path;
-  $catIcon = $icon_path . 'cat-' . $id . '.gif';
-  $bakIcon = $icon_path . 'cat-' . date ( 'YmdHis' ) . '.gif';
-  if ( file_exists ( $catIcon ) ){
+  $bakIcon = $catIcon = $icon_path . 'cat-';
+  $bakIcon .= date ( 'YmdHis' ) . '.gif';
+  $catIcon .= $id . '.gif';
+  if ( file_exists ( $catIcon ) )
     rename ( $catIcon, $bakIcon );
-  }
 }
-
-// does the category belong to the user?
+// .
+// Does the category belong to the user?
 $is_my_event = false;
-if ( empty ( $id ) ) {
-  $is_my_event = true; // new event
-} else {
-  $res = dbi_execute ( 'SELECT cat_id, cat_owner FROM webcal_categories ' .
-    'WHERE cat_id = ?', array( $id ) );
+if ( empty ( $id ) )
+  $is_my_event = true; // New event.
+else {
+  $res = dbi_execute ( 'SELECT cat_id, cat_owner FROM webcal_categories
+    WHERE cat_id = ?', array( $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row[0] == $id && $row[1] == $login )
-      $is_my_event = true;
-    else if ( $row[0] == $id && empty ( $row[1] ) && $is_admin )
-      $is_my_event = true; // global category
-    dbi_free_result ( $res );
-  } else {
-    $error = db_error ();
-  }
 
+    $is_my_event = ( $row[0] == $id && $row[1] == $login ||
+      ( empty ( $row[1] ) && $is_admin ) );
+
+    dbi_free_result ( $res );
+  } else
+    $error = db_error ();
 }
 
 if ( ! empty ( $_FILES['FileName'] ) )
   $file = $_FILES['FileName'];
-//Make sure we clear $file if no file was upoaded
-if ( ! empty ( $file['tmp_name'] )  && $file['tmp_name'] == 'none' )
-  $file = ''; 
+// .
+// Make sure we clear $file if no file was upoaded.
+if ( ! empty ( $file['tmp_name'] ) && $file['tmp_name'] == 'none' )
+  $file = '';
 
 if ( ! $is_my_event )
-  $error = print_not_auth () . '.';
+  $error = print_not_auth ();
 
 $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $delete ) ) {
-  // delete this category
-  if ( ! dbi_execute( 'DELETE FROM webcal_categories 
+  // Delete this category.
+  if ( ! dbi_execute( 'DELETE FROM webcal_categories
     WHERE cat_id = ? AND ( cat_owner = ?'
-    . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ), array( $id, $login ) ) ) {
+       . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ),
+        array( $id, $login ) ) ) {
     $error = db_error ();
   }
-     
-  if ( ! dbi_execute( 'DELETE FROM webcal_entry_categories 
-    WHERE cat_id = ? AND ( cat_owner = ?'
-    . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ), array( $id, $login ) ) ) {
-    $error = db_error ();
-  }
-  //Rename any icons associated with this cat_id
-  renameIcon ( $id ); 
 
+  if ( ! dbi_execute( 'DELETE FROM webcal_entry_categories
+    WHERE cat_id = ? AND ( cat_owner = ?'
+       . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ),
+        array( $id, $login ) ) ) {
+    $error = db_error ();
+  }
+  // Rename any icons associated with this cat_id.
+  renameIcon ( $id );
 } else if ( empty ( $error ) ) {
   if ( ! empty ( $id ) ) {
-    # update (don't let them change global status)
-    $sql = 'UPDATE webcal_categories SET cat_name = ?, cat_color = ? ' .
-      'WHERE cat_id = ?';
-    if ( ! dbi_execute ( $sql, array( $catname, $catcolor, $id ) ) ) {
+    # Update (don't let them change global status).
+    if ( ! dbi_execute ( 'UPDATE webcal_categories
+      SET cat_name = ?, cat_color = ? WHERE cat_id = ?',
+        array( $catname, $catcolor, $id ) ) )
       $error = db_error ();
-    }
+
     $delIcon = getPostValue ( 'delIcon' );
-    if ( ! empty ( $delIcon ) && $delIcon == 'Y' ) {
+    if ( ! empty ( $delIcon ) && $delIcon == 'Y' )
       renameIcon ( $id );
-    }
   } else {
-    // add new category
-    // get new id
-    $res = dbi_execute ( 'SELECT MAX(cat_id) FROM webcal_categories' );
+    // Add new category.
+    // Get new id.
+    $res = dbi_execute ( 'SELECT MAX( cat_id ) FROM webcal_categories' );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $id = $row[0] + 1;
       dbi_free_result ( $res );
-      if ( $is_admin ) {
-        if ( $isglobal == 'Y' )
-          $catowner = NULL;
-        else
-          $catowner = $login;
-      } else
-        $catowner = $login;
-      $sql = 'INSERT INTO webcal_categories ' .
-        '( cat_id, cat_owner, cat_name, cat_color ) ' .
-        'VALUES ( ?, ?, ?, ? )';
-      if ( ! dbi_execute ( $sql, array( $id, $catowner, $catname, $catcolor ) ) ) {
+      $catowner = ( $is_admin
+        ? ( $isglobal == 'Y' ? null : $login )
+        : $login );
+
+      if ( ! dbi_execute ( 'INSERT INTO webcal_categories ( cat_id, cat_owner,
+        cat_name, cat_color ) VALUES ( ?, ?, ?, ? )',
+          array( $id, $catowner, $catname, $catcolor ) ) )
         $error = db_error ();
-      }
-    } else {
+    } else
       $error = db_error ();
-    }
   }
-  if ( empty ( $delIcon ) && is_dir($icon_path) && ( ! empty ( $ENABLE_ICON_UPLOADS ) && 
-    $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) ) { 
-    //Save icon if uploaded
-    if ( ! empty ( $file['tmp_name'] ) && $file['type'] == 'image/gif' &&
-      $file['size'] <= $icon_max_size ){
-      //$icon_props = getimagesize ( $file['tmp_name']  );
-      //print_r ($icon_props );
-      $path_parts = pathinfo( $_SERVER['SCRIPT_FILENAME']);
-      $catIcon =  $icon_path . 'cat-' . $id . '.gif';
-      $fullIcon = $path_parts['dirname'] . '/' .$catIcon;
-      renameIcon ( $id );
-      $file_result = move_uploaded_file ( $file['tmp_name'], $fullIcon );
-      //echo "Upload Result:" . $file_result;
-    } else if ( ! empty ( $file['tmp_name'] ) && $file['size'] > $icon_max_size ){
-      $error = translate ( 'File size exceeds maximum' );
-    } else if ( ! empty ( $file['tmp_name'] ) && $file['type'] != 'image/gif' ){
-      $error = translate ( 'File is not a gif image' );
+  if ( empty ( $delIcon ) && is_dir( $icon_path ) && ( !
+        empty ( $ENABLE_ICON_UPLOADS ) && $ENABLE_ICON_UPLOADS == 'Y' ||
+        $is_admin ) ) {
+    // Save icon if uploaded.
+    if ( ! empty ( $file['tmp_name'] ) ) {
+      if ( $file['type'] == 'image/gif' && $file['size'] <= $icon_max_size ) {
+        // $icon_props = getimagesize ( $file['tmp_name']  );
+        // print_r ($icon_props );
+        $path_parts = pathinfo ( $_SERVER['SCRIPT_FILENAME'] );
+        $fullIcon = $path_parts['dirname'] . '/'
+         . $icon_path . 'cat-' . $id . '.gif';
+        renameIcon ( $id );
+        $file_result = move_uploaded_file ( $file['tmp_name'], $fullIcon );
+        // echo "Upload Result:" . $file_result;
+      } else
+      if ( $file['size'] > $icon_max_size )
+        $error = translate ( 'File size exceeds maximum.' );
+      else
+      if ( $file['type'] != 'image/gif' )
+        $error = translate ( 'File is not a gif image.' );
     }
-    //Copy icon if local file specified
+    // Copy icon if local file specified.
     $urlname = getPostvalue ( 'urlname' );
-    if ( ! empty ( $urlname ) && file_exists ( $icon_path . $urlname  )  ) {
+    if ( ! empty ( $urlname ) && file_exists ( $icon_path . $urlname ) )
       copy ( $icon_path . $urlname, $icon_path . 'cat-' . $id . '.gif' );
-    }
   }
 }
-  
+
 if ( empty ( $error ) )
   do_redirect ( 'category.php' );
 
 print_header();
-echo print_error ( $error); 
-echo print_trailer();
-?>
+echo print_error ( $error ) . print_trailer();
 
+?>

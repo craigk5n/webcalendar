@@ -202,7 +202,7 @@ Add: Gehitu
 Category Name: Atalaren izena
 Color: Kolorea
 Delete: Ezabatu
-Add New Category: Atal berria gehitu
+Make New Category: Atal berria gehitu
 
 ########################################
 # Page: catsel.php
@@ -267,7 +267,7 @@ All: Denak
 Send Reminder: Gogorarazteko abixua bidali
 days: egunak
 Delete entry: Sarrera ezabatu
-You are not authorized to edit this entry: Ez zaude baimenduta gertaera hau editatzeko
+You are not authorized to edit this entry.: Ez zaude baimenduta gertaera hau editatzeko
 
 ########################################
 # Page: edit_entry_handler.php

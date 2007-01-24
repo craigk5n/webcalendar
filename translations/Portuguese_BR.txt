@@ -280,7 +280,7 @@ Add: Adicionar
 Category Name: Nome da categoria
 Delete: Apagar
 Are you sure you want to delete this entry?: Tem certeza que pretende apagar esta entrada?
-Add New Category: Nova categoria
+Make New Category: Nova categoria
 
 ########################################
 # Page: catsel.php
@@ -350,7 +350,7 @@ All: Todos
 Send Reminder: Enviar Lembrete
 days: dias
 Delete entry: Apagar entrada
-You are not authorized to edit this entry: Não está autorizado a editar esta entrada
+You are not authorized to edit this entry.: Não está autorizado a editar esta entrada
 
 ########################################
 # Page: edit_entry_handler.php

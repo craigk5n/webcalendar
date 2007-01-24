@@ -193,7 +193,7 @@ Add: Ychwanegu
 Category Name: Enw Dosbarth
 Delete: Dileu
 Are you sure you want to delete this entry?: A ydych yn siwr eich bod eisiau dileu y digwyddiad yma?
-Add New Category: Ychwanegwch Dosbarth newydd 
+Make New Category: Ychwanegwch Dosbarth newydd 
 
 ########################################
 # Page: catsel.php
@@ -252,7 +252,7 @@ All: Pob
 Send Reminder: Anfoner atgofiad
 days: diwrnod
 Delete entry: Dileu digwyddiad
-You are not authorized to edit this entry: Nid oes ganddo chi yr awdurdod i newid y digwyddiad yma
+You are not authorized to edit this entry.: Nid oes ganddo chi yr awdurdod i newid y digwyddiad yma
 
 ########################################
 # Page: edit_entry_handler.php

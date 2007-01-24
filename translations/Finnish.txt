@@ -259,7 +259,7 @@ Add: Lis‰‰
 Category Name: Tapahtumaluokan nimi
 Delete: Poista
 Are you sure you want to delete this entry?: Haluatko varmasti poistaa t‰m‰n merkinn‰n?
-Add New Category: Lis‰‰ uusi tapahtumaluokka
+Make New Category: Lis‰‰ uusi tapahtumaluokka
 
 ########################################
 # Page: catsel.php
@@ -327,7 +327,7 @@ All: Kaikki
 Send Reminder: L‰het‰ muistutus
 days: p‰iv‰‰
 Delete entry: Poista merkint‰
-You are not authorized to edit this entry: Sinulla ei ole oikeutta muokata t‰t‰ merkint‰‰
+You are not authorized to edit this entry.: Sinulla ei ole oikeutta muokata t‰t‰ merkint‰‰
 
 ########################################
 # Page: edit_entry_handler.php

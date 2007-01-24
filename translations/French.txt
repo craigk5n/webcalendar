@@ -293,7 +293,7 @@ Add: Ajouter
 Category Name: Nom de la catégorie
 Delete: Supprimer
 Are you sure you want to delete this entry?: Voulez-vous vraiment supprimer cet événement ?
-Add New Category: Ajouter une nouvelle catégorie
+Make New Category: Ajouter une nouvelle catégorie
 
 ########################################
 # Page: catsel.php
@@ -366,7 +366,7 @@ All: Tout
 Send Reminder: Envoyer un rappel
 days: jours
 Delete entry: Supprimer l'événement
-You are not authorized to edit this entry: Vous n'êtes pas autorisé à modifier cet événement
+You are not authorized to edit this entry.: Vous n'êtes pas autorisé à modifier cet événement
 
 ########################################
 # Page: edit_entry_handler.php

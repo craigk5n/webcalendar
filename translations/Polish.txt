@@ -297,7 +297,7 @@ Add: Dodaj
 Category Name: Nazwa kategorii
 Delete: Skasuj
 Are you sure you want to delete this entry?: Czy jeste¶ pewny ¿e chcesz skasowaæ ten wpis?
-Add New Category: Dodaj now± kategorie
+Make New Category: Dodaj now± kategorie
 
 ########################################
 # Page: catsel.php
@@ -372,7 +372,7 @@ All: Wszystko
 Send Reminder: Wy¶lij przypomnienie
 days: dni
 Delete entry: Skasuj wpis
-You are not authorized to edit this entry: Nie masz autoryzacji by skasowaæ ten wpis
+You are not authorized to edit this entry.: Nie masz autoryzacji by skasowaæ ten wpis
 
 ########################################
 # Page: edit_entry_handler.php

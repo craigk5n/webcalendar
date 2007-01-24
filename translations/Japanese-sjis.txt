@@ -391,13 +391,13 @@ Search for existing icons: 既存のアイコンを検索する
 Delete: 削除
 entry: エントリ
 Are you sure you want to delete this XXX?: 本当にこのXXXを削除しますか?
-Add New Category: 新規カテゴリの追加
+Make New Category: 新規カテゴリの追加
 
 ########################################
 # Page: category_handler.php
 #
-File size exceeds maximum: ファイルサイズが最大値を超えました
-File is not a gif image: ファイルは GIF 画像ではありません
+File size exceeds maximum.: ファイルサイズが最大値を超えました
+File is not a gif image.: ファイルは GIF 画像ではありません
 
 ########################################
 # Page: catsel.php
@@ -532,7 +532,7 @@ End/Due: 終了・期間
 Times: 回数
 Every: 毎回
 Delete entry: エントリの削除
-You are not authorized to edit this entry: このエントリの編集は許可されていません。
+You are not authorized to edit this entry.: このエントリの編集は許可されていません。
 
 ########################################
 # Page: edit_entry_handler.php

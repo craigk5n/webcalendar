@@ -269,7 +269,7 @@ Add: P?idat
 Category Name: Jméno kategorie
 Delete: Smazat
 Are you sure you want to delete this entry?: Opravdu si p?eješ smazat tento záznam?
-Add New Category: P?idat novou kategorii
+Make New Category: P?idat novou kategorii
 
 ########################################
 # Page: catsel.php
@@ -338,7 +338,7 @@ All: Všichni
 Send Reminder: Poslat upomínku
 days: dn?
 Delete entry: Smaž záznam
-You are not authorized to edit this entry: Nemáš oprávn?ni upravovat tento záznam
+You are not authorized to edit this entry.: Nemáš oprávn?ni upravovat tento záznam
 
 ########################################
 # Page: edit_entry_handler.php

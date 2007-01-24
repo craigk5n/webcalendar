@@ -173,7 +173,7 @@ repeat-frequency-help: Especifica con qué frecuencia se repetirá o evento.  O 1 
 Frequency: Frecuencia
 days: días
 Delete entry: Borrar entrada
-You are not authorized to edit this entry: Non está autorizado para modificar esta entrada
+You are not authorized to edit this entry.: Non está autorizado para modificar esta entrada
 
 ########################################
 # Page: edit_entry_handler.php

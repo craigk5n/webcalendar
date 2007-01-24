@@ -390,13 +390,13 @@ gif 3kb max: gif maximaal 3 kilobyte
 Search for existing icons: Zoek naar bestaande ikonen
 Delete: Verwijderen
 Are you sure you want to delete this entry?: Weet u zeker dat u dit item wilt verwijderen?
-Add New Category: Categorie toevoegen
+Make New Category: Categorie toevoegen
 
 ########################################
 # Page: category_handler.php
 #
-File size exceeds maximum: Bestand is groter dan toegestaan
-File is not a gif image: Bestand is geen gif-afbeelding
+File size exceeds maximum.: Bestand is groter dan toegestaan
+File is not a gif image.: Bestand is geen gif-afbeelding
 
 ########################################
 # Page: catsel.php
@@ -538,7 +538,7 @@ End/Due: Einde/Klaar
 Times: Keren
 Every: Iedere
 Delete entry: Afspraak verwijderen
-You are not authorized to edit this entry: U heeft geen toestemming deze afspraak te bewerken.
+You are not authorized to edit this entry.: U heeft geen toestemming deze afspraak te bewerken.
 
 ########################################
 # Page: edit_entry_handler.php
