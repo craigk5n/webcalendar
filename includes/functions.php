@@ -1818,7 +1818,7 @@ function display_small_tasks ( $cat_id ) {
  */
 function print_entry ( $event, $date ) {
   global $eventinfo, $login, $user, $PHP_SELF, $layers, 
-   $DISPLAY_LOCATION, $DISPLAY_TASKS_IN_GRID,
+   $DISPLAY_LOCATION, $DISPLAY_TASKS_IN_GRID, $DISPLAY_END_TIMES,
    $is_assistant, $is_nonuser_admin, $TIME_SPACER, $categories;
 
   static $key = 0;
@@ -1933,18 +1933,19 @@ function print_entry ( $event, $date ) {
   }
 
    $time_spacer = ( $time_only == 'Y' ? '' : $TIME_SPACER );
-  $timestr = '';
+  $timestr = $popup_timestr = '';
   if ( $event->isAllDay() ) {
-    $timestr = translate('All day event');
+    $timestr = $popup_timestr = translate('All day event');
   } else if ( ! $event->isUntimed() ) {
-    $timestr = display_time ( $event->getDateTime() );
+    $timestr = $popup_timestr = display_time ( $event->getDateTime() );
+	if ( $event->getDuration() > 0 ) {
+      $popup_timestr .= ' - ' . display_time ( $event->getEndDateTime() );
+    }
+	if ( $DISPLAY_END_TIMES == 'Y' ) $timestr = $popup_timestr;
     $time_short = getShortTime ( $timestr );
     if ( $cal_type == 'event' ) $ret .= $time_short . $time_spacer;
-    if ( $event->getDuration() > 0 ) {
-      $timestr .= ' - ' . display_time ( $event->getEndDateTime() );
-    }
   }
-  $ret .= build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only );
+  $ret .= build_entry_label ( $event, $popupid, $can_access, $popup_timestr, $time_only );
   
   //added to allow a small location to be displayed if wanted
  if ( ! empty ($location) &&
@@ -3612,7 +3613,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
  */
 function html_for_event_day_at_a_glance ( $event, $date ) {
   global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
-    $eventinfo, $login, $user, $DISPLAY_DESC_PRINT_DAY,
+    $eventinfo, $login, $user, $DISPLAY_DESC_PRINT_DAY, $DISPLAY_END_TIMES,
     $ALLOW_HTML_DESCRIPTION, $layers, $PHP_SELF, $categories;
   static $key = 0;
 
@@ -3716,13 +3717,16 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
         $in_span = true;
       }
   }
-
+  $popup_timestr = '';
   if ( $event->isAllDay() ) {
     $hour_arr[$ind] .= '[' . translate('All day event') . '] ';
   } else if ( $time >= 0  && ! $event->isAllDay() && $cal_type != 'task' ) {
-    $hour_arr[$ind] .= '[' . display_time ( $event->getDatetime() );
+    $popup_timestr = display_time ( $event->getDatetime() );
+    $hour_arr[$ind] .= '[' .  $popup_timestr;
     if ( $event->getDuration() > 0 ) {
-      $hour_arr[$ind] .= "-" . display_time ( $event->getEndDateTime() );
+      $popup_timestr .= "-" . display_time ( $event->getEndDateTime() );
+	  if ( $DISPLAY_END_TIMES == 'Y' )
+	    $hour_arr[$ind] .= $popup_timestr;
       // which slot is end time in? take one off so we don't
       // show 11:00-12:00 as taking up both 11 and 12 slots.
       $end_time = date ( 'His', $event->getEndDateTimeTS() );
@@ -3742,7 +3746,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     }
     $hour_arr[$ind] .= '] ';
   }
-  $hour_arr[$ind] .= build_entry_label ( $event, $popupid, $can_access, '', $time_only );
+  $hour_arr[$ind] .= build_entry_label ( $event, $popupid, $can_access, 
+    $popup_timestr, $time_only );
 
   if ( $event->getPriority() == 3 ) $hour_arr[$ind] .= '</strong>'; //end font-weight span
 

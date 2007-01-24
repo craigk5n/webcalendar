@@ -214,6 +214,8 @@ yearly-shows-events-help: On the yearly view, display days that contain events i
 Display days with events in bold in month and year views: Display days with events in bold in month and year views
 display-minutes-help: If enabled, minutes ending with :00 will always be displayed
 Display 00 minutes always: Display 00 minutes always
+display-end-times-help: Display event end times if timed event
+Display end times on calendars: Display end times on calendars
 allow-view-add-help: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
 Include add event link in views: Include add event link in views
 lunar-help: If enabled, will display small icons representing the lunar phases each month
@@ -882,6 +884,7 @@ will cause events imported previously, that used the same UID as an event from t
 # Page: help_index.php
 #
 Help Index: Help Index
+About WebCalendar: About WebCalendar
 
 ########################################
 # Page: help_layers.php
@@ -1609,7 +1612,6 @@ Public Calendar: Public Calendar
 Unapproved Events: Unapproved Events
 User Manager: User Manager
 Help Contents: Help Contents
-About WebCalendar: About WebCalendar
 
 ########################################
 # Page: install/index.php
@@ -1728,6 +1730,7 @@ Launch WebCalendar: Launch WebCalendar
 Error updating webcal_config: Error updating webcal_config
 Error updating webcal_user_pref: Error updating webcal_user_pref
 Error updating table XXX: Error updating table "XXX": XXX.
+Conversion Successful: Conversion Successful
 Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
 previous version requires updating several tables: Your previous version of WebCalendar requires updating several database tables.
 

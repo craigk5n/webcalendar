@@ -512,6 +512,11 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <?php echo print_radio ( 'DISPLAY_MINUTES' ) ?>
 </td></tr>
 
+<tr><td class="tooltip" title="<?php etooltip("display-end-times-help")?>">
+ <?php etranslate( 'Display end times on calendars' )?>:</td><td>
+ <?php echo print_radio ( 'DISPLAY_END_TIMES' ) ?>
+</td></tr>
+
   <tr><td class="tooltip" title="<?php etooltip( 'allow-view-add-help' )?>">
   <?php etranslate( 'Include add event link in views' )?>:</td><td>
   <?php echo print_radio ( 'ADD_LINK_IN_VIEWS' ) ?>

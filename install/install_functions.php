@@ -206,7 +206,7 @@ function show_errors ( $error_val = 0 ) {
 // only dates prior to that date are affected.
 function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
   // Default value
-  $error = translate ( '<b>Conversion Successful</b>' );
+  $error = '<b>' . translate ( 'Conversion Successful' ). '</b>';
   // don't allow $offsets over 24
   if ( abs ( $offset ) > 24 )
     $offset = 0;
