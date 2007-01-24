@@ -1522,7 +1522,7 @@ Launch WebCalendar: Lanceer WebKalender
 # Page: install/install_functions.php
 #
 Perl script required: Perl-script vereist
-Your previous version of WebCalendar requires updating several database tables.: Uw vorige versie van WebKalender vereist een opwaardering van diverse database-tabellen.
+previous version requires updating several tables: Uw vorige versie van WebKalender vereist een opwaardering van diverse database-tabellen.
 
 ########################################
 # Page: tools/reload_remotes.php

@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 01-11-2007
+# Translation last updated on 01-24-2007
 
 
 ################################################################################
@@ -73,7 +73,7 @@ OK: OK
 #
 Save: Save
 Database error: Database error
-Database error&#58; XXX.: Database error&#58; XXX.
+Database error XXX: Database error: XXX.
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Public Access: Public Access
 Admin: Admin
@@ -1149,8 +1149,8 @@ more: more
 # Page: users.php
 #
 Remote Calendars: Remote Calendars
-Add New User: Add New User
 denotes administrative user: denotes administrative user
+Add New User: Add New User
 
 ########################################
 # Page: usersel.php
@@ -1504,18 +1504,18 @@ Mb: Mb
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Notification
-provide_address: You must provide at least one recipient email address
-mailer_not_supported: mailer is not supported
-execute: Could not execute:
-instantiate: Could not instantiate mail function
 authenticate: SMTP Error: Could not authenticate
-from_failed: The following From address failed:
-recipients_failed: SMTP Error: The following recipients failed:
-data_not_accepted: SMTP Error: Data not accepted
 connect_host: SMTP Error: Could not connect to SMTP host:
+data_not_accepted: SMTP Error: Data not accepted
+encoding: Unknown encoding:
+execute: Could not execute:
 file_access: Could not access file:
 file_open: File Error Could not open file:
-encoding: Unknown encoding:
+from_failed: The following From address failed:
+instantiate: Could not instantiate mail function
+mailer_not_supported: mailer is not supported
+provide_address: You must provide at least one recipient email address.
+recipients_failed: SMTP Error: The following recipients failed:
 
 ########################################
 # Page: includes/classes/captcha/captcha.php
@@ -1719,8 +1719,9 @@ Launch WebCalendar: Launch WebCalendar
 #
 Error updating webcal_config: Error updating webcal_config
 Error updating webcal_user_pref: Error updating webcal_user_pref
+Error updating table XXX: Error updating table "XXX": XXX.
 Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
-Your previous version of WebCalendar requires updating several database tables.: Your previous version of WebCalendar requires updating several database tables.
+previous version requires updating several tables: Your previous version of WebCalendar requires updating several database tables.
 
 ########################################
 # Page: tools/reload_remotes.php
@@ -1746,7 +1747,7 @@ Reminder: Reminder
 # Page: ws/event_mod.php
 #
 Unsupported action: Unsupported action
-No event id specified: No event id specified
+No event id specified: No event id specified.
 not admin: not admin
 
 ########################################

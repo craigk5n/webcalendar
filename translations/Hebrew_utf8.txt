@@ -1521,7 +1521,7 @@ Launch WebCalendar: הפעל את לוח השנה
 # Page: install/install_functions.php
 #
 Perl script required: הגירסה הקודמת של לוח השנה שלך מחייבת הרצת סקריפט של PERL כדי להמיר את המידע שלך.נא להריץ את /tools/upgrade_to_0.9.7.pl ואחרי זה חזור לדף הזה.
-Your previous version of WebCalendar requires updating several database tables.: הגירסה הקודמת של לוח השנה שלך מחייבת עדכון מספר טבלאות בבסיס הנתונים שלך.
+previous version requires updating several tables: הגירסה הקודמת של לוח השנה שלך מחייבת עדכון מספר טבלאות בבסיס הנתונים שלך.
 
 ########################################
 # Page: tools/reload_remotes.php
