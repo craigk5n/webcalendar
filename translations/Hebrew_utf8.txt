@@ -43,7 +43,7 @@ Save: שמור
 Go: בצע
 Public Access: גישה ציבורית
 Admin: מנהל
-Allow Access to Other Users&#39; Calendar: הרשה גישה ללוחות שנה של משתמשים אחרים
+Allow Access to Other Users Calendar: הרשה גישה ללוחות שנה של משתמשים אחרים
 Grant This User Access to My Calendar: הרשה למשתמש זה גישה ללוח השנה שלי
 Type: סוג
 Calendar: לוח שנה

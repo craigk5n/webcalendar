@@ -45,7 +45,7 @@ Save: Сохранить
 Go: Перейти
 Public Access: Общий Доступ
 Admin: Администратор
-Allow Access to Other Users&#39; Calendar: Разрешить Доступ к Календарям Других Пользователей
+Allow Access to Other Users Calendar: Разрешить Доступ к Календарям Других Пользователей
 Grant This User Access to My Calendar: Дать Этому Пользователю Доступ к Моему Календарю
 Type: Тип
 Calendar: Календарь

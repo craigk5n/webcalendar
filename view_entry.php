@@ -108,7 +108,7 @@ $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
   cal_due_time, cal_completed FROM webcal_entry WHERE cal_id = ?',
   array ( $id ) );
 if ( ! $res )
-  $error = str_replace ('XXX', $id, translate ( 'Invalid entry id&#58; XXX.' ) );
+  $error = str_replace ('XXX', $id, translate ( 'Invalid entry id XXX' ) );
 else {
   $row = dbi_fetch_row ( $res );
   if ( $row ) {

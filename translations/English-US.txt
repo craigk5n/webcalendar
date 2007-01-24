@@ -80,7 +80,7 @@ Admin: Admin
 User Access Control: User Access Control
 Go: Go
 Undo: Undo
-Allow Access to Other Users&#39; Calendar: Allow Access to Other Users' Calendar
+Allow Access to Other Users Calendar: Allow Access to Other Users' Calendar
 Grant This User Access to My Calendar: Grant This User Access to My Calendar
 Type: Type
 Calendar: Calendar
@@ -111,12 +111,12 @@ Next: Next
 # Page: add_entry.php
 #
 Event XXX is already on your calendar.: Event XXX is already on your calendar.
-Invalid entry id&#58; XXX.: Invalid entry id&#58; XXX.
-This is a XXX event and may not be added to your calendar.: This is a XXX event and may not be added to your calendar
+Invalid entry id XXX: Invalid entry id: XXX.
+a XXX event may not be added to your calendar: This is a XXX event and may not be added to your calendar.
 private: private
 confidential: confidential
 Error adding event: Error adding event
-Error adding event&#58; XXX.: Error adding event&#58; XXX.
+Error adding event XXX: Error adding event: XXX.
 
 ########################################
 # Page: admin.php

@@ -45,7 +45,7 @@ Save: Opslaan
 Go: Tonen
 Public Access: Publieke Toegang
 Admin: Beheer
-Allow Access to Other Users&#39; Calendar: Permitteer toegang tot kalender van andere gebruikers
+Allow Access to Other Users Calendar: Permitteer toegang tot kalender van andere gebruikers
 Grant This User Access to My Calendar: Geef deze gebruiker toegang tot mijn kalender
 Type: Type
 Calendar: Kalender

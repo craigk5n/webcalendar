@@ -273,12 +273,12 @@ Description: Beschreibung
 # Page: add_entry.php
 #
 Event XXX is already on your calendar.: Der Termin XXX ist schon auf Ihrem Kalender vorhanden
-Invalid entry id&#58; XXX.: Ung&uuml;tiger ID-Eintrag XXX
-This is a XXX event and may not be added to your calendar.: Das ist ein XXX Termin und darf Ihrem Kalender NICHT hinzugef&uuml;gt werden
+Invalid entry id XXX: Ung&uuml;tiger ID-Eintrag XXX
+a XXX event may not be added to your calendar: Das ist ein XXX Termin und darf Ihrem Kalender NICHT hinzugef&uuml;gt werden
 private: Privat
 confidential: Vertraulich
 Error adding event: Fehler beim Hinzuf&uuml;gen eines Termins
-Error adding event&#58; XXX.: Fehler beim Hinzuf&uuml;gen des Termins XXX
+Error adding event XXX: Fehler beim Hinzuf&uuml;gen des Termins XXX
 
 ########################################
 # Page: week_details.php
@@ -769,7 +769,7 @@ DEFAULT CONFIGURATION: GRUNDKONFIGURATION
 Admin: Administration
 Go: Zeigen
 Undo: R&uuml;cksetzen
-Allow Access to Other Users&#39; Calendar: Erlaube Kalenderzugriff von anderen Benutzern
+Allow Access to Other Users Calendar: Erlaube Kalenderzugriff von anderen Benutzern
 Grant This User Access to My Calendar: Erlaube Benutzerzugriff auf meinen Kalender
 Type: Art
 View Event: Termin ansehen
