@@ -282,10 +282,9 @@ if ( $DEMO_MODE == 'Y' ) {
   $ALLOW_SELF_REGISTRATION == 'Y' ) { 
   // We can limit what domain is allowed to self register
   // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
-  if ( ! empty ( $SELF_REGISTRATION_DOMAIN ) ) {
-    $valid_ip = validate_domain ( $SELF_REGISTRATION_DOMAIN );
- }
- if ( ! empty ( $valid_ip ) || empty ( $SELF_REGISTRATION_DOMAIN ) ) {
+  $valid_ip = validate_domain ();
+
+  if ( ! empty ( $valid_ip ) ) {
     echo '<b><a href="register.php">' . translate ( 'Not yet registered? Register here!' ) . 
      '</a></b><br />';
   }
