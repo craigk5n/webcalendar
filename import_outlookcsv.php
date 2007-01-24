@@ -33,11 +33,11 @@ function parse_outlookcsv ( $cal_file ) {
     while ($data = fgetcsv($fd, filesize($cal_file)) ) {
   
       $subject = addslashes($data[0]);
-      $start = date('F d, Y H:i:s',strtotime($data[1]." ".$data[2]));
-      $end = date('F d, Y H:i:s',strtotime($data[3]." ".$data[4]));
+      $start = icaldate_to_timestamp (date ( 'Ymd\THis' , strtotime($data[1]." ".$data[2]) ) );
+      $end = icaldate_to_timestamp (date ( 'Ymd\THis' , strtotime($data[3]." ".$data[4]) ) );
       $all_day_event = (int)toBoolean($data[5]);
       $remind_on_off = (int)toBoolean($data[6]);
-      $reminder = date('Y-m-d H:i:s',strtotime($data[7]." ".$data[8]));
+      $reminder = icaldate_to_timestamp (date ( 'Ymd\THis' , strtotime($data[7]." ".$data[8]) ) );
       $meeting_organizer = $data[9];
       $required_attendies = $data[10];
       $optional_attendies = $data[11];
@@ -59,27 +59,20 @@ function parse_outlookcsv ( $cal_file ) {
        * Start New Section For Outlook CSV
        */
       //$tmp_data['RecordID']           = ;
-      $tmp_data['StartTime']          =  strtotime($start); //In seconds since 1970 (Unix Epoch)
-      $tmp_data['EndTime']            =  strtotime($end);//In seconds since 1970 (Unix Epoch)
+      $tmp_data['StartTime']          =  $start; //In seconds since 1970 (Unix Epoch)
+      $tmp_data['EndTime']            =  $end;//In seconds since 1970 (Unix Epoch)
       $tmp_data['Summary']            =  $subject; //Summary of event (string)
-      $tmp_data['Duration']           =  dateDifference(strtotime($start),strtotime($end),1); //How long the event lasts (in minutes)
+      $tmp_data['Duration']           =  dateDifference($start, $end,1); //How long the event lasts (in minutes)
       $tmp_data['Description']        =  $description; //Full Description (string)
       $tmp_data['Location']           =  $location; //Location (string)
       $tmp_data['AllDay']             =  $all_day_event; //1 = true  0 = false
-      $tmp_data['Class']              =  ( $class == 1 ? 'Private': 'Public' );
-      $tmp_data['Category']           =  $categories; //comma seperated string of categories
-      $tmp_data['AlarmSet']           =  0; //1 = true  0 = false
-      $tmp_data['AlarmAdvanceAmount'] =  -1; //How many units in AlarmAdvanceType (-1 means not set)
-      $tmp_data['AlarmAdvanceType']   =  -1; //Units: (0=minutes, 1=hours, 2=days)
-      
-      /*
-      $tmp_data['Repeat']             =  Array containing repeat information (if repeat)
-      $tmp_data['Repeat']['Interval']   =  1=daily,2=weekly,3=MonthlyByDay,4=MonthlyByDate,5=Yearly,6=monthlyBySetPos
-      $tmp_data['Repeat']['Frequency']  =  How often event occurs. (1=every, 2=every other,etc.)
-      $tmp_data['Repeat']['EndTime']    =  When the repeat ends (In seconds since 1970 (Unix Epoch))
-      $tmp_data['Repeat']['Exceptions'] =  Exceptions to the repeat (In seconds since 1970 (Unix Epoch))
-      $tmp_data['Repeat']['RepeatDays'] =  For Weekly: What days to repeat on (7 characters...y or n for each day)
-       */
+      $tmp_data['Class']              =  ( $class == 1 ? 'R': 'P' );
+	  $tmp_data['Categories']         = get_categories_id_byname ( $categories );
+      $tmp_data['AlarmSet']           =  $remind_on_off; //1 = true  0 = false
+      $tmp_data['ADate']              =  $reminder; //Date/Time of Alarm
+      $tmp_data['AAction']            =  'EMAIL'; //The default action
+	  $tmp_data['CalendarType']       =  'VEVENT'; //The default type
+     
     
       $outlookcsv_data[] = $tmp_data;
       
@@ -124,7 +117,7 @@ function dateDifference($start_timestamp,$end_timestamp,$unit= 0){
 
 function toBoolean($string) {
   $string = strtoupper($string);
-  $true_array = array("TRUE","T","1","TR");
+  $true_array = array('TRUE','T','1','TR');
   if(in_array($string,$true_array)) return true;
   else return false;
 }
