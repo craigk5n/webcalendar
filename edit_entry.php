@@ -861,8 +861,8 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
           if ( $extra_arg2 > 0 && 
             $extra_arg1[$j] == $extras[$extra_name]['cal_data'] )
             echo $selected;
-          else if ( $extra_arg2 > 0 && strlen (
-             array_search ( $extra_arg1[$j], $extraSelectArr ) ) )
+          else if ( $extra_arg2 > 0 && 
+             in_array ( $extra_arg1[$j], $extraSelectArr ) )
             echo $selected;
         } else if ( $j == 0 )
             echo $selected; 

@@ -61,7 +61,7 @@ if ( ini_get ( 'zlib.output_compression' ) != 1 && !
 
 //we only allow includes if they exist in our includes/js directory, or htmlarea
 $newinc = 'includes/' . $arinc[0] . '/' . $arinc[1];
-if ( is_file ( $newinc ) && array_search ( $arinc[1], $fileList ) )
+if ( is_file ( $newinc ) && in_array ( $arinc[1], $fileList ) )
   include_once ( $newinc );
 
 ?>

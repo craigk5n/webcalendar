@@ -157,12 +157,12 @@ load_user_preferences ();
 // This will only be used if $username is not __public__
 if ( ! empty ( $USER_REMOTE_ACCESS ) && $username != '__public__' ) {
   if ( $USER_REMOTE_ACCESS == 1 ) { //public or confidential
-    $allow_access = array('', 'P', 'C');
+    $allow_access = array('P', 'C');
   } else if ( $USER_REMOTE_ACCESS == 2 ){ //all entries included
-    $allow_access = array('', 'P', 'C', 'R');
+    $allow_access = array('P', 'C', 'R');
   } 
 } else { //public entries only
-  $allow_access = array('', 'P');
+  $allow_access = array('P');
 }
 
 user_load_variables ( $login, 'rss_' );
@@ -282,7 +282,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
   if ( $entrycnt > 0 || $rentrycnt > 0 ) {
     for ( $j = 0; $j < $entrycnt && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      if ( array_search ( $entries[$j]->getAccess(), $allow_access ) ) {
+      if ( in_array ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
         $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
         if ( $date_in_title ) {
@@ -330,7 +330,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
       // of daily events from displaying if that option has been selected
       if ( ! in_array($rentries[$j]->getID(),$eventIds ) && 
          ( ! $show_daily_events_only_once || ! in_array($rentries[$j]->getID(),$reventIds )) && 
-         ( array_search ( $rentries[$j]->getAccess(), $allow_access ) ) ) { 
+         ( in_array ( $rentries[$j]->getAccess(), $allow_access ) ) ) { 
   
           //show repeating events only once
           if ( $rentries[$j]->getrepeatType()== 'daily' ) 

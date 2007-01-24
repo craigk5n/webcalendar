@@ -180,8 +180,7 @@ function get_php_setting ( $val, $string=false ) {
       return 'OFF';
   } else {
     //test for $string in ini value 
-    $string_found = array_search ( $string, explode ( ',', $setting ) );
-    if   ( $string_found )
+    if ( in_array ( $string, explode ( ',', $setting ) ); )
       return $string;
     else
       return false;
