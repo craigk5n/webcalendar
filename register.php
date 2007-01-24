@@ -111,11 +111,10 @@ $uemail = '';
 
 // We can limit what domain is allowed to self register
 // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
-if ( ! empty ( $SELF_REGISTRATION_BLACKLIST ) && $SELF_REGISTRATION_BLACKLIST == 'Y'  ) {
-  $valid_ip = validate_domain ();
-  if ( empty ( $valid_ip ) ) 
-    $error = $notauth;
-}
+$valid_ip = validate_domain ();
+if ( empty ( $valid_ip ) ) 
+  $error = $notauth;
+
 //We could make $control a unique value if necessary
 $control = getPostValue ( 'control' );
 if ( empty ( $error ) && ! empty ( $control ) ) {
