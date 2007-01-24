@@ -58,7 +58,7 @@ if ( getPostValue ( 'otheruser' ) != '' &&
   $pouser = getPostValue ( 'otheruser' );
 
   if ( $allow_view_other ) {
-    // Handle access to other users' calendars
+    // Handle access to other users' calendars.
     // If user is not admin, reverse values so they are granting
     // access to their own calendar.
     if ( ! $is_admin )
@@ -194,7 +194,7 @@ if ( $is_admin ) {
 
 if ( ! empty ( $guser ) || ! $is_admin ) {
   if ( $is_admin ) {
-    // Present a page to allow editing a user's rights
+    // Present a page to allow editing a user's rights.
     $access = access_load_user_functions ( $guser );
     $div = ceil ( ACCESS_NUMBER_FUNCTIONS / 4 );
 
@@ -257,7 +257,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
       </form>
     </div>';
 
-    $pagetitle = translate ( 'Allow Access to Other Users&#39; Calendar' );
+    $pagetitle = translate ( 'Allow Access to Other Users Calendar' );
   } else {
     // Get list of users that this user can see (may depend on group settings)
     // along with all nonuser calendars.

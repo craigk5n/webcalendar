@@ -51,7 +51,7 @@ Database error: データベースエラー
 Public Access: 公開アクセス
 Admin: 管理
 User Access Control: ユーザーアクセス制御
-Allow Access to Other Users&#39; Calendar: 他のユーザーのカレンダーへのアクセスを許可する
+Allow Access to Other Users Calendar: 他のユーザーのカレンダーへのアクセスを許可する
 Grant This User Access to My Calendar: 自分のカレンダーへのこのユーザーのアクセスを許可する
 Type: 種類
 calendar: カレンダー

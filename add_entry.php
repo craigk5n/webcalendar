@@ -23,11 +23,11 @@ if ( $id > 0 ) {
   $res = dbi_execute ( 'SELECT cal_access FROM webcal_entry WHERE cal_id = ?',
     array ( $id ) );
   if ( ! $res ) {
-    echo str_replace ('XXX', $id, translate ( 'Invalid entry id&#58; XXX.' ) );
+    echo str_replace ('XXX', $id, translate ( 'Invalid entry id XXX' ) );
     exit;
   }
   $mayNotAddStr =
-  translate ( 'This is a XXX event and may not be added to your calendar.' );
+  translate ( 'a XXX event may not be added to your calendar' );
   $row = dbi_fetch_row ( $res );
 
   if ( ! $is_my_event ) {
@@ -44,13 +44,13 @@ if ( $id > 0 ) {
     }
   } else
     $is_private = false;
-  // add the event
+  // Add the event.
   if ( $readonly == 'N' && ! $is_my_event && ! $is_private ) {
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
       cal_status ) VALUES ( ?, ?, ? )', array ( $id, $login, 'A' ) ) )
 // translate ( 'Error adding event' )
       $error = str_replace ('XXX', dbi_error (),
-        translate ( 'Error adding event&#58; XXX.' ) );
+        translate ( 'Error adding event XXX' ) );
   }
 }
 

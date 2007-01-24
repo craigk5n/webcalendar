@@ -47,7 +47,7 @@ Save: Mentés
 Go: Mehet
 Public Access: Nyilvános naptár
 Admin: Adminisztráció
-Allow Access to Other Users&#39; Calendar: Hozzáférés engedélyezése más felhasználóknak
+Allow Access to Other Users Calendar: Hozzáférés engedélyezése más felhasználóknak
 Grant This User Access to My Calendar: Hozzáférés engedélyezése a naptáramhoz
 Type: Típus
 Calendar: Naptár
