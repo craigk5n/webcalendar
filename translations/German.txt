@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 17. Jan. 2007
+# Last update: 23. Jan. 2007
 #
 # $Id$
-# Translation last updated on 01-12-2007
+# Translation last updated on 01-23-2007
 
 
 ################################################################################
@@ -715,7 +715,7 @@ listid: &#39;Listen-Id&#39;
 All: Alle
 Reset: Zur&uuml;cksetzen
 Remove: Entfernen
-Ok: Ok
+OK: OK
 Cancel: Abbrechen
 
 ########################################
@@ -901,7 +901,7 @@ Old Color: Alte Farben
 # Page: about.php
 #
 version: Version
-Webcalendar is a PHP application used...: Webcalendar ist eine PHP Anwendung welche zum Warten eines Kalenders f&uuml;r einen einzelnen Benutzer oder einer Gruppe von Internet / Intranet Benutzer. Er kann aber auch als Terminkalender konfiguriert werden.
+Webcalendar is a PHP application used...: Webcalendar ist eine PHP Anwendung und verwendet...
 Credits: Abspann
 About: &Uuml;ber
 
@@ -1076,8 +1076,8 @@ Modified since: &Auml;nderungen ab
 # Page: users.php
 #
 Remote Calendars: Externe Kalender (Remote)
-Add New User: Neuen Benutzer hinzuf&uuml;gen
 denotes administrative user: Kennzeichnet Benutzer mit Administrator-Rechten
+Add New User: Neuen Benutzer hinzuf&uuml;gen
 
 ########################################
 # Page: search_handler.php
@@ -1595,18 +1595,18 @@ Mb: Mb
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Benachrichtigung
-provide_address: Sie m&uuml;ssen mindestens eine Emailadresse als Empf&auml;nger angeben
-mailer_not_supported: Dieser Mailtyp wird nicht unterst&uuml;tzt
-execute: Kann nicht ausgef&uuml;hrt werden
-instantiate: Kann die Emailfunktion nicht d&uuml;rchf&uuml;hren
 authenticate: SMTP Fehler - Kann nicht authentisiert werden
-from_failed: Die folgenden &#34;Von:&#34; - Adresse(n) ist(sind) ung&uuml;tig
-recipients_failed: SMTP Fehler - Die (der) folgende(n) Empf&auml;nger sind (ist) ung&uuml;tig
-data_not_accepted: SMTP Fehler - Daten nicht angenommen
 connect_host: SMTP Fehler - Kann nicht nicht zum SMTP HOST verbunden werden
+data_not_accepted: SMTP Fehler - Daten nicht angenommen
+encoding: Unbekannte Verschl&uuml;sselung
+execute: Kann nicht ausgef&uuml;hrt werden
 file_access: Kann auf Datei nicht zugreifen
 file_open: Dateifehler, kann Datei nicht &ouml;ffnen
-encoding: Unbekannte Verschl&uuml;sselung
+from_failed: Die folgenden &#34;Von:&#34; - Adresse(n) ist(sind) ung&uuml;tig
+instantiate: Kann die Emailfunktion nicht d&uuml;rchf&uuml;hren
+mailer_not_supported: Dieser Mailtyp wird nicht unterst&uuml;tzt
+provide_address: Sie m&uuml;ssen mindestens eine Emailadresse als Empf&auml;nger angeben
+recipients_failed: SMTP Fehler - Die (der) folgende(n) Empf&auml;nger sind (ist) ung&uuml;tig
 
 ########################################
 # Page: includes/classes/captcha/captcha.php
