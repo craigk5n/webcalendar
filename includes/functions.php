@@ -5458,20 +5458,16 @@ function print_success ( $saved ) {
  *
  * @uses print_error_header
  */
-function print_not_auth ( $full=false ) {
-  $ret = '';
-  if ( $full )
-    $ret .=  print_error_header ();
-  $ret .=  translate ( 'You are not authorized' ) . "\n";
-  return $ret; 
-}
+function print_not_auth ( $full = false ) {
+  return ( $full ? print_error_header () : '' )
+   . translate ( 'You are not authorized' ) . "\n";
+} 
 
 /**
  *
  */
 function print_error_header () {
-  $ret = '<h2>' . translate( 'Error' ) . "</h2>\n";
-  return $ret;
+  return '<h2>' . translate ( 'Error' ) . "</h2>\n";
 }
 
 /**

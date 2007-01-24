@@ -259,7 +259,7 @@ Add: Lägg till
 Category Name: Kategorinamn
 Delete: Radera
 Are you sure you want to delete this entry?: Är du säker på att du vill ta bort denna aktivitet?
-Add New Category: Lägg till ny kategori
+Make New Category: Lägg till ny kategori
 
 ########################################
 # Page: catsel.php
@@ -326,7 +326,7 @@ All: Alla
 Send Reminder: Skicka påminnelse
 days: dagar
 Delete entry: Radera händelse
-You are not authorized to edit this entry: Du har inte lov att redigera denna händelse
+You are not authorized to edit this entry.: Du har inte lov att redigera denna händelse
 
 ########################################
 # Page: edit_entry_handler.php

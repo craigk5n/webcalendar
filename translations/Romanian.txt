@@ -265,7 +265,7 @@ Add: Adaug&#259;
 Category Name: Numele categoriei
 Delete: &#350;terge
 Are you sure you want to delete this entry?: Sigur vrei s&#259; &#351;tergi ?
-Add New Category: Adaug&#259; o nou&#259; categorie
+Make New Category: Adaug&#259; o nou&#259; categorie
 
 ########################################
 # Page: catsel.php
@@ -334,7 +334,7 @@ All: Toate
 Send Reminder: Trimite aducere-aminte
 days: zile
 Delete entry: &#350;terge aceast&#259; &#238;nregistrare
-You are not authorized to edit this entry: Nu e&#351;ti autorizat(&#259;) s&#259; editezi acest eveniment
+You are not authorized to edit this entry.: Nu e&#351;ti autorizat(&#259;) s&#259; editezi acest eveniment
 
 ########################################
 # Page: edit_entry_handler.php

@@ -5,8 +5,8 @@
  *
  * Input Parameters:
  * month (*) - specify the starting month of the timebar
- * day (*) - specify the starting day of the timebar
- * year (*) - specify the starting year of the timebar
+ * day (*)   - specify the starting day of the timebar
+ * year (*)  - specify the starting year of the timebar
  * users (*) - csv of users to include
  * (*) required field
  *
@@ -21,9 +21,9 @@ if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
   // not allowed...
   exit;
 
-// input args in URL
-// users: list of comma-separated users
-$programStr = translate ( 'Program Error' ) . ': ';
+// Input args in URL.
+// users: list of comma-separated users.
+$programStr = translate ( 'Program Error' ) . ' ';
 if ( empty ( $users ) ) {
   echo $programStr . str_replace ( 'XXX', translate ( 'user' ),
     translate ( 'No XXX specified!' ) );

@@ -416,13 +416,13 @@ gif 3kb max: файлы gif до 3kb
 Search for existing icons: Поиск существующих картинок
 Delete: Удалить
 Are you sure you want to delete this entry?: Вы уверены, что вы хотите удалить эту запись?
-Add New Category: Добавить новую категорию
+Make New Category: Добавить новую категорию
 
 ########################################
 # Page: category_handler.php
 #
-File size exceeds maximum: Размер файла превышает допустимый
-File is not a gif image: Файл не является gif картинкой
+File size exceeds maximum.: Размер файла превышает допустимый
+File is not a gif image.: Файл не является gif картинкой
 
 ########################################
 # Page: catsel.php
@@ -567,7 +567,7 @@ End/Due: Конец/До
 Times: Раз
 Every: Каждый
 Delete entry: Удалить запись
-You are not authorized to edit this entry: Вы не имеете прав доступа для удаления данной записи
+You are not authorized to edit this entry.: Вы не имеете прав доступа для удаления данной записи
 
 ########################################
 # Page: edit_entry_handler.php

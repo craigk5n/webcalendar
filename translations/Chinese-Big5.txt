@@ -163,7 +163,7 @@ Use end date: 使用結束日期設定
 repeat-frequency-help: Specifies how often the event should repeat.  The default 1 indicates it should occur every time.  Specifying 2 will make the event occur every other week (if <i>Repeat Type</i> is set to <i>Weekly</i>), every other month (if <i>Repeat Type</i> is set to <i>Monthly</i>), etc.
 Frequency: 重複次數
 Delete entry: 刪除記事
-You are not authorized to edit this entry: You are not authorized to edit this entry
+You are not authorized to edit this entry.: You are not authorized to edit this entry.
 
 ########################################
 # Page: edit_entry_handler.php

@@ -273,7 +273,7 @@ Add: Προσθήκη
 Category Name: Όνομα Κατηγορίας
 Delete: Διαγραφή
 Are you sure you want to delete this entry?: Είστε σίγουρος οτι θέλετε να σβύσετε την εγγραφή;
-Add New Category: Προσθήκη νέας κατηγορίας
+Make New Category: Προσθήκη νέας κατηγορίας
 
 ########################################
 # Page: catsel.php
@@ -343,7 +343,7 @@ All: Όλα
 Send Reminder: Αποστολή υπενθυμιστή
 days: μέρες
 Delete entry: Διαγραφή εγγραφής
-You are not authorized to edit this entry: Δεν είστε εξουσιοδοτημένος να επεξεργαστείτε αυτή την εγγραφή
+You are not authorized to edit this entry.: Δεν είστε εξουσιοδοτημένος να επεξεργαστείτε αυτή την εγγραφή
 
 ########################################
 # Page: edit_entry_handler.php

@@ -149,7 +149,7 @@ Use end date: Loka dags
 repeat-frequency-help: Tilgreinir hversu oft á að endurtaka atriði. 1 er sjálfgefið fyrir hvert skipti.  Með því að velja 2 er hægt að láta atriði gerast aðra hverja viku (ef valin <i>Endurtekning</i> er <i>Vikulega</i>), annan hvern mánuð (ef valin <i>Endurtekning</i> er <i>Mánaðarlega</i>), o.s.frv.
 Frequency: Tíðni
 Delete entry: Eyða atriði
-You are not authorized to edit this entry: Þú hefur ekki réttindi til þess að breyta þessu atriði
+You are not authorized to edit this entry.: Þú hefur ekki réttindi til þess að breyta þessu atriði
 
 ########################################
 # Page: edit_entry_handler.php

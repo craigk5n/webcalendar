@@ -12,7 +12,6 @@ function do_debug ( $msg ) {
 function make_uppercase () {
   // Make sure all cal_settings are UPPERCASE.
   // translate ( 'Error updating webcal_config' )
-  // translate ( 'Error updating webcal_user_pref' )
   if ( ! dbi_execute ( 'UPDATE webcal_config
     SET cal_setting = UPPER( cal_setting )' ) )
     echo str_replace ( 'XXX', array ( 'webcal_config', dbi_error () ),
@@ -206,11 +205,11 @@ function show_errors ( $error_val = 0 ) {
 // only dates prior to that date are affected.
 function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
   // Default value
-  $error = '<b>' . translate ( 'Conversion Successful' ). '</b>';
-  // don't allow $offsets over 24
+  $error = translate ( 'Conversion Successful' );
+  // Don't allow $offsets over 24.
   if ( abs ( $offset ) > 24 )
     $offset = 0;
-  // Do webcal_entry update
+  // Do webcal_entry update.
   $res = dbi_execute ( 'SELECT cal_date, cal_time, cal_id, cal_duration
     FROM webcal_entry' );
   if ( $res ) {

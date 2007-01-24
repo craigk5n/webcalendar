@@ -270,7 +270,7 @@ Add: Aggiungi
 Category Name: Nome della categoria
 Delete: Cancella
 Are you sure you want to delete this entry?: Sei sicuro di voler eliminare questa nota?
-Add New Category: Aggiungi una nuova categoria
+Make New Category: Aggiungi una nuova categoria
 
 ########################################
 # Page: catsel.php
@@ -339,7 +339,7 @@ All: Tutte
 Send Reminder: Avvisa
 days: giorni
 Delete entry: Cancella nota
-You are not authorized to edit this entry: Non sei autorizzato a modificare questa nota
+You are not authorized to edit this entry.: Non sei autorizzato a modificare questa nota
 
 ########################################
 # Page: edit_entry_handler.php

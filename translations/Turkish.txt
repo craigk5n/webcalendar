@@ -140,7 +140,7 @@ Yearly: Senelik
 Use end date: Bugün bitiyor
 Frequency: defa
 Delete entry: Islemi sil
-You are not authorized to edit this entry: Sizin bu Islemi silmek icin hak sahibiz yok.
+You are not authorized to edit this entry.: Sizin bu Islemi silmek icin hak sahibiz yok.
 
 ########################################
 # Page: edit_entry_handler.php

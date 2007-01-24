@@ -272,7 +272,7 @@ Add: Añadir
 Category Name: Nombre de la categoría
 Delete: Borrar
 Are you sure you want to delete this entry?: Está seguro de querer borrar esta entrada?
-Add New Category: Añadir nueva categoría
+Make New Category: Añadir nueva categoría
 
 ########################################
 # Page: catsel.php
@@ -341,7 +341,7 @@ All: Todos
 Send Reminder: Enviar recordatorio
 days: días
 Delete entry: Borrar entrada
-You are not authorized to edit this entry: No estás autorizado para editar esta entrada
+You are not authorized to edit this entry.: No estás autorizado para editar esta entrada
 
 ########################################
 # Page: edit_entry_handler.php

@@ -213,9 +213,10 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     }
 
     // Public access has no access to tasks
-    if ( $login == '__public__' && $eType == 'task') {
-      echo translate( 'You are not authorized to edit this task' ) . '.';
-    }
+//       translate( 'You are not authorized to edit this task' )
+    if ( $login == '__public__' && $eType == 'task')
+      echo str_replace ('XXX', translate ('task'),
+       translate( 'You are not authorized to edit this XXX.' ) );
      
     //check UAC
     if ( access_is_enabled () ) {
@@ -1444,13 +1445,14 @@ if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__publ
  <a href="del_entry.php?id=<?php echo $id;?>" onclick="return confirm('<?php 
   echo str_replace ( 'XXX', translate ( 'entry' ),
     translate ( 'Are you sure you want to delete this XXX?' ) )?>');"><?php 
-  etranslate( 'Delete entry')?></a><br />
+  etranslate ( 'Delete entry')?></a><br />
 <?php 
  } //end if clause for delete link
-} else { 
-// translate( 'You are not authorized to edit this entry' )
-  echo translate( 'You are not authorized to edit this entry.' );
-} //end if ( $can_edit )
+} else 
+// translate( 'You are not authorized to edit this entry.' )
+  echo str_replace ('XXX', translate ( 'entry' ),
+   translate ( 'You are not authorized to edit this XXX.' ) );
+ //end if ( $can_edit )
 
 echo print_trailer(); ?>
 

@@ -139,7 +139,7 @@ duration-help: 행사기간 명시(분단위)<br /><i>이 항목은 비워둘 수 있습니다.</i>
 minutes: 분
 participants-help: 참가자의 목록 표시.
 Delete entry: 항목 지우기
-You are not authorized to edit this entry: 이 항목을 편집할 권한이 없습니다.
+You are not authorized to edit this entry.: 이 항목을 편집할 권한이 없습니다.
 
 ########################################
 # Page: edit_entry_handler.php

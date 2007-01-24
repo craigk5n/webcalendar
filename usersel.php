@@ -7,18 +7,19 @@ include_once 'includes/init.php';
 // form:   name of form on parent page
 // listid: element id of user selection object in form
 //         ... to be used like form.elements[$listid]
+$progErrStr=translate ( 'Program Error' ).' ';
 if ( empty ( $form ) ) {
-  echo translate ( 'Program Error' ) . ': ' . str_replace ( 'XXX',
+  echo $progErrStr . str_replace ( 'XXX',
     translate ( 'form' ), translate ( 'No XXX specified!' ) );
   exit;
 }
 if ( empty ( $listid ) ) {
-  echo translate ( 'Program Error' ) . ': ' . str_replace ( 'XXX',
+  echo $progErrStr . str_replace ( 'XXX',
     translate ( 'listid' ), translate ( 'No XXX specified!' ) );
   exit;
 }
 
-// parse $users
+// Parse $users.
 $exp = split ( ',', $users );
 $groups = $selected = $sql_params = array ();
 for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
@@ -27,7 +28,7 @@ for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
 
 $owner = ( $is_nonuser_admin || $is_assistant ? $user : $login );
 
-// load list of groups
+// Load list of groups.
 $sql = 'SELECT wg.cal_group_id, wg.cal_name FROM webcal_group wg';
 
 if ( $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
@@ -40,7 +41,8 @@ $res = dbi_execute ( $sql . ' ORDER BY wg.cal_name', $sql_params );
 
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
-    $groups[] = array ( 'cal_group_id' => $row[0],
+    $groups[] = array (
+      'cal_group_id' => $row[0],
       'cal_name' => $row[1]
       );
   }

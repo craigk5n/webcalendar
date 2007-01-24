@@ -262,7 +262,7 @@ Add: Afegeix
 Category Name: Nom de categoria
 Delete: Suprimeix
 Are you sure you want to delete this entry?: Esteu segur que voleu suprimir aquesta entrada?
-Add New Category: Afegir nova categoria
+Make New Category: Afegir nova categoria
 
 ########################################
 # Page: catsel.php
@@ -328,7 +328,7 @@ All: Totes
 Send Reminder: Envia recordatori
 days: dies
 Delete entry: Suprimeix l'entrada
-You are not authorized to edit this entry: No tens autorització per editar aquesta entrada
+You are not authorized to edit this entry.: No tens autorització per editar aquesta entrada
 
 ########################################
 # Page: edit_entry_handler.php

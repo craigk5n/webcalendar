@@ -192,7 +192,7 @@ Add: 添加
 Category Name: 分类名称
 Delete: 删除
 Are you sure you want to delete this entry?: 您确定删除此事件吗?
-Add New Category: 新增分类
+Make New Category: 新增分类
 
 ########################################
 # Page: catsel.php
@@ -245,7 +245,7 @@ All: 全部
 Send Reminder: 发送邮件通知
 days: 天
 Delete entry: 删除事件
-You are not authorized to edit this entry: You are not authorized to edit this entry
+You are not authorized to edit this entry.: You are not authorized to edit this entry.
 
 ########################################
 # Page: edit_entry_handler.php

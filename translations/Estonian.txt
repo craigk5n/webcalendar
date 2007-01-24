@@ -223,7 +223,7 @@ Add: Lisa
 Category Name: Kategooria nimi
 Delete: Kustuta
 Are you sure you want to delete this entry?: Kas oled kindel et tahad kustutada seda kannet?
-Add New Category: Lisa uus kategooria
+Make New Category: Lisa uus kategooria
 
 ########################################
 # Page: catsel.php
@@ -288,7 +288,7 @@ All: Kõik
 Send Reminder: Saada meeldetuletus
 days: päevi
 Delete entry: Kustuta kanne
-You are not authorized to edit this entry: Sul ei ole lubatud muuta seda kannet
+You are not authorized to edit this entry.: Sul ei ole lubatud muuta seda kannet
 
 ########################################
 # Page: edit_entry_handler.php

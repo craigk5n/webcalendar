@@ -2,7 +2,7 @@
 /* $Id$ */
 
 include_once 'includes/init.php';
-// load user and global cats
+// Load user and global cats.
 load_user_categories ();
 
 if ( $CATEGORIES_ENABLED == 'N' ) {
@@ -10,16 +10,16 @@ if ( $CATEGORIES_ENABLED == 'N' ) {
   exit;
 }
 
-$catname = $error = $idStr = $catIcon = '';
+$catIcon = $catname = $error = $idStr = '';
 $catIconStr = translate ( 'Category Icon' );
 $globalStr = translate ( 'Global' );
 $icon_path = 'icons/';
 // If editing, make sure they are editing their own (or they are an admin user).
 if ( ! empty ( $id ) ) {
   if ( empty ( $categories[$id] ) )
-    $error = translate ( 'Invalid entry id' ) . ': ' . $id;
+    $error =
+    str_replace ( 'XXX', $id, translate ( 'Invalid entry id XXX' ) );
 
-  $button = translate ( 'Save' );
   $catcolor = $categories[$id]['cat_color'];
   $catname = $categories[$id]['cat_name'];
   $catowner = $categories[$id]['cat_owner'];
@@ -32,16 +32,16 @@ $showIcon = ( ! empty ( $catIcon ) && file_exists ( $catIcon )
   ? 'visible' : 'hidden' );
 
 print_header ( array ( 'js/visible.php' ) );
+
 ob_start ();
+
 echo '
     <h2>' . translate ( 'Categories' ) . '</h2>
     ' . display_admin_link ();
 
 if ( empty ( $add ) )
   $add = 0;
-// Adding/Editing category
-$button = ( $add == '1' ? translate ( 'Add' ) : translate ( 'Save' ) );
-
+// Adding/Editing category.
 if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   echo '
     <form action="category_handler.php" method="post" name="catform" '
@@ -49,7 +49,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
       <table cellspacing="2" cellpadding="3">
         <tr>
           <td width="25%"><label for="catname">' . translate ( 'Category Name' )
-   . ':</label></td>
+   . '</label></td>
           <td colspan="3"><input type="text" name="catname" size="20" value="'
    . htmlspecialchars ( $catname ) . '" /></td>
         </tr>' . ( $is_admin && empty ( $id ) ? '
@@ -76,7 +76,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
         </tr>
         <tr id="remove_icon" style="visibility: ' . $showIcon . '">
           <td><label for="delIcon">' . translate ( 'Remove Icon' )
-   . ':</label></td>
+   . '</label></td>
           <td colspan="3"><input type="checkbox" name="delIcon" value="Y" /></td>
         </tr>
         <tr>
@@ -84,8 +84,8 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
             <label for="FileName">' . ( is_dir ( $icon_path ) &&
     ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin )
     ? translate ( 'Add Icon to Category' ) . '</label><br/>&nbsp;&nbsp;&nbsp;'
-     . translate ( 'Upload' ) . '&nbsp;<span style="font-size:small;">('
-     . translate ( 'gif 3kb max' ) . ')</span>:
+     . translate ( 'Upload' ) . '&nbsp;<span style="font-size:small;">'
+     . translate ( 'gif 3kb max' ) . '</span>:
             <input type="file" name="FileName" id="fileupload" size="45" '
      . 'maxlength="50" value=""/>
           </td>
@@ -103,7 +103,8 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
         </tr>
           <td colspan="4">' : '' ) // end test of ENABLE_ICON_UPLOADS
   . '
-            <input type="submit" name="action" value="' . $button . '" />'
+            <input type="submit" name="action" value="'
+   . ( $add == '1' ? translate ( 'Add' ) : translate ( 'Save' ) ) . '" />'
    . ( ! empty ( $id ) ? '
             <input type="submit" name="delete" value="'
      . translate ( 'Delete' ) . '" onclick="return confirm ('
@@ -116,7 +117,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
     </form>';
 } else
 if ( empty ( $error ) ) {
-  // Displaying Categories
+  // Displaying Categories.
   $global_found = false;
   if ( ! empty ( $categories ) ) {
     echo '
@@ -145,7 +146,7 @@ if ( empty ( $error ) ) {
   }
   echo ( $global_found ? '<br /><br />
     <sup>*</sup> ' . $globalStr : '' ) . '
-    <p><a href="category.php?add=1">' . translate ( 'Add New Category' )
+    <p><a href="category.php?add=1">' . translate ( 'Make New Category' )
    . '</a></p><br />';
 }
 ob_end_flush ();
