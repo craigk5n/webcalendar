@@ -479,8 +479,11 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <?php etranslate( 'Display 00 minutes always' )?>:</td><td>
  <?php echo print_radio ( 'DISPLAY_MINUTES' ) ?>
 </td></tr>
-
- <tr><td class="tooltip" title="<?php etooltip( 'display-alldays-help' );?>">
+<tr><td class="tooltip" title="<?php etooltip("display-end-times-help")?>">
+ <?php etranslate( 'Display end times on calendars' )?>:</td><td>
+ <?php echo print_radio ( 'DISPLAY_END_TIMES' ) ?>
+</td></tr>
+<tr><td class="tooltip" title="<?php etooltip( 'display-alldays-help' );?>">
   <?php etranslate( 'Display all days in month view' )?>:</td><td>
   <?php echo print_radio ( 'DISPLAY_ALL_DAYS_IN_MONTH' ) ?>
  </td></tr> 

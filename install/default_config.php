@@ -55,6 +55,7 @@ $webcalConfig = array (
   'DISPLAY_ALL_DAYS_IN_MONTH' => 'N',
   'DISPLAY_CREATED_BYPROXY' => 'Y',
   'DISPLAY_DESC_PRINT_DAY' => 'Y',
+  'DISPLAY_END_TIMES' => 'N',
   'DISPLAY_LOCATION' => 'N',
   'DISPLAY_LONG_DAYS' => 'N',
   'DISPLAY_MINUTES' => 'N',

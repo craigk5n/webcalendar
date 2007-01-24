@@ -15,6 +15,7 @@ Version 1.1.3 (?? ??? 2006)
       + VTIMEZONE information is now captured from imported ics files and can be reused
         for future exports. This greatly simplifies the process and speeds up exports.
     = User Interface
+      + Added option to display end times in calendars
       + Added CAPTCHA validation option  to Public Access event creation
   - The following translations were updated:
     German
