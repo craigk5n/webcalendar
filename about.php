@@ -16,7 +16,7 @@ if ( ! empty ( $credits ) ) {
   }
   // $data = unhtmlentities ( $data );
   $data = preg_replace ( '/<.+>+/', '', $data );
-  $data = preg_replace ( '/\n\s/', '<br />&nbsp;', $data );
+  $data = preg_replace ( "/\n\s/", '<br />&nbsp;', $data );
   $data = preg_replace ( '/\s\s+/', '&nbsp;&nbsp;', $data );
   $data = preg_replace ( '/\n/', '<br />', $data );
 }
