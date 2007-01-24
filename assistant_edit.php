@@ -3,7 +3,7 @@
 include_once 'includes/init.php';
 
 if ( empty ( $login ) || $login == '__public__' ) {
-  // do not allow public access
+  // Do not allow public access.
   do_redirect ( empty ( $STARTVIEW ) ? 'month.php' : "$STARTVIEW" );
   exit;
 }
@@ -14,15 +14,18 @@ if ( $user != $login )
 print_header ( ( $GROUPS_ENABLED == 'Y'
     ? array ( 'js/assistant_edit.php/true' ) : '' ) );
 
+ob_start ();
+
 echo '
     <form action="assistant_edit_handler.php" method="post" '
  . 'name="assistanteditform">' . ( $user ? '
       <input type="hidden" name="user" value="' . $user . '" />' : '' ) . '
       <h2>';
 
+$assistStr = translate ( 'Assistants' );
 if ( $is_nonuser_admin ) {
   nonuser_load_variables ( $user, 'nonuser' );
-  echo $nonuserfullname . ' ' . translate ( 'Assistants' ) . '<br />
+  echo $nonuserfullname . ' ' . $assistStr . '<br />
       -- ' . translate ( 'Admin mode' ) . ' --';
 } else
   echo translate ( 'Your assistants' );
@@ -32,13 +35,13 @@ echo '</h2>
       <table>
         <tr>
           <td class="aligntop"><label for="users">'
- . translate ( 'Assistants' ) . ':</label></td>
+ . $assistStr . ':</label></td>
           <td>
             <select name="users[]" id="users" size="10" multiple="multiple">';
 
-// get list of all users
+// Get list of all users.
 $users = get_my_users ();
-// get list of users for this view
+// Get list of users for this view.
 $res = dbi_execute ( 'SELECT cal_boss, cal_assistant FROM webcal_asst
    WHERE cal_boss = ?', array ( $user ) );
 
@@ -72,6 +75,10 @@ echo '
         </tr>
       </table>
     </form>
-    ' . print_trailer ();
+    ';
+
+ob_end_flush();
+
+echo print_trailer ();
 
 ?>
