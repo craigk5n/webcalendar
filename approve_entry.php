@@ -93,7 +93,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && $SEND_EMAIL != 'N' ) {
     reset_language ( empty ( $user_language ) || ( $user_language == 'none' )
       ? $LANGUAGE : $user_language );
-    // .
+
     // translate ( 'Hello' )
     $msg = str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) )
     // translate ( 'An appointment has been approved and comments added by' )

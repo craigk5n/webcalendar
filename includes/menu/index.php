@@ -379,7 +379,7 @@ if ( $menuConfig['Views'] && ( $select_user_url != '' || !
   jscMenu_menu ( 'Views' );
 
   if ( $select_user_url != '' && $menuConfig['Another Users Calendar'] )
-    jscMenu_item ( 'display.png', 'Another User&#39;s Calendar',
+    jscMenu_item ( 'display.png', 'Another Users Calendar',
       $select_user_url );
 
   if ( $login != '__public__' ) {

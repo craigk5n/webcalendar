@@ -346,7 +346,7 @@ No matches found: Non se atoparon coincidencias
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Ve-lo Calendario de outro Usuario
+View Another Users Calendar: Ve-lo Calendario de outro Usuario
 
 ########################################
 # Page: users.php
@@ -374,7 +374,7 @@ New Entry: Nova entrada
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Calendario de outro usuario
+Another Users Calendar: Calendario de outro usuario
 
 ########################################
 # Page: includes/date_formats.php

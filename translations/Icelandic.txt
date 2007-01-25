@@ -279,7 +279,7 @@ No matches found: Ekkert fannst
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Skoða dagatal annarra
+View Another Users Calendar: Skoða dagatal annarra
 
 ########################################
 # Page: users.php
@@ -304,7 +304,7 @@ New Entry: Nýtt atriði
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Dagatal annarra
+Another Users Calendar: Dagatal annarra
 
 ########################################
 # Page: includes/date_formats.php

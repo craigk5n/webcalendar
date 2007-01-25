@@ -672,7 +672,7 @@ No matches found: Kohteita ei löytynyt
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Näytä toisen käyttäjän kalenteri
+View Another Users Calendar: Näytä toisen käyttäjän kalenteri
 
 ########################################
 # Page: set_entry_cat.php
@@ -747,7 +747,7 @@ New Entry: Uusi merkitä
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Toisen käyttäjän kalenteri
+Another Users Calendar: Toisen käyttäjän kalenteri
 
 ########################################
 # Page: includes/date_formats.php

@@ -692,7 +692,7 @@ No matches found: no se encontraron aciertos
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Ver calendario de otro usuario
+View Another Users Calendar: Ver calendario de otro usuario
 
 ########################################
 # Page: set_entry_cat.php
@@ -769,7 +769,7 @@ New Entry: Nuevo registro
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Ver calendario de otro usuario
+Another Users Calendar: Ver calendario de otro usuario
 
 ########################################
 # Page: includes/date_formats.php

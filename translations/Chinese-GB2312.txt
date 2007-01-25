@@ -544,7 +544,7 @@ No matches found: 查无资料
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: 查看其他用户的日历
+View Another Users Calendar: 查看其他用户的日历
 
 ########################################
 # Page: set_entry_cat.php
@@ -619,7 +619,7 @@ New Entry: 新事件
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: 其他用户的日历
+Another Users Calendar: 其他用户的日历
 Manage Views: 管理视图
 
 ########################################

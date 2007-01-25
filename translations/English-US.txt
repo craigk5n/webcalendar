@@ -682,7 +682,7 @@ Delete layer: Delete layer
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: You cannot create a layer for yourself
-You can only create one layer for each user: You can only create one layer for each user
+You can only create one layer for each user: You can only create one layer for each user.
 
 ########################################
 # Page: edit_nonusers.php
@@ -1148,7 +1148,7 @@ New Search: New Search
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: View Another User's Calendar
+View Another Users Calendar: View Another User's Calendar
 
 ########################################
 # Page: set_entry_cat.php
@@ -1263,7 +1263,7 @@ New Entry: New Entry
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Another User's Calendar
+Another Users Calendar: Another User's Calendar
 Category Management: Category Management
 Day View: Day View
 Edit Event: Edit Event

@@ -269,7 +269,7 @@ No matches found: Bulunmiyor
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Baska Kullanicilarin Takvimini göster 
+View Another Users Calendar: Baska Kullanicilarin Takvimini göster 
 
 ########################################
 # Page: users.php
@@ -293,7 +293,7 @@ New Entry: Yeni islem
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Baska Kullanicilarin Takvimi 
+Another Users Calendar: Baska Kullanicilarin Takvimi 
 
 ########################################
 # Page: includes/date_formats.php

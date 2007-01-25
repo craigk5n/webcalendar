@@ -708,7 +708,7 @@ No matches found: Ocorrências não encontradas
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Ver o calendário de outro usuário
+View Another Users Calendar: Ver o calendário de outro usuário
 
 ########################################
 # Page: set_entry_cat.php
@@ -791,7 +791,7 @@ New Entry: Nova entrada
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Calendário de Outro Usuário
+Another Users Calendar: Calendário de Outro Usuário
 
 ########################################
 # Page: includes/date_formats.php

@@ -478,7 +478,7 @@ No matches found: Dim byd yn cyfateb
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Gwylio Calendr Defnyddiwr arall
+View Another Users Calendar: Gwylio Calendr Defnyddiwr arall
 
 ########################################
 # Page: set_entry_cat.php
@@ -540,7 +540,7 @@ New Entry: Digwyddiad newydd
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Calendr defnyddiwr arall
+Another Users Calendar: Calendr defnyddiwr arall
 Manage Views: Rheolwch golygfeydd
 
 ########################################

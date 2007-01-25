@@ -672,7 +672,7 @@ No matches found: No s'han trobat coincidències
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Visualitza el calendari d'un altre usuari
+View Another Users Calendar: Visualitza el calendari d'un altre usuari
 
 ########################################
 # Page: set_entry_cat.php
@@ -747,7 +747,7 @@ New Entry: Nova Entrada
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Calendari d'un altre usuari
+Another Users Calendar: Calendari d'un altre usuari
 Manage Views: Gestiona Visualitzacions
 
 ########################################

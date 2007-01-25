@@ -1044,7 +1044,7 @@ No matches found: Ничего не найдено
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Просмотреть календарь другого пользователя
+View Another Users Calendar: Просмотреть календарь другого пользователя
 
 ########################################
 # Page: set_entry_cat.php
@@ -1157,7 +1157,7 @@ New Entry: Новая запись
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Календарь другого пользователя
+Another Users Calendar: Календарь другого пользователя
 Category Management: Управлять Категориями
 Day View: Просмотр Дня
 Edit Event: Изменить Событие

@@ -774,7 +774,7 @@ No matches found: Nie znaleziono
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Poka¿ kalendarz innego u¿ytkownika
+View Another Users Calendar: Poka¿ kalendarz innego u¿ytkownika
 
 ########################################
 # Page: set_entry_cat.php
@@ -865,7 +865,7 @@ New Entry: Nowy wpis
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Kalendarze innych u¿ytkowników
+Another Users Calendar: Kalendarze innych u¿ytkowników
 Category Management: Zarz±dzanie kategoriami
 Day View: Widok dnia
 Edit Event: Edycja zdarzeñ
