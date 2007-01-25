@@ -14,7 +14,7 @@ function renameIcon ( $id ) {
   if ( file_exists ( $catIcon ) )
     rename ( $catIcon, $bakIcon );
 }
-// .
+
 // Does the category belong to the user?
 $is_my_event = false;
 if ( empty ( $id ) )
@@ -35,7 +35,7 @@ else {
 
 if ( ! empty ( $_FILES['FileName'] ) )
   $file = $_FILES['FileName'];
-// .
+
 // Make sure we clear $file if no file was upoaded.
 if ( ! empty ( $file['tmp_name'] ) && $file['tmp_name'] == 'none' )
   $file = '';

@@ -18,7 +18,7 @@ include_once 'includes/xcal.php';
 
 if ( empty ( $user ) || $user == $login )
   load_user_layers ();
-// .
+
 // Convert time in ("hhmmss") format, plus duration (as a number of minutes),
 // to end time ($hour = number of hours, $min = number of minutes).
 // FIXME: doesn't handle wrap to next day correctly.
@@ -29,7 +29,7 @@ function get_end_time ( $time, $duration, &$hour, &$min ) {
   $hour = $minutes / 60;
   $min = $minutes % 60;
 }
-// .
+
 // Convert calendar date to a format suitable for the
 // install-datebook utility (part of pilot-link)
 function pilot_date_time ( $date, $time, $duration, $csv = false ) {
@@ -37,7 +37,7 @@ function pilot_date_time ( $date, $time, $duration, $csv = false ) {
   $month = intval ( ( $date / 100 ) % 100 );
   $year = intval ( $date / 10000 );
   get_end_time ( $time, $duration, $hour, $min );
-  // .
+
   // All times are now stored as GMT.
   // TODO Palm uses local time, so convert to users' time.
   $tz_offset = date ( 'Z' ); // in seconds
@@ -50,12 +50,11 @@ function pilot_date_time ( $date, $time, $duration, $csv = false ) {
     $tzh = abs ( $tzh );
   }
 
-  if ( $csv )
-    return sprintf ( "%04d-%02d-%02d%s%02d:%02d:00",
-      $year, $month, $mday, $csv, $hour, $min );
-  else
-    return sprintf ( "%04d/%02d/%02d %02d%02d  GMT%s%d%02d",
-      $year, $month, $mday, $hour, $min, $tzsign, $tzh, $tzm );
+ return ( $csv
+  ? sprintf ( "%04d-%02d-%02d%s%02d:%02d:00",
+      $year, $month, $mday, $csv, $hour, $min )
+  : sprintf ( "%04d/%02d/%02d %02d%02d  GMT%s%d%02d",
+      $year, $month, $mday, $hour, $min, $tzsign, $tzh, $tzm ) );
 }
 
 function export_install_datebook ( $id ) {
@@ -118,9 +117,9 @@ function export_pilot_csv ( $id ) {
       pilot_date_time ( $row[3], $row[4], $row[8], ',' ), ','; //endDate,endTime
     } //end if ( $row[4] < 0 )
     // description (str)
-    echo '"', preg_replace ( "/\x0D?\n/", "\\n", $row[1] ), '",'
+    echo '"', preg_replace ( '/\x0D?\n/', "\\n", $row[1] ), '",'
     // note (str)
-    . '"', preg_replace ( "/\x0D?\n/", "\\n", $row[9] ), '",';
+    . '"', preg_replace ( '/\x0D?\n/', "\\n", $row[9] ), '",';
     // alarm, advance, advanceUnit
     // alarm (int: 0=no alarm, 1=alarm)
     // FIXME: verify if WebCal. DB interpreted correctly

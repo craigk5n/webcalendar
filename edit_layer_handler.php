@@ -51,8 +51,7 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
         if ( $row[0] > 0 )
-          $error = translate ( 'You can only create one layer for each user' )
-           . '.';
+          $error = translate ( 'You can only create one layer for each user' );
 
         dbi_free_result ( $res );
       }
@@ -72,7 +71,7 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
     }
   }
 }
-// .
+
 // We don't want to throw error if doing a multiple save.
 if ( $error == '' || ! empty ( $cal_login ) ) {
   do_redirect ( 'layers.php' . ( $updating_public ? '?public=1' : '' ) );

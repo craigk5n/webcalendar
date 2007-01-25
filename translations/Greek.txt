@@ -707,7 +707,7 @@ No matches found: Δεν βρέθηκαν ταιριάσματα
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Δείτε το Ημερολόγιο άλλου χρήστη
+View Another Users Calendar: Δείτε το Ημερολόγιο άλλου χρήστη
 
 ########################################
 # Page: set_entry_cat.php
@@ -790,7 +790,7 @@ New Entry: Νέα εγγραφή
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Ημερολόγια άλλων χρηστών
+Another Users Calendar: Ημερολόγια άλλων χρηστών
 
 ########################################
 # Page: includes/date_formats.php

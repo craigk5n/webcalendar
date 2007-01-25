@@ -60,7 +60,7 @@ echo '" />
  . translate ( 'Users' ) . ':</label></td>
           <td>
             <select name="users[]" id="users" size="10" multiple="multiple">';
-// .
+
 // Get list of all users.
 $users = user_get_users ();
 if ( $NONUSER_ENABLED == 'Y' ) {
@@ -68,7 +68,7 @@ if ( $NONUSER_ENABLED == 'Y' ) {
   $users = ( $NONUSER_AT_TOP == 'Y' )
   ? array_merge ( $nonusers, $users ) : array_merge ( $users, $nonusers );
 }
-// .
+
 // Get list of users for this group.
 if ( ! $newgroup ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_group_user

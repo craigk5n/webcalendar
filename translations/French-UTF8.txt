@@ -709,7 +709,7 @@ No matches found: Aucun événement ne correspond à votre recherche
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Visualiser l'agenda d'un autre utilisateur
+View Another Users Calendar: Visualiser l'agenda d'un autre utilisateur
 
 ########################################
 # Page: set_entry_cat.php
@@ -792,7 +792,7 @@ New Entry: Nouvel événement
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Agenda d'un autre utilisateur
+Another Users Calendar: Agenda d'un autre utilisateur
 
 ########################################
 # Page: includes/date_formats.php

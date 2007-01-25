@@ -1009,7 +1009,7 @@ No matches found: לא נמצאו התאמות
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: צפה בלוח שנה של משתמש אחר
+View Another Users Calendar: צפה בלוח שנה של משתמש אחר
 
 ########################################
 # Page: set_entry_cat.php
@@ -1120,7 +1120,7 @@ New Entry: רשומה חדשה
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: לוח שנה של משתמש אחר
+Another Users Calendar: לוח שנה של משתמש אחר
 Category Management: ניהול סיווגים
 Day View: תצוגה יומית
 Edit Event: ערוך ארוע

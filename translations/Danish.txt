@@ -695,7 +695,7 @@ No matches found: Ingen emner fundet
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Se anden brugers kalender
+View Another Users Calendar: Se anden brugers kalender
 
 ########################################
 # Page: set_entry_cat.php
@@ -778,7 +778,7 @@ New Entry: Ny aftale
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Anden brugers kalender
+Another Users Calendar: Anden brugers kalender
 
 ########################################
 # Page: includes/date_formats.php

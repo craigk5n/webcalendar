@@ -1108,7 +1108,7 @@ New Search: Neue Suche
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Kalender anderer Benutzer anzeigen
+View Another Users Calendar: Kalender anderer Benutzer anzeigen
 
 ########################################
 # Page: set_entry_cat.php
@@ -1223,7 +1223,7 @@ New Entry: Neuer Eintrag
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Kalender anderer Benutzer
+Another Users Calendar: Kalender anderer Benutzer
 Category Management: Kategorien verwalten
 Day View: Tagesansicht
 Edit Event: Termin &auml;ndern

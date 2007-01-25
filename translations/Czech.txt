@@ -689,7 +689,7 @@ No matches found: Žádné záznamy nenalezeny
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Prohlédnou si kalendá? jiného uživatele
+View Another Users Calendar: Prohlédnou si kalendá? jiného uživatele
 
 ########################################
 # Page: set_entry_cat.php
@@ -766,7 +766,7 @@ New Entry: Nový záznam
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Kalendá? jiného uživatele
+Another Users Calendar: Kalendá? jiného uživatele
 
 ########################################
 # Page: includes/date_formats.php

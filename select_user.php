@@ -3,7 +3,7 @@
 include_once 'includes/init.php';
 print_header ();
 echo '
-    <h2>' . translate ( 'View Another User&#39;s Calendar' ) . '</h2>';
+    <h2>' . translate ( 'View Another Users Calendar' ) . '</h2>';
 
 if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
     ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' &&

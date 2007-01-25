@@ -671,7 +671,7 @@ No matches found: Inga träffar hittades
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Titta på en annan användares kalender
+View Another Users Calendar: Titta på en annan användares kalender
 
 ########################################
 # Page: set_entry_cat.php
@@ -747,7 +747,7 @@ New Entry: Ny händelse
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Annans kalender
+Another Users Calendar: Annans kalender
 
 ########################################
 # Page: includes/date_formats.php

@@ -333,7 +333,7 @@ No matches found: 查無資料
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: 檢視其他人的月曆
+View Another Users Calendar: 檢視其他人的月曆
 
 ########################################
 # Page: users.php
@@ -361,7 +361,7 @@ New Entry: 新的記事
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: 別人的行事曆
+Another Users Calendar: 別人的行事曆
 
 ########################################
 # Page: includes/date_formats.php

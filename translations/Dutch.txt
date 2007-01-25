@@ -1013,7 +1013,7 @@ No matches found: Helaas, geen match aangetroffen
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Bekijk de agenda van een andere gebruiker
+View Another Users Calendar: Bekijk de agenda van een andere gebruiker
 
 ########################################
 # Page: set_entry_cat.php
@@ -1124,7 +1124,7 @@ New Entry: Nieuwe afspraak
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Agenda andere gebruiker
+Another Users Calendar: Agenda andere gebruiker
 Category Management: Categorie-beheer
 Day View: Dagweergave
 Edit Event: Afspraak bewerken

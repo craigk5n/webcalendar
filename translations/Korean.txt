@@ -252,7 +252,7 @@ No matches found: 찾은 항목 없음
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: 다른 사용자의 달력 보기
+View Another Users Calendar: 다른 사용자의 달력 보기
 
 ########################################
 # Page: users.php
@@ -275,7 +275,7 @@ New Entry: 새 항목
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: 다른 사용자 달력
+Another Users Calendar: 다른 사용자 달력
 
 ########################################
 # Page: includes/date_formats.php

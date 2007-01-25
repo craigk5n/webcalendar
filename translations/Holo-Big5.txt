@@ -376,7 +376,7 @@ No matches found: 查無資料
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: 檢視其他人 e 月曆
+View Another Users Calendar: 檢視其他人 e 月曆
 
 ########################################
 # Page: set_entry_cat.php
@@ -439,7 +439,7 @@ New Entry: 新 e 記事
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: 別人 e 行事曆
+Another Users Calendar: 別人 e 行事曆
 Manage Views: 管理檢視
 
 ########################################

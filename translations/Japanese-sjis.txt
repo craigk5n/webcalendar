@@ -972,7 +972,7 @@ No matches found: 該当項目が見つかりませんでした。
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: 他のユーザーのカレンダーを見る
+View Another Users Calendar: 他のユーザーのカレンダーを見る
 
 ########################################
 # Page: set_entry_cat.php
@@ -1080,7 +1080,7 @@ New Entry: 新規エントリ
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: 他ユーザーのカレンダー
+Another Users Calendar: 他ユーザーのカレンダー
 Category Management: カテゴリ管理
 Day View: 日間表示
 Edit Event: イベントの編集

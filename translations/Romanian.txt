@@ -684,7 +684,7 @@ No matches found: Nimic nu se potrive&#351;te
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Vizualizeaz&#259; calendarul unui alt utilizator
+View Another Users Calendar: Vizualizeaz&#259; calendarul unui alt utilizator
 
 ########################################
 # Page: set_entry_cat.php
@@ -761,7 +761,7 @@ New Entry: Nou eveniment
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Calendarul altcuiva 
+Another Users Calendar: Calendarul altcuiva 
 
 ########################################
 # Page: includes/date_formats.php

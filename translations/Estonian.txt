@@ -521,7 +521,7 @@ No matches found: Ühtegi vastet ei leitud
 ########################################
 # Page: select_user.php
 #
-View Another User&#39;s Calendar: Vaata teise kasutaja kalendrit
+View Another Users Calendar: Vaata teise kasutaja kalendrit
 
 ########################################
 # Page: set_entry_cat.php
@@ -590,7 +590,7 @@ New Entry: uus kanne
 ########################################
 # Page: includes/access.php
 #
-Another User&#39;s Calendar: Teise kasutaja kalender
+Another Users Calendar: Teise kasutaja kalender
 Manage Views: Tegele vaadetega
 
 ########################################
