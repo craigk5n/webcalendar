@@ -43,7 +43,7 @@ function parse_outlookcsv ( $cal_file ) {
       $optional_attendies = $data[11];
       $meeting_resources = $data[12];
       $billing_information = $data[13];
-      $categories = addslashes($data[14]);
+      $categories = addslashes( str_replace ( ';', ',', $data[14] ) );
       $description = addslashes($data[15]); 
       $location = addslashes($data[16]); 
       $mileage = $data[17]; 
