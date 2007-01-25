@@ -1534,9 +1534,9 @@ function import_data ( $data, $overwrite, $type ) {
         $cat_order = 1;
         foreach ( $cat_ids as $cat_id ) {
           $sql = 'INSERT INTO webcal_entry_categories
-            ( cal_id, cat_id, cat_order ) VALUES ( ?, ?, ? )';
+            ( cal_id, cat_id, cat_order, cat_owner ) VALUES ( ?, ?, ?, ? )';
 
-          if ( ! dbi_execute ( $sql, array ( $id, $cat_id, $cat_order++ ) ) ) {
+          if ( ! dbi_execute ( $sql, array ( $id, $cat_id, $cat_order++, $login ) ) ) {
             $error = db_error ();
             // do_debug ( "Error: " . $error );
             break;
