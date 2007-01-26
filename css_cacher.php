@@ -17,7 +17,6 @@
 load_global_settings ();
 
 @session_start (); 
-do_debug ( print_r ( $_SESSION, true ) );
 $login = ( ! empty ( $_SESSION['webcal_login'] ) ? $_SESSION['webcal_login'] : '__public__' );
 $login = ( ! empty ( $_SESSION['webcal_tmp_login'] ) ? $_SESSION['webcal_tmp_login'] : $login );
   
