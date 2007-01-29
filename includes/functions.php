@@ -1938,10 +1938,10 @@ function print_entry ( $event, $date ) {
     $timestr = $popup_timestr = translate('All day event');
   } else if ( ! $event->isUntimed() ) {
     $timestr = $popup_timestr = display_time ( $event->getDateTime() );
-	if ( $event->getDuration() > 0 ) {
+    if ( $event->getDuration() > 0 ) {
       $popup_timestr .= ' - ' . display_time ( $event->getEndDateTime() );
     }
-	if ( $DISPLAY_END_TIMES == 'Y' ) $timestr = $popup_timestr;
+    if ( $DISPLAY_END_TIMES == 'Y' ) $timestr = $popup_timestr;
     $time_short = getShortTime ( $timestr );
     if ( $cal_type == 'event' ) $ret .= $time_short . $time_spacer;
   }
@@ -3717,16 +3717,17 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
         $in_span = true;
       }
   }
-  $popup_timestr = '';
+  $popup_timestr = $end_timestr = '';
   if ( $event->isAllDay() ) {
     $hour_arr[$ind] .= '[' . translate('All day event') . '] ';
   } else if ( $time >= 0  && ! $event->isAllDay() && $cal_type != 'task' ) {
     $popup_timestr = display_time ( $event->getDatetime() );
+    $end_timestr = '-' . display_time ( $event->getEndDateTime() );
     $hour_arr[$ind] .= '[' .  $popup_timestr;
     if ( $event->getDuration() > 0 ) {
-      $popup_timestr .= "-" . display_time ( $event->getEndDateTime() );
-	  if ( $DISPLAY_END_TIMES == 'Y' )
-	    $hour_arr[$ind] .= $popup_timestr;
+      $popup_timestr .= $end_timestr;
+      if ( $DISPLAY_END_TIMES == 'Y' )
+        $hour_arr[$ind] .= $end_timestr;
       // which slot is end time in? take one off so we don't
       // show 11:00-12:00 as taking up both 11 and 12 slots.
       $end_time = date ( 'His', $event->getEndDateTimeTS() );
@@ -4748,7 +4749,7 @@ function load_nonuser_preferences ($nonuser) {
 function set_today($date='') {
   global $thisyear, $thisday, $thismonth, $thisdate, $today;
   global $month, $day, $year, $thisday;
-
+  
   $today = mktime();
 
   if ( ! empty ( $date ) ) {
@@ -5257,7 +5258,7 @@ function validate_domain ( ) {
  if ( empty ( $SELF_REGISTRATION_BLACKLIST ) || 
    $SELF_REGISTRATION_BLACKLIST == 'N' )
    return true;
-	 
+     
   $ip_authorized =  false;
   $deny_true =  array();
   $allow_true = array();
@@ -5289,19 +5290,19 @@ function validate_domain ( ) {
         $permission = $matches[1];
         $black_long   = ip2long($matches[2]);
         $mask   = ip2long($matches[3]);
-		if ( $matches[2] == '255.255.255.255' )
-		  $black_long = $rmt_long;
-        if ( ( $black_long & $mask ) == ( $rmt_long & $mask ) )	{
+        if ( $matches[2] == '255.255.255.255' )
+          $black_long = $rmt_long;
+        if ( ( $black_long & $mask ) == ( $rmt_long & $mask ) )    {
           if ( $permission == 'deny' ) {
             $deny_true[] = true;   
           } else if ( $permission == 'allow') {
             $allow_true[] = true;    
          }
-		}
+        }
       }
     } //end for loop
     $ip_authorized = ( count ($deny_true ) && 
-	  ! count ($allow_true ) ? false : true ); 
+      ! count ($allow_true ) ? false : true ); 
   } // if fd not empty
   return $ip_authorized;
 }
