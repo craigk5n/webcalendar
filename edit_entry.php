@@ -859,7 +859,7 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
       for ( $j = 0; $j < $extra_arg1cnt; $j++ ) {
         echo '<option value="' . $extra_arg1[$j] . '" ';
         if ( ! empty ( $extras[$extra_name]['cal_data'] ) ) {
-          if ( $extra_arg2 > 0 && 
+          if ( $extra_arg2 == 0 && 
             $extra_arg1[$j] == $extras[$extra_name]['cal_data'] )
             echo $selected;
           else if ( $extra_arg2 > 0 && 
