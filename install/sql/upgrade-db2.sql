@@ -209,7 +209,7 @@ ALTER TABLE webcal_entry_repeats ADD cal_count INT DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats_not ADD cal_exdate INT NOT NULL DEFAULT 1;
 ALTER TABLE webcal_entry ADD cal_due_date INT DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_due_time INT DEFAULT NULL;
-ALTER TABLE webcal_entry ADD cal_location VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_entry ADD cal_location VARCHAR(100) DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_url VARCHAR(100) DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_completed INT DEFAULT NULL;
 ALTER TABLE webcal_entry_user ADD cal_percent INT NOT NULL DEFAULT 0;

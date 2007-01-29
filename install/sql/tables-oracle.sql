@@ -30,7 +30,7 @@ CREATE TABLE webcal_entry (
   cal_type CHAR(1) DEFAULT 'E',
   cal_access CHAR(1) DEFAULT 'P',
   cal_name VARCHAR2(80) NOT NULL,
-  cal_location VARCHAR2(50) NULL,
+  cal_location VARCHAR2(100) NULL,
   cal_url VARCHAR2(100) NULL,
   cal_completed INT NULL,
   cal_description VARCHAR2(1024),
