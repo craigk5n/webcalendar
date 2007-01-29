@@ -183,7 +183,7 @@ ALTER TABLE webcal_entry_repeats ADD cal_count int(11) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats_not ADD cal_exdate int(1) NOT NULL DEFAULT '1';
 ALTER TABLE webcal_entry ADD cal_due_date int(11) DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_due_time int(11) DEFAULT NULL;
-ALTER TABLE webcal_entry ADD cal_location varchar(50) DEFAULT NULL;
+ALTER TABLE webcal_entry ADD cal_location varchar(100) DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_url varchar(100) DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_completed int(11) DEFAULT NULL;
 ALTER TABLE webcal_entry_user ADD cal_percent int(11) NOT NULL DEFAULT '0';

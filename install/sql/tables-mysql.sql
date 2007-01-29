@@ -105,7 +105,7 @@ CREATE TABLE webcal_entry (
   /* brief description of event */
   cal_name VARCHAR(80) NOT NULL,
   /* location of event */
-  cal_location varchar(50) DEFAULT NULL,
+  cal_location varchar(100) DEFAULT NULL,
   /* URL of event */
   cal_url varchar(100) DEFAULT NULL,
   /* date task completed */
