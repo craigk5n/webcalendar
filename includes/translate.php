@@ -105,7 +105,7 @@ function load_translation_text () {
       is_dir ( $settings['db_cachedir'] ) )
     $cachedir = $settings['db_cachedir'];
 
-  if ( ! empty ( $cachedir ) ) {
+  if ( ! empty ( $cachedir ) && function_exists ( 'file_get_contents' ) ) {
     $cached_file = $cachedir . '/' . $lang_file;
     $cache_tran_dir = dirname ( $cached_file );
     if ( ! is_dir ( $cache_tran_dir ) ) {
