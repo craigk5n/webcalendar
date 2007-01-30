@@ -2,42 +2,38 @@
 /* $Id$
  *
  * Description:
- *  Web Service functionality to get unapproved events.
- *  This will list events for the current user and for any other
- *  user that the current user is authorized to approve events for.
- *  Uses REST-style web service.
+ *  Web Service functionality to get unapproved events.  This will list events
+ *  for the current user and for any other user for whom the current user is
+ *  authorized to approve events.  Uses REST-style web service.
  *
  * Comments:
- *  Client apps must use the same authentication as the web browser.
- *  If WebCalendar is setup to use web-based authentication, then
- *  the login.php found in this directory should be used to obtain
- *  a session cookie.
+ *  Client apps must use the same authentication as the web browser.  If
+ *  WebCalendar is setup to use web-based authentication, then the login.php
+ *  found in this directory should be used to obtain a session cookie.
  *
  * Developer Notes:
- *  If you enable the WS_DEBUG option below, all data will be written
- *  to a debug file in /tmp also.
- *
+ *  If you enable the WS_DEBUG option below,
+ *  all data will be written to a debug file in /tmp also.
  */
 
 $WS_DEBUG = false;
 
-require_once "ws.php";
+require_once 'ws.php';
 
 // Initialize...
 ws_init ();
 
-//Header ( "Content-type: text/xml" );
-Header ( "Content-type: text/plain" );
+// header ( 'Content-type: text/xml' );
+header ( 'Content-type: text/plain' );
 
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+echo '<?xml version="1.0" encoding="UTF-8"?' . ">\n";
 
-$sentIds = array ();
-
-$out = '';
-
-// Public is not allowed to approve anything
+// Public is not allowed to approve anything.
 if ( $login == '__public__' ) {
-  $out .= '<error>' . translate ( 'Not authorized' ) . "</error>\n</events>\n";
+  $out = '
+  <error>' . translate ( 'Not authorized' ) . '</error>
+</events>
+';
   exit;
 }
 
@@ -45,88 +41,90 @@ if ( empty ( $user ) )
   $user = $login;
 
 // If viewing different user then yourself...
-if ( $login != $user ) {
-  if ( $ALLOW_VIEW_OTHER != 'Y' ) {
-    $out .= '<error>' . translate ( 'Not authorized' ) . "</error>\n</events>\n";
+if ( $login != $user && $ALLOW_VIEW_OTHER != 'Y' ) {
+    $out = '
+  <error>' . translate ( 'Not authorized' ) . '</error>
+</events>
+';
     exit;
-  }
-  //$out .= "<!-- Allowing user to view other user's calendar -->\n";
 }
 
+$sentIds = array ();
 
-
-
-
-// Get users that this user can approve
+// Get users that this user can approve.
 $userList = get_users_to_approve ();
 
-$out = "<unapproved>\n";
+$out = '
+<unapproved>
+  <userlist>';
+$out2 = '';
+$unapprovedStr = translate ( 'Getting unapproved for user XXX.' );
 
-$out .= "  <userlist>\n";
-for ( $i = 0; $i < count ( $userList ); $i++ ) {
-  $out .= "    <login>" . ws_escape_xml ( $userList[$i] ) . "</login>\n";
+for ( $i = 0, $cnt = count ( $userList ); $i < $cnt; $i++ ) {
+  $out .= '
+    <login>' . ws_escape_xml ( $userList[$i] ) . '</login>';
+
+  $out2 .= ( $WS_DEBUG ? '
+<!-- ' . str_replace ( 'XXX', $userList[$i], $unapprovedStr ) . ' -->' : '' )
+   . get_unapproved ( $userList[$i] );
 }
-$out .= "  </userlist>\n";
 
-$out .= "<events>\n";
-for ( $i = 0; $i < count ( $userList ); $i++ ) {
-  if ( $WS_DEBUG )
-    $out .= "<!-- Getting unapproved for user '" . $userList[$i] . "' -->\n";
-  $out .= get_unapproved ( $userList[$i] );
-}
+$out .= '
+  </userlist>
+  <events>' . $out2 . '
+  </events>
+</unapproved>
+';
 
-$out .= "</events>\n</unapproved>\n";
-
-// If web servic debugging is on...
-if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG ) {
+// If web service debugging is on...
+if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG )
   ws_log_message ( $out );
-}
 
 // Send output now...
 echo $out;
 
-
-// Process an event.  For unapproved events, we may find that
-// the same event is listed more than once (if two participants
-// are not yet approved.)  In that case, we send the event just
-// once since the participant list (with status) is sent with
-// the event.
+/* Process an event.  For unapproved events, we may find that the same event is
+ * listed more than once (if two participants are not yet approved.)
+ * In that case, we send the event just once since the participant list
+ * (with status) is sent with the event.
+ */
 function process_event ( $id, $name, $event_date, $event_time ) {
-  global $WS_DEBUG, $out, $sentIds;
+  global $out, $sentIds, $WS_DEBUG;
 
   if ( ! empty ( $sentIds[$id] ) ) {
     if ( $WS_DEBUG )
-      ws_log_message ( "Event id=$id \"$name\" already sent" );
+      ws_log_message ( str_replace ( 'XXX', array ( $id, $name ),
+          translate ('Event id=XXX XXX already sent.' ) ) );
     return '';
   } else {
     if ( $WS_DEBUG )
-      ws_log_message ( "Event id=$id \"$name\" at $event_time on $event_date" );
+      ws_log_message ( str_replace ( 'XXX',
+          array ( $id, $name, $event_time , $event_date ),
+          translate ( 'Event id=XXX XXX at XXX on XXX.' ) ) );
     $sentIds[$id] = true;
     return ws_print_event_xml ( $id, $event_date );
   }
 }
 
-
-
 // Get the list of unapproved events for the specified user.
-function get_unapproved ( $user )
-{
-  global $temp_fullname, $key, $login, $NONUSER_ENABLED;
+function get_unapproved ( $user ) {
+  global $key, $login, $NONUSER_ENABLED, $temp_fullname;
 
   $count = 0;
   $ret = '';
   user_load_variables ( $user, 'temp_' );
-  //echo "Listing events for $user<br />";
+  // echo 'Listing events for ' . $user . '<br />';
 
-  $sql = 'SELECT we.cal_id, we.cal_name, ' .
-    'we.cal_date, we.cal_time ' .
-    'FROM webcal_entry we, webcal_entry_user weu' .
-    'WHERE we.cal_id = weu.cal_id ' .
-    'AND weu.cal_login = ? ' .
-    'AND weu.cal_status = \'W\' ' .
-    'ORDER BY we.cal_date';
+  $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, we.cal_time
+    FROM webcal_entry we, webcal_entry_user weu
+    WHERE we.cal_id = weu.cal_id AND weu.cal_login = ? AND weu.cal_status = \'W\'
+    ORDER BY we.cal_date';
   $rows = dbi_get_cached_rows ( $sql, array ( $user ) );
-  echo "<!-- SQL:\n $sql \n-->\n";
+  echo '
+<!-- SQL:
+' . $sql . '
+-->
+';
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
@@ -140,31 +138,25 @@ function get_unapproved ( $user )
   return $ret;
 }
 
-
-// Get an array of users who the current user has permission
-// to approve events for.
+// Get an array of users for whom the current user has event approval permission.
 // Returns an array of logins.
 function get_users_to_approve () {
-  global $NONUSER_ENABLED, $PUBLIC_ACCESS, $login, $user, $is_admin;
-  $my_non_users = $app_users = array ();
-  $app_user_hash = array ( );
-  $non_users = get_nonuser_cals ( );
+  global $is_admin, $login, $NONUSER_ENABLED, $PUBLIC_ACCESS, $user;
+  $app_user_hash = $app_users = $my_non_users = array ();
+  $non_users = get_nonuser_cals ();
   foreach ( $non_users as $nonuser ) {
     if ( user_is_nonuser_admin ( $login, $nonuser['cal_login'] ) ) {
       $my_non_users[]['cal_login'] = $nonuser['cal_login'];
-      //echo $nonuser['cal_login'] . "<br />";
+      // echo $nonuser['cal_login'] . "<br />";
     }
   }
 
-  // First, we list ourself
+  // First, we list ourself.
   $app_users[] = $login;
   $app_user_hash[$login] = 1;
   if ( access_is_enabled () ) {
-    if ( $NONUSER_ENABLED == 'Y' ) {
-      $all = array_merge ( get_my_users ( ), $my_non_users );
-    } else {
-      $all = get_my_users ( );
-    }
+    $all = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y'
+      ? array_merge ( get_my_users (), $my_non_users ) : get_my_users () );
     for ( $j = 0, $cnt = count ( $all ); $j < $cnt; $j++ ) {
       $x = $all[$j]['cal_login'];
       if ( access_user_calendar ( 'approve', $x ) ) {
@@ -192,4 +184,5 @@ function get_users_to_approve () {
 
   return $app_users;
 }
+
 ?>
