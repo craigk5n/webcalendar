@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 01-24-2007
+# Translation last updated on 01-30-2007
 
 
 ################################################################################
@@ -770,8 +770,8 @@ Variable N not found: Variable N not found
 ########################################
 # Page: edit_template.php
 #
-Edit Custom Script/Stylesheet: Edit Custom Script/Stylesheet
 Edit Custom Header: Edit Custom Header
+Edit Custom Script/Stylesheet: Edit Custom Script/Stylesheet
 Edit Custom Trailer: Edit Custom Trailer
 
 ########################################
@@ -790,10 +790,10 @@ Set Password: Set Password
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Deleting users not supported
-The passwords were not identical: The passwords were not identical
-You have not entered a password: You have not entered a password
-Username can not be blank: Username can not be blank
+Deleting users not supported: Deleting users not supported.
+The passwords were not identical: The passwords were not identical.
+You have not entered a password: You have not entered a password.
+Username can not be blank: Username can not be blank.
 
 ########################################
 # Page: export.php
@@ -1762,13 +1762,54 @@ Reminder: Reminder
 # Page: ws/event_mod.php
 #
 Unsupported action: Unsupported action
-No event id specified: No event id specified.
+Unsupported action XXX.: Unsupported action: XXX.
+No event id specified.: No event id specified.
 not admin: not admin
+Not authorized (not admin).: Not authorized (not admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date XXX to date XXX.: Checking for events for XXX from date XXX to date XXX.
+Found XXX events in time range.: Found XXX events in time range.
+Event id=XXX XXX at XXX on XXX.: Event id=XXX "XXX" at XXX on XXX.
+
+########################################
+# Page: ws/get_reminders.php
+#
+public: public
+Allowing XXX user to view other users calendar.: Allowing XXX user to view other user's calendar.
+Error Email reminders disabled for user XXX.: Error: Email reminders disabled for user "XXX".
+Number of site_extras XXX.: Number of site_extras: XXX.
+Reminder set for event.: Reminder set for event.
+Mins Before XXX.: Mins Before: XXX.
+Event time is XXX.: Event time is: XXX.
+Remind time is XXX.: Remind time is: XXX.
+Reminders for user XXX, login XXX.: Reminders for user "XXX", login "XXX".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Getting unapproved for user "XXX".
+Event id=XXX XXX already sent.: Event id=XXX "XXX" already sent.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: No login required for single-user mode.
+No login required for HTTP authentication.: No login required for HTTP authentication.
 
 ########################################
 # Page: ws/user_mod.php
 #
-Invalid characters in login: Invalid characters in login
-already exists: already exists
+Invalid characters in login: Invalid characters in login.
+Username XXX does not exist.: Username "XXX" does not exist.
 You cannot remove admin rights from yourself!: You cannot remove admin rights from yourself!
-Unknown error saving user: Unknown error saving user
+Unknown error saving user: Unknown error saving user.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: No participants found for event id: XXX.
+Db error Could not find event id XXX.: Db error: Could not find event id XXX.
+Error Could not find event id XXX in database.: Error: Could not find event id XXX in database.
