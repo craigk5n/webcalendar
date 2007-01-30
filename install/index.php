@@ -1160,11 +1160,13 @@ if ( ! $exists || ! $canWrite ) { ?>
    <input name="form_db_persistent" value="false" type="hidden" />
 <?php } ?>
   </td></tr>
+  <?php if ( function_exists ( 'file_get_contents' ) ) { ?>
   <tr><td class="prompt"><?php echo $cachedirStr ?>:</td>
    <td><?php if ( empty ( $settings['db_cachedir'] ) ) $settings['db_cachedir'] = '';  ?>
    <input  type="text" size="70" name="form_db_cachedir" id="form_db_cachedir" value="<?php 
      echo $settings['db_cachedir']; ?>"/></td></tr>  
-<?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
+<?php } //end test for file_get_contents 
+   if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
  <tr><td align="center" colspan="3">
   <?php 
     $class = ( ! empty ( $_SESSION['db_success'] ) ) ?
