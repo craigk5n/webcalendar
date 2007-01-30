@@ -5185,6 +5185,8 @@ function print_timezone_select_html ( $prefix, $tz ) {
   $can_setTZ = ( substr( $tz, 0, 11 ) == 'WebCalendar' ? false : true );
   $old_TZ = getenv('TZ');
   set_env ( 'TZ', 'America/New_York' );
+  $tmp_timezone = date ( 'T' );
+  set_env ( 'TZ', $old_TZ );
   //don't change this to date()
   //if ( date ( 'T' ) == 'Ame' || ! $can_setTZ ) { //We have a problem!!
   if ( 0 ) { //ignore this code for now
@@ -5239,7 +5241,6 @@ function print_timezone_select_html ( $prefix, $tz ) {
     $ret .= '&nbsp;&nbsp;' . translate( 'Your current GMT offset is' ) . '&nbsp;' .
        $tz_offset . '&nbsp;' .translate( 'hours' ) . '.';
   }
-  set_env ( 'TZ', $old_TZ );
   return $ret;
 }
 
