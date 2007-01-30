@@ -46,7 +46,7 @@ $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 //make sure all days with events are bold if mini cal is displayed
 if  ( $DISPLAY_SM_MONTH == 'Y' && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $evStart = get_weekday_before ( $thisyear, $thismonth );
-  $evEnd = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
+  $evEnd = mktime ( 23, 59, 59, $thismonth + 2, 0, $thisyear );
 } else {
   $evStart = $wkstart;
   $evEnd =  $wkend;
