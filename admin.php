@@ -297,7 +297,6 @@ print_header ( $INC, '', $BodyX );
  <tr><td class="tooltipselect" title="<?php etooltip( 'tz-help' )?>">
   <label for="admin_SERVER_TIMEZONE"><?php etranslate( 'Server Timezone Selection' )?>:</label></td><td>
   <?php
-   $tz_offset = date('Z') /ONE_HOUR;
    echo print_timezone_select_html ( 'admin_', $s['SERVER_TIMEZONE']);
   ?>
 </td></tr>
