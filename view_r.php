@@ -330,7 +330,7 @@ $all_day = array (  );
 // would change the first_slot value.  There is then a gap above the all-day
 // event.
 //</long-winded-explanation>
-$am_part = array ( ); // am I a participant array
+$am_part = array (); // am I a participant array
 for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   for ( $u = 0; $u < $viewusercnt; $u++ ) {
     $untimed = array (  );

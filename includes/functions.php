@@ -3918,7 +3918,7 @@ function display_unapproved_events ( $user ) {
     $login, $is_nonuser, $is_admin;
   static $retval;
   $app_users = array ();
-  $app_user_hash = array ( );
+  $app_user_hash = array ();
   $ret = '';
   // Don't do this for public access login, admin user must approve public
   // events if UAC is not enabled
@@ -3946,9 +3946,9 @@ function display_unapproved_events ( $user ) {
     $app_user_hash[$login] = 1;
     if ( $NONUSER_ENABLED == 'Y' ) {
       //TODO add 'approved' switch to these functions
-      $all = array_merge ( get_my_users ( ), get_my_nonusers ( ) );
+      $all = array_merge ( get_my_users (), get_my_nonusers () );
     } else {
-      $all = get_my_users ( );
+      $all = get_my_users ();
     }
     for ( $j = 0, $cnt = count ( $all );  $j < $cnt; $j++ ) {
       $x = $all[$j]['cal_login'];
@@ -5252,7 +5252,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
  * @see /includes/blacklist.php
  * @todo There has to be a way to vastly improve on this logic
  */
-function validate_domain ( ) {
+function validate_domain () {
  global $SELF_REGISTRATION_BLACKLIST;
  
  if ( empty ( $SELF_REGISTRATION_BLACKLIST ) || 

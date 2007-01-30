@@ -730,7 +730,7 @@ class Event {
    *
    * @access public
    */
-  function getClone ( ) {
+  function getClone () {
     return $this->_clone; 
   }
  /**
