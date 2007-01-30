@@ -4,7 +4,7 @@
  * Description:
  *  Web Service functionality for reminders.
  *  Uses XML (but not SOAP at this point since that would be
- *      overkill and require extra packages to install).
+ *       overkill and require extra packages to install).
  *
  * Comments:
  *  Some of this code was borrowed from send_reminders.php.
@@ -19,44 +19,48 @@
  *  to the user.  (No where in the database will it be recorded that
  *  the user received a reminder through this functionality.)
  *
- *  Client apps must use the same authentication as the web browser.
- *  If WebCalendar is setup to use web-based authentication, then
- *  the login.php found in this directory should be used to obtain
- *  a session cookie.
- *
+ *  Client apps must use the same authentication as the web browser.  If
+ *  WebCalendar is setup to use web-based authentication, then the login.php
+ *  found in this directory should be used to obtain a session cookie.
  */
 
-// How many days ahead should we look for events.
+// How many days ahead should we look for events?
 // To handle case of an event 30 days from now where the user asked
 // for a reminder 30 days before the event.
 $DAYS_IN_ADVANCE = 30;
-//$DAYS_IN_ADVANCE = 365;
+// $DAYS_IN_ADVANCE = 365;
 
-
-// Show reminders for the next N days
+// Show reminders for the next N days.
 $CUTOFF = 7;
 
 $WS_DEBUG = false;
 
-require_once "ws.php";
+require_once 'ws.php';
 
 // Initialize...
 ws_init ();
 
-Header ( "Content-type: text/xml" );
-//Header ( "Content-type: text/plain" );
+header ( 'Content-type: text/xml' );
+// header ( "Content-type: text/plain" );
 
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+echo '<?xml version="1.0" encoding="UTF-8"?' . ">\n";
 
-$out = "<reminders>\n";
+$out = '
+<reminders>';
 
 // If login is public user, make sure public can view others...
 if ( $login == '__public__' && $login != $user ) {
   if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
-    echo '<error>' . translate ( 'Not authorized' ) . "</error>\n</reminders>\n";
+    echo '
+  <error>' . translate ( 'Not authorized' ) . '</error>
+</reminders>
+';
     exit;
   }
-  $out .= "<!-- Allowing public user to view other user's calendar -->\n";
+  $out .= '
+<!-- ' . str_replace ( 'XXX', translate ( 'public' ),
+    translate ( 'Allowing XXX user to view other users calendar.' ) )
+   . ' -->';
 }
 
 if ( empty ( $user ) )
@@ -65,102 +69,110 @@ if ( empty ( $user ) )
 // If viewing different user then yourself...
 if ( $login != $user ) {
   if ( $ALLOW_VIEW_OTHER != 'Y' ) {
-    echo '<error>' . translate ( 'Not authorized' ) . "</error>\n</reminders>\n";
+    echo '
+  <error>' . translate ( 'Not authorized' ) . '</error>
+</reminders>
+';
     exit;
   }
-  $out .= "<!-- Allowing user to view other user's calendar -->\n";
+  $out .= '
+<!-- ' . str_replace ( 'XXX ', '',
+    translate ( 'Allowing XXX user to view other users calendar.' ) ) . ' -->';
 }
 
 // Make sure this user has enabled email reminders.
-//if ( $EMAIL_REMINDER == 'N' ) {
-//  $out .= "Error: email reminders disabled for user \"$user\"\n";
-//  dbi_close ( $c );
-//  exit;
-//}
+// if ( $EMAIL_REMINDER == 'N' ) {
+// $out .= str_replace ('XXX', $user, 
+// translate ( 'Error Email reminders disabled for user XXX.' ) );
+// dbi_close ( $c );
+// exit;
+// }
 
 $startdate = mktime ();
-$enddate = $startdate + ( $DAYS_IN_ADVANCE * 24 * 3600 );
+$enddate = $startdate + ( $DAYS_IN_ADVANCE * 86400 );
 
-// Now read events all the repeating events
+// Now read all the repeating events.
 $repeated_events = query_events ( $user, true,
-  "AND (wer.cal_end > $startdate OR " .
-  "wer.cal_end IS NULL) " );
+  'AND ( wer.cal_end > ' . $startdate . ' OR wer.cal_end IS NULL ) ' );
 
-// Read non-repeating events
+// Read non-repeating events.
 $events = read_events ( $user, $startdate, $enddate );
 if ( $WS_DEBUG )
-  ws_log_message ( "Found " . count ( $events ) . " events in time range." );
+  ws_log_message ( str_replace ( 'XXX', count ( $events ),
+      translate ( 'Found XXX events in time range.' ) ) );
 
-
-
-// Send a reminder for a single event for a single day.
+/* Send a reminder for a single event for a single day.
+ */
 function process_reminder ( $id, $event_date, $remind_time ) {
-  global $site_extras, $WS_DEBUG,
-    $SERVER_URL, $single_user, $single_user_login,
-    $DISABLE_PRIORITY_FIELD, $DISABLE_ACCESS_FIELD,
-    $DISABLE_PARTICIPANTS_FIELD;
+  global $DISABLE_ACCESS_FIELD, $DISABLE_PARTICIPANTS_FIELD,
+  $DISABLE_PRIORITY_FIELD, $SERVER_URL, $single_user,
+  $single_user_login, $site_extras, $WS_DEBUG;
 
-  $out = "<reminder>\n";
-
-  $out .= "  <remindDate>" . date ( 'Ymd', $remind_time ) . "</remindDate>\n";
-  $out .= "  <remindTime>" . date ( "Hi", $remind_time ) . "</remindTime>\n";
-  $out .= "  <untilRemind>" . ( $remind_time - time() ) . "</untilRemind>\n";
-  $out .= ws_print_event_xml ( $id, $event_date );
-
-  $out .= "</reminder>\n";
-  return $out;
+  return '
+<reminder>
+  <remindDate>' . date ( 'Ymd', $remind_time ) . '</remindDate>
+  <remindTime>' . date ( 'Hi', $remind_time ) . '</remindTime>
+  <untilRemind>' . ( $remind_time - time () ) . '</untilRemind>
+  ' . ws_print_event_xml ( $id, $event_date ) . '
+</reminder>
+';
 }
 
-
-
-// Process an event for a single day.  Check to see if it has
-// a reminder, when it needs to be sent and when the last time it
-// was sent.
+/*
+ * Process an event for a single day.  Check to see if it has a reminder,
+ * when it needs to be sent and when the last time it was sent.
+ */
 function process_event ( $id, $name, $event_date, $event_time ) {
-  global $site_extras;
-  global $CUTOFF, $WS_DEBUG;
+  global $CUTOFF, $site_extras, $WS_DEBUG;
   $out = '';
-  $debug = '';
 
-  $debug .= "Event id=$id \"$name\" at $event_time on $event_date\n";
-  $debug .= "No site_extras: " . count ( $site_extras ) . "\n";
+  $debug = str_replace ( 'XXX', array ( $id, $name, $event_time, $event_date ),
+    translate ( 'Event id=XXX XXX at XXX on XXX.' ) ) . "\n"
+   . str_replace ( 'XXX', count ( $site_extras ),
+    translate ( 'Number of site_extras XXX.' ) );
 
-  // Check to see if this event has any reminders
+  // Check to see if this event has any reminders.
   $extras = get_site_extra_fields ( $id );
-  for ( $j = 0; $j < count ( $site_extras ); $j++ ) {
+  for ( $j = 0, $seCnt = count ( $site_extras ); $j < $seCnt; $j++ ) {
     $extra_name = $site_extras[$j][0];
     $extra_type = $site_extras[$j][2];
     $extra_arg1 = $site_extras[$j][3];
     $extra_arg2 = $site_extras[$j][4];
+
     if ( ! empty ( $extras[$extra_name]['cal_remind'] ) ) {
-      $debug .= "  Reminder set for event.\n";
-      // how many minutes before event should we send the reminder?
-      $ev_h = (int) ( $event_time / 10000 );
-      $ev_m = ( $event_time / 100 ) % 100;
-      $ev_year = substr ( $event_date, 0, 4 );
-      $ev_month = substr ( $event_date, 4, 2 );
-      $ev_day = substr ( $event_date, 6, 2 );
-      $event_time = mktime ( $ev_h, $ev_m, 0, $ev_month, $ev_day, $ev_year );
+      $debug .= "\n" . translate ( 'Reminder set for event.' );
+      // How many minutes before event should we send the reminder?
+      $event_time = mktime ( intval ( $event_time / 10000 ),
+        ( $event_time / 100 ) % 100, 0,
+        substr ( $event_date, 4, 2 ),
+        substr ( $event_date, 6, 2 ),
+        substr ( $event_date, 0, 4 ) );
+
       if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
         $minsbefore = $extras[$extra_name]['cal_data'];
         $remind_time = $event_time - ( $minsbefore * 60 );
-      } else if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
+      } elseif ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
         $rd = $extras[$extra_name]['cal_date'];
-        $r_year = substr ( $rd, 0, 4 );
-        $r_month = substr ( $rd, 4, 2 );
-        $r_day = substr ( $rd, 6, 2 );
-        $remind_time = mktime ( 0, 0, 0, $r_month, $r_day, $r_year );
+        $remind_time = mktime ( 0, 0, 0,
+          substr ( $rd, 4, 2 ),
+          substr ( $rd, 6, 2 ),
+          substr ( $rd, 0, 4 ) );
       } else {
         $minsbefore = $extra_arg1;
         $remind_time = $event_time - ( $minsbefore * 60 );
       }
-      $debug .= "  Mins Before: $minsbefore\n";
-      $debug .= "  Event time is: " . date ( "m/d/Y H:i", $event_time ) . "\n";
-      $debug .= "  Remind time is: " . date ( "m/d/Y H:i", $remind_time ) . "\n";
-      // Send a reminder
-      if ( time() >= $remind_time - ( $CUTOFF * 24 * 3600 ) ) {
+      $debug .= '
+  ' . str_replace ( 'XXX', $minsbefore, translate ( 'Mins Before XXX.' ) ) . '
+  ' . str_replace ( 'XXX', date ( 'm/d/Y H:i', $event_time ),
+        translate ( 'Event time is XXX.' ) ) . '
+  ' . str_replace ( 'XXX', date ( 'm/d/Y H:i', $remind_time ),
+        translate ( 'Remind time is XXX.' ) );
+      // Send a reminder.
+      if ( time () >= $remind_time - ( $CUTOFF * 86400 ) ) {
         if ( $debug )
-          $debug .= "  SENDING REMINDER! \n";
+          $debug .= '
+  SENDING REMINDER!';
+
         $out .= process_reminder ( $id, $event_date, $remind_time );
       }
     }
@@ -171,43 +183,46 @@ function process_event ( $id, $name, $event_date, $event_time ) {
   return $out;
 }
 
+$out .= '
+<!-- ' . str_replace ( 'XXX', array ( $user, $login ),
+  translate ( 'Reminders for user XXX, login XXX.' ) ) . ' -->
+';
 
-$out .= "<!-- reminders for user \"$user\", login \"$login\" -->\n";
-
-$startdate = time(); // today
+$startdate = time (); // today
 for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
-  $date = date ( 'Ymd', time() + ( $d * 24 * 3600 ) );
-  //echo "Date: $date\n";
+  $date = date ( 'Ymd', time () + ( $d * 86400 ) );
+  // echo "Date: $date\n";
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.
   $ev = get_entries ( $date );
-  // Keep track of duplicates
-  $completed_ids = array ( );
-  for ( $i = 0; $i < count ( $ev ); $i++ ) {
-    $id = $ev[$i]->getID();
+  // Keep track of duplicates.
+  $completed_ids = array ();
+  for ( $i = 0, $evCnt = count ( $ev ); $i < $evCnt; $i++ ) {
+    $id = $ev[$i]->getID ();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $ev[$i]->getName(), $date,
-      $ev[$i]->getTime() );
+    $out .= process_event ( $id, $ev[$i]->getName (),
+      $date, $ev[$i]->getTime () );
   }
   $rep = get_repeating_entries ( $user, $date );
-  for ( $i = 0; $i < count ( $rep ); $i++ ) {
-    $id = $rep[$i]->getID();
+  for ( $i = 0, $repCnt = count ( $rep ); $i < $repCnt; $i++ ) {
+    $id = $rep[$i]->getID ();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $rep[$i]->getName(), $date,
-      $rep[$i]->getTime() );
+    $out .= process_event ( $id, $rep[$i]->getName (), $date,
+      $rep[$i]->getTime () );
   }
 }
 
-$out .= "</reminders>\n";
+$out .= '
+</reminders>
+';
 
 // If web service debugging is on...
-if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG ) {
+if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG )
   ws_log_message ( $out );
-}
 
 // Send output now...
 echo $out;

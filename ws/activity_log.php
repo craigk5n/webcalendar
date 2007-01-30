@@ -15,8 +15,8 @@
  *  found in this directory should be used to obtain a session cookie.
  *
  * Developer Notes:
- *  If you enable the WS_DEBUG option below, all data will be written
- *  to a debug file in /tmp also.
+ *  If you enable the WS_DEBUG option below,
+ *  all data will be written to a debug file in /tmp also.
  */
 
 $WS_DEBUG = false;
@@ -36,17 +36,18 @@ if ( empty ( $num ) || $num < 0 )
 if ( $num > $MAX_ENTRIES )
   $num = $MAX_ENTRIES;
 
-Header ( 'Content-type: text/xml' );
-// Header ( 'Content-type: text/plain' );
+header ( 'Content-type: text/xml' );
+// header ( 'Content-type: text/plain' );
 
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-
-$out = '';
+echo '<?xml version="1.0" encoding="UTF-8"?' . ">\n";
 
 // If login is public user, make sure public can view others...
 if ( $login == '__public__' && $login != $user ) {
   if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
-    $out .= '<error>' . translate ( 'Not authorized' ) . "</error>\n</events>\n";
+    $out = '
+  <error>' . translate ( 'Not authorized' ) . '</error>
+</events>
+';
     exit;
   }
 }
@@ -66,12 +67,16 @@ if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG )
 
 $res = dbi_execute ( $sql, $sql_params );
 
-$out .= "<activitylog>\n";
+$out = '
+<activitylog>';
+
 if ( $res ) {
-  $out .= '<!-- in if -->' . "\n";
+  $out .= '
+<!-- in if -->';
   $cnt = 0;
   while ( ( $row = dbi_fetch_row ( $res ) ) && $cnt < $num ) {
-    $out .= '<!-- in while type: $row[2] -->
+    $out .= '
+<!-- in while type: $row[2] -->
   <log>
     <login>' . ws_escape_xml ( $row[0] ) . '</login>
     <calendar>' . ws_escape_xml ( $row[1] ) . '</calendar>
@@ -86,9 +91,12 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 } else
-  $out .= '<error>' . ws_escape_xml ( dbi_error () ) . "</error>\n";
+  $out .= '
+  <error>' . ws_escape_xml ( dbi_error () ) . '</error>';
 
-$out .= "</activitylog>\n";
+$out .= '
+</activitylog>
+';
 // If web servic debugging is on...
 if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG )
   ws_log_message ( $out );
