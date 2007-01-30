@@ -299,8 +299,6 @@ print_header ( $INC, '', $BodyX );
   <?php
    $tz_offset = date('Z') /ONE_HOUR;
    echo print_timezone_select_html ( 'admin_', $s['SERVER_TIMEZONE']);
-   echo  "&nbsp;&nbsp;" . translate( 'Your current GMT offset is' ) . '&nbsp;' .
-       $tz_offset . '&nbsp;' .translate( 'hours' ) . '.';
   ?>
 </td></tr>
  <?php } // end $can_set_timezone ?>
