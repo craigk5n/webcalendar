@@ -349,7 +349,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
 }
 $events = $e_save;
 $repeated_events = $re_save;
-$timeBarHeader = print_header_timebar( );
+$timeBarHeader = print_header_timebar ();
 ?>
 
 <table class="main">

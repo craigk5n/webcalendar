@@ -490,7 +490,7 @@ if ( ! empty ( $list ) ) {
     $manageStr = translate ( $PUBLIC_ACCESS_FULLNAME) . ' ' . $manageStr;
   } 
   $adminLinkStr = display_admin_link();
-  $trailerStr = print_trailer ( );
+  $trailerStr = print_trailer ();
 } else {
   $manageStr = $adminLinkStr = '';
   $text = str_replace ( '${report_id}', $report_id, $page_template );

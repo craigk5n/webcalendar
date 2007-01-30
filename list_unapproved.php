@@ -180,8 +180,8 @@ function list_unapproved ( $user ) {
 ?></h2>
 <?php
 $my_non_users = $app_users = array ();
-$app_user_hash = array ( );
-$non_users = get_nonuser_cals ( );
+$app_user_hash = array ();
+$non_users = get_nonuser_cals ();
 foreach ( $non_users as $nonuser ) {
   if ( user_is_nonuser_admin ( $login, $nonuser['cal_login'] ) ) {
     $my_non_users[]['cal_login'] = $nonuser['cal_login'];
@@ -207,9 +207,9 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
   $app_user_hash[$login] = 1;
   if ( access_is_enabled () ) {
     if ( $NONUSER_ENABLED == 'Y' ) {
-      $all = array_merge ( get_my_users ( ), $my_non_users );
+      $all = array_merge ( get_my_users (), $my_non_users );
     } else {
-      $all = get_my_users ( );
+      $all = get_my_users ();
     }
     for ( $j = 0, $cnt = count ( $all ); $j < $cnt; $j++ ) {
       $x = $all[$j]['cal_login'];

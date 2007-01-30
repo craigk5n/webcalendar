@@ -74,7 +74,7 @@ function view_get_user_list ( $view_id ) {
   }
   if ( $all_users ) {
     $users = get_my_users ( '', 'view' );
-    $ret = array ( );
+    $ret = array ();
     $usercnt = count ( $users );
     for ( $i = 0; $i < $usercnt; $i++ ) {
       $ret[] = $users[$i]['cal_login'];
@@ -121,7 +121,7 @@ function view_get_user_list ( $view_id ) {
 
   // If user access control enabled, check against that as well.
   if ( access_is_enabled () && ! $is_admin ) {
-    $newlist = array ( );
+    $newlist = array ();
     $retcnt = count ( $ret );
     for ( $i = 0; $i < $retcnt; $i++ ) {
       if ( access_user_calendar ( 'view', $ret[$i] ) )

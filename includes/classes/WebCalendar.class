@@ -160,8 +160,8 @@ class WebCalendar {
       $PUBLIC_ACCESS = 'N';
     // Initialize access settings ($user_access string) and make sure user
     // is allowed to view the current page.
-    access_init ( );
-    if ( ! access_can_view_page ( ) ) {
+    access_init ();
+    if ( ! access_can_view_page () ) {
       $user_BGCOLOR = get_pref_setting ( $login, 'BGCOLOR' );
       echo "<html>\n<head>\n<title>" . generate_application_name () . ' ' .
         translate( 'Error' ) .  "</title></head>\n" .
@@ -194,7 +194,7 @@ class WebCalendar {
         $valid_user = false;
         $userlist = get_my_users();
         if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
-          $nonusers = get_my_nonusers ( );
+          $nonusers = get_my_nonusers ();
           $userlist =  array_merge($nonusers, $userlist);
         }
         for ( $i = 0; $i < count ( $userlist ); $i++ ) {
@@ -984,7 +984,7 @@ class WebCalendar {
     global $access_other_cals;
 
     // Global variable used to cache permissions
-    $access_other_cals = array ( );
+    $access_other_cals = array ();
   }
 
   /**
