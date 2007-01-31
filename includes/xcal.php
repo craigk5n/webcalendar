@@ -1960,10 +1960,10 @@ do_debug ( $line );
       } elseif ( preg_match( "/^CLASS.*:(.*)$/i", $buff, $match ) ) {
         $substate = 'class';
         $event[$substate] = $match[1];
-      } elseif ( preg_match( "/^LOCATION.*:(.+)$/i", $buff, $match ) ) {
+      } elseif ( preg_match( "/^LOCATION.*?:(.+)$/i", $buff, $match ) ) {
         $substate = 'location';
         $event[$substate] = $match[1];
-      } elseif ( preg_match( "/^URL:(.+)$/i", $buff, $match ) ) {
+      } elseif ( preg_match( "/^URL.*?:(.+)$/i", $buff, $match ) ) {
         $substate = 'url';
         $event[$substate] = $match[1];
       } elseif ( preg_match( "/^TRANSP.*:(.+)$/i", $buff, $match ) ) {
