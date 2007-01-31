@@ -438,9 +438,10 @@ function user_delete_user ( $user ) {
 /**
  * Get a list of users and return info in an array.
  *
+ * @param bool  $publicOnly  return only public data
  * @return array Array of user info
  */
-function user_get_users () {
+function user_get_users ( $publicOnly=false ) {
   global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME,
   $USER_SORT_ORDER;
 
@@ -455,6 +456,8 @@ function user_get_users () {
        'cal_email' => '',
        'cal_password' => '',
        'cal_fullname' => $PUBLIC_ACCESS_FULLNAME );
+  if ( $publicOnly ) return $ret;
+  
   $order1 = empty ( $USER_SORT_ORDER ) ? 
     'cal_lastname, cal_firstname,' : "$USER_SORT_ORDER,";
   $res = dbi_execute ( 'SELECT cal_login, cal_lastname, cal_firstname, ' .

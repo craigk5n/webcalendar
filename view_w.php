@@ -25,16 +25,14 @@ include_once 'includes/views.php';
 
 $error = '';
 $USERS_PER_TABLE = 6;
-
+$id = getValue ( 'id' );
 view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_w.php' );
+set_today($date);
 
 $INC = array('js/popups.php/true');
 print_header($INC);
 
-
-
-set_today($date);
 
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $nextyear = date ( 'Y', $next );

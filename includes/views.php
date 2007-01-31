@@ -18,8 +18,11 @@ function view_init ( $view_id )
 {
   global $views, $error, $login;
   global $ALLOW_VIEW_OTHER, $is_admin;
-  global $view_name, $view_type;
+  global $view_name, $view_type, $custom_view;
 
+  //set this to prove we in are inside a custom view page
+  $custom_view = true;
+  
   if ( ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'N' )
     && ! $is_admin ) {
     // not allowed...

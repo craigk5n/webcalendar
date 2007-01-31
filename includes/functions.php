@@ -804,8 +804,9 @@ function get_my_users ( $user='', $reason='invite') {
  *    - cal_is_public
  */
 function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
-  global $login, $is_admin, $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
-  global $my_nonuser_array, $is_nonuser, $is_nonuser_admin, $USER_SORT_ORDER;
+  global $login, $is_admin, $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS,
+    $my_nonuser_array, $is_nonuser, $is_nonuser_admin, $USER_SORT_ORDER,
+	$PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $my_user_array;
 
   $this_user = ( ! empty ( $user ) ? $user : $login );
   // Return the global variable (cached)
@@ -877,7 +878,13 @@ function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
     // groups not enabled... return all nonusers
     $ret = $u;
   }
-
+  
+  //We add Public Access if $add_public= true
+  //Admin already sees all users
+  if ( ! $is_admin && $add_public && $PUBLIC_ACCESS == 'Y' ) {
+    $pa = user_get_users ( true );
+    array_unshift ( $ret, $pa[0] );
+  }
   // If user access control enabled, remove any nonusers that this user
   // does not have required access.
   if ( access_is_enabled () ) {
@@ -890,7 +897,6 @@ function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
     }
     $ret = $newlist;
   }
-
   $my_nonuser_array[$this_user . $add_public] = $ret;
   return $ret;
 }
@@ -4749,7 +4755,7 @@ function load_nonuser_preferences ($nonuser) {
 function set_today($date='') {
   global $thisyear, $thisday, $thismonth, $thisdate, $today;
   global $month, $day, $year, $thisday;
-  
+ 
   $today = mktime();
 
   if ( ! empty ( $date ) ) {

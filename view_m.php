@@ -28,11 +28,11 @@ $USERS_PER_TABLE = 6;
 
 view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_m.php' );
+set_today($date);
 
 $INC = array('js/popups.php/true');
 print_header($INC);
 
-set_today($date);
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( 'Y', $next );

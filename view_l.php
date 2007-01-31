@@ -38,11 +38,10 @@ if ( empty ( $friendly ) ) {
     $is_nonuser_admin ? $user : $login ) );
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
-
+set_today($date);
 $INC = array('js/popups.php/true');
 print_header($INC);
 $trailerStr = print_trailer ();
-set_today($date);
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( 'Y', $next );

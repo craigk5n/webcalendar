@@ -33,11 +33,11 @@ $DAYS_PER_TABLE = 7;
 
 view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_v.php');
+set_today($date);
 
 $INC = array('js/popups.php/true');
 print_header($INC);
 
-set_today($date);
 
 $nextdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
 $prevdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
