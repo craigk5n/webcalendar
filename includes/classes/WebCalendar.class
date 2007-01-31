@@ -194,7 +194,7 @@ class WebCalendar {
         $valid_user = false;
         $userlist = get_my_users();
         if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
-          $nonusers = get_my_nonusers ();
+          $nonusers = get_my_nonusers ( $login, true );
           $userlist =  array_merge($nonusers, $userlist);
         }
         for ( $i = 0; $i < count ( $userlist ); $i++ ) {
