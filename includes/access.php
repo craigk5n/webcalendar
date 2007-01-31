@@ -478,7 +478,9 @@ function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
   if ( empty ( $cur_user ) && ! empty ( $login ) )
     $cur_user = $login;
 
-  if ( $cur_user == $other_user && $login != '__public__' ) {
+  if ( $cur_user == $other_user ) {
+    if ( $login  == '__public__' && $cal_can_xxx == 'approve' )
+      return 'N';
     return ( $cal_can_xxx == 'email' || $cal_can_xxx == 'invite'
       ? 'Y' : CAN_DOALL );
   }

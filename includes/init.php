@@ -87,7 +87,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $disableAJAX = true, $disableUTIL = false ) {
   global $BGCOLOR, $browser, $CUSTOM_HEADER, $CUSTOM_SCRIPT, $charset,
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
-  $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG, $PHP_SELF,
+  $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG,
   $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR,
   $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
 
@@ -282,12 +282,19 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
 }
 
 function print_menu_dates ( $menu = false ) {
-  global $cat_id, $CATEGORIES_ENABLED, $DATE_FORMAT_MD, $DATE_FORMAT_MY,
-  $DISPLAY_WEEKENDS, $login, $thismonth, $thisyear, $user, $WEEK_START;
+  global $cat_id, $CATEGORIES_ENABLED, $DATE_FORMAT_MD, 
+    $DATE_FORMAT_MY, $id, $DISPLAY_WEEKENDS, $login, $thismonth, 
+	$thisyear, $thisday, $user, $WEEK_START, $SCRIPT, $custom_view;
   $goStr = translate ( 'Go' );
-  $ret = $urlArgs = '';
+  $ret = $urlArgs = $include_id = '';
+  //TODO add this to admin and pref
+  //Change this value to 'Y' to enable staying in custom views 
+  $STAY_IN_VIEW = 'N';
   $selected = ' selected="selected" ';
-  if ( access_can_view_page ( 'month.php' ) ) {
+  if ( $STAY_IN_VIEW == 'Y' && ! empty ( $custom_view ) ) {
+    $include_id = true;
+    $monthUrl = $SCRIPT;
+  } else if ( access_can_view_page ( 'month.php' ) ) {
     $monthUrl = 'month.php';
   } else {
     $monthUrl = $GLOBALS['STARTVIEW'];
@@ -305,11 +312,13 @@ function print_menu_dates ( $menu = false ) {
    . ( $menu == true ? 'menu' : 'form' ) . '"> ' . $urlArgs
    . ( ! empty ( $user ) && $user != $login ? '
             <input type="hidden" name="user" value="' . $user . '" />' : '' )
+   . ( ! empty ( $id ) && $include_id ? '
+            <input type="hidden" name="id" value="' . $id . '" />' : '' )
    . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
     ( ! $user || $user == $login ) ? '
             <input type="hidden" name="cat_id" value="'
    . $cat_id . '" />' : '' ) . '
-            <label for="monthselect"><a '
+			 <label for="monthselect"><a '
    . 'href="javascript:document.SelectMonth.submit()">'
    . translate ( 'Month' ) . '</a>:&nbsp;</label>
             <select name="date" id="monthselect" '
@@ -349,7 +358,9 @@ function print_menu_dates ( $menu = false ) {
         </td>
         <td class="ThemeMenubackgr ThemeMenu">' : '' );
 
-  if ( access_can_view_page ( 'week.php' ) ) {
+  if ( $STAY_IN_VIEW == 'Y'  && ! empty ( $custom_view ) ) {
+    $weekUrl = $SCRIPT;
+  } else if ( access_can_view_page ( 'week.php' ) ) {
     $weekUrl = 'week.php';
     $urlArgs = '';
   } else {
@@ -367,6 +378,8 @@ function print_menu_dates ( $menu = false ) {
    . ( $menu == true ? 'menu' : 'form' ) . '">' . $urlArgs
    . ( ! empty ( $user ) && $user != $login ? '
             <input type="hidden" name="user" value="' . $user . '" />' : '' )
+   . ( ! empty ( $id ) && $include_id ? '
+            <input type="hidden" name="id" value="' . $id . '" />' : '' )
    . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
     ( ! $user || $user == $login ) ? '
             <input type="hidden" name="cat_id" value="'
@@ -385,7 +398,7 @@ function print_menu_dates ( $menu = false ) {
   }
   $d = ( ! empty ( $thisday ) ? $thisday : date ( 'd' ) );
   $d_time = mktime ( 0, 0, 0, $m, $d, $y );
-  $thisdate = date ( 'Ymd', $d_time );
+  $thisweek = date ( 'W', $d_time );
   $wday = date ( 'w', $d_time );
   // $WEEK_START equals 1 or 0
   $wkstart = mktime ( 12, 0, 0, $m, $d - ( $wday - $WEEK_START ), $y );
@@ -394,16 +407,16 @@ function print_menu_dates ( $menu = false ) {
     $twkstart = $wkstart + ( 604800 * $i );
     $twkend = $twkstart + ( 86400 * $lastDay );
     $dateSYmd = date ( 'Ymd', $twkstart );
-    $dateEYmd = date ( 'Ymd', $twkend );
+	$dateEYmd = date ( 'Ymd', $twkend );
+    $dateW = date ( 'W', $twkstart + 86400  );
     // echo $twkstart . " " . $twkend;
     if ( $twkstart > 0 && $twkend < 2146021200 ) {
       $ret .= '
               <option value="' . $dateSYmd . '"'
-       . ( $dateSYmd <= $thisdate && $dateEYmd >= $thisdate
-        ? $selected : '' ) . '>'
+       . ( $dateW == $thisweek ? $selected : '' ) . '>'
        . ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
         ( $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y' )
-        ? '( ' . date( 'W', $twkstart + 86400 ) . ' )&nbsp;&nbsp;' : '' )
+        ? '( ' . $dateW . ' )&nbsp;&nbsp;' : '' )
        . sprintf ( "%s - %s",
         date_to_str ( $dateSYmd, $DATE_FORMAT_MD, false, true, 0 ),
         date_to_str ( $dateEYmd, $DATE_FORMAT_MD, false, true, 0 ) )
@@ -418,7 +431,9 @@ function print_menu_dates ( $menu = false ) {
         </td>
         <td class="ThemeMenubackgr ThemeMenu" align="right">' : '' );
 
-  if ( access_can_view_page ( 'year.php' ) ) {
+  if ( $STAY_IN_VIEW == 'Y' && ! empty ( $custom_view ) ) {
+    $yearUrl = $SCRIPT;
+  } else if ( access_can_view_page ( 'year.php' ) ) {
     $yearUrl = 'year.php';
     $urlArgs = '';
   } else {
@@ -436,6 +451,8 @@ function print_menu_dates ( $menu = false ) {
    . ( $menu == true ? 'menu' : 'form' ) . '">' . $urlArgs
    . ( ! empty ( $user ) && $user != $login ? '
             <input type="hidden" name="user" value="' . $user . '" />' : '' )
+   . ( ! empty ( $id ) && $include_id ? '
+            <input type="hidden" name="id" value="' . $id . '" />' : '' )
    . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
     ( ! $user || $user == $login ) ? '
             <input type="hidden" name="cat_id" value="'

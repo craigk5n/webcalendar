@@ -412,7 +412,7 @@ function user_delete_user ( $user ) {
 
 // Get a list of users and return info in an array.
 // returns: array of users
-function user_get_users () {
+function user_get_users ( $publicOnly=false ) {
   global $error, $ds, $ldap_base_dn, $ldap_user_attr, $ldap_user_filter;
   global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME;
 
@@ -428,7 +428,7 @@ function user_get_users () {
        'cal_email' => '',
        'cal_password' => '',
        'cal_fullname' => $PUBLIC_ACCESS_FULLNAME );
-
+  if ( $publicOnly ) return $ret;
   if ($r = connect_and_bind()) {
     $sr = @ldap_search ( $ds, $ldap_base_dn, $ldap_user_filter, $ldap_user_attr );
     if (!$sr) {

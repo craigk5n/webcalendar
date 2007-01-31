@@ -90,11 +90,11 @@ $fit_to_window = ( $is_day_view ? $fit_to_window_day : $fit_to_window_week );
 $show_time = ( $is_day_view ? $show_time_day : $show_time_week );
 
 $printerStr = generate_printer_friendly ( 'view_r.php' );
+set_today ( $date );
 
 $INC = array ( 'js/popups.php/true' );
 print_header ( $INC );
 
-set_today ( $date );
 
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 

@@ -221,7 +221,7 @@ function get_admins() {
 
 /// Get a list of users and return info in an array.
 // returns: array of users
-function user_get_users () {
+function user_get_users ( $publicOnly=false ) {
   global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $pn_user_table;
   global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
   global $c, $db_host, $db_login, $db_password, $db_database;
@@ -238,7 +238,7 @@ function user_get_users () {
        'cal_email' => '',
        'cal_password' => '',
        'cal_fullname' => $PUBLIC_ACCESS_FULLNAME );
-
+  if ( $publicOnly ) return $ret;
   // if postnuke is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 

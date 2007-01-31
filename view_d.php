@@ -29,6 +29,7 @@ $error = '';
 view_init ( $id );
 
 $printerStr = generate_printer_friendly ( 'view_d.php' );
+set_today ( $date );
 
 print_header ( array ( 'js/view_d.php/true' ) );
 
@@ -43,7 +44,6 @@ if ( count ( $participants ) == 0 ) {
   exit;
 }
 
-set_today ( $date );
 if ( ! $date )
   $date = $thisdate;
 
