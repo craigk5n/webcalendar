@@ -853,7 +853,6 @@ function export_ical ( $id = 'all', $attachment = false ) {
   //abort if no records to output
   if ( $count == 0 )
     return;
-do_debug ( print_r ( $entry_array ,true ) );
   // Always output something, even if no records come back
   // This prevents errors on the iCal client
   $ret = "BEGIN:VCALENDAR\r\n";
@@ -1837,17 +1836,16 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       fclose( $fd );
     }
   } else if ( $source == 'icalclient' ) {
-     do_debug ( "before fopen on stdin..." );
+    //do_debug ( "before fopen on stdin..." );
     $stdin = fopen ( 'php://input', 'rb' );
     // $stdin = fopen ("/dev/stdin", "r");
     // $stdin = fopen ("/dev/fd/0", "r");
-     do_debug ( "after fopen on stdin..." );
+    //do_debug ( "after fopen on stdin..." );
     // Read in contents of entire file first
     $data = '';
     $cnt = 0;
     while ( ! feof ( $stdin ) ) {
       $line = fgets ( $stdin, 1024 );
-do_debug ( $line );
       $cnt++;
       // do_debug ( "cnt = " . ( ++$cnt ) );
       $data .= $line;
@@ -1865,8 +1863,8 @@ do_debug ( $line );
     // do_debug ( "strlen(data)=" . strlen($data) );
     // Check for PHP stdin bug
     if ( $cnt > 5 && strlen ( $data ) < 10 ) {
-       do_debug ( "Read $cnt lines of data, but got no data :-(" );
-       do_debug ( "Informing user of PHP server bug" );
+       //do_debug ( "Read $cnt lines of data, but got no data :-(" );
+       //do_debug ( "Informing user of PHP server bug" );
       header ( 'Content-Type: text/plain' );
       echo 'Error: Your PHP server ' . phpversion ()
        . ' seems to have a bug reading stdin.' . "\n"
