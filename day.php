@@ -49,7 +49,7 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
     ? $user : $login, $now, $cat_id );
 
 if ( $DISPLAY_TASKS == 'Y' )
-  $smallTasks = display_small_tasks ( $cat_id );
+  $smallTasks = '<div id="minitask">' .display_small_tasks ( $cat_id ) . '</div>';
 
 $dayStr = print_day_at_a_glance ( $nowYmd, empty ( $user )
   ? $login : $user, $can_add );
@@ -63,7 +63,7 @@ if ( empty ( $friendly ) ) {
 $eventinfo = ( ! empty ( $eventinfo ) ? $eventinfo : '' );
 $trailerStr = print_trailer ();
 $HeadX = generate_refresh_meta ();
-print_header ( array ( 'js/popups.php/true' ), $HeadX );
+print_header ( array ( 'js/popups.php/true' ), $HeadX,'', false, false, false, false  );
 
 echo <<<EOT
     <table width="100%" cellpadding="1">

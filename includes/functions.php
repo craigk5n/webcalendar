@@ -214,8 +214,8 @@ function get_web_browser () {
  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-  //error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
-  //  3, 'd:/php/logs/debug.txt' );
+  error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
+    3, 'd:/php/logs/debug.txt' );
   //fwrite ( $fd, date ( 'Y-m-d H:i:s' ) .  "> $msg\n" );
   //fclose ( $fd );
   //  3, '/tmp/webcal-debug.log' );
@@ -806,7 +806,7 @@ function get_my_users ( $user='', $reason='invite') {
 function get_my_nonusers ( $user='', $add_public=false, $reason='invite') {
   global $login, $is_admin, $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS,
     $my_nonuser_array, $is_nonuser, $is_nonuser_admin, $USER_SORT_ORDER,
-	$PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $my_user_array;
+    $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $my_user_array;
 
   $this_user = ( ! empty ( $user ) ? $user : $login );
   // Return the global variable (cached)
@@ -1725,12 +1725,13 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
  *
  */
 function display_small_tasks ( $cat_id ) {
-  global $user, $login, $is_assistant, $eventinfo, $DATE_FORMAT_TASK, $caturl;
+  global $user, $login, $is_assistant, $eventinfo, 
+    $DATE_FORMAT_TASK, $caturl, $task_filter;
   static $key = 0;
   if ( ! empty ( $user ) && $user != $login  && ! $is_assistant ) {
     return false;
   }
- 
+  $SORT_TASKS = 'Y';
   $pri[1] = translate ( 'High' );
   $pri[2] = translate ( 'Medium' );
   $pri[3] = translate ( 'Low' );
@@ -1742,6 +1743,22 @@ function display_small_tasks ( $cat_id ) {
     $u_url = '';
     $task_user = $login;
   }
+  $task_cat = ( ! empty ( $cat_id ) ? $cat_id : -99 );
+  $ajax = array();
+  $dueSpacer = '&nbsp;';
+  if ( $SORT_TASKS == 'Y' ) {
+    for ( $i=0; $i<=3; $i++ ) {
+      $ajax[$i] = '<td class="sorter" onclick="sortTasks(' . 
+	    $i. ', '. $task_cat . ', this)" ' .
+	    '><img src="images/up.png" style="vertical-align:bottom" /></td>';
+	  $ajax[$i+4] = '<td  class="sorter" onclick="sortTasks(' . 
+	    ($i + 4 ). ', '. $task_cat . ', this)" ' .
+	    '><img src="images/down.png" style="vertical-align:top" /></td>';
+    }
+  } else {
+    $dueSpacer = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+    $ajax = array_pad ( $ajax, 8, '<td></td>' );  
+  }
   $titleStr = translate ( 'Task_Title' );
   $priorityStr = translate ( 'Priority' );
   $taskStr = translate ( 'Task Name' );
@@ -1751,16 +1768,22 @@ function display_small_tasks ( $cat_id ) {
   $dateFormatStr = $DATE_FORMAT_TASK;
   $completedStr = translate ( 'Completed' );
   $percentStr = translate ( 'Percent Complete' );
-  $filter = '';
+  $filter = ( ! empty ( $task_filter ) ? $task_filter : '' );
   $task_list = query_events ( $task_user, false, $filter, $cat_id, true  );
   $row_cnt = 1;
   $task_html= '<table class="minitask" cellspacing="0" cellpadding="2">' . "\n";
-  $task_html .= '<tr class="header"><th colspan="3" >' . 
-    translate ( 'TASKS' ) . '</th><th align="right">' .
+  $task_html .= '<tr class="header"><th colspan="6" >' . 
+    translate ( 'TASKS' ) . '</th><th align="right"  colspan="2">' .
     '<a href="edit_entry.php?' . $u_url . 'eType=task' . $caturl . '">' . 
     '<img src="images/new.gif" alt="+" class="new"/></a></th></tr>' . "\n";
-  $task_html .= '<tr class="header"><th>&nbsp;!</th><th>'. $titleStr . 
-    '</th><th>' . translate ('Due' ) . '</th><th>&nbsp;%&nbsp;</th></tr>' . "\n";
+  $task_html .= '<tr class="header">
+    <td rowspan="2">!&nbsp;</td>'. $ajax[0] . '
+    <td rowspan="2" width="20%">'. $titleStr . '&nbsp;</td>' . $ajax[1] .'
+    <td rowspan="2">' . translate ('Due' ) . $dueSpacer . '</td>' . $ajax[2] . '
+    <td rowspan="2">%</td>' .$ajax[3] . '
+</tr>' . "\n";
+  $task_html .= '<tr class="header">'. $ajax[4] . "\n" .
+    $ajax[5] . "\n" . $ajax[6] ."\n" . $ajax[7] . "\n</tr>\n";
   foreach ( $task_list as $E )  {  
     //check UAC
     $task_owner = $E->getLogin();
@@ -1789,24 +1812,25 @@ function display_small_tasks ( $cat_id ) {
       $E->getPercent() . '</a>';
     $task_html .= "<tr class=\"task\" id=\"$linkid\" style=\"background-color:"
        . rgb_luminance (  $GLOBALS['BGCOLOR'], $E->getPriority()) 
-       . "\"><td>$priority</td>\n"
-       .  "<td class=\"name\">&nbsp;$name</td>" .
-      "<td>$due_date</td><td class=\"pct\">$percent</td></tr>\n";
+       . "\">\n<td colspan=\"2\">$priority</td>\n"
+       .  "<td class=\"name\"  colspan=\"2\" width=\"50%\">&nbsp;$name</td>\n" .
+      "<td colspan=\"2\">$due_date</td>\n<td class=\"pct\" " .
+	  "colspan=\"2\">$percent</td>\n</tr>\n";
     $row_cnt++;
    //build special string to pass to popup
    // TODO move this logic into build_entry_popup() 
     $timeStr = $dueTimeStr . ':' 
       . display_time( '', 0, $E->getDueDateTimeTS () ) . '</dd><dd>'
       . $dueDateStr . ':' . date_to_str( $E->getDueDate(),'', false )
-      . '</dd></dt><dt>'. $priorityStr . ':</dt<dd>' . $E->getPriority() 
-      . '-' . $pri[ceil($E->getPriority()/3)] . '</dd><dt>' . $percentStr 
-      . ':<dt><dd>' . $E->getPercent() . '%';
+      . "</dd>\n<dt>". $priorityStr . ":</dt>\n<dd>" . $E->getPriority() 
+      . '-' . $pri[ceil($E->getPriority()/3)] . "</dd>\n<dt>" . $percentStr 
+      . ":</dt>\n<dd>" . $E->getPercent() . '%';
 
     $eventinfo .= build_entry_popup ( $popupid, $E->getLogin(), $E->getDescription(), 
       $timeStr, '', $E->getLocation(), $E->getName(), $cal_id ); 
   }
   for ($i=7; $i > $row_cnt; $i-- ) {
-    $task_html .= "<tr><td colspan=\"4\"  class=\"filler\">&nbsp;</td></tr>\n";        
+    $task_html .= '<tr><td colspan="8"  class="filler">&nbsp;</td></tr>' . "\n";        
   }
   $task_html .= "</table>\n";
   return $task_html;
@@ -2096,11 +2120,10 @@ function read_tasks ( $user, $duedate, $cat_id = ''  ) {
 
   $due_date = gmdate ('Ymd', $duedate );
   $due_time = gmdate ( 'His', $duedate );
-  $date_filter = " AND ( ( we.cal_due_date <= $due_date ) OR " .
+  $filter = " AND ( ( we.cal_due_date <= $due_date ) OR " .
     "( we.cal_due_date = $due_date AND " .
     "we.cal_due_time <= $due_time ) )";
-
-  return query_events ( $user, false, $date_filter, $cat_id, true  );
+  return query_events ( $user, false, $filter, $cat_id, true  );
 }
 
 /**
@@ -2285,8 +2308,9 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id ='', $is_ta
     $sql .= ') ';
   $sql .= $date_filter;
 
-  // now order the results by time, then name
-  $sql .= ' ORDER BY we.cal_time, we.cal_name';
+  // now order the results by time, then name if not tasls
+  if ( ! $is_task )
+    $sql .= ' ORDER BY we.cal_time, we.cal_name';
   $rows = dbi_get_cached_rows ( $sql, $query_params );
   if ( $rows ) {
     $i = 0;
@@ -3074,7 +3098,7 @@ function print_date_entries ( $date, $user, $ssi=false ) {
     $ret .= $userStr . $catStr;
     $ret .= "date=$date\">$day</a>";
     if ( ! empty ( $moons[$date] ) )
-      $ret .= "<img src=\"images/{$moons[$date]}moon.gif\" />";
+      $ret .= "<img src=\"images/{$moons[$date]}moon.gif\"  alt=\"\" />";
     $ret .= "<br />\n";
     $cnt++;
   }

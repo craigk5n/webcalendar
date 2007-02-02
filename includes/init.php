@@ -84,7 +84,7 @@ $WebCalendar->initializeSecondPhase();
  */
 function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $disableCustom = false, $disableStyle = false, $disableRSS = false,
-  $disableAJAX = true, $disableUTIL = false ) {
+  $disableAJAX = false, $disableUTIL = false ) {
   global $BGCOLOR, $browser, $CUSTOM_HEADER, $CUSTOM_SCRIPT, $charset,
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG,
@@ -138,10 +138,10 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
      . '/theme.js"></script>';
   }
 
-  $ret .= ( ! $disableUTIL ? '
-    <script type="text/javascript" src="includes/js/util.js"></script>'
-    : '' ) . ( ! $disableAJAX ? '
+  $ret .= ( ! $disableAJAX ? '
     <script type="text/javascript" src="includes/js/prototype.js"></script>'
+    : '' ) .( ! $disableUTIL ? '
+    <script type="text/javascript" src="includes/js/util.js"></script>'
     : '' );
   // Any other includes?
   if ( is_array ( $includes ) ) {
