@@ -9,6 +9,8 @@ if ( ! empty ( $dummy ) )
    if ( substr( $key, 0 , 6 ) == 'webcal' )
      unset( $_SESSION[$key] );
   }
+//php 4.1.0 may have issues with the above code
+unset $_SESSION['webcal_login'];
 
 require_once 'includes/classes/WebCalendar.class';
 
