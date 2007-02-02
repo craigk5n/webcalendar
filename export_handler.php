@@ -16,6 +16,7 @@
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
 
+$user = getPostValue ( 'user' );
 if ( empty ( $user ) || $user == $login )
   load_user_layers ();
 

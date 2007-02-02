@@ -1101,12 +1101,15 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
   $exportThisStr = translate ( 'Export this entry to' );
   $palmStr = translate ( 'Palm Pilot' );
   $selectStr = generate_export_select ();
+  $userStr = ( ! empty ( $user ) ? '<input type="hidden" name="user" value="' .
+    $user . '" />' : '' );
   echo <<<EOT
     <br />
     <form method="post" name="exportform" action="export_handler.php">
       <label for="exformat">{$exportThisStr}:&nbsp;</label>
       {$selectStr}
       <input type="hidden" name="id" value="{$id}" />
+          {$userStr}
       <input type="submit" value="{$exportStr}" />
     </form>
 EOT;
