@@ -40,7 +40,7 @@ $repeated_events = read_repeated_events (
 $events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
   ? $user : $login, $startdate, $enddate, $cat_id );
 
-if ( $DISPLAY_TASKS == 'Y' || $DISPLAY_TASKS_IN_GRID == 'Y' )
+if ( $DISPLAY_TASKS_IN_GRID == 'Y' )
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) &&
     $is_assistant )
@@ -80,7 +80,8 @@ $trailerStr = print_trailer ();
 
 $HeadX = generate_refresh_meta ();
 
-print_header ( array ( 'js/popups.php/true', 'js/visible.php' ), $HeadX );
+print_header ( array ( 'js/popups.php/true', 'js/visible.php' ), $HeadX,
+'', false, false, false, false );
 
 echo <<<EOT
     <table border="0" width="100%" cellpadding="1">
@@ -91,7 +92,7 @@ echo <<<EOT
           {$monthStr}
         </td>
         <td valign="top" align="center">
-          {$prevMonth2}{$nextMonth2}{$smallTasks}
+          {$prevMonth2}{$nextMonth2}<div id="minitask">{$smallTasks}</div>
         </td>
       </tr>
     </table>

@@ -195,3 +195,26 @@ document.getElementsBySelector = function(selector) {
     |   Attribute 
    Tag
 */
+
+function sortTasks( order, cat_id, ele ) {
+  ele.style.cursor = 'wait';
+  document.body.style.cursor = 'wait';
+  var cat = '';
+  if ( cat_id > -99 )
+    cat = '&cat_id=' + cat_id;
+  var url = 'ajax.php';
+  var params = 'page=minitask&name=' + order + cat;
+  var ajax = new Ajax.Request(url,
+    {method: 'post', 
+    parameters: params, 
+    onComplete: showResponse});
+}
+
+function showResponse(originalRequest) {
+  miniTask = document.getElementById('minitask');
+  if (originalRequest.responseText) {
+    text = originalRequest.responseText;
+    miniTask.innerHTML = text;
+  }
+  document.body.style.cursor = 'default';
+}

@@ -270,15 +270,15 @@ if ( $DISPLAY_TASKS == 'Y'  ) {
     $minical_tasks .= display_small_month ( $thismonth, $thisyear, true );
     $minical_tasks .= '</div>';
   }
-  $minical_tasks .= '<br />';  
+  $minical_tasks .= '<div id="minitask">';  
   $minical_tasks .= display_small_tasks ( $cat_id );
-  $minical_tasks .= '</div>';
+  $minical_tasks .= '</div></div>';
   $minical_tasks .= '</td>';
 }//end minical
 
 $HeadX = generate_refresh_meta ();
 $INC = array('js/popups.php/true');
-print_header($INC,$HeadX);
+print_header($INC,$HeadX,'', false, false, false, false );
 
 echo <<<EOT
   <table width="100%" cellpadding="1">
@@ -299,7 +299,7 @@ echo <<<EOT
           {$eventsStr}
         </table>
       </td>
-     {$minical_tasks}
+	  {$minical_tasks}
     </tr>
   </table> 
   {$eventinfo}

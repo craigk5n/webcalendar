@@ -27,6 +27,7 @@ $WebCalendar->setLanguage();
 
 $name = getPostValue ( 'name' );
 $page = getPostValue ( 'page' );
+$cat_id = getPostValue ( 'cat_id' );
 // We're processing edit_remotes Calendar ID field.
 if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_nonuser_cals
@@ -60,6 +61,15 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
       echo str_replace ( 'XXX', $name,
         translate ( 'Email address XXX already exists', true ) );
   }
+} elseif ( $page == 'minitask' ) {
+  $name = ( ! empty ( $name ) ? $name : 0 );
+  require_once 'includes/classes/Event.class';
+  require_once 'includes/classes/RptEvent.class';
+  include_once 'includes/gradient.php';
+  $column_array = array ( 'we.cal_priority', 'we.cal_name', 
+    'we.cal_due_date', 'weu.cal_percent' );
+  $task_filter = ' ORDER BY ' . $column_array[$name % 4] . 
+    ( $name > 3 ? ' ASC' : ' DESC' );
+  echo display_small_tasks ( $cat_id );
 }
-
 ?>

@@ -839,7 +839,8 @@ img.help {
   border: 1px solid #000;
   margin-left: 1px;
 }
-.minitask tr.header th {
+.minitask tr.header th,
+.minitask tr.header td {
   text-align: center;
   background: <?php echo $GLOBALS['CELLBG'];
 
@@ -847,6 +848,17 @@ img.help {
   font-size: 12px;
   padding: 0;
   border-bottom: 2px solid #000;
+}
+.minitask tr.header td {
+  text-align:right;
+  margin: 0;
+  border-bottom: 0px;
+}
+.sorter {
+  text-align: left !important;
+  cursor: pointer;
+  margin: 0;
+  border-bottom: 0px;
 }
 .minitask  td {
   color: <?php echo $GLOBALS['TEXTCOLOR'];
