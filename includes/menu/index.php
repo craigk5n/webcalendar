@@ -125,7 +125,7 @@ if ( ( access_can_access_function ( ACCESS_VIEW, $user ) &&
   $ALLOW_VIEW_OTHER != 'N' ) && $view_cnt > 0 ) {
   $views_link = array ();
   for ( $i = 0; $i < $view_cnt; $i++ ) {
-    $tmp['name'] = htmlspecialchars ( $views[$i]['cal_name'] );
+    $tmp['name'] = htmlspecialchars ( $views[$i]['cal_name'], ENT_QUOTES );
     $tmp['url'] = str_replace ( '&amp;', '&', $views[$i]['url'] )
      . ( ! empty ( $thisdate ) ? '&date=' . $thisdate : '' );
     $views_link[] = $tmp;
@@ -146,7 +146,7 @@ if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
-      $tmp['name'] = htmlspecialchars ( $row[0] );
+      $tmp['name'] = htmlspecialchars ( $row[0], ENT_QUOTES  );
       $tmp['url'] = 'report.php?report_id=' . $row[1] . $u_url;
       $reports_link[] = $tmp;
     }
