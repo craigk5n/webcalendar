@@ -1,13 +1,11 @@
 <?php
-/* $Id$
- *
- * Language translation functions.
+/* Language translation functions.
  *
  * The idea is very much stolen from the GNU translate C library.
  *
- * We load a translation file and store it in the global variable $translations.
+ * We load a translation file and store it in the global array $translations.
  * If a cache dir is enabled (in $settings[]), then we serialize $translations
- * and store it in a file in the cache dir.  The next call will unserialize the
+ * and store it as a file in the cache dir.  The next call will unserialize the
  * cached file rather than re-parse the file.
  *
  * Although there is a PHP gettext() function, I prefer to use this home-grown
@@ -31,16 +29,16 @@
 function unhtmlentities ( $string ) {
   global $charset;
 
-  // TODO Not sure what to do here re: UTF-8 encoding.
+  // TODO:  Not sure what to do here re: UTF-8 encoding.
 
-  // html_entity_decode available PHP 4 >= 4.3.0, PHP 5
+  // html_entity_decode available PHP 4 >= 4.3.0, PHP 5.
   if ( function_exists ( 'html_entity_decode' ) )
     return html_entity_decode ( $string, ENT_QUOTES );
-  else { // for php < 4.3
+  else { // For PHP < 4.3.
     // Replace numeric entities.
-    $string = preg_replace ( '~&#x([0-9a-f]+);~ei', 'chr(hexdec("\\1"))',
+    $string = preg_replace ( '~&#x([0-9a-f]+);~ei', 'chr ( hexdec ( "\\1" ) )',
       $string );
-    $string = preg_replace ( '~&#([0-9]+);~e', 'chr(\\1)', $string );
+    $string = preg_replace ( '~&#([0-9]+);~e', 'chr ( \\1 )', $string );
     // Replace literal entities.
     $trans_tbl = get_html_translation_table ( HTML_ENTITIES, ENT_QUOTES );
     $trans_tbl = array_flip ( $trans_tbl );
@@ -79,7 +77,7 @@ function reset_language ( $new_language ) {
  * It will be invoked by {@link translate ()} the first time it is called.
  */
 function load_translation_text () {
-  global $basedir, $lang_file, $settings, $translations, $translation_loaded;
+  global $basedir, $lang_file, $settings, $translation_loaded, $translations;
 
   if ( $translation_loaded == true ) // No need to run this twice.
     return;
@@ -93,6 +91,7 @@ function load_translation_text () {
   }
   if ( ! file_exists ( $lang_file ) )
     die_miserable_death ( 'Cannot find language file: ' . $lang_file );
+
   // Check for 'cachedir' in settings.  If found, then we will save
   // the parsed translation file there as a serialized array.
   $cached_file = $cachedir = '';
@@ -173,7 +172,7 @@ function load_translation_text () {
         fclose ( $fd );
         chmod ( $cached_file, 0666 );
       } else
-        // Could not write to cachedir
+        // Could not write to cachedir.
         die_miserable_death ( 'Error writing translation cache file: '
            . $cached_file );
     }
@@ -201,8 +200,7 @@ function get_browser_language ( $pref = false ) {
       ? 'English-US' : translate ( 'Browser Language Not Found' ) );
   else {
     $langs = explode ( ',', $HTTP_ACCEPT_LANGUAGE );
-    $langcnt = count ( $langs );
-    for ( $i = 0; $i < $langcnt; $i++ ) {
+    for ( $i = 0, $cnt = count ( $langs ); $i < $cnt; $i++ ) {
       $l = strtolower ( trim ( ereg_replace ( ';.*', '', $langs[$i] ) ) );
       $ret .= "\"$l\" ";
       if ( ! empty ( $browser_languages[$l] ) )
@@ -222,6 +220,7 @@ function get_browser_language ( $pref = false ) {
  * @param string $str    Text to translate
  * @param string $decode Do we want to envoke html_entity_decode?
  *                       We currently only use this with javascript alerts.
+ *
  * @return string The translated text, if available.  If no translation is
  *                avalailable, then the original untranslated text is returned.
  */
@@ -257,7 +256,7 @@ function etranslate ( $str, $decode = '' ) {
  *
  * This is useful for tooltips, which barf on HTML.
  *
- * <b>Note:</b>  {@link etooltip()} prints the result
+ * <b>Note:</b>  {@link etooltip ()} prints the result
  * rather than return the value.
  *
  * @param string $str Text to translate
@@ -273,7 +272,7 @@ function tooltip ( $str, $decode = '' ) {
  *
  * This is useful for tooltips, which barf on HTML.
  *
- * <b>Note:</b>  {@link tooltip()} returns the result
+ * <b>Note:</b>  {@link tooltip ()} returns the result
  * rather than print the value.
  *
  * @param string $str Text to translate and print
@@ -352,12 +351,14 @@ function define_languages () {
  */
 function languageToAbbrev ( $name ) {
   global $browser_languages;
+
   foreach ( $browser_languages as $abbrev => $langname ) {
     if ( $langname == $name )
       return $abbrev;
   }
   return false;
 }
+
 /*
 If the user sets "Browser-defined" as their language setting, then use the
 $HTTP_ACCEPT_LANGUAGE settings to determine the language.  The array below
@@ -419,8 +420,18 @@ $browser_languages = array (
   'zh-min-nan-tw' => 'Holo-Big5',
   'zh-tw' => 'Chinese-Big5', // Traditional Chinese
   );
-// General purpose translations that may be used elsewhere
-// as variables and not picked up by update_translation.pl
-// translate ( 'event' ) translate ( 'journal' ) translate ( 'task' )
+
+/*
+General purpose translations that may be used elsewhere
+as variables and not picked up by update_translation.pl
+
+Not everyone uses these symbols to represent numbers.
+TODO:  Translate numbers in the program itself.
+translate ('0') // zero
+translate ('1') translate ('2') translate ('3') translate ('4') translate ('5')
+translate ('6') translate ('7') translate ('8') translate ('9')
+
+translate ( 'event' ) translate ( 'journal' )
+*/
 
 ?>
