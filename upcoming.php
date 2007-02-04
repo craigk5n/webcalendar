@@ -407,38 +407,20 @@ if ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
 }
 
 
-//Determine if this script is being called directly, or via an include
+// Determine if this script is being called directly, or via an include.
 if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
   ! empty ( $_SERVER['PHP_SELF'] ) ) {
   $PHP_SELF = $_SERVER['PHP_SELF'];
 }
-//If called directly print  header stuff
+// If called directly print  header stuff.
 if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) { 
-// Print header without custom header and no style sheet
-$lang = '';
-if ( ! empty ( $LANGUAGE ) )
-  $lang = languageToAbbrev ( $LANGUAGE );
-if ( empty ( $lang ) )
-  $lang = 'en';
-// Start the header & specify the charset
-// The charset is defined in the translation file
-$charset = translate ( 'charset' );
-if ( empty ( $charset ) || $charset == 'charset' )
-  $charset = 'iso-8859-1';
-
-echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">' . "\n" 
-  . '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' 
-  . $lang . '" lang="' . $lang . '">' . "\n" 
-  . '<head>' 
-  . '<meta http-equiv="Content-Type" content="text/html; charset=' 
-  . $charset . '" />'
-  . '<title>' . generate_application_name () . '</title>' . "\n";
+// Print header without custom header and no style sheet.
+echo send_doctype ( generate_application_name () );
 
 ?>
 <!-- This style sheet is here mostly to make it easier for others
      to customize the appearance of the page.
-     In the not to distant future, the admin UI will allow configuration
+     In the not too distant future, the admin UI will allow configuration
      of the stylesheet elements on this page.
 -->
 <style type="text/css">

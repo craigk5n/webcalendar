@@ -154,16 +154,9 @@ if ( $single_user == 'Y' ) {
     SetCookie ( 'webcalendar_session', '', 0, substr($cookie_path, 0, -1)  );
   }
 }
-$charset = ( ! empty ( $LANGUAGE )?translate( 'charset' ): 'iso-8859-1' );
-echo '<?xml version="1.0" encoding="' . $charset . '"?>' . "\n";
-?>
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" lang="<?php echo $lang; ?>">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
-<title><?php echo $appStr ?></title>
-<?php if ( ! $logout ) { ?>
+echo send_doctype ( $appStr );
+
+if ( ! $logout ) { ?>
 <script type="text/javascript">
 // error check login/password
 function valid_form ( form ) {
