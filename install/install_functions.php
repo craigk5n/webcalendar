@@ -278,12 +278,12 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
   if ( ! dbi_execute ( 'DELETE FROM webcal_config
     WHERE cal_setting = \'WEBCAL_TZ_CONVERSION\'' ) )
     return str_replace ( 'XXX', dbi_error (),
-      translate ( 'Database error XXX' ) );
+      translate ( 'Database error XXX.' ) );
 
   if ( ! dbi_execute ( 'INSERT INTO webcal_config ( cal_setting, cal_value )
     VALUES ( \'WEBCAL_TZ_CONVERSION\', \'Y\' )' ) )
     return str_replace ( 'XXX', dbi_error (),
-      translate ( 'Database error XXX' ) );
+      translate ( 'Database error XXX.' ) );
 
   return $error;
 }
