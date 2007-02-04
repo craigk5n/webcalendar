@@ -108,26 +108,9 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   if ( ! empty ( $friendly ) || $disableCustom )
     $MENU_ENABLED = 'N';
 
-  if ( ! empty ( $LANGUAGE ) )
-    $lang = languageToAbbrev ( $LANGUAGE );
-
-  if ( empty ( $lang ) )
-    $lang = 'en';
-  // Start the header & specify the charset defined in the translation file.
-  $charset = translate ( 'charset' );
-  if ( empty ( $charset ) || $charset == 'charset' )
-    $charset = 'iso-8859-1';
-
   $appStr = generate_application_name ( true );
 
-  $ret .= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="'
-   . $lang . '">
-  <head>
-    <title>' . $appStr . '</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=' . $charset
-   . '" />';
+  $ret .= send_doctype ( $appStr );
   // Includes needed for the top menu
   if ( $MENU_ENABLED == 'Y' ) {
     $MENU_THEME = ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none'

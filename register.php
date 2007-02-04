@@ -193,15 +193,8 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
  }
 }
 
-$charset = ( ! empty ( $LANGUAGE )?translate( 'charset' ): 'iso-8859-1' );
-echo "<?xml version=\"1.0\" encoding=\"$charset\"?>" . "\n";
+echo send_doctype ( $appStr );
 ?>
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $lang; ?>" lang="<?php echo $lang; ?>">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset; ?>" />
-<title><?php echo $appStr ?></title>
 <script type="text/javascript" src="includes/js/prototype.js"></script>
 <script type="text/javascript">
 var validform = false;

@@ -73,14 +73,11 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
 
 $errorStr = translate ( 'Error' );
 $nouser = translate ( 'No user specified' );
-// Make sure they specified a username
+// Make sure they specified a username.
 if ( empty ( $user ) ) {
+  echo send_doctype ( $errorStr );
   echo <<<EOT
-<?xml version="1.0" encoding="utf8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head><title>{$errorStr}</title></head>
+  </head>
   <body>
     <h2>{$errorStr}</h2>
     {$nouser}.
