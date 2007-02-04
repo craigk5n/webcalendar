@@ -777,7 +777,7 @@ Edit Custom Trailer: &Auml;ndern der benutzerdefinierten FU&szlig;ZEILE
 ########################################
 # Page: access.php
 #
-Database error XXX: Datenbankfehler XXX
+Database error XXX.: Datenbankfehler XXX
 DEFAULT CONFIGURATION: GRUNDKONFIGURATION
 Admin: Administration
 Go: Zeigen

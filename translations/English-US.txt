@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 01-30-2007
+# Translation last updated on 02-04-2007
 
 
 ################################################################################
@@ -73,7 +73,7 @@ OK: OK
 #
 Save: Save
 Database error: Database error
-Database error XXX: Database error: XXX.
+Database error XXX.: Database error: XXX.
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Public Access: Public Access
 Admin: Admin
@@ -164,8 +164,6 @@ Allow user to override header/trailer: Allow user to override header/trailer
 Date and Time: Date and Time
 tz-help: Specifies how many hours to adjust the time from server time to local time.
 Server Timezone Selection: Server Timezone Selection
-Your current GMT offset is: Your current GMT offset is
-hours: hours
 display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
 Display Common Use Date/Times as GMT: Display Common Use Date/Times as GMT
 date-format-help: Specifies the preferred date format.
@@ -587,6 +585,7 @@ All day event: All day event
 Timezone Offset: Timezone Offset
 time-help: Specifies the time of the event. <ul><li>"Timed event" (for an event that is scheduled for a specific time on that day)</li><li>"Untimed event" (for an event this does not have a time (like a holiday)</li><li>"All day event" (for an event that takes all day (like being out of the office)</li></ul>
 duration-help: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
+hours: hours
 minutes: minutes
 end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
@@ -1280,6 +1279,9 @@ Invalid function id: Invalid function id
 #
 Fatal Error: Fatal Error
 Troubleshooting Help: Troubleshooting Help
+Could not find settings.php file...: Could not find "settings.php" file.<br />Please copy "settings.php.orig" to "settings.php" and edit for your site.
+Could not find XXX defined in...: Could not find "$s" defined in your "settings.php" file.
+You must define XXX in: You must define "XXX" in the "settings.php" file.
 
 ########################################
 # Page: includes/date_formats.php
@@ -1368,6 +1370,7 @@ Add N hours to: Add N hours to
 Subtract N hours from: Subtract N hours from
 same as: same as
 server time: server time
+Your current GMT offset is: Your current GMT offset is
 Changes successfully saved: Changes successfully saved
 The following error occurred: The following error occurred
 You are not authorized: You are not authorized.

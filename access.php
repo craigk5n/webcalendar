@@ -46,7 +46,7 @@ if ( getPostValue ( 'auser' ) != '' &&
       cal_permissions ) VALUES ( ?, ? )', array ( $auser, $perm ) ) )
     // translate ( 'Database error' )
     die_miserable_death ( str_replace ( 'XXX', dbi_error (),
-        translate ( 'Database error XXX' ) ) );
+        translate ( 'Database error XXX.' ) ) );
   $saved = true;
 }
 
@@ -95,7 +95,7 @@ if ( getPostValue ( 'otheruser' ) != '' &&
           ( strlen ( $email ) ? $email : 'N' ),
           ( strlen ( $time ) ? $time : 'N' ) ) ) ) {
       die_miserable_death ( str_replace ( 'XXX', dbi_error (),
-          translate ( 'Database error XXX' ) ) );
+          translate ( 'Database error XXX.' ) ) );
     }
     $saved = true;
   }
