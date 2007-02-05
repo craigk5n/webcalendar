@@ -314,7 +314,8 @@ function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
     $ret .= '<br />';
     $ret .= $user_fullname;
   }
-  if ( $is_nonuser_admin )
+  if ( $is_nonuser_admin ||
+  ( $is_admin && ! empty ( $user ) && $user == '__public__' ) )
     $ret .= '<br />-- ' . translate ( 'Admin mode' ) . ' --';
   if ( $is_assistant )
     $ret .= '<br />-- ' . translate ( 'Assistant mode' ) . ' --';
