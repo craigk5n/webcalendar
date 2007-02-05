@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 02-04-2007
+# Translation last updated on 02-05-2007
 
 
 ################################################################################
@@ -1310,7 +1310,6 @@ delete: delete
 ########################################
 # Page: includes/functions.php
 #
-Unauthorized: Unauthorized
 This event is private: This event is private
 Conf.: Conf.
 WK: WK
@@ -1406,6 +1405,8 @@ Attachment: Attachment
 Delete User: Delete User
 Event: Event
 Action: Action
+Error Type not set for activity log!: Error: Type not set for activity log!
+Unauthorized: Unauthorized
 
 ########################################
 # Page: includes/getPredefinedVariables.php

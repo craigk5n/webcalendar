@@ -44,719 +44,6 @@ function do_debug ( $msg ) {
   // 2, 'sockieman:2000' );
 }
 
-/* Generates a cookie that saves the last calendar view.
- *
- * Cookie is based on the current <var>$REQUEST_URI</var>.
- *
- * We save this cookie so we can return to this same page after a user
- * edits/deletes/etc an event.
- *
- * @param bool $view  Determine if we are using a view_x.php file
- *
- * @global string Request string
- */
-function remember_this_view ( $view = false ) {
-  global $REQUEST_URI;
-  if ( empty ( $REQUEST_URI ) )
-    $REQUEST_URI = $_SERVER['REQUEST_URI'];
-  // .
-  // if called from init, only process script named "view_x.php
-  if ( $view == true && ! strstr ( $REQUEST_URI, 'view_' ) )
-    return;
-  // .
-  // do not use anything with friendly in the URI
-  if ( strstr ( $REQUEST_URI, 'friendly=' ) )
-    return;
-
-  SetCookie ( 'webcalendar_last_view', $REQUEST_URI );
-}
-
-/* Gets the last page stored using {@link remember_this_view ()}.
- *
- * @return string The URL of the last view or an empty string if it cannot be
- *                determined.
- *
- * @global array Cookies
- */
-function get_last_view () {
-  $val = '';
-
-  if ( isset ( $_COOKIE['webcalendar_last_view'] ) ) {
-    $val = $_COOKIE['webcalendar_last_view'];
-  }
-  $val = str_replace ( "&", "&amp;", $val );
-  SetCookie ( 'webcalendar_last_view', '', 0 );
-
-  return $val;
-}
-
-/* Sends HTTP headers that tell the browser not to cache this page.
- *
- * Different browser use different mechanisms for this, so a series of HTTP
- * header directives are sent.
- *
- * <b>Note:</b> This function needs to be called before any HTML output is sent
- * to the browser.
- */
-function send_no_cache_header () {
-  header ( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
-  header ( 'Last-Modified: ' . gmdate ( 'D, d M Y H:i:s' ) . ' GMT' );
-  header ( 'Cache-Control: no-store, no-cache, must-revalidate' );
-  header ( 'Cache-Control: post-check=0, pre-check=0', false );
-  header ( 'Pragma: no-cache' );
-}
-
-/* Loads the current user's preferences as global variables from the webcal_user_pref table.
- *
- * Also loads the list of views for this user (not really a preference, but
- * this is a convenient place to put this...)
- *
- * <b>Notes:</b>
- * - If <var>$ALLOW_COLOR_CUSTOMIZATION</var> is set to 'N', then we ignore any
- *   color preferences.
- * - Other default values will also be set if the user has not saved a
- *   preference and no global value has been set by the administrator in the
- *   system settings.
- */
-function load_user_preferences ( $guest = '' ) {
-  global $login, $browser, $views, $prefarray, $is_assistant,
-  $DATE_FORMAT_MY, $DATE_FORMAT, $DATE_FORMAT_MD, $DATE_FORMAT_TASK,
-  $LANGUAGE, $lang_file, $has_boss, $user, $is_nonuser_admin, $is_nonuser,
-  $ALLOW_COLOR_CUSTOMIZATION;
-
-  $lang_found = false;
-  $colors = array (
-    'BGCOLOR' => 1,
-    'CELLBG' => 1,
-    'H2COLOR' => 1,
-    'HASEVENTSBG' => 1,
-    'MYEVENTS' => 1,
-    'OTHERMONTHBG' => 1,
-    'POPUP_BG' => 1,
-    'POPUP_FG' => 1,
-    'TABLEBG' => 1,
-    'TEXTCOLOR' => 1,
-    'THBG' => 1,
-    'THFG' => 1,
-    'TODAYCELLBG' => 1,
-    'WEEKENDBG' => 1,
-    'WEEKNUMBER' => 1,
-    );
-  // .
-  // allow __public__ pref to be used if logging in or user not validated
-  $tmp_login = ( ! empty ( $guest ) ?
-    ( $guest == 'guest' ? '__public__' : $guest ) : $login );
-
-  $browser = get_web_browser ();
-  $browser_lang = get_browser_language ();
-  $prefarray = array ();
-
-  $rows = dbi_get_cached_rows ( 'SELECT cal_setting, cal_value FROM webcal_user_pref
-      WHERE cal_login = ?', array ( $tmp_login ) );
-  if ( $rows ) {
-    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-      $row = $rows[$i];
-      $setting = $row[0];
-      $value = $row[1];
-      if ( $setting == 'LANGUAGE' )
-        $lang_found = true;
-      if ( $ALLOW_COLOR_CUSTOMIZATION == 'N' ) {
-        if ( isset ( $colors[$setting] ) )
-          continue;
-      }
-      $sys_setting = 'sys_' . $setting;
-      // save system defaults
-      if ( ! empty ( $GLOBALS[$setting] ) )
-        $GLOBALS['sys_' . $setting] = $GLOBALS[$setting];
-      $GLOBALS[$setting] = $value;
-      $prefarray[$setting] = $value;
-    }
-  }
-  // .
-  // set users timezone
-  if ( isset ( $GLOBALS['TIMEZONE'] ) )
-    set_env ( 'TZ', $GLOBALS['TIMEZONE'] );
-  // .
-  // get views for this user and global views
-  // if NUC and not authorized by UAC, disallow global views
-  $getGlobal = ( $is_nonuser && ( ! access_is_enabled () ||
-      access_is_enabled () && ! access_can_access_function ( ACCESS_VIEW, $guest ) )
-       ? '' : ' OR cal_is_global = \'Y\' ' );
-  $rows = dbi_get_cached_rows ( 'SELECT cal_view_id, cal_name, cal_view_type,
-    cal_is_global, cal_owner
-    FROM webcal_view
-    WHERE cal_owner = ? ' . $getGlobal . 'ORDER BY cal_name',
-    array ( $tmp_login ) );
-  if ( $rows ) {
-    $views = array ();
-    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-      $row = $rows[$i];
-      if ( $row[2] == 'S' )
-        $url = "view_t.php?timeb=1&amp;id=$row[0]";
-      else if ( $row[2] == 'T' )
-        $url = "view_t.php?timeb=0&amp;id=$row[0]";
-      else if ( $row[2] == 'E' )
-        $url = "view_r.php?id=$row[0]";
-      else
-        $url = 'view_' . strtolower ( $row[2] ) . ".php?id=$row[0]";
-      $v = array (
-        'cal_view_id' => $row[0],
-        'cal_name' => $row[1],
-        'cal_view_type' => $row[2],
-        'cal_is_global' => $row[3],
-        'cal_owner' => $row[4],
-        'url' => $url
-        );
-      $views[] = $v;
-    }
-  }
-  // .
-  // If user has not set a language preference or admin has not specified a
-  // language, then use their browser
-  // settings to figure it out, and save it in the database for future
-  // use (email reminders).
-  $lang = 'none';
-  if ( ! $lang_found && strlen ( $tmp_login ) && $tmp_login != '__public__' ) {
-    if ( $LANGUAGE == 'none' )
-      $lang = $browser_lang;
-
-    dbi_execute ( 'INSERT INTO webcal_user_pref ( cal_login, cal_setting, 
-     cal_value ) VALUES ( ?, ?, ? )', array ( $tmp_login, 'LANGUAGE', $lang ) );
-  }
-  reset_language ( ! empty ( $LANGUAGE ) && $LANGUAGE != 'none'
-   ? $LANGUAGE : $browser_lang );
-  if ( empty ( $DATE_FORMAT ) || $DATE_FORMAT == 'LANGUAGE_DEFINED' ) {
-    $DATE_FORMAT = translate ( '__month__ __dd__, __yyyy__' );
-  }
-  if ( empty ( $DATE_FORMAT_MY ) || $DATE_FORMAT_MY == 'LANGUAGE_DEFINED' ) {
-    $DATE_FORMAT_MY = translate ( '__month__ __yyyy__' );
-  }
-  if ( empty ( $DATE_FORMAT_MD ) || $DATE_FORMAT_MD == 'LANGUAGE_DEFINED' ) {
-    $DATE_FORMAT_MD = translate ( '__month__ __dd__' );
-  }
-  if ( empty ( $DATE_FORMAT_TASK ) || $DATE_FORMAT_TASK == 'LANGUAGE_DEFINED' ) {
-    $DATE_FORMAT_TASK = translate ( '__mm__/__dd__/__yyyy__' );
-  }
-
-  $is_assistant = ( empty ( $user )
-   ? false : user_is_assistant ( $tmp_login, $user ) );
-  $has_boss = user_has_boss ( $tmp_login );
-  $is_nonuser_admin = ( $user )
-   ? user_is_nonuser_admin ( $tmp_login, $user ) : false;
-  // if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
-}
-
-/* Gets the list of external users for an event from the
- *  webcal_entry_ext_user table in an HTML format.
- *
- * @param int $event_id   Event ID
- * @param int $use_mailto When set to 1, email address will contain an href
- *                        link with a mailto URL.
- *
- * @return string The list of external users for an event formated in HTML.
- */
-function event_get_external_users ( $event_id, $use_mailto = 0 ) {
-  $ret = '';
-
-  $rows = dbi_get_cached_rows ( 'SELECT cal_fullname, cal_email
-    FROM webcal_entry_ext_user WHERE cal_id = ?
-    ORDER by cal_fullname', array ( $event_id ) );
-  if ( $rows ) {
-    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-      $row = $rows[$i];
-      if ( strlen ( $ret ) ) {
-        $ret .= "\n";
-      }
-      // Remove [\d] if duplicate name
-      $ret .= trim ( preg_replace ( '/\[[\d]]/', '', $row[0] ) );
-      if ( strlen ( $row[1] ) ) {
-        $row_one = htmlentities ( " <$row[1]>" );
-        $ret .= ( $use_mailto ? " <a href=\"mailto:$row[1]\">$row_one</a>" : $row_one );
-      }
-    }
-  }
-  return $ret;
-}
-
-/* Adds something to the activity log for an event.
- *
- * The information will be saved to the webcal_entry_log table.
- *
- * @param int    $event_id Event ID
- * @param string $user     Username of user doing this
- * @param string $user_cal Username of user whose calendar is affected
- * @param string $type     Type of activity we are logging:
- *   - LOG_CREATE
- *   - LOG_APPROVE
- *   - LOG_REJECT
- *   - LOG_UPDATE
- *   - LOG_DELETE
- *   - LOG_CREATE_T
- *   - LOG_APPROVE_T
- *   - LOG_REJECT_T
- *   - LOG_UPDATE_T
- *   - LOG_DELETE_T
- *   - LOG_NOTIFICATION
- *   - LOG_REMINDER
- *   - LOG_ATTACHMENT
- *   - LOG_COMMENT
- *   - LOG_NEWUSER_FULL
- *   - LOG_NEWUSEREMAIL
- *   - LOG_LOGIN_FAILURE
- *   - LOG_USER_ADD
- *   - LOG_USER_UPDATE
- *   - LOG_USER_DELETE
- * @param string $text     Text comment to add with activity log entry
- */
-function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
-  $next_id = 1;
-
-  if ( empty ( $type ) ) {
-    echo 'Error: type not set for activity log!';
-    // but don't exit since we may be in mid-transaction
-    return;
-  }
-
-  $res = dbi_execute ( 'SELECT MAX(cal_log_id) FROM webcal_entry_log' );
-  if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) ) {
-      $next_id = $row[0] + 1;
-    }
-    dbi_free_result ( $res );
-  }
-  $date = gmdate ( 'Ymd' );
-  $time = gmdate ( 'Gis' );
-  $sql_text = empty ( $text ) ? null : $text;
-  $sql_user_cal = empty ( $user_cal ) ? null : $user_cal;
-  $sql = 'INSERT INTO webcal_entry_log ( ' . 'cal_log_id, cal_entry_id, cal_login, cal_user_cal, cal_type, ' . 'cal_date, cal_time, cal_text ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )';
-  if ( ! dbi_execute ( $sql, array ( $next_id, $event_id, $user,
-        $sql_user_cal, $type, $date, $time, $sql_text ) ) ) {
-    db_error ( true, $sql );
-  }
-}
-
-/* Gets a list of users.
- *
- * If groups are enabled, this will restrict the list of users to only those
- * users who are in the same group(s) as the user (unless the user is an admin
- * user).  We allow admin users to see all users because they can also edit
- * someone else's events (so they may need access to users who are not in the
- * same groups that they are in).
- *
- * If user access control is enabled, then we also check to see if this
- * user is allowed to view each user's calendar.  If not, then that user
- * is not included in the list.
- *
- * @return array Array of users, where each element in the array is an array
- *               with the following keys:
- *    - cal_login
- *    - cal_lastname
- *    - cal_firstname
- *    - cal_is_admin
- *    - cal_email
- *    - cal_password
- *    - cal_fullname
- */
-function get_my_users ( $user = '', $reason = 'invite' ) {
-  global $login, $is_admin, $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
-  global $my_user_array, $is_nonuser, $is_nonuser_admin, $USER_SORT_ORDER;
-
-  $this_user = ( ! empty ( $user ) ? $user : $login );
-  // Return the global variable (cached)
-  if ( ! empty ( $my_user_array[$this_user][$reason] ) && is_array ( $my_user_array ) )
-    return $my_user_array[$this_user][$reason];
-
-  if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! $is_admin ) {
-    // get groups that current user is in
-    $rows = dbi_get_cached_rows ( 'SELECT cal_group_id FROM webcal_group_user
-      WHERE cal_login = ?', array ( $this_user ) );
-    $groups = array ();
-    if ( $rows ) {
-      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-        $row = $rows[$i];
-        $groups[] = $row[0];
-      }
-    }
-    $groupcnt = count ( $groups );
-    // Nonuser (public) can only see themself (unless access control is on)
-    if ( $is_nonuser && ! access_is_enabled () ) {
-      return array ( $this_user );
-    }
-    $u = user_get_users ();
-    if ( $is_nonuser_admin ) {
-      $nonusers = get_my_nonusers ();
-      $u = array_merge ( $nonusers, $u );
-    }
-    $u_byname = array ();
-    for ( $i = 0, $cnt = count ( $u ); $i < $cnt; $i++ ) {
-      $name = $u[$i]['cal_login'];
-      $u_byname[$name] = $u[$i];
-    }
-    $ret = array ();
-    if ( $groupcnt == 0 ) {
-      // Eek.  User is in no groups... Return only themselves
-      if ( isset ( $u_byname[$this_user] ) ) $ret[] = $u_byname[$this_user];
-      $my_user_array[$this_user][$reason] = $ret;
-      return $ret;
-    }
-    // get list of users in the same groups as current user
-    $sql = 'SELECT DISTINCT(webcal_group_user.cal_login), cal_lastname, cal_firstname
-      FROM webcal_group_user
-      LEFT JOIN webcal_user ON webcal_group_user.cal_login = webcal_user.cal_login
-      WHERE cal_group_id ';
-    if ( $groupcnt == 1 )
-      $sql .= '= ?';
-    else {
-      // build count ( $groups ) placeholders separated with commas
-      $placeholders = '';
-      for ( $p_i = 0; $p_i < $groupcnt; $p_i++ ) {
-        $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
-      }
-      $sql .= "IN ( $placeholders )";
-    }
-
-    $order = ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER," : '' );
-    $sql .= " ORDER BY $order webcal_group_user.cal_login";
-
-    $rows = dbi_get_cached_rows ( $sql, $groups );
-    if ( $rows ) {
-      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-        $row = $rows[$i];
-        if ( isset ( $u_byname[$row[0]] ) ) $ret[] = $u_byname[$row[0]];
-      }
-    }
-  } else {
-    // groups not enabled... return all users
-    $ret = user_get_users ();
-  }
-  // .
-  // If user access control enabled, remove any users that this user
-  // does not have required access.
-  if ( access_is_enabled () ) {
-    $newlist = array ();
-    for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
-      $can_list = access_user_calendar ( $reason, $ret[$i]['cal_login'], $this_user );
-      if ( $can_list == 'Y' || $can_list > 0 ) {
-        $newlist[] = $ret[$i];
-      }
-    }
-    $ret = $newlist;
-  }
-  $my_user_array[$this_user][$reason] = $ret;
-  return $ret;
-}
-
-/* Gets a list of nonusers.
- *
- * If groups are enabled, this will restrict the list of nonusers to only those
- * that are in the same group(s) as the user (unless the user is an admin
- * user) or the nonuser is a public calendar.
- * We allow admin users to see all users because they can also edit
- * someone else's events (so they may need access to users who are not in the
- * same groups that they are in).
- *
- * If user access control is enabled, then we also check to see if this
- * user is allowed to view each nonuser's calendar.  If not, then that nonuser
- * is not included in the list.
- *
- * @return array Array of nonusers, where each element in the array is an array
- *               with the following keys:
- *    - cal_login
- *    - cal_lastname
- *    - cal_firstname
- *    - cal_is_public
- */
-function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' ) {
-  global $login, $is_admin, $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS,
-  $my_nonuser_array, $is_nonuser, $is_nonuser_admin, $USER_SORT_ORDER,
-  $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $my_user_array;
-
-  $this_user = ( ! empty ( $user ) ? $user : $login );
-  // Return the global variable (cached)
-  if ( ! empty ( $my_nonuser_array[$this_user . $add_public] ) &&
-      is_array ( $my_nonuser_array ) )
-    return $my_nonuser_array[$this_user . $add_public];
-
-  $u = get_nonuser_cals ();
-  if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! $is_admin ) {
-    // get groups that current user is in
-    $rows = dbi_get_cached_rows ( 'SELECT cal_group_id FROM webcal_group_user
-      WHERE cal_login = ?', array ( $this_user ) );
-    $groups = array ();
-    if ( $rows ) {
-      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-        $row = $rows[$i];
-        $groups[] = $row[0];
-      }
-    }
-    $groupcnt = count ( $groups );
-    // Nonuser (public) can only see themself (unless access control is on)
-    if ( $is_nonuser && ! access_is_enabled () ) {
-      return array ( $this_user );
-    }
-    $u_byname = array ();
-    for ( $i = 0, $cnt = count ( $u ); $i < $cnt; $i++ ) {
-      $name = $u[$i]['cal_login'];
-      $u_byname[$name] = $u[$i];
-    }
-    $ret = array ();
-    if ( $groupcnt == 0 ) {
-      // Eek.  User is in no groups... Return only themselves
-      if ( isset ( $u_byname[$this_user] ) ) $ret[] = $u_byname[$this_user];
-      $my_nonuser_array[$this_user . $add_public] = $ret;
-      return $ret;
-    }
-    // get list of users in the same groups as current user
-    $public = ( $add_public ? "wnc.cal_is_public = 'Y'  OR " : '' );
-    $sql = 'SELECT DISTINCT(wnc.cal_login), cal_lastname,
-      cal_firstname, cal_is_public
-      FROM webcal_group_user wgu, webcal_nonuser_cals wnc
-      WHERE ' . $public . ' cal_admin = ? OR
-      ( wgu.cal_login = wnc.cal_login AND cal_group_id ';
-    if ( $groupcnt == 1 )
-      $sql .= '= ? )';
-    else {
-      // build count ( $groups ) placeholders separated with commas
-      $placeholders = '';
-      for ( $p_i = 0; $p_i < $groupcnt; $p_i++ ) {
-        $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
-      }
-      $sql .= "IN ( $placeholders ) )";
-    }
-
-    $order = ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER" : '' );
-    $sql .= ' ORDER BY ' . $order;
-    // .
-    // add $this_user to beginning of query params
-    array_unshift ( $groups, $this_user );
-    $rows = dbi_get_cached_rows ( $sql, $groups );
-    if ( $rows ) {
-      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-        $row = $rows[$i];
-        if ( isset ( $u_byname[$row[0]] ) ) $ret[] = $u_byname[$row[0]];
-      }
-    }
-  } else {
-    // groups not enabled... return all nonusers
-    $ret = $u;
-  }
-  // .
-  // We add Public Access if $add_public= true
-  // Admin already sees all users
-  if ( ! $is_admin && $add_public && $PUBLIC_ACCESS == 'Y' ) {
-    $pa = user_get_users ( true );
-    array_unshift ( $ret, $pa[0] );
-  }
-  // If user access control enabled, remove any nonusers that this user
-  // does not have required access.
-  if ( access_is_enabled () ) {
-    $newlist = array ();
-    for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
-      $can_list = access_user_calendar ( $reason, $ret[$i]['cal_login'], $this_user );
-      if ( $can_list == 'Y' || $can_list > 0 ) {
-        $newlist[] = $ret[$i];
-      }
-    }
-    $ret = $newlist;
-  }
-  $my_nonuser_array[$this_user . $add_public] = $ret;
-  return $ret;
-}
-
-/* Gets a list of nonuser calendars and return info in an array.
- *
- * @param string $user Login of admin of the nonuser calendars
- * @param bool $remote Return only remote calendar  records
- *
- * @return array Array of nonuser cals, where each is an array with the
- *               following fields:
- * - <var>cal_login</var>
- * - <var>cal_lastname</var>
- * - <var>cal_firstname</var>
- * - <var>cal_admin</var>
- * - <var>cal_fullname</var>
- * - <var>cal_is_public</var>
- */
-function get_nonuser_cals ( $user = '', $remote = false ) {
-  global $is_admin, $USER_SORT_ORDER;
-  $count = 0;
-  $ret = array ();
-  $sql = 'SELECT cal_login, cal_lastname, cal_firstname, ' . 'cal_admin, cal_is_public, cal_url FROM webcal_nonuser_cals ';
-  $query_params = array ();
-
-  if ( $remote == false ) {
-    $sql .= 'WHERE cal_url IS NULL ';
-  } else {
-    $sql .= 'WHERE cal_url IS NOT NULL ';
-  }
-
-  if ( $user != '' ) {
-    $sql .= 'AND  cal_admin = ? ';
-    $query_params[] = $user;
-  }
-
-  $order = ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER," : '' );
-  $sql .= " ORDER BY $order cal_login";
-
-  $rows = dbi_get_cached_rows ( $sql, $query_params );
-  if ( $rows ) {
-    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-      $row = $rows[$i];
-      if ( strlen ( $row[1] ) || strlen ( $row[2] ) )
-        $fullname = "$row[2] $row[1]";
-      else
-        $fullname = $row[0];
-      $ret[$count++] = array ( 'cal_login' => $row[0],
-        'cal_lastname' => $row[1],
-        'cal_firstname' => $row[2],
-        'cal_admin' => $row[3],
-        'cal_is_public' => $row[4],
-        'cal_url' => $row[5],
-        'cal_fullname' => $fullname
-        );
-    }
-  }
-  // If user access control enabled, remove any users that this user
-  // does not have 'view' access to.
-  if ( access_is_enabled () && ! $is_admin ) {
-    $newlist = array ();
-    for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
-      if ( access_user_calendar ( 'view', $ret[$i]['cal_login'] ) )
-        $newlist[] = $ret[$i];
-    }
-    $ret = $newlist;
-  }
-  return $ret;
-}
-
-/* Gets a preference setting for the specified user.
- *
- * If no value is found in the database, then the system default setting will
- * be returned.
- *
- * @param string $user    User login we are getting preference for
- * @param string $setting Name of the setting
- *
- * @return string The value found in the webcal_user_pref table for the
- *                specified setting or the sytem default if no user settings
- *                was found.
- */
-function get_pref_setting ( $user, $setting ) {
-  $ret = '';
-  // set default
-  if ( ! isset ( $GLOBALS['sys_' . $setting] ) ) {
-    // this could happen if the current user has not saved any pref. yet
-    if ( ! empty ( $GLOBALS[$setting] ) )
-      $ret = $GLOBALS[$setting];
-  } else {
-    $ret = $GLOBALS['sys_' . $setting];
-  }
-
-  $sql = 'SELECT cal_value FROM webcal_user_pref
-    WHERE cal_login = ? AND cal_setting = ?';
-  $rows = dbi_get_cached_rows ( $sql, array ( $user, $setting ) );
-  if ( $rows ) {
-    $row = $rows[0];
-    if ( $row && ! empty ( $row[0] ) )
-      $ret = $row[0];
-  }
-  return $ret;
-}
-
-/* Loads current user's layer info into layer global variable.
- *
- * If the system setting <var>$ALLOW_VIEW_OTHER</var> is not set to 'Y', then
- * we ignore all layer functionality.  If <var>$force</var> is 0, we only load
- * layers if the current user preferences have layers turned on.
- *
- * @param string $user  Username of user to load layers for
- * @param int    $force If set to 1, then load layers for this user even if
- *                      user preferences have layers turned off.
- */
-function load_user_layers ( $user = '', $force = 0 ) {
-  global $login, $layers, $LAYERS_STATUS, $ALLOW_VIEW_OTHER;
-
-  if ( $user == '' )
-    $user = $login;
-
-  $layers = array ();
-
-  if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER != 'Y' )
-    return; // not allowed to view others' calendars, so cannot use layers
-  if ( $force || ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS != 'N' ) ) {
-    $rows = dbi_get_cached_rows ( 'SELECT cal_layerid, cal_layeruser, cal_color, cal_dups
-       FROM webcal_user_layers
-       WHERE cal_login = ? ORDER BY cal_layerid', array ( $user ) );
-    if ( $rows ) {
-      $count = 1;
-      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-        $row = $rows[$i];
-        $layers[$row[0]] = array ( 'cal_layerid' => $row[0],
-          'cal_layeruser' => $row[1],
-          'cal_color' => $row[2],
-          'cal_dups' => $row[3]
-          );
-        $count++;
-      }
-    }
-  } else {
-    // Not loading
-  }
-}
-
-/* Formats site_extras for display according to their type.
- *
- * This will return an array containing formatted extras indexed on their
- * unique names. Each formatted extra is another array containing two
- * indices: 'name' and 'data', which hold the name of the site_extra and the
- * formatted data, respectively. So, to access the name and data of an extra
- * uniquely name 'Reminder', you would access
- * <var>$array['Reminder']['name']</var> and
- * <var>$array['Reminder']['data']</var>
- *
- * @param array $extras Array of site_extras for an event as returned by
- *                      {@link get_site_extra_fields ()}
- * @param int    $filter CONSTANT 'view settings' values from site_extras.php
- *
- * @return array Array of formatted extras.
- */
-function format_site_extras ( $extras, $filter = '' ) {
-  global $site_extras;
-
-  if ( empty ( $site_extras ) || empty ( $extras ) ) return;
-
-  $ret = array ();
-  $extra_view = 1;
-  foreach ( $site_extras as $site_extra ) {
-    $data = '';
-    $extra_name = $site_extra[0];
-    $extra_desc = $site_extra[1];
-    $extra_type = $site_extra[2];
-    $extra_arg1 = $site_extra[3];
-    $extra_arg2 = $site_extra[4];
-    if ( ! empty ( $site_extra[5] ) && ! empty ( $filter ) );
-    $extra_view = $site_extra[5] &$filter;
-    if ( ! empty ( $extras[$extra_name] ) && ! empty ( $extras[$extra_name]['cal_name'] ) && ! empty ( $extra_view ) ) {
-      $name = translate ( $extra_desc );
-
-      if ( $extra_type == EXTRA_DATE ) {
-        if ( $extras[$extra_name]['cal_date'] > 0 ) {
-          $data = date_to_str ( $extras[$extra_name]['cal_date'] );
-        }
-      } else if ( $extra_type == EXTRA_TEXT || $extra_type == EXTRA_MULTILINETEXT ) {
-        $data = nl2br ( $extras[$extra_name]['cal_data'] );
-      } else if ( $extra_type == EXTRA_RADIO && ! empty ( $extra_arg1[$extras[$extra_name]['cal_data']] ) ) {
-        $data .= $extra_arg1[$extras[$extra_name]['cal_data']];
-      } else {
-        $data .= $extras[$extra_name]['cal_data'];
-      }
-
-      $ret[$extra_name] = array ( 'name' => $name, 'data' => $data );
-    }
-  }
-  return $ret;
-}
-
 /* Generates the HTML used in an event popup for the site_extras fields of an event.
  *
  * @param int $id Event ID
@@ -1598,16 +885,16 @@ function print_entry ( $event, $date ) {
   return $ret;
 }
 
-/**
- * Gets any site-specific fields for an entry that are stored in the database in the webcal_site_extras table.
+/* Gets any site-specific fields for an entry that are stored in the database in the webcal_site_extras table.
  *
  * @param int $eventid Event ID
- * @return array Array with the keys as follows:
- *        - <var>cal_name</var>
- *        - <var>cal_type</var>
- *        - <var>cal_date</var>
- *        - <var>cal_remind</var>
- *        - <var>cal_data</var>
+ *
+ * @return array  Array with the keys as follows:
+ *   - <var>cal_name</var>
+ *   - <var>cal_type</var>
+ *   - <var>cal_date</var>
+ *   - <var>cal_remind</var>
+ *   - <var>cal_data</var>
  */
 function get_site_extra_fields ( $eventid ) {
   $sql = 'SELECT cal_name, cal_type, cal_date, cal_remind, cal_data
@@ -1618,7 +905,8 @@ function get_site_extra_fields ( $eventid ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
       // save by cal_name (e.g. "URL")
-      $extras[$row[0]] = array ( 'cal_name' => $row[0],
+      $extras[$row[0]] = array ( // .
+        'cal_name' => $row[0],
         'cal_type' => $row[1],
         'cal_date' => $row[2],
         'cal_remind' => $row[3],
@@ -1910,14 +1198,14 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '', $is_t
       $primary_cat = ( ! empty ( $cat_keys[0] ) ? $cat_keys[0] : '' );
 
       if ( $want_repeated && ! empty ( $row[20] ) ) { // row[20] = cal_type
-        $item = &new RepeatingEvent ( $row[0], $row[1], $row[2], $row[3],
+        $item =& new RepeatingEvent ( $row[0], $row[1], $row[2], $row[3],
           $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10],
           $primary_cat, $row[11], $row[12], $row[13], $row[14], $row[15],
           $row[16], $row[17], $row[18], $row[19], $row[20], $row[21],
           $row[22], $row[23], $row[24], $row[25], $row[26], $row[27],
           $row[28], $row[29], $row[30], $row[31], $row[32], array (), array (), array () );
       } else {
-        $item = &new Event ( $row[0], $row[1], $row[2], $row[3], $row[4],
+        $item =& new Event ( $row[0], $row[1], $row[2], $row[3], $row[4],
           $row[5], $row[6], $row[7], $row[8], $row[9], $row[10],
           $primary_cat, $row[11], $row[12], $row[13], $row[14],
           $row[15], $row[16], $row[17], $row[18], $row[19] );
@@ -2136,14 +1424,16 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
           $doy = date ( 'z', $cdate ); //day of year
           $diy = date ( 'L', $cdate ) + 365; //days in year
           $diyReverse = $doy - $diy -1;
-          if ( ! in_array ( $doy, $byyearday ) && ! in_array ( $diyReverse, $byyearday ) )
+          if ( ! in_array ( $doy, $byyearday ) && !
+              in_array ( $diyReverse, $byyearday ) )
             $date_excluded = true;
         }
         if ( ! empty ( $bymonthday ) ) {
           $dom = date ( 'j', $cdate ); //day of month
           $dim = date ( 't', $cdate ); //days in month
           $dimReverse = $dom - $dim -1;
-          if ( ! in_array ( $dom, $bymonthday ) && ! in_array ( $dimReverse, $bymonthday ) )
+          if ( ! in_array ( $dom, $bymonthday ) && !
+              in_array ( $dimReverse, $bymonthday ) )
             $date_excluded = true;
         }
         if ( ! empty ( $byday ) ) {
@@ -2519,9 +1809,8 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   $repcnt = count ( $repeated_events );
   for ( $i = 0; $i < $repcnt; $i++ ) {
     if ( $repeated_events[$i]->getStatus () == 'A' || $get_unapproved ) {
-      if ( in_array ( $dateYmd, $repeated_events[$i]->getRepeatAllDates () ) ) {
+      if ( in_array ( $dateYmd, $repeated_events[$i]->getRepeatAllDates () ) )
         $ret[$n++] = $repeated_events[$i];
-      }
     }
   }
   return $ret;
@@ -3904,7 +3193,8 @@ function load_user_categories ( $ex_global = '' ) {
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
-        $categories[$row[0]] = array ( 'cat_name' => $row[1],
+        $categories[$row[0]] = array ( // .
+          'cat_name' => $row[1],
           'cat_owner' => $row[2],
           'cat_color' => ( ! empty ( $row[3] ) ? $row[3] : '#000000' )
           );
@@ -4039,7 +3329,8 @@ function user_get_boss_list ( $assistant ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
       user_load_variables ( $row[0], 'bosstemp_' );
-      $ret[$count++] = array ( 'cal_login' => $row[0],
+      $ret[$count++] = array ( // .
+        'cal_login' => $row[0],
         'cal_fullname' => $bosstemp_fullname
         );
     }
@@ -4388,7 +3679,8 @@ function isLeapYear ( $year = '' ) {
  */
 function clean_html ( $value ) {
   $value = htmlspecialchars ( $value, ENT_QUOTES );
-  $value = strtr ( $value, array ( '(' => '&#40;',
+  $value = strtr ( $value, array ( // .
+      '(' => '&#40;',
       ')' => '&#41;'
       ) );
   return $value;
@@ -4660,7 +3952,7 @@ function get_site_extras_names ( $filter = '' ) {
 
   foreach ( $site_extras as $extra ) {
     if ( $extra == 'FIELDSET' ) continue;
-    if ( ! empty ( $extra[5] ) && ! empty ( $filter ) && ! ( $extra[5] &$filter ) ) continue;
+    if ( ! empty ( $extra[5] ) && ! empty ( $filter ) && ! ( $extra[5] & $filter ) ) continue;
     $ret[] = $extra[0];
   }
 
@@ -4786,7 +4078,7 @@ function validate_domain () {
         $mask = ip2long ( $matches[3] );
         if ( $matches[2] == '255.255.255.255' )
           $black_long = $rmt_long;
-        if ( ( $black_long &$mask ) == ( $rmt_long &$mask ) ) {
+        if ( ( $black_long & $mask ) == ( $rmt_long & $mask ) ) {
           if ( $permission == 'deny' ) {
             $deny_true[] = true;
           } else if ( $permission == 'allow' ) {
@@ -5191,9 +4483,8 @@ function set_env ( $val, $setting ) {
   // safe_mode_allowed_env_vars for $val
   if ( ini_get ( 'safe_mode' ) ) {
     $allowed_vars = explode ( ',', ini_get ( 'safe_mode_allowed_env_vars' ) );
-    if ( in_array ( $val, $allowed_vars ) ) {
+    if ( in_array ( $val, $allowed_vars ) )
       $ret = true;
-    }
   } else {
     $ret = true;
   }
@@ -5254,11 +4545,10 @@ function update_status ( $status, $user, $id, $type = 'E' ) {
   }
 
   if ( ! dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
-    WHERE cal_login = ? AND cal_id = ?', array ( $status, $user, $id ) ) ) {
+    WHERE cal_login = ? AND cal_id = ?', array ( $status, $user, $id ) ) )
     $error = $error_msg . ': ' . dbi_error ();
-  } else {
+  else
     activity_log ( $id, $login, $user, $log_type, '' );
-  }
 }
 
 /* Generate html to add Printer Friendly Link
@@ -5721,6 +5011,61 @@ function get_users_event_ids ( $user ) {
  I'm moving them here as I go to keep track.
  */
 
+/* Adds something to the activity log for an event.
+ *
+ * The information will be saved to the webcal_entry_log table.
+ *
+ * @param int    $event_id  Event ID
+ * @param string $user      Username of user doing this
+ * @param string $user_cal  Username of user whose calendar is affected
+ * @param string $type      Type of activity we are logging:
+ *   - LOG_APPROVE
+ *   - LOG_APPROVE_T
+ *   - LOG_ATTACHMENT
+ *   - LOG_COMMENT
+ *   - LOG_CREATE
+ *   - LOG_CREATE_T
+ *   - LOG_DELETE
+ *   - LOG_DELETE_T
+ *   - LOG_LOGIN_FAILURE
+ *   - LOG_NEWUSER_FULL
+ *   - LOG_NEWUSEREMAIL
+ *   - LOG_NOTIFICATION
+ *   - LOG_REJECT
+ *   - LOG_REJECT_T
+ *   - LOG_REMINDER
+ *   - LOG_UPDATE
+ *   - LOG_UPDATE_T
+ *   - LOG_USER_ADD
+ *   - LOG_USER_DELETE
+ *   - LOG_USER_UPDATE
+ * @param string $text     Text comment to add with activity log entry
+ */
+function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
+  $next_id = 1;
+
+  if ( empty ( $type ) ) {
+    echo translate ( 'Error Type not set for activity log!' );
+    // But don't exit since we may be in mid-transaction.
+    return;
+  }
+
+  $res = dbi_execute ( 'SELECT MAX( cal_log_id ) FROM webcal_entry_log' );
+  if ( $res ) {
+    if ( $row = dbi_fetch_row ( $res ) )
+      $next_id = $row[0] + 1;
+
+    dbi_free_result ( $res );
+  }
+  $sql = 'INSERT INTO webcal_entry_log ( cal_log_id, cal_entry_id, cal_login,
+    cal_user_cal, cal_type, cal_date, cal_time, cal_text )
+    VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )';
+  if ( ! dbi_execute ( $sql, array ( $next_id, $event_id, $user,
+        ( empty ( $user_cal ) ? null : $user_cal ), $type, gmdate ( 'Ymd' ),
+          gmdate ( 'Gis' ), ( empty ( $text ) ? null : $text ) ) ) )
+    db_error ( true, $sql );
+}
+
 /* Sends a redirect to the specified page.
  * The database connection is closed and execution terminates in this function.
  *
@@ -5752,10 +5097,10 @@ function do_redirect ( $url ) {
       ( substr ( $SERVER_SOFTWARE, 0, 3 ) == 'WN/' ) )
     $meta = '
     <meta http-equiv="refresh" content="0; url=' . $url . '" />';
-  else 
+  else
     header ( 'Location: ' . $url );
-  
-echo send_doctype ( 'Redirect' ) . $meta . '
+
+  echo send_doctype ( 'Redirect' ) . $meta . '
   </head>
   <body>
     Redirecting to.. <a href="' . $url . '">here</a>.
@@ -5763,6 +5108,385 @@ echo send_doctype ( 'Redirect' ) . $meta . '
 </html>';
   dbi_close ( $c );
   exit;
+}
+
+/* Gets the list of external users for an event from the
+ * webcal_entry_ext_user table in HTML format.
+ *
+ * @param int $event_id    Event ID
+ * @param int $use_mailto  When set to 1, email address will contain an href
+ *                         link with a mailto URL.
+ *
+ * @return string  The list of external users for an event formated in HTML.
+ */
+function event_get_external_users ( $event_id, $use_mailto = 0 ) {
+  $ret = '';
+
+  $rows = dbi_get_cached_rows ( 'SELECT cal_fullname, cal_email
+    FROM webcal_entry_ext_user WHERE cal_id = ? ORDER by cal_fullname',
+    array ( $event_id ) );
+  if ( $rows ) {
+    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+      $row = $rows[$i];
+      // .
+      // Remove [\d] if duplicate name.
+      $ret .= trim ( preg_replace ( '/\[[\d]]/', '', $row[0] ) );
+      if ( strlen ( $row[1] ) ) {
+        $row_one = htmlentities ( " <$row[1]>" );
+        $ret .= "\n" . ( $use_mailto
+          ? ' <a href="mailto:' . "$row[1]\">$row_one</a>" : $row_one );
+      }
+    }
+  }
+  return $ret;
+}
+
+/* Formats site_extras for display according to their type.
+ *
+ * This will return an array containing formatted extras indexed on their
+ * unique names.  Each formatted extra is another array containing two
+ * indices: 'name' and 'data', which hold the name of the site_extra and the
+ * formatted data, respectively.  So, to access the name and data of an extra
+ * uniquely name 'Reminder', you would access
+ * <var>$array['Reminder']['name']</var> and
+ * <var>$array['Reminder']['data']</var>
+ *
+ * @param array $extras  Array of site_extras for an event as returned by
+ *                       {@link get_site_extra_fields ()}
+ * @param int   $filter  CONSTANT 'view settings' values from site_extras.php
+ *
+ * @return array  Array of formatted extras.
+ */
+function format_site_extras ( $extras, $filter = '' ) {
+  global $site_extras;
+
+  if ( empty ( $site_extras ) || empty ( $extras ) )
+    return;
+
+  $ret = array ();
+  $extra_view = 1;
+  foreach ( $site_extras as $site_extra ) {
+    $data = '';
+    $extra_name = $site_extra[0];
+    $extra_desc = $site_extra[1];
+    $extra_type = $site_extra[2];
+    $extra_arg1 = $site_extra[3];
+    $extra_arg2 = $site_extra[4];
+    if ( ! empty ( $site_extra[5] ) && ! empty ( $filter ) )
+      $extra_view = $site_extra[5] & $filter;
+    if ( ! empty ( $extras[$extra_name] ) && !
+        empty ( $extras[$extra_name]['cal_name'] ) && ! empty ( $extra_view ) ) {
+      $name = translate ( $extra_desc );
+
+      if ( $extra_type == EXTRA_DATE ) {
+        if ( $extras[$extra_name]['cal_date'] > 0 )
+          $data = date_to_str ( $extras[$extra_name]['cal_date'] );
+      } elseif ( $extra_type == EXTRA_TEXT || $extra_type == EXTRA_MULTILINETEXT )
+        $data = nl2br ( $extras[$extra_name]['cal_data'] );
+      elseif ( $extra_type == EXTRA_RADIO && !
+        empty ( $extra_arg1[$extras[$extra_name]['cal_data']] ) )
+        $data .= $extra_arg1[$extras[$extra_name]['cal_data']];
+      else
+        $data .= $extras[$extra_name]['cal_data'];
+
+      $ret[$extra_name] = array ( 'name' => $name, 'data' => $data );
+    }
+  }
+  return $ret;
+}
+
+/* Gets the last page stored using {@link remember_this_view ()}.
+ *
+ * @return string The URL of the last view or an empty string if it cannot be
+ *                determined.
+ *
+ * @global array  Cookies
+ */
+function get_last_view () {
+  $val = ( isset ( $_COOKIE['webcalendar_last_view'] )
+    ? str_replace ( '&', '&amp;', $_COOKIE['webcalendar_last_view'] ) : '' );
+
+  SetCookie ( 'webcalendar_last_view', '', 0 );
+
+  return $val;
+}
+
+/* Gets a list of nonusers.
+ *
+ * If groups are enabled, this will restrict the list of nonusers to only those
+ * that are in the same group(s) as the user (unless the user is an admin) or
+ * the nonuser is a public calendar.  We allow admin users to see all users
+ * because they can also edit someone else's events (so they may need access to
+ * users who are not in the same groups).
+ *
+ * If user access control is enabled, then we also check to see if this
+ * user is allowed to view each nonuser's calendar.  If not, then that nonuser
+ * is not included in the list.
+ *
+ * @return array  Array of nonusers, where each element in the array is an array
+ *                with the following keys:
+ *    - cal_login
+ *    - cal_lastname
+ *    - cal_firstname
+ *    - cal_is_public
+ */
+function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' ) {
+  global $GROUPS_ENABLED, $is_admin, $is_nonuser, $is_nonuser_admin, $login,
+  $my_nonuser_array, $my_user_array, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME,
+  $USER_SEES_ONLY_HIS_GROUPS, $USER_SORT_ORDER;
+
+  $this_user = ( ! empty ( $user ) ? $user : $login );
+  // Return the global variable (cached).
+  if ( ! empty ( $my_nonuser_array[$this_user . $add_public] ) &&
+      is_array ( $my_nonuser_array ) )
+    return $my_nonuser_array[$this_user . $add_public];
+
+  $u = get_nonuser_cals ();
+  if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! $is_admin ) {
+    // Get current user's groups.
+    $rows = dbi_get_cached_rows ( 'SELECT cal_group_id FROM webcal_group_user
+      WHERE cal_login = ?', array ( $this_user ) );
+    $groups = $ret = $u_byname = array ();
+    if ( $rows ) {
+      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+        $row = $rows[$i];
+        $groups[] = $row[0];
+      }
+    }
+    $groupcnt = count ( $groups );
+    // Nonuser (public) can only see themself (unless access control is on).
+    if ( $is_nonuser && ! access_is_enabled () )
+      return array ( $this_user );
+
+    for ( $i = 0, $cnt = count ( $u ); $i < $cnt; $i++ ) {
+      $u_byname[$u[$i]['cal_login']] = $u[$i];
+    }
+
+    if ( $groupcnt == 0 ) {
+      // Eek.  User is in no groups... Return only themselves.
+      if ( isset ( $u_byname[$this_user] ) )
+        $ret[] = $u_byname[$this_user];
+
+      $my_nonuser_array[$this_user . $add_public] = $ret;
+      return $ret;
+    }
+    // Get other members of current users' groups.
+    $sql = 'SELECT DISTINCT( wnc.cal_login ), cal_lastname, cal_firstname,
+      cal_is_public FROM webcal_group_user wgu, webcal_nonuser_cals wnc WHERE '
+     . ( $add_public ? 'wnc.cal_is_public = \'Y\'  OR ' : '' )
+     . ' cal_admin = ? OR ( wgu.cal_login = wnc.cal_login AND cal_group_id ';
+    if ( $groupcnt == 1 )
+      $sql .= '= ? )';
+    else {
+      // Build count ( $groups ) placeholders separated with commas.
+      $placeholders = '';
+      for ( $p_i = 0; $p_i < $groupcnt; $p_i++ ) {
+        $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
+      }
+      $sql .= "IN ( $placeholders ) )";
+    }
+    // .
+    // Add $this_user to beginning of query params.
+    array_unshift ( $groups, $this_user );
+    $rows = dbi_get_cached_rows ( $sql . ' ORDER BY '
+       . ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER" : '' ), $groups );
+    if ( $rows ) {
+      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+        $row = $rows[$i];
+        if ( isset ( $u_byname[$row[0]] ) )
+          $ret[] = $u_byname[$row[0]];
+      }
+    }
+  } else
+    // Groups not enabled... return all nonusers.
+    $ret = $u;
+  // .
+  // We add Public Access if $add_public= true.
+  // Admin already sees all users.
+  if ( ! $is_admin && $add_public && $PUBLIC_ACCESS == 'Y' ) {
+    $pa = user_get_users ( true );
+    array_unshift ( $ret, $pa[0] );
+  }
+  // If user access control enabled,
+  // remove any nonusers that this user does not have required access.
+  if ( access_is_enabled () ) {
+    $newlist = array ();
+    for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
+      $can_list = access_user_calendar ( $reason, $ret[$i]['cal_login'], $this_user );
+      if ( $can_list == 'Y' || $can_list > 0 )
+        $newlist[] = $ret[$i];
+    }
+    $ret = $newlist;
+  }
+  $my_nonuser_array[$this_user . $add_public] = $ret;
+  return $ret;
+}
+
+/* Gets a list of users.
+ *
+ * If groups are enabled, this will restrict the list to only those users who
+ * are in the same group(s) as this user (unless the user is an admin).  We allow
+ * admin users to see all users because they can also edit someone else's events
+ * (so they may need access to users who are not in the same groups).
+ *
+ * If user access control is enabled, then we also check to see if this
+ * user is allowed to view each user's calendar.  If not, then that user
+ * is not included in the list.
+ *
+ * @return array  Array of users, where each element in the array is an array
+ *                with the following keys:
+ *    - cal_login
+ *    - cal_lastname
+ *    - cal_firstname
+ *    - cal_is_admin
+ *    - cal_email
+ *    - cal_password
+ *    - cal_fullname
+ */
+function get_my_users ( $user = '', $reason = 'invite' ) {
+  global $GROUPS_ENABLED, $is_admin, $is_nonuser, $is_nonuser_admin, $login,
+  $my_user_array, $USER_SEES_ONLY_HIS_GROUPS, $USER_SORT_ORDER;
+
+  $this_user = ( ! empty ( $user ) ? $user : $login );
+  // Return the global variable (cached).
+  if ( ! empty ( $my_user_array[$this_user][$reason] ) &&
+      is_array ( $my_user_array ) )
+    return $my_user_array[$this_user][$reason];
+
+  if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' && !
+    $is_admin ) {
+    // Get groups with current user as member.
+    $rows = dbi_get_cached_rows ( 'SELECT cal_group_id FROM webcal_group_user
+      WHERE cal_login = ?', array ( $this_user ) );
+    $groups = $ret = $u_byname = array ();
+    if ( $rows ) {
+      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+        $row = $rows[$i];
+        $groups[] = $row[0];
+      }
+    }
+    $groupcnt = count ( $groups );
+    // Nonuser (public) can only see themself (unless access control is on).
+    if ( $is_nonuser && ! access_is_enabled () )
+      return array ( $this_user );
+
+    $u = user_get_users ();
+    if ( $is_nonuser_admin )
+      $u = array_merge ( get_my_nonusers (), $u );
+
+    for ( $i = 0, $cnt = count ( $u ); $i < $cnt; $i++ ) {
+      $u_byname[$u[$i]['cal_login']] = $u[$i];
+    }
+
+    if ( $groupcnt == 0 ) {
+      // Eek.  User is in no groups... Return only themselves.
+      if ( isset ( $u_byname[$this_user] ) )
+        $ret[] = $u_byname[$this_user];
+
+      $my_user_array[$this_user][$reason] = $ret;
+      return $ret;
+    }
+    // Get other members of users' groups.
+    $sql = 'SELECT DISTINCT(webcal_group_user.cal_login), cal_lastname,
+      cal_firstname FROM webcal_group_user LEFT JOIN webcal_user
+      ON webcal_group_user.cal_login = webcal_user.cal_login WHERE cal_group_id ';
+    if ( $groupcnt == 1 )
+      $sql .= '= ?';
+    else {
+      // Build count ( $groups ) placeholders separated with commas.
+      $placeholders = '';
+      for ( $p_i = 0; $p_i < $groupcnt; $p_i++ ) {
+        $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
+      }
+      $sql .= "IN ( $placeholders )";
+    }
+
+    $rows = dbi_get_cached_rows ( $sql . ' ORDER BY '
+       . ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER, " : '' )
+       . 'webcal_group_user.cal_login', $groups );
+    if ( $rows ) {
+      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+        $row = $rows[$i];
+        if ( isset ( $u_byname[$row[0]] ) )
+          $ret[] = $u_byname[$row[0]];
+      }
+    }
+  } else
+    // Groups not enabled... return all users.
+    $ret = user_get_users ();
+  // .
+  // If user access control enabled,
+  // remove any users that this user does not have required access.
+  if ( access_is_enabled () ) {
+    $newlist = array ();
+    for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
+      $can_list = access_user_calendar ( $reason, $ret[$i]['cal_login'], $this_user );
+      if ( $can_list == 'Y' || $can_list > 0 )
+        $newlist[] = $ret[$i];
+    }
+    $ret = $newlist;
+  }
+  $my_user_array[$this_user][$reason] = $ret;
+  return $ret;
+}
+
+/* Gets a list of nonuser calendars and return info in an array.
+ *
+ * @param string $user    Login of admin of the nonuser calendars
+ * @param bool   $remote  Return only remote calendar  records
+ *
+ * @return array  Array of nonuser cals, where each is an array with the
+ *                following fields:
+ * - <var>cal_login</var>
+ * - <var>cal_lastname</var>
+ * - <var>cal_firstname</var>
+ * - <var>cal_admin</var>
+ * - <var>cal_fullname</var>
+ * - <var>cal_is_public</var>
+ */
+function get_nonuser_cals ( $user = '', $remote = false ) {
+  global $is_admin, $USER_SORT_ORDER;
+  $count = 0;
+  $query_params = $ret = array ();
+  $sql = 'SELECT cal_login, cal_lastname, cal_firstname, cal_admin,
+    cal_is_public, cal_url FROM webcal_nonuser_cals WHERE cal_url IS '
+   . ( $remote == false ? '' : 'NOT ' ) . 'NULL ';
+
+  if ( $user != '' ) {
+    $sql .= 'AND  cal_admin = ? ';
+    $query_params[] = $user;
+  }
+
+  $rows = dbi_get_cached_rows ( $sql . 'ORDER BY '
+     . ( empty ( $USER_SORT_ORDER ) ? '' : "$USER_SORT_ORDER, " ) . 'cal_login',
+    $query_params );
+  if ( $rows ) {
+    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+      $row = $rows[$i];
+
+      $ret[$count++] = array ( // .
+        'cal_login' => $row[0],
+        'cal_lastname' => $row[1],
+        'cal_firstname' => $row[2],
+        'cal_admin' => $row[3],
+        'cal_is_public' => $row[4],
+        'cal_url' => $row[5],
+        'cal_fullname' => ( strlen ( $row[1] . $row[2] )
+          ? "$row[2] $row[1]" : $row[0] )
+        );
+    }
+  }
+  // If user access control enabled,
+  // remove any users that this user does not have 'view' access to.
+  if ( access_is_enabled () && ! $is_admin ) {
+    $newlist = array ();
+    for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
+      if ( access_user_calendar ( 'view', $ret[$i]['cal_login'] ) )
+        $newlist[] = $ret[$i];
+    }
+    $ret = $newlist;
+  }
+  return $ret;
 }
 
 /* Gets the list of active plugins.
@@ -5781,8 +5505,8 @@ function get_plugin_list ( $include_disabled = false ) {
   // First get list of available plugins.
   $res = dbi_execute ( 'SELECT cal_setting FROM webcal_config
     WHERE cal_setting LIKE \'%.plugin_status\' '
-   . ( ! $include_disabled ? 'AND cal_value = \'Y\' ' : '' )
-   . 'ORDER BY cal_setting' );
+     . ( ! $include_disabled ? 'AND cal_value = \'Y\' ' : '' )
+     . 'ORDER BY cal_setting' );
   $plugins = array ();
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -5800,9 +5524,41 @@ function get_plugin_list ( $include_disabled = false ) {
   return $plugins;
 }
 
+/* Gets a preference setting for the specified user.
+ *
+ * If no value is found in the database,
+ * then the system default setting will be returned.
+ *
+ * @param string $user     User login we are getting preference for
+ * @param string $setting  Name of the setting
+ *
+ * @return string  The value found in the webcal_user_pref table for the
+ *                 specified setting or the sytem default if no user settings
+ *                 was found.
+ */
+function get_pref_setting ( $user, $setting ) {
+  $ret = '';
+  // Set default.
+  if ( ! isset ( $GLOBALS['sys_' . $setting] ) ) {
+    // This could happen if the current user has not saved any prefs yet.
+    if ( ! empty ( $GLOBALS[$setting] ) )
+      $ret = $GLOBALS[$setting];
+  } else
+    $ret = $GLOBALS['sys_' . $setting];
+
+  $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_user_pref
+    WHERE cal_login = ? AND cal_setting = ?', array ( $user, $setting ) );
+  if ( $rows ) {
+    $row = $rows[0];
+    if ( $row && ! empty ( $row[0] ) )
+      $ret = $row[0];
+  }
+  return $ret;
+}
+
 /* Gets user's preferred view.
  *
- * The user's preferred view is stored in the $STARTVIEW global variable. 
+ * The user's preferred view is stored in the $STARTVIEW global variable.
  * This is loaded from the user preferences (or system settings
  * if there are no user prefererences.)
  *
@@ -5816,7 +5572,7 @@ function get_preferred_view ( $indate = '', $args = '' ) {
   // .
   // We want user's to set  their pref on first login.
   if ( empty ( $STARTVIEW ) )
-   return false;
+    return false;
 
   $url = $STARTVIEW;
   // We used to just store "month" in $STARTVIEW without the ".php".
@@ -5916,12 +5672,12 @@ function get_web_browser () {
  * @global array   Server variables
  */
 function load_global_settings () {
-  global $_SERVER, $APPLICATION_NAME, $FONTS, $HTTP_HOST, 
+  global $_SERVER, $APPLICATION_NAME, $FONTS, $HTTP_HOST,
   $LANGUAGE, $REQUEST_URI, $SERVER_PORT, $SERVER_URL;
   // Note:  When running from the command line (send_reminders.php),
-  //        these variables are (obviously) not set.
+  // these variables are (obviously) not set.
   // TODO:  This type of checking should be moved to a central location
-  //        like init.php.
+  // like init.php.
   if ( isset ( $_SERVER ) && is_array ( $_SERVER ) ) {
     if ( empty ( $HTTP_HOST ) && isset ( $_SERVER['HTTP_HOST'] ) )
       $HTTP_HOST = $_SERVER['HTTP_HOST'];
@@ -5960,7 +5716,7 @@ function load_global_settings () {
   // If app name not set.... default to "Title".  This gets translated later
   // since this function is typically called before translate.php is included.
   // Note:  We usually use translate ( $APPLICATION_NAME ) instead of
-  //        translate ( 'Title' ).
+  // translate ( 'Title' ).
   if ( empty ( $APPLICATION_NAME ) )
     $APPLICATION_NAME = 'Title';
 
@@ -5984,6 +5740,210 @@ function load_global_settings () {
      . 'Arial, Helvetica, sans-serif';
 }
 
+/* Loads current user's layer info into layer global variable.
+ *
+ * If the system setting <var>$ALLOW_VIEW_OTHER</var> is not set to 'Y', then
+ * we ignore all layer functionality.  If <var>$force</var> is 0, we only load
+ * layers if the current user preferences have layers turned on.
+ *
+ * @param string $user   Username of user to load layers for
+ * @param int    $force  If set to 1, then load layers for this user even if
+ *                       user preferences have layers turned off.
+ */
+function load_user_layers ( $user = '', $force = 0 ) {
+  global $ALLOW_VIEW_OTHER, $layers, $LAYERS_STATUS, $login;
+
+  if ( $user == '' )
+    $user = $login;
+
+  $layers = array ();
+
+  if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER != 'Y' )
+    return; // Not allowed to view others' calendars, so cannot use layers.
+  if ( $force || ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS != 'N' ) ) {
+    $rows = dbi_get_cached_rows ( 'SELECT cal_layerid, cal_layeruser, cal_color,
+      cal_dups FROM webcal_user_layers WHERE cal_login = ? ORDER BY cal_layerid',
+      array ( $user ) );
+    if ( $rows ) {
+      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+        $row = $rows[$i];
+        $layers[$row[0]] = array ( // .
+          'cal_layerid' => $row[0],
+          'cal_layeruser' => $row[1],
+          'cal_color' => $row[2],
+          'cal_dups' => $row[3]
+          );
+      }
+    }
+  }
+}
+
+/* Loads the current user's preferences as global variables
+ * from the webcal_user_pref table.
+ *
+ * Also loads the list of views for this user
+ * (not really a preference, but this is a convenient place to put this...)
+ *
+ * <b>Notes:</b>
+ * - If <var>$ALLOW_COLOR_CUSTOMIZATION</var> is set to 'N', then we ignore any
+ *   color preferences.
+ * - Other default values will also be set if the user has not saved a
+ *   preference and no global value has been set by the administrator in the
+ *   system settings.
+ */
+function load_user_preferences ( $guest = '' ) {
+  global $ALLOW_COLOR_CUSTOMIZATION, $browser, $DATE_FORMAT, $DATE_FORMAT_MD,
+  $DATE_FORMAT_MY, $DATE_FORMAT_TASK, $has_boss, $is_assistant, $is_nonuser,
+  $is_nonuser_admin, $lang_file, $LANGUAGE, $login, $prefarray, $user, $views;
+
+  $browser = get_web_browser ();
+  $browser_lang = get_browser_language ();
+  $colors = array ( // .
+    'BGCOLOR' => 1,
+    'CELLBG' => 1,
+    'H2COLOR' => 1,
+    'HASEVENTSBG' => 1,
+    'MYEVENTS' => 1,
+    'OTHERMONTHBG' => 1,
+    'POPUP_BG' => 1,
+    'POPUP_FG' => 1,
+    'TABLEBG' => 1,
+    'TEXTCOLOR' => 1,
+    'THBG' => 1,
+    'THFG' => 1,
+    'TODAYCELLBG' => 1,
+    'WEEKENDBG' => 1,
+    'WEEKNUMBER' => 1,
+    );
+  $lang_found = false;
+  $prefarray = array ();
+  // Allow __public__ pref to be used if logging in or user not validated.
+  $tmp_login = ( ! empty ( $guest )
+    ? ( $guest == 'guest' ? '__public__' : $guest ) : $login );
+
+  $rows = dbi_get_cached_rows ( 'SELECT cal_setting, cal_value
+    FROM webcal_user_pref WHERE cal_login = ?', array ( $tmp_login ) );
+  if ( $rows ) {
+    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+      $row = $rows[$i];
+      $setting = $row[0];
+      $value = $row[1];
+      if ( $setting == 'LANGUAGE' )
+        $lang_found = true;
+
+      if ( $ALLOW_COLOR_CUSTOMIZATION == 'N' &&
+        isset ( $colors[$setting] ) )
+        continue;
+      // .
+      // $sys_setting = 'sys_' . $setting;
+      // Save system defaults.
+      if ( ! empty ( $GLOBALS[$setting] ) )
+        $GLOBALS['sys_' . $setting] = $GLOBALS[$setting];
+
+      $GLOBALS[$setting] = $prefarray[$setting] = $value;
+    }
+  }
+  // .
+  // Set users timezone.
+  if ( isset ( $GLOBALS['TIMEZONE'] ) )
+    set_env ( 'TZ', $GLOBALS['TIMEZONE'] );
+  // .
+  // Get views for this user and global views.
+  // If NUC and not authorized by UAC, disallow global views.
+  $rows = dbi_get_cached_rows ( 'SELECT cal_view_id, cal_name, cal_view_type,
+    cal_is_global, cal_owner FROM webcal_view WHERE cal_owner = ? '
+     . ( $is_nonuser && ( ! access_is_enabled () ||
+        ( access_is_enabled () && !
+          access_can_access_function ( ACCESS_VIEW, $guest ) ) )
+      ? '' : ' OR cal_is_global = \'Y\' ' )
+     . 'ORDER BY cal_name', array ( $tmp_login ) );
+  if ( $rows ) {
+    $views = array ();
+    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+      $row = $rows[$i];
+      $url = 'view_';
+      if ( $row[2] == 'E' )
+        $url .= 'r.php?';
+      elseif ( $row[2] == 'S' )
+        $url .= 't.php?timeb=1&amp;';
+      elseif ( $row[2] == 'T' )
+        $url .= 't.php?timeb=0&amp;';
+      else
+        $url .= strtolower ( $row[2] ) . '.php?';
+
+      $v = array ( // .
+        'cal_view_id' => $row[0],
+        'cal_name' => $row[1],
+        'cal_view_type' => $row[2],
+        'cal_is_global' => $row[3],
+        'cal_owner' => $row[4],
+        'url' => $url . 'id=' . $row[0]
+        );
+      $views[] = $v;
+    }
+  }
+  // .
+  // If user has not set a language preference and admin has not specified a
+  // language, then use their browser settings to figure it out
+  // and save it in the database for future use (email reminders).
+  $lang = 'none';
+  if ( ! $lang_found && strlen ( $tmp_login ) && $tmp_login != '__public__' ) {
+    if ( $LANGUAGE == 'none' )
+      $lang = $browser_lang;
+
+    dbi_execute ( 'INSERT INTO webcal_user_pref ( cal_login, cal_setting,
+     cal_value ) VALUES ( ?, ?, ? )', array ( $tmp_login, 'LANGUAGE', $lang ) );
+  }
+  reset_language ( ! empty ( $LANGUAGE ) && $LANGUAGE != 'none'
+    ? $LANGUAGE : $browser_lang );
+
+  if ( empty ( $DATE_FORMAT ) || $DATE_FORMAT == 'LANGUAGE_DEFINED' )
+    $DATE_FORMAT = translate ( '__month__ __dd__, __yyyy__' );
+
+  if ( empty ( $DATE_FORMAT_MY ) || $DATE_FORMAT_MY == 'LANGUAGE_DEFINED' )
+    $DATE_FORMAT_MY = translate ( '__month__ __yyyy__' );
+
+  if ( empty ( $DATE_FORMAT_MD ) || $DATE_FORMAT_MD == 'LANGUAGE_DEFINED' )
+    $DATE_FORMAT_MD = translate ( '__month__ __dd__' );
+
+  if ( empty ( $DATE_FORMAT_TASK ) || $DATE_FORMAT_TASK == 'LANGUAGE_DEFINED' )
+    $DATE_FORMAT_TASK = translate ( '__mm__/__dd__/__yyyy__' );
+
+  $has_boss = user_has_boss ( $tmp_login );
+  $is_assistant = ( empty ( $user )
+    ? false : user_is_assistant ( $tmp_login, $user ) );
+  $is_nonuser_admin = ( $user
+    ? user_is_nonuser_admin ( $tmp_login, $user ) : false );
+  // if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
+}
+
+/* Generates a cookie that saves the last calendar view.
+ *
+ * Cookie is based on the current <var>$REQUEST_URI</var>.
+ *
+ * We save this cookie so we can return to this same page after a user
+ * edits/deletes/etc an event.
+ *
+ * @param bool $view  Determine if we are using a view_x.php file
+ *
+ * @global string  Request string
+ */
+function remember_this_view ( $view = false ) {
+  global $REQUEST_URI;
+  if ( empty ( $REQUEST_URI ) )
+    $REQUEST_URI = $_SERVER['REQUEST_URI'];
+  // .
+  // If called from init, only process script named "view_x.php.
+  if ( $view == true && ! strstr ( $REQUEST_URI, 'view_' ) )
+    return;
+  // .
+  // Do not use anything with "friendly" in the URI.
+  if ( strstr ( $REQUEST_URI, 'friendly=' ) )
+    return;
+
+  SetCookie ( 'webcalendar_last_view', $REQUEST_URI );
+}
+
 /* This just sends the DOCTYPE used in a lot of places in the code.
  *
  * @param string  lang
@@ -5991,18 +5951,18 @@ function load_global_settings () {
 function send_doctype ( $doc_title = '' ) {
   global $charset, $lang, $LANGUAGE;
 
-$lang =  ( empty ( $LANGUAGE ) ? '' : languageToAbbrev ( $LANGUAGE ) );
-if ( empty ( $lang ) )
-  $lang = 'en';
-$charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
+  $lang = ( empty ( $LANGUAGE ) ? '' : languageToAbbrev ( $LANGUAGE ) );
+  if ( empty ( $lang ) )
+    $lang = 'en';
+  $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 
   return '<?xml version="1.0" encoding="' . $charset . '"?' . '>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="' .$lang . '">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="' . $lang . '">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=' . $charset . '" />' . ( empty ( $doc_title ) ? '' : '
-    <title>'. $doc_title . '</title' );
+    <title>' . $doc_title . '</title' );
 }
 
 /* Sends an HTTP login request to the browser and stops execution.
@@ -6025,7 +5985,7 @@ function send_http_login () {
   }
   header ( 'WWW-Authenticate: Basic realm="' . "$title\"" );
   header ( 'HTTP/1.0 401 Unauthorized' );
-echo send_doctype ( $unauthorized ) . '
+  echo send_doctype ( $unauthorized ) . '
   </head>
   <body>
     <h2>' . $title . '</h2>
@@ -6033,6 +5993,22 @@ echo send_doctype ( $unauthorized ) . '
   </body>
 </html>';
   exit;
+}
+
+/* Sends HTTP headers that tell the browser not to cache this page.
+ *
+ * Different browsers use different mechanisms for this,
+ * so a series of HTTP header directives are sent.
+ *
+ * <b>Note:</b>  This function needs to be called before any HTML output is sent
+ *               to the browser.
+ */
+function send_no_cache_header () {
+  header ( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
+  header ( 'Last-Modified: ' . gmdate ( 'D, d M Y H:i:s' ) . ' GMT' );
+  header ( 'Cache-Control: no-store, no-cache, must-revalidate' );
+  header ( 'Cache-Control: post-check=0, pre-check=0', false );
+  header ( 'Pragma: no-cache' );
 }
 
 /* Sends a redirect to the user's preferred view.
