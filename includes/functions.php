@@ -44,696 +44,6 @@ function do_debug ( $msg ) {
   // 2, 'sockieman:2000' );
 }
 
-/* Generates the HTML used in an event popup for the site_extras fields of an event.
- *
- * @param int $id Event ID
- *
- * @return string The HTML to be used within the event popup for any site_extra
- *                fields found for the specified event
- */
-function site_extras_for_popup ( $id ) {
-  global $SITE_EXTRAS_IN_POPUP;
-
-  if ( $SITE_EXTRAS_IN_POPUP != 'Y' ) {
-    return '';
-  }
-
-  $extras = format_site_extras ( get_site_extra_fields ( $id ), EXTRA_DISPLAY_POPUP );
-  if ( empty ( $extras ) ) return '';
-
-  $ret = '';
-
-  foreach ( $extras as $extra ) {
-    $ret .= '<dt>' . $extra['name'] . ":</dt>\n<dd>" . $extra['data'] . "</dd>\n";
-  }
-
-  return $ret;
-}
-
-/* Builds the HTML for the entry popup.
- *
- * @param string $popupid     CSS id to use for event popup
- * @param string $user        Username of user the event pertains to
- * @param string $description Event description
- * @param string $time        Time of the event (already formatted in a display format)
- * @param string $site_extras HTML for any site_extras for this event
- *
- * @return string The HTML for the event popup
- */
-function build_entry_popup ( $popupid, $user, $description = '', $time,
-  $site_extras = '', $location = '', $name = '', $id = '', $reminder = '' ) {
-  global $login, $popup_fullnames, $popuptemp_fullname, $DISABLE_POPUPS,
-  $ALLOW_HTML_DESCRIPTION, $SUMMARY_LENGTH, $PARTICIPANTS_IN_POPUP,
-  $PUBLIC_ACCESS_VIEW_PART, $tempfullname;
-
-  if ( ! empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' )
-    return;
-  // restrict info if time only set
-  $details = true;
-  if ( function_exists ( 'access_is_enabled' ) && access_is_enabled () && $user != $login ) {
-    $time_only = access_user_calendar ( 'time', $user );
-    $details = ( $time_only == 'N' ? 1 : 0 );
-  }
-
-  $ret = "<dl id=\"$popupid\" class=\"popup\">\n";
-
-  if ( empty ( $popup_fullnames ) )
-    $popup_fullnames = array ();
-  $partList = array ();
-  if ( $details && $id != '' && ! empty ( $PARTICIPANTS_IN_POPUP ) && $PARTICIPANTS_IN_POPUP == 'Y' && ! ( $PUBLIC_ACCESS_VIEW_PART == 'N' && $login == '__public__' ) ) {
-    $sql = "SELECT cal_login, cal_status FROM webcal_entry_user
-      WHERE cal_id = ? AND cal_status IN ('A', 'W' ) ";
-    $rows = dbi_get_cached_rows ( $sql, array ( $id ) );
-    if ( $rows ) {
-      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-        $row = $rows[$i];
-        $participants[] = $row;
-      }
-    }
-    for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
-      user_load_variables ( $participants[$i][0], 'temp' );
-      $partList[] = $tempfullname . ' ' .
-      ( $participants[$i][1] == 'W' ? '(?)' : '' );
-    }
-    $sql = 'SELECT cal_fullname FROM webcal_entry_ext_user
-      WHERE cal_id = ? ORDER by cal_fullname';
-    $rows = dbi_get_cached_rows ( $sql, array ( $id ) );
-    if ( $rows ) {
-      $extStr = translate ( 'External User' );
-      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-        $row = $rows[$i];
-        $partList[] = $row[0] . ' (' . $extStr . ')';
-      }
-    }
-  }
-
-  if ( $user != $login ) {
-    if ( empty ( $popup_fullnames[$user] ) ) {
-      user_load_variables ( $user, 'popuptemp_' );
-      $popup_fullnames[$user] = $popuptemp_fullname;
-    }
-    $ret .= '<dt>' . translate ( 'User' ) . ":</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
-  }
-  if ( $SUMMARY_LENGTH < 80 && strlen ( $name ) && $details )
-    $ret .= '<dt>' . htmlspecialchars ( substr ( $name, 0, 40 ) ) . "</dt>\n";
-  if ( strlen ( $time ) )
-    $ret .= '<dt>' . translate ( 'Time' ) . ":</dt>\n<dd>$time</dd>\n";
-  if ( ! empty ( $location ) && $details )
-    $ret .= '<dt>' . translate ( 'Location' ) . ":</dt>\n<dd> $location</dd>\n";
-
-  if ( ! empty ( $reminder ) && $details )
-    $ret .= '<dt>' . translate ( 'Send Reminder' ) . ":</dt>\n<dd> $reminder</dd>\n";
-
-  if ( ! empty ( $partList ) && $details ) {
-    $ret .= '<dt>' . translate ( 'Participants' ) . ":</dt>\n";
-    foreach ( $partList as $parts ) {
-      $ret .= "<dd> $parts</dd>\n";
-    }
-  }
-
-  if ( ! empty ( $description ) && $details ) {
-    $ret .= '<dt>' . translate ( 'Description' ) . ":</dt>\n<dd>";
-    if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
-      $str = str_replace ( "&", "&amp;", $description );
-      $str = str_replace ( "&amp;amp;", "&amp;", $str );
-      // decode special characters
-      $str = unhtmlentities ( $str );
-      // If there is no html found, then go ahead and replace
-      // the line breaks ("\n") with the html break.
-      if ( strstr ( $str, "<" ) && strstr ( $str, ">" ) ) {
-        // found some html...
-        $ret .= $str;
-      } else {
-        // no html, replace line breaks
-        $ret .= nl2br ( $str );
-      }
-    } else {
-      // html not allowed in description, escape everything
-      $ret .= nl2br ( htmlspecialchars ( $description ) );
-    }
-    $ret .= "</dd>\n";
-  } //if $description
-  if ( ! empty ( $site_extras ) )
-    $ret .= $site_extras;
-  $ret .= "</dl>\n";
-  return $ret;
-}
-
-/* Builds the HTML for the event label.
- *
- * @param string $can_access
- * @param string $time_only
- *
- * @return string The HTML for the event label
- */
-function build_entry_label ( $event, $popupid, $can_access, $timestr, $time_only = 'N' ) {
-  global $login, $user, $eventinfo, $SUMMARY_LENGTH, $UAC_ENABLED;
-  $ret = '';
-  // get reminders display string
-  $reminder = getReminders ( $event->getId (), true );
-  $can_access = ( $UAC_ENABLED == 'Y' ? $can_access : 0 );
-  $not_my_entry = ( ( $login != $user && strlen ( $user ) ) ||
-    ( $login != $event->getLogin () && strlen ( $event->getLogin () ) ) );
-
-  $sum_length = $SUMMARY_LENGTH;
-  if ( $event->isAllDay () || $event->isUntimed () ) $sum_length += 6;
-  $padding = ( strlen ( $event->getName () ) > $sum_length ? '...' : '' );
-  $tmp_ret = htmlspecialchars ( substr ( $event->getName (), 0, $sum_length ) . $padding );
-
-  if ( $not_my_entry && $event->getAccess () == 'R' && ! ( $can_access &PRIVATE_WT ) ) {
-    if ( $time_only != 'Y' ) $ret = '(' . translate ( 'Private' ) . ')';
-    $eventinfo .= build_entry_popup ( $popupid, $event->getLogin (),
-      translate ( 'This event is private' ), '' );
-  } else if ( $not_my_entry && $event->getAccess () == 'C' && ! ( $can_access&CONF_WT ) ) {
-    if ( $time_only != 'Y' ) $ret = '(' . translate ( 'Conf.' ) . ')';
-    $eventinfo .= build_entry_popup ( $popupid, $event->getLogin (),
-      translate ( 'This event is confidential' ), '' );
-  } else if ( $can_access == 0 && $UAC_ENABLED == 'Y' ) {
-    if ( $time_only != 'Y' ) $ret = $tmp_ret;
-    $eventinfo .= build_entry_popup ( $popupid, $event->getLogin (), '',
-      $timestr, '', '', $event->getName (), '' );
-  } else {
-    if ( $time_only != 'Y' ) $ret = $tmp_ret;
-    $eventinfo .= build_entry_popup ( $popupid, $event->getLogin (),
-      $event->getDescription (), $timestr, site_extras_for_popup ( $event->getId () ),
-      $event->getLocation (), $event->getName (), $event->getId (), $reminder );
-  }
-  return $ret;
-}
-
-/* Generate HTML for a date selection for use in a form.
- *
- * @param string $prefix Prefix to use in front of form element names
- * @param string $date   Currently selected date (in YYYYMMDD format)
- * @param bool $trigger   Add onchange event trigger that
- *  calls javascript function $prefix_datechanged ()
- * @param int  $num_years  Number of years to display
- *
- * @return string HTML for the selection box
- */
-function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
-  $ret = '';
-  $selected = ' selected="selected"';
-  $trigger_str = ( ! empty ( $trigger ) ? $prefix . 'datechanged ();' : '' );
-  $onchange = ( ! empty ( $trigger_str ) ? 'onchange="$trigger_str"' : '' );
-  if ( strlen ( $date ) != 8 )
-    $date = date ( 'Ymd' );
-  $thisyear = $year = substr ( $date, 0, 4 );
-  $thismonth = $month = substr ( $date, 4, 2 );
-  $thisday = $day = substr ( $date, 6, 2 );
-  if ( $thisyear - date ( 'Y' ) >= ( $num_years - 1 ) )
-    $num_years = $thisyear - date ( 'Y' ) + 2;
-  $ret .= '<select name="' . $prefix . 'day" id="' . $prefix . 'day"' . $onchange . " >\n";
-  for ( $i = 1; $i <= 31; $i++ )
-  $ret .= "<option value=\"$i\"" .
-  ( $i == $thisday ? $selected : '' ) . ">$i</option>\n";
-  $ret .= "</select>\n<select name=\"" . $prefix . 'month"' . $onchange . " >\n";
-  for ( $i = 1; $i <= 12; $i++ ) {
-    $m = month_name ( $i - 1, 'M' );
-    $ret .= "<option value=\"$i\"" .
-    ( $i == $thismonth ? $selected : '' ) . ">$m</option>\n";
-  }
-  $ret .= "</select>\n<select name=\"" . $prefix . 'year"' . $onchange . " >\n";
-  for ( $i = -10; $i < $num_years; $i++ ) {
-    $y = $thisyear + $i;
-    $ret .= "<option value=\"$y\"" .
-    ( $y == $thisyear ? $selected : '' ) . ">$y</option>\n";
-  }
-  $ret .= "</select>\n";
-  $ret .= '<input type="button" name="' . $prefix
-   . "btn\" onclick=\"selectDate ('"
-   . $prefix . "day','" . $prefix . "month','" . $prefix
-   . "year','$date', event, this.form );\" value=\""
-   . translate ( 'Select' ) . "...\" />\n";
-
-  return $ret;
-}
-
-function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
-  global $single_user, $user_fullname, $is_nonuser_admin, $is_assistant,
-  $user, $login, $thisyear, $thismonth, $thisday, $cat_id, $CATEGORIES_ENABLED,
-  $nextYmd, $prevYmd, $caturl, $nowYmd, $wkstart, $wkend, $spacer, $is_admin,
-  $DISPLAY_WEEKNUMBER, $DISPLAY_SM_MONTH, $DISPLAY_TASKS, $DATE_FORMAT_MY;
-
-  if ( empty ( $name ) ) return;
-  $u_url = '';
-  if ( ! empty ( $user ) && $user != $login )
-    $u_url = "user=$user&amp;";
-
-  $nextStr = translate ( 'Next' );
-  $prevStr = translate ( 'Previous' );
-  // Hack to prevent giant space between minicals and navigation in IE
-  $ie_hack = ( get_web_browser () == 'MSIE' ? 'style="zoom:1"' : '' );
-  $ret = "<div class=\"topnav\" $ie_hack>";
-  if ( $show_arrows && ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || $DISPLAY_TASKS == 'Y' ) ) {
-    $ret .= '<a title="' . $nextStr . '" class="next" href="' . "$name.php?"
-     . $u_url . "date=$nextYmd$caturl\"><img src=\"images/rightarrow.gif\" alt=\""
-     . $nextStr . "\" /></a>\n";
-    $ret .= '<a title="' . $prevStr . '" class="prev" href="' . "$name.php?"
-     . $u_url . "date=$prevYmd$caturl\"><img src=\"images/leftarrow.gif\" alt=\""
-     . $prevStr . "\" /></a>\n";
-  }
-  $ret .= '<div class="title">';
-  $ret .= '<span class="date">';
-  if ( $name == 'day' ) {
-    $ret .= date_to_str ( $nowYmd );
-  } else if ( $name == 'week' ) {
-    $ret .= date_to_str ( date ( 'Ymd', $wkstart ), '', false ) . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;' .
-    date_to_str ( date ( 'Ymd', $wkend - 86400 ), '', false );
-    if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
-      $ret .= " \n(" .
-      translate ( 'Week' ) . ' ' . date ( 'W', $wkstart + 86400 ) . ')';
-    }
-  } else if ( $name == 'month' || $name == 'view_l' ) {
-    $ret .= $spacer . date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
-      $DATE_FORMAT_MY, false, false );
-  }
-  $ret .= "</span>\n<span class=\"user\">";
-  // display current calendar's user (if not in single user)
-  if ( $single_user == 'N' ) {
-    $ret .= '<br />';
-    $ret .= $user_fullname;
-  }
-  if ( $is_nonuser_admin ||
-  ( $is_admin && ! empty ( $user ) && $user == '__public__' ) )
-    $ret .= '<br />-- ' . translate ( 'Admin mode' ) . ' --';
-  if ( $is_assistant )
-    $ret .= '<br />-- ' . translate ( 'Assistant mode' ) . ' --';
-  $ret .= "</span>\n";
-  if ( $CATEGORIES_ENABLED == 'Y' && $show_cats &&
-    ( ! $user || ( $user == $login || $is_assistant ) ) ) {
-    $ret .= "<br />\n<br />\n";
-    $ret .= print_category_menu ( $name, sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday ), $cat_id );
-  }
-  $ret .= '</div></div><br />';
-
-  return $ret;
-}
-
-/*
- * Generate html to create a month display
- *
- */
-function display_month ( $thismonth, $thisyear, $demo = '' ) {
-  global $WEEK_START, $WEEKENDBG, $user, $login, $today,
-  $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_WEEKNUMBER, $DISPLAY_LONG_DAYS;
-
-  $ret = '<table class="main"  cellspacing="0" cellpadding="0" id="month_main"><tr>';
-  if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
-    $ret .= '<th class="weekcell" width="5%"></th>' . "\n";
-  }
-  for ( $i = 0; $i < 7; $i++ ) {
-    $thday = ( $i + $WEEK_START ) % 7;
-    $thname = weekday_name ( $thday, $DISPLAY_LONG_DAYS );
-    $thclass = ( is_weekend ( $thday ) ? ' class="weekend"' : '' );
-    $ret .= "<th$thclass>" . $thname . "</th>\n";
-  }
-  $ret .= "</tr>\n";
-  $weekStr = translate ( 'Week' );
-  $WKStr = translate ( 'WK' );
-  $charset = translate ( 'charset' );
-
-  $wkstart = get_weekday_before ( $thisyear, $thismonth );
-  // generate values for first day and last day of month
-  $monthstart = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
-  $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
-  $monthend2 = date ( 'Ymd His', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
-  $todayYmd = date ( 'Ymd', $today );
-  for ( $i = $wkstart; date ( 'Ymd', $i + ( 12 * 3600 ) ) <= $monthend;
-    $i += ( 86400 * 7 ) ) {
-    $ret .= "<tr>\n";
-    if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
-      $href = ( $demo ? 'href=""' : 'href="week.php?date=' .
-        date ( 'Ymd', $i + 86400 ) );
-      if ( ! empty ( $user ) && $user != $login )
-        $href .= "&amp;user=$user";
-      if ( ! empty ( $cat_id ) )
-        $href .= "&amp;cat_id=$cat_id";
-      $href .= '"';
-      $ret .= '<td class="weekcell"><a class="weekcell" title="' . $weekStr . '&nbsp;' .
-      date ( 'W', $i + 86400 + 86400 ) . '" ' . $href;
-      $ret .= ' >';
-      $wkStr = $WKStr . date ( 'W', $i + 86400 + 86400 );
-      $wkStr2 = '';
-      if ( $charset == 'UTF-8' ) {
-        $wkStr2 = $wkStr;
-      } else {
-        for ( $w = 0;$w < strlen ( $wkStr );$w++ ) {
-          $wkStr2 .= substr ( $wkStr, $w, 1 ) . '<br />';
-        }
-      }
-      $ret .= $wkStr2 . "</a></td>\n";
-    }
-
-    for ( $j = 0; $j < 7; $j++ ) {
-      $date = $i + ( $j * 86400 + ( 12 * 3600 ) );
-      $dateYmd = date ( 'Ymd', $date );
-      $dateD = date ( 'd', $date );
-      $thiswday = date ( 'w', $date );
-      $is_weekend = is_weekend ( $date );
-      if ( empty ( $WEEKENDBG ) ) {
-        $is_weekend = false;
-      }
-      if ( ( $dateYmd >= $monthstart && $dateYmd <= $monthend ) ||
-          ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
-        $ret .= '<td';
-        $class = '';
-        if ( ! $demo && $dateYmd == $todayYmd ) {
-          $class = 'today';
-        }
-        if ( $is_weekend ) {
-          if ( strlen ( $class ) ) {
-            $class .= ' ';
-          }
-          $class .= 'weekend';
-        }
-        // change class if date is not in this month
-        if ( $dateYmd < $monthstart || $dateYmd > $monthend ) {
-          if ( strlen ( $class ) ) {
-            $class .= ' ';
-          }
-          $class .= 'othermonth';
-        }
-        // .
-        // get events for this day
-        $ret_events = '';
-        if ( ! $demo ) {
-          $ret_events = print_date_entries ( $dateYmd,
-            ( ! empty ( $user ) ) ? $user : $login, false );
-        } else {
-          // Since we base this calendar on the current month,
-          // the placement of the days always change so
-          // set 3rd Thursday as "today" for the demo
-          if ( $dateD >= 16 && $dateD < 23 && $thiswday == 4 ) {
-            $ret_events = translate ( 'Today' );
-            $class = 'today';
-          }
-          // Since we base this calendar on the current month,
-          // the placement of the days always change so
-          // set 2nd Saturday and 2nd Tuesday as the event days for the demo
-          if ( $dateD >= 8 && $dateD <= 15 && ( $thiswday == 2 || $thiswday == 6 ) ) {
-            $ret_events = translate ( 'My event text' );
-            $class .= ' entry hasevents ';
-          }
-        }
-        if ( ! empty ( $ret_events ) && strstr ( $ret_events, 'class="entry"' ) ) {
-          $class .= ' hasevents';
-        }
-        if ( strlen ( $class ) ) {
-          $ret .= " class=\"$class\"";
-        }
-
-        $ret .= ">$ret_events</td>\n";
-      } else {
-        $ret .= '<td ' . ( $is_weekend ? 'class="weekend"' : '' ) . ">&nbsp;</td>\n";
-      }
-    }
-    $ret .= "</tr>\n";
-  }
-  $ret .= '</table>';
-  return $ret;
-}
-
-/* Prints out a minicalendar for a month.
- *
- * @todo Make day.php NOT be a special case
- *
- * @param int    $thismonth     Number of the month to print
- * @param int    $thisyear      Number of the year
- * @param bool   $showyear      Show the year in the calendar's title?
- * @param bool   $show_weeknums Show week numbers to the left of each row?
- * @param string $minical_id    id attribute for the minical table
- * @param string $month_link    URL and query string for month link that should
- *                              come before the date specification (e.g.
- *                              month.php?  or  view_l.php?id=7&amp;)
- */
-function display_small_month ( $thismonth, $thisyear, $showyear,
-  $show_weeknums = false, $minical_id = '', $month_link = 'month.php?' ) {
-  global $boldDays, $caturl, $DATE_FORMAT_MY, $DISPLAY_ALL_DAYS_IN_MONTH,
-  $DISPLAY_TASKS, $DISPLAY_WEEKNUMBER, $get_unapproved, $login,
-  $MINI_TARGET, // Used by minical.php
-  $SCRIPT,
-  $thisday, // Needed for day.php
-  $today, $use_http_auth, $user, $WEEK_START;
-
-  $nextStr = translate ( 'Next' );
-  $prevStr = translate ( 'Previous' );
-
-  $u_url = ( $user != $login && ! empty ( $user )
-    ? 'user=' . $user . '&amp;' : '' );
-
-  $ret = '';
-  $weekStr = translate ( 'Week' );
-  // start the minical table for each month
-  $ret .= '
-    <table class="minical"'
-   . ( $minical_id != '' ? ' id="' . $minical_id . '"' : '' ) . '>';
-
-  $monthstart = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
-  $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
-  // determine if the week starts on sunday or monday
-  $wkstart = get_weekday_before ( $thisyear, $thismonth );
-
-  if ( $SCRIPT == 'day.php' ) {
-    $month_ago = date ( 'Ymd',
-      mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear ) );
-    $month_ahead = date ( 'Ymd',
-      mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear ) );
-
-    $ret .= '<caption>' . $thisday . '</caption>
-      <thead>
-        <tr class="monthnav">
-          <th colspan="' . ( $DISPLAY_WEEKNUMBER == true ? 8 : 7 ) . '">
-            <a title="' . $prevStr . '" class="prev" href="day.php?' . $u_url
-     . 'date=' . $month_ago . $caturl
-     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
-            <a title="' . $nextStr . '" class="next" href="day.php?' . $u_url
-     . 'date=' . $month_ahead . $caturl
-     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
-     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
-      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
-          </th>
-        </tr>';
-  } elseif ( $SCRIPT == 'minical.php' ) {
-    $month_ago = date ( 'Ymd',
-      mktime ( 0, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
-    $month_ahead = date ( 'Ymd',
-      mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
-
-    $ret .= '
-      <thead>
-        <tr class="monthnav">
-          <th colspan="7">
-            <a title="' . $prevStr . '" class="prev" href="minical.php?'
-     . $u_url . 'date=' . $month_ago
-     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
-            <a title="' . $nextStr . '" class="next" href="minical.php?'
-     . $u_url . 'date=' . $month_ahead
-     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
-     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
-      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
-          </th>
-        </tr>';
-  } else { // not day or minical script
-    // print the month name
-    $ret .= '
-      <caption><a href="' . $month_link . $u_url . 'year=' . $thisyear
-     . '&amp;month=' . $thismonth . '">'
-     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
-      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false )
-     . '</a></caption>
-      <thead>';
-  }
-  $ret .= '<tr>';
-  // print the headers to display the day of the week (sun, mon, tues, etc.)
-  // if we're showing week numbers we need an extra column
-  if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' )
-    $ret .= '<th class="empty">&nbsp;</th>' . "\n";
-  for ( $i = 0; $i < 7; $i++ ) {
-    $thday = ( $i + $WEEK_START ) % 7;
-    $thname = weekday_name ( $thday, 'D' );
-    $thclass = ( is_weekend ( $thday ) ? ' class="weekend"' : '' );
-    $ret .= "<th$thclass>" . $thname . "</th>\n";
-  }
-  $ret .= "</tr>\n";
-  // .
-  // end the header row
-  $ret .= '</thead><tbody>';
-  for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthend;
-    $i += ( 604800 ) ) {
-    $ret .= '
-        <tr>';
-    if ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' )
-      $ret .= '<td class="weeknumber"><a class="weeknumber" '
-       . 'title="' . $weekStr . '&nbsp;' . date ( 'W', $i + 86400 )
-       . '" ' . 'href="week.php?' . $u_url
-       . 'date=' . date ( 'Ymd', $i + 86400 * 2 ) . '" ' . '> ( '
-       . date ( 'W', $i + 86400 * 2 ) . ' )</a></td>';
-
-    for ( $j = 0; $j < 7; $j++ ) {
-      // add 12 hours just so we don't have DST problems
-      $date = $i + ( $j * 86400 + ( 12 * 3600 ) );
-      $dateYmd = date ( 'Ymd', $date );
-      $hasEvents = false;
-      $title = '';
-      $ret .= '
-          <td';
-
-      if ( $boldDays ) {
-        $ev = get_entries ( $dateYmd, $get_unapproved, true, true );
-        if ( count ( $ev ) > 0 ) {
-          $hasEvents = true;
-          $title = $ev[0]->getName ();
-        } else {
-          $rep = get_repeating_entries ( $user, $dateYmd, $get_unapproved );
-          if ( count ( $rep ) > 0 ) {
-            $hasEvents = true;
-            $title = $rep[0]->getName ();
-          }
-        }
-      }
-      if ( ( $dateYmd >= $monthstart && $dateYmd <= $monthend ) ||
-          ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
-        $class =
-        // If it's a weekend.
-        ( is_weekend ( $date ) ? 'weekend' : '' )
-        // If the day being viewed is today's date AND script = day.php
-        . ( $dateYmd == $thisyear . $thismonth . $thisday && $SCRIPT == 'day.php'
-          ? ' selectedday' : '' )
-        // Are there any events scheduled for this date?
-        . ( $hasEvents ? ' hasevents' : '' );
-
-        $ret .= ( $class != '' ? ' class="' . $class . '"' : '' )
-         . ( $dateYmd == date ( 'Ymd', $today ) ? ' id="today"' : '' )
-         . '><a href="';
-
-        if ( $SCRIPT == 'minical.php' ) {
-          $ret .= ( $use_http_auth
-            ? 'day.php?user=' . $user
-            : 'nulogin.php?login=' . $user . '&amp;return_path=day.php' )
-           . '&amp;date=' . $dateYmd . '"' . ( ! empty ( $MINI_TARGET )
-            ? ' target="' . $MINI_TARGET . '"' : '' )
-           . ( ! empty ( $title ) ? ' title="' . $title . '"' : '' );
-        } else
-          $ret .= 'day.php?' . $u_url . 'date=' . $dateYmd . '"';
-
-        $ret .= '>' . date ( 'j', $date ) . '</a></td>';
-      } else
-        $ret .= ' class="empty ' .
-        ( is_weekend ( $date ) ? 'weekend' : '' ) . '">&nbsp;</td>';
-    } // end for $j
-    $ret .= '
-        </tr>';
-  } // end for $i
-  return $ret . '
-      </tbody>
-    </table>
-';
-}
-
-/* Prints small task list for this $login user
- *
- */
-function display_small_tasks ( $cat_id ) {
-  global $user, $login, $is_assistant, $eventinfo,
-  $DATE_FORMAT_TASK, $caturl, $task_filter;
-  static $key = 0;
-  if ( ! empty ( $user ) && $user != $login && ! $is_assistant ) {
-    return false;
-  }
-  $SORT_TASKS = 'Y';
-  $pri[1] = translate ( 'High' );
-  $pri[2] = translate ( 'Medium' );
-  $pri[3] = translate ( 'Low' );
-
-  if ( $user != $login && ! empty ( $user ) ) {
-    $u_url = "user=$user" . '&amp;';
-    $task_user = $user;
-  } else {
-    $u_url = '';
-    $task_user = $login;
-  }
-  $task_cat = ( ! empty ( $cat_id ) ? $cat_id : -99 );
-  $ajax = array ();
-  $dueSpacer = '&nbsp;';
-  if ( $SORT_TASKS == 'Y' ) {
-    for ( $i = 0; $i <= 3; $i++ ) {
-      $ajax[$i] = '<td class="sorter" onclick="sortTasks (' . $i . ', ' . $task_cat . ', this)" ' . '><img src="images/up.png" style="vertical-align:bottom" /></td>';
-      $ajax[$i + 4] = '<td  class="sorter" onclick="sortTasks (' .
-      ( $i + 4 ) . ', ' . $task_cat . ', this)" ' . '><img src="images/down.png" style="vertical-align:top" /></td>';
-    }
-  } else {
-    $dueSpacer = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-    $ajax = array_pad ( $ajax, 8, '<td></td>' );
-  }
-  $titleStr = translate ( 'Task_Title' );
-  $priorityStr = translate ( 'Priority' );
-  $taskStr = translate ( 'Task Name' );
-  $dueStr = translate ( 'Task Due Date' );
-  $dueDateStr = translate ( 'Due Date' );
-  $dueTimeStr = translate ( 'Due Time' );
-  $dateFormatStr = $DATE_FORMAT_TASK;
-  $completedStr = translate ( 'Completed' );
-  $percentStr = translate ( 'Percent Complete' );
-  $filter = ( ! empty ( $task_filter ) ? $task_filter : '' );
-  $task_list = query_events ( $task_user, false, $filter, $cat_id, true );
-  $row_cnt = 1;
-  $task_html = '<table class="minitask" cellspacing="0" cellpadding="2">' . "\n";
-  $task_html .= '<tr class="header"><th colspan="6" >' .
-  translate ( 'TASKS' ) . '</th><th align="right"  colspan="2">' . '<a href="edit_entry.php?' . $u_url . 'eType=task' . $caturl . '">' . '<img src="images/new.gif" alt="+" class="new"/></a></th></tr>' . "\n";
-  $task_html .= '<tr class="header">
-    <td rowspan="2">!&nbsp;</td>' . $ajax[0] . '
-    <td rowspan="2" width="20%">' . $titleStr . '&nbsp;</td>' . $ajax[1] . '
-    <td rowspan="2">' . translate ( 'Due' ) . $dueSpacer . '</td>' . $ajax[2] . '
-    <td rowspan="2">%</td>' . $ajax[3] . '
-</tr>' . "\n";
-  $task_html .= '<tr class="header">' . $ajax[4] . "\n" . $ajax[5] . "\n" . $ajax[6] . "\n" . $ajax[7] . "\n</tr>\n";
-  foreach ( $task_list as $E ) {
-    // check UAC
-    $task_owner = $E->getLogin ();
-    if ( access_is_enabled () ) {
-      $can_access = access_user_calendar ( 'view', $task_owner, '',
-        $E->getCalType (), $E->getAccess () );
-      if ( $can_access == 0 )
-        continue;
-    }
-    $cal_id = $E->getId ();
-    // generate popup info
-    $popupid = "eventinfo-pop$cal_id-$key";
-    $linkid = "pop$cal_id-$key";
-    $key++;
-    $t_url = ( $task_owner != $login ? "user={$task_owner}&amp;" : '' );
-    $link = '<a href="view_entry.php?' . $t_url . 'id=' . $cal_id . '"';
-    $priority = $link . ' title="' . $priorityStr . '">' . $E->getPriority () . '</a>';
-    $dots = ( strlen ( $E->getName () ) > 15 ? '...' : '' );
-    $name = $link . ' title="' . $taskStr . ': ' . $E->getName () . '" >' . substr ( $E->getName (), 0, 15 ) . $dots . '</a>';
-    $due_date = $link . " title=\"" . $dueStr . '" >' .
-    date_to_str ( $E->getDueDate (), $dateFormatStr, false, false ) . '</a>';
-    $percent = $link . ' title="% ' . $completedStr . '">' . $E->getPercent () . '</a>';
-    $task_html .= "<tr class=\"task\" id=\"$linkid\" style=\"background-color:"
-     . rgb_luminance ( $GLOBALS['BGCOLOR'], $E->getPriority () )
-     . "\">\n<td colspan=\"2\">$priority</td>\n"
-     . "<td class=\"name\"  colspan=\"2\" width=\"50%\">&nbsp;$name</td>\n" . "<td colspan=\"2\">$due_date</td>\n<td class=\"pct\" " . "colspan=\"2\">$percent</td>\n</tr>\n";
-    $row_cnt++;
-    // build special string to pass to popup
-    // TODO move this logic into build_entry_popup ()
-    $timeStr = $dueTimeStr . ':'
-     . display_time ( '', 0, $E->getDueDateTimeTS () ) . '</dd><dd>'
-     . $dueDateStr . ':' . date_to_str ( $E->getDueDate (), '', false )
-     . "</dd>\n<dt>" . $priorityStr . ":</dt>\n<dd>" . $E->getPriority ()
-     . '-' . $pri[ceil ( $E->getPriority () / 3 )] . "</dd>\n<dt>" . $percentStr
-     . ":</dt>\n<dd>" . $E->getPercent () . '%';
-
-    $eventinfo .= build_entry_popup ( $popupid, $E->getLogin (), $E->getDescription (),
-      $timeStr, '', $E->getLocation (), $E->getName (), $cal_id );
-  }
-  for ( $i = 7; $i > $row_cnt; $i-- ) {
-    $task_html .= '<tr><td colspan="8"  class="filler">&nbsp;</td></tr>' . "\n";
-  }
-  $task_html .= "</table>\n";
-  return $task_html;
-}
-
 /* Prints the HTML for one event in the month view.
  *
  * @param Event  $event The event
@@ -3966,7 +3276,7 @@ function get_site_extras_names ( $filter = '' ) {
  * @param string  $prefix   Prefix for select control's name
  * @param string  $tz  Current timezone of logged in user
  *
- * @return string  $ret html for select control
+ * @return string  $ret HTML for select control.
 */
 function print_timezone_select_html ( $prefix, $tz ) {
   $ret = '';
@@ -4552,7 +3862,7 @@ function update_status ( $status, $user, $id, $type = 'E' ) {
     activity_log ( $id, $login, $user, $log_type, '' );
 }
 
-/* Generate html to add Printer Friendly Link
+/* Generate HTML to add Printer Friendly Link
  *  if called without parameter, return only the href string
  *
  * @param string   $hrefin  script name
@@ -4695,7 +4005,7 @@ function display_activity_log ( $cal_type, $cal_text = '' ) {
  *                if empty ( Yes/No options will be displayed )
  * @param string   $onclick  javascript function to call if needed
  * @param string   $defIdx default array index to select
- * @param string   $sep html value between radio options (&nbsp;, <br />)
+ * @param string   $sep HTML value between radio options (&nbsp;, <br />)
  *
  * @return string  HTML for the radio control
  */
@@ -5065,6 +4375,689 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
         ( empty ( $user_cal ) ? null : $user_cal ), $type, gmdate ( 'Ymd' ),
           gmdate ( 'Gis' ), ( empty ( $text ) ? null : $text ) ) ) )
     db_error ( true, $sql );
+}
+
+/* Builds the HTML for the event label.
+ *
+ * @param string  $can_access
+ * @param string  $time_only
+ *
+ * @return string  The HTML for the event label
+ */
+function build_entry_label ( $event, $popupid,
+  $can_access, $timestr, $time_only = 'N' ) {
+  global $eventinfo, $login, $SUMMARY_LENGTH, $UAC_ENABLED, $user;
+  $ret = '';
+  // Get reminders display string.
+  $reminder = getReminders ( $event->getId (), true );
+  $can_access = ( $UAC_ENABLED == 'Y' ? $can_access : 0 );
+  $not_my_entry = ( ( $login != $user && strlen ( $user ) ) ||
+    ( $login != $event->getLogin () && strlen ( $event->getLogin () ) ) );
+
+  $sum_length = $SUMMARY_LENGTH;
+  if ( $event->isAllDay () || $event->isUntimed () )
+    $sum_length += 6;
+
+  $tmpAccess = $event->getAccess ();
+  $tmpId = $event->getId ();
+  $tmpLogin = $event->getLogin ();
+  $tmpName = $event->getName ();
+  $tmp_ret = htmlspecialchars ( substr ( $tmpName, 0, $sum_length )
+     . ( strlen ( $tmpName ) > $sum_length ? '...' : '' ) );
+
+  if ( $not_my_entry && $tmpAccess == 'R' && !
+      ( $can_access & PRIVATE_WT ) ) {
+    if ( $time_only != 'Y' )
+      $ret = '(' . translate ( 'Private' ) . ')';
+    // .
+    // translate ( 'This event is private' )
+    $eventinfo .= build_entry_popup ( $popupid, $tmpLogin,
+      str_replace ( 'XXX', translate ( 'private' ),
+        translate ( 'This event is XXX.' ) ), '' );
+  } else
+  if ( $not_my_entry && $tmpAccess == 'C' && !
+      ( $can_access & CONF_WT ) ) {
+    if ( $time_only != 'Y' )
+      $ret = '(' . translate ( 'Conf.' ) . ')';
+
+    $eventinfo .= build_entry_popup ( $popupid, $tmpLogin,
+      str_replace ( 'XXX', translate ( 'confidential' ),
+        translate ( 'This event is XXX.' ) ), '' );
+  } else
+  if ( $can_access == 0 && $UAC_ENABLED == 'Y' ) {
+    if ( $time_only != 'Y' )
+      $ret = $tmp_ret;
+
+    $eventinfo .= build_entry_popup ( $popupid, $tmpLogin, '',
+      $timestr, '', '', $tmpName, '' );
+  } else {
+    if ( $time_only != 'Y' )
+      $ret = $tmp_ret;
+
+    $eventinfo .= build_entry_popup ( $popupid, $tmpLogin,
+      $event->getDescription (), $timestr, site_extras_for_popup ( $tmpId ),
+      $event->getLocation (), $tmpName, $tmpId, $reminder );
+  }
+  return $ret;
+}
+
+/* Builds the HTML for the entry popup.
+ *
+ * @param string $popupid      CSS id to use for event popup
+ * @param string $user         Username of user the event pertains to
+ * @param string $description  Event description
+ * @param string $time         Time of the event
+ *                             (already formatted in a display format)
+ * @param string $site_extras  HTML for any site_extras for this event
+ *
+ * @return string  The HTML for the event popup.
+ */
+function build_entry_popup ( $popupid, $user, $description = '', $time,
+  $site_extras = '', $location = '', $name = '', $id = '', $reminder = '' ) {
+  global $ALLOW_HTML_DESCRIPTION, $DISABLE_POPUPS, $login,
+  $PARTICIPANTS_IN_POPUP, $popup_fullnames, $popuptemp_fullname,
+  $PUBLIC_ACCESS_VIEW_PART, $SUMMARY_LENGTH, $tempfullname;
+
+  if ( ! empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' )
+    return;
+  // .
+  // Restrict info if time only set.
+  $details = true;
+  if ( function_exists ( 'access_is_enabled' ) &&
+      access_is_enabled () && $user != $login ) {
+    $time_only = access_user_calendar ( 'time', $user );
+    $details = ( $time_only == 'N' ? 1 : 0 );
+  }
+
+  $ret = '<dl id="' . $popupid . '" class="popup">' . "\n";
+
+  if ( empty ( $popup_fullnames ) )
+    $popup_fullnames = array ();
+
+  $partList = array ();
+  if ( $details && $id != '' && !
+    empty ( $PARTICIPANTS_IN_POPUP ) && $PARTICIPANTS_IN_POPUP == 'Y' && !
+      ( $PUBLIC_ACCESS_VIEW_PART == 'N' && $login == '__public__' ) ) {
+    $rows = dbi_get_cached_rows ( 'SELECT cal_login, cal_status
+      FROM webcal_entry_user WHERE cal_id = ? AND cal_status IN ( \'A\',\'W\' )',
+      array ( $id ) );
+    if ( $rows ) {
+      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+        $row = $rows[$i];
+        $participants[] = $row;
+      }
+    }
+    for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
+      user_load_variables ( $participants[$i][0], 'temp' );
+      $partList[] = $tempfullname . ' '
+       . ( $participants[$i][1] == 'W' ? '(?)' : '' );
+    }
+    $rows = dbi_get_cached_rows ( 'SELECT cal_fullname FROM webcal_entry_ext_user
+      WHERE cal_id = ? ORDER by cal_fullname', array ( $id ) );
+    if ( $rows ) {
+      $extStr = translate ( 'External User' );
+      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+        $row = $rows[$i];
+        $partList[] = $row[0] . ' (' . $extStr . ')';
+      }
+    }
+  }
+
+  if ( $user != $login ) {
+    if ( empty ( $popup_fullnames[$user] ) ) {
+      user_load_variables ( $user, 'popuptemp_' );
+      $popup_fullnames[$user] = $popuptemp_fullname;
+    }
+    $ret .= '<dt>' . translate ( 'User' )
+     . ":</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
+  }
+  $ret .= ( $SUMMARY_LENGTH < 80 && strlen ( $name ) && $details
+    ? '<dt>' . htmlspecialchars ( substr ( $name, 0, 40 ) ) . "</dt>\n" : '' )
+   . ( strlen ( $time )
+    ? '<dt>' . translate ( 'Time' ) . ":</dt>\n<dd>$time</dd>\n" : '' )
+   . ( ! empty ( $location ) && $details
+    ? '<dt>' . translate ( 'Location' ) . ":</dt>\n<dd> $location</dd>\n" : '' )
+   . ( ! empty ( $reminder ) && $details
+    ? '<dt>' . translate ( 'Send Reminder' ) . ":</dt>\n<dd> $reminder</dd>\n" : '' );
+
+  if ( ! empty ( $partList ) && $details ) {
+    $ret .= '<dt>' . translate ( 'Participants' ) . ":</dt>\n";
+    foreach ( $partList as $parts ) {
+      $ret .= "<dd> $parts</dd>\n";
+    }
+  }
+
+  if ( ! empty ( $description ) && $details ) {
+    $ret .= '<dt>' . translate ( 'Description' ) . ":</dt>\n<dd>";
+    if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
+      // Replace &s and decode special characters.
+      $str = unhtmlentities (
+        str_replace ( '&amp;amp;', '&amp;',
+          str_replace ( '&', '&amp;', $description ) ) );
+      // If there is no HTML found, then go ahead and replace
+      // the line breaks ("\n") with the HTML break ("<br />").
+      $ret .= ( strstr ( $str, '<' ) && strstr ( $str, '>' )
+        ? $str : nl2br ( $str ) );
+    } else
+      // HTML not allowed in description, escape everything.
+      $ret .= nl2br ( htmlspecialchars ( $description ) );
+
+    $ret .= "</dd>\n";
+  } //if $description
+  return $ret . ( empty ( $site_extras ) ? '' : $site_extras ) . "</dl>\n";
+}
+
+/* Generate HTML for a date selection for use in a form.
+ *
+ * @param string $prefix   Prefix to use in front of form element names
+ * @param string $date     Currently selected date (in YYYYMMDD format)
+ * @param bool $trigger    Add onchange event trigger that
+ *                         calls javascript function $prefix_datechanged ()
+ * @param int  $num_years  Number of years to display
+ *
+ * @return string  HTML for the selection box.
+ */
+function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
+  $selected = ' selected="selected"';
+  $trigger_str = ( empty ( $trigger ) ? '' : $prefix . 'datechanged ();' );
+  $onchange = ( empty ( $trigger_str ) ? '' : 'onchange="$trigger_str"' );
+  if ( strlen ( $date ) != 8 )
+    $date = date ( 'Ymd' );
+
+  $thisyear = $year = substr ( $date, 0, 4 );
+  $thismonth = $month = substr ( $date, 4, 2 );
+  $thisday = $day = substr ( $date, 6, 2 );
+  if ( $thisyear - date ( 'Y' ) >= ( $num_years - 1 ) )
+    $num_years = $thisyear - date ( 'Y' ) + 2;
+
+  $ret = '
+      <select name="' . $prefix . 'day" id="' . $prefix . 'day"'
+   . $onchange . '>';
+  for ( $i = 1; $i <= 31; $i++ ) {
+    $ret .= '
+        <option value="' . "$i\""
+     . ( $i == substr ( $date, 6, 2 ) ? $selected : '' ) . ">$i" . '</option>';
+  }
+  $ret .= '
+      </select>
+      <select name="' . $prefix . 'month"' . $onchange . '>';
+  for ( $i = 1; $i < 13; $i++ ) {
+    $ret .= '
+        <option value="' . "$i\""
+     . ( $i == substr ( $date, 4, 2 ) ? $selected : '' )
+     . '>' . month_name ( $i - 1, 'M' ) . '</option>';
+  }
+  $ret .= '
+      </select>
+      <select name="' . $prefix . 'year"' . $onchange . '>';
+  for ( $i = -10; $i < $num_years; $i++ ) {
+    $y = $thisyear + $i;
+    $ret .= '
+        <option value="' . "$y\"" . ( $y == $thisyear ? $selected : '' )
+     . ">$y" . '</option>';
+  }
+  return $ret . '
+      </select>
+      <input type="button" name="' . $prefix . 'btn" onclick="selectDate ( \''
+   . $prefix . 'day\',\'' . $prefix . 'month\',\'' . $prefix . "year','$date'"
+   . ', event, this.form );" value="' . translate ( 'Select' ) . '..." />' . "\n";
+}
+
+/* Generate HTML to create a month display.
+ */
+function display_month ( $thismonth, $thisyear, $demo = '' ) {
+  global $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_LONG_DAYS, $DISPLAY_WEEKNUMBER,
+  $login, $today, $user, $WEEK_START, $WEEKENDBG;
+
+  $ret = '
+    <table class="main" cellspacing="0" cellpadding="0" id="month_main">
+      <tr>' . ( $DISPLAY_WEEKNUMBER == 'Y' ? '
+        <th class="weekcell" width="5%"></th>' : '' );
+
+  for ( $i = 0; $i < 7; $i++ ) {
+    $thday = ( $i + $WEEK_START ) % 7;
+    $ret .= '
+        <th' . ( is_weekend ( $thday ) ? ' class="weekend"' : '' )
+     . '>' . weekday_name ( $thday, $DISPLAY_LONG_DAYS ) . '</th>';
+  }
+  $ret .= '
+      </tr>';
+  $charset = translate ( 'charset' );
+  $weekStr = translate ( 'Week' );
+  $WKStr = translate ( 'WK' );
+
+  $wkstart = get_weekday_before ( $thisyear, $thismonth );
+  // Generate values for first day and last day of month.
+  $monthstart = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
+  $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
+  $monthend2 = date ( 'Ymd His', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
+  $todayYmd = date ( 'Ymd', $today );
+  for ( $i = $wkstart; date ( 'Ymd', $i + 43200 ) <= $monthend;
+    $i += ( 86400 * 7 ) ) {
+    $ret .= '
+      <tr>';
+    if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
+      $ret .= '
+        <td class="weekcell"><a class="weekcell" title="' . $weekStr . '&nbsp;'
+       . date ( 'W', $i + 86400 * 2 ) . '" href="'
+       . ( $demo ? '"' : 'week.php?date=' . date ( 'Ymd', $i + 86400 ) )
+       . ( ! empty ( $user ) && $user != $login ? '&amp;user=' . $user : '' )
+       . ( empty ( $cat_id ) ? '' : '&amp;cat_id=' . $cat_id ) . '"' . '>';
+
+      $wkStr = $WKStr . date ( 'W', $i + 86400 * 2 );
+      $wkStr2 = '';
+
+      if ( $charset == 'UTF-8' )
+        $wkStr2 = $wkStr;
+      else {
+        for ( $w = 0, $cnt = strlen ( $wkStr ); $w < $cnt; $w++ ) {
+          $wkStr2 .= substr ( $wkStr, $w, 1 ) . '<br />';
+        }
+      }
+      $ret .= $wkStr2 . '</a></td>';
+    }
+
+    for ( $j = 0; $j < 7; $j++ ) {
+      $date = $i + ( $j * 86400 + 43200 );
+      $dateYmd = date ( 'Ymd', $date );
+      $dateD = date ( 'd', $date );
+      $thiswday = date ( 'w', $date );
+      $is_weekend = is_weekend ( $date ) && ( ! empty ( $WEEKENDBG ) );
+      $ret .= '
+        <td';
+
+      $currMonth = ( $dateYmd >= $monthstart && $dateYmd <= $monthend );
+      if ( $currMonth ||
+        ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
+        $class = ( ! $demo && $dateYmd == $todayYmd ? 'today' : '' )
+         . ( $is_weekend ? ' weekend' : '' )
+         . ( ! $currMonth ? ' othermonth' : '' );
+        // .
+        // Get events for this day.
+        $ret_events = '';
+        if ( ! $demo )
+          $ret_events = print_date_entries ( $dateYmd,
+            ( ! empty ( $user ) ? $user : $login ), false );
+        else {
+          // Since we base this calendar on the current month,
+          // the placement of the days always change so
+          // set 3rd Thursday as "today" for the demo...
+          if ( $dateD >= 16 && $dateD < 23 && $thiswday == 4 ) {
+            $class = 'today';
+            $ret_events = translate ( 'Today' );
+          }
+          // ... and set 2nd Saturday and 2nd Tuesday as the demo event days.
+          if ( $dateD >= 8 && $dateD <= 15 &&
+            ( $thiswday == 2 || $thiswday == 6 ) ) {
+            $class .= ' entry hasevents';
+            $ret_events = translate ( 'My event text' );
+          }
+        }
+        $class .= ( ! empty ( $ret_events ) &&
+          strstr ( $ret_events, 'class="entry"' ) ? ' hasevents' : '' );
+
+        $ret .= ( strlen ( $class ) ? ' class="' . $class . '"' : '' )
+         . ">$ret_events</td>";
+      } else
+        $ret .= ( $is_weekend ? 'class="weekend"' : '' ) . '>&nbsp;</td>';
+    }
+    $ret .= '
+      </tr>';
+  }
+  return $ret . '
+    </table>';
+}
+
+/* Generate the HTML for the navigation bar.
+ */
+function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
+  global $cat_id, $CATEGORIES_ENABLED, $caturl, $DATE_FORMAT_MY,
+  $DISPLAY_SM_MONTH, $DISPLAY_TASKS, $DISPLAY_WEEKNUMBER, $is_admin,
+  $is_assistant, $is_nonuser_admin, $login, $nextYmd, $nowYmd, $prevYmd,
+  $single_user, $spacer, $thisday, $thismonth, $thisyear, $user, $user_fullname,
+  $wkend, $wkstart;
+
+  if ( empty ( $name ) )
+    return;
+
+  $nextStr = translate ( 'Next' );
+  $prevStr = translate ( 'Previous' );
+  $u_url = ( ! empty ( $user ) && $user != $login
+    ? 'user=' . $user . '&amp;' : '' );
+  $ret = '
+      <div class="topnav" '
+  // Hack to prevent giant space between minicals and navigation in IE.
+  . ( get_web_browser () == 'MSIE' ? 'style="zoom:1"' : '' )
+   . '>' . ( $show_arrows &&
+    ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || $DISPLAY_TASKS == 'Y' ) ? '
+        <a title="' . $nextStr . '" class="next" href="' . $name . '.php?"'
+     . $u_url . 'date=' . $nextYmd . $caturl
+     . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+        <a title="' . $prevStr . '" class="prev" href="' . $name . '.php?'
+     . $u_url . 'date=' . $prevYmd . $caturl
+     . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>' : '' ) . '
+        <div class="title">
+          <span class="date">';
+
+  if ( $name == 'day' )
+    $ret .= date_to_str ( $nowYmd );
+  elseif ( $name == 'week' )
+    $ret .= date_to_str ( date ( 'Ymd', $wkstart ), '', false )
+     . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
+     . date_to_str ( date ( 'Ymd', $wkend - 86400 ), '', false )
+     . ( $DISPLAY_WEEKNUMBER == 'Y' ? " \n(" . translate ( 'Week' ) . ' '
+       . date ( 'W', $wkstart + 86400 ) . ')' : '' );
+  elseif ( $name == 'month' || $name == 'view_l' )
+    $ret .= $spacer
+     . date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
+      $DATE_FORMAT_MY, false, false );
+
+  return $ret . '</span>
+          <span class="user">'
+  // Display current calendar's user (if not in single user).
+  . ( $single_user == 'N' ? '<br />' . $user_fullname : '' )
+   . ( $is_nonuser_admin ||
+    ( $is_admin && ! empty ( $user ) && $user == '__public__' )
+    ? '<br />-- ' . translate ( 'Admin mode' ) . ' --' : '' )
+   . ( $is_assistant
+    ? '<br />-- ' . translate ( 'Assistant mode' ) . ' --' : '' ) . '</span>'
+   . ( $CATEGORIES_ENABLED == 'Y' && $show_cats &&
+    ( ! $user || ( $user == $login || $is_assistant ) ) ? '<br /><br />'
+     . print_category_menu ( $name,
+      sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday ),
+      $cat_id ) : '' ) . '
+        </div>
+      </div><br />';
+}
+
+/* Prints out a minicalendar for a month.
+ *
+ * @todo Make day.php NOT be a special case
+ *
+ * @param int    $thismonth      Number of the month to print
+ * @param int    $thisyear       Number of the year
+ * @param bool   $showyear       Show the year in the calendar's title?
+ * @param bool   $show_weeknums  Show week numbers to the left of each row?
+ * @param string $minical_id     id attribute for the minical table
+ * @param string $month_link     URL and query string for month link that should
+ *                               come before the date specification (e.g.
+ *                               month.php?  or  view_l.php?id=7&amp;)
+ */
+function display_small_month ( $thismonth, $thisyear, $showyear,
+  $show_weeknums = false, $minical_id = '', $month_link = 'month.php?' ) {
+  global $boldDays, $caturl, $DATE_FORMAT_MY, $DISPLAY_ALL_DAYS_IN_MONTH,
+  $DISPLAY_TASKS, $DISPLAY_WEEKNUMBER, $get_unapproved, $login,
+  $MINI_TARGET, // Used by minical.php
+  $SCRIPT,
+  $thisday, // Needed for day.php
+  $today, $use_http_auth, $user, $WEEK_START;
+
+  $nextStr = translate ( 'Next' );
+  $prevStr = translate ( 'Previous' );
+  $u_url = ( $user != $login && ! empty ( $user )
+    ? 'user=' . $user . '&amp;' : '' );
+  $weekStr = translate ( 'Week' );
+  // .
+  // Start the minical table for each month.
+  $ret = '
+    <table class="minical"'
+   . ( $minical_id != '' ? ' id="' . $minical_id . '"' : '' ) . '>';
+
+  $monthstart = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
+  $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
+  // Determine if the week starts on Sunday or Monday.
+  // TODO:  We need to be able to start a week on ANY day.
+  $wkstart = get_weekday_before ( $thisyear, $thismonth );
+
+  if ( $SCRIPT == 'day.php' ) {
+    $month_ago =
+    date ( 'Ymd', mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear ) );
+    $month_ahead =
+    date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear ) );
+
+    $ret .= '<caption>' . $thisday . '</caption>
+      <thead>
+        <tr class="monthnav">
+          <th colspan="' . ( $DISPLAY_WEEKNUMBER == true ? 8 : 7 ) . '">
+            <a title="' . $prevStr . '" class="prev" href="day.php?' . $u_url
+     . 'date=' . $month_ago . $caturl
+     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
+            <a title="' . $nextStr . '" class="next" href="day.php?' . $u_url
+     . 'date=' . $month_ahead . $caturl
+     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
+     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
+      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
+          </th>
+        </tr>';
+  } elseif ( $SCRIPT == 'minical.php' ) {
+    $month_ago =
+    date ( 'Ymd', mktime ( 0, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
+    $month_ahead =
+    date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
+
+    $ret .= '
+      <thead>
+        <tr class="monthnav">
+          <th colspan="7">
+            <a title="' . $prevStr . '" class="prev" href="minical.php?'
+     . $u_url . 'date=' . $month_ago
+     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
+            <a title="' . $nextStr . '" class="next" href="minical.php?'
+     . $u_url . 'date=' . $month_ahead
+     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
+     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
+      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
+          </th>
+        </tr>';
+  } else // Not day or minical script.  Print the month name.
+    $ret .= '
+      <caption><a href="' . $month_link . $u_url . 'year=' . $thisyear
+     . '&amp;month=' . $thismonth . '">'
+     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
+      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false )
+     . '</a></caption>
+      <thead>';
+
+  $ret .= '
+        <tr>'
+  // Print the headers to display the day of the week (Sun, Mon, Tues, etc.).
+  // If we're showing week numbers we need an extra column.
+  . ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ? '
+          <th class="empty">&nbsp;</th>' : '' );
+
+  for ( $i = 0; $i < 7; $i++ ) {
+    $thday = ( $i + $WEEK_START ) % 7;
+    $ret .= '
+          <th' . ( is_weekend ( $thday ) ? ' class="weekend"' : '' ) . '>'
+     . weekday_name ( $thday, 'D' ) . '</th>';
+  }
+  // End the header row.
+  $ret .= '
+        </tr>
+      </thead>
+      <tbody>';
+  for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthend; $i += 604800 ) {
+    $ret .= '
+        <tr>' . ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ? '
+          <td class="weeknumber"><a class="weeknumber" ' . 'title="' . $weekStr
+       . '&nbsp;' . date ( 'W', $i + 86400 ) . '" ' . 'href="week.php?' . $u_url
+       . 'date=' . date ( 'Ymd', $i + 86400 * 2 ) . '">('
+       . date ( 'W', $i + 86400 * 2 ) . ')</a></td>' : '' );
+
+    for ( $j = 0; $j < 7; $j++ ) {
+      // Add 12 hours just so we don't have DST problems.
+      $date = $i + ( $j * 86400 + 43200 );
+      $dateYmd = date ( 'Ymd', $date );
+      $hasEvents = false;
+      $title = '';
+      $ret .= '
+          <td';
+
+      if ( $boldDays ) {
+        $ev = get_entries ( $dateYmd, $get_unapproved, true, true );
+        if ( count ( $ev ) > 0 ) {
+          $hasEvents = true;
+          $title = $ev[0]->getName ();
+        } else {
+          $rep = get_repeating_entries ( $user, $dateYmd, $get_unapproved );
+          if ( count ( $rep ) > 0 ) {
+            $hasEvents = true;
+            $title = $rep[0]->getName ();
+          }
+        }
+      }
+      if ( ( $dateYmd >= $monthstart && $dateYmd <= $monthend ) ||
+          ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
+        $class =
+        // If it's a weekend.
+        ( is_weekend ( $date ) ? 'weekend' : '' )
+        // If the day being viewed is today AND script = day.php.
+        . ( $dateYmd == $thisyear . $thismonth . $thisday && $SCRIPT == 'day.php'
+          ? ' selectedday' : '' )
+        // Are there any events scheduled for this date?
+        . ( $hasEvents ? ' hasevents' : '' );
+
+        $ret .= ( $class != '' ? ' class="' . $class . '"' : '' )
+         . ( $dateYmd == date ( 'Ymd', $today ) ? ' id="today"' : '' )
+         . '><a href="';
+
+        if ( $SCRIPT == 'minical.php' )
+          $ret .= ( $use_http_auth
+            ? 'day.php?user=' . $user
+            : 'nulogin.php?login=' . $user . '&amp;return_path=day.php' )
+           . '&amp;date=' . $dateYmd . '"'
+           . ( ! empty ( $MINI_TARGET ) ? ' target="' . $MINI_TARGET . '"' : '' )
+           . ( ! empty ( $title ) ? ' title="' . $title . '"' : '' );
+        else
+          $ret .= 'day.php?' . $u_url . 'date=' . $dateYmd . '"';
+
+        $ret .= '>' . date ( 'j', $date ) . '</a></td>';
+      } else
+        $ret .= ' class="empty' . ( is_weekend ( $date ) ? ' weekend' : '' )
+         . '">&nbsp;</td>';
+    } // end for $j
+    $ret .= '
+        </tr>';
+  } // end for $i
+  return $ret . '
+      </tbody>
+    </table>';
+}
+
+/* Prints small task list for this $login user.
+ */
+function display_small_tasks ( $cat_id ) {
+  global $caturl, $DATE_FORMAT_TASK, $eventinfo,
+  $is_assistant, $login, $task_filter, $user;
+  static $key = 0;
+
+  if ( ! empty ( $user ) && $user != $login && ! $is_assistant )
+    return false;
+
+  $SORT_TASKS = 'Y';
+
+  $pri[1] = translate ( 'High' );
+  $pri[2] = translate ( 'Medium' );
+  $pri[3] = translate ( 'Low' );
+  $task_user = $login;
+  $u_url = '';
+
+  if ( $user != $login && ! empty ( $user ) ) {
+    $u_url = 'user=' . $user . '&amp;';
+    $task_user = $user;
+  }
+  $ajax = array ();
+  $dueSpacer = '&nbsp;';
+  $task_cat = ( ! empty ( $cat_id ) ? $cat_id : -99 );
+
+  if ( $SORT_TASKS == 'Y' ) {
+    for ( $i = 0; $i < 4; $i++ ) {
+      $ajax[$i] = '
+        <td class="sorter" onclick="sortTasks ( ' . $i . ', ' . $task_cat
+       . ', this )"><img src="images/up.png" style="vertical-align:bottom" /></td>';
+      $ajax[$i + 4] = '
+        <td  class="sorter" onclick="sortTasks ( ' . $i + 4 . ', ' . $task_cat
+       . ', this )"><img src="images/down.png" style="vertical-align:top" /></td>';
+    }
+  } else {
+    $dueSpacer = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+    $ajax = array_pad ( $ajax, 8, '
+        <td></td>' );
+  }
+
+  $priorityStr = translate ( 'Priority' );
+  $dateFormatStr = $DATE_FORMAT_TASK;
+  $task_list = query_events ( $task_user, false,
+    ( ! empty ( $task_filter ) ? $task_filter : '' ), $cat_id, true );
+  $row_cnt = 1;
+  $task_html = '
+    <table class="minitask" cellspacing="0" cellpadding="2">
+      <tr class="header">
+        <th colspan="6">' . translate ( 'TASKS' ) . '</th>
+        <th align="right" colspan="2"><a href="edit_entry.php?' . $u_url
+   . 'eType=task' . $caturl
+   . '"><img src="images/new.gif" alt="+" class="new" /></a></th>
+      </tr>
+      <tr class="header">
+        <td rowspan="2">!&nbsp;</td>' . $ajax[0] . '
+        <td rowspan="2" width="20%">' . translate ( 'Task_Title' )
+    . '&nbsp;</td>' . $ajax[1] . '
+        <td rowspan="2">' . translate ( 'Due' ) . $dueSpacer . '</td>'
+        . $ajax[2] . '
+        <td rowspan="2">%</td>' . $ajax[3] . '
+      </tr>
+      <tr class="header">' . $ajax[4] . $ajax[5] . $ajax[6] . $ajax[7] . '
+      </tr>';
+  foreach ( $task_list as $E ) {
+    // Check UAC.
+    $task_owner = $E->getLogin ();
+    if ( access_is_enabled () ) {
+      $can_access = access_user_calendar ( 'view', $task_owner, '',
+        $E->getCalType (), $E->getAccess () );
+      if ( $can_access == 0 )
+        continue;
+    }
+    $cal_id = $E->getId ();
+    // Generate popup info.
+    $linkid = 'pop' . "$cal_id-$key";
+    $key++;
+    $link = '<a href="view_entry.php?'
+     . ( $task_owner != $login ? 'user=' . $task_owner . '&amp;' : '' )
+     . 'id=' . $cal_id . '"';
+    $task_html .= '
+      <tr class="task" id="' . $linkid . '" style="background-color:'
+     . rgb_luminance ( $GLOBALS['BGCOLOR'], $E->getPriority () ) . '">
+        <td colspan="2">' . $link . ' title="' . $priorityStr . '">'
+     . $E->getPriority () . '</a></td>
+        <td class="name" colspan="2" width="50%">&nbsp;'. $link . ' title="'
+     . translate ( 'Task Name' ) . ': ' . $E->getName () . '">'
+     . substr ( $E->getName (), 0, 15 )
+     . ( strlen ( $E->getName () ) > 15 ? '...' : '' ) . '</a></td>
+        <td colspan="2">' . $link . ' title="' . translate ( 'Task Due Date' )
+     . date_to_str ( $E->getDueDate (), $dateFormatStr, false, false ) . '</a>'
+     . '"></td>
+        <td class="pct" colspan="2">' . $link . ' title="% '
+     . translate ( 'Completed' ) . '">' . $E->getPercent () . '</a></td>
+      </tr>';
+    $row_cnt++;
+    // Build special string to pass to popup.
+    // TODO:  Move this logic into build_entry_popup ().
+
+    $eventinfo .= build_entry_popup ( 'eventinfo-' . $linkid, $E->getLogin (),
+     $E->getDescription (), translate ( 'Due Time' ) . ':'
+     . display_time ( '', 0, $E->getDueDateTimeTS () ) . '</dd><dd>'
+     . translate ( 'Due Date' ) . ':'
+     . date_to_str ( $E->getDueDate (), '', false )
+     . "</dd>\n<dt>" . $priorityStr . ":</dt>\n<dd>" . $E->getPriority ()
+     . '-' . $pri[ceil ( $E->getPriority () / 3 )] . "</dd>\n<dt>"
+     . translate ( 'Percent Complete' ) . ":</dt>\n<dd>" . $E->getPercent ()
+     . '%', '', $E->getLocation (), $E->getName (), $cal_id );
+  }
+  for ( $i = 7; $i > $row_cnt; $i-- ) {
+    $task_html .= '<tr><td colspan="8" class="filler">&nbsp;</td></tr>' . "\n";
+  }
+  $task_html .= "</table>\n";
+  return $task_html;
 }
 
 /* Sends a redirect to the specified page.
@@ -6023,6 +6016,32 @@ function send_no_cache_header () {
  */
 function send_to_preferred_view ( $indate = '', $args = '' ) {
   do_redirect ( get_preferred_view ( $indate, $args ) );
+}
+
+/* Generates the HTML used in an event popup for the site_extras fields.
+ *
+ * @param int $id  Event ID
+ *
+ * @return string  The HTML to be used within the event popup for any site_extra
+ *                 fields found for the specified event.
+ */
+function site_extras_for_popup ( $id ) {
+  global $SITE_EXTRAS_IN_POPUP;
+
+  if ( $SITE_EXTRAS_IN_POPUP != 'Y' )
+    return '';
+
+  $extras = format_site_extras ( get_site_extra_fields ( $id ), EXTRA_DISPLAY_POPUP );
+  if ( empty ( $extras ) )
+    return '';
+
+  $ret = '';
+
+  foreach ( $extras as $extra ) {
+    $ret .= '<dt>' . $extra['name'] . ":</dt>\n<dd>" . $extra['data'] . "</dd>\n";
+  }
+
+  return $ret;
 }
 
 ?>

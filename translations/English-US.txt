@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 02-05-2007
+# Translation last updated on 02-06-2007
 
 
 ################################################################################
@@ -1310,14 +1310,6 @@ delete: delete
 ########################################
 # Page: includes/functions.php
 #
-This event is private: This event is private
-Conf.: Conf.
-WK: WK
-Task_Title: Title
-Task Name: Task Name
-Task Due Date: Task Due Date
-TASKS: TASKS
-Due: Due
 View this event: View this event
 View this task: View this task
 exceeds limit of XXX events per day: exceeds limit of XXX events per day
@@ -1406,6 +1398,15 @@ Delete User: Delete User
 Event: Event
 Action: Action
 Error Type not set for activity log!: Error: Type not set for activity log!
+This event is private: This event is private
+This event is XXX.: This event is XXX.
+Conf.: Conf.
+WK: WK
+TASKS: TASKS
+Task_Title: Title
+Due: Due
+Task Name: Task Name
+Task Due Date: Task Due Date
 Unauthorized: Unauthorized
 
 ########################################
