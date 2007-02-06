@@ -272,7 +272,7 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
 function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
   global $single_user, $user_fullname, $is_nonuser_admin, $is_assistant,
   $user, $login, $thisyear, $thismonth, $thisday, $cat_id, $CATEGORIES_ENABLED,
-  $nextYmd, $prevYmd, $caturl, $nowYmd, $wkstart, $wkend, $spacer,
+  $nextYmd, $prevYmd, $caturl, $nowYmd, $wkstart, $wkend, $spacer, $is_admin,
   $DISPLAY_WEEKNUMBER, $DISPLAY_SM_MONTH, $DISPLAY_TASKS, $DATE_FORMAT_MY;
 
   if ( empty ( $name ) ) return;
