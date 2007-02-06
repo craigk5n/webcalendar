@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 31. Jan. 2007
+# Last update: 5. Feb. 2007
 #
 # $Id$
-# Translation last updated on 01-31-2007
+# Translation last updated on 02-05-2007
 
 
 ################################################################################
@@ -554,7 +554,7 @@ Allow HTML in Description: Erm&ouml;glicht HTML-Beschreibung der Termine
 Popups: Pop-Up&#39;s
 disable-popups-help: Deaktivieren der Pop-Up&#39;s von den Kalenderansichten
 Disable Pop-Ups: Deaktivieren der Pop-Up&#39;s
-popup-includes-siteextras-help: Falls aktiviert - Erm&ouml;glicht die Anzeige benutzerdefinierter Felder die in &#39;site_extra.php&#39; aktiviert wurden.
+popup-includes-siteextras-help: Falls aktiviert - Erm&ouml;glicht die Anzeige benutzerdefinierter Felder die in &#39;site_extras.php&#39; aktiviert wurden.
 Display Site Extras in popup: Anzeige der &#39;Site Extras&#39; im Pop-Up
 popup-includes-participants-help: Falls aktiviert, werden die Benutzer im allgemeinen Kalender und bei den pers&ouml;nlichen Eintragungen angezeigt
 Display Participants in popup: Anzeigen der Benutzer im Pop-Up
@@ -777,7 +777,7 @@ Edit Custom Trailer: &Auml;ndern der benutzerdefinierten FU&szlig;ZEILE
 ########################################
 # Page: access.php
 #
-Database error XXX.: Datenbankfehler XXX
+Database error XXX.: Datenbankfehler XXX.
 DEFAULT CONFIGURATION: GRUNDKONFIGURATION
 Admin: Administration
 Go: Zeigen
@@ -1359,7 +1359,6 @@ Event Imported: Termin importiert
 ########################################
 # Page: includes/functions.php
 #
-Unauthorized: Nicht autorisiert
 This event is private: Dieser Termin ist&nbsp; <b>PRIVAT</b>
 Conf.: Vertraulich
 WK: KW
@@ -1457,6 +1456,8 @@ Attachment: Anhang
 Delete User: Teilnehmer l&ouml;schen
 Event: Termin
 Action: Aktion
+Error Type not set for activity log!: Fehler, Typ ist nicht f&uuml;r Aktivit&auml;ten Protokoll definiert!
+Unauthorized: Nicht autorisiert
 
 ########################################
 # Page: includes/date_formats.php
@@ -1468,6 +1469,9 @@ LANGUAGE DEFINED: SPRACHDEFINIERT
 #
 Fatal Error: Fataler Fehler
 Troubleshooting Help: Fehlersuche (Hilfe)
+Could not find settings.php file...: Kann die Datei &#34;settings.php&#34; nicht finden.</br>Bitte kopieren Sie &#34;settings.php.orig&#34; nach &#34;settings.php&#34; und editieren diese f6uuml;r Ihre Seite.
+Could not find XXX defined in...: Kann XXX in Ihrer Datei &#34;settings.php&#34; nicht finden.
+You must define XXX in: Sie m&uuml;ssen XXX in Ihrer &#34;settings.php&#34; Datei definieren.
 
 ########################################
 # Page: includes/user-imap.php
@@ -1541,6 +1545,16 @@ Spanish: Spanisch
 Swedish: Schwedisch
 Turkish: Turkisch
 Welsh: Wallisisch
+0: 0
+1: 1
+2: 2
+3: 3
+4: 4
+5: 5
+6: 6
+7: 7
+8: 8
+9: 9
 journal: Journal
 
 ########################################
