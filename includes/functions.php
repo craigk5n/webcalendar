@@ -5963,7 +5963,7 @@ function send_doctype ( $doc_title = '' ) {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="' . $lang . '">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=' . $charset . '" />' . ( empty ( $doc_title ) ? '' : '
-    <title>' . $doc_title . '</title' );
+    <title>' . $doc_title . '</title>' );
 }
 
 /* Sends an HTTP login request to the browser and stops execution.
