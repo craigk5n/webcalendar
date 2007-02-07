@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 5. Feb. 2007
+# Last update: 7. Feb. 2007
 #
 # $Id$
-# Translation last updated on 02-05-2007
+# Translation last updated on 02-07-2007
 
 
 ################################################################################
@@ -1359,14 +1359,6 @@ Event Imported: Termin importiert
 ########################################
 # Page: includes/functions.php
 #
-This event is private: Dieser Termin ist&nbsp; <b>PRIVAT</b>
-Conf.: Vertraulich
-WK: KW
-Task_Title: Aufgabentitel
-Task Name: Aufgabe
-Task Due Date: Abgabefrist
-TASKS: AUFGABEN
-Due: F&auml;lligkeit
 View this event: Diesen Termin anzeigen
 View this task: Diese Aufgabe anzeigen
 exceeds limit of XXX events per day: &uuml;berschrittenes Limit von XXX Termin(e) pro Tag
@@ -1457,6 +1449,15 @@ Delete User: Teilnehmer l&ouml;schen
 Event: Termin
 Action: Aktion
 Error Type not set for activity log!: Fehler, Typ ist nicht f&uuml;r Aktivit&auml;ten Protokoll definiert!
+This event is private: Dieser Termin ist&nbsp; <b>PRIVAT</b>
+This event is XXX.: Dieser Termin ist XXX.
+Conf.: Vertraulich
+WK: KW
+TASKS: AUFGABEN
+Task_Title: Aufgabentitel
+Due: F&auml;lligkeit
+Task Name: Aufgabe
+Task Due Date: Abgabefrist
 Unauthorized: Nicht autorisiert
 
 ########################################
