@@ -4668,7 +4668,8 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
 
       $currMonth = ( $dateYmd >= $monthstart && $dateYmd <= $monthend );
       if ( $currMonth ||
-        ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
+        ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && 
+        $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
         $class = ( ! $demo && $dateYmd == $todayYmd ? 'today' : '' )
          . ( $is_weekend ? ' weekend' : '' )
          . ( ! $currMonth ? ' othermonth' : '' );
@@ -4699,7 +4700,7 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
         $ret .= ( strlen ( $class ) ? ' class="' . $class . '"' : '' )
          . ">$ret_events</td>";
       } else
-        $ret .= ( $is_weekend ? 'class="weekend"' : '' ) . '>&nbsp;</td>';
+        $ret .= ( $is_weekend ? ' class="weekend"' : '' ) . '>&nbsp;</td>';
     }
     $ret .= '
       </tr>';
@@ -4730,7 +4731,7 @@ function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
   . ( get_web_browser () == 'MSIE' ? 'style="zoom:1"' : '' )
    . '>' . ( $show_arrows &&
     ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || $DISPLAY_TASKS == 'Y' ) ? '
-        <a title="' . $nextStr . '" class="next" href="' . $name . '.php?"'
+        <a title="' . $nextStr . '" class="next" href="' . $name . '.php?'
      . $u_url . 'date=' . $nextYmd . $caturl
      . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
         <a title="' . $prevStr . '" class="prev" href="' . $name . '.php?'
@@ -4976,7 +4977,7 @@ function display_small_tasks ( $cat_id ) {
         <td class="sorter" onclick="sortTasks ( ' . $i . ', ' . $task_cat
        . ', this )"><img src="images/up.png" style="vertical-align:bottom" /></td>';
       $ajax[$i + 4] = '
-        <td  class="sorter" onclick="sortTasks ( ' . $i + 4 . ', ' . $task_cat
+        <td  class="sorter" onclick="sortTasks ( ' . ( $i + 4 ) . ', ' . $task_cat
        . ', this )"><img src="images/down.png" style="vertical-align:top" /></td>';
     }
   } else {
