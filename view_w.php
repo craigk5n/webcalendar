@@ -48,7 +48,7 @@ $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1);
 
-$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 4 : 6 ) );
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 5 : 7 ) );
 
 $todayYmd = date ( 'Ymd', $today );
 
@@ -141,7 +141,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   }
   echo "</tr>\n";
 
-  for ( $date = $wkstart; $date <= $wkend; $date += ONE_DAY ) {
+  for ( $date = $wkstart; $date < $wkend; $date += ONE_DAY ) {
     $dateYmd = date ( 'Ymd', $date );
     $is_weekend = is_weekend ( $date );
     if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue;
