@@ -44,7 +44,7 @@ $prevdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear 
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
-$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 4 : 6 ) );
+$wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 5 : 7 ) );
 $thisdate = date ( 'Ymd', $wkstart );
 ?>
 
@@ -117,7 +117,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, 'temp' );
     $body .= "<th class=\"row\" style=\"width:$tdw%;\">$tempfullname</th>\n";
-    for ( $date = $wkstart; $date <= $wkend; $date += ONE_DAY ) {
+    for ( $date = $wkstart; $date < $wkend; $date += ONE_DAY ) {
       $is_weekend = is_weekend ( $date );
       if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue; 
       $dateYmd = date ( 'Ymd', $date );
