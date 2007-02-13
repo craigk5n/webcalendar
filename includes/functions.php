@@ -3611,8 +3611,9 @@ function display_small_tasks ( $cat_id ) {
         <td class="sorter" onclick="sortTasks ( ' . $i . ', ' . $task_cat
        . ', this )"><img src="images/up.png" style="vertical-align:bottom" /></td>';
       $ajax[$i + 4] = '
-        <td  class="sorter" onclick="sortTasks ( ' . ( $i + 4 ) . ', ' . $task_cat
-       . ', this )"><img src="images/down.png" style="vertical-align:top" /></td>';
+        <td  class="sorter sorterbottom" onclick="sortTasks ( ' . 
+		  ( $i + 4 ) . ', ' . $task_cat
+         . ', this )"><img src="images/down.png" style="vertical-align:top" /></td>';
     }
   } else {
     $dueSpacer = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -3634,12 +3635,12 @@ function display_small_tasks ( $cat_id ) {
    . '"><img src="images/new.gif" alt="+" class="new" /></a></th>
       </tr>
       <tr class="header">
-        <td rowspan="2">!&nbsp;</td>' . $ajax[0] . '
-        <td rowspan="2" width="20%">' . translate ( 'Task_Title' )
+        <td rowspan="2" class="sorterbottom">!&nbsp;</td>' . $ajax[0] . '
+        <td rowspan="2" width="20%" class="sorterbottom">' . translate ( 'Task_Title' )
    . '&nbsp;</td>' . $ajax[1] . '
-        <td rowspan="2">' . translate ( 'Due' ) . $dueSpacer . '</td>'
+        <td rowspan="2" class="sorterbottom">' . translate ( 'Due' ) . $dueSpacer . '</td>'
    . $ajax[2] . '
-        <td rowspan="2">%</td>' . $ajax[3] . '
+        <td rowspan="2" class="sorterbottom">%</td>' . $ajax[3] . '
       </tr>
       <tr class="header">' . $ajax[4] . $ajax[5] . $ajax[6] . $ajax[7] . '
       </tr>';
@@ -3668,9 +3669,9 @@ function display_small_tasks ( $cat_id ) {
      . translate ( 'Task Name' ) . ': ' . $E->getName () . '">'
      . substr ( $E->getName (), 0, 15 )
      . ( strlen ( $E->getName () ) > 15 ? '...' : '' ) . '</a></td>
-        <td colspan="2">' . $link . ' title="' . translate ( 'Task Due Date' )
+        <td colspan="2">' . $link . ' title="' . translate ( 'Task Due Date' ) . '">'
      . date_to_str ( $E->getDueDate (), $dateFormatStr, false, false ) . '</a>'
-     . '"></td>
+     . '</td>
         <td class="pct" colspan="2">' . $link . ' title="% '
      . translate ( 'Completed' ) . '">' . $E->getPercent () . '</a></td>
       </tr>';
@@ -4653,10 +4654,12 @@ function get_preferred_view ( $indate = '', $args = '' ) {
   $url = str_replace ( '&', '&amp;', $url );
 
   $xdate = empty ( $indate ) ? $thisdate : $indate;
-  return $url
-   . ( empty ( $xdate ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
-     . 'date=' . $xdate )
-   . ( empty ( $args ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' ) . $args );
+  
+  $url .= ( empty ( $xdate ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
+     . 'date=' . $xdate );
+  $url .= ( empty ( $args ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' ) . $args );
+  
+  return $url;
 }
 
 /* Gets all the repeating events for the specified date.
@@ -5189,7 +5192,7 @@ function print_entry ( $event, $date ) {
     return false;
 
   $class = ( $login != $loginStr && strlen ( $loginStr )
-    ? 'layer' : ( $event->getStatus () == 'W' ? 'unapproved' : '' ) . 'entry' );
+    ? 'layerentry' : ( $event->getStatus () == 'W' ? 'unapproved' : '' ) . 'entry' );
   // .
   // If we are looking at a view, then always use "entry".
   if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
