@@ -860,6 +860,9 @@ img.help {
   margin: 0;
   border-bottom: 0px;
 }
+.sorterbottom {
+ border-bottom: 1px solid #000 !important;
+}
 .minitask  td {
   color: <?php echo $GLOBALS['TEXTCOLOR'];
 
