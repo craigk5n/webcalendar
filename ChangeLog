@@ -1,5 +1,9 @@
 $Id$
 Version 1.1.3+CVS (?? ??? 2006)
+ - Fixed bug [ 1654078 ] cannot managed 'public access' without using 'top-menue'
+ - Fixed bug [ 1657946 ] little thick squares at layered events at month.php
+ - Fixed bug [ 1657794 ] missing seperate line between sort-header and tasks
+ - Fixed bug [ 1657789 ] 'due-dates' are not displayed at the 'little-task-list'
  - Fixed bug [ 1606260 ] no sunday not in view: WEEK (users vertical)
  - Fixed bug [ 1652424 ] no/little clues on actual user when viewing other's cal
  - Fixed bug [ 1650891 ] Including apostrophe (') in report name breaks top menu.
