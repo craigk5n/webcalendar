@@ -51,8 +51,8 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
 if ( $DISPLAY_TASKS == 'Y' )
   $smallTasks = '<div id="minitask">' .display_small_tasks ( $cat_id ) . '</div>';
 
-$dayStr = print_day_at_a_glance ( $nowYmd, empty ( $user )
-  ? $login : $user, $can_add );
+$dayStr = print_day_at_a_glance ( $nowYmd, ( empty ( $user )
+  ? $login : $user ), $can_add );
 $navStr = display_navigation ( 'day' );
 $smallMonthStr = display_small_month ( $thismonth, $thisyear, true );
 if ( empty ( $friendly ) ) {
