@@ -44,427 +44,8 @@ function do_debug ( $msg ) {
   // 2, 'sockieman:2000' );
 }
 
-/* Converts a time format HHMMSS (like 130000 for 1PM)
- * into number of minutes past midnight.
- *
- * @param string $time Input time in HHMMSS format
- *
- * @return int The number of minutes since midnight
- */
-function time_to_minutes ( $time ) {
-  $h = intval ( $time / 10000 );
-  $m = intval ( $time / 100 ) % 100;
-  $num = $h * 60 + $m;
-  return $num;
-}
-
-/* Calculates which row/slot this time represents.
- *
- * This is used in day and week views where hours of the time are separeted
- * into different cells in a table.
- *
- * <b>Note:</b> the global variable <var>$TIME_SLOTS</var> is used to determine
- * how many time slots there are and how many minutes each is.  This variable
- * is defined user preferences (or defaulted to admin system settings).
- *
- * @param string $time       Input time in HHMMSS format
- * @param bool   $round_down Should we change 1100 to 1059?
- *                           (This will make sure a 10AM-100AM appointment just
- *                           shows up in the 10AM slow and not in the 11AM slot
- *                           also.)
- *
- * @return int The time slot index
- */
-function calc_time_slot ( $time, $round_down = false ) {
-  global $TIME_SLOTS;
-  $time = sprintf ( "%06d", $time );
-  $interval = ( 24 * 60 ) / $TIME_SLOTS;
-  $mins_since_midnight = time_to_minutes ( $time );
-  $ret = intval ( $mins_since_midnight / $interval );
-  if ( $round_down ) {
-    if ( $ret * $interval == $mins_since_midnight )
-      $ret--;
-  }
-  if ( $ret > $TIME_SLOTS )
-    $ret = $TIME_SLOTS;
-
-  return $ret;
-}
-
-/* Generates the HTML for an icon to add a new event.
- *
- * @param string $date   Date for new event in YYYYMMDD format
- * @param int    $hour   Hour of day (0-23)
- * @param int    $minute Minute of the hour (0-59)
- * @param string $user   Participant to initially select for new event
- *
- * @return string The HTML for the add event icon
- */
-function html_for_add_icon ( $date = 0, $hour = '', $minute = '', $user = '' ) {
-  global $login, $readonly, $cat_id;
-  static $newEntryStr;
-
-  if ( empty ( $newEntryStr ) )
-    $newEntryStr = translate ( 'New Entry' );
-
-  $u_url = '';
-
-  if ( $readonly == 'Y' )
-    return '';
-
-  if ( $minute < 0 ) {
-    $minute = abs ( $minute );
-    $hour = $hour -1;
-  }
-  if ( ! empty ( $user ) && $user != $login )
-    $u_url = "user=$user&amp;";
-  return '<a title="' . $newEntryStr . '" href="edit_entry.php?' . $u_url . "date=$date" . ( strlen ( $hour ) > 0 ? "&amp;hour=$hour" : '' ) .
-  ( $minute > 0 ? "&amp;minute=$minute" : '' ) .
-  ( empty ( $user ) ? '' : "&amp;defusers=$user" ) .
-  ( empty ( $cat_id ) ? '' : "&amp;cat_id=$cat_id" ) . '"><img src="images/new.gif" class="new" alt="' . $newEntryStr . "\" /></a>\n";
-}
-
-/* Generates the HTML for an event to be viewed in the week-at-glance (week.php).
- *
- * The HTML will be stored in an array (global variable $hour_arr)
- * indexed on the event's starting hour.
- *
- * @param Event  $event          The event
- * @param string $date           Date for which we're printing (in YYYYMMDD format)
- * @param string $override_class If set, then this is the class to use
- * @param bool   $show_time      If enabled, then event time is displayed
- */
-function html_for_event_week_at_a_glance ( $event, $date,
-  $override_class = '', $show_time = true ) {
-  global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
-  $eventinfo, $login, $user, $is_assistant, $is_nonuser_admin;
-  global $DISPLAY_ICONS, $PHP_SELF, $TIME_SPACER;
-  global $layers, $DISPLAY_TZ, $categories;
-  static $key = 0;
-
-  $cal_type = $event->getCalTypeName ();
-
-  if ( access_is_enabled () ) {
-    $time_only = access_user_calendar ( 'time', $event->getLogin () );
-    $can_access = access_user_calendar ( 'view', $event->getLogin (), '',
-      $event->getCalType (), $event->getAccess () );
-    if ( $cal_type == 'task' && $can_access == 0 )
-      return false;
-  } else {
-    $time_only = 'N';
-    $can_access = CAN_DOALL;
-  }
-
-  $catAlt = '';
-  $id = $event->getID ();
-  $name = $event->getName ();
-  // .
-  // Figure out which time slot it goes in. Put tasks in with AllDay and Untimed
-  if ( ! $event->isUntimed () && ! $event->isAllDay () && $cal_type != 'task' ) {
-    $tz_time = date ( 'His', $event->getDateTimeTS () );
-    $ind = calc_time_slot ( $tz_time );
-    if ( $ind < $first_slot )
-      $first_slot = $ind;
-    if ( $ind > $last_slot )
-      $last_slot = $ind;
-  } else {
-    $ind = 9999;
-  }
-
-  if ( $login != $event->getLogin () && strlen ( $event->getLogin () ) ) {
-    $class = 'layerentry';
-  } else {
-    $class = 'entry';
-    if ( $event->getStatus () == 'W' ) $class = 'unapprovedentry';
-  }
-  // .
-  // if we are looking at a view, then always use "entry"
-  if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
-      strstr ( $PHP_SELF, 'view_w.php' ) ||
-      strstr ( $PHP_SELF, 'view_v.php' ) ||
-      strstr ( $PHP_SELF, 'view_r.php' ) ||
-      strstr ( $PHP_SELF, 'view_t.php' ) )
-    $class = 'entry';
-
-  if ( ! empty ( $override_class ) )
-    $class .= ' ' . $override_class;
-  // .
-  // avoid php warning for undefined array index
-  if ( empty ( $hour_arr[$ind] ) )
-    $hour_arr[$ind] = '';
-  $catNum = abs ( $event->getCategory () );
-  $catIcon = 'icons/cat-' . $catNum . '.gif';
-  if ( $catNum > 0 && file_exists ( $catIcon ) ) {
-    $catAlt = translate ( 'Category' ) . ': ' . $categories[$catNum]['cat_name'];
-    $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catAlt\" title=\"$catAlt\" />";
-  }
-
-  $popupid = "eventinfo-pop$id-$key";
-  $linkid = "pop$id-$key";
-  $key++;
-  // .
-  // build entry link if UAC permits viewing
-  $time_spacer = ( $time_only == 'Y' ? '' : $TIME_SPACER );
-  if ( $can_access != 0 && $time_only != 'Y' ) {
-    // make sure clones have parents url date
-    $linkDate = ( $event->getClone () ? $event->getClone () : $date );
-    $href = "href=\"view_entry.php?id=$id&amp;date=$linkDate";
-    if ( $cal_type == 'task' ) {
-      $title = '<a title="' . translate ( 'View this task' ) . '"';
-      $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';
-    } else { // must be event
-      $title = '<a title="' . translate ( 'View this event' ) . '"';
-      if ( $event->isAllDay () || $event->isUntimed () && $catAlt == '' ) {
-        $hour_arr[$ind] .= '<img src="images/circle.gif" class="bullet" alt="*" /> ';
-      }
-    }
-  } else {
-    $title = '<a title="" ';
-    $href = '';
-  }
-
-  $hour_arr[$ind] .= $title . " class=\"$class\" id=\"$linkid\" " . $href;
-  if ( strlen ( $GLOBALS['user'] ) > 0 ) {
-    $hour_arr[$ind] .= '&amp;user=' . $GLOBALS['user'];
-  } else if ( $class == 'layerentry' ) {
-    $hour_arr[$ind] .= '&amp;user=' . $event->getLogin ();
-  }
-  $hour_arr[$ind] .= '">';
-  if ( $event->getPriority () == 3 )
-    $hour_arr[$ind] .= '<strong>';
-
-  if ( $login != $event->getLogin () && strlen ( $event->getLogin () ) ) {
-    if ( $layers ) foreach ( $layers as $layer ) {
-      if ( $layer['cal_layeruser'] == $event->getLogin () ) {
-        $in_span = true;
-        $hour_arr[$ind] .= '<span style="color:' . $layer['cal_color'] . ';">';
-      }
-    }
-    // check to see if Category Colors are set
-  } else if ( ! empty ( $categories[$catNum]['cat_color'] ) ) {
-    $cat_color = $categories[$catNum]['cat_color'];
-    if ( $cat_color != '#000000' ) {
-      $hour_arr[$ind] .= ( '<span style="color:' . $cat_color . ';">' );
-      $in_span = true;
-    }
-  }
-  if ( $event->isAllDay () ) {
-    $timestr = translate ( 'All day event' );
-    // Set start cell of all-day event to beginning of work hours
-    if ( empty ( $rowspan_arr[$first_slot] ) )
-      $rowspan_arr[$first_slot] = 0; // avoid warning below
-    // which slot is end time in? take one off so we don't
-    // commented out this section because it was breaking
-    // the display if All Day is followed by a timed event
-    // $rowspan = $last_slot - $first_slot + 1;
-    // if ( $rowspan > $rowspan_arr[$first_slot] && $rowspan > 1 )
-    // $rowspan_arr[$first_slot] = $rowspan;
-    // We'll skip tasks  here as well
-  } else if ( $event->getTime () >= 0 && $cal_type != 'task' ) {
-    if ( $show_time )
-      $hour_arr[$ind] .= display_time ( $event->getDatetime () ) . $time_spacer;
-    $timestr = display_time ( $event->getDatetime () );
-    if ( $event->getDuration () > 0 ) {
-      $timestr .= '-' . display_time ( $event->getEndDateTime (), $DISPLAY_TZ );
-      $end_time = date ( 'His', $event->getEndDateTimeTS () );
-      // this fixes the improper display if an event ends at or after midnight
-      if ( $end_time < $tz_time ) {
-        $end_time += 240000;
-      }
-    } else {
-      $end_time = 0;
-    }
-    if ( empty ( $rowspan_arr[$ind] ) )
-      $rowspan_arr[$ind] = 0; // avoid warning below
-    // which slot is end time in? take one off so we don't
-    // show 11:00-12:00 as taking up both 11 and 12 slots.
-    $endind = calc_time_slot ( $end_time, true );
-    if ( $endind == $ind )
-      $rowspan = 0;
-    else
-      $rowspan = $endind - $ind + 1;
-    if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
-      $rowspan_arr[$ind] = $rowspan;
-  } else {
-    $timestr = '';
-  }
-  // .
-  // avoid php warning of undefined index when using .= below
-  if ( empty ( $hour_arr[$ind] ) )
-    $hour_arr[$ind] = '';
-  $hour_arr[$ind] .= build_entry_label ( $event, $popupid,
-    $can_access, $timestr, $time_only );
-
-  if ( ! empty ( $in_span ) )
-    $hour_arr[$ind] .= '</span>'; //end color span
-  if ( $event->getPriority () == 3 ) $hour_arr[$ind] .= '</strong>'; //end font-weight span
-  $hour_arr[$ind] .= '</a>';
-  // if ( $DISPLAY_ICONS == 'Y' ) {
-  // $hour_arr[$ind] .= icon_text ( $id, true, true );
-  // }
-  $hour_arr[$ind] .= "<br />\n";
-}
-
-/* Generates the HTML for an event to be viewed in the day-at-glance (day.php).
- *
- * The HTML will be stored in an array (global variable $hour_arr)
- * indexed on the event's starting hour.
- *
- * @param Event  $event The event
- * @param string $date  Date of event in YYYYMMDD format
- */
-function html_for_event_day_at_a_glance ( $event, $date ) {
-  global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
-  $eventinfo, $login, $user, $DISPLAY_DESC_PRINT_DAY, $DISPLAY_END_TIMES,
-  $ALLOW_HTML_DESCRIPTION, $layers, $PHP_SELF, $categories;
-  static $key = 0;
-
-  $id = $event->getID ();
-  $name = $event->getName ();
-
-  $cal_type = $event->getCalTypeName ();
-
-  if ( access_is_enabled () ) {
-    $time_only = access_user_calendar ( 'time', $event->getLogin () );
-    $can_access = access_user_calendar ( 'view', $event->getLogin (), '',
-      $event->getCalType (), $event->getAccess () );
-    if ( $cal_type == 'task' && $can_access == 0 )
-      return false;
-  } else {
-    $time_only = 'N';
-    $can_access = CAN_DOALL;
-  }
-
-  $time = $event->getTime ();
-  // .
-  // If TZ_OFFSET make this event before the start of the day or
-  // after the end of the day, adjust the time slot accordingly.
-  if ( ! $event->isUntimed () && ! $event->isAllDay () && $cal_type != 'task' ) {
-    $tz_time = date ( 'His', $event->getDateTimeTS () );
-    $ind = calc_time_slot ( $tz_time );
-    if ( $ind < $first_slot )
-      $first_slot = $ind;
-    if ( $ind > $last_slot )
-      $last_slot = $ind;
-  } else {
-    $ind = 9999;
-  }
-  if ( empty ( $hour_arr[$ind] ) )
-    $hour_arr[$ind] = '';
-
-  if ( $login != $event->getLogin () && strlen ( $event->getLogin () ) ) {
-    $class = 'layerentry';
-  } else {
-    $class = 'entry';
-    if ( $event->getStatus () == 'W' )
-      $class = 'unapprovedentry';
-  }
-  // if we are looking at a view, then always use "entry"
-  if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
-      strstr ( $PHP_SELF, 'view_w.php' ) ||
-      strstr ( $PHP_SELF, 'view_v.php' ) ||
-      strstr ( $PHP_SELF, 'view_t.php' ) )
-    $class = 'entry';
-
-  $popupid = "eventinfo-pop$id-$key";
-  $linkid = "pop$id-$key";
-  $key++;
-  $catNum = abs ( $event->getCategory () );
-  $catIcon = 'icons/cat-' . $catNum . '.gif';
-  if ( $catNum > 0 && file_exists ( $catIcon ) ) {
-    $catAlt = translate ( 'Category' ) . ': ' . $categories[$catNum]['cat_name'];
-    $hour_arr[$ind] .= "<img src=\"$catIcon\" alt=\"$catAlt\" title=\"$catAlt\" />";
-  }
-
-  if ( $cal_type == 'task' ) {
-    $view_text = translate ( 'View this task' );
-    $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';
-  } else {
-    $view_text = translate ( 'View this event' );
-  }
-  // .
-  // make sure clones have parents url date
-  $linkDate = ( $event->getClone () ? $event->getClone () : $date );
-  $href = '';
-  if ( $can_access != 0 && $time_only != 'Y' ) {
-    $href = "href=\"view_entry.php?id=$id&amp;date=$linkDate";
-    if ( strlen ( $GLOBALS['user'] ) > 0 ) {
-      $href .= '&amp;user=' . $GLOBALS['user'];
-    } else if ( $class == 'layerentry' ) {
-      $href .= '&amp;user=' . $event->getLogin ();
-    }
-    $href .= '"';
-  }
-  $hour_arr[$ind] .= '<a title="' . $view_text . "\" class=\"$class\" id=\"$linkid\" $href";
-  $hour_arr[$ind] .= '>';
-
-  if ( $event->getPriority () == 3 ) $hour_arr[$ind] .= '<strong>';
-
-  if ( $login != $event->getLogin() && strlen ( $event->getLogin () ) ) {
-    if ( $layers ) foreach ( $layers as $layer ) {
-      if ( $layer['cal_layeruser'] == $event->getLogin () ) {
-        $in_span = true;
-        $hour_arr[$ind] .= '<span style="color:' . $layer['cal_color'] . ';">';
-      }
-    }
-    // check to see if Category Colors are set
-  } else if ( ! empty ( $categories[$catNum]['cat_color'] ) ) {
-    $cat_color = $categories[$catNum]['cat_color'];
-    if ( $cat_color != '#000000' ) {
-      $hour_arr[$ind] .= ( '<span style="color:' . $cat_color . ';">' );
-      $in_span = true;
-    }
-  }
-  $popup_timestr = $end_timestr = '';
-  if ( $event->isAllDay () ) {
-    $hour_arr[$ind] .= '[' . translate ( 'All day event' ) . '] ';
-  } else if ( $time >= 0 && ! $event->isAllDay () && $cal_type != 'task' ) {
-    $popup_timestr = display_time ( $event->getDatetime () );
-    $end_timestr = '-' . display_time ( $event->getEndDateTime () );
-    $hour_arr[$ind] .= '[' . $popup_timestr;
-    if ( $event->getDuration () > 0 ) {
-      $popup_timestr .= $end_timestr;
-      if ( $DISPLAY_END_TIMES == 'Y' )
-        $hour_arr[$ind] .= $end_timestr;
-      // which slot is end time in? take one off so we don't
-      // show 11:00-12:00 as taking up both 11 and 12 slots.
-      $end_time = date ( 'His', $event->getEndDateTimeTS () );
-      // this fixes the improper display if an event ends at or after midnight
-      if ( $end_time < $tz_time ) {
-        $end_time += 240000;
-      }
-      $endind = calc_time_slot ( $end_time, true );
-      if ( $endind == $ind )
-        $rowspan = 0;
-      else
-        $rowspan = $endind - $ind + 1;
-      if ( ! isset ( $rowspan_arr[$ind] ) )
-        $rowspan_arr[$ind] = 0;
-      if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
-        $rowspan_arr[$ind] = $rowspan;
-    }
-    $hour_arr[$ind] .= '] ';
-  }
-  $hour_arr[$ind] .= build_entry_label ( $event, $popupid, $can_access,
-    $popup_timestr, $time_only );
-
-  if ( $event->getPriority () == 3 ) $hour_arr[$ind] .= '</strong>'; //end font-weight span
-  $hour_arr[$ind] .= '</a>';
-  if ( $DISPLAY_DESC_PRINT_DAY == 'Y' ) {
-    $hour_arr[$ind] .= "\n<dl class=\"desc\">\n";
-    $hour_arr[$ind] .= '<dt>' . translate ( 'Description' ) . ":</dt>\n<dd>";
-    if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
-      $hour_arr[$ind] .= $event->getDescription ();
-    } else {
-      $hour_arr[$ind] .= strip_tags ( $event->getDescription () );
-    }
-    $hour_arr[$ind] .= "</dd>\n</dl>\n";
-  }
-
-  $hour_arr[$ind] .= "<br />\n";
-}
-
-/* Prints all the calendar entries for the specified user for the specified date in day-at-a-glance format.
+/* Prints all the calendar entries for the specified user
+ * for the specified date in day-at-a-glance format.
  *
  * If we are displaying data from someone other than
  * the logged in user, then check the access permission of the entry.
@@ -473,7 +54,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
  * @param string $user Username of calendar
  */
 function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
-  global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan, $DISPLAY_UNAPPROVED;
+  global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
+   $DISPLAY_UNAPPROVED;
   global $TABLEBG, $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS, $today;
   global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR, $DISPLAY_TASKS_IN_GRID;
   // global $repeated_events;
@@ -561,14 +143,16 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
   }
   $ret .= '<table class="main glance" cellspacing="0" cellpadding="0">';
   if ( ! empty ( $hour_arr[9999] ) ) {
-    $ret .= '<tr><th class="empty">&nbsp;</th>' . "\n<td class=\"hasevents\">$hour_arr[9999]</td></tr>\n";
+    $ret .= '<tr><th class="empty">&nbsp;</th>'
+     . "\n<td class=\"hasevents\">$hour_arr[9999]</td></tr>\n";
   }
   $rowspan = 0;
   for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     $time_h = intval ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
     $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-    $addIcon = ( $can_add ? html_for_add_icon ( $date, $time_h, $time_m, $user ) : '' );
+    $addIcon = ( $can_add
+     ? html_for_add_icon ( $date, $time_h, $time_m, $user ) : '' );
     $ret .= "<tr>\n<th class=\"row\">" . $time . "</th>\n";
     if ( $rowspan > 1 ) {
       // this might mean there's an overlap, or it could mean one event
@@ -720,7 +304,7 @@ function activate_urls ( $text ) {
  */
 function display_time ( $time = '', $control = 0, $timestamp = '', $format = '' ) {
   global $TIME_FORMAT, $SERVER_TIMEZONE;
-  if ( $control &4 ) {
+  if ( $control & 4 ) {
     $currentTZ = getenv ( 'TZ' );
     set_env ( 'TZ', $SERVER_TIMEZONE );
   }
@@ -732,7 +316,7 @@ function display_time ( $time = '', $control = 0, $timestamp = '', $format = '' 
 
   if ( ! empty ( $timestamp ) ) {
     // $control & 1 = do not do timezone calculations
-    if ( $control &1 ) {
+    if ( $control & 1 ) {
       $time = gmdate ( 'His', $timestamp );
       $tzid = ' GMT';
     } else {
@@ -757,7 +341,7 @@ function display_time ( $time = '', $control = 0, $timestamp = '', $format = '' 
   } else {
     $ret = sprintf ( "%02d:%02d", $hour, $min );
   }
-  if ( $control &2 ) $ret .= $tzid;
+  if ( $control & 2 ) $ret .= $tzid;
   // reset timezone to previous value
   if ( ! empty ( $currentTZ ) ) set_env ( 'TZ', $currentTZ );
   return $ret;
@@ -879,7 +463,8 @@ function weekday_name ( $w, $format = 'l' ) {
  * @global string Preferred date format
  * @TODO Add other date () parameters like ( j, n )
  */
-function date_to_str ( $indate, $format = '', $show_weekday = true, $short_months = false ) {
+function date_to_str ( $indate, $format = '', $show_weekday = true,
+ $short_months = false ) {
   global $DATE_FORMAT;
 
   if ( strlen ( $indate ) == 0 ) {
@@ -1021,13 +606,15 @@ function load_user_categories ( $ex_global = '' ) {
   global $login, $user, $is_assistant;
   global $categories, $CATEGORIES_ENABLED, $is_admin;
 
-  $cat_owner = ( ( ! empty ( $user ) && strlen ( $user ) ) && ( $is_assistant || $is_admin ) ) ? $user : $login;
+  $cat_owner = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
+   ( $is_assistant || $is_admin ) ) ? $user : $login;
   $categories = array ();
   // These are default values
   $categories[0]['cat_name'] = translate ( 'All' );
   $categories[-1]['cat_name'] = translate ( 'None' );
   if ( $CATEGORIES_ENABLED == 'Y' ) {
-    $sql = 'SELECT cat_id, cat_name, cat_owner, cat_color FROM webcal_categories WHERE ';
+    $sql = 'SELECT cat_id, cat_name, cat_owner, cat_color FROM webcal_categories
+      WHERE ';
     $query_params = array ();
     if ( $ex_global == '' ) {
       $sql .= ' (cat_owner = ?) OR (cat_owner IS NULL) ORDER BY cat_owner, cat_name';
@@ -1234,7 +821,8 @@ function user_has_boss ( $assistant ) {
  */
 function boss_must_be_notified ( $assistant, $boss ) {
   if ( user_is_assistant ( $assistant, $boss ) )
-    return ( get_pref_setting ( $boss, 'EMAIL_ASSISTANT_EVENTS' ) == 'Y' ? true : false );
+    return ( get_pref_setting ( $boss, 'EMAIL_ASSISTANT_EVENTS' ) == 'Y'
+     ? true : false );
   return true;
 }
 
@@ -1248,7 +836,8 @@ function boss_must_be_notified ( $assistant, $boss ) {
  */
 function boss_must_approve_event ( $assistant, $boss ) {
   if ( user_is_assistant ( $assistant, $boss ) )
-    return ( get_pref_setting ( $boss, 'APPROVE_ASSISTANT_EVENT' ) == 'Y' ? true : false );
+    return ( get_pref_setting ( $boss, 'APPROVE_ASSISTANT_EVENT' ) == 'Y'
+     ? true : false );
   return true;
 }
 
@@ -1366,8 +955,8 @@ function user_is_nonuser_admin ( $login, $nonuser ) {
  */
 function load_nonuser_preferences ( $nonuser ) {
   global $prefarray, $DATE_FORMAT_MY, $DATE_FORMAT, $DATE_FORMAT_MD;
-  $rows = dbi_get_cached_rows ( 'SELECT cal_setting, cal_value FROM webcal_user_pref
-       WHERE cal_login = ?', array ( $nonuser ) );
+  $rows = dbi_get_cached_rows ( 'SELECT cal_setting, cal_value
+    FROM webcal_user_pref WHERE cal_login = ?', array ( $nonuser ) );
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
@@ -1382,7 +971,7 @@ function load_nonuser_preferences ( $nonuser ) {
       $prefarray[$setting] = $value;
     }
   }
-  // reset_language ( empty ( $LANGUAGE) || $LANGUAGE != 'none'? $LANGUAGE : $browser_lang );
+  // reset_language ( empty ( $LANGUAGE) || $LANGUAGE != 'none' ? $LANGUAGE : $browser_lang );
   if ( empty ( $DATE_FORMAT ) || $DATE_FORMAT == 'LANGUAGE_DEFINED' ) {
     $DATE_FORMAT = translate ( '__month__ __dd__, __yyyy__' );
   }
@@ -1417,7 +1006,8 @@ function set_today( $date = '' ) {
     $thismonth = substr ( $date, 4, 2 );
     $thisday = substr ( $date, 6, 2 );
   } else {
-    $thismonth = ( empty ( $month ) || $month == 0 ? date ( 'm', $today ) : $month );
+    $thismonth = ( empty ( $month ) || $month == 0
+     ? date ( 'm', $today ) : $month );
     $thisyear = ( empty ( $year ) || $year == 0 ? date ( 'Y', $today ) : $year );
     $thisday = ( empty ( $day ) || $day == 0 ? date ( 'd', $today ) : $day );
   }
@@ -1578,7 +1168,8 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   global $thismonth, $thisyear;
 
   $ret = '';
-  $entrySlots = ( $ENTRY_SLOTS > 288 ? 288 : ( $ENTRY_SLOTS < 72 ? 72 : $ENTRY_SLOTS ) );
+  $entrySlots = ( $ENTRY_SLOTS > 288 ? 288 : ( $ENTRY_SLOTS < 72
+   ? 72 : $ENTRY_SLOTS ) );
   $increment = intval ( 1440 / $entrySlots );
   $interval = intval ( 60 / $increment );
 
@@ -1598,7 +1189,8 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $cnt = count ( $participants );
   for ( $i = 0; $i < $cnt; $i++ ) {
     /* Pre-Load the repeated events for quckier access */
-    $repeated_events = read_repeated_events ( $participants[$i], $dateTS, $dateTS, '' );
+    $repeated_events = read_repeated_events ( $participants[$i], $dateTS,
+     $dateTS, '' );
     /* Pre-load the non-repeating events for quicker access */
     $events = read_events ( $participants[$i], $dateTS, $dateTS );
     // .
@@ -1631,10 +1223,12 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
         $slot = sprintf ( "%02.2f", $slot );
         if ( strlen ( $slot ) == 4 ) $slot = '0' . $slot; // add leading zeros
         $slot = $slot . ''; // convert to a string
-        if ( empty ( $master['_all_'][$slot] ) || $master['_all_'][$slot]['stat'] != 'A' ) {
+        if ( empty ( $master['_all_'][$slot] ) ||
+         $master['_all_'][$slot]['stat'] != 'A' ) {
           $master['_all_'][$slot]['stat'] = $E->getStatus ();
         }
-        if ( empty ( $master[$participants[$i]][$slot] ) || $master[$participants[$i]][$slot]['stat'] != 'A' ) {
+        if ( empty ( $master[$participants[$i]][$slot] ) ||
+         $master[$participants[$i]][$slot]['stat'] != 'A' ) {
           $master[$participants[$i]][$slot]['stat'] = $E->getStatus ();
           $master[$participants[$i]][$slot]['ID'] = $E->getID ();
         }
@@ -1647,7 +1241,8 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
 
   $ret .= <<<EOT
   <br />
-  <table  align="center" class="matrixd" style="width:{$total_pct};" cellspacing="0" cellpadding="0">
+  <table  align="center" class="matrixd" style="width:{$total_pct};"
+   cellspacing="0" cellpadding="0">
   <tr><td class="matrix" colspan="{$cols}"></td></tr>
   <tr><th style="width:{$participant_pct};">{$partStr}</th>
 EOT;
@@ -1676,21 +1271,25 @@ EOT;
       switch ( $j ) {
         case $halfway:
           $k = ( $hour <= 9 ? '0' : substr ( $hour, 0, 1 ) );
-          $str .= 'style="width:' . $cell_pct . '%; text-align:right;"  ' . $MouseDown . $MouseOver . $MouseOut . $titleStr .
-          sprintf ( $hourfmt, $hour ) . ':' . ( $increment * $j <= 9 ? '0' : '' ) .
-          ( $increment * $j ) . '.">';
+          $str .= 'style="width:' . $cell_pct . '%; text-align:right;"  '
+           . $MouseDown . $MouseOver . $MouseOut . $titleStr .
+          sprintf ( $hourfmt, $hour ) . ':' . ( $increment * $j <= 9 ? '0' : '' )
+           . ( $increment * $j ) . '.">';
           $str .= $k . "</td>\n";
           break;
         case $halfway + 1:
           $k = ( $hour <= 9 ? substr ( $hour, 0, 1 ) : substr ( $hour, 1, 2 ) );
-          $str .= 'style="width:' . $cell_pct . '%; text-align:left;" ' . $MouseDown . $MouseOver . $MouseOut . $titleStr . sprintf ( $hourfmt, $hour ) . ':' . ( $increment * $j <= 9 ? '0' : '' ) .
+          $str .= 'style="width:' . $cell_pct . '%; text-align:left;" '
+           . $MouseDown . $MouseOver . $MouseOut . $titleStr
+           . sprintf ( $hourfmt, $hour ) . ':'
+           . ( $increment * $j <= 9 ? '0' : '' ) .
           ( $increment * $j ) . '.">';
           $str .= $k . "</td>\n";
           break;
         default:
-          $str .= $style_width . $MouseDown . $MouseOver . $MouseOut . $titleStr .
-          sprintf ( $hourfmt, $hour ) . ':' . ( $increment * $j <= 9 ? '0' : '' ) .
-          ( $increment * $j ) . '.">';
+          $str .= $style_width . $MouseDown . $MouseOver . $MouseOut . $titleStr
+           . sprintf ( $hourfmt, $hour ) . ':'
+           . ( $increment * $j <= 9 ? '0' : '' ) . ( $increment * $j ) . '.">';
           $str .= "&nbsp;&nbsp;</td>\n";
           break;
       }
@@ -1718,7 +1317,8 @@ EOT;
       $user_nospace = preg_replace ( '/\s/', '&nbsp;', $user_nospace );
     }
 
-    $ret .= "<tr>\n<th class=\"row\" style=\"width:{$participant_pct};\">" . $user_nospace . "</th>\n";
+    $ret .= "<tr>\n<th class=\"row\" style=\"width:{$participant_pct};\">"
+     . $user_nospace . "</th>\n";
     $col = 1;
     // .
     // check each timebar
@@ -1731,16 +1331,22 @@ EOT;
         // $space = '';
         $space = '&nbsp;';
 
-        $r = sprintf ( "%02d", $j ) . '.' . sprintf ( "%02d", ( $increment * $k ) ) . '';
+        $r = sprintf ( "%02d", $j ) . '.'
+         . sprintf ( "%02d", ( $increment * $k ) ) . '';
         if ( empty ( $master[$participants[$i]][$r] ) ) {
           // ignore this..
         } else if ( empty ( $master[$participants[$i]][$r]['ID'] ) ) {
           // This is the first line for 'all' users.  No event here.
-          $space = "<span class=\"matrix\"><img src=\"images/pix.gif\" alt=\"\" /></span>";
+          $space = "<span class=\"matrix\"><img src=\"images/pix.gif\"
+           alt=\"\" /></span>";
         } else if ( $master[$participants[$i]][$r]['stat'] == "A" ) {
-          $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}&friendly=1\"><img src=\"images/pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
+          $space = "<a class=\"matrix\"
+           href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}&friendly=1\">
+           <img src=\"images/pix.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
         } else if ( $master[$participants[$i]][$r]['stat'] == "W" ) {
-          $space = "<a class=\"matrix\" href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}&friendly=1\"><img src=\"images/pixb.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
+          $space = "<a class=\"matrix\"
+           href=\"view_entry.php?id={$master[$participants[$i]][$r]['ID']}&friendly=1\">
+           <img src=\"images/pixb.gif\" title=\"$viewMsg\" alt=\"$viewMsg\" /></a>";
         }
 
         $ret .= "<td class=\"matrixappts$border\" $style_width ";
@@ -1750,15 +1356,18 @@ EOT;
       }
     }
 
-    $ret .= "</tr><tr>\n<td class=\"matrix\" colspan=\"$cols\">" . "<img src=\"images/pix.gif\" alt=\"-\" /></td></tr>\n";
+    $ret .= "</tr><tr>\n<td class=\"matrix\" colspan=\"$cols\">"
+     . "<img src=\"images/pix.gif\" alt=\"-\" /></td></tr>\n";
   } // End foreach participant
   $busy = ' ' . translate ( 'Busy' );
   $tentative = ' ' . translate ( 'Tentative' );
   $ret .= <<<EOT
     </table><br />
     <table align="center"><tr><td class="matrixlegend" >
-      <img src="images/pix.gif" title="{$busy}" alt="{$busy}" />{$busy}&nbsp;&nbsp;&nbsp;
-      <img src="images/pixb.gif" title="{$tentative}" alt="{$tentative}" />{$tentative}
+      <img src="images/pix.gif" title="{$busy}"
+       alt="{$busy}" />{$busy}&nbsp;&nbsp;&nbsp;
+      <img src="images/pixb.gif" title="{$tentative}"
+       alt="{$tentative}" />{$tentative}
      </td></tr></table>
 EOT;
 
@@ -1809,7 +1418,8 @@ function print_timezone_select_html ( $prefix, $tz ) {
   // if ( date ( 'T' ) == 'Ame' || ! $can_setTZ ) { //We have a problem!!
   if ( 0 ) { // ignore this code for now
     $tz_value = ( ! $can_setTZ ? substr ( $tz, 12 ) : 0 );
-    $ret = '<select name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">' . "\n";
+    $ret = '<select name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">'
+     . "\n";
     $text_add = translate ( 'Add N hours to' );
     $text_sub = translate ( 'Subtract N hours from' );
     for ( $i = -12; $i <= 13; $i++ ) {
@@ -1845,14 +1455,17 @@ function print_timezone_select_html ( $prefix, $tz ) {
       fclose ( $fd );
     }
     sort ( $timezones );
-    $ret = '<select name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">' . "\n";
+    $ret = '<select name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">'
+     . "\n";
     for ( $i = 0, $cnt = count ( $timezones ); $i < $cnt; $i++ ) {
       $ret .= "<option value=\"$timezones[$i]\"" .
-      ( $timezones[$i] == $tz ? ' selected="selected" ' : '' ) . '>' . unhtmlentities ( $timezones[$i] ) . "</option>\n";
+      ( $timezones[$i] == $tz ? ' selected="selected" ' : '' ) . '>'
+       . unhtmlentities ( $timezones[$i] ) . "</option>\n";
     }
     $ret .= "</select>\n";
     $tz_offset = date ( 'Z' ) / 3600;
-    $ret .= '&nbsp;&nbsp;' . translate ( 'Your current GMT offset is' ) . '&nbsp;' . $tz_offset . '&nbsp;' . translate ( 'hours' ) . '.';
+    $ret .= '&nbsp;&nbsp;' . translate ( 'Your current GMT offset is' )
+     . '&nbsp;' . $tz_offset . '&nbsp;' . translate ( 'hours' ) . '.';
   }
   return $ret;
 }
@@ -1913,7 +1526,8 @@ function validate_domain () {
         }
       }
     } //end for loop
-    $ip_authorized = ( count ( $deny_true ) && ! count ( $allow_true ) ? false : true );
+    $ip_authorized = ( count ( $deny_true ) && ! count ( $allow_true )
+     ? false : true );
   } // if fd not empty
   return $ip_authorized;
 }
@@ -1937,7 +1551,8 @@ function load_template ( $login, $type ) {
   // .
   // First, check for a user-specific template
   if ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) {
-    $rows = dbi_get_cached_rows ( 'SELECT cal_template_text FROM webcal_user_template
+    $rows = dbi_get_cached_rows ( 'SELECT cal_template_text
+      FROM webcal_user_template
        WHERE cal_type = ? and cal_login = ?', array ( $type, $login ) );
     if ( $rows && ! empty ( $rows[0] ) ) {
       $row = $rows[0];
@@ -1948,8 +1563,9 @@ function load_template ( $login, $type ) {
   // .
   // If no user-specific template, check for the system template
   if ( ! $found ) {
-    $rows = dbi_get_cached_rows ( "SELECT cal_template_text FROM webcal_user_template
-       WHERE cal_type = ? and cal_login = '__system__'", array ( $type ) );
+    $rows = dbi_get_cached_rows ( "SELECT cal_template_text
+      FROM webcal_user_template
+      WHERE cal_type = ? and cal_login = '__system__'", array ( $type ) );
     if ( $rows && ! empty ( $rows[0] ) ) {
       $row = $rows[0];
       $ret .= $row[0];
@@ -1960,8 +1576,9 @@ function load_template ( $login, $type ) {
   // If still not found, the check the old location (WebCalendar 1.0 and
   // before)
   if ( ! $found ) {
-    $rows = dbi_get_cached_rows ( 'SELECT cal_template_text FROM webcal_report_template
-       WHERE cal_template_type = ? and cal_report_id = 0', array ( $type ) );
+    $rows = dbi_get_cached_rows ( 'SELECT cal_template_text
+      FROM webcal_report_template
+      WHERE cal_template_type = ? and cal_report_id = 0', array ( $type ) );
     if ( $rows && ! empty ( $rows[0] ) ) {
       $row = $rows[0];
       if ( ! empty ( $row ) ) {
@@ -2006,8 +1623,9 @@ function error_check ( $nextURL, $redirect = true ) {
     if ( $redirect ) {
       do_redirect ( $nextURL );
     }
-    $ret .= "<html><head></head><body onload=\"alert ('" .
-    translate ( 'Changes successfully saved', true ) . "');  window.parent.location.href='$nextURL';\"></body></html>";
+    $ret .= "<html><head></head><body onload=\"alert ('"
+     . translate ( 'Changes successfully saved', true )
+     . "');  window.parent.location.href='$nextURL';\"></body></html>";
   }
   return $ret;
 }
@@ -2095,7 +1713,8 @@ function sort_events_insensitive ( $a, $b ) {
   $retval = strnatcmp (
     display_time ( '', 0, $a->getDateTimeTS (), 24 ),
     display_time ( '', 0, $b->getDateTimeTS (), 24 ) );
-  if ( ! $retval ) return strnatcmp ( strtolower ( $a->getName () ), strtolower ( $b->getName () ) );
+  if ( ! $retval ) return strnatcmp ( strtolower ( $a->getName () ),
+   strtolower ( $b->getName () ) );
   return $retval;
 }
 
@@ -2168,10 +1787,12 @@ function getOverLap ( $item, $i, $parent = true ) {
     $result[$i]->setDuration ( $new_duration );
     $result[$i]->setTime ( gmdate ( 'G0000', $midnight ) );
     $result[$i]->setDate ( gmdate ( 'Ymd', $midnight ) );
-    $result[$i]->setName ( $originalItem->getName () . ' (' . translate ( 'cont.' ) . ')' );
+    $result[$i]->setName ( $originalItem->getName () . ' ('
+     . translate ( 'cont.' ) . ')' );
 
     $i++;
-    if ( $parent )$item->setDuration ( ( ( $midnight - $item->getDateTimeTS () ) / 60 ) -1 );
+    if ( $parent )$item->setDuration ( (
+    ( $midnight - $item->getDateTimeTS () ) / 60 ) -1 );
   }
   // call this function recursively until duration < 86400
   if ( $recurse == 1 ) getOverLap ( $result[$i -1], $i, false );
@@ -2394,7 +2015,8 @@ function generate_printer_friendly ( $hrefin = '' ) {
   // set this to enable printer icon in top menu
   $show_printer = true;
   $href = ( ! empty ( $href ) ? $hrefin : $SCRIPT );
-  $qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? $_SERVER['QUERY_STRING'] : '' );
+  $qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] )
+   ? $_SERVER['QUERY_STRING'] : '' );
   $href .= '?' . $qryStr;
   $href .= ( substr ( $href, -1 ) == '?' ? '' : '&' ) . 'friendly=1';
   if ( empty ( $hrefin ) ) // menu will call this function without parameter
@@ -2405,7 +2027,8 @@ function generate_printer_friendly ( $hrefin = '' ) {
   $statusStr = translate ( 'Generate printer-friendly version' );
   $displayStr = translate ( 'Printer Friendly' );
   $ret = <<<EOT
-  <a title="{$statusStr}" class="printer" href="{$href}" target="cal_printer_friendly">[{$displayStr}]</a>
+  <a title="{$statusStr}" class="printer" href="{$href}"
+   target="cal_printer_friendly">[{$displayStr}]</a>
 EOT;
   return $ret;
 }
@@ -2438,7 +2061,9 @@ function display_admin_link ( $break = true ) {
   $ret = ( $break ? '<br />' : '' );
   if ( $MENU_ENABLED == 'N' ) {
     $adminStr = translate ( 'Admin' );
-    $ret = '<a title="' . $adminStr . '" class="nav" href="adminhome.php">&laquo;&nbsp; ' . $adminStr . "</a>\n<br /><br />\n";
+    $ret = '<a title="' . $adminStr
+     . '" class="nav" href="adminhome.php">&laquo;&nbsp; ' . $adminStr
+     . "</a>\n<br /><br />\n";
   }
   return $ret;
 }
@@ -2524,7 +2149,8 @@ function display_activity_log ( $cal_type, $cal_text = '' ) {
  *
  * @return string  HTML for the radio control
  */
-function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '', $sep = '&nbsp;' ) {
+function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
+ $sep = '&nbsp;' ) {
   global $prefarray, $s, $SCRIPT;
   static $checked, $Yes, $No;
 
@@ -2748,7 +2374,8 @@ function is_weekend ( $date ) {
     $WEEKEND_START = 6;
   // we may have been passed a weekday 0-6
   if ( $date < 7 ) {
-    return ( $date == $WEEKEND_START % 7 || $date == ( ( $WEEKEND_START + 1 ) % 7 ) );
+    return ( $date == $WEEKEND_START % 7 ||
+     $date == ( ( $WEEKEND_START + 1 ) % 7 ) );
   }
   // we were passed a timestamp
   $wday = date ( 'w', $date );
@@ -2783,7 +2410,8 @@ function generate_refresh_meta () {
   global $AUTO_REFRESH, $AUTO_REFRESH_TIME, $REQUEST_URI;
 
   $ret = '';
-  if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) && ! empty ( $REQUEST_URI ) ) {
+  if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) && !
+   empty ( $REQUEST_URI ) ) {
     $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
     $ret .= "<meta http-equiv=\"refresh\" content=\"$refresh; url=$REQUEST_URI\" />";
   }
@@ -2977,6 +2605,38 @@ function build_entry_label ( $event, $popupid,
   return $ret;
 }
 
+/* Calculates which row/slot this time represents.
+ *
+ * This is used in day and week views where hours of the time are separeted
+ * into different cells in a table.
+ *
+ * <b>Note:</b> the global variable <var>$TIME_SLOTS</var> is used to determine
+ * how many time slots there are and how many minutes each is.  This variable
+ * is defined user preferences (or defaulted to admin system settings).
+ *
+ * @param string $time        Input time in HHMMSS format
+ * @param bool   $round_down  Should we change 1100 to 1059?
+ *                            (This will make sure a 10AM-100AM appointment just
+ *                            shows up in the 10AM slow and not in the 11AM slot
+ *                            also.)
+ *
+ * @return int  The time slot index.
+ */
+function calc_time_slot ( $time, $round_down = false ) {
+  global $TIME_SLOTS;
+
+  $interval = 1440 / $TIME_SLOTS;
+  $mins_since_midnight = time_to_minutes ( sprintf ( "%06d", $time ) );
+  $ret = intval ( $mins_since_midnight / $interval );
+  if ( $round_down && $ret * $interval == $mins_since_midnight )
+    $ret--;
+
+  if ( $ret > $TIME_SLOTS )
+    $ret = $TIME_SLOTS;
+
+  return $ret;
+}
+
 /* Checks for conflicts.
  *
  * Find overlaps between an array of dates and the other dates in the database.
@@ -3062,7 +2722,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
           $evtcnt[$cntkey]++;
 
         $over_limit = ( $LIMIT_APPTS == 'Y' && $LIMIT_APPTS_NUMBER > 0 &&
-          $evtcnt[$cntkey] >= $LIMIT_APPTS_NUMBER ? 1 : 0 );
+         $evtcnt[$cntkey] >= $LIMIT_APPTS_NUMBER ? 1 : 0 );
 
         if ( $over_limit ||
           times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
@@ -3130,8 +2790,8 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
               $conflicts .= $GLOBALS['conflict_fullname'] . ': ';
             }
             $conflicts .= ( $row->getAccess () == 'C' &&
-              $row->getLogin () != $login && !
-               $is_assistant && ! $is_nonuser_admin
+             $row->getLogin () != $login && !
+              $is_assistant && ! $is_nonuser_admin
               // Assistants can see confidential stuff.
               ? '(' . $confidentialStr . ')'
               : ( $row->getAccess () == 'R' && $row->getLogin () != $login
@@ -3303,7 +2963,8 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
 
       $currMonth = ( $dateYmd >= $monthstart && $dateYmd <= $monthend );
       if ( $currMonth ||
-        ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
+        ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) &&
+         $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
         $class = ( ! $demo && $dateYmd == $todayYmd ? 'today' : '' )
          . ( $is_weekend ? ' weekend' : '' )
          . ( ! $currMonth ? ' othermonth' : '' );
@@ -3542,7 +3203,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
         }
       }
       if ( ( $dateYmd >= $monthstart && $dateYmd <= $monthend ) ||
-          ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
+          ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) &&
+           $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
         $class =
         // If it's a weekend.
         ( is_weekend ( $date ) ? 'weekend' : '' )
@@ -3611,9 +3273,9 @@ function display_small_tasks ( $cat_id ) {
         <td class="sorter" onclick="sortTasks ( ' . $i . ', ' . $task_cat
        . ', this )"><img src="images/up.png" style="vertical-align:bottom" /></td>';
       $ajax[$i + 4] = '
-        <td  class="sorter sorterbottom" onclick="sortTasks ( ' . 
-		  ( $i + 4 ) . ', ' . $task_cat
-         . ', this )"><img src="images/down.png" style="vertical-align:top" /></td>';
+        <td  class="sorter sorterbottom" onclick="sortTasks ( ' .
+      ( $i + 4 ) . ', ' . $task_cat
+       . ', this )"><img src="images/down.png" style="vertical-align:top" /></td>';
     }
   } else {
     $dueSpacer = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -3636,9 +3298,11 @@ function display_small_tasks ( $cat_id ) {
       </tr>
       <tr class="header">
         <td rowspan="2" class="sorterbottom">!&nbsp;</td>' . $ajax[0] . '
-        <td rowspan="2" width="20%" class="sorterbottom">' . translate ( 'Task_Title' )
+        <td rowspan="2" width="20%" class="sorterbottom">'
+         . translate ( 'Task_Title' )
    . '&nbsp;</td>' . $ajax[1] . '
-        <td rowspan="2" class="sorterbottom">' . translate ( 'Due' ) . $dueSpacer . '</td>'
+        <td rowspan="2" class="sorterbottom">' . translate ( 'Due' )
+         . $dueSpacer . '</td>'
    . $ajax[2] . '
         <td rowspan="2" class="sorterbottom">%</td>' . $ajax[3] . '
       </tr>
@@ -3669,7 +3333,8 @@ function display_small_tasks ( $cat_id ) {
      . translate ( 'Task Name' ) . ': ' . $E->getName () . '">'
      . substr ( $E->getName (), 0, 15 )
      . ( strlen ( $E->getName () ) > 15 ? '...' : '' ) . '</a></td>
-        <td colspan="2">' . $link . ' title="' . translate ( 'Task Due Date' ) . '">'
+        <td colspan="2">' . $link . ' title="' . translate ( 'Task Due Date' )
+         . '">'
      . date_to_str ( $E->getDueDate (), $dateFormatStr, false, false ) . '</a>'
      . '</td>
         <td class="pct" colspan="2">' . $link . ' title="% '
@@ -4054,7 +3719,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
         if ( isset ( $bysetpos ) ) {
           sort ( $yret );
           for ( $i = 0, $bysetposcnt = count ( $bysetpos ); $i < $bysetposcnt;
-           $i++ ) {
+            $i++ ) {
             $ret[] = ( $bysetpos[$i] > 0
               ? $yret[$bysetpos[$i] -1]
               : $yret[count ( $yret ) + $bysetpos[$i] ] );
@@ -4170,7 +3835,8 @@ function get_byday ( $byday, $cdate, $type = 'month', $date ) {
       } else {
         for ( $i = 1; $i <= $ditype; $i++ ) {
           $loopdate = mktime ( $hour, $minute, 0, $month, $i, $yr );
-          if ( ( date ( 'w', $loopdate ) == $byday_values[$dayTxt] ) && $loopdate > $date ) {
+          if ( ( date ( 'w', $loopdate ) == $byday_values[$dayTxt] ) &&
+           $loopdate > $date ) {
             $ret[] = $loopdate;
             $i += 6; //Skip to next week.
           }
@@ -4654,11 +4320,12 @@ function get_preferred_view ( $indate = '', $args = '' ) {
   $url = str_replace ( '&', '&amp;', $url );
 
   $xdate = empty ( $indate ) ? $thisdate : $indate;
-  
+
   $url .= ( empty ( $xdate ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
      . 'date=' . $xdate );
-  $url .= ( empty ( $args ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' ) . $args );
-  
+  $url .= ( empty ( $args ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
+   . $args );
+
   return $url;
 }
 
@@ -4787,6 +4454,347 @@ function get_weekday_before ( $year, $month, $day = 2 ) {
     $newdate += 3600;
   }
   return $newdate;
+}
+
+/* Generates the HTML for an icon to add a new event.
+ *
+ * @param string $date    Date for new event in YYYYMMDD format
+ * @param int    $hour    Hour of day (0-23)
+ * @param int    $minute  Minute of the hour (0-59)
+ * @param string $user    Participant to initially select for new event
+ *
+ * @return string  The HTML for the add event icon.
+ */
+function html_for_add_icon ( $date = 0, $hour = '', $minute = '', $user = '' ) {
+  global $cat_id, $login, $readonly;
+  static $newEntryStr;
+
+  if ( $readonly == 'Y' )
+    return '';
+
+  if ( empty ( $newEntryStr ) )
+    $newEntryStr = translate ( 'New Entry' );
+
+  if ( $minute < 0 ) {
+    $hour = $hour -1;
+    $minute = abs ( $minute );
+  }
+  return '
+        <a title="' . $newEntryStr . '" href="edit_entry.php?'
+   . ( ! empty ( $user ) && $user != $login ? 'user=' . $user . '&amp;' : '' )
+   . 'date=' . $date . ( strlen ( $hour ) > 0 ? '&amp;hour=' . $hour : '' )
+   . ( $minute > 0 ? '&amp;minute=' . $minute : '' )
+   . ( empty ( $user ) ? '' : '&amp;defusers=' . $user )
+   . ( empty ( $cat_id ) ? '' : '&amp;cat_id=' . $cat_id )
+   . '"><img src="images/new.gif" class="new" alt="' . $newEntryStr . '" /></a>';
+}
+
+/* Generates the HTML for an event to be viewed in the day-at-glance (day.php).
+ *
+ * The HTML will be stored in an array (global variable $hour_arr)
+ * indexed on the event's starting hour.
+ *
+ * @param Event  $event  The event
+ * @param string $date   Date of event in YYYYMMDD format
+ */
+function html_for_event_day_at_a_glance ( $event, $date ) {
+  global $ALLOW_HTML_DESCRIPTION, $categories, $DISPLAY_DESC_PRINT_DAY,
+  $DISPLAY_END_TIMES, $first_slot, $hour_arr, $last_slot, $layers, $login,
+  $PHP_SELF, $rowspan, $rowspan_arr;
+  static $key = 0;
+
+  $can_access = CAN_DOALL;
+  $end_timestr = $popup_timestr = '';
+  $getCalTypeName = $event->getCalTypeName ();
+  $getCat = abs ( $event->getCategory () );
+  $getClone = $event->getClone ();
+  $getDesc = $event->getDescription ();
+  $getLogin = $event->getLogin ();
+  $getPri = $event->getPriority ();
+  $id = $event->getID ();
+  $ind = 9999;
+  $isAllDay = $event->isAllDay ();
+  $linkid = "pop$id-$key";
+  $name = $event->getName ();
+  $time = $event->getTime ();
+  $time_only = 'N';
+  $view_text = translate ( 'View this event' );
+
+  $catIcon = 'icons/cat-' . $getCat . '.gif';
+  $key++;
+
+  if ( access_is_enabled () ) {
+    $can_access = access_user_calendar ( 'view', $getLogin, '',
+      $event->getCalType (), $event->getAccess () );
+    $time_only = access_user_calendar ( 'time', $getLogin );
+    if ( $getCalTypeName == 'task' && $can_access == 0 )
+      return false;
+  }
+  // .
+  // If TZ_OFFSET make this event before the start of the day or
+  // after the end of the day, adjust the time slot accordingly.
+  if ( ! $event->isUntimed () && ! $isAllDay && $getCalTypeName != 'task' ) {
+    $tz_time = date ( 'His', $event->getDateTimeTS () );
+    $ind = calc_time_slot ( $tz_time );
+    if ( $ind < $first_slot )
+      $first_slot = $ind;
+
+    if ( $ind > $last_slot )
+      $last_slot = $ind;
+  }
+  if ( empty ( $hour_arr[$ind] ) )
+    $hour_arr[$ind] = '';
+
+  $class = ( $login != $getLogin && strlen ( $getLogin )
+    ? 'layer' : ( $event->getStatus () == 'W' ? 'unapproved' : '' ) . 'entry' );
+  // If we are looking at a view, then always use "entry".
+  if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
+      strstr ( $PHP_SELF, 'view_t.php' ) ||
+      strstr ( $PHP_SELF, 'view_v.php' ) ||
+      strstr ( $PHP_SELF, 'view_w.php' ) )
+    $class = 'entry';
+
+  if ( $getCat > 0 && file_exists ( $catIcon ) ) {
+    $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
+    $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
+     . '" title="' . $catAlt . '" />';
+  }
+
+  if ( $getCalTypeName == 'task' ) {
+    $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';
+    $view_text = translate ( 'View this task' );
+  }
+
+  $hour_arr[$ind] .= '<a title="' . $view_text . '" class="' . $class . '" id="'
+   . $linkid . '" '
+  // Make sure clones have parents URL date.
+  . ( $can_access != 0 && $time_only != 'Y'
+    ? 'href="view_entry.php?id=' . $id . '&amp;date='
+     . ( $getClone ? $getClone : $date )
+     . ( strlen ( $GLOBALS['user'] ) > 0
+      ? '&amp;user=' . $GLOBALS['user']
+      : ( $class == 'layerentry' ? '&amp;user=' . $getLogin : '' ) ) . '"'
+    : '' ) . '>' . ( $getPri == 3 ? '<strong>' : '' );
+
+  if ( $login != $getLogin && strlen ( $getLogin ) ) {
+    if ( $layers ) {
+      foreach ( $layers as $layer ) {
+        if ( $layer['cal_layeruser'] == $getLogin ) {
+          $hour_arr[$ind] .= '<span style="color:' . $layer['cal_color'] . ';">';
+          $in_span = true;
+        }
+      }
+    }
+    // Check to see if Category Colors are set.
+  } else
+  if ( ! empty ( $categories[$getCat]['cat_color'] ) ) {
+    $cat_color = $categories[$getCat]['cat_color'];
+    if ( $cat_color != '#000000' ) {
+      $hour_arr[$ind] .= '<span style="color:' . $cat_color . ';">';
+      $in_span = true;
+    }
+  }
+
+  if ( $isAllDay )
+    $hour_arr[$ind] .= '[' . translate ( 'All day event' );
+  else
+  if ( $time >= 0 && ! $isAllDay && $getCalTypeName != 'task' ) {
+    $end_timestr = '-' . display_time ( $event->getEndDateTime () );
+    $popup_timestr = display_time ( $event->getDatetime () );
+
+    $hour_arr[$ind] .= '[' . $popup_timestr;
+    if ( $event->getDuration () > 0 ) {
+      $popup_timestr .= $end_timestr;
+      if ( $DISPLAY_END_TIMES == 'Y' )
+        $hour_arr[$ind] .= $end_timestr;
+      // Which slot is end time in? take one off so we don't
+      // show 11:00-12:00 as taking up both 11 and 12 slots.
+      $end_time = date ( 'His', $event->getEndDateTimeTS () );
+      // This fixes the improper display if an event ends at or after midnight.
+      if ( $end_time < $tz_time )
+        $end_time += 240000;
+
+      $endind = calc_time_slot ( $end_time, true );
+      $rowspan = ( $endind == $ind ? 0 : $endind - $ind + 1 );
+
+      if ( ! isset ( $rowspan_arr[$ind] ) )
+        $rowspan_arr[$ind] = 0;
+
+      if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
+        $rowspan_arr[$ind] = $rowspan;
+    }
+  }
+  $hour_arr[$ind] .= '] ' . build_entry_label ( $event, 'eventinfo-' . $linkid,
+    $can_access, $popup_timestr, $time_only )
+   . ( $getPri == 3 ? '</strong>' : '' ) . '</a>'
+   . ( $DISPLAY_DESC_PRINT_DAY == 'Y' ? '
+    <dl class="desc">
+      <dt>' . translate ( 'Description' ) . ':</dt>
+      <dd>'
+     . ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y'
+      ? $getDesc : strip_tags ( $getDesc ) ) . '</dd>
+    </dl>' : '' ) . "<br />\n";
+}
+
+/* Generates the HTML for an event to be viewed in the week-at-glance (week.php).
+ *
+ * The HTML will be stored in an array (global variable $hour_arr)
+ * indexed on the event's starting hour.
+ *
+ * @param Event  $event           The event
+ * @param string $date            Date for which we're printing (in YYYYMMDD format)
+ * @param string $override_class  If set, then this is the class to use
+ * @param bool   $show_time       If enabled, then event time is displayed
+ */
+function html_for_event_week_at_a_glance ( $event, $date,
+  $override_class = '', $show_time = true ) {
+  global $categories, $DISPLAY_ICONS, $DISPLAY_TZ, $eventinfo, $first_slot,
+  $hour_arr, $is_assistant, $is_nonuser_admin, $last_slot, $layers, $login,
+  $PHP_SELF, $rowspan, $rowspan_arr, $TIME_SPACER, $user;
+  static $key = 0;
+
+  $can_access = CAN_DOALL;
+  $catAlt = $href = $timestr = '';
+  $getCalTypeName = $event->getCalTypeName ();
+  $getCat = abs ( $event->getCategory () );
+  $getClone = $event->getClone ();
+  $getDatetime = $event->getDatetime ();
+  $getLoginStr = $event->getLogin ();
+  $getPri = $event->getPriority ();
+  $id = $event->getID ();
+  $ind = 9999;
+  $isAllDay = $event->isAllDay ();
+  $isUntime = $event->isUntimed ();
+  $linkid = "pop$id-$key";
+  $name = $event->getName ();
+  $time_only = 'N';
+  $title = '<a title="';
+
+  $catIcon = 'icons/cat-' . $getCat . '.gif';
+  $key++;
+
+  if ( access_is_enabled () ) {
+    $can_access = access_user_calendar ( 'view', $getLoginStr, '',
+      $event->getCalType (), $event->getAccess () );
+    $time_only = access_user_calendar ( 'time', $getLoginStr );
+    if ( $getCalTypeName == 'task' && $can_access == 0 )
+      return false;
+  }
+  // .
+  // Figure out which time slot it goes in.  Put tasks in with AllDay and Untimed.
+  if ( ! $isUntime && ! $isAllDay && $getCalTypeName != 'task' ) {
+    $tz_time = date ( 'His', $event->getDateTimeTS () );
+    $ind = calc_time_slot ( $tz_time );
+    if ( $ind < $first_slot )
+      $first_slot = $ind;
+
+    if ( $ind > $last_slot )
+      $last_slot = $ind;
+  }
+
+  $class = ( $login != $getLoginStr && strlen ( $getLoginStr )
+    ? 'layer' : ( $event->getStatus () == 'W' ? 'unapproved' : '' ) . 'entry' );
+  // If we are looking at a view, then always use "entry".
+  if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
+      strstr ( $PHP_SELF, 'view_r.php' ) ||
+      strstr ( $PHP_SELF, 'view_t.php' ) ||
+      strstr ( $PHP_SELF, 'view_v.php' ) ||
+      strstr ( $PHP_SELF, 'view_w.php' ) )
+    $class = 'entry';
+
+  if ( ! empty ( $override_class ) )
+    $class .= ' ' . $override_class;
+  // .
+  // Avoid PHP warning for undefined array index.
+  if ( empty ( $hour_arr[$ind] ) )
+    $hour_arr[$ind] = '';
+
+  if ( $getCat > 0 && file_exists ( $catIcon ) ) {
+    $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
+    $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
+     . '" title="' . $catAlt . '" />';
+  }
+  // .
+  // Build entry link if UAC permits viewing.
+  if ( $can_access != 0 && $time_only != 'Y' ) {
+    // Make sure clones have parents URL date.
+    $href = 'href="view_entry.php?id=' . $id . ' &amp;date='
+     . ( $getClone ? $getClone : $date ) . '"';
+    if ( $getCalTypeName == 'task' ) {
+      $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';
+      $title .= translate ( 'View this task' );
+    } else { // Must be event.
+      if ( $isAllDay || $isUntime && $catAlt == '' )
+        $hour_arr[$ind] .= '<img src="images/circle.gif" class="bullet" alt="*" /> ';
+
+      $title .= translate ( 'View this event' );
+    }
+  }
+
+  $hour_arr[$ind] .= $title . '" class="' . $class . '" id="' . $linkid . '" '
+   . $href . ( strlen ( $GLOBALS['user'] ) > 0
+    ? '&amp;user=' . $GLOBALS['user']
+    : ( $class == 'layerentry' ? '&amp;user=' . $getLoginStr : '' ) ) . '">'
+   . ( $getPri == 3 ? '<strong>' : '' );
+
+  if ( $login != $getLoginStr && strlen ( $getLoginStr ) ) {
+    if ( $layers ) {
+      foreach ( $layers as $layer ) {
+        if ( $layer['cal_layeruser'] == $getLoginStr ) {
+          $hour_arr[$ind] .= '<span style="color:' . $layer['cal_color'] . ';">';
+          $in_span = true;
+        }
+      }
+    }
+    // Check to see if Category Colors are set.
+  } else
+  if ( ! empty ( $categories[$getCat]['cat_color'] ) ) {
+    $cat_color = $categories[$getCat]['cat_color'];
+    if ( $cat_color != '#000000' ) {
+      $hour_arr[$ind] .= '<span style="color:' . $cat_color . ';">';
+      $in_span = true;
+    }
+  }
+  if ( $isAllDay ) {
+    $timestr = translate ( 'All day event' );
+    // Set start cell of all-day event to beginning of work hours.
+    if ( empty ( $rowspan_arr[$first_slot] ) )
+      $rowspan_arr[$first_slot] = 0; // Avoid warning below.
+    // We'll skip tasks here as well.
+  } else
+  if ( $event->getTime () >= 0 && $getCalTypeName != 'task' ) {
+    if ( $show_time )
+      $hour_arr[$ind] .= display_time ( $getDatetime )
+       . ( $time_only == 'Y' ? '' : $TIME_SPACER );
+
+    $timestr = display_time ( $getDatetime );
+    if ( $event->getDuration () > 0 ) {
+      $end_time = date ( 'His', $event->getEndDateTimeTS () );
+      $timestr .= '-' . display_time ( $event->getEndDateTime (), $DISPLAY_TZ );
+      // This fixes the improper display if an event ends at or after midnight.
+      if ( $end_time < $tz_time )
+        $end_time += 240000;
+    } else
+      $end_time = 0;
+
+    if ( empty ( $rowspan_arr[$ind] ) )
+      $rowspan_arr[$ind] = 0; // Avoid warning below.
+    // .
+    // Which slot is end time in? take one off so we don't
+    // show 11:00-12:00 as taking up both 11 and 12 slots.
+    $endind = calc_time_slot ( $end_time, true );
+    $rowspan = ( $endind == $ind ? 0 : $endind - $ind + 1 );
+
+    if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
+      $rowspan_arr[$ind] = $rowspan;
+  }
+
+  $hour_arr[$ind] .= build_entry_label ( $event, 'eventinfo-' . $linkid,
+    $can_access, $timestr, $time_only )
+   . ( empty ( $in_span ) ? '' : '</span>' )// End color span.
+   . ( $getPri == 3 ? '</strong>' : '' ) . '</a>'
+  // . ( $DISPLAY_ICONS == 'Y' ? icon_text ( $id, true, true ) : '' )
+  . "<br />\n";
 }
 
 /* Generates the HTML for an add/edit/delete icon.
@@ -5115,7 +5123,8 @@ function print_date_entries ( $date, $user, $ssi = false ) {
 
     $ret = ( $is_admin || ( $readonly == 'N' &&
         ( ! $is_nonuser ||
-          ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD == 'Y' && $login == '__public__' )
+          ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD == 'Y' &&
+           $login == '__public__' )
           ) ) ? '
         <a title="' . $newEntryStr . '" href="edit_entry.php?' . $userCatStr
        . 'date=' . $date . '"><img src="images/new.gif" alt="' . $newEntryStr
@@ -5225,7 +5234,7 @@ function print_entry ( $event, $date ) {
     $href = $title = '';
 
   $ret .= '
-      <a ' . $title. ' class="' . $class . '" id="' . "$linkid\" $href"
+      <a ' . $title . ' class="' . $class . '" id="' . "$linkid\" $href"
    . '><img src="';
 
   $catNum = abs ( $event->getCategory () );
@@ -5444,7 +5453,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           // There's another one with the same ID as the one we inserted.
           // Check for dup and if so, delete it.
           $other_item = $result[$first_i_this_id + 1];
-          if ( ! empty ( $layers_byuser[$other_item->getLogin ()] ) && $layers_byuser[$other_item->getLogin ()] == 'N' ) {
+          if ( ! empty ( $layers_byuser[$other_item->getLogin ()] ) &&
+           $layers_byuser[$other_item->getLogin ()] == 'N' ) {
             // NOTE:  array_splice requires PHP4
             array_splice ( $result, $first_i_this_id + 1, 1 );
             $i--;
@@ -5452,7 +5462,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
         }
       } else {
         if ( $i == $first_i_this_id || ( !
-            empty ( $layers_byuser[$item->getLogin ()] ) && $layers_byuser[$item->getLogin ()] != 'N' ) )
+            empty ( $layers_byuser[$item->getLogin ()] ) &&
+             $layers_byuser[$item->getLogin ()] != 'N' ) )
           // This item either is the first one with its ID, or allows dups.
           // Add it to the end of the array.
           $result [$i++] = $item;
@@ -5469,7 +5480,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
 
   if ( $want_repeated ) {
     // Now load event exceptions/inclusions and store as array.
-    //.
+    // .
     // TODO:  Allow passing this max_until as param in case we create
     // a custom report that shows N years of events.
     if ( empty ( $max_until ) )
@@ -5698,9 +5709,11 @@ function send_doctype ( $doc_title = '' ) {
   return '<?xml version="1.0" encoding="' . $charset . '"?' . '>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="' . $lang . '">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="'
+ . $lang . '">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=' . $charset . '" />' . ( empty ( $doc_title ) ? '' : '
+    <meta http-equiv="Content-Type" content="text/html; charset=' . $charset
+     . '" />' . ( empty ( $doc_title ) ? '' : '
     <title>' . $doc_title . '</title>' );
 }
 
@@ -5761,6 +5774,17 @@ function send_no_cache_header () {
  */
 function send_to_preferred_view ( $indate = '', $args = '' ) {
   do_redirect ( get_preferred_view ( $indate, $args ) );
+}
+
+/* Converts a time format HHMMSS (like 130000 for 1PM)
+ * into number of minutes past midnight.
+ *
+ * @param string $time  Input time in HHMMSS format
+ *
+ * @return int  The number of minutes since midnight.
+ */
+function time_to_minutes ( $time ) {
+  return intval ( $time / 10000 ) * 60 + intval ( ( $time / 100 ) % 100 );
 }
 
 /* Checks to see if two events overlap.
