@@ -3562,14 +3562,20 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
           foreach ( $byday as $day ) {
             $td = $cdate + ( $byday_values[$day] * 86400 );
             if ( $td >= $date && $td <= $realend && $n <= $Count )
-              $ret[$n++] = $td;
+              $tmp_td = $td;
           }
         } else {
           $td = $cdate + ( $dow * 86400 );
           $cdow = date ( 'w', $td );
           if ( $cdow == $dow )
-            $ret[$n++] = $td;
+            $tmp_td = $td;
         }
+        if ( ! empty ( $tmp_td ) && 
+          ( empty ( $bymonth ) || ( ! empty ( $bymonth ) && 
+          in_array ( date ( 'n', $tmp_td ), $bymonth ) ) ) ){
+          $ret[$n++] = $tmp_td;
+        }
+        $tmp_td = $td = '';
         // Skip to the next week in question.
         $cdate = add_dstfree_time ( $cdate, 604800, $interval );
       }
@@ -3589,46 +3595,51 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
       $mdate = $cdate;
       while ( $cdate <= $realend && $n <= $Count ) {
-        $bydayvalues = $bymonthdayvalues = $yret = array ();
-        if ( isset ( $byday ) )
-          $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
-
-        if ( isset ( $bymonthday ) )
-          $bymonthdayvalues = get_bymonthday ( $bymonthday, $mdate,
-            $date, $realend );
-
-        if ( isset ( $byday ) && isset ( $bymonthday ) ) {
-          $bydaytemp = array_intersect ( $bymonthdayvalues, $bydayvalues );
-          $yret = array_merge ( $yret, $bydaytemp );
-        } elseif ( isset ( $bymonthday ) )
-          $yret = array_merge ( $yret, $bymonthdayvalues );
-        elseif ( isset ( $byday ) )
-          $yret = array_merge ( $yret, $bydayvalues );
-        elseif ( ! isset ( $byday ) && ! isset ( $bymonthday ) )
-          $yret[] = $cdate;
-        // .
-        // Must wait till all other BYxx are processed.
-        if ( isset ( $bysetpos ) ) {
-          $mth = date ( 'm', $cdate );
-          sort ( $yret );
-          sort ( $bysetpos );
-          $setposdate = mktime ( $hour, $minute, 0, $mth, 1, $thisyear );
-          $dim = date ( 't', $setposdate ); //Days in month.
-          $yretcnt = count ( $yret );
-          $bysetposcnt = count ( $bysetpos );
-          for ( $i = 0; $i < $bysetposcnt; $i++ ) {
-            if ( $bysetpos[$i] > 0 && $bysetpos[$i] <= $yretcnt )
-              $ret[] = $yret[$bysetpos[$i] -1];
-            else
-            if ( abs ( $bysetpos[$i] ) <= $yretcnt )
-              $ret[] = $yret[$yretcnt + $bysetpos[$i] ];
-          }
-        } else
-        if ( ! empty ( $yret ) ) { // Add all BYxx additional dates.
-          $yret = array_unique ( $yret );
-          $ret = array_merge ( $ret, $yret );
-        }
-        sort ( $ret );
+      echo date ( 'n', $cdate ) . ' |' .empty ( $bymonth ) . ' |' . in_array ( date ( 'n', $cdate ), $bymonth ) . '|<br>';
+      
+        if ( empty ( $bymonth ) || ( ! empty ( $bymonth ) && 
+          in_array ( date ( 'n', $cdate ), $bymonth ) ) ) {
+            $bydayvalues = $bymonthdayvalues = $yret = array ();
+            if ( isset ( $byday ) )
+              $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
+    
+            if ( isset ( $bymonthday ) )
+              $bymonthdayvalues = get_bymonthday ( $bymonthday, $mdate,
+                $date, $realend );
+                
+            if ( isset ( $byday ) && isset ( $bymonthday ) ) {
+              $bydaytemp = array_intersect ( $bymonthdayvalues, $bydayvalues );
+              $yret = array_merge ( $yret, $bydaytemp );
+            } elseif ( isset ( $bymonthday ) )
+              $yret = array_merge ( $yret, $bymonthdayvalues );
+            elseif ( isset ( $byday ) )
+              $yret = array_merge ( $yret, $bydayvalues );
+            elseif ( ! isset ( $byday ) && ! isset ( $bymonthday ) )
+              $yret[] = $cdate;
+            // .
+            // Must wait till all other BYxx are processed.
+            if ( isset ( $bysetpos ) ) {
+              $mth = date ( 'm', $cdate );
+              sort ( $yret );
+              sort ( $bysetpos );
+              $setposdate = mktime ( $hour, $minute, 0, $mth, 1, $thisyear );
+              $dim = date ( 't', $setposdate ); //Days in month.
+              $yretcnt = count ( $yret );
+              $bysetposcnt = count ( $bysetpos );
+              for ( $i = 0; $i < $bysetposcnt; $i++ ) {
+                if ( $bysetpos[$i] > 0 && $bysetpos[$i] <= $yretcnt )
+                  $ret[] = $yret[$bysetpos[$i] -1];
+                else
+                if ( abs ( $bysetpos[$i] ) <= $yretcnt )
+                  $ret[] = $yret[$yretcnt + $bysetpos[$i] ];
+              }
+            } else
+            if ( ! empty ( $yret ) ) { // Add all BYxx additional dates.
+              $yret = array_unique ( $yret );
+              $ret = array_merge ( $ret, $yret );
+            }
+            sort ( $ret );
+        } //end $bymonth test
         $thismonth += $interval;
         $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
         $mdate = mktime ( $hour, $minute, 0, $thismonth, 1, $thisyear );
