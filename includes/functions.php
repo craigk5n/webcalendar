@@ -3595,8 +3595,6 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
       $mdate = $cdate;
       while ( $cdate <= $realend && $n <= $Count ) {
-      echo date ( 'n', $cdate ) . ' |' .empty ( $bymonth ) . ' |' . in_array ( date ( 'n', $cdate ), $bymonth ) . '|<br>';
-      
         if ( empty ( $bymonth ) || ( ! empty ( $bymonth ) && 
           in_array ( date ( 'n', $cdate ), $bymonth ) ) ) {
             $bydayvalues = $bymonthdayvalues = $yret = array ();
