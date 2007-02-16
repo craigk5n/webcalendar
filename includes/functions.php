@@ -44,141 +44,6 @@ function do_debug ( $msg ) {
   // 2, 'sockieman:2000' );
 }
 
-/* Prints all the calendar entries for the specified user
- * for the specified date in day-at-a-glance format.
- *
- * If we are displaying data from someone other than
- * the logged in user, then check the access permission of the entry.
- *
- * @param string $date Date in YYYYMMDD format
- * @param string $user Username of calendar
- */
-function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
-  global $first_slot, $last_slot, $hour_arr, $rowspan_arr, $rowspan,
-   $DISPLAY_UNAPPROVED;
-  global $TABLEBG, $CELLBG, $TODAYCELLBG, $THFG, $THBG, $TIME_SLOTS, $today;
-  global $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR, $DISPLAY_TASKS_IN_GRID;
-  // global $repeated_events;
-  $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
-  $ret = '';
-  if ( empty ( $TIME_SLOTS ) ) {
-    $ret .= "Error: TIME_SLOTS undefined!<br />\n";
-    return $ret;
-  }
-  // .
-  // $interval is number of minutes per slot
-  $interval = ( 24 * 60 ) / $TIME_SLOTS;
-
-  $rowspan_arr = array ();
-  for ( $i = 0; $i < $TIME_SLOTS; $i++ ) {
-    $rowspan_arr[$i] = 0;
-  }
-  // .
-  // get all the repeating events for this date and store in array $rep
-  $rep = get_repeating_entries ( $user, $date );
-  $cur_rep = 0;
-  // .
-  // Get static non-repeating events
-  $ev = get_entries ( $date, $get_unapproved );
-  // combine and sort the event arrays
-  $ev = combine_and_sort_events ( $ev, $rep );
-
-  if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' ) {
-    // get all due tasks for this date and before and store in $tk
-    $tk = array ();
-    if ( $date >= date ( 'Ymd' ) ) {
-      $tk = get_tasks ( $date, $get_unapproved );
-    }
-    $ev = combine_and_sort_events ( $ev, $tk );
-  }
-
-  $class = ( $date == date ( 'Ymd', $today ) ? ' class="today"' : '' );
-  $hour_arr = array ();
-  $interval = ( 24 * 60 ) / $TIME_SLOTS;
-  $first_slot = intval ( ( ( $WORK_DAY_START_HOUR ) * 60 ) / $interval );
-  $last_slot = intval ( ( ( $WORK_DAY_END_HOUR ) * 60 ) / $interval );
-  $rowspan_arr = array ();
-  $evcnt = count ( $ev );
-  for ( $i = 0; $i < $evcnt; $i++ ) {
-    if ( $get_unapproved || $ev[$i]->getStatus () == 'A' ) {
-      html_for_event_day_at_a_glance ( $ev[$i], $date );
-    }
-  }
-  // .
-  // squish events that use the same cell into the same cell.
-  // For example, an event from 8:00-9:15 and another from 9:30-9:45 both
-  // want to show up in the 8:00-9:59 cell.
-  $rowspan = 0;
-  $last_row = -1;
-  $i = 0;
-  if ( $first_slot < 0 )
-    $i = $first_slot;
-  for ( ; $i < $TIME_SLOTS; $i++ ) {
-    if ( $rowspan > 1 ) {
-      if ( ! empty ( $hour_arr[$i] ) ) {
-        $diff_start_time = $i - $last_row;
-        if ( ! empty ( $rowspan_arr[$i] ) && $rowspan_arr[$i] > 1 ) {
-          if ( $rowspan_arr[$i] + ( $diff_start_time ) > $rowspan_arr[$last_row] ) {
-            $rowspan_arr[$last_row] = ( $rowspan_arr[$i] + ( $diff_start_time ) );
-          }
-          $rowspan += ( $rowspan_arr[$i] - 1 );
-        } else {
-          if ( ! empty ( $rowspan_arr[$i] ) )
-            $rowspan_arr[$last_row] += $rowspan_arr[$i];
-        }
-        // this will move entries apart that appear in one field,
-        // yet start on different hours
-        for ( $u = $diff_start_time; $u > 0; $u-- ) {
-          $hour_arr[$last_row] .= "<br />\n";
-        }
-        $hour_arr[$last_row] .= $hour_arr[$i];
-        $hour_arr[$i] = '';
-        $rowspan_arr[$i] = 0;
-      }
-      $rowspan--;
-    } else if ( ! empty ( $rowspan_arr[$i] ) && $rowspan_arr[$i] > 1 ) {
-      $rowspan = $rowspan_arr[$i];
-      $last_row = $i;
-    }
-  }
-  $ret .= '<table class="main glance" cellspacing="0" cellpadding="0">';
-  if ( ! empty ( $hour_arr[9999] ) ) {
-    $ret .= '<tr><th class="empty">&nbsp;</th>'
-     . "\n<td class=\"hasevents\">$hour_arr[9999]</td></tr>\n";
-  }
-  $rowspan = 0;
-  for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
-    $time_h = intval ( ( $i * $interval ) / 60 );
-    $time_m = ( $i * $interval ) % 60;
-    $time = display_time ( ( $time_h * 100 + $time_m ) * 100 );
-    $addIcon = ( $can_add
-     ? html_for_add_icon ( $date, $time_h, $time_m, $user ) : '' );
-    $ret .= "<tr>\n<th class=\"row\">" . $time . "</th>\n";
-    if ( $rowspan > 1 ) {
-      // this might mean there's an overlap, or it could mean one event
-      // ends at 11:15 and another starts at 11:30.
-      if ( ! empty ( $hour_arr[$i] ) ) {
-        $ret .= '<td class="hasevents">' . $addIcon . $hour_arr[$i] . "</td>\n";
-      }
-      $rowspan--;
-    } else {
-      if ( empty ( $hour_arr[$i] ) ) {
-        $ret .= "<td $class>" . ( $can_add ? $addIcon : '&nbsp;' ) . '</td>';
-      } else {
-        if ( empty ( $rowspan_arr[$i] ) )
-          $rowspan = '';
-        else
-          $rowspan = $rowspan_arr[$i];
-        $ret .= '<td ' . ( $rowspan > 1 ? 'rowspan="' . $rowspan . '"' : '' )
-         . 'class="hasevents">' . $addIcon . $hour_arr[$i] . "</td>\n";
-      }
-    }
-    $ret .= "</tr>\n";
-  }
-  $ret .= "</table>\n";
-  return $ret;
-}
-
 /* Checks for any unnaproved events.
  *
  * If any are found, display a link to the unapproved events (where they can be
@@ -464,7 +329,7 @@ function weekday_name ( $w, $format = 'l' ) {
  * @TODO Add other date () parameters like ( j, n )
  */
 function date_to_str ( $indate, $format = '', $show_weekday = true,
- $short_months = false ) {
+  $short_months = false ) {
   global $DATE_FORMAT;
 
   if ( strlen ( $indate ) == 0 ) {
@@ -607,7 +472,7 @@ function load_user_categories ( $ex_global = '' ) {
   global $categories, $CATEGORIES_ENABLED, $is_admin;
 
   $cat_owner = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
-   ( $is_assistant || $is_admin ) ) ? $user : $login;
+    ( $is_assistant || $is_admin ) ) ? $user : $login;
   $categories = array ();
   // These are default values
   $categories[0]['cat_name'] = translate ( 'All' );
@@ -822,7 +687,7 @@ function user_has_boss ( $assistant ) {
 function boss_must_be_notified ( $assistant, $boss ) {
   if ( user_is_assistant ( $assistant, $boss ) )
     return ( get_pref_setting ( $boss, 'EMAIL_ASSISTANT_EVENTS' ) == 'Y'
-     ? true : false );
+      ? true : false );
   return true;
 }
 
@@ -837,7 +702,7 @@ function boss_must_be_notified ( $assistant, $boss ) {
 function boss_must_approve_event ( $assistant, $boss ) {
   if ( user_is_assistant ( $assistant, $boss ) )
     return ( get_pref_setting ( $boss, 'APPROVE_ASSISTANT_EVENT' ) == 'Y'
-     ? true : false );
+      ? true : false );
   return true;
 }
 
@@ -1007,7 +872,7 @@ function set_today( $date = '' ) {
     $thisday = substr ( $date, 6, 2 );
   } else {
     $thismonth = ( empty ( $month ) || $month == 0
-     ? date ( 'm', $today ) : $month );
+      ? date ( 'm', $today ) : $month );
     $thisyear = ( empty ( $year ) || $year == 0 ? date ( 'Y', $today ) : $year );
     $thisday = ( empty ( $day ) || $day == 0 ? date ( 'd', $today ) : $day );
   }
@@ -1169,7 +1034,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
 
   $ret = '';
   $entrySlots = ( $ENTRY_SLOTS > 288 ? 288 : ( $ENTRY_SLOTS < 72
-   ? 72 : $ENTRY_SLOTS ) );
+      ? 72 : $ENTRY_SLOTS ) );
   $increment = intval ( 1440 / $entrySlots );
   $interval = intval ( 60 / $increment );
 
@@ -1190,7 +1055,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   for ( $i = 0; $i < $cnt; $i++ ) {
     /* Pre-Load the repeated events for quckier access */
     $repeated_events = read_repeated_events ( $participants[$i], $dateTS,
-     $dateTS, '' );
+      $dateTS, '' );
     /* Pre-load the non-repeating events for quicker access */
     $events = read_events ( $participants[$i], $dateTS, $dateTS );
     // .
@@ -1223,12 +1088,10 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
         $slot = sprintf ( "%02.2f", $slot );
         if ( strlen ( $slot ) == 4 ) $slot = '0' . $slot; // add leading zeros
         $slot = $slot . ''; // convert to a string
-        if ( empty ( $master['_all_'][$slot] ) ||
-         $master['_all_'][$slot]['stat'] != 'A' ) {
+        if ( empty ( $master['_all_'][$slot] ) || $master['_all_'][$slot]['stat'] != 'A' ) {
           $master['_all_'][$slot]['stat'] = $E->getStatus ();
         }
-        if ( empty ( $master[$participants[$i]][$slot] ) ||
-         $master[$participants[$i]][$slot]['stat'] != 'A' ) {
+        if ( empty ( $master[$participants[$i]][$slot] ) || $master[$participants[$i]][$slot]['stat'] != 'A' ) {
           $master[$participants[$i]][$slot]['stat'] = $E->getStatus ();
           $master[$participants[$i]][$slot]['ID'] = $E->getID ();
         }
@@ -1527,7 +1390,7 @@ function validate_domain () {
       }
     } //end for loop
     $ip_authorized = ( count ( $deny_true ) && ! count ( $allow_true )
-     ? false : true );
+      ? false : true );
   } // if fd not empty
   return $ip_authorized;
 }
@@ -1714,7 +1577,7 @@ function sort_events_insensitive ( $a, $b ) {
     display_time ( '', 0, $a->getDateTimeTS (), 24 ),
     display_time ( '', 0, $b->getDateTimeTS (), 24 ) );
   if ( ! $retval ) return strnatcmp ( strtolower ( $a->getName () ),
-   strtolower ( $b->getName () ) );
+      strtolower ( $b->getName () ) );
   return $retval;
 }
 
@@ -1788,11 +1651,11 @@ function getOverLap ( $item, $i, $parent = true ) {
     $result[$i]->setTime ( gmdate ( 'G0000', $midnight ) );
     $result[$i]->setDate ( gmdate ( 'Ymd', $midnight ) );
     $result[$i]->setName ( $originalItem->getName () . ' ('
-     . translate ( 'cont.' ) . ')' );
+       . translate ( 'cont.' ) . ')' );
 
     $i++;
     if ( $parent )$item->setDuration ( (
-    ( $midnight - $item->getDateTimeTS () ) / 60 ) -1 );
+          ( $midnight - $item->getDateTimeTS () ) / 60 ) -1 );
   }
   // call this function recursively until duration < 86400
   if ( $recurse == 1 ) getOverLap ( $result[$i -1], $i, false );
@@ -2016,7 +1879,7 @@ function generate_printer_friendly ( $hrefin = '' ) {
   $show_printer = true;
   $href = ( ! empty ( $href ) ? $hrefin : $SCRIPT );
   $qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] )
-   ? $_SERVER['QUERY_STRING'] : '' );
+    ? $_SERVER['QUERY_STRING'] : '' );
   $href .= '?' . $qryStr;
   $href .= ( substr ( $href, -1 ) == '?' ? '' : '&' ) . 'friendly=1';
   if ( empty ( $hrefin ) ) // menu will call this function without parameter
@@ -2150,7 +2013,7 @@ function display_activity_log ( $cal_type, $cal_text = '' ) {
  * @return string  HTML for the radio control
  */
 function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
- $sep = '&nbsp;' ) {
+  $sep = '&nbsp;' ) {
   global $prefarray, $s, $SCRIPT;
   static $checked, $Yes, $No;
 
@@ -2374,8 +2237,7 @@ function is_weekend ( $date ) {
     $WEEKEND_START = 6;
   // we may have been passed a weekday 0-6
   if ( $date < 7 ) {
-    return ( $date == $WEEKEND_START % 7 ||
-     $date == ( ( $WEEKEND_START + 1 ) % 7 ) );
+    return ( $date == $WEEKEND_START % 7 || $date == ( ( $WEEKEND_START + 1 ) % 7 ) );
   }
   // we were passed a timestamp
   $wday = date ( 'w', $date );
@@ -2411,7 +2273,7 @@ function generate_refresh_meta () {
 
   $ret = '';
   if ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) && !
-   empty ( $REQUEST_URI ) ) {
+      empty ( $REQUEST_URI ) ) {
     $refresh = $AUTO_REFRESH_TIME * 60; // convert to seconds
     $ret .= "<meta http-equiv=\"refresh\" content=\"$refresh; url=$REQUEST_URI\" />";
   }
@@ -2721,8 +2583,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
         else
           $evtcnt[$cntkey]++;
 
-        $over_limit = ( $LIMIT_APPTS == 'Y' && $LIMIT_APPTS_NUMBER > 0 &&
-         $evtcnt[$cntkey] >= $LIMIT_APPTS_NUMBER ? 1 : 0 );
+        $over_limit = ( $LIMIT_APPTS == 'Y' && $LIMIT_APPTS_NUMBER > 0 && $evtcnt[$cntkey] >= $LIMIT_APPTS_NUMBER ? 1 : 0 );
 
         if ( $over_limit ||
           times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
@@ -2789,8 +2650,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
               user_load_variables ( $row->getLogin (), 'conflict_' );
               $conflicts .= $GLOBALS['conflict_fullname'] . ': ';
             }
-            $conflicts .= ( $row->getAccess () == 'C' &&
-             $row->getLogin () != $login && !
+            $conflicts .= ( $row->getAccess () == 'C' && $row->getLogin () != $login && !
               $is_assistant && ! $is_nonuser_admin
               // Assistants can see confidential stuff.
               ? '(' . $confidentialStr . ')'
@@ -2963,8 +2823,7 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
 
       $currMonth = ( $dateYmd >= $monthstart && $dateYmd <= $monthend );
       if ( $currMonth ||
-        ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) &&
-         $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
+        ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
         $class = ( ! $demo && $dateYmd == $todayYmd ? 'today' : '' )
          . ( $is_weekend ? ' weekend' : '' )
          . ( ! $currMonth ? ' othermonth' : '' );
@@ -3203,8 +3062,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
         }
       }
       if ( ( $dateYmd >= $monthstart && $dateYmd <= $monthend ) ||
-          ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) &&
-           $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
+          ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
         $class =
         // If it's a weekend.
         ( is_weekend ( $date ) ? 'weekend' : '' )
@@ -3299,10 +3157,10 @@ function display_small_tasks ( $cat_id ) {
       <tr class="header">
         <td rowspan="2" class="sorterbottom">!&nbsp;</td>' . $ajax[0] . '
         <td rowspan="2" width="20%" class="sorterbottom">'
-         . translate ( 'Task_Title' )
+   . translate ( 'Task_Title' )
    . '&nbsp;</td>' . $ajax[1] . '
         <td rowspan="2" class="sorterbottom">' . translate ( 'Due' )
-         . $dueSpacer . '</td>'
+   . $dueSpacer . '</td>'
    . $ajax[2] . '
         <td rowspan="2" class="sorterbottom">%</td>' . $ajax[3] . '
       </tr>
@@ -3334,7 +3192,7 @@ function display_small_tasks ( $cat_id ) {
      . substr ( $E->getName (), 0, 15 )
      . ( strlen ( $E->getName () ) > 15 ? '...' : '' ) . '</a></td>
         <td colspan="2">' . $link . ' title="' . translate ( 'Task Due Date' )
-         . '">'
+     . '">'
      . date_to_str ( $E->getDueDate (), $dateFormatStr, false, false ) . '</a>'
      . '</td>
         <td class="pct" colspan="2">' . $link . ' title="% '
@@ -3570,9 +3428,9 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
           if ( $cdow == $dow )
             $tmp_td = $td;
         }
-        if ( ! empty ( $tmp_td ) && 
-          ( empty ( $bymonth ) || ( ! empty ( $bymonth ) && 
-          in_array ( date ( 'n', $tmp_td ), $bymonth ) ) ) ){
+        if ( ! empty ( $tmp_td ) &&
+            ( empty ( $bymonth ) || ( ! empty ( $bymonth ) &&
+                in_array ( date ( 'n', $tmp_td ), $bymonth ) ) ) ) {
           $ret[$n++] = $tmp_td;
         }
         $tmp_td = $td = '';
@@ -3595,48 +3453,48 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
       $mdate = $cdate;
       while ( $cdate <= $realend && $n <= $Count ) {
-        if ( empty ( $bymonth ) || ( ! empty ( $bymonth ) && 
-          in_array ( date ( 'n', $cdate ), $bymonth ) ) ) {
-            $bydayvalues = $bymonthdayvalues = $yret = array ();
-            if ( isset ( $byday ) )
-              $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
-    
-            if ( isset ( $bymonthday ) )
-              $bymonthdayvalues = get_bymonthday ( $bymonthday, $mdate,
-                $date, $realend );
-                
-            if ( isset ( $byday ) && isset ( $bymonthday ) ) {
-              $bydaytemp = array_intersect ( $bymonthdayvalues, $bydayvalues );
-              $yret = array_merge ( $yret, $bydaytemp );
-            } elseif ( isset ( $bymonthday ) )
-              $yret = array_merge ( $yret, $bymonthdayvalues );
-            elseif ( isset ( $byday ) )
-              $yret = array_merge ( $yret, $bydayvalues );
-            elseif ( ! isset ( $byday ) && ! isset ( $bymonthday ) )
-              $yret[] = $cdate;
-            // .
-            // Must wait till all other BYxx are processed.
-            if ( isset ( $bysetpos ) ) {
-              $mth = date ( 'm', $cdate );
-              sort ( $yret );
-              sort ( $bysetpos );
-              $setposdate = mktime ( $hour, $minute, 0, $mth, 1, $thisyear );
-              $dim = date ( 't', $setposdate ); //Days in month.
-              $yretcnt = count ( $yret );
-              $bysetposcnt = count ( $bysetpos );
-              for ( $i = 0; $i < $bysetposcnt; $i++ ) {
-                if ( $bysetpos[$i] > 0 && $bysetpos[$i] <= $yretcnt )
-                  $ret[] = $yret[$bysetpos[$i] -1];
-                else
-                if ( abs ( $bysetpos[$i] ) <= $yretcnt )
-                  $ret[] = $yret[$yretcnt + $bysetpos[$i] ];
-              }
-            } else
-            if ( ! empty ( $yret ) ) { // Add all BYxx additional dates.
-              $yret = array_unique ( $yret );
-              $ret = array_merge ( $ret, $yret );
+        if ( empty ( $bymonth ) || ( ! empty ( $bymonth ) &&
+              in_array ( date ( 'n', $cdate ), $bymonth ) ) ) {
+          $bydayvalues = $bymonthdayvalues = $yret = array ();
+          if ( isset ( $byday ) )
+            $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
+
+          if ( isset ( $bymonthday ) )
+            $bymonthdayvalues = get_bymonthday ( $bymonthday, $mdate,
+              $date, $realend );
+
+          if ( isset ( $byday ) && isset ( $bymonthday ) ) {
+            $bydaytemp = array_intersect ( $bymonthdayvalues, $bydayvalues );
+            $yret = array_merge ( $yret, $bydaytemp );
+          } elseif ( isset ( $bymonthday ) )
+            $yret = array_merge ( $yret, $bymonthdayvalues );
+          elseif ( isset ( $byday ) )
+            $yret = array_merge ( $yret, $bydayvalues );
+          elseif ( ! isset ( $byday ) && ! isset ( $bymonthday ) )
+            $yret[] = $cdate;
+          // .
+          // Must wait till all other BYxx are processed.
+          if ( isset ( $bysetpos ) ) {
+            $mth = date ( 'm', $cdate );
+            sort ( $yret );
+            sort ( $bysetpos );
+            $setposdate = mktime ( $hour, $minute, 0, $mth, 1, $thisyear );
+            $dim = date ( 't', $setposdate ); //Days in month.
+            $yretcnt = count ( $yret );
+            $bysetposcnt = count ( $bysetpos );
+            for ( $i = 0; $i < $bysetposcnt; $i++ ) {
+              if ( $bysetpos[$i] > 0 && $bysetpos[$i] <= $yretcnt )
+                $ret[] = $yret[$bysetpos[$i] -1];
+              else
+              if ( abs ( $bysetpos[$i] ) <= $yretcnt )
+                $ret[] = $yret[$yretcnt + $bysetpos[$i] ];
             }
-            sort ( $ret );
+          } else
+          if ( ! empty ( $yret ) ) { // Add all BYxx additional dates.
+            $yret = array_unique ( $yret );
+            $ret = array_merge ( $ret, $yret );
+          }
+          sort ( $ret );
         } //end $bymonth test
         $thismonth += $interval;
         $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
@@ -3844,8 +3702,7 @@ function get_byday ( $byday, $cdate, $type = 'month', $date ) {
       } else {
         for ( $i = 1; $i <= $ditype; $i++ ) {
           $loopdate = mktime ( $hour, $minute, 0, $month, $i, $yr );
-          if ( ( date ( 'w', $loopdate ) == $byday_values[$dayTxt] ) &&
-           $loopdate > $date ) {
+          if ( ( date ( 'w', $loopdate ) == $byday_values[$dayTxt] ) && $loopdate > $date ) {
             $ret[] = $loopdate;
             $i += 6; //Skip to next week.
           }
@@ -4333,7 +4190,7 @@ function get_preferred_view ( $indate = '', $args = '' ) {
   $url .= ( empty ( $xdate ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
      . 'date=' . $xdate );
   $url .= ( empty ( $args ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
-   . $args );
+     . $args );
 
   return $url;
 }
@@ -5132,8 +4989,7 @@ function print_date_entries ( $date, $user, $ssi = false ) {
 
     $ret = ( $is_admin || ( $readonly == 'N' &&
         ( ! $is_nonuser ||
-          ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD == 'Y' &&
-           $login == '__public__' )
+          ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD == 'Y' && $login == '__public__' )
           ) ) ? '
         <a title="' . $newEntryStr . '" href="edit_entry.php?' . $userCatStr
        . 'date=' . $date . '"><img src="images/new.gif" alt="' . $newEntryStr
@@ -5166,6 +5022,127 @@ function print_date_entries ( $date, $user, $ssi = false ) {
     $ret .= '&nbsp;'; // So the table cell has at least something.
 
   return $ret;
+}
+
+/* Prints all the calendar entries for the specified user
+ * for the specified date in day-at-a-glance format.
+ *
+ * If we are displaying data from someone other than
+ * the logged in user, then check the access permission of the entry.
+ *
+ * @param string $date  Date in YYYYMMDD format
+ * @param string $user  Username of calendar
+ */
+function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
+  global $CELLBG, $DISPLAY_TASKS_IN_GRID, $DISPLAY_UNAPPROVED, $first_slot,
+  $hour_arr, $last_slot, $rowspan, $rowspan_arr, $TABLEBG, $THBG, $THFG,
+  $TIME_SLOTS, $today, $TODAYCELLBG, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;
+
+  if ( empty ( $TIME_SLOTS ) )
+    return translate ( 'Error TIME_SLOTS undefined!' ) . "<br />\n";
+  // .
+  // Get, combine and sort the events for this date.
+  $ev = combine_and_sort_events (
+    get_entries ( $date, $get_unapproved ), // Get static non-repeating events.
+    get_repeating_entries ( $user, $date )// Get all the repeating events.
+    );
+  if ( $date >= date ( 'Ymd' ) &&
+      ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' ) )
+    $ev = combine_and_sort_events ( $ev,
+      get_tasks ( $date, $get_unapproved ) // Get all due tasks.
+      );
+  $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
+  $hour_arr = $rowspan_arr = array ();
+  $interval = 1440 / $TIME_SLOTS; // Number of minutes per slot.
+  $last_row = -1;
+  $ret = '';
+  $rowspan = 0;
+
+  $first_slot = intval ( ( $WORK_DAY_START_HOUR * 60 ) / $interval );
+  $last_slot = intval ( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
+
+  for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
+    if ( $get_unapproved || $ev[$i]->getStatus () == 'A' )
+      html_for_event_day_at_a_glance ( $ev[$i], $date );
+  }
+  // .
+  // Squish events that use the same cell into the same cell.
+  // For example, an event from 8:00-9:15 and another from 9:30-9:45 both
+  // want to show up in the 8:00-9:59 cell.
+  for ( $i = ( $first_slot < 0 ? $first_slot : 0 ); $i < $TIME_SLOTS; $i++ ) {
+    if ( $rowspan > 1 ) {
+      if ( ! empty ( $hour_arr[$i] ) ) {
+        $diff_start_time = $i - $last_row;
+        if ( ! empty ( $rowspan_arr[$i] ) ) {
+          if ( $rowspan_arr[$i] > 1 &&
+            ( $rowspan_arr[$i] + ( $diff_start_time ) > $rowspan_arr[$last_row] ) )
+            $rowspan_arr[$last_row] = ( $rowspan_arr[$i] + ( $diff_start_time ) );
+
+          $rowspan += ( $rowspan_arr[$i] - 1 );
+        } else
+          $rowspan_arr[$last_row] += $rowspan_arr[$i];
+        // .
+        // This will move entries apart that appear in one field,
+        // yet start on different hours.
+        for ( $u = $diff_start_time; $u > 0; $u-- ) {
+          $hour_arr[$last_row] .= "<br />\n";
+        }
+        $hour_arr[$last_row] .= $hour_arr[$i];
+        $hour_arr[$i] = '';
+        $rowspan_arr[$i] = 0;
+      }
+      $rowspan--;
+    } else
+    if ( ! empty ( $rowspan_arr[$i] ) && $rowspan_arr[$i] > 1 ) {
+      $last_row = $i;
+      $rowspan = $rowspan_arr[$i];
+    }
+  }
+  $ret .= '
+    <table class="main glance" cellspacing="0" cellpadding="0">'
+   . ( ! empty ( $hour_arr[9999] ) ? '
+      <tr>
+        <th class="empty">&nbsp;</th>
+        <td class="hasevents">' . $hour_arr[9999] . '</td>
+      </tr>' : '' );
+
+  $rowspan = 0;
+  for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
+    $time_h = intval ( ( $i * $interval ) / 60 );
+    $time_m = ( $i * $interval ) % 60;
+    $addIcon = ( $can_add
+      ? html_for_add_icon ( $date, $time_h, $time_m, $user ) : '' );
+    $ret .= '
+      <tr>
+        <th class="row">'
+     . display_time ( ( $time_h * 100 + $time_m ) * 100 ) . '</th>';
+    if ( $rowspan > 1 ) {
+      // This might mean there's an overlap, or it could mean one event
+      // ends at 11:15 and another starts at 11:30.
+      if ( ! empty ( $hour_arr[$i] ) )
+        $ret .= '
+        <td class="hasevents">' . $addIcon . $hour_arr[$i] . '</td>';
+
+      $rowspan--;
+    } else {
+      $ret .= '
+        <td ';
+      if ( empty ( $hour_arr[$i] ) )
+        $ret .= ( $date == date ( 'Ymd', $today ) ? ' class="today"' : '' )
+         . '>' . ( $can_add ? $addIcon : '&nbsp;' );
+      else {
+        $rowspan = ( empty ( $rowspan_arr[$i] ) ? '' : $rowspan_arr[$i] );
+
+        $ret .= ( $rowspan > 1 ? 'rowspan="' . $rowspan . '"' : '' )
+         . 'class="hasevents">' . $addIcon . $hour_arr[$i];
+      }
+      $ret .= '</td>';
+    }
+    $ret .= '
+      </tr>';
+  }
+  return $ret . '
+    </table>';
 }
 
 /* Prints the HTML for one event in the month view.
@@ -5462,8 +5439,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           // There's another one with the same ID as the one we inserted.
           // Check for dup and if so, delete it.
           $other_item = $result[$first_i_this_id + 1];
-          if ( ! empty ( $layers_byuser[$other_item->getLogin ()] ) &&
-           $layers_byuser[$other_item->getLogin ()] == 'N' ) {
+          if ( ! empty ( $layers_byuser[$other_item->getLogin ()] ) && $layers_byuser[$other_item->getLogin ()] == 'N' ) {
             // NOTE:  array_splice requires PHP4
             array_splice ( $result, $first_i_this_id + 1, 1 );
             $i--;
@@ -5471,8 +5447,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
         }
       } else {
         if ( $i == $first_i_this_id || ( !
-            empty ( $layers_byuser[$item->getLogin ()] ) &&
-             $layers_byuser[$item->getLogin ()] != 'N' ) )
+            empty ( $layers_byuser[$item->getLogin ()] ) && $layers_byuser[$item->getLogin ()] != 'N' ) )
           // This item either is the first one with its ID, or allows dups.
           // Add it to the end of the array.
           $result [$i++] = $item;
@@ -5719,10 +5694,10 @@ function send_doctype ( $doc_title = '' ) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="'
- . $lang . '">
+   . $lang . '">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=' . $charset
-     . '" />' . ( empty ( $doc_title ) ? '' : '
+   . '" />' . ( empty ( $doc_title ) ? '' : '
     <title>' . $doc_title . '</title>' );
 }
 
