@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 7. Feb. 2007
+# Last update: 16.Feb.2007
 #
 # $Id$
-# Translation last updated on 02-07-2007
+# Translation last updated on 02-16-2007
 
 
 ################################################################################
@@ -597,11 +597,11 @@ User Access Control enabled: Zugriffskontrolle f&uuml;r Benutzer aktivieren
 groups-enabled-help: Diese Einstellung erlaubt Benutzern andere Benutzer &uuml;ber Benutzergruppen auszuw&auml;hlen
 Groups enabled: Benutzergruppen aktivieren
 user-sees-his-group-help: Diese Einstellung verhindert, da&szlig; Benutzer Teilnehmer sehen, die nicht zu ihrer Benutzergruppe geh&ouml;ren.
-User sees only his groups: Teilnehmer k&ouml;nnen nur ihre eigene Gruppe sehen
+User sees only his groups: Sollen die Teilnehmer nur ihre eigene Gruppe sehen
 nonuser-enabled-help: Falls aktiviert: Administratoren haben die M&ouml;glichkeit &#39;Zentrale&#39;-Kalender hinzuzuf&uuml;gen
 Nonuser enabled: &#39;Zentrale&#39;-Kalender aktivieren
-nonuser-list-help: Sollen die &#39;Zentralen&#39;-Kalender in der Teilnehmerliste am Anfang oder am Ende angezeigt werden?
-Nonuser list: Sollen die &#39;Zentralen&#39; Kalender am Anfang der Teilnehmerliste angezeigt werden
+nonuser-list-help: Wo sollen die &#39;Zentralen&#39;-Kalender in der Teilnehmerliste angezeigt werden?
+Nonuser list: Wo sollen die &#39;Zentralen&#39; Kalender in der Teilnehmerliste angezeigt werden
 reports-enabled-help: Wenn aktiviert, finden die Benutzer am Ende jeder Seite einen Eintrag &#34;Berichte&#34; welcher f&uuml;r das Erstellen von Berichten verwendet werden kann. Zus&auml;tzlich kann der &#34;Administrator&#34; allgemeine Berichte erstellen, die f&uuml;r jeden Benutzer am Ende jeder Seite zur Verf&uuml;gung stehen.
 Reports enabled: Berichte aktivieren
 subscriptions-enabled-help: Bestimmt ob &#39;REMOTE&#39;-Teilnehmer andere WebKalender von Teilnehmern abonnieren, und somit dessen Termine und ihre &#39;iCal&#39;-aktiven Anwendungen (wie Apple&#39;s iCal oder Mozilla-Kalender) sehen k&ouml;nnen.
@@ -1359,10 +1359,6 @@ Event Imported: Termin importiert
 ########################################
 # Page: includes/functions.php
 #
-View this event: Diesen Termin anzeigen
-View this task: Diese Aufgabe anzeigen
-exceeds limit of XXX events per day: &uuml;berschrittenes Limit von XXX Termin(e) pro Tag
-on: am
 You have XXX unapproved entries: Anzahl der unbest&auml;tigten Eintr&auml;ge&#058; <b>&rArr; &quot;XXX&quot;</b>
 January: Januar
 February: Februar
@@ -1452,12 +1448,17 @@ Error Type not set for activity log!: Fehler, Typ ist nicht f&uuml;r Aktivit&aum
 This event is private: Dieser Termin ist&nbsp; <b>PRIVAT</b>
 This event is XXX.: Dieser Termin ist XXX.
 Conf.: Vertraulich
+exceeds limit of XXX events per day: &uuml;berschrittenes Limit von XXX Termin(e) pro Tag
+on: am
 WK: KW
 TASKS: AUFGABEN
 Task_Title: Aufgabentitel
 Due: F&auml;lligkeit
 Task Name: Aufgabe
 Task Due Date: Abgabefrist
+View this event: Diesen Termin anzeigen
+View this task: Diese Aufgabe anzeigen
+Error TIME_SLOTS undefined!: Fehler: Zeitfenster nicht definiert!
 Unauthorized: Nicht autorisiert
 
 ########################################
