@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 02-16-2007
+# Translation last updated on 02-18-2007
 
 
 ################################################################################
@@ -1310,7 +1310,56 @@ delete: delete
 ########################################
 # Page: includes/functions.php
 #
+Error Type not set for activity log!: Error: Type not set for activity log!
+This event is private: This event is private
+This event is XXX.: This event is XXX.
+Conf.: Conf.
+exceeds limit of XXX events per day: exceeds limit of XXX events per day
+on: on
+All Attendees: All Attendees
+Busy: Busy
+Tentative: Tentative
+Schedule an appointment for: Schedule an appointment for
+Schedule an appointment for XXX.: Schedule an appointment for XXX:XXX.
+Event approved: Event approved
+Journal approved: Journal approved
+Task approved: Task approved
+Attachment: Attachment
+Event created: Event created
+Journal created: Journal created
+Task created: Task created
+Event deleted: Event deleted
+Journal deleted: Journal deleted
+Task deleted: Task deleted
+New user via email (self registration): New user via email (self registration)
+New user (self registration): New user (self registration)
+Notification sent: Notification sent
+Event rejected: Event rejected
+Journal rejected: Journal rejected
+Task rejected: Task rejected
+Reminder sent: Reminder sent
+Event updated: Event updated
+Journal updated: Journal updated
+Task updated: Task updated
+Delete User: Delete User
+WK: WK
+TASKS: TASKS
+Task_Title: Title
+Due: Due
+Task Name: Task Name
+Task Due Date: Task Due Date
 You have XXX unapproved entries: You have XXX unapproved entries
+Changes successfully saved: Changes successfully saved
+Event: Event
+Action: Action
+Printer Friendly: Printer Friendly
+Generate printer-friendly version: Generate printer-friendly version
+after: after
+before: before
+end: end
+start: start
+View this event: View this event
+View this task: View this task
 January: January
 February: February
 March: March
@@ -1334,6 +1383,23 @@ Sep: Sep
 Oct: Oct
 Nov: Nov
 unknown-month: unknown-month
+Error TIME_SLOTS undefined!: Error: TIME_SLOTS undefined!
+The following error occurred: The following error occurred
+You are not authorized: You are not authorized.
+Add N hours to: Add N hours to
+Subtract N hours from: Subtract N hours from
+same as: same as
+server time: server time
+Cannot read timezone file XXX.: Cannot read timezone file: XXX.
+Your current GMT offset is: Your current GMT offset is
+Your current GMT offset is XXX hours.: Your current GMT offset is XXX hours.
+Unauthorized: Unauthorized
+Error approving event: Error approving event
+Error approving event XXX.: Error approving event: XXX.
+Error deleting event: Error deleting event
+Error deleting event XXX.: Error deleting event: XXX.
+Error rejecting event: Error rejecting event
+Error rejecting event XXX.: Error rejecting event: XXX.
 Sunday: Sunday
 Monday: Monday
 Tuesday: Tuesday
@@ -1349,66 +1415,6 @@ Thu: Thu
 Fri: Fri
 Sat: Sat
 unknown-weekday: unknown-weekday
-Schedule an appointment for: Schedule an appointment for
-All Attendees: All Attendees
-Busy: Busy
-Tentative: Tentative
-Add N hours to: Add N hours to
-Subtract N hours from: Subtract N hours from
-same as: same as
-server time: server time
-Your current GMT offset is: Your current GMT offset is
-Changes successfully saved: Changes successfully saved
-The following error occurred: The following error occurred
-You are not authorized: You are not authorized.
-before: before
-after: after
-start: start
-end: end
-Error approving event: Error approving event
-Error deleting event: Error deleting event
-Error rejecting event: Error rejecting event
-Generate printer-friendly version: Generate printer-friendly version
-Printer Friendly: Printer Friendly
-Event created: Event created
-Event approved: Event approved
-Event rejected: Event rejected
-Event updated: Event updated
-Event deleted: Event deleted
-Task created: Task created
-Task approved: Task approved
-Task rejected: Task rejected
-Task updated: Task updated
-Task deleted: Task deleted
-Journal created: Journal created
-Journal approved: Journal approved
-Journal rejected: Journal rejected
-Journal updated: Journal updated
-Journal deleted: Journal deleted
-Notification sent: Notification sent
-Reminder sent: Reminder sent
-New user (self registration): New user (self registration)
-New user via email (self registration): New user via email (self registration)
-Attachment: Attachment
-Delete User: Delete User
-Event: Event
-Action: Action
-Error Type not set for activity log!: Error: Type not set for activity log!
-This event is private: This event is private
-This event is XXX.: This event is XXX.
-Conf.: Conf.
-exceeds limit of XXX events per day: exceeds limit of XXX events per day
-on: on
-WK: WK
-TASKS: TASKS
-Task_Title: Title
-Due: Due
-Task Name: Task Name
-Task Due Date: Task Due Date
-View this event: View this event
-View this task: View this task
-Error TIME_SLOTS undefined!: Error: TIME_SLOTS undefined!
-Unauthorized: Unauthorized
 
 ########################################
 # Page: includes/getPredefinedVariables.php
