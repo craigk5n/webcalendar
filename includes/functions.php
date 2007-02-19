@@ -789,6 +789,59 @@ function date_to_epoch ( $d ) {
     substr ( $d, 0, 4 ) );
 }
 
+/* Converts a date in YYYYMMDD format into "Friday, December 31, 1999",
+ * "Friday, 12-31-1999" or whatever format the user prefers.
+ *
+ * @param string $indate        Date in YYYYMMDD format
+ * @param string $format        Format to use for date (default is "__month__
+ *                              __dd__, __yyyy__")
+ * @param bool   $show_weekday  Should the day of week also be included?
+ * @param bool   $short_months  Should the abbreviated month names be used
+ *                              instead of the full month names?
+ *
+ * @return string  Date in the specified format.
+ *
+ * @global string Preferred date format
+ * @TODO Add other date () parameters like ( j, n )
+ */
+function date_to_str ( $indate, $format = '', $show_weekday = true,
+  $short_months = false ) {
+  global $DATE_FORMAT;
+
+  if ( strlen ( $indate ) == 0 )
+    $indate = date ( 'Ymd' );
+
+  // If they have not set a preference yet...
+  if ( $DATE_FORMAT == '' || $DATE_FORMAT == 'LANGUAGE_DEFINED' )
+    $DATE_FORMAT = translate ( '__month__ __dd__, __yyyy__' );
+
+  if ( empty ( $format ) )
+    $format = $DATE_FORMAT;
+
+  $y = intval ( $indate / 10000 );
+  $m = intval ( $indate / 100 ) % 100;
+  $d = $indate % 100;
+  $wday = strftime ( "%w", mktime ( 0, 0, 0, $m, $d, $y ) );
+  if ( $short_months ) {
+    $month = month_name ( $m - 1, 'M' );
+    $weekday = weekday_name ( $wday, 'D' );
+  } else {
+    $month = month_name ( $m - 1 );
+    $weekday = weekday_name ( $wday );
+  }
+
+  $ret = str_replace ( '__dd__', $d, $format );
+  $ret = str_replace ( '__j__', intval ( $d ), $ret );
+  $ret = str_replace ( '__mm__', $m, $ret );
+  $ret = str_replace ( '__mon__', $month, $ret );
+  $ret = str_replace ( '__month__', $month, $ret );
+  $ret = str_replace ( '__n__', sprintf ( "%02d", $m ), $ret );
+  $ret = str_replace ( '__yy__', sprintf ( "%02d", $y % 100 ), $ret );
+  $ret = str_replace ( '__yyyy__', $y, $ret );
+
+  return ( $show_weekday ? "$weekday, $ret" : $ret );
+}
+
 /* Extracts a user's name from a session id.
  *
  * This prevents users from begin able to edit their cookies.txt file and set
