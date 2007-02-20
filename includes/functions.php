@@ -3491,7 +3491,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
   // Build entry link if UAC permits viewing.
   if ( $can_access != 0 && $time_only != 'Y' ) {
     // Make sure clones have parents URL date.
-    $href = 'href="view_entry.php?id=' . $id . ' &amp;date='
+    $href = 'href="view_entry.php?id=' . $id . '&amp;date='
      . ( $getClone ? $getClone : $date ) . '"';
     if ( $getCalTypeName == 'task' ) {
       $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';
