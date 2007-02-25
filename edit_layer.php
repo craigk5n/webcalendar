@@ -18,27 +18,28 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 
 load_user_layers ( $layer_user, 1 );
 
+$checked = 'checked="checked"';
 $color = ( ! empty ( $layers[$id]['cal_color'] )
   ? $layers[$id]['cal_color'] : '#000' );
-
-$checked = 'checked="checked"';
+$helpStr = translate ( 'Help' );
+$hiddenStr = ( $updating_public ? '
+      <input type="hidden" name="public" value="1" />' : '' );
+$publicStr = ( $updating_public ? translate ( $PUBLIC_ACCESS_FULLNAME ) . ' ' : '' );
+$titleStr = ( empty ( $layers[$id]['cal_layeruser'] )
+  ? translate ( 'Add Layer' ) : translate ( 'Edit Layer' ) );
 
 print_header ( array ( 'js/edit_layer.php', 'js/visible.php' ) );
 
 ob_start ();
 
-$publicStr = ( $updating_public ? translate ( $PUBLIC_ACCESS_FULLNAME ) . ' ' : '' );
-$titleStr = ( empty ( $layers[$id]['cal_layeruser']  )
-  ? translate ( 'Add Layer' ) : translate ( 'Edit Layer' ) );
-$helpStr = translate ( 'Help' );
-$hiddenStr = ( $updating_public ? '
-      <input type="hidden" name="public" value="1" />' : '' );
-echo  <<<EOT
+echo <<<EOT
     <h2>{$publicStr}{$titleStr}&nbsp;
-      <img src="images/help.gif" alt="{$helpStr}" class="help" 
-onclick="window.open ( 'help_layers.php','cal_help','dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" /></h2>
-    <form action="edit_layer_handler.php" method="post" onsubmit="return valid_form (this);" name="prefform">{$hiddenStr}
-    <table cellspacing="2" cellpadding="3">
+      <img src="images/help.gif" alt="{$helpStr}" class="help"
+onclick="window.open ( 'help_layers.php','cal_help','dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" />
+    </h2>
+    <form action="edit_layer_handler.php" method="post"
+      onsubmit="return valid_form ( this );" name="prefform">{$hiddenStr}
+      <table cellspacing="2" cellpadding="3">
 EOT;
 
 if ( $single_user == 'N' ) {
@@ -66,7 +67,7 @@ if ( $single_user == 'N' ) {
       $users .= '
               <option value="' . $userlist[$i]['cal_login'] . '"'
        . ( ! empty ( $layers[$id]['cal_layeruser'] ) &&
-           $layers[$id]['cal_layeruser'] == $userlist[$i]['cal_login']
+        $layers[$id]['cal_layeruser'] == $userlist[$i]['cal_login']
         ? ' selected="selected"' : '' )
        . '>' . $userlist[$i]['cal_fullname'] . '</option>';
     }
@@ -125,17 +126,15 @@ echo <<<EOT
         </tr>
 
 EOT;
-// If admin and adding a new layer, add ability to select other users
-if ( $is_admin && empty ( $layers[$id]['cal_layeruser'] ) &&
-    empty ( $public ) ) {
+// If admin and adding a new layer, add ability to select other users.
+if ( $is_admin && empty ( $layers[$id]['cal_layeruser'] ) && empty ( $public ) ) {
   $addStr = translate ( 'Add to Others' );
   $addmyStr = translate ( 'Add to My Calendar' );
   echo <<<EOT
         <tr>
           <td class="bold">{$addmyStr}:</td>
-          <td colspan="3">
-            <input type="checkbox" name="is_mine" {$checked}
-              onclick="show_others ();" /></td>
+          <td colspan="3"><input type="checkbox" name="is_mine" {$checked}
+            onclick="show_others ();" /></td>
         </tr>
         <tr id="others" style="visibility: hidden;">
           <td class="aligntop"><label for="cal_login">{$addStr}:</label></td>
@@ -157,7 +156,7 @@ $deleteStr = ( ! empty ( $layers[$id]['cal_layeruser'] ) ? '&nbsp;&nbsp;&nbsp;
 $hiddenStr = ( ! empty ( $layers[$id]['cal_layeruser'] ) ? '
       <input type="hidden" name="id" value="' . $id . '" />' : '' );
 
-echo  <<<EOT
+echo <<<EOT
         <tr>
           <td colspan="4">
             <input type="submit" value="{$saveStr}" />{$deleteStr}
