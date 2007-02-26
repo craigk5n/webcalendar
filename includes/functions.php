@@ -80,6 +80,7 @@ $noSet = array (
   "user_can_update_password" => 1,
   "admin_can_add_user" => 1,
   "admin_can_delete_user" => 1,
+  "noSet" => 1,
 );
 
 // This code is a temporary hack to make the application work when
