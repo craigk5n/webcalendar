@@ -28,21 +28,20 @@
  */
 function unhtmlentities ( $string ) {
   global $charset;
-
+  // .
   // TODO:  Not sure what to do here re: UTF-8 encoding.
-
+  // .
   // html_entity_decode available PHP 4 >= 4.3.0, PHP 5.
   if ( function_exists ( 'html_entity_decode' ) )
     return html_entity_decode ( $string, ENT_QUOTES );
   else { // For PHP < 4.3.
     // Replace numeric entities.
-    $string = preg_replace ( '~&#x([0-9a-f]+);~ei', 'chr ( hexdec ( "\\1" ) )',
-      $string );
-    $string = preg_replace ( '~&#([0-9]+);~e', 'chr ( \\1 )', $string );
+    $string =
+    preg_replace ( '~&#x([0-9a-f]+);~ei', 'chr ( hexdec ( "\\1" ) )', $string );
     // Replace literal entities.
-    $trans_tbl = get_html_translation_table ( HTML_ENTITIES, ENT_QUOTES );
-    $trans_tbl = array_flip ( $trans_tbl );
-    return strtr ( $string, $trans_tbl );
+    return strtr (
+      preg_replace ( '~&#([0-9]+);~e', 'chr ( \\1 )', $string ),
+      array_flip ( get_html_translation_table ( HTML_ENTITIES, ENT_QUOTES ) ) );
   }
 }
 
@@ -59,12 +58,10 @@ function reset_language ( $new_language ) {
     $new_language = get_browser_language ();
 
   if ( $new_language != $lang || ! $translation_loaded ) {
-    $translations = array ();
-    $translation_loaded = false;
     $lang = $new_language;
     $lang_file = 'translations/' . $lang . '.txt';
+    $translation_loaded = false;
     load_translation_text ();
-    $translation_loaded = true;
   }
   $PUBLIC_ACCESS_FULLNAME = translate ( 'Public Access' );
   if ( $fullname == 'Public Access' )
@@ -79,7 +76,7 @@ function reset_language ( $new_language ) {
 function load_translation_text () {
   global $basedir, $lang_file, $settings, $translation_loaded, $translations;
 
-  if ( $translation_loaded == true ) // No need to run this twice.
+  if ( $translation_loaded ) // No need to run this twice.
     return;
 
   $translations = array ();
@@ -91,7 +88,7 @@ function load_translation_text () {
   }
   if ( ! file_exists ( $lang_file ) )
     die_miserable_death ( 'Cannot find language file: ' . $lang_file );
-
+  // .
   // Check for 'cachedir' in settings.  If found, then we will save
   // the parsed translation file there as a serialized array.
   $cached_file = $cachedir = '';
@@ -146,18 +143,18 @@ function load_translation_text () {
       // If so, we may have to make this configurable.
       if ( get_magic_quotes_runtime () )
         $buffer = stripslashes ( $buffer );
-
+      // .
       // Convert quotes to entities.
-      $buffer = str_replace ( '"', '&quot;', $buffer );
-      $buffer = str_replace ( "'", '&#39;', $buffer );
+      $buffer =
+      str_replace ( array ( '"', "'" ), array ( '&quot;', '&#39;' ), $buffer );
       // Skip installation translations unless we're running install/index.php
       if ( substr ( $buffer, 0, 7 ) == '# Page:' ) {
-        $inInstallTrans = ( substr ( $buffer, 0, 15 ) == '# Page: install' );
+        $inInstallTrans = ( substr ( $buffer, 9, 15 ) == 'install' );
         continue;
       }
-      if ( ( substr ( $buffer, 0, 1 ) == '#' || $inInstallTrans && !
-            $isInstall ) )
+      if ( ( substr ( $buffer, 0, 1 ) == '#' || $inInstallTrans && ! $isInstall ) )
         continue;
+
       $pos = strpos ( $buffer, ':' );
       $abbrev = trim ( substr ( $buffer, 0, $pos ) );
       $translations[$abbrev] = trim ( substr ( $buffer, $pos + 1 ) );
@@ -177,6 +174,7 @@ function load_translation_text () {
            . $cached_file );
     }
   }
+  $translation_loaded = true;
 }
 
 /* Gets browser-specified language preference.
@@ -196,8 +194,7 @@ function get_browser_language ( $pref = false ) {
     $HTTP_ACCEPT_LANGUAGE = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
   if ( empty ( $HTTP_ACCEPT_LANGUAGE ) )
-    return ( $pref == false
-      ? 'English-US' : translate ( 'Browser Language Not Found' ) );
+    return ( $pref ? translate ( 'Browser Language Not Found' ) : 'English-US' );
   else {
     $langs = explode ( ',', $HTTP_ACCEPT_LANGUAGE );
     for ( $i = 0, $cnt = count ( $langs ); $i < $cnt; $i++ ) {
@@ -227,15 +224,13 @@ function get_browser_language ( $pref = false ) {
 function translate ( $str, $decode = '' ) {
   global $translation_loaded, $translations;
 
-  if ( ! $translation_loaded ) {
-    $translation_loaded = true;
+  if ( ! $translation_loaded )
     load_translation_text ();
-  }
+
   $str = trim ( $str );
-  return ( ! empty ( $translations[$str] )
-    ? ( $decode == true
-      ? unhtmlentities ( $translations[$str] ) : $translations[$str] )
-    : $str );
+  return ( empty ( $translations[$str] )
+    ? $str
+    : ( $decode ? unhtmlentities ( $translations[$str] ) : $translations[$str] ) );
 }
 
 /* Translates text and prints it.
