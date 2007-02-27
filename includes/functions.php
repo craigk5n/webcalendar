@@ -793,8 +793,8 @@ function date_to_epoch ( $d ) {
  * "Friday, 12-31-1999" or whatever format the user prefers.
  *
  * @param string $indate        Date in YYYYMMDD format
- * @param string $format        Format to use for date (default is "__month__
- *                              __dd__, __yyyy__")
+ * @param string $format        Format to use for date
+ *                              (default is "__month__ __dd__, __yyyy__")
  * @param bool   $show_weekday  Should the day of week also be included?
  * @param bool   $short_months  Should the abbreviated month names be used
  *                              instead of the full month names?
