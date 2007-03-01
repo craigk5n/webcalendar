@@ -4,7 +4,7 @@
  * of an event
  *
  * Multiple categories can be added by each participant and 
- * stored seperately for that user. Global categories will be visible
+ * stored separately for that user. Global categories will be visible
  * by all participants, but can only be added/removed by the owner
  * in the edit-entry form.
  *
