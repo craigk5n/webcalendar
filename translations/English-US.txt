@@ -140,7 +140,7 @@ Application Name: Application Name
 Translated Name: Translated Name
 server-url-help: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
 Server URL: Server URL
-home-url-help: Specifies the home URL for the applicaiton. This can be an absolute or relative
+home-url-help: Specifies the home URL for the application. This can be an absolute or relative
 Home URL: Home URL
 language-help: Specifies which language to use.
 Language: Language
@@ -237,7 +237,7 @@ limit-appts-help: Allows the system administrator to set a system-wide limit on 
 Limit number of timed events per day: Limit number of timed events per day
 limit-appts-number-help: Specifies the maximum number of timed events a user can have in a single day.
 Maximum timed events per day: Maximum timed events per day
-crossday-help: If enabled, events that span days will be displayed on seperate days
+crossday-help: If enabled, events that span days will be displayed on separate days
 Disable Cross-Day Events: Disable Cross-Day Events
 disable-location-field-help: Selecting "Yes" will remove the "Location" field from event information pages
 Disable Location field: Disable Location field
@@ -348,7 +348,7 @@ email-default-sender: Specifies the email address to specify as the sender when 
 Default sender address: Default sender address
 email-mailer: Choose email type (SMTP, PHP mail, sendmail)
 Email Mailer: Email Mailer
-email-smtp-host: Hostname(s) of SMTP server(s) seperated by commas
+email-smtp-host: Hostname(s) of SMTP server(s) separated by commas
 SMTP Host name(s): SMTP Host name(s)
 email-smtp-port: SMTP Port Number (normally 25)
 SMTP Port Number: SMTP Port Number
@@ -373,7 +373,7 @@ email-event-create: Specifies whether the creator of entries will receive an ema
 Event that I create: Event that I create
 Color options: Color options
 Allow user to customize colors: Allow user to customize colors
-gradient-colors: If enabled gradient colors are used. This can greatly impact performane.
+gradient-colors: If enabled gradient colors are used. This can greatly impact performance.
 Enable gradient images for background colors: Enable gradient images for background colors
 Not available: Not available
 Document background: Document background
