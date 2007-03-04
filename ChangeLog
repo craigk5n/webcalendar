@@ -1,4 +1,4 @@
-Version 1.0.5 (?? ??? 2006)
+Version 1.0.5 (04 Mar 2007)
  - Security patch: don't allow URL to set 'noset', which allows users
    to then set other global variables.
  - Moved over popup code from 1.1 that fixed event popups in IE
