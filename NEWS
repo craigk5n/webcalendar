@@ -1,4 +1,6 @@
-Version 1.0.5 (?? ??? 2006)
+Version 1.0.5 (04 Mar 2006)
+  - Security patch: don't allow URL to set 'noset', which allows users
+    to then set other global variables.
   - Moved over javascript code for event popups from 1.1 code to handle
     problems with display on IE
   - Patch 1519611: Added new French-UTF8 translation
