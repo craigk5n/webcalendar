@@ -374,7 +374,7 @@ print_header ( $INC, '', $BodyX );
 		$j = ( $i == -1 ? 6 : $i ); //make sure start with Saturday
 		echo "<option value=\"$j\"" .
 		 ( $j == $s['WEEKEND_START'] ? $selected : '' ) .
-		 '> . weekday_name ( $j ) . "</option>\n";
+		 '>' . weekday_name ( $j ) . "</option>\n";
 	 }
 	?>
 	 </select>
