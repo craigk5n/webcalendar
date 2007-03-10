@@ -83,7 +83,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
           <td colspan="4">
             <label for="FileName">' . ( is_dir ( $icon_path ) &&
     ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin )
-    ? translate ( 'Add Icon to Category' ) . '</label><br/>&nbsp;&nbsp;&nbsp;'
+    ? translate ( 'Add Icon to Category' ) . '</label><br />&nbsp;&nbsp;&nbsp;'
      . translate ( 'Upload' ) . '&nbsp;<span style="font-size:small;">'
      . translate ( 'gif 3kb max' ) . '</span>:
             <input type="file" name="FileName" id="fileupload" size="45" '

@@ -147,7 +147,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
     if ( ! empty ( $_FILES['FileName'] ) )
       $file = $_FILES['FileName'];
     if ( empty ( $file['file'] ) )
-      $error = 'File Upload error!<br/>';
+      $error = 'File Upload error!<br />';
 
     //print_r ( $file ); exit;
     $mimetype = $file['type'];
