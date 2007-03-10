@@ -284,7 +284,7 @@ public class Event {
     }
     if (description != null && ( name == null || !name.equals ( description ) )) {
       sb.append ( "Description: " );
-      String s = description.replaceAll ( "<br/>", "\n    " );
+      String s = description.replaceAll ( "<br />", "\n    " );
       s = s.replaceAll ( "\\n", "\n    " );
       sb.append ( s );
       sb.append ( "\n" );

@@ -320,7 +320,7 @@ if ( dbi_get_debug () ) {
   $tret .= '<blockquote style="border:1px solid #ccc; background:#eee;">
 <b>Executed queries:' . dbi_num_queries ()
    . '&nbsp;&nbsp; <b>Cached queries:</b>' . dbi_num_cached_queries ()
-   . "<br/><ol>\n";
+   . "<br /><ol>\n";
   $log = $GLOBALS['SQLLOG'];
   // $log=0;
   $logcnt = count ( $log );
