@@ -23,10 +23,10 @@ function save_pref( $prefs, $src) {
         continue;
       // validate key name.  should start with "admin_" and not include
       // any unusual characters that might cause SQL injection
-      if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) ) {
-        die_miserable_death ( 'Invalid admin setting name "' .
-          $key . '"' );
-      }
+      if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) )
+        die_miserable_death ( str_replace ( 'XXX', $key,
+            translate ( 'Invalid setting name XXX.' ) ) );
+
     } else {
       $setting = $key;
       $prefix = 'admin_';    
