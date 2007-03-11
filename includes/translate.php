@@ -28,9 +28,9 @@
  */
 function unhtmlentities ( $string ) {
   global $charset;
-  // .
+
   // TODO:  Not sure what to do here re: UTF-8 encoding.
-  // .
+
   // html_entity_decode available PHP 4 >= 4.3.0, PHP 5.
   if ( function_exists ( 'html_entity_decode' ) )
     return html_entity_decode ( $string, ENT_QUOTES );
@@ -88,7 +88,7 @@ function load_translation_text () {
   }
   if ( ! file_exists ( $lang_file ) )
     die_miserable_death ( 'Cannot find language file: ' . $lang_file );
-  // .
+
   // Check for 'cachedir' in settings.  If found, then we will save
   // the parsed translation file there as a serialized array.
   $cached_file = $cachedir = '';
@@ -143,7 +143,7 @@ function load_translation_text () {
       // If so, we may have to make this configurable.
       if ( get_magic_quotes_runtime () )
         $buffer = stripslashes ( $buffer );
-      // .
+
       // Convert quotes to entities.
       $buffer =
       str_replace ( array ( '"', "'" ), array ( '&quot;', '&#39;' ), $buffer );
