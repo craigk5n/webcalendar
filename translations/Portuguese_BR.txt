@@ -477,7 +477,7 @@ Set Password: Gravar Senha
 Deleting users not supported: Deleção de usuários não suportada
 The passwords were not identical: As senhas não são iguais
 You have not entered a password: Não entrou com a senha
-Username can not be blank: Nome de usuário não pode estar vazio
+Username cannot be blank.: Nome de usuário não pode estar vazio
 
 ########################################
 # Page: export.php

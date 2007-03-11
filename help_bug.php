@@ -18,8 +18,10 @@ if ( empty ( $HTTP_USER_AGENT ) )
     <p>' .
   translate ( 'Please include all the information below when reporting a bug.' )
    . ( $LANGUAGE != 'English-US' ? ' '
-     . translate ( 'Also, please use <strong>English</strong> rather than' )
-     . ' ' . translate ( get_browser_language ( true ) ) . '.' : '' ) . '</p>
+// translate ( 'Also, please use <strong>English</strong> rather than' )
+     . str_replace ('XXX', translate ( get_browser_language ( true ) ),
+     translate ( 'Also, please use English rather than XXX.' ) )
+      : '' ) . '</p>
     <form action="http://sourceforge.net/tracker/" target="_new">
       <input type="hidden" name="func" value="add" />
       <input type="hidden" name="group_id" value="3870" />

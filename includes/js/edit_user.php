@@ -8,7 +8,7 @@ function valid_form ( form ) {
   var name = form.user.value;
   if ( ! name ) {
     alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
-      etranslate( 'Username can not be blank', true)?>" );
+      etranslate( 'Username cannot be blank.', true)?>" );
     return false;  
   }  
   check_name();

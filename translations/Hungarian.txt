@@ -654,7 +654,7 @@ Set Password: Jelszó beállítás
 Deleting users not supported: Felhasználók törlése nem támogatott
 The passwords were not identical: A jelszavak nem egyeznek meg
 You have not entered a password: Nem írtad be a jelszót
-Username can not be blank: A felhasználónév nem lehet üres
+Username cannot be blank.: A felhasználónév nem lehet üres
 
 ########################################
 # Page: export.php
@@ -896,7 +896,7 @@ Records deleted from: Rekordok törölve a következõbõl
 ########################################
 # Page: register.php
 #
-Email address can not be blank: Az Email cím nem lehet üres
+Email address cannot be blank.: Az Email cím nem lehet üres
 Illegal characters in login: Illegális karakter a felhasználónévben
 A new WebCalendar account has been set up for you: Az új WebNaptár hozzáférés létrehozva
 Your username is: A felhasználóneved
@@ -961,7 +961,7 @@ View Another Users Calendar: Betekintés más felhasználók naptárába
 #
 You have not added any categories: Még nem adtál hozzá kategóriát
 Set Category: Kategória beállítása
-Global Categories can not be changed: Globális kategóriát nem lehet módosításani
+Global Categories cannot be changed.: Globális kategóriát nem lehet módosításani
 
 ########################################
 # Page: upcoming.php

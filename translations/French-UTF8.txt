@@ -478,7 +478,7 @@ Set Password: Modifier le mot de passe
 Deleting users not supported: La suppression des utilisateurs n'est pas possible
 The passwords were not identical: Les mots de passe saisis ne sont pas identiques
 You have not entered a password: Vous n'avez pas saisi de mot de passe
-Username can not be blank: Le nom d'utilisateur ne peut être laissé non renseigné
+Username cannot be blank.: Le nom d'utilisateur ne peut être laissé non renseigné
 
 ########################################
 # Page: export.php

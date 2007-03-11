@@ -49,7 +49,7 @@ function check_username ( $user ) {
   global $control, $error;
 
   if ( strlen ( $user ) == 0 ) {
-   $error = translate ( 'Username can not be blank' );
+   $error = translate ( 'Username cannot be blank.' );
   return false;
  } 
   $sql='SELECT cal_login FROM webcal_user WHERE cal_login = ?';
@@ -70,7 +70,7 @@ function check_username ( $user ) {
 function check_email ( $uemail ) {
   global $control, $error;
   if ( ! strlen ( $uemail ) ) {
-   $error = translate ( 'Email address can not be blank' );
+   $error = translate ( 'Email address cannot be blank.' );
   return false;
  } 
   $sql='SELECT cal_email FROM webcal_user WHERE cal_email = ?';
@@ -205,7 +205,7 @@ function valid_form () {
     return false;
   }
   if ( document.selfreg.user.value.length == 0 ) {
-    alert ( "<?php etranslate( 'Username can not be blank', true)?>." );
+    alert ( "<?php etranslate( 'Username cannot be blank.', true)?>." );
     return false;
   }
   if ( document.selfreg.upassword1.value != document.selfreg.upassword2.value ) {

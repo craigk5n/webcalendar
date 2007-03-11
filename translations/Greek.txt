@@ -476,7 +476,7 @@ Set Password: Θέσετε τον κωδικό
 Deleting users not supported: Η διαγραφή χρηστών δεν υποστηρίζεται
 The passwords were not identical: Οι κωδικοί δεν είναι ίδιοι
 You have not entered a password: Δεν δώσατε κωδικό
-Username can not be blank: Το όνομα χρήστη δεν μπορεί να είναι κενό
+Username cannot be blank.: Το όνομα χρήστη δεν μπορεί να είναι κενό
 
 ########################################
 # Page: export.php

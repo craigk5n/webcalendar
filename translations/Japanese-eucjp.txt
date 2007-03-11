@@ -672,7 +672,7 @@ Deleting users not supported: ユーザーの削除はサポートされていません
 The passwords were not identical: パスワードが一致しません
 You have not entered a password: パスワードを入力していません
 Invalid characters in login: ログイン名に無効な文字があります
-Username can not be blank: ユーザー名は空にできません。
+Username cannot be blank.: ユーザー名は空にできません。
 
 ########################################
 # Page: export.php
@@ -911,7 +911,7 @@ Records deleted from: レコードを削除しました 対象:
 ########################################
 # Page: register.php
 #
-Email address can not be blank: 電子メールアドレスは空にできません。
+Email address cannot be blank.: 電子メールアドレスは空にできません。
 Your username is: ユーザー名は
 Your password is: パスワードは
 Please visit: 訪問してください
@@ -979,7 +979,7 @@ View Another Users Calendar: 他のユーザーのカレンダーを見る
 #
 You have not added any categories: いくつかのカテゴリを追加していません
 Set Category: カテゴリ設定
-Global Categories can not be changed: グローバルカテゴリは変更できませんでした
+Global Categories cannot be changed.: グローバルカテゴリは変更できませんでした
 
 ########################################
 # Page: upcoming.php
@@ -1323,12 +1323,12 @@ Invalid color: 無効色
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID can not be blank: カレンダー ID は空にできません
+Calendar ID cannot be blank.: カレンダー ID は空にできません
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
-URL can not be blank: URL は空にできません
+URL cannot be blank.: URL は空にできません
 
 ########################################
 # Page: includes/js/export_import.php
