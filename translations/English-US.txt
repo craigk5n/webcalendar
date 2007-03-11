@@ -907,6 +907,7 @@ Specifies the user that you would like to see displayed in your calendar.: Speci
 ########################################
 # Page: help_pref.php
 #
+Invalid setting name XXX.: Invalid setting name "XXX".
 Default Category: Default Category
 default-category-help: Specifies the category a new event should default to.
 When I am the boss: When I am the boss
