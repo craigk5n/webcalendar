@@ -19,10 +19,10 @@ function save_pref( $prefs, $src) {
         continue;
       // validate key name.  should start with "pref_" and not include
       // any unusual characters that might cause SQL injection
-      if ( ! preg_match ( '/pref_[A-Za-z0-9_]+$/', $key ) ) {
-        die_miserable_death ( 'Invalid pref setting name "' .
-        $key . '"' );
-      }
+      if ( ! preg_match ( '/pref_[A-Za-z0-9_]+$/', $key ) )
+        die_miserable_death ( str_replace ( 'XXX', $key,
+            translate ( 'Invalid setting name XXX.' ) ) );
+      
     } else {
       $setting = $key;
       $prefix = 'pref_';    
@@ -97,8 +97,8 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 //get user settings
-$res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_user_pref ' .
-    'WHERE cal_login = ?', array ( $prefuser ) );
+$res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_user_pref
+  WHERE cal_login = ?', array ( $prefuser ) );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $prefarray[$row[0]] = $row[1];
