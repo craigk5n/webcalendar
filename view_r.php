@@ -207,7 +207,7 @@ else
 
 $untimed_found = false;
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
-// public access events can not override $DISPLAY_UNAPPROVED
+// public access events cannot override $DISPLAY_UNAPPROVED
 if ( $user == '__public__' && $PUBLIC_ACCESS_VIEW_UNAPPROVED != 'Y' )
   $get_unapproved = false;
   

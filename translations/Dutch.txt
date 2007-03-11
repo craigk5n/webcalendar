@@ -684,7 +684,7 @@ Deleting users not supported: Het verwijderen van gebruikers is niet mogelijk
 The passwords were not identical: De ingevoerde wachtwoorden zijn niet identiek of u heeft het wachtwoord maar een keer ingevuld <br />Probeert u het nog eens
 You have not entered a password: U heeft geen wachtwoord ingevuld.
 Invalid characters in login: Ongeldige karakters in login
-Username can not be blank: Gebruikersnaam kan niet leeg zijn
+Username cannot be blank.: Gebruikersnaam kan niet leeg zijn
 
 ########################################
 # Page: export.php
@@ -950,7 +950,7 @@ Records deleted from: Afspraken verwijderd van
 ########################################
 # Page: register.php
 #
-Email address can not be blank: Email-adres kan niet leeg zijn
+Email address cannot be blank.: Email-adres kan niet leeg zijn
 Illegal characters in login: Ongeldige karakters in login
 A new WebCalendar account has been set up for you: Er is een nieuw WebCalendar account voor u opgezet.
 Your username is: Uw gebruikersnaam is
@@ -1020,7 +1020,7 @@ View Another Users Calendar: Bekijk de agenda van een andere gebruiker
 #
 You have not added any categories: U heeft geen categorie toegevoegd
 Set Category: Bepaal categorie
-Global Categories can not be changed: Globale categorien kunnen niet worden gewijzigd
+Global Categories cannot be changed.: Globale categorien kunnen niet worden gewijzigd
 
 ########################################
 # Page: upcoming.php
@@ -1385,13 +1385,13 @@ Invalid color: Ongeldige kleur
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID can not be blank: Kalender ID kan niet leeg zijn
-Both first and last names can not be blank: Zowel voor- als achternaam kunnen niet leeg zijn
+Calendar ID cannot be blank.: Kalender ID kan niet leeg zijn
+First and last names cannot both be blank.: Zowel voor- als achternaam kunnen niet leeg zijn
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
-URL can not be blank: URL kan niet leeg zijn
+URL cannot be blank.: URL kan niet leeg zijn
 
 ########################################
 # Page: includes/js/export_import.php

@@ -682,7 +682,7 @@ Deleting users not supported: מחיקת משתמשים אינה נתמכת
 The passwords were not identical: הסיסמות לא זהות
 You have not entered a password: לא הקלדת סיסמא
 Invalid characters in login: ישנם תווים לא חוקיים בשם משתמש
-Username can not be blank: שם משתמש לא יכול להיות ריק
+Username cannot be blank.: שם משתמש לא יכול להיות ריק
 
 ########################################
 # Page: export.php
@@ -946,7 +946,7 @@ Records deleted from: רשומות נמחקו מ-
 ########################################
 # Page: register.php
 #
-Email address can not be blank: כתובת דוא"ל לא יכולה להיות ריקה
+Email address cannot be blank.: כתובת דוא"ל לא יכולה להיות ריקה
 Illegal characters in login: ישנם תווים לא חוקיים בשם המשתמש
 A new WebCalendar account has been set up for you: חשבון לוח שנה חדש הוגדר עבורך
 Your username is: שם המשתמש שלך הינו
@@ -1016,7 +1016,7 @@ View Another Users Calendar: צפה בלוח שנה של משתמש אחר
 #
 You have not added any categories: לא הוספת סיווגים כלשהם
 Set Category: קבע סיווג
-Global Categories can not be changed: לא ניתן לשנות סיווגים גלובאליים
+Global Categories cannot be changed.: לא ניתן לשנות סיווגים גלובאליים
 
 ########################################
 # Page: upcoming.php
@@ -1381,13 +1381,13 @@ Invalid color: צבע לא חוקי
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID can not be blank: זיהוי לוח השנה לא יכול ליהות ריק
-Both first and last names can not be blank: אין אפשרות שגם שם הפרטי וגם שם המשפחה יהיו ריקים
+Calendar ID cannot be blank.: זיהוי לוח השנה לא יכול ליהות ריק
+First and last names cannot both be blank.: אין אפשרות שגם שם הפרטי וגם שם המשפחה יהיו ריקים
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
-URL can not be blank: כתובת URL לא יכול להיות ריקה
+URL cannot be blank.: כתובת URL לא יכול להיות ריקה
 
 ########################################
 # Page: includes/js/export_import.php

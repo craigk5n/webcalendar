@@ -466,7 +466,7 @@ Set Password: Sett passord
 Deleting users not supported: Sletting av brukere er ikke støttet
 The passwords were not identical: Passordene var ikke identiske
 You have not entered a password: Du har ikke oppgitt passord
-Username can not be blank: Brukernavn må fylles ut 
+Username cannot be blank.: Brukernavn må fylles ut 
 
 ########################################
 # Page: export.php

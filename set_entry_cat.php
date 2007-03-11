@@ -115,7 +115,7 @@ $briefStr = translate( 'Brief Description' );
 $catHelpStr = tooltip( 'category-help' );
 $catStr = translate( 'Category' );
 $editStr = translate( 'Edit' );
-$globalNoteStr = ( $globals_found ? translate( 'Global Categories can not be changed'):'');
+$globalNoteStr = ( $globals_found ? translate( 'Global Categories cannot be changed.'):'');
 $saveStr = translate( 'Save' );
 
 $INC = array('js/set_entry_cat.php/true');

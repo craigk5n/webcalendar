@@ -714,7 +714,7 @@ Deleting users not supported: Удаление пользователей не поддерживается
 The passwords were not identical: Пароли не совпали
 You have not entered a password: Вы не ввели пароль
 Invalid characters in login: Недопустимые символы в имени пользователя
-Username can not be blank: Имя пользователя не может быть пустым
+Username cannot be blank.: Имя пользователя не может быть пустым
 
 ########################################
 # Page: export.php
@@ -981,7 +981,7 @@ Records deleted from: Записи удалены из
 ########################################
 # Page: register.php
 #
-Email address can not be blank: Адрес электронной почты не моет быть пустым
+Email address cannot be blank.: Адрес электронной почты не моет быть пустым
 Illegal characters in login: Недопустимые символы в имени пользователя
 A new WebCalendar account has been set up for you: Новая учетная запись WebCalendar была создана
 Your username is: Имя вашего пользователя
@@ -1051,7 +1051,7 @@ View Another Users Calendar: Просмотреть календарь другого пользователя
 #
 You have not added any categories: Вы не добавляли никаких категорий
 Set Category: Установить Категорию
-Global Categories can not be changed: Глобальные категории не могут быть изменены
+Global Categories cannot be changed.: Глобальные категории не могут быть изменены
 
 ########################################
 # Page: upcoming.php
@@ -1443,13 +1443,13 @@ Invalid color: Неправильный цвет
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID can not be blank: ID календаря не может быть пустым
-Both first and last names can not be blank: Имя и фамилия не могуд быть пустыми одновременно
+Calendar ID cannot be blank.: ID календаря не может быть пустым
+First and last names cannot both be blank.: Имя и фамилия не могуд быть пустыми одновременно
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
-URL can not be blank: Адрес не может быть пустым
+URL cannot be blank.: Адрес не может быть пустым
 
 ########################################
 # Page: includes/js/export_import.php

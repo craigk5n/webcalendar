@@ -15,7 +15,7 @@ $notAuthStr = print_not_auth () . '.';
 $deleteStr = translate ( 'Deleting users not supported' ) . '.';
 $notIdenticalStr = translate ( 'The passwords were not identical' ) . '.';
 $noPasswordStr = translate ( 'You have not entered a password' ) . '.';
-$blankUserStr = translate ( 'Username can not be blank' ) . '.';
+$blankUserStr = translate ( 'Username cannot be blank.' ) . '.';
 
 // Don't let them edit users if they'e not authorized.
 if ( empty ( $user ) ) {
@@ -79,7 +79,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
             $error = 'Invalid characters in login.';
           else {
             if ( empty ( $user ) || $user == '' )
-              // Username can not be blank. This is currently the only place
+              // Username cannot be blank. This is currently the only place
               // that calls addUser that is located in $user_inc.
               $error = $blankUserStr;
             else {

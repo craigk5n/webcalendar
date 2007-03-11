@@ -10,13 +10,13 @@ function valid_form ( form ) {
   var lname = form.nlastname.value;
   if ( ! name ) {
     alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
-      etranslate( 'Calendar ID can not be blank', true)?>" );
+      etranslate( 'Calendar ID cannot be blank.', true)?>" );
     document.editnonuser.nid.focus();
     return false;  
   }  
   if ( ! fname && ! lname ) {
     alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
-      etranslate( 'Both first and last names can not be blank', true)?>" );
+      etranslate( 'First and last names cannot both be blank.', true)?>" );
     document.editnonuser.nfirstname.focus();  
     return false;  
   }

@@ -855,7 +855,7 @@ repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standa
 Deleting users not supported: Gel&ouml;schte Benutzer werden nicht unterst&uuml;tzt
 The passwords were not identical: Die eingebenen Kennw&ouml;rter stimmten nicht &uuml;berein
 You have not entered a password: Sie haben kein Kennwort eingegeben
-Username can not be blank: Benutzername darf nicht LEER sein
+Username cannot be blank.: Benutzername darf nicht LEER sein
 Set Password: Setze Kennwort
 
 ########################################
@@ -976,7 +976,7 @@ End date: Enddatum
 You have not added any categories: Sie haben noch keine Kategorien angelegt
 Set Category: Kategorie zuweisen
 category-help: Definiert die Kategorie eines Termines.
-Global Categories can not be changed: Allgemeine Kategorieren k&ouml;nnen nicht ge&auml;ndert werden
+Global Categories cannot be changed.: Allgemeine Kategorieren k&ouml;nnen nicht ge&auml;ndert werden
 
 ########################################
 # Page: icons.php
@@ -1023,7 +1023,7 @@ Double-click on empty cell to add new entry: Ein &#39;Doppelklick&#39; auf eine 
 ########################################
 # Page: register.php
 #
-Email address can not be blank: Emailadresse darf nicht leer sein
+Email address cannot be blank.: Emailadresse darf nicht leer sein
 A new WebCalendar account has been set up for you: Ein neuer Webkalenderzugang ist f&uuml;r Sie eingerichtet worden
 Your username is: Ihr Benutzername lautet
 Your password is: Ihr Passwort lautet
@@ -1580,15 +1580,15 @@ no such user: kein solcher Benutzer
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID can not be blank: Kalender ID kann nicht LEER sein
-Both first and last names can not be blank: Beide Namen (Vor- und Nachname) k&ouml;nnen nicht LEER sein
+Calendar ID cannot be blank.: Kalender ID kann nicht LEER sein
+First and last names cannot both be blank.: Beide Namen (Vor- und Nachname) k&ouml;nnen nicht LEER sein
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
 Invalid color: Ung&uuml;ltige Farbe
 Color format should be &#39;#RRGGBB&#39;: Farbformat sollte &#39;#RRGGBB&#39; sein
-URL can not be blank: URL kann nicht LEER sein
+URL cannot be blank.: URL kann nicht LEER sein
 
 ########################################
 # Page: includes/js/export_import.php

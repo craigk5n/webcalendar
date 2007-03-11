@@ -500,7 +500,7 @@ Set Password: Zmien has³o
 Deleting users not supported: Brak obs³ugi usuwania u¿ytkowników
 The passwords were not identical: Has³a nie s± takie same
 You have not entered a password: Nie wprowadzi³e¶ has³a
-Username can not be blank: Nazwa u¿ytkownika nie mo¿e bya pusta
+Username cannot be blank.: Nazwa u¿ytkownika nie mo¿e bya pusta
 
 ########################################
 # Page: export.php
@@ -720,7 +720,7 @@ Records deleted from: Pola usuniete z
 ########################################
 # Page: register.php
 #
-Email address can not be blank: Adres email nie mo¿e byæ pusty
+Email address cannot be blank.: Adres email nie mo¿e byæ pusty
 Illegal characters in login: Niepoprawne znaki w nazwie u¿ytkownika
 A new WebCalendar account has been set up for you: Nowe konto WebCalendara w³a¶nie zosta³o dla Ciebie stworzone
 Your username is: Twoja nazwa u¿ytkownika

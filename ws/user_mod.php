@@ -84,7 +84,7 @@ $user_password = getGetValue ( 'password' );
 // This error should not happen in a properly written client,
 // so no need to translate it.
 if ( empty ( $error ) && empty ( $user_login ) )
-  $error = 'Username can not be blank.';
+  $error = 'Username cannot be blank.';
 
 // Check for invalid characters in the login.
 if ( empty ( $error ) && addslashes ( $user_login ) != $user_login )

@@ -15,7 +15,7 @@ function valid_form ( form ) {
   }
   if (  ! form.nurl.value ) {
     alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
-      etranslate( 'URL can not be blank', true)?>" );
+      etranslate( 'URL cannot be blank.', true)?>" );
     return false;  
   }
   check_name();

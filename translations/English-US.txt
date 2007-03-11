@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 02-18-2007
+# Translation last updated on 03-11-2007
 
 
 ################################################################################
@@ -121,6 +121,7 @@ Error adding event XXX: Error adding event: XXX.
 ########################################
 # Page: admin.php
 #
+Invalid setting name XXX.: Invalid setting name "XXX".
 Select: Select
 Day: Day
 Week: Week
@@ -698,11 +699,11 @@ Is public calendar: Is public calendar
 ########################################
 # Page: edit_remotes.php
 #
-Edit Remote Calendar: Edit Remote Calendar
 Add Remote Calendar: Add Remote Calendar
+Edit Remote Calendar: Edit Remote Calendar
 Create Layer: Create Layer
-Required to View Remote Calendar: Required to View Remote Calendar
 Reload: Reload
+Required to View Remote Calendar: Required to View Remote Calendar
 
 ########################################
 # Page: edit_remotes_handler.php
@@ -792,7 +793,7 @@ Set Password: Set Password
 Deleting users not supported: Deleting users not supported.
 The passwords were not identical: The passwords were not identical.
 You have not entered a password: You have not entered a password.
-Username can not be blank: Username can not be blank.
+Username cannot be blank.: Username cannot be blank.
 
 ########################################
 # Page: export.php
@@ -854,6 +855,7 @@ colors-help: All colors should be specified in "#RRGGBB" hexadecimal format wher
 Report Bug: Report Bug
 Please include all the information below when reporting a bug.: Please include all the information below when reporting a bug.
 Also, please use <strong>English</strong> rather than: Also, please use <strong>English</strong> rather than
+Also, please use English rather than XXX.: Also, please use <strong>English</strong> rather than XXX.
 
 ########################################
 # Page: help_edit_entry.php
@@ -907,7 +909,6 @@ Specifies the user that you would like to see displayed in your calendar.: Speci
 ########################################
 # Page: help_pref.php
 #
-Invalid setting name XXX.: Invalid setting name "XXX".
 Default Category: Default Category
 default-category-help: Specifies the category a new event should default to.
 When I am the boss: When I am the boss
@@ -1078,7 +1079,7 @@ Records deleted from: Records deleted from
 ########################################
 # Page: register.php
 #
-Email address can not be blank: Email address can not be blank
+Email address cannot be blank.: Email address cannot be blank.
 A new WebCalendar account has been set up for you: A new WebCalendar account has been set up for you
 Your username is: Your username is
 Your password is: Your password is
@@ -1155,7 +1156,7 @@ View Another Users Calendar: View Another User's Calendar
 #
 You have not added any categories: You have not added any categories
 Set Category: Set Category
-Global Categories can not be changed: Global Categories can not be changed
+Global Categories cannot be changed.: Global Categories cannot be changed.
 
 ########################################
 # Page: upcoming.php
@@ -1605,13 +1606,13 @@ layer: layer
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID can not be blank: Calendar ID can not be blank
-Both first and last names can not be blank: Both first and last names can not be blank
+Calendar ID cannot be blank.: Calendar ID cannot be blank.
+First and last names cannot both be blank.: First and last names cannot both be blank.
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
-URL can not be blank: URL can not be blank
+URL cannot be blank.: URL cannot be blank.
 
 ########################################
 # Page: includes/js/export_import.php
