@@ -931,7 +931,7 @@ function display_activity_log ( $cal_type, $cal_text = '' ) {
     $ret = '???';
 
   return $ret
-   . ( ! empty ( $cal_text ) ? '<br/>&nbsp;' . htmlentities ( $cal_text ) : '' );
+   . ( ! empty ( $cal_text ) ? '<br />&nbsp;' . htmlentities ( $cal_text ) : '' );
 }
 
 /* Display the <<Admin link on pages if menus are not enabled
@@ -4223,7 +4223,7 @@ function print_checkbox ( $vals, $id = '', $onchange = '' ) {
     $id = $vals[0];
 
   if ( empty ( $checked ) ) {
-    $checked = ' checked="checked" ';
+    $checked = ' checked="checked"';
     $No = translate ( 'No' );
     $Yes = translate ( 'Yes' );
   }
@@ -4667,7 +4667,7 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
   $ret = '';
   $setting = $defIdx;
   if ( empty ( $checked ) ) {
-    $checked = ' checked="checked" ';
+    $checked = ' checked="checked"';
     $No = translate ( 'No' );
     $Yes = translate ( 'Yes' );
   }
@@ -4685,7 +4685,7 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
   $onclickStr = ( empty ( $onclick ) ? '' : ' onclick="' . $onclick . ' ()"' );
   foreach ( $vals as $K => $V ) {
     $ret .= '
-      <label><input type="radio" name="' . $variable . '" value="' . $K . '" '
+      <label><input type="radio" name="' . $variable . '" value="' . $K . '"'
      . ( $setting == $K ? $checked : '' ) . $onclickStr . ' />&nbsp;' . $V
      . '</label>' . $sep;
   }
