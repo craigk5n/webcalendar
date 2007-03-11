@@ -230,7 +230,7 @@ if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
 }
 ?>
 
-<br/><br />
+<br /><br />
 
 <!-- TABS -->
 <div id="tabs">
@@ -923,7 +923,7 @@ echo display_month ( date ( 'm' ), date( 'Y' ), true );
 <br /><br />
 <div>
 <input type="submit" value="<?php etranslate( 'Save Preferences' )?>" name="" />
-<br/><br/>
+<br /><br />
 </div>
 </form>
 
