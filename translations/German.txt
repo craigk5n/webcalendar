@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 16.Feb.2007
+# Last update: 12.Mar.2007
 #
 # $Id$
-# Translation last updated on 02-16-2007
+# Translation last updated on 03-12-2007
 
 
 ################################################################################
@@ -234,17 +234,17 @@ Approved w/Comments by XXX.: Genehmigte w/Anmerkungen von XXX
 # Page: edit_remotes.php
 #
 NONUSER_PREFIX not set: &#39;NONUSER_PREFIX&#39; nicht definiert
-Edit Remote Calendar: Externen Kalender &auml;ndern
-Add Remote Calendar: Externen Kalender hinzuf&uuml;gen
 word characters only: K&ouml;nnen nur Buchstaben und Ziffern sein (a-zA-Z_0-9)
+Add Remote Calendar: Externen Kalender hinzuf&uuml;gen
+Edit Remote Calendar: Externen Kalender &auml;ndern
 Calendar ID: Kalender ID
+Color: Farbe
+Create Layer: Erstelle Layer
 First Name: Vorname
 Last Name: Nachname
-URL: URL
-Create Layer: Erstelle Layer
-Required to View Remote Calendar: Erfordert Ansicht des externen Kalenders
-Color: Farbe
 Reload: Neuladen
+Required to View Remote Calendar: Erfordert Ansicht des externen Kalenders
+URL: URL
 
 ########################################
 # Page: report.php
@@ -426,6 +426,7 @@ Email address XXX already exists: Emailadresse XXX existiert bereits
 ########################################
 # Page: admin.php
 #
+Invalid setting name XXX.: Ung&uuml;ltiger Einstellungsname XXX.
 Month: Monat
 Year: Jahr
 Settings: Einstellungen
@@ -855,7 +856,7 @@ repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standa
 Deleting users not supported: Gel&ouml;schte Benutzer werden nicht unterst&uuml;tzt
 The passwords were not identical: Die eingebenen Kennw&ouml;rter stimmten nicht &uuml;berein
 You have not entered a password: Sie haben kein Kennwort eingegeben
-Username cannot be blank.: Benutzername darf nicht LEER sein
+Username cannot be blank.: Benutzername darf nicht leer sein.
 Set Password: Setze Kennwort
 
 ########################################
@@ -976,7 +977,7 @@ End date: Enddatum
 You have not added any categories: Sie haben noch keine Kategorien angelegt
 Set Category: Kategorie zuweisen
 category-help: Definiert die Kategorie eines Termines.
-Global Categories cannot be changed.: Allgemeine Kategorieren k&ouml;nnen nicht ge&auml;ndert werden
+Global Categories cannot be changed.: Globale Kategorien k&ouml;nnen nicht ge&auml;ndert werden.
 
 ########################################
 # Page: icons.php
@@ -1023,7 +1024,7 @@ Double-click on empty cell to add new entry: Ein &#39;Doppelklick&#39; auf eine 
 ########################################
 # Page: register.php
 #
-Email address cannot be blank.: Emailadresse darf nicht leer sein
+Email address cannot be blank.: Emailadresse darf nicht leer sein.
 A new WebCalendar account has been set up for you: Ein neuer Webkalenderzugang ist f&uuml;r Sie eingerichtet worden
 Your username is: Ihr Benutzername lautet
 Your password is: Ihr Passwort lautet
@@ -1136,6 +1137,7 @@ Create a new layer to view this calendar: Erstelle neuen Layer um diesen Kalenda
 Report Bug: Fehlermeldung
 Please include all the information below when reporting a bug.: Wenn Sie einen Fehler melden wollen, f&uuml;gen Sie die unten aufgef&uuml;hrten Informationen bei.
 Also, please use <strong>English</strong> rather than: Bitte verwenden Sie <strong>Englisch</strong> statt
+Also, please use English rather than XXX.: Bitte verwenden Sie <strong>Englisch</strong> anstatt XXX.
 
 ########################################
 # Page: edit_entry.php
@@ -1359,7 +1361,56 @@ Event Imported: Termin importiert
 ########################################
 # Page: includes/functions.php
 #
+Error Type not set for activity log!: Fehler, Typ ist nicht f&uuml;r Aktivit&auml;ten Protokoll definiert!
+This event is private: Dieser Termin ist&nbsp; <b>PRIVAT</b>
+This event is XXX.: Dieser Termin ist XXX.
+Conf.: Vertraulich
+exceeds limit of XXX events per day: &uuml;berschrittenes Limit von XXX Termin(e) pro Tag
+on: am
+All Attendees: Alle Teilnehmer
+Busy: Besch&auml;ftigt
+Tentative: Vorl&auml;ufig
+Schedule an appointment for: Einen Termin festlegen f&uuml;r
+Schedule an appointment for XXX.: Einen Termin festlegen f&uuml;r XXX.
+Event approved: Termin best&auml;tigt
+Journal approved: Journal best&auml;tigt
+Task approved: Aufgabe genehmigt
+Attachment: Anhang
+Event created: Termin hinzugef&uuml;gt
+Journal created: Journal erstellt
+Task created: Aufgabe erstellt
+Event deleted: Termin gel&ouml;scht
+Journal deleted: Jounral gel&ouml;scht
+Task deleted: Aufgabe gel&ouml;scht
+New user via email (self registration): Neuer Teilnehmer via Email (Selbstregistrierung)
+New user (self registration): Neuer Teilnehmer (Selbstregistrierung)
+Notification sent: Benachrichtigung gesendet
+Event rejected: Termin abgelehnt
+Journal rejected: Journal abgelehnt
+Task rejected: Aufgabe abgelehnt
+Reminder sent: Erinnerung gesendet
+Event updated: Termin aktualisiert
+Journal updated: Journal aktualisiert
+Task updated: Aufgabe aktualisiert
+Delete User: Teilnehmer l&ouml;schen
+WK: KW
+TASKS: AUFGABEN
+Task_Title: Aufgabentitel
+Due: F&auml;lligkeit
+Task Name: Aufgabe
+Task Due Date: Abgabefrist
 You have XXX unapproved entries: Anzahl der unbest&auml;tigten Eintr&auml;ge&#058; <b>&rArr; &quot;XXX&quot;</b>
+Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
+Event: Termin
+Action: Aktion
+Printer Friendly: Druckansicht
+Generate printer-friendly version: Erzeuge Version zum Drucken
+after: nach
+before: vor
+end: Ende
+start: Beginn
+View this event: Diesen Termin anzeigen
+View this task: Diese Aufgabe anzeigen
 January: Januar
 February: Februar
 March: M&auml;rz
@@ -1385,6 +1436,23 @@ Oct: Okt
 Nov: Nov
 Dec: Dez
 unknown-month: unbekannter Monat
+Error TIME_SLOTS undefined!: Fehler: Zeitfenster nicht definiert!
+The following error occurred: Folgender Fehler trat auf
+You are not authorized: Sie haben daf&uuml;r keine Berechtigung
+Add N hours to: Zuz&uuml;glich N Stunden von
+Subtract N hours from: Abz&uuml;glich N Stunden von
+same as: gleich wie
+server time: Serverzeit
+Cannot read timezone file XXX.: Kann die Zeitzonendatei XXX nicht lesen
+Your current GMT offset is: Ihre jetzige GMT-Zeitverschiebung ist
+Your current GMT offset is XXX hours.: Ihre jetzige GMT-Zeitverschiebung sind XXX Stunde(n).
+Unauthorized: Nicht autorisiert
+Error approving event: Fehler beim Genehmigen des Termin
+Error approving event XXX.: Fehler beim Genehmigen des Termin XXX.
+Error deleting event: Fehler beim L&ouml;schen des Termin
+Error deleting event XXX.: Fehler beim L&ouml;schen des Termin XXX.
+Error rejecting event: Fehler beim Ablehnen des Termin
+Error rejecting event XXX.: Fehler beim Ablehnen des Termin XXX.
 Sunday: Sonntag
 Monday: Montag
 Tuesday: Dienstag
@@ -1400,66 +1468,6 @@ Thu: Do
 Fri: Fr
 Sat: Sa
 unknown-weekday: unbekannter Wochentag
-Schedule an appointment for: Einen Termin festlegen f&uuml;r
-All Attendees: Alle Teilnehmer
-Busy: Besch&auml;ftigt
-Tentative: Vorl&auml;ufig
-Add N hours to: Zuz&uuml;glich N Stunden von
-Subtract N hours from: Abz&uuml;glich N Stunden von
-same as: gleich wie
-server time: Serverzeit
-Your current GMT offset is: Ihre jetzige GMT-Zeitverschiebung ist
-Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
-The following error occurred: Folgender Fehler trat auf
-You are not authorized: Sie haben daf&uuml;r keine Berechtigung
-before: vor
-after: nach
-start: Beginn
-end: Ende
-Error approving event: Fehler beim Genehmigen des Termin
-Error deleting event: Fehler beim L&ouml;schen des Termin
-Error rejecting event: Fehler beim Ablehnen des Termin
-Generate printer-friendly version: Erzeuge Version zum Drucken
-Printer Friendly: Druckansicht
-Event created: Termin hinzugef&uuml;gt
-Event approved: Termin best&auml;tigt
-Event rejected: Termin abgelehnt
-Event updated: Termin aktualisiert
-Event deleted: Termin gel&ouml;scht
-Task created: Aufgabe erstellt
-Task approved: Aufgabe genehmigt
-Task rejected: Aufgabe abgelehnt
-Task updated: Aufgabe aktualisiert
-Task deleted: Aufgabe gel&ouml;scht
-Journal created: Journal erstellt
-Journal approved: Journal best&auml;tigt
-Journal rejected: Journal abgelehnt
-Journal updated: Journal aktualisiert
-Journal deleted: Jounral gel&ouml;scht
-Notification sent: Benachrichtigung gesendet
-Reminder sent: Erinnerung gesendet
-New user (self registration): Neuer Teilnehmer (Selbstregistrierung)
-New user via email (self registration): Neuer Teilnehmer via Email (Selbstregistrierung)
-Attachment: Anhang
-Delete User: Teilnehmer l&ouml;schen
-Event: Termin
-Action: Aktion
-Error Type not set for activity log!: Fehler, Typ ist nicht f&uuml;r Aktivit&auml;ten Protokoll definiert!
-This event is private: Dieser Termin ist&nbsp; <b>PRIVAT</b>
-This event is XXX.: Dieser Termin ist XXX.
-Conf.: Vertraulich
-exceeds limit of XXX events per day: &uuml;berschrittenes Limit von XXX Termin(e) pro Tag
-on: am
-WK: KW
-TASKS: AUFGABEN
-Task_Title: Aufgabentitel
-Due: F&auml;lligkeit
-Task Name: Aufgabe
-Task Due Date: Abgabefrist
-View this event: Diesen Termin anzeigen
-View this task: Diese Aufgabe anzeigen
-Error TIME_SLOTS undefined!: Fehler: Zeitfenster nicht definiert!
-Unauthorized: Nicht autorisiert
 
 ########################################
 # Page: includes/date_formats.php
@@ -1483,7 +1491,7 @@ Invalid user login: Ung&uuml;ltige Anmeldung
 ########################################
 # Page: includes/getPredefinedVariables.php
 #
-Invalid data format for: Ung&uuml;ltiges Datenformat f&uuml;r
+Invalid data format for: Ung&uuml;ltiges Datenformat f&uuml;r&nbsp;
 
 ########################################
 # Page: includes/access.php
@@ -1580,15 +1588,15 @@ no such user: kein solcher Benutzer
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID cannot be blank.: Kalender ID kann nicht LEER sein
-First and last names cannot both be blank.: Beide Namen (Vor- und Nachname) k&ouml;nnen nicht LEER sein
+Calendar ID cannot be blank.: Kalender-ID darf nicht leer sein.
+First and last names cannot both be blank.: Beide, Vor- und Nachname, d&uuml;rfen nicht leer sein.
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
 Invalid color: Ung&uuml;ltige Farbe
 Color format should be &#39;#RRGGBB&#39;: Farbformat sollte &#39;#RRGGBB&#39; sein
-URL cannot be blank.: URL kann nicht LEER sein
+URL cannot be blank.: URL darf nicht leer sein.
 
 ########################################
 # Page: includes/js/export_import.php
