@@ -19,14 +19,15 @@ $WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
 
-require ( 'includes/classes/WebCalMailer.class' );
-$mail = new WebCalMailer;
 //TODO make this an option for external users
 $htmlmail = false;
 
 load_user_preferences ( 'guest' );
 
 $WebCalendar->setLanguage();
+
+require ( 'includes/classes/WebCalMailer.class' );
+$mail =& new WebCalMailer;
 
 $appStr =  generate_application_name ();
 
@@ -290,13 +291,13 @@ if ( ! empty ($control ) && empty ( $error ) ) { ?>
 </table>
 </form>
 <?php } else if ( empty ( $error ) ) { ?>
-<form action="register.php" method="post" onsubmit="return valid_form()" name="selfreg">
+<form action="register.php" method="post" onSubmit="return valid_form()" name="selfreg">
 <input  type="hidden" name="control" value="<?php echo $form_control ?>" />
 <table align="center"  cellpadding="10" cellspacing="10">
 <tr><td rowspan="3"><img src="images/register.gif" alt="" /></td>
 <td  align="right">
   <label><?php etranslate( 'Username' )?>:</label></td>
-  <td align="left"><input  type="text" name="user"  id="user" value="<?php echo $user ?>" size="20" maxlength="20" onchange="check_name();" /></td></tr>
+  <td align="left"><input  type="text" name="user"  id="user" value="<?php echo $user ?>" size="20" maxlength="20" onChange="check_name();" /></td></tr>
 <tr><td  align="right">
   <label><?php etranslate( 'First Name' )?>:</label></td>
   <td align="left"><input type="text" name="ufirstname" value="<?php echo $ufirstname ?>" size="25" maxlength="25" /></td></tr>
@@ -305,7 +306,7 @@ if ( ! empty ($control ) && empty ( $error ) ) { ?>
   <td align="left"><input type="text" name="ulastname" value="<?php echo $ulastname ?>" size="25"  maxlength="25" /></td></tr>
 <tr><td  align="right" colspan="2">
   <label><?php etranslate( 'E-mail address' )?>:</label></td>
-  <td align="left"><input type="text" name="uemail" id="uemail" value="<?php echo $uemail ?>" size="40"  maxlength="75" onchange="check_uemail();" /></td></tr>
+  <td align="left"><input type="text" name="uemail" id="uemail" value="<?php echo $uemail ?>" size="40"  maxlength="75" onChange="check_uemail();" /></td></tr>
 <?php if ( $SELF_REGISTRATION_FULL == 'N' ) { ?>
   <tr><td  align="right" colspan="2">
     <label><?php etranslate( 'Password' )?>:</label></td>
