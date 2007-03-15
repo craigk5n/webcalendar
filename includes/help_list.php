@@ -14,6 +14,7 @@ $help_list = array ( 'Index' => 'help_index.php',
   'Preferences' => 'help_pref.php',
   'User Access Control' => 'help_uac.php',
   'System Settings' => 'help_admin.php',
+  'Documentation' => 'help_docs.php',
   'Report Bug' => 'help_bug.php'
   );
 $helpListStr = '
