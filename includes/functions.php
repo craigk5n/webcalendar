@@ -512,6 +512,19 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $master = array ();
   $MouseOut = $MouseOver = $str = '';
   $participant_pct = '20%'; //Use percentage.
+
+  $tentative = translate ( 'Tentative' );
+  // translate ( 'Schedule an appointment for' )
+  $titleStr = ' title="' . translate ( 'Schedule an appointment for XXX.' ) . '">';
+  $viewMsg = translate ( 'View this entry' );
+
+  $hours = $last_hour - $first_hour;
+  $interval = intval ( 60 / $increment );
+  $cell_pct = intval ( 80 / ( $hours * $interval ) );
+  $style_width = ( $cell_pct > 0 ? 'style="width:' . $cell_pct . '%;"' : '' );
+  $thismonth = date ( 'm', $dateTS );
+  $thisyear = date ( 'Y', $dateTS );
+  $cols = ( ( $hours * $interval ) + 1 );
   $ret = <<<EOT
     <br />
     <table align="center" class="matrixd" style="width:'80%';" cellspacing="0"
@@ -522,7 +535,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
       <tr>
         <th style="width:{$participant_pct};">
 EOT;
-  $ret .= translate ( 'Participants' ) . '</th>';
+   $ret .= translate ( 'Participants' ) . '</th>';
   $tentative = translate ( 'Tentative' );
   // translate ( 'Schedule an appointment for' )
   $titleStr = ' title="' . translate ( 'Schedule an appointment for XXX.' ) . '">';
@@ -607,8 +620,8 @@ EOT;
         <td  id="C' . $CC . '" class="dailymatrix" ';
       $tmpTitle = 'onmousedown="schedule_event ( ' . $i . ','
        . sprintf ( "%02d", $inc_x_j ) . ' );"' . $MouseOver . $MouseOut
-       . str_replace ( 'XXX', array ( sprintf ( $hourfmt, $hour ),
-          ( $inc_x_j <= 9 ? '0' : '' ) . $inc_x_j ), $titleStr );
+       . str_replace ( 'XXX', sprintf ( $hourfmt, $hour ) . ':' .
+          ( $inc_x_j <= 9 ? '0' : '' ) . $inc_x_j , $titleStr );
       switch ( $j ) {
         case $halfway:
           $k = ( $hour <= 9 ? '0' : substr ( $hour, 0, 1 ) );
@@ -961,7 +974,7 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
   $ret = '
     <table class="main" cellspacing="0" cellpadding="0" id="month_main">
       <tr>' . ( $DISPLAY_WEEKNUMBER == 'Y' ? '
-        <th class="weekcell" width="5%"></th>' : '' );
+        <th class="empty" width="5%"></th>' : '' );
 
   for ( $i = 0; $i < 7; $i++ ) {
     $thday = ( $i + $WEEK_START ) % 7;
@@ -3369,7 +3382,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   }
 
   if ( $isAllDay )
-    $hour_arr[$ind] .= '[' . translate ( 'All day event' );
+    $hour_arr[$ind] .= '[' . translate ( 'All day event' ) . '] ';
   else
   if ( $time >= 0 && ! $isAllDay && $getCalTypeName != 'task' ) {
     $end_timestr = '-' . display_time ( $event->getEndDateTime () );
@@ -3396,8 +3409,9 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
       if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
         $rowspan_arr[$ind] = $rowspan;
     }
+	$hour_arr[$ind] .= ']'; 
   }
-  $hour_arr[$ind] .= '] ' . build_entry_label ( $event, 'eventinfo-' . $linkid,
+  $hour_arr[$ind] .= build_entry_label ( $event, 'eventinfo-' . $linkid,
     $can_access, $popup_timestr, $time_only )
    . ( $getPri == 3 ? '</strong>' : '' ) . '</a>'
    . ( $DISPLAY_DESC_PRINT_DAY == 'Y' ? '
@@ -4363,6 +4377,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
   if ( empty ( $TIME_SLOTS ) )
     return translate ( 'Error TIME_SLOTS undefined!' ) . "<br />\n";
 
+  $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
   // Get, combine and sort the events for this date.
   $ev = combine_and_sort_events (
     get_entries ( $date, $get_unapproved ), // Get static non-repeating events.
@@ -4373,7 +4388,6 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
     $ev = combine_and_sort_events ( $ev,
       get_tasks ( $date, $get_unapproved ) // Get all due tasks.
       );
-  $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
   $hour_arr = $rowspan_arr = array ();
   $interval = 1440 / $TIME_SLOTS; // Number of minutes per slot.
   $last_row = -1;
@@ -4645,7 +4659,7 @@ function print_error_header () {
  */
 function print_not_auth ( $full = false ) {
   return ( $full ? print_error_header () : '' )
-   . translate ( 'You are not authorized' ) . "\n";
+   . '!!!' . translate ( 'You are not authorized' ) . "\n";
 }
 
 /* Generates HTML for radio buttons.
