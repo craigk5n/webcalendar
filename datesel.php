@@ -74,8 +74,8 @@ echo <<<EOT
     <div align="center">
       <table class="aligncenter" width="100%">
         <tr>
-          <td align="center" valign="middle">
-            <table class="aligncenter">
+          <td align="center" valign="top">
+            <table class="aligncenter" cellpadding="3" cellspacing="2">
               <tr>
                 <td><a title="{$previousStr}" class="prev" {$prevdate}>
                   <img src="images/leftarrowsmall.gif"
