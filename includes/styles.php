@@ -1101,6 +1101,7 @@ a.weekcell {
 #admin .main th.weekcell,
 #pref .main th.weekcell,
 #viewl .main th.empty,
+#day .main th.empty,
 #month .main th.empty{
   background: transparent;
   border-left: 0;
