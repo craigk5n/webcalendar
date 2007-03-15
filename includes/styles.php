@@ -781,6 +781,9 @@ img.help {
   color: #00F;
 }
 .minical th {
+  border: 0px solid <?php echo $GLOBALS['BGCOLOR'];
+ 
+?>;
  padding: 0 2px;
 }
 .minical th,
@@ -792,6 +795,9 @@ img.help {
   background: <?php echo $GLOBALS['BGCOLOR'];
 
 ?>;
+}
+.minical th.empty {
+  background: transparent;
 }
 <?php if ( $DISPLAY_WEEKENDS == 'N' ) {
 
@@ -805,6 +811,9 @@ img.help {
 .minical td {
   padding: 0 2px;
   border: 1px solid <?php echo $GLOBALS['BGCOLOR'];
+
+?>;
+  background: <?php echo $GLOBALS['CELLBG'];
 
 ?>;
 }
@@ -1091,14 +1100,9 @@ a.weekcell {
 }
 #admin .main th.weekcell,
 #pref .main th.weekcell,
-#viewl .main th.weekcell,
-#month .main th.weekcell{
-  background: <?php echo $GLOBALS['BGCOLOR'];
-
-?>;
-  background: <?php echo $GLOBALS['BGCOLOR'];
-
-?>;
+#viewl .main th.empty,
+#month .main th.empty{
+  background: transparent;
   border-left: 0;
   border-top: 0;
   width: 1%;
@@ -1127,7 +1131,7 @@ a.weekcell {
 #week .main th.empty {
   width: 5%;
   background: none;
-  background: <?php echo $GLOBALS['BGCOLOR'];
+  background: transparent;
 
 ?>;
   border-top: 1px solid <?php echo $GLOBALS['BGCOLOR'];
@@ -1259,7 +1263,7 @@ a.weekcell {
 }
 #viewl .minical,
 #month .minical {
-  margin: 0 10px;
+  margin: 0 4px;
   border: 0;
 }
 .topnav {
