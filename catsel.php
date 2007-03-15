@@ -15,13 +15,23 @@ $form = getGetValue ( 'form' );
 
 $eventcats = explode ( ',', $cats );
 
+$availCatStr = translate ( 'AVAILABLE CATEGORIES' );
+$availCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $availCatStr ) ) / 2 );
+if ( strlen ( $availCatStr ) < 30 )
+  $availCatStr = $availCatFiller . $availCatStr . $availCatFiller ;
+  
+$entryCatStr = translate ( 'ENTRY CATEGORIES' );
+$entryCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $entryCatStr ) ) / 2 );
+if ( strlen ( $entryCatStr ) < 30 )
+  $entryCatStr = $entryCatFiller . $entryCatStr . $entryCatFiller ;
+  
 print_header ( array ( 'js/catsel.php/false/' . $form ),
   '', '', true, false, true );
 
 ob_start ();
 
 echo '
-    <table align="center" border="0" width="250px">
+    <table align="center" border="0" width="90%">
       <tr>
         <th colspan="3">' . translate ( 'Categories' ) . '</th>
       </tr>
@@ -33,8 +43,7 @@ echo '
 if ( ! empty ( $categories ) ) {
   echo '
           <select name="cats[]" size="10">
-            <option disabled>' . translate ( 'AVAILABLE CATEGORIES' )
-   . '</option>';
+            <option disabled>' . $availCatStr . '</option>';
 
   foreach ( $categories as $K => $V ) {
     // None is index -1 and needs to be ignored
@@ -55,7 +64,7 @@ echo '
  . ' /></td>
         <td align="center" valign="top">
           <select name="eventcats[]" size="9" multiple>
-            <option disabled>' . translate ( 'ENTRY CATEGORIES' ) . '</option>';
+            <option disabled>' . $entryCatStr . '</option>';
 
 if ( strlen ( $cats ) ) {
   foreach ( $eventcats as $K ) {
