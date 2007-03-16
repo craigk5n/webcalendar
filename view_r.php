@@ -463,7 +463,8 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 
 // untimed events first
 if ( $untimed_found || $show_untimed_row_always ) {
-  echo "<tr><th class=\"empty\" width=\"$time_w\" style=\"width:$time_w;\">&nbsp;</th>\n";
+  echo '<tr><th class="empty" width="' .$time_w. '" style="width:' 
+   . $time_w . ';">&nbsp;</th>' . "\n";
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $dateYmd = date ( 'Ymd', $days[$d] );
     $is_weekend = is_weekend ( $days[$d] );
