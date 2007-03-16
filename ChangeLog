@@ -1,5 +1,12 @@
 $Id$
 Version 1.1.3+CVS (?? ??? 2006)
+ - Fixed bug [ 1663286 ] pop-up window of categories are not dynamic
+ - Fixed bug [ 1663292 ] date-pop-up --> mini calendar should be increased the size
+ - Fixed bug [ 1671714 ] right bracket is displayed for untimed events at day.php
+ - Fixed bug [ 1663269 ] untimed events and tasks not proper displayed at day.php
+ - Fixed bug [ 1663341 ] first square in the time-matrix not proper visible for BG-
+ - Fixed bug [ 1673806 ] Premature end of script headers
+ - Fixed bug [ 1660278 ] Fatal Error: Invalid data format forid
  - Fixed logic error: $translations_loaded was being set = true before it actually was.
  - Security patch: don't allow URL to set 'noset', which allows users
    to then set other global variables.
