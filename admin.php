@@ -177,7 +177,7 @@ print_header ( $INC, '', $BodyX );
 ?>
 <input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>" />
 <input type="submit" value="<?php etranslate( 'Save' )?>" name="" />
-<br/><br/>
+<br /><br />
 
 <!-- TABS -->
 <div id="tabs">
@@ -865,8 +865,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   <?php etranslate( 'Allow file attachments to events' )?>:</td><td>
   <?php echo print_radio ( 'ALLOW_ATTACH', '', 'attach_handler' ) ?>
   <span id="at1">
-  <br/><strong>Note:</strong>
-  <?php etranslate( 'Admin and owner can always add attachments if enabled' );?><br/>
+  <br /><strong>Note:</strong>
+  <?php etranslate( 'Admin and owner can always add attachments if enabled' );?><br />
   <?php echo print_checkbox ( array (
       'ALLOW_ATTACH_PART', 'Y', translate( 'Participant' ) ) );
     echo print_checkbox ( array ( 
@@ -877,10 +877,10 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <tr><td class="tooltip" title="<?php etooltip( 'allow-comments-help' )?>">
   <?php etranslate( 'Allow comments to events' )?>:</td><td>
   <?php echo print_radio ( 'ALLOW_COMMENTS', '', 'comment_handler' ) ?>
-  <br/>
+  <br />
   <span id="com1">
-  <br/><strong>Note:</strong>
-  <?php etranslate( 'Admin and owner can always add comments if enabled' );?><br/>
+  <br /><strong>Note:</strong>
+  <?php etranslate( 'Admin and owner can always add comments if enabled' );?><br />
   <?php echo print_checkbox ( array (
       'ALLOW_COMMENTS_PART', 'Y', translate( 'Participant' ) ) );
      echo print_checkbox ( array (
