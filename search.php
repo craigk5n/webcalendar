@@ -46,6 +46,8 @@ echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
         <td><input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
         <input type="submit" value="' . $searchStr . '" /></td></tr>';
 
+echo '<tr height="30px"><td>&nbsp;</td><td valign="top">(' . 
+  translate ( 'Enter % for all entries' ) . ')</td></tr>';
 
 if ( is_array ( $categories ) && $show_advanced ) {
   echo '
