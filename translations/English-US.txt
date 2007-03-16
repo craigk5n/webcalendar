@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 03-11-2007
+# Translation last updated on 03-16-2007
 
 
 ################################################################################
@@ -654,14 +654,19 @@ You are not authorized to edit this entry.: You are not authorized to edit this 
 ########################################
 # Page: edit_entry_handler.php
 #
-You must enter the anti-spam text on the previous page: You must enter the anti-spam text on the previous page
-The following conflicts with the suggested time: The following conflicts with the suggested time
 A new appointment has been made for you by: A new appointment has been made for you by
+XXX has made a new appointment.: XXX has made a new appointment.
 An appointment has been updated by: An appointment has been updated by
-The subject is: The subject is
+XXX has updated an appointment.: XXX has updated an appointment.
+You must enter the anti-spam text on the previous page.: You must enter the anti-spam text on the previous page.
+The following conflicts with the suggested time: The following conflicts with the suggested time
+XXX has canceled an appointment.: XXX has canceled an appointment.
+User removed from participants list.: User removed from participants list.
 Please look on: Please look on
 to accept or reject this appointment: to accept or reject this appointment
 to view this appointment: to view this appointment
+Please look on XXX to accept or reject this appointment.: Please look on XXX to accept or reject this appointment.
+Please look on XXX to view this appointment.: Please look on XXX to view this appointment.
 Scheduling Conflict: Scheduling Conflict
 Your suggested time of: Your suggested time of
 conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
@@ -1129,6 +1134,7 @@ Manage Reports: Manage Reports
 Advanced Search: Advanced Search
 Search: Search
 Keywords: Keywords
+Enter % for all entries: Enter % for all entries
 Include: Include
 Filter by Date: Filter by Date
 All Dates: All

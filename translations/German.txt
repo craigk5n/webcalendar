@@ -937,7 +937,7 @@ Specifies the user that you would like to see displayed in your calendar.: Defin
 ########################################
 # Page: edit_entry_handler.php
 #
-You must enter the anti-spam text on the previous page: Sie m&uuml;ssen auf der vorigen Seite einen Antispam-Text eingeben
+You must enter the anti-spam text on the previous page.: Sie m&uuml;ssen auf der vorigen Seite einen Antispam-Text eingeben
 The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
 A new appointment has been made for you by: Es wurde Ihnen eine neuer Termin eingetragen von -->
 An appointment has been updated by: Eine Termin wurde aktualisiert von
