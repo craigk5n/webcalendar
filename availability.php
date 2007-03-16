@@ -47,8 +47,8 @@ print_header (
    . getGetValue ( 'form' ) ), '', 'onload="focus ();"', true, false, true );
 
 $next_url = $prev_url = '?users=' . $users;
-$date = date ( 'Ymd', $time );
 $time = mktime ( 0, 0, 0, $month, $day, $year );
+$date = date ( 'Ymd', $time );
 $next_url .= strftime ( '&amp;year=%Y&amp;month=%m&amp;day=%d', $time + 86400 );
 $prev_url .= strftime ( '&amp;year=%Y&amp;month=%m&amp;day=%d', $time - 86400 );
 $span = ( $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ) * 3 + 1;
