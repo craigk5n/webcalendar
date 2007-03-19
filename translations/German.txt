@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 12.Mar.2007
+# Last update: 19.Mar.2007
 #
 # $Id$
-# Translation last updated on 03-12-2007
+# Translation last updated on 03-19-2007
 
 
 ################################################################################
@@ -937,16 +937,21 @@ Specifies the user that you would like to see displayed in your calendar.: Defin
 ########################################
 # Page: edit_entry_handler.php
 #
-You must enter the anti-spam text on the previous page.: Sie m&uuml;ssen auf der vorigen Seite einen Antispam-Text eingeben
-The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
 A new appointment has been made for you by: Es wurde Ihnen eine neuer Termin eingetragen von -->
-An appointment has been updated by: Eine Termin wurde aktualisiert von
-The subject is: Die Beschreibung lautet
+XXX has made a new appointment.: XXX hat Ihnen einen neuen Termin eingetragen.
+An appointment has been updated by: Ein Termin wurde aktualisiert von
+XXX has updated an appointment.: XXX hat einen Termin aktualisiert.
+You must enter the anti-spam text on the previous page.: Auf der vorigen Seite m&uuml;ssen Sie einen Anti-Spam Text eingeben.
+The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
+XXX has canceled an appointment.: XXX hat einen Termin storniert.
+User removed from participants list.: Benutzer wurde von der Teilnehmerliste entfernt.
 Please look on: Bitte konsultieren Sie Ihren
 to accept or reject this appointment: um diesen Termin zu best&auml;tigen/abzulehnen.
 to view this appointment: um diesen Termin anzusehen
+Please look on XXX to accept or reject this appointment.: Bitte schauen Sie auf XXX um den Eintrag zu best&auml;tigen/abzulehnen.
+Please look on XXX to view this appointment.: Bitte schauen Sie auf XXX um den Eintrag anzuzeigen.
 Scheduling Conflict: Termin&uuml;berschneidung
-Your suggested time of: Ihre Eintragung von
+Your suggested time of: Ihr Terminvorschlag von
 conflicts with the following existing calendar entries: &uuml;berschneidet sich mit folgenden Kalendereintr&auml;gen
 
 ########################################
@@ -962,6 +967,7 @@ Is public calendar: Als &Ouml;ffentlichen Kalender freigeben
 Advanced Search: Erweiterte Suche
 Search: Suche
 Keywords: Stichw&ouml;rter
+Enter % for all entries: Eingabe des %-Satzes f&uuml;r alle Eintr&auml;ge
 Include: Inklusive
 Filter by Date: Datumsfilter
 All Dates: Jedes Datum
@@ -1226,7 +1232,7 @@ Back: Zur&uuml;ck
 Check box to delete <b>ALL</b> events for a user: Aktivieren zum L&ouml;schen <b>ALLER</b> Termine f&uuml;r einen Teilnehmer
 Delete all events before: L&ouml;sche alle Termine vor dem
 Purge deleted only: L&ouml;sche nur die &#39;markiert gel&ouml;schten Eintr&auml;ge&#39; endg&uuml;ltig
-Preview delete: Keine Vorschau der zu l&ouml;schenden Termine
+Preview delete: Nur Vorschau der zu l&ouml;schenden Termine
 Are you sure you want to delete events for: Sind Sie sicher das Sie alle Termine l&ouml;schen wollen
 Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
 
