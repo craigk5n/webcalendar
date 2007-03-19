@@ -52,7 +52,7 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
 }
 
 // Remember previous cal_goup_id if present.
-$old_id = ( ! empty ( $parent ) ? $parent : $old_id );
+$old_id = ( empty ( $parent ) ? $old_id : $parent  );
 $old_status = array ();
 
 // Pass all string values through getPostValue.
@@ -194,7 +194,7 @@ if ( $eType != 'task' ) {
 //   - user is participant
 $can_doall = $can_edit = false;
 // Value may be needed later for recreating event.
-$old_create_by = ( ! empty ( $user ) ? $user : '' );
+$old_create_by = ( empty ( $user ) ? '' : $user );
 if ( empty ( $id ) )
   // New event...
   $can_edit = true;
@@ -317,7 +317,7 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
   if ( $rpt_type == 'monthlyByDay' && empty ( $rptmode ) && empty ( $byday ) )
     $byday = ceil ( $day / 7 ) . $byday_names[ date ( 'w', $eventstart ) ];
 
-  $bymonth = ( ! empty ( $bymonth ) ? implode ( ',', $bymonth ) : '' );
+  $bymonth = ( empty ( $bymonth ) ? '' : implode ( ',', $bymonth ) );
 
   if ( ! empty ( $rpt_year ) ) {
     $rpt_hour += $rpt_ampm;
@@ -364,8 +364,8 @@ if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != 'Y' )
 
 if ( $ALLOW_CONFLICTS != 'Y' && empty ( $confirm_conflicts ) &&
     strlen ( $entry_hour ) > 0 && $timetype != 'U' && $eType != 'task' ) {
-  $conflict_until = ( ! empty ( $rpt_until ) ? $rpt_until : '' );
-  $conflict_count = ( ! empty ( $count ) ? $count : 999 );
+  $conflict_until = ( empty ( $rpt_until ) ? '' : $rpt_until );
+  $conflict_count = ( empty ( $count ) ? 999 : $count );
   $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, $bymonth,
     $byweekno, $byyearday, $bymonthday, $byday, $bysetpos, $conflict_count,
     $conflict_until, $wkst, $exception_list, $inclusion_list );
@@ -433,7 +433,7 @@ if ( empty ( $error ) ) {
   if ( $old_id > 0 )
     $query_params[] = $old_id;
 
-  $query_params[] = ( ! empty ( $old_create_by ) ? $old_create_by : $login );
+  $query_params[] = ( empty ( $old_create_by ) ? $login : $old_create_by );
   $query_params[] = gmdate ( 'Ymd', $eventstart );
   $query_params[] = ( ( strlen ( $entry_hour ) > 0 && $timetype != 'U' )
     ? gmdate ( 'His', $eventstart ) : '-1' );
@@ -455,11 +455,11 @@ if ( empty ( $error ) ) {
   $tmpRpt = ( ! empty ( $rpt_type ) && $rpt_type != 'none' );
 
   if ( $eType == 'event' )
-    $query_params[] = ( $tmpRpt ? 'E' : 'M' );
+    $query_params[] = ( $tmpRpt ? 'M' : 'E' );
   elseif ( $eType == 'journal' )
-    $query_params[] = ( $tmpRpt ? 'J' : 'O' );
+    $query_params[] = ( $tmpRpt ? 'O' : 'J' );
   elseif ( $eType == 'task' )
-    $query_params[] = ( $tmpRpt ? 'T' : 'N' );
+    $query_params[] = ( $tmpRpt ? 'N' : 'T' );
 
   $query_params[] = ( strlen ( $name ) == 0 ? 'Unnamed Event' : $name );
   $query_params[] = $description;
@@ -473,16 +473,16 @@ if ( empty ( $error ) ) {
   if ( empty ( $error ) && ! dbi_execute ( 'INSERT INTO webcal_entry ( cal_id, '
          . ( $old_id > 0 ? ' cal_group_id, ' : '' )
          . 'cal_create_by, cal_date, cal_time, '
-         . ( ! empty ( $eventcomplete ) ? 'cal_completed, ' : '' )
+         . ( empty ( $eventcomplete ) ? '' : 'cal_completed, ' )
          . 'cal_due_date, cal_due_time, cal_mod_date, cal_mod_time, cal_duration, '
          . 'cal_priority, cal_access, cal_type, cal_name, cal_description '
-         . ( ! empty ( $location ) ? ',cal_location ' : '' )
-         . ( ! empty ( $entry_url ) ? ',cal_url ' : '' ) . ' ) VALUES ( ?, '
+         . ( empty ( $location ) ? '' : ',cal_location ' )
+         . ( empty ( $entry_url ) ? '' : ',cal_url ' ) . ' ) VALUES ( ?, '
          . ( $old_id > 0 ? '?, ' : '' ) . '?, ?, ?, '
-         . ( ! empty ( $eventcomplete ) ? '?, ' : '' )
+         . ( empty ( $eventcomplete ) ? '' : '?, ' )
          . '?, ?, ?, ?, ?, ?, ?, ?, ?, ? '
-         . ( ! empty ( $location ) ? ',? ' : '' )
-         . ( ! empty ( $entry_url ) ? ',? ' : '' ) . ')', $query_params ) ) {
+         . ( empty ( $location ) ? '' : ',? ' )
+         . ( empty ( $entry_url ) ? '' : ',? ' ) . ')', $query_params ) ) {
     $error = $dberror . dbi_error ();
   }
   // Log add/update.
@@ -496,8 +496,7 @@ if ( empty ( $error ) ) {
     $log_c = LOG_CREATE;
     $log_u = LOG_UPDATE;
   }
-  activity_log ( $id, $login,
-    ( $is_assistant || $is_nonuser_admin ? $user : $login ),
+  activity_log ( $id, $login, ( $is_assistant || $is_nonuser_admin ? $user : $login ),
     $newevent ? $log_c : $log_u, '' );
 
   if ( $single_user == 'Y' )
@@ -540,7 +539,7 @@ if ( empty ( $error ) ) {
       $placeholders = preg_replace ( '/,$/', '', $placeholders ); // Remove trailing ','.
       if ( ! dbi_execute ( 'INSERT INTO webcal_entry_categories ( '
            . implode ( ', ', $names )
-             . ' ) VALUES ( ' . $placeholders . ' )', $values ) ) {
+           . ' ) VALUES ( ' . $placeholders . ' )', $values ) ) {
         $error = $dberror . dbi_error ();
         break;
       }
@@ -799,7 +798,7 @@ if ( empty ( $error ) ) {
     // $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL is set to 'N'
     if ( $login == '__public__' ) {
       $status = ( ! empty ( $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL ) &&
-        ( $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'N' )
+        $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'N'
         ? 'A' // No approval needed.
         : 'W' // Approval required.
         );
@@ -813,13 +812,14 @@ if ( empty ( $error ) ) {
         ? $old_status[$participants[$i]] : 'W' );
       $status = ( $participants[$i] != $login &&
         boss_must_approve_event ( $login, $participants[$i] ) &&
-        ( $REQUIRE_APPROVALS == 'Y' ) && ! $is_nonuser_admin ) ? $tmp_status : 'A';
+        $REQUIRE_APPROVALS == 'Y' && ! $is_nonuser_admin ? $tmp_status : 'A' );
+
       // Set percentage to old_percent if not owner.
-      $tmp_percent = ( ! empty ( $old_percent[$participants[$i]] )
-        ? $old_percent[$participants[$i]] : 0 );
+      $tmp_percent = ( empty ( $old_percent[$participants[$i]] )
+        ? 0 : $old_percent[$participants[$i]] );
       // TODO:  This logic needs work.
-      $new_percent = ( $participants[$i] != $login )
-      ? $tmp_percent : $percent;
+      $new_percent = ( $participants[$i] != $login
+        ? $tmp_percent : $percent );
       // If user is admin and this event was previously approved for public,
       // keep it as approved even though date/time may have changed.
       // This goes against stricter security, but it confuses users to have
@@ -831,8 +831,8 @@ if ( empty ( $error ) ) {
       $send_user_mail = true;
       $status = ( $participants[$i] != $login &&
         boss_must_approve_event ( $login, $participants[$i] ) &&
-        ( $REQUIRE_APPROVALS == 'Y' ) && ! $is_nonuser_admin ? 'W' : 'A' );
-      $new_percent = ( $participants[$i] != $login ) ? 0 : $percent;
+        $REQUIRE_APPROVALS == 'Y' && ! $is_nonuser_admin ? 'W' : 'A' );
+      $new_percent = ( $participants[$i] != $login ? 0 : $percent );
       // If admin, no need to approve Public Access Events
       if ( $participants[$i] == '__public__' && $is_admin )
         $status = 'A';
@@ -840,7 +840,7 @@ if ( empty ( $error ) ) {
 
     // Some users report that they get an error on duplicate keys
     // on the following add...  As a safety measure, delete any
-    // existing entry with the id. Ignore the result.
+    // existing entry with the id.  Ignore the result.
     dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_id = ? AND cal_login = ?',
       array ( $id, $participants[$i] ) );
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
@@ -856,7 +856,7 @@ if ( empty ( $error ) ) {
 
       // Don't send mail if we are editing a non-user calendar and we are the admin.
       if ( !$is_nonuser_admin && $can_email == 'Y' ) {
-        // only send mail if their email address is filled in
+        // Only send mail if their email address is filled in.
         $do_send = get_pref_setting ( $participants[$i], $newevent
           ? 'EMAIL_EVENT_ADDED' : 'EMAIL_EVENT_UPDATED' );
         $htmlmail = get_pref_setting ( $participants[$i], 'EMAIL_HTML' );
@@ -980,14 +980,13 @@ if ( empty ( $error ) ) {
         if ( $EXTERNAL_NOTIFICATIONS == 'Y' && $SEND_EMAIL != 'N' &&
           strlen ( $ext_emails[$i] ) > 0 ) {
           if ( ( ! $newevent && $EXTERNAL_UPDATES == 'Y' ) || $newevent ) {
-            $fmtdate = ( $timetype == 'T' ?
-              date ( 'Ymd', $eventstart ): gmdate ( 'Ymd', $eventstart ) );
+            $fmtdate = ( $timetype == 'T'
+              ? date ( 'Ymd', $eventstart ) : gmdate ( 'Ymd', $eventstart ) );
             // Strip [\d] from duplicate Names before emailing.
             $ext_names[$i] = trim ( preg_replace ( '/\[[\d]]/', '', $ext_names[$i] ) );
             $msg = str_replace ( 'XXX', $ext_names[$i], $helloStr ) . "\n\n"
              . str_replace ( 'XXX', $login_fullname,
-              ( $newevent
-                ? $newAppStr : $updAppStr ) ) . "\n"
+              ( $newevent ? $newAppStr : $updAppStr ) ) . "\n"
              . str_replace ( 'XXX', $name, $subjStr ) . "\n\n"
              . str_replace ( 'XXX', $description, $descStr ) . "\n\n"
              . str_replace ( 'XXX', date_to_str ( $fmtdate ), $dateStr ) . "\n"
