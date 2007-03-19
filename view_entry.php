@@ -121,15 +121,10 @@ else {
     $cal_priority = $row[6];
     $cal_type = $row[7];
     $cal_access = $row[8];
-    if ( $cal_type == 'T' || $cal_type == 'N' )
+    if ( strpos ( ' NT', $cal_type ) )
       $eType = 'task';
-    $due_date = $row[13];
-    $due_time = $row[14];
-    $cal_completed = $row[15];
     if ( $hide_details ) {
-      $overrideStr = translate ( $OVERRIDE_PUBLIC_TEXT );
-      $name = $overrideStr;
-      $description = $overrideStr;
+      $description = $name = $overrideStr = translate ( $OVERRIDE_PUBLIC_TEXT );
       if ( ! empty ( $row[11] ) )
         $location = $overrideStr;
       if ( ! empty ( $row[12] ) )
@@ -140,8 +135,11 @@ else {
       $location = $row[11];
       $url = $row[12];
     }
+    $due_date = $row[13];
+    $due_time = $row[14];
+    $cal_completed = $row[15];
   } else
-    $error = translate ( 'Invalid entry id' ) . ": $id";
+    $error = str_replace ('XXX', $id, translate ( 'Invalid entry id XXX' ) );
 
   dbi_free_result ( $res );
 }
