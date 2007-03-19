@@ -111,7 +111,7 @@ Next: Next
 # Page: add_entry.php
 #
 Event XXX is already on your calendar.: Event XXX is already on your calendar.
-Invalid entry id XXX: Invalid entry id: XXX.
+Invalid entry id XXX: Invalid entry id: "XXX".
 a XXX event may not be added to your calendar: This is a XXX event and may not be added to your calendar.
 private: private
 confidential: confidential
