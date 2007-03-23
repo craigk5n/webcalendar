@@ -172,15 +172,21 @@ if ( $id > 0 && empty ( $error ) ) {
             } else {
                reset_language ( $user_language );
             }
-          $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
-            translate( 'An appointment has been canceled for you by' ) .
-            ' ' . $login_fullname .  ".\n" .
-            translate( 'The subject was' ) . ' "' . $name . "\"\n" .
-            translate( 'Date' ) . ': ' . date_to_str ($thisdate) . "\n";
+          $msg = str_replace ( 'XXX', $tempfullname,
+            translate ( 'Hello, XXX.' ) ) . ".\n\n"
+           . str_replace ( 'XXX', $login_fullname,
+          // translate ( 'An appointment has been canceled for you by' )
+             translate ( 'XXX has canceled an appointment.' ) ) . "\n"
+           . str_replace ( 'XXX', $name, 
+               translate ( 'Subject XXX' ) ) . "\"\n"
+           . str_replace ( 'XXX',  date_to_str ($thisdate),
+             translate ( 'Date XXX' ) ) . "\n";
             if ( ! empty ( $eventtime ) && $eventtime != '-1' ) 
-              $msg .= translate( 'Time' ) . ': ' . 
+              $msg .= str_replace ( 'XXX',
+               display_time ( '', 2, $eventstart, $t_format ),
+              translate ( 'Time XXX' ) );
              // Apply user's GMT offset and display their TZID
-             display_time ( '', 2, $eventstart, $t_format );
+
             $msg .= "\n\n";
             //use WebCalMailer class
             $mail->WC_Send ( $login_fullname, $tempemail, 
