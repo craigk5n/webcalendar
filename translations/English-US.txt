@@ -1430,6 +1430,11 @@ unknown-weekday: unknown-weekday
 Invalid data format for: Invalid data format for
 
 ########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: NO PREVIEW AVAILABLE
+
+########################################
 # Page: includes/help_list.php
 #
 Index: Index
