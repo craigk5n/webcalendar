@@ -6,9 +6,9 @@
  *  "System Log" (entries not associated with an event).
  *
  * Input Parameters:
- *  startid - specified the id of the first log entry to display
- *  system - if specified, then view the system log (entries with no
- *           event id associated with them) rather than the event log.
+ *  startid  - specified the id of the first log entry to display
+ *  system   - if specified, then view the system log (entries with no
+ *             event id associated with them) rather than the event log.
  *
  * Security:
  *  User must be an admin user
@@ -22,7 +22,11 @@ if ( ! $is_admin || ( access_is_enabled () && !
       access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) )
   die_miserable_death ( print_not_auth () );
 
-$PAGE_SIZE = 25; // number of entries to show at once
+$eventsStr = translate ( 'Events' );
+$nextStr = translate ( 'Next' ); 
+$prevStr = translate ( 'Previous' );
+
+$PAGE_SIZE = 25; // Number of entries to show at once.
 $startid = getValue ( 'startid', '-?[0-9]+', true );
 $sys = ( $is_admin && getGetValue ( 'system' ) != '' );
 
@@ -36,11 +40,10 @@ echo '
     <div class="navigation">'
 // Go BACK in time.
  . ( ! empty ( $nextpage ) ? '
-      <a title="' . translate ( 'Previous' ) . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
-   . translate ( 'Events' ) . '" class="prev" href="activity_log.php?startid='
-   . $nextpage . ( $sys ? '&amp;system=1' : '' ) . '">'
-   . translate ( 'Previous' ) . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
-   . translate ( 'Events' ) . '</a>' : '' );
+      <a title="' . $prevStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr
+   . '" class="prev" href="activity_log.php?startid=' . $nextpage
+   . ( $sys ? '&amp;system=1' : '' ) . '">' . $prevStr . '&nbsp;' . $PAGE_SIZE
+   . '&nbsp;' . $eventsStr . '</a>' : '' );
 
 if ( ! empty ( $startid ) ) {
   $previd = $startid + $PAGE_SIZE;
@@ -49,13 +52,11 @@ if ( ! empty ( $startid ) ) {
     if ( $row = dbi_fetch_row ( $res ) )
       // Go FORWARD in time.
       echo '
-      <a title="' . translate ( 'Next' ) . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
-       . translate ( 'Events' ) . '" class="next" href="activity_log.php'
-       . ( $row[0] <= $previd
+      <a title="' . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr
+       . '" class="next" href="activity_log.php' . ( $row[0] <= $previd
         ? ( $sys ? '?system=1' : '' )
-        : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) )
-       . '">' . translate ( 'Next' ) . '&nbsp;' . $PAGE_SIZE . '&nbsp;'
-       . translate ( 'Events' ) . '</a><br />';
+        : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) ) . '">'
+       . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr . '</a><br />';
 
     dbi_free_result ( $res );
   }

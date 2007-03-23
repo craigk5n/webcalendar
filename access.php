@@ -26,13 +26,23 @@ if ( ! access_is_enabled () ) {
   echo print_not_auth ();
   exit;
 }
+// translate ( 'Database error' )
+$dbErrStr = translate ( 'Database error XXX.' );
+$defConfigStr = translate ( 'DEFAULT CONFIGURATION' );
+$goStr = '
+      </select>
+      <input type="submit" value="' . translate ( 'Go' )  . '" />
+    </form>';
+$saveStr = translate ( 'Save' );
+$undoStr = translate ( 'Undo' );
+
 $saved = '';
-// print_r ( $_POST );
+
 // Are we handling the access form?
 // If so, do that, then redirect.
 // Handle function access first.
 if ( getPostValue ( 'auser' ) != '' &&
-    getPostValue ( 'submit' ) == translate ( 'Save' ) ) {
+    getPostValue ( 'submit' ) == $saveStr ) {
   $auser = getPostValue ( 'auser' );
   $perm = '';
   for ( $i = 0; $i < ACCESS_NUMBER_FUNCTIONS; $i++ ) {
@@ -44,23 +54,21 @@ if ( getPostValue ( 'auser' ) != '' &&
 
   if ( ! dbi_execute ( 'INSERT INTO webcal_access_function ( cal_login,
       cal_permissions ) VALUES ( ?, ? )', array ( $auser, $perm ) ) )
-    // translate ( 'Database error' )
-    die_miserable_death ( str_replace ( 'XXX', dbi_error (),
-        translate ( 'Database error XXX.' ) ) );
+    die_miserable_death ( str_replace ( 'XXX', dbi_error (), $dbErrStr ) );
   $saved = true;
 }
 
 // Are we handling the other user form?
 // If so, do that, then redirect.
 if ( getPostValue ( 'otheruser' ) != '' &&
-    getPostValue ( 'submit' ) == translate ( 'Save' ) ) {
+    getPostValue ( 'submit' ) == $saveStr ) {
   $puser = getPostValue ( 'guser' );
   $pouser = getPostValue ( 'otheruser' );
 
   if ( $allow_view_other ) {
     // Handle access to other users' calendars.
-    // If user is not admin, reverse values so they are granting
-    // access to their own calendar.
+    // If user is not admin,
+    // reverse values so they are granting access to their own calendar.
     if ( ! $is_admin )
       list ( $puser, $pouser ) = array ( $pouser, $puser );
 
@@ -94,24 +102,23 @@ if ( getPostValue ( 'otheruser' ) != '' &&
           ( strlen ( $invite ) ? $invite : 'N' ),
           ( strlen ( $email ) ? $email : 'N' ),
           ( strlen ( $time ) ? $time : 'N' ) ) ) ) {
-      die_miserable_death ( str_replace ( 'XXX', dbi_error (),
-          translate ( 'Database error XXX.' ) ) );
+      die_miserable_death ( str_replace ( 'XXX', dbi_error (), $dbErrStr ) );
     }
     $saved = true;
   }
 }
-$checked = ' checked="checked" ';
+$checked = ' checked="checked"';
 $guser = getPostValue ( 'guser' );
 $selected = ' selected="selected"';
 
 if ( $guser == '__default__' ) {
-  $user_fullname = translate ( 'DEFAULT CONFIGURATION' );
+  $user_fullname = $defConfigStr;
   $otheruser = '__default__';
 } else
   $otheruser = getPostValue ( 'otheruser' );
 
 if ( $otheruser == '__default__' ) {
-  $otheruser_fullname = translate ( 'DEFAULT CONFIGURATION' );
+  $otheruser_fullname = $defConfigStr;
   $otheruser_login = '__default__';
 } elseif ( $otheruser == '__public__' ) {
   $otheruser_fullname = translate ( 'Public Access' );
@@ -171,7 +178,7 @@ if ( $is_admin ) {
   . '
         <option value="__default__"'
    . ( $guser == '__default__' ? $selected : '' )
-   . '>' . translate ( 'DEFAULT CONFIGURATION' ) . '</option>';
+   . '>' . $defConfigStr . '</option>';
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '
         <option value="' . $userlist[$i]['cal_login'] . '"'
@@ -186,10 +193,7 @@ if ( $is_admin ) {
      . ( $nonuserlist[$i]['cal_is_public'] == 'Y' ? '*' : '' ) . '</option>';
   }
 
-  echo '
-      </select>
-      <input type="submit" value="' . translate ( 'Go' ) . '" />
-    </form>';
+  echo $goStr;
 } //end admin $guser !- default test
 
 if ( ! empty ( $guser ) || ! $is_admin ) {
@@ -230,7 +234,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
           case ACCESS_SYSTEM_SETTINGS:
           case ACCESS_USER_MANAGEMENT:
           case ACCESS_VIEW_MANAGEMENT:
-            // skip these...
+            // Skip these...
             $show = false;
             break;
         }
@@ -251,9 +255,8 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
             </tr>
           </tbody>
         </table>
-        <input type="submit" value="' . translate ( 'Undo' ) . '"/>
-        <input type="submit" name="submit" value="'
-     . translate ( 'Save' ) . '" />
+        <input type="submit" value="' . $undoStr . '" />
+        <input type="submit" name="submit" value="' . $saveStr . '" />
       </form>
     </div>';
 
@@ -269,7 +272,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
   if ( $guser == '__default__' ) {
     $userlist = array ( '__default__' );
     $otheruser = $otheruser_login = '__default__';
-    $otheruser_fullname = translate ( 'DEFAULT CONFIGURATION' );
+    $otheruser_fullname = $defConfigStr;
   } else
   if ( $allow_view_other ) {
     $userlist = get_list_of_users ( $guser );
@@ -282,7 +285,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     . '
         <option value="__default__"'
      . ( $otheruser == '__default__' ? $selected : '' )
-     . '>' . translate ( 'DEFAULT CONFIGURATION' ) . '</option>';
+     . '>' . $defConfigStr . '</option>';
 
     for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       if ( $userlist[$i]['cal_login'] != $guser )
@@ -292,10 +295,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
           ? $selected : '' )
          . '>' . $userlist[$i]['cal_fullname'] . '</option>';
     }
-    echo '
-      </select>
-      <input type="submit" value="' . translate ( 'Go' )  . '" />
-    </form>';
+    echo $goStr;
   }
 }
 
@@ -425,9 +425,8 @@ if ( ! empty ( $otheruser ) ) {
   echo '
           <tr>
             <td colspan="11" class="boxleft boxbottom boxright">
-              <input type="submit" value="' . translate ( 'Undo' ) . '"/>
-              <input type="submit" name="submit" value="'
-   . translate ( 'Save' ) . '" />
+              <input type="submit" value="' . $undoStr . '" />
+              <input type="submit" name="submit" value="' . $saveStr . '" />
             </td>
           </tr>
         </tbody>
