@@ -985,7 +985,7 @@ Add layer: Add layer
 ########################################
 # Page: layers_toggle.php
 #
-Unable to update preference: Unable to update preferenc
+Unable to update preference: Unable to update preference
 
 ########################################
 # Page: list_unapproved.php
