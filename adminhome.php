@@ -42,6 +42,8 @@ print_header ( '', '
 '
   );
 
+$assistStr = translate ( 'Assistants' );
+$prefStr = translate ( 'Preferences' );
 $names = $links = array ();
 /* Disabled for now...will move to menu when working properly
 if ( $is_admin && ! empty ( $SERVER_URL ) &&
@@ -53,14 +55,14 @@ if ( $is_admin && ! empty ( $SERVER_URL ) &&
 if ( $is_nonuser_admin ) {
   if ( ! access_is_enabled () ||
       access_can_access_function ( ACCESS_PREFERENCES ) ) {
-    $names[] = translate ( 'Preferences' );
+    $names[] = $prefStr;
     $links[] = 'pref.php?user=' . $user;
   }
 
   if ( $single_user != 'Y' ) {
     if ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_ASSISTANTS ) ) {
-      $names[] = translate ( 'Assistants' );
+      $names[] = $assistStr;
       $links[] = 'assistant_edit.php?user=' . $user;
     }
   }
@@ -73,7 +75,7 @@ if ( $is_nonuser_admin ) {
 
   if ( ! access_is_enabled () ||
       access_can_access_function ( ACCESS_PREFERENCES ) ) {
-    $names[] = translate ( 'Preferences' );
+    $names[] = $prefStr;
     $links[] = 'pref.php';
   }
 
@@ -89,7 +91,7 @@ if ( $is_nonuser_admin ) {
   if ( $single_user != 'Y' ) {
     if ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_ASSISTANTS ) ) {
-      $names[] = translate ( 'Assistants' );
+      $names[] = $assistStr;
       $links[] = 'assistant_edit.php';
     }
   }
