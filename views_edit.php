@@ -40,8 +40,10 @@ $viewisglobal = 'N';
 $checked = ' checked="checked" ';
 $selected = ' selected="selected" ';
 
+$unnameViewStr = translate ( 'Unnamed View' );
+
 if ( empty ( $id ) ) {
-  $viewname = translate( 'Unnamed View' );
+  $viewname = $unnameViewStr;
 } else {
   // search for view by id
   for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
@@ -49,7 +51,7 @@ if ( empty ( $id ) ) {
       $newview = false;
       $viewname = $views[$i]['cal_name'];
       if ( empty ( $viewname ) )
-        $viewname = translate( 'Unnamed View' );
+        $viewname = $unnameViewStr;
       $viewtype = $views[$i]['cal_view_type'];
       $viewisglobal = $views[$i]['cal_is_global'];
     }
