@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 19.Mar.2007
+# Last update: 23.Mar.2007
 #
 # $Id$
-# Translation last updated on 03-19-2007
+# Translation last updated on 03-23-2007
 
 
 ################################################################################
@@ -51,11 +51,12 @@ The import file contained no data: Die importierte Datei enthielt keine Daten
 ########################################
 # Page: del_entry.php
 #
-Hello: Guten Tag
+Hello, XXX.: Guten Tag, XXX
 An appointment has been canceled for you by: Ein Termin wurde storniert von
-The subject was: Der Betreff lautete
-Date: Datum
-Time: Uhrzeit
+XXX has canceled an appointment.: XXX hat einen Termin storniert.
+Subject XXX: Betrifft XXX
+Date XXX: Datum XXX
+Time XXX: Zeit XXX
 
 ########################################
 # Page: edit_report.php
@@ -86,6 +87,8 @@ Next 60 days: N&auml;chsten 60 Tage
 Next 90 days: N&auml;chsten 90 Tage
 Next 180 days: N&auml;chsten 180 Tage
 Next 365 days: N&auml;chsten 365 Tage
+Date: Datum
+Time: Uhrzeit
 Invalid report id: Ung&uuml;ltige &#39;Bericht ID&#39;
 Unnamed Report: Neuer Bericht
 Add Report: Bericht hinzuf&uuml;gen
@@ -192,9 +195,9 @@ Add: Hinzuf&uuml;gen
 ########################################
 # Page: adminhome.php
 #
-Control Panel: Systemsteuerung
-Preferences: Voreinstellungen
 Assistants: Assistenten
+Preferences: Voreinstellungen
+Control Panel: Systemsteuerung
 System Settings: Systemeinstellungen
 Account: Konto
 User Access Control: Zugriffskontrolle
@@ -218,14 +221,12 @@ Approve and Exit: Genehmigen und Schlie&szlig;en
 Your comments will be included in an email to the event creator.: Ihre Anmerkungen werden dem Einladenden per Mail beigef&uuml;gt
 event creator: Terminersteller
 Your comments will be emailed to the XXX.: Ihre Anmerkungen werden an XXX gemailt
-Hello, XXX.: Guten Tag, XXX
+Hello: Guten Tag
 An appointment has been approved and comments added by: Eine Termin wurde genehmigt und eine Anmerkung wurde hinzugef&uuml;gt von
 XXX has approved appointment and added comments: XXX hat einen genehmigten Termin und hinzugef&uuml;gte Anmerkungen
-Subject XXX: Betrifft XXX
+The subject was: Der Betreff lautete
 The description is: Die Beschreibung lautet
 Description XXX: Beschreibung XXX
-Date XXX: Datum XXX
-Time XXX: Zeit XXX
 Comments: Anmerkungen
 Comments XXX: Anmerkungen XXX
 Approved w/Comments by XXX.: Genehmigte w/Anmerkungen von XXX
@@ -780,9 +781,9 @@ Edit Custom Trailer: &Auml;ndern der benutzerdefinierten FU&szlig;ZEILE
 #
 Database error XXX.: Datenbankfehler XXX.
 DEFAULT CONFIGURATION: GRUNDKONFIGURATION
-Admin: Administration
 Go: Zeigen
 Undo: R&uuml;cksetzen
+Admin: Administration
 Allow Access to Other Users Calendar: Erlaube Zugriff auf andere Benutzerkalender
 Grant This User Access to My Calendar: Erlaube Benutzerzugriff auf meinen Kalender
 Type: Art
@@ -943,7 +944,6 @@ An appointment has been updated by: Ein Termin wurde aktualisiert von
 XXX has updated an appointment.: XXX hat einen Termin aktualisiert.
 You must enter the anti-spam text on the previous page.: Auf der vorigen Seite m&uuml;ssen Sie einen Anti-Spam Text eingeben.
 The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
-XXX has canceled an appointment.: XXX hat einen Termin storniert.
 User removed from participants list.: Benutzer wurde von der Teilnehmerliste entfernt.
 Please look on: Bitte konsultieren Sie Ihren
 to accept or reject this appointment: um diesen Termin zu best&auml;tigen/abzulehnen.
@@ -1320,6 +1320,11 @@ No data returned from: Keine Daten erhalten von
 for non-user calendar: f&uuml;r &#39;Zentrale&#39;-Benutzerkalender
 No Remote Calendars found: Kein &#39;Externer&#39;-Kalender (Remote) gefunden
 Remote Calendars not enabled: &#39;Externer&#39;-Kalender (Remote) nicht aktiv
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: KEINE VORSCHAU M&Ouml;GLICH
 
 ########################################
 # Page: includes/help_list.php
