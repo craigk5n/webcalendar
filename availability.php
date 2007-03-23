@@ -55,14 +55,17 @@ $span = ( $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ) * 3 + 1;
 
 $users = explode ( ',', $users );
 
+$nextStr = translate ( 'Next' );
+$prevStr = translate ( 'Previous' );
+
 echo '
     <div style="width:99%;">
-      <a title="' . translate ( 'Previous' ) . '" class="prev" href="'
- . $prev_url . '"><img src="images/leftarrow.gif" class="prevnext" alt="'
- . translate ( 'Previous' ) . '" /></a>
-      <a title="' . translate ( 'Next' ) . '" class="next" href="' . $next_url
+      <a title="' . $prevStr . '" class="prev" href="' . $prev_url
+ . '"><img src="images/leftarrow.gif" class="prevnext" alt="'
+ . $prevStr . '" /></a>
+      <a title="' . $nextStr . '" class="next" href="' . $next_url
  . '"><img src="images/rightarrow.gif" class="prevnext" alt="'
- . translate ( 'Next' ) . '" /></a>
+ . $nextStr . '" /></a>
       <div class="title">
         <span class="date">';
 printf ( "%s, %s %d, %d", weekday_name ( strftime ( "%w", $time ) ),
