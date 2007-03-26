@@ -8,7 +8,7 @@
 # Updated to 1.1 by Istvan Bubreg bubreg_at_freemail_hu
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -37,16 +37,21 @@ __month__ __yyyy__: __yyyy__ __month__
 
 
 ########################################
+# Page: about.php
+#
+Title: WebNaptár
+OK: OK
+
+########################################
 # Page: access.php
 #
 Database error: Adatbázis hiba
-User Access Control: User Access Control
-Cancel: Mégsem
 DEFAULT CONFIGURATION: ALAPÉRTELMEZETT BEÁLLÍTÁSOK
-Save: Mentés
 Go: Mehet
+Save: Mentés
 Public Access: Nyilvános naptár
 Admin: Adminisztráció
+User Access Control: User Access Control
 Allow Access to Other Users Calendar: Hozzáférés engedélyezése más felhasználóknak
 Grant This User Access to My Calendar: Hozzáférés engedélyezése a naptáramhoz
 Type: Típus
@@ -65,8 +70,6 @@ Assistant: Titkár
 Select All: Mindent kijelöl
 Clear All: Mindent töröl
 Public: Nyilvános
-confidential: bizalmas
-private: magán
 
 ########################################
 # Page: activity_log.php
@@ -77,16 +80,14 @@ Previous: Elõzõ
 ########################################
 # Page: add_entry.php
 #
-Event: Esemény
-Invalid entry id: Érvénytelen bejegyzés-azonosító
+private: magán
+confidential: bizalmas
 Error adding event: Esemény hozzáadási hiba
 
 ########################################
 # Page: admin.php
 #
 Select: Válassz
-Yes: Igen
-No: Nem
 Day: Nap
 Week: Hét
 Month: Hónap
@@ -102,7 +103,6 @@ Colors: Színek
 app-name-help: Megadhatsz egy programnevet, ami a böngészõ címsorában jelenik meg, illetve a bejelentkezéskor. Az itt megadott érték lefordításra kerül, így a különbözõ nyelvekhez különbözõ programnevet adhatsz meg.
 Application Name: Programnév
 Translated Name: Lefordított név
-Title: WebNaptár
 server-url-help: A program alap URL-je, mely az email emlékeztetõkben és értesítésekben jelenik meg.
 Server URL: Szerver URL
 home-url-help: Az alkalmazás alap-URLjének beállítása. Abszolút vagy relatív útvonal lehet
@@ -127,16 +127,12 @@ Allow external file for header/script/trailer: Külső fájl engedélyezése a f
 Allow user to override header/trailer: Allow user to override header/trailer
 tz-help: Megadja a szerver és a helyi idõzóna közötti eltérést órában.
 Server Timezone Selection: Szerver időzóna választás
-Your current GMT offset is: Az aktuális eltolás a GMT-től
-hours: óra
 display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
 Display Common Use Date/Times as GMT: Dátumok/idők megjelenítése GMT szerint
 date-format-help: Megadja a kívánt dátumformátumot.
 Date format: Dátumformátum
 display-week-starts-on: Megadja, hogy a hetek Vasárnap vagy Hétfõn kezdõdjenek. Hétfõ esetén a hetek számozása ISO szerint történik.
 Week starts on: Hetek elsõ napja
-Sunday: Vasárnap
-Monday: Hétfõ
 time-format-help: Megadja, hogy melyik formátumot használod: <br /><i>12 órás:</i> Az idõpontok du 3:30 formában jelennek meg.  <br /><i>24 órás:</i> Idõpontok 20:30 formában jelennek meg.
 Time format: Idõpont formátum
 12 hour: 12 órás
@@ -180,6 +176,8 @@ display-unapproved-help: Megadja, hogy a jóváhagyatlan események megjelenjene
 Display unapproved: Jóváhagyás nélküliek megjelenítése
 conflict-check-help: Esemény-ütközések ellenõrzése (ugyanazon felhasználó két eseménye idõben fedi egymást). Ha "Igen"-re állítod, csak egy jóváhagyás után vehetsz fel két eseményt ugyanarra az idõre. Ha "Nem"-re állítod, nem lesz ilyen ellenõrzés. Valószínûleg "Igen"-re akarod állítani, hogy legyen ellenõrzés.
 Check for event conflicts: Esemény-ütközések ellenõrzése
+Yes: Igen
+No: Nem
 conflict-months-help: Ha az esemény-ütközések ellenõrzése be van kapcsolva, itt adhatod meg, hogy hány hónapra elõre ellenõrizzük az ütközéseket. Ha túl sok idõt vesz igénybe egy esemény hozzáadása, csökkentsd ezt az idõt.
 Conflict checking months: Ütközésellenõrzés hónapjai
 conflict-check-override-help: Bekapcsolva a felhasználók felülbírálhatják az ütközéseket, és felvehetnek két vagy több eseményt ugyanarra az idõre.
@@ -326,9 +324,9 @@ Event popup text: Felugró eseményablak szövegszíne
 ########################################
 # Page: adminhome.php
 #
-Control Panel: Vezérlőpult
-Preferences: Beállítások
 Assistants: Titkárok
+Preferences: Beállítások
+Control Panel: Vezérlőpult
 Users: Felhasználók
 Account: Hozzáférés
 Categories: Kategóriák
@@ -368,19 +366,24 @@ Admin mode: Adminisztrációs mód
 Your assistants: Titkáraid
 
 ########################################
+# Page: availability.php
+#
+day: nap
+
+########################################
 # Page: category.php
 #
 Category Icon: Kategória ikon
 Global: Globális
-Add: Hozzáadás
 Category Name: Kategórianév
+Color: Szín
 Remove Icon: Ikon eltávolítása
 Add Icon to Category: Ikon felvétele a kategóriába
 Upload: Feltöltés
 gif 3kb max: gif 3kb max
 Search for existing icons: Keresés a létező ikonok között
+Add: Hozzáadás
 Delete: Törlés
-Are you sure you want to delete this entry?: Biztos, hogy törölni akarod ezt a bejegyzést?
 Make New Category: Új kategória hozzáadása
 
 ########################################
@@ -392,16 +395,21 @@ File is not a gif image.: A fájl nem gif kép
 ########################################
 # Page: catsel.php
 #
-ENTRY CATEGORIES: BEJEGYZÉS KATEGÓRIÁK
 AVAILABLE CATEGORIES: ELÉRHETŐ KATEGÓRIÁK
+ENTRY CATEGORIES: BEJEGYZÉS KATEGÓRIÁK
 Remove: Törlés
 Global Category: Globális kategória
-OK: OK
+Cancel: Mégsem
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Egy találkozót lemondott veled
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: Érvénytelen bejegyzés-azonosító
 
 ########################################
 # Page: docadd.php
@@ -424,6 +432,7 @@ Removed: Eltávolítva
 am: de
 pm: du
 You are not authorized to edit this task: Nem szerkesztheted ezt a feladatot
+task: feladat
 hours ahead of you: hátralévő órák 
 hours behind you: eltelt órák
 is in a different timezone than you are. Currently: más időzónában van mint te. Éppen
@@ -442,9 +451,9 @@ access-help: Specifies the access level of the event.<br /> <em>Public</em>: Eve
 Access: Hozzáférés
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
 Priority: Prioritás
-Low: Alacsony
-Medium: Közepes
 High: Magas
+Medium: Közepes
+Low: Alacsony
 category-help: Specifies the category of the event.
 Category: Kategória
 percent-help: Task completion percentage for this user
@@ -461,6 +470,7 @@ All day event: Egész napos esemény
 Timezone Offset: Idõzóna eltérés
 time-help: Specifies the time of the event.<br />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
 duration-help: Specifies the duration (in hours;minutes) of the event.  <br /><em>This field can be left blank.</em>
+hours: óra
 minutes: perc
 end-time-help: Specifies the time the event is expected to end.
 Start Time: Kezdő idő
@@ -525,10 +535,9 @@ You are not authorized to edit this entry.: Nincs jogosultságod a szerkesztésh
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: A következők ütköznek a tervezett idővel
 A new appointment has been made for you by: Egy új tennivalót írt be számodra
 An appointment has been updated by: Egy tennivalót módosított
-The subject is: A tárgy
+The following conflicts with the suggested time: A következők ütköznek a tervezett idővel
 Please look on: Légyszíves nézd meg
 to accept or reject this appointment: -ban, hogy megfelelõ-e Neked ez az idõpont
 to view this appointment: -ban a találkozó részleteit
@@ -539,15 +548,13 @@ conflicts with the following existing calendar entries: -es idõpont ütközik a
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: Réteg módosítása
 Add Layer: Réteg hozzáadása
+Edit Layer: Réteg módosítása
 Source: Forrás
-Color: Szín
 Duplicates: Másolatok
 Show layer events that are the same as your own: A sajátjaiddal megegyezõ események megmutatása
 Add to My Calendar: Hozzáadás a saját naptárhoz
 Delete layer: Réteg törlése
-Are you sure you want to delete this layer?: Biztos törölni akarod ezt a réteget?
 
 ########################################
 # Page: edit_layer_handler.php
@@ -560,8 +567,8 @@ You can only create one layer for each user: Csak egy réteget hozhatsz létre f
 #
 NONUSER_PREFIX not set: A NONUSER_PREFIX-et nem állítottad be a config.php-ben.
 word characters only: csak betűket és számokat tartalmazhat (a-zA-Z_0-9)
-Edit User: Felhasználó szerkesztése
 Add User: Új felhasználó
+Edit User: Felhasználó szerkesztése
 Calendar ID: Naptár azonosító
 First Name: Vezetéknév
 Last Name: Keresztnév
@@ -612,16 +619,14 @@ Edit Report: Jelentés szerkesztése
 Report name: Jelentés neve
 Current User: Felhasználó
 User: Felhasználó
-Include link in trailer: Link beszúrása a láblécbe
 Include standard header/trailer: Standard fejléc/lábléc beszúrása
-Date range: Dátumtartomány
 Include previous/next links: Elõzõ/következõ linkek beszúrása
 Include empty dates: Üres dátumok beszúrása
+Date range: Dátumtartomány
 Template variables: Sablonváltozók
 Page template: Oldalsablon
 Day template: Nap sablon
 Event template: Eseménysablon
-Are you sure you want to delete this report?: Valóban törölni akarod ezt a jelentést?
 
 ########################################
 # Page: edit_report_handler.php
@@ -631,8 +636,8 @@ Variable N not found: N változót nem találom
 ########################################
 # Page: edit_template.php
 #
-Edit Custom Script/Stylesheet: Egyedi szkript/stíluslap szerkesztése
 Edit Custom Header: Egyedi fejléc szerkesztése
+Edit Custom Script/Stylesheet: Egyedi szkript/stíluslap szerkesztése
 Edit Custom Trailer: Egyedi lábléc szerkesztése
 
 ########################################
@@ -642,8 +647,8 @@ Username: Azonosító
 E-mail address: E-mail cím
 Password: Jelszó
 again: újra
+Enabled: Engedélyezve
 Disabled for demo: A demo-ban letiltva
-Are you sure you want to delete this user?: Biztos, hogy törlöd ezt a felhasználót?
 Change Password: Jelszó változtatás
 New Password: Új jelszó
 Set Password: Jelszó beállítás
@@ -695,14 +700,14 @@ You must specify a group name: Meg kell adnod egy csoportnevet
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: Hétvégék megjelenítése hét nézetben
-Display days with events in bold in year view: Eseményt tartalmazó napok megjelenítése kiemelve év nézetben
-Time interval: Idõköz
-time-interval-help: Heti és napi nézetben megadja az idõblokkok hosszát.
 Auto-refresh calendars: Kalendárium automatikus frissítése
 auto-refresh-help: Bekapcsolva a napi, heti és havi nézet, valamint a jóváhagyásra váró események listájának oldala idõnként automatikusan frissíti magát.
 Auto-refresh time: Automatikus frissítési idõ
 auto-refresh-time-help: Megadja a frissítési idõközt, ha az automatikus frissítést be van kapcsolva.
+Display days with events in bold in year view: Eseményt tartalmazó napok megjelenítése kiemelve év nézetben
+Display weekends in week view: Hétvégék megjelenítése hét nézetben
+Time interval: Idõköz
+time-interval-help: Heti és napi nézetben megadja az idõblokkok hosszát.
 Nonuser: Felhasználó nélküli naptárak
 user-customize-color: Specifies whether users are allowed to modify their own color scheme.
 enable-gradient-help: Use gradient colors for cell backgrounds.
@@ -737,7 +742,8 @@ Therefore, updates should be made in the Palm Desktop.: Tehát készíts frissí
 This form will import vCalendar (.vcs) 1.0 events: Ezen az ûrlapon tudsz vCalendar (.vcs) 1.0 eseményeket importálni.
 The following formats have been tested: A következõ formátumok lettek tesztelve
 This form will import iCalendar (.ics) events: Ezen az ûrlapon tudsz iCalendar (.ics) eseményeket importálni.
-Enabling <b>Overwrite Prior Import</b> will cause events imported previously that used the same UID as an event from the new import file to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: Ha bekapcsolod <b>Elõzõ import felülírását</b>, akkor a korábban azonos UID-del importált események az új importálás során törlõdnek. Így lehetõvé válik egy frissített iCalendar fájl importálása másolatok létrehozása nélkül.
+Enabling: Engedélyezés
+Overwrite Prior Import: Elõzõ import felülírása
 
 ########################################
 # Page: help_index.php
@@ -750,13 +756,12 @@ Help Index: Súgó tartalomjegyzék
 Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: A rétegek hasznosak mások eseményeinek megjelenítésekor. Megadhatod a felhasználót és az ő eseményeinek színét.
 Add/Edit/Delete: Hozzáadás/Szerkesztés/Törlés
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: A lap alján az adminisztrációs részben a Rétegek szerkesztése linkre kattintva hozzáadhatsz/szerkeszthetsz/törölhetsz rétegeket.
-Specifies the user that you would like to see displayed in your calendar.: Megadja, hogy mely felhasználót szeretnéd megjeleníteni a naptáradban.
 The text color of the new layer that will be displayed in your calendar.: A naptáradban megjelenõ új réteg szövegszíne.
-If checked, events that are duplicates of your events will be shown.: Bejelölve megjeleníti azokat az eseményeket, melyek a te eseményeid másolatai.
 Disabling: Letiltás
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Az oldal alján az adminisztrációs részben kattints a Rétegek letiltása linkre a rétegek kikapcsolásához.
-Enabling: Engedélyezés
+If checked, events that are duplicates of your events will be shown.: Bejelölve megjeleníti azokat az eseményeket, melyek a te eseményeid másolatai.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Az oldal alján az adminisztrációs részben kattints a Rétegek engedélyezése linkre a rétegek bekapcsolásához.
+Specifies the user that you would like to see displayed in your calendar.: Megadja, hogy mely felhasználót szeretnéd megjeleníteni a naptáradban.
 
 ########################################
 # Page: help_pref.php
@@ -769,22 +774,22 @@ email-boss-notifications-help: Megadja, hogy a főnökök kapjanak-e email érte
 I want to approve events: Szeretném jóváhagyni az eseményeket
 boss-approve-event-help: Megadja, hogy a főnöknek jóvá kell-e hagynia a titkárok által hozzáadott eseményeket.
 Subscribe/Publish: Feliratkozás/közzététel
-allow-remote-subscriptions-help: Megadja, hogy távoli felhasználók feliratkozhatnak-e a naptáradhoz, és így megtekinthetik-e az eseményeidet iCal-kompatibilis programjaikban (mint például Apple iCal vagy Mozilla Calendar).
-remote-subscriptions-url-help: Megmutatja az URL-t, amit a távoli felhasználóknak kell használniuk a naptáradhoz való feliratkozáshoz.
 Allow remote publishing: Távoli publikálás engedélyezése
 allow-remote-publishing-help: Távoli iCal ügyfél publikálhat-e a naptárba
 remote-publishing-url-help: Az iCal ügyfélben használandó URL 
-rss-feed-url-help: Az RSS elérés URL címe
+allow-remote-subscriptions-help: Megadja, hogy távoli felhasználók feliratkozhatnak-e a naptáradhoz, és így megtekinthetik-e az eseményeidet iCal-kompatibilis programjaikban (mint például Apple iCal vagy Mozilla Calendar).
+remote-subscriptions-url-help: Megmutatja az URL-t, amit a távoli felhasználóknak kell használniuk a naptáradhoz való feliratkozáshoz.
 Enable FreeBusy publishing: Elfoglaltság publikálása
 freebusy-enabled-help: Megadja, hogy a felhasználó foglaltsága elérhető legyen-e iCal-ból
 freebusy-url-help: Az elfoglaltság URL címe
+rss-feed-url-help: Az RSS elérés URL címe
 
 ########################################
 # Page: help_uac.php
 #
 Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: A felhasználószintű hozzáférés-szabályozás részletesen beállíthatók a jogosultságok.A felhasználók is módosíthatják, ha az adminisztrátor engedélyezi. 
-If disabled, this user cannot see you in the participants list.: Kikapcsolva a felhasználó nem fog látni a résztvevők között.
 If disabled, this user cannot send you emails.: Kikapcsolva nem fog tudni emailt küldeni. 
+If disabled, this user cannot see you in the participants list.: Kikapcsolva a felhasználó nem fog látni a résztvevők között.
 If enabled, this user cannot view the details of any of your entries.: Bekapcsolva a felhasználó nem fogja látni a bejegyzéseid részleteit.
 
 ########################################
@@ -805,7 +810,6 @@ Current Icons on Server: Ikonok a szerveren
 Disabled: Letiltva
 Import format: Import formátum
 Exclude private records: Saját rekordok kizárása
-Overwrite Prior Import: Elõzõ import felülírása
 Repeated items are imported separately. Prior imports are not overwritten.: Az ismétlődő elemek külön importálódtak. A meglévő elemek nem lettek felülírva.
 
 ########################################
@@ -818,28 +822,26 @@ The import file contained no data: Az importálandó fájl nem tartalmaz adatot.
 ########################################
 # Page: layers.php
 #
+Layer: Réteg
+Edit layer: Réteg módosítása
 Layers are currently: A rétegek megjelenítése jelenleg
-Enabled: Engedélyezve
 Disable Layers: Rétegek tiltása
-Enable Layers: Rétegek engedélyezése
 Click here: Itt
 to modify the layers settings for the: módosíthatod a rétegek beállítását a következõhöz:
 calendar: naptár
 Add layer: Réteg hozzáadása
-Layer: Réteg
-Edit layer: Réteg módosítása
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: Bejegyzés megtekintése
 Approve/Confirm: Jóváhagyás/Beleegyezés
-Approve this entry?: Jóváhagyod ezt a bejegyzést?
 Reject: Elutasítás
-Reject this entry?: Elutasítod ezt a bejegyzést?
 No unapproved entries for: Nincs jóváhagyás nélküli bejegyzés
 Unapproved Entries: Jóváhagyás nélküli bejegyzések
 Not authorized: Nincs jogosultságod
+Approve this entry?: Jóváhagyod ezt a bejegyzést?
+Reject this entry?: Elutasítod ezt a bejegyzést?
 
 ########################################
 # Page: login-app.php
@@ -867,6 +869,11 @@ This Calendar is not Public: Ez a naptár nem nyilvános
 # Page: nonusers.php
 #
 Add New NonUser Calendar: Új felhasználó nélküli naptár hozzáadása
+
+########################################
+# Page: nulogin.php
+#
+Illegal characters in login: Illegális karakter a felhasználónévben
 
 ########################################
 # Page: pref.php
@@ -897,7 +904,6 @@ Records deleted from: Rekordok törölve a következõbõl
 # Page: register.php
 #
 Email address cannot be blank.: Az Email cím nem lehet üres
-Illegal characters in login: Illegális karakter a felhasználónévben
 A new WebCalendar account has been set up for you: Az új WebNaptár hozzáférés létrehozva
 Your username is: A felhasználóneved
 Your password is: A jelszavad
@@ -971,8 +977,8 @@ more: tovább
 ########################################
 # Page: users.php
 #
-Add New User: Új felhasználó hozzáadása
 denotes administrative user: adminisztrátor
+Add New User: Új felhasználó hozzáadása
 
 ########################################
 # Page: usersel.php
@@ -1000,7 +1006,6 @@ Week (Timebar): Heti (Idõvonal)
 Month (Timebar): Hónap (Idővonal)
 Month (side by side): Havi (egymás mellett)
 Month (on same calendar): Havi (ugyanazon naptáron)
-Selected: Kiválasztott
 
 ########################################
 # Page: views_edit_handler.php
@@ -1015,16 +1020,15 @@ No users for this view: Nincs felhasználó a nézethez
 ########################################
 # Page: view_entry.php
 #
+Update Task Percentage: Készültségi fok frissítése
+Completed: Kész
 Assistant mode: Titkár mód
 Status: Állapot
-Accepted: Jóváhagyva
-Needs-Action: Needs-Action
 Declined: Declined
-Completed: Kész
+Needs-Action: Needs-Action
 by: by
 Percentage Complete: Készültségi fok
 External User: Külső felhasználó
-Update Task Percentage: Készültségi fok frissítése
 Update: Update
 Attachments: Mellékletek
 comments: megjegyzések
@@ -1033,9 +1037,9 @@ Hide: Elrejt
 Approve/Confirm entry: Bejegyzés jóváhagyása/Beleegyezés
 Reject entry: Bejegyzés elutasítása
 Set category: Kategória beállítása
-Edit entry: Bejegyzés módosítása
 Copy entry: Bejegyzés másolása
 This will delete this entry for all users.: Ez a bejegyzés minden felhasználó számára törölve lesz.
+Edit entry: Bejegyzés módosítása
 Edit repeating entry for all dates: Az összes dátum ismétlõdõ bejegyzésének szerkesztése
 Delete repeating event for all dates: Az összes dátum ismétlõdõ bejegyzésének törlése
 Edit entry for this date: Ezen dátum bejegyzésének szerkesztése
@@ -1045,8 +1049,8 @@ This will delete the entry from your calendar.: A bejegyzés törölve lesz a na
 Do you want to add this entry to your calendar?: Hozzá akarod adni ezt a bejegyzést a saját naptáradhoz?
 This will add the entry to your calendar.: A bejegyzés hozzá lesz adva a saját naptáradhoz.
 Email all participants: Email minden résztvevõnek
-Show activity log: Tevékenységi napló megjelenítése
 Hide activity log: Tevékenységi napló elrejtése
+Show activity log: Tevékenységi napló megjelenítése
 Export this entry to: Ezen esemény exportálása a következõbe
 Palm Pilot: Palm Pilot
 
@@ -1092,16 +1096,46 @@ Dec: Dec
 #
 This event is private: Ez privát esemény
 Conf.: Biz.
+exceeds limit of XXX events per day: túllépte a napi XXX esemény korlátját
+All Attendees: Minden meghívott
+Busy: Elfoglalt
+Tentative: Esetleg
+Event approved: Esemény jóváhagyva
+Journal approved: Napló elfogadva
+Task approved: Feladat elfogadva
+Attachment: Melléklet
+Event created: Esemény létrehozva
+Journal created: Napló létrehozva
+Task created: Feladat létrehozva
+Event deleted: Esemény törölve
+Journal deleted: Napló törölve
+Task deleted: Feladat törölve
+Notification sent: Értesítés elküldve
+Event rejected: Esemény elutasítva
+Journal rejected: Napló elutasítva
+Task rejected: Feladat elutasítva
+Reminder sent: Emlékeztetõ elküldve
+Event updated: Esemény frissítve
+Journal updated: Napló frissítve
+Task updated: Feladat frissítve
 WK: H
-Task Name: Feladat neve
-Task Due Date: Feladat esedékes
 TASKS: FELADATOK
 Task_Title: Cím
 Due: Esedékes
+Task Name: Feladat neve
+Task Due Date: Feladat esedékes
+You have XXX unapproved entries: Neked XXX nem jóváhagyott bejegyzésed van
+Changes successfully saved: A módosítások mentése sikerült
+Event: Esemény
+Action: Tevékenység
+Printer Friendly: Nyomtatóbarát
+Generate printer-friendly version: Nyomtatóbarát verzió generálása
+after: után
+before: előtt
+end: vége
+start: kezdete
 View this event: Esemény megnézése
 View this task: Feladat megnézése
-exceeds limit of XXX events per day: túllépte a napi XXX esemény korlátját
-You have XXX unapproved entries: Neked XXX nem jóváhagyott bejegyzésed van
 January: Január
 February: Február
 March: Március
@@ -1124,6 +1158,12 @@ Aug: Aug
 Sep: Szept
 Oct: Okt
 Nov: Nov
+The following error occurred: A következõ hiba történt
+You are not authorized: Nincs jogosultságod
+Your current GMT offset is: Az aktuális eltolás a GMT-től
+Error approving event: Hiba az esemény jóváhagyásakor
+Sunday: Vasárnap
+Monday: Hétfõ
 Tuesday: Kedd
 Wednesday: Szerda
 Thursday: Csütörtök
@@ -1136,39 +1176,6 @@ Wed: Sze
 Thu: Csü
 Fri: Pé
 Sat: Szo
-All Attendees: Minden meghívott
-Busy: Elfoglalt
-Tentative: Esetleg
-Changes successfully saved: A módosítások mentése sikerült
-The following error occurred: A következõ hiba történt
-You are not authorized: Nincs jogosultságod
-day: nap
-before: előtt
-after: után
-start: kezdete
-end: vége
-Error approving event: Hiba az esemény jóváhagyásakor
-Generate printer-friendly version: Nyomtatóbarát verzió generálása
-Printer Friendly: Nyomtatóbarát
-Event created: Esemény létrehozva
-Event approved: Esemény jóváhagyva
-Event rejected: Esemény elutasítva
-Event updated: Esemény frissítve
-Event deleted: Esemény törölve
-Task created: Feladat létrehozva
-Task approved: Feladat elfogadva
-Task rejected: Feladat elutasítva
-Task updated: Feladat frissítve
-Task deleted: Feladat törölve
-Journal created: Napló létrehozva
-Journal approved: Napló elfogadva
-Journal rejected: Napló elutasítva
-Journal updated: Napló frissítve
-Journal deleted: Napló törölve
-Notification sent: Értesítés elküldve
-Reminder sent: Emlékeztetõ elküldve
-Attachment: Melléklet
-Action: Tevékenység
 
 ########################################
 # Page: includes/trailer.php
@@ -1221,7 +1228,6 @@ Turkish: török
 Welsh: Welszi
 event: esemény
 journal: napló
-task: feladat
 
 ########################################
 # Page: includes/user-imap.php
@@ -1251,18 +1257,18 @@ Mb: Mb
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Emlékeztető
-provide_address: Legalább egy címzettet meg kell adnod
-mailer_not_supported: a levelező nem támogatott
-execute: Sikertelen végrehajtás~
-instantiate: Could not instantiate mail function
 authenticate: SMTP Hiba~ Sikertelen bejelentkezés
-from_failed: A következő feladó hibás~
-recipients_failed: SMTP Error~ A következő címzett hibás~
-data_not_accepted: SMTP Error~ Hibás adat
 connect_host: SMTP Error~ Nem sikerült kapcsolódni az SMTPhez~
+data_not_accepted: SMTP Error~ Hibás adat
+encoding: Ismeretlen kódolás~
+execute: Sikertelen végrehajtás~
 file_access: Sikertelen fájlhozzáférés~
 file_open: Fájl hiba sikertelen megnyitás~
-encoding: Ismeretlen kódolás~
+from_failed: A következő feladó hibás~
+instantiate: Could not instantiate mail function
+mailer_not_supported: a levelező nem támogatott
+provide_address: Legalább egy címzettet meg kell adnod
+recipients_failed: SMTP Error~ A következő címzett hibás~
 
 ########################################
 # Page: includes/js/admin.php

@@ -3,7 +3,7 @@
 # Translated by:  Henry H. Tan-Tenn <share2002nov@lomaji.com>
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -32,18 +32,20 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: ºô¸ô¦æ¨Æ¾ä
+
+########################################
 # Page: access.php
 #
 Database error: ¸ê®Æ®w¿ù»~
-Cancel: ¨ú®ø
-Save: Àx¦s
 Go: ¨Ó¥h
+Save: Àx¦s
 Public Access: ¤½²³¤J¤f
 Admin: ºÞ²z
 Calendar: ¦æ¨Æ¾ä
 Public: ¤½²³ e 
-confidential: ¾÷±K e 
-private: ¨p¤H e 
 
 ########################################
 # Page: activity_log.php
@@ -54,16 +56,14 @@ Previous: «e¤@­Ó
 ########################################
 # Page: add_entry.php
 #
-Event: ¬¡°Ê
-Invalid entry id: µL®Ä e °O¨Æ id
+private: ¨p¤H e 
+confidential: ¾÷±K e 
 Error adding event: °O¨Æ¥[¤Jµo¥Í¿ù»~
 
 ########################################
 # Page: admin.php
 #
 Select: ¿ï¾Ü
-Yes: ¦n
-No: Mai
 Day: ¤é
 Week: ¶g
 Month: ¤ë
@@ -72,16 +72,12 @@ System Settings: ¨t²Î³]©w
 Help: »¡©ú
 Settings: ³]©w¤¤
 Colors: ÃC¦â
-Title: ºô¸ô¦æ¨Æ¾ä
 language-help: Specifies which language to use.
 Language: »y¨t
 Your browser default language is: §A e ÂsÄý¾¹¹w³] e »y¨t¬O
 None: µL
-hours: ÂIÄÁ
 display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
 Week starts on: ¨C¶g¶}©l©ó
-Sunday: Â§«ô¤é
-Monday: «ô¤@
 time-format-help: Specifies which time format to use: <br /><i>12 hour:</i> Display times as 3am, 8:30pm, etc.  <br /><i>24 hour:</i> Display times as 300, 2030, etc.
 Time format: ®É¶¡®æ¦¡
 12 hour: 12®É¨î
@@ -98,6 +94,8 @@ display-week-number-help: Specifies whether the week number (1-52) should be dis
 Display week number: Åã¥Ü¶g¼Æ(¥H¦~­pºâ)
 display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: Åã¥Ü¥¼®Ö­ã e 
+Yes: ¦n
+No: Mai
 Allow public access: ¤¹·Ç¤½²³ access
 Categories enabled: ±Ò¥ÎÃþ§O
 Document background: ¤å¥ó­I´º
@@ -108,8 +106,8 @@ Table cell background for current day: ·í¤éÃC¦â
 ########################################
 # Page: adminhome.php
 #
-Preferences: °Ñ¼Æ³]©w
 Assistants: §U²z
+Preferences: °Ñ¼Æ³]©w
 Users: ¨Ï¥ÎªÌ
 Account: ½s¿è­Ó¤H¸ê®Æ
 Categories: Ãþ§O
@@ -134,16 +132,26 @@ Your assistants: §A e §U²z
 # Page: category.php
 #
 Global: Âk­Ó¨t²Î
-Add: ¼W¥[
 Category Name: Ãþ§O¦WºÙ
+Color: ¦â½o
+Add: ¼W¥[
 Delete: §R°£
-Are you sure you want to delete this entry?: §A´±½T©w beh §R°£³o­Ó°O¨Æ¡H
 Make New Category: ¼W¥[·sÃþ§O
+
+########################################
+# Page: catsel.php
+#
+Cancel: ¨ú®ø
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: ¬ù·|¤w¸g³Q¨ú®ø¡A¨ú®øªÌ¬O
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: µL®Ä e °O¨Æ id
 
 ########################################
 # Page: docadd.php
@@ -166,9 +174,9 @@ access-help: ¬¡°Ê e Åã¥Ü³]©w¡C<br /> <i>¤½²³ e </i>: ©Ò¦³¤H³£¬Ý·|µÛ¬¡°Ê e ¸Ô²Ó¸ê
 Access: Åã¥Ü³]©w
 priority-help: ¬¡°Ê e Àu¥ýµ¥¯Å¡C°ªµ¥¯Å e ¬¡°Ê·|¥Î²ÊÅé¦r«¬¯S§Oªí¥Ü¡C
 Priority: Àu¥ýµ¥¯Å
-Low: §C
-Medium: ¤¤
 High: °ª
+Medium: ¤¤
+Low: §C
 category-help: ¬¡°Ê e Ãþ§O¡C
 Category: Ãþ§O
 date-help: ¬¡°ÊÁ|¿ì e ¤é´Á¡C
@@ -177,6 +185,7 @@ Timed event: ¦³©w®É¶¡ e ¬¡°Ê
 All day event: Âk¤u e ¬¡°Ê
 time-help: ¬¡°ÊÁ|¿ì e ®É¶¡¡C<br /><i>³o¶µ·|¨Ï§K²K¡C</i>
 duration-help: ¬¡°Ê«e«á e ªø«×¡]«ö¤ÀÄÁºâ¡^¡C<br /><i>³o¶µ·|¨Ï§K²K¡C</i>
+hours: ÂIÄÁ
 minutes: ¤ÀÄÁ
 participants-help: ¦C¥X³o¶µ°O¨Æ e °Ñ»PªÌ¡C
 external-participants-help: «D¦æ¨Æ¾ä¥ÎªÌ e ¥»¬¡°Ê°Ñ»PªÌ¦W³æ¡C¤@ choa À³¸Ó¦C¤@¦ì¡A·|¨Ï¥]¬A¹q¤l¶l«K¦í§}¡C¦³¦C¦í§} e °Ñ»PªÌ³q¦¬µÛ³qª¾¨ç¤Î´£¿ô¨ç¡C
@@ -200,9 +209,8 @@ You are not authorized to edit this entry.: §AµLÅv§Q½s¿è³o¶µ°O¨Æ
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: The following conflicts with the suggested time
 A new appointment has been made for you by: §A¦³¤@­Ó·s¬ù·|¡AÁÜ½ÐªÌ¬O
-The subject is: ¥DÃD¬O
+The following conflicts with the suggested time: The following conflicts with the suggested time
 Please look on: ½Ð¬d¬Ý
 to accept or reject this appointment: ¨M©w±µ¨ü©Î©Úµ´³o­Ó¬ù·|
 to view this appointment: to view this appointment
@@ -213,21 +221,19 @@ conflicts with the following existing calendar entries: conflicts with the follo
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: ½s¿è¶¥¼h
 Add Layer: ·s¼W¶¥¼h
+Edit Layer: ½s¿è¶¥¼h
 Source: ¨Ó·½
-Color: ¦â½o
 Duplicates: °Æ¥»
 Show layer events that are the same as your own: Show layer events that are the same as your own
 Add to My Calendar: ·s¼W¨ì§Ú e ¦æ¨Æ¾ä
 Delete layer: §R°£¶¥¼h
-Are you sure you want to delete this layer?: §A´±½T©w beh §R°£³o­Ó¶¥¼h¡H
 
 ########################################
 # Page: edit_nonusers.php
 #
-Edit User: ½s¿è¨Ï¥ÎªÌ¸ê®Æ
 Add User: ·s¼W¨Ï¥ÎªÌ
+Edit User: ½s¿è¨Ï¥ÎªÌ¸ê®Æ
 First Name: ©m
 Last Name: ¦W
 
@@ -249,6 +255,7 @@ Username: ¨Ï¥ÎªÌ¦WºÙ
 E-mail address: ¹q¤l¶l¥ó¦a§}
 Password: ±K½X
 again: »Õ¤@Â\
+Enabled: ±Ò¥Î e 
 Disabled for demo: Disabled for demo
 Change Password: ÅÜ§ó±K½X
 New Password: ·s e ±K½X
@@ -313,21 +320,19 @@ Disabled: °±¥Î e
 ########################################
 # Page: layers.php
 #
-Layers are currently: ¶¥¼h¬[ºc¥Ø«e¬O
-Enabled: ±Ò¥Î e 
-Disable Layers: °±¥Î¶¥¼h¬[ºc
-Enable Layers: ±Ò¥Î¶¥¼h¬[ºc
-Add layer: ·s¼W¶¥¼h
 Layer: ¶¥¼h
 Edit layer: ½s¿è¶¥¼h
+Layers are currently: ¶¥¼h¬[ºc¥Ø«e¬O
+Disable Layers: °±¥Î¶¥¼h¬[ºc
+Add layer: ·s¼W¶¥¼h
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: ÀËµø³o­Ó°O¨Æ
 Approve/Confirm: ®Ö­ã/½T©w
-Approve this entry?: ®Ö­ã³o­Ó°O¨Æ?
 Reject: ©Úµ´
+Approve this entry?: ®Ö­ã³o­Ó°O¨Æ?
 Reject this entry?: ©Úµ´³o­Ó°O¨Æ?
 
 ########################################
@@ -386,8 +391,8 @@ Set Category: ³]©wÃþ§O
 ########################################
 # Page: users.php
 #
-Add New User: ·s¼W¨Ï¥ÎªÌ
 denotes administrative user: ¨Ï¥ÎªÌºÞ²z­û
+Add New User: ·s¼W¨Ï¥ÎªÌ
 
 ########################################
 # Page: views.php
@@ -417,8 +422,8 @@ External User: ¥~­±¥ÎªÌ
 Approve/Confirm entry: ®Ö­ã/½T©w °O¨Æ
 Reject entry: ©Úµ´°O¨Æ
 Set category: ³]©wÃþ§O
-Edit entry: ½s¿è°O¨Æ
 This will delete this entry for all users.: ³o·|¹ï©Ò¦³¥ÎªÌ§R°£³o¶µ°O¨Æ¡C
+Edit entry: ½s¿è°O¨Æ
 Edit repeating entry for all dates: ½s¿è©Ò¦³¤é´Á e ­«½Æ°O¨Æ
 Delete repeating event for all dates: §R°£­«½Æ e ¬¡°Ê¡]©Ò¦³¤é´Á¡^
 Edit entry for this date: ½s¿è³o­Ó¤é´Á e °O¨Æ
@@ -427,8 +432,8 @@ This will delete the entry from your calendar.: ³o±N·|±q§A e ¦æ¨Æ¾ä§R°£³o­Ó°O¨Æ¡
 Do you want to add this entry to your calendar?: §A­n·s¼W³o­Ó°O¨Æ¨ì§A e ¦æ¨Æ¾ä¶Ü¡H
 This will add the entry to your calendar.: ³o±N·|·s¼W³o­Ó°O¨Æ¨ì§A e ¦æ¨Æ¾ä¡C
 Email all participants: Email ©Ò¦³°Ñ»PªÌ
-Show activity log: Åã¥Ü¨Ï¥Î¬ö¿ý
 Hide activity log: ·t»\¨Ï¥Î¬ö¿ý
+Show activity log: Åã¥Ü¨Ï¥Î¬ö¿ý
 Palm Pilot: Palm Pilot
 
 ########################################
@@ -452,6 +457,17 @@ Dec: 12¤ë
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: ¶W¥X¤@¤u XXX ¶µ¬¡°Ê e ­­¨î
+Event approved: ¬¡°Ê½T»{¹L
+Event created: ¬¡°Êµù¥U
+Event deleted: ¬¡°Ê³Q§R°£
+Notification sent: ³qª¾¨ç°e¥X¥h
+Event rejected: ¬¡°Ê³Q©Úµ´
+Reminder sent: ´£¿ô¨ç°e¥X¥h
+Event updated: ¬¡°Ê§ó·s
+Event: ¬¡°Ê
+Action: ¦æ°Ê
+Printer Friendly: ¤Íµ½¦C¦L
+Generate printer-friendly version: Generate printer-friendly version
 January: 1¤ë
 February: 2¤ë
 March: 3¤ë
@@ -474,6 +490,11 @@ Aug: 8¤ë
 Sep: 9¤ë
 Oct: 10¤ë
 Nov: 11¤ë
+The following error occurred: µo¥Í¥H¤U e ¿ù»~
+You are not authorized: ±z¥¼¸g±ÂÅv
+Error approving event: Error approving event
+Sunday: Â§«ô¤é
+Monday: «ô¤@
 Tuesday: «ô¤G
 Wednesday: «ô¤T
 Thursday: «ô¥|
@@ -486,19 +507,6 @@ Wed: «ô¤T
 Thu: «ô¥|
 Fri: «ô¤­
 Sat: «ô¤»
-The following error occurred: µo¥Í¥H¤U e ¿ù»~
-You are not authorized: ±z¥¼¸g±ÂÅv
-Error approving event: Error approving event
-Generate printer-friendly version: Generate printer-friendly version
-Printer Friendly: ¤Íµ½¦C¦L
-Event created: ¬¡°Êµù¥U
-Event approved: ¬¡°Ê½T»{¹L
-Event rejected: ¬¡°Ê³Q©Úµ´
-Event updated: ¬¡°Ê§ó·s
-Event deleted: ¬¡°Ê³Q§R°£
-Notification sent: ³qª¾¨ç°e¥X¥h
-Reminder sent: ´£¿ô¨ç°e¥X¥h
-Action: ¦æ°Ê
 
 ########################################
 # Page: includes/trailer.php

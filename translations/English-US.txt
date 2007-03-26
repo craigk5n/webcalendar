@@ -30,7 +30,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 03-16-2007
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -71,15 +71,15 @@ OK: OK
 ########################################
 # Page: access.php
 #
-Save: Save
 Database error: Database error
 Database error XXX.: Database error: XXX.
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
+Go: Go
+Save: Save
+Undo: Undo
 Public Access: Public Access
 Admin: Admin
 User Access Control: User Access Control
-Go: Go
-Undo: Undo
 Allow Access to Other Users Calendar: Allow Access to Other Users' Calendar
 Grant This User Access to My Calendar: Grant This User Access to My Calendar
 Type: Type
@@ -104,8 +104,8 @@ Private: Private
 ########################################
 # Page: activity_log.php
 #
-Previous: Previous
 Next: Next
+Previous: Previous
 
 ########################################
 # Page: add_entry.php
@@ -401,9 +401,9 @@ Background Repeat: Background Repeat
 ########################################
 # Page: adminhome.php
 #
-Control Panel: Control Panel
-Preferences: Preferences
 Assistants: Assistants
+Preferences: Preferences
+Control Panel: Control Panel
 Users: Users
 Account: Account
 Categories: Categories
@@ -514,6 +514,7 @@ Old Color: Old Color
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: An appointment has been canceled for you by
+XXX has canceled an appointment.: XXX has canceled an appointment.
 
 ########################################
 # Page: doc.php
@@ -660,7 +661,6 @@ An appointment has been updated by: An appointment has been updated by
 XXX has updated an appointment.: XXX has updated an appointment.
 You must enter the anti-spam text on the previous page.: You must enter the anti-spam text on the previous page.
 The following conflicts with the suggested time: The following conflicts with the suggested time
-XXX has canceled an appointment.: XXX has canceled an appointment.
 User removed from participants list.: User removed from participants list.
 Please look on: Please look on
 to accept or reject this appointment: to accept or reject this appointment
@@ -1430,11 +1430,6 @@ unknown-weekday: unknown-weekday
 Invalid data format for: Invalid data format for
 
 ########################################
-# Page: themes/theme_inc.php
-#
-NO PREVIEW AVAILABLE: NO PREVIEW AVAILABLE
-
-########################################
 # Page: includes/help_list.php
 #
 Index: Index
@@ -1772,6 +1767,11 @@ Error updating table XXX: Error updating table "XXX": XXX.
 Conversion Successful: <b>Conversion Successful</b>
 Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
 previous version requires updating several tables: Your previous version of WebCalendar requires updating several database tables.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: NO PREVIEW AVAILABLE
 
 ########################################
 # Page: tools/reload_remotes.php

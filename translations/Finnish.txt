@@ -8,7 +8,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -37,19 +37,22 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: WebCalendar
+OK: OK
+
+########################################
 # Page: access.php
 #
 Database error: Tietokantavirhe
-Cancel: Kumoa
-Save: Talleta
 Go: Mene
+Save: Talleta
 Public Access: Yleinen k‰yttˆ
 Admin: Yll‰pito
 Calendar: Kalenteri
 Edit: Muokkaa
 Public: Julkinen
-confidential: luottamuksellinen
-private: yksityinen
 
 ########################################
 # Page: activity_log.php
@@ -60,16 +63,14 @@ Previous: Edellinen
 ########################################
 # Page: add_entry.php
 #
-Event: Tapahtuma
-Invalid entry id: V‰‰r‰ tunnus
+private: yksityinen
+confidential: luottamuksellinen
 Error adding event: Virhe merkint‰‰ lis‰tt‰ess‰
 
 ########################################
 # Page: admin.php
 #
 Select: Valitse
-Yes: Kyll‰
-No: Ei
 Day: P‰iv‰
 Week: Viikko
 Month: Kuukausi
@@ -84,7 +85,6 @@ Email: S‰hkˆposti-ilmoitukset
 Colors: V‰rit
 app-name-help: Asettaa kalenterisovelluksen "titlen" joka n‰kyy sivulla, kun kalenteria k‰ytet‰‰n
 Application Name: Sovelluksen nimi
-Title: WebCalendar
 server-url-help: Asettaa perus-URL -osoitteen kalenterisovellukselle. T‰t‰ k‰ytet‰‰n l‰hetett‰ess‰ s‰hkˆpostia tapahtuman osallistujille.
 Server URL: Palvelimen URL
 language-help: M‰‰rittelee k‰ytett‰v‰n kielen.
@@ -98,13 +98,10 @@ Custom header: Oma yl‰tunniste
 custom-trailer-help: Allows a custom HTML snippet to be included at the end of every page.
 Custom trailer: Oma alatunniste
 tz-help: M‰‰ritt‰‰ aikavyˆhykkeen
-hours: tuntia
 date-format-help: M‰‰ritt‰‰ p‰iv‰n esitysmuodon.
 Date format: P‰iv‰yksen muoto
 display-week-starts-on: M‰‰rittelee viikon alkamisp‰iv‰ksi joko sunnuntai tai maanantai. Jos maanantai valittu, niin viikonnumero lasketaan ISO-j‰rjestelm‰n mukaisesti.
 Week starts on: Viikon ensimm‰inen p‰iv‰
-Sunday: Sunnuntai
-Monday: Maanantai
 time-format-help: M‰‰rittelee ajan esitysmuodon, <br /><i>12 tuntia</i> <br /><i>24 tuntia</i>
 Time format: Ajan esitystapa
 12 hour: 12 tuntia
@@ -136,6 +133,8 @@ display-unapproved-help: M‰‰rittelee n‰ytet‰‰nkˆ hyv‰ksym‰ttˆm‰t tapahtumat kale
 Display unapproved: N‰yt‰ hyv‰ksym‰ttˆm‰t tapahtumat
 conflict-check-help: Tarkista tapahtumien konfliktit
 Check for event conflicts: Tarkista tapahtumien konfliktit
+Yes: Kyll‰
+No: Ei
 conflict-months-help: Kuinka monen kuukauden p‰‰h‰n tarkistetaan konfliktit.
 Conflict checking months: Konfliktit, montako kuukautta tarkistetaan
 conflict-check-override-help: Salli konfliktien ylikirjoitus.
@@ -223,8 +222,8 @@ Event popup text: Tapahtuma-popupin teksti
 ########################################
 # Page: adminhome.php
 #
-Preferences: Asetukset
 Assistants: Avustajat
+Preferences: Asetukset
 Users: K‰ytt‰j‰t
 Account: K‰ytt‰j‰n tiedot
 Categories: Tapahtumaluokat
@@ -255,22 +254,27 @@ Admin mode: P‰‰k‰ytt‰j‰-tila
 # Page: category.php
 #
 Global: Globaali
-Add: Lis‰‰
 Category Name: Tapahtumaluokan nimi
+Color: V‰ri
+Add: Lis‰‰
 Delete: Poista
-Are you sure you want to delete this entry?: Haluatko varmasti poistaa t‰m‰n merkinn‰n?
 Make New Category: Lis‰‰ uusi tapahtumaluokka
 
 ########################################
 # Page: catsel.php
 #
 Remove: Poista
-OK: OK
+Cancel: Kumoa
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Kalenterimerkint‰si poisti
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: V‰‰r‰ tunnus
 
 ########################################
 # Page: docadd.php
@@ -295,9 +299,9 @@ access-help: M‰‰rittelee tapahtuman n‰kyvyyden.<br /> <i>Julkinen</i>: Kaikki n‰
 Access: Saantioikeus
 priority-help: M‰‰rittelee tapahtuman t‰rkeyden. T‰rkeimm‰t n‰ytet‰‰n lihavoituna.
 Priority: T‰rkeys
-Low: V‰h‰inen
-Medium: Normaali
 High: T‰rke‰
+Medium: Normaali
+Low: V‰h‰inen
 category-help: M‰‰ritt‰‰ tapahtumalle tapahtumaluokan.
 Category: Tapahtumaluokka
 URL: URL
@@ -308,6 +312,7 @@ All day event: Koko p‰iv‰n kest‰v‰ tapahtuma
 Timezone Offset: Aikaero
 time-help: M‰‰rittelee tapahtuman ajan. <br /><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
 duration-help: M‰‰rittelee tapahtuman keston (tunteina ja minuutteina). <br /><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
+hours: tuntia
 minutes: minuuttia
 participants-help: Luetteloi tapahtuman osanottajat.
 external-participants-help: M‰‰ritt‰‰ listan ulkoisista tapahtuman osallistujista.
@@ -332,10 +337,9 @@ You are not authorized to edit this entry.: Sinulla ei ole oikeutta muokata t‰t‰
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: Ehdotettuna aikana on seuraavat muut merkinn‰t
 A new appointment has been made for you by: Sinulle on lis‰tty uusi kalenterimerkint‰ - 
 An appointment has been updated by: Kalenterimerkint‰‰ on muutettu -
-The subject is: Otsikko
+The following conflicts with the suggested time: Ehdotettuna aikana on seuraavat muut merkinn‰t
 Please look on: Tarkista
 to accept or reject this appointment: ja hyv‰ksy tai hylk‰‰ merkint‰
 to view this appointment: tarkista kalenterimerkint‰
@@ -346,15 +350,13 @@ conflicts with the following existing calendar entries: on ristiriidassa seuraav
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: Muokattava taso
 Add Layer: Lis‰‰ taso
+Edit Layer: Muokattava taso
 Source: L‰hde
-Color: V‰ri
 Duplicates: P‰‰llekk‰isi‰
 Show layer events that are the same as your own: N‰yt‰ kaikki tason tapahtumat, jotka ovat samoja kuin omat
 Add to My Calendar: Lis‰‰ kalenteriin
 Delete layer: Poista taso
-Are you sure you want to delete this layer?: Haluatko poistaa t‰m‰n tason?
 
 ########################################
 # Page: edit_layer_handler.php
@@ -366,8 +368,8 @@ You can only create one layer for each user: Voit luoda vain yhden tason k‰ytt‰j
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX ei m‰‰ritetty tiedostossa config.php.
-Edit User: Muokkaa k‰ytt‰j‰ntietoja
 Add User: Lis‰‰ k‰ytt‰j‰
+Edit User: Muokkaa k‰ytt‰j‰ntietoja
 Calendar ID: Kalenterin nimi
 First Name: Etunimi
 Last Name: Sukunimi
@@ -411,16 +413,14 @@ Edit Report: Muokkaa raporttia
 Report name: Raportin nimi
 Current User: K‰ytt‰j‰
 User: K‰ytt‰j‰
-Include link in trailer: Lis‰‰ linkki alatunnisteeseen
 Include standard header/trailer: Lis‰‰ vakio yl‰- ja alatunniste
-Date range: P‰iv‰m‰‰r‰rajaus
 Include previous/next links: Lis‰‰ edellinen/seuraava -linkit
 Include empty dates: N‰yt‰ tyhj‰t p‰iv‰t
+Date range: P‰iv‰m‰‰r‰rajaus
 Template variables: Sivupohjan muuttujat
 Page template: Sivupohja
 Day template: P‰iv‰raportin pohja
 Event template: Tapahtumaraportin pohja
-Are you sure you want to delete this report?: Haluatko varmasti poistaa t‰m‰n raportin?
 
 ########################################
 # Page: edit_report_handler.php
@@ -430,8 +430,8 @@ Variable N not found: Muuttujaa N ei lˆydy
 ########################################
 # Page: edit_template.php
 #
-Edit Custom Script/Stylesheet: Muokkaa oma skripti/tyylisivu
 Edit Custom Header: Muokkaa oma otsake
+Edit Custom Script/Stylesheet: Muokkaa oma skripti/tyylisivu
 Edit Custom Trailer: Muokkaa oma alatunniste
 
 ########################################
@@ -441,6 +441,7 @@ Username: K‰ytt‰j‰tunnus
 E-mail address: S‰hkˆposti
 Password: Salasana
 again: uudestaan
+Enabled: K‰ytˆss‰
 Disabled for demo: Toiminto ei k‰ytˆss‰ (demoversio)
 Change Password: Vaihda salasana
 New Password: Uusi salasana
@@ -491,14 +492,14 @@ You must specify a group name: Sinun t‰ytyy m‰‰ritt‰‰ ryhm‰lle nimi
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: N‰yt‰ viikonloput viikkoa katseltaessa
-Display days with events in bold in year view: N‰yt‰ p‰iv‰t, joilla on tapahtumia, lihavoituina vuosin‰kym‰ss‰
-Time interval: Aikajakso
-time-interval-help: M‰‰ritt‰‰ viikko- sek‰ p‰iv‰n‰kymien aikablokit.
 Auto-refresh calendars: P‰ivit‰ kalenterit automaattisesti
 auto-refresh-help: P‰ivitt‰‰ n‰kym‰t automaattisesti.
 Auto-refresh time: Tauko p‰ivitysten v‰lill‰
 auto-refresh-time-help: Tauko p‰ivitysten v‰lill‰.
+Display days with events in bold in year view: N‰yt‰ p‰iv‰t, joilla on tapahtumia, lihavoituina vuosin‰kym‰ss‰
+Display weekends in week view: N‰yt‰ viikonloput viikkoa katseltaessa
+Time interval: Aikajakso
+time-interval-help: M‰‰ritt‰‰ viikko- sek‰ p‰iv‰n‰kymien aikablokit.
 Nonuser: Ei-kenenk‰‰n kalenterit
 colors-help: Kaikki v‰rit m‰‰ritell‰‰n koodaamalla ne heksadesimaalinumeroksi #RRGGBB-muotoon. (RR-punainen, GG-vihre‰ ja BB-sininen arvo (00-FF)). 
 
@@ -530,9 +531,8 @@ Therefore, updates should be made in the Palm Desktop.: Siksi p‰ivitykset tulisi
 This form will import vCalendar (.vcs) 1.0 events: Tuo vCalendar (.vcs) 1.0 t‰ll‰ lomakkeella
 The following formats have been tested: Seuraavat tiedostomuodot on testattu
 This form will import iCalendar (.ics) events: Tuo iCalendar (.ics) t‰ll‰ lomakkeella
-Enabling: Jos valitset
+Enabling: Otetaan k‰yttˆˆn
 Overwrite Prior Import: Tuo ylikirjoittaen
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: poistetaan samalla UID:lla olevat tapahtumat ennen tuontia. N‰in voit tuoda p‰ivitetyn iCalendar -tiedoston ilman, ett‰ samasta tapahtumasta syntyy useita kopioita.
 
 ########################################
 # Page: help_index.php
@@ -544,13 +544,12 @@ Help Index: Ohjehakemisto
 #
 Add/Edit/Delete: Lis‰‰/Muokkaa/Poista
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Painamalla "Muokkaa tasoja"-painiketta p‰‰k‰ytt‰j‰-osiossa sivun lopussa antaa sinulle mahdollisuuden lis‰t‰/muokata/poistaa tasoja.
-Specifies the user that you would like to see displayed in your calendar.: M‰‰ritt‰‰ k‰ytt‰j‰n jonka haluat n‰hd‰ omassa kalenterissasi.
 The text color of the new layer that will be displayed in your calendar.: Uuden tason tekstin v‰ri
-If checked, events that are duplicates of your events will be shown.: Jos valittuna, n‰ytt‰‰ myˆs ne tapahtumat jotka ovat duplikaatteja omistasi.
 Disabling: Poistetaan k‰ytˆst‰
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Paina 'Poistetaan k‰ytˆst‰'-linkki‰ p‰‰k‰ytt‰j‰-osassa sivun alareunassa asettaaksesi tasot pois k‰ytˆst‰
-Enabling: Otetaan k‰yttˆˆn
+If checked, events that are duplicates of your events will be shown.: Jos valittuna, n‰ytt‰‰ myˆs ne tapahtumat jotka ovat duplikaatteja omistasi.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Paina 'Otetaan k‰yttˆˆn'-linkki‰ p‰‰k‰ytt‰j‰-kohdassa sivun alaosassa asettaaksesi tasot k‰yttˆˆn
+Specifies the user that you would like to see displayed in your calendar.: M‰‰ritt‰‰ k‰ytt‰j‰n jonka haluat n‰hd‰ omassa kalenterissasi.
 
 ########################################
 # Page: help_pref.php
@@ -570,7 +569,6 @@ remote-subscriptions-url-help: Displays the URL remote users should use to subsc
 Disabled: Poistettu k‰ytˆst‰
 Import format: Tuontitiedon muoto
 Exclude private records: Ei yksityisi‰ merkintˆj‰
-Overwrite Prior Import: Tuo ylikirjoittaen
 
 ########################################
 # Page: import_handler.php
@@ -582,23 +580,21 @@ The import file contained no data: Tuontitiedostossa ei ollut tapahtumia
 ########################################
 # Page: layers.php
 #
+Layer: Taso
+Edit layer: Muokkaa tasoa
 Layers are currently: Tasot ovat
-Enabled: K‰ytˆss‰
 Disable Layers: Poista tasot k‰ytˆst‰
-Enable Layers: Ota tasot k‰yttˆˆn
 Click here: Napsauta t‰st‰
 to modify the layers settings for the: muokataksesi tason asetuksia tasolle
 Add layer: Lis‰tt‰v‰ taso
-Layer: Taso
-Edit layer: Muokkaa tasoa
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: N‰yt‰ merkint‰
 Approve/Confirm: Hyv‰ksy/Vahvista
-Approve this entry?: Hyv‰ksyt‰‰nkˆ merkint‰?
 Reject: Hylk‰‰
+Approve this entry?: Hyv‰ksyt‰‰nkˆ merkint‰?
 Reject this entry?: Hyl‰t‰‰nkˆ merkint‰?
 
 ########################################
@@ -683,8 +679,8 @@ Set Category: Aseta luokka
 ########################################
 # Page: users.php
 #
-Add New User: Lis‰‰ uusi k‰ytt‰j‰
 denotes administrative user: tarvitaan p‰‰k‰ytt‰j‰n oikeudet
+Add New User: Lis‰‰ uusi k‰ytt‰j‰
 
 ########################################
 # Page: usersel.php
@@ -724,8 +720,8 @@ External User: Ulkoinen k‰ytt‰j‰
 Approve/Confirm entry: Hyv‰ksy/Vahvista merkint‰
 Reject entry: Hylk‰‰ merkint‰
 Set category: Aseta luokka
-Edit entry: Muokkaa merkint‰‰
 This will delete this entry for all users.: T‰m‰ merkint‰ poistetaan kaikilta k‰ytt‰jilt‰.
+Edit entry: Muokkaa merkint‰‰
 Edit repeating entry for all dates: Muokkaa toistuvaa entry‰ kaikille p‰iville
 Delete repeating event for all dates: Poista toistuvat tapahtumat kaikilta p‰ivilt‰
 Edit entry for this date: Muokkaa t‰m‰n p‰iv‰n entry‰
@@ -734,8 +730,8 @@ This will delete the entry from your calendar.: Poistetaan merkint‰ kalenterista
 Do you want to add this entry to your calendar?: Haluatko lis‰t‰ t‰m‰n merkinn‰n kalenteriisi?
 This will add the entry to your calendar.: Lis‰t‰‰n merkint‰ kalenteriisi.
 Email all participants: L‰het‰ s‰hkˆpostia kaikille osallistujille
-Show activity log: N‰yt‰ aktiviteettiloki
 Hide activity log: Piilota aktiviteettiloki
+Show activity log: N‰yt‰ aktiviteettiloki
 Export this entry to: L‰het‰ t‰m‰ tapahtuma
 Palm Pilot: Palm Pilot
 
@@ -758,8 +754,19 @@ Dec: Joulu
 ########################################
 # Page: includes/functions.php
 #
-WK: Vko
 exceeds limit of XXX events per day: ylitt‰‰ sallitun tapahtumien m‰‰r‰n p‰iv‰ss‰
+Event approved: Tapahtuma hyv‰ksytty
+Event created: Tapahtuma luotu
+Event deleted: Tapahtuma poistettu
+Notification sent: Tiedote l‰hetetty
+Event rejected: Tapahtuma hyl‰tty
+Reminder sent: Muistuttaja l‰hetetty
+Event updated: Tapahtuma p‰ivitetty
+WK: Vko
+Event: Tapahtuma
+Action: Toiminto
+Printer Friendly: Tulostusversio
+Generate printer-friendly version: Luo tulostusversio
 January: Tammikuu
 February: Helmikuu
 March: Maaliskuu
@@ -782,6 +789,11 @@ Aug: Elo
 Sep: Syys
 Oct: Loka
 Nov: Marras
+The following error occurred: Tapahtui virhe
+You are not authorized: K‰yttˆoikeus puuttuu
+Error approving event: Merkint‰‰ ei hyv‰ksytty
+Sunday: Sunnuntai
+Monday: Maanantai
 Tuesday: Tiistai
 Wednesday: Keskiviikko
 Thursday: Torstai
@@ -794,19 +806,6 @@ Wed: Ke
 Thu: To
 Fri: Pe
 Sat: La
-The following error occurred: Tapahtui virhe
-You are not authorized: K‰yttˆoikeus puuttuu
-Error approving event: Merkint‰‰ ei hyv‰ksytty
-Generate printer-friendly version: Luo tulostusversio
-Printer Friendly: Tulostusversio
-Event created: Tapahtuma luotu
-Event approved: Tapahtuma hyv‰ksytty
-Event rejected: Tapahtuma hyl‰tty
-Event updated: Tapahtuma p‰ivitetty
-Event deleted: Tapahtuma poistettu
-Notification sent: Tiedote l‰hetetty
-Reminder sent: Muistuttaja l‰hetetty
-Action: Toiminto
 
 ########################################
 # Page: includes/trailer.php

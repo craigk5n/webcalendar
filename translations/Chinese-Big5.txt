@@ -8,7 +8,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -37,27 +37,29 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: 網路行事曆
+
+########################################
 # Page: access.php
 #
-Save: 儲存
 Go: 前往
+Save: 儲存
 Admin: 管理
 Public: 公眾的
-confidential: 機密的
-private: 私人的
 
 ########################################
 # Page: add_entry.php
 #
-Invalid entry id: Invalid entry id
+private: 私人的
+confidential: 機密的
 Error adding event: Error adding event
 
 ########################################
 # Page: admin.php
 #
 Select: 選擇
-Yes: 是
-No: 否
 Day: 日
 Week: 週
 Month: 月
@@ -65,16 +67,12 @@ Year: 年
 Help: 說明
 Settings: 設定中
 Colors: 顏色
-Title: 網路行事曆
 language-help: Specifies which language to use.
 Language: 語系
 Your browser default language is: 你的瀏覽器預設的語系是
 None: 無
-hours: 時
 display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
 Week starts on: 每週開始於
-Sunday: 星期日
-Monday: 星期一
 time-format-help: Specifies which time format to use: <br /><i>12 hour:</i> Display times as 3am, 8:30pm, etc.  <br /><i>24 hour:</i> Display times as 300, 2030, etc.
 Time format: 時間格式
 12 hour: 12時制
@@ -90,6 +88,8 @@ display-week-number-help: Specifies whether the week number (1-52) should be dis
 Display week number: 顯示週數(以年計算)
 display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: 顯示未核准的
+Yes: 是
+No: 否
 Document background: 文件背景
 Document title: 文件標題
 Table cell background: 表格背景
@@ -114,13 +114,18 @@ Time: 時&nbsp;間
 ########################################
 # Page: category.php
 #
+Color: 顏色
 Delete: 刪除
-Are you sure you want to delete this entry?: 你確定要刪除這個記事嗎?
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: 約會已經被取消, 取消者是
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: Invalid entry id
 
 ########################################
 # Page: docadd.php
@@ -143,12 +148,13 @@ access-help: Specifies the access level of the event.<br /> <i>Public</i>: Every
 Access: 顯示設定
 priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
 Priority: 優先等級
-Low: 低
-Medium: 中
 High: 高
+Medium: 中
+Low: 低
 date-help: Specifies the date of the event.
 time-help: Specifies the time of the event.<br /><i>This field can be left blank.</i>
 duration-help: Specifies the duration (in minutes) of the event.  <br /><i>This field can be left blank.</i>
+hours: 時
 minutes: 分
 participants-help: Lists the participants of this entry.
 repeat-type-help: Select how often the event should repeat.<i>Monthly (by day)</i> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <i>Monthly (by date)</i> allows an event to repeat on the same day of the month.
@@ -168,9 +174,8 @@ You are not authorized to edit this entry.: You are not authorized to edit this 
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: The following conflicts with the suggested time
 A new appointment has been made for you by: 你有一個新約會, 邀請者是
-The subject is: 主題是
+The following conflicts with the suggested time: The following conflicts with the suggested time
 Please look on: 請查看
 to accept or reject this appointment: 決定接受或拒絕這個約會
 to view this appointment: to view this appointment
@@ -181,21 +186,19 @@ conflicts with the following existing calendar entries: conflicts with the follo
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: 編輯階層
 Add Layer: 新增階層
+Edit Layer: 編輯階層
 Source: 來源
-Color: 顏色
 Duplicates: 副本
 Show layer events that are the same as your own: 在你的行事曆中同時顯示來源者的記事
 Add to My Calendar: 新增到我的行事曆
 Delete layer: 刪除階層
-Are you sure you want to delete this layer?: 你確定要刪除這個階層嗎?
 
 ########################################
 # Page: edit_nonusers.php
 #
-Edit User: 編輯使用者資料
 Add User: 新增使用者
+Edit User: 編輯使用者資料
 First Name: 姓
 Last Name: 名
 
@@ -220,6 +223,7 @@ Username: 使用者名稱
 E-mail address: 電子郵件地址
 Password: 密碼
 again: 再一次
+Enabled: 啟用的
 Disabled for demo: Disabled for demo
 Change Password: 變更密碼
 New Password: 新的密碼
@@ -274,21 +278,19 @@ Disabled: 停用的
 ########################################
 # Page: layers.php
 #
-Layers are currently: 階層架構目前是
-Enabled: 啟用的
-Disable Layers: 停用階層架構
-Enable Layers: 啟用階層架構
-Add layer: 新增階層
 Layer: 階層
 Edit layer: 編輯階層
+Layers are currently: 階層架構目前是
+Disable Layers: 停用階層架構
+Add layer: 新增階層
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: 檢視這個記事
 Approve/Confirm: 核准/確定
-Approve this entry?: 核准這個記事?
 Reject: 拒絕
+Approve this entry?: 核准這個記事?
 Reject this entry?: 拒絕這個記事?
 
 ########################################
@@ -338,16 +340,16 @@ View Another Users Calendar: 檢視其他人的月曆
 ########################################
 # Page: users.php
 #
-Add New User: 新增使用者
 denotes administrative user: 使用者管理員
+Add New User: 新增使用者
 
 ########################################
 # Page: view_entry.php
 #
 Approve/Confirm entry: 核准/確定 記事
 Reject entry: 拒絕記事
-Edit entry: 編輯記事
 This will delete this entry for all users.: 對所有的使用者也將會刪除這個記事.
+Edit entry: 編輯記事
 This will delete the entry from your calendar.: 這將會從你的行事曆刪除這個記事.
 Do you want to add this entry to your calendar?: 你要新增這個記事到你的行事曆嗎?
 This will add the entry to your calendar.: 這將會新增這個記事到你的行事曆.
@@ -373,6 +375,8 @@ Dec: 12月
 # Page: includes/functions.php
 #
 WK: 週
+Printer Friendly: 友善列印
+Generate printer-friendly version: Generate printer-friendly version
 January: 一月
 February: 二月
 March: 三月
@@ -395,6 +399,11 @@ Aug: 8月
 Sep: 9月
 Oct: 10月
 Nov: 11月
+The following error occurred: The following error occurred
+You are not authorized: 您未經授權
+Error approving event: Error approving event
+Sunday: 星期日
+Monday: 星期一
 Tuesday: 星期二
 Wednesday: 星期三
 Thursday: 星期四
@@ -407,11 +416,6 @@ Wed: 週三
 Thu: 週四
 Fri: 週五
 Sat: 週六
-The following error occurred: The following error occurred
-You are not authorized: 您未經授權
-Error approving event: Error approving event
-Generate printer-friendly version: Generate printer-friendly version
-Printer Friendly: 友善列印
 
 ########################################
 # Page: includes/trailer.php

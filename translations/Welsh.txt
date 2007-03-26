@@ -2,7 +2,7 @@
 # Last update: 03 October 2002
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -31,18 +31,20 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: Calendar We
+
+########################################
 # Page: access.php
 #
 Database error: Gwall cronfa ddata
-Cancel: Dileu 
-Save: Arbed
 Go: Ewch
+Save: Arbed
 Public Access: Calendr Cyhoeddus
 Admin: Gweinyddu
 Calendar: Calendr
 Public: Cyhoeddus
-confidential: cyfrinachol
-private: preifat
 
 ########################################
 # Page: activity_log.php
@@ -53,16 +55,14 @@ Previous: Blaenorol
 ########################################
 # Page: add_entry.php
 #
-Event: Digwyddiad
-Invalid entry id: ID annilys 
+private: preifat
+confidential: cyfrinachol
 Error adding event: Camgymeriad wrth ychwanegu digwyddiad
 
 ########################################
 # Page: admin.php
 #
 Select: Dewis
-Yes: Ie
-No: Na
 Day: Dydd
 Week: Wythnos
 Month: Mis
@@ -75,20 +75,16 @@ Email: E-bost
 Colors: Lliwiau
 app-name-help: Mae hwn yn dynodi enw'r cymwysiad (application) a fydd yn ymddangos ym mar teitl y porwr am bob tudalen a'r tudalen mewngofnodi yn ogystal.  Mi fydd yr hyn yr ydych yn cofnodi yma yn cael ei gymharu a chynnwys y ffeil cyfieithiadiau gan ganiatau i chi roi teitlau amrywiol i ieithoedd gwahanol.
 Application Name: Enw'r Cymwysiad (Application)
-Title: Calendar We
 server-url-help: Mae hwn yn dynodi y URL sylfaen i'r cymwysiad (application).  Cynnhywsir hwn wrth anfon e-byst sydd yn atgoffa neu yn nodi.
 Server URL: URL y gweinydd
 language-help: Mae hwn yn dynodi pa iaith i'w defnyddio.
 Language: Iaith
 Your browser default language is: Iaith arferol eich porwr yw
 None: Dim 
-hours: awr
 date-format-help: Mae hwn yn dynodi y fformat dyddiad arferol.
 Date format: Fformat dyddiad
 display-week-starts-on: Mae hwn yn dynodi a yw wythnosau i ddechrau ar ddydd Sul neu Llun.  Os dynoder dydd Llun, yna defnyddir rhifau wythnos system ISO.
 Week starts on: Wythnos yn dechrau ar ddydd
-Sunday: Sul
-Monday: Llun
 time-format-help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio: <br /><i>12 awr:</i> Dangoser amserau megis 3am, 8:30pm, ac ati.  <br /><i>24 awr:</i> Dangoser amserau megis 300, 2030, ac ati.
 Time format: Fformat amser
 12 hour: 12 awr
@@ -113,6 +109,8 @@ display-unapproved-help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth y
 Display unapproved: Dangoser digwyddiadau heb cymeradwyaeth
 conflict-check-help: Mae hwn yn rhybuddio am gwrthdrawiadau rhwng digwyddiadau (dau digwyddiad wedi eu dynodi am yr un amser ar calendr un person).  Os y dewisir "Ie", mi fydd hi dal yn bosib i drefnu dau digwyddiad ar yr un amser os y rhoddir cadarnhad ar ol rhybudd. Os y dewisir "Na", ni fydd yna unrhyw rybudd o gwrthdrawiadau rhwng digwyddiadau.  Mae hi'n arferol yn well i gosod hwn i "Ie", felly bod modd osgoi gwrthdrawiadau.
 Check for event conflicts: Edrycher am gwrthdrawiadau rhwng digwyddiadau
+Yes: Ie
+No: Na
 conflict-months-help: Os yr edrycher am gwrthdrawiadau ("Edrycher am gwrthdrawiadau rhwng digwyddiadau" wedi ei osod i "Na"), mae hwn yn dynodi faint o fisoedd i'r dyfodol yr edrychir am wrthdrawiadau.  Os yw ychwanegu digwyddiadau yn cymryd amser hir, yna gostyngwch y rhif yma.
 Conflict checking months: Nifer y misoedd i edrych am gwrthdrawiadau
 disable-priority-field-help: Os y dewisir "Ie" yna ceir gwared a'r dewis o "Blaenoriaeth" o'r tudalennau gwybodaeth am digwyddiad, gan wneud pethau'n haws i bobl heb profiad o'r meddalwedd.
@@ -189,22 +187,27 @@ Time: Amser
 # Page: category.php
 #
 Global: Hollfydol
-Add: Ychwanegu
 Category Name: Enw Dosbarth
+Color: Lliw
+Add: Ychwanegu
 Delete: Dileu
-Are you sure you want to delete this entry?: A ydych yn siwr eich bod eisiau dileu y digwyddiad yma?
 Make New Category: Ychwanegwch Dosbarth newydd 
 
 ########################################
 # Page: catsel.php
 #
 Remove: Dileu
-Ok: Iawn
+Cancel: Dileu 
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Mae digwyddiad wedi ei dileu drostoch gan
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: ID annilys 
 
 ########################################
 # Page: docadd.php
@@ -227,14 +230,15 @@ access-help: Mae hwn yn dynodi lefel caniatad y digwyddiad.<br /> <i>Cyhoeddus</
 Access: Caniatad
 priority-help: Mae hwn yn dynodi blaenoriaeth y digwyddiad. Mi fydd digwyddiadau gyda blaenoriaeth uchel yn cael ei dangos gyda llythrennau bras.
 Priority: Blaenoriaeth
-Low: Isel
-Medium: Canolig
 High: Uchel
+Medium: Canolig
+Low: Isel
 category-help: Mae hwn yn dynodi dosbarth y digwyddiad.
 Category: Dosbarth
 date-help: Mae hwn yn dynodi dyddiad y digwyddiad.
 time-help: Mae hwn yn dynodi amser y digwyddiad.<br /><i>Mi ellir gadael hwn yn wag.</i>
 duration-help: Mae hwn yn dynodi (mewn Oriau:Munudau) parhad y digwyddiad. <br /><i>Mi ellir gadael hwn yn wag.</i>
+hours: awr
 minutes: munud
 participants-help: Rhestrir y defnyddwyr sydd a cofnod o'r digwyddiad.
 repeat-type-help: Dewiswch pa more aml y dylsai'r digwyddiad ailgyflawni. Wrth dewis <i>Misol (wrth dydd o'r wythnos)</i> mi all digwyddiad ailgyflawni ar y Llun 1af o'r mis, 3ydd Iau o'r mis, ayyb.  Wrth dewis <i>Misol (wrth dyddiad)</i> mi all digwyddiad ailgyflawni ar yr un diwrnod o'r mis (e.e. y 3ydd) 
@@ -257,10 +261,9 @@ You are not authorized to edit this entry.: Nid oes ganddo chi yr awdurdod i new
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: Mae'r canlynol yn gwrthdaro gyda'r amser awgrymiedig
 A new appointment has been made for you by: Mae digwyddiad newydd wedi ei greu i chi gan
 An appointment has been updated by: Mae digwyddiad wedi ei newid gan
-The subject is: Y pwnc yw
+The following conflicts with the suggested time: Mae'r canlynol yn gwrthdaro gyda'r amser awgrymiedig
 Please look on: Edrychwch ar 
 to accept or reject this appointment: i derbyn neu gwrthod y digwyddiad yma
 to view this appointment: i wylio'r digwyddiad yma
@@ -271,15 +274,13 @@ conflicts with the following existing calendar entries: yn gwrthdaro gyda'r digw
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: Newid Haen
 Add Layer: Ychwanegu Haen
+Edit Layer: Newid Haen
 Source: Ffynhonell
-Color: Lliw
 Duplicates: Dyblygiadau
 Show layer events that are the same as your own: Dangoser digwyddiadau haen sydd yn union fel rhai eich hunan
 Add to My Calendar: Ychwanegu i Fy Nghalendr
 Delete layer: Dileu haen
-Are you sure you want to delete this layer?: A ydych y siwr eich bod eisiau dileu'r haen yma?
 
 ########################################
 # Page: edit_layer_handler.php
@@ -290,8 +291,8 @@ You can only create one layer for each user: Allwch ond creu un haen i pob defny
 ########################################
 # Page: edit_nonusers.php
 #
-Edit User: Newid Defnyddiwr
 Add User: Ychwanegu Defnyddiwr
+Edit User: Newid Defnyddiwr
 First Name: Enw Cyntaf
 Last Name: Cyfenw
 
@@ -313,6 +314,7 @@ Username: Enw Defnyddiwr
 E-mail address: Cyfeiriad E-bost
 Password: Gair Cydd
 again: eto
+Enabled: Ymlaen
 Disabled for demo: Dim yn gweithio yn yr arddangosiad
 Change Password: Newid Gair Cydd
 New Password: Gair Cydd Newydd
@@ -353,13 +355,13 @@ Created by: Crewyd gan
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: Dangoser penwythnosau yn y golwg wythnosol
-Time interval: Ystod Amser
-time-interval-help: Mae hwn yn dynodi hyd y blociau amser yn y golwg wythnosol a'r golwg dyddiol. 
 Auto-refresh calendars: Calendr yn adfywio yn awtomatig
 auto-refresh-help: Pan ymlaen, mae'r golwg dyddiol, wythnosol neu misol, a rhestr tudalennau heb cymeradwyaeth, yn cael eu adfywio yn awtomatig yn rheolaidd.
 Auto-refresh time: Amser i adfywio'n awtomatig
 auto-refresh-time-help: Os yw adfywio awtomatig yn cael ei ddefnyddio, yna mae hwn yn pendefynnu'r amser rhwng pob adfywiad.
+Display weekends in week view: Dangoser penwythnosau yn y golwg wythnosol
+Time interval: Ystod Amser
+time-interval-help: Mae hwn yn dynodi hyd y blociau amser yn y golwg wythnosol a'r golwg dyddiol. 
 colors-help: Dylsai pob lliw gael ei dynodi trwy fformat hexadecimal "#RRGGBB" ble mae "RR" yn cynrychioli coch mewn hex, "GG" yn cynrychioli gwyrdd mewn hex, ac mae "BB" yn cynrychioli glas mewn hex.
 
 ########################################
@@ -377,6 +379,11 @@ Repeat Day: Diwrnod yr ailgyflawniad
 repeat-day-help: Mae hwn yn dynodi pa ddiwrnodau o'r wythnos y bydd y digwyddiad yn ailgyflawni arnynt.  Defnyddir hwn ond pan fod <i>Amlder Ailgyflawni</i> wedi ei osod i <i>Wythnosol</i>.
 
 ########################################
+# Page: help_import.php
+#
+Enabling: Defnyddiwch
+
+########################################
 # Page: help_index.php
 #
 Help Index: Indecs Cymorth
@@ -386,13 +393,12 @@ Help Index: Indecs Cymorth
 #
 Add/Edit/Delete: Ychwanegu/Newid/Dileu
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Wrth glicio ar y cyswllt Newid Haenau yn yr adran weinyddol ar waelod y dudalen fe ganieteir i chi ychwanegu, newid neu dileu haenau.
-Specifies the user that you would like to see displayed in your calendar.: Mae hwn yn dynodi y defnyddiwr yr hoffech dangos ei ddigwyddiadau ar eich calendr.
 The text color of the new layer that will be displayed in your calendar.: Lliw testun yr haen newydd yn cael ei ddangos ar eich calendr.
-If checked, events that are duplicates of your events will be shown.: Os dewisir, mi fydd digwyddiadau sydd yr un fath a'ch digwyddiadau chi yn cael ei dangos.
 Disabling: Anablwch
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Gwasgwch y cyswllt Anablwch Haenau yn yr adran weinyddol ar waelod y tudalen i beidio a defnyddio haenau.
-Enabling: Defnyddiwch
+If checked, events that are duplicates of your events will be shown.: Os dewisir, mi fydd digwyddiadau sydd yr un fath a'ch digwyddiadau chi yn cael ei dangos.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Gwasgwch y cyswllt Defnyddiwch Haenau yn yr adran weinyddol ar waelod y tudalen er mwyn defnyddio haenau.
+Specifies the user that you would like to see displayed in your calendar.: Mae hwn yn dynodi y defnyddiwr yr hoffech dangos ei ddigwyddiadau ar eich calendr.
 
 ########################################
 # Page: help_pref.php
@@ -408,22 +414,20 @@ Disabled: Ymaith
 ########################################
 # Page: layers.php
 #
-Layers are currently: Mae haenau ar hyn o bryd  
-Enabled: Ymlaen
-Disable Layers: Dim haenau
-Enable Layers: Defnyddio haenau
-Click here: Cliciwch yma
-Add layer: Ychwanegu haen
 Layer: Haen
 Edit layer: Newid haen
+Layers are currently: Mae haenau ar hyn o bryd  
+Disable Layers: Dim haenau
+Click here: Cliciwch yma
+Add layer: Ychwanegu haen
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: Gwyliwch y digwyddiad hwn
 Approve/Confirm: Cymeradwywch
-Approve this entry?: Cymeradwywch y digwyddiad hwn?
 Reject: Gwrthod
+Approve this entry?: Cymeradwywch y digwyddiad hwn?
 Reject this entry?: Gwrthodwch y digwyddiad hwn?
 
 ########################################
@@ -489,8 +493,8 @@ Set Category: Gosod Dosbarth
 ########################################
 # Page: users.php
 #
-Add New User: Ychwanegu Defnyddiwr Newydd
 denotes administrative user: Dynoder defnyddiwr gweinyddol
+Add New User: Ychwanegu Defnyddiwr Newydd
 
 ########################################
 # Page: usersel.php
@@ -518,8 +522,8 @@ Status: Statws
 Approve/Confirm entry: Cymeradwyo digwyddiad
 Reject entry: Gwrthod digwyddiad
 Set category: Gosod dosbarth
-Edit entry: Newid digwyddiad
 This will delete this entry for all users.: Fydd hwn yn dileu y digwyddiad dros pob defnyddiwr.
+Edit entry: Newid digwyddiad
 Edit repeating entry for all dates: Newid digwyddiad a ail-adroddir am pob dyddiad
 Delete repeating event for all dates: Dileu digwyddiad a ail-adroddir am pob dyddiad
 Edit entry for this date: Newid digwyddiad am y dyddiad yma'n unig
@@ -528,8 +532,8 @@ This will delete the entry from your calendar.: Fydd hwn yn dileu y digwyddiad o
 Do you want to add this entry to your calendar?: A ydych eisiau ychwanegu'r digwyddiad yma i'ch calendr?
 This will add the entry to your calendar.: Fydd hwn yn ychwanegu'r digwyddiad yma i'ch calendr.
 Email all participants: E-bost at bob aelod
-Show activity log: Dangos cofnod gweithgarwch
 Hide activity log: Cyddio cofnod gweithgarwch
+Show activity log: Dangos cofnod gweithgarwch
 Palm Pilot: Palm Pilot
 
 ########################################
@@ -552,6 +556,17 @@ Dec: Rha
 ########################################
 # Page: includes/functions.php
 #
+Event approved: Cymeradwywyd Digwyddiad
+Event created: Ychwanegwyd Digwyddiad
+Event deleted: Diddymwyd Digwyddiad
+Notification sent: Anfonwyd Hysbysiad
+Event rejected: Gwrthodwyd Digwyddiad
+Reminder sent: Anfonwyd Atgofiad
+Event updated: Diweddarwyd Digwyddiad
+Event: Digwyddiad
+Action: Gweithred
+Printer Friendly: Addas i'w brintio
+Generate printer-friendly version: Cynhyrchu fersiwn addas i'w brintio
 January: Ionawr
 February: Chwefror
 March: Mawrth
@@ -574,6 +589,11 @@ Aug: Awst
 Sep: Medi
 Oct: Hydref
 Nov: Tachwedd
+The following error occurred: Mae'r camgymeriad canlynol wedi digwydd
+You are not authorized: Dim awdurdod
+Error approving event: Camgymeriad wrth cymeradwyo digwyddiad
+Sunday: Sul
+Monday: Llun
 Tuesday: Mawrth
 Wednesday: Mercher
 Thursday: Iau
@@ -586,19 +606,6 @@ Wed: Mer
 Thu: Iau
 Fri: Gwe
 Sat: Sad
-The following error occurred: Mae'r camgymeriad canlynol wedi digwydd
-You are not authorized: Dim awdurdod
-Error approving event: Camgymeriad wrth cymeradwyo digwyddiad
-Generate printer-friendly version: Cynhyrchu fersiwn addas i'w brintio
-Printer Friendly: Addas i'w brintio
-Event created: Ychwanegwyd Digwyddiad
-Event approved: Cymeradwywyd Digwyddiad
-Event rejected: Gwrthodwyd Digwyddiad
-Event updated: Diweddarwyd Digwyddiad
-Event deleted: Diddymwyd Digwyddiad
-Notification sent: Anfonwyd Hysbysiad
-Reminder sent: Anfonwyd Atgofiad
-Action: Gweithred
 
 ########################################
 # Page: includes/trailer.php

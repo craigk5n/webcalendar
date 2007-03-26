@@ -17,7 +17,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -46,20 +46,23 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: Calendário Pessoal
+OK: OK
+
+########################################
 # Page: access.php
 #
 Database error: Erro no banco de dados
-Cancel: Cancelar
-Save: Salvar
 Go: Ir
+Save: Salvar
 Public Access: Acesso Público
 Admin: Admin
 Calendar: Calendário
 Edit: Editar
 Events: Eventos
 Public: Público
-confidential: confidencial
-private: pessoal
 
 ########################################
 # Page: activity_log.php
@@ -70,16 +73,14 @@ Previous: Anterior
 ########################################
 # Page: add_entry.php
 #
-Event: Evento
-Invalid entry id: Entrada com ID inválido
+private: pessoal
+confidential: confidencial
 Error adding event: Erro adicionando evento
 
 ########################################
 # Page: admin.php
 #
 Select: Selecionar
-Yes: Sim
-No: Não
 Day: Dia
 Week: Semana
 Month: Mês
@@ -94,7 +95,6 @@ Email: E-mail
 Colors: Cores
 app-name-help: Especificar o nome do aplicativo a ser mostrado na barra de título
 Application Name: Nome da Aplicação
-Title: Calendário Pessoal
 server-url-help: Especificar a URL base para a aplicação.
 Server URL: URL do Servidor
 language-help: Especificar o idioma a ser utilizado.
@@ -109,13 +109,10 @@ Custom header: Cabeçalho customizado
 custom-trailer-help: Permite a inclusão de um pedaço de código HTML no rodapé de todas as páginas 
 Custom trailer: Rodapé customizado
 tz-help: Especifica quantas horas de ajuste entre a hora do servidor e a local.
-hours: horas
 date-format-help: Especifique um formato de data preferido.
 Date format: Formato da Data
 display-week-starts-on: Especifica se a semana começa em uma Segunda ou um Domingo. Se a Segunda for especificada, os números de semana serão números ISO.
 Week starts on: Semana começa em
-Sunday: Domingo
-Monday: Segunda
 time-format-help: Especifica o formato da hora a ser utilizada: <br /><i>12 horas
 Time format: Formato da Hora
 12 hour: 12 horas
@@ -149,6 +146,8 @@ display-unapproved-help: Especifica se eventos não-aprovados são exibidos em seu
 Display unapproved: Visualizar não-aprovados
 conflict-check-help: Verificar se o evento está em conflito (dois eventos agendado no mesmo horário)
 Check for event conflicts: Verificar eventos conflitantes
+Yes: Sim
+No: Não
 conflict-months-help: Se a verificação de conflitos estiver funcionando ("Verificar eventos conflitantes" estiver configurado para "Não"), isto especifica por quantos meses no futuro verificaremos a existência de conflitos. Se você achar que adicionar eventos está demorando demais, reduza este número. 
 Conflict checking months: Verificar conflitos no mês
 conflict-check-override-help: Permite aos usuários ignorar conflitos e programar 2 ou mais eventos para a mesma hora.
@@ -243,8 +242,8 @@ Event popup text: Texto para eventos pop-up
 ########################################
 # Page: adminhome.php
 #
-Preferences: Preferências
 Assistants: Assistentes
+Preferences: Preferências
 Users: Usuários
 Account: Conta
 Categories: Categorias
@@ -273,25 +272,35 @@ Admin mode: Modo de Administrador
 Your assistants: Seus assistentes
 
 ########################################
+# Page: availability.php
+#
+day: dia
+
+########################################
 # Page: category.php
 #
 Global: Geral
-Add: Adicionar
 Category Name: Nome da categoria
+Color: Cor
+Add: Adicionar
 Delete: Apagar
-Are you sure you want to delete this entry?: Tem certeza que pretende apagar esta entrada?
 Make New Category: Nova categoria
 
 ########################################
 # Page: catsel.php
 #
 Remove: Remover
-OK: OK
+Cancel: Cancelar
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Uma evento seu foi cancelando por
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: Entrada com ID inválido
 
 ########################################
 # Page: docadd.php
@@ -316,9 +325,9 @@ access-help: Especifica o nível de acesso de um evento.<br /> <i>Publico</i>: To
 Access: Accesso
 priority-help: Especifica a prioridade do evento. Eventos de Alta Prioridade serão exibidos em negrito.
 Priority: Prioridade
-Low: Baixa
-Medium: Média
 High: Alta
+Medium: Média
+Low: Baixa
 category-help: Espeficificar a categoria do evento
 Category: Categoria
 URL: URL
@@ -329,6 +338,7 @@ All day event: Evento no dia todo
 Timezone Offset: Diferença de Fuso Horário
 time-help: Especifica a hora do evento<br /><i>Este campo é opcional.</i>
 duration-help: Especifica a duração (em minutos) do evento. <br /><i>Este campo
+hours: horas
 minutes: minutos
 end-time-help: Especifica a hora em que um evento terminará.
 participants-help: Lista os participantes desse evento
@@ -355,10 +365,9 @@ You are not authorized to edit this entry.: Não está autorizado a editar esta en
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: O seguinte está em conflito com o tempo sugerido
 A new appointment has been made for you by: Um novo evento foi feito para você
 An appointment has been updated by: Um evento foi atualizado por
-The subject is: O assunto é
+The following conflicts with the suggested time: O seguinte está em conflito com o tempo sugerido
 Please look on: Por favor veja em
 to accept or reject this appointment: para aceitar ou rejeitar este evento
 to view this appointment: para ver este evento
@@ -369,15 +378,13 @@ conflicts with the following existing calendar entries: está em conflito com os 
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: Editar Nível
 Add Layer: Adicionar Nível
+Edit Layer: Editar Nível
 Source: Origem
-Color: Cor
 Duplicates: Duplicados
 Show layer events that are the same as your own: Mostrar níveis de eventos que sejam os mesmos que o seu
 Add to My Calendar: Adicionar ao meu calendário
 Delete layer: Remover nível
-Are you sure you want to delete this layer?: Quer mesmo apagar este nível?
 
 ########################################
 # Page: edit_layer_handler.php
@@ -390,8 +397,8 @@ You can only create one layer for each user: Você deve criar apenas uma visualiz
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX não foi definido no config.php
 word characters only: somente pode conter caracteres de palavras (a-zA-Z_0-9)
-Edit User: Editar Usuário
 Add User: Adicionar Usuário
+Edit User: Editar Usuário
 Calendar ID: ID do Calendário
 First Name: Primeiro Nome
 Last Name: Último Nome
@@ -435,16 +442,14 @@ Edit Report: Editar Relatório
 Report name: Nome do Relatório
 Current User: Usuário Corrente
 User: Usuário
-Include link in trailer: Incluir Link no Menu
 Include standard header/trailer: Incluir cabeçalho e Menu
-Date range: Período
 Include previous/next links: Incluir links prévios/próximos
 Include empty dates: Incluir datas vazias
+Date range: Período
 Template variables: variáveis de template
 Page template: Template de página
 Day template: Template de dia
 Event template: Template de evento
-Are you sure you want to delete this report?: Deseja realmente excluir este relatório?
 
 ########################################
 # Page: edit_report_handler.php
@@ -454,8 +459,8 @@ Variable N not found: Variável N não encontrada
 ########################################
 # Page: edit_template.php
 #
-Edit Custom Script/Stylesheet: Editar Script/Folha de estilo
 Edit Custom Header: Editar Cabeçalho Customizado
+Edit Custom Script/Stylesheet: Editar Script/Folha de estilo
 Edit Custom Trailer: Editar Menu Customizado
 
 ########################################
@@ -465,8 +470,8 @@ Username: Usuário
 E-mail address: Endereço de e-mail
 Password: Senha
 again: novamente
+Enabled: Ativados
 Disabled for demo: Desativado em modo demo
-Are you sure you want to delete this user?: Você tem certeza que deseja excluir este usuário?
 Change Password: Alterar Senha
 New Password: Nova Senha
 Set Password: Gravar Senha
@@ -518,14 +523,14 @@ You must specify a group name: Você deve especificar o nome do grupo
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: Mostrar feriados na visualização semanal
-Display days with events in bold in year view: Mostrar em negrito dias que contenham eventos 
-Time interval: Intervalo de Tempo
-time-interval-help: Especifique quantos blocos devem ser mostrados na visualização
 Auto-refresh calendars: Auto-atualizar o calendário
 auto-refresh-help: Quando habilitado, as visões diaria, semanal, mensal, e a lista de páginas não aprovadas são todas auto-atulaizadas periodicamente
 Auto-refresh time: Tempo de auto-atualização
 auto-refresh-time-help: Se a auto-atualização estiver habilitada, este é o tempo entre atualizações
+Display days with events in bold in year view: Mostrar em negrito dias que contenham eventos 
+Display weekends in week view: Mostrar feriados na visualização semanal
+Time interval: Intervalo de Tempo
+time-interval-help: Especifique quantos blocos devem ser mostrados na visualização
 Nonuser: Calendários de não-usuário
 user-customize-color: Especifica se os usuários tem permissão de modificar seu próprio esquema de cores
 enable-gradient-help: Usar gradientes de cor para backgrounds de células
@@ -560,9 +565,8 @@ Therefore, updates should be made in the Palm Desktop.: Por isso, atualizações d
 This form will import vCalendar (.vcs) 1.0 events: Este formulário importa do vCalendar (.vcs)
 The following formats have been tested: Os seguintes formatos foram testados
 This form will import iCalendar (.ics) events: Este formulário importa do iCalendar (.ics)
-Enabling: Habilitar
-Overwrite Prior Import: Sobreescrever Antes de Importar
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: fará com que eventos previamente importados que usavam o mesmo UID que um um evento do novo arquivo importado sejam marcados como deletados. Isto deve permitir um arquivo atualizado do iCalendar ser importado sem criar duplicatas.
+Enabling: Habilitando
+Overwrite Prior Import: Sobrescrever Importação Anterior
 
 ########################################
 # Page: help_index.php
@@ -574,13 +578,12 @@ Help Index: Ajuda
 #
 Add/Edit/Delete: Adicionar/Editar/Deletar
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Clicar no link Editar Níveis na seção principal no pé da página lhe permitirá adicionar/editar/excluir níveis
-Specifies the user that you would like to see displayed in your calendar.: Especifica o usuário que será exibido no seu calendário
 The text color of the new layer that will be displayed in your calendar.: A cor de texto do novo nível que será exibida no seu calendário
-If checked, events that are duplicates of your events will be shown.: Se selecionado, eventos que são duplicatas dos seus eventos serão mostrados.
 Disabling: Desabilitando
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Pressione o link Desabilitar Níveis na seção administrativa no pé da página para desligar os níveis.
-Enabling: Habilitando
+If checked, events that are duplicates of your events will be shown.: Se selecionado, eventos que são duplicatas dos seus eventos serão mostrados.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Pressione o link Habilitar Níveis na seção administrativa no pé da página para ligar os níveis.
+Specifies the user that you would like to see displayed in your calendar.: Especifica o usuário que será exibido no seu calendário
 
 ########################################
 # Page: help_pref.php
@@ -602,7 +605,6 @@ remote-subscriptions-url-help: Exibe a URL que usuários remotos deverão usar par
 Disabled: Desativados
 Import format: Formato de importação
 Exclude private records: Excluir eventos privados
-Overwrite Prior Import: Sobrescrever Importação Anterior
 
 ########################################
 # Page: import_handler.php
@@ -614,24 +616,22 @@ The import file contained no data: O arquivo não contém data
 ########################################
 # Page: layers.php
 #
+Layer: Nível
+Edit layer: Editar nível
 Layers are currently: Os níveis estão
-Enabled: Ativados
 Disable Layers: Desativar Níveis
-Enable Layers: Ativar Níveis
 Click here: Clique aqui
 to modify the layers settings for the: para modificar as configurações de níveis para o
 calendar: calendário
 Add layer: Adicionar nível
-Layer: Nível
-Edit layer: Editar nível
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: Visualizar esta entrada
 Approve/Confirm: Aprovar/Confirmar
-Approve this entry?: Aprovar esta entrada?
 Reject: Rejeitar
+Approve this entry?: Aprovar esta entrada?
 Reject this entry?: Rejeitar esta entrada?
 
 ########################################
@@ -719,8 +719,8 @@ Set Category: Selecionar Categoria
 ########################################
 # Page: users.php
 #
-Add New User: Adicionar Novo Usuário
 denotes administrative user: administrador
+Add New User: Adicionar Novo Usuário
 
 ########################################
 # Page: usersel.php
@@ -746,7 +746,6 @@ Week (Timebar): Semana (Timebar)
 Month (Timebar): Mês (Timebar)
 Month (side by side): Mês (Lado a Lado)
 Month (on same calendar): Mês (no mesmo calendário)
-Selected: Selecionado
 
 ########################################
 # Page: views_edit_handler.php
@@ -767,9 +766,9 @@ External User: Usuário Externo
 Approve/Confirm entry: Aprovar/Confirmar entrada
 Reject entry: Rejeitar entrada
 Set category: Selecionar categoria
-Edit entry: Editar entrada
 Copy entry: Copiar entrada
 This will delete this entry for all users.: Isto vai apagar esta entrada para todos os usuários
+Edit entry: Editar entrada
 Edit repeating entry for all dates: Editar repetição para todas as datas
 Delete repeating event for all dates: Excluir repetição em todos os eventos
 Edit entry for this date: Editar entrada para esta data
@@ -778,8 +777,8 @@ This will delete the entry from your calendar.: Isto excluirá a entrada de seu c
 Do you want to add this entry to your calendar?: Você quer adicionar uma entrada no seu calendário?
 This will add the entry to your calendar.: Isto adicionará uma entrada em seu calendário
 Email all participants: Enviar e-mail para participantes
-Show activity log: Mostrar log de atividade
 Hide activity log: Esconder log de atividade
+Show activity log: Mostrar log de atividade
 Export this entry to: Esportar esta entrada para
 Palm Pilot: Palm Pilot
 
@@ -802,8 +801,23 @@ Dec: Dez
 ########################################
 # Page: includes/functions.php
 #
-WK: sem
 exceeds limit of XXX events per day: limite excedido de XXX eventos por dia
+All Attendees: Todos Atendentes
+Busy: Ocupados
+Tentative: tentando
+Event approved: Evento aprovado
+Event created: Evento criado
+Event deleted: Evento deletado
+Notification sent: Notificação enviada
+Event rejected: Evento rejeitado
+Reminder sent: Lembrete enviado
+Event updated: Evento atualizado
+WK: sem
+Changes successfully saved: Mudanças salvas com sucesso
+Event: Evento
+Action: Ação
+Printer Friendly: Formato de impressora
+Generate printer-friendly version: Visualizar em formato de impressora
 January: Janeiro
 February: Fevereiro
 March: Março
@@ -826,6 +840,11 @@ Aug: Ago
 Sep: Set
 Oct: Out
 Nov: Nov
+The following error occurred: Ocorreu o seguinte erro
+You are not authorized: Você não está autorizado
+Error approving event: Erro aprovando evento
+Sunday: Domingo
+Monday: Segunda
 Tuesday: Terça
 Wednesday: Quarta
 Thursday: Quinta
@@ -838,24 +857,6 @@ Wed: Qua
 Thu: Qui
 Fri: Sex
 Sat: Sáb
-All Attendees: Todos Atendentes
-Busy: Ocupados
-Tentative: tentando
-Changes successfully saved: Mudanças salvas com sucesso
-The following error occurred: Ocorreu o seguinte erro
-You are not authorized: Você não está autorizado
-day: dia
-Error approving event: Erro aprovando evento
-Generate printer-friendly version: Visualizar em formato de impressora
-Printer Friendly: Formato de impressora
-Event created: Evento criado
-Event approved: Evento aprovado
-Event rejected: Evento rejeitado
-Event updated: Evento atualizado
-Event deleted: Evento deletado
-Notification sent: Notificação enviada
-Reminder sent: Lembrete enviado
-Action: Ação
 
 ########################################
 # Page: includes/trailer.php

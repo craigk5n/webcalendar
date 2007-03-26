@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -44,8 +44,6 @@ Previous: Vorige
 #
 Month: Maand
 Year: Jaar
-Sunday: Sondag
-Monday: Maandag
 
 ########################################
 # Page: approve_entry.php
@@ -90,6 +88,8 @@ Aug: Aug
 Sep: Sep
 Oct: Okt
 Nov: Nov
+Sunday: Sondag
+Monday: Maandag
 Tuesday: Dinsdag
 Wednesday: Woensdag
 Thursday: Donderdag

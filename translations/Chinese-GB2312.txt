@@ -4,7 +4,7 @@
 # Last update: 2003-8-5
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -33,18 +33,20 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: 标题
+
+########################################
 # Page: access.php
 #
 Database error: 数据库错误
-Cancel: 取消
-Save: 保存
 Go: 前往
+Save: 保存
 Public Access: 公共的
 Admin: 管理
 Calendar: 日历
 Public: 公众的
-confidential: 机密的
-private: 私人的
 
 ########################################
 # Page: activity_log.php
@@ -55,16 +57,14 @@ Previous: 前一页
 ########################################
 # Page: add_entry.php
 #
-Event: 事件
-Invalid entry id: 无效的纪录ID
+private: 私人的
+confidential: 机密的
 Error adding event: 添加事件错误
 
 ########################################
 # Page: admin.php
 #
 Select: 选择
-Yes: 是
-No: 否
 Day: 日
 Week: 周
 Month: 月
@@ -76,18 +76,14 @@ Groups: 组
 Email: 邮件
 Colors: 颜色
 Application Name: 应用名称
-Title: 标题
 Server URL: 系统URL
 language-help: 请选择使用的语言.
 Language: 语言
 Your browser default language is: 您的浏览器预设的语言是
 None: 无
-hours: 时
 date-format-help: 描述合适的日期格式
 Date format: 日期格式
 Week starts on: 每周开始于
-Sunday: 星期日
-Monday: 星期一
 Time format: 时间格式
 12 hour: 12时制
 24 hour: 24时制
@@ -106,6 +102,8 @@ Require event approvals: 需要事件核准
 Display unapproved: 显示未核准的
 conflict-check-help: 冲突-检查-帮助
 Check for event conflicts: 检查事件冲突
+Yes: 是
+No: 否
 conflict-months-help: 冲突-月-帮助
 Conflict checking months: 冲突检查月数
 Allow users to override conflicts: 允许用户修改冲突
@@ -159,8 +157,8 @@ Event popup text: 事件弹出文本颜色
 ########################################
 # Page: adminhome.php
 #
-Preferences: 参数设置
 Assistants: 助理
+Preferences: 参数设置
 Users: 用户
 Account: 个人资料
 Categories: 分类
@@ -188,22 +186,27 @@ Your assistants: 您的助理
 # Page: category.php
 #
 Global: 全局
-Add: 添加
 Category Name: 分类名称
+Color: 颜色
+Add: 添加
 Delete: 删除
-Are you sure you want to delete this entry?: 您确定删除此事件吗?
 Make New Category: 新增分类
 
 ########################################
 # Page: catsel.php
 #
 Remove: 删除
-Ok: 确认
+Cancel: 取消
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: 约会已经被取消, 取消者是
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: 无效的纪录ID
 
 ########################################
 # Page: docadd.php
@@ -222,15 +225,16 @@ Brief Description: 概要描述
 Full Description: 完整描述
 Access: 显示设置
 Priority: 优先等級
-Low: 低
-Medium: 中
 High: 高
+Medium: 中
+Low: 低
 category-help: 分类-帮助
 Category: 分类
 Untimed event: 无时间的事件
 Timed event: 有时间的事件
 All day event: 全天事件
 Timezone Offset: 时区设置
+hours: 时
 minutes: 分
 External Participants: 其他参与者
 Daily: 每日的
@@ -250,10 +254,9 @@ You are not authorized to edit this entry.: You are not authorized to edit this 
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: 在指定的时间内有下面的冲突
 A new appointment has been made for you by: 您有一个新事件, 提交者是
 An appointment has been updated by: 一个约会已经更新,更新人:
-The subject is: 主题是
+The following conflicts with the suggested time: 在指定的时间内有下面的冲突
 Please look on: 请查看
 to accept or reject this appointment: 决定接受或拒绝这个事件
 to view this appointment: 察看此约会
@@ -264,15 +267,13 @@ conflicts with the following existing calendar entries: 同下面已存在的日历事件冲
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: 编辑层
 Add Layer: 新增层
+Edit Layer: 编辑层
 Source: 来源
-Color: 颜色
 Duplicates: 副本
 Show layer events that are the same as your own: 在您的日历中同时显示来源者的事件
 Add to My Calendar: 新增到我的日历
 Delete layer: 删除层
-Are you sure you want to delete this layer?: 您确定要删除这个层吗?
 
 ########################################
 # Page: edit_layer_handler.php
@@ -283,8 +284,8 @@ You can only create one layer for each user: 您只能为一个用户来源设置一个层
 ########################################
 # Page: edit_nonusers.php
 #
-Edit User: 编辑用户资料
 Add User: 新增用户
+Edit User: 编辑用户资料
 Calendar ID: 日历编号
 First Name: 姓
 Last Name: 名
@@ -325,16 +326,14 @@ Edit Report: 编辑报告
 Report name: 报告名称
 Current User: 当前用户
 User: 用户
-Include link in trailer: 包括尾部的联接
 Include standard header/trailer: 包括标准的头/尾
-Date range: 日期范围
 Include previous/next links: 包括前一个/后一个联接
 Include empty dates: 包括空日期
+Date range: 日期范围
 Template variables: 临时变量
 Page template: 页面模版
 Day template: 日模版
 Event template: 事件模版
-Are you sure you want to delete this report?: 您确认删除这份报告吗？
 
 ########################################
 # Page: edit_report_handler.php
@@ -348,6 +347,7 @@ Username: 用户名称
 E-mail address: 电子邮件地址
 Password: 密码
 again: 再次
+Enabled: 已使用
 Disabled for demo: 关闭演示模式
 Change Password: 更改密码
 New Password: 新的密码
@@ -398,10 +398,10 @@ You must specify a group name: 您必须指定一个组名
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: 显示周末
-Time interval: 时间间隔
 Auto-refresh calendars: 自动刷新日历
 Auto-refresh time: 自动刷新时间
+Display weekends in week view: 显示周末
+Time interval: 时间间隔
 Nonuser: 非日历用户
 colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 
@@ -422,6 +422,7 @@ Repeat Day: 重复于
 # Page: help_import.php
 #
 Import: 输入
+Enabling: 正在打开
 
 ########################################
 # Page: help_index.php
@@ -432,12 +433,11 @@ Help Index: 辅助索引
 # Page: help_layers.php
 #
 Add/Edit/Delete: 添加/编辑/删除
-Specifies the user that you would like to see displayed in your calendar.: 选择用户使在你的日历中显示他的事件
 The text color of the new layer that will be displayed in your calendar.: 你的日历中显示的新层次的文本颜色
 Disabling: 正在关闭
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: 点击页面下端管理部分的停用层次架构不显示层次架构 
-Enabling: 正在打开
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: 点击页面下端管理部分的启用层次架构显示层次架构 
+Specifies the user that you would like to see displayed in your calendar.: 选择用户使在你的日历中显示他的事件
 
 ########################################
 # Page: help_pref.php
@@ -462,23 +462,21 @@ Conflicting events: 冲突事件
 ########################################
 # Page: layers.php
 #
+Layer: 层次
+Edit layer: 编辑层次
 Layers are currently: 当前的层次是
-Enabled: 已使用
 Disable Layers: 停用层
-Enable Layers: 使用层
 Click here: 点击此处
 to modify the layers settings for the: 修改层设置为：
 Add layer: 新增层次
-Layer: 层次
-Edit layer: 编辑层次
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: 查看这个事件
 Approve/Confirm: 核准/确定
-Approve this entry?: 核准此事件?
 Reject: 拒绝
+Approve this entry?: 核准此事件?
 Reject this entry?: 拒绝此事件?
 
 ########################################
@@ -555,8 +553,8 @@ Set Category: 设置分类
 ########################################
 # Page: users.php
 #
-Add New User: 新增用户
 denotes administrative user: 用户管理員
+Add New User: 新增用户
 
 ########################################
 # Page: usersel.php
@@ -596,8 +594,8 @@ External User: 其他用户
 Approve/Confirm entry: 核准/确定 事件
 Reject entry: 拒绝事件
 Set category: 设置种类
-Edit entry: 编辑事件
 This will delete this entry for all users.: 对所有的用户也將會删除这个事件.
+Edit entry: 编辑事件
 Edit repeating entry for all dates: 编辑所有日期的重复条目
 Delete repeating event for all dates: 删除所有时间的这个重复事件
 Edit entry for this date: 编辑这个日期的条目
@@ -606,8 +604,8 @@ This will delete the entry from your calendar.: 这將會從您的日历删除这个事件.
 Do you want to add this entry to your calendar?: 您要新增这个事件到您的日历吗?
 This will add the entry to your calendar.: 这將會新增这个事件到您的日历.
 Email all participants: 邮寄给所有的题者
-Show activity log: 显示活动日志
 Hide activity log: 隐藏活动日志
+Show activity log: 显示活动日志
 Export this entry to: 输出此条目到
 Palm Pilot: Palm Pilot
 
@@ -632,6 +630,17 @@ Dec: 12月
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: 超过每天XXX个事件
+Event approved: 事件已到达
+Event created: 事件已创建
+Event deleted: 事件已删除
+Notification sent: 发送通知
+Event rejected: 事件已拒绝
+Reminder sent: 发送提醒
+Event updated: 事件已经更新
+Event: 事件
+Action: 活动
+Printer Friendly: 打印
+Generate printer-friendly version: 产生打印版本
 January: 一月
 February: 二月
 March: 三月
@@ -654,6 +663,11 @@ Aug: 8月
 Sep: 9月
 Oct: 10月
 Nov: 11月
+The following error occurred: 发生了下面的错误
+You are not authorized: 您未经授权
+Error approving event: 错误批准的事件
+Sunday: 星期日
+Monday: 星期一
 Tuesday: 星期二
 Wednesday: 星期三
 Thursday: 星期四
@@ -666,19 +680,6 @@ Wed: 周三
 Thu: 周四
 Fri: 周五
 Sat: 周六
-The following error occurred: 发生了下面的错误
-You are not authorized: 您未经授权
-Error approving event: 错误批准的事件
-Generate printer-friendly version: 产生打印版本
-Printer Friendly: 打印
-Event created: 事件已创建
-Event approved: 事件已到达
-Event rejected: 事件已拒绝
-Event updated: 事件已经更新
-Event deleted: 事件已删除
-Notification sent: 发送通知
-Reminder sent: 发送提醒
-Action: 活动
 
 ########################################
 # Page: includes/trailer.php

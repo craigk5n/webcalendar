@@ -4,7 +4,7 @@
 # Last update: 11 november 2004
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -33,19 +33,22 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: Webbkalender
+OK: OK
+
+########################################
 # Page: access.php
 #
 Database error: Fel i databasen
-Cancel: Avbryt
-Save: Spara
 Go: Gå till
+Save: Spara
 Public Access: Offentlig kalender
 Admin: Administration
 Calendar: Kalender
 Edit: Redigera
 Public: Offentlig
-confidential: privat
-private: privat
 
 ########################################
 # Page: activity_log.php
@@ -56,16 +59,14 @@ Previous: Föregående
 ########################################
 # Page: add_entry.php
 #
-Event: Aktivitet
-Invalid entry id: Ogiltig händelse-ID
+private: privat
+confidential: privat
 Error adding event: Fel vid inläggning av ny aktivitet
 
 ########################################
 # Page: admin.php
 #
 Select: Välj
-Yes: Ja
-No: Nej
 Day: Dag
 Week: Vecka
 Month: Månad
@@ -79,7 +80,6 @@ Email: E-post
 Colors: Färger
 app-name-help: Anger namnet på denna applikation. Det kommer att synas i bläddrarens titelfält på alla sidor och på login-sidan. Värdet du anger här kommer att slås upp i språk-filen och tillåter dig att tillhandahålla olika titlar för olika språk.
 Application Name: Denna applikations namn
-Title: Webbkalender
 server-url-help: Anger bas-URL för denna applikation. Denna kommer att inkluderas när e-post med påminnelser och meddelanden skickas ut.
 Server URL: Server-URL
 language-help: Ange vilket språk du vill använda.
@@ -93,13 +93,10 @@ Custom header: Egen "header"
 custom-trailer-help: Tillåter ett eget HTML-fält att sättas in nederst på varje sida.
 Custom trailer: Egen "footer"
 tz-help: Anger hur många timmar att justera tiden från server-tid till lokal tid.
-hours: timmar
 date-format-help: Anger önskat datumformat.
 Date format: Datumformat
 display-week-starts-on: Börjar din vecka på söndagar eller måndagar.
 Week starts on: Veckan börjar på
-Sunday: Söndag
-Monday: Måndag
 time-format-help: Skall tiden visas i 12 eller 24-timmars format.
 Time format: Tidsformat
 12 hour: 12 timmar
@@ -132,6 +129,8 @@ display-unapproved-help: Specificera om din kalender skall visa icke godkända ak
 Display unapproved: Visa icke godkända aktiviteter
 conflict-check-help: Kontrollera av händelsekonflikter (två händelser planerade för samma tid för samma person). Om du sätter detta till "Ja", kan du fortfarande planera in två händelser vid samma tid efter att ha accepterat en varning. Om du sätter detta till "Nej", kommer inga kontroller av konflikter att göras. Du vill förmodligen sätta detta till "Ja", så att konfliktkontroll görs.
 Check for event conflicts: Kontroll av händelsekonflikt
+Yes: Ja
+No: Nej
 conflict-months-help: Om konfliktkontroll aktiverats ("Kontroll av händelsekonflikt" är satt till "Ja"), anger detta hur många månader framåt vi ska kontrollera för konflikter. Om du ser att det tar lång tid att processa tillägg av ny aktivitet bör du reducera siffran.
 Conflict checking months: Konfliktkontroll antal månader framåt
 conflict-check-override-help: Tillåter användare att åsidosätta aktivitetskonflikter och planera två eller flera aktiviteter för samma tid.
@@ -222,8 +221,8 @@ Event popup text: Aktivitetspopp-upps textfärg
 ########################################
 # Page: adminhome.php
 #
-Preferences: Inställningar
 Assistants: Medhjälpare
+Preferences: Inställningar
 Users: Användare
 Account: Konto
 Categories: Kategorier
@@ -255,22 +254,27 @@ Your assistants: Dina medhjälpare
 # Page: category.php
 #
 Global: Global
-Add: Lägg till
 Category Name: Kategorinamn
+Color: Färg
+Add: Lägg till
 Delete: Radera
-Are you sure you want to delete this entry?: Är du säker på att du vill ta bort denna aktivitet?
 Make New Category: Lägg till ny kategori
 
 ########################################
 # Page: catsel.php
 #
 Remove: Ta bort
-OK: OK
+Cancel: Avbryt
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Ett möte har inställts för dig av
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: Ogiltig händelse-ID
 
 ########################################
 # Page: docadd.php
@@ -293,9 +297,9 @@ access-help: Ange om händelsen/aktiviteten skall kunna ses av andra eller om den
 Access: Tillgänglighet
 priority-help: Ange aktivitetens prioritet.
 Priority: Prioritet
-Low: Låg
-Medium: Mellan
 High: Hög
+Medium: Mellan
+Low: Låg
 category-help: Anger aktivitetens kategori
 Category: Kategori
 URL: URL
@@ -306,6 +310,7 @@ All day event: Heldagsaktivitet
 Timezone Offset: Lokal tid
 time-help: Anger tidpunkt för aktiviteten.<br /><i>Det här fältet behöver inte vara ifyllt.</i>
 duration-help: I detta fält anger du aktivitetens varaktighet <br /><i>Det här fältet behöver inte vara ifyllt.</i>
+hours: timmar
 minutes: minuter
 end-time-help: Anger den tid aktiviteten förväntas sluta.
 participants-help: Visa deltagare för denna händelse.
@@ -331,10 +336,9 @@ You are not authorized to edit this entry.: Du har inte lov att redigera denna h
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: Följande händelseer krockar med vald tidpunkt
 A new appointment has been made for you by: En ny aktivitet har skapats åt dig av
 An appointment has been updated by: En aktivitet har uppdaterats av
-The subject is: Ämnet är 
+The following conflicts with the suggested time: Följande händelseer krockar med vald tidpunkt
 Please look on: Var vänlig se på
 to accept or reject this appointment: för att acceptera/avböja denna aktivitet
 to view this appointment: för att se denna aktivitet
@@ -345,15 +349,13 @@ conflicts with the following existing calendar entries: krockar med tidigare hän
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: Redigera lager
 Add Layer: Lägg till lager
+Edit Layer: Redigera lager
 Source: Ägare
-Color: Färg
 Duplicates: Dubletter
 Show layer events that are the same as your own: Visa lagerhändelser som är samma som dina egna
 Add to My Calendar: Lägg till i min kalender
 Delete layer: Ta bort lager
-Are you sure you want to delete this layer?: Är du säker på att du vill ta bort detta lager?
 
 ########################################
 # Page: edit_layer_handler.php
@@ -365,8 +367,8 @@ You can only create one layer for each user: Du kan bara skapa ett lager för var
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NINUSER_PREFIX har inte angetts i CONFIG.PHP
-Edit User: Redigera användare
 Add User: Ny användare
+Edit User: Redigera användare
 Calendar ID: Kalender ID
 First Name: Förnamn
 Last Name: Efternamn
@@ -410,16 +412,14 @@ Edit Report: Redigera rapport
 Report name: Rapportnamn
 Current User: Aktuell Användare
 User: Användare
-Include link in trailer: Inkludera länk i trailer
 Include standard header/trailer: Lägg till standard header/trailer
-Date range: Datumområde
 Include previous/next links: Inkludera föregående/nästkommande länkar
 Include empty dates: Inkludera tomma datum
+Date range: Datumområde
 Template variables: Mallvariabler
 Page template: Sidmall
 Day template: Dagmall
 Event template: Händelsemall
-Are you sure you want to delete this report?: Är du säker på att du vill ta bort denna rapport?
 
 ########################################
 # Page: edit_report_handler.php
@@ -429,8 +429,8 @@ Variable N not found: Variabel N hittades inte
 ########################################
 # Page: edit_template.php
 #
-Edit Custom Script/Stylesheet: Redigera eget skript/stilmall
 Edit Custom Header: Redigera egen Header
+Edit Custom Script/Stylesheet: Redigera eget skript/stilmall
 Edit Custom Trailer: Redigera egen Trailer
 
 ########################################
@@ -440,6 +440,7 @@ Username: Användarnamn
 E-mail address: E-postadress
 Password: Lösenord
 again: igen
+Enabled: Aktiverat
 Disabled for demo: Avstängd i demoversionen
 Change Password: Ändra lösenord
 New Password: Nytt lösenord
@@ -490,14 +491,14 @@ You must specify a group name: Du måste ange ett gruppnamn
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: Visa veckoslut vid visning av vecka
-Display days with events in bold in year view: Visa dagar med aktiviteter i fetstil i årsvyn
-Time interval: Tidsintervall
-time-interval-help: Anger hur långa tidsblocken i veckovisning och dagsvisning ska vara.
 Auto-refresh calendars: Automatisk omladdning av kalender
 auto-refresh-help: Om detta aktiveras kommer dagsvisning, veckovisning, månadsvisning och listning av icke godkända sidor att automatiskt laddas om periodiskt.
 Auto-refresh time: Omladdningstid
 auto-refresh-time-help: Om automatisk omladdning är aktiverat anger detta tiden mellan omladdningarna.
+Display days with events in bold in year view: Visa dagar med aktiviteter i fetstil i årsvyn
+Display weekends in week view: Visa veckoslut vid visning av vecka
+Time interval: Tidsintervall
+time-interval-help: Anger hur långa tidsblocken i veckovisning och dagsvisning ska vara.
 Nonuser: Icke-användares kalendrar
 colors-help: Alla färger skall skrivas in som #RRGGBB där RR är hexkoden för den röda, GG är hexkoden för den gröna och BB är hexkoden för den blå färgen.
 
@@ -529,9 +530,8 @@ Therefore, updates should be made in the Palm Desktop.: Därför bör uppdateringar
 This form will import vCalendar (.vcs) 1.0 events: Detta formulär kommer att importera vCalendar (.vcs) 1.0 aktiviteter
 The following formats have been tested: Följande format har testats
 This form will import iCalendar (.ics) events: Detta formulär kommer att importera iCalendar (.ics) aktiviteter
-Enabling: Genom att sätta
-Overwrite Prior Import: Skriv över föregående import
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: kommer föregående importerade händelser som använde samma UID som en händelse från den nya importfilen att markeras som borttagegn. Detta tillåter en uppdaterad iCalenderfil att importeras utan att dubbletter skapas.
+Enabling: Tillåt
+Overwrite Prior Import: Skriv över tidigare import
 
 ########################################
 # Page: help_index.php
@@ -543,13 +543,12 @@ Help Index: Hjälpöversikt
 #
 Add/Edit/Delete: Lägg till/Redigera/Ta bort
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Att klika på Redigera lager-länken i administrationsdelen i botten på sidan tillåter dig att lägga till/redigera/ta bort lager.
-Specifies the user that you would like to see displayed in your calendar.: Anger den användare du vill se visad i din kalender.
 The text color of the new layer that will be displayed in your calendar.: Textfärgen för det nya lagret som kommer att visas i din kalender.
-If checked, events that are duplicates of your events will be shown.: Om markerat kommer aktiviteter som är dubletter till dina aktiviteter att visas.
 Disabling: Stäng av
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Tryck på stäng av lager-länkar i administrationsdelen i slutet på sidan för att stanga av lager.
-Enabling: Tillåt
+If checked, events that are duplicates of your events will be shown.: Om markerat kommer aktiviteter som är dubletter till dina aktiviteter att visas.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Tryck på Tillåt lager-länken i administrationsdelen i botten på sidan för att slå på lagervisning.
+Specifies the user that you would like to see displayed in your calendar.: Anger den användare du vill se visad i din kalender.
 
 ########################################
 # Page: help_pref.php
@@ -568,7 +567,6 @@ remote-subscriptions-url-help: Visar den URL som användare bör använda för att a
 #
 Disabled: Inaktiverat
 Exclude private records: Ta inte med privata poster
-Overwrite Prior Import: Skriv över tidigare import
 
 ########################################
 # Page: import_handler.php
@@ -580,23 +578,21 @@ The import file contained no data: Importfilen innehöll inga data
 ########################################
 # Page: layers.php
 #
+Layer: Lager
+Edit layer: Redigera lager
 Layers are currently: Lager är för närvarande
-Enabled: Aktiverat
 Disable Layers: Inaktivera lager
-Enable Layers: Aktivera lager
 Click here: Klicka här
 to modify the layers settings for the: för att ändra lagerinställningarna för
 Add layer: Lägg till lager
-Layer: Lager
-Edit layer: Redigera lager
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: Visa aktivitet
 Approve/Confirm: Godkänn/bekräfta
-Approve this entry?: Godkänn händelsen?
 Reject: Avböj
+Approve this entry?: Godkänn händelsen?
 Reject this entry?: Avböj denna händelse?
 
 ########################################
@@ -682,8 +678,8 @@ Set Category: Ange kategori
 ########################################
 # Page: users.php
 #
-Add New User: Lägg till en ny användare
 denotes administrative user: indikerar administratör
+Add New User: Lägg till en ny användare
 
 ########################################
 # Page: usersel.php
@@ -723,9 +719,9 @@ External User: Extern användare
 Approve/Confirm entry: Godkänn/bekräfta händelsen
 Reject entry: Avböj händelsen
 Set category: Ange kategori
-Edit entry: Ändra händelse
 Copy entry: Kopiera händelse
 This will delete this entry for all users.: Det här kommer att radera denna händelse för alla användare.
+Edit entry: Ändra händelse
 Edit repeating entry for all dates: Redigera återkommande händelse för alla datum
 Delete repeating event for all dates: Ta bort återkommande händelse för alla datum
 Edit entry for this date: Redigera händelse för detta datum
@@ -734,8 +730,8 @@ This will delete the entry from your calendar.: Detta kommer att ta bort aktivit
 Do you want to add this entry to your calendar?: Vill du lägga till denna aktivitet i kalendern?
 This will add the entry to your calendar.: Detta kommer att lägga till aktiviteten i din kalender.
 Email all participants: E-posta alla deltagare
-Show activity log: Visa aktivitetslogg
 Hide activity log: Dölj aktivitetetslogg
+Show activity log: Visa aktivitetslogg
 Export this entry to: Exportera denna händelse till
 Palm Pilot: Palm Pilot
 
@@ -759,6 +755,17 @@ Dec: Dec
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: Överskrider begränsningen på XXX händelser per dag
+Event approved: Aktivitet godkänd
+Event created: Aktivitet skapad
+Event deleted: Aktivitet borttagen
+Notification sent: Meddelande skickat
+Event rejected: Aktivitet avböjd
+Reminder sent: Påminnelse skickad
+Event updated: Aktivitet uppdaterad
+Event: Aktivitet
+Action: Åtgärd
+Printer Friendly: Utskriftsvänlig version
+Generate printer-friendly version: Skapa utskriftsvänlig version
 January: Januari
 February: Februari
 March: Mars
@@ -781,6 +788,11 @@ Aug: Aug
 Sep: Sep
 Oct: Okt
 Nov: Nov
+The following error occurred: Följande fel uppstod
+You are not authorized: Förbjuden åtgärd 
+Error approving event: Ett fel uppstod när händelsen skulle godkännas
+Sunday: Söndag
+Monday: Måndag
 Tuesday: Tisdag
 Wednesday: Onsdag
 Thursday: Torsdag
@@ -793,19 +805,6 @@ Wed: Ons
 Thu: Tor
 Fri: Fre
 Sat: Lör
-The following error occurred: Följande fel uppstod
-You are not authorized: Förbjuden åtgärd 
-Error approving event: Ett fel uppstod när händelsen skulle godkännas
-Generate printer-friendly version: Skapa utskriftsvänlig version
-Printer Friendly: Utskriftsvänlig version
-Event created: Aktivitet skapad
-Event approved: Aktivitet godkänd
-Event rejected: Aktivitet avböjd
-Event updated: Aktivitet uppdaterad
-Event deleted: Aktivitet borttagen
-Notification sent: Meddelande skickat
-Reminder sent: Påminnelse skickad
-Action: Åtgärd
 
 ########################################
 # Page: includes/trailer.php

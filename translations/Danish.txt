@@ -14,7 +14,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -43,20 +43,23 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: Web-kalenderen
+OK: OK
+
+########################################
 # Page: access.php
 #
 Database error: Database fejl
-Cancel: Annullér
-Save: Gem
 Go: Gå til
+Save: Gem
 Public Access: Offentlig adgang
 Admin: Admin
 Calendar: Kalender
 Edit: Redigér
 Events: Aftaler
 Public: Offentlig	 
-confidential: fortrolig
-private: privat
 
 ########################################
 # Page: activity_log.php
@@ -67,16 +70,14 @@ Previous: Forrige
 ########################################
 # Page: add_entry.php
 #
-Event: Aftale
-Invalid entry id: Ugyldigt aftale ID
+private: privat
+confidential: fortrolig
 Error adding event: Fejl ved tilføjelse af aftale
 
 ########################################
 # Page: admin.php
 #
 Select: Vælg
-Yes: Ja
-No: Nej
 Day: Dag
 Week: Uge
 Month: Måned
@@ -91,7 +92,6 @@ Email: Email
 Colors: Farver
 app-name-help: Angiver navnet på kalenderen. Dette fremgår i browserens titellinie for samtlige sider samt på login-siden.
 Application Name: Kalender navn
-Title: Web-kalenderen
 server-url-help: Angiver basis URL'en for applikationen. Denne bliver inkluderet når der udsendes email påmindelser og notifikationer.
 Server URL: Server URL
 language-help: Angiver hvilket sprog, der skal bruges.
@@ -106,13 +106,10 @@ Custom header: Brugertilpasset sidehoved
 custom-trailer-help: Tilføjelse af brugertilpasset HTML kode som indsættes i bunden af hver side
 Custom trailer: Brugertilpasset sidefod
 tz-help: Angiver hvor mange timer tiden skal justeres fra serverens tid til den lokale tid.
-hours: timer 
 date-format-help: Angiver det foretrukne dato format.
 Date format: Dato format
 display-week-starts-on: Hvorvidt ugen starter mandag eller søndag.
 Week starts on: Ugen starter på
-Sunday: Søndag
-Monday: Mandag
 time-format-help: Skal tiden vises pr 12 eller 24-timer.
 Time format: Tidsformat
 12 hour: 12 timer
@@ -146,6 +143,8 @@ display-unapproved-help: Specificér her hvorvidt din kalender skal vise ikke-acc
 Display unapproved: Vis ikke-accepterede aftaler
 conflict-check-help: Kontroller aftale-konflikter (2 aftaler der er oprettet til samme tid for den samme person). Hvis denne sættes til "ja" kan du stadig oprettet flere aftaler på samme tid hvis du godkender advarslen. HVis denne sættes til "nej" bliver der ikke kontrolleret efter aftale konflikter. Du bør sætte denne til "ja" så der bliver tjekket efter konflikter.
 Check for event conflicts: Check for aftale-konflikter
+Yes: Ja
+No: Nej
 conflict-months-help: Hvis konflikt-kontrol er slået til ("Kontroller aftale konflikter"), angiver dette hvor mange måneder frem der skal tjekkes for konflikter. Hvis det tager lang tid at tilføje nye aftaler, så sæt denne værdi ned.
 Conflict checking months: Kontroller månedskonflikter
 conflict-check-override-help: Gør det muligt for brugere at ignorere konflikter og oprette flere aftaler på samme tidspunkt.
@@ -240,8 +239,8 @@ Event popup text: Tekst i aftale-popup
 ########################################
 # Page: adminhome.php
 #
-Preferences: Indstillinger
 Assistants: Assistenter
+Preferences: Indstillinger
 Users: Brugere
 Account: Konto
 Categories: Kategorier
@@ -270,25 +269,35 @@ Admin mode: Administrator-tilstand
 Your assistants: Dine assistenter
 
 ########################################
+# Page: availability.php
+#
+day: dag 
+
+########################################
 # Page: category.php
 #
 Global: Global
-Add: Tilføj
 Category Name: Navn på kategori
+Color: Farve
+Add: Tilføj
 Delete: Slet
-Are you sure you want to delete this entry?: Er du sikker på at du vil slette denne aftale?
 Make New Category: Tilføj ny kategori
 
 ########################################
 # Page: catsel.php
 #
 Remove: Fjern
-OK: OK
+Cancel: Annullér
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: En aftale er blevet aflyst for dig af
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: Ugyldigt aftale ID
 
 ########################################
 # Page: docadd.php
@@ -313,9 +322,9 @@ access-help: Angiv hvorvidt aftalen skal kunne ses af alle - eller om den er for
 Access: Adgang
 priority-help: Angiv aftalens prioritet.
 Priority: Prioritet
-Low: Lav
-Medium: Medium
 High: Høj
+Medium: Medium
+Low: Lav
 category-help: Angiver aftalens kategori.
 Category: Kategori	
 URL: URL
@@ -326,6 +335,7 @@ All day event: Aftale for hele dagen
 Timezone Offset: Tidszone forskydning
 time-help: Angiver tidspunktet for aftalen.<br /><i>Dette felt behøver ikke at være udfyldt.</i>
 duration-help: I dette felt kan du angive varigheden af aftalen <br /><i>Dette felt behøver ikke at være udfyldt.</i>
+hours: timer 
 minutes: minutter
 end-time-help: Angiver sluttidspunktet for aftalen.
 participants-help: Vis deltagerne i denne aftale.
@@ -352,10 +362,9 @@ You are not authorized to edit this entry.: Du har ikke ret til at slette denne 
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: Følgende aftaler er i konflikt med det foreslåede tidspunkt
 A new appointment has been made for you by: En ny aftale er blevet aftalt for dig af
 An appointment has been updated by: En aftale er blevet opdateret af
-The subject is: Emnet er
+The following conflicts with the suggested time: Følgende aftaler er i konflikt med det foreslåede tidspunkt
 Please look on: Se venligst på
 to accept or reject this appointment: for at acceptere eller afvise denne aftale
 to view this appointment: for at se denne aftale
@@ -366,15 +375,13 @@ conflicts with the following existing calendar entries: er i konflikt med eksist
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: Rediger lag
 Add Layer: Tilføj lag
+Edit Layer: Rediger lag
 Source: Kilde
-Color: Farve
 Duplicates: Gentagelser
 Show layer events that are the same as your own: Vis lag-aftaler, der er de samme som dine egne
 Add to My Calendar: Føj til min kalender
 Delete layer: Slet lag
-Are you sure you want to delete this layer?: Er du sikker på, at du vil slette dette lag?
 
 ########################################
 # Page: edit_layer_handler.php
@@ -387,8 +394,8 @@ You can only create one layer for each user: Du kan kun oprettet ét lag pr. brug
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX er ikke udfyldt i config.php.
 word characters only: må kun indeholde bogstaver og tal (a-zA-Z_0-9)
-Edit User: Redigér bruger
 Add User: Tilføj bruger
+Edit User: Redigér bruger
 Calendar ID: Kalender ID
 First Name: Fornavn
 Last Name: Efternavn
@@ -432,16 +439,14 @@ Edit Report: Rediger rapport
 Report name: Navn på rapport
 Current User: Nuværende bruger
 User: Bruger
-Include link in trailer: Inkluder link i sidefod
 Include standard header/trailer: Inkluder standard sidehoved/fod
-Date range: Dato område
 Include previous/next links: Medtag links til forrige/næste
 Include empty dates: Medtag tomme datoer
+Date range: Dato område
 Template variables: Skabelon variabler
 Page template: Side skabelon
 Day template: Dags skabelon
 Event template: Aftale skabelon
-Are you sure you want to delete this report?: Er du sikker på at du vil slette denne rapport?
 
 ########################################
 # Page: edit_report_handler.php
@@ -451,8 +456,8 @@ Variable N not found: Variabel N ikke fundet
 ########################################
 # Page: edit_template.php
 #
-Edit Custom Script/Stylesheet: Redigér brugertilpasset Script/Stylesheet
 Edit Custom Header: Redigér brugertilpasset sidehoved
+Edit Custom Script/Stylesheet: Redigér brugertilpasset Script/Stylesheet
 Edit Custom Trailer: Redigér brugertilpasset sidefod
 
 ########################################
@@ -462,8 +467,8 @@ Username: Brugernavn
 E-mail address: Email-adresse
 Password: Kodeord
 again: igen
+Enabled: Slået til
 Disabled for demo: Slået fra i demo
-Are you sure you want to delete this user?: Er du sikker på du vil slette denne bruger?
 Change Password: Skift kodeord
 New Password: Nyt kodeord
 Set Password: Skift kodeord
@@ -504,14 +509,14 @@ You must specify a group name: Du skal angive navnet på en gruppe
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: Vis weekender i uge-visning
-Display days with events in bold in year view: Brug fed skrift for dage med aftaler på års-visning
-Time interval: Tidsinterval
-time-interval-help: Angiver hvor store tidsintervaller der benyttes i uge- og dags-visning.
 Auto-refresh calendars: Auto-opdater kalender
 auto-refresh-help: Når slået til bliver dags-, uge-, måneds-visning, samt listen over ikke-accepterede sider automatisk opdateret periodisk.
 Auto-refresh time: Auto-opdater tid
 auto-refresh-time-help: Angiver tiden imellem hver opdatering, hvis auto-opdatering er slået til.
+Display days with events in bold in year view: Brug fed skrift for dage med aftaler på års-visning
+Display weekends in week view: Vis weekender i uge-visning
+Time interval: Tidsinterval
+time-interval-help: Angiver hvor store tidsintervaller der benyttes i uge- og dags-visning.
 Nonuser: Ikke brugertilknyttede kalendere
 colors-help: Alle farver skal indtastes som #RRGGBB hvor RR er hexkoden for rød, GG er hexkoden for grøn og BB er hexkoden for den blå farve.
 
@@ -543,9 +548,8 @@ Therefore, updates should be made in the Palm Desktop.: Derfor bør opdateringer 
 This form will import vCalendar (.vcs) 1.0 events: Denne formular importerer vCalandar (.vcs) 1.0 aftaler
 The following formats have been tested: Følgende formater er testet
 This form will import iCalendar (.ics) events: Denne formular importerer iCalendar (.ics) aftaler
-Enabling: Ved af anvende
+Enabling: Slå til
 Overwrite Prior Import: Overskriv tidligere import
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: markeres aftaler med sammenfalende UID som slettet. Dette skulle sikre mod at der oprettes dubletter ved import af en opdateret iCalendar (.ics) fil
 
 ########################################
 # Page: help_index.php
@@ -557,13 +561,12 @@ Help Index: Hjælpeindex
 #
 Add/Edit/Delete: Tilføj/Rediger/Slet
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Hvis du vælger "Rediger lag" i Admin-delen i bunden af siden har du mulighed for at slå lag til/fra samt redigere dem.
-Specifies the user that you would like to see displayed in your calendar.: Angiver den bruger du ønsker at vise i din egen kalender.
 The text color of the new layer that will be displayed in your calendar.: Tekstfarven på den nye lag som vises i din egen kalender.
-If checked, events that are duplicates of your events will be shown.: Hvis valgt vises aftaler der er kopier af dine egne.
 Disabling: Slå fra
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Vælg "Slå lag fra" i Admin-delen i bunden af siden for at slå lag fra.
-Enabling: Slå til
+If checked, events that are duplicates of your events will be shown.: Hvis valgt vises aftaler der er kopier af dine egne.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Vælg "Slå lag til" i Admin-delen i bunden af siden for at slå lag til.
+Specifies the user that you would like to see displayed in your calendar.: Angiver den bruger du ønsker at vise i din egen kalender.
 
 ########################################
 # Page: help_pref.php
@@ -589,7 +592,6 @@ Publishing Disabled (User): Udgivelse slået fra (User)
 Disabled: Slået fra
 Import format: Import format
 Exclude private records: Undlad import af private aftaler
-Overwrite Prior Import: Overskriv tidligere import
 
 ########################################
 # Page: import_handler.php
@@ -601,24 +603,22 @@ The import file contained no data: Import-filen indeholder ingen data.
 ########################################
 # Page: layers.php
 #
+Layer: Lag
+Edit layer: Rediger lag
 Layers are currently: Lag er aktuelt
-Enabled: Slået til
 Disable Layers: Slå lag fra
-Enable Layers: Slå lag til
 Click here: Tryk her
 to modify the layers settings for the: for at redigere lag indstillingerne for
 calendar: kalender
 Add layer: Tilføj lag
-Layer: Lag
-Edit layer: Rediger lag
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: Se denne aftale
 Approve/Confirm: Godkend/bekræft
-Approve this entry?: Godkend denne aftale?
 Reject: Afvis
+Approve this entry?: Godkend denne aftale?
 Reject this entry?: Afvis denne aftale?
 
 ########################################
@@ -706,8 +706,8 @@ Set Category: Vælg kategori
 ########################################
 # Page: users.php
 #
-Add New User: Tilføj ny bruger
 denotes administrative user: betyder administrativ bruger
+Add New User: Tilføj ny bruger
 
 ########################################
 # Page: usersel.php
@@ -733,7 +733,6 @@ Week (Timebar): Uge (tidslinie)
 Month (Timebar): Måned (tidslinie)
 Month (side by side): Måned (opstillet sidevis)
 Month (on same calendar): Måned (på samme kalender)
-Selected: Valgt
 
 ########################################
 # Page: views_edit_handler.php
@@ -754,9 +753,9 @@ External User: Eksterne brugere
 Approve/Confirm entry: Godkend/bekræft aftale
 Reject entry: Afvis aftale
 Set category: Vælg kategori
-Edit entry: Redigér aftale
 Copy entry: Kopiér aftale
 This will delete this entry for all users.: Dette vil slette denne aftale for alle brugere.
+Edit entry: Redigér aftale
 Edit repeating entry for all dates: Rediger gentagne aftaler for alle datoer
 Delete repeating event for all dates: Slet gentagne aftaler for alle datoer
 Edit entry for this date: Rediger aftale for denne dag
@@ -765,8 +764,8 @@ This will delete the entry from your calendar.: Dette vil slette aftalen fra din
 Do you want to add this entry to your calendar?: Vil du tilføje denne aftale til din kalender?
 This will add the entry to your calendar.: Dette vil tilføje aftalen til din kalender.
 Email all participants: Send email til alle deltagere
-Show activity log: Vis Aktivitetslog
 Hide activity log: Skjul Aktivitetslog
+Show activity log: Vis Aktivitetslog
 Export this entry to: Eksporter denne visning til
 Palm Pilot: Palm Pilot
 
@@ -789,8 +788,23 @@ Dec: Dec
 ########################################
 # Page: includes/functions.php
 #
-WK: Uge
 exceeds limit of XXX events per day: overskrider grænsen på XXX aftaler pr. dag
+All Attendees: Alle deltagere
+Busy: Optaget
+Tentative: Afventende
+Event approved: Aftale accepteret
+Event created: Aftale oprettet
+Event deleted: Aftale slettet
+Notification sent: Notifikation afsendt
+Event rejected: Aftale afvist
+Reminder sent: Påmindelse afsendt
+Event updated: Aftale opdateret
+WK: Uge
+Changes successfully saved: Ændringer gemt
+Event: Aftale
+Action: Handling
+Printer Friendly: Printervenlig
+Generate printer-friendly version: Vis printervenlig side
 January: Januar
 February: Februar
 March: Marts
@@ -813,6 +827,11 @@ Aug: Aug
 Sep: Sep
 Oct: Okt
 Nov: Nov
+The following error occurred: Følgende fejl opstod
+You are not authorized: Du har ikke tilladelse til dette
+Error approving event: Fejl ved godkendelse af aftale
+Sunday: Søndag
+Monday: Mandag
 Tuesday: Tirsdag
 Wednesday: Onsdag
 Thursday: Torsdag
@@ -825,24 +844,6 @@ Wed: Ons
 Thu: Tor
 Fri: Fre
 Sat: Lør
-All Attendees: Alle deltagere
-Busy: Optaget
-Tentative: Afventende
-Changes successfully saved: Ændringer gemt
-The following error occurred: Følgende fejl opstod
-You are not authorized: Du har ikke tilladelse til dette
-day: dag 
-Error approving event: Fejl ved godkendelse af aftale
-Generate printer-friendly version: Vis printervenlig side
-Printer Friendly: Printervenlig
-Event created: Aftale oprettet
-Event approved: Aftale accepteret
-Event rejected: Aftale afvist
-Event updated: Aftale opdateret
-Event deleted: Aftale slettet
-Notification sent: Notifikation afsendt
-Reminder sent: Påmindelse afsendt
-Action: Handling
 
 ########################################
 # Page: includes/trailer.php

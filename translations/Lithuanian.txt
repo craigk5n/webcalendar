@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -37,12 +37,6 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: access.php
 #
 Calendar: Kalendoriø
-
-########################################
-# Page: admin.php
-#
-Sunday: Sekmadienis
-Monday: Pirmadienis
 
 ########################################
 # Page: approve_entry.php
@@ -88,6 +82,8 @@ Aug: Rgp
 Sep: Rgs
 Oct: Spa
 Nov: Lap
+Sunday: Sekmadienis
+Monday: Pirmadienis
 Tuesday: Antradienis
 Wednesday: Treèiadienis
 Thursday: Ketvirtadienis
