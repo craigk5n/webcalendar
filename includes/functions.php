@@ -4319,14 +4319,19 @@ function print_date_entries ( $date, $user, $ssi = false ) {
   $moons = getMoonPhases ( substr ( $date, 0, 4 ), substr ( $date, 4, 2 ) );
   $ret = '';
 
+  $can_add = ( $readonly == 'N' || $is_admin );
+  if ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD != 'Y' && $login == '__public__' )
+    $can_add = false;
+  if ( $readonly == 'Y' )
+    $can_add = false;
+  if ( $is_nonuser )
+    $can_add = false;
+
   if ( ! $ssi ) {
     $userCatStr = ( strcmp ( $user, $login ) ? 'user=' . $user . '&amp;' : '' )
      . ( empty ( $cat_id ) ? '' : 'cat_id=' . $cat_id . '&amp;' );
 
-    $ret = ( $is_admin || ( $readonly == 'N' &&
-        ( ! $is_nonuser ||
-          ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD == 'Y' &&
-            $login == '__public__' ) ) ) ? '
+    $ret = ( $can_add ? '
         <a title="' . $newEntryStr . '" href="edit_entry.php?' . $userCatStr
        . 'date=' . $date . '"><img src="images/new.gif" alt="' . $newEntryStr
        . '" class="new" /></a>' : '' ) . '
