@@ -12,7 +12,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -41,19 +41,21 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: WebCalendar
+
+########################################
 # Page: access.php
 #
 Database error: Error de base de dades
-Cancel: Cancel·la
-Save: Desa
 Go: Vés
+Save: Desa
 Public Access: Accés públic
 Admin: Administrador
 Calendar: Calendari
 Edit: Edita
 Public: Públic
-confidential: confidencial
-private: privat
 
 ########################################
 # Page: activity_log.php
@@ -64,16 +66,14 @@ Previous: Anterior
 ########################################
 # Page: add_entry.php
 #
-Event: Esdeveniment
-Invalid entry id: Identificació incorrecta
+private: privat
+confidential: confidencial
 Error adding event: Error en afegir un esdeveniment
 
 ########################################
 # Page: admin.php
 #
 Select: Selecciona
-Yes: Sí
-No: No
 Day: Dia
 Week: Setmana
 Month: Mes
@@ -87,7 +87,6 @@ Email: Correu electrònic
 Colors: Colors
 app-name-help: Especifica el nom de l'aplicació que es mostrarà a la barra de títol del navegador a totes les pàgines i a la pàgina d'entrada.  A l'arxiu de traduccions es mirarà el valor que s'especifiqui aquí per poder oferir títols diferents per a diverses llengües.
 Application Name: Nom de l'aplicació
-Title: WebCalendar
 server-url-help: Especifica la URL principal de l'aplicació.  Això s'inclourà en enviar recordatoris i notificacions per correu electrònic.
 Server URL: URL del servidor
 language-help: Especifica l'idioma que s'utilitza.
@@ -101,13 +100,10 @@ Custom header: Capçalera personalitzada
 custom-trailer-help: Permet incloure un fragment HTML personalitzat al peu de cada pàgina.
 Custom trailer: Peu personalitzat
 tz-help: Especifica les hores de diferència per ajustar l'hora del servidor a l'hora local
-hours: hores
 date-format-help: Especifica el format preferit de la data.
 Date format: Format de la data
 display-week-starts-on: Especifica si la setmana comença diumenge o dilluns   Si s'especifica dilluns, aleshores els números de setmana seran un número de setmana ISO.
 Week starts on: La setmana comença
-Sunday: Diumenge
-Monday: Dilluns
 time-format-help: Especifica el format d'hora que s'utilitza: <br /><i>12 hores:</i> Mostra les hores com a 3am, 8:30pm, etc.  <br /><i>24 hores:</i> Mostra les hores com a 300, 2030, etc.
 Time format: Format d'hora
 12 hour: 12 hores
@@ -137,6 +133,8 @@ display-unapproved-help: Especifica si els esdeveniments pendents d'aprovació es
 Display unapproved: Mostra pendents d'aprovar
 conflict-check-help: Comprova els conflictes entre esdeveniments (dos esdeveniments programats per a la mateixa hora i la mateixa persona).  Si ho configures com a "Sí", podràs planificar igualment dos esdeveniments alhora després de confirmar un avís. Si ho configures com a "no", no es comprovaran els possibles conflictes entre esdeveniments.  Probablement vulguis posar "Sí", a fi que es produeixin les comprovacions.
 Check for event conflicts: Comprova conflictes entre esdeveniments
+Yes: Sí
+No: No
 conflict-months-help: Si està posada la comprovació de conflictes ("Comprova conflictes entre esdeveniments" està configurat com a "No"), aquí s'especifica el nombre de mesos endavant que cal fer aquesta comprovació.  Si trobes que afegir esdeveniments triga molt a processar-se, redueix aquest número.
 Conflict checking months: Mesos de comprovació de conflictes
 conflict-check-override-help: Permet als usuaris sobreescriure conflictes i programar dos o més esdeveniments alhora.
@@ -225,8 +223,8 @@ Event popup text: Text del missatge emergent de l'esdeveniment
 ########################################
 # Page: adminhome.php
 #
-Preferences: Preferències
 Assistants: Assistents
+Preferences: Preferències
 Users: Usuaris
 Account: Compte
 Categories: Categories
@@ -258,22 +256,27 @@ Your assistants: Els vostres assistents
 # Page: category.php
 #
 Global: Global
-Add: Afegeix
 Category Name: Nom de categoria
+Color: Color
+Add: Afegeix
 Delete: Suprimeix
-Are you sure you want to delete this entry?: Esteu segur que voleu suprimir aquesta entrada?
 Make New Category: Afegir nova categoria
 
 ########################################
 # Page: catsel.php
 #
 Remove: Elimina
-Ok: D'acord
+Cancel: Cancel·la
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: S'ha cancel·lat una cita cancel·la per a tu per
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: Identificació incorrecta
 
 ########################################
 # Page: docadd.php
@@ -296,9 +299,9 @@ access-help: Especifica el nivell d'accés de l'esdeveniment.<br /> <i>Públic</i>
 Access: Accés
 priority-help: Especifica la prioritat de l'esdeveniment.  Els esdeveniments de prioritat alta es mostraran en negreta.
 Priority: Prioritat
-Low: Baixa
-Medium: Mitjana
 High: Alta
+Medium: Mitjana
+Low: Baixa
 category-help: Especifica la categoria de l'esdeveniment.
 Category: Categoria
 URL: URL
@@ -309,6 +312,7 @@ All day event: Esdeveniment de dia complet
 Timezone Offset: Franja horària
 time-help: Especifica l'hora de l'esdeveniment.<br />Seleccioneu "Esdeveniment amb hora" (per a un esdeveniment programat per a una hora determinada del dia), o bé "Esdeveniment sense hora" (per a un esdeveniment sense hora determinada (com ara un festiu), o bé "Esdeveniment dia complet" (per a un esdeveniment que ocupa tot el dia, com ara haver de sortir fora de l'oficina).
 duration-help: Especifica la durada (en hores:minuts) de l'esdeveniment.  <br /><i>Aquest camp es pot deixar en blanc.</i>
+hours: hores
 minutes: minuts
 participants-help: Mostra la llista de participants en aquesta entrada.
 external-participants-help: Especifica una llista de participants per a l'esdeveniment que no són usuaris de calendari.   S'indicaran un usuari per línia i s'en pot incloure una adreça de correu electrònic.   Si s'especifica una adreça electrònica, l'usuari podrà rebre notificacions i recordatoris
@@ -333,10 +337,9 @@ You are not authorized to edit this entry.: No tens autorització per editar aque
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: Hi ha un conflicte amb l'hora suggerida
 A new appointment has been made for you by: T'ha estat assignada una nova cita per
 An appointment has been updated by: Una cita ha estat actualitzada per
-The subject is: L'assumpte és
+The following conflicts with the suggested time: Hi ha un conflicte amb l'hora suggerida
 Please look on: Sisplau comprova
 to accept or reject this appointment: per acceptar o rebutjar aquesta cita
 to view this appointment: per visualitzar aquesta cita
@@ -347,15 +350,13 @@ conflicts with the following existing calendar entries: provoca un conflicte amb
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: Edita la capa
 Add Layer: Afegeix una capa
+Edit Layer: Edita la capa
 Source: Font
-Color: Color
 Duplicates: Duplicats
 Show layer events that are the same as your own: Mostra els esdeveniments de capa que coincideixen amb els teus
 Add to My Calendar: Afegeix al meu Calendari
 Delete layer: Suprimeix la capa
-Are you sure you want to delete this layer?: Esteu segur que voleu suprimir aquest capa?
 
 ########################################
 # Page: edit_layer_handler.php
@@ -367,8 +368,8 @@ You can only create one layer for each user: Només es pot crear una capa per usu
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: No s'ha configurat NONUSER_PREFIX a config.php.
-Edit User: Edita usuari
 Add User: Afegir usuari
+Edit User: Edita usuari
 Calendar ID: ID de Calendari
 First Name: Nom
 Last Name: Cognom
@@ -412,16 +413,14 @@ Edit Report: Edita Informe
 Report name: Informe Program class as used by the window manager
 Current User: Usuari actual
 User: Usuari
-Include link in trailer: Inclou enllaç al peu
 Include standard header/trailer: Inclou encapçalament/peu estàndard
-Date range: Abast de data
 Include previous/next links: Inclou enllaços anterior/següent
 Include empty dates: Inclou dates buides
+Date range: Abast de data
 Template variables: Variables de plantilla
 Page template: Plantilla de pàgina
 Day template: Plantilla de dia
 Event template: Plantilla d'esdeveniment
-Are you sure you want to delete this report?: Esteu segur que voleu suprimir aquest informe?
 
 ########################################
 # Page: edit_report_handler.php
@@ -431,8 +430,8 @@ Variable N not found: No s'ha trobat la variable N
 ########################################
 # Page: edit_template.php
 #
-Edit Custom Script/Stylesheet: Edita Script/Full d'estil personalitzat
 Edit Custom Header: Edita Encapçalament Personalitzat
+Edit Custom Script/Stylesheet: Edita Script/Full d'estil personalitzat
 Edit Custom Trailer: Edita Peu Personalitzat
 
 ########################################
@@ -442,6 +441,7 @@ Username: Nom d'usuari
 E-mail address: Adreça electrònica
 Password: Contrasenya
 again: una altra vegada
+Enabled: Habilitat
 Disabled for demo: Inhabilitat per a la demo
 Change Password: Canvia la contrasenya
 New Password: Nova contrasenya
@@ -492,14 +492,14 @@ You must specify a group name: Cal especificar un nom de grup
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: Caps de setmana a la visualització de setmana
-Display days with events in bold in year view: Mostra en negreta els esdeveniments en la visualització d'any
-Time interval: Interval de temps
-time-interval-help: Especifica la durada dels blocs horaris en la visualització de setmana.
 Auto-refresh calendars: Auto-refrescament de calendaris
 auto-refresh-help: Si està activat, les pàgines per a visualització de dia, setmana, mes, i amb la llista de pendents d'aprovar es refrescaran totes periòdicament.
 Auto-refresh time: Interval d'auto-refrescament
 auto-refresh-time-help: Si l'auto Auto-refrescament està habilitat, aquí s'especifica l'interval entre cada refrescament.
+Display days with events in bold in year view: Mostra en negreta els esdeveniments en la visualització d'any
+Display weekends in week view: Caps de setmana a la visualització de setmana
+Time interval: Interval de temps
+time-interval-help: Especifica la durada dels blocs horaris en la visualització de setmana.
 Nonuser: Calendaris no d'usuari
 colors-help: Cal especificar tots els colors en format hexadecimal "#RRGGBB" en què "RR" és el valor hexadecimal per al vermell, "GG" el valor per al verd, i "BB" per al blau.
 
@@ -531,9 +531,8 @@ Therefore, updates should be made in the Palm Desktop.: Per tant, caldria realit
 This form will import vCalendar (.vcs) 1.0 events: Aquest formulari importa esdeveniments de vCalendar 1.0 (.vcs).
 The following formats have been tested: S'han comprovat els formats següents
 This form will import iCalendar (.ics) events: Aquest formulari importa esdeveniments d'iCalendar (.ics)
-Enabling: En activar
-Overwrite Prior Import: Sobreescriu importació anterior
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: els esdeveniments importats prèviament amb la mateixa UID que un esdeveniment del fitxer d'importació nou queden marcats com a eliminats.  Això permet importar un fitxer iCalendar actualitzat sense crear duplicats
+Enabling: Activa
+Overwrite Prior Import: Sobreescriu Importació Prèvia
 
 ########################################
 # Page: help_index.php
@@ -545,13 +544,12 @@ Help Index: Índex de l'ajuda
 #
 Add/Edit/Delete: Afegeix/Edita/Suprimeix
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: En clicar l'enllaç Edita Capes a la secció d'administració al peu de la pàgina podràs afegir/editar/suprimir capes.
-Specifies the user that you would like to see displayed in your calendar.: Especifica l'usuari que t'agradaria que es mostrés al teu calendari.
 The text color of the new layer that will be displayed in your calendar.: El color de text de la nova capa que es mostrarà al teu calendari.
-If checked, events that are duplicates of your events will be shown.: Si està activat, es mostraran els esdeveniments coincidents.
 Disabling: Desactiva
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Pitja l'enllaç Desactivar Capes a la secció d'administració al peu de la pàgina a fir de desactivar les capes.
-Enabling: Activa
+If checked, events that are duplicates of your events will be shown.: Si està activat, es mostraran els esdeveniments coincidents.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Pitja l'enllaç Activar Capes a la secció d'administració al peu de la pàgina a fir de activar les capes.
+Specifies the user that you would like to see displayed in your calendar.: Especifica l'usuari que t'agradaria que es mostrés al teu calendari.
 
 ########################################
 # Page: help_pref.php
@@ -570,7 +568,6 @@ remote-subscriptions-url-help: Mostra la URL que haurien de fer servir els usuar
 #
 Disabled: Inhabilitat
 Exclude private records: Exclou registres privats
-Overwrite Prior Import: Sobreescriu Importació Prèvia
 
 ########################################
 # Page: import_handler.php
@@ -582,23 +579,21 @@ The import file contained no data: El fitxer d'importació no conté cap dada
 ########################################
 # Page: layers.php
 #
+Layer: Capa
+Edit layer: Edita capa
 Layers are currently: Les capes ara estan
-Enabled: Habilitat
 Disable Layers: Desactiva les capes
-Enable Layers: Activa les capes
 Click here: Fes clic
 to modify the layers settings for the: per modificar la configuració de les capes per a
 Add layer: Afegeix capa
-Layer: Capa
-Edit layer: Edita capa
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: Visualitza aquesta entrada
 Approve/Confirm: Aprova/Confirma
-Approve this entry?: Vols aprovar aquesta entrada?
 Reject: Rebutja
+Approve this entry?: Vols aprovar aquesta entrada?
 Reject this entry?: Rebutges aquesta entrada?
 
 ########################################
@@ -683,8 +678,8 @@ Set Category: Fixa Categoria
 ########################################
 # Page: users.php
 #
-Add New User: Afegeix usuari nou
 denotes administrative user: vol dir usuari administratiu
+Add New User: Afegeix usuari nou
 
 ########################################
 # Page: usersel.php
@@ -724,8 +719,8 @@ External User: Usuari extern
 Approve/Confirm entry: Aprova/Confirma entrada
 Reject entry: Rebutja entrada
 Set category: Fixa categoria
-Edit entry: Edita entrada
 This will delete this entry for all users.: Això suprimirà aquesta entrada per a tots els usuaris.
+Edit entry: Edita entrada
 Edit repeating entry for all dates: Edita entrada amb repetició per a totes les dates
 Delete repeating event for all dates: Suprimeix l'esdeveniment per a totes les dates
 Edit entry for this date: Edita entrada per a aquesta data
@@ -734,8 +729,8 @@ This will delete the entry from your calendar.: Suprimeix l'entrada del teu cale
 Do you want to add this entry to your calendar?: Vols afegir aquesta entrada al teu calendari?
 This will add the entry to your calendar.: Afegeix l'entrada al teu calendari.
 Email all participants: Envia un correu electrònic a tots els participants
-Show activity log: Mostra el registre d'activitat
 Hide activity log: Oculta el registre d'activitat
+Show activity log: Mostra el registre d'activitat
 Export this entry to: Exporta aquesta entrada a
 Palm Pilot: Palm Pilot
 
@@ -759,8 +754,19 @@ Dec: Des
 ########################################
 # Page: includes/functions.php
 #
-WK: st
 exceeds limit of XXX events per day: excedeix el límit de XXX esdeveniments per dia.
+Event approved: Esdeveniment aprovat
+Event created: Esdeveniment creat
+Event deleted: Esdeveniment eliminat
+Notification sent: Notificació enviada
+Event rejected: Esdeveniment rebutjat
+Reminder sent: Recordatori enviat
+Event updated: Esdeveniment actualitzat
+WK: st
+Event: Esdeveniment
+Action: Acció
+Printer Friendly: Versió per a impressora
+Generate printer-friendly version: Generar versió per a impressora
 January: Gener
 February: Febrer
 March: Març
@@ -783,6 +789,11 @@ Aug: Ago
 Sep: Set
 Oct: Oct
 Nov: Nov
+The following error occurred: S'ha produït un error
+You are not authorized: No tens autorització
+Error approving event: Error en aprovar esdeveniment
+Sunday: Diumenge
+Monday: Dilluns
 Tuesday: Dimarts
 Wednesday: Dimecres
 Thursday: Dijous
@@ -795,19 +806,6 @@ Wed: Dx
 Thu: Dj
 Fri: Dv
 Sat: Ds
-The following error occurred: S'ha produït un error
-You are not authorized: No tens autorització
-Error approving event: Error en aprovar esdeveniment
-Generate printer-friendly version: Generar versió per a impressora
-Printer Friendly: Versió per a impressora
-Event created: Esdeveniment creat
-Event approved: Esdeveniment aprovat
-Event rejected: Esdeveniment rebutjat
-Event updated: Esdeveniment actualitzat
-Event deleted: Esdeveniment eliminat
-Notification sent: Notificació enviada
-Reminder sent: Recordatori enviat
-Action: Acció
 
 ########################################
 # Page: includes/trailer.php

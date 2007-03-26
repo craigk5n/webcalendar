@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -43,8 +43,6 @@ Calendar: Kalendarin
 #
 Month: Muaji
 Year: Viti
-Sunday: E Diele
-Monday: E Hene
 
 ########################################
 # Page: approve_entry.php
@@ -91,6 +89,8 @@ Aug: Gus
 Sep: Sht
 Oct: Tet
 Nov: Nen
+Sunday: E Diele
+Monday: E Hene
 Tuesday: E Marte
 Wednesday: E Merkure
 Friday: E Premte

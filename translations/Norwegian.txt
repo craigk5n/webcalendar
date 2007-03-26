@@ -6,7 +6,7 @@
 # Last update: 18 May 2005
 # 
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -35,20 +35,23 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: Webkalenderen
+OK: OK
+
+########################################
 # Page: access.php
 #
 Database error: Feil i databasen
-Cancel: Avbryt
-Save: Lagre
 Go: Gå til
+Save: Lagre
 Public Access: Offentlig tilgang
 Admin: Admin
 Calendar: Kalender
 Edit: Rediger
 Events: Aktiviteter
 Public: Offentlig
-confidential: privat
-private: privat
 
 ########################################
 # Page: activity_log.php
@@ -59,16 +62,14 @@ Previous: Forrige
 ########################################
 # Page: add_entry.php
 #
-Event: Aktitivitet
-Invalid entry id: Ugyldig avtale-ID
+private: privat
+confidential: privat
 Error adding event: Feil ved innlegging av avtale
 
 ########################################
 # Page: admin.php
 #
 Select: Velg
-Yes: Ja
-No: Nei
 Day: Dag
 Week: Uke
 Month: Måned
@@ -83,7 +84,6 @@ Email: E-post
 Colors: Farger
 app-name-help: Setter navnet på programmet. Dette vil vises i nettlesertittelen for alle sider.
 Application Name: Programnavn
-Title: Webkalenderen
 server-url-help: Setter base-URLen for programmet. Denne vil bli inkludert ved utsending av påminnelser på e-post.
 Server URL: URL for serveren
 language-help: Angir hvilket språk som skal brukes.
@@ -98,13 +98,10 @@ Custom header: Egendefinert hode
 custom-trailer-help: Tillatt innsetting av egendefinert HTML-kode på slutten av hver side.
 Custom trailer: Egendefinert fot
 tz-help: Angir hvor mange timer servertid må justeres i forhold til lokaltid.
-hours: timer
 date-format-help: Angir datoformatet.
 Date format: Datoformat
 display-week-starts-on: Vis om uken starter mandag eller søndag.
 Week starts on: Uken starter på
-Sunday: Søndag
-Monday: Mandag
 time-format-help: Skal tiden vises i 12 eller 24-timer.
 Time format: Tidsformat
 12 hour: 12 timer
@@ -138,6 +135,8 @@ display-unapproved-help: Angir om din kalender skal vise ikke-godkendte aktivite
 Display unapproved: Vis ikke-godkjente.
 conflict-check-help: Sjekk for konflikter mellom aktiviteter, dvs to aktiviteter lagt til samme tid for samme bruker.
 Check for event conflicts: Sjekk for konflikter mellom aktiviteter
+Yes: Ja
+No: Nei
 conflict-months-help: Hvis sjekking for konflikter er aktivert, så vil denne sette hvor mange måneder frem i tid vi skal sjekke for konflikter. Hvis du oppdager at det tar lang tid å legge til en aktivitet, så bør du redusere dette tallet.
 Conflict checking months: Antall måneder med sjekking for konflikter
 conflict-check-override-help: Tillater brukere å overstyre aktivitetskonflikter og planlegge to eller flere aktiviteter på samme tid.
@@ -232,8 +231,8 @@ Event popup text: Tekst for aktivitetspopup
 ########################################
 # Page: adminhome.php
 #
-Preferences: Innstillinger
 Assistants: Assistenter
+Preferences: Innstillinger
 Users: Brukere
 Account: Konto
 Categories: Kategorier
@@ -262,25 +261,35 @@ Admin mode: Administratormodus
 Your assistants: Dine assistenter
 
 ########################################
+# Page: availability.php
+#
+day: dag
+
+########################################
 # Page: category.php
 #
 Global: Global
-Add: Legg til
 Category Name: Kategorinavn
+Color: Farge
+Add: Legg til
 Delete: Slett
-Are you sure you want to delete this entry?: Er du sikker på at du vil slette denne aktiviteten?
 Make New Category: Legg til ny kategori
 
 ########################################
 # Page: catsel.php
 #
 Remove: Fjern
-OK: OK
+Cancel: Avbryt
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: En avtale har blitt avlyst for deg av
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: Ugyldig avtale-ID
 
 ########################################
 # Page: docadd.php
@@ -305,9 +314,9 @@ access-help: Angi om aktiviteten skal kunne sees av alle eller om den er fortrol
 Access: Tilgang
 priority-help: Angi aktivitetens prioritet.
 Priority: Prioritet
-Low: Lav
-Medium: Medium
 High: Høy
+Medium: Medium
+Low: Lav
 category-help: Setter kategorien for aktiviteten
 Category: Kategori
 URL: Adresse
@@ -318,6 +327,7 @@ All day event: Fulldagsaktivitet
 Timezone Offset: Tidssoneavvik
 time-help: Angir tidspunkt for aktiviteten.<br /><i>Dette feltet trenger ikke være utfylt.</i>
 duration-help: I dette feltet kan du angi varigheten på aktiviteten <br /><i>Dette feltet trenger ikke være utfylt.</i>
+hours: timer
 minutes: minutter
 end-time-help: Angir tidspunktet aktiviteten forventes avsluttet.
 participants-help: Vis deltagerne i dette innlegget.
@@ -344,10 +354,9 @@ You are not authorized to edit this entry.: Du har ikke lov å redigere denne akt
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: Følgende aktiviteter er i konflikt med det foreslåtte tidspunktet
 A new appointment has been made for you by: En ny avtale er gjort for deg av
 An appointment has been updated by: En avtale har blitt oppdatert av
-The subject is: Emnet er 
+The following conflicts with the suggested time: Følgende aktiviteter er i konflikt med det foreslåtte tidspunktet
 Please look on: Vennligst se på
 to accept or reject this appointment: for å akseptere eller avvise avtalen
 to view this appointment: for å se denne avtalen
@@ -358,15 +367,13 @@ conflicts with the following existing calendar entries: er i konflikt med eksist
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: Editer lag
 Add Layer: Legg til lag
+Edit Layer: Editer lag
 Source: Kilde
-Color: Farge
 Duplicates: Duplikater
 Show layer events that are the same as your own: Vis lag som er lik dine egne
 Add to My Calendar: Legg til kalenderen min
 Delete layer: Slett lag
-Are you sure you want to delete this layer?: Er du sikker på du vil slette dette laget?
 
 ########################################
 # Page: edit_layer_handler.php
@@ -379,8 +386,8 @@ You can only create one layer for each user: Du kan bare lag et lag per bruker
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX har ikke blitt satt i config.php.
 word characters only: kan kun inneholde tall og bokstaver (a-å, A-Å, 0-9)
-Edit User: Rediger bruker
 Add User: Ny bruker
+Edit User: Rediger bruker
 Calendar ID: Kalender-ID
 First Name: Fornavn
 Last Name: Etternavn
@@ -424,16 +431,14 @@ Edit Report: Rediger rapport
 Report name: Rapportnavn
 Current User: Nåværende bruker
 User: Bruker
-Include link in trailer: Inkluder lenke i foten
 Include standard header/trailer: Inkluder standard hode/for
-Date range: Tidsrom
 Include previous/next links: Inkluder forrige/neste lenker
 Include empty dates: Inkluder tomme datoer
+Date range: Tidsrom
 Template variables: Variabler for malen
 Page template: Mal for siden
 Day template: Mal for dag
 Event template: Mal for aktivitet
-Are you sure you want to delete this report?: Er du sikker på at du vil slette denne rapporten?
 
 ########################################
 # Page: edit_report_handler.php
@@ -443,8 +448,8 @@ Variable N not found: Variablen N ble ikke funnet
 ########################################
 # Page: edit_template.php
 #
-Edit Custom Script/Stylesheet: Rediger egendefinert skript/stilsett
 Edit Custom Header: Rediger egendefinert hode
+Edit Custom Script/Stylesheet: Rediger egendefinert skript/stilsett
 Edit Custom Trailer: Rediger egendefinert fot
 
 ########################################
@@ -454,8 +459,8 @@ Username: Brukernavn
 E-mail address: E-postadresse
 Password: Passord
 again: igjen
+Enabled: Aktivert
 Disabled for demo: Deaktivert for demo
-Are you sure you want to delete this user?: Er du sikker på at du vil slette denne brukeren?
 Change Password: Endre passord
 New Password: Nytt passord
 Set Password: Sett passord
@@ -507,14 +512,14 @@ You must specify a group name: Du må angi et gruppenavn
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: Viser helg i ukevisning
-Display days with events in bold in year view: Viser dager med aktiviteter i fetskrift for årvisning
-Time interval: Tidsinterval
-time-interval-help: Angir hvor lang blokken med tid i uke- og dagvisning skal være.
 Auto-refresh calendars: Oppdater kalendere automatisk
 auto-refresh-help: Hvis aktivert, vil dagsvisning, ukesvisning, månedsvisning og liste med ikke godkjente aktiviteter oppdateres automatisk periodisk.
 Auto-refresh time: Auto-oppdateringsintervall
 auto-refresh-time-help: Hvis auto-oppdatering er aktivert, så setter denne tiden mellom hver oppdatering. 
+Display days with events in bold in year view: Viser dager med aktiviteter i fetskrift for årvisning
+Display weekends in week view: Viser helg i ukevisning
+Time interval: Tidsinterval
+time-interval-help: Angir hvor lang blokken med tid i uke- og dagvisning skal være.
 Nonuser: Ikke-bruker kalendere
 user-customize-color: Angir om brukere har lov å endre deres eget fargeskjema.
 enable-gradient-help: Bruk gradert fargeovergang for tabellbakgrunn.
@@ -549,9 +554,8 @@ Therefore, updates should be made in the Palm Desktop.: Derfor bør oppdatering b
 This form will import vCalendar (.vcs) 1.0 events: Dette skjemaet vil importere vCalendar (.vcs) 1.0 aktiviteter
 The following formats have been tested: Følgende formater har blitt testet
 This form will import iCalendar (.ics) events: Dette skjemaet vil importere iCalendar (.vcs) aktiviteter
-Enabling: Aktivering av
+Enabling: Aktiverer
 Overwrite Prior Import: Skriv over tidligere importering
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: fører til at tidligere importerte aktiviteter som bruker samme UID som en aktivitet fra den nye import-filen, vil bli markert som slettede. Dermed bør en oppdatert iCal-fil kunne bli importert uten at det oppstår duplikater.  
 
 ########################################
 # Page: help_index.php
@@ -563,13 +567,12 @@ Help Index: Hjelpoversikt
 #
 Add/Edit/Delete: Legg til/Rediger/Slett
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Ved å klikke på "Rediger lag" i Admin seksjonen nederst på siden kan du legge til/redigere/slette lag.
-Specifies the user that you would like to see displayed in your calendar.: Angir brukeren du vil ha vist i din kalender.
 The text color of the new layer that will be displayed in your calendar.: Tekstfargen for det nye laget som vil bli vist in din kalender.
-If checked, events that are duplicates of your events will be shown.: Hvis merket av, vil aktiviteter som er duplikater av dine aktiviteter bli vist.
 Disabling: Deaktiverer
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Klikk "Deaktiver lag" i Admin seksjonen nederst på siden for å slå av lag.
-Enabling: Aktiverer
+If checked, events that are duplicates of your events will be shown.: Hvis merket av, vil aktiviteter som er duplikater av dine aktiviteter bli vist.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Klikk "Aktiver lag" i Admin seksjonen nederst på siden for å slå på lag.
+Specifies the user that you would like to see displayed in your calendar.: Angir brukeren du vil ha vist i din kalender.
 
 ########################################
 # Page: help_pref.php
@@ -591,7 +594,6 @@ remote-subscriptions-url-help: Viser adressen som eksterne brukere skal bruke fo
 Disabled: Deaktivert
 Import format: Importeringsformat
 Exclude private records: Utelat private oppføringer
-Overwrite Prior Import: Skriv over tidligere importering
 
 ########################################
 # Page: import_handler.php
@@ -603,24 +605,22 @@ The import file contained no data: Den importerte filen inneholdt ikke noen data
 ########################################
 # Page: layers.php
 #
+Layer: Lag
+Edit layer: Editer lag
 Layers are currently: Lagene er nå
-Enabled: Aktivert
 Disable Layers: Deaktiver lag
-Enable Layers: Aktiver lag
 Click here: Klikk her
 to modify the layers settings for the: for å modifisere laginnstilling for
 calendar: kalender
 Add layer: Legg til lag
-Layer: Lag
-Edit layer: Editer lag
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: Vis aktiviteten
 Approve/Confirm: Godkjenn/Bekreft
-Approve this entry?: Godkjenn aktiviteten?
 Reject: Avvis
+Approve this entry?: Godkjenn aktiviteten?
 Reject this entry?: Avvis denne aktiviteten?
 
 ########################################
@@ -708,8 +708,8 @@ Set Category: Sett kategori
 ########################################
 # Page: users.php
 #
-Add New User: Opprett bruker
 denotes administrative user: indikerer administrator
+Add New User: Opprett bruker
 
 ########################################
 # Page: usersel.php
@@ -735,7 +735,6 @@ Week (Timebar): Uke (tidsbar)
 Month (Timebar): Måned (tidsbar)
 Month (side by side): Måned (side ved side)
 Month (on same calendar): Måned (i samme kalender)
-Selected: Valgt
 
 ########################################
 # Page: views_edit_handler.php
@@ -756,9 +755,9 @@ External User: Ekstern bruker
 Approve/Confirm entry: Godkjenn/bekreft aktiviteten
 Reject entry: Avvis aktiviteten
 Set category: Sett kategori
-Edit entry: Endre aktiviteten
 Copy entry: Kopier aktiviteten
 This will delete this entry for all users.: Dette vil slette aktiviteten for alle brukerene
+Edit entry: Endre aktiviteten
 Edit repeating entry for all dates: Rediger repeterende aktivitet for alle datoer
 Delete repeating event for all dates: Slett repeterende aktiviteter for alle datoer
 Edit entry for this date: Rediger aktiviteten for denne datoen
@@ -767,8 +766,8 @@ This will delete the entry from your calendar.: Dette vil slette aktiviteten fra
 Do you want to add this entry to your calendar?: Vil du legge inn denne aktiviteten i kalenderen din?
 This will add the entry to your calendar.: Dette vil legge til aktiviteten i kalenderen din.
 Email all participants: E-post til alle deltakerne
-Show activity log: Vis aktivitetslogg
 Hide activity log: Skjul aktivitetslogg
+Show activity log: Vis aktivitetslogg
 Export this entry to: Eksporter denne aktiviteten til
 Palm Pilot: Palm Pilot
 
@@ -792,6 +791,21 @@ Dec: Des
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: overgår grense på XXX aktiviteter per dag
+All Attendees: Alle deltagere
+Busy: Opptatt
+Tentative: Tentativ
+Event approved: Aktivitet godkjent
+Event created: Aktivitet lagd
+Event deleted: Aktivitet slettet
+Notification sent: Medling sendt
+Event rejected: Aktivitet avvist
+Reminder sent: Påminnelse sendt
+Event updated: Aktivitet oppdatert
+Changes successfully saved: Vellykket lagring av endringer
+Event: Aktitivitet
+Action: Handling
+Printer Friendly: Utskriftsvennlig
+Generate printer-friendly version: Vis som utskriftsvennlig side
 January: Januar
 February: Februar
 March: Mars
@@ -814,6 +828,11 @@ Aug: Aug
 Sep: Sep
 Oct: Okt
 Nov: Nov
+The following error occurred: Følgende feil oppstod
+You are not authorized: Du har ikke tillatelse
+Error approving event: Feil ved godkjenning av aktivitet
+Sunday: Søndag
+Monday: Mandag
 Tuesday: Tirsdag
 Wednesday: Onsdag
 Thursday: Torsdag
@@ -826,24 +845,6 @@ Wed: Ons
 Thu: Tor
 Fri: Fre
 Sat: Lør
-All Attendees: Alle deltagere
-Busy: Opptatt
-Tentative: Tentativ
-Changes successfully saved: Vellykket lagring av endringer
-The following error occurred: Følgende feil oppstod
-You are not authorized: Du har ikke tillatelse
-day: dag
-Error approving event: Feil ved godkjenning av aktivitet
-Generate printer-friendly version: Vis som utskriftsvennlig side
-Printer Friendly: Utskriftsvennlig
-Event created: Aktivitet lagd
-Event approved: Aktivitet godkjent
-Event rejected: Aktivitet avvist
-Event updated: Aktivitet oppdatert
-Event deleted: Aktivitet slettet
-Notification sent: Medling sendt
-Reminder sent: Påminnelse sendt
-Action: Handling
 
 ########################################
 # Page: includes/trailer.php

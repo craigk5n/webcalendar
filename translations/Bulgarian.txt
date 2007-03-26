@@ -7,7 +7,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -39,8 +39,12 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: access.php
 #
 Database error: @5H:0 2 1070B0 40==8
-Cancel: B<O=0
-Save: 0?078
 Go: 0?@54
+Save: 0?078
 Public Access: C1;8G5= 4>ABJ?
 Admin: 4<8=8AB@0B>@
+
+########################################
+# Page: catsel.php
+#
+Cancel: B<O=0

@@ -8,7 +8,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -37,14 +37,17 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: 웹 캘린더
+
+########################################
 # Page: access.php
 #
-Save: 저장
 Go: 시작
+Save: 저장
 Admin: 관리
 Public: 공용
-confidential: 비밀
-private: 개인용
 
 ########################################
 # Page: activity_log.php
@@ -54,23 +57,19 @@ Next: 다음
 ########################################
 # Page: add_entry.php
 #
-Invalid entry id: 틀린 항목 아이디
+private: 개인용
+confidential: 비밀
 
 ########################################
 # Page: admin.php
 #
-Yes: 예
-No: 아니오
 Week: 주
 Month: 월
 Year: 해
 Help: 도움말
 Settings: 설정
 Colors: 색상
-Title: 웹 캘린더
 Language: 언어
-Sunday: 일요일 
-Monday: 월요일 
 time-format-help: 시간 표시 형식을 명시합니다.<br /><i>12 hour:</i>시간표시가 3am, 8:30pm, 등등으로 표시됨<br /><i>24 hour:</i>시간표시가 300, 2030 등등으로 표시됨
 Time format: 시간 표시 형식
 12 hour: 12 hour
@@ -84,6 +83,8 @@ display-week-number-help: 월별 화면과 주별 화면에 몇주차인가(1~52) 표시여부를 명
 Display week number: 몇주차인가 표시
 display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다. <br /> "Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<br />"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
 Display unapproved: 승인안된 행사 표시
+Yes: 예
+No: 아니오
 Document background: 배경 색상
 Document title: 제목 색상
 Table cell background: 테이블 셀 배경 색상
@@ -107,7 +108,11 @@ Time: 시각
 # Page: category.php
 #
 Delete: 지우기
-Are you sure you want to delete this entry?: 정말로 이 항목을 지우시겠습니까?
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: 틀린 항목 아이디
 
 ########################################
 # Page: docadd.php
@@ -130,9 +135,9 @@ access-help: 행사의 접근 수준을 명시.<br /> <i>공용</i>: 모든 사람이 행사의 세부
 Access: 접근
 priority-help: 행사 우선순위 명시. 높은 우선순위의 행사는 굵은 글씨로 표시됩니다.
 Priority: 우선 순위
-Low: 낮음
-Medium: 중간
 High: 높음
+Medium: 중간
+Low: 낮음
 date-help: 행사일을 나타냅니다. 
 time-help: 행사 시각입니다.<br /><i>이 항목은 비워둘 수 있습니다.</i>
 duration-help: 행사기간 명시(분단위)<br /><i>이 항목은 비워둘 수 있습니다.</i>
@@ -144,9 +149,8 @@ You are not authorized to edit this entry.: 이 항목을 편집할 권한이 없습니다.
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: 다음 사항은 제시된 시간과 겹칩니다.
 A new appointment has been made for you by: 새 약속이 생성되었습니다. 생성자:
-The subject is: 주제는
+The following conflicts with the suggested time: 다음 사항은 제시된 시간과 겹칩니다.
 Please look on: 다음을 살펴볼 것-
 to accept or reject this appointment: 이 약속을 수락하거나 거절
 to view this appointment: 이 약속을 보기
@@ -156,8 +160,8 @@ conflicts with the following existing calendar entries: 다음과 같은 항목과 겹칩�
 ########################################
 # Page: edit_nonusers.php
 #
-Edit User: 사용자 편집
 Add User: 사용자 추가
+Edit User: 사용자 편집
 First Name: 이름
 Last Name: 성
 
@@ -257,15 +261,15 @@ View Another Users Calendar: 다른 사용자의 달력 보기
 ########################################
 # Page: users.php
 #
-Add New User: 새 사용자 추가
 denotes administrative user: 관리자를 나타냄
+Add New User: 새 사용자 추가
 
 ########################################
 # Page: view_entry.php
 #
 Approve/Confirm entry: 이 항목을 승인/확인함
-Edit entry: 항목 편집
 This will delete this entry for all users.: 모든 사용자들에서도 이 항목이 지워집니다.
+Edit entry: 항목 편집
 
 ########################################
 # Page: week_details.php
@@ -287,6 +291,8 @@ Dec: 12월
 # Page: includes/functions.php
 #
 WK: 주
+Printer Friendly: 인쇄용 화면
+Generate printer-friendly version: 인쇄용 화면 생성
 January: 1월
 February: 2월
 March: 3월
@@ -309,6 +315,11 @@ Aug: 8월
 Sep: 9월
 Oct: 10월
 Nov: 11월
+The following error occurred: 다음과 같은 오류 발생:
+You are not authorized: 권한이 없습니다:
+Error approving event: 행사 승인 중 에러
+Sunday: 일요일 
+Monday: 월요일 
 Tuesday: 화요일
 Wednesday: 수요일
 Thursday: 목요일
@@ -321,11 +332,6 @@ Wed: 수
 Thu: 목
 Fri: 금
 Sat: 토
-The following error occurred: 다음과 같은 오류 발생:
-You are not authorized: 권한이 없습니다:
-Error approving event: 행사 승인 중 에러
-Generate printer-friendly version: 인쇄용 화면 생성
-Printer Friendly: 인쇄용 화면
 
 ########################################
 # Page: includes/trailer.php

@@ -7,7 +7,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 01-22-2007
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -44,19 +44,19 @@ OK: Ados
 ########################################
 # Page: access.php
 #
-Save: Gorde
 Database error: Akatsa datu basean
+Go: Joan
+Save: Gorde
 Public Access: Atzipen publikoa
 Admin: Konfigurazioa
-Go: Joan
 Calendar: Egutegia
 Public: Publikoa
 
 ########################################
 # Page: activity_log.php
 #
-Previous: Aurrekoa
 Next: Hurrengoa
+Previous: Aurrekoa
 
 ########################################
 # Page: add_entry.php
@@ -87,7 +87,6 @@ language-help: Erabili beharreko hizkuntza adierazten du.
 Language: Hizkuntza
 Your browser default language is: Zure nabigatzailearen hizkuntza lehenetsia da
 None: Bat ere ez
-hours: orduak
 date-format-help: Dataren formatua adierazten du
 Date format: Data formatua
 display-week-starts-on: Astea Igande edo Astelehenean asten den adierazteko
@@ -197,10 +196,9 @@ Time: Ordua
 # Page: category.php
 #
 Global: Orokorra
-Invalid entry id: Sarrera desegokia
-Add: Gehitu
 Category Name: Atalaren izena
 Color: Kolorea
+Add: Gehitu
 Delete: Ezabatu
 Make New Category: Atal berria gehitu
 
@@ -214,6 +212,11 @@ Cancel: Utzi
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Bilera bat bertan bera utzi dizu
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: Sarrera desegokia
 
 ########################################
 # Page: docadd.php
@@ -248,6 +251,7 @@ Timed event: Denboraz mugatua
 All day event: Egun osokoa
 time-help: Gertaeraren iraupena adierazten du ( hutsik utz liteke )
 duration-help: Gertaeraren iraupena minutuetan adierazirik
+hours: orduak
 minutes: Minutuak
 participants-help: Gertaeran honetan partaide direnen lista.
 Availability: Libre egotea
@@ -272,10 +276,9 @@ You are not authorized to edit this entry.: Ez zaude baimenduta gertaera hau edi
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: Hondokoa ez dator bat gomendatutako orduarekin
 A new appointment has been made for you by: Bilera bat ezartzen dizu
 An appointment has been updated by: Bilera bat eguneratu du
-The subject is: Gaia da
+The following conflicts with the suggested time: Hondokoa ez dator bat gomendatutako orduarekin
 Please look on: Mesedez bilatu
 to accept or reject this appointment: bilera hau onartzeko edo uko egiteko
 to view this appointment: bilera hau ikusteko
@@ -563,7 +566,18 @@ Dec: Abe
 ########################################
 # Page: includes/functions.php
 #
+Event approved: Gertaera onetsia
+Event created: Gertaera sortua
+Event deleted: Gertaera ezabatua
+Notification sent: Jakinarazpen mezua bidalia
+Event rejected: Gertaera gaitzetsia
+Reminder sent: Gogorarazteko mezua bidalia
+Event updated: Gertaera eguneratua
 WK: ast
+Event: Gertaera
+Action: Ekintza
+Printer Friendly: Inprimatzeko egokia
+Generate printer-friendly version: Formatu inprimagarria sortu
 January: Urtarrila
 February: Otsaila
 March: Martxoa
@@ -586,6 +600,9 @@ Aug: Abu
 Sep: Ira
 Oct: Urr
 Nov: Aza
+The following error occurred: Hondoko akatsa gertatu da
+You are not authorized: Ez zaude baimenduta
+Error approving event: Akatsa gertaera onestean
 Sunday: Igandea
 Monday: Astelehena
 Tuesday: Asteartea
@@ -600,20 +617,6 @@ Wed: Azk
 Thu: Otg
 Fri: Otr
 Sat: Lar
-The following error occurred: Hondoko akatsa gertatu da
-You are not authorized: Ez zaude baimenduta
-Error approving event: Akatsa gertaera onestean
-Generate printer-friendly version: Formatu inprimagarria sortu
-Printer Friendly: Inprimatzeko egokia
-Event created: Gertaera sortua
-Event approved: Gertaera onetsia
-Event rejected: Gertaera gaitzetsia
-Event updated: Gertaera eguneratua
-Event deleted: Gertaera ezabatua
-Notification sent: Jakinarazpen mezua bidalia
-Reminder sent: Gogorarazteko mezua bidalia
-Event: Gertaera
-Action: Ekintza
 
 ########################################
 # Page: includes/trailer.php

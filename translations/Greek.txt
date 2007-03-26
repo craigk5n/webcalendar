@@ -11,7 +11,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -40,20 +40,22 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: Web Ημερολόγιο
+
+########################################
 # Page: access.php
 #
 Database error: Σφάλμα στη βάση δεδομένων
-Cancel: Ακύρωση
-Save: Αποθήκευση
 Go: Πήγαινε
+Save: Αποθήκευση
 Public Access: Κοινή πρόσβαση
 Admin: Διαχειριστής
 Calendar: Ημερολόγιο
 Edit: Επεξεργασία
 Events: Γεγονότα
 Public: Δημόσιο
-confidential: Εμπιστευτικό
-private: Ιδιωτικό
 
 ########################################
 # Page: activity_log.php
@@ -64,16 +66,14 @@ Previous: Προηγούμενο
 ########################################
 # Page: add_entry.php
 #
-Event: Γεγονός
-Invalid entry id: Εσφαλμένο id καταχώρησης
+private: Ιδιωτικό
+confidential: Εμπιστευτικό
 Error adding event: Σφάλμα στην προσθήκη γεγονότος
 
 ########################################
 # Page: admin.php
 #
 Select: Επιλέξτε
-Yes: Ναι
-No: Όχι
 Day: Ημέρα
 Week: Εβδομάδα
 Month: Μήνας
@@ -88,7 +88,6 @@ Email: Email
 Colors: Χρώματα
 app-name-help: Καθορίζει το όνομα της εφαρμογής που θα εμφανίζεται στη γραμμή τίτλου του browser σε όλες τις σελίδες.  Η επιλογή εδώ θα αναζητηθεί στα αρχεία μεταφράσεων για να μπορούν να δωθούν διαφορετικοί τίτλοι σε διαφορετικές γλώσσες.
 Application Name: Όνομα εφαρμογής
-Title: Web Ημερολόγιο
 server-url-help: Καθορίζει το URL της εφαρμογής.  Θα περιλαμβάνεται στα email υπενθυμίσεων και ειδοποιήσεων.
 Server URL: Server URL
 language-help: Καθορίζει το ποιά γλώσσα θα χρησιμοποιείται.
@@ -103,13 +102,10 @@ Custom header: Προσαρμοσμένος πρόλογος
 custom-trailer-help: Επιτρέπει σε ένα προσαρμοσμένο HTML snippet να εισαχθεί στο τέλος κάθε σελίδας.
 Custom trailer: Προσαρμοσμένος επίλογος
 tz-help: Καθορίζει τη διαφορά ώρας από το server στον client.
-hours: ώρες
 date-format-help: Καθορίζει τη μορφή της ημερομηνίας.
 Date format: Μορφή ημερομηνίας
 display-week-starts-on: Καθορίζει αν η εβδομάδα αρχίζει Κυριακή ή Δευτέρα.  Αν επιλέξετε Δευτέρα, τότε ο αριθμός εβδομάδας συμβαδίζει με τον αντίστοιχο ISO.
 Week starts on: Η εβδομάδα αρχίζει την
-Sunday: Κυριακή
-Monday: Δευτέρα
 time-format-help: Καθορίζει τι τύπος ώρας θα χρησιμοποιείται: <br /><i>12ωρος:</i> Εμφανίζει την ώρα σαν 3πμ, 8:30αμ, κτλ.  <br /><i>24ωρος:</i> Εμφανίζει την ώρα σαν 300, 2030, κτλ.
 Time format: Τύπος ώρας
 12 hour: 12ωρος
@@ -143,6 +139,8 @@ display-unapproved-help: Καθορίζει αν τα, σε αναμονή απ�
 Display unapproved: Εμφάνιση των σε αναμονή αποδοχής γεγονότων
 conflict-check-help: Έλεγχος για επικαλύψεις γεγονότων (δύο γεγονότα προγραμματισμένα την ίδια ώρα για τον ίδιο χρήστη).  Αν τεθεί σε "Ναι", μπορείτε να τα προγραμματίσετε την ίδια ώρα αλλά θα σας εμφανιστεί μια προειδοποίηση. Αν τεθεί σε "Όχι" δεν θα υπάρξει καμμία προειδοποίηση. Προτείνεται να το θέσετε στο "Ναι".
 Check for event conflicts: Έλεγχος για επικάλυψη γεγονότων
+Yes: Ναι
+No: Όχι
 conflict-months-help: Αν είναι ενεργός ο έλεγχος για επικάλυψη ("Έλεγχος για επικάλυψη γεγονότων" έχει τιμή "Ναι"), αυτή η ρύθμιση καθορίζει σε πόσους μήνες βάθος, θα γίνεται ο έλεγχος επικάλυψης. Αν διαπιστώσετε οτι το πρόγραμμα αργεί να προσθέσει νέα γεγονότα, μειώστε το νούμερο.
 Conflict checking months: Βάθος χρόνου σε μήνες για τον έλεγχο επικάλυψης
 conflict-check-override-help: Επιτρέπεται σε χρήστες να προγραμματίσουν 2 ή περισσότερα γεγονότα την ίδια χρονική περίοδο.
@@ -236,8 +234,8 @@ Event popup text: Κείμενο των αναδυόμενων κειμένων 
 ########################################
 # Page: adminhome.php
 #
-Preferences: Ρυθμίσεις
 Assistants: Συμμετέχοντες
+Preferences: Ρυθμίσεις
 Users: Χρηστες
 Account: Λογαριασμός
 Categories: Κατηγορίες
@@ -266,25 +264,35 @@ Admin mode: Κατάσταση διαχειριστή
 Your assistants: Οι βοηθοί σας
 
 ########################################
+# Page: availability.php
+#
+day: ημέρα
+
+########################################
 # Page: category.php
 #
 Global: Δημόσιο
-Add: Προσθήκη
 Category Name: Όνομα Κατηγορίας
+Color: Χρώμα
+Add: Προσθήκη
 Delete: Διαγραφή
-Are you sure you want to delete this entry?: Είστε σίγουρος οτι θέλετε να σβύσετε την εγγραφή;
 Make New Category: Προσθήκη νέας κατηγορίας
 
 ########################################
 # Page: catsel.php
 #
 Remove: Διαγραφή
-Ok: Εντάξει
+Cancel: Ακύρωση
 
 ########################################
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Μια συνάντηση ακυρώθηκε για σας από το χρήστη:
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: Εσφαλμένο id καταχώρησης
 
 ########################################
 # Page: docadd.php
@@ -309,9 +317,9 @@ access-help: Καθορίζει το επίπεδο πρόσβασης του γ
 Access: Πρόσβαση
 priority-help: Καθορίζει την προτεραιότητα του γεγονότος.  Τα γεγονότα σε υψηλή προτεραιότητα εμφανίζονται με έντονη γραφή.
 Priority: Προτεραιότητα
-Low: Χαμηλή
-Medium: Μέτρια
 High: Υψηλή
+Medium: Μέτρια
+Low: Χαμηλή
 category-help: Καθορίζει την κατηγορία του γεγονότος.
 Category: Κατηγορία
 URL: URL
@@ -322,6 +330,7 @@ All day event: Ολοήμερο γεγονός
 Timezone Offset: Timezone Offset
 time-help: Καθορίζει την ώρα του γεγονότος.<br />Επέλεξε "Γεγονός με ώρα" (για γεγονός που προγραμματίστηκε για συγκεκριμένη ώρα της μέρας), "Γεγονός δίχως ώρα" (για γεγονός που δεν έχει ώρα (π.χ. εορτή κάποιου φίλου), ή "Ολοήμερο γεγονός" (για γεγονός που ισχύει όλη την ημέρα (π.χ. απουσία από το γραφείο).
 duration-help: Καθορίζει τη διάρκεια (σε ώρες:λεπτά) του γεγονότος.  <br /><i>Η επιλογή μπορεί να μείνει κενή.</i>
+hours: ώρες
 minutes: λεπτά
 end-time-help: Καθορίζει την ώρα που αναμένεται το γεγονός να τελειώσει.
 participants-help: Εμφανίζει τους συμμετέχοντες στο γεγονός.
@@ -348,10 +357,9 @@ You are not authorized to edit this entry.: Δεν είστε εξουσιοδο
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: Οι ακόλουθες επικαλύψεις με περίοδο
 A new appointment has been made for you by: Μια νέα συνάντηση δημιουργήθηκε για σας από τον χρήστη:
 An appointment has been updated by: Μια νέα συνάντηση ανανεώθηκε από το χρήστη:
-The subject is: Το θέμα είναι:
+The following conflicts with the suggested time: Οι ακόλουθες επικαλύψεις με περίοδο
 Please look on: Παρακαλώ κοιτάξτε
 to accept or reject this appointment: να δεχθείτε ή απορρίψετε τη συνάντηση
 to view this appointment: να δείτε τη συνάντηση
@@ -362,15 +370,13 @@ conflicts with the following existing calendar entries: επικαλύπτει �
 ########################################
 # Page: edit_layer.php
 #
-Edit Layer: Επεξεργασία Επιπέδου
 Add Layer: Προσθήκη νέου Επιπέδου
+Edit Layer: Επεξεργασία Επιπέδου
 Source: Πηγή
-Color: Χρώμα
 Duplicates: Διπλές καταχωρήσεις
 Show layer events that are the same as your own: Εμφάνιση των γεγονότων του επιπέδου που είναι ίδια με τα δικά σας
 Add to My Calendar: Προσθήκη στο Ημερολόγιο μου
 Delete layer: Διαγραφή Επιπέδου
-Are you sure you want to delete this layer?: Είστε σίγουρος οτι θέλετε να διαγράψετε αυτό το Επίπεδο;
 
 ########################################
 # Page: edit_layer_handler.php
@@ -383,8 +389,8 @@ You can only create one layer for each user: Μπορείτε να δημιου�
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX δεν έχει τεθεί στο config.php.
 word characters only: can only contain word characters (a-zA-Z_0-9)
-Edit User: Επεξεργασία Χρήστη
 Add User: Προσθήκη Χρήστη
+Edit User: Επεξεργασία Χρήστη
 Calendar ID: ID Ημερολογίου
 First Name: Όνομα
 Last Name: Επίθετο
@@ -434,16 +440,14 @@ Edit Report: Επεξεργασία Αναφοράς
 Report name: Όνομα αναφοράς
 Current User: Τρέχων Χρήστης
 User: Χρήστης
-Include link in trailer: Συμπεριέλαβε link στον επίλογο
 Include standard header/trailer: Συμπεριέλαβε τον standard πρόλογο/επίλογο
-Date range: Περίοδος
 Include previous/next links: Συμπεριέλαβε τα προηγούμενα/επόμενα links
 Include empty dates: Συμπεριέλαβε τις κενές μέρες
+Date range: Περίοδος
 Template variables: Μεταβλητές του template
 Page template: Template σελίδας
 Day template: Template ημέρας
 Event template: Template γεγονότος
-Are you sure you want to delete this report?: Είστε σίγουρος οτι θέλετε να διαγράψετε την αναφορά;
 
 ########################################
 # Page: edit_report_handler.php
@@ -453,8 +457,8 @@ Variable N not found: Η μεταβλητή N δεν βρέθηκε
 ########################################
 # Page: edit_template.php
 #
-Edit Custom Script/Stylesheet: Επεξεργασία προσαρμοσμένου από το χρήστη Script/Stylesheet
 Edit Custom Header: Επεξεργασία προσαρμοσμένου από το χρήστη Προλόγου
+Edit Custom Script/Stylesheet: Επεξεργασία προσαρμοσμένου από το χρήστη Script/Stylesheet
 Edit Custom Trailer: Επεξεργασία προσαρμοσμένου από το χρήστη Επιλόγου
 
 ########################################
@@ -464,8 +468,8 @@ Username: Όνομα Χρήστη
 E-mail address: Διεύθυνση E-mail
 Password: Κωδικός
 again: ξανά
+Enabled: Ενεργό
 Disabled for demo: Disabled for demo
-Are you sure you want to delete this user?: Είστε σίγουρος οτι θέλετε να διαγράψετε το χρήστη;
 Change Password: Αλλαγή κωδικού
 New Password: Νέος κωδικός
 Set Password: Θέσετε τον κωδικό
@@ -517,14 +521,14 @@ You must specify a group name: Πρέπει να ορίσετε ένα όνομ�
 ########################################
 # Page: help_admin.php
 #
-Display weekends in week view: Εμφάνιση Εβδομάδας με Σαββατοκύριακα
-Display days with events in bold in year view: Εμφάνιση ημερών με γεγονότα σε έντονη γραφή στην Εμφάνιση Έτους
-Time interval: Διάρκεια block ώρας
-time-interval-help: Καθορίζει τη διάρκεια των block ώρας στην Εμφάνιση Εβδομάδας και Εμφάνιση Ημέρας.
 Auto-refresh calendars: Αυτόματη ανανέωση ημερολογίων
 auto-refresh-help: Όταν είναι ενεργό, η Εμφάνιση Ημέρας, Εβδομάδας, Μήνα, και η λίστα με τα γεγονότα σε αναμονή αποδοχής, ανανεώνονται περιοδικά.
 Auto-refresh time: Χρόνος ανανέωσης
 auto-refresh-time-help: Όταν η Αυτόματη ανανέωση είναι ενεργή, αυτή η επιλογή καθορίζει το χρόνο ανανέωσης.
+Display days with events in bold in year view: Εμφάνιση ημερών με γεγονότα σε έντονη γραφή στην Εμφάνιση Έτους
+Display weekends in week view: Εμφάνιση Εβδομάδας με Σαββατοκύριακα
+Time interval: Διάρκεια block ώρας
+time-interval-help: Καθορίζει τη διάρκεια των block ώρας στην Εμφάνιση Εβδομάδας και Εμφάνιση Ημέρας.
 Nonuser: Ημερολόγια μη Χρηστών
 user-customize-color: Καθορίζει αν οι χρήστες μπορούν να αλλάζουν τους χρωματισμούς τους.
 enable-gradient-help: Χρήση μεταβλητών χρωμάτων στα κελιά των πινάκων.
@@ -559,9 +563,8 @@ Therefore, updates should be made in the Palm Desktop.: Αλλιώς, πρέπε
 This form will import vCalendar (.vcs) 1.0 events: Η σελίδα αυτή εισάγει γεγονότα από vCalendar (.vcs) 1.0
 The following formats have been tested: Τα παρακάτω formats έχουν ελεγχθεί
 This form will import iCalendar (.ics) events: Η σελίδα αυτή εισάγει γεγονότα από iCalendar (.ics)
-Enabling:  Αν ενεργοποιήσετε το
-Overwrite Prior Import: Overwrite πριν την Εισαγωγή
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted.  This should allow an updated iCalendar file to be imported without creating duplicates.: όλα τα γεγονότα που εισάχθηκαν προηγουμένως χρησιμοποιούν το ίδιο UID με τα γεγονότα από τη νέα εισαγωγή που μαρκαρίστηκαν για διαγραφή. Αυτό επιτρέπει ένα αρχείο iCalendar να εισαχθεί χωρίς να δημιουργεί διπλοεγγραφές.
+Enabling: Ενεργοποίηση
+Overwrite Prior Import: Επικάλυψη της προηγούμενης εισαγωγής
 
 ########################################
 # Page: help_index.php
@@ -573,13 +576,12 @@ Help Index: Περιεχόμενα Βοήθειας
 #
 Add/Edit/Delete: Προσθήκη/Επεξεργασία/Διαγραφή
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Πατώντας το link Επεξεργασία Επιπέδων στην περιοχή διαχειριστή, κάτω στη σελίδα, σας επιτρέπει να προσθέσετε/επεξεργαστείτε/διαγράψετε επίπεδα.
-Specifies the user that you would like to see displayed in your calendar.: Καθορίζει το χρήστη που επιθυμείτε να εμφανίζεται στο ημερολόγιό σας.
 The text color of the new layer that will be displayed in your calendar.: Το χρώμα του κειμένου από το νέο επίπεδο που θα εμφανίζεται στο ημερολόγιό σας.
-If checked, events that are duplicates of your events will be shown.: Αν είναι επιλεγμένο, θα εμφανίζονται τα γεγονότα που είναι αντίγραφα των γεγονότων σας.
 Disabling: Απενεργοποίηση
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Πατήστε το link για απενεργοποίηση επιπέδων στην περιοχή του διαχειριστή, κάτω στη σελίδα, για να τα απενεργοποιήσετε.
-Enabling: Ενεργοποίηση
+If checked, events that are duplicates of your events will be shown.: Αν είναι επιλεγμένο, θα εμφανίζονται τα γεγονότα που είναι αντίγραφα των γεγονότων σας.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Πατήστε το link για ενεργοποίηση επιπέδων στην περιοχή του διαχειριστή, κάτω στη σελίδα, για να τα ενεργοποιήσετε.
+Specifies the user that you would like to see displayed in your calendar.: Καθορίζει το χρήστη που επιθυμείτε να εμφανίζεται στο ημερολόγιό σας.
 
 ########################################
 # Page: help_pref.php
@@ -601,7 +603,6 @@ remote-subscriptions-url-help: Εμφανίζει το URL που χρειάζο
 Disabled: Μη ενεργό
 Import format: Format εισαγωγής
 Exclude private records: Αποκλείονται ιδιωτικές εγγραφές
-Overwrite Prior Import: Επικάλυψη της προηγούμενης εισαγωγής
 
 ########################################
 # Page: import_handler.php
@@ -613,24 +614,22 @@ The import file contained no data: Το αρχείο εισαγωγής δεν �
 ########################################
 # Page: layers.php
 #
+Layer: Επίπεδο
+Edit layer: Επεξεργασία επιπέδου
 Layers are currently: Τα επίπεδα είναι
-Enabled: Ενεργό
 Disable Layers: Απενεργοποίηση Επιπέδων
-Enable Layers: Ενεργοποίηση Επιπέδων
 Click here: Πατήστε εδώ
 to modify the layers settings for the: για να τροποποιήσετε τις ρυθμίσεις των επιπέδων για το
 calendar: ημερολόγιο
 Add layer: Προσθήκη επιπέδου
-Layer: Επίπεδο
-Edit layer: Επεξεργασία επιπέδου
 
 ########################################
 # Page: list_unapproved.php
 #
 View this entry: Εμφάνιση της εγγραφής
 Approve/Confirm: Αποδοχή/Έγκριση
-Approve this entry?: Αποδοχή της εγγραφής;
 Reject: Απόρριψη
+Approve this entry?: Αποδοχή της εγγραφής;
 Reject this entry?: Απόρριψη της εγγραφής;
 
 ########################################
@@ -718,8 +717,8 @@ Set Category: Κατηγορία
 ########################################
 # Page: users.php
 #
-Add New User: Προσθήκη Νέου Χρήστη
 denotes administrative user: δείχνει χρήστη που είναι διαχειριστής
+Add New User: Προσθήκη Νέου Χρήστη
 
 ########################################
 # Page: usersel.php
@@ -745,7 +744,6 @@ Week (Timebar): Εβδομάδα (Μπάρα ώρας)
 Month (Timebar): Μήνας (Μπάρα ώρας)
 Month (side by side): Μήνας (πλευρά - πλευρά)
 Month (on same calendar): Μήνας (στο ίδιο ημερολόγιο)
-Selected: Επιλεγμένο
 
 ########################################
 # Page: views_edit_handler.php
@@ -766,9 +764,9 @@ External User: Εξωτερικός Χρήστης
 Approve/Confirm entry: Αποδοχή/Έγκριση εγγραφής
 Reject entry: Απόριψη εγγραφής
 Set category: Κατηγορία
-Edit entry: Επεξεργασία εγγραφής
 Copy entry: Αντιγραφή εγγραφής
 This will delete this entry for all users.: Θα διαγραφεί η εγγραφή για όλους τους χρήστες.
+Edit entry: Επεξεργασία εγγραφής
 Edit repeating entry for all dates: Τροποποίηση επαναλαμβανόμενης εγγραφής για όλες τις ημερομηνίες
 Delete repeating event for all dates: Διαγραφή επαναλαμβανόμενου γεγονότος για όλες τις ημερομηνίες
 Edit entry for this date: Τροποποίηση εγγραφής για την τρέχουσα ημερομηνία
@@ -777,8 +775,8 @@ This will delete the entry from your calendar.: Θα διαγραφεί η εγ�
 Do you want to add this entry to your calendar?: Θέλεις να προσθέσεις την εγγραφή στο ημερολόγιό σου;
 This will add the entry to your calendar.: Θα προσθέσει την εγγραφή στο ημερολόγιό σου.
 Email all participants: Στείλε email σε όλους τους συμμετέχοντες
-Show activity log: Εμφάνιση του αρχείου ενεργειών
 Hide activity log: Απόκρυψη του αρχείου ενεργειών
+Show activity log: Εμφάνιση του αρχείου ενεργειών
 Export this entry to: Εξαγωγή αυτής της εγγραφής σε
 Palm Pilot: Palm Pilot
 
@@ -801,8 +799,23 @@ Dec: Δεκ
 ########################################
 # Page: includes/functions.php
 #
-WK: εβδ
 exceeds limit of XXX events per day: υπέρβαση του ορίου των XXX γεγονότων την ημέρα
+All Attendees: Όλοι οι παρευρισκόμενοι
+Busy: Απασχολημένο
+Tentative: Αβέβαιο
+Event approved: Το γεγονός έγινε αποδεκτό
+Event created: Το γεγονός δημιουργήθηκε
+Event deleted: Το γεγονός διαγράφτηκε
+Notification sent: Η ειδοποίηση στάλθηκε
+Event rejected: Το γεγονός απορίφθηκε
+Reminder sent: Η υπενθύμιση στάλθηκε
+Event updated: Το γεγονός ενημερώθηκε
+WK: εβδ
+Changes successfully saved: Οι αλλαγές αποθηκεύτηκαν επιτυχώς
+Event: Γεγονός
+Action: Ενέργεια
+Printer Friendly: Εμφάνιση για εκτύπωση
+Generate printer-friendly version: Δημιουργία εμφάνισης για εκτύπωση
 January: Ιανουάριος
 February: Φεβρουάριος
 March: Μάρτιος
@@ -825,6 +838,11 @@ Aug: Αυγ
 Sep: Σεπ
 Oct: Οκτ
 Nov: Νοε
+The following error occurred: Συνέβη το ακόλουθο σφάλμα
+You are not authorized: Δεν είστε εξουσιοδοτημένος
+Error approving event: Σφάλμα στην αποδοχή γεγονότος
+Sunday: Κυριακή
+Monday: Δευτέρα
 Tuesday: Τρίτη
 Wednesday: Τετάρτη
 Thursday: Πέμπτη
@@ -837,24 +855,6 @@ Wed: Τετ
 Thu: Πεμ
 Fri: Παρ
 Sat: Σαβ
-All Attendees: Όλοι οι παρευρισκόμενοι
-Busy: Απασχολημένο
-Tentative: Αβέβαιο
-Changes successfully saved: Οι αλλαγές αποθηκεύτηκαν επιτυχώς
-The following error occurred: Συνέβη το ακόλουθο σφάλμα
-You are not authorized: Δεν είστε εξουσιοδοτημένος
-day: ημέρα
-Error approving event: Σφάλμα στην αποδοχή γεγονότος
-Generate printer-friendly version: Δημιουργία εμφάνισης για εκτύπωση
-Printer Friendly: Εμφάνιση για εκτύπωση
-Event created: Το γεγονός δημιουργήθηκε
-Event approved: Το γεγονός έγινε αποδεκτό
-Event rejected: Το γεγονός απορίφθηκε
-Event updated: Το γεγονός ενημερώθηκε
-Event deleted: Το γεγονός διαγράφτηκε
-Notification sent: Η ειδοποίηση στάλθηκε
-Reminder sent: Η υπενθύμιση στάλθηκε
-Action: Ενέργεια
 
 ########################################
 # Page: includes/trailer.php

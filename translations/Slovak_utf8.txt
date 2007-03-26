@@ -6,7 +6,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -38,12 +38,6 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: access.php
 #
 Calendar: kalendĂˇri
-
-########################################
-# Page: admin.php
-#
-Sunday: NedeÄľa
-Monday: Pondelok
 
 ########################################
 # Page: approve_entry.php
@@ -88,6 +82,8 @@ Aug: Aug
 Sep: Sep
 Oct: Okt
 Nov: Nov
+Sunday: NedeÄľa
+Monday: Pondelok
 Tuesday: Utorok
 Wednesday: Streda
 Thursday: Ĺ tvrtok

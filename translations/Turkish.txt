@@ -1,7 +1,7 @@
 # See translations/English-US.txt for instructions.
 #
 # $Id$
-# Translation last updated on 10-27-2006
+# Translation last updated on 03-25-2007
 
 
 ################################################################################
@@ -30,26 +30,28 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
+# Page: about.php
+#
+Title: WebTakvimi
+
+########################################
 # Page: access.php
 #
-Save: Kayit
 Go: göster 
+Save: Kayit
 Admin: Sef
 Public: acik
-confidential: özel 
-private: özel
 
 ########################################
 # Page: add_entry.php
 #
-Invalid entry id: gecersiz Islem
+private: özel
+confidential: özel 
 
 ########################################
 # Page: admin.php
 #
 Select: Sec
-Yes: Evet
-No: Hayir
 Day: Gün
 Week: Hafta
 Month: Ay
@@ -57,12 +59,9 @@ Year: Sene
 Help: Yardim
 Settings: Ayar
 Colors: Renkler
-Title: WebTakvimi
 Language: Lisan
 None: Hic
 Week starts on: Hafta baslangici
-Sunday: Pazar
-Monday: Pazartesi
 time-format-help: Hangi saat özelligi kullanildigini gösterir: <br /><i>12-saatlik:</i> Saati 3am, 8:30pm vs. diye gösterir.  <br /><i>24-saatlik:</i> Saati 3.00, 20.30 vs. diye gösterir.
 Time format: Saat
 12 hour: 12-saatlik
@@ -77,6 +76,8 @@ display-week-number-help: Kacinci Hafta oldugunu (1-52) Aylik ve Haftalik görünü
 Display week number: Kacinci Hafta
 display-unapproved-help: Onaylanmamis Terminler Takviminizde görülsünmü.<br /> Eger "Evet", Onaylanmamis Termin'ler baska bir renkte olur.<br /> Eger "Hayir", onaylanmamis Termin'ler onaylandiktan sonra Takvimde görünebilir. 
 Display unapproved: Onaylanmamis Termin'leri gör
+Yes: Evet
+No: Hayir
 Document background: Sayfa-arkasi
 Document title: Baslik
 Table cell background: Tabela Sayfa-arkasi
@@ -100,7 +101,11 @@ Time: Saat
 # Page: category.php
 #
 Delete: Sil
-Are you sure you want to delete this entry?: Islemi sahiden silmek istiyormusunuz?
+
+########################################
+# Page: doc.php
+#
+Invalid entry id: gecersiz Islem
 
 ########################################
 # Page: docadd.php
@@ -123,9 +128,9 @@ access-help: Termine giris özelliklerini gösterir.<br /> <i>Acik</i>: Herkes her
 Access: Giris
 priority-help: Termin'in Prioritesini gösterir.  Prioritesi yüksek olan Termin'ler kalin yazi olarak gösterilir.
 Priority: Priorite
-Low: alcak
-Medium: orta
 High: yüksek
+Medium: orta
+Low: alcak
 date-help: Termin'in tarihini gösterir.
 time-help: Termin'in saatini gösterir.<br /><i>Bos birakilabilir.</i>
 duration-help: Dakika olarak Termin'in sürecegi zamani gösterir.<br /><i>Bos birakilabilir.</i>
@@ -145,9 +150,8 @@ You are not authorized to edit this entry.: Sizin bu Islemi silmek icin hak sahi
 ########################################
 # Page: edit_entry_handler.php
 #
-The following conflicts with the suggested time: Önerilen Terminde saat carpismasi
 A new appointment has been made for you by: Sizin icin bir Termin eklendi -->  
-The subject is: Tarif 
+The following conflicts with the suggested time: Önerilen Terminde saat carpismasi
 Please look on: Bakiniz  
 to accept or reject this appointment: Termini onaylamak/ret etmek.
 to view this appointment: Termini gör
@@ -158,8 +162,8 @@ conflicts with the following existing calendar entries: takiben Takvimde baska b
 ########################################
 # Page: edit_nonusers.php
 #
-Edit User: Kullanici ayar
 Add User: Kullanici ekle
+Edit User: Kullanici ayar
 First Name: Ad
 Last Name: Soyad
 
@@ -228,8 +232,8 @@ Help Index: Yardim-Endeksi
 #
 View this entry: Islemi gör
 Approve/Confirm: Islem onaylansin
-Approve this entry?: Islem onaylansin?
 Reject: Ret
+Approve this entry?: Islem onaylansin?
 Reject this entry?: Isleme ret?
 
 ########################################
@@ -274,16 +278,16 @@ View Another Users Calendar: Baska Kullanicilarin Takvimini göster
 ########################################
 # Page: users.php
 #
-Add New User: Yeni Kullanici ekle
 denotes administrative user: Sef Kullaniciyi gösterir
+Add New User: Yeni Kullanici ekle
 
 ########################################
 # Page: view_entry.php
 #
 Approve/Confirm entry: Islem onaylansin?
 Reject entry: Isleme ret?
-Edit entry: Islem degistir
 This will delete this entry for all users.: Bu Islem tüt Kullanicilar icin siliniyor.
+Edit entry: Islem degistir
 
 ########################################
 # Page: week_details.php
@@ -304,6 +308,8 @@ Dec: Ara
 ########################################
 # Page: includes/functions.php
 #
+Printer Friendly: Dostca Baski
+Generate printer-friendly version: Baski verziyonu üret
 January: Ocak
 February: Subat
 March: Mart
@@ -326,6 +332,11 @@ Aug: Agu
 Sep: Eyl
 Oct: Eki
 Nov: Kas
+The following error occurred: Takipteki Hatalar cikiyor
+You are not authorized: Hak sahibi degilsiniz
+Error approving event: Islem onayinda hata
+Sunday: Pazar
+Monday: Pazartesi
 Tuesday: Sali
 Wednesday: Carsamba
 Thursday: Persembe
@@ -338,11 +349,6 @@ Wed: Ca
 Thu: Pe
 Fri: Cu
 Sat: Ct
-The following error occurred: Takipteki Hatalar cikiyor
-You are not authorized: Hak sahibi degilsiniz
-Error approving event: Islem onayinda hata
-Generate printer-friendly version: Baski verziyonu üret
-Printer Friendly: Dostca Baski
 
 ########################################
 # Page: includes/trailer.php
