@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Page Description:
  *  This page will handle adding blobs into the database.  It will
@@ -60,15 +59,16 @@ if ( $is_admin )
 // Get event details if this is associated with an event
 if ( empty ( $error ) && ! empty ( $id ) ) {
   // is this user a participant or the creator of the event?
-  $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu 
+  $res = dbi_execute ( 'SELECT we.cal_id
+    FROM webcal_entry we, webcal_entry_user weu
     WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
-    AND (we.cal_create_by = ? OR weu.cal_login = ?)';
-  $res = dbi_execute ( $sql, array( $id, $login, $login ) );
+    AND ( we.cal_create_by = ? OR weu.cal_login = ? )',
+    array( $id, $login, $login ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] > 0 ) {
+    if ( $row && $row[0] > 0 )
       $is_my_event = true; // user is participant
-    }
+
     dbi_free_result ( $res );
   }
 }
@@ -109,33 +109,30 @@ if ( empty ( $REQUEST_METHOD ) )
 if ( $REQUEST_METHOD == 'POST' ) {
 
   // get next id first
-  $res = dbi_execute ( 'SELECT MAX(cal_blob_id) FROM webcal_blob' );
-  if ( ! $res ) {
-    die_miserable_death ( translate( 'Database error' ) . ': ' .
-      dbi_error () );
-  }
-  if ( $row = dbi_fetch_row ( $res ) )
-    $nextid = $row[0] + 1;
-  else
-    $nextid = 1;
+  $res = dbi_execute ( 'SELECT MAX( cal_blob_id ) FROM webcal_blob' );
+  if ( ! $res )
+    die_miserable_death ( str_replace ( 'XXX', dbi_error (),
+      translate ( 'Database error XXX.' ) ) );
+
+  $nextid = ( $row = dbi_fetch_row ( $res ) ? $row[0] + 1 :  1 );
   dbi_free_result ( $res );
 
   if ( $type == 'C' ) {
     // Comment
     $description = getValue ( 'description' );
     $comment = getValue ( 'comment' );
-    $sql = 'INSERT INTO webcal_blob ( cal_blob_id, cal_id, cal_login, 
-      cal_name, cal_description, cal_size, cal_mime_type, cal_type, 
-      cal_mod_date, cal_mod_time, cal_blob ) 
-      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
-    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, NULL, 
-      $description, 0, 'text/plain', 'C', date('Ymd'), date( 'His' ), NULL ) ) ) {
+    if ( ! dbi_execute ( 'INSERT INTO webcal_blob ( cal_blob_id, cal_id,
+      cal_login, cal_name, cal_description, cal_size, cal_mime_type, cal_type,
+      cal_mod_date, cal_mod_time, cal_blob )
+      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )', array ( $nextid, $id, $login,
+        NULL, $description, 0, 'text/plain', 'C', date ( 'Ymd' ), date ( 'His' ),
+        NULL ) ) )
       $error = db_error ();
-    } else {
+    else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
-        "cal_blob_id = $nextid", $comment ) ) {
+        "cal_blob_id = $nextid", $comment ) )
         $error = db_error ();
-      } else {
+      else {
         // success!  redirect to view event page
         activity_log ( $id, $login, $login, LOG_COMMENT, '' );
         do_redirect ( "view_entry.php?id=$id" );
@@ -169,14 +166,14 @@ if ( $REQUEST_METHOD == 'POST' ) {
     fclose ( $fd );
 
     $comment = getValue ( 'description' );
-    $sql = 'INSERT INTO webcal_blob ( cal_blob_id, cal_id, cal_login, 
-      cal_name, cal_description, cal_size, cal_mime_type, cal_type, 
-      cal_mod_date, cal_mod_time, cal_blob ) 
-      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
-    if ( ! dbi_execute ( $sql, array( $nextid, $id, $login, $filename, 
-      $description, $filesize, $mimetype, 'A', date('Ymd'), date( 'His' ), NULL ) ) ) {
+    if ( ! dbi_execute ( 'INSERT INTO webcal_blob ( cal_blob_id, cal_id,
+      cal_login, cal_name, cal_description, cal_size, cal_mime_type, cal_type, 
+      cal_mod_date, cal_mod_time, cal_blob )
+      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )', array ( $nextid, $id, $login,
+        $filename, $description, $filesize, $mimetype, 'A', date ( 'Ymd' ),
+        date ( 'His' ), NULL ) ) )
       $error = db_error ();
-    } else {
+    else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
         "cal_blob_id = $nextid", $data ) ) {
         $error = db_error ();
