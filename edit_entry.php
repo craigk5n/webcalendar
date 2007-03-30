@@ -5,13 +5,12 @@
  * Presents page to edit/add an event/task/journal
  *
  * Notes:
- * If htmlarea is installed, users can use WYSIWYG editing.
- * SysAdmin must enable HTML for event full descriptions.
- * This can be done by installing HTMLArea (which has been
- * discontinued) or FCKEditor.  See the WebCalendar home page
+ * If HTMLArea is installed, users can use WYSIWYG editing.  SysAdmin must
+ * enable HTML for event full descriptions.  This can be done by installing
+ * HTMLArea (which has been discontinued) or FCKEditor.  (Relax!  That's the
+ * authors initials.)  See the WebCalendar page at
+ * http://www.k5n.us/webcalendar.php?topic=Add-Ons
  * for download and install instructions for these packages.
- *
- *
  */
 include_once 'includes/init.php';
 
@@ -73,21 +72,20 @@ function time_selection ( $prefix, $time='', $trigger=false ) {
     $i += (1440 / $ENTRY_SLOTS);
   }
   //we'll add an option with the exact time if not found above
-  if ( $found == false ) {
-    $ret .= "<option value=\"$minute\" $selected >$minute</option>\n";
-  }
+  if ( $found == false )
+    $ret .= "<option value=\"$minute\" $selected>$minute</option>\n";
+
   $ret .= "</select>\n";
 
   if ( $TIME_FORMAT == '12' ) {
-    $ret .= '<label><input type="radio" name="' . $prefix . 
-      'ampm" id="'. $prefix . 'ampmA" value="0" ' ."$amsel />&nbsp;" . 
-      translate( 'am' ) . "</label>\n";
-    $ret .= '<label><input type="radio" name="' . $prefix . 
-      "ampm\" id=\"". $prefix . "ampmP\" value=\"12\" $pmsel />&nbsp;" . 
-      translate( 'pm' ) . "</label>\n";
-  } else {
+    $ret .= '<label><input type="radio" name="' . $prefix . 'ampm" id="'
+     . $prefix . 'ampmA" value="0" ' ."$amsel />&nbsp;" . translate ( 'am' )
+     . "</label>\n" . '<label><input type="radio" name="' . $prefix
+     . "ampm\" id=\"". $prefix . "ampmP\" value=\"12\" $pmsel />&nbsp;"
+     . translate ( 'pm' ) . "</label>\n";
+  } else
     $ret .= '<input type="hidden" name="' . $prefix . 'ampm" value="0" />' ."\n";
-  }
+
   return $ret;
 }
 
@@ -100,8 +98,8 @@ $useTabs = ( $EVENT_EDIT_TABS == 'Y' );
 // make sure this is not a read-only calendar
 $can_edit = false;
 
-$checked = ' checked="checked" ';
-$selected = ' selected="selected" ';
+$checked = ' checked="checked"';
+$selected = ' selected="selected"';
 
 // Public access can only add events, not edit.
 if ( $login == '__public__' && $id > 0 ) {
@@ -477,7 +475,7 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
   $user_tz_offset = date ( 'Z', date_to_epoch ( $cal_date . $cal_time ) );
   if ( $tz_offset != $user_tz_offset ) {  //Different TZ_Offset
     user_load_variables ( $user, 'temp' );
-    $tz_diff = ( $user_tz_offset - $tz_offset ) / ONE_HOUR;
+    $tz_diff = ( $user_tz_offset - $tz_offset ) / 3600;
     $tz_value = ( $tz_diff > 0? translate ( 'hours ahead of you' ) :
       translate ( 'hours behind you' ) );
     $tz_value = ( $tz_diff == 1? translate ( 'hour ahead of you' ) :
