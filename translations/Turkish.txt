@@ -1,7 +1,7 @@
 # See translations/English-US.txt for instructions.
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -41,6 +41,8 @@ Go: göster
 Save: Kayit
 Admin: Sef
 Public: acik
+Confidential: özel 
+Private: özel
 
 ########################################
 # Page: add_entry.php
@@ -101,11 +103,6 @@ Time: Saat
 # Page: category.php
 #
 Delete: Sil
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: gecersiz Islem
 
 ########################################
 # Page: docadd.php
@@ -240,7 +237,7 @@ Reject this entry?: Isleme ret?
 # Page: login-app.php
 #
 You must enter a login and password: Kullanici Adi ve Sifre vermeniz gerekiyor.
-Save login via cookies so I don&#39;t have to login next time: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
+Save login via cookies so I dont have to login next time.: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
 Login: Giris
 cookies-note: <b>Not:</b> Takvimi kullanmak icin, Browser'inizde Cookie'leri kabul etmeniz gerekiyor.
 
@@ -274,6 +271,11 @@ No matches found: Bulunmiyor
 # Page: select_user.php
 #
 View Another Users Calendar: Baska Kullanicilarin Takvimini göster 
+
+########################################
+# Page: set_entry_cat.php
+#
+Invalid entry id: gecersiz Islem
 
 ########################################
 # Page: users.php
@@ -334,6 +336,7 @@ Oct: Eki
 Nov: Kas
 The following error occurred: Takipteki Hatalar cikiyor
 You are not authorized: Hak sahibi degilsiniz
+Unauthorized: Hak yok
 Error approving event: Islem onayinda hata
 Sunday: Pazar
 Monday: Pazartesi
@@ -360,6 +363,11 @@ Back to My Calendar: Takvimime geri
 Go to: Git
 
 ########################################
+# Page: includes/translate.php
+#
+event: Islem 
+
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: isimsiz olay
@@ -376,7 +384,7 @@ Invalid color for document background: Renk Sayfa-arkasi icin gecerli degil
 Invalid color for document title: Renk Baslik icin gecerli degil
 Invalid color for table cell background: Renk Tabela-arkasi icin gecerli degil
 Invalid color for table cell background for today: Renk Tabela-arkasi 'Bugün' icin gecerli degil
-Color format should be &#39;#RRGGBB&#39;: Renkler sadece '#RRGGBB' seklinde verilebilir.
+Color format should be RRGGBB.: Renkler sadece '#RRGGBB' seklinde verilebilir.
 
 ########################################
 # Page: includes/js/edit_entry.php

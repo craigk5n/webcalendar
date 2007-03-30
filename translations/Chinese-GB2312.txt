@@ -4,7 +4,7 @@
 # Last update: 2003-8-5
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -47,6 +47,8 @@ Public Access: 公共的
 Admin: 管理
 Calendar: 日历
 Public: 公众的
+Confidential: 机密的
+Private: 私人的
 
 ########################################
 # Page: activity_log.php
@@ -75,7 +77,9 @@ Settings: 设置
 Groups: 组
 Email: 邮件
 Colors: 颜色
+app-name-help: 应用-名称-帮助
 Application Name: 应用名称
+server-url-help: 系统-URL-帮助
 Server URL: 系统URL
 language-help: 请选择使用的语言.
 Language: 语言
@@ -83,7 +87,9 @@ Your browser default language is: 您的浏览器预设的语言是
 None: 无
 date-format-help: 描述合适的日期格式
 Date format: 日期格式
+display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
 Week starts on: 每周开始于
+time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
 Time format: 时间格式
 12 hour: 12时制
 24 hour: 24时制
@@ -93,11 +99,16 @@ From: 自
 to: 至
 preferred-view-help: 描述默认的视图 (天, 周, 月, 或年).
 Preferred view: 查看选择
+Bottom: 底部
+Top: 顶部
 fonts-help: 字体帮助
 Fonts: 字体
+display-weekends-help: 显示-周末-帮助
 Display week number: 显示周数(以年計算)
 Include add event link in views: 包括在视图中添加事件联接
-Allow viewing other user&#39;s calendars: 允许查看其他用户日历
+allow-view-other-help: 允许-其它-视图-帮助
+Allow viewing other users calendars: 允许查看其他用户日历
+require-approvals-help: 是否需要核准事件
 Require event approvals: 需要事件核准
 Display unapproved: 显示未核准的
 conflict-check-help: 冲突-检查-帮助
@@ -109,8 +120,11 @@ Conflict checking months: 冲突检查月数
 Allow users to override conflicts: 允许用户修改冲突
 Limit number of timed events per day: 限制每天已安排事件的数量
 Maximum timed events per day: 每天最大已安排时间实践的数量
+disable-priority-field-help: 关闭-优先级-域-帮助
 Disable Priority field: 关闭优先级域
+disable-access-field-help: 关闭-访问-域-帮助
 Disable Access field: 关闭访问域
+disable-repeating-field-help: 关闭-重复-域-帮助
 Disable Repeating field: 关闭重复域
 remember-last-login-help: 记录最后一次登录
 Remember last login: 记住最后一次登录
@@ -118,28 +132,38 @@ Plugins: 插件
 plugins-enabled-help: 允许使用插件应用程序
 Enable Plugins: 允许使用插件
 Plugin: 插件
+allow-public-access-help: 允许-公共-进入-帮助
 Allow public access: 允许公共登录
 public-access-view-others-help: 可以为公共日历添加其他视图
 Public access can view other users: 公共登录能查询其他用户
 public-access-can-add-help: 可以设置为公共的
 Public access can add events: 公共登录能添加事件
+groups-enabled-help: 组-开放-帮助
 Groups enabled: 使用组
+user-sees-his-group-help: 察看-所在组-帮助
 User sees only his groups: 用户只能看见自己的组
 Nonuser enabled: 允许非日历用户
 Nonuser list: 非日历用户清单
 Reports enabled: 允许报告
 Allow remote subscriptions: 允许远程投递
+categories-enabled-help: 允许-分类-帮助
 Categories enabled: 允许分类
 Allow external users: 允许其他用户
 External users can receive email notifications: 其他用户能接受邮件提醒
+email-enabled-help: 邮件-允许-帮助
 Email enabled: 使用邮件已启用
+email-default-sender: 邮件-默认-发送者
 Default sender address: 默认邮件地址
 Default user settings: 默认用户设置
 email-event-reminders-help: 描述是否允许发送事件提醒邮件
 Event reminders: 事件发生时通知
+email-event-added: 邮件-事件-已添加
 Events added to my calendar: 事件添加到我的日历时通知
+email-event-updated: 邮件-事件-已更新
 Events updated on my calendar: 我的日历中事件更新时通知
+email-event-deleted: 邮件-事件-已删除
 Events removed from my calendar: 我的日历中事件删除时通知
+email-event-rejected: 邮件-事件-已拒绝
 Event rejected by participant: 事件审核未通过时通知
 Allow user to customize colors: 允许用户个性化颜色
 Document background: 文件背景
@@ -202,11 +226,6 @@ Cancel: 取消
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: 约会已经被取消, 取消者是
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: 无效的纪录ID
 
 ########################################
 # Page: docadd.php
@@ -399,7 +418,9 @@ You must specify a group name: 您必须指定一个组名
 # Page: help_admin.php
 #
 Auto-refresh calendars: 自动刷新日历
+auto-refresh-help: 自动-刷新-帮助
 Auto-refresh time: 自动刷新时间
+auto-refresh-time-help: 自动-刷新-时间-帮助
 Display weekends in week view: 显示周末
 Time interval: 时间间隔
 Nonuser: 非日历用户
@@ -422,6 +443,7 @@ Repeat Day: 重复于
 # Page: help_import.php
 #
 Import: 输入
+Palm Desktop: Palm 桌面
 Enabling: 正在打开
 
 ########################################
@@ -483,7 +505,7 @@ Reject this entry?: 拒绝此事件?
 # Page: login-app.php
 #
 You must enter a login and password: 您必须输入用户名称及密码
-Save login via cookies so I don&#39;t have to login next time: 将登录资料存储于 cookies 中，下次就不需要再登录系统。
+Save login via cookies so I dont have to login next time.: 将登录资料存储于 cookies 中，下次就不需要再登录系统。
 Login: 登录
 Access public calendar: 进入公共日历
 cookies-note: <b>注意:</b> 本程序需要 cookies 才能使用.
@@ -547,6 +569,7 @@ View Another Users Calendar: 查看其他用户的日历
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: 无效的纪录ID
 You have not added any categories: 您还没有添加任何分类
 Set Category: 设置分类
 
@@ -607,7 +630,6 @@ Email all participants: 邮寄给所有的题者
 Hide activity log: 隐藏活动日志
 Show activity log: 显示活动日志
 Export this entry to: 输出此条目到
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -665,6 +687,10 @@ Oct: 10月
 Nov: 11月
 The following error occurred: 发生了下面的错误
 You are not authorized: 您未经授权
+Add N hours to: 添加 N 小时到
+Subtract N hours from: 减去 N 小时从
+same as: 相同与
+server time: 服务时间
 Error approving event: 错误批准的事件
 Sunday: 星期日
 Monday: 星期一
@@ -691,6 +717,11 @@ Back to My Calendar: 返回我的日历
 Go to: 到
 
 ########################################
+# Page: includes/translate.php
+#
+event: 记事
+
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: 登录用户无效
@@ -710,7 +741,7 @@ Notification: 通告
 # Page: includes/js/admin.php
 #
 Server URL is required: 填写系统URL
-Server URL must end with &#39;/&#39;: 系统URL必须以'/'结尾
+Server URL must end with /.: 系统URL必须以'/'结尾
 Invalid color for document background: 无效的文档背景颜色
 Invalid color for document title: 无效的文档标题颜色
 Invalid color for table cell background: 无效的表格单元背景颜色
@@ -720,7 +751,7 @@ Invalid color for table text background: 无效的表头文本颜色
 Invalid color for event popup background: 无效的背景颜色
 Invalid color for event popup text: 无效的文本颜色
 Invalid color for table cell background for today: 无效的当天表格单元背景颜色
-Color format should be &#39;#RRGGBB&#39;: 颜色格式需要是 '#RRGGBB'
+Color format should be RRGGBB.: 颜色格式需要是 '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php

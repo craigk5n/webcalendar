@@ -11,7 +11,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -56,6 +56,8 @@ Calendar: Ημερολόγιο
 Edit: Επεξεργασία
 Events: Γεγονότα
 Public: Δημόσιο
+Confidential: Εμπιστευτικό
+Private: Ιδιωτικό
 
 ########################################
 # Page: activity_log.php
@@ -120,6 +122,8 @@ From: Από
 to: ως
 preferred-view-help: Καθορίζει ποιά εμφάνιση θα είναι η default (Ημέρας, Εβδομάδας, Μήνα, ή Χρόνου).
 Preferred view: Προτιμόμενη εμφάνιση
+Bottom: Κάτω
+Top: Πάνω
 fonts-help: Καθορίζει μια λίστα από γραμματοσειρές που θα χρησιμοποιούνται (π.χ. "Arial, Helvetica")
 Fonts: Γραμματοσειρές
 display-weekends-help: Εμφάνιση και των Σαββατοκύριακων στην Εμφάνιση Εβδομάδας.
@@ -132,7 +136,7 @@ Display days with events in bold in month and year views: Στην Εμφάνι�
 allow-view-add-help: Ένα εικονίδιο '+' εμφανίζεται στις διάφορες προβολές, το οποίο επιτρέπει στους χρήστες να εισάγουν γρήγορα γεγονότα σε ημερολόγια άλλων χρηστών.
 Include add event link in views: Εμφάνιση προσθήκης γεγονότος στις προβολές
 allow-view-other-help: Καθορίζει πότε ένας χρήστης θα μπορεί να δεί το ημερολόγιο άλλου χρήστη.
-Allow viewing other user&#39;s calendars: Επιτρέπεται η εμφάνιση ημερολογίων άλλων χρηστών
+Allow viewing other users calendars: Επιτρέπεται η εμφάνιση ημερολογίων άλλων χρηστών
 require-approvals-help: Όταν είναι ενεργό, ο χρήστης πρέπει να αποδεχτεί ένα γεγονός πριν εμφανιστεί στο ημερολόγιό του (εκτός και αν το "Εμφάνιση των Γεγονότων σε Αναμονή Αποδοχής" είναι ενεργό).  Θέτοντάς το σε "Όχι" δεν απενεργοποιείτε τις αποδοχές για το Ημερολόγιο Δημόσιας Πρόσβασης (Αν το Ημερολόγιο Δημόσιας Πρόσβασης είναι ενεργό).
 Require event approvals: Απαιτεί αποδοχή γεγονότων
 display-unapproved-help: Καθορίζει αν τα, σε αναμονή αποδοχής γεγονότα, θα εμφανίζονται στο ημερολόγιό σας.<br /> Αν το θέσετε σε "Ναι", τότε τα γεγονότα αυτά θα εμφανίζονται στο ημερολόγιό σας (με διαφορετικό χρώμα).<br /> Αν το θέσετε σε "Όχι", τα γεγονότα θα αυτά πρέπει να τα αποδεκτείτε για να εμφανιστούν στο ημερολόγιό σας.
@@ -288,11 +292,6 @@ Cancel: Ακύρωση
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Μια συνάντηση ακυρώθηκε για σας από το χρήστη:
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: Εσφαλμένο id καταχώρησης
 
 ########################################
 # Page: docadd.php
@@ -553,11 +552,12 @@ repeat-day-help: Καθορίζει ποιές μέρες της εβδομάδ�
 # Page: help_import.php
 #
 Import: Εισαγωγή
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Η σελίδα αυτή σας επιτρέπει να εισάγετε γεγονότα από ένα Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Πρέπει να βρίσκεται στο Palm σας, στο directory <tt>datebook/datebook.dat</tt> σε ένα subdirectory με όνομα ίδιο με το όνομα χρήστη.
 The following entries will not be imported: Οι ακόλουθες εγγραφές δεν θα εισαχθούν
 Entries older than the current date: Εγγραφές παλαιότερες από σήμερα
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Εγγραφές που δημιουργήθηκαν στο Palm Desktop και δεν έχουν γίνει HotSync&#39;d
+Entries created in the Palm Desktop...: Εγγραφές που δημιουργήθηκαν στο Palm Desktop και δεν έχουν γίνει HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Ότι εισάγεται από το Palm θα διαγραφεί και ξαναγραφεί στην επόμενη εισαγωγή (εκτός και αν η ημερομηνία του γεγονότος έχει περάσει).
 Therefore, updates should be made in the Palm Desktop.: Αλλιώς, πρέπει να γίνουν τροποποιήσεις στο Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Η σελίδα αυτή εισάγει γεγονότα από vCalendar (.vcs) 1.0
@@ -636,7 +636,7 @@ Reject this entry?: Απόρριψη της εγγραφής;
 # Page: login-app.php
 #
 You must enter a login and password: Πρέπει να δώσετε Όνομα Χρήστη και Κωδικό
-Save login via cookies so I don&#39;t have to login next time: Αποθήκευση της εισόδου με cookies για να μην χρειαστεί η διαδικασία εισόδου την επόμενη φορά
+Save login via cookies so I dont have to login next time.: Αποθήκευση της εισόδου με cookies για να μην χρειαστεί η διαδικασία εισόδου την επόμενη φορά
 Login: Είσοδος
 Access public calendar: Πρόσβαση στο Δημόσιο Ημερολόγιο
 cookies-note: <b>Σημείωση:</b> Η εφαρμογή απαιτεί τα cookies να είναι ενεργά.
@@ -663,9 +663,10 @@ minute: λεπτό
 #
 Purging events for: Εκκαθάριση γεγονότων για το χρήστη:
 Finished: Ολοκληρώθηκε
-Check box to delete <b>ALL</b> events for a user: Επιλέξτε το για να διαγραφούν <b>ΟΛΑ</b> τα γεγονότα για το χρήστη
+Check box to delete ALL events for a user: Επιλέξτε το για να διαγραφούν <b>ΟΛΑ</b> τα γεγονότα για το χρήστη
 Delete all events before: Διαγραφή όλων των γεγονότων πριν τις
 Preview delete: Προεπισκόπηση διαγραφής
+Are you sure you want to delete events for: Είστε σίγουρος οτι θέλετε να διαγραφούν τα γεγονότα για το χρήστη:
 Records deleted from: Οι εγγραφές θα διαγραφούν από τις
 
 ########################################
@@ -711,6 +712,7 @@ View Another Users Calendar: Δείτε το Ημερολόγιο άλλου χ�
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Εσφαλμένο id καταχώρησης
 You have not added any categories: Δεν έχετε προσθέσει καμμία κατηγορία
 Set Category: Κατηγορία
 
@@ -778,7 +780,6 @@ Email all participants: Στείλε email σε όλους τους συμμετ
 Hide activity log: Απόκρυψη του αρχείου ενεργειών
 Show activity log: Εμφάνιση του αρχείου ενεργειών
 Export this entry to: Εξαγωγή αυτής της εγγραφής σε
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -840,6 +841,10 @@ Oct: Οκτ
 Nov: Νοε
 The following error occurred: Συνέβη το ακόλουθο σφάλμα
 You are not authorized: Δεν είστε εξουσιοδοτημένος
+Add N hours to: Πρόσθεσε N ώρες στην
+Subtract N hours from: Αφαίρεσε N ώρες από την
+same as: ιδια με την
+server time: ώρα server
 Error approving event: Σφάλμα στην αποδοχή γεγονότος
 Sunday: Κυριακή
 Monday: Δευτέρα
@@ -927,7 +932,7 @@ Notification: Ειδοποίηση
 # Page: includes/js/admin.php
 #
 Server URL is required: Το URL του Server είναι απαραίτητο
-Server URL must end with &#39;/&#39;: Το URL του Server πρέπει να τελειώνει σε '/'
+Server URL must end with /.: Το URL του Server πρέπει να τελειώνει σε '/'
 Invalid work hours: Εσφαλμένες ώρες εργασίας
 Invalid color for document background: Εσφαλμένο χρώμα για το background του κειμένου
 Invalid color for document title: Εσφαλμένο χρώμα για τον τίτλο του κειμένου
@@ -938,7 +943,7 @@ Invalid color for table text background: Εσφαλμένο χρώμα για τ
 Invalid color for event popup background: Εσφαλμένο χρώμα για το background του αναδυόμενου μύνηματος του γεγονότος
 Invalid color for event popup text: Εσφαλμένο χρώμα για το κείμενο του αναδυόμενου μύνηματος του γεγονότος
 Invalid color for table cell background for today: Εσφαλμένο χρώμα για το background του κελιού του πίνακα για σήμερα
-Color format should be &#39;#RRGGBB&#39;: Η μορφή του χρώματος πρέπει να είναι '#RRGGBB'
+Color format should be RRGGBB.: Η μορφή του χρώματος πρέπει να είναι '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php

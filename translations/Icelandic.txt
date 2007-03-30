@@ -4,7 +4,7 @@
 # Last update: 18 August 2000
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -44,6 +44,8 @@ Go: Velja
 Save: Vista
 Admin: Stjórnandi
 Public: Allir
+Confidential: Trúnaðarmál
+Private: Einka
 
 ########################################
 # Page: add_entry.php
@@ -107,11 +109,6 @@ Time: Tími
 # Page: category.php
 #
 Delete: Eyða
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: Óleyfilegt einkenni
 
 ########################################
 # Page: docadd.php
@@ -250,7 +247,7 @@ Reject this entry?: Hafna þessu atriði?
 # Page: login-app.php
 #
 You must enter a login and password: Þú verður að slá inn notandanafn og lykilorð
-Save login via cookies so I don&#39;t have to login next time: Vista upplýsingar með kökum
+Save login via cookies so I dont have to login next time.: Vista upplýsingar með kökum
 Login: Skrá inn
 cookies-note: <b>Athugið:</b> Kökur verða að vera virkar
 
@@ -286,6 +283,11 @@ No matches found: Ekkert fannst
 View Another Users Calendar: Skoða dagatal annarra
 
 ########################################
+# Page: set_entry_cat.php
+#
+Invalid entry id: Óleyfilegt einkenni
+
+########################################
 # Page: users.php
 #
 denotes administrative user: táknar stjórnanda
@@ -298,7 +300,6 @@ Approve/Confirm entry: Samþykkja/Staðfesta atriði
 Reject entry: Hafna atriði
 This will delete this entry for all users.: Atriði verður eytt hjá öllum notendum.
 Edit entry: Breyta atriði
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -371,6 +372,11 @@ Back to My Calendar: Aftur í mitt dagatal
 Go to: Fara í
 
 ########################################
+# Page: includes/translate.php
+#
+event: atburður
+
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Ónafngreint atriði
@@ -387,7 +393,7 @@ Invalid color for document background: Ólöglegur litur í bakgrunni
 Invalid color for document title: Ólöglegur litur í titli
 Invalid color for table cell background: Ólöglegur litur í bakgrunni taflna
 Invalid color for table cell background for today: Ólöglegur litur í bakgrunni taflna núverandi dags
-Color format should be &#39;#RRGGBB&#39;: Form lita á að vera '#RRGGBB'
+Color format should be RRGGBB.: Form lita á að vera '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php

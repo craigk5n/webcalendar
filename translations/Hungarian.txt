@@ -8,7 +8,7 @@
 # Updated to 1.1 by Istvan Bubreg bubreg_at_freemail_hu
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -70,6 +70,8 @@ Assistant: Titkár
 Select All: Mindent kijelöl
 Clear All: Mindent töröl
 Public: Nyilvános
+Confidential: Bizalmas
+Private: Magán
 
 ########################################
 # Page: activity_log.php
@@ -148,6 +150,8 @@ to: vége
 preferred-view-help: Az alapértelmezett nézetet adja meg (Napi, Heti, Havi vagy Éves).
 Preferred view: Kedvenc nézet
 Allow top menu: Felső menüsor bekapcsolása
+Bottom: Alul
+Top: Felül
 menu-themes-help: A felső menü színének és stílusának beállítása
 Menu theme: Menü téma
 fonts-help: A használandó betûkészletek listája (például "Arial, Helvetica").
@@ -169,7 +173,7 @@ Include add event link in views: Esemény hozzáadása link minden nézetben
 lunar-help: A holdfázisok kis ikonok formájában jelennek meg
 Display Lunar Phases in month view: Holdfázisok megjelenítése hónap nézetben
 allow-view-other-help: Megadja, hogy egyik felhasználó láthatja-e a másik naptárát.
-Allow viewing other user&#39;s calendars: Más felhasználók naptárának megtekintése
+Allow viewing other users calendars: Más felhasználók naptárának megtekintése
 require-approvals-help: Bekapcsolva a felhasználónak jóvá kell hagynia az eseményt, mielõtt megjelenne a naptárában (hacsak a jóváhagyás nélküliek megjelenítése nincs bekapcsolva). Megjegyzés: ha ezt kikapcsolod, attól még a nyilvános naptár eseményeit jóvá kell hagynod (már ha a nyilvános naptár be van kapcsolva).
 Require event approvals: Események jóváhagyásának megkövetelése
 display-unapproved-help: Megadja, hogy a jóváhagyatlan események megjelenjenek-e.<br /> Ha "Igen", a jóváhagyatlan események megjelennek (más színnel).<br /> Ha "Nem", az eseményeket jóvá kell hagyni ahhoz, hogy megjelenjenek a naptáradban.
@@ -269,12 +273,12 @@ allow-self-registration-full-help: A felhasználók a teljes regisztrációt elv
 Use self-registration email notifications: Felhasználónevek és jelszavak küldése emailben
 allow-attachment-help: Mellékletek csatolhatók az eseményekhez
 Allow file attachments to events: Mellékletek csatolhatók az eseményekhez
-Admin and owner can always add attachments if enabled: Admin és a tulajdonos csatolhat mellékletet
-Participant: Résztvevő
+Admin and owner can always add attachments if enabled.: Admin és a tulajdonos csatolhat mellékletet
 Anyone: Bárki
+Participant: Résztvevő
 allow-comments-help: Megjegyzések írhatók az eseményekhez
 Allow comments to events: Megjegyzések engedélyezése
-Admin and owner can always add comments if enabled: Admin és a tulajdonos mindig írhat megjegyzést
+Admin and owner can always add comments if enabled.: Admin és a tulajdonos mindig írhat megjegyzést
 email-enabled-help: Be- vagy kikapcsolhatod az összes email-értesítést és emlékeztetést. Kapcsold ki, ha a szervereden nincs rendesen beállítva a levélküldés.
 Email enabled: Email engedélyezése
 email-default-sender: Megadja a kimenõ emlékeztetõk feladójának email-címét.
@@ -351,6 +355,7 @@ Email address already exists: Az Email cím már létezik
 Additional Comments (optional): További megjegyzések (opcionális)
 Approve and Send: Elfogadás és küldés
 Approve and Exit: Elfogadás és kilépés
+(Your comments will be emailed to the event creator.): (az események benne lesznek a készítőnek küldendő emailben)
 Hello: Szia
 An appointment has been approved and comments added by: Egy találkozót elfogadott és megjegyzést írt
 The subject was: A tárgy
@@ -407,11 +412,6 @@ Cancel: Mégsem
 An appointment has been canceled for you by: Egy találkozót lemondott veled
 
 ########################################
-# Page: doc.php
-#
-Invalid entry id: Érvénytelen bejegyzés-azonosító
-
-########################################
 # Page: docadd.php
 #
 Add Comment: Új megjegyzés
@@ -449,7 +449,6 @@ full-description-help: Ez az esemény teljes leírása. Ez fog megjelenni, ha va
 Full Description: Teljes leírás
 access-help: Specifies the access level of the event.<br /> <em>Public</em>: Everyone can see the full details of the event.  <br /><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: Hozzáférés
-priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
 Priority: Prioritás
 High: Magas
 Medium: Közepes
@@ -490,7 +489,6 @@ by position: pozíciónként
 Yearly: Évente
 Manual: Kézzel
 Expert Mode: Haladó mód
-repeat-end-date-help: Specifies the date the event should repeat until.
 Ending: Vége
 Forever: Örökké
 Use end date: Befejező dátum használata
@@ -732,11 +730,12 @@ repeat-day-help: Megadja, hogy a hét melyik napján ismétlődjön az esemény
 # Page: help_import.php
 #
 Import: Import
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Ezen az ûrlapon tudsz Palm Desktop Datebook bejegyzéseket importálni.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: A Palm könyvtáradban kell lennie <tt>datebook/datebook.dat</tt>-ként egy, a felhasználói nevedrõl elnevezett könyvtárban.
 The following entries will not be imported: A következõ bejegyzések nem importálhatók
 Entries older than the current date: Mainál régebbi bejegyzések
-Entries created in the Palm Desktop that have not been HotSync&#39;d: A Palm Desktopon létrehozott bejegyzések, amiket még nem HotSync-eltél
+Entries created in the Palm Desktop...: A Palm Desktopon létrehozott bejegyzések, amiket még nem HotSync-eltél
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Minden Palm-ból importált adat felülíródik a következõ importálás során (hacsak az esemény dátuma el nem múlt).
 Therefore, updates should be made in the Palm Desktop.: Tehát készíts frissítést a Palm Desktopon.
 This form will import vCalendar (.vcs) 1.0 events: Ezen az ûrlapon tudsz vCalendar (.vcs) 1.0 eseményeket importálni.
@@ -753,7 +752,7 @@ Help Index: Súgó tartalomjegyzék
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: A rétegek hasznosak mások eseményeinek megjelenítésekor. Megadhatod a felhasználót és az ő eseményeinek színét.
+Layers are useful for displaying...: A rétegek hasznosak mások eseményeinek megjelenítésekor. Megadhatod a felhasználót és az ő eseményeinek színét.
 Add/Edit/Delete: Hozzáadás/Szerkesztés/Törlés
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: A lap alján az adminisztrációs részben a Rétegek szerkesztése linkre kattintva hozzáadhatsz/szerkeszthetsz/törölhetsz rétegeket.
 The text color of the new layer that will be displayed in your calendar.: A naptáradban megjelenõ új réteg szövegszíne.
@@ -847,7 +846,7 @@ Reject this entry?: Elutasítod ezt a bejegyzést?
 # Page: login-app.php
 #
 You must enter a login and password: Add meg az azonosítódat és jelszavadat
-Save login via cookies so I don&#39;t have to login next time: A bejelentkezési jelszó mentése, így errõl a géprõl legközelebb nem kell megadni
+Save login via cookies so I dont have to login next time.: A bejelentkezési jelszó mentése, így errõl a géprõl legközelebb nem kell megadni
 Login: Bejelentkezés
 Access public calendar: Nyilvános naptár elérése
 cookies-note: <b>Megjegyzés:</b> A sütiket engedélyezni kell a naptár használatához.
@@ -895,9 +894,10 @@ Display if created by Assistant: Megjelenítés, ha titkár hozta létre
 Purging events for: A következõ eseményeinek törlése:
 Finished: Kész
 Back: Back
-Check box to delete <b>ALL</b> events for a user: Jelöld be a felhasználó <b>ÖSSZES</b> eseményének törléséhez
+Check box to delete ALL events for a user: Jelöld be a felhasználó <b>ÖSSZES</b> eseményének törléséhez
 Delete all events before: Az összes ezelõtti esemény törlése
 Preview delete: Törlendők előnézete
+Are you sure you want to delete events for: Biztosan törölni akarod a következõ felhasználó eseményeit:
 Records deleted from: Rekordok törölve a következõbõl
 
 ########################################
@@ -924,7 +924,7 @@ Submit: Elküld
 # Page: reject_entry.php
 #
 Continue: Folytatás
-(Your comments will be included in an email to the other participants): (A megjegyzés el lesz küldve emailben a többi résztvevőnek)
+(Your comments will be emailed to the other participants.): (A megjegyzés el lesz küldve emailben a többi résztvevőnek)
 An appointment has been rejected by: Egy találkozót elutasított
 
 ########################################
@@ -965,6 +965,7 @@ View Another Users Calendar: Betekintés más felhasználók naptárába
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Érvénytelen bejegyzés-azonosító
 You have not added any categories: Még nem adtál hozzá kategóriát
 Set Category: Kategória beállítása
 Global Categories cannot be changed.: Globális kategóriát nem lehet módosításani
@@ -1052,7 +1053,6 @@ Email all participants: Email minden résztvevõnek
 Hide activity log: Tevékenységi napló elrejtése
 Show activity log: Tevékenységi napló megjelenítése
 Export this entry to: Ezen esemény exportálása a következõbe
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: view_r.php
@@ -1160,6 +1160,10 @@ Oct: Okt
 Nov: Nov
 The following error occurred: A következõ hiba történt
 You are not authorized: Nincs jogosultságod
+Add N hours to: adj N �r�t
+Subtract N hours from: vonj ki N �r�t
+same as: adj 0 �r�t
+server time: a szerver idej�hez
 Your current GMT offset is: Az aktuális eltolás a GMT-től
 Error approving event: Hiba az esemény jóváhagyásakor
 Sunday: Vasárnap
@@ -1274,7 +1278,7 @@ recipients_failed: SMTP Error~ A következő címzett hibás~
 # Page: includes/js/admin.php
 #
 Server URL is required: Szerver URL-t meg kell adni
-Server URL must end with &#39;/&#39;: Szerver URL-nek '/'-rel kell végzõdnie
+Server URL must end with /.: Szerver URL-nek '/'-rel kell végzõdnie
 Invalid work hours: Érvénytelen munkaidõ
 Invalid color for document background: Érvénytelen háttérszín
 Invalid color for document title: Érvénytelen címsorszín
@@ -1285,7 +1289,7 @@ Invalid color for table text background: Érvénytelen táblaszöveg-háttérsz�
 Invalid color for event popup background: Érvénytelen felugró eseményablak-háttérszín
 Invalid color for event popup text: Érvénytelen felugró eseményablak-szövegszín
 Invalid color for table cell background for today: Érvénytelen táblacella-háttérszín a MAI napra
-Color format should be &#39;#RRGGBB&#39;: A színeket '#RRGGBB' formátumban kell megadni
+Color format should be RRGGBB.: A színeket '#RRGGBB' formátumban kell megadni
 
 ########################################
 # Page: includes/js/availability.php
@@ -1347,13 +1351,11 @@ Unable to write password to settings.php file: Unable to write password to setti
 Password has been set: Jelszó beállítva
 Connection Successful: Kapcsolódás sikeres
 Please go to next page to continue installation: Please go to next page to continue installation
-Correct your entries or click the <b>Create New</b> button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
 Correct your entries and try again: Correct your entries and try again
 Error Converting Timezone: Error Converting Timezone
 Please change the file permissions of this file: Please change the file permissions of this file
 Your settings have been saved: Your settings have been saved
 Error you must specify a\\nSingle-User Login: Error you must specify a\\nSingle-User Login
-Server URL must end with: Server URL must end with
 Full Path (no backslashes): Full Path (no backslashes)
 The password contains illegal characters.: The password contains illegal characters.
 PHP Version Check: PHP Version Check
@@ -1365,9 +1367,8 @@ To test the proper operation of sessions, reload this page: To test the proper o
 You should see the session counter increment each time: You should see the session counter increment each time
 SESSION COUNTER: SESSION COUNTER
 Settings.php Status: Settings.php Status
-The file permissions of <b>settings.php</b> are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
-The file permissions of the <b>includes</b> directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
-Your <b>settings.php</b> file appears to be valid: Your <b>settings.php</b> file appears to be valid
+The file permissions of settings.php are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
+The file permissions of the includes directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
 Configuration Wizard Password: Configuration Wizard Password
 Create Settings File Password: Create Settings File Password
 Password (again): Password (again)
@@ -1375,7 +1376,6 @@ Database Status: Database Status
 Supported databases for your PHP installation: Supported databases for your PHP installation
 Your current database settings are able to access the database: Your current database settings are able to access the database
 Please Test Settings: Please Test Settings
-Your current database settings are <b>not</b> able to access the database or have not yet been tested: Your current database settings are <b>not</b> able to access the database or have not yet been tested
 Database Settings: Database Settings
 Database Type: Database Type
 Server: Server
@@ -1385,7 +1385,7 @@ next page and complete your WebCalendar setup: next page and complete your WebCa
 This appears to be a new installation. If this is not correct, please: This appears to be a new installation. If this is not correct, please
 go back to the previous page and correct your settings: go back to the previous page and correct your settings
 The database requires some data input: The database requires some data input
-Click <b>Update Database</b> to complete the upgrade: Click <b>Update Database</b> to complete the upgrade
+Click Update Database to complete the upgrade: Click Update Database to complete the upgrade
 This appears to be an upgrade from version: This appears to be an upgrade from version
 In this section we will perform the required database changes to bring your database up to the required level: In this section we will perform the required database changes to bring your database up to the required level
 If you are using a fully supported database, this step will be performed automatically for you: If you are using a fully supported database, this step will be performed automatically for you
@@ -1398,21 +1398,16 @@ This may take several minutes to complete: This may take several minutes to comp
 Install Database: Install Database
 Update Database: Adatbázis frissítése
 Display Required SQL: Display Required SQL
-This is the final step in setting up your WebCalendar Installation: This is the final step in setting up your WebCalendar Installation
+This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
 Timezone Conversion: Timezone Conversion
 It appears that you have: It appears that you have
 NOT: NOT
-converted your existing WebCalendar event data to GMT: converted your existing WebCalendar event data to GMT
-If you have, you may ignore this notice and not proceed with the conversion: If you have, you may ignore this notice and not proceed with the conversion
+converted your existing WebCalendar event data to GMT.: converted your existing WebCalendar event data to GMT.
 If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
 Convert Data to GMT: Convert Data to GMT
 Application Settings: Application Settings
 HTTP-based authentication was not detected: HTTP-based authentication was not detected
 You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to
-select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below
-HTTP-based authentication was detected: HTTP-based authentication was detected
-User authentication is being handled by your web server: User authentication is being handled by your web server
-You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below
 Create Default Admin Account: Create Default Admin Account
 User Authentication: User Authentication
 Web-based via WebCalendar (default): Web-based via WebCalendar (default)
@@ -1424,6 +1419,11 @@ Production: Production
 Development: Development
 Save Settings: Save Settings
 Launch WebCalendar: Launch WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Conversion Successful: Conversion Successful
 
 ########################################
 # Page: tools/send_reminders.php

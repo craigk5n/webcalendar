@@ -23,22 +23,19 @@ if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
 
 // Input args in URL.
 // users: list of comma-separated users.
-$programStr = translate ( 'Program Error' ) . ' ';
+// translate ( 'Program Error' ) translate ( 'No XXX specified!' )
+$noXStr = translate ( 'Program Error No XXX specified!' );
 if ( empty ( $users ) ) {
-  echo $programStr . str_replace ( 'XXX', translate ( 'user' ),
-    translate ( 'No XXX specified!' ) );
+  echo str_replace ( 'XXX', translate ( 'user' ), $noXStr );
   exit;
 } elseif ( empty ( $year ) ) {
-  echo $programStr . str_replace ( 'XXX', translate ( 'year' ),
-    translate ( 'No XXX specified!' ) );
+  echo str_replace ( 'XXX', translate ( 'year' ), $noXStr );
   exit;
 } elseif ( empty ( $month ) ) {
-  echo $programStr . str_replace ( 'XXX', translate ( 'month' ),
-    translate ( 'No XXX specified!' ) );
+  echo str_replace ( 'XXX', translate ( 'month' ), $noXStr );
   exit;
 } elseif ( empty ( $day ) ) {
-  echo $programStr . str_replace ( 'XXX', translate ( 'day' ),
-    translate ( 'No XXX specified!' ) );
+  echo str_replace ( 'XXX', translate ( 'day' ), $noXStr );
   exit;
 }
 

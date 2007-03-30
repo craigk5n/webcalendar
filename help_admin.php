@@ -16,7 +16,7 @@ $tmp_arr = array (
   translate ( 'allow-html-description-help' ),
   translate ( 'Allow users to override conflicts' ) =>
   translate ( 'conflict-check-override-help' ),
-  translate ( 'Allow viewing other user&#39;s calendars' ) =>
+  translate ( 'Allow viewing other users calendars' ) =>
   translate ( 'allow-view-other-help' ),
   translate ( 'Application Name' ) =>
   translate ( 'app-name-help' ),

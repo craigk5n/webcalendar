@@ -242,7 +242,7 @@ if ( ! empty ( $return_path ) ) {
  <input type="checkbox" name="remember" id="remember" tabindex="3" 
    value="yes" <?php if ( ! empty ( $remember ) && $remember == 'yes' ) {
      echo 'checked="checked"'; }?> /><label for="remember">&nbsp;
-   <?php etranslate( 'Save login via cookies so I don&#39;t have to login next time' )?></label>
+   <?php etranslate( 'Save login via cookies so I dont have to login next time.' )?></label>
 </td></tr>
 <tr><td colspan="4" class="aligncenter">
  <input type="submit" value="<?php etranslate( 'Login' )?>" tabindex="4" />

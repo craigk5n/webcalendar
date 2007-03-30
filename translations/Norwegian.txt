@@ -6,7 +6,7 @@
 # Last update: 18 May 2005
 # 
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -52,6 +52,8 @@ Calendar: Kalender
 Edit: Rediger
 Events: Aktiviteter
 Public: Offentlig
+Confidential: Privat
+Private: Privat
 
 ########################################
 # Page: activity_log.php
@@ -116,6 +118,7 @@ From: Fra
 to: til
 preferred-view-help: Angir standardvisning (dag, uke, måned eller år).
 Preferred view: Foretrukket visning
+Bottom: Bunn
 fonts-help: Angir en liste med systemskrifter som skal brukes (som "Arial, Helvetica")
 Fonts: Skrifter
 display-weekends-help: Inkluder helg når uker skal vises
@@ -128,7 +131,7 @@ Display days with events in bold in month and year views: Vis dager med aktivite
 allow-view-add-help: Et '+' ikon vil bli inkludert i oversikter, slik at brukere fort kan legge til aktiviteter i andre brukere sine kalendere.
 Include add event link in views: Inkluder lenke for å legge til aktiviteter i oversikter
 allow-view-other-help: Setter om en bruker kan se en annen bruker sin kalender.
-Allow viewing other user&#39;s calendars: Tillat visning av andre brukere sine kalendere
+Allow viewing other users calendars: Tillat visning av andre brukere sine kalendere
 require-approvals-help: Hvis aktivert, så må en bruker godkjenne en aktivitet før den vises i deres kalender (hvis ikke "Vis ikke-godkjent" er aktivert).
 Require event approvals: Krev godkjenning av aktiviteter
 display-unapproved-help: Angir om din kalender skal vise ikke-godkendte aktiviteter.
@@ -287,11 +290,6 @@ Cancel: Avbryt
 An appointment has been canceled for you by: En avtale har blitt avlyst for deg av
 
 ########################################
-# Page: doc.php
-#
-Invalid entry id: Ugyldig avtale-ID
-
-########################################
 # Page: docadd.php
 #
 Description: Beskrivelse
@@ -330,6 +328,7 @@ duration-help: I dette feltet kan du angi varigheten på aktiviteten <br /><i>Det
 hours: timer
 minutes: minutter
 end-time-help: Angir tidspunktet aktiviteten forventes avsluttet.
+Start Time: Starttidspunkt
 participants-help: Vis deltagerne i dette innlegget.
 Availability: Tilgjengelighet
 external-participants-help: Angir en liste med deltagere for en aktivitet som
@@ -424,6 +423,12 @@ Next year: Neste år
 This year: Dette året
 Last year: Forrige år
 Year before last: Året før forrige
+Next 14 days: Neste 14 dager
+Next 30 days: Neste 30 dager
+Next 60 days: Neste 60 dager
+Next 90 days: Neste 90 dager
+Next 180 days: Neste 180 dager
+Next 365 days: Neste 365 dager
 Invalid report id: Ugyldig rapport-ID
 Unnamed Report: Rapport uten navn
 Add Report: Legg til rapport
@@ -544,11 +549,12 @@ repeat-day-help: Hvilke ukedager skal aktiviteten gjentas på.
 # Page: help_import.php
 #
 Import: Importer
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Dette skjemaet gjør det mulig for deg å importere oppføringer fra Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den bør finnes i din Palm katalog i <tt>datebook/datebook.dat</tt> i en underkatalog med ditt brukernavn.
 The following entries will not be imported: Følgende oppføringer vil ikke bli importert
 Entries older than the current date: Oppføringer eldre enn nåværende dato
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Oppføringer opprettet i Palm Desktop-en som ikke har blitt HotSync&#39;d
+Entries created in the Palm Desktop...: Oppføringer opprettet i Palm Desktop-en som ikke har blitt HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alt som blir importert fra Palm vil bli overskrevet ved neste import (hvis ikke aktivitetsdatoen har passert)
 Therefore, updates should be made in the Palm Desktop.: Derfor bør oppdatering bli gjort i Palm Desktop-en.
 This form will import vCalendar (.vcs) 1.0 events: Dette skjemaet vil importere vCalendar (.vcs) 1.0 aktiviteter
@@ -627,7 +633,7 @@ Reject this entry?: Avvis denne aktiviteten?
 # Page: login-app.php
 #
 You must enter a login and password: Vennligst oppgi brukernavn og passord
-Save login via cookies so I don&#39;t have to login next time: Husk brukernavn til neste gang
+Save login via cookies so I dont have to login next time.: Husk brukernavn til neste gang
 Login: Logg inn
 Access public calendar: Gå til offentlig kalender
 cookies-note: <b>OBS:</b> Programmet krever at "cookies" er slått på
@@ -654,9 +660,10 @@ minute: minutt
 #
 Purging events for: Sletter aktiviteter for
 Finished: Ferdig
-Check box to delete <b>ALL</b> events for a user: Marker i boksen hvis <b>ALLE</b> aktiviteter skal slettes
+Check box to delete ALL events for a user: Marker i boksen hvis <b>ALLE</b> aktiviteter skal slettes
 Delete all events before: Slett alle aktiviteter før
 Preview delete: Forhåndsvisning for sletting
+Are you sure you want to delete events for: Er du sikker
 Records deleted from: Oppføringer slettet fra:
 
 ########################################
@@ -702,6 +709,7 @@ View Another Users Calendar: Se en annen brukers kalender
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Ugyldig avtale-ID
 You have not added any categories: Du har ikke lagt til noen kategorier
 Set Category: Sett kategori
 
@@ -769,7 +777,6 @@ Email all participants: E-post til alle deltakerne
 Hide activity log: Skjul aktivitetslogg
 Show activity log: Vis aktivitetslogg
 Export this entry to: Eksporter denne aktiviteten til
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -780,6 +787,7 @@ New Entry: Ny aktivitet
 # Page: includes/access.php
 #
 Another Users Calendar: Se en annen brukers kalender
+Manage Views: Kontroller oversikter
 
 ########################################
 # Page: includes/date_formats.php
@@ -830,6 +838,10 @@ Oct: Okt
 Nov: Nov
 The following error occurred: Følgende feil oppstod
 You are not authorized: Du har ikke tillatelse
+Add N hours to: Legg til N timer til
+Subtract N hours from: Trekk fra N timer fra
+same as: samme som
+server time: servertid
 Error approving event: Feil ved godkjenning av aktivitet
 Sunday: Søndag
 Monday: Mandag
@@ -888,6 +900,8 @@ Russian: Russisk
 Spanish: Spansk
 Swedish: Svensk
 Turkish: Tyrkisk
+Welsh: Walisisk
+event: aktivitet
 
 ########################################
 # Page: includes/user-imap.php
@@ -915,7 +929,7 @@ Notification: Påminnelse
 # Page: includes/js/admin.php
 #
 Server URL is required: URL for server er påkrevd
-Server URL must end with &#39;/&#39;: URL for server må slutte på '/'
+Server URL must end with /.: URL for server må slutte på '/'
 Invalid work hours: Ugyldige arbeidstid
 Invalid color for document background: Ugyldig bakgrunnsfarge
 Invalid color for document title: Ugyldig tittelfarge
@@ -926,7 +940,7 @@ Invalid color for table text background: Ugyldig farge for bakgrunnen til tabell
 Invalid color for event popup background: Ugyldig farge for bakgrunnen i aktivitetspopups
 Invalid color for event popup text: Ugyldig farge for teksten i aktivitetspopups
 Invalid color for table cell background for today: Ugyldig farge for dagens tabellbakgrunn
-Color format should be &#39;#RRGGBB&#39;: Fargen skal skrives som '#RRGGBB'
+Color format should be RRGGBB.: Fargen skal skrives som '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php

@@ -4,7 +4,7 @@
 # Last update: 11 november 2004
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -49,6 +49,8 @@ Admin: Administration
 Calendar: Kalender
 Edit: Redigera
 Public: Offentlig
+Confidential: Privat
+Private: Privat
 
 ########################################
 # Page: activity_log.php
@@ -111,6 +113,7 @@ From: Från
 to: till
 preferred-view-help: Specificera standardvisning (dag, vecka, månad eller år).
 Preferred view: Vald standardvy
+Bottom: Botten
 fonts-help: Anger en lista på systemtypsnitt att använda (som "Arial, Helvetica, Verdana")
 Fonts: Typsnitt
 display-weekends-help: Inkludera veckoslut vid visning av vecka.
@@ -122,7 +125,7 @@ yearly-shows-events-help: Vid visning av år, visa dagar som innehåller aktivitet
 allow-view-add-help: En '+'-ikon kommer att läggas till i visningar, vilket tillåter användare att snabbt lägga till aktiviteter till andra användares kalendrar.
 Include add event link in views: Lägg till 'Lägg till händelse'-länk i visningar
 allow-view-other-help: Anger om en användare ska kunna se en annan användares kalender.
-Allow viewing other user&#39;s calendars: Tillåt visning av andra användares kalendrar
+Allow viewing other users calendars: Tillåt visning av andra användares kalendrar
 require-approvals-help: Om aktiverat måste en användare godkänna en aktivitet innan den visas på deras kalender (om inte "Visa icke godkända aktiviteter" är aktiverad). Notera att sätta denna till "Nej" kommer inte att stänga av godkännanden för offentliga kalendrar (om "Offentlig kalender" är tillåten).
 Require event approvals: Kräver aktivitetsgodkännande
 display-unapproved-help: Specificera om din kalender skall visa icke godkända aktiviteter.
@@ -270,11 +273,6 @@ Cancel: Avbryt
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Ett möte har inställts för dig av
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: Ogiltig händelse-ID
 
 ########################################
 # Page: docadd.php
@@ -520,11 +518,12 @@ repeat-day-help: Vilka veckodagar skall aktiviteten upprepas på
 # Page: help_import.php
 #
 Import: Import
+Palm Desktop: Palm desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Detta formulär tillåter dig att importera aktiviteter från Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Det bör vara placerat i din Palm-mapp <tt>"datebook/datebook.dat"</tt> i en undermapp benämnd med ditt användarnamn.
 The following entries will not be imported: Följande händelser kommer inte att importeras
 Entries older than the current date: Händelser äldre än dagens datum
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Händelser skapade i Palm Desktop som inte har blivit "HotSynkroniserade"
+Entries created in the Palm Desktop...: Händelser skapade i Palm Desktop som inte har blivit "HotSynkroniserade"
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Allting som importerats från Palm kommer att skrivas över vid nästa import (om inte händelsedatumet har passerats).
 Therefore, updates should be made in the Palm Desktop.: Därför bör uppdateringar göras i Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Detta formulär kommer att importera vCalendar (.vcs) 1.0 aktiviteter
@@ -599,7 +598,7 @@ Reject this entry?: Avböj denna händelse?
 # Page: login-app.php
 #
 You must enter a login and password: Ange användarnamn och lösenord
-Save login via cookies so I don&#39;t have to login next time: Kom ihåg användarnamnet till nästa gång (cookie)
+Save login via cookies so I dont have to login next time.: Kom ihåg användarnamnet till nästa gång (cookie)
 Login: Logga in
 Access public calendar: Tillträde till offentlig kalender
 cookies-note: <strong>OBS:</strong> Programmet kräver att din webbläsare tillåter cookies, om inte - ändra dina inställningar i webbläsaren.
@@ -625,8 +624,9 @@ hour: timme
 #
 Purging events for: Rensa bort aktiviteter för
 Finished: Klar
-Check box to delete <b>ALL</b> events for a user: Markera boxen för att ta bort <b>ALLA</b> aktiviteter för användare
+Check box to delete ALL events for a user: Markera boxen för att ta bort <b>ALLA</b> aktiviteter för användare
 Delete all events before: Ta bort alla aktiviteter före
+Are you sure you want to delete events for: Är du säker på att du vill ta bort aktiviteter för
 Records deleted from: Poster borttagna från
 
 ########################################
@@ -672,6 +672,7 @@ View Another Users Calendar: Titta på en annan användares kalender
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Ogiltig händelse-ID
 You have not added any categories: Du har inte lagt till några kategorier
 Set Category: Ange kategori
 
@@ -733,7 +734,6 @@ Email all participants: E-posta alla deltagare
 Hide activity log: Dölj aktivitetetslogg
 Show activity log: Visa aktivitetslogg
 Export this entry to: Exportera denna händelse till
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -790,6 +790,10 @@ Oct: Okt
 Nov: Nov
 The following error occurred: Följande fel uppstod
 You are not authorized: Förbjuden åtgärd 
+Add N hours to: Lägg till N timmar till
+Subtract N hours from: Dra bort N timmar från
+same as: samma som
+server time: servertid
 Error approving event: Ett fel uppstod när händelsen skulle godkännas
 Sunday: Söndag
 Monday: Måndag
@@ -847,6 +851,7 @@ Russian: Ryska
 Spanish: Spanska
 Swedish: Svenska
 Turkish: Turkiska
+event: aktivitet
 
 ########################################
 # Page: includes/user-imap.php
@@ -868,7 +873,7 @@ Notification: Påminnelse
 # Page: includes/js/admin.php
 #
 Server URL is required: Server-URL krävs
-Server URL must end with &#39;/&#39;: Server-URL måste slute med '/'
+Server URL must end with /.: Server-URL måste slute med '/'
 Invalid work hours: Ogiltig arbetstid
 Invalid color for document background: Ogiltig bakgrundsfärg
 Invalid color for document title: Ogiltig färg för dokumenttiteln
@@ -879,7 +884,7 @@ Invalid color for table text background: Ogiltig färg för tabelltextens bakgrund
 Invalid color for event popup background: Ogiltig färg för händelsepopp-uppens bakgrund
 Invalid color for event popup text: Ogiltig färg för händelsepopp-uppens text
 Invalid color for table cell background for today: Ogiltig färg för dagens tabellcellsbakgrund
-Color format should be &#39;#RRGGBB&#39;: Färgen skall skrivas som '#RRGGBB'
+Color format should be RRGGBB.: Färgen skall skrivas som '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php

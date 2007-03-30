@@ -3,34 +3,41 @@
 #
 # Translated by: your name and email
 # Last update: the date of translation
-#   (Including the leading "# " and any comments made by previous translators.)
+#   (Including the leading "# " and any comments made by previous translators.
+#   The FIRST blank line ends these header comments.)
 #
 # Followed by as many as needed:
 #
 # English phrase: translation
-#   (One to a line. WITHOUT the leading "# ".
+#   (One to a line.  WITHOUT the leading "# ".
 #   The "English phrase: ", including the colon ":", is provided by the
-#   Webcalendar developers. Your part is the "translation".)
+#   Webcalendar developers.  Your part is the "translation".)
+#
+# NOTE: There is no need to put something in the file that is identical on both
+#       sides of the colon (:).  We do that for English only because we need
+#       a 'phrase' and a 'translation' for each line.  So, leave out things like:
+# URL: URL
+# Palm Pilot: Palm Pilot 
 #
 # The tools directory contains two perl scripts to help you:
 #   - check_translation.pl
 #       indicates if all text has been successfully translated.
 #   - update_translation.pl
-#       will parse the program files to find all translate('phrase') and
-#       tooltip('phrase'). It will arrange the phrases according to the page
-#       (file) that contains the first occurance. Optionally, it can tag the
+#       will parse the program files to find all translate ( 'phrase' ) and
+#       tooltip ( 'phrase' ).  It will arrange the phrases according to the page
+#       (file) that contains the first occurance.  Optionally, it can tag the
 #       phrases that are not yet translated by putting
 #       << MISSING >>
-#       on the line above the phrase. And, if the phrase is an abbreviation,
+#       on the line above the phrase.  And, if the phrase is an abbreviation,
 #       it will include the full English text on the line below the phrase.
 #
 #
-# Note:  You will notice the entry for "May_" below. There is a reason for this.
+# Note:  You will notice the entry for "May_" below.  There is a reason for this.
 #        Translate "May_" to the full month name and "May" to the,
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -111,7 +118,7 @@ Previous: Previous
 # Page: add_entry.php
 #
 Event XXX is already on your calendar.: Event XXX is already on your calendar.
-Invalid entry id XXX: Invalid entry id: "XXX".
+Invalid entry id XXX.: Invalid entry id: "XXX".
 a XXX event may not be added to your calendar: This is a XXX event and may not be added to your calendar.
 private: private
 confidential: confidential
@@ -139,6 +146,7 @@ System options: System options
 app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: Application Name
 Translated Name: Translated Name
+Translated Name (XXX): Translated Name (XXX)
 server-url-help: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
 Server URL: Server URL
 home-url-help: Specifies the home URL for the application. This can be an absolute or relative
@@ -146,6 +154,7 @@ Home URL: Home URL
 language-help: Specifies which language to use.
 Language: Language
 Your browser default language is: Your browser default language is
+Your browser default language is XXX.: Your browser default language is "XXX".
 Allow user to use themes: Allow user to use themes
 themes-help: Allows mass update of configuration settings. Lower case labels are user pref only.
 Themes: Themes
@@ -174,7 +183,7 @@ display-week-starts-on: Specifies day of week that the week starts on. If Monday
 Week starts on: Week starts on
 display-weekend-starts-on: Sets the day of the week for weekends to start
 Weekend starts on: Weekend starts on
-time-format-help: Specifies which time format to use: <br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.  <br /><em>24 hour:</em> Display times as 300, 2030, etc.
+time-format-help: Specifies which time format to use:<br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.<br /><em>24 hour:</em> Display times as 300, 2030, etc.
 Time format: Time format
 12 hour: 12 hour
 24 hour: 24 hour
@@ -191,8 +200,8 @@ preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: Preferred view
 Allow top menu: Allow top menu
 Date Selectors position: Date Selectors position
-Top: Top
 Bottom: Bottom
+Top: Top
 menu-themes-help: Sets the colors and style of the top menu
 Menu theme: Menu theme
 fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
@@ -221,7 +230,7 @@ lunar-help: If enabled, will display small icons representing the lunar phases e
 Display Lunar Phases in month view: Display Lunar Phases in month view
 Restrictions: Restrictions
 allow-view-other-help: Specifies whether one user may view another user's calendar.
-Allow viewing other user&#39;s calendars: Allow viewing other user's calendars
+Allow viewing other users calendars: Allow viewing other user's calendars
 require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 Require event approvals: Require event approvals
 display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
@@ -319,6 +328,7 @@ icon_upload-enabled-help: If enabled, users can upload category icons
 Category Icon Upload enabled: Category Icon Upload enabled
 Requires: Requires
 folder to exist: folder to exist
+(Requires XXX folder to exist.): (Requires XXX folder to exist.)
 display-tasks-help: Display small task window on month and day calendar
 Display small task list: Display small task list
 display-tasks-in-grid-help: Display tasks in calendars along with events
@@ -337,12 +347,12 @@ allow-self-registration-full-help: Allow new users to complete the self-registra
 Use self-registration email notifications: Generate passwords and send to new users. This should help eliminate spammers.
 allow-attachment-help: Allow users to add file attachments to events.
 Allow file attachments to events: Allow file attachments to events
-Admin and owner can always add attachments if enabled: Admin and owner can always add attachments if enabled
-Participant: Participant
+Admin and owner can always add attachments if enabled.: Admin and owner can always add attachments if enabled.
 Anyone: Anyone
+Participant: Participant
 allow-comments-help: Allow users to add comments to events.
 Allow comments to events: Allow comments to events
-Admin and owner can always add comments if enabled: Admin and owner can always add comments if enabled
+Admin and owner can always add comments if enabled.: Admin and owner can always add comments if enabled.
 email-enabled-help: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
 Email enabled: Email enabled
 email-default-sender: Specifies the email address to specify as the sender when sending out reminders.
@@ -425,7 +435,7 @@ Duplicate Name XXX: Duplicate Name: XXX.
 Username already exists: Username already exists
 Username XXX already exists.: Username "XXX" already exists.
 Email address already exists: Email address already exists
-Email address XXX already exists: Email address "XXX" already exists
+Email address XXX already exists.: Email address "XXX" already exists
 
 ########################################
 # Page: approve_entry.php
@@ -433,13 +443,11 @@ Email address XXX already exists: Email address "XXX" already exists
 Additional Comments (optional): Additional Comments (optional)
 Approve and Send: Approve and Send
 Approve and Exit: Approve and Exit
-Your comments will be included in an email to the event creator.: Your comments will be included in an email to the event creator.
-event creator: event creator
-Your comments will be emailed to the XXX.: Your comments will be included in an email to the event creator.
+(Your comments will be emailed to the event creator.): (Your comments will be emailed to the event creator.)
 Hello: Hello
 Hello, XXX.: Hello, XXX.
 An appointment has been approved and comments added by: An appointment has been approved and comments added by
-XXX has approved appointment and added comments: An appointment has been approved and comments added by XXX.
+XXX has approved an appointment and added comments.: An appointment has been approved and comments added by XXX.
 The subject was: The subject was
 Subject XXX: Subject: "XXX".
 The description is: The description is
@@ -462,8 +470,9 @@ Your assistants: Your assistants
 # Page: availability.php
 #
 Program Error: Program Error:
-user: user
 No XXX specified!: No XXX specified!
+Program Error No XXX specified!: Program Error: No XXX specified!
+user: user
 year: year
 month: month
 day: day
@@ -520,7 +529,6 @@ XXX has canceled an appointment.: XXX has canceled an appointment.
 # Page: doc.php
 #
 Invalid blob id: Invalid blob id
-Invalid entry id: Invalid entry id
 
 ########################################
 # Page: docadd.php
@@ -859,7 +867,7 @@ colors-help: All colors should be specified in "#RRGGBB" hexadecimal format wher
 #
 Report Bug: Report Bug
 Please include all the information below when reporting a bug.: Please include all the information below when reporting a bug.
-Also, please use <strong>English</strong> rather than: Also, please use <strong>English</strong> rather than
+Also, please use English rather than: Also, please use <strong>English</strong> rather than
 Also, please use English rather than XXX.: Also, please use <strong>English</strong> rather than XXX.
 
 ########################################
@@ -881,7 +889,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: This
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
 The following entries will not be imported: The following entries will not be imported
 Entries older than the current date: Entries older than the current date
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Entries created in the Palm Desktop that have not been HotSync'd
+Entries created in the Palm Desktop...: Entries created in the Palm Desktop that have not been HotSync'd
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
 Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
 vCal: vCal
@@ -901,7 +909,7 @@ About WebCalendar: About WebCalendar
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.
+Layers are useful for displaying...: Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.
 Add/Edit/Delete: Add/Edit/Delete
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
 The text color of the new layer that will be displayed in your calendar.: The text color of the new layer that will be displayed in your calendar.
@@ -1010,7 +1018,7 @@ Reject Selected entries?: Reject Selected entries?
 # Page: login-app.php
 #
 You must enter a login and password: You must enter a login and password
-Save login via cookies so I don&#39;t have to login next time: Save login via cookies so I don't have to login next time
+Save login via cookies so I dont have to login next time.: Save login via cookies so I don't have to login next time
 Login: Login
 Access public calendar: Access public calendar
 cookies-note: <b>Note:</b> This application requires cookies to be enabled.
@@ -1074,7 +1082,7 @@ No user specified: No user specified
 Purging events for: Purging events for
 Finished: Finished
 Back: Back
-Check box to delete <b>ALL</b> events for a user: Check box to delete <b>ALL</b> events for a user
+Check box to delete ALL events for a user: Check box to delete <b>ALL</b> events for a user
 Delete all events before: Delete all events before
 Purge deleted only: Purge deleted only
 Preview delete: Preview delete
@@ -1105,7 +1113,7 @@ Submit: Submit
 # Page: reject_entry.php
 #
 Continue: Continue
-(Your comments will be included in an email to the other participants): (Your comments will be included in an email to the other participants)
+(Your comments will be emailed to the other participants.): (Your comments will be emailed to the other participants.)
 An appointment has been rejected by: An appointment has been rejected by
 
 ########################################
@@ -1160,6 +1168,7 @@ View Another Users Calendar: View Another User's Calendar
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Invalid entry id
 You have not added any categories: You have not added any categories
 Set Category: Set Category
 Global Categories cannot be changed.: Global Categories cannot be changed.
@@ -1245,10 +1254,10 @@ Edit entry for this date: Edit entry for this date
 Delete entry only for this date: Delete entry only for this date
 from calendar of: from calendar of
 This will delete the entry from your XXX calendar.: This will delete the entry from your XXX calendar.
-boss&#39;: boss&#39;
-This will delete the entry from your boss&#39; calendar.: This will delete the entry from your boss' calendar.
+boss: boss'
+This will delete the entry from your boss calendar.: This will delete the entry from your boss' calendar.
 This will delete the entry from your calendar.: This will delete the entry from your calendar.
-from your boss&#39; calendar: from your boss' calendar
+from your boss calendar: from your boss' calendar
 Do you want to add this entry to your calendar?: Do you want to add this entry to your calendar?
 This will add the entry to your calendar.: This will add the entry to your calendar.
 Email all participants: Email all participants
@@ -1567,15 +1576,14 @@ recipients_failed: SMTP Error: The following recipients failed:
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: Enter Characters Seen in Graphic
-Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read.: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read.
+Enter the correct letters and numbers from the image into the text box...: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read.
 Challenge/Response: Challenge/Response
 
 ########################################
 # Page: includes/js/admin.php
 #
 Server URL is required: Server URL is required
-Server URL must end with &#39;/&#39;: Server URL must end with '/'
-Server URL must end with &quot;/&quot;.: Server URL must end with &quot;/&quot;.
+Server URL must end with /.: Server URL must end with '/'.
 Invalid work hours: Invalid work hours
 Invalid color for document background: Invalid color for document background
 Invalid color for document title: Invalid color for document title
@@ -1586,7 +1594,7 @@ Invalid color for table text background: Invalid color for table text background
 Invalid color for event popup background: Invalid color for event popup background
 Invalid color for event popup text: Invalid color for event popup text
 Invalid color for table cell background for today: Invalid color for table cell background for today
-Color format should be &#39;#RRGGBB&#39;: Color format should be '#RRGGBB'
+Color format should be RRGGBB.: Color format should be '#RRGGBB'.
 
 ########################################
 # Page: includes/js/availability.php
@@ -1653,6 +1661,7 @@ Help Contents: Help Contents
 #
 WebCalendar Installation Wizard: WebCalendar Installation Wizard
 Step: Step
+WebCalendar Installation Wizard Step XXX: WebCalendar Installation Wizard Step XXX
 Single-User: Single-User
 Failure Reason: Failure Reason
 You must manually create database: You must manually create database
@@ -1662,6 +1671,7 @@ Create New: Create New
 Database Name: Database Name
 Timezone Conversion Successful: Timezone Conversion Successful
 Error Unable to write to file: Error Unable to write to file
+Error Unable to write to file XXX.: Error Unable to write to file XXX.
 Successful Login: Successful Login
 Invalid Login: Invalid Login
 required only if Safe Mode is On: required only if Safe Mode is On
@@ -1672,7 +1682,7 @@ Unable to write password to settings.php file: Unable to write password to setti
 Password has been set: Password has been set
 Connection Successful: Connection Successful
 Please go to next page to continue installation: Please go to next page to continue installation
-Correct your entries or click the <b>Create New</b> button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
+Correct your entries or click the Create New button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
 Correct your entries and try again: Correct your entries and try again
 does not exist: does not exist
 is not writable: is not writable
@@ -1681,7 +1691,6 @@ Please change the file permissions of this file: Please change the file permissi
 Please change includes dir permission: Please change the file permissions of your includes directory to allow writing by other users
 Your settings have been saved: Your settings have been saved
 Error you must specify a\\nSingle-User Login: Error you must specify a\\nSingle-User Login
-Server URL must end with: Server URL must end with
 Full Path (no backslashes): Full Path (no backslashes)
 The password contains illegal characters.: The password contains illegal characters.
 This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
@@ -1695,9 +1704,9 @@ To test the proper operation of sessions, reload this page: To test the proper o
 You should see the session counter increment each time: You should see the session counter increment each time
 SESSION COUNTER: SESSION COUNTER
 Settings.php Status: Settings.php Status
-The file permissions of <b>settings.php</b> are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
-The file permissions of the <b>includes</b> directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
-Your <b>settings.php</b> file appears to be valid: Your <b>settings.php</b> file appears to be valid
+The file permissions of settings.php are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
+The file permissions of the includes directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
+Your settings.php file appears to be valid: Your <b>settings.php</b> file appears to be valid
 Configuration Wizard Password: Configuration Wizard Password
 Create Settings File Password: Create Settings File Password
 Password (again): Password (again)
@@ -1706,7 +1715,7 @@ Database Status: Database Status
 Supported databases for your PHP installation: Supported databases for your PHP installation
 Your current database settings are able to access the database: Your current database settings are able to access the database
 Please Test Settings: Please Test Settings
-Your current database settings are <b>not</b> able to access the database or have not yet been tested: Your current database settings are <b>not</b> able to access the database or have not yet been tested
+Your current database settings are not able...: Your current database settings are <b>not</b> able to access the database or have not yet been tested
 Database Settings: Database Settings
 Database Type: Database Type
 Server: Server
@@ -1716,7 +1725,7 @@ next page and complete your WebCalendar setup: next page and complete your WebCa
 This appears to be a new installation. If this is not correct, please: This appears to be a new installation. If this is not correct, please
 go back to the previous page and correct your settings: go back to the previous page and correct your settings
 The database requires some data input: The database requires some data input
-Click <b>Update Database</b> to complete the upgrade: Click <b>Update Database</b> to complete the upgrade
+Click Update Database to complete the upgrade: Click <b>Update Database</b> to complete the upgrade
 This appears to be an upgrade from version: This appears to be an upgrade from version
 In this section we will perform the required database changes to bring your database up to the required level: In this section we will perform the required database changes to bring your database up to the required level
 If you are using a fully supported database, this step will be performed automatically for you: If you are using a fully supported database, this step will be performed automatically for you
@@ -1725,27 +1734,30 @@ to cut &amp; paste it into your database server query window: to cut &amp; paste
 No database actions are required: No database actions are required
 The following database actions are required: The following database actions are required
 ODBC Underlying Database: ODBC Underlying Database
-Automatic installation not supported: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the sql supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
+Automatic installation not supported: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the SQL supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
 This may take several minutes to complete: This may take several minutes to complete
 Install Database: Install Database
 Update Database: Update Database
 Display Required SQL: Display Required SQL
 Return to previous page after processing sql: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
-This is the final step in setting up your WebCalendar Installation: This is the final step in setting up your WebCalendar Installation
+This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
 Timezone Conversion: Timezone Conversion
 It appears that you have: It appears that you have
 NOT: NOT
-converted your existing WebCalendar event data to GMT: converted your existing WebCalendar event data to GMT
-If you have, you may ignore this notice and not proceed with the conversion: If you have, you may ignore this notice and not proceed with the conversion
+converted your existing WebCalendar event data to GMT.: converted your existing WebCalendar event data to GMT.
+If you have, you may ignore this notice and not proceed with the conversion.: If you have, you may ignore this notice and not proceed with the conversion.
 If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
+It appears that you have NOT converted your existing WebCalendar...: It appears that you have NOT converted your existing WebCalendar event data to GMT. If you have, you may ignore this notice and not proceed with the conversion.. If this is a new installation, you may also ignore this notice.
 Convert Data to GMT: Convert Data to GMT
 Application Settings: Application Settings
 HTTP-based authentication was not detected: HTTP-based authentication was not detected
 You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to
-select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: select 'Web Server' from the 'User Authentication' choices below
-HTTP-based authentication was detected: HTTP-based authentication was detected
-User authentication is being handled by your web server: User authentication is being handled by your web server
-You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: You should select 'Web Server' from the list of 'User Authentication' choices below
+select Web Server from the User Authentication choices below.: select 'Web Server' from the 'User Authentication' choices below
+HTTP-based authentication was not detected...: HTTP-based authentication was not detected. You will need to reconfigure your web server if you wish to select 'Web Server' from the 'User Authentication' choices below.
+HTTP-based authentication was detected.: HTTP-based authentication was detected.
+User authentication is being handled by your web server.: User authentication is being handled by your web server.
+You should select Web Server from the list of User Authentication choices below.: You should select 'Web Server' from the list of 'User Authentication' choices below.
+HTTP-based authentication was detected...: HTTP-based authentication was detected. User authentication is being handled by your web server. You should select 'Web Server' from the list of 'User Authentication' choices below.
 Create Default Admin Account: Create Default Admin Account
 Admin Account Not Found: Admin Account Not Found
 User Authentication: User Authentication

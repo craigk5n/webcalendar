@@ -7,7 +7,7 @@
 # Last time updated on 09-18-2005
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -55,6 +55,8 @@ View Event: Ogl±danie zdarzeñ
 Edit: Edytuj
 Events: Zdarzenia
 Public: Dla wszystkich
+Confidential: Poufny
+Private: Prywatne
 
 ########################################
 # Page: activity_log.php
@@ -123,6 +125,8 @@ From: Od
 to: Do
 preferred-view-help: Okre¶la preferowany widok (dzieñ, tydzieñ, miesi±c lub rok)
 Preferred view: Preferowany widok
+Bottom: Dó³
+Top: Góra
 fonts-help: Okre¶la liste czcionek systemowych do u¿ycia (np. "Arial, Helvetica")
 Fonts: Czcionki
 display-weekends-help: W czasie ogl±dania tygodnia wy¶wietla tak¿e weekendy
@@ -135,7 +139,7 @@ Display days with events in bold in month and year views: Pogrubiaj dni z wpisam
 allow-view-add-help: Dzieki wy¶wietlanej ikonie plusa ("+") bedzie mo¿na szybko dodawaæ zdarzenia do kalendarzy innych u¿ytkowników
 Include add event link in views: W³±cz przycisk dodawania zdarzenia
 allow-view-other-help: W³±cza mo¿liwo¶æ ogl±dania kalendarzy innych u¿ytkowników
-Allow viewing other user&#39;s calendars: Zezwalaj na ogladanie kalendarzy innych u¿ytkowników
+Allow viewing other users calendars: Zezwalaj na ogladanie kalendarzy innych u¿ytkowników
 require-approvals-help: Wymaga zatwierdzenia zdarzenia przez u¿ytkownika
 Require event approvals: Wymagaj zatwierdzania zdarzeñ
 display-unapproved-help: Okre¶la czy niezatwierdzone wydarzenia bed± wy¶wietlane w twoim kalendarzu.<br /> Je¶li "tak" wtedy niezatwierdzone wydarzenia bed± wy¶wietlane (innym kolorem).<br /> Je¶li "Nie" wtedy najpierw bed± musia³y zostaæ zatwierdzone nim pojawi± siê w Twoim kalendarzu.
@@ -314,11 +318,6 @@ Cancel: Anuluj
 An appointment has been canceled for you by: Twoje spotkanie zosta³o skasowane przez
 
 ########################################
-# Page: doc.php
-#
-Invalid entry id: Niepoprawny id wydarzenia
-
-########################################
 # Page: docadd.php
 #
 Upload file: Wy¶lij plik
@@ -362,7 +361,6 @@ duration-help: Okre¶la (w minutach) czas trwania wydarzenia.<br /><i>Mo¿e zostaæ
 hours: godziny
 minutes: minut
 end-time-help: Okre¶la godzinê, o której zdarzenie powinno siê skoñczyæ
-participants-help: Lists the participants of this entry.
 Availability: Dostepno¶æ
 external-participants-help: Okre¶la liste uczestników dla zdarzenia, którzy nie s± u¿ytkownikami kalendarza. U¿ytkownicy powinni bya uszeregowani - jeden na linie i mog±zawrzea adres email. Je¿eli adres email jest podany, u¿ytkownik mo¿e ubiegaæ siê o otrzymywanie zawiadomien i przypomnien.
 External Participants: Zewnetrzni u¿ytkownicy
@@ -577,11 +575,12 @@ repeat-day-help: Okresla w które dni tygodnia wydarzenie ma bya powtarzane.  U¿y
 # Page: help_import.php
 #
 Import: Importuj
+Palm Desktop: Palmtop
 This form will allow you to import entries from the Palm Desktop Datebook.: Ten formularz pomo¿e ci zaimportowaæ wpisy z twojego Kalendarza w Palmtopie
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Powinien bya umieszczony w katalogu <tt>datebook/datebook.dat</tt> w podkatalogu wg. nazwy u¿ytkownika
 The following entries will not be imported: Nastepuj±ce wpisy nie zostan± zaimportowane
 Entries older than the current date: Wpisy starsze od bie¿±cej daty
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Wpisy utworzone w Palmtopie które nie zosta³y HotSync'owane
+Entries created in the Palm Desktop...: Wpisy utworzone w Palmtopie które nie zosta³y HotSync'owane
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Wszystko zaimportowane z Palmtopa bedzie nadpisane podczas kolejnego importu (chyba ¿e data zdarzenia mine³a).
 Therefore, updates should be made in the Palm Desktop.: Dlatego, aktualizacje powinny bya robione w Palmtopie
 This form will import vCalendar (.vcs) 1.0 events: Ten formularz zaimportuje zdarzenia vCalendar (.vcs) 1.0
@@ -598,7 +597,7 @@ Help Index: Indeks pomocy
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Warstwy to u¿yteczny dodatek, który pozwala na wy¶wietlanie zdarzeñ innych u¿ytkowników w Twoim w³asnym kalendarzu. Mo¿esz ustaliæ u¿ytkownika i kolor jego zdarzeñ, które maj± byæ pokazywane.
+Layers are useful for displaying...: Warstwy to u¿yteczny dodatek, który pozwala na wy¶wietlanie zdarzeñ innych u¿ytkowników w Twoim w³asnym kalendarzu. Mo¿esz ustaliæ u¿ytkownika i kolor jego zdarzeñ, które maj± byæ pokazywane.
 Add/Edit/Delete: Dodaj/Edytuj/Usun
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Klikaj±c na ³±cze Edytuj Warstwy w sekcji administracyjnej na dole strony pozwoli ci na dodanie/edycje/kasowanie warstw.
 The text color of the new layer that will be displayed in your calendar.: Kolor tekstu nowej warstwy która bedzie wy¶wietlona w twoim kalendarzu
@@ -675,7 +674,7 @@ Reject this entry?: Odrzuciæ wpis?
 # Page: login-app.php
 #
 You must enter a login and password: Musisz wprowadzia nazwe u¿ytkownika i has³o
-Save login via cookies so I don&#39;t have to login next time: Zapisz nazwe u¿ytkownika przez cookies
+Save login via cookies so I dont have to login next time.: Zapisz nazwe u¿ytkownika przez cookies
 Login: Login
 Access public calendar: Dostep do kalendarza publicznego
 cookies-note: <b>Uwaga!</b> Ta aplikacja wymaga w³±czonych cookies!
@@ -719,9 +718,10 @@ Display if created by Assistant: Wy¶wietl, je¶li stworzone przez Asystenta
 Purging events for: Wyczy¶æ zdarzenia dla
 Finished: Zakonczone
 Back: Wstecz
-Check box to delete <b>ALL</b> events for a user: Zaznacz aby skasowa <b>WSZYSTKIE</b> zdarzenia dla u¿ytkownika
+Check box to delete ALL events for a user: Zaznacz aby skasowa <b>WSZYSTKIE</b> zdarzenia dla u¿ytkownika
 Delete all events before: Kasuj wszystkie zdarzenia przed
 Preview delete: Usuniecie podgl±du
+Are you sure you want to delete events for: Jeste¶ pewny ¿e chcesz skasowaæ wszystkie zdarzenia dla
 Records deleted from: Pola usuniete z
 
 ########################################
@@ -751,6 +751,7 @@ An appointment has been rejected by: Spotkanie zosta³o odrzucone przez
 ########################################
 # Page: report.php
 #
+cont.: cont.
 This event is confidential: To zdarznie jest poufne
 Waiting for approval: Czekanie na zatwierdzenie
 Deleted: Skasowany
@@ -785,6 +786,7 @@ View Another Users Calendar: Poka¿ kalendarz innego u¿ytkownika
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Niepoprawny id wydarzenia
 You have not added any categories: nie doda³e¶ ¿anych kategorii
 Set Category: Ustaw kategorie
 
@@ -855,7 +857,6 @@ Email all participants: Wy¶lij do wszystkich uczestników
 Hide activity log: Ukryj dzieñnik zdarzeñ
 Show activity log: Poka¿ dzieñnik zdarzeñ
 Export this entry to: Eksportuj ten wpis do
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: view_r.php
@@ -929,6 +930,10 @@ Oct: Pa¼
 Nov: Lis
 The following error occurred: Wyst±pi³ nastepuj±cy b³±d
 You are not authorized: Nie masz autoryzacji
+Add N hours to: Dodaj N godzin do
+Subtract N hours from: Odejmij N godzin od
+same as: taki sam jak
+server time: czas sewera
 Your current GMT offset is: Twoja ró¿nica wzglêdem GMT to
 Error approving event: B³±d w zatwierdzaniu zdarzenia
 Sunday: Niedziela
@@ -964,6 +969,7 @@ English-US: Angielski (USA)
 Basque: Baskijski
 Bulgarian: Bu³garski
 Catalan: Katalonski
+Chinese (Simplified/GB2312): Chiñski (Uproszczony/Big5)
 Chinese (Traditional/Big5): Chinski (Tradycyjny/Big5)
 Czech: Czeski
 Danish: Dunski
@@ -988,6 +994,7 @@ Russian: Rosyjski
 Spanish: Hiszpanski
 Swedish: Szwedzki
 Turkish: Turecki
+event: zdarzenie
 
 ########################################
 # Page: includes/user-imap.php
@@ -1015,7 +1022,7 @@ Notification: Zawiadomienie
 # Page: includes/js/admin.php
 #
 Server URL is required: Wymagany adres internetowy serwera
-Server URL must end with &#39;/&#39;: Adres serwera musi koñczyæ siê na '/'
+Server URL must end with /.: Adres serwera musi koñczyæ siê na '/'
 Invalid work hours: Niepoprawne godziny pracy
 Invalid color for document background: Nieprawid³owy kolor t³a dokumentu
 Invalid color for document title: Nieprawid³owy kolor tytu³u dokumentu
@@ -1026,7 +1033,7 @@ Invalid color for table text background: Nieprawid³owy kolor dla t³a tekstu tabe
 Invalid color for event popup background: Nieprawid³owy kolor dla t³a zdarzenia pojawiaj±cego siê
 Invalid color for event popup text: Nieprawid³owy kolor dla tekstu pojawiaj±cego siê zdarzenia
 Invalid color for table cell background for today: Nieprawid³owy kolor t³a komórki dla bie¿±cego dnia
-Color format should be &#39;#RRGGBB&#39;: Format koloru powinien bya '#RRGGBB'
+Color format should be RRGGBB.: Format koloru powinien bya '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php
@@ -1067,13 +1074,12 @@ Passwords do not match: Podane has³a ró¿ni± siê od siebie
 Unable to write password to settings.php file: Nie mogê zapisaæ has³a do pliku "setting.php"
 Connection Successful: Po³±czenie zakoñczone sukcesem
 Please go to next page to continue installation: Przejd¼ do nastêpnej strony aby kontynuowaæ instalacjê
-Correct your entries or click the <b>Create New</b> button to continue installation: Popraw wprowadzone dane lub klikni j przycisk <b>Stwórz nowy</b> aby kontynuowaæ instalacjê
+Correct your entries or click the Create New button to continue installation: Popraw wprowadzone dane lub klikni j przycisk <b>Stwórz nowy</b> aby kontynuowaæ instalacjê
 Correct your entries and try again: Popraw wprowadzone dane i spróbuj ponownie
 Error Converting Timezone: B³±d podczas konwertowania stefy czasowej
 Please change the file permissions of this file: Zmieñ prawa dostêpu do tego pliku
 Your settings have been saved: Twoje ustawienia zosta³y zapisane
 Error you must specify a\\nSingle-User Login: B³±d musisz ustaliæ a\\nLogowanie pojedyñczego u¿ytkownika
-Server URL must end with: URL serwera musi mieæ na koñcu
 Full Path (no backslashes): Pe³na ¶cie¿ka (bez backslashy)
 PHP Version Check: Sprawdzenie wersji PHP
 Check to see if PHP 4.1.0 or greater is installed: Zaznacz aby sprawdziæ czy jest zainstalowane PHP w wersji 4.1.0 lub nowszej
@@ -1084,7 +1090,7 @@ To test the proper operation of sessions, reload this page: Aby sprawrziæ odpowi
 You should see the session counter increment each time: Powiniene¶ widzieæ zwiêkszanie siê licznika sesji za ka¿dem razem.
 SESSION COUNTER: LICZNIK SESJI
 Settings.php Status: Status settings.php
-Your <b>settings.php</b> file appears to be valid: Plik <b>settings.php</b> jest poprawny
+Your settings.php file appears to be valid: Plik <b>settings.php</b> jest poprawny
 Configuration Wizard Password: Has³o kreatora instalacji
 Create Settings File Password: Utwórz has³o pliku z ustawieniami
 Password (again): Has³o (ponownie)
@@ -1092,7 +1098,7 @@ Database Status: Status bazy danych
 Supported databases for your PHP installation: Bazy danych obs³ugiwane przez Twoj± instalacjê PHP
 Your current database settings are able to access the database: Twoje obecne ustawienia pozwalaj± na dostêp do bazy danych.
 Please Test Settings: Proszê przetestowaæ ustawienia
-Your current database settings are <b>not</b> able to access the database or have not yet been tested: Twoje obecne ustawienia <b>nie</b> pozwalaj± na dostêp do bazy danych.
+Your current database settings are not able...: Twoje obecne ustawienia <b>nie</b> pozwalaj± na dostêp do bazy danych.
 Database Settings: Ustawienia bazy danych
 Database Type: Typ bazy danych
 Server: Serwer
@@ -1102,7 +1108,7 @@ next page and complete your WebCalendar setup: nastêpnej strony i zakoñczyæ inst
 This appears to be a new installation. If this is not correct, please: Wygl±da na to, ¿e to nowa instalacja. Je¶li siê mylê
 go back to the previous page and correct your settings: wróæ na poprzedni± stronê i popraw ustawienia
 The database requires some data input: Baza danych wymaga podania pewnych danych
-Click <b>Update Database</b> to complete the upgrade: Kliknij <b>Aktualizuj bazê danych</b> aby zakoñczyæ aktualizacjê
+Click Update Database to complete the upgrade: Kliknij <b>Aktualizuj bazê danych</b> aby zakoñczyæ aktualizacjê
 This appears to be an upgrade from version: Wygl±da na to, ¿e to aktualizacja z poprzedniej wersji.
 In this section we will perform the required database changes to bring your database up to the required level: W tej sekcji przeprowadzimy niezbêdne zmiany w bazie danych aby aktualizowaæ j± do wymaganego stanu.
 If you are using a fully supported database, this step will be performed automatically for you: Je¶li u¿ywasz w pe³ni obs³ugiwanej bazy danych, ten krok zostanie wykonany automatycznie.
@@ -1115,20 +1121,20 @@ This may take several minutes to complete: To mo¿e zaj±æ kilka minut
 Install Database: Zainstaluj bazê danych
 Update Database: Aktualizuj bazê danych
 Display Required SQL: Poka¿ potrzebne zapytania SQL
-This is the final step in setting up your WebCalendar Installation: To ostatni krok w konfiguracji nowej instalacji WebCalendara
+This is the final step in setting up your WebCalendar Installation.: To ostatni krok w konfiguracji nowej instalacji WebCalendara
 Timezone Conversion: Konwersja strefy czasowej
 It appears that you have: Wygl±da na to, ¿e
 NOT: NIE
-converted your existing WebCalendar event data to GMT: skonwertowa³e¶ swój istniej±cy WebCalendar do GMT.
-If you have, you may ignore this notice and not proceed with the conversion: Je¶li skonwertowa³e¶, mo¿esz zignorowaæ to ostrze¿enie i kontynuowaæ konwersjê.
+converted your existing WebCalendar event data to GMT.: skonwertowa³e¶ swój istniej±cy WebCalendar do GMT.
+If you have, you may ignore this notice and not proceed with the conversion.: Je¶li skonwertowa³e¶, mo¿esz zignorowaæ to ostrze¿enie i kontynuowaæ konwersjê.
 Convert Data to GMT: Zamieñ datê na GMT
 Application Settings: Ustawienia aplikacji
 HTTP-based authentication was not detected: Autoryzacja HTTP nie wykryta
 You will need to reconfigure your web server if you wish to: Bêdziesz musia³ przekonfigurowaæ swój serwer, je¶li chcesz
-select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: wybraæ "Serwer" z listy "Autoryzacja u¿ytkownika"
-HTTP-based authentication was detected: Autoryzacja HTTP zosta³a wykryta
-User authentication is being handled by your web server: Autoryzacja u¿ytkownika jest w³±czona na Twoim serwerze
-You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: Powiniene¶ wybraæ "Serwer" z listy "Autoryzacja u¿ytkownika"
+select Web Server from the User Authentication choices below.: wybraæ "Serwer" z listy "Autoryzacja u¿ytkownika"
+HTTP-based authentication was detected.: Autoryzacja HTTP zosta³a wykryta
+User authentication is being handled by your web server.: Autoryzacja u¿ytkownika jest w³±czona na Twoim serwerze
+You should select Web Server from the list of User Authentication choices below.: Powiniene¶ wybraæ "Serwer" z listy "Autoryzacja u¿ytkownika"
 User Authentication: Autoryzacja u¿ytkownika
 Web-based via WebCalendar (default): Standardowa poprzez WebCalendar
 Web Server: Serwer
@@ -1139,6 +1145,11 @@ Production: Produkcja
 Development: Rozwój
 Save Settings: Zapisz ustawienia
 Launch WebCalendar: Uruchom WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Conversion Successful: Konwersja zakoñczona sukcesem
 
 ########################################
 # Page: tools/send_reminders.php

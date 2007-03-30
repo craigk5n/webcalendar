@@ -11,9 +11,7 @@ function valid_form ( form ) {
   }
   else if ( form.admin_SERVER_URL.value.charAt (
     form.admin_SERVER_URL.value.length - 1 ) != '/' ) {
-    err += "<?php
-// translate ( 'Server URL must end with &#39;/&#39;' )
-     etranslate( 'Server URL must end with &quot;/&quot;.', true ) ?>\n";
+    err += "<?php etranslate( 'Server URL must end with /.', true ) ?>\n";
     form.admin_SERVER_URL.select ();
     form.admin_SERVER_URL.focus ();
   }
@@ -70,7 +68,7 @@ function valid_form ( form ) {
 
   if ( err.length > 0 ) {
     alert ( "<?php etranslate ( 'Error', true ) ?>" + ":\n\n" + err + "\n\n<?php
-  etranslate('Color format should be &#39;#RRGGBB&#39;', true)?>" );
+  etranslate('Color format should be RRGGBB.', true)?>" );
     return false;
   }
   return true;

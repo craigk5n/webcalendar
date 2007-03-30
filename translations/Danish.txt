@@ -14,7 +14,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -60,6 +60,8 @@ Calendar: Kalender
 Edit: Redigér
 Events: Aftaler
 Public: Offentlig	 
+Confidential: Fortrolig
+Private: Privat
 
 ########################################
 # Page: activity_log.php
@@ -124,6 +126,7 @@ From: Fra
 to: til
 preferred-view-help: Angiver den foretrukne opstilling (dag, uge, måned eller år).
 Preferred view: Foretrukken opstilling
+Bottom: Bund
 fonts-help: Angiver en liste over skrifttyper systemet kan benytte (f.eks. "Arial, Helvetica")
 Fonts: Skrifttyper
 display-weekends-help: Inkluderer weekender i uge-visning
@@ -136,7 +139,7 @@ Display days with events in bold in month and year views: Brug fed skrift for da
 allow-view-add-help: A '+' ikon bliver inkluderet i visninger. Dette gøre brugere i stand til hurtigt at tilføje nye aftaler til andre brugeres kalendere.
 Include add event link in views: Inkluder "Tilføj aftale" i visninger
 allow-view-other-help: Angiver om en bruger må se i andre brugeres kalendere
-Allow viewing other user&#39;s calendars: Tillad visning af andres kalendere
+Allow viewing other users calendars: Tillad visning af andres kalendere
 require-approvals-help: Når dette er slået til skal brugere acceptere en aftale før den vises i deres kalender (pånær hvis "Vis ikke-accepterede aftaler" er slået til. Bemærk at hvis denne indstilling slåes fra, vil det samtidig slå acceptering i den offentlige kalender fra (hvis dette er slået til).
 Require event approvals: Kræv acceptering af aftaler
 display-unapproved-help: Specificér her hvorvidt din kalender skal vise ikke-accepterede aftaler.
@@ -293,11 +296,6 @@ Cancel: Annullér
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: En aftale er blevet aflyst for dig af
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: Ugyldigt aftale ID
 
 ########################################
 # Page: docadd.php
@@ -538,11 +536,12 @@ repeat-day-help: Hvilke ugedage skal aftalen gentages på.
 # Page: help_import.php
 #
 Import: Importér
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Denne formular gør det muligt at importere aftaler fra Palm Desktop adressebog.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den bør ligge i din Palm mappe i <tt>datebook/datebook.dat</tt>  i en undermappe med dit brugernavn.
 The following entries will not be imported: Følgende aftaler importeres ikke
 Entries older than the current date: Aftaler ældre end dags dato
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Aftaler oprettet på Palm Desktoppen som ikke er blevet HotSync&#39;d
+Entries created in the Palm Desktop...: Aftaler oprettet på Palm Desktoppen som ikke er blevet HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alle data importeret fra Palm bliver overskrevet ved den næste import (hvis ikke datoen for aftalen er passeret).
 Therefore, updates should be made in the Palm Desktop.: Derfor bør opdateringer blive lavet på Palm Desktoppen
 This form will import vCalendar (.vcs) 1.0 events: Denne formular importerer vCalandar (.vcs) 1.0 aftaler
@@ -625,7 +624,7 @@ Reject this entry?: Afvis denne aftale?
 # Page: login-app.php
 #
 You must enter a login and password: Du skal indtaste et brugernavn og kodeord
-Save login via cookies so I don&#39;t have to login next time: Gem login-informationer i en cookie, så jeg ikke behøver indtaste dem næste gang
+Save login via cookies so I dont have to login next time.: Gem login-informationer i en cookie, så jeg ikke behøver indtaste dem næste gang
 Login: Log ind
 Access public calendar: Til offentlig kalender
 cookies-note: <b>OBS:</b> Dette program kræver at cookies er slået til i browseren
@@ -652,9 +651,10 @@ minute: minutter
 #
 Purging events for: Sletter aftaler for
 Finished: Færdig
-Check box to delete <b>ALL</b> events for a user: Afkryds for at slette <b>ALLE</b> aftaler for en bruger
+Check box to delete ALL events for a user: Afkryds for at slette <b>ALLE</b> aftaler for en bruger
 Delete all events before: Slet alle aftaler før
 Preview delete: Vis aftaler som slettes
+Are you sure you want to delete events for: Er du sikker på du vil slette aftaler for
 Records deleted from: Poster slettet fra
 
 ########################################
@@ -700,6 +700,7 @@ View Another Users Calendar: Se anden brugers kalender
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Ugyldigt aftale ID
 You have not added any categories: Du har ikke tilføjet nogen kategorier
 Set Category: Vælg kategori
 
@@ -767,7 +768,6 @@ Email all participants: Send email til alle deltagere
 Hide activity log: Skjul Aktivitetslog
 Show activity log: Vis Aktivitetslog
 Export this entry to: Eksporter denne visning til
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -778,6 +778,7 @@ New Entry: Ny aftale
 # Page: includes/access.php
 #
 Another Users Calendar: Anden brugers kalender
+Manage Views: Definer Visninger
 
 ########################################
 # Page: includes/date_formats.php
@@ -829,6 +830,10 @@ Oct: Okt
 Nov: Nov
 The following error occurred: Følgende fejl opstod
 You are not authorized: Du har ikke tilladelse til dette
+Add N hours to: Tilføj N timer til
+Subtract N hours from: Træk N timer fra
+same as: samme som
+server time: serverens tidsindstilling
 Error approving event: Fejl ved godkendelse af aftale
 Sunday: Søndag
 Monday: Mandag
@@ -887,6 +892,7 @@ Russian: Russisk
 Spanish: Spansk
 Swedish: Svensk
 Turkish: Tykisk
+event: aktivitet
 
 ########################################
 # Page: includes/user-imap.php
@@ -913,7 +919,7 @@ Notification: Påmindelse
 # Page: includes/js/admin.php
 #
 Server URL is required: Server URL er påkrævet
-Server URL must end with &#39;/&#39;: Server URL skal slutte med '/'
+Server URL must end with /.: Server URL skal slutte med '/'
 Invalid work hours: Ugyldig arbejdstid
 Invalid color for document background: Ugyldig baggrundsfarve
 Invalid color for document title: Ugyldig titelfarve
@@ -924,7 +930,7 @@ Invalid color for table text background: Ugyldig farve for baggrunden for tabelt
 Invalid color for event popup background: Ugyldig farve for baggrunden for aftale-popup.
 Invalid color for event popup text: Ugyldig farve for aftale-popup tekst.
 Invalid color for table cell background for today: Ugyldig farve for dagens tabelbaggrund
-Color format should be &#39;#RRGGBB&#39;: Farven skal skrives som '#RRGGBB'
+Color format should be RRGGBB.: Farven skal skrives som '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php

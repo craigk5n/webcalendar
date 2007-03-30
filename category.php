@@ -18,7 +18,7 @@ $icon_path = 'icons/';
 if ( ! empty ( $id ) ) {
   if ( empty ( $categories[$id] ) )
     $error =
-    str_replace ( 'XXX', $id, translate ( 'Invalid entry id XXX' ) );
+    str_replace ( 'XXX', $id, translate ( 'Invalid entry id XXX.' ) );
 
   $catcolor = $categories[$id]['cat_color'];
   $catname = $categories[$id]['cat_name'];

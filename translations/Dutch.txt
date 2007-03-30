@@ -6,7 +6,7 @@
 #   Oliver Heesakkers / dev@heesakkers.info
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -68,6 +68,8 @@ Assistant: Assistent
 Select All: Selecteer Alles
 Clear All: Alle wissen
 Public: Publiekelijk
+Confidential: Vertrouwelijk
+Private: Prive-afspraak
 
 ########################################
 # Page: activity_log.php
@@ -148,6 +150,8 @@ preferred-view-help: Specificeert de standaard agendaview - dag, week, maand, ja
 Preferred view: Voorkeursweergave
 Allow top menu: Permitteer menu bovenin
 Date Selectors position: Datum positiekiezers
+Bottom: Onderaan
+Top: Bovenaan
 menu-themes-help: helptekst menu-thema's
 Menu theme: Menu thema
 fonts-help: Specificeert een lijst van systeem-fonts die gebruikt kunnen worden, zoals Verdana, Arial, Helvetica, etc.
@@ -171,7 +175,7 @@ Include add event link in views: Toon icoon voor maken van afspraken in alle vie
 lunar-help: helptekst-maanfasen
 Display Lunar Phases in month view: Maanfasen tonen in maandweergave
 allow-view-other-help: Definieert of een gebruiker de agenda van andere gebruikers mag inzien.
-Allow viewing other user&#39;s calendars: Inzage agenda andere gebruikers toestaan
+Allow viewing other users calendars: Inzage agenda andere gebruikers toestaan
 require-approvals-help: Indien ingeschakeld dient een gebruiker een afspraak te bevestigen voordat deze in de agenda wordt getoond tenzij Weergave onbevestigde items is geactiveerd. <br />Let op: door deze optie te de-activeren worden alle bevestigingen voor de publiek toegankelijke agenda uitgeschakeld indien deze is geactiveerd.
 Require event approvals: Afspraakbevestigingen worden vereist
 display-unapproved-help: Geeft aan of openstaande, onbevestigde afspraken moeten worden weergegeven in uw agenda. <br />Indien u [ja] kiest worden openstaande afspraken in een andere tekstkleur in uw agenda weergegeven. <br />Indien u [nee] kiest moeten openstaande afspraken eerst bevestigd worden voordat deze in uw agenda worden getoond.
@@ -275,12 +279,12 @@ allow-self-registration-full-help: Deze optie regelt zelf-registratie volledig.
 Use self-registration email notifications: Gebruik zelf-registratie email-notificaties
 allow-attachment-help: Met deze functie wordt het mogelijk om bijlagen aan afspraken toe te voegen.
 Allow file attachments to events: Permitteer bestandsbijlagen bij afspraken
-Admin and owner can always add attachments if enabled: Indien ingesteld kunnen de Admin en eigenaar altijd bijlagen toevoegen.
-Participant: Deelnemer
+Admin and owner can always add attachments if enabled.: Indien ingesteld kunnen de Admin en eigenaar altijd bijlagen toevoegen.
 Anyone: Wie dan ook
+Participant: Deelnemer
 allow-comments-help: Met deze functie wordt het mogelijk om opmerkingen aan afspraken toe te voegen.
 Allow comments to events: Permitteer opmerkingen bij afspraken
-Admin and owner can always add comments if enabled: Indien ingesteld kunnen de Admin en eigenaar altijd opmerkingen toevoegen.
+Admin and owner can always add comments if enabled.: Indien ingesteld kunnen de Admin en eigenaar altijd opmerkingen toevoegen.
 email-enabled-help: Activeer of deactiveer hier het verzenden van email-notificaties en herinneringen bij een afspraak
 Email enabled: Activeer gebruik van email
 email-default-sender: Specificeert het mailadres dat als afzender wordt getoond bij het verzenden van herinneringen
@@ -359,6 +363,7 @@ Email address already exists: Email-adres bestaat al
 Additional Comments (optional): Extra opmerkingen (optioneel
 Approve and Send: Goedkeuren en verzenden
 Approve and Exit: Goedkeuren en afsluiten
+(Your comments will be emailed to the event creator.): (Uw opmerkingen worden ingevoegd bij een email aan de maker van de afspraak)
 Hello: Hallo
 An appointment has been approved and comments added by: Er is een afspraak goedgekeurd en commentaar bijgevoegd door
 The subject was: Het betreft afspraak
@@ -418,7 +423,6 @@ An appointment has been canceled for you by: Er is een afspraak voor u geannulee
 # Page: doc.php
 #
 Invalid blob id: Ongeldig blob ID
-Invalid entry id: Ongeldige afspraak-ID
 
 ########################################
 # Page: docadd.php
@@ -756,11 +760,12 @@ repeat-day-help: Indien uw afspraak wekelijks wordt herhaald, geeft u hier aan o
 # Page: help_import.php
 #
 Import: Importeren
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Hier kunt u de afspraken van uw Palm Desktop Datebook in uw agenda importeren.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Al uw Palm Datebook-afspraken zijn opgeslagen in een bestand met de naam datebook.dat. U kunt dit bestand vinden in de Palm-directory op uw computer. In deze directory vindt u een subdirectory met uw gebruikersnaam als naam. Hierin vindt u het bestand <tt>datebook/datebook.dat</tt> - dit bestand heeft u nodig om uw Palm Desktop datebookgegevens in uw WebCalendar agenda te kunnen importeren.
 The following entries will not be imported: De volgende items zullen niet worden geimporteerd
 Entries older than the current date: items ouder dan de huidige datum
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Items gemaakt in de Palm Desktop agenda die nog niet met HotSync gesynchroniseerd zijn
+Entries created in the Palm Desktop...: Items gemaakt in de Palm Desktop agenda die nog niet met HotSync gesynchroniseerd zijn
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Telkens als u uw Palm Datebook in uw WebCalendar agenda importeert zullen de gegevens van een vorige import-activiteit worden overschreven. Dit geldt niet voor afspraken in het verleden - items ouder dan de huidige datum worden immers niet geimporteerd.
 Therefore, updates should be made in the Palm Desktop.: &nbsp;Derhalve dient u <b>nieuwe afspraken in de Palm Desktop agenda toe te voegen</b> en niet in uw WebCalendar agenda.
 This form will import vCalendar (.vcs) 1.0 events: Hier kunt u afspraken uit vCalendar (.vcs) 1.0 in uw agenda importeren
@@ -777,7 +782,7 @@ Help Index: Overzicht help-onderwerpen
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Lagen zijn nuttig om andermans afpsraken in uw eigen agenda te tonen. U kunt de gebruiker en kleur kiezen waarin die afspraken worden getoond.
+Layers are useful for displaying...: Lagen zijn nuttig om andermans afpsraken in uw eigen agenda te tonen. U kunt de gebruiker en kleur kiezen waarin die afspraken worden getoond.
 Add/Edit/Delete: toevoegen / wijzigen / verwijderen
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Selecteer [wijzig lagen] in menu [beheer] om lagen toe te voegen, wijzigen of verwijderen.
 The text color of the new layer that will be displayed in your calendar.: De tekstkleur die wordt gebruikt voor deze nieuwe laag in je agenda.
@@ -878,7 +883,7 @@ Reject Selected entries?: Verwerp geselecteerde afspraken
 # Page: login-app.php
 #
 You must enter a login and password: U moet een gebruikersnaam en een wachtwoord invullen.
-Save login via cookies so I don&#39;t have to login next time: Bewaar inloggegevens
+Save login via cookies so I dont have to login next time.: Bewaar inloggegevens
 Login: Aanmelden
 Access public calendar: Ga naar publieke agenda
 cookies-note: <b>NB:</b> Deze applicatie maakt gebruik van cookies.
@@ -941,9 +946,10 @@ No user specified: Geen gebruiker gekozen
 Purging events for: Afspraken geheel verwijderen voor
 Finished: Klaar
 Back: Terug
-Check box to delete <b>ALL</b> events for a user: Vinkje om <b>ALLE</b> afspraken van een gebruiker te verwijderen
+Check box to delete ALL events for a user: Vinkje om <b>ALLE</b> afspraken van een gebruiker te verwijderen
 Delete all events before: Alle afspraken verwijderen voor
 Preview delete: Preview verwijderen
+Are you sure you want to delete events for: Weet u zeker dat u alle afspraken wilt verwijderen voor
 Records deleted from: Afspraken verwijderd van
 
 ########################################
@@ -970,7 +976,7 @@ Submit: Invoeren
 # Page: reject_entry.php
 #
 Continue: Doorgaan
-(Your comments will be included in an email to the other participants): (Uw opmerkingen worden ingevoegd bij een email aan de andere deelnemers)
+(Your comments will be emailed to the other participants.): (Uw opmerkingen worden ingevoegd bij een email aan de andere deelnemers)
 An appointment has been rejected by: Er is een afspraak geweigerd door
 
 ########################################
@@ -1016,6 +1022,7 @@ View Another Users Calendar: Bekijk de agenda van een andere gebruiker
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Ongeldige afspraak-ID
 You have not added any categories: U heeft geen categorie toegevoegd
 Set Category: Bepaal categorie
 Global Categories cannot be changed.: Globale categorien kunnen niet worden gewijzigd
@@ -1098,14 +1105,13 @@ Edit entry for this date: Wijzig alleen de afspraak op deze datum
 Delete entry only for this date: Verwijder alleen de afspraak op deze datum (NB: niet mogelijk voor de eerste dag)
 from calendar of: uit de kalender van
 This will delete the entry from your calendar.: De afspraak wordt uit de agenda verwijderd.
-from your boss&#39; calendar: Uit de kalender van de baas
+from your boss calendar: Uit de kalender van de baas
 Do you want to add this entry to your calendar?: Deze afspraak ook in uw eigen agenda plaatsen?
 This will add the entry to your calendar.: Bevestig om de afspraak in uw eigen agenda te plaatsen.
 Email all participants: Stuur emailbericht naar alle aanwezigen
 Hide activity log: Verberg logboek
 Show activity log: Toon logboek
 Export this entry to: Exporteer afspraak naar
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: view_r.php
@@ -1214,6 +1220,10 @@ Oct: okt
 Nov: nov
 The following error occurred: De volgende fout heeft zich voorgedaan
 You are not authorized: U heeft geen toegang
+Add N hours to: Voeg N uren toe aan
+Subtract N hours from: Trek N uren af van
+same as: net als
+server time: servertijd
 Your current GMT offset is: Uw huidige afwijking van GMT is
 Unauthorized: Niet geauthoriseerd
 Error approving event: Fout bij bevestigen afspraak
@@ -1347,7 +1357,7 @@ recipients_failed: Ontvangers faalden
 # Page: includes/js/admin.php
 #
 Server URL is required: Server-URL wordt vereist
-Server URL must end with &#39;/&#39;: Server-URL moet eindigen op '/'
+Server URL must end with /.: Server-URL moet eindigen op '/'
 Invalid work hours: Ongeldige werktijden
 Invalid color for document background: Ongeldige kleur voor de achtergrond
 Invalid color for document title: Ongeldige kleur voor de agendatitel
@@ -1358,7 +1368,7 @@ Invalid color for table text background: Ongeldige kleur voor tekstachtergrond
 Invalid color for event popup background: Ongeldige achtergrondkleur voor afspraak-popup
 Invalid color for event popup text: Ongeldige tekstkleur voor afspraak-popup
 Invalid color for table cell background for today: Ongeldige achtergrondkleur voor huidige datum
-Color format should be &#39;#RRGGBB&#39;: Kleur weergeven in #RRGGBB-formaat
+Color format should be RRGGBB.: Kleur weergeven in #RRGGBB-formaat
 
 ########################################
 # Page: includes/js/availability.php
@@ -1435,7 +1445,7 @@ Unable to write password to settings.php file: Niet mogelijk om wachtwoord in se
 Password has been set: Wachtwoord is ingesteld
 Connection Successful: Verbinding succesvol
 Please go to next page to continue installation: Ga naar de volgende pagina om de installatie voort te zetten
-Correct your entries or click the <b>Create New</b> button to continue installation: Corrigeer uw vermeldingen of klik de <b>Maak nieuw</b> knop om door te gaan
+Correct your entries or click the Create New button to continue installation: Corrigeer uw vermeldingen of klik de <b>Maak nieuw</b> knop om door te gaan
 Correct your entries and try again: Corrigeer uw vermeldingen en probeer opnieuw
 does not exist: bestaat niet
 is not writable: is niet schrijfbaar
@@ -1444,7 +1454,6 @@ Please change the file permissions of this file: Wijzig de bestandspermissies va
 Please change includes dir permission: Wijzig includes directory permissies
 Your settings have been saved: Uw instellingen zijn opgeslagen
 Error you must specify a\\nSingle-User Login: Fout u moet een\\nEnkele-Gebruikers Login
-Server URL must end with: Server-URL moet eindige op
 Full Path (no backslashes): Volledig pad (geen schuine strepen achterover)
 The password contains illegal characters.: Het wachtwoord bevat ongeldige tekens.
 This installation wizard will guide you...: De installatie-wizard zal u leiden...
@@ -1457,8 +1466,8 @@ To test the proper operation of sessions, reload this page: Om de correcte werki
 You should see the session counter increment each time: U moet de sessie-teller iedere keer omhoog zien gaan
 SESSION COUNTER: SESSIE TELLER
 Settings.php Status: Settings.php Status
-The file permissions of <b>settings.php</b> are set...: De bestandspermissies van <b>settings.php</b> zijn gezet op...
-Your <b>settings.php</b> file appears to be valid: Uw <b>settings.php</b> bestand lijkt geldig te zijn
+The file permissions of settings.php are set...: De bestandspermissies van <b>settings.php</b> zijn gezet op...
+Your settings.php file appears to be valid: Uw <b>settings.php</b> bestand lijkt geldig te zijn
 Configuration Wizard Password: Configuratie wizard wachtwoord
 Create Settings File Password: Maak wachtwoord voor configuratiebestand
 Password (again): Wachtwoord (herhalen)
@@ -1467,7 +1476,7 @@ Database Status: Database status
 Supported databases for your PHP installation: Ondersteunde databases voor deze PHP-installatie
 Your current database settings are able to access the database: Met deze database-instellingen is het niet mogelijk verbinding te maken met de database
 Please Test Settings: Test instellingen
-Your current database settings are <b>not</b> able to access the database or have not yet been tested: Met de huidige database-instellingen is het niet mogelijk verbinding te leggen met de database, of het is nog niet geprobeerd
+Your current database settings are not able...: Met de huidige database-instellingen is het niet mogelijk verbinding te leggen met de database, of het is nog niet geprobeerd
 Database Settings: Database instellingen
 Database Type: Database Type:
 Server: Server
@@ -1477,7 +1486,7 @@ next page and complete your WebCalendar setup: volgende pagina en WebKalender-in
 This appears to be a new installation. If this is not correct, please: Dit lijkt een nieuwe installatie te zijn. Indien dit onjuist is, alstublieft
 go back to the previous page and correct your settings: ga terug naar de vorige pagina en corrigeer uw instellingen
 The database requires some data input: De database vereist enige data-invoer
-Click <b>Update Database</b> to complete the upgrade: Klik <b>Database bijwerken</b> om de upgrade compleet te maken
+Click Update Database to complete the upgrade: Klik <b>Database bijwerken</b> om de upgrade compleet te maken
 This appears to be an upgrade from version: Dit lijkt een opwaardering te zijn van versie
 In this section we will perform the required database changes to bring your database up to the required level: In deze sectie passen we uw database aan om deze op het benodigde niveau te krijgen
 If you are using a fully supported database, this step will be performed automatically for you: Indien u een volledig ondersteunde database gebruikt, zal deze stap automatisch worden uitgevoerd
@@ -1490,20 +1499,20 @@ This may take several minutes to complete: Dit kan enkele minuten duren om af te
 Install Database: Installeer database
 Update Database: Database bijwerken
 Display Required SQL: Toon benodigde SQL
-This is the final step in setting up your WebCalendar Installation: Dit is de laatste stap bij het instellen van uw WebKalender Installatie
+This is the final step in setting up your WebCalendar Installation.: Dit is de laatste stap bij het instellen van uw WebKalender Installatie
 Timezone Conversion: Tijzone conversie
 It appears that you have: Het lijkt er op dat u heeft
 NOT: NIET
-converted your existing WebCalendar event data to GMT: uw bestaande tijden zijn geconverteerd naar GMT
+converted your existing WebCalendar event data to GMT.: uw bestaande tijden zijn geconverteerd naar GMT
 If this is a new installation, you may also ignore this notice.: Indien dit een nieuwe installatie is, kunt u deze waarschuwing negeren.
 Convert Data to GMT: Converteer tijden naar GMT
 Application Settings: Programma instellingen
 HTTP-based authentication was not detected: Authenticatie gebaseerd op HTTP werd niet gevonden
 You will need to reconfigure your web server if you wish to: U moet uw webserver anders configureren indien u wilt
-select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: Selecteer 'Web Server' in de 'Gebruiker authenticatie' opties hieronder
-HTTP-based authentication was detected: Authenticatie gebaseerd op HTTP werd gevonden
-User authentication is being handled by your web server: Gebruikers Authenticatie wordt afgehandeld door de server
-You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: U moet 'Webserver' uit de onderstaande lijst van 'Gebruikers Authenticatie' opties kiezen
+select Web Server from the User Authentication choices below.: Selecteer 'Web Server' in de 'Gebruiker authenticatie' opties hieronder
+HTTP-based authentication was detected.: Authenticatie gebaseerd op HTTP werd gevonden
+User authentication is being handled by your web server.: Gebruikers Authenticatie wordt afgehandeld door de server
+You should select Web Server from the list of User Authentication choices below.: U moet 'Webserver' uit de onderstaande lijst van 'Gebruikers Authenticatie' opties kiezen
 Create Default Admin Account: Maak een standaard beheer-account
 User Authentication: Gebruikers Authenticatie
 Web-based via WebCalendar (default): Web-based via WebKalender (standaard)
@@ -1519,6 +1528,7 @@ Launch WebCalendar: Lanceer WebKalender
 ########################################
 # Page: install/install_functions.php
 #
+Conversion Successful: Conversie succesvol
 Perl script required: Perl-script vereist
 previous version requires updating several tables: Uw vorige versie van WebKalender vereist een opwaardering van diverse database-tabellen.
 
