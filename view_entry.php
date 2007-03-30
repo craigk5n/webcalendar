@@ -108,7 +108,7 @@ $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
   cal_due_time, cal_completed FROM webcal_entry WHERE cal_id = ?',
   array ( $id ) );
 if ( ! $res )
-  $error = str_replace ('XXX', $id, translate ( 'Invalid entry id XXX' ) );
+  $error = str_replace ('XXX', $id, translate ( 'Invalid entry id XXX.' ) );
 else {
   $row = dbi_fetch_row ( $res );
   if ( $row ) {
@@ -121,7 +121,7 @@ else {
     $cal_priority = $row[6];
     $cal_type = $row[7];
     $cal_access = $row[8];
-    if ( strpos ( ' NT', $cal_type ) )
+    if ( strpos ( 'NT', $cal_type ) !== false )
       $eType = 'task';
     if ( $hide_details ) {
       $description = $name = $overrideStr = translate ( $OVERRIDE_PUBLIC_TEXT );
@@ -139,7 +139,7 @@ else {
     $due_time = $row[14];
     $cal_completed = $row[15];
   } else
-    $error = str_replace ('XXX', $id, translate ( 'Invalid entry id XXX' ) );
+    $error = str_replace ('XXX', $id, translate ( 'Invalid entry id XXX.' ) );
 
   dbi_free_result ( $res );
 }
@@ -1038,13 +1038,13 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
    . $id . $u_url . $rdate . '" onclick="return confirm (\'' . $areYouSureStr
    . "\\n\\n"
    . str_replace ( 'XXX ',
-    ( $is_assistant ? translate ( 'boss&#39;' ) . ' ' : '' ), $delFromCalStr )
+    ( $is_assistant ? translate ( 'boss' ) . ' ' : '' ), $delFromCalStr )
   // ( $is_assistant
-  // ? translate ( 'This will delete the entry from your boss&#39; calendar.', true )
+  // ? translate ( 'This will delete the entry from your boss calendar.', true )
   // : translate ( 'This will delete the entry from your calendar.', true ) )
   . '\');">'
    . $deleteEntryStr
-   . ( $is_assistant ? ' ' . translate ( 'from your boss&#39; calendar' ) : '' )
+   . ( $is_assistant ? ' ' . translate ( 'from your boss calendar' ) : '' )
    . '</a></li>
       <li><a title="' . $copyStr . '" class="nav" href="edit_entry.php?id='
    . $id . '&amp;copy=1">' . $copyStr . '</a></li>';

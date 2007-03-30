@@ -17,7 +17,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -63,6 +63,8 @@ Calendar: Calendário
 Edit: Editar
 Events: Eventos
 Public: Público
+Confidential: Confidencial
+Private: Pessoal
 
 ########################################
 # Page: activity_log.php
@@ -127,6 +129,7 @@ From: De
 to: para
 preferred-view-help: Especificar a visualização padrão (Dia, Semana, Mês ou Ano)
 Preferred view: Visualização preferida
+Bottom: Rodapé
 fonts-help: Especificar uma lista de fontes do sistema para uso (Exemplo: Arial, Verdana)
 Fonts: Fontes
 display-weekends-help: Mostrar feriados na visualização semanal
@@ -139,7 +142,7 @@ Display days with events in bold in month and year views: Na visualização anual,
 allow-view-add-help: Um ícone '+' será incluido nas visualizações, permitindo usuários rápidamente adicionar eventos a calendários de outros usuários.
 Include add event link in views: Incluir adicionar eventos em visualizações
 allow-view-other-help: Especifica um usuário que poderá visualizar o calendário
-Allow viewing other user&#39;s calendars: Permitir visualização do calendário de outro usuário
+Allow viewing other users calendars: Permitir visualização do calendário de outro usuário
 require-approvals-help: Quando habilitada, um usuário precisa aprovar um evento antes dele ser exibido no seu calendário (a não ser que Exibir não-aprovados esteja habilitado). Configurar aqui para "Não" não desligará as aprovações para o calendário de Acesso Público (se o claendário público estiver habilitado).
 Require event approvals: Requer aprovação do evento
 display-unapproved-help: Especifica se eventos não-aprovados são exibidos em seu calendário.<br /> Se configurado para "Sim", então eventos não-aprovados serão exibidos em seu calendário (em uma cor de texto diferente. <br /> Se configurado para "Não", então eventos precisam ser aprovados antes deles serem exibidos no seu calendário.
@@ -296,11 +299,6 @@ Cancel: Cancelar
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Uma evento seu foi cancelando por
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: Entrada com ID inválido
 
 ########################################
 # Page: docadd.php
@@ -555,11 +553,12 @@ repeat-day-help: Especifica em quais dias da semana o evento deve ser repetido. 
 # Page: help_import.php
 #
 Import: Importar
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Permite que você importe os compromissos de seu Palm Desktop
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Deverá ser localizado no diretório do seu Palm em <tt>datebook/datebook.dat</tt> no subdiretório do usuário
 The following entries will not be imported: Os seguintes eventos não serão importados
 Entries older than the current date: Eventos anteriores a data corrente
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Entradas geradas no Palm Desktop que não foram sincronizados
+Entries created in the Palm Desktop...: Entradas geradas no Palm Desktop que não foram sincronizados
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Qualquer evento importado do Palm será sobrescrito durante a próxima importação
 Therefore, updates should be made in the Palm Desktop.: Por isso, atualizações deverão ser feitas no Palm Desktop
 This form will import vCalendar (.vcs) 1.0 events: Este formulário importa do vCalendar (.vcs)
@@ -638,7 +637,7 @@ Reject this entry?: Rejeitar esta entrada?
 # Page: login-app.php
 #
 You must enter a login and password: Você deve digitar um usuário e senha
-Save login via cookies so I don&#39;t have to login next time: Gravar usuário e senha
+Save login via cookies so I dont have to login next time.: Gravar usuário e senha
 Login: Entrar
 Access public calendar: Calendário de acesso público
 cookies-note: <b>Nota:</b> Esta opção requer a opção de 'cookies' no seu browser habilitada.
@@ -665,9 +664,10 @@ minute: minuto
 #
 Purging events for: Eliminando eventos de
 Finished: Finalizado
-Check box to delete <b>ALL</b> events for a user: Marcar para excluir <b>TODOS</b> os eventos de um usuário
+Check box to delete ALL events for a user: Marcar para excluir <b>TODOS</b> os eventos de um usuário
 Delete all events before: Excluir todos os eventos ateriores
 Preview delete: Excluir Visualização
+Are you sure you want to delete events for: Você tem certeza que deseja excluir os eventos para
 Records deleted from: Registros deletados do
 
 ########################################
@@ -713,6 +713,7 @@ View Another Users Calendar: Ver o calendário de outro usuário
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Entrada com ID inválido
 You have not added any categories: Você não adicionou nenhuma categoria
 Set Category: Selecionar Categoria
 
@@ -780,190 +781,8 @@ Email all participants: Enviar e-mail para participantes
 Hide activity log: Esconder log de atividade
 Show activity log: Mostrar log de atividade
 Export this entry to: Esportar esta entrada para
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
 #
 New Entry: Nova entrada
-
-########################################
-# Page: includes/access.php
-#
-Another Users Calendar: Calendário de Outro Usuário
-
-########################################
-# Page: includes/date_formats.php
-#
-December: Dezembro
-Dec: Dez
-
-########################################
-# Page: includes/functions.php
-#
-exceeds limit of XXX events per day: limite excedido de XXX eventos por dia
-All Attendees: Todos Atendentes
-Busy: Ocupados
-Tentative: tentando
-Event approved: Evento aprovado
-Event created: Evento criado
-Event deleted: Evento deletado
-Notification sent: Notificação enviada
-Event rejected: Evento rejeitado
-Reminder sent: Lembrete enviado
-Event updated: Evento atualizado
-WK: sem
-Changes successfully saved: Mudanças salvas com sucesso
-Event: Evento
-Action: Ação
-Printer Friendly: Formato de impressora
-Generate printer-friendly version: Visualizar em formato de impressora
-January: Janeiro
-February: Fevereiro
-March: Março
-April: Abril
-May_: Maio
-June: Junho
-July: Julho
-August: Agosto
-September: Setembro
-October: Outubro
-November: Novembro
-Jan: Jan
-Feb: Fev
-Mar: Mar
-Apr: Abr
-May: Mai
-Jun: Jun
-Jul: Jul
-Aug: Ago
-Sep: Set
-Oct: Out
-Nov: Nov
-The following error occurred: Ocorreu o seguinte erro
-You are not authorized: Você não está autorizado
-Error approving event: Erro aprovando evento
-Sunday: Domingo
-Monday: Segunda
-Tuesday: Terça
-Wednesday: Quarta
-Thursday: Quinta
-Friday: Sexta
-Saturday: Sábado
-Sun: Dom
-Mon: Seg
-Tue: Ter
-Wed: Qua
-Thu: Qui
-Fri: Sex
-Sat: Sáb
-
-########################################
-# Page: includes/trailer.php
-#
-My Calendar: Meu Calendário
-Add New Entry: Adicionar Evento
-Logout: Sair
-Back to My Calendar: Volta para Meu Calendário
-Go to: Ir para
-Manage calendar of: Configurar Calendário de
-
-########################################
-# Page: includes/translate.php
-#
-English: Inglês
-Basque: Basco
-Bulgarian: Búlgaro
-Catalan: Catalão
-Chinese (Simplified/GB2312): Chinês (Simplificado/GB2312)
-Chinese (Traditional/Big5): Chinês (Tradicional/Big5)
-Czech: Checo
-Danish: Dinamrquês
-Dutch: Holandês
-Estonian: Estoniano
-Finnish: Finlandês
-French: Francês
-Galician: Galego
-German: Alemão
-Holo (Taiwanese): Holo (Taiwanês)
-Hungarian: Húngaro
-Icelandic: Islandês
-Italian: Italiano
-Japanese: Japonês
-Korean: Coreano
-Norwegian: Norueguês
-Polish: Polonês
-Portuguese: Português
-Portuguese/Brazil: Português/Brasil
-Romanian: Romeno
-Russian: Russo
-Spanish: Espanhol
-Swedish: Sueco
-Turkish: Turco
-
-########################################
-# Page: includes/user-imap.php
-#
-Invalid user login: Usuário Inválido
-
-########################################
-# Page: includes/user-nis.php
-#
-incorrect password: senha incorreta
-no such user: usuário inexistente
-
-########################################
-# Page: includes/xcal.php
-#
-Unnamed Event: Evento sem Nome
-Event Imported: Evento Importado
-
-########################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: Notificação
-
-########################################
-# Page: includes/js/admin.php
-#
-Server URL is required: Endereço do Servidor é Necessário
-Server URL must end with &#39;/&#39;: Endereço do Servidor deve acabar com /
-Invalid work hours: Horário de trabalho inválido
-Invalid color for document background: Cor de fundo inválida para o documento
-Invalid color for document title: Cor inválida para o título do documento
-Invalid color for table cell background: Cor inválida para cor de fundo da célula
-Invalid color for table grid: Cor inválida para a grade da tabela
-Invalid color for table header background: Cor de fundo inválida para cabeçalho da tabela
-Invalid color for table text background: Cor de fundo inválida para o texto da tabela
-Invalid color for event popup background: Cor de fundo inválida para o evento popup
-Invalid color for event popup text: Cor inválida para evento popup
-Invalid color for table cell background for today: Cor de fundo inválida para a celula de hoje
-Color format should be &#39;#RRGGBB&#39;: Formato da cor deve ser '#RRGGBB'
-
-########################################
-# Page: includes/js/availability.php
-#
-Change the date and time of this entry?: Mudar a data e a hora desta entrada?
-
-########################################
-# Page: includes/js/edit_entry.php
-#
-You have not entered a Brief Description: Você não inseriu uma Descrição Breve
-The time you have entered begins before your preferred work hours.  Is this correct?: A data que você inseriu começa antes da sua hora preferida
-Please add a participant: Por favor adicionar um participante
-You have not entered a valid time of day: Você não inseriu uma hora válida do dia
-
-########################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: Cor inválida
-
-########################################
-# Page: includes/menu/index.php
-#
-Unapproved Events: Eventos não aprovados
-
-########################################
-# Page: tools/send_reminders.php
-#
-Reminder: Despertador

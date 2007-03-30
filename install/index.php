@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Page Description:
  * Main page for install/config of db settings.
@@ -57,7 +56,8 @@ if ( ! empty (  $_SERVER['PHP_AUTH_USER'] ) )
 reset_language ( 'none' );
 
 //Some common translations used in the install script
-$wizardStr = translate ( 'WebCalendar Installation Wizard' ) .':' . translate ( 'Step' );
+// translate ( 'WebCalendar Installation Wizard' ) translate ( 'Step' )
+$wizardStr = translate ( 'WebCalendar Installation Wizard Step XXX' );
 $passwordStr = translate ( 'Password' );
 $singleUserStr = translate ( 'Single-User' );
 $loginStr = translate ( 'Login' );
@@ -71,7 +71,8 @@ $datebaseNameStr = translate ( 'Database Name' );
 $backStr = translate ( 'Back' );
 $nextStr = translate ( 'Next' );
 $tzSuccessStr = translate ( 'Timezone Conversion Successful' );
-$errorFileWriteStr = translate ( 'Error Unable to write to file', true ); 
+// translate ( 'Error Unable to write to file' ) 
+$errorFileWriteStr = translate ( 'Error Unable to write to file XXX.', true ); 
 
 $failure = $failureStr . '<blockquote>';
 $selected = ' selected="selected" ';
@@ -115,7 +116,7 @@ if ( ! isset ( $_SESSION['application_name'] ) ) {
 // Set Server URL
 if ( ! isset ( $_SESSION['server_url'] ) ) {
     if ( ! empty ( $_SERVER['HTTP_HOST'] ) && ! empty ( $_SERVER['REQUEST_URI'] ) ) {
-      $ptr = strpos ( $_SERVER['REQUEST_URI'], "/install", 2 );
+      $ptr = strpos ( $_SERVER['REQUEST_URI'], '/install', 2 );
       if ( $ptr > 0 ) {
         $uri = substr ( $_SERVER['REQUEST_URI'], 0, $ptr + 1 );
         $SERVER_URL = "http://" . $_SERVER['HTTP_HOST'];
@@ -427,7 +428,7 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
        $c = dbi_connect ( $db_host, $db_login, $db_password , $firebird_path, false);
      } //TODO Code remaining database types
      if ( $c ) { // credentials are valid, but database doesn't exist
-        $response_msg = translate ( 'Correct your entries or click the <b>Create New</b> button to continue installation' );
+        $response_msg = translate ( 'Correct your entries or click the Create New button to continue installation' );
        $_SESSION['db_noexist'] = true;
      } else {
        if ( $db_type == 'ibase'  ) {
@@ -750,12 +751,12 @@ function validate(form)
   }
   else if ( form.form_server_url.value.charAt (
     form.form_server_url.value.length - 1 ) != '/' ) {
-    err += "<?php etranslate ( 'Server URL must end with', true )?>" + "'/'\n";
+    err += "<?php etranslate ( 'Server URL must end with /.', true )?>\n";
     form.form_server_url.select ();
     form.form_server_url.focus ();
   }
  if ( err != "" ) {
-    alert ( "<?php etranslate ( 'Error', true ) ?>" + ":\n\n" + err );
+    alert ( "<?php etranslate ( 'Error', true ) ?>:\n\n" + err );
     return false;
   }
   // Submit form...
@@ -865,7 +866,8 @@ doc.li {
 <?php   //print_r ( $_SERVER );
 if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <table border="1" width="90%" align="center">
-<tr><th class="pageheader"  colspan="2"><?php echo $wizardStr ?> 1</th></tr>
+<tr><th class="pageheader"  colspan="2"><?php echo str_replace ( 'XXX',
+  translate ( '1' ), $wizardStr ) ?></th></tr>
 <tr><td colspan="2" width="50%">
 <?php etranslate ( 'This installation wizard will guide you...' ) ?>:<br />
 <a href="../docs/WebCalendar-SysAdmin.html" target="_docs">System Administrator's Guide</a>,
@@ -973,7 +975,7 @@ if ( ! $exists || ! $canWrite ) { ?>
  if ( $exists && ! $canWrite ) { ?>
   <tr><td>
    <img src="not_recommended.jpg" alt=""/>&nbsp;<?php 
-     etranslate ( 'The file permissions of <b>settings.php</b> are set...' ) ?>:</td><td>
+     etranslate ( 'The file permissions of settings.php are set...' ) ?>:</td><td>
    <blockquote><b>
     <?php echo realpath ( $file ); ?>
    </b></blockquote>
@@ -982,7 +984,7 @@ if ( ! $exists || ! $canWrite ) { ?>
  } else if ( ! $exists && ! $canWrite ) { ?>
   <tr><td colspan="2">
    <img src="not_recommended.jpg" alt=""/>&nbsp;<?php 
-     etranslate ( 'The file permissions of the <b>includes</b> directory are set...' ) ?>:
+     etranslate ( 'The file permissions of the includes directory are set...' ) ?>:
    <blockquote><b>
     <?php echo realpath ( $fileDir ); ?>
    </b></blockquote>
@@ -990,7 +992,7 @@ if ( ! $exists || ! $canWrite ) { ?>
 <?php //if settings.php DOES exist & we CAN write to it..
  } else { ?>
   <tr><td>
-   <?php etranslate ( 'Your <b>settings.php</b> file appears to be valid' ) 
+   <?php etranslate ( 'Your settings.php file appears to be valid' ) 
      ?>.</td><td class="recommended">
    <img src="recommended.gif" alt=""/>&nbsp;OK
   </td></tr>
@@ -1047,7 +1049,7 @@ if ( ! $exists || ! $canWrite ) { ?>
 
 <table border="1" width="90%" align="center">
  <tr><th class="pageheader" colspan="2">
-  <?php echo $wizardStr ?> 2
+  <?php echo str_replace ( 'XXX', translate ( '2' ), $wizardStr ) ?>
  </th></tr>
  <tr><td colspan="2" width="50%">
   <?php echo translate ( 'db setup directions...' )?>.
@@ -1072,7 +1074,7 @@ if ( ! $exists || ! $canWrite ) { ?>
     etranslate ( 'Please Test Settings' ) ?></b></li>  
   <?php } 
  } else { ?>
-  <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<?php etranslate ( 'Your current database settings are <b>not</b> able to access the database or have not yet been tested' ) ?>.</li>
+  <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<?php etranslate ( 'Your current database settings are not able...' ) ?>.</li>
   <?php if ( ! empty ( $response_msg ) ) { ?>
   <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<?php echo $response_msg; ?></li>
    <?php }
@@ -1216,7 +1218,7 @@ if ( ! $exists || ! $canWrite ) { ?>
       translate ( 'go back to the previous page and correct your settings' ) . '.';  
   } else if ( ! empty ( $_SESSION['blank_database'] ) ){
    $response_msg =translate ( 'The database requires some data input' ) . '. ' . 
-      translate ( 'Click <b>Update Database</b> to complete the upgrade' ) . '.';  
+      translate ( 'Click Update Database to complete the upgrade' ) . '.';  
   } else {
      $response_msg = translate ( 'This appears to be an upgrade from version' )  . 
      '&nbsp;' .   $_SESSION['old_program_version'] . '&nbsp;' .
@@ -1224,7 +1226,8 @@ if ( ! $exists || ! $canWrite ) { ?>
   }
 ?>
 <table border="1" width="90%" align="center">
-<tr><th class="pageheader" colspan="2"><?php echo $wizardStr ?> 3</th></tr>
+<tr><th class="pageheader" colspan="2"><?php echo str_replace ( 'XXX',
+  translate ( '3' ), $wizardStr )?></th></tr>
 <tr><td colspan="2" width="50%">
 <?php echo translate ( 'In this section we will perform the required database changes to bring your database up to the required level' ) . ' ' .
   translate ( 'If you are using a fully supported database, this step will be performed automatically for you' ) . ' ' . 
@@ -1314,9 +1317,10 @@ if ( ! $exists || ! $canWrite ) { ?>
 </table>
 <?php } else if ( $_SESSION['step'] == 4 ) { ?>
  <table border="1" width="90%" align="center">
-   <th class="pageheader" colspan="2"><?php echo $wizardStr ?> 4</th>
+   <th class="pageheader" colspan="2"><?php echo str_replace ( 'XXX',
+     translate ( '4' ), $wizardStr )?></th>
    <tr><td colspan="2" width="50%">
-     <?php etranslate ( 'This is the final step in setting up your WebCalendar Installation' ) ?>.
+     <?php etranslate ( 'This is the final step in setting up your WebCalendar Installation.' ) ?>
    </td></tr>
    <?php if ( ! empty ( $_SESSION['tz_conversion'] ) && 
      $_SESSION['tz_conversion'] != 'Y' ) { ?>
@@ -1325,10 +1329,13 @@ if ( ! $exists || ! $canWrite ) { ?>
  <?php if ( $_SESSION['tz_conversion'] != 'Success' ) {?>
    <form action="index.php?action=tz_convert" method="post">
   <ul><li>
-<?php echo translate ( 'It appears that you have' ) . ' ' . translate ( 'NOT' ); 
-  etranslate ( 'converted your existing WebCalendar event data to GMT' ) ?>.
-   <?php echo translate ( 'If you have, you may ignore this notice and not proceed with the conversion' ) . ' ' .
-    translate ( 'If this is a new installation, you may also ignore this notice.' ) ?>
+/*
+translate ( 'It appears that you have' ) translate ( 'NOT' )
+translate ( 'converted your existing WebCalendar event data to GMT.' )
+translate ( 'If you have, you may ignore this notice and not proceed with the conversion.' )
+translate ( 'If this is a new installation, you may also ignore this notice.' )
+*/
+<?php echo translate ( 'It appears that you have NOT converted your existing WebCalendar...' )?>
     </li></ul>
    <div align="center">
      <input  type="submit" value="<?php etranslate ( 'Convert Data to GMT') ?>:"  /></div>
@@ -1341,14 +1348,20 @@ if ( ! $exists || ! $canWrite ) { ?>
  <th class="header" colspan="2"><?php etranslate ( 'Application Settings' ) ?></th>
  <tr><td colspan="2"><ul>
   <?php if ( empty ( $PHP_AUTH_USER ) ) { ?>
-   <li><?php echo translate ( 'HTTP-based authentication was not detected' ) . '. ' .
-     translate ( 'You will need to reconfigure your web server if you wish to' ) . ' ' .
-     translate ( 'select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below' ) ?>.
+/*
+translate ( 'HTTP-based authentication was not detected' )
+translate ( 'You will need to reconfigure your web server if you wish to' )
+translate ( 'select Web Server from the User Authentication choices below.' )
+*/
+   <li><?php echo translate ( 'HTTP-based authentication was not detected...' ) ?>
    </li>
   <?php } else { ?>
-   <li><?php echo translate ( 'HTTP-based authentication was detected' ) . '. ' .
-     translate ( 'User authentication is being handled by your web server' ) . '. ' .
-     translate ( 'You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below' ) ?>.
+/*
+translate ( 'HTTP-based authentication was detected.' )
+translate ( 'User authentication is being handled by your web server.' )
+translate ( 'You should select Web Server from the list of User Authentication choices below.' )
+*/
+   <li><?php echo translate ( 'HTTP-based authentication was detected...' )?>
    </li>
   <?php } ?>
  </ul></td></tr>

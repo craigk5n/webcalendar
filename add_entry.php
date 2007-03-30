@@ -23,7 +23,7 @@ if ( $id > 0 ) {
   $res = dbi_execute ( 'SELECT cal_access FROM webcal_entry WHERE cal_id = ?',
     array ( $id ) );
   if ( ! $res ) {
-    echo str_replace ('XXX', $id, translate ( 'Invalid entry id XXX' ) );
+    echo str_replace ('XXX', $id, translate ( 'Invalid entry id XXX.' ) );
     exit;
   }
   $mayNotAddStr =

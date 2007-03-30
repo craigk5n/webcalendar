@@ -142,7 +142,7 @@ if ( $timetype == 'A' )
 if ( $timetype == 'U' )
   $duration_h = 0;
 
-if ( strpos ( ' AU', $timetype ) )
+if ( strpos ( 'AU', $timetype ) !== false )
   $duration_m = $end_hour = $end_minute = $entry_hour = $entry_minute = 0;
 
 // Combine all values to create event start date/time.

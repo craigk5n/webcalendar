@@ -155,7 +155,10 @@ $option = '</option>' . "\n";
 @session_start (); 
 $_SESSION['webcal_tmp_login'] = 'blahblahblah';
 
-$openStr ="\"window.open('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
+$editStr = '&nbsp;&nbsp;<input type="button" value="' . translate ( 'Edit' )
+ . "...\" onclick=\"window.open ( 'edit_template.php?type=%s','cal_template','"
+ . 'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,'
+ . 'outerWidth=520\' );" name="" />';
 $choices = array ( 'day.php', 'week.php', 'month.php', 'year.php' );
 $choices_text = array ( translate ( 'Day' ), translate ( 'Week' ),
   translate ( 'Month' ), translate ( 'Year' ) );
@@ -204,7 +207,9 @@ print_header ( $INC, '', $BodyX );
    echo htmlspecialchars ( $s['APPLICATION_NAME'] );
   ?>" />&nbsp;&nbsp;
   <?php if ( $s['APPLICATION_NAME'] == 'Title' )
-    echo translate( 'Translated Name' ) . ' ( ' . translate( 'Title' ) .' )';?>
+  // translate ( 'Translated Name' )
+    echo str_replace ( 'XXX', translate ( 'Title' ),
+      translate ( 'Translated Name (XXX)' ) );?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'server-url-help' )?>">
   <label for="admin_SERVER_URL"><?php etranslate( 'Server URL' )?>:</label></td><td>
@@ -231,8 +236,9 @@ print_header ( $INC, '', $BodyX );
     }
    ?>
   </select>&nbsp;&nbsp;
-  <?php echo translate( 'Your browser default language is' ) . ' ' . 
-   translate ( get_browser_language ( true ) )  . '.'; ?>
+  <?php // translate ( 'Your browser default language is' )
+  echo str_replace ( 'XXX', translate ( get_browser_language ( true ) ),
+    translate ( 'Your browser default language is XXX.' ) );?>
  </td></tr>
 <tr><td><label>
  <?php etranslate( 'Allow user to use themes' )?>:</label></td><td colspan="3">
@@ -260,21 +266,18 @@ print_header ( $INC, '', $BodyX );
  <table>
  <tr><td class="tooltip" title="<?php etooltip( 'custom-script-help' );?>">
   <?php etranslate( 'Custom script/stylesheet' )?>:</td><td>
-  <?php echo print_radio ( 'CUSTOM_SCRIPT' ) ?>&nbsp;&nbsp;
-  <input type="button" value="<?php etranslate( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'S' ) ?> name="" />
+  <?php echo print_radio ( 'CUSTOM_SCRIPT' );
+    printf ( $editStr, 'S' ) ?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'custom-header-help' );?>">
   <?php etranslate( 'Custom header' )?>:</td><td>
-  <?php echo print_radio ( 'CUSTOM_HEADER' ) ?>&nbsp;&nbsp;
-  <input type="button" value="<?php etranslate( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'H' ) ?> name="" />
+  <?php echo print_radio ( 'CUSTOM_HEADER' );
+    printf ( $editStr, 'H' ) ?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'custom-trailer-help' );?>">
   <?php etranslate( 'Custom trailer' )?>:</td><td>
-  <?php echo print_radio ( 'CUSTOM_TRAILER' ) ?>&nbsp;&nbsp;
-  <input type="button" value="<?php etranslate( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'T' ) ?> name="" />
+  <?php echo print_radio ( 'CUSTOM_TRAILER' );
+    printf ( $editStr, 'T' ) ?>
  </td></tr>
 
  <tr><td class="tooltip" title="<?php etooltip( 'enable-external-header-help' );?>">
@@ -450,8 +453,10 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  </td></tr>
  <tr><td><label>
  <?php etranslate( 'Date Selectors position' )?>:</label></td><td colspan="3">
- <?php echo print_radio ( 'MENU_DATE_TOP', 
-   array ( 'Y'=>translate ( 'Top' ), 'N'=>translate ( 'Bottom' ) ) ) ?>
+ <?php
+ $bottomStr = translate ( 'Bottom' );
+ $topStr = translate ( 'Top' );
+ echo print_radio ( 'MENU_DATE_TOP', array ( 'Y'=>$topStr, 'N'=>$bottomStr ) ) ?>
  </td></tr> 
  
   <tr><td  class="tooltip" title="<?php etooltip( 'menu-themes-help' );?>">
@@ -529,7 +534,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <legend><?php etranslate('Restrictions')?></legend>
  <table>
  <tr><td class="tooltip" title="<?php etooltip( 'allow-view-other-help' )?>">
-  <?php etranslate( 'Allow viewing other user&#39;s calendars' )?>:</td><td>
+  <?php etranslate ( 'Allow viewing other users calendars' )?>:</td><td>
   <?php echo print_radio ( 'ALLOW_VIEW_OTHER' ) ?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'require-approvals-help' );?>">
@@ -766,7 +771,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <tr><td class="tooltip" title="<?php etooltip( 'nonuser-list-help' )?>">
   <?php etranslate( 'Nonuser list' )?>:</td><td>
   <?php echo print_radio ( 'NONUSER_AT_TOP',
-    array ( 'Y'=>translate ( 'Top' ), 'N'=>translate ( 'Bottom' ) ) ) ?>
+    array ( 'Y'=>$topStr, 'N'=>$bottomStr ) ) ?>
 </td></tr>
 </table>
 </div>
@@ -808,8 +813,9 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <tr><td class="tooltip" title="<?php etooltip( 'icon_upload-enabled-help' )?>">
   <?php etranslate( 'Category Icon Upload enabled' )?>:</td><td>
   <?php echo print_radio ( 'ENABLE_ICON_UPLOADS' ) ?>
-  &nbsp;<?php if ( ! is_dir ( 'icons/' ) ) echo '( ' . translate( 'Requires' ) 
-    . " 'icons' " . translate( 'folder to exist' ) . ' )'?>
+  &nbsp;<?php if ( ! is_dir ( 'icons/' ) )
+  // translate ( 'Requires' ) translate ( 'folder to exist' )
+    echo str_replace ( 'XXX', 'icons', translate ( '(Requires XXX folder to exist.)' ) );
  </td></tr>
  
 <!-- Display Task Preferences -->
@@ -865,12 +871,13 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   <?php etranslate( 'Allow file attachments to events' )?>:</td><td>
   <?php echo print_radio ( 'ALLOW_ATTACH', '', 'attach_handler' ) ?>
   <span id="at1">
-  <br /><strong>Note:</strong>
-  <?php etranslate( 'Admin and owner can always add attachments if enabled' );?><br />
-  <?php echo print_checkbox ( array (
-      'ALLOW_ATTACH_PART', 'Y', translate( 'Participant' ) ) );
-    echo print_checkbox ( array ( 
-      'ALLOW_ATTACH_ANY', 'Y', translate( 'Anyone' ) ) ); ?>
+  <br /><strong>Note: </strong>
+  <?php etranslate ( 'Admin and owner can always add attachments if enabled.' );?><br />
+  <?php
+  $anyoneStr = translate ( 'Anyone' );
+  $partyStr = translate ( 'Participant' );
+  echo print_checkbox ( array ( 'ALLOW_ATTACH_PART', 'Y', $partyStr ) );
+  echo print_checkbox ( array ( 'ALLOW_ATTACH_ANY', 'Y', $anyoneStr ) );?>
   </span>
  </td></tr>
 
@@ -879,12 +886,10 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   <?php echo print_radio ( 'ALLOW_COMMENTS', '', 'comment_handler' ) ?>
   <br />
   <span id="com1">
-  <br /><strong>Note:</strong>
-  <?php etranslate( 'Admin and owner can always add comments if enabled' );?><br />
-  <?php echo print_checkbox ( array (
-      'ALLOW_COMMENTS_PART', 'Y', translate( 'Participant' ) ) );
-     echo print_checkbox ( array (
-      'ALLOW_COMMENTS_ANY', 'Y', translate( 'Anyone' ) ) ); ?>
+  <br /><strong>Note: </strong>
+  <?php etranslate ( 'Admin and owner can always add comments if enabled.' );?><br />
+  <?php echo print_checkbox ( array ( 'ALLOW_COMMENTS_PART', 'Y', $partyStr ) );
+   echo print_checkbox ( array ( 'ALLOW_COMMENTS_ANY', 'Y', $anyoneStr ) );?>
   </span>
  </td></tr>
 

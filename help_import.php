@@ -19,7 +19,7 @@ translate ( 'It should be located in your Palm directory in <tt>datebook/dateboo
     <ul>
       <li>' . translate ( 'Entries older than the current date' ) . '</li>
       <li>' .
-translate ( 'Entries created in the Palm Desktop that have not been HotSync&#39;d' )
+translate ( 'Entries created in the Palm Desktop...' )
  . '</li>
     </ul>
     <p>' .

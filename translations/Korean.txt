@@ -8,7 +8,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -48,6 +48,8 @@ Go: 시작
 Save: 저장
 Admin: 관리
 Public: 공용
+Confidential: 비밀
+Private: 개인용
 
 ########################################
 # Page: activity_log.php
@@ -108,11 +110,6 @@ Time: 시각
 # Page: category.php
 #
 Delete: 지우기
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: 틀린 항목 아이디
 
 ########################################
 # Page: docadd.php
@@ -224,7 +221,7 @@ Approve this entry?: 이 항목을 승인함.
 # Page: login-app.php
 #
 You must enter a login and password: 아이디와 비밀번호를 입력해야 합니다.
-Save login via cookies so I don&#39;t have to login next time: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
+Save login via cookies so I dont have to login next time.: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
 Login: 로그인
 cookies-note: <b>주:</b> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
 
@@ -257,6 +254,11 @@ No matches found: 찾은 항목 없음
 # Page: select_user.php
 #
 View Another Users Calendar: 다른 사용자의 달력 보기
+
+########################################
+# Page: set_entry_cat.php
+#
+Invalid entry id: 틀린 항목 아이디
 
 ########################################
 # Page: users.php
@@ -317,6 +319,7 @@ Oct: 10월
 Nov: 11월
 The following error occurred: 다음과 같은 오류 발생:
 You are not authorized: 권한이 없습니다:
+Unauthorized: 권한 없음
 Error approving event: 행사 승인 중 에러
 Sunday: 일요일 
 Monday: 월요일 
@@ -341,6 +344,11 @@ Back to My Calendar: 내 달력으로 돌아가기
 Go to: 가기
 
 ########################################
+# Page: includes/translate.php
+#
+event: 행사
+
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: 이름없는 행사
@@ -357,7 +365,7 @@ Invalid color for document background: 배경 색상 틀림
 Invalid color for document title: 제목 색상 틀림
 Invalid color for table cell background: 테이블 셀 배경색 틀림
 Invalid color for table cell background for today: 오늘 날짜 표시 색상 틀림
-Color format should be &#39;#RRGGBB&#39;: 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000" (빨강)
+Color format should be RRGGBB.: 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000" (빨강)
 
 ########################################
 # Page: includes/js/edit_entry.php

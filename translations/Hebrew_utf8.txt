@@ -4,7 +4,7 @@
 # Last update: 22 July 2006
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -168,7 +168,7 @@ Include add event link in views: לכלול קישור הוספת ארועים �
 lunar-help: אם נבחר, יציג צלמיות קטנות המייצגות את פאזת הירח כל חודש
 Display Lunar Phases in month view: הצג פאזות הירח בתצוגה חודשית
 allow-view-other-help: קובע אם למשתמש אחד מותר לצפות בלוח שנה של משתמש אחר.
-Allow viewing other user&#39;s calendars: אפשר צפייה בלוחות שנה של אחרים
+Allow viewing other users calendars: אפשר צפייה בלוחות שנה של אחרים
 require-approvals-help: כאשר מאופשר, על המשתמש לאשר ארוע לפני שהוא יוצג בלוח השנה שלו (אלא אם הצג לא מאושרים מופעל). הערה: כאשר זה במצב "לא", זה לא ייכבה אישורים ללוחות בעלי גישה ציבורית (אם מאופשרים לוחות שנה עם גישה ציבורית).
 Require event approvals: לחייב אישורי אירועים
 display-unapproved-help: קובע אם ארועים לא מאושרים מוצגים בלוח השנה שלך.<br />כאשר נבחר "כן", אזי ארועים לא מאושרים יוצגו בלוח שלך (בצבע שונה).<br />אם נבחר "לא", אזי חייבים לאשר אירוע לפני שיוצג בלוח השנה שלך.
@@ -272,12 +272,12 @@ allow-self-registration-full-help: אפשר למשתמשים חדשים להשל
 Use self-registration email notifications: חולל סיסמאות ושלח אותם בדוא"ל אל משתמשים חדשים. זה אמור למנוע רישום שולחי דואר זבל.
 allow-attachment-help: אפשר למשתמשים להוסיף קבצים מצורפים לארועים
 Allow file attachments to events: אפשר קבצים מצורפים בארועים
-Admin and owner can always add attachments if enabled: המנהל והבעלים יכולים תמיד להוסיף מצורפים באם מאופשר.
-Participant: משתתף
+Admin and owner can always add attachments if enabled.: המנהל והבעלים יכולים תמיד להוסיף מצורפים באם מאופשר.
 Anyone: כל אחד
+Participant: משתתף
 allow-comments-help: אפשר למשתמשים להוסיף הערות לארועים
 Allow comments to events: אפשר הערות בארועים
-Admin and owner can always add comments if enabled: המנהל והבעלים תמיד יכולים להוסיף הערות, באם מאופשר.
+Admin and owner can always add comments if enabled.: המנהל והבעלים תמיד יכולים להוסיף הערות, באם מאופשר.
 email-enabled-help: הדלק וכבה כל משלוחי דוא"ל עבור הודעות ותזכרות. ציין "לא" אם שרת הדואר שלך לא שולח דואר כשורה.
 Email enabled: דואר אלקטרוני מאופשר
 email-default-sender: קובע את כתובת השולח במשלוח תזכורות.
@@ -415,7 +415,6 @@ An appointment has been canceled for you by: פגישה נקבעה לך על י�
 # Page: doc.php
 #
 Invalid blob id: זיהוי בלוב לא חוקי
-Invalid entry id: זיהוי רשומה לא חוקי
 
 ########################################
 # Page: docadd.php
@@ -757,7 +756,7 @@ This form will allow you to import entries from the Palm Desktop Datebook.: טו
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: הוא אמור להמצא במחיצה ב-Palm שלך ב- <tt>datebook/datebook.dat</tt>  בתת ספריה על שם שם המשתמש שלך
 The following entries will not be imported: הרשומות הבאות לא ייובוא
 Entries older than the current date: רשומות ישנות מהתאריך של היום
-Entries created in the Palm Desktop that have not been HotSync&#39;d: רשומות בשולחן העבודה של ה-Palm שלא סונכרנו
+Entries created in the Palm Desktop...: רשומות בשולחן העבודה של ה-Palm שלא סונכרנו
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: כל דבר שמיובא מה-Palm יישכתב מחדש בפעולת הייבוא הבא (אלא אם עבר תאריך הארוע).
 Therefore, updates should be made in the Palm Desktop.: לכן יש לעדכן אותם בשולחן העבודה של ה-Palm.
 This form will import vCalendar (.vcs) 1.0 events: טופס זה יאפשר ייבוא של ארועים של vCalendar (.vcs) 1.0
@@ -774,7 +773,7 @@ Help Index: אינדקס העזרה
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: שכבות משמשות לתצוגת ארועים של משתמשים אחרים בלוח השנה שלך. ניתן לציין את המשתמש ואת צבע הצגת הארועים שלו.
+Layers are useful for displaying...: שכבות משמשות לתצוגת ארועים של משתמשים אחרים בלוח השנה שלך. ניתן לציין את המשתמש ואת צבע הצגת הארועים שלו.
 Add/Edit/Delete: הוסף/ערוך/מחק
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: הקלקה על קישור עריכת שכבות באזור הנהול בתחתית הדף תאפשר הוספה/עריכה/מחיקה של שכבות.
 The text color of the new layer that will be displayed in your calendar.: צבע הטקסט של השכבה החדשה שתוצג בלוח השנה שלך.
@@ -875,7 +874,7 @@ Reject Selected entries?: לדחות רשומות מסומנות?
 # Page: login-app.php
 #
 You must enter a login and password: עליך להקליד שם משתמש וסיסמא
-Save login via cookies so I don&#39;t have to login next time: שמור שם משתמש בעזרת עוגיות כדי שלא אצטרך להקליד אותו בפעם הבאה
+Save login via cookies so I dont have to login next time.: שמור שם משתמש בעזרת עוגיות כדי שלא אצטרך להקליד אותו בפעם הבאה
 Login: כניסה
 Access public calendar: גישה ללוח שנה ציבורית
 cookies-note: <b>הערה:</b> יישום זה מחייב שימוש בעוגיות.
@@ -938,7 +937,7 @@ No user specified: לא ציינת משתמש
 Purging events for: מוחק ארועים עבור
 Finished: סיימתי
 Back: חזור
-Check box to delete <b>ALL</b> events for a user: סמן משבצת כדי למחוק את <b>כל</b> הארועים של משתמש אחד
+Check box to delete ALL events for a user: סמן משבצת כדי למחוק את <b>כל</b> הארועים של משתמש אחד
 Delete all events before: מחק את כל הארועים מלפני
 Preview delete: תצוגה מקדימה של המחיקה
 Records deleted from: רשומות נמחקו מ-
@@ -967,7 +966,7 @@ Submit: הגש
 # Page: reject_entry.php
 #
 Continue: המשך
-(Your comments will be included in an email to the other participants): )הערותיך היכללו בדוא"ל למשתתפים האחרים)
+(Your comments will be emailed to the other participants.): )הערותיך היכללו בדוא"ל למשתתפים האחרים)
 An appointment has been rejected by: פגישה נדחתה (סירוב) על ידי
 
 ########################################
@@ -1013,6 +1012,7 @@ View Another Users Calendar: צפה בלוח שנה של משתמש אחר
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: זיהוי רשומה לא חוקי
 You have not added any categories: לא הוספת סיווגים כלשהם
 Set Category: קבע סיווג
 Global Categories cannot be changed.: לא ניתן לשנות סיווגים גלובאליים
@@ -1095,14 +1095,13 @@ Edit entry for this date: ערוך רשומה עבור תאריך זה בלבד
 Delete entry only for this date: מחק רשומה עבור תאריך זה בלבד
 from calendar of: מלוח השנה של
 This will delete the entry from your calendar.: זה ימחוק את הרשומה מלוח השנה שלך.
-from your boss&#39; calendar: מלוח השנה של המנהל שלך
+from your boss calendar: מלוח השנה של המנהל שלך
 Do you want to add this entry to your calendar?: האם ברצונך להוסיף את הרשומה ללוח השנה שלך?
 This will add the entry to your calendar.: זה יוסיף את הרשומה ללוח השנה שלך.
 Email all participants: שלח דוא"ל לכל המשתתפים
 Hide activity log: הסתר יומן פעילויות
 Show activity log: הצג יומן פעילויות
 Export this entry to: ייצא רשומה זו ל-
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: view_r.php
@@ -1282,9 +1281,6 @@ Portuguese: Portuguese
 Portuguese/Brazil: Portuguese/Brazil
 Romanian: Romanian
 Russian: Russian
-Spanish: Spanish
-Swedish: Swedish
-Turkish: Turkish
 Welsh: Welsh
 event: ארוע
 journal: יומן
@@ -1344,7 +1340,7 @@ recipients_failed: שגיאת SNMT~ הנמענים הבאים נכשלו~
 # Page: includes/js/admin.php
 #
 Server URL is required: URL של השרת חובה
-Server URL must end with &#39;/&#39;: URL של השרת חייב להסתיים ב-'/'
+Server URL must end with /.: URL של השרת חייב להסתיים ב-'/'
 Invalid work hours: שעות עבודה לא חוקיות
 Invalid color for document background: צבע רקע מסמך לא חוקי
 Invalid color for document title: צבע כותרת מסמך לא חוקי
@@ -1355,7 +1351,7 @@ Invalid color for table text background: צבע רקע הטקסט של טבלה 
 Invalid color for event popup background: צבע רקע חלונית ארוע קופצת לא חוקי
 Invalid color for event popup text: צבע טקסט של חלונית ארוע קופצת לא חוקי
 Invalid color for table cell background for today: צבע רקע טבלה של היום לא חוקי
-Color format should be &#39;#RRGGBB&#39;: תצורת הצבע צריכה להיות '#RRGGBB'
+Color format should be RRGGBB.: תצורת הצבע צריכה להיות '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php
@@ -1432,7 +1428,7 @@ Unable to write password to settings.php file: לא הצלחתי לכתוב את
 Password has been set: הסיסמא נקבעה
 Connection Successful: החיבור הצליח
 Please go to next page to continue installation: נא להתקדם לדף הבא כדי להמשיך בהתקנה
-Correct your entries or click the <b>Create New</b> button to continue installation: תקן את התשובות שלך או הלקל על כפתור <b>צור חדש</b> כדי להמשיך את ההתקנה
+Correct your entries or click the Create New button to continue installation: תקן את התשובות שלך או הלקל על כפתור <b>צור חדש</b> כדי להמשיך את ההתקנה
 Correct your entries and try again: תקן את התשובות שלך ונסה שוב
 does not exist: אינו קיים
 is not writable: לא פתוח לכתיבה
@@ -1441,7 +1437,6 @@ Please change the file permissions of this file: נא לשנות את ההרשא
 Please change includes dir permission: נא לשנות את ההרשאות של מחיצת includes כדי לאפשר כתיבה על ידי משתמשים אחרים
 Your settings have been saved: העדיפויות שלך נשמרו
 Error you must specify a\\nSingle-User Login: שגיאה, עליך לציין \\nכניסת משתמש יחיד
-Server URL must end with: כתובת URL של השרת חייב להסתיים ב-
 Full Path (no backslashes): מסלול מלא (ללא קו נתוי הפוך)
 The password contains illegal characters.: הסיסמא מכילה תווים לא חוקיים.
 This installation wizard will guide you...: אשף ההתקנה יוביל אותך דרך ההתקנה הבסיסית של לוח השנה. עבור עזרה ואיתור תקלות ראה
@@ -1454,9 +1449,9 @@ To test the proper operation of sessions, reload this page: כדי לבדוק א
 You should see the session counter increment each time: אתה אמור לראות את מונה הסשן מתקדם בכל פעם
 SESSION COUNTER: מונה הסשן
 Settings.php Status: מצב Settings.php
-The file permissions of <b>settings.php</b> are set...: הרשאות הקובץ של <b>settings.php</b> נקבעו כך שלמתקין אין הרשאה לשנותו. נא לשנות את הרשאות הקובץ של הקובץ הבא כדי להמשיך.
-The file permissions of the <b>includes</b> directory are set...: הרשאות הקובץ של מחיצת <b>includes</b> כך שלמתקין אין הרשאה ליצור בה קובץ חדש. נא לשנות את ההרשאות של המחיצה הבאה כדי להמשיך.
-Your <b>settings.php</b> file appears to be valid: קובץ <b>settings.php</b> שלך נראה תקין
+The file permissions of settings.php are set...: הרשאות הקובץ של <b>settings.php</b> נקבעו כך שלמתקין אין הרשאה לשנותו. נא לשנות את הרשאות הקובץ של הקובץ הבא כדי להמשיך.
+The file permissions of the includes directory are set...: הרשאות הקובץ של מחיצת <b>includes</b> כך שלמתקין אין הרשאה ליצור בה קובץ חדש. נא לשנות את ההרשאות של המחיצה הבאה כדי להמשיך.
+Your settings.php file appears to be valid: קובץ <b>settings.php</b> שלך נראה תקין
 Configuration Wizard Password: סיסמת אשף ההתקנה
 Create Settings File Password: צור סיסמא בקובץ ההגדרות
 Password (again): סיסמא (שוב)
@@ -1465,7 +1460,7 @@ Database Status: מצב בסיס הנתונים
 Supported databases for your PHP installation: בסיסי נתונים הנתמכים עבור תצורת ה-PHP שלך
 Your current database settings are able to access the database: ניתן לגשת לבסיס הנתונים בעזרת ההגדרות הנוכחיות שלך
 Please Test Settings: נא לבדוק את ההגדרות
-Your current database settings are <b>not</b> able to access the database or have not yet been tested: ההגדרות הנוכחיות שלך <b>אינן</b> מאפשרות גישה אל בסיס הנתונים שלך או שעדיין לא נבדקו
+Your current database settings are not able...: ההגדרות הנוכחיות שלך <b>אינן</b> מאפשרות גישה אל בסיס הנתונים שלך או שעדיין לא נבדקו
 Database Settings: הגדרות בסיס הנתונים
 Database Type: סוג בסיס הנתונים
 Server: שרת
@@ -1475,7 +1470,7 @@ next page and complete your WebCalendar setup: הדף הבא והשלם את ה�
 This appears to be a new installation. If this is not correct, please: זה נראה כהתקנה חדשה. אם זה לא נכון, אנא
 go back to the previous page and correct your settings: חזור לדף הקודם ותקן את ההגדרות שלך
 The database requires some data input: בסיס הנתונים זקוק להכנסת מידע
-Click <b>Update Database</b> to complete the upgrade: הקלק על <b>עדכן בסיס נתונים</b> כדי להשלים את העדכון
+Click Update Database to complete the upgrade: הקלק על <b>עדכן בסיס נתונים</b> כדי להשלים את העדכון
 This appears to be an upgrade from version: זה נראה כעדכון מגרסה
 In this section we will perform the required database changes to bring your database up to the required level: בחלק זה נבצע את השינויים המתבקשים לבסיס הנתונים כדי להביא את בסיס הנתונים שלך אל הרמה הדרושה
 If you are using a fully supported database, this step will be performed automatically for you: אם הנך משתמש בבסיס נתונים עם תמיכה מלאה, צעד זה יתבצע באופן אוטומטי
@@ -1489,21 +1484,21 @@ Install Database: התקן בסיס נתונים
 Update Database: עדכן בסיס נתונים
 Display Required SQL: הצג SQL נדרש
 Return to previous page after processing sql: לאחר טיפול ידני ב-SQL, עליך לחזור לדף הקודם כדי לבדוק את בסיס הנתונים שלך כדי שהסקריפט יגלה את השינויים.
-This is the final step in setting up your WebCalendar Installation: זהו הצעד האחרון בהגדרת התקנת לוח השנה שלך
+This is the final step in setting up your WebCalendar Installation.: זהו הצעד האחרון בהגדרת התקנת לוח השנה שלך
 Timezone Conversion: המרת איזור זמן
 It appears that you have: כנראה ש-
 NOT: לא
-converted your existing WebCalendar event data to GMT: המרת את מידע הארועים הנוכחי שלך לשעון גרניץ'
-If you have, you may ignore this notice and not proceed with the conversion: אם אכן המרת אותו, אפשר להתעלם מהודעה זו מבלי להמשיך בהמרה
+converted your existing WebCalendar event data to GMT.: המרת את מידע הארועים הנוכחי שלך לשעון גרניץ'
+If you have, you may ignore this notice and not proceed with the conversion.: אם אכן המרת אותו, אפשר להתעלם מהודעה זו מבלי להמשיך בהמרה
 If this is a new installation, you may also ignore this notice.: אפשר להתעלם מהודעה זו גם אם זו התקנה חדשה.
 Convert Data to GMT: המר מידע לשעון גרניץ'
 Application Settings: הגדרות יישום
 HTTP-based authentication was not detected: לצאתי אימות מבוסס HTML
 You will need to reconfigure your web server if you wish to: עליך להגדיר מחדש את שרת הווב שלך אם ברצונך
-select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: לבחור 'שרת ווב' מאפשריות 'אימות משתמשים' בהמשך
-HTTP-based authentication was detected: נמצא אמות מבוסס HTML
-User authentication is being handled by your web server: שרת הווב שלך מטפל באימות משתמשים
-You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: עליך לבחור ב'שרת ווב' מרשימת בחירות ,אימות משתמשים' בהמשך
+select Web Server from the User Authentication choices below.: לבחור 'שרת ווב' מאפשריות 'אימות משתמשים' בהמשך
+HTTP-based authentication was detected.: נמצא אמות מבוסס HTML
+User authentication is being handled by your web server.: שרת הווב שלך מטפל באימות משתמשים
+You should select Web Server from the list of User Authentication choices below.: עליך לבחור ב'שרת ווב' מרשימת בחירות ,אימות משתמשים' בהמשך
 Create Default Admin Account: צור חשבון מנהל ברירת מחדל
 User Authentication: אימות משתמשים
 Web-based via WebCalendar (default): מבוסס ווב באמצעות לוח השנה (ברירת המחדל)

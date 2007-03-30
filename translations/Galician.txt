@@ -4,7 +4,7 @@
 # Last update: 20 May 2001
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -45,6 +45,8 @@ Go: Ir
 Save: Gravar
 Admin: Xestión
 Public: Público
+Confidential: Confidencial
+Private: Privado
 
 ########################################
 # Page: add_entry.php
@@ -134,11 +136,6 @@ Cancel: Cancelar
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Foille cancelada unha cita por
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: id de entrada non válido
 
 ########################################
 # Page: docadd.php
@@ -309,7 +306,7 @@ Reject this entry?: ¿Rexeitar esta entrada?
 # Page: login-app.php
 #
 You must enter a login and password: Debe introducir un login e un contrasinal
-Save login via cookies so I don&#39;t have to login next time: Gravar login mediante cookies para non ter que volver introducilo a próxima vez
+Save login via cookies so I dont have to login next time.: Gravar login mediante cookies para non ter que volver introducilo a próxima vez
 Login: Entrar
 cookies-note: <b>Nota:</b> Este programa necesita que as cookies estean activadas.
 
@@ -355,6 +352,11 @@ No matches found: Non se atoparon coincidencias
 View Another Users Calendar: Ve-lo Calendario de outro Usuario
 
 ########################################
+# Page: set_entry_cat.php
+#
+Invalid entry id: id de entrada non válido
+
+########################################
 # Page: users.php
 #
 denotes administrative user: denota usuario administrativo
@@ -370,7 +372,6 @@ Edit entry: Modificar entrada
 This will delete the entry from your calendar.: Esto borrará a entrada do seu calendario.
 Do you want to add this entry to your calendar?: ¿Quere engadir esta entrada ó seu calendario?
 This will add the entry to your calendar.: Esto engadirá a entrada ó seu calendario.
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -443,6 +444,11 @@ Back to My Calendar: Volver ó meu Calendario
 Go to: Ir a
 
 ########################################
+# Page: includes/translate.php
+#
+event: evento
+
+########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Evento sen nome
@@ -459,7 +465,7 @@ Invalid color for document background: Color non válido para o fondo do document
 Invalid color for document title: Color non válido para o título do documento
 Invalid color for table cell background: Color non válido para o fondo da cela
 Invalid color for table cell background for today: Color non válido para o fondo da cela de hoxe
-Color format should be &#39;#RRGGBB&#39;: O formato da cor debería ser '#RRGGBB'
+Color format should be RRGGBB.: O formato da cor debería ser '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php

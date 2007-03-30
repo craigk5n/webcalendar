@@ -13,7 +13,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -59,6 +59,8 @@ Calendar: Agenda
 Edit: Éditer
 Events: Événements
 Public: Public
+Confidential: Confidentiel
+Private: Privé
 
 ########################################
 # Page: activity_log.php
@@ -125,6 +127,8 @@ From: de
 to: à
 preferred-view-help: Spécifie la vue par défaut (par Jour, Semaine, Mois, ou Année).
 Preferred view: Vue préférée
+Bottom: En bas
+Top: En haut
 fonts-help: Permet de définir une liste de polices pour l'affichage (par exemple "Helvetica, Arial, sans-serif").
 Fonts: Polices
 display-weekends-help: Inclure les week-ends lors de la visualisation de la semaine. 
@@ -137,7 +141,7 @@ Display days with events in bold in month and year views: Sur les vues par mois 
 allow-view-add-help: L'icone '+' apparaitra dans les vues permettant aux utilisateurs d'ajouter rapidement des événements dans ceux d'autres utilisateurs
 Include add event link in views: Inclure le lien d'ajout d'événement dans les vues
 allow-view-other-help: Spécifie si un utilisateur peut visualiser l'agenda d'un autre utilisateur.
-Allow viewing other user&#39;s calendars: Autoriser la visualisation des agendas des autres personnes
+Allow viewing other users calendars: Autoriser la visualisation des agendas des autres personnes
 require-approvals-help: Activé, un utilisateur doit approuver un événement avant qu'il ne soit affiché dans l'agenda (à moins que « Afficher les événements en attente » ne soit activé). Notez que le réglage sur « Non » désactivera les approbations pour l'agenda à accès public (si l'accès public à l'agenda est activé).
 Require event approvals: Réclamer l'approbation des événements
 display-unapproved-help: Spécifie si vous voulez afficher dans votre agenda les événements en attente.<br /> Si vous choisissez « Oui », les événements en attente seront affichés dans votre agenda (dans une couleur différente).<br /> Si vous choisissez « Non », les événements en attente seront affichés dans votre agenda seulement quand vous les approuverez.
@@ -307,11 +311,6 @@ Cancel: Annuler
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Un événement été annulé pour vous par
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: Id non valable
 
 ########################################
 # Page: docadd.php
@@ -575,11 +574,12 @@ repeat-day-help: Spécifie quels jours de la semaine l'événement doit être répété
 # Page: help_import.php
 #
 Import: Importer
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Ce formulaire vous permet d'importer les données de votre logiciel Palm Desktop gérant votre ordinateur personnel Palm.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Les données sont implémentées dans un fichier <tt>datebook.dat</tt> placé dans le répertoire <tt>datebook/</tt> de votre Palm (cf. sous-répertoire généralement à votre nom). Sélectionner sur votre disque dur, dans l'arborescence Palm Desktop, le fichier <tt>datebook.dat</tt> pour l'importation.
 The following entries will not be imported: Les entrées suivantes ne seront pas importées
 Entries older than the current date: Entrées antérieures à la date courante
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Entrées crées dans le logiciel Palm Desktop qui n'ont pas été synchronisées via HotSync
+Entries created in the Palm Desktop...: Entrées crées dans le logiciel Palm Desktop qui n'ont pas été synchronisées via HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Tout événement importé du Palm sera écrasé dans votre agenda partagé WebCalendar lors de la prochaine importation (sauf si la date de l'événement en question est antérieure).
 Therefore, updates should be made in the Palm Desktop.: Les mises à jour doivent donc au préalable être effectuées via le logiciel Palm Desktop (HotSync).
 This form will import vCalendar (.vcs) 1.0 events: Ce formulaire importe le format vCalendar (.vcs)
@@ -663,7 +663,7 @@ Reject this entry?: Rejeter cet événement ?
 # Page: login-app.php
 #
 You must enter a login and password: Vous devez saisir un login et un mot de passe valides
-Save login via cookies so I don&#39;t have to login next time: Sauvegarder l'identifiant dans un cookie, pour ne plus le saisir la prochaine fois
+Save login via cookies so I dont have to login next time.: Sauvegarder l'identifiant dans un cookie, pour ne plus le saisir la prochaine fois
 Login: Connexion
 Access public calendar: Agenda à accès public
 cookies-note: <b>Note:</b> Cette application nécessite l'activation des cookies
@@ -693,9 +693,10 @@ minute: minute
 #
 Purging events for: Supprimer les événements de
 Finished: Terminé
-Check box to delete <b>ALL</b> events for a user: Cocher la case pour supprimer <b>TOUS</b> les événements d'un utilisateur
+Check box to delete ALL events for a user: Cocher la case pour supprimer <b>TOUS</b> les événements d'un utilisateur
 Delete all events before: Supprimer les événements antérieurs au
 Preview delete: Aperçu de la suppression
+Are you sure you want to delete events for: Etes-vous certain de vouloir supprimer les événements de
 Records deleted from: Enregistrements marqués supprimés de
 
 ########################################
@@ -741,6 +742,7 @@ View Another Users Calendar: Visualiser l'agenda d'un autre utilisateur
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Id non valable
 You have not added any categories: Vous n'avez pas défini de catégories
 Set Category: Choisir la catégorie
 
@@ -808,7 +810,6 @@ Email all participants: Envoyer un courriel à tous les participants
 Hide activity log: Masquer le journal de suivi
 Show activity log: Visualiser le journal de suivi
 Export this entry to: Exporter cet événement au format
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -819,6 +820,7 @@ New Entry: Nouvel événement
 # Page: includes/access.php
 #
 Another Users Calendar: Agenda d'un autre utilisateur
+Manage Views: Gérer les vues
 
 ########################################
 # Page: includes/date_formats.php
@@ -870,7 +872,12 @@ Oct: Oct
 Nov: Nov
 The following error occurred: L'erreur suivante est survenue
 You are not authorized: Vous n'êtes pas autorisé(e)
+Add N hours to: Ajouter N heure(s) à
+Subtract N hours from: Déduire N heure(s) de
+same as: Aucun - identique à
+server time: l'heure du serveur
 Your current GMT offset is: Votre décalage GMT est de
+Unauthorized: Non autorisé
 Error approving event: Erreur en approuvant l'événement
 Sunday: Dimanche
 Monday: Lundi
@@ -905,6 +912,7 @@ Basque: Basque
 Bulgarian: Bulgare
 Catalan: Catalan
 Chinese (Simplified/GB2312): Chinois (Simplifié/GB2312)
+Chinese (Traditional/Big5): Chinois (Traditionnel/Big5)
 Czech: Tchèque
 Danish: Danois
 Dutch: Néerlandais
@@ -930,6 +938,7 @@ Spanish: Espagnol
 Swedish: Suédois
 Turkish: Turque
 Welsh: Gallois
+event: &eacute;v&eacute;nement
 
 ########################################
 # Page: includes/user-imap.php
@@ -957,7 +966,7 @@ Notification: Notification
 # Page: includes/js/admin.php
 #
 Server URL is required: L'URL du serveur n'est pas spécifiée
-Server URL must end with &#39;/&#39;: L'URL du serveur doit se terminer par '/'
+Server URL must end with /.: L'URL du serveur doit se terminer par '/'
 Invalid work hours: Plage horaire invalide
 Invalid color for document background: Couleur de fond incorrecte
 Invalid color for document title: Couleur de titre de document incorrecte
@@ -968,7 +977,7 @@ Invalid color for table text background: Couleur de texte de tableau incorrecte
 Invalid color for event popup background: Couleur de fond de fenêtre d'alerte incorrecte
 Invalid color for event popup text: Couleur de texte de fenêtre d'alerte incorrecte
 Invalid color for table cell background for today: Couleur de fond de cellule du jour courant incorrecte
-Color format should be &#39;#RRGGBB&#39;: Le format de couleur devrait être du type '#RRGGBB'
+Color format should be RRGGBB.: Le format de couleur devrait être du type '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php

@@ -141,7 +141,7 @@ onclick="history.back()" /></form
   </select>
  </td></tr>
  <tr><td><label for="purge_all">
-  <?php etranslate( 'Check box to delete <b>ALL</b> events for a user' )?>:</label></td>
+  <?php etranslate( 'Check box to delete ALL events for a user' )?>:</label></td>
   <td valign="bottom">
   <input type="checkbox" name="purge_all" value="Y" id="purge_all" onchange="toggle_datefields( 'dateArea', this );" />
  </td></tr>

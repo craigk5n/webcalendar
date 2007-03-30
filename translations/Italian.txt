@@ -10,7 +10,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -56,6 +56,8 @@ Calendar: Calendario
 Edit: Modifica
 Events: Eventi
 Public: Pubblico
+Confidential: Confidenziale
+Private: Privato
 
 ########################################
 # Page: activity_log.php
@@ -119,6 +121,8 @@ From: Da
 to: a
 preferred-view-help: Specifica la vista di default (Giorno, Settimana, Mese, o Anno)
 Preferred view: Vista preferita
+Bottom: fine
+Top: inizio
 fonts-help: Specifica una lista di font si sistema da utilizzare (ad esempio "Arial, Helvetica")
 Fonts: Fonts
 display-weekends-help: Include i weekend quando si guarda una settimana
@@ -131,7 +135,7 @@ Display days with events in bold in month and year views: Mostra i giorni con de
 allow-view-add-help: Un'icona raffigurante un '+'sar&agrave; inclusa nelle viste, permettendo agli utenti di aggiungere velocemente eventi ai calendari degli altri utenti
 Include add event link in views: Includi il link che permette di aggiungere un evento nelle viste
 allow-view-other-help: Specifica se un utente pu&ograve; visualizzare il calendario di un altro utente.
-Allow viewing other user&#39;s calendars: Permetti la visione dei calendari degli altri utenti
+Allow viewing other users calendars: Permetti la visione dei calendari degli altri utenti
 require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad accesso pubblico (se il calendario ad accesso pubblico &egrave; abilitato) 
 Require event approvals: Richiedi che gli eventi siano approvati
 display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se settato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se settato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
@@ -286,11 +290,6 @@ Cancel: Cancella
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Un appuntamento &egrave; stato cancellato per te da
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: Identificativo nota non valido
 
 ########################################
 # Page: docadd.php
@@ -540,11 +539,12 @@ repeat-day-help: Specifica in quali giorni della settimana l'evento pu&ograve; r
 # Page: help_import.php
 #
 Import: Importa
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Questo form ti permetter&agrave; di importare eventi dal file degli appuntamenti di Palm Desktop
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Dovrebbe essere localizzato nel tuo Palm, nella directory <tt>datebook/datebook.dat</tt> in una sottodirectory col tuo nome utente
 The following entries will not be imported: I record seguenti non saranno importati
 Entries older than the current date: Record pi&ugrave; vecchi della data odierna
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Record nel Palm Desktop che non sono stati sincronizzati con HotSync
+Entries created in the Palm Desktop...: Record nel Palm Desktop che non sono stati sincronizzati con HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Qualunque cosa importata dal Palm sar&agrave; sovrascritta durante l'importazione successiva (a meno che la data dell'evento non sia gi&agrave; passata)
 Therefore, updates should be made in the Palm Desktop.: Quindi, gli aggiornamenti dovrebbero essere fatti sul Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Questo form importer&agrave; eventi vCalendar (.vcs) 1.0
@@ -620,7 +620,7 @@ Reject this entry?: Rifiuta questo inserimento?
 # Page: login-app.php
 #
 You must enter a login and password: Inserire nome utente e password
-Save login via cookies so I don&#39;t have to login next time: Salvare le informazioni di login tramite i cookie cos&igrave; da non doversi pi&ugrave; registrare la prossima volta
+Save login via cookies so I dont have to login next time.: Salvare le informazioni di login tramite i cookie cos&igrave; da non doversi pi&ugrave; registrare la prossima volta
 Login: Entra
 Access public calendar: Accedi al calendario pubblico
 cookies-note: <b>Nota:</b> Questo applicativo necessita dei cookie abilitati.
@@ -647,8 +647,9 @@ minute: minuto
 #
 Purging events for: Cancellando gli eventi per
 Finished: Finito
-Check box to delete <b>ALL</b> events for a user: Abilita la casella per cancellare <b>TUTTI</b> gli eventi per un utente
+Check box to delete ALL events for a user: Abilita la casella per cancellare <b>TUTTI</b> gli eventi per un utente
 Delete all events before: Cancella tutti gli eventi prima del
+Are you sure you want to delete events for: Sei sicuro di voler cancellare eventi per
 Records deleted from: Record cancellati da
 
 ########################################
@@ -694,6 +695,7 @@ View Another Users Calendar: Visualizza calendario di un altro utente
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Identificativo nota non valido
 You have not added any categories: Non hai ancora aggiunto nessuna categoria
 Set Category: Setta la categoria
 
@@ -756,7 +758,6 @@ Email all participants: Avvisa tutti i partecipanti via e-mail
 Hide activity log: Nascondi il log delle attivit&agrave;
 Show activity log: Mostra il log delle attivit&agrave;
 Export this entry to: Esporta questa nota in
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -767,6 +768,7 @@ New Entry: Nuova Nota
 # Page: includes/access.php
 #
 Another Users Calendar: Calendario di altro utente
+Manage Views: Gestione Viste
 
 ########################################
 # Page: includes/date_formats.php
@@ -815,6 +817,11 @@ Oct: Ott
 Nov: Nov
 The following error occurred: &Egrave; avvenuto il seguente errore
 You are not authorized: Non sei autorizzato
+Add N hours to: Aggiungi N ore all'
+Subtract N hours from: Sottrai N ore all'
+same as: come
+server time: ora del server
+Unauthorized: Non autorizzato
 Error approving event: Errore durante l'approvazione di un evento
 Sunday: Domenica
 Monday: Luned&igrave;
@@ -872,6 +879,7 @@ Russian: Russo
 Spanish: Spagnolo
 Swedish: Svedese
 Turkish: Turco
+event: evento
 
 ########################################
 # Page: includes/user-imap.php
@@ -899,7 +907,7 @@ Notification: Notifica
 # Page: includes/js/admin.php
 #
 Server URL is required: L'URL del server &egrave; necessario
-Server URL must end with &#39;/&#39;: L'URL del server deve finire con '/'
+Server URL must end with /.: L'URL del server deve finire con '/'
 Invalid work hours: Ore di lavoro non valide
 Invalid color for document background: Il colore dello sfondo del documento non &egrave; valido
 Invalid color for document title: Il colore del titolo del documento non &egrave; valido
@@ -910,7 +918,7 @@ Invalid color for table text background: Il colore di sfondo per il testo della 
 Invalid color for event popup background: Il colore di sfondo per i popup di un evento non &egrave; valido
 Invalid color for event popup text: Il colore del testo per i popup di un evento non &egrave; valido
 Invalid color for table cell background for today: Il colore dello sfondo della cella della data odierna non &egrave; valido
-Color format should be &#39;#RRGGBB&#39;: Il fomrato del colore deve essere '#RRGGBB'
+Color format should be RRGGBB.: Il fomrato del colore deve essere '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php

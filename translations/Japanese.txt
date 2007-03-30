@@ -6,7 +6,7 @@
 # Last updated: 12-08-2006
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -69,6 +69,8 @@ Assistant: アシスタント
 Select All: すべて選択する
 Clear All: すべて削除する
 Public: 公開
+Confidential: 非公開
+Private: プライベート
 
 ########################################
 # Page: activity_log.php
@@ -153,8 +155,8 @@ Appearance: 外観
 preferred-view-help: デフォルトの表示を指定します (日間、週間、月間もしくは年間)
 Preferred view: 優先する表示
 Allow top menu: トップメニューを許可する
-Top: 上
 Bottom: 下
+Top: 上
 Menu theme: メニューテーマ
 fonts-help: 使用するシステムフォントの一覧を指定します("Arial, Helvetica"のように)
 Fonts: フォント
@@ -177,7 +179,7 @@ Include add event link in views: ビュー内で追加したイベントを含�
 Display Lunar Phases in month view: 月間ビューで月齢を表示する
 Restrictions: 制限
 allow-view-other-help: ユーザーが他のユーザーのカレンダーを見てもいいかどうか指定します。
-Allow viewing other user&#39;s calendars: 他のユーザーのカレンダーを見ることを許可する
+Allow viewing other users calendars: 他のユーザーのカレンダーを見ることを許可する
 Require event approvals: イベントの承認を必要とする
 display-unapproved-help: 承認が済んでいないイベントをカレンダーに表示するかどうか指定します。<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: 未承認イベントを表示する
@@ -267,12 +269,12 @@ allow-self-registration-full-help: 新規のユーザがオン・ライン自己
 Use self-registration email notifications: 自己登録の電子メール通知を使う
 allow-attachment-help: ユーザーがイベントへの添付ファイルの追加をすることを許可します。
 Allow file attachments to events: イベントへのファイル添付を許可する
-Admin and owner can always add attachments if enabled: 有効にした場合、管理者と所有者は常に添付を追加できます。
-Participant: 参加者
+Admin and owner can always add attachments if enabled.: 有効にした場合、管理者と所有者は常に添付を追加できます。
 Anyone: 誰でも
+Participant: 参加者
 allow-comments-help: ユーザーがイベントにコメントを追加することを許可します。
 Allow comments to events: イベントへのコメントを許可する
-Admin and owner can always add comments if enabled: 有効にした場合、管理者と所有者は常にコメントを追加できます。
+Admin and owner can always add comments if enabled.: 有効にした場合、管理者と所有者は常にコメントを追加できます。
 email-enabled-help: すべてのリマインダーと通知の電子メールを送信を切り替えます。サーバーが適切にメールの送信設定がされていない場合「いいえ」に設定します。
 Email enabled: 電子メール有効
 email-default-sender: リマインダーを送信する場合に送信者として指定するべき電子メールアドレスを指定します。
@@ -298,6 +300,7 @@ email-event-updated: カレンダーのイベントが更新された場合、�
 Events updated on my calendar: 自分のカレンダーのイベントを更新
 email-event-deleted: カレンダーのイベントが削除された場合、電子メール通知を送るかどうか指定します。
 Events removed from my calendar: 自分のカレンダーからイベントを削除
+email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Event rejected by participant: 参加者のイベント拒否
 Allow user to customize colors: ユーザーの色設定を許可する
 gradient-colors: 有効にした場合、グラデーション色を使用します。これは非常に動作に影響を与えることができます。
@@ -422,7 +425,6 @@ An appointment has been canceled for you by: 課題:
 # Page: doc.php
 #
 Invalid blob id: 無効な blog ID
-Invalid entry id: エントリ ID が無効です
 
 ########################################
 # Page: docadd.php
@@ -549,6 +551,8 @@ conflicts with the following existing calendar entries: 以下のエントリと
 ########################################
 # Page: edit_layer.php
 #
+Add Layer: レイヤーを追加する
+Edit Layer: レイヤーを編集する
 Source: ソース
 Duplicates: 複製
 Show layer events that are the same as your own: 自身と同じレイヤーイベントを見せる
@@ -733,12 +737,12 @@ Adding/Editing Calendar Entries: カレンダーのエントリの追加/編集
 Repeat Type: 繰返しタイプ
 Repeat End Date: 繰返し終了日
 Repeat Day: 繰返し日
-repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
 
 ########################################
 # Page: help_import.php
 #
 Import: インポート
+Palm Desktop: Palm デスクトップ
 The following entries will not be imported: 次のエントリはインポートされなかったでしょう
 Entries older than the current date: エントリは現在の期日より古いです
 Therefore, updates should be made in the Palm Desktop.: したがって、Palm デスクトップで更新されるべきです。
@@ -814,6 +818,7 @@ The import file contained no data: インポートファイルの中身があり
 ########################################
 # Page: layers.php
 #
+Layer: レイヤー
 Edit layer: レイヤーの編集
 Layers are currently: 現在のレイヤー
 Disable Layers: レイヤーを使用不可にする
@@ -844,7 +849,7 @@ Reject Selected entries?: 選択を拒否しますか?
 # Page: login-app.php
 #
 You must enter a login and password: ユーザー名とパスワードを入力してください。
-Save login via cookies so I don&#39;t have to login next time: 次回からログインしなくても良いように、ユーザー情報をクッキーにセーブする
+Save login via cookies so I dont have to login next time.: 次回からログインしなくても良いように、ユーザー情報をクッキーにセーブする
 Login: ログイン
 Access public calendar: 公開カレンダーアクセス
 cookies-note: <b>注意:</b> このアプリケーションはクッキーが有効でなければ正常に動作しません。
@@ -900,9 +905,10 @@ No user specified: ユーザーが指定されていません
 Purging events for: 右ユーザーのイベントを消去しています
 Finished: 完了しました
 Back: 戻る
-Check box to delete <b>ALL</b> events for a user: 1 ユーザーのイベントを<b>すべて</b>削除する場合はチェックしてください
+Check box to delete ALL events for a user: 1 ユーザーのイベントを<b>すべて</b>削除する場合はチェックしてください
 Delete all events before: 次の日付以前のイベントをすべて削除する
 Preview delete: 削除をプレビューする
+Are you sure you want to delete events for: 右ユーザーのイベントをすべて削除して良いですか?：
 Records deleted from: レコードを削除しました 対象:
 
 ########################################
@@ -974,6 +980,7 @@ View Another Users Calendar: 他のユーザーのカレンダーを見る
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: エントリ ID が無効です
 You have not added any categories: いくつかのカテゴリを追加していません
 Set Category: カテゴリ設定
 Global Categories cannot be changed.: グローバルカテゴリは変更できませんでした
@@ -1061,7 +1068,6 @@ Email all participants: 参加者全員にメール送信する
 Hide activity log: 活動ログを隠す
 Show activity log: 活動ログを表示する
 Export this entry to: 次の形式にエクスポート
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: view_r.php
@@ -1166,6 +1172,10 @@ Oct: 10 月
 Nov: 11 月
 The following error occurred: 以下のエラーが起きました
 You are not authorized: 権限を与えられていません。
+Add N hours to: +N ����
+Subtract N hours from: -N ����
+same as: ����
+server time: �T�[�o�[�Ƃ̎���
 Your current GMT offset is: 現在の GMT との差:
 Error approving event: イベント承認エラー
 Sunday: 日曜日
@@ -1283,7 +1293,7 @@ provide_address: 少なくとも 1 つの受取人の電子メールアドレス
 # Page: includes/js/admin.php
 #
 Server URL is required: サーバー URL が必須です。
-Server URL must end with &#39;/&#39;: サーバー URL は「/」で終わらなければいけません。
+Server URL must end with /.: サーバー URL は「/」で終わらなければいけません。
 Invalid work hours: 無効な勤務時間です。
 Invalid color for document background: 書類の背景色が無効です。
 Invalid color for document title: 書類のタイトル色が無効です。
@@ -1294,7 +1304,7 @@ Invalid color for table text background: テーブルテキストの背景色が
 Invalid color for event popup background: イベントポップアップの背景色が無効です。
 Invalid color for event popup text: イベントポップアップの色が無効です。
 Invalid color for table cell background for today: 今日のテーブルセルの背景色が無効です。
-Color format should be &#39;#RRGGBB&#39;: 色は '#RRGGBB'の書式で設定してください。
+Color format should be RRGGBB.: 色は '#RRGGBB'の書式で設定してください。
 
 ########################################
 # Page: includes/js/availability.php
@@ -1372,13 +1382,12 @@ Unable to write password to settings.php file: ファイル settings.php に書�
 Password has been set: パスワードは設定されました。
 Connection Successful: 接続に成功しました。
 Please go to next page to continue installation: インストールを続けるには次のページに移動してください。
-Correct your entries or click the <b>Create New</b> button to continue installation: エントリを修正するか、インストールを継続するために<b>新規作成する</b>ボタンをクリックしてください。
+Correct your entries or click the Create New button to continue installation: エントリを修正するか、インストールを継続するために<b>新規作成する</b>ボタンをクリックしてください。
 Correct your entries and try again: エントリを修正し、再度試みます。
 Error Converting Timezone: タイムゾーンの変換にエラーです。
 Please change the file permissions of this file: このファイルのパーミッションを変更してください。
 Your settings have been saved: 設定を保存しました。
 Error you must specify a\\nSingle-User Login: エラーです。シングルユーザーログインを指定しなければなりません。
-Server URL must end with: Server URL は次の文字で終わらなければなりません:
 Full Path (no backslashes): フルパス (バックスラッシュは不要です)
 The password contains illegal characters.: パスワードに不当な文字が含まれています。
 PHP Version Check: PHP のバージョンを確認する
@@ -1391,7 +1400,7 @@ To test the proper operation of sessions, reload this page: セションの適�
 You should see the session counter increment each time: セッションカウンターが毎回増加していることを確認するべきです。
 SESSION COUNTER: セッションカウンター
 Settings.php Status: Settings.php の状態
-Your <b>settings.php</b> file appears to be valid: <b>settings.php</b> ファイルは有効に見えます。
+Your settings.php file appears to be valid: <b>settings.php</b> ファイルは有効に見えます。
 Configuration Wizard Password: ウィザードパスワードの設定
 Create Settings File Password: 設定ファイルのパスワードを作成する
 Password (again): パスワード (確認)
@@ -1399,7 +1408,7 @@ Database Status: データベースの状態
 Supported databases for your PHP installation: インストール済 PHP でサポートされたデータベース
 Your current database settings are able to access the database: 現在のデータベース設定はデータベースにアクセスできます。
 Please Test Settings: テスト設定をしてください。
-Your current database settings are <b>not</b> able to access the database or have not yet been tested: 現在のデータベース設定はデータベースにアクセスすることが<b>できず</b>、まだテストされていません。
+Your current database settings are not able...: 現在のデータベース設定はデータベースにアクセスすることが<b>できず</b>、まだテストされていません。
 Database Settings: データベースの設定
 Database Type: データベースの種類
 Server: サーバー
@@ -1409,7 +1418,7 @@ next page and complete your WebCalendar setup: WebCalendar の設定は次のペ
 This appears to be a new installation. If this is not correct, please: これは新規インストールに見えます。もし正しくない場合、
 go back to the previous page and correct your settings: 前のページに戻って、設定を修正してください。
 The database requires some data input: データベースはいくつかのデータの入力を要求します。
-Click <b>Update Database</b> to complete the upgrade: <b>データベースをアップグレードする</b> をクリックしてアップグレードを完了してください。
+Click Update Database to complete the upgrade: <b>データベースをアップグレードする</b> をクリックしてアップグレードを完了してください。
 This appears to be an upgrade from version: これは次のバージョンからのアップグレードに見えます:
 If you are using a fully supported database, this step will be performed automatically for you: 全面的にサポートされたデータベースを使用していれば、このステップは自動的に実行されるでしょう。
 If not, the required SQL can be displayed and you should be able: そうでない場合、要求された SQL を表示することができます。
@@ -1421,20 +1430,20 @@ This may take several minutes to complete: これが完了するには数分か�
 Install Database: データベースをインストールする
 Update Database: データベースをアップデートする
 Display Required SQL: 要求された SQL を表示する
-This is the final step in setting up your WebCalendar Installation: これは、WebCalendar のインストール設定における最終ステップです。
+This is the final step in setting up your WebCalendar Installation.: これは、WebCalendar のインストール設定における最終ステップです。
 Timezone Conversion: タイムゾーン変換
 It appears that you have: おそらく
 NOT: NOT
-converted your existing WebCalendar event data to GMT: 既存のWebCalendarイベントデータを GMT に変換しました。
+converted your existing WebCalendar event data to GMT.: 既存のWebCalendarイベントデータを GMT に変換しました。
 If this is a new installation, you may also ignore this notice.: これが新規インストールの場合、この通知は無視するでしょう。
 Convert Data to GMT: GMT にデータを変換する
 Application Settings: アプリケーション設定
 HTTP-based authentication was not detected: HTTPに基づいた認証は検知されませんでした。
 You will need to reconfigure your web server if you wish to: もしウェブサーバーを再設定する必要があるなら、
-select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: 「ユーザー認証」より「ウェブサーバー」を選択してください。
-HTTP-based authentication was detected: HTTP ベースの認証を検知しました
-User authentication is being handled by your web server: ユーザー認証はウェブサーバーで扱います。
-You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: 「ユーザー認証」選択の一覧からから「ウェブサーバー」を選ばなければなりません
+select Web Server from the User Authentication choices below.: 「ユーザー認証」より「ウェブサーバー」を選択してください。
+HTTP-based authentication was detected.: HTTP ベースの認証を検知しました
+User authentication is being handled by your web server.: ユーザー認証はウェブサーバーで扱います。
+You should select Web Server from the list of User Authentication choices below.: 「ユーザー認証」選択の一覧からから「ウェブサーバー」を選ばなければなりません
 Create Default Admin Account: デフォルト管理アカウントを作成する
 User Authentication: ユーザー認証
 Web-based via WebCalendar (default): WebCalendar でウェブベース(デフォルト)
@@ -1446,6 +1455,11 @@ Production: 製作
 Development: 開発
 Save Settings: 設定を保存する
 Launch WebCalendar: WebCalendar を起動する
+
+########################################
+# Page: install/install_functions.php
+#
+Conversion Successful: 変換に成功しました
 
 ########################################
 # Page: tools/reload_remotes.php

@@ -681,7 +681,7 @@ EOT;
           <span class="matrix"><img src="images/pix.gif" alt="" /></span>';
         else {
           $tmpMast = $master[$participants[$i]][$r]['stat'];
-          if ( strpos ( ' AW', $tmpMast ) )
+          if ( strpos ( 'AW', $tmpMast ) !== false )
             $space = '
           <a class="matrix" href="view_entry.php?id='
              . $master[$participants[$i]][$r]['ID']

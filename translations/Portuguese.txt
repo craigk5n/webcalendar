@@ -5,7 +5,7 @@
 # Last update: 26-Nov-2004
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -51,6 +51,8 @@ Calendar: Calendário
 Edit: Editar
 Events: Eventos
 Public: Público
+Confidential: Confidencial
+Private: Privado
 
 ########################################
 # Page: activity_log.php
@@ -110,6 +112,8 @@ From: De
 to: para
 preferred-view-help: Especifica a vista padrão (Dia, Semana, Mês, ou Ano).
 Preferred view: Visualização preferida
+Bottom: Abaixo
+Top: Acima
 fonts-help: Especifica a lista de tipos de letra a usar (por exemplo, "Arial, Helvetica", etc).
 Fonts: Tipos de letra
 display-weekends-help: Incluir fins-de-semana na vista de semana.
@@ -119,7 +123,7 @@ Display description in printer day view: Mostrar descrição na vista de impressor
 Display days with events in bold in month and year views: Mostrar dias com eventos a negrito nas vistas mensais e anuais
 Include add event link in views: Incluir link para adicionar eventos nas vistas
 allow-view-other-help: Especifica se um utilizador pode ou não ver o calendário de outro utilizador.
-Allow viewing other user&#39;s calendars: Permitir ver calendário de outro utilizador
+Allow viewing other users calendars: Permitir ver calendário de outro utilizador
 require-approvals-help: Quando activo, um utilizador deverá aprovar um evento antes de ser mostrado no seu calendário (excepto se <I>Mostra não-aprovados</I> estiver activo).
 Require event approvals: Requer aprovação de eventos
 display-unapproved-help: Especifica se os eventos não aprovados são mostrados no calendário
@@ -258,11 +262,6 @@ Cancel: Cancelar
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Uma marcação foi cancelada em seu nome
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: Entrada com ID inválido
 
 ########################################
 # Page: docadd.php
@@ -510,11 +509,12 @@ repeat-day-help: Especifica em que dias da semana o evento se repete. Isto é ape
 # Page: help_import.php
 #
 Import: Importar
+Palm Desktop: Palm PDA
 This form will allow you to import entries from the Palm Desktop Datebook.: Este formulário permite importar entradas do Palm Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Deverá estar localizado no directório Palm em <tt>datebook/datebook.dat</tt> dentro de subdirectório com o seu nome de utilizador
 The following entries will not be imported: As seguintes entradas serão importadas
 Entries older than the current date: Entradas mais antigas do que a data corrente
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Entradas criadas no Palm Desktop que não foram HotSync&#39;d
+Entries created in the Palm Desktop...: Entradas criadas no Palm Desktop que não foram HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Informação importada do Palm será sobreescrita na próxima importação (excepto se a data do evento tiver passado).
 Therefore, updates should be made in the Palm Desktop.: Assim sendo, deverão ser feitas actualizações no Palm.
 This form will import vCalendar (.vcs) 1.0 events: Este formulário permite importar eventos vCalendar 1.0 (.vcs)
@@ -588,7 +588,7 @@ Reject this entry?: Rejeitar esta entrada?
 # Page: login-app.php
 #
 You must enter a login and password: Tem de introduzir um Utilizador e uma Password
-Save login via cookies so I don&#39;t have to login next time: Gravar Utilizador e Password para sessões futuras (não recomendado se este computador for utilizado por mais pessoas)
+Save login via cookies so I dont have to login next time.: Gravar Utilizador e Password para sessões futuras (não recomendado se este computador for utilizado por mais pessoas)
 Login: Entrar
 Access public calendar: Calendário de acesso público
 cookies-note: <B>Nota:</B> Esta opção requer a activação da opção de 'cookies' no seu navegador.
@@ -615,8 +615,9 @@ minute: minuto
 #
 Purging events for: Removendo eventos de
 Finished: Terminado
-Check box to delete <b>ALL</b> events for a user: Seleccione caixa para remover <b>TODOS</b> os eventos do utilizador
+Check box to delete ALL events for a user: Seleccione caixa para remover <b>TODOS</b> os eventos do utilizador
 Delete all events before: Remover todos os eventos antes de
+Are you sure you want to delete events for: Tem a certeza que quer apagar entradas para
 Records deleted from: Remover registos de
 
 ########################################
@@ -662,6 +663,7 @@ View Another Users Calendar: Ver Calendário de Outro Utilizador
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Entrada com ID inválido
 You have not added any categories: Não adicionou nenhuma categoria
 Set Category: Definir Categoria
 
@@ -724,7 +726,6 @@ Email all participants: Enviar email a todos os participantes
 Hide activity log: Esconder registo de actividades
 Show activity log: Mostrar registo de actividades
 Export this entry to: Exportar esta entrada para
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -782,6 +783,10 @@ Oct: Out
 Nov: Nov
 The following error occurred: Ocorreu o seguinte erro
 You are not authorized: Não está autorizado
+Add N hours to: Adicionar N horas a
+Subtract N hours from: Subtrair N horas a
+same as: igual a
+server time: hora do servidor
 Error approving event: Erro durante a aprovação de um evento
 Sunday: Domingo
 Monday: Segunda
@@ -812,6 +817,7 @@ Manage calendar of: Gerir calendário de
 # Page: includes/translate.php
 #
 Portuguese: Português
+event: evento
 
 ########################################
 # Page: includes/user-imap.php
@@ -839,7 +845,7 @@ Notification: Notificação
 # Page: includes/js/admin.php
 #
 Server URL is required: É necessário o URL do servidor
-Server URL must end with &#39;/&#39;: O URL do servidor deve terminar com '/'
+Server URL must end with /.: O URL do servidor deve terminar com '/'
 Invalid work hours: Horas de trabalho incorrectas
 Invalid color for document background: Cor inválida para o fundo do documento
 Invalid color for document title: Cor inválida para o título do documento
@@ -850,7 +856,7 @@ Invalid color for table text background: Cor inválida para o fundo do texto da t
 Invalid color for event popup background: Cor inválida para o fundo da caixa de aviso
 Invalid color for event popup text: Cor inválida para o texto da caixa de aviso
 Invalid color for table cell background for today: Cor inválida para o fundo da célula da tabela (para o dia actual)
-Color format should be &#39;#RRGGBB&#39;: O formato do código de cor deve ser '#RRGGBB'
+Color format should be RRGGBB.: O formato do código de cor deve ser '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php

@@ -6,7 +6,7 @@ print_header ( '', '', '', true );
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Layers' ) . '</h2>
     <p>' .
-translate ( 'Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.' )
+translate ( 'Layers are useful for displaying...' )
  . '</p>';
 $tmp_arr = array (
   translate ( 'Add/Edit/Delete' ) =>

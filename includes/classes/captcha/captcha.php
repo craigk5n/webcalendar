@@ -69,7 +69,7 @@ class captcha {
       }
 
       $title = translate ( 'Enter Characters Seen in Graphic' );
-      $more = translate ( 'Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read.' );
+      $more = translate ( 'Enter the correct letters and numbers from the image into the text box...' );
       #-- prepare image text
       $pw = captcha::mkpass();
       $hash = captcha::hash($pw);

@@ -41,7 +41,7 @@ else {
       $can_delete = true;
   } else
     // document not found
-    $error = translate ( 'Invalid entry id' ) . " '$blid'";
+    $error = str_replace ( 'XXX', $blid, translate ( 'Invalid entry id XXX.' ) );
 
   dbi_free_result ( $res );
 }
@@ -69,12 +69,12 @@ if ( empty ( $error ) && $can_delete ) {
     $error = db_error ();
   else {
     if ( $event_id > 0 ) {
+      $removeStr = translate ( 'Removed' );
       if ( $type == 'A' )
-        activity_log ( $event_id, $login, $login, LOG_ATTACHMENT,
-          translate ( 'Removed' ) . ': ' . $name );
+        activity_log ( $event_id, $login, $login, LOG_ATTACHMENT, $removeStr
+         . ': ' . $name );
       elseif ( $type == 'C' )
-        activity_log ( $event_id, $login, $login, LOG_COMMENT,
-          translate ( 'Removed' ) );
+        activity_log ( $event_id, $login, $login, LOG_COMMENT, $removeStr );
     }
     if ( $event_id > 0 )
       do_redirect ( 'view_entry.php?id=' . $event_id );

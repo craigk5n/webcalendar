@@ -4,7 +4,7 @@
 # Last update: 14.03.2003
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -48,6 +48,8 @@ Public Access: Avalik ligipääs
 Admin: Admin
 Calendar: Kalender
 Public: Avalik
+Confidential: Isiklik
+Private: Isiklik
 
 ########################################
 # Page: activity_log.php
@@ -108,7 +110,7 @@ Display week number: Näita nädala numbrit
 allow-view-add-help: '+' ikoon on lisatud vaadetesse lubamaks kasutajal kiiresti lisada sündmusi teiste kasutajate kalendritesse.
 Include add event link in views: Kaasa lisa sündmus viide vaadetesse
 allow-view-other-help: Määrab kas kasutaja saab näha teiste kalendreid.
-Allow viewing other user&#39;s calendars: Luba näha teiste kalendreid
+Allow viewing other users calendars: Luba näha teiste kalendreid
 require-approvals-help: Kui on lubatud siis peab kasutaja sündmuse heaks kiitma enne kui seda näidatakse kalendris (kehtib, kui 'Näita heakskiitmatuid' on keelatud). Märkus - seade 'Ei' ei keela näitamist Avalikult Ligipääsetavas kalendris kui see on lubatud.
 Require event approvals: Nõua sündmuse heakskiitu
 display-unapproved-help: Määrab kas heakskiitmata sündmused näidatakse kalendris.<br /> Kui on 'Jah', siis näidatakse heakskiitmata sündmusi kalendris (erineva teksti värviga).<br /> Kui on 'Ei', siis peab heakskiitmata sündmused enne kalendris näitamist lubama.
@@ -236,11 +238,6 @@ Cancel: Loobu
 An appointment has been canceled for you by: Sinu kokkusaamise jättis ära
 
 ########################################
-# Page: doc.php
-#
-Invalid entry id: Vale kande id
-
-########################################
 # Page: docadd.php
 #
 Description: Kirjeldus
@@ -253,7 +250,6 @@ pm: pm
 Edit Entry: Muuda kannet
 Add Entry: Lisa kannet
 Participants: Osalejad
-brief-description-help: This should provide a short description (about 20 characters) of the event.  This will represent the event when viewing the calendar.
 Brief Description: Lühikirjeldus
 full-description-help: See lõpetab sündmuse kirjelduse. Neid andmeid näeb kui kasutaja vaatab sündmust.
 Full Description: Täiskirjeldus
@@ -477,7 +473,7 @@ Reject this entry?: Lükkame kande tagasi?
 # Page: login-app.php
 #
 You must enter a login and password: Pead sisestama kasutajanime ja salasõna
-Save login via cookies so I don&#39;t have to login next time: Salvesta kasutajatunnused küpsisesse et ma ei peaks enam neid sisestama
+Save login via cookies so I dont have to login next time.: Salvesta kasutajatunnused küpsisesse et ma ei peaks enam neid sisestama
 Login: Sisenemine
 Access public calendar: Kasuta avalikku kalendrit
 cookies-note: <b>Märkus:</b> See rakendus nõuab küpsiste kasutamise lubamist.
@@ -531,6 +527,7 @@ View Another Users Calendar: Vaata teise kasutaja kalendrit
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Vale kande id
 You have not added any categories: Ssa pole lisanud ühtegi kategooriat
 Set Category: Määra kategooria
 
@@ -585,7 +582,6 @@ This will add the entry to your calendar.: See lisab kande sinu kalendrisse.
 Email all participants: Saada email kõigile osalejaile
 Hide activity log: Peida kasutamise ajalugu
 Show activity log: Näita kasutamise ajalugu
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -643,6 +639,10 @@ Oct: okt
 Nov: nov
 The following error occurred: Järgmine viga on juhtunud
 You are not authorized: Sa ei ole siis lubatud
+Add N hours to: Lisa N tundi
+Subtract N hours from: Lahuta N tundi
+same as: sama kui
+server time: serveri aeg
 Error approving event: Viga sündmuse heakskiidul
 Sunday: pühapäev
 Monday: esmaspäev
@@ -688,7 +688,7 @@ Notification: Teadustus
 # Page: includes/js/admin.php
 #
 Server URL is required: Serveri URL on puudu
-Server URL must end with &#39;/&#39;: Serveri URL peab lõppema '/' märgiga
+Server URL must end with /.: Serveri URL peab lõppema '/' märgiga
 Invalid color for document background: Vigane värv dokumendi tausta jaoks
 Invalid color for document title: Vigane värv dokumendi tiitli jaoks
 Invalid color for table cell background: Vigane värv tabeli ruudu tausta jaoks
@@ -698,7 +698,7 @@ Invalid color for table text background: Vigane värv tabeli teksti tausta jaoks
 Invalid color for event popup background: Vigane värv sündmuse akna tausta jaoks
 Invalid color for event popup text: Vigane värv sündmuse akna teksti jaoks
 Invalid color for table cell background for today: Vigane värv tänase päeva tabeli ruudu tausta jaoks
-Color format should be &#39;#RRGGBB&#39;: Värvi esitusviis peab olema kujul '#RRGGBB'
+Color format should be RRGGBB.: Värvi esitusviis peab olema kujul '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php

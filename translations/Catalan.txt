@@ -12,7 +12,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -56,6 +56,8 @@ Admin: Administrador
 Calendar: Calendari
 Edit: Edita
 Public: Públic
+Confidential: Confidencial
+Private: Privat
 
 ########################################
 # Page: activity_log.php
@@ -115,6 +117,8 @@ From: Des de les
 to: a les
 preferred-view-help: Especifica la visualització per defecte (Dia, Setmana, Mes, o Any).
 Preferred view: Visualització preferida
+Bottom: Final
+Top: Inici
 fonts-help: Especifica una llista de tipus de lletra del sistema que es vol fer servir (com ara "Arial,Helvetica")
 Fonts: Tipus de lletra
 display-weekends-help: Inclou caps de setmana quan es visualitzen les setmanes.
@@ -126,7 +130,7 @@ yearly-shows-events-help: En la visualització d'any, mostra en negreta els dies 
 allow-view-add-help: S'inclourà una icona '+' a les visualitzacions, permetent als usuaris afegir esdeveniments ràpidament als calendaris d'altres usuaris.
 Include add event link in views: Inclou a les visualitzacions enllaç per afegir esdeveniment
 allow-view-other-help: Especifica si un usuari pot visualitzar el calendari d'un altre usuari.
-Allow viewing other user&#39;s calendars: Permet veure els calendaris d'altres usuaris
+Allow viewing other users calendars: Permet veure els calendaris d'altres usuaris
 require-approvals-help: Si està activat, l'usuari ha d'aprovar l'esdeveniment abans que es mostri en el seu ( llevat que s'hagi activat Mostrar pendents d'aprovar).  Fixeu-vos que configurar-ho a "No", no ocultarà les aprovacions per al calendari d'Accés Públic (si el calendari d'Accés Públic està habilitat).
 Require event approvals: Requereix aprovació d'esdeveniments
 display-unapproved-help: Especifica si els esdeveniments pendents d'aprovació es mostren al calendari.<br /> Si s'ajusta a "Sí", els esdeveniments pendents d'aprovació es mostraran al calendari (amb el text en un color diferent). <br /> Si s'ajusta a  "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
@@ -272,11 +276,6 @@ Cancel: Cancel·la
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: S'ha cancel·lat una cita cancel·la per a tu per
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: Identificació incorrecta
 
 ########################################
 # Page: docadd.php
@@ -521,11 +520,12 @@ repeat-day-help: Especifica quins dies de la setmana cal repetir l'esdeveniment 
 # Page: help_import.php
 #
 Import: Importa
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Aquest formulari et permet importar entrades des del Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Hauria d'estar en el teu directori Palm a <tt>datebook/datebook.dat</tt> en un subdirectori amb el teu nom d'usuari.
 The following entries will not be imported: Les entrades següents no s'importaran
 Entries older than the current date: Entrades anteriors a la data actual
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Entrades creades al Palm Desktop que no han estat sincronitzades mitjançant HotSync
+Entries created in the Palm Desktop...: Entrades creades al Palm Desktop que no han estat sincronitzades mitjançant HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Qualsevol cosa importada des del Palm quedarà sobreescrita durant la propera importació (llevat que ja s'hagi superat la data de l'esdeveniment).
 Therefore, updates should be made in the Palm Desktop.: Per tant, caldria realitzar les actualitzacions al Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Aquest formulari importa esdeveniments de vCalendar 1.0 (.vcs).
@@ -600,7 +600,7 @@ Reject this entry?: Rebutges aquesta entrada?
 # Page: login-app.php
 #
 You must enter a login and password: Cal introduir un usuari i contrasenya
-Save login via cookies so I don&#39;t have to login next time: Desa la identificació mitjançant galetes per no haver d'introduir-ho la propera vegada
+Save login via cookies so I dont have to login next time.: Desa la identificació mitjançant galetes per no haver d'introduir-ho la propera vegada
 Login: Entrada
 Access public calendar: Calendari d'accés públic
 cookies-note: <b>Nota:</b>: Aquesta aplicació requereix tenir les galetes habilitades.
@@ -626,8 +626,9 @@ hour: hora
 #
 Purging events for: Depura els esdeveniments per a
 Finished: Ha finalitzat
-Check box to delete <b>ALL</b> events for a user: Marca la casella per suprimir <b>TOTS</b> els esdeveniments d'un usuari
+Check box to delete ALL events for a user: Marca la casella per suprimir <b>TOTS</b> els esdeveniments d'un usuari
 Delete all events before: Suprimeix tots els esdeveniments abans de
+Are you sure you want to delete events for: Esteu segur que voleu suprimir els esdeveniments per a
 
 ########################################
 # Page: reject_entry.php
@@ -672,6 +673,7 @@ View Another Users Calendar: Visualitza el calendari d'un altre usuari
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Identificació incorrecta
 You have not added any categories: No has afegit cap categoria
 Set Category: Fixa Categoria
 
@@ -732,7 +734,6 @@ Email all participants: Envia un correu electrònic a tots els participants
 Hide activity log: Oculta el registre d'activitat
 Show activity log: Mostra el registre d'activitat
 Export this entry to: Exporta aquesta entrada a
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -791,6 +792,10 @@ Oct: Oct
 Nov: Nov
 The following error occurred: S'ha produït un error
 You are not authorized: No tens autorització
+Add N hours to: Afegir N hores a 
+Subtract N hours from: Restar N hores de
+same as: igual que
+server time: hora del servidor 
 Error approving event: Error en aprovar esdeveniment
 Sunday: Diumenge
 Monday: Dilluns
@@ -837,7 +842,7 @@ Notification: Notificació
 # Page: includes/js/admin.php
 #
 Server URL is required: Cal URL de Servidor
-Server URL must end with &#39;/&#39;: La URL del Servidor ha d'acabar amb '/'
+Server URL must end with /.: La URL del Servidor ha d'acabar amb '/'
 Invalid color for document background: Color invàlid per al fons del document
 Invalid color for document title: Color invàlid per al títol del document
 Invalid color for table cell background: Color invàlid per al fons de cel·les de taula
@@ -847,7 +852,7 @@ Invalid color for table text background: Color invàlid per al fons del text de l
 Invalid color for event popup background: Color invàlid per al fons d'un missatge emergent
 Invalid color for event popup text: Color invàlid per al text del missatge emergent
 Invalid color for table cell background for today: Color invàlid per al fons de la cel·la d'avui
-Color format should be &#39;#RRGGBB&#39;: El format del color hauria de ser '#RRGGBB'
+Color format should be RRGGBB.: El format del color hauria de ser '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php

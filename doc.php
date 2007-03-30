@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Description:
  *  Obtain a binary object from the database and send it back to
@@ -15,30 +14,30 @@ include_once 'includes/classes/Doc.class';
 
 $blid = getValue ( 'blid', '-?[0-9]+', true );
 $error = $res = '';
+$invalidIDStr = translate ( 'Invalid entry id XXX.' );
 
-if ( empty ( $blid ) ) {
+if ( empty ( $blid ) )
   $error = translate ( 'Invalid blob id' );
-} else {
+else {
   $res = dbi_execute ( Doc::getSQLForDocId ( $blid ) );
-  if ( ! $res ) {
+  if ( ! $res )
    $error = db_error ();
-  }
 }
 
 if ( empty ( $error ) ) {
   $row = dbi_fetch_row ( $res );
-  if ( ! $row ) {
-    $error = translate ( 'Invalid entry id' );
-  } else {
+  if ( ! $row )
+    $error = str_replace ( 'XXX', $blid, $invalidIDStr );
+  else {
     $doc =& new Doc ( $row );
-    $id = $doc->getId();
-    $filename = $doc->getName ();
     $description = $doc->getDescription ();
+    $filedata = $doc->getData ();
+    $filename = $doc->getName ();
+    $id = $doc->getId();
+    $mimetype = $doc->getMimeType();
     $owner = $doc->getLogin ();
     $size = $doc->getSize();
     $type = $doc->getType ();
-    $mimetype = $doc->getMimeType();
-    $filedata = $doc->getData ();
   }
   dbi_free_result ( $res );
 }
@@ -58,12 +57,11 @@ if ( empty ( $id ) )
   $can_view = true; // not associated with an event
 
 if ( ! empty ( $id ) && empty ( $error ) ) {
-  if ( $is_admin || $is_nonuser_admin || $is_assistant ) {
+  if ( $is_admin || $is_nonuser_admin || $is_assistant )
     $can_view = true;
-  } 
-  if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) ) {
-    $error = translate( 'Invalid entry id' ) . '.'; 
-  }
+ 
+  if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) )
+    $error = str_replace ( 'XXX', $id, $invalidIDStr ); 
 
   if ( empty ( $error ) ) {
     // is this user a participant or the creator of the event?

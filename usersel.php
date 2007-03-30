@@ -7,15 +7,13 @@ include_once 'includes/init.php';
 // form:   name of form on parent page
 // listid: element id of user selection object in form
 //         ... to be used like form.elements[$listid]
-$progErrStr=translate ( 'Program Error' ).' ';
+$progErrStr = translate ( 'Program Error No XXX specified!' );
 if ( empty ( $form ) ) {
-  echo $progErrStr . str_replace ( 'XXX',
-    translate ( 'form' ), translate ( 'No XXX specified!' ) );
+  echo str_replace ( 'XXX', translate ( 'form' ), $progErrStr );
   exit;
 }
 if ( empty ( $listid ) ) {
-  echo $progErrStr . str_replace ( 'XXX',
-    translate ( 'listid' ), translate ( 'No XXX specified!' ) );
+  echo str_replace ( 'XXX', translate ( 'listid' ), $progErrStr );
   exit;
 }
 

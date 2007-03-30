@@ -59,7 +59,7 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
     // translate ( 'Email address already exists' )
     if ( $row[0] == $name )
       echo str_replace ( 'XXX', $name,
-        translate ( 'Email address XXX already exists', true ) );
+        translate ( 'Email address XXX already exists.', true ) );
   }
 } elseif ( $page == 'minitask' ) {
   $name = ( ! empty ( $name ) ? $name : 0 );

@@ -5,7 +5,7 @@
 # Last update: 19 January 2005
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -51,6 +51,8 @@ Calendar: Calendar
 Edit: Editeaz&#259;
 Events: Evenimente
 Public: Public
+Confidential: Confiden&#355;ial
+Private: Privat
 
 ########################################
 # Page: activity_log.php
@@ -114,6 +116,8 @@ From: De la
 to: p&#226;n&#259; la
 preferred-view-help: Specific&#259; vizualizarea implicit&#259; (zi, s&#259;pt&#259;m&#226;na, lun&#259; sau an).
 Preferred view: Vizualizarea preferat&#259;
+Bottom: Coad&#259;
+Top: Cap
 fonts-help: Specific&#259; o list&#259; a fonturilor care pot fi folosite (de exemplu "Arial, Helvetica")
 Fonts: Fonturi
 display-weekends-help: Include weekendurile &#238;n s&#259;pt&#259;m&#226;na.
@@ -126,7 +130,7 @@ Display days with events in bold in month and year views: Afi&#351;eaza cu liter
 allow-view-add-help: O iconi&#355;&#259; '+' va fi inclus&#259; &#238;n vizualiz&#259;ri, permi&#355;&#226;nd utilizatorilor s&#259; adauge u&#351;or evenimente la calendarele altora.
 Include add event link in views: Include op&#355;iunea adauga evenimente &#238;n vizualiz&#259;ri
 allow-view-other-help: Specific&#259; dac&#259; un utilizator poate s&#259; vad&#259; calendarul altuia.
-Allow viewing other user&#39;s calendars: Permite vizualizarea calendarelor altor utilizatori
+Allow viewing other users calendars: Permite vizualizarea calendarelor altor utilizatori
 require-approvals-help: C&#226;nd activat&#259;, utilizatorul trebuie s&#259; aprobe evenimentele care vor fie afi&#351;ate in calendarul sau (&#238;n afar&#259; de cazul c&#226;nd "afi&#351;eaz&#259; neaprobatele" este activat). Nepun&#226;nd aici "Nu" va dezactiva aprobarile pentru calendarul cu access public (&#238;n cazul &#238;n care calendarul cu access public este activat).
 Require event approvals: Necesit&#259; aprobare pentru evenimente
 display-unapproved-help: Specific&#259; daca evenimentele neaprobate sunt afi&#351;ate &#238;n calendarul t&#259;u. <br /> Dac&#259; aici este "Da", atunci evenimentele neaprobate for fi afi&#351;ate &#238;n calendarul t&#259;u (intr-o alta culoare). <br /> Dac&#259; aici este "Nu", atunci evenimentele neaprobate trebuie aprobate &#238;nainte de a ap&#259;rea &#238;n calendarul t&#259;u.
@@ -281,11 +285,6 @@ Cancel: Anuleaz&#259;
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: O programare de-a ta a fost anulat&#259; de c&#259;tre
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: Indetificatorul evenimentului este invalid
 
 ########################################
 # Page: docadd.php
@@ -535,11 +534,12 @@ repeat-day-help: Specifica &#238;n ce zile ale saptamanii s&#259; se repete even
 # Page: help_import.php
 #
 Import: Import&#259;
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Acest formular &#238;&#355;i permite s&#259; impor&#355;i &#238;nregistr&#259;ri dintr-un Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Ar trebui s&#259; fie localizat &#238;n directorul <tt>datebook/datebook.dat</tt> de pe Palm, &#238;ntr-un subdirector cu numele t&#259;u de utilizator.
 The following entries will not be imported: Urmatoarele date nu vor fi importate
 Entries older than the current date: &#206;nregistr&#259;ri mai vechi dec&#226;t data curent&#259;
-Entries created in the Palm Desktop that have not been HotSync&#39;d: &#206;nregistr&#259;ri create pe Palm dar care nu au fost HotSync-ate
+Entries created in the Palm Desktop...: &#206;nregistr&#259;ri create pe Palm dar care nu au fost HotSync-ate
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Orice a fost importat de pe Palm va fi rescris la urmatorul import (dac&#259; data nu este trecut&#259;).
 Therefore, updates should be made in the Palm Desktop.: De aceea actualiz&#259;rile ar trebui f&#259;cute pe Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Acest formular va importa evenimente de tip vCalendar (.vcs) 1.0
@@ -615,7 +615,7 @@ Reject this entry?: Refuz&#259;?
 # Page: login-app.php
 #
 You must enter a login and password: Este nevoie de login &#351;i parol&#259; 
-Save login via cookies so I don&#39;t have to login next time: Salveaz&#259; loginul &#238;ntr-un cookie pentru data viitoare
+Save login via cookies so I dont have to login next time.: Salveaz&#259; loginul &#238;ntr-un cookie pentru data viitoare
 Login: Login
 Access public calendar: Acceseaz&#259; calendarul public
 cookies-note: <b>Nota:</b> Aceast&#259; aplica&#355;ie necesit&#259; cookie-uri.
@@ -642,8 +642,9 @@ minute: minut
 #
 Purging events for: Cura&#355;&#226;nd evenimente pentru
 Finished: Terminat
-Check box to delete <b>ALL</b> events for a user: Bifeaz&#259; aceast&#259; casu&#355;&#259; ca s&#259; &#351;tergi <b>TOATE</b> evenimentele utilizatorului
+Check box to delete ALL events for a user: Bifeaz&#259; aceast&#259; casu&#355;&#259; ca s&#259; &#351;tergi <b>TOATE</b> evenimentele utilizatorului
 Delete all events before: &#350;terge toate evenimentele dinainte de
+Are you sure you want to delete events for: Sigur vrei s&#259; &#351;tergi evenimentele lui
 Records deleted from: &#206;nregistrari au fost &#351;terse &#238;ncep&#226;nd de la
 
 ########################################
@@ -689,6 +690,7 @@ View Another Users Calendar: Vizualizeaz&#259; calendarul unui alt utilizator
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Indetificatorul evenimentului este invalid
 You have not added any categories: Nu ai ad&#259;ugat nici o categorie
 Set Category: Define&#351;te o categorie
 
@@ -751,7 +753,6 @@ Email all participants: Trimite email tuturor participan&#355;ilor
 Hide activity log: Ascunde jurnalul de activitate
 Show activity log: Afi&#351;eaz&#259; jurnalul de activitate
 Export this entry to: Export&#259; aceast&#259; &#238;nregistrare &#238;n
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -809,6 +810,10 @@ Oct: Oct
 Nov: Noi
 The following error occurred: Urm&#259;toarea eroare s-a petrecut
 You are not authorized: Nu e&#351;ti autorizat(&#259;)
+Add N hours to: Adaug&#259; N ore la
+Subtract N hours from: Scade N ore din
+same as: la fel ca
+server time: ora serverului
 Error approving event: Eroare la aprobarea evenimentului
 Sunday: Duminic&#259;
 Monday: Luni
@@ -894,7 +899,7 @@ Notification: Notificare
 # Page: includes/js/admin.php
 #
 Server URL is required: Este necesar URL-ul serverului
-Server URL must end with &#39;/&#39;: URL-ul serverului trebuie s&#259; se termine &#238;n '/'
+Server URL must end with /.: URL-ul serverului trebuie s&#259; se termine &#238;n '/'
 Invalid work hours: Ore de lucru invalide
 Invalid color for document background: Culoare invalid&#259; pentru fundalul documentului
 Invalid color for document title: Culoare invalid&#259; pentru titlul documentului
@@ -905,7 +910,7 @@ Invalid color for table text background: Culoare invalid&#259; pentru fundalul t
 Invalid color for event popup background: Culoare invalid&#259; pentru fundalul popup-urilor
 Invalid color for event popup text: Culoare invalid&#259; pentru textul popup-urilor
 Invalid color for table cell background for today: Culoare invalid&#259; pentru fundalul casu&#355;ei de azi a tabelului
-Color format should be &#39;#RRGGBB&#39;: Formatul culorii trebuie s&#259; fie '#RRGGBB'
+Color format should be RRGGBB.: Formatul culorii trebuie s&#259; fie '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php

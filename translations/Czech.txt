@@ -7,7 +7,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -53,6 +53,8 @@ Calendar: Kalendá?
 Edit: Uprav
 Events: Události
 Public: ve?ejný
+Confidential: d?v?rný
+Private: Soukromé
 
 ########################################
 # Page: activity_log.php
@@ -116,6 +118,8 @@ From: Od
 to: do
 preferred-view-help: Ur?uje výchozí pohled na kalendá? (denní, týdení, m?sí?ní a nebo ro?ní)
 Preferred view: Up?ednost?ovaný pohled
+Bottom: Dole
+Top: Naho?e
 fonts-help: Ur?uje seznam systémových font?, které se mají používat (jako jsou "Arial, Helvetica").
 Fonts: Písma
 display-weekends-help: Vypisuje také víkendové dny p?i prohlížení týdne.
@@ -128,7 +132,7 @@ Display days with events in bold in month and year views: V m?sí?ním a ro?ním po
 allow-view-add-help: V náhledu na kalendá?e jiných uživatel? p?ibude '+' pro rychlé vkládání nových událostí do jejich kalendá??.
 Include add event link in views: P?idej odkaz na vkládání v jiných pohledech
 allow-view-other-help: Ur?uje, zda si m?že uživatel prohlížet kalendá? n?koho jiného.
-Allow viewing other user&#39;s calendars: Povol prohlížení kalendá?? jiných uživatel?
+Allow viewing other users calendars: Povol prohlížení kalendá?? jiných uživatel?
 require-approvals-help: Pokud je povoleno, uživatel bude muset danou událost nejprve potvrdit a teprve pak se mu zobrazí v kalendá?i (samoz?ejm?, pokud nemá povoleno zobrazování nepotvrzených). Poznemenejme, že nastavením tohoto na "Ne" nevypne nutnost potvrzování událostí pro ve?ejn? p?ístupné kalendá?e (pokud jsou ve?ejn? p?ístupné kalendá?e povoleny...).
 Require event approvals: Vyžaduj potvrzování událostí
 display-unapproved-help: Tímto ur?íš, jestli se mají v tvém kalendá?i zobrazovat nepotvrzené události<br /> Pokud je nastaveno na "Ano", pak se nepotvrzené události zobrazí v kalendá?i (jinou barvou písma).<br /> Pokud je nastaveno na "Ne", nebudou nepotvrzené události zobrazeny, dokud je n?kdo nepotvrdí.
@@ -285,11 +289,6 @@ Cancel: Zrušit
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Tvá sch?zka byla zrušena uživatelem
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: Neplatné id záznamu
 
 ########################################
 # Page: docadd.php
@@ -539,11 +538,12 @@ repeat-day-help: Ur?uje, které dny týdne by se událost m?la opakovat. Použije se
 # Page: help_import.php
 #
 Import: Import
+Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Tento formulá? umož?uje na?íst záznamy ze za?ízení Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Datový soubor by se m?l nacházet v adresá?i Palm v souboru <tt>datebook/datebook.dat</tt> v podadresá?i se tvým jménem.
 The following entries will not be imported: Následující záznamy nebudou importovány
 Entries older than the current date: Záznamy starší, než aktuální datum
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Záznamy vytvo?ené Palm Desktopem, které nebyly synchronizovány HotSyncem
+Entries created in the Palm Desktop...: Záznamy vytvo?ené Palm Desktopem, které nebyly synchronizovány HotSyncem
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Cokoli importovaného z Palmu bude p?epsáno následujícím importem (ledaže by již prošla platnost záznamu).
 Therefore, updates should be made in the Palm Desktop.: Proto, m?l by provést aktualizaci v Palm Desktopu.
 This form will import vCalendar (.vcs) 1.0 events: Tímto formulá?em lze importovat události z vCalendar (.vcs) 1.0
@@ -620,7 +620,7 @@ Reject this entry?: Odmítnout tuto událost?
 # Page: login-app.php
 #
 You must enter a login and password: Musíš zadat sv?j platný login a heslo
-Save login via cookies so I don&#39;t have to login next time: Abych se p?íšt?  nemusel p?ihlašovat, zapamatuj si p?ihlašovací údaje do cookies
+Save login via cookies so I dont have to login next time.: Abych se p?íšt?  nemusel p?ihlašovat, zapamatuj si p?ihlašovací údaje do cookies
 Login: Login
 Access public calendar: P?ístup k ve?ejným kalendá??m
 cookies-note: <b>Poznámka:</b> Pro p?ihlášení a správný b?h je pot?eba mít v prohlížeci povolena cookies.
@@ -647,8 +647,9 @@ minute: minuta
 #
 Purging events for: ?išt?ní událostí pro
 Finished: Dokon?eno
-Check box to delete <b>ALL</b> events for a user: Zaškrtnout pro smazání <b>VŠECH</b> událostí a záznam? uživatele
+Check box to delete ALL events for a user: Zaškrtnout pro smazání <b>VŠECH</b> událostí a záznam? uživatele
 Delete all events before: Smazat všechny události p?ed
+Are you sure you want to delete events for: Opravdu si p?eješ smazat události uživatele
 Records deleted from: Záznamy smazány z
 
 ########################################
@@ -694,6 +695,7 @@ View Another Users Calendar: Prohlédnou si kalendá? jiného uživatele
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Neplatné id záznamu
 You have not added any categories: Nep?idával jsi žádné kategorie
 Set Category: P?i?a? kategorii
 
@@ -756,7 +758,6 @@ Email all participants: Pošli email všem zá?astn?ným
 Hide activity log: Skryj protokol o aktivit?
 Show activity log: Zobraz protokol o aktivit?
 Export this entry to: Exportuj tento záznam do
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -814,6 +815,10 @@ Oct: ?íj
 Nov: lis
 The following error occurred: Nastala následující chyba:
 You are not authorized: Nemáte oprávn?ní
+Add N hours to: P?idej N hodin k
+Subtract N hours from: Ode?ti N hodin z
+same as: stejná, jako je
+server time: ?asu na serveru
 Error approving event: Chyba p?i schvalování záznamu
 Sunday: ned?le
 Monday: pond?lí
@@ -869,9 +874,7 @@ Portuguese: Portuguese
 Portuguese/Brazil: Portuguese/Brazil
 Romanian: Romanian
 Russian: Russian
-Spanish: Spanish
-Swedish: Swedish
-Turkish: Turkish
+event: záznam
 
 ########################################
 # Page: includes/user-imap.php
@@ -899,7 +902,7 @@ Notification: Oznámení
 # Page: includes/js/admin.php
 #
 Server URL is required: Je nutno zadat cestu (URL) k serveru
-Server URL must end with &#39;/&#39;: Cesta k serveru (URL) musí kon?it na '/'
+Server URL must end with /.: Cesta k serveru (URL) musí kon?it na '/'
 Invalid work hours: Neplatná pracovní doba
 Invalid color for document background: Neplatná barva pro pozadí dokumentu
 Invalid color for document title: Neplatná barva pro záhlaví dokumentu
@@ -910,7 +913,7 @@ Invalid color for table text background: Neplatná barva textu v tabulce
 Invalid color for event popup background: Neplatná barva pozadí u vyskakovacích (popup) událostí
 Invalid color for event popup text: Neplatná barva textu u vyskakovacích (popup) událostí
 Invalid color for table cell background for today: Neplatná barva pozadí bu?ky tabulky p?i zobrazení dne
-Color format should be &#39;#RRGGBB&#39;: Formát barvy by nap?íklad m?l být '#RRGGBB'
+Color format should be RRGGBB.: Formát barvy by nap?íklad m?l být '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php

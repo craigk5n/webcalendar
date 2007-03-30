@@ -116,7 +116,7 @@ if ( ! empty ( $error ) ) {
  <input type="checkbox" name="<?php echo $app_login_page['remember'] ?>" id="remember" tabindex="3" 
    value="yes" <?php if ( ! empty ( $remember ) && $remember == 'yes' ) {
      echo 'checked="checked"'; }?> /><label for="remember">&nbsp;
-   <?php etranslate( 'Save login via cookies so I don&#39;t have to login next time' )?></label>
+   <?php etranslate( 'Save login via cookies so I dont have to login next time.' )?></label>
 </td></tr>
 <?php } ?>
 <tr><td colspan="4" class="aligncenter">

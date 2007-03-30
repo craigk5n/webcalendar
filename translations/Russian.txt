@@ -6,7 +6,7 @@
 # Last update: Wed Oct 25 14:34:05 IST 2000
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -67,6 +67,8 @@ Assistant: Ассистент
 Select All: Выбрать Все
 Clear All: Очистить Все
 Public: Общедоступный
+Confidential: Конфидециальный
+Private: Личное
 
 ########################################
 # Page: activity_log.php
@@ -151,8 +153,8 @@ preferred-view-help: Определяет предпочтимый вид (день, неделя, месяц или год).
 Preferred view: Предпочимый вид
 Allow top menu: Разрешить меню в заголовке
 Date Selectors position: Позиция выбора Даты
-Top: вверху
 Bottom: внизу
+Top: вверху
 menu-themes-help: Устанавливает цвета и стиль меню заголовка
 Menu theme: Тема меню
 fonts-help: Указывать список системных шрифтов для использования (например "Arial, Helvetica")
@@ -177,7 +179,7 @@ lunar-help: Если включено, будут отображены малениькие картинки, показывающие фа
 Display Lunar Phases in month view: Показывать фазу луны при просмотре месяца
 Restrictions: Ограничения
 allow-view-other-help: Определяет может ли один пользователь смотреть календари других пользователей.
-Allow viewing other user&#39;s calendars: Разрешить просматривать календари других пользователей
+Allow viewing other users calendars: Разрешить просматривать календари других пользователей
 require-approvals-help: Когда включено, пользоветель должен утвердить событие, прежде чем оно появится на его календаре(пока не включено отображение неподтвержденного). Внимание, ответ "Нет" для данного поля не выключает подтверждения для календаря Общего Доступа (если календарь Общего Доступа включен).
 Require event approvals: Требуется подтверждение событий
 display-unapproved-help: Задает, видны ли неподтвержденные события в вашем календаре.<b> Если выбрано "Да", то они будут отображены в календаре, в цвете отличном от подтвержденных событий.<br />  При выборе "Нет", необходимо сперва подтвердить событие, прежде чем оно будет видно в календаре.
@@ -291,12 +293,12 @@ allow-self-registration-full-help: Разрешить новым пользователям завершать проше
 Use self-registration email notifications: Генерирует пароли и рассылает их новым пользователям. Это должно помочь против спамеров.
 allow-attachment-help: Разрешить пользователям загружать вложения к событиям
 Allow file attachments to events: Разрешить присоединять файлы к событиям
-Admin and owner can always add attachments if enabled: Администратор и владелец всегда могут загружать вложения если включено
-Participant: Участник
+Admin and owner can always add attachments if enabled.: Администратор и владелец всегда могут загружать вложения если включено
 Anyone: Кто угодно
+Participant: Участник
 allow-comments-help: Разрешить пользователям комментировать события
 Allow comments to events: Разрешить комментировать события
-Admin and owner can always add comments if enabled: Администратор и владелец всегда могут добавлять комментарии если включено
+Admin and owner can always add comments if enabled.: Администратор и владелец всегда могут добавлять комментарии если включено
 email-enabled-help: Включить или выключитть всю рассылку уведомлений и напоминаний. Выберите "Нет", если ваш сервер не настроен для отсылки сообщений.
 Email enabled: Электронная почта включена
 email-default-sender: Указать электронный адрес, который будет использован в качестве отправителя.
@@ -436,7 +438,6 @@ An appointment has been canceled for you by: Назначенная вам встреча была отмене
 # Page: doc.php
 #
 Invalid blob id: Неправильный идентификатор blob
-Invalid entry id: Неправильный идентификатор записи
 
 ########################################
 # Page: docadd.php
@@ -779,11 +780,12 @@ repeat-day-help: Задает в какие дни недели это событие повторяется.  Используетс
 # Page: help_import.php
 #
 Import: Импорт
+Palm Desktop: Карманный персональный компьютер (КПК)
 This form will allow you to import entries from the Palm Desktop Datebook.: Эта форма позволит вам загрузить данные с Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Оно должно располагаться в каталоге вашего Palm <tt>datebook/datebook.dat</tt> в каталоге вашего пользователя.
 The following entries will not be imported: Следующие записи не будут загружены
 Entries older than the current date: Записи до текущей даты
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Записи созданные в Palm Desktop, которые еще не были обработаны HotSync
+Entries created in the Palm Desktop...: Записи созданные в Palm Desktop, которые еще не были обработаны HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Все загруженное с Palm будет переписано в процессе следующей загрузки (пока не пройдет дата события).
 Therefore, updates should be made in the Palm Desktop.: Таким образом обновления должны быть сделаны в Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events: Эта форма загрузит события в формате vCalendar (.vcs) 1.0
@@ -800,7 +802,7 @@ Help Index: Индекс подсказки
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.: Слои удобны для отображения событий других пользователей в своем календаре. Вы можете указать пользователя и цвет которым его события будут отображены.
+Layers are useful for displaying...: Слои удобны для отображения событий других пользователей в своем календаре. Вы можете указать пользователя и цвет которым его события будут отображены.
 Add/Edit/Delete: Добавить/Редактировать/Удалить
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Щелчек на ссылке Редактировать Слои в секции администрирования внизу страницы позволит вам добавлять/редактировать/удалять слои.
 The text color of the new layer that will be displayed in your calendar.: Цвет текста, которым будет показываться новый слой.
@@ -901,7 +903,7 @@ Reject Selected entries?: Отвергнуть выбранные записи?
 # Page: login-app.php
 #
 You must enter a login and password: Необходимо ввести имя и пароль
-Save login via cookies so I don&#39;t have to login next time: Сохранить имя в браузере, чтобы не нужно было совершать загрузку в следующий раз
+Save login via cookies so I dont have to login next time.: Сохранить имя в браузере, чтобы не нужно было совершать загрузку в следующий раз
 Login: Вход
 Access public calendar: Вход в общий календарь
 cookies-note: <b>Внимание:</b> Этому приложению требуются включенные cookies.
@@ -964,9 +966,10 @@ No user specified: Не указан пользователь
 Purging events for: Удалить события для
 Finished: Закончено
 Back: Назад
-Check box to delete <b>ALL</b> events for a user: Отметить для удаления <b>ВСЕХ</b> событий пользователя
+Check box to delete ALL events for a user: Отметить для удаления <b>ВСЕХ</b> событий пользователя
 Delete all events before: Удалить все события до
 Preview delete: Предпросмотр удаления
+Are you sure you want to delete events for: Вы уверены, что хотите удалить события для
 Records deleted from: Записи удалены из
 
 ########################################
@@ -993,7 +996,7 @@ Submit: Передать
 # Page: reject_entry.php
 #
 Continue: Продолжить
-(Your comments will be included in an email to the other participants): (Ваши комментарии будут включены в письмо к другим участникам)
+(Your comments will be emailed to the other participants.): (Ваши комментарии будут включены в письмо к другим участникам)
 An appointment has been rejected by: Встреча была отвергнута
 
 ########################################
@@ -1039,6 +1042,7 @@ View Another Users Calendar: Просмотреть календарь другого пользователя
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: Неправильный идентификатор записи
 You have not added any categories: Вы не добавляли никаких категорий
 Set Category: Установить Категорию
 Global Categories cannot be changed.: Глобальные категории не могут быть изменены
@@ -1121,14 +1125,13 @@ Edit entry for this date: Редактидовать событие на эту дату
 Delete entry only for this date: Удалить событие только на эту дату
 from calendar of: из календаря
 This will delete the entry from your calendar.: Это удалит данную запись из вашего календаря.
-from your boss&#39; calendar: из календаря вашего начальника
+from your boss calendar: из календаря вашего начальника
 Do you want to add this entry to your calendar?: Вы хотите добавить эту запись в ваш календарь?
 This will add the entry to your calendar.: Это добавит данную запись в ваш календарь.
 Email all participants: Отправить сообщение всем участникам
 Hide activity log: Спрятать монитор активности
 Show activity log: Показать монитор активности
 Export this entry to: Экспортировать данную запись в
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: view_r.php
@@ -1246,6 +1249,10 @@ Oct: Окт
 Nov: Ноя
 The following error occurred: Произошла следующая ошибка
 You are not authorized: У вас нет права доступа
+Add N hours to: Добавить N часов к
+Subtract N hours from: Убрать N часов от
+same as: 0 часов от
+server time: времени сервера
 Your current GMT offset is: Ваше смещение по GMT
 Unauthorized: Неавторизован
 Error approving event: Ошибка в процессе подтверждения события
@@ -1394,7 +1401,7 @@ recipients_failed: Ошибка SMTP. Следующие получатели недоступны
 # Page: includes/js/admin.php
 #
 Server URL is required: Необходим адрес сервера
-Server URL must end with &#39;/&#39;: Адрес сервера должен заканчиваться '/'
+Server URL must end with /.: Адрес сервера должен заканчиваться '/'
 Invalid work hours: Неправильные рабочие часы
 Invalid color for document background: Недопустимый цвет для фона документа
 Invalid color for document title: Недопустимый цвет для заголовка документа
@@ -1405,7 +1412,7 @@ Invalid color for table text background: Недопустимый цвет для фона текста табли
 Invalid color for event popup background: Недопустимый цвет для фона окна события
 Invalid color for event popup text: Недопустимый цвет для текста окна события
 Invalid color for table cell background for today: Недопустимый цвет для фона клетки текущего дня
-Color format should be &#39;#RRGGBB&#39;: Формат цвета должен быть вида '#RRGGBB'
+Color format should be RRGGBB.: Формат цвета должен быть вида '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php
@@ -1484,7 +1491,7 @@ Unable to write password to settings.php file: Невозможно записать пароль в файл
 Password has been set: Пароль установлен
 Connection Successful: Соединение Успешно
 Please go to next page to continue installation: Пожалуйста пройдите на следующую страницу для продолжения установки
-Correct your entries or click the <b>Create New</b> button to continue installation: Исправьте введенные значения или нажмите <b>Создать Новую</b> для продолжения
+Correct your entries or click the Create New button to continue installation: Исправьте введенные значения или нажмите <b>Создать Новую</b> для продолжения
 Correct your entries and try again: Исправьте введенные значения и попробуйте снова
 does not exist: не существует
 is not writable: не доступна запись
@@ -1493,7 +1500,6 @@ Please change the file permissions of this file: Пожалуйста измените права досту
 Please change includes dir permission: Пожалуйста установите права на запись для других пользователей в каталог includes 
 Your settings have been saved: Ваши настройки сохранены
 Error you must specify a\\nSingle-User Login: Ошибка. Вы должны указать имя для\\nоднопользовательского режима
-Server URL must end with: Адрес сервера должен заканчиваться
 Full Path (no backslashes): Полный путь (без обратных слэшей)
 The password contains illegal characters.: Пароль содержит неправильные символы.
 This installation wizard will guide you...: Этот мастер установки поможет вам настроить базовую установку WebCalendar. Для помощи и разрешения проблем смотрите
@@ -1507,9 +1513,9 @@ To test the proper operation of sessions, reload this page: Для тестирования пра
 You should see the session counter increment each time: Вы должны увидеть счетчик сессий обновляющийся каждый раз
 SESSION COUNTER: СЧЕТЧИК СЕССИЙ
 Settings.php Status: Статус Settings.php
-The file permissions of <b>settings.php</b> are set...: Права доступа для файла <b>settings.php</b> установлены так, что установщик не имеет права изменить его. Пожалуйста измените права доступа к данному файлу для продолжения.
-The file permissions of the <b>includes</b> directory are set...: Права доступа для каталога <b>includes</b> установлены так, что установщик не имеет права создать новый файл. Пожалуйста измените права доступа к данному файлу для продолжения.
-Your <b>settings.php</b> file appears to be valid: Ваш файл <b>settings.php</b> успешно проверен на правильность.
+The file permissions of settings.php are set...: Права доступа для файла <b>settings.php</b> установлены так, что установщик не имеет права изменить его. Пожалуйста измените права доступа к данному файлу для продолжения.
+The file permissions of the includes directory are set...: Права доступа для каталога <b>includes</b> установлены так, что установщик не имеет права создать новый файл. Пожалуйста измените права доступа к данному файлу для продолжения.
+Your settings.php file appears to be valid: Ваш файл <b>settings.php</b> успешно проверен на правильность.
 Configuration Wizard Password: Пароль для Мастера Установки
 Create Settings File Password: Создать пароль для файла настроек
 Password (again): Пароль (повторить)
@@ -1518,7 +1524,7 @@ Database Status: Статус Базы Данных
 Supported databases for your PHP installation: PHP установка поддерживает следующие Базы Данных
 Your current database settings are able to access the database: Удалось установить соединение с текущими настройками
 Please Test Settings: Пожалуйста проверьте настройки
-Your current database settings are <b>not</b> able to access the database or have not yet been tested: С вашими текущими настнойками <b>невозможно</b> соединиться с базой данных. Или соединение еще не проверено.
+Your current database settings are not able...: С вашими текущими настнойками <b>невозможно</b> соединиться с базой данных. Или соединение еще не проверено.
 Database Settings: Настройки Базы Данных
 Database Type: Тип Базы Данных
 Server: Сервер
@@ -1528,7 +1534,7 @@ next page and complete your WebCalendar setup: следующей странице и закончить на
 This appears to be a new installation. If this is not correct, please: Это похоже на новую установку, Если это неверно, пожалуйста 
 go back to the previous page and correct your settings: вернитесь на предыдущую страницу и исправьте свои настройки
 The database requires some data input: База данных требует ввода небольших данных
-Click <b>Update Database</b> to complete the upgrade: Нажмите <b>Обновить Базу Данных</b> для окончания обновления
+Click Update Database to complete the upgrade: Нажмите <b>Обновить Базу Данных</b> для окончания обновления
 This appears to be an upgrade from version: Это похоже на обновление с версии
 In this section we will perform the required database changes to bring your database up to the required level: В этой секции мы будем производить требуемые изменения базы данных, чтобы довести ее до нужного уровня
 If you are using a fully supported database, this step will be performed automatically for you: Если вы используете полностью поддерживаемую базу данных, этот шаг будет произведен автоматически
@@ -1543,21 +1549,21 @@ Install Database: Установить Базу Данных
 Update Database: Обнавить Базу Данных
 Display Required SQL: Показать Требуемый SQL
 Return to previous page after processing sql: После исполнения данного SQL, вам нужно вернуться на предыдущую страницу и протестировать вашу базу данных, чтобы скрипт мог опознать изменения.
-This is the final step in setting up your WebCalendar Installation: Это последний шаг настройки в установке вашего WebCalendar
+This is the final step in setting up your WebCalendar Installation.: Это последний шаг настройки в установке вашего WebCalendar
 Timezone Conversion: Преобразование Временной Зоны
 It appears that you have: Похоже что вы 
 NOT: не
-converted your existing WebCalendar event data to GMT: преобразовали данные событий своего существующего WebCalendar к GMT
-If you have, you may ignore this notice and not proceed with the conversion: Если вы сделали, вы можете игнорировать это сообщение и не продолжать преобразование
+converted your existing WebCalendar event data to GMT.: преобразовали данные событий своего существующего WebCalendar к GMT
+If you have, you may ignore this notice and not proceed with the conversion.: Если вы сделали, вы можете игнорировать это сообщение и не продолжать преобразование
 If this is a new installation, you may also ignore this notice.: Если это новая установка, вы также можете игнорировать это сообщение.
 Convert Data to GMT: Преобразовать данные в GMT
 Application Settings: Настройки Приложения
 HTTP-based authentication was not detected: Авторизация на основе HTTP не обнаружена
 You will need to reconfigure your web server if you wish to: Вам надо перенастроить ваш веб сервер если вы хотите
-select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: Использовать "Веб Сервер" из списка "Авторизация Пользователей"
-HTTP-based authentication was detected: Авторизация на основе HTTP поддерживается
-User authentication is being handled by your web server: Авторизация пользователей может обрабатываться вашим веб сервером
-You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: Вам нужно использовать "Веб Сервер" из списка "Авторизация Пользователей"
+select Web Server from the User Authentication choices below.: Использовать "Веб Сервер" из списка "Авторизация Пользователей"
+HTTP-based authentication was detected.: Авторизация на основе HTTP поддерживается
+User authentication is being handled by your web server.: Авторизация пользователей может обрабатываться вашим веб сервером
+You should select Web Server from the list of User Authentication choices below.: Вам нужно использовать "Веб Сервер" из списка "Авторизация Пользователей"
 Create Default Admin Account: Создать учетную запись Администратора по умолчанию
 Admin Account Not Found: Учетная запись Администратора не обнаружена
 User Authentication: Авторизация Пользователей

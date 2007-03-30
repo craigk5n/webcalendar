@@ -8,7 +8,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -53,6 +53,8 @@ Admin: Yll‰pito
 Calendar: Kalenteri
 Edit: Muokkaa
 Public: Julkinen
+Confidential: Luottamuksellinen
+Private: Yksityinen
 
 ########################################
 # Page: activity_log.php
@@ -115,6 +117,8 @@ From: Alkaen
 to: ulottuen
 preferred-view-help: M‰‰rittelee oletusn‰kym‰n (P‰iv‰, Viikko, Kuukausi tai Vuosi).
 Preferred view: Oletusn‰kym‰
+Bottom: Alhaalla
+Top: Ylh‰‰ll‰
 fonts-help: M‰‰ritt‰‰ k‰ytett‰v‰t j‰rjestelm‰fontit (esim. "Arial, Helvetica")
 Fonts: Fontit
 display-weekends-help: N‰yt‰ viikonloput viikkoa katseltaessa.
@@ -126,7 +130,7 @@ yearly-shows-events-help: On the yearly view, display days that contain events i
 allow-view-add-help: Asettaa '+'-merkin ilmestym‰‰n n‰kymiin, jolloin k‰ytt‰j‰ voi helposti lis‰t‰ uuden tapahtuman toisen(kin) k‰ytt‰j‰n kalenteriin.
 Include add event link in views: Lis‰‰ linkki "Lis‰‰ tapahtuma" kaikkiin n‰kymiin
 allow-view-other-help: M‰‰ritt‰‰, salliiko kalenteri k‰ytt‰j‰n tarkastella toisen k‰ytt‰j‰n kalenteria.
-Allow viewing other user&#39;s calendars: Salli muiden henkilˆiden kalenterien tarkastelu
+Allow viewing other users calendars: Salli muiden henkilˆiden kalenterien tarkastelu
 require-approvals-help: Jos p‰‰ll‰, k‰ytt‰j‰n on vahvistettava tapahtuma ennenkuin se n‰kyy kalenterissa.
 Require event approvals: Vaadi tapahtumien vahvistus
 display-unapproved-help: M‰‰rittelee n‰ytet‰‰nkˆ hyv‰ksym‰ttˆm‰t tapahtumat kalenterissa. <br />Jos valittu "Kyll‰", niin hyv‰ksym‰ttˆm‰t tapahtumat n‰ytet‰‰n (eri v‰rill‰).<br />Jos valittu "Ei", niin tapahtumat tulee hyv‰ksy‰ ennenkuin ne n‰kyv‰t kalenterissa. 
@@ -270,11 +274,6 @@ Cancel: Kumoa
 # Page: del_entry.php
 #
 An appointment has been canceled for you by: Kalenterimerkint‰si poisti
-
-########################################
-# Page: doc.php
-#
-Invalid entry id: V‰‰r‰ tunnus
 
 ########################################
 # Page: docadd.php
@@ -521,11 +520,12 @@ repeat-day-help: M‰‰rittelee viikonp‰iv‰, joina tapahtumaa toistetaan. K‰ytett‰v
 # Page: help_import.php
 #
 Import: Tuo
+Palm Desktop: Palm PDA
 This form will allow you to import entries from the Palm Desktop Datebook.: T‰ll‰ lomakkeella voit tuoda tapahtumamerkintˆj‰ Palm PDA:stasi.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Sen pit‰isi olla Palmissasi hakemistossa <tt>datebook/datebook.dat</tt> k‰ytt‰j‰tunnuksesi mukaisesti nimetyss‰ alihakemistossa.
 The following entries will not be imported: Seuraavia tapahtumia ei tuoda
 Entries older than the current date: Kuluvaa p‰iv‰‰ vanhemmat tapahtumat
-Entries created in the Palm Desktop that have not been HotSync&#39;d: Palmissa luodut tapahtumat, joita ei ole synkronoitu HotSync:ll‰
+Entries created in the Palm Desktop...: Palmissa luodut tapahtumat, joita ei ole synkronoitu HotSync:ll‰
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Kaikki Palmista tuodut tapahtumat pyyhkiytyv‰t seuraavassa tuonnissa (ellei tapahtuma ole jo mennyt ohi).
 Therefore, updates should be made in the Palm Desktop.: Siksi p‰ivitykset tulisi tehd‰ Palmin kautta.
 This form will import vCalendar (.vcs) 1.0 events: Tuo vCalendar (.vcs) 1.0 t‰ll‰ lomakkeella
@@ -601,7 +601,7 @@ Reject this entry?: Hyl‰t‰‰nkˆ merkint‰?
 # Page: login-app.php
 #
 You must enter a login and password: Syˆt‰ k‰ytt‰j‰tunnus ja salasana
-Save login via cookies so I don&#39;t have to login next time: Kirjaa minut automaattisesti sis‰‰n
+Save login via cookies so I dont have to login next time.: Kirjaa minut automaattisesti sis‰‰n
 Login: Kirjoittaudu
 Access public calendar: Salli yleinen kalenteri
 cookies-note: <b>Huom:</b> T‰t‰ sovellusta k‰ytett‰ess‰ (joulu)piparien pit‰‰ olla k‰ytˆss‰.
@@ -627,8 +627,9 @@ hour: tuntia
 #
 Purging events for: Tuhotaan tapahtumia kohteesta
 Finished: Valmis
-Check box to delete <b>ALL</b> events for a user: Laita rasti ruutuun poistaaksesi <b>KAIKKI</b> k‰ytt‰j‰n tapahtumat
+Check box to delete ALL events for a user: Laita rasti ruutuun poistaaksesi <b>KAIKKI</b> k‰ytt‰j‰n tapahtumat
 Delete all events before: Poista tapahtumat ennen
+Are you sure you want to delete events for: Haluatko varmasti poistaa kaikki tapahtumat k‰ytt‰j‰lt‰
 
 ########################################
 # Page: reject_entry.php
@@ -673,6 +674,7 @@ View Another Users Calendar: N‰yt‰ toisen k‰ytt‰j‰n kalenteri
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: V‰‰r‰ tunnus
 You have not added any categories: Et ole lis‰nnyt tapahtumaluokkia
 Set Category: Aseta luokka
 
@@ -733,7 +735,6 @@ Email all participants: L‰het‰ s‰hkˆpostia kaikille osallistujille
 Hide activity log: Piilota aktiviteettiloki
 Show activity log: N‰yt‰ aktiviteettiloki
 Export this entry to: L‰het‰ t‰m‰ tapahtuma
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: week_details.php
@@ -744,6 +745,7 @@ New Entry: Uusi merkit‰
 # Page: includes/access.php
 #
 Another Users Calendar: Toisen k‰ytt‰j‰n kalenteri
+Manage Views: Hallitse n‰kymi‰
 
 ########################################
 # Page: includes/date_formats.php
@@ -791,6 +793,10 @@ Oct: Loka
 Nov: Marras
 The following error occurred: Tapahtui virhe
 You are not authorized: K‰yttˆoikeus puuttuu
+Add N hours to: Lis‰‰ N tuntia
+Subtract N hours from: v‰henn‰ N tuntia
+same as: sama kuin
+server time: palvelimen aika
 Error approving event: Merkint‰‰ ei hyv‰ksytty
 Sunday: Sunnuntai
 Monday: Maanantai
@@ -818,6 +824,11 @@ Go to: Siirry
 Manage calendar of: Hallitse henkilˆn kalenteria
 
 ########################################
+# Page: includes/translate.php
+#
+event: tapahtuma
+
+########################################
 # Page: includes/user-imap.php
 #
 Invalid user login: V‰‰r‰ k‰ytt‰j‰nimi
@@ -837,7 +848,7 @@ Notification: Muistutus
 # Page: includes/js/admin.php
 #
 Server URL is required: Palvelimien URL on pakollinen
-Server URL must end with &#39;/&#39;: Palvelimen URL t‰ytyy p‰‰tty‰ merkkiin '/'
+Server URL must end with /.: Palvelimen URL t‰ytyy p‰‰tty‰ merkkiin '/'
 Invalid color for document background: Taustav‰ri on virheellinen
 Invalid color for document title: Otsikon v‰ri on virheellinen
 Invalid color for table cell background: Ruudukon taustav‰ri on virheellinen
@@ -847,7 +858,7 @@ Invalid color for table text background: Tekstin taustav‰ri on virheellinen
 Invalid color for event popup background: Popup-ikkunan taustav‰ri on virheellinen
 Invalid color for event popup text: Popup-ikkunan tekstin v‰ri on virheellinen
 Invalid color for table cell background for today: Kuluvan p‰iv‰n taustav‰ri on virheellinen
-Color format should be &#39;#RRGGBB&#39;: V‰rikoodin tulee olla muotoa '#RRGGBB'
+Color format should be RRGGBB.: V‰rikoodin tulee olla muotoa '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php

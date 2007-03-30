@@ -6,7 +6,7 @@
 # Last updated: 12-08-2006
 #
 # $Id$
-# Translation last updated on 03-25-2007
+# Translation last updated on 03-30-2007
 
 
 ################################################################################
@@ -69,6 +69,8 @@ Assistant: ¥¢¥·¥¹¥¿¥ó¥È
 Select All: ¤¹¤Ù¤ÆÁªÂò¤¹¤ë
 Clear All: ¤¹¤Ù¤Æºï½ü¤¹¤ë
 Public: ¸ø³«
+Confidential: Èó¸ø³«
+Private: ¥×¥é¥¤¥Ù¡¼¥È
 
 ########################################
 # Page: activity_log.php
@@ -153,8 +155,8 @@ Appearance: ³°´Ñ
 preferred-view-help: ¥Ç¥Õ¥©¥ë¥È¤ÎÉ½¼¨¤ò»ØÄê¤·¤Þ¤¹ (Æü´Ö¡¢½µ´Ö¡¢·î´Ö¤â¤·¤¯¤ÏÇ¯´Ö)
 Preferred view: Í¥Àè¤¹¤ëÉ½¼¨
 Allow top menu: ¥È¥Ã¥×¥á¥Ë¥å¡¼¤òµö²Ä¤¹¤ë
-Top: ¾å
 Bottom: ²¼
+Top: ¾å
 Menu theme: ¥á¥Ë¥å¡¼¥Æ¡¼¥Þ
 fonts-help: »ÈÍÑ¤¹¤ë¥·¥¹¥Æ¥à¥Õ¥©¥ó¥È¤Î°ìÍ÷¤ò»ØÄê¤·¤Þ¤¹("Arial, Helvetica"¤Î¤è¤¦¤Ë)
 Fonts: ¥Õ¥©¥ó¥È
@@ -177,7 +179,7 @@ Include add event link in views: ¥Ó¥å¡¼Æâ¤ÇÄÉ²Ã¤·¤¿¥¤¥Ù¥ó¥È¤ò´Þ¤à
 Display Lunar Phases in month view: ·î´Ö¥Ó¥å¡¼¤Ç·îÎð¤òÉ½¼¨¤¹¤ë
 Restrictions: À©¸Â
 allow-view-other-help: ¥æ¡¼¥¶¡¼¤¬Â¾¤Î¥æ¡¼¥¶¡¼¤Î¥«¥ì¥ó¥À¡¼¤ò¸«¤Æ¤â¤¤¤¤¤«¤É¤¦¤«»ØÄê¤·¤Þ¤¹¡£
-Allow viewing other user&#39;s calendars: Â¾¤Î¥æ¡¼¥¶¡¼¤Î¥«¥ì¥ó¥À¡¼¤ò¸«¤ë¤³¤È¤òµö²Ä¤¹¤ë
+Allow viewing other users calendars: Â¾¤Î¥æ¡¼¥¶¡¼¤Î¥«¥ì¥ó¥À¡¼¤ò¸«¤ë¤³¤È¤òµö²Ä¤¹¤ë
 Require event approvals: ¥¤¥Ù¥ó¥È¤Î¾µÇ§¤òÉ¬Í×¤È¤¹¤ë
 display-unapproved-help: ¾µÇ§¤¬ºÑ¤ó¤Ç¤¤¤Ê¤¤¥¤¥Ù¥ó¥È¤ò¥«¥ì¥ó¥À¡¼¤ËÉ½¼¨¤¹¤ë¤«¤É¤¦¤«»ØÄê¤·¤Þ¤¹¡£<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: Ì¤¾µÇ§¥¤¥Ù¥ó¥È¤òÉ½¼¨¤¹¤ë
@@ -267,12 +269,12 @@ allow-self-registration-full-help: ¿·µ¬¤Î¥æ¡¼¥¶¤¬¥ª¥ó¡¦¥é¥¤¥ó¼«¸ÊÅÐÏ¿¼êÂ³¤ò´°Î»¤
 Use self-registration email notifications: ¼«¸ÊÅÐÏ¿¤ÎÅÅ»Ò¥á¡¼¥ëÄÌÃÎ¤ò»È¤¦
 allow-attachment-help: ¥æ¡¼¥¶¡¼¤¬¥¤¥Ù¥ó¥È¤Ø¤ÎÅºÉÕ¥Õ¥¡¥¤¥ë¤ÎÄÉ²Ã¤ò¤¹¤ë¤³¤È¤òµö²Ä¤·¤Þ¤¹¡£
 Allow file attachments to events: ¥¤¥Ù¥ó¥È¤Ø¤Î¥Õ¥¡¥¤¥ëÅºÉÕ¤òµö²Ä¤¹¤ë
-Admin and owner can always add attachments if enabled: Í­¸ú¤Ë¤·¤¿¾ì¹ç¡¢´ÉÍý¼Ô¤È½êÍ­¼Ô¤Ï¾ï¤ËÅºÉÕ¤òÄÉ²Ã¤Ç¤­¤Þ¤¹¡£
-Participant: »²²Ã¼Ô
+Admin and owner can always add attachments if enabled.: Í­¸ú¤Ë¤·¤¿¾ì¹ç¡¢´ÉÍý¼Ô¤È½êÍ­¼Ô¤Ï¾ï¤ËÅºÉÕ¤òÄÉ²Ã¤Ç¤­¤Þ¤¹¡£
 Anyone: Ã¯¤Ç¤â
+Participant: »²²Ã¼Ô
 allow-comments-help: ¥æ¡¼¥¶¡¼¤¬¥¤¥Ù¥ó¥È¤Ë¥³¥á¥ó¥È¤òÄÉ²Ã¤¹¤ë¤³¤È¤òµö²Ä¤·¤Þ¤¹¡£
 Allow comments to events: ¥¤¥Ù¥ó¥È¤Ø¤Î¥³¥á¥ó¥È¤òµö²Ä¤¹¤ë
-Admin and owner can always add comments if enabled: Í­¸ú¤Ë¤·¤¿¾ì¹ç¡¢´ÉÍý¼Ô¤È½êÍ­¼Ô¤Ï¾ï¤Ë¥³¥á¥ó¥È¤òÄÉ²Ã¤Ç¤­¤Þ¤¹¡£
+Admin and owner can always add comments if enabled.: Í­¸ú¤Ë¤·¤¿¾ì¹ç¡¢´ÉÍý¼Ô¤È½êÍ­¼Ô¤Ï¾ï¤Ë¥³¥á¥ó¥È¤òÄÉ²Ã¤Ç¤­¤Þ¤¹¡£
 email-enabled-help: ¤¹¤Ù¤Æ¤Î¥ê¥Þ¥¤¥ó¥À¡¼¤ÈÄÌÃÎ¤ÎÅÅ»Ò¥á¡¼¥ë¤òÁ÷¿®¤òÀÚ¤êÂØ¤¨¤Þ¤¹¡£¥µ¡¼¥Ð¡¼¤¬Å¬ÀÚ¤Ë¥á¡¼¥ë¤ÎÁ÷¿®ÀßÄê¤¬¤µ¤ì¤Æ¤¤¤Ê¤¤¾ì¹ç¡Ö¤¤¤¤¤¨¡×¤ËÀßÄê¤·¤Þ¤¹¡£
 Email enabled: ÅÅ»Ò¥á¡¼¥ëÍ­¸ú
 email-default-sender: ¥ê¥Þ¥¤¥ó¥À¡¼¤òÁ÷¿®¤¹¤ë¾ì¹ç¤ËÁ÷¿®¼Ô¤È¤·¤Æ»ØÄê¤¹¤ë¤Ù¤­ÅÅ»Ò¥á¡¼¥ë¥¢¥É¥ì¥¹¤ò»ØÄê¤·¤Þ¤¹¡£
@@ -298,6 +300,7 @@ email-event-updated: ¥«¥ì¥ó¥À¡¼¤Î¥¤¥Ù¥ó¥È¤¬¹¹¿·¤µ¤ì¤¿¾ì¹ç¡¢ÅÅ»Ò¥á¡¼¥ëÄÌÃÎ¤òÁ÷¤ë¤
 Events updated on my calendar: ¼«Ê¬¤Î¥«¥ì¥ó¥À¡¼¤Î¥¤¥Ù¥ó¥È¤ò¹¹¿·
 email-event-deleted: ¥«¥ì¥ó¥À¡¼¤Î¥¤¥Ù¥ó¥È¤¬ºï½ü¤µ¤ì¤¿¾ì¹ç¡¢ÅÅ»Ò¥á¡¼¥ëÄÌÃÎ¤òÁ÷¤ë¤«¤É¤¦¤«»ØÄê¤·¤Þ¤¹¡£
 Events removed from my calendar: ¼«Ê¬¤Î¥«¥ì¥ó¥À¡¼¤«¤é¥¤¥Ù¥ó¥È¤òºï½ü
+email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Event rejected by participant: »²²Ã¼Ô¤Î¥¤¥Ù¥ó¥ÈµñÈÝ
 Allow user to customize colors: ¥æ¡¼¥¶¡¼¤Î¿§ÀßÄê¤òµö²Ä¤¹¤ë
 gradient-colors: Í­¸ú¤Ë¤·¤¿¾ì¹ç¡¢¥°¥é¥Ç¡¼¥·¥ç¥ó¿§¤ò»ÈÍÑ¤·¤Þ¤¹¡£¤³¤ì¤ÏÈó¾ï¤ËÆ°ºî¤Ë±Æ¶Á¤òÍ¿¤¨¤ë¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£
@@ -422,7 +425,6 @@ An appointment has been canceled for you by: ²ÝÂê:
 # Page: doc.php
 #
 Invalid blob id: Ìµ¸ú¤Ê blog ID
-Invalid entry id: ¥¨¥ó¥È¥ê ID ¤¬Ìµ¸ú¤Ç¤¹
 
 ########################################
 # Page: docadd.php
@@ -549,6 +551,8 @@ conflicts with the following existing calendar entries: °Ê²¼¤Î¥¨¥ó¥È¥ê¤È½Å¤Ê¤Ã¤Æ
 ########################################
 # Page: edit_layer.php
 #
+Add Layer: ¥ì¥¤¥ä¡¼¤òÄÉ²Ã¤¹¤ë
+Edit Layer: ¥ì¥¤¥ä¡¼¤òÊÔ½¸¤¹¤ë
 Source: ¥½¡¼¥¹
 Duplicates: Ê£À½
 Show layer events that are the same as your own: ¼«¿È¤ÈÆ±¤¸¥ì¥¤¥ä¡¼¥¤¥Ù¥ó¥È¤ò¸«¤»¤ë
@@ -733,12 +737,12 @@ Adding/Editing Calendar Entries: ¥«¥ì¥ó¥À¡¼¤Î¥¨¥ó¥È¥ê¤ÎÄÉ²Ã/ÊÔ½¸
 Repeat Type: ·«ÊÖ¤·¥¿¥¤¥×
 Repeat End Date: ·«ÊÖ¤·½ªÎ»Æü
 Repeat Day: ·«ÊÖ¤·Æü
-repeat-day-help: Specifies which days of the week the event should repeat on.  This is for use only when <i>Repeat Type</i> is set to <i>Weekly</i>.
 
 ########################################
 # Page: help_import.php
 #
 Import: ¥¤¥ó¥Ý¡¼¥È
+Palm Desktop: Palm ¥Ç¥¹¥¯¥È¥Ã¥×
 The following entries will not be imported: ¼¡¤Î¥¨¥ó¥È¥ê¤Ï¥¤¥ó¥Ý¡¼¥È¤µ¤ì¤Ê¤«¤Ã¤¿¤Ç¤·¤ç¤¦
 Entries older than the current date: ¥¨¥ó¥È¥ê¤Ï¸½ºß¤Î´üÆü¤è¤ê¸Å¤¤¤Ç¤¹
 Therefore, updates should be made in the Palm Desktop.: ¤·¤¿¤¬¤Ã¤Æ¡¢Palm ¥Ç¥¹¥¯¥È¥Ã¥×¤Ç¹¹¿·¤µ¤ì¤ë¤Ù¤­¤Ç¤¹¡£
@@ -814,6 +818,7 @@ The import file contained no data: ¥¤¥ó¥Ý¡¼¥È¥Õ¥¡¥¤¥ë¤ÎÃæ¿È¤¬¤¢¤ê¤Þ¤»¤ó¡£
 ########################################
 # Page: layers.php
 #
+Layer: ¥ì¥¤¥ä¡¼
 Edit layer: ¥ì¥¤¥ä¡¼¤ÎÊÔ½¸
 Layers are currently: ¸½ºß¤Î¥ì¥¤¥ä¡¼
 Disable Layers: ¥ì¥¤¥ä¡¼¤ò»ÈÍÑÉÔ²Ä¤Ë¤¹¤ë
@@ -844,7 +849,7 @@ Reject Selected entries?: ÁªÂò¤òµñÈÝ¤·¤Þ¤¹¤«?
 # Page: login-app.php
 #
 You must enter a login and password: ¥æ¡¼¥¶¡¼Ì¾¤È¥Ñ¥¹¥ï¡¼¥É¤òÆþÎÏ¤·¤Æ¤¯¤À¤µ¤¤¡£
-Save login via cookies so I don&#39;t have to login next time: ¼¡²ó¤«¤é¥í¥°¥¤¥ó¤·¤Ê¤¯¤Æ¤âÎÉ¤¤¤è¤¦¤Ë¡¢¥æ¡¼¥¶¡¼¾ðÊó¤ò¥¯¥Ã¥­¡¼¤Ë¥»¡¼¥Ö¤¹¤ë
+Save login via cookies so I dont have to login next time.: ¼¡²ó¤«¤é¥í¥°¥¤¥ó¤·¤Ê¤¯¤Æ¤âÎÉ¤¤¤è¤¦¤Ë¡¢¥æ¡¼¥¶¡¼¾ðÊó¤ò¥¯¥Ã¥­¡¼¤Ë¥»¡¼¥Ö¤¹¤ë
 Login: ¥í¥°¥¤¥ó
 Access public calendar: ¸ø³«¥«¥ì¥ó¥À¡¼¥¢¥¯¥»¥¹
 cookies-note: <b>Ãí°Õ:</b> ¤³¤Î¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ï¥¯¥Ã¥­¡¼¤¬Í­¸ú¤Ç¤Ê¤±¤ì¤ÐÀµ¾ï¤ËÆ°ºî¤·¤Þ¤»¤ó¡£
@@ -900,9 +905,10 @@ No user specified: ¥æ¡¼¥¶¡¼¤¬»ØÄê¤µ¤ì¤Æ¤¤¤Þ¤»¤ó
 Purging events for: ±¦¥æ¡¼¥¶¡¼¤Î¥¤¥Ù¥ó¥È¤ò¾Ãµî¤·¤Æ¤¤¤Þ¤¹
 Finished: ´°Î»¤·¤Þ¤·¤¿
 Back: Ìá¤ë
-Check box to delete <b>ALL</b> events for a user: 1 ¥æ¡¼¥¶¡¼¤Î¥¤¥Ù¥ó¥È¤ò<b>¤¹¤Ù¤Æ</b>ºï½ü¤¹¤ë¾ì¹ç¤Ï¥Á¥§¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤
+Check box to delete ALL events for a user: 1 ¥æ¡¼¥¶¡¼¤Î¥¤¥Ù¥ó¥È¤ò<b>¤¹¤Ù¤Æ</b>ºï½ü¤¹¤ë¾ì¹ç¤Ï¥Á¥§¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤
 Delete all events before: ¼¡¤ÎÆüÉÕ°ÊÁ°¤Î¥¤¥Ù¥ó¥È¤ò¤¹¤Ù¤Æºï½ü¤¹¤ë
 Preview delete: ºï½ü¤ò¥×¥ì¥Ó¥å¡¼¤¹¤ë
+Are you sure you want to delete events for: ±¦¥æ¡¼¥¶¡¼¤Î¥¤¥Ù¥ó¥È¤ò¤¹¤Ù¤Æºï½ü¤·¤ÆÎÉ¤¤¤Ç¤¹¤«?¡§
 Records deleted from: ¥ì¥³¡¼¥É¤òºï½ü¤·¤Þ¤·¤¿ ÂÐ¾Ý:
 
 ########################################
@@ -974,6 +980,7 @@ View Another Users Calendar: Â¾¤Î¥æ¡¼¥¶¡¼¤Î¥«¥ì¥ó¥À¡¼¤ò¸«¤ë
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id: ¥¨¥ó¥È¥ê ID ¤¬Ìµ¸ú¤Ç¤¹
 You have not added any categories: ¤¤¤¯¤Ä¤«¤Î¥«¥Æ¥´¥ê¤òÄÉ²Ã¤·¤Æ¤¤¤Þ¤»¤ó
 Set Category: ¥«¥Æ¥´¥êÀßÄê
 Global Categories cannot be changed.: ¥°¥í¡¼¥Ð¥ë¥«¥Æ¥´¥ê¤ÏÊÑ¹¹¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿
@@ -1061,7 +1068,6 @@ Email all participants: »²²Ã¼ÔÁ´°÷¤Ë¥á¡¼¥ëÁ÷¿®¤¹¤ë
 Hide activity log: ³èÆ°¥í¥°¤ò±£¤¹
 Show activity log: ³èÆ°¥í¥°¤òÉ½¼¨¤¹¤ë
 Export this entry to: ¼¡¤Î·Á¼°¤Ë¥¨¥¯¥¹¥Ý¡¼¥È
-Palm Pilot: Palm Pilot
 
 ########################################
 # Page: view_r.php
@@ -1166,6 +1172,10 @@ Oct: 10 ·î
 Nov: 11 ·î
 The following error occurred: °Ê²¼¤Î¥¨¥é¡¼¤¬µ¯¤­¤Þ¤·¤¿
 You are not authorized: ¸¢¸Â¤òÍ¿¤¨¤é¤ì¤Æ¤¤¤Þ¤»¤ó¡£
+Add N hours to: +N »þ´Ö
+Subtract N hours from: -N »þ´Ö
+same as: Æ±¤¸
+server time: ¥µ¡¼¥Ð¡¼¤È¤Î»þº¹
 Your current GMT offset is: ¸½ºß¤Î GMT ¤È¤Îº¹:
 Error approving event: ¥¤¥Ù¥ó¥È¾µÇ§¥¨¥é¡¼
 Sunday: ÆüÍËÆü
@@ -1283,7 +1293,7 @@ provide_address: ¾¯¤Ê¤¯¤È¤â 1 ¤Ä¤Î¼õ¼è¿Í¤ÎÅÅ»Ò¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÄó¶¡¤·¤Ê¤±¤ì¤Ð¤Ê¤ê
 # Page: includes/js/admin.php
 #
 Server URL is required: ¥µ¡¼¥Ð¡¼ URL ¤¬É¬¿Ü¤Ç¤¹¡£
-Server URL must end with &#39;/&#39;: ¥µ¡¼¥Ð¡¼ URL ¤Ï¡Ö/¡×¤Ç½ª¤ï¤é¤Ê¤±¤ì¤Ð¤¤¤±¤Þ¤»¤ó¡£
+Server URL must end with /.: ¥µ¡¼¥Ð¡¼ URL ¤Ï¡Ö/¡×¤Ç½ª¤ï¤é¤Ê¤±¤ì¤Ð¤¤¤±¤Þ¤»¤ó¡£
 Invalid work hours: Ìµ¸ú¤Ê¶ÐÌ³»þ´Ö¤Ç¤¹¡£
 Invalid color for document background: ½ñÎà¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
 Invalid color for document title: ½ñÎà¤Î¥¿¥¤¥È¥ë¿§¤¬Ìµ¸ú¤Ç¤¹¡£
@@ -1294,7 +1304,7 @@ Invalid color for table text background: ¥Æ¡¼¥Ö¥ë¥Æ¥­¥¹¥È¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
 Invalid color for event popup background: ¥¤¥Ù¥ó¥È¥Ý¥Ã¥×¥¢¥Ã¥×¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
 Invalid color for event popup text: ¥¤¥Ù¥ó¥È¥Ý¥Ã¥×¥¢¥Ã¥×¤Î¿§¤¬Ìµ¸ú¤Ç¤¹¡£
 Invalid color for table cell background for today: º£Æü¤Î¥Æ¡¼¥Ö¥ë¥»¥ë¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
-Color format should be &#39;#RRGGBB&#39;: ¿§¤Ï '#RRGGBB'¤Î½ñ¼°¤ÇÀßÄê¤·¤Æ¤¯¤À¤µ¤¤¡£
+Color format should be RRGGBB.: ¿§¤Ï '#RRGGBB'¤Î½ñ¼°¤ÇÀßÄê¤·¤Æ¤¯¤À¤µ¤¤¡£
 
 ########################################
 # Page: includes/js/availability.php
@@ -1372,13 +1382,12 @@ Unable to write password to settings.php file: ¥Õ¥¡¥¤¥ë settings.php ¤Ë½ñ¤­¹þ¤á¤
 Password has been set: ¥Ñ¥¹¥ï¡¼¥É¤ÏÀßÄê¤µ¤ì¤Þ¤·¤¿¡£
 Connection Successful: ÀÜÂ³¤ËÀ®¸ù¤·¤Þ¤·¤¿¡£
 Please go to next page to continue installation: ¥¤¥ó¥¹¥È¡¼¥ë¤òÂ³¤±¤ë¤Ë¤Ï¼¡¤Î¥Ú¡¼¥¸¤Ë°ÜÆ°¤·¤Æ¤¯¤À¤µ¤¤¡£
-Correct your entries or click the <b>Create New</b> button to continue installation: ¥¨¥ó¥È¥ê¤ò½¤Àµ¤¹¤ë¤«¡¢¥¤¥ó¥¹¥È¡¼¥ë¤ò·ÑÂ³¤¹¤ë¤¿¤á¤Ë<b>¿·µ¬ºîÀ®¤¹¤ë</b>¥Ü¥¿¥ó¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£
+Correct your entries or click the Create New button to continue installation: ¥¨¥ó¥È¥ê¤ò½¤Àµ¤¹¤ë¤«¡¢¥¤¥ó¥¹¥È¡¼¥ë¤ò·ÑÂ³¤¹¤ë¤¿¤á¤Ë<b>¿·µ¬ºîÀ®¤¹¤ë</b>¥Ü¥¿¥ó¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£
 Correct your entries and try again: ¥¨¥ó¥È¥ê¤ò½¤Àµ¤·¡¢ºÆÅÙ»î¤ß¤Þ¤¹¡£
 Error Converting Timezone: ¥¿¥¤¥à¥¾¡¼¥ó¤ÎÊÑ´¹¤Ë¥¨¥é¡¼¤Ç¤¹¡£
 Please change the file permissions of this file: ¤³¤Î¥Õ¥¡¥¤¥ë¤Î¥Ñ¡¼¥ß¥Ã¥·¥ç¥ó¤òÊÑ¹¹¤·¤Æ¤¯¤À¤µ¤¤¡£
 Your settings have been saved: ÀßÄê¤òÊÝÂ¸¤·¤Þ¤·¤¿¡£
 Error you must specify a\\nSingle-User Login: ¥¨¥é¡¼¤Ç¤¹¡£¥·¥ó¥°¥ë¥æ¡¼¥¶¡¼¥í¥°¥¤¥ó¤ò»ØÄê¤·¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó¡£
-Server URL must end with: Server URL ¤Ï¼¡¤ÎÊ¸»ú¤Ç½ª¤ï¤é¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó:
 Full Path (no backslashes): ¥Õ¥ë¥Ñ¥¹ (¥Ð¥Ã¥¯¥¹¥é¥Ã¥·¥å¤ÏÉÔÍ×¤Ç¤¹)
 The password contains illegal characters.: ¥Ñ¥¹¥ï¡¼¥É¤ËÉÔÅö¤ÊÊ¸»ú¤¬´Þ¤Þ¤ì¤Æ¤¤¤Þ¤¹¡£
 PHP Version Check: PHP ¤Î¥Ð¡¼¥¸¥ç¥ó¤ò³ÎÇ§¤¹¤ë
@@ -1391,7 +1400,7 @@ To test the proper operation of sessions, reload this page: ¥»¥·¥ç¥ó¤ÎÅ¬ÀÚ¤ÊÁàºî
 You should see the session counter increment each time: ¥»¥Ã¥·¥ç¥ó¥«¥¦¥ó¥¿¡¼¤¬Ëè²óÁý²Ã¤·¤Æ¤¤¤ë¤³¤È¤ò³ÎÇ§¤¹¤ë¤Ù¤­¤Ç¤¹¡£
 SESSION COUNTER: ¥»¥Ã¥·¥ç¥ó¥«¥¦¥ó¥¿¡¼
 Settings.php Status: Settings.php ¤Î¾õÂÖ
-Your <b>settings.php</b> file appears to be valid: <b>settings.php</b> ¥Õ¥¡¥¤¥ë¤ÏÍ­¸ú¤Ë¸«¤¨¤Þ¤¹¡£
+Your settings.php file appears to be valid: <b>settings.php</b> ¥Õ¥¡¥¤¥ë¤ÏÍ­¸ú¤Ë¸«¤¨¤Þ¤¹¡£
 Configuration Wizard Password: ¥¦¥£¥¶¡¼¥É¥Ñ¥¹¥ï¡¼¥É¤ÎÀßÄê
 Create Settings File Password: ÀßÄê¥Õ¥¡¥¤¥ë¤Î¥Ñ¥¹¥ï¡¼¥É¤òºîÀ®¤¹¤ë
 Password (again): ¥Ñ¥¹¥ï¡¼¥É (³ÎÇ§)
@@ -1399,7 +1408,7 @@ Database Status: ¥Ç¡¼¥¿¥Ù¡¼¥¹¤Î¾õÂÖ
 Supported databases for your PHP installation: ¥¤¥ó¥¹¥È¡¼¥ëºÑ PHP ¤Ç¥µ¥Ý¡¼¥È¤µ¤ì¤¿¥Ç¡¼¥¿¥Ù¡¼¥¹
 Your current database settings are able to access the database: ¸½ºß¤Î¥Ç¡¼¥¿¥Ù¡¼¥¹ÀßÄê¤Ï¥Ç¡¼¥¿¥Ù¡¼¥¹¤Ë¥¢¥¯¥»¥¹¤Ç¤­¤Þ¤¹¡£
 Please Test Settings: ¥Æ¥¹¥ÈÀßÄê¤ò¤·¤Æ¤¯¤À¤µ¤¤¡£
-Your current database settings are <b>not</b> able to access the database or have not yet been tested: ¸½ºß¤Î¥Ç¡¼¥¿¥Ù¡¼¥¹ÀßÄê¤Ï¥Ç¡¼¥¿¥Ù¡¼¥¹¤Ë¥¢¥¯¥»¥¹¤¹¤ë¤³¤È¤¬<b>¤Ç¤­¤º</b>¡¢¤Þ¤À¥Æ¥¹¥È¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡£
+Your current database settings are not able...: ¸½ºß¤Î¥Ç¡¼¥¿¥Ù¡¼¥¹ÀßÄê¤Ï¥Ç¡¼¥¿¥Ù¡¼¥¹¤Ë¥¢¥¯¥»¥¹¤¹¤ë¤³¤È¤¬<b>¤Ç¤­¤º</b>¡¢¤Þ¤À¥Æ¥¹¥È¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡£
 Database Settings: ¥Ç¡¼¥¿¥Ù¡¼¥¹¤ÎÀßÄê
 Database Type: ¥Ç¡¼¥¿¥Ù¡¼¥¹¤Î¼ïÎà
 Server: ¥µ¡¼¥Ð¡¼
@@ -1409,7 +1418,7 @@ next page and complete your WebCalendar setup: WebCalendar ¤ÎÀßÄê¤Ï¼¡¤Î¥Ú¡¼¥¸¤Ç´
 This appears to be a new installation. If this is not correct, please: ¤³¤ì¤Ï¿·µ¬¥¤¥ó¥¹¥È¡¼¥ë¤Ë¸«¤¨¤Þ¤¹¡£¤â¤·Àµ¤·¤¯¤Ê¤¤¾ì¹ç¡¢
 go back to the previous page and correct your settings: Á°¤Î¥Ú¡¼¥¸¤ËÌá¤Ã¤Æ¡¢ÀßÄê¤ò½¤Àµ¤·¤Æ¤¯¤À¤µ¤¤¡£
 The database requires some data input: ¥Ç¡¼¥¿¥Ù¡¼¥¹¤Ï¤¤¤¯¤Ä¤«¤Î¥Ç¡¼¥¿¤ÎÆþÎÏ¤òÍ×µá¤·¤Þ¤¹¡£
-Click <b>Update Database</b> to complete the upgrade: <b>¥Ç¡¼¥¿¥Ù¡¼¥¹¤ò¥¢¥Ã¥×¥°¥ì¡¼¥É¤¹¤ë</b> ¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¥¢¥Ã¥×¥°¥ì¡¼¥É¤ò´°Î»¤·¤Æ¤¯¤À¤µ¤¤¡£
+Click Update Database to complete the upgrade: <b>¥Ç¡¼¥¿¥Ù¡¼¥¹¤ò¥¢¥Ã¥×¥°¥ì¡¼¥É¤¹¤ë</b> ¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¥¢¥Ã¥×¥°¥ì¡¼¥É¤ò´°Î»¤·¤Æ¤¯¤À¤µ¤¤¡£
 This appears to be an upgrade from version: ¤³¤ì¤Ï¼¡¤Î¥Ð¡¼¥¸¥ç¥ó¤«¤é¤Î¥¢¥Ã¥×¥°¥ì¡¼¥É¤Ë¸«¤¨¤Þ¤¹:
 If you are using a fully supported database, this step will be performed automatically for you: Á´ÌÌÅª¤Ë¥µ¥Ý¡¼¥È¤µ¤ì¤¿¥Ç¡¼¥¿¥Ù¡¼¥¹¤ò»ÈÍÑ¤·¤Æ¤¤¤ì¤Ð¡¢¤³¤Î¥¹¥Æ¥Ã¥×¤Ï¼«Æ°Åª¤Ë¼Â¹Ô¤µ¤ì¤ë¤Ç¤·¤ç¤¦¡£
 If not, the required SQL can be displayed and you should be able: ¤½¤¦¤Ç¤Ê¤¤¾ì¹ç¡¢Í×µá¤µ¤ì¤¿ SQL ¤òÉ½¼¨¤¹¤ë¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£
@@ -1421,20 +1430,20 @@ This may take several minutes to complete: ¤³¤ì¤¬´°Î»¤¹¤ë¤Ë¤Ï¿ôÊ¬¤«¤«¤ë¤«¤â¤·¤ì¤
 Install Database: ¥Ç¡¼¥¿¥Ù¡¼¥¹¤ò¥¤¥ó¥¹¥È¡¼¥ë¤¹¤ë
 Update Database: ¥Ç¡¼¥¿¥Ù¡¼¥¹¤ò¥¢¥Ã¥×¥Ç¡¼¥È¤¹¤ë
 Display Required SQL: Í×µá¤µ¤ì¤¿ SQL ¤òÉ½¼¨¤¹¤ë
-This is the final step in setting up your WebCalendar Installation: ¤³¤ì¤Ï¡¢WebCalendar ¤Î¥¤¥ó¥¹¥È¡¼¥ëÀßÄê¤Ë¤ª¤±¤ëºÇ½ª¥¹¥Æ¥Ã¥×¤Ç¤¹¡£
+This is the final step in setting up your WebCalendar Installation.: ¤³¤ì¤Ï¡¢WebCalendar ¤Î¥¤¥ó¥¹¥È¡¼¥ëÀßÄê¤Ë¤ª¤±¤ëºÇ½ª¥¹¥Æ¥Ã¥×¤Ç¤¹¡£
 Timezone Conversion: ¥¿¥¤¥à¥¾¡¼¥óÊÑ´¹
 It appears that you have: ¤ª¤½¤é¤¯
 NOT: NOT
-converted your existing WebCalendar event data to GMT: ´ûÂ¸¤ÎWebCalendar¥¤¥Ù¥ó¥È¥Ç¡¼¥¿¤ò GMT ¤ËÊÑ´¹¤·¤Þ¤·¤¿¡£
+converted your existing WebCalendar event data to GMT.: ´ûÂ¸¤ÎWebCalendar¥¤¥Ù¥ó¥È¥Ç¡¼¥¿¤ò GMT ¤ËÊÑ´¹¤·¤Þ¤·¤¿¡£
 If this is a new installation, you may also ignore this notice.: ¤³¤ì¤¬¿·µ¬¥¤¥ó¥¹¥È¡¼¥ë¤Î¾ì¹ç¡¢¤³¤ÎÄÌÃÎ¤ÏÌµ»ë¤¹¤ë¤Ç¤·¤ç¤¦¡£
 Convert Data to GMT: GMT ¤Ë¥Ç¡¼¥¿¤òÊÑ´¹¤¹¤ë
 Application Settings: ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄê
 HTTP-based authentication was not detected: HTTP¤Ë´ð¤Å¤¤¤¿Ç§¾Ú¤Ï¸¡ÃÎ¤µ¤ì¤Þ¤»¤ó¤Ç¤·¤¿¡£
 You will need to reconfigure your web server if you wish to: ¤â¤·¥¦¥§¥Ö¥µ¡¼¥Ð¡¼¤òºÆÀßÄê¤¹¤ëÉ¬Í×¤¬¤¢¤ë¤Ê¤é¡¢
-select &#39;Web Server&#39; from the &#39;User Authentication&#39; choices below: ¡Ö¥æ¡¼¥¶¡¼Ç§¾Ú¡×¤è¤ê¡Ö¥¦¥§¥Ö¥µ¡¼¥Ð¡¼¡×¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤¡£
-HTTP-based authentication was detected: HTTP ¥Ù¡¼¥¹¤ÎÇ§¾Ú¤ò¸¡ÃÎ¤·¤Þ¤·¤¿
-User authentication is being handled by your web server: ¥æ¡¼¥¶¡¼Ç§¾Ú¤Ï¥¦¥§¥Ö¥µ¡¼¥Ð¡¼¤Ç°·¤¤¤Þ¤¹¡£
-You should select &#39;Web Server&#39; from the list of &#39;User Authentication&#39; choices below: ¡Ö¥æ¡¼¥¶¡¼Ç§¾Ú¡×ÁªÂò¤Î°ìÍ÷¤«¤é¤«¤é¡Ö¥¦¥§¥Ö¥µ¡¼¥Ð¡¼¡×¤òÁª¤Ð¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó
+select Web Server from the User Authentication choices below.: ¡Ö¥æ¡¼¥¶¡¼Ç§¾Ú¡×¤è¤ê¡Ö¥¦¥§¥Ö¥µ¡¼¥Ð¡¼¡×¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤¡£
+HTTP-based authentication was detected.: HTTP ¥Ù¡¼¥¹¤ÎÇ§¾Ú¤ò¸¡ÃÎ¤·¤Þ¤·¤¿
+User authentication is being handled by your web server.: ¥æ¡¼¥¶¡¼Ç§¾Ú¤Ï¥¦¥§¥Ö¥µ¡¼¥Ð¡¼¤Ç°·¤¤¤Þ¤¹¡£
+You should select Web Server from the list of User Authentication choices below.: ¡Ö¥æ¡¼¥¶¡¼Ç§¾Ú¡×ÁªÂò¤Î°ìÍ÷¤«¤é¤«¤é¡Ö¥¦¥§¥Ö¥µ¡¼¥Ð¡¼¡×¤òÁª¤Ð¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó
 Create Default Admin Account: ¥Ç¥Õ¥©¥ë¥È´ÉÍý¥¢¥«¥¦¥ó¥È¤òºîÀ®¤¹¤ë
 User Authentication: ¥æ¡¼¥¶¡¼Ç§¾Ú
 Web-based via WebCalendar (default): WebCalendar ¤Ç¥¦¥§¥Ö¥Ù¡¼¥¹(¥Ç¥Õ¥©¥ë¥È)
@@ -1446,6 +1455,11 @@ Production: À½ºî
 Development: ³«È¯
 Save Settings: ÀßÄê¤òÊÝÂ¸¤¹¤ë
 Launch WebCalendar: WebCalendar ¤òµ¯Æ°¤¹¤ë
+
+########################################
+# Page: install/install_functions.php
+#
+Conversion Successful: ÊÑ´¹¤ËÀ®¸ù¤·¤Þ¤·¤¿
 
 ########################################
 # Page: tools/reload_remotes.php

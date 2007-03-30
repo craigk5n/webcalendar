@@ -25,7 +25,7 @@ if ( ! empty ( $_POST ) ) {
      "<textarea name=\"comments\" rows=\"5\" cols=\"60\" ></textarea></td></tr>\n";
    echo "<tr><td align=\"center\"><input type=\"submit\" value=\"" . 
      translate ( 'Continue' ) . "\" /></tr></tr>\n<tr><td>";
-   etranslate ( '(Your comments will be included in an email to the other participants)' );
+   etranslate ( '(Your comments will be emailed to the other participants.)' );
    echo "</td></tr></table></form>\n"; 
    echo "</body>\n</html>";
    exit;
