@@ -3,7 +3,7 @@
 # Brazilian Portuguese Translation
 # Revision 1.0
 # Translated by: Mauricio Piza - mpiza@formare.com.br
-# 
+#
 # Based in Portuguese version, by Paulino Michelazzo - paulino@michelazzo.com.br
 # Based in Portuguese version, by José Roberto Kerne - joseroberto@dicaslinux.com.br
 # Based in Portuguese version, by Sérgio Oliveira - sloliv@terra.com.br
@@ -17,7 +17,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -49,7 +49,6 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: about.php
 #
 Title: Calendário Pessoal
-OK: OK
 
 ########################################
 # Page: access.php
@@ -58,7 +57,6 @@ Database error: Erro no banco de dados
 Go: Ir
 Save: Salvar
 Public Access: Acesso Público
-Admin: Admin
 Calendar: Calendário
 Edit: Editar
 Events: Eventos
@@ -75,8 +73,8 @@ Previous: Anterior
 ########################################
 # Page: add_entry.php
 #
-private: pessoal
 confidential: confidencial
+private: pessoal
 Error adding event: Erro adicionando evento
 
 ########################################
@@ -108,14 +106,14 @@ custom-script-help: Permite a indicação de Javacript ou folha de estilos própria
 Custom script/stylesheet: Script/Folha de estilos própria
 custom-header-help: Permite a inclusão de um pedaço de código HTML no topo de todas as páginas
 Custom header: Cabeçalho customizado
-custom-trailer-help: Permite a inclusão de um pedaço de código HTML no rodapé de todas as páginas 
+custom-trailer-help: Permite a inclusão de um pedaço de código HTML no rodapé de todas as páginas
 Custom trailer: Rodapé customizado
 tz-help: Especifica quantas horas de ajuste entre a hora do servidor e a local.
 date-format-help: Especifique um formato de data preferido.
 Date format: Formato da Data
 display-week-starts-on: Especifica se a semana começa em uma Segunda ou um Domingo. Se a Segunda for especificada, os números de semana serão números ISO.
 Week starts on: Semana começa em
-time-format-help: Especifica o formato da hora a ser utilizada: <br /><i>12 horas
+time-format-help: Especifica o formato da hora a ser utilizada:<br /><i>12 horas
 Time format: Formato da Hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -138,20 +136,20 @@ Display week number: Visualizar número da semana
 display-desc-print-day-help: Incluir descrições de evento na versão para impressão da visualização diária
 Display description in printer day view: Mostrar descrição na visualização diária
 yearly-shows-events-help: Na visualização anual, mostrar dias que contenham eventos em negrito
-Display days with events in bold in month and year views: Na visualização anual, mostrar em negrito dias que contenham eventos 
+Display days with events in bold in month and year views: Na visualização anual, mostrar em negrito dias que contenham eventos
 allow-view-add-help: Um ícone '+' será incluido nas visualizações, permitindo usuários rápidamente adicionar eventos a calendários de outros usuários.
 Include add event link in views: Incluir adicionar eventos em visualizações
 allow-view-other-help: Especifica um usuário que poderá visualizar o calendário
 Allow viewing other users calendars: Permitir visualização do calendário de outro usuário
 require-approvals-help: Quando habilitada, um usuário precisa aprovar um evento antes dele ser exibido no seu calendário (a não ser que Exibir não-aprovados esteja habilitado). Configurar aqui para "Não" não desligará as aprovações para o calendário de Acesso Público (se o claendário público estiver habilitado).
 Require event approvals: Requer aprovação do evento
-display-unapproved-help: Especifica se eventos não-aprovados são exibidos em seu calendário.<br /> Se configurado para "Sim", então eventos não-aprovados serão exibidos em seu calendário (em uma cor de texto diferente. <br /> Se configurado para "Não", então eventos precisam ser aprovados antes deles serem exibidos no seu calendário.
+display-unapproved-help: Especifica se eventos não-aprovados são exibidos em seu calendário.<br /> Se configurado para "Sim", então eventos não-aprovados serão exibidos em seu calendário (em uma cor de texto diferente.<br /> Se configurado para "Não", então eventos precisam ser aprovados antes deles serem exibidos no seu calendário.
 Display unapproved: Visualizar não-aprovados
 conflict-check-help: Verificar se o evento está em conflito (dois eventos agendado no mesmo horário)
 Check for event conflicts: Verificar eventos conflitantes
 Yes: Sim
 No: Não
-conflict-months-help: Se a verificação de conflitos estiver funcionando ("Verificar eventos conflitantes" estiver configurado para "Não"), isto especifica por quantos meses no futuro verificaremos a existência de conflitos. Se você achar que adicionar eventos está demorando demais, reduza este número. 
+conflict-months-help: Se a verificação de conflitos estiver funcionando ("Verificar eventos conflitantes" estiver configurado para "Não"), isto especifica por quantos meses no futuro verificaremos a existência de conflitos. Se você achar que adicionar eventos está demorando demais, reduza este número.
 Conflict checking months: Verificar conflitos no mês
 conflict-check-override-help: Permite aos usuários ignorar conflitos e programar 2 ou mais eventos para a mesma hora.
 Allow users to override conflicts: Permitir aos usuários sobrescrever conflitos
@@ -173,11 +171,9 @@ popup-includes-siteextras-help: Se habilitado, permitir setup de campos de event
 Display Site Extras in popup: Exibir extras do site em popup
 remember-last-login-help: Quando ligado, o logon do usuário poderá ser automaticamente lembrado
 Remember last login: Lembrar ultimo acesso
-Plugins: Plugins
 plugins-enabled-help: Habilitar aplicações plugin
 Enable Plugins: Habilitar Plugins
 plugins-sort-key-help: Especifica uma chave de ordenação para o plugin. Isto permite que os plugins apareçam em uma ordem específica.
-Plugin: Plugin
 allow-public-access-help: Quando habilitado, o calendário pode ser usado como um calendário público somente leitura que não exige login dos usuários.
 Allow public access: Permitir acesso público
 public-access-default-visible: Eventos do calendário público aparecerão automáticamente em todos os calendários de usuários
@@ -188,7 +184,7 @@ public-access-view-others-help: Quando acessando o sistema pelo Acesso Público, 
 Public access can view other users: Acesso público pode ver outros usuários
 public-access-can-add-help: Quando habilitado, usuários que acessem o sistema através de Acesso Público poderão adicionar novos eventos, mas eles não aparecerão no calendário até que um administrador aprovar o novo evento.
 Public access can add events: Acesso público pode criar eventos
-public-access-add-requires-approval-help: Especifica se eventos adicionados através da conta de acesso público necessitam de aprovação antes de serem exibidos. 
+public-access-add-requires-approval-help: Especifica se eventos adicionados através da conta de acesso público necessitam de aprovação antes de serem exibidos.
 Public access new events require approval: Novos eventos de acesso público necessitam aprovação
 public-access-sees-participants-help: Se habilitado, usuários acessando o calendário da conta pública serão capazes de ver os participantes do evento ao olharem os detalhes de um evento.
 Public access can view participants: Acesso público pode ver participantes
@@ -197,7 +193,7 @@ Groups enabled: Grupos está habilitado
 user-sees-his-group-help: Se habilitado, usuários não poderão visualizar usuários de grupos dos quais não participe.
 User sees only his groups: Usuário apenas visualiza seus grupos
 nonuser-enabled-help: Se habilitado, admins terão a opção de criar calendários de não-usuário
-Nonuser enabled: Habilitada criação de calendários de não-usuário 
+Nonuser enabled: Habilitada criação de calendários de não-usuário
 nonuser-list-help: Aonde exibir os calendários de não-usuário na lista de parcipantes
 Nonuser list: Exibir na lista de participantes no
 reports-enabled-help: Se habilitado, os usuários verão uma seção "Relatórios" no pé de cada página e terão a permissão de criar relatórios personalizados. Usuarios admin poderão criar relatórios globais que aparecerão no rodapé de todas as páginas de usuários.
@@ -308,8 +304,6 @@ Description: Descrição
 ########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
 Edit Entry: Editar Entrada
 Add Entry: Adicionar Entrada
 Details: Detalhes
@@ -319,7 +313,7 @@ brief-description-help: Esta deve oferecer uma breve descição (em torno de 20 ca
 Brief Description: Descrição breve
 full-description-help: Esta deve completar os detalhes do evento. Esta informação pode ser vista quando o usuário vê o evento.
 Full Description: Descrição completa
-access-help: Especifica o nível de acesso de um evento.<br /> <i>Publico</i>: Todos podem ver os detalhes do evento.  <br /><i>Confidencial</i>: Os outros podem ver que você tem uma entrada para aquele dia e hora, mas não os detalhes do evento.
+access-help: Especifica o nível de acesso de um evento.<br /> <i>Publico</i>: Todos podem ver os detalhes do evento.<br /><i>Confidencial</i>: Os outros podem ver que você tem uma entrada para aquele dia e hora, mas não os detalhes do evento.
 Access: Accesso
 priority-help: Especifica a prioridade do evento. Eventos de Alta Prioridade serão exibidos em negrito.
 Priority: Prioridade
@@ -328,14 +322,13 @@ Medium: Média
 Low: Baixa
 category-help: Espeficificar a categoria do evento
 Category: Categoria
-URL: URL
 date-help: Especifica a data do evento.
 Untimed event: Evento sem hora
 Timed event: Eventos com Hora
 All day event: Evento no dia todo
 Timezone Offset: Diferença de Fuso Horário
 time-help: Especifica a hora do evento<br /><i>Este campo é opcional.</i>
-duration-help: Especifica a duração (em minutos) do evento. <br /><i>Este campo
+duration-help: Especifica a duração (em minutos) do evento.<br /><i>Este campo
 hours: horas
 minutes: minutos
 end-time-help: Especifica a hora em que um evento terminará.
@@ -343,7 +336,7 @@ participants-help: Lista os participantes desse evento
 Availability: Disponibilidade
 external-participants-help: Especifica uma lista de participantes para o evento que não são usuários de calendário. Os usuários devem ser listado um por linha e podem incluir um endereço de email. Se um endereço de email for especificado, o usuário poderá receber notificações e lembretes.
 External Participants: Participantes Externos
-repeat-type-help: Selecione quantas vezes o evento deve repetir. <i>Mensalmente (por dia)</i> permite um evento ser repetido na primeira Segunda do mês, terceira Terça do mês, etc.  <i>Mensalmente (por data)</i> permite que um evento seja repetido no mesmo dia do mês.
+repeat-type-help: Selecione quantas vezes o evento deve repetir. <i>Mensalmente (por dia)</i> permite um evento ser repetido na primeira Segunda do mês, terceira Terça do mês, etc. <i>Mensalmente (por data)</i> permite que um evento seja repetido no mesmo dia do mês.
 Daily: Diário
 Weekly: Semanal
 Monthly: Mensal
@@ -525,7 +518,7 @@ Auto-refresh calendars: Auto-atualizar o calendário
 auto-refresh-help: Quando habilitado, as visões diaria, semanal, mensal, e a lista de páginas não aprovadas são todas auto-atulaizadas periodicamente
 Auto-refresh time: Tempo de auto-atualização
 auto-refresh-time-help: Se a auto-atualização estiver habilitada, este é o tempo entre atualizações
-Display days with events in bold in year view: Mostrar em negrito dias que contenham eventos 
+Display days with events in bold in year view: Mostrar em negrito dias que contenham eventos
 Display weekends in week view: Mostrar feriados na visualização semanal
 Time interval: Intervalo de Tempo
 time-interval-help: Especifique quantos blocos devem ser mostrados na visualização
@@ -553,7 +546,6 @@ repeat-day-help: Especifica em quais dias da semana o evento deve ser repetido. 
 # Page: help_import.php
 #
 Import: Importar
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Permite que você importe os compromissos de seu Palm Desktop
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Deverá ser localizado no diretório do seu Palm em <tt>datebook/datebook.dat</tt> no subdiretório do usuário
 The following entries will not be imported: Os seguintes eventos não serão importados
@@ -762,7 +754,6 @@ No users for this view: Nenhum usuário para esta visão
 # Page: view_entry.php
 #
 Assistant mode: Modo Assistente
-Status: Status
 External User: Usuário Externo
 Approve/Confirm entry: Aprovar/Confirmar entrada
 Reject entry: Rejeitar entrada
@@ -786,3 +777,174 @@ Export this entry to: Esportar esta entrada para
 # Page: week_details.php
 #
 New Entry: Nova entrada
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Dezembro
+Dec: Dez
+
+########################################
+# Page: includes/functions.php
+#
+exceeds limit of XXX events per day: limite excedido de XXX eventos por dia
+All Attendees: Todos Atendentes
+Busy: Ocupados
+Tentative: tentando
+Event approved: Evento aprovado
+Event created: Evento criado
+Event deleted: Evento deletado
+Notification sent: Notificação enviada
+Event rejected: Evento rejeitado
+Reminder sent: Lembrete enviado
+Event updated: Evento atualizado
+WK: sem
+Changes successfully saved: Mudanças salvas com sucesso
+Event: Evento
+Action: Ação
+Printer Friendly: Formato de impressora
+Generate printer-friendly version: Visualizar em formato de impressora
+January: Janeiro
+February: Fevereiro
+March: Março
+April: Abril
+May_: Maio
+June: Junho
+July: Julho
+August: Agosto
+September: Setembro
+October: Outubro
+November: Novembro
+Jan: Jan
+Feb: Fev
+Apr: Abr
+May: Mai
+Aug: Ago
+Sep: Set
+Oct: Out
+Nov: Nov
+The following error occurred: Ocorreu o seguinte erro
+You are not authorized: Você não está autorizado
+Error approving event: Erro aprovando evento
+Sunday: Domingo
+Monday: Segunda
+Tuesday: Terça
+Wednesday: Quarta
+Thursday: Quinta
+Friday: Sexta
+Saturday: Sábado
+Sun: Dom
+Mon: Seg
+Tue: Ter
+Wed: Qua
+Thu: Qui
+Fri: Sex
+Sat: Sáb
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Meu Calendário
+Add New Entry: Adicionar Evento
+Logout: Sair
+Back to My Calendar: Volta para Meu Calendário
+Go to: Ir para
+Manage calendar of: Configurar Calendário de
+
+########################################
+# Page: includes/translate.php
+#
+English: Inglês
+Basque: Basco
+Bulgarian: Búlgaro
+Catalan: Catalão
+Chinese (Simplified/GB2312): Chinês (Simplificado/GB2312)
+Chinese (Traditional/Big5): Chinês (Tradicional/Big5)
+Czech: Checo
+Danish: Dinamrquês
+Dutch: Holandês
+Estonian: Estoniano
+Finnish: Finlandês
+French: Francês
+Galician: Galego
+German: Alemão
+Holo (Taiwanese): Holo (Taiwanês)
+Hungarian: Húngaro
+Icelandic: Islandês
+Italian: Italiano
+Japanese: Japonês
+Korean: Coreano
+Norwegian: Norueguês
+Polish: Polonês
+Portuguese: Português
+Portuguese/Brazil: Português/Brasil
+Romanian: Romeno
+Russian: Russo
+Spanish: Espanhol
+Swedish: Sueco
+Turkish: Turco
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Usuário Inválido
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: senha incorreta
+no such user: usuário inexistente
+
+########################################
+# Page: includes/xcal.php
+#
+Unnamed Event: Evento sem Nome
+Event Imported: Evento Importado
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Notificação
+
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required: Endereço do Servidor é Necessário
+Invalid work hours: Horário de trabalho inválido
+Invalid color for document background: Cor de fundo inválida para o documento
+Invalid color for document title: Cor inválida para o título do documento
+Invalid color for table cell background: Cor inválida para cor de fundo da célula
+Invalid color for table grid: Cor inválida para a grade da tabela
+Invalid color for table header background: Cor de fundo inválida para cabeçalho da tabela
+Invalid color for table text background: Cor de fundo inválida para o texto da tabela
+Invalid color for event popup background: Cor de fundo inválida para o evento popup
+Invalid color for event popup text: Cor inválida para evento popup
+Invalid color for table cell background for today: Cor de fundo inválida para a celula de hoje
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Mudar a data e a hora desta entrada?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Você não inseriu uma Descrição Breve
+The time you have entered begins before your preferred work hours. Is this correct?: A data que você inseriu começa antes da sua hora preferida
+Please add a participant: Por favor adicionar um participante
+You have not entered a valid time of day: Você não inseriu uma hora válida do dia
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Cor inválida
+
+########################################
+# Page: includes/menu/index.php
+#
+Unapproved Events: Eventos não aprovados
+
+########################################
+# Page: tools/send_reminders.php
+#
+Reminder: Despertador
