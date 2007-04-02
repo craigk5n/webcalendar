@@ -31,7 +31,7 @@ $dbErrStr = translate ( 'Database error XXX.' );
 $defConfigStr = translate ( 'DEFAULT CONFIGURATION' );
 $goStr = '
       </select>
-      <input type="submit" value="' . translate ( 'Go' )  . '" />
+      <input type="submit" value="' . translate ( 'Go' ) . '" />
     </form>';
 $saveStr = translate ( 'Save' );
 $undoStr = translate ( 'Undo' );
@@ -58,8 +58,7 @@ if ( getPostValue ( 'auser' ) != '' &&
   $saved = true;
 }
 
-// Are we handling the other user form?
-// If so, do that, then redirect.
+// Are we handling the other user form?  If so, do that, then redirect.
 if ( getPostValue ( 'otheruser' ) != '' &&
     getPostValue ( 'submit' ) == $saveStr ) {
   $puser = getPostValue ( 'guser' );
@@ -112,8 +111,8 @@ $guser = getPostValue ( 'guser' );
 $selected = ' selected="selected"';
 
 if ( $guser == '__default__' ) {
+  $otheruser = $guser;
   $user_fullname = $defConfigStr;
-  $otheruser = '__default__';
 } else
   $otheruser = getPostValue ( 'otheruser' );
 
