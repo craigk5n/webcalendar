@@ -1292,7 +1292,7 @@ if ( ! $exists || ! $canWrite ) { ?>
     <textarea name="displayed_sql" cols="100" rows="12" ><?php echo $str_parsed_sql; ?></textarea>
    <br />
       <p class="recommended"><?php 
-  etranslate ( 'Return to previous page after processing sql' ) ?>.</p>
+  etranslate ( 'Return to previous page after processing SQL.' ) ?></p>
  <?php } ?>
   </form>  
   </td></tr>
