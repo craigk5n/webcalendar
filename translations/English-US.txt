@@ -13,11 +13,11 @@
 #   The "English phrase: ", including the colon ":", is provided by the
 #   Webcalendar developers.  Your part is the "translation".)
 #
-# NOTE: There is no need to put something in the file that is identical on both
-#       sides of the colon (:).  We do that for English only because we need
-#       a 'phrase' and a 'translation' for each line.  So, leave out things like:
+# NOTE: I'm attempting to cut down on the overall file size.  So, please leave
+#       out "translations" that are the same as in English.  Such as:
+# Palm Pilot: Palm Pilot
+# Title: Webcalendar
 # URL: URL
-# Palm Pilot: Palm Pilot 
 #
 # The tools directory contains two perl scripts to help you:
 #   - check_translation.pl
@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -70,6 +70,7 @@ __month__ __yyyy__: __month__ __yyyy__
 #
 Title: WebCalendar
 version: version
+version XXX: version XXX
 Webcalendar is a PHP application used...: Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.
 Credits: Credits
 About: About
@@ -120,10 +121,10 @@ Previous: Previous
 Event XXX is already on your calendar.: Event XXX is already on your calendar.
 Invalid entry id XXX.: Invalid entry id: "XXX".
 a XXX event may not be added to your calendar: This is a XXX event and may not be added to your calendar.
-private: private
 confidential: confidential
+private: private
 Error adding event: Error adding event
-Error adding event XXX: Error adding event: XXX.
+Error adding event XXX.: Error adding event: XXX.
 
 ########################################
 # Page: admin.php
@@ -143,11 +144,11 @@ Other: Other
 Email: Email
 Colors: Colors
 System options: System options
-app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page.  The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
+app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page. The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: Application Name
 Translated Name: Translated Name
 Translated Name (XXX): Translated Name (XXX)
-server-url-help: Specifies the base URL for the application.  This will be included when sending out email reminders and notifications.
+server-url-help: Specifies the base URL for the application. This will be included when sending out email reminders and notifications.
 Server URL: Server URL
 home-url-help: Specifies the home URL for the application. This can be an absolute or relative
 Home URL: Home URL
@@ -231,15 +232,15 @@ Display Lunar Phases in month view: Display Lunar Phases in month view
 Restrictions: Restrictions
 allow-view-other-help: Specifies whether one user may view another user's calendar.
 Allow viewing other users calendars: Allow viewing other user's calendars
-require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled).  Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
+require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled). Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 Require event approvals: Require event approvals
 display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: Display unapproved
-conflict-check-help: Check for event conflicts (two events scheduled for the same time for the same person).  If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done.  You probably want to set this to "Yes", so conflict checking occurs.
+conflict-check-help: Check for event conflicts (two events scheduled for the same time for the same person). If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done. You probably want to set this to "Yes", so conflict checking occurs.
 Check for event conflicts: Check for event conflicts
 Yes: Yes
 No: No
-conflict-months-help: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts.  If you find adding events is taking a long time to process, reduce this number.
+conflict-months-help: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts. If you find adding events is taking a long time to process, reduce this number.
 Conflict checking months: Conflict checking months
 conflict-check-override-help: Allows users to override event conflicts and schedule two or more events for the same time.
 Allow users to override conflicts: Allow users to override conflicts
@@ -257,11 +258,11 @@ disable-priority-field-help: Selecting "Yes" will remove the "Priority" field fr
 Disable Priority field: Disable Priority field
 disable-access-field-help: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
 Disable Access field: Disable Access field
-disable-participants-field-help: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events.  If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+disable-participants-field-help: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events. If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
 Disable Participants field: Disable Participants field
-disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field when adding events.  This will provide a simpler interface for novices.
+disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field when adding events. This will provide a simpler interface for novices.
 Disable Repeating field: Disable Repeating field
-allow-html-description-help: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+allow-html-description-help: If enabled, users can enter HTML in the event description field. If not enabled, the HTML tags will be escaped so as to appear as plain text. Warning: Enabling this feature will allow users to reference images on other websites.
 Allow HTML in Description: Allow HTML in Description
 Popups: Popups
 disable-popups-help: Disable popups from calendar views
@@ -282,7 +283,7 @@ Firstname, Lastname: Firstname, Lastname
 Plugins: Plugins
 plugins-enabled-help: Enable plugin applications.
 Enable Plugins: Enable Plugins
-plugins-sort-key-help: Specifies a sort key for the plugin.  This allows the plugins to appear in a specific order.
+plugins-sort-key-help: Specifies a sort key for the plugin. This allows the plugins to appear in a specific order.
 Plugin: Plugin
 allow-public-access-help: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
 Allow public access: Allow public access
@@ -302,7 +303,7 @@ public-access-override-help: Allows event names and descriptions to be hidden on
 Override event name/description for public access: Override event name/description for public access
 public-access-override-text-help: The text to display if the above option is enabled. If 'Not Available', it will be translated.
 Text to display to public access: Text to display to public access
-public-access-captcha-help: If enabled, new events added by Public require passing a CAPTCHA  validation.
+public-access-captcha-help: If enabled, new events added by Public require passing a CAPTCHA validation.
 Require CAPTCHA validation for public access new events: Require CAPTCHA validation for public access new events
 uac-enabled-help: Enables user-level access control
 User Access Control enabled: User Access Control enabled
@@ -314,7 +315,7 @@ nonuser-enabled-help: If enabled, admins will have the option to add nonuser cal
 Nonuser enabled: Nonuser Calendars Enabled
 nonuser-list-help: Where to display the nonuser calendars in the participant list
 Nonuser list: Display in participants list at
-reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
+reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports. Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 Reports enabled: Reports enabled
 subscriptions-enabled-help: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
 Allow remote subscriptions: Allow remote subscriptions
@@ -333,7 +334,7 @@ display-tasks-help: Display small task window on month and day calendar
 Display small task list: Display small task list
 display-tasks-in-grid-help: Display tasks in calendars along with events
 Display tasks in Calendars: Display tasks in Calendars
-allow-external-users-help: Specifies whether a non-calendar user can be added to an event.  This allows non-calendar users to be listed as event participants.
+allow-external-users-help: Specifies whether a non-calendar user can be added to an event. This allows non-calendar users to be listed as event participants.
 Allow external users: Allow external users
 external-can-receive-notification-help: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
 External users can receive email notifications: External users can receive email notifications
@@ -353,7 +354,7 @@ Participant: Participant
 allow-comments-help: Allow users to add comments to events.
 Allow comments to events: Allow comments to events
 Admin and owner can always add comments if enabled.: Admin and owner can always add comments if enabled.
-email-enabled-help: Turn on or off all sending of email for notification and reminders.  Set to "no", if your server is not properly setup to send mail.
+email-enabled-help: Turn on or off all sending of email for notification and reminders. Set to "no", if your server is not properly setup to send mail.
 Email enabled: Email enabled
 email-default-sender: Specifies the email address to specify as the sender when sending out reminders.
 Default sender address: Default sender address
@@ -565,13 +566,13 @@ Details: Details
 Participants: Participants
 Repeat: Repeat
 Reminders: Reminders
-brief-description-help: This should provide a short description (about 20 characters) of the event.  This will represent the event when viewing the calendar.
+brief-description-help: This should provide a short description (about 20 characters) of the event. This will represent the event when viewing the calendar.
 Brief Description: Brief Description
-full-description-help: This should complete details of the event.  This information can be seen when a user views the event.
+full-description-help: This should complete details of the event. This information can be seen when a user views the event.
 Full Description: Full Description
 access-help: Specifies the access level of the event. <ul><li><em>Public</em>: Everyone can see the full details of the event. </li><li><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.</li></ul>
 Access: Access
-priority-help: Specifies the priority of the event.  High priority events will be displayed in bold.
+priority-help: Specifies the priority of the event. High priority events will be displayed in bold.
 Priority: Priority
 High: High
 Medium: Medium
@@ -604,7 +605,7 @@ Due Time: Due Time
 Site Extras: Site Extras
 participants-help: Lists the participants of this entry.
 Availability: Availability
-external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
+external-participants-help: Specifies a list of participants for the event that are not calendar users. The users should be listed one per line and can include an email address. If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: External Participants
 repeat-type-help: Select how often the event should repeat.
 Daily: Daily
@@ -871,6 +872,12 @@ Also, please use English rather than: Also, please use <strong>English</strong> 
 Also, please use English rather than XXX.: Also, please use <strong>English</strong> rather than XXX.
 
 ########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar Documentation
+Currently in English only.: Currently in English only.
+
+########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
@@ -909,7 +916,7 @@ About WebCalendar: About WebCalendar
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying...: Layers are useful for displaying other users' events in your own calendar.  You can specify the user and the color the events will be displayed in.
+Layers are useful for displaying...: Layers are useful for displaying other users' events in your own calendar. You can specify the user and the color the events will be displayed in.
 Add/Edit/Delete: Add/Edit/Delete
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
 The text color of the new layer that will be displayed in your calendar.: The text color of the new layer that will be displayed in your calendar.
@@ -1605,7 +1612,7 @@ Change the date and time of this entry?: Change the date and time of this entry?
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: You have not entered a Brief Description
-The time you have entered begins before your preferred work hours.  Is this correct?: The time you have entered begins before your preferred work hours.  Is this correct?
+The time you have entered begins before your preferred work hours. Is this correct?: The time you have entered begins before your preferred work hours. Is this correct?
 Invalid Event Date: Invalid Event Date
 Please add a participant: Please add a participant
 Invalid Date: Invalid Date
@@ -1739,7 +1746,7 @@ This may take several minutes to complete: This may take several minutes to comp
 Install Database: Install Database
 Update Database: Update Database
 Display Required SQL: Display Required SQL
-Return to previous page after processing sql: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
+Return to previous page after processing SQL.: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
 This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
 Timezone Conversion: Timezone Conversion
 It appears that you have: It appears that you have
