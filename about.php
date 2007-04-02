@@ -6,7 +6,7 @@ $credits = getPostValue ( 'Credits' );
 $data = '';
 
 if ( ! empty ( $credits ) ) {
-  // Get Names from AUTHORS file
+  // Get Names from AUTHORS file.
   if ( $fd = @fopen ( 'AUTHORS', 'r' ) ) {
     // Read in contents of entire file first.
     while ( ! feof ( $fd ) && empty ( $error ) ) {
@@ -28,7 +28,9 @@ if ( empty ( $credits ) )
   echo '
       <a title="' . $PROGRAM_NAME . '" href="' . $PROGRAM_URL . '" target="_blank">
       <h2 style="margin:0">' . translate ( 'Title' ) . '</h2>
-      <p>' . translate ( 'version' ) . ' ' . $PROGRAM_VERSION . '</p>
+      <p>' . str_replace ( 'XXX', $PROGRAM_VERSION,
+        // translate ( 'version' )
+        translate ( 'version XXX' ) ) . '</p>
       <p>' . $PROGRAM_DATE . '</p></a>
       <p>&nbsp;</p>
       <p>' . translate ( 'Webcalendar is a PHP application used...' ) . '</p>';
