@@ -12,7 +12,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -41,11 +41,6 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
-# Page: about.php
-#
-Title: WebCalendar
-
-########################################
 # Page: access.php
 #
 Database error: Error de base de dades
@@ -68,8 +63,8 @@ Previous: Anterior
 ########################################
 # Page: add_entry.php
 #
-private: privat
 confidential: confidencial
+private: privat
 Error adding event: Error en afegir un esdeveniment
 
 ########################################
@@ -87,9 +82,9 @@ Groups: Grups
 NonUser Calendars: Calendaris no d'usuari
 Email: Correu electrònic
 Colors: Colors
-app-name-help: Especifica el nom de l'aplicació que es mostrarà a la barra de títol del navegador a totes les pàgines i a la pàgina d'entrada.  A l'arxiu de traduccions es mirarà el valor que s'especifiqui aquí per poder oferir títols diferents per a diverses llengües.
+app-name-help: Especifica el nom de l'aplicació que es mostrarà a la barra de títol del navegador a totes les pàgines i a la pàgina d'entrada. A l'arxiu de traduccions es mirarà el valor que s'especifiqui aquí per poder oferir títols diferents per a diverses llengües.
 Application Name: Nom de l'aplicació
-server-url-help: Especifica la URL principal de l'aplicació.  Això s'inclourà en enviar recordatoris i notificacions per correu electrònic.
+server-url-help: Especifica la URL principal de l'aplicació. Això s'inclourà en enviar recordatoris i notificacions per correu electrònic.
 Server URL: URL del servidor
 language-help: Especifica l'idioma que s'utilitza.
 Language: Idioma
@@ -104,9 +99,9 @@ Custom trailer: Peu personalitzat
 tz-help: Especifica les hores de diferència per ajustar l'hora del servidor a l'hora local
 date-format-help: Especifica el format preferit de la data.
 Date format: Format de la data
-display-week-starts-on: Especifica si la setmana comença diumenge o dilluns   Si s'especifica dilluns, aleshores els números de setmana seran un número de setmana ISO.
+display-week-starts-on: Especifica si la setmana comença diumenge o dilluns Si s'especifica dilluns, aleshores els números de setmana seran un número de setmana ISO.
 Week starts on: La setmana comença
-time-format-help: Especifica el format d'hora que s'utilitza: <br /><i>12 hores:</i> Mostra les hores com a 3am, 8:30pm, etc.  <br /><i>24 hores:</i> Mostra les hores com a 300, 2030, etc.
+time-format-help: Especifica el format d'hora que s'utilitza:<br /><i>12 hores:</i> Mostra les hores com a 3am, 8:30pm, etc.<br /><i>24 hores:</i> Mostra les hores com a 300, 2030, etc.
 Time format: Format d'hora
 12 hour: 12 hores
 24 hour: 24 hores
@@ -131,15 +126,14 @@ allow-view-add-help: S'inclourà una icona '+' a les visualitzacions, permetent a
 Include add event link in views: Inclou a les visualitzacions enllaç per afegir esdeveniment
 allow-view-other-help: Especifica si un usuari pot visualitzar el calendari d'un altre usuari.
 Allow viewing other users calendars: Permet veure els calendaris d'altres usuaris
-require-approvals-help: Si està activat, l'usuari ha d'aprovar l'esdeveniment abans que es mostri en el seu ( llevat que s'hagi activat Mostrar pendents d'aprovar).  Fixeu-vos que configurar-ho a "No", no ocultarà les aprovacions per al calendari d'Accés Públic (si el calendari d'Accés Públic està habilitat).
+require-approvals-help: Si està activat, l'usuari ha d'aprovar l'esdeveniment abans que es mostri en el seu ( llevat que s'hagi activat Mostrar pendents d'aprovar). Fixeu-vos que configurar-ho a "No", no ocultarà les aprovacions per al calendari d'Accés Públic (si el calendari d'Accés Públic està habilitat).
 Require event approvals: Requereix aprovació d'esdeveniments
-display-unapproved-help: Especifica si els esdeveniments pendents d'aprovació es mostren al calendari.<br /> Si s'ajusta a "Sí", els esdeveniments pendents d'aprovació es mostraran al calendari (amb el text en un color diferent). <br /> Si s'ajusta a  "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
+display-unapproved-help: Especifica si els esdeveniments pendents d'aprovació es mostren al calendari.<br /> Si s'ajusta a "Sí", els esdeveniments pendents d'aprovació es mostraran al calendari (amb el text en un color diferent).<br /> Si s'ajusta a "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
 Display unapproved: Mostra pendents d'aprovar
-conflict-check-help: Comprova els conflictes entre esdeveniments (dos esdeveniments programats per a la mateixa hora i la mateixa persona).  Si ho configures com a "Sí", podràs planificar igualment dos esdeveniments alhora després de confirmar un avís. Si ho configures com a "no", no es comprovaran els possibles conflictes entre esdeveniments.  Probablement vulguis posar "Sí", a fi que es produeixin les comprovacions.
+conflict-check-help: Comprova els conflictes entre esdeveniments (dos esdeveniments programats per a la mateixa hora i la mateixa persona). Si ho configures com a "Sí", podràs planificar igualment dos esdeveniments alhora després de confirmar un avís. Si ho configures com a "no", no es comprovaran els possibles conflictes entre esdeveniments. Probablement vulguis posar "Sí", a fi que es produeixin les comprovacions.
 Check for event conflicts: Comprova conflictes entre esdeveniments
 Yes: Sí
-No: No
-conflict-months-help: Si està posada la comprovació de conflictes ("Comprova conflictes entre esdeveniments" està configurat com a "No"), aquí s'especifica el nombre de mesos endavant que cal fer aquesta comprovació.  Si trobes que afegir esdeveniments triga molt a processar-se, redueix aquest número.
+conflict-months-help: Si està posada la comprovació de conflictes ("Comprova conflictes entre esdeveniments" està configurat com a "No"), aquí s'especifica el nombre de mesos endavant que cal fer aquesta comprovació. Si trobes que afegir esdeveniments triga molt a processar-se, redueix aquest número.
 Conflict checking months: Mesos de comprovació de conflictes
 conflict-check-override-help: Permet als usuaris sobreescriure conflictes i programar dos o més esdeveniments alhora.
 Allow users to override conflicts: Permet els usuaris sobreescriure conflictes
@@ -149,13 +143,13 @@ limit-appts-number-help: Especifica el nombre màxim d'esdeveniments amb hora que
 Maximum timed events per day: Màxim d'esdeveniments amb hora en un dia
 disable-priority-field-help: Si es selecciona "Sí", s'eliminarà el camp "Prioritat" de les pàgines d'informació de l'esdeveniment, tot oferint una interfície més simple per als novells.
 Disable Priority field: Desactiva el camp Prioritat
-disable-access-field-help: Si es selecciona "Sí", s'eliminarà el camp "Accés" de les pàgines d'informació de l'esdeveniment, tot oferint  una interfície més simple per als novells.
+disable-access-field-help: Si es selecciona "Sí", s'eliminarà el camp "Accés" de les pàgines d'informació de l'esdeveniment, tot oferint una interfície més simple per als novells.
 Disable Access field: Desactiva el camp Accés
-disable-participants-field-help: Si es selecciona "Sí", s'eliminarà el camp "Participants" de les pàgines d'informació de l'esdeveniment, tot oferint  una interfície més simple per als novells.  Si habiliteu aquesta opció, potser també vulgueu desactivar el camp "Permet visualitzar els calendaris d'altres usuaris".
+disable-participants-field-help: Si es selecciona "Sí", s'eliminarà el camp "Participants" de les pàgines d'informació de l'esdeveniment, tot oferint una interfície més simple per als novells. Si habiliteu aquesta opció, potser també vulgueu desactivar el camp "Permet visualitzar els calendaris d'altres usuaris".
 Disable Participants field: Desactiva el camp Participants
-disable-repeating-field-help: Si es selecciona "Sí", s'eliminarà el camp "Repetició" en afegir esdeveniments.  Això facilitarà una interfície més simple per als novells.
+disable-repeating-field-help: Si es selecciona "Sí", s'eliminarà el camp "Repetició" en afegir esdeveniments. Això facilitarà una interfície més simple per als novells.
 Disable Repeating field: Desactiva el camp Repetició
-allow-html-description-help: Si està habilitat, els usuaris poden introduir HTML al camp de descripció de l'esdeveniment.   Si no s'habilita, s'ignoraran les etiquetes HTML i es mostrarà com a text net.  Avís:  Activar aquesta opció permet els usuaris vincular imatges d'altres llocs web.
+allow-html-description-help: Si està habilitat, els usuaris poden introduir HTML al camp de descripció de l'esdeveniment. Si no s'habilita, s'ignoraran les etiquetes HTML i es mostrarà com a text net. Avís: Activar aquesta opció permet els usuaris vincular imatges d'altres llocs web.
 Allow HTML in Description: Permet HTML a la Descripció
 popup-includes-siteextras-help: Si està habilitat, als missatges emergents es mostrarà la configuració de permetre personalitzar camps d'esdeveniment al fitxer site_extras.php.
 Display Site Extras in popup: Mostra els Extres del Lloc al requadre emergent
@@ -164,7 +158,7 @@ Remember last login: Recorda la darrera identificació
 Plugins: Connectors
 plugins-enabled-help: Habilitar connectors.
 Enable Plugins: Habilita connectors
-plugins-sort-key-help: Especifica una tecla d'ordenació per al connector.  Permet que els connectors s'ordenin en un ordre específic.
+plugins-sort-key-help: Especifica una tecla d'ordenació per al connector. Permet que els connectors s'ordenin en un ordre específic.
 Plugin: Connector
 allow-public-access-help: Si està activat, el calendari es pot fer servir com un calendari públic només de lectura que no requereix identificació d'usuaris.
 Allow public access: Permetre l'accés públic
@@ -184,19 +178,19 @@ nonuser-enabled-help: Si està habilitat, els administradors tindran l'opció d'af
 Nonuser enabled: Calendaris No d'Usuari Habilitats
 nonuser-list-help: On mostrar els calendaris no d'usuari a la llista de participants
 Nonuser list: Mostra la llista de participants a
-reports-enabled-help: Si està habilitat, els usuaris veuran una secció "Informes" al peu de cada pàgina i podran crear informes personalitzats.  Addicionalment, els usuaris administradors poden crear informes globals que es mostraran al peu de les pàgines de tots els usuaris.
+reports-enabled-help: Si està habilitat, els usuaris veuran una secció "Informes" al peu de cada pàgina i podran crear informes personalitzats. Addicionalment, els usuaris administradors poden crear informes globals que es mostraran al peu de les pàgines de tots els usuaris.
 Reports enabled: Informes habilitats
 subscriptions-enabled-help: Especifica si els usuaris remots es poden subscriure al calendari d'un usuari de WebCalendar, permetent-los veure els esdeveniments de l'usuari WebCalendar a la seva aplicació d'iCal (com ara l'iCal d'Apple o el Mozilla Calendar).
 Allow remote subscriptions: Permet subscripcions remotes
 categories-enabled-help: Habilita el suport per a les categories d'esdeveniments
 Categories enabled: Categories habilitades
-allow-external-users-help: Especifica si es pot afegir a un esdeveniment un no-usuari de calendari.  Permet incloure com a participants d'un esdeveniment no-usuaris de calendari.
+allow-external-users-help: Especifica si es pot afegir a un esdeveniment un no-usuari de calendari. Permet incloure com a participants d'un esdeveniment no-usuaris de calendari.
 Allow external users: Permet usuaris externs
 external-can-receive-notification-help: Quan s'habiliten els usuaris externs i l'ús de correu electrònic, els usuaris externs poden rebre notificacions per correu electrònic en afegir, actualitzar o esborrar un esdeveniment (si se'n facilita l'adreça electrònica).
 External users can receive email notifications: Els usuaris externs poden rebre notificacions per correu electrònic
 external-can-receive-reminder-help: Quan els usuaris externs i l'ús de correu electrònic estan habilitats, els usuaris externs poden rebre recordatoris per correu electrònic (si es facilita l'adreça electrònica de l'usuari extern).
 External users can receive email reminders: Els usuaris externs poden rebre recordatoris per correu electrònic
-email-enabled-help: Activa o desactiva tots els enviaments de correu electrònic per a notificacions o recordatoris.  Posa "No" si el teu servidor no està configurat adequadament per enviar correu.
+email-enabled-help: Activa o desactiva tots els enviaments de correu electrònic per a notificacions o recordatoris. Posa "No" si el teu servidor no està configurat adequadament per enviar correu.
 Email enabled: Correu electrònic habilitat
 email-default-sender: Especifica l'adreça electrònica que constarà com a remitent en enviar recordatoris.
 Default sender address: Adreça remitent per defecte
@@ -259,9 +253,7 @@ Your assistants: Els vostres assistents
 ########################################
 # Page: category.php
 #
-Global: Global
 Category Name: Nom de categoria
-Color: Color
 Add: Afegeix
 Delete: Suprimeix
 Make New Category: Afegir nova categoria
@@ -285,38 +277,35 @@ Description: Descripció
 ########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
 Edit Entry: Edita Entrada
 Add Entry: Afegeix una entrada
 Participants: Participants
-brief-description-help: Aquest camp permet una descripció breu (d'uns 20 caràcters) de l'esdeveniment.  Així és com es mostrarà l'esdeveniment en visualitzar el calendari.
+brief-description-help: Aquest camp permet una descripció breu (d'uns 20 caràcters) de l'esdeveniment. Així és com es mostrarà l'esdeveniment en visualitzar el calendari.
 Brief Description: Descripció breu
-full-description-help: Aquí cal completar els detalls de l'esdeveniment.  Es pot veure aquesta informació quan un usuari visualitza l'esdeveniment.
+full-description-help: Aquí cal completar els detalls de l'esdeveniment. Es pot veure aquesta informació quan un usuari visualitza l'esdeveniment.
 Full Description: Descripció completa
-access-help: Especifica el nivell d'accés de l'esdeveniment.<br /> <i>Públic</i>: Tothom pot veure tots els detalls de l'esdeveniment.  <br /><i>Confidencial</i>: Els altres poden veure la teva entrada per a aquella data i hora, però no poden veure'n els detalls.
+access-help: Especifica el nivell d'accés de l'esdeveniment.<br /> <i>Públic</i>: Tothom pot veure tots els detalls de l'esdeveniment.<br /><i>Confidencial</i>: Els altres poden veure la teva entrada per a aquella data i hora, però no poden veure'n els detalls.
 Access: Accés
-priority-help: Especifica la prioritat de l'esdeveniment.  Els esdeveniments de prioritat alta es mostraran en negreta.
+priority-help: Especifica la prioritat de l'esdeveniment. Els esdeveniments de prioritat alta es mostraran en negreta.
 Priority: Prioritat
 High: Alta
 Medium: Mitjana
 Low: Baixa
 category-help: Especifica la categoria de l'esdeveniment.
 Category: Categoria
-URL: URL
 date-help: Especifica la data de l'esdeveniment.
 Untimed event: Esdeveniment sense hora
 Timed event: Esdeveniment amb hora
 All day event: Esdeveniment de dia complet
 Timezone Offset: Franja horària
 time-help: Especifica l'hora de l'esdeveniment.<br />Seleccioneu "Esdeveniment amb hora" (per a un esdeveniment programat per a una hora determinada del dia), o bé "Esdeveniment sense hora" (per a un esdeveniment sense hora determinada (com ara un festiu), o bé "Esdeveniment dia complet" (per a un esdeveniment que ocupa tot el dia, com ara haver de sortir fora de l'oficina).
-duration-help: Especifica la durada (en hores:minuts) de l'esdeveniment.  <br /><i>Aquest camp es pot deixar en blanc.</i>
+duration-help: Especifica la durada (en hores:minuts) de l'esdeveniment.<br /><i>Aquest camp es pot deixar en blanc.</i>
 hours: hores
 minutes: minuts
 participants-help: Mostra la llista de participants en aquesta entrada.
-external-participants-help: Especifica una llista de participants per a l'esdeveniment que no són usuaris de calendari.   S'indicaran un usuari per línia i s'en pot incloure una adreça de correu electrònic.   Si s'especifica una adreça electrònica, l'usuari podrà rebre notificacions i recordatoris
+external-participants-help: Especifica una llista de participants per a l'esdeveniment que no són usuaris de calendari. S'indicaran un usuari per línia i s'en pot incloure una adreça de correu electrònic. Si s'especifica una adreça electrònica, l'usuari podrà rebre notificacions i recordatoris
 External Participants: Participants externs
-repeat-type-help: Seleccioneu amb quina assiduïtat caldria repetir l'esdeveniment. <i>Mensualment (per dia)</i> permet repetir un esdeveniment cada primer dilluns de mes, 3r dijous de mes, etc.  <i>Mensualment (per data)</i> permet repetir un esdeveniment el mateix dia de cada mes.
+repeat-type-help: Seleccioneu amb quina assiduïtat caldria repetir l'esdeveniment. <i>Mensualment (per dia)</i> permet repetir un esdeveniment cada primer dilluns de mes, 3r dijous de mes, etc. <i>Mensualment (per data)</i> permet repetir un esdeveniment el mateix dia de cada mes.
 Daily: Diàriament
 Weekly: Setmanalment
 Monthly: Mensualment
@@ -325,7 +314,7 @@ by date: per data
 Yearly: Anualment
 repeat-end-date-help: Especifica la data fins a la qual cal repetir l'esdeveniment.
 Use end date: Utilitza data final
-repeat-frequency-help: Especifica amb quina assiduïtat cal repetir l'esdeveniment.   El valor per defecte 1 indica que es repetirà cada vegada.   Si s'especifica 2, l'esdeveniment es repetirà cada dues setmanes (si el <i>Tipus de repetició</i> està configurat com a <i>Setmanalment</i>), cada dos mesos (si el <i>Tipus de repetició</i> està configurat com a <i>Mensualment</i>), etc.
+repeat-frequency-help: Especifica amb quina assiduïtat cal repetir l'esdeveniment. El valor per defecte 1 indica que es repetirà cada vegada. Si s'especifica 2, l'esdeveniment es repetirà cada dues setmanes (si el <i>Tipus de repetició</i> està configurat com a <i>Setmanalment</i>), cada dos mesos (si el <i>Tipus de repetició</i> està configurat com a <i>Mensualment</i>), etc.
 Frequency: Freqüència
 All: Totes
 Send Reminder: Envia recordatori
@@ -376,7 +365,6 @@ Last Name: Cognom
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Error
 Import Results: Importar resultats
 Events successfully imported: Esdeveniments importats correctament
 Errors: Errors
@@ -514,13 +502,12 @@ Adding/Editing Calendar Entries: Afegir/Editar entrades de calendari
 Repeat Type: Tipus de repetició
 Repeat End Date: Data final de repetició
 Repeat Day: Dia de repetició
-repeat-day-help: Especifica quins dies de la setmana cal repetir l'esdeveniment  Aquest camp només s'ha de fer servir quan <i>Tipus de repetició</i> està configurat com a <i>Setmanalment</i>.
+repeat-day-help: Especifica quins dies de la setmana cal repetir l'esdeveniment Aquest camp només s'ha de fer servir quan <i>Tipus de repetició</i> està configurat com a <i>Setmanalment</i>.
 
 ########################################
 # Page: help_import.php
 #
 Import: Importa
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Aquest formulari et permet importar entrades des del Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Hauria d'estar en el teu directori Palm a <tt>datebook/datebook.dat</tt> en un subdirectori amb el teu nom d'usuari.
 The following entries will not be imported: Les entrades següents no s'importaran
@@ -781,21 +768,17 @@ October: Octubre
 November: Novembre
 Jan: Gen
 Feb: Feb
-Mar: Mar
 Apr: Abr
 May: Mai
-Jun: Jun
-Jul: Jul
 Aug: Ago
 Sep: Set
-Oct: Oct
 Nov: Nov
 The following error occurred: S'ha produït un error
 You are not authorized: No tens autorització
-Add N hours to: Afegir N hores a 
+Add N hours to: Afegir N hores a
 Subtract N hours from: Restar N hores de
 same as: igual que
-server time: hora del servidor 
+server time: hora del servidor
 Error approving event: Error en aprovar esdeveniment
 Sunday: Diumenge
 Monday: Dilluns
@@ -858,7 +841,7 @@ Color format should be RRGGBB.: El format del color hauria de ser '#RRGGBB'
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: No has introduït cap Descripció Breu
-The time you have entered begins before your preferred work hours.  Is this correct?: L'hora introduïda comença abans de les teves hores laborals indicades a les preferències   És correcte?
+The time you have entered begins before your preferred work hours. Is this correct?: L'hora introduïda comença abans de les teves hores laborals indicades a les preferències És correcte?
 You have not entered a valid time of day: No has introduït cap hora vàlida
 
 ########################################

@@ -4,7 +4,7 @@
 # Last update: 20 May 2001
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -33,11 +33,6 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
-# Page: about.php
-#
-Title: WebCalendar
-
-########################################
 # Page: access.php
 #
 Database error: Erro da base de datos
@@ -51,8 +46,8 @@ Private: Privado
 ########################################
 # Page: add_entry.php
 #
-private: privado
 confidential: confidencial
+private: privado
 Error adding event: Erro ó engadi-lo evento
 
 ########################################
@@ -73,7 +68,7 @@ Your browser default language is: O idioma por defecto do seu navegador é
 None: Ningunha
 display-week-starts-on: Especifica se a semana comeza o Domingo ou o Luns. Se se selecciona Luns, enton os números da semana amosaránse no formato ISO.
 Week starts on: A semana comeza o
-time-format-help: Especifica qué formato horario empregar: <br /><i>12 horas:</i> Amosa-las horas co formato 3am, 8:30pm, etc.  <br /><i>24 horas:</i> Amosa-las horas co formato 300, 2030, etc.
+time-format-help: Especifica qué formato horario empregar:<br /><i>12 horas:</i> Amosa-las horas co formato 3am, 8:30pm, etc.<br /><i>24 horas:</i> Amosa-las horas co formato 300, 2030, etc.
 Time format: Formato da hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -145,8 +140,6 @@ Description: Descrición
 ########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
 Edit Entry: Modificar Entrada
 Add Entry: Engadir Entrada
 Participants: Participantes
@@ -176,7 +169,7 @@ by date: por data
 Yearly: Anualmente
 repeat-end-date-help: Especifica a data ata a qeu se debe repeti-lo evento.
 Use end date: Data final de uso
-repeat-frequency-help: Especifica con qué frecuencia se repetirá o evento.  O 1 por defecto indica que debería ter lugar cada vez.  Se se especifica 2, o evento terá lugar nas outras semanas (se en <i>Tipo de Repetición</i> se selecciona <i>Semanalmente</i>), terá lugar nos outros meses (se en <i>Tipo de Repetición</i> se selecciona <i>Mensualmente</i>), etc.
+repeat-frequency-help: Especifica con qué frecuencia se repetirá o evento. O 1 por defecto indica que debería ter lugar cada vez. Se se especifica 2, o evento terá lugar nas outras semanas (se en <i>Tipo de Repetición</i> se selecciona <i>Semanalmente</i>), terá lugar nos outros meses (se en <i>Tipo de Repetición</i> se selecciona <i>Mensualmente</i>), etc.
 Frequency: Frecuencia
 days: días
 Delete entry: Borrar entrada
@@ -407,7 +400,6 @@ October: Outubro
 November: Novembro
 Jan: Xan
 Feb: Feb
-Mar: Mar
 Apr: Abr
 May: Mai
 Jun: Xuñ
@@ -471,7 +463,7 @@ Color format should be RRGGBB.: O formato da cor debería ser '#RRGGBB'
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Non introduciu ningunha descrición breve
-The time you have entered begins before your preferred work hours.  Is this correct?: A hora que introduciu comeza antes das súas horas de traballo indicadas. ¿Está ben?
+The time you have entered begins before your preferred work hours. Is this correct?: A hora que introduciu comeza antes das súas horas de traballo indicadas. ¿Está ben?
 You have not entered a valid time of day: Non introduciu unha hora válida do día
 
 ########################################

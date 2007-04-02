@@ -1,11 +1,11 @@
 # See translations/English-US.txt for instructions.
 #
 # Translated by:
-#	Antonio Costa - accmdq@mail.esoterica.pt
+# Antonio Costa - accmdq@mail.esoterica.pt
 # Last update: 26-Nov-2004
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -37,7 +37,6 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: about.php
 #
 Title: Título
-OK: OK
 
 ########################################
 # Page: access.php
@@ -46,7 +45,6 @@ Database error: Erro na base de dados
 Go: Ver
 Save: Gravar
 Public Access: Acesso Público
-Admin: Admin
 Calendar: Calendário
 Edit: Editar
 Events: Eventos
@@ -63,8 +61,8 @@ Previous: Anterior
 ########################################
 # Page: add_entry.php
 #
-private: privado
 confidential: confidencial
+private: privado
 Error adding event: Erro ao adicionar evento
 
 ########################################
@@ -99,7 +97,7 @@ date-format-help: Especifica o formato preferido da data.
 Date format: Formato da data
 display-week-starts-on: Especifica se a semana começa ao Domingo ou à Segunda-Feira.
 Week starts on: Semana começa em
-time-format-help: Especifica o formato da hora a utilizar: <I>12 horas:</I> Mostra no formato 3am, 8:30pm, etc. <I>24 horas:</I> Mostra no formato 300, 2030, etc.
+time-format-help: Especifica o formato da hora a utilizar: <I>12 horas:</i> Mostra no formato 3am, 8:30pm, etc. <I>24 horas:</i> Mostra no formato 300, 2030, etc.
 Time format: Formato da hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -124,7 +122,7 @@ Display days with events in bold in month and year views: Mostrar dias com event
 Include add event link in views: Incluir link para adicionar eventos nas vistas
 allow-view-other-help: Especifica se um utilizador pode ou não ver o calendário de outro utilizador.
 Allow viewing other users calendars: Permitir ver calendário de outro utilizador
-require-approvals-help: Quando activo, um utilizador deverá aprovar um evento antes de ser mostrado no seu calendário (excepto se <I>Mostra não-aprovados</I> estiver activo).
+require-approvals-help: Quando activo, um utilizador deverá aprovar um evento antes de ser mostrado no seu calendário (excepto se <I>Mostra não-aprovados</i> estiver activo).
 Require event approvals: Requer aprovação de eventos
 display-unapproved-help: Especifica se os eventos não aprovados são mostrados no calendário
 Display unapproved: Mostrar não-aprovados
@@ -149,9 +147,7 @@ Allow HTML in Description: Permitir HTML na descrição
 Display Site Extras in popup: Mostrar Extras num popup
 remember-last-login-help: Quando activo, o campo com o nome do utilizador será preenchido automaticamente, assim como as suas preferências.
 Remember last login: Usar preferências do último acesso
-Plugins: Plugins
 Enable Plugins: Activar Plugins
-Plugin: Plugin
 allow-public-access-help: Quando activo, o calendário pode ser usado para acesso público (sem possibilidade de modificação).
 Allow public access: Permitir acesso público
 public-access-default-visible: Eventos do calendário público irão aparecer em todos os calendários
@@ -245,7 +241,6 @@ day: dia
 ########################################
 # Page: category.php
 #
-Global: Global
 Category Name: Nome de Categoria
 Color: Cor
 Add: Adicionar
@@ -271,8 +266,6 @@ Description: Descrição
 ########################################
 # Page: edit_entry.php
 #
-am: AM
-pm: PM
 Edit Entry: Editar Entrada
 Add Entry: Adicionar Entrada
 Details: Detalhes
@@ -282,16 +275,15 @@ brief-description-help: Breve descrição (cerca de 20 caracteres) do evento. Esta
 Brief Description: Breve Descrição
 full-description-help: Descrição completa do evento. Esta informação é apresentada quando o utilizador verifica o evento isoladamente.
 Full Description: Descrição Completa
-access-help: Especifica o nível de acesso do evento. <br /><em>Público</em> Todos os intervenientes podem ver todos os detalhes do evento. <br /><em>Confidencial</em> Outros utilizadores poderão ver que tem um evento marcado, mas não podem visualizar os detalhes.
+access-help: Especifica o nível de acesso do evento.<br /><em>Público</em> Todos os intervenientes podem ver todos os detalhes do evento.<br /><em>Confidencial</em> Outros utilizadores poderão ver que tem um evento marcado, mas não podem visualizar os detalhes.
 Access: Accesso
-priority-help: Especifica a prioridade do evento.  Prioridade Alta é apresentada num tipo de letra mais escuro.
+priority-help: Especifica a prioridade do evento. Prioridade Alta é apresentada num tipo de letra mais escuro.
 Priority: Prioridade
 High: Alta
 Medium: Média
 Low: Baixa
 category-help: Especifica a categoria do evento.
 Category: Categoria
-URL: URL
 date-help: Especifica a data do evento.
 Untimed event: Evento não temporizado
 Timed event: Evento temporizado
@@ -303,7 +295,7 @@ hours: horas
 minutes: minutos
 participants-help: Lista os participantes neste evento.
 External Participants: Participantes Externos
-repeat-type-help: Selecciona a periodicidade do evento. <I>Mensal (por dia)</I> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <I>Mensal (por data)</I> faz com que um evento se repita todos os meses no mesmo dia.
+repeat-type-help: Selecciona a periodicidade do evento. <I>Mensal (por dia)</i> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <I>Mensal (por data)</i> faz com que um evento se repita todos os meses no mesmo dia.
 Daily: Diário
 Weekly: Semanal
 Monthly: Mensal
@@ -312,7 +304,7 @@ by date: por data
 Yearly: Anual
 repeat-end-date-help: Especifica a data até à qual o evento se repete.
 Use end date: Utilizar data de fim de repetição
-repeat-frequency-help: Especifica quantas vezes o evento se deve repetir. O valor padrão (1) indica que o evento acontece todos os dias.  Especificar 2 faz com que o evento se repita noutra semana (se <I>Tipo de repetição</I> tem o valor de <I>Semanal</I>), todos os meses (se <I>Tipo de repetição</I> tem o valor de <I>Mensal</I>), etc.
+repeat-frequency-help: Especifica quantas vezes o evento se deve repetir. O valor padrão (1) indica que o evento acontece todos os dias. Especificar 2 faz com que o evento se repita noutra semana (se <I>Tipo de repetição</i> tem o valor de <I>Semanal</i>), todos os meses (se <I>Tipo de repetição</i> tem o valor de <I>Mensal</i>), etc.
 Frequency: Frequência
 All: Todos
 Send Reminder: Enviar Lembrete
@@ -503,7 +495,7 @@ Adding/Editing Calendar Entries: Adicionar/Editar Entradas
 Repeat Type: Tipo de repetição
 Repeat End Date: Data para fim de repetição
 Repeat Day: Dia a repetir
-repeat-day-help: Especifica em que dias da semana o evento se repete. Isto é apenas utilizado quando o <I>Tipo de repetição</I> tem o valor de <I>Semanal</I>.
+repeat-day-help: Especifica em que dias da semana o evento se repete. Isto é apenas utilizado quando o <I>Tipo de repetição</i> tem o valor de <I>Semanal</i>.
 
 ########################################
 # Page: help_import.php
@@ -537,7 +529,7 @@ The text color of the new layer that will be displayed in your calendar.: A cor 
 Disabling: Desactivando
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Clique na ligação "Desactivar Níveis", na secção administrativa do fundo da página, para desactivar os níveis.
 If checked, events that are duplicates of your events will be shown.: Quando activo, mostra eventos que são duplicados dos seus eventos.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Clique na ligação "Activar Níveis", na secção administrativa do fundo da página, para activar os níveis.  
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Clique na ligação "Activar Níveis", na secção administrativa do fundo da página, para activar os níveis.
 Specifies the user that you would like to see displayed in your calendar.: Especifica o utilizador que deseja visualizar no seu calendário
 
 ########################################
@@ -772,11 +764,8 @@ October: Outubro
 November: Novembro
 Jan: Jan
 Feb: Fev
-Mar: Mar
 Apr: Abr
 May: Mai
-Jun: Jun
-Jul: Jul
 Aug: Ago
 Sep: Set
 Oct: Out
@@ -862,7 +851,7 @@ Color format should be RRGGBB.: O formato do código de cor deve ser '#RRGGBB'
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Não introduziu uma breve descrição
-The time you have entered begins before your preferred work hours.  Is this correct?: A hora introduzida é anterior ao seu período de trabalho. Tem a certeza?
+The time you have entered begins before your preferred work hours. Is this correct?: A hora introduzida é anterior ao seu período de trabalho. Tem a certeza?
 You have not entered a valid time of day: Não introduziu uma hora do dia válida
 
 ########################################

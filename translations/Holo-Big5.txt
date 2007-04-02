@@ -1,9 +1,9 @@
 # See translations/English-US.txt for instructions.
 #
-# Translated by:  Henry H. Tan-Tenn <share2002nov@lomaji.com>
+# Translated by: Henry H. Tan-Tenn <share2002nov@lomaji.com>
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -45,9 +45,9 @@ Save: 儲存
 Public Access: 公眾入口
 Admin: 管理
 Calendar: 行事曆
-Public: 公眾 e 
-Confidential: 機密 e 
-Private: 私人 e 
+Public: 公眾 e
+Confidential: 機密 e
+Private: 私人 e
 
 ########################################
 # Page: activity_log.php
@@ -58,8 +58,8 @@ Previous: 前一個
 ########################################
 # Page: add_entry.php
 #
-private: 私人 e 
-confidential: 機密 e 
+confidential: 機密 e
+private: 私人 e
 Error adding event: 記事加入發生錯誤
 
 ########################################
@@ -78,9 +78,7 @@ language-help: Specifies which language to use.
 Language: 語系
 Your browser default language is: 你 e 瀏覽器預設 e 語系是
 None: 無
-display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
 Week starts on: 每週開始於
-time-format-help: Specifies which time format to use: <br /><i>12 hour:</i> Display times as 3am, 8:30pm, etc.  <br /><i>24 hour:</i> Display times as 300, 2030, etc.
 Time format: 時間格式
 12 hour: 12時制
 24 hour: 24時制
@@ -88,12 +86,10 @@ Duration: 持續時間
 Work hours: 月曆可顯示之工作時間
 From: 自
 to: 至
-preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: 檢視選擇
 Fonts: 字型
 Display week number: 顯示週數(以年計算)
-display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
-Display unapproved: 顯示未核准 e 
+Display unapproved: 顯示未核准 e
 Yes: 好
 No: Mai
 Allow public access: 允準公眾 access
@@ -250,7 +246,7 @@ Username: 使用者名稱
 E-mail address: 電子郵件地址
 Password: 密碼
 again: 閣一擺
-Enabled: 啟用 e 
+Enabled: 啟用 e
 Disabled for demo: Disabled for demo
 Change Password: 變更密碼
 New Password: 新 e 密碼
@@ -310,7 +306,7 @@ Help Index: 輔助索引
 ########################################
 # Page: import.php
 #
-Disabled: 停用 e 
+Disabled: 停用 e
 
 ########################################
 # Page: layers.php
@@ -352,7 +348,7 @@ An appointment has been rejected by: 約會已經被拒絕，拒絕者是
 ########################################
 # Page: report.php
 #
-This event is confidential: 這個記事是機密 e 
+This event is confidential: 這個記事是機密 e
 Waiting for approval: 等待核准
 Deleted: 已經刪除
 Rejected: 已經被拒絕
@@ -523,15 +519,10 @@ Unnamed Event: Unnamed Event
 Notification: 通告
 
 ########################################
-# Page: includes/js/admin.php
-#
-Invalid color for document background: Invalid color for document background
-
-########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: 你無輸入概要描述
-The time you have entered begins before your preferred work hours.  Is this correct?: 這個時段無佇你自定 e 工作時間內。 這敢是正確 e ?
+The time you have entered begins before your preferred work hours. Is this correct?: 這個時段無佇你自定 e 工作時間內。 這敢是正確 e ?
 You have not entered a valid time of day: 你無輸入正確 e 時間
 
 ########################################

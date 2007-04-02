@@ -8,7 +8,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -54,8 +54,8 @@ Private: 私人的
 ########################################
 # Page: add_entry.php
 #
-private: 私人的
 confidential: 機密的
+private: 私人的
 Error adding event: Error adding event
 
 ########################################
@@ -73,9 +73,7 @@ language-help: Specifies which language to use.
 Language: 語系
 Your browser default language is: 你的瀏覽器預設的語系是
 None: 無
-display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
 Week starts on: 每週開始於
-time-format-help: Specifies which time format to use: <br /><i>12 hour:</i> Display times as 3am, 8:30pm, etc.  <br /><i>24 hour:</i> Display times as 300, 2030, etc.
 Time format: 時間格式
 12 hour: 12時制
 24 hour: 24時制
@@ -83,10 +81,8 @@ Duration: 持續時間
 Work hours: 月曆可顯示之工作時間
 From: 自
 to: 至
-preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: 檢視選擇
 Display week number: 顯示週數(以年計算)
-display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: 顯示未核准的
 Yes: 是
 No: 否
@@ -137,14 +133,11 @@ Add Entry: 新增記事
 Participants: 參與者
 Brief Description: 概要描述
 Full Description: 完整描述
-access-help: Specifies the access level of the event.<br /> <i>Public</i>: Everyone can see the full details of the event.  <br /><i>Confidential</i>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: 顯示設定
 Priority: 優先等級
 High: 高
 Medium: 中
 Low: 低
-time-help: Specifies the time of the event.<br /><i>This field can be left blank.</i>
-duration-help: Specifies the duration (in minutes) of the event.  <br /><i>This field can be left blank.</i>
 hours: 時
 minutes: 分
 Daily: 每日的
@@ -156,7 +149,6 @@ Yearly: 每年的
 Use end date: 使用結束日期設定
 Frequency: 重複次數
 Delete entry: 刪除記事
-You are not authorized to edit this entry.: You are not authorized to edit this entry.
 
 ########################################
 # Page: edit_entry_handler.php
@@ -427,15 +419,10 @@ Unnamed Event: Unnamed Event
 Notification: 通告
 
 ########################################
-# Page: includes/js/admin.php
-#
-Invalid color for document background: Invalid color for document background
-
-########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: 你沒有輸入概要描述
-The time you have entered begins before your preferred work hours.  Is this correct?: 這個時段不在你自定的工作時間內.  這是正確的嗎?
+The time you have entered begins before your preferred work hours. Is this correct?: 這個時段不在你自定的工作時間內. 這是正確的嗎?
 You have not entered a valid time of day: 你沒有輸入正確的時間
 
 ########################################

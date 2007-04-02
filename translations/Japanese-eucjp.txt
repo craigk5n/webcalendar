@@ -1,12 +1,12 @@
 # See translations/English-US.txt for instructions.
 #
 # Translated by:
-#   Makoto Hamanaka <VYA04230@nifty.com>
-#   Updated many times by Tadashi Jokagi <elf2000@users.sourceforge.net>
+# Makoto Hamanaka <VYA04230@nifty.com>
+# Updated many times by Tadashi Jokagi <elf2000@users.sourceforge.net>
 # Last updated: 12-08-2006
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -37,9 +37,7 @@ __month__ __yyyy__: __yyyy__ 年 __month__
 ########################################
 # Page: about.php
 #
-Title: WebCalendar
 version: バージョン
-OK: OK
 
 ########################################
 # Page: access.php
@@ -81,8 +79,8 @@ Previous: 前へ
 ########################################
 # Page: add_entry.php
 #
-private: プライベート
 confidential: 非公開
+private: プライベート
 Error adding event: イベント追加エラー
 
 ########################################
@@ -139,7 +137,7 @@ Small Task Date: 小さなタスクの日付
 display-week-starts-on: 週が日曜日か月曜日でスタートするかどうか指定します。月曜が指定されれば、週番号は ISO 週番号になるでしょう。
 Week starts on: 週の始まり
 Weekend starts on: 週末の開始
-time-format-help: 使用する時間の書式を指定します: <br /><i>12 時下:</i> 例えば時間表示は「3am」「8:30pm」などです。<br /><i>24 時間:</i> 例えば時間表示は「300」「2030」などです。
+time-format-help: 使用する時間の書式を指定します:<br /><i>12 時下:</i> 例えば時間表示は「3am」「8:30pm」などです。<br /><i>24 時間:</i> 例えば時間表示は「300」「2030」などです。
 Time format: 時間の書式
 12 hour: 12時間
 24 hour: 24時間
@@ -419,7 +417,7 @@ Old Color: 昔の色
 ########################################
 # Page: del_entry.php
 #
-An appointment has been canceled for you by: 課題: 
+An appointment has been canceled for you by: 課題:
 
 ########################################
 # Page: doc.php
@@ -444,8 +442,6 @@ Removed: 削除しました
 ########################################
 # Page: edit_entry.php
 #
-am: AM
-pm: PM
 You are not authorized to edit this task: このタスクを編集することを許可されていません
 task: タスク
 Time entered here is based on your Timezone: ここで入力された時間は、あなたのタイムゾーンに基づきます。
@@ -475,7 +471,6 @@ All Percentages: すべての割合
 location-help: イベントの場所
 Location: 場所
 url-help: イベントの URL
-URL: URL
 date-help: イベントの日付を指定します。
 Start Date: 開始日
 Untimed event: 非時限イベント
@@ -493,7 +488,7 @@ Due Time: 予定時間
 participants-help: このエントリの参加者一覧です。
 Availability: 適用範囲
 External Participants: 外部参加者
-repeat-type-help: イベントをどれ位繰り返すか選択します。<i>月刊 (日付による)</i> イベントがその月の最初の月曜日、その月の 3 番目の木曜などに繰り返すことを許可します。  <i>月刊 (期日による)</i> イベントがその月の同じ日に繰り返すことを許可します。
+repeat-type-help: イベントをどれ位繰り返すか選択します。<i>月刊 (日付による)</i> イベントがその月の最初の月曜日、その月の 3 番目の木曜などに繰り返すことを許可します。 <i>月刊 (期日による)</i> イベントがその月の同じ日に繰り返すことを許可します。
 Daily: 毎日
 Weekly: 毎週
 Monthly: 毎月
@@ -1315,7 +1310,7 @@ Change the date and time of this entry?: このエントリの日付と時間を変更しますか?
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: 簡単な説明を入力していません。
-The time you have entered begins before your preferred work hours.  Is this correct?: 記入した時間は通常勤務時間帯よりも早いですが良いですか?
+The time you have entered begins before your preferred work hours. Is this correct?: 記入した時間は通常勤務時間帯よりも早いですが良いですか?
 Invalid Event Date: 正しくないイベントの日付です
 Please add a participant: 参加者を追加してください
 Invalid Date: 無効な日付です

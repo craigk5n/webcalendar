@@ -6,7 +6,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -52,11 +52,6 @@ Next month: Nasl. mesiac
 Next year: Nasl. rok
 
 ########################################
-# Page: includes/date_formats.php
-#
-Dec: Dec
-
-########################################
 # Page: includes/functions.php
 #
 WK: tĂ˝Ĺľ
@@ -67,21 +62,11 @@ April: AprĂ­l
 May_: MĂˇj
 June: JĂşn
 July: JĂşl
-August: August
-September: September
 October: OktĂłber
-November: November
-Jan: Jan
-Feb: Feb
-Mar: Mar
-Apr: Apr
 May: MĂˇj
 Jun: JĂşn
 Jul: JĂşl
-Aug: Aug
-Sep: Sep
 Oct: Okt
-Nov: Nov
 Sunday: NedeÄľa
 Monday: Pondelok
 Tuesday: Utorok

@@ -1,8 +1,8 @@
 # See translations/English-US.txt for instructions.
 #
 # Translated by:
-#	Simone Cortesi <php@cortesi.com>
-#	Alessandro <a.orlandi@iol.it>
+# Simone Cortesi <php@cortesi.com>
+# Alessandro <a.orlandi@iol.it>
 # Last update: 22 July 2000
 #
 # Additional translations 'borrowed' from SourceForge project
@@ -10,7 +10,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -39,12 +39,6 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
-# Page: about.php
-#
-Title: WebCalendar
-OK: OK
-
-########################################
 # Page: access.php
 #
 Database error: Errore nel database
@@ -68,8 +62,8 @@ Previous: Precedente
 ########################################
 # Page: add_entry.php
 #
-private: privato
 confidential: confidenziale
+private: privato
 Error adding event: Errore nell'aggiunta dell'evento
 
 ########################################
@@ -90,13 +84,13 @@ Email: E-Mail
 Colors: Colori
 app-name-help: Specifica il nome dell'applicazione che apparir&agrave; nella barra del titolo del browser per tutte le pagine e sulla pagina di login. Il valore che si specifica qui sar&agrave; cercato nei file delle traduzioni, permettendo di fornire titoli diversi per linguaggi diversi
 Application Name: Nome dell'applicazione
-server-url-help: Specifica l'URL di base per l'applicazione. Questo sar&agrave; incluso quando si inviano memorandum e notifiche via e-mail 
+server-url-help: Specifica l'URL di base per l'applicazione. Questo sar&agrave; incluso quando si inviano memorandum e notifiche via e-mail
 Server URL: URL del Server
 language-help: Specifica quale lingua utilizzare
 Language: Lingua
 Your browser default language is: La lingua di default del tuo browser &egrave;:
 None: Nessuna
-custom-script-help: Permette di inserire il proprio codice Javascript o foglio di stile che sar&agrave; inserito nella sezione "head" del codice HTML di ogni pagina 
+custom-script-help: Permette di inserire il proprio codice Javascript o foglio di stile che sar&agrave; inserito nella sezione "head" del codice HTML di ogni pagina
 Custom script/stylesheet: Script/foglio di stile personale
 custom-header-help: Consente di includere un pezzettino di codice HTML all'inizio di ogni pagina
 Custom header: Intestazione personale
@@ -107,11 +101,11 @@ date-format-help: Specifica il formato preferito per la data
 Date format: Formato della data
 display-week-starts-on: Specifica se la settimana inizia Domenica o Luned&igrave;.. Se si specifica Luned&igrave;, i numeri delle settimane saranno numeri di settimane secondo lo standard ISO.
 Week starts on: La settimana inizia
-time-format-help: Specifica quale formato orario usare: <br /><i>12 ore:</i> Mostra le ore come 3am, 8:30pm, ecc.  <br /><i>24 ore:</i> Mostra le ore come 3:00, 20:30, ecc.
+time-format-help: Specifica quale formato orario usare:<br /><i>12 ore:</i> Mostra le ore come 3am, 8:30pm, ecc.<br /><i>24 ore:</i> Mostra le ore come 3:00, 20:30, ecc.
 Time format: Formato ora
 12 hour: 12 ore
 24 hour: 24 ore
-timed-evt-len-help: Specifica il  metodo di input per determinare la lunghezza di un evento.
+timed-evt-len-help: Specifica il metodo di input per determinare la lunghezza di un evento.
 Specify timed event length by: Specifica la lunghezza di un evento in
 Duration: Durata
 End Time: Tempo di fine
@@ -136,15 +130,14 @@ allow-view-add-help: Un'icona raffigurante un '+'sar&agrave; inclusa nelle viste
 Include add event link in views: Includi il link che permette di aggiungere un evento nelle viste
 allow-view-other-help: Specifica se un utente pu&ograve; visualizzare il calendario di un altro utente.
 Allow viewing other users calendars: Permetti la visione dei calendari degli altri utenti
-require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad accesso pubblico (se il calendario ad accesso pubblico &egrave; abilitato) 
+require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad accesso pubblico (se il calendario ad accesso pubblico &egrave; abilitato)
 Require event approvals: Richiedi che gli eventi siano approvati
 display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se settato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se settato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
 Display unapproved: Mostrare eventi non approvati
 conflict-check-help: Controlla se esistono conflitti fra gli eventi (due eventi programmati per lo stesso istante o per la stessa persona). Se lo setti a "S&igrave;", sarai ancora in grado di programmare due eventi per lo stesso istante dopo aver dato conferma ad un avviso. Se lo setti a "No", il controllo dei conflitti fra gli eventi sar&agrave; fatto. &Egrave; probabile che tu voglia settare questo a "S&igrave;", cos&igrave; il controllo dei conflitti viene fatto
 Check for event conflicts: Controlla se esistono conflitti fra gli eventi
 Yes: S&igrave;
-No: No
-conflict-months-help: Se il controllo dei conflitti &egrave; ablitato ("Controlla se esistono conflitti fra gli eventi" &egrave; settato a "No"), questo specifica quanti mesi futuri  includere nel controllo. Se verifichi che l'aggiunta di un evento dura molto tempo, riduci questo numero
+conflict-months-help: Se il controllo dei conflitti &egrave; ablitato ("Controlla se esistono conflitti fra gli eventi" &egrave; settato a "No"), questo specifica quanti mesi futuri includere nel controllo. Se verifichi che l'aggiunta di un evento dura molto tempo, riduci questo numero
 Conflict checking months: Controllo dei conflitti mensile
 conflict-check-override-help: Permette agli utenti di sovrascrivere conflitti degli eventi e di programmare due o pi&ugrave; eventi per lo stesso istante
 Allow users to override conflicts: Consenti agli utenti di sovrascrivere i conflitti
@@ -170,7 +163,6 @@ Plugins: Plugin
 plugins-enabled-help: Abilita applicazioni Plugin
 Enable Plugins: Abilita Plugin
 plugins-sort-key-help: Specifica una chiave di ordinamento per i plugin. Questo permette di ordinare in un determinato modo i plugin
-Plugin: Plugin
 allow-public-access-help: Se abilitato, il calendario pu&ograve; essere utilizzato come un calendario pubblico in sola lettura che non richiede agli utenti di effettuare il login
 Allow public access: Permetti l'accesso pubblico
 public-access-default-visible: Eventi dal calendario pubblico appariranno automaticamente nel calendario di tutti gli utenti
@@ -190,7 +182,7 @@ Groups enabled: Abilita Gruppi
 user-sees-his-group-help: Se abilitato, gli utenti non vedranno gli utenti di calendari che non siano in almeno uno dei loro gruppi
 User sees only his groups: L'utente pu&ograve; vedere solo il suo gruppo
 nonuser-enabled-help: Se abilitato, gli amministratori potranno aggiungere calendari per i non utenti
-Nonuser enabled: Calendari abilitati per i non utenti 
+Nonuser enabled: Calendari abilitati per i non utenti
 nonuser-list-help: Dove mostrare i calendari dei non utenti nella lista dei partecipanti
 Nonuser list: Mostra nella lista dei partecipanti a
 reports-enabled-help: Se abilitato, gli utenti vedranno una sezione "Rapporti" alla fine di ogni pagina e saranno in grado di creare rapporti personalizzati. Inoltre, gli amministratori potranno creare rapporti globali che appariranno alla fine delle pagine di tutti gli utenti
@@ -199,7 +191,7 @@ subscriptions-enabled-help: Specifica se utenti remoti possono sottoscrivere un 
 Allow remote subscriptions: Permetti sottoscrizioni remote
 categories-enabled-help: Abilita il supporto per le categorie degli eventi
 Categories enabled: Abilita categorie
-allow-external-users-help: Specifica se un non utente pu&ograve; essere aggiunto ad un evento. Questo permette ai non utenti di essere listati come  partecipanti all'evento.
+allow-external-users-help: Specifica se un non utente pu&ograve; essere aggiunto ad un evento. Questo permette ai non utenti di essere listati come partecipanti all'evento.
 Allow external users: Permetti utenti esterni
 external-can-receive-notification-help: Quando gli utenti esterni sono abilitati ed &egrave; abilitato l'uso di e-mail, gli utenti esterni possono ricevere avvisi via e-mail quando un evento &egrave; stato aggiunto, aggiornato o cancellato (se l'indirizzo e-mail dell'utente &egrave; stato fornito)
 External users can receive email notifications: Gli utenti esterni possono ricevere e-mail di notifica
@@ -210,7 +202,7 @@ Email enabled: Abilita e-mail
 email-default-sender: Specifica l'indirizzo e-mail da cui figurano provenire le e-mail quando si inviano gli avvisi
 Default sender address: Indirizzo del mittente standard
 Default user settings: Settaggi dell'utente standard
-email-event-reminders-help: Specifica se inviare o  meno avvisi per gli eventi
+email-event-reminders-help: Specifica se inviare o meno avvisi per gli eventi
 Event reminders: Segnala eventi in e-mail
 email-event-added: Segnala nuovo evento
 Events added to my calendar: Segnala nuovo evento aggiunto al mio calendario
@@ -299,8 +291,6 @@ Description: Descrizione
 ########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
 Edit Entry: Modifica Nota
 Add Entry: Aggiungi Nota
 Details: Dettagli
@@ -310,7 +300,7 @@ brief-description-help: Questo dovrebbe dare una breve descrizione (circa 20 car
 Brief Description: Descrizione Breve
 full-description-help: Questo dovrebbe dare dettagli completi dell'evento. Questa informazione sar&agrave; mostrata quando l'utente visualizza l'evento.
 Full Description: Descrizione Completa
-access-help: Specifica il livello di accesso dell'evento.<br /> <i>Pubblico</i>: Chiunque pu&ograve; vedere tutti i dettagli dell'evento.  <br /><i>Confidenziale</i>: Gli altri possono vedere che &egrave; presente una nota per quella data e ora, ma non i dettagli relativi.
+access-help: Specifica il livello di accesso dell'evento.<br /> <i>Pubblico</i>: Chiunque pu&ograve; vedere tutti i dettagli dell'evento.<br /><i>Confidenziale</i>: Gli altri possono vedere che &egrave; presente una nota per quella data e ora, ma non i dettagli relativi.
 Access: Accesso
 priority-help: Specifica la priorit&agrave; dell'evento. Eventi con un alta priorit&agrave; saranno mostrati in grassetto.
 Priority: Priorit&agrave;
@@ -319,21 +309,20 @@ Medium: Media
 Low: Bassa
 category-help: Specifica la categoria dell'evento
 Category: Categoria
-URL: URL
 date-help: Specifica la data di un evento.
 Untimed event: Evento senza tempo
 Timed event: Evento temporizzato
 All day event: Evento giornaliero
 Timezone Offset: Scostamento della Timezone
 time-help: Specifica l'ora di un evento.<br /><i>Questo campo pu&ograve; essere lasciato in bianco.</i>
-duration-help: Specifica la durata (in minuti) dell'evento. <br /><i>Questo campo pu&ograve; essere lasciato in bianco.</i>
+duration-help: Specifica la durata (in minuti) dell'evento.<br /><i>Questo campo pu&ograve; essere lasciato in bianco.</i>
 hours: ore
 minutes: minuti
 end-time-help: Specifica il tempo previsto per la fine dell'evento
 participants-help: Elenca i partecipanti di questa nota.
 external-participants-help: Specifica una lista di partecipanti all'evento che sono dei non utenti del calendario. Gli utenti dovrebbero essere listati uno per riga e possono includere un indirizzo e-mail. Se un indirizzo e-mail viene specificato, &egrave; possibile che l'utente riceva notifiche e avvisi
 External Participants: Partecipanti Esterni
-repeat-type-help: Seleziona quanto spesso l'evento si deve ripetere.<i>Mensile (per giorno)</i> permette ad un evento di ripetersi il 1&grad; Luned&igrave; del mese, 3&grad; Gioved&igrave; del mese, ecc.  <i>Mensile (per data)</i> permette ad un evento di ripetersi nello stesso giorno del mese.
+repeat-type-help: Seleziona quanto spesso l'evento si deve ripetere.<i>Mensile (per giorno)</i> permette ad un evento di ripetersi il 1&grad; Luned&igrave; del mese, 3&grad; Gioved&igrave; del mese, ecc. <i>Mensile (per data)</i> permette ad un evento di ripetersi nello stesso giorno del mese.
 Daily: Giornaliera
 Weekly: Settimanale
 Monthly: Mensile
@@ -539,7 +528,6 @@ repeat-day-help: Specifica in quali giorni della settimana l'evento pu&ograve; r
 # Page: help_import.php
 #
 Import: Importa
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Questo form ti permetter&agrave; di importare eventi dal file degli appuntamenti di Palm Desktop
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Dovrebbe essere localizzato nel tuo Palm, nella directory <tt>datebook/datebook.dat</tt> in una sottodirectory col tuo nome utente
 The following entries will not be imported: I record seguenti non saranno importati
@@ -806,8 +794,6 @@ October: Ottobre
 November: Novembre
 Jan: Gen
 Feb: Feb
-Mar: Mar
-Apr: Apr
 May: Mag
 Jun: Giu
 Jul: Lug
@@ -924,7 +910,7 @@ Color format should be RRGGBB.: Il fomrato del colore deve essere '#RRGGBB'
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Non &egrave; stata inserita una breve descrizione
-The time you have entered begins before your preferred work hours.  Is this correct?: Il tempo che hai inserito inizia prima delle tue ore di lavoro preferite. &Egrave; corretto?
+The time you have entered begins before your preferred work hours. Is this correct?: Il tempo che hai inserito inizia prima delle tue ore di lavoro preferite. &Egrave; corretto?
 You have not entered a valid time of day: Non &egrave; stato inserito un orario corretto
 
 ########################################

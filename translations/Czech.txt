@@ -7,7 +7,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -36,19 +36,12 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
-# Page: about.php
-#
-Title: WebCalendar
-OK: OK
-
-########################################
 # Page: access.php
 #
 Database error: Chyba databáze
 Go: Jdi
 Save: Uložit
 Public Access: Ve?ejný p?ístup
-Admin: Admin
 Calendar: Kalendá?
 Edit: Uprav
 Events: Události
@@ -65,8 +58,8 @@ Previous: P?edchozí
 ########################################
 # Page: add_entry.php
 #
-private: soukromé
 confidential: d?v?rný
+private: soukromé
 Error adding event: Chyba p?i p?idávání události
 
 ########################################
@@ -104,7 +97,7 @@ date-format-help: Ur?uje up?ednost?ovaný formát data.
 Date format: Formát data
 display-week-starts-on: Tímto lze ur?it, zda týden za?íná v ned?li a nebo v pond?lí. Pokud vybereš pond?lí, tak se použije pro ?ísla týdnu norma ISO.
 Week starts on: Za?átek týdne
-time-format-help: Ur?uje jaký formát ?asu používat: <br /><i>12ti hodinový:</i> Zobratuje ?asy jako je 3dop., 8:30odp., atp.  <br /><i>24 hodinový:</i> Zobrazuje ?asy nap? jako 300, 2030, atp.
+time-format-help: Ur?uje jaký formát ?asu používat:<br /><i>12ti hodinový:</i> Zobratuje ?asy jako je 3dop., 8:30odp., atp.<br /><i>24 hodinový:</i> Zobrazuje ?asy nap? jako 300, 2030, atp.
 Time format: Formát ?asu
 12 hour: 12 hodin
 24 hour: 24 hodin
@@ -168,12 +161,12 @@ plugins-enabled-help: Povolí dopl?kové rozší?ení aplikací
 Enable Plugins: Povol dopl?ky
 plugins-sort-key-help: Ur?uje zp?sob ?azení dopl?k?.
 Plugin: Dopln?k
-allow-public-access-help: Pokud je povoleno, bude možno bez možnosti zápisu p?istupovat do kalendá? bez nutnosti se p?ihlašovat.  
+allow-public-access-help: Pokud je povoleno, bude možno bez možnosti zápisu p?istupovat do kalendá? bez nutnosti se p?ihlašovat.
 Allow public access: Povolit ve?ejný p?ístup
 public-access-default-visible: Události od anonym? se automaticky objeví v kalendá?ích všech uživatel?
-Public access visible by default: Anonymní p?ísp?vky standardn? viditelné 
+Public access visible by default: Anonymní p?ísp?vky standardn? viditelné
 public-access-default-selected: P?i p?idávání nových události se anonmní ú?et automaticky p?idá jako ú?astník.
-Public access is default participant: Anonymové budou ve výchozím stavu ú?astníky 
+Public access is default participant: Anonymové budou ve výchozím stavu ú?astníky
 public-access-view-others-help: Ur?uje, zda p?i anonymním p?ístupu (nebo pomocí ve?ejného ú?tu) je možné si prohlížet kalendá?e uživatel? tohoto systému.
 Public access can view other users: Anonymové si sm?jí prohlížet jiné uživatele
 public-access-can-add-help: Pokud je povoleno, lidé p?istupující pomocí ve?ejného ú?tu/anonymn? budou moci vytvá?et nové události, ale ty se nezobrazí do kalendá??, dokud to administrátor nepovolí.
@@ -309,7 +302,7 @@ brief-description-help: Zde by m?l být stru?ný popis události (kolem 20ti znak?)
 Brief Description: Stru?ný popis
 full-description-help: Tímto bys m?l dopl?ovat další detaily události. Tyto informace si bude moct prohlédnout ten, kdo klikne na zobrazení podrobností.
 Full Description: Detailní popis
-access-help: Ur?uje úrove? pro p?ístup k události.<br /> <i>Ve?ejné</i>: Kdokoli se m?že podívat na všechny podrobnosti o této události.  <br /><i>D?v?rné</i>: Ostaní uvidí, že máš záznam v kalendá?i v daný okamžik, ale neuvidí už zádné další podrobnosti.
+access-help: Ur?uje úrove? pro p?ístup k události.<br /> <i>Ve?ejné</i>: Kdokoli se m?že podívat na všechny podrobnosti o této události.<br /><i>D?v?rné</i>: Ostaní uvidí, že máš záznam v kalendá?i v daný okamžik, ale neuvidí už zádné další podrobnosti.
 Access: P?ístup
 priority-help: Ur?uje prioritu události. Události s vyšší prioritou budou zobrazeny tu?n?.
 Priority: Priorita
@@ -318,21 +311,20 @@ Medium: st?ední
 Low: nízká
 category-help: Up?es?uje kategorii událostí.
 Category: Kategorie
-URL: URL
 date-help: Tímto se ur?uje, kdy událost nastala.
 Untimed event: Nena?asovaná událost
 Timed event: Na?asovaná událost
 All day event: Celodenní událost
 Timezone Offset: ?asová zóna
 time-help: Tímto se ur?uje p?esný ?as události.<br /><i>Nemusí se sem nic vypl?ovat.</i>
-duration-help: Tímto lze ur?it dobu trvání (v minutách) dané události. <br /><i>Toto polí?ko m?že z?stat prázdné.</i>
+duration-help: Tímto lze ur?it dobu trvání (v minutách) dané události.<br /><i>Toto polí?ko m?že z?stat prázdné.</i>
 hours: hodin
 minutes: minut
 end-time-help: Ur?uje o?ekávaný koned události.
 participants-help: Seznam ú?astník? této události.
 external-participants-help: Ur?uje seznam z??astn?ných události, kterí nepat?í mezi uživatele tohoto kalendá?ového systému. Tyto uživatele je možno vypsat jednoho po druhém, jeden na ?ádek (v?etn? emailové adresy). Pokud bude zadána emailová adresa, uživatel bude moct p?ijímat sd?lení a p?ipomínky.
 External Participants: Vn?jší z??astn?ní
-repeat-type-help: Vyber si, jak ?asto se má událost opakovat<i>M?sí?n? (podle dne)</i> znamená, že se událost má opakovat každé první pond?lí v m?síci, t?etí úterý v m?sící, atp.  <i>M?sí?n? (podle data)</i> umožní opakovýní události ve stejný den každý m?síc.
+repeat-type-help: Vyber si, jak ?asto se má událost opakovat<i>M?sí?n? (podle dne)</i> znamená, že se událost má opakovat každé první pond?lí v m?síci, t?etí úterý v m?sící, atp. <i>M?sí?n? (podle data)</i> umožní opakovýní události ve stejný den každý m?síc.
 Daily: denn?
 Weekly: týdn?
 Monthly: m?sí?n?
@@ -353,13 +345,13 @@ You are not authorized to edit this entry.: Nemáš oprávn?ni upravovat tento zázn
 # Page: edit_entry_handler.php
 #
 A new appointment has been made for you by: Máš novou sch?žku. Založil ti ji
-An appointment has been updated by: Sch?zka byla upravena uživatelem 
+An appointment has been updated by: Sch?zka byla upravena uživatelem
 The following conflicts with the suggested time: Následují konfliky s navrhovaným ?asem
-Please look on: Prosím podívej se na 
+Please look on: Prosím podívej se na
 to accept or reject this appointment: pro p?ijetí a nebo odmítnutí této sch?zky
 to view this appointment: k prohlédnutí sch?zky
 Scheduling Conflict: Naplánování konfliktu
-Your suggested time of: Tebou navrhovaný ?as 
+Your suggested time of: Tebou navrhovaný ?as
 conflicts with the following existing calendar entries: konflikt s následujícími záznamy v kalendá?i
 
 ########################################
@@ -538,7 +530,6 @@ repeat-day-help: Ur?uje, které dny týdne by se událost m?la opakovat. Použije se
 # Page: help_import.php
 #
 Import: Import
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Tento formulá? umož?uje na?íst záznamy ze za?ízení Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Datový soubor by se m?l nacházet v adresá?i Palm v souboru <tt>datebook/datebook.dat</tt> v podadresá?i se tvým jménem.
 The following entries will not be imported: Následující záznamy nebudou importovány
@@ -620,7 +611,7 @@ Reject this entry?: Odmítnout tuto událost?
 # Page: login-app.php
 #
 You must enter a login and password: Musíš zadat sv?j platný login a heslo
-Save login via cookies so I dont have to login next time.: Abych se p?íšt?  nemusel p?ihlašovat, zapamatuj si p?ihlašovací údaje do cookies
+Save login via cookies so I dont have to login next time.: Abych se p?íšt? nemusel p?ihlašovat, zapamatuj si p?ihlašovací údaje do cookies
 Login: Login
 Access public calendar: P?ístup k ve?ejným kalendá??m
 cookies-note: <b>Poznámka:</b> Pro p?ihlášení a správný b?h je pot?eba mít v prohlížeci povolena cookies.
@@ -874,6 +865,9 @@ Portuguese: Portuguese
 Portuguese/Brazil: Portuguese/Brazil
 Romanian: Romanian
 Russian: Russian
+Spanish: Spanish
+Swedish: Swedish
+Turkish: Turkish
 event: záznam
 
 ########################################
@@ -919,7 +913,7 @@ Color format should be RRGGBB.: Formát barvy by nap?íklad m?l být '#RRGGBB'
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Nevložil jste stru?ný popis
-The time you have entered begins before your preferred work hours.  Is this correct?: Zadaný ?as je p?ed zá?átkem nastavené pracovní doby. Je to v po?ádku?
+The time you have entered begins before your preferred work hours. Is this correct?: Zadaný ?as je p?ed zá?átkem nastavené pracovní doby. Je to v po?ádku?
 You have not entered a valid time of day: Nevložil jste platný ?as
 
 ########################################

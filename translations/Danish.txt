@@ -2,11 +2,11 @@
 #
 # Translated by: Allan Thraen (allan@12go.dk)
 # Updated by:
-#   Jørgen Thomsen (jth@jth.net), 12-Feb-2001
-#   Jens Th (photo@jens-th.com), Nov.25-2003
-#   (Nicolaj Rasmussen, drlandau <at> msn <dot> com), 15-Feb-2004
-#   (Morten Nielsen, mni <at> it <dot> dk), 21-Mar-2005
-#   (Leo Todaro, leotodaro <at> hotmail.com), 18-Jun-2005
+# Jørgen Thomsen (jth@jth.net), 12-Feb-2001
+# Jens Th (photo@jens-th.com), Nov.25-2003
+# (Nicolaj Rasmussen, drlandau <at> msn <dot> com), 15-Feb-2004
+# (Morten Nielsen, mni <at> it <dot> dk), 21-Mar-2005
+# (Leo Todaro, leotodaro <at> hotmail.com), 18-Jun-2005
 # Last update: 18-Jun-2005
 #
 # Additional translations 'borrowed' from SourceForge project
@@ -14,7 +14,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -46,7 +46,6 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: about.php
 #
 Title: Web-kalenderen
-OK: OK
 
 ########################################
 # Page: access.php
@@ -55,11 +54,10 @@ Database error: Database fejl
 Go: Gå til
 Save: Gem
 Public Access: Offentlig adgang
-Admin: Admin
 Calendar: Kalender
 Edit: Redigér
 Events: Aftaler
-Public: Offentlig	 
+Public: Offentlig
 Confidential: Fortrolig
 Private: Privat
 
@@ -72,8 +70,8 @@ Previous: Forrige
 ########################################
 # Page: add_entry.php
 #
-private: privat
 confidential: fortrolig
+private: privat
 Error adding event: Fejl ved tilføjelse af aftale
 
 ########################################
@@ -86,7 +84,7 @@ Month: Måned
 Year: År
 System Settings: System indstillinger
 Help: Hjælp
-Settings: Indstillinger	 
+Settings: Indstillinger
 Groups: Grupper
 NonUser Calendars: Ikke brugertilknyttede kalendere
 Other: Diverse
@@ -170,11 +168,9 @@ popup-includes-siteextras-help: Hvis slået til, vis brugertilpasset aftale opsæt
 Display Site Extras in popup: Vis Site Extras i popup-besked
 remember-last-login-help: Når slået til bliver brugerens sidste login automatisk udfyldt på login-siden (ikke password) og brugerens indstillinger bliver automatisk hentet (inkl. deres foretrukne farver og sprogvalg).
 Remember last login: Husk sidste login
-Plugins: Plugins
 plugins-enabled-help: Gør det muligt at benytte plugins.
 Enable Plugins: Aktiver plugins
 plugins-sort-key-help: Angiver en sorteringsnøgle for den valgte plugin. Dette gør det muligt at vise plugins i en speciel rækkefølge.
-Plugin: Plugin	
 allow-public-access-help: Når slået til kan kalenderen bruges som en offentlig kalender der ikke kræver login.
 Allow public access: Tillad offentlig adgang
 public-access-default-visible: Aftaler i den offentlige kalender vil automatisk optræde i alle brugeres kalendere
@@ -187,7 +183,7 @@ public-access-can-add-help: Når slået til kan brugere, der tilgår kalenderen med
 Public access can add events: Offentlig adgang kan tilføje aftaler
 public-access-add-requires-approval-help: Angiver om aftaler tilføjet via en konto med offentlig adgang kræver godkendelse før den bliver vist.
 Public access new events require approval: Nye offentlige aftaler kræver accept
-public-access-sees-participants-help: Hvis slået til, kan brugere som tilgår kalenderen via offentlig adgang se aftale deltagere i detalje-visning 
+public-access-sees-participants-help: Hvis slået til, kan brugere som tilgår kalenderen via offentlig adgang se aftale deltagere i detalje-visning
 Public access can view participants: Offentlig adgang må se andre aftale-deltagere
 groups-enabled-help: Slår understøttelse af grupper til, hvilket gør brugere i stand til at vælge brugere via gruppemedlemsskab.
 Groups enabled: Grupper slået til
@@ -274,12 +270,11 @@ Your assistants: Dine assistenter
 ########################################
 # Page: availability.php
 #
-day: dag 
+day: dag
 
 ########################################
 # Page: category.php
 #
-Global: Global
 Category Name: Navn på kategori
 Color: Farve
 Add: Tilføj
@@ -305,8 +300,6 @@ Description: Beskrivelse
 ########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
 Edit Entry: Redigér aftale
 Add Entry: Tilføj aftale
 Details: Detaljer
@@ -324,16 +317,15 @@ High: Høj
 Medium: Medium
 Low: Lav
 category-help: Angiver aftalens kategori.
-Category: Kategori	
-URL: URL
+Category: Kategori
 date-help: Angiver datoen for aftalen.
 Untimed event: Ikke tidsbestemt aftale
 Timed event: Tidsbestemt aftale
-All day event: Aftale for hele dagen 
+All day event: Aftale for hele dagen
 Timezone Offset: Tidszone forskydning
 time-help: Angiver tidspunktet for aftalen.<br /><i>Dette felt behøver ikke at være udfyldt.</i>
-duration-help: I dette felt kan du angive varigheden af aftalen <br /><i>Dette felt behøver ikke at være udfyldt.</i>
-hours: timer 
+duration-help: I dette felt kan du angive varigheden af aftalen<br /><i>Dette felt behøver ikke at være udfyldt.</i>
+hours: timer
 minutes: minutter
 end-time-help: Angiver sluttidspunktet for aftalen.
 participants-help: Vis deltagerne i denne aftale.
@@ -353,8 +345,8 @@ repeat-frequency-help: Hvor ofte skal aftalen gentages ? Tallet 1 viser at det s
 Frequency: Hyppighed
 All: Alle
 Send Reminder: Send påmindelse
-days: dage  
-Delete entry: Slet aftale  
+days: dage
+Delete entry: Slet aftale
 You are not authorized to edit this entry.: Du har ikke ret til at slette denne aftale
 
 ########################################
@@ -536,9 +528,8 @@ repeat-day-help: Hvilke ugedage skal aftalen gentages på.
 # Page: help_import.php
 #
 Import: Importér
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Denne formular gør det muligt at importere aftaler fra Palm Desktop adressebog.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den bør ligge i din Palm mappe i <tt>datebook/datebook.dat</tt>  i en undermappe med dit brugernavn.
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den bør ligge i din Palm mappe i <tt>datebook/datebook.dat</tt> i en undermappe med dit brugernavn.
 The following entries will not be imported: Følgende aftaler importeres ikke
 Entries older than the current date: Aftaler ældre end dags dato
 Entries created in the Palm Desktop...: Aftaler oprettet på Palm Desktoppen som ikke er blevet HotSync&#39;d
@@ -669,7 +660,7 @@ cont.: cont.
 This event is confidential: Denne aftale er fortrolig
 Waiting for approval: Afventer acceptering
 Deleted: Slettet
-Rejected: Afvist 
+Rejected: Afvist
 Approved: Accepteret
 Unknown: Ukendt
 to manage reports for the Public Access calendar: for at redigere rapporter i den offentlige kalender
@@ -679,7 +670,7 @@ Manage Reports: Rediger rapporter
 ########################################
 # Page: search.php
 #
-Advanced Search: Avanceret søgning 
+Advanced Search: Avanceret søgning
 Search: Søg
 Keywords: Søgeord
 
@@ -749,7 +740,6 @@ No users for this view: Ingen brugere til denne visning
 # Page: view_entry.php
 #
 Assistant mode: Assistent-tilstand
-Status: Status
 External User: Eksterne brugere
 Approve/Confirm entry: Godkend/bekræft aftale
 Reject entry: Afvis aftale
@@ -809,23 +799,15 @@ Generate printer-friendly version: Vis printervenlig side
 January: Januar
 February: Februar
 March: Marts
-April: April
 May_: Maj
 June: Juni
 July: Juli
-August: August
-September: September
 October: Oktober
 November: November
 Jan: Jan
 Feb: Feb
-Mar: Mar
-Apr: Apr
 May: Maj
-Jun: Jun
-Jul: Jul
 Aug: Aug
-Sep: Sep
 Oct: Okt
 Nov: Nov
 The following error occurred: Følgende fejl opstod
@@ -941,7 +923,7 @@ Change the date and time of this entry?: Skal dato og tid ændres for denne post?
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Du har ikke indtastet en kort beskrivelse
-The time you have entered begins before your preferred work hours.  Is this correct?: Det valgte tidspunkt er før end din foretrukne arbejdstid. Er dette korrekt?
+The time you have entered begins before your preferred work hours. Is this correct?: Det valgte tidspunkt er før end din foretrukne arbejdstid. Er dette korrekt?
 Please add a participant: Tilføj venligst en deltager:
 You have not entered a valid time of day: Du har ikke indtastet et gyldigt tidspunkt
 

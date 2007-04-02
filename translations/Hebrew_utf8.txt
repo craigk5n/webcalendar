@@ -4,7 +4,7 @@
 # Last update: 22 July 2006
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -75,8 +75,8 @@ Previous: הקודם
 ########################################
 # Page: add_entry.php
 #
-private: פרטי
 confidential: סודי
+private: פרטי
 Error adding event: שגיאה בהוספת הארוע
 
 ########################################
@@ -129,7 +129,7 @@ Date format: תצורת תאריך
 Small Task Date: תאריך משימה בקטן
 display-week-starts-on: קובע אם השבוע מתחיל ביום ראשון או ביום שני. אם בוחרים ביום שני, אזי מספרי שבוע יהיו מספרי ISO.
 Week starts on: השבוע מתחיל ב-
-time-format-help: קובע איזה תצורת שעה להשתמש: <br /><i>12 שעות:</i> הצג שעות כ-3 לפנה"צ,  8:30 אחה"צ, וכדומה<br /><i> 24 שעות:</i> הצג שעות כ- 3:00, 20:30, וכדומה.
+time-format-help: קובע איזה תצורת שעה להשתמש:<br /><i>12 שעות:</i> הצג שעות כ-3 לפנה"צ, 8:30 אחה"צ, וכדומה<br /><i> 24 שעות:</i> הצג שעות כ- 3:00, 20:30, וכדומה.
 Time format: תצורת שעה
 12 hour: 12 שעות
 24 hour: 24 שעות
@@ -244,7 +244,7 @@ nonuser-list-help: היכן להציג את לוחות השנה ללא משתמ�
 Nonuser list: הצג ברשימת משתתפים ב-
 reports-enabled-help: אם מאופשר, משתמשים ייראו מחלקה של "דוחות" בתחתית כל דף והם יוכלו ליצור דוחות מותאמים אישית. בנוסף, מנהלים יוכלו ליצור דו"חות גלובליים שיוצגו בתחתית הדף של כל משתמש.
 Reports enabled: דו"חות מאופשרים
-subscriptions-enabled-help: קובע אם משתמשים מרוחקים יוכלו להרשם ללוח שנה של משתמש מקומי, מאפשר להם לראות את הארועים של המשתמש המקומי ביישומים  בעלי יכולות iCal כדוגמת iCal של Apple או Mozilla Calendar.
+subscriptions-enabled-help: קובע אם משתמשים מרוחקים יוכלו להרשם ללוח שנה של משתמש מקומי, מאפשר להם לראות את הארועים של המשתמש המקומי ביישומים בעלי יכולות iCal כדוגמת iCal של Apple או Mozilla Calendar.
 Allow remote subscriptions: אפשר מנויים מרוחקים
 remotes-enabled-help: מאפשר למשתמשים לטעון קבצי ucs מרוחקים באמצעות URL
 Allow remote calendars: אפשר לוחות שנה מרוחקים
@@ -454,7 +454,7 @@ brief-description-help: זה מיועד לספק תאור קצר (כ-20 תווי
 Brief Description: תאור קצר
 full-description-help: זה צריך להיות הפרטים המלאים של הארוע. ניתן לצפות במידע זה כאשר משתמש צופה בארוע.
 Full Description: תאור מלא
-access-help: קובע את רמת הגישה של הארוע. <br /> <i>ציבורי</i>: כל אחד יכול לצפות בפרטים המלאים של הארוע. <br /><i>פרטי</i>: משתמשים יכולים לראות שיש לך ארוע בשעה ובתאריך הזה, אבל לא את הפרטים המתארים את הארוע.
+access-help: קובע את רמת הגישה של הארוע.<br /> <i>ציבורי</i>: כל אחד יכול לצפות בפרטים המלאים של הארוע.<br /><i>פרטי</i>: משתמשים יכולים לראות שיש לך ארוע בשעה ובתאריך הזה, אבל לא את הפרטים המתארים את הארוע.
 Access: גישה
 priority-help: קובע את העדיפות של הארוע. ארועים בעדיפות גבוהה יוצגו במודגש
 Priority: עדיפות
@@ -470,15 +470,14 @@ Percent Complete: אחוז ביצוע
 All Percentages: כל האחוזים
 location-help: מקום הארוע
 Location: מקום
-URL: URL
 date-help: קובע את תאריך הארוע.
 Start Date: תאריך התחלה
 Untimed event: ארוע לא לפי זמן
 Timed event: ארוע לפי זמן
 All day event: ארוע של יום שלם
 Timezone Offset: היסט איזור זמן
-time-help: קובע את שעת הארוע.<br /> בחר "ארוע לפי זמן" (עבור ארוע שמזומן לשעה מסויימת באותו יום), "ארוע לא לפי זמן" (עבור ארוע שלא קשור לשעה (כמו חופשה)), או  "ארוע של יום שלם" עבור ארוע שלוקח את כל היום (כמו להיות מחוץ למשרד).
-duration-help: קובע את משך הארוע (בשעות:דקות). <br /><i>ניתן להשאיר שדה זה ריק.</i>
+time-help: קובע את שעת הארוע.<br /> בחר "ארוע לפי זמן" (עבור ארוע שמזומן לשעה מסויימת באותו יום), "ארוע לא לפי זמן" (עבור ארוע שלא קשור לשעה (כמו חופשה)), או "ארוע של יום שלם" עבור ארוע שלוקח את כל היום (כמו להיות מחוץ למשרד).
+duration-help: קובע את משך הארוע (בשעות:דקות).<br /><i>ניתן להשאיר שדה זה ריק.</i>
 hours: שעות
 minutes: דקות
 end-time-help: קובע את שעת סיום הצפוי של הארוע.
@@ -753,7 +752,7 @@ repeat-day-help: קובע באיזה מימי השבוע על הארוע להו�
 #
 Import: ייבוא
 This form will allow you to import entries from the Palm Desktop Datebook.: טופס זה יאפשר לך לייבא רשומות מפינקס התאריכים של שולחן העבודה של Palm
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: הוא אמור להמצא במחיצה ב-Palm שלך ב- <tt>datebook/datebook.dat</tt>  בתת ספריה על שם שם המשתמש שלך
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: הוא אמור להמצא במחיצה ב-Palm שלך ב- <tt>datebook/datebook.dat</tt> בתת ספריה על שם שם המשתמש שלך
 The following entries will not be imported: הרשומות הבאות לא ייובוא
 Entries older than the current date: רשומות ישנות מהתאריך של היום
 Entries created in the Palm Desktop...: רשומות בשולחן העבודה של ה-Palm שלא סונכרנו
@@ -795,7 +794,7 @@ I want to approve events: אני רוצה לאשר ארועים
 boss-approve-event-help: קובע אם המנהל חייב לאשר ארועים שעוזריו קבעו.
 Subscribe/Publish: מנוי/פרסום
 Allow remote publishing: אפשר פרסום מרוחק
-allow-remote-publishing-help: קובע באם מותר ללקוח iCal  לפרסם ארועים בחזרה ללוח השנה
+allow-remote-publishing-help: קובע באם מותר ללקוח iCal לפרסם ארועים בחזרה ללוח השנה
 remote-publishing-url-help: מציג את ה-URL להשתמש ביישום לקוח ה-iCal כדי להרשם אל ולפרסם בלוח השנה
 allow-remote-subscriptions-help: קובע אם לשמתמשים מרוחקים מותר לעשות מנוי ללוח השנה שלך, לאפשר להם לראות את הארועים שלך ביישומים בעלי יכולות iCal כמו iCal של Apple או Mozilla Calendar.
 remote-subscriptions-url-help: מציג את ה-URL שמשתמשים מרוחקים צריכים להשתמש כדי לעשות מנוי בלוח השנה שלך.
@@ -1281,6 +1280,9 @@ Portuguese: Portuguese
 Portuguese/Brazil: Portuguese/Brazil
 Romanian: Romanian
 Russian: Russian
+Spanish: Spanish
+Swedish: Swedish
+Turkish: Turkish
 Welsh: Welsh
 event: ארוע
 journal: יומן
@@ -1362,7 +1364,7 @@ Change the date and time of this entry?: שנה את השעה והתאריך ש�
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: לא הכנסת תאור קצר
-The time you have entered begins before your preferred work hours.  Is this correct?: ציינת שעה לפני תחילת יום העבודה שלך. האם זה נכון?
+The time you have entered begins before your preferred work hours. Is this correct?: ציינת שעה לפני תחילת יום העבודה שלך. האם זה נכון?
 Invalid Event Date: תאריך ארוע לא חוקי
 Please add a participant: נא להוסיף משתתף
 Invalid Date: תאריך לא חוקי
@@ -1478,12 +1480,12 @@ If not, the required SQL can be displayed and you should be able: אם לא, י�
 No database actions are required: לא נדרשות כל פעולות בבסיס הנתונים
 The following database actions are required: פעולות בסיס הנתונים הבאות נדרשות
 ODBC Underlying Database: בסיס נתונים על בסיס ODBC
-Automatic installation not supported: עוד לא יישמנו התקנה אוטומטית עבור סוג בסיס הנתונים שלך. עליך ליצור את הטבלאות הדרושות ידינית בעזרת ה-SQL המסופק. נא הקלק על <b>הצג SQL</b> כדי להמשיך. חתוך  &amp; הדבק אותו אל תוך חלון ה-SQL של בסיס הנתונים שלך.
+Automatic installation not supported: עוד לא יישמנו התקנה אוטומטית עבור סוג בסיס הנתונים שלך. עליך ליצור את הטבלאות הדרושות ידינית בעזרת ה-SQL המסופק. נא הקלק על <b>הצג SQL</b> כדי להמשיך. חתוך &amp; הדבק אותו אל תוך חלון ה-SQL של בסיס הנתונים שלך.
 This may take several minutes to complete: זה יכול לקחת מספר דקות כדי לסיים
 Install Database: התקן בסיס נתונים
 Update Database: עדכן בסיס נתונים
 Display Required SQL: הצג SQL נדרש
-Return to previous page after processing sql: לאחר טיפול ידני ב-SQL, עליך לחזור לדף הקודם כדי לבדוק את בסיס הנתונים שלך כדי שהסקריפט יגלה את השינויים.
+Return to previous page after processing SQL.: לאחר טיפול ידני ב-SQL, עליך לחזור לדף הקודם כדי לבדוק את בסיס הנתונים שלך כדי שהסקריפט יגלה את השינויים.
 This is the final step in setting up your WebCalendar Installation.: זהו הצעד האחרון בהגדרת התקנת לוח השנה שלך
 Timezone Conversion: המרת איזור זמן
 It appears that you have: כנראה ש-
