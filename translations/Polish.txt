@@ -7,7 +7,7 @@
 # Last time updated on 09-18-2005
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -39,7 +39,6 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: about.php
 #
 Title: Tytu³
-OK: OK
 
 ########################################
 # Page: access.php
@@ -67,8 +66,8 @@ Previous: Poprzedni
 ########################################
 # Page: add_entry.php
 #
-private: prywatne
 confidential: poufny
+private: prywatne
 Error adding event: B³±d dodawania zdarzenia
 
 ########################################
@@ -109,9 +108,9 @@ tz-help: Okre¶la ile godzin potrzeba do przystosowania czasu serwera do czasu lo
 Server Timezone Selection: Strefa czasowa serwera
 date-format-help: Okre¶la preferowany format daty
 Date format: Format daty
-display-week-starts-on: Okre¶la czy pierwszym dniem tygodnia jest niedziela czy poniedzia³ek.  Je¶li jest to poniedzia³ek, to numer tgodnia bedzie numerem ISO.
+display-week-starts-on: Okre¶la czy pierwszym dniem tygodnia jest niedziela czy poniedzia³ek. Je¶li jest to poniedzia³ek, to numer tgodnia bedzie numerem ISO.
 Week starts on: Tydzieñ zaczyna siê w
-time-format-help: Okre¶la którego formatu czasu u¿ywaæ <br /><i>12 godz.:</i> Wy¶wietla czas jako ³am, 8:³0pm, itd. <br /><i>24 godz.:</i> Wy¶wietla czas jako ³00, 20³0 itd.
+time-format-help: Okre¶la którego formatu czasu u¿ywaæ<br /><i>12 godz.:</i> Wy¶wietla czas jako ³am, 8:³0pm, itd.<br /><i>24 godz.:</i> Wy¶wietla czas jako ³00, 20³0 itd.
 Time format: Format czasu
 12 hour: 12 godzin
 24 hour: 24 godziny
@@ -350,7 +349,6 @@ Medium: ¦redni
 Low: Niski
 category-help: Okre¶la ketogorie danego zdarzenia
 Category: Kategoria
-URL: URL
 date-help: Okre¶la date wydarzenia.
 Untimed event: Zdarzenie nieokre¶lone czasowo
 Timed event: Zdarzenie okre¶lone czasowo
@@ -409,7 +407,7 @@ Delete layer: Skasuj warstwe
 # Page: edit_layer_handler.php
 #
 You cannot create a layer for yourself: Mo¿esz stworzya warstwe dla siebie
-You can only create one layer for each user: Mo¿esz tylko  stworzya jedna warstwe dla ka¿dego u¿ytkownika
+You can only create one layer for each user: Mo¿esz tylko stworzya jedna warstwe dla ka¿dego u¿ytkownika
 
 ########################################
 # Page: edit_nonusers.php
@@ -426,7 +424,6 @@ Is public calendar: Jest kalendarzem publicznym
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Error
 Import Results: Importuj rezultaty
 Events successfully imported: Wydarzenia pomy¶lnie zaimportowano
 Errors: B³edy
@@ -569,7 +566,7 @@ Adding/Editing Calendar Entries: Dodawanie/edycja wpisów kalendarza
 Repeat Type: Typ powtarzania
 Repeat End Date: Powtórz date zakonczenia
 Repeat Day: Powtórz dzieñ
-repeat-day-help: Okresla w które dni tygodnia wydarzenie ma bya powtarzane.  U¿ywane jest tylko gdy <i>Typ powtarzania</i> jest ustawiony na <i>Co tydzieñ</i>.
+repeat-day-help: Okresla w które dni tygodnia wydarzenie ma bya powtarzane. U¿ywane jest tylko gdy <i>Typ powtarzania</i> jest ustawiony na <i>Co tydzieñ</i>.
 
 ########################################
 # Page: help_import.php
@@ -613,7 +610,7 @@ Specifies the user that you would like to see displayed in your calendar.: Okre¶
 Default Category: Domy¶lna kategoria
 default-category-help: Okre¶la kategorie do której nowe zdarzenie bedzie dodane
 When I am the boss: Kiedy jestem szefem
-Email me event notification: Zawiadomnienie  o zdarzeniu  "napisz do mnie"
+Email me event notification: Zawiadomnienie o zdarzeniu "napisz do mnie"
 email-boss-notifications-help: Ustala, czy szefowie maj± dostawaæ emaile z informacjami o zdarzeniach
 I want to approve events: Chce zatwierdzia zdarzenia
 boss-approve-event-help: Ustala, czy szefowie bêd± musieli zatwierdziæ zdarzenia dodane przez asystentów
@@ -837,7 +834,6 @@ No users for this view: Brak u¿ytkowników dla tego widoku
 # Page: view_entry.php
 #
 Assistant mode: Tryb asystenta
-Status: Status
 External User: Zewnetrzny u¿ytkownik
 Approve/Confirm entry: Zatwierd¼/Potwierd¼ wpis
 Reject entry: Odrzua wpis
@@ -919,7 +915,6 @@ October: Pa¼dziernik
 November: Listopad
 Jan: Sty
 Feb: Lut
-Mar: Mar
 Apr: Kwi
 May: Maj
 Jun: Cze
@@ -1044,7 +1039,7 @@ Change the date and time of this entry?: Zmienia date i czas tego wpisu?
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Nie wprowadzi³e¶ krótkiego opisu
-The time you have entered begins before your preferred work hours.  Is this correct?: Czas który poda³e¶ zaczyna siê przed preferowanymi godzinami pracy. Czy jest to poprawne?
+The time you have entered begins before your preferred work hours. Is this correct?: Czas który poda³e¶ zaczyna siê przed preferowanymi godzinami pracy. Czy jest to poprawne?
 Please add a participant: Podaj wspó³uczestnika
 You have not entered a valid time of day: Nie wprowadzi³e¶ poprawnego czasu
 

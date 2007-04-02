@@ -4,9 +4,9 @@
 #
 # Updated several times by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
 # Last update: 18 May 2005
-# 
+#
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -38,7 +38,6 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: about.php
 #
 Title: Webkalenderen
-OK: OK
 
 ########################################
 # Page: access.php
@@ -47,7 +46,6 @@ Database error: Feil i databasen
 Go: Gå til
 Save: Lagre
 Public Access: Offentlig tilgang
-Admin: Admin
 Calendar: Kalender
 Edit: Rediger
 Events: Aktiviteter
@@ -64,8 +62,8 @@ Previous: Forrige
 ########################################
 # Page: add_entry.php
 #
-private: privat
 confidential: privat
+private: privat
 Error adding event: Feil ved innlegging av avtale
 
 ########################################
@@ -95,7 +93,7 @@ None: Aldri
 Preview: Forhåndsvisning
 custom-script-help: Tillat innsetting av egendefinert skript eller stilsett i HTML "head"-seksjonen på hver side.
 Custom script/stylesheet: Egendefinert skript/stilsett
-custom-header-help: Tillatt innsetting av egendefinert HTML-kode på toppen av hver side. 
+custom-header-help: Tillatt innsetting av egendefinert HTML-kode på toppen av hver side.
 Custom header: Egendefinert hode
 custom-trailer-help: Tillatt innsetting av egendefinert HTML-kode på slutten av hver side.
 Custom trailer: Egendefinert fot
@@ -162,11 +160,9 @@ popup-includes-siteextras-help: Hvis aktivert, vil egendefinert felter i site_ex
 Display Site Extras in popup: Vis nettstedstillegg i sprettopp
 remember-last-login-help: Hvis aktivert, vil brukerens navn bli fylt ut på innloggingssiden og preferansene lastet inn.
 Remember last login: Husk siste innlogging
-Plugins: Plugins
 plugins-enabled-help: Aktiver plugin-programmer
 Enable Plugins: Aktiver plugins
-plugins-sort-key-help: Angir sorteringsnøkkel for plugins. Dette tillater sortering av plugins i angitt rekkefølge. 
-Plugin: Plugin
+plugins-sort-key-help: Angir sorteringsnøkkel for plugins. Dette tillater sortering av plugins i angitt rekkefølge.
 allow-public-access-help: Hvis aktivert, vil kalender kunne bli brukt som en kun lesbar offentlig kalender som ikke krever innlogging.
 Allow public access: Tillatt offentlig tilgang
 public-access-default-visible: Aktitiviteter i den offentlig kalenderen blir vist automatisk i alle brukere sine kalendere
@@ -177,7 +173,7 @@ public-access-view-others-help: Setter om en bruker kan se kalenderen til en ann
 Public access can view other users: Offentlig tilgang kan se andre brukere
 public-access-can-add-help: Hvis aktivert, kan brukere med offentlig tilgang legge til aktivieter, men de vil ikke vises i kalenderen før administrator har godkjent aktiviteten.
 Public access can add events: Offentlig tilgang kan legge til aktiviteter
-public-access-add-requires-approval-help: Angir om aktiviteter lagt til ved hjelp av konto for offentlig tilgang krever godkjenning før de blir vist. 
+public-access-add-requires-approval-help: Angir om aktiviteter lagt til ved hjelp av konto for offentlig tilgang krever godkjenning før de blir vist.
 Public access new events require approval: Nye aktitiviteter ved offentlig tilgang krever godkjenning
 public-access-sees-participants-help: Hvis aktivert, kan brukere med offentlig tilgang se aktivitetsdeltagerne (ved detaljert visning).
 Public access can view participants: Offentlig tilgang kan se deltagere
@@ -215,7 +211,7 @@ Events updated on my calendar: Aktiviteter oppdatert i min kalender
 email-event-deleted: Angir om e-postmelding skal sendes når en aktitivitet blir fjernet fra din kalender.
 Events removed from my calendar: Aktiviteter fjernet fra min kalender
 email-event-rejected: Angir om e-postmelding skal sendes når en deltager avviser en aktivitet som er i din kalender.
-Event rejected by participant: Aktivitet avvist av deltager 
+Event rejected by participant: Aktivitet avvist av deltager
 Allow user to customize colors: Tillat bruker å tilpasse farger
 Enable gradient images for background colors: Aktiver bilder med fargeovergang for bakgrunnsfarger
 Not available: Ikke tilgjengelig
@@ -271,7 +267,6 @@ day: dag
 ########################################
 # Page: category.php
 #
-Global: Global
 Category Name: Kategorinavn
 Color: Farge
 Add: Legg til
@@ -297,8 +292,6 @@ Description: Beskrivelse
 ########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
 Edit Entry: Endre aktiviteten
 Add Entry: Legg til aktivitet
 Details: Detaljer
@@ -324,7 +317,7 @@ Timed event: Aktivitet med tidsangivelse
 All day event: Fulldagsaktivitet
 Timezone Offset: Tidssoneavvik
 time-help: Angir tidspunkt for aktiviteten.<br /><i>Dette feltet trenger ikke være utfylt.</i>
-duration-help: I dette feltet kan du angi varigheten på aktiviteten <br /><i>Dette feltet trenger ikke være utfylt.</i>
+duration-help: I dette feltet kan du angi varigheten på aktiviteten<br /><i>Dette feltet trenger ikke være utfylt.</i>
 hours: timer
 minutes: minutter
 end-time-help: Angir tidspunktet aktiviteten forventes avsluttet.
@@ -476,7 +469,7 @@ Set Password: Sett passord
 Deleting users not supported: Sletting av brukere er ikke støttet
 The passwords were not identical: Passordene var ikke identiske
 You have not entered a password: Du har ikke oppgitt passord
-Username cannot be blank.: Brukernavn må fylles ut 
+Username cannot be blank.: Brukernavn må fylles ut
 
 ########################################
 # Page: export.php
@@ -520,7 +513,7 @@ You must specify a group name: Du må angi et gruppenavn
 Auto-refresh calendars: Oppdater kalendere automatisk
 auto-refresh-help: Hvis aktivert, vil dagsvisning, ukesvisning, månedsvisning og liste med ikke godkjente aktiviteter oppdateres automatisk periodisk.
 Auto-refresh time: Auto-oppdateringsintervall
-auto-refresh-time-help: Hvis auto-oppdatering er aktivert, så setter denne tiden mellom hver oppdatering. 
+auto-refresh-time-help: Hvis auto-oppdatering er aktivert, så setter denne tiden mellom hver oppdatering.
 Display days with events in bold in year view: Viser dager med aktiviteter i fetskrift for årvisning
 Display weekends in week view: Viser helg i ukevisning
 Time interval: Tidsinterval
@@ -549,7 +542,6 @@ repeat-day-help: Hvilke ukedager skal aktiviteten gjentas på.
 # Page: help_import.php
 #
 Import: Importer
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Dette skjemaet gjør det mulig for deg å importere oppføringer fra Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den bør finnes i din Palm katalog i <tt>datebook/datebook.dat</tt> i en underkatalog med ditt brukernavn.
 The following entries will not be imported: Følgende oppføringer vil ikke bli importert
@@ -758,7 +750,6 @@ No users for this view: Ingen brukere for denne visningen
 # Page: view_entry.php
 #
 Assistant mode: Assistent modus
-Status: Status
 External User: Ekstern bruker
 Approve/Confirm entry: Godkjenn/bekreft aktiviteten
 Reject entry: Avvis aktiviteten
@@ -817,23 +808,15 @@ Generate printer-friendly version: Vis som utskriftsvennlig side
 January: Januar
 February: Februar
 March: Mars
-April: April
 May_: Mai
 June: Juni
 July: Juli
-August: August
-September: September
 October: Oktober
 November: November
 Jan: Jan
 Feb: Feb
-Mar: Mar
-Apr: Apr
 May: Mai
-Jun: Jun
-Jul: Jul
 Aug: Aug
-Sep: Sep
 Oct: Okt
 Nov: Nov
 The following error occurred: Følgende feil oppstod
@@ -874,7 +857,7 @@ Manage calendar of: Kontroller kalenderen til
 English: Engelsk
 Basque: Baskisk
 Bulgarian: Bulgarsk
-Catalan: Katalansk 
+Catalan: Katalansk
 Chinese (Simplified/GB2312): Kinesisk med enkle tegn
 Chinese (Traditional/Big5): Kinesisk
 Czech: Tsjekkisk
@@ -951,7 +934,7 @@ Change the date and time of this entry?: Endre datoen og tiden for denne aktivit
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Du har ikke oppgitt noen kort beskrivelse
-The time you have entered begins before your preferred work hours.  Is this correct?: Tidspunktet du har angitt er før din foretrukne arbeidstid. Er dette korrekt?
+The time you have entered begins before your preferred work hours. Is this correct?: Tidspunktet du har angitt er før din foretrukne arbeidstid. Er dette korrekt?
 Please add a participant: Legg til en deltager
 You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspunkt
 

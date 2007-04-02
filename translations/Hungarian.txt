@@ -3,12 +3,12 @@
 # Translated by: Gyorgy Baffia <gyorgy@baffia.hu>, 05 Sep 2001
 #
 # Cleared, finished and polished by:
-#	Laszlo Csecsy <_boobaa_at_ajrg_point_hu_>
+# Laszlo Csecsy <_boobaa_at_ajrg_point_hu_>
 # Last updated on 2005-05-31
 # Updated to 1.1 by Istvan Bubreg bubreg_at_freemail_hu
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -30,7 +30,7 @@ direction: ltr
 __mm__/__dd__/__yyyy__: __yyyy__/__mm__/__dd__
 __month__ __dd__: __month__ __dd__
 __month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __yyyy__ __month__ 
+__month__ __yyyy__: __yyyy__ __month__
 
 ################################################################################
 ################################################################################
@@ -40,7 +40,6 @@ __month__ __yyyy__: __yyyy__ __month__
 # Page: about.php
 #
 Title: WebNaptár
-OK: OK
 
 ########################################
 # Page: access.php
@@ -82,8 +81,8 @@ Previous: Elõzõ
 ########################################
 # Page: add_entry.php
 #
-private: magán
 confidential: bizalmas
+private: magán
 Error adding event: Esemény hozzáadási hiba
 
 ########################################
@@ -135,7 +134,7 @@ date-format-help: Megadja a kívánt dátumformátumot.
 Date format: Dátumformátum
 display-week-starts-on: Megadja, hogy a hetek Vasárnap vagy Hétfõn kezdõdjenek. Hétfõ esetén a hetek számozása ISO szerint történik.
 Week starts on: Hetek elsõ napja
-time-format-help: Megadja, hogy melyik formátumot használod: <br /><i>12 órás:</i> Az idõpontok du 3:30 formában jelennek meg.  <br /><i>24 órás:</i> Idõpontok 20:30 formában jelennek meg.
+time-format-help: Megadja, hogy melyik formátumot használod:<br /><i>12 órás:</i> Az idõpontok du 3:30 formában jelennek meg.<br /><i>24 órás:</i> Idõpontok 20:30 formában jelennek meg.
 Time format: Idõpont formátum
 12 hour: 12 órás
 24 hour: 24 órás
@@ -167,7 +166,7 @@ Display week number: Hetek számának kiírása
 display-desc-print-day-help: Eseményleírások megjelenítése a napi nyomtatási nézetben.
 Display description in printer day view: Leírás megjelenítése napi nyomtatási nézetben
 yearly-shows-events-help: Éves nézetben vastag betûvel jelennek meg azok a napok, amelyeken van valami esemény.
-Display days with events in bold in month and year views: Eseménnyel rendelkező napok kiemelése havi és éves nézetben megjelenítése 
+Display days with events in bold in month and year views: Eseménnyel rendelkező napok kiemelése havi és éves nézetben megjelenítése
 allow-view-add-help: Minden nézetben megjelenik egy '+' ikon, mellyel másik felhasználók naptárába lehet gyorsan eseményeket felvenni.
 Include add event link in views: Esemény hozzáadása link minden nézetben
 lunar-help: A holdfázisok kis ikonok formájában jelennek meg
@@ -233,7 +232,7 @@ public-access-sees-participants-help: Bekapcsolva a nyilvános naptárat böngé
 Public access can view participants: Résztvevõk listája nyilvános
 public-access-override-help: Események nevének és leírásának elrejtése a nyilvános naptárban
 Override event name/description for public access: Események nevének és leírásának elrejtése a nyilvános naptárban
-public-access-override-text-help: A megjelenő szöveg a fenti opció bekapcsolásakor. Ha 'Nem elérhető', le lesz fordítva. 
+public-access-override-text-help: A megjelenő szöveg a fenti opció bekapcsolásakor. Ha 'Nem elérhető', le lesz fordítva.
 Text to display to public access: Szöveg publikus hozzáféréshez
 uac-enabled-help: Engedélyezi a felhasználónkénti hozzáférés-szabályozást
 User Access Control enabled: Felhasználói jogok kezelésének bekapcsolása
@@ -249,7 +248,7 @@ reports-enabled-help: Bekapcsolva a felhasználók minden oldal alján látnak e
 Reports enabled: Jelentések engedélyezése
 subscriptions-enabled-help: Megadja, hogy távoli felhasználók feliratkozhatnak-e egy WebCalendar felhasználó naptárjához, így lehetõvé téve számukra annak egy iCal-kompatibilis programban (mint például Apple iCal vagy Mozilla Calendar) való megtekintését.
 Allow remote subscriptions: Távoli feliratkozás engedélyezése
-rss-enabled-help: A fellhasználói naptárak elérése RSS-en 
+rss-enabled-help: A fellhasználói naptárak elérése RSS-en
 Enable RSS feed: RSS csatorna engedélyezése
 categories-enabled-help: Eseménykategóriák támogatásának engedélyezése.
 Categories enabled: Kategóriák engedélyezése
@@ -433,7 +432,7 @@ am: de
 pm: du
 You are not authorized to edit this task: Nem szerkesztheted ezt a feladatot
 task: feladat
-hours ahead of you: hátralévő órák 
+hours ahead of you: hátralévő órák
 hours behind you: eltelt órák
 is in a different timezone than you are. Currently: más időzónában van mint te. Éppen
 Time entered here is based on your Timezone: Az itt megadott idő az időzóna alapján
@@ -443,11 +442,11 @@ Details: Részletek
 Participants: Résztvevők
 Repeat: Ismétlődés
 Reminders: Emlékeztetők
-brief-description-help: Ez az esemény rövid leírása (kb. 20 karakter).  
+brief-description-help: Ez az esemény rövid leírása (kb. 20 karakter).
 Brief Description: Rövid leírás
-full-description-help: Ez az esemény teljes leírása. Ez fog megjelenni, ha valaki megnézni az eseményt. 
+full-description-help: Ez az esemény teljes leírása. Ez fog megjelenni, ha valaki megnézni az eseményt.
 Full Description: Teljes leírás
-access-help: Specifies the access level of the event.<br /> <em>Public</em>: Everyone can see the full details of the event.  <br /><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
+access-help: Specifies the access level of the event.<br /> <em>Public</em>: Everyone can see the full details of the event.<br /><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: Hozzáférés
 Priority: Prioritás
 High: Magas
@@ -456,11 +455,10 @@ Low: Alacsony
 category-help: Specifies the category of the event.
 Category: Kategória
 percent-help: Task completion percentage for this user
-Percent Complete: Készültésgi fok 
+Percent Complete: Készültésgi fok
 All Percentages: All Percentages
 location-help: Esemény helyszíne
-Location: Helyszín 
-URL: URL
+Location: Helyszín
 date-help: Az esemény dátuma
 Start Date: Kezdő dátum
 Untimed event: Idő nélküli esemény
@@ -468,7 +466,7 @@ Timed event: Időzített esemény
 All day event: Egész napos esemény
 Timezone Offset: Idõzóna eltérés
 time-help: Specifies the time of the event.<br />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
-duration-help: Specifies the duration (in hours;minutes) of the event.  <br /><em>This field can be left blank.</em>
+duration-help: Specifies the duration (in hours;minutes) of the event.<br /><em>This field can be left blank.</em>
 hours: óra
 minutes: perc
 end-time-help: Specifies the time the event is expected to end.
@@ -477,9 +475,9 @@ Due Date: Esedékesség dátuma
 Due Time: Esedékesség ideje
 participants-help: Bejegyzés résztvevőinek listája
 Availability: Elérhetőség
-external-participants-help: Specifies a list of participants for the event that are not calendar users.  The users should be listed one per line and can include an email address.  If an email address is specified, the user is eligible to receive notifications and reminders.
+external-participants-help: Specifies a list of participants for the event that are not calendar users. The users should be listed one per line and can include an email address. If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: Külső résztvevők
-repeat-type-help: Select how often the event should repeat.<em>Monthly (by day)</em> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc.  <em>Monthly (by date)</em> allows an event to repeat on the same day of the month.
+repeat-type-help: Select how often the event should repeat.<em>Monthly (by day)</em> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc. <em>Monthly (by date)</em> allows an event to repeat on the same day of the month.
 Daily: Naponta
 Weekly: Hetente
 Monthly: Havonta
@@ -497,7 +495,7 @@ repeat-frequency-help: Specifies how often the event should repeat.
 Frequency: Gyakoriság
 Weekdays Only: Csak munkanapokon
 Week Start: Hét kezdete
-repeat-bydayextended-help: Allows date selection based on day of week. 
+repeat-bydayextended-help: Allows date selection based on day of week.
 ByDay: ByDay
 All: Összes
 repeat-month-help: Specifies which months the event should repeat in.
@@ -730,7 +728,6 @@ repeat-day-help: Megadja, hogy a hét melyik napján ismétlődjön az esemény
 # Page: help_import.php
 #
 Import: Import
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Ezen az ûrlapon tudsz Palm Desktop Datebook bejegyzéseket importálni.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: A Palm könyvtáradban kell lennie <tt>datebook/datebook.dat</tt>-ként egy, a felhasználói nevedrõl elnevezett könyvtárban.
 The following entries will not be imported: A következõ bejegyzések nem importálhatók
@@ -775,7 +772,7 @@ boss-approve-event-help: Megadja, hogy a főnöknek jóvá kell-e hagynia a titk
 Subscribe/Publish: Feliratkozás/közzététel
 Allow remote publishing: Távoli publikálás engedélyezése
 allow-remote-publishing-help: Távoli iCal ügyfél publikálhat-e a naptárba
-remote-publishing-url-help: Az iCal ügyfélben használandó URL 
+remote-publishing-url-help: Az iCal ügyfélben használandó URL
 allow-remote-subscriptions-help: Megadja, hogy távoli felhasználók feliratkozhatnak-e a naptáradhoz, és így megtekinthetik-e az eseményeidet iCal-kompatibilis programjaikban (mint például Apple iCal vagy Mozilla Calendar).
 remote-subscriptions-url-help: Megmutatja az URL-t, amit a távoli felhasználóknak kell használniuk a naptáradhoz való feliratkozáshoz.
 Enable FreeBusy publishing: Elfoglaltság publikálása
@@ -786,8 +783,8 @@ rss-feed-url-help: Az RSS elérés URL címe
 ########################################
 # Page: help_uac.php
 #
-Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: A felhasználószintű hozzáférés-szabályozás részletesen beállíthatók a jogosultságok.A felhasználók is módosíthatják, ha az adminisztrátor engedélyezi. 
-If disabled, this user cannot send you emails.: Kikapcsolva nem fog tudni emailt küldeni. 
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: A felhasználószintű hozzáférés-szabályozás részletesen beállíthatók a jogosultságok.A felhasználók is módosíthatják, ha az adminisztrátor engedélyezi.
+If disabled, this user cannot send you emails.: Kikapcsolva nem fog tudni emailt küldeni.
 If disabled, this user cannot see you in the participants list.: Kikapcsolva a felhasználó nem fog látni a résztvevők között.
 If enabled, this user cannot view the details of any of your entries.: Bekapcsolva a felhasználó nem fogja látni a bejegyzéseid részleteit.
 
@@ -907,7 +904,7 @@ Email address cannot be blank.: Az Email cím nem lehet üres
 A new WebCalendar account has been set up for you: Az új WebNaptár hozzáférés létrehozva
 Your username is: A felhasználóneved
 Your password is: A jelszavad
-Please visit: Kérlek keresd fel 
+Please visit: Kérlek keresd fel
 to log in and start using your account: a bejelentkezéshez
 You may change your password after logging in the first time: A jelszavad az első bejelentkezés után megváltoztathatod
 If you received this email in error: Ha tévedésből kaptad ezt a levelet és nem íratkoztál fel WebNaptárba, hagyd figyelmen kívül, vagy írj rövid választ
@@ -1300,7 +1297,7 @@ Change the date and time of this entry?: Változzon a bejegyzés dátuma és ide
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Nem írtál rövid leírást
-The time you have entered begins before your preferred work hours.  Is this correct?: Az idõpont, amit megadtál, munkaidõn kívül van. Jó így?
+The time you have entered begins before your preferred work hours. Is this correct?: Az idõpont, amit megadtál, munkaidõn kívül van. Jó így?
 Invalid Event Date: Érvénytelen esemény dátum
 Please add a participant: Kérlek adj meg egy résztvevőt
 Invalid Date: Érvénytelen dátum
@@ -1367,8 +1364,6 @@ To test the proper operation of sessions, reload this page: To test the proper o
 You should see the session counter increment each time: You should see the session counter increment each time
 SESSION COUNTER: SESSION COUNTER
 Settings.php Status: Settings.php Status
-The file permissions of settings.php are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
-The file permissions of the includes directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
 Configuration Wizard Password: Configuration Wizard Password
 Create Settings File Password: Create Settings File Password
 Password (again): Password (again)
@@ -1385,7 +1380,6 @@ next page and complete your WebCalendar setup: next page and complete your WebCa
 This appears to be a new installation. If this is not correct, please: This appears to be a new installation. If this is not correct, please
 go back to the previous page and correct your settings: go back to the previous page and correct your settings
 The database requires some data input: The database requires some data input
-Click Update Database to complete the upgrade: Click Update Database to complete the upgrade
 This appears to be an upgrade from version: This appears to be an upgrade from version
 In this section we will perform the required database changes to bring your database up to the required level: In this section we will perform the required database changes to bring your database up to the required level
 If you are using a fully supported database, this step will be performed automatically for you: If you are using a fully supported database, this step will be performed automatically for you
@@ -1398,11 +1392,9 @@ This may take several minutes to complete: This may take several minutes to comp
 Install Database: Install Database
 Update Database: Adatbázis frissítése
 Display Required SQL: Display Required SQL
-This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
 Timezone Conversion: Timezone Conversion
 It appears that you have: It appears that you have
 NOT: NOT
-converted your existing WebCalendar event data to GMT.: converted your existing WebCalendar event data to GMT.
 If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
 Convert Data to GMT: Convert Data to GMT
 Application Settings: Application Settings
@@ -1419,11 +1411,6 @@ Production: Production
 Development: Development
 Save Settings: Save Settings
 Launch WebCalendar: Launch WebCalendar
-
-########################################
-# Page: install/install_functions.php
-#
-Conversion Successful: Conversion Successful
 
 ########################################
 # Page: tools/send_reminders.php

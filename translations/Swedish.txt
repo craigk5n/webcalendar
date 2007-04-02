@@ -4,7 +4,7 @@
 # Last update: 11 november 2004
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -36,7 +36,6 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: about.php
 #
 Title: Webbkalender
-OK: OK
 
 ########################################
 # Page: access.php
@@ -61,8 +60,8 @@ Previous: Föregående
 ########################################
 # Page: add_entry.php
 #
-private: privat
 confidential: privat
+private: privat
 Error adding event: Fel vid inläggning av ny aktivitet
 
 ########################################
@@ -75,7 +74,7 @@ Month: Månad
 Year: År
 System Settings: Systeminställningar
 Help: Hjälp
-Settings: Inställningar 
+Settings: Inställningar
 Groups: Grupper
 NonUser Calendars: Icke-användare kalender
 Email: E-post
@@ -88,7 +87,7 @@ language-help: Ange vilket språk du vill använda.
 Language: Språk
 Your browser default language is: Standardspråket i din webbläsare är
 None: Ingen
-custom-script-help: Tillåter inmatning av egna Javaskript eller stilmalls-text som kommer att sättas in på varje HTML-sidas "HEAD"-del. 
+custom-script-help: Tillåter inmatning av egna Javaskript eller stilmalls-text som kommer att sättas in på varje HTML-sidas "HEAD"-del.
 Custom script/stylesheet: Eget skript/stilmall
 custom-header-help: Tillåter ett eget HTML-fält att sättas in överst på varje sida.
 Custom header: Egen "header"
@@ -256,7 +255,6 @@ Your assistants: Dina medhjälpare
 ########################################
 # Page: category.php
 #
-Global: Global
 Category Name: Kategorinamn
 Color: Färg
 Add: Lägg till
@@ -300,14 +298,13 @@ Medium: Mellan
 Low: Låg
 category-help: Anger aktivitetens kategori
 Category: Kategori
-URL: URL
 date-help: Anger datum för aktiviteten.
 Untimed event: Icke tidsbestämd aktivitet
 Timed event: Tidsbestämd aktivitet
 All day event: Heldagsaktivitet
 Timezone Offset: Lokal tid
 time-help: Anger tidpunkt för aktiviteten.<br /><i>Det här fältet behöver inte vara ifyllt.</i>
-duration-help: I detta fält anger du aktivitetens varaktighet <br /><i>Det här fältet behöver inte vara ifyllt.</i>
+duration-help: I detta fält anger du aktivitetens varaktighet<br /><i>Det här fältet behöver inte vara ifyllt.</i>
 hours: timmar
 minutes: minuter
 end-time-help: Anger den tid aktiviteten förväntas sluta.
@@ -518,7 +515,6 @@ repeat-day-help: Vilka veckodagar skall aktiviteten upprepas på
 # Page: help_import.php
 #
 Import: Import
-Palm Desktop: Palm desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Detta formulär tillåter dig att importera aktiviteter från Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Det bör vara placerat i din Palm-mapp <tt>"datebook/datebook.dat"</tt> i en undermapp benämnd med ditt användarnamn.
 The following entries will not be imported: Följande händelser kommer inte att importeras
@@ -715,7 +711,6 @@ You must specify a view name: Du måste ange ett visningsnamn
 # Page: view_entry.php
 #
 Assistant mode: Assistansläge
-Status: Status
 External User: Extern användare
 Approve/Confirm entry: Godkänn/bekräfta händelsen
 Reject entry: Avböj händelsen
@@ -769,27 +764,20 @@ Generate printer-friendly version: Skapa utskriftsvänlig version
 January: Januari
 February: Februari
 March: Mars
-April: April
 May_: Maj
 June: Juni
 July: Juli
 August: Augusti
-September: September
 October: Oktober
 November: November
 Jan: Jan
 Feb: Feb
-Mar: Mar
-Apr: Apr
 May: Maj
-Jun: Jun
-Jul: Jul
 Aug: Aug
-Sep: Sep
 Oct: Okt
 Nov: Nov
 The following error occurred: Följande fel uppstod
-You are not authorized: Förbjuden åtgärd 
+You are not authorized: Förbjuden åtgärd
 Add N hours to: Lägg till N timmar till
 Subtract N hours from: Dra bort N timmar från
 same as: samma som
@@ -890,7 +878,7 @@ Color format should be RRGGBB.: Färgen skall skrivas som '#RRGGBB'
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Da har inte angivit någon kort beskrivning
-The time you have entered begins before your preferred work hours.  Is this correct?: Tidpunkten du har angivit ligger före din angivna arbetstid. Är detta korrekt?
+The time you have entered begins before your preferred work hours. Is this correct?: Tidpunkten du har angivit ligger före din angivna arbetstid. Är detta korrekt?
 You have not entered a valid time of day: Du har inte angivit en giltig tid
 
 ########################################

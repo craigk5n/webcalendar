@@ -1,12 +1,12 @@
 # See translations/English-US.txt for instructions.
 #
 # Translated by:
-#   Marieke Timmer / marieke.timmer@tijdhof.nl
-#   Arnout Engelen / arnouten@bzzt.net
-#   Oliver Heesakkers / dev@heesakkers.info
+# Marieke Timmer / marieke.timmer@tijdhof.nl
+# Arnout Engelen / arnouten@bzzt.net
+# Oliver Heesakkers / dev@heesakkers.info
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -33,12 +33,6 @@ __month__ __yyyy__: __month__ __yyyy__
 ################################################################################
 ################################################################################
 
-
-########################################
-# Page: about.php
-#
-Title: WebCalendar
-OK: OK
 
 ########################################
 # Page: access.php
@@ -80,8 +74,8 @@ Previous: Vorige
 ########################################
 # Page: add_entry.php
 #
-private: prive-afspraak
 confidential: vertrouwelijk
+private: prive-afspraak
 Error adding event: Fout bij toevoegen afspraak
 
 ########################################
@@ -134,7 +128,7 @@ Date format: Datumweergave
 Small Task Date: Taakdatum klein
 display-week-starts-on: Specificeert of de week op zondag of maandag start. Indien wordt gekozen voor maandag worden ISO weeknummers getoond.
 Week starts on: De week begint op
-time-format-help: Hier geeft u aan hoe tijden worden weergegeven: <br /><i>12 uurs klok: </i> tijd wordt getoond als 3am, 8:30pm, etc. <br /><i> 24 uurs klok:</i> tijd wordt getoond als 3:00, 20:30, etc.
+time-format-help: Hier geeft u aan hoe tijden worden weergegeven:<br /><i>12 uurs klok: </i> tijd wordt getoond als 3am, 8:30pm, etc.<br /><i> 24 uurs klok:</i> tijd wordt getoond als 3:00, 20:30, etc.
 Time format: Tijdweergave
 12 hour: 12 uur
 24 hour: 24 uur
@@ -142,7 +136,7 @@ timed-evt-len-help: Bepaalt de invoermethode om de lengte van een tijdgebonden a
 Specify timed event length by: Bepaal lengte tijdgebonden afspraak door
 Duration: Duur
 End Time: Einddtijd
-work-hours-help: Specificeert hoe laat een normale dag begint en eindigt. <br /><b>N.B.</b>: het is wel mogelijk om afspraken buiten deze tijden te maken; indien u dit doet wordt u om een bevestiging gevraagd.
+work-hours-help: Specificeert hoe laat een normale dag begint en eindigt.<br /><b>N.B.</b>: het is wel mogelijk om afspraken buiten deze tijden te maken; indien u dit doet wordt u om een bevestiging gevraagd.
 Work hours: Werktijden
 From: Van
 to: tot
@@ -176,9 +170,9 @@ lunar-help: helptekst-maanfasen
 Display Lunar Phases in month view: Maanfasen tonen in maandweergave
 allow-view-other-help: Definieert of een gebruiker de agenda van andere gebruikers mag inzien.
 Allow viewing other users calendars: Inzage agenda andere gebruikers toestaan
-require-approvals-help: Indien ingeschakeld dient een gebruiker een afspraak te bevestigen voordat deze in de agenda wordt getoond tenzij Weergave onbevestigde items is geactiveerd. <br />Let op: door deze optie te de-activeren worden alle bevestigingen voor de publiek toegankelijke agenda uitgeschakeld indien deze is geactiveerd.
+require-approvals-help: Indien ingeschakeld dient een gebruiker een afspraak te bevestigen voordat deze in de agenda wordt getoond tenzij Weergave onbevestigde items is geactiveerd.<br />Let op: door deze optie te de-activeren worden alle bevestigingen voor de publiek toegankelijke agenda uitgeschakeld indien deze is geactiveerd.
 Require event approvals: Afspraakbevestigingen worden vereist
-display-unapproved-help: Geeft aan of openstaande, onbevestigde afspraken moeten worden weergegeven in uw agenda. <br />Indien u [ja] kiest worden openstaande afspraken in een andere tekstkleur in uw agenda weergegeven. <br />Indien u [nee] kiest moeten openstaande afspraken eerst bevestigd worden voordat deze in uw agenda worden getoond.
+display-unapproved-help: Geeft aan of openstaande, onbevestigde afspraken moeten worden weergegeven in uw agenda.<br />Indien u [ja] kiest worden openstaande afspraken in een andere tekstkleur in uw agenda weergegeven.<br />Indien u [nee] kiest moeten openstaande afspraken eerst bevestigd worden voordat deze in uw agenda worden getoond.
 Display unapproved: Openstaande afspraken tonen
 conflict-check-help: Check op conflicterende afspraken (= afspraken van een persoon op hetzelfde tijdstip. Door [ja] te kiezen blijft het mogelijk om conflicterende afspraken in te stellen door de waarschuwing te bevestigen. Door [nee] te kiezen wordt geen check op conflicterende afspraken uitgevoerd.
 Check for event conflicts: Check op conflicterende afspraken
@@ -236,7 +230,7 @@ Public access new events require approval: Goedkeuring vereisen voor afspraken i
 public-access-sees-participants-help: Als deze optie aan staat kunnen gebruikers die de kalender bekijken vanaf de publieke toegang zien wie er deelnemen aan een afspraak wanneer ze de details van een afspraak bekijken.
 Public access can view participants: Publieke toegang kan deelnemers bekijken
 public-access-override-help: helptekst bij publieke toegang domineren
-Override event name/description for public access: Domineer afspraak naam/omschrijving voor publieke toegang 
+Override event name/description for public access: Domineer afspraak naam/omschrijving voor publieke toegang
 public-access-override-text-help: helptekst bij publieke toegang tekst
 Text to display to public access: Tekst om te tonen bij publieke toegang
 uac-enabled-help: Helptekst bij uac-optie
@@ -249,7 +243,7 @@ nonuser-enabled-help: Indien deze optie is geactiveerd kan een beheerder een of 
 Nonuser enabled: Activeer losse agenda
 nonuser-list-help: Deze optie bepaalt waar de losse agenda in het deelnemersoverzicht wordt getoond.
 Nonuser list: Positie losse agenda
-reports-enabled-help: Indien deze optie is geactiveerd wordt een nieuwe rapportage-sectie zichtbaar in het beheerpaneel onderaan de pagina. Hier kan een gebruiker eigen agendarapportages definieren. <br />Beheerders kunnen algemene rapportages toevoegen die in het rapportagemenu van alle gebruikers beschikbaar zijn.
+reports-enabled-help: Indien deze optie is geactiveerd wordt een nieuwe rapportage-sectie zichtbaar in het beheerpaneel onderaan de pagina. Hier kan een gebruiker eigen agendarapportages definieren.<br />Beheerders kunnen algemene rapportages toevoegen die in het rapportagemenu van alle gebruikers beschikbaar zijn.
 Reports enabled: Activeer rapportages
 subscriptions-enabled-help: Met deze optie bepaalt u of remote gebruikers zich op een WebCalendar-agenda kunnen aanmelden om zo de inhoud van deze agenda in hun iCal-applicatie te bekijken (bijvoorbeeld Apple's iCal of Mozilla Calendar).
 Allow remote subscriptions: Agendapublicatie via internet toestaan
@@ -302,7 +296,7 @@ SMTP Username: SMPT Gebruikersnaam
 email-smtp-password: email-smtp-paswoord
 SMTP Password: SMPT Wachtwoord
 Default user settings: Standaard gebruikersinstellingen
-email-event-reminders-help: Hiermee stelt u in of u per email een herinnering ontvangt indien u dit heeft ingesteld. <br /> <b>N.B.</b>: dit vereist aanvullende serverinstellingen.
+email-event-reminders-help: Hiermee stelt u in of u per email een herinnering ontvangt indien u dit heeft ingesteld.<br /> <b>N.B.</b>: dit vereist aanvullende serverinstellingen.
 Event reminders: Stuur mij per email een herinnering om mij aan een afspraak te herinneren
 email-event-added: Specificeert of er email-notificaties worden verzonden bij het toevoegen van een afspraak
 Events added to my calendar: Stuur mij een email-notificatie als afspraken aan mijn agenda zijn toegevoegd
@@ -460,9 +454,9 @@ Repeat: Herhalen
 Reminders: Herinneringen
 brief-description-help: In dit veld kunt u een korte afspraakomschrijving invullen (ca. 20 karakters). De omschrijving wordt in de agenda getoond.
 Brief Description: Korte omschrijving
-full-description-help: Hier ziet u de volledige afspraakomschrijving. <br />N.B.: deze omschrijving wordt alleen getoond indien de afspraak wordt geopend.
+full-description-help: Hier ziet u de volledige afspraakomschrijving.<br />N.B.: deze omschrijving wordt alleen getoond indien de afspraak wordt geopend.
 Full Description: Uitgebreide omschrijving
-access-help: Hier bepaalt u de toegankelijkheid van de afspraak voor anderen. Indien u <br /><i>publiek</i> selecteert kunnen de overige gebruikers de afspraak bekijken. Selecteert u <i>vertrouwelijk</i>, dan zien de overige gebruikers wel dat u een afspraak heeft, maar kunnen zij geen details opvragen.
+access-help: Hier bepaalt u de toegankelijkheid van de afspraak voor anderen. Indien u<br /><i>publiek</i> selecteert kunnen de overige gebruikers de afspraak bekijken. Selecteert u <i>vertrouwelijk</i>, dan zien de overige gebruikers wel dat u een afspraak heeft, maar kunnen zij geen details opvragen.
 Access: Toegankelijkheid
 priority-help: Hier kunt u de prioriteit van de afspraak vermelden; afspraken met een hoge prioriteit zullen vetgedrukt in de agenda verschijnen.
 Priority: Prioriteit
@@ -485,19 +479,19 @@ Untimed event: Afspraak zonder begin en eindtijd
 Timed event: Tijdgebonden afspraak
 All day event: Dagvullende afspraak
 Timezone Offset: Tijdverschil server-lokaal
-time-help: Dit is de aanvangstijd van de afspraak. <br /><i>Dit veld mag leeg blijven</i><br />
-duration-help: Hier geeft u aan hoe lang de afspraak duurt (in minuten). <br /><i>Dit veld mag leeg blijven</i><br />
+time-help: Dit is de aanvangstijd van de afspraak.<br /><i>Dit veld mag leeg blijven</i><br />
+duration-help: Hier geeft u aan hoe lang de afspraak duurt (in minuten).<br /><i>Dit veld mag leeg blijven</i><br />
 hours: uren
 minutes: minuten
 end-time-help: Bepaalt de tijd waarop de afspraak gepland is te eindigen.
 Start Time: Starttijd
 Due Date: Af zijn op datum
 Due Time: Af zijn om
-participants-help: Noteer hier welke externe deelnemers bij de afspraak aanwezig zullen zijn. Zorg dat elke regel maximaal één deelnemer omvat en voeg een mailadres toe om de externe deelnemer een email-notificatie of herinnering te laten ontvangen. <br />N.B. het verzenden van notificaties en herinneringen zal alleen plaatsvinden indien de agenda-instellingen en de server dit ondersteunen.
+participants-help: Noteer hier welke externe deelnemers bij de afspraak aanwezig zullen zijn. Zorg dat elke regel maximaal één deelnemer omvat en voeg een mailadres toe om de externe deelnemer een email-notificatie of herinnering te laten ontvangen.<br />N.B. het verzenden van notificaties en herinneringen zal alleen plaatsvinden indien de agenda-instellingen en de server dit ondersteunen.
 Availability: Beschikbaarheid
 external-participants-help: Hier wordt een lijst van externe deelnemers gegeven. Vul per regel een gebruiker en emailadres in. Als een emailadres is ingevoerd kan de externe gebruiker ook notificaties en herinneringen ontvangen.
 External Participants: externe deelnemers
-repeat-type-help: Deze optie geeft aan hoe vaak de afspraak moet worden herhaald: <br /><i>maandelijks (dag)</i> zorgt ervoor dat de afspraak wordt herhaald op elke 1e maandag van de maand, 3e donderdag van de maand, etc. <br /><i>maandelijks (dag v.a. maandeinde)</i> zorgt ervoor dat de afspraak wordt herhaald op elke laatste vrijdag van de maand, elke een-na-laatste maandag van de maand, etc. - steeds afhankelijk van de dag waarop u een afspraak definieert <br /><i>Maandelijks (datum)</i> zorgt ervoor dat de afspraak wordt herhaald op dezelfde dag van de maand.
+repeat-type-help: Deze optie geeft aan hoe vaak de afspraak moet worden herhaald:<br /><i>maandelijks (dag)</i> zorgt ervoor dat de afspraak wordt herhaald op elke 1e maandag van de maand, 3e donderdag van de maand, etc.<br /><i>maandelijks (dag v.a. maandeinde)</i> zorgt ervoor dat de afspraak wordt herhaald op elke laatste vrijdag van de maand, elke een-na-laatste maandag van de maand, etc. - steeds afhankelijk van de dag waarop u een afspraak definieert<br /><i>Maandelijks (datum)</i> zorgt ervoor dat de afspraak wordt herhaald op dezelfde dag van de maand.
 Daily: Dagelijks
 Weekly: Wekelijks
 Monthly: Maandelijks
@@ -512,7 +506,7 @@ Ending: Eindigt
 Forever: Eeuwig
 Use end date: Gebruik einddatum
 Number of times: Aantal keren
-repeat-frequency-help: Hier kunt u een eventueel herhalingspatroon specificeren. Indien u [1] invult wordt de afspraak elke dag / week / maand / jaar herhaald. Indien u [2] invult wordt de afspraak om de dag / week / maand / jaar herhaalt, etc. <br />N.B.: bij een herhalingsinterval om de x weken dient u wel een herhalingsdag te specificeren (zie boven).
+repeat-frequency-help: Hier kunt u een eventueel herhalingspatroon specificeren. Indien u [1] invult wordt de afspraak elke dag / week / maand / jaar herhaald. Indien u [2] invult wordt de afspraak om de dag / week / maand / jaar herhaalt, etc.<br />N.B.: bij een herhalingsinterval om de x weken dient u wel een herhalingsdag te specificeren (zie boven).
 Frequency: Herhalingspatroon
 Weekdays Only: Enkel werkdagen
 Week Start: Week start
@@ -685,7 +679,7 @@ Set Password: Bewaar wachtwoord
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Het verwijderen van gebruikers is niet mogelijk
-The passwords were not identical: De ingevoerde wachtwoorden zijn niet identiek of u heeft het wachtwoord maar een keer ingevuld <br />Probeert u het nog eens
+The passwords were not identical: De ingevoerde wachtwoorden zijn niet identiek of u heeft het wachtwoord maar een keer ingevuld<br />Probeert u het nog eens
 You have not entered a password: U heeft geen wachtwoord ingevuld.
 Username cannot be blank.: Gebruikersnaam kan niet leeg zijn
 
@@ -754,13 +748,12 @@ Adding/Editing Calendar Entries: Afspraken toevoegen/wijzigen
 Repeat Type: Herhalingspatroon
 Repeat End Date: Einddatum herhaling
 Repeat Day: Herhalingsdag
-repeat-day-help: Indien uw afspraak wekelijks wordt herhaald, geeft u hier aan op welke weekdag de afspraak terugkeert. Dit is alleen mogelijk indien u hierboven bij <i>herhalingspatroon</i> de optie [wekelijks] heeft gekozen. <br />N.B.: u kunt meerdere weekdagen aanvinken.
+repeat-day-help: Indien uw afspraak wekelijks wordt herhaald, geeft u hier aan op welke weekdag de afspraak terugkeert. Dit is alleen mogelijk indien u hierboven bij <i>herhalingspatroon</i> de optie [wekelijks] heeft gekozen.<br />N.B.: u kunt meerdere weekdagen aanvinken.
 
 ########################################
 # Page: help_import.php
 #
 Import: Importeren
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Hier kunt u de afspraken van uw Palm Desktop Datebook in uw agenda importeren.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Al uw Palm Datebook-afspraken zijn opgeslagen in een bestand met de naam datebook.dat. U kunt dit bestand vinden in de Palm-directory op uw computer. In deze directory vindt u een subdirectory met uw gebruikersnaam als naam. Hierin vindt u het bestand <tt>datebook/datebook.dat</tt> - dit bestand heeft u nodig om uw Palm Desktop datebookgegevens in uw WebCalendar agenda te kunnen importeren.
 The following entries will not be imported: De volgende items zullen niet worden geimporteerd
@@ -1064,7 +1057,7 @@ Week (Users vertical): Weekoverzicht - gebruikers links
 Week (Timebar): Weekoverzicht - tijdbalkweergave
 Month (Timebar): Maandoverzicht - tijdbalk
 Month (side by side): Maandoverzicht - gebruikers boven naast elkaar
-Month (on same calendar): Maandoverzicht -  gebruikers in één agenda
+Month (on same calendar): Maandoverzicht - gebruikers in één agenda
 
 ########################################
 # Page: views_edit_handler.php
@@ -1082,7 +1075,6 @@ No users for this view: Geen gebruikers voor deze weergave
 Update Task Percentage: Taak bijwerken percentage
 Completed: Afgewerkt
 Assistant mode: Assistentiemodus
-Status: Status
 Declined: Afgewezen
 Needs-Action: Behoeft-aandacht
 by: door
@@ -1199,23 +1191,17 @@ View this task: Bekijk deze taak
 January: Januari
 February: Februari
 March: Maart
-April: April
 May_: Mei
 June: Juni
 July: Juli
 August: Augustus
-September: September
 October: Oktober
 November: November
 Jan: jan
 Feb: feb
 Mar: mrt
-Apr: apr
 May: mei
-Jun: jun
-Jul: jul
 Aug: aug
-Sep: sep
 Oct: okt
 Nov: nov
 The following error occurred: De volgende fout heeft zich voorgedaan
@@ -1379,7 +1365,7 @@ Change the date and time of this entry?: Wilt u de datum en tijd van deze afspra
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: U heeft geen korte omschrijving ingevuld
-The time you have entered begins before your preferred work hours.  Is this correct?: De tijd die u heeft ingevoerd is eerder dan uw normale werkdag. Is dit juist?
+The time you have entered begins before your preferred work hours. Is this correct?: De tijd die u heeft ingevoerd is eerder dan uw normale werkdag. Is dit juist?
 Invalid Event Date: Ongeldige afspraak-datum
 Please add a participant: Voeg a.u.b. een deelnemer toe
 Invalid Date: Ongeldige datum

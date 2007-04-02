@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -57,37 +57,20 @@ Next month: Naslednji mesec
 Next year: Naslednje leto
 
 ########################################
-# Page: includes/date_formats.php
-#
-December: December
-Dec: Dec
-
-########################################
 # Page: includes/functions.php
 #
 WK: Te
 January: Januar
 February: Februar
 March: Marec
-April: April
 May_: Maj
 June: Junij
 July: Julij
 August: Avgust
-September: September
 October: Oktober
-November: November
-Jan: Jan
-Feb: Feb
-Mar: Mar
-Apr: Apr
 May: Maj
-Jun: Jun
-Jul: Jul
 Aug: Avg
-Sep: Sep
 Oct: Okt
-Nov: Nov
 Sunday: Nedelja
 Monday: Ponedeljek
 Tuesday: Torek

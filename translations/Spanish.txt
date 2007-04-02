@@ -1,16 +1,16 @@
 # See translations/English-US.txt for instructions.
 #
 # Translator: Francisco M. Pérez Rilo
-#             Pedro Del Medico <pdmp@interhoster.com>
-#             Eduardo Dominguez <lalo_notthisplease@teligens.com>
-#             Mario Benito <mbenito@maberi.com>
+# Pedro Del Medico <pdmp@interhoster.com>
+# Eduardo Dominguez <lalo_notthisplease@teligens.com>
+# Mario Benito <mbenito@maberi.com>
 #
 # Additional translations 'borrowed' from SourceForge project
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -42,7 +42,6 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: about.php
 #
 Title: Título
-OK: OK
 
 ########################################
 # Page: access.php
@@ -68,8 +67,8 @@ Previous: Previo
 ########################################
 # Page: add_entry.php
 #
-private: privado
 confidential: confidencial
+private: privado
 Error adding event: Error al añadir evento
 
 ########################################
@@ -107,7 +106,7 @@ date-format-help: Especifica el formato de fecha preferido
 Date format: Formato de fecha
 display-week-starts-on: Especifica si la semana comienza en domingo o lunes. Si se especifica Lunes, los números de semana serán números ISO.
 Week starts on: Semana comienza en
-time-format-help: Especifica qué formato de hora se usará: <br /><i>12 horas:</i> Muestra tiempos como 3am, 8:30pm, etc.  <br /><i>24 horas:</i> Muestra horas como 3:00, 20:30, etc.
+time-format-help: Especifica qué formato de hora se usará:<br /><i>12 horas:</i> Muestra tiempos como 3am, 8:30pm, etc.<br /><i>24 horas:</i> Muestra horas como 3:00, 20:30, etc.
 Time format: Formato de Hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -143,7 +142,6 @@ Display unapproved: Mostrar no aprobados
 conflict-check-help: Revisar conflictos de eventos (dos eventos programados a la misma hora para la misma persona). Si lo ajustas a 'Sí', podrás programar dos eventos al mismo tiempos después de confirmar un aviso. Si lo ajustas a "No", no se comprobarán los conflictos. Problablemente querrás ajustarlo a "Sí" para que se realice la comprobación.
 Check for event conflicts: Revisar existencia de conflictos
 Yes: Sí
-No: No
 conflict-months-help: Si se habilita la revisión de conflictos, este campo especifica cuantos meses en el futuro se deben comprobar para comprobar los conflictos.
 Conflict checking months: Meses para la comprobación de conflictos
 conflict-check-override-help: Permite a los usuarios invalidar conflictos y programar dos o más eventos a la vez.
@@ -166,11 +164,9 @@ popup-includes-siteextras-help: Si se activa, se permite que los campos de event
 Display Site Extras in popup: Mostrar campos extra en emergentes
 remember-last-login-help: Cuando se habilita, recuerda el último login (pero no la contraseña), y las preferencias del usuario se muestran (incluyendo sus colores e idioma).
 Remember last login: Recordar información de login
-Plugins: Plugins
 plugins-enabled-help: Habilitar aplicaciones plugin
 Enable Plugins: Habilitar plugins
 plugins-sort-key-help: Especifica la clave de ordenación de los plugins. Esto permite que los plugins aparezcan en un orden específico.
-Plugin: Plugin
 allow-public-access-help: Si se selecciona, el calendario puede ser usado como un calendario público de sólo lectura que no exige login a los usuarios.
 Allow public access: Permitir usuario anónimo
 public-access-default-visible: Los eventos del calendario público aparecerán automáticamente en todos los calendarios de usuario
@@ -275,9 +271,7 @@ day: día
 ########################################
 # Page: category.php
 #
-Global: Global
 Category Name: Nombre de la categoría
-Color: Color
 Add: Añadir
 Delete: Borrar
 Make New Category: Añadir nueva categoría
@@ -301,8 +295,6 @@ Description: Descripción
 ########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
 Edit Entry: Editar entrada
 Add Entry: Añadir entrada
 Details: Detalles
@@ -312,30 +304,29 @@ brief-description-help: Esta debe ser una descripción corta (20 caracteres aprox
 Brief Description: Breve Descripción
 full-description-help: Descripción completa y detallada del evento. Esta información puede ser vista por un usuario cuando ve el evento.
 Full Description: Descripción Ampliada
-access-help: Especifica el nivel de acceso del evento.<br /> <i>Público</i>: Cualquiera puede ver los detalles del evento.  <br /><i>Confidencial</i>: Otros pueden ver que tienes una entrada para ese día y esa hora, pero no los detalles de qué es.
+access-help: Especifica el nivel de acceso del evento.<br /> <i>Público</i>: Cualquiera puede ver los detalles del evento.<br /><i>Confidencial</i>: Otros pueden ver que tienes una entrada para ese día y esa hora, pero no los detalles de qué es.
 Access: Acceso
-priority-help: Especifica la prioridad del evento.  Eventos de Alta Prioridad se mostrarán en negrita.
+priority-help: Especifica la prioridad del evento. Eventos de Alta Prioridad se mostrarán en negrita.
 Priority: Prioridad
 High: Alta
 Medium: Media
 Low: Baja
 category-help: Especifica la categoría del evento.
 Category: Categoría
-URL: URL
 date-help: Especifica la fecha del evento.
 Untimed event: Evento sin hora
 Timed event: Evento con hora
 All day event: Evento para todo el día
 Timezone Offset: Desplazamiento de zona horaria
 time-help: Especifica la hora del evento.<br />Selecciona "Evento con hora" (para un evento planificado a una hora especifica del día), "Evento sin hora" (para un evento que no tiene hora, como un festivo) o "Evento para todo el día" (para un evento que dura todo el día, como estar fuera de la oficina).
-duration-help: Especifica la duración (en horas:minutos) del evento.  <br /><i>Este campo puede dejarse vacío.</i>
+duration-help: Especifica la duración (en horas:minutos) del evento.<br /><i>Este campo puede dejarse vacío.</i>
 hours: horas
 minutes: Minutos
 end-time-help: Especifica la hora a la que se espera que acabe el evento.
 participants-help: Lista de participantes en esta entrada.
 external-participants-help: Especifica una lista de participantes en el evento que no son usuarios del calentario. Los usuario deben ser listados uno por línea y pueden incluir su dirección de email. Si la dirección de email se especifica, el usuario es elegible para recibir notications y recordatorios.
 External Participants: Participantes externos
-repeat-type-help: Seleccione con que frecuencia un evento debe repetirse.<i>Mensual (por día)</i> permite que un evento se repita el primer lunes de mes, 3 jueves del mes, etc.  <i>Mensual (por fecha)</i> permite que un evento se repita el mismo día del mes.
+repeat-type-help: Seleccione con que frecuencia un evento debe repetirse.<i>Mensual (por día)</i> permite que un evento se repita el primer lunes de mes, 3 jueves del mes, etc. <i>Mensual (por fecha)</i> permite que un evento se repita el mismo día del mes.
 Daily: Diario
 Weekly: Semanalmente
 Monthly: Mensualmente
@@ -396,7 +387,6 @@ Last Name: Apellido
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Error
 Import Results: Resultado de la importacion
 Events successfully imported: Eventos importados correctamente
 Errors: Errores
@@ -521,7 +511,7 @@ Display weekends in week view: Mostrar fines de semana en vista semanal
 Time interval: Intervalo de tiempo
 time-interval-help: Especifica la duración de los bloques de tiempo en las vistas de semana y día
 Nonuser: NoUsuario
-colors-help: Todos los colores deben especificarse en formato hexadecimal "#RRGGBB" donde "RR" es el valor hexadecimal del rojo, "GG"  es el valor hexadecimal del verde y "BB" es el valor hexadecimal del azul.
+colors-help: Todos los colores deben especificarse en formato hexadecimal "#RRGGBB" donde "RR" es el valor hexadecimal del rojo, "GG" es el valor hexadecimal del verde y "BB" es el valor hexadecimal del azul.
 
 ########################################
 # Page: help_bug.php
@@ -535,13 +525,12 @@ Adding/Editing Calendar Entries: Añadir/editar entradas del calendario
 Repeat Type: Tipo de repetición
 Repeat End Date: Fecha final de repetición
 Repeat Day: Día repetición
-repeat-day-help: Especifica en que dias del mes debe repetirse el evento. Para usar sólo cuando <i>Tipo de repetición</i> está ajustado a <i>Semanal</i>. 
+repeat-day-help: Especifica en que dias del mes debe repetirse el evento. Para usar sólo cuando <i>Tipo de repetición</i> está ajustado a <i>Semanal</i>.
 
 ########################################
 # Page: help_import.php
 #
 Import: Importar
-Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Este formulario te permite importar entradas de la agenda del Palm Desktop
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Debe estar en tu directorio de Palm en <tt>datebook/datebook.dat</tt> en un subdirectorio llamado con tu nombre de usuario.
 The following entries will not be imported: Las siguientes entradas no se importarán
@@ -742,7 +731,6 @@ You must specify a view name: Debes especificar un nombre de vista
 # Page: view_entry.php
 #
 Assistant mode: Modo ayudante
-Status: Status
 External User: Usuario externo
 Approve/Confirm entry: Aprobar/Confirmar registro
 Reject entry: Rechazar registro
@@ -809,14 +797,8 @@ October: Octubre
 November: Noviembre
 Jan: Ene
 Feb: Feb
-Mar: Mar
 Apr: Abr
-May: May
-Jun: Jun
-Jul: Jul
 Aug: Ago
-Sep: Sep
-Oct: Oct
 Nov: Nov
 The following error occurred: Ocurrió el siguiente error
 You are not authorized: No estás autorizado
@@ -928,7 +910,7 @@ Color format should be RRGGBB.: Formato de Color debe ser Hexadecimal '#RRGGB
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: No has escrito una Breve descripción
-The time you have entered begins before your preferred work hours.  Is this correct?: La hora que ha introducido comienza antes de tus horas laborables preferidas. ¿Es correcto?
+The time you have entered begins before your preferred work hours. Is this correct?: La hora que ha introducido comienza antes de tus horas laborables preferidas. ¿Es correcto?
 You have not entered a valid time of day: No has dado una hora válida
 
 ########################################

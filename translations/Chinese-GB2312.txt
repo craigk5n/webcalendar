@@ -4,7 +4,7 @@
 # Last update: 2003-8-5
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -59,8 +59,8 @@ Previous: 前一页
 ########################################
 # Page: add_entry.php
 #
-private: 私人的
 confidential: 机密的
+private: 私人的
 Error adding event: 添加事件错误
 
 ########################################
@@ -87,9 +87,8 @@ Your browser default language is: 您的浏览器预设的语言是
 None: 无
 date-format-help: 描述合适的日期格式
 Date format: 日期格式
-display-week-starts-on: Specifies whether the week starts on Sunday or Monday.  If Monday is specified, then week numbers will be ISO week numbers.
 Week starts on: 每周开始于
-time-format-help: Specifies which time format to use: <BR><I>12 hour:</I> Display times as 3am, 8:30pm, etc.  <BR><I>24 hour:</I> Display times as 300, 2030, etc.
+time-format-help: Specifies which time format to use: <br><I>12 hour:</i> Display times as 3am, 8:30pm, etc. <br><I>24 hour:</i> Display times as 300, 2030, etc.
 Time format: 时间格式
 12 hour: 12时制
 24 hour: 24时制
@@ -268,7 +267,6 @@ All: 全部
 Send Reminder: 发送邮件通知
 days: 天
 Delete entry: 删除事件
-You are not authorized to edit this entry.: You are not authorized to edit this entry.
 
 ########################################
 # Page: edit_entry_handler.php
@@ -457,8 +455,8 @@ Help Index: 辅助索引
 Add/Edit/Delete: 添加/编辑/删除
 The text color of the new layer that will be displayed in your calendar.: 你的日历中显示的新层次的文本颜色
 Disabling: 正在关闭
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: 点击页面下端管理部分的停用层次架构不显示层次架构 
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: 点击页面下端管理部分的启用层次架构显示层次架构 
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: 点击页面下端管理部分的停用层次架构不显示层次架构
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: 点击页面下端管理部分的启用层次架构显示层次架构
 Specifies the user that you would like to see displayed in your calendar.: 选择用户使在你的日历中显示他的事件
 
 ########################################
@@ -757,7 +755,7 @@ Color format should be RRGGBB.: 颜色格式需要是 '#RRGGBB'
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: 您没有输入概要描述
-The time you have entered begins before your preferred work hours.  Is this correct?: 这个时段不在您自定的工作时间內.  这是正确的吗?
+The time you have entered begins before your preferred work hours. Is this correct?: 这个时段不在您自定的工作时间內. 这是正确的吗?
 You have not entered a valid time of day: 您没有输入正确的时间
 
 ########################################

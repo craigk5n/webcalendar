@@ -1,6 +1,6 @@
 # See translations/English-US.txt for instructions.
 #
-# Finnish translation by Juha-Matti ≈berg (juffe@liveware.fi) 
+# Finnish translation by Juha-Matti ≈berg (juffe@liveware.fi)
 # Updated for WebCal 1.0RC2 by Jussi Siponen (jussi.siponen@posiona.com)
 #
 # Additional translations 'borrowed' from SourceForge project
@@ -8,7 +8,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -37,12 +37,6 @@ __month__ __yyyy__: __month__ __yyyy__
 
 
 ########################################
-# Page: about.php
-#
-Title: WebCalendar
-OK: OK
-
-########################################
 # Page: access.php
 #
 Database error: Tietokantavirhe
@@ -65,8 +59,8 @@ Previous: Edellinen
 ########################################
 # Page: add_entry.php
 #
-private: yksityinen
 confidential: luottamuksellinen
+private: yksityinen
 Error adding event: Virhe merkint‰‰ lis‰tt‰ess‰
 
 ########################################
@@ -104,7 +98,7 @@ date-format-help: M‰‰ritt‰‰ p‰iv‰n esitysmuodon.
 Date format: P‰iv‰yksen muoto
 display-week-starts-on: M‰‰rittelee viikon alkamisp‰iv‰ksi joko sunnuntai tai maanantai. Jos maanantai valittu, niin viikonnumero lasketaan ISO-j‰rjestelm‰n mukaisesti.
 Week starts on: Viikon ensimm‰inen p‰iv‰
-time-format-help: M‰‰rittelee ajan esitysmuodon, <br /><i>12 tuntia</i> <br /><i>24 tuntia</i>
+time-format-help: M‰‰rittelee ajan esitysmuodon,<br /><i>12 tuntia</i><br /><i>24 tuntia</i>
 Time format: Ajan esitystapa
 12 hour: 12 tuntia
 24 hour: 24 tuntia
@@ -122,7 +116,7 @@ Top: Ylh‰‰ll‰
 fonts-help: M‰‰ritt‰‰ k‰ytett‰v‰t j‰rjestelm‰fontit (esim. "Arial, Helvetica")
 Fonts: Fontit
 display-weekends-help: N‰yt‰ viikonloput viikkoa katseltaessa.
-display-week-number-help: M‰‰rittelee n‰ytet‰‰nkˆ viikonnumero (1-52) kuukausi- ja viikkon‰kym‰ss‰. 
+display-week-number-help: M‰‰rittelee n‰ytet‰‰nkˆ viikonnumero (1-52) kuukausi- ja viikkon‰kym‰ss‰.
 Display week number: N‰yt‰ viikonnumero
 display-desc-print-day-help: Include event descriptions in printer-friendly version of day view.
 Display description in printer day view: N‰yt‰ kuvaus p‰iv‰n tulostusn‰kym‰ss‰
@@ -133,7 +127,7 @@ allow-view-other-help: M‰‰ritt‰‰, salliiko kalenteri k‰ytt‰j‰n tarkastella toise
 Allow viewing other users calendars: Salli muiden henkilˆiden kalenterien tarkastelu
 require-approvals-help: Jos p‰‰ll‰, k‰ytt‰j‰n on vahvistettava tapahtuma ennenkuin se n‰kyy kalenterissa.
 Require event approvals: Vaadi tapahtumien vahvistus
-display-unapproved-help: M‰‰rittelee n‰ytet‰‰nkˆ hyv‰ksym‰ttˆm‰t tapahtumat kalenterissa. <br />Jos valittu "Kyll‰", niin hyv‰ksym‰ttˆm‰t tapahtumat n‰ytet‰‰n (eri v‰rill‰).<br />Jos valittu "Ei", niin tapahtumat tulee hyv‰ksy‰ ennenkuin ne n‰kyv‰t kalenterissa. 
+display-unapproved-help: M‰‰rittelee n‰ytet‰‰nkˆ hyv‰ksym‰ttˆm‰t tapahtumat kalenterissa.<br />Jos valittu "Kyll‰", niin hyv‰ksym‰ttˆm‰t tapahtumat n‰ytet‰‰n (eri v‰rill‰).<br />Jos valittu "Ei", niin tapahtumat tulee hyv‰ksy‰ ennenkuin ne n‰kyv‰t kalenterissa.
 Display unapproved: N‰yt‰ hyv‰ksym‰ttˆm‰t tapahtumat
 conflict-check-help: Tarkista tapahtumien konfliktit
 Check for event conflicts: Tarkista tapahtumien konfliktit
@@ -155,7 +149,7 @@ disable-participants-field-help: Poistaa mahdollisuuden lis‰t‰ muita henkilˆit‰ 
 Disable Participants field: Poista muiden henkilˆiden lis‰ys tapahtumaan
 disable-repeating-field-help: Poistaa toistettavien tapahtumien mahdollisuuden.
 Disable Repeating field: Poista toistettavat tapahtumat k‰ytˆst‰.
-allow-html-description-help: If enabled, users can enter HTML in the event description field.  If not enabled, the HTML tags will be escaped so as to appear as plain text.  Warning: Enabling this feature will allow users to reference images on other websites.
+allow-html-description-help: If enabled, users can enter HTML in the event description field. If not enabled, the HTML tags will be escaped so as to appear as plain text. Warning: Enabling this feature will allow users to reference images on other websites.
 Allow HTML in Description: Salli HTML kuvauksissa
 popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
 Display Site Extras in popup: N‰yt‰ palvelukohtaiset lisukkeet ponnahdusikkunassa
@@ -183,7 +177,7 @@ nonuser-enabled-help: Jos k‰ytˆss‰, p‰‰k‰ytt‰j‰ voi lis‰t‰ kalentereita, jotka e
 Nonuser enabled: Ei-kenenk‰‰n kalenterit k‰ytˆss‰
 nonuser-list-help: Where to display the nonuser calendars in the participant list
 Nonuser list: N‰yt‰ osallistujaluettelossa
-reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports.  Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
+reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports. Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 Reports enabled: Raportit k‰ytˆss‰
 subscriptions-enabled-help: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
 Allow remote subscriptions: Salli ulkopuoliset tilaukset
@@ -283,8 +277,6 @@ Description: Kuvaus
 ########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
 Edit Entry: Muokkaa merkint‰‰
 Add Entry: Lis‰‰ merkint‰
 Details: Tiedot
@@ -294,7 +286,7 @@ brief-description-help: Kalenterimerkinn‰n otsikko (noin 20 merkki‰). N‰ytet‰‰n 
 Brief Description: Selite
 full-description-help: Sis‰lt‰‰ tapahtuman tiedot. N‰m‰ n‰ytet‰‰n kun k‰ytt‰j‰ katsoo kalenterimerkinn‰n tietoja.
 Full Description: Selitys
-access-help: M‰‰rittelee tapahtuman n‰kyvyyden.<br /> <i>Julkinen</i>: Kaikki n‰kev‰t kaikki tapahtuman tiedot.  <br /><i>Luottamuksellinen</i>: Muut n‰kev‰t vain tapahtuman p‰iv‰m‰‰r‰n ja ajan, mutta ei muita tietoja.
+access-help: M‰‰rittelee tapahtuman n‰kyvyyden.<br /> <i>Julkinen</i>: Kaikki n‰kev‰t kaikki tapahtuman tiedot.<br /><i>Luottamuksellinen</i>: Muut n‰kev‰t vain tapahtuman p‰iv‰m‰‰r‰n ja ajan, mutta ei muita tietoja.
 Access: Saantioikeus
 priority-help: M‰‰rittelee tapahtuman t‰rkeyden. T‰rkeimm‰t n‰ytet‰‰n lihavoituna.
 Priority: T‰rkeys
@@ -303,14 +295,13 @@ Medium: Normaali
 Low: V‰h‰inen
 category-help: M‰‰ritt‰‰ tapahtumalle tapahtumaluokan.
 Category: Tapahtumaluokka
-URL: URL
 date-help: M‰‰rittelee tapahtuman p‰iv‰m‰‰r‰n.
 Untimed event: Ajoittamaton tapahtuma
 Timed event: Ajoitettu tapahtuma
 All day event: Koko p‰iv‰n kest‰v‰ tapahtuma
 Timezone Offset: Aikaero
-time-help: M‰‰rittelee tapahtuman ajan. <br /><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
-duration-help: M‰‰rittelee tapahtuman keston (tunteina ja minuutteina). <br /><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
+time-help: M‰‰rittelee tapahtuman ajan.<br /><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
+duration-help: M‰‰rittelee tapahtuman keston (tunteina ja minuutteina).<br /><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
 hours: tuntia
 minutes: minuuttia
 participants-help: Luetteloi tapahtuman osanottajat.
@@ -336,7 +327,7 @@ You are not authorized to edit this entry.: Sinulla ei ole oikeutta muokata t‰t‰
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: Sinulle on lis‰tty uusi kalenterimerkint‰ - 
+A new appointment has been made for you by: Sinulle on lis‰tty uusi kalenterimerkint‰ -
 An appointment has been updated by: Kalenterimerkint‰‰ on muutettu -
 The following conflicts with the suggested time: Ehdotettuna aikana on seuraavat muut merkinn‰t
 Please look on: Tarkista
@@ -500,7 +491,7 @@ Display weekends in week view: N‰yt‰ viikonloput viikkoa katseltaessa
 Time interval: Aikajakso
 time-interval-help: M‰‰ritt‰‰ viikko- sek‰ p‰iv‰n‰kymien aikablokit.
 Nonuser: Ei-kenenk‰‰n kalenterit
-colors-help: Kaikki v‰rit m‰‰ritell‰‰n koodaamalla ne heksadesimaalinumeroksi #RRGGBB-muotoon. (RR-punainen, GG-vihre‰ ja BB-sininen arvo (00-FF)). 
+colors-help: Kaikki v‰rit m‰‰ritell‰‰n koodaamalla ne heksadesimaalinumeroksi #RRGGBB-muotoon. (RR-punainen, GG-vihre‰ ja BB-sininen arvo (00-FF)).
 
 ########################################
 # Page: help_bug.php
@@ -864,7 +855,7 @@ Color format should be RRGGBB.: V‰rikoodin tulee olla muotoa '#RRGGBB'
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Selite puuttuu
-The time you have entered begins before your preferred work hours.  Is this correct?: Alkuaika on ennen normaalin tyˆajan alkua. Onko se oikein?
+The time you have entered begins before your preferred work hours. Is this correct?: Alkuaika on ennen normaalin tyˆajan alkua. Onko se oikein?
 You have not entered a valid time of day: Kellonaika puuttuu
 
 ########################################

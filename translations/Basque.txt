@@ -7,7 +7,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-01-2007
 
 
 ################################################################################
@@ -38,7 +38,6 @@ __month__ __yyyy__: __month__ __yyyy__
 ########################################
 # Page: about.php
 #
-Title: WebCalendar
 OK: Ados
 
 ########################################
@@ -63,8 +62,8 @@ Previous: Aurrekoa
 ########################################
 # Page: add_entry.php
 #
-private: pribatua
 confidential: konfidentziala
+private: pribatua
 Error adding event: Akatsa gertaera gehitzean
 
 ########################################
@@ -83,7 +82,7 @@ Email: E-posta
 Colors: Koloreak
 app-name-help: Izenburuan azalduko den testua adierazten du
 Application Name: Aplikazioaren izena
-server-url-help: Aplikazioaren oinarri URL-a adierazten du 
+server-url-help: Aplikazioaren oinarri URL-a adierazten du
 Server URL: Zerbitzariaren URL-a
 language-help: Erabili beharreko hizkuntza adierazten du.
 Language: Hizkuntza
@@ -93,7 +92,7 @@ date-format-help: Dataren formatua adierazten du
 Date format: Data formatua
 display-week-starts-on: Astea Igande edo Astelehenean asten den adierazteko
 Week starts on: Astea hasten da
-time-format-help: Erabiliko den ordu formatua adierazten du, 12 ordu edo 24 ordu 
+time-format-help: Erabiliko den ordu formatua adierazten du, 12 ordu edo 24 ordu
 Time format: Ordu formatua
 12 hour: 12 ordukoa
 24 hour: 24 ordukoa
@@ -151,7 +150,7 @@ Email enabled: E-posta gaitua
 email-default-sender: Defektuz postak zeinek bidaliko dituen adierazten du.
 Default sender address: Bidaltzailearen posta
 Default user settings: Erabiltzailearen aukerak
-email-event-reminders-help: Gertaerak e-posta bidez gogorarazten diren 
+email-event-reminders-help: Gertaerak e-posta bidez gogorarazten diren
 Event reminders: Gertaeren gogoraraztea
 email-event-added: Gertaeren gehitzea e-posta bidez jakinarazten den ala ez.
 Events added to my calendar: Nire egutegira gehitutako gertaerak.
@@ -224,8 +223,6 @@ Description: Deskribapena
 ########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
 Edit Entry: Sarrera editatu
 Add Entry: Sarrera gehitu
 Details: Zehaztasunak
@@ -593,7 +590,6 @@ October: Urria
 November: Azaroa
 Jan: Urt
 Feb: Ots
-Mar: Mar
 Apr: Api
 May: Mai
 Jun: Eka
