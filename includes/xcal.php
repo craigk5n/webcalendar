@@ -104,7 +104,7 @@ function export_fold_lines( $string, $encoding = 'none', $limit = 76 ) {
 function export_get_attendee( $id, $export ) {
   global $login;
 
-  $request = 'SELECT weu.cal_login, weu.cal_status, we.cal_create_by 
+  $request = 'SELECT weu.cal_login, weu.cal_status, we.cal_create_by
     FROM webcal_entry_user weu LEFT JOIN  webcal_entry we
     ON weu.cal_id = we.cal_id
     WHERE weu.cal_id = ? AND weu.cal_status <> \'D\'';
@@ -177,7 +177,7 @@ function export_time( $date, $duration, $time, $texport, $vtype = 'E' ) {
     $dtstart = $date . 'T000000';
     if ( $insert_vtimezone = get_vtimezone ( $TIMEZONE, $dtstart ) )
       $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $dtstart. "\r\n";
-    else 
+    else
       $ret .= 'DTSTART;VALUE=DATETIME:' . $dtstart. "\r\n";
   } else {
     // timed event
@@ -277,11 +277,11 @@ function export_recurrence_ical( $id, $simple = false ) {
         // translate('FR');
         // translate('SA');
         // translate('SU');
-        if ( ! empty ( $byday ) && ! empty ( $lang_file ) && 
+        if ( ! empty ( $byday ) && ! empty ( $lang_file ) &&
           $lang_file != 'English-US.txt' ) {
           $bydayArr = explode ( ',', $byday );
           foreach ( $bydayArr as $bydayIdx ) {
-            $bydayOut[] = substr ( $bydayIdx, 0, strlen ( $bydayIdx ) -2 ) 
+            $bydayOut[] = substr ( $bydayIdx, 0, strlen ( $bydayIdx ) -2 )
               . translate ( substr ( $bydayIdx, -2 ) );
           }
           $byday = implode ( ',', $bydayOut );
@@ -339,8 +339,8 @@ function export_recurrence_ical( $id, $simple = false ) {
       if ( !empty( $end ) ) {
         $endtime = ( ! empty ( $endtime )? $endtime:0 );
         $rrule .= ';' . ( ! $simple ? 'UNTIL': translate ( 'Until' ) ) . '=';
-        $utc = ( ! $simple ? export_get_utc_date( $end, $endtime ) 
-          : date_to_str ( $end, $DATE_FORMAT_TASK, false ) 
+        $utc = ( ! $simple ? export_get_utc_date( $end, $endtime )
+          : date_to_str ( $end, $DATE_FORMAT_TASK, false )
           . ' ' . display_time ( $endtime ) );
         $rrule .= $utc;
       } else if ( ! empty ( $cal_count ) && $cal_count != 999 ) {
@@ -355,10 +355,10 @@ function export_recurrence_ical( $id, $simple = false ) {
 
       if ( count( $rdate ) > 0 ) {
         $rdatesStr = '';
-        foreach ( $rdate as $rdates ) { 
-          $rdatesStr .= date_to_str ( $rdates, $DATE_FORMAT_TASK, false ) . ' '; 
+        foreach ( $rdate as $rdates ) {
+          $rdatesStr .= date_to_str ( $rdates, $DATE_FORMAT_TASK, false ) . ' ';
         }
-        $string = ( ! $simple ? 'RDATE;VALUE=DATE:' . implode ( ',', $rdate ) : 
+        $string = ( ! $simple ? 'RDATE;VALUE=DATE:' . implode ( ',', $rdate ) :
           ',' . translate ( 'Inclusion Dates' ) . '=' . $rdatesStr );
         $string = export_fold_lines( $string );
         while ( list( $key, $value ) = each( $string ) )
@@ -368,8 +368,8 @@ function export_recurrence_ical( $id, $simple = false ) {
 
       if ( count( $exdate ) > 0 ) {
         $exdatesStr = '';
-        foreach ( $exdate as $exdates ) { 
-          $exdatesStr .= date_to_str ( $exdates, $DATE_FORMAT_TASK, false ) . ' '; 
+        foreach ( $exdate as $exdates ) {
+          $exdatesStr .= date_to_str ( $exdates, $DATE_FORMAT_TASK, false ) . ' ';
         }
         $string = ( ! $simple ? 'EXDATE;VALUE=DATE:' . implode ( ',', $exdate ) :
           ',' . translate ( 'Exclusion Dates' ) . '=' . $exdatesStr );
@@ -722,7 +722,7 @@ function create_import_instance () {
   }
   $sql = 'INSERT INTO webcal_import ( cal_import_id, cal_name,
     cal_date, cal_type, cal_login ) VALUES ( ?, ?, ?, ?, ? )';
-  if ( ! dbi_execute ( $sql, array ( $importId, $name, date ( 'Ymd' ), 
+  if ( ! dbi_execute ( $sql, array ( $importId, $name, date ( 'Ymd' ),
     'publish', $login ) ) ) {
     $error = db_error ();
     return;
@@ -837,7 +837,7 @@ function export_vcal ( $id ) {
 } //end function
 
 function export_ical ( $id = 'all', $attachment = false ) {
-  global $publish_fullname, $login, $cal_type, $timestamp_RRULE, 
+  global $publish_fullname, $login, $cal_type, $timestamp_RRULE,
     $cat_filter, $insert_vtimezone;
 
   $exportId = -1;
@@ -856,7 +856,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
   // Always output something, even if no records come back
   // This prevents errors on the iCal client
   $ret = "BEGIN:VCALENDAR\r\n";
-  $title = 'X-WR-CALNAME;VALUE=TEXT:' . 
+  $title = 'X-WR-CALNAME;VALUE=TEXT:' .
   ( empty ( $publish_fullname ) ? $login : translate( $publish_fullname ) );
   $title = utf8_encode( str_replace ( ',', "\\,", $title ) );
   $ret .= "$title\r\n";
@@ -896,7 +896,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     // If this is the first event that has never been published,
     // then create a new import instance to associate with what we are doing.
     $sql = 'SELECT wid.cal_external_id
-      FROM webcal_import_data wid, webcal_entry_user weu 
+      FROM webcal_import_data wid, webcal_entry_user weu
       WHERE wid.cal_id = weu.cal_id AND wid.cal_id = ? AND
       weu.cal_login = ?';
     $res = dbi_execute ( $sql, array ( $id, $login ) );
@@ -937,7 +937,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     // if Categories were selected as an export filter, then abort this
     // event if it does not contain that category
     if ( ! empty ( $cat_filter ) ) {
-      if ( count ( $categories ) == 0 || 
+      if ( count ( $categories ) == 0 ||
         ! array_key_exists ( $cat_filter, $categories ) )
         continue;
     }
@@ -1157,7 +1157,7 @@ function import_data ( $data, $overwrite, $type ) {
   }
   $sql = 'INSERT INTO webcal_import ( cal_import_id, cal_name,
     cal_date, cal_type, cal_login ) VALUES ( ?, NULL, ?, ?, ? )';
-  if ( ! dbi_execute ( $sql, array ( $importId, date ( 'Ymd' ), 
+  if ( ! dbi_execute ( $sql, array ( $importId, date ( 'Ymd' ),
     $type, $login ) ) ) {
     $errormsg = db_error();
     return;
@@ -1191,7 +1191,7 @@ function import_data ( $data, $overwrite, $type ) {
       $Entry['Duration'] = '1440';
     }
 
-    $priority = ( ! empty (  $Entry['Priority'] ) ? 
+    $priority = ( ! empty (  $Entry['Priority'] ) ?
       $Entry['Priority'] : 5 );
 
     if ( ! empty ( $Entry['Completed'] ) ) {
@@ -1456,7 +1456,7 @@ function import_data ( $data, $overwrite, $type ) {
 
         if ( $ImportType == 'PALMDESKTOP' ) {
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
-            cal_login, cal_import_type, cal_external_id ) 
+            cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_execute ( $sql, array ( $importId, $id,
@@ -1469,7 +1469,7 @@ function import_data ( $data, $overwrite, $type ) {
           if ( strlen ( $uid ) > 200 )
             $uid = null;
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
-            cal_login, cal_import_type, cal_external_id ) 
+            cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_execute ( $sql, array ( $importId, $id, $calUser, 'vcal', $uid ) ) ) {
@@ -1482,7 +1482,7 @@ function import_data ( $data, $overwrite, $type ) {
           if ( strlen ( $uid ) > 200 )
             $uid = null;
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
-            cal_login, cal_import_type, cal_external_id ) 
+            cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_execute ( $sql, array ( $importId, $id, $calUser, 'ical', $uid ) ) ) {
@@ -1777,8 +1777,8 @@ function import_data ( $data, $overwrite, $type ) {
       $old = array_keys ( $oldUIDs );
       $oldcnt = count ( $old );
       for ( $i = 0; $i < $oldcnt; $i++ ) {
-        $sql = 'SELECT cal_id FROM webcal_import_data 
-          WHERE cal_import_type = ? AND cal_external_id = ? 
+        $sql = 'SELECT cal_id FROM webcal_import_data
+          WHERE cal_import_type = ? AND cal_external_id = ?
           AND cal_login = ? AND cal_id < ?';
         $res = dbi_execute ( $sql, array ( $type, $old[$i], $calUser, $firstEventId ) );
         if ( $res ) {
@@ -2994,19 +2994,19 @@ function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
         <option value="pilot-csv">Pilot-datebook CSV (' . $palmStr . ')</option>
         <option value="pilot-text">Install-datebook (' . $palmStr . ')</option>
       </select>';
-} 
+}
 
 function save_vtimezone ( $event ) {
   //do_debug ( print_r ( $event, true ) ) ;
   $tzidLong = parse_tzid ( $event['tzid'] );
-  $tzid = ( ! empty ( $event['tzlocation'] ) ? $event['tzlocation'] : 
+  $tzid = ( ! empty ( $event['tzlocation'] ) ? $event['tzlocation'] :
     ( ! empty ( $tzidLong ) ? $tzidLong : '' ) );
   $dtstart = ( ! empty ( $event['dtstart'] ) ? $event['dtstart'] : '' );
   $dtend = ( ! empty ( $event['dtend'] ) ? $event['dtend'] : '' );
   //delete any record already found for this tzid
-  dbi_execute ( 'DELETE FROM webcal_timezones WHERE tzid = ? AND dtstart = ?' , 
+  dbi_execute ( 'DELETE FROM webcal_timezones WHERE tzid = ? AND dtstart = ?' ,
     array ( $tzid, $dtstart ) );
-  $sql = 'INSERT INTO webcal_timezones ( tzid, dtstart, dtend, vtimezone ) 
+  $sql = 'INSERT INTO webcal_timezones ( tzid, dtstart, dtend, vtimezone )
     VALUES ( ?, ?, ?, ?)';
   if ( ! dbi_execute ( $sql , array ( $tzid, $dtstart, $dtend , $event['VTIMEZONE'] ) ) ) {
     $error = db_error ();
@@ -3039,8 +3039,8 @@ function parse_tzid ( $tzid ) {
     $tzid = $tzAr[3];
     // we may recieve a 2 word tzid
     if ( $tzArCnt == 5 ) $tzid .= '/' . $tzAr[4];
-    // and even maybe a 3 word tzid 
-    if ( $tzArCnt == 6 ) $tzid .= '/' . $tzAr[4] . '/' . $tzAr[5]; 
+    // and even maybe a 3 word tzid
+    if ( $tzArCnt == 6 ) $tzid .= '/' . $tzAr[4] . '/' . $tzAr[5];
   }
   return $tzid;
 }

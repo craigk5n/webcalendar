@@ -6,13 +6,13 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
  * This file is intended to be used instead of the standard user.php file.
  * I have not tested this yet (I do not have an LDAP server running yet),
  * so please provide feedback.
- * 
+ *
  * This file contains all the functions for getting information about users.
  * So, if you want to use an authentication scheme other than the webcal_user
  * table, you can just create a new version of each function found below.
- * 
+ *
  * Note: this application assumes that usernames (logins) are unique.
- * 
+ *
  * Note #2: If you are using HTTP-based authentication, then you still need
  * these functions and you will still need to add users to webcal_user.
  */
@@ -29,12 +29,12 @@ $admin_can_delete_user = true;
 
 //------ LDAP General Server Settings ------//
 //
-// Name or address of the LDAP server 
+// Name or address of the LDAP server
 //  For SSL/TLS use 'ldaps://localhost'
-$ldap_server = 'localhost';          
+$ldap_server = 'localhost';
 
-// Port LDAP listens on (default 389)        
-$ldap_port = '389';                   
+// Port LDAP listens on (default 389)
+$ldap_port = '389';
 
 // Use TLS for the connection (not the same as ldaps://)
 $ldap_start_tls = false;
@@ -43,15 +43,15 @@ $ldap_start_tls = false;
 $set_ldap_version = false;
 $ldap_version = '3'; // (usually 3)
 
-// base DN to search for users      
+// base DN to search for users
 $ldap_base_dn = 'ou=people,dc=company,dc=com';
 
-// The ldap attribute used to find a user (login). 
+// The ldap attribute used to find a user (login).
 // E.g., if you use cn,  your login might be "Jane Smith"
 //       if you use uid, your login might be "jsmith"
 $ldap_login_attr = 'uid';
 
-// Account used to bind to the server and search for information. 
+// Account used to bind to the server and search for information.
 // This user must have the correct rights to perform search.
 // If left empty the search will be made in anonymous.
 //
@@ -79,7 +79,7 @@ $ldap_user_filter = '(objectclass=person)';
 
 // Attributes to fetch from LDAP and corresponding user variables in the
 // application. Do change according to your LDAP Schema
-$ldap_user_attr = array( 
+$ldap_user_attr = array(
   // LDAP attribute   //WebCalendar variable
   'uid',              //login
   'sn',               //lastname
@@ -95,7 +95,7 @@ $ldap_user_attr = array(
 $ldap_admin_group_attr = strtolower($ldap_admin_group_attr);
 $ldap_admin_group_type = strtolower($ldap_admin_group_type);
 
-// Function to search the dn of a given user the error message will 
+// Function to search the dn of a given user the error message will
 // be placed in $error.
 // params:
 //   $login - user login
@@ -107,7 +107,7 @@ function user_search_dn ( $login ) {
 
   $ret = false;
   if ($r = connect_and_bind()) {
-    $sr = @ldap_search ( $ds, $ldap_base_dn, 
+    $sr = @ldap_search ( $ds, $ldap_base_dn,
       "(&($ldap_login_attr=$login)$ldap_user_filter )", $ldap_user_attr );
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
@@ -144,13 +144,13 @@ function user_valid_login ( $login, $password ) {
   $ret = false;
   $ds = @ldap_connect ( $ldap_server, $ldap_port );
   if ( $ds ) {
-    if ($set_ldap_version || $ldap_start_tls) 
+    if ($set_ldap_version || $ldap_start_tls)
       ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, $ldap_version);
-  
+
     if ($ldap_start_tls) {
       if (!ldap_start_tls($ds)) {
         $error = 'Could not start TLS for LDAP connection';
-        return $ret;      
+        return $ret;
       }
     }
 
@@ -310,43 +310,43 @@ function user_delete_user ( $user ) {
   }
   // Now delete events that were just for this user
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
-    dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?', 
+    dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
       array ( $delete_em[$i] ) );
     dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
       array ( $delete_em[$i] ) );
-    dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?', 
+    dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
       array ( $delete_em[$i] )  );
-    dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?', 
+    dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
       array ( $delete_em[$i] )  );
-    dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?', 
+    dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
       array ( $delete_em[$i] )  );
-    dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?', 
+    dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
       array ( $delete_em[$i] )  );
-    dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id = ?', 
+    dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id = ?',
       array ( $delete_em[$i] )  );
-    dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?', 
+    dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
       array ( $delete_em[$i] )  );
-    dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?', 
+    dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
       array ( $delete_em[$i] )  );
   }
 
   // Delete user participation from events
-  dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?', 
+  dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',
     array ( $user ) );
   // Delete preferences
-  dbi_execute ( 'DELETE FROM webcal_user_pref WHERE cal_login = ?', 
+  dbi_execute ( 'DELETE FROM webcal_user_pref WHERE cal_login = ?',
     array ( $user ) );
   // Delete from groups
-  dbi_execute ( 'DELETE FROM webcal_group_user WHERE cal_login = ?', 
+  dbi_execute ( 'DELETE FROM webcal_group_user WHERE cal_login = ?',
     array ( $user ) );
   // Delete bosses & assistants
-  dbi_execute ( 'DELETE FROM webcal_asst WHERE cal_boss = ?', 
+  dbi_execute ( 'DELETE FROM webcal_asst WHERE cal_boss = ?',
     array ( $user ) );
-  dbi_execute ( 'DELETE FROM webcal_asst WHERE cal_assistant = ?', 
+  dbi_execute ( 'DELETE FROM webcal_asst WHERE cal_assistant = ?',
     array ( $user ) );
   // Delete user's views
   $delete_em = array ();
-  $res = dbi_execute ( 'SELECT cal_view_id FROM webcal_view WHERE cal_owner = ?', 
+  $res = dbi_execute ( 'SELECT cal_view_id FROM webcal_view WHERE cal_owner = ?',
     array ( $user ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -355,25 +355,25 @@ function user_delete_user ( $user ) {
     dbi_free_result ( $res );
   }
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
-    dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_view_id = ?', 
+    dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_view_id = ?',
       array ( $delete_em[$i] ) );
   }
-  dbi_execute ( 'DELETE FROM webcal_view WHERE cal_owner = ?', 
+  dbi_execute ( 'DELETE FROM webcal_view WHERE cal_owner = ?',
     array ( $user ) );
   //Delete them from any other user's views
-  dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_login = ?', 
+  dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_login = ?',
     array ( $user ) );
   // Delete layers
-  dbi_execute ( 'DELETE FROM webcal_user_layers WHERE cal_login = ?', 
+  dbi_execute ( 'DELETE FROM webcal_user_layers WHERE cal_login = ?',
     array ( $user ) );
   // Delete any layers other users may have that point to this user.
-  dbi_execute ( 'DELETE FROM webcal_user_layers WHERE cal_layeruser = ?', 
+  dbi_execute ( 'DELETE FROM webcal_user_layers WHERE cal_layeruser = ?',
     array ( $user ) );
   // Delete user
-  dbi_execute ( 'DELETE FROM webcal_user WHERE cal_login = ?', 
+  dbi_execute ( 'DELETE FROM webcal_user WHERE cal_login = ?',
     array ( $user ) );
   // Delete function access
-  dbi_execute ( 'DELETE FROM webcal_access_function WHERE cal_login = ?', 
+  dbi_execute ( 'DELETE FROM webcal_access_function WHERE cal_login = ?',
     array ( $user ) );
   // Delete user access
   dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?',
@@ -387,7 +387,7 @@ function user_delete_user ( $user ) {
     array ( $user ) );
   // Delete user's reports
   $delete_em = array ();
-  $res = dbi_execute ( 'SELECT cal_report_id FROM webcal_report WHERE cal_login = ?', 
+  $res = dbi_execute ( 'SELECT cal_report_id FROM webcal_report WHERE cal_login = ?',
     array ( $user ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -397,16 +397,16 @@ function user_delete_user ( $user ) {
   }
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_report_template WHERE cal_report_id = ?',
-      array ( $delete_em[$i] ) );  
+      array ( $delete_em[$i] ) );
   }
   dbi_execute ( 'DELETE FROM webcal_report WHERE cal_login = ?',
     array ( $user ) );
     //not sure about this one???
   dbi_execute ( 'DELETE FROM webcal_report WHERE cal_user = ?',
-    array ( $user ) );  
+    array ( $user ) );
   // Delete user templates
-  dbi_execute ( 'DELETE FROM webcal_user_template WHERE cal_login = ?', 
-    array ( $user ) );  
+  dbi_execute ( 'DELETE FROM webcal_user_template WHERE cal_login = ?',
+    array ( $user ) );
 }
 
 
@@ -516,7 +516,7 @@ function stripdn($dn){
 // Tries to connect as $ldap_admin_dn if we set it.
 //  returns: bind result or false
 function connect_and_bind() {
-  global $ds, $error, $ldap_server, $ldap_port, $ldap_version; 
+  global $ds, $error, $ldap_server, $ldap_port, $ldap_version;
   global $ldap_admin_dn, $ldap_admin_pwd, $ldap_start_tls, $set_ldap_version;
 
   if ( ! function_exists ( 'ldap_connect' ) ) {
@@ -526,16 +526,16 @@ function connect_and_bind() {
   $ret = false;
   $ds = @ldap_connect ( $ldap_server, $ldap_port );
   if ( $ds ) {
-    if ($set_ldap_version || $ldap_start_tls) 
+    if ($set_ldap_version || $ldap_start_tls)
       ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, $ldap_version);
-  
+
     if ($ldap_start_tls) {
       if (!ldap_start_tls($ds)) {
         $error = 'Could not start TLS for LDAP connection';
-        return $ret;      
+        return $ret;
       }
     }
-    
+
     if ( $ldap_admin_dn != '') {
       $r = @ldap_bind ( $ds, $ldap_admin_dn, $ldap_admin_pwd );
     } else {

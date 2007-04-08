@@ -74,7 +74,7 @@ if ( $do_purge ) {
   $end_date = sprintf ( "%04d%02d%02d", $end_year, $end_month, $end_day );
   $tail = '';
   if ( $purge_deleted == 'Y' ) {
-    $tail = " AND weu.cal_status = 'D' "; 
+    $tail = " AND weu.cal_status = 'D' ";
   }
   if ( $purge_all == 'Y' ) {
     if ( $user == 'ALL' ) {
@@ -93,7 +93,7 @@ if ( $do_purge ) {
     $E_ids = get_ids ( 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu ' .
       "WHERE cal_type = 'E' AND cal_date < '$end_date' $tail",
       $ALL );
-    $M_ids = get_ids ( 'SELECT DISTINCT(we.cal_id) FROM webcal_entry we, 
+    $M_ids = get_ids ( 'SELECT DISTINCT(we.cal_id) FROM webcal_entry we,
       webcal_entry_user weu, webcal_entry_repeats wer
       WHERE we.cal_type = \'M\'
       AND we.cal_id = wer.cal_id AND we.cal_id = wer.cal_id '
@@ -109,7 +109,7 @@ if ( $do_purge ) {
   }
   echo '<h2>...' .  translate( 'Finished' ) . ".</h2>\n";
 ?>
-  <form><input type="button" value="<?php etranslate( 'Back' )?>" 
+  <form><input type="button" value="<?php etranslate( 'Back' )?>"
 onclick="history.back()" /></form
 ><?php
   if ( $purgeDebug ) {
@@ -160,8 +160,8 @@ onclick="history.back()" /></form
   <input type="checkbox" name="preview" value="Y" checked="checked" />
  </td></tr>
  <tr><td colspan="2">
-  <input type="submit" name="delete" value="<?php 
-    echo $deleteStr?>" onclick="return confirm('<?php 
+  <input type="submit" name="delete" value="<?php
+    echo $deleteStr?>" onclick="return confirm('<?php
     etranslate( 'Are you sure you want to delete events for', true);
     ?> ' + document.forms[0].user.value + '?')" />
  </td></tr>
@@ -171,7 +171,7 @@ onclick="history.back()" /></form
 <?php } ?>
 </td></tr></table>
 
-<?php echo print_trailer(); 
+<?php echo print_trailer();
 
 function purge_events ( $ids ) {
   global $preview, $previewStr, $c; // db connection

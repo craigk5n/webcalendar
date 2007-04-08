@@ -40,7 +40,7 @@ $INC = array('js/popups.php/true');
 print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quckier access */
-$repeated_events = read_repeated_events ( strlen ( $user ) ? 
+$repeated_events = read_repeated_events ( strlen ( $user ) ?
   $user : $login, $wkstart, $wkend, $cat_id );
 
 /* Pre-load the non-repeating events for quicker access */
@@ -106,14 +106,14 @@ for ( $d = 0; $d < 7; $d++ ) {
 
   if ( $can_add ) {
     echo '<a title="' .
-      translate( 'New Entry' ) . '" href="edit_entry.php?' . 
-      $u_url . 'date=' . 
+      translate( 'New Entry' ) . '" href="edit_entry.php?' .
+      $u_url . 'date=' .
       date ( 'Ymd', $days[$d] ) . '"><img src="images/new.gif" class="new" alt="' .
       translate( 'New Entry' ) . "\" /></a>\n";
   }
   echo '<a title="' .
-    $header[$d] . '" href="day.php?' . 
-    $u_url . 'date=' . 
+    $header[$d] . '" href="day.php?' .
+    $u_url . 'date=' .
     date ('Ymd', $days[$d] ) . "$caturl\">" .
     $header[$d] . "</a></th>\n</tr>\n";
 
@@ -138,7 +138,7 @@ if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 echo '<br />';
 
 echo $printerStr;
-echo print_trailer(); 
+echo print_trailer();
 
 
 /**
@@ -176,7 +176,7 @@ function print_detailed_entry ( $event, $date ) {
 
   $key++;
 
-  echo '<a title="' . translate( 'View this entry' ) . 
+  echo '<a title="' . translate( 'View this entry' ) .
     "\" class=\"$class\" id=\"$linkid\"  href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $user ) > 0 ) {
     echo '&amp;user=' . $user;
@@ -214,7 +214,7 @@ function print_detailed_entry ( $event, $date ) {
     $PN = htmlspecialchars ( $name );
     $PD = activate_urls ( htmlspecialchars ( $event->getDescription() ) );
   }
-  if ( ! empty ( $in_span ) ) 
+  if ( ! empty ( $in_span ) )
    $PN .= '</span>';
 
   echo $PN;

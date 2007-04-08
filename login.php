@@ -4,7 +4,7 @@
 foreach($_SESSION as $key=>$value) {
   $dummy[$key]=$value;  // copy to a dummy array
 }
-if ( ! empty ( $dummy ) ) 
+if ( ! empty ( $dummy ) )
   foreach ($dummy as $key=>$value) {
    if ( substr( $key, 0 , 6 ) == 'webcal' )
      unset( $_SESSION[$key] );
@@ -62,7 +62,7 @@ if ( ! empty ( $action ) && $action == 'logout' ) {
 } else if (  empty ( $return_path ) ) {
   // see if a return path was set
   $return_path = get_last_view();
-  if ( ! empty ( $return_path ) ) 
+  if ( ! empty ( $return_path ) )
     SetCookie ( 'webcalendar_last_view', '', 0 );
 }
 
@@ -136,7 +136,7 @@ if ( $single_user == 'Y' ) {
       if ( empty ( $error ) || ! $showLoginFailureReason ) {
         $error = translate('Invalid login', true );
       }
-      activity_log ( 0, 'system', '', LOG_LOGIN_FAILURE, 
+      activity_log ( 0, 'system', '', LOG_LOGIN_FAILURE,
         translate( 'Username' ) . ": " . $login .
         ", IP: " . $_SERVER['REMOTE_ADDR'] );
     }
@@ -176,7 +176,7 @@ function myOnLoad() {
   ?>
 }
 </script>
-<?php 
+<?php
 }
   echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login=__public__" />';
 
@@ -198,7 +198,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo '<span style="color:#FF0000; font-weight:bold;">' . 
+  echo '<span style="color:#FF0000; font-weight:bold;">' .
     translate( 'Error' ) . ": $error</span><br />\n";
 } else {
   echo "<br />\n";
@@ -216,7 +216,7 @@ if ( $logout ) {
 
 if ( ! $logout ) {
 ?>
-<form name="login_form" id="login" action="login.php" method="post" 
+<form name="login_form" id="login" action="login.php" method="post"
   onsubmit="return valid_form(this)">
 <?php
 if ( ! empty ( $return_path ) ) {
@@ -229,17 +229,17 @@ if ( ! empty ( $return_path ) ) {
 <tr><td rowspan="2">
  <img src="images/login.gif" alt="Login" /></td><td align="right">
  <label for="user"><?php etranslate( 'Username' )?>:</label></td><td>
- <input name="login" id="user" size="15" maxlength="25" 
-   value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>" 
+ <input name="login" id="user" size="15" maxlength="25"
+   value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>"
    tabindex="1" />
 </td></tr>
 <tr><td class="alignright">
  <label for="password"><?php etranslate( 'Password' )?>:</label></td><td>
- <input name="password" id="password" type="password" size="15" 
+ <input name="password" id="password" type="password" size="15"
    maxlength="30" tabindex="2" />
 </td></tr>
 <tr><td colspan="3" style="font-size: 10px;">
- <input type="checkbox" name="remember" id="remember" tabindex="3" 
+ <input type="checkbox" name="remember" id="remember" tabindex="3"
    value="yes" <?php if ( ! empty ( $remember ) && $remember == 'yes' ) {
      echo 'checked="checked"'; }?> /><label for="remember">&nbsp;
    <?php etranslate( 'Save login via cookies so I dont have to login next time.' )?></label>
@@ -274,13 +274,13 @@ if ( $DEMO_MODE == 'Y' ) {
 } ?>
 <br /><br />
 <?php if ( ! empty ( $ALLOW_SELF_REGISTRATION ) &&
-  $ALLOW_SELF_REGISTRATION == 'Y' ) { 
+  $ALLOW_SELF_REGISTRATION == 'Y' ) {
   // We can limit what domain is allowed to self register
   // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
   $valid_ip = validate_domain ();
 
   if ( ! empty ( $valid_ip ) ) {
-    echo '<b><a href="register.php">' . translate ( 'Not yet registered? Register here!' ) . 
+    echo '<b><a href="register.php">' . translate ( 'Not yet registered? Register here!' ) .
      '</a></b><br />';
   }
 }

@@ -12,7 +12,7 @@ if  ( isset ( $_COOKIE['webcalendar_csscache'] ) ) {
   $webcalendar_csscache += $_COOKIE['webcalendar_csscache'];
 }
 SetCookie ( 'webcalendar_csscache', $webcalendar_csscache );
-  
+
 function save_pref( $prefs, $src) {
   global $my_theme;
   while ( list ( $key, $value ) = each ( $prefs ) ) {
@@ -29,8 +29,8 @@ function save_pref( $prefs, $src) {
 
     } else {
       $setting = $key;
-      $prefix = 'admin_';    
-    }  
+      $prefix = 'admin_';
+    }
     if ( strlen ( $setting ) > 0 && $prefix == 'admin_' ) {
       if ( $setting == 'THEME' &&  $value != 'none' )
         $my_theme = strtolower ( $value );
@@ -52,7 +52,7 @@ function save_pref( $prefs, $src) {
   }
   // Reload preferences so any css changes will take effect
   load_global_settings ();
-  load_user_preferences ();  
+  load_user_preferences ();
 }
 
 $error = '';
@@ -64,17 +64,17 @@ if ( ! $is_admin ) {
 
 if ( ! empty ( $_POST ) && empty ( $error )) {
   $my_theme = '';
-  $currenttab = getPostValue ( 'currenttab' );    
+  $currenttab = getPostValue ( 'currenttab' );
   if ( $error == '' ) {
     save_pref ( $_POST, 'post' );
   }
-  
+
   if ( ! empty ( $my_theme ) ) {
     $theme = 'themes/'. strtolower ( $my_theme ). '.php';
     include_once $theme;
-    save_pref ( $webcal_theme, 'theme' );  
+    save_pref ( $webcal_theme, 'theme' );
   }
-}  
+}
 
 //load any new config settings. Existing ones will not be affected
 //this function is in the install/default_config.php file
@@ -152,7 +152,7 @@ $select = translate( 'Select' ) . '...';
 $option = '</option>' . "\n";
 
 //allow css_cache to webcal_config values
-@session_start (); 
+@session_start ();
 $_SESSION['webcal_tmp_login'] = 'blahblahblah';
 
 $editStr = '&nbsp;&nbsp;<input type="button" value="' . translate ( 'Edit' )
@@ -203,7 +203,7 @@ print_header ( $INC, '', $BodyX );
  <table width="100%">
  <tr><td class="tooltip" title="<?php etooltip( 'app-name-help' )?>">
   <label for="admin_APPLICATION_NAME"><?php etranslate( 'Application Name' )?>:</label></td><td>
-  <input type="text" size="40" name="admin_APPLICATION_NAME" id="admin_APPLICATION_NAME" value="<?php 
+  <input type="text" size="40" name="admin_APPLICATION_NAME" id="admin_APPLICATION_NAME" value="<?php
    echo htmlspecialchars ( $s['APPLICATION_NAME'] );
   ?>" />&nbsp;&nbsp;
   <?php if ( $s['APPLICATION_NAME'] == 'Title' )
@@ -213,13 +213,13 @@ print_header ( $INC, '', $BodyX );
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'server-url-help' )?>">
   <label for="admin_SERVER_URL"><?php etranslate( 'Server URL' )?>:</label></td><td>
-  <input type="text" size="40" name="admin_SERVER_URL" id="admin_SERVER_URL" value="<?php 
+  <input type="text" size="40" name="admin_SERVER_URL" id="admin_SERVER_URL" value="<?php
    echo htmlspecialchars ( $s['SERVER_URL'] );
   ?>" />
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'home-url-help' )?>">
   <label for="admin_HOME_LINK"><?php etranslate( 'Home URL' )?>:</label></td><td>
-  <input type="text" size="40" name="admin_HOME_LINK" id="admin_HOME_LINK" value="<?php 
+  <input type="text" size="40" name="admin_HOME_LINK" id="admin_HOME_LINK" value="<?php
    echo ( ! empty ( $s['HOME_LINK'] )? htmlspecialchars ( $s['HOME_LINK'] ): '');
   ?>" />
  </td></tr>
@@ -243,7 +243,7 @@ print_header ( $INC, '', $BodyX );
 <tr><td><label>
  <?php etranslate( 'Allow user to use themes' )?>:</label></td><td colspan="3">
  <?php echo print_radio ( 'ALLOW_USER_THEMES' ) ?>
-</td></tr> 
+</td></tr>
  <tr><td  class="tooltip" title="<?php etooltip( 'themes-help' );?>">
  <label for="admin_THEME"><?php etranslate( 'Themes' )?>:</label></td><td>
  <select name="admin_THEME" id="admin_THEME">
@@ -257,7 +257,7 @@ print_header ( $INC, '', $BodyX );
 ?>
  </select>&nbsp;&nbsp;&nbsp;
  <input type="button" name="preview" value="<?php etranslate ( 'Preview' ) ?>" onclick="return showPreview()" />
- </td></tr> 
+ </td></tr>
  </table>
 </fieldset>
 
@@ -368,7 +368,7 @@ print_header ( $INC, '', $BodyX );
   ?>
    </select>
   </td></tr>
-  
+
   <tr><td class="tooltip" title="<?php etooltip( 'display-weekend-starts-on' )?>">
    <?php etranslate( 'Weekend starts on' )?>:</td><td>
    <select name="admin_WEEKEND_START" id="admin_WEEKEND_START">
@@ -385,12 +385,12 @@ print_header ( $INC, '', $BodyX );
 
  <tr><td class="tooltip" title="<?php etooltip( 'time-format-help' )?>">
   <?php etranslate( 'Time format' )?>:</td><td>
-  <?php echo print_radio ( 'TIME_FORMAT', 
+  <?php echo print_radio ( 'TIME_FORMAT',
     array ( '12'=>translate( '12 hour' ), '24'=>translate( '24 hour' ) ) ) ?>
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'timed-evt-len-help' )?>">
   <?php etranslate( 'Specify timed event length by' )?>:</td><td>
-  <?php echo print_radio ( 'TIMED_EVT_LEN', 
+  <?php echo print_radio ( 'TIMED_EVT_LEN',
     array ('D'=>translate( 'Duration' ), 'E'=>translate( 'End Time' ) ) ) ?>
  </td></tr>
 
@@ -417,7 +417,7 @@ print_header ( $INC, '', $BodyX );
    ?>
   </select>
  </td></tr>
-</table> 
+</table>
 </fieldset>
 <fieldset>
  <legend><?php etranslate('Appearance')?></legend>
@@ -457,8 +457,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  $bottomStr = translate ( 'Bottom' );
  $topStr = translate ( 'Top' );
  echo print_radio ( 'MENU_DATE_TOP', array ( 'Y'=>$topStr, 'N'=>$bottomStr ) ) ?>
- </td></tr> 
- 
+ </td></tr>
+
   <tr><td  class="tooltip" title="<?php etooltip( 'menu-themes-help' );?>">
  <label for="admin_MENU_THEME"><?php etranslate( 'Menu theme' )?>:</label></td><td>
  <select name="admin_MENU_THEME" id="admin_MENU_THEME">
@@ -471,10 +471,10 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   }
 ?>
  </select>&nbsp;&nbsp;&nbsp;
- </td></tr> 
+ </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'fonts-help' ) ?>">
   <label for="admin_FONTS"><?php etranslate( 'Fonts' )?>:</label></td><td>
-  <input type="text" size="40" name="admin_FONTS" id="admin_FONTS" value="<?php 
+  <input type="text" size="40" name="admin_FONTS" id="admin_FONTS" value="<?php
             echo htmlspecialchars ( $s['FONTS'] );
            ?>" />
  </td></tr>
@@ -528,7 +528,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   <?php etranslate( 'Display Lunar Phases in month view' )?>:</td><td>
   <?php echo print_radio ( 'DISPLAY_MOON_PHASES' ) ?>
  </td></tr>
-</table> 
+</table>
 </fieldset>
 <fieldset>
  <legend><?php etranslate('Restrictions')?></legend>
@@ -637,11 +637,11 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <tr><td class="tooltip" title="<?php etooltip( 'user_sort-help' )?>">
   <label for="admin_USER_SORT_ORDER"><?php etranslate( 'User Sort Order' )?>:</label></td><td>
   <select name="admin_USER_SORT_ORDER" id="admin_USER_SORT_ORDER">
-   <option value="cal_lastname, cal_firstname" <?php 
-    if ( $s['USER_SORT_ORDER'] == "cal_lastname, cal_firstname" ) 
+   <option value="cal_lastname, cal_firstname" <?php
+    if ( $s['USER_SORT_ORDER'] == "cal_lastname, cal_firstname" )
      echo $selected?>><?php etranslate( 'Lastname, Firstname' )?></option>
-   <option value="cal_firstname, cal_lastname" <?php 
-    if ( $s['USER_SORT_ORDER'] == "cal_firstname, cal_lastname" ) 
+   <option value="cal_firstname, cal_lastname" <?php
+    if ( $s['USER_SORT_ORDER'] == "cal_firstname, cal_lastname" )
      echo $selected?>><?php etranslate( 'Firstname, Lastname' )?></option>
   </select>
  </td></tr>
@@ -661,7 +661,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 // <?php
 // if ( $PLUGINS_ENABLED == 'Y' ) {
 //   $plugins = get_plugin_list ( true );
-//   
+//
 //   for ( $i = 0, $cnt = count ( $plugins ); $i < $cnt; $i++ ) {
 //     $val = $s[$plugins[$i] . ".plugin_status'];
 //     echo '<tr><td class="tooltip" title="' .
@@ -705,31 +705,31 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'Public access can add events' )?>:</td><td>
    <?php echo print_radio ( 'PUBLIC_ACCESS_CAN_ADD' ) ?>
   </td></tr>
-  <tr id="pa5"><td class="tooltip" title="<?php 
+  <tr id="pa5"><td class="tooltip" title="<?php
     etooltip( 'public-access-add-requires-approval-help' )?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'Public access new events require approval' )?>:</td><td>
   <?php echo print_radio ( 'PUBLIC_ACCESS_ADD_NEEDS_APPROVAL' ) ?>
   </td></tr>
-  <tr id="pa6"><td class="tooltip" title="<?php 
+  <tr id="pa6"><td class="tooltip" title="<?php
    etooltip( 'public-access-sees-participants-help' )?>">
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'Public access can view participants' )?>:</td><td>
   <?php echo print_radio ( 'PUBLIC_ACCESS_VIEW_PART' ) ?>
   </td></tr>
-  <tr id="pa7" valign="top"><td class="tooltip" title="<?php 
+  <tr id="pa7" valign="top"><td class="tooltip" title="<?php
    etooltip( 'public-access-override-help' )?>">
-   &nbsp;&nbsp;&nbsp;&nbsp;<?php 
+   &nbsp;&nbsp;&nbsp;&nbsp;<?php
    etranslate( 'Override event name/description for public access' )?>:</td><td>
    <?php echo print_radio ( 'OVERRIDE_PUBLIC' ) ?>
   </td></tr>
-  <tr id="pa7a" valign="top"><td class="tooltip" title="<?php 
+  <tr id="pa7a" valign="top"><td class="tooltip" title="<?php
   etooltip( 'public-access-override-text-help' )?>">
    &nbsp;&nbsp;&nbsp;&nbsp;
    &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'Text to display to public access' )?>:</td><td>
    <label><input name="admin_OVERRIDE_PUBLIC_TEXT" value="<?php echo $s['OVERRIDE_PUBLIC_TEXT'];?>" size="25" /></label>
   </td></tr>
-  <tr id="pa8" valign="top"><td class="tooltip" title="<?php 
+  <tr id="pa8" valign="top"><td class="tooltip" title="<?php
    etooltip( 'public-access-captcha-help' )?>">
-   &nbsp;&nbsp;&nbsp;&nbsp;<?php 
+   &nbsp;&nbsp;&nbsp;&nbsp;<?php
    etranslate( 'Require CAPTCHA validation for public access new events' )?>:</td><td>
    <?php echo print_radio ( 'ENABLE_CAPTCHA' ) ?>
   </td></tr>
@@ -817,7 +817,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   // translate ( 'Requires' ) translate ( 'folder to exist' )
     echo str_replace ( 'XXX', 'icons', translate ( '(Requires XXX folder to exist.)' ) );
  </td></tr>
- 
+
 <!-- Display Task Preferences -->
  <tr><td class="tooltip" title="<?php etooltip( 'display-tasks-help' )?>">
   <?php etranslate( 'Display small task list' )?>:</td><td>
@@ -834,19 +834,19 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   <?php etranslate( 'Allow external users' )?>:</td><td>
   <?php echo print_radio ( 'ALLOW_EXTERNAL_USERS', '', 'eu_handler' ) ?>
  </td></tr>
- <tr id="eu1"><td class="tooltip" title="<?php 
+ <tr id="eu1"><td class="tooltip" title="<?php
  etooltip( 'external-can-receive-notification-help' )?>">
-  &nbsp;&nbsp;&nbsp;&nbsp;<?php 
+  &nbsp;&nbsp;&nbsp;&nbsp;<?php
   etranslate( 'External users can receive email notifications' )?>:</td><td>
   <?php echo print_radio ( 'EXTERNAL_NOTIFICATIONS' ) ?>
  </td></tr>
- <tr id="eu2"><td class="tooltip" title="<?php 
+ <tr id="eu2"><td class="tooltip" title="<?php
  etooltip( 'external-can-receive-reminder-help' )?>">
-  &nbsp;&nbsp;&nbsp;&nbsp;<?php 
+  &nbsp;&nbsp;&nbsp;&nbsp;<?php
   etranslate( 'External users can receive email reminders' )?>:</td><td>
   <?php echo print_radio ( 'EXTERNAL_REMINDERS' ) ?>
  </td></tr>
- 
+
  <!-- BEGIN SELF REGISTRATION -->
 
  <tr><td class="tooltip" title="<?php etooltip( 'allow-self-registration-help' )?>">
@@ -857,7 +857,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'Restrict self-registration to blacklist' )?>:</td><td>
   <?php echo print_radio ( 'SELF_REGISTRATION_BLACKLIST', '', 'sr_handler' ) ?>
  </td></tr>
- <tr id="sr2"><td class="tooltip" title="<?php 
+ <tr id="sr2"><td class="tooltip" title="<?php
  etooltip( 'allow-self-registration-full-help' )?>">
   &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate( 'Use self-registration email notifications' )?>:</td><td>
   <?php echo print_radio ( 'SELF_REGISTRATION_FULL', '', 'sr_handler' ) ?>
@@ -913,13 +913,13 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <tr id="em2"><td class="tooltip" title="<?php etooltip( 'email-mailer' )?>">
 <?php etranslate( 'Email Mailer' )?>:</td><td>
  <select name="admin_EMAIL_MAILER"  onchange="email_handler()">
-   <option value="smtp" <?php if ( $s['EMAIL_MAILER'] == 
+   <option value="smtp" <?php if ( $s['EMAIL_MAILER'] ==
      'smtp' ) echo $selected?>>SMTP</option>
-   <option value="mail" <?php if ( $s['EMAIL_MAILER'] == 
+   <option value="mail" <?php if ( $s['EMAIL_MAILER'] ==
      'mail' ) echo $selected?>>PHP mail</option>
-   <option value="sendmail" <?php if ( $s['EMAIL_MAILER'] == 
+   <option value="sendmail" <?php if ( $s['EMAIL_MAILER'] ==
      'sendmail' ) echo $selected?>>sendmail</option>
-  </select>   
+  </select>
 </td></tr>
 
 <tr id="em3"><td class="tooltip" title="<?php etooltip( 'email-smtp-host' )?>">
@@ -987,7 +987,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip( 'gradient-colors' )?>"><label>
  <?php etranslate( 'Enable gradient images for background colors' )?>:</label></td><td colspan="5">
-<?php if ( function_exists ( 'imagepng' ) || function_exists ( 'imagegif' )) { 
+<?php if ( function_exists ( 'imagepng' ) || function_exists ( 'imagegif' )) {
   echo print_radio ( 'ENABLE_GRADIENTS' );
  } else {
    etranslate( 'Not available');
@@ -1002,12 +1002,12 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <!-- BEGIN EXAMPLE MONTH -->
 <table style="width:90%; background-color:<?php echo $BGCOLOR?>"><tr>
 <td width="1%" rowspan="3">&nbsp;</td>
-<td style="text-align:center; color:<?php 
+<td style="text-align:center; color:<?php
   echo $H2COLOR?>; font-weight:bold;"><?php
   echo date_to_str ( date ('Ymd'), $DATE_FORMAT_MY, false );?></td>
 <td width="1%" rowspan="3">&nbsp;</td></tr>
 <tr><td bgcolor="<?php echo $BGCOLOR?>">
-<?php 
+<?php
 set_today( date ('Ymd') );
 echo display_month ( date ('m'), date('Y'), true);
 ?>
@@ -1022,55 +1022,55 @@ echo display_month ( date ('m'), date('Y'), true);
    translate( 'Document title' ) ) ?>
 </td></tr>
 <tr><td>
- <?php echo print_color_input_html ( 'TEXTCOLOR', 
+ <?php echo print_color_input_html ( 'TEXTCOLOR',
    translate( 'Document text' ) ) ?>
 </td></tr>
 <tr><td>
- <?php echo print_color_input_html ( 'MYEVENTS', 
+ <?php echo print_color_input_html ( 'MYEVENTS',
    translate( 'My event text' ) ) ?>
 </td></tr>
 <tr><td>
- <?php echo print_color_input_html ( 'TABLEBG', 
+ <?php echo print_color_input_html ( 'TABLEBG',
    translate( 'Table grid color' ) ) ?>
 </td></tr>
 <tr><td>
- <?php echo print_color_input_html ( 'THBG', 
+ <?php echo print_color_input_html ( 'THBG',
    translate( 'Table header background' ) ) ?>
 </td></tr>
 <tr><td>
- <?php echo print_color_input_html ( 'THFG', 
+ <?php echo print_color_input_html ( 'THFG',
    translate( 'Table header text' ) ) ?>
 </td></tr>
 <tr><td>
- <?php echo print_color_input_html ( 'CELLBG', 
+ <?php echo print_color_input_html ( 'CELLBG',
   translate( 'Table cell background' ) ) ?>
 </td></tr>
 <tr><td>
- <?php echo print_color_input_html ( 'TODAYCELLBG', 
+ <?php echo print_color_input_html ( 'TODAYCELLBG',
   translate( 'Table cell background for current day' ) ) ?>
 </td></tr>
 <tr><td>
- <?php echo print_color_input_html ( 'HASEVENTSBG', 
+ <?php echo print_color_input_html ( 'HASEVENTSBG',
   translate( 'Table cell background for days with events' ) ) ?>
 </td></tr>
 <tr><td>
-  <?php echo print_color_input_html ( 'WEEKENDBG', 
+  <?php echo print_color_input_html ( 'WEEKENDBG',
     translate( 'Table cell background for weekends' ) ) ?>
 </td></tr>
 <tr><td>
-  <?php echo print_color_input_html ( 'OTHERMONTHBG', 
+  <?php echo print_color_input_html ( 'OTHERMONTHBG',
     translate( 'Table cell background for other month' ) ) ?>
 </td></tr>
 <tr><td>
-  <?php echo print_color_input_html ( 'WEEKNUMBER', 
+  <?php echo print_color_input_html ( 'WEEKNUMBER',
     translate( 'Week number color' ) ) ?>
 </td></tr>
 <tr><td>
- <?php echo print_color_input_html ( 'POPUP_BG', 
+ <?php echo print_color_input_html ( 'POPUP_BG',
    translate( 'Event popup background' ) ) ?>
 </td></tr>
 <tr><td>
-  <?php echo print_color_input_html ( 'POPUP_FG', 
+  <?php echo print_color_input_html ( 'POPUP_FG',
     translate( 'Event popup text' ) ) ?>
 </td></tr>
 </table>
@@ -1080,13 +1080,13 @@ echo display_month ( date ('m'), date('Y'), true);
 <table>
  <tr><td class="tooltip" title="<?php etooltip( 'bgimage-help' )?>">
   <label for="admin_BGIMAGE"><?php etranslate( 'Background Image' )?>:</label></td><td>
-  <input type="text" size="75" name="admin_BGIMAGE" id="admin_BGIMAGE" value="<?php 
+  <input type="text" size="75" name="admin_BGIMAGE" id="admin_BGIMAGE" value="<?php
    echo ( ! empty ( $s['BGIMAGE'] )? htmlspecialchars ( $s['BGIMAGE'] ): '');
   ?>" />
  </td></tr>
  <tr><td class="tooltip" title="<?php etooltip( 'bgrepeat-help' )?>">
   <label for="admin_BGREPEAT"><?php etranslate( 'Background Repeat' )?>:</label></td><td>
-  <input type="text" size="30" name="admin_BGREPEAT" id="admin_BGREPEAT" value="<?php 
+  <input type="text" size="30" name="admin_BGREPEAT" id="admin_BGREPEAT" value="<?php
    echo ( ! empty ( $s['BGREPEAT'] )? $s['BGREPEAT']: '');
   ?>" />
  </td></tr>
@@ -1101,8 +1101,8 @@ echo display_month ( date ('m'), date('Y'), true);
 </div>
 </form>
 
-<?php } else {// if $error 
-  echo print_error ( $error, true );  
-} 
+<?php } else {// if $error
+  echo print_error ( $error, true );
+}
 echo print_trailer (); ?>
 

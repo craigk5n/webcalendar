@@ -22,7 +22,7 @@ function sendCats ( cats ) {
  parenttext = parenttext.substr (1);
   window.opener.document.<?php echo $form ?>.cat_id.value = parentid;
   window.opener.document.<?php echo $form ?>.catnames.value = parenttext;
-   
+
   window.close ();
 }
 
@@ -40,7 +40,7 @@ function selAdd(btn){
  if ( document.forms[0].elements[i].name == "eventcats[]" )
       eventid = i;
   }
-  var evlist = document.forms[0].elements[eventid]; 
+  var evlist = document.forms[0].elements[eventid];
   var isUnique = true;
    with (document.forms[0])
    {
@@ -49,13 +49,13 @@ function selAdd(btn){
          for (i = 0; i < length; i++) {
                if(options[i].selected) {
                  with (options[i]) {
-                  
+
                   for ( j=0; j < evlist.length;j++ ) {
                     if (evlist.options[j].value == value )
                       isUnique = false;
                   }
                   if ( isUnique)
-                    evlist.options[evlist.length]  = new Option( text, value );  
+                    evlist.options[evlist.length]  = new Option( text, value );
                   options[i].selected = false;
                 } //end with options
                }
@@ -72,14 +72,14 @@ function selRemove(btn){
       eventid = i;
   }
    with (document.forms[0])
-   { 
+   {
       with (document.forms[0].elements[eventid])
       {
          for (i = 0; i < length; i++)
          {
            if(options[i].selected){
           options[i] = null;
-        } 
+        }
          } // end for loop
      }
    } // end with document

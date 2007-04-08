@@ -11,7 +11,7 @@ $page = 0;
 $aboutStr = translate ( 'About WebCalendar' );
 echo '
       <li><a title="' . $aboutStr . '" href="" onclick="javascript:openAbout()">'
-      . $aboutStr . '</a></li>'; 
+      . $aboutStr . '</a></li>';
 foreach ( $help_list as $key => $val ) {
   $page++;
   $transStr = translate ( $key );

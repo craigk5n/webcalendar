@@ -35,7 +35,7 @@
  * For this work, at least on some Apache intallations, may need
  * to be added to the httpd.conf file:
  *  <Directory "/var/www/html/webcalendar">
- *    Script PUT /icalclient.php    
+ *    Script PUT /icalclient.php
  *  </Directory>
  * Of course, replace "/var/www/html/webcalendar" with the
  * directory where you installed WebCalendar.
@@ -57,13 +57,13 @@
  *   WEBDAV, but the client doesn't know or seem to care
  *
  * Notes:
- * Because data is being written back to WebCalendar, the user is prompted 
- * for username and password via the 401 HEADER 
+ * Because data is being written back to WebCalendar, the user is prompted
+ * for username and password via the 401 HEADER
  * SEE TO DO for needed work
- * 
+ *
  * To Delete an event from the iCal client, mark it as 'Cancelled'.
  * This will translate into a 'D' in webcal_entry_user.cal_status.
- * 
+ *
  * TODO:
  * Security!  If an event update comes back from an iCal client,
  * we need to make sure that the remote user has the authority to
@@ -71,7 +71,7 @@
  * creator of the event or an admin, then they should not be able
  * to update an event.)
  *
- * MAYBE add logic to loop through webcal_import_data and delete 
+ * MAYBE add logic to loop through webcal_import_data and delete
  * any records that don't come back from the iCal client. This would
  * indicate events were deleted from the client instead of being marked
  * 'Cancelled'.
@@ -89,29 +89,29 @@
  * calendar is loaded.  Ideally, we should check the webcal_reminders
  * table to see if an event reminder was already sent.  Also, not
  * sure if reminders for repeated events are handled properly yet.
- *  
+ *
  */
 
  require_once 'includes/classes/WebCalendar.class';
-     
- $WebCalendar =& new WebCalendar ( __FILE__ );    
-     
- include 'includes/translate.php';    
- include 'includes/config.php';    
- include 'includes/dbi4php.php';    
- include 'includes/functions.php';    
-     
- $WebCalendar->initializeFirstPhase();    
-     
+
+ $WebCalendar =& new WebCalendar ( __FILE__ );
+
+ include 'includes/translate.php';
+ include 'includes/config.php';
+ include 'includes/dbi4php.php';
+ include 'includes/functions.php';
+
+ $WebCalendar->initializeFirstPhase();
+
  include "includes/$user_inc";
-    
- include_once 'includes/validate.php';    
+
+ include_once 'includes/validate.php';
  include 'includes/site_extras.php';
- 
+
 include_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
- 
+
 $appStr = generate_application_name ();
 
 // If WebCalendar is using http auth, then $login will be set in
@@ -129,10 +129,10 @@ $appStr = generate_application_name ();
 //       </IfModule>
 if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) ){
   list($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) =
-   explode(': ', base64_decode(substr($_ENV['REMOTE_USER'], 6))); 
+   explode(': ', base64_decode(substr($_ENV['REMOTE_USER'], 6)));
 }
-   
-unset ($_ENV['REMOTE_USER']);      
+
+unset ($_ENV['REMOTE_USER']);
 if ( empty ( $login ) ) {
   if (!isset($_SERVER['PHP_AUTH_USER'])) {
     unset($_SERVER['PHP_AUTH_PW']);
@@ -151,7 +151,7 @@ if ( empty ( $login ) ) {
       header('HTTP/1.0 401 Unauthorized');
       exit;
     }
-  }  
+  }
 }
 
 load_global_settings ();

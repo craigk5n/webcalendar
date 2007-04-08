@@ -40,7 +40,7 @@ class RepeatingEvent extends Event {
    * @var string
    * @access private
    */
-  var $_repeatEndDateTime;  
+  var $_repeatEndDateTime;
  /**
    * The frequency of the repetition.
    * @var int
@@ -64,25 +64,25 @@ class RepeatingEvent extends Event {
    * @var string in the format (1,2,3,4...31,-31,-30,-29...-1 )
    * @access private
    */
-  var $_repeatByMonthDay; 
+  var $_repeatByMonthDay;
   /**
    * Days of the week the events occur (Replaces $_repeatDays )
    * @var string in the format (MO,TU,WE,TH,FR,SA,SU,-1MO,-2SU...)
    * @access private
    */
-  var $_repeatByDay;  
+  var $_repeatByDay;
   /**
    * Specified the nth occurance within the existing event date set
    * @var string in the format (1,2,3,4...366,-366,-365...-1 )
    * @access private
    */
-  var $_repeatBySetPos; 
+  var $_repeatBySetPos;
   /**
    * Week on the year that event occurs (#1 = first week with 4 days)
    * @var string in the format (1,2,3,4...53,-53,-52...-1 )
    * @access private
    */
-  var $_repeatByWeekNo; 
+  var $_repeatByWeekNo;
   /**
    * Days of the year that event occurs
    * @var string in the format (1,2,3,4...366,-366,-365...-1 )
@@ -120,7 +120,7 @@ class RepeatingEvent extends Event {
    */
   var $_repeatAllDates;
 
- 
+
   /**
    * Creates a new RepeatingEvent.
    *
@@ -163,7 +163,7 @@ class RepeatingEvent extends Event {
    */
   function RepeatingEvent ( $name, $description, $date, $time, $id, $extForID,
     $priority, $access, $duration, $status, $owner, $category, $login,
-    $cal_type, $location, $url, $due_date, $due_time, $percent,$moddate, $modtime, 
+    $cal_type, $location, $url, $due_date, $due_time, $percent,$moddate, $modtime,
     $rpt_type, $end, $frequency, $days, $rpt_bymonth,
     $rpt_bymonthday, $rpt_byday, $rpt_bysetpos, $rpt_byweekno,
     $rpt_byyearday, $rpt_wkst, $rpt_count, $endtime,
@@ -260,7 +260,7 @@ class RepeatingEvent extends Event {
   function getRepeatEndDateTimeTS () {
     if ( $this->_repeatEnd > 0 ) {
       $year = substr ( $this->_repeatEnd, 0, 4 );
-      $month = substr ( $this->_repeatEnd, 4, 2 ); 
+      $month = substr ( $this->_repeatEnd, 4, 2 );
       $day = substr ( $this->_repeatEnd, 6, 2 );
       if ( $this->_repeatEndTime > 0 ) {
         $h = (int) ( $this->_repeatEndTime / 10000 );
@@ -274,8 +274,8 @@ class RepeatingEvent extends Event {
       $this->_repeatEndDateTimeTS = '';
     }
     return $this->_repeatEndDateTimeTS;
-  }  
-    
+  }
+
   /**
    * Gets the event's repeat frequency
    *
@@ -394,7 +394,7 @@ class RepeatingEvent extends Event {
   * Add the ID to the end to aid in matching up with the events class
   *
    * @param string $exception Date of exception (in YYYYMMDD format)
-   * @param int $id ID of exception 
+   * @param int $id ID of exception
    *
    * @access public
    */
@@ -422,7 +422,7 @@ class RepeatingEvent extends Event {
    */
   function addRepeatInclusion ( $inclusion ) {
     $this->_repeatInclusions[] = $inclusion;
-  } 
+  }
 
   /**
    * Gets the event's complete date list
@@ -444,6 +444,6 @@ class RepeatingEvent extends Event {
    */
   function addRepeatAllDates ( $dates ) {
     $this->_repeatAllDates = $dates;
-  } 
+  }
 }
 ?>

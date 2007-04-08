@@ -167,7 +167,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
 
     $comment = getValue ( 'description' );
     if ( ! dbi_execute ( 'INSERT INTO webcal_blob ( cal_blob_id, cal_id,
-      cal_login, cal_name, cal_description, cal_size, cal_mime_type, cal_type, 
+      cal_login, cal_name, cal_description, cal_size, cal_mime_type, cal_type,
       cal_mod_date, cal_mod_time, cal_blob )
       VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )', array ( $nextid, $id, $login,
         $filename, $description, $filesize, $mimetype, 'A', date ( 'Ymd' ),
@@ -244,6 +244,6 @@ print_header ();
 </table>
 </form>
 
-<?php } 
+<?php }
 echo print_trailer (); ?>
 

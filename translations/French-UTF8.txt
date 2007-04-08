@@ -1,11 +1,11 @@
 # See translations/English-US.txt for instructions.
 #
-# Translated by: Yves Moenner <yves.moenner@mailcity.com> 
+# Translated by: Yves Moenner <yves.moenner@mailcity.com>
 # Checked by: Romuald Texier <romualdt@free.fr>
 # Updated by : G�rard Delafond
-# Updated by : Luc Capronnier, Wilfrid Hubert 
+# Updated by : Luc Capronnier, Wilfrid Hubert
 # Updated by : Mario Dragone <mario.dragone@reims.iufm.fr>
-# Updated by : erational <http://www.erational.org> 
+# Updated by : erational <http://www.erational.org>
 # Updated by : Ivan Machetto
 # Cleared, finished and polished by:
 #  Emmanuel Rihn <acontrecourant_at_online_fr>
@@ -51,7 +51,7 @@ Title: Agenda partagé
 Database error: Erreur de la base de données
 Go: Afficher
 Save: Sauvegarder
-Public Access: Accès public 
+Public Access: Accès public
 Admin: Administration
 Calendar: Agenda
 Edit: Éditer
@@ -87,9 +87,9 @@ NonUser Calendars: Agendas Non-Utilisateurs
 Other: Autre
 Email: Courrier électronique
 Colors: Couleurs
-app-name-help: Spécifie le nom de l'application qui apparaîtra dans la barre de titre du navigateur pour toutes les pages (page de connexion incluse). La valeur que vous spécifiez ici sera recherchée dans le fichier de traduction vous permettant de fournir différents titres pour différentes langues. 
+app-name-help: Spécifie le nom de l'application qui apparaîtra dans la barre de titre du navigateur pour toutes les pages (page de connexion incluse). La valeur que vous spécifiez ici sera recherchée dans le fichier de traduction vous permettant de fournir différents titres pour différentes langues.
 Application Name: Nom de l'application
-server-url-help: Spécifie l'URL de base pour l'application. Elle sera incluse lors de l'envoi des courriers électroniques ainsi que pour les rappels et les notifications. 
+server-url-help: Spécifie l'URL de base pour l'application. Elle sera incluse lors de l'envoi des courriers électroniques ainsi que pour les rappels et les notifications.
 Server URL: URL du serveur
 language-help: Spécifie la langue à utiliser.
 Language: Langue
@@ -123,7 +123,7 @@ preferred-view-help: Spécifie la vue par défaut (par Jour, Semaine, Mois, ou A
 Preferred view: Vue préférée
 fonts-help: Permet de définir une liste de polices pour l'affichage (par exemple "Helvetica, Arial, sans-serif").
 Fonts: Polices
-display-weekends-help: Inclure les week-ends lors de la visualisation de la semaine. 
+display-weekends-help: Inclure les week-ends lors de la visualisation de la semaine.
 display-week-number-help: Spécifie si le numéro de la semaine (1-52) doit être affiché.
 Display week number: Afficher le numéro de semaine
 display-desc-print-day-help: Inclure les descriptions d'événements dans la version imprimable de la vue journalière.
@@ -138,11 +138,11 @@ require-approvals-help: Activé, un utilisateur doit approuver un événement av
 Require event approvals: Réclamer l'approbation des événements
 display-unapproved-help: Spécifie si vous voulez afficher dans votre agenda les événements en attente.<br /> Si vous choisissez « Oui », les événements en attente seront affichés dans votre agenda (dans une couleur différente).<br /> Si vous choisissez « Non », les événements en attente seront affichés dans votre agenda seulement quand vous les approuverez.
 Display unapproved: Afficher les événements en attente
-conflict-check-help: Vérifier les conflits d'événements (deux événements prévus au même moment pour la même personne). Si vous positionnez cette valeur à « Oui », vous pourrez introduire deux événements qui se chevauchent après confirmation. Si vous choisissez « Non », il ne sera effectué aucune vérification de conflit. Vous choisirez probablement « Oui » pour activer la vérification des conflits. 
+conflict-check-help: Vérifier les conflits d'événements (deux événements prévus au même moment pour la même personne). Si vous positionnez cette valeur à « Oui », vous pourrez introduire deux événements qui se chevauchent après confirmation. Si vous choisissez « Non », il ne sera effectué aucune vérification de conflit. Vous choisirez probablement « Oui » pour activer la vérification des conflits.
 Check for event conflicts: Vérifier les conflits d'événements
 Yes: Oui
 No: Non
-conflict-months-help: Si la vérification des conflits est activée (« Vérifier les conflits pour les événements » est positionné sur « Oui »), ceci spécifie sur combien de mois dans le futur les conflits seront vérifiés. Si vous trouvez que l'ajout d'événements prend trop de temps, réduisez ce nombre. 
+conflict-months-help: Si la vérification des conflits est activée (« Vérifier les conflits pour les événements » est positionné sur « Oui »), ceci spécifie sur combien de mois dans le futur les conflits seront vérifiés. Si vous trouvez que l'ajout d'événements prend trop de temps, réduisez ce nombre.
 Conflict checking months: Période de vérification des conflits en mois
 conflict-check-override-help: Permet aux utilisateurs de passer outre les conflits d'agenda et de plannifier deux (ou plus) événements au même moment.
 Allow users to override conflicts: Permet aux utilisateurs de passer outre les conflits
@@ -162,7 +162,7 @@ allow-html-description-help: Si coché, les utilisateurs pourront ajouter du cod
 Allow HTML in Description: Autoriser l'utilisation de code HTML dans les descriptions
 popup-includes-siteextras-help: Si coché, permet aux champs ajoutés dans site_extras.php de s'afficher dans les fenêtres d'alerte d'événements
 Display Site Extras in popup: Afficher les extras au site dans les fenêtres d'alerte
-remember-last-login-help: Si activé, l'identifiant de l'utilisateur sera rempli pour son compte sur la page de connexion (sans le mot de passe), et les préférences de l'utilisateur seront chargées (y compris les couleurs préférées et la sélection de la langue). 
+remember-last-login-help: Si activé, l'identifiant de l'utilisateur sera rempli pour son compte sur la page de connexion (sans le mot de passe), et les préférences de l'utilisateur seront chargées (y compris les couleurs préférées et la sélection de la langue).
 Remember last login: Se souvenir de la dernière connexion
 Plugins: Modules
 plugins-enabled-help: Autoriser les modules
@@ -177,7 +177,7 @@ public-access-default-selected: À l'ajout d'un événement, l'utilisateur publi
 Public access is default participant: L'accès public est le participant par défaut
 public-access-view-others-help: Lors d'un accès en mode « accès public », spécifie si l'utilisateur peut visualiser les agendas des autres utilisateurs.
 Public access can view other users: L'accès public peut visualiser les autres utilisateurs
-public-access-can-add-help: Activé, les utilisateurs qui accédent au système via un accès public pourront ajouter de nouveaux événements, mais ceux-ci ne s'afficheront pas dans l'agenda tant qu'un administrateur ne les aura pas approuvés. 
+public-access-can-add-help: Activé, les utilisateurs qui accédent au système via un accès public pourront ajouter de nouveaux événements, mais ceux-ci ne s'afficheront pas dans l'agenda tant qu'un administrateur ne les aura pas approuvés.
 Public access can add events: Autorise un accès public à ajouter des événements
 public-access-add-requires-approval-help: Indique si les événements ajoutés par l'accès public nécéssitent d'être approuvés avant d'être affichés
 Public access new events require approval: Les nouveaux événements publiques doivent être approuvés
@@ -185,17 +185,17 @@ public-access-sees-participants-help: Si coché, les utilisateurs consultant l'a
 Public access can view participants: Les utilisateurs publiques peuvent afficher les participants
 groups-enabled-help: Active le support des groupes, autorisant les utilisateurs à sélectionner les utilisateurs par groupe.
 Groups enabled: Groupes activés
-user-sees-his-group-help: Si activé, les utilisateurs ne visualiseront pas l'agenda des autres utilisateurs n'appartenant pas au moins à leur groupe. 
+user-sees-his-group-help: Si activé, les utilisateurs ne visualiseront pas l'agenda des autres utilisateurs n'appartenant pas au moins à leur groupe.
 User sees only his groups: L'utilisateur ne visualise que ses groupes
 nonuser-enabled-help: Si activé, les administrateurs auront la possibilité d'ajouter des agendas non-utilisateurs
 Nonuser enabled: Agenda des non-utilisateurs activé
 nonuser-list-help: Indique où afficher l'agenda des non-utilisateurs dans la liste des participants
-Nonuser list: Afficher la liste des participants 
+Nonuser list: Afficher la liste des participants
 reports-enabled-help: Si coché, les utilisateurs verront apparaitre une section « Rapports » au bas de chaque page et pourront créer des rapports personnalisés.  En plus, les administrateurs ont la possibilité de créer des rapports globaux s'affichant au bas de chaque page d'usager.
 Reports enabled: Rapports activés
 subscriptions-enabled-help: Spécifie si l'utilisateur distant peut s'inscrire comme utilisateur de l'agenda partagé WebCalendar, lui permettant ainsi de voir les événements des utilisateurs des applications de type iCal (par exemple l'application iCal d'Apple ou le calendrier Mozilla)
 Allow remote subscriptions: Autoriser les inscriptions distantes
-categories-enabled-help: Active le support des catégories, autorisant les utilisateurs à qualifier un événement par une catégorie. 
+categories-enabled-help: Active le support des catégories, autorisant les utilisateurs à qualifier un événement par une catégorie.
 Categories enabled: Active/Désactive l'utilisation des catégories
 allow-external-users-help: Indique si un utilisateur extérieur à l'agenda peut être ajouté à un événement. Celà permet aux utilisateurs extérieurs à l'agenda d'y figurer comme participants.
 Allow external users: Autoriser les utilisateurs extérieurs
@@ -204,11 +204,11 @@ External users can receive email notifications: Les utilisateurs extérieurs peu
 external-can-receive-reminder-help: Lorsque des utilisateurs extérieurs bénéficient de la possibilité d'adresser des courriers électroniques, ils peuvent recevoir un rappel (à condition que l'adresse de couriel de l'utilisateur extérieur soit spécifiée)
 External users can receive email reminders: Les utilisateurs extérieurs peuvent recevoir des rappels par couriel
 email-enabled-help: Active/Désactive l'envoi de couriel pour la notification et les rappels. Positionnez-le sur « Non » si votre serveur n'est pas configuré pour l'adressage des courriers électroniques.
-Email enabled: Courrier électronique activé 
+Email enabled: Courrier électronique activé
 email-default-sender: Spécifie l'adresse de courrier électronique à indiquer pour l'expéditeur lors de l'envoi de rappels.
 Default sender address: Adresse par défaut de l'expéditeur
 Default user settings: Réglages par défaut de l'utilisateur
-email-event-reminders-help: Permet de définir si un couriel est adressé ou non pour le rappel d'un événement. 
+email-event-reminders-help: Permet de définir si un couriel est adressé ou non pour le rappel d'un événement.
 Event reminders: Rappel pour un événement
 email-event-added: Notification par couriel lors de l'ajout d'un événement dans votre agenda.
 Events added to my calendar: Événement ajouté dans votre agenda
@@ -218,11 +218,11 @@ email-event-deleted: Notification par couriel lors de la suppression d'un évén
 Events removed from my calendar: Événement supprimé dans votre agenda
 email-event-rejected: Notification par couriel lors du rejet d'un événement par l'un des participants.
 Event rejected by participant: Événement rejeté par un participant
-Allow user to customize colors: Autoriser les utilisateurs à personnaliser leurs couleurs 
+Allow user to customize colors: Autoriser les utilisateurs à personnaliser leurs couleurs
 Enable gradient images for background colors: Autoriser les images en dégradés comme images de fond
 Not available: Non disponible
 Document background: Fond
-Document title: Titre du document 
+Document title: Titre du document
 Document text: Texte du document
 Table grid color: Couleur de quadrillage de tableau
 Table header background: Fond d'en-tête de tableau
@@ -462,7 +462,7 @@ Edit Custom Trailer: Éditer les fins de pages personnalisées
 # Page: edit_user.php
 #
 Username: Identifiant utilisateur
-E-mail address: Adresse de couriel 
+E-mail address: Adresse de couriel
 Password: Mot de passe
 again: confirmer
 Enabled: activés
@@ -573,7 +573,7 @@ Help Index: Index de l'aide
 #
 Add/Edit/Delete: Ajouter/Modifier/Supprimer
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Cliquer sur le lien « Modifier les calques » dans la section administration, au bas de la page, vous permet d'ajouter/modifier/supprimer les calques.
-The text color of the new layer that will be displayed in your calendar.: La couleur à utiliser pour l'affichage du texte d'un nouveau calque dans votre agenda. 
+The text color of the new layer that will be displayed in your calendar.: La couleur à utiliser pour l'affichage du texte d'un nouveau calque dans votre agenda.
 Disabling: Désactiver
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Sélectionner le lien « Désactiver » pour supprimer le mode calque.
 If checked, events that are duplicates of your events will be shown.: Activé, les événements en double des vôtres seront affichés.
@@ -587,7 +587,7 @@ Default Category: Catégorie par défaut
 default-category-help: Spécifie la catégorie par défaut lors de la création d'événement.
 When I am the boss: Lorsque je suis le "décideur"
 Email me event notification: Envoi d'un email de notification d'événement
-email-boss-notifications-help: Détermine si les "décideurs" reçoivent des courriels de notification 
+email-boss-notifications-help: Détermine si les "décideurs" reçoivent des courriels de notification
 I want to approve events: Je souhaite approuver les événements
 boss-approve-event-help: Détermine si le "décideur" doit approuver les événements ajoutés par ses assistants
 Subscribe/Publish: S'abonner/Publier
@@ -616,7 +616,7 @@ Edit layer: Modifier un calque
 Layers are currently: Les calques sont actuellement
 Disable Layers: Désactiver les calques
 Click here: Cliquez ici
-to modify the layers settings for the: pour modifier les paramètres de calque de 
+to modify the layers settings for the: pour modifier les paramètres de calque de
 calendar: agenda
 Add layer: Ajouter un calque
 
@@ -674,7 +674,7 @@ An appointment has been rejected by: Un événement a été rejeté par
 # Page: report.php
 #
 cont.: suite
-This event is confidential: Cet événement est confidentiel 
+This event is confidential: Cet événement est confidentiel
 Waiting for approval: En attente de validation
 Deleted: Supprimé
 Rejected: Rejeté
@@ -790,7 +790,7 @@ Another Users Calendar: Agenda d'un autre utilisateur
 ########################################
 # Page: includes/date_formats.php
 #
-December: décembre 
+December: décembre
 Dec: Déc
 
 ########################################
@@ -802,7 +802,7 @@ Busy: Indisponible
 Tentative: Attente d'approbation
 Event approved: événement approuvé
 Event created: événement créé
-Event deleted: événement supprimé 
+Event deleted: événement supprimé
 Notification sent: Notification envoyée
 Event rejected: événement rejeté
 Reminder sent: Rappel envoyé
@@ -812,17 +812,17 @@ Event: Événement
 Action: Action
 Printer Friendly: Version&nbsp;imprimable
 Generate printer-friendly version: Générer une version imprimable
-January: janvier 
-February: février 
-March: mars 
-April: avril 
-May_: mai 
-June: juin 
-July: juillet 
-August: août 
-September: septembre 
-October: octobre 
-November: novembre 
+January: janvier
+February: février
+March: mars
+April: avril
+May_: mai
+June: juin
+July: juillet
+August: août
+September: septembre
+October: octobre
+November: novembre
 Jan: Jan
 Feb: Fév
 Mar: Mar

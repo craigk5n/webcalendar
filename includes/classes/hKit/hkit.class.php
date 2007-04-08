@@ -1,7 +1,7 @@
 <?php
 
-  /* 
-  
+  /*
+
   hKit Library for PHP5 - a generic library for parsing Microformats
   Copyright (C) 2006  Drew McLellan
 
@@ -18,13 +18,13 @@
   You should have received a copy of the GNU Lesser General Public
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-  
-  Author  
+
+  Author
     Drew McLellan - http://allinthehead.com/
-    
+
   Contributors:
     Scott Reynen - http://www.randomchaos.com/
-    
+
   Version 0.4, 23-Jun-2006
     prevented nested includes from causing infinite loops
     returns false if URL can't be fetched
@@ -46,19 +46,19 @@
     added external Tidy option
   Version 0.1, 20-Jun-2006
     initial release
-    
-  
-  
-  
+
+
+
+
   */
 
   class hKit
   {
-    
+
     public $tidy_mode  = 'php'; // 'proxy', 'exec', 'php' or 'none'
     public $tidy_proxy  = 'http://cgi.w3.org/cgi-bin/tidy?forceXML=on&docAddr='; // required only for tidy_mode=proxy
     public $tmp_dir    = '/path/to/writable/dir/'; // required only for tidy_mode=exec
-    
+
     private $root_class = '';
     private $classes  = '';
     private $singles  = '';
@@ -66,73 +66,73 @@
     private $att_map  = '';
     private $callbacks  = '';
     private $processor   = '';
-    
+
     private $url    = '';
     private $base     = '';
     private $doc    = '';
-    
-    
+
+
     public function hKit()
     {
       // pre-flight checks
-      $pass     = true; 
+      $pass     = true;
       $required  = array('dom_import_simplexml', 'file_get_contents', 'simplexml_load_string');
       $missing  = array();
-      
+
       foreach ($required as $f){
         if (!function_exists($f)){
           $pass    = false;
           $missing[]   = $f . '()';
         }
       }
-      
+
       if (!$pass)
         die('hKit error: these required functions are not available: <strong>' . implode(', ', $missing) . '</strong>');
-      
+
     }
-    
+
 
     public function getByURL($profile='', $url='')
     {
-      
+
       if ($profile=='' || $url == '') return false;
-      
+
       $this->loadProfile($profile);
-      
+
       $source    = $this->loadURL($url);
-      
+
       if ($source){
         $tidy_xhtml  = $this->tidyThis($source);
 
         $fragment  = false;
-      
+
         if (strrchr($url, '#'))
         $fragment  = array_pop(explode('#', $url));
-      
+
         $doc    = $this->loadDoc($tidy_xhtml, $fragment);
         $s      = $this->processNodes($doc, $this->classes);
         $s      = $this->postProcess($profile, $s);
-      
+
         return $s;
       }else{
         return false;
       }
     }
-    
+
     public function getByString($profile='', $input_xml='')
     {
       if ($profile=='' || $input_xml == '') return false;
-      
+
       $this->loadProfile($profile);
 
       $doc  = $this->loadDoc($input_xml);
       $s    = $this->processNodes($doc, $this->classes);
       $s    = $this->postProcess($profile, $s);
-      
+
       return $s;
-      
+
     }
-    
+
     private function processNodes($items, $classes, $allow_includes=true){
 
       $out  = array();
@@ -141,19 +141,19 @@
         $data  = array();
 
         for ($i=0; $i<sizeof($classes); $i++){
-          
+
           if (!is_array($classes[$i])){
 
             $xpath      = ".//*[contains(concat(' ',normalize-space(@class),' '),' " . $classes[$i] . " ')]";
             $results    = $item->xpath($xpath);
-            
+
             if ($results){
-              foreach ($results as $result){ 
+              foreach ($results as $result){
                 if (isset($classes[$i+1]) && is_array($classes[$i+1])){
                   $nodes        = $this->processNodes($results, $classes[$i+1]);
                   $data[$classes[$i]]  = (sizeof($nodes) > 0 ? $nodes : $this->getNodeValue($result, $classes[$i]));
 
-                }else{                
+                }else{
                   if (isset($data[$classes[$i]])){
                     if (is_array($data[$classes[$i]])){
                       // is already an array - append
@@ -169,13 +169,13 @@
                         $old_val      = false;
                       }
                     }
-                  }else{                    
+                  }else{
                     // set as normal value
                     $data[$classes[$i]]  = $this->getNodeValue($result, $classes[$i]);
 
                   }
                 }
-              
+
                 // td@headers pattern
                 if (strtoupper(dom_import_simplexml($result)->tagName)== "TD" && $result['headers']){
                   $include_ids  = explode(' ', $result['headers']);
@@ -189,21 +189,21 @@
                     }
                   }
                 }
-              }          
-            }        
+              }
+            }
           }
           $result  = false;
         }
-        
+
         // include-pattern
         if ($allow_includes){
           $xpath      = ".//*[contains(concat(' ',normalize-space(@class),' '),' include ')]";
           $results    = $item->xpath($xpath);
-        
+
           if ($results){
             foreach ($results as $result){
-              if (strtoupper(dom_import_simplexml($result)->tagName)== "OBJECT" && 
-                preg_match('/\binclude\b/', $result['class']) && $result['data']){              
+              if (strtoupper(dom_import_simplexml($result)->tagName)== "OBJECT" &&
+                preg_match('/\binclude\b/', $result['class']) && $result['data']){
                 $id      = str_replace('#', '', $result['data']);
                 $doc    = $this->doc;
                 $xpath    = "//*[@id='$id']";
@@ -228,55 +228,55 @@
 
       $tag_name  = strtoupper(dom_import_simplexml($node)->tagName);
       $s      = false;
-      
+
       // ignore DEL tags
       if ($tag_name == 'DEL') return $s;
-      
+
       // look up att map values
       if (array_key_exists($className, $this->att_map)){
-        
-        foreach ($this->att_map[$className] as $map){          
+
+        foreach ($this->att_map[$className] as $map){
           if (preg_match("/$tag_name\|/", $map)){
             $s  = ''.$node[array_pop(explode('|', $map))];
           }
         }
       }
-      
+
       // if nothing and OBJ, try data.
       if (!$s && $tag_name=='OBJECT' && $node['data'])  $s  = ''.$node['data'];
-      
+
       // if nothing and IMG, try alt.
       if (!$s && $tag_name=='IMG' && $node['alt'])  $s  = ''.$node['alt'];
-      
+
       // if nothing and AREA, try alt.
       if (!$s && $tag_name=='AREA' && $node['alt'])  $s  = ''.$node['alt'];
-      
+
       // if nothing, try title.
       if (!$s && $node['title'])  $s  = ''.$node['title'];
-        
-      
-      // if nothing found, go with node text
-      $s  = ($s ? $s : implode(array_filter($node->xpath('child::node()'), array(&$this, "filterBlankValues")), ' '));      
 
-      // callbacks      
+
+      // if nothing found, go with node text
+      $s  = ($s ? $s : implode(array_filter($node->xpath('child::node()'), array(&$this, "filterBlankValues")), ' '));
+
+      // callbacks
       if (array_key_exists($className, $this->callbacks)){
         $s  = preg_replace_callback('/.*/', $this->callbacks[$className], $s, 1);
       }
-      
+
       // trim and remove line breaks
       if ($tag_name != 'PRE'){
         $s  = trim(preg_replace('/[\r\n\t]+/', '', $s));
         $s  = trim(preg_replace('/(\s{2})+/', ' ', $s));
       }
-      
+
       return $s;
     }
 
     private function filterBlankValues($s){
       return preg_match("/\w+/", $s);
     }
-    
-    
+
+
     private function tidyThis($source)
     {
       switch ( $this->tidy_mode )
@@ -288,96 +288,96 @@
           unlink($tmp_file);
           return implode("\n", $tidy);
         break;
-        
+
         case 'php':
           $tidy   = tidy_parse_string($source);
           return tidy_clean_repair($tidy);
         break;
-            
+
         default:
           return $source;
         break;
       }
-      
+
     }
-    
-    
+
+
     private function loadProfile($profile)
     {
       require_once("$profile.profile.php");
     }
-    
-    
+
+
     private function loadDoc($input_xml, $fragment=false)
     {
       $xml     = simplexml_load_string($input_xml);
-      
+
       $this->doc  = $xml;
-      
+
       if ($fragment){
         $doc  = $xml->xpath("//*[@id='$fragment']");
         $xml  = simplexml_load_string($doc[0]->asXML());
         $doc  = null;
       }
-      
+
       // base tag
-      if ($xml->head->base['href']) $this->base = $xml->head->base['href'];      
+      if ($xml->head->base['href']) $this->base = $xml->head->base['href'];
 
       // xml:base attribute - PITA with SimpleXML
       preg_match('/xml:base="(.*)"/', $xml->asXML(), $matches);
       if (is_array($matches) && sizeof($matches)>1) $this->base = $matches[1];
-                
+
       return   $xml->xpath("//*[contains(concat(' ',normalize-space(@class),' '),' $this->root_class ')]");
-      
+
     }
-    
-    
+
+
     private function loadURL($url)
     {
       $this->url  = $url;
-      
+
       if ($this->tidy_mode == 'proxy' && $this->tidy_proxy != ''){
         $url  = $this->tidy_proxy . $url;
       }
-    
+
       return @file_get_contents($url);
-      
+
     }
-    
-    
+
+
     private function postProcess($profile, $s)
     {
-      
+
       $required  = $this->required;
-      
+
       if ( empty ($s) )
         return false;
 
       if (array_key_exists($required[0], $s)){
         $s  = array($s);
       }
-      
+
       $s  = $this->dedupeSingles($s);
-      
+
       if (function_exists('hKit_'.$profile.'_post')){
         $s    = call_user_func('hKit_'.$profile.'_post', $s);
       }
-      
+
       return $s;
     }
-    
-    
+
+
     private function resolvePath($filepath)
     {  // ugly code ahoy: needs a serious tidy up
-          
+
       $filepath  = $filepath[0];
-      
+
       $base   = $this->base;
       $url  = $this->url;
-      
+
       if ($base != '' &&  strpos($base, '://') !== false)
         $url  = $base;
-      
+
       $r    = parse_url($url);
       $domain  = $r['scheme'] . '://' . $r['host'];
 
@@ -406,20 +406,20 @@
           }
         }
         return ''.$domain . implode('/', $path) . implode('/', $new);
-      }  
+      }
     }
-    
+
     private function resolveEmail($v)
     {
       $parts  = parse_url($v[0]);
       return ($parts['path']);
     }
-    
-    
+
+
     private function dedupeSingles($s)
     {
       $singles  = $this->singles;
-      
+
       foreach ($s as &$item){
         foreach ($singles as $classname){
           if (array_key_exists($classname, $item) && is_array($item[$classname])){
@@ -427,7 +427,7 @@
           }
         }
       }
-      
+
       return $s;
     }
 

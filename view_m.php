@@ -133,8 +133,8 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
  for ( $date = $startdate; $date <= $enddate; $date += ONE_DAY ) {
    $dateYmd = date ('Ymd', $date);
    $todayYmd = date ('Ymd', $today);
-   $is_weekend = is_weekend( $date ); 
-   if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue; 
+   $is_weekend = is_weekend( $date );
+   if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue;
    $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS );
    if ( $dateYmd == $todayYmd )
      $class = 'class="today"';
@@ -142,7 +142,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
      $class = 'class="weekend"';
    else
      $class = 'class="row"';
-    
+
    //non-breaking space below keeps event from wrapping prematurely
    echo "<tr><th $class>" . $weekday . '&nbsp;' .
      date ('d', $date) . "</th>\n";

@@ -18,7 +18,7 @@ $boldDays = ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' );
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
 $wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 5 : 7 ) );
- 
+
 $startdate = date ( 'Ymd', $wkstart );
 $enddate = date ( 'Ymd', $wkend );
 
@@ -66,7 +66,7 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) ||  $DISPLAY_TASKS_IN_GRID == 'Y' ) {
     ? $user : $login, $wkend, $cat_id );
 }
 
-$untimedStr = $headerStr = $eventsStr = 
+$untimedStr = $headerStr = $eventsStr =
   $minical_tasks = $filler = '';
 $navStr = display_navigation( 'week' );
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
@@ -76,7 +76,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 
   $header[$i] = $weekdays[$i] . '<br />' .
     date_to_str ( $dateYmd, $DATE_FORMAT_MD, false, true );
-  
+
   $class = '';
   //generate header row
   if ( is_weekend ( $days[$i] ) ) { $class .= 'weekend '; }
@@ -87,7 +87,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   if ( $can_add ) {
     $headerStr .= html_for_add_icon (  $dateYmd, '', '', $user );
   }
-  $headerStr .= '<a href="day.php?' . $u_url . 'date=' . 
+  $headerStr .= '<a href="day.php?' . $u_url . 'date=' .
     $dateYmd . $caturl . '">' . $header[$i] . "</a></th>\n";
 
   // get all the repeating events for this date and store in array $rep
@@ -98,7 +98,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $ev = get_entries ( $date, $get_unapproved );
   // combine and sort the event arrays
   $ev = combine_and_sort_events($ev, $rep);
- 
+
  // get all due tasks for this date and before and store in $tk
  $tk = array();
  if ( $date >= date ( 'Ymd' ) ) {
@@ -134,7 +134,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
         // this will move entries apart that appear in one field,
         // yet start on different hours
         for ( $u = $diff_start_time; $u > 0; $u-- ) {
-          $hour_arr[$last_row] .= "<br />\n"; 
+          $hour_arr[$last_row] .= "<br />\n";
         }
         $hour_arr[$last_row] .= $hour_arr[$j];
         $hour_arr[$j] = '';
@@ -160,9 +160,9 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   if ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] ) ) {
     $class .= ' hasevents ';
   }
-  
+
   $untimedStr .= " class=\"$class\">";
-  
+
   if ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] ) ) {
     $untimedStr .= $untimed[$i];
   } else {
@@ -174,7 +174,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $save_rowspan_arr[$i] = $rowspan_arr;
   $rowspan_day[$i] = 0;
 }
-$untimedStr = ( $untimed_found ? '<tr><th class="empty">&nbsp;</th>'. 
+$untimedStr = ( $untimed_found ? '<tr><th class="empty">&nbsp;</th>'.
   $untimedStr . "</tr>\n": '');
 for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = (int) ( ( $i * $interval ) / 60 );
@@ -217,7 +217,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
      }
      $eventsStr .= '>';
      if ( $can_add ) { //if user can add events...
-       $eventsStr .= html_for_add_icon (  $dateYmd, $time_h, $time_m, 
+       $eventsStr .= html_for_add_icon (  $dateYmd, $time_h, $time_m,
          $user ); //..then echo the add event icon
      }
      $eventsStr .= "&nbsp;</td>\n";
@@ -252,7 +252,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 $tableWidth = '100%';
 $eventinfo = ( ! empty ( $eventinfo )? $eventinfo : '' );
 if ( empty ( $friendly ) ) {
-  $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
+  $unapprovedStr = display_unapproved_events ( ( $is_assistant ||
     $is_nonuser_admin ? $user : $login ) );
   $printerStr = generate_printer_friendly ( 'month.php' );
 } else {
@@ -270,7 +270,7 @@ if ( $DISPLAY_TASKS == 'Y'  ) {
     $minical_tasks .= display_small_month ( $thismonth, $thisyear, true );
     $minical_tasks .= '</div>';
   }
-  $minical_tasks .= '<div id="minitask">';  
+  $minical_tasks .= '<div id="minitask">';
   $minical_tasks .= display_small_tasks ( $cat_id );
   $minical_tasks .= '</div></div>';
   $minical_tasks .= '</td>';
@@ -301,7 +301,7 @@ echo <<<EOT
       </td>
     {$minical_tasks}
     </tr>
-  </table> 
+  </table>
   {$eventinfo}
   {$unapprovedStr}
   {$printerStr}

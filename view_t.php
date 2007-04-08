@@ -97,7 +97,7 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
  * @staticvar int Used to ensure all event popups have a unique id
  */
 function print_entry_timebar ( $event, $date ) {
-  global $eventinfo, $login, $user, $PHP_SELF, $ENTRY_SLOTS, $slotValue, 
+  global $eventinfo, $login, $user, $PHP_SELF, $ENTRY_SLOTS, $slotValue,
     $PUBLIC_ACCESS_FULLNAME, $WORK_DAY_START_HOUR, $WORK_DAY_END_HOUR,
     $entrySlots, $yardSlots, $totalHours, $width, $yardWidth, $totalSlots;
   static $key = 0;
@@ -105,8 +105,8 @@ function print_entry_timebar ( $event, $date ) {
   $ret = '';
   if ( access_is_enabled () ) {
     $time_only = access_user_calendar ( 'time', $event->getLogin() );
-    $can_access = access_user_calendar ( 'view', $event->getLogin(), '', 
-      $event->getCalType(), $event->getAccess() );    
+    $can_access = access_user_calendar ( 'view', $event->getLogin(), '',
+      $event->getCalType(), $event->getAccess() );
   } else {
     $time_only = 'N';
     $can_access = CAN_DOALL;
@@ -125,30 +125,30 @@ function print_entry_timebar ( $event, $date ) {
   $time = date ( 'His', $event->getDateTimeTS() );
   $startminutes = time_to_minutes ( $time );
   $endminutes = time_to_minutes ( date ( 'His', $event->getEndDateTimeTS() ) );
-  $duration = $event->getDuration(); 
+  $duration = $event->getDuration();
   if ( $event->isAllDay() ) {
     // All day event
     $start_padding = 0;
     $ev_duration = $totalSlots;
   } else  if ( $event->isUntimed() ) {
     $start_padding = 0;
-    $ev_duration = 0; 
+    $ev_duration = 0;
   } else {  //must be timed
     $start_padding = round ( ( $startminutes - $day_start ) / $slotValue );
     if ($start_padding < 0) $start_padding = 0;
     if ( $startminutes > $day_end || $endminutes < $day_start ) {
-      $ev_duration = 1; 
+      $ev_duration = 1;
     } else  if ( $duration > 0 ) {
       $ev_duration = (int) ( $duration / $slotValue );
       // event starts before workday
       if ( $startminutes < $day_start ) {
         $ev_duration = $ev_duration - (  (int)( $day_start - $startminutes )/ $slotValue );
-      } 
+      }
       // event ends after workday
       if ( $endminutes > $day_end ) {
         $ev_duration = $ev_duration - (  (int)( $endminutes - $day_end )/ $slotValue );
       }
-    } 
+    }
   }
   $end_padding = $totalSlots - $start_padding - $ev_duration + 1;
   //if event is past viewing area
@@ -160,7 +160,7 @@ function print_entry_timebar ( $event, $date ) {
   if ( $ev_duration / $totalSlots >= .3 )   { $pos = 1; }
    elseif ( $end_padding / $totalSlots >= .3 )   { $pos = 2; }
    else        { $pos = 0; }
- 
+
   $ret .= "\n<!-- ENTRY BAR -->\n\n";
   $ret .= "<tr class=\"entrycont\" >\n";
   $fill = ( $start_padding == 0 && $ev_duration ==1 ? '&nbsp;' : '&nbsp;' );
@@ -176,21 +176,21 @@ function print_entry_timebar ( $event, $date ) {
     } else { // Untimed, just display text
       $ret .= '<td colspan="' . $totalSlots . '">';
     }
-  } 
+  }
 
   if ( $event->getPriority() == 3 ) $ret .= '<strong>';
 
   if ( $can_access != 0 && $time_only != 'Y' ) {
     //make sure clones have parents url date
-    $linkDate = (  $event->getClone()?$event->getClone(): $date ); 
-    $ret .= "<a class=\"entry\" id=\"$linkid\" " . 
+    $linkDate = (  $event->getClone()?$event->getClone(): $date );
+    $ret .= "<a class=\"entry\" id=\"$linkid\" " .
       " href=\"view_entry.php?id=$id&amp;date=$linkDate";
     if ( strlen ( $user ) > 0 )
       $ret .= "&amp;user=" . $user;
     $ret .= '">';
   }
 
-  $ret .= '[' . ( $event->getLogin() == '__public__' ? 
+  $ret .= '[' . ( $event->getLogin() == '__public__' ?
     $PUBLIC_ACCESS_FULLNAME : $event->getLogin() ) . ']&nbsp;';
   $timestr = '';
   if ( $event->isAllDay() ) {
@@ -230,7 +230,7 @@ function print_header_timebar() {
   //      sh   ...   eh
   // +------+----....----+------+
   // |      |            |      |
-  $ret = ''; 
+  $ret = '';
  // print hours
   $ret .= "\n<!-- TIMEBAR -->\n<table class=\"timebar\">\n<tr>\n";
   for ($i = $WORK_DAY_START_HOUR; $i < $WORK_DAY_END_HOUR; $i++) {
@@ -239,7 +239,7 @@ function print_header_timebar() {
     $ret .= "<td colspan=\"$yardSlots\">$hour</td>\n";
   }
   $ret .= "</tr>\n";
- 
+
   // print yardstick
   $ret .= "\n<!-- YARDSTICK -->\n<tr class=\"yardstick\">\n";
   for ($i = 0; $i < ( $totalSlots ); $i++) {
@@ -321,7 +321,7 @@ if ( ! empty ( $error ) ) {
     '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;' .
     date_to_str ( date ( 'Ymd', $wkend ), '', false );
 ?></span><br />
-<span class="viewname"><?php 
+<span class="viewname"><?php
  echo htmlspecialchars ( $view_name  );
 ?></span>
 </div>
@@ -342,7 +342,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   $re_save = array_merge($re_save, $repeated_events);
-  /* Pre-load the non-repeating events for quicker access 
+  /* Pre-load the non-repeating events for quicker access
       subtracting ONE_WEEK to allow cross-day events to display*/
   $events = read_events ( $viewusers[$i], $wkstart - ONE_WEEK, $wkend );
   $e_save = array_merge($e_save, $events);
@@ -357,7 +357,7 @@ $timeBarHeader = print_header_timebar ();
 for ( $date = $wkstart; $date <= $wkend; $date += ONE_DAY ) {
   $dateYmd = date ( 'Ymd', $date );
   $is_weekend = is_weekend ( $date );
-  if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue; 
+  if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue;
   $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS );
   if ( $dateYmd == date ( 'Ymd', $today ) ) {
     echo "<tr><th class=\"today\">";
@@ -370,7 +370,7 @@ for ( $date = $wkstart; $date <= $wkend; $date += ONE_DAY ) {
     echo html_for_add_icon ( $dateYmd, '', '', $user );
   }
   echo $weekday . '&nbsp;' . date ( 'd', $date ) . "</th>\n";
-  echo '<td class="timebar">'; 
+  echo '<td class="timebar">';
   echo $timeBarHeader;
   echo print_date_entries_timebar ( $dateYmd, $login, true );
   echo '</table></td>';
@@ -386,6 +386,6 @@ if ( ! empty ( $eventinfo ) ) {
 }
 
 echo $printerStr;
-echo print_trailer (); 
+echo print_trailer ();
 ?>
 

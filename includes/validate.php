@@ -1,5 +1,5 @@
 <?php
-/* $Id$ */ 
+/* $Id$ */
 // Do a sanity check. Make sure we can access webcal_config table. We call this
 // right after the first call to dbi_connect ()
 // (from either the WebCalendar class or here in validate.php).
@@ -14,7 +14,7 @@ Have you created the database tables as specified in the
   $res = @dbi_execute ( 'SELECT COUNT( cal_value ) FROM webcal_config',
     array (), false, false );
   if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) ) 
+    if ( $row = dbi_fetch_row ( $res ) )
       // Found database.  All is peachy.
       dbi_free_result ( $res );
     else {
@@ -23,9 +23,9 @@ Have you created the database tables as specified in the
       // Note: can't translate this since translate.php is not included yet.
       dbi_free_result ( $res );
       die_miserable_death ( $dieMsgStr );
-    } 
+    }
   } else
     die_miserable_death ( $dieMsgStr );
-} 
+}
 
 ?>

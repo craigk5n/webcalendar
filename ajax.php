@@ -66,9 +66,9 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   require_once 'includes/classes/Event.class';
   require_once 'includes/classes/RptEvent.class';
   include_once 'includes/gradient.php';
-  $column_array = array ( 'we.cal_priority', 'we.cal_name', 
+  $column_array = array ( 'we.cal_priority', 'we.cal_name',
     'we.cal_due_date', 'weu.cal_percent' );
-  $task_filter = ' ORDER BY ' . $column_array[$name % 4] . 
+  $task_filter = ' ORDER BY ' . $column_array[$name % 4] .
     ( $name > 3 ? ' ASC' : ' DESC' );
   echo display_small_tasks ( $cat_id );
 }

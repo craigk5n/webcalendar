@@ -29,9 +29,9 @@ function parse_outlookcsv ( $cal_file ) {
 
     #Burn First Row of Headers
     $data = fgetcsv($fd, filesize($cal_file), ",");
-  
+
     while ($data = fgetcsv($fd, filesize($cal_file)) ) {
-  
+
       $subject = addslashes($data[0]);
       $start = icaldate_to_timestamp (date ( 'Ymd\THis' , strtotime($data[1]." ".$data[2]) ) );
       $end = icaldate_to_timestamp (date ( 'Ymd\THis' , strtotime($data[3]." ".$data[4]) ) );
@@ -44,14 +44,14 @@ function parse_outlookcsv ( $cal_file ) {
       $meeting_resources = $data[12];
       $billing_information = $data[13];
       $categories = addslashes( str_replace ( ';', ',', $data[14] ) );
-      $description = addslashes($data[15]); 
-      $location = addslashes($data[16]); 
-      $mileage = $data[17]; 
-      $priority = $data[18]; 
-      $class = (int)toBoolean($data[19]); 
-      $sensitivity = $data[20]; 
+      $description = addslashes($data[15]);
+      $location = addslashes($data[16]);
+      $mileage = $data[17];
+      $priority = $data[18];
+      $class = (int)toBoolean($data[19]);
+      $sensitivity = $data[20];
       $show_time_as = $data[21];
-    
+
       // parser debugging code...
       //print_r($data); exit;
 
@@ -72,18 +72,18 @@ function parse_outlookcsv ( $cal_file ) {
       $tmp_data['ADate']              =  $reminder; //Date/Time of Alarm
       $tmp_data['AAction']            =  'EMAIL'; //The default action
     $tmp_data['CalendarType']       =  'VEVENT'; //The default type
-     
-    
+
+
       $outlookcsv_data[] = $tmp_data;
-      
+
       //print_r($tmp_data);
-  
-    } // End while 
+
+    } // End while
     fclose($fd);
   }
 
   //print_r($outlookcsv_data); exit;
-  
+
   return $outlookcsv_data;
 }
 

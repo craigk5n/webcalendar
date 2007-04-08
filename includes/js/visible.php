@@ -1,7 +1,7 @@
-<?php /* $Id$  */ 
+<?php /* $Id$  */
 //install/index.php needs to call this file directly, so we
 //need to insert the proper script tags as needed
-if ( ! empty ( $_SERVER['PHP_SELF'] ) && 
+if ( ! empty ( $_SERVER['PHP_SELF'] ) &&
   ! preg_match ( "/js_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
   echo "<script type=\"text/javascript\">\n<!-- <![CDATA[\n";
 }
@@ -10,7 +10,7 @@ if ( ! empty ( $_SERVER['PHP_SELF'] ) &&
 NS4 = (document.layers) ? 1 : 0;
 IE4 = (document.all) ? 1 : 0;
 // W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
-W3C = (document.getElementById) ? 1 : 0; 
+W3C = (document.getElementById) ? 1 : 0;
 
 function makeVisible ( name, hide ) {
  //alert (name);
@@ -75,9 +75,9 @@ function visByClass(classname, state){
      if ( state=='hide')
        alltags[i].style.display = "none";
      else
-       alltags[i].style.display = "";     
+       alltags[i].style.display = "";
  }
-} 
+}
 
 function getScrollingPosition()
 {
@@ -111,7 +111,7 @@ function getScrollingPosition()
  return position;
 }
 
-//these common function is placed here because all the files that use it 
+//these common function is placed here because all the files that use it
 //also use visibility functions
 function selectDate ( day, month, year, current, evt, frm ) {
   // get currently selected day/month/year
@@ -187,20 +187,20 @@ function updateColor ( input, target ) {
 
 function toggle_datefields( name, ele ) {
   var enabled = document.getElementById(ele.id).checked;
-  if ( enabled ) { 
+  if ( enabled ) {
       makeInvisible ( name );
   } else {
-      makeVisible ( name ); 
+      makeVisible ( name );
   }
 }
 
 function callEdit() {
   var features = 'width=600,height=500,resizable=yes,scrollbars=no';
   var url = "edit_entry.php";
-  editwin = window.open( url, "edit_entry", features ); 
+  editwin = window.open( url, "edit_entry", features );
 }
-<?php 
-if ( ! empty ( $_SERVER['PHP_SELF'] ) && 
+<?php
+if ( ! empty ( $_SERVER['PHP_SELF'] ) &&
   ! preg_match ( "/js_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
   echo "//]]> -->\n</script>\n";
 }

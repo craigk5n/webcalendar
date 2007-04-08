@@ -1,9 +1,9 @@
 <?php
-/* $Id$ 
+/* $Id$
  *
  * Description:
  * This file will create a SQLite database file
- * 
+ *
  */
  function populate_sqlite_db ( $database, $db ) {
    sqlite_query($db, "CREATE TABLE webcal_user (cal_login VARCHAR(25) NOT NULL, cal_passwd VARCHAR(32), cal_lastname VARCHAR(25), cal_firstname VARCHAR(25), cal_is_admin CHAR(1) DEFAULT 'N',cal_email VARCHAR(75) NULL,cal_enabled CHAR(1) DEFAULT 'Y',cal_telephone VARCHAR(50) NULL,cal_address VARCHAR(75) NULL,cal_title VARCHAR(75) NULL,cal_birthday INT,cal_last_login INT, PRIMARY KEY ( cal_login ))");

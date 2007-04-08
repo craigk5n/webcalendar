@@ -253,6 +253,6 @@ if ( empty ( $error ) ) {
 
 print_header();
 echo print_error ( $error);
-echo print_trailer(); 
+echo print_trailer();
 ?>
 

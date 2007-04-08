@@ -20,7 +20,7 @@
   var curcol;
   var thisInput;
   var currgb;
-  var curhsl; 
+  var curhsl;
 
 function setInit () {
   thiscolorcell = document.getElementById("colorcell").value;
@@ -49,14 +49,14 @@ function fillhtml() {
     slidehtml += '<tr><td id="sc'+(i+1)+ '" height="1" width="14"></td></tr>';
   }
   slidehtml += '</table>';
-  slide.innerHTML = slidehtml; 
-  
+  slide.innerHTML = slidehtml;
+
   choicehtml += '<table border="1" cellpadding="0" cellspacing="0">';
   for ( i=1; i<7; i++ ) {
     choicehtml += '<tr height="14">';
     for (j=1; j<9; j++ ) {
       ctr++;
-        choicehtml += '<td height="14" width="14" bgcolor="#'+ colorList[ctr] 
+        choicehtml += '<td height="14" width="14" bgcolor="#'+ colorList[ctr]
         +'" onclick="setCol(\'' +colorList[ctr] +'\')">'
         + '<img src="images/blank.gif" width="14" height="14" border="0" alt=""/></a></td>';
     }
@@ -67,7 +67,7 @@ function fillhtml() {
 
   customhtml += '<table border="1" cellpadding="0" cellspacing="0"><tr>';
   for ( i=1; i<17; i++) {
-    customhtml += '<td id="precell' + i 
+    customhtml += '<td id="precell' + i
        + '" bgcolor="#ffffff" onclick="preset('+ i
        + ')"><img src="images/blank.gif" width="14" '
        + 'id="preimg' + i + '" height="14" border="0" alt="" /></td>';
@@ -96,27 +96,27 @@ function transferColor () {
    }
   window.close ();
 }
-    
+
 function getCookie(Name) {
   var search = Name + "="
   if (document.cookie.length > 0) { // if there are any cookies
-    offset = document.cookie.indexOf(search) 
-    if (offset != -1) { // if cookie exists 
-       offset += search.length 
+    offset = document.cookie.indexOf(search)
+    if (offset != -1) { // if cookie exists
+       offset += search.length
        // set index of beginning of value
-       end = document.cookie.indexOf(";", offset) 
+       end = document.cookie.indexOf(";", offset)
        // set index of end of cookie value
-       if (end == -1) 
+       if (end == -1)
           end = document.cookie.length
        return unescape(document.cookie.substring(offset, end))
-    } 
+    }
   }
 }
-  
+
 function fromhex(inval) {
   out=0;
-  for (a=inval.length-1;a>=0;a--) 
-    out+=Math.pow(16,inval.length-a-1)*hexchars.indexOf(inval.charAt(a));  
+  for (a=inval.length-1;a>=0;a--)
+    out+=Math.pow(16,inval.length-a-1)*hexchars.indexOf(inval.charAt(a));
   return out;
 }
 
@@ -131,7 +131,7 @@ function setPreColors () {
     document.getElementById("precell"+a).bgColor= '#'+ precol[a-1];
   }
 }
-  
+
 function definePreColor () {
   precol[parseInt(cursorPos)-1]=curcol;
   setPreColors();
@@ -148,7 +148,7 @@ function setCursor(what) {
   cursorPos=what;
   document.getElementById("preimg"+cursorPos).src=cursorImg.src;
 }
-  
+
 function update() {
   document.getElementById("thecell").bgColor= '#' + curcol;
   document.getElementById("rgb_r").value=currgb[0];
@@ -156,7 +156,7 @@ function update() {
   document.getElementById("rgb_b").value=currgb[2];
   document.getElementById("htmlcolor").value=curcol;
   setCursor(cursorPos);
-  
+
   // set the cross on the colorpic
   var cross=document.getElementById("cross").style;
   var cp=document.getElementById("colorpic");
@@ -192,7 +192,7 @@ function ToRGB1(rm1,rm2,rh) {
   else if (rh <   0.0) rh += 360.0;
   if      (rh <  60.0) rm1 = rm1 + (rm2 - rm1) * rh / 60.0;
   else if (rh < 180.0) rm1 = rm2;
-  else if (rh < 240.0) rm1 = rm1 + (rm2 - rm1) * (240.0 - rh) / 60.0; 
+  else if (rh < 240.0) rm1 = rm1 + (rm2 - rm1) * (240.0 - rh) / 60.0;
   return Math.round(rm1 * 255);
 }
 
@@ -207,7 +207,7 @@ function RGBtoHSL (r,g,b) {
   // s
     if (l<128) s=Math.round(255*(max-min)/(max+min));
     else s=Math.round(255*(max-min)/(510-max-min));
-  // h  
+  // h
     if (r==max)  h=(g-b)/(max-min);
     else if (g==max) h=2+(b-r)/(max-min);
     else h=4+(r-g)/(max-min);
@@ -217,7 +217,7 @@ function RGBtoHSL (r,g,b) {
   }
   return [h,s,l];
 }
-  
+
 function setCol(value) {
   value=value.toUpperCase();
   if (value.length!=6) value=curcol;
@@ -246,7 +246,7 @@ function setHSL(h,s,l) {
   curcol=tohex(currgb[0])+tohex(currgb[1])+tohex(currgb[2]);
   update();
 }
-  
+
 function setFromRGB () {
   r=document.getElementById("rgb_r").value;
   g=document.getElementById("rgb_g").value;
@@ -277,7 +277,7 @@ function setFromImage (event) {
   if ( curhsl[2] == 0 || curhsl[2] == 255 ) curhsl[2] = Math.round(255-y*255/191);
   setHSL(Math.round(x*255/191),Math.round(255-y*255/191),curhsl[2]);
 }
-  
+
 function setFromSlider (event) {
   yd=0;lr=document.getElementById("slider");
   while(lr!=null) {yd+=lr.offsetTop; lr=lr.offsetParent;}

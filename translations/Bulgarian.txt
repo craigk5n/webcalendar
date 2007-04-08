@@ -45,7 +45,7 @@ Public Access: C1;8G5= 4>ABJ?
 Admin: 4<8=8AB@0B>@
 Calendar: 0;5=40@
 Public: C1;8G=>
-Confidential: >=D845=F80;=> 
+Confidential: >=D845=F80;=>
 
 ########################################
 # Page: activity_log.php

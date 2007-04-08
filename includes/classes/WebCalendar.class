@@ -173,7 +173,7 @@ class WebCalendar {
 
     // Load if $SCRIPT is in $special array:
     if ($DMW) {
-      
+
       // Tell the browser not to cache
       //send_no_cache_header ();
       if ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin && ! $is_assistant )
@@ -199,8 +199,8 @@ class WebCalendar {
         }
         for ( $i = 0; $i < count ( $userlist ); $i++ ) {
           if ( $user == $userlist[$i]['cal_login'] ) $valid_user = true;
-        } 
-        if ($valid_user == false) { 
+        }
+        if ($valid_user == false) {
           $user = ''; // security precaution
         }
       }
@@ -218,7 +218,7 @@ class WebCalendar {
       }
 
       set_today($date);
-      
+
       remember_this_view();
 
       if ( $CATEGORIES_ENABLED == 'Y' ) {
@@ -278,8 +278,8 @@ class WebCalendar {
    * @access private
    */
   function _initFunctions() {
-    global $days_per_month, $ldays_per_month, $byday_values, $noSet, 
-    $HTTP_GET_VARS, $PHP_SELF, $HTTP_POST_VARS, $HTTP_COOKIE_VARS, 
+    global $days_per_month, $ldays_per_month, $byday_values, $noSet,
+    $HTTP_GET_VARS, $PHP_SELF, $HTTP_POST_VARS, $HTTP_COOKIE_VARS,
    $settings, $db_login, $db_password, $offsets, $weekday_names, $byday_names;
 
     /**#@+
@@ -326,7 +326,7 @@ class WebCalendar {
      * Number of seconds in a week
      */
     define ( 'ONE_WEEK', 604800 );
-  
+
     /**
      * Array containing the number of days in each month in a non-leap year
      *
@@ -347,12 +347,12 @@ class WebCalendar {
      * @global array $weekday_names
      */
     $weekday_names =  array ( 'Sun','Mon','Tue','Wed','Thu','Fri','Sat' );
-  
+
     /**
      * Array containing the BYDAY names for the days of the week
      *
      * @global array $byday_name
-     */ 
+     */
    $byday_names =  array ( 'SU','MO','TU','WE','TH','FR','SA' );
 
   /**
@@ -546,7 +546,7 @@ class WebCalendar {
       $PHP_AUTH_USER, $HTTP_SERVER_VARS, $REMOTE_USER, $HTTP_ENV_VARS,
       $single_user, $login, $single_user_login, $user_inc, $settings,
       $webcalendar_session, $encoded_login, $cryptpw, $c, $db_host,
-      $db_login, $db_password, $db_database, $login_return_path, 
+      $db_login, $db_password, $db_database, $login_return_path,
       $is_nonuser, $SCRIPT;
 
     /* If WebCalendar is configured to use http authentication, then we can
@@ -554,12 +554,12 @@ class WebCalendar {
      * create its own http auth since an iCal client cannot login via a
      * web-based login. Publish.php does need to validate if not http_auth
      */
-    if ( ( $this->_filename == 'icalclient.php' || $this->_filename == 'publish.php' ) 
+    if ( ( $this->_filename == 'icalclient.php' || $this->_filename == 'publish.php' )
       && !$use_http_auth ) {
       return;
     }
 
-    if ( ( $this->_filename == 'css_cacher.php' || $this->_filename == 'js_cacher.php' ) 
+    if ( ( $this->_filename == 'css_cacher.php' || $this->_filename == 'js_cacher.php' )
       && ! $use_http_auth ) {
       return;
     }
@@ -722,7 +722,7 @@ class WebCalendar {
       if ( function_exists ( 'doDbSanityCheck' ) ) {
         doDbSanityCheck ();
       }
-   
+
       // Check the current installation version
       // Redirect user to install page if it is different from stored value
       // This will prevent running WebCalendar until UPGRADING.html has been
@@ -807,7 +807,7 @@ class WebCalendar {
       $login_url .= '?';
     if ( ! empty ( $login_return_path ) )
       $login_url .= "return_path=$login_return_path";
-     
+
 
     if ( empty ( $session_not_found ) )
       $session_not_found = false;
@@ -822,7 +822,7 @@ class WebCalendar {
     } else if ( ! $pub_acc_enabled && $session_not_found && ! $use_http_auth ) {
       if ( substr($user_inc,0,9) == 'user-app-' ) {
         app_login_screen( clean_whitespace( $SCRIPT ) );
-      } else {    
+      } else {
         do_redirect ( $login_url );
         exit;
       }

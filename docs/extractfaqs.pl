@@ -52,7 +52,7 @@ for ( $i = 0; $i < @questions; $i++ ) {
      die "Error removing link: $questions[$i]\n";
   }
 
-  # For 
+  # For
   if ( $answers[$i] =~ /<a href="#([a-z]+)">/ ) {
     $answers[$i] = $` . "<a href=\"" .
       makeCVSURL ( $file[$i], $1 ) . "\">" . $';

@@ -1,6 +1,6 @@
 <?php
-/* $Id$ 
- * 
+/* $Id$
+ *
  * This file contains a listing of all top menu config settings
  * Items can be enabled/disabled, or menuExtras can be added
  *
@@ -69,7 +69,7 @@ $menuExtras = array ();
    parameters marked with * are optional
        menu, title, url*, array( item, submenu, divider, spacer)
        item, icon, title*, url*, target*
-       submenu, icon, title, array( item, submenu, divider, spacer) 
+       submenu, icon, title, array( item, submenu, divider, spacer)
        divider
        spacer
   Specify the position where your new menu will appear
@@ -79,15 +79,15 @@ $menuExtras = array ();
 
 //Builds a new menu with submenu elements that will appear
 //in the third menu location
-$menuExtras[2] =  array ( 'menu', 'My Example', '', 
-  array ( 
+$menuExtras[2] =  array ( 'menu', 'My Example', '',
+  array (
     array ( 'item', 'todo.png', 'New Todo', 'edit_entry.php?eType=task', ''),
     array ( 'item', 'week.png', 'View Week', 'week.php', ''),
     array ( 'divider' ),
     array ( 'submenu', 'manage_cal.png', 'External Links',
      array (
        array ( 'item', 'display.png', 'Google', 'http://www.google.com', '_blank'),
-       array ( 'item', 'display.png', 'Craig&#39;s Site', 
+       array ( 'item', 'display.png', 'Craig&#39;s Site',
          'http://www.k5n.us/webcalendar.php', 'new')
      )
    )

@@ -782,7 +782,7 @@ img.help {
 }
 .minical th {
   border: 0px solid <?php echo $GLOBALS['BGCOLOR'];
- 
+
 ?>;
  padding: 0 2px;
 }

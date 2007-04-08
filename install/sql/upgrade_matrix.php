@@ -10,11 +10,11 @@ $PROGRAM_VERSION = 'v1.1.3';
 //array element[2] = old program version **The last entry will be the $PROGRAM_VERSION
 //array element[3] = install point in upgrade-mysql.php
 $database_upgrade_matrix = array (
-array ( "INSERT INTO webcal_user_pref VALUES ( 'zzz','zzz','zzz' )", 
+array ( "INSERT INTO webcal_user_pref VALUES ( 'zzz','zzz','zzz' )",
         "DELETE FROM webcal_user_pref WHERE cal_login = 'zzz'",
         'pre-v0.9.07', 'upgrade_v0.9.14'),
 array ( "INSERT INTO webcal_entry_repeats ( cal_id ) VALUES ( -999 )",
-        "DELETE FROM webcal_entry_repeats WHERE cal_id = -999", 
+        "DELETE FROM webcal_entry_repeats WHERE cal_id = -999",
         'v0.9.12 - v0.9.13', 'upgrade_v0.9.14'),
 array ( "INSERT INTO webcal_user_layers ( cal_layerid, cal_login, cal_layeruser ) VALUES ( -999,'zzz','zzz' )",
         "DELETE FROM webcal_user_layers WHERE cal_layerid = -999",
@@ -65,13 +65,13 @@ array ( "INSERT INTO webcal_reminders ( cal_id ) VALUES( -999 )",
         "DELETE FROM webcal_reminders WHERE cal_id = -999",
         'v1.1.0d-CVS', 'upgrade_v1.1.0e-CVS'),
 array ( "INSERT INTO webcal_nonuser_cals ( cal_login, cal_admin, cal_url ) VALUES ( 'zzz', 'zzz', 'zzz' )",
-        "DELETE FROM webcal_nonuser_cals WHERE cal_login = 'zzz'", 
+        "DELETE FROM webcal_nonuser_cals WHERE cal_login = 'zzz'",
         'v1.1.0e-CVS', 'upgrade_v1.1.1'),
 array ( "INSERT INTO webcal_categories ( cat_id, cat_name, cat_color ) VALUES ( '999', 'zzz', '#FFFFFF' )",
-        "DELETE FROM webcal_categories WHERE cat_id = 999", 
+        "DELETE FROM webcal_categories WHERE cat_id = 999",
         'v1.1.1', 'upgrade_v1.1.2'),
 array ( "INSERT INTO webcal_timezones ( tzid ) VALUES ( 'zzz' )",
-        "DELETE FROM webcal_timezones WHERE tzid = 'zzz'", 
+        "DELETE FROM webcal_timezones WHERE tzid = 'zzz'",
         'v1.1.2', 'upgrade_v1.1.3'),
 
 //don't change this array element

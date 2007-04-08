@@ -22,15 +22,15 @@ function save_pref( $prefs, $src) {
       if ( ! preg_match ( '/pref_[A-Za-z0-9_]+$/', $key ) )
         die_miserable_death ( str_replace ( 'XXX', $key,
             translate ( 'Invalid setting name XXX.' ) ) );
-      
+
     } else {
       $setting = $key;
-      $prefix = 'pref_';    
+      $prefix = 'pref_';
     }
     //echo "Setting = $setting, key = $key, prefix = $prefix <br />\n";
     if ( strlen ( $setting ) > 0 && $prefix == 'pref_' ) {
       if ( $setting == 'THEME' &&  $value != 'none' )
-        $my_theme = strtolower ( $value ); 
+        $my_theme = strtolower ( $value );
       $sql = 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
         'AND cal_setting = ?';
       dbi_execute ( $sql, array ( $prefuser, $setting ) );
@@ -56,7 +56,7 @@ $updating_public = false;
 
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
-  load_user_preferences ( '__public__' );  
+  load_user_preferences ( '__public__' );
   $prefuser = '__public__';
 } elseif ( ! empty ( $user ) && $user != $login && ($is_admin || $is_nonuser_admin)) {
   $prefuser = $user;
@@ -69,13 +69,13 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 
 if ( ! empty ( $_POST ) && empty ( $error )) {
   $my_theme = '';
-  $currenttab = getPostValue ( 'currenttab' ); 
+  $currenttab = getPostValue ( 'currenttab' );
   save_pref ( $_POST, 'post' );
-  
+
   if ( ! empty ( $my_theme ) ) {
     $theme = 'themes/'. $my_theme . '_pref.php';
     include_once $theme;
-    save_pref ( $webcal_theme, 'theme' );  
+    save_pref ( $webcal_theme, 'theme' );
   }
 }
 
@@ -133,7 +133,7 @@ $dir = 'includes/menu/themes/';
 if ( is_dir( $dir ) ) {
    if ( $dh = opendir( $dir ) ) {
        while ( ( $file = readdir( $dh ) ) !== false ) {
-         if ( $file == '.' || $file == '..' || $file == 'CVS' || 
+         if ( $file == '.' || $file == '..' || $file == 'CVS' ||
            $file == 'default') continue;
          if ( is_dir ( $dir.$file ) ) $menuthemes[] = $file;
        }
@@ -164,7 +164,7 @@ $selected = ' selected="selected" ';
 $minutesStr = translate( 'minutes' );
 
 //allow css_cache to display public or NUC values
-@session_start (); 
+@session_start ();
 $_SESSION['webcal_tmp_login'] = $prefuser;
 $openStr ="\"window.open('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
 $BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' );\"" : '' );
@@ -178,10 +178,10 @@ print_header($INC, '', $BodyX);
  etranslate( 'Preferences' );
  if ( $is_nonuser_admin || ( $is_admin && substr ( $prefuser, 0, 5 ) == '_NUC_' ) ) {
   nonuser_load_variables ( $user, 'nonuser' );
-  echo '<br /><strong>-- ' . 
+  echo '<br /><strong>-- ' .
    translate( 'Admin mode' ) . ': '.$nonuserfullname." --</strong>\n";
  }
-$qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? '?' . $_SERVER['QUERY_STRING'] : '' ); 
+$qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? '?' . $_SERVER['QUERY_STRING'] : '' );
 $formaction = substr($self, strrpos($self, '/') + 1) . $qryStr;
 
 ?>&nbsp;<img src="images/help.gif" alt="<?php etranslate( 'Help' )?>" class="help" onclick="window.open ( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
@@ -189,8 +189,8 @@ $formaction = substr($self, strrpos($self, '/') + 1) . $qryStr;
 
 <form action="<?php echo $formaction ?>" method="post" onsubmit="return valid_form(this);" name="prefform">
 <input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>" />
-<?php 
- if ($user) 
+<?php
+ if ($user)
   echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
 
 echo display_admin_link();
@@ -216,11 +216,11 @@ if ( $is_admin && ! $updating_public  ) {
 if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
   $nulist = get_my_nonusers ( $login );
   echo '<select onchange="location=this.options[this.selectedIndex].value;">' ."\n";
-  echo "<option $selected disabled=\"disabled\" value=\"\">" . 
+  echo "<option $selected disabled=\"disabled\" value=\"\">" .
     translate ( 'Modify Non User Calendar Preferences') . "</option>\n";
   if ( ! empty ( $public_option ) ) echo $public_option . "\n";
   for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
-    echo '<option value="pref.php?user='. $nulist[$i]['cal_login']. '">' . 
+    echo '<option value="pref.php?user='. $nulist[$i]['cal_login']. '">' .
       $nulist[$i]['cal_fullname'] . "</option>\n";
   }
   echo "</select>\n";
@@ -240,15 +240,15 @@ if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
 <?php }
  if ( $SEND_EMAIL == 'Y' ) { ?>
  <span class="tabbak" id="tab_email"><a href="" onclick="return setTab('email');"><?php etranslate( 'Email' )?></a></span>
-<?php } ?> 
+<?php } ?>
  <span class="tabbak" id="tab_boss"><a href="" onclick="return setTab('boss');"><?php etranslate( 'When I am the boss' )?></a></span>
-<?php if ( $PUBLISH_ENABLED == 'Y'  || $RSS_ENABLED == 'Y' ) { ?> 
+<?php if ( $PUBLISH_ENABLED == 'Y'  || $RSS_ENABLED == 'Y' ) { ?>
  <span class="tabbak" id="tab_subscribe"><a href="" onclick="return setTab('subscribe');"><?php etranslate( 'Subscribe/Publish' )?></a></span>
 <?php }
 if ( $ALLOW_USER_HEADER == 'Y' && ( $CUSTOM_SCRIPT == 'Y' || $CUSTOM_HEADER == 'Y' ||
-   $CUSTOM_TRAILER == 'Y' ) ) { ?> 
+   $CUSTOM_TRAILER == 'Y' ) ) { ?>
  <span class="tabbak" id="tab_header"><a href="" onclick="return setTab('header');"><?php etranslate( 'Custom Scripts' )?></a></span>
-<?php } 
+<?php }
 if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
  <span class="tabbak" id="tab_colors" title="<?php etooltip( 'colors-help' )?>"><a href="" onclick="return setTab('colors');"><?php etranslate( 'Colors' )?></a></span>
 <?php } ?>
@@ -282,7 +282,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 ?>
  </select>
  <br />
- <?php echo translate( 'Your browser default language is' ) . ' ' . 
+ <?php echo translate( 'Your browser default language is' ) . ' ' .
    translate ( get_browser_language ( true ) )  . '.'; ?>
 </td></tr>
 </table>
@@ -293,9 +293,9 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 <?php if ( $can_set_timezone == true ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip( 'tz-help' )?>">
   <label for="pref_TIMEZONE"><?php etranslate( 'Timezone Selection' )?>:</label></td><td>
-  <?php 
+  <?php
    if ( empty ( $prefarray['TIMEZONE'] ) ) $prefarray['TIMEZONE'] = $SERVER_TIMEZONE;
-   echo print_timezone_select_html ( 'pref_', $prefarray['TIMEZONE']); 
+   echo print_timezone_select_html ( 'pref_', $prefarray['TIMEZONE']);
   ?>
 </td></tr>
  <?php } //end $can_set_timezone ?>
@@ -310,7 +310,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
     echo '>' . $datestyles[$i + 1] . "</option>\n";
   }
   ?>
-</select>&nbsp;<?php echo date_to_str ( $dateYmd, 
+</select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT, false, false );?>
 <br />
 <select name="pref_DATE_FORMAT_MY">
@@ -322,7 +322,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
     echo '>' . $datestyles_my[$i + 1] . "</option>\n";
   }
 ?>
-</select>&nbsp;<?php echo date_to_str ( $dateYmd, 
+</select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT_MY, false, false );?>
 <br />
 <select name="pref_DATE_FORMAT_MD">
@@ -334,7 +334,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
     echo '>' . $datestyles_md[$i + 1] . "</option>\n";
   }
 ?>
-</select>&nbsp;<?php echo date_to_str ( $dateYmd, 
+</select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT_MD, false, false );?>
 <br />
 <select name="pref_DATE_FORMAT_TASK">
@@ -382,7 +382,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip( 'work-hours-help' )?>">
  <?php etranslate( 'Work hours' )?>:</td><td>
- <label for="pref_starthr"><?php etranslate( 'From' )?></label> 
+ <label for="pref_starthr"><?php etranslate( 'From' )?></label>
  <select name="pref_WORK_DAY_START_HOUR" id="pref_starthr">
 <?php
   for ( $i = 0; $i < 24; $i++ ) {
@@ -391,7 +391,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
       ">" . display_time ( $i * 10000, 1 ) . "</option>\n";
   }
 ?>
- </select> 
+ </select>
  <label for="pref_endhr"><?php etranslate( 'to' )?></label>
  <select name="pref_WORK_DAY_END_HOUR" id="pref_endhr">
 <?php
@@ -409,7 +409,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 <fieldset>
  <legend><?php etranslate('Appearance')?></legend>
 <table   cellspacing="1" cellpadding="2"  border="0">
-<tr><td class="tooltip" title="<?php etooltip( 'preferred-view-help' );?>"><?php 
+<tr><td class="tooltip" title="<?php etooltip( 'preferred-view-help' );?>"><?php
 etranslate( 'Preferred view' )?>:</td><td>
 <select name="pref_STARTVIEW">
 <?php
@@ -486,7 +486,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <tr><td class="tooltip" title="<?php etooltip( 'display-alldays-help' );?>">
   <?php etranslate( 'Display all days in month view' )?>:</td><td>
   <?php echo print_radio ( 'DISPLAY_ALL_DAYS_IN_MONTH' ) ?>
- </td></tr> 
+ </td></tr>
 <tr><td class="tooltip" title="<?php etooltip( 'display-week-number-help' )?>">
  <?php etranslate( 'Display week number' )?>:</td><td>
  <?php echo print_radio ( 'DISPLAY_WEEKNUMBER' ) ?>
@@ -551,34 +551,34 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <tr><td class="tooltip" title="<?php etooltip( 'entry-interval-help' )?>">
  <?php etranslate( 'Entry interval' )?>:</td><td>
  <select name="pref_ENTRY_SLOTS">
-  <option value="24" <?php if ( $prefarray['ENTRY_SLOTS'] == "24" ) 
+  <option value="24" <?php if ( $prefarray['ENTRY_SLOTS'] == "24" )
     echo $selected?>>1 <?php etranslate( 'hour' )?></option>
-  <option value="48" <?php if ( $prefarray['ENTRY_SLOTS'] == "48" ) 
+  <option value="48" <?php if ( $prefarray['ENTRY_SLOTS'] == "48" )
     echo $selected?>>30 <?php echo $minutesStr ?></option>
-  <option value="72" <?php if ( $prefarray['ENTRY_SLOTS'] == "72" ) 
+  <option value="72" <?php if ( $prefarray['ENTRY_SLOTS'] == "72" )
     echo $selected?>>20 <?php echo $minutesStr ?></option>
-  <option value="96" <?php if ( $prefarray['ENTRY_SLOTS'] == "96" ) 
+  <option value="96" <?php if ( $prefarray['ENTRY_SLOTS'] == "96" )
     echo $selected?>>15 <?php echo $minutesStr ?></option>
-  <option value="144" <?php if ( $prefarray['ENTRY_SLOTS'] == "144" ) 
+  <option value="144" <?php if ( $prefarray['ENTRY_SLOTS'] == "144" )
     echo $selected?>>10 <?php echo $minutesStr ?></option>
-  <option value="288" <?php if ( $prefarray['ENTRY_SLOTS'] == "288" ) 
+  <option value="288" <?php if ( $prefarray['ENTRY_SLOTS'] == "288" )
     echo $selected?>>5 <?php echo $minutesStr ?></option>
-  <option value="1440" <?php if ( $prefarray['ENTRY_SLOTS'] == "1440" ) 
+  <option value="1440" <?php if ( $prefarray['ENTRY_SLOTS'] == "1440" )
     echo $selected?>>1 <?php etranslate( 'minute' )?></option>
  </select>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip( 'time-interval-help' )?>">
  <?php etranslate( 'Time interval' )?>:</td><td>
  <select name="pref_TIME_SLOTS">
-  <option value="24" <?php if ( $prefarray['TIME_SLOTS'] == "24" ) 
+  <option value="24" <?php if ( $prefarray['TIME_SLOTS'] == "24" )
   echo $selected?>>1 <?php etranslate( 'hour' )?></option>
-  <option value="48" <?php if ( $prefarray['TIME_SLOTS'] == "48" ) 
+  <option value="48" <?php if ( $prefarray['TIME_SLOTS'] == "48" )
   echo $selected?>>30 <?php echo $minutesStr ?></option>
-  <option value="72" <?php if ( $prefarray['TIME_SLOTS'] == "72" ) 
+  <option value="72" <?php if ( $prefarray['TIME_SLOTS'] == "72" )
   echo $selected?>>20 <?php echo $minutesStr ?></option>
-  <option value="96" <?php if ( $prefarray['TIME_SLOTS'] == "96" ) 
+  <option value="96" <?php if ( $prefarray['TIME_SLOTS'] == "96" )
   echo $selected?>>15 <?php echo $minutesStr ?></option>
-  <option value="144" <?php if ( $prefarray['TIME_SLOTS'] == "144" ) 
+  <option value="144" <?php if ( $prefarray['TIME_SLOTS'] == "144" )
   echo $selected?>>10 <?php echo $minutesStr ?></option>
  </select>
 </td></tr>
@@ -605,13 +605,13 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <?php if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) { ?>
 <div id="tabscontent_themes">
 <table  cellspacing="1" cellpadding="2"  border="0" width="35%">
-<tr><td class="tooltip"  title="<?php etooltip( 'theme-reload-help' );?>"colspan="3"><?php 
+<tr><td class="tooltip"  title="<?php etooltip( 'theme-reload-help' );?>"colspan="3"><?php
 etranslate( 'Page may need to be reloaded for new Theme to take effect' )?></td></tr>
 <tr><td  class="tooltipselect" title="<?php etooltip( 'themes-help' );?>">
  <label for="pref_THEME"><?php etranslate( 'Themes' )?>:</label></td><td>
  <select name="pref_THEME" id="pref_THEME">
 <?php
-  echo "<option value=\"none\" disabled=\"disabled\"  $selected>" . 
+  echo "<option value=\"none\" disabled=\"disabled\"  $selected>" .
     translate( 'AVAILABLE THEMES' ) . "</option>\n";
   //always use 'none' as default so we don't overwrite manual settings
   // echo '<option value="none"' . $selected . translate( 'None' ) . "</option>\n";
@@ -636,7 +636,7 @@ etranslate( 'Page may need to be reloaded for new Theme to take effect' )?></td>
   }
 ?>
  </select>
- </td></tr> 
+ </td></tr>
 <?php } //end Menu enabled test ?>
 </table>
 </div>
@@ -698,7 +698,7 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
  <?php echo print_radio ( 'APPROVE_ASSISTANT_EVENT' ) ?>
 </td></tr>
 
-<tr><td class="tooltip" title="<?php etooltip( 'display_byproxy-help' )?>"><?php 
+<tr><td class="tooltip" title="<?php etooltip( 'display_byproxy-help' )?>"><?php
   etranslate( 'Display if created by Assistant' )?>:</td><td>
   <?php echo print_radio ( 'DISPLAY_CREATED_BYPROXY' ) ?>
 </td></tr>
@@ -716,17 +716,17 @@ $publish_access =  ( empty  ( $prefarray['USER_REMOTE_ACCESS'] ) ? 0 :
 ?>:</td><td>
   <select name="pref_USER_REMOTE_ACCESS">
    <option value="0" <?php echo ( $publish_access == '0' ?
-     $selected : '' ) . ' >' . translate ( 'Public' ) . ' ' .  
+     $selected : '' ) . ' >' . translate ( 'Public' ) . ' ' .
      translate ( 'entries' )?></option>
-   <option value="1" <?php echo ( $publish_access == '1' ? 
-     $selected : '' ) . ' >' . translate ( 'Public' ) . ' &amp; ' . 
+   <option value="1" <?php echo ( $publish_access == '1' ?
+     $selected : '' ) . ' >' . translate ( 'Public' ) . ' &amp; ' .
       translate ( 'Confidential' ) . ' ' . translate ( 'entries' )?></option>
-   <option value="2" <?php echo ( $publish_access == '2' ? 
-     $selected : '' ) . ' >' . translate( 'All' ) . ' ' . 
-     translate ( 'entries' )?></option>  
-  </select>  
+   <option value="2" <?php echo ( $publish_access == '2' ?
+     $selected : '' ) . ' >' . translate( 'All' ) . ' ' .
+     translate ( 'entries' )?></option>
+  </select>
   </td></tr>
-<?php } 
+<?php }
 if ( $PUBLISH_ENABLED == 'Y' ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip( 'allow-remote-subscriptions-help' )?>"><?php etranslate( 'Allow remote subscriptions' )?>:</td><td>
   <?php echo print_radio ( 'USER_PUBLISH_ENABLED' ) ?>
@@ -743,8 +743,8 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
   ?></td></tr>
 <?php } /* $SERVER_URL */ ?>
 
-<tr><td class="tooltipselect" title="<?php 
- etooltip( 'allow-remote-publishing-help' )?>"><?php 
+<tr><td class="tooltipselect" title="<?php
+ etooltip( 'allow-remote-publishing-help' )?>"><?php
  etranslate( 'Allow remote publishing' )?>:</td>
   <td>
   <?php echo print_radio ( 'USER_PUBLISH_RW_ENABLED' ) ?>
@@ -761,7 +761,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
 } /* $PUBLISH_ENABLED */
 
 if ( $RSS_ENABLED == 'Y' ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip( 'rss-enabled-help' )?>"><?php 
+<tr><td class="tooltipselect" title="<?php etooltip( 'rss-enabled-help' )?>"><?php
   etranslate( 'Enable RSS feed' )?>:</td>
   <td>
   <?php echo print_radio ( 'USER_RSS_ENABLED' ) ?>
@@ -812,7 +812,7 @@ if ( $CUSTOM_HEADER == 'Y' ) { ?>
   <input type="button" value="<?php etranslate( 'Edit' );?>..." onclick=<?php
     printf ( $openStr, 'H' ) ?> name="" />
  </td></tr>
-<?php } 
+<?php }
 
 if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
  <tr><td class="tooltip" title="<?php etooltip( 'custom-trailer-help' );?>">
@@ -834,43 +834,43 @@ if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
 <tr><td class="aligntop">
 <table cellspacing="1" cellpadding="2">
  <tr><td>
-  <?php echo print_color_input_html ( 'BGCOLOR', 
+  <?php echo print_color_input_html ( 'BGCOLOR',
     translate( 'Document background' ) ) ?>
  </td></tr>
  <tr><td>
-  <?php echo print_color_input_html ( 'H2COLOR', 
+  <?php echo print_color_input_html ( 'H2COLOR',
     translate( 'Document title' ) ) ?>
  </td></tr>
  <tr><td>
-  <?php echo print_color_input_html ( 'TEXTCOLOR', 
+  <?php echo print_color_input_html ( 'TEXTCOLOR',
     translate( 'Document text' ) ) ?>
 </td></tr>
  <tr><td>
-  <?php echo print_color_input_html ( 'MYEVENTS', 
+  <?php echo print_color_input_html ( 'MYEVENTS',
     translate( 'My event text' ) ) ?>
  </td></tr>
  <tr><td>
-  <?php echo print_color_input_html ( 'TABLEBG', 
+  <?php echo print_color_input_html ( 'TABLEBG',
     translate( 'Table grid color' ) ) ?>
  </td></tr>
  <tr><td>
-  <?php echo print_color_input_html ( 'THBG', 
+  <?php echo print_color_input_html ( 'THBG',
     translate( 'Table header background' ) ) ?>
  </td></tr>
  <tr><td>
-  <?php echo print_color_input_html ( 'THFG', 
+  <?php echo print_color_input_html ( 'THFG',
     translate( 'Table header text' ) ) ?>
  </td></tr>
  <tr><td>
-  <?php echo print_color_input_html ( 'CELLBG', 
+  <?php echo print_color_input_html ( 'CELLBG',
     translate( 'Table cell background' ) ) ?>
  </td></tr>
  <tr><td>
-  <?php echo print_color_input_html ( 'TODAYCELLBG', 
+  <?php echo print_color_input_html ( 'TODAYCELLBG',
     translate( 'Table cell background for current day' ) ) ?>
  </td></tr>
  <tr><td>
-  <?php echo print_color_input_html ( 'HASEVENTSBG', 
+  <?php echo print_color_input_html ( 'HASEVENTSBG',
     translate( 'Table cell background for days with events' ) ) ?>
 </td></tr>
  <tr><td>
@@ -900,12 +900,12 @@ if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
 <!-- BEGIN EXAMPLE MONTH -->
 <table style="width:90%; background-color:<?php echo $BGCOLOR?>"><tr>
 <td width="1%" rowspan="3">&nbsp;</td>
-<td style="text-align:center; color:<?php 
+<td style="text-align:center; color:<?php
   echo $H2COLOR?>; font-weight:bold;"><?php
   echo date_to_str ( $dateYmd, $DATE_FORMAT_MY, false );?></td>
 <td width="1%" rowspan="3">&nbsp;</td></tr>
 <tr><td bgcolor="<?php echo $BGCOLOR?>">
-<?php 
+<?php
 set_today( $dateYmd );
 echo display_month ( date ( 'm' ), date( 'Y' ), true );
 ?>

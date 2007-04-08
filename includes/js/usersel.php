@@ -1,4 +1,4 @@
-<?php /* $Id$  */ 
+<?php /* $Id$  */
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
   global $form,$listid,$groups;
   $form = clean_word($form);
@@ -11,7 +11,7 @@ function OkButton () {
   tmp = new Array();
   for ( i = 0; i < thislist.length; i++ ) {
     if (thislist.options[i].selected) {
-      tmp[i] = thislist.options[i].value; 
+      tmp[i] = thislist.options[i].value;
     }
   }
 

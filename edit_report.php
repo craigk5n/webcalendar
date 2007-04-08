@@ -1,6 +1,6 @@
 <?php
 /* Presents a HTML form to add or edit a report.
- * 
+ *
  * Input Parameters:
  * - <var>report_id</var> (optional) - the report id of the report to edit.  If
  *   blank, user is adding a new report.
@@ -103,7 +103,7 @@ if ( empty ( $error ) && $show_participants ) {
   if ($NONUSER_ENABLED == 'Y' ) {
     //restrict NUC list if groups are enabled
     $nonusers = get_my_nonusers ( $login, true, 'view' );
-    $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : 
+    $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) :
       array_merge($userlist, $nonusers);
   }
   $userlistcnt = count ( $userlist );
@@ -118,11 +118,11 @@ $event_template = "<dt>\${name}</dt>\n<dd>" .
   "\${description}</dd>\n";
 
 //Setup option arrays
-$page_options = array ( 
+$page_options = array (
   'days', 'report_id' );
-$day_options = array ( 
+$day_options = array (
   'events', 'date', 'fulldate', 'report_id');
-$event_options = array ( 
+$event_options = array (
   'name',
   'description',
   'date',
@@ -188,12 +188,12 @@ if ( empty ( $error ) && $report_id >= 0 ) {
         // If not admin, only creator can edit/delete the event
         $error = print_not_auth ();
       }
-      
+
       // If we are editing a public user report we need to set $updating_public
       if ( $is_admin && $report_login == '__public__' ) {
         $updating_public = true;
        }
-        
+
     } else {
       $error = translate ( 'Invalid report id' ) . ": $report_id";
     }
@@ -262,7 +262,7 @@ if ( ! empty ( $error ) ) {
 <form action="edit_report_handler.php" method="post" name="reportform">
 <?php if ( $updating_public ) { ?>
   <input type="hidden" name="public" value="1" />
-<?php } 
+<?php }
 if ( ! $adding_report ) { ?>
   <input type="hidden" name="report_id" value="<?php echo $report_id?>" />
 <?php } ?>
@@ -286,7 +286,7 @@ if ( $show_participants ) {
       if ( $report_user == $userlist[$i]['cal_login'] ) {
         $users .= $selected;
       }
-    } 
+    }
     $users .= '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
   echo '<tr><td><label for="rpt_user">' .
@@ -296,43 +296,43 @@ if ( $show_participants ) {
   echo "</td></tr>\n";
 }
 
-if ( $is_admin ) { 
+if ( $is_admin ) {
   $defIdx = ( ! empty ( $report_is_global ) && $report_is_global == 'Y' ? 'Y' : 'N' );
   echo '<tr><td><label>'
   . translate( 'Global' ) . ":</label></td>\n<td>"
-  . print_radio ( 'is_global', '', '' , $defIdx ) 
+  . print_radio ( 'is_global', '', '' , $defIdx )
   . "</td></tr>\n";
 
 // The report will always be shown in the menu for the creator
 // of the report.  For admin users who create a global report,
 // allow option of adding to all users menu.
-  $defIdx = ( ! empty ( $report_show_in_menu ) && 
+  $defIdx = ( ! empty ( $report_show_in_menu ) &&
     $report_show_in_menu == 'Y' ? 'Y' : 'N' );
   echo '<tr><td><label>'
   . translate( 'Include link in menu' ) . ":</label></td>\n<td>"
-  . print_radio ( 'show_in_trailer', '', '' , $defIdx ) 
+  . print_radio ( 'show_in_trailer', '', '' , $defIdx )
   . "</td></tr>\n";
-} 
+}
 
-$defIdx = ( ! empty ( $report_include_header ) && 
+$defIdx = ( ! empty ( $report_include_header ) &&
   $report_include_header == 'Y' ? 'Y' : 'N' );
 echo '<tr><td><label>'
 . translate( 'Include standard header/trailer' ) . ":</label></td>\n<td>"
-. print_radio ( 'include_header', '', '' , $defIdx ) 
+. print_radio ( 'include_header', '', '' , $defIdx )
 . "</td></tr>\n";
 
-$defIdx = ( ! empty ( $report_allow_nav ) && 
+$defIdx = ( ! empty ( $report_allow_nav ) &&
   $report_allow_nav == 'Y' ? 'Y' : 'N' );
 echo '<tr><td><label>'
 . translate( 'Include previous/next links' ) . ":</label></td>\n<td>"
-. print_radio ( 'allow_nav', '', '' , $defIdx ) 
+. print_radio ( 'allow_nav', '', '' , $defIdx )
 . "</td></tr>\n";
 
-$defIdx = ( ! empty ( $report_include_empty ) && 
+$defIdx = ( ! empty ( $report_include_empty ) &&
   $report_include_empty == 'Y' ? 'Y' : 'N' );
 echo '<tr><td><label>'
 . translate( 'Include empty dates' ) . ":</label></td>\n<td>"
-. print_radio ( 'include_empty', '', '' , $defIdx ) 
+. print_radio ( 'include_empty', '', '' , $defIdx )
 . "</td></tr>\n";
 ?>
 <tr><td>
@@ -375,7 +375,7 @@ echo '<tr><td><label>'
   <textarea rows="12" cols="60" name="page_template"><?php echo htmlentities ( $page_template, ENT_COMPAT, $charset )?></textarea>
   </td><td class="aligntop cursoradd" colspan="2">
 <?php
-  foreach ( $page_options as $option ) { 
+  foreach ( $page_options as $option ) {
    print_options ( 'page_template', $option );
   }
  ?>
@@ -385,34 +385,34 @@ echo '<tr><td><label>'
   <textarea rows="12" cols="60" name="day_template"><?php echo htmlentities ( $day_template, ENT_COMPAT, $charset )?></textarea>
   </td><td class="aligntop cursoradd" colspan="2">
 <?php
-  foreach ( $day_options as $option ) { 
+  foreach ( $day_options as $option ) {
    print_options ( 'day_template', $option );
   }
  ?>
  </td></tr>
  <tr><td valign="top"><label>
   <?php etranslate( 'Event template' )?>:</label></td><td>
-  <textarea rows="12" cols="60" name="event_template" id="event_template"><?php 
+  <textarea rows="12" cols="60" name="event_template" id="event_template"><?php
     echo htmlentities ( $event_template, ENT_COMPAT, $charset )?></textarea>
   </td><td class="aligntop cursoradd" width="150px">
 <?php
-  foreach ( $event_options as $option ) { 
+  foreach ( $event_options as $option ) {
    print_options ( 'event_template', $option );
   }
   echo '</td><td class="aligntop cursoradd">';
   $extra_names = get_site_extras_names( EXTRA_DISPLAY_REPORT );
-  if ( count ( $extra_names ) > 0 ) 
+  if ( count ( $extra_names ) > 0 )
     echo '<label>' .translate( 'Site Extras' ). '</label><br />';
-  foreach ( $extra_names as $name ) { 
+  foreach ( $extra_names as $name ) {
     print_options ( 'event_template', 'extra:' . $name );
- } 
+ }
 ?>
  </td></tr>
  <tr><td colspan="4">
   <input type="submit" value="<?php etranslate( 'Save' )?>" />
 <?php if ( ! $adding_report ) { ?>
   &nbsp;&nbsp;<input type="submit" name="delete" value="<?php etranslate( 'Delete' );?>"
-  onclick="return confirm('<?php 
+  onclick="return confirm('<?php
   echo str_replace ( 'XXX', translate ( 'report' ),
     translate ( 'Are you sure you want to delete this XXX?' ) ) ?>');" />
 <?php } ?>

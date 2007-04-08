@@ -65,7 +65,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
     }
     $ret .= "<td style=\"vertical-align:top;\">";
     if ( empty ( $tablear[$i]['noneditable'] ) && ! empty ( $action ) ) {
-      if ( $tablear[$i]['type'] == "text" || 
+      if ( $tablear[$i]['type'] == "text" ||
         $tablear[$i]['type'] == "int" || $tablear[$i]['type'] == "float" ) {
         $ret .= "<input type=\"text\" name=\"" . $tablear[$i]['name'] .
           '"';
@@ -123,8 +123,8 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
     $ret .= "</td></tr>\n";
   }
   if ( ! empty ( $actionlabel ) )
-    $ret .= "<tr><td colspan=\"2\" style=\"text-align:center;\">\n" . 
-      "<input type=\"submit\" value=\"" . htmlspecialchars ( $actionlabel ) . "\" />" . 
+    $ret .= "<tr><td colspan=\"2\" style=\"text-align:center;\">\n" .
+      "<input type=\"submit\" value=\"" . htmlspecialchars ( $actionlabel ) . "\" />" .
   "</td></tr></form>\n";
   $ret .= "</table>\n</td></tr></table>\n</td></tr></table>\n";
 
@@ -132,7 +132,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
 }
 
 // Print rows of a table into an HTML table.  The first column will
-// include (optionally) href links to a page which can show further 
+// include (optionally) href links to a page which can show further
 // details.
 // $tablear - db table (defined in tables.php)
 // $tablename - db table name
@@ -382,7 +382,7 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
     else {
       $sql .= ', ?';
   }
-    
+
   if ( empty ( $valuesar[$i] ) ) {
     $query_params[] = NULL;
   }

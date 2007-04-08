@@ -62,7 +62,7 @@ function calculateMoonPhases( $year, $month=1 ) {
       $s = date ( 'Ymd', strtotime ( jdtogregorian ($julian) ) );
     } else {
       $s = jd_to_greg ($julian);
-    } 
+    }
     //half K
     if (($K9-floor($K9))>0){
         if (!$U){
@@ -70,7 +70,7 @@ function calculateMoonPhases( $year, $month=1 ) {
         }else{
             $phases[$s]='first';
         }
-        
+
     }else{
         if ( !$U ){
             $phases[$s]='new';

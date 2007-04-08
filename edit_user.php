@@ -72,17 +72,17 @@ if ( ! empty ( $error ) ) {
  </td></tr>
  <tr><td>
   <label for="ufirstname"><?php etranslate( 'First Name' )?>:</label></td><td>
-  <input type="text" name="ufirstname" id="ufirstname" size="20" value="<?php 
+  <input type="text" name="ufirstname" id="ufirstname" size="20" value="<?php
   echo empty ( $ufirstname ) ? '' : htmlspecialchars ( $ufirstname );?>" />
  </td></tr>
  <tr><td>
   <label for="ulastname"><?php etranslate( 'Last Name' )?>:</label></td><td>
-  <input type="text" name="ulastname" id="ulastname" size="20" value="<?php 
+  <input type="text" name="ulastname" id="ulastname" size="20" value="<?php
   echo empty ( $ulastname ) ? '' : htmlspecialchars ( $ulastname );?>" />
  </td></tr>
  <tr><td>
   <label for="uemail"><?php etranslate( 'E-mail address' )?>:</label></td><td>
-  <input type="text" name="uemail" id="uemail" size="20" value="<?php echo 
+  <input type="text" name="uemail" id="uemail" size="20" value="<?php echo
   empty ( $uemail ) ? '' : htmlspecialchars ( $uemail );?>" onchange="check_uemail();" />
  </td></tr>
 <?php if ( empty ( $user ) && ! $use_http_auth && $user_can_update_password ) { ?>
@@ -91,7 +91,7 @@ if ( ! empty ( $error ) ) {
   <input name="upassword1" id="pass1" size="15" value="" type="password" />
  </td></tr>
  <tr><td>
-  <label for="pass2"><?php etranslate( 'Password' )?> (<?php 
+  <label for="pass2"><?php etranslate( 'Password' )?> (<?php
   etranslate( 'again' )?>):</label></td><td>
   <input name="upassword2" id="pass2" size="15" value="" type="password" />
  </td></tr>
@@ -100,13 +100,13 @@ if ( ! empty ( $error ) ) {
 if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
  <tr><td class="bold">
   <?php etranslate( 'Admin' )?>:</td><td>
-  <?php 
+  <?php
     $defIdx = ( ! empty ( $uis_admin ) && $uis_admin == 'Y' ? 'Y' : 'N' );
     echo print_radio ( 'uis_admin', '', '', $defIdx ) ?>
  </td></tr>
  <tr><td class="bold">
   <?php etranslate( 'Enabled' )?>:</td><td>
-  <?php 
+  <?php
     $defIdx = ( ! empty ( $uenabled ) && $uenabled == 'Y' ? 'Y' : 'N' );
     echo print_radio ( 'u_enabled', '', '', $defIdx ) ?>
  </td></tr>
@@ -116,19 +116,19 @@ if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
 <?php } //end if ($is_admin ) ?>
  <tr><td colspan="2">
   <?php if ( $DEMO_MODE == 'Y' ) { ?>
-   <input type="button" value="<?php etranslate( 'Save' )?>" onclick="alert('<?php 
+   <input type="button" value="<?php etranslate( 'Save' )?>" onclick="alert('<?php
   etranslate( 'Disabled for demo', true)?>')" />
    <?php if ( $is_admin && ! empty ( $user ) ) { ?>
-    <input type="submit" name="delete" value="<?php 
-    etranslate( 'Delete' )?>" onclick="alert('<?php 
+    <input type="submit" name="delete" value="<?php
+    etranslate( 'Delete' )?>" onclick="alert('<?php
     etranslate( 'Disabled for demo', true)?>')" />
-   <?php } //end if ( $DEMO_MODE == 'Y' ) 
+   <?php } //end if ( $DEMO_MODE == 'Y' )
    } else { ?>
    <input type="submit" value="<?php etranslate( 'Save' )?>" />
    <?php if ( $is_admin && ! empty ( $user ) && $user != $login ) {
     if ( $admin_can_delete_user ) ?>
-    <input type="submit" name="delete" value="<?php 
-    etranslate( 'Delete' )?>" onclick="return confirm('<?php 
+    <input type="submit" name="delete" value="<?php
+    etranslate( 'Delete' )?>" onclick="return confirm('<?php
     echo str_replace ( 'XXX', translate ( 'user' ),
       translate ( 'Are you sure you want to delete this XXX?' ) ) ?>')" />
    <?php }
@@ -154,14 +154,14 @@ if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
   <input name="upassword1" id="newpass1" type="password" size="15" />
  </td></tr>
  <tr><td>
-  <label for="newpass2"><?php etranslate( 'New Password' )?> (<?php 
+  <label for="newpass2"><?php etranslate( 'New Password' )?> (<?php
    etranslate( 'again' )?>):</label></td><td>
   <input name="upassword2" id="newpass2" type="password" size="15" />
  </td></tr>
  <tr><td colspan="2">
   <?php if ( $DEMO_MODE == 'Y' ) { ?>
-   <input type="button" value="<?php 
-   etranslate( 'Set Password' )?>" onclick="alert('<?php 
+   <input type="button" value="<?php
+   etranslate( 'Set Password' )?>" onclick="alert('<?php
    etranslate( 'Disabled for demo', true)?>')" />
   <?php } else { ?>
    <input type="submit" value="<?php etranslate( 'Set Password' )?>" />
@@ -171,6 +171,6 @@ if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
 </form>
 <?php } ?>
 </td></tr></table>
-<?php } 
+<?php }
 echo print_trailer ( false, true, true ); ?>
 

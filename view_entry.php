@@ -88,7 +88,7 @@ if ( ! empty ( $_POST ) && $is_my_event ) {
     dbi_execute ( 'UPDATE webcal_entry_user SET cal_percent = ?
       WHERE cal_login = ? AND cal_id = ?',
       array ( $upercent, $login, $id ) );
-    activity_log ( $id, $login, $creator, LOG_UPDATE_T, 
+    activity_log ( $id, $login, $creator, LOG_UPDATE_T,
       translate ( 'Update Task Percentage' ) . ' ' . $upercent . '%' );
    }
   // Check if all other user percent is 100%, if so, set cal_complete date.
@@ -96,7 +96,7 @@ if ( ! empty ( $_POST ) && $is_my_event ) {
   if ( $upercent == 100 && $others_complete == 'yes' ) {
     dbi_execute ( 'UPDATE webcal_entry SET cal_completed = ?
       WHERE cal_id = ?', array ( gmdate ( 'Ymd', time () ), $id ) );
-    activity_log ( $id, $login, $creator, LOG_UPDATE_T, 
+    activity_log ( $id, $login, $creator, LOG_UPDATE_T,
       translate ( 'Completed' ) );
   }
 }
@@ -170,7 +170,7 @@ if ( empty ( $error ) ) {
      access_user_calendar ( 'view', $euser, $login, $cal_type, $cal_access );
     $time_only =
      access_user_calendar ( 'time', $euser, $login, $cal_type, $cal_access );
-  } 
+  }
 
   if ( $is_admin || $is_nonuser_admin || $is_assistant )
     $can_view = true;
@@ -585,7 +585,7 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
         ? date_to_str ( $extras[$extra_name]['cal_date'] ) : '' );
     elseif ( $extra_type == EXTRA_TEXT || $extra_type == EXTRA_MULTILINETEXT )
       echo nl2br ( $extras[$extra_name]['cal_data'] );
-    elseif ( $extra_type == EXTRA_USER || $extra_type == EXTRA_SELECTLIST 
+    elseif ( $extra_type == EXTRA_USER || $extra_type == EXTRA_SELECTLIST
       || $extra_type == EXTRA_CHECKBOX )
       echo $extras[$extra_name]['cal_data'];
     elseif ( $extra_type == EXTRA_RADIO  )
@@ -754,7 +754,7 @@ if ( $single_user == 'N' && $show_participants ) {
 $can_edit = ( $can_edit || $is_admin || $is_nonuser_admin &&
   ( $user == $create_by ) ||
   ( $is_assistant && ! $is_private && ( $user == $create_by ) ) ||
-  ( $readonly != 'Y' && ( $login != '__public__' && $login == $create_by || 
+  ( $readonly != 'Y' && ( $login != '__public__' && $login == $create_by ||
   $single_user == 'Y' ) ) );
 
 if ( empty ( $event_status ) ) {

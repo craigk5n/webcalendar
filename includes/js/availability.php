@@ -11,7 +11,7 @@ $parent_form = $arinc[6];
 NS4 = (document.layers) ? 1 : 0;
 IE4 = (document.all) ? 1 : 0;
 // W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
-W3C = (document.getElementById) ? 1 : 0;  
+W3C = (document.getElementById) ? 1 : 0;
 //Function is similar to visible.php, but effects the parent
 function makeVisible ( name ) {
   var ele;
@@ -62,8 +62,8 @@ function schedule_event(hours, minutes) {
         }
       }
     }
-    if   ( minutes <= 9 ) minutes = '0' + minutes;  
-    parentForm.entry_minute.value=minutes;    
+    if   ( minutes <= 9 ) minutes = '0' + minutes;
+    parentForm.entry_minute.value=minutes;
     parentForm.day.selectedIndex = day - 1;
     parentForm.month.selectedIndex = month - 1;
     for ( i = 0; i < parentForm.year.length; i++ ) {

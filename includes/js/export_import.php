@@ -1,4 +1,4 @@
-<?php /* $Id$ */ 
+<?php /* $Id$ */
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 ?>
 function toggle_import() {
@@ -6,13 +6,13 @@ function toggle_import() {
   if ( i == 1 ) { //Palm
       makeVisible ( "palm" );
    } else {
-      makeInvisible ( "palm" ); 
+      makeInvisible ( "palm" );
    }
   if ( i == 3 ) {// Outlook CSV
       makeInvisible ( "ivcal" );
-      makeVisible ( "outlookcsv" ); 
+      makeVisible ( "outlookcsv" );
    } else {
-      makeVisible ( "ivcal" ); 
+      makeVisible ( "ivcal" );
       makeInvisible ( "outlookcsv" );
    }
 }
@@ -22,7 +22,7 @@ function toggel_catfilter() {
   if ( i == 0 ) { //ICAL
       makeVisible ( "catfilter" );
    } else {
-      makeInvisible ( "catfilter" ); 
+      makeInvisible ( "catfilter" );
    }
 
 }
@@ -49,7 +49,7 @@ function checkExtension () {
     default:
       pass = false;
       break;
-  } 
+  }
   if (  ! pass ) {
     alert ( "<?php etranslate ( 'File type does not match Import Format', true ) ?>");
     return false;
