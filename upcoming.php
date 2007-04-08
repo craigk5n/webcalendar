@@ -45,13 +45,13 @@
  *   - showTime ((boolean, set to 1 or 0) whether the event time should be shown
  *
  * if calling as an include file can pre-set these variables in your PHP file
- * before including upcoming.php (you can't use URL parameters when calling 
+ * before including upcoming.php (you can't use URL parameters when calling
  * an include file).  Remember that after debugging you can use @include to suppress
  * PHP warnings.
  *     $numDays               default 30
  *     $cat_id                default ALL
  *     $username              default __public__
- *     $maxEvents             default 10   
+ *     $maxEvents             default 10
  *     $showTasks bool        default true
  *     $showTitle bool        default true
  *     $upcoming_title        default "Upcoming Events"
@@ -71,14 +71,14 @@
 //set default hCalendar but allow it to be overridden
 //this will include hidden values that can gleaned by hCalendar
 // clients
-if ( empty( $hcalendar_output ) ) 
+if ( empty( $hcalendar_output ) )
   $hcalendar_output = false;
 
 
-//only go through the requires & includes & function declarations once, 
+//only go through the requires & includes & function declarations once,
 // in case upcoming.php is included twice on one page
 //this trick allows the upcoming events to be displayed twice on one page
-//(perhaps with different parameters) without causing problems if 
+//(perhaps with different parameters) without causing problems if
 if ( empty ($upcoming_initialized)) {
   $upcoming_initialized=true;
 //The following lines allow this include file to be called from another directory
@@ -88,36 +88,36 @@ if ( empty ($upcoming_initialized)) {
 //from some other directory.
 $save_current_working_dir= getcwd();
 chdir(dirname(__FILE__));
-  
+
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
-   
-$WebCalendar =& new WebCalendar ( __FILE__ );    
-   
-include 'includes/translate.php';       
-include 'includes/config.php';    
-include 'includes/dbi4php.php';    
-include 'includes/functions.php';    
-   
-$WebCalendar->initializeFirstPhase();    
- 
-include "includes/$user_inc"; 
+
+$WebCalendar =& new WebCalendar ( __FILE__ );
+
+include 'includes/translate.php';
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/functions.php';
+
+$WebCalendar->initializeFirstPhase();
+
+include "includes/$user_inc";
 include 'includes/site_extras.php';
 
-//added to support hCalendar 
-if ( $hcalendar_output )   
+//added to support hCalendar
+if ( $hcalendar_output )
  include 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
-//This must contain the file name that this file is saved under.  It is 
+//This must contain the file name that this file is saved under.  It is
 //used to determine whether the file is being run independently or
 //as an include file.  Change as necessary!
 //Note that if you use any other name than "upcoming.php" you must
-//also change the corresponding line in includes/classes/WebCalendar.class, about 
+//also change the corresponding line in includes/classes/WebCalendar.class, about
 //line 54, like this:
 //    '/^(nulogin|login|freebusy|publish|register|rss|upcoming|upcoming-.*|week_ssi|minical|controlpanel)\.php$/' =>
-//Using upcoming-.* allows you to use names like upcoming-1.php, upcoming-2.php etc. 
+//Using upcoming-.* allows you to use names like upcoming-1.php, upcoming-2.php etc.
 //if you want have different upcoming-*.php files with variants.
 
 $name_of_this_file='/upcoming.php/';
@@ -130,7 +130,7 @@ $WebCalendar->setLanguage();
 
 // Print the details of an upcoming event
 // This function is here, inside the 'if' that runs only the first time this
-// file is included within an external document, so that the function isn't 
+// file is included within an external document, so that the function isn't
 // declared twice in case of this file being included twice or more within the same doc.
 function print_upcoming_event ( $e, $date ) {
   global $display_link, $link_target, $SERVER_URL, $charset, $login,
@@ -164,9 +164,9 @@ function print_upcoming_event ( $e, $date ) {
         $e->getDescription(), $timestr, site_extras_for_popup ( $e->getId() ),
         $e->getLocation(), $e->getName(), $e->getId() );
     }
-    echo "<div class=\"vevent\">\n<a class=\"entry\" id=\"$popupid\" title=\"" . 
-      htmlspecialchars ( $e->getName() ) . '" href="' . 
-      $SERVER_URL . 'view_entry.php?id=' . 
+    echo "<div class=\"vevent\">\n<a class=\"entry\" id=\"$popupid\" title=\"" .
+      htmlspecialchars ( $e->getName() ) . '" href="' .
+      $SERVER_URL . 'view_entry.php?id=' .
         $e->getID() . "&amp;date=$date";
       if ( $e->getLogin() != $login )
         echo "&amp;user=" . $e->getLogin();
@@ -187,10 +187,10 @@ function print_upcoming_event ( $e, $date ) {
   }
 
   //added for hCalendar
-  if ( $hcalendar_output ) {  
-    echo '<abbr class="dtstart" title="'. export_ts_utc_date ($e->getDateTImeTS() ) 
+  if ( $hcalendar_output ) {
+    echo '<abbr class="dtstart" title="'. export_ts_utc_date ($e->getDateTImeTS() )
       .'">' . $e->getDateTIme() . "</abbr>\n";
-    echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTImeTS() ) 
+    echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTImeTS() )
       . '">' . $e->getEndDateTImeTS() . "</abbr>\n";
     echo '<span class="description">' . $e->getDescription() . "</span>\n";
     if ( strlen ( $e->getLocation() ) > 0 )
@@ -242,7 +242,7 @@ $link_target = '_top';
 
 // Default time window of events to load
 // Can override with "upcoming.php?days=60"
-//bhugh, 1/28/2006, if(empty and !== false constructions allow these vars to be passed 
+//bhugh, 1/28/2006, if(empty and !== false constructions allow these vars to be passed
 //from another php program in case upcoming.php is called as an include file
 //(you can't pass ?days=60 type parameters when you use include)
 if (empty($numDays))  $numDays = 30;
@@ -250,13 +250,13 @@ $showTitle = ( ! empty ( $showTitle ) && $showTitle !== false ? true : false );
 $showMore = ( ! empty ( $showMore ) && $showMore !== false ? true : false );
 $showTime = ( ! empty ( $showTime ) && $showTime !== false ? true : false );
 
-//sets the URL used in the (optional) page title and 
-//(optional) "...more" tag at the end.  If you want them to 
+//sets the URL used in the (optional) page title and
+//(optional) "...more" tag at the end.  If you want them to
 //go to a different URL you can specify that here.
 $title_more_url=$SERVER_URL;
 
 //set default upcoming title but allow it to be overridden
-if (empty($upcoming_title)) $upcoming_title= '<a href="'. 
+if (empty($upcoming_title)) $upcoming_title= '<a href="'.
    $title_more_url . '">Upcoming Events</a>';
 
 //echo "$numDays $showTitle $maxEvents <p>";
@@ -296,7 +296,7 @@ if (empty($cat_id)) $cat_id = '';
 
 // Display timezone abbrev name
 // 1 = Display all times as GMT wo/TZID
-// 2 = Adjust times by user's GMT offset Show TZID 
+// 2 = Adjust times by user's GMT offset Show TZID
 // 3 = Display all times as GMT w/TZID
 $display_tzid = 2;
 
@@ -413,7 +413,7 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
   $PHP_SELF = $_SERVER['PHP_SELF'];
 }
 // If called directly print  header stuff.
-if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) { 
+if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) {
 // Print header without custom header and no style sheet.
 echo send_doctype ( generate_application_name () );
 
@@ -489,7 +489,7 @@ a:hover {
 <?php
 if ( ! empty ( $showPopups ) ) {
   echo '<script type="text/javascript" src="includes/js/util.js"></script>' . "\n";
-  
+
   echo '<script type="text/javascript">' . "\n";
   include_once 'includes/js/popups.php';
   echo "</script>\n";
@@ -517,8 +517,8 @@ if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate($upcoming_titl
 echo "<dl>\n";
 
 echo "<!-- \nstartTime: startDate\nendTime: $endDate\nstartDate: " .
-  "$date\nnumDays: $numDays\nuser: $username\nevents: " . 
-  count ( $events ) . "\nrepeated_events: " . 
+  "$date\nnumDays: $numDays\nuser: $username\nevents: " .
+  count ( $events ) . "\nrepeated_events: " .
   count ( $repeated_events ) . " -->\n";
 
 $eventinfo = '';
@@ -550,13 +550,13 @@ for ( $i = $startDate; date ( 'Ymd', $i ) <= $endDateYmd &&
 
 echo "</dl>\n";
 
-if ( $showMore ) echo '<center><i><a href="'. $title_more_url . '"> . . . ' . 
+if ( $showMore ) echo '<center><i><a href="'. $title_more_url . '"> . . . ' .
    translate ( 'more' ) . '</a></i></center>';
 ?>
 </div>
 <?php
 echo $eventinfo;
-if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) { 
+if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) {
   echo "</body>\n</html>";
 }
 

@@ -11,8 +11,8 @@ if ( ! empty ( $users ) ) {
   for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
     dbi_execute ( 'INSERT INTO webcal_asst ( cal_boss, cal_assistant )
       VALUES ( ?, ? )', array( $user, $users[$i] ) );
-  } 
-} 
+  }
+}
 
 echo error_check ( 'assistant_edit.php'
    . ( ( $is_admin || $is_nonuser_admin ) && $login != $user

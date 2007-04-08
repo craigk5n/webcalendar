@@ -47,13 +47,13 @@ function print_user_list () {
         $users .= ' selected="selected"';
       $users .= '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
     }
-  
+
     if ( $size > 50 )
       $size = 15;
     else if ( $size > 5 )
       $size = 5;
     echo '<tr><td class="aligntop">' . "\n";
-    echo '<label for="caluser">' . 
+    echo '<label for="caluser">' .
      translate( 'Calendar' ) . ":</label></td><td>\n";
     echo '<select name="calUser" id="caluser" size="' .$size. "\">$users\n";
     echo '</select></td></tr>' . "\n";
@@ -61,7 +61,7 @@ function print_user_list () {
 }
 ?>
 
-<h2><?php etranslate( 'Import' )?>&nbsp;<img src="images/help.gif" alt="<?php 
+<h2><?php etranslate( 'Import' )?>&nbsp;<img src="images/help.gif" alt="<?php
   etranslate( 'Help' )?>" class="help" onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" /></h2>
 
 <?php
@@ -91,16 +91,16 @@ if ( ! $upload_enabled ) {
 <!-- Valid only for Palm Desktop import -->
 <tr id="palm"><td>
  <label><?php etranslate( 'Exclude private records' )?>:</label></td><td>
- <label><input type="radio" name="exc_private" value="1" checked="checked" /><?php 
-  etranslate ( 'Yes')?></label> 
- <label><input type="radio" name="exc_private" value="0" /><?php 
+ <label><input type="radio" name="exc_private" value="1" checked="checked" /><?php
+  etranslate ( 'Yes')?></label>
+ <label><input type="radio" name="exc_private" value="0" /><?php
   etranslate ( 'No'  )?></label>
 </td></tr>
 <!-- /PALM -->
 <!-- Not valid for Outlook CSV as it doesn't generate UID for import tracking -->
 <tr id="ivcal"><td>
  <label><?php etranslate( 'Overwrite Prior Import' )?>:</label></td><td>
- <label><input type="radio" name="overwrite" value="Y" checked="checked" />&nbsp;<?php etranslate ( 'Yes' );?></label> 
+ <label><input type="radio" name="overwrite" value="Y" checked="checked" />&nbsp;<?php etranslate ( 'Yes' );?></label>
  <label><input type="radio" name="overwrite" value="N" />&nbsp;<?php etranslate ( 'No' );?></label>
 </td></tr>
 <!-- /IVCAL -->

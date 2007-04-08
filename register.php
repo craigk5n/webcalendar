@@ -33,11 +33,11 @@ $appStr =  generate_application_name ();
 
 $notauth = print_not_auth ();
 
-if ( empty ( $ALLOW_SELF_REGISTRATION ) || $ALLOW_SELF_REGISTRATION != 'Y' ) { 
+if ( empty ( $ALLOW_SELF_REGISTRATION ) || $ALLOW_SELF_REGISTRATION != 'Y' ) {
   $error = $notauth;
 }
 
-if ( empty ( $SELF_REGISTRATION_FULL ) || $SELF_REGISTRATION_FULL == 'N' ) { 
+if ( empty ( $SELF_REGISTRATION_FULL ) || $SELF_REGISTRATION_FULL == 'N' ) {
   $SELF_REGISTRATION_FULL = 'N';
  $form_control = 'full';
 } else if ( $SELF_REGISTRATION_FULL = 'Y' ) {
@@ -52,7 +52,7 @@ function check_username ( $user ) {
   if ( strlen ( $user ) == 0 ) {
    $error = translate ( 'Username cannot be blank.' );
   return false;
- } 
+ }
   $sql='SELECT cal_login FROM webcal_user WHERE cal_login = ?';
   $res = dbi_execute ( $sql, array ( $user ) );
   if ( $res ) {
@@ -73,7 +73,7 @@ function check_email ( $uemail ) {
   if ( ! strlen ( $uemail ) ) {
    $error = translate ( 'Email address cannot be blank.' );
   return false;
- } 
+ }
   $sql='SELECT cal_email FROM webcal_user WHERE cal_email = ?';
   $res = dbi_execute ( $sql, array ( $uemail ) );
   if ( $res ) {
@@ -92,7 +92,7 @@ function generate_password() {
   $pass_length = 7;
   $pass= '';
   $salt = 'abchefghjkmnpqrstuvwxyz0123456789';
-  srand((double)microtime()*1000000); 
+  srand((double)microtime()*1000000);
    $i = 0;
    while ($i <= $pass_length) {
       $num = rand() % 33;
@@ -113,7 +113,7 @@ $uemail = '';
 // We can limit what domain is allowed to self register
 // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
 $valid_ip = validate_domain ();
-if ( empty ( $valid_ip ) ) 
+if ( empty ( $valid_ip ) )
   $error = $notauth;
 
 //We could make $control a unique value if necessary
@@ -129,7 +129,7 @@ if ( empty ( $error ) && ! empty ( $control ) ) {
     $error = translate ( 'Illegal characters in login' ).
      '<tt>' . htmlentities ( $user ) . '</tt>';
   }
-    
+
   //Check to make sure user doesn't already exist
   check_username ( $user );
   //Check to make sure email address doesn't already exist
@@ -150,9 +150,9 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
       $error = translate ( 'Illegal characters in login' ) .
         '<tt>' . htmlentities ( $user ) . '</tt>';
     }
-  } else if ( $upassword1 != $upassword2 ) { 
+  } else if ( $upassword1 != $upassword2 ) {
     $error = translate( 'The passwords were not identical' ) . '.';
-   $control = ''; 
+   $control = '';
  }
 
  if ( empty ( $error ) ) {
@@ -161,14 +161,14 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
   activity_log ( 0, 'system', $user, LOG_NEWUSER_FULL, 'New user via self-registration' );
  }
 //Process account info for email submission
-} else if ( empty ( $error ) && ! empty ( $control ) && $control == 'email' ) {  
-  // need to generate unique passwords and email them to the new user 
+} else if ( empty ( $error ) && ! empty ( $control ) && $control == 'email' ) {
+  // need to generate unique passwords and email them to the new user
   if ( empty ( $error ) ) {
     $new_pass = generate_password ();
     //TODO allow admin to approve account aand emails prior to processing
     user_add_user ( $user, $new_pass, $ufirstname, $ulastname,
       $uemail, $uis_admin );
-   
+
    $msg = translate( 'Hello' ) . ', ' . $ufirstname . ' ' . $ulastname . "\n\n";
    $msg .= translate( 'A new WebCalendar account has been set up for you' ). ".\n\n";
    $msg .= translate( 'Your username is' ) . ' "' . $user . "\"\n\n";
@@ -179,18 +179,18 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
    if ( ! empty ( $SERVER_URL ) ) {
      $url = $SERVER_URL .  'login.php';
      if ( $htmlmail == 'Y' ) {
-       $url =  activate_urls ( $url ); 
+       $url =  activate_urls ( $url );
      }
      $msg .= "\n\n" . $url;
    }
   $msg .= "\n\n" . translate( 'You may change your password after logging in the first time' ) . ".\n\n";
-  $msg .= translate( 'If you received this email in error' ) . ".\n\n"; 
+  $msg .= translate( 'If you received this email in error' ) . ".\n\n";
   $adminStr = translate( 'Administrator', true );
   $name = $appStr . ' ' . translate( 'Welcome' ) . ': ' . $ufirstname;
   //send  via WebCalMailer class
-  $mail->WC_Send ( $adminStr, $uemail, $ufirstname .  ' ' 
+  $mail->WC_Send ( $adminStr, $uemail, $ufirstname .  ' '
     . $ulastname, $name, $msg, $htmlmail, $EMAIL_FALLBACK_FROM );
-  activity_log ( 0, 'system', $user, LOG_NEWUSER_EMAIL, 'New user via email' ); 
+  activity_log ( 0, 'system', $user, LOG_NEWUSER_EMAIL, 'New user via email' );
  }
 }
 
@@ -212,7 +212,7 @@ function valid_form () {
   if ( document.selfreg.upassword1.value != document.selfreg.upassword2.value ) {
     alert ( "<?php etranslate( 'The passwords were not identical', true)?>." );
     return false;
-  } 
+  }
   check_name();
   check_uemail();
 
@@ -224,8 +224,8 @@ function check_name() {
   var url = 'ajax.php';
   var params = 'page=register&name=' + $F('user');
   var ajax = new Ajax.Request(url,
-    {method: 'post', 
-    parameters: params, 
+    {method: 'post',
+    parameters: params,
     onComplete: showResponse});
 }
 
@@ -234,8 +234,8 @@ function check_uemail() {
   var url = 'ajax.php';
   var params = 'page=email&name=' + $F('uemail');
   var ajax = new Ajax.Request(url,
-    {method: 'post', 
-    parameters: params, 
+    {method: 'post',
+    parameters: params,
     onComplete: showResponse});
 }
 
@@ -255,7 +255,7 @@ function showResponse(originalRequest) {
 }
 
 </script>
-<?php 
+<?php
   echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login=__public__" />';
 
  // Print custom header (since we do not call print_header function)
@@ -269,7 +269,7 @@ function showResponse(originalRequest) {
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo '<span style="color:#FF0000; font-weight:bold;">' . 
+  echo '<span style="color:#FF0000; font-weight:bold;">' .
     translate( 'Error' ) . ": $error</span><br />\n";
 } else {
   echo "<br /><br />\n";
@@ -282,8 +282,8 @@ if ( ! empty ($control ) && empty ( $error ) ) { ?>
 
 <td><?php etranslate( 'Welcome to WebCalendar' )?></td></tr>
 <?php if ( $SELF_REGISTRATION_FULL == 'Y' ) { ?>
-  <tr><td colspan="3" align="center"><label><?php 
-  etranslate( 'Your email should arrive shortly' )?></label><td></tr> 
+  <tr><td colspan="3" align="center"><label><?php
+  etranslate( 'Your email should arrive shortly' )?></label><td></tr>
 <?php } ?>
 <tr><td colspan="3" align="center">
   <input type="submit" value="<?php etranslate( 'Return to Login screen' )?>" />
@@ -314,8 +314,8 @@ if ( ! empty ($control ) && empty ( $error ) ) { ?>
   <tr><td  align="right" colspan="2">
     <label><?php etranslate( 'Password' )?> (<?php etranslate( 'again' )?>):</label></td>
     <td align="left"><input name="upassword2" value="<?php echo $upassword2 ?>" size="15"  type="password" /></td></tr>
-<?php } else { ?>  
-  <tr><td colspan="3" align="center"><label><?php 
+<?php } else { ?>
+  <tr><td colspan="3" align="center"><label><?php
  etranslate ( 'Your account information will be emailed to you' ); ?></label></td></tr>
 <?php } ?>
 <tr><td colspan="3" align="center">

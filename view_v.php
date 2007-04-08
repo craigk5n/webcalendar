@@ -49,11 +49,11 @@ $thisdate = date ( 'Ymd', $wkstart );
 ?>
 
 <div style="width:99%;">
-<a title="<?php etranslate ( 'Previous' )?>" class="prev" 
+<a title="<?php etranslate ( 'Previous' )?>" class="prev"
   href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>">
   <img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
 
-<a title="<?php etranslate ( 'Next' )?>" class="next" 
+<a title="<?php etranslate ( 'Next' )?>" class="next"
   href="view_v.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>">
   <img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate ( 'Next' )?>" /></a>
 <div class="title">
@@ -93,7 +93,7 @@ $re_save = array ();
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quicker access */
   $re_save[$i] = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
-  /* Pre-load the non-repeating events for quicker access 
+  /* Pre-load the non-repeating events for quicker access
      subtracting ONE_WEEK to allow cross-dat events to display*/
   $e_save[$i] = read_events ( $viewusers[$i], $wkstart - ONE_WEEK, $wkend );
 }
@@ -119,7 +119,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     $body .= "<th class=\"row\" style=\"width:$tdw%;\">$tempfullname</th>\n";
     for ( $date = $wkstart; $date < $wkend; $date += ONE_DAY ) {
       $is_weekend = is_weekend ( $date );
-      if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue; 
+      if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' ) continue;
       $dateYmd = date ( 'Ymd', $date );
       $entryStr = print_date_entries ( $dateYmd, $user, true );
       if ( $dateYmd == $todayYmd )
@@ -131,7 +131,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
       //build header row
       if ( $i == 0 ) {
         $header .= "<th $class style=\"width:$tdw%;\">"
-          . weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS ) . " " 
+          . weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS ) . " "
           . date ( 'd', $date ) . "</th>\n";
       }
       // JCJ Correction for today class

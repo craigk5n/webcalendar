@@ -1,13 +1,13 @@
 function openHelp () {
  window.open ( 'help_index.php', 'cal_help','dependent,menubar,scrollbars,height=500,width=600,innerHeight=520,outerWidth=620' );
 }
-   
+
 function openAbout () {
   var mX = (screen.width / 2) -123, mY = 200;
   var MyPosition = 'left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;
   window.open ( 'about.php', 'cal_about','dependent,toolbar=0, height=300,width=245,innerHeight=310,outerWidth=255,location=0,' + MyPosition );
 }
-    
+
 function addLoadHandler(handler)
 {
     if(window.addEventListener)
@@ -35,13 +35,13 @@ function addLoadHandler(handler)
 
 /* document.getElementsBySelector(selector)
    - returns an array of element objects from the current document
-     matching the CSS selector. Selectors can contain element names, 
+     matching the CSS selector. Selectors can contain element names,
      class names and ids and can be nested. For example:
-     
+
        elements = document.getElementsBySelect('div#main p a.external')
-     
-     Will return an array of all 'a' elements with 'external' in their 
-     class attribute that are contained inside 'p' elements that are 
+
+     Will return an array of all 'a' elements with 'external' in their
+     class attribute that are contained inside 'p' elements that are
      contained inside the 'div' element which has id="main"
 
    New in version 0.4: Support for CSS2 and CSS3 attribute selectors:
@@ -49,7 +49,7 @@ function addLoadHandler(handler)
 
    Version 0.4 - Simon Willison, March 25th 2003
    -- Works in Phoenix 0.5, Mozilla 1.3, Opera 7, Internet Explorer 6, Internet Explorer 5 on Windows
-   -- Opera 7 fails 
+   -- Opera 7 fails
 */
 
 function getAllChildren(e) {
@@ -142,7 +142,7 @@ document.getElementsBySelector = function(selector) {
         case '=': // Equality
           checkFunction = function(e) { return (e.getAttribute(attrName) == attrValue); };
           break;
-        case '~': // Match one of space separated words 
+        case '~': // Match one of space separated words
           checkFunction = function(e) { return (e.getAttribute(attrName).match(new RegExp('\\b'+attrValue+'\\b'))); };
           break;
         case '|': // Match start with value followed by optional hyphen
@@ -186,13 +186,13 @@ document.getElementsBySelector = function(selector) {
   return currentContext;
 }
 
-/* That revolting regular expression explained 
+/* That revolting regular expression explained
 /^(\w+)\[(\w+)([=~\|\^\$\*]?)=?"?([^\]"]*)"?\]$/
   \---/  \---/\-------------/    \-------/
     |      |         |               |
     |      |         |           The value
     |      |    ~,|,^,$,* or =
-    |   Attribute 
+    |   Attribute
    Tag
 */
 
@@ -205,8 +205,8 @@ function sortTasks( order, cat_id, ele ) {
   var url = 'ajax.php';
   var params = 'page=minitask&name=' + order + cat;
   var ajax = new Ajax.Request(url,
-    {method: 'post', 
-    parameters: params, 
+    {method: 'post',
+    parameters: params,
     onComplete: showResponse});
 }
 

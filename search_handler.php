@@ -86,9 +86,9 @@ $start_year = getPostValue ( 'from_year' );
 $end_day = getPostValue ( 'until_day' );
 $end_month = getPostValue ( 'until_month' );
 $end_year = getPostValue ( 'until_year' );
-$startDate =  gmdate ( 'Ymd', gmmktime ( 0, 0, 0, 
+$startDate =  gmdate ( 'Ymd', gmmktime ( 0, 0, 0,
   $start_month, $start_day, $start_year ) );
-$endDate =  gmdate ( 'Ymd', gmmktime ( 23, 59, 59, 
+$endDate =  gmdate ( 'Ymd', gmmktime ( 23, 59, 59,
   $end_month, $end_day, $end_year ) );
 
 print_header ();
@@ -119,7 +119,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
 } else
   // original (default) behavior
   $words = explode ( ' ', $keywords );
-// end Phrase modification 
+// end Phrase modification
   $order = 'DESC';
   $word_cnt = count ( $words );
   for ( $i = 0; $i < $word_cnt; $i++ ) {
@@ -187,8 +187,8 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
       }
       if ( $date_filter == 3 ) {//Use Date Range
         $sql .= 'AND ( we.cal_date >= ? AND we.cal_date <= ? )';
-        $sql_params[] = $startDate; 
-        $sql_params[] = $endDate;      
+        $sql_params[] = $startDate;
+        $sql_params[] = $endDate;
       }
     }
 
@@ -240,7 +240,7 @@ if ( empty ( $error ) ) {
     </ul>';
 }
 echo '
-      <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' ) 
+      <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
         . '"  style="margin-left: 13px;" method="post">
        <input type="submit" value="'
         . translate ( 'New Search' ) . '" /></form>';

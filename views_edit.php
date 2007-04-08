@@ -59,7 +59,7 @@ if ( empty ( $id ) ) {
 }
 
 // If view_name not found, then the specified view id does not
-// belong to current user. 
+// belong to current user.
 if ( empty( $viewname ) ) {
   $error = print_not_auth ();
 }
@@ -105,23 +105,23 @@ if ( $newview ) {
 <tr><td>
  <label for="viewtype"><?php etranslate( 'View Type' )?>:</label></td><td colspan="3">
  <select name="viewtype" id="viewtype">
-  <option value="D" <?php if ( $viewtype == 'D' ) 
+  <option value="D" <?php if ( $viewtype == 'D' )
   echo $selected;?>><?php etranslate( 'Day' ); ?></option>
-  <option value="E" <?php if ( $viewtype == 'E' ) 
+  <option value="E" <?php if ( $viewtype == 'E' )
   echo $selected;?>><?php etranslate( 'Day by Time' ); ?></option>
-  <option value="W" <?php if ( $viewtype == 'W' ) 
+  <option value="W" <?php if ( $viewtype == 'W' )
   echo $selected;?>><?php etranslate( 'Week (Users horizontal)' ); ?></option>
-  <option value="R" <?php if ( $viewtype == 'R' ) 
+  <option value="R" <?php if ( $viewtype == 'R' )
   echo $selected;?>><?php etranslate( 'Week by Time' ); ?></option>
-  <option value="V" <?php if ( $viewtype == 'V' ) 
+  <option value="V" <?php if ( $viewtype == 'V' )
   echo $selected;?>><?php etranslate( 'Week (Users vertical)' ); ?></option>
-  <option value="S" <?php if ( $viewtype == 'S' ) 
+  <option value="S" <?php if ( $viewtype == 'S' )
   echo $selected;?>><?php etranslate( 'Week (Timebar)' ); ?></option>
-  <option value="T" <?php if ( $viewtype == 'T' ) 
+  <option value="T" <?php if ( $viewtype == 'T' )
   echo $selected;?>><?php etranslate( 'Month (Timebar)' ); ?></option>
-  <option value="M" <?php if ( $viewtype == 'M' ) 
+  <option value="M" <?php if ( $viewtype == 'M' )
   echo $selected;?>><?php etranslate( 'Month (side by side)' ); ?></option>
-  <option value="L" <?php if ( $viewtype == 'L' ) 
+  <option value="L" <?php if ( $viewtype == 'L' )
   echo $selected;?>><?php etranslate( 'Month (on same calendar)' ); ?></option>
       </select>&nbsp;
   </td></tr>
@@ -130,16 +130,16 @@ if ( $newview ) {
   $defIdx = ( ! empty ( $viewisglobal ) && $viewisglobal == 'Y' ? 'Y' : 'N' );
   echo '<tr><td><label>'
   . translate( 'Global' ) . ":</label></td>\n<td>"
-  . print_radio ( 'is_global', '', '' , $defIdx, '</td><td>' ) 
+  . print_radio ( 'is_global', '', '' , $defIdx, '</td><td>' )
   . "</td></tr>\n";
- } 
+ }
 
 
 $defIdx = ( ! empty ( $all_users ) && $all_users == true ? 'Y' : 'N' );
 echo '<tr><td><label>'
   . translate( 'Users' ) . ":</label></td>\n<td>"
   . print_radio ( 'viewuserall', array ( 'N'=>'Selected', 'Y'=>'All'),
-    'usermode_handler' , $defIdx, '</td><td>' ) 
+    'usermode_handler' , $defIdx, '</td><td>' )
   . "</td></tr>\n";
 ?>
 

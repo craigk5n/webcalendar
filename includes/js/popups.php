@@ -80,12 +80,12 @@ function show(evt, name){
 
    scrollX=(typeof window.pageXOffset == "number")? window.pageXOffset:(document.documentElement && document.documentElement.scrollLeft)?document.documentElement.scrollLeft:(document.body && document.body.scrollLeft)?document.body.scrollLeft:window.scrollX;
    scrollY=(typeof window.pageYOffset == "number")? window.pageYOffset:(document.documentElement && document.documentElement.scrollTop)?document.documentElement.scrollTop:(document.body && document.body.scrollTop)?document.body.scrollTop:window.scrollY;
-   
+
    winW=(window.innerWidth)? window.innerWidth+window.pageXOffset-16:document.body.offsetWidth-20;
    winH=(window.innerHeight)?window.innerHeight+scrollY:document.body.offsetHeight+scrollY;
-   
+
    popupW = idiv.offsetWidth;
-   popupH = idiv.offsetHeight;   
+   popupH = idiv.offsetHeight;
 
    showtip(evt);
   }
@@ -115,7 +115,7 @@ function showtip(e){
   e = e? e: window.event;
   if(idiv) {
     if(e)   {
-      x=e.pageX?e.pageX:e.clientX?e.clientX + scrollX:0; 
+      x=e.pageX?e.pageX:e.clientX?e.clientX + scrollX:0;
       y=e.pageY?e.pageY:e.clientY?e.clientY + scrollY:0;
     } else {
       x=0; y=0;

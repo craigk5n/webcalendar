@@ -14,7 +14,7 @@
  * A list of Doc comment objects.
  */
 class CommentList extends DocList {
-  
+
   /**
    * Creates a new attachment list for the specified event.
    *

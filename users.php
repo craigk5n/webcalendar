@@ -27,7 +27,7 @@ if ( empty ( $login ) || $login == '__public__' ) {
 }
 
 $doUsers = $doGroups = $doNUCS = false;
-$doUsers = ( ! access_is_enabled () || 
+$doUsers = ( ! access_is_enabled () ||
   access_can_access_function ( ACCESS_USER_MANAGEMENT ) );
 $doRemotes = ( ! empty ( $REMOTES_ENABLED ) && $REMOTES_ENABLED == 'Y' &&
   ( ! access_is_enabled () || access_can_access_function ( ACCESS_IMPORT ) ) );
@@ -75,7 +75,7 @@ if ( $doUsers ) {
        . '(\'useriframe\');">' . translate ( 'Add New User' )
        . '</a><br />' : '' ) . '
           <ul>';
-  
+
     $userlist = user_get_users ();
     for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       if ( $userlist[$i]['cal_login'] != '__public__' )

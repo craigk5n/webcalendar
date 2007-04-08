@@ -19,12 +19,12 @@ $availCatStr = translate ( 'AVAILABLE CATEGORIES' );
 $availCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $availCatStr ) ) / 2 );
 if ( strlen ( $availCatStr ) < 30 )
   $availCatStr = $availCatFiller . $availCatStr . $availCatFiller ;
-  
+
 $entryCatStr = translate ( 'ENTRY CATEGORIES' );
 $entryCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $entryCatStr ) ) / 2 );
 if ( strlen ( $entryCatStr ) < 30 )
   $entryCatStr = $entryCatFiller . $entryCatStr . $entryCatFiller ;
-  
+
 print_header ( array ( 'js/catsel.php/false/' . $form ),
   '', '', true, false, true );
 
@@ -53,11 +53,11 @@ if ( ! empty ( $categories ) ) {
       echo '
             <option value="' . ( empty ( $V['cat_owner'] )
         ? "-$tmpStr" . '<sup>*</sup>' : $tmpStr ) . '</option>';
-    } 
-  } 
+    }
+  }
   echo '
           </select>';
-} 
+}
 echo '
         </td>
         <td valign="center"><input type="button" value=">>" onclick="selAdd ()"'
@@ -75,12 +75,12 @@ if ( strlen ( $cats ) ) {
     if ( empty ( $categories[abs ( $K )]['cat_owner'] ) ) {
       $neg_num = '-';
       $show_ast = '*';
-    } 
+    }
     echo '
             <option value="' . "$neg_num$K\" $disabled>"
      . $categories[abs ( $K )]['cat_name'] . $show_ast . '</option>';
-  } 
-} 
+  }
+}
 
 ob_end_flush ();
 

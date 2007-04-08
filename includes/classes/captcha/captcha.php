@@ -12,13 +12,13 @@
    [save] <forms> and alike. User input is veryfied with captcha::check().
    You should leave the sample COLLEGE.ttf next to this script, else you
    have to define the _FONT_DIR constant correctly. Use only 1 font type.
-   
+
    Creates temporary files, which however get purged automatically after
    four hours.
 
    Public Domain, available via http://freshmeat.net/p/captchaphp
 
-  Modified to work with WebCalendar by Ray Jones 
+  Modified to work with WebCalendar by Ray Jones
     Added translation function calls
     Formatting to display properly within our layout
     Disabled textual_riddle function
@@ -56,14 +56,14 @@ class captcha {
       }
    }
 
-   
+
    /* yields <input> fields html string (no complete form), with captcha
       image already embedded as data:-URI
    */
    function form() {
 
       #-- stop if user already verified
-      if ( ! empty ( $_COOKIE[CAPTCHA_COOKIE] ) && 
+      if ( ! empty ( $_COOKIE[CAPTCHA_COOKIE] ) &&
         $_COOKIE[CAPTCHA_COOKIE] == (int)(time()/1000000)) {
          return "";
       }
@@ -84,7 +84,7 @@ class captcha {
       else {
          $img_fn = CAPTCHA_TEMP_DIR . '/' . captcha::store_image($img) . '.jpg';
       }
-//echo $img_fn;      
+//echo $img_fn;
       #-- emit html form
       $html = '
         <div class="captcha">
@@ -92,7 +92,7 @@ class captcha {
             <legend>' . translate('Challenge/Response') .'</legend>
             <table border="0" summary="captcha input" width="400px"><tr>
               <td colspan="2"><small>'.$more.'</small></td></tr><tr>
-              <td><img name="captcha_image" id="captcha_image" src="' .$img_fn. 
+              <td><img name="captcha_image" id="captcha_image" src="' .$img_fn.
         '" height="60" width="200" alt="' .$alt. '" /></td>
               <td>'.$title. '<br /><input name="captcha_hash" type="hidden" value="'.$hash. '" />
                 <input name="captcha_input" type="text" size="7" maxlength="16" style="height:46px;font-size:34px; font-weight:bold;" />
@@ -170,7 +170,7 @@ class captcha {
       in front of colorful disturbing background
    */
    function image($phrase, $width=200, $height=60, $inverse=0, $maxsize=0xFFFFF) {
-   
+
       #-- initialize in-memory image with gd library
       srand(microtime()*21017);
       $img = imagecreatetruecolor($width, $height);
@@ -178,13 +178,13 @@ class captcha {
       imagefilledrectangle($img, 0,0, $width,$height, captcha::random_color($img, 222^$R, 255^$R));
       $c1 = rand(150^$R, 185^$R);
       $c2 = rand(195^$R, 230^$R);
-      
+
       #-- configuration
       $fonts = array(
         // "COLLEGE.ttf",
       );
       $fonts += glob(EWIKI_FONT_DIR."/*.ttf");
-      
+
       #-- encolour bg
       $wd = 20;
       $x = 0;
@@ -213,7 +213,7 @@ class captcha {
             break;
          }
       }
-      
+
       #-- more disturbing II, random letters
       $limit = rand(30,90);
       for ($n=0; $n<$limit; $n++) {
@@ -272,18 +272,18 @@ class captcha {
    function random_color($img, $a,$b) {
       return imagecolorallocate($img, rand($a,$b), rand($a,$b), rand($a,$b));
    }
-   
-   
+
+
    /* creates temporary file, returns basename */
    function store_image($data) {
       $dir = CAPTCHA_TEMP_DIR;
       $id = md5($data);
-   
+
       #-- create temp dir
       if (!file_exists($dir)) {
          mkdir($dir) && chmod($dir, 0777);
       }
-      
+
       #-- remove stale files
       if ($dh = opendir($dir)) {
          $t_kill = time() - CAPTCHA_TIMEOUT;
@@ -293,7 +293,7 @@ class captcha {
             }
          }
       }
-      
+
       #-- store file
       fwrite($f = fopen("$dir/$id.jpg", 'wb'), $data) && fclose($f);
       return($id);
@@ -302,9 +302,9 @@ class captcha {
    /* sends it */
    function get_image($id) {
       $dir = CAPTCHA_TEMP_DIR;
-      $fn = "$dir/$id.jpg";  
+      $fn = "$dir/$id.jpg";
       #-- find it
-      if (preg_match('/^\w+$/', $id)) {   
+      if (preg_match('/^\w+$/', $id)) {
          header('Content-Type: image/jpeg');
          readfile($fn);
          exit;

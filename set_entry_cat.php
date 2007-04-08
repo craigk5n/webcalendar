@@ -1,9 +1,9 @@
 <?php
-/* $Id$ 
+/* $Id$
  * Allows the setting of categories by each participant
  * of an event
  *
- * Multiple categories can be added by each participant and 
+ * Multiple categories can be added by each participant and
  * stored separately for that user. Global categories will be visible
  * by all participants, but can only be added/removed by the owner
  * in the edit-entry form.
@@ -36,7 +36,7 @@ if ( $res ) {
 } else {
   $error = db_error ();
 }
- 
+
 $cat_id = getPostValue ( 'cat_id' );
 $cat_ids = array();
 $cat_name = array();
@@ -51,7 +51,7 @@ if ( ! empty ( $categories ) ) {
   $catList = implode(',', $keys );
   sort ( $keys );
   if ( $keys[0] < 0 )
-    $globals_found = true;    
+    $globals_found = true;
 }
 
 // Get event name and make sure event exists
@@ -83,23 +83,23 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
    $names = array();
    $values = array();
    $names[] = 'cal_id';
-   $sql_params[]  = $id; 
-   $values[]  = '?'; 
+   $sql_params[]  = $id;
+   $values[]  = '?';
    $names[] = 'cat_id';
    $sql_params[]  = abs($categories[$i]);
-   $values[]  = '?'; 
+   $values[]  = '?';
    $names[] = 'cat_order';
    $sql_params[]  = ($i +1);
-   $values[]  = '?'; 
+   $values[]  = '?';
    $names[] = 'cat_owner';
-   $sql_params[]  = $login; 
-   $values[]  = '?'; 
+   $sql_params[]  = $login;
+   $values[]  = '?';
    $sql = 'INSERT INTO webcal_entry_categories ( ' . implode ( ', ', $names ) .
      ' ) VALUES ( ' . implode ( ', ', $values ) . ' )';
-   } 
+   }
  }
- $view_type = 'view_entry';  
-  
+ $view_type = 'view_entry';
+
  if ( ! dbi_execute ( $sql, $sql_params ) ) {
     $error = db_error ();
   } else {
@@ -121,7 +121,7 @@ $saveStr = translate( 'Save' );
 $INC = array('js/set_entry_cat.php/true');
 print_header($INC);
 
-if ( ! empty ( $error ) ) { 
+if ( ! empty ( $error ) ) {
   echo print_error ( $error );
 } else {
 echo <<<EOT

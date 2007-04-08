@@ -34,7 +34,7 @@ view_init ( $id );
 
 $printerStr = $unapprovedStr = '';
 if ( empty ( $friendly ) ) {
-  $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
+  $unapprovedStr = display_unapproved_events ( ( $is_assistant ||
     $is_nonuser_admin ? $user : $login ) );
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
@@ -87,19 +87,19 @@ $e_save = array ();
 $re_save = array ();
 for ( $i = 0; $i < count ( $viewusers ); $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' ); 
+  $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' );
   $re_save = array_merge($re_save, $repeated_events);
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $viewusers[$i], $startdate, $enddate );
   $e_save = array_merge($e_save, $events);
-} 
+}
 $events = array ();
 $repeated_events = array ();
 
 for ( $i = 0; $i < count ( $e_save ); $i++ ) {
   $should_add = 1;
   for ( $j = 0; $j < count ( $events ) && $should_add; $j++ ) {
-    if ( ! $e_save[$i]->getClone() && 
+    if ( ! $e_save[$i]->getClone() &&
       $e_save[$i]->getID() == $events[$j]->getID() ) {
       $should_add = 0;
     }
@@ -112,7 +112,7 @@ for ( $i = 0; $i < count ( $e_save ); $i++ ) {
 for ( $i = 0; $i < count ( $re_save ); $i++ ) {
   $should_add = 1;
   for ( $j = 0; $j < count ( $repeated_events ) && $should_add; $j++ ) {
-    if ( ! $re_save[$i]->getClone() && 
+    if ( ! $re_save[$i]->getClone() &&
       $re_save[$i]->getID() == $repeated_events[$j]->getID() ) {
       $should_add = 0;
     }
@@ -126,7 +126,7 @@ if ( $DISPLAY_SM_MONTH != 'N') {
   $prevMonth = display_small_month ( $prevmonth, $prevyear, true, true, 'prevmonth',
     "view_l.php?id=$id&amp;" );
   $nextMonth = display_small_month ( $nextmonth, $nextyear, true, true, 'nextmonth',
-    "view_l.php?id=$id&amp;" ); 
+    "view_l.php?id=$id&amp;" );
   $navStr = display_navigation( 'view_l', false, false );
 } else {
   $navStr = display_navigation( 'view_l', true, false );
@@ -138,7 +138,7 @@ echo <<<EOT
   <div class="title">
     <div  class="minical">
      {$prevMonth}{$nextMonth}
-    </div> 
+    </div>
     {$navStr}
     <span class="viewname"><br />{$view_name}</span>
   </div>

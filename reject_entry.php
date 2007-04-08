@@ -12,21 +12,21 @@ if ( $readonly == 'Y' ) {
 
 //give user a change to add comments to rejection email
 if ( ! empty ( $_POST ) ) {
-  $comments = getPostValue ( 'comments' ); 
+  $comments = getPostValue ( 'comments' );
 } else {
    $q_string = ( ! empty ( $_SERVER['QUERY_STRING'] ) ?  '?'. $_SERVER['QUERY_STRING'] : '' );
 
    print_header ();
    echo "<form action=\"reject_entry.php$q_string\" method=\"post\" name=\"add_comments\" >\n";
    echo "<table border=\"0\" cellspacing=\"5\">\n" .
-     "<tr><td align=\"center\" valign=\"bottom\"><h3>" . 
+     "<tr><td align=\"center\" valign=\"bottom\"><h3>" .
      translate ( 'Additional Comments (optional)' ) . "</h3></td><tr>\n";
    echo "<tr><td align=\"center\">" .
      "<textarea name=\"comments\" rows=\"5\" cols=\"60\" ></textarea></td></tr>\n";
-   echo "<tr><td align=\"center\"><input type=\"submit\" value=\"" . 
+   echo "<tr><td align=\"center\"><input type=\"submit\" value=\"" .
      translate ( 'Continue' ) . "\" /></tr></tr>\n<tr><td>";
    etranslate ( '(Your comments will be emailed to the other participants.)' );
-   echo "</td></tr></table></form>\n"; 
+   echo "</td></tr></table></form>\n";
    echo "</body>\n</html>";
    exit;
 }
@@ -80,7 +80,7 @@ if ( empty ( $error ) && $id > 0 ) {
     $send_user_mail = get_pref_setting ( $partlogin[$i],
       'EMAIL_EVENT_REJECTED' );
     //check UAC
-    $can_mail = 'Y'; 
+    $can_mail = 'Y';
     if ( access_is_enabled () ) {
       $can_mail = access_user_calendar ( 'email', $partlogin[$i], $login);
     }
@@ -110,7 +110,7 @@ if ( empty ( $error ) && $id > 0 ) {
         //DON'T change & to &amp; here. email will handle it
         $url = $SERVER_URL .  $view_type . '.php?id=' .  $id . '&em=1';
         if ( $htmlmail == 'Y' ) {
-          $url =  activate_urls ( $url ); 
+          $url =  activate_urls ( $url );
         }
         $msg .= "\n" . $url;
       }
@@ -120,7 +120,7 @@ if ( empty ( $error ) && $id > 0 ) {
       $from = $EMAIL_FALLBACK_FROM;
       if ( strlen ( $login_email ) ) $from = $login_email;
       //send via WebCalMailer class
-      $mail->WC_Send ( $login_fullname, $tempemail, 
+      $mail->WC_Send ( $login_fullname, $tempemail,
         $tempfullname, $name, $msg, $htmlmail, $from );
       activity_log ( $id, $login, $partlogin[$i], LOG_NOTIFICATION,
         "Rejected by $app_user" );

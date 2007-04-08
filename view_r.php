@@ -54,7 +54,7 @@ $can_add = true; // include '+' add icons in this view?
 // Set this to true to allow the table to be larger than the browser's
 // viewable area.
 // Only if you have more than 7 users, would you need to set this to
-// false for the day view. 
+// false for the day view.
 // On the week view, 3 or more users start to
 // get crowded and you may want to set this to true.
 $fit_to_window_day = false;
@@ -210,7 +210,7 @@ $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 // public access events cannot override $DISPLAY_UNAPPROVED
 if ( $user == '__public__' && $PUBLIC_ACCESS_VIEW_UNAPPROVED != 'Y' )
   $get_unapproved = false;
-  
+
 // Step through each user and load events for that user.
 // Store in $e_save[] (normal events) and $re_save[] (repeating events).
 $e_save = array ();
@@ -224,7 +224,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   $re_save[$i] = $repeated_events;
-  /* Pre-load the non-repeating events for quicker access 
+  /* Pre-load the non-repeating events for quicker access
       subtracting ONE_WEEK to allow cross-day events to display*/
   $events = read_events ( $viewusers[$i], $wkstart - ONE_WEEK, $wkend );
   $e_save[$i] = $events;
@@ -272,9 +272,9 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
 <?php
 $help = ( $can_add ? 'title="' .
     translate ( 'Double-click on empty cell to add new entry' ) . '"' : '' );
- 
+
 if ( ! $fit_to_window ) { ?>
-<table <?php echo $help;?> class="main" style="width:<?php 
+<table <?php echo $help;?> class="main" style="width:<?php
   echo $table_width;?>px;" width="<?php echo $table_width;?>">
 <?php } else { ?>
 <table <?php echo $help;?> class="main" width="100%">
@@ -290,12 +290,12 @@ if ( ! $fit_to_window ) { ?>
     $tdwf = sprintf ( "%0.2f", $tdw ) . "%";
   $todayYmd = date ( 'Ymd', $today );
   for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
-    if ( is_weekend ( $days[$i] ) && $DISPLAY_WEEKENDS == 'N' ) continue; 
+    if ( is_weekend ( $days[$i] ) && $DISPLAY_WEEKENDS == 'N' ) continue;
     if ( $todayYmd == date ( 'Ymd', $days[$i] ) )
       $class = 'class="today"';
     else if ( is_weekend ( $days[$i] ) )
       $class = 'class="weekend"';
-    else 
+    else
       $class = '';
     echo "<th $class style=\"width:$tdwf;\" colspan=\"$num_users\">";
     echo $header[$i];
@@ -463,12 +463,12 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 
 // untimed events first
 if ( $untimed_found || $show_untimed_row_always ) {
-  echo '<tr><th class="empty" width="' .$time_w. '" style="width:' 
+  echo '<tr><th class="empty" width="' .$time_w. '" style="width:'
    . $time_w . ';">&nbsp;</th>' . "\n";
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $dateYmd = date ( 'Ymd', $days[$d] );
     $is_weekend = is_weekend ( $days[$d] );
-    if ( $is_weekend  && $DISPLAY_WEEKENDS == 'N' ) continue; 
+    if ( $is_weekend  && $DISPLAY_WEEKENDS == 'N' ) continue;
     if ( $dateYmd == $todayYmd )
       $class .= 'class="today"';
     else if ( $is_weekend )
@@ -531,7 +531,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       if ( !empty ( $hour_arr[$i] ) && strlen ( $hour_arr[$i] ) ) {
         $class = 'class="hasevents"';
       }
-  
+
       if ( $rowspan_day[$u][$d] > 1 ) {
         // this might mean there's an overlap, or it could mean one event
         // ends at 11:15 and another starts at 11:30.
@@ -543,7 +543,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
         if ( empty ( $hour_arr[$i] ) ) {
           echo "<td $class ";
           if ( $can_add ) {
-            echo " ondblclick=\"dblclick( '$dateYmd', " 
+            echo " ondblclick=\"dblclick( '$dateYmd', "
               . "'$viewusers[$u]', '$time_h', '$time_m' )\"";
           }
           echo '>';
@@ -558,7 +558,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
             echo "<td $class ";
             echo ' rowspan="' . $rowspan_day[$u][$d] . '"';
             if ( $can_add ) {
-              echo " ondblclick=\"dblclick( '$dateYmd', " 
+              echo " ondblclick=\"dblclick( '$dateYmd', "
                 . "'$user', '$time_h', '$time_m' )\"";
             }
             echo '>';
@@ -570,7 +570,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
           } else {
             echo "<td $class ";
             if ( $can_add ) {
-              echo " ondblclick=\"dblclick( '$dateYmd', " 
+              echo " ondblclick=\"dblclick( '$dateYmd', "
                 . "'$user', '$time_h', '$time_m' )\"";
             }
             echo '>';
@@ -599,10 +599,10 @@ function dblclick ( date, name, hour, minute ) {
   minute = 0;
  if ( hour ){
    time = "&hour=" + hour + "&minute=" + minute;
- } else { 
+ } else {
    time = "&duration=1440";
  }
- var url = 'edit_entry.php?date=' + date 
+ var url = 'edit_entry.php?date=' + date
    + '&defusers=' + name + time;
 
  window.location.href  = url;

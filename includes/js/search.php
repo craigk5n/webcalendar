@@ -25,11 +25,11 @@ function selectUsers () {
 function toggleDateRange () {
   var i = document.searchformentry.date_filter.selectedIndex;
   if ( i == 3 ) {
-    makeVisible ( "startDate" ); 
-    makeVisible ( "endDate" ); 
-  } else { 
-    makeInvisible ( "startDate"); 
-    makeInvisible ( "endDate" ); 
+    makeVisible ( "startDate" );
+    makeVisible ( "endDate" );
+  } else {
+    makeInvisible ( "startDate");
+    makeInvisible ( "endDate" );
   }
 }
 

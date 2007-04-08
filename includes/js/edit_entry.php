@@ -29,10 +29,10 @@ function validate_and_submit () {
     alert ( "<?php etranslate( 'You have not entered a Brief Description', true)?>.");
     return false;
   }
-  if ( form.timetype && 
+  if ( form.timetype &&
     form.timetype.selectedIndex == 1 ) {
     h = parseInt (isNumeric( form.entry_hour.value ));
-    m = parseInt (isNumeric( form.entry_minute.value ));  
+    m = parseInt (isNumeric( form.entry_minute.value ));
 
     // Ask for confirmation for time of day if it is before the user's
     // preference for work hours.
@@ -46,7 +46,7 @@ function validate_and_submit () {
       return false;
    }
   }
- 
+
   // is there really a change?
   changed = false;
   for ( i = 0; i < form.elements.length; i++ ) {
@@ -77,7 +77,7 @@ function validate_and_submit () {
   if ( changed ) {
     form.entry_changed.value = "yes";
   }
- 
+
 //Add code to make HTMLArea code stick in TEXTAREA
  if (typeof editor != "undefined") editor._textArea.value = editor.getHTML();
 
@@ -100,7 +100,7 @@ function validate_and_submit () {
      elements['exceptions[]'].options[i].selected = true;
    }
  }
- 
+
  if ( form.due_day ) {
    //Check if Event due date is valid
    var d = form.due_day.selectedIndex;
@@ -115,7 +115,7 @@ function validate_and_submit () {
      form.due_day.focus ();
      return false;
    }
- } 
+ }
 
  //set byxxxList values for submission
  var bydayStr = '';
@@ -148,7 +148,7 @@ function validate_and_submit () {
  return true;
 }
 
-<?php if ( $GROUPS_ENABLED == 'Y' ) { 
+<?php if ( $GROUPS_ENABLED == 'Y' ) {
 ?>function selectUsers () {
   var user = "<?php echo $user ?>";
   // find id of user selection object
@@ -173,10 +173,10 @@ function validate_and_submit () {
     "width=500,height=500,resizable=yes,scrollbars=yes" );
 }
 <?php }
-// This function is called when the event type combo box 
+// This function is called when the event type combo box
  // is changed. If the user selectes "untimed event" or "all day event",
  // the times & duration fields are hidden.
- // If they change their mind & switch it back, the original 
+ // If they change their mind & switch it back, the original
  // values are restored for them
 ?>function timetype_handler () {
   if ( ! form.timetype )
@@ -219,7 +219,7 @@ function rpttype_handler (  ) {
   var val = form.rpttype.options[i].text;
   //alert ( "val " + i + " = " + val );
   //i == 0 none
-  //i == 1 daily 
+  //i == 1 daily
   //i == 2 weekly
   //i == 3,4,5 monthlyByDay, monthlyByDate, monthlyBySetPos
   //i == 6 yearly
@@ -233,7 +233,7 @@ function rpttype_handler (  ) {
   makeInvisible ( "weekdays_only" );
   makeInvisible ( "rptwkst" );
   //makeInvisible ( "rptday", true );
-  makeInvisible ( "rptbymonth", true );  
+  makeInvisible ( "rptbymonth", true );
   makeInvisible ( "rptbydayln", true );
   makeInvisible ( "rptbydayln1", true );
   makeInvisible ( "rptbydayln2", true );
@@ -241,9 +241,9 @@ function rpttype_handler (  ) {
   makeInvisible ( "rptbydayln4", true );
   makeInvisible ( "rptbydayextended", true );
   makeInvisible ( "rptbymonthdayextended", true );
-  makeInvisible ( "rptbysetpos", true ); 
-  makeInvisible ( "rptbyweekno", true ); 
-  makeInvisible ( "rptbyyearday", true ); 
+  makeInvisible ( "rptbysetpos", true );
+  makeInvisible ( "rptbyweekno", true );
+  makeInvisible ( "rptbyyearday", true );
   makeInvisible ( "rptexceptions", true );
   //makeInvisible ( "select_exceptions_not", true );
   if ( i > 0 && i < 7 ) {
@@ -254,61 +254,61 @@ function rpttype_handler (  ) {
     makeVisible ( "rptfreq", true );
     makeVisible ( "rptexceptions", true);
     makeVisible ( "rpt_mode" );
- 
+
     if ( i == 1 ) { //daily
-      makeVisible ( "weekdays_only" ); 
+      makeVisible ( "weekdays_only" );
     }
-  
+
     if ( i == 2 ) { //weekly
-      makeVisible ( "rptbydayextended", true ); 
+      makeVisible ( "rptbydayextended", true );
       if (expert ) {
-        makeVisible ( "rptwkst" );   
+        makeVisible ( "rptwkst" );
       }
     }
    if ( i == 3 ) { //monthly (by day)
      if (expert ) {
         makeVisible ( "rptwkst" );
-        makeVisible ( "rptbydayln", true ); 
+        makeVisible ( "rptbydayln", true );
         makeVisible ( "rptbydayln1", true );
-        makeVisible ( "rptbydayln2", true ); 
+        makeVisible ( "rptbydayln2", true );
         makeVisible ( "rptbydayln3", true );
-        makeVisible ( "rptbydayln4", true ); 
-     } 
+        makeVisible ( "rptbydayln4", true );
+     }
    }
-  
+
    if ( i == 4 ) { //monthly (by date)
-     if (expert ) { 
+     if (expert ) {
        makeVisible ( "rptbydayextended", true );
-       makeVisible ( "rptbymonthdayextended", true ); 
+       makeVisible ( "rptbymonthdayextended", true );
      }
    }
 
    if ( i == 5 ) { //monthly (by position)
       makeVisible ( "rptbysetpos", true );
    }
-   
+
   if ( i == 6 ) {  //yearly
-    if (expert ) { 
+    if (expert ) {
         makeVisible ( "rptwkst" );
-        makeVisible ( "rptbymonthdayextended", true ); 
-        makeVisible ( "rptbydayln", true ); 
+        makeVisible ( "rptbymonthdayextended", true );
+        makeVisible ( "rptbydayln", true );
         makeVisible ( "rptbydayln1", true );
-        makeVisible ( "rptbydayln2", true ); 
+        makeVisible ( "rptbydayln2", true );
         makeVisible ( "rptbydayln3", true );
-        makeVisible ( "rptbydayln4", true ); 
-        makeVisible ( "rptbyweekno", true ); 
-        makeVisible ( "rptbyyearday", true ); 
+        makeVisible ( "rptbydayln4", true );
+        makeVisible ( "rptbyweekno", true );
+        makeVisible ( "rptbyyearday", true );
     }
   }
   if (expert ) {
     makeVisible ( "rptbydayextended", true );
     makeInvisible ( "weekdays_only" );
-    makeVisible ( "rptbymonth", true ); 
+    makeVisible ( "rptbymonth", true );
   }
   }
-  if ( i == 7 ) { 
+  if ( i == 7 ) {
     makeVisible ( "rptexceptions", true);
-  }  
+  }
 }
 
 function rpttype_weekly () {
@@ -325,7 +325,7 @@ function rpttype_weekly () {
    var c = new Date(valy,valm,vald);
    var dayOfWeek = c.getDay();
    var rpt_day = bydayLabels[dayOfWeek];
-   elements[rpt_day].checked = true; 
+   elements[rpt_day].checked = true;
  }
 }
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
@@ -362,10 +362,10 @@ function showSchedule () {
     return false;
   }
   var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=yes';
-  var url = 'availability.php?users=' + users + 
-           '&form='  + 'editentryform' +     
-           '&year='  + form.year.value + 
-           '&month=' + form.month.value + 
+  var url = 'availability.php?users=' + users +
+           '&form='  + 'editentryform' +
+           '&year='  + form.year.value +
+           '&month=' + form.month.value +
            '&day='   + form.day.options[form.day.selectedIndex].text;
 
   if (sch_win != null && !sch_win.closed) {
@@ -398,17 +398,17 @@ function add_exception (which) {
  var isUnique = true;
  //Test to see if this date is already in the list
   with (form)
-   { 
+   {
       with (elements['exceptions[]'])
       {
          for (i = 0; i < length; i++)
          {
             if(options[i].text ==  "-" + exceptDate || options[i].text ==  "+" + exceptDate){
          isUnique = false;
-         } 
+         }
      }
    }
-  } 
+  }
  if ( isUnique ) {
     elements['exceptions[]'].options[elements['exceptions[]'].length]  = new Option( sign + exceptDate, sign + exceptDate );
     makeVisible ( "select_exceptions" );
@@ -417,14 +417,14 @@ function add_exception (which) {
 }
 function del_selected () {
    with (form)
-   { 
+   {
       with (elements['exceptions[]'])
       {
          for (i = 0; i < length; i++)
          {
             if(options[i].selected){
          options[i] = null;
-         } 
+         }
          } // end for loop
      if ( ! length ) {
        makeInvisible ( "select_exceptions" );
@@ -476,7 +476,7 @@ function toggle_bysetpos(ele){
   if (ele.value .length > 3) {
     //blank
   ele.value = tmp = ele.id.substr(8);
- 
+
   } else if (ele.value == ele.id.substr(8)) {
     //positive value
   ele.value =  tmp = parseInt(ele.id.substr(8)) -32;
@@ -494,17 +494,17 @@ function toggle_until() {
     return;
   }
  //use date
- elements['rpt_day'].disabled = 
+ elements['rpt_day'].disabled =
   elements['rpt_month'].disabled =
   elements['rpt_year'].disabled =
   elements['rpt_btn'].disabled =
   elements['rpt_hour'].disabled =
-  elements['rpt_minute'].disabled = 
+  elements['rpt_minute'].disabled =
   ( form.rpt_untilu.checked != true );
 
  //use count
- elements['rpt_count'].disabled = 
-  ( form.rpt_untilc.checked != true ); 
+ elements['rpt_count'].disabled =
+  ( form.rpt_untilc.checked != true );
  if ( elements['rpt_ampmA'] ) {
    if ( form.rpt_untilu.checked ) { //use until date
      document.getElementById('rpt_ampmA').disabled = false;
@@ -525,7 +525,7 @@ function toggle_rem_when() {
    if ( elements['rem_when_date'].checked == true ) {
    document.getElementById('reminder_ampmA').disabled = false;
    document.getElementById('reminder_ampmP').disabled = false;
-  } else { 
+  } else {
    document.getElementById('reminder_ampmA').disabled = 'disabled';
    document.getElementById('reminder_ampmP').disabled = 'disabled';
   }
@@ -536,15 +536,15 @@ function toggle_rem_when() {
    elements['rem_beforeY'].disabled =
    elements['rem_relatedS'].disabled =
    elements['rem_beforeN'].disabled =
-   elements['rem_relatedE'].disabled = 
+   elements['rem_relatedE'].disabled =
    elements['rem_when_date'].checked;
 
  elements['reminder_day'].disabled =
    elements['reminder_month'].disabled =
    elements['reminder_year'].disabled =
-   elements['reminder_btn'].disabled = 
+   elements['reminder_btn'].disabled =
    elements['reminder_hour'].disabled =
-   elements['reminder_minute'].disabled = 
+   elements['reminder_minute'].disabled =
   ( elements['rem_when_date'].checked != true );
 }
 
@@ -556,8 +556,8 @@ function toggle_reminders() {
   toggle_rem_when();
   makeInvisible ( "reminder_when",true );
   makeInvisible ( "reminder_repeat", true );
-  if ( elements['reminderYes'].checked == true ) { 
-   makeVisible ( "reminder_when", true ); 
+  if ( elements['reminderYes'].checked == true ) {
+   makeVisible ( "reminder_when", true );
    makeVisible ( "reminder_repeat", true );
   }
 }
@@ -565,7 +565,7 @@ function toggle_reminders() {
 function toggle_rem_rep(){
  elements['rem_rep_days'].disabled =
  elements['rem_rep_hours'].disabled =
- elements['rem_rep_minutes'].disabled = 
+ elements['rem_rep_minutes'].disabled =
  ( elements['rem_rep_count'].value == 0 );
 }
 
@@ -599,14 +599,14 @@ function displayInValid(myvar)
 function isNumeric(sText)
 {
    //allow blank values. these will become 0
-   if ( sText.length == 0 ) 
+   if ( sText.length == 0 )
      return sText;
    var validChars = "0123456789";
    var Char;
-   for (i = 0; i < sText.length && sText != 99; i++) 
-   { 
-      Char = sText.charAt(i); 
-      if (validChars.indexOf(Char) == -1) 
+   for (i = 0; i < sText.length && sText != 99; i++)
+   {
+      Char = sText.charAt(i);
+      if (validChars.indexOf(Char) == -1)
       {
         sText = 99;
       }
@@ -629,7 +629,7 @@ function onLoad () {
   form = document.editentryform;
   elements = document.editentryform.elements;
   elementlength = document.editentryform.elements.length;
-  
+
   //initialize byxxxAr Objects
   if ( form.bydayList ) {
     bydayList = form.bydayList.value;
@@ -642,7 +642,7 @@ function onLoad () {
       bydayAr[bydayList] = bydayList;
     }
   }
-  
+
   if ( form.bymonthdayList ) {
     bymonthdayList = form.bymonthdayList.value;
     if ( bymonthdayList.search( /,/ ) > -1 ) {

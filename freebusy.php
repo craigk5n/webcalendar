@@ -45,20 +45,20 @@
  require_once 'includes/classes/WebCalendar.class';
  require_once 'includes/classes/Event.class';
  require_once 'includes/classes/RptEvent.class';
-    
- $WebCalendar =& new WebCalendar ( __FILE__ );    
-     
- include 'includes/translate.php';    
- include 'includes/config.php';    
- include 'includes/dbi4php.php';    
- include 'includes/functions.php';    
-     
- $WebCalendar->initializeFirstPhase();    
-     
- include "includes/$user_inc";    
- include 'includes/validate.php';    
+
+ $WebCalendar =& new WebCalendar ( __FILE__ );
+
+ include 'includes/translate.php';
+ include 'includes/config.php';
+ include 'includes/dbi4php.php';
+ include 'includes/functions.php';
+
+ $WebCalendar->initializeFirstPhase();
+
+ include "includes/$user_inc";
+ include 'includes/validate.php';
  include 'includes/site_extras.php';
- 
+
  include 'includes/xcal.php';
 
  $WebCalendar->initializeSecondPhase();
@@ -66,7 +66,7 @@
 // Calculate username.
 //if using http_auth, use those credentials
 if ( $use_http_auth && empty ( $user ) ) {
-  $user = $login; 
+  $user = $login;
 }
 if ( empty ( $user ) ) {
   $arr = explode ( '/', $PHP_SELF );
@@ -77,7 +77,7 @@ if ( empty ( $user ) ) {
 
 if ( $user == 'public' )
   $user = '__public__';
-    
+
 load_global_settings ();
 
 

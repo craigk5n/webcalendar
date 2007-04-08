@@ -35,7 +35,7 @@ if ( ! empty ( $action ) && $action == 'logout' ) {
 } else if (  empty ( $return_path ) ) {
   // see if a return path was set
   $return_path = get_last_view();
-  if ( ! empty ( $return_path ) ) 
+  if ( ! empty ( $return_path ) )
     SetCookie ( 'webcalendar_last_view', '', 0 );
 }
 
@@ -66,7 +66,7 @@ function myOnLoad() {
   ?>
 }
 </script>
-<?php 
+<?php
 }
   echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login=__public__" />';
 
@@ -88,46 +88,46 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 
 <?php
 if ( ! empty ( $error ) ) {
-  echo '<span style="color:#FF0000; font-weight:bold;">' . 
+  echo '<span style="color:#FF0000; font-weight:bold;">' .
     translate( 'Error' ) . ": $error</span><br />\n";
 } else {
   echo "<br />\n";
 }
 ?>
-<form name="login_form" id="login" action="<?php echo $app_login_page['action'] ?>" method="post" 
+<form name="login_form" id="login" action="<?php echo $app_login_page['action'] ?>" method="post"
   onsubmit="return valid_form(this)">
-<input type="hidden" name="<?php echo $app_login_page['return'] ?>" 
+<input type="hidden" name="<?php echo $app_login_page['return'] ?>"
   value="<?php echo $login_return_path ?>" />
 
 <table cellpadding="10" align="center">
 <tr><td rowspan="2">
  <img src="images/login.gif" alt="Login" /></td><td align="right">
  <label for="user"><?php etranslate( 'Username' )?>:</label></td><td>
- <input name="<?php echo $app_login_page['username'] ?>" id="user" size="15" maxlength="25" 
+ <input name="<?php echo $app_login_page['username'] ?>" id="user" size="15" maxlength="25"
    tabindex="1" />
 </td></tr>
 <tr><td class"alignright">
  <label for="password"><?php etranslate( 'Password' )?>:</label></td><td>
- <input name="<?php echo $app_login_page['password'] ?>" id="password" type="password" size="15" 
+ <input name="<?php echo $app_login_page['password'] ?>" id="password" type="password" size="15"
    maxlength="30" tabindex="2" />
 </td></tr>
 <?php if (! empty (  $app_login_page['remember'] ) ) { ?>
 <tr><td colspan="3" style="font-size: 10px;">
- <input type="checkbox" name="<?php echo $app_login_page['remember'] ?>" id="remember" tabindex="3" 
+ <input type="checkbox" name="<?php echo $app_login_page['remember'] ?>" id="remember" tabindex="3"
    value="yes" <?php if ( ! empty ( $remember ) && $remember == 'yes' ) {
      echo 'checked="checked"'; }?> /><label for="remember">&nbsp;
    <?php etranslate( 'Save login via cookies so I dont have to login next time.' )?></label>
 </td></tr>
 <?php } ?>
 <tr><td colspan="4" class="aligncenter">
-<?php 
-  if (! empty (  $app_login_page['hidden'] ) ) { 
+<?php
+  if (! empty (  $app_login_page['hidden'] ) ) {
     foreach ( $app_login_page['hidden'] as $key => $val ) {
       echo "<input type=\"hidden\" name=\"$key\" value=\"$val\" />\n";
     }
   }
 ?>
- <input type="submit" name="<?php echo $app_login_page['submit'] ?>" value="<?php 
+ <input type="submit" name="<?php echo $app_login_page['submit'] ?>" value="<?php
   etranslate( 'Login' )?>" tabindex="4" />
 </td></tr>
 </table>

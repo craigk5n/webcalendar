@@ -82,7 +82,7 @@ if ( $login != $user ) {
 
 // Make sure this user has enabled email reminders.
 // if ( $EMAIL_REMINDER == 'N' ) {
-// $out .= str_replace ('XXX', $user, 
+// $out .= str_replace ('XXX', $user,
 // translate ( 'Error Email reminders disabled for user XXX.' ) );
 // dbi_close ( $c );
 // exit;

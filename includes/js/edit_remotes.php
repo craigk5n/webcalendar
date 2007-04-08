@@ -1,4 +1,4 @@
-<?php /* $Id$  */ 
+<?php /* $Id$  */
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 ?>
 var validform = true;
@@ -9,17 +9,17 @@ function valid_form ( form ) {
     err += "<?php etranslate( 'Invalid color', true)?>.\n";
 
   if ( err.length > 0 ) {
-    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + err + "\n\n<?php 
+    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + err + "\n\n<?php
   etranslate( 'Color format should be RRGGBB.', true)?>" );
     return false;
   }
   if (  ! form.nurl.value ) {
-    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php 
+    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php
       etranslate( 'URL cannot be blank.', true)?>" );
-    return false;  
+    return false;
   }
   check_name();
-  
+
   return validform;
 
 }
@@ -37,8 +37,8 @@ function check_name() {
   var url = 'ajax.php';
   var params = 'page=edit_remotes&name=' + $F('nid');
   var ajax = new Ajax.Request(url,
-    {method: 'post', 
-    parameters: params, 
+    {method: 'post',
+    parameters: params,
     onComplete: showResponse});
 }
 

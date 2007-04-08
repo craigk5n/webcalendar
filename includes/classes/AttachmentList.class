@@ -14,7 +14,7 @@
  * A list of Doc attachment objects.
  */
 class AttachmentList extends DocList {
-  
+
   /**
    * Creates a new attachment list for the specified event.
    *

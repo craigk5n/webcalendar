@@ -59,13 +59,13 @@ if ( empty ( $id ) )
 if ( ! empty ( $id ) && empty ( $error ) ) {
   if ( $is_admin || $is_nonuser_admin || $is_assistant )
     $can_view = true;
- 
+
   if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) )
-    $error = str_replace ( 'XXX', $id, $invalidIDStr ); 
+    $error = str_replace ( 'XXX', $id, $invalidIDStr );
 
   if ( empty ( $error ) ) {
     // is this user a participant or the creator of the event?
-    $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu 
+    $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
       WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
       AND (we.cal_create_by = ? OR weu.cal_login = ?)';
     $res = dbi_execute ( $sql, array( $id, $login, $login ) );
@@ -107,7 +107,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       $my_users = get_my_users ();
       $cnt = count ( $my_users );
       if ( is_array ( $my_users ) && $cnt ) {
-        $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu 
+        $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
           WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
           AND weu.cal_login IN ( ';
         $query_params = array();
@@ -142,7 +142,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
   } else {
     $hide_details = false;
   }
-  
+
   // If they still cannot view, make sure they are not looking at a nonuser
   // calendar event where the nonuser is the _only_ participant.
   if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
@@ -172,7 +172,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     if ( $found_nonuser_cal && ! $found_reg_user ) {
       $can_view = true;
     }
-  } 
+  }
   if ( empty ( $error ) && ! $can_view ) {
     $error = print_not_auth ();
   }

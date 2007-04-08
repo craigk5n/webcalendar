@@ -69,7 +69,7 @@ $app_login_page['return'] = 'return';
 $app_login_page['hidden']['op2'] = 'login';
 
 // What is the full URL to the logout page (including http:// or https://)
-$app_logout_page = $app_config['live_site'].'/index.php?option=logout&op2=logout'; 
+$app_logout_page = $app_config['live_site'].'/index.php?option=logout&op2=logout';
 
 // Name of database containing the app's tables
 $app_db = $app_config['db'];
@@ -89,8 +89,8 @@ unset( $app_config );
 
 /********************************************************************/
 
-//  Checks to see if the session has a user associated with it and 
-//  if the session is timed out 
+//  Checks to see if the session has a user associated with it and
+//  if the session is timed out
 //  returns: login id
 function app_active_session($sid) {
   global $app_user_table, $app_session_table, $app_settings_table, $app_sid_lifetime;
@@ -136,22 +136,22 @@ function app_get_sid( $id ) {
       break;
 
     case 1:
-    // slightly reduced security - 3rd level IP authentication for those behind IP Proxy 
+    // slightly reduced security - 3rd level IP authentication for those behind IP Proxy
       $remote_addr   = explode( '.', $_SERVER['REMOTE_ADDR'] );
       $ip        = $remote_addr[0] .'.'. $remote_addr[1] .'.'. $remote_addr[2];
       $value       = md5( $app_secret . md5( $id . $ip . $browser ) );
       break;
-    
+
     default:
     // Highest security level - new default for 1.0.8 and beyond
       $ip        = $_SERVER['REMOTE_ADDR'];
       $value       = md5( $app_secret . md5( $id . $ip . $browser ) );
       break;
-  }    
+  }
   return $value;
 }
 
-//  Updates the session table to set the last access time to now 
+//  Updates the session table to set the last access time to now
 function app_update_session($sid) {
   global $app_session_table;
   global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
@@ -267,12 +267,12 @@ function user_load_variables ( $login, $prefix ) {
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
     return  $cached_user_var[$login][$prefix];
   $cached_user_var = array();
-  
+
   if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }
-  
+
   if ( $login == '__public__' ) {
     $GLOBALS[$prefix . 'login'] = $login;
     $GLOBALS[$prefix . 'firstname'] = '';
@@ -286,7 +286,7 @@ function user_load_variables ( $login, $prefix ) {
 
   // if application is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
-  
+
   $sql = "SELECT id, name, username, email FROM $app_user_table WHERE username = '$login'";
 
   $res = dbi_query ( $sql );
@@ -337,9 +337,9 @@ function user_logged_in() {
   return $login;
 }
 
-/********************************************************************* 
+/*********************************************************************
  *
- *        Stuff that should stay the same for all user-app files 
+ *        Stuff that should stay the same for all user-app files
  *
  ********************************************************************/
 
@@ -354,7 +354,7 @@ $admin_can_add_user = false;
 // Allow admin to delete user from webcal tables (not application)
 $admin_can_delete_user = true;
 
-// Redirect the user to the login-app.php page 
+// Redirect the user to the login-app.php page
 function app_login_screen( $return ) {
   global $SERVER_URL;
   header("Location: {$SERVER_URL}login-app.php?return_path={$return}");

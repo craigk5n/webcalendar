@@ -173,7 +173,7 @@ function delete_events ( $nid ) {
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) && $row[0] == 1 )
         $delete_em[] = $events[$i];
-      
+
       dbi_free_result ( $res );
     }
   }

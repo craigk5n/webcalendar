@@ -39,7 +39,7 @@ class DocList {
       return null;
     return $this->_arr[$ind];
   }
-  
+
   /**
    * Creates a new Doc list for the specified event.  This list
    * will be for either attachments ($type='A') or

@@ -6,7 +6,7 @@ class TestOfFunctions extends UnitTestCase {
   function testAddDuration () {
     $this->assertEqual ( add_duration ( '123456', '50' ), '132400' );
     $this->assertNotEqual ( add_duration ( '123456', '1490' ), '132400' );
-  } 
-} 
+  }
+}
 
 ?>

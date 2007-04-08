@@ -75,10 +75,10 @@ if ( $single_user == 'N' ) {
   $fullnameStr = $fullname;
   }
 }
-$asstModeStr = ( $is_assistant ? '-- ' . 
+$asstModeStr = ( $is_assistant ? '-- ' .
   translate( 'Assistant mode' ) . ' --' : '' );
 if ( empty ( $friendly ) ) {
-  $unapprovedStr = display_unapproved_events ( ( $is_assistant || 
+  $unapprovedStr = display_unapproved_events ( ( $is_assistant ||
     $is_nonuser_admin ? $user : $login ) );
   $printerStr = generate_printer_friendly ( 'year.php' );
 } else {
@@ -101,7 +101,7 @@ echo <<<EOT
     {$catSelectStr}
   </div>
   <br />
- 
+
   <div align="center">
   <table id="monthgrid">
     <tr>

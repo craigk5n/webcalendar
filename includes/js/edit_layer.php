@@ -1,4 +1,4 @@
-<?php /* $Id$  */ 
+<?php /* $Id$  */
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 ?>
 function valid_form ( form ) {
@@ -7,7 +7,7 @@ function valid_form ( form ) {
     err += "<?php etranslate( 'Invalid color', true)?>.\n";
 
   if ( err.length > 0 ) {
-    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + err + "\n\n<?php 
+    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + err + "\n\n<?php
   etranslate( 'Color format should be RRGGBB.', true)?>" );
     return false;
   }
@@ -27,9 +27,9 @@ function show_others () {
 }
 
 function deleteLayer( loc ) {
-  if ( confirm('<?php 
+  if ( confirm('<?php
      echo str_replace ( 'XXX', translate ( 'layer', true ),
       translate ( 'Are you sure you want to delete this XXX?', true ) )?>' ) )
     location.href = loc;
-  return false; 
+  return false;
 }

@@ -301,7 +301,7 @@ class Event {
   function getTime () {
     return $this->_time;
   }
-  
+
   /**
    * Gets the event's modified date
    *
@@ -323,29 +323,29 @@ class Event {
   function getModTime () {
     return $this->_modtime;
   }
- 
+
   /**
-   * Gets the task due time 
+   * Gets the task due time
    *
    * @return string The task due time (in HHMMSS format)
    *
    * @access public
    */
   function getDueTime () {
-      return $this->_dueTime;  
+      return $this->_dueTime;
   }
- 
+
   /**
-   * Gets the task due date 
+   * Gets the task due date
    *
    * @return string The task due date (in YYYYMMDD format)
    *
    * @access public
    */
   function getDueDate () {
-      return $this->_dueDate;  
+      return $this->_dueDate;
   }
- 
+
      /**
    * Gets the task's due date/time as a Unix timestamp
    *
@@ -355,7 +355,7 @@ class Event {
    */
   function getDueDateTimeTS () {
     $year = substr ( $this->_dueDate, 0, 4 );
-    $month = substr ( $this->_dueDate, 4, 2 ); 
+    $month = substr ( $this->_dueDate, 4, 2 );
     $day = substr ( $this->_dueDate, 6, 2 );
   if ( $this->_time > 0 ) {
     $h = (int) ( $this->_dueTime / 10000 );
@@ -366,7 +366,7 @@ class Event {
     $this->_DueDateTime = gmmktime ( $h, $m, 0, $month, $day, $year );
     return $this->_DueDateTime;
   }
-   
+
     /**
    * Gets the event's date/time
    *
@@ -389,7 +389,7 @@ class Event {
    */
   function getDateTimeTS () {
     $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 ); 
+    $month = substr ( $this->_date, 4, 2 );
     $day = substr ( $this->_date, 6, 2 );
   if ( $this->_time > 0 ) {
     $h = (int) ( $this->_time / 10000 );
@@ -400,7 +400,7 @@ class Event {
     $this->_DateTime = gmmktime ( $h, $m, 0, $month, $day, $year );
     return $this->_DateTime;
   }
- 
+
   /**
    * Gets the event's ID
    *
@@ -477,7 +477,7 @@ class Event {
   function getOwner () {
     return $this->_owner;
   }
-  
+
   /**
    * Gets the event's category ID
    *
@@ -510,7 +510,7 @@ class Event {
   function getCalType () {
     return $this->_calType;
   }
-  
+
   /**
    * Gets the event's type name
    *
@@ -526,10 +526,10 @@ class Event {
     if ( $this->_calType == 'T' || $this->_calType == 'N' )
       $this->_calTypeName = 'task';
     if ( $this->_calType == 'J' || $this->_calType == 'O' )
-      $this->_calTypeName = 'journal';      
+      $this->_calTypeName = 'journal';
     return $this->_calTypeName;
   }
-  
+
   /**
    * Gets the event's location
    *
@@ -580,7 +580,7 @@ class Event {
    */
   function getEndDate () {
     $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 ); 
+    $month = substr ( $this->_date, 4, 2 );
     $day = substr ( $this->_date, 6, 2 );
     if ( $this->_time > 0 ) {
       $h = (int) ( $this->_time / 10000 );
@@ -592,7 +592,7 @@ class Event {
     $this->_endDate = gmdate ( "Ymd", gmmktime ( $h, $m + $dur, 0, $month, $day, $year ) );
     return $this->_endDate;
   }
-  
+
    /**
    * Gets the event's end time
    *
@@ -602,7 +602,7 @@ class Event {
    */
   function getEndTime () {
     $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 ); 
+    $month = substr ( $this->_date, 4, 2 );
     $day = substr ( $this->_date, 6, 2 );
     if ( $this->_time > 0 ) {
       $h = (int) ( $this->_time / 10000 );
@@ -614,7 +614,7 @@ class Event {
     $this->_endTime = gmdate ( "His", gmmktime ( $h, $m + $dur, 0, $month, $day, $year ) );
     return $this->_endTime;
   }
- 
+
  /**
    * Gets the event's end datetime
    *
@@ -636,7 +636,7 @@ class Event {
    */
   function getEndDateTimeTS () {
     $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 ); 
+    $month = substr ( $this->_date, 4, 2 );
     $day = substr ( $this->_date, 6, 2 );
     if ( $this->_time > 0 ) {
       $h = (int) ( $this->_time / 10000 );
@@ -648,64 +648,64 @@ class Event {
     $this->_endDateTime = gmmktime ( $h, $m + $dur, 0, $month, $day, $year );
     return $this->_endDateTime;
   }
-    
+
  /**
-   * Determine if event is All Day 
+   * Determine if event is All Day
    *
    * @return bool True if event is All Day
    *
    * @access public
    */
   function isAllDay () {
-   $this->_allDay = ( $this->_time == 0 && $this->_duration == 1440? true : false); 
+   $this->_allDay = ( $this->_time == 0 && $this->_duration == 1440? true : false);
     return $this->_allDay;
   }
 
  /**
-   * Determine if event is Timed 
+   * Determine if event is Timed
    *
    * @return bool True if event is Timed
    *
    * @access public
    */
   function isTimed () {
-   $this->_timed = ( $this->_time > 0 || ( $this->_time == 0 
-     && $this->_duration != 1440 )? true : false); 
+   $this->_timed = ( $this->_time > 0 || ( $this->_time == 0
+     && $this->_duration != 1440 )? true : false);
     return $this->_timed;
   }
- 
+
  /**
-   * Determine if event is Untimed 
+   * Determine if event is Untimed
    *
    * @return bool True if event is Untimed
    *
    * @access public
    */
   function isUntimed () {
-   $this->_untimed = ( $this->_time == -1 && $this->_duration == 0? true : false); 
+   $this->_untimed = ( $this->_time == -1 && $this->_duration == 0? true : false);
     return $this->_untimed;
   }
 
  /**
-   * Set cal_duration 
+   * Set cal_duration
    *
    *
    * @access public
    */
   function setDuration ( $duration ) {
-    $this->_duration = $duration; 
+    $this->_duration = $duration;
   }
 
  /**
-   * Set cal_time 
+   * Set cal_time
    *
    *
    * @access public
    */
   function setTime ( $time ) {
-    $this->_time = $time; 
-  }  
-  
+    $this->_time = $time;
+  }
+
  /**
    * Set cal_date
    *
@@ -713,7 +713,7 @@ class Event {
    * @access public
    */
   function setDate ( $date ) {
-    $this->_date = $date; 
+    $this->_date = $date;
   }
  /**
    * Set cal_name
@@ -722,7 +722,7 @@ class Event {
    * @access public
    */
   function setName ( $name ) {
-    $this->_name = $name; 
+    $this->_name = $name;
   }
  /**
    * Get clone
@@ -731,7 +731,7 @@ class Event {
    * @access public
    */
   function getClone () {
-    return $this->_clone; 
+    return $this->_clone;
   }
  /**
    * Set clone
@@ -740,7 +740,7 @@ class Event {
    * @access public
    */
   function setClone ( $date ) {
-    $this->_clone = $date; 
+    $this->_clone = $date;
   }
 }
 ?>

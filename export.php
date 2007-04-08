@@ -101,7 +101,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
               </tr>
               <tr>
                 <td><label>' . translate ( 'Modified since' ) . ':</label></td>
-                <td>' . date_selection ( 'mod', mktime ( 0, 0, 0, 
+                <td>' . date_selection ( 'mod', mktime ( 0, 0, 0,
                   $datem, date ( 'd' ) - 7, $dateY ) ) . '</td>
               </tr>
             </table>

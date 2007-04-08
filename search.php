@@ -46,12 +46,12 @@ echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
         <td><input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
         <input type="submit" value="' . $searchStr . '" /></td></tr>';
 
-echo '<tr height="30px"><td>&nbsp;</td><td valign="top">(' . 
+echo '<tr height="30px"><td>&nbsp;</td><td valign="top">(' .
   translate ( 'Enter % for all entries' ) . ')</td></tr>';
 
 if ( is_array ( $categories ) && $show_advanced ) {
   echo '
-        <tr id="catfilter" style="visibility:' . $avdStyle[$show_advanced] 
+        <tr id="catfilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
           <td><label for="cat_filter">' . translate ( 'Categories' )
    . ':</label></td>
@@ -73,9 +73,9 @@ if ( is_array ( $categories ) && $show_advanced ) {
 }
 if (  count ( $site_extras ) > 0 ) {
   echo '
-        <tr id="extrafilter" style="visibility:' . $avdStyle[$show_advanced] 
+        <tr id="extrafilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
-          <td><label for="extra_filter">' 
+          <td><label for="extra_filter">'
    . translate ( 'Include' ) . '<br />' . translate ( 'Site Extras' )
    . ':</label></td>
           <td><input type="checkbox" name="extra_filter" value="Y" />
@@ -84,7 +84,7 @@ if (  count ( $site_extras ) > 0 ) {
 if (  $show_advanced ) {
   $dateYmd = date ( 'Ymd' );
   echo '
-        <tr id="datefilter" style="visibility:' . $avdStyle[$show_advanced] 
+        <tr id="datefilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
           <td><label for="date_filter">' . translate ('Filter by Date')
    . ':</label></td>
@@ -131,11 +131,11 @@ if ( $show_others ) {
     $size = $cnt;
 
   echo '
-      <tr id="advlink" style="visibility:' . $avdStyle[!$show_advanced] 
+      <tr id="advlink" style="visibility:' . $avdStyle[!$show_advanced]
    . ';"><td colspan="2"><a title="' . $advSearchStr
    . '" href="search.php?adv=1">'
    . $advSearchStr . '</a></td></tr>
-        <tr  id="adv" style="visibility:' . $avdStyle[$show_advanced] 
+        <tr  id="adv" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
           <td class="aligntop"><label for="usersadv">'
    . translate ( 'Users' ) . ':&nbsp;</label></td>

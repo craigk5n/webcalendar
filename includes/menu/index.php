@@ -443,7 +443,7 @@ if ( ( $login != '__public__' || $reports_linkcnt > 0 ) && $menuConfig['Reports'
     jscMenu_close ();
   }
 
-  if ( $login != '__public__' && ! $is_nonuser && $REPORTS_ENABLED == 'Y' && 
+  if ( $login != '__public__' && ! $is_nonuser && $REPORTS_ENABLED == 'Y' &&
     $readonly != 'Y' && $menuConfig['Manage Reports'] && ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_REPORT, $user ) ) ) {
     jscMenu_divider ();
@@ -530,7 +530,7 @@ if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' &&
       jscMenu_item ( 'access.png', 'User Access Control', 'access.php' );
 
     if ( $is_admin && $menuConfig['User Manager'] && ( ( !access_is_enabled () ||
-      ( access_is_enabled () && 
+      ( access_is_enabled () &&
       access_can_access_function ( ACCESS_USER_MANAGEMENT, $user ) ) ) ) )
       jscMenu_item ( 'user.png', 'User Manager', 'users.php' );
   }

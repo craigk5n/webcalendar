@@ -283,7 +283,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
     'cal_allow_nav, cal_cat_id, cal_include_empty, cal_update_date ' .
     'FROM webcal_report WHERE cal_report_id = ?', array ( $report_id ) );
   if ( $res ) {
-    if ( $row = dbi_fetch_row ( $res ) ) { 
+    if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[2] != 'Y' && $login != $row[0] ) {
         $error = print_not_auth () . '.';
       } else {
@@ -355,11 +355,11 @@ if ( empty ( $error ) && empty ( $list ) ) {
   }
 }
 
-$include_header = ( ! empty ( $report_include_header ) && 
+$include_header = ( ! empty ( $report_include_header ) &&
   $report_include_header == 'Y'? true : false );
 
 if ( $include_header || ! empty ( $list ) || ! empty ( $error ) ) {
-  $printerStr = ( ! empty ( $report_id ) 
+  $printerStr = ( ! empty ( $report_id )
     ? generate_printer_friendly ( 'report.php' ) : '' );
   print_header();
 }
@@ -452,7 +452,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
         $event_str .= event_to_text ( $ev[$i], $dateYmd );
       }
     }
-  
+
     if ( ! empty ( $event_str ) || $report_include_empty == 'Y' ||
       $report_time_range < 10 ) {
       $date_str = date_to_str ( $dateYmd, '', false );
@@ -476,7 +476,7 @@ $nextStr = translate ( 'Next' );
 $reportNameStr = ( $include_header ? '<h2>' . $report_name . '</h2>' : '' );
 
 if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
-  $prevLinkStr =  '<a class="nav" title="' . $prevStr . '" href="report.php?report_id=' . 
+  $prevLinkStr =  '<a class="nav" title="' . $prevStr . '" href="report.php?report_id=' .
     $report_id .$u_url . "&amp;offset=$prev\">" . $prevStr . '</a>';
   $nextLinkStr = '<a  class="nav" title="' . $nextStr . '" href="report.php?report_id=' .
     $report_id . $u_url . "&amp;offset=$next\">" . $nextStr . '</a>';
@@ -485,10 +485,10 @@ if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
 }
 if ( ! empty ( $list ) ) {
   $textStr = '';
-  $manageStr = translate ( 'Manage Reports' ); 
+  $manageStr = translate ( 'Manage Reports' );
   if ( $updating_public ) {
     $manageStr = translate ( $PUBLIC_ACCESS_FULLNAME) . ' ' . $manageStr;
-  } 
+  }
   $adminLinkStr = display_admin_link();
   $trailerStr = print_trailer ();
 } else {
@@ -509,8 +509,8 @@ echo <<<EOT
   {$list}
   {$textStr}
   {$printerStr}
-  
+
   {$trailerStr}
-  
+
 EOT;
 ?>

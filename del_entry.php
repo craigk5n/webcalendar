@@ -24,7 +24,7 @@ if ( $id > 0 ) {
     $query_params = array();
     $query_params[] = $id;
     $sqlparm = ( $is_assistant ? $user : $login );
-    $sql = 'SELECT we.cal_id, we.cal_type FROM webcal_entry we, webcal_entry_user weu 
+    $sql = 'SELECT we.cal_id, we.cal_type FROM webcal_entry we, webcal_entry_user weu
       WHERE we.cal_id = weu.cal_id AND we.cal_id = ? ';
     if ( ! $is_admin ) {
       $sql .= ' AND (we.cal_create_by = ? OR weu.cal_login = ? )';
@@ -66,7 +66,7 @@ if ( $res ) {
   }
 }
 
-// If the user is the creator of the event or their assistant, 
+// If the user is the creator of the event or their assistant,
 // allow them to delete the event from another user's calendar.
 // It's essentially the same thing as editing the event and removing the
 // user from the participants list.
@@ -119,7 +119,7 @@ if ( $id > 0 && empty ( $error ) ) {
   // if owner or admin, not participant.
   // If a user was specified, then only delete that user (not here) even if we
   // are the owner or an admin.
-  if ( ( $is_admin || $my_event ) && ! $other_user ) { 
+  if ( ( $is_admin || $my_event ) && ! $other_user ) {
     // Email participants that the event was deleted
     // First, get list of participants (with status Approved or
     // Waiting on approval).
@@ -144,28 +144,28 @@ if ( $id > 0 && empty ( $error ) ) {
       $time = sprintf ( "%06d", $row[2] );
       dbi_free_result ( $res );
     }
-    
+
     $eventstart = date_to_epoch ( $fmtdate . $time );
-    $TIME_FORMAT=24; 
+    $TIME_FORMAT=24;
     for ( $i = 0, $cnt = count ( $partlogin ); $i < $cnt; $i++ ) {
-      // Log the deletion 
+      // Log the deletion
      activity_log ( $id, $login, $partlogin[$i], $log_delete, '' );
       //check UAC
-      $can_email = 'Y'; 
+      $can_email = 'Y';
       if ( access_is_enabled () ) {
         $can_email = access_user_calendar ( 'email', $partlogin[$i], $login);
       }
-      //don't email the logged in user  
-      if ( $can_email == 'Y' && $partlogin[$i] != $login ) {  
+      //don't email the logged in user
+      if ( $can_email == 'Y' && $partlogin[$i] != $login ) {
         $do_send = get_pref_setting ( $partlogin[$i], 'EMAIL_EVENT_DELETED' );
         $htmlmail = get_pref_setting ( $partlogin[$i], 'EMAIL_HTML' );
         $t_format = get_pref_setting ( $partlogin[$i], 'TIME_FORMAT' );
         $user_TIMEZONE = get_pref_setting ( $partlogin[$i], 'TIMEZONE' );
         set_env ( 'TZ', $user_TIMEZONE );
         $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
-        user_load_variables ( $partlogin[$i], 'temp' );         
+        user_load_variables ( $partlogin[$i], 'temp' );
         if ( ! $is_nonuser_admin && $partlogin[$i] != $login && $do_send == 'Y' &&
-          boss_must_be_notified ( $login, $partlogin[$i] ) && 
+          boss_must_be_notified ( $login, $partlogin[$i] ) &&
           ! empty ( $tempemail ) && $SEND_EMAIL != 'N' ) {
             if ( empty ( $user_language ) || ( $user_language == 'none' )) {
                reset_language ( $LANGUAGE );
@@ -177,11 +177,11 @@ if ( $id > 0 && empty ( $error ) ) {
            . str_replace ( 'XXX', $login_fullname,
           // translate ( 'An appointment has been canceled for you by' )
              translate ( 'XXX has canceled an appointment.' ) ) . "\n"
-           . str_replace ( 'XXX', $name, 
+           . str_replace ( 'XXX', $name,
                translate ( 'Subject XXX' ) ) . "\"\n"
            . str_replace ( 'XXX',  date_to_str ($thisdate),
              translate ( 'Date XXX' ) ) . "\n";
-            if ( ! empty ( $eventtime ) && $eventtime != '-1' ) 
+            if ( ! empty ( $eventtime ) && $eventtime != '-1' )
               $msg .= str_replace ( 'XXX',
                display_time ( '', 2, $eventstart, $t_format ),
               translate ( 'Time XXX' ) );
@@ -189,7 +189,7 @@ if ( $id > 0 && empty ( $error ) ) {
 
             $msg .= "\n\n";
             //use WebCalMailer class
-            $mail->WC_Send ( $login_fullname, $tempemail, 
+            $mail->WC_Send ( $login_fullname, $tempemail,
               $tempfullname, $name, $msg, $htmlmail, $login_email );
         }
       }
@@ -228,7 +228,7 @@ if ( $id > 0 && empty ( $error ) ) {
                 activity_log ( $ex_events[$i], $login, $delusers[$j],
                   $log_delete, '' );
                 dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
-                  WHERE cal_id = ? AND cal_login = ?', 
+                  WHERE cal_id = ? AND cal_login = ?',
                   array( 'D', $ex_events[$i], $delusers[$j] ) );
               }
             }
@@ -239,7 +239,7 @@ if ( $id > 0 && empty ( $error ) ) {
       // Now, mark event as deleted for all users.
       dbi_execute ( "UPDATE webcal_entry_user SET cal_status = 'D' " .
         "WHERE cal_id = ?", array( $id ) );
-        
+
       // Delete External users for this event
       dbi_execute ( 'DELETE FROM webcal_entry_ext_user
         WHERE cal_id = ?', array( $id ) );

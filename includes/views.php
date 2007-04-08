@@ -22,7 +22,7 @@ function view_init ( $view_id )
 
   //set this to prove we in are inside a custom view page
   $custom_view = true;
-  
+
   if ( ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'N' )
     && ! $is_admin ) {
     // not allowed...
@@ -84,10 +84,10 @@ function view_get_user_list ( $view_id ) {
     }
   } else {
     $myusers = get_my_users ( '', 'view' );
-     
+
     if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
       $myusers = array_merge ( $myusers, get_my_nonusers ( $login, true, 'view' ) );
-    } 
+    }
     // Make sure this user is allowed to see all users in this view
     // If this is a global view, it may include users that this user
     // is not allowed to see.
@@ -106,7 +106,7 @@ function view_get_user_list ( $view_id ) {
       }
       $ret = $newlist;
     }
-    
+
     //Sort user list...
     $sortlist = array ();
     $myusercnt = count ( $myusers );
