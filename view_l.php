@@ -142,10 +142,10 @@ echo <<<EOT
     {$navStr}
     <span class="viewname"><br />{$view_name}</span>
   </div>
-	<br />
-	{$monthStr}
-	{$eventinfo}
-	{$unapprovedStr}
-	{$printerStr}
-	{$trailerStr}
+  <br />
+  {$monthStr}
+  {$eventinfo}
+  {$unapprovedStr}
+  {$printerStr}
+  {$trailerStr}
 EOT;

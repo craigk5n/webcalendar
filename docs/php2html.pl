@@ -5,15 +5,15 @@
 # Image library
 #
 # Description:
-#	Create HTML documentation from a PHP include file.
-#	The PHP file must use a specific syntax for documenting
-#	functions.
+#  Create HTML documentation from a PHP include file.
+#  The PHP file must use a specific syntax for documenting
+#  functions.
 #
 # History:
-#	21-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
-#			Updated
-#	30-Nov-2002	Craig Knudsen <cknudsen@cknudsen.com>
-#			Created
+#  21-Jan-2005  Craig Knudsen <cknudsen@cknudsen.com>
+#      Updated
+#  30-Nov-2002  Craig Knudsen <cknudsen@cknudsen.com>
+#      Created
 #
 #######################################################################
 
@@ -188,65 +188,65 @@ print<<EOF;
 <title>$TITLE</title>
 <style type="text/css">
 body {
-	background-color: #FFFFFF;
-	font-family: Arial, Helvetica, sans-serif;
+  background-color: #FFFFFF;
+  font-family: Arial, Helvetica, sans-serif;
 }
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 p {
-	margin-top: 2px;
+  margin-top: 2px;
 }
 ul {
-	margin-bottom: 2px;
-	margin-top: 2px;
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
 tt {
-	font-family: courier, monospace;
-	font-size: 14px;
+  font-family: courier, monospace;
+  font-size: 14px;
 }
 pre {
-	font-family: courier, monospace;
-	font-size: 14px;
-	border: 1px solid #0000FF;
-	background-color: #EEEEFF;
-	padding: 4px;
-	margin-left: 25px;
-	margin-right: 25px;
+  font-family: courier, monospace;
+  font-size: 14px;
+  border: 1px solid #0000FF;
+  background-color: #EEEEFF;
+  padding: 4px;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 blockquote {
-	margin-top: 5px;
-	margin-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .prompt {
-	font-weight: bold;
+  font-weight: bold;
 }
 .tip {
-	font-weight: bold;
-	background-color: #FFFF00;
-	border: 1px solid #000000;
-	padding: 1px;
-	padding-left: 5px;
-	padding-right: 5px;
-	margin-right: 10px;
+  font-weight: bold;
+  background-color: #FFFF00;
+  border: 1px solid #000000;
+  padding: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 10px;
 }
 .note {
-	font-weight: bold;
-	background-color: #CCCCCC;
-	color: #000000;
-	border: 1px solid #000000;
-	padding: 1px;
+  font-weight: bold;
+  background-color: #CCCCCC;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 1px;
 }
 hr {
-	margin-bottom: 7px;
+  margin-bottom: 7px;
 }
 h3 {
-	background-color: #191970;
-	color: #FFFFFF;
-	padding: 5px;
+  background-color: #191970;
+  color: #FFFFFF;
+  padding: 5px;
 }
 .top {
-	text-align: right;
+  text-align: right;
 }
 </style>
 </head>

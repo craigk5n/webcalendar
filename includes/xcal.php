@@ -533,10 +533,10 @@ function export_alarm_vcal( $id, $date ) {
   // get reminders
   $reminder = getReminders ( $id );
 
-	if ( ! empty ( $reminder['date'] ) ) {
-		echo 'DALARM:' . $reminder['date'] . 'T'
-		 . $reminder['time'] . "Z\r\n";
-	}
+  if ( ! empty ( $reminder['date'] ) ) {
+    echo 'DALARM:' . $reminder['date'] . 'T'
+     . $reminder['time'] . "Z\r\n";
+  }
 }
 // Convert the webcalendar reminder to an ical VALARM
 function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
@@ -961,7 +961,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     while ( list( $key, $value ) = each( $array ) )
     $ret .= "$value\r\n";
 
-	  $ret .= 'LAST-MODIFIED:' . export_get_utc_date( $moddate,$modtime ) . "\r\n";
+    $ret .= 'LAST-MODIFIED:' . export_get_utc_date( $moddate,$modtime ) . "\r\n";
 
     $name = preg_replace( "/\r/", ' ', $name );
     // escape,;  \ in octal ascii

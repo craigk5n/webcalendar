@@ -356,32 +356,32 @@ print_header ( $INC, '', $BodyX );
   </select>&nbsp;<?php echo translate ( 'Small Task Date' );?>
  </td></tr>
 
-	<tr><td class="tooltip" title="<?php etooltip( 'display-week-starts-on' )?>">
-	 <?php etranslate( 'Week starts on' )?>:</td><td>
-	 <select name="admin_WEEK_START" id="admin_WEEK_START">
-	<?php
-	 for ( $i = 0; $i < 7; $i++ ) {
-		echo "<option value=\"$i\"" .
-		 ( $i == $s['WEEK_START'] ? $selected : '' ) .
-		 '>' . weekday_name ( $i ) . "</option>\n";
-	 }
-	?>
-	 </select>
-	</td></tr>
-	
-	<tr><td class="tooltip" title="<?php etooltip( 'display-weekend-starts-on' )?>">
-	 <?php etranslate( 'Weekend starts on' )?>:</td><td>
-	 <select name="admin_WEEKEND_START" id="admin_WEEKEND_START">
-	<?php
-	 for ( $i = -1; $i < 6; $i++ ) {
-		$j = ( $i == -1 ? 6 : $i ); //make sure start with Saturday
-		echo "<option value=\"$j\"" .
-		 ( $j == $s['WEEKEND_START'] ? $selected : '' ) .
-		 '>' . weekday_name ( $j ) . "</option>\n";
-	 }
-	?>
-	 </select>
-	</td></tr>
+  <tr><td class="tooltip" title="<?php etooltip( 'display-week-starts-on' )?>">
+   <?php etranslate( 'Week starts on' )?>:</td><td>
+   <select name="admin_WEEK_START" id="admin_WEEK_START">
+  <?php
+   for ( $i = 0; $i < 7; $i++ ) {
+    echo "<option value=\"$i\"" .
+     ( $i == $s['WEEK_START'] ? $selected : '' ) .
+     '>' . weekday_name ( $i ) . "</option>\n";
+   }
+  ?>
+   </select>
+  </td></tr>
+  
+  <tr><td class="tooltip" title="<?php etooltip( 'display-weekend-starts-on' )?>">
+   <?php etranslate( 'Weekend starts on' )?>:</td><td>
+   <select name="admin_WEEKEND_START" id="admin_WEEKEND_START">
+  <?php
+   for ( $i = -1; $i < 6; $i++ ) {
+    $j = ( $i == -1 ? 6 : $i ); //make sure start with Saturday
+    echo "<option value=\"$j\"" .
+     ( $j == $s['WEEKEND_START'] ? $selected : '' ) .
+     '>' . weekday_name ( $j ) . "</option>\n";
+   }
+  ?>
+   </select>
+  </td></tr>
 
  <tr><td class="tooltip" title="<?php etooltip( 'time-format-help' )?>">
   <?php etranslate( 'Time format' )?>:</td><td>

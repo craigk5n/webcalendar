@@ -67,11 +67,11 @@ function parse_outlookcsv ( $cal_file ) {
       $tmp_data['Location']           =  $location; //Location (string)
       $tmp_data['AllDay']             =  $all_day_event; //1 = true  0 = false
       $tmp_data['Class']              =  ( $class == 1 ? 'R': 'P' );
-	  $tmp_data['Categories']         = get_categories_id_byname ( $categories );
+    $tmp_data['Categories']         = get_categories_id_byname ( $categories );
       $tmp_data['AlarmSet']           =  $remind_on_off; //1 = true  0 = false
       $tmp_data['ADate']              =  $reminder; //Date/Time of Alarm
       $tmp_data['AAction']            =  'EMAIL'; //The default action
-	  $tmp_data['CalendarType']       =  'VEVENT'; //The default type
+    $tmp_data['CalendarType']       =  'VEVENT'; //The default type
      
     
       $outlookcsv_data[] = $tmp_data;

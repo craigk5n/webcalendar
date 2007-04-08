@@ -267,7 +267,7 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
 function print_menu_dates ( $menu = false ) {
   global $cat_id, $CATEGORIES_ENABLED, $DATE_FORMAT_MD, 
     $DATE_FORMAT_MY, $id, $DISPLAY_WEEKENDS, $login, $thismonth, 
-	$thisyear, $thisday, $user, $WEEK_START, $SCRIPT, $custom_view;
+  $thisyear, $thisday, $user, $WEEK_START, $SCRIPT, $custom_view;
   $goStr = translate ( 'Go' );
   $ret = $urlArgs = $include_id = '';
   //TODO add this to admin and pref
@@ -301,7 +301,7 @@ function print_menu_dates ( $menu = false ) {
     ( ! $user || $user == $login ) ? '
             <input type="hidden" name="cat_id" value="'
    . $cat_id . '" />' : '' ) . '
-			 <label for="monthselect"><a '
+       <label for="monthselect"><a '
    . 'href="javascript:document.SelectMonth.submit()">'
    . translate ( 'Month' ) . '</a>:&nbsp;</label>
             <select name="date" id="monthselect" '
@@ -390,7 +390,7 @@ function print_menu_dates ( $menu = false ) {
     $twkstart = $wkstart + ( 604800 * $i );
     $twkend = $twkstart + ( 86400 * $lastDay );
     $dateSYmd = date ( 'Ymd', $twkstart );
-	$dateEYmd = date ( 'Ymd', $twkend );
+  $dateEYmd = date ( 'Ymd', $twkend );
     $dateW = date ( 'W', $twkstart + 86400  );
     // echo $twkstart . " " . $twkend;
     if ( $twkstart > 0 && $twkend < 2146021200 ) {

@@ -299,7 +299,7 @@ echo <<<EOT
           {$eventsStr}
         </table>
       </td>
-	  {$minical_tasks}
+    {$minical_tasks}
     </tr>
   </table> 
   {$eventinfo}

@@ -621,13 +621,13 @@ class WebCalendar {
         if (! $login = user_logged_in())
           $session_not_found = true;
       } else {
-	    @session_start ();
-	    if ( ! empty ( $_SESSION['webcalendar_session'] ) ) {
-		  $webcalendar_session = $_SESSION['webcalendar_session'];
-	    }
-	    if ( ! empty ( $_SESSION['webcal_login'] ) ) {
-		  $login = $_SESSION['webcal_login'];
-	    }
+      @session_start ();
+      if ( ! empty ( $_SESSION['webcalendar_session'] ) ) {
+      $webcalendar_session = $_SESSION['webcalendar_session'];
+      }
+      if ( ! empty ( $_SESSION['webcal_login'] ) ) {
+      $login = $_SESSION['webcal_login'];
+      }
         if ( empty ( $webcalendar_session ) && empty ( $login ) ) {
           $session_not_found = true;
         } else if ( empty ( $_SESSION['webcal_login'] ) ) {

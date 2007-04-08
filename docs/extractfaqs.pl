@@ -3,17 +3,17 @@
 # extractfaqs.pl
 #
 # Description:
-#	Extract FAQs from all the user documentation to create a single
-#	document that contains all FAQs.
-#	We don't put HTML header/trailer stuff since the intent is to
-#	embed the results into some other web page.
+#  Extract FAQs from all the user documentation to create a single
+#  document that contains all FAQs.
+#  We don't put HTML header/trailer stuff since the intent is to
+#  embed the results into some other web page.
 #
 #
 # History:
-#	20-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
-#			Created
-#	02-Feb-2005	Craig Knudsen <cknudsen@cknudsen.com>
-#			Updated to group into categories.
+#  20-Jan-2005  Craig Knudsen <cknudsen@cknudsen.com>
+#      Created
+#  02-Feb-2005  Craig Knudsen <cknudsen@cknudsen.com>
+#      Updated to group into categories.
 #
 #######################################################################
 
