@@ -315,21 +315,21 @@ if ( $is_admin ) {
 } 
 
 $defIdx = ( ! empty ( $report_include_header ) && 
-	$report_include_header == 'Y' ? 'Y' : 'N' );
+  $report_include_header == 'Y' ? 'Y' : 'N' );
 echo '<tr><td><label>'
 . translate( 'Include standard header/trailer' ) . ":</label></td>\n<td>"
 . print_radio ( 'include_header', '', '' , $defIdx ) 
 . "</td></tr>\n";
 
 $defIdx = ( ! empty ( $report_allow_nav ) && 
-	$report_allow_nav == 'Y' ? 'Y' : 'N' );
+  $report_allow_nav == 'Y' ? 'Y' : 'N' );
 echo '<tr><td><label>'
 . translate( 'Include previous/next links' ) . ":</label></td>\n<td>"
 . print_radio ( 'allow_nav', '', '' , $defIdx ) 
 . "</td></tr>\n";
 
 $defIdx = ( ! empty ( $report_include_empty ) && 
-	$report_include_empty == 'Y' ? 'Y' : 'N' );
+  $report_include_empty == 'Y' ? 'Y' : 'N' );
 echo '<tr><td><label>'
 . translate( 'Include empty dates' ) . ":</label></td>\n<td>"
 . print_radio ( 'include_empty', '', '' , $defIdx ) 
@@ -422,25 +422,25 @@ echo '<tr><td><label>'
 <script type="text/javascript" language="javascript">
 <!-- <![CDATA[
   //This script borrowed from phpMyAdmin with some mofification
-	function addMe (areaname, myValue) {
+  function addMe (areaname, myValue) {
     var textarea = document.reportform.elements[areaname];
-	  //IE support
-	  if (document.selection) {
-	    textarea.focus();
-	    sel = document.selection.createRange();
-	    sel.text = myValue;
-	  }
-	  //MOZILLA/NETSCAPE support
-	  else if (textarea.selectionStart || textarea.selectionStart == '0') {
-	    var startPos = textarea.selectionStart;
-	    var endPos = textarea.selectionEnd;
-	    textarea.value = textarea.value.substring(0, startPos)
-	    + myValue
-	    + textarea.value.substring(endPos, textarea.value.length);
-	  } else {
-	    textarea.value += myValue;
-	  }
-	}
+    //IE support
+    if (document.selection) {
+      textarea.focus();
+      sel = document.selection.createRange();
+      sel.text = myValue;
+    }
+    //MOZILLA/NETSCAPE support
+    else if (textarea.selectionStart || textarea.selectionStart == '0') {
+      var startPos = textarea.selectionStart;
+      var endPos = textarea.selectionEnd;
+      textarea.value = textarea.value.substring(0, startPos)
+      + myValue
+      + textarea.value.substring(endPos, textarea.value.length);
+    } else {
+      textarea.value += myValue;
+    }
+  }
 //]]> -->
 </script>
 <?php echo print_trailer(); ?>

@@ -14,7 +14,7 @@ print_header ( '', '', '', true );
 echo $helpListStr . '
     <h2>' . translate ( 'WebCalendar Documentation' ) . '</h2>
     <h5>' . translate ( 'Currently in English only.') . '<h5>
-	  <ul>
+    <ul>
       <li><a href="docs/WebCalendar-UserManual.html">WebCalendar User Manual</a></li>
       <li><a href="docs/WebCalendar-SysAdmin.html">WebCalendar System Administrator\'s Guide</a></li>
       <li><a href="docs/WebCalendar-DeveloperGuide.html">WebCalendar Developer Guide</a></li>

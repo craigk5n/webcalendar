@@ -69,32 +69,32 @@ echo display_admin_link () . '
       <div id="tabscontent_users">';
 if ( $doUsers ) {
   $denotesStr = translate ( 'denotes administrative user' );
-	if ( $is_admin ) {
-		echo ( $admin_can_add_user ? '
-					<a href="edit_user.php" target="useriframe" onclick="javascript:show '
-			 . '(\'useriframe\');">' . translate ( 'Add New User' )
-			 . '</a><br />' : '' ) . '
-					<ul>';
-	
-		$userlist = user_get_users ();
-		for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-			if ( $userlist[$i]['cal_login'] != '__public__' )
-				echo '
-						<li><a href="edit_user.php?user=' . $userlist[$i]['cal_login']
-				 . '" target="useriframe" onclick="javascript:show (\'useriframe\');">'
-				 . $userlist[$i]['cal_fullname'] . '</a>'
-				 . ( $userlist[$i]['cal_is_admin'] == 'Y' ? '&nbsp;<abbr title="'
-					 . $denotesStr . '">*</abbr>' : '' )
-				 . '</li>';
-		}
-		echo '
-					</ul>
-					*&nbsp;' . $denotesStr . '.<br />
-					<iframe name="useriframe" id="useriframe"></iframe>';
-	} else
-		echo '
-					<iframe src="edit_user.php" name="accountiframe" id="accountiframe">'
-		 . '</iframe>';
+  if ( $is_admin ) {
+    echo ( $admin_can_add_user ? '
+          <a href="edit_user.php" target="useriframe" onclick="javascript:show '
+       . '(\'useriframe\');">' . translate ( 'Add New User' )
+       . '</a><br />' : '' ) . '
+          <ul>';
+  
+    $userlist = user_get_users ();
+    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
+      if ( $userlist[$i]['cal_login'] != '__public__' )
+        echo '
+            <li><a href="edit_user.php?user=' . $userlist[$i]['cal_login']
+         . '" target="useriframe" onclick="javascript:show (\'useriframe\');">'
+         . $userlist[$i]['cal_fullname'] . '</a>'
+         . ( $userlist[$i]['cal_is_admin'] == 'Y' ? '&nbsp;<abbr title="'
+           . $denotesStr . '">*</abbr>' : '' )
+         . '</li>';
+    }
+    echo '
+          </ul>
+          *&nbsp;' . $denotesStr . '.<br />
+          <iframe name="useriframe" id="useriframe"></iframe>';
+  } else
+    echo '
+          <iframe src="edit_user.php" name="accountiframe" id="accountiframe">'
+     . '</iframe>';
 } //end if $doUsers
 
 echo '

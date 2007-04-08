@@ -2,26 +2,26 @@
 /* $Id$
  *
  * Page Description:
- *	This file can be used to define extra information associated with a
- *	calender entry.
+ *  This file can be used to define extra information associated with a
+ *  calender entry.
  *
- *	You may define extra fields of the following types:
- *	  EXTRA_TEXT - will allow user to enter a line of text
- *	  EXTRA_MULTILINETEXT - will allow user to enter multiple lines of text
- *	  EXTRA_URL - will be displayed as a link
- *	  EXTRA_DATE - will be presented with date pulldown menus when entering
- *	  EXTRA_EMAIL - will be presented as a mailto URL
- *	  EXTRA_USER - must be a calendar user name; will be presented
- *	               with a pulldown
- *	  EXTRA_RADIO - will display 1-n radio controls
- *	  EXTRA_SELECTLIST - allows a custom selection list.  Can use
- *	    this to specify a list of possible locations, etc.
- *	  EXTRA_CHECKBOX - will display a checkbox control
+ *  You may define extra fields of the following types:
+ *    EXTRA_TEXT - will allow user to enter a line of text
+ *    EXTRA_MULTILINETEXT - will allow user to enter multiple lines of text
+ *    EXTRA_URL - will be displayed as a link
+ *    EXTRA_DATE - will be presented with date pulldown menus when entering
+ *    EXTRA_EMAIL - will be presented as a mailto URL
+ *    EXTRA_USER - must be a calendar user name; will be presented
+ *                 with a pulldown
+ *    EXTRA_RADIO - will display 1-n radio controls
+ *    EXTRA_SELECTLIST - allows a custom selection list.  Can use
+ *      this to specify a list of possible locations, etc.
+ *    EXTRA_CHECKBOX - will display a checkbox control
  *
  * Comments:
- *	If you want to fully support using languages other than what
- *	you define below, you will need to add the 2nd field of the arrays
- *	below to the translation files.
+ *  If you want to fully support using languages other than what
+ *  you define below, you will need to add the 2nd field of the arrays
+ *  below to the translation files.
  *
  */
 // define types

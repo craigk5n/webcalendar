@@ -16,27 +16,27 @@ print_header ( '', '
     <style type="text/css">
       table.admin,
       .admin td a {
-      	background:' . $CELLBG . '
+        background:' . $CELLBG . '
       }
       table.admin {
-      	border:1px solid #000;
-      	padding:5px
+        border:1px solid #000;
+        padding:5px
       }
       table.admin td {
-      	padding:20px
+        padding:20px
       }
       table.admin td,
       .admin td a {
-      	text-align:center
+        text-align:center
       }
       .admin td a {
-      	border:1px solid #EEE;
-      	border-color:#EEE #777 #777 #EEE;
-      	padding:10px
+        border:1px solid #EEE;
+        border-color:#EEE #777 #777 #EEE;
+        padding:10px
       }
       .admin td a:hover {
-      	border-color:#777 #EEE #EEE #777
-      	background:#AAA;
+        border-color:#777 #EEE #EEE #777
+        background:#AAA;
       }
     </style>
 '

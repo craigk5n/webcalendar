@@ -17,7 +17,7 @@ if ( $arinc[0] != 'js' && $arinc[0] != 'htmlarea' )
 // get list of files in the js directory
 $myDirectory = opendir( 'includes/' . $arinc[0] );
 while($fileName = readdir($myDirectory)) {
-	$fileList[] = $fileName;
+  $fileList[] = $fileName;
 }
 closedir($myDirectory);
 
@@ -46,7 +46,7 @@ if ( $caching == true ) {
   include_once 'includes/gradient.php';
 
   load_global_settings ();
-	@session_start ();
+  @session_start ();
   $login = ( ! empty ( $_SESSION['webcal_login'] ) ? $_SESSION['webcal_login'] : '__public__' );
 
   load_user_preferences ();

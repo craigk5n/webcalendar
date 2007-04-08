@@ -10,7 +10,7 @@ function selectUsers () {
   for ( i = 0, j = 0; i < document.editviewform.elements[listid].length; i++ ) {
     if ( document.editviewform.elements[listid].options[i].selected ) {
       if ( j != 0 )
-	url += ",";
+  url += ",";
       j++;
       url += document.editviewform.elements[listid].options[i].value;
     }

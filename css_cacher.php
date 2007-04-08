@@ -32,7 +32,7 @@ load_user_preferences ( $login );
 //by incrementing the webcalendar_csscache cookie value
 $cookie = ( isset ( $_COOKIE['webcalendar_csscache'] ) ?
     $_COOKIE['webcalendar_csscache'] : 0 );
-	
+  
 header( 'Content-type: text/css' );
 header('Last-Modified: '. date('r', mktime ( 0,0,0 ) + $cookie ) ); 
 //if we are calling from admin or pref, expire css now

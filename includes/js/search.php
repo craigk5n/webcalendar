@@ -11,7 +11,7 @@ function selectUsers () {
   for ( i = 0, j = 0; i < document.searchformentry.elements[listid].length; i++ ) {
     if ( document.searchformentry.elements[listid].options[i].selected ) {
       if ( j != 0 )
-	url += ",";
+  url += ",";
       j++;
       url += document.searchformentry.elements[listid].options[i].value;
     }
