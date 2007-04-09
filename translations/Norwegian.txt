@@ -6,7 +6,7 @@
 # Last update: 18 May 2005
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -306,7 +306,6 @@ Access: Tilgang
 priority-help: Angi aktivitetens prioritet.
 Priority: Prioritet
 High: Høy
-Medium: Medium
 Low: Lav
 category-help: Setter kategorien for aktiviteten
 Category: Kategori
@@ -712,11 +711,6 @@ denotes administrative user: indikerer administrator
 Add New User: Opprett bruker
 
 ########################################
-# Page: usersel.php
-#
-Reset: Reset
-
-########################################
 # Page: views.php
 #
 Add New View: Legg til ny oversikt
@@ -812,13 +806,8 @@ May_: Mai
 June: Juni
 July: Juli
 October: Oktober
-November: November
-Jan: Jan
-Feb: Feb
 May: Mai
-Aug: Aug
 Oct: Okt
-Nov: Nov
 The following error occurred: Følgende feil oppstod
 You are not authorized: Du har ikke tillatelse
 Add N hours to: Legg til N timer til

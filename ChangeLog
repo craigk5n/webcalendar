@@ -1,5 +1,9 @@
 $Id$
 Version 1.1.3+CVS (?? ??? 2006)
+ - Begin support for new language - JRR Tolkien's "Elven". :)
+   See the comment notes in the file for where to get the fonts.
+ - Removed several more phrases from translations/*.txt files that are the same
+   in English.  Between these last two 'removals', overall file size is 100+K smaller.
  - Removed "ob_start()" from help_docs.php so it would output.
    Removed several phrases from translations/*.txt files that are the same in
    English - cutting overall file size considerably.

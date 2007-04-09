@@ -4,7 +4,7 @@
 # Last update: 11 november 2004
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -451,7 +451,6 @@ You have not entered a password: Du har inte angivit något lösenord
 ########################################
 # Page: export.php
 #
-Export: Export
 Export format: Exportformat
 Export all dates: Exportera allt
 Start date: Startdatum
@@ -514,7 +513,6 @@ repeat-day-help: Vilka veckodagar skall aktiviteten upprepas på
 ########################################
 # Page: help_import.php
 #
-Import: Import
 This form will allow you to import entries from the Palm Desktop Datebook.: Detta formulär tillåter dig att importera aktiviteter från Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Det bör vara placerat i din Palm-mapp <tt>"datebook/datebook.dat"</tt> i en undermapp benämnd med ditt användarnamn.
 The following entries will not be imported: Följande händelser kommer inte att importeras
@@ -741,12 +739,6 @@ New Entry: Ny händelse
 Another Users Calendar: Annans kalender
 
 ########################################
-# Page: includes/date_formats.php
-#
-December: December
-Dec: Dec
-
-########################################
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: Överskrider begränsningen på XXX händelser per dag
@@ -769,13 +761,8 @@ June: Juni
 July: Juli
 August: Augusti
 October: Oktober
-November: November
-Jan: Jan
-Feb: Feb
 May: Maj
-Aug: Aug
 Oct: Okt
-Nov: Nov
 The following error occurred: Följande fel uppstod
 You are not authorized: Förbjuden åtgärd
 Add N hours to: Lägg till N timmar till

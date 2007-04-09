@@ -8,7 +8,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -56,7 +56,6 @@ Private: 私人的
 #
 confidential: 機密的
 private: 私人的
-Error adding event: Error adding event
 
 ########################################
 # Page: admin.php
@@ -69,7 +68,6 @@ Year: 年
 Help: 說明
 Settings: 設定中
 Colors: 顏色
-language-help: Specifies which language to use.
 Language: 語系
 Your browser default language is: 你的瀏覽器預設的語系是
 None: 無
@@ -154,13 +152,8 @@ Delete entry: 刪除記事
 # Page: edit_entry_handler.php
 #
 A new appointment has been made for you by: 你有一個新約會, 邀請者是
-The following conflicts with the suggested time: The following conflicts with the suggested time
 Please look on: 請查看
 to accept or reject this appointment: 決定接受或拒絕這個約會
-to view this appointment: to view this appointment
-Scheduling Conflict: Scheduling Conflict
-Your suggested time of: Your suggested time of
-conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
 
 ########################################
 # Page: edit_layer.php
@@ -203,7 +196,6 @@ E-mail address: 電子郵件地址
 Password: 密碼
 again: 再一次
 Enabled: 啟用的
-Disabled for demo: Disabled for demo
 Change Password: 變更密碼
 New Password: 新的密碼
 Set Password: 設定密碼
@@ -229,11 +221,6 @@ Modified since: 更改自
 #
 Updated: 更新
 Created by: 公布者
-
-########################################
-# Page: help_admin.php
-#
-colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 
 ########################################
 # Page: help_edit_entry.php
@@ -353,7 +340,6 @@ Dec: 12月
 #
 WK: 週
 Printer Friendly: 友善列印
-Generate printer-friendly version: Generate printer-friendly version
 January: 一月
 February: 二月
 March: 三月
@@ -376,9 +362,7 @@ Aug: 8月
 Sep: 9月
 Oct: 10月
 Nov: 11月
-The following error occurred: The following error occurred
 You are not authorized: 您未經授權
-Error approving event: Error approving event
 Sunday: 星期日
 Monday: 星期一
 Tuesday: 星期二
@@ -409,11 +393,6 @@ Go to: 功能選擇
 event: 記事
 
 ########################################
-# Page: includes/xcal.php
-#
-Unnamed Event: Unnamed Event
-
-########################################
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: 通告
@@ -424,11 +403,6 @@ Notification: 通告
 You have not entered a Brief Description: 你沒有輸入概要描述
 The time you have entered begins before your preferred work hours. Is this correct?: 這個時段不在你自定的工作時間內. 這是正確的嗎?
 You have not entered a valid time of day: 你沒有輸入正確的時間
-
-########################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: Invalid color
 
 ########################################
 # Page: includes/menu/index.php

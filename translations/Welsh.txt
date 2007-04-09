@@ -2,7 +2,7 @@
 # Last update: 03 October 2002
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -70,7 +70,6 @@ Week: Wythnos
 Month: Mis
 Year: Blwyddyn
 System Settings: Gosodiad System
-Help: Help
 Settings: Gosodiadau
 Groups: Grwpiau
 Email: E-bost

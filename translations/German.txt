@@ -6,7 +6,7 @@
 # Last update: 23.Mar.2007
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -38,8 +38,7 @@ __month__ __yyyy__: __month__ __yyyy__
 # Page: about.php
 #
 Title: Webkalender
-version: Version
-Webcalendar is a PHP application used...: Der Webkalender ist eine PHP Anwendung welche f&uuml;r &#39;Einzelbenutzer&#39; oder als Internet / Intranet - Benutzergruppe verwendet werden kann. Man kann Ihn aber auch als Veranstaltungskalender konfigurieren.
+WebCalendar is a PHP application used...: Der Webkalender ist eine PHP Anwendung welche f&uuml;r &#39;Einzelbenutzer&#39; oder als Internet / Intranet - Benutzergruppe verwendet werden kann. Man kann Ihn aber auch als Veranstaltungskalender konfigurieren.
 Credits: Abspann
 About: &Uuml;ber
 
@@ -108,7 +107,6 @@ Settings: Einstellungen
 Groups: Benutzergruppen
 NonUser Calendars: &#39;Zentrale&#39; - Kalender
 Other: Sonstiges
-Email: Email
 Colors: Farben
 System options: Systemeinstellungen
 app-name-help: Gibt den Titel f&uuml;r die Titelleiste des Browsers, f&uuml;r alle Seiten des Kalenders und die Startseite des Kalenders an. Der Titel wird in die Sprachdatei eingetragen und kann f&uuml;r andere Spracheinstellungen abge&auml;ndert werden.
@@ -383,7 +381,6 @@ Users: Benutzer
 Account: Konto
 Categories: Kategorien
 Views: Ansichten
-Layers: Layers
 Reports: Berichte
 Delete Events: Eintr&auml;ge l&ouml;schen (endg&uuml;ltig)
 Activity Log: Aktivit&auml;ten Protokoll
@@ -525,7 +522,6 @@ is in a different timezone than you are. Currently: ist in einem anderen Zeitzon
 Time entered here is based on your Timezone: Die eingegebene Zeit entspricht Ihrer Zeitzone
 Edit Entry: Eintrag &auml;ndern
 Add Entry: Eintrag hinzuf&uuml;gen
-Details: Details
 Participants: Teilnehmer
 Repeat: Wiederholung
 Reminders: Erinnerungen
@@ -774,7 +770,6 @@ Username cannot be blank.: Benutzername darf nicht leer sein.
 ########################################
 # Page: export.php
 #
-Export: Export
 Export format: Exportformat
 Include all layers: Beinhaltet ALLE Layers
 Include deleted entries: Inklusive gel&ouml;schter Eintr&auml;ge
@@ -846,7 +841,6 @@ repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden so
 ########################################
 # Page: help_import.php
 #
-Import: Import
 This form will allow you to import entries from the Palm Desktop Datebook.: Dieses Formular erlaubt das Importieren der Kalendereintr&auml;ge ihres Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner <tt>datebook/datebook.dat</tt> in einem Unterverzeichnis mit Ihrem Usernamen sein.
 The following entries will not be imported: Folgende Eintr&auml;ge werden nicht importiert
@@ -854,7 +848,6 @@ Entries older than the current date: Eintr&auml;ge die &auml;lter als das aktuel
 Entries created in the Palm Desktop...: Hinzugef&uuml;gte Eintr&auml;ge im Palm Desktop die nicht synchronisiert wurden (HotSync&#39;d)
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er das Datum des Termines ist vorbei).
 Therefore, updates should be made in the Palm Desktop.: Deshalb sollten &Auml;nderungen auf dem Palm/Desktop durchgef&uuml;hrt werden.
-vCal: vCal
 This form will import vCalendar (.vcs) 1.0 events: Dieses Formular importiert vCalendar (.vcs) 1.0 Eintr&auml;ge
 The following formats have been tested: Folgende Formate wurden getestet
 This form will import iCalendar (.ics) events: Dieses Formular importiert iCalendar (.ics) Eintr&auml;ge
@@ -942,7 +935,6 @@ The import file contained no data: Die importierte Datei enthielt keine Daten
 ########################################
 # Page: layers.php
 #
-Layer: Layer
 Edit layer: Layer &auml;ndern
 Enable layers: Layers aktivieren
 Layers are currently: Layers sind derzeit
@@ -1025,7 +1017,6 @@ minute: Minute
 theme-reload-help: Wegen gecachten CSS ist ein nochmaliges (Reload) der Seite erforderlich
 Page may need to be reloaded for new Theme to take effect: Seite m&uuml;&szlig;te neu geladen werden um das neues Thema anzuzeigen
 Email format preference: Emailformat Einstellungen
-HTML: HTML
 Plain Text: Reiner Text
 display_byproxy-help: Anzeige durch Proxyhilfe
 Display if created by Assistant: Anzeigen wenn durch Assistent eingegeben
@@ -1062,7 +1053,6 @@ Please visit: Bitte besuchen Sie den
 to log in and start using your account: und loggen Sie sich mit Ihren Zugangskontodaten ein!
 You may change your password after logging in the first time: Sie m&uuml;ssen nach Ihrem ersten Einloggen Ihr Passwort &auml;ndern
 If you received this email in error: Wenn Sie diese Email erhalten aber keinen Webkalenderzugang beantragt haben, ignorieren Sie diese oder benachrichtigen Sie uns kurz
-Administrator: Administrator
 Welcome: Willkommen
 Registration: Registrierung
 Welcome to WebCalendar: Willkommen beim Webkalender
@@ -1344,14 +1334,9 @@ May_: Mai
 June: Juni
 July: Juli
 October: Oktober
-November: November
-Jan: Jan
-Feb: Feb
 Mar: M&auml;r
 May: Mai
-Aug: Aug
 Oct: Okt
-Nov: Nov
 unknown-month: unbekannter Monat
 Error TIME_SLOTS undefined!: Fehler: Zeitfenster nicht definiert!
 The following error occurred: Folgender Fehler trat auf
@@ -1394,7 +1379,6 @@ Invalid data format for: Ung&uuml;ltiges Datenformat f&uuml;r&nbsp;
 ########################################
 # Page: includes/help_list.php
 #
-Index: Index
 Page: Seite
 
 ########################################
@@ -1456,16 +1440,6 @@ Spanish: Spanisch
 Swedish: Schwedisch
 Turkish: Turkisch
 Welsh: Wallisisch
-0: 0
-1: 1
-2: 2
-3: 3
-4: 4
-5: 5
-6: 6
-7: 7
-8: 8
-9: 9
 event: Termin
 journal: Journal
 
@@ -1488,25 +1462,16 @@ WE: Mi
 TH: Do
 FR: Fr
 SA: Sa
-Interval: Interval
 Months: Monate
 Month Days: Monatstage
 Days: Tage
 Weeks: Wochen
-Position: Position
 Until: Bis
 Count: Z&auml;hlimpuls
 Inclusion Dates: Inklusive des Datum(s)
 Exclusion Dates: Exklusive des Datum(s)
 Unnamed Event: Unbenannter Termin
 Event Imported: Termin importiert
-
-########################################
-# Page: includes/classes/Doc.class
-#
-bytes: Bytes
-kb: kB
-Mb: Mb
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
@@ -1568,7 +1533,6 @@ You have not entered a valid time of day: Sie haben keine g&uuml;ltige Zeit f&uu
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Ung&uuml;ltige Farbe
-layer: Layer
 
 ########################################
 # Page: includes/js/edit_nonuser.php
@@ -1647,7 +1611,6 @@ The password contains illegal characters.: Das Passwort beinhaltet unzul&auml;ss
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
 PHP Version Check: PHP Versions&uuml;berpr&uuml;fung
 Check to see if PHP 4.1.0 or greater is installed: &Uuml;berpr&uuml;fung ob PHP 4.1.0 oder h&ouml;her installiert ist
-PHP version: PHP Version
 PHP Settings: PHP Einstellungen
 Detailed PHP Info: Detailierte PHP Information
 Session Check: Session &Uuml;berpr&uuml;fung
@@ -1669,7 +1632,6 @@ Please Test Settings: Bitte testen Sie Ihre Einstellungen
 Your current database settings are not able...: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie <b>nicht</b> in der Lage auf die Datenbank zuzugreifen, oder ist noch nicht getestet worden (dr&uuml;cken Sie auf den &#39;Einstellungen-testen&#39;-Knopf)
 Database Settings: Datenbankeinstellungen
 Database Type: Art der Datenbank
-Server: Server
 Connection Persistence: Permanente Verbindung
 All your database tables appear to be up to date. You may proceed to the: Alle Ihre Datenbanktabellen scheinen auf den neuesten Stand gebracht zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
 next page and complete your WebCalendar setup: Ihre Webkalendereinstellungen zu vervollst&auml;ndigen
@@ -1710,7 +1672,6 @@ Create Default Admin Account: Ein Administratorkonto einrichten
 Admin Account Not Found: Administratorkonto nicht gefunden
 User Authentication: Benutzer Authentisierung
 Web-based via WebCalendar (default): Webbasierend via Webkalender (Grundeinstellung)
-Web Server: Web Server
 None (Single-User): Keine (Einzelbenutzer)
 Read-Only: Nur Lesen
 Environment: Umgebung

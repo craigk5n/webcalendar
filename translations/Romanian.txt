@@ -5,7 +5,7 @@
 # Last update: 19 January 2005
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -72,7 +72,6 @@ Settings: Configura&#355;ie
 Groups: Grupuri
 NonUser Calendars: Calendare non-utilizator
 Other: Altele
-Email: Email
 Colors: Culori
 app-name-help: Specific&#259; numele aplica&#355;iei care va ap&#259;rea &#238;n bara de titlu a browserului pentru toate paginile &#351;i pentru pagina de login. Valoarea specificat&#259; aici va fi c&#259;utat&#259; &#238;n dic&#355;ionar &#238;n a&#351;a fel &#238;nc&#226;t se pot folosi titluri diferite pentru diferite limbi.
 Application Name: Numele aplica&#355;iei
@@ -602,7 +601,6 @@ Reject this entry?: Refuz&#259;?
 #
 You must enter a login and password: Este nevoie de login &#351;i parol&#259;
 Save login via cookies so I dont have to login next time.: Salveaz&#259; loginul &#238;ntr-un cookie pentru data viitoare
-Login: Login
 Access public calendar: Acceseaz&#259; calendarul public
 cookies-note: <b>Nota:</b> Aceast&#259; aplica&#355;ie necesit&#259; cookie-uri.
 
@@ -641,7 +639,6 @@ An appointment has been rejected by: O programare a fost refuzat&#259; de c&#259
 ########################################
 # Page: report.php
 #
-cont.: cont.
 This event is confidential: Acest eveniment este confiden&#355;ial
 Waiting for approval: Astept&#226;nd aprobare
 Deleted: Stears&#259;
@@ -754,7 +751,6 @@ Another Users Calendar: Calendarul altcuiva
 # Page: includes/date_formats.php
 #
 December: Decembrie
-Dec: Dec
 
 ########################################
 # Page: includes/functions.php
@@ -783,11 +779,9 @@ September: Septembrie
 October: Octombrie
 November: Noiembrie
 Jan: Ian
-Feb: Feb
 May: Mai
 Jun: Iun
 Jul: Iul
-Aug: Aug
 Nov: Noi
 The following error occurred: Urm&#259;toarea eroare s-a petrecut
 You are not authorized: Nu e&#351;ti autorizat(&#259;)
@@ -816,7 +810,6 @@ Sat: S&#226;mb&#259;t&#259;
 #
 My Calendar: Calendarul meu
 Add New Entry: Adaug&#259; un nou eveniment
-Logout: Logout
 Back to My Calendar: &#206;napoi la calendarul meu
 Go to: Schimb&#259; cu
 Manage calendar of: Lucreaz&#259; cu calendarul lui

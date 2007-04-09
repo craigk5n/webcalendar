@@ -1,4 +1,8 @@
-# Use this as a starting point to translate Webcalendar into other languages.
+# Use this as a starting point to translate WebCalendar into other languages.
+#
+# Note to translators:  If you want to copy these header comments to your
+# language file and translate them, too, that's OK with us.
+#
 # The format consists of an optional header:
 #
 # Translated by: your name and email
@@ -11,12 +15,12 @@
 # English phrase: translation
 #   (One to a line.  WITHOUT the leading "# ".
 #   The "English phrase: ", including the colon ":", is provided by the
-#   Webcalendar developers.  Your part is the "translation".)
+#   WebCalendar developers.  Your part is the "translation".)
 #
 # NOTE: I'm attempting to cut down on the overall file size.  So, please leave
 #       out "translations" that are the same as in English.  Such as:
 # Palm Pilot: Palm Pilot
-# Title: Webcalendar
+# Title: WebCalendar
 # URL: URL
 #
 # The tools directory contains two perl scripts to help you:
@@ -37,7 +41,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -71,7 +75,7 @@ __month__ __yyyy__: __month__ __yyyy__
 Title: WebCalendar
 version: version
 version XXX: version XXX
-Webcalendar is a PHP application used...: Webcalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.
+WebCalendar is a PHP application used...: WebCalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.
 Credits: Credits
 About: About
 OK: OK
@@ -1483,6 +1487,7 @@ Croatian: Croatian
 Czech: Czech
 Danish: Danish
 Dutch: Dutch
+Elven: Elven
 Estonian: Estonian
 Finnish: Finnish
 French: French

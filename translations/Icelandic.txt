@@ -4,7 +4,7 @@
 # Last update: 18 August 2000
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -150,6 +150,8 @@ repeat-end-date-help: Tilgreinir dagsetningu sem endurtaka á atriði þangað til.
 Use end date: Loka dags
 repeat-frequency-help: Tilgreinir hversu oft á að endurtaka atriði. 1 er sjálfgefið fyrir hvert skipti. Með því að velja 2 er hægt að láta atriði gerast aðra hverja viku (ef valin <i>Endurtekning</i> er <i>Vikulega</i>), annan hvern mánuð (ef valin <i>Endurtekning</i> er <i>Mánaðarlega</i>), o.s.frv.
 Frequency: Tíðni
+MO: MÁ
+SU: SU
 Delete entry: Eyða atriði
 You are not authorized to edit this entry.: Þú hefur ekki réttindi til þess að breyta þessu atriði
 
@@ -161,7 +163,6 @@ The following conflicts with the suggested time: Eftirfarandi stangast á við tím
 Please look on: Vinsamlegast skoðið
 to accept or reject this appointment: til að staðfesta eða hafna þessum fundi
 to view this appointment: til að skoða fund
-Scheduling Conflict: Scheduling Conflict
 Your suggested time of: Uppgefinn tími
 conflicts with the following existing calendar entries: stangast á við eftirfarandi atriði
 
@@ -348,7 +349,6 @@ Wednesday: Miðvikudagur
 Thursday: Fimmtudagur
 Friday: Föstudagur
 Saturday: Laugardagur
-Sun: Sun
 Mon: Mán
 Tue: Þri
 Wed: Mið
@@ -373,6 +373,11 @@ event: atburður
 ########################################
 # Page: includes/xcal.php
 #
+TU: ÞR
+WE: MI
+TH: FI
+FR: FÖ
+SA: L
 Unnamed Event: Ónafngreint atriði
 
 ########################################

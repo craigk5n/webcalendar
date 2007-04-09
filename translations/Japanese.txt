@@ -6,7 +6,7 @@
 # Last updated: 12-08-2006
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -298,7 +298,6 @@ email-event-updated: カレンダーのイベントが更新された場合、�
 Events updated on my calendar: 自分のカレンダーのイベントを更新
 email-event-deleted: カレンダーのイベントが削除された場合、電子メール通知を送るかどうか指定します。
 Events removed from my calendar: 自分のカレンダーからイベントを削除
-email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Event rejected by participant: 参加者のイベント拒否
 Allow user to customize colors: ユーザーの色設定を許可する
 gradient-colors: 有効にした場合、グラデーション色を使用します。これは非常に動作に影響を与えることができます。
@@ -885,7 +884,6 @@ Entry interval: エントリの間隔
 hour: 時間
 minute: 分
 Email format preference: 電子メールの書式設定
-HTML: HTML
 Plain Text: ただのテキスト
 Display if created by Assistant: もしアシスタントの作成も表示
 
@@ -917,7 +915,7 @@ You may change your password after logging in the first time: 最初をログイ
 Administrator: 管理者
 Welcome: ようこそ
 Registration: 登録
-Welcome to WebCalendar: ようこそ Webcalendar へ
+Welcome to WebCalendar: ようこそ WebCalendar へ
 Your email should arrive shortly: 電子メールはまもなく到着するはずです。
 Return to Login screen: ログイン画面に戻る
 Your account information will be emailed to you: アカウント情報は送信されたでしょう。
@@ -1428,7 +1426,6 @@ Display Required SQL: 要求された SQL を表示する
 This is the final step in setting up your WebCalendar Installation.: これは、WebCalendar のインストール設定における最終ステップです。
 Timezone Conversion: タイムゾーン変換
 It appears that you have: おそらく
-NOT: NOT
 converted your existing WebCalendar event data to GMT.: 既存のWebCalendarイベントデータを GMT に変換しました。
 If this is a new installation, you may also ignore this notice.: これが新規インストールの場合、この通知は無視するでしょう。
 Convert Data to GMT: GMT にデータを変換する

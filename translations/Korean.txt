@@ -8,7 +8,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -74,8 +74,6 @@ Colors: 색상
 Language: 언어
 time-format-help: 시간 표시 형식을 명시합니다.<br /><i>12 hour:</i>시간표시가 3am, 8:30pm, 등등으로 표시됨<br /><i>24 hour:</i>시간표시가 300, 2030 등등으로 표시됨
 Time format: 시간 표시 형식
-12 hour: 12 hour
-24 hour: 24 hour
 Duration: 기간
 work-hours-help: 일별 화면에서 표시대상시간을 명시
 Work hours: 근무 시간
@@ -177,7 +175,6 @@ Current User: 현 사용자
 #
 E-mail address: E-mail 주소
 Password: 비밀번호
-again: again
 Change Password: 비밀번호 변경
 New Password: 새 비밀번호
 Set Password: 비밀번호 설정
@@ -185,7 +182,6 @@ Set Password: 비밀번호 설정
 ########################################
 # Page: edit_user_handler.php
 #
-The passwords were not identical: The passwords were not identical
 You have not entered a password: 암호를 입력하지 않았습니다.
 
 ########################################

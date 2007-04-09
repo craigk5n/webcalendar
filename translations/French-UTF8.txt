@@ -12,7 +12,7 @@
 # Last updated on July 21 2006
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -56,7 +56,6 @@ Admin: Administration
 Calendar: Agenda
 Edit: Éditer
 Events: Événements
-Public: Public
 
 ########################################
 # Page: activity_log.php
@@ -67,8 +66,8 @@ Previous: Précédents
 ########################################
 # Page: add_entry.php
 #
-private: privé
 confidential: confidentiel
+private: privé
 Error adding event: Erreur en ajoutant l'événement
 
 ########################################
@@ -107,7 +106,7 @@ date-format-help: Spécifie le format d'affichage des dates.
 Date format: Format des dates
 display-week-starts-on: Spécifie par quel jour commence la semaine. Si Lundi est choisi, les numéros des semaines seront à la norme ISO.
 Week starts on: La semaine commence le
-time-format-help: Spécifie quel format utiliser pour l'heure : <br /><i>12 heures:</i> Affiche l'heure de cette façon : 3am, 8:30pm, etc.  <br /><i>24 heures:</i> Affiche l'heure de cette façon 3:00, 20:30, etc.
+time-format-help: Spécifie quel format utiliser pour l'heure :<br /><i>12 heures:</i> Affiche l'heure de cette façon : 3am, 8:30pm, etc.<br /><i>24 heures:</i> Affiche l'heure de cette façon 3:00, 20:30, etc.
 Time format: Format de l'heure
 12 hour: 12 heures
 24 hour: 24 heures
@@ -236,7 +235,6 @@ Event popup text: Texte surgissant des événements
 ########################################
 # Page: adminhome.php
 #
-Assistants: Assistants
 Preferences: Préférences
 Users: Utilisateurs
 Account: Compte
@@ -256,7 +254,6 @@ Administrative Tools: Outils d'administration
 Hello: Bonjour
 The subject was: Le sujet était
 The description is: La description est
-Date: Date
 Time: Heure
 
 ########################################
@@ -292,19 +289,11 @@ Cancel: Annuler
 An appointment has been canceled for you by: Un événement été annulé pour vous par
 
 ########################################
-# Page: docadd.php
-#
-Description: Description
-
-########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
 Edit Entry: Modification de l'événement
 Add Entry: Ajouter un événement
 Details: Détails
-Participants: Participants
 Repeat: Répétition
 brief-description-help: Ceci doit être un résumé (environ 20 caractères) de l'événement. Cette information représentera l'événement quand vous visualiserez l'agenda.
 Brief Description: Description résumée
@@ -319,22 +308,20 @@ Medium: Moyenne
 Low: Basse
 category-help: Définir la catégorie associée à un événement.
 Category: Catégorie
-URL: URL
 date-help: Spécification de la date de l'événement.
 Untimed event: événement intemporel
 Timed event: événement temporel
 All day event: événement permanent
 Timezone Offset: Décalage horaire
 time-help: Spécification de l'heure de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
-duration-help: Spécification de la durée (en minutes) de l'événement.  <br /><i>Ce champ peut être laissé vide.</i>
+duration-help: Spécification de la durée (en minutes) de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
 hours: heures
-minutes: minutes
 end-time-help: Spécifie l'heure à laquelle l'événement est prévu se terminer
 participants-help: Liste des participants pour cet événement.
 Availability: Disponibilité
 external-participants-help: Spécifie une liste de participants pour cet événement qui ne font pas partie des utilisateurs de l'agenda. Ces utilisateurs devraient figurer un à un par ligne avec éventuellement leur adresse de couriel. Si une adresse de couriel est spécifiée, l'utilisateur peut recevoir par couriel les notifications et rappels.
 External Participants: Participants extérieurs
-repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br /><i>Mensuel (par jour)</i> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc. <br /><i>Mensuel (par date)</i> autorise un événement à être répété le même jour du mois.
+repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br /><i>Mensuel (par jour)</i> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc.<br /><i>Mensuel (par date)</i> autorise un événement à être répété le même jour du mois.
 Daily: Quotidienne
 Weekly: Hebdomadaire
 Monthly: Mensuelle
@@ -345,6 +332,8 @@ repeat-end-date-help: Spécifie la date de fin de répétition de l'événement.
 Use end date: Utiliser une date de fin
 repeat-frequency-help: Spécifie la fréquence de répétition de l'événement. La valeur par défaut 1 indique que l'événement doit survenir à chaque fois.  Si vous choisissez 2, celà indique que l'événement doit survenir toutes les autres semaines (si <i>Type de répétition</i> est sur <i>Hebdomadaire</i>), tous les autres Mois (si <i>Type de répétition</i> est sur <i>Mensuel</i>), etc.
 Frequency: Fréquence
+MO: LU
+SU: DI
 All: Tout
 Send Reminder: Envoyer un rappel
 days: jours
@@ -369,7 +358,6 @@ conflicts with the following existing calendar entries: est en conflit avec les 
 #
 Add Layer: Ajouter un calque
 Edit Layer: Modifier un calque
-Source: Source
 Duplicates: Duplication
 Show layer events that are the same as your own: Afficher les événements dont les libellés sont identiques aux vôtres
 Add to My Calendar: Ajouter à mon agenda
@@ -653,7 +641,6 @@ Add New NonUser Calendar: Ajouter un nouvel utilisateur générique
 #
 Save Preferences: Sauvegarder les préférences
 hour: heure
-minute: minute
 
 ########################################
 # Page: purge.php
@@ -809,7 +796,6 @@ Reminder sent: Rappel envoyé
 Event updated: événement mis à jour
 Changes successfully saved: Modifications sauvegardées avec succès
 Event: Événement
-Action: Action
 Printer Friendly: Version&nbsp;imprimable
 Generate printer-friendly version: Générer une version imprimable
 January: janvier
@@ -823,17 +809,10 @@ August: août
 September: septembre
 October: octobre
 November: novembre
-Jan: Jan
 Feb: Fév
-Mar: Mar
 Apr: Avr
 May: Mai
-Jun: Jun
-Jul: Jul
 Aug: Aoû
-Sep: Sep
-Oct: Oct
-Nov: Nov
 The following error occurred: L'erreur suivante est survenue
 You are not authorized: Vous n'êtes pas autorisé(e)
 Error approving event: Erreur en approuvant l'événement
@@ -866,9 +845,7 @@ Manage calendar of: Gérer l'agenda de
 # Page: includes/translate.php
 #
 English: Anglais
-Basque: Basque
 Bulgarian: Bulgare
-Catalan: Catalan
 Chinese (Simplified/GB2312): Chinois (Simplifié/GB2312)
 Chinese (Traditional/Big5): Chinois (Traditionnel/Big5)
 Czech: Tchèque
@@ -911,13 +888,13 @@ no such user: Utilisateur inexistant
 ########################################
 # Page: includes/xcal.php
 #
+TU: MA
+WE: ME
+TH: JE
+FR: VE
+SA: SA
 Unnamed Event: événement sans nom
 Event Imported: Événement importé
-
-########################################
-# Page: includes/classes/WebCalMailer.class
-#
-Notification: Notification
 
 ########################################
 # Page: includes/js/admin.php

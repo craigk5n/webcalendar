@@ -14,7 +14,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -88,12 +88,10 @@ Settings: Indstillinger
 Groups: Grupper
 NonUser Calendars: Ikke brugertilknyttede kalendere
 Other: Diverse
-Email: Email
 Colors: Farver
 app-name-help: Angiver navnet på kalenderen. Dette fremgår i browserens titellinie for samtlige sider samt på login-siden.
 Application Name: Kalender navn
 server-url-help: Angiver basis URL'en for applikationen. Denne bliver inkluderet når der udsendes email påmindelser og notifikationer.
-Server URL: Server URL
 language-help: Angiver hvilket sprog, der skal bruges.
 Language: Sprog
 Your browser default language is: Din browsers standardsprog er
@@ -314,7 +312,6 @@ Access: Adgang
 priority-help: Angiv aftalens prioritet.
 Priority: Prioritet
 High: Høj
-Medium: Medium
 Low: Lav
 category-help: Angiver aftalens kategori.
 Category: Kategori
@@ -580,7 +577,6 @@ Publishing Disabled (User): Udgivelse slået fra (User)
 # Page: import.php
 #
 Disabled: Slået fra
-Import format: Import format
 Exclude private records: Undlad import af private aftaler
 
 ########################################
@@ -656,7 +652,6 @@ An appointment has been rejected by: En aftale er blevet afslået af
 ########################################
 # Page: report.php
 #
-cont.: cont.
 This event is confidential: Denne aftale er fortrolig
 Waiting for approval: Afventer acceptering
 Deleted: Slettet
@@ -771,12 +766,6 @@ Another Users Calendar: Anden brugers kalender
 Manage Views: Definer Visninger
 
 ########################################
-# Page: includes/date_formats.php
-#
-December: December
-Dec: Dec
-
-########################################
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: overskrider grænsen på XXX aftaler pr. dag
@@ -803,13 +792,8 @@ May_: Maj
 June: Juni
 July: Juli
 October: Oktober
-November: November
-Jan: Jan
-Feb: Feb
 May: Maj
-Aug: Aug
 Oct: Okt
-Nov: Nov
 The following error occurred: Følgende fejl opstod
 You are not authorized: Du har ikke tilladelse til dette
 Add N hours to: Tilføj N timer til

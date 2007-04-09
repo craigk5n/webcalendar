@@ -5,7 +5,7 @@
 # Last update: 26-Nov-2004
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -418,7 +418,6 @@ Edit Custom Trailer: Editar Rodapé Personalizado
 #
 Username: Utilizador
 E-mail address: Endereço de email
-Password: Password
 again: novamente
 Enabled: Activados
 Disabled for demo: Desactivado em modo demo
@@ -620,7 +619,6 @@ An appointment has been rejected by: Uma marcação foi rejeitada por
 ########################################
 # Page: report.php
 #
-cont.: cont.
 This event is confidential: Este evento é confidencial
 Waiting for approval: À espera de aprovação
 Deleted: Apagada
@@ -762,14 +760,12 @@ August: Agosto
 September: Setembro
 October: Outubro
 November: Novembro
-Jan: Jan
 Feb: Fev
 Apr: Abr
 May: Mai
 Aug: Ago
 Sep: Set
 Oct: Out
-Nov: Nov
 The following error occurred: Ocorreu o seguinte erro
 You are not authorized: Não está autorizado
 Add N hours to: Adicionar N horas a

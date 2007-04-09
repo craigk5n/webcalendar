@@ -17,7 +17,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -670,7 +670,6 @@ An appointment has been rejected by: Um evento foi rejeitado por
 ########################################
 # Page: report.php
 #
-cont.: cont.
 This event is confidential: Este evento é confidencial
 Waiting for approval: Aguardando por aprovação
 Deleted: Deletado
@@ -815,14 +814,12 @@ August: Agosto
 September: Setembro
 October: Outubro
 November: Novembro
-Jan: Jan
 Feb: Fev
 Apr: Abr
 May: Mai
 Aug: Ago
 Sep: Set
 Oct: Out
-Nov: Nov
 The following error occurred: Ocorreu o seguinte erro
 You are not authorized: Você não está autorizado
 Error approving event: Erro aprovando evento
