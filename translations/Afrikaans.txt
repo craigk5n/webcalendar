@@ -51,6 +51,12 @@ Year: Jaar
 Date: Datum
 
 ########################################
+# Page: edit_entry.php
+#
+MO: MA
+SU: SO
+
+########################################
 # Page: edit_report.php
 #
 Today: Vandag
@@ -90,3 +96,11 @@ Tue: Din
 Wed: Woe
 Thu: Don
 Fri: Vry
+
+########################################
+# Page: includes/xcal.php
+#
+TU: DI
+WE: WO
+TH: DO
+FR: VR
