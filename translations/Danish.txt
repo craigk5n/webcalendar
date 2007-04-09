@@ -9,6 +9,10 @@
 # (Leo Todaro, leotodaro <at> hotmail.com), 18-Jun-2005
 # Last update: 18-Jun-2005
 #
+# Translations for page: includes/classes/WebCalMailer.class
+# by: Mikael Stokkebro <info@stokkebro.dk>
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
 # Additional translations 'borrowed' from SourceForge project
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
@@ -880,6 +884,18 @@ Event Imported: Aftaler importeret
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Påmindelse
+authenticate: SMTP fejl: Kunne ikke logge på.
+connect_host: SMTP fejl: Kunne ikke tilslutte SMTP serveren.
+data_not_accepted: SMTP fejl: Data kunne ikke accepteres.
+encoding: Ukendt encode-format:
+execute: Kunne ikke køre:
+file_access: Ingen adgang til fil:
+file_open: Fil fejl: Kunne ikke åbne filen:
+from_failed: Følgende afsenderadresse er forkert:
+instantiate: Kunne ikke initialisere email funktionen.
+mailer_not_supported: mailer understøttes ikke.
+provide_address: Du skal indtaste mindst en modtagers emailadresse.
+recipients_failed: SMTP fejl: Følgende modtagere er forkerte:
 
 ########################################
 # Page: includes/js/admin.php

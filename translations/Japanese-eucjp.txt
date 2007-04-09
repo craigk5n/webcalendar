@@ -5,6 +5,10 @@
 # Updated many times by Tadashi Jokagi <elf2000@users.sourceforge.net>
 # Last updated: 12-08-2006
 #
+# Translations for page: includes/classes/WebCalMailer.class
+# By Mitsuhiro Yoshida - http://mitstek.com/
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
 # $Id$
 # Translation last updated on 04-09-2007
 
@@ -1277,10 +1281,18 @@ Mb: ¥á¥¬¥Ð¥¤¥È
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: ¤ªÃÎ¤é¤»
-execute: ¼Â¹Ô¤Ç¤­¤Þ¤»¤ó¡£
-instantiate: Could not instantiate mail function mail ´Ø¿ô¤ò¥¤¥ó¥¹¥¿¥ó¥¹¤Ç¤­¤Þ¤»¤ó¡£
-mailer_not_supported: ¥á¡¼¥é¡¼¤ò¥µ¥Ý¡¼¥È¤·¤Æ¤¤¤Þ¤»¤ó¡£
+authenticate: SMTP¥¨¥é¡¼: Ç§¾Ú¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£
+connect_host: SMTP¥¨¥é¡¼: SMTP¥Û¥¹¥È¤ËÀÜÂ³¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£
+data_not_accepted: SMTP¥¨¥é¡¼: ¥Ç¡¼¥¿¤¬¼õ¤±ÉÕ¤±¤é¤ì¤Þ¤»¤ó¤Ç¤·¤¿¡£
+encoding: ÉÔÌÀ¤Ê¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°: 
+execute: ¼Â¹Ô¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿: 
+file_access: ¥Õ¥¡¥¤¥ë¤Ë¥¢¥¯¥»¥¹¤Ç¤­¤Þ¤»¤ó: 
+file_open: ¥Õ¥¡¥¤¥ë¥¨¥é¡¼: ¥Õ¥¡¥¤¥ë¤ò³«¤±¤Þ¤»¤ó: 
+from_failed: ¼¡¤ÎFrom¥¢¥É¥ì¥¹¤Ë´Ö°ã¤¤¤¬¤¢¤ê¤Þ¤¹: 
+instantiate: ¥á¡¼¥ë´Ø¿ô¤¬Àµ¾ï¤ËÆ°ºî¤·¤Þ¤»¤ó¤Ç¤·¤¿¡£
+mailer_not_supported: ¥á¡¼¥é¡¼¤¬¥µ¥Ý¡¼¥È¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡£
 provide_address: ¾¯¤Ê¤¯¤È¤â 1 ¤Ä¤Î¼õ¼è¿Í¤ÎÅÅ»Ò¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÄó¶¡¤·¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó¡£
+recipients_failed: SMTP¥¨¥é¡¼: ¼¡¤Î¼õ¿®¼Ô¥¢¥É¥ì¥¹¤Ë Ö°ã¤¤¤¬¤¢¤ê¤Þ¤¹: 
 
 ########################################
 # Page: includes/js/admin.php

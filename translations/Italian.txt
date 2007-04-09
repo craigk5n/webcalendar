@@ -5,6 +5,10 @@
 # Alessandro <a.orlandi@iol.it>
 # Last update: 22 July 2000
 #
+# Translations for page: includes/classes/WebCalMailer.class
+# by: Ilias Bartolini <brain79@inwind.it>
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
 # Additional translations 'borrowed' from SourceForge project
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
@@ -881,6 +885,18 @@ Event Imported: Eventi importati
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Notifica
+authenticate: SMTP Error: Impossibile autenticarsi.
+connect_host: SMTP Error: Impossibile connettersi all\'host SMTP.
+data_not_accepted: SMTP Error: Data non accettati dal server.
+encoding: Encoding set dei caratteri sconosciuto: 
+execute: Impossibile eseguire l'operazione: 
+file_access: Impossibile accedere al file: 
+file_open: File Error: Impossibile aprire il file: 
+from_failed: I seguenti indirizzi mittenti hanno generato errore: 
+instantiate: Impossibile istanziare la funzione mail
+mailer_not_supported: Mailer non supportato
+provide_address: Deve essere fornito almeno un indirizzo ricevente
+recipients_failed: SMTP Error: I seguenti indirizzi destinatari hanno generato errore: 
 
 ########################################
 # Page: includes/js/admin.php

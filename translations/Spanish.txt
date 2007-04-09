@@ -5,6 +5,9 @@
 # Eduardo Dominguez <lalo_notthisplease@teligens.com>
 # Mario Benito <mbenito@maberi.com>
 #
+# Translations for page: includes/classes/WebCalMailer.class
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
 # Additional translations 'borrowed' from SourceForge project
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
@@ -884,6 +887,18 @@ Event Imported: Evento importado
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Notificación
+authenticate: Error SMTP: No se pudo autentificar.
+connect_host: Error SMTP: No puedo conectar al servidor SMTP.
+data_not_accepted: Error SMTP: Datos no aceptados.
+encoding: Codificación desconocida:
+execute: No puedo ejecutar:
+file_access: No puedo acceder al archivo:
+file_open: Error de Archivo: No puede abrir el archivo:
+from_failed: La(s) siguiente(s) direcciones de remitente fallaron:
+instantiate: No pude crear una instancia de la función Mail.
+mailer_not_supported: mailer no está soportado.
+provide_address: Debe proveer al menos una dirección de email como destinatario.
+recipients_failed: Error SMTP: Los siguientes destinatarios fallaron:
 
 ########################################
 # Page: includes/js/admin.php

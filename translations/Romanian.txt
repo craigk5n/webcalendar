@@ -4,6 +4,10 @@
 # Dan Protopopescu <protopop@physics.gla.ac.uk>
 # Last update: 19 January 2005
 #
+# Translations for page: includes/classes/WebCalMailer.class
+# by: Catalin Constantin <catalin@dazoot.ro>
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
 # $Id$
 # Translation last updated on 04-09-2007
 
@@ -868,6 +872,18 @@ Event Imported: Eveniment importat
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Notificare
+authenticate: Eroare SMTP: Nu a functionat autentificarea.
+connect_host: Eroare SMTP: Nu m-am putut conecta la adresa SMTP.
+data_not_accepted: Eroare SMTP: Continutul mailului nu a fost acceptat.
+encoding: Encodare necunoscuta: 
+execute: Nu pot executa:  
+file_access: Nu pot accesa fisierul: 
+file_open: Eroare de fisier: Nu pot deschide fisierul: 
+from_failed: Urmatoarele adrese From au dat eroare: 
+instantiate: Nu am putut instantia functia mail.
+mailer_not_supported: mailer nu este suportat.
+provide_address: Trebuie sa adaugati cel putin un recipient (adresa de mail).
+recipients_failed: Eroare SMTP: Urmatoarele adrese de mail au dat eroare: 
 
 ########################################
 # Page: includes/js/admin.php
