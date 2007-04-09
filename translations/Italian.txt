@@ -10,7 +10,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -118,7 +118,6 @@ Preferred view: Vista preferita
 Bottom: fine
 Top: inizio
 fonts-help: Specifica una lista di font si sistema da utilizzare (ad esempio "Arial, Helvetica")
-Fonts: Fonts
 display-weekends-help: Include i weekend quando si guarda una settimana
 display-week-number-help: Specifica se mostrare o meno il numero della settimana (1-52) quando il calendario viene visualizzato per mese o per settimana.
 Display week number: Mostrare numero settimana
@@ -231,7 +230,6 @@ Event popup text: Testo della popup degli eventi
 Assistants: Assistenti
 Preferences: Preferenze
 Users: Utenti
-Account: Account
 Categories: Categoris
 Views: Viste
 Layers: Livelli
@@ -445,7 +443,6 @@ Edit Custom Trailer: Modifica il fine pagina personalizzato
 #
 Username: Nome Utente
 E-mail address: Indirizzo email
-Password: Password
 again: di nuovo
 Enabled: Abilitati
 Disabled for demo: Disabilita per la demo
@@ -648,7 +645,6 @@ An appointment has been rejected by: Un appuntamento &egrave; stato rifiutato da
 ########################################
 # Page: report.php
 #
-cont.: cont.
 This event is confidential: Questo evento &egrave; confidenziale
 Waiting for approval: In attesa di approvazione
 Deleted: Cancellato
@@ -793,14 +789,12 @@ September: Settembre
 October: Ottobre
 November: Novembre
 Jan: Gen
-Feb: Feb
 May: Mag
 Jun: Giu
 Jul: Lug
 Aug: Ago
 Sep: Set
 Oct: Ott
-Nov: Nov
 The following error occurred: &Egrave; avvenuto il seguente errore
 You are not authorized: Non sei autorizzato
 Add N hours to: Aggiungi N ore all'
@@ -851,7 +845,6 @@ Finnish: Finlandese
 French: Francese
 Galician: Galiziano
 German: Tedesco
-Holo (Taiwanese): Holo (Taiwanese)
 Hungarian: Ungherese
 Icelandic: Islandese
 Italian: Italiano

@@ -43,7 +43,7 @@
 use File::Find;
 
 sub find_pgm_files {
-# Skipping non Webcalendar plugins,
+# Skipping non WebCalendar plugins,
 # if the filename ends in .class or .php, add it to @files.
   push( @files, "$File::Find::name" )
     if ( $_ =~ /\.(class|php)$/i
@@ -205,7 +205,7 @@ $header .=
   '# Translation last updated on '
   . sprintf( "%02d-%02d-%04d", $mon + 1, $day, $year + 1900 ) . "\n";
 
-print "\nFinding Webcalendar class and php files.\n\n" if ( $verbose );
+print "\nFinding WebCalendar class and php files.\n\n" if ( $verbose );
 find \&find_pgm_files, $base_dir;
 
 #

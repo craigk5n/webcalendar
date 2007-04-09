@@ -6,7 +6,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################

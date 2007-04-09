@@ -6,7 +6,7 @@
 # Last updated: 12-08-2006
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -298,7 +298,6 @@ email-event-updated: ¥«¥ì¥ó¥À¡¼¤Î¥¤¥Ù¥ó¥È¤¬¹¹¿·¤µ¤ì¤¿¾ì¹ç¡¢ÅÅ»Ò¥á¡¼¥ëÄÌÃÎ¤òÁ÷¤ë¤
 Events updated on my calendar: ¼«Ê¬¤Î¥«¥ì¥ó¥À¡¼¤Î¥¤¥Ù¥ó¥È¤ò¹¹¿·
 email-event-deleted: ¥«¥ì¥ó¥À¡¼¤Î¥¤¥Ù¥ó¥È¤¬ºï½ü¤µ¤ì¤¿¾ì¹ç¡¢ÅÅ»Ò¥á¡¼¥ëÄÌÃÎ¤òÁ÷¤ë¤«¤É¤¦¤«»ØÄê¤·¤Þ¤¹¡£
 Events removed from my calendar: ¼«Ê¬¤Î¥«¥ì¥ó¥À¡¼¤«¤é¥¤¥Ù¥ó¥È¤òºï½ü
-email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Event rejected by participant: »²²Ã¼Ô¤Î¥¤¥Ù¥ó¥ÈµñÈÝ
 Allow user to customize colors: ¥æ¡¼¥¶¡¼¤Î¿§ÀßÄê¤òµö²Ä¤¹¤ë
 gradient-colors: Í­¸ú¤Ë¤·¤¿¾ì¹ç¡¢¥°¥é¥Ç¡¼¥·¥ç¥ó¿§¤ò»ÈÍÑ¤·¤Þ¤¹¡£¤³¤ì¤ÏÈó¾ï¤ËÆ°ºî¤Ë±Æ¶Á¤òÍ¿¤¨¤ë¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£
@@ -885,7 +884,6 @@ Entry interval: ¥¨¥ó¥È¥ê¤Î´Ö³Ö
 hour: »þ´Ö
 minute: Ê¬
 Email format preference: ÅÅ»Ò¥á¡¼¥ë¤Î½ñ¼°ÀßÄê
-HTML: HTML
 Plain Text: ¤¿¤À¤Î¥Æ¥­¥¹¥È
 Display if created by Assistant: ¤â¤·¥¢¥·¥¹¥¿¥ó¥È¤ÎºîÀ®¤âÉ½¼¨
 
@@ -917,7 +915,7 @@ You may change your password after logging in the first time: ºÇ½é¤ò¥í¥°¥¤¥ó¤·¤¿
 Administrator: ´ÉÍý¼Ô
 Welcome: ¤è¤¦¤³¤½
 Registration: ÅÐÏ¿
-Welcome to WebCalendar: ¤è¤¦¤³¤½ Webcalendar ¤Ø
+Welcome to WebCalendar: ¤è¤¦¤³¤½ WebCalendar ¤Ø
 Your email should arrive shortly: ÅÅ»Ò¥á¡¼¥ë¤Ï¤Þ¤â¤Ê¤¯ÅþÃå¤¹¤ë¤Ï¤º¤Ç¤¹¡£
 Return to Login screen: ¥í¥°¥¤¥ó²èÌÌ¤ËÌá¤ë
 Your account information will be emailed to you: ¥¢¥«¥¦¥ó¥È¾ðÊó¤ÏÁ÷¿®¤µ¤ì¤¿¤Ç¤·¤ç¤¦¡£
@@ -1428,7 +1426,6 @@ Display Required SQL: Í×µá¤µ¤ì¤¿ SQL ¤òÉ½¼¨¤¹¤ë
 This is the final step in setting up your WebCalendar Installation.: ¤³¤ì¤Ï¡¢WebCalendar ¤Î¥¤¥ó¥¹¥È¡¼¥ëÀßÄê¤Ë¤ª¤±¤ëºÇ½ª¥¹¥Æ¥Ã¥×¤Ç¤¹¡£
 Timezone Conversion: ¥¿¥¤¥à¥¾¡¼¥óÊÑ´¹
 It appears that you have: ¤ª¤½¤é¤¯
-NOT: NOT
 converted your existing WebCalendar event data to GMT.: ´ûÂ¸¤ÎWebCalendar¥¤¥Ù¥ó¥È¥Ç¡¼¥¿¤ò GMT ¤ËÊÑ´¹¤·¤Þ¤·¤¿¡£
 If this is a new installation, you may also ignore this notice.: ¤³¤ì¤¬¿·µ¬¥¤¥ó¥¹¥È¡¼¥ë¤Î¾ì¹ç¡¢¤³¤ÎÄÌÃÎ¤ÏÌµ»ë¤¹¤ë¤Ç¤·¤ç¤¦¡£
 Convert Data to GMT: GMT ¤Ë¥Ç¡¼¥¿¤òÊÑ´¹¤¹¤ë

@@ -5228,7 +5228,7 @@ function send_http_login () {
     $unauthorized = translate ( 'Unauthorized' );
   } else {
     $not_authorized = 'You are not authorized';
-    $title = 'Webcalendar';
+    $title = 'WebCalendar';
     $unauthorized = 'Unauthorized';
   }
   header ( 'WWW-Authenticate: Basic realm="' . "$title\"" );

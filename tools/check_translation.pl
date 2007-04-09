@@ -19,7 +19,7 @@
 use File::Find;
 
 sub find_pgm_files {
-# Skipping non Webcalendar plugins,
+# Skipping non WebCalendar plugins,
 # if the filename ends in .class or .php, add it to @files.
   push( @files, "$File::Find::name" )
     if ( $_ =~ /\.(class|php)$/i

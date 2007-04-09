@@ -4,7 +4,7 @@
 # Last update: 14.03.2003
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -69,7 +69,6 @@ System Settings: Süsteemi seaded
 Help: Abiks
 Settings: Seaded
 Groups: Grupid
-Email: Email
 Colors: Värvid
 app-name-help: Määrab ära rakenduse nime mis ilmub edaspidi lehitseja tiitli ribale
 Application Name: Rakenduse nimi
@@ -191,7 +190,6 @@ Preferences: Eelistused
 Users: Kasutajaid
 Account: Konto
 Categories: Kategooriad
-Views: Views
 Layers: Kihid
 Activity Log: Kasutamise ajalugu
 
@@ -276,6 +274,8 @@ repeat-end-date-help: Määrab kuupäeva milleni sündmust korrata.
 Use end date: Kasutuse lõppkuupäev
 repeat-frequency-help: Määrab kui tihti sündmust korrata. 1 näitab et peab korduma igas ajaühikus, 2 näitab et peab korduma igal teisel nädalal (kui <i>Korduse tüüp</i> on <i>nädalati</i>), igal teisel kuul (kui <i>Korduse tüüp</i> on <i>kuiselt</i>), jne.
 Frequency: Sagedus
+MO: E
+SU: P
 All: Kõik
 Send Reminder: Saada meeldetuletus
 days: päevi
@@ -286,7 +286,6 @@ You are not authorized to edit this entry.: Sul ei ole lubatud muuta seda kannet
 # Page: edit_entry_handler.php
 #
 A new appointment has been made for you by: Sulle on määratud uus kohtumine
-An appointment has been updated by: An appointment has been updated by
 The following conflicts with the suggested time: Järgmised sündmused on vastuolus soovitud ajaga
 Please look on: Palun vaata
 to accept or reject this appointment: kohtumise heakskiitmiseks või tagasilükkamiseks
@@ -668,6 +667,11 @@ Invalid user login: Ebasobiva kasutaja sisenemine
 ########################################
 # Page: includes/xcal.php
 #
+TU: T
+WE: K
+TH: N
+FR: R
+SA: L
 Unnamed Event: Nimetu sündmus
 
 ########################################

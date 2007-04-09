@@ -12,7 +12,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -81,7 +81,6 @@ Settings: Paràmetres
 Groups: Grups
 NonUser Calendars: Calendaris no d'usuari
 Email: Correu electrònic
-Colors: Colors
 app-name-help: Especifica el nom de l'aplicació que es mostrarà a la barra de títol del navegador a totes les pàgines i a la pàgina d'entrada. A l'arxiu de traduccions es mirarà el valor que s'especifiqui aquí per poder oferir títols diferents per a diverses llengües.
 Application Name: Nom de l'aplicació
 server-url-help: Especifica la URL principal de l'aplicació. Això s'inclourà en enviar recordatoris i notificacions per correu electrònic.
@@ -225,7 +224,6 @@ Assistants: Assistents
 Preferences: Preferències
 Users: Usuaris
 Account: Compte
-Categories: Categories
 Views: Visualitzacions
 Layers: Capes
 Reports: Informes
@@ -279,7 +277,6 @@ Description: Descripció
 #
 Edit Entry: Edita Entrada
 Add Entry: Afegeix una entrada
-Participants: Participants
 brief-description-help: Aquest camp permet una descripció breu (d'uns 20 caràcters) de l'esdeveniment. Així és com es mostrarà l'esdeveniment en visualitzar el calendari.
 Brief Description: Descripció breu
 full-description-help: Aquí cal completar els detalls de l'esdeveniment. Es pot veure aquesta informació quan un usuari visualitza l'esdeveniment.
@@ -367,7 +364,6 @@ Last Name: Cognom
 #
 Import Results: Importar resultats
 Events successfully imported: Esdeveniments importats correctament
-Errors: Errors
 There was an error parsing the import file or no events were returned: S'ha produït un error en processar el fitxer d'importació o no s'ha recuperat cap esdeveniment
 
 ########################################
@@ -625,7 +621,6 @@ An appointment has been rejected by: Una cita ha estat rebutjatda per
 ########################################
 # Page: report.php
 #
-cont.: cont.
 This event is confidential: Aquest esdeveniment és confidencial
 Waiting for approval: Pendent d'aprovació
 Deleted: Suprimit
@@ -767,12 +762,10 @@ September: Setembre
 October: Octubre
 November: Novembre
 Jan: Gen
-Feb: Feb
 Apr: Abr
 May: Mai
 Aug: Ago
 Sep: Set
-Nov: Nov
 The following error occurred: S'ha produït un error
 You are not authorized: No tens autorització
 Add N hours to: Afegir N hores a

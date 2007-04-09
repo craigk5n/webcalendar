@@ -8,7 +8,7 @@
 # Updated to 1.1 by Istvan Bubreg bubreg_at_freemail_hu
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -50,7 +50,6 @@ Go: Mehet
 Save: Mentés
 Public Access: Nyilvános naptár
 Admin: Adminisztráció
-User Access Control: User Access Control
 Allow Access to Other Users Calendar: Hozzáférés engedélyezése más felhasználóknak
 Grant This User Access to My Calendar: Hozzáférés engedélyezése a naptáramhoz
 Type: Típus
@@ -99,7 +98,6 @@ Settings: Beállítások
 Groups: Csoportok
 NonUser Calendars: Felhasználó nélküli naptárak
 Other: Egyéb
-Email: Email
 Colors: Színek
 app-name-help: Megadhatsz egy programnevet, ami a böngészõ címsorában jelenik meg, illetve a bejelentkezéskor. Az itt megadott érték lefordításra kerül, így a különbözõ nyelvekhez különbözõ programnevet adhatsz meg.
 Application Name: Programnév
@@ -125,10 +123,8 @@ custom-trailer-help: Egy csipetnyi egyedi HTML beszúrását teszi lehetõvé mi
 Custom trailer: Egyedi lábléc
 enable-external-header-help: Egyedi előzetes betöltése fájlból
 Allow external file for header/script/trailer: Külső fájl engedélyezése a fejléchez/parancsokhoz/előzeteshez
-Allow user to override header/trailer: Allow user to override header/trailer
 tz-help: Megadja a szerver és a helyi idõzóna közötti eltérést órában.
 Server Timezone Selection: Szerver időzóna választás
-display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
 Display Common Use Date/Times as GMT: Dátumok/idők megjelenítése GMT szerint
 date-format-help: Megadja a kívánt dátumformátumot.
 Date format: Dátumformátum
@@ -384,7 +380,6 @@ Color: Szín
 Remove Icon: Ikon eltávolítása
 Add Icon to Category: Ikon felvétele a kategóriába
 Upload: Feltöltés
-gif 3kb max: gif 3kb max
 Search for existing icons: Keresés a létező ikonok között
 Add: Hozzáadás
 Delete: Törlés
@@ -452,11 +447,8 @@ Priority: Prioritás
 High: Magas
 Medium: Közepes
 Low: Alacsony
-category-help: Specifies the category of the event.
 Category: Kategória
-percent-help: Task completion percentage for this user
 Percent Complete: Készültésgi fok
-All Percentages: All Percentages
 location-help: Esemény helyszíne
 Location: Helyszín
 date-help: Az esemény dátuma
@@ -465,17 +457,14 @@ Untimed event: Idő nélküli esemény
 Timed event: Időzített esemény
 All day event: Egész napos esemény
 Timezone Offset: Idõzóna eltérés
-time-help: Specifies the time of the event.<br />Select either "Timed event" (for an event that is scheduled for a specific time on that day), "Untimed event" (for an event this does not have a time (like a holiday), or "All day event" (for an event that takes all day (like being out of the office).
 duration-help: Specifies the duration (in hours;minutes) of the event.<br /><em>This field can be left blank.</em>
 hours: óra
 minutes: perc
-end-time-help: Specifies the time the event is expected to end.
 Start Time: Kezdő idő
 Due Date: Esedékesség dátuma
 Due Time: Esedékesség ideje
 participants-help: Bejegyzés résztvevőinek listája
 Availability: Elérhetőség
-external-participants-help: Specifies a list of participants for the event that are not calendar users. The users should be listed one per line and can include an email address. If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: Külső résztvevők
 repeat-type-help: Select how often the event should repeat.<em>Monthly (by day)</em> allows an event to repeat on the 1st Monday of the month, 3rd Thursday of the month, etc. <em>Monthly (by date)</em> allows an event to repeat on the same day of the month.
 Daily: Naponta
@@ -491,24 +480,12 @@ Ending: Vége
 Forever: Örökké
 Use end date: Befejező dátum használata
 Number of times: Ismétlődjön ennyiszer
-repeat-frequency-help: Specifies how often the event should repeat.
 Frequency: Gyakoriság
 Weekdays Only: Csak munkanapokon
 Week Start: Hét kezdete
-repeat-bydayextended-help: Allows date selection based on day of week.
-ByDay: ByDay
 All: Összes
-repeat-month-help: Specifies which months the event should repeat in.
 ByMonth: Havonta
 repeat-bysetpos-help: Allows date selection based on position within an another ByXXX set of dates.
-BySetPos: BySetPos
-repeat-bymonthdayextended-help: Allows date selection based on date.
-ByMonthDay: ByMonthDay
-repeat-byweekno-help: Allows user to specify a list of weeks to repeat event (1,2...53,-53,-52...-1).
-ByWeekNo: ByWeekNo
-repeat-byyearday-help: Allows user to specify a list of year days to repeat event (1,2...366,-366,-365...-1).
-ByYearDay: ByYearDay
-repeat-exceptions-help: Additional days that this event should or should not occur on.
 Exclusions: Kivételek
 Inclusions: Belefoglalások
 Add Exception: Új kivétel
@@ -660,7 +637,6 @@ Username cannot be blank.: A felhasználónév nem lehet üres
 ########################################
 # Page: export.php
 #
-Export: Export
 Export format: Exportálás formátuma
 Include all layers: Tartlamazzon minden réteget
 Export all dates: Minden dátum exportálása
@@ -705,8 +681,6 @@ Display weekends in week view: Hétvégék megjelenítése hét nézetben
 Time interval: Idõköz
 time-interval-help: Heti és napi nézetben megadja az idõblokkok hosszát.
 Nonuser: Felhasználó nélküli naptárak
-user-customize-color: Specifies whether users are allowed to modify their own color scheme.
-enable-gradient-help: Use gradient colors for cell backgrounds.
 Manually entering color values: Színkódok megadása kézzel
 colors-help: A színeket "#RRGGBB" hexadecimális formátumban kell megadni, ahol az "RR" a vörös, a "GG" a zöld, a "BB" a kék szín értékét adja meg.
 
@@ -727,7 +701,6 @@ repeat-day-help: Megadja, hogy a hét melyik napján ismétlődjön az esemény
 ########################################
 # Page: help_import.php
 #
-Import: Import
 This form will allow you to import entries from the Palm Desktop Datebook.: Ezen az ûrlapon tudsz Palm Desktop Datebook bejegyzéseket importálni.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: A Palm könyvtáradban kell lennie <tt>datebook/datebook.dat</tt>-ként egy, a felhasználói nevedrõl elnevezett könyvtárban.
 The following entries will not be imported: A következõ bejegyzések nem importálhatók
@@ -880,7 +853,6 @@ Timezone Selection: Időzóna kiválasztás
 hour: óra
 minute: perc
 Email format preference: Email formátum beállításai
-HTML: HTML
 Plain Text: Egyszerű szöveg
 display_byproxy-help: Az eredeti szerző megjelenítése a view_entry oldalon
 Display if created by Assistant: Megjelenítés, ha titkár hozta létre
@@ -890,7 +862,6 @@ Display if created by Assistant: Megjelenítés, ha titkár hozta létre
 #
 Purging events for: A következõ eseményeinek törlése:
 Finished: Kész
-Back: Back
 Check box to delete ALL events for a user: Jelöld be a felhasználó <b>ÖSSZES</b> eseményének törléséhez
 Delete all events before: Az összes ezelõtti esemény törlése
 Preview delete: Törlendők előnézete
@@ -1022,12 +993,8 @@ Update Task Percentage: Készültségi fok frissítése
 Completed: Kész
 Assistant mode: Titkár mód
 Status: Állapot
-Declined: Declined
-Needs-Action: Needs-Action
-by: by
 Percentage Complete: Készültségi fok
 External User: Külső felhasználó
-Update: Update
 Attachments: Mellékletek
 comments: megjegyzések
 Show: Mutat
@@ -1085,8 +1052,6 @@ Troubleshooting Help: Problémamegoldó help
 # Page: includes/date_formats.php
 #
 LANGUAGE DEFINED: NYELV ALAPJÁN
-December: December
-Dec: Dec
 
 ########################################
 # Page: includes/functions.php
@@ -1143,18 +1108,13 @@ July: Július
 August: Augusztus
 September: Szeptember
 October: Október
-November: November
-Jan: Jan
-Feb: Feb
 Mar: Márc
 Apr: Ápr
 May: Máj
 Jun: Jún
 Jul: Júl
-Aug: Aug
 Sep: Szept
 Oct: Okt
-Nov: Nov
 The following error occurred: A következõ hiba történt
 You are not authorized: Nincs jogosultságod
 Add N hours to: adj N �r�t
@@ -1251,8 +1211,6 @@ Event Imported: Esemény importálva
 # Page: includes/classes/Doc.class
 #
 bytes: bájt
-kb: kb
-Mb: Mb
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
@@ -1266,7 +1224,6 @@ execute: Sikertelen végrehajtás~
 file_access: Sikertelen fájlhozzáférés~
 file_open: Fájl hiba sikertelen megnyitás~
 from_failed: A következő feladó hibás~
-instantiate: Could not instantiate mail function
 mailer_not_supported: a levelező nem támogatott
 provide_address: Legalább egy címzettet meg kell adnod
 recipients_failed: SMTP Error~ A következő címzett hibás~
@@ -1332,85 +1289,13 @@ User Manager: Felhasználó karbantartás
 ########################################
 # Page: install/index.php
 #
-WebCalendar Installation Wizard: WebCalendar Installation Wizard
-Step: Step
 Failure Reason: Hibaok
-You must manually create database: You must manually create database
-Create New: Create New
-Database Name: Database Name
-Timezone Conversion Successful: Timezone Conversion Successful
-Error Unable to write to file: Error Unable to write to file
 Successful Login: Sikeres bejelentkezés
 Invalid Login: Érvénytelen bejelentkezés
-needed for Gradient Image Backgrounds: needed for Gradient Image Backgrounds
 Passwords do not match: A jelszavak különbözők
-Unable to write password to settings.php file: Unable to write password to settings.php file
 Password has been set: Jelszó beállítva
 Connection Successful: Kapcsolódás sikeres
-Please go to next page to continue installation: Please go to next page to continue installation
-Correct your entries and try again: Correct your entries and try again
-Error Converting Timezone: Error Converting Timezone
-Please change the file permissions of this file: Please change the file permissions of this file
-Your settings have been saved: Your settings have been saved
-Error you must specify a\\nSingle-User Login: Error you must specify a\\nSingle-User Login
-Full Path (no backslashes): Full Path (no backslashes)
-The password contains illegal characters.: The password contains illegal characters.
-PHP Version Check: PHP Version Check
-Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
-PHP version: PHP version
-Detailed PHP Info: Detailed PHP Info
-Session Check: Session Check
-To test the proper operation of sessions, reload this page: To test the proper operation of sessions, reload this page
-You should see the session counter increment each time: You should see the session counter increment each time
-SESSION COUNTER: SESSION COUNTER
-Settings.php Status: Settings.php Status
-Configuration Wizard Password: Configuration Wizard Password
-Create Settings File Password: Create Settings File Password
-Password (again): Password (again)
-Database Status: Database Status
-Supported databases for your PHP installation: Supported databases for your PHP installation
-Your current database settings are able to access the database: Your current database settings are able to access the database
-Please Test Settings: Please Test Settings
-Database Settings: Database Settings
-Database Type: Database Type
-Server: Server
-Connection Persistence: Connection Persistence
-All your database tables appear to be up to date. You may proceed to the: All your database tables appear to be up to date. You may proceed to the
-next page and complete your WebCalendar setup: next page and complete your WebCalendar setup
-This appears to be a new installation. If this is not correct, please: This appears to be a new installation. If this is not correct, please
-go back to the previous page and correct your settings: go back to the previous page and correct your settings
-The database requires some data input: The database requires some data input
-This appears to be an upgrade from version: This appears to be an upgrade from version
-In this section we will perform the required database changes to bring your database up to the required level: In this section we will perform the required database changes to bring your database up to the required level
-If you are using a fully supported database, this step will be performed automatically for you: If you are using a fully supported database, this step will be performed automatically for you
-If not, the required SQL can be displayed and you should be able: If not, the required SQL can be displayed and you should be able
-to cut &amp; paste it into your database server query window: to cut &amp; paste it into your database server query window
-No database actions are required: No database actions are required
-The following database actions are required: The following database actions are required
-ODBC Underlying Database: ODBC Underlying Database
-This may take several minutes to complete: This may take several minutes to complete
-Install Database: Install Database
 Update Database: Adatbázis frissítése
-Display Required SQL: Display Required SQL
-Timezone Conversion: Timezone Conversion
-It appears that you have: It appears that you have
-NOT: NOT
-If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
-Convert Data to GMT: Convert Data to GMT
-Application Settings: Application Settings
-HTTP-based authentication was not detected: HTTP-based authentication was not detected
-You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to
-Create Default Admin Account: Create Default Admin Account
-User Authentication: User Authentication
-Web-based via WebCalendar (default): Web-based via WebCalendar (default)
-Web Server: Web Server
-None (Single-User): None (Single-User)
-Read-Only: Read-Only
-Environment: Environment
-Production: Production
-Development: Development
-Save Settings: Save Settings
-Launch WebCalendar: Launch WebCalendar
 
 ########################################
 # Page: tools/send_reminders.php

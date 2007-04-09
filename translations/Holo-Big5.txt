@@ -3,7 +3,7 @@
 # Translated by: Henry H. Tan-Tenn <share2002nov@lomaji.com>
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -74,7 +74,6 @@ System Settings: 系統設定
 Help: 說明
 Settings: 設定中
 Colors: 顏色
-language-help: Specifies which language to use.
 Language: 語系
 Your browser default language is: 你 e 瀏覽器預設 e 語系是
 None: 無
@@ -201,13 +200,8 @@ You are not authorized to edit this entry.: 你無權利編輯這項記事
 # Page: edit_entry_handler.php
 #
 A new appointment has been made for you by: 你有一個新約會，邀請者是
-The following conflicts with the suggested time: The following conflicts with the suggested time
 Please look on: 請查看
 to accept or reject this appointment: 決定接受或拒絕這個約會
-to view this appointment: to view this appointment
-Scheduling Conflict: Scheduling Conflict
-Your suggested time of: Your suggested time of
-conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
 
 ########################################
 # Page: edit_layer.php
@@ -216,7 +210,6 @@ Add Layer: 新增階層
 Edit Layer: 編輯階層
 Source: 來源
 Duplicates: 副本
-Show layer events that are the same as your own: Show layer events that are the same as your own
 Add to My Calendar: 新增到我 e 行事曆
 Delete layer: 刪除階層
 
@@ -247,7 +240,6 @@ E-mail address: 電子郵件地址
 Password: 密碼
 again: 閣一擺
 Enabled: 啟用 e
-Disabled for demo: Disabled for demo
 Change Password: 變更密碼
 New Password: 新 e 密碼
 Set Password: 設定密碼
@@ -278,11 +270,6 @@ Edit Group: 編輯使用陣
 Group name: 使用陣名稱
 Updated: 更新
 Created by: 公布者
-
-########################################
-# Page: help_admin.php
-#
-colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 
 ########################################
 # Page: help_bug.php
@@ -458,7 +445,6 @@ Event updated: 活動更新
 Event: 活動
 Action: 行動
 Printer Friendly: 友善列印
-Generate printer-friendly version: Generate printer-friendly version
 January: 1月
 February: 2月
 March: 3月
@@ -483,7 +469,6 @@ Oct: 10月
 Nov: 11月
 The following error occurred: 發生以下 e 錯誤
 You are not authorized: 您未經授權
-Error approving event: Error approving event
 Sunday: 禮拜日
 Monday: 拜一
 Tuesday: 拜二
@@ -507,11 +492,6 @@ Add New Entry: 註冊記事
 Logout: 登出
 Back to My Calendar: 轉去我 e 行事曆
 Go to: 功能選擇
-
-########################################
-# Page: includes/xcal.php
-#
-Unnamed Event: Unnamed Event
 
 ########################################
 # Page: includes/classes/WebCalMailer.class

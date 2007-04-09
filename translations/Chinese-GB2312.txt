@@ -4,7 +4,7 @@
 # Last update: 2003-8-5
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -422,7 +422,6 @@ auto-refresh-time-help: 自动-刷新-时间-帮助
 Display weekends in week view: 显示周末
 Time interval: 时间间隔
 Nonuser: 非日历用户
-colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 
 ########################################
 # Page: help_bug.php

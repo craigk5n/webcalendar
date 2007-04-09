@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -65,7 +65,6 @@ February: Februar
 March: Mart
 May_: Maj
 June: Jun
-July: July
 August: Avgust
 September: Septembar
 October: Oktobar

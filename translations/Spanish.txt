@@ -10,7 +10,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -85,7 +85,6 @@ Settings: Opciones
 Groups: Grupos
 NonUser Calendars: Calendarios de NoUsuario
 Other: Otros
-Email: Email
 Colors: Colores
 app-name-help: Especifica el nombre de la aplicación que aparecera en el título del navegador en todas las páginas y en la página de login. El valor especeficado aquí se buscará en el fichero de traducciones permitiendo diferentes títulos para diferentes idiomas.
 Application Name: Nombre de la aplicación
@@ -191,7 +190,7 @@ nonuser-list-help: Dónde mostrar los calendarios de NoUsuarios en la lista de pa
 Nonuser list: Lista de NoUsuarios
 reports-enabled-help: Si se habilita, los usuarios verán una sección "Informes" en la parte inferior de cada página permitiendo crear informes personalizados. Adicionalmente, los administradores pueden crear informes globales que aparecerán en la parte inferior de todas las páginas de los usuarios.
 Reports enabled: Informes habilitados
-subscriptions-enabled-help: Especifica si usuarios remotos pueden suscribirse al Webcalendar del calendario de un usuario, permitiendoles ver los eventos del usuario de Webcalendar en sus aplicaciones iCal (como Apple's iCal o Mozilla Calendar).
+subscriptions-enabled-help: Especifica si usuarios remotos pueden suscribirse al WebCalendar del calendario de un usuario, permitiendoles ver los eventos del usuario de WebCalendar en sus aplicaciones iCal (como Apple's iCal o Mozilla Calendar).
 Allow remote subscriptions: Permitir suscripciones remotas
 categories-enabled-help: Habilita la funcionalidad de Categorías.
 Categories enabled: Categorías habilitadas
@@ -652,7 +651,6 @@ An appointment has been rejected by: Un evento ha sido rechazado por
 ########################################
 # Page: report.php
 #
-cont.: cont.
 This event is confidential: Este evento es confidencial
 Waiting for approval: Esperando aprobación
 Deleted: Eliminados
@@ -796,10 +794,8 @@ September: Septiembre
 October: Octubre
 November: Noviembre
 Jan: Ene
-Feb: Feb
 Apr: Abr
 Aug: Ago
-Nov: Nov
 The following error occurred: Ocurrió el siguiente error
 You are not authorized: No estás autorizado
 Add N hours to: Añadir N horas a

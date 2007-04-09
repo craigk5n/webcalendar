@@ -7,7 +7,7 @@
 # Last time updated on 09-18-2005
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -84,7 +84,6 @@ Settings: Ustawienia
 Groups: Grupy
 NonUser Calendars: Kalendarze bez w³a¶cicieli
 Other: Pozosta³e
-Email: Email
 Colors: Kolory
 app-name-help: Okresla nazwe aplikacji która bedzie siê pojawia³a jako tytu³ przegl±darki na wszystkich stronach oraz na stronie logowania. Warto¶æ któr± tutaj wybierzesz zostanie zachowana w pliku z t³umaczeniem pozwalaj±c na obs³uge ró¿nych tytu³ów dla ró¿nych jezyków
 Application Name: Nazwa aplikacji
@@ -672,7 +671,6 @@ Reject this entry?: Odrzuciæ wpis?
 #
 You must enter a login and password: Musisz wprowadzia nazwe u¿ytkownika i has³o
 Save login via cookies so I dont have to login next time.: Zapisz nazwe u¿ytkownika przez cookies
-Login: Login
 Access public calendar: Dostep do kalendarza publicznego
 cookies-note: <b>Uwaga!</b> Ta aplikacja wymaga w³±czonych cookies!
 
@@ -748,7 +746,6 @@ An appointment has been rejected by: Spotkanie zosta³o odrzucone przez
 ########################################
 # Page: report.php
 #
-cont.: cont.
 This event is confidential: To zdarznie jest poufne
 Waiting for approval: Czekanie na zatwierdzenie
 Deleted: Skasowany
@@ -951,7 +948,6 @@ Sat: Sb
 #
 My Calendar: Mój kalendarz
 Add New Entry: Dodaj nowy wpis
-Logout: Logout
 Back to My Calendar: Powrót do mojego kalendarza
 Go to: Id¼ do
 Manage calendar of: Zarz±dzaj kalendarzem od

@@ -11,7 +11,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -86,12 +86,10 @@ Settings: Ρυθμίσεις
 Groups: Ομάδες
 NonUser Calendars: Ημερολόγια μη-χρηστών
 Other: Διάφορα
-Email: Email
 Colors: Χρώματα
 app-name-help: Καθορίζει το όνομα της εφαρμογής που θα εμφανίζεται στη γραμμή τίτλου του browser σε όλες τις σελίδες. Η επιλογή εδώ θα αναζητηθεί στα αρχεία μεταφράσεων για να μπορούν να δωθούν διαφορετικοί τίτλοι σε διαφορετικές γλώσσες.
 Application Name: Όνομα εφαρμογής
 server-url-help: Καθορίζει το URL της εφαρμογής. Θα περιλαμβάνεται στα email υπενθυμίσεων και ειδοποιήσεων.
-Server URL: Server URL
 language-help: Καθορίζει το ποιά γλώσσα θα χρησιμοποιείται.
 Language: Γλώσσα
 Your browser default language is: Η default γλώσσα του browser σας είναι
@@ -323,7 +321,6 @@ date-help: Καθορίζει την ημερομηνία του γεγονότ�
 Untimed event: Γεγονός δίχως ώρα
 Timed event: Γεγονός με ώρα
 All day event: Ολοήμερο γεγονός
-Timezone Offset: Timezone Offset
 time-help: Καθορίζει την ώρα του γεγονότος.<br />Επέλεξε "Γεγονός με ώρα" (για γεγονός που προγραμματίστηκε για συγκεκριμένη ώρα της μέρας), "Γεγονός δίχως ώρα" (για γεγονός που δεν έχει ώρα (π.χ. εορτή κάποιου φίλου), ή "Ολοήμερο γεγονός" (για γεγονός που ισχύει όλη την ημέρα (π.χ. απουσία από το γραφείο).
 duration-help: Καθορίζει τη διάρκεια (σε ώρες:λεπτά) του γεγονότος.<br /><i>Η επιλογή μπορεί να μείνει κενή.</i>
 hours: ώρες
@@ -384,7 +381,6 @@ You can only create one layer for each user: Μπορείτε να δημιου�
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX δεν έχει τεθεί στο config.php.
-word characters only: can only contain word characters (a-zA-Z_0-9)
 Add User: Προσθήκη Χρήστη
 Edit User: Επεξεργασία Χρήστη
 Calendar ID: ID Ημερολογίου
@@ -465,7 +461,6 @@ E-mail address: Διεύθυνση E-mail
 Password: Κωδικός
 again: ξανά
 Enabled: Ενεργό
-Disabled for demo: Disabled for demo
 Change Password: Αλλαγή κωδικού
 New Password: Νέος κωδικός
 Set Password: Θέσετε τον κωδικό
@@ -673,7 +668,6 @@ An appointment has been rejected by: Μια συνάντηση, απορρίφθ
 ########################################
 # Page: report.php
 #
-cont.: cont.
 This event is confidential: Το γεγονός είναι ιδιωτικό
 Waiting for approval: Περιμένει για αποδοχή
 Deleted: Διεγραμένο
@@ -878,11 +872,9 @@ Chinese (Simplified/GB2312): Κινέζικα (Απλοποιημένα/GB2312)
 Chinese (Traditional/Big5): Κινέζικα (Παραδοσιακά/Big5)
 Czech: Τσέχικα
 Danish: Δανέζικα
-Dutch: Dutch
 Estonian: Εσθονικά
 Finnish: Φινλανδικά
 French: Γαλλικά
-Galician: Galician
 German: Γερμανικά
 Greek: Ελληνικά
 Holo (Taiwanese): Holo (Ταϊβανέζικα)

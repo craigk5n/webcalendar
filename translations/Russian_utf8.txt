@@ -6,7 +6,7 @@
 # Last update: Wed Oct 25 14:34:05 IST 2000
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -942,7 +942,6 @@ minute: минута
 theme-reload-help: Всвязи с кэшированием CSS может потребоваться обновить страницу
 Page may need to be reloaded for new Theme to take effect: Странице может понадобиться обновление, чтобы новая тема возымела эффект.
 Email format preference: Параметры формата писем
-HTML: HTML
 Plain Text: Чистый текст
 display_byproxy-help: Отобразить настоящего автора страницы view_entry
 Display if created by Assistant: Отобразить если создано ассистентом

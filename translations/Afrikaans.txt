@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 03-30-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -69,25 +69,14 @@ Dec: Des
 January: Januarie
 February: Februarie
 March: Maart
-April: April
 May_: Mei
 June: Junie
 July: Julie
 August: Augustus
-September: September
 October: Oktober
-November: November
-Jan: Jan
-Feb: Feb
 Mar: Maa
-Apr: Apr
 May: Mei
-Jun: Jun
-Jul: Jul
-Aug: Aug
-Sep: Sep
 Oct: Okt
-Nov: Nov
 Sunday: Sondag
 Monday: Maandag
 Tuesday: Dinsdag
@@ -101,4 +90,3 @@ Tue: Din
 Wed: Woe
 Thu: Don
 Fri: Vry
-Sat: Sat

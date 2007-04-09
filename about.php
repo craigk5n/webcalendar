@@ -33,7 +33,7 @@ if ( empty ( $credits ) )
         translate ( 'version XXX' ) ) . '</p>
       <p>' . $PROGRAM_DATE . '</p></a>
       <p>&nbsp;</p>
-      <p>' . translate ( 'Webcalendar is a PHP application used...' ) . '</p>';
+      <p>' . translate ( 'WebCalendar is a PHP application used...' ) . '</p>';
 else {
 
   ?>

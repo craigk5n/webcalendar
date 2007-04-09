@@ -7,7 +7,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -76,7 +76,6 @@ Settings: Nastavení
 Groups: Skupiny
 NonUser Calendars: Neuživatelské kalendá?e
 Other: Ostatní
-Email: Email
 Colors: Barvy
 app-name-help: Ur?uje jméno aplikace, které se na všech stránkách zobrazí v záhlaví prohlíže?e. Zadaná hodnota se zkusí vyhledat v p?ekladech, aby bylo možno definovat její zn?ní ve všech jazycích.
 Application Name: Název aplikace
@@ -465,7 +464,6 @@ You have not entered a password: Nezadal jsi heslo
 ########################################
 # Page: export.php
 #
-Export: Export
 Export format: Formát pro export
 Include all layers: Zahrnout všechny vrstvy
 Export all dates: Exportuj všechna data
@@ -510,7 +508,6 @@ Display weekends in week view: Zobrazovat víkend v týdením pohledu
 Time interval: ?asový odstup
 time-interval-help: Ur?uje, po jakých ?asových úsecích bude den rozd?len p?i denním a týdením pohledu na kalendá?.
 Nonuser: Neuživatelský kalendá?
-colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
 
 ########################################
 # Page: help_bug.php
@@ -529,7 +526,6 @@ repeat-day-help: Ur?uje, které dny týdne by se událost m?la opakovat. Použije se
 ########################################
 # Page: help_import.php
 #
-Import: Import
 This form will allow you to import entries from the Palm Desktop Datebook.: Tento formulá? umož?uje na?íst záznamy ze za?ízení Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Datový soubor by se m?l nacházet v adresá?i Palm v souboru <tt>datebook/datebook.dat</tt> v podadresá?i se tvým jménem.
 The following entries will not be imported: Následující záznamy nebudou importovány
@@ -612,7 +608,6 @@ Reject this entry?: Odmítnout tuto událost?
 #
 You must enter a login and password: Musíš zadat sv?j platný login a heslo
 Save login via cookies so I dont have to login next time.: Abych se p?íšt? nemusel p?ihlašovat, zapamatuj si p?ihlašovací údaje do cookies
-Login: Login
 Access public calendar: P?ístup k ve?ejným kalendá??m
 cookies-note: <b>Poznámka:</b> Pro p?ihlášení a správný b?h je pot?eba mít v prohlížeci povolena cookies.
 
@@ -695,11 +690,6 @@ Set Category: P?i?a? kategorii
 #
 denotes administrative user: ozna?uje uživatele s administrátorskými právy
 Add New User: P?idat nového uživatele
-
-########################################
-# Page: usersel.php
-#
-Reset: Reset
 
 ########################################
 # Page: views.php
@@ -839,35 +829,7 @@ Manage calendar of: Správa kalendá?e uživatele
 ########################################
 # Page: includes/translate.php
 #
-English: English
-Basque: Basque
-Bulgarian: Bulgarian
-Catalan: Catalan
-Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
-Chinese (Traditional/Big5): Chinese (Traditional/Big5)
 Czech: ?esky
-Danish: Danish
-Dutch: Dutch
-Estonian: Estonian
-Finnish: Finnish
-French: French
-Galician: Galician
-German: German
-Holo (Taiwanese): Holo (Taiwanese)
-Hungarian: Hungarian
-Icelandic: Icelandic
-Italian: Italian
-Japanese: Japanese
-Korean: Korean
-Norwegian: Norwegian
-Polish: Polish
-Portuguese: Portuguese
-Portuguese/Brazil: Portuguese/Brazil
-Romanian: Romanian
-Russian: Russian
-Spanish: Spanish
-Swedish: Swedish
-Turkish: Turkish
 event: záznam
 
 ########################################

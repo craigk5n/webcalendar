@@ -6,7 +6,7 @@
 # Oliver Heesakkers / dev@heesakkers.info
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -46,7 +46,6 @@ Admin: Beheer
 User Access Control: Gebruikerstoegang controle
 Allow Access to Other Users Calendar: Permitteer toegang tot kalender van andere gebruikers
 Grant This User Access to My Calendar: Geef deze gebruiker toegang tot mijn kalender
-Type: Type
 Calendar: Kalender
 View Event: Bekijk afspraak
 View: Bekijk
@@ -83,11 +82,9 @@ Error adding event: Fout bij toevoegen afspraak
 #
 Select: Kies
 Day: Dag
-Week: Week
 Month: Maand
 Year: Jaar
 System Settings: Instellingen
-Help: Help
 Settings: Instellingen
 Groups: Groepen
 NonUser Calendars: Losse kalenders
@@ -98,7 +95,6 @@ app-name-help: Hier wordt de naam van de applicatie gedefinieerd, deze naam vers
 Application Name: Programmanaam
 Translated Name: Vertaalde naam
 server-url-help: Specificeert de basis URL van de applicatie, deze URL wordt gebruikt bij het verzenden van email notificaties en herinneringen.
-Server URL: Server URL
 home-url-help: helptekst-thuis-url
 Home URL: Thuis URL
 language-help: Specificeert welke taal gebruikt dient te worden.
@@ -109,7 +105,6 @@ themes-help: Helptekst bij thema's
 Themes: Stijlen
 AVAILABLE THEMES: BESCHIKBARE STIJLEN
 None: Geen
-Preview: Preview
 custom-script-help: Sta eigen Javascripts en stylesheets die in de HTML "head" van iedere pagina worden geplaatst toe.
 Custom script/stylesheet: Eigen script/stylesheet
 custom-header-help: Sta toe dat een eigen stukje HTML bovenaan iedere pagina wordt geplaatst.
@@ -333,7 +328,6 @@ Assistants: Assistenten
 Preferences: Voorkeuren
 Control Panel: Controlepaneel
 Users: Gebruikers
-Account: account
 Categories: Categorieen
 Views: Overzichten
 Layers: Lagen
@@ -448,7 +442,6 @@ is in a different timezone than you are. Currently: is in een andere tijdzone da
 Time entered here is based on your Timezone: Gegeven tijd is gebaseerd op uw tijdzone
 Edit Entry: Afspraak wijzigen
 Add Entry: Afspraak toevoegen
-Details: Details
 Participants: Deelnemers
 Repeat: Herhalen
 Reminders: Herinneringen
@@ -509,7 +502,8 @@ Number of times: Aantal keren
 repeat-frequency-help: Hier kunt u een eventueel herhalingspatroon specificeren. Indien u [1] invult wordt de afspraak elke dag / week / maand / jaar herhaald. Indien u [2] invult wordt de afspraak om de dag / week / maand / jaar herhaalt, etc.<br />N.B.: bij een herhalingsinterval om de x weken dient u wel een herhalingsdag te specificeren (zie boven).
 Frequency: Herhalingspatroon
 Weekdays Only: Enkel werkdagen
-Week Start: Week start
+MO: ma
+SU: zo
 repeat-bydayextended-help: Helptekst bij herhalen per dag
 ByDay: PerDag
 All: Alle
@@ -920,7 +914,6 @@ minute: minuut
 theme-reload-help: Helptekst bij thema-herladen
 Page may need to be reloaded for new Theme to take effect: Pagina moet opnieuw worden geladen om de nieuwe stijl te gebruiken
 Email format preference: Email formaat voorkeur
-HTML: HTML
 Plain Text: Platte tekst
 display_byproxy-help: Helptekst by-proxy
 Display if created by Assistant: Markering weergeven indien aangemaakt door assistent
@@ -980,7 +973,6 @@ Add New Remote Calendar: Nieuwe kalender op afstand toevoegen
 ########################################
 # Page: report.php
 #
-cont.: cont.
 This event is confidential: Vertrouwelijk - details niet beschikbaar
 Waiting for approval: Nog niet bevestigd
 Deleted: Verwijderd
@@ -1031,11 +1023,6 @@ more: meer
 Remote Calendars: Kalenders op afstand
 denotes administrative user: Administrator
 Add New User: Gebruiker toevoegen
-
-########################################
-# Page: usersel.php
-#
-Reset: Reset
 
 ########################################
 # Page: views.php
@@ -1139,14 +1126,12 @@ Troubleshooting Help: Probleemoplossing
 # Page: includes/date_formats.php
 #
 LANGUAGE DEFINED: TAAL GEDEFINIEERD
-December: December
 Dec: dec
 
 ########################################
 # Page: includes/functions.php
 #
 This event is private: Deze afspraak is prive
-Conf.: Conf.
 exceeds limit of XXX events per day: de grens van XXX afspraken per dag is bereikt
 All Attendees: Alle deelnemers
 Busy: Bezig
@@ -1170,7 +1155,6 @@ Reminder sent: Herinnering verzonden
 Event updated: Afspraak bijgewerkt
 Journal updated: Journaal bijgewerkt
 Task updated: Taak bijgewerkt
-WK: WK
 TASKS: TAKEN
 Task_Title: Taak_Titel
 Due: Af zijn
@@ -1185,7 +1169,6 @@ Generate printer-friendly version: Genereer printversie
 after: na
 before: voor
 end: einde
-start: start
 View this event: Bekijk deze afspraak
 View this task: Bekijk deze taak
 January: Januari
@@ -1196,12 +1179,15 @@ June: Juni
 July: Juli
 August: Augustus
 October: Oktober
-November: November
 Jan: jan
 Feb: feb
 Mar: mrt
+Apr: apr
 May: mei
+Jun: jun
+Jul: jul
 Aug: aug
+Sep: sep
 Oct: okt
 Nov: nov
 The following error occurred: De volgende fout heeft zich voorgedaan
@@ -1302,7 +1288,11 @@ no such user: Gebruiker bestaat niet
 ########################################
 # Page: includes/xcal.php
 #
-Interval: Interval
+TU: di
+WE: wo
+TH: do
+FR: vr
+SA: za
 Months: Maanden
 Month Days: Maand dagen
 Days: Dagen
@@ -1314,13 +1304,6 @@ Inclusion Dates: Toe te voegen data
 Exclusion Dates: Uitgesloten data
 Unnamed Event: Naamloze afspraak
 Event Imported: Item geimporteerd
-
-########################################
-# Page: includes/classes/Doc.class
-#
-bytes: bytes
-kb: kb
-Mb: Mb
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
@@ -1416,7 +1399,6 @@ WebCalendar Installation Wizard: Webkalender Installatie-wizard
 Step: Stap
 Failure Reason: Reden van fout
 You must manually create database: U moet handmatig een database aanmaken
-Database Cache Directory: Database cache directory
 Create New: Maak nieuw
 Database Name: Database naam
 Timezone Conversion Successful: Tijdzone conversie succesvol
@@ -1451,21 +1433,18 @@ Session Check: Sessie-controle
 To test the proper operation of sessions, reload this page: Om de correcte werking van sessies te testen, herlaad (F5) deze pagina
 You should see the session counter increment each time: U moet de sessie-teller iedere keer omhoog zien gaan
 SESSION COUNTER: SESSIE TELLER
-Settings.php Status: Settings.php Status
 The file permissions of settings.php are set...: De bestandspermissies van <b>settings.php</b> zijn gezet op...
 Your settings.php file appears to be valid: Uw <b>settings.php</b> bestand lijkt geldig te zijn
 Configuration Wizard Password: Configuratie wizard wachtwoord
 Create Settings File Password: Maak wachtwoord voor configuratiebestand
 Password (again): Wachtwoord (herhalen)
 db setup directions...: db instellingen aanwijzingen...
-Database Status: Database status
 Supported databases for your PHP installation: Ondersteunde databases voor deze PHP-installatie
 Your current database settings are able to access the database: Met deze database-instellingen is het niet mogelijk verbinding te maken met de database
 Please Test Settings: Test instellingen
 Your current database settings are not able...: Met de huidige database-instellingen is het niet mogelijk verbinding te leggen met de database, of het is nog niet geprobeerd
 Database Settings: Database instellingen
 Database Type: Database Type:
-Server: Server
 Connection Persistence: Verbinding persistentie
 All your database tables appear to be up to date. You may proceed to the: Alle database-tabellen lijken bijgewerkt te zijn. U kunt doorgaan naar de
 next page and complete your WebCalendar setup: volgende pagina en WebKalender-installatie afronden

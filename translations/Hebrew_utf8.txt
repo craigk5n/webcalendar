@@ -4,7 +4,7 @@
 # Last update: 22 July 2006
 #
 # $Id$
-# Translation last updated on 04-01-2007
+# Translation last updated on 04-09-2007
 
 
 ################################################################################
@@ -917,7 +917,6 @@ minute: דקה
 theme-reload-help: בגלל המטמון של CSS, יתכן שצריך לרענן את הדף
 Page may need to be reloaded for new Theme to take effect: יתכן שצריך לרענן את הדף כדי שערכת הצבעים החדשה תתחיל לפעול.
 Email format preference: עדיפות תצורת דוא"ל
-HTML: HTML
 Plain Text: טקסט פשוט
 display_byproxy-help: בטל את היוצר האמיתי בדף התצוגת רשומות
 Display if created by Assistant: הצג אם נוצר על ידי עוזר
@@ -1252,38 +1251,6 @@ Manage calendar of: נהל לוח שנה של
 Browser Language Not Found: שפת הדפדפן שלך לא נמצא
 not supported: אינו נתמך
 Browser-defined: מוגדר על ידי הדפדפן
-English: English
-English-US: English-US
-Basque: Basque
-Bulgarian: Bulgarian
-Catalan: Catalan
-Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
-Chinese (Traditional/Big5): Chinese (Traditional/Big5)
-Czech: Czech
-Danish: Danish
-Dutch: Dutch
-Estonian: Estonian
-Finnish: Finnish
-French: French
-Galician: Galician
-German: German
-Greek: Greek
-Holo (Taiwanese): Holo (Taiwanese)
-Hungarian: Hungarian
-Icelandic: Icelandic
-Italian: Italian
-Japanese: Japanese
-Korean: Korean
-Norwegian: Norwegian
-Polish: Polish
-Portuguese: Portuguese
-Portuguese/Brazil: Portuguese/Brazil
-Romanian: Romanian
-Russian: Russian
-Spanish: Spanish
-Swedish: Swedish
-Turkish: Turkish
-Welsh: Welsh
 event: ארוע
 journal: יומן
 
@@ -1318,8 +1285,6 @@ Event Imported: הארוע הובא
 # Page: includes/classes/Doc.class
 #
 bytes: בייטים
-kb: kb
-Mb: Mb
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
@@ -1522,7 +1487,6 @@ previous version requires updating several tables: הגירסה הקודמת ש�
 ########################################
 # Page: tools/reload_remotes.php
 #
-Include Path: Include Path
 Deleting events for: מוחק ארועים עבור
 Importing events for: מייבא ארועים עבור
 No data returned from: לא התקבל כל מידע מ-
