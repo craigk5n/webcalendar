@@ -303,6 +303,7 @@ function define_languages () {
     translate ( 'Czech' ) => 'Czech',
     translate ( 'Danish' ) => 'Danish',
     translate ( 'Dutch' ) => 'Dutch',
+    translate ( 'Elven' ) => 'Elven',
     translate ( 'Estonian' ) => 'Estonian',
     translate ( 'Finnish' ) => 'Finnish',
     translate ( 'French' ) . ' (UTF8)' => 'French-UTF8',
@@ -374,6 +375,7 @@ $browser_languages = array (
   'de-at' => 'German', // German/Austria
   'de-ch' => 'German', // German/Switzerland
   'de-de' => 'German', // German/German
+  // 'Elven' doesn't have a code abbreviation.
   'ee' => 'Estonian',
   'el' => 'Greek',
   'en' => 'English-US',
