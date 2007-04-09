@@ -6,6 +6,9 @@
 #
 # Last time updated on 09-18-2005
 #
+# Translations for page: includes/classes/WebCalMailer.class
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
 # $Id$
 # Translation last updated on 04-09-2007
 
@@ -1008,6 +1011,18 @@ Event Imported: Zdarzenia zaimportowane
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Zawiadomienie
+authenticate: B³¹d SMTP: Nie mo¿na przeprowadziæ autentykacji.
+connect_host: B³¹d SMTP: Nie mo¿na po³¹czyæ siê z wybranym hostem.
+data_not_accepted: B³¹d SMTP: Dane nie zosta³y przyjête.
+encoding: Nieznany sposób kodowania znaków: 
+execute: Nie mo¿na uruchomiæ: 
+file_access: Brak dostêpu do pliku: 
+file_open: Nie mo¿na otworzyæ pliku: 
+from_failed: Nastêpuj¹cy adres Nadawcy jest jest nieprawid³owy: 
+instantiate: Nie mo¿na wywo³aæ funkcji mail(). SprawdŸ konfiguracjê serwera.
+mailer_not_supported: Wybrana metoda wysy³ki wiadomoœci nie jest obs³ugiwana.
+provide_address: Nale¿y podaæ prawid³owy adres email Odbiorcy.
+recipients_failed: B³¹d SMTP: Nastêpuj¹cy odbiorcy s¹ nieprawid³owi: 
 
 ########################################
 # Page: includes/js/admin.php

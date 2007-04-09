@@ -3,6 +3,10 @@
 # Translated by: Bernt Sjöström <bernt@sjostrom.pchemma.nu>
 # Last update: 11 november 2004
 #
+# Translations for page: includes/classes/WebCalMailer.class
+# by: Johan Linnér <johan@linner.biz>
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
 # $Id$
 # Translation last updated on 04-09-2007
 
@@ -843,6 +847,18 @@ Event Imported: Händelse importerad
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Påminnelse
+authenticate: SMTP fel: Kunde inte autentisera.
+connect_host: SMTP fel: Kunde inte ansluta till SMTP-server.
+data_not_accepted: SMTP fel: Data accepterades inte.
+encoding: Okänt encode-format: 
+execute: Kunde inte köra: 
+file_access: Ingen åtkomst till fil: 
+file_open: Fil fel: Kunde inte öppna fil: 
+from_failed: Följande avsändaradress är felaktig: 
+instantiate: Kunde inte initiera e-postfunktion.
+mailer_not_supported: mailer stöds inte.
+provide_address: Du måste ange minst en mottagares e-postadress.
+recipients_failed: SMTP fel: Följande mottagare är felaktig: 
 
 ########################################
 # Page: includes/js/admin.php

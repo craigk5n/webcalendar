@@ -2,6 +2,9 @@
 #
 # Translated by: Hanuš Adler <had@penguin.cz> and Aldar
 #
+# Translations for page: includes/classes/WebCalMailer.class
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
 # Additional translations 'borrowed' from SourceForge project
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
@@ -853,6 +856,18 @@ Event Imported: Importované události
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Oznámení
+authenticate: SMTP Error: Chyba autentikace.
+connect_host: SMTP Error: Nelze navázat spojení se  SMTP serverem.
+data_not_accepted: SMTP Error: Data nebyla pøijata
+encoding: Neznámé kódování: 
+execute: Nelze provést: 
+file_access: Soubor nenalezen: 
+file_open: File Error: Nelze otevøít soubor pro ètení: 
+from_failed: Následující adresa From je nesprávná: 
+instantiate: Nelze vytvoøit instanci emailové funkce.
+mailer_not_supported: mailový klient není podporován.
+provide_address: Musíte zadat alespoò jednu emailovou adresu pøíjemce.
+recipients_failed: SMTP Error: Adresy pøíjemcù nejsou správné
 
 ########################################
 # Page: includes/js/admin.php

@@ -4,8 +4,11 @@
 #       Traduït
 #       traduit.com
 #       info@traduit.com
-#
 # Last update: 12 May 2004
+#
+# Translations for page: includes/classes/WebCalMailer.class
+# By Ivan: web AT microstudi DOT com
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # Additional translations 'borrowed' from SourceForge project
 # 'The Coolest DHTML Calendar',
@@ -813,6 +816,18 @@ Event Imported: Esdeveniment importat
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Notificació
+authenticate: Error SMTP: No s\'hapogut autenticar.
+connect_host: Error SMTP: No es pot connectar al servidor SMTP.
+data_not_accepted: Error SMTP: Dades no acceptades.
+encoding: Codificació desconeguda: 
+execute: No es pot executar: 
+file_access: No es pot accedir a l\'arxiu: 
+file_open: Error d\'Arxiu: No es pot obrir l\'arxiu: 
+from_failed: La(s) següent(s) adreces de remitent han fallat: 
+instantiate: No s\'ha pogut crear una instància de la funció Mail.
+mailer_not_supported: mailer no està suportat
+provide_address: S\'ha de proveir almenys una adreça d\'email com a destinatari.
+recipients_failed: Error SMTP: Els següents destinataris han fallat: 
 
 ########################################
 # Page: includes/js/admin.php

@@ -8,6 +8,10 @@
 # Update by : erational <http://www.erational.org>
 # Mise à jour : Ivan Machetto
 #
+# Translations for page: includes/classes/WebCalMailer.class
+# by: bruno@ioda-net.ch 09.08.2003
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
 # Additional translations 'borrowed' from SourceForge project
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
@@ -938,9 +942,24 @@ TU: MA
 WE: ME
 TH: JE
 FR: VE
-SA: SA
 Unnamed Event: événement sans nom
 Event Imported: Événement importé
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+authenticate: SMTP Erreur: Echec de l\'authentification.
+connect_host: SMTP Erreur: Impossible de connecter le serveur SMTP.
+data_not_accepted: SMTP Erreur: Data non acceptée.
+encoding: Encodage inconnu: 
+execute: Ne peut pas lancer l\'exécution: 
+file_access: N\'arrive pas à accéder au fichier: 
+file_open: Erreur Fichier: ouverture impossible: 
+from_failed: L\'adresse From suivante a échoué: 
+instantiate: Impossible d\'instancier la fonction mail.
+mailer_not_supported: mailer non supporté.
+provide_address: Vous devez fournir au moins une adresse de destinataire.
+recipients_failed: SMTP Erreur: Les destinataires suivants sont en erreur: 
 
 ########################################
 # Page: includes/js/admin.php

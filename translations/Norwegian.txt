@@ -5,6 +5,9 @@
 # Updated several times by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
 # Last update: 18 May 2005
 #
+# Translations for page: includes/classes/WebCalMailer.class
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
 # $Id$
 # Translation last updated on 04-09-2007
 
@@ -896,6 +899,18 @@ Event Imported: Aktivitet importert
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Påminnelse
+authenticate: SMTP Feil: Kunne ikke authentisere.
+connect_host: SMTP Feil: Kunne ikke koble til SMTP host.
+data_not_accepted: SMTP Feil: Data ble ikke akseptert.
+encoding: Ukjent encoding: 
+execute: Kunne ikke utføre: 
+file_access: Kunne ikke få tilgang til filen: 
+file_open: Fil feil: Kunne ikke åpne filen: 
+from_failed: Følgende Fra feilet: 
+instantiate: Kunne ikke instantiate mail funksjonen.
+mailer_not_supported: mailer er ikke supportert.
+provide_address: Du må ha med minst enmottager adresse.
+recipients_failed: SMTP Feil: Følgende mottagere feilet: 
 
 ########################################
 # Page: includes/js/admin.php
