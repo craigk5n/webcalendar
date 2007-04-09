@@ -159,7 +159,9 @@ if ( -f $infile ) {
     $in_header = 0;
     if ( /\s*:\s*/ ) {
       $abbrev = $`;
-      $trans{ $abbrev } = $';
+      $temp = $';
+      $trans{ $abbrev } = $temp
+        if ( $infile =~ /english-us/i || $base_trans{ $abbrev } ne $temp );
     }
   }
 }
