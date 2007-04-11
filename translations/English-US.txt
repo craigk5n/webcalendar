@@ -17,12 +17,6 @@
 #   The "English phrase: ", including the colon ":", is provided by the
 #   WebCalendar developers.  Your part is the "translation".)
 #
-# NOTE: I'm attempting to cut down on the overall file size.  So, please leave
-#       out "translations" that are the same as in English.  Such as:
-# Palm Pilot: Palm Pilot
-# Title: WebCalendar
-# URL: URL
-#
 # The tools directory contains two perl scripts to help you:
 #   - check_translation.pl
 #       indicates if all text has been successfully translated.
@@ -35,13 +29,15 @@
 #       on the line above the phrase.  And, if the phrase is an abbreviation,
 #       it will include the full English text on the line below the phrase.
 #
+# Note: I'm attempting to cut down on the overall file size.  If the "translation"
+#       word / phrase is identical in your language and English, just use an "=" sign.
 #
 # Note:  You will notice the entry for "May_" below.  There is a reason for this.
 #        Translate "May_" to the full month name and "May" to the,
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-11-2007
 
 
 ################################################################################

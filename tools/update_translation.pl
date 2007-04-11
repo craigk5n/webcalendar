@@ -160,8 +160,16 @@ if ( -f $infile ) {
     if ( /\s*:\s*/ ) {
       $abbrev = $`;
       $temp = $';
-      $trans{ $abbrev } = $temp
-        if ( $infile =~ /english-us/i || $base_trans{ $abbrev } ne $temp );
+      $temp = '='
+        if ( $infile !~ /english-us/i
+          && $base_trans { $abbrev } eq $temp
+          && $abbrev ne 'charset'
+          && $abbrev ne 'direction'
+          && $abbrev ne '__mm__/__dd__/__yyyy__'
+          && $abbrev ne '__month__ __dd__'
+          && $abbrev ne '__month__ __dd__, __yyyy__'
+          && $abbrev ne '__month__ __yyyy__' );
+      $trans{ $abbrev } = $temp;
     }
   }
 }
