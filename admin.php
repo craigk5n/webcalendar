@@ -815,7 +815,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   <?php echo print_radio ( 'ENABLE_ICON_UPLOADS' ) ?>
   &nbsp;<?php if ( ! is_dir ( 'icons/' ) )
   // translate ( 'Requires' ) translate ( 'folder to exist' )
-    echo str_replace ( 'XXX', 'icons', translate ( '(Requires XXX folder to exist.)' ) );
+    echo str_replace ( 'XXX', 'icons', translate ( '(Requires XXX folder to exist.)' ) );?>
  </td></tr>
 
 <!-- Display Task Preferences -->
