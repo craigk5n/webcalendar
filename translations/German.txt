@@ -6,7 +6,7 @@
 # Last update: 10.Apr.2007
 #
 # $Id$
-# Translation last updated on 04-11-2007
+# Translation last updated on 04-12-2007
 
 
 ################################################################################
@@ -1732,7 +1732,7 @@ You will need to reconfigure your web server if you wish to: Sie m&uuml;ssen Ihr
 select Web Server from the User Authentication choices below.: W&auml;hlen Sie unten den &#39;Web Server&#39; von &#39;Benutzer Authentisierung&#39; aus.
 HTTP-based authentication was not detected...: HTTP-basierende Authentisierung wurde nicht erkannt. W&auml;hlen Sie den &#39;Web Server&#39; von &#39;Benutzer Authentisierung&#39; unten aus.
 HTTP-based authentication was detected.: HTTP-basierende Authentisierung wurde erkannt.
-User authentication is being handled by your web server.: Benutzer Authentisierung wird durch Ihren Web Server abgehandelt
+User authentication is being handled by your web server.: Benutzer Authentisierung wird durch Ihren Web Server abgehandelt.
 You should select Web Server from the list of User Authentication choices below.: Sie sollten &#39;Web Server&#39; von der Liste &#39;Benutzer Authentisierung&#39; von unten ausw&auml;hlen.
 HTTP-based authentication was detected...: HTTP-basierende Authentisierung wurde erkannt. Sie sollten &#39;Web Server&#39; von der Liste &#39;Benutzer Authentisierung&#39; von unten ausw&auml;hlen.
 Create Default Admin Account: Ein Administratorkonto einrichten
