@@ -140,8 +140,7 @@ function load_translation_text () {
   if ( $translation_loaded ) // No need to run this twice.
     return;
 
-  $eng_file = ( empty ( $basedir ) ? '..' : $basedir )
-   . '/translations/English-US.txt';
+  $eng_file = 'translations/English-US.txt';
   $translations = array ();
   if ( ! empty ( $basedir ) ) {
     $lang_file_2 = $basedir . '/' . $lang_file;
