@@ -89,9 +89,8 @@ else {
   $p_base_dir        = $base_dir;
 }
 
-if ( $infile !~ /txt$/ ) {
-  $infile .= '.txt';
-}
+$infile .= '.txt' if ( $infile !~ /txt$/ );
+
 if ( -f "$trans_dir/$infile" || -f "$p_trans_dir/$infile" ) {
   $b_infile = "$trans_dir/$infile";
   $infile   = "$p_trans_dir/$infile";
@@ -103,7 +102,24 @@ die "Usage: $this [-p plugin] language\n" if ( !-f $infile );
 
 print "Translation file: $infile\n" if ( $verbose );
 
-# Now load the base translation(s) file (English) so that we can include
+# Read in the plugin base translation file.
+if ( $plugin ne '' ) {
+  print "Reading plugin base translation file: $p_base_trans_file\n"
+    if ( $verbose );
+  open( F, $p_base_trans_file ) || die "Error opening $p_base_trans_file";
+  while ( <F> ) {
+    chop;
+    s/\r*$//g; # remove annoying CR
+    next if ( /^#/ );
+    if ( /\s*:\s*/ ) {
+      $abbrev = $`;
+      $base_trans{ $abbrev } = $' if ( $abbrev ne 'charset' );
+    }
+  }
+  close( F );
+}
+
+# Now load the base translation file (English) so that we can include
 # the English text, below the untranslated phrase, in a comment.
 open( F, $base_trans_file ) || die "Error opening $base_trans_file";
 print "Reading base translation file: $base_trans_file\n" if ( $verbose );
@@ -117,23 +133,6 @@ while ( <F> ) {
   }
 }
 close( F );
-
-# read in the plugin base translation file
-if ( $plugin ne '' ) {
-  print "Reading plugin base translation file: $p_base_trans_file\n"
-    if ( $verbose );
-  open( F, $p_base_trans_file ) || die "Error opening $p_base_trans_file";
-  while ( <F> ) {
-    chop;
-    s/\r*$//g; # remove annoying CR
-    next if ( /^#/ );
-    if ( /\s*:\s*/ ) {
-      $abbrev = $`;
-      $base_trans{ $abbrev } = $';
-    }
-  }
-  close( F );
-}
 
 #
 # Now load the translation file we are going to update.
@@ -149,7 +148,7 @@ if ( -f $infile ) {
     s/\r*$//g; # remove annoying CR
     if ( $in_header && /^#/ ) {
       if ( /Translation last (pagified|updated)/ ) {
-# ignore since we will replace this with current date below
+# Ignore since we will replace this with current date below.
       }
       else {
         $header .= $_ . "\n";
@@ -159,30 +158,23 @@ if ( -f $infile ) {
     $in_header = 0;
     if ( /\s*:\s*/ ) {
       $abbrev = $`;
-      $temp = $';
-      $temp = '='
-        if ( $infile !~ /english-us/i
-          && $base_trans { $abbrev } eq $temp
-          && $abbrev ne 'charset'
-          && $abbrev ne 'direction'
-          && $abbrev ne '__mm__/__dd__/__yyyy__'
-          && $abbrev ne '__month__ __dd__'
-          && $abbrev ne '__month__ __dd__, __yyyy__'
-          && $abbrev ne '__month__ __yyyy__' );
+      $temp   = $';
+      $temp   = '='
+        if ( $infile !~ /english-us/i && $base_trans{ $abbrev } eq $temp );
       $trans{ $abbrev } = $temp;
     }
   }
 }
 
-$trans{ 'charset' }   = 'iso-8859-1' if ( !defined( $trans{ 'charset' } ) );
-$trans{ 'direction' } = 'ltr'        if ( !defined( $trans{ 'direction' } ) );
-$trans{ '__mm__/__dd__/__yyyy__' } = '__mm__/__dd__/__yyyy__'
+$trans{ 'charset' }   = '=' if ( !defined( $trans{ 'charset' } ) );
+$trans{ 'direction' } = '=' if ( !defined( $trans{ 'direction' } ) );
+$trans{ '__mm__/__dd__/__yyyy__' } = '='
   if ( !defined( $trans{ '__mm__/__dd__/__yyyy__' } ) );
-$trans{ '__month__ __dd__' } = '__month__ __dd__'
+$trans{ '__month__ __dd__' } = '='
   if ( !defined( $trans{ '__month__ __dd__' } ) );
-$trans{ '__month__ __dd__, __yyyy__' } = '__month__ __dd__, __yyyy__'
+$trans{ '__month__ __dd__, __yyyy__' } = '='
   if ( !defined( $trans{ '__month__ __dd__, __yyyy__' } ) );
-$trans{ '__month__ __yyyy__' } = '__month__ __yyyy__'
+$trans{ '__month__ __yyyy__' } = '='
   if ( !defined( $trans{ '__month__ __yyyy__' } ) );
 
 if ( $plugin ne '' ) {
@@ -239,6 +231,9 @@ if ( $plugin eq '' ) {
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ":" indicates that the
+# "translation" is identical to the English text.
+#
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: ' . $trans{ 'charset' } . '
@@ -281,7 +276,7 @@ foreach $f ( @files ) {
         elsif ( defined( $text{ $text } ) ) {
           if ( $show_dups ) {
             print OUT $pageHeader
-             . "# \"$text\" previously defined (in $foundin{$text})\n";
+              . "# \"$text\" previously defined (in $foundin{$text})\n";
             $pageHeader = '';
           }
           $thispage{ $text } = 1;
@@ -318,11 +313,10 @@ foreach $f ( @files ) {
   close( F );
 }
 
-if ( !$notfound ) {
-  print STDERR "All text was found in $infile.  Good job :-)\n";
-}
-else {
-  print STDERR "$notfound translation(s) missing.\n";
-}
+print STDERR (
+  !$notfound
+  ? "All text was found in $infile.  Good job :-)\n"
+  : "$notfound translation(s) missing.\n"
+);
 
 exit 0;
