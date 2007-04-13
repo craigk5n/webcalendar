@@ -31,8 +31,9 @@ function die_miserable_death ( $error ) {
   // Make sure app name is set.
   $appStr = ( function_exists ( 'generate_application_name' )
     ? generate_application_name ()
-    : ( ! empty ( $APPLICATION_NAME ) ? $APPLICATION_NAME : 'Title' ) );
+    : ( empty ( $APPLICATION_NAME ) ? 'WebCalendar' : $APPLICATION_NAME ) );
 
+/* // Causing problems if translations/language.txt not found.
   if ( function_exists ( 'translate' ) ) {
     if ( empty ( $LANGUAGE ) )
       load_user_preferences ();
@@ -42,12 +43,12 @@ function die_miserable_death ( $error ) {
     $trouble_label = translate ( 'Troubleshooting Help' );
     $user_BGCOLOR = get_pref_setting ( $login, 'BGCOLOR' );
   } else {
-    $appStr = 'WebCalendar';
+*/
     $h2_label = $appStr . ' ' . 'Error';
     $title = $appStr . ': ' . 'Fatal Error';
     $trouble_label = 'Troubleshooting Help';
     $user_BGCOLOR = '#FFFFFF';
-  }
+//  }
 
   echo <<<EOT
 <html>
