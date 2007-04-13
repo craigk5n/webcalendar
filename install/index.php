@@ -870,11 +870,14 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
   translate ( '1' ), $wizardStr ) ?></th></tr>
 <tr><td colspan="2" width="50%">
 <?php etranslate ( 'This installation wizard will guide you...' ) ?>:<br />
-<a href="../docs/WebCalendar-SysAdmin.html" target="_docs">System Administrator's Guide</a>,
-<a href="../docs/WebCalendar-SysAdmin.html#faq" target="_docs">FAQ</a>,
-<a href="../docs/WebCalendar-SysAdmin.html#trouble" target="_docs">Troubleshooting</a>,
-<a href="../docs/WebCalendar-SysAdmin.html#help" target="_docs">Getting Help</a>,
-<a href="../UPGRADING.html" target="_docs">Upgrading Guide</a>
+<ul>
+<li><a href="../docs/WebCalendar-SysAdmin.html" target="_docs">System Administrator's Guide</a></li>
+<li><a href="../docs/WebCalendar-SysAdmin.html#faq" target="_docs">FAQ</a></li>
+<li><a href="../docs/WebCalendar-SysAdmin.html#trouble" target="_docs">Troubleshooting</a></li>
+<li><a href="../docs/WebCalendar-SysAdmin.html#help" target="_docs">Getting Help</a></li>
+<li><a href="../UPGRADING.html" target="_docs">Upgrading Guide</a></li>
+<li><a href="http://www.k5n.us/dokuwiki/doku.php" target="_docs">User Supported Wiki</a></li>
+</ul>
 </td></tr>
 <tr><th class="header"  colspan="2"><?php etranslate ( 'PHP Version Check' ) ?></th></tr>
 <tr><td>
