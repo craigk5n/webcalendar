@@ -6,8 +6,9 @@
  * touch each file every time.
 */
 defined ( '_ISVALID' ) or ( 'You cannot access this file directly!' );
-// DO NOT DELETE translate ( 'Index' );
-$help_list = array ( 'Index' => 'help_index.php',
+// DO NOT DELETE translate ( 'Index' ) translate ( 'Documentation' )
+$help_list = array (
+  'Index' => 'help_index.php',
   'Adding/Editing Calendar Entries' => 'help_edit_entry.php',
   'Layers' => 'help_layers.php',
   'Import' => 'help_import.php',
