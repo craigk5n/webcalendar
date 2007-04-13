@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 04-11-2007
+# Translation last updated on 04-13-2007
 
 
 ################################################################################
@@ -1449,6 +1449,7 @@ Invalid data format for: Invalid data format for
 # Page: includes/help_list.php
 #
 Index: Index
+Documentation: Documentation
 Page: Page
 
 ########################################
