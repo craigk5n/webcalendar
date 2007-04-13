@@ -140,8 +140,12 @@ function load_translation_text () {
   if ( $translation_loaded ) // No need to run this twice.
     return;
 
-  $eng_file = 'translations/English-US.txt';
   $translations = array ();
+
+  $eng_file = 'translations/English-US.txt';
+  if ( ! file_exists ( $eng_file ) )
+    $eng_file = '../translations/English-US.txt';
+
   if ( ! empty ( $basedir ) ) {
     $lang_file_2 = $basedir . '/' . $lang_file;
 
@@ -198,7 +202,7 @@ function load_translation_text () {
     // If we don't want the installation translations in the array,
     // don't cache the file if we are installing.
     $save_to_cache = $save_to_cache &&
-      ( ! strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' ) );
+    ( ! strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' ) );
 
     // First, read in English-US.txt, or it's cache, to populate the whole array.
     if ( empty ( $cached_base_file ) ||
