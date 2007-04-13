@@ -1331,14 +1331,14 @@ if ( ! $exists || ! $canWrite ) { ?>
   <tr><td colspan="2">
  <?php if ( $_SESSION['tz_conversion'] != 'Success' ) {?>
    <form action="index.php?action=tz_convert" method="post">
-  <ul><li>
+  <ul><li><?php
 /*
 translate ( 'It appears that you have' ) translate ( 'NOT' )
 translate ( 'converted your existing WebCalendar event data to GMT.' )
 translate ( 'If you have, you may ignore this notice and not proceed with the conversion.' )
 translate ( 'If this is a new installation, you may also ignore this notice.' )
 */
-<?php echo translate ( 'It appears that you have NOT converted your existing WebCalendar...' )?>
+echo translate ( 'It appears that you have NOT converted your existing WebCalendar...' )?>
     </li></ul>
    <div align="center">
      <input  type="submit" value="<?php etranslate ( 'Convert Data to GMT') ?>:"  /></div>
@@ -1350,21 +1350,21 @@ translate ( 'If this is a new installation, you may also ignore this notice.' )
   <?php } //end Timezone Conversion ?>
  <th class="header" colspan="2"><?php etranslate ( 'Application Settings' ) ?></th>
  <tr><td colspan="2"><ul>
-  <?php if ( empty ( $PHP_AUTH_USER ) ) { ?>
+  <?php if ( empty ( $PHP_AUTH_USER ) ) {
 /*
 translate ( 'HTTP-based authentication was not detected' )
 translate ( 'You will need to reconfigure your web server if you wish to' )
 translate ( 'select Web Server from the User Authentication choices below.' )
 */
-   <li><?php echo translate ( 'HTTP-based authentication was not detected...' ) ?>
+ echo '<li>'.translate ( 'HTTP-based authentication was not detected...' ) ?>
    </li>
-  <?php } else { ?>
+  <?php } else {
 /*
 translate ( 'HTTP-based authentication was detected.' )
 translate ( 'User authentication is being handled by your web server.' )
 translate ( 'You should select Web Server from the list of User Authentication choices below.' )
 */
-   <li><?php echo translate ( 'HTTP-based authentication was detected...' )?>
+   echo '<li>'.translate ( 'HTTP-based authentication was detected...' )?>
    </li>
   <?php } ?>
  </ul></td></tr>
