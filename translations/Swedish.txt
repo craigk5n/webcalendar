@@ -8,29 +8,33 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -404,13 +408,13 @@ Next year: Nästa år
 This year: Detta år
 Last year: Föregående år
 Year before last: Förrförra året
-Invalid report id: Ej godkänt rapport-ID
+Invalid report id.: Ej godkänt rapport-ID
 Unnamed Report: Icke namngiven rapport
 Add Report: Lägg till rapport
 Edit Report: Redigera rapport
 Report name: Rapportnamn
-Current User: Aktuell Användare
 User: Användare
+Current User: Aktuell Användare
 Include standard header/trailer: Lägg till standard header/trailer
 Include previous/next links: Inkludera föregående/nästkommande länkar
 Include empty dates: Inkludera tomma datum
@@ -448,9 +452,9 @@ Set Password: Byt lösenord
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Borttagning av användare stöds inte
-The passwords were not identical: Lösenorden stämmer inte överens med varandra
-You have not entered a password: Du har inte angivit något lösenord
+Deleting users not supported.: Borttagning av användare stöds inte
+The passwords were not identical.: Lösenorden stämmer inte överens med varandra
+You have not entered a password.: Du har inte angivit något lösenord
 
 ########################################
 # Page: export.php
@@ -595,7 +599,7 @@ Reject this entry?: Avböj denna händelse?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Ange användarnamn och lösenord
+You must enter a login and password.: Ange användarnamn och lösenord
 Save login via cookies so I dont have to login next time.: Kom ihåg användarnamnet till nästa gång (cookie)
 Login: Logga in
 Access public calendar: Tillträde till offentlig kalender
@@ -635,12 +639,12 @@ An appointment has been rejected by: Ett möte har inte godkänts av
 ########################################
 # Page: report.php
 #
+This event is confidential.: Denna aktivitet är privat
 cont.: forts.
-This event is confidential: Denna aktivitet är privat
-Waiting for approval: Väntar på godkännande
+Approved: Godkänd
 Deleted: Borttagen
 Rejected: Avböjd
-Approved: Godkänd
+Waiting for approval: Väntar på godkännande
 Unknown: Okänd
 to manage reports for the Public Access calendar: för att hantera rapporter för offentlig kalender
 Add new report: Lägg till ny rapport
@@ -670,8 +674,7 @@ View Another Users Calendar: Titta på en annan användares kalender
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Ogiltig händelse-ID
-You have not added any categories: Du har inte lagt till några kategorier
+You have not added any categories.: Du har inte lagt till några kategorier
 Set Category: Ange kategori
 
 ########################################
@@ -768,7 +771,7 @@ October: Oktober
 May: Maj
 Oct: Okt
 The following error occurred: Följande fel uppstod
-You are not authorized: Förbjuden åtgärd
+You are not authorized.: Förbjuden åtgärd
 Add N hours to: Lägg till N timmar till
 Subtract N hours from: Dra bort N timmar från
 same as: samma som

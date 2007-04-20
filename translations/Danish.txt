@@ -18,29 +18,33 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -423,13 +427,13 @@ Next year: Næste år
 This year: Dette år
 Last year: Sidste år
 Year before last: Forrige år
-Invalid report id: Ugyldig rapport ID
+Invalid report id.: Ugyldig rapport ID
 Unnamed Report: Unavngiven rapport
 Add Report: Tilføj rapport
 Edit Report: Rediger rapport
 Report name: Navn på rapport
-Current User: Nuværende bruger
 User: Bruger
+Current User: Nuværende bruger
 Include standard header/trailer: Inkluder standard sidehoved/fod
 Include previous/next links: Medtag links til forrige/næste
 Include empty dates: Medtag tomme datoer
@@ -467,9 +471,9 @@ Set Password: Skift kodeord
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Sletning af brugere er ikke understøttet
-The passwords were not identical: Kodeordene er ikke identiske
-You have not entered a password: Du har ikke indtastet et kodeord
+Deleting users not supported.: Sletning af brugere er ikke understøttet
+The passwords were not identical.: Kodeordene er ikke identiske
+You have not entered a password.: Du har ikke indtastet et kodeord
 
 ########################################
 # Page: export.php
@@ -614,7 +618,7 @@ Reject this entry?: Afvis denne aftale?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Du skal indtaste et brugernavn og kodeord
+You must enter a login and password.: Du skal indtaste et brugernavn og kodeord
 Save login via cookies so I dont have to login next time.: Gem login-informationer i en cookie, så jeg ikke behøver indtaste dem næste gang
 Login: Log ind
 Access public calendar: Til offentlig kalender
@@ -656,11 +660,11 @@ An appointment has been rejected by: En aftale er blevet afslået af
 ########################################
 # Page: report.php
 #
-This event is confidential: Denne aftale er fortrolig
-Waiting for approval: Afventer acceptering
+This event is confidential.: Denne aftale er fortrolig
+Approved: Accepteret
 Deleted: Slettet
 Rejected: Afvist
-Approved: Accepteret
+Waiting for approval: Afventer acceptering
 Unknown: Ukendt
 to manage reports for the Public Access calendar: for at redigere rapporter i den offentlige kalender
 Add new report: Tilføj ny rapport
@@ -690,8 +694,7 @@ View Another Users Calendar: Se anden brugers kalender
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Ugyldigt aftale ID
-You have not added any categories: Du har ikke tilføjet nogen kategorier
+You have not added any categories.: Du har ikke tilføjet nogen kategorier
 Set Category: Vælg kategori
 
 ########################################
@@ -799,7 +802,7 @@ October: Oktober
 May: Maj
 Oct: Okt
 The following error occurred: Følgende fejl opstod
-You are not authorized: Du har ikke tilladelse til dette
+You are not authorized.: Du har ikke tilladelse til dette
 Add N hours to: Tilføj N timer til
 Subtract N hours from: Træk N timer fra
 same as: samme som

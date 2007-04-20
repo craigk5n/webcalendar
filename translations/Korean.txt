@@ -8,12 +8,16 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: EUC-KR
@@ -21,16 +25,16 @@ charset: EUC-KR
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -182,7 +186,7 @@ Set Password: 비밀번호 설정
 ########################################
 # Page: edit_user_handler.php
 #
-You have not entered a password: 암호를 입력하지 않았습니다.
+You have not entered a password.: 암호를 입력하지 않았습니다.
 
 ########################################
 # Page: group_edit.php
@@ -214,7 +218,7 @@ Approve this entry?: 이 항목을 승인함.
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: 아이디와 비밀번호를 입력해야 합니다.
+You must enter a login and password.: 아이디와 비밀번호를 입력해야 합니다.
 Save login via cookies so I dont have to login next time.: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
 Login: 로그인
 cookies-note: <b>주:</b> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
@@ -227,7 +231,7 @@ Save Preferences: 환경설정 저장
 ########################################
 # Page: report.php
 #
-This event is confidential: 이 행사는 비밀항목입니다.
+This event is confidential.: 이 행사는 비밀항목입니다.
 
 ########################################
 # Page: search.php
@@ -248,11 +252,6 @@ No matches found: 찾은 항목 없음
 # Page: select_user.php
 #
 View Another Users Calendar: 다른 사용자의 달력 보기
-
-########################################
-# Page: set_entry_cat.php
-#
-Invalid entry id: 틀린 항목 아이디
 
 ########################################
 # Page: users.php
@@ -312,7 +311,7 @@ Sep: 9월
 Oct: 10월
 Nov: 11월
 The following error occurred: 다음과 같은 오류 발생:
-You are not authorized: 권한이 없습니다:
+You are not authorized.: 권한이 없습니다:
 Unauthorized: 권한 없음
 Error approving event: 행사 승인 중 에러
 Sunday: 일요일

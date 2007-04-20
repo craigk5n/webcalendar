@@ -8,12 +8,16 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: Big5
@@ -21,16 +25,16 @@ charset: Big5
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -185,8 +189,8 @@ Error: 錯誤
 Today: 今日
 Next month: 上一月
 Next year: 下一月
-Current User: 目前使用者
 User: 使&nbsp;用&nbsp;者
+Current User: 目前使用者
 
 ########################################
 # Page: edit_user.php
@@ -203,8 +207,8 @@ Set Password: 設定密碼
 ########################################
 # Page: edit_user_handler.php
 #
-The passwords were not identical: 密碼不一樣
-You have not entered a password: 你沒有輸入密碼
+The passwords were not identical.: 密碼不一樣
+You have not entered a password.: 你沒有輸入密碼
 
 ########################################
 # Page: export.php
@@ -261,7 +265,7 @@ Reject this entry?: 拒絕這個記事?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: 你必須輸入使用者名稱及密碼
+You must enter a login and password.: 你必須輸入使用者名稱及密碼
 Save login via cookies so I dont have to login next time.: 將登入資料儲存於 cookies 中，下次就不需要再登入系統。
 Login: 登入
 cookies-note: <b>注意:</b> 本程式須要 cookies 才能使用.
@@ -279,7 +283,7 @@ An appointment has been rejected by: 約會已經被拒絕, 拒絕者是
 ########################################
 # Page: report.php
 #
-This event is confidential: 這個記事是機密的
+This event is confidential.: 這個記事是機密的
 Rejected: 拒絕的
 
 ########################################
@@ -362,7 +366,7 @@ Aug: 8月
 Sep: 9月
 Oct: 10月
 Nov: 11月
-You are not authorized: 您未經授權
+You are not authorized.: 您未經授權
 Sunday: 星期日
 Monday: 星期一
 Tuesday: 星期二

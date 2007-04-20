@@ -4,12 +4,16 @@
 # Last update: 14.03.2003
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: iso-8859-4
@@ -17,16 +21,16 @@ charset: iso-8859-4
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -327,8 +331,8 @@ Error: Viga
 ########################################
 # Page: edit_report.php
 #
-Current User: Käesolev kasutaja
 User: Kasutaja
+Current User: Käesolev kasutaja
 
 ########################################
 # Page: edit_user.php
@@ -346,9 +350,9 @@ Set Password: Sea salasõna
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Kasutajate kustutamine pole lubatud
-The passwords were not identical: Salasõnad pole samased
-You have not entered a password: Salasõna sisestamata
+Deleting users not supported.: Kasutajate kustutamine pole lubatud
+The passwords were not identical.: Salasõnad pole samased
+You have not entered a password.: Salasõna sisestamata
 
 ########################################
 # Page: export.php
@@ -462,7 +466,7 @@ Reject this entry?: Lükkame kande tagasi?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Pead sisestama kasutajanime ja salasõna
+You must enter a login and password.: Pead sisestama kasutajanime ja salasõna
 Save login via cookies so I dont have to login next time.: Salvesta kasutajatunnused küpsisesse et ma ei peaks enam neid sisestama
 Login: Sisenemine
 Access public calendar: Kasuta avalikku kalendrit
@@ -487,11 +491,11 @@ An appointment has been rejected by: Kohtumise lükkas tagasi
 ########################################
 # Page: report.php
 #
+This event is confidential.: Sündmus on isiklik
 cont.: jätkub.
-This event is confidential: Sündmus on isiklik
-Waiting for approval: Ootab heakskiitu
 Deleted: Kustutatud
 Rejected: Tagasi lükatud
+Waiting for approval: Ootab heakskiitu
 
 ########################################
 # Page: search.php
@@ -517,8 +521,7 @@ View Another Users Calendar: Vaata teise kasutaja kalendrit
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Vale kande id
-You have not added any categories: Ssa pole lisanud ühtegi kategooriat
+You have not added any categories.: Ssa pole lisanud ühtegi kategooriat
 Set Category: Määra kategooria
 
 ########################################
@@ -628,7 +631,7 @@ Sep: sept
 Oct: okt
 Nov: nov
 The following error occurred: Järgmine viga on juhtunud
-You are not authorized: Sa ei ole siis lubatud
+You are not authorized.: Sa ei ole siis lubatud
 Add N hours to: Lisa N tundi
 Subtract N hours from: Lahuta N tundi
 same as: sama kui

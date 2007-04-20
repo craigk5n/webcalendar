@@ -4,12 +4,16 @@
 # Last update: 2003-8-5
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: gb2312
@@ -17,16 +21,16 @@ charset: gb2312
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -336,13 +340,13 @@ Next year: 明年
 This year: 今年
 Last year: 去年
 Year before last: 前年
-Invalid report id: 无效的报告编号
+Invalid report id.: 无效的报告编号
 Unnamed Report: 未命名的报告
 Add Report: 添加报告
 Edit Report: 编辑报告
 Report name: 报告名称
-Current User: 当前用户
 User: 用户
+Current User: 当前用户
 Include standard header/trailer: 包括标准的头/尾
 Include previous/next links: 包括前一个/后一个联接
 Include empty dates: 包括空日期
@@ -373,9 +377,9 @@ Set Password: 设置密码
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: 不支持删除用户功能
-The passwords were not identical: 密码不一样
-You have not entered a password: 您没有输入密码
+Deleting users not supported.: 不支持删除用户功能
+The passwords were not identical.: 密码不一样
+You have not entered a password.: 您没有输入密码
 
 ########################################
 # Page: export.php
@@ -501,7 +505,7 @@ Reject this entry?: 拒绝此事件?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: 您必须输入用户名称及密码
+You must enter a login and password.: 您必须输入用户名称及密码
 Save login via cookies so I dont have to login next time.: 将登录资料存储于 cookies 中，下次就不需要再登录系统。
 Login: 登录
 Access public calendar: 进入公共日历
@@ -531,12 +535,12 @@ An appointment has been rejected by: 约会已经被拒绝, 拒绝者是
 ########################################
 # Page: report.php
 #
+This event is confidential.: 这个事件是机密的
 cont.: 继续
-This event is confidential: 这个事件是机密的
-Waiting for approval: 等待核准
+Approved: 有效的
 Deleted: 已经删除
 Rejected: 拒绝的
-Approved: 有效的
+Waiting for approval: 等待核准
 Unknown: 未知的
 to manage reports for the Public Access calendar: 管理公共日历的报告
 Add new report: 新增报告
@@ -566,8 +570,7 @@ View Another Users Calendar: 查看其他用户的日历
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: 无效的纪录ID
-You have not added any categories: 您还没有添加任何分类
+You have not added any categories.: 您还没有添加任何分类
 Set Category: 设置分类
 
 ########################################
@@ -683,7 +686,7 @@ Sep: 9月
 Oct: 10月
 Nov: 11月
 The following error occurred: 发生了下面的错误
-You are not authorized: 您未经授权
+You are not authorized.: 您未经授权
 Add N hours to: 添加 N 小时到
 Subtract N hours from: 减去 N 小时从
 same as: 相同与

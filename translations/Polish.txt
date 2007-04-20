@@ -10,12 +10,16 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: iso-8859-2
@@ -23,16 +27,16 @@ charset: iso-8859-2
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -274,8 +278,8 @@ Administrative Tools: Narzedzia Administracyjne
 ########################################
 # Page: ajax.php
 #
-Username already exists: Podana nazwa u¿ytkownika jest ju¿ zajêta
-Email address already exists: Podany email jest ju¿ przypisany do innego u¿ytkownika
+Username already exists.: Podana nazwa u¿ytkownika jest ju¿ zajêta
+Email address already exists.: Podany email jest ju¿ przypisany do innego u¿ytkownika
 
 ########################################
 # Page: approve_entry.php
@@ -454,13 +458,13 @@ Next year: Nastepny rok
 This year: Ten rok
 Last year: Ostatni rok
 Year before last: Przedostatni rok
-Invalid report id: Nieprawid³owy id raportu
+Invalid report id.: Nieprawid³owy id raportu
 Unnamed Report: Nienazwany raport
 Add Report: Dodaj raport
 Edit Report: Edytuj raport
 Report name: Nazwa raportu
-Current User: Bie¿±cy u¿ytkownik
 User: U¿ytkownik
+Current User: Bie¿±cy u¿ytkownik
 Include standard header/trailer: W³±cz standardowy nag³ówek/zwiastun
 Include previous/next links: W³±cz poprzednie/nastepne ³±cza
 Include empty dates: W³±cz puste daty
@@ -498,9 +502,9 @@ Set Password: Zmien has³o
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Brak obs³ugi usuwania u¿ytkowników
-The passwords were not identical: Has³a nie s± takie same
-You have not entered a password: Nie wprowadzi³e¶ has³a
+Deleting users not supported.: Brak obs³ugi usuwania u¿ytkowników
+The passwords were not identical.: Has³a nie s± takie same
+You have not entered a password.: Nie wprowadzi³e¶ has³a
 Username cannot be blank.: Nazwa u¿ytkownika nie mo¿e bya pusta
 
 ########################################
@@ -672,7 +676,7 @@ Reject this entry?: Odrzuciæ wpis?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Musisz wprowadzia nazwe u¿ytkownika i has³o
+You must enter a login and password.: Musisz wprowadzia nazwe u¿ytkownika i has³o
 Save login via cookies so I dont have to login next time.: Zapisz nazwe u¿ytkownika przez cookies
 Access public calendar: Dostep do kalendarza publicznego
 cookies-note: <b>Uwaga!</b> Ta aplikacja wymaga w³±czonych cookies!
@@ -688,7 +692,7 @@ Not yet registered? Register here!: Niezarejestrowany? Zarejestruj siê tutaj!
 # Page: minical.php
 #
 No such nonuser calendar: Nie ma takiego kalendarza bez w³a¶ciciela
-This Calendar is not Public: Ten kalendarz nie jest publiczny
+This Calendar is not Public.: Ten kalendarz nie jest publiczny
 
 ########################################
 # Page: nonusers.php
@@ -726,19 +730,20 @@ Records deleted from: Pola usuniete z
 # Page: register.php
 #
 Email address cannot be blank.: Adres email nie mo¿e byæ pusty
-A new WebCalendar account has been set up for you: Nowe konto WebCalendara w³a¶nie zosta³o dla Ciebie stworzone
+A new WebCalendar account has been set up for you.: Nowe konto WebCalendara w³a¶nie zosta³o dla Ciebie stworzone
 Your username is: Twoja nazwa u¿ytkownika
 Your password is: Twoje has³o
 Please visit: Odwied¼
 to log in and start using your account: aby zalogowaæ siê i zacz±æ u¿ywaæ swojego konta
-You may change your password after logging in the first time: Mo¿esz zmieniæ has³o po logowaniu siê za pierwszym razem
+You may change your password after logging in the first time.: Mo¿esz zmieniæ has³o po logowaniu siê za pierwszym razem
 If you received this email in error: Je¶li dosta³e¶ ten email w wyniku b³êdu i nie tworzy³e¶ sobie konta WebCalendar, zignoruj tê informacjê, lub odpowiedz krótk± notk±.
 Welcome: Witaj
 Registration: Rejestracja
 Welcome to WebCalendar: Witaj w WebCalendarze
-Your email should arrive shortly: Email powinien wkrótce dotrzeæ.
+Your email should arrive shortly.: Email powinien wkrótce dotrzeæ.
 Return to Login screen: Powrót do ekranu logowania
-Your account information will be emailed to you: Informacje o Twoim koncie zostan± do Ciebie wys³ane mailem.
+Password (again): Has³o (ponownie)
+Your account information will be emailed to you.: Informacje o Twoim koncie zostan± do Ciebie wys³ane mailem.
 Submit: Wy¶lij
 
 ########################################
@@ -749,11 +754,11 @@ An appointment has been rejected by: Spotkanie zosta³o odrzucone przez
 ########################################
 # Page: report.php
 #
-This event is confidential: To zdarznie jest poufne
-Waiting for approval: Czekanie na zatwierdzenie
+This event is confidential.: To zdarznie jest poufne
+Approved: Zatwierdzone
 Deleted: Skasowany
 Rejected: Odrzucony
-Approved: Zatwierdzone
+Waiting for approval: Czekanie na zatwierdzenie
 Unknown: Nieznane
 to manage reports for the Public Access calendar: aby zarz±dzaæ raportami kalendarza publicznego
 Add new report: Dodaj nowy raport
@@ -783,8 +788,7 @@ View Another Users Calendar: Poka¿ kalendarz innego u¿ytkownika
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Niepoprawny id wydarzenia
-You have not added any categories: nie doda³e¶ ¿anych kategorii
+You have not added any categories.: nie doda³e¶ ¿anych kategorii
 Set Category: Ustaw kategorie
 
 ########################################
@@ -924,7 +928,7 @@ Sep: Wrz
 Oct: Pa¼
 Nov: Lis
 The following error occurred: Wyst±pi³ nastepuj±cy b³±d
-You are not authorized: Nie masz autoryzacji
+You are not authorized.: Nie masz autoryzacji
 Add N hours to: Dodaj N godzin do
 Subtract N hours from: Odejmij N godzin od
 same as: taki sam jak
@@ -1099,7 +1103,6 @@ Settings.php Status: Status settings.php
 Your settings.php file appears to be valid: Plik <b>settings.php</b> jest poprawny
 Configuration Wizard Password: Has³o kreatora instalacji
 Create Settings File Password: Utwórz has³o pliku z ustawieniami
-Password (again): Has³o (ponownie)
 Database Status: Status bazy danych
 Supported databases for your PHP installation: Bazy danych obs³ugiwane przez Twoj± instalacjê PHP
 Your current database settings are able to access the database: Twoje obecne ustawienia pozwalaj± na dostêp do bazy danych.

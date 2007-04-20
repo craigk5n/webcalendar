@@ -7,29 +7,33 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -317,8 +321,8 @@ Error: Akatsa
 Today: Gaur
 Next month: Hurrengo hilabetea
 Next year: Hurrengo urtea
-Current User: Une hontako erabiltzailea
 User: Erabiltzailea
+Current User: Une hontako erabiltzailea
 
 ########################################
 # Page: edit_user.php
@@ -336,9 +340,9 @@ Set Password: Pasahitza jarri
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Erabiltzaileak ezabatzea debekatua
-The passwords were not identical: Pasahitza hauek ez dira berdinak
-You have not entered a password: Ez duzu pasahitz bat sartu
+Deleting users not supported.: Erabiltzaileak ezabatzea debekatua
+The passwords were not identical.: Pasahitza hauek ez dira berdinak
+You have not entered a password.: Ez duzu pasahitz bat sartu
 
 ########################################
 # Page: export.php
@@ -446,7 +450,7 @@ Reject this entry?: Gaitzetsi sarrera hau?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Erabiltzaile eta pasahitz bat sartu behar dituzu
+You must enter a login and password.: Erabiltzaile eta pasahitz bat sartu behar dituzu
 Save login via cookies so I dont have to login next time.: Datuak gorde
 Login: Sartu
 Access public calendar: Egutegi publikora joan
@@ -471,10 +475,10 @@ An appointment has been rejected by: Gertaera bat gaitzetsia izan da
 ########################################
 # Page: report.php
 #
-This event is confidential: Gertaera hau konfidentziala da
-Waiting for approval: Onespenaren zai
+This event is confidential.: Gertaera hau konfidentziala da
 Deleted: Ezabatuak
 Rejected: Gaitzetsiak
+Waiting for approval: Onespenaren zai
 
 ########################################
 # Page: search.php
@@ -495,8 +499,7 @@ No matches found: Ez da asmatzerik topatu
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Sarrera desegokia
-You have not added any categories: Ez duzu atalik gehitu
+You have not added any categories.: Ez duzu atalik gehitu
 Set Category: Atala ezarri
 
 ########################################
@@ -599,7 +602,7 @@ Sep: Ira
 Oct: Urr
 Nov: Aza
 The following error occurred: Hondoko akatsa gertatu da
-You are not authorized: Ez zaude baimenduta
+You are not authorized.: Ez zaude baimenduta
 Error approving event: Akatsa gertaera onestean
 Sunday: Igandea
 Monday: Astelehena

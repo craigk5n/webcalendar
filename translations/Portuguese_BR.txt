@@ -17,29 +17,33 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -426,13 +430,13 @@ Next year: Próximo ano
 This year: Este ano
 Last year: Ano passado
 Year before last: Ano retrasado
-Invalid report id: Id do relatório inválido
+Invalid report id.: Id do relatório inválido
 Unnamed Report: Relatório sem Nome
 Add Report: Adiciona Relatório
 Edit Report: Editar Relatório
 Report name: Nome do Relatório
-Current User: Usuário Corrente
 User: Usuário
+Current User: Usuário Corrente
 Include standard header/trailer: Incluir cabeçalho e Menu
 Include previous/next links: Incluir links prévios/próximos
 Include empty dates: Incluir datas vazias
@@ -470,9 +474,9 @@ Set Password: Gravar Senha
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Deleção de usuários não suportada
-The passwords were not identical: As senhas não são iguais
-You have not entered a password: Não entrou com a senha
+Deleting users not supported.: Deleção de usuários não suportada
+The passwords were not identical.: As senhas não são iguais
+You have not entered a password.: Não entrou com a senha
 Username cannot be blank.: Nome de usuário não pode estar vazio
 
 ########################################
@@ -628,7 +632,7 @@ Reject this entry?: Rejeitar esta entrada?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Você deve digitar um usuário e senha
+You must enter a login and password.: Você deve digitar um usuário e senha
 Save login via cookies so I dont have to login next time.: Gravar usuário e senha
 Login: Entrar
 Access public calendar: Calendário de acesso público
@@ -670,11 +674,11 @@ An appointment has been rejected by: Um evento foi rejeitado por
 ########################################
 # Page: report.php
 #
-This event is confidential: Este evento é confidencial
-Waiting for approval: Aguardando por aprovação
+This event is confidential.: Este evento é confidencial
+Approved: Aprovado
 Deleted: Deletado
 Rejected: Rejeitada
-Approved: Aprovado
+Waiting for approval: Aguardando por aprovação
 Unknown: Desconhecido
 to manage reports for the Public Access calendar: para administrar relatórios para o Calendário de Acesso Público
 Add new report: Adiciona novo relatório
@@ -704,8 +708,7 @@ View Another Users Calendar: Ver o calendário de outro usuário
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Entrada com ID inválido
-You have not added any categories: Você não adicionou nenhuma categoria
+You have not added any categories.: Você não adicionou nenhuma categoria
 Set Category: Selecionar Categoria
 
 ########################################
@@ -821,7 +824,7 @@ Aug: Ago
 Sep: Set
 Oct: Out
 The following error occurred: Ocorreu o seguinte erro
-You are not authorized: Você não está autorizado
+You are not authorized.: Você não está autorizado
 Error approving event: Erro aprovando evento
 Sunday: Domingo
 Monday: Segunda

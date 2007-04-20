@@ -8,12 +8,16 @@
 # Updated to 1.1 by Istvan Bubreg bubreg_at_freemail_hu
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: UTF-8
@@ -21,15 +25,15 @@ charset: UTF-8
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
 __mm__/__dd__/__yyyy__: __yyyy__/__mm__/__dd__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
 __month__ __yyyy__: __yyyy__ __month__
 
 ################################################################################
@@ -341,8 +345,8 @@ Administrative Tools: Adminisztrációs eszközök
 ########################################
 # Page: ajax.php
 #
-Username already exists: A felhasználónév foglalt
-Email address already exists: Az Email cím már létezik
+Username already exists.: A felhasználónév foglalt
+Email address already exists.: Az Email cím már létezik
 
 ########################################
 # Page: approve_entry.php
@@ -585,13 +589,13 @@ Next 60 days: Következő 60 nap
 Next 90 days: Következő 90 nap
 Next 180 days: Következő 180 nap
 Next 365 days: Következő 365 nap
-Invalid report id: Érvénytelen riport id
+Invalid report id.: Érvénytelen riport id
 Unnamed Report: Névtelen jelentés
 Add Report: Jelentés hozzáadása
 Edit Report: Jelentés szerkesztése
 Report name: Jelentés neve
-Current User: Felhasználó
 User: Felhasználó
+Current User: Felhasználó
 Include standard header/trailer: Standard fejléc/lábléc beszúrása
 Include previous/next links: Elõzõ/következõ linkek beszúrása
 Include empty dates: Üres dátumok beszúrása
@@ -629,9 +633,9 @@ Set Password: Jelszó beállítás
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Felhasználók törlése nem támogatott
-The passwords were not identical: A jelszavak nem egyeznek meg
-You have not entered a password: Nem írtad be a jelszót
+Deleting users not supported.: Felhasználók törlése nem támogatott
+The passwords were not identical.: A jelszavak nem egyeznek meg
+You have not entered a password.: Nem írtad be a jelszót
 Username cannot be blank.: A felhasználónév nem lehet üres
 
 ########################################
@@ -815,7 +819,7 @@ Reject this entry?: Elutasítod ezt a bejegyzést?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Add meg az azonosítódat és jelszavadat
+You must enter a login and password.: Add meg az azonosítódat és jelszavadat
 Save login via cookies so I dont have to login next time.: A bejelentkezési jelszó mentése, így errõl a géprõl legközelebb nem kell megadni
 Login: Bejelentkezés
 Access public calendar: Nyilvános naptár elérése
@@ -832,7 +836,7 @@ Not yet registered? Register here!: Még nem regisztráltál ? Tedd meg itt!
 # Page: minical.php
 #
 No such nonuser calendar: Nincs felhasználó nélküli naptár
-This Calendar is not Public: Ez a naptár nem nyilvános
+This Calendar is not Public.: Ez a naptár nem nyilvános
 
 ########################################
 # Page: nonusers.php
@@ -872,20 +876,20 @@ Records deleted from: Rekordok törölve a következõbõl
 # Page: register.php
 #
 Email address cannot be blank.: Az Email cím nem lehet üres
-A new WebCalendar account has been set up for you: Az új WebNaptár hozzáférés létrehozva
+A new WebCalendar account has been set up for you.: Az új WebNaptár hozzáférés létrehozva
 Your username is: A felhasználóneved
 Your password is: A jelszavad
 Please visit: Kérlek keresd fel
 to log in and start using your account: a bejelentkezéshez
-You may change your password after logging in the first time: A jelszavad az első bejelentkezés után megváltoztathatod
+You may change your password after logging in the first time.: A jelszavad az első bejelentkezés után megváltoztathatod
 If you received this email in error: Ha tévedésből kaptad ezt a levelet és nem íratkoztál fel WebNaptárba, hagyd figyelmen kívül, vagy írj rövid választ
 Administrator: Adminisztrátor
 Welcome: Üdvözöllek
 Registration: Regisztráció
 Welcome to WebCalendar: Üdvözöllek a WebNaptárban
-Your email should arrive shortly: Az emailed hamaorsan megérkezik
+Your email should arrive shortly.: Az emailed hamaorsan megérkezik
 Return to Login screen: Vissza bejelentkezéshez
-Your account information will be emailed to you: A hozzáférésed adatait emailben kapod meg
+Your account information will be emailed to you.: A hozzáférésed adatait emailben kapod meg
 Submit: Elküld
 
 ########################################
@@ -898,12 +902,12 @@ An appointment has been rejected by: Egy találkozót elutasított
 ########################################
 # Page: report.php
 #
+This event is confidential.: Ez az esemény bizalmas
 cont.: folyt.
-This event is confidential: Ez az esemény bizalmas
-Waiting for approval: Jóváhagyásra vár
+Approved: Jóváhagyva
 Deleted: Törölve
 Rejected: Elutasítva
-Approved: Jóváhagyva
+Waiting for approval: Jóváhagyásra vár
 Unknown: Ismeretlen
 to manage reports for the Public Access calendar: kezelheti a nyilvános naptár jelentéseit
 Add new report: Új jelentés hozzáadása
@@ -933,8 +937,7 @@ View Another Users Calendar: Betekintés más felhasználók naptárába
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Érvénytelen bejegyzés-azonosító
-You have not added any categories: Még nem adtál hozzá kategóriát
+You have not added any categories.: Még nem adtál hozzá kategóriát
 Set Category: Kategória beállítása
 Global Categories cannot be changed.: Globális kategóriát nem lehet módosításani
 
@@ -1116,7 +1119,7 @@ Jul: Júl
 Sep: Szept
 Oct: Okt
 The following error occurred: A következõ hiba történt
-You are not authorized: Nincs jogosultságod
+You are not authorized.: Nincs jogosultságod
 Add N hours to: adj N �r�t
 Subtract N hours from: vonj ki N �r�t
 same as: adj 0 �r�t

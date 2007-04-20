@@ -12,12 +12,16 @@
 # Last updated on July 21 2006
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: UTF-8
@@ -25,16 +29,16 @@ charset: UTF-8
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -418,13 +422,13 @@ Next 60 days: Les 60 prochains jours
 Next 90 days: Les 90 prochains jours
 Next 180 days: Les 180 prochains jours
 Next 365 days: Les 365 prochains jours
-Invalid report id: ID de rapport invalide
+Invalid report id.: ID de rapport invalide
 Unnamed Report: sans titre
 Add Report: Ajouter un rapport
 Edit Report: Éditer un rapport
 Report name: Nom du rapport
-Current User: Utilisateur actuel
 User: Utilisateur
+Current User: Utilisateur actuel
 Include standard header/trailer: Inclure les hauts et bas de pages standards
 Include previous/next links: Inclure les liens avant/après
 Include empty dates: Inclure les dates non renseignées
@@ -462,9 +466,9 @@ Set Password: Modifier le mot de passe
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: La suppression des utilisateurs n'est pas possible
-The passwords were not identical: Les mots de passe saisis ne sont pas identiques
-You have not entered a password: Vous n'avez pas saisi de mot de passe
+Deleting users not supported.: La suppression des utilisateurs n'est pas possible
+The passwords were not identical.: Les mots de passe saisis ne sont pas identiques
+You have not entered a password.: Vous n'avez pas saisi de mot de passe
 Username cannot be blank.: Le nom d'utilisateur ne peut être laissé non renseigné
 
 ########################################
@@ -620,7 +624,7 @@ Reject this entry?: Rejeter cet événement ?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Vous devez saisir un login et un mot de passe valides
+You must enter a login and password.: Vous devez saisir un login et un mot de passe valides
 Save login via cookies so I dont have to login next time.: Sauvegarder l'identifiant dans un cookie, pour ne plus le saisir la prochaine fois
 Login: Connexion
 Access public calendar: Agenda à accès public
@@ -660,12 +664,12 @@ An appointment has been rejected by: Un événement a été rejeté par
 ########################################
 # Page: report.php
 #
+This event is confidential.: Cet événement est confidentiel
 cont.: suite
-This event is confidential: Cet événement est confidentiel
-Waiting for approval: En attente de validation
+Approved: Approuvé
 Deleted: Supprimé
 Rejected: Rejeté
-Approved: Approuvé
+Waiting for approval: En attente de validation
 Unknown: Inconnu
 to manage reports for the Public Access calendar: pour gérer les rapports relatifs à l'accès à l'agenda public
 Add new report: Ajouter un nouveau rapport
@@ -695,8 +699,7 @@ View Another Users Calendar: Visualiser l'agenda d'un autre utilisateur
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Id non valable
-You have not added any categories: Vous n'avez pas défini de catégories
+You have not added any categories.: Vous n'avez pas défini de catégories
 Set Category: Choisir la catégorie
 
 ########################################
@@ -814,7 +817,7 @@ Apr: Avr
 May: Mai
 Aug: Aoû
 The following error occurred: L'erreur suivante est survenue
-You are not authorized: Vous n'êtes pas autorisé(e)
+You are not authorized.: Vous n'êtes pas autorisé(e)
 Error approving event: Erreur en approuvant l'événement
 Sunday: Dimanche
 Monday: Lundi
@@ -892,7 +895,7 @@ TU: MA
 WE: ME
 TH: JE
 FR: VE
-SA: SA
+SA: =
 Unnamed Event: événement sans nom
 Event Imported: Événement importé
 
