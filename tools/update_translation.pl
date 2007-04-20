@@ -230,10 +230,15 @@ if ( $plugin eq '' ) {
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
-################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ":" indicates that the
-# "translation" is identical to the English text.
+################################################################################';
+
+  print OUT '
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
 #
+' if ( $infile !~ /english-us/i);
+
+  print OUT '
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: ' . $trans{ 'charset' } . '
