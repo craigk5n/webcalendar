@@ -42,8 +42,7 @@ for ( $i = 0; $i < 7; $i++ ) {
 }
 //build month grid
 $mdays = '';
-for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthendYmd;
-  $i += ( 86400 * 7 ) ) {
+for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthendYmd; $i += 604800 ) {
   $mdays .= '
              <tr>';
   for ( $j = 0; $j < 7; $j++ ) {

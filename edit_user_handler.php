@@ -11,11 +11,11 @@ $error = '';
 if ( ! $is_admin )
   $user = $login;
 
-$notAuthStr = print_not_auth () . '.';
-$deleteStr = translate ( 'Deleting users not supported' ) . '.';
-$notIdenticalStr = translate ( 'The passwords were not identical' ) . '.';
-$noPasswordStr = translate ( 'You have not entered a password' ) . '.';
-$blankUserStr = translate ( 'Username cannot be blank.' ) . '.';
+$notAuthStr = print_not_auth ();
+$deleteStr = translate ( 'Deleting users not supported.' );
+$notIdenticalStr = translate ( 'The passwords were not identical.' );
+$noPasswordStr = translate ( 'You have not entered a password.' );
+$blankUserStr = translate ( 'Username cannot be blank.' );
 
 // Don't let them edit users if they'e not authorized.
 if ( empty ( $user ) ) {

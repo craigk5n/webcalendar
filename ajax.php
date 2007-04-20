@@ -23,11 +23,12 @@ $WebCalendar->initializeSecondPhase();
 
 load_global_settings ();
 load_user_preferences ();
-$WebCalendar->setLanguage();
+$WebCalendar->setLanguage ();
 
+$cat_id = getPostValue ( 'cat_id' );
 $name = getPostValue ( 'name' );
 $page = getPostValue ( 'page' );
-$cat_id = getPostValue ( 'cat_id' );
+
 // We're processing edit_remotes Calendar ID field.
 if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_nonuser_cals
@@ -45,18 +46,18 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
     array ( $name ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    // translate ( 'Username already exists' )
+    // translate ( 'Username already exists.' )
     if ( $row[0] == $name )
       echo str_replace ( 'XXX', $name,
         translate ( 'Username XXX already exists.', true ) );
   }
 } elseif ( $page == 'email' ) {
-  // We're processing email field from any page field.
-  $res = dbi_execute ( 'SELECT cal_email FROM webcal_user
-    WHERE cal_email = ?', array ( $name ) );
+  // We're processing email field from any page.
+  $res = dbi_execute ( 'SELECT cal_email FROM webcal_user WHERE cal_email = ?',
+    array ( $name ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    // translate ( 'Email address already exists' )
+    // translate ( 'Email address already exists.' )
     if ( $row[0] == $name )
       echo str_replace ( 'XXX', $name,
         translate ( 'Email address XXX already exists.', true ) );
@@ -68,8 +69,9 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   include_once 'includes/gradient.php';
   $column_array = array ( 'we.cal_priority', 'we.cal_name',
     'we.cal_due_date', 'weu.cal_percent' );
-  $task_filter = ' ORDER BY ' . $column_array[$name % 4] .
-    ( $name > 3 ? ' ASC' : ' DESC' );
+  $task_filter = ' ORDER BY ' . $column_array[$name % 4]
+   . ( $name > 3 ? ' ASC' : ' DESC' );
   echo display_small_tasks ( $cat_id );
 }
+
 ?>

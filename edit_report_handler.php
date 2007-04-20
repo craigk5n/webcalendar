@@ -7,9 +7,9 @@
  *
  * Input Parameters:
  * report_id (optional) - the report id of the report to edit.
- *   If blank, user is adding a new report.
- * public (optional) - If set to '1' and user is an admin user,
- *   then we are creating a report for the public user.
+ *                        If blank, user is adding a new report.
+ * public (optional) -    If set to '1' and user is an admin user,
+ *                        then we are creating a report for the public user.
  * report_name
  * report_user
  * is_global (Y or N)
@@ -26,233 +26,169 @@
  *
  * Security:
  * Same as in edit_report.php...
- * If system setting $REPORTS_ENABLED is set to anything other than
- *   'Y', then don't allow access to this page.
- * If $ALLOW_VIEW_OTHER is 'N', then do not allow selection of
- *   participants.
+ * If system setting $REPORTS_ENABLED is set to anything other than 'Y',
+ * then don't allow access to this page.
+ * If $ALLOW_VIEW_OTHER is 'N', then do not allow selection of participants.
  * Can only delete/edit an event if you are the creator of the event
- *   or you are an admin user.
+ * or you are an admin user.
  */
 include_once 'includes/init.php';
 load_user_categories ();
 
-$error = '';
+$error = ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'
+  ? print_not_auth () : '' );
 $report_id = getValue ( 'report_id', '-?[0-9]+', true );
+$updating_public = ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' );
 
-if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' ) {
-  $error = print_not_auth () . '.';
-}
-
-$updating_public = false;
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
-  $updating_public = true;
-}
-
-if ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y' ) {
+if ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y' )
   $report_user = '';
-}
 
 if ( ! $is_admin )
   $is_global = 'N';
 
 $adding_report = ( empty ( $report_id ) || $report_id <= 0 );
-
-// Check permissions
-// Can only edit/delete if you created the event or your are an admin.
-if ( empty ( $error ) && $single_user != 'N' && ! empty ( $report_id ) &&
-  $report_id > 0 && ! $is_admin ) {
-  $res = dbi_execute ( 'SELECT cal_login FROM webcal_report ' .
-     'WHERE report_id = ?', array( $report_id ) );
+// .
+// Check permissions.
+// Can only edit/delete if you created the event or you are an admin.
+if ( empty ( $error ) && $single_user != 'N' && !
+    empty ( $report_id ) && $report_id > 0 && ! $is_admin ) {
+  $res = dbi_execute ( 'SELECT cal_login FROM webcal_report WHERE report_id = ?',
+    array ( $report_id ) );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
-      if ( $row[0] != $login ) {
+      if ( $row[0] != $login )
         $error = print_not_auth ();
-      }
-    } else {
-      $error = 'No such report id';
-    }
-    dbi_free_result ( $res );
-  } else {
-    $error = db_error ();
-  }
-}
+    } else
+      $error = str_replace ( 'XXX', $report_id,
+        translate ( 'No such report id XXX.' ) );
 
+    dbi_free_result ( $res );
+  } else
+    $error = db_error ();
+}
+// .
 // Validate templates to make sure the required variables are found.
-// Page template must include ${days}
+// Page template must include ${days}.
 if ( empty ( $error ) ) {
-  if ( ! strstr ( $page_template, '${days}' ) ) {
-    $error = '<p>' . translate ( 'Error' ) . ' [' .
-      translate ( 'Page template' ) . ']: ' .
-      str_replace ( ' N ', ' <tt>${days}</tt> ',
-        translate ( 'Variable N not found' ) ) .  '.';
-  }
-  // Day template must include ${events}
-  if ( ! strstr ( $day_template, '${events}' ) ) {
-    if ( ! empty ( $error ) )
-      $error .= '</p>';
-    $error .= '<p>' . translate ( 'Error' ) . ' [' .
-      translate ( 'Day template' ) . ']: ' .
-      str_replace ( ' N ', ' <tt>${events}</tt> ',
-        translate ( 'Variable N not found' ) ) . '.';
-  }
-  // Event template must include ${name}
-  if ( ! strstr ( $event_template, '${name}' ) ) {
-    if ( ! empty ( $error ) )
-      $error .= '</p>';
-    $error .= '<p>' . translate ( 'Error' ) . ' [' .
-      translate ( 'Event template' ) . ']: ' .
-      str_replace ( ' N ', ' <tt>${name}</tt> ',
-        translate ( 'Variable N not found' ) ) . '.';
-  }
+  $errStr = '
+    <p>' . translate ( 'Error' ) . ' [';
+  // translate ( 'Variable N not found' )
+  $noVarXXX = ']: ' . translate ( 'Variable XXX not found.' ) . '</p>';
+  if ( ! strstr ( $page_template, '${days}' ) )
+    $error .= $errStr . translate ( 'Page template' )
+     . str_replace ( 'XXX', '${days}', $noVarXXX );
+  // .
+  // Day template must include ${events}.
+  if ( ! strstr ( $day_template, '${events}' ) )
+    $error .= $errStr . translate ( 'Day template' )
+     . str_replace ( 'XXX', '${events}', $noVarXXX );
+  // .
+  // Event template must include ${name}.
+  if ( ! strstr ( $event_template, '${name}' ) )
+    $error .= $errStr . translate ( 'Event template' )
+     . str_replace ( 'XXX', '${name}', $noVarXXX );
 }
 $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $report_id ) && ! empty ( $delete ) ) {
-  if ( ! dbi_execute ( 'DELETE FROM webcal_report_template ' .
-    'WHERE cal_report_id = ?', array( $report_id ) ) )
+  if ( ! dbi_execute ( 'DELETE FROM webcal_report_template WHERE cal_report_id = ?',
+      array ( $report_id ) ) )
     $error = db_error ();
-  if ( empty ( $error ) &
-    ! dbi_execute ( 'DELETE FROM webcal_report ' .
-    'WHERE cal_report_id = ?', array( $report_id ) ) )
+
+  if ( empty ( $error ) && ! dbi_execute ( 'DELETE FROM webcal_report
+    WHERE cal_report_id = ?', array ( $report_id ) ) )
     $error = db_error ();
-  // send back to main report listing page
+  // Send back to main report listing page.
   if ( empty ( $error ) )
     do_redirect ( 'report.php' );
 }
 
 if ( empty ( $error ) ) {
-  $names = array ();
-  $values = array ();
-
-  $names[] = 'cal_login';
-  $values[] = ( $updating_public ? '__public__' : $login );
-
-  $names[] .= 'cal_update_date';
-  $values[] = date ( 'Ymd' );
-
-  $names[] = 'cal_report_type';
-  $values[] = 'html';
-
-  $names[] = 'cal_report_name';
   if ( empty ( $report_name ) || trim ( $report_name ) == '' )
     $report_name = translate ( 'Unnamed Report' );
-  $values[] = $report_name;
 
-  $names[] = 'cal_user';
-  if ( ! $is_admin || empty ( $report_user ) ) {
-    $values[] = NULL;
-  } else {
-    $values[] = $report_user;
-  }
+  $names = array ( 'cal_login', 'cal_update_date', 'cal_report_type',
+    'cal_report_name', 'cal_user', 'cal_include_header', 'cal_time_range',
+    'cal_cat_id', 'cal_allow_nav', 'cal_include_empty', 'cal_is_global',
+    'cal_show_in_trailer' );
 
-  $names[] = 'cal_include_header';
-  if ( empty ( $include_header ) || $include_header != 'Y' ) {
-    $values[] = 'N';
-  } else {
-    $values[] = 'Y';
-  }
-
-  $names[] = 'cal_time_range';
-  $values[] = ( ! isset ( $time_range ) ? 11 : $time_range );
-
-  $names[] = 'cal_cat_id';
-  $values[] = ( empty ( $cat_id ) ? NULL : $cat_id );
-
-  $names[] = 'cal_allow_nav';
-  $values[] = ( empty ( $allow_nav ) || $allow_nav != 'Y' ) ? 'N' : 'Y';
-
-  $names[] = 'cal_include_empty';
-  $values[] = ( empty ( $include_empty ) || $include_empty != 'Y' ) ? 'N' : 'Y';
-
-  $names[] = 'cal_is_global';
-  $values[] = ( empty ( $is_global ) || $is_global != 'Y' ) ? 'N' : 'Y';
-
-  $names[] = 'cal_show_in_trailer';
-  $values[] = ( empty ( $show_in_trailer ) || $show_in_trailer != 'Y' ) ? 'N' : 'Y';
+  $values = array (
+    ( $updating_public ? '__public__' : $login ),
+    date ( 'Ymd' ),
+    'html',
+    $report_name,
+    ( ! $is_admin || empty ( $report_user ) ? null : $report_user ),
+    ( empty ( $include_header ) || $include_header != 'Y' ? 'N' : 'Y' ),
+    ( isset ( $time_range ) ? $time_range : 11 ),
+    ( empty ( $cat_id ) ? null : $cat_id ),
+    ( empty ( $allow_nav ) || $allow_nav != 'Y' ? 'N' : 'Y' ),
+    ( empty ( $include_empty ) || $include_empty != 'Y' ? 'N' : 'Y' ),
+    ( empty ( $is_global ) || $is_global != 'Y' ? 'N' : 'Y' ),
+    ( empty ( $show_in_trailer ) || $show_in_trailer != 'Y' ? 'N' : 'Y' ) );
 
   if ( $adding_report ) {
-    $res = dbi_execute ( 'SELECT MAX(cal_report_id) FROM webcal_report' );
     $newid = 1;
+    $res = dbi_execute ( 'SELECT MAX( cal_report_id ) FROM webcal_report' );
     if ( $res ) {
-      if ( $row = dbi_fetch_row ( $res ) ) {
+      if ( $row = dbi_fetch_row ( $res ) )
         $newid = $row[0] + 1;
-      }
+
       dbi_free_result ( $res );
     }
     $names[] = 'cal_report_id';
     $values[] = $newid;
+
     $sql = 'INSERT INTO webcal_report ( ';
+    $sql_v = '';
+
     $namecnt = count ( $names );
     for ( $i = 0; $i < $namecnt; $i++ ) {
-      if ( $i > 0 )
-        $sql .= ', ';
-      $sql .= $names[$i];
+      $sql .= ( $i > 0 ? ', ' : '' ) . $names[$i];
+      $sql_v .= ( $i > 0 ? ', ' : '' ) . '?';
     }
-    $sql .= ' ) VALUES ( ';
-    $valuecnt = count ( $values );
-    for ( $i = 0; $i < $valuecnt; $i++ ) {
-      if ( $i > 0 )
-        $sql .= ', ';
-      //$sql .= $values[$i];
-    $sql .= '?';
-    }
-    $sql .= ' )';
+    $sql .= ' ) VALUES ( ' . $sql_v . ' )';
     $report_id = $newid;
   } else {
     $sql = 'UPDATE webcal_report SET ';
     $namecnt = count ( $names );
     for ( $i = 0; $i < $namecnt; $i++ ) {
-      if ( $i > 0 )
-        $sql .= ', ';
-      //$sql .= "$names[$i] = $values[$i]";
-    $sql .= "$names[$i] = ?";
+      $sql .= ( $i > 0 ? ', ' : '' ) . "$names[$i] = ?";
     }
     $sql .= ' WHERE cal_report_id = ?';
-  $values[] = $report_id; // push the $report_id to $values
-
-  }
-  //echo "SQL: $sql"; exit;
-}
-
-
-if ( empty ( $error ) ) {
-  if ( ! dbi_execute ( $sql, $values ) ) {
-    $error = db_error ();
+    $values[] = $report_id; // Push the $report_id to $values.
   }
 }
+
+if ( empty ( $error ) && ! dbi_execute ( $sql, $values ) )
+  $error = db_error ();
 
 if ( empty ( $error ) ) {
   if ( ! $adding_report ) {
-    if ( ! dbi_execute ( 'DELETE FROM webcal_report_template ' .
-      'WHERE cal_report_id = ?', array( $report_id ) ) )
+    if ( ! dbi_execute ( 'DELETE FROM webcal_report_template
+      WHERE cal_report_id = ?', array ( $report_id ) ) )
       $error = db_error ();
   }
-  if ( empty ( $error ) &&
-    ! dbi_execute ( 'INSERT INTO webcal_report_template ' .
-    '( cal_report_id, cal_template_type, cal_template_text ) VALUES ( ' .
-    '?, ?, ? )', array( $report_id, 'P', $page_template ) ) )
+  $ins_sql = 'INSERT INTO webcal_report_template
+    ( cal_report_id, cal_template_type, cal_template_text ) VALUES ( ?, ?, ? )';
+
+  if ( empty ( $error ) && ! dbi_execute ( $ins_sql,
+        array ( $report_id, 'D', $day_template ) ) )
     $error = db_error ();
-  if ( empty ( $error ) &&
-    ! dbi_execute ( 'INSERT INTO webcal_report_template ' .
-    '( cal_report_id, cal_template_type, cal_template_text ) VALUES ( ' .
-    '?, ?, ? )', array( $report_id, 'D', $day_template ) ) )
+
+  if ( empty ( $error ) && ! dbi_execute ( $ins_sql,
+        array ( $report_id, 'E', $event_template ) ) )
     $error = db_error ();
-  if ( empty ( $error ) &&
-    ! dbi_execute ( 'INSERT INTO webcal_report_template ' .
-    '( cal_report_id, cal_template_type, cal_template_text ) VALUES ( ' .
-    '?, ?, ? )', array( $report_id, 'E', $event_template ) ) )
+
+  if ( empty ( $error ) && ! dbi_execute ( $ins_sql,
+        array ( $report_id, 'P', $page_template ) ) )
     $error = db_error ();
 }
 
 if ( empty ( $error ) ) {
-  if ( $updating_public )
-    do_redirect ( 'report.php?public=1' );
-  else
-    do_redirect ( 'report.php' );
+  do_redirect ( 'report.php' . ( $updating_public ? '?public=1' : '' ) );
   exit;
 }
 
 print_header();
-echo print_error ( $error);
-echo print_trailer();
-?>
+echo print_error ( $error ) . print_trailer ();
 
+?>

@@ -958,8 +958,8 @@ class WebCalendar {
     // An attempt will be made to translate
     if ( $not_auth ) {
       load_user_preferences();
-      $error = ( function_exists ( 'translate' )?
-        translate ( 'You are not authorized' ) : 'You are not authorized' );
+      $error = ( function_exists ( 'translate' )
+       ? translate ( 'You are not authorized.' ) : 'You are not authorized.' );
       die_miserable_death ( $error );
     }
   }
