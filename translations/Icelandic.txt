@@ -4,29 +4,33 @@
 # Last update: 18 August 2000
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -151,7 +155,7 @@ Use end date: Loka dags
 repeat-frequency-help: Tilgreinir hversu oft á að endurtaka atriði. 1 er sjálfgefið fyrir hvert skipti. Með því að velja 2 er hægt að láta atriði gerast aðra hverja viku (ef valin <i>Endurtekning</i> er <i>Vikulega</i>), annan hvern mánuð (ef valin <i>Endurtekning</i> er <i>Mánaðarlega</i>), o.s.frv.
 Frequency: Tíðni
 MO: MÁ
-SU: SU
+SU: =
 Delete entry: Eyða atriði
 You are not authorized to edit this entry.: Þú hefur ekki réttindi til þess að breyta þessu atriði
 
@@ -198,8 +202,8 @@ Set Password: Breyta
 ########################################
 # Page: edit_user_handler.php
 #
-The passwords were not identical: Lykilorðin passa ekki saman
-You have not entered a password: Lykilorð vantar
+The passwords were not identical.: Lykilorðin passa ekki saman
+You have not entered a password.: Lykilorð vantar
 
 ########################################
 # Page: export.php
@@ -247,7 +251,7 @@ Reject this entry?: Hafna þessu atriði?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Þú verður að slá inn notandanafn og lykilorð
+You must enter a login and password.: Þú verður að slá inn notandanafn og lykilorð
 Save login via cookies so I dont have to login next time.: Vista upplýsingar með kökum
 Login: Skrá inn
 cookies-note: <b>Athugið:</b> Kökur verða að vera virkar
@@ -260,7 +264,7 @@ Save Preferences: Vista stillingar
 ########################################
 # Page: report.php
 #
-This event is confidential: Þetta er trúnaðarmál
+This event is confidential.: Þetta er trúnaðarmál
 Rejected: Hafnað
 
 ########################################
@@ -282,11 +286,6 @@ No matches found: Ekkert fannst
 # Page: select_user.php
 #
 View Another Users Calendar: Skoða dagatal annarra
-
-########################################
-# Page: set_entry_cat.php
-#
-Invalid entry id: Óleyfilegt einkenni
 
 ########################################
 # Page: users.php
@@ -340,7 +339,7 @@ Aug: Ágú
 Oct: Okt
 Nov: Nóv
 The following error occurred: Eftirfarandi villa kom upp
-You are not authorized: Þú hefur ekki heimild
+You are not authorized.: Þú hefur ekki heimild
 Error approving event: Villa við samþykkt atriðis
 Sunday: Sunnudagur
 Monday: Mánudagur

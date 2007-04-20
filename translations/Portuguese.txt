@@ -9,29 +9,33 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -389,13 +393,13 @@ Next year: Próximo ano
 This year: Ano corrente
 Last year: Ano passado
 Year before last: Ano antepassado
-Invalid report id: Identificador de relatório inválido
+Invalid report id.: Identificador de relatório inválido
 Unnamed Report: Relatório sem nome
 Add Report: Adicionar Relatório
 Edit Report: Editar Relatório
 Report name: Nome de Relatório
-Current User: Utilizador Corrente
 User: Utilizador
+Current User: Utilizador Corrente
 Include standard header/trailer: Incluir cabeçalho/rodapé standard
 Include previous/next links: Incluir links anteriores/seguintes
 Include empty dates: Incluir datas vazias
@@ -432,9 +436,9 @@ Set Password: Gravar Password
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: A remoção de utilizadores não é permitida
-The passwords were not identical: As passwords não são iguais
-You have not entered a password: Não introduziu uma password
+Deleting users not supported.: A remoção de utilizadores não é permitida
+The passwords were not identical.: As passwords não são iguais
+You have not entered a password.: Não introduziu uma password
 
 ########################################
 # Page: export.php
@@ -582,7 +586,7 @@ Reject this entry?: Rejeitar esta entrada?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Tem de introduzir um Utilizador e uma Password
+You must enter a login and password.: Tem de introduzir um Utilizador e uma Password
 Save login via cookies so I dont have to login next time.: Gravar Utilizador e Password para sessões futuras (não recomendado se este computador for utilizado por mais pessoas)
 Login: Entrar
 Access public calendar: Calendário de acesso público
@@ -623,11 +627,11 @@ An appointment has been rejected by: Uma marcação foi rejeitada por
 ########################################
 # Page: report.php
 #
-This event is confidential: Este evento é confidencial
-Waiting for approval: À espera de aprovação
+This event is confidential.: Este evento é confidencial
+Approved: Aprovada
 Deleted: Apagada
 Rejected: Rejeitada
-Approved: Aprovada
+Waiting for approval: À espera de aprovação
 Unknown: Desconhecida
 to manage reports for the Public Access calendar: para gerir relatórios do calendário de Acesso Público
 Add new report: Adicionar novo relatório
@@ -657,8 +661,7 @@ View Another Users Calendar: Ver Calendário de Outro Utilizador
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Entrada com ID inválido
-You have not added any categories: Não adicionou nenhuma categoria
+You have not added any categories.: Não adicionou nenhuma categoria
 Set Category: Definir Categoria
 
 ########################################
@@ -771,7 +774,7 @@ Aug: Ago
 Sep: Set
 Oct: Out
 The following error occurred: Ocorreu o seguinte erro
-You are not authorized: Não está autorizado
+You are not authorized.: Não está autorizado
 Add N hours to: Adicionar N horas a
 Subtract N hours from: Subtrair N horas a
 same as: igual a

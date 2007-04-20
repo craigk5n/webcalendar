@@ -6,12 +6,16 @@
 # Last update: Wed Oct 25 14:34:05 IST 2000
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: KOI8-R
@@ -19,16 +23,16 @@ charset: KOI8-R
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -369,8 +373,8 @@ Administrative Tools: Инструменты Администратора
 # Page: ajax.php
 #
 Duplicate Name: Имя существует
-Username already exists: Имя пользователя уже существует
-Email address already exists: Адрес электронной почты уже существует
+Username already exists.: Имя пользователя уже существует
+Email address already exists.: Адрес электронной почты уже существует
 
 ########################################
 # Page: approve_entry.php
@@ -657,13 +661,13 @@ Next 60 days: Следующие 60 дней
 Next 90 days: Следующие 90 дней
 Next 180 days: Следующие 180 дней
 Next 365 days: Следующие 365 дней
-Invalid report id: Неверный ID отчета
+Invalid report id.: Неверный ID отчета
 Unnamed Report: Безымянный Отчет
 Add Report: Добавить Отчет
 Edit Report: Редактировать Отчет
 Report name: Наименование отчета
-Current User: Текущий пользователь
 User: Пользователь
+Current User: Текущий пользователь
 Include standard header/trailer: Добавлять стандартный заголовок/конец
 Include previous/next links: Добавлять ссылки предыдущий/следующий
 Include empty dates: Добавлять пустые даты
@@ -701,9 +705,9 @@ Set Password: Установить пароль
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Удаление пользователей не поддерживается
-The passwords were not identical: Пароли не совпали
-You have not entered a password: Вы не ввели пароль
+Deleting users not supported.: Удаление пользователей не поддерживается
+The passwords were not identical.: Пароли не совпали
+You have not entered a password.: Вы не ввели пароль
 Username cannot be blank.: Имя пользователя не может быть пустым
 
 ########################################
@@ -900,7 +904,7 @@ Reject Selected entries?: Отвергнуть выбранные записи?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Необходимо ввести имя и пароль
+You must enter a login and password.: Необходимо ввести имя и пароль
 Save login via cookies so I dont have to login next time.: Сохранить имя в браузере, чтобы не нужно было совершать загрузку в следующий раз
 Login: Вход
 Access public calendar: Вход в общий календарь
@@ -917,7 +921,7 @@ Not yet registered? Register here!: Еще не зарегистрированы? Вам сюда!
 # Page: minical.php
 #
 No such nonuser calendar: Такого непользовательского канелдаря не существует
-This Calendar is not Public: Этот календарь не является Общим
+This Calendar is not Public.: Этот календарь не является Общим
 
 ########################################
 # Page: nonusers.php
@@ -973,20 +977,21 @@ Records deleted from: Записи удалены из
 # Page: register.php
 #
 Email address cannot be blank.: Адрес электронной почты не моет быть пустым
-A new WebCalendar account has been set up for you: Новая учетная запись WebCalendar была создана
+A new WebCalendar account has been set up for you.: Новая учетная запись WebCalendar была создана
 Your username is: Имя вашего пользователя
 Your password is: Вашь пароль
 Please visit: Пожалуйста посетите
 to log in and start using your account: чтобы войти в систему и начать использовать свою учетную запись
-You may change your password after logging in the first time: Вы можете изменить свой пароль после первого входа в систему
+You may change your password after logging in the first time.: Вы можете изменить свой пароль после первого входа в систему
 If you received this email in error: Если вы получили это письмо по ошибке и не подписывались на поллучение учетной записи WebCalendar, вы можете удалить это сообщение или ответить с короткой пометкой
 Administrator: Администратор
 Welcome: Добро пожаловать
 Registration: Регистрация
 Welcome to WebCalendar: Добро пожаловать в WebCalendar
-Your email should arrive shortly: Ваше письмо должно быть скоро доставлено
+Your email should arrive shortly.: Ваше письмо должно быть скоро доставлено
 Return to Login screen: Вернуться на страницу входа
-Your account information will be emailed to you: Ваши данные будут высланы вам по электронной почте
+Password (again): Пароль (повторить)
+Your account information will be emailed to you.: Ваши данные будут высланы вам по электронной почте
 Submit: Передать
 
 ########################################
@@ -1004,12 +1009,12 @@ Add New Remote Calendar: Добавить Новый Внешний Календарь
 ########################################
 # Page: report.php
 #
+This event is confidential.: Эта запись конфидециальна
 cont.: продолж.
-This event is confidential: Эта запись конфидециальна
-Waiting for approval: В ожидании утверждения
+Approved: Утверждено
 Deleted: Удалено
 Rejected: Отвергнуто
-Approved: Утверждено
+Waiting for approval: В ожидании утверждения
 Unknown: Неизвестно
 to manage reports for the Public Access calendar: управлять отчетами для календаря Общего Доступа
 Add new report: Добавить новый отчет
@@ -1039,8 +1044,7 @@ View Another Users Calendar: Просмотреть календарь другого пользователя
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Неправильный идентификатор записи
-You have not added any categories: Вы не добавляли никаких категорий
+You have not added any categories.: Вы не добавляли никаких категорий
 Set Category: Установить Категорию
 Global Categories cannot be changed.: Глобальные категории не могут быть изменены
 
@@ -1245,7 +1249,7 @@ Sep: Сен
 Oct: Окт
 Nov: Ноя
 The following error occurred: Произошла следующая ошибка
-You are not authorized: У вас нет права доступа
+You are not authorized.: У вас нет права доступа
 Add N hours to: Добавить N часов к
 Subtract N hours from: Убрать N часов от
 same as: 0 часов от
@@ -1515,7 +1519,6 @@ The file permissions of the includes directory are set...: Права доступа для кат
 Your settings.php file appears to be valid: Ваш файл <b>settings.php</b> успешно проверен на правильность.
 Configuration Wizard Password: Пароль для Мастера Установки
 Create Settings File Password: Создать пароль для файла настроек
-Password (again): Пароль (повторить)
 db setup directions...: В этой секции вам надо установить и проверить соединение с сервером вашей базы данных. Указанный пользователь базы данных должен иметь ВСЕ привилегии на создание базы данных, таблиц и пользователей. Если это невозможно или ваш доступ к базе данных ограничен вам надо самостоятельно настроить вашу базу данных.
 Database Status: Статус Базы Данных
 Supported databases for your PHP installation: PHP установка поддерживает следующие Базы Данных

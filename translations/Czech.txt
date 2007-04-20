@@ -10,12 +10,16 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: UTF-8
@@ -23,16 +27,16 @@ charset: UTF-8
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -416,13 +420,13 @@ Next year: P?íští rok
 This year: Tento rok
 Last year: Minulý rok
 Year before last: P?edminulý rok
-Invalid report id: Neplatná sestava s id
+Invalid report id.: Neplatná sestava s id
 Unnamed Report: Nepojmenovaná sestava
 Add Report: P?idej sestavu
 Edit Report: Uprav sestavu
 Report name: Jméno sestavy
-Current User: Sou?asný uživatel
 User: Uživatel
+Current User: Sou?asný uživatel
 Include standard header/trailer: V?etn? standardního záhlaví/zápatí
 Include previous/next links: V?etn? odkaz? na p?edchozí/další
 Include empty dates: V?etn? prázdných dn?
@@ -460,9 +464,9 @@ Set Password: Nastavit heslo
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Mazání uživatel? není podporováno
-The passwords were not identical: Hesla nebyla shodná
-You have not entered a password: Nezadal jsi heslo
+Deleting users not supported.: Mazání uživatel? není podporováno
+The passwords were not identical.: Hesla nebyla shodná
+You have not entered a password.: Nezadal jsi heslo
 
 ########################################
 # Page: export.php
@@ -609,7 +613,7 @@ Reject this entry?: Odmítnout tuto událost?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Musíš zadat sv?j platný login a heslo
+You must enter a login and password.: Musíš zadat sv?j platný login a heslo
 Save login via cookies so I dont have to login next time.: Abych se p?íšt? nemusel p?ihlašovat, zapamatuj si p?ihlašovací údaje do cookies
 Access public calendar: P?ístup k ve?ejným kalendá??m
 cookies-note: <b>Poznámka:</b> Pro p?ihlášení a správný b?h je pot?eba mít v prohlížeci povolena cookies.
@@ -649,12 +653,12 @@ An appointment has been rejected by: Sch?zka byla odmítnuta uživatelem
 ########################################
 # Page: report.php
 #
+This event is confidential.: Tento záznam je d?v?rný
 cont.: pokr.
-This event is confidential: Tento záznam je d?v?rný
-Waiting for approval: ?eká na schválení
+Approved: Odsouhlaseno
 Deleted: Smazáno
 Rejected: Odmítnuto
-Approved: Odsouhlaseno
+Waiting for approval: ?eká na schválení
 Unknown: Neznámý
 to manage reports for the Public Access calendar: pro správu report? u ve?ejn? p?ístupných kalendá??
 Add new report: P?idej nový report
@@ -684,8 +688,7 @@ View Another Users Calendar: Prohlédnou si kalendá? jiného uživatele
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Neplatné id záznamu
-You have not added any categories: Nep?idával jsi žádné kategorie
+You have not added any categories.: Nep?idával jsi žádné kategorie
 Set Category: P?i?a? kategorii
 
 ########################################
@@ -798,7 +801,7 @@ Sep: zá?
 Oct: ?íj
 Nov: lis
 The following error occurred: Nastala následující chyba:
-You are not authorized: Nemáte oprávn?ní
+You are not authorized.: Nemáte oprávn?ní
 Add N hours to: P?idej N hodin k
 Subtract N hours from: Ode?ti N hodin z
 same as: stejná, jako je

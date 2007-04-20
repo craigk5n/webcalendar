@@ -7,12 +7,16 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: windows-1251
@@ -20,16 +24,16 @@ charset: windows-1251
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -354,13 +358,13 @@ Next year: !;5420I0B0 3>48=0
 This year: "078 3>48=0
 Last year: 8=0;0B0 3>48=0
 Year before last: >-<8=0;0B0 3>48=0
-Invalid report id: 520;84=> id =0 4>:;040
+Invalid report id.: 520;84=> id =0 4>:;040
 Unnamed Report: 578<5=5= 4>:;04
 Add Report: >102O=5 =0 4>:;04
 Edit Report: 540:B8@0=5 =0 4>:;04
 Report name: <5 =0 4>:;040
-Current User: 0AB>OI ?>B@518B5;
 User: >B@518B5;
+Current User: 0AB>OI ?>B@518B5;
 Include standard header/trailer: :;NG20=5 =0 AB0=40@B5= header/trailer
 Include previous/next links: :;NG20=5 =0 ?@548H=8/A;5420I8 ;8=:>25
 Include empty dates: :;NG20=5 =0 ?@07=8 40B8
@@ -391,9 +395,9 @@ Set Password: ?@545;O=5 =0 ?0@>;0
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: 5 5 @07@5H5=> 87B@820=5B> =0 ?>B@518B5;8
-The passwords were not identical: 25B5 ?0@>;8 =5 AJ2?040B
-You have not entered a password: 5 AB5 2J25;8 ?0@>;0
+Deleting users not supported.: 5 5 @07@5H5=> 87B@820=5B> =0 ?>B@518B5;8
+The passwords were not identical.: 25B5 ?0@>;8 =5 AJ2?040B
+You have not entered a password.: 5 AB5 2J25;8 ?0@>;0
 
 ########################################
 # Page: export.php
@@ -520,12 +524,12 @@ hour: G0A
 ########################################
 # Page: report.php
 #
+This event is confidential.: ">20 AJ18B85 5 :>=D845=F80;=>
 cont.: ?@>4J;6.
-This event is confidential: ">20 AJ18B85 5 :>=D845=F80;=>
-Waiting for approval: 7G0:20I8 70 >4>1@5=85
+Approved: 4>1@5=
 Deleted: 7B@8B8
 Rejected: BE2J@;5=8
-Approved: 4>1@5=
+Waiting for approval: 7G0:20I8 70 >4>1@5=85
 Unknown: 58725AB5=
 to manage reports for the Public Access calendar: 70 40 C?@02;O20B5 4>:;048B5 70 0;5=40@0 A ?C1;8G5= 4>ABJ?
 Add new report: >102O=5 =0 =>2 4>:;04
@@ -550,8 +554,7 @@ No matches found: O<0 =0<5@5=8 AJ>B25BAB28O
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: 520;84=> id =0 70?8A0
-You have not added any categories: 5 AB5 4>1028;8 =8B> 54=0 :0B53>@8O
+You have not added any categories.: 5 AB5 4>1028;8 =8B> 54=0 :0B53>@8O
 Set Category: 715@8 :0B53>@8O
 
 ########################################
@@ -637,7 +640,7 @@ Sep: !5?B5<2@8
 Oct: :B><2@8
 Nov: >5<2@8
 The following error occurred: >O28 A5 A;54=0B0 3@5H:0
-You are not authorized: 5 AB5 C?J;=><>I5=8
+You are not authorized.: 5 AB5 C?J;=><>I5=8
 Add N hours to: >102O=5 =0 N G0A0 :J<
 Subtract N hours from: 720640=5 =0 N G0A0 >B
 same as: AJI>B> :0B>

@@ -6,12 +6,16 @@
 # Oliver Heesakkers / dev@heesakkers.info
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: iso-8859-15
@@ -19,16 +23,16 @@ charset: iso-8859-15
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -342,8 +346,8 @@ Administrative Tools: Administratieve gereedschappen
 # Page: ajax.php
 #
 Duplicate Name: Dubbele naam
-Username already exists: Gebruikersnaam bestaat al
-Email address already exists: Email-adres bestaat al
+Username already exists.: Gebruikersnaam bestaat al
+Email address already exists.: Email-adres bestaat al
 
 ########################################
 # Page: approve_entry.php
@@ -628,13 +632,13 @@ Next 60 days: Volgende 60 dagen
 Next 90 days: Volgende 90 dagen
 Next 180 days: Volgende 180 dagen
 Next 365 days: Volgende 365 dagen
-Invalid report id: Ongeldige rapportage-ID
+Invalid report id.: Ongeldige rapportage-ID
 Unnamed Report: naamloze rapportage
 Add Report: rapportage toevoegen
 Edit Report: rapportage wijzigen
 Report name: naam rapportage
-Current User: Huidige gebruiker
 User: Gebruiker
+Current User: Huidige gebruiker
 Include standard header/trailer: gebruik standaard kop- en voettekst
 Include previous/next links: gebruik links voor vorige en volgende rapportageperiode
 Include empty dates: toon ook dagen zonder afspraken
@@ -672,9 +676,9 @@ Set Password: Bewaar wachtwoord
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Het verwijderen van gebruikers is niet mogelijk
-The passwords were not identical: De ingevoerde wachtwoorden zijn niet identiek of u heeft het wachtwoord maar een keer ingevuld<br />Probeert u het nog eens
-You have not entered a password: U heeft geen wachtwoord ingevuld.
+Deleting users not supported.: Het verwijderen van gebruikers is niet mogelijk
+The passwords were not identical.: De ingevoerde wachtwoorden zijn niet identiek of u heeft het wachtwoord maar een keer ingevuld<br />Probeert u het nog eens
+You have not entered a password.: U heeft geen wachtwoord ingevuld.
 Username cannot be blank.: Gebruikersnaam kan niet leeg zijn
 
 ########################################
@@ -869,7 +873,7 @@ Reject Selected entries?: Verwerp geselecteerde afspraken
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: U moet een gebruikersnaam en een wachtwoord invullen.
+You must enter a login and password.: U moet een gebruikersnaam en een wachtwoord invullen.
 Save login via cookies so I dont have to login next time.: Bewaar inloggegevens
 Login: Aanmelden
 Access public calendar: Ga naar publieke agenda
@@ -886,7 +890,7 @@ Not yet registered? Register here!: Nog niet geregistreerd? Registreer hier!
 # Page: minical.php
 #
 No such nonuser calendar: Onbekende niet-gebruikers kalender
-This Calendar is not Public: Deze kalender is niet openbaar
+This Calendar is not Public.: Deze kalender is niet openbaar
 
 ########################################
 # Page: nonusers.php
@@ -942,20 +946,21 @@ Records deleted from: Afspraken verwijderd van
 # Page: register.php
 #
 Email address cannot be blank.: Email-adres kan niet leeg zijn
-A new WebCalendar account has been set up for you: Er is een nieuw WebCalendar account voor u opgezet.
+A new WebCalendar account has been set up for you.: Er is een nieuw WebCalendar account voor u opgezet.
 Your username is: Uw gebruikersnaam is
 Your password is: Uw wachtwoord is
 Please visit: Bezoek
 to log in and start using your account: om in te loggen en te starten met het gebruiken van uw account
-You may change your password after logging in the first time: U kunt uw wachtwoord wijzigen na de eerste keer te hebben ingelogd
+You may change your password after logging in the first time.: U kunt uw wachtwoord wijzigen na de eerste keer te hebben ingelogd
 If you received this email in error: Indien u deze mail onterecht ontvangt
 Administrator: Beheerder
 Welcome: Welkom
 Registration: Registratie
 Welcome to WebCalendar: Welkom bij de WebKalender
-Your email should arrive shortly: Uw E-mail moet zodra aankomen
+Your email should arrive shortly.: Uw E-mail moet zodra aankomen
 Return to Login screen: Terugkeren naar login-scherm
-Your account information will be emailed to you: Uw accountinformatie wordt u toegestuurd via E-mail
+Password (again): Wachtwoord (herhalen)
+Your account information will be emailed to you.: Uw accountinformatie wordt u toegestuurd via E-mail
 Submit: Invoeren
 
 ########################################
@@ -973,11 +978,11 @@ Add New Remote Calendar: Nieuwe kalender op afstand toevoegen
 ########################################
 # Page: report.php
 #
-This event is confidential: Vertrouwelijk - details niet beschikbaar
-Waiting for approval: Nog niet bevestigd
+This event is confidential.: Vertrouwelijk - details niet beschikbaar
+Approved: Goedgekeurd
 Deleted: Verwijderd
 Rejected: Geweigerd
-Approved: Goedgekeurd
+Waiting for approval: Nog niet bevestigd
 Unknown: Onbekend
 to manage reports for the Public Access calendar: om rapportages voor de publieke agenda te beheren
 Add new report: Rapportage toevoegen
@@ -1007,8 +1012,7 @@ View Another Users Calendar: Bekijk de agenda van een andere gebruiker
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Ongeldige afspraak-ID
-You have not added any categories: U heeft geen categorie toegevoegd
+You have not added any categories.: U heeft geen categorie toegevoegd
 Set Category: Bepaal categorie
 Global Categories cannot be changed.: Globale categorien kunnen niet worden gewijzigd
 
@@ -1191,7 +1195,7 @@ Sep: sep
 Oct: okt
 Nov: nov
 The following error occurred: De volgende fout heeft zich voorgedaan
-You are not authorized: U heeft geen toegang
+You are not authorized.: U heeft geen toegang
 Add N hours to: Voeg N uren toe aan
 Subtract N hours from: Trek N uren af van
 same as: net als
@@ -1437,7 +1441,6 @@ The file permissions of settings.php are set...: De bestandspermissies van <b>se
 Your settings.php file appears to be valid: Uw <b>settings.php</b> bestand lijkt geldig te zijn
 Configuration Wizard Password: Configuratie wizard wachtwoord
 Create Settings File Password: Maak wachtwoord voor configuratiebestand
-Password (again): Wachtwoord (herhalen)
 db setup directions...: db instellingen aanwijzingen...
 Supported databases for your PHP installation: Ondersteunde databases voor deze PHP-installatie
 Your current database settings are able to access the database: Met deze database-instellingen is het niet mogelijk verbinding te maken met de database

@@ -2,29 +2,33 @@
 # Last update: 03 October 2002
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -298,8 +302,8 @@ Error: Camgymeriad
 ########################################
 # Page: edit_report.php
 #
-Current User: Defnyddiwr presennol
 User: Defnyddiwr
+Current User: Defnyddiwr presennol
 
 ########################################
 # Page: edit_user.php
@@ -317,9 +321,9 @@ Set Password: Gosod Gair Cydd
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Ni chanieteir diddymu defnyddwyr
-The passwords were not identical: Nid yw'r geiriau cyfrin yn cyfateb
-You have not entered a password: Nid ydych wedi cynnig gair cydd
+Deleting users not supported.: Ni chanieteir diddymu defnyddwyr
+The passwords were not identical.: Nid yw'r geiriau cyfrin yn cyfateb
+You have not entered a password.: Nid ydych wedi cynnig gair cydd
 
 ########################################
 # Page: export.php
@@ -427,7 +431,7 @@ Reject this entry?: Gwrthodwch y digwyddiad hwn?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Rhaid i chi cynnig mewngofnodiad a gair cydd
+You must enter a login and password.: Rhaid i chi cynnig mewngofnodiad a gair cydd
 Save login via cookies so I dont have to login next time.: Arbedwch fy mewngofnodiad trwy 'cookies' fel nad oes raid i mi mewngofnodi y tro nesaf
 Login: Mewngofnodiad
 Access public calendar: Calendr Cyhoeddus
@@ -452,10 +456,10 @@ An appointment has been rejected by: Gwrthodwyd digwyddiad gan
 ########################################
 # Page: report.php
 #
-This event is confidential: Mae'r digwyddiad yma yn gyfrinachol
-Waiting for approval: Aros as cymeradwyaeth
+This event is confidential.: Mae'r digwyddiad yma yn gyfrinachol
 Deleted: Diddymwyd
 Rejected: Gwrthodwyd
+Waiting for approval: Aros as cymeradwyaeth
 
 ########################################
 # Page: search.php
@@ -481,8 +485,7 @@ View Another Users Calendar: Gwylio Calendr Defnyddiwr arall
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: ID annilys
-You have not added any categories: Nid ydych wedi ychwanegu unrhyw dosbarthiadau
+You have not added any categories.: Nid ydych wedi ychwanegu unrhyw dosbarthiadau
 Set Category: Gosod Dosbarth
 
 ########################################
@@ -584,7 +587,7 @@ Sep: Medi
 Oct: Hydref
 Nov: Tachwedd
 The following error occurred: Mae'r camgymeriad canlynol wedi digwydd
-You are not authorized: Dim awdurdod
+You are not authorized.: Dim awdurdod
 Error approving event: Camgymeriad wrth cymeradwyo digwyddiad
 Sunday: Sul
 Monday: Llun

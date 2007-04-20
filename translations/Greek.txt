@@ -11,12 +11,16 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: UTF-8
@@ -24,16 +28,16 @@ charset: UTF-8
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -425,13 +429,13 @@ Next 60 days: Επόμενες 60 ημέρες
 Next 90 days: Επόμενες 90 ημέρες
 Next 180 days: Επόμενες 180 ημέρες
 Next 365 days: Επόμενες 365 ημέρες
-Invalid report id: Εσφαλμένο id αναφοράς
+Invalid report id.: Εσφαλμένο id αναφοράς
 Unnamed Report: Αναφορά χωρίς όνομα
 Add Report: Προσθήκη Αναφοράς
 Edit Report: Επεξεργασία Αναφοράς
 Report name: Όνομα αναφοράς
-Current User: Τρέχων Χρήστης
 User: Χρήστης
+Current User: Τρέχων Χρήστης
 Include standard header/trailer: Συμπεριέλαβε τον standard πρόλογο/επίλογο
 Include previous/next links: Συμπεριέλαβε τα προηγούμενα/επόμενα links
 Include empty dates: Συμπεριέλαβε τις κενές μέρες
@@ -468,9 +472,9 @@ Set Password: Θέσετε τον κωδικό
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Η διαγραφή χρηστών δεν υποστηρίζεται
-The passwords were not identical: Οι κωδικοί δεν είναι ίδιοι
-You have not entered a password: Δεν δώσατε κωδικό
+Deleting users not supported.: Η διαγραφή χρηστών δεν υποστηρίζεται
+The passwords were not identical.: Οι κωδικοί δεν είναι ίδιοι
+You have not entered a password.: Δεν δώσατε κωδικό
 Username cannot be blank.: Το όνομα χρήστη δεν μπορεί να είναι κενό
 
 ########################################
@@ -626,7 +630,7 @@ Reject this entry?: Απόρριψη της εγγραφής;
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Πρέπει να δώσετε Όνομα Χρήστη και Κωδικό
+You must enter a login and password.: Πρέπει να δώσετε Όνομα Χρήστη και Κωδικό
 Save login via cookies so I dont have to login next time.: Αποθήκευση της εισόδου με cookies για να μην χρειαστεί η διαδικασία εισόδου την επόμενη φορά
 Login: Είσοδος
 Access public calendar: Πρόσβαση στο Δημόσιο Ημερολόγιο
@@ -668,11 +672,11 @@ An appointment has been rejected by: Μια συνάντηση, απορρίφθ
 ########################################
 # Page: report.php
 #
-This event is confidential: Το γεγονός είναι ιδιωτικό
-Waiting for approval: Περιμένει για αποδοχή
+This event is confidential.: Το γεγονός είναι ιδιωτικό
+Approved: Εγκεκριμένο
 Deleted: Διεγραμένο
 Rejected: Απορριφθέν
-Approved: Εγκεκριμένο
+Waiting for approval: Περιμένει για αποδοχή
 Unknown: Άγνωστο
 to manage reports for the Public Access calendar: για τη διαχείρηση αναφορών από το Ημερολόγιο Δημόσιας Πρόσβασης
 Add new report: Προσθήκη νέας αναφοράς
@@ -702,8 +706,7 @@ View Another Users Calendar: Δείτε το Ημερολόγιο άλλου χ�
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Εσφαλμένο id καταχώρησης
-You have not added any categories: Δεν έχετε προσθέσει καμμία κατηγορία
+You have not added any categories.: Δεν έχετε προσθέσει καμμία κατηγορία
 Set Category: Κατηγορία
 
 ########################################
@@ -830,7 +833,7 @@ Sep: Σεπ
 Oct: Οκτ
 Nov: Νοε
 The following error occurred: Συνέβη το ακόλουθο σφάλμα
-You are not authorized: Δεν είστε εξουσιοδοτημένος
+You are not authorized.: Δεν είστε εξουσιοδοτημένος
 Add N hours to: Πρόσθεσε N ώρες στην
 Subtract N hours from: Αφαίρεσε N ώρες από την
 same as: ιδια με την

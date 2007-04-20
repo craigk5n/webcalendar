@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 04-13-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
@@ -432,11 +432,11 @@ Administrative Tools: Administrative Tools
 # Page: ajax.php
 #
 Duplicate Name: Duplicate Name
-Duplicate Name XXX: Duplicate Name: XXX.
-Username already exists: Username already exists
+Duplicate Name XXX: Duplicate Name: "XXX".
+Username already exists.: Username already exists.
 Username XXX already exists.: Username "XXX" already exists.
-Email address already exists: Email address already exists
-Email address XXX already exists.: Email address "XXX" already exists
+Email address already exists.: Email address already exists.
+Email address XXX already exists.: Email address "XXX" already exists.
 
 ########################################
 # Page: approve_entry.php
@@ -758,13 +758,14 @@ Next 60 days: Next 60 days
 Next 90 days: Next 90 days
 Next 180 days: Next 180 days
 Next 365 days: Next 365 days
-Invalid report id: Invalid report id
+Invalid report id.: Invalid report id.
+Invalid report id XXX.: Invalid report id: "XXX".
 Unnamed Report: Unnamed Report
 Add Report: Add Report
 Edit Report: Edit Report
 Report name: Report name
-Current User: Current User
 User: User
+Current User: Current User
 Include link in menu: Include link in menu
 Include standard header/trailer: Include standard header/trailer
 Include previous/next links: Include previous/next links
@@ -779,7 +780,9 @@ report: report
 ########################################
 # Page: edit_report_handler.php
 #
+No such report id XXX.: No such report id: "XXX".
 Variable N not found: Variable N not found
+Variable XXX not found.: Variable <tt>XXX</tt> not found.
 
 ########################################
 # Page: edit_template.php
@@ -804,9 +807,9 @@ Set Password: Set Password
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Deleting users not supported.
-The passwords were not identical: The passwords were not identical.
-You have not entered a password: You have not entered a password.
+Deleting users not supported.: Deleting users not supported.
+The passwords were not identical.: The passwords were not identical.
+You have not entered a password.: You have not entered a password.
 Username cannot be blank.: Username cannot be blank.
 
 ########################################
@@ -1024,10 +1027,12 @@ Reject Selected entries?: Reject Selected entries?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: You must enter a login and password
+You must enter a login and password.: You must enter a login and password.
 Save login via cookies so I dont have to login next time.: Save login via cookies so I don't have to login next time
 Login: Login
 Access public calendar: Access public calendar
+public: public
+Access XXX calendar: Access XXX calendar
 cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 
 ########################################
@@ -1041,7 +1046,8 @@ Not yet registered? Register here!: Not yet registered? Register here!
 # Page: minical.php
 #
 No such nonuser calendar: No such nonuser calendar
-This Calendar is not Public: This Calendar is not Public
+No such nonuser calendar XXX.: No such nonuser calendar: "XXX".
+This Calendar is not Public.: This Calendar is not Public.
 
 ########################################
 # Page: nonusers.php
@@ -1100,20 +1106,27 @@ Records deleted from: Records deleted from
 # Page: register.php
 #
 Email address cannot be blank.: Email address cannot be blank.
-A new WebCalendar account has been set up for you: A new WebCalendar account has been set up for you
+Illegal characters in login XXX.: Illegal characters in login XXX.
+New user via self-registration.: New user via self-registration.
+A new WebCalendar account has been set up for you.: A new WebCalendar account has been set up for you.
 Your username is: Your username is
+Your username is XXX.: Your username is: "XXX".
 Your password is: Your password is
+Your password is XXX.: Your password is: "XXX".
 Please visit: Please visit
 to log in and start using your account: to log in and start using your account
-You may change your password after logging in the first time: You may change your password after logging in the first time
+Please visit XXX to log in and start using your account!: Please visit "XXX" to log in and start using your account!
+You may change your password after logging in the first time.: You may change your password after logging in the first time.
 If you received this email in error: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note
 Administrator: Administrator
 Welcome: Welcome
+New user via email.: New user via email.
 Registration: Registration
 Welcome to WebCalendar: Welcome to WebCalendar
-Your email should arrive shortly: Your email should arrive shortly
+Your email should arrive shortly.: Your email should arrive shortly.
 Return to Login screen: Return to Login screen
-Your account information will be emailed to you: Your account information will be emailed to you
+Password (again): Password (again)
+Your account information will be emailed to you.: Your account information will be emailed to you.
 Submit: Submit
 
 ########################################
@@ -1131,12 +1144,14 @@ Add New Remote Calendar: Add New Remote Calendar
 ########################################
 # Page: report.php
 #
+This event is confidential.: This event is confidential.
+(Private): (Private)
 cont.: cont.
-This event is confidential: This event is confidential
-Waiting for approval: Waiting for approval
+(cont.): (cont.)
+Approved: Approved
 Deleted: Deleted
 Rejected: Rejected
-Approved: Approved
+Waiting for approval: Waiting for approval
 Unknown: Unknown
 to manage reports for the Public Access calendar: to manage reports for the Public Access calendar
 Click here to manage reports for the Public Access calendar.: Click here to manage reports for the Public Access calendar.
@@ -1175,8 +1190,8 @@ View Another Users Calendar: View Another User's Calendar
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Invalid entry id
-You have not added any categories: You have not added any categories
+Invalid entry id.: Invalid entry id.
+You have not added any categories.: You have not added any categories.
 Set Category: Set Category
 Global Categories cannot be changed.: Global Categories cannot be changed.
 
@@ -1234,7 +1249,6 @@ No users for this view: No users for this view
 ########################################
 # Page: view_entry.php
 #
-Invalid entry id.: Invalid entry id.
 Update Task Percentage: Update Task Percentage
 Completed: Completed
 Assistant mode: Assistant mode
@@ -1409,7 +1423,7 @@ Nov: Nov
 unknown-month: unknown-month
 Error TIME_SLOTS undefined!: Error: TIME_SLOTS undefined!
 The following error occurred: The following error occurred
-You are not authorized: You are not authorized.
+You are not authorized.: You are not authorized.
 Add N hours to: Add N hours to
 Subtract N hours from: Subtract N hours from
 same as: same as
@@ -1718,7 +1732,6 @@ The file permissions of the includes directory are set...: The file permissions 
 Your settings.php file appears to be valid: Your <b>settings.php</b> file appears to be valid
 Configuration Wizard Password: Configuration Wizard Password
 Create Settings File Password: Create Settings File Password
-Password (again): Password (again)
 db setup directions...: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
 Database Status: Database Status
 Supported databases for your PHP installation: Supported databases for your PHP installation
@@ -1833,7 +1846,6 @@ Event id=XXX XXX at XXX on XXX.: Event id=XXX "XXX" at XXX on XXX.
 ########################################
 # Page: ws/get_reminders.php
 #
-public: public
 Allowing XXX user to view other users calendar.: Allowing XXX user to view other user's calendar.
 Error Email reminders disabled for user XXX.: Error: Email reminders disabled for user "XXX".
 Number of site_extras XXX.: Number of site_extras: XXX.

@@ -14,29 +14,33 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -414,13 +418,13 @@ Next year: L'anno prossimo
 This year: Quest'anno
 Last year: L'anno scorso
 Year before last: Due anni fa
-Invalid report id: Identificatore di rapporto non valido
+Invalid report id.: Identificatore di rapporto non valido
 Unnamed Report: Rapporto senza nome
 Add Report: Aggiungi un rapporto
 Edit Report: Modifica un rapporto
 Report name: Nome del rapporto
-Current User: Utente Corrente
 User: Utente
+Current User: Utente Corrente
 Include standard header/trailer: Includi intestazione/parte finale standard
 Include previous/next links: Includi i link precedente/successivo
 Include empty dates: Includi date vuote
@@ -457,9 +461,9 @@ Set Password: Assegnare Password
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: La cancellazione degli utenti non &egrave; pi&ugrave; supportata
-The passwords were not identical: Le password non sono identiche
-You have not entered a password: Non si &egrave; inserita nessuna password
+Deleting users not supported.: La cancellazione degli utenti non &egrave; pi&ugrave; supportata
+The passwords were not identical.: Le password non sono identiche
+You have not entered a password.: Non si &egrave; inserita nessuna password
 
 ########################################
 # Page: export.php
@@ -608,7 +612,7 @@ Reject this entry?: Rifiuta questo inserimento?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Inserire nome utente e password
+You must enter a login and password.: Inserire nome utente e password
 Save login via cookies so I dont have to login next time.: Salvare le informazioni di login tramite i cookie cos&igrave; da non doversi pi&ugrave; registrare la prossima volta
 Login: Entra
 Access public calendar: Accedi al calendario pubblico
@@ -649,11 +653,11 @@ An appointment has been rejected by: Un appuntamento &egrave; stato rifiutato da
 ########################################
 # Page: report.php
 #
-This event is confidential: Questo evento &egrave; confidenziale
-Waiting for approval: In attesa di approvazione
+This event is confidential.: Questo evento &egrave; confidenziale
+Approved: Approvato
 Deleted: Cancellato
 Rejected: Rifiutato
-Approved: Approvato
+Waiting for approval: In attesa di approvazione
 Unknown: Sconosciuto
 to manage reports for the Public Access calendar: per gestire rapporti per il calendario ad accesso pubblico
 Add new report: Aggiungi un nuovo rapporto
@@ -683,8 +687,7 @@ View Another Users Calendar: Visualizza calendario di un altro utente
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Identificativo nota non valido
-You have not added any categories: Non hai ancora aggiunto nessuna categoria
+You have not added any categories.: Non hai ancora aggiunto nessuna categoria
 Set Category: Setta la categoria
 
 ########################################
@@ -800,7 +803,7 @@ Aug: Ago
 Sep: Set
 Oct: Ott
 The following error occurred: &Egrave; avvenuto il seguente errore
-You are not authorized: Non sei autorizzato
+You are not authorized.: Non sei autorizzato
 Add N hours to: Aggiungi N ore all'
 Subtract N hours from: Sottrai N ore all'
 same as: come

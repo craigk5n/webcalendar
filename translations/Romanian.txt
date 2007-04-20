@@ -9,12 +9,16 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: iso-8859-2
@@ -22,16 +26,16 @@ charset: iso-8859-2
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -408,13 +412,13 @@ Next year: Anul urmator
 This year: Anul acesta
 Last year: Anul trecut
 Year before last: Cu doi ani &#238;n urm&#226;
-Invalid report id: ID-ul acestui raport este invalid
+Invalid report id.: ID-ul acestui raport este invalid
 Unnamed Report: Raport fara nume
 Add Report: Adaug&#259; raport
 Edit Report: Editeaz&#259; raport
 Report name: Numele raportului
-Current User: Utilizatorul curent
 User: Utilizator
+Current User: Utilizatorul curent
 Include standard header/trailer: Include &#238;nceput/sf&#226;r&#351;it standard
 Include previous/next links: Include linkuri "anterior/urm&#259;tor"
 Include empty dates: Include date goale
@@ -452,9 +456,9 @@ Set Password: Seteaz&#259; parola
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: &#350;tergerea utilizatorilor nu este permis&#259;
-The passwords were not identical: Parolele nu erau identice
-You have not entered a password: Nu a fost introdus&#259; parola
+Deleting users not supported.: &#350;tergerea utilizatorilor nu este permis&#259;
+The passwords were not identical.: Parolele nu erau identice
+You have not entered a password.: Nu a fost introdus&#259; parola
 
 ########################################
 # Page: export.php
@@ -603,7 +607,7 @@ Reject this entry?: Refuz&#259;?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Este nevoie de login &#351;i parol&#259;
+You must enter a login and password.: Este nevoie de login &#351;i parol&#259;
 Save login via cookies so I dont have to login next time.: Salveaz&#259; loginul &#238;ntr-un cookie pentru data viitoare
 Access public calendar: Acceseaz&#259; calendarul public
 cookies-note: <b>Nota:</b> Aceast&#259; aplica&#355;ie necesit&#259; cookie-uri.
@@ -643,11 +647,11 @@ An appointment has been rejected by: O programare a fost refuzat&#259; de c&#259
 ########################################
 # Page: report.php
 #
-This event is confidential: Acest eveniment este confiden&#355;ial
-Waiting for approval: Astept&#226;nd aprobare
+This event is confidential.: Acest eveniment este confiden&#355;ial
+Approved: Aprobat
 Deleted: Stears&#259;
 Rejected: Refuzat&#259;
-Approved: Aprobat
+Waiting for approval: Astept&#226;nd aprobare
 Unknown: Necunoscut
 to manage reports for the Public Access calendar: pentru a administra rapoartele din calendarul cu acces public
 Add new report: Adaug&#259; un nou raport
@@ -677,8 +681,7 @@ View Another Users Calendar: Vizualizeaz&#259; calendarul unui alt utilizator
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Indetificatorul evenimentului este invalid
-You have not added any categories: Nu ai ad&#259;ugat nici o categorie
+You have not added any categories.: Nu ai ad&#259;ugat nici o categorie
 Set Category: Define&#351;te o categorie
 
 ########################################
@@ -788,7 +791,7 @@ Jun: Iun
 Jul: Iul
 Nov: Noi
 The following error occurred: Urm&#259;toarea eroare s-a petrecut
-You are not authorized: Nu e&#351;ti autorizat(&#259;)
+You are not authorized.: Nu e&#351;ti autorizat(&#259;)
 Add N hours to: Adaug&#259; N ore la
 Subtract N hours from: Scade N ore din
 same as: la fel ca

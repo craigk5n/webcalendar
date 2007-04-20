@@ -4,12 +4,16 @@
 # Last update: 22 July 2006
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: UTF-8
@@ -347,8 +351,8 @@ Administrative Tools: כלי ניהול
 # Page: ajax.php
 #
 Duplicate Name: שם כפול
-Username already exists: שם המשתמש קיים כבר
-Email address already exists: כתובת דוא"ל קיימת כבר
+Username already exists.: שם המשתמש קיים כבר
+Email address already exists.: כתובת דוא"ל קיימת כבר
 
 ########################################
 # Page: approve_entry.php
@@ -631,13 +635,13 @@ Next 60 days: 60 ימים הקרובים
 Next 90 days: 90 ימים הקרובים
 Next 180 days: 180 ימים הקרובים
 Next 365 days: 365 ימים הקרובים
-Invalid report id: זיהוי דו"ח לא חוקי
+Invalid report id.: זיהוי דו"ח לא חוקי
 Unnamed Report: דו"ח ללא שם
 Add Report: הוסף דו"ח
 Edit Report: ערוך דו"ח
 Report name: שם הדו"ח
-Current User: המשתמש הנוכחי
 User: משתמש
+Current User: המשתמש הנוכחי
 Include standard header/trailer: לכלול כותרת/סיומת סטנדרטית
 Include previous/next links: לכלול קישורי הקודם/הבא
 Include empty dates: לכלול תאריכים ריקים
@@ -675,9 +679,9 @@ Set Password: קבע סיסמא
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: מחיקת משתמשים אינה נתמכת
-The passwords were not identical: הסיסמות לא זהות
-You have not entered a password: לא הקלדת סיסמא
+Deleting users not supported.: מחיקת משתמשים אינה נתמכת
+The passwords were not identical.: הסיסמות לא זהות
+You have not entered a password.: לא הקלדת סיסמא
 Username cannot be blank.: שם משתמש לא יכול להיות ריק
 
 ########################################
@@ -872,7 +876,7 @@ Reject Selected entries?: לדחות רשומות מסומנות?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: עליך להקליד שם משתמש וסיסמא
+You must enter a login and password.: עליך להקליד שם משתמש וסיסמא
 Save login via cookies so I dont have to login next time.: שמור שם משתמש בעזרת עוגיות כדי שלא אצטרך להקליד אותו בפעם הבאה
 Login: כניסה
 Access public calendar: גישה ללוח שנה ציבורית
@@ -889,7 +893,7 @@ Not yet registered? Register here!: עוד לא רשמת? הרשם כאן!
 # Page: minical.php
 #
 No such nonuser calendar: אין לוח שנה ללא משתמש בשם זה
-This Calendar is not Public: לוח שנה זה אינו ציבורי
+This Calendar is not Public.: לוח שנה זה אינו ציבורי
 
 ########################################
 # Page: nonusers.php
@@ -944,20 +948,21 @@ Records deleted from: רשומות נמחקו מ-
 # Page: register.php
 #
 Email address cannot be blank.: כתובת דוא"ל לא יכולה להיות ריקה
-A new WebCalendar account has been set up for you: חשבון לוח שנה חדש הוגדר עבורך
+A new WebCalendar account has been set up for you.: חשבון לוח שנה חדש הוגדר עבורך
 Your username is: שם המשתמש שלך הינו
 Your password is: הסיסמא שלך הוא
 Please visit: נא לבקר
 to log in and start using your account: כדי להכנס ולהתחיל להשתמש בחשבונך
-You may change your password after logging in the first time: ניתן לשנות את הסיסמא אחרי הכניסה הראשונה לחשבונך.
+You may change your password after logging in the first time.: ניתן לשנות את הסיסמא אחרי הכניסה הראשונה לחשבונך.
 If you received this email in error: אם קיבלת את המסר הזה בטעות ולא נרשמת לקבל חשבון לוח שנה, אתה יכול להתעלם מדוא"ל זה או לענות לו עם הערה קצרה.
 Administrator: מנהל
 Welcome: ברוך בואך
 Registration: רישום
 Welcome to WebCalendar: ברוך בואך אל לוח השנה
-Your email should arrive shortly: הדוא"ל צריך להגיע אליך מיד.
+Your email should arrive shortly.: הדוא"ל צריך להגיע אליך מיד.
 Return to Login screen: חזרה למסך הכניסה
-Your account information will be emailed to you: מידע אודות החשבון שלך יישלח אליך בדוא"ל
+Password (again): סיסמא (שוב)
+Your account information will be emailed to you.: מידע אודות החשבון שלך יישלח אליך בדוא"ל
 Submit: הגש
 
 ########################################
@@ -975,12 +980,12 @@ Add New Remote Calendar: הוסף לוח מרוחק חדש
 ########################################
 # Page: report.php
 #
+This event is confidential.: ארוע זה הינו פרטי
 cont.: המשך
-This event is confidential: ארוע זה הינו פרטי
-Waiting for approval: מחכה לאישור
+Approved: מאושר
 Deleted: נמחק
 Rejected: נדחה
-Approved: מאושר
+Waiting for approval: מחכה לאישור
 Unknown: לא ידוע
 to manage reports for the Public Access calendar: כדי לנהל דו"חות עבור לוח השנה של גישה ציבורית
 Add new report: הוסף דו"ח חדש
@@ -1010,8 +1015,7 @@ View Another Users Calendar: צפה בלוח שנה של משתמש אחר
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: זיהוי רשומה לא חוקי
-You have not added any categories: לא הוספת סיווגים כלשהם
+You have not added any categories.: לא הוספת סיווגים כלשהם
 Set Category: קבע סיווג
 Global Categories cannot be changed.: לא ניתן לשנות סיווגים גלובאליים
 
@@ -1207,7 +1211,7 @@ Sep: ספט
 Oct: אוק
 Nov: נוב
 The following error occurred: השגיאה הבאה אירעה
-You are not authorized: אינך מורשה
+You are not authorized.: אינך מורשה
 Your current GMT offset is: ההיסט הנוכחי משעון גרניץ' הינו
 Unauthorized: לא מורשה
 Error approving event: שגיאה באישור הארוע
@@ -1421,7 +1425,6 @@ The file permissions of the includes directory are set...: הרשאות הקוב
 Your settings.php file appears to be valid: קובץ <b>settings.php</b> שלך נראה תקין
 Configuration Wizard Password: סיסמת אשף ההתקנה
 Create Settings File Password: צור סיסמא בקובץ ההגדרות
-Password (again): סיסמא (שוב)
 db setup directions...: בחלק זה תגדיר ותבדוק חיבור לשרת בסיס הנתונים שלך. החשבון המסופק צריך להיות בעל הרשאות מלאות ליצור את בסיס נתונים, טבלאות ומשתמשים. אם דבר זה לא אפשרי, או שיש לך גישה מוגבלת לבסיס הנתונים שלך, תאלץ להגדיר את בסיס הנתונים שלך ידנית.
 Database Status: מצב בסיס הנתונים
 Supported databases for your PHP installation: בסיסי נתונים הנתמכים עבור תצורת ה-PHP שלך

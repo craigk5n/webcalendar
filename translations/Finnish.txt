@@ -12,29 +12,33 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -390,13 +394,13 @@ Next year: Seuraava vuosi
 This year: Tämä vuosi
 Last year: Viime vuosi
 Year before last: Toissavuosi
-Invalid report id: Raportti-id ei kelpaa
+Invalid report id.: Raportti-id ei kelpaa
 Unnamed Report: Nimetön raportti
 Add Report: Lisää raportti
 Edit Report: Muokkaa raporttia
 Report name: Raportin nimi
-Current User: Käyttäjä
 User: Käyttäjä
+Current User: Käyttäjä
 Include standard header/trailer: Lisää vakio ylä- ja alatunniste
 Include previous/next links: Lisää edellinen/seuraava -linkit
 Include empty dates: Näytä tyhjät päivät
@@ -434,9 +438,9 @@ Set Password: Aseta salasana
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Käyttäjien poisto ei ole tuettuna järjestelmässä
-The passwords were not identical: Salasanat eivät vastaa toisiaan
-You have not entered a password: salasanaa ei ole syötetty
+Deleting users not supported.: Käyttäjien poisto ei ole tuettuna järjestelmässä
+The passwords were not identical.: Salasanat eivät vastaa toisiaan
+You have not entered a password.: salasanaa ei ole syötetty
 
 ########################################
 # Page: export.php
@@ -583,7 +587,7 @@ Reject this entry?: Hylätäänkö merkintä?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Syötä käyttäjätunnus ja salasana
+You must enter a login and password.: Syötä käyttäjätunnus ja salasana
 Save login via cookies so I dont have to login next time.: Kirjaa minut automaattisesti sisään
 Login: Kirjoittaudu
 Access public calendar: Salli yleinen kalenteri
@@ -622,12 +626,12 @@ An appointment has been rejected by: Kalenterimerkintä on hylätty
 ########################################
 # Page: report.php
 #
+This event is confidential.: Luottamuksellinen merkintä
 cont.: jatk.
-This event is confidential: Luottamuksellinen merkintä
-Waiting for approval: Odottaa hyväksymistä
+Approved: Hyväksytty
 Deleted: Poistettu
 Rejected: Hylätty
-Approved: Hyväksytty
+Waiting for approval: Odottaa hyväksymistä
 Unknown: Ei tiedossa
 to manage reports for the Public Access calendar: hallinnoidaksesi Julkisen kalenterin raportteja
 Add new report: Lisää uusi raportti
@@ -657,8 +661,7 @@ View Another Users Calendar: Näytä toisen käyttäjän kalenteri
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Väärä tunnus
-You have not added any categories: Et ole lisännyt tapahtumaluokkia
+You have not added any categories.: Et ole lisännyt tapahtumaluokkia
 Set Category: Aseta luokka
 
 ########################################
@@ -775,7 +778,7 @@ Sep: Syys
 Oct: Loka
 Nov: Marras
 The following error occurred: Tapahtui virhe
-You are not authorized: Käyttöoikeus puuttuu
+You are not authorized.: Käyttöoikeus puuttuu
 Add N hours to: Lisää N tuntia
 Subtract N hours from: vähennä N tuntia
 same as: sama kuin

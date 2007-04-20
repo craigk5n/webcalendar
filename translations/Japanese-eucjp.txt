@@ -10,12 +10,16 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: UTF-8
@@ -23,7 +27,7 @@ charset: UTF-8
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
@@ -346,8 +350,8 @@ Administrative Tools: 管理ツール
 # Page: ajax.php
 #
 Duplicate Name: 重複名
-Username already exists: ユーザー名は既に存在します。
-Email address already exists: 電子メールアドレスは既に存在します。
+Username already exists.: ユーザー名は既に存在します。
+Email address already exists.: 電子メールアドレスは既に存在します。
 
 ########################################
 # Page: approve_entry.php
@@ -621,13 +625,13 @@ Next 60 days: 次の 60 日
 Next 90 days: 次の 90 日
 Next 180 days: 次の 180 日
 Next 365 days: 次の 365 日
-Invalid report id: 無効なレポート ID
+Invalid report id.: 無効なレポート ID
 Unnamed Report: 名称未設定レポート
 Add Report: レポート追加
 Edit Report: レポート編集
 Report name: レポート名
-Current User: 現在のユーザー
 User: ユーザー
+Current User: 現在のユーザー
 Include standard header/trailer: 標準ヘッダー/フッターを含む
 Include previous/next links: 前/次へのリンクを含む
 Include empty dates: 空の日を含む
@@ -666,9 +670,9 @@ Set Password: パスワードを設定
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: ユーザーの削除はサポートされていません
-The passwords were not identical: パスワードが一致しません
-You have not entered a password: パスワードを入力していません
+Deleting users not supported.: ユーザーの削除はサポートされていません
+The passwords were not identical.: パスワードが一致しません
+You have not entered a password.: パスワードを入力していません
 Username cannot be blank.: ユーザー名は空にできません。
 
 ########################################
@@ -846,7 +850,7 @@ Reject Selected entries?: 選択を拒否しますか?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: ユーザー名とパスワードを入力してください。
+You must enter a login and password.: ユーザー名とパスワードを入力してください。
 Save login via cookies so I dont have to login next time.: 次回からログインしなくても良いように、ユーザー情報をクッキーにセーブする
 Login: ログイン
 Access public calendar: 公開カレンダーアクセス
@@ -863,7 +867,7 @@ Not yet registered? Register here!: まだ登録していませんか? ここで登録できます!
 # Page: minical.php
 #
 No such nonuser calendar: そのような非ユーザーのカレンダーがありません。
-This Calendar is not Public: このカレンダーは非公開です。
+This Calendar is not Public.: このカレンダーは非公開です。
 
 ########################################
 # Page: nonusers.php
@@ -915,14 +919,15 @@ Email address cannot be blank.: 電子メールアドレスは空にできません。
 Your username is: ユーザー名は
 Your password is: パスワードは
 Please visit: 訪問してください
-You may change your password after logging in the first time: 最初をログインした後にパスワードを変更するでしょう。
+You may change your password after logging in the first time.: 最初をログインした後にパスワードを変更するでしょう。
 Administrator: 管理者
 Welcome: ようこそ
 Registration: 登録
 Welcome to WebCalendar: ようこそ WebCalendar へ
-Your email should arrive shortly: 電子メールはまもなく到着するはずです。
+Your email should arrive shortly.: 電子メールはまもなく到着するはずです。
 Return to Login screen: ログイン画面に戻る
-Your account information will be emailed to you: アカウント情報は送信されたでしょう。
+Password (again): パスワード (確認)
+Your account information will be emailed to you.: アカウント情報は送信されたでしょう。
 Submit: 送信
 
 ########################################
@@ -939,12 +944,12 @@ Add New Remote Calendar: 新規リモートカレンダーを追加する
 ########################################
 # Page: report.php
 #
+This event is confidential.: このイベントは非公開です
 cont.: 続ける
-This event is confidential: このイベントは非公開です
-Waiting for approval: 承認待ち
+Approved: 承認済み
 Deleted: 削除済
 Rejected: 拒否済
-Approved: 承認済み
+Waiting for approval: 承認待ち
 Unknown: 未知
 to manage reports for the Public Access calendar: すると公開アクセスカレンダー用レポートを管理します
 Add new report: 新規レポートの追加
@@ -977,8 +982,7 @@ View Another Users Calendar: 他のユーザーのカレンダーを見る
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: エントリ ID が無効です
-You have not added any categories: いくつかのカテゴリを追加していません
+You have not added any categories.: いくつかのカテゴリを追加していません
 Set Category: カテゴリ設定
 Global Categories cannot be changed.: グローバルカテゴリは変更できませんでした
 
@@ -1168,7 +1172,7 @@ Sep: 9 月
 Oct: 10 月
 Nov: 11 月
 The following error occurred: 以下のエラーが起きました
-You are not authorized: 権限を与えられていません。
+You are not authorized.: 権限を与えられていません。
 Add N hours to: +N 時間
 Subtract N hours from: -N 時間
 same as: 同じ
@@ -1408,7 +1412,6 @@ Settings.php Status: Settings.php の状態
 Your settings.php file appears to be valid: <b>settings.php</b> ファイルは有効に見えます。
 Configuration Wizard Password: ウィザードパスワードの設定
 Create Settings File Password: 設定ファイルのパスワードを作成する
-Password (again): パスワード (確認)
 Database Status: データベースの状態
 Supported databases for your PHP installation: インストール済 PHP でサポートされたデータベース
 Your current database settings are able to access the database: 現在のデータベース設定はデータベースにアクセスできます。

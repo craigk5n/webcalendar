@@ -13,29 +13,33 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-09-2007
+# Translation last updated on 04-20-2007
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
-__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -417,13 +421,13 @@ Next year: Siguiente año
 This year: Este año
 Last year: Último año
 Year before last: Año antes del último
-Invalid report id: ID de informe inválido
+Invalid report id.: ID de informe inválido
 Unnamed Report: Informe sin nombre
 Add Report: Añadir informe
 Edit Report: Editar informe
 Report name: Nombre del informe
-Current User: Usuario Actual
 User: Usuario
+Current User: Usuario Actual
 Include standard header/trailer: Incluir cabecera/final estándar
 Include previous/next links: Incluir enlaces previo/siguiente
 Include empty dates: Incluir fechas vacías
@@ -461,9 +465,9 @@ Set Password: Ajustar contraseña
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported: Borrado de usuarios no soportado
-The passwords were not identical: Estas contraseña no son idénticas
-You have not entered a password: Usted no ha introducido una contraseña
+Deleting users not supported.: Borrado de usuarios no soportado
+The passwords were not identical.: Estas contraseña no son idénticas
+You have not entered a password.: Usted no ha introducido una contraseña
 
 ########################################
 # Page: export.php
@@ -613,7 +617,7 @@ Reject this entry?: ¿Rechazar este registro?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password: Usted debe introducor nombre de usuario y contraseña
+You must enter a login and password.: Usted debe introducor nombre de usuario y contraseña
 Save login via cookies so I dont have to login next time.: Guardar datos via cookies para no hacer login la próxima vez
 Login: Entrar
 Access public calendar: Acceso a calendario público
@@ -654,11 +658,11 @@ An appointment has been rejected by: Un evento ha sido rechazado por
 ########################################
 # Page: report.php
 #
-This event is confidential: Este evento es confidencial
-Waiting for approval: Esperando aprobación
+This event is confidential.: Este evento es confidencial
+Approved: Aprobado
 Deleted: Eliminados
 Rejected: Rechazados
-Approved: Aprobado
+Waiting for approval: Esperando aprobación
 Unknown: Desconocido
 to manage reports for the Public Access calendar: para manejar informes para el calendario del Usuario anónimo
 Add new report: Añadir nuevo informe
@@ -688,8 +692,7 @@ View Another Users Calendar: Ver calendario de otro usuario
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id: Identificador de entrada inválida
-You have not added any categories: No has creado categorías
+You have not added any categories.: No has creado categorías
 Set Category: Asignar categoría
 
 ########################################
@@ -800,7 +803,7 @@ Jan: Ene
 Apr: Abr
 Aug: Ago
 The following error occurred: Ocurrió el siguiente error
-You are not authorized: No estás autorizado
+You are not authorized.: No estás autorizado
 Add N hours to: Añadir N horas a
 Subtract N hours from: Quitar N horas de
 same as: igual a
