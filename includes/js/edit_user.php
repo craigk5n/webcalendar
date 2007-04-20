@@ -1,14 +1,20 @@
-<?php /* $Id$  */
-defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
+<?php
+/* $Id$  */
+defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
+
+$errStr = translate ( 'Error', true ) . "\":\n\n\" + \"";
+
 ?>
-var validform = false;
-var formfield = 'user';
+var
+  formfield = 'user',
+  validform = false;
 
 function valid_form ( form ) {
   var name = form.user.value;
+
   if ( ! name ) {
-    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php
-      etranslate( 'Username cannot be blank.', true)?>" );
+    alert ( "<?php echo $errStr
+ . translate ( 'Username cannot be blank.', true )?>" );
     return false;
   }
   check_name();
@@ -18,17 +24,18 @@ function valid_form ( form ) {
 }
 
 function valid_form2 ( form ) {
-  var pass1 = form.upassword1.value;
-  var pass2 = form.upassword2.value;
+  var
+    pass1 = form.upassword1.value,
+    pass2 = form.upassword2.value;
 
   if ( ! pass1 || ! pass2 ) {
-    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php
-      etranslate( 'You have not entered a password', true)?>" );
+    alert ( "<?php echo $errStr
+ . translate ( 'You have not entered a password.', true )?>" );
     return false;
   }
   if (  pass1 != pass2 ) {
-    alert ( "<?php etranslate( 'Error', true) ?>:\n\n" + "<?php
-      etranslate( 'The passwords were not identical', true)?>" );
+    alert ( "<?php echo $errStr
+ . translate ( 'The passwords were not identical.', true )?>" );
     return false;
   }
 
@@ -36,36 +43,33 @@ function valid_form2 ( form ) {
 
 }
 
-
-function check_name() {
+function check_name () {
   formfield = 'user';
-  var url = 'ajax.php';
-  var params = 'page=edit_user&name=' + $F('username');
-  var ajax = new Ajax.Request(url,
+  var ajax = new Ajax.Request ( 'ajax.php',
     {method: 'post',
-    parameters: params,
+    parameters: 'page=edit_user&name=' + $F ( 'username' ),
     onComplete: showResponse});
 }
 
-function check_uemail() {
+function check_uemail () {
   formfield = 'uemail';
-  var url = 'ajax.php';
-  var params = 'page=email&name=' + $F('uemail');
-  var ajax = new Ajax.Request(url,
+  var ajax = new Ajax.Request ( 'ajax.php',
     {method: 'post',
-    parameters: params,
-    onComplete: showResponse});
+    parameters: 'page=email&name=' + $F ( 'uemail' ),
+    onComplete: showResponse} );
 }
 
-function showResponse(originalRequest) {
-  if (originalRequest.responseText) {
+function showResponse ( originalRequest ) {
+  if ( originalRequest.responseText ) {
     text = originalRequest.responseText;
-    //this causes javascript errors in Firefox, but these can be ignored
-    alert (text);
-    if (   formfield == 'user' )
-      document.edituser.user.focus();
-    if (   formfield == 'uemail' )
-      document.edituser.uemail.focus();
+    // This causes javascript errors in Firefox, but these can be ignored.
+    alert ( text );
+    if ( formfield == 'user' )
+      document.edituser.user.focus ();
+
+    if ( formfield == 'uemail' )
+      document.edituser.uemail.focus ();
+
     validform =  false;
   } else {
     validform =  true;

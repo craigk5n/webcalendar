@@ -308,7 +308,7 @@ $login = $username;
 load_user_preferences ();
 
 if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' ) {
-  $error = print_not_auth () . '.';
+  $error = print_not_auth ();
 }
 
 if ( $allow_user_override ) {

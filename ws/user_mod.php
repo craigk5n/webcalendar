@@ -107,7 +107,7 @@ if ( empty ( $error ) ) {
 
 // If adding a user, make sure a password was provided
 if ( empty ( $error ) && $add && empty ( $user_password ) )
-  $error = translate ( 'You have not entered a password' );
+  $error = translate ( 'You have not entered a password.' );
 
 if ( empty ( $error ) && ! $add && ! $delete && empty ( $user_password ) )
   $user_password = $old_password;

@@ -994,8 +994,7 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
   $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
   $monthend2 = date ( 'Ymd His', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
   $todayYmd = date ( 'Ymd', $today );
-  for ( $i = $wkstart; date ( 'Ymd', $i + 43200 ) <= $monthend;
-    $i += ( 86400 * 7 ) ) {
+  for ( $i = $wkstart; date ( 'Ymd', $i + 43200 ) <= $monthend; $i += 604800 ) {
     $ret .= '
       <tr>';
     if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
@@ -3033,7 +3032,7 @@ function getOverLap ( $item, $i, $parent = true ) {
     if ( $parent )
       $item->setDuration ( ( ( $midnight - $item->getDateTimeTS () ) / 60 ) -1 );
   }
-  // Call this function recursively until duration < 86400.
+  // Call this function recursively until duration < ONE_DAY.
   if ( $recurse == 1 )
    getOverLap ( $result[$i -1], $i, false );
 }
@@ -4664,7 +4663,7 @@ function print_error_header () {
  */
 function print_not_auth ( $full = false ) {
   return ( $full ? print_error_header () : '' )
-   . '!!!' . translate ( 'You are not authorized' ) . "\n";
+   . '!!!' . translate ( 'You are not authorized.' ) . "\n";
 }
 
 /* Generates HTML for radio buttons.

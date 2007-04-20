@@ -161,7 +161,7 @@ if ( ! $logout ) { ?>
 // error check login/password
 function valid_form ( form ) {
   if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
-    alert ( '<?php etranslate( 'You must enter a login and password', true)?>.' );
+    alert ( '<?php etranslate( 'You must enter a login and password.', true)?>' );
     return false;
   }
   return true;

@@ -1,5 +1,6 @@
 <?php
 /* $Id$
+ *
  * Allows the setting of categories by each participant of an event.
  *
  * Multiple categories can be added by each participant and stored separately
@@ -7,29 +8,29 @@
  * but can only be added/removed by the owner or an admin in the edit-entry form.
  */
 include_once 'includes/init.php';
-load_user_categories();
+load_user_categories ();
 
 $error = '';
 
 if ( empty ( $id ) )
-  $error = translate ( 'Invalid entry id' ) . '.';
+  $error = translate ( 'Invalid entry id.' );
 else
 if ( $CATEGORIES_ENABLED != 'Y' )
-  $error = print_not_auth () . '.';
+  $error = print_not_auth ();
 else
 if ( empty ( $categories ) )
-  $error = translate ( 'You have not added any categories' ) . '.';
+  $error = translate ( 'You have not added any categories.' );
 
 // Make sure user is a participant.
-$res = dbi_execute ( 'SELECT  cal_status FROM webcal_entry_user
+$res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
   WHERE cal_id = ? AND cal_login = ?', array ( $id, $login ) );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
-    if ( $row[0] == 'D' ) // User deleted themself
-      $error = print_not_auth () . '.';
+    if ( $row[0] == 'D' ) // User deleted themself.
+      $error = print_not_auth ();
   } else
     // Not a participant for this event.
-    $error = print_not_auth () . '.';
+    $error = print_not_auth ();
 
   dbi_free_result ( $res );
 } else
@@ -51,7 +52,7 @@ if ( ! empty ( $categories ) ) {
     $globals_found = true;
 }
 
-// Get event name and make sure event exists
+// Get event name and make sure event exists.
 $event_name = '';
 $res = dbi_execute ( 'SELECT cal_name FROM webcal_entry WHERE cal_id = ?',
   array ( $id ) );
@@ -60,7 +61,7 @@ if ( $res ) {
     $event_name = $row[0];
   else
     // No such event
-    $error = translate ( 'Invalid entry id' ) . '.';
+    $error = translate ( 'Invalid entry id.' );
 
   dbi_free_result ( $res );
 } else
@@ -77,17 +78,17 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
     // Don't process Global Categories.
     if ( $categories[$i] > 0 ) {
       $names[] = 'cal_id';
-      $sql_params[] = $id;
-      $values[] = '?';
       $names[] = 'cat_id';
-      $sql_params[] = abs( $categories[$i] );
-      $values[] = '?';
       $names[] = 'cat_order';
-      $sql_params[] = ( $i + 1 );
-      $values[] = '?';
       $names[] = 'cat_owner';
-      $sql_params[] = $login;
       $values[] = '?';
+      $values[] = '?';
+      $values[] = '?';
+      $values[] = '?';
+      $sql_params[] = $id;
+      $sql_params[] = abs ( $categories[$i] );
+      $sql_params[] = ( $i + 1 );
+      $sql_params[] = $login;
     }
   }
 
@@ -107,7 +108,7 @@ $catHelpStr = tooltip ( 'category-help' );
 $catStr = translate ( 'Category' );
 $editStr = translate ( 'Edit' );
 $globalNoteStr = ( $globals_found
- ? translate ( 'Global Categories cannot be changed.' ) : '' );
+  ? translate ( 'Global Categories cannot be changed.' ) : '' );
 $saveStr = translate ( 'Save' );
 
 print_header ( array ( 'js/set_entry_cat.php/true' ) );
@@ -128,13 +129,13 @@ else {
         <tr>
           <td class="tooltip" title="{$catHelpStr}" valign="top">
             <label for="entry_categories">{$catStr}:<br /></label>
-            <input type="button" value="{$editStr}" onclick="editCats(event)" />
+            <input type="button" value="{$editStr}" onclick="editCats ( event )" />
           </td>
           <td valign="top">
             <input readonly="readonly" type="text" name="catnames"
-              value="{$catNames}" size="75" onclick="editCats(event)"/><br />
+              value="{$catNames}" size="75" onclick="editCats ( event )" /><br />
             {$globalNoteStr}
-            <input  type="hidden" name="cat_id" id="entry_categories"
+            <input type="hidden" name="cat_id" id="entry_categories"
               value="{$catList}" />
           </td>
         </tr>
