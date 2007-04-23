@@ -17,7 +17,7 @@
  * @package WebCalendar
  * @subpackage IMAPAuthentication
  */
-defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
+defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 // Set some global config variables about your system.
 $user_can_update_password = false;
 $admin_can_add_user = false;

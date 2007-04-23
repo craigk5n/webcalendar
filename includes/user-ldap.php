@@ -1,5 +1,5 @@
 <?php
-defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
+defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 /*
  * $Id$
  * LDAP user functions.
