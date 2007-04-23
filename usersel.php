@@ -83,9 +83,9 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
 echo '
               </select><br />
               <input type="button" value="' . translate ( 'All' )
- . '" onclick="selectAll ()" />
+ . '" onclick="selectAll ( true )" />
               <input type="button" value="' . translate ( 'None' )
- . '" onclick="selectNone ()" />
+ . '" onclick="selectAll ( false )" />
               <input type="reset" value="' . translate ( 'Reset' ) . '" />
             </td>
             <td valign="top">
@@ -101,9 +101,9 @@ for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
 echo '
               </select><br />
               <input type="button" value="' . translate ( 'Add' )
- . '" onclick="selectGroupMembers ();" />
+ . '" onclick="toggleGroup ( true );" />
               <input type="button" value="' . translate ( 'Remove' )
- . '" onclick="deselectGroupMembers ();" />
+ . '" onclick="toggleGroup ( false );" />
             </td>
           </tr>
           <tr>
