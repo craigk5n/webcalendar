@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 13.Apr.2007
+# Last update: 23.Apr.2007
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 04-23-2007
 
 
 ################################################################################
@@ -245,7 +245,7 @@ Display Site Extras in popup: Anzeige der &#39;Site Extras&#39; im Pop-Up
 popup-includes-participants-help: Falls aktiviert, werden die Benutzer im allgemeinen Kalender und bei den pers&ouml;nlichen Eintragungen angezeigt
 Display Participants in popup: Anzeigen der Benutzer im Pop-Up
 Miscellaneous: Verschiedenes
-remember-last-login-help: Mit dieser Einstellung merkt sich der Kalender den Benutzernamen f&uuml;r das n&auml;chste Anmelden (nicht das Passwort) sowie die benutzerdefinierten Voreinstellungen.
+remember-last-login-help: Mit dieser Einstellung merkt sich der Kalender den Benutzernamen f&uuml;r das n&auml;chste Anmelden (nicht das Kennwort) sowie die benutzerdefinierten Voreinstellungen.
 Remember last login: Letzte Anmeldung merken
 summary_length-help: Maximale L&auml;nge der Kurzbeschreibung in den Kalenderansichten
 Brief Description Length: L&auml;nge der Kurzbeschreibung
@@ -341,8 +341,8 @@ email-smtp-auth: SMTP Authentisierung verwenden
 SMTP Authentication: SMTP Authentisierung
 email-smtp-username: SMTP Benutzername (wenn Authentisierung verwendet wird)
 SMTP Username: SMTP Benutzername
-email-smtp-password: SMTP Passwort (wenn Authentisierung verwendet wird)
-SMTP Password: SMTP Passwort
+email-smtp-password: SMTP Kennwort (wenn Authentisierung verwendet wird)
+SMTP Password: SMTP Kennwort
 Default user settings: Standardbenutzer Einstellungen
 email-event-reminders-help: Gibt an ob Erinnerungen versendet werden sollen oder nicht.
 Event reminders: an Termin erinnern
@@ -406,9 +406,9 @@ Administrative Tools: Administrative Werkzeuge
 #
 Duplicate Name: Doppelter Name
 Duplicate Name XXX: Doppelter Name XXX
-Username already exists.: Benutzer existiert bereits
-Username XXX already exists.: Benutzer XXX existiert bereits
-Email address already exists.: Emailadresse existiert bereits
+Username already exists.: Benutername existiert bereits.
+Username XXX already exists.: Der Benutzername XXX existiert bereits
+Email address already exists.: Emailadresse existiert bereits.
 Email address XXX already exists.: Die Emailadresse &#34;XXX&#34; existiert bereits.
 
 ########################################
@@ -502,7 +502,7 @@ XXX has canceled an appointment.: XXX hat einen Termin storniert.
 ########################################
 # Page: doc.php
 #
-Invalid blob id: Ung&uuml;ltige &#39;blob&#39; id
+Invalid blob id: Ung&uuml;ltige &#39;blob&#39; ID
 
 ########################################
 # Page: docadd.php
@@ -731,7 +731,8 @@ Next 60 days: N&auml;chsten 60 Tage
 Next 90 days: N&auml;chsten 90 Tage
 Next 180 days: N&auml;chsten 180 Tage
 Next 365 days: N&auml;chsten 365 Tage
-Invalid report id.: Ung&uuml;ltige &#39;Bericht ID&#39;
+Invalid report id.: Ung&uuml;tige Bericht ID.
+Invalid report id XXX.: Ung&uuml;tige Bericht ID XXX.
 Unnamed Report: Neuer Bericht
 Add Report: Bericht hinzuf&uuml;gen
 Edit Report: Bericht editieren
@@ -752,7 +753,9 @@ report: Bericht
 ########################################
 # Page: edit_report_handler.php
 #
+No such report id XXX.: Keine Bericht mit ID XXX.
 Variable N not found: Variable N nicht gefunden
+Variable XXX not found.: Variable <tt>XXX</tt> nicht gefunden.
 
 ########################################
 # Page: edit_template.php
@@ -777,9 +780,9 @@ Set Password: Setze Kennwort
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported.: Gel&ouml;schte Benutzer werden nicht unterst&uuml;tzt
-The passwords were not identical.: Die eingebenen Kennw&ouml;rter stimmten nicht &uuml;berein
-You have not entered a password.: Sie haben kein Kennwort eingegeben
+Deleting users not supported.: L&ouml;schen der Benutzer nicht unterst&uuml;tzt.
+The passwords were not identical.: Die eingegebenen Passw&ouml;rter sind nicht identisch.
+You have not entered a password.: Sie haben kein Kennwort eingegeben.
 Username cannot be blank.: Benutzername darf nicht leer sein.
 
 ########################################
@@ -997,17 +1000,18 @@ Reject Selected entries?: Ausgew&auml;hlte Eintr&auml;ge ablehnen?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: Sie m&uuml;ssen einen Benutzernamen und ein Kennwort eingeben.
+You must enter a login and password.: Sie m&uuml;ssen einen Benutzer mit Kennwort eingeben.
 Save login via cookies so I dont have to login next time.: Login in Cookies abspeichern, um die Anmeldung beim n&auml;chsten Mal zu &uuml;berspringen.
 Login: Anmelden
 Access public calendar: Zugang &Ouml;ffentlicher Kalender
 public: &ouml;ffentlich
+Access XXX calendar: Zugang XXX Kalender
 cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Cookies akzeptieren.
 
 ########################################
 # Page: login.php
 #
-Invalid login: Benutzername oder Passwort falsch
+Invalid login: Benutzername oder Kennwort falsch
 You have been logged out: Sie sind nun abgemeldet
 Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie sich registrieren!
 
@@ -1015,7 +1019,8 @@ Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie
 # Page: minical.php
 #
 No such nonuser calendar: Kein(e) &#39;Zentrale(r)&#39;-Kalender
-This Calendar is not Public.: Dies ist kein &Ouml;ffentlicher Kalender
+No such nonuser calendar XXX.: Kein &#39;zentraler&#39; Kalender XXX.
+This Calendar is not Public.: Dieser Kalender ist nicht &#39;&ouml;ffentlich&#39;
 
 ########################################
 # Page: nonusers.php
@@ -1074,21 +1079,27 @@ Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
 # Page: register.php
 #
 Email address cannot be blank.: Emailadresse darf nicht leer sein.
-A new WebCalendar account has been set up for you.: Ein neuer Webkalenderzugang ist f&uuml;r Sie eingerichtet worden
+Illegal characters in login XXX.: Ung&uuml;ltige Zeichen im Login XXX.
+New user via self-registration.: Neuer Benutzer via Selbstregistrierung.
+A new WebCalendar account has been set up for you.: Ein neues Webkalenderkonto wurde f&uuml;r Sie eingerichtet.
 Your username is: Ihr Benutzername lautet
-Your password is: Ihr Passwort lautet
+Your username is XXX.: Ihr Benutzername lautet &#39;XXX&#39;.
+Your password is: Ihr Kennwort lautet
+Your password is XXX.: Ihr Kennwort lautet &#39;XXX&#39;.
 Please visit: Bitte besuchen Sie den
 to log in and start using your account: und loggen Sie sich mit Ihren Zugangskontodaten ein!
-You may change your password after logging in the first time.: Sie m&uuml;ssen nach Ihrem ersten Einloggen Ihr Passwort &auml;ndern
+Please visit XXX to log in and start using your account!: Bitte loggen Sie sich als &#39;XXX&#39; ein, um Ihr Konto zu verwenden!
+You may change your password after logging in the first time.: Nachdem erstmaligen Einloggen sollten Sie Ihr Kennwort &auml;ndern.
 If you received this email in error: Wenn Sie diese Email erhalten aber keinen Webkalenderzugang beantragt haben, ignorieren Sie diese oder benachrichtigen Sie uns kurz
 Administrator: =
 Welcome: Willkommen
+New user via email.: Neuer Benutzer via Email.
 Registration: Registrierung
 Welcome to WebCalendar: Willkommen beim Webkalender
-Your email should arrive shortly.: Ihre Email wird in K&uuml;rze zugestellt
+Your email should arrive shortly.: Ihre Email sollte in k&uuml;rze eintreffen.
 Return to Login screen: Zur&uuml;ck zum Loginschirm
-Password (again): Passwort (wiederholen)
-Your account information will be emailed to you.: Ihre Zugangsdaten werden ihnen zugesandt
+Password (again): Kennwort (wiederholen)
+Your account information will be emailed to you.: Ihre Kontoeinstellungen werden Ihnen per Mail zugesandt.
 Submit: Senden
 
 ########################################
@@ -1106,8 +1117,10 @@ Add New Remote Calendar: Neuen EXTERNEN Kalender (Remote-Kalender) hinzuf&uuml;g
 ########################################
 # Page: report.php
 #
-This event is confidential.: Dieser Termin ist&nbsp; <b>VERTRAULICH</b>
+This event is confidential.: Dieser Termin ist vertraulich
+(Private): (Privat)
 cont.: Forts.
+(cont.): (Forts.)
 Approved: Best&auml;tigt
 Deleted: Gel&ouml;scht
 Rejected: Eintrag abgelehnt, wird nicht teilnehmen
@@ -1151,7 +1164,7 @@ View Another Users Calendar: Ansicht anderer Kalender
 # Page: set_entry_cat.php
 #
 Invalid entry id.: Ung&uuml;ltiger ID-Eintrag
-You have not added any categories.: Sie haben noch keine Kategorien angelegt
+You have not added any categories.: Sie haben keine Kategorie hinzugef&uuml;gt.
 Set Category: Kategorie zuweisen
 Global Categories cannot be changed.: Globale Kategorien k&ouml;nnen nicht ge&auml;ndert werden.
 
@@ -1383,7 +1396,7 @@ Nov: =
 unknown-month: unbekannter Monat
 Error TIME_SLOTS undefined!: Fehler: Zeitfenster nicht definiert!
 The following error occurred: Folgender Fehler trat auf
-You are not authorized.: Sie haben daf&uuml;r keine Berechtigung
+You are not authorized.: Sie haben keine Berechtigung.
 Add N hours to: Zuz&uuml;glich N Stunden von
 Subtract N hours from: Abz&uuml;glich N Stunden von
 same as: gleich wie
@@ -1507,7 +1520,7 @@ Invalid user login: Ung&uuml;ltige Anmeldung
 ########################################
 # Page: includes/user-nis.php
 #
-incorrect password: Ung&uuml;ltiges Passwort
+incorrect password: Ung&uuml;ltiges Kennwort
 no such user: kein solcher Benutzer
 
 ########################################
@@ -1661,8 +1674,8 @@ required only if Safe Mode is On: nur erforderlich wenn Safe Mode &#39;ON&#39; g
 required only if Remote Calendars are used: nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden
 needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig
 Passwords do not match: Passw&ouml;rter stimmen nicht &uuml;berein
-Unable to write password to settings.php file: Passwort kann nicht in die &#39;settings.php&#39;-Datei geschrieben werden
-Password has been set: Passwort wurde gesetzt
+Unable to write password to settings.php file: Kennwort kann nicht in die &#39;settings.php&#39;-Datei geschrieben werden
+Password has been set: Kennwort wurde gesetzt
 Connection Successful: Verbindung erfolgreich.
 Please go to next page to continue installation: Bitte f&uuml;hren Sie den n&auml;chsten Schritt aus um mit der Installation fortzufahren
 Correct your entries or click the Create New button to continue installation: Korrigieren Sie Ihre Eintr&auml;ge oder klicken Sie auf <b>Neu erstellen</b> Button um die Installation fortzufahren
@@ -1675,7 +1688,7 @@ Please change includes dir permission: Bitte &auml;ndern Sie die Dateiberechtigu
 Your settings have been saved: Ihre Einstellungen wurden gespeichert.
 Error you must specify a\\nSingle-User Login: Fehler, Sie m&uuml;ssen ein Einzelbenutzer Login definieren
 Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
-The password contains illegal characters.: Das Passwort beinhaltet unzul&auml;ssige Zeichen
+The password contains illegal characters.: Das Kennwort beinhaltet unzul&auml;ssige Zeichen
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
 PHP Version Check: PHP Versions&uuml;berpr&uuml;fung
 Check to see if PHP 4.1.0 or greater is installed: &Uuml;berpr&uuml;fung ob PHP 4.1.0 oder h&ouml;her installiert ist
@@ -1691,7 +1704,7 @@ The file permissions of settings.php are set...: Die Dateirechte von <b>settings
 The file permissions of the includes directory are set...: Die Zugriffsrechte von <b>includes</b> Verzeichnis sind so gesetzt, da&szlig; der Installer keine Rechte zum Erstellen von neuen Dateien hat. Bitte &auml;ndern Sie die Zugriffsrechte des Verzeichnisses um fortzufahren.
 Your settings.php file appears to be valid: Ihre <b>settings.php</b> Datei scheint g&uuml;ltig zu sein
 Configuration Wizard Password: Assitenten - Konfigurationspasswort
-Create Settings File Password: Erzeuge Passwort f&uuml;r die Settings Datei
+Create Settings File Password: Erzeuge Kennwort f&uuml;r die Settings Datei
 db setup directions...: In diesem Abschnitt stellen (und &uuml;berpr&uuml;fen) Sie die Verbindung zum Datenbankserver her. Die gelieferten Kontoinformationen sollten VOLLE Erlaubnis haben um Datenbanken, Tabellen und Benutzer zu erstellen. Wenn dies nicht m&ouml;glich oder Ihr Datenbankzugriff begrenzt ist, m&uuml;ssen Sie manuell Ihre Datenbank justieren.
 Database Status: Datenbank Status
 Supported databases for your PHP installation: Unterst&uuml;zte Datenbanken f&uuml;r Ihre PHP Installation
