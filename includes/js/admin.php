@@ -77,47 +77,15 @@ function valid_form ( form ) {
 // Gets called on page load and when user changes setting for
 // "Disable popup".
 function popup_handler () {
-  var noPopups = document.prefform.admin_DISABLE_POPUPS[0].checked;
-  if ( noPopups ) {
-    // Popups disabled
-    makeInvisible ( "pop1" );
-    makeInvisible ( "pop2" );
-  } else {
-    // Popups disabled
-    makeVisible ( "pop1" );
-    makeVisible ( "pop2" );
-  }
+  document.getElementById('pop').style.visibility =
+    ( document.prefform.admin_DISABLE_POPUPS[0].checked ? 'visible' : 'hidden' );
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow public access".
 function public_handler () {
-  var enabled = document.prefform.admin_PUBLIC_ACCESS[0].checked;
-  var ohd = document.prefform.admin_PUBLIC_ACCESS_OTHERS[0].checked;
-  //alert ( "public enabled =  " + enabled );
-  if ( enabled ) {
-    // Public Access enabled
-    makeVisible ( "pa1" );
-    makeVisible ( "pa2" );
-    makeVisible ( "pa3" );
-    makeVisible ( "pa4" );
-    makeVisible ( "pa5" );
-    makeVisible ( "pa6" );
-    makeVisible ( "pa7" );
-    makeVisible ( "pa7a" );
-    makeVisible ( "pa8" );
-  } else {
-    // Public Access disabled
-    makeInvisible ( "pa1" );
-    makeInvisible ( "pa2" );
-    makeInvisible ( "pa3" );
-    makeInvisible ( "pa4" );
-    makeInvisible ( "pa5" );
-    makeInvisible ( "pa6" );
-    makeInvisible ( "pa7" );
-    makeInvisible ( "pa7a" );
-    makeInvisible ( "pa8" );
-  }
+  document.getElementById('pa').style.visibility =
+    ( document.prefform.admin_PUBLIC_ACCESS[0].checked ? 'visible' : 'hidden' );
 }
 
 
