@@ -672,18 +672,17 @@ a.matrix img {
 .popup dd {
   margin-left: 20px;
 }
-.tooltip {
-  font-size: 11px;
-  cursor: help;
-  text-decoration: none;
-  font-weight: bold;
-  width: 120px;
-}
+.tooltip,
 .tooltipselect {
   font-size: 11px;
   cursor: help;
   text-decoration: none;
   font-weight: bold;
+}
+.tooltip {
+  width: 120px;
+}
+.tooltipselect {
   vertical-align: top;
 }
 .user,
