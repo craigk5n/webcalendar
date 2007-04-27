@@ -175,12 +175,13 @@ function load_translation_text () {
     if ( ! is_dir ( $cache_tran_dir ) ) {
       @mkdir ( $cache_tran_dir, 0777 );
       @chmod ( $cache_tran_dir, 0777 );
+
+      if ( ! is_dir ( $cache_tran_dir ) )
+        die_miserable_death ( 'Error creating translation cache directory: '
+           . $cache_tran_dir
+           . '<br /><br />Please check the permissions of the following directory: '
+           . $cachedir );
     }
-    if ( ! is_dir ( $cache_tran_dir ) )
-      die_miserable_death ( 'Error creating translation cache directory: '
-         . $cache_tran_dir
-         . '<br /><br />Please check the permissions of the following directory: '
-         . $cachedir );
 
     if ( ! file_exists ( $cached_base_file ) || ! file_exists ( $cached_file ) )
       $save_to_cache = true;
