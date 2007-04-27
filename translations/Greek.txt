@@ -922,18 +922,18 @@ Notification: Ειδοποίηση
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Το URL του Server είναι απαραίτητο
+Server URL is required.: Το URL του Server είναι απαραίτητο
 Server URL must end with /.: Το URL του Server πρέπει να τελειώνει σε '/'
-Invalid work hours: Εσφαλμένες ώρες εργασίας
-Invalid color for document background: Εσφαλμένο χρώμα για το background του κειμένου
-Invalid color for document title: Εσφαλμένο χρώμα για τον τίτλο του κειμένου
-Invalid color for table cell background: Εσφαλμένο χρώμα για το background των κελιών του πίνακα
-Invalid color for table grid: Εσφαλμένο χρώμα για το grid του πίνακα
-Invalid color for table header background: Εσφαλμένο χρώμα για το background της επικεφαλίδας του πίνακα
-Invalid color for table text background: Εσφαλμένο χρώμα για το background του κειμένου του πίνακα
-Invalid color for event popup background: Εσφαλμένο χρώμα για το background του αναδυόμενου μύνηματος του γεγονότος
-Invalid color for event popup text: Εσφαλμένο χρώμα για το κείμενο του αναδυόμενου μύνηματος του γεγονότος
-Invalid color for table cell background for today: Εσφαλμένο χρώμα για το background του κελιού του πίνακα για σήμερα
+Invalid work hours.: Εσφαλμένες ώρες εργασίας
+Invalid color for document background.: Εσφαλμένο χρώμα για το background του κειμένου
+Invalid color for document title.: Εσφαλμένο χρώμα για τον τίτλο του κειμένου
+Invalid color for table cell background.: Εσφαλμένο χρώμα για το background των κελιών του πίνακα
+Invalid color for table grid.: Εσφαλμένο χρώμα για το grid του πίνακα
+Invalid color for table header background.: Εσφαλμένο χρώμα για το background της επικεφαλίδας του πίνακα
+Invalid color for table text background.: Εσφαλμένο χρώμα για το background του κειμένου του πίνακα
+Invalid color for event popup background.: Εσφαλμένο χρώμα για το background του αναδυόμενου μύνηματος του γεγονότος
+Invalid color for event popup text.: Εσφαλμένο χρώμα για το κείμενο του αναδυόμενου μύνηματος του γεγονότος
+Invalid color for table cell background for today.: Εσφαλμένο χρώμα για το background του κελιού του πίνακα για σήμερα
 Color format should be RRGGBB.: Η μορφή του χρώματος πρέπει να είναι '#RRGGBB'
 
 ########################################

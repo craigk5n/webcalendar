@@ -740,17 +740,17 @@ Notification: 通告
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: 填写系统URL
+Server URL is required.: 填写系统URL
 Server URL must end with /.: 系统URL必须以'/'结尾
-Invalid color for document background: 无效的文档背景颜色
-Invalid color for document title: 无效的文档标题颜色
-Invalid color for table cell background: 无效的表格单元背景颜色
-Invalid color for table grid: 无效的表格网格颜色
-Invalid color for table header background: 无效的表头背景颜色
-Invalid color for table text background: 无效的表头文本颜色
-Invalid color for event popup background: 无效的背景颜色
-Invalid color for event popup text: 无效的文本颜色
-Invalid color for table cell background for today: 无效的当天表格单元背景颜色
+Invalid color for document background.: 无效的文档背景颜色
+Invalid color for document title.: 无效的文档标题颜色
+Invalid color for table cell background.: 无效的表格单元背景颜色
+Invalid color for table grid.: 无效的表格网格颜色
+Invalid color for table header background.: 无效的表头背景颜色
+Invalid color for table text background.: 无效的表头文本颜色
+Invalid color for event popup background.: 无效的背景颜色
+Invalid color for event popup text.: 无效的文本颜色
+Invalid color for table cell background for today.: 无效的当天表格单元背景颜色
 Color format should be RRGGBB.: 颜色格式需要是 '#RRGGBB'
 
 ########################################

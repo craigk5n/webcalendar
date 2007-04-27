@@ -1301,18 +1301,18 @@ recipients_failed: SMTP¥¨¥é¡¼: ¼¡¤Î¼õ¿®¼Ô¥¢¥É¥ì¥¹¤Ë Ö°ã¤¤¤¬¤¢¤ê¤Þ¤¹:
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: ¥µ¡¼¥Ð¡¼ URL ¤¬É¬¿Ü¤Ç¤¹¡£
+Server URL is required.: ¥µ¡¼¥Ð¡¼ URL ¤¬É¬¿Ü¤Ç¤¹¡£
 Server URL must end with /.: ¥µ¡¼¥Ð¡¼ URL ¤Ï¡Ö/¡×¤Ç½ª¤ï¤é¤Ê¤±¤ì¤Ð¤¤¤±¤Þ¤»¤ó¡£
-Invalid work hours: Ìµ¸ú¤Ê¶ÐÌ³»þ´Ö¤Ç¤¹¡£
-Invalid color for document background: ½ñÎà¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
-Invalid color for document title: ½ñÎà¤Î¥¿¥¤¥È¥ë¿§¤¬Ìµ¸ú¤Ç¤¹¡£
-Invalid color for table cell background: ½ñÎà¤Î¥Æ¡¼¥Ö¥ëÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
-Invalid color for table grid: ¥Æ¡¼¥Ö¥ë¥°¥ê¥Ã¥É¤Î¿§¤¬Ìµ¸ú¤Ç¤¹¡£
-Invalid color for table header background: ¥Æ¡¼¥Ö¥ë¥Ø¥Ã¥À¡¼¤Î¿§¤¬Ìµ¸ú¤Ç¤¹¡£
-Invalid color for table text background: ¥Æ¡¼¥Ö¥ë¥Æ¥­¥¹¥È¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
-Invalid color for event popup background: ¥¤¥Ù¥ó¥È¥Ý¥Ã¥×¥¢¥Ã¥×¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
-Invalid color for event popup text: ¥¤¥Ù¥ó¥È¥Ý¥Ã¥×¥¢¥Ã¥×¤Î¿§¤¬Ìµ¸ú¤Ç¤¹¡£
-Invalid color for table cell background for today: º£Æü¤Î¥Æ¡¼¥Ö¥ë¥»¥ë¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
+Invalid work hours.: Ìµ¸ú¤Ê¶ÐÌ³»þ´Ö¤Ç¤¹¡£
+Invalid color for document background.: ½ñÎà¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
+Invalid color for document title.: ½ñÎà¤Î¥¿¥¤¥È¥ë¿§¤¬Ìµ¸ú¤Ç¤¹¡£
+Invalid color for table cell background.: ½ñÎà¤Î¥Æ¡¼¥Ö¥ëÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
+Invalid color for table grid.: ¥Æ¡¼¥Ö¥ë¥°¥ê¥Ã¥É¤Î¿§¤¬Ìµ¸ú¤Ç¤¹¡£
+Invalid color for table header background.: ¥Æ¡¼¥Ö¥ë¥Ø¥Ã¥À¡¼¤Î¿§¤¬Ìµ¸ú¤Ç¤¹¡£
+Invalid color for table text background.: ¥Æ¡¼¥Ö¥ë¥Æ¥­¥¹¥È¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
+Invalid color for event popup background.: ¥¤¥Ù¥ó¥È¥Ý¥Ã¥×¥¢¥Ã¥×¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
+Invalid color for event popup text.: ¥¤¥Ù¥ó¥È¥Ý¥Ã¥×¥¢¥Ã¥×¤Î¿§¤¬Ìµ¸ú¤Ç¤¹¡£
+Invalid color for table cell background for today.: º£Æü¤Î¥Æ¡¼¥Ö¥ë¥»¥ë¤ÎÇØ·Ê¿§¤¬Ìµ¸ú¤Ç¤¹¡£
 Color format should be RRGGBB.: ¿§¤Ï '#RRGGBB'¤Î½ñ¼°¤ÇÀßÄê¤·¤Æ¤¯¤À¤µ¤¤¡£
 
 ########################################

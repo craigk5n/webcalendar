@@ -449,10 +449,10 @@ Notification: Notificación
 ########################################
 # Page: includes/js/admin.php
 #
-Invalid color for document background: Color non válido para o fondo do documento
-Invalid color for document title: Color non válido para o título do documento
-Invalid color for table cell background: Color non válido para o fondo da cela
-Invalid color for table cell background for today: Color non válido para o fondo da cela de hoxe
+Invalid color for document background.: Color non válido para o fondo do documento
+Invalid color for document title.: Color non válido para o título do documento
+Invalid color for table cell background.: Color non válido para o fondo da cela
+Invalid color for table cell background for today.: Color non válido para o fondo da cela de hoxe
 Color format should be RRGGBB.: O formato da cor debería ser '#RRGGBB'
 
 ########################################

@@ -845,17 +845,17 @@ recipients_failed: SMTP-virhe: seuraava vastaanottaja osoite on virheellinen.
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Palvelimien URL on pakollinen
+Server URL is required.: Palvelimien URL on pakollinen
 Server URL must end with /.: Palvelimen URL t‰ytyy p‰‰tty‰ merkkiin '/'
-Invalid color for document background: Taustav‰ri on virheellinen
-Invalid color for document title: Otsikon v‰ri on virheellinen
-Invalid color for table cell background: Ruudukon taustav‰ri on virheellinen
-Invalid color for table grid: Taulukon ruutuviivojen v‰ri on virheellinen
-Invalid color for table header background: Otsikon taustav‰ri on virheellinen
-Invalid color for table text background: Tekstin taustav‰ri on virheellinen
-Invalid color for event popup background: Popup-ikkunan taustav‰ri on virheellinen
-Invalid color for event popup text: Popup-ikkunan tekstin v‰ri on virheellinen
-Invalid color for table cell background for today: Kuluvan p‰iv‰n taustav‰ri on virheellinen
+Invalid color for document background.: Taustav‰ri on virheellinen
+Invalid color for document title.: Otsikon v‰ri on virheellinen
+Invalid color for table cell background.: Ruudukon taustav‰ri on virheellinen
+Invalid color for table grid.: Taulukon ruutuviivojen v‰ri on virheellinen
+Invalid color for table header background.: Otsikon taustav‰ri on virheellinen
+Invalid color for table text background.: Tekstin taustav‰ri on virheellinen
+Invalid color for event popup background.: Popup-ikkunan taustav‰ri on virheellinen
+Invalid color for event popup text.: Popup-ikkunan tekstin v‰ri on virheellinen
+Invalid color for table cell background for today.: Kuluvan p‰iv‰n taustav‰ri on virheellinen
 Color format should be RRGGBB.: V‰rikoodin tulee olla muotoa '#RRGGBB'
 
 ########################################

@@ -1605,18 +1605,18 @@ Challenge/Response: Challenge/Response
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Server URL is required
+Server URL is required.: Server URL is required.
 Server URL must end with /.: Server URL must end with '/'.
-Invalid work hours: Invalid work hours
-Invalid color for document background: Invalid color for document background
-Invalid color for document title: Invalid color for document title
-Invalid color for table cell background: Invalid color for table cell background
-Invalid color for table grid: Invalid color for table grid
-Invalid color for table header background: Invalid color for table header background
-Invalid color for table text background: Invalid color for table text background
-Invalid color for event popup background: Invalid color for event popup background
-Invalid color for event popup text: Invalid color for event popup text
-Invalid color for table cell background for today: Invalid color for table cell background for today
+Invalid work hours.: Invalid work hours.
+Invalid color for document background.: Invalid color for document background.
+Invalid color for document title.: Invalid color for document title.
+Invalid color for table cell background.: Invalid color for table cell background.
+Invalid color for table grid.: Invalid color for table grid.
+Invalid color for table header background.: Invalid color for table header background.
+Invalid color for table text background.: Invalid color for table text background.
+Invalid color for event popup background.: Invalid color for event popup background.
+Invalid color for event popup text.: Invalid color for event popup text.
+Invalid color for table cell background for today.: Invalid color for table cell background for today.
 Color format should be RRGGBB.: Color format should be '#RRGGBB'.
 
 ########################################

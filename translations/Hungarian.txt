@@ -1234,18 +1234,18 @@ recipients_failed: SMTP Error~ A következő címzett hibás~
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Szerver URL-t meg kell adni
+Server URL is required.: Szerver URL-t meg kell adni
 Server URL must end with /.: Szerver URL-nek '/'-rel kell végzõdnie
-Invalid work hours: Érvénytelen munkaidõ
-Invalid color for document background: Érvénytelen háttérszín
-Invalid color for document title: Érvénytelen címsorszín
-Invalid color for table cell background: Érvénytelen táblacella-háttérszín
-Invalid color for table grid: Érvénytelen táblarács-szín
-Invalid color for table header background: Érvénytelen táblafejléc-háttérszín
-Invalid color for table text background: Érvénytelen táblaszöveg-háttérszín
-Invalid color for event popup background: Érvénytelen felugró eseményablak-háttérszín
-Invalid color for event popup text: Érvénytelen felugró eseményablak-szövegszín
-Invalid color for table cell background for today: Érvénytelen táblacella-háttérszín a MAI napra
+Invalid work hours.: Érvénytelen munkaidõ
+Invalid color for document background.: Érvénytelen háttérszín
+Invalid color for document title.: Érvénytelen címsorszín
+Invalid color for table cell background.: Érvénytelen táblacella-háttérszín
+Invalid color for table grid.: Érvénytelen táblarács-szín
+Invalid color for table header background.: Érvénytelen táblafejléc-háttérszín
+Invalid color for table text background.: Érvénytelen táblaszöveg-háttérszín
+Invalid color for event popup background.: Érvénytelen felugró eseményablak-háttérszín
+Invalid color for event popup text.: Érvénytelen felugró eseményablak-szövegszín
+Invalid color for table cell background for today.: Érvénytelen táblacella-háttérszín a MAI napra
 Color format should be RRGGBB.: A színeket '#RRGGBB' formátumban kell megadni
 
 ########################################

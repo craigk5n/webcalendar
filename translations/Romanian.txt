@@ -891,18 +891,18 @@ recipients_failed: Eroare SMTP: Urmatoarele adrese de mail au dat eroare:
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Este necesar URL-ul serverului
+Server URL is required.: Este necesar URL-ul serverului
 Server URL must end with /.: URL-ul serverului trebuie s&#259; se termine &#238;n '/'
-Invalid work hours: Ore de lucru invalide
-Invalid color for document background: Culoare invalid&#259; pentru fundalul documentului
-Invalid color for document title: Culoare invalid&#259; pentru titlul documentului
-Invalid color for table cell background: Culoare invalid&#259; pentru fundalul casu&#355;elor tabelului
-Invalid color for table grid: Culoare invalid&#259; pentru liniile tabelului
-Invalid color for table header background: Culoare invalid&#259; pentru fundalul legendei tabelului
-Invalid color for table text background: Culoare invalid&#259; pentru fundalul textului tabelului
-Invalid color for event popup background: Culoare invalid&#259; pentru fundalul popup-urilor
-Invalid color for event popup text: Culoare invalid&#259; pentru textul popup-urilor
-Invalid color for table cell background for today: Culoare invalid&#259; pentru fundalul casu&#355;ei de azi a tabelului
+Invalid work hours.: Ore de lucru invalide
+Invalid color for document background.: Culoare invalid&#259; pentru fundalul documentului
+Invalid color for document title.: Culoare invalid&#259; pentru titlul documentului
+Invalid color for table cell background.: Culoare invalid&#259; pentru fundalul casu&#355;elor tabelului
+Invalid color for table grid.: Culoare invalid&#259; pentru liniile tabelului
+Invalid color for table header background.: Culoare invalid&#259; pentru fundalul legendei tabelului
+Invalid color for table text background.: Culoare invalid&#259; pentru fundalul textului tabelului
+Invalid color for event popup background.: Culoare invalid&#259; pentru fundalul popup-urilor
+Invalid color for event popup text.: Culoare invalid&#259; pentru textul popup-urilor
+Invalid color for table cell background for today.: Culoare invalid&#259; pentru fundalul casu&#355;ei de azi a tabelului
 Color format should be RRGGBB.: Formatul culorii trebuie s&#259; fie '#RRGGBB'
 
 ########################################

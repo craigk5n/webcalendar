@@ -745,7 +745,7 @@ function validate(form)
     }
   }
   if ( form.form_server_url.value == "" ) {
-    err += "<?php etranslate ( 'Server URL is required', true ) ?>" + "\n";
+    err += "<?php etranslate ( 'Server URL is required.', true ) ?>" + "\n";
     form.form_server_url.select ();
     form.form_server_url.focus ();
   }

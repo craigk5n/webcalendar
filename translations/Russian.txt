@@ -1401,18 +1401,18 @@ recipients_failed: Ошибка SMTP. Следующие получатели недоступны
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Необходим адрес сервера
+Server URL is required.: Необходим адрес сервера
 Server URL must end with /.: Адрес сервера должен заканчиваться '/'
-Invalid work hours: Неправильные рабочие часы
-Invalid color for document background: Недопустимый цвет для фона документа
-Invalid color for document title: Недопустимый цвет для заголовка документа
-Invalid color for table cell background: Недопустимый цвет для фона таблицы
-Invalid color for table grid: Недопустимый цвет для сетки таблицы
-Invalid color for table header background: Недопустимый цвет для фона заголовка таблицы
-Invalid color for table text background: Недопустимый цвет для фона текста таблицы
-Invalid color for event popup background: Недопустимый цвет для фона окна события
-Invalid color for event popup text: Недопустимый цвет для текста окна события
-Invalid color for table cell background for today: Недопустимый цвет для фона клетки текущего дня
+Invalid work hours.: Неправильные рабочие часы
+Invalid color for document background.: Недопустимый цвет для фона документа
+Invalid color for document title.: Недопустимый цвет для заголовка документа
+Invalid color for table cell background.: Недопустимый цвет для фона таблицы
+Invalid color for table grid.: Недопустимый цвет для сетки таблицы
+Invalid color for table header background.: Недопустимый цвет для фона заголовка таблицы
+Invalid color for table text background.: Недопустимый цвет для фона текста таблицы
+Invalid color for event popup background.: Недопустимый цвет для фона окна события
+Invalid color for event popup text.: Недопустимый цвет для текста окна события
+Invalid color for table cell background for today.: Недопустимый цвет для фона клетки текущего дня
 Color format should be RRGGBB.: Формат цвета должен быть вида '#RRGGBB'
 
 ########################################

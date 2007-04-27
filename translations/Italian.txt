@@ -904,18 +904,18 @@ recipients_failed: SMTP Error: I seguenti indirizzi destinatari hanno generato e
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: L'URL del server &egrave; necessario
+Server URL is required.: L'URL del server &egrave; necessario
 Server URL must end with /.: L'URL del server deve finire con '/'
-Invalid work hours: Ore di lavoro non valide
-Invalid color for document background: Il colore dello sfondo del documento non &egrave; valido
-Invalid color for document title: Il colore del titolo del documento non &egrave; valido
-Invalid color for table cell background: Il colore dello sfondo della cella non &egrave; valido
-Invalid color for table grid: Il colore per la griglia della tabella non &egrave; valido
-Invalid color for table header background: Il colore di sfondo per l'intestazione della tabella non &egrave; valido
-Invalid color for table text background: Il colore di sfondo per il testo della tabella non &egrave; valido
-Invalid color for event popup background: Il colore di sfondo per i popup di un evento non &egrave; valido
-Invalid color for event popup text: Il colore del testo per i popup di un evento non &egrave; valido
-Invalid color for table cell background for today: Il colore dello sfondo della cella della data odierna non &egrave; valido
+Invalid work hours.: Ore di lavoro non valide
+Invalid color for document background.: Il colore dello sfondo del documento non &egrave; valido
+Invalid color for document title.: Il colore del titolo del documento non &egrave; valido
+Invalid color for table cell background.: Il colore dello sfondo della cella non &egrave; valido
+Invalid color for table grid.: Il colore per la griglia della tabella non &egrave; valido
+Invalid color for table header background.: Il colore di sfondo per l'intestazione della tabella non &egrave; valido
+Invalid color for table text background.: Il colore di sfondo per il testo della tabella non &egrave; valido
+Invalid color for event popup background.: Il colore di sfondo per i popup di un evento non &egrave; valido
+Invalid color for event popup text.: Il colore del testo per i popup di un evento non &egrave; valido
+Invalid color for table cell background for today.: Il colore dello sfondo della cella della data odierna non &egrave; valido
 Color format should be RRGGBB.: Il fomrato del colore deve essere '#RRGGBB'
 
 ########################################

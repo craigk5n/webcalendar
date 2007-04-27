@@ -848,18 +848,18 @@ recipients_failed: Erro de SMTP: Os endereços de destinatário a seguir falharam:
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: É necessário o URL do servidor
+Server URL is required.: É necessário o URL do servidor
 Server URL must end with /.: O URL do servidor deve terminar com '/'
-Invalid work hours: Horas de trabalho incorrectas
-Invalid color for document background: Cor inválida para o fundo do documento
-Invalid color for document title: Cor inválida para o título do documento
-Invalid color for table cell background: Cor inválida para o fundo da célula da tabela
-Invalid color for table grid: Cor inválida para a grelha da tabela
-Invalid color for table header background: Cor inválida para o fundo do cabeçaºho da tabela
-Invalid color for table text background: Cor inválida para o fundo do texto da tabela
-Invalid color for event popup background: Cor inválida para o fundo da caixa de aviso
-Invalid color for event popup text: Cor inválida para o texto da caixa de aviso
-Invalid color for table cell background for today: Cor inválida para o fundo da célula da tabela (para o dia actual)
+Invalid work hours.: Horas de trabalho incorrectas
+Invalid color for document background.: Cor inválida para o fundo do documento
+Invalid color for document title.: Cor inválida para o título do documento
+Invalid color for table cell background.: Cor inválida para o fundo da célula da tabela
+Invalid color for table grid.: Cor inválida para a grelha da tabela
+Invalid color for table header background.: Cor inválida para o fundo do cabeçaºho da tabela
+Invalid color for table text background.: Cor inválida para o fundo do texto da tabela
+Invalid color for event popup background.: Cor inválida para o fundo da caixa de aviso
+Invalid color for event popup text.: Cor inválida para o texto da caixa de aviso
+Invalid color for table cell background for today.: Cor inválida para o fundo da célula da tabela (para o dia actual)
 Color format should be RRGGBB.: O formato do código de cor deve ser '#RRGGBB'
 
 ########################################

@@ -906,18 +906,18 @@ recipients_failed: Error SMTP: Los siguientes destinatarios fallaron:
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Falta la URL del servidor
+Server URL is required.: Falta la URL del servidor
 Server URL must end with /.: La URL del servidor debe terminar en '/'
-Invalid work hours: Horas de trabajo no válidas
-Invalid color for document background: Color inválido para fondo de documento
-Invalid color for document title: Color inválido para título de documento
-Invalid color for table cell background: Color inválido para fondo de celda de tabla
-Invalid color for table grid: Color de tabla inválido
-Invalid color for table header background: Color inválido para el fondo de cabecera de tabla
-Invalid color for table text background: Color de fondo de texto de tabla inválido
-Invalid color for event popup background: Color de fondo para popup de evento inválido
-Invalid color for event popup text: Color de texto para popup de evento inválido
-Invalid color for table cell background for today: Color inválido para fondo de celda 'hoy'
+Invalid work hours.: Horas de trabajo no válidas
+Invalid color for document background.: Color inválido para fondo de documento
+Invalid color for document title.: Color inválido para título de documento
+Invalid color for table cell background.: Color inválido para fondo de celda de tabla
+Invalid color for table grid.: Color de tabla inválido
+Invalid color for table header background.: Color inválido para el fondo de cabecera de tabla
+Invalid color for table text background.: Color de fondo de texto de tabla inválido
+Invalid color for event popup background.: Color de fondo para popup de evento inválido
+Invalid color for event popup text.: Color de texto para popup de evento inválido
+Invalid color for table cell background for today.: Color inválido para fondo de celda 'hoy'
 Color format should be RRGGBB.: Formato de Color debe ser Hexadecimal '#RRGGB
 
 ########################################

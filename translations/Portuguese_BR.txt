@@ -909,17 +909,17 @@ Notification: Notificação
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Endereço do Servidor é Necessário
-Invalid work hours: Horário de trabalho inválido
-Invalid color for document background: Cor de fundo inválida para o documento
-Invalid color for document title: Cor inválida para o título do documento
-Invalid color for table cell background: Cor inválida para cor de fundo da célula
-Invalid color for table grid: Cor inválida para a grade da tabela
-Invalid color for table header background: Cor de fundo inválida para cabeçalho da tabela
-Invalid color for table text background: Cor de fundo inválida para o texto da tabela
-Invalid color for event popup background: Cor de fundo inválida para o evento popup
-Invalid color for event popup text: Cor inválida para evento popup
-Invalid color for table cell background for today: Cor de fundo inválida para a celula de hoje
+Server URL is required.: Endereço do Servidor é Necessário
+Invalid work hours.: Horário de trabalho inválido
+Invalid color for document background.: Cor de fundo inválida para o documento
+Invalid color for document title.: Cor inválida para o título do documento
+Invalid color for table cell background.: Cor inválida para cor de fundo da célula
+Invalid color for table grid.: Cor inválida para a grade da tabela
+Invalid color for table header background.: Cor de fundo inválida para cabeçalho da tabela
+Invalid color for table text background.: Cor de fundo inválida para o texto da tabela
+Invalid color for event popup background.: Cor de fundo inválida para o evento popup
+Invalid color for event popup text.: Cor inválida para evento popup
+Invalid color for table cell background for today.: Cor de fundo inválida para a celula de hoje
 
 ########################################
 # Page: includes/js/availability.php

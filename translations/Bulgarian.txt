@@ -687,16 +687,16 @@ Notification: 725AB85
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: 78A:20 A5 URL =0 AJ@2J@0
-Invalid color for document background: 520;845= D>=>2 F2OB =0 4>:C<5=B0
-Invalid color for document title: 520;845= F2OB 70 703;0285 =0 4>:C<5=B0
-Invalid color for table cell background: 520;845= F2OB 70 B01;8G=8B5 :;5B:8
-Invalid color for table grid: 520;845= F2OB 70 :>=BC@ =0 B01;8F0B0
-Invalid color for table header background: 520;845= D>=>2 F2OB 70 B01;8G=8O header
-Invalid color for table text background: 520;845= F2OB 70 B5:AB0 =0 B01;8F0B0
-Invalid color for event popup background: 520;845= D>=>2 F2OB 70 popup =0 AJ18B8OB0
-Invalid color for event popup text: 520;845= F2OB 70 B5:AB 2 popup =0 AJ18B8OB0
-Invalid color for table cell background for today: 520;845= D>=>2 F2OB 70 B01;8G=0 :;5B:0 70 4=5H=8O 45=
+Server URL is required.: 78A:20 A5 URL =0 AJ@2J@0
+Invalid color for document background.: 520;845= D>=>2 F2OB =0 4>:C<5=B0
+Invalid color for document title.: 520;845= F2OB 70 703;0285 =0 4>:C<5=B0
+Invalid color for table cell background.: 520;845= F2OB 70 B01;8G=8B5 :;5B:8
+Invalid color for table grid.: 520;845= F2OB 70 :>=BC@ =0 B01;8F0B0
+Invalid color for table header background.: 520;845= D>=>2 F2OB 70 B01;8G=8O header
+Invalid color for table text background.: 520;845= F2OB 70 B5:AB0 =0 B01;8F0B0
+Invalid color for event popup background.: 520;845= D>=>2 F2OB 70 popup =0 AJ18B8OB0
+Invalid color for event popup text.: 520;845= F2OB 70 B5:AB 2 popup =0 AJ18B8OB0
+Invalid color for table cell background for today.: 520;845= D>=>2 F2OB 70 B01;8G=0 :;5B:0 70 4=5H=8O 45=
 
 ########################################
 # Page: includes/js/edit_entry.php

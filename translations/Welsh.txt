@@ -631,17 +631,17 @@ Notification: Rhybydd
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Mae angen URL y gweinydd
+Server URL is required.: Mae angen URL y gweinydd
 Server URL must end with /.: Rhaid i URL y gweinydd orffen gyda '/'
-Invalid color for document background: Lliw annerbyniol fel cefndir i'r ddogfen
-Invalid color for document title: Lliw annerbyniol fel teitl y ddogfen
-Invalid color for table cell background: Lliw annerbyniol fel cefndir y gell tabl
-Invalid color for table grid: Lliw annerbyniol fel grid y tabl
-Invalid color for table header background: Lliw annerbyniol fel cefndir pennawd y tabl
-Invalid color for table text background: Lliw annerbyniol fel cefndir testun y table
-Invalid color for event popup background: Lliw annerbyniol fel cefndir digwyddiad ar ffurf popup
-Invalid color for event popup text: Lliw annerbyniol fel testun digwyddiad ar ffurf popup
-Invalid color for table cell background for today: Lliw annerbyniol fel cefndir cell tabl heddiw
+Invalid color for document background.: Lliw annerbyniol fel cefndir i'r ddogfen
+Invalid color for document title.: Lliw annerbyniol fel teitl y ddogfen
+Invalid color for table cell background.: Lliw annerbyniol fel cefndir y gell tabl
+Invalid color for table grid.: Lliw annerbyniol fel grid y tabl
+Invalid color for table header background.: Lliw annerbyniol fel cefndir pennawd y tabl
+Invalid color for table text background.: Lliw annerbyniol fel cefndir testun y table
+Invalid color for event popup background.: Lliw annerbyniol fel cefndir digwyddiad ar ffurf popup
+Invalid color for event popup text.: Lliw annerbyniol fel testun digwyddiad ar ffurf popup
+Invalid color for table cell background for today.: Lliw annerbyniol fel cefndir cell tabl heddiw
 Color format should be RRGGBB.: Mae angen fformat lliw megis '#RRGGBB'
 
 ########################################

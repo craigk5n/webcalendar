@@ -8,18 +8,18 @@ function valid_form ( form ) {
   var colorErr = false;
   <?php if ( $ALLOW_COLOR_CUSTOMIZATION ) { ?>
   if ( ! valid_color ( form.pref_BGCOLOR.value ) )
-    err += "<?php etranslate( 'Invalid color for document background', true)?>.\n";
+    err += "<?php etranslate( 'Invalid color for document background.', true)?>.\n";
   if ( ! valid_color ( form.pref_H2COLOR.value ) )
-    err += "<?php etranslate( 'Invalid color for document title', true)?>.\n";
+    err += "<?php etranslate( 'Invalid color for document title.', true)?>.\n";
   if ( ! valid_color ( form.pref_CELLBG.value ) )
-    err += "<?php etranslate( 'Invalid color for table cell background', true)?>.\n";
+    err += "<?php etranslate( 'Invalid color for table cell background.', true)?>.\n";
   if ( ! valid_color ( form.pref_TODAYCELLBG.value ) )
-    err += "<?php etranslate( 'Invalid color for table cell background for today', true)?>.\n";
+    err += "<?php etranslate( 'Invalid color for table cell background for today.', true)?>.\n";
   <?php } ?>
   if ( err.length > 0 )
     colorErr = true;
   if ( ! validWorkHours ( form ) ) {
-    err += "<?php etranslate( 'Invalid work hours', true); ?>.\n";
+    err += "<?php etranslate( 'Invalid work hours.', true); ?>.\n";
     err += form.pref_WORK_DAY_START_HOUR.value + " > " + form.pref_WORK_DAY_END_HOUR.value + "\n";
   }
   if ( colorErr ) {

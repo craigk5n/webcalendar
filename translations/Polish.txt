@@ -1031,18 +1031,18 @@ recipients_failed: B³¹d SMTP: Nastêpuj¹cy odbiorcy s¹ nieprawid³owi:
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Wymagany adres internetowy serwera
+Server URL is required.: Wymagany adres internetowy serwera
 Server URL must end with /.: Adres serwera musi koñczyæ siê na '/'
-Invalid work hours: Niepoprawne godziny pracy
-Invalid color for document background: Nieprawid³owy kolor t³a dokumentu
-Invalid color for document title: Nieprawid³owy kolor tytu³u dokumentu
-Invalid color for table cell background: Nieprawid³owy kolor t³a komórki tabeli
-Invalid color for table grid: Nieprawid³owy kolor dla ramek tabeli
-Invalid color for table header background: Nieprawid³owy kolor dla t³a nag³ówka
-Invalid color for table text background: Nieprawid³owy kolor dla t³a tekstu tabeli
-Invalid color for event popup background: Nieprawid³owy kolor dla t³a zdarzenia pojawiaj±cego siê
-Invalid color for event popup text: Nieprawid³owy kolor dla tekstu pojawiaj±cego siê zdarzenia
-Invalid color for table cell background for today: Nieprawid³owy kolor t³a komórki dla bie¿±cego dnia
+Invalid work hours.: Niepoprawne godziny pracy
+Invalid color for document background.: Nieprawid³owy kolor t³a dokumentu
+Invalid color for document title.: Nieprawid³owy kolor tytu³u dokumentu
+Invalid color for table cell background.: Nieprawid³owy kolor t³a komórki tabeli
+Invalid color for table grid.: Nieprawid³owy kolor dla ramek tabeli
+Invalid color for table header background.: Nieprawid³owy kolor dla t³a nag³ówka
+Invalid color for table text background.: Nieprawid³owy kolor dla t³a tekstu tabeli
+Invalid color for event popup background.: Nieprawid³owy kolor dla t³a zdarzenia pojawiaj±cego siê
+Invalid color for event popup text.: Nieprawid³owy kolor dla tekstu pojawiaj±cego siê zdarzenia
+Invalid color for table cell background for today.: Nieprawid³owy kolor t³a komórki dla bie¿±cego dnia
 Color format should be RRGGBB.: Format koloru powinien bya '#RRGGBB'
 
 ########################################

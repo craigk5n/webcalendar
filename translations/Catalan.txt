@@ -835,17 +835,17 @@ recipients_failed: Error SMTP: Els següents destinataris han fallat:
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Cal URL de Servidor
+Server URL is required.: Cal URL de Servidor
 Server URL must end with /.: La URL del Servidor ha d'acabar amb '/'
-Invalid color for document background: Color invàlid per al fons del document
-Invalid color for document title: Color invàlid per al títol del document
-Invalid color for table cell background: Color invàlid per al fons de cel·les de taula
-Invalid color for table grid: Color invàlid per a la graella de la taula
-Invalid color for table header background: Color invàlid per al fons de la capçalera de la taula
-Invalid color for table text background: Color invàlid per al fons del text de la taula
-Invalid color for event popup background: Color invàlid per al fons d'un missatge emergent
-Invalid color for event popup text: Color invàlid per al text del missatge emergent
-Invalid color for table cell background for today: Color invàlid per al fons de la cel·la d'avui
+Invalid color for document background.: Color invàlid per al fons del document
+Invalid color for document title.: Color invàlid per al títol del document
+Invalid color for table cell background.: Color invàlid per al fons de cel·les de taula
+Invalid color for table grid.: Color invàlid per a la graella de la taula
+Invalid color for table header background.: Color invàlid per al fons de la capçalera de la taula
+Invalid color for table text background.: Color invàlid per al fons del text de la taula
+Invalid color for event popup background.: Color invàlid per al fons d'un missatge emergent
+Invalid color for event popup text.: Color invàlid per al text del missatge emergent
+Invalid color for table cell background for today.: Color invàlid per al fons de la cel·la d'avui
 Color format should be RRGGBB.: El format del color hauria de ser '#RRGGBB'
 
 ########################################

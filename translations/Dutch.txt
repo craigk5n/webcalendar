@@ -1329,18 +1329,18 @@ recipients_failed: Ontvangers faalden
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Server-URL wordt vereist
+Server URL is required.: Server-URL wordt vereist
 Server URL must end with /.: Server-URL moet eindigen op '/'
-Invalid work hours: Ongeldige werktijden
-Invalid color for document background: Ongeldige kleur voor de achtergrond
-Invalid color for document title: Ongeldige kleur voor de agendatitel
-Invalid color for table cell background: Ongeldige kleur voor de tabelcel
-Invalid color for table grid: Ongeldige kleur voor tabelraster
-Invalid color for table header background: Ongeldige kleur voor achtergrond agendatitel
-Invalid color for table text background: Ongeldige kleur voor tekstachtergrond
-Invalid color for event popup background: Ongeldige achtergrondkleur voor afspraak-popup
-Invalid color for event popup text: Ongeldige tekstkleur voor afspraak-popup
-Invalid color for table cell background for today: Ongeldige achtergrondkleur voor huidige datum
+Invalid work hours.: Ongeldige werktijden
+Invalid color for document background.: Ongeldige kleur voor de achtergrond
+Invalid color for document title.: Ongeldige kleur voor de agendatitel
+Invalid color for table cell background.: Ongeldige kleur voor de tabelcel
+Invalid color for table grid.: Ongeldige kleur voor tabelraster
+Invalid color for table header background.: Ongeldige kleur voor achtergrond agendatitel
+Invalid color for table text background.: Ongeldige kleur voor tekstachtergrond
+Invalid color for event popup background.: Ongeldige achtergrondkleur voor afspraak-popup
+Invalid color for event popup text.: Ongeldige tekstkleur voor afspraak-popup
+Invalid color for table cell background for today.: Ongeldige achtergrondkleur voor huidige datum
 Color format should be RRGGBB.: Kleur weergeven in #RRGGBB-formaat
 
 ########################################
