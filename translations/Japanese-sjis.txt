@@ -1285,18 +1285,18 @@ provide_address: 少なくとも 1 つの受取人の電子メールアドレスを提供しなければなり
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: サーバー URL が必須です。
+Server URL is required.: サーバー URL が必須です。
 Server URL must end with /.: サーバー URL は「/」で終わらなければいけません。
-Invalid work hours: 無効な勤務時間です。
-Invalid color for document background: 書類の背景色が無効です。
-Invalid color for document title: 書類のタイトル色が無効です。
-Invalid color for table cell background: 書類のテーブル背景色が無効です。
-Invalid color for table grid: テーブルグリッドの色が無効です。
-Invalid color for table header background: テーブルヘッダーの色が無効です。
-Invalid color for table text background: テーブルテキストの背景色が無効です。
-Invalid color for event popup background: イベントポップアップの背景色が無効です。
-Invalid color for event popup text: イベントポップアップの色が無効です。
-Invalid color for table cell background for today: 今日のテーブルセルの背景色が無効です。
+Invalid work hours.: 無効な勤務時間です。
+Invalid color for document background.: 書類の背景色が無効です。
+Invalid color for document title.: 書類のタイトル色が無効です。
+Invalid color for table cell background.: 書類のテーブル背景色が無効です。
+Invalid color for table grid.: テーブルグリッドの色が無効です。
+Invalid color for table header background.: テーブルヘッダーの色が無効です。
+Invalid color for table text background.: テーブルテキストの背景色が無効です。
+Invalid color for event popup background.: イベントポップアップの背景色が無効です。
+Invalid color for event popup text.: イベントポップアップの色が無効です。
+Invalid color for table cell background for today.: 今日のテーブルセルの背景色が無効です。
 Color format should be RRGGBB.: 色は '#RRGGBB'の書式で設定してください。
 
 ########################################

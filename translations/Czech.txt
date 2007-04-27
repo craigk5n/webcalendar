@@ -875,18 +875,18 @@ recipients_failed: SMTP Error: Adresy pøíjemcù nejsou správné
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Je nutno zadat cestu (URL) k serveru
+Server URL is required.: Je nutno zadat cestu (URL) k serveru
 Server URL must end with /.: Cesta k serveru (URL) musí kon?it na '/'
-Invalid work hours: Neplatná pracovní doba
-Invalid color for document background: Neplatná barva pro pozadí dokumentu
-Invalid color for document title: Neplatná barva pro záhlaví dokumentu
-Invalid color for table cell background: Neplatná barva pro pozadí bun?k tabulky
-Invalid color for table grid: Neplatná barva m?ížky tabulky
-Invalid color for table header background: Neplatná barva pozadí v záhlaví tabulky
-Invalid color for table text background: Neplatná barva textu v tabulce
-Invalid color for event popup background: Neplatná barva pozadí u vyskakovacích (popup) událostí
-Invalid color for event popup text: Neplatná barva textu u vyskakovacích (popup) událostí
-Invalid color for table cell background for today: Neplatná barva pozadí bu?ky tabulky p?i zobrazení dne
+Invalid work hours.: Neplatná pracovní doba
+Invalid color for document background.: Neplatná barva pro pozadí dokumentu
+Invalid color for document title.: Neplatná barva pro záhlaví dokumentu
+Invalid color for table cell background.: Neplatná barva pro pozadí bun?k tabulky
+Invalid color for table grid.: Neplatná barva m?ížky tabulky
+Invalid color for table header background.: Neplatná barva pozadí v záhlaví tabulky
+Invalid color for table text background.: Neplatná barva textu v tabulce
+Invalid color for event popup background.: Neplatná barva pozadí u vyskakovacích (popup) událostí
+Invalid color for event popup text.: Neplatná barva textu u vyskakovacích (popup) událostí
+Invalid color for table cell background for today.: Neplatná barva pozadí bu?ky tabulky p?i zobrazení dne
 Color format should be RRGGBB.: Formát barvy by nap?íklad m?l být '#RRGGBB'
 
 ########################################

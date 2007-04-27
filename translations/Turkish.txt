@@ -390,10 +390,10 @@ recipients_failed: SMTP Hatasý: alýcýlara ulaþmadý:
 ########################################
 # Page: includes/js/admin.php
 #
-Invalid color for document background: Renk Sayfa-arkasi icin gecerli degil
-Invalid color for document title: Renk Baslik icin gecerli degil
-Invalid color for table cell background: Renk Tabela-arkasi icin gecerli degil
-Invalid color for table cell background for today: Renk Tabela-arkasi 'Bugün' icin gecerli degil
+Invalid color for document background.: Renk Sayfa-arkasi icin gecerli degil
+Invalid color for document title.: Renk Baslik icin gecerli degil
+Invalid color for table cell background.: Renk Tabela-arkasi icin gecerli degil
+Invalid color for table cell background for today.: Renk Tabela-arkasi 'Bugün' icin gecerli degil
 Color format should be RRGGBB.: Renkler sadece '#RRGGBB' seklinde verilebilir.
 
 ########################################

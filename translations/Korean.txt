@@ -354,10 +354,10 @@ Notification: 통보
 ########################################
 # Page: includes/js/admin.php
 #
-Invalid color for document background: 배경 색상 틀림
-Invalid color for document title: 제목 색상 틀림
-Invalid color for table cell background: 테이블 셀 배경색 틀림
-Invalid color for table cell background for today: 오늘 날짜 표시 색상 틀림
+Invalid color for document background.: 배경 색상 틀림
+Invalid color for document title.: 제목 색상 틀림
+Invalid color for table cell background.: 테이블 셀 배경색 틀림
+Invalid color for table cell background for today.: 오늘 날짜 표시 색상 틀림
 Color format should be RRGGBB.: 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000" (빨강)
 
 ########################################

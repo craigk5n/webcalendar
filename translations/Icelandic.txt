@@ -387,10 +387,10 @@ Notification: Tilkynning
 ########################################
 # Page: includes/js/admin.php
 #
-Invalid color for document background: Ólöglegur litur í bakgrunni
-Invalid color for document title: Ólöglegur litur í titli
-Invalid color for table cell background: Ólöglegur litur í bakgrunni taflna
-Invalid color for table cell background for today: Ólöglegur litur í bakgrunni taflna núverandi dags
+Invalid color for document background.: Ólöglegur litur í bakgrunni
+Invalid color for document title.: Ólöglegur litur í titli
+Invalid color for table cell background.: Ólöglegur litur í bakgrunni taflna
+Invalid color for table cell background for today.: Ólöglegur litur í bakgrunni taflna núverandi dags
 Color format should be RRGGBB.: Form lita á að vera '#RRGGBB'
 
 ########################################

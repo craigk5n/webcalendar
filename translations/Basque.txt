@@ -646,16 +646,16 @@ Notification: Abixua
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Zerbitzariaren URL-a falta da
+Server URL is required.: Zerbitzariaren URL-a falta da
 Server URL must end with /.: Zerbitzariaren URL-a '/'-z bukatu behar du
-Invalid color for document background: Kolore desegokia dokumentuaren atzerako
-Invalid color for document title: Kolore desegokia dokumentuaren izenbururako
-Invalid color for table cell background: Kolore desegokia taulako gelaxken atzerako
-Invalid color for table grid: Kolore desegokia taularentzako
-Invalid color for table text background: Kolore desegokia taularen textuaren atzerako
-Invalid color for event popup background: Kolore desegokia gertaera popup-aren atzerako
-Invalid color for event popup text: Kolore desegokia gertaera popup-aren texturako
-Invalid color for table cell background for today: Kolore desegokia gaurko egunaren atzerako
+Invalid color for document background.: Kolore desegokia dokumentuaren atzerako
+Invalid color for document title.: Kolore desegokia dokumentuaren izenbururako
+Invalid color for table cell background.: Kolore desegokia taulako gelaxken atzerako
+Invalid color for table grid.: Kolore desegokia taularentzako
+Invalid color for table text background.: Kolore desegokia taularen textuaren atzerako
+Invalid color for event popup background.: Kolore desegokia gertaera popup-aren atzerako
+Invalid color for event popup text.: Kolore desegokia gertaera popup-aren texturako
+Invalid color for table cell background for today.: Kolore desegokia gaurko egunaren atzerako
 Color format should be RRGGBB.: Kolorearen formatua hamaseitarra izan beharko luke adibidez, '#RRGGB
 
 ########################################

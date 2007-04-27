@@ -918,18 +918,18 @@ recipients_failed: SMTP Feil: Følgende mottagere feilet:
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: URL for server er påkrevd
+Server URL is required.: URL for server er påkrevd
 Server URL must end with /.: URL for server må slutte på '/'
-Invalid work hours: Ugyldige arbeidstid
-Invalid color for document background: Ugyldig bakgrunnsfarge
-Invalid color for document title: Ugyldig tittelfarge
-Invalid color for table cell background: Ugyldig farge for tabellbakgrunn
-Invalid color for table grid: Ugyldig farge for tabellrutenett
-Invalid color for table header background: Ugyldig farge for bakgrunnen i tabellheaderen
-Invalid color for table text background: Ugyldig farge for bakgrunnen til tabellteksten
-Invalid color for event popup background: Ugyldig farge for bakgrunnen i aktivitetspopups
-Invalid color for event popup text: Ugyldig farge for teksten i aktivitetspopups
-Invalid color for table cell background for today: Ugyldig farge for dagens tabellbakgrunn
+Invalid work hours.: Ugyldige arbeidstid
+Invalid color for document background.: Ugyldig bakgrunnsfarge
+Invalid color for document title.: Ugyldig tittelfarge
+Invalid color for table cell background.: Ugyldig farge for tabellbakgrunn
+Invalid color for table grid.: Ugyldig farge for tabellrutenett
+Invalid color for table header background.: Ugyldig farge for bakgrunnen i tabellheaderen
+Invalid color for table text background.: Ugyldig farge for bakgrunnen til tabellteksten
+Invalid color for event popup background.: Ugyldig farge for bakgrunnen i aktivitetspopups
+Invalid color for event popup text.: Ugyldig farge for teksten i aktivitetspopups
+Invalid color for table cell background for today.: Ugyldig farge for dagens tabellbakgrunn
 Color format should be RRGGBB.: Fargen skal skrives som '#RRGGBB'
 
 ########################################

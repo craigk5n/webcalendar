@@ -685,17 +685,17 @@ Notification: Teadustus
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Serveri URL on puudu
+Server URL is required.: Serveri URL on puudu
 Server URL must end with /.: Serveri URL peab lõppema '/' märgiga
-Invalid color for document background: Vigane värv dokumendi tausta jaoks
-Invalid color for document title: Vigane värv dokumendi tiitli jaoks
-Invalid color for table cell background: Vigane värv tabeli ruudu tausta jaoks
-Invalid color for table grid: Vigane värv tabeli piirjoonte jaoks
-Invalid color for table header background: Vigane värv tabeli päise tausta jaoks
-Invalid color for table text background: Vigane värv tabeli teksti tausta jaoks
-Invalid color for event popup background: Vigane värv sündmuse akna tausta jaoks
-Invalid color for event popup text: Vigane värv sündmuse akna teksti jaoks
-Invalid color for table cell background for today: Vigane värv tänase päeva tabeli ruudu tausta jaoks
+Invalid color for document background.: Vigane värv dokumendi tausta jaoks
+Invalid color for document title.: Vigane värv dokumendi tiitli jaoks
+Invalid color for table cell background.: Vigane värv tabeli ruudu tausta jaoks
+Invalid color for table grid.: Vigane värv tabeli piirjoonte jaoks
+Invalid color for table header background.: Vigane värv tabeli päise tausta jaoks
+Invalid color for table text background.: Vigane värv tabeli teksti tausta jaoks
+Invalid color for event popup background.: Vigane värv sündmuse akna tausta jaoks
+Invalid color for event popup text.: Vigane värv sündmuse akna teksti jaoks
+Invalid color for table cell background for today.: Vigane värv tänase päeva tabeli ruudu tausta jaoks
 Color format should be RRGGBB.: Värvi esitusviis peab olema kujul '#RRGGBB'
 
 ########################################

@@ -866,18 +866,18 @@ recipients_failed: SMTP fel: Följande mottagare är felaktig:
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Server-URL krävs
+Server URL is required.: Server-URL krävs
 Server URL must end with /.: Server-URL måste slute med '/'
-Invalid work hours: Ogiltig arbetstid
-Invalid color for document background: Ogiltig bakgrundsfärg
-Invalid color for document title: Ogiltig färg för dokumenttiteln
-Invalid color for table cell background: Ogiltig färg för tabellcellsbakgrunden
-Invalid color for table grid: Ogiltig färg för tabellstrecken
-Invalid color for table header background: Ogiltig färg för tabellhuvudets bakgrund
-Invalid color for table text background: Ogiltig färg för tabelltextens bakgrund
-Invalid color for event popup background: Ogiltig färg för händelsepopp-uppens bakgrund
-Invalid color for event popup text: Ogiltig färg för händelsepopp-uppens text
-Invalid color for table cell background for today: Ogiltig färg för dagens tabellcellsbakgrund
+Invalid work hours.: Ogiltig arbetstid
+Invalid color for document background.: Ogiltig bakgrundsfärg
+Invalid color for document title.: Ogiltig färg för dokumenttiteln
+Invalid color for table cell background.: Ogiltig färg för tabellcellsbakgrunden
+Invalid color for table grid.: Ogiltig färg för tabellstrecken
+Invalid color for table header background.: Ogiltig färg för tabellhuvudets bakgrund
+Invalid color for table text background.: Ogiltig färg för tabelltextens bakgrund
+Invalid color for event popup background.: Ogiltig färg för händelsepopp-uppens bakgrund
+Invalid color for event popup text.: Ogiltig färg för händelsepopp-uppens text
+Invalid color for table cell background for today.: Ogiltig färg för dagens tabellcellsbakgrund
 Color format should be RRGGBB.: Färgen skall skrivas som '#RRGGBB'
 
 ########################################

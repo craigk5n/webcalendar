@@ -1578,18 +1578,18 @@ Challenge/Response: Aufforderung/Beantwortung
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: Server URL wird ben&ouml;tigt
+Server URL is required.: Server URL wird ben&ouml;tigt
 Server URL must end with /.: Server URL mu&szlig; mit einem &#39;&#47;&#39; enden
-Invalid work hours: Ung&uuml;ltige Arbeitszeit
-Invalid color for document background: Ung&uuml;ltige Farbe f&uuml;r Hintergrund
-Invalid color for document title: Ung&uuml;ltige Farbe f&uuml;r Titel
-Invalid color for table cell background: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund
-Invalid color for table grid: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Gitter
-Invalid color for table header background: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Kopfzeile Hintergrund
-Invalid color for table text background: Ung&uuml;ltige Farbe f&uuml;r Tabellentext Hintergrund
-Invalid color for event popup background: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Hintergrund
-Invalid color for event popup text: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Text
-Invalid color for table cell background for today: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund &#39;Heute&#39;
+Invalid work hours.: Ung&uuml;ltige Arbeitszeit
+Invalid color for document background.: Ung&uuml;ltige Farbe f&uuml;r Hintergrund
+Invalid color for document title.: Ung&uuml;ltige Farbe f&uuml;r Titel
+Invalid color for table cell background.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund
+Invalid color for table grid.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Gitter
+Invalid color for table header background.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Kopfzeile Hintergrund
+Invalid color for table text background.: Ung&uuml;ltige Farbe f&uuml;r Tabellentext Hintergrund
+Invalid color for event popup background.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Hintergrund
+Invalid color for event popup text.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Text
+Invalid color for table cell background for today.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund &#39;Heute&#39;
 Color format should be RRGGBB.: Farbformat sollte &#39;#RRGGBB&#39; sein.
 
 ########################################

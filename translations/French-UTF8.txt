@@ -902,18 +902,18 @@ Event Imported: Événement importé
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: L'URL du serveur n'est pas spécifiée
+Server URL is required.: L'URL du serveur n'est pas spécifiée
 Server URL must end with /.: L'URL du serveur doit se terminer par '/'
-Invalid work hours: Plage horaire invalide
-Invalid color for document background: Couleur de fond incorrecte
-Invalid color for document title: Couleur de titre de document incorrecte
-Invalid color for table cell background: Couleur de fond de cellule incorrecte
-Invalid color for table grid: Couleur de quadrillage incorrecte
-Invalid color for table header background: Couleur de fond de cellule d'en-tête de tableau incorrecte
-Invalid color for table text background: Couleur de texte de tableau incorrecte
-Invalid color for event popup background: Couleur de fond de fenêtre d'alerte incorrecte
-Invalid color for event popup text: Couleur de texte de fenêtre d'alerte incorrecte
-Invalid color for table cell background for today: Couleur de fond de cellule du jour courant incorrecte
+Invalid work hours.: Plage horaire invalide
+Invalid color for document background.: Couleur de fond incorrecte
+Invalid color for document title.: Couleur de titre de document incorrecte
+Invalid color for table cell background.: Couleur de fond de cellule incorrecte
+Invalid color for table grid.: Couleur de quadrillage incorrecte
+Invalid color for table header background.: Couleur de fond de cellule d'en-tête de tableau incorrecte
+Invalid color for table text background.: Couleur de texte de tableau incorrecte
+Invalid color for event popup background.: Couleur de fond de fenêtre d'alerte incorrecte
+Invalid color for event popup text.: Couleur de texte de fenêtre d'alerte incorrecte
+Invalid color for table cell background for today.: Couleur de fond de cellule du jour courant incorrecte
 Color format should be RRGGBB.: Le format de couleur devrait être du type '#RRGGBB'
 
 ########################################

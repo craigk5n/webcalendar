@@ -1310,18 +1310,18 @@ recipients_failed: שגיאת SNMT~ הנמענים הבאים נכשלו~
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required: URL של השרת חובה
+Server URL is required.: URL של השרת חובה
 Server URL must end with /.: URL של השרת חייב להסתיים ב-'/'
-Invalid work hours: שעות עבודה לא חוקיות
-Invalid color for document background: צבע רקע מסמך לא חוקי
-Invalid color for document title: צבע כותרת מסמך לא חוקי
-Invalid color for table cell background: צבע רקע התא של טבלה לא חוקי
-Invalid color for table grid: צבע רשת הטבלה לא חוקי
-Invalid color for table header background: צבע רקע הכותרת של טבלה לא חוקי
-Invalid color for table text background: צבע רקע הטקסט של טבלה לט חוקי
-Invalid color for event popup background: צבע רקע חלונית ארוע קופצת לא חוקי
-Invalid color for event popup text: צבע טקסט של חלונית ארוע קופצת לא חוקי
-Invalid color for table cell background for today: צבע רקע טבלה של היום לא חוקי
+Invalid work hours.: שעות עבודה לא חוקיות
+Invalid color for document background.: צבע רקע מסמך לא חוקי
+Invalid color for document title.: צבע כותרת מסמך לא חוקי
+Invalid color for table cell background.: צבע רקע התא של טבלה לא חוקי
+Invalid color for table grid.: צבע רשת הטבלה לא חוקי
+Invalid color for table header background.: צבע רקע הכותרת של טבלה לא חוקי
+Invalid color for table text background.: צבע רקע הטקסט של טבלה לט חוקי
+Invalid color for event popup background.: צבע רקע חלונית ארוע קופצת לא חוקי
+Invalid color for event popup text.: צבע טקסט של חלונית ארוע קופצת לא חוקי
+Invalid color for table cell background for today.: צבע רקע טבלה של היום לא חוקי
 Color format should be RRGGBB.: תצורת הצבע צריכה להיות '#RRGGBB'
 
 ########################################
