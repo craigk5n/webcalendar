@@ -1,4 +1,5 @@
 <?php
+/* $Id$*/
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 // NOTE: This file is included within the print_trailer function found in
