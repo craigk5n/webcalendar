@@ -39,7 +39,7 @@ translate ( 'Anything imported from Palm will be overwritten during the next imp
     <p>' . translate ( 'This form will import iCalendar (.ics) events' ) . '. '
  . translate ( 'Enabling' ) . ' <b>' . translate ( 'Overwrite Prior Import' )
  . '</b>, ' .
-translate ( 'will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted . This should allow an updated iCalendar file to be imported without creating duplicates.' )
+translate ( 'will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.' )
  . '</p>';
 
 ob_end_flush ();
