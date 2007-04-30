@@ -908,7 +908,7 @@ The following formats have been tested: The following formats have been tested
 This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
 Enabling: Enabling
 Overwrite Prior Import: Overwrite Prior Import
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted . This should allow an updated iCalendar file to be imported without creating duplicates.: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted . This should allow an updated iCalendar file to be imported without creating duplicates.
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.
 
 ########################################
 # Page: help_index.php
@@ -1167,7 +1167,7 @@ Keywords: Keywords
 Enter % for all entries: Enter % for all entries
 Include: Include
 Filter by Date: Filter by Date
-All Dates: All
+All Dates: All Dates
 Past: Past
 Upcoming: Upcoming
 Range: Range
