@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 23.Apr.2007
+# Last update: 30.Apr.2007
 #
 # $Id$
-# Translation last updated on 04-23-2007
+# Translation last updated on 04-30-2007
 
 
 ################################################################################
@@ -18,7 +18,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: =
+charset: iso-8859-1
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -1578,18 +1578,18 @@ Challenge/Response: Aufforderung/Beantwortung
 ########################################
 # Page: includes/js/admin.php
 #
-Server URL is required.: Server URL wird ben&ouml;tigt
-Server URL must end with /.: Server URL mu&szlig; mit einem &#39;&#47;&#39; enden
-Invalid work hours.: Ung&uuml;ltige Arbeitszeit
-Invalid color for document background.: Ung&uuml;ltige Farbe f&uuml;r Hintergrund
-Invalid color for document title.: Ung&uuml;ltige Farbe f&uuml;r Titel
-Invalid color for table cell background.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund
-Invalid color for table grid.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Gitter
-Invalid color for table header background.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Kopfzeile Hintergrund
-Invalid color for table text background.: Ung&uuml;ltige Farbe f&uuml;r Tabellentext Hintergrund
-Invalid color for event popup background.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Hintergrund
-Invalid color for event popup text.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Text
-Invalid color for table cell background for today.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund &#39;Heute&#39;
+Server URL is required.: Server URL wird ben&ouml;tigt.
+Server URL must end with /.: Server URL mu&szlig; mit einem &#39;&#47;&#39; enden.
+Invalid work hours.: Ung&uuml;ltige Arbeitszeit.
+Invalid color for document background.: Ung&uuml;ltige Farbe f&uuml;r Hintergrund.
+Invalid color for document title.: Ung&uuml;ltige Farbe f&uuml;r Titel.
+Invalid color for table cell background.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund.
+Invalid color for table grid.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Gitter.
+Invalid color for table header background.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Kopfzeile Hintergrund.
+Invalid color for table text background.: Ung&uuml;ltige Farbe f&uuml;r Tabellentext Hintergrund.
+Invalid color for event popup background.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Hintergrund.
+Invalid color for event popup text.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Text.
+Invalid color for table cell background for today.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund &#39;Heute&#39;.
 Color format should be RRGGBB.: Farbformat sollte &#39;#RRGGBB&#39; sein.
 
 ########################################
