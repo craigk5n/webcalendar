@@ -1,15 +1,15 @@
-<?php /* $Id$  */ ?>
-// The following code is used to support the small popups that
-// give the full description of an event when the user move the
-// mouse over it.
+<?php
+/* $Id$  */ ?>
+// The following code is used to support the small popups that give the full
+// description of an event when the user moves the mouse over it.
 // Thanks to Klaus Knopper (www.knoppix.com) for this script.
 // It has been modified to work with the existing WebCalendar
 // architecture on 02/25/2005
 //
 // 03/05/2005 Prevent popup from going off screen by setting
-// maximum width, which is configurable
+// maximum width, which is configurable.
 //
-// Bubblehelp infoboxes, (C) 2002 Klaus Knopper <infobox@knopper.net>
+// Bubblehelp infoboxes, © 2002 Klaus Knopper <infobox@knopper.net>
 // You can copy/modify and distribute this code under the conditions
 // of the GNU GENERAL PUBLIC LICENSE Version 2.
 //
@@ -33,7 +33,7 @@ function rebrowse(){window.location.reload();}
 
 function infoinit(){
   ns4=(document.layers)?true:false, ie4=(document.all)?true:false;
-  ie5=((ie4)&&((navigator.userAgent.indexOf('MSIE 5')>0)||(navigator.userAgent.indexOf('MSIE 6')>0)))?true:false;
+  ie5=((ie4)&&((navigator.userAgent.indexOf('MSIE 5')>0)||(navigator.userAgent.indexOf('MSIE 6')>0)||(navigator.userAgent.indexOf('MSIE 7')>0)));
   kon=(navigator.userAgent.indexOf('konqueror')>0)?true:false;
   x=0;y=0;winW=800;winH=600;
   idiv=null;
@@ -78,11 +78,15 @@ function show(evt, name){
   if(idiv){
    scrollX =0; scrollY=0;
 
-   scrollX=(typeof window.pageXOffset == "number")? window.pageXOffset:(document.documentElement && document.documentElement.scrollLeft)?document.documentElement.scrollLeft:(document.body && document.body.scrollLeft)?document.body.scrollLeft:window.scrollX;
-   scrollY=(typeof window.pageYOffset == "number")? window.pageYOffset:(document.documentElement && document.documentElement.scrollTop)?document.documentElement.scrollTop:(document.body && document.body.scrollTop)?document.body.scrollTop:window.scrollY;
+   scrollX=(typeof window.pageXOffset == "number") ? window.pageXOffset : (document.documentElement && document.documentElement.scrollLeft)?document.documentElement.scrollLeft:(document.body && document.body.scrollLeft)?document.body.scrollLeft:window.scrollX;
+   scrollY=(typeof window.pageYOffset == "number") ? window.pageYOffset : (document.documentElement && document.documentElement.scrollTop)?document.documentElement.scrollTop:(document.body && document.body.scrollTop)?document.body.scrollTop:window.scrollY;
 
-   winW=(window.innerWidth)? window.innerWidth+window.pageXOffset-16:document.body.offsetWidth-20;
-   winH=(window.innerHeight)?window.innerHeight+scrollY:document.body.offsetHeight+scrollY;
+   winW=(window.innerWidth) ? window.innerWidth+window.pageXOffset-16 : document.body.offsetWidth-20;
+   if (ie5) {
+    winH=(window.innerHeight ? window.innerHeight : 500 ) + scrollY;
+   } else {
+    winH=( window.innerHeight ? window.innerHeight : document.body.offsetHeight ) + scrollY;
+   }
 
    popupW = idiv.offsetWidth;
    popupH = idiv.offsetHeight;
