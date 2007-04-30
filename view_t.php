@@ -338,14 +338,14 @@ for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
   if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
     continue;
 
-  $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS );
   echo '
       <tr' . ( $dateYmd == date ( 'Ymd', $today ) ? '>
         <th class="today">' : ( $is_weekend ? ' class="weekend">
         <th class="weekend">' : '>
         <th class="row">' ) )
    . ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N'
-    ? html_for_add_icon ( $dateYmd, '', '', $user ) : '' ) . $weekday . '&nbsp;'
+    ? html_for_add_icon ( $dateYmd, '', '', $user ) : '' )
+     . weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS ) . '&nbsp;'
    . date ( 'd', $date ) . '</th>
         <td class="timebar">' . $timeBarHeader
    . print_date_entries_timebar ( $dateYmd, $login, true ) . '
