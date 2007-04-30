@@ -251,7 +251,7 @@ print_header ( $INC, '', $BodyX );
   echo '<option disabled="disabled">' . translate ( 'AVAILABLE THEMES' ) . $option;
   //always use 'none' as default so we don't overwrite manual settings
   echo '<option  value="none"' . $selected . '>' . translate ( 'None' ) . $option;
-  for ( $i = 0, $cnt = count ( $themes); $i <= $cnt; $i++ ) {
+  for ( $i = 0, $cnt = count ( $themes[0]); $i <= $cnt; $i++ ) {
      echo '<option value="' . $themes[1][$i] . '">' . $themes[0][$i] . $option;
   }
 ?>
