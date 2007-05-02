@@ -1240,9 +1240,9 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthend; $i += 604800 ) {
     $ret .= '
         <tr>' . ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ? '
-          <td class="weeknumber"><a class="weeknumber" ' . 'title="' . $weekStr
+          <td><a class="weeknumber" ' . 'title="' . $weekStr
        . '&nbsp;' . date ( 'W', $i + 86400 ) . '" ' . 'href="week.php?' . $u_url
-       . 'date=' . date ( 'Ymd', $i + 86400 * 2 ) . '">('
+       . 'date=' . date ( 'Ymd', $i + 86400 * 2 ) . '" class="weeknumber">('
        . date ( 'W', $i + 86400 * 2 ) . ')</a></td>' : '' );
 
     for ( $j = 0; $j < 7; $j++ ) {
@@ -1872,8 +1872,9 @@ function generate_refresh_meta () {
 
   return ( $AUTO_REFRESH == 'Y' && ! empty ( $AUTO_REFRESH_TIME ) && !
     empty ( $REQUEST_URI )
-    ? '<meta http-equiv="refresh" content="'
-     . $AUTO_REFRESH_TIME * 60// Convert to seconds.
+    ? '
+    <meta http-equiv="refresh" content="'
+     . $AUTO_REFRESH_TIME * 60 // Convert to seconds.
      . '; url=' . $REQUEST_URI . '" />' : '' );
 }
 

@@ -369,8 +369,7 @@ if ( $DISPLAY_WEEKENDS == 'N' ) {
   text-align: left;
   width: 18px;
 }
-.weeknumber,
-.weeknumber a {
+.weeknumber {
   font-size: 10px;
   color: <?php echo $GLOBALS['WEEKNUMBER'];
 
@@ -764,6 +763,10 @@ img.help {
   border-bottom: 1px solid <?php echo $GLOBALS['TABLEBG'];
 
 ?>;
+}
+<?php // style for week hover highlight
+?>tr.highlight td {
+	background-color: #ffb !important;
 }
 .minical {
   border-collapse: collapse;

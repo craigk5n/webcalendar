@@ -40,7 +40,8 @@ if ( empty ( $friendly ) ) {
 }
 set_today($date);
 $INC = array('js/popups.php/true');
-print_header($INC);
+$HeadX = '<script src="includes/js/weekHover.js" type="text/javascript"></script>';
+print_header($INC, $HeadX);
 $trailerStr = print_trailer ();
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
