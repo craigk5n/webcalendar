@@ -21,7 +21,7 @@ if ( empty ( $id ) )
   $is_my_event = true; // New event.
 else {
   $res = dbi_execute ( 'SELECT cat_id, cat_owner FROM webcal_categories
-    WHERE cat_id = ?', array( $id ) );
+    WHERE cat_id = ?', array ( $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
 
@@ -49,14 +49,14 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
   if ( ! dbi_execute( 'DELETE FROM webcal_categories
     WHERE cat_id = ? AND ( cat_owner = ?'
        . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ),
-        array( $id, $login ) ) ) {
+        array ( $id, $login ) ) ) {
     $error = db_error ();
   }
 
   if ( ! dbi_execute( 'DELETE FROM webcal_entry_categories
     WHERE cat_id = ? AND ( cat_owner = ?'
        . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ),
-        array( $id, $login ) ) ) {
+        array ( $id, $login ) ) ) {
     $error = db_error ();
   }
   // Rename any icons associated with this cat_id.
@@ -66,7 +66,7 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
     # Update (don't let them change global status).
     if ( ! dbi_execute ( 'UPDATE webcal_categories
       SET cat_name = ?, cat_color = ? WHERE cat_id = ?',
-        array( $catname, $catcolor, $id ) ) )
+        array ( $catname, $catcolor, $id ) ) )
       $error = db_error ();
 
     $delIcon = getPostValue ( 'delIcon' );
@@ -86,7 +86,7 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
 
       if ( ! dbi_execute ( 'INSERT INTO webcal_categories ( cat_id, cat_owner,
         cat_name, cat_color ) VALUES ( ?, ?, ?, ? )',
-          array( $id, $catowner, $catname, $catcolor ) ) )
+          array ( $id, $catowner, $catname, $catcolor ) ) )
         $error = db_error ();
     } else
       $error = db_error ();

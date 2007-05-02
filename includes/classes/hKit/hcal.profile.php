@@ -4,7 +4,7 @@
 
   $this->root_class = 'vevent';
 
-  $this->classes = array(
+  $this->classes = array (
     'dtstart',
     'dtend',
     'duration',
@@ -18,23 +18,23 @@
   );
 
   // classes that must only appear once per event
-  $this->singles = array(
+  $this->singles = array (
     'summary'
   );
 
   // classes that are required (not strictly enforced - give at least one!)
-  $this->required = array(
+  $this->required = array (
     'dtstart'
   );
 
-  $this->att_map = array(
-    'url'  => array('A|href', 'IMG|src', 'AREA|href')
+  $this->att_map = array (
+    'url'  => array ('A|href', 'IMG|src', 'AREA|href')
   );
 
 
-  $this->callbacks = array(
-    'url'  => array($this, 'resolvePath'),
-    'email'  => array($this, 'resolveEmail')
+  $this->callbacks = array (
+    'url'  => array ($this, 'resolvePath'),
+    'email'  => array ($this, 'resolveEmail')
   );
 
 

@@ -766,7 +766,7 @@ img.help {
 }
 <?php // style for week hover highlight
 ?>tr.highlight td {
-	background-color: #ffb !important;
+  background-color: #ffb !important;
 }
 .minical {
   border-collapse: collapse;

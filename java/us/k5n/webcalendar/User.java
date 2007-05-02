@@ -2,7 +2,7 @@
  * $Id$
  *
  * Description:
- *	User object
+ *  User object
  *
  */
 

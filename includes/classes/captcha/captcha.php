@@ -78,7 +78,7 @@ class captcha {
 
       #-- image
       $img = captcha::image($pw, 200, 60, CAPTCHA_INVERSE, CAPTCHA_MAXSIZE);
-      if (CAPTCHA_DATA_URLS && !strpos('MSIE', $_SERVER['HTTP_USER_AGENT'])) {
+      if (CAPTCHA_DATA_URLS && !strpos ('MSIE', $_SERVER['HTTP_USER_AGENT'])) {
          $img_fn = 'data:image/jpeg;base64,' . base64_encode($img);
       }
       else {
@@ -89,7 +89,7 @@ class captcha {
       $html = '
         <div class="captcha">
           <fieldset style="width:420px">
-            <legend>' . translate('Challenge/Response') .'</legend>
+            <legend>' . translate ('Challenge/Response') .'</legend>
             <table border="0" summary="captcha input" width="400px"><tr>
               <td colspan="2"><small>'.$more.'</small></td></tr><tr>
               <td><img name="captcha_image" id="captcha_image" src="' .$img_fn.
@@ -109,7 +109,7 @@ class captcha {
    */
    function textual_riddle($phrase) {
       $symbols0 = '"\'-/_:';
-      $symbols1 = array("\n,", "\n;", ";", "\n&", "\n-", ",", ",", "\nand then", "\nfollowed by", "\nand", "\nand not a\n\"".chr(65+rand(0,26))."\",\nbut");
+      $symbols1 = array ("\n,", "\n;", ";", "\n&", "\n-", ",", ",", "\nand then", "\nfollowed by", "\nand", "\nand not a\n\"".chr(65+rand(0,26))."\",\nbut");
       $s = "Guess the letters and numbers\n(passphrase riddle)\n--\n";
       for ($p=0; $p<strlen($phrase); $p++) {
          $c = $phrase[$p];
@@ -180,7 +180,7 @@ class captcha {
       $c2 = rand(195^$R, 230^$R);
 
       #-- configuration
-      $fonts = array(
+      $fonts = array (
         // "COLLEGE.ttf",
       );
       $fonts += glob(EWIKI_FONT_DIR."/*.ttf");
@@ -253,7 +253,7 @@ class captcha {
 
       #-- let JFIF stream be generated
       $quality = 67;
-      $s = array();
+      $s = array ();
       do {
          ob_start(); ob_implicit_flush(0);
          imagejpeg($img, "", (int)$quality);
@@ -330,7 +330,7 @@ class captcha {
       }
       $s = base64_encode($s);   // base64-set, but filter out unwanted chars
       $s = preg_replace("/[+\/=IG0ODQR]/i", "", $s);  // (depends on YOUR font)
-      $s = substr($s, 0, rand(5,7));
+      $s = substr ($s, 0, rand(5,7));
       return($s);
    }
 }

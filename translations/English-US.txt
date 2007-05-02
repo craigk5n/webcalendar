@@ -1017,6 +1017,7 @@ Approve Selected: Approve Selected
 Reject Selected: Reject Selected
 Emails Will Not Be Sent: Emails Will Not Be Sent
 No unapproved entries for: No unapproved entries for
+No unapproved entries for XXX.: No unapproved entries for: "XXX".
 Unapproved Entries: Unapproved Entries
 Not authorized: Not authorized
 Approve this entry?: Approve this entry?

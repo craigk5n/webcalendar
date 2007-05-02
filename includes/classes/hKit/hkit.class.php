@@ -76,8 +76,8 @@
     {
       // pre-flight checks
       $pass     = true;
-      $required  = array('dom_import_simplexml', 'file_get_contents', 'simplexml_load_string');
-      $missing  = array();
+      $required  = array ('dom_import_simplexml', 'file_get_contents', 'simplexml_load_string');
+      $missing  = array ();
 
       foreach ($required as $f){
         if (!function_exists($f)){
@@ -135,27 +135,27 @@
 
     private function processNodes($items, $classes, $allow_includes=true){
 
-      $out  = array();
+      $out  = array ();
 
       foreach($items as $item){
-        $data  = array();
+        $data  = array ();
 
         for ($i=0; $i<sizeof($classes); $i++){
 
-          if (!is_array($classes[$i])){
+          if (!is_array ($classes[$i])){
 
             $xpath      = ".//*[contains(concat(' ',normalize-space(@class),' '),' " . $classes[$i] . " ')]";
             $results    = $item->xpath($xpath);
 
             if ($results){
               foreach ($results as $result){
-                if (isset($classes[$i+1]) && is_array($classes[$i+1])){
+                if (isset($classes[$i+1]) && is_array ($classes[$i+1])){
                   $nodes        = $this->processNodes($results, $classes[$i+1]);
                   $data[$classes[$i]]  = (sizeof($nodes) > 0 ? $nodes : $this->getNodeValue($result, $classes[$i]));
 
                 }else{
                   if (isset($data[$classes[$i]])){
-                    if (is_array($data[$classes[$i]])){
+                    if (is_array ($data[$classes[$i]])){
                       // is already an array - append
                       $data[$classes[$i]][]  = $this->getNodeValue($result, $classes[$i]);
 
@@ -165,7 +165,7 @@
                         $data[$classes[$i]] .= $this->getNodeValue($result, $classes[$i]);
                       }else{
                         $old_val      = $data[$classes[$i]];
-                        $data[$classes[$i]]  = array($old_val, $this->getNodeValue($result, $classes[$i]));
+                        $data[$classes[$i]]  = array ($old_val, $this->getNodeValue($result, $classes[$i]));
                         $old_val      = false;
                       }
                     }
@@ -185,7 +185,7 @@
                     $includes    = $doc->xpath($xpath);
                     foreach ($includes as $include){
                       $tmp = $this->processNodes($include, $this->classes);
-                      if (is_array($tmp)) $data = array_merge($data, $tmp);
+                      if (is_array ($tmp)) $data = array_merge($data, $tmp);
                     }
                   }
                 }
@@ -211,7 +211,7 @@
                 foreach ($includes as $include){
                   $include  = simplexml_load_string('<root1><root2>'.$include->asXML().'</root2></root1>'); // don't ask.
                   $tmp     = $this->processNodes($include, $this->classes, false);
-                  if (is_array($tmp)) $data = array_merge($data, $tmp);
+                  if (is_array ($tmp)) $data = array_merge($data, $tmp);
                 }
               }
             }
@@ -256,7 +256,7 @@
 
 
       // if nothing found, go with node text
-      $s  = ($s ? $s : implode(array_filter($node->xpath('child::node()'), array(&$this, "filterBlankValues")), ' '));
+      $s  = ($s ? $s : implode(array_filter($node->xpath('child::node()'), array (&$this, "filterBlankValues")), ' '));
 
       // callbacks
       if (array_key_exists($className, $this->callbacks)){
@@ -325,7 +325,7 @@
 
       // xml:base attribute - PITA with SimpleXML
       preg_match('/xml:base="(.*)"/', $xml->asXML(), $matches);
-      if (is_array($matches) && sizeof($matches)>1) $this->base = $matches[1];
+      if (is_array ($matches) && sizeof($matches)>1) $this->base = $matches[1];
 
       return   $xml->xpath("//*[contains(concat(' ',normalize-space(@class),' '),' $this->root_class ')]");
 
@@ -354,7 +354,7 @@
         return false;
 
       if (array_key_exists($required[0], $s)){
-        $s  = array($s);
+        $s  = array ($s);
       }
 
       $s  = $this->dedupeSingles($s);
@@ -375,7 +375,7 @@
       $base   = $this->base;
       $url  = $this->url;
 
-      if ($base != '' &&  strpos($base, '://') !== false)
+      if ($base != '' &&  strpos ($base, '://') !== false)
         $url  = $base;
 
       $r    = parse_url($url);
@@ -384,9 +384,9 @@
       if (!isset($r['path'])) $r['path'] = '/';
       $path  = explode('/', $r['path']);
       $file  = explode('/', $filepath);
-      $new  = array('');
+      $new  = array ('');
 
-      if (strpos($filepath, '://') !== false || strpos($filepath, 'data:') !== false){
+      if (strpos ($filepath, '://') !== false || strpos ($filepath, 'data:') !== false){
         return $filepath;
       }
 
@@ -396,7 +396,7 @@
       }else{
         // relative path
         if ($path[sizeof($path)-1] == '') array_pop($path);
-        if (strpos($path[sizeof($path)-1], '.') !== false) array_pop($path);
+        if (strpos ($path[sizeof($path)-1], '.') !== false) array_pop($path);
 
         foreach ($file as $segment){
           if ($segment == '..'){
@@ -422,7 +422,7 @@
 
       foreach ($s as &$item){
         foreach ($singles as $classname){
-          if (array_key_exists($classname, $item) && is_array($item[$classname])){
+          if (array_key_exists($classname, $item) && is_array ($item[$classname])){
             $item[$classname]  = $item[$classname][0];
           }
         }

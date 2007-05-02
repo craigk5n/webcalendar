@@ -36,14 +36,14 @@ function save_pref( $prefs, $src) {
         $my_theme = strtolower ( $value );
       $setting = strtoupper ( $setting );
       $sql = 'DELETE FROM webcal_config WHERE cal_setting = ?';
-      if ( ! dbi_execute ( $sql, array( $setting ) ) ) {
+      if ( ! dbi_execute ( $sql, array ( $setting ) ) ) {
         $error = db_error ( false, $sql );
         break;
       }
       if ( strlen ( $value ) > 0 ) {
         $sql = 'INSERT INTO webcal_config ' .
           '( cal_setting, cal_value ) VALUES ( ?, ? )';
-        if ( ! dbi_execute ( $sql, array( $setting, $value ) ) ) {
+        if ( ! dbi_execute ( $sql, array ( $setting, $value ) ) ) {
           $error = db_error ( false, $sql );
           break;
         }
@@ -92,7 +92,7 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 //get list of theme files from /themes directory
-$themes = array();
+$themes = array ();
 $dir = 'themes';
 if (is_dir($dir)) {
    if ($dh = opendir($dir)) {
@@ -111,7 +111,7 @@ if (is_dir($dir)) {
 }
 
 //get list of menu themes
-$menuthemes = array();
+$menuthemes = array ();
 $dir = 'includes/menu/themes/';
 if ( is_dir( $dir ) ) {
    if ( $dh = opendir( $dir ) ) {
@@ -167,7 +167,7 @@ $allow_url_fopen = preg_match ( "/(On|1|true|yes)/i", ini_get ( 'allow_url_fopen
 
 $BodyX = 'onload="popup_handler(); public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();';
 $BodyX .= ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );\"" : '"' );
-$INC = array('js/admin.php','js/visible.php');
+$INC = array ('js/admin.php','js/visible.php');
 print_header ( $INC, '', $BodyX );
 
 ?>

@@ -55,7 +55,7 @@ function user_valid_login ( $login, $password, $silent=false ) {
         $ret = true; // found login/password
       else if ( ! $silent )
         $error = translate ( 'Invalid login', true ) . ': ' .
-          translate( 'incorrect password', true );
+          translate ( 'incorrect password', true );
     } else if ( ! $silent ) {
       $error = translate ( 'Invalid login', true );
       // Could be no such user or bad password
@@ -67,11 +67,11 @@ function user_valid_login ( $login, $password, $silent=false ) {
         if ( $row && ! empty ( $row[0] ) ) {
           // got a valid username, but wrong password
           $error = translate ( 'Invalid login', true ) . ': ' .
-            translate( 'incorrect password', true );
+            translate ( 'incorrect password', true );
         } else {
           // No such user.
           $error = translate ( 'Invalid login', true) . ': ' .
-            translate( 'no such user', true );
+            translate ( 'no such user', true );
         }
         dbi_free_result ( $res2 );
       }
@@ -137,11 +137,11 @@ function user_load_variables ( $login, $prefix ) {
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
     return  $cached_user_var[$login][$prefix];
-  $cached_user_var = array();
+  $cached_user_var = array ();
 
   //help prevent spoofed username attempts from disclosing fullpath
   $GLOBALS[$prefix . 'fullname'] = '';
-  if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
+  if ($NONUSER_PREFIX && substr ($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }

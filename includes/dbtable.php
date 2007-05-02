@@ -169,7 +169,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
   }
   $ret .= "</tr>\n";
   $sql = "SELECT " . $fields[0];
-  $query_params = array();
+  $query_params = array ();
 
   for ( $i = 1; $i < $fieldcnt; $i++ ) {
     $sql .= ", " . $fields[$i];
@@ -247,7 +247,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
 function dbtable_load ( $tablear, $tablename, $keys ) {
   $ret = false;
   $sql = "SELECT ";
-  $query_params = array();
+  $query_params = array ();
   if ( ! is_array ( $tablear ) ) {
     echo "Error: dbtable_load parameter 1 is not an array!<br />\n";
     exit;
@@ -318,7 +318,7 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
     exit;
   }
   $sql = "DELETE FROM $tablename WHERE ";
-  $query_params = array();
+  $query_params = array ();
   $first = 1;
   for ( $i = 0; $i < count ( $tablear ); $i++ ) {
     if ( ! empty ( $tablear[$i]['iskey'] ) ) {
@@ -351,7 +351,7 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
   global $error;
   $ret = false;
   $sql = 'INSERT INTO ' . $tablename . ' (';
-  $query_params = array();
+  $query_params = array ();
   if ( ! is_array ( $tablear ) ) {
     echo "Error: dbtable_add parameter 1 is not an array!<br />\n";
     exit;
@@ -407,7 +407,7 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
 function dbtable_update ( $tablear, $tablename, $valuesar ) {
   global $error;
   $sql = 'UPDATE ' . $tablename . ' SET';
-  $query_params = array();
+  $query_params = array ();
   if ( ! is_array ( $tablear ) ) {
     echo "Error: dbtable_update parameter 1 is not an array!<br />\n";
     exit;

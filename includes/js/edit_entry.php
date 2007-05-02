@@ -7,7 +7,7 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 var bydayAr = new Object();
 var bymonthdayAr = new Object();
 var bysetposAr = new Object();
-var bydayLabels = new Array("SU","MO","TU","WE","TH","FR","SA");
+var bydayLabels = new array ("SU","MO","TU","WE","TH","FR","SA");
 var bydayTrans = new Array ( "<?php etranslate ( 'SU' ) ?>"
 , "<?php etranslate ( 'MO' ) ?>"
 , "<?php etranslate ( 'TU' ) ?>"
@@ -26,7 +26,7 @@ function validate_and_submit () {
     showTab ( "details" );
 <?php } ?>
     form.name.focus ();
-    alert ( "<?php etranslate( 'You have not entered a Brief Description', true)?>.");
+    alert ( "<?php etranslate ( 'You have not entered a Brief Description', true)?>.");
     return false;
   }
   if ( form.timetype &&
@@ -124,7 +124,7 @@ function validate_and_submit () {
      bydayStr = bydayStr + ',' + bydayAr[bydayKey];
  }
  if ( bydayStr.length > 0 )
-   elements['bydayList'].value = bydayStr.substr(1);
+   elements['bydayList'].value = bydayStr.substr (1);
 
  //set bymonthday values for submission
  var bymonthdayStr = '';
@@ -133,7 +133,7 @@ function validate_and_submit () {
      bymonthdayStr = bymonthdayStr + ',' + bymonthdayAr[bymonthdayKey];
  }
  if ( bymonthdayStr.length > 0 )
-   elements['bymonthdayList'].value = bymonthdayStr.substr(1);
+   elements['bymonthdayList'].value = bymonthdayStr.substr (1);
 
  //set bysetpos values for submission
  var bysetposStr = '';
@@ -142,7 +142,7 @@ function validate_and_submit () {
      bysetposStr = bysetposStr + ',' + bysetposAr[bysetposKey];
  }
  if ( bysetposStr.length > 0 )
-   elements['bysetposList'].value = bysetposStr.substr(1);
+   elements['bysetposList'].value = bysetposStr.substr (1);
 
  form.submit ();
  return true;
@@ -331,7 +331,7 @@ function rpttype_weekly () {
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
  //using the tabbed GUI.
 ?>
-var tabs = new Array();
+var tabs = new array ();
 tabs[0] = "details";
 tabs[1] = "participants";
 tabs[2] = "pete";
@@ -358,7 +358,7 @@ function showSchedule () {
     }
   }
   if (users == '') {
-    alert("<?php etranslate( 'Please add a participant', true)?>" );
+    alert("<?php etranslate ( 'Please add a participant', true)?>" );
     return false;
   }
   var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=yes';
@@ -390,7 +390,7 @@ function add_exception (which) {
  var valy = form.except_year.options[y].value;
  var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
-   alert ("<?php etranslate( 'Invalid Date',true ) ?>");
+   alert ("<?php etranslate ( 'Invalid Date',true ) ?>");
    return false;
  }
  //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
@@ -436,34 +436,34 @@ function del_selected () {
 
 
 function toggle_byday(ele){
-  var bydaytext = bydayTrans[ele.id.substr(2,1)];
-  var bydayVal = bydayLabels[ele.id.substr(2,1)];
+  var bydaytext = bydayTrans[ele.id.substr (2,1)];
+  var bydayVal = bydayLabels[ele.id.substr (2,1)];
   var tmp = '';
   if (ele.value.length > 4 ) {
     //blank
-    ele.value = ele.id.substr(1,1) + bydaytext;
-    tmp = ele.id.substr(1,1) + bydayVal;
-  } else if (ele.value == ele.id.substr(1,1) + bydaytext) {
+    ele.value = ele.id.substr (1,1) + bydaytext;
+    tmp = ele.id.substr (1,1) + bydayVal;
+  } else if (ele.value == ele.id.substr (1,1) + bydaytext) {
     //positive value
-    ele.value =  (parseInt(ele.id.substr(1,1)) -6 ) +  bydaytext;
-    tmp = (parseInt(ele.id.substr(1,1)) -6 ) +  bydayVal;
-  } else if (ele.value ==  (parseInt(ele.id.substr(1,1)) -6 ) +  bydaytext) {
+    ele.value =  (parseInt(ele.id.substr (1,1)) -6 ) +  bydaytext;
+    tmp = (parseInt(ele.id.substr (1,1)) -6 ) +  bydayVal;
+  } else if (ele.value ==  (parseInt(ele.id.substr (1,1)) -6 ) +  bydaytext) {
     //negative value
   ele.value = "        ";
   tmp = '';
   }
-  bydayAr[ele.id.substr(1)] = tmp;
+  bydayAr[ele.id.substr (1)] = tmp;
 }
 
 function toggle_bymonthday(ele){
   var tmp = '';
   if (ele.value .length > 3) {
     //blank
-  ele.value = tmp = ele.id.substr(10);
-  } else if (ele.value == ele.id.substr(10)) {
+  ele.value = tmp = ele.id.substr (10);
+  } else if (ele.value == ele.id.substr (10)) {
     //positive value
-  ele.value =  tmp = parseInt(ele.id.substr(10)) -32;
-  } else if (ele.value ==  (parseInt(ele.id.substr(10)) -32 )) {
+  ele.value =  tmp = parseInt(ele.id.substr (10)) -32;
+  } else if (ele.value ==  (parseInt(ele.id.substr (10)) -32 )) {
     //negative value
   ele.value = "     ";
   tmp = '';
@@ -475,17 +475,17 @@ function toggle_bysetpos(ele){
   var tmp = '';
   if (ele.value .length > 3) {
     //blank
-  ele.value = tmp = ele.id.substr(8);
+  ele.value = tmp = ele.id.substr (8);
 
-  } else if (ele.value == ele.id.substr(8)) {
+  } else if (ele.value == ele.id.substr (8)) {
     //positive value
-  ele.value =  tmp = parseInt(ele.id.substr(8)) -32;
-  } else if (ele.value ==  (parseInt(ele.id.substr(8)) -32 )) {
+  ele.value =  tmp = parseInt(ele.id.substr (8)) -32;
+  } else if (ele.value ==  (parseInt(ele.id.substr (8)) -32 )) {
     //negative value
   ele.value = "    ";
   tmp = '';
   }
-  bysetposAr[ele.id.substr(8)] = tmp;
+  bysetposAr[ele.id.substr (8)] = tmp;
 }
 
 function toggle_until() {

@@ -67,9 +67,9 @@ $menuExtras = array ();
 /* Define your custom menu items using the syntax below
    Allowable menu types are listed below followed by their parameters
    parameters marked with * are optional
-       menu, title, url*, array( item, submenu, divider, spacer)
+       menu, title, url*, array ( item, submenu, divider, spacer)
        item, icon, title*, url*, target*
-       submenu, icon, title, array( item, submenu, divider, spacer)
+       submenu, icon, title, array ( item, submenu, divider, spacer)
        divider
        spacer
   Specify the position where your new menu will appear

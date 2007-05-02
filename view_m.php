@@ -30,7 +30,7 @@ view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_m.php' );
 set_today($date);
 
-$INC = array('js/popups.php/true');
+$INC = array ('js/popups.php/true');
 print_header($INC);
 
 

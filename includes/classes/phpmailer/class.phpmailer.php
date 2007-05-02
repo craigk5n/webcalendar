@@ -210,15 +210,15 @@ class PHPMailer
      * @access private
      */
     var $smtp            = NULL;
-    var $to              = array();
-    var $cc              = array();
-    var $bcc             = array();
-    var $ReplyTo         = array();
-    var $attachment      = array();
-    var $CustomHeader    = array();
+    var $to              = array ();
+    var $cc              = array ();
+    var $bcc             = array ();
+    var $ReplyTo         = array ();
+    var $attachment      = array ();
+    var $CustomHeader    = array ();
     var $message_type    = "";
-    var $boundary        = array();
-    var $language        = array();
+    var $boundary        = array ();
+    var $language        = array ();
     var $error_count     = 0;
     var $LE              = "\n";
     /**#@-*/
@@ -352,7 +352,7 @@ class PHPMailer
         }
 
         // Set whether the message is multipart/alternative
-        if(!empty($this->AltBody))
+        if(!empty ($this->AltBody))
             $this->ContentType = "multipart/alternative";
 
         $this->error_count = 0; // reset errors
@@ -459,7 +459,7 @@ class PHPMailer
     function SmtpSend($header, $body) {
         include_once($this->PluginDir . "class.smtp.php");
         $error = "";
-        $bad_rcpt = array();
+        $bad_rcpt = array ();
 
         if(!$this->SmtpConnect())
             return false;
@@ -636,7 +636,7 @@ class PHPMailer
      * @return string
      */
     function AddrFormat($addr) {
-        if(empty($addr[1]))
+        if(empty ($addr[1]))
             $formatted = $addr[0];
         else
         {
@@ -658,8 +658,8 @@ class PHPMailer
         $soft_break = ($qp_mode) ? sprintf(" =%s", $this->LE) : $this->LE;
 
         $message = $this->FixEOL($message);
-        if (substr($message, -1) == $this->LE)
-            $message = substr($message, 0, -1);
+        if (substr ($message, -1) == $this->LE)
+            $message = substr ($message, 0, -1);
 
         $line = explode($this->LE, $message);
         $message = "";
@@ -678,12 +678,12 @@ class PHPMailer
                     if ($space_left > 20)
                     {
                         $len = $space_left;
-                        if (substr($word, $len - 1, 1) == "=")
+                        if (substr ($word, $len - 1, 1) == "=")
                           $len--;
-                        elseif (substr($word, $len - 2, 1) == "=")
+                        elseif (substr ($word, $len - 2, 1) == "=")
                           $len -= 2;
-                        $part = substr($word, 0, $len);
-                        $word = substr($word, $len);
+                        $part = substr ($word, 0, $len);
+                        $word = substr ($word, $len);
                         $buf .= " " . $part;
                         $message .= $buf . sprintf("=%s", $this->LE);
                     }
@@ -696,12 +696,12 @@ class PHPMailer
                 while (strlen($word) > 0)
                 {
                     $len = $length;
-                    if (substr($word, $len - 1, 1) == "=")
+                    if (substr ($word, $len - 1, 1) == "=")
                         $len--;
-                    elseif (substr($word, $len - 2, 1) == "=")
+                    elseif (substr ($word, $len - 2, 1) == "=")
                         $len -= 2;
-                    $part = substr($word, 0, $len);
-                    $word = substr($word, $len);
+                    $part = substr ($word, 0, $len);
+                    $word = substr ($word, $len);
 
                     if (strlen($word) > 0)
                         $message .= $part . sprintf("=%s", $this->LE);
@@ -779,7 +779,7 @@ class PHPMailer
                 $result .= $this->AddrAppend("Cc", $this->cc);
         }
 
-        $from = array();
+        $from = array ();
         $from[0][0] = trim($this->From);
         $from[0][1] = $this->FromName;
         $result .= $this->AddrAppend("From", $from);
@@ -1026,7 +1026,7 @@ class PHPMailer
      */
     function AttachAll() {
         // Return text of body
-        $mime = array();
+        $mime = array ();
 
         // Add all attachments
         for($i = 0; $i < count($this->attachment); $i++)
@@ -1113,7 +1113,7 @@ class PHPMailer
           case "7bit":
           case "8bit":
               $encoded = $this->FixEOL($str);
-              if (substr($encoded, -(strlen($this->LE))) != $this->LE)
+              if (substr ($encoded, -(strlen($this->LE))) != $this->LE)
                 $encoded .= $this->LE;
               break;
           case "binary":
@@ -1189,7 +1189,7 @@ class PHPMailer
      */
     function EncodeQP ($str) {
         $encoded = $this->FixEOL($str);
-        if (substr($encoded, -(strlen($this->LE))) != $this->LE)
+        if (substr ($encoded, -(strlen($this->LE))) != $this->LE)
             $encoded .= $this->LE;
 
         // Replace every high ascii, control and = characters
@@ -1326,7 +1326,7 @@ class PHPMailer
      * @return void
      */
     function ClearAddresses() {
-        $this->to = array();
+        $this->to = array ();
     }
 
     /**
@@ -1334,7 +1334,7 @@ class PHPMailer
      * @return void
      */
     function ClearCCs() {
-        $this->cc = array();
+        $this->cc = array ();
     }
 
     /**
@@ -1342,7 +1342,7 @@ class PHPMailer
      * @return void
      */
     function ClearBCCs() {
-        $this->bcc = array();
+        $this->bcc = array ();
     }
 
     /**
@@ -1350,7 +1350,7 @@ class PHPMailer
      * @return void
      */
     function ClearReplyTos() {
-        $this->ReplyTo = array();
+        $this->ReplyTo = array ();
     }
 
     /**
@@ -1359,9 +1359,9 @@ class PHPMailer
      * @return void
      */
     function ClearAllRecipients() {
-        $this->to = array();
-        $this->cc = array();
-        $this->bcc = array();
+        $this->to = array ();
+        $this->cc = array ();
+        $this->bcc = array ();
     }
 
     /**
@@ -1370,7 +1370,7 @@ class PHPMailer
      * @return void
      */
     function ClearAttachments() {
-        $this->attachment = array();
+        $this->attachment = array ();
     }
 
     /**
@@ -1378,7 +1378,7 @@ class PHPMailer
      * @return void
      */
     function ClearCustomHeaders() {
-        $this->CustomHeader = array();
+        $this->CustomHeader = array ();
     }
 
 

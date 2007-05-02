@@ -97,13 +97,13 @@ if ( empty ( $error ) && $id > 0 ) {
       } else {
         reset_language ( $user_language );
       }
-      $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
-      translate( 'An appointment has been rejected by' ) .
+      $msg = translate ( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
+      translate ( 'An appointment has been rejected by' ) .
       ' ' . $login_fullname .  ".\n\n" .
-      translate( 'The subject was' ) . ' "' . $name . " \"\n" .
-      translate( 'The description is' ) . ' "' . $description . "\"\n" .
-      translate( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .
-      ( ( empty ( $hour ) && empty ( $minute ) ? '' : translate( 'Time' ) . ': ' .
+      translate ( 'The subject was' ) . ' "' . $name . " \"\n" .
+      translate ( 'The description is' ) . ' "' . $description . "\"\n" .
+      translate ( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .
+      ( ( empty ( $hour ) && empty ( $minute ) ? '' : translate ( 'Time' ) . ': ' .
       // Display using user's TIMEZONE and display TZID
       display_time ( '', 2, $eventstart, $t_format ) ) ). "\n";
       if ( ! empty ( $SERVER_URL ) ) {

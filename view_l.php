@@ -39,7 +39,7 @@ if ( empty ( $friendly ) ) {
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
 set_today($date);
-$INC = array('js/popups.php/true');
+$INC = array ('js/popups.php/true');
 $HeadX = '<script src="includes/js/weekHover.js" type="text/javascript"></script>';
 print_header($INC, $HeadX);
 $trailerStr = print_trailer ();

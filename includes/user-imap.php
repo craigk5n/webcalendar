@@ -68,8 +68,8 @@ function user_valid_login ( $login, $password ) {
   $ret = false;
 //  do_debug ("in imap/user_valid_login...<br />\nl=$login p=$password<br />\n");
 
-  $all_imap_hosts = array();
-  $all_imap_ports = array();
+  $all_imap_hosts = array ();
+  $all_imap_ports = array ();
 
   // Check if we do not have a username/password
   if(!isset($login) || !isset($password) || strlen($password)==0)
@@ -79,7 +79,7 @@ function user_valid_login ( $login, $password ) {
 
   # Check that if there is an array of hosts and an array of ports
   # then the number of each is the same
-  if(is_array( $imap_host ) && is_array( $imap_port ) &&
+  if(is_array ( $imap_host ) && is_array ( $imap_port ) &&
     count($imap_port) != count($imap_host) )
   {
     return $ret;
@@ -88,18 +88,18 @@ function user_valid_login ( $login, $password ) {
   # Transfer the list of imap hosts to an new value to ensure that
   # an array is always used.
   # If a single value is passed then turn it into an array
-  if(is_array( $imap_host ) )
+  if(is_array ( $imap_host ) )
   {
     $all_imap_hosts = $imap_host;
   }
   else
   {
-    $all_imap_hosts = array($imap_host);
+    $all_imap_hosts = array ($imap_host);
   }
 
   # create an array of the port numbers to match the number of
   # hosts if a single port number has been passed.
-  if(is_array( $imap_port ) )
+  if(is_array ( $imap_port ) )
   {
     $all_imap_ports = $imap_port;
   }
@@ -125,7 +125,7 @@ function user_valid_login ( $login, $password ) {
         '" "' . quoteIMAP( $password ) . "\"\r\n";
       fputs( $stream, $logon_str );
       $response = fgets( $stream, 1024 );
-      if( substr( $response, 5, 2 ) == 'OK' ) {
+      if( substr ( $response, 5, 2 ) == 'OK' ) {
         fputs( $stream, "a001 LOGOUT\r\n" );
         $response = fgets( $stream, 1024 );
         $ret = true;
@@ -210,9 +210,9 @@ function user_load_variables ( $login, $prefix ) {
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
     return  $cached_user_var[$login][$prefix];
-  $cached_user_var = array();
+  $cached_user_var = array ();
 
-  if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
+  if ($NONUSER_PREFIX && substr ($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }

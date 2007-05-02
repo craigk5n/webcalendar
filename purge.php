@@ -29,10 +29,10 @@ if ( ! $is_admin ) {
 
 $ALL = 0;
 
-$previewStr = translate( 'Preview' );
-$allStr = translate( 'All' );
-$purgingStr = translate( 'Purging events for' );
-$deleteStr = translate( 'Delete' );
+$previewStr = translate ( 'Preview' );
+$allStr = translate ( 'All' );
+$purgingStr = translate ( 'Purging events for' );
+$deleteStr = translate ( 'Delete' );
 
 $delete = getPostValue ( 'delete' );
 $do_purge = false;
@@ -49,7 +49,7 @@ $user = getPostValue ( 'user' );
 $preview = getPostValue ( 'preview' );
 $preview = ( empty ( $preview ) ? false : true );
 
-$INC = array( 'js/visible.php' );
+$INC = array ( 'js/visible.php' );
 
 print_header ( $INC );
 ?>
@@ -57,7 +57,7 @@ print_header ( $INC );
 <table>
 <tr><td style="vertical-align:top; width:50%;">
 <?php
-echo '<h2>' . translate( 'Delete Events' );
+echo '<h2>' . translate ( 'Delete Events' );
 if ( $preview )
   echo '[ ' . $previewStr . ']';
 echo "</h2>\n";
@@ -105,11 +105,11 @@ if ( $do_purge ) {
   if ( count ( $ids ) > 0 ) {
     purge_events ( $ids );
   } else {
-    echo translate( 'None' );
+    echo translate ( 'None' );
   }
-  echo '<h2>...' .  translate( 'Finished' ) . ".</h2>\n";
+  echo '<h2>...' .  translate ( 'Finished' ) . ".</h2>\n";
 ?>
-  <form><input type="button" value="<?php etranslate( 'Back' )?>"
+  <form><input type="button" value="<?php etranslate ( 'Back' )?>"
 onclick="history.back()" /></form
 ><?php
   if ( $purgeDebug ) {
@@ -141,28 +141,28 @@ onclick="history.back()" /></form
   </select>
  </td></tr>
  <tr><td><label for="purge_all">
-  <?php etranslate( 'Check box to delete ALL events for a user' )?>:</label></td>
+  <?php etranslate ( 'Check box to delete ALL events for a user' )?>:</label></td>
   <td valign="bottom">
   <input type="checkbox" name="purge_all" value="Y" id="purge_all" onchange="toggle_datefields( 'dateArea', this );" />
  </td></tr>
  <tr id="dateArea"><td><label>
-  <?php etranslate( 'Delete all events before' );?>:</label></td><td>
+  <?php etranslate ( 'Delete all events before' );?>:</label></td><td>
   <?php echo date_selection ( 'end_', date ( 'Ymd' ) ) ?>
  </td></tr>
  <tr><td><label for="purge_deleted">
-  <?php etranslate( 'Purge deleted only' )?>:</label></td>
+  <?php etranslate ( 'Purge deleted only' )?>:</label></td>
   <td valign="bottom">
   <input type="checkbox" name="purge_deleted" value="Y"  />
  </td></tr>
  <tr><td><label for="preview">
-  <?php etranslate( 'Preview delete' )?>:</label></td>
+  <?php etranslate ( 'Preview delete' )?>:</label></td>
   <td valign="bottom">
   <input type="checkbox" name="preview" value="Y" checked="checked" />
  </td></tr>
  <tr><td colspan="2">
   <input type="submit" name="delete" value="<?php
     echo $deleteStr?>" onclick="return confirm('<?php
-    etranslate( 'Are you sure you want to delete events for', true);
+    etranslate ( 'Are you sure you want to delete events for', true);
     ?> ' + document.forms[0].user.value + '?')" />
  </td></tr>
 </table>
@@ -192,7 +192,7 @@ function purge_events ( $ids ) {
   );
 
   //var_dump($tables);exit;
-  $num = array();
+  $num = array ();
   $cnt = count ( $tables );
   for ( $i = 0; $i < $cnt; $i++ ) {
     $num[$i] = 0;
@@ -205,7 +205,7 @@ function purge_events ( $ids ) {
         $sql = 'SELECT COUNT(' . $tables[$i][1] .
           ") FROM {$tables[$i][0]}" . $clause;
         //echo "cal_id = '$cal_id'<br />clause = '$clause'<br />";
-        //echo "$sql <br />\n";
+        //echo "$sql<br />\n";
         $res = dbi_execute ( $sql );
         $sqlLog .= $sql . "<br />\n";
         if ( $res ) {
@@ -228,7 +228,7 @@ function purge_events ( $ids ) {
   for ( $i = 0; $i < $cnt; $i++ ) {
     $table = $tables[$i][0];
     echo '[' . $previewStr . '] ' .
-      translate( 'Records deleted from' ) .
+      translate ( 'Records deleted from' ) .
       " $table: $num[$i]<br />\n";
   }
 }
@@ -236,7 +236,7 @@ function purge_events ( $ids ) {
 function get_ids ( $sql, $ALL = '' ) {
   global $sqlLog;
   $ids = array ();
-  //echo "SQL: $sql <br />\n";
+  //echo "SQL: $sql<br />\n";
   $sqlLog .= $sql . "<br />\n";
   $res = dbi_execute ( $sql );
   if ( $res ) {

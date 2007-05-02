@@ -17,7 +17,7 @@
  */
 include_once 'includes/init.php';
 $BodyX = 'onload="toggle_import();"';
-$INC = array('js/export_import.php', 'js/visible.php');
+$INC = array ('js/export_import.php', 'js/visible.php');
 print_header($INC, '', $BodyX);
 
 // Generate the selection list for calendar user selection.
@@ -54,15 +54,15 @@ function print_user_list () {
       $size = 5;
     echo '<tr><td class="aligntop">' . "\n";
     echo '<label for="caluser">' .
-     translate( 'Calendar' ) . ":</label></td><td>\n";
+     translate ( 'Calendar' ) . ":</label></td><td>\n";
     echo '<select name="calUser" id="caluser" size="' .$size. "\">$users\n";
     echo '</select></td></tr>' . "\n";
   }
 }
 ?>
 
-<h2><?php etranslate( 'Import' )?>&nbsp;<img src="images/help.gif" alt="<?php
-  etranslate( 'Help' )?>" class="help" onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" /></h2>
+<h2><?php etranslate ( 'Import' )?>&nbsp;<img src="images/help.gif" alt="<?php
+  etranslate ( 'Help' )?>" class="help" onclick="window.open ( 'help_import.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400');" /></h2>
 
 <?php
 $upload = ini_get ( 'file_uploads' );
@@ -80,7 +80,7 @@ if ( ! $upload_enabled ) {
 <form action="import_handler.php" method="post" name="importform"  enctype="multipart/form-data" onsubmit="return checkExtension()">
 <table>
 <tr><td>
- <label for="importtype"><?php etranslate( 'Import format' )?>:</label></td><td>
+ <label for="importtype"><?php etranslate ( 'Import format' )?>:</label></td><td>
   <select name="ImportType" id="importtype" onchange="toggle_import()">
    <option value="ICAL">iCal</option>
    <option value="PALMDESKTOP">Palm Desktop</option>
@@ -90,7 +90,7 @@ if ( ! $upload_enabled ) {
 </td></tr>
 <!-- Valid only for Palm Desktop import -->
 <tr id="palm"><td>
- <label><?php etranslate( 'Exclude private records' )?>:</label></td><td>
+ <label><?php etranslate ( 'Exclude private records' )?>:</label></td><td>
  <label><input type="radio" name="exc_private" value="1" checked="checked" /><?php
   etranslate ( 'Yes')?></label>
  <label><input type="radio" name="exc_private" value="0" /><?php
@@ -99,21 +99,21 @@ if ( ! $upload_enabled ) {
 <!-- /PALM -->
 <!-- Not valid for Outlook CSV as it doesn't generate UID for import tracking -->
 <tr id="ivcal"><td>
- <label><?php etranslate( 'Overwrite Prior Import' )?>:</label></td><td>
+ <label><?php etranslate ( 'Overwrite Prior Import' )?>:</label></td><td>
  <label><input type="radio" name="overwrite" value="Y" checked="checked" />&nbsp;<?php etranslate ( 'Yes' );?></label>
  <label><input type="radio" name="overwrite" value="N" />&nbsp;<?php etranslate ( 'No' );?></label>
 </td></tr>
 <!-- /IVCAL -->
 <tr id="outlookcsv"><td colspan="2">
- <label><?php etranslate( 'Repeated items are imported separately. Prior imports are not overwritten.' )?></label></td><td>
+ <label><?php etranslate ( 'Repeated items are imported separately. Prior imports are not overwritten.' )?></label></td><td>
 </td></tr>
 <tr class="browse"><td>
- <label for="fileupload"><?php etranslate( 'Upload file' );?>:</label></td><td>
+ <label for="fileupload"><?php etranslate ( 'Upload file' );?>:</label></td><td>
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
 </td></tr>
 <?php print_user_list(); ?>
 </table>
-<br /><input type="submit" value="<?php etranslate( 'Import' )?>" />
+<br /><input type="submit" value="<?php etranslate ( 'Import' )?>" />
 </form>
 <?php } echo print_trailer (); ?>
 

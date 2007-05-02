@@ -63,7 +63,7 @@ if ( empty ( $error ) && ! empty ( $id ) ) {
     FROM webcal_entry we, webcal_entry_user weu
     WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
     AND ( we.cal_create_by = ? OR weu.cal_login = ? )',
-    array( $id, $login, $login ) );
+    array ( $id, $login, $login ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row && $row[0] > 0 )
@@ -210,14 +210,14 @@ print_header ();
 <table>
 
 <tr><td class="aligntop"><label for="description">
-  <?php etranslate( 'Subject' )?>:</label></td>
+  <?php etranslate ( 'Subject' )?>:</label></td>
   <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
 <!-- TODO: htmlarea or fckeditor support -->
 <tr><td class="aligntop"><label for="comment">
-  <?php etranslate( 'Comment' )?>:</label></td>
+  <?php etranslate ( 'Comment' )?>:</label></td>
   <td><textarea name="comment" rows="15" cols="60" wrap="auto"></textarea></td></tr>
 <tr><td colspan="2">
-<input type="submit" value="<?php etranslate( 'Add Comment' )?>" /></td></tr>
+<input type="submit" value="<?php etranslate ( 'Add Comment' )?>" /></td></tr>
 </table>
 </form>
 
@@ -232,14 +232,14 @@ print_header ();
 <input type="hidden" name="type" value="A" />
 <table>
 <tr class="browse"><td>
- <label for="fileupload"><?php etranslate( 'Upload file' );?>:</label></td><td>
+ <label for="fileupload"><?php etranslate ( 'Upload file' );?>:</label></td><td>
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
 <tr><td class="aligntop"><label for="description">
-  <?php etranslate( 'Description' )?>:</label></td>
+  <?php etranslate ( 'Description' )?>:</label></td>
   <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
 
 <tr><td colspan="2">
-<input type="submit" value="<?php etranslate( 'Add Attachment' )?>" /></td></tr>
+<input type="submit" value="<?php etranslate ( 'Add Attachment' )?>" /></td></tr>
 
 </table>
 </form>

@@ -93,7 +93,7 @@ function view_get_user_list ( $view_id ) {
     // is not allowed to see.
     if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
       $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
-      $userlookup = array();
+      $userlookup = array ();
       $myusercnt = count ( $myusers );
       for ( $i = 0; $i < $myusercnt; $i++ ) {
         $userlookup[$myusers[$i]['cal_login']] = 1;

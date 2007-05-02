@@ -324,7 +324,7 @@ function get_installed_version ( $postinstall = false ) {
     : translate ( 'previous version requires updating several tables' ) );
   // v1.1 and after will have an entry in webcal_config to make this easier
   // $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
-  //   WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'', array(), false, false );
+  //   WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'', array (), false, false );
   // if ( $res ) {
   // $row = dbi_fetch_row ( $res );
   // if ( ! empty ( $row[0] ) ) {
