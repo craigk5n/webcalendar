@@ -26,7 +26,7 @@ CREATE TABLE webcal_entry (
   cal_duration INT NOT NULL,
   cal_due_date INT NULL,
   cal_due_time INT NULL,
-  cal_priority INT DEFAULT 2,
+  cal_priority INT DEFAULT 5,
   cal_type CHAR(1) DEFAULT 'E',
   cal_access CHAR(1) DEFAULT 'P',
   cal_name VARCHAR2(80) NOT NULL,
