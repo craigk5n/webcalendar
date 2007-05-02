@@ -13,7 +13,7 @@ CREATE TABLE webcal_user (
   cal_last_login INT DEFAULT NULL,
   PRIMARY KEY ( cal_login )
 );
-INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin ) 
+INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname, cal_firstname, cal_is_admin )
   VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'Default', 'Y' );
 CREATE TABLE webcal_entry (
   cal_id INT NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE webcal_entry (
   cal_duration INT NOT NULL,
   cal_due_date INT DEFAULT NULL,
   cal_due_time INT DEFAULT NULL,
-  cal_priority INT DEFAULT 2,
+  cal_priority INT DEFAULT 5,
   cal_type CHAR(1) DEFAULT 'E',
   cal_access CHAR(1) DEFAULT 'P',
   cal_name VARCHAR(80) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE webcal_entry_repeats_not (
 );
 CREATE TABLE webcal_entry_user (
   cal_id INT DEFAULT '0' NOT NULL,
-  cal_login VARCHAR(25) DEFAULT '' NOT NULL, 
+  cal_login VARCHAR(25) DEFAULT '' NOT NULL,
   cal_status CHAR(1) DEFAULT 'A' NOT NULL,
   cal_category INT DEFAULT NULL,
   cal_percent INT DEFAULT '0' NOT NULL,

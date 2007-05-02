@@ -95,7 +95,7 @@ CREATE TABLE webcal_entry (
   /* Task due time */
   cal_due_time INT DEFAULT NULL,
   /* event priority: 1=Low, 2=Med, 3=High */
-  cal_priority INT DEFAULT 2,
+  cal_priority INT DEFAULT 5,
   /* 'E' = Event, 'M' = Repeating event, 'T' = Task */
   cal_type CHAR(1) DEFAULT 'E',
   /* 'P' = Public, */
@@ -301,7 +301,7 @@ CREATE TABLE webcal_reminders (
   cal_last_sent INT NOT NULL default '0',
   /* number of times to repeat in addition to original occurance */
   cal_repeats INT NOT NULL default '0',
-  /* time in ISO 8601 format that specifies time between repeated reminders */ 
+  /* time in ISO 8601 format that specifies time between repeated reminders */
   cal_duration INT NOT NULL default '0',
   /* number of times this reminder has been sent */
   cal_times_sent INT NOT NULL default '0',
@@ -622,7 +622,7 @@ CREATE TABLE webcal_access_user (
   /* can current user approve events on the other user's calendar? */
   cal_can_approve INT NOT NULL DEFAULT '0',
   /* can current user see other user in Participant lists? */
-  cal_can_invite CHAR(1) DEFAULT 'Y',	
+  cal_can_invite CHAR(1) DEFAULT 'Y',
   /* can current user send emails to other user? */
   cal_can_email CHAR(1) DEFAULT 'Y',
   /* can current user can only see time of other user? */

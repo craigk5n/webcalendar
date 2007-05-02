@@ -25,7 +25,7 @@ CREATE TABLE webcal_entry (
   cal_duration INT NOT NULL,
   cal_due_date INT,
   cal_due_time INT,
-  cal_priority INT DEFAULT 2,
+  cal_priority INT DEFAULT 5,
   cal_type CHAR(1) DEFAULT 'E',
   cal_access CHAR(1) DEFAULT 'P',
   cal_name VARCHAR(80) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE webcal_entry_repeats_not (
 );
 CREATE TABLE webcal_entry_user (
   cal_id int DEFAULT 0 NOT NULL,
-  cal_login VARCHAR(25) DEFAULT '' NOT NULL, 
+  cal_login VARCHAR(25) DEFAULT '' NOT NULL,
   cal_status CHAR(1) DEFAULT 'A' NOT NULL,
   cal_category INT DEFAULT NULL,
   cal_percent INT DEFAULT 0 NOT NULL,
