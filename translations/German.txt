@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 30.Apr.2007
+# Last update: 2. Mai 2007
 #
 # $Id$
-# Translation last updated on 04-30-2007
+# Translation last updated on 05-02-2007
 
 
 ################################################################################
@@ -239,7 +239,7 @@ allow-html-description-help: Falls aktiviert -  Benutzer kann HTML in der Beschr
 Allow HTML in Description: Erm&ouml;glicht HTML-Beschreibung der Termine
 Popups: Pop-Up&#39;s
 disable-popups-help: Deaktivieren der Pop-Up&#39;s von den Kalenderansichten
-Disable Pop-Ups: Deaktivieren der Pop-Up&#39;s
+Disable Pop-Ups: Deaktivieren von Pop-Up&#39;s
 popup-includes-siteextras-help: Falls aktiviert - Erm&ouml;glicht die Anzeige benutzerdefinierter Felder die in &#39;site_extras.php&#39; aktiviert wurden.
 Display Site Extras in popup: Anzeige der &#39;Site Extras&#39; im Pop-Up
 popup-includes-participants-help: Falls aktiviert, werden die Benutzer im allgemeinen Kalender und bei den pers&ouml;nlichen Eintragungen angezeigt
@@ -990,6 +990,11 @@ Approve Selected: Best&auml;tige Auswahl
 Reject Selected: Auswahl ablehnen
 Emails Will Not Be Sent: Emails werden nicht versendet
 No unapproved entries for: Keine unbest&auml;tigten Eintr&auml;ge f&uuml;r
+#
+# << MISSING >>
+# No unapproved entries for XXX.:
+# English text: No unapproved entries for: "XXX".
+#
 Unapproved Entries: Unbest&auml;tigte Eintr&auml;ge
 Not authorized: Keine Berechtigung
 Approve this entry?: Diesen Eintrag best&auml;tigen?
