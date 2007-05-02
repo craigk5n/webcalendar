@@ -161,7 +161,7 @@ function print_detailed_entry ( $event, $date ) {
     if ( $event->getStatus() == 'W' ) $class = 'unapprovedentry';
   }
 
-  if ( $event->getPriority() == 3 ) echo '<strong>';
+  if ( $event->getPriority() < 4  ) echo '<strong>';
 
   if ( $event->getExtForID() != '' ) {
     $id = $event->getExtForID();
@@ -219,7 +219,7 @@ function print_detailed_entry ( $event, $date ) {
 
   echo $PN;
   echo '</a>';
-  if ( $event->getPriority() == 3 ) echo '</strong>';
+  if ( $event->getPriority() < 4 ) echo '</strong>';
   # Only display description if it is different than the event name.
   if ( $PN != $PD )
     echo " - " . $PD;
