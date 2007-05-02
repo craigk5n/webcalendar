@@ -49,7 +49,7 @@ function user_valid_login ( $login, $password ) {
         // Check for user in webcal_user.
         // If in NIS and not in DB, then insert...
         $sql = 'SELECT cal_login FROM webcal_user WHERE cal_login = ?';
-        $res = dbi_execute ( $sql, array( $login ) );
+        $res = dbi_execute ( $sql, array ( $login ) );
         if ( ! $res || ! dbi_fetch_row ( $res ) ) {
           // insert user into webcal_user
           $uname = explode ( ' ', $data[4] );
@@ -63,13 +63,13 @@ function user_valid_login ( $login, $password ) {
         }
       } else {
        $error = translate ( 'Invalid login' ) . ': ' .
-         translate( 'incorrect password' );
+         translate ( 'incorrect password' );
        $ret = false;
       }
     }
   } else {
      // no such user
-     $error = translate ( 'Invalid login' ) . ': ' . translate( 'no such user' );
+     $error = translate ( 'Invalid login' ) . ': ' . translate ( 'no such user' );
      $ret = false;
   }
   return $ret;
@@ -128,9 +128,9 @@ function user_load_variables ( $login, $prefix ) {
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
     return  $cached_user_var[$login][$prefix];
-  $cached_user_var = array();
+  $cached_user_var = array ();
 
-  if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
+  if ($NONUSER_PREFIX && substr ($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }

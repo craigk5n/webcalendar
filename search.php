@@ -30,7 +30,7 @@ $selected = ' selected="selected" ';
 
 $advSearchStr = translate ( 'Advanced Search' );
 $searchStr = translate ( 'Search' );
-$INC = array();
+$INC = array ();
 if ( $show_advanced ) $INC[] = 'js/visible.php';
 if ( $show_others ) $INC[] = 'js/search.php/true';
 print_header ( $INC );

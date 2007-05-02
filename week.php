@@ -100,7 +100,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $ev = combine_and_sort_events($ev, $rep);
 
  // get all due tasks for this date and before and store in $tk
- $tk = array();
+ $tk = array ();
  if ( $date >= date ( 'Ymd' ) ) {
     $tk = get_tasks ( $date, $get_unapproved );
  }
@@ -277,7 +277,7 @@ if ( $DISPLAY_TASKS == 'Y'  ) {
 }//end minical
 
 $HeadX = generate_refresh_meta ();
-$INC = array('js/popups.php/true');
+$INC = array ('js/popups.php/true');
 print_header($INC,$HeadX,'', false, false, false, false );
 
 echo <<<EOT

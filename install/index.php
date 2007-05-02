@@ -339,7 +339,7 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
   if ( empty ( $display_sql ) ){
    //Convert passwords to md5 hashes if needed
    $sql = 'SELECT cal_login, cal_passwd FROM webcal_user';
-   $res = dbi_execute ( $sql, array(), false, $show_all_errors );
+   $res = dbi_execute ( $sql, array (), false, $show_all_errors );
    if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
      if ( strlen ( $row[1] ) < 30 ) {
@@ -473,7 +473,7 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
   if ( $db_type == 'mysql' ) {
       $c = dbi_connect ( $db_host, $db_login, $db_password, 'mysql', false );
       if ( $c ) {
-     dbi_execute ( "CREATE DATABASE $db_database;" , array(), false, $show_all_errors);
+     dbi_execute ( "CREATE DATABASE $db_database;" , array (), false, $show_all_errors);
     if ( ! @mysql_select_db ( $db_database ) ) {
       $response_msg = $failure . dbi_error () . "</blockquote>\n";
     } else {
@@ -487,7 +487,7 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
   } else if ( $db_type == 'mssql' ) {
       $c = dbi_connect ( $db_host, $db_login, $db_password , 'master', false);
       if ( $c ) {
-     dbi_execute ( "CREATE DATABASE $db_database;" , array(), false, $show_all_errors);
+     dbi_execute ( "CREATE DATABASE $db_database;" , array (), false, $show_all_errors);
     if ( ! @mssql_select_db ( $db_database ) ) {
       $response_msg = $failure . dbi_error () . "</blockquote>\n";
 
@@ -502,7 +502,7 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
   } else if ( $db_type == 'postgresql' ) {
    $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1', false);
       if ( $c ) {
-     dbi_execute ( "CREATE DATABASE $db_database" , array(), false, $show_all_errors);
+     dbi_execute ( "CREATE DATABASE $db_database" , array (), false, $show_all_errors);
      $_SESSION['db_noexist'] = false;
     } else {
       $response_msg = $failure . dbi_error () . "</blockquote>\n";
@@ -1152,7 +1152,7 @@ if ( ! $exists || ! $canWrite ) { ?>
   // This a workaround for postgresql. The db_type should be 'pgsql' but 'postgresql' is used
  // in a lot of places...so this is easier for now :(
   $real_db_type = ( $settings['db_type'] == 'postgresql' ? 'pgsql' : $settings['db_type'] );
-  if ( substr( php_sapi_name(), 0, 3) <> 'cgi' &&
+  if ( substr ( php_sapi_name(), 0, 3) <> 'cgi' &&
         ini_get( $real_db_type . '.allow_persistent' ) ){ ?>
   <tr><td class="prompt">
    <label for="conn_pers"><?php etranslate ( 'Connection Persistence' ) ?>:</label></td><td colspan="2">
@@ -1386,7 +1386,7 @@ translate ( 'You should select Web Server from the list of User Authentication c
    <td>
      <input type="text" size="40" name="form_application_name" id="form_application_name" value="<?php
            echo $_SESSION['application_name'];?>" /></td></tr>
-     <tr><td class="prompt"><?php etranslate( 'Server URL' ) ?>:</td>
+     <tr><td class="prompt"><?php etranslate ( 'Server URL' ) ?>:</td>
    <td>
      <input type="text" size="40" name="form_server_url" id="form_server_url" value="<?php
            echo $_SESSION['server_url'];?>" /></td></tr>

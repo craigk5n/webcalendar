@@ -157,12 +157,12 @@ load_user_preferences ();
 // This will only be used if $username is not __public__
 if ( ! empty ( $USER_REMOTE_ACCESS ) && $username != '__public__' ) {
   if ( $USER_REMOTE_ACCESS == 1 ) { //public or confidential
-    $allow_access = array('P', 'C');
+    $allow_access = array ('P', 'C');
   } else if ( $USER_REMOTE_ACCESS == 2 ){ //all entries included
-    $allow_access = array('P', 'C', 'R');
+    $allow_access = array ('P', 'C', 'R');
   }
 } else { //public entries only
-  $allow_access = array('P');
+  $allow_access = array ('P');
 }
 
 user_load_variables ( $login, 'rss_' );
@@ -239,7 +239,7 @@ if (  $allow_repeats == true )
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $username, $startTime, $endTime, $cat_id );
 
-$charset = ( ! empty ( $LANGUAGE )?translate( 'charset' ): 'iso-8859-1' );
+$charset = ( ! empty ( $LANGUAGE )?translate ( 'charset' ): 'iso-8859-1' );
 // This should work ok with RSS, may need to hardcode fallback value
 $lang = languageToAbbrev ( ( $LANGUAGE == 'Browser-defined' ||
   $LANGUAGE == 'none' )? $lang : $LANGUAGE );
@@ -267,11 +267,11 @@ echo $PROGRAM_VERSION; ?>"</generator>
 </image>
 <?php
 $numEvents = 0;
-$reventIds = array();
+$reventIds = array ();
 $endtimeYmd = date ( 'Ymd', $endTime );
 for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
   $numEvents < $maxEvents; $i += ONE_DAY ) {
-  $eventIds=array();
+  $eventIds=array ();
   $d = date ( 'Ymd', $i );
   $pubDate = gmdate ( 'D, d M Y', $i );
   $entries = get_entries ( $d, false  );
@@ -318,7 +318,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
           //step below is necessary because 1st occurence of repeating
           //events shows up in $entries AND $rentries & we suppress display
           //of it in $rentries
-       if ( in_array($rentries[$j]->getID(),$eventIds)  &&
+       if ( in_array ($rentries[$j]->getID(),$eventIds)  &&
              $rentries[$j]->getrepeatType()== 'daily' ) {
                $reventIds[]=$rentries[$j]->getID();
           }
@@ -328,8 +328,8 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
       // Prevent a repeating event from displaying if the original event
       // has already been displayed; prevent 2nd & later recurrence
       // of daily events from displaying if that option has been selected
-      if ( ! in_array($rentries[$j]->getID(),$eventIds ) &&
-         ( ! $show_daily_events_only_once || ! in_array($rentries[$j]->getID(),$reventIds )) &&
+      if ( ! in_array ($rentries[$j]->getID(),$eventIds ) &&
+         ( ! $show_daily_events_only_once || ! in_array ($rentries[$j]->getID(),$reventIds )) &&
          ( in_array ( $rentries[$j]->getAccess(), $allow_access ) ) ) {
 
           //show repeating events only once

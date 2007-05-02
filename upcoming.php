@@ -71,7 +71,7 @@
 //set default hCalendar but allow it to be overridden
 //this will include hidden values that can gleaned by hCalendar
 // clients
-if ( empty( $hcalendar_output ) )
+if ( empty ( $hcalendar_output ) )
   $hcalendar_output = false;
 
 
@@ -153,7 +153,7 @@ function print_upcoming_event ( $e, $date ) {
     if ( $showPopups ) {
       $timestr = '';
       if ( $e->isAllDay() ) {
-        $timestr = translate( 'All day event' );
+        $timestr = translate ( 'All day event' );
       } else if ( $e->getTime() >= 0 ) {
         $timestr = display_time ( $e->getDatetime() );
         if ( $e->getDuration() > 0 ) {
@@ -208,7 +208,7 @@ function print_upcoming_event ( $e, $date ) {
 
   if ( $showTime ) {  //show event time if requested (default=don't show)
     if ( $e->isAllDay() ) {
-      echo ' (' . translate( 'All day event' ) . ")\n";
+      echo ' (' . translate ( 'All day event' ) . ")\n";
     } else if ( $e->getTime() != -1 ) {
       echo ' (' . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
     }
@@ -245,7 +245,7 @@ $link_target = '_top';
 //bhugh, 1/28/2006, if(empty and !== false constructions allow these vars to be passed
 //from another php program in case upcoming.php is called as an include file
 //(you can't pass ?days=60 type parameters when you use include)
-if (empty($numDays))  $numDays = 30;
+if (empty ($numDays))  $numDays = 30;
 $showTitle = ( ! empty ( $showTitle ) && $showTitle !== false ? true : false );
 $showMore = ( ! empty ( $showMore ) && $showMore !== false ? true : false );
 $showTime = ( ! empty ( $showTime ) && $showTime !== false ? true : false );
@@ -256,13 +256,13 @@ $showTime = ( ! empty ( $showTime ) && $showTime !== false ? true : false );
 $title_more_url=$SERVER_URL;
 
 //set default upcoming title but allow it to be overridden
-if (empty($upcoming_title)) $upcoming_title= '<a href="'.
+if (empty ($upcoming_title)) $upcoming_title= '<a href="'.
    $title_more_url . '">Upcoming Events</a>';
 
 //echo "$numDays $showTitle $maxEvents <p>";
 
 // Max number of events (including tasks) to display
-if (empty($maxEvents)) $maxEvents = 10;
+if (empty ($maxEvents)) $maxEvents = 10;
 
 // Should we include tasks?
 // (Only relavant if tasks are enabled in system settings AND enabled for
@@ -280,7 +280,7 @@ else if ( $showPopups == 'N' )
 
 // Login of calendar user to use
 // '__public__' is the login name for the public user
-if (empty($username)) $username = '__public__';
+if (empty ($username)) $username = '__public__';
 
 // Allow the URL to override the user setting such as
 // "upcoming.php?user=craig"
@@ -292,7 +292,7 @@ $load_layers = true;
 // Load just a specified category (by its id)
 // Leave blank to not filter on category (unless specified in URL)
 // Can override in URL with "upcoming.php?cat_id=4"
-if (empty($cat_id)) $cat_id = '';
+if (empty ($cat_id)) $cat_id = '';
 
 // Display timezone abbrev name
 // 1 = Display all times as GMT wo/TZID
@@ -509,7 +509,7 @@ if ( ! empty ( $error ) ) {
   exit;
 }
 
-if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate($upcoming_title) . '</h3>';
+if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate ($upcoming_title) . '</h3>';
 ?>
 
 <div class="vcalendar">

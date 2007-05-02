@@ -92,7 +92,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   if ( ! dbi_execute ( $sql, $query_params ) )
     $error = db_error ();
   else {
-    // echo "SQL: $sql <br />\n";
+    // echo "SQL: $sql<br />\n";
     echo '<html>
   <head></head>
   <body onload="window.close ();">
@@ -113,11 +113,11 @@ report_user: ' . $report_user . '<br />
 echo '
     <h2>';
 if ( $type == 'H' )
-  etranslate( 'Edit Custom Header' );
+  etranslate ( 'Edit Custom Header' );
 elseif ( $type == 'S' )
-  etranslate( 'Edit Custom Script/Stylesheet' );
+  etranslate ( 'Edit Custom Script/Stylesheet' );
 else
-  etranslate( 'Edit Custom Trailer' );
+  etranslate ( 'Edit Custom Trailer' );
 
 if ( $user != '__system__' ) {
   user_load_variables ( $user, 'temp_' );

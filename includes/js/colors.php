@@ -4,7 +4,7 @@
   pcoc = getCookie("webcalendar_custom_colors");
   if (!pcoc) pcoc="FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,"+
           "FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF";
-  precol= new Array(16);
+  precol= new array (16);
   precol=pcoc.split(",",16);
 // Colr choices
   var colorList = new Array ('0','ff0000','400000','800000','c00000','ff4040','ff8080','ffc0c0','000000','ffff00','404000','808000','c0c000','ffff40','ffff80','ffffc0','202020','00ff00','004000','008000','00c000','40ff40','80ff80',',c0ffc0','404040','00ffff','004040','008080','00c0c0','40ffff','80ffff','c0ffff','808080','0000ff','000040','000080','0000c0','4040ff','8080ff','c0c0ff','c0c0c0','ff00ff','400040','800080','c000c0','ff40ff','ff80ff','ffc0ff','ffffff');
@@ -27,13 +27,13 @@ function setInit () {
   thisInput = window.opener.document.getElementById(thiscolorcell);
   oldcol=thisInput.value;
   if (oldcol.substr (0,1 ) == '#' )
-    oldcol = oldcol.substr(1,6);
+    oldcol = oldcol.substr (1,6);
   curcol=oldcol;
   setPreColors();
   setCursor('1');
   setCol(oldcol);
   document.getElementById("theoldcell").bgColor= '#' + oldcol;
-  currgb=[fromhex(curcol.substr(0,2)), fromhex(curcol.substr(2,2)), fromhex(curcol.substr(4,2))];
+  currgb=[fromhex(curcol.substr (0,2)), fromhex(curcol.substr (2,2)), fromhex(curcol.substr (4,2))];
   curhsl=RGBtoHSL(currgb[0],currgb[1],currgb[2]);
   update();
 }
@@ -226,7 +226,7 @@ function setCol(value) {
       value=curcol;break;
     }
   curcol=value;
-  currgb=[fromhex(curcol.substr(0, 2 )), fromhex(curcol.substr(2,2)), fromhex(curcol.substr(4,2))];
+  currgb=[fromhex(curcol.substr (0, 2 )), fromhex(curcol.substr (2,2)), fromhex(curcol.substr (4,2))];
   curhsl=RGBtoHSL(currgb[0],currgb[1],currgb[2]);
   update();
 }

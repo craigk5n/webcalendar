@@ -114,7 +114,7 @@ function user_logged_in() {
   $sid = $_COOKIE[$pn_sid];
 
   // First check to see if the user even has a session cookie
-  if ( empty( $sid ) ) return false;
+  if ( empty ( $sid ) ) return false;
 
     // addslashes if magic_quotes_gpc is off
   if ( !get_magic_quotes_gpc() ) $sid = addslashes( $sid );
@@ -274,7 +274,7 @@ function user_load_variables ( $login, $prefix ) {
   global $app_host, $app_login, $app_pass, $app_db, $pn_user_table;
   global $c, $db_host, $db_login, $db_password, $db_database, $app_same_db;
 
-  if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
+  if ($NONUSER_PREFIX && substr ($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }

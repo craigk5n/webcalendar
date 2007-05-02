@@ -433,7 +433,7 @@ function Hue_2_RGB( $v1, $v2, $vH ) {
 //Given an RGB value, return it's luminance adjusted by scale
 // scale range = 0 to 9
 function rgb_luminance ( $rgb, $scale=5) {
-  $luminance =  array( .44, .50, .56, .62, .68, .74, .80, .86, .92, .98 );
+  $luminance =  array ( .44, .50, .56, .62, .68, .74, .80, .86, .92, .98 );
   if ( $scale < 0 ) $scale = 0;
   if ( $scale > 9 ) $scale = 9;
   $new = rgb2hsl ( $rgb );

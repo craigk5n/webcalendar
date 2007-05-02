@@ -321,7 +321,7 @@ function send_reminder ( $id, $event_date ) {
   }
   $mailusercnt = count ( $mailusers );
   if ( $debug )
-    echo 'Found ' . $mailusercnt . " with email addresses <br />\n";
+    echo 'Found ' . $mailusercnt . " with email addresses<br />\n";
   for ( $j = 0; $j < $mailusercnt; $j++ ) {
     $recip = $mailusers[$j];
     $user = $recipients[$j];

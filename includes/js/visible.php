@@ -179,7 +179,7 @@ function updateColor ( input, target ) {
   colorCell.style.backgroundColor = "#000000";
   input.select();
   input.focus();
-  alert ( '<?php etranslate( 'Invalid Color', true ) ?>');
+  alert ( '<?php etranslate ( 'Invalid Color', true ) ?>');
  } else {
   colorCell.style.backgroundColor = color;
  }

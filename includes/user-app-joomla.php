@@ -28,7 +28,7 @@ $app_path = '/usr/local/www/data/joomla/';
 // Set the group id(s) of the joomla group(s) you want to be webcal admins.
 // Default is set to the 'Super Administrator' and 'Administrator' groups
 // Groups in core_acl_aro_groups table
-$app_admin_gid = array('24','25');
+$app_admin_gid = array ('24','25');
 
 /*************************** End Config *****************************/
 
@@ -266,9 +266,9 @@ function user_load_variables ( $login, $prefix ) {
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
     return  $cached_user_var[$login][$prefix];
-  $cached_user_var = array();
+  $cached_user_var = array ();
 
-  if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
+  if ($NONUSER_PREFIX && substr ($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }
@@ -320,7 +320,7 @@ function user_logged_in() {
   global $app_sid, $_COOKIE;
 
   // First check to see if the user even has a session cookie
-  if (empty($_COOKIE[$app_sid])) return false;
+  if (empty ($_COOKIE[$app_sid])) return false;
 
   // Generate session id
   $sid = app_get_sid( $_COOKIE[$app_sid] );

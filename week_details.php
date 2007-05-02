@@ -36,7 +36,7 @@ if ( $DISPLAY_WEEKENDS == 'N' ) {
 $HeadX = generate_refresh_meta ();
 $printerStr = generate_printer_friendly ( 'week_details.php' );
 
-$INC = array('js/popups.php/true');
+$INC = array ('js/popups.php/true');
 print_header($INC,$HeadX);
 
 /* Pre-Load the repeated events for quckier access */
@@ -75,9 +75,9 @@ if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
     echo "<br />$user_fullname\n";
   }
   if ( $is_nonuser_admin )
-    echo '<br />-- ' . translate( 'Admin mode' ) . ' --';
+    echo '<br />-- ' . translate ( 'Admin mode' ) . ' --';
   if ( $is_assistant )
-    echo '<br />-- ' . translate( 'Assistant mode' ) . ' --';
+    echo '<br />-- ' . translate ( 'Assistant mode' ) . ' --';
 ?></span>
 <?php
   if ( $CATEGORIES_ENABLED == 'Y' ) {
@@ -106,10 +106,10 @@ for ( $d = 0; $d < 7; $d++ ) {
 
   if ( $can_add ) {
     echo '<a title="' .
-      translate( 'New Entry' ) . '" href="edit_entry.php?' .
+      translate ( 'New Entry' ) . '" href="edit_entry.php?' .
       $u_url . 'date=' .
       date ( 'Ymd', $days[$d] ) . '"><img src="images/new.gif" class="new" alt="' .
-      translate( 'New Entry' ) . "\" /></a>\n";
+      translate ( 'New Entry' ) . "\" /></a>\n";
   }
   echo '<a title="' .
     $header[$d] . '" href="day.php?' .
@@ -176,7 +176,7 @@ function print_detailed_entry ( $event, $date ) {
 
   $key++;
 
-  echo '<a title="' . translate( 'View this entry' ) .
+  echo '<a title="' . translate ( 'View this entry' ) .
     "\" class=\"$class\" id=\"$linkid\"  href=\"view_entry.php?id=$id&amp;date=$date";
   if ( strlen ( $user ) > 0 ) {
     echo '&amp;user=' . $user;
@@ -196,7 +196,7 @@ function print_detailed_entry ( $event, $date ) {
   $timestr = '';
 
  if ( $event->isAllDay() ) {
-  $timestr = translate( 'All day event' );
+  $timestr = translate ( 'All day event' );
  } else if ( $event->getDuration() > 0 ) {
   $timestr = display_time ( $event->getDateTime() ) .
    ' - ' . display_time ( $event->getEndDateTime() );

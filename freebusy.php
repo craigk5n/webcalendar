@@ -141,7 +141,7 @@ header ( 'Content-Type: text/calendar' );
 header ( 'Content-Disposition: attachment; filename="' . $login .  '.ifb"' );
 echo "BEGIN:VCALENDAR\r\n";
   $title = "X-WR-CALNAME;VALUE=TEXT:" .
-  ( empty ( $publish_fullname ) ? $user : translate($publish_fullname) );
+  ( empty ( $publish_fullname ) ? $user : translate ($publish_fullname) );
 $title = str_replace ( ",", "\\,", $title );
 echo "$title\r\n";
 echo generate_prodid ();

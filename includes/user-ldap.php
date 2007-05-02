@@ -79,7 +79,7 @@ $ldap_user_filter = '(objectclass=person)';
 
 // Attributes to fetch from LDAP and corresponding user variables in the
 // application. Do change according to your LDAP Schema
-$ldap_user_attr = array(
+$ldap_user_attr = array (
   // LDAP attribute   //WebCalendar variable
   'uid',              //login
   'sn',               //lastname
@@ -194,9 +194,9 @@ function user_load_variables ( $login, $prefix ) {
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
     return  $cached_user_var[$login][$prefix];
-  $cached_user_var = array();
+  $cached_user_var = array ();
 
-  if ($NONUSER_PREFIX && substr($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX ) {
+  if ($NONUSER_PREFIX && substr ($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX ) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }
@@ -434,7 +434,7 @@ function user_get_users ( $publicOnly=false ) {
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {
-      if ( (float)substr(PHP_VERSION,0,3) >= 4.2 ) ldap_sort ( $ds, $sr, $ldap_user_attr[3]);
+      if ( (float)substr (PHP_VERSION,0,3) >= 4.2 ) ldap_sort ( $ds, $sr, $ldap_user_attr[3]);
       $info = @ldap_get_entries( $ds, $sr );
       for ( $i = 0; $i < $info['count']; $i++ ) {
         $ret[$count++] = array (
@@ -481,7 +481,7 @@ function get_admins() {
 
   if ($r = connect_and_bind()) {
     $search_filter = "($ldap_admin_group_attr=*)";
-    $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter, array($ldap_admin_group_attr) );
+    $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter, array ($ldap_admin_group_attr) );
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {

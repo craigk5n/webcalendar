@@ -68,7 +68,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
       WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
       AND (we.cal_create_by = ? OR weu.cal_login = ?)';
-    $res = dbi_execute ( $sql, array( $id, $login, $login ) );
+    $res = dbi_execute ( $sql, array ( $id, $login, $login ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( $row && $row[0] > 0 ) {
@@ -110,7 +110,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
         $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
           WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
           AND weu.cal_login IN ( ';
-        $query_params = array();
+        $query_params = array ();
       $query_params[] = $id;
       for ( $i = 0; $i < $cnt; $i++ ) {
           if ( $i > 0 ) {
@@ -154,7 +154,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     }
     $sql = 'SELECT cal_login FROM webcal_entry_user ' .
       "WHERE cal_id = ? AND cal_status in ('A','W')";
-    $res = dbi_execute ( $sql, array( $id ) );
+    $res = dbi_execute ( $sql, array ( $id ) );
     $found_nonuser_cal = false;
     $found_reg_user = false;
     if ( $res ) {

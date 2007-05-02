@@ -45,7 +45,7 @@ function export_quoted_printable_encode( $car ) {
 function export_fold_lines( $string, $encoding = 'none', $limit = 76 ) {
   $len = strlen( $string );
   $fold = $limit;
-  $res = array();
+  $res = array ();
   $row = '';
   $enc = '';
   $lwsp = 0; // position of the last linear whitespace (where to fold)
@@ -73,11 +73,11 @@ function export_fold_lines( $string, $encoding = 'none', $limit = 76 ) {
       if ( $row[$lwsp] == ' ' || $row[$lwsp] == "\t" )
         $delta = -1;
 
-      $res[$res_ind] = substr( $row, 0, $lwsp + 1 + $delta );
+      $res[$res_ind] = substr ( $row, 0, $lwsp + 1 + $delta );
 
       if ( strcmp( $encoding, 'quotedprintable' ) == 0 )
         $res[$res_ind] .= '='; // soft line break;
-      $row = substr( $row, $lwsp + 1 );
+      $row = substr ( $row, $lwsp + 1 );
 
       $row = ' ' . $row;
 
@@ -113,8 +113,8 @@ function export_get_attendee( $id, $export ) {
 
   $count = 0;
 
-  $attendee = array();
-  $entry_array = array();
+  $attendee = array ();
+  $entry_array = array ();
 
   while ( $entry = dbi_fetch_row( $att_res ) ) {
     $entry_array[$count++] = $entry;
@@ -223,8 +223,8 @@ function export_recurrence_ical( $id, $simple = false ) {
   $res = dbi_execute( $sql, array ( $id ) );
 
   if ( $res ) {
-    $exdate = array();
-    $rdate = array();
+    $exdate = array ();
+    $rdate = array ();
     while ( $row = dbi_fetch_row( $res ) ) {
       if ( $row[1] == 1 ) {
         $exdate[] = $row[0];
@@ -270,13 +270,13 @@ function export_recurrence_ical( $id, $simple = false ) {
         $rrule = 'RRULE:';
       } else { // translate byday and wkst string if needed
         // make sure these get picked up by update_translation.pl
-        // translate('MO');
-        // translate('TU');
-        // translate('WE');
-        // translate('TH');
-        // translate('FR');
-        // translate('SA');
-        // translate('SU');
+        // translate ('MO');
+        // translate ('TU');
+        // translate ('WE');
+        // translate ('TH');
+        // translate ('FR');
+        // translate ('SA');
+        // translate ('SU');
         if ( ! empty ( $byday ) && ! empty ( $lang_file ) &&
           $lang_file != 'English-US.txt' ) {
           $bydayArr = explode ( ',', $byday );
@@ -336,7 +336,7 @@ function export_recurrence_ical( $id, $simple = false ) {
         $rrule .= ';' . ( ! $simple ? 'WKST': translate ( 'Week Start' ) )
          . "=$wkst";
 
-      if ( !empty( $end ) ) {
+      if ( !empty ( $end ) ) {
         $endtime = ( ! empty ( $endtime )? $endtime:0 );
         $rrule .= ';' . ( ! $simple ? 'UNTIL': translate ( 'Until' ) ) . '=';
         $utc = ( ! $simple ? export_get_utc_date( $end, $endtime )
@@ -389,8 +389,8 @@ function export_recurrence_vcal( $id, $date ) {
   $res = dbi_execute( $sql, array ( $id ) );
 
   if ( $res ) {
-    $exdate = array();
-    $rdate = array();
+    $exdate = array ();
+    $rdate = array ();
     while ( $row = dbi_fetch_row( $res ) ) {
       if ( $row[1] == 1 ) {
         $exdate[] = $row[0];
@@ -488,7 +488,7 @@ function export_recurrence_vcal( $id, $date ) {
         echo '#' . $count . ' ';
       }
       // End Date - For all types
-      if ( !empty( $end ) ) {
+      if ( !empty ( $end ) ) {
         echo export_get_utc_date( $end, $time );
       }
       echo "\r\n";
@@ -543,7 +543,7 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
   global $cal_type;
 
   $ret = '';
-  $reminder = array();
+  $reminder = array ();
   // Don't send reminder for event in the past
   // unless this is a task that may be overdue
   if ( $date < date ( 'Ymd' ) && $task_complete == true )
@@ -551,7 +551,7 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
   // get reminders
   $reminder = getReminders ( $id );
 
-  if ( ! empty( $reminder ) ) {
+  if ( ! empty ( $reminder ) ) {
     // Sunbird requires this line
     if ( ! empty ( $reminder['offset'] ) )
       $ret .= 'X-MOZILLA-ALARM-DEFAULT-LENGTH:' . $reminder['offset'] . "\r\n";
@@ -594,7 +594,7 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
   $enddate, $moddate, $login, $user;
   global $DISPLAY_UNAPPROVED, $layers, $type, $USER_REMOTE_ACCESS, $cat_filter;
 
-  $sql_params = array();
+  $sql_params = array ();
   $sql = 'SELECT we.cal_id, we.cal_name
    , we.cal_priority, we.cal_date
    , we.cal_time, weu.cal_status, we.cal_create_by
@@ -736,7 +736,7 @@ function export_vcal ( $id ) {
   // header ( "Content-Type: text/plain" );
   $res = export_get_event_entry( $id );
 
-  $entry_array = array();
+  $entry_array = array ();
   $count = 0;
 
   while ( $entry = dbi_fetch_row( $res ) ) {
@@ -844,7 +844,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
   $ret = '';
 
   $res = export_get_event_entry( $id, $attachment );
-  $entry_array = array();
+  $entry_array = array ();
   $count = 0;
   while ( $entry = dbi_fetch_row( $res ) ) {
     $entry_array[$count++] = $entry;
@@ -857,7 +857,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
   // This prevents errors on the iCal client
   $ret = "BEGIN:VCALENDAR\r\n";
   $title = 'X-WR-CALNAME;VALUE=TEXT:' .
-  ( empty ( $publish_fullname ) ? $login : translate( $publish_fullname ) );
+  ( empty ( $publish_fullname ) ? $login : translate ( $publish_fullname ) );
   $title = utf8_encode( str_replace ( ',', "\\,", $title ) );
   $ret .= "$title\r\n";
   $ret .= generate_prodid ();
@@ -878,8 +878,8 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $description = $row[9];
     // New columns to support tasks
     $percent = ( ! empty ( $row[10] )? $row[10] : 0 );
-    $completed = ( ! empty ( $row[11] )? substr( $row[11], 0 , 8 ) . 'T'
-       . sprintf ( "%06d", substr( $row[11], 9 , 6 ) ) : '' );
+    $completed = ( ! empty ( $row[11] )? substr ( $row[11], 0 , 8 ) . 'T'
+       . sprintf ( "%06d", substr ( $row[11], 9 , 6 ) ) : '' );
     $due_date = $row[12];
     $due_time = $row[13];
     $location = $row[14];
@@ -1359,7 +1359,7 @@ function import_data ( $data, $overwrite, $type ) {
         }
       }
       if ( strlen ( $Entry['Summary'] ) == 0 )
-        $Entry['Summary'] = translate( 'Unnamed Event' );
+        $Entry['Summary'] = translate ( 'Unnamed Event' );
       if ( empty ( $Entry['Description'] ) )
         $Entry['Description'] = $Entry['Summary'];
       $Entry['Summary'] = str_replace ( "\\n", "\n", $Entry['Summary'] );
@@ -1394,7 +1394,7 @@ function import_data ( $data, $overwrite, $type ) {
       $names[] = 'cal_description';
       $values[] = $Entry['Description'];
       // do_debug ( "descr='" . $Entry['Description'] . "'" );
-      $sql_params = array();
+      $sql_params = array ();
       $namecnt = count ( $names );
       if ( $updateMode ) {
         $sql = 'UPDATE webcal_entry SET ';
@@ -1550,8 +1550,8 @@ function import_data ( $data, $overwrite, $type ) {
         dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
           array ( $id ) );
       }
-      $names = array();
-      $values = array();
+      $names = array ();
+      $values = array ();
       if ( ! empty ( $Entry['Repeat']['Frequency'] ) ) {
         $names[] = 'cal_id';
         $values[] = $id;
@@ -1616,7 +1616,7 @@ function import_data ( $data, $overwrite, $type ) {
 
         $string_names = '';
         $string_values = '';
-        $sql_params = array();
+        $sql_params = array ();
         $namecnt = count ( $names );
         for ( $f = 0; $f < $namecnt; $f++ ) {
           if ( $f > 0 ) {
@@ -1669,8 +1669,8 @@ function import_data ( $data, $overwrite, $type ) {
         dbi_execute ( 'DELETE FROM webcal_reminders WHERE  cal_id = ?', array ( $id ) );
       }
       if ( ! empty ( $Entry['AlarmSet'] ) && $Entry['AlarmSet'] == 1 ) {
-        $names = array();
-        $values = array();
+        $names = array ();
+        $values = array ();
 
         $names[] = 'cal_id';
         $values[] = $id;
@@ -1704,7 +1704,7 @@ function import_data ( $data, $overwrite, $type ) {
         }
         $string_names = '';
         $string_values = '';
-        $sql_params = array();
+        $sql_params = array ();
         $namecnt = count ( $names );
         for ( $f = 0; $f < $namecnt; $f++ ) {
           if ( $f > 0 ) {
@@ -1734,7 +1734,7 @@ function import_data ( $data, $overwrite, $type ) {
       // Conflicting
       if ( ! empty ( $overlap ) ) {
         echo '<b><h2>' .
-        translate( 'Scheduling Conflict' ) . ': ';
+        translate ( 'Scheduling Conflict' ) . ': ';
         $count_con++;
         echo '</h2></b>';
 
@@ -1746,19 +1746,19 @@ function import_data ( $data, $overwrite, $type ) {
         if ( ! empty ( $time ) )
           echo '&nbsp; ' . $time;
         echo ")<br />\n";
-        etranslate( 'conflicts with the following existing calendar entries' );
+        etranslate ( 'conflicts with the following existing calendar entries' );
         echo ":<ul>\n" . $overlap . "</ul>\n";
       } else {
         // No Conflict
         if ( $count_suc == 0 ) {
           echo '<b><h2>' .
-          translate( 'Event Imported' ) . ":</h2></b><br />\n";
+          translate ( 'Event Imported' ) . ":</h2></b><br />\n";
         }
         $count_suc++;
 
         $dd = $Entry['start_date'];
         echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
-        echo '" title="' . translate( 'View this entry' ) . '">';
+        echo '" title="' . translate ( 'View this entry' ) . '">';
         $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary'] );
         $Entry['Summary'] = str_replace( "\\", ' ', $Entry['Summary'] );
         echo htmlspecialchars ( $Entry['Summary'] );
@@ -1820,7 +1820,7 @@ function import_data ( $data, $overwrite, $type ) {
 // It did work correctly with PHP 5.0.2.
 function parse_ical ( $cal_file, $source = 'file' ) {
   global $tz, $errormsg;
-  $ical_data = array();
+  $ical_data = array ();
   if ( $source == 'file' || $source == 'remoteics' ) {
     if ( !$fd = @fopen( $cal_file, 'r' ) ) {
       $errormsg .= "Can't read temporary file: $cal_file\n";
@@ -1829,7 +1829,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       // Read in contents of entire file first
       $data = '';
       $line = 0;
-      while ( !feof( $fd ) && empty( $error ) ) {
+      while ( !feof( $fd ) && empty ( $error ) ) {
         $line++;
         $data .= fgets( $fd, 4096 );
       }
@@ -1855,7 +1855,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         // Note: Mozilla Calendar does not display this error for some reason.
         echo '<br /><b>Error:</b> Your PHP server ' . phpversion ()
          . ' seems to have a bug reading stdin.  '
-         . 'Try upgrading to a newer PHP release.  <br />';
+         . 'Try upgrading to a newer PHP release.<br />';
         exit;
       }
     }
@@ -1910,10 +1910,10 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       // do_debug ( "Product ID: " . $prodid );
     }
     // parser debugging code...
-    // echo "line = $line <br />";
-    // echo "state = $state <br />";
-    // echo "substate = $substate <br />";
-    // echo "subsubstate = $subsubstate <br />";
+    // echo "line = $line<br />";
+    // echo "state = $state<br />";
+    // echo "substate = $substate<br />";
+    // echo "subsubstate = $subsubstate<br />";
     // echo "buff = " . htmlspecialchars ( $buff ) . "<br /><br />\n";
     if ( $state == 'VEVENT' || $state == 'VTODO' ) {
       if ( ! empty ( $subsubstate ) ) {
@@ -2154,7 +2154,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
 // Parse the hcal array
 function parse_hcal ( $hcal_array ) {
   global $tz, $errormsg;
-  $ical_data = array();
+  $ical_data = array ();
 
   $error = false;
   $event = '';
@@ -2279,14 +2279,14 @@ function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0', $plus_m = '0
   $user_TIMEZONE = get_pref_setting ( $calUser, 'TIMEZONE' );
 
   $H = $M = $S = 0;
-  $y = substr( $vdate, 0, 4 ) + $plus_y;
-  $m = substr( $vdate, 4, 2 ) + $plus_m;
-  $d = substr( $vdate, 6, 2 ) + $plus_d;
+  $y = substr ( $vdate, 0, 4 ) + $plus_y;
+  $m = substr ( $vdate, 4, 2 ) + $plus_m;
+  $d = substr ( $vdate, 6, 2 ) + $plus_d;
   if ( strlen ( $vdate ) > 8 ) {
-    $H = substr( $vdate, 9, 2 );
-    $M = substr( $vdate, 11, 2 );
-    $S = substr( $vdate, 13, 2 );
-    $Z = substr( $vdate, 15, 1 );
+    $H = substr ( $vdate, 9, 2 );
+    $M = substr ( $vdate, 11, 2 );
+    $S = substr ( $vdate, 13, 2 );
+    $Z = substr ( $vdate, 15, 1 );
   }
   // if we get a Mozilla TZID we try to parse it
   $tzid = parse_tzid ( $tzid );
@@ -2407,7 +2407,7 @@ function format_ical( $event ) {
   }
 
   if ( empty ( $event['summary'] ) )
-    $event['summary'] = translate( 'Unnamed Event' );
+    $event['summary'] = translate ( 'Unnamed Event' );
   $fevent['Summary'] = utf8_decode ( $event['summary'] );
   if ( ! empty ( $event['description'] ) ) {
     $fevent['Description'] = utf8_decode ( $event['description'] );
@@ -2518,7 +2518,7 @@ function format_ical( $event ) {
     $fevent['Percent'] = $event['percent'];
   }
   // Repeating exceptions
-  $fevent['Repeat']['Exceptions'] = array();
+  $fevent['Repeat']['Exceptions'] = array ();
   if ( ! empty ( $event['exdate'] ) && $event['exdate'] ) {
     $EX = explode( ',', $event['exdate'] );
     foreach ( $EX as $exdate ) {
@@ -2526,7 +2526,7 @@ function format_ical( $event ) {
     }
     $fevent['Repeat']['Frequency'] = 7; //manual, this can be changed later
   } // Repeating inclusions
-  $fevent['Repeat']['Inclusions'] = array();
+  $fevent['Repeat']['Inclusions'] = array ();
   if ( ! empty ( $event['rdate'] ) && $event['rdate'] ) {
     $R = explode( ',', $event['rdate'] );
     foreach ( $R as $rdate ) {
@@ -2548,7 +2548,7 @@ function format_ical( $event ) {
     // first remove any UNTIL that may have been calculated above
     unset ( $fevent['Repeat']['Until'] );
     // split into pieces
-    // echo "RRULE line: $event[rrule] <br />\n";
+    // echo "RRULE line: $event[rrule]<br />\n";
     $RR = explode ( ';', $event['rrule'] );
     // create an associative array of key-value pairs in $RR2[]
     $rrcnt = count ( $RR );
@@ -2702,8 +2702,8 @@ function rrule_endtime( $int, $interval, $start, $end ) {
 function parse_vcal( $cal_file ) {
   global $tz, $errormsg;
 
-  $vcal_data = array();
-  // echo "Parsing vcal file... <br />\n";
+  $vcal_data = array ();
+  // echo "Parsing vcal file...<br />\n";
   if ( !$fd = @fopen( $cal_file, 'r' ) ) {
     $errormsg .= "Can't read temporary file: $cal_file\n";
     exit();
@@ -2816,13 +2816,13 @@ function parse_vcal( $cal_file ) {
 }
 // Convert vcal format (yyyymmddThhmmssZ) to epoch time
 function vcaldate_to_timestamp( $vdate, $plus_d = '0', $plus_m = '0', $plus_y = '0' ) {
-  $y = substr( $vdate, 0, 4 ) + $plus_y;
-  $m = substr( $vdate, 4, 2 ) + $plus_m;
-  $d = substr( $vdate, 6, 2 ) + $plus_d;
-  $H = substr( $vdate, 9, 2 );
-  $M = substr( $vdate, 11, 2 );
-  $S = substr( $vdate, 13, 2 );
-  $Z = substr( $vdate, 15, 1 );
+  $y = substr ( $vdate, 0, 4 ) + $plus_y;
+  $m = substr ( $vdate, 4, 2 ) + $plus_m;
+  $d = substr ( $vdate, 6, 2 ) + $plus_d;
+  $H = substr ( $vdate, 9, 2 );
+  $M = substr ( $vdate, 11, 2 );
+  $S = substr ( $vdate, 13, 2 );
+  $Z = substr ( $vdate, 15, 1 );
   if ( $Z == 'Z' ) {
     $TS = gmmktime( $H, $M, $S, $m, $d, $y );
   } else {
@@ -2844,10 +2844,10 @@ function format_vcal( $event ) {
     $fevent['Duration'] = '0';
     $fevent['Untimed'] = 1;
   } //All day (untimed)
-  if ( ! empty( $event['summary'] ) ) $fevent['Summary'] = $event['summary'];
-  if ( ! empty( $event['description'] ) )
+  if ( ! empty ( $event['summary'] ) ) $fevent['Summary'] = $event['summary'];
+  if ( ! empty ( $event['description'] ) )
     $fevent['Description'] = $event['description'];
-  if ( ! empty( $event['descriptionqp'] ) ) {
+  if ( ! empty ( $event['descriptionqp'] ) ) {
     $fevent['Description'] = quoted_printable_decode ( $event['descriptionqp'] );
     // hack for mozilla sunbird's extra = signs
     $fevent['Description'] = preg_replace( '/^=/', '', $fevent['Description'] );
@@ -2865,13 +2865,13 @@ function format_vcal( $event ) {
     }
   }
 
-  if ( ! empty( $fevent['UID'] ) ) $fevent['UID'] = $event['uid'];
+  if ( ! empty ( $fevent['UID'] ) ) $fevent['UID'] = $event['uid'];
   // Repeats
   // vcal 1.0 repeats can be very complicated and the webcalendar doesn't
   // actually support all of the ways repeats can be specified.  We will
   // focus on vcals dumped from Palm Desktop and Lotus Notes, which are simple
   // and the ones webcalendar should fully support.
-  if ( ! empty( $event['rrule'] ) ) {
+  if ( ! empty ( $event['rrule'] ) ) {
     // split into pieces
     $RR = explode( ' ', $event['rrule'] );
 
@@ -2905,8 +2905,8 @@ function format_vcal( $event ) {
       $fevent['Repeat']['Until'] = rrule_endtime( $fevent['Repeat']['Frequency'], $fevent['Repeat']['Interval'], $event['dtstart'], $end );
     }
     // Repeating exceptions?
-    if ( !empty( $event['exdate'] ) ) {
-      $fevent['Repeat']['Exceptions'] = array();
+    if ( !empty ( $event['exdate'] ) ) {
+      $fevent['Repeat']['Exceptions'] = array ();
       $EX = explode( ',', $event['exdate'] );
       foreach ( $EX as $exdate ) {
         $fevent['Repeat']['Exceptions'][] = vcaldate_to_timestamp( $exdate );

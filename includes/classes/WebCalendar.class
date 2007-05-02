@@ -50,21 +50,21 @@ class WebCalendar {
    *
    * @todo Make it possible to distinguish between files in different directories (e.g. login.php and ws/login.php).
    */
-  var $_filePhaseMap = array('/^(about|nulogin|login|login-app|register|controlpanel|upcoming)\.php$/' =>
-  array(array('Config', 'PHPDBI', 'Functions'), array('User', 'Connect')),
+  var $_filePhaseMap = array ('/^(about|nulogin|login|login-app|register|controlpanel|upcoming)\.php$/' =>
+  array (array ('Config', 'PHPDBI', 'Functions'), array ('User', 'Connect')),
 '/^(ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|get_reminders|get_events|ws)\.php$/' =>
-  array(array('Config', 'PHPDBI', 'Functions'),
-  array('User', 'Validate', 'Connect', 'SiteExtras', 'Access')),
+  array (array ('Config', 'PHPDBI', 'Functions'),
+  array ('User', 'Validate', 'Connect', 'SiteExtras', 'Access')),
 '/^convert_passwords\.php$/' =>
-  array(array('Config', 'PHPDBI'),
-  array()),
+  array (array ('Config', 'PHPDBI'),
+  array ()),
 '/^send_reminders|reload_remotes\.php$/' =>
-  array(array('Config', 'PHPDBI', 'Functions'),
-  array('User', 'SiteExtras')),
+  array (array ('Config', 'PHPDBI', 'Functions'),
+  array ('User', 'SiteExtras')),
 /* This is for files which have called include('includes/init.php') */
 '/^init\.php$/' =>
-  array(array('InitFirstPhase', 'Config', 'PHPDBI', 'Functions'),
-  array('User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'InitSecondPhase'))
+  array (array ('InitFirstPhase', 'Config', 'PHPDBI', 'Functions'),
+  array ('User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'InitSecondPhase'))
 );
 
   /**
@@ -118,8 +118,8 @@ class WebCalendar {
     $SCRIPT = $match[1];
 
     // Several files need a no-cache header and some of the same code
-    $special = array('month.php', 'day.php', 'week.php', 'week_details.php', 'year.php', 'minical.php');
-    $DMW = in_array($SCRIPT, $special);
+    $special = array ('month.php', 'day.php', 'week.php', 'week_details.php', 'year.php', 'minical.php');
+    $DMW = in_array ($SCRIPT, $special);
 
     // Unset some variables that shouldn't be set
     unset($user_inc);
@@ -164,7 +164,7 @@ class WebCalendar {
     if ( ! access_can_view_page () ) {
       $user_BGCOLOR = get_pref_setting ( $login, 'BGCOLOR' );
       echo "<html>\n<head>\n<title>" . generate_application_name () . ' ' .
-        translate( 'Error' ) .  "</title></head>\n" .
+        translate ( 'Error' ) .  "</title></head>\n" .
         "<body  bgcolor=\"$user_BGCOLOR\">\n" . print_not_auth ( true );
       exit;
     }
@@ -442,7 +442,7 @@ class WebCalendar {
             //echo "XXX $key<br />\n";
           }
         }
-        //echo "GET var '$key' = '$val' <br />\n";
+        //echo "GET var '$key' = '$val'<br />\n";
       }
       reset ( $HTTP_GET_VARS );
     }
@@ -470,10 +470,10 @@ class WebCalendar {
     if ( empty ( $HTTP_COOKIE_VARS ) ) $HTTP_COOKIE_VARS = $_COOKIE;
     if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
       while (list($key, $val) = @each($HTTP_COOKIE_VARS)) {
-        if ( empty ( $noSet[$key] ) && substr($key,0,12) == "webcalendar_" ) {
+        if ( empty ( $noSet[$key] ) && substr ($key,0,12) == "webcalendar_" ) {
           $GLOBALS[$key] = $val;
         }
-        //echo "COOKIE var '$key' = '$val' <br />\n";
+        //echo "COOKIE var '$key' = '$val'<br />\n";
       }
       reset ( $HTTP_COOKIE_VARS );
     }
@@ -517,7 +517,7 @@ class WebCalendar {
     }
     /* debugging code...
     for ( $i = 0; $i < count ( $offsets ); $i++ ) {
-      echo "offset $i: $offsets[$i] <br />\n";
+      echo "offset $i: $offsets[$i]<br />\n";
     }
     */
   }
@@ -609,7 +609,7 @@ class WebCalendar {
         else
           $login = $PHP_AUTH_USER;
 
-      } elseif ( substr($user_inc,0,9) == 'user-app-' ) {
+      } elseif ( substr ($user_inc,0,9) == 'user-app-' ) {
         // Make sure we are connected to the database for session check
         $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
         if ( ! $c ) {
@@ -748,7 +748,7 @@ class WebCalendar {
           '<tt>includes/settings.php</tt>' );
       }
       $res = dbi_execute ( "SELECT COUNT(*) FROM webcal_user " .
-        "WHERE cal_login = ?", array( $single_user_login ) );
+        "WHERE cal_login = ?", array ( $single_user_login ) );
       if ( ! $res ) {
         echo 'Database error: ' . dbi_error (); exit;
       }
@@ -756,7 +756,7 @@ class WebCalendar {
       if ( $row[0] == 0 ) {
         // User specified as single_user_login does not exist
         if ( ! dbi_execute ( "INSERT INTO webcal_user ( cal_login, " .
-          "cal_passwd, cal_is_admin ) VALUES ( ?, ?, ? )", array( $single_user_login, md5($single_user_login), 'Y' ) ) ) {
+          "cal_passwd, cal_is_admin ) VALUES ( ?, ?, ? )", array ( $single_user_login, md5($single_user_login), 'Y' ) ) ) {
           die_miserable_death ( "User <tt>$single_user_login</tt> does not " .
             'exist in <tt>webcal_user</tt> table and was not able to add ' .
             'it for you:<br /><blockquote>' .
@@ -789,11 +789,11 @@ class WebCalendar {
     }
 
     // Debugging stuff :-)
-    //echo "pub_acc_enabled = " . ( $pub_acc_enabled ? "true" : "false" ) . " <br />";
-    //echo "session_not_found = " . ( $session_not_found ? "true" : "false" ) . " <br />";
-    //echo "use_http_auth = " . ( $use_http_auth ? "true" : "false" ) . " <br />";
-    //echo "PHP_AUTH_USER = $PHP_AUTH_USER <br />";
-    //echo "login = $login <br />";
+    //echo "pub_acc_enabled = " . ( $pub_acc_enabled ? "true" : "false" ) . "<br />";
+    //echo "session_not_found = " . ( $session_not_found ? "true" : "false" ) . "<br />";
+    //echo "use_http_auth = " . ( $use_http_auth ? "true" : "false" ) . "<br />";
+    //echo "PHP_AUTH_USER = $PHP_AUTH_USER<br />";
+    //echo "login = $login<br />";
 
 
     if ( empty ( $PHP_SELF ) )
@@ -820,7 +820,7 @@ class WebCalendar {
       $fullname = 'Public Access'; // Will be translated after translation is loaded
       $user_email = '';
     } else if ( ! $pub_acc_enabled && $session_not_found && ! $use_http_auth ) {
-      if ( substr($user_inc,0,9) == 'user-app-' ) {
+      if ( substr ($user_inc,0,9) == 'user-app-' ) {
         app_login_screen( clean_whitespace( $SCRIPT ) );
       } else {
         do_redirect ( $login_url );
@@ -993,7 +993,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _initTranslate() {
+  function _inittranslate () {
     global $LANGUAGE, $lang, $lang_file, $translation_loaded,
       $PUBLIC_ACCESS_FULLNAME;
 
@@ -1097,7 +1097,7 @@ class WebCalendar {
    * @access public
    */
   function setLanguage() {
-    $this->_initTranslate();
+    $this->_inittranslate ();
   }
 
   /**

@@ -6,7 +6,7 @@ foreach($_SESSION as $key=>$value) {
 }
 if ( ! empty ( $dummy ) )
   foreach ($dummy as $key=>$value) {
-   if ( substr( $key, 0 , 6 ) == 'webcal' )
+   if ( substr ( $key, 0 , 6 ) == 'webcal' )
      unset( $_SESSION[$key] );
   }
 //php 4.1.0 may have issues with the above code
@@ -134,10 +134,10 @@ if ( $single_user == 'Y' ) {
     } else {
       // Invalid login
       if ( empty ( $error ) || ! $showLoginFailureReason ) {
-        $error = translate('Invalid login', true );
+        $error = translate ('Invalid login', true );
       }
       activity_log ( 0, 'system', '', LOG_LOGIN_FAILURE,
-        translate( 'Username' ) . ": " . $login .
+        translate ( 'Username' ) . ": " . $login .
         ", IP: " . $_SERVER['REMOTE_ADDR'] );
     }
   } else {
@@ -150,8 +150,8 @@ if ( $single_user == 'Y' ) {
   // thinks "path/" and "path" are different, so the line above does not
   // delete the "old" cookie. This prohibits the login. So we delete the
   // cookie with the trailing slash removed
-  if (substr($cookie_path, -1) == '/') {
-    SetCookie ( 'webcalendar_session', '', 0, substr($cookie_path, 0, -1)  );
+  if (substr ($cookie_path, -1) == '/') {
+    SetCookie ( 'webcalendar_session', '', 0, substr ($cookie_path, 0, -1)  );
   }
 }
 echo send_doctype ( $appStr );
@@ -161,7 +161,7 @@ if ( ! $logout ) { ?>
 // error check login/password
 function valid_form ( form ) {
   if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
-    alert ( '<?php etranslate( 'You must enter a login and password.', true)?>' );
+    alert ( '<?php etranslate ( 'You must enter a login and password.', true)?>' );
     return false;
   }
   return true;
@@ -199,7 +199,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 <?php
 if ( ! empty ( $error ) ) {
   echo '<span style="color:#FF0000; font-weight:bold;">' .
-    translate( 'Error' ) . ": $error</span><br />\n";
+    translate ( 'Error' ) . ": $error</span><br />\n";
 } else {
   echo "<br />\n";
 }
@@ -210,7 +210,7 @@ if ( $logout ) {
   echo '<a href="login.php' .
     ( ! empty ( $return_path ) ?
       '?return_path=' . htmlentities ( $return_path ) : '' ) .
-    '" class="nav">' . translate( 'Login' ) .
+    '" class="nav">' . translate ( 'Login' ) .
     "</a><br /><br /><br />\n";
 }
 
@@ -228,13 +228,13 @@ if ( ! empty ( $return_path ) ) {
 <table align="center" cellspacing="10" cellpadding="10">
 <tr><td rowspan="2">
  <img src="images/login.gif" alt="Login" /></td><td align="right">
- <label for="user"><?php etranslate( 'Username' )?>:</label></td><td>
+ <label for="user"><?php etranslate ( 'Username' )?>:</label></td><td>
  <input name="login" id="user" size="15" maxlength="25"
    value="<?php if ( ! empty ( $last_login ) ) echo $last_login;?>"
    tabindex="1" />
 </td></tr>
 <tr><td class="alignright">
- <label for="password"><?php etranslate( 'Password' )?>:</label></td><td>
+ <label for="password"><?php etranslate ( 'Password' )?>:</label></td><td>
  <input name="password" id="password" type="password" size="15"
    maxlength="30" tabindex="2" />
 </td></tr>
@@ -242,10 +242,10 @@ if ( ! empty ( $return_path ) ) {
  <input type="checkbox" name="remember" id="remember" tabindex="3"
    value="yes" <?php if ( ! empty ( $remember ) && $remember == 'yes' ) {
      echo 'checked="checked"'; }?> /><label for="remember">&nbsp;
-   <?php etranslate( 'Save login via cookies so I dont have to login next time.' )?></label>
+   <?php etranslate ( 'Save login via cookies so I dont have to login next time.' )?></label>
 </td></tr>
 <tr><td colspan="4" class="aligncenter">
- <input type="submit" value="<?php etranslate( 'Login' )?>" tabindex="4" />
+ <input type="submit" value="<?php etranslate ( 'Login' )?>" tabindex="4" />
 </td></tr>
 </table>
 </form>
@@ -255,7 +255,7 @@ if ( ! empty ( $return_path ) ) {
 if ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) { ?>
  <br /><br />
  <a class="nav" href="index.php">
-   <?php etranslate( 'Access public calendar' )?></a><br />
+   <?php etranslate ( 'Access public calendar' )?></a><br />
 <?php }
 
   $nulist = get_nonuser_cals ();
@@ -263,8 +263,8 @@ if ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) { ?>
     if ( $nulist[$i]['cal_is_public'] == 'Y' ) {
       ?><a class="nav" href="nulogin.php?login=<?php
         echo $nulist[$i]['cal_login'] . '">' .
-          translate( 'Access' ) . ' ' . $nulist[$i]['cal_fullname'] . ' ' .
-          translate( 'calendar' );
+          translate ( 'Access' ) . ' ' . $nulist[$i]['cal_fullname'] . ' ' .
+          translate ( 'calendar' );
       ?></a><br /><?php
     }
   }
@@ -285,7 +285,7 @@ if ( $DEMO_MODE == 'Y' ) {
   }
 }
 ?>
-<span class="cookies"><?php etranslate( 'cookies-note' )?></span><br />
+<span class="cookies"><?php etranslate ( 'cookies-note' )?></span><br />
 <hr />
 <br />
 <a href="<?php echo $PROGRAM_URL ?>" id="programname"><?php echo $PROGRAM_NAME?></a>

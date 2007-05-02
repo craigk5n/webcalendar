@@ -20,7 +20,7 @@
 function parse_outlookcsv ( $cal_file ) {
   global $tz, $errormsg;
 
-  $outlookcsv_data = array();
+  $outlookcsv_data = array ();
 
   if (!$fd=@fopen($cal_file,"r")) {
     $errormsg .= "Can't read temporary file: $cal_file\n";
@@ -117,8 +117,8 @@ function dateDifference($start_timestamp,$end_timestamp,$unit= 0){
 
 function toBoolean($string) {
   $string = strtoupper($string);
-  $true_array = array('TRUE','T','1','TR');
-  if(in_array($string,$true_array)) return true;
+  $true_array = array ('TRUE','T','1','TR');
+  if(in_array ($string,$true_array)) return true;
   else return false;
 }
 ?>

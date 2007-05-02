@@ -367,7 +367,7 @@ function access_can_access_function ( $function, $user = '' ) {
 
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $function, $user );
-  // echo "yesno = $yesno <br />\n";
+  // echo "yesno = $yesno<br />\n";
   assert ( '! empty ( $yesno )' );
 
   return ( $yesno == 'Y' );
@@ -422,7 +422,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
       $page_id = $i;
   }
 
-  // echo "page_id = $page_id <br />page = $page<br />\n";
+  // echo "page_id = $page_id<br />page = $page<br />\n";
 
   // If the specified user is the currently logged in user, then we have already
   // loaded this user's access, stored in the global variable $access_user.
@@ -443,7 +443,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $page_id, $user );
 
-  // echo "yesno = $yesno <br />\n";
+  // echo "yesno = $yesno<br />\n";
   assert ( '! empty ( $yesno )' );
 
   return ( $yesno == 'Y' );
