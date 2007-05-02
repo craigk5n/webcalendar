@@ -24,10 +24,10 @@ class PHPMailer
     /////////////////////////////////////////////////
 
     /**
-     * Email priority (1 = High, 3 = Normal, 5 = low).
+     * Email priority (1..3 = High, 4..6 = Normal, 7..9 = low).
      * @var int
      */
-    var $Priority          = 3;
+    var $Priority          = 5;
 
     /**
      * Sets the CharSet of the message.

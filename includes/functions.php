@@ -4537,7 +4537,7 @@ function print_entry ( $event, $date ) {
       strstr ( $PHP_SELF, 'view_w.php' ) )
     $class = 'entry';
 
-  if ( $event->getPriority () == 3 )
+  if ( $event->getPriority () < 4 )
     $ret .= '<strong>';
 
   $cloneStr = $event->getClone ();
@@ -4628,7 +4628,7 @@ function print_entry ( $event, $date ) {
     ? '<br /><span class="location">('
      . htmlspecialchars ( $location ) . ')</span>' : '' )
    . ( $in_span == true ? '</span>' : '' ) . '</a>'
-   . ( $event->getPriority () == 3 ? '</strong>' : '' ) // end font-weight span
+   . ( $event->getPriority () < 4 ? '</strong>' : '' ) // end font-weight span
   . '<br />';
 }
 
@@ -4674,7 +4674,7 @@ function print_not_auth ( $full = false ) {
  *                if empty ( Yes/No options will be displayed )
  * @param string  $onclick  javascript function to call if needed
  * @param string  $defIdx default array index to select
- * @param string  $sep HTML value between radio options (&nbsp;, <br />)
+ * @param string  $sep HTML value between radio options (&nbsp;,<br />)
  *
  * @return string  HTML for the radio control.
  */
