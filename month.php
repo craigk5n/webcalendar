@@ -78,7 +78,8 @@ if ( empty ( $friendly ) ) {
 }
 $trailerStr = print_trailer ();
 
-$HeadX = generate_refresh_meta ();
+$HeadX = generate_refresh_meta ()
+  . '<script src="includes/js/weekHover.js" type="text/javascript"></script>';
 
 print_header ( array ( 'js/popups.php/true', 'js/visible.php' ), $HeadX,
 '', false, false, false, false );
