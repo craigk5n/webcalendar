@@ -13,13 +13,13 @@ include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase();
+$WebCalendar->initializeFirstPhase ();
 
 include 'includes/' . $user_inc;
 include 'includes/access.php';
 include 'includes/validate.php';
 
-$WebCalendar->initializeSecondPhase();
+$WebCalendar->initializeSecondPhase ();
 
 load_global_settings ();
 load_user_preferences ();

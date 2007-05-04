@@ -46,9 +46,9 @@ if ( empty ( $report_id ) ) {
   $report_id = -1;
   $report_is_global = 'N';
 }
-// .
+
 // Set date range options.
-$ranges = array ( // .
+$ranges = array (
   '0' => translate ( 'Tomorrow' ),
   '1' => translate ( 'Today' ),
   '2' => translate ( 'Yesterday' ),
@@ -76,7 +76,7 @@ $ranges = array ( // .
   '54' => translate ( 'Next 180 days' ),
   '55' => translate ( 'Next 365 days' ),
   );
-// .
+
 // Get list of users visible to the current user.
 if ( empty ( $error ) && $show_participants ) {
   $userlist = get_my_users ( '', 'view' );
@@ -89,7 +89,7 @@ if ( empty ( $error ) && $show_participants ) {
   }
   $userlistcnt = count ( $userlist );
 }
-// .
+
 // Default values.
 $day_template = '<dt><b>${date}</b></dt>
 <dd><dl>${events}</dl></dd>';
@@ -101,7 +101,7 @@ ${description}</dd>
 ';
 
 $page_template = '<dl>${days}</dl>';
-// .
+
 // Setup option arrays.
 $day_options = array ( 'events', 'date', 'fulldate', 'report_id' );
 
@@ -142,7 +142,7 @@ if ( empty ( $error ) && $report_id >= 0 ) {
       $report_include_empty = $row[$i++];
       $report_show_in_menu = $row[$i++];
       $report_update_date = $row[$i++];
-      // .
+
       // Check permissions.
       if ( $show_participants && ! empty ( $report_user ) ) {
         $user_is_in_list = false;
@@ -156,7 +156,7 @@ if ( empty ( $error ) && $report_id >= 0 ) {
       if ( ! $is_admin && $login != $report_login )
         // Only creator or an admin can edit/delete the event.
         $error = print_not_auth ();
-      // .
+
       // If we are editing a public user report we need to set $updating_public.
       if ( $is_admin && $report_login == '__public__' )
         $updating_public = true;
@@ -195,7 +195,7 @@ if ( empty ( $error ) && $report_id >= 0 ) {
   // $report_user already set.
 }
 
-print_header();
+print_header ();
 
 if ( ! empty ( $error ) ) {
   echo $error . print_trailer ( false );
@@ -252,7 +252,7 @@ echo ( $is_admin ? '
     ( ! empty ( $report_is_global ) && ( $report_is_global == 'Y'
         ? 'Y' : 'N' ) ) ) . '</td>
         </tr>'
-  // .
+
   // The report will always be shown in the menu for the creator of the report.
   // For admin users who create a global report,
   // allow option of adding to all users menu.

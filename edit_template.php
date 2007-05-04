@@ -66,7 +66,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   if ( $user != '__system__' && ! empty ( $delete ) ) {
     dbi_execute ( 'DELETE FROM webcal_user_template WHERE cal_type = ?
       AND cal_login = ?', array ( $type, $user ) );
-    echo '<html><body onload="window.close();"></body></html>';
+    echo '<html><body onload="window.close ();"></body></html>';
     exit;
   }
 
@@ -133,7 +133,7 @@ echo '</h2>' . ( ! empty ( $error ) ? print_error ( $error ) : '
       <textarea rows="15" cols="60" name="template">' . htmlspecialchars ( $cur )
    . '</textarea><br />
       <input type="button" value="' . translate ( 'Cancel' )
-   . '" onclick="window.close();" />
+   . '" onclick="window.close ();" />
       <input name="action" type="submit" value="' . translate ( 'Save' ) . '" />'
    . ( ! empty ( $user ) ? '
       <input name="delete" type="submit" value="' . translate ( 'Delete' )

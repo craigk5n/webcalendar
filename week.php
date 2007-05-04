@@ -109,7 +109,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $hour_arr = array ();
   $rowspan_arr = array ();
   for ( $j = 0, $cnt = count ( $ev ); $j < $cnt; $j++ ) {
-    if ( $get_unapproved || $ev[$j]->getStatus() == 'A' ) {
+    if ( $get_unapproved || $ev[$j]->getStatus () == 'A' ) {
       html_for_event_week_at_a_glance ( $ev[$j], $date );
     }
   }

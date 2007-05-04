@@ -16,7 +16,7 @@
  * "work".
  */
 include_once 'includes/init.php';
-$BodyX = 'onload="toggle_import();"';
+$BodyX = 'onload="toggle_import ();"';
 $INC = array ('js/export_import.php', 'js/visible.php');
 print_header($INC, '', $BodyX);
 
@@ -77,11 +77,11 @@ if ( ! $upload_enabled ) {
 } else {
   // file uploads enabled
 ?>
-<form action="import_handler.php" method="post" name="importform"  enctype="multipart/form-data" onsubmit="return checkExtension()">
+<form action="import_handler.php" method="post" name="importform"  enctype="multipart/form-data" onsubmit="return checkExtension ()">
 <table>
 <tr><td>
  <label for="importtype"><?php etranslate ( 'Import format' )?>:</label></td><td>
-  <select name="ImportType" id="importtype" onchange="toggle_import()">
+  <select name="ImportType" id="importtype" onchange="toggle_import ()">
    <option value="ICAL">iCal</option>
    <option value="PALMDESKTOP">Palm Desktop</option>
    <option value="VCAL">vCal</option>
@@ -111,7 +111,7 @@ if ( ! $upload_enabled ) {
  <label for="fileupload"><?php etranslate ( 'Upload file' );?>:</label></td><td>
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
 </td></tr>
-<?php print_user_list(); ?>
+<?php print_user_list (); ?>
 </table>
 <br /><input type="submit" value="<?php etranslate ( 'Import' )?>" />
 </form>

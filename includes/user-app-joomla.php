@@ -114,7 +114,7 @@ function app_active_session($sid) {
   }
 
   // Did we pass inactive session time limit
-  if ( ( $app_sid_lifetime > 0 ) && ( $last < ( time() - $app_sid_lifetime ) ) ) $login = false;
+  if ( ( $app_sid_lifetime > 0 ) && ( $last < ( time () - $app_sid_lifetime ) ) ) $login = false;
 
   // if application is in a separate db, we have to connect back to the webcal db
   if ($app_same_db != '1') $c = dbi_connect($db_host, $db_login, $db_password, $db_database);
@@ -161,7 +161,7 @@ function app_update_session($sid) {
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 
   // get login and last access time
-  $sql = "UPDATE $app_session_table SET time = '".time()."' WHERE session_id = '$sid'";
+  $sql = "UPDATE $app_session_table SET time = '".time ()."' WHERE session_id = '$sid'";
   dbi_query ( $sql );
 
   // if application is in a separate db, we have to connect back to the webcal db
@@ -174,7 +174,7 @@ function app_update_session($sid) {
 // Searches application database for $app_admin_gid and returns an array of the group members.
 // Do this search only once per request.
 // returns: array of admin ids
-function get_admins() {
+function get_admins () {
   global $cached_admins, $app_user_table, $app_admin_gid;
   global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
   global $c, $db_host, $db_login, $db_password, $db_database;
@@ -216,7 +216,7 @@ function user_get_users ( $publicOnly=false ) {
   global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
   global $c, $db_host, $db_login, $db_password, $db_database;
 
-  $Admins = get_admins();
+  $Admins = get_admins ();
   $count = 0;
   $ret = array ();
   if ( $PUBLIC_ACCESS == 'Y' )
@@ -296,7 +296,7 @@ function user_load_variables ( $login, $prefix ) {
       $GLOBALS[$prefix . 'login'] = $login;
       $GLOBALS[$prefix . 'firstname'] = $fname;
       $GLOBALS[$prefix . 'lastname'] = $lname;
-      $GLOBALS[$prefix . 'is_admin'] = user_is_admin($row[0],get_admins());
+      $GLOBALS[$prefix . 'is_admin'] = user_is_admin($row[0],get_admins ());
       $GLOBALS[$prefix . 'email'] = $row[3];
       $GLOBALS[$prefix . 'fullname'] = $row[1];
     }
@@ -316,7 +316,7 @@ function user_load_variables ( $login, $prefix ) {
 
 // Checks to see if the user is logged into the application
 // returns: login id
-function user_logged_in() {
+function user_logged_in () {
   global $app_sid, $_COOKIE;
 
   // First check to see if the user even has a session cookie
@@ -326,7 +326,7 @@ function user_logged_in() {
   $sid = app_get_sid( $_COOKIE[$app_sid] );
 
   // addslashes if magic_quotes_gpc is off
-  if ( !get_magic_quotes_gpc() ) $sid = addslashes( $sid );
+  if ( !get_magic_quotes_gpc () ) $sid = addslashes( $sid );
 
   // Check to see if the session is still valid
   if (! $login = app_active_session($sid) ) return false;

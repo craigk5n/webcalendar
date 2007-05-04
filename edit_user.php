@@ -66,7 +66,7 @@ if ( ! empty ( $error ) ) {
       else
         echo $user;
     } else {
-      echo '<input type="text" name="user" id="username" size="25" onchange="check_name();" maxlength="25" />' . "\n";
+      echo '<input type="text" name="user" id="username" size="25" onchange="check_name ();" maxlength="25" />' . "\n";
     }
 ?>
  </td></tr>
@@ -83,7 +83,7 @@ if ( ! empty ( $error ) ) {
  <tr><td>
   <label for="uemail"><?php etranslate ( 'E-mail address' )?>:</label></td><td>
   <input type="text" name="uemail" id="uemail" size="20" value="<?php echo
-  empty ( $uemail ) ? '' : htmlspecialchars ( $uemail );?>" onchange="check_uemail();" />
+  empty ( $uemail ) ? '' : htmlspecialchars ( $uemail );?>" onchange="check_uemail ();" />
  </td></tr>
 <?php if ( empty ( $user ) && ! $use_http_auth && $user_can_update_password ) { ?>
  <tr><td>

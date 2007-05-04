@@ -18,7 +18,7 @@ include 'includes/gradient.php';
 $WebCalendar->initializeSecondPhase ();
 
 load_global_settings ();
-// .
+
 // TODO make this an option for external users.
 $htmlmail = false;
 
@@ -104,13 +104,13 @@ function generate_password () {
 }
 
 $uemail = $ufirstname = $ulastname = $upassword1 = $upassword2 = $user = '';
-// .
+
 // We can limit what domain is allowed to self register.
 // $self_registration_domain should have this format "192.168.220.0:255.255.240.0";
 $valid_ip = validate_domain ();
 if ( empty ( $valid_ip ) )
   $error = $notauth;
-// .
+
 // We could make $control a unique value if necessary.
 $control = getPostValue ( 'control' );
 if ( empty ( $error ) && ! empty ( $control ) ) {
@@ -123,10 +123,10 @@ if ( empty ( $error ) && ! empty ( $control ) ) {
   if ( $user != addslashes ( $user ) )
     $error = str_replace ( 'XXX', htmlentities ( $user ),
       translate ( 'Illegal characters in login XXX.' ) );
-  // .
+
   // Check to make sure user doesn't already exist.
   check_username ( $user );
-  // .
+
   // Check to make sure email address doesn't already exist.
   check_email ( $uemail );
 }
@@ -257,7 +257,7 @@ echo '
       }
     </script>
     <link rel="stylesheet" type="text/css" href="css_cacher.php?login=__public__" />'
-// .
+
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
   ? load_template ( $login, 'S' ) : '' ) . '

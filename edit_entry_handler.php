@@ -374,7 +374,7 @@ if ( $ALLOW_CONFLICTS != 'Y' && empty ( $confirm_conflicts ) &&
   if ( empty ( $dates ) )
     $dates[0] = $eventstart;
 
-  // Make sure $thismonth and $thisyear are set for use in query_events().
+  // Make sure $thismonth and $thisyear are set for use in query_events ().
   $thismonth = $month;
   $thisyear = $year;
   $conflicts = check_for_conflicts ( $dates, $duration, $eventstart,

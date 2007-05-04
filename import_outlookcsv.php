@@ -24,7 +24,7 @@ function parse_outlookcsv ( $cal_file ) {
 
   if (!$fd=@fopen($cal_file,"r")) {
     $errormsg .= "Can't read temporary file: $cal_file\n";
-    exit();
+    exit ();
   } else {
 
     #Burn First Row of Headers

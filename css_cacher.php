@@ -37,7 +37,7 @@ header( 'Content-type: text/css' );
 header('Last-Modified: '. date('r', mktime ( 0,0,0 ) + $cookie ) );
 //if we are calling from admin or pref, expire css now
 if ( empty ( $_SESSION['webcal_tmp_login'] ) ) {
- header('Expires: ' . date( 'D, j M Y H:i:s', time() + 86400 ) . ' UTC');
+ header('Expires: ' . date( 'D, j M Y H:i:s', time () + 86400 ) . ' UTC');
  header('Cache-Control: Public');
  header('Pragma: Public');
 }

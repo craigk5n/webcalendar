@@ -106,7 +106,7 @@ function user_search_dn ( $login ) {
   global $error, $ds, $ldap_base_dn, $ldap_login_attr, $ldap_user_attr, $ldap_user_filter;
 
   $ret = false;
-  if ($r = connect_and_bind()) {
+  if ($r = connect_and_bind ()) {
     $sr = @ldap_search ( $ds, $ldap_base_dn,
       "(&($ldap_login_attr=$login)$ldap_user_filter )", $ldap_user_attr );
     if (!$sr) {
@@ -213,7 +213,7 @@ function user_load_variables ( $login, $prefix ) {
   }
 
   $ret =  false;
-  if ($r = connect_and_bind()) {
+  if ($r = connect_and_bind ()) {
     $sr = @ldap_search ( $ds, $ldap_base_dn,
       "(&($ldap_login_attr=$login)$ldap_user_filter )", $ldap_user_attr );
 
@@ -229,7 +229,7 @@ function user_load_variables ( $login, $prefix ) {
         $GLOBALS[$prefix . 'lastname'] = $info[0][$ldap_user_attr[1]][0];
         $GLOBALS[$prefix . 'email'] = $info[0][$ldap_user_attr[4]][0];
         $GLOBALS[$prefix . 'fullname'] = $info[0][$ldap_user_attr[3]][0];
-        $GLOBALS[$prefix . 'is_admin'] = user_is_admin($login,get_admins());
+        $GLOBALS[$prefix . 'is_admin'] = user_is_admin($login,get_admins ());
         $ret = true;
       }
       @ldap_free_result ( $sr );
@@ -416,7 +416,7 @@ function user_get_users ( $publicOnly=false ) {
   global $error, $ds, $ldap_base_dn, $ldap_user_attr, $ldap_user_filter;
   global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME;
 
-  $Admins = get_admins();
+  $Admins = get_admins ();
   $count = 0;
   $ret = array ();
   if ( $PUBLIC_ACCESS == 'Y' )
@@ -429,7 +429,7 @@ function user_get_users ( $publicOnly=false ) {
        'cal_password' => '',
        'cal_fullname' => $PUBLIC_ACCESS_FULLNAME );
   if ( $publicOnly ) return $ret;
-  if ($r = connect_and_bind()) {
+  if ($r = connect_and_bind ()) {
     $sr = @ldap_search ( $ds, $ldap_base_dn, $ldap_user_filter, $ldap_user_attr );
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
@@ -472,14 +472,14 @@ function user_is_admin($values,$Admins) {
 // Searches $ldap_admin_group_name and returns an array of the group members.
 // Do this search only once per request.
 // returns: array of admins
-function get_admins() {
+function get_admins () {
   global $error, $ds, $cached_admins;
   global $ldap_admin_group_name,$ldap_admin_group_attr,$ldap_admin_group_type;
 
   if ( ! empty ( $cached_admins ) ) return $cached_admins;
   $cached_admins = array ();
 
-  if ($r = connect_and_bind()) {
+  if ($r = connect_and_bind ()) {
     $search_filter = "($ldap_admin_group_attr=*)";
     $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter, array ($ldap_admin_group_attr) );
     if (!$sr) {
@@ -515,7 +515,7 @@ function stripdn($dn){
 // Connects and binds to the LDAP server
 // Tries to connect as $ldap_admin_dn if we set it.
 //  returns: bind result or false
-function connect_and_bind() {
+function connect_and_bind () {
   global $ds, $error, $ldap_server, $ldap_port, $ldap_version;
   global $ldap_admin_dn, $ldap_admin_pwd, $ldap_start_tls, $set_ldap_version;
 

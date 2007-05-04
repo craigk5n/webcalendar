@@ -53,7 +53,7 @@
  include 'includes/dbi4php.php';
  include 'includes/functions.php';
 
- $WebCalendar->initializeFirstPhase();
+ $WebCalendar->initializeFirstPhase ();
 
  include "includes/$user_inc";
  include 'includes/validate.php';
@@ -61,7 +61,7 @@
 
  include 'includes/xcal.php';
 
- $WebCalendar->initializeSecondPhase();
+ $WebCalendar->initializeSecondPhase ();
 
 // Calculate username.
 //if using http_auth, use those credentials
@@ -86,7 +86,7 @@ load_global_settings ();
 $login = $user;
 load_user_preferences ();
 
-$WebCalendar->setLanguage();
+$WebCalendar->setLanguage ();
 
 // Load user name, etc.
 user_load_variables ( $user, 'publish_' );
@@ -126,14 +126,14 @@ for ( $d = $startdate; $d <= $enddate; $d += ONE_DAY ) {
   $ev = get_entries ( $dYmd, $get_unapproved );
   $evcnt = count ( $ev );
   for ( $i = 0; $i < $evcnt; $i++ ) {
-    $event_text .= fb_export_time ( $dYmd, $ev[$i]->getDuration(),
-      $ev[$i]->getTime(), 'ical');
+    $event_text .= fb_export_time ( $dYmd, $ev[$i]->getDuration (),
+      $ev[$i]->getTime (), 'ical');
   }
   $revents = get_repeating_entries ( $user, $dYmd, $get_unapproved );
   $recnt = count ( $revents );
   for ( $i = 0; $i < $recnt; $i++ ) {
-    $event_text .= fb_export_time ( $dYmd, $revents[$i]->getDuration(),
-      $revents[$i]->getTime(), 'ical');
+    $event_text .= fb_export_time ( $dYmd, $revents[$i]->getDuration (),
+      $revents[$i]->getTime (), 'ical');
   }
 }
 

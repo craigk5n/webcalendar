@@ -2815,18 +2815,18 @@ function get_preferred_view ( $indate = '', $args = '' ) {
  *
  * <b>Note:</b>
  * The global variable <var>$repeated_events</var> needs to be
- * set by calling {@link read_repeated_events()} first.
+ * set by calling {@link read_repeated_events ()} first.
  *
  * @param string $user            Username
  * @param string $date            Date to get events for in YYYYMMDD format
  * @param bool   $get_unapproved  Include unapproved events in results?
  *
  * @return mixed  The query result resource on queries (which can then be
- *                passed to {@link dbi_fetch_row()} to obtain the results), or
+ *                passed to {@link dbi_fetch_row ()} to obtain the results), or
  *                true/false on insert or delete queries.
  *
  * @global array  Array of {@link RepeatingEvent}s
- *                retreived using {@link read_repeated_events()}
+ *                retreived using {@link read_repeated_events ()}
  */
 function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   global $repeated_events;

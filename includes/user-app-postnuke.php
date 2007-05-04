@@ -108,7 +108,7 @@ unset($app_config);
 
 // Checks to see if the user is logged into the application
 // returns: login id
-function user_logged_in() {
+function user_logged_in () {
   global $pn_sid, $_COOKIE;
 
   $sid = $_COOKIE[$pn_sid];
@@ -117,7 +117,7 @@ function user_logged_in() {
   if ( empty ( $sid ) ) return false;
 
     // addslashes if magic_quotes_gpc is off
-  if ( !get_magic_quotes_gpc() ) $sid = addslashes( $sid );
+  if ( !get_magic_quotes_gpc () ) $sid = addslashes( $sid );
 
   // Check to see if the session is still valid
   if (! $login = pn_active_session( $sid ) ) return false;
@@ -158,7 +158,7 @@ function pn_active_session($sid) {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $tmp = explode('"', $row[0]);
-      if (($tmp[1] > 0) && ($tmp[1] < ((time() - $last) / 60))) $login = false;
+      if (($tmp[1] > 0) && ($tmp[1] < ((time () - $last) / 60))) $login = false;
     }
     dbi_free_result ( $res );
   }
@@ -180,7 +180,7 @@ function pn_update_session($sid) {
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
 
   // get login and last access time
-  $sql = "UPDATE $pn_session_table  SET pn_lastused = '".time()."' WHERE pn_sessid = '$sid' ";
+  $sql = "UPDATE $pn_session_table  SET pn_lastused = '".time ()."' WHERE pn_sessid = '$sid' ";
   dbi_query ( $sql );
 
   // if postnuke is in a separate db, we have to connect back to the webcal db
@@ -193,7 +193,7 @@ function pn_update_session($sid) {
 // Searches postnuke database for $pn_admin_gid and returns an array of the group members.
 // Do this search only once per request.
 // returns: array of admin ids
-function get_admins() {
+function get_admins () {
   global $cached_admins, $pn_group_table, $pn_admin_gid;
   global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
   global $c, $db_host, $db_login, $db_password, $db_database;
@@ -226,7 +226,7 @@ function user_get_users ( $publicOnly=false ) {
   global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
   global $c, $db_host, $db_login, $db_password, $db_database;
 
-  $Admins = get_admins();
+  $Admins = get_admins ();
   $count = 0;
   $ret = array ();
   if ( $PUBLIC_ACCESS == 'Y' )
@@ -302,7 +302,7 @@ function user_load_variables ( $login, $prefix ) {
       $GLOBALS[$prefix . 'login'] = $login;
       $GLOBALS[$prefix . 'firstname'] = $fname;
       $GLOBALS[$prefix . 'lastname'] = $lname;
-      $GLOBALS[$prefix . 'is_admin'] = user_is_admin($row[0],get_admins());
+      $GLOBALS[$prefix . 'is_admin'] = user_is_admin($row[0],get_admins ());
       $GLOBALS[$prefix . 'email'] = $row[3];
       $GLOBALS[$prefix . 'fullname'] = $row[1];
     }

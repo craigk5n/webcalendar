@@ -40,18 +40,17 @@
 // This will affect performance, but keep in mind that someone may enter
 // a reminder to be sent 60 days in advance or they may enter a specific
 // date for a reminder to be sent that is more than 30 days before the
-// event's date. If you're only running this once an hour or less often,
+// event's date.  If you're only running this once an hour or less often,
 // then you could certainly change this to look a whole 365 days ahead.
 $DAYS_IN_ADVANCE = 30;
 // $DAYS_IN_ADVANCE = 365;
-
 
 // Load include files.
 // If you have moved this script out of the WebCalendar directory, which you
 // probably should do since it would be better for security reasons, you would
 // need to change $includedir to point to the webcalendar include directory.
-$basedir = '..'; // points to the base WebCalendar directory relative to
-                 // current working directory
+$basedir = '..'; // Points to the base WebCalendar directory
+                 // relative to current working directory.
 $includedir = '../includes';
 $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
@@ -76,7 +75,7 @@ include $includedir . '/site_extras.php';
 
 $WebCalendar->initializeSecondPhase ();
 
-$debug = false;// Set to true to print debug info...
+$debug = // Set to true to print debug info...
 $only_testing = false; // Just pretend to send -- for debugging.
 
 // Establish a database connection.
@@ -96,8 +95,8 @@ if ( $debug )
   echo '<br />Include Path=' . ini_get ( 'include_path' ) . "<br />\n";
 
 // Get a list of the email users in the system.
-// They must also have an email address. Otherwise, we can't
-// send them mail, so what's the point?
+// They must also have an email address.
+// Otherwise, we can't send them mail, so what's the point?
 $allusers = user_get_users ();
 $allusercnt = count ( $allusers );
 for ( $i = 0; $i < $allusercnt; $i++ ) {
@@ -166,16 +165,17 @@ $enddate = gmdate ( 'Ymd', $enddateTS );
 
 // Now read events all the repeating events (for all users).
 $repeated_events = query_events ( '', true,
-  'AND ( wer.cal_end >= ' . $startdate
-   . ' OR wer.cal_end IS NULL ) ' );
+  'AND ( wer.cal_end >= ' . $startdate . ' OR wer.cal_end IS NULL ) ' );
 $repcnt = count ( $repeated_events );
 // Read non-repeating events (for all users).
 if ( $debug )
   echo "Checking for events from date $startdate to date $enddate.<br />\n";
+
 $events = read_events ( '', $startdateTS, $enddateTS );
 $eventcnt = count ( $events );
 if ( $debug )
   echo "Checking for tasks from date $startdate to date $enddate.<br />\n";
+
 $tasks = read_tasks ( '', $enddateTS );
 $taskcnt = count ( $tasks );
 if ( $debug )
@@ -185,10 +185,11 @@ if ( $debug )
 $is_task = false;
 for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   $date = gmdate ( 'Ymd', time () + ( $d * 86400 ) );
-  // echo "Date: $date\n";
+
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.
   $ev = get_entries ( $date );
+
   // Keep track of duplicates.
   $completed_ids = array ();
   $evcnt = count ( $ev );
@@ -196,6 +197,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     $id = $ev[$i]->getID ();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
+
     $completed_ids[$id] = 1;
     process_event ( $id, $ev[$i]->getName (), $ev[$i]->getDateTimeTS (),
       $ev[$i]->getEndDateTimeTS () );
@@ -210,6 +212,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     $id = $tks[$i]->getID ();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
+
     $completed_ids[$id] = 1;
     $is_task = true;
     process_event ( $id, $tks[$i]->getName (), $tks[$i]->getDateTimeTS (),
@@ -223,6 +226,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     $id = $rep[$i]->getID ();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
+
     $completed_ids[$id] = 1;
     process_event ( $id, $rep[$i]->getName (), $rep[$i]->getDateTimeTS (),
       $rep[$i]->getEndDateTimeTS (), $date );
@@ -231,7 +235,6 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
 
 if ( $debug )
   echo "Done.<br />\n";
-
 
 // Send a reminder for a single event for a single day to all participants in
 // the event who have accepted as well as those who have not yet approved.
@@ -248,7 +251,7 @@ function send_reminder ( $id, $event_date ) {
   $pri[2] = translate ( 'Medium' );
   $pri[3] = translate ( 'Low' );
 
-  // get participants first...
+  // Get participants first...
   $res = dbi_execute ( 'SELECT cal_login, cal_percent FROM webcal_entry_user
     WHERE cal_id = ? AND cal_status IN ( \'A\',\'W\' ) ORDER BY cal_login',
     array ( $id ) );
@@ -266,6 +269,7 @@ function send_reminder ( $id, $event_date ) {
     $res = dbi_execute ( 'SELECT cal_fullname, cal_email
       FROM webcal_entry_ext_user WHERE cal_id = ? AND cal_email IS NOT NULL
       ORDER BY cal_fullname', array ( $id ) );
+
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $ext_participants[$num_ext_participants] = $row[0];
@@ -279,7 +283,6 @@ function send_reminder ( $id, $event_date ) {
       echo 'No participants found for event id' . ": $id<br />\n";
     return;
   }
-
 
   // Get event details.
   $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
@@ -298,7 +301,7 @@ function send_reminder ( $id, $event_date ) {
     return;
   }
 
-  // send mail. We send one user at a time so that we can switch
+  // Send mail.  We send one user at a time so that we can switch
   // languages between users if needed (as well as HTML vs plain text).
   $mailusers = $recipients = array ();
   if ( isset ( $single_user ) && $single_user == 'Y' ) {
@@ -325,49 +328,49 @@ function send_reminder ( $id, $event_date ) {
   for ( $j = 0; $j < $mailusercnt; $j++ ) {
     $recip = $mailusers[$j];
     $user = $recipients[$j];
-    $isExt = ( in_array ( $user, $participants ) ? false : true );
-    $userlang = ( ! empty ( $languages[$user] )
-      ? $languages[$user]
-      : $LANGUAGE ); // system default
+    $isExt = ( ! in_array ( $user, $participants ) );
+    $userlang = ( empty ( $languages[$user] )
+      ? $LANGUAGE // System default.
+      : $languages[$user] );
     $userTformat = ( ! empty ( $t_format[$user] )
       ? $t_format[$user]
-      : 24 ); // gotta pick something
+      : 24 ); // Gotta pick something.
     if ( $userlang == 'none' )
-      $userlang = 'English-US'; // gotta pick something
+      $userlang = 'English-US'; // Gotta pick something.
     if ( $debug )
       echo "Setting language to \"$userlang\".<br />\n";
+
     reset_language ( $userlang );
     $adminStr = translate ( 'Administrator' );
-    // reset timezone setting for current user
+    // Reset timezone setting for current user.
     if ( ! empty ( $tz[$user] ) ) {
-      $display_tzid = 2; // display TZ
+      $display_tzid = 2; // Display TZ.
       $user_TIMEZONE = $tz[$user];
     } else
     if ( ! empty ( $def_tz ) ) {
       $display_tzid = 2;
       $user_TIMEZONE = $def_tz;
     } else {
-      $display_tzid = 3; // Do not use offset & display TZ
-      // I think this is the only real timezone set to UTC...since 1972 at least
+      $display_tzid = 3; // Do not use offset & display TZ.
+      // I think this is the only real timezone set to UTC...since 1972 at least.
       $user_TIMEZONE = 'Africa/Monrovia';
     }
-    // this will allow date functions to use the proper TIMEZONE
+    // This will allow date functions to use the proper TIMEZONE.
     set_env ( 'TZ', $user_TIMEZONE );
 
     $useHtml = ( ! empty ( $htmlmail[$user] ) ? 'Y' : 'N' );
     $padding = ( ! empty ( $htmlmail[$user] ) ? '&nbsp;&nbsp;&nbsp;' : '   ' );
     $body = str_replace ( 'XXX',
-      ( $is_task == true ? translate ( 'task' ) : translate ( 'event' ) ),
-      translate ( 'This is a reminder for the XXX detailed below.') )
-     . "\n\n";
+      ( $is_task ? translate ( 'task' ) : translate ( 'event' ) ),
+      translate ( 'This is a reminder for the XXX detailed below.' ) ) . "\n\n";
 
     $create_by = $row[0];
     $event_time = date_to_epoch ( $row[1] . sprintf ( "%06d", $row[2] ) );
     $name = $row[9];
     $description = $row[10];
 
-    // add trailing '/' if not found in server_url
-    // Don't include link foe External users
+    // Add trailing '/' if not found in server_url.
+    // Don't include link for External users.
     if ( ! empty ( $SERVER_URL ) && ! $isExt ) {
       $eventURL = $SERVER_URL
        . ( substr ( $SERVER_URL, -1, 1 ) == '/' ? '' : '/' )
@@ -379,31 +382,24 @@ function send_reminder ( $id, $event_date ) {
       $body .= $eventURL . "\n\n";
     }
     $body .= strtoupper ( $name ) . "\n\n" . translate ( 'Description' )
-     . ":\n" . $padding . $description . "\n" . ( $is_task == false
-      ? translate ( 'Date' )
-      : translate ( 'Start Date' ) )
+     . ":\n" . $padding . $description . "\n"
+     . ( $is_task ? translate ( 'Start Date' ) : translate ( 'Date' ) )
      . ': ' . date_to_str ( date ( 'Ymd', $event_date ) ) . "\n"
      . ( $row[2] >= 0
-      ? ( $is_task == false
-        ? translate ( 'Time')
-        : translate ( 'Start Time' ) )
-       . ': ' . display_time ( '', $display_tzid, $event_time, $userTformat )
-       . "\n"
+      ? ( $is_task ? translate ( 'Start Time' ) : translate ( 'Time' ) ) . ': '
+       . display_time ( '', $display_tzid, $event_time, $userTformat ) . "\n"
       : '' )
-     . ( $row[5] > 0 && $is_task == false
-      ? translate ( 'Duration' ) . ': ' . $row[5] . " "
+     . ( $row[5] > 0 && ! $is_task
+      ? translate ( 'Duration' ) . ': ' . $row[5] . ' '
        . translate ( 'minutes' ) . "\n"
-      : ( $is_task == true ? translate ( 'Due Date') . ': '
-         . date_to_str ( $row[11] ) . "\n" . translate ( 'Due Time' )
-         . ': ' . display_time ( $row[12], $display_tzid, '', $userTformat )
-         . "\n" : '' ) )
-     . ( $is_task == true && isset ( $percentage[$user] )
-      ? translate ( 'Pecentage Complete' ) . ': ' . $percentage[$user]
-       . "%\n"
-      : '' )
+      : ( $is_task ? translate ( 'Due Date' ) . ': ' . date_to_str ( $row[11] )
+       . "\n" . translate ( 'Due Time' ) . ': ' . display_time ( $row[12],
+         $display_tzid, '', $userTformat ) . "\n" : '' ) )
+     . ( $is_task && isset ( $percentage[$user] )
+      ? translate ( 'Pecentage Complete' ) . ': ' . $percentage[$user] . "%\n" : '' )
      . ( empty ( $DISABLE_PRIORITY_FIELD ) || $DISABLE_PRIORITY_FIELD != 'Y'
       ? translate ( 'Priority' ) . ': ' . $row[6] . '-'
-      . $pri[ceil($row[6]/3 )]  . "\n" : '' );
+       . $pri[ceil( $row[6] / 3 )] . "\n" : '' );
 
     if ( empty ( $DISABLE_ACCESS_FIELD ) || $DISABLE_ACCESS_FIELD != 'Y' ) {
       $body .= translate ( 'Access' ) . ': ';
@@ -415,17 +411,19 @@ function send_reminder ( $id, $event_date ) {
         $body .= translate ( 'Private' ) . "\n";
     }
 
-    $body .= ( ! empty ( $single_user_login ) && $single_user_login == false
+    $body .= ( ! empty ( $single_user_login ) && ! $single_user_login
       ? translate ( 'Created by' ) . ': ' . $row[0] . "\n" : '' )
      . translate ( 'Updated' ) . ': ' . date_to_str ( $row[3] ) . ' '
      . display_time ( $row[3] . sprintf ( "%06d", $row[4] ), $display_tzid, '',
       $userTformat ) . "\n";
 
-    // site extra fields
+    // Site extra fields.
     $extras = get_site_extra_fields ( $id );
     $site_extracnt = count ( $site_extras );
     for ( $i = 0; $i < $site_extracnt; $i++ ) {
-      if ( $site_extras[$i] == 'FIELDSET' ) continue;
+      if ( $site_extras[$i] == 'FIELDSET' )
+        continue;
+
       $extra_name = $site_extras[$i][0];
       $extra_descr = $site_extras[$i][1];
       $extra_type = $site_extras[$i][2];
@@ -433,6 +431,7 @@ function send_reminder ( $id, $event_date ) {
       $extra_arg2 = $site_extras[$i][4];
       if ( ! empty ( $site_extras[$i][5] ) )
         $extra_view = $site_extras[$i][5] & EXTRA_DISPLAY_REMINDER;
+
       if ( ! empty ( $extras[$extra_name]['cal_name'] ) &&
           $extras[$extra_name]['cal_name'] != '' && ! empty ( $extra_view ) ) {
         $val = '';
@@ -441,17 +440,17 @@ function send_reminder ( $id, $event_date ) {
           $body .= ': ' . $extras[$extra_name]['cal_date'] . "\n";
         elseif ( $extra_type == EXTRA_MULTILINETEXT )
           $body .= "\n" . $padding . $extras[$extra_name]['cal_data'] . "\n";
-        elseif ( $extra_type == EXTRA_RADIO  )
-          $body.= ': ' . $extra_arg1[$extras[$extra_name]['cal_data']] . "\n";
+        elseif ( $extra_type == EXTRA_RADIO )
+          $body .= ': ' . $extra_arg1[$extras[$extra_name]['cal_data']] . "\n";
         else
-          // default method for EXTRA_URL, EXTRA_TEXT, etc...
+          // Default method for EXTRA_URL, EXTRA_TEXT, etc...
           $body .= ': ' . $extras[$extra_name]['cal_data'] . "\n";
       }
     }
     if ( ( empty ( $single_user ) || $single_user != 'Y' ) &&
         ( empty ( $DISABLE_PARTICIPANTS_FIELD ) ||
           $DISABLE_PARTICIPANTS_FIELD != 'N' ) ) {
-      $body .= translate ( 'Participants') . ":\n";
+      $body .= translate ( 'Participants' ) . ":\n";
 
       for ( $i = 0; $i < $partcnt; $i++ ) {
         $body .= $padding . $names[$participants[$i]] . "\n";
@@ -466,6 +465,7 @@ function send_reminder ( $id, $event_date ) {
 
     if ( $debug )
       echo "Sending mail to $recip (in $userlang).<br />\n";
+
     if ( $only_testing ) {
       if ( $debug )
         echo '<hr />
@@ -482,18 +482,17 @@ From:' . $adminStr . '
       $mail = new WebCalMailer;
       user_load_variables ( $user, 'temp' );
       $recipName = ( $isExt ? $user : $GLOBALS ['tempfullname'] );
-      // send ics attachment to External Users
+      // Send ics attachment to External Users.
       $attach = ( $isExt ? $id : '' );
       $mail->WC_Send ( $adminStr, $recip, $recipName, $subject,
-        $body, $useHtml, $GLOBALS['EMAIL_FALLBACK_FROM'], $attach  );
+        $body, $useHtml, $GLOBALS['EMAIL_FALLBACK_FROM'], $attach );
       $cal_text = ( $isExt ? translate ( 'External User' ) : '' );
       activity_log ( $id, 'system', $user, LOG_REMINDER, $cal_text );
     }
   }
 }
 
-
-// Keep track of the fact that we send the reminder, so we don't do it again.
+// Keep track of the fact that we sent the reminder, so we don't do it again.
 function log_reminder ( $id, $times_sent ) {
   global $only_testing;
 
@@ -503,20 +502,18 @@ function log_reminder ( $id, $times_sent ) {
       array ( time (), $times_sent, $id ) );
 }
 
-
-// Process an event for a single day. Check to see if it has a reminder, when it
-// needs to be sent and when the last time it was sent.
+// Process an event for a single day.  Check to see if it has a reminder,
+// when it needs to be sent and when the last time it was sent.
 function process_event ( $id, $name, $start, $end, $new_date = '' ) {
   global $debug, $is_task, $only_testing;
 
-  $reminder = array ();
-
-  // get reminders array
+  // Get reminders array.
   $reminder = getReminders ( $id );
 
   if ( ! empty ( $reminder ) ) {
     if ( $debug )
-      echo "  Reminder set for event.<br />\n";
+      echo " Reminder set for event.<br />\n";
+
     $times_sent = $reminder['times_sent'];
     $repeats = $reminder['repeats'];
     $lastsent = $reminder['last_sent'];
@@ -525,8 +522,8 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
     // reminders for the basic event, then reset the counter to 0.
     if ( ! empty ( $new_date ) ) {
       if ( $times_sent == $repeats + 1 ) {
-        if ( $is_task == false ||
-          ( $related == 'E' && $new_date != gmdate ( 'Ymd', $end ) ) ) // tasks only
+        if ( ! $is_task ||
+          ( $related == 'E' && $new_date != gmdate ( 'Ymd', $end ) ) ) // Tasks only.
           $times_sent = 0;
       }
       $new_offset = date_to_epoch ( $new_date ) - ( $start - ( $start % 86400 ) );
@@ -538,25 +535,22 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
       printf ( "Event %d: \"%s\" on %s at %s GMT<br />\n",
         $id, $name, gmdate ( 'Ymd', $start ), gmdate ( 'H:i:s', $start ) );
 
-
     // It is pointless to send reminders after this time!
     $pointless = $end;
+    $remB4 = ( $reminder['before'] == 'Y' );
     if ( ! empty ( $reminder['date'] ) ) // We're using a date.
       $remind_time = $reminder['timestamp'];
     else { // We're using offsets.
       $offset = $reminder['offset'] * 60; // Convert to seconds.
       if ( $related == 'S' ) { // Relative to start.
-        $offset_msg = ( $reminder['before'] == 'Y'
-          ? '  Mins Before Start: ' : '  Mins After Start: ' )
+        $offset_msg = ( $remB4 ? ' Mins Before Start: ' : ' Mins After Start: ' )
          . $reminder['offset'];
-        $remind_time = ( $reminder['before'] == 'Y'
-          ? $start - $offset : $start + $offset );
+        $remind_time = ( $remB4 ? $start - $offset : $start + $offset );
       } else { // Relative to end/due.
-        $offset_msg = ( $reminder['before'] == 'Y'
-          ? '  Mins Before End: ': '  Mins After End:' ) . $reminder['offset'];
-        $remind_time = ( $reminder['before'] == 'Y'
-          ? $end - $offset : $end + $offset );
-        $pointless = ( $reminder['before'] == 'Y' ? $end : $end + $offset );
+        $offset_msg = ( $remB4 ? ' Mins Before End: ' : ' Mins After End: ' )
+         . $reminder['offset'];
+        $remind_time = ( $remB4 ? $end - $offset : $end + $offset );
+        $pointless = ( $remB4 ? $end : $end + $offset );
       }
     }
     // Factor in repeats if set.
@@ -564,27 +558,27 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
       $remind_time += ( $reminder['duration'] * 60 * $times_sent );
 
     if ( $debug )
-      echo ( ! empty ( $offset_msg ) ? $offset_msg . '<br />' : '' ) . '
-  Event ' . ( $related == 'S' // relative to start
+      echo ( empty ( $offset_msg ) ? '' : $offset_msg . '<br />' ) . '
+  Event ' . ( $related == 'S' // Relative to start.
         ? 'start time is: ' . gmdate ( 'm/d/Y H:i', $start )
         : 'end time is: ' . gmdate ( 'm/d/Y H:i', $end ) ) . ' GMT<br />
   Remind time is: ' . gmdate ( 'm/d/Y H:i', $remind_time ) . ' GMT<br />
   Effective delivery time is: ' . date ( 'm/d/Y H:i T', $remind_time ) . '<br />
   Last sent on: '
        . ( $lastsent == 0 ? 'NEVER' : date ( 'm/d/Y H:i T', $lastsent ) )
-       . "<br /><br />\n";
+       . '<br /><br />' . "\n";
     // No sense sending reminders if the event is over!
     // Unless the entry is a task.
     if ( $times_sent < ( $repeats + 1 ) &&
         time () >= $remind_time && $lastsent <= $remind_time &&
-        ( time () <= $pointless || $is_task == true ) ) {
-      // Send a reminder
+        ( time () <= $pointless || $is_task ) ) {
+      // Send a reminder.
       if ( $debug )
-        echo "  SENDING REMINDER!<br />\n";
+        echo ' SENDING REMINDER!<br />' . "\n";
       send_reminder ( $id, $start );
-      // now update the db...
+      // Now update the db...
       if ( $debug )
-        echo "<br /> LOGGING REMINDER!<br /><br />\n";
+        echo '<br /> LOGGING REMINDER!<br /><br />' . "\n";
       log_reminder ( $id, $times_sent + 1 );
     }
   }

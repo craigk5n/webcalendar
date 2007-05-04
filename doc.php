@@ -33,10 +33,10 @@ if ( empty ( $error ) ) {
     $description = $doc->getDescription ();
     $filedata = $doc->getData ();
     $filename = $doc->getName ();
-    $id = $doc->getId();
-    $mimetype = $doc->getMimeType();
+    $id = $doc->getId ();
+    $mimetype = $doc->getMimeType ();
     $owner = $doc->getLogin ();
-    $size = $doc->getSize();
+    $size = $doc->getSize ();
     $type = $doc->getType ();
   }
   dbi_free_result ( $res );

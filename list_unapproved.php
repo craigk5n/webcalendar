@@ -35,7 +35,7 @@ if ( ! empty ( $_POST ) ) {
     }
   }
 }
-// .
+
 // Only admin user or assistant can specify a username other than his own.
 if ( ! $is_admin && $user != $login && ! $is_assistant && ! access_is_enabled () )
   $user = $login;
@@ -178,7 +178,7 @@ foreach ( $non_users as $nonuser ) {
   if ( user_is_nonuser_admin ( $login, $nonuser['cal_login'] ) )
     $my_non_users[]['cal_login'] = $nonuser['cal_login'];
 }
-// .
+
 // If a user is specified, we list just that user.
 if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
     access_is_enabled () ) && ! empty ( $user ) && $user != $login ) {

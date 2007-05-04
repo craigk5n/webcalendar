@@ -77,7 +77,7 @@ echo '
     </form>
     ';
 
-ob_end_flush();
+ob_end_flush ();
 
 echo print_trailer ();
 

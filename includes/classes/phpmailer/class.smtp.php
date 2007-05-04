@@ -54,7 +54,7 @@ class SMTP
      * @access public
      * @return void
      */
-    function SMTP() {
+    function SMTP () {
         $this->smtp_conn = 0;
         $this->error = null;
         $this->helo_rply = null;
@@ -84,7 +84,7 @@ class SMTP
         $this->error = null;
 
         # make sure we are __not__ connected
-        if($this->connected()) {
+        if($this->connected ()) {
             # ok we are connected! what should we do?
             # for now we will just give an error saying we
             # are already connected
@@ -122,7 +122,7 @@ class SMTP
            socket_set_timeout($this->smtp_conn, $tval, 0);
 
         # get any announcement stuff
-        $announce = $this->get_lines();
+        $announce = $this->get_lines ();
 
         # set the timeout  of any socket functions at 1/10 of a second
         //if(function_exists("socket_set_timeout"))
@@ -137,7 +137,7 @@ class SMTP
 
     /**
      * Performs SMTP authentication.  Must be run after running the
-     * Hello() method.  Returns true if successfully authenticated.
+     * Hello () method.  Returns true if successfully authenticated.
      * @access public
      * @return bool
      */
@@ -145,7 +145,7 @@ class SMTP
         // Start authentication
         fputs($this->smtp_conn,"AUTH LOGIN" . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($code != 334) {
@@ -163,7 +163,7 @@ class SMTP
         // Send encoded username
         fputs($this->smtp_conn, base64_encode($username) . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($code != 334) {
@@ -181,7 +181,7 @@ class SMTP
         // Send encoded password
         fputs($this->smtp_conn, base64_encode($password) . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($code != 235) {
@@ -204,7 +204,7 @@ class SMTP
      * @access private
      * @return bool
      */
-    function Connected() {
+    function Connected () {
         if(!empty ($this->smtp_conn)) {
             $sock_status = socket_get_status($this->smtp_conn);
             if($sock_status["eof"]) {
@@ -214,7 +214,7 @@ class SMTP
                     echo "SMTP -> NOTICE:" . $this->CRLF .
                          "EOF caught while checking if connected";
                 }
-                $this->Close();
+                $this->Close ();
                 return false;
             }
             return true; # everything looks good
@@ -229,7 +229,7 @@ class SMTP
      * @access public
      * @return void
      */
-    function Close() {
+    function Close () {
         $this->error = null; # so there is no confusion
         $this->helo_rply = null;
         if(!empty ($this->smtp_conn)) {
@@ -266,15 +266,15 @@ class SMTP
     function Data($msg_data) {
         $this->error = null; # so no confusion is caused
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                    "error" => "Called Data() without being connected");
+                    "error" => "Called Data () without being connected");
             return false;
         }
 
         fputs($this->smtp_conn,"DATA" . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -365,7 +365,7 @@ class SMTP
         # over with aleady
         fputs($this->smtp_conn, $this->CRLF . "." . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -405,15 +405,15 @@ class SMTP
     function Expand($name) {
         $this->error = null; # so no confusion is caused
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                    "error" => "Called Expand() without being connected");
+                    "error" => "Called Expand () without being connected");
             return false;
         }
 
         fputs($this->smtp_conn,"EXPN " . $name . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -456,9 +456,9 @@ class SMTP
     function Hello($host="") {
         $this->error = null; # so no confusion is caused
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                    "error" => "Called Hello() without being connected");
+                    "error" => "Called Hello () without being connected");
             return false;
         }
 
@@ -488,7 +488,7 @@ class SMTP
     function SendHello($hello, $host) {
         fputs($this->smtp_conn, $hello . " " . $host . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -530,9 +530,9 @@ class SMTP
     function Help($keyword="") {
         $this->error = null; # to avoid confusion
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                    "error" => "Called Help() without being connected");
+                    "error" => "Called Help () without being connected");
             return false;
         }
 
@@ -543,7 +543,7 @@ class SMTP
 
         fputs($this->smtp_conn,"HELP" . $extra . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -582,15 +582,15 @@ class SMTP
     function Mail($from) {
         $this->error = null; # so no confusion is caused
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                    "error" => "Called Mail() without being connected");
+                    "error" => "Called Mail () without being connected");
             return false;
         }
 
         fputs($this->smtp_conn,"MAIL FROM:<" . $from . ">" . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -621,18 +621,18 @@ class SMTP
      * @access public
      * @return bool
      */
-    function Noop() {
+    function Noop () {
         $this->error = null; # so no confusion is caused
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                    "error" => "Called Noop() without being connected");
+                    "error" => "Called Noop () without being connected");
             return false;
         }
 
         fputs($this->smtp_conn,"NOOP" . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -667,9 +667,9 @@ class SMTP
     function Quit($close_on_error=true) {
         $this->error = null; # so there is no confusion
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                    "error" => "Called Quit() without being connected");
+                    "error" => "Called Quit () without being connected");
             return false;
         }
 
@@ -677,7 +677,7 @@ class SMTP
         fputs($this->smtp_conn,"quit" . $this->CRLF);
 
         # get any good-bye messages
-        $byemsg = $this->get_lines();
+        $byemsg = $this->get_lines ();
 
         if($this->do_debug >= 2) {
             echo "SMTP -> FROM SERVER:" . $this->CRLF . $byemsg;
@@ -700,7 +700,7 @@ class SMTP
         }
 
         if(empty ($e) || $close_on_error) {
-            $this->Close();
+            $this->Close ();
         }
 
         return $rval;
@@ -721,15 +721,15 @@ class SMTP
     function Recipient($to) {
         $this->error = null; # so no confusion is caused
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                    "error" => "Called Recipient() without being connected");
+                    "error" => "Called Recipient () without being connected");
             return false;
         }
 
         fputs($this->smtp_conn,"RCPT TO:<" . $to . ">" . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -762,18 +762,18 @@ class SMTP
      * @access public
      * @return bool
      */
-    function Reset() {
+    function Reset () {
         $this->error = null; # so no confusion is caused
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                    "error" => "Called Reset() without being connected");
+                    "error" => "Called Reset () without being connected");
             return false;
         }
 
         fputs($this->smtp_conn,"RSET" . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -814,15 +814,15 @@ class SMTP
     function Send($from) {
         $this->error = null; # so no confusion is caused
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                    "error" => "Called Send() without being connected");
+                    "error" => "Called Send () without being connected");
             return false;
         }
 
         fputs($this->smtp_conn,"SEND FROM:" . $from . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -862,15 +862,15 @@ class SMTP
     function SendAndMail($from) {
         $this->error = null; # so no confusion is caused
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                "error" => "Called SendAndMail() without being connected");
+                "error" => "Called SendAndMail () without being connected");
             return false;
         }
 
         fputs($this->smtp_conn,"SAML FROM:" . $from . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -910,15 +910,15 @@ class SMTP
     function SendOrMail($from) {
         $this->error = null; # so no confusion is caused
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                "error" => "Called SendOrMail() without being connected");
+                "error" => "Called SendOrMail () without being connected");
             return false;
         }
 
         fputs($this->smtp_conn,"SOML FROM:" . $from . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -952,7 +952,7 @@ class SMTP
      * @access public
      * @return bool
      */
-    function Turn() {
+    function Turn () {
         $this->error = array ("error" => "This method, TURN, of the SMTP ".
                                         "is not implemented");
         if($this->do_debug >= 1) {
@@ -977,15 +977,15 @@ class SMTP
     function Verify($name) {
         $this->error = null; # so no confusion is caused
 
-        if(!$this->connected()) {
+        if(!$this->connected ()) {
             $this->error = array (
-                    "error" => "Called Verify() without being connected");
+                    "error" => "Called Verify () without being connected");
             return false;
         }
 
         fputs($this->smtp_conn,"VRFY " . $name . $this->CRLF);
 
-        $rply = $this->get_lines();
+        $rply = $this->get_lines ();
         $code = substr ($rply,0,3);
 
         if($this->do_debug >= 2) {
@@ -1019,18 +1019,18 @@ class SMTP
      * @access private
      * @return string
      */
-    function get_lines() {
+    function get_lines () {
         $data = "";
         while($str = fgets($this->smtp_conn,515)) {
             if($this->do_debug >= 4) {
-                echo "SMTP -> get_lines(): \$data was \"$data\"" .
+                echo "SMTP -> get_lines (): \$data was \"$data\"" .
                          $this->CRLF;
-                echo "SMTP -> get_lines(): \$str is \"$str\"" .
+                echo "SMTP -> get_lines (): \$str is \"$str\"" .
                          $this->CRLF;
             }
             $data .= $str;
             if($this->do_debug >= 4) {
-                echo "SMTP -> get_lines(): \$data is \"$data\"" . $this->CRLF;
+                echo "SMTP -> get_lines (): \$data is \"$data\"" . $this->CRLF;
             }
             # if the 4th character is a space then we are done reading
             # so just break the loop

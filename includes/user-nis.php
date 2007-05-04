@@ -35,7 +35,7 @@ function user_valid_login ( $login, $password ) {
   global $error,$user_external_group,$user_external_email;
   $ret = false;
 
-  $data = @yp_match (yp_get_default_domain(), 'passwd.byname', $login);
+  $data = @yp_match (yp_get_default_domain (), 'passwd.byname', $login);
   if ( strlen ( $data ) ) {
     $data = explode ( ':', $data );
     if ( $user_external_group && $user_external_group != $data[3] ) {
@@ -108,7 +108,7 @@ function user_valid_crypt ( $login, $crypt_password ) {
     }
     dbi_free_result ( $res );
   } else {
-    $error = 'Database error: ' . dbi_error();
+    $error = 'Database error: ' . dbi_error ();
   }
 
   return $ret;
@@ -464,7 +464,7 @@ function user_get_users ( $publicOnly=false ) {
     }
     dbi_free_result ( $res );
   }
-  //no need to call sort_users() as the sql can sort for us
+  //no need to call sort_users () as the sql can sort for us
   return $ret;
 }
 ?>

@@ -185,7 +185,7 @@ function export_time( $date, $duration, $time, $texport, $vtype = 'E' ) {
     $ret .= "DTSTART:$utc_start\r\n";
   }
   if ( strcmp( $texport, 'ical' ) == 0 ) {
-    $utc_dtstamp = export_ts_utc_date( time() );
+    $utc_dtstamp = export_ts_utc_date( time () );
     $ret .= "DTSTAMP:$utc_dtstamp\r\n";
     // We don' want DTEND for VTODOs
     if ( $vtype == 'T' || $vtype == 'N' ) return $ret;
@@ -751,7 +751,7 @@ function export_vcal ( $id ) {
     echo "VERSION:1.0\r\n";
   } while ( list( $key, $row ) = each( $entry_array ) ) {
     $id = $row[0];
-    $export_uid = generate_uid();
+    $export_uid = generate_uid ();
     $name = $row[1];
     $priority = $row[2];
     $date = $row[3];
@@ -1078,7 +1078,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     }
   }
 
-  /* VTIMEZONE Set in export_time() if needed */
+  /* VTIMEZONE Set in export_time () if needed */
   if ( $insert_vtimezone ) $ret .= $insert_vtimezone . "\r\n";
 
   $ret .= "END:VCALENDAR\r\n";
@@ -1159,7 +1159,7 @@ function import_data ( $data, $overwrite, $type ) {
     cal_date, cal_type, cal_login ) VALUES ( ?, NULL, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $importId, date ( 'Ymd' ),
     $type, $login ) ) ) {
-    $errormsg = db_error();
+    $errormsg = db_error ();
     return;
   }
   if ( ! is_array ( $data ) )
@@ -1424,7 +1424,7 @@ function import_data ( $data, $overwrite, $type ) {
       // do_debug ( "SQL> $sql" );
       if ( empty ( $error ) ) {
         if ( ! dbi_execute ( $sql, $sql_params ) ) {
-          $error .= db_error();
+          $error .= db_error ();
           // do_debug ( $error );
           break;
         } else if ( $ImportType == 'RMTICS' ) {
@@ -1787,7 +1787,7 @@ function import_data ( $data, $overwrite, $type ) {
           }
           dbi_free_result ( $res );
         } else {
-          echo db_error() . "<br />\n";
+          echo db_error () . "<br />\n";
         }
       }
       $oldidcnt = count ( $oldIds );
@@ -1814,7 +1814,7 @@ function import_data ( $data, $overwrite, $type ) {
  */
 // Parse the ical file and return the data hash.
 // NOTE!!!!!
-// There seems to be a bug in certain versions of PHP where the fgets()
+// There seems to be a bug in certain versions of PHP where the fgets ()
 // returns a blank string when reading stdin.  I found this to be
 // a problem with PHP 4.1.2 on Linux.
 // It did work correctly with PHP 5.0.2.
@@ -1824,7 +1824,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   if ( $source == 'file' || $source == 'remoteics' ) {
     if ( !$fd = @fopen( $cal_file, 'r' ) ) {
       $errormsg .= "Can't read temporary file: $cal_file\n";
-      exit();
+      exit ();
     } else {
       // Read in contents of entire file first
       $data = '';
@@ -1851,7 +1851,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       $data .= $line;
       if ( $cnt > 10 && strlen ( $data ) == 0 ) {
         // do_debug ( "Read $cnt lines of data, but got no data :-(" );
-        // do_debug ( "Informing user of PHP server bug (PHP v" . phpversion() . ")" );
+        // do_debug ( "Informing user of PHP server bug (PHP v" . phpversion () . ")" );
         // Note: Mozilla Calendar does not display this error for some reason.
         echo '<br /><b>Error:</b> Your PHP server ' . phpversion ()
          . ' seems to have a bug reading stdin.  '
@@ -2706,7 +2706,7 @@ function parse_vcal( $cal_file ) {
   // echo "Parsing vcal file...<br />\n";
   if ( !$fd = @fopen( $cal_file, 'r' ) ) {
     $errormsg .= "Can't read temporary file: $cal_file\n";
-    exit();
+    exit ();
   } else {
     // reflect the section where we are in the file:
     // VCALENDAR, TZ/DAYLIGHT, VEVENT, ALARM
@@ -2988,7 +2988,7 @@ function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
   $palmStr = translate ( 'Palm Pilot' );
   return '
       <select name="format" id="' . $name . '"'
-   . ( ! empty ( $jsaction ) ? 'onchange="' . $jsaction . '();"' : '' ) . '>
+   . ( ! empty ( $jsaction ) ? 'onchange="' . $jsaction . ' ();"' : '' ) . '>
         <option value="ical">iCalendar</option>
         <option value="vcal">vCalendar</option>
         <option value="pilot-csv">Pilot-datebook CSV (' . $palmStr . ')</option>

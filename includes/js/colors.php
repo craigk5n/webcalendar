@@ -29,16 +29,16 @@ function setInit () {
   if (oldcol.substr (0,1 ) == '#' )
     oldcol = oldcol.substr (1,6);
   curcol=oldcol;
-  setPreColors();
+  setPreColors ();
   setCursor('1');
   setCol(oldcol);
   document.getElementById("theoldcell").bgColor= '#' + oldcol;
   currgb=[fromhex(curcol.substr (0,2)), fromhex(curcol.substr (2,2)), fromhex(curcol.substr (4,2))];
   curhsl=RGBtoHSL(currgb[0],currgb[1],currgb[2]);
-  update();
+  update ();
 }
 
-function fillhtml() {
+function fillhtml () {
   var slide = document.getElementById('slider');
   var choice = document.getElementById('colorchoices');
   var custom = document.getElementById('colorcustom');
@@ -79,20 +79,20 @@ function fillhtml() {
 
 function setCookie(name, value, expire) {
   document.cookie = name + "=" + escape(value)
-    + ((expire == null) ? "" : ("; expires=" + expire.toGMTString()))
+    + ((expire == null) ? "" : ("; expires=" + expire.toGMTString ()))
 }
 
 function transferColor () {
-  today= new Date();
+  today= new Date ();
   expires= new Date ()
-  expires.setTime(today.getTime() + 1000*60*60*24*365)
+  expires.setTime(today.getTime () + 1000*60*60*24*365)
   setCookie("webcalendar_custom_colors",precol.join(","),expires);
-  thisInput.value = '#' + document.getElementById("htmlcolor").value.toUpperCase();
+  thisInput.value = '#' + document.getElementById("htmlcolor").value.toUpperCase ();
   if (thisInput.onchange) {
   // This updates the color swatch for this color input.  It relies on the
   // <input>s of the prefform having onkeyup="updateColor(this);" as an
   // attribute
-    thisInput.onchange();
+    thisInput.onchange ();
    }
   window.close ();
 }
@@ -134,7 +134,7 @@ function setPreColors () {
 
 function definePreColor () {
   precol[parseInt(cursorPos)-1]=curcol;
-  setPreColors();
+  setPreColors ();
   setCursor(parseInt(cursorPos)+1>16?1:parseInt(cursorPos)+1);
 }
 
@@ -149,7 +149,7 @@ function setCursor(what) {
   document.getElementById("preimg"+cursorPos).src=cursorImg.src;
 }
 
-function update() {
+function update () {
   document.getElementById("thecell").bgColor= '#' + curcol;
   document.getElementById("rgb_r").value=currgb[0];
   document.getElementById("rgb_g").value=currgb[1];
@@ -219,7 +219,7 @@ function RGBtoHSL (r,g,b) {
 }
 
 function setCol(value) {
-  value=value.toUpperCase();
+  value=value.toUpperCase ();
   if (value.length!=6) value=curcol;
   for (a=0;a<6;a++)
     if (hexchars.indexOf(value.charAt(a))==-1) {
@@ -228,7 +228,7 @@ function setCol(value) {
   curcol=value;
   currgb=[fromhex(curcol.substr (0, 2 )), fromhex(curcol.substr (2,2)), fromhex(curcol.substr (4,2))];
   curhsl=RGBtoHSL(currgb[0],currgb[1],currgb[2]);
-  update();
+  update ();
 }
 
 function setRGB(r,g,b) {
@@ -236,7 +236,7 @@ function setRGB(r,g,b) {
   currgb=[r,g,b];
   curcol=tohex(r)+tohex(g)+tohex(b);
   curhsl=RGBtoHSL(r,g,b);
-  update();
+  update ();
 }
 
 function setHSL(h,s,l) {
@@ -244,7 +244,7 @@ function setHSL(h,s,l) {
   curhsl=[h,s,l];
   currgb=HSLtoRGB(h,s,l);
   curcol=tohex(currgb[0])+tohex(currgb[1])+tohex(currgb[2]);
-  update();
+  update ();
 }
 
 function setFromRGB () {
@@ -255,7 +255,7 @@ function setFromRGB () {
 }
 
 function setFromHTML () {
-  inval=document.getElementById("htmlcolor").value.toUpperCase();
+  inval=document.getElementById("htmlcolor").value.toUpperCase ();
   if (inval.length!=6) {setCol(curcol);return;}
   for (a=0;a<6;a++)
     if (hexchars.indexOf(inval.charAt(a))==-1) {

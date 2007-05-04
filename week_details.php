@@ -138,7 +138,7 @@ if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 echo '<br />';
 
 echo $printerStr;
-echo print_trailer();
+echo print_trailer ();
 
 
 /**
@@ -154,21 +154,21 @@ function print_detailed_entry ( $event, $date ) {
 
   global $layers;
 
-  if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
+  if ( $login != $event->getLogin () && strlen ( $event->getLogin () ) ) {
     $class = 'layerentry';
   } else {
     $class = 'entry';
-    if ( $event->getStatus() == 'W' ) $class = 'unapprovedentry';
+    if ( $event->getStatus () == 'W' ) $class = 'unapprovedentry';
   }
 
-  if ( $event->getPriority() < 4  ) echo '<strong>';
+  if ( $event->getPriority () < 4  ) echo '<strong>';
 
-  if ( $event->getExtForID() != '' ) {
-    $id = $event->getExtForID();
-    $name = $event->getName() . ' (' . translate ( 'cont.' ) . ')';
+  if ( $event->getExtForID () != '' ) {
+    $id = $event->getExtForID ();
+    $name = $event->getName () . ' (' . translate ( 'cont.' ) . ')';
   } else {
-    $id = $event->getID();
-    $name = $event->getName();
+    $id = $event->getID ();
+    $name = $event->getName ();
   }
 
   $popupid = "eventinfo-pop$id-$key";
@@ -181,12 +181,12 @@ function print_detailed_entry ( $event, $date ) {
   if ( strlen ( $user ) > 0 ) {
     echo '&amp;user=' . $user;
   } else if ( $class == 'layerentry' ) {
-    echo '&amp;user=' . $event->getLogin();
+    echo '&amp;user=' . $event->getLogin ();
   }
   echo '<img src="images/circle.gif" class="bullet" alt="view icon" />';
-  if ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
+  if ( $login != $event->getLogin () && strlen ( $event->getLogin () ) ) {
     if ($layers) foreach ($layers as $layer) {
-      if($layer['cal_layeruser'] == $event->getLogin()) {
+      if($layer['cal_layeruser'] == $event->getLogin ()) {
         $in_span = true;
         echo '<span style="color:#' . $layer['cal_color'] . ';">';
       }
@@ -195,37 +195,37 @@ function print_detailed_entry ( $event, $date ) {
 
   $timestr = '';
 
- if ( $event->isAllDay() ) {
+ if ( $event->isAllDay () ) {
   $timestr = translate ( 'All day event' );
- } else if ( $event->getDuration() > 0 ) {
-  $timestr = display_time ( $event->getDateTime() ) .
-   ' - ' . display_time ( $event->getEndDateTime() );
+ } else if ( $event->getDuration () > 0 ) {
+  $timestr = display_time ( $event->getDateTime () ) .
+   ' - ' . display_time ( $event->getEndDateTime () );
   echo $timestr . '&raquo;&nbsp;';
  }
 
-  if ( $login != $user && $event->getAccess() == 'R' && strlen ( $user ) ) {
+  if ( $login != $user && $event->getAccess () == 'R' && strlen ( $user ) ) {
     $PN =  $PD = '(' . translate ( 'Private' ) . ')';
-  } elseif ( $login != $event->getLogin() && $event->getAccess() == 'R' && strlen ( $event->getLogin() ) ) {
+  } elseif ( $login != $event->getLogin () && $event->getAccess () == 'R' && strlen ( $event->getLogin () ) ) {
     $PN = $PD = '(' . translate ( 'Private' ) . ')';
-  } elseif ( $login != $event->getLogin() && strlen ( $event->getLogin() ) ) {
+  } elseif ( $login != $event->getLogin () && strlen ( $event->getLogin () ) ) {
     $PN = htmlspecialchars ( $name );
-    $PD = activate_urls ( htmlspecialchars ( $event->getDescription() ) );
+    $PD = activate_urls ( htmlspecialchars ( $event->getDescription () ) );
   } else {
     $PN = htmlspecialchars ( $name );
-    $PD = activate_urls ( htmlspecialchars ( $event->getDescription() ) );
+    $PD = activate_urls ( htmlspecialchars ( $event->getDescription () ) );
   }
   if ( ! empty ( $in_span ) )
    $PN .= '</span>';
 
   echo $PN;
   echo '</a>';
-  if ( $event->getPriority() < 4 ) echo '</strong>';
+  if ( $event->getPriority () < 4 ) echo '</strong>';
   # Only display description if it is different than the event name.
   if ( $PN != $PD )
     echo " - " . $PD;
   echo "<br />\n";
-  $eventinfo .= build_entry_popup ( $popupid, $event->getLogin(),
-    $event->getDescription(), $timestr, site_extras_for_popup ( $id ) );
+  $eventinfo .= build_entry_popup ( $popupid, $event->getLogin (),
+    $event->getDescription (), $timestr, site_extras_for_popup ( $id ) );
 }
 
 //
@@ -255,7 +255,7 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   $ev = combine_and_sort_events($ev, $rep);
   for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
     if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' ) ||
-      $ev[$i]->getStatus() == 'A' )
+      $ev[$i]->getStatus () == 'A' )
       print_detailed_entry ( $ev[$i], $date );
   }
 }

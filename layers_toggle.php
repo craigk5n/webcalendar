@@ -36,7 +36,7 @@ if ( ! dbi_execute ( $sql, array ( $layer_user,
 if ( empty ( $error ) )
   do_redirect ( $url );
 
-print_header();
-echo print_error ( $error, true ) . print_trailer();
+print_header ();
+echo print_error ( $error, true ) . print_trailer ();
 
 ?>

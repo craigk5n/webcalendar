@@ -78,7 +78,7 @@ function user_valid_login ( $login, $password, $silent=false ) {
     }
     dbi_free_result ( $res );
   } else if ( ! $silent ) {
-    $error = db_error();
+    $error = db_error ();
   }
 
   return $ret;
@@ -117,7 +117,7 @@ function user_valid_crypt ( $login, $crypt_password ) {
     }
     dbi_free_result ( $res );
   } else {
-    $error = 'Database error: ' . dbi_error();
+    $error = 'Database error: ' . dbi_error ();
   }
 
   return $ret;
@@ -229,7 +229,7 @@ function user_add_user ( $user, $password, $firstname,
     'VALUES ( ?, ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $user, $ulastname,
     $ufirstname, $admin, $upassword, $uemail ) ) ) {
-    $error = db_error();
+    $error = db_error ();
     return false;
   }
   return true;
@@ -482,7 +482,7 @@ function user_get_users ( $publicOnly=false ) {
     }
     dbi_free_result ( $res );
   }
-  //no need to call sort_users() as the sql can sort for us
+  //no need to call sort_users () as the sql can sort for us
   return $ret;
 }
 ?>

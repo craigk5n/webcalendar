@@ -64,7 +64,7 @@ $debug=FALSE;
  include 'includes/config.php';
  include 'includes/dbi4php.php';
 
- $WebCalendar->initializeFirstPhase();
+ $WebCalendar->initializeFirstPhase ();
 
  include "includes/$user_inc";
 
@@ -74,11 +74,11 @@ $debug=FALSE;
 
 include_once 'includes/xcal.php';
 
- $WebCalendar->initializeSecondPhase();
+ $WebCalendar->initializeSecondPhase ();
 
 load_global_settings ();
 
-$WebCalendar->setLanguage();
+$WebCalendar->setLanguage ();
 
 
 if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
@@ -282,11 +282,11 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
   if ( $entrycnt > 0 || $rentrycnt > 0 ) {
     for ( $j = 0; $j < $entrycnt && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      if ( in_array ( $entries[$j]->getAccess(), $allow_access ) ) {
-        $eventIds[] = $entries[$j]->getID();
-        $unixtime = date_to_epoch ( $entries[$j]->getDateTime() );
+      if ( in_array ( $entries[$j]->getAccess (), $allow_access ) ) {
+        $eventIds[] = $entries[$j]->getID ();
+        $unixtime = date_to_epoch ( $entries[$j]->getDateTime () );
         if ( $date_in_title ) {
-          $itemtime = ( $entries[$j]->isAllDay() || $entries[$j]->isUntimed() ?
+          $itemtime = ( $entries[$j]->isAllDay () || $entries[$j]->isUntimed () ?
             $time_separator . date ( $time_format, $unixtime ): '' ) . ' ';
           $dateinfo = date ( $date_format, $unixtime ) . $itemtime;
         } else {
@@ -294,19 +294,19 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
         }
         echo "\n<item>\n";
         echo '<title><![CDATA[' . $dateinfo .
-          $entries[$j]->getName() . "]]></title>\n";
+          $entries[$j]->getName () . "]]></title>\n";
         echo '<link>' . $SERVER_URL . 'view_entry.php?id=' .
-          $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" .
+          $entries[$j]->getID () . "&amp;friendly=1&amp;rssuser=$login&amp;date=" .
           $d . "</link>\n";
         echo "<description><![CDATA[" .
-          $entries[$j]->getDescription() . "]]></description>\n";
+          $entries[$j]->getDescription () . "]]></description>\n";
         if ( ! empty ( $category ) )
           echo "<category><![CDATA[" . $category . "]]></category>\n";
         //echo '<creator><![CDATA[' . $creator . "]]></creator>\n";
         //RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT
         echo '<pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) ." GMT</pubDate>\n";
         echo '<guid>' . $SERVER_URL . 'view_entry.php?id=' .
-          $entries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" .
+          $entries[$j]->getID () . "&amp;friendly=1&amp;rssuser=$login&amp;date=" .
           $d . "</guid>\n";
         echo "</item>\n";
         $numEvents++;
@@ -318,9 +318,9 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
           //step below is necessary because 1st occurence of repeating
           //events shows up in $entries AND $rentries & we suppress display
           //of it in $rentries
-       if ( in_array ($rentries[$j]->getID(),$eventIds)  &&
-             $rentries[$j]->getrepeatType()== 'daily' ) {
-               $reventIds[]=$rentries[$j]->getID();
+       if ( in_array ($rentries[$j]->getID (),$eventIds)  &&
+             $rentries[$j]->getrepeatType ()== 'daily' ) {
+               $reventIds[]=$rentries[$j]->getID ();
           }
 
 
@@ -328,38 +328,38 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
       // Prevent a repeating event from displaying if the original event
       // has already been displayed; prevent 2nd & later recurrence
       // of daily events from displaying if that option has been selected
-      if ( ! in_array ($rentries[$j]->getID(),$eventIds ) &&
-         ( ! $show_daily_events_only_once || ! in_array ($rentries[$j]->getID(),$reventIds )) &&
-         ( in_array ( $rentries[$j]->getAccess(), $allow_access ) ) ) {
+      if ( ! in_array ($rentries[$j]->getID (),$eventIds ) &&
+         ( ! $show_daily_events_only_once || ! in_array ($rentries[$j]->getID (),$reventIds )) &&
+         ( in_array ( $rentries[$j]->getAccess (), $allow_access ) ) ) {
 
           //show repeating events only once
-          if ( $rentries[$j]->getrepeatType()== 'daily' )
-                  $reventIds[]=$rentries[$j]->getID();
+          if ( $rentries[$j]->getrepeatType ()== 'daily' )
+                  $reventIds[]=$rentries[$j]->getID ();
 
 
         echo "\n<item>\n";
-        $unixtime = date_to_epoch ( $rentries[$j]->getDateTime() );
+        $unixtime = date_to_epoch ( $rentries[$j]->getDateTime () );
         if ( $date_in_title == true ) {
-          $itemtime = ( $rentries[$j]->isAllDay() || $rentries[$j]->isUntimed() ?
+          $itemtime = ( $rentries[$j]->isAllDay () || $rentries[$j]->isUntimed () ?
             $time_separator . date ( $time_format, $unixtime ): '' ) . ' ';
           $dateinfo = date ( $date_format, $unixtime ) . $itemtime;
         } else {
           $dateinfo = '';
         }
         echo '<title><![CDATA[' . $dateinfo .
-          $rentries[$j]->getName() . "]]></title>\n";
+          $rentries[$j]->getName () . "]]></title>\n";
         echo '<link>' . $SERVER_URL . "view_entry.php?id=" .
-          $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" .
+          $rentries[$j]->getID () . "&amp;friendly=1&amp;rssuser=$login&amp;date=" .
           $d . "</link>\n";
         echo "<description><![CDATA[" .
-          $rentries[$j]->getDescription() . "]]></description>\n";
+          $rentries[$j]->getDescription () . "]]></description>\n";
         if ( ! empty ( $category ) )
           echo "<category><![CDATA[" . $category . "]]></category>\n";
        // echo '<creator><![CDATA[' . $creator . "]]></creator>\n";
         echo '<pubDate>' . $pubDate . ' ' . gmdate ( 'H:i:s', $unixtime )
          . " GMT</pubDate>\n";
         echo '<guid>' . $SERVER_URL . 'view_entry.php?id=' .
-          $rentries[$j]->getID() . "&amp;friendly=1&amp;rssuser=$login&amp;date=" .
+          $rentries[$j]->getID () . "&amp;friendly=1&amp;rssuser=$login&amp;date=" .
           $d . "</guid>\n";
         echo "</item>\n";
         $numEvents++;
