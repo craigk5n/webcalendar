@@ -154,7 +154,7 @@ CREATE TABLE webcal_categories (
   cat_id INT NOT NULL,
   cat_owner VARCHAR(25),
   cat_name VARCHAR(80) NOT NULL,
-  cat_color VARCHAR(*) DEFAULT NULL,
+  cat_color VARCHAR(8) DEFAULT NULL,
   PRIMARY KEY ( cat_id )
 );
 CREATE TABLE webcal_asst (
