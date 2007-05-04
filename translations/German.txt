@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 2. Mai 2007
+# Last update: 3. Mai 2007
 #
 # $Id$
-# Translation last updated on 05-02-2007
+# Translation last updated on 05-04-2007
 
 
 ################################################################################
@@ -981,20 +981,16 @@ Unable to update preference: Aktualisierung der Voreinstellung nicht m&ouml;glic
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Eintrag ansehen
 Approve/Confirm: Eintrag Best&auml;tigen&#47;R&uuml;ckmelden
-Reject: Ablehnen
-Check All: Alles markieren
-Uncheck All: Nichts markieren
 Approve Selected: Best&auml;tige Auswahl
-Reject Selected: Auswahl ablehnen
+Check All: Alles markieren
 Emails Will Not Be Sent: Emails werden nicht versendet
+Reject Selected: Auswahl ablehnen
+Reject: Ablehnen
+Uncheck All: Nichts markieren
+View this entry: Eintrag ansehen
 No unapproved entries for: Keine unbest&auml;tigten Eintr&auml;ge f&uuml;r
-#
-# << MISSING >>
-# No unapproved entries for XXX.:
-# English text: No unapproved entries for: "XXX".
-#
+No unapproved entries for XXX.: Keine unbest&auml;tigten Eintr&auml;ge f&uuml;r &#39;XXX&#39;
 Unapproved Entries: Unbest&auml;tigte Eintr&auml;ge
 Not authorized: Keine Berechtigung
 Approve this entry?: Diesen Eintrag best&auml;tigen?
