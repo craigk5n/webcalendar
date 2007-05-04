@@ -61,7 +61,7 @@ $wizardStr = translate ( 'WebCalendar Installation Wizard Step XXX' );
 $passwordStr = translate ( 'Password' );
 $singleUserStr = translate ( 'Single-User' );
 $loginStr = translate ( 'Login' );
-$failureStr = '<b>' . translate ( 'Failure Reason' ) . ':</b>';
+$failureStr = '<b>' . translate ( 'Failure Reason' ) . ': </b>';
 $manualStr = translate ( 'You must manually create database' );
 $cachedirStr = translate ( 'Database Cache Directory' );
 $logoutStr = translate ( 'Logout' );
@@ -442,7 +442,7 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
 
   //test db_cachedir directory for write permissions
   if ( strlen ( $db_cachedir ) > 0 ) {
-    if ( ! file_exists ( $db_cachedir ) ) {
+    if ( ! is_dir ( $db_cachedir ) ) {
       $response_msg2 = $failureStr . $cachedirStr . ' ' .
         translate ( 'does not exist' );
     } else if ( ! is_writable ( $db_cachedir ) ) {
