@@ -278,7 +278,7 @@ function export_recurrence_ical( $id, $simple = false ) {
         // translate ('SA');
         // translate ('SU');
         if ( ! empty ( $byday ) && ! empty ( $lang_file ) &&
-          $lang_file != 'English-US.txt' ) {
+           ! strstr ( $lang_file, 'English-US.txt' ) ) {
           $bydayArr = explode ( ',', $byday );
           foreach ( $bydayArr as $bydayIdx ) {
             $bydayOut[] = substr ( $bydayIdx, 0, strlen ( $bydayIdx ) -2 )
