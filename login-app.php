@@ -21,7 +21,7 @@ load_global_settings ();
 load_user_preferences ( 'guest' );
 
 $WebCalendar->setLanguage ();
-// .
+
 // Look for action=logout.
 $action = getGetValue ( 'action' );
 $logout = false;
@@ -40,7 +40,7 @@ if ( empty ( $return_path ) ) {
 }
 
 $appStr = generate_application_name ();
-// .
+
 // Set return page.
 $login_return_path = $SERVER_URL . $return_path;
 
@@ -66,7 +66,7 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
       }
     </script>' : '' ) . '
     <link rel="stylesheet" type="text/css" href="css_cacher.php?login=__public__" />'
-// .
+
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
   ? load_template ( $login, 'S' ) : '' ) . '
@@ -147,7 +147,7 @@ echo ( $DEMO_MODE == 'Y'
     <hr />
     <br /><br />
     <a href="' . $PROGRAM_URL . '" id="programname">' . $PROGRAM_NAME . '</a>'
-// .
+
 // Print custom trailer (since we do not call print_trailer function).
  . ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y'
   ? load_template ( $login, 'T' ) : '' );

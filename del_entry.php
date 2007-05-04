@@ -6,12 +6,12 @@ $mail = new WebCalMailer;
 
 $can_edit = $my_event = false;
 $other_user = '';
-// .
+
 // First, check to see if this user should be able to delete this event.
 if ( $id > 0 ) {
   // Then see who has access to edit this entry.
   $can_edit = ( $is_admin || $readonly != 'Y' );
-  // .
+
   // If assistant is doing this, then we need to switch login to user in the SQL.
   $query_params = array ();
   $query_params[] = $id;
@@ -50,12 +50,12 @@ if ( $res ) {
 
   if ( $owner == $login || $is_assistant && $user == $owner || $is_nonuser_admin )
     $can_edit = $my_event = true;
-  // .
+
   // Check UAC.
   if ( access_is_enabled () && ! $is_admin )
     $can_edit = access_user_calendar ( 'edit', $owner );
 }
-// .
+
 // If the user is the event creator or their assistant
 // allow them to delete the event from another user's calendar.
 // It's essentially the same thing as editing the event and removing the
@@ -65,7 +65,7 @@ if ( $my_event && ! empty ( $user ) && $user != $login && ! $is_assistant )
 
 if ( $readonly == 'Y' )
   $can_edit = false;
-// .
+
 // If User Access Control is enabled, check to see if the current
 // user is allowed to delete events from the other user's calendar.
 if ( ! $can_edit && access_is_enabled () && ! empty ( $user ) &&
@@ -74,7 +74,7 @@ if ( ! $can_edit && access_is_enabled () && ! empty ( $user ) &&
 
 if ( ! $can_edit )
   $error = print_not_auth ();
-// .
+
 // Is this a repeating event?
 $event_repeats = false;
 $res = dbi_execute ( 'SELECT COUNT( cal_id ) FROM webcal_entry_repeats
@@ -102,7 +102,7 @@ if ( $id > 0 && empty ( $error ) ) {
       $thisdate = $row[0];
     }
   }
-  // .
+
   // Only allow delete of webcal_entry & webcal_entry_repeats
   // if owner or admin, not participant.
   // If a user was specified, then only delete that user (not here) even if we
@@ -138,7 +138,7 @@ if ( $id > 0 && empty ( $error ) ) {
       // Check UAC.
       $can_email = ( access_is_enabled ()
         ? access_user_calendar ( 'email', $partlogin[$i], $login ) : false );
-      // .
+
       // Don't email the logged in user.
       if ( $can_email && $partlogin[$i] != $login ) {
         set_env ( 'TZ', get_pref_setting ( $partlogin[$i], 'TIMEZONE' ) );
@@ -168,7 +168,7 @@ if ( $id > 0 && empty ( $error ) ) {
         }
       }
     }
-    // .
+
     // Instead of deleting from the database...
     // mark it as deleted by setting the status for each participant to "D"
     // (instead of "A"/Accepted, "W"/Waiting-on-approval or "R"/Rejected).
@@ -209,11 +209,11 @@ if ( $id > 0 && empty ( $error ) ) {
           }
         }
       }
-      // .
+
       // Now, mark event as deleted for all users.
       dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = \'D\' WHERE cal_id = ?',
         array ( $id ) );
-      // .
+
       // Delete External users for this event
       dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
         array ( $id ) );
@@ -253,7 +253,7 @@ if ( ! empty ( $return_view ) )
   do_redirect ( $return_view );
 else
   $url = get_preferred_view ( '', empty ( $user ) ? '' : 'user=' . $user );
-// .
+
 // Return to login TIMEZONE.
 set_env ( 'TZ', $TIMEZONE );
 if ( empty ( $error ) && empty ( $mailerError ) ) {

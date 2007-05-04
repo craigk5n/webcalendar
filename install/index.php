@@ -39,7 +39,7 @@ $basedir = '..';
 //change this path if needed
 $firebird_path = 'c&#58;/program files/firebird/firebird_1_5/examples/employee.fdb';
 
-clearstatcache();
+clearstatcache ();
 
 // We may need time to run extensive database loads
 set_time_limit(240);
@@ -80,7 +80,7 @@ $checked = ' checked="checked" ';
 
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
-$magic = @get_magic_quotes_runtime();
+$magic = @get_magic_quotes_runtime ();
 @set_magic_quotes_runtime(0);
 $fd = @fopen ( $file, 'rb', true );
 $settings = array ();
@@ -222,7 +222,7 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
   exit;
 }
 
-$magic = @get_magic_quotes_runtime();
+$magic = @get_magic_quotes_runtime ();
 @set_magic_quotes_runtime(0);
 $fd = @fopen ( $file, 'rb', false );
 if ( ! empty ( $fd ) ) {
@@ -259,7 +259,7 @@ if ( ! empty ( $action ) && $action == 'switch' ) {
    case 2:
      if ( ! empty ( $_SESSION['validuser'] ) ){
        $_SESSION['step'] = $page;
-    $onload = 'db_type_handler();';
+    $onload = 'db_type_handler ();';
     }
    break;
   case 3:
@@ -271,7 +271,7 @@ if ( ! empty ( $action ) && $action == 'switch' ) {
      if ( ! empty ( $_SESSION['validuser'] ) && ! empty ( $_SESSION['db_success'] )  &&
       empty ( $_SESSION['db_create'] ) ){
        $_SESSION['step'] = $page;
-    $onload = 'auth_handler();';
+    $onload = 'auth_handler ();';
     }
    break;
   default:
@@ -359,10 +359,10 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
 
   //for upgrade to v1.1b we need to convert existing categories
   //and repeating events
-  do_v11b_updates();
+  do_v11b_updates ();
 
   //v1.1e requires converting webcal_site_extras to webcal_reminders
-  do_v11e_updates();
+  do_v11e_updates ();
 
    // Update the version info
    get_installed_version( true );
@@ -394,7 +394,7 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
     $db_password = getPostValue ( 'form_db_password' );
     $db_cachedir = getPostValue ( 'form_db_cachedir' );
     //Allow  field length to change if needed
-   $onload = 'db_type_handler();';
+   $onload = 'db_type_handler ();';
 
    //disable warnings
    show_errors ();
@@ -408,7 +408,7 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
       $_SESSION['db_success'] = true;
 
       // Do some queries to try to determine the previous version
-      get_installed_version();
+      get_installed_version ();
 
       $response_msg = '<b>' .translate ( 'Connection Successful' ) . '</b> ' .
       translate ( 'Please go to next page to continue installation' ) . '.';
@@ -466,7 +466,7 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
     $db_password = getPostValue ( 'form_db_password' );
     $db_cachedir = getPostValue ( 'form_db_cachedir' );
     //Allow ODBC field to be visible if needed
-   $onload = 'db_type_handler();';
+   $onload = 'db_type_handler ();';
 
     // We don't use the normal dbi_execute because we need to know
   // the difference between no conection and no database
@@ -534,7 +534,7 @@ if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['vali
     $db_password = $settings['db_password'];
     $db_cachedir = getPostValue ( 'form_db_cachedir' );
   // Avoid false visibilty of single user login
-  $onload = 'auth_handler();';
+  $onload = 'auth_handler ();';
     $c = dbi_connect ( $db_host, $db_login,
       $db_password, $db_database, false );
 
@@ -551,10 +551,10 @@ if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['vali
     }
 }
 
-// Is this a call to phpinfo()?
+// Is this a call to phpinfo ()?
 if ( ! empty ( $action ) && $action == 'phpinfo' ) {
   if ( ! empty ( $_SESSION['validuser'] ) ) {
-    phpinfo();
+    phpinfo ();
   } else {
     etranlate ( 'You are not authorized' ) . '.';
   }
@@ -884,7 +884,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <?php etranslate ( 'Check to see if PHP 4.1.0 or greater is installed' ) ?>.
 </td>
   <?php
-    $class = ( version_compare(phpversion(), '4.1.0', '>=') ) ?
+    $class = ( version_compare(phpversion (), '4.1.0', '>=') ) ?
       'recommended' : 'notrecommended';
     echo "<td class=\"$class\">";
     if ($class='recommended') {
@@ -892,13 +892,13 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
     } else {
       echo '<img src="not_recommended.jpg" alt=""/>&nbsp;';
     }
-    echo translate ( 'PHP version') . ' ' . phpversion();
+    echo translate ( 'PHP version') . ' ' . phpversion ();
    ?>
 </td></tr>
 <tr><th class="header" colspan="2">
  <?php etranslate ( 'PHP Settings' );
  if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
-  &nbsp;<input name="action" type="button" value="<?php etranslate ( 'Detailed PHP Info' ) ?>" onClick="testPHPInfo()" />
+  &nbsp;<input name="action" type="button" value="<?php etranslate ( 'Detailed PHP Info' ) ?>" onClick="testPHPInfo ()" />
 <?php } ?>
 </th></tr>
 <?php foreach ( $php_settings as $setting ) { ?>
@@ -1092,12 +1092,12 @@ if ( ! $exists || ! $canWrite ) { ?>
  <?php etranslate ( 'Database Settings' ) ?>
 </th></tr>
 <tr><td>
- <form action="index.php" method="post" name="dbform" onSubmit="return chkPassword()">
+ <form action="index.php" method="post" name="dbform" onSubmit="return chkPassword ()">
  <table align="right" width="100%" border="0">
   <tr><td rowspan="7" width="20%">&nbsp;
    </td><td class="prompt" width="25%" valign="bottom">
    <label for="db_type"><?php etranslate ( 'Database Type' ) ?>:</label></td><td valign="bottom">
-   <select name="form_db_type" id="db_type" onChange="db_type_handler();">
+   <select name="form_db_type" id="db_type" onChange="db_type_handler ();">
 <?php
   $supported = array ();
   if ( function_exists ( 'db2_pconnect' ) )
@@ -1152,7 +1152,7 @@ if ( ! $exists || ! $canWrite ) { ?>
   // This a workaround for postgresql. The db_type should be 'pgsql' but 'postgresql' is used
  // in a lot of places...so this is easier for now :(
   $real_db_type = ( $settings['db_type'] == 'postgresql' ? 'pgsql' : $settings['db_type'] );
-  if ( substr ( php_sapi_name(), 0, 3) <> 'cgi' &&
+  if ( substr ( php_sapi_name (), 0, 3) <> 'cgi' &&
         ini_get( $real_db_type . '.allow_persistent' ) ){ ?>
   <tr><td class="prompt">
    <label for="conn_pers"><?php etranslate ( 'Connection Persistence' ) ?>:</label></td><td colspan="2">
@@ -1249,7 +1249,7 @@ if ( ! $exists || ! $canWrite ) { ?>
  if ( empty ( $_SESSION['odbc_db'] ) ) $_SESSION['odbc_db'] = 'mysql'; ?>
 <tr><td id="odbc_db" align="center" nowrap>
 <form action="index.php?action=set_odbc_db" method="post" name="set_odbc_db">
-<b><?php etranslate ( 'ODBC Underlying Database' ) ?>:</b> <select name="odbc_db"  onchange="document.set_odbc_db.submit();">
+<b><?php etranslate ( 'ODBC Underlying Database' ) ?>:</b> <select name="odbc_db"  onchange="document.set_odbc_db.submit ();">
   <option value="mysql"
    <?php echo $_SESSION['odbc_db'] == 'mysql'? $selected : '' ; ?> >MySQL</option>
   <option value="mssql"
@@ -1393,7 +1393,7 @@ translate ( 'You should select Web Server from the list of User Authentication c
 
    <tr><td class="prompt"><?php etranslate ( 'User Authentication' ) ?>:</td>
    <td>
-    <select name="form_user_inc" onChange="auth_handler()">
+    <select name="form_user_inc" onChange="auth_handler ()">
   <?php
    echo "<option value=\"user.php\" " .
     ( $settings['user_inc'] == 'user.php' &&
@@ -1467,7 +1467,7 @@ translate ( 'You should select Web Server from the list of User Authentication c
  <table width="80%"  align="center">
  <tr><td align="center">
   <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  && empty ( $dologin ) ) { ?>
-  <input name="action" type="button" value="<?php etranslate ( 'Save Settings' ) ?>" onClick="return validate();" />
+  <input name="action" type="button" value="<?php etranslate ( 'Save Settings' ) ?>" onClick="return validate ();" />
    <?php if ( ! empty ( $_SESSION['old_program_version'] ) &&
     $_SESSION['old_program_version'] == $PROGRAM_VERSION  && ! empty ( $setup_complete )) { ?>
     <input type="button"  name="action2" value="<?php etranslate ( 'Launch WebCalendar' ) ?>" onClick="window.open('../index.php', 'webcalendar');" />

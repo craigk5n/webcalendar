@@ -165,7 +165,7 @@ $choices_text = array ( translate ( 'Day' ), translate ( 'Week' ),
 //determine if allow_url_fopen is enabled
 $allow_url_fopen = preg_match ( "/(On|1|true|yes)/i", ini_get ( 'allow_url_fopen' ) );
 
-$BodyX = 'onload="popup_handler(); public_handler(); eu_handler(); sr_handler(); attach_handler(); comment_handler(); email_handler();';
+$BodyX = 'onload="popup_handler (); public_handler (); eu_handler (); sr_handler (); attach_handler (); comment_handler (); email_handler ();';
 $BodyX .= ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );\"" : '"' );
 $INC = array ('js/admin.php','js/visible.php');
 print_header ( $INC, '', $BodyX );
@@ -176,7 +176,7 @@ print_header ( $INC, '', $BodyX );
 
 <form action="admin.php" method="post" onsubmit="return valid_form(this);" name="prefform">
 <?php if ( ! $error ) {
-  echo display_admin_link() . "&nbsp;&nbsp;&nbsp;\n";
+  echo display_admin_link () . "&nbsp;&nbsp;&nbsp;\n";
 ?>
 <input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>" />
 <input type="submit" value="<?php etranslate ( 'Save' )?>" name="" />
@@ -256,7 +256,7 @@ print_header ( $INC, '', $BodyX );
   }
 ?>
  </select>&nbsp;&nbsp;&nbsp;
- <input type="button" name="preview" value="<?php etranslate ( 'Preview' ) ?>" onclick="return showPreview()" />
+ <input type="button" name="preview" value="<?php etranslate ( 'Preview' ) ?>" onclick="return showPreview ()" />
  </td></tr>
  </table>
 </fieldset>
@@ -866,7 +866,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <tr id="em2"><td class="tooltip" title="<?php etooltip ( 'email-mailer' )?>">
 <?php etranslate ( 'Email Mailer' )?>:</td><td>
- <select name="admin_EMAIL_MAILER"  onchange="email_handler()">
+ <select name="admin_EMAIL_MAILER"  onchange="email_handler ()">
    <option value="smtp" <?php if ( $s['EMAIL_MAILER'] ==
      'smtp' ) echo $selected?>>SMTP</option>
    <option value="mail" <?php if ( $s['EMAIL_MAILER'] ==

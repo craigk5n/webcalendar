@@ -41,7 +41,7 @@ include_once 'includes/init.php';
  *
  * @param string $template The template
  * @param array  $extras   The formatted site_extras as returned by
- *                         {@link format_site_extras()}
+ *                         {@link format_site_extras ()}
  *
  * @return string The template with site_extras replaced
  */
@@ -158,11 +158,11 @@ function event_to_text ( $event, $date ) {
   $location = $event->getLocation ();
   $url = $event->getUrl ();
   $href_str = 'view_entry.php?id=' . $id;
-  // .
+
   // Get user's fullname.
   user_load_variables ( $tempLog, 'report_' );
   $fullname = $GLOBALS['report_fullname'];
-  // .
+
   // Replace all variables in the event template.
   $text = str_replace (
     array ( '${date}', '${dateYmd}', '${description}', '${duration}',
@@ -298,7 +298,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
 
 if ( empty ( $report_user ) )
   $report_user = $login;
-// .
+
 // Set default templates (in case there are none in the database for this report.)
 $day_str = $printerStr = '';
 $day_template = '<dt><b>${date}</b></dt><dd><dl>${events}</dl></dd>';
@@ -307,7 +307,7 @@ $event_template = '<dt>${name}</dt>
 <b>' . translate ( 'Time' ) . ':</b> ${time}<br />
 ${description}</dd>';
 $page_template = '<dl>${days}</dl>';
-// .
+
 // Load templates for this report.
 if ( empty ( $error ) && empty ( $list ) ) {
   $res = dbi_execute ( 'SELECT cal_template_type, cal_template_text
@@ -342,7 +342,7 @@ if ( $include_header || ! empty ( $list ) || ! empty ( $error ) ) {
 
 if ( empty ( $offset ) || empty ( $report_allow_nav ) || $report_allow_nav != 'Y' )
   $offset = 0;
-// .
+
 // Set time range based on cal_time_range field.
 $dated = date ( 'd' );
 $datem = date ( 'm' );

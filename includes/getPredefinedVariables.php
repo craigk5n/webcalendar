@@ -39,7 +39,7 @@ function getPostValue ( $name ) {
  * <var>magic_quotes_gpc</var> in the php.ini file.
  *
  * If you need to enforce a specific input format (such as numeric input), then
- * use the {@link getValue()} function.
+ * use the {@link getValue ()} function.
  *
  * @param string  $name  Name used in the HTML form or found in the URL
  *

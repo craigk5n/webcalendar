@@ -11,24 +11,24 @@ function valid_form ( form ) {
   if ( ! name ) {
     alert ( "<?php etranslate ( 'Error', true) ?>:\n\n" + "<?php
       etranslate ( 'Calendar ID cannot be blank.', true)?>" );
-    document.editnonuser.nid.focus();
+    document.editnonuser.nid.focus ();
     return false;
   }
   if ( ! fname && ! lname ) {
     alert ( "<?php etranslate ( 'Error', true) ?>:\n\n" + "<?php
       etranslate ( 'First and last names cannot both be blank.', true)?>" );
-    document.editnonuser.nfirstname.focus();
+    document.editnonuser.nfirstname.focus ();
     return false;
   }
 
-  check_name();
+  check_name ();
 
   return validform;
 
 }
 
 
-function check_name() {
+function check_name () {
   var url = 'ajax.php';
   var params = 'page=edit_nonuser&name=' + $F('calid');
   var ajax = new Ajax.Request(url,
@@ -42,7 +42,7 @@ function showResponse(originalRequest) {
     text = originalRequest.responseText;
     //this causes javascript errors in Firefox, but these can be ignored
     alert (text);
-    document.editnonuser.nid.focus();
+    document.editnonuser.nid.focus ();
     validform =  false;
   } else {
     validform =  true;

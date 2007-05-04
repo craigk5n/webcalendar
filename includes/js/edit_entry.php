@@ -4,9 +4,9 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
  global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
  $user = $arinc[3];
 ?>
-var bydayAr = new Object();
-var bymonthdayAr = new Object();
-var bysetposAr = new Object();
+var bydayAr = new Object ();
+var bymonthdayAr = new Object ();
+var bysetposAr = new Object ();
 var bydayLabels = new array ("SU","MO","TU","WE","TH","FR","SA");
 var bydayTrans = new Array ( "<?php etranslate ( 'SU' ) ?>"
 , "<?php etranslate ( 'MO' ) ?>"
@@ -79,7 +79,7 @@ function validate_and_submit () {
   }
 
 //Add code to make HTMLArea code stick in TEXTAREA
- if (typeof editor != "undefined") editor._textArea.value = editor.getHTML();
+ if (typeof editor != "undefined") editor._textArea.value = editor.getHTML ();
 
  //Check if Event date is valid
   var d = form.day.selectedIndex;
@@ -89,7 +89,7 @@ function validate_and_submit () {
   var y = form.year.selectedIndex;
   var valy = form.year.options[y].value;
   var c = new Date(valy,valm -1,vald);
- if ( c.getDate() != vald ) {
+ if ( c.getDate () != vald ) {
    alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
   form.day.focus ();
    return false;
@@ -110,7 +110,7 @@ function validate_and_submit () {
    var y = form.due_year.selectedIndex;
    var valy = form.due_year.options[y].value;
    var c = new Date(valy,valm -1,vald);
-   if ( c.getDate() != vald ) {
+   if ( c.getDate () != vald ) {
      alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
      form.due_day.focus ();
      return false;
@@ -209,7 +209,7 @@ function validate_and_submit () {
   }
 }
 
-function rpttype_handler (  ) {
+function rpttype_handler () {
   //Repeat Tab disabled
   if ( ! form.rpttype ) {
     return;
@@ -323,7 +323,7 @@ function rpttype_weekly () {
    var y = form.year.selectedIndex;
    var valy = form.year.options[y].value;
    var c = new Date(valy,valm,vald);
-   var dayOfWeek = c.getDay();
+   var dayOfWeek = c.getDay ();
    var rpt_day = bydayLabels[dayOfWeek];
    elements[rpt_day].checked = true;
  }
@@ -341,7 +341,7 @@ var sch_win;
 
 // Show Availability for the first selection
 function showSchedule () {
-  //var agent=navigator.userAgent.toLowerCase();
+  //var agent=navigator.userAgent.toLowerCase ();
   //var agent_isIE=(agent.indexOf("msie") > -1);
   var userlist = form.elements['participants[]'];
   var delim = '';
@@ -389,12 +389,12 @@ function add_exception (which) {
  var y = form.except_year.selectedIndex;
  var valy = form.except_year.options[y].value;
  var c = new Date(valy,valm -1,vald);
- if ( c.getDate() != vald ) {
+ if ( c.getDate () != vald ) {
    alert ("<?php etranslate ( 'Invalid Date',true ) ?>");
    return false;
  }
- //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
- var exceptDate = String((c.getFullYear() * 100 + c.getMonth() +1) * 100 + c.getDate());
+ //alert ( c.getFullYear () + " "  + c.getMonth () + " " + c.getDate ());
+ var exceptDate = String((c.getFullYear () * 100 + c.getMonth () +1) * 100 + c.getDate ());
  var isUnique = true;
  //Test to see if this date is already in the list
   with (form)
@@ -488,7 +488,7 @@ function toggle_bysetpos(ele){
   bysetposAr[ele.id.substr (8)] = tmp;
 }
 
-function toggle_until() {
+function toggle_until () {
   //Repeat Tab disabled
   if ( ! form.rpttype ) {
     return;
@@ -516,7 +516,7 @@ function toggle_until() {
   }
 }
 
-function toggle_rem_when() {
+function toggle_rem_when () {
   //Reminder Tab disabled
   if ( ! form.rem_when ) {
     return;
@@ -548,12 +548,12 @@ function toggle_rem_when() {
   ( elements['rem_when_date'].checked != true );
 }
 
-function toggle_reminders() {
+function toggle_reminders () {
   //Reminder Tab disabled
   if ( ! form.rem_when ) {
     return;
   }
-  toggle_rem_when();
+  toggle_rem_when ();
   makeInvisible ( "reminder_when",true );
   makeInvisible ( "reminder_repeat", true );
   if ( elements['reminderYes'].checked == true ) {
@@ -562,7 +562,7 @@ function toggle_reminders() {
   }
 }
 
-function toggle_rem_rep(){
+function toggle_rem_rep (){
  elements['rem_rep_days'].disabled =
  elements['rem_rep_hours'].disabled =
  elements['rem_rep_minutes'].disabled =
@@ -667,10 +667,10 @@ function onLoad () {
     }
   }
 
-  timetype_handler();
-  rpttype_handler();
-  toggle_until();
-  toggle_reminders();
-  toggle_rem_rep();
-  completed_handler();
+  timetype_handler ();
+  rpttype_handler ();
+  toggle_until ();
+  toggle_reminders ();
+  toggle_rem_rep ();
+  completed_handler ();
 }

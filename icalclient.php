@@ -21,7 +21,7 @@
  * attendee info.  This improves the performance considerably, BTW.
  *
  * ERROR !!!!!
- * There seems to be a bug in certain versions of PHP where the fgets()
+ * There seems to be a bug in certain versions of PHP where the fgets ()
  * returns a blank string when reading stdin.  I found this to be
  * a problem with PHP 4.1.2 on Linux.  If this is true for your PHP,
  * you will not be able to import the events back from the ical client.
@@ -101,7 +101,7 @@
  include 'includes/dbi4php.php';
  include 'includes/functions.php';
 
- $WebCalendar->initializeFirstPhase();
+ $WebCalendar->initializeFirstPhase ();
 
  include "includes/$user_inc";
 
@@ -110,7 +110,7 @@
 
 include_once 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase();
+$WebCalendar->initializeSecondPhase ();
 
 $appStr = generate_application_name ();
 
@@ -158,7 +158,7 @@ load_global_settings ();
 load_user_preferences ();
 
 
-$WebCalendar->setLanguage();
+$WebCalendar->setLanguage ();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
@@ -213,6 +213,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'PUT' ) {
   header ( 'Content-Type: text/calendar' );
   header ( 'Content-Disposition: attachment; filename="' . $login .  '.ics"' );
  $use_all_dates = true;
-  export_ical();
+  export_ical ();
 }
 ?>

@@ -72,7 +72,7 @@
     private $doc    = '';
 
 
-    public function hKit()
+    public function hKit ()
     {
       // pre-flight checks
       $pass     = true;
@@ -82,7 +82,7 @@
       foreach ($required as $f){
         if (!function_exists($f)){
           $pass    = false;
-          $missing[]   = $f . '()';
+          $missing[]   = $f . ' ()';
         }
       }
 
@@ -209,7 +209,7 @@
                 $xpath    = "//*[@id='$id']";
                 $includes  = $doc->xpath($xpath);
                 foreach ($includes as $include){
-                  $include  = simplexml_load_string('<root1><root2>'.$include->asXML().'</root2></root1>'); // don't ask.
+                  $include  = simplexml_load_string('<root1><root2>'.$include->asXML ().'</root2></root1>'); // don't ask.
                   $tmp     = $this->processNodes($include, $this->classes, false);
                   if (is_array ($tmp)) $data = array_merge($data, $tmp);
                 }
@@ -256,7 +256,7 @@
 
 
       // if nothing found, go with node text
-      $s  = ($s ? $s : implode(array_filter($node->xpath('child::node()'), array (&$this, "filterBlankValues")), ' '));
+      $s  = ($s ? $s : implode(array_filter($node->xpath('child::node ()'), array (&$this, "filterBlankValues")), ' '));
 
       // callbacks
       if (array_key_exists($className, $this->callbacks)){
@@ -316,7 +316,7 @@
 
       if ($fragment){
         $doc  = $xml->xpath("//*[@id='$fragment']");
-        $xml  = simplexml_load_string($doc[0]->asXML());
+        $xml  = simplexml_load_string($doc[0]->asXML ());
         $doc  = null;
       }
 
@@ -324,7 +324,7 @@
       if ($xml->head->base['href']) $this->base = $xml->head->base['href'];
 
       // xml:base attribute - PITA with SimpleXML
-      preg_match('/xml:base="(.*)"/', $xml->asXML(), $matches);
+      preg_match('/xml:base="(.*)"/', $xml->asXML (), $matches);
       if (is_array ($matches) && sizeof($matches)>1) $this->base = $matches[1];
 
       return   $xml->xpath("//*[contains(concat(' ',normalize-space(@class),' '),' $this->root_class ')]");

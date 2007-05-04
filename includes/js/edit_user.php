@@ -17,7 +17,7 @@ function valid_form ( form ) {
  . translate ( 'Username cannot be blank.', true )?>" );
     return false;
   }
-  check_name();
+  check_name ();
 
   return validform;
 

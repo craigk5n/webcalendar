@@ -13,7 +13,7 @@ $customStr = translate ( 'Custom Colors' );
 $oldStr = translate ( 'Old Color' );
 $okStr = '&nbsp;&nbsp;&nbsp;' . translate ( 'OK' ). '&nbsp;&nbsp;&nbsp;';
 print_header ( array ( 'js/colors.php/true' ), '',
-  'onload="fillhtml(); setInit();"', true, false, true );
+  'onload="fillhtml (); setInit ();"', true, false, true );
 
 /*
   HTML Color Editor v1.2 (c) 2000 by Sebastian Weber <webersebastian@yahoo.de>

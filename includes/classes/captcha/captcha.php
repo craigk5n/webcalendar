@@ -8,8 +8,8 @@
    defending against spambots. Because of the readable text and the used
    colorspaces this is a weak implementation, not completely OCR-secure.
 
-   captcha::form() will return a html string to be inserted into textarea/
-   [save] <forms> and alike. User input is veryfied with captcha::check().
+   captcha::form () will return a html string to be inserted into textarea/
+   [save] <forms> and alike. User input is veryfied with captcha::check ().
    You should leave the sample COLLEGE.ttf next to this script, else you
    have to define the _FONT_DIR constant correctly. Use only 1 font type.
 
@@ -41,8 +41,8 @@ class captcha {
    /* gets parameter from $_REQUEST[] array (POST vars) and so can
       verify input, @returns boolean
    */
-   function check() {
-      $to = (int)(time()/1000000);
+   function check () {
+      $to = (int)(time ()/1000000);
       if ( ! empty ( $_COOKIE[CAPTCHA_COOKIE] ) && $_COOKIE[CAPTCHA_COOKIE] == $to) {
          return(true);
       }
@@ -50,7 +50,7 @@ class captcha {
       and ($pw = trim($_REQUEST['captcha_input']))) {
          $r = (captcha::hash($pw)==$hash) || (captcha::hash($pw,-1)==$hash);
          if ($r) {
-            setcookie(CAPTCHA_COOKIE, $to, time()+1000000);
+            setcookie(CAPTCHA_COOKIE, $to, time ()+1000000);
          }
          return($r);
       }
@@ -60,18 +60,18 @@ class captcha {
    /* yields <input> fields html string (no complete form), with captcha
       image already embedded as data:-URI
    */
-   function form() {
+   function form () {
 
       #-- stop if user already verified
       if ( ! empty ( $_COOKIE[CAPTCHA_COOKIE] ) &&
-        $_COOKIE[CAPTCHA_COOKIE] == (int)(time()/1000000)) {
+        $_COOKIE[CAPTCHA_COOKIE] == (int)(time ()/1000000)) {
          return "";
       }
 
       $title = translate ( 'Enter Characters Seen in Graphic' );
       $more = translate ( 'Enter the correct letters and numbers from the image into the text box...' );
       #-- prepare image text
-      $pw = captcha::mkpass();
+      $pw = captcha::mkpass ();
       $hash = captcha::hash($pw);
       //$alt = htmlentities(captcha::textual_riddle($pw));
       $alt = $title;
@@ -172,7 +172,7 @@ class captcha {
    function image($phrase, $width=200, $height=60, $inverse=0, $maxsize=0xFFFFF) {
 
       #-- initialize in-memory image with gd library
-      srand(microtime()*21017);
+      srand(microtime ()*21017);
       $img = imagecreatetruecolor($width, $height);
       $R = $inverse ? 0xFF : 0x00;
       imagefilledrectangle($img, 0,0, $width,$height, captcha::random_color($img, 222^$R, 255^$R));
@@ -255,9 +255,9 @@ class captcha {
       $quality = 67;
       $s = array ();
       do {
-         ob_start(); ob_implicit_flush(0);
+         ob_start (); ob_implicit_flush(0);
          imagejpeg($img, "", (int)$quality);
-         $jpeg = ob_get_contents(); ob_end_clean();
+         $jpeg = ob_get_contents (); ob_end_clean ();
          $size = strlen($jpeg);
          $s_debug[] = ((int)($quality*10)/10) . "%=$size";
          $quality = $quality * ($maxsize/$size) * 0.93 - 1.7;  // -($quality/7.222)*
@@ -286,7 +286,7 @@ class captcha {
 
       #-- remove stale files
       if ($dh = opendir($dir)) {
-         $t_kill = time() - CAPTCHA_TIMEOUT;
+         $t_kill = time () - CAPTCHA_TIMEOUT;
          while($fn = readdir($dh)) if ($fn[0] != ".") {
             if (filemtime("$dir/$fn") < $t_kill) {
                @unlink("$dir/$fn");
@@ -312,10 +312,10 @@ class captcha {
    }
 
 
-   /* unreversable hash from passphrase, with time() slice encoded */
+   /* unreversable hash from passphrase, with time () slice encoded */
    function hash($text, $dtime=0) {
       $text = strtolower($text);
-      $pfix = (int) (time() / CAPTCHA_TIMEOUT) + $dtime;
+      $pfix = (int) (time () / CAPTCHA_TIMEOUT) + $dtime;
       return md5("captcha::$pfix:$text::".__FILE__.":$_SERVER[SERVER_NAME]:80");
    }
 
@@ -323,7 +323,7 @@ class captcha {
    /* makes string of random letters for embedding into image and for
       encoding as hash, later verification
    */
-   function mkpass() {
+   function mkpass () {
       $s = "";
       for ($n=0; $n<10; $n++) {
          $s .= chr(rand(0, 255));

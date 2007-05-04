@@ -193,7 +193,7 @@ $formaction = substr ($self, strrpos($self, '/') + 1) . $qryStr;
  if ($user)
   echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
 
-echo display_admin_link();
+echo display_admin_link ();
 ?>
 <input type="submit" value="<?php etranslate ( 'Save Preferences' )?>" name="" />
 &nbsp;&nbsp;&nbsp;
@@ -620,7 +620,7 @@ etranslate ( 'Page may need to be reloaded for new Theme to take effect' )?></td
   }
 ?>
  </select></td><td>
- <input type="button" name="preview" value="<?php etranslate ( 'Preview' ) ?>" onclick="return showPreview()" />
+ <input type="button" name="preview" value="<?php etranslate ( 'Preview' ) ?>" onclick="return showPreview ()" />
 </td></tr>
 <?php  if ( $MENU_ENABLED == 'Y' ) { ?>
  <tr><td  class="tooltip" title="<?php etooltip ( 'menu-themes-help' );?>">
@@ -927,5 +927,5 @@ echo display_month ( date ( 'm' ), date( 'Y' ), true );
 </div>
 </form>
 
-<?php echo print_trailer(); ?>
+<?php echo print_trailer (); ?>
 

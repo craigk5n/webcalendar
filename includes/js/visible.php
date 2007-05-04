@@ -79,7 +79,7 @@ function visByClass(classname, state){
  }
 }
 
-function getScrollingPosition()
+function getScrollingPosition ()
 {
  var position = [0, 0];
 
@@ -121,7 +121,7 @@ function selectDate ( day, month, year, current, evt, frm ) {
   curyear = yearobj.options[yearobj.selectedIndex].value;
   date = curyear;
   evt = evt? evt: window.event;
-  var scrollingPosition = getScrollingPosition();
+  var scrollingPosition = getScrollingPosition ();
 
   if (typeof evt.pageX != "undefined" &&
      typeof evt.x != "undefined")
@@ -177,8 +177,8 @@ function updateColor ( input, target ) {
  if (!valid_color ( color ) ) {
    // Color specified is invalid; use black instead
   colorCell.style.backgroundColor = "#000000";
-  input.select();
-  input.focus();
+  input.select ();
+  input.focus ();
   alert ( '<?php etranslate ( 'Invalid Color', true ) ?>');
  } else {
   colorCell.style.backgroundColor = color;
@@ -194,7 +194,7 @@ function toggle_datefields( name, ele ) {
   }
 }
 
-function callEdit() {
+function callEdit () {
   var features = 'width=600,height=500,resizable=yes,scrollbars=no';
   var url = "edit_entry.php";
   editwin = window.open( url, "edit_entry", features );

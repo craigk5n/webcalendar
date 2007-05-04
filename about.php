@@ -47,7 +47,7 @@ else {
           actualH='',
           cross_scroll;
 
-        function populate(){
+        function populate (){
           cross_scroll=document.getElementById("scroller");
           cross_scroll.innerHTML=scrollcontent;
           actualH=cross_scroll.offsetHeight;
@@ -56,7 +56,7 @@ else {
 
         window.onload=populate;
 
-        function scrollMe(){
+        function scrollMe (){
           if (parseInt (cross_scroll.style.top)>(actualH* (-1)+8))
             cross_scroll.style.top=parseInt(cross_scroll.style.top)-copyS+"px";
           else

@@ -86,7 +86,7 @@ if ( empty ($upcoming_initialized)) {
 //and then changes the working directory to the dir that this file is currently
 //in.  That allows this file to load its includes normally even if called
 //from some other directory.
-$save_current_working_dir= getcwd();
+$save_current_working_dir= getcwd ();
 chdir(dirname(__FILE__));
 
 require_once 'includes/classes/WebCalendar.class';
@@ -100,7 +100,7 @@ include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase();
+$WebCalendar->initializeFirstPhase ();
 
 include "includes/$user_inc";
 include 'includes/site_extras.php';
@@ -109,7 +109,7 @@ include 'includes/site_extras.php';
 if ( $hcalendar_output )
  include 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase();
+$WebCalendar->initializeSecondPhase ();
 //This must contain the file name that this file is saved under.  It is
 //used to determine whether the file is being run independently or
 //as an include file.  Change as necessary!
@@ -126,7 +126,7 @@ $name_of_this_file='/upcoming.php/';
 
 load_global_settings ();
 
-$WebCalendar->setLanguage();
+$WebCalendar->setLanguage ();
 
 // Print the details of an upcoming event
 // This function is here, inside the 'if' that runs only the first time this
@@ -136,15 +136,15 @@ function print_upcoming_event ( $e, $date ) {
   global $display_link, $link_target, $SERVER_URL, $charset, $login,
     $display_tzid, $showTime, $showPopups, $eventinfo, $username, $hcalendar_output;
 
-  $popupid = 'pop' . $e->getId() . '-' . $date;
+  $popupid = 'pop' . $e->getId () . '-' . $date;
 
   $private = $confidential = false;
   // Access: P=Public, R=Private, C=Confidential
-  if ( $e->getAccess() == 'R' ) {
+  if ( $e->getAccess () == 'R' ) {
     // not a public event, so we will just display "Private"
     $private = true;
   }
-  else if ( $e->getAccess() == 'C' ) {
+  else if ( $e->getAccess () == 'C' ) {
     // not a public event, so we will just display "Confidential"
     $confidential = true;
   }
@@ -152,24 +152,24 @@ function print_upcoming_event ( $e, $date ) {
   if ( $display_link && ! empty ( $SERVER_URL ) && ! $private && ! $confidential) {
     if ( $showPopups ) {
       $timestr = '';
-      if ( $e->isAllDay() ) {
+      if ( $e->isAllDay () ) {
         $timestr = translate ( 'All day event' );
-      } else if ( $e->getTime() >= 0 ) {
-        $timestr = display_time ( $e->getDatetime() );
-        if ( $e->getDuration() > 0 ) {
-          $timestr .= ' - ' .  display_time ( $e->getEndDateTime() );
+      } else if ( $e->getTime () >= 0 ) {
+        $timestr = display_time ( $e->getDatetime () );
+        if ( $e->getDuration () > 0 ) {
+          $timestr .= ' - ' .  display_time ( $e->getEndDateTime () );
         }
       }
       $eventinfo .= build_entry_popup ( 'eventinfo-' . $popupid, $username,
-        $e->getDescription(), $timestr, site_extras_for_popup ( $e->getId() ),
-        $e->getLocation(), $e->getName(), $e->getId() );
+        $e->getDescription (), $timestr, site_extras_for_popup ( $e->getId () ),
+        $e->getLocation (), $e->getName (), $e->getId () );
     }
     echo "<div class=\"vevent\">\n<a class=\"entry\" id=\"$popupid\" title=\"" .
-      htmlspecialchars ( $e->getName() ) . '" href="' .
+      htmlspecialchars ( $e->getName () ) . '" href="' .
       $SERVER_URL . 'view_entry.php?id=' .
-        $e->getID() . "&amp;date=$date";
-      if ( $e->getLogin() != $login )
-        echo "&amp;user=" . $e->getLogin();
+        $e->getID () . "&amp;date=$date";
+      if ( $e->getLogin () != $login )
+        echo "&amp;user=" . $e->getLogin ();
       if ( ! empty ( $link_target ) ) {
       echo "\" target=\"$link_target\"";
     }
@@ -180,7 +180,7 @@ function print_upcoming_event ( $e, $date ) {
   } else if ( $confidential ) {
     echo '[' . translate ( 'Confidential' ) . ']';
   } else {
-    echo '<span class="summary">' . htmlspecialchars ( $e->getName() ) . '</span>';
+    echo '<span class="summary">' . htmlspecialchars ( $e->getName () ) . '</span>';
   }
   if ( $display_link && ! empty ( $SERVER_URL ) && ! $private ) {
     echo '</a>';
@@ -188,29 +188,29 @@ function print_upcoming_event ( $e, $date ) {
 
   //added for hCalendar
   if ( $hcalendar_output ) {
-    echo '<abbr class="dtstart" title="'. export_ts_utc_date ($e->getDateTImeTS() )
-      .'">' . $e->getDateTIme() . "</abbr>\n";
-    echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTImeTS() )
-      . '">' . $e->getEndDateTImeTS() . "</abbr>\n";
-    echo '<span class="description">' . $e->getDescription() . "</span>\n";
-    if ( strlen ( $e->getLocation() ) > 0 )
-    echo '<span class="location">' . $e->getLocation() . "</span>\n";
-    $categories = get_categories_by_id ( $e->getId(), $username );
+    echo '<abbr class="dtstart" title="'. export_ts_utc_date ($e->getDateTImeTS () )
+      .'">' . $e->getDateTIme () . "</abbr>\n";
+    echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTImeTS () )
+      . '">' . $e->getEndDateTImeTS () . "</abbr>\n";
+    echo '<span class="description">' . $e->getDescription () . "</span>\n";
+    if ( strlen ( $e->getLocation () ) > 0 )
+    echo '<span class="location">' . $e->getLocation () . "</span>\n";
+    $categories = get_categories_by_id ( $e->getId (), $username );
     $category = implode ( ', ', $categories);
     if ( strlen ( $category  ) > 0 )
       echo '<span class="categories">' . $category . "</span>\n";
-    if ( strlen ( $e->getUrl() ) > 0 )
-      echo '<span class="url">' . $e->getUrl() . "</span>\n";
-    $rrule = export_recurrence_ical( $e->getId() );
+    if ( strlen ( $e->getUrl () ) > 0 )
+      echo '<span class="url">' . $e->getUrl () . "</span>\n";
+    $rrule = export_recurrence_ical( $e->getId () );
     if ( strlen ( $rrule ) > 6 )
       echo '<span class="rrule">' . substr ( $rrule, 6 ) . "</span>\n";
   }
 
   if ( $showTime ) {  //show event time if requested (default=don't show)
-    if ( $e->isAllDay() ) {
+    if ( $e->isAllDay () ) {
       echo ' (' . translate ( 'All day event' ) . ")\n";
-    } else if ( $e->getTime() != -1 ) {
-      echo ' (' . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
+    } else if ( $e->getTime () != -1 ) {
+      echo ' (' . display_time ( $e->getDateTime (), $display_tzid ) . ")\n";
     }
   }
 

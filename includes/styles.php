@@ -98,7 +98,7 @@
  * for printer-friendly pages and where else needed.
  *
  *                            PHP FUNCTION CALLS
- * A special function, background_css(), will allow the dynamic creation of
+ * A special function, background_css (), will allow the dynamic creation of
  * gradient images to be used for the background of that selector. The image
  * file will be created and cached (if enabled) for faster processing and the
  * url will be returned for inclusion into the final CSS file.
@@ -463,7 +463,7 @@ a#programname {
 }
 .unapprovedentry {
   font-size: 12px;
-/* Remove comments to set unapproved italics
+/* Remove comments to set unapproved italics.
   font-style: italic;
 */
   color: #800000;
@@ -678,6 +678,7 @@ a.matrix img {
   text-decoration: none;
   font-weight: bold;
 }
+/* This doesn't seem to do anything in Firefox 2 or IE6. */
 .tooltip {
   width: 120px;
 }

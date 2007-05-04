@@ -20,7 +20,7 @@ include_once 'includes/init.php';
  * @param string $prefix Prefix to use in front of form element names
  * @param string $time   Currently selected time in HHMMSS
  * @param bool $trigger   Add onchange event trigger that
- *  calls javascript function $prefix_timechanged()
+ *  calls javascript function $prefix_timechanged ()
  *
  * @return string HTML for the selection box
  */
@@ -29,7 +29,7 @@ function time_selection ( $prefix, $time='', $trigger=false ) {
   $ret = '';
   $hournameid = 'name="' . $prefix . 'hour" id="' . $prefix . 'hour" ';
   $minnameid = 'name="' . $prefix . 'minute" id="' . $prefix . 'minute" ';
-  $trigger_str = ( $trigger ? 'onchange="' . $prefix . 'timechanged() ' : '');
+  $trigger_str = ( $trigger ? 'onchange="' . $prefix . 'timechanged () ' : '');
   if ( ! isset ( $time ) && $time != 0 ) {
     $hour = $WORK_DAY_START_HOUR;
     $minute = 0;
@@ -492,14 +492,14 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
 
 $textareasize = 'rows="15" cols="50"';
 $INC = array ( "js/edit_entry.php/false/$user", 'js/visible.php' );
-$BodyX = 'onload="onLoad();"';
+$BodyX = 'onload="onLoad ();"';
 if ( $ALLOW_HTML_DESCRIPTION == 'Y' ){
   // Allow HTML in description
   // If they have installed the htmlarea widget, make use of it
   if ( $use_fckeditor ) {
     $textareasize = 'rows="20" cols="50"';
   } else if ( $use_htmlarea ) {
-    $BodyX = 'onload="initEditor();onLoad();"';
+    $BodyX = 'onload="initEditor ();onLoad ();"';
     $INC[] = 'htmlarea/htmlarea.php/true';
     $INC[] = 'htmlarea/core.php/true';
   }
@@ -645,7 +645,7 @@ if ( $eType == 'task' ) { //only for tasks
     </td></tr>
    <tr><td class="tooltip" title="<?php etooltip ( 'percent-help' )?>">
     <label for="task_percent"><?php etranslate ( 'Percent Complete' )?>:&nbsp;</label></td><td>
-    <select name="percent" id="task_percent" onchange="completed_handler()">
+    <select name="percent" id="task_percent" onchange="completed_handler ()">
    <?php
      for ( $i=0; $i<=100; $i+=10 ){
        echo "<option value=\"$i\" " .
@@ -696,7 +696,7 @@ echo date_selection ( '', $cal_date );
 echo "</td></tr>\n";
 if ( $eType != 'task' ) {?>
   <tr><td>&nbsp;</td><td colspan="2">
-   <select name="timetype" onchange="timetype_handler()">
+   <select name="timetype" onchange="timetype_handler ()">
     <option value="U" <?php if ( $allday != 'Y' && $hour == -1 )
   echo $selected;?>><?php etranslate ( 'Untimed event' ); ?></option>
     <option value="T" <?php if ( $allday != 'Y' && $hour >= 0 )
@@ -954,10 +954,10 @@ if ( $single_user == 'N' && $show_participants ) {
   echo "<select name=\"participants[]\" id=\"entry_part\" size=\"$size\" multiple=\"multiple\">$users\n";
   echo "</select>\n";
   if ( $GROUPS_ENABLED == 'Y' ) {
-    echo '<input type="button" onclick="selectUsers()" value="' .
+    echo '<input type="button" onclick="selectUsers ()" value="' .
       translate ( 'Select' ) . '..." />' . "\n";
   }
-  echo '<input type="button" onclick="showSchedule()" value="' .
+  echo '<input type="button" onclick="showSchedule ()" value="' .
     translate ( 'Availability' ) . '..." />' ."\n";
   echo "</td></tr>\n";
 
@@ -993,7 +993,7 @@ if ( $useTabs ) { ?>
  <tr>
  <td class="tooltip" title="<?php etooltip ( 'repeat-type-help' )?>">
  <label for="rpttype"><?php etranslate ( 'Type' )?>:</label></td><td colspan="2">
- <select name="rpt_type" id="rpttype" onchange="rpttype_handler();rpttype_weekly()">
+ <select name="rpt_type" id="rpttype" onchange="rpttype_handler ();rpttype_weekly ()">
 <?php
  echo '  <option value="none"' .
   ( strcmp ( $rpt_type, 'none' ) == 0 ? $selected : '' ) . '>' .
@@ -1022,7 +1022,7 @@ if ( $useTabs ) { ?>
 ?>
  </select>&nbsp;&nbsp;&nbsp;
 <label id ="rpt_mode"><input type="checkbox" name="rptmode"  id="rptmode"
-  value="y" onclick="rpttype_handler()" <?php echo ( ! empty ($expert_mode)?$checked:'') ?>/>
+  value="y" onclick="rpttype_handler ()" <?php echo ( ! empty ($expert_mode)?$checked:'') ?>/>
 <?php etranslate ( 'Expert Mode' )?></label>
 </td></tr>
 <tr id="rptenddate1" style="visibility:hidden;">
@@ -1030,12 +1030,12 @@ if ( $useTabs ) { ?>
   <label for="rpt_day"><?php etranslate ( 'Ending' )?>:</label></td>
  <td colspan="2" class="boxleft boxtop boxright"><input  type="radio" name="rpt_end_use" id="rpt_untilf" value="f" <?php
   echo (  empty ( $rpt_end ) && empty ( $rpt_count )? $checked : '' );
- ?>  onclick="toggle_until()" /><label for="rpt_untilf"><?php etranslate ( 'Forever' )?></label>
+ ?>  onclick="toggle_until ()" /><label for="rpt_untilf"><?php etranslate ( 'Forever' )?></label>
  </td></tr>
  <tr id="rptenddate2" style="visibility:hidden;"><td class="boxleft">
  <input  type="radio" name="rpt_end_use" id="rpt_untilu" value="u" <?php
   echo ( ! empty ( $rpt_end ) ? $checked : '' );
- ?> onclick="toggle_until()" />&nbsp;<label for="rpt_untilu"><?php etranslate ( 'Use end date' )?></label>
+ ?> onclick="toggle_until ()" />&nbsp;<label for="rpt_untilu"><?php etranslate ( 'Use end date' )?></label>
 </td><td class="boxright">
  <span class="end_day_selection" id="rpt_end_day_select"><?php
   echo date_selection ( 'rpt_', $rpt_end_date ? $rpt_end_date : $cal_date )
@@ -1047,7 +1047,7 @@ if ( $useTabs ) { ?>
 <tr id="rptenddate3" style="visibility:hidden;"><td class="boxleft boxbottom">
   <input type="radio" name="rpt_end_use" id="rpt_untilc" value="c" <?php
   echo ( ! empty ( $rpt_count ) ? $checked : '' );
- ?> onclick="toggle_until()" />&nbsp;<label for="rpt_untilc"><?php etranslate ( 'Number of times' )?></label>
+ ?> onclick="toggle_until ()" />&nbsp;<label for="rpt_untilc"><?php etranslate ( 'Number of times' )?></label>
  </td><td class="boxright boxbottom">
 
  <input type="text" name="rpt_count" id="rpt_count" size="4" maxlength="4" value="<?php echo $rpt_count; ?>" />
@@ -1241,7 +1241,7 @@ if ( $useTabs ) { ?>
    <input  align="left" type="button" name="addInclusion"  value="<?php
   etranslate ( 'Add Inclusion' ) ?>" onclick="add_exception(1)" /><br />
  <input  align="left" type="button" name="delSelected"  value="<?php
-  etranslate ( 'Delete Selected' ) ?>" onclick="del_selected()" />
+  etranslate ( 'Delete Selected' ) ?>" onclick="del_selected ()" />
 </td></tr></table>
 
 </td></tr></table>
@@ -1277,12 +1277,12 @@ if ( $useTabs ) { ?>
 
     if ( $rem_status )
       echo $checked;
-    echo ' onclick="toggle_reminders()" />' ."\n";
+    echo ' onclick="toggle_reminders ()" />' ."\n";
     echo translate ( 'Yes' ) . '</label>&nbsp;<label>';
     echo '<input type="radio" name="reminder" id="reminderNo" value="0"';
     if ( ! $rem_status )
       echo $checked;
-    echo ' onclick="toggle_reminders()" />' . translate ( 'No' ) .
+    echo ' onclick="toggle_reminders ()" />' . translate ( 'No' ) .
       '</label></td></tr></thead>' ."\n";
     $rem_use_date = ( ! empty ( $reminder['date'] ) ||
       ( $reminder_offset == 0 && $REMINDER_WITH_DATE == 'Y' )? true:false);
@@ -1293,7 +1293,7 @@ if ( $useTabs ) { ?>
      <input  type="radio" name="rem_when" id="rem_when_date" value="Y" <?php
      if ( $rem_use_date )
        echo  $checked;
- ?>  onclick="toggle_rem_when()" /><?php etranslate ( 'Use Date/Time' ); ?>&nbsp;</label>
+ ?>  onclick="toggle_rem_when ()" /><?php etranslate ( 'Use Date/Time' ); ?>&nbsp;</label>
     </td><td class="boxtop boxright" nowrap="nowrap" colspan="2">
     <?php
       echo date_selection ( 'reminder_', ( ! empty ( $reminder['date'] ) ?
@@ -1312,7 +1312,7 @@ if ( $useTabs ) { ?>
      <input  type="radio" name="rem_when" id="rem_when_offset" value="N" <?php
      if ( ! $rem_use_date )
        echo $checked;
- ?>  onclick="toggle_rem_when()" /><?php etranslate ( 'Use Offset' ); ?>&nbsp;</label>
+ ?>  onclick="toggle_rem_when ()" /><?php etranslate ( 'Use Offset' ); ?>&nbsp;</label>
     </td><td class="boxright" nowrap="nowrap" colspan="2">
     <?php
         $rem_minutes = $reminder_offset;
@@ -1379,7 +1379,7 @@ if ( $useTabs ) { ?>
     echo '&nbsp;&nbsp;&nbsp;<label>' . translate ( 'Times' ) . '</label></td>' ."\n";
     echo '<td class="boxright boxtop" colspan="2">';
     echo '<input type="text" size="2" name="rem_rep_count" '.
-      "value=\"$rem_rep_count\" onchange=\"toggle_rem_rep();\" /></td></tr>\n";
+      "value=\"$rem_rep_count\" onchange=\"toggle_rem_rep ();\" /></td></tr>\n";
     echo '<tr id="rem_repeats"><td class="boxleft boxbottom">';
     echo '&nbsp;&nbsp;&nbsp;<label>' . translate ( 'Every' ) . '</label></td>' ."\n";
     echo '<td class="boxright boxbottom" colspan="2">';
@@ -1406,7 +1406,7 @@ if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__publ
   ! empty ( $ENABLE_CAPTCHA ) && $ENABLE_CAPTCHA == 'Y' ) {
   if ( function_exists ( 'imagecreatetruecolor' ) ) {
     include_once 'includes/classes/captcha/captcha.php';
-    echo captcha::form();
+    echo captcha::form ();
   } else {
     echo "<b>Warning:</b> Cannot use CAPTCHA without PHP's GD extension!<br />\n";
   }
@@ -1416,7 +1416,7 @@ if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__publ
 <tr><td>
  <script type="text/javascript">
 <!-- <![CDATA[
-  document.writeln ( '<input type="button" value="<?php etranslate ( 'Save' )?>" onclick="validate_and_submit()" />' );
+  document.writeln ( '<input type="button" value="<?php etranslate ( 'Save' )?>" onclick="validate_and_submit ()" />' );
 //]]> -->
  </script>
  <noscript>
@@ -1433,7 +1433,7 @@ if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__publ
    myFCKeditor.BasePath = 'includes/FCKeditor-2.0/';
    myFCKeditor.ToolbarSet = 'Medium';
    myFCKeditor.Config['SkinPath'] = './skins/office2003/';
-   myFCKeditor.ReplaceTextarea();
+   myFCKeditor.ReplaceTextarea ();
 </script>
 <?php /* $use_fckeditor */ } ?>
 
@@ -1452,6 +1452,6 @@ if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__publ
    translate ( 'You are not authorized to edit this XXX.' ) );
  //end if ( $can_edit )
 
-echo print_trailer(); ?>
+echo print_trailer (); ?>
 
 

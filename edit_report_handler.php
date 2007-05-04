@@ -47,7 +47,7 @@ if ( ! $is_admin )
   $is_global = 'N';
 
 $adding_report = ( empty ( $report_id ) || $report_id <= 0 );
-// .
+
 // Check permissions.
 // Can only edit/delete if you created the event or you are an admin.
 if ( empty ( $error ) && $single_user != 'N' && !
@@ -66,7 +66,7 @@ if ( empty ( $error ) && $single_user != 'N' && !
   } else
     $error = db_error ();
 }
-// .
+
 // Validate templates to make sure the required variables are found.
 // Page template must include ${days}.
 if ( empty ( $error ) ) {
@@ -77,12 +77,12 @@ if ( empty ( $error ) ) {
   if ( ! strstr ( $page_template, '${days}' ) )
     $error .= $errStr . translate ( 'Page template' )
      . str_replace ( 'XXX', '${days}', $noVarXXX );
-  // .
+
   // Day template must include ${events}.
   if ( ! strstr ( $day_template, '${events}' ) )
     $error .= $errStr . translate ( 'Day template' )
      . str_replace ( 'XXX', '${events}', $noVarXXX );
-  // .
+
   // Event template must include ${name}.
   if ( ! strstr ( $event_template, '${name}' ) )
     $error .= $errStr . translate ( 'Event template' )
@@ -188,7 +188,7 @@ if ( empty ( $error ) ) {
   exit;
 }
 
-print_header();
+print_header ();
 echo print_error ( $error ) . print_trailer ();
 
 ?>

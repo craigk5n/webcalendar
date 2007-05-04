@@ -61,7 +61,7 @@ echo '<h2>' . translate ( 'Delete Events' );
 if ( $preview )
   echo '[ ' . $previewStr . ']';
 echo "</h2>\n";
-echo display_admin_link();
+echo display_admin_link ();
 
 if ( $do_purge ) {
   if ( $preview ) {
@@ -110,7 +110,7 @@ if ( $do_purge ) {
   echo '<h2>...' .  translate ( 'Finished' ) . ".</h2>\n";
 ?>
   <form><input type="button" value="<?php etranslate ( 'Back' )?>"
-onclick="history.back()" /></form
+onclick="history.back ()" /></form
 ><?php
   if ( $purgeDebug ) {
     echo '<div style="border: 1px solid #000;background-color: #fff;"><tt>' .
@@ -171,7 +171,7 @@ onclick="history.back()" /></form
 <?php } ?>
 </td></tr></table>
 
-<?php echo print_trailer();
+<?php echo print_trailer ();
 
 function purge_events ( $ids ) {
   global $preview, $previewStr, $c; // db connection

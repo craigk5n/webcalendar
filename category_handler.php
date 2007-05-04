@@ -122,7 +122,7 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
 if ( empty ( $error ) )
   do_redirect ( 'category.php' );
 
-print_header();
-echo print_error ( $error ) . print_trailer();
+print_header ();
+echo print_error ( $error ) . print_trailer ();
 
 ?>

@@ -20,7 +20,7 @@ $error = '';
 if ( ! $is_admin )
   $user = $login;
 
-$BodyX = 'onload="usermode_handler();"';
+$BodyX = 'onload="usermode_handler ();"';
 if ( $GROUPS_ENABLED == 'Y' ) {
   $INC = array ('js/visible.php', 'js/views_edit.php/true' );
 } else {
@@ -165,7 +165,7 @@ echo '<tr><td><label>'
 ?>
 </select>
 <?php if ( $GROUPS_ENABLED == 'Y' ) { ?>
- <input type="button" onclick="selectUsers()" value="<?php etranslate ( 'Select' );?>..." />
+ <input type="button" onclick="selectUsers ()" value="<?php etranslate ( 'Select' );?>..." />
 <?php } ?>
 </div>
 </td></tr>

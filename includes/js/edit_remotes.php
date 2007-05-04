@@ -18,14 +18,14 @@ function valid_form ( form ) {
       etranslate ( 'URL cannot be blank.', true)?>" );
     return false;
   }
-  check_name();
+  check_name ();
 
   return validform;
 
 }
 
 
-function toggle_layercolor() {
+function toggle_layercolor () {
  if ( document.prefform.nlayer.checked == true) {
    makeVisible ( 'nlayercolor', true );
  } else {
@@ -33,7 +33,7 @@ function toggle_layercolor() {
  }
 }
 
-function check_name() {
+function check_name () {
   var url = 'ajax.php';
   var params = 'page=edit_remotes&name=' + $F('nid');
   var ajax = new Ajax.Request(url,
@@ -47,7 +47,7 @@ function showResponse(originalRequest) {
     text = originalRequest.responseText;
     //this causes jacascript errors in Firefox, but these can be ignored
     alert (text);
-    document.prefform.nid.focus();
+    document.prefform.nid.focus ();
     validform =  false;
   } else {
     validform =  true;

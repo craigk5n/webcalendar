@@ -97,7 +97,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _initInitFirstPhase() {
+  function _initInitFirstPhase () {
     global $HTTP_GET_VARS, $HTTP_POST_VARS, $self, $PHP_SELF, $SCRIPT,
       $special, $DMW, $user_inc;
 
@@ -130,7 +130,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _initInitSecondPhase() {
+  function _initInitSecondPhase () {
     global $ovrd, $id, $user, $date, $year, $month, $hour, $minute,
       $cat_id, $friendly, $PUBLIC_ACCESS, $DMW,
       $ALLOW_VIEW_OTHER, $is_admin, $can_add, $readonly, $login,
@@ -141,7 +141,7 @@ class WebCalendar {
       $is_assistant;
     load_global_settings ();
 
-    $this->setLanguage();
+    $this->setLanguage ();
 
     if ( empty ( $ovrd ) )
       load_user_preferences ();
@@ -192,7 +192,7 @@ class WebCalendar {
       if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' &&
         ! $is_admin ) {
         $valid_user = false;
-        $userlist = get_my_users();
+        $userlist = get_my_users ();
         if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
           $nonusers = get_my_nonusers ( $login, true );
           $userlist =  array_merge($nonusers, $userlist);
@@ -219,7 +219,7 @@ class WebCalendar {
 
       set_today($date);
 
-      remember_this_view();
+      remember_this_view ();
 
       if ( $CATEGORIES_ENABLED == 'Y' ) {
         if ( ! empty ( $cat_id ) ) {
@@ -241,7 +241,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _initAssert() {
+  function _initAssert () {
     // Initialize assert options
     assert_options ( ASSERT_CALLBACK, 'assert_handler' );
     assert_options ( ASSERT_ACTIVE, 1 );
@@ -252,7 +252,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _initConfig() {
+  function _initConfig () {
      do_config ( $this->absolutePath ( 'includes/settings.php' ) );
   }
 
@@ -261,7 +261,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _initPHPDBI() {
+  function _initPHPDBI () {
     global $phpdbiVerbose;
 
     // Enable the following to show the actual database error in the browser.
@@ -277,7 +277,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _initFunctions() {
+  function _initFunctions () {
     global $days_per_month, $ldays_per_month, $byday_values, $noSet,
     $HTTP_GET_VARS, $PHP_SELF, $HTTP_POST_VARS, $HTTP_COOKIE_VARS,
    $settings, $db_login, $db_password, $offsets, $weekday_names, $byday_names;
@@ -533,7 +533,7 @@ class WebCalendar {
    * @todo Make an Authentication interface class and create a subclass for
    *       each user*.php page.
    */
-  function _initUser() {
+  function _initUser () {
   }
 
   /**
@@ -541,7 +541,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _initValidate() {
+  function _initValidate () {
     global $validate_redirect, $session_not_found, $use_http_auth,
       $PHP_AUTH_USER, $HTTP_SERVER_VARS, $REMOTE_USER, $HTTP_ENV_VARS,
       $single_user, $login, $single_user_login, $user_inc, $settings,
@@ -550,7 +550,7 @@ class WebCalendar {
       $is_nonuser, $SCRIPT;
 
     /* If WebCalendar is configured to use http authentication, then we can
-     * use _initValidate().  If we are not using http auth, icalclient.php will
+     * use _initValidate ().  If we are not using http auth, icalclient.php will
      * create its own http auth since an iCal client cannot login via a
      * web-based login. Publish.php does need to validate if not http_auth
      */
@@ -618,7 +618,7 @@ class WebCalendar {
             dbi_error () . "</blockquote>\n" );
         }
         // Use another application's authentication
-        if (! $login = user_logged_in())
+        if (! $login = user_logged_in ())
           $session_not_found = true;
       } else {
       @session_start ();
@@ -695,7 +695,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _initConnect() {
+  function _initConnect () {
     global $c, $db_host, $db_login, $db_password, $db_database,
       $single_user, $single_user_login, $pub_acc_enabled, $user_inc,
       $PUBLIC_ACCESS_CAN_ADD, $session_not_found, $PHP_AUTH_USER,
@@ -957,7 +957,7 @@ class WebCalendar {
 
     // An attempt will be made to translate
     if ( $not_auth ) {
-      load_user_preferences();
+      load_user_preferences ();
       $error = ( function_exists ( 'translate' )
        ? translate ( 'You are not authorized.' ) : 'You are not authorized.' );
       die_miserable_death ( $error );
@@ -973,7 +973,7 @@ class WebCalendar {
    *
    * @todo Figure out what should go here.
    */
-  function _initSiteExtras() {
+  function _initSiteExtras () {
   }
 
   /**
@@ -981,7 +981,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _initAccess() {
+  function _initAccess () {
     global $access_other_cals;
 
     // Global variable used to cache permissions
@@ -1027,7 +1027,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _getPhases() {
+  function _getPhases () {
     global $user_inc;
 
     foreach ( $this->_filePhaseMap as $pattern => $phases ) {
@@ -1049,7 +1049,7 @@ class WebCalendar {
    * @access private
    */
   function _getSteps ( $phase ) {
-    $phases = $this->_getPhases();
+    $phases = $this->_getPhases ();
 
     return $phases[$phase - 1];
   }
@@ -1065,7 +1065,7 @@ class WebCalendar {
     $steps = $this->_getSteps ( $phase );
     foreach ( $steps as $step ) {
       $function = "_init$step";
-      $this->$function();
+      $this->$function ();
     }
   }
 
@@ -1076,7 +1076,7 @@ class WebCalendar {
    *
    * @access public
    */
-  function initializeFirstPhase() {
+  function initializeFirstPhase () {
     $this->_doInit ( 1 );
   }
 
@@ -1087,7 +1087,7 @@ class WebCalendar {
    *
    * @access public
    */
-  function initializeSecondPhase() {
+  function initializeSecondPhase () {
     $this->_doInit ( 2 );
   }
 
@@ -1096,7 +1096,7 @@ class WebCalendar {
    *
    * @access public
    */
-  function setLanguage() {
+  function setLanguage () {
     $this->_inittranslate ();
   }
 

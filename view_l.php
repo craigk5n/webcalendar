@@ -100,8 +100,8 @@ $repeated_events = array ();
 for ( $i = 0; $i < count ( $e_save ); $i++ ) {
   $should_add = 1;
   for ( $j = 0; $j < count ( $events ) && $should_add; $j++ ) {
-    if ( ! $e_save[$i]->getClone() &&
-      $e_save[$i]->getID() == $events[$j]->getID() ) {
+    if ( ! $e_save[$i]->getClone () &&
+      $e_save[$i]->getID () == $events[$j]->getID () ) {
       $should_add = 0;
     }
   }
@@ -113,8 +113,8 @@ for ( $i = 0; $i < count ( $e_save ); $i++ ) {
 for ( $i = 0; $i < count ( $re_save ); $i++ ) {
   $should_add = 1;
   for ( $j = 0; $j < count ( $repeated_events ) && $should_add; $j++ ) {
-    if ( ! $re_save[$i]->getClone() &&
-      $re_save[$i]->getID() == $repeated_events[$j]->getID() ) {
+    if ( ! $re_save[$i]->getClone () &&
+      $re_save[$i]->getID () == $repeated_events[$j]->getID () ) {
       $should_add = 0;
     }
   }

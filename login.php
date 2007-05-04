@@ -21,13 +21,13 @@ include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase();
+$WebCalendar->initializeFirstPhase ();
 
 include "includes/$user_inc";
 include_once 'includes/access.php';
 include 'includes/gradient.php';
 
-$WebCalendar->initializeSecondPhase();
+$WebCalendar->initializeSecondPhase ();
 
 load_global_settings ();
 
@@ -49,7 +49,7 @@ if ( $REMEMBER_LAST_LOGIN == 'Y' && empty ( $login ) ) {
 
 load_user_preferences ( 'guest' );
 
-$WebCalendar->setLanguage();
+$WebCalendar->setLanguage ();
 
 // Look for action=logout
 $logout = false;
@@ -61,7 +61,7 @@ if ( ! empty ( $action ) && $action == 'logout' ) {
   SetCookie ( 'webcalendar_last_view', '', 0 );
 } else if (  empty ( $return_path ) ) {
   // see if a return path was set
-  $return_path = get_last_view();
+  $return_path = get_last_view ();
   if ( ! empty ( $return_path ) )
     SetCookie ( 'webcalendar_last_view', '', 0 );
 }
@@ -95,7 +95,7 @@ if ( $single_user == 'Y' ) {
   do_redirect ( 'index.php' );
 } else {
   if ( ! empty ( $login ) && ! empty ( $password ) && ! $logout ) {
-    if ( get_magic_quotes_gpc() ) {
+    if ( get_magic_quotes_gpc () ) {
       $password = stripslashes ( $password );
       $login = stripslashes ( $login );
     }
@@ -112,7 +112,7 @@ if ( $single_user == 'Y' ) {
       // set login to expire in 365 days
       if ( ! empty ( $remember ) && $remember == 'yes' ) {
         SetCookie ( 'webcalendar_session', $encoded_login,
-          time() + ( 24 * 3600 * 365 ), $cookie_path );
+          time () + ( 24 * 3600 * 365 ), $cookie_path );
       } else {
         SetCookie ( 'webcalendar_session', $encoded_login, 0, $cookie_path );
       }
@@ -125,7 +125,7 @@ if ( $single_user == 'Y' ) {
       // logged in) if $REMEMBER_LAST_LOGIN is set to "Y" (in admin.php).
       if ( ! empty ( $remember ) && $remember == 'yes' ) {
         SetCookie ( 'webcalendar_login', $login,
-          time() + ( 24 * 3600 * 365 ), $cookie_path );
+          time () + ( 24 * 3600 * 365 ), $cookie_path );
       } else {
         SetCookie ( 'webcalendar_login', $login, 0, $cookie_path );
       }
@@ -166,10 +166,10 @@ function valid_form ( form ) {
   }
   return true;
 }
-function myOnLoad() {
-  document.login_form.login.focus();
+function myOnLoad () {
+  document.login_form.login.focus ();
   <?php
-    if ( ! empty ( $login ) ) echo "document.login_form.login.select();";
+    if ( ! empty ( $login ) ) echo "document.login_form.login.select ();";
     if ( ! empty ( $error ) ) {
       echo "  alert ( \"$error\" );\n";
     }
@@ -186,7 +186,7 @@ function myOnLoad() {
  }
 ?>
 </head>
-<body id="login" <?php if ( ! $logout ) { ?>onload="myOnLoad();"<?php } ?>>
+<body id="login" <?php if ( ! $logout ) { ?>onload="myOnLoad ();"<?php } ?>>
 <?php
 // Print custom header (since we do not call print_header function)
 if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {

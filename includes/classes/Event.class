@@ -623,7 +623,7 @@ class Event {
    * @access public
    */
   function getEndDateTime () {
-    $this->_endDateTime = gmdate ( 'YmdHis', $this->getEndDateTimeTS() );
+    $this->_endDateTime = gmdate ( 'YmdHis', $this->getEndDateTimeTS () );
     return $this->_endDateTime;
   }
 

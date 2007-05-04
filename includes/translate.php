@@ -8,7 +8,7 @@
  * and store it as a file in the cache dir.  The next call will unserialize the
  * cached file rather than re-parse the file.
  *
- * Although there is a PHP gettext() function, I prefer to use this home-grown
+ * Although there is a PHP gettext () function, I prefer to use this home-grown
  * translate function since it is simpler to work with.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
@@ -46,27 +46,27 @@ function unhtmlentities ( $string ) {
 }
 /* Read in a language file and cache it if we can.
  *
- * @param string $t_file       The name of the file to read.
- * @param bool   $new_install  Is this a new install?
- * @param string $cache_file   Name of the cache file.
- * @param bool   $strip        Do we want to call stripslashes?
+ * @param string $in_file   The name of the language file to read.
+ * @param string $out_file  Name of the cache file.
+ * @param bool   $strip     Do we want to call stripslashes?
+ *                          It may cause problems with Japanese translations.
  */
 
-function read_trans_file ( $t_file, $new_install, $cache_file, $strip = true ) {
-  global $translations;
+function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
+  global $can_save, $new_install, $translations;
 
-  $fp = fopen ( $t_file, 'r', false );
+  $fp = fopen ( $in_file, 'r', false );
   if ( ! $fp )
-    die_miserable_death ( 'Could not open language file: ' . $lang_file );
+    die_miserable_death ( 'Could not open language file: ' . $in_file );
 
   $inInstallTrans = false;
+  $installationTranslations = array ();
 
   while ( ! feof ( $fp ) ) {
     $buffer = trim ( fgets ( $fp, 4096 ) );
     if ( strlen ( $buffer ) == 0 )
       continue;
 
-    // stripslashes may cause problems with Japanese translations.
     if ( get_magic_quotes_runtime () && $strip )
       $buffer = stripslashes ( $buffer );
 
@@ -74,36 +74,49 @@ function read_trans_file ( $t_file, $new_install, $cache_file, $strip = true ) {
     $buffer =
     str_replace ( array ( '"', "'" ), array ( '&quot;', '&#39;' ), $buffer );
 
-    // Skip installation translations unless we're running install/index.php
-    if ( substr ( $buffer, 0, 7 ) == '# Page:' ) {
-      $inInstallTrans = ( substr ( $buffer, 9, 7 ) == 'install' );
+    // Skip comments.
+    if ( substr ( $buffer, 0, 1 ) == '#' ) {
+      if ( substr ( $buffer, 0, 7 ) == '# Page:' )
+        $inInstallTrans = ( substr ( $buffer, 9, 7 ) == 'install' );
+
       continue;
     }
-    if ( ( substr ( $buffer, 0, 1 ) == '#' || $inInstallTrans && ! $new_install ) )
+
+    // Skip installation translations unless we're running install/index.php.
+    if ( $inInstallTrans && ! $new_install )
       continue;
 
     $pos = strpos ( $buffer, ':' );
     $abbrev = trim ( substr ( $buffer, 0, $pos ) );
     $temp = trim ( substr ( $buffer, $pos + 1 ) );
+
     // If the translation is the same as the English text,
     // tools/update_translation.pl should signify this with an "=" sign
-    // in the user's language file so they don't show as <<MISSING>>.
-    if ( $temp !== '=' )
-      $translations[$abbrev] = $temp;
+    // in the user's language file so they don't show as << MISSING >>.
+    if ( $temp !== '=' ) {
+      if ( $inInstallTrans && $new_install )
+        $installationTranslations[$abbrev] = $temp;
+      else
+        $translations[$abbrev] = $temp;
+    }
   }
   fclose ( $fp );
 
-  if ( ! $new_install && ! empty ( $cache_file ) ) {
-    $fd = @fopen ( $cache_file, 'w+b', false );
+  if ( stristr ( $in_file, 'english' ) )
+    ksort ( $translations );
+
+  // We want to cache all the non-installation phrases...
+  if ( $can_save && ! empty ( $out_file ) ) {
+    $fd = @fopen ( $out_file, 'wb', false );
     if ( ! empty ( $fd ) ) {
       fwrite ( $fd, serialize ( $translations ) );
       fclose ( $fd );
-      chmod ( $cache_file, 0666 );
-    } else
-      // Could not write to cachedir.
-      die_miserable_death ( 'Error writing translation cache file: '
-         . $cached_file );
+      chmod ( $out_file, 0666 );
+    }
   }
+  // but, we still need them in the array if we ARE installing.
+  if ( $new_install )
+    $translations = array_merge ( $translations, $installationTranslations );
 }
 
 /* Unloads $translations so we can translate a different language.
@@ -132,7 +145,7 @@ function reset_language ( $new_language ) {
 /* Loads all the language translation into an array for quick lookup.
  *
  * <b>Note:</b> There is no need to call this manually.
- * It will be invoked by {@link translate ()} the first time it is called.
+ * It will be invoked by {@link translate () } the first time it is called.
  */
 function load_translation_text () {
   global $basedir, $lang_file, $settings, $translation_loaded, $translations;
@@ -140,86 +153,93 @@ function load_translation_text () {
   if ( $translation_loaded ) // No need to run this twice.
     return;
 
-  $translations = array ();
-
-  $eng_file = 'translations/English-US.txt';
-  if ( ! file_exists ( $eng_file ) )
-    $eng_file = '../translations/English-US.txt';
+  $lang_cache = substr ( $lang_file, strrpos ( $lang_file, '/' ) + 1 );
+  $lang_file_2 = '';
 
   if ( ! empty ( $basedir ) ) {
-    $lang_file_2 = $basedir . '/' . $lang_file;
+    if ( ! file_exists ( $lang_file ) )
+      $lang_file_2 = $basedir . '/' . $lang_file;
 
     if ( file_exists ( $lang_file_2 ) )
       $lang_file = $lang_file_2;
+
+    if ( ! file_exists ( $lang_file ) )
+      $lang_file = 'translations/' . $lang_cache;
   }
   if ( ! file_exists ( $lang_file ) )
     die_miserable_death ( 'Cannot find language file: ' . $lang_file );
 
+  $cached_base_file = $cached_file = $cachedir = '';
+  $can_save = false;
+
+  $eng_file = 'translations/English-US.txt';
+  if ( ! file_exists ( $eng_file ) )
+    $eng_file = '../' . $eng_file;
+
   // Check for 'cachedir' in settings.  If found, then we will save
   // the parsed translation file there as a serialized array.
-  $cached_base_file = $cached_file = $cachedir = '';
-  $save_to_cache = $use_cached = false;
-
   // Ensure we use the proper cachedir name.
   if ( ! empty ( $settings['cachedir'] ) && is_dir ( $settings['cachedir'] ) )
     $cachedir = $settings['cachedir'];
   else
-  if ( ! empty ( $settings['db_cachedir'] ) &&
-      is_dir ( $settings['db_cachedir'] ) )
+  if ( ! empty ( $settings['db_cachedir'] ) && is_dir ( $settings['db_cachedir'] ) )
     $cachedir = $settings['db_cachedir'];
 
   if ( ! empty ( $cachedir ) && function_exists ( 'file_get_contents' ) ) {
-    $cached_base_file = $cachedir . '/' . $eng_file;
-    $cached_file = $cachedir . '/' . $lang_file;
+    $cached_base_file = $cached_file = $cachedir . '/translations/';
+    $cached_base_file .= 'English-US.txt';
+    $cached_file .= $lang_cache;
     $cache_tran_dir = dirname ( $cached_file );
+
     if ( ! is_dir ( $cache_tran_dir ) ) {
       @mkdir ( $cache_tran_dir, 0777 );
       @chmod ( $cache_tran_dir, 0777 );
-
+      /*
+      // Do we really want to die if we can't save the cache file?
+      // Or should we just run without it?
       if ( ! is_dir ( $cache_tran_dir ) )
-        die_miserable_death ( 'Error creating translation cache directory: '
+        die_miserable_death ( 'Error creating translation cache directory: "'
            . $cache_tran_dir
-           . '<br /><br />Please check the permissions of the following directory: '
-           . $cachedir );
+           . '"<br /><br />Please check the permissions of the directory: "'
+           . $cachedir . '"' );
+ */
     }
 
-    if ( ! file_exists ( $cached_base_file ) || ! file_exists ( $cached_file ) )
-      $save_to_cache = true;
-    else {
-      if ( filemtime ( $eng_file ) > filemtime ( $cached_base_file ) ||
-          filemtime ( $lang_file ) > filemtime ( $cached_file ) )
-        // Translation was updated.  Reload/reparse and save.
-        $save_to_cache = true;
-      else
-        // Cache is more recent.
-        $use_cached = true;
-    }
+    $can_save = ( is_writable ( $cache_tran_dir ) );
   }
-  if ( $use_cached )
-    // This array will contain the whole set, including any default English phrases.
-    $translations = unserialize ( file_get_contents ( $cached_file ) );
-  // boy, that was easy ;-)
-  else {
-    // If we don't want the installation translations in the array,
-    // don't cache the file if we are installing.
-    $save_to_cache = $save_to_cache &&
-    ( ! strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' ) );
 
-    // First, read in English-US.txt, or it's cache, to populate the whole array.
-    if ( empty ( $cached_base_file ) ||
-        filemtime ( $eng_file ) > filemtime ( $cached_base_file ) ) {
-      // English-US.txt is newer.
-      read_trans_file ( $eng_file, $save_to_cache, $cached_base_file );
-    } else
+  $new_install = ( ! strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' ) );
+  $translations = array ();
+
+  // First set default $translations[]
+  // by reading the base English-US.txt file or it's cache.
+  if ( empty ( $cached_base_file ) )
+    read_trans_file ( $eng_file );
+  else {
+    if ( ! file_exists ( $cached_base_file ) ||
+        filemtime ( $eng_file ) > filemtime ( $cached_base_file ) )
+      read_trans_file ( $eng_file, $cached_base_file );
+    else
       // Cache is newer.
       $translations = unserialize ( file_get_contents ( $cached_base_file ) );
-
-    // Then, if language is not English,
-    // read in the user's language file to overwrite the array.
-    // This will ensure that any <<MISSING>> phrases at least have a default.
-    if ( $lang_file !== $eng_file )
-      read_trans_file ( $lang_file, $save_to_cache, $cached_file );
   }
+
+  // Then, if language is not English,
+  // read in the user's language file to overwrite the array.
+  // This will ensure that any << MISSING >> phrases at least have a default.
+  if ( $lang_file !== $eng_file ) {
+    if ( empty ( $cached_file ) )
+      read_trans_file ( $lang_file );
+    else {
+      if ( ! file_exists ( $cached_file ) ||
+          ( filemtime ( $lang_file ) > filemtime ( $cached_file ) ) )
+        read_trans_file ( $lang_file, $cached_file );
+      else
+        // Cache is newer.
+        $translations = unserialize ( file_get_contents ( $cached_file ) );
+    }
+  }
+
   $translation_loaded = true;
 }
 

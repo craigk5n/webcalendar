@@ -35,7 +35,7 @@ if ( $is_admin ) {
   $doGroups = ( ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' );
   $doNUCS = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' );
 }
-$BodyX = 'onload="showTab();"';
+$BodyX = 'onload="showTab ();"';
 print_header ( array ( 'js/users.php/true', 'js/visible.php' ), '',
   $BodyX, '', '', true );
 
