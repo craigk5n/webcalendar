@@ -91,7 +91,6 @@ function popup_handler () {
 // "Allow public access".
 function public_handler () {
   var enabled = document.prefform.admin_PUBLIC_ACCESS[0].checked;
-  //alert ( "public enabled =  " + enabled );
   if ( enabled ) {
     // Public Access enabled
     makeVisible ( 'pa' );
