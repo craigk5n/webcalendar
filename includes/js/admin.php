@@ -1,10 +1,10 @@
-<?php /* $Id$  */
+<?php /* $Id$ */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 ?>
 function valid_form ( form ) {
-  var err = "";
+  var err = '';
 
-  if ( form.admin_SERVER_URL.value == "" ) {
+  if ( form.admin_SERVER_URL.value == '' ) {
     err += "<?php etranslate ( 'Server URL is required.', true)?>\n";
     form.admin_SERVER_URL.select ();
     form.admin_SERVER_URL.focus ();
@@ -22,7 +22,7 @@ function valid_form ( form ) {
     form.admin_WORK_DAY_START_HOUR.focus ();
   }
 
-  if ( err != "" ) {
+  if ( err != '' ) {
     alert ( "<?php etranslate ( 'Error', true ) ?>" + ":\n\n" + err );
     return false;
   }
@@ -77,15 +77,28 @@ function valid_form ( form ) {
 // Gets called on page load and when user changes setting for
 // "Disable popup".
 function popup_handler () {
-  document.getElementById('pop').style.visibility =
-    ( document.prefform.admin_DISABLE_POPUPS[0].checked ? 'visible' : 'hidden' );
+  var noPopups = document.prefform.admin_DISABLE_POPUPS[0].checked;
+  if ( noPopups ) {
+    // Popups disabled
+    makeInvisible ( 'pop' );
+  } else {
+    // Popups disabled
+    makeVisible ( 'pop' );
+  }
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow public access".
 function public_handler () {
-  document.getElementById('pa').style.visibility =
-    ( document.prefform.admin_PUBLIC_ACCESS[0].checked ? 'visible' : 'hidden' );
+  var enabled = document.prefform.admin_PUBLIC_ACCESS[0].checked;
+  //alert ( "public enabled =  " + enabled );
+  if ( enabled ) {
+    // Public Access enabled
+    makeVisible ( 'pa' );
+  } else {
+    // Public Access disabled
+    makeInvisible ( 'pa' );
+  }
 }
 
 
@@ -93,7 +106,7 @@ function public_handler () {
 // "Allow external users".
 function eu_handler () {
   var enabled = document.prefform.admin_ALLOW_EXTERNAL_USERS[0].checked;
-  //alert ( "allow external =  " + enabled );
+  //alert ( "allow external = " + enabled );
   if ( enabled ) {
     // External Users enabled
     makeVisible ( "eu1" );
@@ -201,7 +214,7 @@ function email_handler () {
 
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
  //using the tabbed GUI.
-?>var tabs = new array ();
+?>var tabs = new Array ();
 tabs[1] = "settings";
 tabs[2] = "public";
 tabs[3] = "uac";
