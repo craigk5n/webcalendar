@@ -884,15 +884,11 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <?php etranslate ( 'Check to see if PHP 4.1.0 or greater is installed' ) ?>.
 </td>
   <?php
-    $class = ( version_compare(phpversion (), '4.1.0', '>=') ) ?
-      'recommended' : 'notrecommended';
-    echo "<td class=\"$class\">";
-    if ($class='recommended') {
-      echo '<img src="recommended.gif" alt=""/>&nbsp;';
-    } else {
-      echo '<img src="not_recommended.jpg" alt=""/>&nbsp;';
-    }
-    echo translate ( 'PHP version') . ' ' . phpversion ();
+    $class = ( version_compare ( phpversion (), '4.1.0', '>=' ) ? '' : 'not' )
+      . 'recommended';
+    echo '<td class="' . $class . '"><img src="' . ( $class == 'recommended'
+      ? 'recommended.gif' : 'not_recommended.jpg' ) . ' alt="" />&nbsp;'
+      . translate ( 'PHP version' ) . ' ' . phpversion ();
    ?>
 </td></tr>
 <tr><th class="header" colspan="2">
