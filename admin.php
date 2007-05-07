@@ -687,8 +687,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
         <p><label class="tooltip" title="' . tooltip ( 'public-access-override-help' ) . '">' . translate ( 'Override event name/description for public access' ) . ':</label>' . print_radio ( 'OVERRIDE_PUBLIC' ) . '</p>
         <p><label class="tooltip" title="' . tooltip ( 'public-access-override-text-help' ) . '">' . translate ( 'Text to display to public access' ) . ':</label>&nbsp;<label><input name="admin_OVERRIDE_PUBLIC_TEXT" value="' .  $s['OVERRIDE_PUBLIC_TEXT'] . '" size="25" /></label></p>
         <p><label class="tooltip" title="' . tooltip ( 'public-access-captcha-help' ) . '">' . translate ( 'Require CAPTCHA validation for public access new events' ) . ':</label>' . print_radio ( 'ENABLE_CAPTCHA' ) . '</p>
-      </div>'?>
-    </div>
+      </div>
+    </div>'?>
 
 <!-- BEGIN USER ACCESS CONTROL -->
 <div id="tabscontent_uac">

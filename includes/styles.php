@@ -139,8 +139,8 @@ if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
 
 ?>;
   background: <?php echo $GLOBALS['BGCOLOR']
- . ( ! empty ( $GLOBALS['BGIMAGE'] )
-  ? ' url(\'' . $GLOBALS['BGIMAGE'] . '\') ' . $GLOBALS['BGREPEAT'] : '' );
+ . ( empty ( $GLOBALS['BGIMAGE'] )
+  ? '' : ' url(\'' . $GLOBALS['BGIMAGE'] . '\') ' . $GLOBALS['BGREPEAT'] );
 
 ?>;
 }
@@ -899,27 +899,19 @@ img.help {
 }
 #admin .tooltip,
 #pref .tooltip{
-  cursor: help;
-  text-decoration: none;
-  font-weight: bold;
   width: 175px;
   vertical-align: top;
 }
 #minicalendar table {
-  width: <?php echo ( ! empty ( $GLOBALS['MINICALWIDTH'] )
-  ? $GLOBALS['MINICALWIDTH'] : '160px' );
+  width: <?php
+echo ( empty ( $GLOBALS['MINICALWIDTH'] ) ? '160px' : $GLOBALS['MINICALWIDTH'] );
 
 ?>;
 }
-#minicalendar th{
-  font-size: <?php echo ( ! empty ( $GLOBALS['MINICALFONT'] )
-  ? $GLOBALS['MINICALFONT'] : '11px' );
-
-?>;
-}
-#minicalendar td {
-  font-size: <?php echo ( ! empty ( $GLOBALS['MINICALFONT'] )
-  ? $GLOBALS['MINICALFONT'] : '11px' );
+#minicalendar td,
+#minicalendar th {
+  font-size: <?php
+echo ( empty ( $GLOBALS['MINICALFONT'] ) ? '11px' : $GLOBALS['MINICALFONT'] );
 
 ?>;
 }
@@ -1072,7 +1064,7 @@ img.help {
 #viewt .main,
 #viewv .main,
 #week .main {
-border-collapse: collapse;
+  border-collapse: collapse;
 }
 #admin .main th,
 #pref .main th,
