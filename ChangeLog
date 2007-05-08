@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.3+CVS (?? ??? 2006)
+ - Fixed bug [ 1714785 ] new feature "plugins" not being displayed correctly at system settings
  - Fixed bug [ 1711983 ] cannot switch between registers of system settings
  - Fixed bug [ 1714844 ] Small patch for includes/styles.php + includes/js/popups.php
  - Applied PATCH [ 1710686 ] Version 1.0.5 uses javascript functions undefined in IE6
