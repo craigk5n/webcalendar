@@ -13,7 +13,7 @@ function OkButton () {
     parentlist = window.opener.document.<?php echo $form . '.elements[' . $listid?>],
     thislist = document.userselform.elements[0],
     // Store current selections.
-    tmp = new array ();
+    tmp = new Array ();
 
   for ( i = 0; i < thislist.length; i++ ) {
     if (thislist.options[i].selected)

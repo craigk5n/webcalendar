@@ -4,7 +4,7 @@
   pcoc = getCookie("webcalendar_custom_colors");
   if (!pcoc) pcoc="FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,"+
           "FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF,FFFFFF";
-  precol= new array (16);
+  precol= new Array (16);
   precol=pcoc.split(",",16);
 // Colr choices
   var colorList = new Array ('0','ff0000','400000','800000','c00000','ff4040','ff8080','ffc0c0','000000','ffff00','404000','808000','c0c000','ffff40','ffff80','ffffc0','202020','00ff00','004000','008000','00c000','40ff40','80ff80',',c0ffc0','404040','00ffff','004040','008080','00c0c0','40ffff','80ffff','c0ffff','808080','0000ff','000040','000080','0000c0','4040ff','8080ff','c0c0ff','c0c0c0','ff00ff','400040','800080','c000c0','ff40ff','ff80ff','ffc0ff','ffffff');

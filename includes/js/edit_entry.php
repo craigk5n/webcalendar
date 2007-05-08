@@ -7,7 +7,7 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 var bydayAr = new Object ();
 var bymonthdayAr = new Object ();
 var bysetposAr = new Object ();
-var bydayLabels = new array ("SU","MO","TU","WE","TH","FR","SA");
+var bydayLabels = new Array ("SU","MO","TU","WE","TH","FR","SA");
 var bydayTrans = new Array ( "<?php etranslate ( 'SU' ) ?>"
 , "<?php etranslate ( 'MO' ) ?>"
 , "<?php etranslate ( 'TU' ) ?>"
@@ -331,7 +331,7 @@ function rpttype_weekly () {
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
  //using the tabbed GUI.
 ?>
-var tabs = new array ();
+var tabs = new Array ();
 tabs[0] = "details";
 tabs[1] = "participants";
 tabs[2] = "pete";
