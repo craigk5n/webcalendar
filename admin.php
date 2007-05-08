@@ -714,31 +714,39 @@ print_header (
 </div>
 <!-- END SETTINGS -->
 
-/*
- <?php echo '
-    <h3>' . translate ( 'Plugins' ) . '</h3>
-    <table class="standard" cellspacing="1" cellpadding="2">
-      <tr>
-        <td class="tooltip" title="' . tooltip ( 'plugins-enabled-help' )
-     . '">' . translate ( 'Enable Plugins' ) . ':</td>
-        <td>' . print_radio ( 'PLUGINS_ENABLED' ) . '</td>
-      </tr>';
-
-  if ( $PLUGINS_ENABLED == 'Y' ) {
-    $plugins = get_plugin_list ( true );
-    for ( $i = 0, $cnt = count ( $plugins ); $i < $cnt; $i++ ) {
-      $val = $s[$plugins[$i] . '.plugin_status'];
-      echo '
-      <tr>
-        <td class="tooltip" title="' . tooltip ( 'plugins-sort-key-help' ) . '">&nbsp;&nbsp;&nbsp;' . translate ( 'Plugin' ) . ' ' . $plugins[$i] . ':</td>
-        <td><input type="radio" name="admin_' . $plugins[$i] . '_plugin_status" value="Y" ' . ( $val != 'N' ? $checked : '' ) . ' />' . translate ( 'Yes' ) . '<input type="radio" name="admin_' . $plugins[$i] . '_plugin_status" VALUE="N" ' . ( $val == 'N' ? $checked : '' ) . ' /> ' . translate ( 'No' ) . "</td>
-      </tr>\n";
-    }
-  }
-
-  ?>
-   </table>
-*/
+<!--
+//.
+//    echo '
+//    <h3>' . translate ( 'Plugins' ) . '</h3>
+//    <table class="standard" cellspacing="1" cellpadding="2">
+//      <tr>
+//        <td class="tooltip" title="' . tooltip ( 'plugins-enabled-help' )
+//     . '">' . translate ( 'Enable Plugins' ) . ':</td>
+//        <td>' . print_radio ( 'PLUGINS_ENABLED' ) . '</td>
+//      </tr>';
+//
+//  if ( $PLUGINS_ENABLED == 'Y' ) {
+//    $plugins = get_plugin_list ( true );
+//    for ( $i = 0, $cnt = count ( $plugins ); $i < $cnt; $i++ ) {
+//      $val = $s[$plugins[$i] . '.plugin_status'];
+//      echo '
+//      <tr>
+//        <td class="tooltip" title="' . tooltip ( 'plugins-sort-key-help' )
+//       . '">&nbsp;&nbsp;&nbsp;' . translate ( 'Plugin' ) . ' ' . $plugins[$i]
+//       . ':</td>
+//        <td><input type="radio" name="admin_' . $plugins[$i]
+//       . '_plugin_status" value="Y" ' . ( $val != 'N' ? $checked : '' ) . ' />'
+//       . translate ( 'Yes' ) . '<input type="radio" name="admin_' . $plugins[$i]
+//       . '_plugin_status" VALUE="N" ' . ( $val == 'N' ? $checked : '' ) . ' /> '
+//       . translate ( 'No' ) . "</td>
+//      </tr>\n";
+//    }
+//  }
+//
+//  echo '
+//   </table>'
+//.
+-->
 
 <!-- BEGIN PUBLIC ACCESS --><?php echo '
 
