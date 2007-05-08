@@ -1128,8 +1128,6 @@ a.weekcell {
   width: 5%;
   background: none;
   background: transparent;
-
-?>;
   border-top: 1px solid <?php echo $GLOBALS['BGCOLOR'];
 
 ?>;

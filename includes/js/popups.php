@@ -1,5 +1,6 @@
 <?php
-/* $Id$ */ ?>
+/* $Id$ */
+?>
 // The following code is used to support the small popups that give the full
 // description of an event when the user moves the mouse over it.
 // Thanks to Klaus Knopper (www.knoppix.com) for this script.
@@ -9,10 +10,10 @@
 // 03/05/2005 Prevent popup from going off screen by setting maximum width,
 // which is configurable.
 //
-// Bubblehelp infoboxes, © 2002 Klaus Knopper <infobox@knopper.net>
+// Bubblehelp infoboxes, (c) 2002 Klaus Knopper <infobox@knopper.net>
 // You can copy/modify and distribute this code under the conditions
 // of the GNU GENERAL PUBLIC LICENSE Version 2.
-//
+
 var
   ns4,              // Are we using Netscape4?
   ie4,              // Are we using Internet Explorer Version 4?
@@ -307,10 +308,10 @@ function show ( evt, name ) {
       ? window.innerWidth + window.pageXOffset - 16
       : document.body.offsetWidth - 20 );
     winH = ( window.innerHeight
-      ? window.innerHeight
-      : ( ( ie5
+      ? ( window.innerHeight
+      : ( ie5
         ? 500
-        : document.body.offsetHeight ) ) + scrollY;
+        : document.body.offsetHeight ) ) + scrollY );
 
     popupW = idiv.offsetWidth;
     popupH = idiv.offsetHeight;
