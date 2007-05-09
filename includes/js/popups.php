@@ -311,7 +311,7 @@ function show ( evt, name ) {
       ? ( window.innerHeight
       : ( ie5
         ? 500
-        : document.body.offsetHeight ) ) + scrollY );
+        : document.body.offsetHeight ) ) ) + scrollY;
 
     popupW = idiv.offsetWidth;
     popupH = idiv.offsetHeight;
