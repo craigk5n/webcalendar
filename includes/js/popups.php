@@ -308,10 +308,10 @@ function show ( evt, name ) {
       ? window.innerWidth + window.pageXOffset - 16
       : document.body.offsetWidth - 20 );
     winH = ( window.innerHeight
-      ? ( window.innerHeight
+      ? window.innerHeight
       : ( ie5
         ? 500
-        : document.body.offsetHeight ) ) ) + scrollY;
+        : document.body.offsetHeight ) ) + scrollY;
 
     popupW = idiv.offsetWidth;
     popupH = idiv.offsetHeight;
