@@ -381,8 +381,8 @@ Delete layer: Slet lag
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Du kan ikke oprettet et lag for dig selv
-You can only create one layer for each user: Du kan kun oprettet ét lag pr. bruger
+You cannot create a layer for yourself.: Du kan ikke oprettet et lag for dig selv
+You can only create one layer for each user.: Du kan kun oprettet ét lag pr. bruger
 
 ########################################
 # Page: edit_nonusers.php

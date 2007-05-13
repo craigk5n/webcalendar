@@ -638,8 +638,8 @@ Delete layer: Laag verwijderen
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: U kunt geen laag voor uzelf aanmaken
-You can only create one layer for each user: U kunt slechts een laag per gebruiker aanmaken
+You cannot create a layer for yourself.: U kunt geen laag voor uzelf aanmaken
+You can only create one layer for each user.: U kunt slechts een laag per gebruiker aanmaken
 
 ########################################
 # Page: edit_nonusers.php

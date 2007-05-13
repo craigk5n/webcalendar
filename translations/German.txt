@@ -668,8 +668,8 @@ Delete layer: Layer l&ouml;schen
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Sie k&ouml;nnen sich selber als Layer NICHT hinzuf&uuml;gen
-You can only create one layer for each user: Sie k&ouml;nnen nur jeweils EINEN Benutzer pro Layer hinzuf&uuml;gen
+You cannot create a layer for yourself.: Sie k&ouml;nnen sich selber als Layer NICHT hinzuf&uuml;gen
+You can only create one layer for each user.: Sie k&ouml;nnen nur jeweils EINEN Benutzer pro Layer hinzuf&uuml;gen
 
 ########################################
 # Page: edit_nonusers.php

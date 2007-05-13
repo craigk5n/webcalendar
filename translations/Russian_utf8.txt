@@ -596,8 +596,8 @@ Delete layer: Удалить слой
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Вы не можете создать слой для себя
-You can only create one layer for each user: Вы можете создать только один слой для каждого пользователя
+You cannot create a layer for yourself.: Вы не можете создать слой для себя
+You can only create one layer for each user.: Вы можете создать только один слой для каждого пользователя
 
 ########################################
 # Page: edit_nonusers.php

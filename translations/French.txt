@@ -402,8 +402,8 @@ Delete layer: Détruire un calque
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Vous ne pouvez pas créer un calque pour vous-même
-You can only create one layer for each user: Vous ne pouvez créer qu'un seul calque par utilisateur
+You cannot create a layer for yourself.: Vous ne pouvez pas créer un calque pour vous-même
+You can only create one layer for each user.: Vous ne pouvez créer qu'un seul calque par utilisateur
 
 ########################################
 # Page: edit_nonusers.php

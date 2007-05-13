@@ -374,8 +374,8 @@ Delete layer: Smaž vrstvu
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Nem?žeš vytvá?et vrstvu sám na sebe
-You can only create one layer for each user: Každého uživatele je možno dát jen do jedné vrstvy
+You cannot create a layer for yourself.: Nem?žeš vytvá?et vrstvu sám na sebe
+You can only create one layer for each user.: Každého uživatele je možno dát jen do jedné vrstvy
 
 ########################################
 # Page: edit_nonusers.php

@@ -28,13 +28,14 @@ else {
 
 function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
   global $error, $layers;
+
   if ( $layer_user == $layeruser )
-    $error = translate ( 'You cannot create a layer for yourself' ) . '.';
+    $error = translate ( 'You cannot create a layer for yourself.' );
 
   load_user_layers ( $layer_user, 1 );
 
   if ( ! empty ( $layeruser ) && $error == '' ) {
-    // existing layer entry
+    // Existing layer entry.
     if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) {
       // Update existing layer entry for this user.
       $layerid = $layers[$id]['cal_layerid'];
@@ -43,15 +44,15 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
         cal_color = ?, cal_dups = ? WHERE cal_layerid = ?',
         array ( $layeruser, $layercolor, $dups, $layerid ) );
     } else {
-      // new layer entry
+      // New layer entry.
       // Check for existing layer for user. Can only have one layer per user.
-      $res = dbi_execute ( 'SELECT COUNT(cal_layerid) FROM webcal_user_layers
+      $res = dbi_execute ( 'SELECT COUNT( cal_layerid ) FROM webcal_user_layers
         WHERE cal_login = ? AND cal_layeruser = ?',
         array ( $layer_user, $layeruser ) );
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
         if ( $row[0] > 0 )
-          $error = translate ( 'You can only create one layer for each user' );
+          $error = translate ( 'You can only create one layer for each user.' );
 
         dbi_free_result ( $res );
       }
@@ -72,7 +73,7 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
   }
 }
 
-// We don't want to throw error if doing a multiple save.
+// We don't want to throw errors if doing a multiple save.
 if ( $error == '' || ! empty ( $cal_login ) ) {
   do_redirect ( 'layers.php' . ( $updating_public ? '?public=1' : '' ) );
   exit;

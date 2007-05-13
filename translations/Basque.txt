@@ -299,8 +299,8 @@ Delete layer: Geruza ezabatu
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Ezin duzu zeuretzako geruza bat sortu
-You can only create one layer for each user: Erabiltzaile bakoitzeko geruza bakarra osa dezakezu
+You cannot create a layer for yourself.: Ezin duzu zeuretzako geruza bat sortu
+You can only create one layer for each user.: Erabiltzaile bakoitzeko geruza bakarra osa dezakezu
 
 ########################################
 # Page: edit_nonusers.php

@@ -572,8 +572,8 @@ Delete layer: מחק שכבה
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: אי אפשר ליצור שכבה עבור עצמך
-You can only create one layer for each user: אפשר ליצור רק שכבה אחת לכל משתמש
+You cannot create a layer for yourself.: אי אפשר ליצור שכבה עבור עצמך
+You can only create one layer for each user.: אפשר ליצור רק שכבה אחת לכל משתמש
 
 ########################################
 # Page: edit_nonusers.php

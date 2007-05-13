@@ -560,8 +560,8 @@ Delete layer: レイヤーの削除
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: 自分のレイヤーを作成することができません。
-You can only create one layer for each user: 各ユーザーのひとつのレイヤーのみ作成できます
+You cannot create a layer for yourself.: 自分のレイヤーを作成することができません。
+You can only create one layer for each user.: 各ユーザーのひとつのレイヤーのみ作成できます
 
 ########################################
 # Page: edit_nonusers.php

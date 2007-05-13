@@ -695,8 +695,8 @@ Delete layer: Delete layer
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: You cannot create a layer for yourself
-You can only create one layer for each user: You can only create one layer for each user.
+You cannot create a layer for yourself.: You cannot create a layer for yourself.
+You can only create one layer for each user.: You can only create one layer for each user.
 
 ########################################
 # Page: edit_nonusers.php

@@ -283,8 +283,8 @@ Delete layer: Dileu haen
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Ni allwch greu haen i'ch digwyddiadau chi
-You can only create one layer for each user: Allwch ond creu un haen i pob defnyddiwr
+You cannot create a layer for yourself.: Ni allwch greu haen i'ch digwyddiadau chi
+You can only create one layer for each user.: Allwch ond creu un haen i pob defnyddiwr
 
 ########################################
 # Page: edit_nonusers.php

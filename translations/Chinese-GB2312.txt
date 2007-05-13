@@ -299,8 +299,8 @@ Delete layer: 删除层
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: 您不能您自己创建一个层
-You can only create one layer for each user: 您只能为一个用户来源设置一个层
+You cannot create a layer for yourself.: 您不能您自己创建一个层
+You can only create one layer for each user.: 您只能为一个用户来源设置一个层
 
 ########################################
 # Page: edit_nonusers.php

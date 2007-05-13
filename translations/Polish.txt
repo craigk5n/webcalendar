@@ -412,8 +412,8 @@ Delete layer: Skasuj warstwe
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Mo¿esz stworzya warstwe dla siebie
-You can only create one layer for each user: Mo¿esz tylko stworzya jedna warstwe dla ka¿dego u¿ytkownika
+You cannot create a layer for yourself.: Mo¿esz stworzya warstwe dla siebie
+You can only create one layer for each user.: Mo¿esz tylko stworzya jedna warstwe dla ka¿dego u¿ytkownika
 
 ########################################
 # Page: edit_nonusers.php

@@ -347,8 +347,8 @@ Delete layer: Remover nível
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Não é permitido criar um nível para si
-You can only create one layer for each user: Apenas pode criar um nível por utilizador
+You cannot create a layer for yourself.: Não é permitido criar um nível para si
+You can only create one layer for each user.: Apenas pode criar um nível por utilizador
 
 ########################################
 # Page: edit_nonusers.php

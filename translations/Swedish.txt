@@ -363,8 +363,8 @@ Delete layer: Ta bort lager
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Du kan inte skapa ett lager åt dig själv
-You can only create one layer for each user: Du kan bara skapa ett lager för varje användare
+You cannot create a layer for yourself.: Du kan inte skapa ett lager åt dig själv
+You can only create one layer for each user.: Du kan bara skapa ett lager för varje användare
 
 ########################################
 # Page: edit_nonusers.php
