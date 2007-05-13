@@ -378,8 +378,8 @@ Delete layer: Διαγραφή Επιπέδου
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Δεν μπορείτε να δημιουργήσετε ένα επίπεδο για εσάς
-You can only create one layer for each user: Μπορείτε να δημιουργήσετε μόνο ένα επίπεδο για κάθε χρήστη
+You cannot create a layer for yourself.: Δεν μπορείτε να δημιουργήσετε ένα επίπεδο για εσάς
+You can only create one layer for each user.: Μπορείτε να δημιουργήσετε μόνο ένα επίπεδο για κάθε χρήστη
 
 ########################################
 # Page: edit_nonusers.php

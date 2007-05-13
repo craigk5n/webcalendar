@@ -312,8 +312,8 @@ Delete layer: Kustuta kiht
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Sa ei saa ise kihti kustutada
-You can only create one layer for each user: Saad teha vaid ühe kihi kasutaja kohta
+You cannot create a layer for yourself.: Sa ei saa ise kihti kustutada
+You can only create one layer for each user.: Saad teha vaid ühe kihi kasutaja kohta
 
 ########################################
 # Page: edit_nonusers.php

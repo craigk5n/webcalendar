@@ -349,8 +349,8 @@ Delete layer: Poista taso
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Et voi luoda tasoa itsellesi
-You can only create one layer for each user: Voit luoda vain yhden tason k‰ytt‰j‰‰ kohti
+You cannot create a layer for yourself.: Et voi luoda tasoa itsellesi
+You can only create one layer for each user.: Voit luoda vain yhden tason k‰ytt‰j‰‰ kohti
 
 ########################################
 # Page: edit_nonusers.php

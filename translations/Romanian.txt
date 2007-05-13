@@ -366,8 +366,8 @@ Delete layer: &#350;terge stratul
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Nu po&#355;i crea un strat pentru tine insu&#355;i
-You can only create one layer for each user: Po&#355;i crea un singur strat per utilizator
+You cannot create a layer for yourself.: Nu po&#355;i crea un strat pentru tine insu&#355;i
+You can only create one layer for each user.: Po&#355;i crea un singur strat per utilizator
 
 ########################################
 # Page: edit_nonusers.php

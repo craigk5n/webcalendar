@@ -353,8 +353,8 @@ Delete layer: Suprimeix la capa
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: No pots crear una capa per a tu mateix
-You can only create one layer for each user: Només es pot crear una capa per usuari
+You cannot create a layer for yourself.: No pots crear una capa per a tu mateix
+You can only create one layer for each user.: Només es pot crear una capa per usuari
 
 ########################################
 # Page: edit_nonusers.php

@@ -536,8 +536,8 @@ Delete layer: Réteg törlése
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Nem hozhatsz létre réteget saját magadnak
-You can only create one layer for each user: Csak egy réteget hozhatsz létre felhasználónként
+You cannot create a layer for yourself.: Nem hozhatsz létre réteget saját magadnak
+You can only create one layer for each user.: Csak egy réteget hozhatsz létre felhasználónként
 
 ########################################
 # Page: edit_nonusers.php

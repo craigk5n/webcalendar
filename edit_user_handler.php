@@ -19,8 +19,7 @@ $blankUserStr = translate ( 'Username cannot be blank.' );
 
 // Don't let them edit users if they'e not authorized.
 if ( empty ( $user ) ) {
-  // Asking to create a new user.
-  // Must be admin...
+  // Asking to create a new user.  Must be admin...
   if ( ! $is_admin && ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) )
     send_to_preferred_view ();
 
@@ -74,11 +73,11 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
           $error = $notIdenticalStr;
         else {
           if ( addslashes ( $user ) != $user )
-            // This error should get caught before here anyhow, so
-            // no need to translate this.  This is just in case. :-)
+            // This error should get caught before here anyhow,
+            // so no need to translate this.  This is just in case. :-)
             $error = 'Invalid characters in login.';
           else {
-            if ( empty ( $user ) || $user == '' )
+            if ( empty ( $user ) )
               // Username cannot be blank. This is currently the only place
               // that calls addUser that is located in $user_inc.
               $error = $blankUserStr;
@@ -101,11 +100,9 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
           if ( ! $is_admin )
             $uis_admin = 'N';
 
-          user_update_user ( $user, $ufirstname, $ulastname, $uemail,
-            $uis_admin );
+          user_update_user ( $user, $ufirstname, $ulastname, $uemail, $uis_admin );
           activity_log ( 0, $login, $user, LOG_USER_UPDATE,
-            "$ufirstname $ulastname"
-             . ( empty ( $uemail ) ? '' : " <$uemail>" ) );
+            "$ufirstname $ulastname" . ( empty ( $uemail ) ? '' : " <$uemail>" ) );
         }
       }
     }

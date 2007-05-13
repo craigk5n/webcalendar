@@ -376,8 +376,8 @@ Delete layer: Slett lag
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself: Du kan ikke lag et lag for deg selv
-You can only create one layer for each user: Du kan bare lag et lag per bruker
+You cannot create a layer for yourself.: Du kan ikke lag et lag for deg selv
+You can only create one layer for each user.: Du kan bare lag et lag per bruker
 
 ########################################
 # Page: edit_nonusers.php
