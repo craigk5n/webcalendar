@@ -64,7 +64,7 @@ function do_v11b_updates () {
     while ( $row = dbi_fetch_row ( $res ) ) {
       dbi_execute ( 'INSERT INTO webcal_entry_categories ( cal_id, cat_id,'
          . ( empty ( $row[2] ) ? 'cat_order' : 'cat_owner' )
-         . ', ) VALUES (?,?,?)', array ( $row[0], $row[1],
+         . ', ) VALUES ( ?, ?, ? )', array ( $row[0], $row[1],
           ( empty ( $row[2] ) ? 99 : $row[2] ) ) );
     }
     dbi_free_result ( $res );
@@ -91,18 +91,25 @@ function do_v11b_updates () {
         $byday = array ();
         if ( substr ( $row[1], 0, 1 ) == 'y' )
           $byday[] = 'SU';
+
         if ( substr ( $row[1], 1, 1 ) == 'y' )
           $byday[] = 'MO';
+
         if ( substr ( $row[1], 2, 1 ) == 'y' )
           $byday[] = 'TU';
+
         if ( substr ( $row[1], 3, 1 ) == 'y' )
           $byday[] = 'WE';
+
         if ( substr ( $row[1], 4, 1 ) == 'y' )
           $byday[] = 'TH';
+
         if ( substr ( $row[1], 5, 1 ) == 'y' )
           $byday[] = 'FR';
+
         if ( substr ( $row[1], 6, 1 ) == 'y' )
           $byday[] = 'SA';
+
         $bydays = implode ( ',', $byday );
         dbi_execute ( 'UPDATE webcal_entry_repeats SET cal_byday = ?
           WHERE cal_id = ?', array ( $bydays, $row[0] ) );
@@ -135,11 +142,11 @@ function do_v11e_updates () {
   $done = array ();
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( ! empty ( $done[$row[0]] ) ) {
+      if ( ! empty ( $done[$row[0]] ) )
         // Already did this one;
         // must have had two site extras for reminder ignore the 2nd one.
         continue;
-      }
+
       $date = $last_sent = $offset = $times_sent = 0;
       if ( strlen ( $row[1] ) == 8 ) // cal_data is probably a date.
         $date = mktime ( 0, 0, 0, substr ( $row[1], 4, 2 ),
@@ -158,7 +165,7 @@ function do_v11e_updates () {
         dbi_free_result ( $res2 );
       }
       dbi_execute ( 'INSERT INTO webcal_reminders ( cal_id, cal_date,
-        cal_offset, cal_last_sent, cal_times_sent ) VALUES (?,?,?,?,?)',
+        cal_offset, cal_last_sent, cal_times_sent ) VALUES ( ?, ?, ?, ?, ? )',
         array ( $row[0], $date, $offset, $last_sent, $times_sent ) );
       $done[$row[0]] = true;
     }
@@ -187,8 +194,10 @@ function get_php_setting ( $val, $string = false ) {
 function get_php_modules ( $val ) {
   return ( function_exists ( $val ) ? 'ON' : 'OFF' );
 }
-// We will generate many errors while trying to test database
-// Disable them temporarily as needed
+
+/* We will generate many errors while trying to test database.
+ * Disable them temporarily as needed.
+ */
 function show_errors ( $error_val = 0 ) {
   global $show_all_errors;
 
@@ -199,12 +208,13 @@ function show_errors ( $error_val = 0 ) {
       ? 64 : ( $error_val ? $_SESSION['error_reporting'] : 64 ) ) );
 }
 
-// We will convert from Server based storage to GMT time.
-// Optionally, a tzoffset can be added to the URL and will
-// adjust all existing events by that amount.  If cutoffdate is supplied,
-// only dates prior to that date are affected.
+/* We will convert from Server based storage to GMT time.
+ * Optionally, a tzoffset can be added to the URL and will
+ * adjust all existing events by that amount.  If cutoffdate is supplied,
+ * only dates prior to that date are affected.
+ */
 function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
-  // Default value
+  // Default value.
   $error = translate ( 'Conversion Successful' );
   // Don't allow $offsets over 24.
   if ( abs ( $offset ) > 24 )
@@ -218,7 +228,7 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
       $cal_time = sprintf ( "%06d", $row[1] );
       $cal_id = $row[2];
       $cal_duration = $row[3];
-      // Skip Untimed or All Day events
+      // Skip Untimed or All Day events.
       if ( ( $cal_time == -1 ) || ( $cal_time == 0 && $cal_duration == 1440 ) )
         continue;
       else {
@@ -290,8 +300,7 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
 
 function get_installed_version ( $postinstall = false ) {
   global $database_upgrade_matrix, $PROGRAM_VERSION, $settings, $show_all_errors;
-  // disable warnings
-  // show_errors ();
+
   // Set this as the default value.
   $_SESSION['application_name'] = 'Title';
   $_SESSION['blank_database'] = '';
@@ -306,7 +315,7 @@ function get_installed_version ( $postinstall = false ) {
   // This data is read from file upgrade_matrix.php.
   for ( $i = 0, $dbCntStr = count ( $database_upgrade_matrix ); $i < $dbCntStr; $i++ ) {
     $sql = $database_upgrade_matrix[$i][0];
-    // echo "SQL: " .$sql . "<br />";
+
     if ( $sql != '' )
       $res = dbi_execute ( $sql, array (), false, $show_all_errors );
     if ( $res ) {
@@ -317,7 +326,6 @@ function get_installed_version ( $postinstall = false ) {
       if ( $sql != '' )
         dbi_execute ( $sql, array (), false, $show_all_errors );
     }
-    // echo $_SESSION['old_program_version'] . " " . $database_upgrade_matrix[$i][1] . "<br />";
   }
   $response_msg = ( $_SESSION['old_program_version'] == 'pre-v0.9.07'
     ? translate ( 'Perl script required' )
@@ -334,7 +342,7 @@ function get_installed_version ( $postinstall = false ) {
   // dbi_free_result ( $res );
   // }
 
-  // We need to determine this is a blank database.
+  // We need to determine if this is a blank database.
   // This may be due to a manual table setup.
   $res = dbi_execute ( 'SELECT COUNT( cal_value ) FROM webcal_config',
     array (), false, $show_all_errors );
@@ -346,7 +354,7 @@ function get_installed_version ( $postinstall = false ) {
       // Make sure all existing values in config and pref tables are UPPERCASE.
       make_uppercase ();
 
-      // Clear db_cache. This will prevent looping when launching WebCalendar
+      // Clear db_cache.  This will prevent looping when launching WebCalendar
       // if upgrading and WEBCAL_PROGRAM_VERSION is cached.
       if ( ! empty ( $settings['db_cachedir'] ) )
         dbi_init_cache ( $settings['db_cachedir'] );
@@ -372,7 +380,7 @@ function get_installed_version ( $postinstall = false ) {
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     dbi_free_result ( $res );
-    // if not 'Y', prompt user to do conversion from server time to GMT time.
+    // If not 'Y', prompt user to do conversion from server time to GMT time.
     if ( ! empty ( $row[0] ) )
       $_SESSION['tz_conversion'] = $row[0];
     else { // We'll test if any events even exist.
@@ -433,10 +441,12 @@ function parse_sql ( $sql ) {
 
 function db_populate ( $install_filename, $display_sql ) {
   global $show_all_errors, $str_parsed_sql;
+
   if ( $install_filename == '' )
     return;
-  $full_sql = '';
+
   $current_pointer = false;
+  $full_sql = '';
   $magic = @get_magic_quotes_runtime ();
   @set_magic_quotes_runtime ( 0 );
   $fd = @fopen ( 'sql/' . $install_filename, 'r', true );
@@ -452,9 +462,10 @@ function db_populate ( $install_filename, $display_sql ) {
   // We already have a $data item from above.
   if ( substr ( $data, 0, 2 ) == "/*" &&
       substr ( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
-    // Do nothing...We skip over comments in upgrade files
+    // Do nothing...We skip over comments in upgrade files.
   } else
     $full_sql .= $data;
+
   // We need to strip out the comments from upgrade files.
   while ( ! feof ( $fd ) ) {
     $data = trim ( fgets ( $fd, 4096 ), "\r\n " );
@@ -464,25 +475,25 @@ function db_populate ( $install_filename, $display_sql ) {
     } else
       $full_sql .= $data;
   }
-  // echo $full_sql;
+
   @set_magic_quotes_runtime ( $magic );
   fclose ( $fd );
   $parsed_sql = parse_sql ( $full_sql );
-  // Disable warnings.
-  // show_errors ();
+
   // String version of parsed_sql that is used if displaying SQL only.
   $str_parsed_sql = '';
   for ( $i = 0, $sqlCntStr = count ( $parsed_sql ); $i < $sqlCntStr; $i++ ) {
     if ( empty ( $display_sql ) ) {
       if ( $show_all_errors == true )
         echo $parsed_sql[$i] . '<br />';
+
       dbi_execute ( $parsed_sql[$i], array (), false, $show_all_errors );
     } else
       $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
   }
-  // echo "PARSED SQL " . $str_parsed_sql;
+
   // Enable warnings.
   show_errors ( true );
-} //end db_populate
+} // end db_populate
 
 ?>

@@ -19,21 +19,21 @@ var
   ie4,              // Are we using Internet Explorer Version 4?
   ie5,              // Are we using Internet Explorer Version 5 and up?
   kon,              // Are we using KDE Konqueror?
-  x, y, winW, winH, // Current help position and main window size
-  idiv = null,      // Pointer to infodiv container
-  px = 'px',        // position suffix with "px" in some cases
-  popupW,           // width of popup
-  popupH,           // height of popup
-  xoffset = 8,      // popup distance from cursor x coordinate
-  yoffset = 12,     // popup distance from cursor y coordinate
   followMe = 1,     // allow popup to follow cursor...turn off for better performance
-  maxwidth = 300;   // maximum width of popup window
+  idiv = null,      // Pointer to infodiv container
+  maxwidth = 300,   // maximum width of popup window
+  popupH,           // height of popup
+  popupW,           // width of popup
+  px = 'px',        // position suffix with "px" in some cases
+  x, y, winW, winH, // Current help position and main window size
+  xoffset = 8,      // popup distance from cursor x coordinate
+  yoffset = 12;     // popup distance from cursor y coordinate
 
 function nsfix () {
   setTimeout ( 'window.onresize = rebrowse', 2000 );
 }
 
-if (typeof document.getElementsBySelector == "undefined") {
+if ( typeof document.getElementsBySelector == 'undefined' ) {
   /* document.getElementsBySelector ( selector )
      - returns an array of element objects from the current document
        matching the CSS selector. Selectors can contain element names,
@@ -91,30 +91,28 @@ if (typeof document.getElementsBySelector == "undefined") {
           bits = token.split ( '.' ),
           tagName = bits[0],
           className = bits[1];
-        if ( ! tagName ) {
+        if ( ! tagName )
           tagName = '*';
-        }
+
         // Get elements matching tag, filter them for class selector.
         var
           found = new Array,
           foundCount = 0;
         for ( var h = 0; h < currentContext.length; h++ ) {
           var elements;
-          if ( tagName == '*' ) {
-            elements = getAllChildren ( currentContext[h] );
-          } else {
-            elements = currentContext[h].getElementsByTagName ( tagName );
-          }
-          for (var j = 0; j < elements.length; j++) {
+          elements = ( tagName == '*'
+            ? getAllChildren ( currentContext[h] )
+            : currentContext[h].getElementsByTagName ( tagName ) );
+
+          for ( var j = 0; j < elements.length; j++ ) {
             found[foundCount++] = elements[j];
           }
         }
         currentContext = new Array;
         var currentContextIndex = 0;
         for ( var k = 0; k < found.length; k++ ) {
-          if ( found[k].className && found[k].className.match ( new RegExp ( '\\b'+className+'\\b' ) ) ) {
+          if ( found[k].className && found[k].className.match ( new RegExp ( '\\b'+className+'\\b' ) ) )
             currentContext[currentContextIndex++] = found[k];
-          }
         }
         continue; // Skip to next token.
       }
@@ -134,22 +132,21 @@ if (typeof document.getElementsBySelector == "undefined") {
           foundCount = 0;
         for ( var h = 0; h < currentContext.length; h++ ) {
           var elements;
-          if (tagName == '*') {
-            elements = getAllChildren(currentContext[h]);
-          } else {
-            elements = currentContext[h].getElementsByTagName(tagName);
-          }
-          for (var j = 0; j < elements.length; j++) {
+            elements = ( tagName == '*'
+              ? getAllChildren(currentContext[h])
+              : currentContext[h].getElementsByTagName ( tagName ) );
+
+          for ( var j = 0; j < elements.length; j++ ) {
             found[foundCount++] = elements[j];
           }
         }
         currentContext = new Array;
         var
           currentContextIndex = 0,
-           checkFunction; // This function will be used to filter the elements
+          checkFunction; // This function will be used to filter the elements.
         switch ( attrOperator ) {
           case '=': // Equality
-            checkFunction = function(e) {
+            checkFunction = function ( e ) {
               return ( e.getAttribute ( attrName ) == attrValue );
             };
             break;
@@ -178,7 +175,7 @@ if (typeof document.getElementsBySelector == "undefined") {
               return ( e.getAttribute ( attrName ).indexOf ( attrValue ) > -1);
             };
             break;
-          default:      // Just test for existence of attribute.
+          default: // Just test for existence of attribute.
             checkFunction = function ( e ) {
               return e.getAttribute ( attrName );
             };
@@ -189,7 +186,6 @@ if (typeof document.getElementsBySelector == "undefined") {
           if ( checkFunction ( found[k] ) )
             currentContext[currentContextIndex++] = found[k];
         }
-        // alert('Attribute Selector: '+tagName+' '+attrName+' '+attrOperator+' '+attrValue);
         continue; // Skip to next token.
       }
       // If we get here, token is JUST an element (not a class or ID selector).
@@ -232,10 +228,10 @@ function infoinit () {
     navigator.userAgent.indexOf ( 'MSIE 6' ) > 0 ||
     navigator.userAgent.indexOf ( 'MSIE 7' ) > 0 ) );
   kon = ( navigator.userAgent.indexOf ( 'konqueror' ) > 0 );
-  x = y = 0;
+  idiv = null;
   winW = 800;
   winH = 600;
-  idiv = null;
+  x = y = 0;
   if ( followMe ) {
     document.onmousemove = mousemove;
     if ( ns4 && document.captureEvents )
@@ -358,22 +354,11 @@ function showtip ( e ) {
     recursive_resize ( idiv, maxwidth );
     popupW = idiv.offsetWidth;
     popupH = idiv.offsetHeight;
-    if ( x + popupW + xoffset > winW - xoffset ) {
-      idiv.style.left = ( x - popupW - xoffset ) + px;
-    } else {
-      idiv.style.left = ( x + xoffset ) + px;
-    }
-
-    if ( y + popupH + yoffset > winH - yoffset ) {
-      if ( winH - popupH - yoffset < 0 ) {
-        idiv.style.top = 0 + px;
-      } else {
-        idiv.style.top = ( winH - popupH - yoffset ) + px;
-      }
-    } else {
-      idiv.style.top = ( y + yoffset ) + px;
-    }
-
+    idiv.style.top = ( y + popupH + yoffset > winH - yoffset
+      ? ( winH - popupH - yoffset < 0 ? 0 : winH - popupH - yoffset )
+      : y + yoffset ) + px ;
+    idiv.style.left = ( x + popupW + xoffset > winW - xoffset
+      ? x - popupW - xoffset : x + xoffset ) + px;
     idiv.style.visibility = ( ns4 ? 'show' : 'visible' );
   }
 }
@@ -386,11 +371,11 @@ if ( typeof addLoadHandler == 'undefined' ) {
   function addLoadHandler ( handler )  {
     if ( window.addEventListener ) {
       window.addEventListener ( 'load',handler,false);
-    }
-    else if ( window.attachEvent ) {
+    } else
+    if ( window.attachEvent ) {
       window.attachEvent ( 'onload',handler );
-    }
-    else if ( window.onload ) {
+    } else
+    if ( window.onload ) {
       var oldHandler = window.onload;
       window.onload = function piggyback () {
         oldHandler ();
