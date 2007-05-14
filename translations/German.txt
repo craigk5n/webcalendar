@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 8. Mai 2007
+# Last update: 14. Mai 2007
 #
 # $Id$
-# Translation last updated on 05-08-2007
+# Translation last updated on 05-14-2007
 
 
 ################################################################################
@@ -108,14 +108,18 @@ Day: Tag
 Week: Woche
 Month: Monat
 Year: Jahr
-System Settings: Systemeinstellungen
-Help: Hilfe
+Bottom: Unten
+Top: Oben
+Anyone: Jeder
+Participant: Benutzer
 Settings: Einstellungen
 Groups: Benutzergruppen
 NonUser Calendars: &#39;Zentrale&#39; - Kalender
 Other: Sonstiges
 Email: =
 Colors: Farben
+System Settings: Systemeinstellungen
+Help: Hilfe
 System options: Systemeinstellungen
 app-name-help: Gibt den Titel f&uuml;r die Titelleiste des Browsers, f&uuml;r alle Seiten des Kalenders und die Startseite des Kalenders an. Der Titel wird in die Sprachdatei eingetragen und kann f&uuml;r andere Spracheinstellungen abge&auml;ndert werden.
 Application Name: Anwendungsbezeichnung
@@ -174,8 +178,6 @@ preferred-view-help: Gibt die bevorzugte Ansicht an (Tag, Woche, Monat oder Jahr
 Preferred view: Bevorzugte Ansicht
 Allow top menu: Erlaube Topmen&uuml;
 Date Selectors position: Datumsauswahl im Topmen&uuml; anzeigen
-Bottom: Unten
-Top: Oben
 menu-themes-help: Stellt die Farben und die Art des oberen Men&uuml;s ein
 Menu theme: Men&uuml; Thema
 fonts-help: Definiert die Standard-Schriftarten (z.B. &#34;Arial, Helvetica&#34;)
@@ -253,11 +255,6 @@ user_sort-help: Legt die Art der Sortierung von Teilnehmer- und &#39;Zentralen&#
 User Sort Order: Sortierung der Teilnehmerliste
 Lastname, Firstname: Zuname, Vorname
 Firstname, Lastname: Vorname, Zuname
-Plugins: &#34;Plugins&#34; (Erweiterungen)
-plugins-enabled-help: Hilfe f&uuml;r &#34;Plugins&#34; (Erweiterungen) aktivieren
-Enable Plugins: &#34;Plugins&#34; (Erweiterungen) aktivieren
-plugins-sort-key-help: Hilfe f&uuml;r &#34;Sortierschl&uuml;ssel-Plugins&#34; (Erweiterungen)
-Plugin: &#34;Plugin&#34; (Erweiterung)
 allow-public-access-help: Wenn diese Option gew&auml;hlt ist, kann der Kalender als &#34;&ouml;ffentlicher Kalender&#34; ohne Schreibzugriff und ohne Login verwendet werden.
 Allow public access: &ouml;ffentlichen Zugriff erlauben
 public-access-default-visible: Termine vom &ouml;ffentlichen Kalender werden automatisch bei jedem Benutzer angezeigt
@@ -322,8 +319,6 @@ Use self-registration email notifications: Verwende Benachrichtigungsemail bei S
 allow-attachment-help: Erlaubt den Benutzern das Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen
 Allow file attachments to events: Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen erlauben
 Admin and owner can always add attachments if enabled.: Falls aktiviert, k&ouml;nnen Administrator und Besitzer jederzeit Dateianh&auml;nge hinzuf&uuml;gen.
-Anyone: Jeder
-Participant: Benutzer
 allow-comments-help: Erlaubt das Hinzuf&uuml;gen von Anmerkungen zu Terminen
 Allow comments to events: Hinzuf&uuml;gen von Anmerkungen zu Terminen erlauben
 Admin and owner can always add comments if enabled.: Falls aktiviert, k&ouml;nnen Administrator und Besitzer jederzeit Anmerkungen hinzuf&uuml;gen.
@@ -466,7 +461,7 @@ Search for existing icons: Suche nach bereits vorhandenen Icons
 Add: Hinzuf&uuml;gen
 Delete: L&ouml;schen
 entry: Eintrag
-Are you sure you want to delete this XXX?: Sind Sie sicher, da&szlig; Sie diesen XXX l&ouml;schen wollen?
+Are you sure you want to delete this XXX?: Sind Sie sicher, da&szlig; Sie XXX l&ouml;schen wollen?
 Make New Category: Neue Kategorie erstellen
 
 ########################################
@@ -668,8 +663,8 @@ Delete layer: Layer l&ouml;schen
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself.: Sie k&ouml;nnen sich selber als Layer NICHT hinzuf&uuml;gen
-You can only create one layer for each user.: Sie k&ouml;nnen nur jeweils EINEN Benutzer pro Layer hinzuf&uuml;gen
+You cannot create a layer for yourself.: Sie k&ouml;nnen sich selbst NICHT als Layer hinzuf&uuml;gen.
+You can only create one layer for each user.: Sie k&ouml;nnen nur jeweils EINEN Benutzer pro Layer hinzuf&uuml;gen.
 
 ########################################
 # Page: edit_nonusers.php
@@ -1551,6 +1546,11 @@ Event Imported: Termin importiert
 bytes: Bytes
 kb: kB
 Mb: =
+
+########################################
+# Page: includes/classes/WebCalendar.class
+#
+Security violation!: Sicherheitsverletzung!
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
