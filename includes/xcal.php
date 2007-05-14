@@ -170,15 +170,17 @@ function export_time( $date, $duration, $time, $texport, $vtype = 'E' ) {
   $eventstart = date_to_epoch ( $date . $time );
   $eventend = $eventstart + ( $duration * 60 );
   if ( $time == 0 && $duration == 1440 ) {
-    // all day
-    $ret .= "DTSTART;VALUE=DATE:$date\r\n";
-  } else if ( $time == -1 ) {
-    // untimed event
+    // all day.  Treat this as an event that starts at midnight localtime
+    // with a duration of 24 hours
     $dtstart = $date . 'T000000';
     if ( $insert_vtimezone = get_vtimezone ( $TIMEZONE, $dtstart ) )
       $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $dtstart. "\r\n";
     else
       $ret .= 'DTSTART;VALUE=DATETIME:' . $dtstart. "\r\n";
+  } else if ( $time == -1 ) {
+    // untimed event: this is the same regardless of timezone.  For example,
+    // New Year's Day starts at 12am localtime regardless of timezone.
+    $ret .= "DTSTART;VALUE=DATE:$date\r\n";
   } else {
     // timed event
     $utc_start = export_ts_utc_date( $eventstart );
@@ -190,7 +192,8 @@ function export_time( $date, $duration, $time, $texport, $vtype = 'E' ) {
     // We don' want DTEND for VTODOs
     if ( $vtype == 'T' || $vtype == 'N' ) return $ret;
     if ( $time == 0 && $duration == 1440 ) {
-      // all day event
+      // all day event: better to use end date than duration since
+      // duration will be 23hr and 25hrs on DST switch-over days.
       $ret .= "DTEND;VALUE=DATE:" . gmdate ( 'Ymd', $eventend ) . "\r\n";
     }
     if ( $time > 0 || ( $time == 0 && $duration != 1440 ) ) {
