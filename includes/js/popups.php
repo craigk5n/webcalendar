@@ -221,7 +221,7 @@ function rebrowse () {
 }
 
 function infoinit () {
-  ns4 = ( document.layers ),
+  ns4 = ( document.layers );
   ie4 = ( document.all );
   ie5 = ( ie4 && (
     navigator.userAgent.indexOf ( 'MSIE 5' ) > 0 ||
