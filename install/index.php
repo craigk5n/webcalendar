@@ -887,7 +887,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
     $class = ( version_compare ( phpversion (), '4.1.0', '>=' ) ? '' : 'not' )
       . 'recommended';
     echo '<td class="' . $class . '"><img src="' . ( $class == 'recommended'
-      ? 'recommended.gif' : 'not_recommended.jpg' ) . ' alt="" />&nbsp;'
+      ? 'recommended.gif' : 'not_recommended.jpg' ) . '" alt="" />&nbsp;'
       . translate ( 'PHP version' ) . ' ' . phpversion ();
    ?>
 </td></tr>
