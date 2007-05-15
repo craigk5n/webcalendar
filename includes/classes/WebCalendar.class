@@ -81,7 +81,7 @@ class WebCalendar {
   function WebCalendar ( $path ) {
     $this->_filename = basename ( $path );
     $this->_directory = dirname ( __FILE__ ) . '/../../';
-    // Define  a value to prevent direct access to files.
+    // Define a value to prevent direct access to files.
     define ( '_ISVALID', 1 );
   }
 
@@ -99,18 +99,17 @@ class WebCalendar {
     global $DMW, $HTTP_GET_VARS, $HTTP_POST_VARS, $PHP_SELF, $SCRIPT, $self,
     $special, $user_inc;
 
-    // Make sure another app in the same domain doesn't have a 'user' cookie
+    // Make sure another app in the same domain doesn't have a 'user' cookie.
     if ( empty ( $HTTP_GET_VARS ) )
       $HTTP_GET_VARS = $_GET;
 
     if ( empty ( $HTTP_POST_VARS ) )
       $HTTP_POST_VARS = $_POST;
 
-    if ( ( ! empty ( $HTTP_GET_VARS ) && empty ( $HTTP_GET_VARS['user'] ) ) &&
-        ( ! empty ( $HTTP_POST_VARS ) && empty ( $HTTP_POST_VARS['user'] ) ) &&
-        isset ( $GLOBALS['user'] ) ) {
+    if ( ! empty ( $HTTP_GET_VARS ) && empty ( $HTTP_GET_VARS['user'] ) && !
+        empty ( $HTTP_POST_VARS ) && empty ( $HTTP_POST_VARS['user'] ) &&
+        isset ( $GLOBALS['user'] ) )
       unset ( $GLOBALS['user'] );
-    }
 
     // Get script name.
     $self = $_SERVER['PHP_SELF'];
@@ -161,8 +160,8 @@ class WebCalendar {
     if ( empty ( $PUBLIC_ACCESS ) )
       $PUBLIC_ACCESS = 'N';
 
-    // Initialize access settings ($user_access string) and make sure user
-    // is allowed to view the current page.
+    // Initialize access settings ($user_access string)
+    // and make sure user is allowed to view the current page.
     access_init ();
     if ( ! access_can_view_page () ) {
       $user_BGCOLOR = get_pref_setting ( $login, 'BGCOLOR' );
@@ -310,7 +309,7 @@ class WebCalendar {
     define ( 'LOG_USER_ADD',      'a' );
     define ( 'LOG_USER_DELETE',   'd' );
     define ( 'LOG_USER_UPDATE',   'u' );
-    /*#@-*/
+    /**#@-*/
 
     /* Number of seconds in:
      */
@@ -504,10 +503,10 @@ class WebCalendar {
      * web-based login.  Publish.php does need to validate if not http_auth.
      */
     if ( ! $use_http_auth &&
-      ( ( $this->_filename == 'css_cacher.php' ||
-         $this->_filename == 'icalclient.php' ||
-         $this->_filename == 'js_cacher.php' ) ||
-         $this->_filename == 'publish.php' ) )
+      ( $this->_filename == 'css_cacher.php' ||
+        $this->_filename == 'icalclient.php' ||
+        $this->_filename == 'js_cacher.php' ||
+        $this->_filename == 'publish.php' ) )
       return;
 
     $is_nonuser = $session_not_found = $validate_redirect = false;
@@ -548,9 +547,9 @@ class WebCalendar {
       }
     }
 
-    if ( $single_user == 'Y' ) {
+    if ( $single_user == 'Y' )
       $login = $single_user_login;
-    } else {
+    else {
       if ( $use_http_auth ) {
         // HTTP server did validation for us....
         if ( empty ( $PHP_AUTH_USER ) )
@@ -566,7 +565,7 @@ class WebCalendar {
              . dbi_error () . '</blockquote>' );
 
         // Use another application's authentication.
-        if ( ! $login = user_logged_in () )
+        if ( $login != user_logged_in () )
           $session_not_found = true;
       } else {
         @session_start ();
@@ -614,7 +613,8 @@ class WebCalendar {
                 // No such nonuser cal.
                 die_miserable_death ( 'Invalid nonuser calendar.' );
 
-              if ( empty ( $GLOBALS['nutemp_is_public'] ) || $GLOBALS['nutemp_is_public'] != 'Y' )
+              if ( empty ( $GLOBALS['nutemp_is_public'] ) ||
+                $GLOBALS['nutemp_is_public'] != 'Y' )
                 die_miserable_death ( 'Nonuser calendar is not public.' );
 
               $is_nonuser = true;
@@ -656,8 +656,8 @@ class WebCalendar {
         die_miserable_death ( 'Error connecting to database:<blockquote>'
            . dbi_error () . '</blockquote>' );
 
-      // Do a sanity check on the database, making sure we can
-      // at least access the webcal_config table.
+      // Do a sanity check on the database,
+      // making sure we can at least access the webcal_config table.
       if ( function_exists ( 'doDbSanityCheck' ) )
         doDbSanityCheck ();
 
@@ -667,7 +667,7 @@ class WebCalendar {
       // read and required upgrade actions completed.
       $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
          WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
-      if ( $rows && $row = $rows[0] && $row[0] != $PROGRAM_VERSION ) {
+      if ( $rows && $row == $rows[0] && $row[0] != $PROGRAM_VERSION ) {
         // &amp; does not work here...leave it as &
         header ( 'Location: install/index.php?action=mismatch&version=' . $row[0] );
         exit;
@@ -689,7 +689,7 @@ class WebCalendar {
       }
       $row = dbi_fetch_row ( $res );
       if ( $row[0] == 0 ) {
-        // User specified as single_user_login does not exist
+        // User specified as single_user_login does not exist.
         if ( ! dbi_execute ( 'INSERT INTO webcal_user ( cal_login, cal_passwd,
           cal_is_admin ) VALUES ( ?, ?, ? )',
             array ( $single_user_login, md5 ( $single_user_login ), 'Y' ) ) )
@@ -705,12 +705,12 @@ class WebCalendar {
     // Global settings have not been loaded yet, so check for public_access now.
     $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
       WHERE cal_setting = \'PUBLIC_ACCESS\'' );
-    $pub_acc_enabled = ( $rows && $row = $rows[0] && $row[0] == 'Y' );
+    $pub_acc_enabled = ( $rows && $row == $rows[0] && $row[0] == 'Y' );
 
     if ( $pub_acc_enabled ) {
       $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
         WHERE cal_setting = \'PUBLIC_ACCESS_CAN_ADD\'' );
-      if ( $rows && $row = $rows[0] )
+      if ( $rows && $row == $rows[0] )
         $PUBLIC_ACCESS_CAN_ADD = $row[0];
     }
 
@@ -752,7 +752,7 @@ class WebCalendar {
     if ( ! empty ( $login ) ) {
       // They are already logged in ($login is set in validate.php).
       if ( strstr ( $PHP_SELF, 'login.php' ) ) {
-        // ignore since login.php will redirect to index.php
+        // Ignore since login.php will redirect to index.php.
       } else
       if ( $login == '__public__' ) {
         $firstname = $lastname = $user_email = '';
@@ -765,7 +765,8 @@ class WebCalendar {
           $lastname = $login_lastname;
           $fullname = $login_fullname;
           $is_admin = ( $login_is_admin == 'Y' );
-          $is_nonuser = ! empty ( $GLOBALS['login_is_nonuser'] ) && $GLOBALS['login_is_nonuser'];
+          $is_nonuser = ( ! empty ( $GLOBALS['login_is_nonuser'] ) &&
+            $GLOBALS['login_is_nonuser'] );
           $user_email = $login_email;
         } else {
           // Invalid login.
@@ -889,17 +890,16 @@ class WebCalendar {
     if ( empty ( $LANGUAGE ) )
       $LANGUAGE = 'English-US'; // Default
 
-    // If set to use browser settings, use the user's language preferences
-    // from their browser.
+    // If set to use browser settings,
+    // use the user's language preferences from their browser.
     $lang = $LANGUAGE;
     if ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none' ) {
       $lang = get_browser_language ();
       if ( $lang == 'none' )
         $lang = '';
     }
-    if ( strlen ( $lang ) == 0 || $lang == 'none' ) {
+    if ( strlen ( $lang ) == 0 || $lang == 'none' )
       $lang = 'English-US'; // Default
-    }
 
     $lang_file = 'translations/' . $lang . '.txt';
 
