@@ -2597,7 +2597,7 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
     }
 
     $rows = dbi_get_cached_rows ( $sql . ' ORDER BY '
-       . ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER, " : '' )
+       . ( empty ( $USER_SORT_ORDER ) ? '' : "$USER_SORT_ORDER, " )
        . 'webcal_group_user.cal_login', $groups );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
@@ -4704,9 +4704,9 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
   $onclickStr = ( empty ( $onclick ) ? '' : ' onclick="' . $onclick . ' ()"' );
   foreach ( $vals as $K => $V ) {
     $ret .= '
-      <label><input type="radio" name="' . $variable . '" value="' . $K . '"'
+      <input type="radio" name="' . $variable . '" value="' . $K . '"'
      . ( $setting == $K ? $checked : '' ) . $onclickStr . ' />&nbsp;' . $V
-     . '</label>' . $sep;
+     . $sep;
   }
   return $ret;
 }
