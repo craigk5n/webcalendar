@@ -23,52 +23,53 @@ function valid_form ( form ) {
   }
 
   if ( err != '' ) {
-    alert ( "<?php etranslate ( 'Error', true ) ?>" + ":\n\n" + err );
+    alert ( "<?php etranslate ( 'Error', true ) ?>:\n\n" + err );
     return false;
   }
 
   if ( ! valid_color ( form.admin_BGCOLOR.value ) ) {
-    err += "<?php etranslate ('Invalid color for document background.', true)?>\n";
+    err += "<?php etranslate ( 'Invalid color for document background.', true ) ?>\n";
     form.admin_BGCOLOR.select ();
     form.admin_BGCOLOR.focus ();
   }
   else if ( ! valid_color ( form.admin_H2COLOR.value ) ) {
-    err += "<?php etranslate ( 'Invalid color for document title.', true)?>\n";
+    err += "<?php etranslate ( 'Invalid color for document title.', true ) ?>\n";
     form.admin_H2COLOR.select ();
     form.admin_H2COLOR.focus ();
   } else if ( ! valid_color ( form.admin_CELLBG.value ) ) {
-    err += "<?php etranslate ( 'Invalid color for table cell background.', true)?>\n";
+    err += "<?php etranslate ( 'Invalid color for table cell background.', true ) ?>\n";
     form.admin_CELLBG.select ();
     form.admin_CELLBG.focus ();
   } else if ( ! valid_color ( form.admin_TABLEBG.value ) ) {
-    err += "<?php etranslate ( 'Invalid color for table grid.', true)?>\n";
+    err += "<?php etranslate ( 'Invalid color for table grid.', true ) ?>\n";
     form.admin_TABLEBG.select ();
     form.admin_TABLEBG.focus ();
   } else if ( ! valid_color ( form.admin_THBG.value ) ) {
-    err += "<?php etranslate ( 'Invalid color for table header background.', true)?>\n";
+    err += "<?php etranslate ( 'Invalid color for table header background.', true ) ?>\n";
     form.admin_THBG.select ();
     form.admin_THBG.focus ();
   } else if ( ! valid_color ( form.admin_THFG.value ) ) {
-    err += "<?php etranslate ( 'Invalid color for table text background.', true)?>\n";
+    err += "<?php etranslate ( 'Invalid color for table text background.', true ) ?>\n";
     form.admin_THFG.select ();
     form.admin_THFG.focus ();
   } else if ( ! valid_color ( form.admin_POPUP_BG.value ) ) {
-    err += "<?php etranslate ( 'Invalid color for event popup background.', true)?>\n";
+    err += "<?php etranslate ( 'Invalid color for event popup background.', true ) ?>\n";
     form.admin_POPUP_BG.select ();
     form.admin_POPUP_BG.focus ();
   } else if ( ! valid_color ( form.admin_POPUP_FG.value ) ) {
-    err += "<?php etranslate ( 'Invalid color for event popup text.', true)?>\n";
+    err += "<?php etranslate ( 'Invalid color for event popup text.', true ) ?>\n";
     form.admin_POPUP_FG.select ();
     form.admin_POPUP_FG.focus ();
   } else if ( ! valid_color ( form.admin_TODAYCELLBG.value ) ) {
-    err += "<?php etranslate ( 'Invalid color for table cell background for today.', true)?>\n";
+    err += "<?php
+     etranslate ( 'Invalid color for table cell background for today.', true ) ?>\n";
     form.admin_TODAYCELLBG.select ();
     form.admin_TODAYCELLBG.focus ();
   }
 
   if ( err.length > 0 ) {
-    alert ( "<?php etranslate ( 'Error', true ) ?>" + ":\n\n" + err + "\n\n<?php
-  etranslate ('Color format should be RRGGBB.', true)?>" );
+    alert ( "<?php etranslate ( 'Error', true ) ?>:\n\n" + err + "\n\n<?php
+  etranslate ('Color format should be RRGGBB.', true ) ?>" );
     return false;
   }
   return true;
@@ -78,6 +79,7 @@ function valid_form ( form ) {
 // "Disable popup".
 function popup_handler () {
   var noPopups = document.prefform.admin_DISABLE_POPUPS[0].checked;
+
   if ( noPopups ) {
     // Popups disabled
     makeInvisible ( 'pop' );
@@ -91,6 +93,7 @@ function popup_handler () {
 // "Allow public access".
 function public_handler () {
   var enabled = document.prefform.admin_PUBLIC_ACCESS[0].checked;
+
   if ( enabled ) {
     // Public Access enabled
     makeVisible ( 'pa' );
@@ -105,18 +108,18 @@ function public_handler () {
 // "Allow external users".
 function eu_handler () {
   var enabled = document.prefform.admin_ALLOW_EXTERNAL_USERS[0].checked;
-  //alert ( "allow external = " + enabled );
+
   if ( enabled ) {
     // External Users enabled
-    makeVisible ( "eu1" );
-    makeVisible ( "eu2" );
-//    makeVisible ( "eu3" );
-//    makeVisible ( "eu4" );
+    makeVisible ( 'eu1' );
+    makeVisible ( 'eu2' );
+//    makeVisible ( 'eu3' );
+//    makeVisible ( 'eu4' );
   } else {
-    makeInvisible ( "eu1" );
-    makeInvisible ( "eu2" );
-//    makeInvisible ( "eu3" );
-//    makeInvisible ( "eu4" );
+    makeInvisible ( 'eu1' );
+    makeInvisible ( 'eu2' );
+//    makeInvisible ( 'eu3' );
+//    makeInvisible ( 'eu4' );
   }
 }
 
@@ -124,13 +127,14 @@ function eu_handler () {
 // "Allow self registration".
 function sr_handler () {
   var enabled = document.prefform.admin_ALLOW_SELF_REGISTRATION[0].checked;
+
   if ( enabled ) {
     // Self Registration enabled
-    makeVisible ( "sr1" );
-    makeVisible ( "sr2" );
+    makeVisible ( 'sr1' );
+    makeVisible ( 'sr2' );
   } else {
-    makeInvisible ( "sr1" );
-    makeInvisible ( "sr2" );
+    makeInvisible ( 'sr1' );
+    makeInvisible ( 'sr2' );
   }
 }
 
@@ -138,10 +142,11 @@ function sr_handler () {
 // "Allow attachments".
 function attach_handler () {
   var enabled = document.prefform.admin_ALLOW_ATTACH[0].checked;
+
   if ( enabled ) {
-    makeVisible ( "at1" );
+    makeVisible ( 'at1' );
   } else {
-    makeInvisible ( "at1" );
+    makeInvisible ( 'at1' );
   }
 }
 
@@ -149,90 +154,95 @@ function attach_handler () {
 // "Allow comments".
 function comment_handler () {
   var enabled = document.prefform.admin_ALLOW_COMMENTS[0].checked;
+
   if ( enabled ) {
-    makeVisible ( "com1" );
+    makeVisible ( 'com1' );
   } else {
-    makeInvisible ( "com1" );
+    makeInvisible ( 'com1' );
   }
 }
 
 // Gets called on page load and when user changes setting for
 // "Email enabled".
 function email_handler () {
-  var enabled = document.prefform.admin_SEND_EMAIL[0].checked;
-  var mailer = document.prefform.admin_EMAIL_MAILER.selectedIndex;
-  var auth = document.prefform.admin_SMTP_AUTH[0].checked;
+  var
+    enabled = document.prefform.admin_SEND_EMAIL[0].checked,
+    mailer = document.prefform.admin_EMAIL_MAILER.selectedIndex,
+    auth = document.prefform.admin_SMTP_AUTH[0].checked;
 
-  //alert ( "allow external =  " + enabled );
   if ( enabled ) {
     // Email enabled
-    makeVisible ( "em1" );
-    makeVisible ( "em2" );
+    makeVisible ( 'em1' );
+    makeVisible ( 'em2' );
     if ( mailer == 0 ) {
-      makeVisible ( "em3" );
-      makeVisible ( "em3a" );
-      makeVisible ( "em4" );
+      makeVisible ( 'em3' );
+      makeVisible ( 'em3a' );
+      makeVisible ( 'em4' );
       if ( auth ) {
-        makeVisible ( "em5" )
-        makeVisible ( "em6" );
+        makeVisible ( 'em5' )
+        makeVisible ( 'em6' );
       } else {
-        makeInvisible ( "em5" )
-        makeInvisible ( "em6" );
+        makeInvisible ( 'em5' )
+        makeInvisible ( 'em6' );
       }
     } else {
-      makeInvisible ( "em3" );
-      makeInvisible ( "em3a" );
-      makeInvisible ( "em4" );
-      makeInvisible ( "em5" )
-      makeInvisible ( "em6" );
+      makeInvisible ( 'em3' );
+      makeInvisible ( 'em3a' );
+      makeInvisible ( 'em4' );
+      makeInvisible ( 'em5' )
+      makeInvisible ( 'em6' );
     }
-    makeVisible ( "em7" );
-    makeVisible ( "em8" );
-    makeVisible ( "em9" );
-    makeVisible ( "em10" );
-    makeVisible ( "em11" );
-    makeVisible ( "em12" );
-    makeVisible ( "em13" );
+    makeVisible ( 'em7' );
+    makeVisible ( 'em8' );
+    makeVisible ( 'em9' );
+    makeVisible ( 'em10' );
+    makeVisible ( 'em11' );
+    makeVisible ( 'em12' );
+    makeVisible ( 'em13' );
   } else {
-    makeInvisible ( "em1" );
-    makeInvisible ( "em2" );
-    makeInvisible ( "em3" );
-    makeInvisible ( "em3a" );
-    makeInvisible ( "em4" );
-    makeInvisible ( "em5" );
-    makeInvisible ( "em6" );
-    makeInvisible ( "em7" );
-    makeInvisible ( "em8" );
-    makeInvisible ( "em9" );
-    makeInvisible ( "em10" );
-    makeInvisible ( "em11" );
-    makeInvisible ( "em12" );
-    makeInvisible ( "em13" );
+    makeInvisible ( 'em1' );
+    makeInvisible ( 'em2' );
+    makeInvisible ( 'em3' );
+    makeInvisible ( 'em3a' );
+    makeInvisible ( 'em4' );
+    makeInvisible ( 'em5' );
+    makeInvisible ( 'em6' );
+    makeInvisible ( 'em7' );
+    makeInvisible ( 'em8' );
+    makeInvisible ( 'em9' );
+    makeInvisible ( 'em10' );
+    makeInvisible ( 'em11' );
+    makeInvisible ( 'em12' );
+    makeInvisible ( 'em13' );
   }
 }
 
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
  //using the tabbed GUI.
-?>var tabs = new Array ();
-tabs[1] = "settings";
-tabs[2] = "public";
-tabs[3] = "uac";
-tabs[4] = "groups";
-tabs[5] = "nonuser";
-tabs[6] = "other";
-tabs[8] = "email";
-tabs[9] = "colors";
+?>var tabs = new Array (
+  '',
+  'settings',
+  'public',
+  'uac',
+  'groups',
+  'nonuser',
+  'other',
+  'email',
+  'colors'
+);
 //]]> -->
 
 function showPreview () {
   var theme = document.forms['prefform'].admin_THEME.value;
-  if (theme == 'none' ) return false;
-  url = "themes/" + theme.toLowerCase ()  + ".php";
-  var previewWindow = window.open(url,"Preview","resizable=yes,scrollbars=yes");
+  if ( theme == 'none' )
+    return false;
+
+  url = 'themes/' + theme.toLowerCase () + '.php';
+  var previewWindow = window.open ( url,"Preview","resizable=yes,scrollbars=yes" );
 }
 
-function setTab( tab ) {
+function setTab ( tab ) {
   document.forms['prefform'].currenttab.value = tab;
-  showTab(tab);
+  showTab ( tab );
   return false;
 }
