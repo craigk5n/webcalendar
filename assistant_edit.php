@@ -69,7 +69,7 @@ echo '
           </td>
         </tr>
         <tr>
-          <td colspan="2" class="aligncenter""><br /><input type="submit" '
+          <td colspan="2" class="aligncenter"><br /><input type="submit" '
  . 'name="action" value="' . translate ( 'Save' ) . '" />
           </td>
         </tr>
