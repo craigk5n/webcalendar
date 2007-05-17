@@ -164,7 +164,7 @@ h3 {
   font-size: 18px;
 }
 fieldset {
-  width: 85%;
+  width: 90%;
 }
 label {
   font-size: 11px;
@@ -204,9 +204,10 @@ ul a {
   clear: both;
 }
 .main th {
-  <?php echo background_css ( $GLOBALS['THBG'], 15 ) ?>
+  width: 14%;
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG'] ?>;
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG'] ?>;
+  <?php echo background_css ( $GLOBALS['THBG'], 15 ) ?>
   vertical-align: top;
 }
 .main th.weekend {
@@ -216,9 +217,10 @@ ul a {
   <?php echo background_css ( $GLOBALS['TODAYCELLBG'], 15 ) ?>
 }
 .main td {
-  <?php echo background_css ( $GLOBALS['CELLBG'], 100 ) ?>
+  width: 14%;
   border-top: 1px solid <?php echo $GLOBALS['TABLEBG'] ?>;
   border-left: 1px solid <?php echo $GLOBALS['TABLEBG'] ?>;
+  <?php echo background_css ( $GLOBALS['CELLBG'], 100 ) ?>
   vertical-align: top;
 }
 .main td.weekend {
@@ -247,13 +249,17 @@ ul a {
 .cursoradd a {
   cursor: pointer;
 }
-#tabscontent {
-  margin: -1px 2px;
-  padding: 0.5em;
-  border: 2px groove #C0C0C0;
-  width: 98%;
-  background: #F8F8FF;
+#tabs {
   position: relative;
+  width: 96%;
+}
+#tabscontent {
+  position: relative;
+  width: 96%;
+  margin: -1px 2px;
+  border: 2px groove #C0C0C0;
+  padding: .5em;
+  background: #F8F8FF;
   z-index: 50;
 }
 .tabfor,
@@ -329,10 +335,11 @@ ul a {
 ?> {
   display: none;
 }
+#tabscontent_colors p span,
 .sample {
+  margin: 0 1px;
   border-style: groove;
-  text-align: left;
-  width: 18px;
+  padding: 0 8px;
 }
 .weeknumber {
   font-size: 10px;
@@ -769,10 +776,54 @@ img.help {
   color: <?php echo $GLOBALS['TEXTCOLOR'] ?>;
 }
 #admin table,
-#pref table{
+#pref table {
   vertical-align: top;
 }
-#admin .tooltip,
+
+
+
+
+
+
+#admin .main td,
+#admin .main th {
+  height: 30px;
+  font-size: 12px;
+}
+#admin .main td.weekcell {
+  <?php echo background_css ( $GLOBALS['THBG'], 50 ) ?>
+  margin: 0;
+  color: <?php echo $GLOBALS['H2COLOR'] ?>;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+}
+#admin .main th.weekcell {
+  background: transparent;
+}
+#admin .main td.empty,
+#admin .main td.weekcell,
+#admin .main th.empty,
+#admin .main th.weekcell {
+  width: 1%;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+#admin #tabscontent p {
+  padding: .25em;
+}
+#admin #tabscontent p label {
+  clear: left;
+  float: left;
+  width: 25%;
+  margin: 0;
+}
+
+
+
+
+
+
 #pref .tooltip{
   width: 175px;
   vertical-align: top;
@@ -888,9 +939,6 @@ echo ( empty ( $GLOBALS['MINICALFONT'] ) ? '11px' : $GLOBALS['MINICALFONT'] ) ?>
 #year .minical tr {
   vertical-align: top;
 }
-#admin th td {
-  padding: 3px;
-}
 #viewm .main,
 #viewr .main,
 #viewt .main,
@@ -898,14 +946,12 @@ echo ( empty ( $GLOBALS['MINICALFONT'] ) ? '11px' : $GLOBALS['MINICALFONT'] ) ?>
 #week .main {
   border-collapse: collapse;
 }
-#admin .main th,
 #pref .main th,
 #viewv .main th,
 #viewl .main th,
 #month .main th {
   width: 14%;
 }
-
 #vieww .main th,
 #week .main th {
   width: 12%;
@@ -921,28 +967,36 @@ echo ( empty ( $GLOBALS['MINICALFONT'] ) ? '11px' : $GLOBALS['MINICALFONT'] ) ?>
 a.weekcell {
   color: <?php echo $GLOBALS['WEEKNUMBER'] ?>;
 }
-#admin .main th.weekcell,
 #pref .main th.weekcell,
 #viewl .main th.empty,
 #day .main th.empty,
 #month .main th.empty{
-  background: transparent;
-  border-left: 0;
+  width: 14%;
   border-top: 0;
-  width: 1%;
+  border-left: 0;
+  background: transparent;
 }
-#admin .main td.weekcell,
 #pref .main td.weekcell,
 #viewl .main td.weekcell,
 #month .main td.weekcell {
   <?php echo background_css ( $GLOBALS['THBG'], 50 ) ?>
-  width: 1%;
+  width: 14%;
   margin: 0;
-  vertical-align: middle;
-  text-align: center;
-  font-size: 12px;
   color: <?php echo $GLOBALS['H2COLOR'] ?>;
+  font-size: 12px;
+  text-align: center;
   text-decoration: none;
+  vertical-align: middle;
+}
+#pref .main td.empty,
+#pref .main th.empty {
+  width: 1%;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+#pref .main td.weekcell,
+#pref .main th.weekcell {
+  width: 1%;
 }
 #viewv .main th.empty,
 #viewm .main th.empty,
@@ -991,11 +1045,10 @@ a.weekcell {
 #viewv .main th.today {
   width: 10%;
 }
-#admin .main th.today,
 #pref .main th.today,
 #viewr .main th.today,
 #week .main th.today {
-  width: 12%;
+  width: 14%;
 }
 #viewr .main th a,
 #week .main th a,
@@ -1011,8 +1064,7 @@ a.weekcell {
   text-align: center;
   vertical-align: top;
 }
-#admin .main td,
-#pref .main td{
+#pref .main td {
   font-size: 12px;
   height: 30px;
 }
