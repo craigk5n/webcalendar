@@ -974,7 +974,7 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
   $ret = '
     <table class="main" cellspacing="0" cellpadding="0" id="month_main">
       <tr>' . ( $DISPLAY_WEEKNUMBER == 'Y' ? '
-        <th class="empty" width="5%"></th>' : '' );
+        <th class="empty" width="1%"></th>' : '' );
 
   for ( $i = 0; $i < 7; $i++ ) {
     $thday = ( $i + $WEEK_START ) % 7;
@@ -1001,7 +1001,7 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
       $ret .= '
         <td class="weekcell"><a class="weekcell" title="' . $weekStr . '&nbsp;'
        . date ( 'W', $i + 86400 * 2 ) . '" href="'
-       . ( $demo ? '"' : 'week.php?date=' . date ( 'Ymd', $i + 86400 ) )
+       . ( $demo ? '' : 'week.php?date=' . date ( 'Ymd', $i + 86400 ) )
        . ( ! empty ( $user ) && $user != $login ? '&amp;user=' . $user : '' )
        . ( empty ( $cat_id ) ? '' : '&amp;cat_id=' . $cat_id ) . '"' . '>';
 
@@ -1032,13 +1032,13 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
         ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
         $class = ( ! $demo && $dateYmd == $todayYmd ? 'today' : '' )
          . ( $is_weekend ? ' weekend' : '' )
-         . ( ! $currMonth ? ' othermonth' : '' );
+         . ( $currMonth ? '' : ' othermonth' );
 
         // Get events for this day.
         $ret_events = '';
         if ( ! $demo )
           $ret_events = print_date_entries ( $dateYmd,
-            ( ! empty ( $user ) ? $user : $login ), false );
+            ( empty ( $user ) ? $login : $user ), false );
         else {
           // Since we base this calendar on the current month,
           // the placement of the days always change so
@@ -3858,7 +3858,7 @@ function load_template ( $login, $type ) {
       file_exists ( $ret ) ) {
     ob_start ();
     include "$ret";
-    $ret .= ob_get_contents ();
+    $ret = ob_get_contents ();
     ob_end_clean ();
   }
 

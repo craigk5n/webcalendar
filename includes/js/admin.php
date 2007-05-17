@@ -1,6 +1,18 @@
 <?php /* $Id$ */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 ?>
+function init_admin () {
+  attach_handler ();
+  comment_handler ();
+  email_handler ();
+  eu_handler ();
+  popup_handler ();
+  public_handler ();
+  sr_handler ();
+
+  return true;
+}
+
 function valid_form ( form ) {
   var err = '';
 
@@ -111,15 +123,9 @@ function eu_handler () {
 
   if ( enabled ) {
     // External Users enabled
-    makeVisible ( 'eu1' );
-    makeVisible ( 'eu2' );
-//    makeVisible ( 'eu3' );
-//    makeVisible ( 'eu4' );
+    makeVisible ( 'eu' );
   } else {
-    makeInvisible ( 'eu1' );
-    makeInvisible ( 'eu2' );
-//    makeInvisible ( 'eu3' );
-//    makeInvisible ( 'eu4' );
+    makeInvisible ( 'eu' );
   }
 }
 
@@ -130,11 +136,9 @@ function sr_handler () {
 
   if ( enabled ) {
     // Self Registration enabled
-    makeVisible ( 'sr1' );
-    makeVisible ( 'sr2' );
+    makeVisible ( 'sr' );
   } else {
-    makeInvisible ( 'sr1' );
-    makeInvisible ( 'sr2' );
+    makeInvisible ( 'sr' );
   }
 }
 
@@ -172,48 +176,19 @@ function email_handler () {
 
   if ( enabled ) {
     // Email enabled
-    makeVisible ( 'em1' );
-    makeVisible ( 'em2' );
+    makeVisible ( 'em' );
     if ( mailer == 0 ) {
-      makeVisible ( 'em3' );
-      makeVisible ( 'em3a' );
-      makeVisible ( 'em4' );
+      makeVisible ( 'em_smtp' );
       if ( auth ) {
-        makeVisible ( 'em5' )
-        makeVisible ( 'em6' );
+        makeVisible ( 'em_auth' )
       } else {
-        makeInvisible ( 'em5' )
-        makeInvisible ( 'em6' );
+        makeInvisible ( 'em_auth' )
       }
     } else {
-      makeInvisible ( 'em3' );
-      makeInvisible ( 'em3a' );
-      makeInvisible ( 'em4' );
-      makeInvisible ( 'em5' )
-      makeInvisible ( 'em6' );
+      makeInvisible ( 'em_smtp' );
     }
-    makeVisible ( 'em7' );
-    makeVisible ( 'em8' );
-    makeVisible ( 'em9' );
-    makeVisible ( 'em10' );
-    makeVisible ( 'em11' );
-    makeVisible ( 'em12' );
-    makeVisible ( 'em13' );
   } else {
-    makeInvisible ( 'em1' );
-    makeInvisible ( 'em2' );
-    makeInvisible ( 'em3' );
-    makeInvisible ( 'em3a' );
-    makeInvisible ( 'em4' );
-    makeInvisible ( 'em5' );
-    makeInvisible ( 'em6' );
-    makeInvisible ( 'em7' );
-    makeInvisible ( 'em8' );
-    makeInvisible ( 'em9' );
-    makeInvisible ( 'em10' );
-    makeInvisible ( 'em11' );
-    makeInvisible ( 'em12' );
-    makeInvisible ( 'em13' );
+    makeInvisible ( 'em' );
   }
 }
 
