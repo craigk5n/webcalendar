@@ -24,11 +24,11 @@ function makeVisible ( name, hide ) {
   }
 
   if ( NS4 ) {
-    ele.visibility = "show";
+    ele.visibility = 'show';
   } else {  // IE4 & W3C & Mozilla
-    ele.style.visibility = "visible";
+    ele.style.visibility = 'visible';
     if ( hide )
-     ele.style.display = "";
+     ele.style.display = '';
   }
 }
 

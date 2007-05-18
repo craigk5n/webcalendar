@@ -217,7 +217,7 @@ if ( ! $error ) {
   $saveStr = translate ( 'Save' );
 
   $option = '
-                <option value="';
+            <option value="';
   $color_sets = $datestyle_md = $datestyle_my = $datestyle_tk = '';
   $datestyle_ymd = $lang_list = $menu_theme_list = $prefer_vu = '';
   $start_wk_on = $start_wkend_on = $tabs = $theme_list = $user_vu = '';
@@ -338,8 +338,7 @@ if ( ! $error ) {
    . '\'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,'
    . 'outerWidth=420\' );" /></h2>
     <form action="admin.php" method="post" onsubmit="return valid_form ( this );"'
-   . ' name="prefform">'
-   . display_admin_link () . '
+   . ' name="prefform">' . display_admin_link () . '
       <input type="hidden" name="currenttab" id="currenttab" value="'
    . $currenttab . '" />
       <input type="submit" value="' . $saveStr
@@ -865,11 +864,14 @@ if ( ! $error ) {
             <legend>' . translate ( 'Background Image options' ) . '</legend>
             <p><label for="admin_BGIMAGE" title="' . tooltip ( 'bgimage-help' )
    . '">' . translate ( 'Background Image' )
-   . ':</label><input type="text" size="75" name="admin_BGIMAGE" id="admin_BGIMAGE" value="'
-   . ( empty ( $s['BGIMAGE'] ) ? '' : htmlspecialchars ( $s['BGIMAGE'] ) ) . '" /></p>
+   . ':</label><input type="text" size="75" name="admin_BGIMAGE" '
+   . 'id="admin_BGIMAGE" value="'
+   . ( empty ( $s['BGIMAGE'] ) ? '' : htmlspecialchars ( $s['BGIMAGE'] ) )
+   . '" /></p>
             <p><label for="admin_BGREPEAT" title="' . tooltip ( 'bgrepeat-help' )
    . '">' . translate ( 'Background Repeat' )
-   . ':</label><input type="text" size="30" name="admin_BGREPEAT" id="admin_BGREPEAT" value="'
+   . ':</label><input type="text" size="30" name="admin_BGREPEAT" '
+   . 'id="admin_BGREPEAT" value="'
    . ( empty ( $s['BGREPEAT'] ) ? '' : $s['BGREPEAT'] ) . '" /></p>
           </fieldset>
         </div>
@@ -878,7 +880,9 @@ if ( ! $error ) {
         <input type="submit" value="' . $saveStr . '" name="" />
       </div>
     </form>';
+
   ob_end_flush ();
+
 } else // if $error
   echo print_error ( $error, true );
 echo print_trailer ();
