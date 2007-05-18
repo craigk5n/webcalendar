@@ -791,9 +791,9 @@ img.help {
   font-size: 12px;
 }
 #admin .main td.weekcell {
-  <?php echo background_css ( $GLOBALS['THBG'], 50 ) ?>
   margin: 0;
-  color: <?php echo $GLOBALS['H2COLOR'] ?>;
+  <?php echo background_css ( $GLOBALS['THBG'], 50 ) . '
+  color: ' .  $GLOBALS['H2COLOR'] ?>;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
@@ -971,7 +971,7 @@ a.weekcell {
 #viewl .main th.empty,
 #day .main th.empty,
 #month .main th.empty{
-  width: 14%;
+  width: 1%;
   border-top: 0;
   border-left: 0;
   background: transparent;
@@ -980,7 +980,7 @@ a.weekcell {
 #viewl .main td.weekcell,
 #month .main td.weekcell {
   <?php echo background_css ( $GLOBALS['THBG'], 50 ) ?>
-  width: 14%;
+  width: 1%;
   margin: 0;
   color: <?php echo $GLOBALS['H2COLOR'] ?>;
   font-size: 12px;
