@@ -1242,7 +1242,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
         <tr>' . ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ? '
           <td><a class="weeknumber" ' . 'title="' . $weekStr
        . '&nbsp;' . date ( 'W', $i + 86400 ) . '" ' . 'href="week.php?' . $u_url
-       . 'date=' . date ( 'Ymd', $i + 86400 * 2 ) . '" class="weeknumber">('
+       . 'date=' . date ( 'Ymd', $i + 86400 * 2 ) . '">('
        . date ( 'W', $i + 86400 * 2 ) . ')</a></td>' : '' );
 
     for ( $j = 0; $j < 7; $j++ ) {
