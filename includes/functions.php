@@ -974,7 +974,7 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
   $ret = '
     <table class="main" cellspacing="0" cellpadding="0" id="month_main">
       <tr>' . ( $DISPLAY_WEEKNUMBER == 'Y' ? '
-        <th class="empty" width="1%"></th>' : '' );
+        <th class="empty"></th>' : '' );
 
   for ( $i = 0; $i < 7; $i++ ) {
     $thday = ( $i + $WEEK_START ) % 7;
@@ -3697,6 +3697,7 @@ function isLeapYear ( $year = '' ) {
 function load_global_settings () {
   global $_SERVER, $APPLICATION_NAME, $FONTS, $HTTP_HOST,
   $LANGUAGE, $REQUEST_URI, $SERVER_PORT, $SERVER_URL;
+
   // Note:  When running from the command line (send_reminders.php),
   // these variables are (obviously) not set.
   // TODO:  This type of checking should be moved to a central location
@@ -3704,8 +3705,10 @@ function load_global_settings () {
   if ( isset ( $_SERVER ) && is_array ( $_SERVER ) ) {
     if ( empty ( $HTTP_HOST ) && isset ( $_SERVER['HTTP_HOST'] ) )
       $HTTP_HOST = $_SERVER['HTTP_HOST'];
+
     if ( empty ( $SERVER_PORT ) && isset ( $_SERVER['SERVER_PORT'] ) )
       $SERVER_PORT = $_SERVER['SERVER_PORT'];
+
     if ( ! isset ( $_SERVER['REQUEST_URI'] ) ) {
       $arr = explode ( '/', $_SERVER['PHP_SELF'] );
       $_SERVER['REQUEST_URI'] = '/' . $arr[count ( $arr )-1];
@@ -3714,6 +3717,7 @@ function load_global_settings () {
     }
     if ( empty ( $REQUEST_URI ) && isset ( $_SERVER['REQUEST_URI'] ) )
       $REQUEST_URI = $_SERVER['REQUEST_URI'];
+
     // Hack to fix up IIS.
     if ( isset ( $_SERVER['SERVER_SOFTWARE'] ) &&
         strstr ( $_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS' ) &&
@@ -3726,8 +3730,7 @@ function load_global_settings () {
   for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
     $row = $rows[$i];
     $setting = $row[0];
-    $value = $row[1];
-    $GLOBALS[$setting] = $value;
+    $GLOBALS[$setting] = $value = $row[1];
   }
 
   // Set SERVER TIMEZONE.
@@ -4286,14 +4289,14 @@ function print_color_input_html ( $varname, $title, $varval = '' ) {
 
   $name .= $varname;
 
-  return '<label for="' . $name . '">' . $title . ':</label></td>
-        <td width="50"><input type="text" name="' . $name . '" id="'
-   . $name . '" size="7" maxlength="7" value="' . $setting
-   . '" onchange="updateColor ( this, \'' . $varname . '_sample\' );" /></td>
-        <td class="sample" id="' . $varname . '_sample" style="background-color:'
-   . $setting . ';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td><input type="button" onclick="selectColor ( \'' . $name
-   . '\', event )" value="' . $select . '" />' . "\n";
+  return '
+            <p><label for="' . $name . '">' . $title
+   . ':</label><input type="text" name="' . $name . '" id="' . $name
+   . '" size="7" maxlength="7" value="' . $setting
+   . '" onchange="updateColor ( this, \'' . $varname
+   . '_sample\' );" /><span id="' . $varname . '_sample" style="background:'
+   . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor ( \''
+   . $name . '\', event )" value="' . $select . '" /></p>';
 }
 
 /* Prints all the calendar entries for the specified user for the specified date.
@@ -4705,8 +4708,7 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
   foreach ( $vals as $K => $V ) {
     $ret .= '
       <input type="radio" name="' . $variable . '" value="' . $K . '"'
-     . ( $setting == $K ? $checked : '' ) . $onclickStr . ' />&nbsp;' . $V
-     . $sep;
+     . ( $setting == $K ? $checked : '' ) . $onclickStr . ' />' . $V;
   }
   return $ret;
 }
