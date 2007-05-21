@@ -1,14 +1,14 @@
 <?php
 /* This file contains the date formats that are used within
- * admin.php and pref.php to populate the 'Date forma' selects.
+ * admin.php and pref.php to populate the 'Date format' selects.
  *
  * <b>Note:</b>
- * PLEASE EDIT THIS FILE TO ADD ANY ADDITIONAL FORMATS REQUIRED
- *  alid codes example
+ * PLEASE EDIT THIS FILE TO ADD ANY ADDITIONAL FORMATS REQUIRED.
+ *  valid codes example
  *    __month__ = December
  *    __mon__ = Dec
- *    __dd__ = 31 (leading zero)
- *    __j__ = 31 ( noleading zero)
+ *    __dd__ = 09 (date with leading zero)
+ *    __j__ = 9 ( date without leading zero)
  *    __yyyy__ = 2005
  *    __yy__ = 05
  *
@@ -16,13 +16,20 @@
  * @author Ray Jones < rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$:
+ * @version $Id$
  * @package WebCalendar
  */
+// .
+// This will force $LANGUAGE to the current value
+// and eliminate having to double click the 'SAVE' button.
+reset_language ( get_pref_setting ( $login, 'LANGUAGE' ) );
+define_languages (); // Load the language list.
+reset ( $languages );
 
-$langDefStr = translate ( 'LANGUAGE DEFINED' );
 $DecemberStr = translate ( 'December' );
 $DecStr = translate ( 'Dec' );
+$langDefStr = translate ( 'LANGUAGE DEFINED' );
+// .
 // Day Month Year format
 $datestyles = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__mon__ __j__, __yyyy__', $DecStr . ' 5, 2000',
@@ -49,6 +56,7 @@ $datestyles = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__yyyy__/__mm__/__dd__', '2000/12/31',
   '__yyyy__-__mm__-__dd__', '2000-12-31',
   );
+// .
 // Month Year format
 $datestyles_my = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__mon__ __yyyy__', $DecStr . ' 2000',
@@ -67,6 +75,7 @@ $datestyles_my = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__yyyy__/__mm__', '2000/12',
   '__yyyy__-__mm__', '2000-12',
   );
+// .
 // Month Day format
 $datestyles_md = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__mon__ __dd__', $DecStr . ' 31',
@@ -81,6 +90,7 @@ $datestyles_md = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__mm__/__dd__', '12/31',
   '__mm__-__dd__', '12-31',
   );
+// .
 // Task Date format
 $datestyles_task = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__mon__ __dd__', $DecStr . ' 31',

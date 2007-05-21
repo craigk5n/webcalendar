@@ -784,16 +784,27 @@ img.help {
 
 
 
-
+#admin input,
+#admin select,
+#pref input,
+#pref select {
+  margin: 0 4px;
+}
+#admin .main td {
+  height: 30px;
+}
 #admin .main td,
 #admin .main th {
-  height: 30px;
   font-size: 12px;
+}
+#admin .empty {
+  border-top: transparent;
+  border-left: transparent;
 }
 #admin .main td.weekcell {
   margin: 0;
   <?php echo background_css ( $GLOBALS['THBG'], 50 ) . '
-  color: ' .  $GLOBALS['H2COLOR'] ?>;
+  color: ' . $GLOBALS['H2COLOR'] ?>;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
@@ -806,11 +817,9 @@ img.help {
 #admin .main th.empty,
 #admin .main th.weekcell {
   width: 1%;
-  border-top-color: transparent;
-  border-left-color: transparent;
 }
 #admin #tabscontent p {
-  padding: .25em;
+  padding: 0 .25em;
 }
 #admin #tabscontent p label {
   clear: left;
@@ -818,7 +827,21 @@ img.help {
   width: 25%;
   margin: 0;
 }
-
+#admin #saver {
+  clear:both;
+  margin-top:1em;
+}
+#example_month {
+  float:right;
+  width:45%;
+  margin:3em 1em 0;
+  background:<?php echo $BGCOLOR ?>;
+}
+#example_month p {
+  color:<?php echo $H2COLOR ?>;
+  font-weight: bold;
+  text-align:center;
+}
 
 
 
