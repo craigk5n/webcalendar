@@ -390,12 +390,12 @@ if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) {
 $publish_access = ( empty ( $prefarray['USER_REMOTE_ACCESS'] )
   ? 0 : $prefarray['USER_REMOTE_ACCESS'] );
 
-echo ( ! $updating_public ? ( $SEND_EMAIL == 'Y' ? '
+echo ( $updating_public ? '' : ( $SEND_EMAIL != 'Y' ? '' : '
         <div id="tabscontent_email">
           <p><label>' . translate ( 'Email format preference' ) . ':</label>'
      . print_radio ( 'EMAIL_HTML', array ( 'Y' => translate ( 'HTML' ),
         'N' => translate ( 'Plain Text' ) ) ) . '</p>
-          <p><label' . translate ( 'Event reminders' ) . ':</label>'
+          <p><label>' . translate ( 'Event reminders' ) . ':</label>'
      . print_radio ( 'EMAIL_REMINDER' ) . '</p>
           <p><label>' . translate ( 'Events added to my calendar' ) . ':</label>'
      . print_radio ( 'EMAIL_EVENT_ADDED' ) . '</p>
@@ -403,12 +403,12 @@ echo ( ! $updating_public ? ( $SEND_EMAIL == 'Y' ? '
      . print_radio ( 'EMAIL_EVENT_UPDATED' ) . '</p>
           <p><label>' . translate ( 'Events removed from my calendar' )
      . ':</label>' . print_radio ( 'EMAIL_EVENT_DELETED' ) . '</p>
-          <p><label' . translate ( 'Event rejected by participant' )
+          <p><label>' . translate ( 'Event rejected by participant' )
      . ':</label>' . print_radio ( 'EMAIL_EVENT_REJECTED' ) . '</p>
           <p><label>' . translate ( 'Event that I create' ) . ':</label>'
      . print_radio ( 'EMAIL_EVENT_CREATE' ) . '</p>
         </div>
-<!-- END EMAIL -->' : '' ) . '
+<!-- END EMAIL -->' ) . '
 
         <div id="tabscontent_boss">' . ( $SEND_EMAIL == 'Y' ? '
           <p><label>' . translate ( 'Email me event notification' ) . ':</label>'
@@ -419,7 +419,7 @@ echo ( ! $updating_public ? ( $SEND_EMAIL == 'Y' ? '
    . translate ( 'Display if created by Assistant' ) . ':</label>'
    . print_radio ( 'DISPLAY_CREATED_BYPROXY' ) . '</p>
         </div>
-<!-- END BOSS -->' : '' ) . '
+<!-- END BOSS -->' ) . '
         <div id="tabscontent_subscribe">'
  . ( $PUBLISH_ENABLED == 'Y' || $RSS_ENABLED == 'Y' ? '
           <p><label title="'
