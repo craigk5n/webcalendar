@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 05-25-2007
 
 
 ################################################################################
@@ -129,20 +129,13 @@ Error adding event XXX.: Error adding event: XXX.
 ########################################
 # Page: admin.php
 #
-Invalid setting name XXX.: Invalid setting name "XXX".
 Select: Select
-Day: Day
-Week: Week
-Month: Month
-Year: Year
+Bottom: Bottom
+Top: Top
+Anyone: Anyone
+Participant: Participant
 System Settings: System Settings
 Help: Help
-Settings: Settings
-Groups: Groups
-NonUser Calendars: NonUser Calendars
-Other: Other
-Email: Email
-Colors: Colors
 System options: System options
 app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page. The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: Application Name
@@ -201,8 +194,6 @@ preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: Preferred view
 Allow top menu: Allow top menu
 Date Selectors position: Date Selectors position
-Bottom: Bottom
-Top: Top
 menu-themes-help: Sets the colors and style of the top menu
 Menu theme: Menu theme
 fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
@@ -280,11 +271,6 @@ user_sort-help: Determines sort order for User, Nonuser lists
 User Sort Order: User Sort Order
 Lastname, Firstname: Lastname, Firstname
 Firstname, Lastname: Firstname, Lastname
-Plugins: Plugins
-plugins-enabled-help: Enable plugin applications.
-Enable Plugins: Enable Plugins
-plugins-sort-key-help: Specifies a sort key for the plugin. This allows the plugins to appear in a specific order.
-Plugin: Plugin
 allow-public-access-help: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
 Allow public access: Allow public access
 public-access-default-visible: Events from the public calendar will automatically appear on all users' calendars
@@ -349,8 +335,6 @@ Use self-registration email notifications: Generate passwords and send to new us
 allow-attachment-help: Allow users to add file attachments to events.
 Allow file attachments to events: Allow file attachments to events
 Admin and owner can always add attachments if enabled.: Admin and owner can always add attachments if enabled.
-Anyone: Anyone
-Participant: Participant
 allow-comments-help: Allow users to add comments to events.
 Allow comments to events: Allow comments to events
 Admin and owner can always add comments if enabled.: Admin and owner can always add comments if enabled.
@@ -388,21 +372,6 @@ Allow user to customize colors: Allow user to customize colors
 gradient-colors: If enabled gradient colors are used. This can greatly impact performance.
 Enable gradient images for background colors: Enable gradient images for background colors
 Not available: Not available
-Document background: Document background
-Document title: Document title
-Document text: Document text
-My event text: My event text
-Table grid color: Table grid color
-Table header background: Table header background
-Table header text: Table header text
-Table cell background: Table cell background
-Table cell background for current day: Table cell background for current day
-Table cell background for days with events: Table cell background for days with events
-Table cell background for weekends: Table cell background for weekends
-Table cell background for other month: Table cell background for other month
-Week number color: Week number color
-Event popup background: Event popup background
-Event popup text: Event popup text
 Background Image options: Background Image options
 bgimage-help: URL of desired background image. May be relative link.
 Background Image: Background Image
@@ -852,6 +821,7 @@ You must specify a group name: You must specify a group name
 ########################################
 # Page: help_admin.php
 #
+Settings: Settings
 Auto-refresh calendars: Auto-refresh calendars
 auto-refresh-help: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
 Auto-refresh time: Auto-refresh time
@@ -860,7 +830,11 @@ Display days with events in bold in year view: Display days with events in bold 
 Display weekends in week view: Display weekends in week view
 Time interval: Time interval
 time-interval-help: Specifies how long the time blocks in the week view and day view will be.
+Groups: Groups
 Nonuser: Nonuser Calendars
+Other: Other
+Email: Email
+Colors: Colors
 user-customize-color: Specifies whether users are allowed to modify their own color scheme.
 enable-gradient-help: Use gradient colors for cell backgrounds.
 Manually entering color values: Manually entering color values
@@ -1008,14 +982,14 @@ Unable to update preference: Unable to update preference
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: View this entry
 Approve/Confirm: Approve/Confirm
-Reject: Reject
-Check All: Check All
-Uncheck All: Uncheck All
 Approve Selected: Approve Selected
-Reject Selected: Reject Selected
+Check All: Check All
 Emails Will Not Be Sent: Emails Will Not Be Sent
+Reject Selected: Reject Selected
+Reject: Reject
+Uncheck All: Uncheck All
+View this entry: View this entry
 No unapproved entries for: No unapproved entries for
 No unapproved entries for XXX.: No unapproved entries for: "XXX".
 Unapproved Entries: Unapproved Entries
@@ -1064,15 +1038,20 @@ Illegal characters in login: Illegal characters in login
 ########################################
 # Page: pref.php
 #
+entries: entries
 Save Preferences: Save Preferences
+0: 0
+1: 1
+2: 2
+3: 3
+5: 5
 Public Access calendar: Public Access calendar
 Modify Non User Calendar Preferences: Modify Non User Calendar Preferences
 Return to My Preferences: Return to My Preferences
-Custom Scripts: Custom Scripts
+hour: hour
 Timezone Selection: Timezone Selection
 entry-interval-help: Sets minute interval when editing entry times
 Entry interval: Entry interval
-hour: hour
 minute: minute
 theme-reload-help: Due to CSS caching, a page reload may be required
 Page may need to be reloaded for new Theme to take effect: Page may need to be reloaded for new Theme to take effect
@@ -1083,7 +1062,6 @@ display_byproxy-help: Display the real creator on view_entry page
 Display if created by Assistant: Display if created by Assistant
 allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries
 Allow remote viewing of: Allow remote viewing of
-entries: entries
 
 ########################################
 # Page: publish.php
@@ -1204,6 +1182,7 @@ more: more
 ########################################
 # Page: users.php
 #
+NonUser Calendars: NonUser Calendars
 Remote Calendars: Remote Calendars
 denotes administrative user: denotes administrative user
 Add New User: Add New User
@@ -1228,6 +1207,7 @@ Add View: Add View
 Edit View: Edit View
 View Name: View Name
 View Type: View Type
+Day: Day
 Day by Time: Day by Time
 Week (Users horizontal): Week (Users horizontal)
 Week by Time: Week by Time
@@ -1291,6 +1271,7 @@ Palm Pilot: Palm Pilot
 ########################################
 # Page: view_r.php
 #
+Week: Week
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
 
 ########################################
@@ -1314,6 +1295,29 @@ Year View: Year View
 Invalid function id: Invalid function id
 
 ########################################
+# Page: includes/common_admin_pref.php
+#
+Month: Month
+Year: Year
+Custom Scripts: Custom Scripts
+Document background: Document background
+Document title: Document title
+Document text: Document text
+My event text: My event text
+Table grid color: Table grid color
+Table header background: Table header background
+Table header text: Table header text
+Table cell background: Table cell background
+Table cell background for current day: Table cell background for current day
+Table cell background for days with events: Table cell background for days with events
+Table cell background for weekends: Table cell background for weekends
+Table cell background for other month: Table cell background for other month
+Week number color: Week number color
+Event popup background: Event popup background
+Event popup text: Event popup text
+Invalid setting name XXX.: Invalid setting name "XXX".
+
+########################################
 # Page: includes/config.php
 #
 Fatal Error: Fatal Error
@@ -1325,9 +1329,9 @@ You must define XXX in: You must define "XXX" in the "settings.php" file.
 ########################################
 # Page: includes/date_formats.php
 #
-LANGUAGE DEFINED: LANGUAGE DEFINED
 December: December
 Dec: Dec
+LANGUAGE DEFINED: LANGUAGE DEFINED
 
 ########################################
 # Page: includes/dbi4php.php
@@ -1527,12 +1531,7 @@ Spanish: Spanish
 Swedish: Swedish
 Turkish: Turkish
 Welsh: Welsh
-0: 0
-1: 1
-2: 2
-3: 3
 4: 4
-5: 5
 6: 6
 7: 7
 8: 8
@@ -1578,6 +1577,11 @@ Event Imported: Event Imported
 bytes: bytes
 kb: kb
 Mb: Mb
+
+########################################
+# Page: includes/classes/WebCalendar.class
+#
+Security violation!: Security violation!
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
@@ -1786,6 +1790,8 @@ Admin Account Not Found: Admin Account Not Found
 User Authentication: User Authentication
 Web-based via WebCalendar (default): Web-based via WebCalendar (default)
 Web Server: Web Server
+Web Server (detected): Web Server (detected)
+Web Server (not detected): Web Server (not detected)
 None (Single-User): None (Single-User)
 Read-Only: Read-Only
 Environment: Environment
