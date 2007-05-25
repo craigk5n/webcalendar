@@ -247,8 +247,7 @@ $action = getGetValue ( 'action' );
 // We were set here because of a mismatch of $PROGRAM_VERSION
 // A simple way to ensure that UPGRADING.html gets read and processed
 if ( ! empty ( $action ) && $action == 'mismatch' ) {
-  $version = getGetValue ( 'version' );
- $_SESSION['old_program_version'] = $version;
+  $_SESSION['old_program_version'] = $version = getGetValue ( 'version' );
 }
 
 // Go to the proper page
@@ -1170,8 +1169,7 @@ if ( ! $exists || ! $canWrite ) { ?>
    if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
  <tr><td align="center" colspan="3">
   <?php
-    $class = ( ! empty ( $_SESSION['db_success'] ) ) ?
-      'recommended' : 'notrecommended';
+    $class = ( empty ( $_SESSION['db_success'] ) ? 'not' : '' ) . 'recommended';
     echo "<input name=\"action\" type=\"submit\" value=\"" .
       $testSettingsStr . "\" class=\"$class\" />\n";
 
@@ -1194,11 +1192,11 @@ if ( ! $exists || ! $canWrite ) { ?>
   </form>
 </td><td align="center" width="20%">
   <form action="index.php?action=switch&amp;page=3" method="post">
-    <input type="submit" value="<?php echo $nextStr ?> ->" <?php echo ( ! empty ($_SESSION['db_success'] )? '' : 'disabled' ); ?> />
+    <input type="submit" value="<?php echo $nextStr ?> ->" <?php echo ( empty ($_SESSION['db_success'] ) ? 'disabled' : '' ); ?> />
   </form>
 </td><td align="left" width="40%">
   <form action="" method="post">
- <input type="button" value="<?php echo $logoutStr ?>" <?php echo ( ! empty ($_SESSION['validuser'] )? '' : 'disabled' ); ?>
+ <input type="button" value="<?php echo $logoutStr ?>" <?php echo ( empty ($_SESSION['validuser'] ) ? 'disabled' : '' ); ?>
   onclick="document.location.href='index.php?action=logout'" />
   </form>
 </td></tr>
@@ -1305,11 +1303,11 @@ if ( ! $exists || ! $canWrite ) { ?>
   </form>
 </td><td align="center" width="20%">
   <form action="index.php?action=switch&amp;page=4" method="post">
-    <input type="submit" value="<?php echo $nextStr ?> ->" <?php echo ( empty ($_SESSION['db_updated'] )? 'disabled' : '' ); ?> />
+    <input type="submit" value="<?php echo $nextStr ?> ->" <?php echo ( empty ($_SESSION['db_updated'] ) ? 'disabled' : '' ); ?> />
   </form>
 </td><td align="left" width="40%">
   <form action="" method="post">
-  <input type="button" value="<?php echo $logoutStr ?>" <?php echo ( ! empty ($_SESSION['validuser'] )? '' : 'disabled' ); ?>
+  <input type="button" value="<?php echo $logoutStr ?>" <?php echo ( empty ($_SESSION['validuser'] ) ? 'disabled' : '' ); ?>
    onclick="document.location.href='index.php?action=logout'" />
  </form>
 </td></tr>
@@ -1398,10 +1396,11 @@ translate ( 'You should select Web Server from the list of User Authentication c
 
    echo "<option value=\"http\" " .
     ( $settings['user_inc'] == 'user.php' &&
-     $settings['use_http_auth'] == 'true' ? $selected : '' ) .
-    ">" . translate ( 'Web Server' ) .
-    ( empty ( $PHP_AUTH_USER ) ? '(not detected)' : '(detected)' ) .
-    "</option>\n";
+     $settings['use_http_auth'] == 'true' ? $selected : '' ) . '>'
+      //  translate ( 'Web Server' ) translate ( 'Web Server (detected)' )
+      //  translate ( 'Web Server (not detected)' )
+     . translate ( 'Web Server (' .
+    ( empty ( $PHP_AUTH_USER ) ? 'not ' : '' ) . 'detected)' ) . "</option>\n";
 
    if ( function_exists ( 'ldap_connect' ) ) {
     echo '<option value="user-ldap.php" ' .
