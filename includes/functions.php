@@ -23,7 +23,7 @@
 
 /* Load other specific function libraries.
  */
-$includeDir = ( ! empty ( $includedir ) ? $includedir : 'includes' );
+$includeDir = ( empty ( $includedir ) ? 'includes' : $includedir );
 include_once $includeDir . '/getPredefinedVariables.php';
 
 /* Logs a debug message.
@@ -944,7 +944,7 @@ function display_activity_log ( $cal_type, $cal_text = '' ) {
     $ret = '???';
 
   return $ret
-   . ( ! empty ( $cal_text ) ? '<br />&nbsp;' . htmlentities ( $cal_text ) : '' );
+   . ( empty ( $cal_text ) ? '' : '<br />&nbsp;' . htmlentities ( $cal_text ) );
 }
 
 /* Display the <<Admin link on pages if menus are not enabled
@@ -1238,12 +1238,12 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       </thead>
       <tbody>';
   for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthend; $i += 604800 ) {
+    $tmp = $i + 172800; // 48 hours.
     $ret .= '
         <tr>' . ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ? '
-          <td><a class="weeknumber" ' . 'title="' . $weekStr
-       . '&nbsp;' . date ( 'W', $i + 86400 ) . '" ' . 'href="week.php?' . $u_url
-       . 'date=' . date ( 'Ymd', $i + 86400 * 2 ) . '">('
-       . date ( 'W', $i + 86400 * 2 ) . ')</a></td>' : '' );
+          <td><a class="weeknumber" ' . 'title="' . $weekStr . '&nbsp;'
+       . date ( 'W', $i + 86400 ) . '" ' . 'href="week.php?' . $u_url . 'date='
+       . date ( 'Ymd', $tmp ) . '">(' . date ( 'W', $tmp ) . ')</a></td>' : '' );
 
     for ( $j = 0; $j < 7; $j++ ) {
       // Add 12 hours just so we don't have DST problems.
@@ -1288,8 +1288,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
             ? 'day.php?user=' . $user
             : 'nulogin.php?login=' . $user . '&amp;return_path=day.php' )
            . '&amp;date=' . $dateYmd . '"'
-           . ( ! empty ( $MINI_TARGET ) ? ' target="' . $MINI_TARGET . '"' : '' )
-           . ( ! empty ( $title ) ? ' title="' . $title . '"' : '' );
+           . ( empty ( $MINI_TARGET ) ? '' : ' target="' . $MINI_TARGET . '"' )
+           . ( empty ( $title ) ? '' : ' title="' . $title . '"' );
         else
           $ret .= 'day.php?' . $u_url . 'date=' . $dateYmd . '"';
 
@@ -1330,7 +1330,7 @@ function display_small_tasks ( $cat_id ) {
   }
   $ajax = array ();
   $dueSpacer = '&nbsp;';
-  $task_cat = ( ! empty ( $cat_id ) ? $cat_id : -99 );
+  $task_cat = ( empty ( $cat_id ) ? -99 : $cat_id );
 
   if ( $SORT_TASKS == 'Y' ) {
     for ( $i = 0; $i < 4; $i++ ) {
@@ -1351,7 +1351,7 @@ function display_small_tasks ( $cat_id ) {
   $priorityStr = translate ( 'Priority' );
   $dateFormatStr = $DATE_FORMAT_TASK;
   $task_list = query_events ( $task_user, false,
-    ( ! empty ( $task_filter ) ? $task_filter : '' ), $cat_id, true );
+    ( empty ( $task_filter ) ? '' : $task_filter ), $cat_id, true );
   $row_cnt = 1;
   $task_html = '
     <table class="minitask" cellspacing="0" cellpadding="2">
@@ -1760,8 +1760,8 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
     : 'we.cal_id, we.cal_name, wel.cal_log_id, we.cal_type
       FROM webcal_entry_log wel, webcal_entry we
       WHERE wel.cal_entry_id = we.cal_id' )
-   . ( ! empty ( $id ) ? ' AND we.cal_id = ?' : '' )
-   . ( ! empty ( $startid ) ? ' AND wel.cal_log_id <= ?' : '' )
+   . ( empty ( $id ) ? '' : ' AND we.cal_id = ?' )
+   . ( empty ( $startid ) ? '' : ' AND wel.cal_log_id <= ?' )
    . ' ORDER BY wel.cal_log_id DESC';
 
   $res = dbi_execute ( $sql, $sql_params );
@@ -1843,8 +1843,8 @@ function generate_printer_friendly ( $hrefin = '' ) {
   global $_SERVER, $MENU_ENABLED, $SCRIPT, $show_printer;
 
   // Set this to enable printer icon in top menu.
-  $href = ( ! empty ( $href ) ? $hrefin : $SCRIPT ) . '?'
-   . ( ! empty ( $_SERVER['QUERY_STRING'] ) ? $_SERVER['QUERY_STRING'] : '' );
+  $href = ( empty ( $href ) ? $SCRIPT : $hrefin ) . '?'
+   . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : $_SERVER['QUERY_STRING'] );
   $href .= ( substr ( $href, -1 ) == '?' ? '' : '&' ) . 'friendly=1';
   $show_printer = true;
   if ( empty ( $hrefin ) ) // Menu will call this function without parameter.
@@ -1936,14 +1936,19 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
     $n = 0;
     if ( ! empty ( $ByDay ) )
       $byday = explode ( ',', $ByDay );
+
     if ( ! empty ( $ByMonth ) )
       $bymonth = explode ( ',', $ByMonth );
+
     if ( ! empty ( $ByMonthDay ) )
       $bymonthday = explode ( ',', $ByMonthDay );
+
     if ( ! empty ( $BySetPos ) )
       $bysetpos = explode ( ',', $BySetPos );
+
     if ( ! empty ( $ByWeekNo ) )
       $byweekno = explode ( ',', $ByWeekNo );
+
     if ( ! empty ( $ByYearDay ) )
       $byyearday = explode ( ',', $ByYearDay );
 
@@ -2430,7 +2435,7 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
   $my_nonuser_array, $my_user_array, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME,
   $USER_SEES_ONLY_HIS_GROUPS, $USER_SORT_ORDER;
 
-  $this_user = ( ! empty ( $user ) ? $user : $login );
+  $this_user = ( empty ( $user ) ? $login : $user );
   // Return the global variable (cached).
   if ( ! empty ( $my_nonuser_array[$this_user . $add_public] ) &&
       is_array ( $my_nonuser_array ) )
@@ -2484,7 +2489,7 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
     // Add $this_user to beginning of query params.
     array_unshift ( $groups, $this_user );
     $rows = dbi_get_cached_rows ( $sql . ' ORDER BY '
-       . ( ! empty ( $USER_SORT_ORDER ) ? "$USER_SORT_ORDER" : '' ), $groups );
+       . ( empty ( $USER_SORT_ORDER ) ? '' : "$USER_SORT_ORDER" ), $groups );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
@@ -2542,7 +2547,7 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
   global $GROUPS_ENABLED, $is_admin, $is_nonuser, $is_nonuser_admin, $login,
   $my_user_array, $USER_SEES_ONLY_HIS_GROUPS, $USER_SORT_ORDER;
 
-  $this_user = ( ! empty ( $user ) ? $user : $login );
+  $this_user = ( empty ( $user ) ? $login : $user );
   // Return the global variable (cached).
   if ( ! empty ( $my_user_array[$this_user][$reason] ) &&
       is_array ( $my_user_array ) )
@@ -2801,7 +2806,7 @@ function get_preferred_view ( $indate = '', $args = '' ) {
   $url = str_replace ( '&amp;', '&', $url );
   $url = str_replace ( '&', '&amp;', $url );
 
-  $xdate = empty ( $indate ) ? $thisdate : $indate;
+  $xdate = ( empty ( $indate ) ? $thisdate : $indate );
 
   $url .= ( empty ( $xdate ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
      . 'date=' . $xdate );
@@ -3979,8 +3984,8 @@ function load_user_preferences ( $guest = '' ) {
   $lang_found = false;
   $prefarray = array ();
   // Allow __public__ pref to be used if logging in or user not validated.
-  $tmp_login = ( ! empty ( $guest )
-    ? ( $guest == 'guest' ? '__public__' : $guest ) : $login );
+  $tmp_login = ( empty ( $guest )
+    ? $login : ( $guest == 'guest' ? '__public__' : $guest ) );
 
   $rows = dbi_get_cached_rows ( 'SELECT cal_setting, cal_value
     FROM webcal_user_pref WHERE cal_login = ?', array ( $tmp_login ) );
@@ -4095,7 +4100,7 @@ function month_name ( $m, $format = 'F' ) {
 
   $local_lang = $lang;
 
-  if ( empty ( $month_names[0] ) )
+  if ( empty ( $month_names[0] ) || empty ( $monthshort_names[0] ) ) {
     $month_names = array (
       translate ( 'January' ),
       translate ( 'February' ),
@@ -4111,7 +4116,6 @@ function month_name ( $m, $format = 'F' ) {
       translate ( 'December' )
       );
 
-  if ( empty ( $monthshort_names[0] ) )
     $monthshort_names = array (
       translate ( 'Jan' ),
       translate ( 'Feb' ),
@@ -4126,6 +4130,7 @@ function month_name ( $m, $format = 'F' ) {
       translate ( 'Nov' ),
       translate ( 'Dec' )
       );
+  }
 
   if ( $m >= 0 && $m < 12 )
     return ( $format == 'F' ? $month_names[$m] : $monthshort_names[$m] );
@@ -4190,9 +4195,9 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   $printerStr = '';
   $ret = '
     <form action="' . $form . '.php" method="get" name="SelectCategory" '
-   . 'class="categories">' . ( ! empty ( $date ) ? '
+   . 'class="categories">' . ( empty ( $date ) ? '' : '
       <input type="hidden" name="' . ( $form != 'year' ? 'date' : 'year' )
-     . '" value="' . $date . '" />' : '' )
+     . '" value="' . $date . '" />' )
    . ( ! empty ( $user ) && $user != $login ? '
       <input type="hidden" name="user" value="' . $user . '" />' : '' )
    . $catStr . ':
@@ -4255,7 +4260,7 @@ function print_checkbox ( $vals, $id = '', $onchange = '' ) {
   }
   return '
       <label><input type="checkbox" name="' . $variable . '" value="' . $vals[1]
-   . '" ' . ( ! empty ( $id ) ? 'id="' . $id . '" ' : '' )
+   . '" ' . ( empty ( $id ) ? '' : 'id="' . $id . '" ' )
    . ( $setting == $vals[1] ? $checked : '' )
    . ( empty ( $onchange ) ? '' : ' onchange="' . $onchange . ' ()"' )
    . ' />&nbsp;' . $vals[2] . '</label>';
@@ -4444,11 +4449,11 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
   }
   $ret .= '
     <table class="main glance" cellspacing="0" cellpadding="0">'
-   . ( ! empty ( $hour_arr[9999] ) ? '
+   . ( empty ( $hour_arr[9999] ) ? '' : '
       <tr>
         <th class="empty">&nbsp;</th>
         <td class="hasevents">' . $hour_arr[9999] . '</td>
-      </tr>' : '' );
+      </tr>' );
 
   $rowspan = 0;
   for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
@@ -4922,7 +4927,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
       // Get primary category for this event, used for icon and color.
       $categories = get_categories_by_id ( $row[4], $user );
       $cat_keys = array_keys ( $categories );
-      $primary_cat = ( ! empty ( $cat_keys[0] ) ? $cat_keys[0] : '' );
+      $primary_cat = ( empty ( $cat_keys[0] ) ? '' : $cat_keys[0] );
 
       if ( $want_repeated && ! empty ( $row[20] ) ) // row[20] = cal_type
         $item =& new RepeatingEvent ( $row[0], $row[1], $row[2], $row[3],
@@ -5202,6 +5207,7 @@ function send_doctype ( $doc_title = '' ) {
   $lang = ( empty ( $LANGUAGE ) ? '' : languageToAbbrev ( $LANGUAGE ) );
   if ( empty ( $lang ) )
     $lang = 'en';
+
   $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 
   return '<?xml version="1.0" encoding="' . $charset . '"?' . '>
@@ -5498,7 +5504,7 @@ function update_status ( $status, $user, $id, $type = 'E' ) {
 function user_is_nonuser_admin ( $login, $nonuser ) {
   $rows = dbi_get_cached_rows ( 'SELECT cal_admin FROM webcal_nonuser_cals
     WHERE cal_login = ? AND cal_admin = ?', array ( $nonuser, $login ) );
-  return ( $rows && ! empty ( $rows[0] ) ? true : false );
+  return ( $rows && ! empty ( $rows[0] ) );
 }
 
 /* Determine if the specified user is a participant in the event.
@@ -5608,10 +5614,11 @@ function weekday_name ( $w, $format = 'l' ) {
   // We may pass $DISPLAY_LONG_DAYS as $format.
   if ( $format == 'N' )
     $format = 'D';
+
   if ( $format == 'Y' )
     $format = 'l';
 
-  if ( empty ( $weekday_names[0] ) )
+  if ( empty ( $weekday_names[0] ) || empty ( $week_names[0] ) ) {
     $weekday_names = array (
       translate ( 'Sunday' ),
       translate ( 'Monday' ),
@@ -5622,7 +5629,6 @@ function weekday_name ( $w, $format = 'l' ) {
       translate ( 'Saturday' )
       );
 
-  if ( empty ( $week_names[0] ) )
     $week_names = array (
       translate ( 'Sun' ),
       translate ( 'Mon' ),
@@ -5632,6 +5638,7 @@ function weekday_name ( $w, $format = 'l' ) {
       translate ( 'Fri' ),
       translate ( 'Sat' )
       );
+  }
 
   if ( $w >= 0 && $w < 7 )
     return ( $format == 'l' ? $weekday_names[$w] : $week_names[$w] );
