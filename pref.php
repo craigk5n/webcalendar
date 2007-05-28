@@ -75,12 +75,15 @@ $publicStr = translate ( 'Public' );
 $saveStr = '<input type="submit" value="' . translate ( 'Save Preferences' )
  . '" name="" />';
 $urlStr = translate ( 'URL' );
+
+// The commented ones moved here just to keep them together in the language files.
 $zerStr = translate ( '0' ) . $minutesStr;
 $oneStr = translate ( '1' );
 $twoStr = translate ( '2' );
 $triStr = translate ( '3' );
+// translate ('4')
 $fivStr = translate ( '5' ) . $minutesStr;
-
+// translate ('6') translate ('7') translate ('8') translate ('9')
 $tenStr = $oneStr . $zerStr;
 $fifteenStr = $oneStr . $fivStr;
 $twentyStr = $twoStr . $zerStr;

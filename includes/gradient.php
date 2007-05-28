@@ -150,6 +150,7 @@ function can_write_to_dir ($path)
 
 function background_css ( $base, $height = '', $percent = '' ) {
   global $ENABLE_GRADIENTS;
+
   $ret = $type = '';
 
   if ( function_exists ( 'imagepng' ) )
@@ -159,7 +160,7 @@ function background_css ( $base, $height = '', $percent = '' ) {
 
   $ret = 'background';
   if ( $type != '' && $ENABLE_GRADIENTS == 'Y' ) {
-    $ret .= ': ' . $base . ' url( ';
+    $ret .= ': ' . $base . ' url ( ';
     if ( ! file_exists ( 'images/cache' ) || ! can_write_to_dir ( 'images/cache/' ) )
       $ret .= '"includes/gradient.php?base=' . substr ( $base, 1 )
        . ( $height != '' ? '&height=' . $height : '' )
@@ -170,13 +171,14 @@ function background_css ( $base, $height = '', $percent = '' ) {
        . ( $percent != ''? '-' . $percent : '' ) . $type;
       if ( ! file_exists ( $file_name ) )
         $tmp = create_image ( $file_name, $base, $height, $percent );
+
       $ret .= $file_name;
     }
     $ret .= ' ) repeat-x';
   } else
     $ret .= '-color: ' . $base;
 
-  return $ret . ";\n";
+  return $ret . ';';
 }
 
 function create_image ( $file_name, $base = '', $height = '', $percent = '',
