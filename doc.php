@@ -65,10 +65,10 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
 
   if ( empty ( $error ) ) {
     // is this user a participant or the creator of the event?
-    $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
-      WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
-      AND (we.cal_create_by = ? OR weu.cal_login = ?)';
-    $res = dbi_execute ( $sql, array ( $id, $login, $login ) );
+    $res = dbi_execute ( 'SELECT we.cal_id FROM webcal_entry we,
+      webcal_entry_user weu WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
+      AND ( we.cal_create_by = ? OR weu.cal_login = ? )',
+      array ( $id, $login, $login ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( $row && $row[0] > 0 ) {
@@ -86,13 +86,11 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       // if not a participant in the event, must be allowed to look at
       // other user's calendar.
       if ( $login == '__public__' ) {
-        if ( $PUBLIC_ACCESS_OTHERS == 'Y' ) {
+        if ( $PUBLIC_ACCESS_OTHERS == 'Y' )
           $check_group = true;
-        }
       } else {
-        if ( $ALLOW_VIEW_OTHER == 'Y' ) {
+        if ( $ALLOW_VIEW_OTHER == 'Y' )
           $check_group = true;
-        }
       }
       // If $check_group is true now, it means this user can look at the
       // event only if they are in the same group as some of the people in
@@ -119,29 +117,24 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
           $sql .= '?';
           $query_params[] = $my_users[$i]['cal_login'];
         }
-        $sql .= ' )';
-        $res = dbi_execute ( $sql, $query_params );
+        $res = dbi_execute ( $sql . ' )', $query_params );
         if ( $res ) {
           $row = dbi_fetch_row ( $res );
-          if ( $row && $row[0] > 0 ) {
+          if ( $row && $row[0] > 0 )
             $can_view = true;
-          }
+
           dbi_free_result ( $res );
         }
       }
       // If we didn't indicate we need to check groups, then this user
       // can't view this event.
-      if ( ! $check_group && ! access_is_enabled ()  ) {
+      if ( ! $check_group && ! access_is_enabled ()  )
         $can_view = false;
-      }
     }
   }
-  if ( $login == '__public__' &&
-    ! empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC == 'Y' ) {
-    $hide_details = true;
-  } else {
-    $hide_details = false;
-  }
+  $hide_details = ( $login == '__public__' &&
+    ! empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC == 'Y' );
+
 
   // If they still cannot view, make sure they are not looking at a nonuser
   // calendar event where the nonuser is the _only_ participant.
@@ -152,55 +145,46 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
       $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
     }
-    $sql = 'SELECT cal_login FROM webcal_entry_user ' .
-      "WHERE cal_id = ? AND cal_status in ('A','W')";
-    $res = dbi_execute ( $sql, array ( $id ) );
-    $found_nonuser_cal = false;
-    $found_reg_user = false;
+    $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
+      WHERE cal_id = ? AND cal_status in ( \'A\', \'W\' )', array ( $id ) );
+    $found_nonuser_cal = $found_reg_user = false;
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
-        if ( ! empty ( $nonuser_lookup[$row[0]] ) ) {
+        if ( ! empty ( $nonuser_lookup[$row[0]] ) )
           $found_nonuser_cal = true;
-        } else {
+        else
           $found_reg_user = true;
-        }
       }
       dbi_free_result ( $res );
     }
     // Does this event contain only nonuser calendars as participants?
     // If so, then grant access.
-    if ( $found_nonuser_cal && ! $found_reg_user ) {
+    if ( $found_nonuser_cal && ! $found_reg_user )
       $can_view = true;
-    }
   }
-  if ( empty ( $error ) && ! $can_view ) {
+  if ( empty ( $error ) && ! $can_view )
     $error = print_not_auth ();
-  }
 }
 
 if ( ! empty ( $error ) ) {
   print_header ();
-  echo print_error ( $error, true);
-  echo print_trailer ();
+  echo print_error ( $error, true) . print_trailer ();
   exit;
 }
 
-if ( $type == 'A' )
-  $disp = 'attachment';
-else
-  $disp = 'inline';
+$disp = ( $type == 'A' ? 'attachment' : 'inline' );
 
 // Print out data now.
-Header ( "Content-Length: $size" );
-Header ( "Content-Type: $mimetype" );
+Header ( 'Content-Length: ' . $size );
+Header ( 'Content-Type: ' . $mimetype );
 
-$description = preg_replace ( "/\n\r\t+/", " ", $description );
-Header ( "Content-Description: $description" );
+$description = preg_replace ( "/\n\r\t+/", ' ', $description );
+Header ( 'Content-Description: ' . $description );
 
-// Don't allow spaces in filenames
+// Don't allow spaces in filenames.
 //$filename = preg_replace ( "/\n\r\t+/", "_", $filename );
 //Header ( "Content-Disposition: $disp; filename=$filename" );
-Header ( "Content-Disposition: filename=$filename" );
+Header ( 'Content-Disposition: filename=' . $filename );
 
 echo $filedata;
 exit;
