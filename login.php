@@ -1,7 +1,7 @@
 <?php
 /* $Id$ */
 @session_start ();
-foreach($_SESSION as $key=>$value) {
+foreach ( $_SESSION as $key=>$value ) {
   $dummy[$key]=$value;  // copy to a dummy array
 }
 if ( ! empty ( $dummy ) )
