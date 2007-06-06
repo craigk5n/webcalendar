@@ -68,8 +68,8 @@ if ( ! empty ( $delete ) ) {
     array ( $nid ) );
 
   // Delete any UAC calendar access entries for this  user.
-  dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ? ' .
-    'OR cal_other_user = ?', array ( $nid, $nid ) );
+  dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?
+    OR cal_other_user = ?', array ( $nid, $nid ) );
 
   // Delete any UAC function access entries for this  user.
   dbi_execute ( 'DELETE FROM webcal_access_function WHERE cal_login = ?',
@@ -98,21 +98,19 @@ if ( ! empty ( $delete ) ) {
       $query_params[] = $ispublic;
     }
 
-    $sql .= 'cal_admin = ? WHERE cal_login = ?';
     $query_params[] = $nadmin;
     $query_params[] = $nid;
 
-    if ( ! dbi_execute ( $sql, $query_params ) ) {
+    if ( ! dbi_execute ( $sql . 'cal_admin = ? WHERE cal_login = ?',
+      $query_params ) )
       $error = db_error ();
-    }
   } else {
     // Adding
     if (preg_match( "/^[\w]+$/", $nid )) {
       $nid = $NONUSER_PREFIX.$nid;
-      $sql = 'INSERT INTO webcal_nonuser_cals ' .
-      '( cal_login, cal_firstname, cal_lastname, cal_admin, cal_is_public ) ' .
-      'VALUES ( ?, ?, ?, ?, ? )';
-      if ( ! dbi_execute ( $sql,
+      if ( ! dbi_execute ( 'INSERT INTO webcal_nonuser_cals ( cal_login,
+        cal_firstname, cal_lastname, cal_admin, cal_is_public )
+        VALUES ( ?, ?, ?, ?, ? )',
         array ( $nid, $nfirstname, $nlastname, $nadmin, $ispublic ) ) ) {
         $error = db_error ();
       }
@@ -122,21 +120,19 @@ if ( ! empty ( $delete ) ) {
   }
   //Add entry in UAC access table for new admin and remove for of admin
   //first delete any record for this user/nuc combo
-  dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ? ' .
-    'AND cal_other_user = ?', array ( $nadmin, $nid ) );
-  $sql = 'INSERT INTO webcal_access_user ' .
-    '( cal_login, cal_other_user, cal_can_view, cal_can_edit, ' .
-    'cal_can_approve, cal_can_invite, cal_can_email, cal_see_time_only ) VALUES ' .
-    '( ?, ?, ?, ?, ?, ?, ?, ? )';
-  if ( ! dbi_execute ( $sql, array ( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) ) {
-    die_miserable_death ( translate ( 'Database error' ) . ': ' .
-      dbi_error () );
+  dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?
+    AND cal_other_user = ?', array ( $nadmin, $nid ) );
+  if ( ! dbi_execute ( 'INSERT INTO webcal_access_user ( cal_login,
+    cal_other_user, cal_can_view, cal_can_edit, cal_can_approve, cal_can_invite,
+    cal_can_email, cal_see_time_only ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )',
+    array ( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) ) {
+    die_miserable_death ( translate ( 'Database error' ) . ': ' . dbi_error () );
   }
   // Delete old admin...
   //TODO Make this an optional step
   if ( ! empty ( $old_admin ) )
-    dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ? ' .
-      'AND cal_other_user = ?', array ( $old_admin, $nid ) );
+    dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?
+      AND cal_other_user = ?', array ( $old_admin, $nid ) );
 }
 
 echo error_check('users.php', false);

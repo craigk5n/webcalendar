@@ -337,12 +337,12 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
   }
   if ( empty ( $display_sql ) ){
    //Convert passwords to md5 hashes if needed
-   $sql = 'SELECT cal_login, cal_passwd FROM webcal_user';
-   $res = dbi_execute ( $sql, array (), false, $show_all_errors );
+   $res = dbi_execute ( 'SELECT cal_login, cal_passwd FROM webcal_user',
+     array (), false, $show_all_errors );
    if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
      if ( strlen ( $row[1] ) < 30 ) {
-      dbi_execute ('UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?',
+      dbi_execute ( 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?',
         array ( md5( $row[1] ) , $row[0] ) );
      }
     }

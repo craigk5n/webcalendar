@@ -20,7 +20,7 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
   // If just 1, then save id to be deleted.
   $delete_em = array ();
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
-    $res = dbi_execute ( 'SELECT COUNT (*) FROM webcal_entry_user
+    $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
       WHERE cal_id = ?', array ( $events[$i] ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) && $row[0] == 1 )
@@ -66,7 +66,7 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
       $error = db_error ();
   } else {
     // Adding
-    if ( preg_match ( "/^[\w]+$/", $nid ) ) {
+    if ( preg_match ( '/^[\w]+$/', $nid ) ) {
       $nid = $NONUSER_PREFIX . $nid;
       if ( ! dbi_execute ( 'INSERT INTO webcal_nonuser_cals ( cal_login,
         cal_firstname, cal_lastname, cal_admin ) VALUES ( ?, ?, ?, ? )',

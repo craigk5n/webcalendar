@@ -502,7 +502,6 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
 
   $allAttendeesStr = translate ( 'All Attendees' );
   $busy = translate ( 'Busy' );
-  $CC = 1;
   $cnt = count ( $participants );
   $dateTS = date_to_epoch ( $date );
   $first_hour = $WORK_DAY_START_HOUR;
@@ -617,7 +616,7 @@ EOT;
     for( $j = 0; $j < $interval; $j++ ) {
       $inc_x_j = $increment * $j;
       $str .= '
-        <td  id="C' . $CC . '" class="dailymatrix" ';
+        <td id="C' . $j + 1 . '" class="dailymatrix" ';
       $tmpTitle = 'onmousedown="schedule_event ( ' . $i . ','
        . sprintf ( "%02d", $inc_x_j ) . ' );"' . $MouseOver . $MouseOut
        . str_replace ( 'XXX', sprintf ( $hourfmt, $hour ) . ':' .
@@ -636,7 +635,6 @@ EOT;
         default:
           $str .= $style_width . $tmpTitle . '&nbsp;&nbsp;</td>';
       }
-      $CC++;
     }
   }
   $ret .= $str . '
@@ -967,7 +965,7 @@ function display_admin_link ( $break = true ) {
 
 /* Generate HTML to create a month display.
  */
-function display_month ( $thismonth, $thisyear, $demo = '' ) {
+function display_month ( $thismonth, $thisyear, $demo = false ) {
   global $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_LONG_DAYS, $DISPLAY_WEEKNUMBER,
   $login, $today, $user, $WEEK_START, $WEEKENDBG;
 
@@ -998,14 +996,14 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
     $ret .= '
       <tr>';
     if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
+      $tmp = date ( 'W', $i + 86400 * 2 );
       $ret .= '
-        <td class="weekcell"><a class="weekcell" title="' . $weekStr . '&nbsp;'
-       . date ( 'W', $i + 86400 * 2 ) . '" href="'
+        <td class="weekcell"><a title="' . $weekStr . ' ' . $tmp . '" href="'
        . ( $demo ? '' : 'week.php?date=' . date ( 'Ymd', $i + 86400 ) )
        . ( ! empty ( $user ) && $user != $login ? '&amp;user=' . $user : '' )
        . ( empty ( $cat_id ) ? '' : '&amp;cat_id=' . $cat_id ) . '"' . '>';
 
-      $wkStr = $WKStr . date ( 'W', $i + 86400 * 2 );
+      $wkStr = $WKStr . $tmp;
       $wkStr2 = '';
 
       if ( $charset == 'UTF-8' )
@@ -1030,9 +1028,9 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
       $currMonth = ( $dateYmd >= $monthstart && $dateYmd <= $monthend );
       if ( $currMonth ||
         ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
-        $class = ( ! $demo && $dateYmd == $todayYmd ? 'today' : '' )
-         . ( $is_weekend ? ' weekend' : '' )
-         . ( $currMonth ? '' : ' othermonth' );
+        $class = ( $currMonth
+          ? ( ! $demo && $dateYmd == $todayYmd ? 'today' : ( $is_weekend ? 'weekend' : '' ) )
+          : 'othermonth' );
 
         // Get events for this day.
         $ret_events = '';
@@ -1043,22 +1041,23 @@ function display_month ( $thismonth, $thisyear, $demo = '' ) {
           // Since we base this calendar on the current month,
           // the placement of the days always change so
           // set 3rd Thursday as "today" for the demo...
-          if ( $dateD >= 16 && $dateD < 23 && $thiswday == 4 ) {
+          if ( $dateD > 15 && $dateD < 23 && $thiswday == 4 ) {
             $class = 'today';
             $ret_events = translate ( 'Today' );
           }
           // ... and set 2nd Saturday and 2nd Tuesday as the demo event days.
-          if ( $dateD >= 8 && $dateD <= 15 &&
+          if ( $dateD > 7 && $dateD < 16 &&
             ( $thiswday == 2 || $thiswday == 6 ) ) {
             $class .= ' entry hasevents';
             $ret_events = translate ( 'My event text' );
           }
         }
+        $class = trim ( $class );
         $class .= ( ! empty ( $ret_events ) &&
           strstr ( $ret_events, 'class="entry"' ) ? ' hasevents' : '' );
 
         $ret .= ( strlen ( $class ) ? ' class="' . $class . '"' : '' )
-         . ">$ret_events</td>";
+         . '>' . $ret_events . '</td>';
       } else
         $ret .= ( $is_weekend ? ' class="weekend"' : '' ) . '>&nbsp;</td>';
     }
@@ -1086,9 +1085,9 @@ function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
   $u_url = ( ! empty ( $user ) && $user != $login
     ? 'user=' . $user . '&amp;' : '' );
   $ret = '
-      <div class="topnav" '
+      <div class="topnav"'
   // Hack to prevent giant space between minicals and navigation in IE.
-  . ( get_web_browser () == 'MSIE' ? 'style="zoom:1"' : '' )
+  . ( get_web_browser () == 'MSIE' ? ' style="zoom:1"' : '' )
    . '>' . ( $show_arrows &&
     ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || $DISPLAY_TASKS == 'Y' ) ? '
         <a title="' . $nextStr . '" class="next" href="' . $name . '.php?'
@@ -4330,23 +4329,30 @@ function print_date_entries ( $date, $user, $ssi = false ) {
   $can_add = ( $readonly == 'N' || $is_admin );
   if ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD != 'Y' && $login == '__public__' )
     $can_add = false;
+
   if ( $readonly == 'Y' )
     $can_add = false;
+
   if ( $is_nonuser )
     $can_add = false;
 
   if ( ! $ssi ) {
+  /* translate ( 'First Quarter Moon') translate ( 'Full Moon' )
+     translate ( 'Last Quarter Moon') translate ( 'New Moon' )
+   */
     $userCatStr = ( strcmp ( $user, $login ) ? 'user=' . $user . '&amp;' : '' )
      . ( empty ( $cat_id ) ? '' : 'cat_id=' . $cat_id . '&amp;' );
-
+    $tmp = $moons[$date];
+    $moon_title = ( empty ( $tmp ) ? '' : translate ( ucfirst ( $tmp )
+     . ( strpos ( 'fullnew', $tmp ) !== false ? '' : ' Quarter' ) . ' Moon' ) );
     $ret = ( $can_add ? '
         <a title="' . $newEntryStr . '" href="edit_entry.php?' . $userCatStr
        . 'date=' . $date . '"><img src="images/new.gif" alt="' . $newEntryStr
        . '" class="new" /></a>' : '' ) . '
         <a class="dayofmonth" href="day.php?' . $userCatStr . 'date=' . $date
-     . '">' . substr ( $date, 6, 2 ) . '</a>' . ( empty ( $moons[$date] )
-      ? '' : '<img src="images/' . $moons[$date] . 'moon.gif" alt="" />' )
-     . "<br />\n";
+     . '">' . substr ( $date, 6, 2 ) . '</a>' . ( empty ( $tmp )
+      ? '' : '<img src="images/' . $tmp . 'moon.gif" title="' . $moon_title
+      . '" alt="' . $moon_title . '" />' ) . "<br />\n";
     $cnt++;
   }
   // Get, combime and sort the events for this date.

@@ -70,17 +70,14 @@ if ( $REQUEST_METHOD == 'POST' ) {
     exit;
   }
 
-  $query_params = array ();
-  $query_params[] = getPostValue ( 'template' );
-  $query_params[] = $type;
-  $query_params[] = $user;
+  $query_params = array ( getPostValue ( 'template' ), $type, $user );
 
   if ( $found )
     $sql = 'UPDATE webcal_user_template SET cal_template_text = ?
       WHERE cal_type = ? AND cal_login = ?';
   else {
     $sql = 'INSERT INTO webcal_user_template ( cal_template_text, cal_type,
-    cal_login ) VALUES ( ?, ?, ? )';
+      cal_login ) VALUES ( ?, ?, ? )';
 
     if ( $foundOld && $user == '__system__' )
       // User is upgrading from WebCalendar 1.0 to 1.1.

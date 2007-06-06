@@ -594,7 +594,6 @@ if ( empty ( $error ) ) {
       }
     }
     if ( strlen ( $sql ) && empty ( $error ) ) {
-      // echo "SQL: $sql<br />\n";
       if ( ! dbi_execute ( $sql, $query_params ) )
         $error = $dberror . dbi_error ();
     }
