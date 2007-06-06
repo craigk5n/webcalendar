@@ -50,8 +50,8 @@ if ( ! $error ) {
   $saveStr = '
       <input type="submit" value="' . translate ( 'Save' ) . '" name="" />';
 
-  for ( $i = 0, $cnt = count ( $themes[0] ); $i <= $cnt; $i++ ) {
-    $theme_list .= $option . $themes[1][$i] . '">' . $themes[0][$i] . '</option>';
+  for ( $i = 0, $cnt = count ( $themes ); $i < $cnt; $i++ ) {
+    $theme_list .= $option . $themes[$i] . '">' . $themes[$i] . '</option>';
   }
   foreach ( $menuthemes as $menutheme ) {
     $menu_theme_list .= $option . $menutheme . '"'
