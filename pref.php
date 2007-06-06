@@ -512,6 +512,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) {
         </div>
 <!-- END COLORS -->';
 } // if $ALLOW_COLOR_CUSTOMIZATION
+
 ob_end_flush ();
 
 echo '

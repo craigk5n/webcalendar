@@ -297,9 +297,9 @@ if ( ! $fit_to_window ) { ?>
       $class = 'class="weekend"';
     else
       $class = '';
-    echo "<th $class style=\"width:$tdwf;\" colspan=\"$num_users\">";
-    echo $header[$i];
-    echo "</th>\n";
+
+    echo '<th ' . $class . ' style="width:' . $tdwf . ';" colspan="'
+     . $num_users . '">' . $header[$i] . "</th>\n";
   }
 ?>
 </tr>
@@ -528,7 +528,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
         $class = '';
       // Use the class 'hasevents' for any hour block that has events
       // in it.
-      if ( !empty ( $hour_arr[$i] ) && strlen ( $hour_arr[$i] ) ) {
+      if ( ! empty ( $hour_arr[$i] ) && strlen ( $hour_arr[$i] ) ) {
         $class = 'class="hasevents"';
       }
 

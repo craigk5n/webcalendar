@@ -6,9 +6,8 @@ $mail = new WebCalMailer;
 
 $error = '';
 
-if ( $readonly == 'Y' ) {
+if ( $readonly == 'Y' )
   $error = print_not_auth ();
-}
 
 //give user a change to add comments to rejection email
 if ( ! empty ( $_POST ) ) {
@@ -52,9 +51,8 @@ if ( empty ( $error ) && $id > 0 ) {
 
   // Email participants to notify that it was rejected.
   // Get list of participants
-  $sql = "SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? and cal_status = 'A'";
-  //echo $sql."<br />";
-  $res = dbi_execute ( $sql, array ( $id ) );
+  $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
+    WHERE cal_id = ? and cal_status = \'A\'', array ( $id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) )
       $partlogin[] = $row[0];
@@ -62,9 +60,8 @@ if ( empty ( $error ) && $id > 0 ) {
   }
 
   // Get the name of the event
-  $sql = 'SELECT cal_name, cal_description, cal_date, cal_time ' .
-    'FROM webcal_entry WHERE cal_id = ?';
-  $res = dbi_execute ( $sql, array ( $id ) );
+  $res = dbi_execute ( 'SELECT cal_name, cal_description, cal_date, cal_time
+    FROM webcal_entry WHERE cal_id = ?', array ( $id ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     $name = $row[0];
