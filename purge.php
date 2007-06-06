@@ -204,8 +204,7 @@ function purge_events ( $ids ) {
       if ( $preview ) {
         $sql = 'SELECT COUNT(' . $tables[$i][1] .
           ") FROM {$tables[$i][0]}" . $clause;
-        //echo "cal_id = '$cal_id'<br />clause = '$clause'<br />";
-        //echo "$sql<br />\n";
+
         $res = dbi_execute ( $sql );
         $sqlLog .= $sql . "<br />\n";
         if ( $res ) {
@@ -217,11 +216,10 @@ function purge_events ( $ids ) {
         $sql = "DELETE FROM {$tables[$i][0]}" . $clause;
         $sqlLog .= $sql . "<br />\n";
         $res = dbi_execute ( $sql );
-        if ( $cal_id == 'ALL' ) {
+        if ( $cal_id == 'ALL' )
           $num[$i] = $allStr;
-        } else {
+        else
           $num[$i] += dbi_affected_rows ( $c, $res );
-        }
       }
     }
   }
@@ -235,22 +233,23 @@ function purge_events ( $ids ) {
 
 function get_ids ( $sql, $ALL = '' ) {
   global $sqlLog;
+
   $ids = array ();
-  //echo "SQL: $sql<br />\n";
   $sqlLog .= $sql . "<br />\n";
   $res = dbi_execute ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ($ALL == 1) {
+      if ($ALL == 1)
         $ids[] = $row[0];
-      } else {
+      else {
         //ONLY Delete event if no other participants.
         $ID = $row[0];
-        $res2 = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user
+        $res2 = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
           WHERE cal_id = ?', array ( $ID ) );
         if ( $res2 ) {
           if ( $row2 = dbi_fetch_row ( $res2 ) ) {
-            if ( $row2[0] == 1 ) $ids[] = $ID;
+            if ( $row2[0] == 1 )
+             $ids[] = $ID;
           }
           dbi_free_result ( $res2 );
         }

@@ -1,6 +1,5 @@
 <?php
-/*
- * This page produces search results.
+/* This page produces search results.
  *
  * "Advanced Search" adds the ability to search other users' calendars.
  * We do a number of security checks to make sure this is allowed.
@@ -192,10 +191,8 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
       }
     }
 
-    $sql .= ' ORDER BY we.cal_date ' . $order . ', we.cal_name';
-     //echo "SQL: $sql<br /><br />";
-     //print_r ( $sql_params );
-    $res = dbi_execute ( $sql, $sql_params );
+    $res = dbi_execute ( $sql . ' ORDER BY we.cal_date ' . $order
+     . ', we.cal_name', $sql_params );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $matches++;

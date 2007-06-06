@@ -1,6 +1,5 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Page Description:
  * This page displays the views that the user currently owns and
@@ -21,11 +20,10 @@ if ( ! $is_admin )
   $user = $login;
 
 $BodyX = 'onload="usermode_handler ();"';
-if ( $GROUPS_ENABLED == 'Y' ) {
-  $INC = array ('js/visible.php', 'js/views_edit.php/true' );
-} else {
-  $INC = array ( 'js/visible.php');
-}
+$INC = array ( 'js/visible.php');
+if ( $GROUPS_ENABLED == 'Y' )
+  $INC[] = 'js/views_edit.php/true';
+
 $disableCustom = true;
 
 print_header ( $INC, '', $BodyX, $disableCustom );
@@ -34,11 +32,10 @@ print_header ( $INC, '', $BodyX, $disableCustom );
 <form action="views_edit_handler.php" method="post" name="editviewform">
 <?php
 $newview = true;
-$viewname = '';
-$viewtype = '';
+$viewname = $viewtype = '';
 $viewisglobal = 'N';
-$checked = ' checked="checked" ';
-$selected = ' selected="selected" ';
+$checked = ' checked="checked"';
+$selected = ' selected="selected"';
 
 $unnameViewStr = translate ( 'Unnamed View' );
 
@@ -67,8 +64,8 @@ if ( empty ( $viewname ) ) {
 // get list of users for this view
 $all_users = false;
 if ( ! $newview ) {
-  $sql = 'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?';
-    $res = dbi_execute ( $sql, array ( $id ) );
+    $res = dbi_execute ( 'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?',
+     array ( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $viewuser[$row[0]] = 1;
@@ -76,14 +73,13 @@ if ( ! $newview ) {
           $all_users = true;
       }
       dbi_free_result ( $res );
-    } else {
+    } else
       $error = db_error ();
-    }
+
 }
 
 if ( ! empty ( $error ) ) {
-  echo print_error ( $error );
-  echo print_trailer ();
+  echo print_error ( $error ) . print_trailer ();
   exit;
 }
 
