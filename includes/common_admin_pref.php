@@ -35,18 +35,15 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 // .
-// Get list of theme files from /themes directory.
-$dir = 'themes';
+// Get list of theme files from "themes" directory.
+$dir = 'themes/';
 if ( is_dir ( $dir ) && $dh = opendir ( $dir ) ) {
   while ( ( $file = readdir ( $dh ) ) !== false ) {
-    if ( strpos ( $file, '_admin.php' ) ) {
-      $themes[0] = strtoupper ( str_replace ( '_admin.php', '', $file ) );
-      $themes[1] = strtoupper ( str_replace ( '.php', '', $file ) );
-    } else
-    if ( strpos ( $file, '_pref.php' ) ) {
-      $themes[0] = strtolower ( str_replace ( '_pref.php', '', $file ) );
-      $themes[1] = strtolower ( str_replace ( '.php', '', $file ) );
-    }
+    if ( strpos ( $file, '_admin.php' ) )
+      $themes[] = strtoupper ( str_replace ( '_admin.php', '', $file ) );
+    else
+    if ( strpos ( $file, '_pref.php' ) )
+      $themes[] = strtolower ( str_replace ( '_pref.php', '', $file ) );
   }
   sort ( $themes );
   closedir ( $dh );
@@ -63,6 +60,7 @@ if ( is_dir ( $dir ) && $dh = opendir ( $dir ) ) {
     if ( is_dir ( $dir . $file ) )
       $menuthemes[] = $file;
   }
+  sort ( $menuthemes );
   closedir ( $dh );
 }
 // .
@@ -271,6 +269,7 @@ $example_month = '
  */
 function save_pref ( $prefs, $src ) {
   global $error, $my_theme, $prad;
+
   if ( ! $prad )
     global $prefuser;
 
