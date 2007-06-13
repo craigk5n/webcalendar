@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.3+CVS (?? ??? 2006)
+ - Applied PATCH [ 1726402 ] Fix for send_reminder.php
  - Fix bug [ 1718609 ] Cannot login after upgrading/updating
  - Fix bug [ 1719102 ] Including header/trailer file also includes its file name
  - Changed iCalendar output (export, publish) for all-day and untimed events.

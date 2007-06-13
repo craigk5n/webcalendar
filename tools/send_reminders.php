@@ -163,7 +163,7 @@ $enddateTS = $startdateTS + ( $DAYS_IN_ADVANCE * 86400 );
 $startdate = gmdate ( 'Ymd', $startdateTS );
 $enddate = gmdate ( 'Ymd', $enddateTS );
 
-// Now read events all the repeating events (for all users).
+// Now read all the repeating events (for all users).
 $repeated_events = query_events ( '', true,
   'AND ( wer.cal_end >= ' . $startdate . ' OR wer.cal_end IS NULL ) ' );
 $repcnt = count ( $repeated_events );
@@ -220,8 +220,12 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   }
   $is_task = false;
   // Get repeating events...tasks are not included at this time.
-  $rep = get_repeating_entries ( '', $date );
+  if ( $debug )
+	  echo "getting repeating events for $date<br />";
+  $rep = my_get_repeating_entries ( '', $date );
   $repcnt = count ( $rep );
+  if ( $debug )
+	  echo "found $repcnt repeating events for $date<br />";
   for ( $i = 0; $i < $repcnt; $i++ ) {
     $id = $rep[$i]->getID ();
     if ( ! empty ( $completed_ids[$id] ) )
@@ -566,9 +570,17 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
   Effective delivery time is: ' . date ( 'm/d/Y H:i T', $remind_time ) . '<br />
   Last sent on: '
        . ( $lastsent == 0 ? 'NEVER' : date ( 'm/d/Y H:i T', $lastsent ) )
-       . '<br /><br />' . "\n";
     // No sense sending reminders if the event is over!
     // Unless the entry is a task.
+       . '<br /><br />
+  times_sent = ' . $times_sent . '
+  repeats = ' . $repeats . '
+  time = ' . time () . '
+  remind_time = ' . $remind_time . '
+  lastsent = ' . $lastsent . '
+  pointless = ' . $pointless . '
+  is_task = ' .  ( $is_task ? 'true' : 'false' ) . '<br />';
+
     if ( $times_sent < ( $repeats + 1 ) &&
         time () >= $remind_time && $lastsent <= $remind_time &&
         ( time () <= $pointless || $is_task ) ) {
@@ -583,5 +595,29 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
     }
   }
 } //end function process_event
+
+function my_get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
+  global $repeated_events;
+
+  $n = 0;
+  $ret = array ();
+  if ( $debug )
+     echo "Getting repeating entries for $dateYmd<br />";
+
+  for ( $i = 0, $cnt = count ( $repeated_events ); $i < $cnt; $i++ ) {
+    $list = $repeated_events[$i]->getRepeatAllDates ();
+    for ( $j = 0, $cnt_j = count ( $list ); $j < $cnt_j; $j++ ) {
+	    if ( $debug )
+	       echo "     checking $list[$j] = " . date ( 'Ymd', $list[$j]) . '<br />';
+
+	    if ( $dateYmd == date ( 'Ymd', $list[$j] ) ) {
+	      $ret[$n++] = $repeated_events[$i];
+	      if ( $debug )
+	         echo 'Added!<br />';
+	    }
+    }
+  }
+  return $ret;
+}
 
 ?>
