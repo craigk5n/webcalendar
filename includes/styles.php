@@ -138,7 +138,7 @@ if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
 echo '  body {
     margin:2px;
     background:' . $GLOBALS['BGCOLOR'] . ( empty ( $GLOBALS['BGIMAGE'] )
-  ? '' : ' url( \'' . $GLOBALS['BGIMAGE'] . '\' ) ' . $GLOBALS['BGREPEAT'] ) . ';
+  ? '' : ' url( ' . $GLOBALS['BGIMAGE'] . ' ) ' . $GLOBALS['BGREPEAT'] ) . ';
     color:' . $GLOBALS['TEXTCOLOR'] . ';
     font-family:' . $GLOBALS['FONTS'] . ';
   }
