@@ -160,11 +160,11 @@ function background_css ( $base, $height = '', $percent = '' ) {
 
   $ret = 'background';
   if ( $type != '' && $ENABLE_GRADIENTS == 'Y' ) {
-    $ret .= ': ' . $base . ' url ( ';
+    $ret .= ': ' . $base . ' url( ';
     if ( ! file_exists ( 'images/cache' ) || ! can_write_to_dir ( 'images/cache/' ) )
-      $ret .= '"includes/gradient.php?base=' . substr ( $base, 1 )
+      $ret .= 'includes/gradient.php?base=' . substr ( $base, 1 )
        . ( $height != '' ? '&height=' . $height : '' )
-       . ( $percent != '' ? '&percent=' . $percent : '' ) . '"';
+       . ( $percent != '' ? '&percent=' . $percent : '' );
     else {
       $file_name = 'images/cache/' . substr ( $base, 1, 6 )
        . ( $height != '' ? '-' . $height : '' )
