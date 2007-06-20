@@ -212,9 +212,6 @@ echo '  body {
   .main th.weekend {
     ' . background_css ( $GLOBALS['THBG'], 15 ) . '
   }
-  .main th.today {
-    ' . background_css ( $GLOBALS['TODAYCELLBG'], 15 ) . '
-  }
   .main td {
     width:14%;
     border-top:1px solid ' . $GLOBALS['TABLEBG'] . ';
@@ -312,11 +309,11 @@ echo '  body {
   #tabscontent_uac,
   #useriframe,
   #viewiframe' . ( $DISPLAY_WEEKENDS == 'N' ? ',
-# viewt .main tr.weekend,
-.main td . weekend,
-.main th . weekend,
-.minical td . weekend,
-.minical th . weekend' : '' ) . ' {
+  #viewt .main tr.weekend,
+  .main td.weekend,
+  .main th.weekend,
+  .minical td.weekend,
+  .minical th.weekend' : '' ) . ' {
     display:none;
   }
   #tabscontent_colors p span,
@@ -380,14 +377,15 @@ echo '  body {
   }
   #menu {
     clear:both;
-    font-size:14px;
   }
-  #menu a {
+  #menu,
+  #menu a,
+  .prefix,
+  .printer {
     font-size:14px;
   }
   .prefix {
     font-weight:bold;
-    font-size:14px;
   }
   a#programname {
     margin-top:10px;
@@ -397,7 +395,6 @@ echo '  body {
     clear:both;
     width:15ex;
     color:' . $GLOBALS['TEXTCOLOR'] . ';
-    font-size:14px;
     text-decoration:none;
     display:block;
   }
@@ -407,7 +404,7 @@ echo '  body {
   .unapprovedentry {
     padding-right:3px;
     color:#800000;
-  /* Remove comments to set unapproved italics.
+  /* Remove comments to set unapproved in italics.
     font-style:italic;
   */
     font-size:12px;
@@ -1235,7 +1232,7 @@ echo '  body {
    font-weight:bold;
   }
   #about {
-    background-image:url ( "images/kn5.jpg" );
+    background-image:url( images/kn5.jpg );
     background-repeat:no-repeat;
   }
   #about p {
