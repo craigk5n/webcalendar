@@ -92,7 +92,7 @@ None: 无
 date-format-help: 描述合适的日期格式
 Date format: 日期格式
 Week starts on: 每周开始于
-time-format-help: Specifies which time format to use: <br><I>12 hour:</i> Display times as 3am, 8:30pm, etc. <br><I>24 hour:</i> Display times as 300, 2030, etc.
+
 Time format: 时间格式
 12 hour: 12时制
 24 hour: 24时制

@@ -105,7 +105,7 @@ date-format-help: Especifica o formato preferido da data.
 Date format: Formato da data
 display-week-starts-on: Especifica se a semana começa ao Domingo ou à Segunda-Feira.
 Week starts on: Semana começa em
-time-format-help: Especifica o formato da hora a utilizar: <I>12 horas:</i> Mostra no formato 3am, 8:30pm, etc. <I>24 horas:</i> Mostra no formato 300, 2030, etc.
+time-format-help: Especifica o formato da hora a utilizar: <i>12 horas:</i> Mostra no formato 3am, 8:30pm, etc. <i>24 horas:</i> Mostra no formato 300, 2030, etc.
 Time format: Formato da hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -130,7 +130,7 @@ Display days with events in bold in month and year views: Mostrar dias com event
 Include add event link in views: Incluir link para adicionar eventos nas vistas
 allow-view-other-help: Especifica se um utilizador pode ou não ver o calendário de outro utilizador.
 Allow viewing other users calendars: Permitir ver calendário de outro utilizador
-require-approvals-help: Quando activo, um utilizador deverá aprovar um evento antes de ser mostrado no seu calendário (excepto se <I>Mostra não-aprovados</i> estiver activo).
+require-approvals-help: Quando activo, um utilizador deverá aprovar um evento antes de ser mostrado no seu calendário (excepto se <i>Mostra não-aprovados</i> estiver activo).
 Require event approvals: Requer aprovação de eventos
 display-unapproved-help: Especifica se os eventos não aprovados são mostrados no calendário
 Display unapproved: Mostrar não-aprovados
@@ -303,7 +303,7 @@ hours: horas
 minutes: minutos
 participants-help: Lista os participantes neste evento.
 External Participants: Participantes Externos
-repeat-type-help: Selecciona a periodicidade do evento. <I>Mensal (por dia)</i> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <I>Mensal (por data)</i> faz com que um evento se repita todos os meses no mesmo dia.
+repeat-type-help: Selecciona a periodicidade do evento. <i>Mensal (por dia)</i> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <i>Mensal (por data)</i> faz com que um evento se repita todos os meses no mesmo dia.
 Daily: Diário
 Weekly: Semanal
 Monthly: Mensal
@@ -312,7 +312,7 @@ by date: por data
 Yearly: Anual
 repeat-end-date-help: Especifica a data até à qual o evento se repete.
 Use end date: Utilizar data de fim de repetição
-repeat-frequency-help: Especifica quantas vezes o evento se deve repetir. O valor padrão (1) indica que o evento acontece todos os dias. Especificar 2 faz com que o evento se repita noutra semana (se <I>Tipo de repetição</i> tem o valor de <I>Semanal</i>), todos os meses (se <I>Tipo de repetição</i> tem o valor de <I>Mensal</i>), etc.
+repeat-frequency-help: Especifica quantas vezes o evento se deve repetir. O valor padrão (1) indica que o evento acontece todos os dias. Especificar 2 faz com que o evento se repita noutra semana (se <i>Tipo de repetição</i> tem o valor de <i>Semanal</i>), todos os meses (se <i>Tipo de repetição</i> tem o valor de <i>Mensal</i>), etc.
 Frequency: Frequência
 All: Todos
 Send Reminder: Enviar Lembrete
@@ -502,7 +502,7 @@ Adding/Editing Calendar Entries: Adicionar/Editar Entradas
 Repeat Type: Tipo de repetição
 Repeat End Date: Data para fim de repetição
 Repeat Day: Dia a repetir
-repeat-day-help: Especifica em que dias da semana o evento se repete. Isto é apenas utilizado quando o <I>Tipo de repetição</i> tem o valor de <I>Semanal</i>.
+repeat-day-help: Especifica em que dias da semana o evento se repete. Isto é apenas utilizado quando o <i>Tipo de repetição</i> tem o valor de <i>Semanal</i>.
 
 ########################################
 # Page: help_import.php
