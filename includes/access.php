@@ -362,7 +362,7 @@ function access_can_access_function ( $function, $user = '' ) {
   assert ( 'isset ( $function )' );
 
   $access = access_load_user_functions ( $user );
-  // echo $function . ' ' . $access . '<br>';
+  // echo $function . ' ' . $access . '<br />';
   $yesno = substr ( $access, $function, 1 );
 
   if ( empty ( $yesno ) )
@@ -438,7 +438,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
   assert ( '$page_id >= 0' );
 
   $yesno = substr ( $access, $page_id, 1 );
-  // echo $page . '  ' . $page_id . ' ' . $access . '<br>';
+  // echo $page . '  ' . $page_id . ' ' . $access . '<br />';
   // No setting found. Use default values.
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $page_id, $user );
