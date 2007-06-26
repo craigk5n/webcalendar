@@ -616,7 +616,7 @@ EOT;
     for( $j = 0; $j < $interval; $j++ ) {
       $inc_x_j = $increment * $j;
       $str .= '
-        <td id="C' . $j + 1 . '" class="dailymatrix" ';
+        <td id="C' . ( $j + 1 ) . '" class="dailymatrix" ';
       $tmpTitle = 'onmousedown="schedule_event ( ' . $i . ','
        . sprintf ( "%02d", $inc_x_j ) . ' );"' . $MouseOver . $MouseOut
        . str_replace ( 'XXX', sprintf ( $hourfmt, $hour ) . ':' .
