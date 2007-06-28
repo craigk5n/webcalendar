@@ -128,7 +128,7 @@ echo '
     <form action="' . substr ( $self, strrpos ( $self, '/' ) + 1 )
  . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : '?' . $_SERVER['QUERY_STRING'] )
  . '" method="post" onsubmit="return valid_form ( this );" name="prefform">
-      <input type="hidden" name="currenttab" id="currenttab" value="'
+      <p><input type="hidden" name="currenttab" id="currenttab" value="'
  . $currenttab . '" />' . ( $user ? '
       <input type="hidden" name="user" value="' . $user . '" />' : '' )
  . display_admin_link () . $saveStr . ( $updating_public ? '
@@ -147,7 +147,7 @@ if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
      . $nulist[$i]['cal_fullname'] . '</option>';
   }
   echo '
-      </select>';
+      </select></p>';
 } else {
   $linktext = translate ( 'Return to My Preferences' );
   echo '
