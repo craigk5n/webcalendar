@@ -1400,7 +1400,7 @@ May: Mai
 Jun: =
 Jul: =
 Aug: =
-Sep: Aug
+Sep: =
 Oct: Okt
 Nov: =
 unknown-month: unbekannter Monat
@@ -1511,7 +1511,7 @@ Slovak: Slowakisch
 Slovenian: Slowenisch
 Spanish: Spanisch
 Swedish: Schwedisch
-Turkish: Turkisch
+Turkish: T&uuml;rkisch
 Welsh: Wallisisch
 event: Termin
 journal: Journal
