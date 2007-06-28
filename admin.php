@@ -17,7 +17,8 @@ if ( ! empty ( $_POST ) && empty ( $error ) ) {
   save_pref ( $_POST, 'post' );
 
   if ( ! empty ( $my_theme ) ) {
-    include_once 'themes/' . strtolower ( $my_theme ) . '.php';
+    $tmp = strtolower ( $my_theme );
+    include_once 'themes/' . $tmp . ( $tmp == 'basic' ? '_admin' : '_pref' ) . '.php';
     save_pref ( $webcal_theme, 'theme' );
   }
 }

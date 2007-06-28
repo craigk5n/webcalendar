@@ -208,11 +208,14 @@ function email_handler () {
 //]]> -->
 
 function showPreview () {
-  var theme = document.forms['prefform'].admin_THEME.value;
+  var
+    theme = document.forms['prefform'].admin_THEME.value,
+    tmp = theme.toLowerCase ();
+
   if ( theme == 'none' )
     return false;
 
-  url = 'themes/' + theme.toLowerCase () + '.php';
+  url = 'themes/' + tmp + ( tmp == 'basic' ? '_admin' : '_pref' ) + '.php';
   var previewWindow = window.open ( url,"Preview","resizable=yes,scrollbars=yes" );
 }
 
