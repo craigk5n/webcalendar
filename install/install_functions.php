@@ -64,7 +64,7 @@ function do_v11b_updates () {
     while ( $row = dbi_fetch_row ( $res ) ) {
       dbi_execute ( 'INSERT INTO webcal_entry_categories ( cal_id, cat_id,'
          . ( empty ( $row[2] ) ? 'cat_order' : 'cat_owner' )
-         . ', ) VALUES ( ?, ?, ? )', array ( $row[0], $row[1],
+         . ' ) VALUES ( ?, ?, ? )', array ( $row[0], $row[1],
           ( empty ( $row[2] ) ? 99 : $row[2] ) ) );
     }
     dbi_free_result ( $res );
