@@ -1697,8 +1697,8 @@ function event_get_external_users ( $event_id, $use_mailto = 0 ) {
       $ret .= trim ( preg_replace ( '/\[[\d]]/', '', $row[0] ) );
       if ( strlen ( $row[1] ) ) {
         $row_one = htmlentities ( " <$row[1]>" );
-        $ret .= "\n" . ( $use_mailto
-          ? ' <a href="mailto:' . "$row[1]\">$row_one</a>" : $row_one );
+        $ret .= ( $use_mailto
+          ? ' <a href="mailto:' . "$row[1]\">$row_one</a>" : $row_one ) . "\n";
       }
     }
   }
