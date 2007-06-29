@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 11. Juni 2007
+# Last update: 28. Juni 2007
 #
 # $Id$
-# Translation last updated on 06-13-2007
+# Translation last updated on 06-28-2007
 
 
 ################################################################################
