@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 05-25-2007
+# Translation last updated on 07-01-2007
 
 
 ################################################################################
@@ -799,6 +799,11 @@ Modified since: Modified since
 export format not defined or incorrect: export format not defined or incorrect
 
 ########################################
+# Page: freebusy.php
+#
+No user specified.: No user specified.
+
+########################################
 # Page: groups.php
 #
 Add New Group: Add New Group
@@ -1044,7 +1049,12 @@ Save Preferences: Save Preferences
 1: 1
 2: 2
 3: 3
+4: 4
 5: 5
+6: 6
+7: 7
+8: 8
+9: 9
 Public Access calendar: Public Access calendar
 Modify Non User Calendar Preferences: Modify Non User Calendar Preferences
 Return to My Preferences: Return to My Preferences
@@ -1426,6 +1436,10 @@ Sep: Sep
 Oct: Oct
 Nov: Nov
 unknown-month: unknown-month
+First Quarter Moon: First Quarter Moon
+Full Moon: Full Moon
+Last Quarter Moon: Last Quarter Moon
+New Moon: New Moon
 Error TIME_SLOTS undefined!: Error: TIME_SLOTS undefined!
 The following error occurred: The following error occurred
 You are not authorized.: You are not authorized.
@@ -1531,11 +1545,6 @@ Spanish: Spanish
 Swedish: Swedish
 Turkish: Turkish
 Welsh: Welsh
-4: 4
-6: 6
-7: 7
-8: 8
-9: 9
 event: event
 journal: journal
 
