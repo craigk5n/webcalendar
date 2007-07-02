@@ -905,15 +905,15 @@ Notification: Påminnelse
 authenticate: SMTP Feil: Kunne ikke authentisere.
 connect_host: SMTP Feil: Kunne ikke koble til SMTP host.
 data_not_accepted: SMTP Feil: Data ble ikke akseptert.
-encoding: Ukjent encoding: 
-execute: Kunne ikke utføre: 
-file_access: Kunne ikke få tilgang til filen: 
-file_open: Fil feil: Kunne ikke åpne filen: 
-from_failed: Følgende Fra feilet: 
+encoding: Ukjent encoding:
+execute: Kunne ikke utføre:
+file_access: Kunne ikke få tilgang til filen:
+file_open: Fil feil: Kunne ikke åpne filen:
+from_failed: Følgende Fra feilet:
 instantiate: Kunne ikke instantiate mail funksjonen.
 mailer_not_supported: mailer er ikke supportert.
 provide_address: Du må ha med minst enmottager adresse.
-recipients_failed: SMTP Feil: Følgende mottagere feilet: 
+recipients_failed: SMTP Feil: Følgende mottagere feilet:
 
 ########################################
 # Page: includes/js/admin.php

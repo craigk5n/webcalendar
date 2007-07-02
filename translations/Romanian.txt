@@ -878,15 +878,15 @@ Notification: Notificare
 authenticate: Eroare SMTP: Nu a functionat autentificarea.
 connect_host: Eroare SMTP: Nu m-am putut conecta la adresa SMTP.
 data_not_accepted: Eroare SMTP: Continutul mailului nu a fost acceptat.
-encoding: Encodare necunoscuta: 
-execute: Nu pot executa:  
-file_access: Nu pot accesa fisierul: 
-file_open: Eroare de fisier: Nu pot deschide fisierul: 
-from_failed: Urmatoarele adrese From au dat eroare: 
+encoding: Encodare necunoscuta:
+execute: Nu pot executa:
+file_access: Nu pot accesa fisierul:
+file_open: Eroare de fisier: Nu pot deschide fisierul:
+from_failed: Urmatoarele adrese From au dat eroare:
 instantiate: Nu am putut instantia functia mail.
 mailer_not_supported: mailer nu este suportat.
 provide_address: Trebuie sa adaugati cel putin un recipient (adresa de mail).
-recipients_failed: Eroare SMTP: Urmatoarele adrese de mail au dat eroare: 
+recipients_failed: Eroare SMTP: Urmatoarele adrese de mail au dat eroare:
 
 ########################################
 # Page: includes/js/admin.php
