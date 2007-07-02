@@ -377,15 +377,15 @@ Notification: Not
 authenticate: SMTP Hatasý: Doðrulanamýyor.
 connect_host: SMTP Hatasý: SMTP hosta baðlanýlamýyor.
 data_not_accepted: SMTP Hatasý: Veri kabul edilmedi.
-encoding: Bilinmeyen þifreleme: 
-execute: Çalýþtýrýlamýyor: 
-file_access: Dosyaya eriþilemiyor: 
-file_open: Dosya Hatasý: Dosya açýlamýyor: 
-from_failed: Baþarýsýz olan gönderici adresi: 
+encoding: Bilinmeyen þifreleme:
+execute: Çalýþtýrýlamýyor:
+file_access: Dosyaya eriþilemiyor:
+file_open: Dosya Hatasý: Dosya açýlamýyor:
+from_failed: Baþarýsýz olan gönderici adresi:
 instantiate: Örnek mail fonksiyonu yaratýlamadý.
 mailer_not_supported: mailler desteklenmemektedir.
 provide_address: En az bir tane mail adresi belirtmek zorundasýnýz alýcýnýn email adresi.
-recipients_failed: SMTP Hatasý: alýcýlara ulaþmadý: 
+recipients_failed: SMTP Hatasý: alýcýlara ulaþmadý:
 
 ########################################
 # Page: includes/js/admin.php

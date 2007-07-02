@@ -265,7 +265,7 @@ Public access new events require approval: Goedkeuring vereisen voor afspraken i
 public-access-sees-participants-help: Als deze optie aan staat kunnen gebruikers die de kalender bekijken vanaf de Open Agenda zien wie er deelnemen aan een afspraak wanneer ze de details van een afspraak bekijken.
 Public access can view participants: Open Agenda kan deelnemers bekijken
 public-access-override-help: Maak verbergen van namen en beschrijvingen mogelijk in de publieke agenda
-Override event name/description for public access: Domineer afspraak naam/omschrijving voor Open Agenda 
+Override event name/description for public access: Domineer afspraak naam/omschrijving voor Open Agenda
 public-access-override-text-help: De tekst bij bovenstaande optie staat aan. Indien 'niet beschikbaar', zal hij vertaald worden.
 Text to display to public access: Tekst om te tonen bij Open Agenda
 uac-enabled-help: Sta UAC toe (user-level access control, toegang en bevoegdheden per gebruiker regelen)

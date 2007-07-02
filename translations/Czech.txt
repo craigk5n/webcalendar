@@ -862,11 +862,11 @@ Notification: Oznámení
 authenticate: SMTP Error: Chyba autentikace.
 connect_host: SMTP Error: Nelze navázat spojení se  SMTP serverem.
 data_not_accepted: SMTP Error: Data nebyla pøijata
-encoding: Neznámé kódování: 
-execute: Nelze provést: 
-file_access: Soubor nenalezen: 
-file_open: File Error: Nelze otevøít soubor pro ètení: 
-from_failed: Následující adresa From je nesprávná: 
+encoding: Neznámé kódování:
+execute: Nelze provést:
+file_access: Soubor nenalezen:
+file_open: File Error: Nelze otevøít soubor pro ètení:
+from_failed: Následující adresa From je nesprávná:
 instantiate: Nelze vytvoøit instanci emailové funkce.
 mailer_not_supported: mailový klient není podporován.
 provide_address: Musíte zadat alespoò jednu emailovou adresu pøíjemce.

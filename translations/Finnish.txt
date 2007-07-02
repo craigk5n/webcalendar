@@ -829,18 +829,18 @@ Event Imported: Tapahtuma tuotu
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Muistutus
-authenticate: SMTP-virhe: k&auml;ytt&auml;j&auml;tunnistus ep&auml;onnistui. 
-connect_host: SMTP-virhe: yhteys palvelimeen ei onnistu. 
-data_not_accepted: SMTP-virhe: data on virheellinen. 
-encoding: Tuntematon koodaustyyppi:  
-execute: Suoritus ep&auml;onnistui:  
-file_access: Seuraavaan tiedostoon ei ole oikeuksia:  
-file_open: Tiedostovirhe: Ei voida avata tiedostoa:  
-from_failed: Seuraava l&auml;hett&auml;j&auml;n osoite on virheellinen:  
-instantiate: mail-funktion luonti ep&auml;onnistui. 
-mailer_not_supported: postiv&auml;litintyyppi&auml; ei tueta. 
-provide_address: Aseta v&auml;hint&auml;&auml;n yksi vastaanottajan s&auml;hk&ouml;postiosoite. 
-recipients_failed: SMTP-virhe: seuraava vastaanottaja osoite on virheellinen. 
+authenticate: SMTP-virhe: k&auml;ytt&auml;j&auml;tunnistus ep&auml;onnistui.
+connect_host: SMTP-virhe: yhteys palvelimeen ei onnistu.
+data_not_accepted: SMTP-virhe: data on virheellinen.
+encoding: Tuntematon koodaustyyppi:
+execute: Suoritus ep&auml;onnistui:
+file_access: Seuraavaan tiedostoon ei ole oikeuksia:
+file_open: Tiedostovirhe: Ei voida avata tiedostoa:
+from_failed: Seuraava l&auml;hett&auml;j&auml;n osoite on virheellinen:
+instantiate: mail-funktion luonti ep&auml;onnistui.
+mailer_not_supported: postiv&auml;litintyyppi&auml; ei tueta.
+provide_address: Aseta v&auml;hint&auml;&auml;n yksi vastaanottajan s&auml;hk&ouml;postiosoite.
+recipients_failed: SMTP-virhe: seuraava vastaanottaja osoite on virheellinen.
 
 ########################################
 # Page: includes/js/admin.php
