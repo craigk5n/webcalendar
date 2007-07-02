@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 28. Juni 2007
+# Last update: 2. Juli 2007
 #
 # $Id$
-# Translation last updated on 06-28-2007
+# Translation last updated on 07-02-2007
 
 
 ################################################################################
@@ -770,6 +770,11 @@ Modified since: &Auml;nderungen ab
 # Page: export_handler.php
 #
 export format not defined or incorrect: Exportiertes Format nicht definiert oder ung&uuml;ltig
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Kein Benutzer ausgew&auml;hlt.
 
 ########################################
 # Page: groups.php
