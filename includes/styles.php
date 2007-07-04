@@ -893,7 +893,7 @@ echo '  body {
     height:40px;
     border-top:1px solid ' . $GLOBALS['TABLEBG'] . ';
     border-left:1px solid ' . $GLOBALS['TABLEBG'] . ';
-    vertical-align:top;
+    vertical-align:middle;
   }
   .glance td {
     border-top:1px solid ' . $GLOBALS['TABLEBG'] . ';
@@ -901,6 +901,10 @@ echo '  body {
     padding-left:3px;
     ' . background_css ( $GLOBALS['CELLBG'], 50 ) . '
     vertical-align:top;
+  }
+  #day .glance td {
+    width:86%;
+    height:40px;
   }
   #day dl.desc {
     margin:0;
