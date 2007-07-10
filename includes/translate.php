@@ -376,6 +376,7 @@ function define_languages () {
     translate ( 'French' ) => 'French',
     translate ( 'Galician' ) => 'Galician',
     translate ( 'German' ) => 'German',
+    translate ( 'German' ) . ' (UTF-8)' => 'German_utf8',
     translate ( 'Greek' ) => 'Greek',
     translate ( 'Hebrew' ) . ' (UTF-8)' => 'Hebrew_utf8',
     translate ( 'Holo (Taiwanese)' ) => 'Holo-Big5',
