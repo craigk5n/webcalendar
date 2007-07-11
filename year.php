@@ -20,7 +20,7 @@ if ( $year != date ( 'Y' ) )
 // Set up global $today value for highlighting current date.
 set_today ( $date );
 
-$nextYear = $year++;
+$nextYear = $year + 1;
 $prevYear = $year - ( $year > '1903' ? 1 : 0 );
 
 $startdate = mktime ( 0, 0, 0, 1, 1, $year );
