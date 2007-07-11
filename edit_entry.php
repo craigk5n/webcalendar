@@ -102,20 +102,23 @@ $checked = ' checked="checked"';
 $selected = ' selected="selected"';
 
 // Public access can only add events, not edit.
-if ( $login == '__public__' && $id > 0 ) {
+if ( empty ( $login ) || ( $login == '__public__' && $id > 0 ) )
   $id = 0;
-}
 
 $eType = getGetValue ( 'eType');
-if ( empty ( $eType ) ) $eType =  'event';
+if ( empty ( $eType ) )
+  $eType =  'event';
+
 $date = getValue ( 'date', '-?[0-9]+' );
 $day = getValue ( 'day', '-?[0-9]+' );
 $month = getValue ( 'month', '-?[0-9]+' );
 $year = getValue ( 'year', '-?[0-9]+' );
 if ( empty ( $date ) && empty ( $month ) ) {
-  if ( empty ( $year ) ) $year = date ( 'Y' );
-  if ( empty ( $month ) ) $month = date ( 'm' );
-  if ( empty ( $day ) ) $day = date ( 'd' );
+  if ( empty ( $year ) )
+   $year = date ( 'Y' );
+  $month = date ( 'm' );
+  if ( empty ( $day ) )
+   $day = date ( 'd' );
   $date = sprintf ( "%04d%02d%02d", $year, $month, $day );
 }
 
