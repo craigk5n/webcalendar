@@ -90,7 +90,7 @@ border="1" cellspacing="0" cellpadding="0">
                 <td valign="middle" align="center" class="boxtop boxright
                   boxbottom">
 <!--  Display New Color  -->
-        <table  id="theoldcell" bgcolor="#ffffff" border="1" cellspacing="0" cellpadding="0">
+        <table id="theoldcell" bgcolor="#ffffff" border="1" cellspacing="0" cellpadding="0">
                     <tr>
             <td><img src="images/blank.gif" width="55" height="53" border="0" alt="" /></td>
                     </tr>

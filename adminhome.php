@@ -174,7 +174,7 @@ if ( $i % COLUMNS != 0 ) {
   }
 }
 echo '
-      </tr >
+      </tr>
     </table>
     ' . print_trailer ();
 
