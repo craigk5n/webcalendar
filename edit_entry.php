@@ -34,7 +34,7 @@ function time_selection ( $prefix, $time='', $trigger=false ) {
     $hour = $WORK_DAY_START_HOUR;
     $minute = 0;
   } else {
-    $hour = floor($time / 10000);
+    $hour = floor ( $time / 10000 );
     $minute = ( ( $time / 100 ) % 100 ) % 60;
   }
   if ( $TIME_FORMAT == '12' ) {
@@ -51,14 +51,14 @@ function time_selection ( $prefix, $time='', $trigger=false ) {
     $hour = sprintf ( "%02d", $hour );
   }
   $minute = sprintf ( "%02d", $minute );
-  $ret .= '<select ' . $hournameid . $trigger_str . " >\n";
+  $ret .= '<select ' . $hournameid . $trigger_str . ">\n";
   for ( $i = 0; $i < $maxhour; $i++ ) {
     $ihour = ( $TIME_FORMAT == '24' ? sprintf ( "%02d", $i ) : $i );
     if ( $i == 0 && $TIME_FORMAT == '12' ) $ihour = 12;
     $ret .= "<option value=\"$i\"" .
       ( $ihour == $hour ? $selected : '' ) . ">$ihour</option>\n";
   }
-  $ret .= "</select>:\n<select " . $minnameid . $trigger_str . " >\n";
+  $ret .= "</select>:\n<select " . $minnameid . $trigger_str . ">\n";
   //we use $TIME_SLOTS to populate the minutes pulldown
   $found = false;
   for ( $i = 0; $i <= 59; ) {
@@ -68,7 +68,7 @@ function time_selection ( $prefix, $time='', $trigger=false ) {
       $found = true;
       $isselected = $selected;
     }
-    $ret .= "<option value=\"$i\"$isselected >$imin</option>\n";
+    $ret .= "<option value=\"$i\"$isselected>$imin</option>\n";
     $i += (1440 / $ENTRY_SLOTS);
   }
   //we'll add an option with the exact time if not found above
@@ -185,13 +185,13 @@ if ( $readonly == 'Y' || $is_nonuser ) {
       $cal_date = date ( 'Ymd', $calTS );
       $cal_time = date (  'His', $calTS );
     }
-    $hour = floor($cal_time / 10000);
+    $hour = floor ( $cal_time / 10000 );
     $minute = ( $cal_time / 100 ) % 100;
 
     $dueTS = date_to_epoch ( $due_date . $due_time );
     $due_date = date ( 'Ymd', $dueTS );
     $due_time = date (  'His', $dueTS );
-    $due_hour = floor($due_time / 10000);
+    $due_hour = floor ( $due_time / 10000 );
     $due_minute = ( $due_time / 100 ) % 100;
 
     $priority = $row[6];
@@ -652,7 +652,7 @@ if ( $eType == 'task' ) { //only for tasks
    <?php
      for ( $i=0; $i<=100; $i+=10 ){
        echo "<option value=\"$i\" " .
-         ($task_percent == $i? $selected:''). ' >' .
+         ( $task_percent == $i ? $selected : '' ) . '>' .
           $i . "</option>\n";
      }
     echo "</select></td></tr>\n";
@@ -1072,7 +1072,7 @@ if ( $useTabs ) { ?>
       ? $selected : '' ) . '>' . translate ( 'MO' ) ?></option>
     <option value="SU" <?php echo ( strcmp ( $wkst, 'SU' ) == 0
       ? $selected : '' ) . '>' . translate ( 'SU' ) ?></option>
- </select>&nbsp;&nbsp;<label for="rptwkst" ><?php etranslate ( 'Week Start' )?></label></span>
+ </select>&nbsp;&nbsp;<label for="rptwkst"><?php etranslate ( 'Week Start' )?></label></span>
  </td>
  </tr>
 <tr><td colspan="4"></td></tr>
@@ -1093,7 +1093,7 @@ if ( $useTabs ) { ?>
   //a javascript array until form submission. We then set the hidden field
   // bydayList to the string value of the array.
   for ( $rpt_byday_label =0;$rpt_byday_label <=6; $rpt_byday_label++){
-    echo '<th width="50px"><label >' . translate ($weekday_names[$rpt_byday_label]) . "</label></th>\n";
+    echo '<th width="50px"><label>' . translate ( $weekday_names[$rpt_byday_label] ) . "</label></th>\n";
   }
   echo "</tr><tr>\n<th>" . translate ( 'All' ) . '</th>';
   for ( $rpt_byday_single =0;$rpt_byday_single <=6; $rpt_byday_single++){
@@ -1130,12 +1130,13 @@ if ( $useTabs ) { ?>
  <?php
    //display bymonth selection
    echo '<table cellpadding="5" cellspacing="0"><tr>';
-  for ( $rpt_month =1;$rpt_month <=12; $rpt_month++){
+  for ( $rpt_month = 1; $rpt_month < 13; $rpt_month++ ) {
      echo "<td><label><input type=\"checkbox\" name=\"bymonth[]\" value=\"$rpt_month\""
-      . (in_array ($rpt_month,$bymonth)? $checked:'') . ' />&nbsp;' .
+      . ( in_array ( $rpt_month,$bymonth ) ? $checked : '' ) . ' />&nbsp;' .
    translate ( date ( 'M', mktime ( 0,0,0, $rpt_month,1 ) ) ) .
      "</label>\n</td>";
-    if ( $rpt_month == 6 ) echo  '</tr><tr>';
+    if ( $rpt_month == 6 )
+     echo  '</tr><tr>';
   }
    echo '</tr></table>';
 ?></td></tr>
@@ -1147,9 +1148,9 @@ if ( $useTabs ) { ?>
    <td colspan="2" class="boxall">
  <?php
    //display bysetpos selection
-   echo '<table  class="byxxx" cellpadding="2" cellspacing="0" border="1" ><tr><td></td>';
+   echo '<table class="byxxx" cellpadding="2" cellspacing="0" border="1"><tr><td></td>';
   for ( $rpt_bysetpos_label =1;$rpt_bysetpos_label <=10; $rpt_bysetpos_label++){
-    echo "<th width=\"37px\"><label >$rpt_bysetpos_label</label></th>\n";
+    echo "<th width=\"37px\"><label>$rpt_bysetpos_label</label></th>\n";
   }
   echo "</tr><tr>\n";
   for ( $loop_ctr=1; $loop_ctr <32; $loop_ctr++) {
@@ -1177,9 +1178,9 @@ if ( $useTabs ) { ?>
   </td><td colspan="2" class="boxall">
  <?php
    //display bymonthday extended selection
-   echo '<table class="byxxx" cellpadding="2" cellspacing="0" border="1" ><tr><td></td>';
+   echo '<table class="byxxx" cellpadding="2" cellspacing="0" border="1"><tr><td></td>';
   for ( $rpt_bymonthday_label =1;$rpt_bymonthday_label <=10; $rpt_bymonthday_label++){
-    echo "<th width=\"37px\"><label >$rpt_bymonthday_label</label></th>\n";
+    echo "<th width=\"37px\"><label>$rpt_bymonthday_label</label></th>\n";
   }
   echo "</tr><tr>\n";
   for ( $loop_ctr=1; $loop_ctr <32; $loop_ctr++) {
@@ -1233,17 +1234,17 @@ if ( $useTabs ) { ?>
  <?php echo translate ( 'Exclusions' ) . '/<br />' . translate ( 'Inclusions' )?>:</label></td>
  <td colspan="2" class="boxleft boxtop boxright boxbottom">
  <table border="0" width="250px">
- <tr ><td colspan="2">
+ <tr><td colspan="2">
  <?php echo date_selection ( 'except_', $rpt_end_date ? $rpt_end_date : $cal_date )?>
  </td></tr><tr><td align="right" valign="top" width="100">
  <label id="select_exceptions_not" style="visibility:<?php echo ( empty ( $excepts )? 'visible' : 'hidden' ) ?>;"></label>
- <select id="select_exceptions"  name="exceptions[]"  multiple="multiple" style="visibility:<?php echo ( ! empty ( $excepts )? 'visible' : 'hidden' ) ?>;" size="4" >
+ <select id="select_exceptions" name="exceptions[]" multiple="multiple" style="visibility:<?php echo ( empty ( $excepts ) ? 'hidden' : 'visible'  ) ?>;" size="4">
  <?php echo $excepts ?></select></td><td valign="top">
-  <input  align="left" type="button" name="addException"  value="<?php
+  <input align="left" type="button" name="addException" value="<?php
   etranslate ( 'Add Exception' ) ?>" onclick="add_exception(0)" /><br />
-   <input  align="left" type="button" name="addInclusion"  value="<?php
+  <input align="left" type="button" name="addInclusion" value="<?php
   etranslate ( 'Add Inclusion' ) ?>" onclick="add_exception(1)" /><br />
- <input  align="left" type="button" name="delSelected"  value="<?php
+  <input align="left" type="button" name="delSelected" value="<?php
   etranslate ( 'Delete Selected' ) ?>" onclick="del_selected ()" />
 </td></tr></table>
 

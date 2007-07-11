@@ -23,7 +23,7 @@ if ( ! empty ( $credits ) ) {
 
 print_header ( '', '', '', true, false, true );
 echo '
-    <div align="left" style="margin-left:4px; position:absolute; bottom:0" >';
+    <div align="left" style="margin-left:4px; position:absolute; bottom:0">';
 if ( empty ( $credits ) )
   echo '
       <a title="' . $PROGRAM_NAME . '" href="' . $PROGRAM_URL . '" target="_blank">
