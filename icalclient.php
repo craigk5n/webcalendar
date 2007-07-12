@@ -3,7 +3,7 @@
  * $Id$
  *
  * WARNING * WARNING * WARNING * WARNING * WARNING * WARNING
- * This script is still considered alpha level.  Please backup
+ * This script is still considered alpha level. Please backup
  * your database before using it.
  * WARNING * WARNING * WARNING * WARNING * WARNING * WARNING
  *
@@ -18,17 +18,17 @@
  * it is found to be stable.
  *
  * Note that unlike the export to iCal, this page does not include
- * attendee info.  This improves the performance considerably, BTW.
+ * attendee info. This improves the performance considerably, BTW.
  *
  * ERROR !!!!!
  * There seems to be a bug in certain versions of PHP where the fgets ()
- * returns a blank string when reading stdin.  I found this to be
- * a problem with PHP 4.1.2 on Linux.  If this is true for your PHP,
+ * returns a blank string when reading stdin. I found this to be
+ * a problem with PHP 4.1.2 on Linux. If this is true for your PHP,
  * you will not be able to import the events back from the ical client.
  * It did work correctly with PHP 5.0.2.
  *
  * The script sends an error message back to the iCal client, but
- * Mozilla Calendar does not seem to display the message.  (Strange,
+ * Mozilla Calendar does not seem to display the message. (Strange,
  * since it did display a PHP compile error message...)
  *
  * Usage Requirements:
@@ -53,7 +53,7 @@
  * 06-Jan-2005 Ray Jones
  *   Added logic to publish calendars to remote iCal clients
  *   The clients I've tested use METHOD:PUT to upload
- *   their data to the server.  This file does not use
+ *   their data to the server. This file does not use
  *   WEBDAV, but the client doesn't know or seem to care
  *
  * Notes:
@@ -67,7 +67,7 @@
  * TODO:
  * Security!  If an event update comes back from an iCal client,
  * we need to make sure that the remote user has the authority to
- * modify the event.  (If they are only a participant and not the
+ * modify the event. (If they are only a participant and not the
  * creator of the event or an admin, then they should not be able
  * to update an event.)
  *
@@ -83,11 +83,11 @@
  *
  * Testing needs to be done with various RRULE options on import.
  *
- * Better support for event reminders.  Reminders for past events
- * are not sent currently.  This is because Mozilla Calendar may
+ * Better support for event reminders. Reminders for past events
+ * are not sent currently. This is because Mozilla Calendar may
  * popup all reminders (even ones that are years old) when the
- * calendar is loaded.  Ideally, we should check the webcal_reminders
- * table to see if an event reminder was already sent.  Also, not
+ * calendar is loaded. Ideally, we should check the webcal_reminders
+ * table to see if an event reminder was already sent. Also, not
  * sure if reminders for repeated events are handled properly yet.
  *
  */
@@ -116,7 +116,6 @@ $appStr = generate_application_name ();
 
 // If WebCalendar is using http auth, then $login will be set in
 // validate.php.
-
 
 //if running as CGI, the following should set the
 // PHP_AUTH_xxxx variables if the following instructions are
@@ -157,13 +156,12 @@ if ( empty ( $login ) ) {
 load_global_settings ();
 load_user_preferences ();
 
-
 $WebCalendar->setLanguage ();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
   // Mozilla Calendar does not bother showing errors, so they won't
-  // see this error message anyhow....  Not sure about Apple iCal or
+  // see this error message anyhow.... Not sure about Apple iCal or
   // other clients.
   etranslate ( 'Publishing Disabled (Admin)' );
   exit;
@@ -175,14 +173,10 @@ if ( empty ( $USER_PUBLISH_RW_ENABLED ) || $USER_PUBLISH_RW_ENABLED != 'Y' ) {
   exit;
 }
 
-
 $prodid = 'Unnamed iCal client';
-
-
 
 // Load user name, etc.
 user_load_variables ( $login, 'publish_' );
-
 
 function dump_globals ()
 {
@@ -200,7 +194,6 @@ function dump_globals ()
   }
 }
 
-
 if ( $_SERVER['REQUEST_METHOD'] == 'PUT' ) {
   //do_debug ( "Importing updated remote calendar" );
  $calUser = $login;
@@ -211,7 +204,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'PUT' ) {
 } else {
   //do_debug ( "Exporting updated remote calendar" );
   header ( 'Content-Type: text/calendar' );
-  header ( 'Content-Disposition: attachment; filename="' . $login .  '.ics"' );
+  header ( 'Content-Disposition: attachment; filename="' . $login . '.ics"' );
  $use_all_dates = true;
   export_ical ();
 }

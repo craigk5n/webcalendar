@@ -90,7 +90,7 @@ if ( $single_user != 'Y' ) {
     // a custom view.
     if ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_ANOTHER_CALENDAR ) ) {
-      // Get count of users this user can see. if > 1, then...
+      // Get count of users this user can see. If > 1, then...
       $ulist = array_merge (
         get_my_users ( $login, 'view' ), get_my_nonusers ( $login, true ) );
 
@@ -179,7 +179,7 @@ if ( ! $use_http_auth && $single_user != 'Y' ) {
 if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' )
   $admincals = get_nonuser_cals ( $login );
 // Make sure they have access to either month/week/day view. If they do not,
-// then we cannot create a URL that shows just the boss' events.  So, we would
+// then we cannot create a URL that shows just the boss' events. So, we would
 // not include any of the "manage calendar of" links.
 $have_boss_url = true;
 if ( ! access_can_access_function ( ACCESS_MONTH, $user ) && !
@@ -210,7 +210,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     if ( ! empty ( $user ) && $user == $l )
       continue;
     /*
-Use the preferred view if it is day/month/week/year.php.  Try not to use a
+Use the preferred view if it is day/month/week/year.php. Try not to use a
 user-created view because it might not display the proper user's events.
 (Fallback to month.php if this is true.)  Of course, if this user cannot
 view any of the standard D/M/W/Y pages, that will force us to use the view.

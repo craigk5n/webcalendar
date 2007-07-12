@@ -132,7 +132,6 @@ function colorToRGB ( $color ) {
   return array ( 'red' => $red, 'green' => $green, 'blue' => $blue );
 }
 
-
 function can_write_to_dir ($path)
 {
   if ($path{strlen($path)-1}=='/') //Start function again with tmp file...

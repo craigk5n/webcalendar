@@ -309,7 +309,7 @@ echo '
       </div>
     </div><br /><br />';
 
-// The table has names across the top and dates for rows.  Since we need to
+// The table has names across the top and dates for rows. Since we need to
 // spit out an entire row before we can move to the next date, we'll save up all
 // the HTML for each cell and then print it out when we're done..
 // Additionally, we only want to put at most 6 users in one table since

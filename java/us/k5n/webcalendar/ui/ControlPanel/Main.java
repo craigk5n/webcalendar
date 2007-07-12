@@ -41,12 +41,12 @@ import us.k5n.webcalendar.WebCalendarClientListener;
  * WebCalendar Control Panel main class. This application is typically launched
  * from a web page within WebCalendar using Java Web Start. However, it can also
  * be started from the command line using the proper arguments.
- * 
+ *
  * This application makes use of the WebCalendar Web Service tools located in
  * the "ws" directory of the WebCalendar distribution. These tools implement a
  * REST-style Web Service. Normal HTTP GET requests are issued to the services
  * and XML is returned.
- * 
+ *
  * @author Craig Knudsen, craig@k5n.us
  * @version $Id$
  */
@@ -69,7 +69,7 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
 
   /**
    * Show a reminder on the screen.
-   * 
+   *
    * @param reminder
    *          The reminder to display
    */
@@ -79,7 +79,7 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
 
   /**
    * Show a message on the screen.
-   * 
+   *
    * @param message
    *          The message to display
    */
@@ -89,7 +89,7 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
 
   /**
    * Show an error on the screen.
-   * 
+   *
    * @param message
    *          The error message to display
    */
@@ -344,7 +344,7 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
 
   /**
    * Show an error on the screen.
-   * 
+   *
    * @param message
    *          The error message to display
    */
@@ -358,7 +358,7 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
   /**
    * The outgoingRequest method will be called before an outgoing request to a
    * WebCalendar server is sent.
-   * 
+   *
    * @param text
    *          The outgoing request (a URL)
    */
@@ -370,7 +370,7 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
   /**
    * The incomingResult method will be called after an incoming request from a
    * WebCalendar server is received.
-   * 
+   *
    * @param text
    *          The incoming response text (XML)
    */
@@ -381,7 +381,7 @@ public class Main implements MessageDisplayer, EventDisplayer, UserListener,
 
   /**
    * Prompt the user for a text response.
-   * 
+   *
    * @param message
    *          The prompt to provide the user
    * @return The text the user provided

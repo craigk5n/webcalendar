@@ -68,7 +68,7 @@
 
     <p style="margin-bottom: 0"><span class="note">Important News:</span>A major
     improvement beginning with Version 1.1 is the addition of an automated
-    installation script.  This script will guide you through the installation
+    installation script. This script will guide you through the installation
     process and help identify any problem areas that might prevent successful
     installation or operation of WebCalendar.</p>
 
@@ -79,27 +79,27 @@
 
       <li style="margin-left: 30px">If this is a new installation, the
       installation script will create your database and setup the required
-      tables for you.  It can then create a default Administrator account and
+      tables for you. It can then create a default Administrator account and
       add the basic configuration data to get you up and running.</li>
     </ul>
 
     <p>This installation script was tested primarily using MySQL and Apache on a
     dedicated server. If using an ISP or a CPANEL installer, your mileage may
-    vary.  If problems arise, you can always follow the instruction below as in
-    previous versions and setup your database manually.  As with any upgrade,
+    vary. If problems arise, you can always follow the instruction below as in
+    previous versions and setup your database manually. As with any upgrade,
     it's always a good idea to <span style="color: #F00">backup your data prior
     to installation</span>.</p>
 
     <p>Another major upgrade to WebCalendar for v1.1 is the implementation of
-    full timezone support.  In previous versions, all date/time data was stored
+    full timezone support. In previous versions, all date/time data was stored
     based on server time and users set their 'time offset' relative to server
-    time.  Now, all date/time data will be stored in the database as
+    time. Now, all date/time data will be stored in the database as
     Greenwich Mean Time (GMT) and users will be able to select a timezone based
     on their geographical location.</p>
 
     <p>Having true timezone information available within WebCalendar enables the
     system to correct for Daylight Savings Time (DST) even if users are in
-    different timezones.  The database houses timezone information from 1970 to
+    different timezones. The database houses timezone information from 1970 to
     2038 and can calculate the appropriate GMT offset required to allow users to
     see events in their true 'local time'.</p>
 
@@ -121,9 +121,9 @@
 
     <p><span class="note">Note:</span> Due to large number of database types
     that WebCalendar can support, it would be impractical to list all the SQL
-    variations here.  All SQL listed is taken from the
+    variations here. All SQL listed is taken from the
     <a href="install/sql/upgrade-mysql.sql" target="_blank">upgrade-mysq.sql</a>
-    file used during the automatic installation process.  If you are using a
+    file used during the automatic installation process. If you are using a
     database other then MySQL, you may want refer to the appropriate
     upgrade-xxxxx.sql file in the install/sql folder.</p>
 
@@ -154,7 +154,7 @@
     <hr />
     <h2><a id="dot9">To upgrade from v0.9</a></h2>
 
-    <p>You need to create the table cal_user_pref in tables.sql.  You need to
+    <p>You need to create the table cal_user_pref in tables.sql. You need to
     create the table cal_entry_user in tables.sql that was mistakenly created as
     "cal_event_user" in the 0.9 release.</p>
 
@@ -163,7 +163,7 @@
 
     <h2><a id="dot906">To upgrade from v0.9.01</a></h2>
 
-    <p>Entirely new tables are used.  Use the following commands to convert your
+    <p>Entirely new tables are used. Use the following commands to convert your
     existing MySQL tables to the new tables:</p>
 
     <pre>
@@ -181,7 +181,7 @@ mysql intranet &lt; commands.sql
     <h2><a id="dot911">To upgrade from v0.9.07 - v0.9.11</a></h2>
 
     <p>To fix a bug in the handing of events at midnight, all the entries with
-    NULL for cal_time are changed to -1.  Use the following SQL command:</p>
+    NULL for cal_time are changed to -1. Use the following SQL command:</p>
 
     <pre>UPDATE webcal_entry SET cal_time = -1 WHERE cal_time is null;</pre>
 
@@ -190,7 +190,7 @@ mysql intranet &lt; commands.sql
 
     <h2><a id="dot913">To upgrade from v0.9.12 or v0.9.13</a></h2>
 
-    <p>A new table was added to support repeating events.  Use the following SQL
+    <p>A new table was added to support repeating events. Use the following SQL
     command:</p>
 
     <pre>
@@ -209,7 +209,7 @@ CREATE TABLE webcal_entry_repeats (
 
     <h2><a id="dot921">To upgrade from v0.9.14 - v0.9.21</a></h2>
 
-    <p>A new table was added to support layering.  For MySQL, the SQL is:</p>
+    <p>A new table was added to support layering. For MySQL, the SQL is:</p>
 
     <pre>
 CREATE TABLE webcal_user_layers (
@@ -250,13 +250,13 @@ CREATE TABLE webcal_reminder_log (
     </pre>
 
     <p>You will also need to setup the tools/send_reminders.php script to be run
-    periodically.  I would recommend once an hour.  For Linux/UNIX, this is
-    simple.  Just use cron and add a line to your crontab file that looks like:</p>
+    periodically. I would recommend once an hour. For Linux/UNIX, this is
+    simple. Just use cron and add a line to your crontab file that looks like:</p>
 
     <pre>1 * * * * cd /some/directory/webcalendar/tools; ./send_reminders.php</pre>
 
     <p>This will tell cron to run the script at one minute after the hour.
-    Windows users will have to find another way to run the script.  There are
+    Windows users will have to find another way to run the script. There are
     ports/look-a-likes of cron for Windows, so look around.</p>
 
     <a href="UPGRADING.html#dot934">next...</a>
@@ -265,7 +265,7 @@ CREATE TABLE webcal_reminder_log (
     <h2><a id="dot934">To upgrade from v0.9.27 - v0.9.34</a></h2>
 
     <p>Six new tables were added for group support, views, system settings and
-    activity logs.  For MySQL the SQL is:</p>
+    activity logs. For MySQL the SQL is:</p>
 
     <pre>
 CREATE TABLE webcal_group (
@@ -332,7 +332,7 @@ CREATE TABLE webcal_entry_repeats_not (
     <h2><a id="dot937">To upgrade from v0.9.37</a></h2>
 
     <p>The webcal_entry_user table was modified, and a new table
-    webcal_categories was created.  Use the following SQL for MySQL:</p>
+    webcal_categories was created. Use the following SQL for MySQL:</p>
 
     <pre>
 ALTER TABLE webcal_entry_user ADD cal_category INT DEFAULT NULL;
@@ -349,7 +349,7 @@ CREATE TABLE webcal_categories (
 
     <h2><a id="dot938">To upgrade from v0.9.38</a></h2>
 
-    <p>The names of the date settings in the database were modified.  All old
+    <p>The names of the date settings in the database were modified. All old
     data settings need to be removed from the database.</p>
 
     <pre>
@@ -363,7 +363,7 @@ DELETE FROM webcal_user_pref WHERE cal_setting LIKE 'DATE_FORMAT%';
     <h2><a id="dot939">To upgrade from v0.9.39</a></h2>
 
     <p>Two new tables were created: webcal_asst and webcal_entry_ext_user.
-    And the column cal_ext_for_id was added to the webcal_entry table.  Use the
+    And the column cal_ext_for_id was added to the webcal_entry table. Use the
     following SQL for MySQL:</p>
 
     <pre>
@@ -386,7 +386,7 @@ ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
 
     <h2><a id="dot940">To upgrade from v0.9.40</a></h2>
 
-    <p>One new table was added: webcal_nonuser_cals.  Use the following SQL for
+    <p>One new table was added: webcal_nonuser_cals. Use the following SQL for
     MySQL:</p>
 
     <pre>
@@ -405,7 +405,7 @@ CREATE TABLE webcal_nonuser_cals (
     <h2><a id="dot941">To upgrade from v0.9.41</a></h2>
 
     <p>Three new tables were added: webcal_report, webcal_report_template, and
-    webcal_import_data.  Use the following SQL for MySQL:</p>
+    webcal_import_data. Use the following SQL for MySQL:</p>
 
     <pre>
 CREATE TABLE webcal_report (
@@ -445,7 +445,7 @@ CREATE TABLE webcal_import_data (
     <h2><a id="dot942">To upgrade from v0.9.42</a></h2>
 
     <p>User passwords are now stored using md5 and require the webcal_user table
-    to be altered to accommodate larger password data.  Use the following SQL
+    to be altered to accommodate larger password data. Use the following SQL
     for MySQL:</p>
 
     <pre>
@@ -470,7 +470,7 @@ CREATE TABLE webcal_import_data (
     </pre>
 
     <p>Next, you will need to run the script found in the <tt>tools</tt>
-    subdirectory.  This will convert all your passwords from plain text to md5.
+    subdirectory. This will convert all your passwords from plain text to md5.
     You can run this from the command line (if you have a standalone version of
     PHP compiled):</p>
 
@@ -495,7 +495,7 @@ php convert_passwords.php
 
     <h2><a id="from_1_0RC2">To upgrade from v0.9.43 - v1.0RC2</a></h2>
 
-    <p>The <tt>webcal_view</tt> table was modified.  Execute the following SQL
+    <p>The <tt>webcal_view</tt> table was modified. Execute the following SQL
     to update your database:</p>
 
     <pre>
@@ -519,7 +519,7 @@ UPDATE webcal_view SET cal_is_global = 'N';
 
     <p>Two new tables need to be created to support advanced user access control.
     One new table is needed to store custom user header/footer template
-    information.  Execute the following SQL to update your database:</p>
+    information. Execute the following SQL to update your database:</p>
 
     <pre>
 CREATE TABLE webcal_access_user (
@@ -549,10 +549,10 @@ CREATE TABLE webcal_user_template (
 
     <h2><a id="from_1.1.0a-CVS">To upgrade from v1.1.0-CVS or v1.1.0a-CVS</a></h2>
 
-    <p>A new table is needed to support multiple categories.  In addition,
+    <p>A new table is needed to support multiple categories. In addition,
     several new columns have been added to webcal_entry and one column added to
     webcal_entry_user to support VTODO tasks, and to webcal_repeats to support
-    the much improved ical support.  A new column was added to
+    the much improved ical support. A new column was added to
     webcal_entry_repeats_not to differentiate between exclusion and inclusions.
     Use the following SQL to update your MySQL database:</p>
 

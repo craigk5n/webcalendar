@@ -12,7 +12,7 @@
 // Define your stuff here...
 // Any option in webcal_user_pref can be configured here.
 // This theme will reset the System Settings to the default values from the
-// installation script.  This will not affect colors or options that users have
+// installation script. This will not affect colors or options that users have
 // already saved under preferences.
 $webcal_theme = array (
   'ADD_LINK_IN_VIEWS'                => 'N',

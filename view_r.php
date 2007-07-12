@@ -6,7 +6,7 @@
  * This view will show either a week's worth of events (type='R')
  * or a single day of events (type='E')
  * using a format with days across the top of the table and time
- * showing down the left side.  (This is just like the standard
+ * showing down the left side. (This is just like the standard
  * layout of day.php and week.php.)
  * However, each cell will be subdivided into
  * however many users are part of this view.
@@ -25,7 +25,7 @@
  * user preferences.
  *
  * The week version of this page has the potential to contain
- * a large table.  The layout will be skewed to try and fit this
+ * a large table. The layout will be skewed to try and fit this
  * into a page.
  * If you want to allow the table to grow larger than the viewable
  * area in the browser, set the $fit_to_window_week to be false below.
@@ -95,7 +95,6 @@ set_today ( $date );
 $INC = array ( 'js/popups.php/true' );
 print_header ( $INC );
 
-
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 
 if ( $is_day_view )
@@ -115,7 +114,6 @@ $prevyear = date ( 'Y', $prev );
 $prevmonth = date ( 'm', $prev );
 $prevday = date ( 'd', $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
-
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
@@ -161,8 +159,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $last_date = date_to_str ( date ( 'Ymd', $days[$i] ), '', false );
 }
 
-
-// The table has dates across the top and times for rows.  Since we need
+// The table has dates across the top and times for rows. Since we need
 // to spit out an entire row before we can move to the next time slot, we'll
 // save up all the HTML for each cell and then print it out when we're
 // done.
@@ -170,7 +167,6 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 $viewusers = view_get_user_list ( $id );
 $viewusercnt = count ( $viewusers );
 //echo "<pre>"; print_r ( $viewusers ); echo "</pre>\n";
-
 
 // Make sure we have at least one user in our view.
 // If this is a global view, we may have removed all the users if
@@ -246,7 +242,6 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
 
 ?>
 
-
 <div style="width:99%;">
 <a title="<?php etranslate ( 'Previous' )?>" class="prev" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
 
@@ -321,13 +316,13 @@ if ( ! $fit_to_window ) { ?>
 $all_day = array ();
 
 //<long-winded-explanation>
-// We loop through the events once checking for the start time.  If we
+// We loop through the events once checking for the start time. If we
 // find a start time before the normal work hours, we will reset $first_slot
-// to this new time.  We do this in a separate loop because all-day events
+// to this new time. We do this in a separate loop because all-day events
 // will assume a start time slot of the beginning of normal work hours.
 // So, if there is an all-day event on Monday, it might use the first_slot
 // that represents 8am only to find an event on Thu has a time of 7am which
-// would change the first_slot value.  There is then a gap above the all-day
+// would change the first_slot value. There is then a gap above the all-day
 // event.
 //</long-winded-explanation>
 $am_part = array (); // am I a participant array
@@ -512,7 +507,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
   echo "<tr>\n<th valign=\"top\" class=\"row\" width=\"$time_w" .
     '">' . $time . "</th>\n";
-  //echo "<tr>\n<th valign=\"top\">" .  $time . "</th>\n";
+  //echo "<tr>\n<th valign=\"top\">" . $time . "</th>\n";
 
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $dateYmd = date ( 'Ymd', $days[$d] );
@@ -586,8 +581,6 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   }
   echo "</tr>\n";
 }
-
-
 
 ?>
 

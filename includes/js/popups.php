@@ -37,7 +37,7 @@ if ( typeof document.getElementsBySelector == 'undefined' ) {
   /* document.getElementsBySelector ( selector )
      - returns an array of element objects from the current document
        matching the CSS selector. Selectors can contain element names,
-       class names and ids and can be nested.  For example:
+       class names and ids and can be nested. For example:
 
          elements = document.getElementsBySelect('div#main p a.external')
 
@@ -214,7 +214,6 @@ if ( typeof document.getElementsBySelector == 'undefined' ) {
      Tag
   */
 }
-
 
 function rebrowse () {
   window.location.reload ();

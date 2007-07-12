@@ -96,7 +96,7 @@ if ( empty ( $error ) && $id > 0 ) {
       }
       $msg = translate ( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
       translate ( 'An appointment has been rejected by' ) .
-      ' ' . $login_fullname .  ".\n\n" .
+      ' ' . $login_fullname . ".\n\n" .
       translate ( 'The subject was' ) . ' "' . $name . " \"\n" .
       translate ( 'The description is' ) . ' "' . $description . "\"\n" .
       translate ( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .
@@ -105,7 +105,7 @@ if ( empty ( $error ) && $id > 0 ) {
       display_time ( '', 2, $eventstart, $t_format ) ) ). "\n";
       if ( ! empty ( $SERVER_URL ) ) {
         //DON'T change & to &amp; here. email will handle it
-        $url = $SERVER_URL .  $view_type . '.php?id=' .  $id . '&em=1';
+        $url = $SERVER_URL . $view_type . '.php?id=' . $id . '&em=1';
         if ( $htmlmail == 'Y' ) {
           $url =  activate_urls ( $url );
         }

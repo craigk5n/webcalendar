@@ -169,7 +169,6 @@ CREATE TABLE webcal_entry_repeats (
   PRIMARY KEY (cal_id)
 );
 
-
 /*
  * This table specifies which dates in a repeating event have either been
  * deleted, included, or replaced with a replacement event for that day.
@@ -380,7 +379,6 @@ CREATE TABLE webcal_config (
   PRIMARY KEY ( cal_setting )
 );
 
-
 /*
  * Activity log for an event.
  */
@@ -494,7 +492,6 @@ CREATE TABLE webcal_import_data (
   cal_external_id VARCHAR(200) NULL,
   PRIMARY KEY  ( cal_id, cal_login )
 );
-
 
 /*
  * Defines a custom report created by a user.

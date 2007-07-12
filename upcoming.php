@@ -30,15 +30,15 @@
  *   - days: number of days ahead to look for events
  *   - cat_id: specify a category id to filter on
  *   - user: login name of calendar to display (instead of public
- *     user), if allowed by System Settings.  You must have the
+ *     user), if allowed by System Settings. You must have the
  *     following System Settings configured for this:
  *       Allow viewing other user's calendars: Yes
  *       Public access can view others: Yes
  *   - tasks: specify a value of '1' to show just tasks (if permitted
- *       by system settings and config settings below).  This will
+ *       by system settings and config settings below). This will
  *       show only tasks and not show any events.
  *   - showTitle (boolean, set to 1 or 0) whether the page title is shown or not
- *   - upcoming_title: The page title to print.  There is a default but this overrides it.
+ *   - upcoming_title: The page title to print. There is a default but this overrides it.
  *     Of course it will only be printed if showTitle so indicates.
  *   - showMore (boolean, set to 1 or 0) whether "more" at the end is shown or not,
  *         with a link to your main calendar page
@@ -46,7 +46,7 @@
  *
  * if calling as an include file can pre-set these variables in your PHP file
  * before including upcoming.php (you can't use URL parameters when calling
- * an include file).  Remember that after debugging you can use @include to suppress
+ * an include file). Remember that after debugging you can use @include to suppress
  * PHP warnings.
  *     $numDays               default 30
  *     $cat_id                default ALL
@@ -60,7 +60,7 @@
  *     $showPopups bool       default true
  *     $hcalendar_output bool default false
  *
- * To do: Cache results, used cached results mostly, only update occasionally.  This
+ * To do: Cache results, used cached results mostly, only update occasionally. This
  * is pretty simple to do and greatly speeds up the include file if you have a large
  * calendar.
  *
@@ -74,7 +74,6 @@
 if ( empty ( $hcalendar_output ) )
   $hcalendar_output = false;
 
-
 //only go through the requires & includes & function declarations once,
 // in case upcoming.php is included twice on one page
 //this trick allows the upcoming events to be displayed twice on one page
@@ -84,7 +83,7 @@ if ( empty ($upcoming_initialized)) {
 //The following lines allow this include file to be called from another directory
 //it saves the current working directory (to be restored just before exiting)
 //and then changes the working directory to the dir that this file is currently
-//in.  That allows this file to load its includes normally even if called
+//in. That allows this file to load its includes normally even if called
 //from some other directory.
 $save_current_working_dir= getcwd ();
 chdir(dirname(__FILE__));
@@ -110,9 +109,9 @@ if ( $hcalendar_output )
  include 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase ();
-//This must contain the file name that this file is saved under.  It is
+//This must contain the file name that this file is saved under. It is
 //used to determine whether the file is being run independently or
-//as an include file.  Change as necessary!
+//as an include file. Change as necessary!
 //Note that if you use any other name than "upcoming.php" you must
 //also change the corresponding line in includes/classes/WebCalendar.class, about
 //line 54, like this:
@@ -157,7 +156,7 @@ function print_upcoming_event ( $e, $date ) {
       } else if ( $e->getTime () >= 0 ) {
         $timestr = display_time ( $e->getDatetime () );
         if ( $e->getDuration () > 0 ) {
-          $timestr .= ' - ' .  display_time ( $e->getEndDateTime () );
+          $timestr .= ' - ' . display_time ( $e->getEndDateTime () );
         }
       }
       $eventinfo .= build_entry_popup ( 'eventinfo-' . $popupid, $username,
@@ -222,7 +221,7 @@ function print_upcoming_event ( $e, $date ) {
 
 /*
  *
- * Configurable settings for this file.  You may change the settings
+ * Configurable settings for this file. You may change the settings
  * below to change the default settings.
  * This settings will likely move into the System Settings in the
  * web admin interface in a future release.
@@ -251,7 +250,7 @@ $showMore = ( ! empty ( $showMore ) && $showMore !== false ? true : false );
 $showTime = ( ! empty ( $showTime ) && $showTime !== false ? true : false );
 
 //sets the URL used in the (optional) page title and
-//(optional) "...more" tag at the end.  If you want them to
+//(optional) "...more" tag at the end. If you want them to
 //go to a different URL you can specify that here.
 $title_more_url=$SERVER_URL;
 
@@ -266,8 +265,8 @@ if (empty ($maxEvents)) $maxEvents = 10;
 
 // Should we include tasks?
 // (Only relavant if tasks are enabled in system settings AND enabled for
-// display in calendar view for this user.  So, this is really
-// a way to disable tasks from showing up.  It will not display
+// display in calendar view for this user. So, this is really
+// a way to disable tasks from showing up. It will not display
 // them if specified user has not enabled "Display tasks in Calendars"
 // in their preferences.)
 if ( empty ( $showTasks ) ) $showTasks = false;
@@ -348,12 +347,10 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
     $showTime= $x;
   }
 
-
   $x = getGetValue ( 'showTitle', true );
   if ( strlen(  $x ) > 0 ) {
     $showTitle = $x;
   }
-
 
 if ( $load_layers ) {
   load_user_layers ( $username );
@@ -405,7 +402,6 @@ if ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( $username, $endDate, $cat_id );
 }
-
 
 // Determine if this script is being called directly, or via an include.
 if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
@@ -562,6 +558,5 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) {
 
 //restore previous working directory before exit
 if (strlen($save_current_working_dir)) chdir($save_current_working_dir);
-
 
 ?>

@@ -14,8 +14,6 @@
  *
  */
 
-
-
 // Parse the Outlook CSV file and return the data hash.
 function parse_outlookcsv ( $cal_file ) {
   global $tz, $errormsg;
@@ -73,7 +71,6 @@ function parse_outlookcsv ( $cal_file ) {
       $tmp_data['AAction']            =  'EMAIL'; //The default action
     $tmp_data['CalendarType']       =  'VEVENT'; //The default type
 
-
       $outlookcsv_data[] = $tmp_data;
 
       //print_r($tmp_data);
@@ -86,8 +83,6 @@ function parse_outlookcsv ( $cal_file ) {
 
   return $outlookcsv_data;
 }
-
-
 
 function dateDifference($start_timestamp,$end_timestamp,$unit= 0){
   $days_seconds_star= (23 * 56 * 60) + 4.091; // Star Day

@@ -33,7 +33,6 @@ set_today($date);
 $INC = array ('js/popups.php/true');
 print_header($INC);
 
-
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( 'Y', $next );
 $nextmonth = date ( 'm', $next );
@@ -62,7 +61,7 @@ $thisdate = date ( 'Ymd', $startdate );
 </div><br />
 
 <?php
-// The table has names across the top and dates for rows.  Since we need
+// The table has names across the top and dates for rows. Since we need
 // to spit out an entire row before we can move to the next date, we'll
 // save up all the HTML for each cell and then print it out when we're
 // done....

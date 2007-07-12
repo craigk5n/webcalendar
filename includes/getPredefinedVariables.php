@@ -66,7 +66,7 @@ function getGetValue ( $name ) {
  * @param string $name   Name used in the HTML form or found in the URL
  * @param string $format A regular expression format that the input must match.
  *                       If the input does not match, an empty string is
- *                       returned and a warning is sent to the browser.  If The
+ *                       returned and a warning is sent to the browser. If The
  *                       <var>$fatal</var> parameter is true, then execution
  *                       will also stop when the input does not match the
  *                       format.

@@ -14,7 +14,7 @@ import us.k5n.webcalendar.WebCalendarClient;
  * WebCalendar Web Services client for displaying event reminders. Queries the
  * WebCalendar server to get a list of upcoming reminders and then displays them
  * at the proper time.
- * 
+ *
  * @author Craig Knudsen
  * @version $Id$
  */
@@ -23,7 +23,7 @@ public class ReminderApp implements MessageDisplayer {
 
   /**
    * Show a reminder on the screen.
-   * 
+   *
    * @param reminder
    *          The reminder to display
    */
@@ -33,7 +33,7 @@ public class ReminderApp implements MessageDisplayer {
 
   /**
    * Show a message on the screen.
-   * 
+   *
    * @param message
    *          The message to display
    */
@@ -43,7 +43,7 @@ public class ReminderApp implements MessageDisplayer {
 
   /**
    * Show an error on the screen.
-   * 
+   *
    * @param message
    *          The error message to display
    */

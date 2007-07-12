@@ -158,7 +158,7 @@ if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
 if ( empty ( $prefarray['TIMEZONE'] ) )
   $prefarray['TIMEZONE'] = $SERVER_TIMEZONE;
 
-/* For backwards compatibility.  We used to store without the .php extension. */
+/* For backwards compatibility. We used to store without the .php extension. */
 if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
   ( $prefarray['STARTVIEW'] == 'week' ) || $prefarray['STARTVIEW'] == 'year' )
   $prefarray['STARTVIEW'] .= '.php';
@@ -199,7 +199,7 @@ echo '
           </fieldset>
           <fieldset>
             <legend>' . translate ( 'Date and Time' ) . '</legend>'
-// Determine if we can set timezones.  If not, don't display any options.
+// Determine if we can set timezones. If not, don't display any options.
  . ( set_env ( 'TZ', $prefarray['TIMEZONE'] ) ? '
               <p><label for="pref_TIMEZONE" title="' . tooltip ( 'tz-help' )
    . '">' . translate ( 'Timezone Selection' ) . ':</label>'

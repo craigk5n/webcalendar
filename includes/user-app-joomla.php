@@ -5,7 +5,6 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 // about users from Joomla 1.0.8 and logging in/out
 //  ** also compatible with Mambo 4.5.3
 
-
 // Reference to the application means the external application (joomla)
 
 // user-app-*.php auth files assume the following:
@@ -122,7 +121,6 @@ function app_active_session($sid) {
   return $login;
 }
 
-
 // Joomla 1.0.8 introduced the option of three different session types
 function app_get_sid( $id ) {
   global $app_secret, $app_session_type;
@@ -170,7 +168,6 @@ function app_update_session($sid) {
   return true;
 }
 
-
 // Searches application database for $app_admin_gid and returns an array of the group members.
 // Do this search only once per request.
 // returns: array of admin ids
@@ -207,7 +204,6 @@ function get_admins () {
 
   return array_unique($cached_admins);
 }
-
 
 /// Get a list of users and return info in an array.
 // returns: array of users
@@ -253,7 +249,6 @@ function user_get_users ( $publicOnly=false ) {
   usort ( $ret, 'sort_users');
   return $ret;
 }
-
 
 // Load info about a user (first name, last name, admin) and set globally.
 // params:
@@ -313,7 +308,6 @@ function user_load_variables ( $login, $prefix ) {
   return true;
 }
 
-
 // Checks to see if the user is logged into the application
 // returns: login id
 function user_logged_in () {
@@ -361,7 +355,6 @@ function app_login_screen( $return ) {
   exit;
 }
 
-
 // Test if a user is an admin, that is: if the user is a member of a special
 // group in the application database
 // params:
@@ -376,7 +369,6 @@ function user_is_admin($uid,$Admins) {
     return 'N';
   }
 }
-
 
 // Delete a user from the webcalendar tables. (NOT from the application)
 // We assume that we've already checked to make sure this user doesn't

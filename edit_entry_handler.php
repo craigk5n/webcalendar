@@ -127,10 +127,10 @@ else
   $end_hour = $end_minute = 0;
 
 // If "all day event" was selected, then we set the event time to be 12AM with a
-// duration of 24 hours.  We don't actually store the "all day event" flag per se.
-// This method makes conflict checking much simpler.  We just need to make sure
+// duration of 24 hours. We don't actually store the "all day event" flag per se.
+// This method makes conflict checking much simpler. We just need to make sure
 // that we don't screw up the day view (which normally starts with the first
-// timed event).  Note that if someone actually wants to create an event that
+// timed event). Note that if someone actually wants to create an event that
 // starts at midnight and lasts exactly 24 hours, it will be treated in the
 // same manner.
 
@@ -249,7 +249,7 @@ if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__publ
   }
 }
 // If display of participants is disabled, set the participant list
-// to the event creator.  This also works for single-user mode.
+// to the event creator. This also works for single-user mode.
 // Basically, if no participants were selected (because there
 // was no selection list available in the form or because the user
 // refused to select any participant from the list), then we will
@@ -708,7 +708,7 @@ if ( empty ( $error ) ) {
       dbi_execute ( $sql, $values );
       $msg .= '<span class="bold">SQL:</span> ' . $sql . '<br /><br />';
     } //end add repeating info
-    // We manually created exceptions.  This can be done without repeats.
+    // We manually created exceptions. This can be done without repeats.
     if ( ! empty ( $exceptions ) ) {
       $exceptcnt = count ( $exceptions );
       for ( $i = 0; $i < $exceptcnt; $i++ ) {
@@ -773,7 +773,7 @@ if ( empty ( $error ) ) {
               display_time ( '', 2, $eventstart, $t_format ), $timeStr . "\n\n\n" ) );
           // Add URL to event, if we can figure it out.
           if ( ! empty ( $SERVER_URL ) ) {
-            // DON'T change & to &amp; here.  Email will handle it.
+            // DON'T change & to &amp; here. Email will handle it.
             $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
             if ( $htmlmail == 'Y' )
               $url = activate_urls ( $url );
@@ -838,8 +838,8 @@ if ( empty ( $error ) ) {
     } //end new/old event
 
     // Some users report that they get an error on duplicate keys
-    // on the following add...  As a safety measure, delete any
-    // existing entry with the id.  Ignore the result.
+    // on the following add... As a safety measure, delete any
+    // existing entry with the id. Ignore the result.
     dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_id = ? AND cal_login = ?',
       array ( $id, $participants[$i] ) );
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
@@ -897,7 +897,7 @@ if ( empty ( $error ) ) {
               : translate ( 'Please look on XXX to view this appointment.' ) ) );
           // Add URL to event, if we can figure it out.
           if ( ! empty ( $SERVER_URL ) ) {
-            // DON'T change & to &amp; here.  Email will handle it.
+            // DON'T change & to &amp; here. Email will handle it.
             $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
             if ( $htmlmail == 'Y' )
               $url = activate_urls ( $url );

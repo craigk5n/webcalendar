@@ -23,7 +23,7 @@ if ( ! empty ( $_POST ) && empty ( $error ) ) {
   }
 }
 // .
-// Load any new config settings.  Existing ones will not be affected.
+// Load any new config settings. Existing ones will not be affected.
 // This function is in the install/default_config.php file.
 if ( function_exists ( 'db_load_config' ) && empty ( $_POST ) )
   db_load_config ();
@@ -151,7 +151,7 @@ if ( ! $error ) {
           </fieldset>
           <fieldset>
             <legend>' . translate ( 'Date and Time' ) . '</legend>'
-  /* Determine if we can set timezones.  If not don't display any options. */
+  /* Determine if we can set timezones. If not don't display any options. */
    . ( set_env ( 'TZ', $s['SERVER_TIMEZONE'] ) ? '
             <p><label for="admin_SERVER_TIMEZONE" title="'
      . tooltip ( 'tz-help' ) . '">' . translate ( 'Server Timezone Selection' )

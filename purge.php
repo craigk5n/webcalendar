@@ -4,13 +4,13 @@
  * Description:
  * Purge events page and handler.
  * When an event is deleted from a user's calendar, it is marked
- * as deleted (webcal_entry_user.cal_status = 'D').  This page
+ * as deleted (webcal_entry_user.cal_status = 'D'). This page
  * will actually clean out the database rather than just mark an
  * event as deleted.
  *
  * Security:
  * Events will only be deleted if they were created by the selected
- * user.  Events where the user was a participant (but not did not
+ * user. Events where the user was a participant (but not did not
  * create) will remain unchanged.
  *
  */
@@ -64,18 +64,16 @@ echo "</h2>\n";
 echo display_admin_link ();
 
 if ( $do_purge ) {
-  if ( $preview ) {
-    echo '<h2> [' .  $previewStr . '] ' .
-      $purgingStr . " $user...</h2>\n";
-  } else {
-    echo '<h2>' .  $purgingStr . ": $user</h2>\n";
-  }
-  $ids = '';
+  if ( $preview )
+    echo '<h2> [' . $previewStr . '] ' . $purgingStr . " $user...</h2>\n";
+  else
+    echo '<h2>' . $purgingStr . ": $user</h2>\n";
+
   $end_date = sprintf ( "%04d%02d%02d", $end_year, $end_month, $end_day );
-  $tail = '';
-  if ( $purge_deleted == 'Y' ) {
+  $ids = $tail = '';
+  if ( $purge_deleted == 'Y' )
     $tail = " AND weu.cal_status = 'D' ";
-  }
+
   if ( $purge_all == 'Y' ) {
     if ( $user == 'ALL' ) {
       $ids = array ( 'ALL' );
@@ -107,7 +105,7 @@ if ( $do_purge ) {
   } else {
     echo translate ( 'None' );
   }
-  echo '<h2>...' .  translate ( 'Finished' ) . ".</h2>\n";
+  echo '<h2>...' . translate ( 'Finished' ) . ".</h2>\n";
 ?>
   <form><input type="button" value="<?php etranslate ( 'Back' )?>"
 onclick="history.back ()" /></form

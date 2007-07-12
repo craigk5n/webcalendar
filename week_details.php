@@ -10,7 +10,6 @@ else
 
 load_user_categories ();
 
-
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
@@ -18,7 +17,6 @@ $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
 $wkend = $wkstart + ( ONE_DAY * ( $DISPLAY_WEEKENDS == 'N'? 5 : 7 ));
 $thisdate = date ( 'Ymd', $wkstart );
-
 
 if ( $DISPLAY_WEEKENDS == 'N' ) {
   if ( $WEEK_START == 1 ) {
@@ -140,7 +138,6 @@ echo '<br />';
 echo $printerStr;
 echo print_trailer ();
 
-
 /**
  * Prints the HTML for one event in detailed view.
  *
@@ -230,7 +227,7 @@ function print_detailed_entry ( $event, $date ) {
 
 //
 // Print all the calendar entries for the specified user for the
-// specified date.  If we are displaying data from someone other than
+// specified date. If we are displaying data from someone other than
 // the logged in user, then check the access permission of the entry.
 // params:
 //   $date - date in YYYYMMDD format

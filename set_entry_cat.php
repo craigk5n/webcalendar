@@ -4,7 +4,7 @@
  * Allows the setting of categories by each participant of an event.
  *
  * Multiple categories can be added by each participant and stored separately
- * for that user.  Global categories will be visible by all participants,
+ * for that user. Global categories will be visible by all participants,
  * but can only be added/removed by the owner or an admin in the edit-entry form.
  */
 include_once 'includes/init.php';

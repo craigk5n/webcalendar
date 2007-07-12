@@ -34,7 +34,7 @@ class WebCalendar {
 
   /* A map from filenames to initialization phases.
    *
-   * This array holds the initialization steps for each page.  Steps are
+   * This array holds the initialization steps for each page. Steps are
    * separated into phases, and listed in the order they should be executed,
    * and are the names of the WebCalendar::methods that should be called,
    * without the `_Init' prefix.
@@ -498,9 +498,9 @@ class WebCalendar {
     $use_http_auth, $user_inc, $validate_redirect, $webcalendar_session;
 
     /* If WebCalendar is configured to use http authentication, then we can
-     * use _initValidate ().  If we are not using http auth, icalclient.php will
+     * use _initValidate (). If we are not using http auth, icalclient.php will
      * create its own http auth since an iCal client cannot login via a
-     * web-based login.  Publish.php does need to validate if not http_auth.
+     * web-based login. Publish.php does need to validate if not http_auth.
      */
     if ( ! $use_http_auth &&
       ( $this->_filename == 'css_cacher.php' ||
@@ -590,9 +590,9 @@ class WebCalendar {
             $login = $login_pw[0];
             $cryptpw = $login_pw[1];
 
-            // Security fix.  Don't allow certain types of characters in
-            // the login.  WebCalendar does not escape the login name in
-            // SQL requests.  So, if the user were able to set the login
+            // Security fix. Don't allow certain types of characters in
+            // the login. WebCalendar does not escape the login name in
+            // SQL requests. So, if the user were able to set the login
             // name to be "x';drop table u;",
             // they may be able to affect the database.
             if ( ! empty ( $login ) && $login != addslashes ( $login ) ) {

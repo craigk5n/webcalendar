@@ -187,7 +187,7 @@ ALTER TABLE webcal_entry ADD cal_location varchar(100) DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_url varchar(100) DEFAULT NULL;
 ALTER TABLE webcal_entry ADD cal_completed int(11) DEFAULT NULL;
 ALTER TABLE webcal_entry_user ADD cal_percent int(11) NOT NULL DEFAULT '0';
-ALTER TABLE webcal_site_extras DROP PRIMARY KEY; 
+ALTER TABLE webcal_site_extras DROP PRIMARY KEY;
 /*upgrade_v1.1.0b-CVS*/
 CREATE TABLE webcal_entry_categories (
   cal_id int(11) NOT NULL DEFAULT '0',
@@ -218,7 +218,7 @@ CREATE TABLE webcal_access_user (
   cal_can_view INT NOT NULL DEFAULT '0',
   cal_can_edit INT NOT NULL DEFAULT '0',
   cal_can_approve INT NOT NULL DEFAULT '0',
-  cal_can_invite CHAR(1) DEFAULT 'Y',  
+  cal_can_invite CHAR(1) DEFAULT 'Y',
   cal_can_email CHAR(1) DEFAULT 'Y',
   cal_see_time_only CHAR(1) DEFAULT 'N',
   PRIMARY KEY ( cal_login, cal_other_user )
@@ -255,6 +255,4 @@ CREATE TABLE webcal_timezones (
   vtimezone text,
   PRIMARY KEY  ( tzid )
 );
-
-  
 

@@ -210,7 +210,7 @@ function show_errors ( $error_val = 0 ) {
 
 /* We will convert from Server based storage to GMT time.
  * Optionally, a tzoffset can be added to the URL and will
- * adjust all existing events by that amount.  If cutoffdate is supplied,
+ * adjust all existing events by that amount. If cutoffdate is supplied,
  * only dates prior to that date are affected.
  */
 function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
@@ -354,7 +354,7 @@ function get_installed_version ( $postinstall = false ) {
       // Make sure all existing values in config and pref tables are UPPERCASE.
       make_uppercase ();
 
-      // Clear db_cache.  This will prevent looping when launching WebCalendar
+      // Clear db_cache. This will prevent looping when launching WebCalendar
       // if upgrading and WEBCAL_PROGRAM_VERSION is cached.
       if ( ! empty ( $settings['db_cachedir'] ) )
         dbi_init_cache ( $settings['db_cachedir'] );

@@ -2,7 +2,7 @@
 /* $Id$
  *
  * Page Description:
- *  This page will handle adding blobs into the database.  It will
+ *  This page will handle adding blobs into the database. It will
  *  present the form page on a GET and handle updating the database
  *  on a POST.
  *  This includes:
@@ -195,7 +195,6 @@ if ( $REQUEST_METHOD == 'POST' ) {
   }
 }
 
-
 print_header ();
 ?>
 <h2><?php echo $title;?></h2>
@@ -220,9 +219,6 @@ print_header ();
 <input type="submit" value="<?php etranslate ( 'Add Comment' )?>" /></td></tr>
 </table>
 </form>
-
-
-
 
 <?php } else if ( $type == 'A' ) {
   // Attachment

@@ -337,7 +337,8 @@ echo '
     </form>' ) . '<br /><br /><br /><br /><br /><br /><br /><br />
     <span class="cookies">' . translate ( 'cookies-note' )
  . '</span><br />
-    <hr /><br /><br />
+    <hr />
+    <br /><br />
     <a href="' . $PROGRAM_URL . '" id="programname">' . $PROGRAM_NAME . '</a>';
 // Print custom trailer (since we do not call print_trailer function).
 if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {

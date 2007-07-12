@@ -15,7 +15,7 @@ import org.xml.sax.SAXException;
 
 /**
  * The LoginSession handles the results of the login process (parse the XML).
- * 
+ *
  * @author Craig Knudsen
  * @version $Id$
  */

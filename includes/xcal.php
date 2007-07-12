@@ -170,7 +170,7 @@ function export_time( $date, $duration, $time, $texport, $vtype = 'E' ) {
   $eventstart = date_to_epoch ( $date . $time );
   $eventend = $eventstart + ( $duration * 60 );
   if ( $time == 0 && $duration == 1440 ) {
-    // all day.  Treat this as an event that starts at midnight localtime
+    // all day. Treat this as an event that starts at midnight localtime
     // with a duration of 24 hours
     $dtstart = $date . 'T000000';
     if ( $insert_vtimezone = get_vtimezone ( $TIMEZONE, $dtstart ) )
@@ -178,7 +178,7 @@ function export_time( $date, $duration, $time, $texport, $vtype = 'E' ) {
     else
       $ret .= 'DTSTART;VALUE=DATETIME:' . $dtstart. "\r\n";
   } else if ( $time == -1 ) {
-    // untimed event: this is the same regardless of timezone.  For example,
+    // untimed event: this is the same regardless of timezone. For example,
     // New Year's Day starts at 12am localtime regardless of timezone.
     $ret .= "DTSTART;VALUE=DATE:$date\r\n";
   } else {
@@ -528,7 +528,6 @@ function export_ts_utc_date( $timestamp ) {
   return $utc;
 }
 
-
 function export_alarm_vcal( $id, $date ) {
   // Don't send reminder for event in the past
   if ( $date < date ( 'Ymd' )  )
@@ -691,9 +690,9 @@ function generate_uid( $id = '' ) {
 function save_uid_for_event ( $importId, $id, $uid ) {
   global $login, $error;
   // Note: We can get a duplicate key error here if this event was
-  // created by an import from another calendar.  Say someone invites you
-  // to an event and sends along an ics attachement via email.  You use
-  // that to import the event.  Now, who is the definitive source of the
+  // created by an import from another calendar. Say someone invites you
+  // to an event and sends along an ics attachement via email. You use
+  // that to import the event. Now, who is the definitive source of the
   // event?  If the original author sends an update or if the ical client
   // tries to update it?  I'm not really sure, but we will assume that
   // events imported into webcalendar become property of webcalendar.
@@ -706,7 +705,7 @@ function save_uid_for_event ( $importId, $id, $uid ) {
   }
   // do_debug ( "leaving func" );
 }
-// Add an entry in webcal_import.  For each import or publish request,
+// Add an entry in webcal_import. For each import or publish request,
 // we create a single webcal_import row that goes with the many
 // webcal_import_data rows (one for each event).
 function create_import_instance () {
@@ -913,7 +912,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
           // Create an entry in webcal_import.
           // It would be nice if we could put a name in here of who
           // or where the remote cal subscription is coming from in case
-          // they update some of our events.  But, I cannot see a way to
+          // they update some of our events. But, I cannot see a way to
           // do that.
           $exportId = create_import_instance ();
         }
@@ -1211,9 +1210,9 @@ function import_data ( $data, $overwrite, $type ) {
     // See if event already is there from prior import.
     // The same UID is used for all events imported at once with iCal.
     // So, we still don't have enough info to find the exact
-    // event we want to replace.  We could just delete all
+    // event we want to replace. We could just delete all
     // existing events that correspond to the UID.
-    // NOTE: (cek) commented out 'publish'.  Will not work if event
+    // NOTE:(cek) commented out 'publish'. Will not work if event
     // was originally created from importing.
     if ( ! empty ( $Entry['UID'] ) ) {
       $res = dbi_execute ( 'SELECT wid.cal_id '
@@ -1818,7 +1817,7 @@ function import_data ( $data, $overwrite, $type ) {
 // Parse the ical file and return the data hash.
 // NOTE!!!!!
 // There seems to be a bug in certain versions of PHP where the fgets ()
-// returns a blank string when reading stdin.  I found this to be
+// returns a blank string when reading stdin. I found this to be
 // a problem with PHP 4.1.2 on Linux.
 // It did work correctly with PHP 5.0.2.
 function parse_ical ( $cal_file, $source = 'file' ) {
@@ -1857,7 +1856,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         // do_debug ( "Informing user of PHP server bug (PHP v" . phpversion () . ")" );
         // Note: Mozilla Calendar does not display this error for some reason.
         echo '<br /><b>Error:</b> Your PHP server ' . phpversion ()
-         . ' seems to have a bug reading stdin.  '
+         . ' seems to have a bug reading stdin. '
          . 'Try upgrading to a newer PHP release.<br />';
         exit;
       }
@@ -1875,7 +1874,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       exit;
     }
   }
-  // Now fix folding.  According to RFC, lines can fold by having
+  // Now fix folding. According to RFC, lines can fold by having
   // a CRLF and then a single white space character.
   // We will allow it to be CRLF, CR or LF or any repeated sequence
   // so long as there is a single white space character next.
@@ -2132,11 +2131,11 @@ function parse_ical ( $cal_file, $source = 'file' ) {
          $event['dtend']  =$match[3];
          if ( empty ($event['uid']) ) $event['uid']=$freebusycount++.'-'.$event['organizer'];
  #
- # Let's save the FREEBUSY data as an event.  While not a perfect solution, it's better
+ # Let's save the FREEBUSY data as an event. While not a perfect solution, it's better
  # than nothing and allows Outlook users to store Free/Busy times in WebCalendar
  #
  # If not provided, UID is auto-generaated in an attempt to use WebCalendar's duplicate
- # prevention feature.  There could be left-over events if the number of free/busy
+ # prevention feature. There could be left-over events if the number of free/busy
  # entries decreases, but those entries will hopefullly be in the past so it won't matter.
  # Not a great solution, but I suspect it will work well.
  #
@@ -2871,7 +2870,7 @@ function format_vcal( $event ) {
   if ( ! empty ( $fevent['UID'] ) ) $fevent['UID'] = $event['uid'];
   // Repeats
   // vcal 1.0 repeats can be very complicated and the webcalendar doesn't
-  // actually support all of the ways repeats can be specified.  We will
+  // actually support all of the ways repeats can be specified. We will
   // focus on vcals dumped from Palm Desktop and Lotus Notes, which are simple
   // and the ones webcalendar should fully support.
   if ( ! empty ( $event['rrule'] ) ) {

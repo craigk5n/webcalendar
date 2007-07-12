@@ -24,7 +24,6 @@ function valid_form ( form ) {
 
 }
 
-
 function toggle_layercolor () {
  if ( document.prefform.nlayer.checked == true) {
    makeVisible ( 'nlayercolor', true );

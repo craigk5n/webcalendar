@@ -434,7 +434,6 @@ function del_selected () {
    } // end with document
 }
 
-
 function toggle_byday(ele){
   var bydaytext = bydayTrans[ele.id.substr (2,1)];
   var bydayVal = bydayLabels[ele.id.substr (2,1)];
@@ -568,7 +567,6 @@ function toggle_rem_rep (){
  elements['rem_rep_minutes'].disabled =
  ( elements['rem_rep_count'].value == 0 );
 }
-
 
 function editCats (  evt ) {
   if (document.getElementById) {

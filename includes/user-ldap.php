@@ -26,7 +26,6 @@ $admin_can_add_user = false;
 // Allow admin to delete user from webcal tables
 $admin_can_delete_user = true;
 
-
 //------ LDAP General Server Settings ------//
 //
 // Name or address of the LDAP server
@@ -59,7 +58,6 @@ $ldap_login_attr = 'uid';
 $ldap_admin_dn = '';  // user DN
 $ldap_admin_pwd = ''; // user password
 
-
 //------ Admin Group Settings ------//
 //
 // A group name (complete DN) to find users with admin rights
@@ -70,7 +68,6 @@ $ldap_admin_group_type = 'posixgroup';
 
 // The LDAP attribute used to store member of a group
 $ldap_admin_group_attr = 'memberuid';
-
 
 //------ LDAP Filter Settings ------//
 //
@@ -89,7 +86,6 @@ $ldap_user_attr = array (
 );
 
 /*************************** End Config *****************************/
-
 
 // Convert group name to lower case to prevent problems
 $ldap_admin_group_attr = strtolower($ldap_admin_group_attr);
@@ -126,8 +122,7 @@ function user_search_dn ( $login ) {
   return $ret;
 }
 
-
-// Check to see if a given login/password is valid.  If invalid,
+// Check to see if a given login/password is valid. If invalid,
 // the error message will be placed in $error.
 // params:
 //   $login - user login
@@ -174,7 +169,7 @@ function user_valid_login ( $login, $password ) {
 }
 
 // TODO: implement this function properly for LDAP.
-// Check to see if a given login/crypted password is valid.  If invalid,
+// Check to see if a given login/crypted password is valid. If invalid,
 // the error message will be placed in $error.
 // params:
 //   $login - user login
@@ -285,8 +280,8 @@ function user_update_user_password ( $user, $password ) {
  * Delete a user from the webcalendar tables. (NOT from LDAP)
  *
  * This will also delete any of the user's events in the system that have
- * no other participants.  Any layers that point to this user
- * will be deleted.  Any views that include this user will be updated.
+ * no other participants. Any layers that point to this user
+ * will be deleted. Any views that include this user will be updated.
  *
  * @param string $user User to delete
  */
@@ -408,7 +403,6 @@ function user_delete_user ( $user ) {
   dbi_execute ( 'DELETE FROM webcal_user_template WHERE cal_login = ?',
     array ( $user ) );
 }
-
 
 // Get a list of users and return info in an array.
 // returns: array of users

@@ -95,7 +95,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       // If $check_group is true now, it means this user can look at the
       // event only if they are in the same group as some of the people in
       // the event.
-      // This gets kind of tricky.  If there is a participant from a different
+      // This gets kind of tricky. If there is a participant from a different
       // group, do we still show it?  For now, the answer is no.
       // This could be configurable somehow, but how many lines of text would
       // it need in the admin page to describe this scenario?  Would confuse
@@ -134,7 +134,6 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
   }
   $hide_details = ( $login == '__public__' &&
     ! empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC == 'Y' );
-
 
   // If they still cannot view, make sure they are not looking at a nonuser
   // calendar event where the nonuser is the _only_ participant.

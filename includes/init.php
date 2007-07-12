@@ -159,10 +159,10 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // Add custom script/stylesheet if enabled.
   . ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom
     ? load_template ( $login, 'S' ) : '' )
-  // Include includes/print_styles.css as a media="print" stylesheet.  When the
+  // Include includes/print_styles.css as a media="print" stylesheet. When the
   // user clicks on the "Printer Friendly" link, $friendly will be non-empty,
   // including this as a normal stylesheet so they can see how it will look
-  // when printed.  This maintains backwards-compatibility for browsers that
+  // when printed. This maintains backwards-compatibility for browsers that
   // don't support media="print" stylesheets
   . ( empty ( $friendly ) ? '' : '
     <link rel="stylesheet" type="text/css"'

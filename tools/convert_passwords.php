@@ -32,7 +32,7 @@ if ( ! $c ) {
   exit;
 }
 
-// First, look at the passwords.  If we find and md5 hash in there,
+// First, look at the passwords. If we find and md5 hash in there,
 // (it will have 32 chars instead of < 25 like in the old version),
 // then we know this script was already run.
 $sql = "SELECT cal_passwd FROM webcal_user";

@@ -3,8 +3,8 @@
  *
  * Page Description:
  * This page will display the month "view" with all users's events
- * on the same calendar.  (The other month "view" displays each user
- * calendar in a separate column, side-by-side.)  This view gives you
+ * on the same calendar. (The other month "view" displays each user
+ * calendar in a separate column, side-by-side.) This view gives you
  * the same effect as enabling layers, but with layers you can only
  * have one configuration of users.
  *
@@ -56,7 +56,6 @@ $prevmonth = date ( 'm', $prev );
 $prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
 $prevYmd = date ( 'Ymd', $prev );
 
-
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;
   $startdate = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear );
@@ -66,7 +65,6 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
   $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 }
-
 
 $thisdate = date ( 'Ymd', $startdate );
 

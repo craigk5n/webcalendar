@@ -3,8 +3,8 @@
  *
  * Page Description:
  * This page will display the month "view" with all users's events
- * on the same calendar.  (The other month "view" displays each user
- * calendar in a separate column, side-by-side.)  This view gives you
+ * on the same calendar. (The other month "view" displays each user
+ * calendar in a separate column, side-by-side.) This view gives you
  * the same effect as enabling layers, but with layers you can only
  * have one configuration of users.
  *
@@ -30,14 +30,12 @@ include_once 'includes/views.php';
 $error = '';
 $DAYS_PER_TABLE = 7;
 
-
 view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_v.php');
 set_today($date);
 
 $INC = array ('js/popups.php/true');
 print_header($INC);
-
 
 $nextdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
 $prevdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
@@ -66,7 +64,7 @@ $thisdate = date ( 'Ymd', $wkstart );
 </div></div><br />
 
 <?php
-// The table has names across the top and dates for rows.  Since we need
+// The table has names across the top and dates for rows. Since we need
 // to spit out an entire row before we can move to the next date, we'll
 // save up all the HTML for each cell and then print it out when we're
 // done..
@@ -150,7 +148,6 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   //output all
   echo $header . "</tr>\n" . $body . "</table>\n";
 }
-
 
 $user = ''; // reset
 

@@ -1,7 +1,6 @@
 <?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
-
 // This file contains some convenient functions for editing rows
 // in a table.
 // You need to define the tables (typically this is done in tables.php).
@@ -19,7 +18,6 @@ function dbtable_get_field_index ( $tablear, $fieldname ) {
   $error = "dbtable_get_field_index: Invalid fieldname \"$fieldname\".";
   return -1;
 }
-
 
 // Create a table for editing a database table entry
 // $tablear - array that defines table (see tables.php)
@@ -58,7 +56,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
     if ( ! empty ( $tablear[$i]['prompt'] ) ) {
       $ret .= "<b";
       if ( ! empty ( $tablear[$i]['tooltip'] ) )
-        $ret .= " class=\"tooltip\" title=\"" .  $tablear[$i]['tooltip'] . '"';
+        $ret .= " class=\"tooltip\" title=\"" . $tablear[$i]['tooltip'] . '"';
       $ret .= ">" . $tablear[$i]['prompt'] . ":</b></td>\n";
     } else {
       $ret .= "&nbsp;</td>";
@@ -70,7 +68,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
         $ret .= "<input type=\"text\" name=\"" . $tablear[$i]['name'] .
           '"';
         if ( ! empty ( $tablear[$i]['maxlength'] ) )
-          $ret .= " maxlength=\"" .  $tablear[$i]['maxlength'] . '"';
+          $ret .= " maxlength=\"" . $tablear[$i]['maxlength'] . '"';
         if ( ! empty ( $tablear[$i]['length'] ) )
         $ret .= " size=\"" . $tablear[$i]['length'] . '"';
         if ( ! empty ( $valuesar[$i] ) )
@@ -131,7 +129,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action="", $formname="",
   return $ret;
 }
 
-// Print rows of a table into an HTML table.  The first column will
+// Print rows of a table into an HTML table. The first column will
 // include (optionally) href links to a page which can show further
 // details.
 // $tablear - db table (defined in tables.php)
@@ -460,7 +458,6 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
   }
   return true;
 }
-
 
 // Generate a new ID
 function dbtable_genid ( $tablename, $field ) {

@@ -16,7 +16,7 @@
  *
  * Security:
  * The first time this page is accessed, there are no security
- * precautions.   The user is prompted to generate a config password.
+ * precautions. The user is prompted to generate a config password.
  * From then on, users must know this password to make any changes
  * to the settings in settings.php./
  *
@@ -46,7 +46,6 @@ set_time_limit(240);
 
 // If we're using SQLLite, it seems that magic_quotes_sybase must be on
 //ini_set('magic_quotes_sybase', 'On');
-
 
 // Check for proper auth settings
 if ( ! empty (  $_SERVER['PHP_AUTH_USER'] ) )
@@ -98,7 +97,7 @@ if ( ! empty ( $fd ) ) {
     }
   }
   fclose ( $fd );
-  // File exists, but no password.  Force them to create a password.
+  // File exists, but no password. Force them to create a password.
   if ( empty ( $password ) ) {
     $forcePassword = true;
   }
@@ -127,7 +126,6 @@ if ( ! isset ( $_SESSION['server_url'] ) ) {
       }
     }
 }
-
 
 // Handle "Logout" button
 if ( 'logout' == getGetValue ( 'action' ) ) {
@@ -278,8 +276,6 @@ if ( ! empty ( $action ) && $action == 'switch' ) {
  }
 }
 
-
-
 // We're doing a database installation yea ha!
 if ( ! empty ( $action ) &&  $action == 'install' ){
     // We'll grab database settings from settings.php
@@ -348,7 +344,6 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
     }
     dbi_free_result ( $res );
    }
-
 
    // If new install, run 0 GMT offset
    //just to set webcal_config.WEBCAL_TZ_CONVERSION
@@ -587,7 +582,7 @@ if ( $exists ) {
 // array.
 $x = getPostValue ( 'form_db_type' );
 if ( empty ( $x ) ) {
-  // No form was posted.  Set defaults if none set yet.
+  // No form was posted. Set defaults if none set yet.
   if ( ! file_exists ( $file ) || count ( $settings ) == 1) {
     $settings['db_type'] = 'mysql';
     $settings['db_host'] = 'localhost';
@@ -699,7 +694,7 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     }
 
     // Change to read/write by us only (only applies if we created file)
-    // and read-only by all others.  Would be nice to make it 600, but
+    // and read-only by all others. Would be nice to make it 600, but
     // the send_reminders.php script is usually run under a different
     // user than the web server.
     @chmod ( $file, 0644 );
@@ -1218,8 +1213,8 @@ if ( ! $exists || ! $canWrite ) { ?>
       translate ( 'Click Update Database to complete the upgrade' ) . '.';
   } else {
      $response_msg = translate ( 'This appears to be an upgrade from version' )  .
-     '&nbsp;' .   $_SESSION['old_program_version'] . '&nbsp;' .
-     translate ( 'to' ) . ' ' .  $PROGRAM_VERSION. '.';
+     '&nbsp;' .  $_SESSION['old_program_version'] . '&nbsp;' .
+     translate ( 'to' ) . ' ' . $PROGRAM_VERSION. '.';
   }
 ?>
 <table border="1" width="90%" align="center">
@@ -1287,8 +1282,8 @@ if ( ! $exists || ! $canWrite ) { ?>
       <input type="submit" value="<?php etranslate ( 'Display Required SQL' ) ?>" /><br />
  <?php if ( ! empty ( $str_parsed_sql ) ) { ?>
     <textarea name="displayed_sql" cols="100" rows="12" ><?php echo $str_parsed_sql; ?></textarea>
-   <br />
-      <p class="recommended"><?php
+    <br />
+    <p class="recommended"><?php
   etranslate ( 'Return to previous page after processing SQL.' ) ?></p>
  <?php } ?>
   </form>
