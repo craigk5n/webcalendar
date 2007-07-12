@@ -130,7 +130,6 @@ if ( $newview ) {
   . "</td></tr>\n";
  }
 
-
 $defIdx = ( ! empty ( $all_users ) && $all_users == true ? 'Y' : 'N' );
 echo '<tr><td><label>'
   . translate ( 'Users' ) . ":</label></td>\n<td>"

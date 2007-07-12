@@ -1,5 +1,5 @@
 /*
-  JSCookMenu v1.4.4.  (c) Copyright 2002-2005 by Heng Yuan
+  JSCookMenu v1.4.4. (c) Copyright 2002-2005 by Heng Yuan
 
   Permission is hereby granted, free of charge, to any person obtaining a
   copy of this software and associated documentation files (the "Software"),
@@ -38,9 +38,9 @@ var _cmNodeProperties =
 {
     // main menu display attributes
     //
-    // Note.  When the menu bar is horizontal,
+    // Note. When the menu bar is horizontal,
     // mainFolderLeft and mainFolderRight are
-    // put in <span></span>.  When the menu
+    // put in <span></span>. When the menu
     // bar is vertical, they would be put in
     // a separate TD cell.
 
@@ -335,7 +335,7 @@ function cmDraw (id, menu, orient, nodeProperties, prefix)
 // The function builds the menu inside the specified element id.
 //
 // This function is similar to cmDraw except that menu is taken from HTML node
-// rather a javascript tree.  This feature allows links to be scanned by search
+// rather a javascript tree. This feature allows links to be scanned by search
 // bots.
 //
 // This function basically converts HTML node to a javascript tree, and then calls
@@ -726,8 +726,8 @@ function cmShowSubMenu (obj, prefix, subMenu, orient)
 
   //
   // On IE, controls such as SELECT, OBJECT, IFRAME (before 5.5)
-  // are window based controls.  So, if the sub menu and these
-  // controls overlap, sub menu would be hidden behind them.  Thus
+  // are window based controls. So, if the sub menu and these
+  // controls overlap, sub menu would be hidden behind them. Thus
   // one needs to turn the visibility of these controls off when the
   // sub menu is showing, and turn their visibility back on
   // when the sub menu is hiding.
@@ -786,7 +786,7 @@ function cmHideMenuTime ()
 
 //
 // hide thisMenu, children of thisMenu, as well as the ancestor
-// of thisMenu until currentMenu is encountered.  currentMenu
+// of thisMenu until currentMenu is encountered. currentMenu
 // will not be hidden
 //
 function cmHideMenu (thisMenu, currentMenu, prefix)
@@ -1012,7 +1012,7 @@ function cmIsTRNode (obj)
 }
 
 //
-// get the Y position of the object.  In case of TR element though,
+// get the Y position of the object. In case of TR element though,
 // we attempt to adjust the value.
 //
 function cmGetYAt (obj, elm)
@@ -1069,34 +1069,34 @@ function cmGetProperties (obj)
   return msg;
 }
 
-/* v1.4.4      1. a quick fix for a bug for _cmSplit checking.  reported by
+/* v1.4.4      1. a quick fix for a bug for _cmSplit checking. reported by
             Son Nguyen.
 */
 /* v1.4.3      1. changed how _cmSplit is handled a bit so that _cmNoClick can work
-            properly.  All splits in predefined themes are changed to use
+            properly. All splits in predefined themes are changed to use
             _cmNoClick instead of _cmNoAction.
 */
 /* v1.4.2      1. fixed _cmNoClick mouse hoover bug.
           2. fixed a statusbar text problem that cause text to disappear when
             hoovering mouse within the same menu item.
           3. changed the behavior of cmDrawFromText s.t. if the title of the
-            of a link is empty, the actual url is used as text.  To clear
+            of a link is empty, the actual url is used as text. To clear
             this link information, title needs to be ' '.
 */
 /* v1.4.1      1. fixed a problem introduced in 1.4 where re-entering a main menu
             item which doesn't have a child can disable its hover setting.
             Apparently I deleted an extra line of code when I was doing
-            cleaning up.  Reported by David Maliachi and a few others.
+            cleaning up. Reported by David Maliachi and a few others.
 */
-/* JSCookMenu v1.4  1. fixed a minor td cell closure problem.  Thanks to Georg Lorenz
+/* JSCookMenu v1.4  1. fixed a minor td cell closure problem. Thanks to Georg Lorenz
              <georg@lonux.de> for discovering that.
-          2. added clickOpen to nodeProperties.  See _cmNodeProperties for
-            description.  Basically menus can be opened on click only.
+          2. added clickOpen to nodeProperties. See _cmNodeProperties for
+            description. Basically menus can be opened on click only.
           3. added an ability to draw menu from an html node instead of a javascript
             tree, making this script search bot friendly (I hope?).
 */
 /* JSCookMenu v1.31 1. fix a bug on IE with causes submenus to display at the top
-             left corner due to doctype.  The fix was provided by
+             left corner due to doctype. The fix was provided by
              Burton Strauss <Burton@ntopsupport.com>.
 */
 /* JSCookMenu v1.3  1. automatically realign (left and right) the submenu when
@@ -1105,8 +1105,8 @@ function cmGetProperties (obj)
              on the particular menu item, to make it possible for things
              such as search box to be inside the menu.
 */
-/* JSCookMenu v1.25  1. fix Safari positioning issue.  The problem is that all TR elements are located
-             at the top left corner.  Thus, need to obtain the "virtual"
+/* JSCookMenu v1.25  1. fix Safari positioning issue. The problem is that all TR elements are located
+             at the top left corner. Thus, need to obtain the "virtual"
              position of these element could be at.
 */
 /* JSCookMenu v1.24  1. fix window based control hiding bug
@@ -1120,11 +1120,11 @@ function cmGetProperties (obj)
              Suggestion from Dick van der Kaaden <dick@netrex.nl> to
              make the script compatible with IE 5.0
           2. Changed theme files a little to add z-index: 100 for sub
-             menus.  This change is necessary for Netscape to avoid
+             menus. This change is necessary for Netscape to avoid
              a display problem.
           3. some changes to the DOM structure to make this menu working
-             on Netscape 6.0 (tested).  The main reason is that NN6 does
-             not do absolute positioning with tables.  Therefore an extra
+             on Netscape 6.0 (tested). The main reason is that NN6 does
+             not do absolute positioning with tables. Therefore an extra
              div layer must be put around the table.
 */
 /* JSCookMenu v1.21  1. fixed a bug that didn't add 'px' as part of coordinates.
@@ -1133,7 +1133,7 @@ function cmGetProperties (obj)
              theme entry to fix a problem that Netscape sometimes
              render Office theme incorrectly
 */
-/* JSCookMenu v1.2.  1. fix the problem of showing status in Netscape
+/* JSCookMenu v1.2. 1. fix the problem of showing status in Netscape
           2. changed the handler parameters a bit to allow
              string literals to be passed to javascript based
              links
@@ -1142,5 +1142,5 @@ function cmGetProperties (obj)
              could change in the future releases
 */
 /* JSCookMenu v1.1.    added ability to hide controls in IE to show submenus properly */
-/* JSCookMenu v1.01.  cmDraw generates XHTML code */
+/* JSCookMenu v1.01.   cmDraw generates XHTML code */
 /* JSCookMenu v1.0.    (c) Copyright 2002 by Heng Yuan */

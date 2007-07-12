@@ -5,10 +5,10 @@
  * Presents page to edit/add an event/task/journal
  *
  * Notes:
- * If HTMLArea is installed, users can use WYSIWYG editing.  SysAdmin must
- * enable HTML for event full descriptions.  This can be done by installing
- * HTMLArea (which has been discontinued) or FCKEditor.  (Relax!  That's the
- * authors initials.)  See the WebCalendar page at
+ * If HTMLArea is installed, users can use WYSIWYG editing. SysAdmin must
+ * enable HTML for event full descriptions. This can be done by installing
+ * HTMLArea (which has been discontinued) or FCKEditor. (Relax! That's the
+ * authors initials.) See the WebCalendar page at
  * http://www.k5n.us/webcalendar.php?topic=Add-Ons
  * for download and install instructions for these packages.
  */
@@ -163,7 +163,6 @@ if ( $readonly == 'Y' || $is_nonuser ) {
     // If current user is creator of event, then they can edit
     if ( $row[0] == $login )
       $can_edit = true;
-
 
     if ( ! empty ( $override ) && ! empty ( $date ) ) {
       // Leave $cal_date to what was set in URL with date=YYYYMMDD
@@ -376,7 +375,6 @@ if ( $readonly == 'Y' || $is_nonuser ) {
 
  //reminder settings
  $reminder_offset = ($REMINDER_WITH_DATE =='N' ? $REMINDER_OFFSET:0);
-
 
  if ( $eType == 'task' ) {
    $hour = $WORK_DAY_START_HOUR;
@@ -693,7 +691,7 @@ if ( $DISABLE_URL_FIELD != 'Y'  ){  ?>
 <?php }
 echo '<tr><td class="tooltip" title="' . tooltip ( 'date-help' ) . '"><label>';
 echo  ( $eType == 'task'? translate ( 'Start Date' ):translate ( 'Date' ) ) .
-  ':</label></td><td colspan="2">' .  "\n";
+  ':</label></td><td colspan="2">' . "\n";
 echo date_selection ( '', $cal_date );
 
 echo "</td></tr>\n";
@@ -801,7 +799,7 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
   echo '<tr><td class="aligntop bold">';
   if ( $extra_type == EXTRA_MULTILINETEXT )
     echo '<br />' ."\n";
-  echo translate ( $extra_descr ) .  ":</td><td>\n";
+  echo translate ( $extra_descr ) . ":</td><td>\n";
   if ( $extra_type == EXTRA_URL ) {
     echo '<input type="text" size="50" name="' . $extra_name .
       '" value="' . ( empty ( $extras[$extra_name]['cal_data'] ) ?
@@ -1215,7 +1213,6 @@ if ( $useTabs ) { ?>
  </td>
  </tr>
 
-
  <tr id="rptbyweekno" style="visibility:hidden;" title="<?php
    etooltip ( 'repeat-byweekno-help' )?>"><td class="tooltip">
  <?php etranslate ( 'ByWeekNo' )?>:</td><td colspan="2">
@@ -1327,11 +1324,11 @@ if ( $useTabs ) { ?>
       $rem_minutes -= ( $rem_hours * 60 );
 
       echo '<label><input type="text" size="2" name="rem_days" '.
-        "value=\"$rem_days\" /> " .  translate ( 'days' ) . "</label>&nbsp;\n";
+        "value=\"$rem_days\" /> " . translate ( 'days' ) . "</label>&nbsp;\n";
       echo '<label><input type="text" size="2" name="rem_hours" ' .
-        "value=\"$rem_hours\" /> " .  translate ( 'hours' ) . "</label>&nbsp;\n";
+        "value=\"$rem_hours\" /> " . translate ( 'hours' ) . "</label>&nbsp;\n";
       echo '<label><input type="text" size="2" name="rem_minutes" ' .
-        "value=\"$rem_minutes\" /> " .  translate ( 'minutes' ) . "</label>";
+        "value=\"$rem_minutes\" /> " . translate ( 'minutes' ) . "</label>";
       echo "</td></tr>\n";
       echo '<tr>';
     $rem_before = ( empty ( $reminder['before'] ) ||
@@ -1388,13 +1385,12 @@ if ( $useTabs ) { ?>
     echo '&nbsp;&nbsp;&nbsp;<label>' . translate ( 'Every' ) . '</label></td>' ."\n";
     echo '<td class="boxright boxbottom" colspan="2">';
     echo '<label><input type="text" size="2" name="rem_rep_days" '.
-      "value=\"$rem_rep_days\" /> " .  translate ( 'days' ) . "</label>&nbsp;\n";
+      "value=\"$rem_rep_days\" /> " . translate ( 'days' ) . "</label>&nbsp;\n";
     echo '<input type="text" size="2" name="rem_rep_hours" ' .
-      "value=\"$rem_rep_hours\" /><label> " .  translate ( 'hours' ) . "</label>&nbsp;\n";
+      "value=\"$rem_rep_hours\" /><label> " . translate ( 'hours' ) . "</label>&nbsp;\n";
     echo '<input type="text" size="2" name="rem_rep_minutes" ' .
-      "value=\"$rem_rep_minutes\" /><label> " .  translate ( 'minutes' ) .'</label>';
+      "value=\"$rem_rep_minutes\" /><label> " . translate ( 'minutes' ) .'</label>';
     echo "</td></tr></tbody>\n";
-
 
     echo "</table>\n";
 
@@ -1457,5 +1453,4 @@ if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__publ
  //end if ( $can_edit )
 
 echo print_trailer (); ?>
-
 

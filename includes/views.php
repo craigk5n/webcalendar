@@ -9,7 +9,6 @@
  * @package WebCalendar
  */
 
-
 /**
   * Initialize view variables and check permissions.
   * @param int $view_id id for the view
@@ -49,7 +48,6 @@ function view_init ( $view_id )
     $error = print_not_auth ();
   }
 }
-
 
 /**
   * Remove any users from the view list who this user is not

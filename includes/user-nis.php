@@ -2,7 +2,7 @@
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 // This file contains all the functions for getting information
-// about users via NIS.  So, if you want to use an authentication scheme
+// about users via NIS. So, if you want to use an authentication scheme
 // other than the webcal_user table, you can just create a new
 // version of each function found below.
 //
@@ -25,7 +25,7 @@ $admin_can_delete_user = false;
 // $user_external_group = 100;
 $user_external_email = 'domain.com';
 
-// Check to see if a given login/password is valid.  If invalid,
+// Check to see if a given login/password is valid. If invalid,
 // the error message will be placed in $error (a global variable).
 // params:
 //   $login - user login
@@ -296,8 +296,8 @@ function user_update_user_password ( $user, $password ) {
  * Delete a user from the system.
  *
  * This will also delete any of the user's events in the system that have
- * no other participants.  Any layers that point to this user
- * will be deleted.  Any views that include this user will be updated.
+ * no other participants. Any layers that point to this user
+ * will be deleted. Any views that include this user will be updated.
  *
  * @param string $user User to delete
  */

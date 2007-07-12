@@ -6,9 +6,9 @@ var cmTheme =
 {
   // main menu display attributes
   //
-  // Note.  When the menu bar is horizontal,
+  // Note. When the menu bar is horizontal,
   // mainFolderLeft and mainFolderRight are
-  // put in <span></span>.  When the menu
+  // put in <span></span>. When the menu
   // bar is vertical, they would be put in
   // a separate TD cell.
 

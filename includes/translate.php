@@ -5,7 +5,7 @@
  *
  * We load a translation file and store it in the global array $translations.
  * If a cache dir is enabled (in $settings[]), then we serialize $translations
- * and store it as a file in the cache dir.  The next call will unserialize the
+ * and store it as a file in the cache dir. The next call will unserialize the
  * cached file rather than re-parse the file.
  *
  * Although there is a PHP gettext () function, I prefer to use this home-grown
@@ -176,7 +176,7 @@ function load_translation_text () {
   if ( ! file_exists ( $eng_file ) )
     $eng_file = '../' . $eng_file;
 
-  // Check for 'cachedir' in settings.  If found, then we will save
+  // Check for 'cachedir' in settings. If found, then we will save
   // the parsed translation file there as a serialized array.
   // Ensure we use the proper cachedir name.
   if ( ! empty ( $settings['cachedir'] ) && is_dir ( $settings['cachedir'] ) )
@@ -284,7 +284,7 @@ function get_browser_language ( $pref = false ) {
  * @param string $decode Do we want to envoke html_entity_decode?
  *                       We currently only use this with javascript alerts.
  *
- * @return string The translated text, if available.  If no translation is
+ * @return string The translated text, if available. If no translation is
  *                avalailable, then the original untranslated text is returned.
  */
 function translate ( $str, $decode = '' ) {
@@ -424,7 +424,7 @@ function languageToAbbrev ( $name ) {
 
 /*
 If the user sets "Browser-defined" as their language setting, then use the
-$HTTP_ACCEPT_LANGUAGE settings to determine the language.  The array below
+$HTTP_ACCEPT_LANGUAGE settings to determine the language. The array below
 maps browser language abbreviations into our available language files.
 NOTE:  These should all be lowercase on the left side even though the proper
 listing is like "en-US"!  Not sure what the abbreviation is?  Check out:

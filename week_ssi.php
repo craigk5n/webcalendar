@@ -3,8 +3,8 @@
 
  This page is intended to be used as a server-side include for another page.
  (Such as an intranet home page or something.)
- As such, no login is required.  Instead, the login id is either passed in the
- URL "week_ssi.php?login=cknudsen".  Unless, of course, we are in
+ As such, no login is required. Instead, the login id is either passed in the
+ URL "week_ssi.php?login=cknudsen". Unless, of course, we are in
  single-user mode, where no login info is needed.
  If no login info is passed, we check for the last login used.
 */

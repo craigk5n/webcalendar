@@ -11,7 +11,7 @@
  *
  * Comments:
  * Might be nice to allow user to set the category for all imported
- * events.  So, a user could easily export events from the work
+ * events. So, a user could easily export events from the work
  * calendar and import them into WebCalendar with a category
  * "work".
  */

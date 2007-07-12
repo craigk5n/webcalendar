@@ -5,10 +5,10 @@ import java.util.HashMap;
 
 /**
  * ReminderDisplayer
- * 
+ *
  * @author Craig Knudsen
  * @version $Id$
- * 
+ *
  */
 public class ReminderDisplayer extends Thread {
   WebCalendarClient client;

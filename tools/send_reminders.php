@@ -40,7 +40,7 @@
 // This will affect performance, but keep in mind that someone may enter
 // a reminder to be sent 60 days in advance or they may enter a specific
 // date for a reminder to be sent that is more than 30 days before the
-// event's date.  If you're only running this once an hour or less often,
+// event's date. If you're only running this once an hour or less often,
 // then you could certainly change this to look a whole 365 days ahead.
 $DAYS_IN_ADVANCE = 30;
 // $DAYS_IN_ADVANCE = 365;
@@ -305,7 +305,7 @@ function send_reminder ( $id, $event_date ) {
     return;
   }
 
-  // Send mail.  We send one user at a time so that we can switch
+  // Send mail. We send one user at a time so that we can switch
   // languages between users if needed (as well as HTML vs plain text).
   $mailusers = $recipients = array ();
   if ( isset ( $single_user ) && $single_user == 'Y' ) {
@@ -506,7 +506,7 @@ function log_reminder ( $id, $times_sent ) {
       array ( time (), $times_sent, $id ) );
 }
 
-// Process an event for a single day.  Check to see if it has a reminder,
+// Process an event for a single day. Check to see if it has a reminder,
 // when it needs to be sent and when the last time it was sent.
 function process_event ( $id, $name, $start, $end, $new_date = '' ) {
   global $debug, $is_task, $only_testing;
@@ -579,7 +579,7 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
   remind_time = ' . $remind_time . '
   lastsent = ' . $lastsent . '
   pointless = ' . $pointless . '
-  is_task = ' .  ( $is_task ? 'true' : 'false' ) . '<br />';
+  is_task = ' . ( $is_task ? 'true' : 'false' ) . '<br />';
 
     if ( $times_sent < ( $repeats + 1 ) &&
         time () >= $remind_time && $lastsent <= $remind_time &&

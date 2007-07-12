@@ -89,7 +89,7 @@ function transferColor () {
   setCookie("webcalendar_custom_colors",precol.join(","),expires);
   thisInput.value = '#' + document.getElementById("htmlcolor").value.toUpperCase ();
   if (thisInput.onchange) {
-  // This updates the color swatch for this color input.  It relies on the
+  // This updates the color swatch for this color input. It relies on the
   // <input>s of the prefform having onkeyup="updateColor(this);" as an
   // attribute
     thisInput.onchange ();

@@ -15,7 +15,7 @@ Have you created the database tables as specified in the
     array (), false, false );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
-      // Found database.  All is peachy.
+      // Found database. All is peachy.
       dbi_free_result ( $res );
     else {
       // Error accessing table.

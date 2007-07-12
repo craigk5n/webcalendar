@@ -17,7 +17,6 @@
 #
 #######################################################################
 
-
 my @files = ( );
 my @questions = ( );
 my @answers = ( );
@@ -83,7 +82,6 @@ for ( $i = 0; $i < @questions; $i++ ) {
 }
 print "</dl>\n";
 
-
 exit 0;
 
 #######################################################################
@@ -96,7 +94,6 @@ sub makeCVSURL {
   return "http://cvs.sourceforge.net/viewcvs.py/*checkout*/webcalendar/webcalendar/docs/" . $f .
     "?rev=HEAD&amp;content-type=text/html#" . $anchor;
 }
-
 
 sub process_file {
   my ( $f ) = @_;
@@ -155,7 +152,4 @@ sub process_file {
     }
   }
 }
-
-
-
 

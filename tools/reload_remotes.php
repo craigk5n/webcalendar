@@ -15,7 +15,7 @@
  * To set this up in cron, add a line like the following in your crontab
  * to run it every hour:
  *   1 * * * * php /some/path/here/reload_remotes.php
- * Of course, change the path to where this script lives.  If the
+ * Of course, change the path to where this script lives. If the
  * php binary is not in your $PATH, you may also need to provide
  * the full path to "php".
  * On Linux, just type crontab -e to edit your crontab.
@@ -116,7 +116,7 @@ if ( $REMOTES_ENABLED == 'Y' ) {
         // import new events
         if ( $debug )
           echo translate ( 'Importing events for' ) . ": $calUser<br />\n"
-           .          translate ( 'From' ) . ": $cal_url<br />\n";
+           . translate ( 'From' ) . ": $cal_url<br />\n";
         import_data ( $data, $overwrite, $type );
         if ( $debug )
           echo translate ( 'Events successfully imported' )

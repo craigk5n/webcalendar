@@ -18,13 +18,11 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 // - user_get_users (returns array of users)
 // - user_load_variables (loads info about a user)
 
-
 // *** NOTE:
 // webcal must be installed somewhere in the postnuke directory to read
 // postnuke's cookie OR edit postnuke to make the cookie global:
 //   change line 85 in includes/pnSession.php to:
 //      ini_set('session.cookie_path', '/');
-
 
 /************************* Config ***********************************/
 
@@ -105,7 +103,6 @@ unset($app_config);
 
 /********************************************************************/
 
-
 // Checks to see if the user is logged into the application
 // returns: login id
 function user_logged_in () {
@@ -127,7 +124,6 @@ function user_logged_in () {
 
   return $login;
 }
-
 
 //  Checks to see if the session has a user associated with it and
 //  if the session is timed out
@@ -169,7 +165,6 @@ function pn_active_session($sid) {
   return $login;
 }
 
-
 //  Updates the session table to set the last access time to now
 function pn_update_session($sid) {
   global $pn_session_table;
@@ -188,7 +183,6 @@ function pn_update_session($sid) {
 
   return true;
 }
-
 
 // Searches postnuke database for $pn_admin_gid and returns an array of the group members.
 // Do this search only once per request.
@@ -217,7 +211,6 @@ function get_admins () {
 
   return $cached_admins;
 }
-
 
 /// Get a list of users and return info in an array.
 // returns: array of users
@@ -263,7 +256,6 @@ function user_get_users ( $publicOnly=false ) {
   usort ( $ret, 'sort_users');
   return $ret;
 }
-
 
 // Load info about a user (first name, last name, admin) and set globally.
 // params:
@@ -319,7 +311,6 @@ function user_load_variables ( $login, $prefix ) {
   return true;
 }
 
-
 /*********************************************************************
  *
  *        Stuff that should stay the same for all user-app files
@@ -344,7 +335,6 @@ function app_login_screen( $return ) {
   exit;
 }
 
-
 // Test if a user is an admin, that is: if the user is a member of a special
 // group in the application database
 // params:
@@ -359,7 +349,6 @@ function user_is_admin($uid,$Admins) {
     return 'N';
   }
 }
-
 
 // Delete a user from the webcalendar tables. (NOT from the application)
 // We assume that we've already checked to make sure this user doesn't

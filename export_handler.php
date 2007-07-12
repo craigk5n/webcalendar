@@ -5,8 +5,8 @@
  * Handler for exporting webcalendar events to various formats.
  *
  * Comments:
- * All-day events and untimed events are treated differently.  An
- * all-day event is a 12am event with duration 24 hours.  We store
+ * All-day events and untimed events are treated differently. An
+ * all-day event is a 12am event with duration 24 hours. We store
  * untimed events with a start time of -1 in the webcalendar database.
  *
  * TODO:

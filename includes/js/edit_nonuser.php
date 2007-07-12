@@ -3,7 +3,6 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 ?>
 var validform = true;
 
-
 function valid_form ( form ) {
   var name = form.nid.value;
   var fname = form.nfirstname.value;
@@ -26,7 +25,6 @@ function valid_form ( form ) {
   return validform;
 
 }
-
 
 function check_name () {
   var url = 'ajax.php';

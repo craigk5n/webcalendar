@@ -99,7 +99,7 @@ h2 {
 <a name="intro"></a>
 <h2>Introduction</h2>
 
-<p>WebCalendar is written in PHP.  A minimum of PHP 4.0.1 is
+<p>WebCalendar is written in PHP. A minimum of PHP 4.0.1 is
 required to run WebCalendar due to the use of classes and sessions.
 </p>
 
@@ -114,13 +114,13 @@ required to run WebCalendar due to the use of classes and sessions.
 <dl>
   <dt><a href="http://www.perl.org">perl</a></dt>
   <dd>Perl is used to check translation files to see what translations are
-  missing.  If you are using Windows, perl is included as part of the <a
+  missing. If you are using Windows, perl is included as part of the <a
     href="http://www.cygwin.com">Cygwin</a> package.</dd>
 
   <dt>make</dt>
   <dd>The "make" command is used when generating WebCalendar documentation in
-  the <tt>docs</tt> directory.  The "make" command is standard on Linux if you
-  install certain development packages.  If you are using Windows, make is
+  the <tt>docs</tt> directory. The "make" command is standard on Linux if you
+  install certain development packages. If you are using Windows, make is
   included as part of the <a href="http://www.cygwin.com">Cygwin</a> package.</dd>
 
   <dt><a href="http://www.gnu.org/software/patch/patch.html">patch</a></dt>
@@ -136,7 +136,7 @@ required to run WebCalendar due to the use of classes and sessions.
 
   <dt>Internet Explorer, Mozilla/Firefox, and Apple Safari</dt>
   <dd>We try to test on all three of these platforms whenever we make any HTML
-  or JavaScript changes.  If you do not have access to all these, please test
+  or JavaScript changes. If you do not have access to all these, please test
   your changes on as many of these browsers as you have access to.</dd>
 </dl>
 
@@ -152,19 +152,19 @@ include perl, make, patch, diff and cvs.
 <a name="getcode"></a>
 <h2>Getting The Code</h2>
 
-<p>You should always be using the latest code in CVS.  You can obtain the
-latest code using anonymous CVS.  (You do not need to be an authorized
-WebCalendar developer).  Use one of the following commands to checkout the 
+<p>You should always be using the latest code in CVS. You can obtain the
+latest code using anonymous CVS. (You do not need to be an authorized
+WebCalendar developer). Use one of the following commands to checkout the
 latest code from CVS:</p>
 
-<pre>cvs -d:pserver:anonymous@webcalendar.cvs.sourceforge.net:/cvsroot/webcalendar login 
+<pre>cvs -d:pserver:anonymous@webcalendar.cvs.sourceforge.net:/cvsroot/webcalendar login
 cvs -z3 -d:pserver:anonymous@webcalendar.cvs.sourceforge.net:/cvsroot/webcalendar co -P webcalendar</pre>
 
-<p>This will create a <tt>webcalendar</tt> directory.  NOTE:  To be useful, you
+<p>This will create a <tt>webcalendar</tt> directory. NOTE: To be useful, you
 will need to upload this directory, with all sub-directories (except the ones
 named 'CVS') and files, to your web server.</p>
 
-<p>You only need to perform this checkout once.  After the initial checkout,
+<p>You only need to perform this checkout once. After the initial checkout,
 you can update your code with the following command (run this command from
 inside the top level WebCalendar directory):</p>
 
@@ -175,7 +175,7 @@ your changes with any changes to the same file in the new code from CVS.</p>
 
 <p>For example, if you modified the <tt>includes/functions.php</tt> file on
 your system and a WebCalendar developer also modified this file in CVS, then
-when you perform the CVS update, the changes will be merged.  If the merge
+when you perform the CVS update, the changes will be merged. If the merge
 fails, you will see a file with a <tt>.rej</tt> extension and another with
 <tt>.orig</tt>.</p>
 
@@ -199,9 +199,9 @@ have not been 100% enforced, so you will see exceptions):</p>
     Classes should be defined in files contained in <tt>includes/classes/</tt>.
     Filenames should be of the form ClassName.class. There should only be one
     class defined per file.<br />
-    If incorporating a class from another project (i.e. phpMailer ), it is 
+    If incorporating a class from another project (i.e. phpMailer ), it is
     acceptable to use the original naming conventions and filenames. This will
-    allow for easy upgrading and help avoid any GNU license issues. 
+    allow for easy upgrading and help avoid any GNU license issues.
   </dd>
 
   <dt>Method/Function Names</dt>
@@ -243,9 +243,9 @@ have not been 100% enforced, so you will see exceptions):</p>
       <li>webcal_entry</li>
     </ul>
   </dd>
-  
+
   <dt>Preference Value Names</dt>
-  <dd>These are variables stored in webcal_config and webcal_user_pref tables. 
+  <dd>These are variables stored in webcal_config and webcal_user_pref tables.
   Names should be in uppercase with words_separated_by_underscores. Examples:
     <ul class="example">
       <li>ALLOW_HTML_DESCRIPTION</li>
@@ -280,8 +280,8 @@ they have not been 100% implemented).</p>
 
   <dt>PHP function comments</dt>
   <dd>Function documentation is generated using <a href="http://www.phpdoc.org/"
-    title="phpDocumentor">phpDocumentor</a>.  Each function should be preceded
-  by a DocBlock.  See the phpDocumentor website for <a
+    title="phpDocumentor">phpDocumentor</a>. Each function should be preceded
+  by a DocBlock. See the phpDocumentor website for <a
     href="http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#basics.docblock"
     title="DocBlocks">information about DocBlocks and DocBlock syntax</a>, and
   see <a href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/includes/functions.php?revision=1.389&amp;view=markup"><tt>includes/functions.php</tt></a> for examples.</dd>
@@ -295,16 +295,16 @@ they have not been 100% implemented).</p>
    Any of the following is acceptable based on logic complexity:
 
     <pre>bar = ( foo == 1 ? true : false );
- 
+
  <b>or</b>
- 
+
 if ( $foo == 1 )
    $pro = true;
  else
    $con = true;
- 
+
  <b>or</b>
- 
+
 if ( $bar &gt; 0 ) {
    $drink++;
    $glass = 'full';
@@ -317,33 +317,32 @@ if ( $bar &gt; 0 ) {
   <dt>Function Calls/Declarations</dt>
   <dd>Use one space both inside and outside of parenthesis ()
 
-
     <pre>Declaration: function getGetValue ( $name ) {
 Call: bar = getGetValue ( $name );</pre>
   </dd>
    <dt>Single quotes vs double quotes</dt>
    <dd>With the exception of XHTML attributes, use single quotes where possible.
- 
- <pre> echo 'This is an example of single quoting.  ';
- echo 'But, sometimes it\'s not possible without escaping.  ';
- echo "Also it's not possible with $embedded variables.  ";
- echo 'Control characters such as linefeed "\n" and tab "\t" don\'t work either.  ';
- echo 'However, it\'s preferable to concatenate' . $variables . 'like this, anyway.  '
+
+ <pre> echo 'This is an example of single quoting. ';
+ echo 'But, sometimes it\'s not possible without escaping. ';
+ echo "Also it's not possible with $embedded variables. ";
+ echo 'Control characters such as linefeed "\n" and tab "\t" don\'t work either. ';
+ echo 'However, it\'s preferable to concatenate' . $variables . 'like this, anyway. '
  echo '"Nested quotes", she said, "are also acceptable where needed.
    Just try to use single quotes as the outer set."'</pre>
    </dd>
- 
+
    <dt>Use of the dot connector. Also called concatenation.</dt>
    <dd>The above example is faster if written this way:
- 
- <pre>echo 'This is an example of single quoting.  '
- . 'But, sometimes it\'s not possible without escaping.  '
- . "Also it's not possible with $embedded variables.  "
- . 'Control characters such as "\n" (linefeed) and "\t" (tab) don\'t work either.  '
- . 'However, it\'s preferable to concatenate' . $variables . 'like this, anyway.  '
+
+ <pre>echo 'This is an example of single quoting. '
+ . 'But, sometimes it\'s not possible without escaping. '
+ . "Also it's not possible with $embedded variables. "
+ . 'Control characters such as "\n" (linefeed) and "\t" (tab) don\'t work either. '
+ . 'However, it\'s preferable to concatenate' . $variables . 'like this, anyway. '
  . '"Nested quotes", she said, "are also acceptable where needed.
  Just try to use single quotes as the outer set."'</pre>
- 
+
  </dd>
 
 </dl>
@@ -356,7 +355,7 @@ Call: bar = getGetValue ( $name );</pre>
   <dt>ChangeLog</dt>
   <dd>If you have access to commit your changes to CVS, please
   put an entry at the top of the ChangeLog file that describes the
-  change.  If the change fixes a specific SourceForge bug, or implements
+  change. If the change fixes a specific SourceForge bug, or implements
   a patch or Feature Request, then include the appropriate SourceForge
   id in the description.</dd>
 
@@ -374,8 +373,8 @@ Call: bar = getGetValue ( $name );</pre>
 <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a> area.
 Patches are typically a zip or tar.gz of .patch files created
 with the UNIX/Cygwin diff program.
-Here's how to do that.  First, you must have a copy of the unmodified
-WebCalendar source code.  So, let's say you are using version
+Here's how to do that. First, you must have a copy of the unmodified
+WebCalendar source code. So, let's say you are using version
 1.1.1 of WebCalendar, and you have the code for it in
 a directory <tt>WebCalendar-1.1.1</tt> along side your own
 directory that includes your changes called <tt>calendar.modified</tt>.
@@ -390,7 +389,7 @@ and write up your commentary. Then 'Browse' to your file, enter a short tag line
 and press 'Submit'.
 </p>
 <p>Note: Cygwin's diff seems to have some issues with DOS vs UNIX
-line feeds.  If you are using Cygwin on Windows, it's best to just
+line feeds. If you are using Cygwin on Windows, it's best to just
 remove all the carriage returns:
 </p>
 <pre>
@@ -399,11 +398,11 @@ diff -drw WebCalendar-1.1.1 calendar.modified | tr -d '\015' > mychange.patch
 <p>Notes:</p>
 <ul>
   <li>It is not necessary to modify ChangeLog or NEWS as part of your
-      patch.  More than likely, your changes to these files will conflict
+      patch. More than likely, your changes to these files will conflict
       with other patches, so it's best to not include them.
   </li>
   <li>You don't need to update the translation files as part of your
-      patch, but it is helpful.  In particular, the main translation
+      patch, but it is helpful. In particular, the main translation
       file (<tt>translations/English-US.txt</tt>) can be updated
       as part of your patch.</li>
   <li>If you are developing against the latest CVS code rather than
@@ -417,7 +416,7 @@ diff -drw WebCalendar-1.1.1 calendar.modified | tr -d '\015' > mychange.patch
 <h2>Translations and Languages</h2>
 
 <p>When adding or modifying WebCalendar code, all displayed text should be
-translatable.  The following tips will ensure new text can be translated
+translatable. The following tips will ensure new text can be translated
 quickly and efficiently.</p>
 
 <dl>
@@ -442,8 +441,8 @@ quickly and efficiently.</p>
   http://us3.php.net/manual/en/function.htmlentities.php</a></dd>
 
   <dt>Updating Language Files</dt>
-  <dd>When text is added or updated, requiring new translations, the <tt>  
-  translations/English-US.txt</tt> file 
+  <dd>When text is added or updated, requiring new translations, the <tt>
+  translations/English-US.txt</tt> file
   should be updated as a minimum. This file will be used as the basis for updating
   the other language files and needs to be up to date. From within the <tt>tools</tt> directory,
   the  following command will search through the WebCalendar source files and
@@ -451,7 +450,7 @@ quickly and efficiently.</p>
 
   Language files should always be committed to CVS in Unix format to save space.
   <pre>perl update_translation.pl English-US.txt</pre>
-</dd>  
+</dd>
 </dl>
 
 <div class="top"><a href="#" target="_top">top</a></div>
@@ -460,37 +459,37 @@ quickly and efficiently.</p>
 <dl>
 <!-- START FAQ: Developing -->
   <dt>Why aren't you using PHP sessions?</dt>
-  <dd>We are still considering using PHP4 sessions.  In fact, the
-  <tt>install/index.php</tt> page <em>does</em> use PHP sessions.  The
+  <dd>We are still considering using PHP4 sessions. In fact, the
+  <tt>install/index.php</tt> page <em>does</em> use PHP sessions. The
   cookie-based solution that WebCalendar uses is simple, and it will work with
   all versions of PHP.</dd>
 
   <dt>Why aren't you using ADODB for database access?</dt>
-  <dd>Again, this would be overkill for what we need.  ADODB is a fairly large
+  <dd>Again, this would be overkill for what we need. ADODB is a fairly large
   project, so I'm partial to my leaner dbi4php.php solution.</dd>
 
   <dt>Why aren't you using the PEAR database functions?</dt>
-  <dd>WebCalendar pre-dates the PEAR database functions.  There does not seem
+  <dd>WebCalendar pre-dates the PEAR database functions. There does not seem
   to be sufficient reason to switch from our existing code at this point.</dd>
 
   <dt>Why aren't you using a template engine like smarty?</dt>
-  <dd>WebCalendar pre-dates most of the template engines out there.  We are
+  <dd>WebCalendar pre-dates most of the template engines out there. We are
   currently evaluating some of the templating options and may consider moving
   to one of the template systems in the future.</dd>
 
   <dt>How do I install a patch?</dt>
-  <dd>Different patches are applied differently.  Some patches just contain an
-  updated file.  In that case, you should be able to just replace the old file
+  <dd>Different patches are applied differently. Some patches just contain an
+  updated file. In that case, you should be able to just replace the old file
   with the new (assuming the new file and your install are based on the same
   version of WebCalendar).
   <br /><br />
   Others are patch files, which usually have a <tt>.diff</tt> or
-  <tt>.patch</tt> file extension.  In order to use one of these files, you need
+  <tt>.patch</tt> file extension. In order to use one of these files, you need
   the <a href="http://www.gnu.org/software/patch/patch.html">GNU patch</a>
-  program.  (This should be installed on all Linux systems and you can get a
+  program. (This should be installed on all Linux systems and you can get a
   version for Windows. I use the patch program that comes with <a
     href="http://www.cygwin.com">Cygwin</a> on windows.) I would recommend
-  testing the patch on your install first using the <tt>--dry-run</tt> option. 
+  testing the patch on your install first using the <tt>--dry-run</tt> option.
   <br /><br />
   For example, if the patch file is called <tt>calmods.diff</tt>, then you
   would use:
@@ -499,12 +498,12 @@ quickly and efficiently.</p>
   <pre>patch --dry-run -p1 &lt; calmods.diff</pre>
   <br /><br />
   If it goes through all the changes successfully, do the same command without
-  the <tt>--dry-run</tt> option to install the patch.  If it says "hunk
+  the <tt>--dry-run</tt> option to install the patch. If it says "hunk
   failed", then the patch cannot be applied without hand-merging files. This
   essentially means that the patch was based on a version of WebCalendar that
   is too different than the version that you have installed, so it was unable
   to determine how to apply some of the changes in the patch file.</dd>
- 
+
 <!-- END FAQ -->
 </dl>
 

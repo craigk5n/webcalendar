@@ -157,7 +157,7 @@ for ( $i = 0, $cnt = count ( $tabs_ar ); $i < $cnt; $i += 3 ) {
 }
 $tmp = ( $prad ? $s['LANGUAGE'] : $prefarray['LANGUAGE'] );
 while ( list ( $key, $val ) = each ( $languages ) ) {
-  // Don't allow users to select "browser-defined".  We want them to pick
+  // Don't allow users to select "browser-defined". We want them to pick
   // a language so that when we send reminders (done without the benefit
   // of a browser-preferred language), we'll know which language to use.
   // DO let them select browser-defined for the public user or NUC.

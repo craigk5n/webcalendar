@@ -7,7 +7,7 @@ import org.w3c.dom.NodeList;
 
 /**
  * The Reminder objects.
- * 
+ *
  * @author Craig Knudsen
  * @version $Id$
  */

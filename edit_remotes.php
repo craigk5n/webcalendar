@@ -1,6 +1,6 @@
 <?php
 /* Allows a user to specify a remote calendar by URL that can be imported
- * manually into the NUC calendar specified.  The user will also be allowed to
+ * manually into the NUC calendar specified. The user will also be allowed to
  * create a layer to display this calendar on top of their own calendar.
  *
  * @author Ray Jones <rjones@umces.edu>

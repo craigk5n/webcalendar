@@ -38,12 +38,12 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   exit;
 }
 
-/* Configurable settings for this file.  You may change the settings below to
- * change the default settings.  These settings will likely move into the
+/* Configurable settings for this file. You may change the settings below to
+ * change the default settings. These settings will likely move into the
  * System Settings in the web admin interface in a future release.
  */
 
-// The HTML target window to use when clicking on the minical.  You should be
+// The HTML target window to use when clicking on the minical. You should be
 // able to set this to the desired frame or window to receive the results.
 $MINI_TARGET = '_blank';
 

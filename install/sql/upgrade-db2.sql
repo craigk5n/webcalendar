@@ -288,4 +288,3 @@ CREATE TABLE webcal_timezones (
   PRIMARY KEY  ( tzid )
 );
 
-

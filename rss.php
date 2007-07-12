@@ -29,7 +29,7 @@
  *       repeats=2 outputs repeating events but suppresses display of
  *           2nd & subsequent occurences of daily events
  *   - user: login name of calendar to display (instead of public
- *     user).  You must have the
+ *     user). You must have the
  *     following System Settings configured for this:
  *       Allow viewing other user's calendars: Yes
  *       Public access can view others: Yes
@@ -80,7 +80,6 @@ load_global_settings ();
 
 $WebCalendar->setLanguage ();
 
-
 if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth ();
@@ -88,7 +87,7 @@ if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
 }
 /*
  *
- * Configurable settings for this file.  You may change the settings
+ * Configurable settings for this file. You may change the settings
  * below to change the default settings.
  * These settings will likely move into the System Settings in the
  * web admin interface in a future release.
@@ -189,7 +188,6 @@ if ( $load_layers ) {
   load_user_layers ( $username );
 }
 
-
 // Calculate date range
 $date = getValue ( 'date', '-?[0-9]+', true );
 if ( empty ( $date ) || strlen ( $date ) != 8 ) {
@@ -230,7 +228,6 @@ if ( ! empty ( $x ) ) {
 $endTime = mktime ( 0, 0, 0, $thismonth, $thisday + $numDays -1,
   $thisyear );
 $endDate = date ( 'Ymd', $endTime );
-
 
 /* Pre-Load the repeated events for quicker access */
 if (  $allow_repeats == true )
@@ -323,7 +320,6 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
                $reventIds[]=$rentries[$j]->getID ();
           }
 
-
       // Prevent non-Public events from feeding
       // Prevent a repeating event from displaying if the original event
       // has already been displayed; prevent 2nd & later recurrence
@@ -335,7 +331,6 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
           //show repeating events only once
           if ( $rentries[$j]->getrepeatType ()== 'daily' )
                   $reventIds[]=$rentries[$j]->getID ();
-
 
         echo "\n<item>\n";
         $unixtime = date_to_epoch ( $rentries[$j]->getDateTime () );

@@ -3,7 +3,7 @@
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 // NOTE: This file is included within the print_trailer function found in
-// includes/init.php.  If you add a global variable somewhere in this file, be
+// includes/init.php. If you add a global variable somewhere in this file, be
 // sure to declare it global in the print_trailer function or use $GLOBALS[].
 $tret = '';
 if ( access_can_access_function ( ACCESS_TRAILER ) ) {
@@ -109,7 +109,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
         // If not, the only way to view another user's calendar is a custom view.
         ( ! access_is_enabled () ||
           access_can_access_function ( ACCESS_ANOTHER_CALENDAR ) ) ) {
-      // Get count of users this user can see.  if > 1, then...
+      // Get count of users this user can see. If > 1, then...
       $ulist = array_merge ( get_my_users (), get_my_nonusers ( $login, true ) );
       if ( count ( $ulist ) > 1 ) {
         $calStr = translate ( 'Another Users Calendar' );
@@ -257,8 +257,8 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   // Manage Calendar links.
   if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' )
     $admincals = get_nonuser_cals ( $login );
-  // Make sure they have access to either month/week/day view.  If they do not,
-  // then we cannot create a URL that shows just the boss' events.  So, we
+  // Make sure they have access to either month/week/day view. If they do not,
+  // then we cannot create a URL that shows just the boss' events. So, we
   // would not include any of the "manage calendar of" links.
   $have_boss_url = true;
   if ( ! access_can_access_function ( ACCESS_MONTH ) && !
@@ -286,9 +286,9 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       if ( ! empty ( $user ) && $user == $l )
         continue;
 
-      // Use the preferred view if it is day/week/month/year.php.  Try not to
+      // Use the preferred view if it is day/week/month/year.php. Try not to
       // use a user-created view because it might not display the proper user's
-      // events.  (Fallback to month.php if this is true.)  Of course, if this
+      // events. (Fallback to month.php if this is true.)  Of course, if this
       // user cannot view any of the standard D/W/M/Y pages, that will force us
       // to use the view.
       $xurl = get_preferred_view ( '', 'user=' . $l );

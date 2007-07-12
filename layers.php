@@ -43,7 +43,6 @@ print_header ();
 
 ob_start ();
 
-
 if ( $ALLOW_VIEW_OTHER != 'Y' )
   echo print_not_auth ();
 else {

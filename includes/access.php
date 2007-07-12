@@ -69,8 +69,8 @@ define ( 'ACCESS_NUMBER_FUNCTIONS', 27 ); // How many function did we define?
 /*#@-*/
 
 // The following pages will be handled differently than the others since they
-// have different uses.  For example, edit_user.php adds a user when the user is
-// an admin.  If the user is not an admin, it updates account info. Register is
+// have different uses. For example, edit_user.php adds a user when the user is
+// an admin. If the user is not an admin, it updates account info. Register is
 // just for new users. Most of the pages have dual uses, so we will have access
 // checks within these files.
 $GLOBALS['page_lookup_ex'] = array (
@@ -88,10 +88,10 @@ $GLOBALS['page_lookup_ex'] = array (
   );
 
 /* The following array provides a way to convert a page filename into a numeric
- * $ACCESS_XXX number.  The array key is a regular expression.  If the page
+ * $ACCESS_XXX number. The array key is a regular expression. If the page
  * matches the regular expression, then it will use the corresponding access id.
  * There are some pages that have more than one use (edit_template.php is used
- * for editing a report and editing the custom header).  These pages will be
+ * for editing a report and editing the custom header). These pages will be
  * handled differently and are listed in the $page_lookup_ex[] array.
  * @global array $GLOBAL['page_lookup']
  * @name $page_lookup

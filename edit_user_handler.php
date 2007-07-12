@@ -2,7 +2,7 @@
 /* $Id$ */
 
 // There is the potential for a lot of mischief from users trying to access this
-// file in ways they shouldn't.  Users may try to type in a URL to get around
+// file in ways they shouldn't. Users may try to type in a URL to get around
 // functions that are not being displayed on the web page to them.
 include_once 'includes/init.php';
 load_user_layers ();
@@ -19,7 +19,7 @@ $blankUserStr = translate ( 'Username cannot be blank.' );
 
 // Don't let them edit users if they'e not authorized.
 if ( empty ( $user ) ) {
-  // Asking to create a new user.  Must be admin...
+  // Asking to create a new user. Must be admin...
   if ( ! $is_admin && ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) )
     send_to_preferred_view ();
 
@@ -74,7 +74,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
         else {
           if ( addslashes ( $user ) != $user )
             // This error should get caught before here anyhow,
-            // so no need to translate this.  This is just in case. :-)
+            // so no need to translate this. This is just in case. :-)
             $error = 'Invalid characters in login.';
           else {
             if ( empty ( $user ) )
@@ -96,7 +96,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
           $error = $notAuthStr;
         else {
           // Don't allow a user to change themself to an admin by setting
-          // uis_admin in the URL by hand.  They must be admin beforehand.
+          // uis_admin in the URL by hand. They must be admin beforehand.
           if ( ! $is_admin )
             $uis_admin = 'N';
 

@@ -14,7 +14,7 @@
  *    EXTRA_USER - must be a calendar user name; will be presented
  *                 with a pulldown
  *    EXTRA_RADIO - will display 1-n radio controls
- *    EXTRA_SELECTLIST - allows a custom selection list.  Can use
+ *    EXTRA_SELECTLIST - allows a custom selection list. Can use
  *      this to specify a list of possible locations, etc.
  *    EXTRA_CHECKBOX - will display a checkbox control
  *

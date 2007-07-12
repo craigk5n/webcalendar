@@ -120,7 +120,6 @@ class RepeatingEvent extends Event {
    */
   var $_repeatAllDates;
 
-
   /**
    * Creates a new RepeatingEvent.
    *
@@ -175,7 +174,6 @@ class RepeatingEvent extends Event {
     parent::$parent ( $name, $description, $date, $time, $id, $extForID,
       $priority, $access, $duration, $status, $owner, $category, $login,
       $cal_type, $location, $url, $due_date, $due_time, $percent, $moddate, $modtime );
-
 
     $this->_repeatType = $rpt_type;
     $this->_repeatEnd = $end;

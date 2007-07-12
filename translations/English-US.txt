@@ -13,26 +13,26 @@
 # Followed by as many as needed:
 #
 # English phrase: translation
-#   (One to a line.  WITHOUT the leading "# ".
+#   (One to a line. WITHOUT the leading "# ".
 #   The "English phrase: ", including the colon ":", is provided by the
-#   WebCalendar developers.  Your part is the "translation".)
+#   WebCalendar developers. Your part is the "translation".)
 #
 # The tools directory contains two perl scripts to help you:
 #   - check_translation.pl
 #       indicates if all text has been successfully translated.
 #   - update_translation.pl
 #       will parse the program files to find all translate ( 'phrase' ) and
-#       tooltip ( 'phrase' ).  It will arrange the phrases according to the page
-#       (file) that contains the first occurance.  Optionally, it can tag the
+#       tooltip ( 'phrase' ). It will arrange the phrases according to the page
+#       (file) that contains the first occurance. Optionally, it can tag the
 #       phrases that are not yet translated by putting
 #       << MISSING >>
-#       on the line above the phrase.  And, if the phrase is an abbreviation,
+#       on the line above the phrase. And, if the phrase is an abbreviation,
 #       it will include the full English text on the line below the phrase.
 #
-# Note: I'm attempting to cut down on the overall file size.  If the "translation"
+# Note: I'm attempting to cut down on the overall file size. If the "translation"
 #       word / phrase is identical in your language and English, just use an "=" sign.
 #
-# Note:  You will notice the entry for "May_" below.  There is a reason for this.
+# Note:  You will notice the entry for "May_" below. There is a reason for this.
 #        Translate "May_" to the full month name and "May" to the,
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
@@ -63,7 +63,6 @@ __month__ __yyyy__: __month__ __yyyy__
 
 ################################################################################
 ################################################################################
-
 
 ########################################
 # Page: about.php

@@ -16,7 +16,7 @@ import org.xml.sax.SAXException;
 
 /**
  * Contains a list of events.
- * 
+ *
  * @author Craig Knudsen
  * @version $Id$
  */
@@ -26,7 +26,7 @@ public class EventList extends Vector {
   /**
    * Construct the list of events from the specified XML returned from the
    * WebCalendar server.
-   * 
+   *
    * @param xmlContent
    *          XML returned from WebCalendar server
    * @param tag

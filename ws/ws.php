@@ -8,7 +8,7 @@
  * @package WebCalendar
  */
 
-/* Initialize web service.  This will take care of user validation.
+/* Initialize web service. This will take care of user validation.
  */
 function ws_init () {
   global $admin_can_add_user, $admin_can_delete_user,
@@ -58,7 +58,7 @@ function ws_escape_xml ( $str ) {
   return ( str_replace ( '<', '&lt;', str_replace ( '>', '&gt;', $str ) ) );
 }
 
-/* Send a single event.  This will include all participants (with status).
+/* Send a single event. This will include all participants (with status).
  */
 function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   global $ALLOW_EXTERNAL_USERS, $DISABLE_PARTICIPANTS_FIELD,

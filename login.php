@@ -120,7 +120,7 @@ if ( $single_user == 'Y' ) {
       // other apps that may wish to find out what the last calendar
       // login was, so they can use week_ssi.php as a server-side include.
       // As such, it's not a security risk to have it un-encoded since it
-      // is not used to allow logins within this app.  It is used to
+      // is not used to allow logins within this app. It is used to
       // load user preferences on the login page (before anyone has
       // logged in) if $REMEMBER_LAST_LOGIN is set to "Y" (in admin.php).
       if ( ! empty ( $remember ) && $remember == 'yes' ) {

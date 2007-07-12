@@ -18,7 +18,7 @@ import us.k5n.webcalendar.WebCalendarClient;
 
 /**
  * The ActivityLogPanel creates the Activity Log JPanel display.
- * 
+ *
  * @author Craig Knudsen, craig@k5n.us
  * @version $Id$
  */
@@ -70,7 +70,7 @@ public class ActivityLogPanel extends JPanel {
      * b.addActionListener ( // Anonymous class as a listener. new
      * ActionListener () { public void actionPerformed ( ActionEvent e ) { //
      * TODO... } } );
-     * 
+     *
      * b = new JButton ( "Previous Page" ); b.setEnabled ( false ); cmdPanel.add (
      * b ); b.addActionListener ( // Anonymous class as a listener. new
      * ActionListener () { public void actionPerformed ( ActionEvent e ) { //

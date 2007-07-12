@@ -129,7 +129,7 @@ if ( $is_nonuser_admin ) {
   }
   /*
  This Activity Log link shows ALL activity for ALL events, so you really need
- to be an admin user for this.  Enabling "Activity Log" in UAC just gives you
+ to be an admin user for this. Enabling "Activity Log" in UAC just gives you
  access to the log for your _own_ events or other events you have access to.
  */
   if ( $is_admin && ( ! access_is_enabled () ||

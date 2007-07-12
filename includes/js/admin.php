@@ -115,7 +115,6 @@ function public_handler () {
   }
 }
 
-
 // Gets called on page load and when user changes setting for
 // "Allow external users".
 function eu_handler () {

@@ -378,8 +378,8 @@ function user_update_user_password ( $user, $password ) {
  * Delete a user from the system.
  *
  * This will also delete any of the user's events in the system that have
- * no other participants.  Any layers that point to this user
- * will be deleted.  Any views that include this user will be updated.
+ * no other participants. Any layers that point to this user
+ * will be deleted. Any views that include this user will be updated.
  *
  * @param string $user User to delete
  */

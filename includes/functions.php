@@ -8,7 +8,7 @@
  * @package WebCalendar
  */
 
-/* Functions start here.  All non-function code should be above this.
+/* Functions start here. All non-function code should be above this.
  *
  * Note to developers:
  *  Documentation is generated from the function comments below.
@@ -17,7 +17,7 @@
  *
  *  If you want your documentation to link to the db documentation,
  *  just make sure you mention the db table name followed by "table"
- *  on the same line.  Here's an example:
+ *  on the same line. Here's an example:
  *    Retrieve preferences from the webcal_user_pref table.
  */
 
@@ -35,12 +35,12 @@ include_once $includeDir . '/getPredefinedVariables.php';
  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-  // error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
+  // error_log ( date ( 'Y-m-d H:i:s' ) . "> $msg\n<br />",
   // 3, 'd:/php/logs/debug.txt' );
-  // fwrite ( $fd, date ( 'Y-m-d H:i:s' ) .  "> $msg\n" );
+  // fwrite ( $fd, date ( 'Y-m-d H:i:s' ) . "> $msg\n" );
   // fclose ( $fd );
   // 3, '/tmp/webcal-debug.log' );
-  // error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n",
+  // error_log ( date ( 'Y-m-d H:i:s' ) . "> $msg\n",
   // 2, 'sockieman:2000' );
 }
 
@@ -214,7 +214,7 @@ function build_entry_label ( $event, $popupid,
  * into different cells in a table.
  *
  * <b>Note:</b> the global variable <var>$TIME_SLOTS</var> is used to determine
- * how many time slots there are and how many minutes each is.  This variable
+ * how many time slots there are and how many minutes each is. This variable
  * is defined user preferences (or defaulted to admin system settings).
  *
  * @param string $time        Input time in HHMMSS format
@@ -366,7 +366,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
     // Read repeated events only once for a participant for performance reasons.
     $repeated_events = query_events ( $participants[$q], true,
       // This date filter is not necessary for functional reasons, but it
-      // eliminates some of the events that couldn't possibly match.  This could
+      // eliminates some of the events that couldn't possibly match. This could
       // be made much more complex to put more of the searching work onto the
       // database server, or it could be dropped all together to put the
       // searching work onto the client.
@@ -674,7 +674,7 @@ EOT;
           // Ignore this..
         } else
         if ( empty ( $master[$participants[$i]][$r]['ID'] ) )
-          // This is the first line for 'all' users.  No event here.
+          // This is the first line for 'all' users. No event here.
           $space = '
           <span class="matrix"><img src="images/pix.gif" alt="" /></span>';
         else {
@@ -1209,7 +1209,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
           </th>
         </tr>';
-  } else // Not day or minical script.  Print the month name.
+  } else // Not day or minical script. Print the month name.
     $ret .= '
       <caption><a href="' . $month_link . $u_url . 'year=' . $thisyear
      . '&amp;month=' . $thismonth . '">'
@@ -1577,12 +1577,12 @@ function display_unapproved_events ( $user ) {
  * The database connection is closed and execution terminates in this function.
  *
  * <b>Note:</b>  MS IIS/PWS has a bug that does not allow sending a cookie and a
- * redirect in the same HTTP header.  When we detect that the web server is IIS,
+ * redirect in the same HTTP header. When we detect that the web server is IIS,
  * we accomplish the redirect using meta-refresh.
  * See the following for more info on the IIS bug:
  * {@link http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4}
  *
- * @param string $url  The page to redirect to.  In theory, this should be an
+ * @param string $url  The page to redirect to. In theory, this should be an
  *                     absolute URL, but all browsers accept relative URLs
  *                     (like "month.php").
  *
@@ -1616,7 +1616,6 @@ function do_redirect ( $url ) {
   dbi_close ( $c );
   exit;
 }
-
 
 /* Takes an input string and encode it into a slightly encoded hexval that we
  * can use as a session cookie.
@@ -2414,12 +2413,12 @@ function get_last_view () {
  *
  * If groups are enabled, this will restrict the list of nonusers to only those
  * that are in the same group(s) as the user (unless the user is an admin) or
- * the nonuser is a public calendar.  We allow admin users to see all users
+ * the nonuser is a public calendar. We allow admin users to see all users
  * because they can also edit someone else's events (so they may need access to
  * users who are not in the same groups).
  *
  * If user access control is enabled, then we also check to see if this
- * user is allowed to view each nonuser's calendar.  If not, then that nonuser
+ * user is allowed to view each nonuser's calendar. If not, then that nonuser
  * is not included in the list.
  *
  * @return array  Array of nonusers, where each element in the array is an array
@@ -2462,7 +2461,7 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
     }
 
     if ( $groupcnt == 0 ) {
-      // Eek.  User is in no groups... Return only themselves.
+      // Eek. User is in no groups... Return only themselves.
       if ( isset ( $u_byname[$this_user] ) )
         $ret[] = $u_byname[$this_user];
 
@@ -2524,12 +2523,12 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
 /* Gets a list of users.
  *
  * If groups are enabled, this will restrict the list to only those users who
- * are in the same group(s) as this user (unless the user is an admin).  We allow
+ * are in the same group(s) as this user (unless the user is an admin). We allow
  * admin users to see all users because they can also edit someone else's events
  * (so they may need access to users who are not in the same groups).
  *
  * If user access control is enabled, then we also check to see if this
- * user is allowed to view each user's calendar.  If not, then that user
+ * user is allowed to view each user's calendar. If not, then that user
  * is not included in the list.
  *
  * @return array  Array of users, where each element in the array is an array
@@ -2578,7 +2577,7 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
     }
 
     if ( $groupcnt == 0 ) {
-      // Eek.  User is in no groups... Return only themselves.
+      // Eek. User is in no groups... Return only themselves.
       if ( isset ( $u_byname[$this_user] ) )
         $ret[] = $u_byname[$this_user];
 
@@ -2796,7 +2795,7 @@ function get_preferred_view ( $indate = '', $args = '' ) {
       $url = 'week.php';
     // At this point, this user cannot access the view set in their preferences
     // (and they cannot update their preferences), and they cannot view any of
-    // the standard day/month/week/year pages.  All that's left is either
+    // the standard day/month/week/year pages. All that's left is either
     // a custom view that was created by them, or a global view.
     if ( count ( $views ) > 0 )
       $url = $views[0]['url'];
@@ -2989,7 +2988,7 @@ function getMoonPhases ( $year, $month ) {
  *
  * Create a cloned event on the fly as needed to display in next day slot.
  * The event times will be adjusted so that the total of all times will
- * equal the total time of the original event.  This function will get called
+ * equal the total time of the original event. This function will get called
  * recursively until all time has been accounted for.
  *
  * @param mixed $item    Event Object
@@ -3472,7 +3471,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
       return false;
   }
 
-  // Figure out which time slot it goes in.  Put tasks in with AllDay and Untimed.
+  // Figure out which time slot it goes in. Put tasks in with AllDay and Untimed.
   if ( ! $isUntime && ! $isAllDay && $getCalTypeName != 'task' ) {
     $tz_time = date ( 'His', $event->getDateTimeTS () );
     $ind = calc_time_slot ( $tz_time );
@@ -3605,7 +3604,7 @@ function html_to_8bits ( $html ) {
 
 /* Generates the HTML for an add/edit/delete icon.
  *
- * This function is not yet used.  Some of the places that will call it have to
+ * This function is not yet used. Some of the places that will call it have to
  * be updated to also get the event owner so we know if the current user has
  * access to edit and delete.
  *
@@ -3744,7 +3743,7 @@ function load_global_settings () {
 
   set_env ( 'TZ', $GLOBALS['TIMEZONE'] );
 
-  // If app name not set.... default to "Title".  This gets translated later
+  // If app name not set.... default to "Title". This gets translated later
   // since this function is typically called before translate.php is included.
   // Note:  We usually use translate ( $APPLICATION_NAME ) instead of
   // translate ( 'Title' ).
@@ -3909,7 +3908,7 @@ function load_user_categories ( $ex_global = '' ) {
 /* Loads current user's layer info into layer global variable.
  *
  * If the system setting <var>$ALLOW_VIEW_OTHER</var> is not set to 'Y', then
- * we ignore all layer functionality.  If <var>$force</var> is 0, we only load
+ * we ignore all layer functionality. If <var>$force</var> is 0, we only load
  * layers if the current user preferences have layers turned on.
  *
  * @param string $user   Username of user to load layers for
@@ -4753,7 +4752,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
   if ( $prefix == 'admin_' )
     $prefix .= 'SERVER_';
   // We may be using php 4.x on Windows, so we can't use set_env () to
-  // adjust the user's TIMEZONE.  We'll need to reply on the old fashioned
+  // adjust the user's TIMEZONE. We'll need to reply on the old fashioned
   // way of using $tz_offset from the server's timezone.
   $can_setTZ = ( substr ( $tz, 0, 11 ) == 'WebCalendar' ? false : true );
   $old_TZ = getenv ( 'TZ' );
@@ -4779,7 +4778,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
     $ret .= '
         </select>&nbsp;' . translate ( 'server time' );
   } else { // This installation supports TZ env.
-    // Import Timezone name.  This file will not normally be available
+    // Import Timezone name. This file will not normally be available
     // on windows platforms, so we'll just include it with WebCalendar.
     $tz_file = 'includes/zone.tab';
     if ( ! $fd = @fopen ( $tz_file, 'r', false ) )
@@ -4825,8 +4824,8 @@ function print_timezone_select_html ( $prefix, $tz ) {
  * @param string $user           Username
  * @param bool   $want_repeated  Get repeating events?
  * @param string $date_filter    SQL phrase starting with AND, to be appended to
- *                               the WHERE clause.  May be empty string.
- * @param int    $cat_id         Category ID to filter on.  May be empty.
+ *                               the WHERE clause. May be empty string.
+ * @param int    $cat_id         Category ID to filter on. May be empty.
  * @param bool   $is_task        Used to restrict results to events OR tasks
  *
  * @return array  Array of Events sorted by time of day.
@@ -4837,8 +4836,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
   $PUBLIC_ACCESS_DEFAULT_VISIBLE, $result, $thismonth, $thisyear;
 
   // New multiple categories requires some checking to see if this cat_id is
-  // valid for this cal_id.  It could be done with nested SQL,
-  // but that may not work for all databases.  This might be quicker also.
+  // valid for this cal_id. It could be done with nested SQL,
+  // but that may not work for all databases. This might be quicker also.
   $catlist = $cloneRepeats = $layers_byuser = $result = array ();
 
   $sql = 'SELECT DISTINCT( cal_id ) FROM webcal_entry_categories ';
@@ -4893,7 +4892,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
       $sql .= 'AND we.cal_id NOT IN ( ' . $placeholders . ' ) ';
   } else
   if ( $cat_id != '' )
-    // Force no rows to be returned.  No matching entries in category.
+    // Force no rows to be returned. No matching entries in category.
     $sql .= 'AND 1 = 0 ';
 
   $sql .= 'AND we.cal_type IN '
@@ -5087,7 +5086,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
 
 /* Reads all the events for a user for the specified range of dates.
  *
- * This is only called once per page request to improve performance.  All the
+ * This is only called once per page request to improve performance. All the
  * events get loaded into the array <var>$events</var> sorted by time of day
  * (not date).
  *
@@ -5872,9 +5871,9 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
 /* Formats site_extras for display according to their type.
  *
  * This will return an array containing formatted extras indexed on their
- * unique names.  Each formatted extra is another array containing two
+ * unique names. Each formatted extra is another array containing two
  * indices: 'name' and 'data', which hold the name of the site_extra and the
- * formatted data, respectively.  So, to access the name and data of an extra
+ * formatted data, respectively. So, to access the name and data of an extra
  * uniquely name 'Reminder', you would access
  * <var>$array['Reminder']['name']</var> and
  * <var>$array['Reminder']['data']</var>

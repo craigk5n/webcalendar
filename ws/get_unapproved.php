@@ -2,12 +2,12 @@
 /* $Id$
  *
  * Description:
- *  Web Service functionality to get unapproved events.  This will list events
+ *  Web Service functionality to get unapproved events. This will list events
  *  for the current user and for any other user for whom the current user is
- *  authorized to approve events.  Uses REST-style web service.
+ *  authorized to approve events. Uses REST-style web service.
  *
  * Comments:
- *  Client apps must use the same authentication as the web browser.  If
+ *  Client apps must use the same authentication as the web browser. If
  *  WebCalendar is setup to use web-based authentication, then the login.php
  *  found in this directory should be used to obtain a session cookie.
  *
@@ -83,7 +83,7 @@ if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG )
 // Send output now...
 echo $out;
 
-/* Process an event.  For unapproved events, we may find that the same event is
+/* Process an event. For unapproved events, we may find that the same event is
  * listed more than once (if two participants are not yet approved.)
  * In that case, we send the event just once since the participant list
  * (with status) is sent with the event.

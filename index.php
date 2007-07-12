@@ -24,7 +24,7 @@ if ( ! empty ( $STARTVIEW ) ) {
       do_redirect ( 'year.php' );
     // At this point, this user cannot view the preferred view in their
     // preferences (and they cannot update their preferences), and they cannot
-    // view any of the standard day/week/month/year pages.  All that's left is a
+    // view any of the standard day/week/month/year pages. All that's left is a
     // custom view that is either created by them or a global view.
     if ( count ( $views ) > 0 )
       do_redirect ( $views[0]['url'] );

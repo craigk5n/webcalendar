@@ -4,7 +4,6 @@
 //Program Version for this release
 $PROGRAM_VERSION = 'v1.1.3';
 
-
 //array element[0] = sql insertion testy
 //array element[1] = sql delete to clean up
 //array element[2] = old program version **The last entry will be the $PROGRAM_VERSION
@@ -77,6 +76,5 @@ array ( "INSERT INTO webcal_timezones ( tzid ) VALUES ( 'zzz' )",
 //don't change this array element
 array ( '','', $PROGRAM_VERSION, '' )
 );
-
 
 ?>

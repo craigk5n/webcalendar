@@ -4,12 +4,12 @@
  * Input Parameters:
  * - <var>report_id</var> (optional) - specified report id in webcal_report table
  * - <var>offset</var> (optional) - specifies how many days/weeks/months +/- to
- *   display.  For example, if the report type is 1 (today) with offset=5, then
- *   the report will display 5 days from now.  Should only be specified if
- *   report_id is specified.  Will be ignored if specified report does not have
+ *   display. For example, if the report type is 1 (today) with offset=5, then
+ *   the report will display 5 days from now. Should only be specified if
+ *   report_id is specified. Will be ignored if specified report does not have
  *   the webcal_report.cal_allow_nav field set to 'Y'.
  * - <var>user</var> (optional) - specifies which user's calendar to use for
- *   the report.  This will be ignored if the chosen report is tied to a
+ *   the report. This will be ignored if the chosen report is tied to a
  *   specific user.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
@@ -124,7 +124,7 @@ function event_to_text ( $event, $date ) {
       if ( strstr ( $description_str, '<' ) && strstr ( $description_str, '>' ) ) {
         // Found some HTML.
       } else
-        // No HTML found.  Add line breaks.
+        // No HTML found. Add line breaks.
         $description_str = nl2br ( $description_str );
     } else
       $description_str = nl2br (

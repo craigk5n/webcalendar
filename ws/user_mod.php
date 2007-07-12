@@ -40,7 +40,7 @@
 
 $WS_DEBUG = false;
 
-// Security precaution.  In case register_globals is on,
+// Security precaution. In case register_globals is on,
 // unset anything a malicious user may set in the URL.
 $admin_can_add_user = $admin_can_delete_user = false;
 $error = '';

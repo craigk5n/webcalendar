@@ -1,6 +1,6 @@
 <?php
 /**
- * The Doc class represents an attachment/comment.  This class
+ * The Doc class represents an attachment/comment. This class
  * provides a convenient way to load and access both attachments
  * and comments without the caller needing to know about the underlying
  * database schema.
@@ -14,9 +14,9 @@
  */
 
 /**
- * A Document object.  This can represent an event attachment or
- * comment.  Currently, a Doc must be associated with an event, but
- * this may change down the road.  We could use this object to
+ * A Document object. This can represent an event attachment or
+ * comment. Currently, a Doc must be associated with an event, but
+ * this may change down the road. We could use this object to
  * support category or user icons, for example.
  */
 class Doc {
@@ -105,7 +105,6 @@ class Doc {
     return ( ! empty ( $ALLOW_COMMENTS ) && $ALLOW_COMMENTS == 'Y' );
   }
 
-
   /**
     * Provide a list of comma-separated column names for use in a SQL
     * query to the webcal_blob table.
@@ -128,7 +127,6 @@ class Doc {
     return getSQL ( $event_id, 'A' );
   }
 
-
   /**
     * Create a SQL query to load comment meta data for the specified event id.
     * @param int $event_id  The event id
@@ -139,7 +137,6 @@ class Doc {
   {
     return getSQL ( $event_id, 'C' );
   }
-
 
   function getSQL ( $event_id, $type='A' )
   {
@@ -160,7 +157,6 @@ class Doc {
     return 'SELECT ' . Doc::getColumnList () .
       ' FROM webcal_blob WHERE cal_blob_id = ' . $blid;
   }
-
 
   /**
    * Creates a new Doc object.
@@ -319,7 +315,7 @@ class Doc {
   /**
     * Get the binary data of the document.
     * This is NOT cached and is only loaded when this function is
-    * called.  Repeated calls to this function will make repeated
+    * called. Repeated calls to this function will make repeated
     * calls to the database.
     * @return mixed  binary data of the blob
     */

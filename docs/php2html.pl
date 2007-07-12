@@ -17,9 +17,7 @@
 #
 #######################################################################
 
-
 $TITLE = 'WebCalendar Function Documentation';
-
 
 sub add_links {
   my ( $in ) = @_;
@@ -37,7 +35,6 @@ sub add_links {
 
   return $in;
 }
-
 
 sub print_function {
   my ( $loc ) = @_;
@@ -159,7 +156,6 @@ foreach $f ( @ARGV ) {
 ( $mday, $mon, $year ) = ( localtime ( time ) )[3,4,5];
 $now = sprintf "%02d-%s-%04d",
   $mday, $months[$mon], $year + 1900;
-
 
 # Get version info
 open ( F, "../includes/config.php" ) ||

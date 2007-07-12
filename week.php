@@ -181,7 +181,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_m = ( $i * $interval ) % 60;
   // Do not apply TZ offset
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
-  $eventsStr .= "<tr>\n<th class=\"row\">" .  $time . "</th>\n";
+  $eventsStr .= "<tr>\n<th class=\"row\">" . $time . "</th>\n";
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $dateYmd = date ( 'Ymd', $days[$d] );
     $class = ( is_weekend ( $days[$d] ) ? 'weekend': '' );

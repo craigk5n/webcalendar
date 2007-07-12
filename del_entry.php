@@ -40,7 +40,7 @@ if ( strpos ( 'EM', $activity_type ) !== false ) {
   $log_delete = LOG_DELETE_T;
   $log_reject = LOG_REJECT_T;
 }
-// See who owns the event.  Owner should be able to delete.
+// See who owns the event. Owner should be able to delete.
 $res = dbi_execute ( 'SELECT cal_create_by FROM webcal_entry WHERE cal_id = ?',
   array ( $id ) );
 if ( $res ) {

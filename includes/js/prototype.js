@@ -1762,7 +1762,7 @@ var Position = {
 }
 
 // Safari returns margins on body which is incorrect if the child is absolutely
-// positioned.  For performance reasons, redefine Position.cumulativeOffset for
+// positioned. For performance reasons, redefine Position.cumulativeOffset for
 // KHTML/WebKit only.
 if (/Konqueror|Safari|KHTML/.test(navigator.userAgent)) {
   Position.cumulativeOffset = function(element) {

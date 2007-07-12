@@ -759,7 +759,7 @@ $can_edit = ( $can_edit || $is_admin || $is_nonuser_admin &&
 
 if ( empty ( $event_status ) ) {
   // this only happens when an admin views a deleted event that he is
-  // not a participant for.  Set to $event_status to "D" just to get
+  // not a participant for. Set to $event_status to "D" just to get
   // rid of all the edit/delete links below.
   $event_status = 'D';
 }
@@ -915,7 +915,6 @@ echo '
 // Show a printer-friendly link
 if ( empty ( $friendly ) )
   echo $printerStr;
-
 
 if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) &&
     ( $unapproved ) && $readonly == 'N' ) {

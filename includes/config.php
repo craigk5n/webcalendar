@@ -106,7 +106,7 @@ function do_config ( $fileLoc ) {
   }
 
   // We don't use fgets () since it seems to have problems with Mac-formatted
-  // text files.  Instead, we read in the entire file, and split the lines manually.
+  // text files. Instead, we read in the entire file, and split the lines manually.
   $data = '';
   while ( ! feof ( $fd ) ) {
     $data .= fgets ( $fd, 4096 );
@@ -215,8 +215,8 @@ function do_config ( $fileLoc ) {
   }
 
   // We can add extra 'nonuser' calendars such as a holiday, corporate,
-  // departmental, etc.  We need a unique prefix for these calendars
-  // so we don't get them mixed up with real logins.  This prefix should be
+  // departmental, etc. We need a unique prefix for these calendars
+  // so we don't get them mixed up with real logins. This prefix should be
   // a maximum of 5 characters and should NOT change once set!
   $NONUSER_PREFIX = '_NUC_';
 
