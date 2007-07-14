@@ -517,7 +517,7 @@ $eType_label = ' ( ' . translate ( $eType ) . ' )';
 
 <?php
 echo "<input type=\"hidden\" name=\"eType\" value=\"$eType\" />\n";
-if ( ! empty ( $id ) && ( empty ( $copy ) || $copy != '1' ) ) echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
+if ( ! empty ( $id ) && ( empty ( $copy ) || $copy != '1' ) ) echo "<input type=\"hidden\" name=\"cal_id\" value=\"$id\" />\n";
 // we need an additional hidden input field
 echo '<input type="hidden" name="entry_changed" value="" />' ."\n";
 
