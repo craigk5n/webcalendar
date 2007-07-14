@@ -44,6 +44,8 @@ function sort_byday ( $a, $b ) {
   }
 }
 
+$id = getPostValue ( 'cal_id' );
+
 if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
   // Override date specified.
   // User is going to create an exception to a repeating event.
