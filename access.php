@@ -342,11 +342,11 @@ if ( ! empty ( $otheruser ) ) {
        . '"><input type="checkbox" value="Y" name=';
       if ( $j == 1 )
         echo '"invite"'
-         . ( !empty ( $op['invite'] ) && $op['invite'] == 'N' ? '' : $checked )
+         . ( ! empty ( $op['invite'] ) && $op['invite'] == 'N' ? '' : $checked )
          . ' />' . translate ( 'Can Invite' );
       elseif ( $j == 2 )
         echo '"email"'
-         . ( !empty ( $op['email'] ) && $op['email'] == 'N' ? '' : $checked )
+         . ( ! empty ( $op['email'] ) && $op['email'] == 'N' ? '' : $checked )
          . ' />' . translate ( 'Can Email' );
       else {
         echo '"time"'
