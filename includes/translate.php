@@ -355,7 +355,6 @@ function define_languages () {
   global $languages;
 
   $languages = array (
-    translate ( 'Browser-defined' ) => 'none',
     translate ( 'English' ) => 'English-US', // translate ( 'English-US' )
     translate ( 'Afrikaans' ) => 'Afrikaans',
     translate ( 'Albanian' ) => 'Albanian',
@@ -404,6 +403,11 @@ function define_languages () {
     translate ( 'Welsh' ) => 'Welsh'
     // Add new languages here!
     );
+    //Sort languages in translated order
+    asort ( $languages );
+    //make sure Browser Defined is first in list
+    $browser_defined = array ( translate ( 'Browser-defined' ) => 'none');
+    $languages = array_merge ( $browser_defined, $languages );
 }
 
 /* Converts language names to their abbreviation.
