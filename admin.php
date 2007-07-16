@@ -1,13 +1,103 @@
 <?php
 /* $Id$ */
-$prad = true;
-
 include_once 'includes/init.php';
 include_once 'includes/date_formats.php';
-include 'includes/common_admin_pref.php';
 if ( file_exists ( 'install/default_config.php' ) )
   include_once 'install/default_config.php';
+// .
+// Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
+// admin.php will not use this cached CSS, but we want to make sure it's flushed.
+$webcalendar_csscache = 1;
+if ( isset ( $_COOKIE['webcalendar_csscache'] ) )
+  $webcalendar_csscache += $_COOKIE['webcalendar_csscache'];
 
+SetCookie ( 'webcalendar_csscache', $webcalendar_csscache );
+
+function save_pref ( $prefs, $src ) {
+  global $error, $my_theme;
+
+  while ( list ( $key, $value ) = each ( $prefs ) ) {
+    if ( $src == 'post' ) {
+      $prefix = substr ( $key, 0, 6 );
+      $setting = substr ( $key, 6 );
+      if ( $key == 'currenttab' )
+        continue;
+      // .
+      // Validate key name.  Should start with "admin_" and not include
+      // any unusual characters that might be an SQL injection attack.
+      if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) )
+        die_miserable_death ( str_replace ( 'XXX', $key,
+            translate ( 'Invalid setting name XXX.' ) ) );
+    } else {
+      $prefix = 'admin_';
+      $setting = $key;
+    }
+    if ( strlen ( $setting ) > 0 && $prefix == 'admin_' ) {
+      if ( $setting == 'THEME' && $value != 'none' )
+        $my_theme = strtolower ( $value );
+
+      $setting = strtoupper ( $setting );
+      $sql = 'DELETE FROM webcal_config WHERE cal_setting = ?';
+      if ( ! dbi_execute ( $sql, array ( $setting ) ) ) {
+        $error = db_error ( false, $sql );
+        break;
+      }
+      if ( strlen ( $value ) > 0 ) {
+        $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( ?, ? )';
+        if ( ! dbi_execute ( $sql, array ( $setting, $value ) ) ) {
+          $error = db_error ( false, $sql );
+          break;
+        }
+      }
+    }
+  }
+  // Reload preferences so any CSS changes will take effect.
+  load_global_settings ();
+  load_user_preferences ();
+}
+
+/* Generates HTML for color chooser options in admin pages.
+ *
+ * NOTE: This will be merged back into function print_color_input_html
+ *       in includes/function.php when I remove the tables from pref.php.
+ *
+ * @param string $varname  the name of the variable to display
+ * @param string $title    color description
+ * @param string $varval   the default value to display
+ *
+ * @return string  HTML for the color selector.
+ */
+function admin_print_color_input_html ( $varname, $title, $varval = '' ) {
+  global $prefarray, $s, $SCRIPT;
+  static $select;
+
+  $name = '';
+  $setting = $varval;
+
+  if ( empty ( $select ) )
+    $select = translate ( 'Select' ) . '...';
+
+  if ( $SCRIPT == 'admin.php' ) {
+    $name = 'admin_';
+    $setting = $s[$varname];
+  } elseif ( $SCRIPT == 'pref.php' ) {
+    $name = 'pref_';
+    $setting = $prefarray[$varname];
+  }
+
+  $name .= $varname;
+
+  return '
+            <p><label for="' . $name . '">' . $title
+   . ':</label><input type="text" name="' . $name . '" id="' . $name
+   . '" size="7" maxlength="7" value="' . $setting
+   . '" onchange="updateColor ( this, \'' . $varname
+   . '_sample\' );" /><span id="' . $varname . '_sample" style="background:'
+   . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor ( \''
+   . $name . '\', event )" value="' . $select . '" /></p>';
+}
+
+$currenttab = '';
 $error = ( $is_admin ? '' : print_not_auth () );
 
 if ( ! empty ( $_POST ) && empty ( $error ) ) {
@@ -17,30 +107,106 @@ if ( ! empty ( $_POST ) && empty ( $error ) ) {
   save_pref ( $_POST, 'post' );
 
   if ( ! empty ( $my_theme ) ) {
-    $tmp = strtolower ( $my_theme );
-    include_once 'themes/' . $tmp . ( $tmp == 'basic' ? '_admin' : '_pref' ) . '.php';
+    include_once 'themes/' . strtolower ( $my_theme ) . '.php';
     save_pref ( $webcal_theme, 'theme' );
   }
 }
 // .
-// Load any new config settings. Existing ones will not be affected.
+// Load any new config settings.  Existing ones will not be affected.
 // This function is in the install/default_config.php file.
 if ( function_exists ( 'db_load_config' ) && empty ( $_POST ) )
   db_load_config ();
+
+$menuthemes = $s = $themes = array ();
+
+$res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config' );
+
+if ( $res ) {
+  while ( $row = dbi_fetch_row ( $res ) ) {
+    $setting = $row[0];
+    $s[$setting] = $value = $row[1];
+  }
+  dbi_free_result ( $res );
+}
+// .
+// Get list of theme files from /themes directory.
+$dir = 'themes';
+if ( is_dir ( $dir ) ) {
+  if ( $dh = opendir ( $dir ) ) {
+    while ( ( $file = readdir ( $dh ) ) !== false ) {
+      if ( strpos ( $file, '_admin.php' ) ) {
+        $themes[0][] = strtoupper ( str_replace ( '_admin.php', '', $file ) );
+        $themes[1][] = strtoupper ( str_replace ( '.php', '', $file ) );
+      } else
+      if ( strpos ( $file, '_pref.php' ) ) {
+        $themes[0][] = strtolower ( str_replace ( '_pref.php', '', $file ) );
+        $themes[1][] = strtolower ( str_replace ( '.php', '', $file ) );
+      }
+    }
+    sort ( $themes );
+    closedir ( $dh );
+  }
+}
+// .
+// Get list of menu themes.
+$dir = 'includes/menu/themes/';
+if ( is_dir ( $dir ) ) {
+  if ( $dh = opendir ( $dir ) ) {
+    while ( ( $file = readdir ( $dh ) ) !== false ) {
+      if ( $file == '.' || $file == '..' || $file == 'CVS' )
+        continue;
+
+      if ( is_dir ( $dir . $file ) )
+        $menuthemes[] = $file;
+    }
+    closedir ( $dh );
+  }
+}
 
 print_header (
   array ( 'js/admin.php', 'js/visible.php' ),
   '',
   'onload="init_admin ();'
-   . ( empty ( $currenttab ) ? '"' : ' showTab ( \'' . $currenttab . '\' );"' ) );
+   . ( empty ( $currenttab ) ? '"' : 'showTab ( \'' . $currenttab . '\' );"' ) );
 
 if ( ! $error ) {
+  // Make sure globals values passed to styles.php are for this user.
+  // Makes the demo calendar and Page title accurate.
+  $GLOBALS['APPLICATION_NAME'] = $s['APPLICATION_NAME'];
+  $GLOBALS['BGCOLOR'] = $s['BGCOLOR'];
+  $GLOBALS['CELLBG'] = $s['CELLBG'];
+  $GLOBALS['FONTS'] = $s['FONTS'];
+  $GLOBALS['H2COLOR'] = $s['H2COLOR'];
+  $GLOBALS['HASEVENTSBG'] = $s['HASEVENTSBG'];
+  $GLOBALS['MENU_THEME'] = $s['MENU_THEME'];
+  $GLOBALS['MYEVENTS'] = $s['MYEVENTS'];
+  $GLOBALS['OTHERMONTHBG'] = $s['OTHERMONTHBG'];
+  $GLOBALS['TABLEBG'] = $s['TABLEBG'];
+  $GLOBALS['TEXTCOLOR'] = $s['TEXTCOLOR'];
+  $GLOBALS['THBG'] = $s['THBG'];
+  $GLOBALS['THFG'] = $s['THFG'];
+  $GLOBALS['TODAYCELLBG'] = $s['TODAYCELLBG'];
+  $GLOBALS['WEEKENDBG'] = $s['WEEKENDBG'];
+  $GLOBALS['WEEKNUMBER'] = $s['WEEKNUMBER'];
+
+  define_languages (); // Load the language list.
+  reset ( $languages );
+
   $checked = ' checked="checked"';
+  $selected = ' selected="selected"';
   $select = translate ( 'Select' ) . '...';
   // .
   // Allow css_cache of webcal_config values.
   @session_start ();
   $_SESSION['webcal_tmp_login'] = 'blahblahblah';
+
+  $editStr = '<input type="button" value="' . translate ( 'Edit' )
+   . "...\" onclick=\"window.open ( 'edit_template.php?type=%s','cal_template','"
+   . 'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,'
+   . 'outerWidth=520\' );" name="" />';
+  $choices = array ( 'day.php', 'week.php', 'month.php', 'year.php' );
+  $choices_text = array ( translate ( 'Day' ), translate ( 'Week' ),
+    translate ( 'Month' ), translate ( 'Year' ) );
 
   $bottomStr = translate ( 'Bottom' );
   $topStr = translate ( 'Top' );
@@ -48,16 +214,118 @@ if ( ! $error ) {
   $anyoneStr = translate ( 'Anyone' );
   $partyStr = translate ( 'Participant' );
 
-  $saveStr = '
-      <input type="submit" value="' . translate ( 'Save' ) . '" name="" />';
+  $saveStr = translate ( 'Save' );
 
-  for ( $i = 0, $cnt = count ( $themes ); $i < $cnt; $i++ ) {
-    $theme_list .= $option . $themes[$i] . '">' . $themes[$i] . '</option>';
+  $option = '
+                <option value="';
+  $color_sets = $datestyle_md = $datestyle_my = $datestyle_tk = '';
+  $datestyle_ymd = $lang_list = $menu_theme_list = $prefer_vu = '';
+  $start_wk_on = $start_wkend_on = $tabs = $theme_list = $user_vu = '';
+  $work_hr_end = $work_hr_start = '';
+  // .
+  // This should be easier to add more tabs if needed.
+  $tabs_ar = array ( // .
+    'settings', translate ( 'Settings' ),
+    'public', translate ( 'Public Access' ),
+    'uac', translate ( 'User Access Control' ),
+    'groups', translate ( 'Groups' ),
+    'nonuser', translate ( 'NonUser Calendars' ),
+    'other', translate ( 'Other' ),
+    'email', translate ( 'Email' ),
+    'colors', translate ( 'Colors' )
+    );
+  for ( $i = 0, $cnt = count ( $tabs_ar ); $i < $cnt; $i++ ) {
+    $tabs .= '
+        <span class="tab' . ( $i > 0 ? 'bak' : 'for' ) . '" id="tab_'
+     . $tabs_ar[$i] . '"><a href="" onclick="return setTab ( \'' . $tabs_ar[$i]
+     . '\' )">' . $tabs_ar[++$i] . '</a></span>';
+  }
+  // Move the loops here and combine a few.
+  while ( list ( $key, $val ) = each ( $languages ) ) {
+    $lang_list .= $option . $val . '"'
+     . ( $val == $s['LANGUAGE'] ? $selected : '' )
+     . '>' . translate ( $key ) . '</option>';
+  }
+  for ( $i = 0, $cnt = count ( $themes[0] ); $i <= $cnt; $i++ ) {
+    $theme_list .= $option . $themes[1][$i] . '">' . $themes[0][$i] . '</option>';
+  }
+  for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i += 2 ) {
+    $datestyle_ymd .= $option . $datestyles[$i] . '"'
+     . ( $s['DATE_FORMAT'] == $datestyles[$i] ? $selected : '' )
+     . '>' . $datestyles[$i + 1] . '</option>';
+  }
+  for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
+    $datestyle_my .= $option . $datestyles_my[$i] . '"'
+     . ( $s['DATE_FORMAT_MY'] == $datestyles_my[$i] ? $selected : '' )
+     . '>' . $datestyles_my[$i + 1] . '</option>';
+  }
+  for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
+    $datestyle_md .= $option . $datestyles_md[$i] . '"'
+     . ( $s['DATE_FORMAT_MD'] == $datestyles_md[$i] ? $selected : '' )
+     . '>' . $datestyles_md[$i + 1] . '</option>';
+  }
+  for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i += 2 ) {
+    $datestyle_tk .= $option . $datestyles_task[$i] . '"'
+     . ( $s['DATE_FORMAT_TASK'] == $datestyles_task[$i] ? $selected : '' )
+     . '>' . $datestyles_task[$i + 1] . '</option>';
+  }
+  for ( $i = 0; $i < 7; $i++ ) {
+    $start_wk_on .= $option . "$i\""
+     . ( $i == $s['WEEK_START'] ? $selected : '' )
+     . '>' . weekday_name ( $i ) . '</option>';
+    $j = ( $i == 0 ? 6 : $i - 1 ); // Make sure to start with Saturday.
+    $start_wkend_on .= $option . "$j\""
+     . ( $j == $s['WEEKEND_START'] ? $selected : '' )
+     . '>' . weekday_name ( $j ) . '</option>';
+  }
+  for ( $i = 0; $i < 24; $i++ ) {
+    $tmp = display_time ( $i * 10000, 1 );
+    $work_hr_start .= $option . "$i\""
+     . ( $i == $s['WORK_DAY_START_HOUR'] ? $selected : '' )
+     . '>' . $tmp . '</option>';
+    $work_hr_end .= $option . "$i\""
+     . ( $i == $s['WORK_DAY_END_HOUR'] ? $selected : '' )
+     . '>' . $tmp . '</option>';
+  }
+  for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
+    $prefer_vu .= $option . $choices[$i] . '"'
+     . ( $s['STARTVIEW'] == $choices[$i] ? $selected : '' )
+     . '>' . $choices_text[$i] . '</option>';
+  }
+  // Allow user to select a view also.
+  for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
+    if ( $views[$i]['cal_is_global'] != 'Y' )
+      continue;
+
+    $xurl = $views[$i]['url'];
+    $xurl_strip = str_replace ( '&amp;', '&', $xurl );
+    $user_vu .= $option . $xurl . '"'
+     . ( $s['STARTVIEW'] == $xurl_strip ? $selected : '' )
+     . '>' . $views[$i]['cal_name'] . '</option>';
   }
   foreach ( $menuthemes as $menutheme ) {
     $menu_theme_list .= $option . $menutheme . '"'
      . ( $s['MENU_THEME'] == $menutheme ? $selected : '' )
      . '>' . $menutheme . '</option>';
+  }
+  foreach ( array ( // Document color choices.
+      'BGCOLOR' => translate ( 'Document background' ),
+      'H2COLOR' => translate ( 'Document title' ),
+      'TEXTCOLOR' => translate ( 'Document text' ),
+      'MYEVENTS' => translate ( 'My event text' ),
+      'TABLEBG' => translate ( 'Table grid color' ),
+      'THBG' => translate ( 'Table header background' ),
+      'THFG' => translate ( 'Table header text' ),
+      'CELLBG' => translate ( 'Table cell background' ),
+      'TODAYCELLBG' => translate ( 'Table cell background for current day' ),
+      'HASEVENTSBG' => translate ( 'Table cell background for days with events' ),
+      'WEEKENDBG' => translate ( 'Table cell background for weekends' ),
+      'OTHERMONTHBG' => translate ( 'Table cell background for other month' ),
+      'WEEKNUMBER' => translate ( 'Week number color' ),
+      'POPUP_BG' => translate ( 'Event popup background' ),
+      'POPUP_FG' => translate ( 'Event popup text' )
+      ) as $k => $v ) {
+    $color_sets .= admin_print_color_input_html ( $k, $v );
   }
 
   set_today ( date ( 'Ymd' ) );
@@ -70,9 +338,12 @@ if ( ! $error ) {
    . '\'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,'
    . 'outerWidth=420\' );" /></h2>
     <form action="admin.php" method="post" onsubmit="return valid_form ( this );"'
-   . ' name="prefform">' . display_admin_link () . '
+   . ' name="prefform">'
+   . display_admin_link () . '
       <input type="hidden" name="currenttab" id="currenttab" value="'
-   . $currenttab . '" />' . $saveStr . '<br /><br />
+   . $currenttab . '" />
+      <input type="submit" value="' . $saveStr
+   . '" name="" /><br /><br />
 
 <!-- TABS -->
       <div id="tabs">' . $tabs . '
@@ -132,17 +403,17 @@ if ( ! $error ) {
    . translate ( 'Custom script/stylesheet' ) . ':</label>'
    . print_radio ( 'CUSTOM_SCRIPT' );
   printf ( $editStr, 'S' );
-  echo '
+  echo '</p>
             <p><label title="' . tooltip ( 'custom-header-help' ) . '">'
    . translate ( 'Custom header' ) . ':</label>'
    . print_radio ( 'CUSTOM_HEADER' );
   printf ( $editStr, 'H' );
-  echo '
+  echo '</p>
             <p><label title="' . tooltip ( 'custom-trailer-help' ) . '">'
    . translate ( 'Custom trailer' ) . ':</label>'
    . print_radio ( 'CUSTOM_TRAILER' );
   printf ( $editStr, 'T' );
-  echo '
+  echo '</p>
             <p><label title="' . tooltip ( 'enable-external-header-help' ) . '">'
    . translate ( 'Allow external file for header/script/trailer' ) . ':</label>'
    . print_radio ( 'ALLOW_EXTERNAL_HEADER' ) . '</p>
@@ -151,7 +422,7 @@ if ( ! $error ) {
           </fieldset>
           <fieldset>
             <legend>' . translate ( 'Date and Time' ) . '</legend>'
-  /* Determine if we can set timezones. If not don't display any options. */
+  /* Determine if we can set timezones.  If not don't display any options. */
    . ( set_env ( 'TZ', $s['SERVER_TIMEZONE'] ) ? '
             <p><label for="admin_SERVER_TIMEZONE" title="'
      . tooltip ( 'tz-help' ) . '">' . translate ( 'Server Timezone Selection' )
@@ -573,7 +844,15 @@ if ( ! $error ) {
 <!-- BEGIN COLORS -->
         <div id="tabscontent_colors">
           <fieldset>
-            <legend>' . translate ( 'Color options' ) . '</legend>'.$example_month.'
+            <legend>' . translate ( 'Color options' ) . '</legend>
+<!-- BEGIN EXAMPLE MONTH -->
+            <div style="float:right; width:45%; margin:3em 1em 0; background:'
+   . $BGCOLOR . '">
+              <p class="bold" style="text-align:center; color:' . $H2COLOR
+   . ';">' . date_to_str ( date ( 'Ymd' ), $DATE_FORMAT_MY, false ) . '</p>'
+   . display_month ( date ( 'm' ), date ( 'Y' ), true ) . '
+            </div>
+<!-- END EXAMPLE MONTH -->
             <p><label>' . translate ( 'Allow user to customize colors' )
    . ':</label>' . print_radio ( 'ALLOW_COLOR_CUSTOMIZATION' ) . '</p>
             <p><label title="' . tooltip ( 'gradient-colors' ) . '">'
@@ -586,22 +865,19 @@ if ( ! $error ) {
             <legend>' . translate ( 'Background Image options' ) . '</legend>
             <p><label for="admin_BGIMAGE" title="' . tooltip ( 'bgimage-help' )
    . '">' . translate ( 'Background Image' )
-   . ':</label><input type="text" size="75" name="admin_BGIMAGE" '
-   . 'id="admin_BGIMAGE" value="'
-   . ( empty ( $s['BGIMAGE'] ) ? '' : htmlspecialchars ( $s['BGIMAGE'] ) )
-   . '" /></p>
+   . ':</label><input type="text" size="75" name="admin_BGIMAGE" id="admin_BGIMAGE" value="'
+   . ( empty ( $s['BGIMAGE'] ) ? '' : htmlspecialchars ( $s['BGIMAGE'] ) ) . '" /></p>
             <p><label for="admin_BGREPEAT" title="' . tooltip ( 'bgrepeat-help' )
    . '">' . translate ( 'Background Repeat' )
-   . ':</label><input type="text" size="30" name="admin_BGREPEAT" '
-   . 'id="admin_BGREPEAT" value="'
+   . ':</label><input type="text" size="30" name="admin_BGREPEAT" id="admin_BGREPEAT" value="'
    . ( empty ( $s['BGREPEAT'] ) ? '' : $s['BGREPEAT'] ) . '" /></p>
           </fieldset>
         </div>
       </div>
-      <div id="saver">' . $saveStr . '
+      <div style="clear:both";>
+        <input type="submit" value="' . $saveStr . '" name="" />
       </div>
     </form>';
-
   ob_end_flush ();
 } else // if $error
   echo print_error ( $error, true );
