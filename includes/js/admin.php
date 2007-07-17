@@ -214,7 +214,7 @@ function showPreview () {
   if ( theme == 'none' )
     return false;
 
-  url = 'themes/' + tmp + ( tmp == 'basic' ? '_admin' : '_pref' ) + '.php';
+  url = 'themes/' + tmp  + '.php';
   var previewWindow = window.open ( url,"Preview","resizable=yes,scrollbars=yes" );
 }
 
