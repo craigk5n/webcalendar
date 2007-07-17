@@ -42,8 +42,8 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-// Check the cal_template_text table since that is where we stored it
-// in 1.0 and before.
+// Check the cal_template_text table
+// since that is where we stored it in 1.0 and before.
 if ( ! $found ) {
   $res = dbi_execute ( 'SELECT cal_template_text FROM webcal_report_template
     WHERE cal_template_type = ? AND cal_report_id = 0', array ( $type ) );
@@ -89,7 +89,6 @@ if ( $REQUEST_METHOD == 'POST' ) {
   if ( ! dbi_execute ( $sql, $query_params ) )
     $error = db_error ();
   else {
-    // echo "SQL: $sql<br />\n";
     echo '<html>
   <head></head>
   <body onload="window.close ();">
@@ -100,7 +99,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   }
 }
 
-print_header( '', '', '', true );
+print_header ( '', '', '', true );
 /*
  echo 'report_id: ' . $report_id . '<br />
 report_name: ' . $report_name . '<br />
