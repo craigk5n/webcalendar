@@ -3993,6 +3993,7 @@ function load_user_preferences ( $guest = '' ) {
       $row = $rows[$i];
       $setting = $row[0];
       $value = $row[1];
+
       if ( $setting == 'LANGUAGE' )
         $lang_found = true;
 
@@ -4080,6 +4081,7 @@ function load_user_preferences ( $guest = '' ) {
   $is_nonuser_admin = ( $user
     ? user_is_nonuser_admin ( $tmp_login, $user ) : false );
   // if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
+
 }
 
 /* Returns the either the full name or the abbreviation of the specified month.
@@ -4298,7 +4300,7 @@ function print_color_input_html ( $varname, $title, $varval = '' ) {
    . ':</label><input type="text" name="' . $name . '" id="' . $name
    . '" size="7" maxlength="7" value="' . $setting
    . '" onchange="updateColor ( this, \'' . $varname
-   . '_sample\' );" /><span id="' . $varname . '_sample" style="background:'
+   . '_sample\' );" /><span class="sample" id="' . $varname . '_sample" style="background:'
    . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor ( \''
    . $name . '\', event )" value="' . $select . '" /></p>';
 }

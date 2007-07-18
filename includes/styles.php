@@ -631,6 +631,11 @@ echo '  body {
   img.help {
     cursor:help;
   }
+	.sample {
+  border-style: groove;
+  text-align: left;
+  width: 16px;
+}
   .standard {
     border:1px solid ' . $GLOBALS['TABLEBG'] . ';
     background:' . $GLOBALS['CELLBG'] . ';
