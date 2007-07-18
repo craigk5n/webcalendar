@@ -86,7 +86,7 @@ function parse_outlookcsv ( $cal_file ) {
 
 function dateDifference($start_timestamp,$end_timestamp,$unit= 0){
   $days_seconds_star= (23 * 56 * 60) + 4.091; // Star Day
-  $days_seconds_sun= 24 * 60 * 60; // Sun Day
+  $days_seconds_sun= 86400; // Sun Day
   $difference_seconds= $end_timestamp - $start_timestamp;
   switch($unit){
    case 3: // Days
