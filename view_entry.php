@@ -157,7 +157,7 @@ if ( empty ( $error ) ) {
   if ( ! empty ( $month ) )
     $thismonth = $month;
 
-  // check UAC
+  // Check UAC.
   $euser = ( empty ( $user ) ? ( $is_my_event ? $login : $create_by ) : $user );
   $time_only = 'N';
 
@@ -495,7 +495,7 @@ echo ( $DISABLE_PRIORITY_FIELD != 'Y' ? '
 // Display who originally created event
 // useful if assistant or Admin
 $proxy_fullname = '';
-if ( !empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == 'Y' ) {
+if ( ! empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == 'Y' ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_log
     WHERE webcal_entry_log.cal_entry_id = ? AND webcal_entry_log.cal_type = \'C\'',
     array ( $id ) );
