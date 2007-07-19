@@ -126,7 +126,7 @@ onclick="history.back ()" /></form
   $userlist = get_my_users ();
   if ($NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_nonuser_cals ();
-    $userlist = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+    $userlist = ($NONUSER_AT_TOP == 'Y' ? array_merge ($nonusers, $userlist) : array_merge ($userlist, $nonusers));
   }
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '<option value="' . $userlist[$i]['cal_login'] . '"';
@@ -150,7 +150,7 @@ onclick="history.back ()" /></form
  <tr><td><label for="purge_deleted">
   <?php etranslate ( 'Purge deleted only' )?>:</label></td>
   <td valign="bottom">
-  <input type="checkbox" name="purge_deleted" value="Y"  />
+  <input type="checkbox" name="purge_deleted" value="Y" />
  </td></tr>
  <tr><td><label for="preview">
   <?php etranslate ( 'Preview delete' )?>:</label></td>

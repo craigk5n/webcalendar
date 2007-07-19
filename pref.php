@@ -528,7 +528,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <select name="pref_CATEGORY_VIEW" id="pref_cat">
 <?php
  if ( ! empty ( $categories ) ) {
-  foreach( $categories as $K => $V ){
+  foreach ( $categories as $K => $V ){
    echo "<option value=\"$K\"";
    if ( ! empty ( $prefarray['CATEGORY_VIEW'] ) &&
     $prefarray['CATEGORY_VIEW'] == $K ) echo $selected;

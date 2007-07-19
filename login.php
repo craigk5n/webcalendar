@@ -7,7 +7,7 @@ foreach ( $_SESSION as $key=>$value ) {
 if ( ! empty ( $dummy ) )
   foreach ($dummy as $key=>$value) {
    if ( substr ( $key, 0 , 6 ) == 'webcal' )
-     unset( $_SESSION[$key] );
+     unset ( $_SESSION[$key] );
   }
 //php 4.1.0 may have issues with the above code
 unset ( $_SESSION['webcal_login'] );
@@ -23,7 +23,7 @@ include 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase ();
 
-include "includes/$user_inc";
+include 'includes/' . $user_inc;
 include_once 'includes/access.php';
 include 'includes/gradient.php';
 

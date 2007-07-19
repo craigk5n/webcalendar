@@ -101,7 +101,7 @@ include 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase ();
 
-include "includes/$user_inc";
+include 'includes/' . $user_inc;
 include 'includes/site_extras.php';
 
 //added to support hCalendar
