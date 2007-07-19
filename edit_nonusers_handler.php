@@ -106,7 +106,7 @@ if ( ! empty ( $delete ) ) {
       $error = db_error ();
   } else {
     // Adding
-    if (preg_match( "/^[\w]+$/", $nid )) {
+    if ( preg_match ( '/^[\w]+$/', $nid ) ) {
       $nid = $NONUSER_PREFIX.$nid;
       if ( ! dbi_execute ( 'INSERT INTO webcal_nonuser_cals ( cal_login,
         cal_firstname, cal_lastname, cal_admin, cal_is_public )
