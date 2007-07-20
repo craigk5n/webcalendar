@@ -212,7 +212,7 @@ ALTER TABLE webcal_entry_repeats ADD cal_byweekno VARCHAR2(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_byyearday VARCHAR2(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_count INT DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_wkst CHAR(2) DEFAULT 'MO';
-ALTER TABLE webcal_entry_repeats_not ADD cal_exdate INT(1) DEFAULT 1 NOT NULL;
+ALTER TABLE webcal_entry_repeats_not ADD cal_exdate INT DEFAULT 1 NOT NULL;
 ALTER TABLE webcal_entry_user ADD cal_percent INT DEFAULT 0 NOT NULL;
 ALTER TABLE webcal_site_extras DROP PRIMARY KEY;
 
@@ -282,7 +282,7 @@ ALTER TABLE webcal_user ADD cal_title VARCHAR2(75) DEFAULT NULL;
 
 /*upgrade_v1.1.3*/
 CREATE TABLE webcal_timezones (
-  tzid VARCHAR2(100) DEFAULT ''  NOT NULL,
+  tzid VARCHAR2(100) DEFAULT '' NOT NULL,
   dtstart VARCHAR2(25) DEFAULT NULL,
   dtend VARCHAR2(25) DEFAULT NULL,
   vtimezone VARCHAR2(256),
