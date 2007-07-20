@@ -681,7 +681,7 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
       $onloadDetailStr . ".');";
   } else {
     fwrite ( $fd, "<?php\r\n" );
-    fwrite ( $fd, '/* updated via install/index.php on ' . date('r') . "\r\n" );
+    fwrite ( $fd, '/* updated via install/index.php on ' . date ( 'r' ) . "\r\n" );
     foreach ( $settings as $k => $v ) {
       if ( $v != '<br />' && $v != '' )
       fwrite ( $fd, $k . ': ' . $v . "\r\n" );
@@ -710,15 +710,15 @@ echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 <?php include '../includes/js/visible.php'; ?>
 <script language="JavaScript" type="text/javascript">
 <!-- <![CDATA[
-<?php   if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
+<?php if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
 function testPHPInfo () {
   var url;
   url = "index.php?action=phpinfo";
   //alert ( "URL:\n" + url );
-  window.open ( url, "wcTestPHPInfo", "width=800,height=600,resizable=yes,scrollbars=yes" );
+  window.open ( url, 'wcTestPHPInfo', 'width=800,height=600,resizable=yes,scrollbars=yes' );
 }
 <?php } ?>
-function validate(form)
+function validate ( form )
 {
   var form = document.form_app_settings;
   var err = "";
@@ -857,7 +857,7 @@ doc.li {
 </style>
 </head>
 <body <?php if ( ! empty ($onload) ) echo "onload=\"$onload\""; ?> >
-<?php   //print_r ( $_SERVER );
+<?php //print_r ( $_SERVER );
 if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <table border="1" width="90%" align="center">
 <tr><th class="pageheader"  colspan="2"><?php echo str_replace ( 'XXX',
@@ -1158,7 +1158,7 @@ if ( ! $exists || ! $canWrite ) { ?>
   <?php if ( function_exists ( 'file_get_contents' ) ) { ?>
   <tr><td class="prompt"><?php echo $cachedirStr ?>:</td>
    <td><?php if ( empty ( $settings['db_cachedir'] ) ) $settings['db_cachedir'] = '';  ?>
-   <input  type="text" size="70" name="form_db_cachedir" id="form_db_cachedir" value="<?php
+   <input type="text" size="70" name="form_db_cachedir" id="form_db_cachedir" value="<?php
      echo $settings['db_cachedir']; ?>"/></td></tr>
 <?php } //end test for file_get_contents
    if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
@@ -1330,7 +1330,7 @@ translate ( 'If this is a new installation, you may also ignore this notice.' )
 echo translate ( 'It appears that you have NOT converted your existing WebCalendar...' )?>
     </li></ul>
    <div align="center">
-     <input  type="submit" value="<?php etranslate ( 'Convert Data to GMT') ?>:"  /></div>
+     <input type="submit" value="<?php etranslate ( 'Convert Data to GMT') ?>:" /></div>
    </form>
  <?php } else if ( $_SESSION['tz_conversion'] == 'Success' ) { ?>
     <ul><li><?php echo $tzSuccessStr ?></li></ul>
