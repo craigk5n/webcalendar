@@ -129,7 +129,7 @@ set_env ( 'TZ', $TIMEZONE );
 if ( empty ( $error ) && empty ( $mailerError ) ) {
   if ( ! empty ( $ret ) && $ret == 'listall' )
     do_redirect ( 'list_unapproved.php' );
-  else if (  ! empty ( $ret ) &&  $ret == 'list' )
+  else if ( ! empty ( $ret ) &&  $ret == 'list' )
     do_redirect ( "list_unapproved.php?user=$app_user" );
   else
     do_redirect ( $view_type . ".php?id=$id&amp;user=$app_user" );

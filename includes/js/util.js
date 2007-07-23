@@ -10,15 +10,15 @@ function openAbout () {
 
 function addLoadHandler(handler)
 {
-    if(window.addEventListener)
+    if (window.addEventListener)
     {
         window.addEventListener("load",handler,false);
     }
-    else if(window.attachEvent)
+    else if (window.attachEvent)
     {
         window.attachEvent("onload",handler);
     }
-    else if(window.onload)
+    else if (window.onload)
     {
         var oldHandler = window.onload;
         window.onload = function piggyback()

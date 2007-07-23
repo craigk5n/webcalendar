@@ -6,7 +6,7 @@ foreach ( $_SESSION as $key=>$value ) {
 }
 if ( ! empty ( $dummy ) )
   foreach ($dummy as $key=>$value) {
-   if ( substr ( $key, 0 , 6 ) == 'webcal' )
+   if ( substr ( $key, 0, 6 ) == 'webcal' )
      unset ( $_SESSION[$key] );
   }
 //php 4.1.0 may have issues with the above code
@@ -59,7 +59,7 @@ if ( ! empty ( $action ) && $action == 'logout' ) {
   $return_path = '';
   SetCookie ( 'webcalendar_login', '', 0 );
   SetCookie ( 'webcalendar_last_view', '', 0 );
-} else if (  empty ( $return_path ) ) {
+} else if ( empty ( $return_path ) ) {
   // see if a return path was set
   $return_path = get_last_view ();
   if ( ! empty ( $return_path ) )

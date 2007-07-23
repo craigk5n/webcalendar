@@ -620,7 +620,7 @@ EOT;
       $tmpTitle = 'onmousedown="schedule_event ( ' . $i . ','
        . sprintf ( "%02d", $inc_x_j ) . ' );"' . $MouseOver . $MouseOut
        . str_replace ( 'XXX', sprintf ( $hourfmt, $hour ) . ':' .
-          ( $inc_x_j <= 9 ? '0' : '' ) . $inc_x_j , $titleStr );
+          ( $inc_x_j <= 9 ? '0' : '' ) . $inc_x_j, $titleStr );
       switch ( $j ) {
         case $halfway:
           $k = ( $hour <= 9 ? '0' : substr ( $hour, 0, 1 ) );
@@ -719,7 +719,7 @@ EOT;
 /* Generate HTML for a date selection for use in a form.
  *
  * @param string $prefix   Prefix to use in front of form element names
- * @param string $date     Currently selected date (in YYYYMMDD format)
+ * @param string $date     Currently selected date ( in YYYYMMDD format)
  * @param bool $trigger    Add onchange event trigger that
  *                         calls javascript function $prefix_datechanged ()
  * @param int  $num_years  Number of years to display
@@ -813,7 +813,7 @@ function date_to_epoch ( $d ) {
  * @return string  Date in the specified format.
  *
  * @global string Preferred date format
- * @TODO Add other date () parameters like ( j, n )
+ * @TODO Add other date ( ) parameters like ( j, n )
  */
 function date_to_str ( $indate, $format = '', $show_weekday = true,
   $short_months = false ) {
@@ -1294,8 +1294,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
 
         $ret .= '>' . date ( 'j', $date ) . '</a></td>';
       } else
-        $ret .= ' class="empty' . ( is_weekend ( $date ) ? ' weekend' : '' )
-         . '">&nbsp;</td>';
+        $ret .= ' class="empty">&nbsp;</td>';
     } // end for $j
     $ret .= '
         </tr>';
@@ -2551,8 +2550,7 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
       is_array ( $my_user_array ) )
     return $my_user_array[$this_user][$reason];
 
-  if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' && !
-    $is_admin ) {
+  if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! $is_admin ) {
     // Get groups with current user as member.
     $rows = dbi_get_cached_rows ( 'SELECT cal_group_id FROM webcal_group_user
       WHERE cal_login = ?', array ( $this_user ) );
@@ -2858,6 +2856,7 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
  */
 function get_tasks ( $date, $get_unapproved = true ) {
   global $tasks;
+
   $ret = array ();
   $today = date ( 'Ymd' );
   for ( $i = 0, $cnt = count ( $tasks ); $i < $cnt; $i++ ) {
@@ -2865,6 +2864,7 @@ function get_tasks ( $date, $get_unapproved = true ) {
     if ( empty ( $tasks[$i] ) || $tasks[$i]->getID () == '' ||
         ( ! $get_unapproved && $tasks[$i]->getStatus () == 'W' ) )
       continue;
+
     $due_date = date ( 'Ymd', $tasks[$i]->getDueDateTimeTS () );
     // Make overdue tasks float to today.
     if ( ( $date == $today && $due_date < $today ) || $due_date == $date )
@@ -2941,7 +2941,7 @@ function get_web_browser () {
  * @param int $month  Month (1-12)
  * @param int $day    Day (1-31)
  *
- * @return int  The date (in UNIX timestamp format).
+ * @return int  The date ( in UNIX timestamp format).
  */
 function get_weekday_before ( $year, $month, $day = 2 ) {
   global $DISPLAY_WEEKENDS, $WEEK_START, $weekday_names;
@@ -4761,7 +4761,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
   set_env ( 'TZ', 'America/New_York' );
   $tmp_timezone = date ( 'T' );
   set_env ( 'TZ', $old_TZ );
-  // Don't change this to date ().
+  // Don't change this to date ( ).
   // if ( date ( 'T' ) == 'Ame' || ! $can_setTZ ) { //We have a problem!!
   if ( 0 ) { // Ignore this code for now.
     $tz_value = ( ! $can_setTZ ? substr ( $tz, 12 ) : 0 );
@@ -5046,7 +5046,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           // $hash = md5 ( $result[$i]->getId () . $until . $jump );
           // $file = $db_connection_info['cachedir'] . '/' . $hash . '.dat';
           // }
-          // if (  file_exists ( $file ) ) {
+          // if ( file_exists ( $file ) ) {
           // $dates =  unserialize ( file_get_contents ( $file ) );
           // } else {
           $dates = get_all_dates ( $date,

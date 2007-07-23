@@ -43,7 +43,7 @@ function user_valid_login ( $login, $password, $silent=false ) {
   $ret = false;
 
   $sql = 'SELECT cal_login FROM webcal_user WHERE cal_login = ? AND cal_passwd = ?';
-  $res = dbi_execute ( $sql, array ( $login, md5( $password ) ) );
+  $res = dbi_execute ( $sql, array ( $login, md5 ( $password ) ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row && $row[0] != '' ) {
@@ -138,7 +138,7 @@ function user_load_variables ( $login, $prefix ) {
 
   //help prevent spoofed username attempts from disclosing fullpath
   $GLOBALS[$prefix . 'fullname'] = '';
-  if ($NONUSER_PREFIX && substr ($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
+  if ($NONUSER_PREFIX && substr ($login, 0, strlen ($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }
@@ -215,7 +215,7 @@ function user_add_user ( $user, $password, $firstname,
   else
     $ulastname = NULL;
   if ( strlen ( $password ) )
-    $upassword = md5($password);
+    $upassword = md5 ( $password );
   else
     $upassword = NULL;
   if ( $admin != 'Y' )

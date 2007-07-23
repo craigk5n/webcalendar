@@ -185,7 +185,7 @@ function print_entry_timebar ( $event, $date ) {
      . ( strlen ( $user ) > 0 ? '&amp;user=' . $user : '' ) . '">' : '' ) . '['
    . ( $event->getLogin () == '__public__'
     ? $PUBLIC_ACCESS_FULLNAME : $event->getLogin () )
-   . ']&nbsp;' . build_entry_label ( $event, 'eventinfo-' . $linkid , $can_access,
+   . ']&nbsp;' . build_entry_label ( $event, 'eventinfo-' . $linkid, $can_access,
     ( $event->isAllDay ()
       ? translate ( 'All day event' )
       : ( ! $event->isUntimed () ? display_time ( $event->getDatetime () )

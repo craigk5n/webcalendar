@@ -434,7 +434,7 @@ task: feladat
 hours ahead of you: hátralévő órák
 hours behind you: eltelt órák
 is in a different timezone than you are. Currently: más időzónában van mint te. Éppen
-Time entered here is based on your Timezone: Az itt megadott idő az időzóna alapján
+Time entered here is based on your Timezone.: Az itt megadott idő az időzóna alapján
 Edit Entry: Bejegyzés szerkesztése
 Add Entry: Új bejegyzés
 Details: Részletek

@@ -47,7 +47,7 @@ function selAdd(btn){
       with (document.forms[0].elements[catid])
       {
          for (i = 0; i < length; i++) {
-               if(options[i].selected) {
+               if (options[i].selected) {
                  with (options[i]) {
 
                   for ( j=0; j < evlist.length;j++ ) {
@@ -77,7 +77,7 @@ function selRemove(btn){
       {
          for (i = 0; i < length; i++)
          {
-           if(options[i].selected){
+           if (options[i].selected){
           options[i] = null;
         }
          } // end for loop

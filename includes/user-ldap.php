@@ -191,7 +191,7 @@ function user_load_variables ( $login, $prefix ) {
     return  $cached_user_var[$login][$prefix];
   $cached_user_var = array ();
 
-  if ($NONUSER_PREFIX && substr ($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX ) {
+  if ($NONUSER_PREFIX && substr ($login, 0, strlen ($NONUSER_PREFIX) ) == $NONUSER_PREFIX ) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }

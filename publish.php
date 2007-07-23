@@ -3,7 +3,7 @@
  *
  * Description:
  * Creates the iCal output for a single user's calendar so that remote users can
- * "subscribe" to a WebCalendar calendar. Both Apple iCal and Mozilla's Calendar
+ * "subscribe" to a WebCalendar calendar. Both Apple iCal and Mozilla's calendar
  * support subscribing to remote calendars.
  *
  * Note that unlike the export to iCal, this page does not include

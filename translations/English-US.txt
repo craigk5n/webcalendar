@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 07-01-2007
+# Translation last updated on 07-23-2007
 
 
 ################################################################################
@@ -63,6 +63,7 @@ __month__ __yyyy__: __month__ __yyyy__
 
 ################################################################################
 ################################################################################
+
 
 ########################################
 # Page: about.php
@@ -128,11 +129,37 @@ Error adding event XXX.: Error adding event: XXX.
 ########################################
 # Page: admin.php
 #
+Invalid setting name XXX.: Invalid setting name "XXX".
 Select: Select
+Day: Day
+Week: Week
+Month: Month
+Year: Year
 Bottom: Bottom
 Top: Top
 Anyone: Anyone
 Participant: Participant
+Settings: Settings
+Groups: Groups
+NonUser Calendars: NonUser Calendars
+Other: Other
+Email: Email
+Colors: Colors
+Document background: Document background
+Document title: Document title
+Document text: Document text
+My event text: My event text
+Table grid color: Table grid color
+Table header background: Table header background
+Table header text: Table header text
+Table cell background: Table cell background
+Table cell background for current day: Table cell background for current day
+Table cell background for days with events: Table cell background for days with events
+Table cell background for weekends: Table cell background for weekends
+Table cell background for other month: Table cell background for other month
+Week number color: Week number color
+Event popup background: Event popup background
+Event popup text: Event popup text
 System Settings: System Settings
 Help: Help
 System options: System options
@@ -522,12 +549,14 @@ pm: pm
 You are not authorized to edit this task: You are not authorized to edit this task.
 task: task
 You are not authorized to edit this XXX.: You are not authorized to edit this XXX.
-hours ahead of you: hours ahead of you
-hours behind you: hours behind you
+is in a different timezone than you are. Currently: is in a different timezone than you are. Currently
 hour ahead of you: hour ahead of you
 hour behind you: hour behind you
-is in a different timezone than you are. Currently: is in a different timezone than you are. Currently
-Time entered here is based on your Timezone: Time entered here is based on your Timezone
+hours ahead of you: hours ahead of you
+hours behind you: hours behind you
+XXX is in a different timezone (ahead): (XXX is in a different timezone; XXX ahead of you.<br />&nbsp;XXX)
+XXX is in a different timezone (behind): (XXX is in a different timezone; XXX behind you.<br />&nbsp;XXX)
+Time entered here is based on your Timezone.: Time entered here is based on <b>your</b> Timezone.
 Edit Entry: Edit Entry
 Add Entry: Add Entry
 Details: Details
@@ -626,6 +655,7 @@ Start: Start
 End/Due: End/Due
 Times: Times
 Every: Every
+CAPTCHA Warning: <b>Warning:</b> Cannot use CAPTCHA without PHP's GD extension!<br />
 Delete entry: Delete entry
 You are not authorized to edit this entry.: You are not authorized to edit this entry.
 
@@ -825,7 +855,6 @@ You must specify a group name: You must specify a group name
 ########################################
 # Page: help_admin.php
 #
-Settings: Settings
 Auto-refresh calendars: Auto-refresh calendars
 auto-refresh-help: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
 Auto-refresh time: Auto-refresh time
@@ -834,11 +863,7 @@ Display days with events in bold in year view: Display days with events in bold 
 Display weekends in week view: Display weekends in week view
 Time interval: Time interval
 time-interval-help: Specifies how long the time blocks in the week view and day view will be.
-Groups: Groups
 Nonuser: Nonuser Calendars
-Other: Other
-Email: Email
-Colors: Colors
 user-customize-color: Specifies whether users are allowed to modify their own color scheme.
 enable-gradient-help: Use gradient colors for cell backgrounds.
 Manually entering color values: Manually entering color values
@@ -1042,25 +1067,15 @@ Illegal characters in login: Illegal characters in login
 ########################################
 # Page: pref.php
 #
-entries: entries
 Save Preferences: Save Preferences
-0: 0
-1: 1
-2: 2
-3: 3
-4: 4
-5: 5
-6: 6
-7: 7
-8: 8
-9: 9
 Public Access calendar: Public Access calendar
 Modify Non User Calendar Preferences: Modify Non User Calendar Preferences
 Return to My Preferences: Return to My Preferences
-hour: hour
+Custom Scripts: Custom Scripts
 Timezone Selection: Timezone Selection
 entry-interval-help: Sets minute interval when editing entry times
 Entry interval: Entry interval
+hour: hour
 minute: minute
 theme-reload-help: Due to CSS caching, a page reload may be required
 Page may need to be reloaded for new Theme to take effect: Page may need to be reloaded for new Theme to take effect
@@ -1071,6 +1086,7 @@ display_byproxy-help: Display the real creator on view_entry page
 Display if created by Assistant: Display if created by Assistant
 allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries
 Allow remote viewing of: Allow remote viewing of
+entries: entries
 
 ########################################
 # Page: publish.php
@@ -1191,7 +1207,6 @@ more: more
 ########################################
 # Page: users.php
 #
-NonUser Calendars: NonUser Calendars
 Remote Calendars: Remote Calendars
 denotes administrative user: denotes administrative user
 Add New User: Add New User
@@ -1216,7 +1231,6 @@ Add View: Add View
 Edit View: Edit View
 View Name: View Name
 View Type: View Type
-Day: Day
 Day by Time: Day by Time
 Week (Users horizontal): Week (Users horizontal)
 Week by Time: Week by Time
@@ -1280,7 +1294,6 @@ Palm Pilot: Palm Pilot
 ########################################
 # Page: view_r.php
 #
-Week: Week
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
 
 ########################################
@@ -1302,29 +1315,6 @@ Manage Views: Manage Views
 Week View: Week View
 Year View: Year View
 Invalid function id: Invalid function id
-
-########################################
-# Page: includes/common_admin_pref.php
-#
-Month: Month
-Year: Year
-Custom Scripts: Custom Scripts
-Document background: Document background
-Document title: Document title
-Document text: Document text
-My event text: My event text
-Table grid color: Table grid color
-Table header background: Table header background
-Table header text: Table header text
-Table cell background: Table cell background
-Table cell background for current day: Table cell background for current day
-Table cell background for days with events: Table cell background for days with events
-Table cell background for weekends: Table cell background for weekends
-Table cell background for other month: Table cell background for other month
-Week number color: Week number color
-Event popup background: Event popup background
-Event popup text: Event popup text
-Invalid setting name XXX.: Invalid setting name "XXX".
 
 ########################################
 # Page: includes/config.php
@@ -1501,7 +1491,6 @@ Manage calendar of: Manage calendar of
 #
 Browser Language Not Found: Browser Language Not Found
 not supported: not supported
-Browser-defined: Browser-defined
 English: English
 English-US: English-US
 Afrikaans: Afrikaans
@@ -1544,6 +1533,7 @@ Spanish: Spanish
 Swedish: Swedish
 Turkish: Turkish
 Welsh: Welsh
+Browser-defined: Browser-defined
 event: event
 journal: journal
 
@@ -1729,6 +1719,7 @@ Your settings have been saved: Your settings have been saved
 Error you must specify a\\nSingle-User Login: Error you must specify a\\nSingle-User Login
 Full Path (no backslashes): Full Path (no backslashes)
 The password contains illegal characters.: The password contains illegal characters.
+1: 1
 This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
 PHP Version Check: PHP Version Check
 Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
@@ -1745,6 +1736,7 @@ The file permissions of the includes directory are set...: The file permissions 
 Your settings.php file appears to be valid: Your <b>settings.php</b> file appears to be valid
 Configuration Wizard Password: Configuration Wizard Password
 Create Settings File Password: Create Settings File Password
+2: 2
 db setup directions...: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
 Database Status: Database Status
 Supported databases for your PHP installation: Supported databases for your PHP installation
@@ -1762,6 +1754,7 @@ go back to the previous page and correct your settings: go back to the previous 
 The database requires some data input: The database requires some data input
 Click Update Database to complete the upgrade: Click <b>Update Database</b> to complete the upgrade
 This appears to be an upgrade from version: This appears to be an upgrade from version
+3: 3
 In this section we will perform the required database changes to bring your database up to the required level: In this section we will perform the required database changes to bring your database up to the required level
 If you are using a fully supported database, this step will be performed automatically for you: If you are using a fully supported database, this step will be performed automatically for you
 If not, the required SQL can be displayed and you should be able: If not, the required SQL can be displayed and you should be able
@@ -1775,6 +1768,7 @@ Install Database: Install Database
 Update Database: Update Database
 Display Required SQL: Display Required SQL
 Return to previous page after processing SQL.: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
+4: 4
 This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
 Timezone Conversion: Timezone Conversion
 It appears that you have: It appears that you have

@@ -123,7 +123,7 @@ foreach $f ( @ARGV ) {
       } elsif ( $state ne 'none' && defined ( $name ) ) {
         if ( $state eq 'description' ) {
           if ( /\*\s+/ ) {
-            $description .= ' ' if (  $description ne '' );
+            $description .= ' ' if ( $description ne '' );
             $description .= $';
           }
         } elsif ( $state eq 'parameters' ) {

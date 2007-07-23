@@ -42,7 +42,7 @@ function showPreview () {
   var theme = document.forms['prefform'].pref_THEME.value;
   if (theme == 'none' ) return false;
   url = "themes/" + theme.toLowerCase ()  + "_pref.php";
-  var previewWindow = window.open(url,"Preview","resizable=yes,scrollbars=yes");
+  var previewWindow = window.open (url,"Preview","resizable=yes,scrollbars=yes");
 }
 
 function setTab( tab ) {

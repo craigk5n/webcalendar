@@ -326,7 +326,7 @@ Upload file: Fichier à transférer
 # Page: edit_entry.php
 #
 is in a different timezone than you are. Currently: est dans un fuseau horaire différent du votre. Actuellement
-Time entered here is based on your Timezone: L'heure entrée ici est basée sur votre fuseau horaire
+Time entered here is based on your Timezone.: L'heure entrée ici est basée sur votre fuseau horaire
 Edit Entry: Modification de l'événement
 Add Entry: Ajouter un événement
 Details: Détails

@@ -80,7 +80,7 @@ $checked = ' checked="checked" ';
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
 $magic = @get_magic_quotes_runtime ();
-@set_magic_quotes_runtime(0);
+@set_magic_quotes_runtime (0);
 $fd = @fopen ( $file, 'rb', true );
 $settings = array ();
 $password = '';
@@ -102,7 +102,7 @@ if ( ! empty ( $fd ) ) {
     $forcePassword = true;
   }
 }
-@set_magic_quotes_runtime($magic);
+@set_magic_quotes_runtime ($magic);
 
 session_start ();
 $doLogin = false;
@@ -144,7 +144,7 @@ if ( file_exists ( $file ) && ! empty ( $password ) &&
 
 $pwd = getPostValue ( 'password' );
 if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
-  if ( md5($pwd) == $password ) {
+  if ( md5 ($pwd) == $password ) {
     $_SESSION['validuser'] = $password;
 ?>
       <html><head><title>Password Accepted</title>
@@ -207,7 +207,7 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
     exit;
   }
   fwrite ( $fd, "<?php\r\n" );
-  fwrite ( $fd, 'install_password: ' . md5($pwd1) . "\r\n" );
+  fwrite ( $fd, 'install_password: ' . md5 ($pwd1) . "\r\n" );
   fwrite ( $fd, "?>\r\n" );
   fclose ( $fd );
   ?>
@@ -221,7 +221,7 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
 }
 
 $magic = @get_magic_quotes_runtime ();
-@set_magic_quotes_runtime(0);
+@set_magic_quotes_runtime (0);
 $fd = @fopen ( $file, 'rb', false );
 if ( ! empty ( $fd ) ) {
   while ( ! feof ( $fd ) ) {
@@ -239,7 +239,7 @@ if ( ! empty ( $fd ) ) {
   }
   fclose ( $fd );
 }
-@set_magic_quotes_runtime($magic);
+@set_magic_quotes_runtime ($magic);
 
 $action = getGetValue ( 'action' );
 // We were set here because of a mismatch of $PROGRAM_VERSION
@@ -329,7 +329,7 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
       break;
      default:
     }
-     db_populate ( $install_filename , $display_sql );
+     db_populate ( $install_filename, $display_sql );
   }
   if ( empty ( $display_sql ) ){
    //Convert passwords to md5 hashes if needed
@@ -339,7 +339,7 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
     while ( $row = dbi_fetch_row ( $res ) ) {
      if ( strlen ( $row[1] ) < 30 ) {
       dbi_execute ( 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?',
-        array ( md5( $row[1] ) , $row[0] ) );
+        array ( md5 ( $row[1] ), $row[0] ) );
      }
     }
     dbi_free_result ( $res );
@@ -375,7 +375,7 @@ $post_action = getPostValue ( 'action' );
 $post_action2 = getPostValue ( 'action2' );
 // Is this a db connection test?
 // If so, just test the connection, show the result and exit.
-if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
+if ( ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
   ! empty ( $_SESSION['validuser'] )  ) {
     $response_msg = '';
     $response_msg2 = '';
@@ -416,10 +416,10 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
      } else if ( $db_type == 'mssql'  ) {
        $c = mssql_connect ( $db_host, $db_login, $db_password );
      } else if ( $db_type == 'postgresql'  ) {
-       $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1', false);
+       $c = dbi_connect ( $db_host, $db_login, $db_password, 'template1', false);
      } else if ( $db_type == 'ibase'  ) {
       //TODO figure out how to remove this hardcoded link
-       $c = dbi_connect ( $db_host, $db_login, $db_password , $firebird_path, false);
+       $c = dbi_connect ( $db_host, $db_login, $db_password, $firebird_path, false);
      } //TODO Code remaining database types
      if ( $c ) { // credentials are valid, but database doesn't exist
         $response_msg = translate ( 'Correct your entries or click the Create New button to continue installation' );
@@ -467,7 +467,7 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
   if ( $db_type == 'mysql' ) {
       $c = dbi_connect ( $db_host, $db_login, $db_password, 'mysql', false );
       if ( $c ) {
-     dbi_execute ( "CREATE DATABASE $db_database;" , array (), false, $show_all_errors);
+     dbi_execute ( "CREATE DATABASE $db_database;", array (), false, $show_all_errors);
     if ( ! @mysql_select_db ( $db_database ) ) {
       $response_msg = $failure . dbi_error () . "</blockquote>\n";
     } else {
@@ -479,9 +479,9 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
 
    }
   } else if ( $db_type == 'mssql' ) {
-      $c = dbi_connect ( $db_host, $db_login, $db_password , 'master', false);
+      $c = dbi_connect ( $db_host, $db_login, $db_password, 'master', false);
       if ( $c ) {
-     dbi_execute ( "CREATE DATABASE $db_database;" , array (), false, $show_all_errors);
+     dbi_execute ( "CREATE DATABASE $db_database;", array (), false, $show_all_errors);
     if ( ! @mssql_select_db ( $db_database ) ) {
       $response_msg = $failure . dbi_error () . "</blockquote>\n";
 
@@ -494,9 +494,9 @@ if (  ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
 
    }
   } else if ( $db_type == 'postgresql' ) {
-   $c = dbi_connect ( $db_host, $db_login, $db_password , 'template1', false);
+   $c = dbi_connect ( $db_host, $db_login, $db_password, 'template1', false);
       if ( $c ) {
-     dbi_execute ( "CREATE DATABASE $db_database" , array (), false, $show_all_errors);
+     dbi_execute ( "CREATE DATABASE $db_database", array (), false, $show_all_errors);
      $_SESSION['db_noexist'] = false;
     } else {
       $response_msg = $failure . dbi_error () . "</blockquote>\n";
@@ -649,12 +649,12 @@ if ( ! empty ( $y ) ) {
    if ( isset ( $_SESSION['application_name'] ) ) {
     dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'APPLICATION_NAME'");
     dbi_execute ("INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-          "VALUES ('APPLICATION_NAME', ?)" , array ( $_SESSION['application_name'] ) );
+          "VALUES ('APPLICATION_NAME', ?)", array ( $_SESSION['application_name'] ) );
   }
    if ( isset ( $_SESSION['server_url'] ) ) {
     dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'SERVER_URL'");
     dbi_execute ("INSERT INTO webcal_config ( cal_setting, cal_value ) " .
-          "VALUES ('SERVER_URL', ?)" , array ( $_SESSION['server_url'] ) );
+          "VALUES ('SERVER_URL', ?)", array ( $_SESSION['server_url'] ) );
   }
  }
  $do_load_admin = getPostValue ( 'load_admin' );
@@ -990,7 +990,7 @@ if ( ! $exists || ! $canWrite ) { ?>
    <img src="recommended.gif" alt=""/>&nbsp;OK
   </td></tr>
 
-<?php if (  empty ( $_SESSION['validuser'] ) ) { ?>
+<?php if ( empty ( $_SESSION['validuser'] ) ) { ?>
  <tr><th colspan="2" class="header"><?php
    etranslate ( 'Configuration Wizard Password' ) ?></th></tr>
  <tr><td colspan="2" align="center" style="border:none">
@@ -1072,7 +1072,7 @@ if ( ! $exists || ! $canWrite ) { ?>
   <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<?php echo $response_msg; ?></li>
    <?php }
  }
- if (  ! empty ( $response_msg2 ) ) { ?>
+ if ( ! empty ( $response_msg2 ) ) { ?>
   <li class="notrecommended"><img src="not_recommended.jpg" alt=""/>&nbsp;<b><?php
   echo $response_msg2; ?></b></li>
 <?php }  ?>
@@ -1460,7 +1460,7 @@ translate ( 'You should select Web Server from the list of User Authentication c
   <input name="action" type="button" value="<?php etranslate ( 'Save Settings' ) ?>" onClick="return validate ();" />
    <?php if ( ! empty ( $_SESSION['old_program_version'] ) &&
     $_SESSION['old_program_version'] == $PROGRAM_VERSION  && ! empty ( $setup_complete )) { ?>
-    <input type="button"  name="action2" value="<?php etranslate ( 'Launch WebCalendar' ) ?>" onClick="window.open('../index.php', 'webcalendar');" />
+    <input type="button"  name="action2" value="<?php etranslate ( 'Launch WebCalendar' ) ?>" onClick="window.open ('../index.php', 'webcalendar');" />
    <?php }
   }
   if ( ! empty ( $_SESSION['validuser'] ) ) { ?>

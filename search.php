@@ -71,7 +71,7 @@ if ( is_array ( $categories ) && $show_advanced ) {
           </td>
         </tr>';
 }
-if (  count ( $site_extras ) > 0 ) {
+if ( count ( $site_extras ) > 0 ) {
   echo '
         <tr id="extrafilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
@@ -81,7 +81,7 @@ if (  count ( $site_extras ) > 0 ) {
           <td><input type="checkbox" name="extra_filter" value="Y" />
           </td></tr>';
 }
-if (  $show_advanced ) {
+if ( $show_advanced ) {
   $dateYmd = date ( 'Ymd' );
   echo '
         <tr id="datefilter" style="visibility:' . $avdStyle[$show_advanced]
