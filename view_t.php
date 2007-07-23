@@ -65,7 +65,7 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $cur_rep = 0;
 
   // Combine and sort the event arrays.
-  $ev = combine_and_sort_events(
+  $ev = combine_and_sort_events (
     get_entries ( $date, $get_unapproved ),
     get_repeating_entries ( $user, $date ) );
   $evcnt = count ( $ev );
@@ -281,7 +281,7 @@ if ( $viewusercnt == 0 )
 
 $printerStr = generate_printer_friendly ( 'view_t.php' );
 
-print_header( array ( 'js/popups.php/true' ) );
+print_header ( array ( 'js/popups.php/true' ) );
 
 if ( ! empty ( $error ) ) {
   echo print_error ( $error ) . print_trailer ();
@@ -319,11 +319,11 @@ $e_save = $re_save = array ();
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
-  $re_save = array_merge( $re_save, $repeated_events );
+  $re_save = array_merge ( $re_save, $repeated_events );
   /* Pre-load the non-repeating events for quicker access
       subtracting ONE_WEEK to allow cross-day events to display*/
   $events = read_events ( $viewusers[$i], $wkstart - 604800, $wkend );
-  $e_save = array_merge( $e_save, $events );
+  $e_save = array_merge ( $e_save, $events );
 }
 $events = $e_save;
 $repeated_events = $re_save;

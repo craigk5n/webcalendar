@@ -147,7 +147,8 @@ echo '<tr><td><label>'
   $users = get_my_users ( '', 'view' );
   if ($NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_my_nonusers ( $user, true, 'view' );
-    $users = ($NONUSER_AT_TOP == 'Y') ? array_merge($nonusers, $users) : array_merge($users, $nonusers);
+    $users = ( $NONUSER_AT_TOP == 'Y'
+     ? array_merge ( $nonusers, $users ) : array_merge ( $users, $nonusers ) );
   }
   for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
     $u = $users[$i]['cal_login'];
