@@ -490,7 +490,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _initValidate () {
+  function _initValidate ( ) {
     global $c, $cryptpw, $db_database, $db_host, $db_login, $db_password,
     $encoded_login, $HTTP_ENV_VARS, $HTTP_SERVER_VARS, $is_nonuser, $login,
     $login_return_path, $PHP_AUTH_USER, $REMOTE_USER, $SCRIPT,
@@ -498,7 +498,7 @@ class WebCalendar {
     $use_http_auth, $user_inc, $validate_redirect, $webcalendar_session;
 
     /* If WebCalendar is configured to use http authentication, then we can
-     * use _initValidate (). If we are not using http auth, icalclient.php will
+     * use _initValidate ( ). If we are not using http auth, icalclient.php will
      * create its own http auth since an iCal client cannot login via a
      * web-based login. Publish.php does need to validate if not http_auth.
      */
@@ -668,13 +668,13 @@ class WebCalendar {
       $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
          WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
       if ( $rows ) {
-			  $row = $rows[0]; 
+			  $row = $rows[0];
         if ( $row[0] != $PROGRAM_VERSION ) {
           // &amp; does not work here...leave it as &
-          header ( 'Location: install/index.php?action=mismatch&version=' 
+          header ( 'Location: install/index.php?action=mismatch&version='
 					  . $row[0] );
         exit;}
-				
+
       }
     }
 
@@ -713,7 +713,7 @@ class WebCalendar {
 		  $row = $rows[0];
 		}
     $pub_acc_enabled = ( ! empty ( $row ) && $row[0] == 'Y' );
-    
+
     if ( $pub_acc_enabled ) {
 
       $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
@@ -904,7 +904,7 @@ class WebCalendar {
    *
    * @access private
    */
-  function _inittranslate () {
+  function _initTranslate () {
     global $lang, $lang_file, $LANGUAGE, $PUBLIC_ACCESS_FULLNAME,
     $translation_loaded;
 
@@ -999,7 +999,7 @@ class WebCalendar {
    * @access public
    */
   function setLanguage () {
-    $this->_inittranslate ();
+    $this->_initTranslate ();
   }
 
   /* Construct an absolute path.

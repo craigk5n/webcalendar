@@ -50,7 +50,7 @@ function checkExtension () {
       pass = false;
       break;
   }
-  if (  ! pass ) {
+  if ( ! pass ) {
     alert ( "<?php etranslate ( 'File type does not match Import Format', true ) ?>");
     return false;
   }

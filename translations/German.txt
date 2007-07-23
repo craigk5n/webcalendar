@@ -501,7 +501,7 @@ hours behind you: Stunden nach Ihnen
 hour ahead of you: Stunde vor Ihnen
 hour behind you: Stunde nach Ihnen
 is in a different timezone than you are. Currently: ist in einem anderen Zeitzone, als Sie sind. Derzeit
-Time entered here is based on your Timezone: Die eingegebene Zeit entspricht Ihrer Zeitzone
+Time entered here is based on your Timezone.: Die eingegebene Zeit entspricht Ihrer Zeitzone
 Edit Entry: Eintrag &auml;ndern
 Add Entry: Eintrag hinzuf&uuml;gen
 Details: =

@@ -872,7 +872,7 @@ function cmHideControl (tagName, subMenu)
     // submenu then we dont want to put it on overlap list of
     // of a submenu a second time.
     // - bug fixed by Felix Zaslavskiy
-    if(obj.style.visibility == "hidden")
+    if (obj.style.visibility == "hidden")
       continue;
 
     //subMenu.cmOverlap.push (obj);

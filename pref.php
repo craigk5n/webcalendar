@@ -116,28 +116,28 @@ include 'includes/date_formats.php';
 //get list of theme files from /themes directory
 $themes = array ();
 $dir = 'themes/';
-if (is_dir($dir)) {
-   if ($dh = opendir($dir)) {
-       while (($file = readdir($dh)) !== false) {
+if (is_dir ($dir)) {
+   if ($dh = opendir ($dir)) {
+       while (($file = readdir ($dh)) !== false) {
          if ( strpos ( $file, '_pref.php' ) )
            $themes[] = str_replace ( '_pref.php', '', $file );
        }
        sort ( $themes );
-       closedir($dh);
+       closedir ($dh);
    }
 }
 
 //get list of menu themes
 $menuthemes = array ();
 $dir = 'includes/menu/themes/';
-if ( is_dir( $dir ) ) {
-   if ( $dh = opendir( $dir ) ) {
-       while ( ( $file = readdir( $dh ) ) !== false ) {
+if ( is_dir ( $dir ) ) {
+   if ( $dh = opendir ( $dir ) ) {
+       while ( ( $file = readdir ( $dh ) ) !== false ) {
          if ( $file == '.' || $file == '..' || $file == 'CVS' ||
            $file == 'default') continue;
          if ( is_dir ( $dir.$file ) ) $menuthemes[] = $file;
        }
-       closedir($dh);
+       closedir ($dh);
    }
 }
 
@@ -166,7 +166,7 @@ $minutesStr = translate ( 'minutes' );
 //allow css_cache to display public or NUC values
 @session_start ();
 $_SESSION['webcal_tmp_login'] = $prefuser;
-$openStr ="\"window.open('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
+$openStr ="\"window.open ('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
 $BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' );\"" : '' );
 $INC = array ('js/visible.php', 'js/pref.php');
 print_header($INC, '', $BodyX);
@@ -622,7 +622,7 @@ etranslate ( 'Page may need to be reloaded for new Theme to take effect' )?></td
  </select></td><td>
  <input type="button" name="preview" value="<?php etranslate ( 'Preview' ) ?>" onclick="return showPreview ()" />
 </td></tr>
-<?php  if ( $MENU_ENABLED == 'Y' ) { ?>
+<?php if ( $MENU_ENABLED == 'Y' ) { ?>
  <tr><td  class="tooltip" title="<?php etooltip ( 'menu-themes-help' );?>">
  <label for="pref_MENU_THEME"><?php etranslate ( 'Menu theme' )?>:</label></td><td>
  <select name="pref_MENU_THEME" id="pref_MENU_THEME">

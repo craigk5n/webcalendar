@@ -126,7 +126,7 @@ if ( $newview ) {
   $defIdx = ( ! empty ( $viewisglobal ) && $viewisglobal == 'Y' ? 'Y' : 'N' );
   echo '<tr><td><label>'
   . translate ( 'Global' ) . ":</label></td>\n<td>"
-  . print_radio ( 'is_global', '', '' , $defIdx, '</td><td>' )
+  . print_radio ( 'is_global', '', '', $defIdx, '</td><td>' )
   . "</td></tr>\n";
  }
 
@@ -134,7 +134,7 @@ $defIdx = ( ! empty ( $all_users ) && $all_users == true ? 'Y' : 'N' );
 echo '<tr><td><label>'
   . translate ( 'Users' ) . ":</label></td>\n<td>"
   . print_radio ( 'viewuserall', array ( 'N'=>'Selected', 'Y'=>'All'),
-    'usermode_handler' , $defIdx, '</td><td>' )
+    'usermode_handler', $defIdx, '</td><td>' )
   . "</td></tr>\n";
 ?>
 

@@ -134,12 +134,12 @@ function colorToRGB ( $color ) {
 
 function can_write_to_dir ($path)
 {
-  if ($path{strlen($path)-1}=='/') //Start function again with tmp file...
-    return can_write_to_dir($path.uniqid(mt_rand ()).'.tmp');
-  else if (ereg('.tmp', $path)) { //Check tmp file for read/write capabilities
-    if (!($f = @fopen($path, 'w+')))
+  if ($path{strlen ($path)-1}=='/') //Start function again with tmp file...
+    return can_write_to_dir ($path.uniqid(mt_rand ()).'.tmp');
+  else if (ereg ('.tmp', $path)) { //Check tmp file for read/write capabilities
+    if (!($f = @fopen ($path, 'w+')))
       return false;
-    fclose($f);
+    fclose ($f);
     unlink($path);
     return true;
   }
@@ -413,9 +413,9 @@ function hsl2rgb ( $hsl ){
      $G = 255 * Hue_2_RGB( $var_1, $var_2, $hsl[0] );
      $B = 255 * Hue_2_RGB( $var_1, $var_2, $hsl[0] - ( 1 / 3 ) );
   }
-  $R = sprintf("%02X",round($R));
-  $G = sprintf("%02X",round($G));
-  $B = sprintf("%02X",round($B));
+  $R = sprintf ( "%02X",round ( $R));
+  $G = sprintf ( "%02X",round ( $G));
+  $B = sprintf ( "%02X",round ( $B));
 
   $rgb = '#' . $R . $G . $B;
 

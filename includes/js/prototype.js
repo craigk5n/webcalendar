@@ -68,7 +68,7 @@ Object.extend(Number.prototype, {
   },
 
   times: function(iterator) {
-    $R(0, this, true).each(iterator);
+    $R(0, this, true).each ( iterator);
     return this;
   }
 });
@@ -212,7 +212,7 @@ var Enumerable = {
   each: function(iterator) {
     var index = 0;
     try {
-      this._each(function(value) {
+      this._each ( function(value) {
         try {
           iterator(value, index++);
         } catch (e) {
@@ -226,7 +226,7 @@ var Enumerable = {
 
   all: function(iterator) {
     var result = true;
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       result = result && !!(iterator || Prototype.K)(value, index);
       if (!result) throw $break;
     });
@@ -235,7 +235,7 @@ var Enumerable = {
 
   any: function(iterator) {
     var result = true;
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       if (result = !!(iterator || Prototype.K)(value, index))
         throw $break;
     });
@@ -244,7 +244,7 @@ var Enumerable = {
 
   collect: function(iterator) {
     var results = [];
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       results.push(iterator(value, index));
     });
     return results;
@@ -252,7 +252,7 @@ var Enumerable = {
 
   detect: function (iterator) {
     var result;
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       if (iterator(value, index)) {
         result = value;
         throw $break;
@@ -263,7 +263,7 @@ var Enumerable = {
 
   findAll: function(iterator) {
     var results = [];
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       if (iterator(value, index))
         results.push(value);
     });
@@ -272,7 +272,7 @@ var Enumerable = {
 
   grep: function(pattern, iterator) {
     var results = [];
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       var stringValue = value.toString();
       if (stringValue.match(pattern))
         results.push((iterator || Prototype.K)(value, index));
@@ -282,7 +282,7 @@ var Enumerable = {
 
   include: function(object) {
     var found = false;
-    this.each(function(value) {
+    this.each ( function(value) {
       if (value == object) {
         found = true;
         throw $break;
@@ -292,7 +292,7 @@ var Enumerable = {
   },
 
   inject: function(memo, iterator) {
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       memo = iterator(memo, value, index);
     });
     return memo;
@@ -307,7 +307,7 @@ var Enumerable = {
 
   max: function(iterator) {
     var result;
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       value = (iterator || Prototype.K)(value, index);
       if (value >= (result || value))
         result = value;
@@ -317,7 +317,7 @@ var Enumerable = {
 
   min: function(iterator) {
     var result;
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       value = (iterator || Prototype.K)(value, index);
       if (value <= (result || value))
         result = value;
@@ -327,7 +327,7 @@ var Enumerable = {
 
   partition: function(iterator) {
     var trues = [], falses = [];
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       ((iterator || Prototype.K)(value, index) ?
         trues : falses).push(value);
     });
@@ -336,7 +336,7 @@ var Enumerable = {
 
   pluck: function(property) {
     var results = [];
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       results.push(value[property]);
     });
     return results;
@@ -344,7 +344,7 @@ var Enumerable = {
 
   reject: function(iterator) {
     var results = [];
-    this.each(function(value, index) {
+    this.each ( function(value, index) {
       if (!iterator(value, index))
         results.push(value);
     });
@@ -558,7 +558,7 @@ Ajax.Responders = {
   responders: [],
 
   _each: function(iterator) {
-    this.responders._each(iterator);
+    this.responders._each ( iterator);
   },
 
   register: function(responderToAdd) {
@@ -571,7 +571,7 @@ Ajax.Responders = {
   },
 
   dispatch: function(callback, request, transport, json) {
-    this.each(function(responder) {
+    this.each ( function(responder) {
       if (responder[callback] && typeof responder[callback] == 'function') {
         try {
           responder[callback].apply(responder, [request, transport, json]);
@@ -637,7 +637,7 @@ Ajax.Request.prototype = Object.extend(new Ajax.Base(), {
 
       Ajax.Responders.dispatch('onCreate', this, this.transport);
 
-      this.transport.open(this.options.method, this.url,
+      this.transport.open (this.options.method, this.url,
         this.options.asynchronous);
 
       if (this.options.asynchronous) {
@@ -774,7 +774,7 @@ Object.extend(Object.extend(Ajax.Updater.prototype, Ajax.Request.prototype), {
       if (this.options.insertion) {
         new this.options.insertion(receiver, response);
       } else {
-        Element.update(receiver, response);
+        Element.update ( receiver, response);
       }
     }
 
@@ -1060,7 +1060,7 @@ Insertion.Before.prototype = Object.extend(new Abstract.Insertion('beforeBegin')
   },
 
   insertContent: function(fragments) {
-    fragments.each((function(fragment) {
+    fragments.each ( (function(fragment) {
       this.element.parentNode.insertBefore(fragment, this.element);
     }).bind(this));
   }
@@ -1074,7 +1074,7 @@ Insertion.Top.prototype = Object.extend(new Abstract.Insertion('afterBegin'), {
   },
 
   insertContent: function(fragments) {
-    fragments.reverse(false).each((function(fragment) {
+    fragments.reverse(false).each ( (function(fragment) {
       this.element.insertBefore(fragment, this.element.firstChild);
     }).bind(this));
   }
@@ -1088,7 +1088,7 @@ Insertion.Bottom.prototype = Object.extend(new Abstract.Insertion('beforeEnd'), 
   },
 
   insertContent: function(fragments) {
-    fragments.each((function(fragment) {
+    fragments.each ( (function(fragment) {
       this.element.appendChild(fragment);
     }).bind(this));
   }
@@ -1101,7 +1101,7 @@ Insertion.After.prototype = Object.extend(new Abstract.Insertion('afterEnd'), {
   },
 
   insertContent: function(fragments) {
-    fragments.each((function(fragment) {
+    fragments.each ( (function(fragment) {
       this.element.parentNode.insertBefore(fragment,
         this.element.nextSibling);
     }).bind(this));
@@ -1119,7 +1119,7 @@ Element.ClassNames.prototype = {
   _each: function(iterator) {
     this.element.className.split(/\s+/).select(function(name) {
       return name.length > 0;
-    })._each(iterator);
+    })._each ( iterator);
   },
 
   set: function(className) {
@@ -1716,10 +1716,10 @@ var Position = {
     }
 
     // set position
-    if(options.setLeft)   target.style.left  = (p[0] - delta[0] + options.offsetLeft) + 'px';
-    if(options.setTop)    target.style.top   = (p[1] - delta[1] + options.offsetTop) + 'px';
-    if(options.setWidth)  target.style.width = source.offsetWidth + 'px';
-    if(options.setHeight) target.style.height = source.offsetHeight + 'px';
+    if (options.setLeft)   target.style.left  = (p[0] - delta[0] + options.offsetLeft) + 'px';
+    if (options.setTop)    target.style.top   = (p[1] - delta[1] + options.offsetTop) + 'px';
+    if (options.setWidth)  target.style.width = source.offsetWidth + 'px';
+    if (options.setHeight) target.style.height = source.offsetHeight + 'px';
   },
 
   absolutize: function(element) {

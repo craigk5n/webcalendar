@@ -13,7 +13,7 @@ function valid_form ( form ) {
   etranslate ( 'Color format should be RRGGBB.', true)?>" );
     return false;
   }
-  if (  ! form.nurl.value ) {
+  if ( ! form.nurl.value ) {
     alert ( "<?php etranslate ( 'Error', true) ?>:\n\n" + "<?php
       etranslate ( 'URL cannot be blank.', true)?>" );
     return false;

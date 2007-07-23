@@ -466,7 +466,7 @@ hours behind you: часов после вас
 hour ahead of you: час впереди вас
 hour behind you: час после вас
 is in a different timezone than you are. Currently: в другой временной зоне чем вы. В данный момент
-Time entered here is based on your Timezone: Время введенное здесь основано на вашей временной зоне
+Time entered here is based on your Timezone.: Время введенное здесь основано на вашей временной зоне
 Edit Entry: Редактировать Запись
 Add Entry: Добавить Запись
 Details: Детали

@@ -46,10 +46,10 @@ $pn_admin_gid = '2';
 $app_config = '';
 $config_lines = file( $app_path . "config.php" );
 foreach ( $config_lines as $line ) {
-  preg_match("/pnconfig\['([\w]+)'\] = '([^']+)'/", $line, $match);
+  preg_match ( "/pnconfig\['([\w]+)'\] = '([^']+)'/", $line, $match);
   $app_config[$match[1]] = $match[2];
 }
-unset( $config_lines );
+unset ( $config_lines );
 
 // PostNuke session id cookie (default is POSTNUKESID)
 $pn_sid = 'POSTNUKESID';
@@ -91,15 +91,15 @@ $app_login = $app_config['dbuname'];
 $app_pass  = $app_config['dbpass'];
 
 if ( $app_config['encoded'] ) {
-  $app_login = base64_decode( $app_login );
-  $app_pass  = base64_decode( $app_pass );
+  $app_login = base64_decode ( $app_login );
+  $app_pass  = base64_decode ( $app_pass );
 }
 
 // Debug
 //var_dump($app_config);exit;
 
 // Cleanup stuff we don't need anymore
-unset($app_config);
+unset ( $app_config );
 
 /********************************************************************/
 
@@ -114,7 +114,7 @@ function user_logged_in () {
   if ( empty ( $sid ) ) return false;
 
     // addslashes if magic_quotes_gpc is off
-  if ( !get_magic_quotes_gpc () ) $sid = addslashes( $sid );
+  if ( !get_magic_quotes_gpc () ) $sid = addslashes ( $sid );
 
   // Check to see if the session is still valid
   if (! $login = pn_active_session( $sid ) ) return false;
@@ -153,8 +153,8 @@ function pn_active_session($sid) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $tmp = explode('"', $row[0]);
-      if (($tmp[1] > 0) && ($tmp[1] < ((time () - $last) / 60))) $login = false;
+      $tmp = explode ( '"', $row[0] );
+      if ( ( $tmp[1] > 0 ) && ( $tmp[1] < ( ( time () - $last ) / 60 ) ) ) $login = false;
     }
     dbi_free_result ( $res );
   }
@@ -239,7 +239,7 @@ function user_get_users ( $publicOnly=false ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      list($fname, $lname) = split (" ",$row[1]);
+      list ( $fname, $lname ) = split ( ' ',$row[1] );
       $ret[$count++] = array (
         'cal_login' => $row[2],
         'cal_lastname' => $lname,
@@ -266,7 +266,7 @@ function user_load_variables ( $login, $prefix ) {
   global $app_host, $app_login, $app_pass, $app_db, $pn_user_table;
   global $c, $db_host, $db_login, $db_password, $db_database, $app_same_db;
 
-  if ($NONUSER_PREFIX && substr ($login, 0, strlen($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
+  if ($NONUSER_PREFIX && substr ($login, 0, strlen ($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }
@@ -290,7 +290,7 @@ function user_load_variables ( $login, $prefix ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
-      list($fname, $lname) = split (" ",$row[1]);
+      list ( $fname, $lname ) = split ( ' ',$row[1] );
       $GLOBALS[$prefix . 'login'] = $login;
       $GLOBALS[$prefix . 'firstname'] = $fname;
       $GLOBALS[$prefix . 'lastname'] = $lname;
@@ -331,7 +331,7 @@ $admin_can_delete_user = true;
 // Redirect the user to the login-app.php page
 function app_login_screen( $return ) {
   global $SERVER_URL;
-  header("Location: {$SERVER_URL}login-app.php?return_path={$return}");
+  header ( "Location: {$SERVER_URL}login-app.php?return_path={$return}");
   exit;
 }
 

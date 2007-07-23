@@ -33,7 +33,7 @@ function valid_form2 ( form ) {
  . translate ( 'You have not entered a password.', true )?>" );
     return false;
   }
-  if (  pass1 != pass2 ) {
+  if ( pass1 != pass2 ) {
     alert ( "<?php echo $errStr
  . translate ( 'The passwords were not identical.', true )?>" );
     return false;

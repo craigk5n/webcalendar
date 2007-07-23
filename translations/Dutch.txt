@@ -508,7 +508,7 @@ hours behind you: uren achter op u
 hour ahead of you: een uur voor op u
 hour behind you: een uur achter op u
 is in a different timezone than you are. Currently: is in een andere tijdzone dan u, Op het moment
-Time entered here is based on your Timezone: Gegeven tijd is gebaseerd op uw tijdzone
+Time entered here is based on your Timezone.: Gegeven tijd is gebaseerd op uw tijdzone
 Edit Entry: Afspraak wijzigen
 Add Entry: Afspraak toevoegen
 Details: =

@@ -336,7 +336,7 @@ pm: Po po³udniu
 hours ahead of you: godzin przed tob±
 hours behind you: godzin za tob±
 is in a different timezone than you are. Currently: jest w innej strefie czasowej ni¿ ty. Aktualnie:
-Time entered here is based on your Timezone: Podany czas jest ustalony na podstawie twojej strefy czasowej
+Time entered here is based on your Timezone.: Podany czas jest ustalony na podstawie twojej strefy czasowej
 Edit Entry: Eytuj wpis
 Add Entry: Dodaj wpis
 Details: Szczegó³y

@@ -373,7 +373,7 @@ function showSchedule () {
      sch_win.location.replace( url );
      sch_win.resizeTo(w,h);
   } else {
-     sch_win = window.open( url, "showSchedule", features );
+     sch_win = window.open ( url, "showSchedule", features );
   }
 }
 
@@ -403,7 +403,7 @@ function add_exception (which) {
       {
          for (i = 0; i < length; i++)
          {
-            if(options[i].text ==  "-" + exceptDate || options[i].text ==  "+" + exceptDate){
+            if (options[i].text ==  "-" + exceptDate || options[i].text ==  "+" + exceptDate){
          isUnique = false;
          }
      }
@@ -422,7 +422,7 @@ function del_selected () {
       {
          for (i = 0; i < length; i++)
          {
-            if(options[i].selected){
+            if (options[i].selected){
          options[i] = null;
          }
          } // end for loop
@@ -584,7 +584,7 @@ function editCats (  evt ) {
   if (user ) {
   url += "&user=" + user;
  }
-  var catWindow = window.open(url,"EditCat","width=440,height=250,"  + MyPosition);
+  var catWindow = window.open (url,"EditCat","width=440,height=250,"  + MyPosition);
 }
 
 function displayInValid(myvar)

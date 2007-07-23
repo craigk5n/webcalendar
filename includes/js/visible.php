@@ -146,7 +146,7 @@ function selectDate ( day, month, year, current, evt, frm ) {
   date += "01";
   url = "datesel.php?form=" + form.id + "&fday=" + day +
     "&fmonth=" + month + "&fyear=" + year + "&date=" + date;
-  var colorWindow = window.open(url,"DateSelection","width=300,height=180,"  + MyPosition);
+  var colorWindow = window.open (url,"DateSelection","width=300,height=180,"  + MyPosition);
 }
 
 function selectColor ( color, evt ) {
@@ -159,7 +159,7 @@ function selectColor ( color, evt ) {
   }
   var mY = 100;
   var MyOptions = 'width=390,height=365,scrollbars=0,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;
-  var colorWindow = window.open(url,"ColorSelection","width=390,height=365," + MyOptions );
+  var colorWindow = window.open (url,"ColorSelection","width=390,height=365," + MyOptions );
 }
 
 function valid_color ( str ) {
@@ -201,7 +201,7 @@ function toggle_datefields( name, ele ) {
 function callEdit () {
   var features = 'width=600,height=500,resizable=yes,scrollbars=no';
   var url = "edit_entry.php";
-  editwin = window.open( url, "edit_entry", features );
+  editwin = window.open ( url, "edit_entry", features );
 }
 <?php
 if ( ! empty ( $_SERVER['PHP_SELF'] ) &&

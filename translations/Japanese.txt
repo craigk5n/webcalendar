@@ -447,7 +447,7 @@ Removed: 削除しました
 #
 You are not authorized to edit this task: このタスクを編集することを許可されていません
 task: タスク
-Time entered here is based on your Timezone: ここで入力された時間は、あなたのタイムゾーンに基づきます。
+Time entered here is based on your Timezone.: ここで入力された時間は、あなたのタイムゾーンに基づきます。
 Edit Entry: エントリの編集
 Add Entry: エントリの追加
 Details: 詳細
