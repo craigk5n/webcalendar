@@ -56,7 +56,7 @@ if ( empty ( $error ) && $id > 0 ) {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) )
       $partlogin[] = $row[0];
-    dbi_free_result($res);
+    dbi_free_result ( $res );
   }
 
   // Get the name of the event

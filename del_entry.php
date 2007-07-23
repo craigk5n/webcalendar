@@ -120,7 +120,7 @@ if ( $id > 0 && empty ( $error ) ) {
       dbi_free_result ( $res );
     }
     // Get event name.
-    $res = dbi_execute( 'SELECT cal_name, cal_date, cal_time FROM webcal_entry
+    $res = dbi_execute ( 'SELECT cal_name, cal_date, cal_time FROM webcal_entry
       WHERE cal_id = ?', array ( $id ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );

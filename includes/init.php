@@ -245,7 +245,7 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
   . ( $DEMO_MODE == 'Y' ? '
     <p><a href="http://validator.w3.org/check?uri=referer">'
      . '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
-     . 'class="valid"  /></a></p>' : '' )/* Close HTML page properly. */ . '
+     . 'class="valid" /></a></p>' : '' )/* Close HTML page properly. */ . '
   </body>
 </html>
 ';

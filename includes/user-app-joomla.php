@@ -36,17 +36,18 @@ $app_admin_gid = array ('24','25');
 $app_config = '';
 $config_lines = file( $app_path . "configuration.php" );
 foreach ( $config_lines as $line ) {
-  preg_match("/mosConfig_([\w]+) = '([^']+)'/", $line, $match);
+  preg_match ( "/mosConfig_([\w]+) = '([^']+)'/", $line, $match);
   $app_config[$match[1]] = $match[2];
 }
-unset( $config_lines );
+unset ( $config_lines );
 
 // Joomla 1.0.8 introduced session types
-$app_session_type = ( isset( $app_config['session_type'] ) ) ? $app_config['session_type'] : '';
+$app_session_type = ( isset ( $app_config['session_type'] ) )
+ ? $app_config['session_type'] : '';
 $app_secret = $app_config['secret'];
 
 // Session id cookie name
-$app_sid = md5( 'site'.$app_config['live_site'] );
+$app_sid = md5 ( 'site'.$app_config['live_site'] );
 
 // Session lifetime before required to login again
 $app_sid_lifetime = $app_config['lifetime'];
@@ -84,7 +85,7 @@ $app_pass  = $app_config['password'];
 //var_dump($app_config);exit;
 
 // Cleanup stuff we don't need anymore
-unset( $app_config );
+unset ( $app_config );
 
 /********************************************************************/
 
@@ -130,20 +131,20 @@ function app_get_sid( $id ) {
     case 2:
     // 1.0.0 to 1.0.7 Compatibility
     // lowest level security
-      $value       = md5( $id . $_SERVER['REMOTE_ADDR'] );
+      $value       = md5 ( $id . $_SERVER['REMOTE_ADDR'] );
       break;
 
     case 1:
     // slightly reduced security - 3rd level IP authentication for those behind IP Proxy
-      $remote_addr   = explode( '.', $_SERVER['REMOTE_ADDR'] );
+      $remote_addr   = explode ( '.', $_SERVER['REMOTE_ADDR'] );
       $ip        = $remote_addr[0] .'.'. $remote_addr[1] .'.'. $remote_addr[2];
-      $value       = md5( $app_secret . md5( $id . $ip . $browser ) );
+      $value       = md5 ( $app_secret . md5 ( $id . $ip . $browser ) );
       break;
 
     default:
     // Highest security level - new default for 1.0.8 and beyond
       $ip        = $_SERVER['REMOTE_ADDR'];
-      $value       = md5( $app_secret . md5( $id . $ip . $browser ) );
+      $value       = md5 ( $app_secret . md5 ( $id . $ip . $browser ) );
       break;
   }
   return $value;
@@ -184,7 +185,7 @@ function get_admins () {
 
   // what are the gid's of the admin group
   $where = '(';
-  $num = count( $app_admin_gid );
+  $num = count ( $app_admin_gid );
   for ($i=0; $i<$num; $i++) {
     $where .= "gid = $app_admin_gid[$i]";
     if ( ( $i + 1 ) < $num ) $where .= ' OR ';
@@ -232,7 +233,7 @@ function user_get_users ( $publicOnly=false ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      list($fname, $lname) = split (" ",$row[1]);
+      list ( $fname, $lname ) = split ( ' ',$row[1] );
       $ret[$count++] = array (
         'cal_login' => $row[2],
         'cal_lastname' => $lname,
@@ -287,7 +288,7 @@ function user_load_variables ( $login, $prefix ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
-      list($fname, $lname) = split (" ",$row[1]);
+      list ( $fname, $lname ) = split ( ' ',$row[1] );
       $GLOBALS[$prefix . 'login'] = $login;
       $GLOBALS[$prefix . 'firstname'] = $fname;
       $GLOBALS[$prefix . 'lastname'] = $lname;
@@ -351,7 +352,7 @@ $admin_can_delete_user = true;
 // Redirect the user to the login-app.php page
 function app_login_screen( $return ) {
   global $SERVER_URL;
-  header("Location: {$SERVER_URL}login-app.php?return_path={$return}");
+  header ( "Location: {$SERVER_URL}login-app.php?return_path={$return}");
   exit;
 }
 

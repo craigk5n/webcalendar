@@ -46,14 +46,14 @@ if ( ! $is_my_event )
 $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $delete ) ) {
   // Delete this category.
-  if ( ! dbi_execute( 'DELETE FROM webcal_categories
+  if ( ! dbi_execute ( 'DELETE FROM webcal_categories
     WHERE cat_id = ? AND ( cat_owner = ?'
        . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ),
         array ( $id, $login ) ) ) {
     $error = db_error ();
   }
 
-  if ( ! dbi_execute( 'DELETE FROM webcal_entry_categories
+  if ( ! dbi_execute ( 'DELETE FROM webcal_entry_categories
     WHERE cat_id = ? AND ( cat_owner = ?'
        . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ),
         array ( $id, $login ) ) ) {
