@@ -447,7 +447,7 @@ hours behind you: שעות מאוחרות ממך
 hour ahead of you: שעה מוקדמת ממך
 hour behind you: שעה מאוחרת ממך
 is in a different timezone than you are. Currently: הנו באיזור זמן שונה ממך. כרגע
-Time entered here is based on your Timezone: השעה כאן מבוססת על איזור הזמן שלך
+Time entered here is based on your Timezone.: השעה כאן מבוססת על איזור הזמן שלך
 Edit Entry: ערוך רשומה
 Add Entry: הוסף רשומה
 Details: פרטים
