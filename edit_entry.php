@@ -482,6 +482,7 @@ else {
     empty ( $thismonth ) ? date ( 'm' ) : $thismonth,
     empty ( $thisday ) ? date ( 'd' ) : $thisday );
 }
+
 if ( empty ( $cal_date ) || ! $cal_date )
   $cal_date = $thisdate;
 
@@ -601,7 +602,7 @@ if ( $can_edit ) {
             </tr>
             <tr>
               <td colspan="2"' : '
-              <td ' ) . 'class="aligntop">'
+              <td' ) . ' class="aligntop">'
    . ( ! empty ( $categories ) || $DISABLE_ACCESS_FIELD != 'Y' ||
     ( $DISABLE_PRIORITY_FIELD != 'Y' )
     /* New table for extra fields. */ ? '
