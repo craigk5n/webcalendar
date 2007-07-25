@@ -75,10 +75,10 @@ echo '
  . 'dependent,menubar,scrollbars,height=400,width=400\' );" /></h2>';
 
 if ( ! $upload_enabled )
-  // The php.ini file does not have file_uploads enabled, so we will not receive
-  // the uploaded import file.
-  // Note: do not translate "php.ini file_uploads" since these
-  // are the filename and config name.
+  // The php.ini file does not have file_uploads enabled,
+  // so we will not receive the uploaded import file.
+  // Note: do not translate "php.ini file_uploads"
+  // since these are the filename and config name.
   echo '
     <p>' . translate ( 'Disabled' ) . ' (php.ini file_uploads)</p>';
 else {

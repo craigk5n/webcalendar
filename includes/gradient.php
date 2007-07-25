@@ -134,13 +134,13 @@ function colorToRGB ( $color ) {
 
 function can_write_to_dir ($path)
 {
-  if ($path{strlen ($path)-1}=='/') //Start function again with tmp file...
-    return can_write_to_dir ($path.uniqid(mt_rand ()).'.tmp');
+  if ($path {strlen ($path)-1}=='/') //Start function again with tmp file...
+    return can_write_to_dir ($path.uniqid (mt_rand ()).'.tmp');
   else if (ereg ('.tmp', $path)) { //Check tmp file for read/write capabilities
-    if (!($f = @fopen ($path, 'w+')))
+    if (! ($f = @fopen ($path, 'w+')))
       return false;
     fclose ($f);
-    unlink($path);
+    unlink ($path);
     return true;
   }
   else //We have a path error.
@@ -358,7 +358,7 @@ function  rgb2hsl ( $rgb ) {
   $G = ( hexdec (substr ( $rgb,2,2) ) / 255 );
   $B = ( hexdec (substr ( $rgb,4,2) ) / 255 );
 
-  $Min = min( $R, $G, $B );    //Min. value of RGB
+  $Min = min ( $R, $G, $B );    //Min. value of RGB
   $Max = max( $R, $G, $B );    //Max. value of RGB
   $deltaMax = $Max - $Min;     //Delta RGB value
   $L = ( $Max + $Min ) / 2;

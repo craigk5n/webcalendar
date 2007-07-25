@@ -71,26 +71,26 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   // .
   // Generate header row.
   $class = ( $dateYmd == date ( 'Ymd', $today )
-    ? 'today'
-    : ( is_weekend ( $days[$i] ) ? 'weekend ' : '' ) );
+    ? ' class="today"'
+    : ( is_weekend ( $days[$i] ) ? ' class="weekend"' : '' ) );
 
   $headerStr .= '
-              <th' . ( $class != '' ? ' class="' . $class . '"' : '' ) . '>'
+              <th' . $class . '>'
    . ( $can_add ? html_for_add_icon ( $dateYmd, '', '', $user ) : '' )
    . '<a href="day.php?' . $u_url . 'date=' . $dateYmd . $caturl . '">'
    . $header[$i] . '</a></th>';
 
   $date = date ( 'Ymd', $days[$i] );
-  $hour_arr = $rowspan_arr = array ();
+  $hour_arr = $rowspan_arr = $tk = array ();
   // .
   // Get, combine and sort, static and repeating events for this date.
   $ev = combine_and_sort_events ( get_entries ( $date, $get_unapproved ),
     get_repeating_entries ( $user, $date ) );
   // .
-  // Then sort in any tasks.
+  // Then sort in any tasks due for this day and before.
   $ev = combine_and_sort_events ( $ev,
     ( $date >= date ( 'Ymd' )
-      ? get_tasks ( $date, $get_unapproved ) : $hour_arr ) );
+      ? get_tasks ( $date, $get_unapproved ) : $tk ) );
 
   for ( $j = 0, $cnt = count ( $ev ); $j < $cnt; $j++ ) {
     if ( $get_unapproved || $ev[$j]->getStatus () == 'A' )
@@ -138,13 +138,12 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   }
 
   $untimedStr .= '
-              <td class="' . $class
+              <td'
   // Use the class 'hasevents' for any hour block that has events in it.
-  . ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] ) ? ' hasevents' : '' )
-   . '">'
-   . ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
-    ? $untimed[$i] : '&nbsp;' )
-   . '</td>';
+  . ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
+   ? ' class="hasevents"' : $class )
+   . '">' . ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
+    ? $untimed[$i] : '&nbsp;' ) . '</td>';
 
   $save_hour_arr[$i] = $hour_arr;
   $save_rowspan_arr[$i] = $rowspan_arr;
@@ -169,24 +168,23 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     // And class "today" overrides both "hasevents" and "weekend".
     // So, no need to list them all.
     $class = ( $dateYmd == date ( 'Ymd', $today )
-      ? 'today'
+      ? ' class="today"'
       // Use the class 'hasevents' for any hour block that has events in it.
       : ( ! empty ( $save_hour_arr[$d][$i] ) && strlen ( $save_hour_arr[$d][$i] )
-        ? 'hasevents'
-        : ( is_weekend ( $days[$d] ) ? 'weekend' : '' ) ) );
+        ? ' class="hasevents"'
+        : ( is_weekend ( $days[$d] ) ? ' class="weekend"' : '' ) ) );
 
     if ( $rowspan_day[$d] > 1 ) {
-      // This might mean there's an overlap, or it could mean one event
-      // ends at 11:15 and another starts at 11:30.
+      // This might mean there's an overlap,
+      // or it could mean one event ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $save_hour_arr[$d][$i] ) )
         $eventsStr .= '
-              <td' . ( $class != '' ? ' class="' . $class . '"' : '' )
-         . '>' . $save_hour_arr[$d][$i] . '</td>';
+              <td' . $class . '>' . $save_hour_arr[$d][$i] . '</td>';
 
       $rowspan_day[$d]--;
     } else {
       $eventsStr .= '
-              <td' . ( $class != '' ? ' class="' . $class . '"' : '' );
+              <td' . $class;
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
         $eventsStr .= '>'
          . ( $can_add // If user can add events, then echo the add event icon.

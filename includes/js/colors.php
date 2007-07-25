@@ -35,7 +35,7 @@ function setInit () {
   document.getElementById("theoldcell").bgColor= '#' + oldcol;
   currgb=[fromhex(curcol.substr (0,2)), fromhex(curcol.substr (2,2)), fromhex(curcol.substr (4,2))];
   curhsl=RGBtoHSL(currgb[0],currgb[1],currgb[2]);
-  update ( );
+  update ();
 }
 
 function fillhtml () {
@@ -149,7 +149,7 @@ function setCursor(what) {
   document.getElementById("preimg"+cursorPos).src=cursorImg.src;
 }
 
-function update ( ) {
+function update () {
   document.getElementById("thecell").bgColor= '#' + curcol;
   document.getElementById("rgb_r").value=currgb[0];
   document.getElementById("rgb_g").value=currgb[1];
@@ -197,7 +197,7 @@ function ToRGB1(rm1,rm2,rh) {
 }
 
 function RGBtoHSL (r,g,b) {
-  min = Math.min(r,Math.min(g,b));
+  min = Math.min (r,Math.min (g,b));
   max = Math.max(r,Math.max(g,b));
   // l
   l = Math.round ( (max+min)/2);
@@ -228,7 +228,7 @@ function setCol(value) {
   curcol=value;
   currgb=[fromhex(curcol.substr (0, 2 )), fromhex(curcol.substr (2,2)), fromhex(curcol.substr (4,2))];
   curhsl=RGBtoHSL(currgb[0],currgb[1],currgb[2]);
-  update ( );
+  update ();
 }
 
 function setRGB(r,g,b) {
@@ -236,15 +236,15 @@ function setRGB(r,g,b) {
   currgb=[r,g,b];
   curcol=tohex(r)+tohex(g)+tohex(b);
   curhsl=RGBtoHSL(r,g,b);
-  update ( );
+  update ();
 }
 
-function setHSL(h,s,l) {
+function setHSL (h,s,l) {
   if (h>255||h<0||s>255||s<0||l>255||l<0) {s=curhsl[0];s=curhsl[1];l=curhsl[2];}
   curhsl=[h,s,l];
   currgb=HSLtoRGB(h,s,l);
   curcol=tohex(currgb[0])+tohex(currgb[1])+tohex(currgb[2]);
-  update ( );
+  update ();
 }
 
 function setFromRGB () {
@@ -275,12 +275,12 @@ function setFromImage (event) {
   }
   //prevent lockup if RGB = 000000 or FFFFFF
   if ( curhsl[2] == 0 || curhsl[2] == 255 ) curhsl[2] = Math.round ( 255-y*255/191);
-  setHSL(Math.round ( x*255/191),Math.round ( 255-y*255/191),curhsl[2]);
+  setHSL (Math.round ( x*255/191),Math.round ( 255-y*255/191),curhsl[2]);
 }
 
 function setFromSlider (event) {
   yd=0;lr=document.getElementById("slider");
   while (lr!=null) {yd+=lr.offsetTop; lr=lr.offsetParent;}
   y=event.clientY-yd;
-  setHSL(curhsl[0],curhsl[1],Math.round ( 255-y*255/191));
+  setHSL (curhsl[0],curhsl[1],Math.round ( 255-y*255/191));
 }

@@ -176,6 +176,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'PUT' ) {
   $calUser = $login;
   $overwrite = true;
   $type = 'icalclient';
+
   $data = parse_ical ( '', $type );
   import_data ( $data, $overwrite, $type );
 } else {

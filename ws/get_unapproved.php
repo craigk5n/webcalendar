@@ -99,7 +99,7 @@ function process_event ( $id, $name, $event_date, $event_time ) {
   } else {
     if ( $WS_DEBUG )
       ws_log_message ( str_replace ( 'XXX',
-          array ( $id, $name, $event_time , $event_date ),
+          array ( $id, $name, $event_time, $event_date ),
           translate ( 'Event id=XXX XXX at XXX on XXX.' ) ) );
     $sentIds[$id] = true;
     return ws_print_event_xml ( $id, $event_date );
