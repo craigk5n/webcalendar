@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 2. Juli 2007
+# Last update: 25. Juli 2007
 #
 # $Id$
-# Translation last updated on 07-02-2007
+# Translation last updated on 07-25-2007
 
 
 ################################################################################
@@ -102,11 +102,37 @@ Error adding event XXX.: Fehler beim Hinzuf&uuml;gen eines Termins f&uuml;r XXX.
 ########################################
 # Page: admin.php
 #
+Invalid setting name XXX.: Ung&uuml;ltiger Einstellungsname XXX.
 Select: Ausw&auml;hlen
+Day: Tag
+Week: Woche
+Month: Monat
+Year: Jahr
 Bottom: Unten
 Top: Oben
 Anyone: Jeder
 Participant: Benutzer
+Settings: Einstellungen
+Groups: Benutzergruppen
+NonUser Calendars: &#39;Zentrale&#39; - Kalender
+Other: Sonstiges
+Email: =
+Colors: Farben
+Document background: Hintergrund
+Document title: Titel
+Document text: Textfarbe der Webkalenderseiten
+My event text: Textfarbe meiner eigenen Eintr&auml;ge
+Table grid color: Tabellen-Gitterfarbe
+Table header background: Hintergrund Tabellen-Kopfzeile
+Table header text: Textfarbe Tabellen-Kopfzeile
+Table cell background: Tabellen-Hintergrund
+Table cell background for current day: Tabellen-Hintergrund f&uuml;r &#34;Heute&#34;
+Table cell background for days with events: Tabellen-Hintergrund f&uuml;r Tage mit Terminen
+Table cell background for weekends: Hintergrundfarbe f&uuml;r Wochenenden
+Table cell background for other month: Tabellen-Hintergrund f&uuml;r anderen Monat
+Week number color: Farbe f&uuml;r Wochennummer
+Event popup background: Hintergrundfarbe Termin-PopUp
+Event popup text: Textfarbe Termin-PopUp
 System Settings: Systemeinstellungen
 Help: Hilfe
 System options: Systemeinstellungen
@@ -493,15 +519,20 @@ Removed: Entfernt
 #
 am: Vormittag
 pm: Nachmittag
+days: Tage
+hours: Stunden
+minutes: Minute(n)
 You are not authorized to edit this task: Sie sind nicht berechtigt diese Aufgabe zu &auml;ndern
 task: Aufgabe
 You are not authorized to edit this XXX.: Sie sind nicht berechtigt diesen XXX zu bearbeiten
-hours ahead of you: Stunden vor Ihnen
-hours behind you: Stunden nach Ihnen
+is in a different timezone than you are. Currently: ist in einem anderen Zeitzone, als Sie sind. Derzeit
 hour ahead of you: Stunde vor Ihnen
 hour behind you: Stunde nach Ihnen
-is in a different timezone than you are. Currently: ist in einem anderen Zeitzone, als Sie sind. Derzeit
-Time entered here is based on your Timezone.: Die eingegebene Zeit entspricht Ihrer Zeitzone
+hours ahead of you: Stunden vor Ihnen
+hours behind you: Stunden nach Ihnen
+XXX is in a different timezone (ahead): (XXX ist in einer anderen Zeitzone; XXX vor Ihrer.<br />&nbsp;XXX)
+XXX is in a different timezone (behind): (XXX ist in einer anderen Zeitzone; XXX hinter Ihrer.<br />&nbsp;XXX)
+Time entered here is based on your Timezone.: Die eingegebene Zeit basiert auf <b>Ihre</b> Zeitzone.
 Edit Entry: Eintrag &auml;ndern
 Add Entry: Eintrag hinzuf&uuml;gen
 Details: =
@@ -538,8 +569,6 @@ All day event: Termin f&uuml;r den GANZEN Tag
 Timezone Offset: Zeitzonenausgleich
 time-help: Gibt die Uhrzeit des Termines an. Kann leer gelassen werden.
 duration-help: Gibt die Dauer des Termines in Minuten an. Kann leer gelassen werden.
-hours: Stunden
-minutes: Minute(n)
 end-time-help: Definiert die Zeit des Termines als Endzeitpunkt.
 Start Time: Startzeit
 Due Date: F&auml;lligkeitsdatum
@@ -556,6 +585,9 @@ Monthly: Monatlich
 by day: Tagesorientiert
 by date: Nach Datum
 by position: Nach Position
+Monthly (by day): Monatlich (Tagesorientiert)
+Monthly (by date): Monatlich (nach Datum)
+Monthly (by position): Monatlich (nach Position)
 Yearly: J&auml;hrlich
 Manual: H&auml;ndisch (manuell)
 Expert Mode: Experten Modus
@@ -593,13 +625,13 @@ Send Reminder: Erinnerung senden
 When: Wann
 Use Date/Time: Datum&#47;Zeit verwenden
 Use Offset: Zeitzone verwenden
-days: Tage
 Before: Davor
 After: Danach
 Start: Beginn
 End/Due: Ende&#47;Bis
 Times: Wie oft
 Every: Jeden
+CAPTCHA Warning: <b>Warnung:</b> CAPTCHA ben&ouml;tigt die PHP-Erweiterung &#39;GD&#39;!<br />
 Delete entry: Eintrag l&ouml;schen
 You are not authorized to edit this entry.: Sie haben keine Berechtigung diesen Eintrag zu &auml;ndern.
 
@@ -799,7 +831,6 @@ You must specify a group name: Sie m&uuml;ssen einen Gruppennamen anlegen
 ########################################
 # Page: help_admin.php
 #
-Settings: Einstellungen
 Auto-refresh calendars: Kalender aktualisieren
 auto-refresh-help: Falls aktiviert, Tages,- Wochen- und Monats-Ansicht, und &#34;unbest&auml;tigte Termine&#34; werden automatisch aktualisiert.
 Auto-refresh time: Aktualisierungsintervall
@@ -808,11 +839,7 @@ Display days with events in bold in year view: Zeigt Tage MIT Terminen in der Ja
 Display weekends in week view: Wochenenden in der Wochenansicht anzeigen
 Time interval: Zeitintervall
 time-interval-help: Legt das Zeitintervall in der Tages,- Wochen- und Monatsansicht fest.
-Groups: Benutzergruppen
 Nonuser: &#39;Zentrale&#39;-Kalender
-Other: Sonstiges
-Email: =
-Colors: Farben
 user-customize-color: Spezifiziert, ob Benutzern erlaubt wird, ihre eigenen Farbeneinstellungen zu &auml;ndern
 enable-gradient-help: Verwendet die stufenweise Farb&auml;nderungen f&uuml;r Zellenhintergr&uuml;nde
 Manually entering color values: Eigene eingegebene Farbwerte
@@ -1016,25 +1043,15 @@ Illegal characters in login: Nicht zul&auml;ssige Zeichen beim Login
 ########################################
 # Page: pref.php
 #
-entries: Eintr&auml;ge
 Save Preferences: Voreinstellungen speichern
-0: =
-1: =
-2: =
-3: =
-4: =
-5: =
-6: =
-7: =
-8: =
-9: =
 Public Access calendar: &Ouml;ffentlicher Kalender
 Modify Non User Calendar Preferences: &Auml;ndern der Einstellungen von Zentralen Kalendern
 Return to My Preferences: Zur&uuml;ck zu meinen Einstellungen
-hour: Stunde
+Custom Scripts: Eigene Scripte
 Timezone Selection: Auswahl der Zeitzone
 entry-interval-help: Setzt Minutenintervall beim &Auml;ndern eingetragener Zeiten
 Entry interval: Eintragsintervall
+hour: Stunde
 minute: Minute
 theme-reload-help: Wegen gecachten CSS ist ein nochmaliges (Reload) der Seite erforderlich
 Page may need to be reloaded for new Theme to take effect: Seite m&uuml;&szlig;te neu geladen werden um das neue Thema anzuzeigen
@@ -1045,6 +1062,7 @@ display_byproxy-help: Anzeige durch Proxyhilfe
 Display if created by Assistant: Anzeigen wenn durch Assistent eingegeben
 allow-view-subscriptions-help: Erlaubt eingeschr&auml;nkten EXTERNEN Zugriff auf Private oder Vertrauliche Eintr&auml;ge
 Allow remote viewing of: Erlaubt Ansicht EXTERNEN Zugriff auf
+entries: Eintr&auml;ge
 
 ########################################
 # Page: publish.php
@@ -1165,7 +1183,6 @@ more: weitere...
 ########################################
 # Page: users.php
 #
-NonUser Calendars: &#39;Zentrale&#39; - Kalender
 Remote Calendars: Externe Kalender (Remote)
 denotes administrative user: Kennzeichnet Benutzer mit Administrator-Rechten
 Add New User: Neuen Benutzer hinzuf&uuml;gen
@@ -1190,7 +1207,6 @@ Add View: Ansicht hinzuf&uuml;gen
 Edit View: Ansicht editieren
 View Name: Ansichtsname
 View Type: Ansichtstyp
-Day: Tag
 Day by Time: Zeiteinteilungen pro Tag
 Week (Users horizontal): Woche (Teilnehmer horizontal)
 Week by Time: Zeiteinteilungen pro Woche
@@ -1252,12 +1268,6 @@ Export this entry to: Diesen Eintrag exportieren nach
 Palm Pilot: =
 
 ########################################
-# Page: view_r.php
-#
-Week: Woche
-Double-click on empty cell to add new entry: Ein &#39;Doppelklick&#39; auf eine leere Zelle f&uuml;gt einen neuen Termin ein.
-
-########################################
 # Page: week_details.php
 #
 New Entry: Neuer Eintrag
@@ -1276,29 +1286,6 @@ Manage Views: Ansichten verwalten
 Week View: Wochenansicht
 Year View: Jahresansicht
 Invalid function id: Ung&uuml;ltige &#39;Funktions-ID&#39;
-
-########################################
-# Page: includes/common_admin_pref.php
-#
-Month: Monat
-Year: Jahr
-Custom Scripts: Eigene Scripte
-Document background: Hintergrund
-Document title: Titel
-Document text: Textfarbe der Webkalenderseiten
-My event text: Textfarbe meiner eigenen Eintr&auml;ge
-Table grid color: Tabellen-Gitterfarbe
-Table header background: Hintergrund Tabellen-Kopfzeile
-Table header text: Textfarbe Tabellen-Kopfzeile
-Table cell background: Tabellen-Hintergrund
-Table cell background for current day: Tabellen-Hintergrund f&uuml;r &#34;Heute&#34;
-Table cell background for days with events: Tabellen-Hintergrund f&uuml;r Tage mit Terminen
-Table cell background for weekends: Hintergrundfarbe f&uuml;r Wochenenden
-Table cell background for other month: Tabellen-Hintergrund f&uuml;r anderen Monat
-Week number color: Farbe f&uuml;r Wochennummer
-Event popup background: Hintergrundfarbe Termin-PopUp
-Event popup text: Textfarbe Termin-PopUp
-Invalid setting name XXX.: Ung&uuml;ltiger Einstellungsname XXX.
 
 ########################################
 # Page: includes/config.php
@@ -1475,7 +1462,6 @@ Manage calendar of: Kalender verwalten von
 #
 Browser Language Not Found: Browsersprache nicht gefunden
 not supported: nicht unterst&uuml;tzt
-Browser-defined: Browser-definiert
 English: Englisch
 English-US: Englisch-US
 Afrikaans: Afrikanisch
@@ -1518,8 +1504,19 @@ Spanish: Spanisch
 Swedish: Schwedisch
 Turkish: T&uuml;rkisch
 Welsh: Wallisisch
+Browser-defined: Browser-definiert
 event: Termin
 journal: Journal
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
 
 ########################################
 # Page: includes/user-imap.php
