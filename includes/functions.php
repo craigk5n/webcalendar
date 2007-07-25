@@ -719,7 +719,7 @@ EOT;
 /* Generate HTML for a date selection for use in a form.
  *
  * @param string $prefix   Prefix to use in front of form element names
- * @param string $date     Currently selected date ( in YYYYMMDD format)
+ * @param string $date     Currently selected date (in YYYYMMDD format)
  * @param bool $trigger    Add onchange event trigger that
  *                         calls javascript function $prefix_datechanged ()
  * @param int  $num_years  Number of years to display
@@ -813,7 +813,7 @@ function date_to_epoch ( $d ) {
  * @return string  Date in the specified format.
  *
  * @global string Preferred date format
- * @TODO Add other date ( ) parameters like ( j, n )
+ * @TODO Add other date () parameters like ( j, n )
  */
 function date_to_str ( $indate, $format = '', $show_weekday = true,
   $short_months = false ) {
@@ -2941,7 +2941,7 @@ function get_web_browser () {
  * @param int $month  Month (1-12)
  * @param int $day    Day (1-31)
  *
- * @return int  The date ( in UNIX timestamp format).
+ * @return int  The date (in UNIX timestamp format).
  */
 function get_weekday_before ( $year, $month, $day = 2 ) {
   global $DISPLAY_WEEKENDS, $WEEK_START, $weekday_names;
@@ -4761,7 +4761,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
   set_env ( 'TZ', 'America/New_York' );
   $tmp_timezone = date ( 'T' );
   set_env ( 'TZ', $old_TZ );
-  // Don't change this to date ( ).
+  // Don't change this to date ().
   // if ( date ( 'T' ) == 'Ame' || ! $can_setTZ ) { //We have a problem!!
   if ( 0 ) { // Ignore this code for now.
     $tz_value = ( ! $can_setTZ ? substr ( $tz, 12 ) : 0 );

@@ -51,9 +51,11 @@ print_header ( array ( 'js/popups.php/true' ) );
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_m.php?id=' . $id
- . '&amp;date=' . $prevdate . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
+ . '&amp;date=' . $prevdate . '"><img src="images/leftarrow.gif" alt="'
+ . $prevStr . '" /></a>
       <a title="' . $nextStr . '" class="next" href="view_m.php?id=' . $id
- . '&amp;date=' . $nextdate . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+ . '&amp;date=' . $nextdate . '"><img src="images/rightarrow.gif" alt="'
+ . $nextStr . '" /></a>
       <div class="title">
         <span class="date">';
 printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
@@ -116,7 +118,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   for ( $i = $j, $k = 0;
     $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
-    user_load_variables ( $user, "temp" );
+    user_load_variables ( $user, 'temp' );
     echo '
         <th style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
   } //end for
@@ -126,32 +128,28 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   for ( $date = $startdate; $date <= $enddate; $date += 86400 ) {
     $dateYmd = date ( 'Ymd', $date );
     $todayYmd = date ( 'Ymd', $today );
-    $is_weekend = is_weekend( $date );
+    $is_weekend = is_weekend ( $date );
     if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
       continue;
 
     $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS );
-    if ( $dateYmd == $todayYmd )
-      $class = 'class="today"';
-    else
-    if ( $is_weekend )
-      $class = 'class="weekend"';
-    else
-      $class = 'class="row"';
+    $class = 'class="' . ( $dateYmd == $todayYmd
+      ? 'today"'
+      : ( $is_weekend ? 'weekend"' : 'row"' ) );
     // .
-    // non-breaking space below keeps event from wrapping prematurely.
+    // Non-breaking space below keeps event from wrapping prematurely.
     echo '
       <tr>
         <th ' . $class . '>' . $weekday . '&nbsp;' . date ( 'd', $date ) . '</th>';
     for ( $i = $j, $k = 0;
       $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
-      $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
+      $user = $viewusers[$i];
       $entryStr = print_date_entries ( $dateYmd, $user, true );
       if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
         $class = 'class="hasevents"';
-      // unset class from above if needed.
+      // Unset class from above if needed.
       if ( $class == 'class="row"' )
         $class = '';
 

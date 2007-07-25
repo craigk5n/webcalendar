@@ -16,30 +16,31 @@
 function generate_prodid () {
   global $PROGRAM_VERSION, $PROGRAM_NAME;
   $ret = 'PRODID:-//WebCalendar-';
-  if ( ! empty ( $PROGRAM_VERSION ) ) {
+  if ( ! empty ( $PROGRAM_VERSION ) )
     $ret .= $PROGRAM_VERSION;
-  } else if ( preg_match ( "/WebCalendar v(\S+)/", $PROGRAM_NAME, $match ) ) {
+  else if ( preg_match ( "/WebCalendar v(\S+)/", $PROGRAM_NAME, $match ) )
     $ret .= $match[1];
-  } else {
+  else
     $ret .= "UnknownVersion";
-  }
+
   $ret .= "\r\n";
   return $ret;
 }
 /*
  * Export a quoted Printable String
- *
  */
 
 function export_quoted_printable_encode( $car ) {
   $res = '';
 
-  if ( ( ord( $car ) >= 33 && ord( $car ) <= 60 ) || ( ord( $car ) >= 62 && ord( $car ) <= 126 ) ||
-      ord( $car ) == 9 || ord( $car ) == 32 ) {
+  if ( ( ord ( $car ) >= 33 && ord ( $car ) <= 60 ) ||
+    ( ord ( $car ) >= 62 && ord ( $car ) <= 126 ) ||
+      ord ( $car ) == 9 || ord ( $car ) == 32 )
     $res = $car;
-  } else {
-    $res = sprintf ( "=%02X", ord( $car ) );
-  } //end if
+  else
+    $res = sprintf ( "=%02X", ord ( $car ) );
+   //end if
+
   return $res;
 } //end function export_quoted_printable_encode
 function export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
@@ -92,11 +93,12 @@ function export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
     } //end if ((strlen ($row) + strlen ($enc)) > $fold)
     $row .= $enc;
 
-    if ( $string[$i] == ' ' || $string[$i] == "\t" || $string[$i] == ';' || $string[$i] == ',' )
+    if ( $string[$i] == ' ' || $string[$i] == "\t" || $string[$i] == ';' ||
+      $string[$i] == ',' )
       $lwsp = strlen ( $row ) - 1;
 
     if ( $string[$i] == ':' && ( strcmp( $encoding, 'quotedprintable' ) == 0 ) )
-      $lwsp = strlen ( $row ) - 1; // we cut at ':' only for quoted printable
+      $lwsp = strlen ( $row ) - 1; // We cut at ':' only for quoted printable.
   } //end for ($i = 0; $i < $len; $i++)
   $res[$res_ind] = $row; // Add last row (or first if no folding is necessary)
   return $res;
@@ -492,9 +494,9 @@ function export_recurrence_vcal( $id, $date ) {
         echo '#' . $count . ' ';
       }
       // End Date - For all types
-      if ( ! empty ( $end ) ) {
+      if ( ! empty ( $end ) )
         echo export_get_utc_date ( $end, $time );
-      }
+
       echo "\r\n";
       // Repeating Exceptions
       $num = count ( $exdate );
@@ -598,15 +600,12 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
   global $DISPLAY_UNAPPROVED, $layers, $type, $USER_REMOTE_ACCESS, $cat_filter;
 
   $sql_params = array ();
-  $sql = 'SELECT we.cal_id, we.cal_name
-  , we.cal_priority, we.cal_date
-  , we.cal_time, weu.cal_status, we.cal_create_by
-  , we.cal_access, we.cal_duration, we.cal_description
-  , weu.cal_percent, we.cal_completed
-  , we.cal_due_date, we.cal_due_time
-  , we.cal_location, we.cal_url
-  , we.cal_type, we.cal_mod_date, we.cal_mod_time
-   FROM webcal_entry we, webcal_entry_user weu ';
+  $sql = 'SELECT we.cal_id, we.cal_name, we.cal_priority, we.cal_date,
+    we.cal_time, weu.cal_status, we.cal_create_by, we.cal_access, we.cal_duration,
+    we.cal_description, weu.cal_percent, we.cal_completed, we.cal_due_date,
+    we.cal_due_time, we.cal_location, we.cal_url, we.cal_type, we.cal_mod_date,
+    we.cal_mod_time
+    FROM webcal_entry we, webcal_entry_user weu ';
 
   if ( $id == 'all' ) {
     $sql .= 'WHERE we.cal_id = weu.cal_id AND ( weu.cal_login = ?';
@@ -671,7 +670,7 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
 
   return $res;
 } //end function export_get_event_entry($id)
-function generate_uid( $id = '' ) {
+function generate_uid ( $id = '' ) {
   global $SERVER_URL, $login;
 
   $uid = $SERVER_URL;
@@ -773,20 +772,21 @@ function export_vcal ( $id ) {
     $cal_type = $row[16];
 
     /* Start of event/task */
-    if ( $cal_type == 'E' || $cal_type == 'M' ) {
+    if ( $cal_type == 'E' || $cal_type == 'M' )
       echo "BEGIN:VEVENT\r\n";
-    } else if ( $cal_type == 'T' || $cal_type == 'N' ) {
+    elseif ( $cal_type == 'T' || $cal_type == 'N' )
       echo "BEGIN:VTODO\r\n";
-    } else {
-      // VJOURNALS are nor allowed in VCS files
+    else
+      // VJOURNALS are not allowed in VCS files.
       continue;
-    }
+
 
     /* UID of the event (folded to 76 char) */
     $export_uid = "UID:$export_uid";
     $array = export_fold_lines ( $export_uid );
-    while ( list ( $key, $value ) = each ( $array ) )
-    echo "$value\r\n";
+    while ( list ( $key, $value ) = each ( $array ) ) {
+      echo "$value\r\n";
+    }
 
     /* SUMMARY of the event (folded to 76 char) */
     $name = preg_replace( "/\\\\/", "\\\\\\", $name ); // ??
@@ -869,7 +869,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
 
   while ( list ( $key, $row ) = each ( $entry_array ) ) {
     $id = $row[0];
-    $event_uid = generate_uid( $id );
+    $event_uid = generate_uid ( $id );
     $name = $row[1];
     $priority = $row[2];
     $date = $row[3];
@@ -880,9 +880,11 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $duration = $row[8];
     $description = $row[9];
     // New columns to support tasks
-    $percent = ( ! empty ( $row[10] )? $row[10] : 0 );
-    $completed = ( ! empty ( $row[11] )? substr ( $row[11], 0, 8 ) . 'T'
-       . sprintf ( "%06d", substr ( $row[11], 9, 6 ) ) : '' );
+    $percent = ( empty ( $row[10] ) ? 0 : $row[10] );
+    $completed = ( empty ( $row[11] )
+      ? ''
+      : substr ( $row[11], 0, 8 ) . 'T'
+       . sprintf ( "%06d", substr ( $row[11], 9, 6 ) ) );
     $due_date = $row[12];
     $due_time = $row[13];
     $location = $row[14];
@@ -1668,9 +1670,10 @@ function import_data ( $data, $overwrite, $type ) {
         }
       } // End Repeat
       // Add Alarm info
-      if ( $updateMode ) {
-        dbi_execute ( 'DELETE FROM webcal_reminders WHERE  cal_id = ?', array ( $id ) );
-      }
+      if ( $updateMode )
+        dbi_execute ( 'DELETE FROM webcal_reminders WHERE  cal_id = ?',
+         array ( $id ) );
+
       if ( ! empty ( $Entry['AlarmSet'] ) && $Entry['AlarmSet'] == 1 ) {
         $names = array ();
         $values = array ();
@@ -1825,14 +1828,14 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   global $tz, $errormsg;
   $ical_data = array ();
   if ( $source == 'file' || $source == 'remoteics' ) {
-    if ( !$fd = @fopen ( $cal_file, 'r' ) ) {
+    if ( ! $fd = @fopen ( $cal_file, 'r' ) ) {
       $errormsg .= "Can't read temporary file: $cal_file\n";
       exit ();
     } else {
       // Read in contents of entire file first
       $data = '';
       $line = 0;
-      while ( !feof( $fd ) && empty ( $error ) ) {
+      while ( ! feof( $fd ) && empty ( $error ) ) {
         $line++;
         $data .= fgets( $fd, 4096 );
       }
@@ -1920,10 +1923,10 @@ function parse_ical ( $cal_file, $source = 'file' ) {
     // echo "buff = " . htmlspecialchars ( $buff ) . "<br /><br />\n";
     if ( $state == 'VEVENT' || $state == 'VTODO' ) {
       if ( ! empty ( $subsubstate ) ) {
-        if ( preg_match ( "/^END.*:(.+)$/i", $buff, $match ) ) {
-          if ( $match[1] == $subsubstate ) {
+        if ( preg_match ( '/^END.*:(.+)$/i', $buff, $match ) ) {
+          if ( $match[1] == $subsubstate )
             $subsubstate = '';
-          }
+
         } else if ( $subsubstate == 'VALARM' ) {
           if ( preg_match ( "/TRIGGER(.+)$/i", $buff, $match ) ) {
             // Example: TRIGGER;VALUE=DATE-TIME:19970317T133000Z
@@ -1943,9 +1946,9 @@ function parse_ical ( $cal_file, $source = 'file' ) {
             $event[$substate] = $match[1];
           }
         }
-      } else if ( preg_match ( "/^BEGIN.*:(.+)$/i", $buff, $match ) ) {
+      } else if ( preg_match ( '/^BEGIN.*:(.+)$/i', $buff, $match ) )
         $subsubstate = $match[1];
-      }
+      //.
       // we suppose ': ' is on the same line as property name,
       // this can perhaps cause problems
       else if ( preg_match ( "/^SUMMARY\s*(;.+)?:(.+)$/i", $buff, $match ) ) {
@@ -2126,11 +2129,13 @@ function parse_ical ( $cal_file, $source = 'file' ) {
        } elseif ( preg_match ( '/^UID.*:(.+)$/i', $buff, $match ) ) {
          $substate = 'uid';
          $event[$substate] = $match[1];
-       } elseif ( preg_match ( '/^FREEBUSY\s*(.*):\s*(.*)\/(.*)\s*$/i', $buff, $match ) ) {
+       } elseif ( preg_match ( '/^FREEBUSY\s*(.*):\s*(.*)\/(.*)\s*$/i',
+        $buff, $match ) ) {
          $substate = 'freebusy';
          $event['dtstart']=$match[2];
          $event['dtend']  =$match[3];
-         if ( empty ($event['uid']) ) $event['uid']=$freebusycount++.'-'.$event['organizer'];
+         if ( empty ($event['uid']) )
+          $event['uid']=$freebusycount++.'-' . $event['organizer'];
  #
  # Let's save the FREEBUSY data as an event. While not a perfect solution, it's better
  # than nothing and allows Outlook users to store Free/Busy times in WebCalendar
@@ -2275,7 +2280,8 @@ function RepeatType ( $type ) {
   return $Repeat[$type];
 }
 // Convert ical format (yyyymmddThhmmssZ) to epoch time
-function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0', $plus_m = '0', $plus_y = '0' ) {
+function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0',
+  $plus_m = '0', $plus_y = '0' ) {
   global $SERVER_TIMEZONE, $calUser;
   $this_TIMEZONE = $Z = '';
 
@@ -2707,7 +2713,7 @@ function parse_vcal( $cal_file ) {
 
   $vcal_data = array ();
   // echo "Parsing vcal file...<br />\n";
-  if ( !$fd = @fopen ( $cal_file, 'r' ) ) {
+  if ( ! $fd = @fopen ( $cal_file, 'r' ) ) {
     $errormsg .= "Can't read temporary file: $cal_file\n";
     exit ();
   } else {
@@ -2745,7 +2751,8 @@ function parse_vcal( $cal_file ) {
         } elseif ( preg_match ( '/^DESCRIPTION:(.+)$/i', $buff, $match ) ) {
           $substate = 'description';
           $event[$substate] = $match[1];
-        } elseif ( preg_match ( '/^DESCRIPTION;ENCODING=QUOTED-PRINTABLE:(.+)$/i', $buff, $match ) ) {
+        } elseif ( preg_match ( '/^DESCRIPTION;ENCODING=QUOTED-PRINTABLE:(.+)$/i',
+          $buff, $match ) ) {
           $substate = 'descriptionqp';
           $event[$substate] = $match[1];
         } elseif ( preg_match ( '/^CLASS.*:(.+)$/i', $buff, $match ) ) {
@@ -2904,9 +2911,10 @@ function format_vcal( $event ) {
 
     $end = end( $RR );
     // No end in Palm is 12-31-2031
-    if ( ( $end != '20311231' ) && ( $end != '#0' ) ) {
-      $fevent['Repeat']['Until'] = rrule_endtime ( $fevent['Repeat']['Frequency'], $fevent['Repeat']['Interval'], $event['dtstart'], $end );
-    }
+    if ( ( $end != '20311231' ) && ( $end != '#0' ) )
+      $fevent['Repeat']['Until'] = rrule_endtime ( $fevent['Repeat']['Frequency'],
+        $fevent['Repeat']['Interval'], $event['dtstart'], $end );
+    //.
     // Repeating exceptions?
     if ( ! empty ( $event['exdate'] ) ) {
       $fevent['Repeat']['Exceptions'] = array ();
@@ -2925,8 +2933,9 @@ function get_categories_id_byname ( $cat_names ) {
   global $login, $IMPORT_CATEGORIES;
   $categories = explode ( ',', $cat_names );
   foreach ( $categories as $cat_name ) {
-    $res = dbi_execute ( 'SELECT cat_id FROM webcal_categories WHERE '
-       . 'cat_name  = ? AND ' . '(cat_owner = ? OR cat_owner IS NULL )', array ( $cat_name, $login ) );
+    $res = dbi_execute ( 'SELECT cat_id FROM webcal_categories
+      WHERE cat_name  = ? AND ( cat_owner = ? OR cat_owner IS NULL )',
+        array ( $cat_name, $login ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         $ret[] = $row[0];

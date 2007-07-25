@@ -36,7 +36,7 @@ $prevdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear 
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
 
-$wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS == 'N'? 5 : 7 ) );
+$wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ) );
 $thisdate = date ( 'Ymd', $wkstart );
 
 $nextStr = translate ( 'Next' );
@@ -150,7 +150,9 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 $user = ''; // reset
 // .
 echo ( empty ( $eventinfo ) ? '' : $eventinfo );
+
 ob_end_flush ();
+
 echo $printerStr . print_trailer ();
 
 ?>

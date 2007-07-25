@@ -494,6 +494,11 @@ General purpose translations that may be used elsewhere
 as variables and not picked up by update_translation.pl
 
 translate ( 'event' ) translate ( 'journal' )
+
+Because not everyone uses these symbols for numbers:
+translate ( '0' ) translate ( '1' ) translate ( '2' ) translate ( '3' )
+translate ( '4' ) translate ( '5' ) translate ( '6' ) translate ( '7' )
+translate ( '8' ) translate ( '9' )
 */
 
 ?>

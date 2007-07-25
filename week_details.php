@@ -28,12 +28,12 @@ if ( $DISPLAY_WEEKENDS == 'N' ) {
 $printerStr = generate_printer_friendly ( 'week_details.php' );
 
 /* Pre-Load the repeated events for quckier access. */
-$repeated_events = read_repeated_events ( strlen ( $user )
-  ? $user : $login, $wkstart, $wkend, $cat_id );
+$repeated_events = read_repeated_events ( ( strlen ( $user )
+  ? $user : $login ), $wkstart, $wkend, $cat_id );
 
 /* Pre-load the non-repeating events for quicker access. */
-$events = read_events ( strlen ( $user )
-  ? $user : $login, $wkstart, $wkend, $cat_id );
+$events = read_events ( ( strlen ( $user )
+  ? $user : $login ), $wkstart, $wkend, $cat_id );
 
 if ( $WEEK_START == 0 && $DISPLAY_WEEKENDS == 'N' )
   $wkstart = $wkstart - 86400;
@@ -45,18 +45,22 @@ for ( $i = 0; $i < 7; $i++ ) {
    . date_to_str ( date ( 'Ymd', $days[$i] ), $DATE_FORMAT_MD, false );
 }
 
+$nextStr = translate ( 'Next' );
+$newEntryStr = translate ( 'New Entry' );
+$prevStr = translate ( 'Previous' );
+
 print_header ( array ( 'js/popups.php/true' ), generate_refresh_meta () );
 
 ob_start ();
 
 echo '
     <div class="title">
-      <a title="Previous" class="prev" href="week_details.php?' . $u_url
+      <a title="' . $prevStr . '" class="prev" href="week_details.php?' . $u_url
  . 'date=' . date ( 'Ymd', $prev ) . $caturl
- . '"><img src="images/leftarrow.gif" alt="Previous" /></a>
-      <a title="Next" class="next" href="week_details.php?' . $u_url . 'date='
+ . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
+      <a title="' . $nextStr . '" class="next" href="week_details.php?' . $u_url . 'date='
  . date ( 'Ymd', $next ) . $caturl
- . '"><img src="images/rightarrow.gif" alt="Next" /></a>
+ . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
       <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
  . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span>'
@@ -88,10 +92,10 @@ for ( $d = 0; $d < 7; $d++ ) {
   echo '
         <tr>
           <th' . $class . ( $can_add ? '
-            <a title="' . translate ( 'New Entry' ) . '" href="edit_entry.php?'
-     . $u_url . 'date=' . date ( 'Ymd', $days[$d] )
-     . '"><img src="images/new.gif" class="new" alt="'
-     . translate ( 'New Entry' ) . '" /></a>' : '' ) . '
+            <a title="' . $newEntryStr . '" href="edit_entry.php?' . $u_url
+     . 'date=' . date ( 'Ymd', $days[$d] )
+     . '"><img src="images/new.gif" class="new" alt="' . $newEntryStr
+     . '" /></a>' : '' ) . '
             <a title="' . $header[$d] . '" href="day.php?' . $u_url . 'date='
    . date ( 'Ymd', $days[$d] ) . $caturl . '">' . $header[$d] . '</a>
           </th>
@@ -123,6 +127,7 @@ function print_detailed_entry ( $event, $date ) {
   static $key = 0;
 
   $descStr = $event->getDescription ();
+  $evAccessStr = $event->getAccess ();
   $evPri = ( $event->getPriority () < 4 );
   $getExtStr = $event->getExtForID ();
   $loginStr = $event->getLogin ();
@@ -177,7 +182,6 @@ function print_detailed_entry ( $event, $date ) {
     echo $timestr . '&raquo;&nbsp;';
   }
 
-  $evAccessStr = $event->getAccess ();
   if ( $login != $user && $evAccessStr == 'R' && strlen ( $user ) )
     $PN = $PD = '(' . translate ( 'Private' ) . ')';
   elseif ( $login != $loginStr && $evAccessStr == 'R' &&
@@ -220,7 +224,8 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   $ev = combine_and_sort_events ( get_entries ( $date ),
     get_repeating_entries ( $user, $date ) );
   for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
-    if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' ) || $ev[$i]->getStatus () == 'A' )
+    if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' ) ||
+      $ev[$i]->getStatus () == 'A' )
       print_detailed_entry ( $ev[$i], $date );
   }
 }

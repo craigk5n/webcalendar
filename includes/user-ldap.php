@@ -224,7 +224,7 @@ function user_load_variables ( $login, $prefix ) {
         $GLOBALS[$prefix . 'lastname'] = $info[0][$ldap_user_attr[1]][0];
         $GLOBALS[$prefix . 'email'] = $info[0][$ldap_user_attr[4]][0];
         $GLOBALS[$prefix . 'fullname'] = $info[0][$ldap_user_attr[3]][0];
-        $GLOBALS[$prefix . 'is_admin'] = user_is_admin($login,get_admins ());
+        $GLOBALS[$prefix . 'is_admin'] = user_is_admin ($login,get_admins ());
         $ret = true;
       }
       @ldap_free_result ( $sr );
@@ -436,7 +436,7 @@ function user_get_users ( $publicOnly=false ) {
           'cal_lastname' => $info[$i][$ldap_user_attr[1]][0],
           'cal_firstname' => $info[$i][$ldap_user_attr[2]][0],
           'cal_email' => $info[$i][$ldap_user_attr[4]][0],
-          'cal_is_admin' => user_is_admin($info[$i][$ldap_user_attr[0]][0],$Admins),
+          'cal_is_admin' => user_is_admin ($info[$i][$ldap_user_attr[0]][0],$Admins),
           'cal_fullname' => $info[$i][$ldap_user_attr[3]][0]
           );
       }
@@ -453,7 +453,7 @@ function user_get_users ( $publicOnly=false ) {
 // params:
 //   $values - the login name
 // returns: Y if user is admin, N if not
-function user_is_admin($values,$Admins) {
+function user_is_admin ($values,$Admins) {
   if ( ! $Admins ) {
     return 'N';
   } else if (in_array ($values, $Admins)) {

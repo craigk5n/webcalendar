@@ -92,7 +92,7 @@ unset ( $app_config );
 //  Checks to see if the session has a user associated with it and
 //  if the session is timed out
 //  returns: login id
-function app_active_session($sid) {
+function app_active_session ($sid) {
   global $app_user_table, $app_session_table, $app_settings_table, $app_sid_lifetime;
   global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
   global $c, $db_host, $db_login, $db_password, $db_database;
@@ -238,7 +238,7 @@ function user_get_users ( $publicOnly=false ) {
         'cal_login' => $row[2],
         'cal_lastname' => $lname,
         'cal_firstname' => $fname,
-        'cal_is_admin' => user_is_admin($row[0],$Admins),
+        'cal_is_admin' => user_is_admin ($row[0],$Admins),
         'cal_email' => $row[3],
         'cal_fullname' => $row[1]
       );
@@ -292,7 +292,7 @@ function user_load_variables ( $login, $prefix ) {
       $GLOBALS[$prefix . 'login'] = $login;
       $GLOBALS[$prefix . 'firstname'] = $fname;
       $GLOBALS[$prefix . 'lastname'] = $lname;
-      $GLOBALS[$prefix . 'is_admin'] = user_is_admin($row[0],get_admins ());
+      $GLOBALS[$prefix . 'is_admin'] = user_is_admin ($row[0],get_admins ());
       $GLOBALS[$prefix . 'email'] = $row[3];
       $GLOBALS[$prefix . 'fullname'] = $row[1];
     }
@@ -321,10 +321,10 @@ function user_logged_in () {
   $sid = app_get_sid( $_COOKIE[$app_sid] );
 
   // addslashes if magic_quotes_gpc is off
-  if ( !get_magic_quotes_gpc () ) $sid = addslashes ( $sid );
+  if ( ! get_magic_quotes_gpc () ) $sid = addslashes ( $sid );
 
   // Check to see if the session is still valid
-  if (! $login = app_active_session($sid) ) return false;
+  if (! $login = app_active_session ($sid) ) return false;
 
   // Update the session last access time
   app_update_session($sid);
@@ -361,7 +361,7 @@ function app_login_screen( $return ) {
 // params:
 //   $values - the login name
 // returns: Y if user is admin, N if not
-function user_is_admin($uid,$Admins) {
+function user_is_admin ($uid,$Admins) {
   if ( ! $Admins ) {
     return 'N';
   } else if (in_array ($uid, $Admins)) {

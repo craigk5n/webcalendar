@@ -1460,7 +1460,7 @@ translate ( 'You should select Web Server from the list of User Authentication c
   <input name="action" type="button" value="<?php etranslate ( 'Save Settings' ) ?>" onClick="return validate ();" />
    <?php if ( ! empty ( $_SESSION['old_program_version'] ) &&
     $_SESSION['old_program_version'] == $PROGRAM_VERSION  && ! empty ( $setup_complete )) { ?>
-    <input type="button"  name="action2" value="<?php etranslate ( 'Launch WebCalendar' ) ?>" onClick="window.open ('../index.php', 'webcalendar');" />
+    <input type="button" name="action2" value="<?php etranslate ( 'Launch WebCalendar' ) ?>" onClick="window.open ('../index.php', 'webcalendar');" />
    <?php }
   }
   if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
