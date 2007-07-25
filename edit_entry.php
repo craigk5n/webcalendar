@@ -92,6 +92,11 @@ function time_selection ( $prefix, $time = '', $trigger = false ) {
             <input type="hidden" name="' . $prefix . 'ampm" value="0" />' );
 }
 
+$daysStr = translate ( 'days' );
+$hoursStr = translate ( 'hours' );
+$minutStr = translate ( 'minutes' );
+$saveStr = translate ( 'Save' );
+
 load_user_categories ();
 // .
 // Default for using tabs is enabled.
@@ -695,6 +700,7 @@ if ( $can_edit ) {
                       </select>
                     </td>
                   </tr>';
+
     if ( ! empty ( $overall_percent ) ) {
       echo '
                   <tr>
@@ -753,7 +759,6 @@ if ( $can_edit ) {
               <td';
   if ( $eType != 'task' ) {
     $dur_h = intval ( $duration / 60 );
-    $dur_m = $duration - ( $dur_h * 60 );
 
     echo '>&nbsp;</td>
               <td colspan="2">
@@ -769,13 +774,13 @@ if ( $can_edit ) {
      . translate ( 'All day event' ) . '</option>
                 </select>
               </td>
-            </tr>' . ( ! empty ( $TZ_notice ) ? '
+            </tr>' . ( empty ( $TZ_notice ) ? '' : '
             <tr id="timezonenotice">
               <td class="tooltip" title="'
        . tooltip ( 'Time entered here is based on your Timezone.' ) . '">'
        . translate ( 'Timezone Offset' ) . ':</td>
               <td colspan="2">' . $TZ_notice . '</td>
-            </tr>' : '' ) . '
+            </tr>' ) . '
             <tr id="timeentrystart" style="visibility:hidden;">
               <td class="tooltip" title="' . tooltip ( 'time-help' ) . '">'
      . translate ( 'Time' ) . ':' . '</td>
@@ -798,10 +803,10 @@ if ( $can_edit ) {
                 <input type="text" name="duration_m" id="duration_m" size="2" '
        . 'maxlength="2" value="';
       if ( $allday != 'Y' )
-        printf ( "%02d", $dur_m );
+        printf ( "%02d", $duration - ( $dur_h * 60 ) );
 
-      echo '" />&nbsp;(<label for="duration_h">' . translate ( 'hours' )
-       . '</label>: <label for="duration_m">' . translate ( 'minutes' )
+      echo '" />&nbsp;(<label for="duration_h">' . $hoursStr
+       . '</label>: <label for="duration_m">' . $minutStr
        . '</label>)
               </td>
             </tr>';
@@ -880,13 +885,12 @@ if ( $can_edit ) {
       echo date_selection ( $extra_name,
         ( empty ( $extras[$extra_name]['cal_date'] )
           ? $cal_date : $extras[$extra_name]['cal_date'] ) );
-    else
-    if ( $extra_type == EXTRA_TEXT ) {
+    elseif ( $extra_type == EXTRA_TEXT ) {
       $size = ( $extra_arg1 > 0 ? $extra_arg1 : 50 );
       echo '
                 <input type="text" size="' . $size . '" name="' . $extra_name
        . '" value="' . ( empty ( $extras[$extra_name]['cal_data'] )
-        ? '': htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) . '" />';
+        ? '' : htmlspecialchars ( $extras[$extra_name]['cal_data'] ) ) . '" />';
     } elseif ( $extra_type == EXTRA_MULTILINETEXT )
       echo '
                 <textarea rows="' . ( $extra_arg2 > 0 ? $extra_arg2 : 5 )
@@ -922,7 +926,7 @@ if ( $can_edit ) {
         $extra_arg1cnt = count ( $extra_arg1 );
         if ( $extra_arg2 > 0 ) {
           $multiselect = ' multiple="multiple" size="'
-           . min( $extra_arg2, $extra_arg1cnt ) . '" ';
+           . min ( $extra_arg2, $extra_arg1cnt ) . '" ';
           $isMultiple = '[]';
           if ( ! empty ( $extras ) )
             $extraSelectArr = explode ( ',', $extras[$extra_name]['cal_data'] );
@@ -943,7 +947,7 @@ if ( $can_edit ) {
           } else
             echo ( $j == 0 ? $selected : '' );
 
-          echo '>' . $extra_arg1[$j] . "</option>\n";
+          echo '>' . $extra_arg1[$j] . '</option>';
         }
       }
       echo '
@@ -969,15 +973,13 @@ if ( $can_edit ) {
   // .
   echo ( $useTabs ? '
     </div>' : '
-    </fieldset>' )
-  /* $useTabs */ . '
+    </fieldset>' ) . '
 
 <!-- PARTICIPANTS -->' . ( $useTabs ? '
     <a name="tabparticipants"></a>
     <div id="tabscontent_participants">' : '
     <fieldset>
-      <legend>' . translate ( 'Participants' ) . '</legend>' )
-  /* $useTabs */ . '
+      <legend>' . translate ( 'Participants' ) . '</legend>' ) . '
       <table>';
   // .
   // Only ask for participants if we are multi-user.
@@ -1003,7 +1005,8 @@ if ( $can_edit ) {
     for ( $i = 0; $i < $usercnt; $i++ ) {
       $l = $userlist[$i]['cal_login'];
       $size++;
-      $users .= '<option value="' . $l . '"';
+      $users .= '
+              <option value="' . $l . '"';
       if ( $id > 0 ) {
         if ( ! empty ( $participants[$l] ) )
           $users .= $selected;
@@ -1033,8 +1036,8 @@ if ( $can_edit ) {
         <tr title="' . tooltip ( 'participants-help' ) . '">
           <td class="tooltipselect"><label for="entry_part">'
      . translate ( 'Participants' ) . ':</label></td>
-          <td>' . "
-            <select name=\"participants[]\"" . ' id="entry_part" size="' . $size
+          <td>
+            <select name="participants[]" id="entry_part" size="' . $size
      . '" multiple="multiple">' . $users . '
             </select>' . ( $GROUPS_ENABLED == 'Y' ? '
             <input type="button" onclick="selectUsers ()" value="'
@@ -1077,25 +1080,27 @@ if ( $can_edit ) {
       ? $selected : '' ) . '>' . translate ( 'Daily' ) . '</option>
               <option value="weekly"' . ( strcmp ( $rpt_type, 'weekly' ) == 0
       ? $selected : '' ) . '>' . translate ( 'Weekly' ) . '</option>
-              <option value="monthlyByDay"' . ( strcmp ( $rpt_type,
-        'monthlyByDay' ) == 0 ? $selected : '' ) . '>' . translate ( 'Monthly' )
-     . ' (' . translate ( 'by day' ) . ')' . '</option>
-              <option value="monthlyByDate"' . ( strcmp ( $rpt_type,
-        'monthlyByDate' ) == 0 ? $selected : '' ) . '>' . translate ( 'Monthly' )
-     . ' (' . translate ( 'by date' ) . ')' . '</option>
-              <option value="monthlyBySetPos"' . ( strcmp ( $rpt_type,
-        'monthlyBySetPos' ) == 0 ? $selected : '' ) . '>'
-     . translate ( 'Monthly' ) . ' (' . translate ( 'by position' ) . ')'
-     . '</option>
+              <option value="monthlyByDay"'
+     . ( strcmp ( $rpt_type, 'monthlyByDay' ) == 0 ? $selected : '' )
+     // translate ( 'Monthly' ) translate ( 'by day' ) translate ( 'by date' )
+     // translate ( 'by position' )
+     . '>' . translate ( 'Monthly (by day)' ) . '</option>
+              <option value="monthlyByDate"'
+     . ( strcmp ( $rpt_type, 'monthlyByDate' ) == 0 ? $selected : '' )
+     . '>' . translate ( 'Monthly (by date)' ) . '</option>
+              <option value="monthlyBySetPos"'
+     . ( strcmp ( $rpt_type, 'monthlyBySetPos' ) == 0 ? $selected : '' )
+     . '>' . translate ( 'Monthly (by position)' ) . '</option>
               <option value="yearly"' . ( strcmp ( $rpt_type, 'yearly' ) == 0
       ? $selected : '' ) . '>' . translate ( 'Yearly' ) . '</option>
-              <option value="manual"' . ( strcmp ( $rpt_type, 'manual' ) == 0
-      ? $selected : '' ) . '>' . translate ( 'Manual' ) . '</option>
+              <option value="manual"'
+     . ( strcmp ( $rpt_type, 'manual' ) == 0 ? $selected : '' )
+     . '>' . translate ( 'Manual' ) . '</option>
             </select>&nbsp;&nbsp;&nbsp;<label id="rpt_mode"><input '
      . 'type="checkbox" name="rptmode" id="rptmode" value="y" '
      . 'onclick="rpttype_handler ()" '
-     . ( ! empty ( $expert_mode ) ? $checked : '' ) . '/>'
-     . translate ( 'Expert Mode' ) . '</label>
+     . ( empty ( $expert_mode ) ? '' : $checked )
+     . '/>' . translate ( 'Expert Mode' ) . '</label>
           </td>
         </tr>
         <tr id="rptenddate1" style="visibility:hidden;">
@@ -1115,7 +1120,7 @@ if ( $can_edit ) {
      . translate ( 'Use end date' ) . '</label></td>
           <td class="boxright"><span class="end_day_selection" '
      . 'id="rpt_end_day_select">'
-     . date_selection ( 'rpt_', $rpt_end_date ? $rpt_end_date : $cal_date )
+     . date_selection ( 'rpt_', ( $rpt_end_date ? $rpt_end_date : $cal_date ) )
      . '</span><br />' . time_selection ( 'rpt_', $rpt_end_time ) . '</td>
         </tr>
         <tr id="rptenddate3" style="visibility:hidden;">
@@ -1171,7 +1176,7 @@ if ( $can_edit ) {
     // We use BUTTONS in a triple state configuration, and store the values in
     // a javascript array until form submission. We then set the hidden field
     // bydayList to the string value of the array.
-    for ( $rpt_byday_label = 0;$rpt_byday_label <= 6; $rpt_byday_label++ ) {
+    for ( $rpt_byday_label = 0; $rpt_byday_label <= 6; $rpt_byday_label++ ) {
       echo '
                 <th width="50px"><label>'
        . translate ( $weekday_names[$rpt_byday_label] ) . '</label></th>';
@@ -1201,7 +1206,7 @@ if ( $can_edit ) {
           ? $loop_ctr . translate ( $byday_names[$rpt_byday] )
           : ( in_array ( ( $loop_ctr - 6 ) . $byday_names[$rpt_byday], $byday )
             ? ( $loop_ctr - 6 )
-             . translate ( $byday_names[$rpt_byday] ) : ' ' ) );
+             . translate ( $byday_names[$rpt_byday] ) : '        ' ) );
 
         echo '
                 <td><input type="button" name="byday" id="_' . $loop_ctr
@@ -1255,8 +1260,7 @@ if ( $can_edit ) {
             <table class="byxxx" cellpadding="2" cellspacing="0" border="1">
               <tr>
                 <td></td>';
-    for ( $rpt_bysetpos_label = 1; $rpt_bysetpos_label < 11;
-      $rpt_bysetpos_label++ ) {
+    for ( $rpt_bysetpos_label = 1; $rpt_bysetpos_label < 11; $rpt_bysetpos_label++ ) {
       echo '
                 <th width="37px"><label>' . $rpt_bysetpos_label
        . '</label></th>';
@@ -1267,7 +1271,7 @@ if ( $can_edit ) {
     for ( $loop_ctr = 1; $loop_ctr < 32; $loop_ctr++ ) {
       $buttonvalue = ( in_array ( $loop_ctr, $bysetpos )
         ? ( $loop_ctr ) : ( in_array ( ( $loop_ctr -32 ), $bysetpos )
-          ? ( $loop_ctr -32 ) : ' ' ) );
+          ? ( $loop_ctr -32 ) : '      ' ) );
       echo ( $loop_ctr == 1 || $loop_ctr == 11 || $loop_ctr == 21 ? '
                 <th><label>' . $loop_ctr . '-' . ( $loop_ctr + 9 )
          . '</label></th>' : '' ) . ( $loop_ctr == 31 ? '
@@ -1296,8 +1300,7 @@ if ( $can_edit ) {
           <table class="byxxx" cellpadding="2" cellspacing="0" border="1">
             <tr>
               <td></td>';
-    for ( $rpt_bymonthday_label = 1; $rpt_bymonthday_label < 11;
-      $rpt_bymonthday_label++ ) {
+    for ( $rpt_bymonthday_label = 1; $rpt_bymonthday_label < 11; $rpt_bymonthday_label++ ) {
       echo '
               <th width="37px"><label>' . $rpt_bymonthday_label
        . '</label></th>';
@@ -1308,7 +1311,7 @@ if ( $can_edit ) {
     for ( $loop_ctr = 1; $loop_ctr < 32; $loop_ctr++ ) {
       $buttonvalue = ( in_array ( $loop_ctr, $bymonthday )
         ? ( $loop_ctr ) : ( in_array ( ( $loop_ctr -32 ), $bymonthday )
-          ? ( $loop_ctr - 32 ) : ' ' ) );
+          ? ( $loop_ctr - 32 ) : '      ' ) );
       echo ( $loop_ctr == 1 || $loop_ctr == 11 || $loop_ctr == 21 ? '
             <th><label>' . $loop_ctr . '-' . ( $loop_ctr + 9 )
          . '</label></th>' : '' )
@@ -1329,13 +1332,15 @@ if ( $can_edit ) {
     $excepts = '';
     $exceptcnt = count ( $exceptions );
     for ( $i = 0; $i < $exceptcnt; $i++ ) {
-      $excepts .= '<option value="-' . $exceptions[$i] . '">-' . $exceptions[$i]
+      $excepts .= '
+                  <option value="-' . $exceptions[$i] . '">-' . $exceptions[$i]
        . '</option>';
     }
     // Populate Repeat Inclusions data for later use
     $includecnt = count ( $inclusions );
     for ( $i = 0; $i < $includecnt; $i++ ) {
-      $excepts .= '<option value="+' . $inclusions[$i] . '">+' . $inclusions[$i]
+      $excepts .= '
+                  <option value="+' . $inclusions[$i] . '">+' . $inclusions[$i]
        . '</option>';
     }
 
@@ -1429,121 +1434,121 @@ if ( $can_edit ) {
     <div id="tabscontent_reminder">' : '
     <fieldset>
       <legend>' . translate ( 'Reminders' ) . '</legend>' ) . '
-        <table border="0" cellspacing="0" cellpadding="3">
-          <thead>
-            <tr>
-              <td class="tooltip"><label>' . translate ( 'Send Reminder' )
+      <table border="0" cellspacing="0" cellpadding="3">
+        <thead>
+          <tr>
+            <td class="tooltip"><label>' . translate ( 'Send Reminder' )
      . ':</label></td>
-              <td colspan="3">
-                <input type="hidden" name="rem_action" value="'
+            <td colspan="3">
+              <input type="hidden" name="rem_action" value="'
      . ( empty ( $reminder['action'] ) ? 'EMAIL' : $reminder['action'] ) . '" />
-                <input type="hidden" name="rem_last_sent" value="'
+              <input type="hidden" name="rem_last_sent" value="'
      . ( empty ( $reminder['last_sent'] ) ? 0 : $reminder['last_sent'] ) . '" />
-                <input type="hidden" name="rem_times_sent" value="'
+              <input type="hidden" name="rem_times_sent" value="'
      . ( ! empty ( $reminder['times_sent'] ) ? 0 : $reminder['times_sent'] )
      . '" />
-                  <label><input type="radio" name="reminder" '
+                <label><input type="radio" name="reminder" '
      . 'id="reminderYes" value="1"'
      . ( $rem_status ? $checked : '' ) . ' onclick="toggle_reminders ()" />'
      . translate ( 'Yes' ) . '</label>&nbsp;
-                  <label><input type="radio" name="reminder" '
+                <label><input type="radio" name="reminder" '
      . 'id="reminderNo" value="0"'
-     . ( ! $rem_status ? $checked : '' ) . ' onclick="toggle_reminders ()" />'
+     . ( $rem_status ? '' : $checked ) . ' onclick="toggle_reminders ()" />'
      . translate ( 'No' ) . '</label>
-              </td>
-            </tr>
-          </thead>
-          <tbody id="reminder_when">
-            <tr>
-              <td class="tooltip" rowspan="6"><label>' . translate ( 'When' )
+            </td>
+          </tr>
+        </thead>
+        <tbody id="reminder_when">
+          <tr>
+            <td class="tooltip" rowspan="6"><label>' . translate ( 'When' )
      . ':</label></td>
-              <td class="boxtop boxleft" width="20%"><label><input type="radio" '
+            <td class="boxtop boxleft" width="20%"><label><input type="radio" '
      . 'name="rem_when" id="rem_when_date" value="Y" '
      . ( $rem_use_date ? $checked : '' ) . ' onclick="toggle_rem_when ()" />'
      . translate ( 'Use Date/Time' ) . '&nbsp;</label></td>
-              <td class="boxtop boxright" nowrap="nowrap" colspan="2">'
+            <td class="boxtop boxright" nowrap="nowrap" colspan="2">'
      . date_selection ( 'reminder_', ( empty ( $reminder['date'] )
         ? $cal_date : $reminder['date'] ) ) . '</td>
-            </tr>
-            <tr>
-              <td class="boxleft">&nbsp;</td>
-              <td class="boxright" colspan="2" nowrap="nowrap">'
+          </tr>
+          <tr>
+            <td class="boxleft">&nbsp;</td>
+            <td class="boxright" colspan="2" nowrap="nowrap">'
      . time_selection ( 'reminder_', ( empty ( $reminder['time'] )
         ? $cal_time : $reminder['time'] ) ) . '</td>
-            </tr>
-            <tr>
-              <td class="boxleft boxright" height="20px" colspan="3">&nbsp;</td>
-            </tr>
-            <tr>
-              <td class="boxleft"><label><input type="radio" name="rem_when" '
-     . 'id="rem_when_offset" value="N" ' . ( ! $rem_use_date ? $checked : '' )
+          </tr>
+          <tr>
+            <td class="boxright boxleft" height="20px" colspan="3">&nbsp;</td>
+          </tr>
+          <tr>
+            <td class="boxleft"><label><input type="radio" name="rem_when" '
+     . 'id="rem_when_offset" value="N" ' . ( $rem_use_date ? '' : $checked )
      . ' onclick="toggle_rem_when ()" />' . translate ( 'Use Offset' )
      . '&nbsp;</label></td>
-              <td class="boxright" nowrap="nowrap" colspan="2">
-                <label><input type="text" size="2" name="rem_days" value="'
-     . $rem_days . '" />' . translate ( 'days' ) . '</label>&nbsp;
-                <label><input type="text" size="2" name="rem_hours" '
-     . 'value=".$rem_hours" />' . translate ( 'hours' ) . '</label>&nbsp;
-                <label><input type="text" size="2" name="rem_minutes" value="'
-     . $rem_minutes . '" />' . translate ( 'minutes' ) . '</label>
-              </td>
-            </tr>
-            <tr>
-              <td class="boxleft">&nbsp;</td>
-              <td><label><input type="radio" name="rem_before" '
+            <td class="boxright" nowrap="nowrap" colspan="2">
+              <label><input type="text" size="2" name="rem_days" value="'
+     . $rem_days . '" />' . $daysStr . '</label>&nbsp;
+              <label><input type="text" size="2" name="rem_hours" '
+     . 'value=".$rem_hours" />' . $hoursStr . '</label>&nbsp;
+              <label><input type="text" size="2" name="rem_minutes" value="'
+     . $rem_minutes . '" />' . $minutStr . '</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="boxleft">&nbsp;</td>
+            <td><label><input type="radio" name="rem_before" '
      . 'id="rem_beforeY" value="Y"'
      . ( $rem_before ? $checked : '' ) . ' />' . translate ( 'Before' )
      . '</label>&nbsp;</td>
-              <td class="boxright"><label><input type="radio" name="rem_before" '
+            <td class="boxright"><label><input type="radio" name="rem_before" '
      . 'id="rem_beforeN" value="N"' . ( $rem_before ? '' : $checked ) . ' />'
      . translate ( 'After' ) . '</label></td>
-            </tr>
-            <tr>
-              <td class="boxleft boxbottom">&nbsp;</td>
-              <td class="boxbottom"><label><input type="radio" '
+          </tr>
+          <tr>
+            <td class="boxbottom boxleft">&nbsp;</td>
+            <td class="boxbottom"><label><input type="radio" '
      . 'name="rem_related" id="rem_relatedS" value="S"'
      . ( $rem_related ? $checked : '' ) . ' />'
      . translate ( 'Start' ) . '</label>&nbsp;</td>
-              <td class="boxbottom boxright"><label><input type="radio" '
+            <td class="boxright boxbottom"><label><input type="radio" '
      . 'name="rem_related" id="rem_relatedE" value="E"'
      . ( $rem_related ? '' : $checked ) . ' />' . translate ( 'End/Due' )
      . '</label></td>
-            </tr>
-            <tr>
-              <td colspan="4"></td>
-            </tr>
-          </tbody>
-          <tbody id="reminder_repeat">
-            <tr>
-              <td class="tooltip" rowspan="2"><label>' . translate ( 'Repeat' )
+          </tr>
+          <tr>
+            <td colspan="4"></td>
+          </tr>
+        </tbody>
+        <tbody id="reminder_repeat">
+          <tr>
+            <td class="tooltip" rowspan="2"><label>' . translate ( 'Repeat' )
      . ':</label></td>
-              <td class="boxleft boxtop">&nbsp;&nbsp;&nbsp;<label>'
+            <td class="boxtop boxleft">&nbsp;&nbsp;&nbsp;<label>'
      . translate ( 'Times' ) . '</label></td>
-              <td class="boxright boxtop" colspan="2"><input type="text" size="2" '
+            <td class="boxtop boxright" colspan="2"><input type="text" size="2" '
      . 'name="rem_rep_count" value="' . $rem_rep_count
      . '" onchange="toggle_rem_rep ();" /></td>
-            </tr>
-            <tr id="rem_repeats">
-              <td class="boxleft boxbottom">&nbsp;&nbsp;&nbsp;<label>'
+          </tr>
+          <tr id="rem_repeats">
+            <td class="boxbottom boxleft">&nbsp;&nbsp;&nbsp;<label>'
      . translate ( 'Every' ) . '</label></td>
-              <td class="boxright boxbottom" colspan="2">
-                <label><input type="text" size="2" name="rem_rep_days" value="'
-     . $rem_rep_days . '" />' . translate ( 'days' ) . '</label>&nbsp;
-                <input type="text" size="2" name="rem_rep_hours" value="'
-     . $rem_rep_hours . '" /><label>' . translate ( 'hours' ) . '</label>&nbsp;
-                <input type="text" size="2" name="rem_rep_minutes" value="'
-     . $rem_rep_minutes . '" /><label>' . translate ( 'minutes' ) . '</label>
-              </td>
-            </tr>
-          </tbody>
-        </table>' . ( $useTabs ? '
-      </div>
+            <td class="boxbottom boxright" colspan="2">
+              <label><input type="text" size="2" name="rem_rep_days" value="'
+     . $rem_rep_days . '" />' . $daysStr . '</label>&nbsp;
+              <input type="text" size="2" name="rem_rep_hours" value="'
+     . $rem_rep_hours . '" /><label>' . $hoursStr . '</label>&nbsp;
+              <input type="text" size="2" name="rem_rep_minutes" value="'
+     . $rem_rep_minutes . '" /><label>' . $minutStr . '</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>' . ( $useTabs ? '
+    </div>
 <!-- End tabscontent_pete -->' : '
-      </fieldset>' );
+    </fieldset>' );
   }
 
   echo '
-      </div>
+    </div>
 <!-- End tabscontent -->';
 
   if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__public__' && !
@@ -1562,10 +1567,10 @@ if ( $can_edit ) {
             <script type="text/javascript">
 <!-- <![CDATA[
               document.writeln ( \'<input type="button" value="'
-     . translate ( 'Save' ) . '" onclick="validate_and_submit ()" />\' )
+     . $saveStr . '" onclick="validate_and_submit ()" />\' )
 //]]> -->
             </script>
-            <noscript><input type="submit" value="' . translate ( 'Save' )
+            <noscript><input type="submit" value="' . $saveStr
      . '" /></noscript>
           </td>
         </tr>
