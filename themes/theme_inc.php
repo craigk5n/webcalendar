@@ -19,7 +19,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( '/\/themes\//', $PHP_SELF ) ) {
 EOT;
   echo ( file_exists ( $filename )
     ? '<img src="' . $filename . '" />'
-    : '<h2>' . function_exists ( 'translate'
+    : '<h2>' . ( function_exists ( 'translate' )
       ? translate ( 'NO PREVIEW AVAILABLE' ) : 'NO PREVIEW AVAILABLE' )
     . '</H2>' ) . '
   </body>
