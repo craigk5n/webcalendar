@@ -32,7 +32,7 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
 
   echo '
     <form action="' . $url . '" method="get" name="SelectUser">
-      <select name="user" onchange="document.SelectUser.submit ()">';
+      <select name="user" onchange="document.SelectUser.submit()">';
 
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     // Don't list current user

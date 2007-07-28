@@ -13,7 +13,7 @@ $customStr = translate ( 'Custom Colors' );
 $oldStr = translate ( 'Old Color' );
 $okStr = '&nbsp;&nbsp;&nbsp;' . translate ( 'OK' ). '&nbsp;&nbsp;&nbsp;';
 print_header ( array ( 'js/colors.php/true' ), '',
-  'onload="fillhtml (); setInit ();"', true, false, true );
+  'onload="fillhtml(); setInit();"', true, false, true );
 
 /*
   HTML Color Editor v1.2 (c) 2000 by Sebastian Weber <webersebastian@yahoo.de>
@@ -58,7 +58,7 @@ echo <<<EOT
         </tr>
         <tr>
           <td align="center"><input type="button" value="{$addcustomStr}"
-            onclick="definePreColor ()" /></td>
+            onclick="definePreColor()" /></td>
         </tr>
         <tr>
           <td valign="top" colspan="3">
@@ -71,13 +71,13 @@ echo <<<EOT
 <!-- RGB INPUT -->
                 <td class="boxtop boxleft boxbottom" valign="top" align="right">
                   R: <input id="rgb_r" type="text" size="3" maxlength="3"
-                    value="255" onchange="setFromRGB ()" /><br />
+                    value="255" onchange="setFromRGB()" /><br />
                   G: <input id="rgb_g" type="text" size="3" maxlength="3"
-                    value="255" onchange="setFromRGB ()" /><br />
+                    value="255" onchange="setFromRGB()" /><br />
                   B: <input id="rgb_b" type="text" size="3" maxlength="3"
-                    value="255" onchange="setFromRGB ()" /><br />
+                    value="255" onchange="setFromRGB()" /><br />
                   HTML: <input id="htmlcolor" type="text" size="6" maxlength="6"
-                    value="FFFFFF" onchange="setFromHTML ()" />
+                    value="FFFFFF" onchange="setFromHTML()" />
                 </td>
                 <td class="boxtop boxright boxbottom" width="120">
           <table id="thecell" bgcolor="#ffffff" align="center"
@@ -104,9 +104,9 @@ border="1" cellspacing="0" cellpadding="0">
           <td colspan="3" align="center" height="30">
             <input type="button"
               value="&nbsp;&nbsp;&nbsp;{$okStr}&nbsp;&nbsp;&nbsp;"
-              onclick="transferColor (); window.close ()"
+              onclick="transferColor(); window.close()"
               />&nbsp;&nbsp;&nbsp;<input type="button"
-              value="{$cancelStr}" onclick="window.close ()" />
+              value="{$cancelStr}" onclick="window.close()" />
           </td>
         </tr>
       </table>

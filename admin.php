@@ -91,9 +91,9 @@ function admin_print_color_input_html ( $varname, $title, $varval = '' ) {
             <p><label for="' . $name . '">' . $title
    . ':</label><input type="text" name="' . $name . '" id="' . $name
    . '" size="7" maxlength="7" value="' . $setting
-   . '" onchange="updateColor ( this, \'' . $varname
+   . '" onchange="updateColor( this, \'' . $varname
    . '_sample\' );" /><span id="' . $varname . '_sample" style="background:'
-   . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor ( \''
+   . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor( \''
    . $name . '\', event )" value="' . $select . '" /></p>';
 }
 
@@ -166,8 +166,8 @@ if ( is_dir ( $dir ) ) {
 print_header (
   array ( 'js/admin.php', 'js/visible.php' ),
   '',
-  'onload="init_admin ();'
-   . ( empty ( $currenttab ) ? '"' : 'showTab ( \'' . $currenttab . '\' );"' ) );
+  'onload="init_admin();'
+   . ( empty ( $currenttab ) ? '"' : 'showTab( \'' . $currenttab . '\' );"' ) );
 
 if ( ! $error ) {
   // Make sure globals values passed to styles.php are for this user.
@@ -201,7 +201,7 @@ if ( ! $error ) {
   $_SESSION['webcal_tmp_login'] = 'blahblahblah';
 
   $editStr = '<input type="button" value="' . translate ( 'Edit' )
-   . "...\" onclick=\"window.open ( 'edit_template.php?type=%s','cal_template','"
+   . "...\" onclick=\"window.open( 'edit_template.php?type=%s','cal_template','"
    . 'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,'
    . 'outerWidth=520\' );" name="" />';
   $choices = array ( 'day.php', 'week.php', 'month.php', 'year.php' );
@@ -237,7 +237,7 @@ if ( ! $error ) {
   for ( $i = 0, $cnt = count ( $tabs_ar ); $i < $cnt; $i++ ) {
     $tabs .= '
         <span class="tab' . ( $i > 0 ? 'bak' : 'for' ) . '" id="tab_'
-     . $tabs_ar[$i] . '"><a href="" onclick="return setTab ( \'' . $tabs_ar[$i]
+     . $tabs_ar[$i] . '"><a href="" onclick="return setTab( \'' . $tabs_ar[$i]
      . '\' )">' . $tabs_ar[++$i] . '</a></span>';
   }
   // Move the loops here and combine a few.
@@ -334,10 +334,10 @@ if ( ! $error ) {
   echo '
     <h2>' . translate ( 'System Settings' )
    . '<img src="images/help.gif" alt="' . translate ( 'Help' )
-   . '" class="help" onclick="window.open ( \'help_admin.php\', \'cal_help\', '
+   . '" class="help" onclick="window.open( \'help_admin.php\', \'cal_help\', '
    . '\'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,'
    . 'outerWidth=420\' );" /></h2>
-    <form action="admin.php" method="post" onsubmit="return valid_form ( this );"'
+    <form action="admin.php" method="post" onsubmit="return valid_form( this );"'
    . ' name="prefform">'
    . display_admin_link () . '
       <input type="hidden" name="currenttab" id="currenttab" value="'
@@ -394,7 +394,7 @@ if ( ! $error ) {
    . $option . 'none"' . $selected . '>' . translate ( 'None' ) . '</option>'
    . $theme_list . '
               </select><input type="button" name="preview" value="'
-   . translate ( 'Preview' ) . '" onclick="return showPreview ()" />
+   . translate ( 'Preview' ) . '" onclick="return showPreview()" />
             </p>
           </fieldset>
           <fieldset>
@@ -789,7 +789,7 @@ if ( ! $error ) {
    . htmlspecialchars ( $EMAIL_FALLBACK_FROM ) . '" /></p>
             <p><label title="' . tooltip ( 'email-mailer' ) . '">'
    . translate ( 'Email Mailer' ) . ':</label>
-              <select name="admin_EMAIL_MAILER"onchange="email_handler ()">'
+              <select name="admin_EMAIL_MAILER"onchange="email_handler()">'
    . $option . 'smtp" ' . ( $s['EMAIL_MAILER'] == 'smtp' ? $selected : '' )
    . '>SMTP</option>' . $option . 'mail" '
    . ( $s['EMAIL_MAILER'] == 'mail' ? $selected : '' ) . '>PHP mail</option>'

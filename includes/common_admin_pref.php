@@ -18,7 +18,7 @@ $user_vu = $work_hr_end = $work_hr_start = '';
 $choices = $choices_text = $menuthemes = $prefarray = $s = $themes = array ();
 
 $editStr = '<input type="button" value="' . translate ( 'Edit' )
- . "...\" onclick=\"window.open ( 'edit_template.php?type=%s','cal_template','"
+ . "...\" onclick=\"window.open( 'edit_template.php?type=%s','cal_template','"
  . 'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,'
  . 'outerWidth=520\' );" name="" /></p>';
 $option = '
@@ -152,7 +152,7 @@ if ( $prad ) {
 for ( $i = 0, $cnt = count ( $tabs_ar ); $i < $cnt; $i += 3 ) {
   $tabs .= '
         <span class="tab' . ( $i > 0 ? 'bak' : 'for' ) . '" id="tab_'
-   . $tabs_ar[$i] . $tabs_ar[$i + 1] . '"><a href="" onclick="return setTab ( \''
+   . $tabs_ar[$i] . $tabs_ar[$i + 1] . '"><a href="" onclick="return setTab( \''
    . $tabs_ar[$i] . '\' );">' . $tabs_ar[$i + 2] . '</a></span>';
 }
 $tmp = ( $prad ? $s['LANGUAGE'] : $prefarray['LANGUAGE'] );

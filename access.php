@@ -172,7 +172,7 @@ if ( $is_admin ) {
    . ( ! empty ( $user_fullname ) ? ': ' . $user_fullname : '' ) . '</h2>
     ' . display_admin_link ( false ) . '
     <form action="access.php" method="post" name="SelectUser">
-      <select name="guser" onchange="document.SelectUser.submit ()">'
+      <select name="guser" onchange="document.SelectUser.submit()">'
   // Add a DEFAULT CONFIGURATION to be used as a mask.
   . '
         <option value="__default__"'
@@ -279,7 +279,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     <h2 style="margin-bottom: 2px;">' . $pagetitle . '</h2>
     <form action="access.php" method="post" name="SelectOther">
       <input type="hidden" name="guser" value="' . $guser . '" />
-      <select name="otheruser" onchange="document.SelectOther.submit ()">'
+      <select name="otheruser" onchange="document.SelectOther.submit()">'
     // Add a DEFAULT CONFIGURATION to be used as a mask.
     . '
         <option value="__default__"'
@@ -351,7 +351,7 @@ if ( ! empty ( $otheruser ) ) {
       else {
         echo '"time"'
          . ( ! empty ( $op['time'] ) && $op['time'] == 'Y' ? $checked : '' )
-         . ' onclick="enableAll ( this.checked );" />'
+         . ' onclick="enableAll( this.checked );" />'
          . translate ( 'Can See Time Only' );
         $bottomedge = 'boxbottom';
       }

@@ -165,7 +165,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
 
   if ( $showHelp )
     $goto_link[] = '<a title="' . $helpStr
-     . '" href="#" onclick="javascript:openHelp ()" '
+     . '" href="#" onclick="javascript:openHelp()" '
      . 'onmouseover="window.status=\'\'; return true">' . $helpStr . '</a>';
 
   if ( count ( $goto_link ) > 0 ) {

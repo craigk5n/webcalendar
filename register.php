@@ -286,7 +286,7 @@ echo '
         </tr>
       </table>
     </form>' ) . '
-    <form action="register.php" method="post" onSubmit="return valid_form ()"
+    <form action="register.php" method="post" onSubmit="return valid_form()"
         name="selfreg">
       <input type="hidden" name="control" value="' . $form_control . '" />
       <table align="center" cellpadding="10" cellspacing="10">
@@ -294,7 +294,7 @@ echo '
           <td rowspan="3"><img src="images/register.gif" alt="" /></td>
           <td align="right"><label>' . translate ( 'Username' ) . ':</label></td>
           <td align="left"><input type="text" name="user" id="user" value="'
-   . $user . '" size="20" maxlength="20" onChange="check_name ();" /></td>
+   . $user . '" size="20" maxlength="20" onChange="check_name();" /></td>
         </tr>
         <tr>
           <td align="right"><label>' . translate ( 'First Name' )
@@ -311,7 +311,7 @@ echo '
           <td align="right" colspan="2"><label>' . translate ( 'E-mail address' )
    . ':</label></td>
           <td align="left"><input type="text" name="uemail" id="uemail" value="'
-   . $uemail . '" size="40" maxlength="75" onChange="check_uemail ();" /></td>
+   . $uemail . '" size="40" maxlength="75" onChange="check_uemail();" /></td>
         </tr>
         <tr>
           <td ' . ( $SELF_REGISTRATION_FULL != 'Y'

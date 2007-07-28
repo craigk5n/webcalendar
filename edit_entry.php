@@ -26,7 +26,7 @@ function time_selection ( $prefix, $time = '', $trigger = false ) {
   global $checked, $ENTRY_SLOTS, $selected, $TIME_FORMAT, $WORK_DAY_START_HOUR;
 
   $amsel = $pmsel = $ret = '';
-  $trigger_str = ( $trigger ? 'onchange="' . $prefix . 'timechanged () ' : '' );
+  $trigger_str = ( $trigger ? 'onchange="' . $prefix . 'timechanged() ' : '' );
 
   if ( ! isset ( $time ) && $time != 0 ) {
     $hour = $WORK_DAY_START_HOUR;
@@ -530,7 +530,7 @@ $eType_label = ' ( ' . translate ( $eType ) . ' )';
 echo '
     <h2>' . ( $id ? translate ( 'Edit Entry' ) : translate ( 'Add Entry' ) )
  . $eType_label . '&nbsp;<img src="images/help.gif" alt="' . translate ( 'Help' )
- . '" class="help" onclick="window.open ( \'help_edit_entry.php'
+ . '" class="help" onclick="window.open( \'help_edit_entry.php'
  . ( empty ( $id ) ? '?add=1' : '' )
  . '\', \'cal_help\', \'dependent,menubar,scrollbars,height=400,width=400,'
  . 'innerHeight=420,outerWidth=420\' );" /></h2>';
@@ -556,7 +556,7 @@ if ( $can_edit ) {
         <span class="tab'
      . ( $i > 0 ? 'bak' : 'for' )
      . '" id="tab_' . $tabs_ar[$i]
-     . '"><a href="#tab' . $tabs_ar[$i] . '" onclick="return showTab ( \''
+     . '"><a href="#tab' . $tabs_ar[$i] . '" onclick="return showTab( \''
      . $tabs_ar[$i] . '\' )">' . $tabs_ar[++$i] . '</a></span>';
   }
   echo '
@@ -659,12 +659,12 @@ if ( $can_edit ) {
                       <label for="entry_categories">' . translate ( 'Category' )
      . ':<br /></label>
                       <input type="button" value="' . translate ( 'Edit' )
-     . '" onclick="editCats ( event )" />
+     . '" onclick="editCats( event )" />
                     </td>
                     <td valign="top">
                       <input readonly="readonly" type="text" name="catnames" '
      . 'id="entry_categories" value="' . $catNames
-     . '" size="30" onclick="editCats ( event )"/>
+     . '" size="30" onclick="editCats( event )"/>
                       <input type="hidden" name="cat_id" value="' . $catList
      . '" />
                     </td>
@@ -689,7 +689,7 @@ if ( $can_edit ) {
      . ':&nbsp;</label></td>
                     <td>
                       <select name="percent" id="task_percent" '
-     . 'onchange="completed_handler ()">';
+     . 'onchange="completed_handler()">';
     for ( $i = 0; $i < 101; $i += 10 ) {
       echo '
                         <option value="' . "$i\" "
@@ -762,7 +762,7 @@ if ( $can_edit ) {
 
     echo '>&nbsp;</td>
               <td colspan="2">
-                <select name="timetype" onchange="timetype_handler ()">
+                <select name="timetype" onchange="timetype_handler()">
                   <option value="U" '
      . ( $allday != 'Y' && $hour == -1 ? $selected : '' ) . '>'
      . translate ( 'Untimed event' ) . '</option>
@@ -1040,9 +1040,9 @@ if ( $can_edit ) {
             <select name="participants[]" id="entry_part" size="' . $size
      . '" multiple="multiple">' . $users . '
             </select>' . ( $GROUPS_ENABLED == 'Y' ? '
-            <input type="button" onclick="selectUsers ()" value="'
+            <input type="button" onclick="selectUsers()" value="'
        . translate ( 'Select' ) . '..." />' : '' ) . '
-            <input type="button" onclick="showSchedule ()" value="'
+            <input type="button" onclick="showSchedule()" value="'
      . translate ( 'Availability' ) . '..." />
           </td>
         </tr>'
@@ -1073,7 +1073,7 @@ if ( $can_edit ) {
      . '"><label for="rpttype">' . translate ( 'Type' ) . ':</label></td>
           <td colspan="2">
             <select name="rpt_type" id="rpttype" '
-     . 'onchange="rpttype_handler (); rpttype_weekly ()">
+     . 'onchange="rpttype_handler(); rpttype_weekly()">
               <option value="none"' . ( strcmp ( $rpt_type, 'none' ) == 0
       ? $selected : '' ) . '>' . translate ( 'None' ) . '</option>
               <option value="daily"' . ( strcmp ( $rpt_type, 'daily' ) == 0
@@ -1098,7 +1098,7 @@ if ( $can_edit ) {
      . '>' . translate ( 'Manual' ) . '</option>
             </select>&nbsp;&nbsp;&nbsp;<label id="rpt_mode"><input '
      . 'type="checkbox" name="rptmode" id="rptmode" value="y" '
-     . 'onclick="rpttype_handler ()" '
+     . 'onclick="rpttype_handler()" '
      . ( empty ( $expert_mode ) ? '' : $checked )
      . '/>' . translate ( 'Expert Mode' ) . '</label>
           </td>
@@ -1110,13 +1110,13 @@ if ( $can_edit ) {
           <td colspan="2" class="boxtop boxright boxleft"><input type="radio" '
      . 'name="rpt_end_use" id="rpt_untilf" value="f" '
      . ( empty ( $rpt_end ) && empty ( $rpt_count ) ? $checked : '' )
-     . ' onclick="toggle_until ()" /><label for="rpt_untilf">'
+     . ' onclick="toggle_until()" /><label for="rpt_untilf">'
      . translate ( 'Forever' ) . '</label></td>
         </tr>
         <tr id="rptenddate2" style="visibility:hidden;">
           <td class="boxleft"><input type="radio" name="rpt_end_use" '
      . 'id="rpt_untilu" value="u" ' . ( empty ( $rpt_end ) ? '' : $checked )
-     . ' onclick="toggle_until ()" />&nbsp;<label for="rpt_untilu">'
+     . ' onclick="toggle_until()" />&nbsp;<label for="rpt_untilu">'
      . translate ( 'Use end date' ) . '</label></td>
           <td class="boxright"><span class="end_day_selection" '
      . 'id="rpt_end_day_select">'
@@ -1126,7 +1126,7 @@ if ( $can_edit ) {
         <tr id="rptenddate3" style="visibility:hidden;">
           <td class="boxbottom boxleft"><input type="radio" name="rpt_end_use" '
      . 'id="rpt_untilc" value="c" ' . ( empty ( $rpt_count ) ? '' : $checked )
-     . ' onclick="toggle_until ()" />&nbsp;<label for="rpt_untilc">'
+     . ' onclick="toggle_until()" />&nbsp;<label for="rpt_untilc">'
      . translate ( 'Number of times' ) . '</label></td>
           <td class="boxright boxbottom"><input type="text" name="rpt_count" '
      . 'id="rpt_count" size="4" maxlength="4" value="' . $rpt_count . '" /></td>
@@ -1211,7 +1211,7 @@ if ( $can_edit ) {
         echo '
                 <td><input type="button" name="byday" id="_' . $loop_ctr
          . $rpt_byday . '" value="' . $buttonvalue
-         . '" onclick="toggle_byday ( this )" /></td>';
+         . '" onclick="toggle_byday( this )" /></td>';
       }
       echo '
               </tr>';
@@ -1278,7 +1278,7 @@ if ( $can_edit ) {
                 <th><label>31</label></th>' : '' ) . '
                 <td><input type="button" name="bysetpos" id="bysetpos'
        . $loop_ctr . '" value="' . $buttonvalue
-       . '" onclick="toggle_bysetpos ( this )" /></td>'
+       . '" onclick="toggle_bysetpos( this )" /></td>'
        . ( $loop_ctr % 10 == 0 ? '
               </tr>
             <tr>' : '' );
@@ -1319,7 +1319,7 @@ if ( $can_edit ) {
             <th><label>31</label></th>' : '' ) . '
             <td><input type="button" name="bymonthday" id="bymonthday'
        . $loop_ctr . '" value="' . $buttonvalue
-       . '" onclick="toggle_bymonthday ( this )" /></td>'
+       . '" onclick="toggle_bymonthday( this )" /></td>'
        . ( $loop_ctr % 10 == 0 ? '
           </tr>
           <tr>' : '' );
@@ -1386,7 +1386,7 @@ if ( $can_edit ) {
                 <input align="left" type="button" name="addInclusion" value="'
      . translate ( 'Add Inclusion' ) . '" onclick="add_exception(1)" /><br />
                 <input align="left" type="button" name="delSelected" value="'
-     . translate ( 'Delete Selected' ) . '" onclick="del_selected ()" />
+     . translate ( 'Delete Selected' ) . '" onclick="del_selected()" />
               </td>
             </tr>
           </table>
@@ -1449,11 +1449,11 @@ if ( $can_edit ) {
      . '" />
                 <label><input type="radio" name="reminder" '
      . 'id="reminderYes" value="1"'
-     . ( $rem_status ? $checked : '' ) . ' onclick="toggle_reminders ()" />'
+     . ( $rem_status ? $checked : '' ) . ' onclick="toggle_reminders()" />'
      . translate ( 'Yes' ) . '</label>&nbsp;
                 <label><input type="radio" name="reminder" '
      . 'id="reminderNo" value="0"'
-     . ( $rem_status ? '' : $checked ) . ' onclick="toggle_reminders ()" />'
+     . ( $rem_status ? '' : $checked ) . ' onclick="toggle_reminders()" />'
      . translate ( 'No' ) . '</label>
             </td>
           </tr>
@@ -1464,7 +1464,7 @@ if ( $can_edit ) {
      . ':</label></td>
             <td class="boxtop boxleft" width="20%"><label><input type="radio" '
      . 'name="rem_when" id="rem_when_date" value="Y" '
-     . ( $rem_use_date ? $checked : '' ) . ' onclick="toggle_rem_when ()" />'
+     . ( $rem_use_date ? $checked : '' ) . ' onclick="toggle_rem_when()" />'
      . translate ( 'Use Date/Time' ) . '&nbsp;</label></td>
             <td class="boxtop boxright" nowrap="nowrap" colspan="2">'
      . date_selection ( 'reminder_', ( empty ( $reminder['date'] )
@@ -1482,7 +1482,7 @@ if ( $can_edit ) {
           <tr>
             <td class="boxleft"><label><input type="radio" name="rem_when" '
      . 'id="rem_when_offset" value="N" ' . ( $rem_use_date ? '' : $checked )
-     . ' onclick="toggle_rem_when ()" />' . translate ( 'Use Offset' )
+     . ' onclick="toggle_rem_when()" />' . translate ( 'Use Offset' )
      . '&nbsp;</label></td>
             <td class="boxright" nowrap="nowrap" colspan="2">
               <label><input type="text" size="2" name="rem_days" value="'
@@ -1526,7 +1526,7 @@ if ( $can_edit ) {
      . translate ( 'Times' ) . '</label></td>
             <td class="boxtop boxright" colspan="2"><input type="text" size="2" '
      . 'name="rem_rep_count" value="' . $rem_rep_count
-     . '" onchange="toggle_rem_rep ();" /></td>
+     . '" onchange="toggle_rem_rep();" /></td>
           </tr>
           <tr id="rem_repeats">
             <td class="boxbottom boxleft">&nbsp;&nbsp;&nbsp;<label>'
@@ -1567,7 +1567,7 @@ if ( $can_edit ) {
             <script type="text/javascript">
 <!-- <![CDATA[
               document.writeln ( \'<input type="button" value="'
-     . $saveStr . '" onclick="validate_and_submit ()" />\' )
+     . $saveStr . '" onclick="validate_and_submit()" />\' )
 //]]> -->
             </script>
             <noscript><input type="submit" value="' . $saveStr
@@ -1590,7 +1590,7 @@ if ( $can_edit ) {
 
   if ( $id > 0 && ( $login == $create_by || $single_user == 'Y' || $is_admin ) )
     echo '
-    <a href="del_entry.php?id=' . $id . '" onclick="return confirm ( \''
+    <a href="del_entry.php?id=' . $id . '" onclick="return confirm( \''
      . str_replace ( 'XXX', translate ( 'entry' ),
       translate ( 'Are you sure you want to delete this XXX?' ) ) . '\' );">'
      . translate ( 'Delete entry' ) . '</a><br />';

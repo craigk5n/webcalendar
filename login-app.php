@@ -71,7 +71,7 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
   ? load_template ( $login, 'S' ) : '' ) . '
   </head>
-  <body onload="myOnLoad ();">'
+  <body onload="myOnLoad();">'
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y'
   ? load_template ( $login, 'H' ) : '' ) . '
@@ -79,7 +79,7 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
     <span style="color:#F00;" class="bold">' . translate ( 'Error' )
    . ": $error" . '</span>' ) . '<br />
     <form name="login_form" id="login" action="' . $app_login_page['action']
- . '" method="post" onsubmit="return valid_form ( this )">
+ . '" method="post" onsubmit="return valid_form( this )">
       <input type="hidden" name="' . $app_login_page['return'] . '" value="'
  . $login_return_path . '" />
       <table cellpadding="10" align="center">

@@ -41,7 +41,7 @@ if ( empty ( $users ) ) {
 
 print_header (
   array ( 'js/availability.php/false/' . "$month/$day/$year/"
-   . getGetValue ( 'form' ) ), '', 'onload="focus ();"', true, false, true );
+   . getGetValue ( 'form' ) ), '', 'onload="focus();"', true, false, true );
 
 $next_url = $prev_url = '?users=' . $users;
 $time = mktime ( 0, 0, 0, $month, $day, $year );

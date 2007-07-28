@@ -728,7 +728,7 @@ EOT;
  */
 function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
   $selected = ' selected="selected"';
-  $trigger_str = ( empty ( $trigger ) ? '' : $prefix . 'datechanged ();' );
+  $trigger_str = ( empty ( $trigger ) ? '' : $prefix . 'datechanged();' );
   $onchange = ( empty ( $trigger_str ) ? '' : 'onchange="$trigger_str"' );
   if ( strlen ( $date ) != 8 )
     $date = date ( 'Ymd' );
@@ -767,7 +767,7 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
   }
   return $ret . '
       </select>
-      <input type="button" name="' . $prefix . 'btn" onclick="selectDate ( \''
+      <input type="button" name="' . $prefix . 'btn" onclick="selectDate( \''
    . $prefix . 'day\',\'' . $prefix . 'month\',\'' . $prefix . "year','$date'"
    . ', event, this.form );" value="' . translate ( 'Select' ) . '..." />' . "\n";
 }
@@ -1333,10 +1333,10 @@ function display_small_tasks ( $cat_id ) {
   if ( $SORT_TASKS == 'Y' ) {
     for ( $i = 0; $i < 4; $i++ ) {
       $ajax[$i] = '
-        <td class="sorter" onclick="sortTasks ( ' . $i . ', ' . $task_cat
+        <td class="sorter" onclick="sortTasks( ' . $i . ', ' . $task_cat
        . ', this )"><img src="images/up.png" style="vertical-align:bottom" /></td>';
       $ajax[$i + 4] = '
-        <td  class="sorter sorterbottom" onclick="sortTasks ( ' .
+        <td  class="sorter sorterbottom" onclick="sortTasks( ' .
       ( $i + 4 ) . ', ' . $task_cat
        . ', this )"><img src="images/down.png" style="vertical-align:top" /></td>';
     }
@@ -3631,7 +3631,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
      . '" class="icon_text" /></a>' : '' )
    . ( $can_delete && ( $readonly == 'N' || $is_admin ) ? '
         <a title="' . $deleteStr . '" href="del_entry.php?id=' . $id
-     . '" onclick="return confirm ( \''
+     . '" onclick="return confirm( \''
      . str_replace ( 'XXX', translate ( 'entry' ),
       translate ( 'Are you sure you want to delete this XXX?' ) ) . ' '
      . translate ( 'This will delete this entry for all users.' )
@@ -4202,7 +4202,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
    . ( ! empty ( $user ) && $user != $login ? '
       <input type="hidden" name="user" value="' . $user . '" />' : '' )
    . $catStr . ':
-      <select name="cat_id" onchange="document.SelectCategory.submit ()">';
+      <select name="cat_id" onchange="document.SelectCategory.submit()">';
 
   // 'None' and 'All' are added during load_user_categories
   if ( is_array ( $categories ) ) {
@@ -4263,7 +4263,7 @@ function print_checkbox ( $vals, $id = '', $onchange = '' ) {
       <label><input type="checkbox" name="' . $variable . '" value="' . $vals[1]
    . '" ' . ( empty ( $id ) ? '' : 'id="' . $id . '" ' )
    . ( $setting == $vals[1] ? $checked : '' )
-   . ( empty ( $onchange ) ? '' : ' onchange="' . $onchange . ' ()"' )
+   . ( empty ( $onchange ) ? '' : ' onchange="' . $onchange . '()"' )
    . ' />&nbsp;' . $vals[2] . '</label>';
 }
 
@@ -4299,9 +4299,9 @@ function print_color_input_html ( $varname, $title, $varval = '' ) {
             <p><label for="' . $name . '">' . $title
    . ':</label><input type="text" name="' . $name . '" id="' . $name
    . '" size="7" maxlength="7" value="' . $setting
-   . '" onchange="updateColor ( this, \'' . $varname
+   . '" onchange="updateColor( this, \'' . $varname
    . '_sample\' );" /><span class="sample" id="' . $varname . '_sample" style="background:'
-   . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor ( \''
+   . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor( \''
    . $name . '\', event )" value="' . $select . '" /></p>';
 }
 
@@ -4717,7 +4717,7 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
     $setting = $prefarray[$variable];
     $variable = 'pref_' . $variable;
   }
-  $onclickStr = ( empty ( $onclick ) ? '' : ' onclick="' . $onclick . ' ()"' );
+  $onclickStr = ( empty ( $onclick ) ? '' : ' onclick="' . $onclick . '()"' );
   foreach ( $vals as $K => $V ) {
     $ret .= '
       <input type="radio" name="' . $variable . '" value="' . $K . '"'

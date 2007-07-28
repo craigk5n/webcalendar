@@ -89,7 +89,7 @@ if ( $show_advanced ) {
           <td><label for="date_filter">' . translate ('Filter by Date')
    . ':</label></td>
           <td>
-            <select name="date_filter" id="date_filter" onchange="toggleDateRange ()">
+            <select name="date_filter" id="date_filter" onchange="toggleDateRange()">
               <option value="0"' . $selected . '>' . translate ( 'All Dates' )
    . '</option>
               <option value="1">' . translate ( 'Past' ) . '</option>
@@ -153,7 +153,7 @@ if ( $show_others ) {
   echo '
             </select>'
    . ( $GROUPS_ENABLED == 'Y'
-    ? '<input type="button" onclick="selectUsers ()" value="'
+    ? '<input type="button" onclick="selectUsers()" value="'
      . translate ( 'Select' ) . '..." />' : '' ) . '
           </td>
         </tr>';

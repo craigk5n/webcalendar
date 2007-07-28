@@ -23,7 +23,7 @@ function validate_and_submit () {
 <?php
     if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
       $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
-    showTab ( "details" );
+    showTab( 'details' );
 <?php } ?>
     form.name.focus ();
     alert ( "<?php etranslate ( 'You have not entered a Brief Description', true)?>.");

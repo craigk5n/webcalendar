@@ -568,13 +568,13 @@ if ( $menuConfig['Help'] ) {
   jscMenu_menu ( 'Help' );
 
   if ( $menuConfig['Help Contents'] )
-    jscMenu_item ( 'help.png', 'Help Contents', 'javascript:openHelp ()' );
+    jscMenu_item ( 'help.png', 'Help Contents', 'javascript:openHelp()' );
 
   if ( $menuConfig['About WebCalendar'] && $menuConfig['Help Contents'] )
     jscMenu_divider ();
 
   if ( $menuConfig['About WebCalendar'] )
-    jscMenu_item ( 'k5n.png', 'About WebCalendar', 'javascript:openAbout ()' );
+    jscMenu_item ( 'k5n.png', 'About WebCalendar', 'javascript:openAbout()' );
 
   jscMenu_close ();
 }

@@ -1074,7 +1074,7 @@ if ( ! empty ( $conflicts ) ) {
           <td><input type="submit" name="confirm_conflicts" value="'
      . translate ( 'Save' ) . '" /></td>' : '' ) . '
           <td><input type="button" value="' . translate ( 'Cancel' )
-   . '" onclick="history.back ()" /><td>
+   . '" onclick="history.back()" /><td>
         </tr>
       </table>
     </form>';

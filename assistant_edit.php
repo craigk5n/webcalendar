@@ -64,7 +64,7 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
 
 echo '
             </select>' . ( $GROUPS_ENABLED == 'Y' ? '
-            <input type="button" onclick="selectUsers ()" value="'
+            <input type="button" onclick="selectUsers()" value="'
    . translate ( 'Select' ) . '..." />' : '' ) . '
           </td>
         </tr>

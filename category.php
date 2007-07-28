@@ -95,9 +95,9 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
             <input type="hidden" name="urlname" size="50" />&nbsp;&nbsp;&nbsp;
             <input type="button" value="'
      . translate ( 'Search for existing icons' )
-     . '" onclick="window.open (\'icons.php\', \'icons\',\''
+     . '" onclick="window.open( \'icons.php\', \'icons\',\''
      . 'dependent,menubar=no,scrollbars=n0,height=300,width=400,outerHeight=320'
-     . ',outerWidth=420\');" />
+     . ',outerWidth=420\' );" />
           </td>
         </tr>
         </tr>
@@ -107,10 +107,10 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
    . ( $add == '1' ? translate ( 'Add' ) : translate ( 'Save' ) ) . '" />'
    . ( ! empty ( $id ) ? '
             <input type="submit" name="delete" value="'
-     . translate ( 'Delete' ) . '" onclick="return confirm ('
+     . translate ( 'Delete' ) . '" onclick="return confirm( '
      . str_replace ( 'XXX', translate ( 'entry', true ),
       translate ( 'Are you sure you want to delete this XXX?', true ) )
-     . '\')" />' : '' ) . '
+     . '\' )" />' : '' ) . '
           </td>
         </tr>
       </table>

@@ -116,7 +116,7 @@ $page_options = array ( 'days', 'report_id' );
 function print_options ( $textarea, $option ) {
   // Use ASCII values for ${}.
   echo '
-            <a onclick="addMe ( \'' . $textarea . '\', \'${' . $option
+            <a onclick="addMe( \'' . $textarea . '\', \'${' . $option
    . '}\' )">${' . $option . '}</a><br />';
 }
 
@@ -390,7 +390,7 @@ echo '
             <input type="submit" value="' . translate ( 'Save' ) . '" />'
  . ( $adding_report ? '' : '&nbsp;&nbsp;
             <input type="submit" name="delete" value="'
-   . translate ( 'Delete' ) . '" onclick="return confirm ( \''
+   . translate ( 'Delete' ) . '" onclick="return confirm( \''
    . str_replace ( 'XXX', translate ( 'report' ),
     translate ( 'Are you sure you want to delete this XXX?' ) )
    . '\');" />' );

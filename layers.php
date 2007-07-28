@@ -50,9 +50,9 @@ else {
     <h2>' . ( $updating_public
     ? translate ( $PUBLIC_ACCESS_FULLNAME ) . '&nbsp;' : '' )
    . translate ( 'Layers' ) . '&nbsp;<img src="images/help.gif" alt="'
-   . translate ( 'Help' ) . '" class="help" onclick="window.open ( '
+   . translate ( 'Help' ) . '" class="help" onclick="window.open( '
    . '\'help_layers.php\', \'cal_help\', \'dependent,menubar,scrollbars,'
-   . 'height=400,width=400,innerHeight=420,outerWidth=420\');" /></h2>
+   . 'height=400,width=400,innerHeight=420,outerWidth=420\' );" /></h2>
     ' . display_admin_link () . translate ( 'Layers are currently' )
    . '&nbsp;<strong>';
 
@@ -85,9 +85,9 @@ else {
          . $editStr . '</a> /
         <a title="' . $deleteLayerStr
          . '" href="del_layer.php?id=' . $layer['cal_layerid'] . $u_url
-         . '" onclick="return confirm (\''
+         . '" onclick="return confirm( \''
          . str_replace ( 'XXX', $layerStr, $areYouSureStr )
-         . '\');">' . $deleteStr . '</a>)</h4>
+         . '\' );">' . $deleteStr . '</a>)</h4>
       <p><label>' . $sourceStr . ': </label>' . $layerfullname
          . '</p>
       <p><label>' . $colorStr . ': </label>'

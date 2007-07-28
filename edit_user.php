@@ -48,7 +48,7 @@ if ( ! empty ( $error ) ) {
   echo translate ( 'Add User' );
  }
 ?></h2>
-<form action="edit_user_handler.php"  name="edituser" method="post" onsubmit="return valid_form(this);" >
+<form action="edit_user_handler.php" name="edituser" method="post" onsubmit="return valid_form( this );">
 <input type="hidden" name="formtype" value="edituser" />
 <?php
  if ( empty ( $user ) ) {
@@ -66,7 +66,7 @@ if ( ! empty ( $error ) ) {
       else
         echo $user;
     } else {
-      echo '<input type="text" name="user" id="username" size="25" onchange="check_name ();" maxlength="25" />' . "\n";
+      echo '<input type="text" name="user" id="username" size="25" onchange="check_name();" maxlength="25" />' . "\n";
     }
 ?>
  </td></tr>
@@ -83,7 +83,7 @@ if ( ! empty ( $error ) ) {
  <tr><td>
   <label for="uemail"><?php etranslate ( 'E-mail address' )?>:</label></td><td>
   <input type="text" name="uemail" id="uemail" size="20" value="<?php echo
-  empty ( $uemail ) ? '' : htmlspecialchars ( $uemail );?>" onchange="check_uemail ();" />
+  empty ( $uemail ) ? '' : htmlspecialchars ( $uemail );?>" onchange="check_uemail();" />
  </td></tr>
 <?php if ( empty ( $user ) && ! $use_http_auth && $user_can_update_password ) { ?>
  <tr><td>
@@ -143,7 +143,7 @@ if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
 <td class="aligntop">
 
 <h2><?php etranslate ( 'Change Password' )?></h2>
-<form action="edit_user_handler.php" method="post"  onsubmit="return valid_form2(this);" >
+<form action="edit_user_handler.php" method="post" onsubmit="return valid_form2( this );">
 <input type="hidden" name="formtype" value="setpassword" />
 <?php if ( $is_admin ) { ?>
  <input type="hidden" name="user" value="<?php echo $user;?>" />

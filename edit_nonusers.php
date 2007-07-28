@@ -35,14 +35,14 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
   } else
     $id_display = '
       <input type="text" name="nid" id="calid" size="20" '
-     . 'onchange="check_name ();" maxlength="20" /> '
+     . 'onchange="check_name();" maxlength="20" /> '
      . translate ( 'word characters only' );
 
   ob_start ();
 
   echo '
     <form action="edit_nonusers_handler.php" name="editnonuser" method="post" '
-   . 'onsubmit="return valid_form (this);">'
+   . 'onsubmit="return valid_form( this );">'
    . ( empty ( $nonusertemp_admin ) ? '' : '
       <input type="hidden" name="old_admin" value="'
      . $nonusertemp_admin . '" />' ) . '
@@ -118,7 +118,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
       <input type="submit" name="action" value="' . $button . '" />'
    . ( empty ( $nid ) ? '' : '
       <input type="submit" name="delete" value="' . translate ( 'Delete' )
-     . '" onclick="return confirm (\''
+     . '" onclick="return confirm( \''
      . str_replace ( 'XXX', translate ( 'entry' ),
       translate ( 'Are you sure you want to delete this XXX?' ) )
      . '\')" />' ) . '

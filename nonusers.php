@@ -18,7 +18,7 @@ if ( ! $NONUSER_PREFIX ) {
 $add = getValue ( 'add' );
 $newNonUserStr = translate ( 'Add New NonUser Calendar' );
 $targetStr =
-'target="nonusersiframe" onclick="javascript:show (\'nonusersiframe\');">';
+'target="nonusersiframe" onclick="javascript:show( \'nonusersiframe\' );">';
 
 ob_start ();
 
