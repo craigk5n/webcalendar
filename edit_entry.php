@@ -1488,7 +1488,7 @@ if ( $can_edit ) {
               <label><input type="text" size="2" name="rem_days" value="'
      . $rem_days . '" />' . $daysStr . '</label>&nbsp;
               <label><input type="text" size="2" name="rem_hours" '
-     . 'value=".$rem_hours" />' . $hoursStr . '</label>&nbsp;
+     . 'value="' .$rem_hours . '" />' . $hoursStr . '</label>&nbsp;
               <label><input type="text" size="2" name="rem_minutes" value="'
      . $rem_minutes . '" />' . $minutStr . '</label>
             </td>
