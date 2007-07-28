@@ -113,7 +113,7 @@ function dbi_connect ( $host, $login, $password, $database, $lazy = true ) {
     } else
       return false;
   } elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
-    $c = @mysqli_connect ( $host, $login, $password, $database );
+    $c  = new mysqli( $host, $login, $password, $database );
     if ( $c ) {
       /*
       if ( ! mysqli_select_db ( $c, $database ) )
@@ -245,7 +245,7 @@ function dbi_close ( $conn ) {
   if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 )
     return mysql_close ( $conn );
   elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 )
-    return mysqli_close ( $conn );
+    return $conn->close();
   elseif ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0 ) {
     if ( ! empty ( $old_textlimit ) ) {
       ini_set ( 'mssql.textlimit', $old_textlimit );
@@ -342,7 +342,7 @@ function dbi_query ( $sql, $fatalOnError = true, $showError = true ) {
     $res = mysql_query ( $sql, $db_connection_info['connection'] );
   } elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
     $found_db_type = true;
-    $res = mysqli_query ( $GLOBALS['db_connection'], $sql );
+    $res = $GLOBALS['db_connection']->query( $sql );
   } elseif ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0 ) {
     $found_db_type = true;
     $res = mssql_query ( $sql );
@@ -399,7 +399,7 @@ function dbi_fetch_row ( $res ) {
   if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 )
     return mysql_fetch_array ( $res, MYSQL_NUM );
   elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 )
-    return mysqli_fetch_array ( $res, MYSQL_NUM );
+    return $res->fetch_array( MYSQLI_NUM );
   elseif ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0 )
     return mssql_fetch_array ( $res );
   elseif ( strcmp ( $GLOBALS['db_type'], 'oracle' ) == 0 )
@@ -437,7 +437,7 @@ function dbi_affected_rows ( $conn, $res ) {
   if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 )
     return mysql_affected_rows ( $conn );
   elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 )
-    return mysqli_affected_rows ( $conn );
+    return $conn->affected_rows;
   elseif ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0 )
     return mssql_rows_affected ( $conn );
   elseif ( strcmp ( $GLOBALS['db_type'], 'oracle' ) == 0 )
@@ -550,7 +550,7 @@ function dbi_get_blob ( $table, $column, $key ) {
  * @return bool True on success
  */
 function dbi_free_result ( $res ) {
-  if ( $res == 1 ) // Not needed for UPDATE, DELETE, etc
+  if ( $res === true ) // Not needed for UPDATE, DELETE, etc
     return;
   if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 )
     return mysql_free_result ( $res );
@@ -588,7 +588,7 @@ function dbi_error () {
   if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 )
     $ret = mysql_error ();
   elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 )
-    $ret = mysqli_error ( $GLOBALS['db_connection'] );
+    $ret = $GLOBALS['db_connection']->error;
   elseif ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0 )
     // No real mssql_error function. This is as good as it gets.
     $ret = mssql_get_last_message ();
@@ -646,7 +646,6 @@ function dbi_escape_string ( $string ) {
   // (maybe this should be removed)
   // if ( get_magic_quotes_gpc () )
   $string = stripslashes ( $string );
-
   switch ( $GLOBALS['db_type'] ) {
     case 'mysql':
       // MySQL requires an active connection.
@@ -656,8 +655,9 @@ function dbi_escape_string ( $string ) {
           ? mysql_real_escape_string ( $string, $db_connection_info['connection'] )
           : mysql_escape_string ( $string ) ) );
     case 'mysqli':
-      return mysqli_real_escape_string ( $db_connection_info['connection'],
-        $string );
+      return ( empty ( $db_connection_info['connected'] )
+        ? addslashes ( $string )
+        : $db_connection_info['connection']->real_escape_string ( $string ) );
     case 'ibase':
     case 'mssql':
     case 'oracle':
