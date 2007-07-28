@@ -106,7 +106,7 @@ if ( empty ( $EVENT_EDIT_TABS ) )
 $useTabs = ( $EVENT_EDIT_TABS == 'Y' );
 // Make sure this is not a read-only calendar.
 $can_edit = false;
-
+$others_complete = 'yes';
 $checked = ' checked="checked"';
 $selected = ' selected="selected"';
 // .
@@ -135,7 +135,7 @@ if ( empty ( $date ) && empty ( $month ) ) {
   $date = sprintf ( "%04d%02d%02d", $year, $month, $day );
 }
 
-$BodyX = 'onload="';
+$BodyX = 'onload="onLoad();"';
 $INC = array ( 'js/edit_entry.php/false/' . $user, 'js/visible.php' );
 $textareasize = '15';
 // .
@@ -152,7 +152,7 @@ if ( $ALLOW_HTML_DESCRIPTION == 'Y' ) {
     $use_fckeditor = true;
   } else
   if ( file_exists ( 'includes/htmlarea/htmlarea.php' ) ) {
-    $BodyX .= 'initEditor (); ';
+    $BodyX = 'onload="onLoad();initEditor();';
     $INC[] = 'htmlarea/core.php/true';
     $INC[] = 'htmlarea/htmlarea.php/true';
     $use_htmlarea = true;
@@ -169,7 +169,7 @@ $wkst = 'MO';
 $real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
   ( $is_assistant || $is_admin ) ) ? $user : $login;
 
-print_header ( $INC, '', $BodyX . 'onLoad ();"' );
+print_header ( $INC, '', $BodyX );
 
 ob_start ();
 
@@ -1445,7 +1445,7 @@ if ( $can_edit ) {
               <input type="hidden" name="rem_last_sent" value="'
      . ( empty ( $reminder['last_sent'] ) ? 0 : $reminder['last_sent'] ) . '" />
               <input type="hidden" name="rem_times_sent" value="'
-     . ( ! empty ( $reminder['times_sent'] ) ? 0 : $reminder['times_sent'] )
+     . ( empty ( $reminder['times_sent'] ) ? 0 : $reminder['times_sent'] )
      . '" />
                 <label><input type="radio" name="reminder" '
      . 'id="reminderYes" value="1"'
