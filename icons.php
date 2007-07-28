@@ -63,8 +63,8 @@ if ( $d = dir ( $icon_path ) ) {
       <tr>';
   for ( $i = 0, $cnt = count ( $icons ); $i < $cnt; $i++ ) {
     echo '
-        <td><a href="#" onclick="sendURL (\'' . $icon_path . $icons[$i]
-     . '\')" ><img src="' . $icon_path . $icons[$i] . '" border="0" title="'
+        <td><a href="#" onclick="sendURL( \'' . $icon_path . $icons[$i]
+     . '\' )" ><img src="' . $icon_path . $icons[$i] . '" border="0" title="'
      . $title_str . '" alt="' . $title_str . '" /></a></td>'
      . ( $i > 0 && $i % 8 == 0 ? '
       </tr>

@@ -119,16 +119,16 @@ function list_unapproved ( $user ) {
        . '">' . htmlspecialchars ( $name ) . '</a> (' . $eventdate . '):</td>'
       /* approve */ . '
         <td align="center"><input type="image" src="images/check.gif" title="'
-       . $appConStr . '" onclick="return do_confirm ( \'approve\', \''
+       . $appConStr . '" onclick="return do_confirm( \'approve\', \''
        . $cal_user . '\', \'' . $entryID . '\' );" /></td>'
       /* reject */ . '
         <td align="center"><input type="image" src="images/rejected.gif" title="'
-       . $rejectStr . '" onclick="return do_confirm ( \'reject\', \''
+       . $rejectStr . '" onclick="return do_confirm( \'reject\', \''
        . $cal_user . '\', \'' . $entryID . '\' );" /></td>'
       /* delete */
        . ( ! access_is_enabled () || access_user_calendar ( 'edit', $user ) ? '
         <td align="center"><input type="image" src="images/delete.png" title="'
-         . $deleteStr . '" onclick="return do_confirm ( \'delete\', \''
+         . $deleteStr . '" onclick="return do_confirm( \'delete\', \''
          . $cal_user . '\', \'' . $entryID . '\' );\" /></td>' : '' ) . '
       </tr>';
 
@@ -141,15 +141,15 @@ function list_unapproved ( $user ) {
       <tr>
         <td colspan="5" nowrap="nowrap">&nbsp;
           <img src="images/select.gif" border="0" alt="" />
-          <label><a title="' . $checkAllStr . '" onclick="check_all ( \''
+          <label><a title="' . $checkAllStr . '" onclick="check_all( \''
        . $user . '\' );">' . $checkAllStr . '</a> / <a title="' . $uncheckAllStr
-       . '" onclick="uncheck_all ( \'' . $user . '\' );">' . $uncheckAllStr
+       . '" onclick="uncheck_all( \'' . $user . '\' );">' . $uncheckAllStr
        . '</a></label>&nbsp;&nbsp;&nbsp;
           <input type="image" src="images/check.gif" title="' . $appSelStr
-       . '" onclick="return do_confirm ( \'approveSelected\', \'' . $cal_user
+       . '" onclick="return do_confirm( \'approveSelected\', \'' . $cal_user
        . '\' );" />&nbsp;&nbsp;&nbsp;
           <input type="image" src="images/rejected.gif" title="' . $rejectSelStr
-       . '" onclick="return do_confirm ( \'rejectSelected\', \'' . $cal_user
+       . '" onclick="return do_confirm( \'rejectSelected\', \'' . $cal_user
        . '\' );" />&nbsp;&nbsp;&nbsp;( ' . $emailStr . ' )
         </td>
       </tr>';

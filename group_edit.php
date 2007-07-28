@@ -98,7 +98,7 @@ echo '
  . ( $newgroup ? translate ( 'Add' ) : translate ( 'Save' ) ) . '" />'
  . ( ! $newgroup ? '
             <input type="submit" name="delete" value="'
-   . translate ( 'Delete' ) . '" onclick="return confirm (\''
+   . translate ( 'Delete' ) . '" onclick="return confirm( \''
    . str_replace ( 'XXX', translate ( 'entry' ),
     translate ( 'Are you sure you want to delete this XXX?' ) )
    . '\')" />' : '' ) . '

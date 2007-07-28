@@ -291,10 +291,10 @@ function print_menu_dates ( $menu = false ) {
             <input type="hidden" name="cat_id" value="'
      . $cat_id . '" />' : '' ) . '
             <label for="monthselect"><a '
-   . 'href="javascript:document.SelectMonth.submit ()">'
+   . 'href="javascript:document.SelectMonth.submit()">'
    . translate ( 'Month' ) . '</a>:&nbsp;</label>
             <select name="date" id="monthselect" '
-   . 'onchange="document.SelectMonth.submit ()">';
+   . 'onchange="document.SelectMonth.submit()">';
 
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
     $m = $thismonth;
@@ -358,10 +358,10 @@ function print_menu_dates ( $menu = false ) {
             <input type="hidden" name="cat_id" value="'
      . $cat_id . '" />' : '' ) . '
             <label for="weekselect"><a '
-   . 'href="javascript:document.SelectWeek.submit ()">'
+   . 'href="javascript:document.SelectWeek.submit()">'
    . translate ( 'Week' ) . '</a>:&nbsp;</label>
             <select name="date" id="weekselect" '
-   . 'onchange="document.SelectWeek.submit ()">';
+   . 'onchange="document.SelectWeek.submit()">';
 
   if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
     $m = $thismonth;
@@ -429,10 +429,10 @@ function print_menu_dates ( $menu = false ) {
             <input type="hidden" name="cat_id" value="'
      . $cat_id . '" />' : '' ) . '
             <label for="yearselect"><a '
-   . 'href="javascript:document.SelectYear.submit ()">'
+   . 'href="javascript:document.SelectYear.submit()">'
    . translate ( 'Year' ) . '</a>:&nbsp;</label>
             <select name="year" id="yearselect" '
-   . 'onchange="document.SelectYear.submit ()">';
+   . 'onchange="document.SelectYear.submit()">';
 
   $y = ( empty ( $thisyear ) ? date ( 'Y' ) : $thisyear );
 

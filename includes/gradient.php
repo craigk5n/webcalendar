@@ -134,13 +134,13 @@ function colorToRGB ( $color ) {
 
 function can_write_to_dir ($path)
 {
-  if ($path {strlen ($path)-1}=='/') //Start function again with tmp file...
-    return can_write_to_dir ($path.uniqid (mt_rand ()).'.tmp');
-  else if (ereg ('.tmp', $path)) { //Check tmp file for read/write capabilities
-    if (! ($f = @fopen ($path, 'w+')))
+  if ( $path { strlen ( $path ) - 1 } == '/' ) //Start function again with tmp file...
+    return can_write_to_dir ( $path.uniqid ( mt_rand () ) . '.tmp');
+  else if ( ereg ( '.tmp', $path ) ) { //Check tmp file for read/write capabilities
+    if ( ! ( $f = @fopen ( $path, 'w+' ) ) )
       return false;
-    fclose ($f);
-    unlink ($path);
+    fclose ( $f );
+    unlink ( $path );
     return true;
   }
   else //We have a path error.

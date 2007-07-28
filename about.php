@@ -81,7 +81,7 @@ echo '
   : '"About" value="<< ' . translate ( 'About' ) )
  . '" />' . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input type="button" name="ok" value="' . translate ( 'OK' )
- . '" onclick="window.close ()" />
+ . '" onclick="window.close()" />
         </form>
       </div>
     </div>

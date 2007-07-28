@@ -808,7 +808,7 @@ if ( Doc::attachmentsEnabled () && $rss_view == false ) {
       user_is_assistant ( $login, $a->getLogin () ) || $login == $create_by ||
       user_is_assistant ( $login, $create_by )
       ? ' [<a href="docdel.php?blid=' . $a->getId ()
-       . '" onclick="return confirm (\'' . $areYouSureStr . '\');">'
+       . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
        . translate ( 'Delete' ) . '</a>]' : '' ) . '<br />';
   }
   $num_app = $num_rej = $num_wait = 0;
@@ -840,8 +840,8 @@ if ( Doc::commentsEnabled () ) {
     . ( $is_admin || $login == $cmt->getLogin () ||
       user_is_assistant ( $login, $cmt->getLogin () ) || $login == $create_by ||
       user_is_assistant ( $login, $create_by ) ? ' [<a href="docdel.php?blid='
-       . $cmt->getId () . '" onclick="return confirm (\'' . $areYouSureStr
-       . '\');">' . translate ( 'Delete' ) . '</a>]' : '' )// end show delete link
+       . $cmt->getId () . '" onclick="return confirm( \'' . $areYouSureStr
+       . '\' );">' . translate ( 'Delete' ) . '</a>]' : '' )// end show delete link
      . '<br />
           <blockquote id="eventcomment">' . nl2br ( activate_urls (
         htmlspecialchars ( $cmt->getData () ) ) ) . '</blockquote>';
@@ -853,9 +853,9 @@ if ( Doc::commentsEnabled () ) {
     echo '
           ' . $num_comment . ' ' . translate ( 'comments' ) . '
           <input id="showbutton" type="button" value="' . translate ( 'Show' )
-     . '" onclick="showComments ();" />
+     . '" onclick="showComments();" />
           <input id="hidebutton" type="button" value="' . translate ( 'Hide' )
-     . '" onclick="hideComments ();" /><br />
+     . '" onclick="hideComments();" /><br />
           <div id="comtext">' . $comment_text . '</div>';
     // We could put the following JS in includes/js/view_entry.php,
     // but we won't need it in many cases and we don't know whether
@@ -922,12 +922,12 @@ if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) &&
   $rejectStr = translate ( 'Reject entry' );
   echo '
       <li><a title="' . $approveStr . '" class="nav" href="approve_entry.php?id='
-   . $id . $u_url . '&amp;type=E" onclick="return confirm (\''
-   . translate ( 'Approve this entry?', true ) . '\');">' . $approveStr
+   . $id . $u_url . '&amp;type=E" onclick="return confirm( \''
+   . translate ( 'Approve this entry?', true ) . '\' );">' . $approveStr
    . '</a></li>
       <li><a title="' . $rejectStr . '"  class="nav" href="reject_entry.php?id='
-   . $id . $u_url . '&amp;type=E" onclick="return confirm (\''
-   . translate ( 'Reject this entry?', true ) . '\');">' . $rejectStr
+   . $id . $u_url . '&amp;type=E" onclick="return confirm( \''
+   . translate ( 'Reject this entry?', true ) . '\' );">' . $rejectStr
    . '</a></li>';
 }
 
@@ -997,15 +997,15 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
     echo '
       <li><a title="' . $deleteAllDatesStr
      . '" class="nav" href="del_entry.php?id=' . $id . $u_url
-     . '&amp;override=1" onclick="return confirm (\'' . $areYouSureStr . "\\n\\n"
-     . $deleteAllStr . '\');">' . $deleteAllDatesStr . '</a></li>';
+     . '&amp;override=1" onclick="return confirm( \'' . $areYouSureStr . "\\n\\n"
+     . $deleteAllStr . '\' );">' . $deleteAllDatesStr . '</a></li>';
     // Don't allow deletion of first event
     if ( ! empty ( $date ) && $date != $orig_date ) {
       $deleteOnlyStr = translate ( 'Delete entry only for this date' );
       echo '
       <li><a title="' . $deleteOnlyStr . '" class="nav" href="del_entry.php?id='
-       . $id . $u_url . $rdate . '&amp;override=1" onclick="return confirm (\''
-       . $areYouSureStr . "\\n\\n" . $deleteAllStr . '\');">' . $deleteOnlyStr
+       . $id . $u_url . $rdate . '&amp;override=1" onclick="return confirm( \''
+       . $areYouSureStr . "\\n\\n" . $deleteAllStr . '\' );">' . $deleteOnlyStr
        . '</a></li>';
     }
   } else {
@@ -1013,11 +1013,11 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
       <li><a title="' . $editEntryStr . '" class="nav" href="edit_entry.php?id='
      . $id . $u_url . '">' . $editEntryStr . '</a></li>
       <li><a title="' . $deleteEntryStr . '" class="nav" href="del_entry.php?id='
-     . $id . $u_url . $rdate . '" onclick="return confirm (\'' . $areYouSureStr
+     . $id . $u_url . $rdate . '" onclick="return confirm( \'' . $areYouSureStr
      . "\\n\\n"
      . ( empty ( $user ) || $user == $login || $is_assistant
       ? $deleteAllStr : '' )
-     . '\');">' . $deleteEntryStr;
+     . '\' );">' . $deleteEntryStr;
     if ( ! empty ( $user ) && $user != $login && ! $is_assistant ) {
       user_load_variables ( $user, 'temp_' );
       echo ' ' . translate ( 'from calendar of' ) . ' ' . $temp_fullname;
@@ -1034,14 +1034,14 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
   translate ( 'This will delete the entry from your XXX calendar.', true );
   echo '
       <li><a title="' . $deleteEntryStr . '" class="nav" href="del_entry.php?id='
-   . $id . $u_url . $rdate . '" onclick="return confirm (\'' . $areYouSureStr
+   . $id . $u_url . $rdate . '" onclick="return confirm( \'' . $areYouSureStr
    . "\\n\\n"
    . str_replace ( 'XXX ',
     ( $is_assistant ? translate ( 'boss' ) . ' ' : '' ), $delFromCalStr )
   // ( $is_assistant
   // ? translate ( 'This will delete the entry from your boss calendar.', true )
   // : translate ( 'This will delete the entry from your calendar.', true ) )
-  . '\');">'
+  . '\' );">'
    . $deleteEntryStr
    . ( $is_assistant ? ' ' . translate ( 'from your boss calendar' ) : '' )
    . '</a></li>
@@ -1054,10 +1054,10 @@ if ( $readonly != 'Y' && ! $is_my_event && ! $is_private && !
   $is_nonuser )
   echo '
       <li><a title="' . $addToMineStr . '" class="nav" href="add_entry.php?id='
-   . $id . '" onclick="return confirm (\''
+   . $id . '" onclick="return confirm( \''
    . translate ( 'Do you want to add this entry to your calendar?', true )
    . "\\n\\n" . translate ( 'This will add the entry to your calendar.', true )
-   . '\');">' . $addToMineStr . '</a></li>';
+   . '\' );">' . $addToMineStr . '</a></li>';
 
 if ( $login != '__public__' && count ( $allmails ) > 0 ) {
   $emailAllStr = translate ( 'Email all participants' );

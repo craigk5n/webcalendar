@@ -166,7 +166,7 @@ $minutesStr = translate ( 'minutes' );
 //allow css_cache to display public or NUC values
 @session_start ();
 $_SESSION['webcal_tmp_login'] = $prefuser;
-$openStr ="\"window.open ('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
+$openStr ="\"window.open( 'edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520' );\"";
 $BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' );\"" : '' );
 $INC = array ('js/visible.php', 'js/pref.php');
 print_header($INC, '', $BodyX);
@@ -184,10 +184,10 @@ print_header($INC, '', $BodyX);
 $qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? '?' . $_SERVER['QUERY_STRING'] : '' );
 $formaction = substr ($self, strrpos($self, '/') + 1) . $qryStr;
 
-?>&nbsp;<img src="images/help.gif" alt="<?php etranslate ( 'Help' )?>" class="help" onclick="window.open ( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
+?>&nbsp;<img src="images/help.gif" alt="<?php etranslate ( 'Help' )?>" class="help" onclick="window.open( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" /></h2>
 
 
-<form action="<?php echo $formaction ?>" method="post" onsubmit="return valid_form(this);" name="prefform">
+<form action="<?php echo $formaction ?>" method="post" onsubmit="return valid_form( this );" name="prefform">
 <input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>" />
 <?php
  if ($user)
@@ -234,23 +234,23 @@ if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
 
 <!-- TABS -->
 <div id="tabs">
- <span class="tabfor" id="tab_settings"><a href="" onclick="return setTab('settings');"><?php etranslate ( 'Settings' )?></a></span>
+ <span class="tabfor" id="tab_settings"><a href="" onclick="return setTab( 'settings' );"><?php etranslate ( 'Settings' )?></a></span>
  <?php if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) { ?>
- <span class="tabbak" id="tab_themes"><a href="" onclick="return setTab('themes');"><?php etranslate ( 'Themes' )?></a></span>
+ <span class="tabbak" id="tab_themes"><a href="" onclick="return setTab( 'themes' );"><?php etranslate ( 'Themes' )?></a></span>
 <?php }
  if ( $SEND_EMAIL == 'Y' ) { ?>
- <span class="tabbak" id="tab_email"><a href="" onclick="return setTab('email');"><?php etranslate ( 'Email' )?></a></span>
+ <span class="tabbak" id="tab_email"><a href="" onclick="return setTab( 'email' );"><?php etranslate ( 'Email' )?></a></span>
 <?php } ?>
- <span class="tabbak" id="tab_boss"><a href="" onclick="return setTab('boss');"><?php etranslate ( 'When I am the boss' )?></a></span>
+ <span class="tabbak" id="tab_boss"><a href="" onclick="return setTab( 'boss' );"><?php etranslate ( 'When I am the boss' )?></a></span>
 <?php if ( $PUBLISH_ENABLED == 'Y'  || $RSS_ENABLED == 'Y' ) { ?>
- <span class="tabbak" id="tab_subscribe"><a href="" onclick="return setTab('subscribe');"><?php etranslate ( 'Subscribe/Publish' )?></a></span>
+ <span class="tabbak" id="tab_subscribe"><a href="" onclick="return setTab( 'subscribe' );"><?php etranslate ( 'Subscribe/Publish' )?></a></span>
 <?php }
 if ( $ALLOW_USER_HEADER == 'Y' && ( $CUSTOM_SCRIPT == 'Y' || $CUSTOM_HEADER == 'Y' ||
    $CUSTOM_TRAILER == 'Y' ) ) { ?>
- <span class="tabbak" id="tab_header"><a href="" onclick="return setTab('header');"><?php etranslate ( 'Custom Scripts' )?></a></span>
+ <span class="tabbak" id="tab_header"><a href="" onclick="return setTab( 'header' );"><?php etranslate ( 'Custom Scripts' )?></a></span>
 <?php }
 if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
- <span class="tabbak" id="tab_colors" title="<?php etooltip ( 'colors-help' )?>"><a href="" onclick="return setTab('colors');"><?php etranslate ( 'Colors' )?></a></span>
+ <span class="tabbak" id="tab_colors" title="<?php etooltip ( 'colors-help' )?>"><a href="" onclick="return setTab( 'colors' );"><?php etranslate ( 'Colors' )?></a></span>
 <?php } ?>
 </div>
 
@@ -620,7 +620,7 @@ etranslate ( 'Page may need to be reloaded for new Theme to take effect' )?></td
   }
 ?>
  </select></td><td>
- <input type="button" name="preview" value="<?php etranslate ( 'Preview' ) ?>" onclick="return showPreview ()" />
+ <input type="button" name="preview" value="<?php etranslate ( 'Preview' ) ?>" onclick="return showPreview()" />
 </td></tr>
 <?php if ( $MENU_ENABLED == 'Y' ) { ?>
  <tr><td  class="tooltip" title="<?php etooltip ( 'menu-themes-help' );?>">

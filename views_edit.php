@@ -19,7 +19,7 @@ $error = '';
 if ( ! $is_admin )
   $user = $login;
 
-$BodyX = 'onload="usermode_handler ();"';
+$BodyX = 'onload="usermode_handler();"';
 $INC = array ( 'js/visible.php');
 if ( $GROUPS_ENABLED == 'Y' )
   $INC[] = 'js/views_edit.php/true';
@@ -161,7 +161,7 @@ echo '<tr><td><label>'
 ?>
 </select>
 <?php if ( $GROUPS_ENABLED == 'Y' ) { ?>
- <input type="button" onclick="selectUsers ()" value="<?php etranslate ( 'Select' );?>..." />
+ <input type="button" onclick="selectUsers()" value="<?php etranslate ( 'Select' );?>..." />
 <?php } ?>
 </div>
 </td></tr>
@@ -169,9 +169,9 @@ echo '<tr><td><label>'
 <br />
 <input type="submit" name="action" value="<?php if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?>" />
 <?php if ( ! $newview ) { ?>
- <input type="submit" name="delete" value="<?php etranslate ( 'Delete' )?>" onclick="return confirm('<?php str_replace ( 'XXX',
+ <input type="submit" name="delete" value="<?php etranslate ( 'Delete' )?>" onclick="return confirm( '<?php str_replace ( 'XXX',
   translate ( 'entry' ),
-  translate ( 'Are you sure you want to delete this XXX?' ) ); ?>')" />
+  translate ( 'Are you sure you want to delete this XXX?' ) ); ?>' )" />
 <?php } ?>
 </td></tr>
 </table>

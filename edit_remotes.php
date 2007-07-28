@@ -42,7 +42,7 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
 
   if ( empty ( $nid ) ) {
     $id_display = '<input type="text" name="nid" id="nid" size="20" '
-     . 'maxlength="20" onchange="check_name ();" /> '
+     . 'maxlength="20" onchange="check_name();" /> '
      . translate ( 'word characters only' );
     $lableStr = translate ( 'Add Remote Calendar' );
   } else {
@@ -80,7 +80,7 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
   echo <<<EOT
     <h2>{$lableStr}</h2>
     <form action="edit_remotes_handler.php" method="post" name="prefform"
-      onsubmit="return valid_form ( this );">
+      onsubmit="return valid_form( this );">
       <table cellspacing="0" cellpadding="2">
         <tr>
           <td><label for="calid">{$calIdStr}:</label></td>
@@ -109,7 +109,7 @@ EOT;
           <td colspan="3">
             <input type="hidden" name="reload" id="reload" value="true" />
             <input type="checkbox" name="nlayer" id="nlayer" value="Y"
-              onchange="toggle_layercolor ();" />{$requiredStr}
+              onchange="toggle_layercolor();" />{$requiredStr}
           </td>
         </tr>
         <tr id="nlayercolor" style="visibility:hidden" >
@@ -128,7 +128,7 @@ EOT;
   if ( ! empty ( $nid ) )
     echo <<<EOT
       <input type="submit" name="delete" value="{$deleteStr}"
-        onclick="return confirm ( '{$confirmStr}' )" />
+        onclick="return confirm( '{$confirmStr}' )" />
       <input type="submit" name="reload" value="{$reloadStr}" />
 EOT;
 

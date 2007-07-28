@@ -460,7 +460,7 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
     $db_password = getPostValue ( 'form_db_password' );
     $db_cachedir = getPostValue ( 'form_db_cachedir' );
     //Allow ODBC field to be visible if needed
-   $onload = 'db_type_handler ();';
+   $onload = 'db_type_handler();';
 
     // We don't use the normal dbi_execute because we need to know
   // the difference between no conection and no database
@@ -528,7 +528,7 @@ if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['vali
     $db_password = $settings['db_password'];
     $db_cachedir = getPostValue ( 'form_db_cachedir' );
   // Avoid false visibilty of single user login
-  $onload = 'auth_handler ();';
+  $onload = 'auth_handler();';
     $c = dbi_connect ( $db_host, $db_login,
       $db_password, $db_database, false );
 
@@ -888,7 +888,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 <tr><th class="header" colspan="2">
  <?php etranslate ( 'PHP Settings' );
  if ( ! empty ( $_SESSION['validuser'] ) ) { ?>
-  &nbsp;<input name="action" type="button" value="<?php etranslate ( 'Detailed PHP Info' ) ?>" onClick="testPHPInfo ()" />
+  &nbsp;<input name="action" type="button" value="<?php etranslate ( 'Detailed PHP Info' ) ?>" onClick="testPHPInfo()" />
 <?php } ?>
 </th></tr>
 <?php foreach ( $php_settings as $setting ) { ?>
@@ -1082,12 +1082,12 @@ if ( ! $exists || ! $canWrite ) { ?>
  <?php etranslate ( 'Database Settings' ) ?>
 </th></tr>
 <tr><td>
- <form action="index.php" method="post" name="dbform" onSubmit="return chkPassword ()">
+ <form action="index.php" method="post" name="dbform" onSubmit="return chkPassword()">
  <table align="right" width="100%" border="0">
   <tr><td rowspan="7" width="20%">&nbsp;
    </td><td class="prompt" width="25%" valign="bottom">
    <label for="db_type"><?php etranslate ( 'Database Type' ) ?>:</label></td><td valign="bottom">
-   <select name="form_db_type" id="db_type" onChange="db_type_handler ();">
+   <select name="form_db_type" id="db_type" onChange="db_type_handler();">
 <?php
   $supported = array ();
   if ( function_exists ( 'db2_pconnect' ) )
@@ -1238,7 +1238,7 @@ if ( ! $exists || ! $canWrite ) { ?>
  if ( empty ( $_SESSION['odbc_db'] ) ) $_SESSION['odbc_db'] = 'mysql'; ?>
 <tr><td id="odbc_db" align="center" nowrap>
 <form action="index.php?action=set_odbc_db" method="post" name="set_odbc_db">
-<b><?php etranslate ( 'ODBC Underlying Database' ) ?>:</b> <select name="odbc_db"  onchange="document.set_odbc_db.submit ();">
+<b><?php etranslate ( 'ODBC Underlying Database' ) ?>:</b> <select name="odbc_db" onchange="document.set_odbc_db.submit();">
   <option value="mysql"
    <?php echo $_SESSION['odbc_db'] == 'mysql'? $selected : '' ; ?> >MySQL</option>
   <option value="mssql"
@@ -1382,7 +1382,7 @@ translate ( 'You should select Web Server from the list of User Authentication c
 
    <tr><td class="prompt"><?php etranslate ( 'User Authentication' ) ?>:</td>
    <td>
-    <select name="form_user_inc" onChange="auth_handler ()">
+    <select name="form_user_inc" onChange="auth_handler()">
   <?php
    echo "<option value=\"user.php\" " .
     ( $settings['user_inc'] == 'user.php' &&
@@ -1457,10 +1457,10 @@ translate ( 'You should select Web Server from the list of User Authentication c
  <table width="80%"  align="center">
  <tr><td align="center">
   <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  && empty ( $dologin ) ) { ?>
-  <input name="action" type="button" value="<?php etranslate ( 'Save Settings' ) ?>" onClick="return validate ();" />
+  <input name="action" type="button" value="<?php etranslate ( 'Save Settings' ) ?>" onClick="return validate();" />
    <?php if ( ! empty ( $_SESSION['old_program_version'] ) &&
     $_SESSION['old_program_version'] == $PROGRAM_VERSION  && ! empty ( $setup_complete )) { ?>
-    <input type="button" name="action2" value="<?php etranslate ( 'Launch WebCalendar' ) ?>" onClick="window.open ('../index.php', 'webcalendar');" />
+    <input type="button" name="action2" value="<?php etranslate ( 'Launch WebCalendar' ) ?>" onClick="window.open( '../index.php', 'webcalendar');" />
    <?php }
   }
   if ( ! empty ( $_SESSION['validuser'] ) ) { ?>

@@ -35,7 +35,7 @@ if ( $is_admin ) {
   $doGroups = ( ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' );
   $doNUCS = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' );
 }
-$BodyX = 'onload="showTab ();"';
+$BodyX = 'onload="showTab();"';
 print_header ( array ( 'js/users.php/true', 'js/visible.php' ), '',
   $BodyX, '', '', true );
 
@@ -48,18 +48,18 @@ echo display_admin_link () . '
     <div id="tabs">'
  .( $doUsers ? '
       <span class="'.$taborder[$i++].'" id="tab_users"><a href="#tabusers" onclick="return '
- . 'showTab (\'users\')">'
+ . 'showTab( \'users\' )">'
  . ( $is_admin ? translate ( 'Users' ) : translate ( 'Account' ) )
  . '</a></span>' : '' ) . ( $doUsers && $doGroups ? '
       <span class="'.$taborder[$i++].'" id="tab_groups"><a href="#tabgroups" '
-   . 'onclick="return showTab (\'groups\')">' . translate ( 'Groups' )
+   . 'onclick="return showTab( \'groups\' )">' . translate ( 'Groups' )
    . '</a></span>' : '' ) . ( $doUsers && $doNUCS ? '
       <span class="'.$taborder[$i++].'" id="tab_nonusers"><a href="#tabnonusers" '
-   . 'onclick="return showTab (\'nonusers\')">'
+   . 'onclick="return showTab( \'nonusers\' )">'
    . translate ( 'NonUser Calendars' ) . '</a></span>' : '' )
  . ( $doRemotes ? '
       <span class="'.$taborder[$i++].'" id="tab_remotes"><a href="#tabremotes" '
-   . 'onclick="return showTab (\'remotes\')">'
+   . 'onclick="return showTab( \'remotes\' )">'
    . translate ( 'Remote Calendars' ) . '</a></span>' : '' ) . '
     </div>
 <!-- TABS BODY -->
@@ -71,8 +71,8 @@ if ( $doUsers ) {
   $denotesStr = translate ( 'denotes administrative user' );
   if ( $is_admin ) {
     echo ( $admin_can_add_user ? '
-          <a href="edit_user.php" target="useriframe" onclick="javascript:show '
-       . '(\'useriframe\');">' . translate ( 'Add New User' )
+          <a href="edit_user.php" target="useriframe" onclick="javascript:show'
+       . '( \'useriframe\' );">' . translate ( 'Add New User' )
        . '</a><br />' : '' ) . '
           <ul>';
 
@@ -81,7 +81,7 @@ if ( $doUsers ) {
       if ( $userlist[$i]['cal_login'] != '__public__' )
         echo '
             <li><a href="edit_user.php?user=' . $userlist[$i]['cal_login']
-         . '" target="useriframe" onclick="javascript:show (\'useriframe\');">'
+         . '" target="useriframe" onclick="javascript:show( \'useriframe\' );">'
          . $userlist[$i]['cal_fullname'] . '</a>'
          . ( $userlist[$i]['cal_is_admin'] == 'Y' ? '&nbsp;<abbr title="'
            . $denotesStr . '">*</abbr>' : '' )

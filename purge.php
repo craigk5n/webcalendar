@@ -108,7 +108,7 @@ if ( $do_purge ) {
   echo '<h2>...' . translate ( 'Finished' ) . ".</h2>\n";
 ?>
   <form><input type="button" value="<?php etranslate ( 'Back' )?>"
-onclick="history.back ()" /></form
+onclick="history.back()" /></form
 ><?php
   if ( $purgeDebug ) {
     echo '<div style="border: 1px solid #000;background-color: #fff;"><tt>' .
@@ -159,9 +159,9 @@ onclick="history.back ()" /></form
  </td></tr>
  <tr><td colspan="2">
   <input type="submit" name="delete" value="<?php
-    echo $deleteStr?>" onclick="return confirm('<?php
+    echo $deleteStr?>" onclick="return confirm( '<?php
     etranslate ( 'Are you sure you want to delete events for', true);
-    ?> ' + document.forms[0].user.value + '?')" />
+    ?> ' + document.forms[0].user.value + '?' )" />
  </td></tr>
 </table>
 </form>

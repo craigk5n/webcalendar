@@ -129,11 +129,11 @@ else {
         <tr>
           <td class="tooltip" title="{$catHelpStr}" valign="top">
             <label for="entry_categories">{$catStr}:<br /></label>
-            <input type="button" value="{$editStr}" onclick="editCats ( event )" />
+            <input type="button" value="{$editStr}" onclick="editCats( event )" />
           </td>
           <td valign="top">
             <input readonly="readonly" type="text" name="catnames"
-              value="{$catNames}" size="75" onclick="editCats ( event )" /><br />
+              value="{$catNames}" size="75" onclick="editCats( event )" /><br />
             {$globalNoteStr}
             <input type="hidden" name="cat_id" id="entry_categories"
               value="{$catList}" />

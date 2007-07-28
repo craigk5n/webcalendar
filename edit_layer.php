@@ -35,10 +35,10 @@ ob_start ();
 echo <<<EOT
     <h2>{$publicStr}{$titleStr}&nbsp;
       <img src="images/help.gif" alt="{$helpStr}" class="help"
-onclick="window.open ( 'help_layers.php','cal_help','dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" />
+onclick="window.open( 'help_layers.php','cal_help','dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" />
     </h2>
     <form action="edit_layer_handler.php" method="post"
-      onsubmit="return valid_form ( this );" name="prefform">{$hiddenStr}
+      onsubmit="return valid_form( this );" name="prefform">{$hiddenStr}
       <table cellspacing="2" cellpadding="3">
 EOT;
 
@@ -134,7 +134,7 @@ if ( $is_admin && empty ( $layers[$id]['cal_layeruser'] ) && empty ( $public ) )
         <tr>
           <td class="bold">{$addmyStr}:</td>
           <td colspan="3"><input type="checkbox" name="is_mine" {$checked}
-            onclick="show_others ();" /></td>
+            onclick="show_others();" /></td>
         </tr>
         <tr id="others" style="visibility: hidden;">
           <td class="aligntop"><label for="cal_login">{$addStr}:</label></td>
@@ -151,7 +151,7 @@ $saveStr = translate ( 'Save' );
 // If a layer already exists put a 'Delete Layer' link.
 $deleteStr = ( ! empty ( $layers[$id]['cal_layeruser'] ) ? '&nbsp;&nbsp;&nbsp;
             <input type="button" value="' . translate ( 'Delete layer' )
-   . '" onclick="return deleteLayer ( \'del_layer.php?id=' . $id
+   . '" onclick="return deleteLayer( \'del_layer.php?id=' . $id
    . ( $updating_public ? '&amp;public=1' : '' ) . '\')" />' : '' );
 $hiddenStr = ( ! empty ( $layers[$id]['cal_layeruser'] ) ? '
       <input type="hidden" name="id" value="' . $id . '" />' : '' );

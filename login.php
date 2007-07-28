@@ -169,7 +169,7 @@ function valid_form ( form ) {
 function myOnLoad () {
   document.login_form.login.focus ();
   <?php
-    if ( ! empty ( $login ) ) echo "document.login_form.login.select ();";
+    if ( ! empty ( $login ) ) echo "document.login_form.login.select();";
     if ( ! empty ( $error ) ) {
       echo "  alert ( \"$error\" );\n";
     }
@@ -186,7 +186,7 @@ function myOnLoad () {
  }
 ?>
 </head>
-<body id="login" <?php if ( ! $logout ) { ?>onload="myOnLoad ();"<?php } ?>>
+<body id="login" <?php if ( ! $logout ) { ?>onload="myOnLoad();"<?php } ?>>
 <?php
 // Print custom header (since we do not call print_header function)
 if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
@@ -217,7 +217,7 @@ if ( $logout ) {
 if ( ! $logout ) {
 ?>
 <form name="login_form" id="login" action="login.php" method="post"
-  onsubmit="return valid_form(this)">
+  onsubmit="return valid_form( this )">
 <?php
 if ( ! empty ( $return_path ) ) {
   echo '<input type="hidden" name="return_path" value="' .

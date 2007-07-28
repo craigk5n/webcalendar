@@ -36,7 +36,7 @@ echo '
         <th colspan="3">' . translate ( 'Categories' ) . '</th>
       </tr>
       <form action="" method="post" name="editCategories" '
- . 'onSubmit="sendCats (this)">
+ . 'onSubmit="sendCats( this )">
       <tr>
         <td valign="top">';
 
@@ -60,7 +60,7 @@ if ( ! empty ( $categories ) ) {
 }
 echo '
         </td>
-        <td valign="center"><input type="button" value=">>" onclick="selAdd ()"'
+        <td valign="center"><input type="button" value=">>" onclick="selAdd()"'
  . ' /></td>
         <td align="center" valign="top">
           <select name="eventcats[]" size="9" multiple>
@@ -87,15 +87,15 @@ ob_end_flush ();
 echo '
           </select>
           <input type="button" value="' . translate ( 'Remove' )
- . '" onclick="selRemove ()" />
+ . '" onclick="selRemove()" />
         </td>
       </tr>
       <tr>
         <td valign="top" align="right">*' . translate ( 'Global Category' )
  . '&nbsp;&nbsp;&nbsp;<input type="button" value="' . translate ( 'OK' )
- . '" onclick="sendCats ()" /></td>
+ . '" onclick="sendCats()" /></td>
         <td colspan="2" align="left">&nbsp;&nbsp;<input type="button" value="'
- . translate ( 'Cancel' ) . '" onclick="window.close ()" /></td>
+ . translate ( 'Cancel' ) . '" onclick="window.close()" /></td>
       </tr>
       </form>
     </table>
