@@ -234,7 +234,7 @@ $num_users = $viewusercnt;
 // $TIME_SLOTS is set in both admin system settings and user preferences.
 if ( empty ( $TIME_SLOTS ) )
   $TIME_SLOTS = 24;
-$interval = ( 24 * 60 ) / $TIME_SLOTS;
+$interval = 1440 / $TIME_SLOTS;
 $first_slot = (int)( ( ( $WORK_DAY_START_HOUR  ) * 60 ) /
   $interval );
 $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
@@ -343,7 +343,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
       }
       if ( $get_unapproved || $rep[$j]->getStatus () == 'A' ) {
         if ( $rep[$j]->getDuration () > 0 &&
-          $rep[$j]->getDuration () != 24 * 60 ) {
+          $rep[$j]->getDuration () != 1440 ) {
           $slot = calc_time_slot ( $rep[$j]->getTime (), false );
           if ( $slot < $first_slot ) {
             $first_slot = $slot;
@@ -359,7 +359,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
           user_is_participant ( $ev[$j]->getID (), $login );
       }
       if ( $ev[$j]->getDuration () > 0 &&
-        $ev[$j]->getDuration () != 24 * 60 ) {
+        $ev[$j]->getDuration () != 1440 ) {
         $slot = calc_time_slot ( $ev[$j]->getTime (), false );
         if ( $slot < $first_slot ) {
           $first_slot = $slot;
@@ -391,14 +391,14 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
       while ( $cur_rep < $repcnt &&
         $rep[$cur_rep]->getTime () < $ev[$i]->getTime () ) {
         if ( $get_unapproved || $rep[$cur_rep]->getStatus () == 'A' ) {
-          if ( $rep[$cur_rep]->getDuration () == ( 24 * 60 ) )
+          if ( $rep[$cur_rep]->getDuration () == 1440 )
             $all_day[$d] = 1;
           html_for_event_week_at_a_glance ( $rep[$cur_rep], $dateYmd, 'small', $show_time );
         }
         $cur_rep++;
       }
       if ( $get_unapproved || $ev[$i]->getStatus () == 'A' ) {
-        if ( $ev[$i]->getDuration () == ( 24 * 60 ) )
+        if ( $ev[$i]->getDuration () == 1440 )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $ev[$i], $dateYmd, 'small', $show_time );
         //echo "Found event date=$dateYmd name='$viewname'<br />\n";
@@ -408,7 +408,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     // print out any remaining repeating events
     while ( $cur_rep < $repcnt ) {
       if ( $get_unapproved || $rep[$cur_rep]->getStatus () == 'A' ) {
-        if ( $rep[$cur_rep]->getDuration () == ( 24 * 60 ) )
+        if ( $rep[$cur_rep]->getDuration () == 1440 )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $rep[$cur_rep], $dateYmd, 'small', $show_time );
       }
