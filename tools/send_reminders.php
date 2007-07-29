@@ -498,7 +498,7 @@ From:' . $adminStr . '
 
 // Keep track of the fact that we sent the reminder, so we don't do it again.
 function log_reminder ( $id, $times_sent ) {
-  global $only_testing;
+  global $debug, $only_testing;
 
   if ( ! $only_testing )
     dbi_execute ( 'UPDATE webcal_reminders
@@ -597,7 +597,7 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
 } //end function process_event
 
 function my_get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
-  global $repeated_events;
+  global $debug, $repeated_events;
 
   $n = 0;
   $ret = array ();
