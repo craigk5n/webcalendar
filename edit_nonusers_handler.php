@@ -27,8 +27,8 @@ if ( ! empty ( $delete ) ) {
   // If just 1, then save id to be deleted
   $delete_em = array ();
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
-    $res = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user ' .
-      'WHERE cal_id = ?', array ( $events[$i] ) );
+    $res = dbi_execute ( 'SELECT COUNT( * )
+      FROM webcal_entry_user WHERE cal_id = ?', array ( $events[$i] ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
