@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 25. Juli 2007
+# Last update: 26. Juli 2007
 #
 # $Id$
-# Translation last updated on 07-25-2007
+# Translation last updated on 07-30-2007
 
 
 ################################################################################
@@ -1266,6 +1266,11 @@ Hide activity log: Aktivit&auml;ten Protokoll ausblenden
 Show activity log: Aktivit&auml;ten Protokoll einblenden
 Export this entry to: Diesen Eintrag exportieren nach
 Palm Pilot: =
+
+########################################
+# Page: view_r.php
+#
+Double-click on empty cell to add new entry: Ein &#39;Doppelklick&#39; auf eine leere Zelle f&uuml;gt einen neuen Termin ein.
 
 ########################################
 # Page: week_details.php
