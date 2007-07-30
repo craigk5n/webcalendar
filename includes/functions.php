@@ -1148,7 +1148,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   global $boldDays, $caturl, $DATE_FORMAT_MY, $DISPLAY_ALL_DAYS_IN_MONTH,
   $DISPLAY_TASKS, $DISPLAY_WEEKNUMBER, $get_unapproved, $login,
   $MINI_TARGET, // Used by minical.php
-  $SCRIPT,
+  $SCRIPT, $SHOW_EMPTY_WEEKENDS,//Used by year.php
   $thisday, // Needed for day.php
   $today, $use_http_auth, $user, $WEEK_START;
 
@@ -1294,7 +1294,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
 
         $ret .= '>' . date ( 'j', $date ) . '</a></td>';
       } else
-        $ret .= ' class="empty">&nbsp;</td>';
+        $ret .= ' class="empty' . ( ! empty ( $SHOW_EMPTY_WEEKENDS ) 
+          && is_weekend ( $date ) ? ' weekend' : '' ) . '">&nbsp;</td>';
     } // end for $j
     $ret .= '
         </tr>';
@@ -3067,9 +3068,10 @@ function getReminders ( $id, $display = false ) {
   $reminder = array ();
   $str = '';
   // Get reminders.
-  $rows = dbi_get_cached_rows ( 'SELECT cal_id, cal_date, cal_offset, cal_related,
-    cal_before, cal_repeats, cal_duration, cal_action, cal_last_sent,
-    cal_times_sent FROM webcal_reminders WHERE cal_id = ? ORDER BY cal_date,
+  $rows = dbi_get_cached_rows ( 'SELECT cal_id, cal_date, cal_offset,
+    cal_related, cal_before, cal_repeats, cal_duration, cal_action,
+    cal_last_sent, cal_times_sent FROM webcal_reminders 
+    WHERE cal_id = ? ORDER BY cal_date,
     cal_offset, cal_last_sent', array ( $id ) );
   if ( $rows ) {
     $rowcnt = count ( $rows );
