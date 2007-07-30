@@ -113,14 +113,14 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
       if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
         continue;
 
+      $dateYmd = date ( 'Ymd', $date );
+      $entryStr = print_date_entries ( $dateYmd, $user, true );
       $class = ( $dateYmd == $todayYmd
         ? ' class="today"'
         : ( ! empty ( $entryStr ) && $entryStr != '&nbsp;'
           ? ' class="hasevents"'
           : ( $is_weekend ? ' class="weekend"' : '' ) ) )
        . ' style="width:' . $tdw . '%;">';
-      $dateYmd = date ( 'Ymd', $date );
-      $entryStr = print_date_entries ( $dateYmd, $user, true );
       // .
       // Build header row.
       if ( $i == 0 ) {
