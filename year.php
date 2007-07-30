@@ -42,11 +42,16 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
     ( ! empty ( $user ) && strlen ( $user ) ? $user : $login ),
     $startdate, $enddate, $cat_id );
   $boldDays = true;
-  $catSelectStr = print_category_menu ( 'year', $thisyear, $cat_id );
 }
+
+$navStr = display_navigation ( 'month' );
 
 // Disable $DISPLAY_ALL_DAYS_IN_MONTH.
 $DISPLAY_ALL_DAYS_IN_MONTH = 'N';
+
+//Enable empty weekend days to be visible
+$SHOW_EMPTY_WEEKENDS = false;
+
 // Include unapproved events?
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
@@ -96,15 +101,8 @@ $trailerStr = print_trailer ();
 print_header ();
 echo <<<EOT
     <div class="title">
-      <a title="{$prevStr}" class="prev" href="year.php?year={$prevYear}{$userStr}">
-        <img src="images/leftarrow.gif" alt="{$prevStr}" /></a>
-      <a title="{$nextStr}" class="next" href="year.php?year={$nextYear}{$userStr}">
-        <img src="images/rightarrow.gif" alt="{$nextStr}" /></a>
-      <span class="date">{$thisyear}</span><br />
-      <span class="user">{$fullnameStr}</span><br />
-      {$asstModeStr}
-      {$catSelectStr}
-    </div><br />
+      {$navStr}
+    </div>
     <div align="center">
       <table id="monthgrid">
         {$gridOmonths}
