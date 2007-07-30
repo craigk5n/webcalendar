@@ -7,7 +7,7 @@ if ( ! $is_admin )
 else {
   $delete = getPostValue ( 'delete' );
   if ( ! empty ( $delete ) ) {
-    // delete this group
+    // Delete this group.
     dbi_execute ( 'DELETE FROM webcal_group WHERE cal_group_id = ? ',
       array ( $id ) );
     dbi_execute ( 'DELETE FROM webcal_group_user WHERE cal_group_id = ? ',

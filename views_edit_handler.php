@@ -6,11 +6,11 @@ $error = '';
 
 $viewisglobal = getPostValue ( 'is_global' );
 if ( ! $is_admin || $viewisglobal != 'Y' )
-  $viewisglobal = 'N'; // only admin can create global view
-
+  $viewisglobal = 'N'; // Only admin can create global view.
+  //.
 $delete = getPostValue ( 'delete' );
 if ( ! empty ( $delete ) )
-  // delete this view
+  // Delete this view.
   dbi_execute ( 'DELETE FROM webcal_view WHERE cal_view_id = ? AND cal_owner = ?',
     array ( $id, $login ) );
 else {
@@ -24,7 +24,7 @@ else {
         array ( $viewname, $viewtype, $viewisglobal, $id, $login ) ) )
       $error = db_error ();
   } else {
-    # new... get new id first
+    # new... Get new id first.
     $res = dbi_execute ( 'SELECT MAX( cal_view_id ) FROM webcal_view',
       array () );
     if ( $res ) {
@@ -47,6 +47,7 @@ else {
     // If selected "All", then just put "__all__" in for username.
     if ( getPostValue ( 'viewuserall' ) == 'Y' )
       $users = array ( '__all__' );
+
     for ( $i = 0, $cnt = count ( $users );
       ! empty ( $users ) && $i < $cnt; $i++ ) {
       dbi_execute ( 'INSERT INTO webcal_view_user ( cal_view_id, cal_login )
