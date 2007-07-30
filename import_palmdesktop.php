@@ -1,10 +1,14 @@
 <?php
 /* $Id$ */
-// Parse the datebook file and return the data hash.
+
+/* Parse the datebook file.
+ *
+ * @return the data hash.
+ */
 function parse_palmdesktop ( $file, $exc_private = 1 ) {
   $file = EscapeShellArg ( $file );
   $exc_private = EscapeShellArg ( $exc_private );
-  exec ( 'perl tools/palm_datebook.pl' . " $file $exc_private", $Entries );
+  exec ( 'perl tools/palm_datebook.pl ' . "$file $exc_private", $Entries );
   $data = array ();
   while ( list ( $line_num, $line ) = each ( $Entries ) ) {
     $data[] = ParseLine ( $line );
@@ -12,28 +16,30 @@ function parse_palmdesktop ( $file, $exc_private = 1 ) {
   return $data;
 }
 
-// Delete all Palm Events for $login to clear any events deleted in the palm.
-// Return 1 if successful.
+/* Delete all Palm Events for $login to clear any events deleted in the palm.
+ *
+ * @return 1 if successful.
+ */
 function delete_palm_events ( $login ) {
   $res = dbi_execute ( 'SELECT cal_id FROM webcal_import_data
     WHERE cal_login = ? AND cal_import_type = ?', array ( $login, 'palm' ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_id = ?',
+      dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
+        array ( $row[0] ) );
+      dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
         array ( $row[0] ) );
       dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
         array ( $row[0] ) );
       dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
         array ( $row[0] ) );
-      dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
-        array ( $row[0] ) );
-      dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
+      dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
         array ( $row[0] ) );
       dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id = ?',
         array ( $row[0] ) );
-      dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
+      dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
         array ( $row[0] ) );
-      dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
+      dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_id = ?',
         array ( $row[0] ) );
       dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
         array ( $row[0] ) );
@@ -45,7 +51,8 @@ function delete_palm_events ( $login ) {
 
 function ParseLine ( $line ) {
   global $calUser;
-  list (
+
+  list ( // .
     $Entry['RecordID'],
     $Entry['StartTime'],
     $Entry['EndTime'],
@@ -65,8 +72,8 @@ function ParseLine ( $line ) {
     $Entry['Repeat']['RepeatDays'],
     $WeekNum,
     ) = explode ( '|', $line );
-
-  // Adjust times to users Timezone if not Untimed
+  // .
+  // Adjust times to users Timezone if not Untimed.
   if ( isset ( $Entry['Untimed'] ) && $Entry['Untimed'] == 0 ) {
     $Entry['StartTime'] -= date ( 'Z', $Entry['StartTime'] );
     $Entry['EndTime'] -= date ( 'Z', $Entry['EndTime'] );
@@ -74,8 +81,10 @@ function ParseLine ( $line ) {
 
   if ( $Exceptions )
     $Entry['Repeat']['Exceptions'] = explode ( ': ', $Exceptions );
+
   if ( ( $WeekNum == '5' ) && ( $Entry['Repeat']['Interval'] == '3' ) )
     $Entry['Repeat']['Interval'] = '6';
+
   return $Entry;
 }
 

@@ -5340,15 +5340,15 @@ function set_today ( $date = '' ) {
 
   $today = mktime ();
 
-  if ( ! empty ( $date ) ) {
-    $thisyear = substr ( $date, 0, 4 );
-    $thismonth = substr ( $date, 4, 2 );
-    $thisday = substr ( $date, 6, 2 );
-  } else {
+  if ( empty ( $date ) ) {
     $thisyear = ( empty ( $year ) || $year == 0 ? date ( 'Y', $today ) : $year );
     $thismonth = ( empty ( $month ) || $month == 0
       ? date ( 'm', $today ) : $month );
     $thisday = ( empty ( $day ) || $day == 0 ? date ( 'd', $today ) : $day );
+  } else {
+    $thisyear = substr ( $date, 0, 4 );
+    $thismonth = substr ( $date, 4, 2 );
+    $thisday = substr ( $date, 6, 2 );
   }
   $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 }
