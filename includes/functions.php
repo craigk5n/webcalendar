@@ -1294,7 +1294,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
 
         $ret .= '>' . date ( 'j', $date ) . '</a></td>';
       } else
-        $ret .= ' class="empty' . ( ! empty ( $SHOW_EMPTY_WEEKENDS ) 
+        $ret .= ' class="empty' . ( ! empty ( $SHOW_EMPTY_WEEKENDS )
           && is_weekend ( $date ) ? ' weekend' : '' ) . '">&nbsp;</td>';
     } // end for $j
     $ret .= '
@@ -3070,7 +3070,7 @@ function getReminders ( $id, $display = false ) {
   // Get reminders.
   $rows = dbi_get_cached_rows ( 'SELECT cal_id, cal_date, cal_offset,
     cal_related, cal_before, cal_repeats, cal_duration, cal_action,
-    cal_last_sent, cal_times_sent FROM webcal_reminders 
+    cal_last_sent, cal_times_sent FROM webcal_reminders
     WHERE cal_id = ? ORDER BY cal_date,
     cal_offset, cal_last_sent', array ( $id ) );
   if ( $rows ) {
@@ -5343,10 +5343,9 @@ function set_today ( $date = '' ) {
   $today = mktime ();
 
   if ( empty ( $date ) ) {
-    $thisyear = ( empty ( $year ) || $year == 0 ? date ( 'Y', $today ) : $year );
-    $thismonth = ( empty ( $month ) || $month == 0
-      ? date ( 'm', $today ) : $month );
-    $thisday = ( empty ( $day ) || $day == 0 ? date ( 'd', $today ) : $day );
+    $thisyear = ( empty ( $year ) ? date ( 'Y', $today ) : $year );
+    $thismonth = ( empty ( $month ) ? date ( 'm', $today ) : $month );
+    $thisday = ( empty ( $day ) ? date ( 'd', $today ) : $day );
   } else {
     $thisyear = substr ( $date, 0, 4 );
     $thismonth = substr ( $date, 4, 2 );
