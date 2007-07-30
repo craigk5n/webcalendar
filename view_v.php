@@ -114,10 +114,10 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
         continue;
 
       $class = ( $dateYmd == $todayYmd
-        ? 'class="today"'
+        ? ' class="today"'
         : ( ! empty ( $entryStr ) && $entryStr != '&nbsp;'
-          ? 'class="hasevents"'
-          : ( $is_weekend ? 'class="weekend"' : '' ) ) )
+          ? ' class="hasevents"'
+          : ( $is_weekend ? ' class="weekend"' : '' ) ) )
        . ' style="width:' . $tdw . '%;">';
       $dateYmd = date ( 'Ymd', $date );
       $entryStr = print_date_entries ( $dateYmd, $user, true );
