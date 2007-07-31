@@ -67,6 +67,9 @@ $name = getPostValue ( 'name' );
 $reminder = getPostValue ( 'reminder' );
 $rpt_type = getPostValue ( 'rpt_type' );
 $timetype = getPostValue ( 'timetype' );
+$priority = getPostValue ( 'priority' );
+$access = getPostValue ( 'access' );
+
 
 $description =
 ( strlen ( $description ) == 0 || $description == '<br />' ? $name : $description );
