@@ -162,12 +162,10 @@ if ( is_dir ( $dir ) ) {
     closedir ( $dh );
   }
 }
-
+$BodyX = 'onload="init_admin();' . ( empty ( $currenttab ) ? '"' 
+  : 'showTab( \'' . $currenttab . '\' );"' );
 print_header (
-  array ( 'js/admin.php', 'js/visible.php' ),
-  '',
-  'onload="init_admin();'
-   . ( empty ( $currenttab ) ? '"' : 'showTab( \'' . $currenttab . '\' );"' ) );
+  array ( 'js/admin.php', 'js/visible.php' ), '', $BodyX );
 
 if ( ! $error ) {
   // Make sure globals values passed to styles.php are for this user.
@@ -753,29 +751,29 @@ if ( ! $error ) {
    . print_radio ( 'SELF_REGISTRATION_BLACKLIST' ) . '</p>
             <p><label title="' . tooltip ( 'allow-self-registration-full-help' )
    . '">' . translate ( 'Use self-registration email notifications' )
-   . ':</label>' . print_radio ( 'SELF_REGISTRATION_FULL' ) . '</p>
+   . ':</label>' . print_radio ( 'SELF_REGISTRATION_FULL' ) . '</p><br />
           </div>
 
 <!-- TODO add account aging feature. -->
 
 <!-- BEGIN ATTACHMENTS/COMMENTS -->
-          <p><label title="' . tooltip ( 'allow-attachment-help' ) . '">'
+        <div><p><label title="' 
+	 . tooltip ( 'allow-attachment-help' ) . '">'
    . translate ( 'Allow file attachments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_ATTACH', '', 'attach_handler' )
-   . '<span id="at1"><br /><strong>Note: </strong>'
+    . '</p><p id="at1" style="margin-left:25%"><strong>Note: </strong>'
    . translate ( 'Admin and owner can always add attachments if enabled.' )
-   . '<br />' . print_checkbox ( array ( 'ALLOW_ATTACH_PART', 'Y', $partyStr ) )
+	 . '<br />' . print_checkbox ( array ( 'ALLOW_ATTACH_PART', 'Y', $partyStr ) )
    . print_checkbox ( array ( 'ALLOW_ATTACH_ANY', 'Y', $anyoneStr ) )
-   . '</span></p>
-          <p><label title="' . tooltip ( 'allow-comments-help' ) . '">'
+   . '</p><br/><p><label title="' 
+	 . tooltip ( 'allow-comments-help' ) . '">'
    . translate ( 'Allow comments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_COMMENTS', '', 'comment_handler' )
-   . '<span id="com1"><br /><strong>Note: </strong>'
+   . '</p><p id="com1" style="margin-left:25%"><strong>Note: </strong>'
    . translate ( 'Admin and owner can always add comments if enabled.' )
    . '<br />' . print_checkbox ( array ( 'ALLOW_COMMENTS_PART', 'Y', $partyStr ) )
    . print_checkbox ( array ( 'ALLOW_COMMENTS_ANY', 'Y', $anyoneStr ) )
-   . '</span></p>
-        </div>
+   . '</p><br /></div></div>
 
 <!-- BEGIN EMAIL -->
         <div id="tabscontent_email">
@@ -789,7 +787,7 @@ if ( ! $error ) {
    . htmlspecialchars ( $EMAIL_FALLBACK_FROM ) . '" /></p>
             <p><label title="' . tooltip ( 'email-mailer' ) . '">'
    . translate ( 'Email Mailer' ) . ':</label>
-              <select name="admin_EMAIL_MAILER"onchange="email_handler()">'
+              <select name="admin_EMAIL_MAILER" onchange="email_handler()">'
    . $option . 'smtp" ' . ( $s['EMAIL_MAILER'] == 'smtp' ? $selected : '' )
    . '>SMTP</option>' . $option . 'mail" '
    . ( $s['EMAIL_MAILER'] == 'mail' ? $selected : '' ) . '>PHP mail</option>'
@@ -846,7 +844,7 @@ if ( ! $error ) {
           <fieldset>
             <legend>' . translate ( 'Color options' ) . '</legend>
 <!-- BEGIN EXAMPLE MONTH -->
-            <div style="float:right; width:45%; margin:3em 1em 0; background:'
+            <div style="float:right; width:45%; margin:0; background:'
    . $BGCOLOR . '">
               <p class="bold" style="text-align:center; color:' . $H2COLOR
    . ';">' . date_to_str ( date ( 'Ymd' ), $DATE_FORMAT_MY, false ) . '</p>'
@@ -874,7 +872,7 @@ if ( ! $error ) {
           </fieldset>
         </div>
       </div>
-      <div style="clear:both";>
+      <div style="clear:both;">
         <input type="submit" value="' . $saveStr . '" name="" />
       </div>
     </form>';

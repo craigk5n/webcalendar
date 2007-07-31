@@ -163,7 +163,7 @@ echo '  body {
     font-size:18px;
   }
   fieldset {
-    width:90%;
+    width:96%;
   }
   label {
     font-weight:bold;
@@ -744,7 +744,7 @@ echo '  body {
   #admin select,
   #pref input,
   #pref select {
-    margin:0 4px;
+    margin:0 3px;
   }
   #admin .main td,
   #pref .main td {
