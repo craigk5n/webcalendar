@@ -43,6 +43,8 @@ $year_url = 'year.php';
 
 $mycal = ( empty ( $STARTVIEW ) ? 'index.php' : $STARTVIEW );
 
+$mycal .= ( ! strpos ( $mycal, '.php' ) ? '.php' : '' );
+
 if ( $can_add ) {
   // Add new entry.
   $new_entry_url = 'edit_entry.php';
