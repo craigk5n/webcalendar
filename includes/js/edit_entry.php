@@ -4,11 +4,11 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
  global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
  $user = $arinc[3];
 ?>
-var bydayAr = new Object ();
-var bymonthdayAr = new Object ();
-var bysetposAr = new Object ();
-var bydayLabels = new Array ("SU","MO","TU","WE","TH","FR","SA");
-var bydayTrans = new Array ( "<?php etranslate ( 'SU' ) ?>"
+var bydayAr = new Array();
+var bymonthdayAr = new Array();
+var bysetposAr = new Array();
+var bydayLabels = new Array("SU","MO","TU","WE","TH","FR","SA");
+var bydayTrans = new Array( "<?php etranslate ( 'SU' ) ?>"
 , "<?php etranslate ( 'MO' ) ?>"
 , "<?php etranslate ( 'TU' ) ?>"
 , "<?php etranslate ( 'WE' ) ?>"
@@ -25,7 +25,7 @@ function validate_and_submit () {
       $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
     showTab( 'details' );
 <?php } ?>
-    form.name.focus ();
+    form.name.focus();
     alert ( "<?php etranslate ( 'You have not entered a Brief Description', true)?>.");
     return false;
   }
@@ -120,29 +120,28 @@ function validate_and_submit () {
  //set byxxxList values for submission
  var bydayStr = '';
  for ( bydayKey in bydayAr ) {
-   if ( bydayAr[bydayKey].length < 8 )
+   if ( bydayKey == isNumeric ( bydayKey ) )
      bydayStr = bydayStr + ',' + bydayAr[bydayKey];
  }
  if ( bydayStr.length > 0 )
-   elements['bydayList'].value = bydayStr.substr (1);
-
+   elements['bydayList'].value = bydayStr.substr(1);
  //set bymonthday values for submission
  var bymonthdayStr = '';
  for ( bymonthdayKey in bymonthdayAr ) {
-   if ( bymonthdayAr[bymonthdayKey].length < 4 )
+   if ( bymonthdayKey == isNumeric ( bymonthdayKey ) )
      bymonthdayStr = bymonthdayStr + ',' + bymonthdayAr[bymonthdayKey];
  }
  if ( bymonthdayStr.length > 0 )
-   elements['bymonthdayList'].value = bymonthdayStr.substr (1);
+   elements['bymonthdayList'].value = bymonthdayStr.substr(1);
 
  //set bysetpos values for submission
  var bysetposStr = '';
  for ( bysetposKey in bysetposAr ) {
-   if ( bysetposAr[bysetposKey].length < 8 )
+   if ( bysetposKey == isNumeric ( bysetposKey ) )
      bysetposStr = bysetposStr + ',' + bysetposAr[bysetposKey];
  }
  if ( bysetposStr.length > 0 )
-   elements['bysetposList'].value = bysetposStr.substr (1);
+   elements['bysetposList'].value = bysetposStr.substr(1);
 
  form.submit ();
  return true;
@@ -435,34 +434,34 @@ function del_selected () {
 }
 
 function toggle_byday(ele){
-  var bydaytext = bydayTrans[ele.id.substr (2,1)];
-  var bydayVal = bydayLabels[ele.id.substr (2,1)];
+  var bydaytext = bydayTrans[ele.id.substr(2,1)];
+  var bydayVal = bydayLabels[ele.id.substr(2,1)];
   var tmp = '';
   if (ele.value.length > 4 ) {
     //blank
-    ele.value = ele.id.substr (1,1) + bydaytext;
-    tmp = ele.id.substr (1,1) + bydayVal;
-  } else if (ele.value == ele.id.substr (1,1) + bydaytext) {
+    ele.value = ele.id.substr(1,1) + bydaytext;
+    tmp = ele.id.substr(1,1) + bydayVal;
+  } else if (ele.value == ele.id.substr(1,1) + bydaytext) {
     //positive value
-    ele.value =  (parseInt(ele.id.substr (1,1)) -6 ) +  bydaytext;
-    tmp = (parseInt(ele.id.substr (1,1)) -6 ) +  bydayVal;
-  } else if (ele.value ==  (parseInt(ele.id.substr (1,1)) -6 ) +  bydaytext) {
+    ele.value =  (parseInt(ele.id.substr(1,1)) -6 ) + bydaytext;
+    tmp = (parseInt(ele.id.substr(1,1)) -6 ) +  bydayVal;
+  } else if (ele.value ==  (parseInt(ele.id.substr(1,1)) -6 ) +  bydaytext) {
     //negative value
   ele.value = "        ";
   tmp = '';
   }
-  bydayAr[ele.id.substr (1)] = tmp;
+  bydayAr[ele.id.substr(1)] = tmp;
 }
 
 function toggle_bymonthday(ele){
   var tmp = '';
   if (ele.value .length > 3) {
     //blank
-  ele.value = tmp = ele.id.substr (10);
-  } else if (ele.value == ele.id.substr (10)) {
+  ele.value = tmp = ele.id.substr(10);
+  } else if (ele.value == ele.id.substr(10)) {
     //positive value
-  ele.value =  tmp = parseInt(ele.id.substr (10)) -32;
-  } else if (ele.value ==  (parseInt(ele.id.substr (10)) -32 )) {
+  ele.value =  tmp = parseInt(ele.id.substr(10)) -32;
+  } else if (ele.value ==  (parseInt(ele.id.substr(10)) -32 )) {
     //negative value
   ele.value = "     ";
   tmp = '';
@@ -474,17 +473,17 @@ function toggle_bysetpos(ele){
   var tmp = '';
   if (ele.value .length > 3) {
     //blank
-  ele.value = tmp = ele.id.substr (8);
+  ele.value = tmp = ele.id.substr(8);
 
-  } else if (ele.value == ele.id.substr (8)) {
+  } else if (ele.value == ele.id.substr(8)) {
     //positive value
-  ele.value =  tmp = parseInt(ele.id.substr (8)) -32;
-  } else if (ele.value ==  (parseInt(ele.id.substr (8)) -32 )) {
+  ele.value =  tmp = parseInt(ele.id.substr(8)) -32;
+  } else if (ele.value ==  (parseInt(ele.id.substr(8)) -32 )) {
     //negative value
   ele.value = "    ";
   tmp = '';
   }
-  bysetposAr[ele.id.substr (8)] = tmp;
+  bysetposAr[ele.id.substr(8)] = tmp;
 }
 
 function toggle_until () {
@@ -634,6 +633,7 @@ function onLoad () {
     if ( bydayList.search( /,/ ) > -1 ) {
       bydayList = bydayList.split ( ',' );
       for ( key in bydayList ) {
+        if ( key == isNumeric ( key ) )
         bydayAr[bydayList[key]] = bydayList[key];
       }
     } else if ( bydayList.length > 0 ) {
@@ -646,7 +646,8 @@ function onLoad () {
     if ( bymonthdayList.search( /,/ ) > -1 ) {
       bymonthdayList = bymonthdayList.split ( ',' );
       for ( key in bymonthdayList ) {
-        bymonthdayAr[bymonthdayList[key]] = bymonthdayList[key];
+        if ( key == isNumeric ( key ) )
+          bymonthdayAr[bymonthdayList[key]] = bymonthdayList[key];
       }
     } else if ( bymonthdayList.length > 0 ) {
       bymonthdayAr[bymonthdayList] = bymonthdayList;
@@ -658,7 +659,8 @@ function onLoad () {
     if ( bysetposList.search( /,/ ) > -1 ) {
       bysetposList = bysetposList.split ( ',' );
       for ( key in bysetposList ) {
-        bysetposAr[bysetposList[key]] = bysetposList[key];
+        if ( key == isNumeric ( key ) )
+          bysetposAr[bysetposList[key]] = bysetposList[key];
       }
     } else if ( bysetposList.length > 0 ){
       bysetposAr[bysetposList] = bysetposList;
