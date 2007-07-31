@@ -169,7 +169,7 @@ $wkst = 'MO';
 $real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
   ( $is_assistant || $is_admin ) ) ? $user : $login;
 
-print_header ( $INC, '', $BodyX );
+print_header ( $INC, '', $BodyX, false, false, false, true );
 
 ob_start ();
 
