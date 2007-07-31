@@ -142,7 +142,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   // Use the class 'hasevents' for any hour block that has events in it.
   . ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
    ? ' class="hasevents"' : $class )
-   . '">' . ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
+   . '>' . ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
     ? $untimed[$i] : '&nbsp;' ) . '</td>';
 
   $save_hour_arr[$i] = $hour_arr;
