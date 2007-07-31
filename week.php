@@ -193,7 +193,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         $eventsStr .= ( $rowspan_day[$d] > 1
-          ? ' rowspan="' . $rowspan_day[$d] : '' )
+          ? ' rowspan="' . $rowspan_day[$d]  .'"': '' )
          . '>' . ( $can_add
           ? html_for_add_icon ( $dateYmd, $time_h, $time_m, $user ) : '' )
          . $save_hour_arr[$d][$i];
