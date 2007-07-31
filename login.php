@@ -11,6 +11,7 @@ if ( ! empty ( $dummy ) )
   }
 //php 4.1.0 may have issues with the above code
 unset ( $_SESSION['webcal_login'] );
+unset ( $_SESSION['webcalendar_session'] );
 
 require_once 'includes/classes/WebCalendar.class';
 
