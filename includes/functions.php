@@ -4192,8 +4192,11 @@ function nonuser_load_variables ( $login, $prefix ) {
  * @param int    $cat_id  Category id that should be pre-selected
  */
 function print_category_menu ( $form, $date = '', $cat_id = '' ) {
-  global $categories, $login, $user;
+  global $categories, $login, $user, $CATEGORIES_ENABLED;
 
+  if ( empty ( $CATEGORIES_ENABLED  ) || $CATEGORIES_ENABLED == 'N' )
+	  return false;
+		
   $catStr = translate ( 'Category' );
   $printerStr = '';
   $ret = '
