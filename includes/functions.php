@@ -2008,20 +2008,14 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
           foreach ( $byday as $day ) {
             $td = $cdate + ( $byday_values[$day] * 86400 );
             if ( $td >= $date && $td <= $realend && $n <= $Count )
-              $tmp_td = $td;
+              $ret[$n++] = $td;
           }
         } else {
           $td = $cdate + ( $dow * 86400 );
           $cdow = date ( 'w', $td );
           if ( $cdow == $dow )
-            $tmp_td = $td;
+            $ret[$n++] = $td;
         }
-        if ( ! empty ( $tmp_td ) &&
-            ( empty ( $bymonth ) || ( ! empty ( $bymonth ) &&
-                in_array ( date ( 'n', $tmp_td ), $bymonth ) ) ) ) {
-          $ret[$n++] = $tmp_td;
-        }
-        $tmp_td = $td = '';
         // Skip to the next week in question.
         $cdate = add_dstfree_time ( $cdate, 604800, $interval );
       }
@@ -2041,8 +2035,6 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
       $mdate = $cdate;
       while ( $cdate <= $realend && $n <= $Count ) {
-        if ( empty ( $bymonth ) || ( ! empty ( $bymonth ) &&
-              in_array ( date ( 'n', $cdate ), $bymonth ) ) ) {
           $bydayvalues = $bymonthdayvalues = $yret = array ();
           if ( isset ( $byday ) )
             $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
@@ -2083,7 +2075,6 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
             $ret = array_merge ( $ret, $yret );
           }
           sort ( $ret );
-        } //end $bymonth test
         $thismonth += $interval;
         $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
         $mdate = mktime ( $hour, $minute, 0, $thismonth, 1, $thisyear );
@@ -2137,7 +2128,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
                 ? array_merge ( $yret, $bymonthdayvalues )
                 : ( isset ( $byday )
                   ? array_merge ( $yret, $bydayvalues )
-                  : array ( mktime ( $hour, $minute, 0, $month, $thisday, $ycd ) ) ) );
+                  : mktime ( $hour, $minute, 0, $month, $thisday, $ycd ) ) );
           } //end foreach bymonth
         } elseif ( isset ( $byyearday ) ) { // end if isset bymonth
           foreach ( $byyearday as $yearday ) {
