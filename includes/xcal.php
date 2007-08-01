@@ -13,9 +13,9 @@
  * Generate Product ID string
  *
  */
-function generate_prodid () {
+function generate_prodid ( $type='' ) {
   global $PROGRAM_VERSION, $PROGRAM_NAME;
-  $ret = 'PRODID:-//WebCalendar-';
+  $ret = 'PRODID:-//WebCalendar-' .$type . '-' ;
   if ( ! empty ( $PROGRAM_VERSION ) )
     $ret .= $PROGRAM_VERSION;
   else if ( preg_match ( "/WebCalendar v(\S+)/", $PROGRAM_NAME, $match ) )
@@ -426,32 +426,14 @@ function export_recurrence_vcal( $id, $date ) {
       $interval = $row[3];
       $day = $row[4];
       $time = sprintf ( "%06d", $row[5] );
-      $bymonth = explode ( ',', $row[6] );
-      $bymonthday = explode ( ',', $row[7] );
-      $byday = explode ( ',', $row[8] );
-      $bysetpos = explode ( ',', $row[9] );
+      $bymonth = str_replace ( ',', ' ', $row[6] );
+      $bymonthday = str_replace ( ',', ' ', $row[7] );
+      $byday = str_replace ( ',', ' ', $row[8] );
+      $bysetpos = str_replace ( ',', ' ', $row[9] );
       $byweekno = $row[10];
-      $byyearday = explode ( ',', $row[11] );
+      $byyearday = str_replace ( ',', ' ', $row[11] );
       $wkst = $row[12];
       $count = $row[13];
-      // flip -n to n-
-      $bydaycnt = count ( $byday );
-      for ( $i = 0; $i < $bydaycnt; $i++ ) {
-        if ( substr ( $byday[$i], 0, 1 ) == '-' )
-          $byday[$i] = substr ( $byday[$i], 1, 1 ) . '-'
-           . substr ( $byday[$i], -2, 2 );
-        else
-          $byday[$i] = substr ( $byday[$i], 0, 1 ) . '+ '
-           . substr ( $byday[$i], -2, 2 );
-      }
-      $byday = implode ( ' ', $byday );
-      // flip -n to n-
-      $bymonthdaycnt = count ( $bymonthday );
-      for ( $i = 0; $i < $bymonthdaycnt; $i++ ) {
-        if ( substr ( $bymonthday[$i], 0, 1 ) == '-' )
-          $bymonthday[$i] = substr ( $bymonthday[$i], 1 ) . '-';
-      }
-      $bymonthday = implode ( ' ', $bymonthday );
 
       echo 'RRULE:';
 
@@ -749,7 +731,7 @@ function export_vcal ( $id ) {
 
   if ( count ( $entry_array ) > 0 ) {
     echo "BEGIN:VCALENDAR\r\n";
-    echo generate_prodid ();
+    echo generate_prodid ( 'vcs' );
     echo "VERSION:1.0\r\n";
   } while ( list ( $key, $row ) = each ( $entry_array ) ) {
     $id = $row[0];
@@ -863,7 +845,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
   ( empty ( $publish_fullname ) ? $login : translate ( $publish_fullname ) );
   $title = utf8_encode( str_replace ( ',', "\\,", $title ) );
   $ret .= "$title\r\n";
-  $ret .= generate_prodid ();
+  $ret .= generate_prodid ( 'ics' );
   $ret .= "VERSION:2.0\r\n";
   $ret .= "METHOD:PUBLISH\r\n";
 
