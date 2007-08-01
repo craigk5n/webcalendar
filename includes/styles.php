@@ -685,7 +685,8 @@ echo '  body {
     text-align:center;
     display:block;
   }
-  .minical td.weekend {
+  .minical td.weekend,
+	#editentry th.weekend {
     background:' . $GLOBALS['WEEKENDBG'] . ';
   }
   .minical td#today {

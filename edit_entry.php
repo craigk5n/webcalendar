@@ -164,7 +164,7 @@ $exceptions = $inclusions = $reminder = array ();
 $byweekno = $byyearday = $catList = $catNames = $external_users = $rpt_count = '';
 
 $create_by = $login;
-$wkst = 'MO';
+$wkst = $weekday_names[$WEEK_START];
 
 $real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
   ( $is_assistant || $is_admin ) ) ? $user : $login;
@@ -1144,14 +1144,13 @@ if ( $can_edit ) {
      . translate ( 'Weekdays Only' )
      . '</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span id="rptwkst">
-              <select name="wkst">
-                <option value="MO" '
-     . ( strcmp ( $wkst, 'MO' ) == 0 ? $selected : '' )
-     . '>' . translate ( 'MO' ) . '</option>
-                <option value="SU" '
-     . ( strcmp ( $wkst, 'SU' ) == 0 ? $selected : '' )
-     . '>' . translate ( 'SU' ) . '</option>
-              </select>&nbsp;&nbsp;<label for="rptwkst">'
+              <select name="wkst">';
+			for ( $i=0; $i<=6;$i++ ) {
+			    echo '<option value="'.  $weekday_names[$i] .'" '
+				 . ( strcmp ( $wkst, $weekday_names[$i] ) == 0 ? $selected : '' )
+				 . '>' . translate ( $weekday_names[$i] ) . "</option>\n";			
+			  }
+     echo '</select>&nbsp;&nbsp;<label for="rptwkst">'
      . translate ( 'Week Start' ) . '</label>
             </span>
           </td>
@@ -1176,21 +1175,26 @@ if ( $can_edit ) {
     // We use BUTTONS in a triple state configuration, and store the values in
     // a javascript array until form submission. We then set the hidden field
     // bydayList to the string value of the array.
-    for ( $rpt_byday_label = 0; $rpt_byday_label <= 6; $rpt_byday_label++ ) {
+    for ( $rpt_byday_label = $WEEK_START; 
+		  $rpt_byday_label <= ( $WEEK_START + 6); $rpt_byday_label++ ) {
+			$rpt_byday_mod = $rpt_byday_label %7;
+			$class = ( is_weekend ( $rpt_byday_mod ) ? ' class="weekend" ' : '' );
       echo '
-                <th width="50px"><label>'
-       . translate ( $weekday_names[$rpt_byday_label] ) . '</label></th>';
+                <th width="50px"' .$class . '><label>'
+       . translate ( $weekday_names[$rpt_byday_mod] ) . '</label></th>';
     }
     echo '
               </tr>
               <tr>
                 <th>' . translate ( 'All' ) . '</th>';
-    for ( $rpt_byday_single = 0; $rpt_byday_single < 7; $rpt_byday_single++ ) {
+    for ( $rpt_byday_single = $WEEK_START; 
+		  $rpt_byday_single <= ( $WEEK_START + 6); $rpt_byday_single++ ) {
+			$rpt_byday_mod = $rpt_byday_single %7;
       echo '
                 <td><input type="checkbox" name="bydayAll[]" id="'
-       . $byday_names[$rpt_byday_single] . '" value="'
-       . "$byday_names[$rpt_byday_single]\""
-       . ( in_array ( $byday_names[$rpt_byday_single], $byday ) ? $checked : '' )
+       . $byday_names[$rpt_byday_mod] . '" value="'
+       . "$byday_names[$rpt_byday_mod]\""
+       . ( in_array ( $byday_names[$rpt_byday_mod], $byday ) ? $checked : '' )
        . ' /></td>';
     }
     echo '
@@ -1200,17 +1204,20 @@ if ( $can_edit ) {
       echo '
                 <th><label>' . $loop_ctr . '/' . ( $loop_ctr - 6 )
        . '</label></th>';
-      for ( $rpt_byday = 0; $rpt_byday < 7; $rpt_byday++ ) {
+      for ( $rpt_byday = $WEEK_START; 
+			  $rpt_byday <= ( $WEEK_START + 6); $rpt_byday++ ) {
+				$rpt_byday_mod = $rpt_byday %7;
         $buttonvalue = ( in_array ( $loop_ctr
-             . $byday_names[$rpt_byday], $byday )
-          ? $loop_ctr . translate ( $byday_names[$rpt_byday] )
-          : ( in_array ( ( $loop_ctr - 6 ) . $byday_names[$rpt_byday], $byday )
-            ? ( $loop_ctr - 6 )
-             . translate ( $byday_names[$rpt_byday] ) : '        ' ) );
+             . $byday_names[$rpt_byday_mod], $byday )
+          ? $loop_ctr . translate ( $byday_names[$rpt_byday_mod] )
+          : ( in_array ( ( $loop_ctr - 6 ) 
+					. $byday_names[$rpt_byday_mod], $byday )
+          ? ( $loop_ctr - 6 )
+          . translate ( $byday_names[$rpt_byday_mod] ) : '        ' ) );
 
         echo '
                 <td><input type="button" name="byday" id="_' . $loop_ctr
-         . $rpt_byday . '" value="' . $buttonvalue
+         . $rpt_byday_mod . '" value="' . $buttonvalue
          . '" onclick="toggle_byday( this )" /></td>';
       }
       echo '
