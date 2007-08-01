@@ -3321,8 +3321,10 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     if ( $ind < $first_slot )
       $first_slot = $ind;
 
-    if ( $ind > $last_slot )
-      $last_slot = $ind;
+    $tz_time2 = date ( 'His', $event->getEndDateTimeTS () );
+    $ind2 = calc_time_slot ( $tz_time2 );
+    if ( $ind2 > $last_slot )
+      $last_slot = $ind2;
   }
   if ( empty ( $hour_arr[$ind] ) )
     $hour_arr[$ind] = '';
@@ -4186,8 +4188,8 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   global $categories, $login, $user, $CATEGORIES_ENABLED;
 
   if ( empty ( $CATEGORIES_ENABLED  ) || $CATEGORIES_ENABLED == 'N' )
-	  return false;
-		
+    return false;
+    
   $catStr = translate ( 'Category' );
   $printerStr = '';
   $ret = '
@@ -4406,10 +4408,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
       get_tasks ( $date, $get_unapproved ) // Get all due tasks.
       );
   $hour_arr = $rowspan_arr = array ();
-  $interval = 1440 / $TIME_SLOTS; // Number of minutes per slot.
-  $last_row = -1;
-  $ret = '';
-  $rowspan = 0;
+  $interval = 1440 / $TIME_SLOTS; // Number of minutes per slot
 
   $first_slot = intval ( ( $WORK_DAY_START_HOUR * 60 ) / $interval );
   $last_slot = intval ( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
@@ -4418,7 +4417,9 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
     if ( $get_unapproved || $ev[$i]->getStatus () == 'A' )
       html_for_event_day_at_a_glance ( $ev[$i], $date );
   }
-
+  $last_row = -1;
+  $ret = '';
+  $rowspan = 0;
   // Squish events that use the same cell into the same cell.
   // For example, an event from 8:00-9:15 and another from 9:30-9:45 both
   // want to show up in the 8:00-9:59 cell.
@@ -5071,7 +5072,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
             $parentRepeats = $result[$i-1]->getRepeatAllDates ();
             for ( $j = 0, $parentRepeatscnt = count ( $parentRepeats );
               $j < $parentRepeatscnt; $j++ ) {
-              $cloneRepeats[] = date ( 'Ymd', $parentRepeats[$j] );
+              $cloneRepeats[] = gmdate ( 'Ymd', 
+                date_to_epoch ( $parentRepeats[$j] ) + ONE_DAY );
             }
             $result[$i]->addRepeatAllDates ( $cloneRepeats );
           }
