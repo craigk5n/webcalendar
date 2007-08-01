@@ -631,8 +631,7 @@ echo '  body {
   img.help {
     cursor:help;
   }
-	.sample {
-  border-style: groove;
+  .sample {
   text-align: left;
   width: 16px;
 }
@@ -787,13 +786,20 @@ echo '  body {
   #admin #tabscontent p,
   #pref #tabscontent p {
     padding:0 .25em;
+    clear:both;
   }
   #admin #tabscontent p label,
   #pref #tabscontent p label {
-    clear:left;
+    clear:both;
     float:left;
     width:25%;
     margin:0;
+  }
+  #admin #tabscontent_colors p,
+  #pref #tabscontent_colors p,
+  #admin #tabscontent_colors p label,
+  #pref #tabscontent_colors p label {
+    clear:none;
   }
   #admin #saver {
     clear:both;
@@ -1252,6 +1258,9 @@ echo '  body {
     position:absolute;
     width:100%;
   }
+  .alt {
+  background:' . $CELLBG . ';
+  }  
   .layers {
     float:left;
     margin:2px 1px;

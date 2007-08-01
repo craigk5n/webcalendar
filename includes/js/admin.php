@@ -9,7 +9,8 @@ function init_admin () {
   popup_handler ();
   public_handler ();
   sr_handler ();
-
+  altps();
+  
   return true;
 }
 

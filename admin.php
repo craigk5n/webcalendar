@@ -366,7 +366,7 @@ if ( ! $error ) {
             <p><label for="admin_SERVER_URL" title="'
    . tooltip ( 'server-url-help' ) . '">' . translate ( 'Server URL' )
    . ':</label>
-              <input type="text" size="40" name="admin_SERVER_URL" '
+              <input type="text" size="70" name="admin_SERVER_URL" '
    . 'id="admin_SERVER_URL" value="' . htmlspecialchars ( $s['SERVER_URL'] )
    . '" /></p>
             <p><label for="admin_HOME_LINK" title="'
@@ -661,6 +661,7 @@ if ( ! $error ) {
             <p><label title="' . tooltip ( 'public-access-captcha-help' ) . '">'
    . translate ( 'Require CAPTCHA validation for public access new events' )
    . ':</label>' . print_radio ( 'ENABLE_CAPTCHA' ) . '</p>
+           <div style="clear:both;"></div>
           </div>
         </div>
 
@@ -758,15 +759,15 @@ if ( ! $error ) {
 
 <!-- BEGIN ATTACHMENTS/COMMENTS -->
         <div><p><label title="' 
-	 . tooltip ( 'allow-attachment-help' ) . '">'
+   . tooltip ( 'allow-attachment-help' ) . '">'
    . translate ( 'Allow file attachments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_ATTACH', '', 'attach_handler' )
     . '</p><p id="at1" style="margin-left:25%"><strong>Note: </strong>'
    . translate ( 'Admin and owner can always add attachments if enabled.' )
-	 . '<br />' . print_checkbox ( array ( 'ALLOW_ATTACH_PART', 'Y', $partyStr ) )
+   . '<br />' . print_checkbox ( array ( 'ALLOW_ATTACH_PART', 'Y', $partyStr ) )
    . print_checkbox ( array ( 'ALLOW_ATTACH_ANY', 'Y', $anyoneStr ) )
    . '</p><br/><p><label title="' 
-	 . tooltip ( 'allow-comments-help' ) . '">'
+   . tooltip ( 'allow-comments-help' ) . '">'
    . translate ( 'Allow comments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_COMMENTS', '', 'comment_handler' )
    . '</p><p id="com1" style="margin-left:25%"><strong>Note: </strong>'
@@ -857,7 +858,7 @@ if ( ! $error ) {
    . translate ( 'Enable gradient images for background colors' ) . ':</label>'
    . ( function_exists ( 'imagepng' ) || function_exists ( 'imagegif' )
     ? print_radio ( 'ENABLE_GRADIENTS' ) : translate ( 'Not available' ) )
-   . '</p>' . $color_sets . '
+   . '</p><br />' . $color_sets . '
           </fieldset>
           <fieldset>
             <legend>' . translate ( 'Background Image options' ) . '</legend>

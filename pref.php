@@ -167,7 +167,8 @@ $minutesStr = translate ( 'minutes' );
 @session_start ();
 $_SESSION['webcal_tmp_login'] = $prefuser;
 $openStr ="\"window.open( 'edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520' );\"";
-$BodyX = ( ! empty ( $currenttab ) ? "onload=\"showTab( '". $currenttab . "' );\"" : '' );
+//'onload="altrows();showTab
+$BodyX = 'onload="altrows();' . ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );" : '' ) . '"';
 $INC = array ('js/visible.php', 'js/pref.php');
 print_header($INC, '', $BodyX);
 ?>
@@ -831,8 +832,8 @@ if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
 <?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 <div id="tabscontent_colors">
 <table   width="100%">
-<tr><td class="aligntop">
-<table cellspacing="1" cellpadding="2">
+<tr class="ignore"><td class="aligntop">
+<table cellspacing="0" cellpadding="0">
  <tr><td>
   <?php echo print_color_input_html ( 'BGCOLOR',
     translate ( 'Document background' ) ) ?>
