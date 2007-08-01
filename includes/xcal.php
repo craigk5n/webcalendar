@@ -1951,12 +1951,12 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       //.
       // we suppose ': ' is on the same line as property name,
       // this can perhaps cause problems
-      else if ( preg_match ( "/^SUMMARY\s*(;.+)?:(.+)$/i", $buff, $match ) ) {
+      else if ( preg_match ( "/^SUMMARY\s*(;.+)?:(.+)$/iU", $buff, $match ) ) {
         $substate = 'summary';
         if ( stristr( $match[1], 'ENCODING=QUOTED-PRINTABLE' ) )
           $match[2] = quoted_printable_decode( $match[2] );
         $event[$substate] = $match[2];
-      } elseif ( preg_match ( "/^DESCRIPTION\s*(;.+)?:(.+)$/i", $buff, $match ) ) {
+      } elseif ( preg_match ( "/^DESCRIPTION\s*(;.+)?:(.+)$/iU", $buff, $match ) ) {
         $substate = 'description';
         if ( stristr( $match[1], 'ENCODING=QUOTED-PRINTABLE' ) )
           $match[2] = quoted_printable_decode( $match[2] );
@@ -2635,30 +2635,16 @@ function format_ical ( $event ) {
 // For example  MO = f, -1MO = e, -2MO = d, +2MO - g, +3MO =h
 // Note: f = chr(102) and 'n' is still a not present value
 function rrule_repeat_days ( $RA ) {
-  $RA = explode ( ',', $RA );
-  $T = count ( $RA );
-  $sun = $mon = $tue = $wed = $thu = $fri = $sat = 'n';
-  for ( $i = 0; $i < $T; $i++ ) {
-    $RADay = substr ( $RA[$i], -2, 2 );
-    $RANum = ( strlen ( $RA[$i] ) > 2 ? substr ( $RA[$i], 0,
-        strlen ( $RA[$i] ) -2 ) : 0 ) + 102;
-    if ( $RADay == 'SU' ) {
-      $sun = chr( $RANum );
-    } elseif ( $RADay == 'MO' ) {
-      $mon = chr( $RANum );
-    } elseif ( $RADay == 'TU' ) {
-      $tue = chr( $RANum );
-    } elseif ( $RADay == 'WE' ) {
-      $wed = chr( $RANum );
-    } elseif ( $RADay == 'TH' ) {
-      $thu = chr( $RANum );
-    } elseif ( $RADay == 'FR' ) {
-      $fri = chr( $RANum );
-    } elseif ( $RADay == 'SA' ) {
-      $sat = chr( $RANum );
-    }
+  global $byday_names;
+  
+  $ret = array ();
+  foreach ( $RA as $item ) {
+    $item = strtoupper ( $item );
+    if ( in_array ( $item, $byday_names ) )
+      $ret[] = $item;
   }
-  return $sun . $mon . $tue . $wed . $thu . $fri . $sat;
+  
+  return ( empty ( $ret ) ? false : implode ( ',', $ret ) );
 }
 // Convert PYMDTHMS format to minutes
 function parse_ISO8601_duration ( $duration ) {
@@ -2680,32 +2666,7 @@ function parse_ISO8601_duration ( $duration ) {
   if ( $result[0] == '-' ) $ret = - $ret;
   return $ret;
 }
-// Calculate repeating ending time
-function rrule_endtime ( $int, $interval, $start, $end ) {
-  // if # then we have to add the difference to the start time
-  if ( preg_match ( '/^#(.+)$/i', $end, $M ) ) {
-    $T = $M[1] * $interval;
-    $plus_d = $plus_m = $plus_y = '0';
-    if ( $int == '1' ) {
-      $plus_d = $T;
-    } elseif ( $int == '2' ) {
-      $plus_d = $T * 7;
-    } elseif ( $int == '3' ) {
-      $plus_m = $T;
-    } elseif ( $int == '4' ) {
-      $plus_m = $T;
-    } elseif ( $int == '5' ) {
-      $plus_y = $T;
-    } elseif ( $int == '6' ) {
-      $plus_m = $T;
-    }
-    $endtime = icaldate_to_timestamp ( $start, '', $plus_d, $plus_m, $plus_y );
-    // if we have the enddate
-  } else {
-    $endtime = icaldate_to_timestamp ( $end );
-  }
-  return $endtime;
-}
+
 // Functions from import_vcal.php
 // Parse the vcal file and return the data hash.
 function parse_vcal( $cal_file ) {
@@ -2745,10 +2706,10 @@ function parse_vcal( $cal_file ) {
           }
         } else if ( preg_match ( '/^BEGIN:(.+)$/i', $buff, $match ) ) {
           $subsubstate = $match[1];
-        } else if ( preg_match ( '/^SUMMARY.*:(.+)$/i', $buff, $match ) ) {
+        } else if ( preg_match ( '/^SUMMARY.*:(.+)$/iU', $buff, $match ) ) {
           $substate = 'summary';
           $event[$substate] = $match[1];
-        } elseif ( preg_match ( '/^DESCRIPTION:(.+)$/i', $buff, $match ) ) {
+        } elseif ( preg_match ( '/^DESCRIPTION:(.+)$/iU', $buff, $match ) ) {
           $substate = 'description';
           $event[$substate] = $match[1];
         } elseif ( preg_match ( '/^DESCRIPTION;ENCODING=QUOTED-PRINTABLE:(.+)$/i',
@@ -2818,6 +2779,7 @@ function parse_vcal( $cal_file ) {
         else if ( preg_match ( '/^BEGIN:ALARM$/i', $buff ) )
           $state = 'ALARM';
       }
+      $event['state'] = $state;
     } //End while
     fclose ( $fd );
   }
@@ -2845,6 +2807,10 @@ function vcaldate_to_timestamp( $vdate, $plus_d = '0', $plus_m = '0', $plus_y = 
 // Put all vcal data into import hash structure
 function format_vcal( $event ) {
   // Start and end time
+  
+  // Set Calendar Type for easier processing later
+  $fevent['CalendarType'] = $event['state'];
+  
   $fevent['StartTime'] = vcaldate_to_timestamp( $event['dtstart'] );
   if ( $fevent['StartTime'] == '-1' ) return false;
   $fevent['EndTime'] = vcaldate_to_timestamp( $event['dtend'] );
@@ -2912,8 +2878,8 @@ function format_vcal( $event ) {
     $end = end( $RR );
     // No end in Palm is 12-31-2031
     if ( ( $end != '20311231' ) && ( $end != '#0' ) )
-      $fevent['Repeat']['Until'] = rrule_endtime ( $fevent['Repeat']['Frequency'],
-        $fevent['Repeat']['Interval'], $event['dtstart'], $end );
+      if ( preg_match ( '/^\#(.+)$/i', $end, $match ) )
+        $fevent['Repeat']['Count'] = $match[1];
     //.
     // Repeating exceptions?
     if ( ! empty ( $event['exdate'] ) ) {
