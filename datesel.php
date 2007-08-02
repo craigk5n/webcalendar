@@ -69,7 +69,6 @@ $mdays .= '
     ';
 
 echo <<<EOT
-    <br />
     <div align="center">
       <table class="aligncenter" width="100%">
         <tr>
