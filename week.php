@@ -75,10 +75,10 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     : ( is_weekend ( $days[$i] ) ? ' class="weekend"' : '' ) );
 
   $headerStr .= '
-              <th' . $class . '>'
+              <th ' . $class . '>'
    . ( $can_add ? html_for_add_icon ( $dateYmd, '', '', $user ) : '' )
-   . '<a href="day.php?' . $u_url . 'date=' . $dateYmd . $caturl . '">'
-   . $header[$i] . '</a></th>';
+   . '<p style="margin:.75em 0 0 0"><a href="day.php?' . $u_url . 'date=' . $dateYmd . $caturl . '">'
+   . $header[$i] . '</a></p></th>';
 
   $date = date ( 'Ymd', $days[$i] );
   $hour_arr = $rowspan_arr = $tk = array ();
