@@ -136,9 +136,9 @@ function do_v11b_updates () {
     //Old High=3, Low = 1....New Highest =1 Lowest =9
     //We will leave 3 alone and change 1,2 to 7,5
   dbi_execute ( 'UPDATE webcal_entry SET cal_priority = 7
-    WHERE cal_prioity = 1' );
+    WHERE cal_priority = 1' );
   dbi_execute ( 'UPDATE webcal_entry SET cal_priority = 5
-    WHERE cal_prioity = 2' );
+    WHERE cal_priority = 2' );
 }
 
 /* Convert site_extra reminders to webcal_reminders. */
