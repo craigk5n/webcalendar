@@ -22,7 +22,7 @@ echo display_admin_link () . '
       <a name="tabviews"></a>
       <div id="tabscontent_views">
         <a title="' . translate ( 'Add New View' )
- . '" href="views_edit.php" target="viewiframe" onclick="javascript:show'
+ . '" href="views_edit.php" target="viewiframe" onclick="showFrame'
  . '( \'viewiframe\' );">' . translate ( 'Add New View' ) . '</a>
         <ul>';
 
@@ -32,7 +32,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
     echo '
           <li><a title="' . htmlspecialchars ( $views[$i]['cal_name'] )
      . '" href="views_edit.php?id=' . $views[$i]['cal_view_id']
-     . '" target="viewiframe" onclick="javascript:show( \'viewiframe\' );">'
+     . '" target="viewiframe" onclick="showFrame( \'viewiframe\' );">'
      . htmlspecialchars ( $views[$i]['cal_name'] ) . '</a>';
     if ( $views[$i]['cal_is_global'] == 'Y' ) {
       echo '&nbsp;<abbr title="' . translate ( 'Global' ) . '">*</abbr>';

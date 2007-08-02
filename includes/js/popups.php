@@ -250,17 +250,17 @@ function infoinit () {
   entries = entries.concat ( document.getElementsBySelector ( 'tr.task' ) );
   for ( var i = 0; i < entries.length; i++ ) {
     entries[i].onmouseover = function ( event ) {
-      show ( event, 'eventinfo-' + this.id );
+      showPopUp ( event, 'eventinfo-' + this.id );
       return true;
     }
     entries[i].onmouseout = function () {
-      hide ( 'eventinfo-' + this.id );
+      hidePopUp ( 'eventinfo-' + this.id );
       return true;
     }
   }
 }
 
-function hide ( name ) {
+function hidePopUp ( name ) {
   idiv.style.visibility = ( ns4 ? 'hide' : 'hidden' );
   idiv = null;
 }
@@ -277,7 +277,7 @@ function gettip ( name ) {
           : 0 ) ) ) );
 }
 
-function show ( evt, name ) {
+function showPopUp ( evt, name ) {
   if ( idiv )
     hide ( name );
 
