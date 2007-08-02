@@ -831,11 +831,12 @@ if ( Doc::commentsEnabled () ) {
   $comment_text = '';
   for ( $i = 0; $i < $num_comment; $i++ ) {
     $cmt = $comList->getDoc ( $i );
+    user_load_variables ( $cmt->getLogin (), 'cmt_' );
     $comment_text .= '
           <strong>' . htmlspecialchars ( $cmt->getDescription () )
-     . '</strong> - ' . $cmt->getLogin () . ' @ '
+     . '</strong> - ' . $cmt_fullname . ' ' . translate ( 'at' ) . ' ' 
      . date_to_str ( $cmt->getModDate (), '', false, true ) . ' '
-     . display_time ( $cmt->getModTime () )
+     . display_time ( $cmt->getModTime (), 2 )
     // show delete link if user can delete
     . ( $is_admin || $login == $cmt->getLogin () ||
       user_is_assistant ( $login, $cmt->getLogin () ) || $login == $create_by ||
@@ -844,7 +845,8 @@ if ( Doc::commentsEnabled () ) {
        . '\' );">' . translate ( 'Delete' ) . '</a>]' : '' )// end show delete link
      . '<br />
           <blockquote id="eventcomment">' . nl2br ( activate_urls (
-        htmlspecialchars ( $cmt->getData () ) ) ) . '</blockquote>';
+        htmlspecialchars ( $cmt->getData () ) ) ) . '
+        </blockquote><div style="clear:both"></div>';
   }
 
   if ( $num_comment == 0 )
@@ -909,7 +911,7 @@ $rdate = ( $event_repeats ? '&amp;date=' . $event_date : '' );
 $u_url = ( ! empty ( $user ) && $login != $user ? "&amp;user=$user" : '' );
 
 echo '
-    </table><br />
+    </table>
     <ul class="nav">';
 
 // Show a printer-friendly link
