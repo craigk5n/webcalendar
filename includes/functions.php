@@ -3330,7 +3330,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $hour_arr[$ind] = '';
 
   $class = ( $login != $getLogin && strlen ( $getLogin )
-    ? 'layer' : ( $event->getStatus () == 'W' ? 'unapproved' : '' ) . 'entry' );
+    ? 'layer' : ( $event->getStatus () == 'W' ? 'unapproved' : '' ) ) . 'entry';
   // If we are looking at a view, then always use "entry".
   if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
       strstr ( $PHP_SELF, 'view_t.php' ) ||
@@ -3478,7 +3478,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
   }
 
   $class = ( $login != $getLoginStr && strlen ( $getLoginStr )
-    ? 'layer' : ( $event->getStatus () == 'W' ? 'unapproved' : '' ) . 'entry' );
+    ? 'layer' : ( $event->getStatus () == 'W' ? 'unapproved' : '' ) ) . 'entry';
   // If we are looking at a view, then always use "entry".
   if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
       strstr ( $PHP_SELF, 'view_r.php' ) ||
@@ -4541,7 +4541,7 @@ function print_entry ( $event, $date ) {
     return false;
 
   $class = ( $login != $loginStr && strlen ( $loginStr )
-    ? 'layerentry' : ( $event->getStatus () == 'W' ? 'unapproved' : '' ) . 'entry' );
+    ? 'layer' : ( $event->getStatus () == 'W' ? 'unapproved' : '' ) ) . 'entry';
 
   // If we are looking at a view, then always use "entry".
   if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
