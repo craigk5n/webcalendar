@@ -686,7 +686,7 @@ echo '  body {
     display:block;
   }
   .minical td.weekend,
-	#editentry th.weekend {
+  #editentry th.weekend {
     background:' . $GLOBALS['WEEKENDBG'] . ';
   }
   .minical td#today {
@@ -1289,6 +1289,11 @@ echo '  body {
   }
   #useriframe {
     height:280px;
+  }
+  #eventcomment {
+   padding:.25em;
+   border:1px solid ' . $GLOBALS['TABLEBG'] . ';
+   background:' . $CELLBG . ';
   }' . $end_style;
 
 ?>
