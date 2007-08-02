@@ -906,7 +906,7 @@ if ( empty ( $friendly ) )
   echo $printerStr;
 
 if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) &&
-    $event_status == 'W' && $readonly == 'N' ) {
+    $event_status == 'W' && $readonly == 'N' && $login != '__public__') {
   $approveStr = translate ( 'Approve/Confirm entry' );
   $rejectStr = translate ( 'Reject entry' );
   echo '
@@ -921,13 +921,13 @@ if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) &&
 }
 
 // TODO add these permissions to the UAC list
-$can_add_attach = ( Doc::attachmentsEnabled () &&
-  ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
-  ( $ALLOW_ATTACH_ANY == 'Y' && $login != '__public__' ) );
+$can_add_attach = ( Doc::attachmentsEnabled () && $login != '__public__' 
+  && ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
+  ( $ALLOW_ATTACH_ANY == 'Y' ) );
 
-$can_add_comment = ( Doc::commentsEnabled () &&
-  ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
-  ( $ALLOW_COMMENTS_ANY == 'Y' && $login != '__public__' ) );
+$can_add_comment = ( Doc::commentsEnabled () && $login != '__public__' 
+  && ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
+  ( $ALLOW_COMMENTS_ANY == 'Y' ) );
 
 if ( $can_add_attach && $event_status != 'D' ) {
   $addAttchStr = translate ( 'Add Attachment' );
