@@ -1,5 +1,16 @@
 $Id$
 Version 1.1.3+CVS (?? ??? 2006)
+ - Fixed bug [ 1737128 ] From notification to "not authorized"
+ - Fixed bug [ 1766291 ] mini-calender pop-up will not be displayed correctly
+ - Fixed bug [ 1754622 ] every 'normal' entry will be displayed as 'Priority: 2-High'
+ - Fixed bug [ 1765906 ] layered-entries don't show detailed pop-up infos via hover
+ - Fixed bug [ 1765924 ] improvements requested at view_entry.php refering 'Notes'
+ - Fixed bug [ 1765928 ] cannot add attachments to an entry
+ - Fixed bug [ 1765881 ] long day names not proper adjusted in week.php for English
+ - Fixed bug [ 1765970 ] enabled option "Display tasks in Calendars" will not work at
+ - Fixed bug [ 1765977 ] cannot edit any entries of users.php
+ - Fixed bug [ 1700505 ] repeating multiday events
+ - Fixed bug [ 1664815 ] Import Sum/Desc trunc if colon in text
  - Fixed bug [ 1765216 ] repeating matrix (by Day) didn't start with the adjust week-
  - Fixed bug [ 1755306 ] Option with 'Note' are not hidden if Entry is set to 'No'
  - Fixed bug [ 1756739 ] layout of system-settings and preference are not fexible dep
