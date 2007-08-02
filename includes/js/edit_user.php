@@ -2,7 +2,7 @@
 /* $Id$  */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
-$errStr = translate ( 'Error', true ) . "\":\n\n\" + \"";
+$errStr = translate ( 'Error', true ) . ' ';
 
 ?>
 var

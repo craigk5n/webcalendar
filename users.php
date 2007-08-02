@@ -36,7 +36,7 @@ if ( $is_admin ) {
   $doNUCS = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' );
 }
 $BodyX = 'onload="showTab();"';
-print_header ( array ( 'js/users.php/true', 'js/visible.php' ), '',
+print_header ( array ( 'js/visible.php', 'js/users.php/true' ), '',
   $BodyX, '', '', true );
 
 $taborder = array ( 'tabfor', 'tabbak','tabbak','tabbak','tabbak');
@@ -71,7 +71,7 @@ if ( $doUsers ) {
   $denotesStr = translate ( 'denotes administrative user' );
   if ( $is_admin ) {
     echo ( $admin_can_add_user ? '
-          <a href="edit_user.php" target="useriframe" onclick="javascript:show'
+          <a href="edit_user.php" target="useriframe" onclick="showFrame'
        . '( \'useriframe\' );">' . translate ( 'Add New User' )
        . '</a><br />' : '' ) . '
           <ul>';
@@ -81,7 +81,7 @@ if ( $doUsers ) {
       if ( $userlist[$i]['cal_login'] != '__public__' )
         echo '
             <li><a href="edit_user.php?user=' . $userlist[$i]['cal_login']
-         . '" target="useriframe" onclick="javascript:show( \'useriframe\' );">'
+         . '" target="useriframe" onclick="showFrame(\'useriframe\');">'
          . $userlist[$i]['cal_fullname'] . '</a>'
          . ( $userlist[$i]['cal_is_admin'] == 'Y' ? '&nbsp;<abbr title="'
            . $denotesStr . '">*</abbr>' : '' )

@@ -4,7 +4,7 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 $count = $lastrow = 0;
 $newGroupStr = translate ( 'Add New Group' );
-$targetStr = 'target="grpiframe" onclick="javascript:show( \'grpiframe\' );">';
+$targetStr = 'target="grpiframe" onclick="showFrame( \'grpiframe\' );">';
 
 ob_start ();
 
