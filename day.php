@@ -7,7 +7,7 @@ load_user_layers ( $user != $login && $is_nonuser_admin ? $user : '' );
 load_user_categories ();
 
 $wday = strftime ( '%w', mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
-$now = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
+$now = mktime ( 23, 59, 59, $thismonth, $thisday, $thisyear );
 $nowYmd = date ( 'Ymd', $now );
 
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 1, $thisyear );
@@ -42,7 +42,7 @@ $events = read_events ( empty ( $user )
 
 if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
   /* Pre-load tasks for quicker access */
-  $tasks = read_tasks ( ! empty ( $user ) && strlen ( $user )
+  $tasks = read_tasks ( ! empty ( $user ) && strlen ( $user ) && $is_assistant
     ? $user : $login, $now, $cat_id );
 
 $smallTasks = ( $DISPLAY_TASKS == 'Y' ? '<div id="minitask">
