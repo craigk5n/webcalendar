@@ -113,8 +113,8 @@ if ( $REQUEST_METHOD == 'POST' ) {
   if ( ! $res )
     die_miserable_death ( str_replace ( 'XXX', dbi_error (),
       translate ( 'Database error XXX.' ) ) );
-
-  $nextid = ( $row = dbi_fetch_row ( $res ) ? $row[0] + 1 :  1 );
+       $row = dbi_fetch_row ( $res );
+  $nextid = ( ! empty ( $row ) ? $row[0] + 1 :  1 );
   dbi_free_result ( $res );
 
   if ( $type == 'C' ) {
