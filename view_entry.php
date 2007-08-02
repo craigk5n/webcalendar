@@ -23,7 +23,7 @@ include 'includes/classes/CommentList.class';
 // Make sure this user is allowed to look at this calendar.
 $can_approve = $can_edit = $can_view = false;
 $is_my_event = false; // Is this user owner or participant?
-$is_confidential = $is_private = $rss_view = $unapproved = false;
+$is_confidential = $is_private = $rss_view  = false;
 $error = $eType = $event_status = '';
 $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
@@ -620,11 +620,6 @@ if ( $single_user == 'N' && $show_participants ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $participants[] = $row;
         $pname = $row[0];
-        if ( ( $login == $row[0] ||
-            access_user_calendar ( 'approve', $row[0] ) ||
-              ( $is_nonuser_admin || $is_assistant && !
-                empty ( $user ) && $user == $row[0] ) ) && $row[1] == 'W' )
-          $unapproved = true;
 
         if ( $row[1] == 'A' )
           $approved[$num_app++] = $pname;
@@ -911,7 +906,7 @@ if ( empty ( $friendly ) )
   echo $printerStr;
 
 if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) &&
-    ( $unapproved ) && $readonly == 'N' ) {
+    $event_status == 'W' && $readonly == 'N' ) {
   $approveStr = translate ( 'Approve/Confirm entry' );
   $rejectStr = translate ( 'Reject entry' );
   echo '
@@ -927,11 +922,11 @@ if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) &&
 
 // TODO add these permissions to the UAC list
 $can_add_attach = ( Doc::attachmentsEnabled () &&
-  $can_edit && ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
+  ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
   ( $ALLOW_ATTACH_ANY == 'Y' && $login != '__public__' ) );
 
 $can_add_comment = ( Doc::commentsEnabled () &&
-  $can_edit && ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
+  ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
   ( $ALLOW_COMMENTS_ANY == 'Y' && $login != '__public__' ) );
 
 if ( $can_add_attach && $event_status != 'D' ) {
