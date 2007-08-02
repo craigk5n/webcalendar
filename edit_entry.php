@@ -356,6 +356,9 @@ if ( ! empty ( $id ) && $id > 0 ) {
   // Get reminders.
   $reminder = getReminders ( $id );
   $reminder_offset = ( empty ( $reminder ) ? 0 : $reminder['offset'] );
+	
+	$rem_status = ( count ( $reminder ));
+  $rem_use_date = ( ! empty ( $reminder['date'] ) );
   // .
   // Get participants.
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user WHERE cal_id = ?
@@ -399,6 +402,10 @@ if ( ! empty ( $id ) && $id > 0 ) {
   // Reminder settings.
   $reminder_offset = ( $REMINDER_WITH_DATE == 'N' ? $REMINDER_OFFSET : 0 );
 
+	$rem_status = ( $REMINDER_DEFAULT == 'Y' );
+  $rem_use_date = ( $reminder_offset == 0 && $REMINDER_WITH_DATE == 'Y' );
+			
+			
   if ( $eType == 'task' )
     $hour = $WORK_DAY_START_HOUR;
   // .
@@ -1408,9 +1415,6 @@ if ( $can_edit ) {
 
 <!-- REMINDER INFO -->';
   if ( $DISABLE_REMINDER_FIELD != 'Y' ) {
-    $rem_status = ( count ( $reminder ) || $REMINDER_DEFAULT == 'Y' );
-    $rem_use_date = ( ! empty ( $reminder['date'] ) ||
-      ( $reminder_offset == 0 && $REMINDER_WITH_DATE == 'Y' ) );
 
     $rem_minutes = $reminder_offset;
     // Will be specified in total minutes.
@@ -1554,9 +1558,6 @@ if ( $can_edit ) {
     </fieldset>' );
   }
 
-  echo '
-    </div>
-<!-- End tabscontent -->';
 
   if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__public__' && !
       empty ( $ENABLE_CAPTCHA ) && $ENABLE_CAPTCHA == 'Y' ) {
@@ -1566,6 +1567,9 @@ if ( $can_edit ) {
     } else
       etranslate ( 'CAPTCHA Warning' );
   }
+  echo '
+    </div>
+<!-- End tabscontent -->';
 
   echo '
       <table>
