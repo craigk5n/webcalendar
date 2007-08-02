@@ -41,14 +41,6 @@ if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) )
 $hide_details = ( $login == '__public__' && !
   empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC == 'Y' );
 
-// If sent here from an email and not logged in, save URI and redirect to login.
-if ( empty ( $error ) ) {
-  $em = getGetValue ( 'em' );
-  if ( ! empty ( $em ) && empty ( $login ) ) {
-    remember_this_view ();
-    do_redirect ( 'login.php' );
-  }
-}
 
 // Check if we can display basic info for RSS FEED
 $rssuser = getGetValue ( 'rssuser' );
