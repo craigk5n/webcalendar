@@ -23,7 +23,7 @@
    sqlite_query($db, "CREATE TABLE webcal_view_user ( cal_view_id INT NOT NULL, cal_login VARCHAR(25) NOT NULL, PRIMARY KEY ( cal_view_id, cal_login ))");
    sqlite_query($db, "CREATE TABLE webcal_config ( cal_setting VARCHAR(50) NOT NULL, cal_value VARCHAR(100) NULL, PRIMARY KEY ( cal_setting ))");
    sqlite_query($db, "CREATE TABLE webcal_entry_log ( cal_log_id INT NOT NULL, cal_entry_id INT NOT NULL, cal_login VARCHAR(25) NOT NULL, cal_user_cal VARCHAR(25) NULL, cal_type CHAR(1) NOT NULL, cal_date INT NOT NULL, cal_time INT NULL, cal_text TEXT, PRIMARY KEY ( cal_log_id ))");
-   sqlite_query($db, "CREATE TABLE webcal_categories ( cat_id INT NOT NULL, cat_owner VARCHAR(25) NULL, cat_name VARCHAR(80) NOT NULL,cat_color VARCHAR(*) NULL, PRIMARY KEY ( cat_id ))");
+   sqlite_query($db, "CREATE TABLE webcal_categories ( cat_id INT NOT NULL, cat_owner VARCHAR(25) NULL, cat_name VARCHAR(80) NOT NULL,cat_color VARCHAR(8) NULL, PRIMARY KEY ( cat_id ))");
    sqlite_query($db, "CREATE TABLE webcal_asst ( cal_boss VARCHAR(25) NOT NULL, cal_assistant VARCHAR(25) NOT NULL, PRIMARY KEY ( cal_boss, cal_assistant ))");
    sqlite_query($db, "CREATE TABLE webcal_nonuser_cals ( cal_login VARCHAR(25) NOT NULL, cal_lastname VARCHAR(25) NULL, cal_firstname VARCHAR(25) NULL, cal_admin VARCHAR(25) NOT NULL, cal_is_public CHAR(1) DEFAULT 'N' NOT NULL, cal_url VARCHAR(255) DEFAULT NULL, PRIMARY KEY ( cal_login ))");
    sqlite_query($db, "CREATE TABLE webcal_import ( cal_import_id INT NOT NULL, cal_name VARCHAR(50) NULL, cal_date INT NOT NULL, cal_type VARCHAR(10) NOT NULL, cal_login VARCHAR(25) NULL, PRIMARY KEY ( cal_import_id ))");
