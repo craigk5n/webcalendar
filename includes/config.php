@@ -91,10 +91,22 @@ function do_config ( $fileLoc ) {
 
   // Open settings file to read.
   $settings = array ();
-  $fd = @fopen ( $fileLoc, 'rb', true );
-  if ( empty ( $fd ) && ! empty ( $includedir ) )
-    @fopen ( $includedir . '/settings.php', 'rb', true );
+  if ( file_exists ( $fileLog ) ) {
+    $fd = @fopen ( $fileLoc, 'rb', true );
+  }
+  if ( empty ( $fd ) && ! empty ( $includedir ) ) {
+    $fd = @fopen ( $includedir . '/settings.php', 'rb', true );
+    if ( $fd )
+      $fileLoc = $includedir . '/settings.php';
+  }
+  // If still empty.... use __FILE__.
   if ( empty ( $fd ) ) {
+    if ( preg_match ( "/(.*)config.php/", __FILE__, $matches ) ) {
+      $fileLoc = $matches[1] . "settings.php";
+      $fd = @fopen ( $fileLoc, 'rb', true );
+    }
+  }
+  if ( empty ( $fd ) || filesize ( $fileLoc ) == 0 ) {
     // There is no settings.php file.
     // Redirect user to install page if it exists.
     if ( file_exists ( 'install/index.php' ) ) {
