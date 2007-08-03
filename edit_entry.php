@@ -164,7 +164,10 @@ $exceptions = $inclusions = $reminder = array ();
 $byweekno = $byyearday = $catList = $catNames = $external_users = $rpt_count = '';
 
 $create_by = $login;
-$wkst = $weekday_names[$WEEK_START];
+
+//This is the default per RFC2445
+//We could override it and use $byday_names[$WEEK_START']
+$wkst = 'MO';
 
 $real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
   ( $is_assistant || $is_admin ) ) ? $user : $login;
@@ -1153,9 +1156,9 @@ if ( $can_edit ) {
             <span id="rptwkst">
               <select name="wkst">';
 			for ( $i=0; $i<=6;$i++ ) {
-			    echo '<option value="'.  $weekday_names[$i] .'" '
-				 . ( strcmp ( $wkst, $weekday_names[$i] ) == 0 ? $selected : '' )
-				 . '>' . translate ( $weekday_names[$i] ) . "</option>\n";			
+			    echo '<option value="'.  $byday_names[$i] .'" '
+				 . ( $wkst ==$byday_names[$i] ? $selected : '' )
+				 . '>' .translate ( $byday_names[$i] ) . "</option>\n";			
 			  }
      echo '</select>&nbsp;&nbsp;<label for="rptwkst">'
      . translate ( 'Week Start' ) . '</label>
