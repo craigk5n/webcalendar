@@ -152,6 +152,18 @@ function do_config ( $fileLoc ) {
   $db_persistent = ( preg_match ( '/(1|yes|true|on)/i',
       $settings['db_persistent'] ) ? '1' : '0' );
   $db_type = $settings['db_type'];
+
+  // If no db settings, then user has likely started install but not yet
+  // completed.  So, send them back to the install script.
+  if ( empty ( $db_type ) ) {
+    if ( file_exists ( 'install/index.php' ) ) {
+      header ( 'Location: install/index.php' );
+      exit;
+    } else
+      die_miserable_death (
+        translate ( 'Incomplete settings.php file...' ) );
+  }
+
   // Use 'db_cachedir' if found, otherwise look for 'cachedir'.
   if ( ! empty ( $settings['db_cachedir'] ) )
     dbi_init_cache ( $settings['db_cachedir'] );
