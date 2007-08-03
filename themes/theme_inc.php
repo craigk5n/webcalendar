@@ -9,7 +9,7 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) && !
 
 $no_preview = 'NO PREVIEW AVAILABLE';
 if ( function_exists ( 'translate' ) )
-  $no_preview = translate ( $no_preview );
+  $no_preview = translate ( 'NO PREVIEW AVAILABLE' );
 	
 if ( ! empty ( $PHP_SELF ) && preg_match ( '/\/themes\//', $PHP_SELF ) ) {
   $filename = basename ( $PHP_SELF, '.php' ) . '.gif';
