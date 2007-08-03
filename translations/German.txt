@@ -6,7 +6,7 @@
 # Last update: 26. Juli 2007
 #
 # $Id$
-# Translation last updated on 07-30-2007
+# Translation last updated on 08-03-2007
 
 
 ################################################################################
@@ -599,8 +599,6 @@ Number of times: Anzahl der Zeiten
 repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist&nbsp; &#34;1&#34;,  der Termin wird immer wiederholt. Wenn sie&nbsp; &#34;2&#34; ausw&auml;hlen wird der Termin jede 2. Woche wiederholt (wenn Art der Wiederholung auf W&ouml;chentlich gesetzt ist), jeden 2. Monat (wenn Art der Wiederholung auf Monatlich gesetzt ist), etc.
 Frequency: H&auml;ufigkeit
 Weekdays Only: Nur Wochentage
-MO: Mo
-SU: So
 Week Start: Wochenstart
 repeat-bydayextended-help: Erlaubt Datumsauswahl, die auf Tag der Woche basiert
 ByDay: Nach Tag
@@ -1240,6 +1238,7 @@ Percentage Complete: Prozentsatz erledigt
 External User: Externer Benutzer
 Update: Aktualisieren
 Attachments: Anh&auml;nge
+at: am
 comments: Anmerkung(en)
 Show: Zeigen
 Hide: Verstecken
@@ -1537,11 +1536,13 @@ no such user: kein solcher Benutzer
 ########################################
 # Page: includes/xcal.php
 #
+MO: Mo
 TU: Di
 WE: Mi
 TH: Do
 FR: Fr
 SA: Sa
+SU: So
 Interval: =
 Months: Monate
 Month Days: Monatstage
