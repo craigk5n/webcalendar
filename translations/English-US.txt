@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 07-23-2007
+# Translation last updated on 08-03-2007
 
 
 ################################################################################
@@ -357,7 +357,7 @@ Allow self-registration: Allow self-registration
 use-blacklist-help: Limit access to WebCalendar functions based on IP address
 Restrict self-registration to blacklist: Restrict self-registration to blacklist
 allow-self-registration-full-help: Allow new users to complete the self-registration process on-line
-Use self-registration email notifications: Generate passwords and send to new users. This should help eliminate spammers.
+Use self-registration email notifications: Generate passwords and send to new users
 allow-attachment-help: Allow users to add file attachments to events.
 Allow file attachments to events: Allow file attachments to events
 Admin and owner can always add attachments if enabled.: Admin and owner can always add attachments if enabled.
@@ -546,6 +546,9 @@ Removed: Removed
 #
 am: am
 pm: pm
+days: days
+hours: hours
+minutes: minutes
 You are not authorized to edit this task: You are not authorized to edit this task.
 task: task
 You are not authorized to edit this XXX.: You are not authorized to edit this XXX.
@@ -593,8 +596,6 @@ All day event: All day event
 Timezone Offset: Timezone Offset
 time-help: Specifies the time of the event. <ul><li>"Timed event" (for an event that is scheduled for a specific time on that day)</li><li>"Untimed event" (for an event this does not have a time (like a holiday)</li><li>"All day event" (for an event that takes all day (like being out of the office)</li></ul>
 duration-help: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
-hours: hours
-minutes: minutes
 end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
 Due Date: Due Date
@@ -611,6 +612,9 @@ Monthly: Monthly
 by day: by day
 by date: by date
 by position: by position
+Monthly (by day): Monthly (by day)
+Monthly (by date): Monthly (by date)
+Monthly (by position): Monthly (by position)
 Yearly: Yearly
 Manual: Manual
 Expert Mode: Expert Mode
@@ -622,8 +626,6 @@ Number of times: Number of times
 repeat-frequency-help: Specifies how often the event should repeat.
 Frequency: Frequency
 Weekdays Only: Weekdays Only
-MO: MO
-SU: SU
 Week Start: Week Start
 repeat-bydayextended-help: Allows date selection based on day of week.
 ByDay: ByDay
@@ -648,7 +650,6 @@ Send Reminder: Send Reminder
 When: When
 Use Date/Time: Use Date/Time
 Use Offset: Use Offset
-days: days
 Before: Before
 After: After
 Start: Start
@@ -1264,6 +1265,7 @@ Percentage Complete: Percentage Complete
 External User: External User
 Update: Update
 Attachments: Attachments
+at: at
 comments: comments
 Show: Show
 Hide: Hide
@@ -1536,6 +1538,16 @@ Welsh: Welsh
 Browser-defined: Browser-defined
 event: event
 journal: journal
+0: 0
+1: 1
+2: 2
+3: 3
+4: 4
+5: 5
+6: 6
+7: 7
+8: 8
+9: 9
 
 ########################################
 # Page: includes/user-imap.php
@@ -1551,11 +1563,13 @@ no such user: no such user
 ########################################
 # Page: includes/xcal.php
 #
+MO: MO
 TU: TU
 WE: WE
 TH: TH
 FR: FR
 SA: SA
+SU: SU
 Interval: Interval
 Months: Months
 Month Days: Month Days
@@ -1719,7 +1733,6 @@ Your settings have been saved: Your settings have been saved
 Error you must specify a\\nSingle-User Login: Error you must specify a\\nSingle-User Login
 Full Path (no backslashes): Full Path (no backslashes)
 The password contains illegal characters.: The password contains illegal characters.
-1: 1
 This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
 PHP Version Check: PHP Version Check
 Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
@@ -1736,7 +1749,6 @@ The file permissions of the includes directory are set...: The file permissions 
 Your settings.php file appears to be valid: Your <b>settings.php</b> file appears to be valid
 Configuration Wizard Password: Configuration Wizard Password
 Create Settings File Password: Create Settings File Password
-2: 2
 db setup directions...: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
 Database Status: Database Status
 Supported databases for your PHP installation: Supported databases for your PHP installation
@@ -1754,7 +1766,6 @@ go back to the previous page and correct your settings: go back to the previous 
 The database requires some data input: The database requires some data input
 Click Update Database to complete the upgrade: Click <b>Update Database</b> to complete the upgrade
 This appears to be an upgrade from version: This appears to be an upgrade from version
-3: 3
 In this section we will perform the required database changes to bring your database up to the required level: In this section we will perform the required database changes to bring your database up to the required level
 If you are using a fully supported database, this step will be performed automatically for you: If you are using a fully supported database, this step will be performed automatically for you
 If not, the required SQL can be displayed and you should be able: If not, the required SQL can be displayed and you should be able
@@ -1768,7 +1779,6 @@ Install Database: Install Database
 Update Database: Update Database
 Display Required SQL: Display Required SQL
 Return to previous page after processing SQL.: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
-4: 4
 This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
 Timezone Conversion: Timezone Conversion
 It appears that you have: It appears that you have
