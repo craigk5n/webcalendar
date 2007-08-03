@@ -88,7 +88,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG,
   $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR,
-  $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
+  $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG, $SCRIPT;
 
   $lang = $ret = '';
   // Remember this view if the file is a view_x.php script.
@@ -111,19 +111,23 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $appStr = generate_application_name ( true );
 
   $ret .= send_doctype ( $appStr );
+  
+  $ret .= ( ! $disableAJAX ? '
+    <script type="text/javascript" src="includes/js/prototype.js"></script>'
+    : '' );
   // Includes needed for the top menu.
   if ( $MENU_ENABLED == 'Y' ) {
     $MENU_THEME = ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none'
       ? $MENU_THEME : 'default' );
+    $menu_theme =  ( $SCRIPT == 'admin.php' ? $GLOBALS['sys_MENU_THEME'] :
+      $MENU_THEME );
     $ret .= '
     <script type="text/javascript" src="includes/menu/JSCookMenu.js"></script>
-    <script type="text/javascript" src="includes/menu/themes/' . $MENU_THEME
+    <script type="text/javascript" src="includes/menu/themes/' . $menu_theme
      . '/theme.js"></script>';
   }
 
-  $ret .= ( ! $disableAJAX ? '
-    <script type="text/javascript" src="includes/js/prototype.js"></script>'
-    : '' ) . ( ! $disableUTIL ? '
+  $ret .= ( ! $disableUTIL ? '
     <script type="text/javascript" src="includes/js/util.js"></script>' : '' );
   // Any other includes?
   if ( is_array ( $includes ) ) {
@@ -146,7 +150,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     include_once 'includes/menu/index.php';
     $ret .= '
     <link rel="stylesheet" type="text/css" href="includes/menu/themes/'
-     . $MENU_THEME . '/theme.css" />';
+     . $menu_theme . '/theme.css" />';
   }
   // If loading admin.php, we will not use an exrternal file because we need to
   // override the global colors and this is impossible if loading external file.
