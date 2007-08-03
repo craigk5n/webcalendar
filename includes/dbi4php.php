@@ -76,7 +76,7 @@
 
 function dbi_connect ( $host, $login, $password, $database, $lazy = true ) {
   global $db_cache_count, $db_connection_info, $db_query_count,
-  $old_textlimit, $old_textsize;
+  $old_textlimit, $old_textsize, $db_sqlite_error_str;
 
   $db_cache_count = $db_query_count = 0;
 
@@ -198,11 +198,11 @@ function dbi_connect ( $host, $login, $password, $database, $lazy = true ) {
     return $c;
   } elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite' ) == 0 ) {
     $c = ( $GLOBALS['db_persistent']
-      ? sqlite_popen ( $database, 0666, $sqliteerror )
-      : sqlite_open ( $database, 0666, $sqliteerror ) );
+      ? sqlite_popen ( $database, 0666, $db_sqlite_error_str )
+      : sqlite_open ( $database, 0666, $db_sqlite_error_str ) );
 
     if ( ! $c ) {
-      echo translate ( 'Error connecting to database' ) . ".\n";
+      echo translate ( 'Error connecting to database' ) . ": " . $db_sqlite_error_str . ".\n";
       exit;
     }
     $db_connection_info['connected'] = true;
@@ -605,9 +605,14 @@ function dbi_error () {
     $ret = db2_conn_errormsg ();
     if ( $ret == '' )
       $ret = db2_stmt_errormsg ();
-  } elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite' ) == 0 )
-    $ret = sqlite_last_error ( $GLOBALS['sqlite_c'] );
-  else
+  } elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite' ) == 0 ) {
+    if ( empty ( $GLOBALS['db_sqlite_error_str'] ) ) {
+      $ret = sqlite_last_error ( $GLOBALS['sqlite_c'] );
+    } else {
+      $ret = $GLOBALS['db_sqlite_error_str'];
+      $GLOBALS['db_sqlite_error_str'] = '';
+    }
+  } else
     $ret = 'dbi_error (): ' . translate ( 'db_type not defined.' );
 
   return ( strlen ( $ret ) ? $ret : translate ( 'Unknown error.' ) );
