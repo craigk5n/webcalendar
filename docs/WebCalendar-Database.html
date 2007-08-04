@@ -47,7 +47,7 @@
         <a href="http://www.k5n.us/webcalendar.php">http://www.k5n.us/webcalendar.php</a></p>
       <p><label>Author:</label><a href="http://www.k5n.us">Craig Knudsen</a>,
         <a href="mailto:&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;">&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;</a></p>
-      <p></p><label>Version:</label>v1.1.1, &nbsp; $Id$</p>
+      <p></p><label>Version:</label>Unknown Version, &nbsp; $Id$</p>
     </div>
     <blockquote>
       <p>This file is generated from <tt>tables-mysql.sql</tt>. Below are the
@@ -83,6 +83,7 @@
       <li><a href="#webcal_report">webcal_report</a></li>
       <li><a href="#webcal_report_template">webcal_report_template</a></li>
       <li><a href="#webcal_site_extras">webcal_site_extras</a></li>
+      <li><a href="#webcal_timezones">webcal_timezones</a></li>
       <li><a href="#webcal_user">webcal_user</a></li>
       <li><a href="#webcal_user_layers">webcal_user_layers</a></li>
       <li><a href="#webcal_user_pref">webcal_user_pref</a></li>
@@ -92,13 +93,13 @@
     </ul>
     <hr />
     <br /><br />
-
+    
     <h3><a name="webcal_access_function">webcal_access_function</a></h3>
     <blockquote>
-
-      Specifies what WebCalendar functions a user can access. Each function
+      
+      Specifies what WebCalendar functions a user can access.  Each function
       has a corresponding numeric value (specified in the file
-      includes/access.php). For example, view event is 0, so the very first
+      includes/access.php).  For example, view event is 0, so the very first
       character in the cal_permissions column is either a "Y" if this user
       can view events or a "N" if they cannot.
       <br /><br />
@@ -114,7 +115,7 @@
         <tr>
           <td><span>cal_login</span></td>
           <td>VARCHAR</td>
-          <td>50</td>
+          <td>25</td>
           <td>N</td>
           <td>&nbsp;</td>
           <td>user login</td>
@@ -130,10 +131,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_access_user">webcal_access_user</a></h3>
     <blockquote>
-
+      
       Specifies which users can access another user's calendar.
       <br /><br />
       <table summary="Schema for table webcal_access_user">
@@ -148,7 +149,7 @@
         <tr>
           <td><span>cal_login</span></td>
           <td>VARCHAR</td>
-          <td>50</td>
+          <td>25</td>
           <td>N</td>
           <td>&nbsp;</td>
           <td>the current user who is attempting to look at another user's calendar</td>
@@ -156,7 +157,7 @@
         <tr>
           <td><span>cal_other_user</span></td>
           <td>VARCHAR</td>
-          <td>50</td>
+          <td>25</td>
           <td>N</td>
           <td>&nbsp;</td>
           <td>the login of the other user whose calendar the current user wants to access</td>
@@ -212,10 +213,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_asst">webcal_asst</a></h3>
     <blockquote>
-
+      
       Define assitant/boss relationship.
       <br /><br />
       <table summary="Schema for table webcal_asst">
@@ -246,10 +247,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_blob">webcal_blob</a></h3>
     <blockquote>
-
+      
       This table stores event attachments and comments.
       <br /><br />
       <table summary="Schema for table webcal_blob">
@@ -352,11 +353,11 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_categories">webcal_categories</a></h3>
     <blockquote>
-
-      Defines user categories. Categories can be specific to a user or global.
+      
+      Defines user categories.  Categories can be specific to a user or global.
       When a category is global, the cat_owner field will be NULL.
       (Only an admin user can create a global category.)
       <br /><br />
@@ -393,13 +394,21 @@
           <td>&nbsp;</td>
           <td>category name</td>
         </tr>
+        <tr>
+          <td>cat_color</td>
+          <td>VARCHAR</td>
+          <td>8</td>
+          <td>Y</td>
+          <td>&nbsp;</td>
+          <td>RGB color for category</td>
+        </tr>
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_config">webcal_config</a></h3>
     <blockquote>
-
+      
       System settings (set by the admin interface in admin.php)
       <br /><br />
       <table summary="Schema for table webcal_config">
@@ -430,14 +439,14 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_entry">webcal_entry</a></h3>
     <blockquote>
-
-      Defines a calendar event. Each event in the system has one entry in
+      
+      Defines a calendar event.  Each event in the system has one entry in
       this table unless the event starts before midnight and ends after
       midnight. In that case a secondary event will be created with
-      cal_ext_for_id set to the cal_id of the original entry. The following
+      cal_ext_for_id set to the cal_id of the original entry.  The following
       tables contain additional information about each event:
       <ul>
         <li><a href="#webcal_entry_user">webcal_entry_user</a>
@@ -558,7 +567,7 @@
           <td>INT</td>
           <td>&nbsp;</td>
           <td>Y</td>
-          <td>2</td>
+          <td>5</td>
           <td>event priority: 1=Low, 2=Med, 3=High</td>
         </tr>
         <tr>
@@ -588,7 +597,7 @@
         <tr>
           <td>cal_location</td>
           <td>varchar</td>
-          <td>50</td>
+          <td>100</td>
           <td>Y</td>
           <td>NULL</td>
           <td>location of event</td>
@@ -620,10 +629,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_entry_categories">webcal_entry_categories</a></h3>
     <blockquote>
-
+      
       Contains category foreign keys
       to enable multiple categories for each event or task
       <br /><br />
@@ -671,14 +680,14 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_entry_ext_user">webcal_entry_ext_user</a></h3>
     <blockquote>
-
+      
       This table associates one or more external users (people who do not
-      have a WebCalendar login) with an event by the event id. An event must
-      still have at least one WebCalendar user associated with it. This table
-      is not used unless external users are enabled* in system settings. The
+      have a WebCalendar login) with an event by the event id.  An event must
+      still have at least one WebCalendar user associated with it.  This table
+      is not used unless external users are enabled* in system settings.  The
       event can be found in <a href="#webcal_entry">webcal_entry</a>.
       <br /><br />
       <table summary="Schema for table webcal_entry_ext_user">
@@ -717,10 +726,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_entry_log">webcal_entry_log</a></h3>
     <blockquote>
-
+      
       Activity log for an event.
       <br /><br />
       <table summary="Schema for table webcal_entry_log">
@@ -770,13 +779,13 @@
           <td>1</td>
           <td>N</td>
           <td>&nbsp;</td>
-          <td>log types:
-            <ul>
-              <li>C: Created</li>
-              <li>A: Approved/Confirmed by user</li>
-              <li>R: Rejected by user</li>
-              <li>U: Updated by user</li>
-              <li>M: Mail Notification sent</li>
+          <td>log types: 
+            <ul> 
+              <li>C: Created</li> 
+              <li>A: Approved/Confirmed by user</li> 
+              <li>R: Rejected by user</li> 
+              <li>U: Updated by user</li> 
+              <li>M: Mail Notification sent</li> 
               <li>E: Reminder sent</li> </ul></td>
         </tr>
         <tr>
@@ -806,10 +815,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_entry_repeats">webcal_entry_repeats</a></h3>
     <blockquote>
-
+      
       Defines repeating info about an event.
       The event is defined in <a href="#webcal_entry">webcal_entry</a>.
       <br /><br />
@@ -836,13 +845,13 @@
           <td>20</td>
           <td>Y</td>
           <td>&nbsp;</td>
-          <td>type of repeating:
-            <ul>
-              <li>daily - repeats daily</li>
-              <li>monthlyByDate - repeats on same day of the month</li>
-              <li>monthlyBySetPos - repeats based on position within other ByXXX values</li>
-              <li>monthlyByDay - repeats on specified weekday (2nd Monday, for example)</li>
-              <li>weekly - repeats every week</li>
+          <td>type of repeating: 
+            <ul> 
+              <li>daily - repeats daily</li> 
+              <li>monthlyByDate - repeats on same day of the month</li> 
+              <li>monthlyBySetPos - repeats based on position within other ByXXX values</li> 
+              <li>monthlyByDay - repeats on specified weekday (2nd Monday, for example)</li> 
+              <li>weekly - repeats every week</li> 
               <li>yearly - repeats on same date every year</li> </ul></td>
         </tr>
         <tr>
@@ -944,10 +953,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_entry_repeats_not">webcal_entry_repeats_not</a></h3>
     <blockquote>
-
+      
       This table specifies which dates in a repeating event have either been
       deleted, included, or replaced with a replacement event for that day.
       When replaced, the cal_group_id (I know... not the best name, but it
@@ -991,10 +1000,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_entry_user">webcal_entry_user</a></h3>
     <blockquote>
-
+      
       This table associates one or more users with an event by the event id.
       The event can be found in <a href="#webcal_entry">webcal_entry</a>.
       <br /><br />
@@ -1029,13 +1038,13 @@
           <td>1</td>
           <td>Y</td>
           <td>'A'</td>
-          <td>status of event for this user:
-            <ul>
-              <li>A=Accepted</li>
-              <li>C=Completed</li>
-              <li>D=Deleted</li>
-              <li>P=In-Progress</li>
-              <li>R=Rejected/Declined</li>
+          <td>status of event for this user: 
+            <ul> 
+              <li>A=Accepted</li> 
+              <li>C=Completed</li> 
+              <li>D=Deleted</li> 
+              <li>P=In-Progress</li> 
+              <li>R=Rejected/Declined</li> 
               <li>W=Waiting</li> </ul></td>
         </tr>
         <tr>
@@ -1057,11 +1066,11 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_group">webcal_group</a></h3>
     <blockquote>
-
-      Define a group. Group members can be found in
+      
+      Define a group.  Group members can be found in
       <a href="#webcal_group_user">webcal_group_user</a>.
       <br /><br />
       <table summary="Schema for table webcal_group">
@@ -1108,11 +1117,11 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_group_user">webcal_group_user</a></h3>
     <blockquote>
-
-      Specify users in a group. The group is defined in
+      
+      Specify users in a group.  The group is defined in
       <a href="#webcal_group">webcal_group</a>.
       <br /><br />
       <table summary="Schema for table webcal_group_user">
@@ -1143,10 +1152,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_import">webcal_import</a></h3>
     <blockquote>
-
+      
       Used to track import data (one row per import)
       <br /><br />
       <table summary="Schema for table webcal_import">
@@ -1201,10 +1210,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_import_data">webcal_import_data</a></h3>
     <blockquote>
-
+      
       Used to track import data (one row per event)
       <br /><br />
       <table summary="Schema for table webcal_import_data">
@@ -1259,10 +1268,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_nonuser_cals">webcal_nonuser_cals</a></h3>
     <blockquote>
-
+      
       Defines non-user calendars.
       <br /><br />
       <table summary="Schema for table webcal_nonuser_cals">
@@ -1325,10 +1334,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_reminders">webcal_reminders</a></h3>
     <blockquote>
-
+      
       Stores information about reminders
       <br /><br />
       <table summary="Schema for table webcal_reminders">
@@ -1423,10 +1432,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_report">webcal_report</a></h3>
     <blockquote>
-
+      
       Defines a custom report created by a user.
       <br /><br />
       <table summary="Schema for table webcal_report">
@@ -1492,27 +1501,27 @@
           <td>&nbsp;</td>
           <td>N</td>
           <td>&nbsp;</td>
-          <td>time range for report:
-            <ul>
-              <li>0 = tomorrow</li>
-              <li>1 = today</li>
-              <li>2 = yesterday</li>
-              <li>3 = day before yesterday</li>
-              <li>10 = next week</li>
-              <li>11 = current week</li>
-              <li>12 = last week</li>
-              <li>13 = week before last</li>
-              <li>20 = next week and week after</li>
-              <li>21 = current week and next week</li>
-              <li>22 = last week and this week</li>
-              <li>23 = last two weeks</li>
-              <li>30 = next month</li>
-              <li>31 = current month</li>
-              <li>32 = last month</li>
-              <li>33 = month before last</li>
-              <li>40 = next year</li>
-              <li>41 = current year</li>
-              <li>42 = last year</li>
+          <td>time range for report: 
+            <ul> 
+              <li>0 = tomorrow</li> 
+              <li>1 = today</li> 
+              <li>2 = yesterday</li> 
+              <li>3 = day before yesterday</li> 
+              <li>10 = next week</li> 
+              <li>11 = current week</li> 
+              <li>12 = last week</li> 
+              <li>13 = week before last</li> 
+              <li>20 = next week and week after</li> 
+              <li>21 = current week and next week</li> 
+              <li>22 = last week and this week</li> 
+              <li>23 = last two weeks</li> 
+              <li>30 = next month</li> 
+              <li>31 = current month</li> 
+              <li>32 = last month</li> 
+              <li>33 = month before last</li> 
+              <li>40 = next year</li> 
+              <li>41 = current year</li> 
+              <li>42 = last year</li> 
               <li>43 = year before last</li> </ul></td>
         </tr>
         <tr>
@@ -1566,20 +1575,20 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_report_template">webcal_report_template</a></h3>
     <blockquote>
-
+      
       Defines one of the templates used for a report.
       Each report has three templates:
       <ol>
       <li>Page template - Defines the entire page (except for header and
-        footer). The following variables can be defined:
+        footer).  The following variables can be defined:
         <ul>
           <li>${days}<sup>*</sup>
             - the HTML of all dates (generated from the Date template)</li>
         </ul></li>
-      <li>Date template - Defines events for one day. If the report
+      <li>Date template - Defines events for one day.  If the report
         is for a week or month, then the results of each day will be
         concatenated and used as the ${days} variable in the Page template.
         The following variables can be defined:
@@ -1629,10 +1638,10 @@
           <td>1</td>
           <td>N</td>
           <td>&nbsp;</td>
-          <td>type of template:
-            <ul>
-              <li>'P': page template represents entire document</li>
-              <li>'D': date template represents a single day of events</li>
+          <td>type of template: 
+            <ul> 
+              <li>'P': page template represents entire document</li> 
+              <li>'D': date template represents a single day of events</li> 
               <li>'E': event template represents a single event</li> </ul></td>
         </tr>
         <tr>
@@ -1646,10 +1655,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_site_extras">webcal_site_extras</a></h3>
     <blockquote>
-
+      
       This table holds data for site extra fields
       (customized in site_extra.php).
       <br /><br />
@@ -1713,10 +1722,58 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
+    <h3><a name="webcal_timezones">webcal_timezones</a></h3>
+    <blockquote>
+      <br /><br />
+      <table summary="Schema for table webcal_timezones">
+        <tr>
+          <th>Column Name</th>
+          <th>Type</th>
+          <th>Length</th>
+          <th>Null</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><span>tzid</span></td>
+          <td>varchar</td>
+          <td>100</td>
+          <td>N</td>
+          <td>''</td>
+          <td>Unique name of timezone, try to use Olsen naming conventions</td>
+        </tr>
+        <tr>
+          <td>dtstart</td>
+          <td>varchar</td>
+          <td>25</td>
+          <td>Y</td>
+          <td>NULL</td>
+          <td>earliest date this timezone represents YYYYMMDDTHHMMSSZ format</td>
+        </tr>
+        <tr>
+          <td>dtend</td>
+          <td>varchar</td>
+          <td>25</td>
+          <td>Y</td>
+          <td>NULL</td>
+          <td>last date this timezone represents YYYYMMDDTHHMMSSZ format</td>
+        </tr>
+        <tr>
+          <td>vtimezone</td>
+          <td>text</td>
+          <td>&nbsp;</td>
+          <td>Y</td>
+          <td>&nbsp;</td>
+          <td>Complete VTIMEZONE text gleaned from imported ics files</td>
+        </tr>
+      </table>
+    </blockquote>
+    <br /><br />
+    
     <h3><a name="webcal_user">webcal_user</a></h3>
     <blockquote>
-
+      
       Defines a WebCalendar user.
       <br /><br />
       <table summary="Schema for table webcal_user">
@@ -1742,7 +1799,7 @@
           <td>32</td>
           <td>Y</td>
           <td>&nbsp;</td>
-          <td>the user's password. (not used for http or ldap authentication)</td>
+          <td>the user's password. (not used for http)</td>
         </tr>
         <tr>
           <td>cal_lastname</td>
@@ -1776,13 +1833,61 @@
           <td>&nbsp;</td>
           <td>user's email address</td>
         </tr>
+        <tr>
+          <td>cal_enabled</td>
+          <td>CHAR</td>
+          <td>1</td>
+          <td>Y</td>
+          <td>'Y'</td>
+          <td>allow admin to disable account ('Y' = yes, 'N' = no)</td>
+        </tr>
+        <tr>
+          <td>cal_telephone</td>
+          <td>VARCHAR</td>
+          <td>50</td>
+          <td>Y</td>
+          <td>&nbsp;</td>
+          <td>user's telephone</td>
+        </tr>
+        <tr>
+          <td>cal_address</td>
+          <td>VARCHAR</td>
+          <td>75</td>
+          <td>Y</td>
+          <td>&nbsp;</td>
+          <td>user's address</td>
+        </tr>
+        <tr>
+          <td>cal_title</td>
+          <td>VARCHAR</td>
+          <td>75</td>
+          <td>Y</td>
+          <td>&nbsp;</td>
+          <td>user's title</td>
+        </tr>
+        <tr>
+          <td>cal_birthday</td>
+          <td>INT</td>
+          <td>&nbsp;</td>
+          <td>Y</td>
+          <td>&nbsp;</td>
+          <td>user's birthday</td>
+        </tr>
+        <tr>
+          <td>cal_last_login</td>
+          <td>INT</td>
+          <td>&nbsp;</td>
+          <td>Y</td>
+          <td>&nbsp;</td>
+          <td>user's last log in date</td>
+        </tr>
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_user_layers">webcal_user_layers</a></h3>
     <blockquote>
-
+      
       Define layers for a user.
       <br /><br />
       <table summary="Schema for table webcal_user_layers">
@@ -1837,10 +1942,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_user_pref">webcal_user_pref</a></h3>
     <blockquote>
-
+      
       Specify preferences for a user.
       Most preferences are set via pref.php.
       Values in this table are loaded after system settings
@@ -1882,11 +1987,11 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_user_template">webcal_user_template</a></h3>
     <blockquote>
-
-      This table stores the custom header/stylesheet/trailer. If configured
+      
+      This table stores the custom header/stylesheet/trailer.  If configured
       properly, each user (or nonuser cal) can have their own custom
       header/trailer.
       <br /><br />
@@ -1926,12 +2031,12 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_view">webcal_view</a></h3>
     <blockquote>
-
+      
       A "view" allows a user to put the calendars of multiple users all on one
-      page. A "view" is valid only for the owner (cal_owner) of the view.
+      page.  A "view" is valid only for the owner (cal_owner) of the view.
       Users for the view are in
       <a href="#webcal_view_user">webcal_view_user</a>.
       <br /><br />
@@ -1987,10 +2092,10 @@
       </table>
     </blockquote>
     <br /><br />
-
+    
     <h3><a name="webcal_view_user">webcal_view_user</a></h3>
     <blockquote>
-
+      
       Specify users in a view. See <a href="#webcal_view">webcal_view</a>.
       <br /><br />
       <table summary="Schema for table webcal_view_user">
