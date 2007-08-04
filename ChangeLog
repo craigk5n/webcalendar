@@ -1,5 +1,5 @@
 $Id$
-Version 1.1.3 (04 Aug 2006)
+Version 1.1.3 (04 Aug 2007)
  - Fixed bug: when upgrading from 1.0.5 to 1.1.X, a bad cookie session can
    cause PHP to crash on some systems.
  - If settings.php is size 0, then redirect to install page (because install
