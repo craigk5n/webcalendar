@@ -47,7 +47,7 @@ array ( "INSERT INTO webcal_view ( cal_view_id, cal_is_global ) VALUES( -999, 'Z
         "v0.9.43 - v1.0RC", "upgrade_v1.0RC3"),
 array ( "INSERT INTO webcal_access_function ( cal_login, cal_permissions ) VALUES( 'zzz','zzz' )",
         "DELETE FROM webcal_access_function WHERE cal_login = 'zzz'",
-        'v1.0RC3- v1.0.3', 'upgrade_v1.1.0-CVS'),
+        'v1.0RC3 - v1.0.5', 'upgrade_v1.1.0-CVS'),
 array ( "INSERT INTO webcal_user_template ( cal_login, cal_type ) VALUES( 'zzz', 'Z' )",
         "DELETE FROM webcal_user_template WHERE cal_login = 'zzz'",
         'v1.1.0-CVS', 'upgrade_v1.1.0a-CVS'),
