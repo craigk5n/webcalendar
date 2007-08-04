@@ -278,58 +278,61 @@ if ( ! empty ( $action ) && $action == 'switch' ) {
 
 // We're doing a database installation yea ha!
 if ( ! empty ( $action ) &&  $action == 'install' ){
-    // We'll grab database settings from settings.php
-    $db_persistent = false;
-    $db_type = $settings['db_type'];
-    $db_host = $settings['db_host'];
-    $db_database = $settings['db_database'];
-    $db_login = $settings['db_login'];
-    $db_password = $settings['db_password'];
+  // We'll grab database settings from settings.php
+  $db_persistent = false;
+  $db_type = $settings['db_type'];
+  $db_host = $settings['db_host'];
+  $db_database = $settings['db_database'];
+  $db_login = $settings['db_login'];
+  $db_password = $settings['db_password'];
+  $real_db = $db_database;
+  if ( $db_type == 'sqlite' )
+    $real_db = get_full_include_path ( $db_database );
 
-    // We might be displaying sql only
+  // We might be displaying sql only
   $display_sql = getPostValue('display_sql');
 
-    $c = dbi_connect ( $db_host, $db_login,
-      $db_password, $db_database, false );
+  $c = dbi_connect ( $db_host, $db_login,
+    $db_password, $real_db, false );
   // It's possible that the tables were created manually
   // and we just want to do the database population routines
   if ( $c && ! empty ( $_SESSION['install_file'] )  ) {
-   $sess_install = $_SESSION['install_file'];
+    $sess_install = $_SESSION['install_file'];
     $install_filename = ( $sess_install == 'tables' ? 'tables':'upgrade');
     switch ( $db_type ) {
-       case 'mysql':
-      $install_filename .= '-mysql.sql';
+      case 'mysql':
+        $install_filename .= '-mysql.sql';
         break;
-       case 'mysqli':
-      $install_filename .= '-mysql.sql';
+      case 'mysqli':
+        $install_filename .= '-mysql.sql';
         break;
-       case 'mssql':
-      $install_filename .= '-mssql.sql';
+      case 'mssql':
+        $install_filename .= '-mssql.sql';
         break;
-       case 'ibm_db2':
-      $install_filename .= '-db2.sql';
+      case 'ibm_db2':
+        $install_filename .= '-db2.sql';
         break;
-     case 'oracle':
-      $install_filename .= '-oracle.sql';
-      break;
-       case 'ibase':
-      $install_filename .= '-ibase.sql';
+      case 'oracle':
+        $install_filename .= '-oracle.sql';
         break;
-       case 'postgresql':
-      $install_filename .= '-postgres.sql';
+      case 'ibase':
+        $install_filename .= '-ibase.sql';
         break;
-     case 'odbc':
-       $underlying_db = "-" . $_SESSION['odbc_db'] . '.sql';
-      $install_filename .= $underlying_db;
-      break;
-     case 'sqlite':
-       include_once 'sql/tables-sqlite.php';
-      populate_sqlite_db ( $db_database, $c );
-      $install_filename =  '';
-      break;
-     default:
+      case 'postgresql':
+        $install_filename .= '-postgres.sql';
+        break;
+      case 'odbc':
+        $underlying_db = "-" . $_SESSION['odbc_db'] . '.sql';
+        $install_filename .= $underlying_db;
+        break;
+      case 'sqlite':
+        include_once 'sql/tables-sqlite.php';
+        populate_sqlite_db ( $real_db, $c );
+        $install_filename =  '';
+        break;
+      default:
     }
-     db_populate ( $install_filename, $display_sql );
+    db_populate ( $install_filename, $display_sql );
   }
   if ( empty ( $display_sql ) ){
    //Convert passwords to md5 hashes if needed
@@ -392,8 +395,11 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
 
    //disable warnings
    show_errors ();
+   $real_db = $db_database;
+   if ( $db_type == 'sqlite' )
+     $real_db = get_full_include_path ( $db_database );
    $c = dbi_connect ( $db_host, $db_login,
-     $db_password, $db_database, false );
+     $db_password, $real_db, false );
 
     //enable warnings
    show_errors ( true);
@@ -527,10 +533,13 @@ if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['vali
     $db_login = $settings['db_login'];
     $db_password = $settings['db_password'];
     $db_cachedir = getPostValue ( 'form_db_cachedir' );
-  // Avoid false visibilty of single user login
-  $onload = 'auth_handler();';
+    // Avoid false visibilty of single user login
+    $onload = 'auth_handler();';
+    $real_db = $db_database;
+    if ( $db_type == 'sqlite' )
+      $real_db = get_full_include_path ( $db_database );
     $c = dbi_connect ( $db_host, $db_login,
-      $db_password, $db_database, false );
+      $db_password, $real_db, false );
 
     if ( $c ) {
         $ret = convert_server_to_GMT ( $tzoffset, $cutoffdate );
@@ -643,8 +652,11 @@ if ( ! empty ( $y ) ) {
  $db_type = $settings['db_type'];
  $_SESSION['application_name']  = getPostValue ( 'form_application_name' );
  $_SESSION['server_url']  = getPostValue ( 'form_server_url' );
+ $db_database = $settings['db_database'];
+ if ( $db_type == 'sqlite' )
+   $db_database = get_full_include_path ( $db_database );
   $c = dbi_connect ( $settings['db_host'], $settings['db_login'],
-    $settings['db_password'], $settings['db_database'], false );
+    $settings['db_password'], $db_database, false );
  if ( $c ) {
    if ( isset ( $_SESSION['application_name'] ) ) {
     dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'APPLICATION_NAME'");

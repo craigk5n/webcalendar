@@ -77,6 +77,21 @@ function db_error ( $doExit = false, $sql = '' ) {
     return $ret;
 }
 
+/**
+  * Get the full path to a file located in the webcalendar includes
+  * directory.
+  */
+function get_full_include_path ( $filename )
+{
+  if ( preg_match ( "/(.*)config.php/", __FILE__, $matches ) ) {
+    $fileLoc = $matches[1] . $filename;
+    return $fileLoc;
+  } else {
+    // Oops.  This file is not named config.php!
+    die_miserable_death ( "Crap!  Someone renamed config.php" );
+  }
+}
+
 function do_config ( $fileLoc ) {
   global $db_database, $db_host, $db_login, $db_password, $db_persistent,
   $db_type, $NONUSER_PREFIX, $phpdbiVerbose, $PROGRAM_DATE, $PROGRAM_NAME,
@@ -101,10 +116,10 @@ function do_config ( $fileLoc ) {
   }
   // If still empty.... use __FILE__.
   if ( empty ( $fd ) ) {
-    if ( preg_match ( "/(.*)config.php/", __FILE__, $matches ) ) {
-      $fileLoc = $matches[1] . "settings.php";
-      $fd = @fopen ( $fileLoc, 'rb', true );
-    }
+    $testName = get_full_include_path ( "settings.php" );
+    $fd = @fopen ( $fileLoc, 'rb', true );
+    if ( $fd )
+      $fileLoc = $testName;
   }
   if ( empty ( $fd ) || filesize ( $fileLoc ) == 0 ) {
     // There is no settings.php file.
@@ -209,6 +224,10 @@ function do_config ( $fileLoc ) {
 
   // Type of user authentication.
   $user_inc = $settings['user_inc'];
+
+  // If sqlite, the db file is in the include directory
+  if ( $db_type == 'sqlite' )
+    $db_database = get_full_include_path ( $db_database );
 
   // Check the current installation version.
   // Redirect user to install page if it is different from stored value.
