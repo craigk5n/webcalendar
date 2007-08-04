@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 08-03-2007
+# Translation last updated on 08-04-2007
 
 
 ################################################################################
@@ -1321,9 +1321,9 @@ Invalid function id: Invalid function id
 ########################################
 # Page: includes/config.php
 #
-Fatal Error: Fatal Error
-Troubleshooting Help: Troubleshooting Help
 Could not find settings.php file...: Could not find "settings.php" file.<br />Please copy "settings.php.orig" to "settings.php" and edit for your site.
+#
+Incomplete settings.php file...: Incomplete settings.php file...
 Could not find XXX defined in...: Could not find "$s" defined in your "settings.php" file.
 You must define XXX in: You must define "XXX" in the "settings.php" file.
 
@@ -1467,6 +1467,7 @@ unknown-weekday: unknown-weekday
 ########################################
 # Page: includes/getPredefinedVariables.php
 #
+Fatal Error: Fatal Error
 Invalid data format for: Invalid data format for
 
 ########################################
