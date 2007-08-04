@@ -25,30 +25,21 @@
  * @internal We don't normally put functions in this file. But, since this
  *           file is included before some of the others, this function either
  *           goes here or we repeat this code in multiple files.
+ *           Additionally, we don't want to call too many external functions
+ *           from here since we could end up calling the function that called
+ *           this one.
+ * NOTES: Don't call translate from here.  This function if often called
+ * before translation stuff is initialized!
  */
 function die_miserable_death ( $error ) {
   global $APPLICATION_NAME, $LANGUAGE, $login, $TROUBLE_URL;
   // Make sure app name is set.
-  $appStr = ( function_exists ( 'generate_application_name' )
-    ? generate_application_name ()
-    : ( empty ( $APPLICATION_NAME ) ? 'WebCalendar' : $APPLICATION_NAME ) );
+  $appStr = ( empty ( $APPLICATION_NAME ) ? 'WebCalendar' : $APPLICATION_NAME );
 
-/* // Causing problems if translations/language.txt not found.
-  if ( function_exists ( 'translate' ) ) {
-    if ( empty ( $LANGUAGE ) )
-      load_user_preferences ();
-
-    $h2_label = $appStr . ' ' . translate ( 'Error' );
-    $title = $appStr . ': ' . translate ( 'Fatal Error' );
-    $trouble_label = translate ( 'Troubleshooting Help' );
-    $user_BGCOLOR = get_pref_setting ( $login, 'BGCOLOR' );
-  } else {
-*/
-    $h2_label = $appStr . ' ' . 'Error';
-    $title = $appStr . ': ' . 'Fatal Error';
-    $trouble_label = 'Troubleshooting Help';
-    $user_BGCOLOR = '#FFFFFF';
-//  }
+  $h2_label = $appStr . ' ' . 'Error';
+  $title = $appStr . ': ' . 'Fatal Error';
+  $trouble_label = 'Troubleshooting Help';
+  $user_BGCOLOR = '#FFFFFF';
 
   echo <<<EOT
 <html>
