@@ -595,10 +595,15 @@ class WebCalendar {
             // SQL requests. So, if the user were able to set the login
             // name to be "x';drop table u;",
             // they may be able to affect the database.
+            // NOTE: we also changed the cookie encoding from WebCalendar 1.0.X
+            // to WebCalendar 1.1.X+, so this causes a bad cookie error.
             if ( ! empty ( $login ) && $login != addslashes ( $login ) ) {
+              // The following deletes the bad cookie.  So, the user just needs
+              // to reload.
               SetCookie ( 'webcalendar_session', '', 0 );
               die_miserable_death ( 'Illegal characters in login <tt>'
-                 . htmlentities ( $login ) . '</tt>' );
+                 . htmlentities ( $login ) . '</tt>' .
+                 "Press browser reload to clear bad cookie." );
             }
 
             // Make sure we are connected to the database for password check.
