@@ -420,17 +420,20 @@ h2 {
   <tr><td>
    Login</td><td>db_login</td><td>
    The database login
+   (Not used for SQLite.)
   </td></tr>
   <tr><td>
    Database Name</td><td>db_password</td><td>
    The database password for the above login<br />
-   (Use 'none' if your db server does not use a TCP socket to connect)
+   (Use 'none' if your db server does not use a TCP socket to connect.)
+   (Not used for SQLite.)
   </td></tr>
   <tr><td>
    Database Name</td><td>db_database</td><td>
    The name of the database that the calendar
    tables reside in. ("intranet" in the <a href="#dbsetup">examples above</a>.)
    For ODBC, this should be the DSN.
+   For SQLite, this is the filename that will be used.
   </td></tr>
   <tr><td>
    Connection Persistence</td><td>db_persistent</td><td>
