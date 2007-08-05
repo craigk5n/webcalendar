@@ -2,6 +2,8 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
+
+
 $credits = getPostValue ( 'Credits' );
 $data = '';
 
