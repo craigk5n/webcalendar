@@ -89,16 +89,15 @@ function do_config ( $fileLoc ) {
   $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode, $settings, $single_user,
   $single_user_login, $TROUBLE_URL, $use_http_auth, $user_inc;
 
-  //When changing PROGRAM VERSION, also change it in install/default_config.php
   $PROGRAM_VERSION = 'v1.1.3';
-  $PROGRAM_DATE = '4 Aug 2007';
+  $PROGRAM_DATE = '04 Aug 2007';
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';
   $TROUBLE_URL = 'docs/WebCalendar-SysAdmin.html#trouble';
 
   // Open settings file to read.
   $settings = array ();
-  if ( file_exists ( $fileLoc ) ) {
+  if ( file_exists ( $fileLog ) ) {
     $fd = @fopen ( $fileLoc, 'rb', true );
   }
   if ( empty ( $fd ) && ! empty ( $includedir ) ) {
@@ -237,7 +236,6 @@ function do_config ( $fileLoc ) {
       $row = $rows[0];
       if ( empty ( $row ) || $row[0] != $PROGRAM_VERSION ) {
         // &amp; does not work here...leave it as &.
-        //echo "File: $PROGRAM_VERSION <br> Db: $row[0] <br>"; exit;
         header ( 'Location: install/index.php?action=mismatch&version='
          . ( empty ( $row ) ? 'UNKNOWN' : $row[0] ) );
         exit;
