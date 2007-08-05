@@ -89,15 +89,16 @@ function do_config ( $fileLoc ) {
   $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode, $settings, $single_user,
   $single_user_login, $TROUBLE_URL, $use_http_auth, $user_inc;
 
+  //When changing PROGRAM VERSION, also change it in install/default_config.php
   $PROGRAM_VERSION = 'v1.3.0';
-  $PROGRAM_DATE = '?? ??? 2007';
+  $PROGRAM_DATE = '4 Aug 2007';
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';
   $TROUBLE_URL = 'docs/WebCalendar-SysAdmin.html#trouble';
 
   // Open settings file to read.
   $settings = array ();
-  if ( file_exists ( $fileLog ) ) {
+  if ( file_exists ( $fileLoc ) ) {
     $fd = @fopen ( $fileLoc, 'rb', true );
   }
   if ( empty ( $fd ) && ! empty ( $includedir ) ) {
