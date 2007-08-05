@@ -90,7 +90,7 @@ function do_config ( $fileLoc ) {
   $single_user_login, $TROUBLE_URL, $use_http_auth, $user_inc;
 
   //When changing PROGRAM VERSION, also change it in install/default_config.php
-  $PROGRAM_VERSION = 'v1.3.0';
+  $PROGRAM_VERSION = 'v1.1.3';
   $PROGRAM_DATE = '4 Aug 2007';
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';
