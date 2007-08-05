@@ -160,8 +160,8 @@ if ( empty ( $GENERAL_USE_GMT ) || $GENERAL_USE_GMT != 'Y' )
 $startdateTS = time ( 0, 0, 0 );
 $enddateTS = $startdateTS + ( $DAYS_IN_ADVANCE * 86400 );
 
-$startdate = date ( 'Ymd', $startdateTS );
-$enddate = date ( 'Ymd', $enddateTS );
+$startdate = gmdate ( 'Ymd', $startdateTS );
+$enddate = gmdate ( 'Ymd', $enddateTS );
 
 // Now read all the repeating events (for all users).
 $repeated_events = query_events ( '', true,
@@ -184,7 +184,7 @@ if ( $debug )
 
 $is_task = false;
 for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
-  $date = date ( 'Ymd', time () + ( $d * 86400 ) );
+  $date = gmdate ( 'Ymd', time () + ( $d * 86400 ) );
 
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.
@@ -527,7 +527,7 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
     if ( ! empty ( $new_date ) ) {
       if ( $times_sent == $repeats + 1 ) {
         if ( ! $is_task ||
-          ( $related == 'E' && $new_date != date ( 'Ymd', $end ) ) ) // Tasks only.
+          ( $related == 'E' && $new_date != gmdate ( 'Ymd', $end ) ) ) // Tasks only.
           $times_sent = 0;
       }
       $new_offset = date_to_epoch ( $new_date ) - ( $start - ( $start % 86400 ) );

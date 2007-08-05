@@ -1217,8 +1217,6 @@ if ( ! $exists || ! $canWrite ) { ?>
    $response_msg = translate ( 'All your database tables appear to be up to date. You may proceed to the') . ' ' .
        translate ( 'next page and complete your WebCalendar setup' ) .'.';
   $_SESSION['db_updated'] = true;
-   //$response_msg .= "<br/>Previous Version: " . $_SESSION['old_program_version'] .
-   //  "<br/>New Version: " . $PROGRAM_VERSION;
   } else if ( $_SESSION['old_program_version'] == 'new_install' ) {
    $response_msg = translate ( 'This appears to be a new installation. If this is not correct, please') . ' ' .
       translate ( 'go back to the previous page and correct your settings' ) . '.';
