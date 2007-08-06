@@ -27,27 +27,23 @@
  *           goes here or we repeat this code in multiple files.
  *           Additionally, we don't want to call too many external functions
  *           from here since we could end up calling the function that called
- *           this one.
- * NOTES: Don't call translate from here.  This function if often called
- * before translation stuff is initialized!
+ *           this one. Infinite loops === "bad"!
+ * NOTE: Don't call translate from here.
+ *       This function is often called before translation stuff is initialized!
  */
 function die_miserable_death ( $error ) {
   global $APPLICATION_NAME, $LANGUAGE, $login, $TROUBLE_URL;
+
   // Make sure app name is set.
   $appStr = ( empty ( $APPLICATION_NAME ) ? 'WebCalendar' : $APPLICATION_NAME );
 
-  $h2_label = $appStr . ' ' . 'Error';
-  $title = $appStr . ': ' . 'Fatal Error';
-  $trouble_label = 'Troubleshooting Help';
-  $user_BGCOLOR = '#FFFFFF';
-
   echo <<<EOT
 <html>
-  <head><title>{$title}</title></head>
-  <body bgcolor ="{$user_BGCOLOR}">
-    <h2>{$h2_label}</h2>
+  <head><title>{$appStr}: Fatal Error</title></head>
+  <body bgcolor="#fff">
+    <h2>{$appStr} Error</h2>
     <p>{$error}</p><hr />
-    <p><a href="{$TROUBLE_URL}" target="_blank">{$trouble_label}</a></p>
+    <p><a href="{$TROUBLE_URL}" target="_blank">Troubleshooting Help</a></p>
   </body>
 </html>
 EOT;
@@ -68,19 +64,15 @@ function db_error ( $doExit = false, $sql = '' ) {
     return $ret;
 }
 
-/**
-  * Get the full path to a file located in the webcalendar includes
-  * directory.
-  */
-function get_full_include_path ( $filename )
-{
-  if ( preg_match ( "/(.*)config.php/", __FILE__, $matches ) ) {
+/* Get the full path to a file located in the webcalendar includes directory.
+ */
+function get_full_include_path ( $filename ) {
+  if ( preg_match ( '/(.*)config.php/', __FILE__, $matches ) ) {
     $fileLoc = $matches[1] . $filename;
     return $fileLoc;
-  } else {
-    // Oops.  This file is not named config.php!
-    die_miserable_death ( "Crap!  Someone renamed config.php" );
-  }
+  } else
+    // Oops. This file is not named config.php!
+    die_miserable_death ( 'Crap! Someone renamed config.php' );
 }
 
 function do_config ( $fileLoc ) {
@@ -89,18 +81,19 @@ function do_config ( $fileLoc ) {
   $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode, $settings, $single_user,
   $single_user_login, $TROUBLE_URL, $use_http_auth, $user_inc;
 
-  //When changing PROGRAM VERSION, also change it in install/default_config.php
+  // When changing PROGRAM VERSION, also change it in install/default_config.php
   $PROGRAM_VERSION = 'v1.1.3';
   $PROGRAM_DATE = '4 Aug 2007';
+
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';
   $TROUBLE_URL = 'docs/WebCalendar-SysAdmin.html#trouble';
 
   // Open settings file to read.
   $settings = array ();
-  if ( file_exists ( $fileLoc ) ) {
+  if ( file_exists ( $fileLoc ) )
     $fd = @fopen ( $fileLoc, 'rb', true );
-  }
+
   if ( empty ( $fd ) && ! empty ( $includedir ) ) {
     $fd = @fopen ( $includedir . '/settings.php', 'rb', true );
     if ( $fd )
@@ -161,7 +154,7 @@ function do_config ( $fileLoc ) {
   $db_type = $settings['db_type'];
 
   // If no db settings, then user has likely started install but not yet
-  // completed.  So, send them back to the install script.
+  // completed. So, send them back to the install script.
   if ( empty ( $db_type ) ) {
     if ( file_exists ( 'install/index.php' ) ) {
       header ( 'Location: install/index.php' );
@@ -221,6 +214,9 @@ function do_config ( $fileLoc ) {
   if ( $db_type == 'sqlite' )
     $db_database = get_full_include_path ( $db_database );
 
+  // &amp; does not work here...leave it as &.
+  $locateStr = 'Location: install/index.php?action=mismatch&version=';
+
   // Check the current installation version.
   // Redirect user to install page if it is different from stored value.
   // This will prevent running WebCalendar until UPGRADING.html has been
@@ -230,27 +226,23 @@ function do_config ( $fileLoc ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
        WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
     if ( ! $rows ) {
-      // &amp; does not work here...leave it as &.
-      header ( 'Location: install/index.php?action=mismatch&version=UNKNOWN' );
+      header ( $locateStr . 'UNKNOWN' );
       exit;
     } else {
       $row = $rows[0];
       if ( empty ( $row ) || $row[0] != $PROGRAM_VERSION ) {
-        // &amp; does not work here...leave it as &.
-        //echo "File: $PROGRAM_VERSION <br> Db: $row[0] <br>"; exit;
-        header ( 'Location: install/index.php?action=mismatch&version='
-         . ( empty ( $row ) ? 'UNKNOWN' : $row[0] ) );
+        header ( $locateStr . '' . ( empty ( $row ) ? 'UNKNOWN' : $row[0] ) );
         exit;
       }
     }
     dbi_close ( $c );
-  } else { // Must mean we don't have a settings.php file.
-    // &amp; does not work here...leave it as &.
-    header ( 'Location: install/index.php?action=mismatch&version=UNKNOWN' );
+  } else {
+    // Must mean we don't have a settings.php file.
+    header ( $locateStr . 'UNKNOWN' );
     exit;
   }
 
-  // We can add extra 'nonuser' calendars such as a holiday, corporate,
+  // We can add extra "nonuser" calendars such as a holiday, corporate,
   // departmental, etc. We need a unique prefix for these calendars
   // so we don't get them mixed up with real logins. This prefix should be
   // a maximum of 5 characters and should NOT change once set!
