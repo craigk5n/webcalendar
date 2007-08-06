@@ -3,7 +3,7 @@
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
-print_header ( '', '', '', true );
+build_header ( '', '', '', 29 );
 
 ob_start ();
 
@@ -18,22 +18,22 @@ $tmp_arr = array (
   translate ( 'Time' ) => translate ( 'time-help' ),
   );
 
-if ( $TIMED_EVT_LEN != 'E' )
+if ( getPref ( 'TIMED_EVT_LEN' ) != 'E' )
   $tmp_arr[ translate ( 'Duration' ) ] = translate ( 'duration-help' );
 else
   $tmp_arr[ translate ( 'End Time' ) ] = translate ( 'end-time-help' );
 
-if ( $DISABLE_PRIORITY_FIELD != 'Y' )
+if ( ! getPref ( 'DISABLE_PRIORITY_FIELD' ) )
   $tmp_arr[ translate ( 'Priority' ) ] = translate ( 'priority-help' );
 
-if ( $DISABLE_ACCESS_FIELD != 'Y' )
+if ( ! getPref ( 'DISABLE_ACCESS_FIELD' ) )
   $tmp_arr[ translate ( 'Access' ) ] = translate ( 'access-help' );
 
-if ( $single_user == 'N' &&
-  ( $is_admin || $DISABLE_PARTICIPANTS_FIELD != 'Y' ) )
+if ( ! _WC_SINGLE_USER &&
+  ( $WC->isAdmin() || ! getPref ( 'DISABLE_PARTICIPANTS_FIELD' ) ) )
   $tmp_arr[ translate ( 'Participants' ) ] = translate ( 'participants-help' );
 
-if ( $DISABLE_REPEATING_FIELD != 'Y' ) {
+if ( ! getPref ( 'DISABLE_REPEATING_FIELD' ) ) {
   $tmp_arr[ translate ( 'Repeat Type' )  ] = translate ( 'repeat-type-help' );
   list_help ( $tmp_arr );
   echo '

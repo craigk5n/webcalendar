@@ -2,7 +2,7 @@
  * $Id$
  *
  * Description:
- *  User object
+ *	User object
  *
  */
 
@@ -13,7 +13,7 @@ import org.w3c.dom.NodeList;
 
 /**
  * Defines a WebCalendar user.
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */

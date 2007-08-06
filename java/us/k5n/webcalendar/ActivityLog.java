@@ -9,7 +9,7 @@ import org.w3c.dom.NodeList;
 /**
  * Represents a log entry in the activity log. We extend the Vector class
  * because the JTable swing component can easily make use of a Vector for a row.
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */
@@ -97,7 +97,7 @@ public class ActivityLog extends Vector {
 
   /**
    * Get the text of the entry's action
-   *
+   * 
    * @return the text description of the entry
    */
   public String getAction () {
@@ -106,7 +106,7 @@ public class ActivityLog extends Vector {
 
   /**
    * Get the type of entry ("Event created", etc.)
-   *
+   * 
    * @return The String description of the action type
    */
   public String getType () {
@@ -136,7 +136,7 @@ public class ActivityLog extends Vector {
 
   /**
    * Get the formatted date (YYYY/MM/DD) of the entry
-   *
+   * 
    * @return the formatted date
    */
   // TODO: Format date properly
@@ -170,7 +170,7 @@ public class ActivityLog extends Vector {
 
   /**
    * Return the login of the user that caused the action
-   *
+   * 
    * @return the login name of the user
    */
   public String getUser () {
@@ -179,7 +179,7 @@ public class ActivityLog extends Vector {
 
   /**
    * Return the time of the entry formatted as a HH:MM String
-   *
+   * 
    * @return the formatted time
    */
   // TODO: use WebCalendar format preferences
@@ -208,7 +208,7 @@ public class ActivityLog extends Vector {
 
   /**
    * Return the calendar user who's calendar was affected
-   *
+   * 
    * @return the login user of the affected user
    */
   public String getCalendarUser () {

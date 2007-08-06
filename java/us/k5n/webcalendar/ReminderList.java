@@ -15,7 +15,7 @@ import org.xml.sax.SAXException;
 
 /**
  * The ReminderList contains the lsit of pending reminders.
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */

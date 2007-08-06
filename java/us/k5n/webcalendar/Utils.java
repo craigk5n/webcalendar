@@ -10,7 +10,7 @@ import org.w3c.dom.NodeList;
 
 /**
  * Common functions.
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */
@@ -34,7 +34,7 @@ public class Utils {
     }
     return ( null ); // not found
   }
-
+  
   /**
    * For tags such as <name attr="xxx" />, get the "xxx".
    */
@@ -81,7 +81,7 @@ public class Utils {
 
   /**
    * Convert a java.util.Calendar object to a YYYYMMDD String.
-   *
+   * 
    * @param inDate
    *          Date to convert
    * @return The Date as a String in YYYYMMDD format
@@ -100,7 +100,7 @@ public class Utils {
 
   /**
    * Convert a YYYYMMDD String into a java.util.Calendar object.
-   *
+   * 
    * @param inDate
    *          Date to convert
    * @return The Date as a Calendar

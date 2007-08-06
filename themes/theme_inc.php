@@ -3,16 +3,8 @@
 // Displays a screenshot if called directly
 // and a file exists that matches this script name.
 // Include  this file in all themes.
-if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) && !
-    empty ( $_SERVER['PHP_SELF'] ) )
-  $PHP_SELF = $_SERVER['PHP_SELF'];
-
-$no_preview = 'NO PREVIEW AVAILABLE';
-if ( function_exists ( 'translate' ) )
-  $no_preview = translate ( 'NO PREVIEW AVAILABLE' );
-	
-if ( ! empty ( $PHP_SELF ) && preg_match ( '/\/themes\//', $PHP_SELF ) ) {
-  $filename = basename ( $PHP_SELF, '.php' ) . '.gif';
+if ( preg_match ( '/\/themes\//', $_SERVER['PHP_SELF'] ) ) {
+  $filename = basename ( $_SERVER['PHP_SELF'], '.php' ) . '.gif';
   echo <<<EOT
 <?xml version="1.0" encoding="iso-8859-1"\?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -22,9 +14,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( '/\/themes\//', $PHP_SELF ) ) {
   <body>
 EOT;
   echo ( file_exists ( $filename )
-    ? '<img src="' . $filename . '" />'
-    : '<h2>' . $no_preview. '</h2>' ) 
-		. '
+    ? '<img src="' . $filename . '" />' : '<h2>NO PREVIEW AVAILABLE</H2>' ) . '
   </body>
 </html>';
 }

@@ -40,8 +40,6 @@
  *  So it is entirely equivalent to say "base=445566&percent=50" OR
  *  "color1=445566&color2=CCDDEE"
  *
- *  Since this file does not use any other WebCalendar file, it could
- *  be used by other PHP apps.
  *
  * TODO:
  *  Allow directions which are not multiples of 90 degrees so that
@@ -53,55 +51,6 @@
  *  request a 10Gb image 8-)
  */
 
-// We don't really need it if calling gradients.php standalone.
-if ( file_exists ( 'includes/getPredefinedVariables.php' ) )
-  include_once 'includes/getPredefinedVariables.php';
-//we may be calling gradients directly, so the path will be different
-if ( file_exists ( 'getPredefinedVariables.php' ) )
-  include_once 'getPredefinedVariables.php';
-
-$MIN_COLORS = 4;
-$MAX_COLORS = 256;
-$MAX_HEIGHT = $MAX_WIDTH = 600;
-$DEFAULTS = array (
-  'color1' => 'ccc',
-  'color2' => 'eee',
-  'colors' => 32,
-  'direction' => 90,
-  'height' => 50,
-  'percent' => 15,
-  'width' => 50,
-  );
-
-if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) && !
-    empty ( $_SERVER['PHP_SELF'] ) )
-  $PHP_SELF = $_SERVER['PHP_SELF'];
-// are we calling this file directly with GET parameters
-if ( ! empty ( $_GET ) && ! empty ( $PHP_SELF ) &&
-    preg_match ( "/\/includes\/gradient.php/", $PHP_SELF ) ) {
-  if ( function_exists ( 'getGetValue' ) ) {
-    $base      = getGetValue ( 'base' );
-    $color1    = getGetValue ( 'color1' );
-    $color2    = getGetValue ( 'color2' );
-    $direction = getGetValue ( 'direction' );
-    $height    = getGetValue ( 'height' );
-    $numcolors = getGetValue ( 'colors' );
-    $percent   = getGetValue ( 'percent' );
-    $width     = getGetValue ( 'width' );
-  } else {
-    $base      = ( ! empty ( $_GET['base'] ) ? $_GET['base'] : '' );
-    $color1    = ( ! empty ( $_GET['color1'] ) ? $_GET['color1'] : '' );
-    $color2    = ( ! empty ( $_GET['color2'] ) ? $_GET['color2'] : '' );
-    $direction = ( ! empty ( $_GET['direction'] ) ? $_GET['direction'] : '' );
-    $height    = ( ! empty ( $_GET['height'] ) ? $_GET['height'] : '' );
-    $numcolors = ( ! empty ( $_GET['colors'] ) ? $_GET['colors'] : '' );
-    $percent   = ( ! empty ( $_GET['percent'] ) ? $_GET['percent'] : '' );
-    $width     = ( ! empty ( $_GET['width'] ) ? $_GET['width'] : '' );
-  }
-
-  create_image ( '', $base, $height, $percent, $width,
-    $direction, $numcolors, $color1, $color2 );
-}
 
 /* Turn an HTML color (like 'AABBCC') into an array of decimal RGB values.
  *
@@ -125,22 +74,23 @@ function colorToRGB ( $color ) {
 
     $blue_hex = substr ( $color, 2, 1 );
     $blue = hexdec ( $blue_hex . $blue_hex );
-  } else
+  } else 
     // Invalid color specification
     return false;
 
   return array ( 'red' => $red, 'green' => $green, 'blue' => $blue );
-}
+} 
+
 
 function can_write_to_dir ($path)
 {
-  if ( $path { strlen ( $path ) - 1 } == '/' ) //Start function again with tmp file...
-    return can_write_to_dir ( $path.uniqid ( mt_rand () ) . '.tmp');
-  else if ( ereg ( '.tmp', $path ) ) { //Check tmp file for read/write capabilities
-    if ( ! ( $f = @fopen ( $path, 'w+' ) ) )
+  if ($path{strlen($path)-1}=='/') //Start function again with tmp file...
+    return can_write_to_dir($path.uniqid(mt_rand()).'.tmp');
+  else if (ereg('.tmp', $path)) { //Check tmp file for read/write capabilities
+    if (!($f = @fopen($path, 'w+')))
       return false;
-    fclose ( $f );
-    unlink ( $path );
+    fclose($f);
+    unlink($path);
     return true;
   }
   else //We have a path error.
@@ -148,8 +98,6 @@ function can_write_to_dir ($path)
 }
 
 function background_css ( $base, $height = '', $percent = '' ) {
-  global $ENABLE_GRADIENTS;
-
   $ret = $type = '';
 
   if ( function_exists ( 'imagepng' ) )
@@ -158,32 +106,45 @@ function background_css ( $base, $height = '', $percent = '' ) {
     $type = '.gif';
 
   $ret = 'background';
-  if ( $type != '' && $ENABLE_GRADIENTS == 'Y' ) {
+  if ( $type != '' && getPref ( 'ENABLE_GRADIENTS' ) ) {
     $ret .= ': ' . $base . ' url( ';
-    if ( ! file_exists ( 'images/cache' ) || ! can_write_to_dir ( 'images/cache/' ) )
-      $ret .= 'includes/gradient.php?base=' . substr ( $base, 1 )
+    if ( ! file_exists ( 'cache/images' ) || ! can_write_to_dir ( 'cache/images/' ) )
+      $ret .= '"includes/gradient.php?base=' . substr ( $base, 1 )
        . ( $height != '' ? '&height=' . $height : '' )
-       . ( $percent != '' ? '&percent=' . $percent : '' );
+       . ( $percent != '' ? '&percent=' . $percent : '' ) . '"';
     else {
-      $file_name = 'images/cache/' . substr ( $base, 1, 6 )
+      $img_name = substr ( $base, 1, 6 )
        . ( $height != '' ? '-' . $height : '' )
        . ( $percent != ''? '-' . $percent : '' ) . $type;
+      $path_name = '../images/' . $img_name;		  
+      $file_name = 'cache/images/' . $img_name;
       if ( ! file_exists ( $file_name ) )
         $tmp = create_image ( $file_name, $base, $height, $percent );
-
-      $ret .= $file_name;
-    }
+      $ret .= $path_name;
+    } 
     $ret .= ' ) repeat-x';
   } else
     $ret .= '-color: ' . $base;
 
-  return $ret . ';';
-}
+  return $ret . ";\n";
+} 
 
 function create_image ( $file_name, $base = '', $height = '', $percent = '',
   $width = '', $direction = '', $numcolors = '', $color1 = '', $color2 = '' ) {
-  global $DEFAULTS, $MAX_COLORS, $MAX_HEIGHT, $MAX_WIDTH, $MIN_COLORS;
 
+  $MIN_COLORS = 4;
+  $MAX_COLORS = 256;
+  $MAX_HEIGHT = $MAX_WIDTH = 600;
+  $DEFAULTS = array (
+   'color1' => 'ccc',
+   'color2' => 'eee',
+   'colors' => 32,
+   'direction' => 90,
+   'height' => 50,
+   'percent' => 15,
+   'width' => 50, 
+   );
+	
   if ( $base != '' )
     $color1 = $color2 = $base;
 
@@ -210,29 +171,29 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
   else {
     while ( $direction > 360 ) {
       $direction -= 360;
-    }
-  }
+    } 
+  } 
 
   if ( $direction == 90 || $direction == 270 ) {
     // Vertical gradient
-    if ( empty ( $height ) )
-      $height = $DEFAULTS['height'];
-
-    if ( $height > $MAX_HEIGHT )
-      $height = $MAX_HEIGHT;
-
     $width = 1;
   } else {
     // Horizontal gradient
-    if ( empty ( $width ) )
-      $width = $DEFAULTS['width'];
-
-    if ( $width > $MAX_WIDTH )
-      $width = $MAX_WIDTH;
-
     $height = 1;
-  }
+  } 
 
+  if ( empty ( $height ) )
+    $height = $DEFAULTS['height'];
+
+  if ( $height > $MAX_HEIGHT )
+    $height = $MAX_HEIGHT;
+
+  if ( empty ( $width ) )
+    $width = $DEFAULTS['width'];
+
+  if ( $width > $MAX_WIDTH )
+    $width = $MAX_WIDTH;
+						
   if ( empty ( $numcolors ) )
     $numcolors = $DEFAULTS['colors'];
   else {
@@ -244,7 +205,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
         $numcolors = $MAX_COLORS;
     } else
       $numcolors = $DEFAULTS['colors'];
-  }
+  } 
 
   if ( $percent == '' || $percent < 0 || $percent > 100 )
     $percent = $DEFAULTS['percent'];
@@ -255,7 +216,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
   $color2['green'] = min ( $color2['green'] + $percent, 255 );
   $color2['blue'] = min ( $color2['blue'] + $percent, 255 );
 
-  $image = imagecreate ( $width, $height );
+  $image = imagecreate ( $width, $height ); 
   // Allocate array of colors
   $colors = array ();
 
@@ -276,7 +237,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
     floor ( min ( $color1['blue'] + ( $deltablue * $i / $tmp_c ), 255 ) );
 
     $colors[$i] = imagecolorallocate ( $image, $thisred, $thisgreen, $thisblue );
-  }
+  } 
 
   $dim = $width;
 
@@ -328,7 +289,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
     $y2 += $dy;
 
     $i++;
-  }
+  } 
 
   if ( function_exists ( 'imagepng' ) ) {
     if ( $file_name == '' ) {
@@ -347,22 +308,22 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
 
   imagedestroy ( $image );
   return;
-}
+} 
 
 //General purpose functions to convert RGB to HSL and HSL to RBG
 function  rgb2hsl ( $rgb ) {
   if ( substr ($rgb, 0,1 ) == '#' )
      $rgb = substr ( $rgb,1,6);
 
-  $R = ( hexdec (substr ( $rgb,0,2) ) / 255 );
+  $R = ( hexdec (substr ( $rgb,0,2) ) / 255 );     
   $G = ( hexdec (substr ( $rgb,2,2) ) / 255 );
   $B = ( hexdec (substr ( $rgb,4,2) ) / 255 );
-
-  $Min = min ( $R, $G, $B );    //Min. value of RGB
+ 
+  $Min = min( $R, $G, $B );    //Min. value of RGB
   $Max = max( $R, $G, $B );    //Max. value of RGB
-  $deltaMax = $Max - $Min;     //Delta RGB value
+  $deltaMax = $Max - $Min;     //Delta RGB value  
   $L = ( $Max + $Min ) / 2;
-
+  
   if ( $deltaMax == 0 )      //This is a gray, no chroma...
   {
      $H = 0;                  //HSL results = 0 ÷ 1
@@ -370,22 +331,22 @@ function  rgb2hsl ( $rgb ) {
   }
   else                        //Chromatic data...
   {
-     if ( $L < 0.5 )
+     if ( $L < 0.5 ) 
        $S = $deltaMax / ( $Max + $Min );
-     else
+     else           
        $S = $deltaMax / ( 2 - $Max - $Min );
-
+  
      $deltaR = ( ( ( $Max - $R ) / 6 ) + ( $deltaMax / 2 ) ) / $deltaMax;
      $deltaG = ( ( ( $Max - $G ) / 6 ) + ( $deltaMax / 2 ) ) / $deltaMax;
      $deltaB = ( ( ( $Max - $B ) / 6 ) + ( $deltaMax / 2 ) ) / $deltaMax;
-
-     if ( $R == $Max )
+  
+     if ( $R == $Max ) 
        $H = $deltaB - $deltaG;
-     else if ( $G == $Max )
+     else if ( $G == $Max ) 
        $H = ( 1 / 3 ) + $deltaR - $deltaB;
-     else if ( $B == $Max )
+     else if ( $B == $Max ) 
       $H = ( 2 / 3 ) + $deltaG - $deltaR;
-
+  
      if ( $H < 0 ) $H += 1;
      if ( $H > 1 ) $H -= 1;
   }
@@ -394,28 +355,28 @@ function  rgb2hsl ( $rgb ) {
 
 function hsl2rgb ( $hsl ){
 
-  if ( $hsl[1] == 0 )
+  if ( $hsl[1] == 0 )              
   {
-     $R = $hsl[2] * 255;
+     $R = $hsl[2] * 255;          
      $G = $hsl[2] * 255;
      $B = $hsl[2] * 255;
   }
   else
   {
-     if ( $hsl[2] < 0.5 )
+     if ( $hsl[2] < 0.5 ) 
        $var_2 = $hsl[2] * ( 1 + $hsl[1] );
-     else
+     else           
        $var_2 = ( $hsl[2] + $hsl[1] ) - ( $hsl[1] * $hsl[2] );
-
+  
      $var_1 = 2 * $hsl[2]- $var_2;
-
+  
      $R = 255 * Hue_2_RGB( $var_1, $var_2, $hsl[0] + ( 1 / 3 ) );
      $G = 255 * Hue_2_RGB( $var_1, $var_2, $hsl[0] );
      $B = 255 * Hue_2_RGB( $var_1, $var_2, $hsl[0] - ( 1 / 3 ) );
   }
-  $R = sprintf ( "%02X",round ( $R));
-  $G = sprintf ( "%02X",round ( $G));
-  $B = sprintf ( "%02X",round ( $B));
+  $R = sprintf("%02X",round($R));
+  $G = sprintf("%02X",round($G));
+  $B = sprintf("%02X",round($B));
 
   $rgb = '#' . $R . $G . $B;
 
@@ -434,12 +395,22 @@ function Hue_2_RGB( $v1, $v2, $vH ) {
 //Given an RGB value, return it's luminance adjusted by scale
 // scale range = 0 to 9
 function rgb_luminance ( $rgb, $scale=5) {
-  $luminance =  array ( .44, .50, .56, .62, .68, .74, .80, .86, .92, .98 );
+  $luminance =  array( .44, .50, .56, .62, .68, .74, .80, .86, .92, .98 );
   if ( $scale < 0 ) $scale = 0;
   if ( $scale > 9 ) $scale = 9;
   $new = rgb2hsl ( $rgb );
   $new[2] = $luminance[ round ( $scale )];
   $newColor = hsl2rgb( $new );
   return $newColor;
+}
+function do_debug_grad ( $msg ) {
+  // log to /tmp/webcal-debug.log
+   error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
+   3, 'd:/php/logs/debug.txt' );
+  // fwrite ( $fd, date ( 'Y-m-d H:i:s' ) .  "> $msg\n" );
+  // fclose ( $fd );
+  // 3, '/tmp/webcal-debug.log' );
+  // error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n",
+  // 2, 'sockieman:2000' );
 }
 ?>

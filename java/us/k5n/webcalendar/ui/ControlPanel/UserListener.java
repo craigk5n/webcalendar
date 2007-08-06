@@ -1,8 +1,9 @@
 package us.k5n.webcalendar.ui.ControlPanel;
 
+
 /**
  * Interface for listening for updates to the users.
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */

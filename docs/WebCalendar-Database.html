@@ -47,7 +47,7 @@
         <a href="http://www.k5n.us/webcalendar.php">http://www.k5n.us/webcalendar.php</a></p>
       <p><label>Author:</label><a href="http://www.k5n.us">Craig Knudsen</a>,
         <a href="mailto:&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;">&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;</a></p>
-      <p></p><label>Version:</label>Unknown Version, &nbsp; $Id$</p>
+      <p></p><label>Version:</label>v1.1.1, &nbsp; $Id$</p>
     </div>
     <blockquote>
       <p>This file is generated from <tt>tables-mysql.sql</tt>. Below are the
@@ -83,7 +83,6 @@
       <li><a href="#webcal_report">webcal_report</a></li>
       <li><a href="#webcal_report_template">webcal_report_template</a></li>
       <li><a href="#webcal_site_extras">webcal_site_extras</a></li>
-      <li><a href="#webcal_timezones">webcal_timezones</a></li>
       <li><a href="#webcal_user">webcal_user</a></li>
       <li><a href="#webcal_user_layers">webcal_user_layers</a></li>
       <li><a href="#webcal_user_pref">webcal_user_pref</a></li>
@@ -115,7 +114,7 @@
         <tr>
           <td><span>cal_login</span></td>
           <td>VARCHAR</td>
-          <td>25</td>
+          <td>50</td>
           <td>N</td>
           <td>&nbsp;</td>
           <td>user login</td>
@@ -149,7 +148,7 @@
         <tr>
           <td><span>cal_login</span></td>
           <td>VARCHAR</td>
-          <td>25</td>
+          <td>50</td>
           <td>N</td>
           <td>&nbsp;</td>
           <td>the current user who is attempting to look at another user's calendar</td>
@@ -157,7 +156,7 @@
         <tr>
           <td><span>cal_other_user</span></td>
           <td>VARCHAR</td>
-          <td>25</td>
+          <td>50</td>
           <td>N</td>
           <td>&nbsp;</td>
           <td>the login of the other user whose calendar the current user wants to access</td>
@@ -394,14 +393,6 @@
           <td>&nbsp;</td>
           <td>category name</td>
         </tr>
-        <tr>
-          <td>cat_color</td>
-          <td>VARCHAR</td>
-          <td>8</td>
-          <td>Y</td>
-          <td>&nbsp;</td>
-          <td>RGB color for category</td>
-        </tr>
       </table>
     </blockquote>
     <br /><br />
@@ -444,9 +435,7 @@
     <blockquote>
       
       Defines a calendar event.  Each event in the system has one entry in
-      this table unless the event starts before midnight and ends after
-      midnight. In that case a secondary event will be created with
-      cal_ext_for_id set to the cal_id of the original entry.  The following
+      this table. The following
       tables contain additional information about each event:
       <ul>
         <li><a href="#webcal_entry_user">webcal_entry_user</a>
@@ -488,15 +477,15 @@
           <td>&nbsp;</td>
           <td>Y</td>
           <td>&nbsp;</td>
-          <td>cal_group_id: the parent event id if this event is overriding an occurrence of a repeating event</td>
+          <td>cal_parent_id: the parent event id if this event is overriding an occurrence of a repeating event</td>
         </tr>
         <tr>
-          <td>cal_ext_for_id</td>
+          <td>cal_rmt_addr</td>
           <td>INT</td>
           <td>&nbsp;</td>
           <td>Y</td>
           <td>&nbsp;</td>
-          <td>used when an event goes past midnight into the next day, in which case an additional entry in this table will use this field to indicate the original event cal_id</td>
+          <td>the $_SERVER['REMOTE_ADDR'] value of an anonymously created entry</td>
         </tr>
         <tr>
           <td>cal_create_by</td>
@@ -567,7 +556,7 @@
           <td>INT</td>
           <td>&nbsp;</td>
           <td>Y</td>
-          <td>5</td>
+          <td>2</td>
           <td>event priority: 1=Low, 2=Med, 3=High</td>
         </tr>
         <tr>
@@ -597,7 +586,7 @@
         <tr>
           <td>cal_location</td>
           <td>varchar</td>
-          <td>100</td>
+          <td>50</td>
           <td>Y</td>
           <td>NULL</td>
           <td>location of event</td>
@@ -1723,54 +1712,6 @@
     </blockquote>
     <br /><br />
     
-    <h3><a name="webcal_timezones">webcal_timezones</a></h3>
-    <blockquote>
-      <br /><br />
-      <table summary="Schema for table webcal_timezones">
-        <tr>
-          <th>Column Name</th>
-          <th>Type</th>
-          <th>Length</th>
-          <th>Null</th>
-          <th>Default</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td><span>tzid</span></td>
-          <td>varchar</td>
-          <td>100</td>
-          <td>N</td>
-          <td>''</td>
-          <td>Unique name of timezone, try to use Olsen naming conventions</td>
-        </tr>
-        <tr>
-          <td>dtstart</td>
-          <td>varchar</td>
-          <td>25</td>
-          <td>Y</td>
-          <td>NULL</td>
-          <td>earliest date this timezone represents YYYYMMDDTHHMMSSZ format</td>
-        </tr>
-        <tr>
-          <td>dtend</td>
-          <td>varchar</td>
-          <td>25</td>
-          <td>Y</td>
-          <td>NULL</td>
-          <td>last date this timezone represents YYYYMMDDTHHMMSSZ format</td>
-        </tr>
-        <tr>
-          <td>vtimezone</td>
-          <td>text</td>
-          <td>&nbsp;</td>
-          <td>Y</td>
-          <td>&nbsp;</td>
-          <td>Complete VTIMEZONE text gleaned from imported ics files</td>
-        </tr>
-      </table>
-    </blockquote>
-    <br /><br />
-    
     <h3><a name="webcal_user">webcal_user</a></h3>
     <blockquote>
       
@@ -1799,7 +1740,7 @@
           <td>32</td>
           <td>Y</td>
           <td>&nbsp;</td>
-          <td>the user's password. (not used for http)</td>
+          <td>the user's password. (not used for http or ldap authentication)</td>
         </tr>
         <tr>
           <td>cal_lastname</td>
@@ -1832,54 +1773,6 @@
           <td>Y</td>
           <td>&nbsp;</td>
           <td>user's email address</td>
-        </tr>
-        <tr>
-          <td>cal_enabled</td>
-          <td>CHAR</td>
-          <td>1</td>
-          <td>Y</td>
-          <td>'Y'</td>
-          <td>allow admin to disable account ('Y' = yes, 'N' = no)</td>
-        </tr>
-        <tr>
-          <td>cal_telephone</td>
-          <td>VARCHAR</td>
-          <td>50</td>
-          <td>Y</td>
-          <td>&nbsp;</td>
-          <td>user's telephone</td>
-        </tr>
-        <tr>
-          <td>cal_address</td>
-          <td>VARCHAR</td>
-          <td>75</td>
-          <td>Y</td>
-          <td>&nbsp;</td>
-          <td>user's address</td>
-        </tr>
-        <tr>
-          <td>cal_title</td>
-          <td>VARCHAR</td>
-          <td>75</td>
-          <td>Y</td>
-          <td>&nbsp;</td>
-          <td>user's title</td>
-        </tr>
-        <tr>
-          <td>cal_birthday</td>
-          <td>INT</td>
-          <td>&nbsp;</td>
-          <td>Y</td>
-          <td>&nbsp;</td>
-          <td>user's birthday</td>
-        </tr>
-        <tr>
-          <td>cal_last_login</td>
-          <td>INT</td>
-          <td>&nbsp;</td>
-          <td>Y</td>
-          <td>&nbsp;</td>
-          <td>user's last log in date</td>
         </tr>
       </table>
     </blockquote>

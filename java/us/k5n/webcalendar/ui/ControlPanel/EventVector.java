@@ -9,7 +9,7 @@ import us.k5n.webcalendar.Participant;
  * The EventVector object is a wrapper around the Event and Participant classes
  * intended to be used as a row in a JTable (which gladly accepts Vector objects
  * for each row).
- *
+ * 
  * @author Craig Knudsen, craig@k5n.us
  * @version $Id$
  */

@@ -7,13 +7,15 @@ include_once 'includes/init.php';
 // form:   name of form on parent page
 // listid: element id of user selection object in form
 //         ... to be used like form.elements[$listid]
-$progErrStr = translate ( 'Program Error No XXX specified!' );
+$progErrStr=translate ( 'Program Error' ).' ';
 if ( empty ( $form ) ) {
-  echo str_replace ( 'XXX', translate ( 'form' ), $progErrStr );
+  echo $progErrStr . str_replace ( 'XXX',
+    translate ( 'form' ), translate ( 'No XXX specified!' ) );
   exit;
 }
 if ( empty ( $listid ) ) {
-  echo str_replace ( 'XXX', translate ( 'listid' ), $progErrStr );
+  echo $progErrStr . str_replace ( 'XXX',
+    translate ( 'listid' ), translate ( 'No XXX specified!' ) );
   exit;
 }
 
@@ -24,14 +26,14 @@ for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
   $selected[$exp[$i]] = 1;
 }
 
-$owner = ( $is_nonuser_admin || $is_assistant ? $user : $login );
+$owner = ( $WC->isNonuserAdmin() ? $WC->userId() : $WC->loginId() );
 
 // Load list of groups.
 $sql = 'SELECT wg.cal_group_id, wg.cal_name FROM webcal_group wg';
 
-if ( $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
+if ( getPref ( 'USER_SEES_ONLY_HIS_GROUPS' ) ) {
   $sql .= ', webcal_group_user wgu WHERE wg.cal_group_id = wgu.cal_group_id
-    AND wgu.cal_login = ?';
+    AND wgu.cal_login_id = ?';
   $sql_params[] = $owner;
 }
 
@@ -47,14 +49,14 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-print_header ( '', '', '', true, false, true );
+build_header ( '', '', '', 29 );
 
 ob_start ();
 
 echo '
     <script language="javascript" type="text/javascript">';
 
-include 'includes/js/usersel.php';
+include 'includes/js/usersel.js';
 
 echo '
     </script>
@@ -67,9 +69,9 @@ echo '
               <select name="users" size="15" multiple="multiple">';
 
 $users = get_my_users ();
-if ( $NONUSER_ENABLED == 'Y' ) {
-  $nonusers = get_my_nonusers ( $login, true );
-  $users = ( $NONUSER_AT_TOP == 'Y'
+if ( getPref ( 'NONUSER_ENABLED' ) ) {
+  $nonusers = get_my_nonusers ( $WC->loginId(), true );
+  $users = ( getPref ( 'NONUSER_AT_TOP' )
     ? array_merge ( $nonusers, $users ) : array_merge ( $users, $nonusers ) );
 }
 for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
@@ -83,9 +85,9 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
 echo '
               </select><br />
               <input type="button" value="' . translate ( 'All' )
- . '" onclick="selectAll( true )" />
+ . '" onclick="selectAll()" />
               <input type="button" value="' . translate ( 'None' )
- . '" onclick="selectAll( false )" />
+ . '" onclick="selectNone()" />
               <input type="reset" value="' . translate ( 'Reset' ) . '" />
             </td>
             <td valign="top">
@@ -101,9 +103,9 @@ for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
 echo '
               </select><br />
               <input type="button" value="' . translate ( 'Add' )
- . '" onclick="toggleGroup( true );" />
+ . '" onclick="selectGroupMembers();" />
               <input type="button" value="' . translate ( 'Remove' )
- . '" onclick="toggleGroup( false );" />
+ . '" onclick="deselectGroupMembers();" />
             </td>
           </tr>
           <tr>
@@ -115,7 +117,7 @@ echo '
             </td>
           </tr>
         </table>
-      </form
+      </form>
     </center>';
 
 ob_end_flush ();

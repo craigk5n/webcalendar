@@ -6,9 +6,8 @@
  * touch each file every time.
 */
 defined ( '_ISVALID' ) or ( 'You cannot access this file directly!' );
-// DO NOT DELETE translate ( 'Index' ) translate ( 'Documentation' )
-$help_list = array (
-  'Index' => 'help_index.php',
+// DO NOT DELETE translate ( 'Index' );
+$help_list = array ( 'Index' => 'help_index.php',
   'Adding/Editing Calendar Entries' => 'help_edit_entry.php',
   'Layers' => 'help_layers.php',
   'Import' => 'help_import.php',
@@ -24,10 +23,12 @@ $helpListStr = '
 $page = 0;
 if ( empty ( $thispage ) )
   $thispage = 0;
+//We may call help pages from help_index.php or via openHelp from a specific page
+// if so, $thispage will equal the page name
 foreach ( $help_list as $key => $val ) {
   $page++;
   $helpListStr .= '
-      <a' . ( $page == $thispage ? ' class="current"' : '' ) . ' title="'
+      <a' . ( $page == $thispage || $thispage == $val ? ' class="current"' : '' ) . ' title="'
    . translate ( $key ) . '" href="' . $val . '?thispage=' . $page . '">'
    . $page . '</a>';
 }

@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 /**
  * ReminderLoader
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */

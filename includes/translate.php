@@ -5,10 +5,10 @@
  *
  * We load a translation file and store it in the global array $translations.
  * If a cache dir is enabled (in $settings[]), then we serialize $translations
- * and store it as a file in the cache dir. The next call will unserialize the
+ * and store it as a file in the cache dir.  The next call will unserialize the
  * cached file rather than re-parse the file.
  *
- * Although there is a PHP gettext () function, I prefer to use this home-grown
+ * Although there is a PHP gettext() function, I prefer to use this home-grown
  * translate function since it is simpler to work with.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
@@ -18,6 +18,8 @@
  * @package WebCalendar
  */
 
+//define a simple replacement for "\n"
+define ( 'N' , "\n", false );
 /* Performs html_entity_decode style conversion for php < 4.3
  * Borrowed from http://us2.php.net/manual/en/function.html-entity-decode.php
  *
@@ -33,90 +35,17 @@ function unhtmlentities ( $string ) {
 
   // html_entity_decode available PHP 4 >= 4.3.0, PHP 5.
   if ( function_exists ( 'html_entity_decode' ) )
-    return html_entity_decode ( $string, ENT_QUOTES );
+    return html_entity_decode ( $string, ENT_QUOTES, 'UTF-8' );
   else { // For PHP < 4.3.
     // Replace numeric entities.
-    $string =
-    preg_replace ( '~&#x([0-9a-f]+);~ei', 'chr ( hexdec ( "\\1" ) )', $string );
+    $string = preg_replace ( '~&#x([0-9a-f]+);~ei', 'chr ( hexdec ( "\\1" ) )',
+      $string );
+    $string = preg_replace ( '~&#([0-9]+);~e', 'chr ( \\1 )', $string );
     // Replace literal entities.
-    return strtr (
-      preg_replace ( '~&#([0-9]+);~e', 'chr ( \\1 )', $string ),
-      array_flip ( get_html_translation_table ( HTML_ENTITIES, ENT_QUOTES ) ) );
+    $trans_tbl = get_html_translation_table ( HTML_ENTITIES, ENT_QUOTES );
+    $trans_tbl = array_flip ( $trans_tbl );
+    return strtr ( $string, $trans_tbl );
   }
-}
-/* Read in a language file and cache it if we can.
- *
- * @param string $in_file   The name of the language file to read.
- * @param string $out_file  Name of the cache file.
- * @param bool   $strip     Do we want to call stripslashes?
- *                          It may cause problems with Japanese translations.
- */
-
-function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
-  global $can_save, $new_install, $translations;
-
-  $fp = fopen ( $in_file, 'r', false );
-  if ( ! $fp )
-    die_miserable_death ( 'Could not open language file: ' . $in_file );
-
-  $inInstallTrans = false;
-  $installationTranslations = array ();
-
-  while ( ! feof ( $fp ) ) {
-    $buffer = trim ( fgets ( $fp, 4096 ) );
-    if ( strlen ( $buffer ) == 0 )
-      continue;
-
-    if ( get_magic_quotes_runtime () && $strip )
-      $buffer = stripslashes ( $buffer );
-
-    // Convert quotes to entities.
-    $buffer =
-    str_replace ( array ( '"', "'" ), array ( '&quot;', '&#39;' ), $buffer );
-
-    // Skip comments.
-    if ( substr ( $buffer, 0, 1 ) == '#' ) {
-      if ( substr ( $buffer, 0, 7 ) == '# Page:' )
-        $inInstallTrans = ( substr ( $buffer, 9, 7 ) == 'install' );
-
-      continue;
-    }
-
-    // Skip installation translations unless we're running install/index.php.
-    if ( $inInstallTrans && ! $new_install )
-      continue;
-
-    $pos = strpos ( $buffer, ':' );
-    $abbrev = trim ( substr ( $buffer, 0, $pos ) );
-    $temp = trim ( substr ( $buffer, $pos + 1 ) );
-
-    // If the translation is the same as the English text,
-    // tools/update_translation.pl should signify this with an "=" sign
-    // in the user's language file so they don't show as << MISSING >>.
-    if ( $temp !== '=' ) {
-      if ( $inInstallTrans && $new_install )
-        $installationTranslations[$abbrev] = $temp;
-      else
-        $translations[$abbrev] = $temp;
-    }
-  }
-  fclose ( $fp );
-
-  if ( stristr ( $in_file, 'english' ) )
-    ksort ( $translations );
-
-  // We want to cache all the non-installation phrases...
-  if ( $can_save && ! empty ( $out_file ) ) {
-    $fd = @fopen ( $out_file, 'wb', false );
-    if ( ! empty ( $fd ) ) {
-      fwrite ( $fd, serialize ( $translations ) );
-      fclose ( $fd );
-      chmod ( $out_file, 0666 );
-    }
-  }
-  // but, we still need them in the array if we ARE installing.
-  if ( $new_install )
-    $translations = array_merge ( $translations, $installationTranslations );
 }
 
 /* Unloads $translations so we can translate a different language.
@@ -125,122 +54,108 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
  *                             no directory or file suffix. Example:  "French")
  */
 function reset_language ( $new_language ) {
-  global $basedir, $fullname, $lang, $lang_file,
-  $PUBLIC_ACCESS_FULLNAME, $translation_loaded, $translations;
-
-  if ( $new_language == 'none' )
+  global $lang, $lang_file, $translation_loaded;
+	
+  if ( $new_language == 'none' || $new_language == 'Browser-defined')
     $new_language = get_browser_language ();
 
   if ( $new_language != $lang || ! $translation_loaded ) {
+    $translation_loaded = false;
     $lang = $new_language;
     $lang_file = 'translations/' . $lang . '.txt';
-    $translation_loaded = false;
-    load_translation_text ();
   }
-  $PUBLIC_ACCESS_FULLNAME = translate ( 'Public Access' );
-  if ( $fullname == 'Public Access' )
-    $fullname = $PUBLIC_ACCESS_FULLNAME;
 }
 
 /* Loads all the language translation into an array for quick lookup.
  *
  * <b>Note:</b> There is no need to call this manually.
- * It will be invoked by {@link translate () } the first time it is called.
+ * It will be invoked by {@link translate ()} the first time it is called.
  */
 function load_translation_text () {
-  global $basedir, $lang_file, $settings, $translation_loaded, $translations;
-
-  if ( $translation_loaded ) // No need to run this twice.
+  global $lang_file, $translation_loaded;
+ 
+  if ( $translation_loaded == true ) // No need to run this twice.
     return;
 
-  $lang_cache = substr ( $lang_file, strrpos ( $lang_file, '/' ) + 1 );
-  $lang_file_2 = '';
-
-  if ( ! empty ( $basedir ) ) {
-    if ( ! file_exists ( $lang_file ) )
-      $lang_file_2 = $basedir . '/' . $lang_file;
+  $translations = array ();
+	$cached_file = 'cache/' . $lang_file;
+	
+  if ( defined ( '_WC_BASE_DIR' ) ) {
+	  $base_dir = _WC_BASE_DIR;
+    $lang_file_2 = _WC_BASE_DIR . "/$lang_file";
 
     if ( file_exists ( $lang_file_2 ) )
       $lang_file = $lang_file_2;
-
-    if ( ! file_exists ( $lang_file ) )
-      $lang_file = 'translations/' . $lang_cache;
   }
   if ( ! file_exists ( $lang_file ) )
     die_miserable_death ( 'Cannot find language file: ' . $lang_file );
 
-  $cached_base_file = $cached_file = $cachedir = '';
-  $can_save = false;
+  //  We will save the parsed translation file as a serialized array.
+  $save_to_cache = $use_cached = false;
 
-  $eng_file = 'translations/English-US.txt';
-  if ( ! file_exists ( $eng_file ) )
-    $eng_file = '../' . $eng_file;
+  if ( @function_exists ( 'file_get_contents' ) ) {
 
-  // Check for 'cachedir' in settings. If found, then we will save
-  // the parsed translation file there as a serialized array.
-  // Ensure we use the proper cachedir name.
-  if ( ! empty ( $settings['cachedir'] ) && is_dir ( $settings['cachedir'] ) )
-    $cachedir = $settings['cachedir'];
-  else
-  if ( ! empty ( $settings['db_cachedir'] ) && is_dir ( $settings['db_cachedir'] ) )
-    $cachedir = $settings['db_cachedir'];
-
-  if ( ! empty ( $cachedir ) && function_exists ( 'file_get_contents' ) ) {
-    $cached_base_file = $cached_file = $cachedir . '/translations/';
-    $cached_base_file .= 'English-US.txt';
-    $cached_file .= $lang_cache;
-    $cache_tran_dir = dirname ( $cached_file );
-
-    if ( ! is_dir ( $cache_tran_dir ) ) {
-      @mkdir ( $cache_tran_dir, 0777 );
-      @chmod ( $cache_tran_dir, 0777 );
-      /*
-      // Do we really want to die if we can't save the cache file?
-      // Or should we just run without it?
-      if ( ! is_dir ( $cache_tran_dir ) )
-        die_miserable_death ( 'Error creating translation cache directory: "'
-           . $cache_tran_dir
-           . '"<br /><br />Please check the permissions of the directory: "'
-           . $cachedir . '"' );
- */
-    }
-
-    $can_save = ( is_writable ( $cache_tran_dir ) );
-  }
-
-  $new_install = ( ! strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' ) );
-  $translations = array ();
-
-  // First set default $translations[]
-  // by reading the base English-US.txt file or it's cache.
-  if ( empty ( $cached_base_file ) )
-    read_trans_file ( $eng_file );
-  else {
-    if ( ! file_exists ( $cached_base_file ) ||
-        filemtime ( $eng_file ) > filemtime ( $cached_base_file ) )
-      read_trans_file ( $eng_file, $cached_base_file );
-    else
-      // Cache is newer.
-      $translations = unserialize ( file_get_contents ( $cached_base_file ) );
-  }
-
-  // Then, if language is not English,
-  // read in the user's language file to overwrite the array.
-  // This will ensure that any << MISSING >> phrases at least have a default.
-  if ( $lang_file !== $eng_file ) {
-    if ( empty ( $cached_file ) )
-      read_trans_file ( $lang_file );
+    if ( ! @file_exists ( $cached_file ) )
+      $save_to_cache = true;
     else {
-      if ( ! file_exists ( $cached_file ) ||
-          ( filemtime ( $lang_file ) > filemtime ( $cached_file ) ) )
-        read_trans_file ( $lang_file, $cached_file );
+      if ( @filemtime ( $lang_file ) > @filemtime ( $cached_file ) )
+        // Translation was updated. reload/reparse and save.
+        $save_to_cache = true;
       else
-        // Cache is newer.
-        $translations = unserialize ( file_get_contents ( $cached_file ) );
+        // Cache is more recent.
+        $use_cached = true;
     }
   }
+  if ( $use_cached )
+    $translations = unserialize ( @file_get_contents ( $cached_file ) );
+  // boy, that was easy ;-)
+  else {
+    $fp = @fopen ( $lang_file, 'r', false );
+    if ( ! $fp )
+      die_miserable_death ( 'Could not open language file: ' . $lang_file );
 
-  $translation_loaded = true;
+    $inInstallTrans = false;
+    $isInstall = strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' );
+    while ( ! feof ( $fp ) ) {
+      $buffer = trim ( fgets ( $fp, 4096 ) );
+      if ( strlen ( $buffer ) == 0 )
+        continue;
+      // stripslashes may cause problems with Japanese translations.
+      // If so, we may have to make this configurable.
+      if ( get_magic_quotes_runtime () )
+        $buffer = stripslashes ( $buffer );
+
+      // Convert quotes to entities.
+      $buffer = str_replace ( '"', '&quot;', $buffer );
+      $buffer = str_replace ( "'", '&#39;', $buffer );
+      // Skip installation translations unless we're running install/index.php
+      if ( substr ( $buffer, 0, 7 ) == '# Page:' ) {
+        $inInstallTrans = ( substr ( $buffer, 0, 15 ) == '# Page: install' );
+        continue;
+      }
+      if ( ( substr ( $buffer, 0, 1 ) == '#' || $inInstallTrans && !
+            $isInstall ) )
+        continue;
+      $pos = strpos ( $buffer, ':' );
+      $abbrev = trim ( substr ( $buffer, 0, $pos ) );
+      $translations[$abbrev] = trim ( substr ( $buffer, $pos + 1 ) );
+    }
+    fclose ( $fp );
+
+    if ( ! empty ( $cached_file ) && $save_to_cache ) {
+      $fd = @fopen ( $cached_file, 'w+b', false );
+
+      if ( ! empty ( $fd ) ) {
+        fwrite ( $fd, serialize ( $translations ) );
+        fclose ( $fd );
+        chmod ( $cached_file, 0666 );
+      } else
+        // Could not write to cachedir.
+        die_miserable_death ( 'Error writing translation cache file: '
+           . $cached_file );
+    }
+  }
+	return $translations;
 }
 
 /* Gets browser-specified language preference.
@@ -253,14 +168,15 @@ function load_translation_text () {
  */
 function get_browser_language ( $pref = false ) {
   global $browser_languages, $HTTP_ACCEPT_LANGUAGE;
-
   $ret = '';
+
   if ( empty ( $HTTP_ACCEPT_LANGUAGE ) &&
       isset ( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) )
     $HTTP_ACCEPT_LANGUAGE = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
   if ( empty ( $HTTP_ACCEPT_LANGUAGE ) )
-    return ( $pref ? translate ( 'Browser Language Not Found' ) : 'English-US' );
+    return ( $pref == false
+      ? 'English-US' : translate ( 'Browser Language Not Found' ) );
   else {
     $langs = explode ( ',', $HTTP_ACCEPT_LANGUAGE );
     for ( $i = 0, $cnt = count ( $langs ); $i < $cnt; $i++ ) {
@@ -284,19 +200,22 @@ function get_browser_language ( $pref = false ) {
  * @param string $decode Do we want to envoke html_entity_decode?
  *                       We currently only use this with javascript alerts.
  *
- * @return string The translated text, if available. If no translation is
+ * @return string The translated text, if available.  If no translation is
  *                avalailable, then the original untranslated text is returned.
  */
 function translate ( $str, $decode = '' ) {
-  global $translation_loaded, $translations;
-
-  if ( ! $translation_loaded )
-    load_translation_text ();
-
+  global $translation_loaded;
+  
+	static $translations;
+  if ( ! $translation_loaded || empty ($translations ) ) {
+    $translations = load_translation_text ();
+		$translation_loaded = true;
+  }
   $str = trim ( $str );
-  return ( empty ( $translations[$str] )
-    ? $str
-    : ( $decode ? unhtmlentities ( $translations[$str] ) : $translations[$str] ) );
+  return ( ! empty ( $translations[$str] )
+    ? ( $decode == true
+      ? unhtmlentities ( $translations[$str] ) : $translations[$str] )
+    : $str );
 }
 
 /* Translates text and prints it.
@@ -352,7 +271,6 @@ function etooltip ( $str, $decode = '' ) {
  * @uses translate
  */
 function define_languages () {
-  global $languages;
 
   $languages = array (
     translate ( 'English' ) => 'English-US', // translate ( 'English-US' )
@@ -375,7 +293,6 @@ function define_languages () {
     translate ( 'French' ) => 'French',
     translate ( 'Galician' ) => 'Galician',
     translate ( 'German' ) => 'German',
-    translate ( 'German' ) . ' (UTF-8)' => 'German_utf8',
     translate ( 'Greek' ) => 'Greek',
     translate ( 'Hebrew' ) . ' (UTF-8)' => 'Hebrew_utf8',
     translate ( 'Holo (Taiwanese)' ) => 'Holo-Big5',
@@ -403,11 +320,13 @@ function define_languages () {
     translate ( 'Welsh' ) => 'Welsh'
     // Add new languages here!
     );
-    //Sort languages in translated order
-    asort ( $languages );
-    //make sure Browser Defined is first in list
-    $browser_defined = array ( translate ( 'Browser-defined' ) => 'none');
-    $languages = array_merge ( $browser_defined, $languages );
+  //Sort languages in translated order
+  asort ( $languages );
+  //make sure Browser Defined is first in list
+  $browser_defined = array ( translate ( 'Browser-defined' ) => 'none');
+  $languages = array_merge ( $browser_defined, $languages );
+	
+	return $languages;
 }
 
 /* Converts language names to their abbreviation.
@@ -428,7 +347,7 @@ function languageToAbbrev ( $name ) {
 
 /*
 If the user sets "Browser-defined" as their language setting, then use the
-$HTTP_ACCEPT_LANGUAGE settings to determine the language. The array below
+$HTTP_ACCEPT_LANGUAGE settings to determine the language.  The array below
 maps browser language abbreviations into our available language files.
 NOTE:  These should all be lowercase on the left side even though the proper
 listing is like "en-US"!  Not sure what the abbreviation is?  Check out:
@@ -446,7 +365,6 @@ $browser_languages = array (
   'de-at' => 'German', // German/Austria
   'de-ch' => 'German', // German/Switzerland
   'de-de' => 'German', // German/German
-  // 'Elven' doesn't have a code abbreviation.
   'ee' => 'Estonian',
   'el' => 'Greek',
   'en' => 'English-US',
@@ -493,12 +411,13 @@ $browser_languages = array (
 General purpose translations that may be used elsewhere
 as variables and not picked up by update_translation.pl
 
-translate ( 'event' ) translate ( 'journal' )
+Not everyone uses these symbols to represent numbers.
+TODO:  Translate numbers in the program itself.
+translate ('0') // zero
+translate ('1') translate ('2') translate ('3') translate ('4') translate ('5')
+translate ('6') translate ('7') translate ('8') translate ('9')
 
-Because not everyone uses these symbols for numbers:
-translate ( '0' ) translate ( '1' ) translate ( '2' ) translate ( '3' )
-translate ( '4' ) translate ( '5' ) translate ( '6' ) translate ( '7' )
-translate ( '8' ) translate ( '9' )
+translate ( 'event' ) translate ( 'journal' )
 */
 
 ?>

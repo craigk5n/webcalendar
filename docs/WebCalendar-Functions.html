@@ -7,65 +7,65 @@
 <title>WebCalendar Function Documentation</title>
 <style type="text/css">
 body {
-  background-color: #FFFFFF;
-  font-family: Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
 }
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 p {
-  margin-top: 2px;
+	margin-top: 2px;
 }
 ul {
-  margin-bottom: 2px;
-  margin-top: 2px;
+	margin-bottom: 2px;
+	margin-top: 2px;
 }
 tt {
-  font-family: courier, monospace;
-  font-size: 14px;
+	font-family: courier, monospace;
+	font-size: 14px;
 }
 pre {
-  font-family: courier, monospace;
-  font-size: 14px;
-  border: 1px solid #0000FF;
-  background-color: #EEEEFF;
-  padding: 4px;
-  margin-left: 25px;
-  margin-right: 25px;
+	font-family: courier, monospace;
+	font-size: 14px;
+	border: 1px solid #0000FF;
+	background-color: #EEEEFF;
+	padding: 4px;
+	margin-left: 25px;
+	margin-right: 25px;
 }
 blockquote {
-  margin-top: 5px;
-  margin-bottom: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 .prompt {
-  font-weight: bold;
+	font-weight: bold;
 }
 .tip {
-  font-weight: bold;
-  background-color: #FFFF00;
-  border: 1px solid #000000;
-  padding: 1px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-right: 10px;
+	font-weight: bold;
+	background-color: #FFFF00;
+	border: 1px solid #000000;
+	padding: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-right: 10px;
 }
 .note {
-  font-weight: bold;
-  background-color: #CCCCCC;
-  color: #000000;
-  border: 1px solid #000000;
-  padding: 1px;
+	font-weight: bold;
+	background-color: #CCCCCC;
+	color: #000000;
+	border: 1px solid #000000;
+	padding: 1px;
 }
 hr {
-  margin-bottom: 7px;
+	margin-bottom: 7px;
 }
 h3 {
-  background-color: #191970;
-  color: #FFFFFF;
-  padding: 5px;
+	background-color: #191970;
+	color: #FFFFFF;
+	padding: 5px;
 }
 .top {
-  text-align: right;
+	text-align: right;
 }
 </style>
 </head>
@@ -126,7 +126,7 @@ h3 {
 <li><a href="#get_monday_before">get_monday_before</a></li>
 <li><a href="#get_my_users">get_my_users</a></li>
 <li><a href="#get_nonuser_cals">get_nonuser_cals</a></li>
-<li><a href="#get_pref_setting">get_pref_setting</a></li>
+<li><a href="#getPref">getPref</a></li>
 <li><a href="#get_preferred_view">get_preferred_view</a></li>
 <li><a href="#get_repeating_entries">get_repeating_entries</a></li>
 <li><a href="#get_site_extra_fields">get_site_extra_fields</a></li>
@@ -172,7 +172,6 @@ h3 {
 <li><a href="#translate">translate</a></li>
 <li><a href="#user_get_boss_list">user_get_boss_list</a></li>
 <li><a href="#user_has_boss">user_has_boss</a></li>
-<li><a href="#user_is_assistant">user_is_assistant</a></li>
 <li><a href="#user_is_nonuser_admin">user_is_nonuser_admin</a></li>
 <li><a href="#week_number">week_number</a></li>
 <li><a href="#weekday_name">weekday_name</a></li>
@@ -208,7 +207,7 @@ h3 {
 <br /><br />
 <h3><a name="background_css">background_css</a></h3>
 <tt>background_css ( $color, $height, $percent )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Creates the CSS for using gradient.php, if the appropriate GD functions are available. A one-pixel wide image will be used for the background image.<br /><br /><span class="note">Note</span> The gd library module needs to be available to use gradient images. If it is not available, a single background color will be used instead.</blockquote>
+<span class="prompt">Description:</span><blockquote>Creates the CSS for using gradient.php, if the appropriate GD functions are available.  A one-pixel wide image will be used for the background image. <br /><br /><span class="note">Note</span> The gd library module needs to be available to use gradient images.  If it is not available, a single background color will be used instead.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$color</tt> - base color</li>
@@ -265,15 +264,15 @@ h3 {
 <ul>
 <li><tt>$time</tt> - input time in YYYYMMDD format</li>
 <li><tt>$round_down</tt> - should we change 1100 to 1059?</li>
-<li><tt>$10AM</tt> - 100AM appointment just shows up in the 10AM slow and not in the 11AM slot also.)<br /><br /><span class="note">Note</span> the global variable $TIME_SLOTS is used to determine how many time slots there are and how many minutes each is. This variable is defined user preferences (or defaulted to admin system settings).</li>
+<li><tt>$10AM</tt> - 100AM appointment just shows up in the 10AM slow and not in the 11AM slot also.) <br /><br /><span class="note">Note</span> the global variable $TIME_SLOTS is used to determine how many time slots there are and how many minutes each is. This variable is defined user preferences (or defaulted to admin system settings).</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The time slot index</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2655</blockquote>
 <br /><br />
 <br /><br />
 <h3><a name="check_for_conflicts">check_for_conflicts</a></h3>
-<tt>check_for_conflicts ( $date, $duration, $hour, $minute, $participants, $login, $id )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Check for conflicts. Find overlaps between an array of dates and the other dates in the database.<br />Limits on number of appointments: if enabled in System Settings ($LIMIT_APPTS global variable), too many appointments can also generate a scheduling conflict.<br /><br /><span class="note">TODO</span> Update this to handle exceptions to repeating events</blockquote>
+<tt>check_for_conflicts ( $date, $duration, $hour, $minute, $participants, $login, $eid )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Check for conflicts. Find overlaps between an array of dates and the other dates in the database. <br />Limits on number of appointments: if enabled in System Settings ($LIMIT_APPTS global variable), too many appointments can also generate a scheduling conflict. <br /><br /><span class="note">TODO</span> Update this to handle exceptions to repeating events</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - is an array of dates in YYYYMMDD format that is checked for overlaps.</li>
@@ -282,7 +281,7 @@ h3 {
 <li><tt>$minute</tt> - minute of the event (0-59)</li>
 <li><tt>$participants</tt> - an array of users whose calendars are to be checked</li>
 <li><tt>$login</tt> - the current user name</li>
-<li><tt>$id</tt> - current event id (this keeps overlaps from wrongly checking an event against itself)</li>
+<li><tt>$eid</tt> - current event id (this keeps overlaps from wrongly checking an event against itself)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Return empty string for no conflicts or return the HTML of the conflicts when one or more are found.</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2461</blockquote>
@@ -373,7 +372,7 @@ h3 {
 <br /><br />
 <h3><a name="dbi_affected_rows">dbi_affected_rows</a></h3>
 <tt>dbi_affected_rows ( $conn, $res )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Returns the number of rows affected by the last INSERT, UPDATE or DELETE.<br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
+<span class="prompt">Description:</span><blockquote>Returns the number of rows affected by the last INSERT, UPDATE or DELETE. <br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$conn</tt> - The database connection</li>
@@ -396,7 +395,7 @@ h3 {
 <br /><br />
 <h3><a name="dbi_connect">dbi_connect</a></h3>
 <tt>dbi_connect ( $host, $login, $password, $database )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Open up a database connection. Use a pooled connection if the db supports it and the <tt>db_persistent</tt> setting is enabled.<br /><br /><span class="note">Notes</span><ul> <li> The database type is determined by the global variable <tt>db_type</tt></li> <li> For ODBC, $host is ignored, $database = DSN</li> <li> For Oracle, $database = tnsnames name</li> <li> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails </li> </ul></blockquote>
+<span class="prompt">Description:</span><blockquote>Open up a database connection. Use a pooled connection if the db supports it and the <tt>db_persistent</tt> setting is enabled. <br /><br /><span class="note">Notes</span><ul> <li> The database type is determined by the global variable <tt>db_type</tt></li> <li> For ODBC, $host is ignored, $database = DSN</li> <li> For Oracle, $database = tnsnames name</li> <li> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails </li> </ul></blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$host</tt> - Hostname of database server</li>
@@ -434,7 +433,7 @@ h3 {
 <br /><br />
 <h3><a name="dbi_fetch_row">dbi_fetch_row</a></h3>
 <tt>dbi_fetch_row ( $res )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Retrieve a single row from the database and return it as an array.<br /><br /><span class="note">Note</span> we don't use the more useful xxx_fetch_array because not all databases support this function.<br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
+<span class="prompt">Description:</span><blockquote>Retrieve a single row from the database and return it as an array. <br /><br /><span class="note">Note</span> we don't use the more useful xxx_fetch_array because not all databases support this function. <br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
@@ -456,7 +455,7 @@ h3 {
 <br /><br />
 <h3><a name="dbi_query">dbi_query</a></h3>
 <tt>dbi_query ( $sql, $fatalOnError, $showError )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Execute a SQL query.<br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
+<span class="prompt">Description:</span><blockquote>Execute a SQL query. <br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$sql</tt> - SQL of query to execute</li>
@@ -480,7 +479,7 @@ h3 {
 <br /><br />
 <h3><a name="die_miserable_death">die_miserable_death</a></h3>
 <tt>die_miserable_death ( $error )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Print a fatal error message to the user along with a link to the Troubleshooting section of the WebCalendar System Administrator's Guide.  Execution is aborted.</blockquote>
+<span class="prompt">Description:</span><blockquote>Print a fatal error message to the user along with a link to the Troubleshooting section of the WebCalendar System Administrator's Guide.   Execution is aborted.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$error</tt> - The error message to display</li>
@@ -499,7 +498,7 @@ h3 {
 <li><tt>$showyear</tt> - boolean whether to show the year in the calendar's title</li>
 <li><tt>$show_weeknums</tt> - boolean whether to show week numbers to the left of each row</li>
 <li><tt>$minical_id</tt> - id attribute for the minical table</li>
-<li><tt>$month_link</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?id=7&amp;amp;) [defaults to 'month.php?']</li>
+<li><tt>$month_link</tt> - URL and query string for month link that should come before the date specification (i.e. month.php?  or  view_l.php?eid=7&amp;amp;) [defaults to 'month.php?']</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1195</blockquote>
@@ -507,7 +506,7 @@ h3 {
 <br /><br />
 <h3><a name="display_time">display_time</a></h3>
 <tt>display_time ( $time, $ignore_offset )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Display a time in either 12 or 24 hour format. The global variable $TZ_OFFSET to adjust the time. Note that this is somewhat of a kludge for timezone support. If an event is set for 11PM server time and the user is 2 hours ahead, it will show up as 1AM, but the date will not be adjusted to the next day.</blockquote>
+<span class="prompt">Description:</span><blockquote>Display a time in either 12 or 24 hour format. The global variable $TZ_OFFSET to adjust the time. Note that this is somewhat of a kludge for timezone support.  If an event is set for 11PM server time and the user is 2 hours ahead, it will show up as 1AM, but the date will not be adjusted to the next day.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$time</tt> - input time in HHMMSS format</li>
@@ -519,7 +518,7 @@ h3 {
 <br /><br />
 <h3><a name="display_unapproved_events">display_unapproved_events</a></h3>
 <tt>display_unapproved_events ( $user )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Check for any unaproved events. If any are found, display a link to the unapproved events (where they can be approved). If the user is an admin user, also count up any public events. If the user is a nonuser admin, count up events on the nonuser calendar.</blockquote>
+<span class="prompt">Description:</span><blockquote>Check for any unaproved events.  If any are found, display a link to the unapproved events (where they can be approved). If the user is an admin user, also count up any public events. If the user is a nonuser admin, count up events on the nonuser calendar.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - current user login</li>
@@ -530,7 +529,7 @@ h3 {
 <br /><br />
 <h3><a name="do_debug">do_debug</a></h3>
 <tt>do_debug ( $msg )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Log a debug message. Generally, we do not leave calls to this function in the code. It is used for debugging only.</blockquote>
+<span class="prompt">Description:</span><blockquote>Log a debug message.  Generally, we do not leave calls to this function in the code.  It is used for debugging only.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$msg</tt> - Text to be logged</li>
@@ -541,10 +540,10 @@ h3 {
 <br /><br />
 <h3><a name="do_redirect">do_redirect</a></h3>
 <tt>do_redirect ( $url )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Send a redirect to the specified page. The database connection is closed and execution terminates in this function.<br /> Note: MS IIS/PWS has a bug in which it does not allow us to send a cookie and a redirect in the same HTTP header. When we detect that the web server is IIS, we accomplish the redirect using meta-refresh. See the following for more info on the IIS bug: <blockquote> <a href="http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4"> http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4</a> </blockquote></blockquote>
+<span class="prompt">Description:</span><blockquote>Send a redirect to the specified page. The database connection is closed and execution terminates in this function. <br /> Note: MS IIS/PWS has a bug in which it does not allow us to send a cookie and a redirect in the same HTTP header.  When we detect that the web server is IIS, we accomplish the redirect using meta-refresh. See the following for more info on the IIS bug: <blockquote> <a href="http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4"> http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4</a> </blockquote></blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
-<li><tt>$url</tt> - The page to redirect to. In theory, this should be an absolute URL, but all browsers accept relative URLs (like "month.php").</li>
+<li><tt>$url</tt> - The page to redirect to.  In theory, this should be an absolute URL, but all browsers accept relative URLs (like "month.php").</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 483</blockquote>
@@ -563,7 +562,7 @@ h3 {
 <br /><br />
 <h3><a name="etooltip">etooltip</a></h3>
 <tt>etooltip ( $str )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML.<br /><br /><span class="note">Note</span> The <a href="#tooltip"><tt>tooltip</tt></a> function will return the result rather than print the value.</blockquote>
+<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML. <br /><br /><span class="note">Note</span> The <a href="#tooltip"><tt>tooltip</tt></a> function will return the result rather than print the value.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$str</tt> - the input text to translate and print</li>
@@ -597,7 +596,7 @@ h3 {
 <br /><br />
 <h3><a name="getGetValue">getGetValue</a></h3>
 <tt>getGetValue ( $name )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP GET method.<br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file. If you need to enforce a specific input format (such as numeric input), then use the <a href="#getValue"><tt>getValue</tt></a> function.</blockquote>
+<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP GET method.   <br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file. If you need to enforce a specific input format (such as numeric input), then use the <a href="#getValue"><tt>getValue</tt></a> function.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form or found in the URL</li>
@@ -608,7 +607,7 @@ h3 {
 <br /><br />
 <h3><a name="getIntValue">getIntValue</a></h3>
 <tt>getIntValue ( $name, $fatal )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get an integer value resulting from an HTTP GET or HTTP POST method.<br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
+<span class="prompt">Description:</span><blockquote>Get an integer value resulting from an HTTP GET or HTTP POST method.   <br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form or found in the URL</li>
@@ -620,7 +619,7 @@ h3 {
 <br /><br />
 <h3><a name="getPostValue">getPostValue</a></h3>
 <tt>getPostValue ( $name )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP POST method.<br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
+<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP POST method.   <br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form</li>
@@ -631,11 +630,11 @@ h3 {
 <br /><br />
 <h3><a name="getValue">getValue</a></h3>
 <tt>getValue ( $name, $format, $fatal )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get the value resulting from either HTTP GET method or HTTP POST method.<br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.<br /> Note: If you need to get an integer value, you can use the <a href="#getIntValue"><tt>getIntValue</tt></a> function.</blockquote>
+<span class="prompt">Description:</span><blockquote>Get the value resulting from either HTTP GET method or HTTP POST method.  <br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.  <br /> Note: If you need to get an integer value, you can use the <a href="#getIntValue"><tt>getIntValue</tt></a> function.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form or found in the URL</li>
-<li><tt>$format</tt> - A regular expression format that the input must match. If the input does not match, an empty string is returned and a warning is sent to the browser. If The $fatal parameter is true, then execution will also stop when the input does not match the format.</li>
+<li><tt>$format</tt> - A regular expression format that the input must match.  If the input does not match, an empty string is returned and a warning is sent to the browser.  If The $fatal parameter is true, then execution will also stop when the input does not match the format.</li>
 <li><tt>$fatal</tt> - Is it considered a fatal error requiring execution to stop if the value retrieved does not match the format regular expression?</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value used in the HTML form (or URL)</blockquote>
@@ -717,9 +716,9 @@ h3 {
 <span class="prompt">Location:</span><blockquote>functions.php, line 4107</blockquote>
 <br /><br />
 <br /><br />
-<h3><a name="get_pref_setting">get_pref_setting</a></h3>
-<tt>get_pref_setting ( $user, $setting )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get a preference setting for the specified user. If no value is found in the database, then the system default setting will be returned.</blockquote>
+<h3><a name="getPref">getPref</a></h3>
+<tt>getPref ( $user, $setting )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Get a preference setting for the specified user.  If no value is found in the database, then the system default setting will be returned.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - user login we are getting preference for</li>
@@ -731,7 +730,7 @@ h3 {
 <br /><br />
 <h3><a name="get_preferred_view">get_preferred_view</a></h3>
 <tt>get_preferred_view ( $date, $args )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get user's preferred view. The user's preferred view is stored in the $STARTVIEW global variable. This is loaded from the user preferences (or system settings if there are no user preferences.)</blockquote>
+<span class="prompt">Description:</span><blockquote>Get user's preferred view. The user's preferred view is stored in the STARTVIEW  variable.  This is loaded from the user preferences (or system settings if there are no user preferences.)</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - (optional) date to pass to preferred view in YYYYMMDD format</li>
@@ -743,7 +742,7 @@ h3 {
 <br /><br />
 <h3><a name="get_repeating_entries">get_repeating_entries</a></h3>
 <tt>get_repeating_entries ( $user, $date, $get_unapproved )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Get all the repeating events for the specified data and return them in an array (which is sorted by time of day).<br /><br /><span class="note">Note</span> The global variable <tt>$repeated_events</tt> needs to be set by calling the <a href="#read_repeated_events"><tt>read_repeated_events</tt></a> function first.</blockquote>
+<span class="prompt">Description:</span><blockquote>Get all the repeating events for the specified data and return them in an array (which is sorted by time of day). <br /><br /><span class="note">Note</span> The global variable <tt>$repeated_events</tt> needs to be set by calling the <a href="#read_repeated_events"><tt>read_repeated_events</tt></a> function first.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - username</li>
@@ -790,11 +789,11 @@ h3 {
 <br /><br />
 <br /><br />
 <h3><a name="html_for_event_day_at_a_glance">html_for_event_day_at_a_glance</a></h3>
-<tt>html_for_event_day_at_a_glance ( $id, $date, $time, $name, $description, $status, $pri, $access, $duration, $event_owner, $event_category )</tt><br /><br />
+<tt>html_for_event_day_at_a_glance ( $eid, $date, $time, $name, $description, $status, $pri, $access, $duration, $event_owner, $event_category )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Generate the HTML for an event to be viewed in the day-at-glance (day.php). The HTML will be stored in an array ($hour_arr) indexed on the event's starting hour.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
-<li><tt>$id</tt> - event id</li>
+<li><tt>$eid</tt> - event id</li>
 <li><tt>$date</tt> - date of event in YYYYMMDD format</li>
 <li><tt>$time</tt> - time of event in HHMM format</li>
 <li><tt>$name</tt> - brief description of event</li>
@@ -811,11 +810,11 @@ h3 {
 <br /><br />
 <br /><br />
 <h3><a name="html_for_event_week_at_a_glance">html_for_event_week_at_a_glance</a></h3>
-<tt>html_for_event_week_at_a_glance ( $id, $date, $time, $name, $description, $status, $pri, $access, $duration, $event_owner, $event_category )</tt><br /><br />
+<tt>html_for_event_week_at_a_glance ( $eid, $date, $time, $name, $description, $status, $pri, $access, $duration, $event_owner, $event_category )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Generate the HTML for an event to be viewed in the week-at-glance (week.php). The HTML will be stored in an array (global variable $hour_arr) indexed on the event's starting hour.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
-<li><tt>$id</tt> - event id</li>
+<li><tt>$eid</tt> - event id</li>
 <li><tt>$date</tt> - date of event in YYYYMMDD format</li>
 <li><tt>$time</tt> - time of event in HHMM format</li>
 <li><tt>$name</tt> - brief description of event</li>
@@ -833,7 +832,7 @@ h3 {
 <br /><br />
 <h3><a name="html_to_8bits">html_to_8bits</a></h3>
 <tt>html_to_8bits ( $html )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Convert HTML entities in 8bit.<br /><br /><span class="note">Note</span> Only supported for PHP4 (not PHP3).</blockquote>
+<span class="prompt">Description:</span><blockquote>Convert HTML entities in 8bit. <br /><br /><span class="note">Note</span> Only supported for PHP4 (not PHP3).</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$html</tt> - HTML text</li>
@@ -854,8 +853,8 @@ h3 {
 <br /><br />
 <br /><br />
 <h3><a name="load_global_settings">load_global_settings</a></h3>
-<tt>load_global_settings ( $ )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Load default system settings (which can be updated via admin.php) System settings are stored in the <a href="WebCalendar-Database.html#webcal_config"><tt>webcal_config</tt></a> table.<br /> Note: If the setting for "server_url" is not set, the value will be calculated and stored in the database.</blockquote>
+<tt>loadConfig ( $ )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Load default system settings (which can be updated via admin.php) System settings are stored in the <a href="WebCalendar-Database.html#webcal_config"><tt>webcal_config</tt></a> table. <br /> Note: If the setting for "server_url" is not set, the value will be calculated and stored in the database.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
@@ -877,7 +876,7 @@ h3 {
 <br /><br />
 <h3><a name="load_translation_text">load_translation_text</a></h3>
 <tt>load_translation_text ( $ )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Load all the language translation into an array for quick lookup.<br /><br /><span class="note">Note</span> There is no need to call this manually. It will be invoked by the <a href="#translate"><tt>translate</tt></a> function the first time it is called.</blockquote>
+<span class="prompt">Description:</span><blockquote>Load all the language translation into an array for quick lookup. <br /><br /><span class="note">Note</span> There is no need to call this manually.  It will be invoked by the <a href="#translate"><tt>translate</tt></a> function the first time it is called.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
@@ -911,7 +910,7 @@ h3 {
 <br /><br />
 <h3><a name="load_user_preferences">load_user_preferences</a></h3>
 <tt>load_user_preferences ( $ )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Load the current user's preferences as global variables from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table. Also load the list of views for this user (not really a preference, but this is a convenient place to put this...)<br /><br /><span class="note">Notes</span>   <ul> <li>If the $ALLOW_COLOR_CUSTOMIZATION is set to 'N', then we ignore any color preferences.</li> <li>Other default values will also be set if the user has not saved a preference and no global value has been set by the administrator in the system settings.</li> </ul></blockquote>
+<span class="prompt">Description:</span><blockquote>Load the current user's preferences as global variables from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table. Also load the list of views for this user (not really a preference, but this is a convenient place to put this...) <br /><br /><span class="note">Notes</span>   <ul> <li>If the $ALLOW_COLOR_CUSTOMIZATION is set to 'N', then we ignore any color preferences.</li> <li>Other default values will also be set if the user has not saved a preference and no global value has been set by the administrator in the system settings.</li> </ul></blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
@@ -969,7 +968,7 @@ h3 {
 <br /><br />
 <h3><a name="print_date_entries">print_date_entries</a></h3>
 <tt>print_date_entries ( $date, $user, $is_ssi )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Print all the calendar entries for the specified user for the specified date. If we are displaying data from someone other than the logged in user, then check the access permission of the entry.</blockquote>
+<span class="prompt">Description:</span><blockquote>Print all the calendar entries for the specified user for the specified date.  If we are displaying data from someone other than the logged in user, then check the access permission of the entry.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - date in YYYYMMDD format</li>
@@ -982,7 +981,7 @@ h3 {
 <br /><br />
 <h3><a name="print_date_entries_timebar">print_date_entries_timebar</a></h3>
 <tt>print_date_entries_timebar ( $date, $user, $ssi )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Print all the entries in a time bar format for the specified user for the specified date. If we are displaying data from someone other than the logged in user, then check the access permission of the entry.</blockquote>
+<span class="prompt">Description:</span><blockquote>Print all the entries in a time bar format for the specified user for the specified date.  If we are displaying data from someone other than the logged in user, then check the access permission of the entry.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - date in YYYYMMDD format</li>
@@ -1018,11 +1017,11 @@ h3 {
 <br /><br />
 <br /><br />
 <h3><a name="print_entry">print_entry</a></h3>
-<tt>print_entry ( $id, $date, $time, $duration, $name, $description, $status, $pri, $access, $event_owner, $event_cat )</tt><br /><br />
+<tt>print_entry ( $eid, $date, $time, $duration, $name, $description, $status, $pri, $access, $event_owner, $event_cat )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print the HTML for one day's events in the month view.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
-<li><tt>$id</tt> - event id</li>
+<li><tt>$eid</tt> - event id</li>
 <li><tt>$date</tt> - date of event (relevant in repeating events) in YYYYMMDD format</li>
 <li><tt>$time</tt> - time (in HHMMSS format)</li>
 <li><tt>$duration</tt> - event duration (in minutes)</li>
@@ -1039,11 +1038,11 @@ h3 {
 <br /><br />
 <br /><br />
 <h3><a name="print_entry_timebar">print_entry_timebar</a></h3>
-<tt>print_entry_timebar ( $id, $date, $time, $duration, $name, $description, $status, $pri, $access, $event_owner, $event_category )</tt><br /><br />
+<tt>print_entry_timebar ( $eid, $date, $time, $duration, $name, $description, $status, $pri, $access, $event_owner, $event_category )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print the HTML for an events with a timebar.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
-<li><tt>$id</tt> - event id</li>
+<li><tt>$eid</tt> - event id</li>
 <li><tt>$date</tt> - date of event in YYYYMMDD format</li>
 <li><tt>$time</tt> - time of event in HHMM format</li>
 <li><tt>$duration</tt> - duration of event in minutes</li>
@@ -1060,7 +1059,7 @@ h3 {
 <br /><br />
 <br /><br />
 <h3><a name="print_header">print_header</a></h3>
-<tt>print_header ( $includes, $HeadX, $BodyX, $disbleCustom, $disableStyle )</tt><br /><br />
+<tt>build_header ( $includes, $HeadX, $BodyX, $disbleCustom, $disableStyle )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Prints the HTML header and opening HTML body tag.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
@@ -1093,7 +1092,7 @@ h3 {
 <ul>
 <li><tt>$include_nav_links</tt> - should the standard navigation links be included in the trailer (true/false). </li>
 <li><tt>$closeDb</tt> - close the database connection (true/false)</li>
-<li><tt>$disableCustom</tt> - disable the custom trailer the administrator has setup. (This is useful for small popup windows and pages being used in an iframe.)</li>
+<li><tt>$disableCustom</tt> - disable the custom trailer the administrator has setup.  (This is useful for small popup windows and pages being used in an iframe.)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>init.php, line 334</blockquote>
@@ -1107,8 +1106,8 @@ h3 {
 <li><tt>$user</tt> - username</li>
 <li><tt>$want_repeated</tt> - true to get repeating events; false to get</li>
 <li><tt>$non</tt> - repeating.</li>
-<li><tt>$date_filter</tt> - SQL phrase starting with AND, to be appended to the WHERE clause. May be empty string.</li>
-<li><tt>$cat_id</tt> - category ID to filter on. May be empty.</li>
+<li><tt>$date_filter</tt> - SQL phrase starting with AND, to be appended to the WHERE clause.  May be empty string.</li>
+<li><tt>$cat_id</tt> - category ID to filter on.  May be empty.</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of events</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1676</blockquote>
@@ -1130,7 +1129,7 @@ h3 {
 <br /><br />
 <h3><a name="read_repeated_events">read_repeated_events</a></h3>
 <tt>read_repeated_events ( $user, $date, $cat_id )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Read all the repeated events for a user. This is only called once per page request to improve performance. All the events get loaded into the array $repeated_events sorted by time of day (not date). This will load all the repeated events into memory.<br /><br /><span class="note">Notes</span>  <ul> <li> To get which events repeat on a specific date, use the <a href="#get_repeating_entries"><tt>get_repeating_entries</tt></a> function.</li> <li> To get all the dates that one specific event repeats on, the <a href="#get_all_dates"><tt>get_all_dates</tt></a> function should be called. </li> </ul></blockquote>
+<span class="prompt">Description:</span><blockquote>Read all the repeated events for a user. This is only called once per page request to improve performance. All the events get loaded into the array $repeated_events sorted by time of day (not date). This will load all the repeated events into memory. <br /><br /><span class="note">Notes</span>  <ul> <li> To get which events repeat on a specific date, use the <a href="#get_repeating_entries"><tt>get_repeating_entries</tt></a> function.</li> <li> To get all the dates that one specific event repeats on, the <a href="#get_all_dates"><tt>get_all_dates</tt></a> function should be called.  </li> </ul></blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - username</li>
@@ -1169,7 +1168,7 @@ h3 {
 <span class="prompt">Description:</span><blockquote>Unload translations so we can switch languages and translate into a different language).</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
-<li><tt>$new_language</tt> - new language file to load (just the base filename, no directory or file suffix. Example: "French")</li>
+<li><tt>$new_language</tt> - new language file to load (just the base filename, no directory or file suffix.  Example: "French")</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>translate.php, line 48</blockquote>
@@ -1188,7 +1187,7 @@ h3 {
 <br /><br />
 <h3><a name="send_no_cache_header">send_no_cache_header</a></h3>
 <tt>send_no_cache_header ( $ )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Send header stuff that tells the browser not to cache this page. Different browser use different mechanisms for this, so a series of HTTP header directives are sent.<br /><br /><span class="note">Note</span> This function needs to be called before any HTML output is sent to the browser.</blockquote>
+<span class="prompt">Description:</span><blockquote>Send header stuff that tells the browser not to cache this page. Different browser use different mechanisms for this, so a series of HTTP header directives are sent. <br /><br /><span class="note">Note</span> This function needs to be called before any HTML output is sent to the browser.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
@@ -1199,7 +1198,7 @@ h3 {
 <br /><br />
 <h3><a name="send_to_preferred_view">send_to_preferred_view</a></h3>
 <tt>send_to_preferred_view ( $date, $args )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Send a redirect to the user's preferred view. The user's preferred view is stored in the $STARTVIEW global variable. This is loaded from the user preferences (or system settings if there are no user preferences.)</blockquote>
+<span class="prompt">Description:</span><blockquote>Send a redirect to the user's preferred view. The user's preferred view is stored in the STARTVIEW  variable.  This is loaded from the user preferences (or system settings if there are no user preferences.)</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - (optional) date to pass to preferred view in YYYYMMDD format</li>
@@ -1210,7 +1209,7 @@ h3 {
 <br /><br />
 <br /><br />
 <h3><a name="set_today">set_today</a></h3>
-<tt>set_today ( $date )</tt><br /><br />
+<tt>$WC->setToday ( $date )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Determines what the day is after the $TZ_OFFSET and sets it globally. The following global variables will be set:  <ul> <li> $thisyear </li> <li> $thismonth </li> <li> $thisday </li> <li> $thisdate </li> <li> $today </li> </ul></blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
@@ -1221,11 +1220,11 @@ h3 {
 <br /><br />
 <br /><br />
 <h3><a name="site_extras_for_popup">site_extras_for_popup</a></h3>
-<tt>site_extras_for_popup ( $id )</tt><br /><br />
+<tt>site_extras_for_popup ( $eid )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Generate the HTML used in an event popup for the site_extras fields of an event.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
-<li><tt>$id</tt> - event id</li>
+<li><tt>$eid</tt> - event id</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The HTML to be used within the event popup for any site_extra fields found for the specified event</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1011</blockquote>
@@ -1258,7 +1257,7 @@ h3 {
 <br /><br />
 <h3><a name="tooltip">tooltip</a></h3>
 <tt>tooltip ( $str )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML.<br /><br /><span class="note">Note</span> The <a href="#etooltip"><tt>etooltip</tt></a> function will print the result rather than return the value.</blockquote>
+<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML. <br /><br /><span class="note">Note</span> The <a href="#etooltip"><tt>etooltip</tt></a> function will print the result rather than return the value.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$str</tt> - the input text to translate</li>
@@ -1269,12 +1268,12 @@ h3 {
 <br /><br />
 <h3><a name="translate">translate</a></h3>
 <tt>translate ( $str )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Translate a string from the default English usage to some other language. The first time that this is called, the translation file will be loaded (with the <a href="#load_translation_text"><tt>load_translation_text</tt></a> function).</blockquote>
+<span class="prompt">Description:</span><blockquote>Translate a string from the default English usage to some other language.  The first time that this is called, the translation file will be loaded (with the <a href="#load_translation_text"><tt>load_translation_text</tt></a> function).</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$str</tt> - text to translate</li>
 </ul>
-<span class="prompt">Returns:</span><blockquote>The translated text, if available. If no translation is available, then the original untranslated text is returned.</blockquote>
+<span class="prompt">Returns:</span><blockquote>The translated text, if available.  If no translation is available, then the original untranslated text is returned.</blockquote>
 <span class="prompt">Location:</span><blockquote>translate.php, line 115</blockquote>
 <br /><br />
 <br /><br />
@@ -1337,7 +1336,7 @@ h3 {
 <br /><br />
 <h3><a name="weekday_name">weekday_name</a></h3>
 <tt>weekday_name ( $w )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Return the full weekday name. Use the <a href="#weekday_short_name"><tt>weekday_short_name</tt></a> function to get the abbreviated weekday name.</blockquote>
+<span class="prompt">Description:</span><blockquote>Return the full weekday name.  Use the <a href="#weekday_short_name"><tt>weekday_short_name</tt></a> function to get the abbreviated weekday name.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$w</tt> - weekday (0=Sunday,...,6=Saturday)</li>
@@ -1348,7 +1347,7 @@ h3 {
 <br /><br />
 <h3><a name="weekday_short_name">weekday_short_name</a></h3>
 <tt>weekday_short_name ( $w )</tt><br /><br />
-<span class="prompt">Description:</span><blockquote>Return the abbreviated weekday name. Use the <a href="#weekday_name"><tt>weekday_name</tt></a> function to get the full weekday name.</blockquote>
+<span class="prompt">Description:</span><blockquote>Return the abbreviated weekday name.  Use the <a href="#weekday_name"><tt>weekday_name</tt></a> function to get the full weekday name.</blockquote>
 <span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$w</tt> - weekday (0=Sunday,...,6=Saturday)</li>

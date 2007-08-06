@@ -13,12 +13,12 @@ INCLUDES = \
  ../includes/init.php \
  ../includes/php-dbi.php \
  ../includes/translate.php \
- ../includes/user.php \
+ ../includes/classes/user/User.class.php \
  ../includes/views.php \
  ../includes/translate.php \
- ../includes/classes/WebCalendar.class \
- ../includes/classes/Event.class \
- ../includes/classes/RptEvent.class \
+ ../includes/classes/WebCalendar.class.php \
+ ../includes/classes/Event.class.php \
+ ../includes/classes/RptEvent.class.php \
  ../report.php
 
 WebCalendar-Database.html: ../install/sql/tables-mysql.sql sql2html.pl

@@ -12,56 +12,59 @@
  *
  * Security:
  * Must have "allow view others" enabled ($ALLOW_VIEW_OTHER) in
- *   System Settings unless the user is an admin user ($is_admin).
+ *   System Settings unless the user is an admin user ($WC->isAdmin()).
  */
 
 include_once 'includes/init.php';
 // Don't allow users to use this feature if "allow view others" is disabled.
-if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
+if ( ! getPref ( 'ALLOW_VIEW_OTHER' ) && ! $WC->isAdmin() )
   // not allowed...
   exit;
 
 // Input args in URL.
 // users: list of comma-separated users.
-// translate ( 'Program Error' ) translate ( 'No XXX specified!' )
-$noXStr = translate ( 'Program Error No XXX specified!' );
+$programStr = translate ( 'Program Error' ) . ' ';
+$previousStr = translate ( 'Previous' );
+$nextStr = translate ( 'Next' );
+
 if ( empty ( $users ) ) {
-  echo str_replace ( 'XXX', translate ( 'user' ), $noXStr );
+  echo $programStr . str_replace ( 'XXX', translate ( 'user' ),
+    translate ( 'No XXX specified!' ) );
   exit;
 } elseif ( empty ( $year ) ) {
-  echo str_replace ( 'XXX', translate ( 'year' ), $noXStr );
+  echo $programStr . str_replace ( 'XXX', translate ( 'year' ),
+    translate ( 'No XXX specified!' ) );
   exit;
 } elseif ( empty ( $month ) ) {
-  echo str_replace ( 'XXX', translate ( 'month' ), $noXStr );
+  echo $programStr . str_replace ( 'XXX', translate ( 'month' ),
+    translate ( 'No XXX specified!' ) );
   exit;
 } elseif ( empty ( $day ) ) {
-  echo str_replace ( 'XXX', translate ( 'day' ), $noXStr );
+  echo $programStr . str_replace ( 'XXX', translate ( 'day' ),
+    translate ( 'No XXX specified!' ) );
   exit;
 }
 
-print_header (
+build_header (
   array ( 'js/availability.php/false/' . "$month/$day/$year/"
-   . getGetValue ( 'form' ) ), '', 'onload="focus();"', true, false, true );
+   . $WC->getGET ( 'form' ) ), '', 'onload="focus ();"', true, false, true );
 
 $next_url = $prev_url = '?users=' . $users;
 $time = mktime ( 0, 0, 0, $month, $day, $year );
 $date = date ( 'Ymd', $time );
-$next_url .= strftime ( '&amp;year=%Y&amp;month=%m&amp;day=%d', $time + 86400 );
-$prev_url .= strftime ( '&amp;year=%Y&amp;month=%m&amp;day=%d', $time - 86400 );
-$span = ( $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ) * 3 + 1;
+$next_url .= strftime ( '&amp;year=%Y&amp;month=%m&amp;day=%d', $time + ONE_DAY );
+$prev_url .= strftime ( '&amp;year=%Y&amp;month=%m&amp;day=%d', $time - ONE_DAY );
+$span = ( getPref ( 'WORK_DAY_END_HOUR' ) - getPref ( 'WORK_DAY_START_HOUR' ) ) * 3 + 1;
 
 $users = explode ( ',', $users );
 
-$nextStr = translate ( 'Next' );
-$prevStr = translate ( 'Previous' );
-
 echo '
     <div style="width:99%;">
-      <a title="' . $prevStr . '" class="prev" href="' . $prev_url
- . '"><img src="images/leftarrow.gif" class="prev" alt="'
- . $prevStr . '" /></a>
+      <a title="' . $previousStr . '" class="prev" href="'
+ . $prev_url . '"><img src="images/leftarrow.gif" class="prevnext" alt="'
+ . $previousStr . '" /></a>
       <a title="' . $nextStr . '" class="next" href="' . $next_url
- . '"><img src="images/rightarrow.gif" class="next" alt="'
+ . '"><img src="images/rightarrow.gif" class="prevnext" alt="'
  . $nextStr . '" /></a>
       <div class="title">
         <span class="date">';

@@ -2,11 +2,11 @@
 /* $Id$ */
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
-print_header ( '', '', '', true );
+build_header ( '', '', '', 29 );
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Layers' ) . '</h2>
     <p>' .
-translate ( 'Layers are useful for displaying...' )
+translate ( 'Layers are useful for displaying other users&#39; events in your own calendar. You can specify the user and the color the events will be displayed in.' )
  . '</p>';
 $tmp_arr = array (
   translate ( 'Add/Edit/Delete' ) =>
@@ -23,7 +23,7 @@ $tmp_arr = array (
   translate ( 'Specifies the user that you would like to see displayed in your calendar.' ),
   );
 list_help ( $tmp_arr );
-if ( $ALLOW_COLOR_CUSTOMIZATION )
+if ( getPref ( 'ALLOW_COLOR_CUSTOMIZATION' ) )
   echo '
     <h3>' . translate ( 'Colors' ) . '</h3>
     <p>' . translate ( 'colors-help' ) . '</p>';
