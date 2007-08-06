@@ -97,7 +97,7 @@ function do_config ( $fileLoc ) {
 
   // Open settings file to read.
   $settings = array ();
-  if ( file_exists ( $fileLog ) ) {
+  if ( file_exists ( $fileLoc ) ) {
     $fd = @fopen ( $fileLoc, 'rb', true );
   }
   if ( empty ( $fd ) && ! empty ( $includedir ) ) {
