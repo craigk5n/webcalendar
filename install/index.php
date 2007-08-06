@@ -161,7 +161,7 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
       <html><head><title>Password Incorrect</title>
       <meta http-equiv="refresh" content="0; index.php" />
       </head>
-      <body onLoad="alert ('<?php etranslate ( 'Invalid Login' ) ?>'); document.go(-1)">
+      <body onLoad="alert('<?php etranslate ( 'Invalid Login' ) ?>'); document.go(-1)">
       </body></html>
 <?php
     exit;
@@ -256,7 +256,7 @@ if ( ! empty ( $action ) && $action == 'switch' ) {
    case 2:
      if ( ! empty ( $_SESSION['validuser'] ) ){
        $_SESSION['step'] = $page;
-    $onload = 'db_type_handler ();';
+    $onload = 'db_type_handler();';
     }
    break;
   case 3:
@@ -268,7 +268,7 @@ if ( ! empty ( $action ) && $action == 'switch' ) {
      if ( ! empty ( $_SESSION['validuser'] ) && ! empty ( $_SESSION['db_success'] )  &&
       empty ( $_SESSION['db_create'] ) ){
        $_SESSION['step'] = $page;
-    $onload = 'auth_handler ();';
+    $onload = 'auth_handler();';
     }
    break;
   default:
@@ -391,7 +391,7 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
     $db_password = getPostValue ( 'form_db_password' );
     $db_cachedir = getPostValue ( 'form_db_cachedir' );
     //Allow  field length to change if needed
-   $onload = 'db_type_handler ();';
+   $onload = 'db_type_handler();';
 
    //disable warnings
    show_errors ();
