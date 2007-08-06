@@ -1,5 +1,5 @@
 <?php /* $Id$  */
-defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
+defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
 $month = $arinc[3];
 $day = $arinc[4];
@@ -11,7 +11,7 @@ $parent_form = $arinc[6];
 NS4 = (document.layers) ? 1 : 0;
 IE4 = (document.all) ? 1 : 0;
 // W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
-W3C = (document.getElementById) ? 1 : 0;
+W3C = (document.getElementById) ? 1 : 0;  
 //Function is similar to visible.php, but effects the parent
 function makeVisible ( name ) {
   var ele;
@@ -35,7 +35,7 @@ function schedule_event(hours, minutes) {
   var year =<?php echo $year ?>;
   var month =<?php echo $month ?>;
   var day =<?php echo $day ?>;
-  if (confirm("<?php etranslate ( 'Change the date and time of this entry?', true)?>")) {
+  if (confirm("<?php etranslate( 'Change the date and time of this entry?', true)?>")) {
     var parentForm = window.opener.document.forms['<?php echo $parent_form ?>'];
     if ( '<?php echo $parent_form ?>' == 'editentryform') {
       parentForm.timetype.selectedIndex = 1;
@@ -62,8 +62,8 @@ function schedule_event(hours, minutes) {
         }
       }
     }
-    if   ( minutes <= 9 ) minutes = '0' + minutes;
-    parentForm.entry_minute.value=minutes;
+    if   ( minutes <= 9 ) minutes = '0' + minutes;  
+    parentForm.entry_minute.value=minutes;    
     parentForm.day.selectedIndex = day - 1;
     parentForm.month.selectedIndex = month - 1;
     for ( i = 0; i < parentForm.year.length; i++ ) {

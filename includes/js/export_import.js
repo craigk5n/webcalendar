@@ -1,28 +1,29 @@
-<?php /* $Id$ */
-defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
-?>
-function toggle_import () {
+/* $Id$ */
+
+initPhpVars( 'export_import' );
+
+function toggle_import() {
     var i = document.importform.ImportType.selectedIndex;
   if ( i == 1 ) { //Palm
       makeVisible ( "palm" );
    } else {
-      makeInvisible ( "palm" );
+      makeInvisible ( "palm" ); 
    }
   if ( i == 3 ) {// Outlook CSV
       makeInvisible ( "ivcal" );
-      makeVisible ( "outlookcsv" );
+      makeVisible ( "outlookcsv" ); 
    } else {
-      makeVisible ( "ivcal" );
+      makeVisible ( "ivcal" ); 
       makeInvisible ( "outlookcsv" );
    }
 }
 
-function toggel_catfilter () {
+function toggel_catfilter() {
   var i = document.exportform.format.selectedIndex;
   if ( i == 0 ) { //ICAL
       makeVisible ( "catfilter" );
    } else {
-      makeInvisible ( "catfilter" );
+      makeInvisible ( "catfilter" ); 
    }
 
 }
@@ -31,7 +32,7 @@ function checkExtension () {
   var type = document.importform.ImportType.selectedIndex;
   var filename = document.importform.FileName.value;
   var extension = filename.substr ( filename.length -3, 3 );
-  extension = extension.toLowerCase ();
+  extension = extension.toLowerCase();
   var pass = true;
   switch  ( type ) {
     case 0:
@@ -49,9 +50,9 @@ function checkExtension () {
     default:
       pass = false;
       break;
-  }
-  if ( ! pass ) {
-    alert ( "<?php etranslate ( 'File type does not match Import Format', true ) ?>");
+  } 
+  if (  ! pass ) {
+    alert ( fileType );
     return false;
   }
   return true;
