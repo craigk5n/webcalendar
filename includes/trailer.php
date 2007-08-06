@@ -99,8 +99,8 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
            . ( $is_nonuser_admin ? '?user=' . getValue ( 'user' ) : '' )
            . "\">$unapprovedStr" . '</a>';
       }
-    } else
-    if ( $PUBLIC_ACCESS_OTHERS != 'Y' ||
+    } 
+    if (  $login == '__public__' && $PUBLIC_ACCESS_OTHERS != 'Y' ||
       ( $is_nonuser && ! access_is_enabled () ) ) {
       // Don't allow them to see other people's calendar.
     } else
