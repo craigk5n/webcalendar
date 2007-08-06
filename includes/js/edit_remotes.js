@@ -1,30 +1,30 @@
-<?php /* $Id$  */
-defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
-?>
+/* $Id$  */
+
+initPhpVars( 'edit_remotes' );
+
 var validform = true;
 
 function valid_form ( form ) {
   var err = "";
   if ( form.layercolor && ! valid_color ( form.layercolor.value ) )
-    err += "<?php etranslate ( 'Invalid color', true)?>.\n";
+    err += invalidColor;
 
   if ( err.length > 0 ) {
-    alert ( "<?php etranslate ( 'Error', true) ?>:\n\n" + err + "\n\n<?php
-  etranslate ( 'Color format should be RRGGBB.', true)?>" );
+    alert (  Error + ":\n\n" + err + colorFormat );
     return false;
   }
-  if ( ! form.nurl.value ) {
-    alert ( "<?php etranslate ( 'Error', true) ?>:\n\n" + "<?php
-      etranslate ( 'URL cannot be blank.', true)?>" );
-    return false;
+  if (  ! form.nurl.value ) {
+    alert ( Error + ":\n\n" + blankUrl );
+    return false;  
   }
-  check_name ();
-
+  check_name();
+  
   return validform;
 
 }
 
-function toggle_layercolor () {
+
+function toggle_layercolor() {
  if ( document.prefform.nlayer.checked == true) {
    makeVisible ( 'nlayercolor', true );
  } else {
@@ -32,12 +32,12 @@ function toggle_layercolor () {
  }
 }
 
-function check_name () {
+function check_name() {
   var url = 'ajax.php';
   var params = 'page=edit_remotes&name=' + $F('nid');
   var ajax = new Ajax.Request(url,
-    {method: 'post',
-    parameters: params,
+    {method: 'post', 
+    parameters: params, 
     onComplete: showResponse});
 }
 
@@ -46,7 +46,7 @@ function showResponse(originalRequest) {
     text = originalRequest.responseText;
     //this causes jacascript errors in Firefox, but these can be ignored
     alert (text);
-    document.prefform.nid.focus ();
+    document.prefform.nid.focus();
     validform =  false;
   } else {
     validform =  true;

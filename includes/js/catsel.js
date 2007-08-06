@@ -1,8 +1,7 @@
-<?php /* $Id$  */
-defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
+/* $Id$  */
 
-$form = $arinc[3];
-?>
+var form = window.opener.document.body.id + 'form';
+
 
 function sendCats ( cats ) {
   var parentid = '';
@@ -20,9 +19,9 @@ function sendCats ( cats ) {
  }
   parentid = parentid.substr (1);
  parenttext = parenttext.substr (1);
-  window.opener.document.<?php echo $form ?>.cat_id.value = parentid;
-  window.opener.document.<?php echo $form ?>.catnames.value = parenttext;
-
+  window.opener.document.forms[form].cat_id.value = parentid;
+  window.opener.document.forms[form].catnames.value = parenttext;
+   
   window.close ();
 }
 
@@ -40,24 +39,24 @@ function selAdd(btn){
  if ( document.forms[0].elements[i].name == "eventcats[]" )
       eventid = i;
   }
-  var evlist = document.forms[0].elements[eventid];
+    var evlist = document.forms[0].elements[eventid]; 
   var isUnique = true;
    with (document.forms[0])
    {
       with (document.forms[0].elements[catid])
       {
          for (i = 0; i < length; i++) {
-               if (options[i].selected) {
-                 with (options[i]) {
-
-                  for ( j=0; j < evlist.length;j++ ) {
-                    if (evlist.options[j].value == value )
-                      isUnique = false;
-                  }
-                  if ( isUnique)
-                    evlist.options[evlist.length]  = new Option( text, value );
+           if(options[i].selected) {
+             with (options[i]) {
+                                  
+               for ( j=0; j < evlist.length;j++ ) {
+                 if (evlist.options[j].value == value )
+                   isUnique = false;
+                 }
+                 if ( isUnique)
+                   evlist.options[evlist.length]  = new Option( text, value );    
                   options[i].selected = false;
-                } //end with options
+                 } //end with options
                }
          } // end for loop
       } // end with islist1
@@ -72,14 +71,14 @@ function selRemove(btn){
       eventid = i;
   }
    with (document.forms[0])
-   {
+   { 
       with (document.forms[0].elements[eventid])
       {
          for (i = 0; i < length; i++)
          {
-           if (options[i].selected){
+           if(options[i].selected){
           options[i] = null;
-        }
+        } 
          } // end for loop
      }
    } // end with document
