@@ -1004,7 +1004,7 @@ if ( $can_edit ) {
     $userlist = get_my_users ( $create_by, 'invite' );
     if ( $NONUSER_ENABLED == 'Y' ) {
       // Include public NUCs.
-      $nonusers = get_my_nonusers ( $real_user, true );
+      $nonusers = get_my_nonusers ( $real_user, false );
       $userlist = ( $NONUSER_AT_TOP == 'Y'
         ? array_merge ( $nonusers, $userlist )
         : array_merge ( $userlist, $nonusers ) );
