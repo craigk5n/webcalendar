@@ -621,7 +621,7 @@ if ( empty ( $error ) ) {
     $reminder_date = $reminder_duration = $reminder_offset = $reminder_repeats = 0;
     if ( $rem_when == 'Y' ) { // Use date.
       $reminder_hour += $reminder_ampm;
-      $reminder_date = gmmktime ( $reminder_hour, $reminder_minute, 0,
+      $reminder_date = mktime ( $reminder_hour, $reminder_minute, 0,
         $reminder_month, $reminder_day, $reminder_year );
     } else // Use offset.
       $reminder_offset = ( $rem_days * 1440 ) + ( $rem_hours * 60 ) + $rem_minutes;
