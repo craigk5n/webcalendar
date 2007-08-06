@@ -153,7 +153,7 @@ if ( ! empty ( $otheruser ) ) {
 }
 print_header ( '', '',
   ( ! empty ( $op['time'] ) && $op['time'] == 'Y'
-    ? 'onload="enableAll ( true );"' : '' ) );
+    ? 'onload="enableAll( true );"' : '' ) );
 
 echo print_success ( $saved );
 
