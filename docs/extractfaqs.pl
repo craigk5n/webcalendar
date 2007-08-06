@@ -3,19 +3,20 @@
 # extractfaqs.pl
 #
 # Description:
-#  Extract FAQs from all the user documentation to create a single
-#  document that contains all FAQs.
-#  We don't put HTML header/trailer stuff since the intent is to
-#  embed the results into some other web page.
+#	Extract FAQs from all the user documentation to create a single
+#	document that contains all FAQs.
+#	We don't put HTML header/trailer stuff since the intent is to
+#	embed the results into some other web page.
 #
 #
 # History:
-#  20-Jan-2005  Craig Knudsen <cknudsen@cknudsen.com>
-#      Created
-#  02-Feb-2005  Craig Knudsen <cknudsen@cknudsen.com>
-#      Updated to group into categories.
+#	20-Jan-2005	Craig Knudsen <cknudsen@cknudsen.com>
+#			Created
+#	02-Feb-2005	Craig Knudsen <cknudsen@cknudsen.com>
+#			Updated to group into categories.
 #
 #######################################################################
+
 
 my @files = ( );
 my @questions = ( );
@@ -51,7 +52,7 @@ for ( $i = 0; $i < @questions; $i++ ) {
      die "Error removing link: $questions[$i]\n";
   }
 
-  # For
+  # For 
   if ( $answers[$i] =~ /<a href="#([a-z]+)">/ ) {
     $answers[$i] = $` . "<a href=\"" .
       makeCVSURL ( $file[$i], $1 ) . "\">" . $';
@@ -82,6 +83,7 @@ for ( $i = 0; $i < @questions; $i++ ) {
 }
 print "</dl>\n";
 
+
 exit 0;
 
 #######################################################################
@@ -94,6 +96,7 @@ sub makeCVSURL {
   return "http://cvs.sourceforge.net/viewcvs.py/*checkout*/webcalendar/webcalendar/docs/" . $f .
     "?rev=HEAD&amp;content-type=text/html#" . $anchor;
 }
+
 
 sub process_file {
   my ( $f ) = @_;
@@ -152,4 +155,7 @@ sub process_file {
     }
   }
 }
+
+
+
 

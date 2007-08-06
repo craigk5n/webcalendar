@@ -33,7 +33,7 @@ import us.k5n.webcalendar.WebCalendarClient;
 /**
  * WebCalendar Web Services sample client application. This application lists
  * events.
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */
@@ -51,7 +51,7 @@ public class SampleApp implements MessageDisplayer, EventDisplayer,
 
   /**
    * Show a reminder on the screen.
-   *
+   * 
    * @param reminder
    *          The reminder to display
    */
@@ -61,7 +61,7 @@ public class SampleApp implements MessageDisplayer, EventDisplayer,
 
   /**
    * Show a message on the screen.
-   *
+   * 
    * @param message
    *          The message to display
    */
@@ -71,7 +71,7 @@ public class SampleApp implements MessageDisplayer, EventDisplayer,
 
   /**
    * Show an error on the screen.
-   *
+   * 
    * @param message
    *          The error message to display
    */

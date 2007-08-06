@@ -19,10 +19,10 @@ import javax.swing.text.StyledDocument;
 /**
  * The WebServiceLogPanel is a JPanel for showing a log of all incoming and
  * outgoing web service traffic.
- *
+ * 
  * @author Craig Knudsen, craig@k5n.us
  * @version $Id$
- *
+ * 
  */
 public class WebServiceLogPanel extends JPanel {
   JTextPane textPane;

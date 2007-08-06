@@ -20,99 +20,54 @@
 
 include_once 'includes/init.php';
 
-if ( empty ( $login ) || $login == '__public__' ) {
-  // Do not allow public access.
-  do_redirect ( empty ( $STARTVIEW ) ? 'month.php' : $STARTVIEW );
+if ( ! $WC->loginId() ) {
+  do_redirect ( getPref ( 'STARTVIEW', 1, '', 'month.php' ) );
   exit;
 }
+$tabs_ar = array();
 
-$doUsers = $doGroups = $doNUCS = false;
-$doUsers = ( ! access_is_enabled () ||
-  access_can_access_function ( ACCESS_USER_MANAGEMENT ) );
-$doRemotes = ( ! empty ( $REMOTES_ENABLED ) && $REMOTES_ENABLED == 'Y' &&
-  ( ! access_is_enabled () || access_can_access_function ( ACCESS_IMPORT ) ) );
-if ( $is_admin ) {
-  $doGroups = ( ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' );
-  $doNUCS = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' );
+if (access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
+  $smarty->assign('doUsers',true );
+	$tabs_ar['users'] =( $WC->isAdmin() ? translate( 'Users' ) 
+	  : translate( 'Account' ) );
 }
-$BodyX = 'onload="showTab();"';
-print_header ( array ( 'js/visible.php', 'js/users.php/true' ), '',
-  $BodyX, '', '', true );
 
-$taborder = array ( 'tabfor', 'tabbak','tabbak','tabbak','tabbak');
-$i=0;
-ob_start ();
+		
+if ( $WC->isAdmin() ) {
+  $smarty->assign('userlist', $WC->User->getUsers ( false ) );
+	
+  if ( getPref ( 'GROUPS_ENABLED' ) ) {
+	  $tabs_ar['groups'] = translate ('Groups' );
+    $smarty->assign('doGroups', true );
 
-echo display_admin_link () . '
-<!-- TABS -->
-    <div id="tabs">'
- .( $doUsers ? '
-      <span class="'.$taborder[$i++].'" id="tab_users"><a href="#tabusers" onclick="return '
- . 'showTab( \'users\' )">'
- . ( $is_admin ? translate ( 'Users' ) : translate ( 'Account' ) )
- . '</a></span>' : '' ) . ( $doUsers && $doGroups ? '
-      <span class="'.$taborder[$i++].'" id="tab_groups"><a href="#tabgroups" '
-   . 'onclick="return showTab( \'groups\' )">' . translate ( 'Groups' )
-   . '</a></span>' : '' ) . ( $doUsers && $doNUCS ? '
-      <span class="'.$taborder[$i++].'" id="tab_nonusers"><a href="#tabnonusers" '
-   . 'onclick="return showTab( \'nonusers\' )">'
-   . translate ( 'NonUser Calendars' ) . '</a></span>' : '' )
- . ( $doRemotes ? '
-      <span class="'.$taborder[$i++].'" id="tab_remotes"><a href="#tabremotes" '
-   . 'onclick="return showTab( \'remotes\' )">'
-   . translate ( 'Remote Calendars' ) . '</a></span>' : '' ) . '
-    </div>
-<!-- TABS BODY -->
-    <div id="tabscontent">
-<!-- USERS -->
-      <a name="tabusers"></a>
-      <div id="tabscontent_users">';
-if ( $doUsers ) {
-  $denotesStr = translate ( 'denotes administrative user' );
-  if ( $is_admin ) {
-    echo ( $admin_can_add_user ? '
-          <a href="edit_user.php" target="useriframe" onclick="showFrame'
-       . '( \'useriframe\' );">' . translate ( 'Add New User' )
-       . '</a><br />' : '' ) . '
-          <ul>';
-
-    $userlist = user_get_users ();
-    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-      if ( $userlist[$i]['cal_login'] != '__public__' )
-        echo '
-            <li><a href="edit_user.php?user=' . $userlist[$i]['cal_login']
-         . '" target="useriframe" onclick="showFrame(\'useriframe\');">'
-         . $userlist[$i]['cal_fullname'] . '</a>'
-         . ( $userlist[$i]['cal_is_admin'] == 'Y' ? '&nbsp;<abbr title="'
-           . $denotesStr . '">*</abbr>' : '' )
-         . '</li>';
+    $sql = 'SELECT cal_group_id, cal_name FROM webcal_group
+		  ORDER BY cal_name';
+		$rows = dbi_get_cached_rows ( $sql , array () );
+    if ( $rows ) {
+      $smarty->append ( 'groups', $rows );
     }
-    echo '
-          </ul>
-          *&nbsp;' . $denotesStr . '.<br />
-          <iframe name="useriframe" id="useriframe"></iframe>';
-  } else
-    echo '
-          <iframe src="edit_user.php" name="accountiframe" id="accountiframe">'
-     . '</iframe>';
-} //end if $doUsers
+  }		
+	if ( getPref ( 'NONUSER_ENABLED' ) ) {
+	  $tabs_ar['nonusers'] = translate ( 'NonUser Calendars' );
+    $smarty->assign('doNUCS', true );	
+		$smarty->assign('nucuserlist', get_nonuser_cals () );
+	
+	}
+}
 
-echo '
-      </div>';
+if ( getPref ( 'REMOTES_ENABLED', 2 ) &&
+  access_can_access_function ( ACCESS_IMPORT ) ) {	
+  $tabs_ar['remotes'] = translate ( 'Remote Calendars' );
+  $smarty->assign('doRemotes', true );
+	$smarty->assign('rmtuserlist', get_nonuser_cals ( $WC->loginId(), true ) );
+}
 
-if ( $doUsers && $doGroups )
-  include_once 'groups.php';
+$currenttab = $WC->getPOST ( 'currenttab', 'users' );		
+$BodyX = 'onload="showTab(\''. $currenttab . '\');"';
+build_header ( array ( 'users.js', 'visible.js' ), '', $BodyX, 4 );
 
-if ( $doUsers && $doNUCS )
-  include_once 'nonusers.php';
-
-if ( $doRemotes )
-  include_once 'remotes.php';
-
-ob_end_flush ();
-
-echo '
-    </div>
-    ' . print_trailer ();
-
+$smarty->assign('tabs_ar', $tabs_ar );
+$smarty->assign('denotesStr', translate ( 'denotes administrative user' )   );
+   
+$smarty->display ('users.tpl');
 ?>

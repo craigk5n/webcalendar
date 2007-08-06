@@ -5,28 +5,32 @@ include_once 'includes/init.php';
 $icon_max_size = '3000';
 $icon_path = 'icons/';
 
+$isglobal = $WC->getPost ( 'isglobal' );
+$catname = $WC->getPost ( 'catname' );
+$catcolor  = $WC->getPost ( 'catcolor ' );
+
 /* Rename any icons associated with this cat_id. */
-function renameIcon ( $id ) {
+function renameIcon ( $eid ) {
   global $icon_path;
   $bakIcon = $catIcon = $icon_path . 'cat-';
   $bakIcon .= date ( 'YmdHis' ) . '.gif';
-  $catIcon .= $id . '.gif';
+  $catIcon .= $eid . '.gif';
   if ( file_exists ( $catIcon ) )
     rename ( $catIcon, $bakIcon );
 }
 
 // Does the category belong to the user?
 $is_my_event = false;
-if ( empty ( $id ) )
+if ( empty ( $eid ) )
   $is_my_event = true; // New event.
 else {
   $res = dbi_execute ( 'SELECT cat_id, cat_owner FROM webcal_categories
-    WHERE cat_id = ?', array ( $id ) );
+    WHERE cat_id = ?', array( $eid ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
 
-    $is_my_event = ( $row[0] == $id && $row[1] == $login ||
-      ( empty ( $row[1] ) && $is_admin ) );
+    $is_my_event = ( $row[0] == $eid && $WC->isLogin( $row[1] ) ||
+      ( empty ( $row[1] ) && $WC->isAdmin() ) );
 
     dbi_free_result ( $res );
   } else
@@ -43,57 +47,57 @@ if ( ! empty ( $file['tmp_name'] ) && $file['tmp_name'] == 'none' )
 if ( ! $is_my_event )
   $error = print_not_auth ();
 
-$delete = getPostValue ( 'delete' );
+$delete = $WC->getPOST ( 'delete' );
 if ( empty ( $error ) && ! empty ( $delete ) ) {
   // Delete this category.
-  if ( ! dbi_execute ( 'DELETE FROM webcal_categories
+  if ( ! dbi_execute( 'DELETE FROM webcal_categories
     WHERE cat_id = ? AND ( cat_owner = ?'
-       . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ),
-        array ( $id, $login ) ) ) {
+       . ( $WC->isAdmin() ? ' OR cat_owner IS NULL )' : ' )' ),
+        array( $eid, $WC->loginId() ) ) ) {
     $error = db_error ();
   }
 
-  if ( ! dbi_execute ( 'DELETE FROM webcal_entry_categories
+  if ( ! dbi_execute( 'DELETE FROM webcal_entry_categories
     WHERE cat_id = ? AND ( cat_owner = ?'
-       . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ),
-        array ( $id, $login ) ) ) {
+       . ( $WC->isAdmin() ? ' OR cat_owner IS NULL )' : ' )' ),
+        array( $eid, $WC->loginId() ) ) ) {
     $error = db_error ();
   }
   // Rename any icons associated with this cat_id.
-  renameIcon ( $id );
+  renameIcon ( $eid );
 } else if ( empty ( $error ) ) {
-  if ( ! empty ( $id ) ) {
+  if ( ! empty ( $eid ) ) {
     # Update (don't let them change global status).
     if ( ! dbi_execute ( 'UPDATE webcal_categories
       SET cat_name = ?, cat_color = ? WHERE cat_id = ?',
-        array ( $catname, $catcolor, $id ) ) )
+        array( $catname, $catcolor, $eid ) ) )
       $error = db_error ();
 
-    $delIcon = getPostValue ( 'delIcon' );
+    $delIcon = $WC->getPOST ( 'delIcon' );
     if ( ! empty ( $delIcon ) && $delIcon == 'Y' )
-      renameIcon ( $id );
+      renameIcon ( $eid );
   } else {
     // Add new category.
     // Get new id.
     $res = dbi_execute ( 'SELECT MAX( cat_id ) FROM webcal_categories' );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
-      $id = $row[0] + 1;
+      $eid = $row[0] + 1;
       dbi_free_result ( $res );
-      $catowner = ( $is_admin
-        ? ( $isglobal == 'Y' ? null : $login )
-        : $login );
+      $catowner = ( $WC->isAdmin()
+        ? ( $isglobal == 'Y' ? null : $WC->loginId() )
+        : $WC->loginId() );
 
       if ( ! dbi_execute ( 'INSERT INTO webcal_categories ( cat_id, cat_owner,
         cat_name, cat_color ) VALUES ( ?, ?, ?, ? )',
-          array ( $id, $catowner, $catname, $catcolor ) ) )
+          array( $eid, $catowner, $catname, $catcolor ) ) )
         $error = db_error ();
     } else
       $error = db_error ();
   }
-  if ( empty ( $delIcon ) && is_dir( $icon_path ) && ( !
-        empty ( $ENABLE_ICON_UPLOADS ) && $ENABLE_ICON_UPLOADS == 'Y' ||
-        $is_admin ) ) {
+  if ( empty ( $delIcon ) && @is_dir( $icon_path ) && 
+    ( getPref ('ENABLE_ICON_UPLOADS') ||
+        $WC->isAdmin() ) ) {
     // Save icon if uploaded.
     if ( ! empty ( $file['tmp_name'] ) ) {
       if ( $file['type'] == 'image/gif' && $file['size'] <= $icon_max_size ) {
@@ -101,8 +105,8 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
         // print_r ($icon_props );
         $path_parts = pathinfo ( $_SERVER['SCRIPT_FILENAME'] );
         $fullIcon = $path_parts['dirname'] . '/'
-         . $icon_path . 'cat-' . $id . '.gif';
-        renameIcon ( $id );
+         . $icon_path . 'cat-' . $eid . '.gif';
+        renameIcon ( $eid );
         $file_result = move_uploaded_file ( $file['tmp_name'], $fullIcon );
         // echo "Upload Result:" . $file_result;
       } else
@@ -113,16 +117,17 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
         $error = translate ( 'File is not a gif image.' );
     }
     // Copy icon if local file specified.
-    $urlname = getPostvalue ( 'urlname' );
+    $urlname = $WC->getPOST ( 'urlname' );
     if ( ! empty ( $urlname ) && file_exists ( $icon_path . $urlname ) )
-      copy ( $icon_path . $urlname, $icon_path . 'cat-' . $id . '.gif' );
+      copy ( $icon_path . $urlname, $icon_path . 'cat-' . $eid . '.gif' );
   }
 }
 
 if ( empty ( $error ) )
   do_redirect ( 'category.php' );
 
-print_header ();
-echo print_error ( $error ) . print_trailer ();
+build_header ();
+$smarty->assign ( 'errorStr', $error );
+$smarty->display ( 'error.tpl' );
 
 ?>

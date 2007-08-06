@@ -9,7 +9,7 @@ import java.net.URLConnection;
 /**
  * The Login class implements the login routine for WebCalendar for both
  * http-based and web-based setups.
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */

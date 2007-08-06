@@ -8,41 +8,37 @@
  * @package WebCalendar
  */
 
-/* Initialize web service. This will take care of user validation.
+  // Points to the base WebCalendar directory relative to current working directory.
+  define ( '_WC_BASE_DIR', '..' );
+  define ( '_WC_INCLUDE_DIR', _WC_BASE_DIR . '/includes/' );
+  
+/* Initialize web service.  This will take care of user validation.
  */
 function ws_init () {
-  global $admin_can_add_user, $admin_can_delete_user,
-  $basedir, $includedir, $site_extras, $user_inc;
+  global $admin_can_add_user, $WC->User->adminCanDeleteUser (),
+  $site_extras;
 
   // Load include files.
-  // Points to the base WebCalendar directory relative to current working directory.
-  $basedir = '..';
-  $includedir = '../includes';
 
-  include_once $includedir . '/translate.php';
-  require_once $includedir . '/classes/WebCalendar.class';
-  require_once $includedir . '/classes/Event.class';
-  require_once $includedir . '/classes/RptEvent.class';
+  include_once _WC_INCLUDE_DIR . 'translate.php';
+  require_once _WC_INCLUDE_DIR . 'classes/WebCalendar.class';
+  require_once _WC_INCLUDE_DIR . 'classes/Event.class';
+  require_once _WC_INCLUDE_DIR . 'classes/RptEvent.class';
 
-  $WebCalendar =& new WebCalendar ( __FILE__ );
+  $WC =& new WebCalendar ( __FILE__ );
 
-  include_once $includedir . '/config.php';
-  include_once $includedir . '/dbi4php.php';
-  include_once $includedir . '/access.php';
-  include_once $includedir . '/functions.php';
+  include_once _WC_INCLUDE_DIR . 'config.php';
+  include_once _WC_INCLUDE_DIR . 'dbi4php.php';
+  include_once _WC_INCLUDE_DIR . 'access.php';
+  include_once _WC_INCLUDE_DIR . 'functions.php';
 
-  $WebCalendar->initializeFirstPhase ();
+  $WC->initializeFirstPhase ();
 
-  include_once "$includedir/$user_inc";
-  include_once $includedir . '/validate.php';
-  include_once $includedir . '/site_extras.php';
+  include_once _WC_INCLUDE_DIR . 'site_extras.php';
 
-  $WebCalendar->initializeSecondPhase ();
+  $WC->initializeSecondPhase ();
 
-  load_global_settings ();
-  load_user_preferences ();
-
-  $WebCalendar->setLanguage ();
+  $WC->setLanguage ();
 }
 
 /* Format a text string for use in the XML returned to the client.
@@ -58,17 +54,16 @@ function ws_escape_xml ( $str ) {
   return ( str_replace ( '<', '&lt;', str_replace ( '>', '&gt;', $str ) ) );
 }
 
-/* Send a single event. This will include all participants (with status).
+/* Send a single event.  This will include all participants (with status).
  */
-function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
-  global $ALLOW_EXTERNAL_USERS, $DISABLE_PARTICIPANTS_FIELD,
-  $DISABLE_PRIORITY_FIELD, $EXTERNAL_REMINDERS, $SERVER_URL, $single_user,
-  $single_user_login, $site_extras, $WS_DEBUG;
-
+function ws_print_event_xml ( $eid, $event_date, $extra_tags = '' ) {
+  global $site_extras, $WS_DEBUG;
+  
+  $server_url = getPref ( 'SERVER_URL', 2 );
   // Get participants first...
   $res = dbi_execute ( 'SELECT cal_login, cal_status FROM webcal_entry_user
     WHERE cal_id = ? AND cal_status IN (\'A\',\'W\') ORDER BY cal_login',
-    array ( $id ) );
+    array ( $eid ) );
   $participants = array ();
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -82,11 +77,10 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   // Get external participants.
   $ext_participants = array ();
   $num_ext_participants = 0;
-  if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' && !
-      empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == 'Y' ) {
+  if ( getPref ( 'ALLOW_EXTERNAL_USERS' ) && getPref ( 'EXTERNAL_REMINDERS' ) ) {
     $res = dbi_execute ( 'SELECT cal_fullname, cal_email
       FROM webcal_entry_ext_user WHERE cal_id = ? AND cal_email IS NOT NULL
-      ORDER BY cal_fullname', array ( $id ) );
+      ORDER BY cal_fullname', array ( $eid ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $ext_participants[$num_ext_participants] = $row[0];
@@ -97,26 +91,26 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
 
   if ( count ( $participants ) == 0 && ! $num_ext_participants && $WS_DEBUG ) {
     $out .= '
-<!-- ' . str_replace ( 'XXX', $id,
+<!-- ' . str_replace ( 'XXX', $eid,
       translate ( 'No participants found for event id XXX.' ) ) . ' -->';
     return;
   }
 
   // Get event details.
-  $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
-    cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, cal_name,
-    cal_description FROM webcal_entry WHERE cal_id = ?', array ( $id )
+  $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_mod_date,
+    cal_duration, cal_priority, cal_type, cal_access, cal_name,
+    cal_description FROM webcal_entry WHERE cal_id = ?', array ( $eid )
     );
   if ( ! $res ) {
     $out .= '
-' . str_replace ( 'XXX', $id,
+' . str_replace ( 'XXX', $eid,
       translate ( 'Db error Could not find event id XXX.' ) );
     return;
   }
 
   if ( ! ( $row = dbi_fetch_row ( $res ) ) ) {
     $out .= '
-' . str_replace ( 'XXX', $id,
+' . str_replace ( 'XXX', $eid,
       translate ( 'Error Could not find event id XXX in database.' ) );
     return;
   }
@@ -127,21 +121,21 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
 
   $out = '
 <event>
-  <id>' . $id . '</id>
-  <name>' . ws_escape_xml ( $name ) . '</name>' . ( ! empty ( $SERVER_URL ) ? '
-  <url>' . $SERVER_URL . ( substr ( $SERVER_URL, -1, 1 ) == '/' ? '' : '/' )
-     . 'view_entry.php?id=' . $id . '</url>' : '' ) . '
+  <id>' . $eid . '</id>
+  <name>' . ws_escape_xml ( $name ) . '</name>' . ( ! empty ( $server_url ) ? '
+  <url>' . $server_url . ( substr ( $server_url, -1, 1 ) == '/' ? '' : '/' )
+     . 'view_entry.php?eid=' . $eid . '</url>' : '' ) . '
   <description>' . ws_escape_xml ( $description ) . '</description>
   <dateFormatted>' . date_to_str ( $event_date ) . '</dateFormatted>
   <date>' . $event_date . '</date>
   <time>';
-
-  if ( $row[2] == 0 && $row[5] == 1440 )
+  //TODO fix cal_time (row[2])
+  if (  $row[5] == 1440 )
     $out .= '0</time>
   <timeFormatted>All Day';
   elseif ( $row[2] >= 0 )
     $out .= sprintf ( "%04d", $row[2] / 100 ) . '</time>
-  <timeFormatted>' . display_time ( $event_date . sprintf ( "%06d", $row[2] ) );
+  <timeFormatted>' . smarty_modifier_display_time ( $event_date );
   else
     $out .= '-1</time>
   <timeFormatted>Untimed';
@@ -149,7 +143,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   $out .= '</timeFormatted>' . ( $row[5] > 0 ? '
   <duration>' . $row[5] . '</duration>' : '' );
 
-  if ( ! empty ( $DISABLE_PRIORITY_FIELD ) && $DISABLE_PRIORITY_FIELD == 'Y' ) {
+  if ( ! getPref ( 'DISABLE_PRIORITY_FIELD' ) ) {
     $pri[1] = translate ( 'High' );
     $pri[2] = translate ( 'Medium' );
     $pri[3] = translate ( 'Low' );
@@ -157,16 +151,16 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   <priority>' . $row[6] . '-' . $pri[ceil ( $row[6] / 3 )] . '</priority>';
   }
 
-  $out .= ( ! empty ( $DISABLE_ACCESS_FIELD ) && $DISABLE_ACCESS_FIELD == 'Y' ? '
+  $out .= ( ! getPref ( 'DISABLE_ACCESS_FIELD' ) ? '
   <access>'
      . ( $row[8] == 'P' ? translate ( 'Public' ) : translate ( 'Confidential' ) )
-     . '</access>' : '' ) . ( ! strlen ( $single_user_login ) ? '
+     . '</access>' : '' ) . ( ! _WC_SINGLE_USER ? '
   <createdBy>' . $row[0] . '</createdBy>' : '' ) . '
   <updateDate>' . date_to_str ( $row[3] ) . '</updateDate>
-  <updateTime>' . display_time ( $row[4] ) . '</updateTime>';
+  <updateTime>' . smarty_modifier_display_time ( $row[4] ) . '</updateTime>';
 
   // Site extra fields.
-  $extras = get_site_extra_fields ( $id );
+  $extras = get_site_extra_fields ( $eid );
   $se = '';
   for ( $i = 0, $cnt = count ( $site_extras ); $i < $cnt; $i++ ) {
     $extra_name = $site_extras[$i][0];
@@ -206,9 +200,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   <siteExtras>' . $se . '
   </siteExtras>' : '' );
 
-  if ( $single_user != 'Y' &&
-    ( empty ( $DISABLE_PARTICIPANTS_FIELD ) ||
-      $DISABLE_PARTICIPANTS_FIELD != 'Y' ) ) {
+  if ( ! _WC_SINGLE_USER && ! getPref ( 'DISABLE_PARTICIPANTS_FIELD' ) ) {
     $out .= '
   <participants>';
     for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {

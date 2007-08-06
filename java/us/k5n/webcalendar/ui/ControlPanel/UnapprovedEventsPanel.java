@@ -38,10 +38,10 @@ import us.k5n.webcalendar.WebCalendarParseException;
  * if User Access Control is enabled, then the user may see events for multiple
  * users. If public access is enabled, then admin users should see events for
  * the public user.
- *
+ * 
  * @author Craig Knudsen, craig@k5n.us
  * @version $Id$
- *
+ * 
  */
 public class UnapprovedEventsPanel extends JPanel {
   ReadOnlyTable table;
@@ -235,7 +235,7 @@ public class UnapprovedEventsPanel extends JPanel {
   /**
    * Generate a HashMap of usernames that the current user is authorized to
    * approve/reject/delete for.
-   *
+   * 
    * @param xmlContent
    *          XML returned from WebCalendar server
    * @param tag

@@ -3,13 +3,14 @@
 include_once 'includes/init.php';
 $icon_path = 'icons/';
 
-$can_edit = ( is_dir ( $icon_path ) &&
-  ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) );
+  
+$can_edit = ( @is_dir ( $icon_path ) &&
+  ( getPref ( 'ENABLE_ICON_UPLOADS' ) || $WC->isAdmin() ) );
 
-if ( ! $can_edit )
-  do_redirect ( 'category.php' );
+if ( ! $can_edit || ! access_can_access_function ( ACCESS_CATEGORY_MANAGEMENT ) )
+  exit;
 
-print_header ( array ( 'js/visible.php' ), '', '', true );
+build_header ( array ( 'visible.js' ), '', '', 29 );
 
 $icons = array ();
 
@@ -63,8 +64,8 @@ if ( $d = dir ( $icon_path ) ) {
       <tr>';
   for ( $i = 0, $cnt = count ( $icons ); $i < $cnt; $i++ ) {
     echo '
-        <td><a href="#" onclick="sendURL( \'' . $icon_path . $icons[$i]
-     . '\' )" ><img src="' . $icon_path . $icons[$i] . '" border="0" title="'
+        <td><a href="#" onclick="sendURL(\'' . $icon_path . $icons[$i]
+     . '\')" ><img src="' . $icon_path . $icons[$i] . '" border="0" title="'
      . $title_str . '" alt="' . $title_str . '" /></a></td>'
      . ( $i > 0 && $i % 8 == 0 ? '
       </tr>

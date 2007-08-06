@@ -22,7 +22,7 @@ import org.xml.sax.SAXException;
 
 /**
  * Defines a client connection instance to the WebCalendar server.
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */
@@ -49,7 +49,7 @@ public class WebCalendarClient implements MessageDisplayer {
 
   /**
    * Create a WebCalendar client instance.
-   *
+   * 
    * @param url
    *          Base URL of WebCalendar. Should end with a trailing '/'.
    */
@@ -61,7 +61,7 @@ public class WebCalendarClient implements MessageDisplayer {
 
   /**
    * Get the URL of the WebCalendar server
-   *
+   * 
    * @return The WebCalendar server URL
    */
   public URL getURL () {
@@ -70,7 +70,7 @@ public class WebCalendarClient implements MessageDisplayer {
 
   /**
    * Set the username and password for HTTP-based authentication.
-   *
+   * 
    * @param username
    *          HTTP user login
    * @param password
@@ -83,7 +83,7 @@ public class WebCalendarClient implements MessageDisplayer {
 
   /**
    * Set the username and password for web-based authentication.
-   *
+   * 
    * @param username
    *          WebCalendar user login
    * @param password
@@ -113,7 +113,7 @@ public class WebCalendarClient implements MessageDisplayer {
    * authentication (and is not required for HTTP-based authentication or
    * single-user mode). On an invalid login, the MessageDisplayer object will be
    * used to display an error message.
-   *
+   * 
    * @return true on successful login, false otherwise
    */
   public boolean login () throws MalformedURLException, IOException {
@@ -222,7 +222,7 @@ public class WebCalendarClient implements MessageDisplayer {
   /**
    * Open up a URLConnection object to WebCalendar. User authentication actions
    * will be taken care of.
-   *
+   * 
    * @param request
    *          The filename and (optionally) querystring of the URL. (example:
    *          "login.php?username=xxx&password=yyy")
@@ -253,9 +253,9 @@ public class WebCalendarClient implements MessageDisplayer {
 
   /**
    * Is the current user an admin user?
-   *
+   * 
    * public boolean isAdmin () { return admin; }
-   *
+   * 
    * /** Return the server's calendar name.
    */
   public String getCalendarName () {
@@ -295,7 +295,7 @@ public class WebCalendarClient implements MessageDisplayer {
   /**
    * Send a request to the WebCalendar server to get events for the specified
    * date range.
-   *
+   * 
    * @param startDate
    *          The start date in the range of events
    * @param endDate
@@ -316,7 +316,7 @@ public class WebCalendarClient implements MessageDisplayer {
   /**
    * Get the results of a request. All communication to the WebCalendar server
    * should go through this method.
-   *
+   * 
    * @param urlFile
    *          The filename and (optionally) querystring of the URL. (example:
    *          "login.php?username=xxx&password=yyy")
@@ -350,7 +350,7 @@ public class WebCalendarClient implements MessageDisplayer {
 
   /**
    * Add a user
-   *
+   * 
    * @param user
    *          User to add
    * @return true on success, false on error
@@ -407,7 +407,7 @@ public class WebCalendarClient implements MessageDisplayer {
 
   /**
    * Delete a user
-   *
+   * 
    * @param user
    *          User to delete
    * @return true on success, false on error
@@ -441,7 +441,7 @@ public class WebCalendarClient implements MessageDisplayer {
 
   /**
    * Update a user
-   *
+   * 
    * @param user
    *          User to update
    * @return true on success, false on error
@@ -494,7 +494,7 @@ public class WebCalendarClient implements MessageDisplayer {
 
   /**
    * Approve an event for the specified event participant.
-   *
+   * 
    * @param event
    *          Event to update
    * @param participant
@@ -507,7 +507,7 @@ public class WebCalendarClient implements MessageDisplayer {
 
   /**
    * Reject an event for the specified event participant.
-   *
+   * 
    * @param event
    *          Event to update
    * @param participant
@@ -521,7 +521,7 @@ public class WebCalendarClient implements MessageDisplayer {
   /**
    * Delete an event for the specified event participant. This only marks the
    * event as deleted in the system. The event will still be in the database.
-   *
+   * 
    * @param event
    *          Event to update
    * @param participant
@@ -534,7 +534,7 @@ public class WebCalendarClient implements MessageDisplayer {
 
   /**
    * Update the status of an event (approve, reject, delete)
-   *
+   * 
    * @param event
    *          Event to update
    * @param participant
@@ -606,7 +606,7 @@ public class WebCalendarClient implements MessageDisplayer {
   /**
    * Add a WebCalendarClientListener to be called for incoming/outgoing web
    * service messages.
-   *
+   * 
    * @param listener
    *          The WebCalendarClientListener listener to call on outgoing
    *          requests and incoming responses.

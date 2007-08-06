@@ -4,175 +4,111 @@
  * Description:
  * Purge events page and handler.
  * When an event is deleted from a user's calendar, it is marked
- * as deleted (webcal_entry_user.cal_status = 'D'). This page
+ * as deleted (webcal_entry_user.cal_status = 'D').  This page
  * will actually clean out the database rather than just mark an
  * event as deleted.
  *
  * Security:
  * Events will only be deleted if they were created by the selected
- * user. Events where the user was a participant (but not did not
+ * user.  Events where the user was a participant (but not did not
  * create) will remain unchanged.
  *
  */
 include_once 'includes/init.php';
 
 // Set this to true do show the SQL at the bottom of the page
-$purgeDebug = false;
+$smarty->assign ( 'purgeDebug', false );
 
 $sqlLog = '';
 
-if ( ! $is_admin ) {
+if ( ! $WC->isAdmin() ) {
   // must be admin...
   do_redirect ( 'index.php' );
   exit;
 }
 
 $ALL = 0;
+$sql_params = array();
 
-$previewStr = translate ( 'Preview' );
-$allStr = translate ( 'All' );
-$purgingStr = translate ( 'Purging events for' );
-$deleteStr = translate ( 'Delete' );
 
-$delete = getPostValue ( 'delete' );
+$delete = $WC->getPOST ( 'delete' );
 $do_purge = false;
 if ( ! empty ( $delete ) ) {
  $do_purge = true;
 }
 
-$purge_all = getPostValue ( 'purge_all' );
-$purge_deleted = getPostValue ( 'purge_deleted' );
-$end_year = getPostValue ( 'end_year' );
-$end_month = getPostValue ( 'end_month' );
-$end_day = getPostValue ( 'end_day' );
-$user = getPostValue ( 'user' );
-$preview = getPostValue ( 'preview' );
+$purge_all = $WC->getPOST ( 'purge_all' );
+$purge_deleted = $WC->getPOST ( 'purge_deleted' );
+$end_year = $WC->getPOST ( 'end_year' );
+$end_month = $WC->getPOST ( 'end_month' );
+$end_day = $WC->getPOST ( 'end_day' );
+$user = $WC->getPOST ( 'user' );
+$preview = $WC->getPOST ( 'preview' );
 $preview = ( empty ( $preview ) ? false : true );
 
-$INC = array ( 'js/visible.php' );
+$INC = array( 'visible.js' );
 
-print_header ( $INC );
-?>
+build_header ( $INC );
 
-<table>
-<tr><td style="vertical-align:top; width:50%;">
-<?php
-echo '<h2>' . translate ( 'Delete Events' );
-if ( $preview )
-  echo '[ ' . $previewStr . ']';
-echo "</h2>\n";
-echo display_admin_link ();
 
 if ( $do_purge ) {
-  if ( $preview )
-    echo '<h2> [' . $previewStr . '] ' . $purgingStr . " $user...</h2>\n";
-  else
-    echo '<h2>' . $purgingStr . ": $user</h2>\n";
-
-  $end_date = sprintf ( "%04d%02d%02d", $end_year, $end_month, $end_day );
-  $ids = $tail = '';
-  if ( $purge_deleted == 'Y' )
-    $tail = " AND weu.cal_status = 'D' ";
-
+  $eids = '';
+  $end_date = mktime ( 0, 0, 0, $end_month, $end_day, $end_year );
+  $tail = '';
+  if ( $purge_deleted == 'Y' ) {
+    $tail = " AND weu.cal_status = 'D' "; 
+  }
   if ( $purge_all == 'Y' ) {
     if ( $user == 'ALL' ) {
-      $ids = array ( 'ALL' );
+      $eids = array ( 'ALL' );
     } else {
-      $ids = get_ids ( 'SELECT cal_id FROM webcal_entry '
-        . " WHERE cal_create_by = '$user' $tail" );
+      $eids = get_event_ids ( $user, false, 'SELECT cal_id FROM webcal_entry 
+			  WHERE cal_create_by = ? ' . $tail );
     }
   } elseif ( $end_date ) {
+	  $sql_params[] = $end_date;
     if ( $user != 'ALL' ) {
-      $tail = " AND we.cal_create_by = '$user' $tail";
+		  $sql_params[] = $user;
+      $tail = ' AND we.cal_create_by = ? ' . $tail;
     } else {
       $tail = '';
       $ALL = 1;  // Need this to tell get_ids to ignore participant check
     }
-    $E_ids = get_ids ( 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu ' .
-      "WHERE cal_type = 'E' AND cal_date < '$end_date' $tail",
-      $ALL );
-    $M_ids = get_ids ( 'SELECT DISTINCT(we.cal_id) FROM webcal_entry we,
-      webcal_entry_user weu, webcal_entry_repeats wer
-      WHERE we.cal_type = \'M\'
-      AND we.cal_id = wer.cal_id AND we.cal_id = wer.cal_id '
-      . "AND cal_end IS NOT NULL AND cal_end < '$end_date' $tail",
-      $ALL );
-    $ids = array_merge ( $E_ids, $M_ids );
+    $E_ids = get_event_ids ( $sql_params, $ALL, 'SELECT we.cal_id 
+		  FROM webcal_entry we, webcal_entry_user weu
+      WHERE cal_type = \'E\' AND cal_date < ? ' . $tail );
+			
+    $M_ids = get_event_ids (  $sql_params, $ALL, 'SELECT DISTINCT(we.cal_id) 
+		  FROM webcal_entry we, webcal_entry_user weu, webcal_entry_repeats wer
+      WHERE we.cal_type = \'M\' AND we.cal_id = wer.cal_id 
+			AND we.cal_id = wer.cal_id AND cal_end IS NOT NULL 
+			AND cal_end < ? ' . $tail );
+    $eids = array_merge ( $E_ids, $M_ids );
   }
-  //echo "event ids: <ul><li>" . implode ( "</li><li>", $ids ) . "</li></ul>\n";
-  if ( count ( $ids ) > 0 ) {
-    purge_events ( $ids );
-  } else {
-    echo translate ( 'None' );
-  }
-  echo '<h2>...' . translate ( 'Finished' ) . ".</h2>\n";
-?>
-  <form><input type="button" value="<?php etranslate ( 'Back' )?>"
-onclick="history.back()" /></form
-><?php
-  if ( $purgeDebug ) {
-    echo '<div style="border: 1px solid #000;background-color: #fff;"><tt>' .
-  $sqlLog . '</tt></div>' ."\n";
-  }
-} else {
-?>
+  if ( ! empty ( $eids ) ) 
+	  purge_events ( $eids );
+}
 
-<form action="purge.php" method="post" name="purgeform" id="purgeform">
-<table>
- <tr><td><label for="user">
-  <?php echo translate ( 'User' );?>:</label></td>
- <td><select name="user">
-<?php
   $userlist = get_my_users ();
-  if ($NONUSER_ENABLED == 'Y' ) {
+  if ( getPref ( 'NONUSER_ENABLED' ) ) {
     $nonusers = get_nonuser_cals ();
-    $userlist = ($NONUSER_AT_TOP == 'Y' ? array_merge ($nonusers, $userlist) : array_merge ($userlist, $nonusers));
+    $userlist = ( getPref ( 'NONUSER_AT_TOP' ) ) ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-    echo '<option value="' . $userlist[$i]['cal_login'] . '"';
-    if ( $login == $userlist[$i]['cal_login'] )
-      echo ' selected="selected"';
-    echo '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
+    $users[$userlist[$i]['cal_login_id']]['fullname'] = 
+		  $userlist[$i]['cal_fullname'];
+    if ( $WC->isLogin( $userlist[$i]['cal_login_id'] ) )
+      $users[$userlist[$i]['cal_login_id']]['selected'] = SELECTED;
   }
-?>
-<option value="ALL"><?php echo $allStr ?></option>
-  </select>
- </td></tr>
- <tr><td><label for="purge_all">
-  <?php etranslate ( 'Check box to delete ALL events for a user' )?>:</label></td>
-  <td valign="bottom">
-  <input type="checkbox" name="purge_all" value="Y" id="purge_all" onchange="toggle_datefields( 'dateArea', this );" />
- </td></tr>
- <tr id="dateArea"><td><label>
-  <?php etranslate ( 'Delete all events before' );?>:</label></td><td>
-  <?php echo date_selection ( 'end_', date ( 'Ymd' ) ) ?>
- </td></tr>
- <tr><td><label for="purge_deleted">
-  <?php etranslate ( 'Purge deleted only' )?>:</label></td>
-  <td valign="bottom">
-  <input type="checkbox" name="purge_deleted" value="Y" />
- </td></tr>
- <tr><td><label for="preview">
-  <?php etranslate ( 'Preview delete' )?>:</label></td>
-  <td valign="bottom">
-  <input type="checkbox" name="preview" value="Y" checked="checked" />
- </td></tr>
- <tr><td colspan="2">
-  <input type="submit" name="delete" value="<?php
-    echo $deleteStr?>" onclick="return confirm( '<?php
-    etranslate ( 'Are you sure you want to delete events for', true);
-    ?> ' + document.forms[0].user.value + '?' )" />
- </td></tr>
-</table>
-</form>
 
-<?php } ?>
-</td></tr></table>
+$smarty->assign ( 'user', $WC->getFullName ( $user ) );
+$smarty->assign ( 'do_purge', $do_purge );
+$smarty->assign ( 'userlist', $users );
+$smarty->assign ( 'preview', ( $preview ? translate ( 'Preview' ) : '' ) );
+$smarty->display ( 'purge.tpl' );
 
-<?php echo print_trailer ();
-
-function purge_events ( $ids ) {
-  global $preview, $previewStr, $c; // db connection
+function purge_events ( $eids ) {
+  global $smarty, $preview, $previewStr, $c; // db connection
   global $sqlLog, $allStr;
 
   $tables = array (
@@ -190,19 +126,20 @@ function purge_events ( $ids ) {
   );
 
   //var_dump($tables);exit;
-  $num = array ();
+  $num = array();
   $cnt = count ( $tables );
   for ( $i = 0; $i < $cnt; $i++ ) {
     $num[$i] = 0;
   }
-  foreach ( $ids as $cal_id ) {
+  foreach ( $eids as $cal_id ) {
     for ( $i = 0; $i < $cnt; $i++ ) {
       $clause = ( $cal_id == 'ALL' ? '' :
         " WHERE {$tables[$i][1]} = $cal_id" );
       if ( $preview ) {
         $sql = 'SELECT COUNT(' . $tables[$i][1] .
           ") FROM {$tables[$i][0]}" . $clause;
-
+        //echo "cal_id = '$cal_id'<br />clause = '$clause'<br />";
+        //echo "$sql <br />\n";
         $res = dbi_execute ( $sql );
         $sqlLog .= $sql . "<br />\n";
         if ( $res ) {
@@ -214,47 +151,19 @@ function purge_events ( $ids ) {
         $sql = "DELETE FROM {$tables[$i][0]}" . $clause;
         $sqlLog .= $sql . "<br />\n";
         $res = dbi_execute ( $sql );
-        if ( $cal_id == 'ALL' )
+        if ( $cal_id == 'ALL' ) {
           $num[$i] = $allStr;
-        else
+        } else {
           $num[$i] += dbi_affected_rows ( $c, $res );
+        }
       }
     }
   }
   for ( $i = 0; $i < $cnt; $i++ ) {
-    $table = $tables[$i][0];
-    echo '[' . $previewStr . '] ' .
-      translate ( 'Records deleted from' ) .
-      " $table: $num[$i]<br />\n";
+	  $table[$i]['name'] = $tables[$i][0];
+		$table[$i]['num'] = $num[$i];
   }
-}
-
-function get_ids ( $sql, $ALL = '' ) {
-  global $sqlLog;
-
-  $ids = array ();
-  $sqlLog .= $sql . "<br />\n";
-  $res = dbi_execute ( $sql );
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-      if ($ALL == 1)
-        $ids[] = $row[0];
-      else {
-        //ONLY Delete event if no other participants.
-        $ID = $row[0];
-        $res2 = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
-          WHERE cal_id = ?', array ( $ID ) );
-        if ( $res2 ) {
-          if ( $row2 = dbi_fetch_row ( $res2 ) ) {
-            if ( $row2[0] == 1 )
-             $ids[] = $ID;
-          }
-          dbi_free_result ( $res2 );
-        }
-      } // End if ($ALL)
-    } // End while
-  }
-  dbi_free_result ( $res );
-  return $ids;
+	$smarty->assign ( 'tables', $table );
+	$smarty->assign ( 'none', $cnt == 0 );
 }
 ?>

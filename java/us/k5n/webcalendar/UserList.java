@@ -15,7 +15,7 @@ import org.xml.sax.SAXException;
 
 /**
  * Contains a list of users.
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */
@@ -25,7 +25,7 @@ public class UserList extends Vector {
   /**
    * Construct the list of users from the specified XML returned from the
    * WebCalendar server.
-   *
+   * 
    * @param xmlContent
    *          XML returned from WebCalendar server
    * @param tag

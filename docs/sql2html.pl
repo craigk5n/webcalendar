@@ -71,7 +71,7 @@ sub print_table {
 }
 
 # first, get WebCalendar version
-open ( F, '../includes/classes/WebCalendar.class' )
+open( F, '../includes/classes/WebCalendar.class' )
   || die 'Error reading WebCalendar.class:' . "$!\n";
 while ( <F> ) {
   if ( /PROGRAM_VERSION =/ ) {

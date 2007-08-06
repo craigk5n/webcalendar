@@ -13,7 +13,7 @@ import javax.swing.table.TableCellRenderer;
  * Overide methods of JTable to prevent cell editing. We also override cell
  * colors to display an entire row in the selected color rather than just a
  * single cell.
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */

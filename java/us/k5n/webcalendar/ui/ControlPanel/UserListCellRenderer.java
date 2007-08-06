@@ -12,7 +12,7 @@ import us.k5n.webcalendar.User;
 /**
  * This ListCellRenderer colors admin users as red and all other users as white
  * in the JList. We could also add icons here if we wanted to...
- *
+ * 
  * @author Craig Knudsen
  * @version $Id$
  */

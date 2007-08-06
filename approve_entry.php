@@ -1,22 +1,22 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
-require ( 'includes/classes/WebCalMailer.class' );
+require ( 'includes/classes/WebCalMailer.class.php' );
 
 $error = '';
 
-if ( $readonly == 'Y' )
+if ( _WC_READONLY )
   $error = print_not_auth ();
 // Give user a chance to add comments to approval email.
 if ( ! empty ( $_POST ) ) {
-  $comments = getPostValue ( 'comments' );
-  $cancel = getPostValue ( 'cancel' );
+  $comments = $WC->getPOST ( 'comments' );
+  $cancel = $WC->getPOST ( 'cancel' );
 } else
 if ( empty ( $ret ) ) {
   $q_string = ( ! empty ( $_SERVER['QUERY_STRING'] )
     ? '?' . $_SERVER['QUERY_STRING'] : '' );
 
-  print_header ();
+  build_header ();
   echo '
     <form action="approve_entry.php' . $q_string
    . '" method="post" name="add_comments">
@@ -38,8 +38,11 @@ if ( empty ( $ret ) ) {
           </td>
         </tr>
         <tr>
-          <td>'
-  . translate ( '(Your comments will be emailed to the event creator.)' ) . '</td>
+          <td>('
+  // translate( 'Your comments will be included in an email to the event creator.' )
+  . str_replace ( 'XXX', translate ( 'event creator' ),
+    translate ( 'Your comments will be emailed to the XXX.' ) )
+   . ')</td>
         </tr>
       </table>
     </form>
@@ -48,54 +51,50 @@ if ( empty ( $ret ) ) {
 ';
   exit;
 }
-// Allow administrators to approve public events.
-$app_user = ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin
-  ? '__public__' : ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
+
 // If User Access Control is enabled, we check to see if they are
 // allowed to approve for the specified user.
-if ( access_is_enabled () && ! empty ( $user ) && $user != $login &&
-    access_user_calendar ( 'approve', $user ) )
+if ( ! $WC->isLogin() &&
+  access_user_calendar ( 'approve', $WC->userId()) )
   $app_user = $user;
 
-if ( empty ( $error ) && $id > 0 )
-  update_status ( 'A', $app_user, $id, $type );
+if ( empty ( $error ) && $eid > 0 )
+  update_status ( 'A', $app_user, $eid, $type );
 
 if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   $mail = new WebCalMailer;
   // Email event creator to notify that it was approved with comments.
   // Get the name of the event.
-  $res = dbi_execute ( 'SELECT cal_name, cal_description, cal_date, cal_time,
-    cal_create_by FROM webcal_entry WHERE cal_id = ?', array ( $id ) );
+  $res = dbi_execute ( 'SELECT cal_name, cal_description, cal_date,
+    cal_create_by FROM webcal_entry WHERE cal_id = ?', array ( $eid ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     $name = $row[0];
     $description = $row[1];
-    $fmtdate = $row[2];
-    $time = sprintf ( "%06d", $row[3] );
-    $creator = $row[4];
+    $eventstart = $row[2];
+    $creator = $row[3];
     dbi_free_result ( $res );
   }
 
-  $eventstart = date_to_epoch ( $fmtdate . $time );
   // TODO figure out if creator wants approved comment email.
   // Check UAC.
-  $send_user_mail = ( access_is_enabled ()
-    ? access_user_calendar ( 'email', $creator, $login ) : 'Y' );
+  $send_user_mail = access_user_calendar ( 'email', $creator, $WC->loginId() );
 
-  $htmlmail = get_pref_setting ( $creator, 'EMAIL_HTML' );
-  user_load_variables ( $creator, 'temp' );
-  $user_TIMEZONE = get_pref_setting ( $creator, 'TIMEZONE' );
+  $htmlmail = getPref ( 'EMAIL_HTML', 1, $creator );
+  $WC->User->loadVariables ( $creator, 'temp' );
+  $user_TIMEZONE = getPref ( 'TIMEZONE', 1, $creator );
   set_env ( 'TZ', $user_TIMEZONE );
-  $user_language = get_pref_setting ( $creator, 'LANGUAGE' );
-  if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && $SEND_EMAIL != 'N' ) {
-    reset_language ( empty ( $user_language ) || ( $user_language == 'none' )
-      ? $LANGUAGE : $user_language );
+  $default_language = getPref ( 'LANGUAGE', 2 );
+  $user_language = getPref ( 'LANGUAGE', 1, $creator );
+  if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && getPref ( 'SEND_EMAIL', 2 ) ) {
+    reset_language ( empty ( $user_language ) || ( $user_language == 'Browser-defined' )
+      ? $default_language : $user_language );
 
     // translate ( 'Hello' )
     $msg = str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) )
     // translate ( 'An appointment has been approved and comments added by' )
     . "\n\n" . str_replace ( 'XXX', $login_fullname,
-      translate ( 'XXX has approved an appointment and added comments.' ) ) . "\n\n"
+      translate ( 'XXX has approved appointment and added comments' ) ) . "\n\n"
     // translate ( 'The subject was' )
     . str_replace ( 'XXX', $name, translate ( 'Subject XXX' ) ) . "\n"
     // translate ( 'The description is' )
@@ -106,13 +105,13 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
     . ' ' . ( empty ( $hour ) && empty ( $minute )
       ? '' : str_replace ( 'XXX',
         // Display using user's GMT offset and display TZID.
-        display_time ( '', 2, $eventstart,
-          get_pref_setting ( $creator, 'TIME_FORMAT' ) ),
+        smarty_modifier_display_time ( $eventstart, 2,
+          getPref ( 'TIME_FORMAT', 1, $creator ) ),
         translate ( 'Time XXX' ) ) ) . "\n";
 
-    if ( ! empty ( $SERVER_URL ) ) {
+    if ( $server_url = getPref ( 'SERVER_URL', 2 ) ) {
       // DON'T change & to &amp; here. email will handle it
-      $url = $SERVER_URL . 'view_entry.php?id=' . $id . '&em=1';
+      $url = $server_url . 'view_entry.php?eid=' . $eid . '&em=1';
       if ( $htmlmail == 'Y' )
         $url = activate_urls ( $url );
 
@@ -123,23 +122,24 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
       $msg .= "\n\n" . str_replace ( 'XXX', $comments,
         translate ( 'Comments XXX' ) );
 
-    $from = ( strlen ( $login_email ) ? $login_email : $EMAIL_FALLBACK_FROM );
+    $from = ( strlen ( $login_email ) ? $login_email : 
+	  getPref ('EMAIL_FALLBACK_FROM' ) );
     // Send mail.
     $mail->WC_Send ( $login_fullname, $tempemail,
       $tempfullname, $name, $msg, $htmlmail, $from );
-    activity_log ( $id, $login, $creator, LOG_NOTIFICATION,
+    activity_log ( $eid, $WC->loginId(), $creator, LOG_NOTIFICATION,
       str_replace ( 'XXX', $app_user,
         translate ( 'Approved w/Comments by XXX.' ) ) );
   }
 }
 // Return to login TIMEZONE.
-set_env ( 'TZ', $TIMEZONE );
+set_env ( 'TZ', getPref ( 'TIMEZONE' ) );
 if ( empty ( $error ) && empty ( $mailerError ) ) {
   do_redirect ( ! empty ( $ret ) && $ret == 'listall'
     ? 'list_unapproved.php'
     : ( ( ! empty ( $ret ) && $ret == 'list'
         ? 'list_unapproved.php?'
-        : 'view_entry.php?id=' . $id . '&amp;' ) . 'user=' . $app_user ) );
+        : 'view_entry.php?eid=' . $eid . '&amp;' ) . 'user=' . $app_user ) );
   exit;
 }
 // Process errors.
