@@ -12,6 +12,11 @@
  * @package WebCalendar
  */
 
+/*
+ * Setup callback function only if $settings.php mode == dev
+ */
+if ( ! empty ( $run_mode ) &&  $run_mode == 'dev' )
+  assert_options( ASSERT_CALLBACK, 'assert_handler');
 
 /* Gets the CVS file version for a specific file.
  *
@@ -112,7 +117,7 @@ function assert_handler ( $script, $line, $msg='' ) {
     $msg = 'Assertion failed<br />' . "\n";
   $trace = ( function_exists ( 'debug_backtrace' )
     ? assert_backtrace () : basename ( $script ) . ': ' . $line . ' ' . $msg );
-  $msg .= ( function_exists ( 'debug_backtrace' ) ? '<b>Stack Trace:</b><br /><br />' : '' ) 
+  $msg .= ( function_exists ( 'debug_backtrace' ) ? '<b>Stack Trace:</b><br /><br />' : '' )
     . '<blockquote><tt>' . nl2br ( $trace ) . '</tt></blockquote>';
   if ( function_exists ( 'die_miserable_death' ) )
     die_miserable_death ( $msg );

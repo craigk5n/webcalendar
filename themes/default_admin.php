@@ -12,7 +12,7 @@
 // Define your stuff here...
 // Any option in webcal_user_pref can be configured here.
 // This theme will reset the System Settings to the default values from the
-// installation script.  This will not affect colors or options that users have
+// installation script. This will not affect colors or options that users have
 // already saved under preferences.
 $webcal_theme = array (
   'ADD_LINK_IN_VIEWS'                => 'N',
@@ -24,6 +24,7 @@ $webcal_theme = array (
   'ALLOW_COMMENTS_ANY'               => 'N',
   'ALLOW_COMMENTS_PART'              => 'N',
   'ALLOW_CONFLICT_OVERRIDE'          => 'Y',
+  'ALLOW_CONFLICTS'                  => 'N',
   'ALLOW_EXTERNAL_HEADER'            => 'N',
   'ALLOW_EXTERNAL_USERS'             => 'N',
   'ALLOW_HTML_DESCRIPTION'           => 'Y',
@@ -38,7 +39,6 @@ $webcal_theme = array (
   'BOLD_DAYS_IN_YEAR'                => 'Y',
   'CATEGORIES_ENABLED'               => 'Y',
   'CELLBG'                           => '#C0C0C0',
-  'CHECK_CONFLICTS'                  => 'Y',
   'CONFLICT_REPEAT_MONTHS'           => '6',
   'CUSTOM_HEADER'                    => 'N',
   'CUSTOM_SCRIPT'                    => 'N',
@@ -46,7 +46,6 @@ $webcal_theme = array (
   'DATE_FORMAT'                      => 'LANGUAGE_DEFINED',
   'DATE_FORMAT_MD'                   => 'LANGUAGE_DEFINED',
   'DATE_FORMAT_MY'                   => 'LANGUAGE_DEFINED',
-  'DATE_FORMAT_TASK'                 => 'LANGUAGE_DEFINED',
   'DEMO_MODE'                        => 'N',
   'DISABLE_ACCESS_FIELD'             => 'N',
   'DISABLE_LOCATION_FIELD'           => 'N',
@@ -63,10 +62,10 @@ $webcal_theme = array (
   'DISPLAY_UNAPPROVED'               => 'Y',
   'DISPLAY_WEEKENDS'                 => 'Y',
   'DISPLAY_WEEKNUMBER'               => 'Y',
-  'EMAIL_EVENT_ADED'                => 'Y',
-  'EMAIL_EVENT_DELTED'              => 'Y',
-  'EMAIL_EVENT_REJCTED'             => 'Y',
-  'EMAIL_EVENT_UPDTED'              => 'Y',
+  'EMAIL_EVENT_ADDED'                => 'Y',
+  'EMAIL_EVENT_DELETED'              => 'Y',
+  'EMAIL_EVENT_REJECTED'             => 'Y',
+  'EMAIL_EVENT_UPDATED'              => 'Y',
   'EMAIL_HTML'                       => 'N',
   'EMAIL_MAILER'                     => 'mail',
   'EMAIL_REMINDER'                   => 'Y',
@@ -125,6 +124,7 @@ $webcal_theme = array (
   'TIMED_EVT_LEN'                    => 'D',
   'TIMEZONE'                         => '',
   'TODAYCELLBG'                      => '#FFFF33',
+  'UAC_ENABLED'                      => 'N',
   'USER_SEES_ONLY_HIS_GROUPS'        => 'Y',
   'WEEK_START'                       => '0',
   'WEEKENDBG'                        => '#D0D0D0',

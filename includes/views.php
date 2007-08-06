@@ -9,20 +9,21 @@
  * @package WebCalendar
  */
 
-  //set this to prove we in are inside a custom view page
-  define ( '_WC_CUSTOM_VIEW', true );
-  
 /**
   * Initialize view variables and check permissions.
   * @param int $view_id id for the view
   */
 function view_init ( $view_id )
 {
-  global $views, $error, $WC;
-  global $view_name, $view_type;
+  global $views, $error, $login;
+  global $ALLOW_VIEW_OTHER, $is_admin;
+  global $view_name, $view_type, $custom_view;
 
-  
-  if ( ! getPref ( 'ALLOW_VIEW_OTHER' ) && ! $WC->isAdmin() ) {
+  //set this to prove we in are inside a custom view page
+  $custom_view = true;
+
+  if ( ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'N' )
+    && ! $is_admin ) {
     // not allowed...
     send_to_preferred_view ();
   }
@@ -31,7 +32,6 @@ function view_init ( $view_id )
   }
 
   // Find view name in $views[]
-  $views = loadViews ();
   $view_name = '';
   $view_type = '';
   $viewcnt = count ( $views );
@@ -45,11 +45,9 @@ function view_init ( $view_id )
   // If view_name not found, then the specified view id does not
   // belong to current user.
   if ( empty ( $view_name ) ) {
-    $smarty->assign ( 'not_auth', true );
-    $smarty->display ( 'error.tpl' );
+    $error = print_not_auth ();
   }
 }
-
 
 /**
   * Remove any users from the view list who this user is not
@@ -58,7 +56,7 @@ function view_init ( $view_id )
   * @return the array of valid users
   */
 function view_get_user_list ( $view_id ) {
-  global $error, $WC;
+  global $error, $login, $is_admin, $NONUSER_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
 
   // get users in this view
   $res = dbi_execute (
@@ -84,16 +82,16 @@ function view_get_user_list ( $view_id ) {
     }
   } else {
     $myusers = get_my_users ( '', 'view' );
-     
-    if ( getPref ( 'NONUSER_ENABLED' ) ) {
-      $myusers = array_merge ( $myusers, get_my_nonusers ( 
-	  $WC->loginId(), true, 'view' ) );
-    } 
+
+    if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
+      $myusers = array_merge ( $myusers, get_my_nonusers ( $login, true, 'view' ) );
+    }
     // Make sure this user is allowed to see all users in this view
     // If this is a global view, it may include users that this user
     // is not allowed to see.
-    if ( getPref ( 'USER_SEES_ONLY_HIS_GROUPS' ) ) {
-      $userlookup = array();
+    if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
+      $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
+      $userlookup = array ();
       $myusercnt = count ( $myusers );
       for ( $i = 0; $i < $myusercnt; $i++ ) {
         $userlookup[$myusers[$i]['cal_login']] = 1;
@@ -106,7 +104,7 @@ function view_get_user_list ( $view_id ) {
       }
       $ret = $newlist;
     }
-    
+
     //Sort user list...
     $sortlist = array ();
     $myusercnt = count ( $myusers );
@@ -122,13 +120,16 @@ function view_get_user_list ( $view_id ) {
     $ret = $sortlist;
   }
 
-  $newlist = array ();
-  $retcnt = count ( $ret );
-  for ( $i = 0; $i < $retcnt; $i++ ) {
-    if ( access_user_calendar ( 'view', $ret[$i] ) )
-      $newlist[] = $ret[$i];
+  // If user access control enabled, check against that as well.
+  if ( access_is_enabled () && ! $is_admin ) {
+    $newlist = array ();
+    $retcnt = count ( $ret );
+    for ( $i = 0; $i < $retcnt; $i++ ) {
+      if ( access_user_calendar ( 'view', $ret[$i] ) )
+        $newlist[] = $ret[$i];
+    }
+    $ret = $newlist;
   }
-  $ret = $newlist;
 
   //echo "<pre>"; print_r ( $ret ); echo "</pre>\n";
   return $ret;

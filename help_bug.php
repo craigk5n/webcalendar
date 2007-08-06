@@ -9,7 +9,7 @@ if ( empty ( $SERVER_SOFTWARE ) )
 if ( empty ( $HTTP_USER_AGENT ) )
   $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
 
-  build_header ( '', '', '', 29 );
+  print_header ( '', '', '', true );
 
   ob_start ();
 
@@ -17,9 +17,10 @@ if ( empty ( $HTTP_USER_AGENT ) )
     <h2>' . translate ( 'Report Bug' ) . '</h2>
     <p>' .
   translate ( 'Please include all the information below when reporting a bug.' )
-   . ( getPref ( 'LANGUAGE' ) != 'English-US' ? ' '
-     . translate ( 'Also, please use <strong>English</strong> rather than' )
-     . ' ' . translate ( get_browser_language ( true ) ) . '.' : '' ) . '</p>
+   . ( $LANGUAGE != 'English-US' ? ' '
+// translate ( 'Also, please use English rather than' )
+     . str_replace ('XXX', translate ( get_browser_language ( true ) ),
+     translate ( 'Also, please use English rather than XXX.' ) ) : '' ) . '</p>
     <form action="http://sourceforge.net/tracker/" target="_new">
       <input type="hidden" name="func" value="add" />
       <input type="hidden" name="group_id" value="3870" />
@@ -28,20 +29,20 @@ if ( empty ( $HTTP_USER_AGENT ) )
     </form>
     <h3>' . translate ( 'System Settings' ) . '</h3>
     <div>';
-  $tmp_arr = array ( 'PROGRAM_NAME' => PROGRAM_NAME,
+  $tmp_arr = array ( 'PROGRAM_NAME' => $PROGRAM_NAME,
     'SERVER_SOFTWARE' => $SERVER_SOFTWARE,
     'Web Browser' => $HTTP_USER_AGENT,
     'PHP Version' => phpversion (),
     'Default Encoding' => ini_get ( 'default_charset' ),
-    'db_type' => _WC_DB_TYPE,
-    'readonly' => ( _WC_READONLY ? 'Y' : 'N' ),
-    'single_user' => ( _WC_SINGLE_USER ? 'Y' : 'N' ),
-    'single_user_login' => _WC_SINGLE_USER_LOGIN,
-    'use_http_auth' => ( _WC_HTTP_AUTH ? 'Y' : 'N' ),
-    'user_inc' => _WC_USER_INC,
+    'db_type' => $db_type,
+    'readonly' => $readonly,
+    'single_user' => $single_user,
+    'single_user_login' => $single_user_login,
+    'use_http_auth' => ( $use_http_auth ? 'Y' : 'N' ),
+    'user_inc' => $user_inc,
     );
   $res = dbi_execute ( 'SELECT cal_setting, cal_value
-  FROM webcal_config ORDER BY cal_setting' );
+    FROM webcal_config ORDER BY cal_setting' );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $tmp_arr[ $row[0] ] = $row[1];
