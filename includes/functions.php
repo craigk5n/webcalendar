@@ -2128,7 +2128,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
                 ? array_merge ( $yret, $bymonthdayvalues )
                 : ( isset ( $byday )
                   ? array_merge ( $yret, $bydayvalues )
-                  : mktime ( $hour, $minute, 0, $month, $thisday, $ycd ) ) );
+                  : array ( mktime ( $hour, $minute, 0, $month, $thisday, $ycd ) ) ) );
           } //end foreach bymonth
         } elseif ( isset ( $byyearday ) ) { // end if isset bymonth
           foreach ( $byyearday as $yearday ) {
