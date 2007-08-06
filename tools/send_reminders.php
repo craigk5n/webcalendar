@@ -75,7 +75,7 @@ include $includedir . '/site_extras.php';
 
 $WebCalendar->initializeSecondPhase ();
 
-$debug = // Set to true to print debug info...
+$debug = false;// Set to true to print debug info...
 $only_testing = false; // Just pretend to send -- for debugging.
 
 // Establish a database connection.
@@ -221,11 +221,11 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   $is_task = false;
   // Get repeating events...tasks are not included at this time.
   if ( $debug )
-	  echo "getting repeating events for $date<br />";
+    echo "Getting repeating events for $date<br />";
   $rep = my_get_repeating_entries ( '', $date );
   $repcnt = count ( $rep );
   if ( $debug )
-	  echo "found $repcnt repeating events for $date<br />";
+    echo "found $repcnt repeating events for $date<br />";
   for ( $i = 0; $i < $repcnt; $i++ ) {
     $id = $rep[$i]->getID ();
     if ( ! empty ( $completed_ids[$id] ) )
@@ -575,10 +575,10 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
        . '<br /><br />
   times_sent = ' . $times_sent . '
   repeats = ' . $repeats . '
-  time = ' . time () . '
-  remind_time = ' . $remind_time . '
-  lastsent = ' . $lastsent . '
-  pointless = ' . $pointless . '
+  time = ' . date ( 'His', time () ). ' 
+  remind_time = ' . date ( 'His', $remind_time ). ' 
+  lastsent = ' . ( $lastsent > 0 ? date ( 'Ymd His', $lastsent  ): " NEVER " ) . ' 
+  pointless = ' .date ( 'Ymd His',  $pointless  ). ' 
   is_task = ' . ( $is_task ? 'true' : 'false' ) . '<br />';
 
     if ( $times_sent < ( $repeats + 1 ) &&
@@ -607,14 +607,11 @@ function my_get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   for ( $i = 0, $cnt = count ( $repeated_events ); $i < $cnt; $i++ ) {
     $list = $repeated_events[$i]->getRepeatAllDates ();
     for ( $j = 0, $cnt_j = count ( $list ); $j < $cnt_j; $j++ ) {
-	    if ( $debug )
-	       echo "     checking $list[$j] = " . date ( 'Ymd', $list[$j]) . '<br />';
-
-	    if ( $dateYmd == date ( 'Ymd', $list[$j] ) ) {
-	      $ret[$n++] = $repeated_events[$i];
-	      if ( $debug )
-	         echo 'Added!<br />';
-	    }
+      if ( $dateYmd == date ( 'Ymd', $list[$j] ) ) {
+        $ret[$n++] = $repeated_events[$i];
+        if ( $debug )
+           echo 'Added!<br />';
+      }
     }
   }
   return $ret;
