@@ -617,7 +617,7 @@ EOT;
       $inc_x_j = $increment * $j;
       $str .= '
         <td id="C' . ( $j + 1 ) . '" class="dailymatrix" ';
-      $tmpTitle = 'onmousedown="schedule_event ( ' . $i . ','
+      $tmpTitle = 'onmousedown="schedule_event( ' . $i . ','
        . sprintf ( "%02d", $inc_x_j ) . ' );"' . $MouseOver . $MouseOut
        . str_replace ( 'XXX', sprintf ( $hourfmt, $hour ) . ':' .
           ( $inc_x_j <= 9 ? '0' : '' ) . $inc_x_j, $titleStr );
@@ -690,7 +690,7 @@ EOT;
         $ret .= '
         <td class="matrixappts' . ( $k == '0' ? ' matrixledge' : '' ) . '" '
          . $style_width . ( $space == '&nbsp;' ? ' '
-           . 'onmousedown="schedule_event ( ' . $j . ','
+           . 'onmousedown="schedule_event( ' . $j . ','
            . sprintf ( "%02d", ( $increment * $k ) ) . ' );"'
            . " $MouseOver $MouseOut" : '' ) . '>' . $space . '</td>';
         $col++;
