@@ -1,144 +1,144 @@
 <?php
-/*
- * $Id$
+/* $Id$
  *
  * Page Description:
- * This page will present the user with forms for submitting
- * a data file to import.
+ * This page will present the user with forms for submitting a data file to import.
  *
  * Input Parameters:
  * None
  *
  * Comments:
- * Might be nice to allow user to set the category for all imported
- * events.  So, a user could easily export events from the work
- * calendar and import them into WebCalendar with a category
- * "work".
+ * Might be nice to allow user to set the category for all imported events.
+ * So, a user could easily export events from the work calendar and import them
+ * into WebCalendar with a category "work".
  */
 include_once 'includes/init.php';
 
-if ( ! empty ( $_POST ) ) {
+/* Generate the selection list for calendar user selection.
+ * Only ask for calendar user if user is an administrator.
+ *
+ * We may enhance this in the future to allow:
+ *  - selection of more than one user
+ *  - non-admin users this functionality
+ */
+function print_user_list () {
+  global $is_admin, $is_assistant, $is_nonuser_admin, $login,
+  $NONUSER_AT_TOP, $NONUSER_ENABLED, $single_user;
 
-  include_once 'includes/xcal.php';
-	
-  $errormsg = $sqlLog = $BodyX = $INC = '';
-  $overwrite = $WC->getPost ( 'overwrite' );
-  $ImportType = $WC->getPost ( 'ImportType' );
-  $doOverwrite = ( empty ( $overwrite ) || $overwrite != 'Y' ) ? false : true;
-  $numDeleted = 0;
-
-  if ( ! empty ( $_FILES['FileName'] ) )
-    $file = $_FILES['FileName'];
-
-  if ( empty ( $file ) )
-    $errormsg = translate ( 'No file' );
-
-  // Handle user
-  $calUser = $WC->getValue ( 'calUser' );
-  if ( ! _WC_SINGLE_USER && ! $WC->isAdmin() )
-    $calUser = $WC->loginId();
-  
-  if ( $file['size'] > 0 ) {
-    switch ( $ImportType ) {
-
-    // ADD New modules here:
-    /*
-    case 'MODULE':
-      include "import_module.php";
-      $data = parse_module ( $_FILES['FileName']['tmp_name'] );
-      break;
-    */
-
-    case 'PALMDESKTOP':
-      include 'import_palmdesktop.php';
-      if ( delete_palm_events ( $WC->loginId() ) != 1 )
-        $errormsg = translate ( 'Error deleting palm events from webcalendar.' );
-      $data = parse_palmdesktop ( $file['tmp_name'], $exc_private );
-      $type = 'palm';
-      break;
-
-    case 'VCAL':
-      $data = parse_vcal ( $file['tmp_name'] );
-      $type = 'vcal';
-      break;
-
-    case 'ICAL':
-      $data = parse_ical ( $file['tmp_name'] );
-      $type = 'ical';
-      break;
-
-    case 'OUTLOOKCSV':
-      include 'import_outlookcsv.php';
-      $data = parse_outlookcsv ( $file['tmp_name'] );
-      $type = 'outlookcsv';
-      break;
+  if ( $single_user == 'N' && $is_admin ) {
+    $userlist = user_get_users ();
+    if ( $NONUSER_ENABLED == 'Y' ) {
+      $nonusers = get_nonuser_cals ();
+      $userlist = ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == 'Y' )
+      ? array_merge ( $nonusers, $userlist ) : array_merge ( $userlist, $nonusers );
     }
-    $count_con = $count_suc = $error_num = 0;
-    if ( ! empty ( $data ) && empty ( $errormsg ) ) {
-      $importmsg = import_data ( $data, $doOverwrite, $type );
-      $smarty->assign ( 'importmsg', $importmsg );
-      
-			$smarty->assign ( 'handler', true );
-      $smarty->assign ( 'count_con', $count_con );
-      $smarty->assign ( 'count_suc', $count_suc );
-      $smarty->assign ( 'error_num', $error_num );
-      $smarty->assign ( 'handler', true );
-	    $smarty->assign ( 'data', true );
-	  } else if ( empty ( $data ) ) {
-		  $errormsg = translate ( 'There was an error parsing the import file or no events were returned' );
-		}
-	
-	} else { //Filesize = 0
-	  $errormsg = translate ( 'The import file contained no data' );
-	}	
-	$smarty->assign ( 'errormsg', $errormsg );
-} else { //Present Import Form
+    $num_users = $size = 0;
+    $users = '';
+    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
+      $l = $userlist[$i]['cal_login'];
+      $size++;
+      $users .= '
+              <option value="' . $l . '"'
+       . ( $l == $login && ! $is_assistant && ! $is_nonuser_admin
+        ? ' selected="selected"' : '' )
+       . '>' . $userlist[$i]['cal_fullname'] . '</option>';
+    }
 
-  $BodyX = 'onload="toggle_import();"';
-  $INC = array('export_import.js', 'visible.js');
-	
+    if ( $size > 50 )
+      $size = 15;
+    elseif ( $size > 5 )
+      $size = 5;
 
-  // Generate the selection list for calendar user selection.
-  // Only ask for calendar user if user is an administrator.
-  // We may enhance this in the future to allow
-  // - selection of more than one user
-  // - non-admin users this functionality
-  if ( ! _WC_SINGLE_USER && $WC->isAdmin() ) {
-	  $userlist = $WC->User->getUsers ();
-	  if ( getPref ( 'NONUSER_ENABLED' ) ) {
-	  	$nonusers = get_nonuser_cals ();
-		  $userlist = ( getPref ( 'NONUSER_AT_TOP' ) ) ?
-		  	array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
-	  }
-	  $size = 0;
-	  $users = array();
-	  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-		  $l = $userlist[$i]['cal_login_id'];
-		  $size++;
-		  $users[$l]['fullname'] = $userlist[$i]['cal_fullname'];
-		  if ( $WC->isLogin( $l ) && ! $WC->isNonuserAdmin() )
-		  	$users[$l]['selected'] = ' selected="selected"';
-	  }
-
-	  if ( $size > 50 )
-		  $size = 15;
-	  else if ( $size > 5 )
-		  $size = 5;
-	}
-	
-  $smarty->assign ( 'users', $users );
-  $smarty->assign ( 'size', $size );
-	
+    echo '
+        <tr>
+          <td class="aligntop"><label for="caluser">' . translate ( 'Calendar' )
+     . ':</label></td>
+          <td>
+            <select name="calUser" id="caluser" size="' . $size . '">' . $users . '
+            </select>
+          </td>
+        </tr>';
+  }
 }
 
 $upload = ini_get ( 'file_uploads' );
-$upload_enabled = ! empty ( $upload ) &&
-  preg_match ( "/(On|1|true|yes)/i", $upload );
+$upload_enabled = ( ! empty ( $upload ) &&
+  preg_match ( '/(On|1|true|yes)/i', $upload ) );
 
-$smarty->assign ( 'upload_enabled', $upload_enabled );
+print_header ( array ( 'js/export_import.php', 'js/visible.php' ),
+  '', 'onload="toggle_import();"' );
+ob_start ();
+echo '
+    <h2>' . translate ( 'Import' ) . '&nbsp;<img src="images/help.gif" alt="'
+ . translate ( 'Help' ) . '" class="help" onclick="window.open( '
+ . "'help_import.php', 'cal_help', '"
+ . 'dependent,menubar,scrollbars,height=400,width=400\' );" /></h2>';
 
-build_header ($INC, '', $BodyX);
+if ( ! $upload_enabled )
+  // The php.ini file does not have file_uploads enabled,
+  // so we will not receive the uploaded import file.
+  // Note: do not translate "php.ini file_uploads"
+  // since these are the filename and config name.
+  echo '
+    <p>' . translate ( 'Disabled' ) . ' (php.ini file_uploads)</p>';
+else {
+  // File uploads enabled.
+  $noStr = translate ( 'No' );
+  $yesStr = translate ( 'Yes' );
+  echo '
+    <form action="import_handler.php" method="post" name="importform" '
+   . 'enctype="multipart/form-data" onsubmit="return checkExtension()">
+      <table>
+        <tr>
+          <td><label for="importtype">' . translate ( 'Import format' ) . ':</label></td>
+          <td>
+            <select name="ImportType" id="importtype" onchange="toggle_import()">
+              <option value="ICAL">iCal</option>
+              <option value="PALMDESKTOP">Palm Desktop</option>
+              <option value="VCAL">vCal</option>
+              <option value="OUTLOOKCSV">Outlook (CSV)</option>
+            </select>
+          </td>
+        </tr>
+<!-- Valid only for Palm Desktop import. -->
+        <tr id="palm">
+          <td><label>' . translate ( 'Exclude private records' ) . ':</label></td>
+          <td>
+            <label><input type="radio" name="exc_private" value="1" checked="checked" />'
+   . $yesStr . '</label>
+            <label><input type="radio" name="exc_private" value="0" />'
+   . $noStr . '</label>
+          </td>
+        </tr>
+<!-- /PALM -->
+<!-- Not valid for Outlook CSV as it doesn\'t generate UID for import tracking. -->
+        <tr id="ivcal">
+          <td><label>' . translate ( 'Overwrite Prior Import' ) . ':</label></td>
+          <td>
+            <label><input type="radio" name="overwrite" value="Y" checked="checked" />&nbsp;'
+   . $yesStr . '</label>
+            <label><input type="radio" name="overwrite" value="N" />&nbsp;'
+   . $noStr . '</label>
+          </td>
+        </tr>
+<!-- /IVCAL -->
+        <tr id="outlookcsv">
+          <td colspan="2"><label>'
+   . translate ( 'Repeated items are imported separately. Prior imports are not overwritten.' )
+   . '</label></td>
+        </tr>
+        <tr class="browse">
+          <td><label for="fileupload">' . translate ( 'Upload file' ) . ':</label></td>
+          <td><input type="file" name="FileName" id="fileupload" size="45" '
+   . 'maxlength="50" /></td>
+        </tr>';
+  print_user_list ();
+  echo '
+      </table><br />
+      <input type="submit" value="' . translate ( 'Import' ) . '" />
+    </form>';
+}
+ob_end_flush ();
+echo print_trailer ();
 
-$smarty->display ( 'import.tpl' );
- 
 ?>

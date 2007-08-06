@@ -3,7 +3,7 @@
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
-build_header ( '', '', '', 29 );
+print_header ( '', '', '', true );
 
 ob_start ();
 
@@ -19,7 +19,7 @@ translate ( 'It should be located in your Palm directory in <tt>datebook/dateboo
     <ul>
       <li>' . translate ( 'Entries older than the current date' ) . '</li>
       <li>' .
-translate ( 'Entries created in the Palm Desktop that have not been HotSync&#39;d' )
+translate ( 'Entries created in the Palm Desktop...' )
  . '</li>
     </ul>
     <p>' .
@@ -39,7 +39,7 @@ translate ( 'Anything imported from Palm will be overwritten during the next imp
     <p>' . translate ( 'This form will import iCalendar (.ics) events' ) . '. '
  . translate ( 'Enabling' ) . ' <b>' . translate ( 'Overwrite Prior Import' )
  . '</b>, ' .
-translate ( 'will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted . This should allow an updated iCalendar file to be imported without creating duplicates.' )
+translate ( 'will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.' )
  . '</p>';
 
 ob_end_flush ();

@@ -10,31 +10,51 @@ if ( function_exists ( 'simplexml_load_string' ) )
 $error = '';
 $layer_found = false;
 
-$action = $WC->getPOST ( 'action' );
-$delete = $WC->getPOST ( 'delete' );
-$reload = $WC->getPOST ( 'reload' );
-$nid = $WC->getPOST ( 'nid' );
-$nadmin = $WC->getPOST ( 'nadmin' );
-$nurl = $WC->getPOST ( 'nurl' );
-$nlayer = $WC->getPOST ( 'nlayer' );
-$nlayercolor = $WC->getPOST ( 'layercolor' );
+$action = getPostValue ( 'action' );
+$delete = getPostValue ( 'delete' );
+$reload = getPostValue ( 'reload' );
+$nid = getPostValue ( 'nid' );
+$nadmin = getPostValue ( 'nadmin' );
+$nurl = getPostValue ( 'nurl' );
+$nlayer = getPostValue ( 'nlayer' );
+$nlayercolor = getPostValue ( 'layercolor' );
 
 if ( ! empty ( $delete ) ) {
-  // Delete all records this remote calendar.
-  $WC->User->deleteUser ( $nid );
+  // Delete events from this remote calendar.
+  delete_events ( $nid );
 
+  // Delete any layers other users may have that point to this user.
+  dbi_execute ( 'DELETE FROM webcal_user_layers WHERE cal_layeruser = ?',
+    array ( $nid ) );
+
+  // Delete any UAC calendar access entries for this  user.
+  dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?
+    OR cal_other_user = ?', array ( $nid, $nid ) );
+
+  // Delete any UAC function access entries for this  user.
+  dbi_execute ( 'DELETE FROM webcal_access_function WHERE cal_login = ?',
+    array ( $nid ) );
+
+  // Delete user.
+  if ( ! dbi_execute ( 'DELETE FROM webcal_nonuser_cals WHERE cal_login = ?',
+      array ( $nid ) ) )
+    $error = db_error ();
 } else {
   if ( ! empty ( $nid ) && $action == 'Save' ||
     $action == translate ( 'Save' ) ) {
     // Updating
     $query_params = array ();
-    $sql = 'UPDATE webcal_user SET ';
-    if ( $rmt_name ) {
-      $sql .= ' cal_fullname = ?, ';
-      $query_params[] = $rmt_name;
+    $sql = 'UPDATE webcal_nonuser_cals SET ';
+    if ( $nlastname ) {
+      $sql .= ' cal_lastname = ?, ';
+      $query_params[] = $nlastname;
+    }
+    if ( $nfirstname ) {
+      $sql .= ' cal_firstname = ?, ';
+      $query_params[] = $nfirstname;
     }
     $sql .= ' cal_url = ?, cal_is_public = ?, cal_admin = ?
-      WHERE cal_login_id = ?';
+      WHERE cal_login = ?';
     $query_params[] = $nurl;
     $query_params[] = 'N';
     $query_params[] = $nadmin;
@@ -46,16 +66,11 @@ if ( ! empty ( $delete ) ) {
   if ( $action == 'Add' || $action == translate ( 'Add' ) ) {
     // Adding
     if ( preg_match ( '/^[\w]+$/', $nid ) ) {
-      $nid = _WC_NONUSER_PREFIX . $nid;
-			$params = array ( 'cal_login'=>$nid,
-			  'cal_lastname'=>$nlastname,
-				'cal_firstname'=>$nfirstname,
-				'cal_is_nuc'=>'Y',
-				'cal_is_public'=>$nispublic,
-				'cal_admin'=>$nadmin,
-				'cal_url'=>$nurl,
-				'cal_view_part'=>$nviewpart );
-      if ( ! $WC->User->addUser ( $params  ) )
+      $nid = $NONUSER_PREFIX . $nid;
+      if ( ! dbi_execute ( 'INSERT INTO webcal_nonuser_cals ( cal_login,
+        cal_firstname, cal_lastname, cal_admin, cal_is_public, cal_url )
+        VALUES ( ?, ?, ?, ?, ?, ? )',
+          array ( $nid, $nfirstname, $nlastname, $nadmin, 'N', $nurl ) ) )
         $error = db_error ();
     } else
       $error = translate ( 'Calendar ID' ) . ' '
@@ -70,18 +85,18 @@ if ( ! empty ( $delete ) ) {
         $layerid += $row[0];
       }
 
-      dbi_execute ( 'INSERT INTO webcal_user_layers ( cal_layerid, cal_login_id,
+      dbi_execute ( 'INSERT INTO webcal_user_layers ( cal_layerid, cal_login,
         cal_layeruser, cal_color, cal_dups ) VALUES ( ?, ?, ?, ?, ? )',
-        array ( $layerid, $WC->loginId(), $nid, $layercolor, 'N' ) );
+        array ( $layerid, $login, $nid, $layercolor, 'N' ) );
       $layer_found = true;
     }
   }
   // Add entry in UAC access table for new admin and remove for old admin.
   // First delete any record for this user/nuc combo.
-  dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login_id = ?
-    AND cal_other_user_id = ?', array ( $nadmin, $nid ) );
-  if ( ! dbi_execute ( 'INSERT INTO webcal_access_user ( cal_login_id,
-    cal_other_user_id, cal_can_view, cal_can_edit, cal_can_approve, cal_can_invite,
+  dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?
+    AND cal_other_user = ?', array ( $nadmin, $nid ) );
+  if ( ! dbi_execute ( 'INSERT INTO webcal_access_user ( cal_login,
+    cal_other_user, cal_can_view, cal_can_edit, cal_can_approve, cal_can_invite,
     cal_can_email, cal_see_time_only ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )',
       array ( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) )
     die_miserable_death ( translate ( 'Database error' ) . ': '
@@ -113,7 +128,7 @@ if ( ! empty ( $reload ) ) {
   $errorStr = '<br /><br />
     <b>' . translate ( 'Error' ) . ':</b> ';
 
-  build_header ( '', '', '', 5 );
+  print_header ( '', '', '', true, false, true );
   if ( count ( $data ) && empty ( $errormsg ) ) {
     // Delete existing events.
     delete_events ( $nid );
@@ -124,7 +139,7 @@ if ( ! empty ( $reload ) ) {
     ' . translate ( 'Events successfully imported' ) . ': ' . $count_suc
      . '<br />';
     if ( $layer_found == false ) { // We may have just added layer.
-      $layers = loadLayers ();
+      load_user_layers ();
       foreach ( $layers as $layer ) {
         if ( $layer['cal_layeruser'] == $nid )
           $layer_found = true;
@@ -147,8 +162,21 @@ if ( ! empty ( $reload ) ) {
 
 function delete_events ( $nid ) {
   // Get event ids for all events this user is a participant.
-  $delete_em = get_event_ids ( $nid );
+  $events = get_users_event_ids ( $nid );
 
+  // Now count number of participants in each event...
+  // If just 1, then save id to be deleted.
+  $delete_em = array ();
+  for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
+    $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
+      WHERE cal_id = ?', array ( $events[$i] ) );
+    if ( $res ) {
+      if ( $row = dbi_fetch_row ( $res ) && $row[0] == 1 )
+        $delete_em[] = $events[$i];
+
+      dbi_free_result ( $res );
+    }
+  }
   // Now delete events that were just for this user.
   for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
@@ -171,7 +199,7 @@ function delete_events ( $nid ) {
       array ( $delete_em[$i] ) );
   }
   // Delete user participation from events.
-  dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login_id = ?',
+  dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',
     array ( $nid ) );
 }
 

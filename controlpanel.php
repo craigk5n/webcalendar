@@ -14,40 +14,42 @@
  *
  * Security:
  * This page doesn't really need securing since it just passes info to the
- * web start app.  The web start app then does its own authenticating since
+ * web start app. The web start app then does its own authenticating since
  * the web services require authentication to do anything.
  *
  **************************************************************************/
 
-require_once 'includes/classes/WebCalendar.class.php';
-require_once 'includes/classes/Event.class.php';
-require_once 'includes/classes/RptEvent.class.php';
+require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
 
-$WC =& new WebCalendar ( __FILE__ );
+$WebCalendar =& new WebCalendar ( __FILE__ );
 
 include 'includes/translate.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/functions.php';
 
-$WC->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase ();
 
-$WC->initializeSecondPhase ();
+include 'includes/' . $user_inc;
 
+$WebCalendar->initializeSecondPhase ();
 
-$WC->setLanguage ();
+load_global_settings ();
+
+$WebCalendar->setLanguage ();
 
 // Set content type for java web start
 header ( "Content-type: application/x-java-jnlp-file" );
 
 // Make sure app name is set
 $appStr = generate_application_name ();
-$server_url = getPref ( 'SERVER_URL', 2 );
 
 echo '<?xml version="1.0" encoding="utf-8"?>
 <jnlp
   spec="1.0+"
-  codebase="' . $server_url . '"
+  codebase="' . $SERVER_URL . '"
   href="controlpanel.php">
   <information>
     <title>' . translate ( 'Control Panel' ) . ': ' . htmlentities ( $appStr );
@@ -66,11 +68,12 @@ echo '<?xml version="1.0" encoding="utf-8"?>
   </resources>
   <application-desc main-class="us.k5n.webcalendar.ui.ControlPanel.Main"
    width="600" height="500">
-    <argument>-url=<?php echo $server_url . '</argument>'
- . ( _WC_HTTP_AUTH ? '
-    <argument>-httpusername=' . $WC->loginId() . '</argument>'
-  : ( $WC->loginId() ? '
-    <argument>-user=' . $WC->loginId() . '</argument>' : '' ) )
+    <argument>-url=<?php echo $SERVER_URL . '</argument>'
+ . ( $use_http_auth
+  ? '
+    <argument>-httpusername=' . $login . '</argument>'
+  : ( ! empty ( $login ) ? '
+    <argument>-user=' . $login . '</argument>' : '' ) )
 
 ?>
   </application-desc>

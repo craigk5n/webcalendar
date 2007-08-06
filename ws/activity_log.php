@@ -28,8 +28,8 @@ require_once 'ws.php';
 // Initialize...
 ws_init ();
 
-$num = $WC->getGET ( 'num' );
-$startid = $WC->getGET ( 'startid' );
+$num = getGetValue ( 'num' );
+$startid = getGetValue ( 'startid' );
 if ( empty ( $num ) || $num < 0 )
   $num = 100;
 
@@ -41,11 +41,21 @@ header ( 'Content-type: text/xml' );
 
 echo '<?xml version="1.0" encoding="UTF-8"?' . ">\n";
 
+// If login is public user, make sure public can view others...
+if ( $login == '__public__' && $login != $user ) {
+  if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
+    $out = '
+  <error>' . translate ( 'Not authorized' ) . '</error>
+</events>
+';
+    exit;
+  }
+}
 
 // TODO: Move this SQL along with the SQL in activity_log.php to a shared function.
 $sql_params = array ();
-$sql = 'SELECT wel.cal_login_id, wel.cal_user_cal, wel.cal_type, wel.cal_date,
-  we.cal_name, wel.cal_log_id
+$sql = 'SELECT wel.cal_login, wel.cal_user_cal, wel.cal_type, wel.cal_date,
+  wel.cal_time, we.cal_name, wel.cal_log_id
   FROM webcal_entry_log wel, webcal_entry we WHERE wel.cal_entry_id = we.cal_id ';
 if ( ! empty ( $startid ) ) {
   $sql .= 'AND wel.cal_log_id <= ? ';
@@ -71,7 +81,8 @@ if ( $res ) {
     <login>' . ws_escape_xml ( $row[0] ) . '</login>
     <calendar>' . ws_escape_xml ( $row[1] ) . '</calendar>
     <type>' . ws_escape_xml ( $row[2] ) . '</type>
-    <date>' . ws_escape_xml ( date ( 'Ymd H:is', $row[3] ) ) . '</date>
+    <date>' . ws_escape_xml ( $row[3] ) . '</date>
+    <time>' . ws_escape_xml ( $row[4] ) . '</time>
     <action>' . ws_escape_xml ( $row[5] ) . '</action>
     <id>' . ws_escape_xml ( $row[6] ) . '</id>
   </log>

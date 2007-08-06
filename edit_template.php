@@ -18,21 +18,22 @@ include_once 'includes/init.php';
 $cur = $error = '';
 $found = $foundOld = false;
 $report_id = 0;
-$type = $WC->getValue ( 'type', 'H|S|T', true );
-$user = WC__SYSTEM__;
+$type = getValue ( 'type', 'H|S|T', true );
+$user = '__system__';
 
-if ( getPref ( 'ALLOW_USER_HEADER' ) ) {
-  $user = $WC->userID();
+if ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) {
+  $user = getValue ( 'user' );
   if ( empty ( $user ) )
-    $user = WC__SYSTEM__;
+    $user = '__system__';
 }
 
-if ( $user == WC__SYSTEM__ )
-  assert ( 'access_can_access_function ( ACCESS_SYSTEM_SETTINGS )' );
+if ( $user == '__system__' )
+  assert ( '($is_admin && ! access_is_enabled () ) ||
+    access_can_access_function ( ACCESS_SYSTEM_SETTINGS )' );
 
 // Get existing value.
 $res = dbi_execute ( 'SELECT cal_template_text FROM webcal_user_template
-  WHERE cal_type = ? AND cal_login_id = ?', array ( $type, $user ) );
+  WHERE cal_type = ? AND cal_login = ?', array ( $type, $user ) );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     $cur = $row[0];
@@ -41,8 +42,8 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-// Check the cal_template_text table since that is where we stored it
-// in 1.0 and before.
+// Check the cal_template_text table
+// since that is where we stored it in 1.0 and before.
 if ( ! $found ) {
   $res = dbi_execute ( 'SELECT cal_template_text FROM webcal_report_template
     WHERE cal_template_type = ? AND cal_report_id = 0', array ( $type ) );
@@ -61,27 +62,24 @@ if ( empty ( $REQUEST_METHOD ) )
 // Handle form submission.
 if ( $REQUEST_METHOD == 'POST' ) {
   // Was this a delete request?
-  $delete = $WC->getPOST ( 'delete' );
-  if ( $user != WC__SYSTEM__ && ! empty ( $delete ) ) {
+  $delete = getPostValue ( 'delete' );
+  if ( $user != '__system__' && ! empty ( $delete ) ) {
     dbi_execute ( 'DELETE FROM webcal_user_template WHERE cal_type = ?
-      AND cal_login_id = ?', array ( $type, $user ) );
+      AND cal_login = ?', array ( $type, $user ) );
     echo '<html><body onload="window.close();"></body></html>';
     exit;
   }
 
-  $query_params = array ();
-  $query_params[] = $WC->getPOST ( 'template' );
-  $query_params[] = $type;
-  $query_params[] = $user;
+  $query_params = array ( getPostValue ( 'template' ), $type, $user );
 
   if ( $found )
     $sql = 'UPDATE webcal_user_template SET cal_template_text = ?
-      WHERE cal_type = ? AND cal_login_id = ?';
+      WHERE cal_type = ? AND cal_login = ?';
   else {
     $sql = 'INSERT INTO webcal_user_template ( cal_template_text, cal_type,
-    cal_login_id ) VALUES ( ?, ?, ? )';
+      cal_login ) VALUES ( ?, ?, ? )';
 
-    if ( $foundOld && $user == WC__SYSTEM__ )
+    if ( $foundOld && $user == '__system__' )
       // User is upgrading from WebCalendar 1.0 to 1.1.
       // Delete from the webcal_report_template table and move the info
       // to the new webcal_user_template table.
@@ -91,10 +89,9 @@ if ( $REQUEST_METHOD == 'POST' ) {
   if ( ! dbi_execute ( $sql, $query_params ) )
     $error = db_error ();
   else {
-    // echo "SQL: $sql <br />\n";
     echo '<html>
   <head></head>
-  <body onload="window.close ();">
+  <body onload="window.close();">
     Done
   </body>
 </html>';
@@ -102,7 +99,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   }
 }
 
-build_header ( '', '', '', 29 );
+print_header ( '', '', '', true );
 /*
  echo 'report_id: ' . $report_id . '<br />
 report_name: ' . $report_name . '<br />
@@ -112,36 +109,34 @@ report_user: ' . $report_user . '<br />
 echo '
     <h2>';
 if ( $type == 'H' )
-  etranslate( 'Edit Custom Header' );
+  etranslate ( 'Edit Custom Header' );
 elseif ( $type == 'S' )
-  etranslate( 'Edit Custom Script/Stylesheet' );
+  etranslate ( 'Edit Custom Script/Stylesheet' );
 else
-  etranslate( 'Edit Custom Trailer' );
+  etranslate ( 'Edit Custom Trailer' );
 
-if ( $user != WC__SYSTEM__ ) {
-  $WC->User->loadVariables ( $user, 'temp_' );
-  echo '<br />[' . $WC->User->_uservar['temp_'][$user]['fullname'] . ']';
-} else {
- echo '<br />[' . translate ( 'Site Wide Setting' ) . ']';
+if ( $user != '__system__' ) {
+  user_load_variables ( $user, 'temp_' );
+  echo ' [' . $temp_fullname . ']';
 }
 
 echo '</h2>' . ( ! empty ( $error ) ? print_error ( $error ) : '
     <form action="edit_template.php" method="post" name="reportform">
       <input type="hidden" name="type" value="' . $type . '" />'
-   . ( getPref ( 'ALLOW_USER_HEADER' ) && !
-    empty ( $user ) && $user != WC__SYSTEM__ ? '
+   . ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' && !
+    empty ( $user ) && $user != '__system__' ? '
       <input type="hidden" name="user" value="' . $user . '" />' : '' ) . '
       <textarea rows="15" cols="60" name="template">' . htmlspecialchars ( $cur )
    . '</textarea><br />
       <input type="button" value="' . translate ( 'Cancel' )
    . '" onclick="window.close();" />
       <input name="action" type="submit" value="' . translate ( 'Save' ) . '" />'
-   . ( $WC->user() ? '
+   . ( ! empty ( $user ) ? '
       <input name="delete" type="submit" value="' . translate ( 'Delete' )
      . '" onclick="return confirm( \''
      . str_replace ( 'XXX', translate ( 'entry' ),
       translate ( 'Are you sure you want to delete this XXX?' ) ) . '\');" />'
     : '' ) . '
-    </form>' ) . "\n";
+    </form>' ) . "\n" . print_trailer ( false, true, true );
 
 ?>

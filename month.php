@@ -1,23 +1,106 @@
 <?php
 /* $Id$ */
-define ( 'CALTYPE', 'month' ); 
 include_once 'includes/init.php';
 
-$layers = loadLayers ( $WC->userId() );
+if ( ( $user != $login ) && $is_nonuser_admin )
+  load_user_layers ( $user );
+else
+if ( empty ( $user ) )
+  load_user_layers ();
 
-$smarty->assign('display_sm_month', getPref ( 'DISPLAY_SM_MONTH' ) );
-$smarty->assign('display_tasks', getPref ( 'DISPLAY_TASKS', 0 ) );
+$cat_id = getGetValue ( 'cat_id' );
+load_user_categories ();
 
-$smarty->assign('tableWidth', ( getPref ( 'DISPLAY_TASKS', 0 )? '80%' :'100%') );
-$smarty->assign('monthURL', 'month.php?' . ( $WC->catId()
-  ? 'cat_id=' . $WC->catId() . '&amp;' : '' ) );
+$next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
+$nextYmd = date ( 'Ymd', $next );
+$nextyear = substr ( $nextYmd, 0, 4 );
+$nextmonth = substr ( $nextYmd, 4, 2 );
 
-$smarty->assign('navName', 'month' ); 
+$prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
+$prevYmd = date ( 'Ymd', $prev );
+$prevyear = substr ( $prevYmd, 0, 4 );
+$prevmonth = substr ( $prevYmd, 4, 2 );
 
-$HeadX = generate_refresh_meta ();
-$BodyX = ( getPref ( 'DISPLAY_TASKS', 0 ) ? 
-  "onload=\"sortTasks( 0, {$WC->catId()} );\"" : '' );
-build_header ( array ( 'entries.js', 'popups.js', 'visible.js' ), $HeadX, $BodyX );
+if ( $BOLD_DAYS_IN_YEAR == 'Y' ) {
+  $boldDays = true;
+  $startdate = mktime ( 0, 0, 0, $prevmonth, 1, $prevyear );
+  $enddate = mktime ( 23, 59, 59, $nextmonth + 1, 0, $nextyear );
+} else {
+  $boldDays = false;
+  $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+  $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
+}
 
-$smarty->display('month.tpl');
+/* Pre-Load the repeated events for quicker access */
+$repeated_events = read_repeated_events (
+  ( ! empty ( $user ) && strlen ( $user ) )
+  ? $user : $login, $startdate, $enddate, $cat_id );
+
+/* Pre-load the non-repeating events for quicker access */
+$events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
+  ? $user : $login, $startdate, $enddate, $cat_id );
+
+if ( $DISPLAY_TASKS_IN_GRID == 'Y' )
+  /* Pre-load tasks for quicker access */
+  $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) &&
+    $is_assistant )
+    ? $user : $login, $enddate, $cat_id );
+
+$tableWidth = '100%';
+$monthURL = 'month.php?' . ( ! empty ( $cat_id )
+  ? 'cat_id=' . $cat_id . '&amp;' : '' );
+$nextMonth1 = $nextMonth2 = $prevMonth1 = $prevMonth2 = '';
+$printerStr = $smallTasks = $unapprovedStr = '';
+if ( empty ( $DISPLAY_TASKS ) || $DISPLAY_TASKS == 'N' &&
+  $DISPLAY_SM_MONTH != 'N' ) {
+  $nextMonth1 = display_small_month ( $nextmonth, $nextyear, true, true,
+    'nextmonth', $monthURL );
+  $prevMonth1 = display_small_month ( $prevmonth, $prevyear, true, true,
+    'prevmonth', $monthURL );
+}
+
+if ( $DISPLAY_TASKS == 'Y' && $friendly != 1 ) {
+  $nextMonth2 = display_small_month ( $nextmonth, $nextyear, true, false,
+    'nextmonth', $monthURL ) . '<br />';
+  $prevMonth2 = display_small_month ( $prevmonth, $prevyear, true, false,
+    'prevmonth', $monthURL ) . '<br />';
+  $smallTasks = display_small_tasks ( $cat_id );
+  $tableWidth = '80%';
+}
+$eventinfo = ( ! empty ( $eventinfo ) ? $eventinfo : '' );
+$monthStr = display_month ( $thismonth, $thisyear );
+$navStr = display_navigation ( 'month' );
+
+if ( empty ( $friendly ) ) {
+  $unapprovedStr = display_unapproved_events (
+    ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
+  $printerStr = generate_printer_friendly ( 'month.php' );
+}
+$trailerStr = print_trailer ();
+
+$HeadX = generate_refresh_meta ()
+  . '<script src="includes/js/weekHover.js" type="text/javascript"></script>';
+
+print_header ( array ( 'js/popups.php/true', 'js/visible.php' ), $HeadX,
+'', false, false, false, false );
+
+echo <<<EOT
+    <table border="0" width="100%" cellpadding="1">
+      <tr>
+        <td id="printarea" valign="top" width="{$tableWidth}" rowspan="2">
+          {$prevMonth1}{$nextMonth1}
+          {$navStr}
+          {$monthStr}
+        </td>
+        <td valign="top" align="center">
+          {$prevMonth2}{$nextMonth2}<div id="minitask">{$smallTasks}</div>
+        </td>
+      </tr>
+    </table>
+    {$eventinfo}
+    {$unapprovedStr}
+    {$printerStr}
+    {$trailerStr}
+EOT;
+
 ?>

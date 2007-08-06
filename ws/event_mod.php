@@ -43,36 +43,42 @@ echo '<?xml version="1.0" encoding="UTF-8"?' . ">\n";
 $out = '
 <result>';
 
-$eid = $WC->getId ();
-$user = $WC->getUserLoginId ();
+$id = getValue ( 'id', '-?[0-9]+' );
+$user = getGetValue ( 'username' );
+if ( empty ( $user ) )
+  $user = $login;
 
-$action = $WC->getGET ( 'action' );
+$action = getGetValue ( 'action' );
 if ( strpos ( 'approvedeletereject', $action ) === false )
   // translate ( 'Unsupported action' )
   $error = str_replace ( 'XXX', ws_escape_xml ( $action ),
     translate ( 'Unsupported action XXX.' ) );
 
-if ( empty ( $error ) && empty ( $eid ) )
+if ( empty ( $error ) && empty ( $id ) )
   $error = translate ( 'No event id specified.' );
 
 // Public user cannot do this...
-if ( empty ( $error ) && $WC->login( '__public__' ) )
+if ( empty ( $error ) && $login == '__public__' )
   $error = translate ( 'Not authorized' );
 
 // Only admin users can modify events on the public calendar.
 if ( empty ( $error ) && $PUBLIC_ACCESS == 'Y' && $user == '__public__' && !
-    $WC->isAdmin() )
+    $is_admin )
   // translate ( 'not admin' )
   $error = translate ( 'Not authorized (not admin).' );
 
-if ( empty ( $error ) && ! $WC->isAdmin() && ! $WC->isLogin( $user ) ) {
+if ( empty ( $error ) && ! $is_admin && $user != $login ) {
   // Non-admin user has request to modify event on someone else's calendar.
-  if ( ! access_user_calendar ( 'approve', $user ) )
+  if ( access_is_enabled () ) {
+    if ( ! access_user_calendar ( 'approve', $user ) )
+      $error = translate ( 'Not authorized' );
+  } else
+    // TODO: Support boss/assistant when UAC is not enabled.
     $error = translate ( 'Not authorized' );
 }
 
 if ( strpos ( ' approvedeletereject', $action ) )
-  update_status ( ucfirst ( $action ), $user, $eid );
+  update_status ( ucfirst ( $action ), $user, $id );
 
 $out .= ( empty ( $error ) ? '
   <success/>' : '

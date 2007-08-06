@@ -15,7 +15,7 @@
  * To set this up in cron, add a line like the following in your crontab
  * to run it every hour:
  *   1 * * * * php /some/path/here/reload_remotes.php
- * Of course, change the path to where this script lives.  If the
+ * Of course, change the path to where this script lives. If the
  * php binary is not in your $PATH, you may also need to provide
  * the full path to "php".
  * On Linux, just type crontab -e to edit your crontab.
@@ -35,56 +35,55 @@
  *   php -d error_reporting=0 /some/path/here/tools/reload_remotes.php
  *
  *********************************************************************/
-
-// If you have moved this script out of the WebCalendar directory, which you
-// probably should do since it would be better for security reasons, you would
-// need to change _WC_BASE_DIR to point to the webcalendar include directory.
-
-// _WC_BASE_DIR points to the base WebCalendar directory relative to
+// Load include files.
+// If you have moved this script out of the WebCalendar directory,
+// which you probably should do since it would be better for security
+// reasons, you would need to change $includedir to point to the
+// webcalendar include directory.
+$basedir = '..'; // points to the base WebCalendar directory relative to
 // current working directory
-
-define ( '_WC_BASE_DIR', '..' );
-define ( '_WC_INCLUDE_DIR', _WC_BASE_DIR . '/includes/' );
-
+$includedir = '../includes';
 $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
-ini_set ( 'include_path', $old_path . $delim . _WC_INCLUDE_DIR . $delim );
+ini_set ( 'include_path', $old_path . $delim . $includedir . $delim );
 
-require_once _WC_INCLUDE_DIR . 'classes/WebCalendar.class.php';
+require_once $includedir . '/classes/WebCalendar.class';
 
-$WC =& new WebCalendar ( __FILE__ );
+$WebCalendar =& new WebCalendar ( __FILE__ );
 
-include _WC_INCLUDE_DIR . 'translate.php';
-include _WC_INCLUDE_DIR . 'config.php';
-include _WC_INCLUDE_DIR . 'dbi4php.php';
-include _WC_INCLUDE_DIR . 'functions.php';
+include $includedir . '/translate.php';
+include $includedir . '/config.php';
+include $includedir . '/dbi4php.php';
+include $includedir . '/functions.php';
 
-$WC->initializeFirstPhase ();
- 
-include _WC_INCLUDE_DIR . 'xcal.php';
+$WebCalendar->initializeFirstPhase ();
 
-$WC->initializeSecondPhase ();
+include "$includedir/$user_inc";
+include $includedir . '/xcal.php';
+
+$WebCalendar->initializeSecondPhase ();
 // used for hCal parsing
-require_once _WC_INCLUDE_DIR . 'classes/hKit/hkit.class.php';
+require_once $includedir . '/classes/hKit/hkit.class.php';
 
 $debug = false; // set to true to print debug info...
 
 // Establish a database connection.
-$c = dbi_connect ( _WC_DB_HOST, _WC_DB_LOGIN, _WC_DB_PASSWORD, _WC_DB_DATABASE, true );
+$c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
 if ( ! $c ) {
   echo translate ( 'Error connecting to database' ) . ': ' . dbi_error ();
   exit;
 }
 
-$WC->setLanguage ();
+load_global_settings ();
+$WebCalendar->setLanguage ();
 
 if ( $debug )
   echo "<br />\n" . translate ( 'Include Path' )
    . ' =' . ini_get ( 'include_path' ) . "<br />\n";
 
-if ( getPref ( 'REMOTES_ENABLED', 2 ) ) {
-  $res = dbi_execute ( 'SELECT cal_login_id, cal_url, cal_admin
-    FROM webcal_user WHERE cal_is_nuc = \'Y\' AND cal_url IS NOT NULL' );
+if ( $REMOTES_ENABLED == 'Y' ) {
+  $res = dbi_execute ( 'SELECT cal_login, cal_url, cal_admin
+    FROM webcal_nonuser_cals WHERE cal_url IS NOT NULL' );
   $cnt = 0;
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -117,7 +116,7 @@ if ( getPref ( 'REMOTES_ENABLED', 2 ) ) {
         // import new events
         if ( $debug )
           echo translate ( 'Importing events for' ) . ": $calUser<br />\n"
-           .          translate ( 'From' ) . ": $cal_url<br />\n";
+           . translate ( 'From' ) . ": $cal_url<br />\n";
         import_data ( $data, $overwrite, $type );
         if ( $debug )
           echo translate ( 'Events successfully imported' )
@@ -143,8 +142,22 @@ $login = '';
 
 function delete_events ( $nid ) {
   // Get event ids for all events this user is a participant
-  $delete_em = get_event_ids ( $nid );
+  $events = get_users_event_ids ( $nid );
 
+  // Now count number of participants in each event...
+  // If just 1, then save id to be deleted
+  $delete_em = array ();
+  for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
+    $res = dbi_execute ( 'SELECT COUNT (*) FROM webcal_entry_user
+      WHERE cal_id = ?', array ( $events[$i] ) );
+    if ( $res ) {
+      if ( $row = dbi_fetch_row ( $res ) ) {
+        if ( $row[0] == 1 )
+          $delete_em[] = $events[$i];
+      }
+      dbi_free_result ( $res );
+    }
+  }
   // Now delete events that were just for this user
   for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
@@ -167,7 +180,7 @@ function delete_events ( $nid ) {
       array ( $delete_em[$i] ) );
   }
   // Delete user participation from events
-  dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login_id = ?',
+  dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',
     array ( $nid ) );
 }
 
