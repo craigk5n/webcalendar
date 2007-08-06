@@ -673,11 +673,11 @@ class WebCalendar {
       $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
          WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
       if ( $rows ) {
-			  $row = $rows[0];
+        $row = $rows[0];
         if ( $row[0] != $PROGRAM_VERSION ) {
           // &amp; does not work here...leave it as &
           header ( 'Location: install/index.php?action=mismatch&version='
-					  . $row[0] );
+            . $row[0] );
         exit;}
 
       }
@@ -714,9 +714,9 @@ class WebCalendar {
     // Global settings have not been loaded yet, so check for public_access now.
     $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
       WHERE cal_setting = \'PUBLIC_ACCESS\'' );
-		if ( $rows ) {
-		  $row = $rows[0];
-		}
+    if ( $rows ) {
+      $row = $rows[0];
+    }
     $pub_acc_enabled = ( ! empty ( $row ) && $row[0] == 'Y' );
 
     if ( $pub_acc_enabled ) {
@@ -735,10 +735,10 @@ class WebCalendar {
 
     $login_url .= ( strstr ( $login_url, '?' ) ? '&amp;' : '?' )
      . ( empty ( $login_return_path ) ? '' : 'return_path=' 
-		 . $login_return_path );
+     . $login_return_path );
 
     // If sent here from an email and not logged in, 
-		//save URI and redirect to login.
+    //save URI and redirect to login.
     $em = getGetValue ( 'em' );
     if ( ! empty ( $em ) && empty ( $login ) ) {
       remember_this_view ();
