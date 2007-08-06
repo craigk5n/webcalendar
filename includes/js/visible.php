@@ -1,10 +1,19 @@
-<?php /* $Id$  */
-//install/index.php needs to call this file directly, so we
-//need to insert the proper script tags as needed
-if ( ! empty ( $_SERVER['PHP_SELF'] ) &&
-  ! preg_match ( "/js_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
-  echo "<script type=\"text/javascript\">\n<!-- <![CDATA[\n";
+<?php
+/* $Id$ */
+// install/index.php needs to call this file directly,
+// so we need to insert the proper script tags as needed.
+$endScriptStr = '';
+if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
+ preg_match ( '/js_cacher.php/', $_SERVER['PHP_SELF'] ) ) {
+  echo '<script type="text/javascript">
+<!-- <![CDATA[
+';
+
+  $endScriptStr = '//]]> -->
+</script>
+';
 }
+
 ?>
 // detect browser
 NS4 = (document.layers) ? 1 : 0;
@@ -203,9 +212,6 @@ function callEdit () {
   var url = "edit_entry.php";
   editwin = window.open ( url, "edit_entry", features );
 }
-<?php
-if ( ! empty ( $_SERVER['PHP_SELF'] ) &&
-  ! preg_match ( "/js_cacher.php/", $_SERVER['PHP_SELF'] ) ) {
-  echo "//]]> -->\n</script>\n";
-}
+<?php echo $endScriptStr;
+
 ?>
