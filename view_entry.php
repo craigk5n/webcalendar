@@ -46,10 +46,13 @@ $hide_details = ( $login == '__public__' && !
 $rssuser = getGetValue ( 'rssuser' );
 if ( ! empty ( $rssuser ) ) {
   $user_rss_enabled = get_pref_setting ( $rssuser, 'USER_RSS_ENABLED' );
+  $user_remote_access = get_pref_setting ( $rssuser, 'USER_REMOTE_ACCESS' );
   $user_rss_timezone = get_pref_setting ( $rssuser, 'TIMEZONE' );
   $rss_view = ( $RSS_ENABLED == 'Y' && $user_rss_enabled == 'Y' &&
-    $friendly == 1 && ! empty ( $rssuser ) );
+    $friendly == 1 && ! empty ( $rssuser ) && isset ( $user_remote_access ) );
   if ( $rss_view == true ) {
+    if ( $login == '__public__')
+      $user = $rssuser;
     $hide_details = false;
     // Make sure the displayed time is accurate.
     set_env ( 'TZ', $user_rss_timezone );
