@@ -1,5 +1,79 @@
 $Id$
 Version 1.1.3 (4 Aug 2007)
+ - Fixed bug [ 1748124 ] reminder email has wrong date
+ - Fixed bug [ 1766614 ] 'weekstart' at edit_entry is wrong
+ - Fixed bug: when upgrading from 1.0.5 to 1.1.X, a bad cookie session can
+   cause PHP to crash on some systems.
+ - If settings.php is size 0, then redirect to install page (because install
+   was started but not completed).
+ - Fixed bug [ 1744648 ] Theme changing over system settings
+ - Fixed bug: error in SQLite creation SQL
+ - Fixed bug [ 1738333 ] Events without reminder
+ - Fixed bug [ 1737128 ] From notification to "not authorized"
+ - Fixed bug [ 1766291 ] mini-calender pop-up will not be displayed correctly
+ - Fixed bug [ 1754622 ] every 'normal' entry will be displayed as 'Priority: 2-High'
+ - Fixed bug [ 1765906 ] layered-entries don't show detailed pop-up infos via hover
+ - Fixed bug [ 1765924 ] improvements requested at view_entry.php refering 'Notes'
+ - Fixed bug [ 1765928 ] cannot add attachments to an entry
+ - Fixed bug [ 1765881 ] long day names not proper adjusted in week.php for English
+ - Fixed bug [ 1765970 ] enabled option "Display tasks in Calendars" will not work at
+ - Fixed bug [ 1765977 ] cannot edit any entries of users.php
+ - Fixed bug [ 1700505 ] repeating multiday events
+ - Fixed bug [ 1664815 ] Import Sum/Desc trunc if colon in text
+ - Fixed bug [ 1765216 ] repeating matrix (by Day) didn't start with the adjust week-
+ - Fixed bug [ 1755306 ] Option with 'Note' are not hidden if Entry is set to 'No'
+ - Fixed bug [ 1756739 ] layout of system-settings and preference are not fexible dep
+ - Fixed bug [ 1763463 ] "+" sign cannot be used for a second time using week.php
+ - Fixed bug [ 1763455 ] week.php not displayed correctly.....
+ - Fixed bug [ 1763472 ] repeat-function "weekly" will not proper work
+ - Fix bug [ 1763378 ] view by week incorrect output
+ - Fix bug [ 1755948 ] Oracle Installation Error
+   both tables-oracle.sql and upgrade-oracle.sql
+ - Fix bug [ 1755735 ] v 1.1.3 Category Edit Sample Color
+ - Fix bug [ 1752504 ] selectDate doesnt work if you want to edit an entry
+ - Fix bug [ 1751928 ] edit_entry allows anyone to add entries
+ - Fix bug [ 1750990 ] next year / prev. year buttons in year view
+ - Added German UTF8 convertion by Jörg Raftopoulos
+ - Fix bug [ 1745238 ] Error in event_get_external_users (cvs release)
+ - Fix bug [ 1744641 ] Layout "Public Preferences"
+ - Fix bug [ 1744773 ] Bug at install function "do_v11b_updates()"
+ - Fix bug [ 1744648 ] Theme changing over system settings
+ - Fix bug [ 1744662 ] German translation
+ - Fix bug [ 1743401 ] code error for view type=day
+ - Applied PATCH [ 1726402 ] Fix for send_reminder.php
+ - Fix bug [ 1718609 ] Cannot login after upgrading/updating
+ - Fix bug [ 1719102 ] Including header/trailer file also includes its file name
+ - Changed iCalendar output (export, publish) for all-day and untimed events.
+ - Fixed bug [ 1714785 ] new feature "plugins" not being displayed correctly at system settings
+ - Fixed bug [ 1711983 ] cannot switch between registers of system settings
+ - Fixed bug [ 1714844 ] Small patch for includes/styles.php + includes/js/popups.php
+ - Applied PATCH [ 1710686 ] Version 1.0.5 uses javascript functions undefined in IE6
+ - Applied PATCH [1060051 ] Add hover effect for week number links
+ - Applied PATCH [ 1659949 ] MyCalendar Link not including .php suffix
+ - Applied PATCH [ 1669552 ] Themes are not all listed in drop-down
+ - Applied PATCH [ 1697119 ] popups.php - fix for IE popups falling of screen.
+ - Instead of 'removing' translations identical to English, replace them with
+   an equal sign "=".  Cuts down on <<MISSING>> by update_translation.pl and
+   still saves a lot of file space.
+ - Fully populate translations[] with default English text
+   before loading other language files.
+ - Begin support for new language - JRR Tolkien's "Elven". :)
+   See the comment notes in the file for where to get the fonts.
+ - Removed several more phrases from translations/*.txt files that are the same
+   in English.  Between these last two 'removals', overall file size is 100+K smaller.
+ - Removed "ob_start()" from help_docs.php so it would output.
+   Removed several phrases from translations/*.txt files that are the same in
+   English - cutting overall file size considerably.
+ - Fixed bug [ 1663286 ] pop-up window of categories are not dynamic
+ - Fixed bug [ 1663292 ] date-pop-up --> mini calendar should be increased the size
+ - Fixed bug [ 1671714 ] right bracket is displayed for untimed events at day.php
+ - Fixed bug [ 1663269 ] untimed events and tasks not proper displayed at day.php
+ - Fixed bug [ 1663341 ] first square in the time-matrix not proper visible for BG-
+ - Fixed bug [ 1673806 ] Premature end of script headers
+ - Fixed bug [ 1660278 ] Fatal Error: Invalid data format forid
+ - Fixed logic error: $translations_loaded was being set = true before it actually was.
+ - Security patch: don't allow URL to set 'noset', which allows users
+   to then set other global variables.
  - Fixed bug [ 1657494 ] Unable to repeat events by slecting months
  - Fixed bug [ 1654078 ] cannot managed 'public access' without using 'top-menue'
  - Fixed bug [ 1657946 ] little thick squares at layered events at month.php
@@ -53,7 +127,7 @@ Version 1.1.2 (18 Dec 2006)
  - Fixed bug [ 1612332 ] empty exports with date limits
  - Fixed bug [ 1445428 ] Import needs utf8_decode()
  - Fixed bug [ 1614644 ] Remote subscriptions don't work with umlauts (Sunbird)
- - Implemented PATCH [ webcalendar-Bugs-1615738 ] EMAIL_EVENT_CRETE pref don't get invisible
+ - Implemented PATCH [ webcalendar-Bugs-1615738 ] EMAIL_EVENT_CREATE pref don't get invisible
  - Updated German.txt for ws/event_mod.php and ws/user_mod.php.
  - Fix bug [ 1614167 ] adjusted bg-image not working at views
    Cut the wrong set of dupe code the first time.
