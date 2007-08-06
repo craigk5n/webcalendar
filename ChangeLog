@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.3 (4 Aug 2007)
+ - Fixed bug [ 1768505 ] unclosed select-tag
  - Fixed bug [ 1657776 ] reminder time zone problem
  - Fixed bug [ 1725025 ] rss error when showdate=1
  - Fixed bug [ 1748124 ] reminder email has wrong date

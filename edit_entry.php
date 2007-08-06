@@ -943,7 +943,7 @@ if ( $can_edit ) {
         }
 
         echo '
-                <select name="' . $extra_name . $isMultiple . '"' . $multiselect;
+                <select name="' . $extra_name . $isMultiple . '"' . $multiselect . '>';
         for ( $j = 0; $j < $extra_arg1cnt; $j++ ) {
           echo '
                   <option value="' . $extra_arg1[$j] . '" ';
