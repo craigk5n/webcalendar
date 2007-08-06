@@ -1665,7 +1665,7 @@ function error_check ( $nextURL, $redirect = true ) {
 
     $ret .= '<html>
   <head></head>
-  <body onload="alert ( \'' . translate ( 'Changes successfully saved', true )
+  <body onload="alert( \'' . translate ( 'Changes successfully saved', true )
      . '\' ); window.parent.location.href=\'' . $nextURL . '\';">';
   }
   return $ret . '
@@ -4189,7 +4189,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
 
   if ( empty ( $CATEGORIES_ENABLED  ) || $CATEGORIES_ENABLED == 'N' )
     return false;
-    
+
   $catStr = translate ( 'Category' );
   $printerStr = '';
   $ret = '
@@ -5072,7 +5072,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
             $parentRepeats = $result[$i-1]->getRepeatAllDates ();
             for ( $j = 0, $parentRepeatscnt = count ( $parentRepeats );
               $j < $parentRepeatscnt; $j++ ) {
-              $cloneRepeats[] = gmdate ( 'Ymd', 
+              $cloneRepeats[] = gmdate ( 'Ymd',
                 date_to_epoch ( $parentRepeats[$j] ) + ONE_DAY );
             }
             $result[$i]->addRepeatAllDates ( $cloneRepeats );
