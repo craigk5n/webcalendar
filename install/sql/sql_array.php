@@ -326,7 +326,7 @@ $install_sql = array (
      array ( 'cal_update_date', INT, 11, N )
     ),
   'primary'=>array ( 'cal_report_id' ),
-  'index'=>array ( 'cal_login_id', 'cal_user' )
+  'index'=>array ( 'cal_login_id', 'cal_user_id' )
   ),
 
   array ( 'name'=>'report_template',
