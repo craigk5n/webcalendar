@@ -198,7 +198,8 @@ function do_config ( $fileLoc ) {
   define ( '_WC_SINGLE_USER', preg_match ( '/(1|yes|true|on)/i',
     $cfg['single_user'] ) ? true : false );
 
-  define ( '_WC_SINGLE_USER_LOGIN', $cfg['single_user_login'] );
+  define ( '_WC_SINGLE_USER_LOGIN', ! empty ( $cfg['single_user_login'] ) 
+	  ? $cfg['single_user_login'] : '' );
   if ( _WC_SINGLE_USER && ! _WC_SINGLE_USER_LOGIN  )
     die_miserable_death ( str_replace ( 'XXX', 'single_user_login',
         translate ( 'You must define XXX in' ) ) );
