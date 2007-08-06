@@ -70,7 +70,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
       continue;
 
     if ( $tablear[$i]['type'] == 'dbdate' ) {
-      // '2006-12-31'
+      // '2007-12-31'
       $y = substr ( $valuesar[$i], 0, 4 );
       $m = substr ( $valuesar[$i], 5, 2 );
       $d = substr ( $valuesar[$i], 8, 2 );

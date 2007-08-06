@@ -1,7 +1,7 @@
 WebCalendar NEWS File
 Version: $Id$
 
-This file lists significant changes to WebCalendar.  For a more detailed
+This file lists significant changes to WebCalendar. For a more detailed
 list (that includes specific bugs fixed, please look at ChangeLog):
 
 http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/ChangeLog
@@ -30,16 +30,16 @@ Version 1.1.2 (18 Dec 2006)
 
   - New Features / Enhancements:
     = Site Extras
-      + Radio control are now available 
-      + Checkbox controls are now available. 
-      + Multi-Select Select controls are now available. 
-      + Site-Extra fields are now included in emails. 
-      + You can now set where each Site Extra fields show up. 
-        - All 
-        - Email 
-        - View (view_entry) 
-        - Reports 
-        - Reminders 
+      + Radio control are now available
+      + Checkbox controls are now available.
+      + Multi-Select Select controls are now available.
+      + Site-Extra fields are now included in emails.
+      + You can now set where each Site Extra fields show up.
+        - All
+        - Email
+        - View (view_entry)
+        - Reports
+        - Reminders
         Any combination of the above is possible using bitwise operators.
     = User Interface
       + Date Range Searches have been added
@@ -84,7 +84,7 @@ Version 1.1.1 (15 Sep 2006)
         from within WebCalendar.
       + Improved iCal parsing
       + Export only a specified category
-      + Implemented VTODO support with floating display of due date per RFC2445 
+      + Implemented VTODO support with floating display of due date per RFC2445
       + Allow users to import from Outlook 2003/XP CSV file
       + Palm Desktop datebook import works for versions 4.1.1 and newer
       + Added iCal FreeBusy support
@@ -97,7 +97,7 @@ Version 1.1.1 (15 Sep 2006)
       + Improved reminder UI and added repeating functionality per RFC2445
       + Can attach comments and documents to events using database BLOBs
       + Added support for events overlapping into next day
-      + Added new Repeat type 'Manual' that allows adding Inclusions/Exclusions 
+      + Added new Repeat type 'Manual' that allows adding Inclusions/Exclusions
         without other repeat attributes.
       + Implemented a new repeating event system that incorporates most
         requirements of RFC2445.
@@ -178,7 +178,7 @@ Version 1.0.0 (17 May 2005) aka Buster
       1158769: Category lost when modifing event by Admin
       1168686: Month display collides with minicals on Safari
       1168682: RC3 Language Detection Broken for Safari.
-      1169403: Public Access not DEFAULT selected if Particiapants not shown. 
+      1169403: Public Access not DEFAULT selected if Particiapants not shown.
       1169078: Bad function call in import_handler.php
       1168092: Overlapping events display problem
       1167281: View_l loses colour for today
@@ -188,7 +188,7 @@ Version 1.0.0 (17 May 2005) aka Buster
   - Other bugs fixed:
     + Fixed problem with ical import weekly BYDAY parsing in import_ical.php
     + Fixed problem with missing $cat_id in week and day URLs in month.php
-    + Fixed problem with second edit of a single event in a repeating series 
+    + Fixed problem with second edit of a single event in a repeating series
       losing linkage with the original event.
     + Fixed problem with views_edit.php, select groups not returning menbers
     + Fixed problem with 12AM event not adding hour=0 to URL in week.php
@@ -231,14 +231,14 @@ Version 1.0RC3 (11 Mar 2005)
       1123508: RC3 browser language detection always returns none.
       1112787: missing charset in upcoming.php
   - Other bugs fixed:
-    + Fixed problem with upcoming.php header. xml:lang and lang were set to full 
+    + Fixed problem with upcoming.php header. xml:lang and lang were set to full
       LANGUAGE value, not abbreviation.
     + Fixed problem with upcoming.php with You are not Authorized error message
-      being sent without a header. 
+      being sent without a header.
     + Fixed problem with popups.php with long text strings going off screen.
       Maximum width is now configurable.
     + Fixed issue with Application Name containing ? characters in logon.php.
-      If Application Name = Title then translate, else use Admin defined 
+      If Application Name = Title then translate, else use Admin defined
       name and run through htmlspecialchars
     + Fixed issues with display_small_month URLs. Extra & if no $user specified.
     - Add meta tag for charset since MSIE requires it.
@@ -255,7 +255,7 @@ Version 1.0RC3 (11 Mar 2005)
       based on server time
   - New Features / Enhancements / Changes:
     + Merged task files into entry files
-    + Added 'Public Access' to Manage Calendar of: list, if Admin. 
+    + Added 'Public Access' to Manage Calendar of: list, if Admin.
     + Allow user-created views to be the DEFAULT view set in user preferences.
       After saving or deleting an event, the user will return to this page.
     + Replaced popups.php code with new knoppix based code. This should eliminate
@@ -281,7 +281,7 @@ Version 1.0RC2 (09 Feb 2005)
       1116008: Got invalid user error when clicking on '+' icon
                to add new event
   - Other bugs fixed:
-    + Fixed a problem with the Repeat Tab on edit_entry page, if disabled, 
+    + Fixed a problem with the Repeat Tab on edit_entry page, if disabled,
       the SAVE button was hidden as well.
   - New Features / Enhancements / Changes:
     + Modified the way settings.php file is read to handle unix/dos/mac
