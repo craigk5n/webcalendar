@@ -3282,7 +3282,7 @@ function html_for_add_icon ( $date = 0, $hour = '', $minute = '', $user = '' ) {
 function html_for_event_day_at_a_glance ( $event, $date ) {
   global $ALLOW_HTML_DESCRIPTION, $categories, $DISPLAY_DESC_PRINT_DAY,
   $DISPLAY_END_TIMES, $first_slot, $hour_arr, $last_slot, $layers, $login,
-  $PHP_SELF, $rowspan, $rowspan_arr;
+  $PHP_SELF, $rowspan, $rowspan_arr, $user;
   static $key = 0;
 
   $can_access = CAN_DOALL;
@@ -3311,7 +3311,11 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $time_only = access_user_calendar ( 'time', $getLogin );
     if ( $getCalTypeName == 'task' && $can_access == 0 )
       return false;
-  }
+  } else {
+    $not_my_entry = ( ( $login != $user && strlen ( $user ) ) ||
+    ( $login != $event->getLogin () && strlen ( $event->getLogin () ) ) );
+    $can_access = ( $not_my_entry && $event->getAccess () != 'P' ? 0 : $can_access );
+  } 
 
   // If TZ_OFFSET make this event before the start of the day or
   // after the end of the day, adjust the time slot accordingly.
@@ -3412,7 +3416,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $hour_arr[$ind] .= build_entry_label ( $event, 'eventinfo-' . $linkid,
     $can_access, $popup_timestr, $time_only )
    . ( $getPri == 3 ? '</strong>' : '' ) . '</a>'
-   . ( $DISPLAY_DESC_PRINT_DAY == 'Y' ? '
+   . ( $DISPLAY_DESC_PRINT_DAY == 'Y' && $can_access ? '
     <dl class="desc">
       <dt>' . translate ( 'Description' ) . ':</dt>
       <dd>'
