@@ -103,6 +103,9 @@ include_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase ();
 
+
+$WebCalendar->setLanguage ();
+
 $appStr = generate_application_name ();
 // If WebCalendar is using http auth, then $login will be set in validate.php.
 /*
@@ -139,8 +142,6 @@ if ( empty ( $login ) ) {
 
 load_global_settings ();
 load_user_preferences ();
-
-$WebCalendar->setLanguage ();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
