@@ -527,7 +527,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $ret = <<<EOT
     <br />
     <table align="center" class="matrixd" style="width:'80%';" cellspacing="0"
-      cellpadding="0">
+      cellpadding="0" summary="">
       <tr>
         <td class="matrix" colspan="{$cols}"></td>
       </tr>
@@ -706,7 +706,7 @@ EOT;
   } // End foreach participant.
   return $ret . <<<EOT
     </table><br />
-    <table align="center">
+    <table align="center" summary="">
       <tr>
         <td class="matrixlegend" ><img src="images/pix.gif" title="{$busy}"
           alt="{$busy}" />{$busy}&nbsp;&nbsp;&nbsp;<img src="images/pixb.gif"
@@ -970,7 +970,7 @@ function display_month ( $thismonth, $thisyear, $demo = false ) {
   $login, $today, $user, $WEEK_START, $WEEKENDBG;
 
   $ret = '
-    <table class="main" cellspacing="0" cellpadding="0" id="month_main">
+    <table class="main" cellspacing="0" cellpadding="0" id="month_main" summary="">
       <tr>' . ( $DISPLAY_WEEKNUMBER == 'Y' ? '
         <th class="empty"></th>' : '' );
 
@@ -1161,7 +1161,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   // Start the minical table for each month.
   $ret = '
     <table class="minical"'
-   . ( $minical_id != '' ? ' id="' . $minical_id . '"' : '' ) . '>';
+   . ( $minical_id != '' ? ' id="' . $minical_id . '"' : '' ) . ' summary="">';
 
   $monthstart = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
   $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
@@ -1353,7 +1353,7 @@ function display_small_tasks ( $cat_id ) {
     ( empty ( $task_filter ) ? '' : $task_filter ), $cat_id, true );
   $row_cnt = 1;
   $task_html = '
-    <table class="minitask" cellspacing="0" cellpadding="2">
+    <table class="minitask" cellspacing="0" cellpadding="2" summary="">
       <tr class="header">
         <th colspan="6">' . translate ( 'TASKS' ) . '</th>
         <th align="right" colspan="2"><a href="edit_entry.php?' . $u_url
@@ -1741,7 +1741,7 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
   $ret = "<$size>"
    . ( $sys ? translate ( 'System Log' ) : translate ( 'Activity Log' ) )
    . "</$size>" . display_admin_link () . '
-    <table class="embactlog">
+    <table class="embactlog" summary="">
       <tr>
         <th class="usr">' . translate ( 'User' ) . '</th>
         <th class="cal">' . translate ( 'Calendar' ) . '</th>
@@ -4453,7 +4453,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
     }
   }
   $ret .= '
-    <table class="main glance" cellspacing="0" cellpadding="0">'
+    <table class="main glance" cellspacing="0" cellpadding="0" summary="">'
    . ( empty ( $hour_arr[9999] ) ? '' : '
       <tr>
         <th class="empty">&nbsp;</th>

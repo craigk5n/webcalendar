@@ -605,7 +605,7 @@ $loginStr = translate ( 'Login' );
 $logoutStr = translate ( 'Logout' );
 
 $menuHtml .= '
-      <table width="100%" class="ThemeMenubar" cellspacing="0" cellpadding="0">
+      <table width="100%" class="ThemeMenubar" cellspacing="0" cellpadding="0" summary="">
         <tr>
           <td class="ThemeMenubackgr"><div id="myMenuID"></div></td>'
  . ( $MENU_DATE_TOP == 'Y' && $menuConfig['MENU_DATE_TOP'] ? '
