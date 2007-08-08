@@ -359,7 +359,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
   // Get reminders.
   $reminder = getReminders ( $id );
   $reminder_offset = ( empty ( $reminder ) ? 0 : $reminder['offset'] );
-	
+
 	$rem_status = ( count ( $reminder ));
   $rem_use_date = ( ! empty ( $reminder['date'] ) );
   // .
@@ -407,8 +407,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
 
 	$rem_status = ( $REMINDER_DEFAULT == 'Y' );
   $rem_use_date = ( $reminder_offset == 0 && $REMINDER_WITH_DATE == 'Y' );
-			
-			
+
   if ( $eType == 'task' )
     $hour = $WORK_DAY_START_HOUR;
   // .
@@ -599,7 +598,7 @@ if ( $can_edit ) {
         <div id="tabscontent_details">' : '
       <fieldset>
         <legend>' . translate ( 'Details' ) . '</legend>' ) . '
-          <table border="0">
+          <table border="0" summary="">
             <tr>
               <td style="width:14%;" class="tooltip" title="'
    . tooltip ( 'brief-description-help' ) . '"><label for="entry_brief">'
@@ -621,7 +620,7 @@ if ( $can_edit ) {
    . ( ! empty ( $categories ) || $DISABLE_ACCESS_FIELD != 'Y' ||
     ( $DISABLE_PRIORITY_FIELD != 'Y' )
     /* New table for extra fields. */ ? '
-                <table border="0" width="90%">' : '' )
+                <table border="0" width="90%" summary="">' : '' )
    . ( $DISABLE_ACCESS_FIELD != 'Y' ? '
                   <tr>
                     <td class="tooltip" title="' . tooltip ( 'access-help' )
@@ -686,7 +685,7 @@ if ( $can_edit ) {
   if ( $eType == 'task' ) { // Only for tasks.
     $completed_visible = ( strlen ( $completed ) ? 'visible' : 'hidden' );
     echo '<br />
-                <table border="0">
+                <table border="0" summary="">
                   <tr id="completed">
                     <td class="tooltip" title="' . tooltip ( 'completed-help' )
      . '"><label for="task_percent">' . translate ( 'Date Completed' )
@@ -715,7 +714,8 @@ if ( $can_edit ) {
       echo '
                   <tr>
                     <td colspan="2">
-                      <table width="100%" border="0" cellpadding="2" cellspacing="5">
+                      <table width="100%" border="0" cellpadding="2" '
+        . 'cellspacing="5" summary="">
                         <tr>
                           <td colspan="2">' . translate ( 'All Percentages' )
        . '</td>
@@ -859,7 +859,7 @@ if ( $can_edit ) {
       <div>
         <fieldset>
           <legend>' . translate ( 'Site Extras' ) . '</legend>' : '' ) . '
-          <table>' : '' );
+          <table summary="">' : '' );
 
   for ( $i = 0; $i < $site_extracnt; $i++ ) {
     if ( $site_extras[$i] == 'FIELDSET' )
@@ -990,7 +990,7 @@ if ( $can_edit ) {
     <div id="tabscontent_participants">' : '
     <fieldset>
       <legend>' . translate ( 'Participants' ) . '</legend>' ) . '
-      <table>';
+      <table summary="">';
   // .
   // Only ask for participants if we are multi-user.
   $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
@@ -1077,7 +1077,7 @@ if ( $can_edit ) {
     <div id="tabscontent_pete">' : '
     <fieldset>
       <legend>' . translate ( 'Repeat' ) . '</legend>' ) . '
-      <table border="0" cellspacing="0" cellpadding="3">
+      <table border="0" cellspacing="0" cellpadding="3" summary="">
         <tr>
           <td class="tooltip" title="' . tooltip ( 'repeat-type-help' )
      . '"><label for="rpttype">' . translate ( 'Type' ) . ':</label></td>
@@ -1158,7 +1158,7 @@ if ( $can_edit ) {
 			for ( $i=0; $i<=6;$i++ ) {
 			    echo '<option value="'.  $byday_names[$i] .'" '
 				 . ( $wkst ==$byday_names[$i] ? $selected : '' )
-				 . '>' .translate ( $byday_names[$i] ) . "</option>\n";			
+				 . '>' .translate ( $byday_names[$i] ) . "</option>\n";
 			  }
      echo '</select>&nbsp;&nbsp;<label for="rptwkst">'
      . translate ( 'Week Start' ) . '</label>
@@ -1178,14 +1178,15 @@ if ( $can_edit ) {
      . ( empty ( $bymonthdayStr ) ? '' : $bymonthdayStr ) . '" />
             <input type="hidden" name="bysetposList" value="'
      . ( empty ( $bysetposStr ) ? '' : $bysetposStr ) . '" />
-            <table class="byxxx" cellpadding="2" cellspacing="2" border="1">
+            <table class="byxxx" cellpadding="2" cellspacing="2" '
+     . 'border="1" summary="">
               <tr>
                 <td></td>';
     // Display byday extended selection.
     // We use BUTTONS in a triple state configuration, and store the values in
     // a javascript array until form submission. We then set the hidden field
     // bydayList to the string value of the array.
-    for ( $rpt_byday_label = $WEEK_START; 
+    for ( $rpt_byday_label = $WEEK_START;
 		  $rpt_byday_label <= ( $WEEK_START + 6); $rpt_byday_label++ ) {
 			$rpt_byday_mod = $rpt_byday_label %7;
 			$class = ( is_weekend ( $rpt_byday_mod ) ? ' class="weekend" ' : '' );
@@ -1197,7 +1198,7 @@ if ( $can_edit ) {
               </tr>
               <tr>
                 <th>' . translate ( 'All' ) . '</th>';
-    for ( $rpt_byday_single = $WEEK_START; 
+    for ( $rpt_byday_single = $WEEK_START;
 		  $rpt_byday_single <= ( $WEEK_START + 6); $rpt_byday_single++ ) {
 			$rpt_byday_mod = $rpt_byday_single %7;
       echo '
@@ -1214,13 +1215,13 @@ if ( $can_edit ) {
       echo '
                 <th><label>' . $loop_ctr . '/' . ( $loop_ctr - 6 )
        . '</label></th>';
-      for ( $rpt_byday = $WEEK_START; 
+      for ( $rpt_byday = $WEEK_START;
 			  $rpt_byday <= ( $WEEK_START + 6); $rpt_byday++ ) {
 				$rpt_byday_mod = $rpt_byday %7;
         $buttonvalue = ( in_array ( $loop_ctr
              . $byday_names[$rpt_byday_mod], $byday )
           ? $loop_ctr . translate ( $byday_names[$rpt_byday_mod] )
-          : ( in_array ( ( $loop_ctr - 6 ) 
+          : ( in_array ( ( $loop_ctr - 6 )
 					. $byday_names[$rpt_byday_mod], $byday )
           ? ( $loop_ctr - 6 )
           . translate ( $byday_names[$rpt_byday_mod] ) : '        ' ) );
@@ -1248,7 +1249,7 @@ if ( $can_edit ) {
           <td class="tooltip">' . translate ( 'ByMonth' ) . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bymonth selection. */ . '
-            <table cellpadding="5" cellspacing="0">
+            <table cellpadding="5" cellspacing="0" summary="">
               <tr>';
     for ( $rpt_month = 1; $rpt_month < 13; $rpt_month++ ) {
       echo '
@@ -1274,7 +1275,8 @@ if ( $can_edit ) {
      . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bysetpos selection. */ . '
-            <table class="byxxx" cellpadding="2" cellspacing="0" border="1">
+            <table class="byxxx" cellpadding="2" cellspacing="0" '
+     . 'border="1" summary="">
               <tr>
                 <td></td>';
     for ( $rpt_bysetpos_label = 1; $rpt_bysetpos_label < 11; $rpt_bysetpos_label++ ) {
@@ -1314,7 +1316,8 @@ if ( $can_edit ) {
      . ':&nbsp;</td>
         <td colspan="2" class="boxall">'
     /* Display bymonthday extended selection. */ . '
-          <table class="byxxx" cellpadding="2" cellspacing="0" border="1">
+          <table class="byxxx" cellpadding="2" cellspacing="0" '
+     . 'border="1" summary="">
             <tr>
               <td></td>';
     for ( $rpt_bymonthday_label = 1; $rpt_bymonthday_label < 11; $rpt_bymonthday_label++ ) {
@@ -1381,7 +1384,7 @@ if ( $can_edit ) {
         <td class="tooltip"><label>' . translate ( 'Exclusions' ) . '/<br />'
      . translate ( 'Inclusions' ) . ':</label></td>
         <td colspan="2" class="boxtop boxright boxbottom boxleft">
-          <table border="0" width="250px">
+          <table border="0" width="250px" summary="">
             <tr>
               <td colspan="2">'
      . date_selection ( 'except_', $rpt_end_date ? $rpt_end_date : $cal_date )
@@ -1448,7 +1451,7 @@ if ( $can_edit ) {
     <div id="tabscontent_reminder">' : '
     <fieldset>
       <legend>' . translate ( 'Reminders' ) . '</legend>' ) . '
-      <table border="0" cellspacing="0" cellpadding="3">
+      <table border="0" cellspacing="0" cellpadding="3" summary="">
         <thead>
           <tr>
             <td class="tooltip"><label>' . translate ( 'Send Reminder' )
@@ -1575,7 +1578,7 @@ if ( $can_edit ) {
 <!-- End tabscontent -->';
 
   echo '
-      <table>
+      <table summary="">
         <tr>
           <td>
             <script type="text/javascript">

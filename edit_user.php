@@ -38,7 +38,7 @@ if ( ! empty ( $error ) ) {
   echo print_error ( $error );
 } else {
 ?>
-<table>
+<table summary="">
 <tr><td style="vertical-align:top; width:50%;">
 <h2><?php
  if ( ! empty ( $user ) ) {
@@ -55,7 +55,7 @@ if ( ! empty ( $error ) ) {
   echo '<input type="hidden" name="add" value="1" />' . "\n";
  }
 ?>
-<table>
+<table summary="">
  <tr><td>
   <label for="username"><?php etranslate ( 'Username' )?>:</label></td><td>
   <?php
@@ -148,7 +148,7 @@ if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
 <?php if ( $is_admin ) { ?>
  <input type="hidden" name="user" value="<?php echo $user;?>" />
 <?php } ?>
-<table>
+<table summary="">
  <tr><td>
   <label for="newpass1"><?php etranslate ( 'New Password' )?>:</label></td><td>
   <input name="upassword1" id="newpass1" type="password" size="15" />

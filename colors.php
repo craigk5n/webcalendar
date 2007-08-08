@@ -24,7 +24,7 @@ print_header ( array ( 'js/colors.php/true' ), '',
 echo <<<EOT
     <form action="colors.php" name="colorpicker">
       <input type="hidden" id="colorcell" value="{$color}" />
-      <table cellspacing="2" cellpadding="0" align="center">
+      <table cellspacing="2" cellpadding="0" align="center" summary="">
         <tr>
           <td colspan="3">
             <img height="1" src="images/blank.gif" border="0" alt="" /></td>
@@ -37,7 +37,7 @@ echo <<<EOT
               onclick="setFromImage(event);" alt="" /></td>
 <!-- ***** SLIDER **** -->
           <td rowspan="5">
-            <table cellspacing="0" cellpadding="0" width="24"
+            <table cellspacing="0" cellpadding="0" width="24" summary=""
               onclick="setFromSlider(event);">
               <tr>
                 <td id="slider"></td>
@@ -62,7 +62,7 @@ echo <<<EOT
         </tr>
         <tr>
           <td valign="top" colspan="3">
-            <table cellpadding="2" cellspacing="0" width="100%">
+            <table cellpadding="2" cellspacing="0" width="100%" summary="">
               <tr align="center">
                 <td colspan="2" height="30" valign="bottom">{$currentStr}</td>
                 <td valign="bottom">{$oldStr}</td>
@@ -80,19 +80,22 @@ echo <<<EOT
                     value="FFFFFF" onchange="setFromHTML()" />
                 </td>
                 <td class="boxtop boxright boxbottom" width="120">
-          <table id="thecell" bgcolor="#ffffff" align="center"
-border="1" cellspacing="0" cellpadding="0">
+          <table id="thecell" bgcolor="#fff" align="center"
+            border="1" cellspacing="0" cellpadding="0" summary="">
                     <tr>
-                      <td><img src="images/blank.gif" width="55" height="53" border="0" alt="" /></td>
+                      <td><img src="images/blank.gif" width="55" height="53"
+                        border="0" alt="" /></td>
                     </tr>
                   </table>
                 </td>
                 <td valign="middle" align="center" class="boxtop boxright
                   boxbottom">
 <!--  Display New Color  -->
-        <table id="theoldcell" bgcolor="#ffffff" border="1" cellspacing="0" cellpadding="0">
+        <table id="theoldcell" bgcolor="#fff" border="1" cellspacing="0"
+           cellpadding="0" summary="">
                     <tr>
-            <td><img src="images/blank.gif" width="55" height="53" border="0" alt="" /></td>
+            <td><img src="images/blank.gif" width="55" height="53"
+              border="0" alt="" /></td>
                     </tr>
                   </table>
                 </td>
@@ -111,8 +114,10 @@ border="1" cellspacing="0" cellpadding="0">
         </tr>
       </table>
     </form>
-<img id="cross" src="images/cross.gif" alt="" style="position:absolute; left:0px; top:0px" />
-<img id="sliderarrow" src="images/arrow.gif" alt="" style="position:absolute; left:0px; top:0px" />
+<img id="cross" src="images/cross.gif" alt=""
+  style="position:absolute; left:0; top:0" />
+<img id="sliderarrow" src="images/arrow.gif" alt=""
+  style="position:absolute; left:0; top:0" />
   </body>
 </html>
 EOT;

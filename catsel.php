@@ -31,7 +31,7 @@ print_header ( array ( 'js/catsel.php/false/' . $form ),
 ob_start ();
 
 echo '
-    <table align="center" border="0" width="90%">
+    <table align="center" border="0" width="90%" summary="">
       <tr>
         <th colspan="3">' . translate ( 'Categories' ) . '</th>
       </tr>

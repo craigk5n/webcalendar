@@ -32,7 +32,7 @@ if ( $is_nonuser_admin ) {
 
 echo '</h2>
       ' . display_admin_link () . '
-      <table>
+      <table summary="">
         <tr>
           <td class="aligntop"><label for="users">'
  . $assistStr . ':</label></td>

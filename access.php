@@ -211,7 +211,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
       <form action="access.php" method="post" name="accessform">
         <input type="hidden" name="auser" value="' . $guser . '" />
         <input type="hidden" name="guser" value="' . $guser . '" />
-        <table border="0" cellspacing="10">
+        <table border="0" cellspacing="10" summary="">
           <tbody>
             <tr>
               <td valign="top">';
@@ -305,7 +305,7 @@ if ( ! empty ( $otheruser ) ) {
     <form action="access.php" method="post" name="EditOther">
       <input type="hidden" name="guser" value="' . $guser . '" />
       <input type="hidden" name="otheruser" value="' . $otheruser . '" /><br />
-      <table cellpadding="5" cellspacing="0">
+      <table cellpadding="5" cellspacing="0" summary="">
         <tbody>
           <tr>
             <th class="boxleft boxtop boxbottom" width='
@@ -410,7 +410,8 @@ if ( ! empty ( $otheruser ) ) {
      . '" onclick="selectAll(0);" />
             </td>
             <td colspan="9" class="boxright">
-              <table border="0" align="center" cellpadding="5" cellspacing="2">
+              <table border="0" align="center" cellpadding="5" '
+     . 'cellspacing="2" summary="">
                 <tr>
                   <td class="pub">' . translate ( 'Public' ) . '</td>
                   <td class="conf">' . translate ( 'Confidential' ) . '</td>
