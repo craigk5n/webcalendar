@@ -197,7 +197,7 @@ $pwd1 = getPostValue ( 'password1' );
 $pwd2 = getPostValue ( 'password2' );
 if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
   if ( $pwd1 != $pwd2 ) {
-    etranslate ( 'Passwords do not match' ) . "!<br />\n";
+    echo translate ( 'Passwords do not match' ) . "!<br />\n";
     exit;
   }
   $fd = @fopen ( $file, 'a+b', false );
