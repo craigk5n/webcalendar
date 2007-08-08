@@ -108,7 +108,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
 
   echo '
     <br /><br />
-    <table class="main">
+    <table class="main" summary="">
       <tr>
         <th class="empty">&nbsp;</th>';
   // .

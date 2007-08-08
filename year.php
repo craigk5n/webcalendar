@@ -42,7 +42,7 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
     ( ! empty ( $user ) && strlen ( $user ) ? $user : $login ),
     $startdate, $enddate, $cat_id );
   $boldDays = true;
-	
+
   $catSelectStr = print_category_menu ( 'year', $thisyear, $cat_id );
 }
 
@@ -111,7 +111,7 @@ echo <<<EOT
       {$catSelectStr}
     </div><br />
     <div align="center">
-      <table id="monthgrid">
+      <table id="monthgrid" summary="">
         {$gridOmonths}
       </table>
     </div><br />

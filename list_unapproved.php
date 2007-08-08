@@ -225,7 +225,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
 
 echo '
     <form action="list_unapproved.php" name="listunapproved" method="post">
-      <table border="0">';
+      <table border="0" summary="">';
 
 for ( $i = 0, $cnt = count ( $app_users ); $i < $cnt; $i++ ) {
   // List unapproved entries for this user.

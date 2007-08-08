@@ -17,7 +17,7 @@ if ( ! empty ( $_POST ) ) {
 
    print_header ();
    echo "<form action=\"reject_entry.php$q_string\" method=\"post\" name=\"add_comments\" >\n";
-   echo "<table border=\"0\" cellspacing=\"5\">\n" .
+   echo '<table border="0" cellspacing="5" summary="">' . "\n" .
      "<tr><td align=\"center\" valign=\"bottom\"><h3>" .
      translate ( 'Additional Comments (optional)' ) . "</h3></td><tr>\n";
    echo "<tr><td align=\"center\">" .

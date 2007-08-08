@@ -28,7 +28,7 @@ ob_start ();
 echo '
     <h2>' . translate ( 'Export' ) . '</h2>
     <form action="export_handler.php" method="post" name="exportform" id="exportform">
-      <table>
+      <table summary="">
         <tr>
           <td><label for="exformat">' . translate ( 'Export format' )
  . ':</label></td>
@@ -90,7 +90,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
         </tr>
         <tr>
           <td colspan="2">
-            <table id="dateArea">
+            <table id="dateArea" summary="">
               <tr>
                 <td><label>' . translate ( 'Start date' ) . ':</label></td>
                 <td>' . date_selection ( 'from', $dateYmd ) . '</td>

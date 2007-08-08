@@ -121,7 +121,7 @@ else {
     <form action="set_entry_cat.php" method="post" name="selectcategory">
       <input type="hidden" name="date" value="{$date}" />
       <input type="hidden" name="id" value="{$id}" />
-      <table border="0" cellpadding="5">
+      <table border="0" cellpadding="5" summary="">
         <tr class="aligntop">
           <td class="bold">{$briefStr}:</td>
           <td>{$event_name}</td>

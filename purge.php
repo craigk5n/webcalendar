@@ -54,7 +54,7 @@ $INC = array ( 'js/visible.php' );
 print_header ( $INC );
 ?>
 
-<table>
+<table summary="">
 <tr><td style="vertical-align:top; width:50%;">
 <?php
 echo '<h2>' . translate ( 'Delete Events' );
@@ -118,7 +118,7 @@ onclick="history.back()" /></form
 ?>
 
 <form action="purge.php" method="post" name="purgeform" id="purgeform">
-<table>
+<table summary="">
  <tr><td><label for="user">
   <?php echo translate ( 'User' );?>:</label></td>
  <td><select name="user">

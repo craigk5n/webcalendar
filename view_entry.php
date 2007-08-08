@@ -366,7 +366,7 @@ echo '
   ? '  ( ' . translate ( 'Admin mode' ) . ' )' : '' )
  . ( $is_assistant ? ' ( ' . translate ( 'Assistant mode' ) . ' )' : '' )
  . '</h2>
-    <table width="100%">
+    <table width="100%" summary="">
       <tr>
         <td class="aligntop bold" width="10%">' . translate ( 'Description' )
  . ':</td>
@@ -634,7 +634,7 @@ if ( $single_user == 'N' && $show_participants ) {
   }
   if ( $eType == 'task' ) {
     echo '
-          <table border="1" width="80%" cellspacing="0" cellpadding="1">
+          <table border="1" width="80%" cellspacing="0" cellpadding="1" summary="">
             <th align="center">' . translate ( 'Participants' ) . '</th>
             <th align="center" colspan="2">'
      . translate ( 'Percentage Complete' ) . '</th>';
@@ -821,7 +821,7 @@ if ( Doc::commentsEnabled () ) {
     user_load_variables ( $cmt->getLogin (), 'cmt_' );
     $comment_text .= '
           <strong>' . htmlspecialchars ( $cmt->getDescription () )
-     . '</strong> - ' . $cmt_fullname . ' ' . translate ( 'at' ) . ' ' 
+     . '</strong> - ' . $cmt_fullname . ' ' . translate ( 'at' ) . ' '
      . date_to_str ( $cmt->getModDate (), '', false, true ) . ' '
      . display_time ( $cmt->getModTime (), 2 )
     // show delete link if user can delete
@@ -921,11 +921,11 @@ if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) &&
 }
 
 // TODO add these permissions to the UAC list
-$can_add_attach = ( Doc::attachmentsEnabled () && $login != '__public__' 
+$can_add_attach = ( Doc::attachmentsEnabled () && $login != '__public__'
   && ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
   ( $ALLOW_ATTACH_ANY == 'Y' ) );
 
-$can_add_comment = ( Doc::commentsEnabled () && $login != '__public__' 
+$can_add_comment = ( Doc::commentsEnabled () && $login != '__public__'
   && ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
   ( $ALLOW_COMMENTS_ANY == 'Y' ) );
 
