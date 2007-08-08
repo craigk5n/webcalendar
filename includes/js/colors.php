@@ -44,14 +44,14 @@ function fillhtml () {
   var custom = document.getElementById('colorcustom');
   var slidehtml = choicehtml = customhtml ='';
   var ctr=0;
-  slidehtml += '<table cellspacing="0" cellpadding="0" width="14">';
+  slidehtml += '<table cellspacing="0" cellpadding="0" width="14" summary="">';
   for (i=0;i<192;i++) {
     slidehtml += '<tr><td id="sc'+(i+1)+ '" height="1" width="14"></td></tr>';
   }
   slidehtml += '</table>';
   slide.innerHTML = slidehtml;
 
-  choicehtml += '<table border="1" cellpadding="0" cellspacing="0">';
+  choicehtml += '<table border="1" cellpadding="0" cellspacing="0" summary="">';
   for ( i=1; i<7; i++ ) {
     choicehtml += '<tr height="14">';
     for (j=1; j<9; j++ ) {
@@ -65,7 +65,7 @@ function fillhtml () {
   choicehtml += '</table>';
   choice.innerHTML = choicehtml;
 
-  customhtml += '<table border="1" cellpadding="0" cellspacing="0"><tr>';
+  customhtml += '<table border="1" cellpadding="0" cellspacing="0" summary=""><tr>';
   for ( i=1; i<17; i++) {
     customhtml += '<td id="precell' + i
        + '" bgcolor="#ffffff" onclick="preset( '+ i
