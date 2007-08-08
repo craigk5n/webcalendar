@@ -226,7 +226,7 @@ if ( ! empty ( $return_path ) ) {
 }
 ?>
 
-<table align="center" cellspacing="10" cellpadding="10">
+<table align="center" cellspacing="10" cellpadding="10" summary="">
 <tr><td rowspan="2">
  <img src="images/login.gif" alt="Login" /></td><td align="right">
  <label for="user"><?php etranslate ( 'Username' )?>:</label></td><td>

@@ -82,7 +82,7 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
  . '" method="post" onsubmit="return valid_form( this )">
       <input type="hidden" name="' . $app_login_page['return'] . '" value="'
  . $login_return_path . '" />
-      <table cellpadding="10" align="center">
+      <table cellpadding="10" align="center" summary="">
         <tr>
           <td rowspan="2"><img src="images/login.gif" alt="Login" /></td>
           <td align="right"><label for="user">' . translate ( 'Username' )

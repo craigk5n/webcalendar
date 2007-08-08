@@ -271,7 +271,7 @@ echo '
   : '<br /><br />' . ( empty ( $control ) ? '' : '
     <form action="login.php" method="post">
       <input type="hidden" name="login" value="' . $user . '" />
-      <table align="center" cellspacing="10" cellpadding="10">
+      <table align="center" cellspacing="10" cellpadding="10" summary="">
         <tr>
           <td rowspan="3"><img src="images/register.gif"></td>
           <td>' . translate ( 'Welcome to WebCalendar' ) . '</td>
@@ -289,7 +289,7 @@ echo '
     <form action="register.php" method="post" onSubmit="return valid_form()"
         name="selfreg">
       <input type="hidden" name="control" value="' . $form_control . '" />
-      <table align="center" cellpadding="10" cellspacing="10">
+      <table align="center" cellpadding="10" cellspacing="10" summary="">
         <tr>
           <td rowspan="3"><img src="images/register.gif" alt="" /></td>
           <td align="right"><label>' . translate ( 'Username' ) . ':</label></td>

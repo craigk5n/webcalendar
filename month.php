@@ -85,7 +85,7 @@ print_header ( array ( 'js/popups.php/true', 'js/visible.php' ), $HeadX,
 '', false, false, false, false );
 
 echo <<<EOT
-    <table border="0" width="100%" cellpadding="1">
+    <table border="0" width="100%" cellpadding="1" summary="">
       <tr>
         <td id="printarea" valign="top" width="{$tableWidth}" rowspan="2">
           {$prevMonth1}{$nextMonth1}

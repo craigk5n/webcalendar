@@ -234,7 +234,7 @@ print_header ( array ( 'js/popups.php/true' ), generate_refresh_meta (), '',
   false, false, false, false );
 
 echo <<<EOT
-    <table width="100%" cellpadding="1">
+    <table width="100%" cellpadding="1" summary="">
       <tr>
         <td id="printarea" style="vertical-align:top; width:{$tableWidth};" >
         {$navStr}
@@ -243,7 +243,7 @@ echo <<<EOT
       </tr>
       <tr>
         <td>
-          <table class="main">
+          <table class="main" summary="">
             <tr>
               <th class="empty">&nbsp;</th>{$headerStr}
             </tr>{$untimedStr}{$eventsStr}

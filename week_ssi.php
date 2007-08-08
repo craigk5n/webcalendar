@@ -86,10 +86,10 @@ for ( $i = 0; $i < 7; $i++ ) {
 }
 
 echo '
-    <table width="100%">
+    <table width="100%" summary="">
       <tr>
         <td style="background: ' . $TABLEBG . ';">
-          <table style="border: 0; width: 100%;" cellspacing="1" cellpadding="2">
+          <table style="border: 0; width: 100%;" cellspacing="1" cellpadding="2" summary="">
             <tr>' . $tmpOut1 . '
             </tr>
             <tr>' . $tmpOut2 . '

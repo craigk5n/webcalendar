@@ -88,7 +88,7 @@ else {
   echo '
     <form action="import_handler.php" method="post" name="importform" '
    . 'enctype="multipart/form-data" onsubmit="return checkExtension()">
-      <table>
+      <table summary="">
         <tr>
           <td><label for="importtype">' . translate ( 'Import format' ) . ':</label></td>
           <td>
