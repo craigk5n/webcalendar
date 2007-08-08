@@ -206,7 +206,7 @@ print_header ();
 <input type="hidden" name="id" value="<?php echo $id?>" />
 <input type="hidden" name="type" value="C" />
 
-<table>
+<table summary="">
 
 <tr><td class="aligntop"><label for="description">
   <?php etranslate ( 'Subject' )?>:</label></td>
@@ -226,7 +226,7 @@ print_header ();
 <form action="docadd.php" method="post" name="docform" enctype="multipart/form-data">
 <input type="hidden" name="id" value="<?php echo $id?>" />
 <input type="hidden" name="type" value="A" />
-<table>
+<table summary="">
 <tr class="browse"><td>
  <label for="fileupload"><?php etranslate ( 'Upload file' );?>:</label></td><td>
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />

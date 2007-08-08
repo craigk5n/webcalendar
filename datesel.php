@@ -70,10 +70,11 @@ $mdays .= '
 
 echo <<<EOT
     <div align="center">
-      <table class="aligncenter" width="100%">
+      <table class="aligncenter" width="100%" summary="">
         <tr>
           <td align="center" valign="top">
-            <table class="aligncenter" cellpadding="3" cellspacing="2">
+            <table class="aligncenter" cellpadding="3" cellspacing="2"
+              summary="">
               <tr>
                 <td><a title="{$previousStr}" class="prev" {$prevdate}>
                   <img src="images/leftarrowsmall.gif"
@@ -88,7 +89,7 @@ echo <<<EOT
               </tr>
               {$mdays}
 
-  <!--we'll leave this javascript here to speed things up-->
+  <!--We'll leave this javascript here to speed things up. -->
   <script language="javascript" type="text/javascript">
   <!-- <![CDATA[
   function sendDate ( date ) {

@@ -155,7 +155,7 @@ if ( $is_nonuser_admin ) {
 
 echo '
     <h2>' . translate ( 'Administrative Tools' ) . '</h2>
-    <table class="admin">';
+    <table class="admin" summary="">';
 
 for ( $i = 0, $cnt = count ( $names ); $i < $cnt; $i++ ) {
   echo ( $i % COLUMNS == 0 ? '

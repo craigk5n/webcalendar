@@ -215,7 +215,7 @@ echo '
  . ( ! $adding_report ? '
       <input type="hidden" name="report_id" value="'
    . $report_id . '" />' : '' ) . '
-      <table>
+      <table summary="">
         <tr>
           <td><label for="rpt_name">' . translate ( 'Report name' )
  . ':</label></td>
@@ -323,7 +323,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 } //end $CATEGORIES_ENABLED test
 echo '
       </table>
-      <table>
+      <table summary="">
         <tr>
           <td>&nbsp;</td>
           <td>&nbsp;</td>

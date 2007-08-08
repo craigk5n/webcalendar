@@ -81,7 +81,7 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
     <h2>{$lableStr}</h2>
     <form action="edit_remotes_handler.php" method="post" name="prefform"
       onsubmit="return valid_form( this );">
-      <table cellspacing="0" cellpadding="2">
+      <table cellspacing="0" cellpadding="2" summary="">
         <tr>
           <td><label for="calid">{$calIdStr}:</label></td>
           <td colspan="3">{$id_display}</td>

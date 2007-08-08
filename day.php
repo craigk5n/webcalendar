@@ -64,7 +64,7 @@ print_header ( array ( 'js/popups.php/true' ), generate_refresh_meta (), '',
 
 echo <<<EOT
 
-    <table width="100%" cellpadding="1">
+    <table width="100%" cellpadding="1" summary="">
       <tr>
         <td width="80%">
           {$navStr}

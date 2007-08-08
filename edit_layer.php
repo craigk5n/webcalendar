@@ -39,7 +39,7 @@ onclick="window.open( 'help_layers.php','cal_help','dependent,menubar,scrollbars
     </h2>
     <form action="edit_layer_handler.php" method="post"
       onsubmit="return valid_form( this );" name="prefform">{$hiddenStr}
-      <table cellspacing="2" cellpadding="3">
+      <table cellspacing="2" cellpadding="3" summary="">
 EOT;
 
 if ( $single_user == 'N' ) {

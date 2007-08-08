@@ -48,7 +48,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
      . $nonusertemp_admin . '" />' ) . '
       <h2>' . ( empty ( $nid )
     ? translate ( 'Add User' ) : translate ( 'Edit User' ) ) . '</h2>
-      <table>
+      <table summary="">
         <tr>
           <td><label for="calid">' . translate ( 'Calendar ID' )
    . ':</label></td>
