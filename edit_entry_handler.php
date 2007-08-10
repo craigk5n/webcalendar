@@ -40,7 +40,8 @@ function sort_byday ( $a, $b ) {
     if ( $offset_a == $offset_b )
       return strcmp ( $val_a, $val_b );
     else // Add weight to weekday value to help sort.
-      return strcmp ( abs ( $offset_a ) + $val_a * 10, abs ( $offset_b ) + $val_b * 10 );
+      return strcmp ( abs ( $offset_a ) + $val_a * 10,
+        abs ( $offset_b ) + $val_b * 10 );
   }
 }
 
@@ -54,25 +55,25 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
 }
 
 // Remember previous cal_goup_id if present.
-$old_id = ( empty ( $parent ) ? $old_id : $parent  );
+$old_id = ( empty ( $parent ) ? $old_id : $parent );
 $old_status = array ();
 
 // Pass all string values through getPostValue.
+$access = getPostValue ( 'access' );
 $cat_id = getPostValue ( 'cat_id' );
 $description = getPostValue ( 'description' );
 $entry_url = getPostValue ( 'entry_url' );
 $eType = getPostValue ( 'eType' );
 $location = getPostValue ( 'location' );
 $name = getPostValue ( 'name' );
+$priority = getPostValue ( 'priority' );
 $reminder = getPostValue ( 'reminder' );
 $rpt_type = getPostValue ( 'rpt_type' );
 $timetype = getPostValue ( 'timetype' );
-$priority = getPostValue ( 'priority' );
-$access = getPostValue ( 'access' );
-
 
 $description =
-( strlen ( $description ) == 0 || $description == '<br />' ? $name : $description );
+( strlen ( $description ) == 0 || $description == '<br />'
+  ? $name : $description );
 
 // Pass all numeric values through getPostValue.
 $day = getPostValue ( 'day' );
@@ -85,6 +86,7 @@ $year = getPostValue ( 'year' );
 // Ensure variables are not empty.
 if ( empty ( $eType ) )
   $eType = 'event';
+
 if ( empty ( $percent ) )
   $percent = 0;
 
@@ -96,24 +98,32 @@ $duration_m = getValue ( 'duration_m' );
 
 if ( empty ( $duration_h ) || $duration_h < 0 )
   $duration_h = 0;
+
 if ( empty ( $duration_m ) || $duration_m < 0 )
   $duration_m = 0;
 
-// Reminder values could be valid as 0
+// Reminder values could be valid as 0.
 if ( empty ( $rem_days ) )
   $rem_days = 0;
+
 if ( empty ( $rem_hours ) )
   $rem_hours = 0;
+
 if ( empty ( $rem_minutes ) )
   $rem_minutes = 0;
+
 if ( empty ( $rem_rep_days ) )
   $rem_rep_days = 0;
+
 if ( empty ( $rem_rep_hours ) )
   $rem_rep_hours = 0;
+
 if ( empty ( $rem_rep_minutes ) )
   $rem_rep_minutes = 0;
+
 if ( empty ( $reminder_hour ) )
   $reminder_hour = 0;
+
 if ( empty ( $reminder_minute ) )
   $reminder_minute = 0;
 
@@ -157,7 +167,8 @@ $eventstart = ( $timetype != 'T'
 
 if ( $eType == 'task' ) {
   // Combine all values to create event due date/time - User Time.
-  $eventdue = mktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
+  $eventdue =
+  mktime ( $due_hour, $due_minute, 0, $due_month, $due_day, $due_year );
   // Combine all values to create completed date
   if ( ! empty ( $completed_year ) && ! empty ( $completed_month ) && !
       empty ( $completed_day ) )
@@ -248,17 +259,17 @@ if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__publ
     include_once 'includes/classes/captcha/captcha.php';
     $res = captcha::check ();
     if ( ! $res )
-      $error = translate ( 'You must enter the anti-spam text on the previous page.' );
+      $error =
+      translate ( 'You must enter the anti-spam text on the previous page.' );
   } else {
     // Should have seen warning on edit_entry.php, so no warning here...
   }
 }
-// If display of participants is disabled, set the participant list
-// to the event creator. This also works for single-user mode.
-// Basically, if no participants were selected (because there
-// was no selection list available in the form or because the user
-// refused to select any participant from the list), then we will
-// assume the only participant is the current user.
+// If display of participants is disabled, set the participant list to the event
+// creator. This also works for single-user mode. Basically, if no participants
+// were selected (because there was no selection list available in the form or
+// because the user refused to select any participant from the list), then we
+// will assume the only participant is the current user.
 if ( empty ( $participants[0] ) ) {
   $participants[0] = $login;
   // There might be a better way to do this,
@@ -326,7 +337,8 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
 
   if ( ! empty ( $rpt_year ) ) {
     $rpt_hour += $rpt_ampm;
-    $rpt_until = mktime ( $rpt_hour, $rpt_minute, 0, $rpt_month, $rpt_day, $rpt_year );
+    $rpt_until =
+    mktime ( $rpt_hour, $rpt_minute, 0, $rpt_month, $rpt_day, $rpt_year );
   }
 
   $exception_list = $inclusion_list = array ();
@@ -344,22 +356,31 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
 // Make sure we initialize these variables.
 if ( empty ( $byday ) )
   $byday = '';
+
 if ( empty ( $bymonth ) )
   $bymonth = '';
+
 if ( empty ( $bymonthday ) )
   $bymonthday = '';
+
 if ( empty ( $bysetpos ) )
   $bysetpos = '';
+
 if ( empty ( $byweekno ) )
   $byweekno = '';
+
 if ( empty ( $byyearday ) )
   $byyearday = '';
+
 if ( empty ( $count ) )
   $count = '';
+
 if ( empty ( $rpt_freq ) )
   $rpt_freq = 1;
+
 if ( empty ( $rpt_type ) )
   $rpt_type = '';
+
 if ( empty ( $wkst ) )
   $wkst = 'MO';
 
@@ -417,11 +438,16 @@ if ( empty ( $error ) ) {
       $error = $dberror . dbi_error ();
 
     if ( empty ( $error ) ) {
-      dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?', array ( $id ) );
-      dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?', array ( $id ) );
-      dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?', array ( $id ) );
-      dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_id = ?', array ( $id ) );
-      dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?', array ( $id ) );
+      dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
+        array ( $id ) );
+      dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
+        array ( $id ) );
+      dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_id = ?',
+        array ( $id ) );
+      dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
+        array ( $id ) );
+      dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
+        array ( $id ) );
     }
     $newevent = false;
   }
@@ -479,17 +505,18 @@ if ( empty ( $error ) ) {
          . ( $old_id > 0 ? ' cal_group_id, ' : '' )
          . 'cal_create_by, cal_date, cal_time, '
          . ( empty ( $eventcomplete ) ? '' : 'cal_completed, ' )
-         . 'cal_due_date, cal_due_time, cal_mod_date, cal_mod_time, cal_duration, '
-         . 'cal_priority, cal_access, cal_type, cal_name, cal_description '
+         . 'cal_due_date, cal_due_time, cal_mod_date, cal_mod_time,
+           cal_duration, cal_priority, cal_access, cal_type, cal_name,
+           cal_description '
          . ( empty ( $location ) ? '' : ',cal_location ' )
          . ( empty ( $entry_url ) ? '' : ',cal_url ' ) . ' ) VALUES ( ?, '
          . ( $old_id > 0 ? '?, ' : '' ) . '?, ?, ?, '
          . ( empty ( $eventcomplete ) ? '' : '?, ' )
          . '?, ?, ?, ?, ?, ?, ?, ?, ?, ? '
          . ( empty ( $location ) ? '' : ',? ' )
-         . ( empty ( $entry_url ) ? '' : ',? ' ) . ')', $query_params ) ) {
+         . ( empty ( $entry_url ) ? '' : ',? ' ) . ')', $query_params ) )
     $error = $dberror . dbi_error ();
-  }
+
   // Log add/update.
   if ( $eType == 'task' ) {
     $log_c = LOG_CREATE_T;
@@ -501,8 +528,8 @@ if ( empty ( $error ) ) {
     $log_c = LOG_CREATE;
     $log_u = LOG_UPDATE;
   }
-  activity_log ( $id, $login, ( $is_assistant || $is_nonuser_admin ? $user : $login ),
-    $newevent ? $log_c : $log_u, '' );
+  activity_log ( $id, $login, ( $is_assistant || $is_nonuser_admin
+      ? $user : $login ), $newevent ? $log_c : $log_u, '' );
 
   if ( $single_user == 'Y' )
     $participants[0] = $single_user_login;
@@ -529,22 +556,23 @@ if ( empty ( $error ) ) {
         $names[] = 'cat_owner';
         $values[] = $cat_owner;
 
-        $names[] = 'cat_order';
         $values[] = ( $i + 1 );
-      } else {
-        $names[] = 'cat_order';
+      } else
         $values[] = 99; // Forces global categories to appear at the end of lists.
-      }
+
+      $names[] = 'cat_order';
+
       // Build the variable placeholders - comma-separated question marks.
       $placeholders = '';
       $valuecnt = count ( $values );
       for ( $v_i = 0; $v_i < $valuecnt; $v_i++ ) {
         $placeholders .= '?,';
       }
-      $placeholders = preg_replace ( '/,$/', '', $placeholders ); // Remove trailing ','.
+      // Remove trailing ','.
+      $placeholders = preg_replace ( '/,$/', '', $placeholders );
       if ( ! dbi_execute ( 'INSERT INTO webcal_entry_categories ( '
            . implode ( ', ', $names )
-           . ' ) VALUES ( ' . $placeholders . ' )', $values ) ) {
+             . ' ) VALUES ( ' . $placeholders . ' )', $values ) ) {
         $error = $dberror . dbi_error ();
         break;
       }
@@ -556,6 +584,7 @@ if ( empty ( $error ) ) {
   for ( $i = 0; $i < $site_extracnt && empty ( $error ); $i++ ) {
     if ( $site_extras[$i] == 'FIELDSET' )
       continue;
+
     $extra_name = $site_extras[$i][0];
     $extra_type = $site_extras[$i][2];
     $extra_arg1 = $site_extras[$i][3];
@@ -564,8 +593,8 @@ if ( empty ( $error ) ) {
       $extra_email = $site_extras[$i][5] & EXTRA_DISPLAY_EMAIL;
 
     $value = $$extra_name;
-    // echo "Looking for $extra_name... value = " . $value . " ... type = " .
-    // $extra_type . "<br />\n";
+    // echo 'Looking for ' . $extra_name . '... value = ' . $value .
+    // ' ... type = ' . $extra_type . '<br />' . "\n";
     $sql = '';
     $query_params = array ();
 
@@ -582,7 +611,8 @@ if ( empty ( $error ) ) {
           cal_data ) VALUES ( ?, ?, ?, ? )';
         $query_params = array ( $id, $extra_name, $extra_type, $value );
         if ( ! empty ( $extra_email ) ) {
-          $value = ( $extra_type == EXTRA_RADIO ? $extra_arg1[$value] : $value );
+          $value = ( $extra_type == EXTRA_RADIO
+            ? $extra_arg1[$value] : $value );
           $extra_email_data .= $extra_name . ': ' . $value . "\n";
         }
       } else
@@ -624,7 +654,8 @@ if ( empty ( $error ) ) {
       $reminder_date = gmmktime ( $reminder_hour, $reminder_minute, 0,
         $reminder_month, $reminder_day, $reminder_year );
     } else // Use offset.
-      $reminder_offset = ( $rem_days * 1440 ) + ( $rem_hours * 60 ) + $rem_minutes;
+      $reminder_offset =
+      ( $rem_days * 1440 ) + ( $rem_hours * 60 ) + $rem_minutes;
 
     if ( $rem_rep_count > 0 ) {
       $reminder_repeats = $rem_rep_count;
@@ -645,23 +676,15 @@ if ( empty ( $error ) ) {
         array ( $id ) ) )
       $error = $dberror . dbi_error ();
 
-    if ( ! dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
-        array ( $id ) ) )
+    if ( ! dbi_execute ( 'DELETE FROM webcal_entry_repeats_not
+      WHERE cal_id = ?', array ( $id ) ) )
       $error = $dberror . dbi_error ();
 
     // Add repeating info.
     if ( ! empty ( $rpt_type ) && strlen ( $rpt_type ) && $rpt_type != 'none' ) {
       $freq = ( $rpt_freq ? $rpt_freq : 1 );
-      $names = $values = array ();
-
-      $names[] = 'cal_id';
-      $values[] = $id;
-
-      $names[] = 'cal_type';
-      $values[] = $rpt_type;
-
-      $names[] = 'cal_frequency';
-      $values[] = $freq;
+      $names = array ( 'cal_id', 'cal_type', 'cal_frequency' );
+      $values = array ( $id, $rpt_type, $freq );
 
       if ( ! empty ( $bymonth ) ) {
         $names[] = 'cal_bymonth';
@@ -707,7 +730,8 @@ if ( empty ( $error ) ) {
       for ( $v_i = 0; $v_i < $valuecnt; $v_i++ ) {
         $placeholders .= '?,';
       }
-      $placeholders = preg_replace ( '/,$/', '', $placeholders ); // Remove trailing ','.
+      // Remove trailing ','.
+      $placeholders = preg_replace ( '/,$/', '', $placeholders );
       $sql = 'INSERT INTO webcal_entry_repeats ( '
        . implode ( ', ', $names ) . ' ) VALUES ( ' . $placeholders . ' )';
       dbi_execute ( $sql, $values );
@@ -747,7 +771,7 @@ if ( empty ( $error ) ) {
 
       $is_nonuser_admin = user_is_nonuser_admin ( $login, $old_participant );
       // Don't send mail if we are editing a non-user calendar and we are the admin.
-      if ( !$found_flag && !$is_nonuser_admin && $can_email == 'Y' ) {
+      if ( ! $found_flag && ! $is_nonuser_admin && $can_email == 'Y' ) {
         // Only send mail if their email address is filled in.
         $do_send = get_pref_setting ( $old_participant, 'EMAIL_EVENT_DELETED' );
         $htmlmail = get_pref_setting ( $old_participant, 'EMAIL_HTML' );
@@ -759,7 +783,7 @@ if ( empty ( $error ) ) {
 
         if ( $old_participant != $login && !
           empty ( $tempemail ) && $do_send == 'Y' && $SEND_EMAIL != 'N' ) {
-          reset_language ( empty ( $user_language ) || ( $user_language == 'none' )
+          reset_language ( empty ( $user_language ) || $user_language == 'none'
             ? $LANGUAGE : $user_language );
 
           $fmtdate = ( $timetype == 'T'
@@ -770,12 +794,11 @@ if ( empty ( $error ) ) {
             translate ( 'XXX has canceled an appointment.' ) ) . "\n"
            . str_replace ( 'XXX', $name, $subjStr ) . "\n\n"
            . str_replace ( 'XXX', $description, $descStr ) . "\n"
-           . str_replace ( 'XXX', date_to_str ( $fmtdate ), $dateStr )
-           . "\n"
+           . str_replace ( 'XXX', date_to_str ( $fmtdate ), $dateStr ) . "\n"
           // Apply user's GMT offset and display their TZID.
-          . ( $timetype != 'T'
-            ? '' : str_replace ( 'XXX',
-              display_time ( '', 2, $eventstart, $t_format ), $timeStr . "\n\n\n" ) );
+          . ( $timetype != 'T' ? '' : str_replace ( 'XXX',
+              display_time ( '', 2, $eventstart, $t_format ),
+              $timeStr . "\n\n\n" ) );
           // Add URL to event, if we can figure it out.
           if ( ! empty ( $SERVER_URL ) ) {
             // DON'T change & to &amp; here. Email will handle it.
@@ -816,7 +839,7 @@ if ( empty ( $error ) ) {
         ? $old_status[$participants[$i]] : 'W' );
       $status = ( $participants[$i] != $login &&
         boss_must_approve_event ( $login, $participants[$i] ) &&
-        $REQUIRE_APPROVALS == 'Y' && ! $is_nonuser_admin ? $tmp_status : 'A' );
+          $REQUIRE_APPROVALS == 'Y' && ! $is_nonuser_admin ? $tmp_status : 'A' );
 
       // Set percentage to old_percent if not owner.
       $tmp_percent = ( empty ( $old_percent[$participants[$i]] )
@@ -845,8 +868,8 @@ if ( empty ( $error ) ) {
     // Some users report that they get an error on duplicate keys
     // on the following add... As a safety measure, delete any
     // existing entry with the id. Ignore the result.
-    dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_id = ? AND cal_login = ?',
-      array ( $id, $participants[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry_user
+      WHERE cal_id = ? AND cal_login = ?', array ( $id, $participants[$i] ) );
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
       cal_status, cal_percent ) VALUES ( ?, ?, ?, ? )',
         array ( $id, $participants[$i], $status, $new_percent ) ) ) {
@@ -870,7 +893,8 @@ if ( empty ( $error ) ) {
         $user_language = get_pref_setting ( $participants[$i], 'LANGUAGE' );
         user_load_variables ( $participants[$i], 'temp' );
         if ( boss_must_be_notified ( $login, $participants[$i] ) && !
-            empty ( $tempemail ) && $do_send == 'Y' && $send_user_mail && $SEND_EMAIL != 'N' ) {
+            empty ( $tempemail ) && $do_send == 'Y' && $send_user_mail &&
+              $SEND_EMAIL != 'N' ) {
           // We send to creator if they want it.
           if ( $send_own != 'Y' && ( $participants[$i] == $login ) )
             continue;
@@ -885,9 +909,8 @@ if ( empty ( $error ) ) {
               ? $newAppStr : $updAppStr ) ) . "\n"
            . str_replace ( 'XXX', $name, $subjStr ) . "\n\n"
            . str_replace ( 'XXX', $description, $descStr ) . "\n"
-           . str_replace ( 'XXX', date_to_str ( $fmtdate ), $dateStr )
-           . "\n"
-          // Apply user's GMT offset and display their TZID
+           . str_replace ( 'XXX', date_to_str ( $fmtdate ), $dateStr ) . "\n"
+          // Apply user's GMT offset and display their TZID.
           . ( $timetype != 'T' ? ''
             : str_replace ( 'XXX', display_time ( '', 2, $eventstart, $t_format ),
               $timeStr ) . "\n" )
@@ -941,7 +964,8 @@ if ( empty ( $error ) ) {
           for ( $j = 0; $j < $ext_wordscnt; $j++ ) {
             // Use regexp matching to pull email address out.
             $ext_words[$j] = chop ( $ext_words[$j] ); // Remove \r if there is one.
-            if ( preg_match ( '/<?\\S+@\\S+\\.\\S+>?/', $ext_words[$j], $matches ) ) {
+            if ( preg_match ( '/<?\\S+@\\S+\\.\\S+>?/', $ext_words[$j],
+                $matches ) ) {
               $ext_emails[$ext_count] = $matches[0];
               $ext_emails[$ext_count] = preg_replace ( '/[<>]/', '',
                 $ext_emails[$ext_count] );
@@ -987,7 +1011,8 @@ if ( empty ( $error ) ) {
             $fmtdate = ( $timetype == 'T'
               ? date ( 'Ymd', $eventstart ) : gmdate ( 'Ymd', $eventstart ) );
             // Strip [\d] from duplicate Names before emailing.
-            $ext_names[$i] = trim ( preg_replace ( '/\[[\d]]/', '', $ext_names[$i] ) );
+            $ext_names[$i] = trim ( preg_replace ( '/\[[\d]]/', '',
+                $ext_names[$i] ) );
             $msg = str_replace ( 'XXX', $ext_names[$i], $helloStr ) . "\n\n"
              . str_replace ( 'XXX', $login_fullname,
               ( $newevent ? $newAppStr : $updAppStr ) ) . "\n"
@@ -1070,7 +1095,7 @@ if ( ! empty ( $conflicts ) ) {
   }
 
   echo '
-      <table>
+      <table summary="">
         <tr>'
   // Allow them to override a conflict if server settings allow it.
   . ( ! empty ( $ALLOW_CONFLICT_OVERRIDE ) && $ALLOW_CONFLICT_OVERRIDE == 'Y' ? '
@@ -1088,4 +1113,3 @@ if ( ! empty ( $conflicts ) ) {
   $mail->MailError ( $mailerError, $error );
 
 ?>
-
