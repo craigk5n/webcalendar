@@ -555,7 +555,7 @@ Entries older than the current date: Εγγραφές παλαιότερες α�
 Entries created in the Palm Desktop...: Εγγραφές που δημιουργήθηκαν στο Palm Desktop και δεν έχουν γίνει HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Ότι εισάγεται από το Palm θα διαγραφεί και ξαναγραφεί στην επόμενη εισαγωγή (εκτός και αν η ημερομηνία του γεγονότος έχει περάσει).
 Therefore, updates should be made in the Palm Desktop.: Αλλιώς, πρέπει να γίνουν τροποποιήσεις στο Palm Desktop.
-This form will import vCalendar (.vcs) 1.0 events: Η σελίδα αυτή εισάγει γεγονότα από vCalendar (.vcs) 1.0
+This form will import vCalendar (.vcs) 1.0 events.: Η σελίδα αυτή εισάγει γεγονότα από vCalendar (.vcs) 1.0
 The following formats have been tested: Τα παρακάτω formats έχουν ελεγχθεί
 This form will import iCalendar (.ics) events: Η σελίδα αυτή εισάγει γεγονότα από iCalendar (.ics)
 Enabling: Ενεργοποίηση

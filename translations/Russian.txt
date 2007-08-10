@@ -790,7 +790,7 @@ Entries older than the current date: Записи до текущей даты
 Entries created in the Palm Desktop...: Записи созданные в Palm Desktop, которые еще не были обработаны HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Все загруженное с Palm будет переписано в процессе следующей загрузки (пока не пройдет дата события).
 Therefore, updates should be made in the Palm Desktop.: Таким образом обновления должны быть сделаны в Palm Desktop.
-This form will import vCalendar (.vcs) 1.0 events: Эта форма загрузит события в формате vCalendar (.vcs) 1.0
+This form will import vCalendar (.vcs) 1.0 events.: Эта форма загрузит события в формате vCalendar (.vcs) 1.0
 The following formats have been tested: Следующие форматы были проверены
 This form will import iCalendar (.ics) events: Эта форма загрузит события в формате iCalendar (.ics)
 Enabling: Подключение

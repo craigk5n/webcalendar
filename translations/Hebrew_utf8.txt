@@ -762,7 +762,7 @@ Entries older than the current date: רשומות ישנות מהתאריך של
 Entries created in the Palm Desktop...: רשומות בשולחן העבודה של ה-Palm שלא סונכרנו
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: כל דבר שמיובא מה-Palm יישכתב מחדש בפעולת הייבוא הבא (אלא אם עבר תאריך הארוע).
 Therefore, updates should be made in the Palm Desktop.: לכן יש לעדכן אותם בשולחן העבודה של ה-Palm.
-This form will import vCalendar (.vcs) 1.0 events: טופס זה יאפשר ייבוא של ארועים של vCalendar (.vcs) 1.0
+This form will import vCalendar (.vcs) 1.0 events.: טופס זה יאפשר ייבוא של ארועים של vCalendar (.vcs) 1.0
 The following formats have been tested: נבדקו התצורות הבאות
 This form will import iCalendar (.ics) events: טופס זה מאפשר ייבוא של ארועים של iCalendar (.ics)
 Enabling: אפשור

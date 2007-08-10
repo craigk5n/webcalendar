@@ -836,12 +836,12 @@ Entries created in the Palm Desktop...: Items gemaakt in de Palm Desktop agenda 
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Telkens als u uw Palm Datebook in uw WebCalendar agenda importeert zullen de gegevens van een vorige import-activiteit worden overschreven. Dit geldt niet voor afspraken in het verleden - items ouder dan de huidige datum worden immers niet geimporteerd.
 Therefore, updates should be made in the Palm Desktop.: &nbsp;Derhalve dient u <b>nieuwe afspraken in de Palm Desktop agenda toe te voegen</b> en niet in uw WebCalendar agenda.
 vCal: =
-This form will import vCalendar (.vcs) 1.0 events: Hier kunt u afspraken uit vCalendar (.vcs) 1.0 in uw agenda importeren
+This form will import vCalendar (.vcs) 1.0 events.: Hier kunt u afspraken uit vCalendar (.vcs) 1.0 in uw agenda importeren
 The following formats have been tested: De volgende bestandsformaten zijn getest
 This form will import iCalendar (.ics) events: Met dit formulier importeert u iCalendar (.ics) afspraken
 Enabling: activeer
 Overwrite Prior Import: Vorige import overschrijven
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.: zal vroeger geïmporteerde afspraken als <i>verwijderd</i> aanduiden, wanneer ze dezelfde UID gebruikten als het pas geïmporteerde bestand. Dit maakt het mogelijk een bijgewerkt iCalendar-bestand te importeren zonder dubbels te creëren.
+will cause events imported previously...: zal vroeger geïmporteerde afspraken als <i>verwijderd</i> aanduiden, wanneer ze dezelfde UID gebruikten als het pas geïmporteerde bestand. Dit maakt het mogelijk een bijgewerkt iCalendar-bestand te importeren zonder dubbels te creëren.
 
 ########################################
 # Page: help_index.php

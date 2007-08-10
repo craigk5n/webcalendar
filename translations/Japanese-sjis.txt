@@ -744,7 +744,7 @@ Palm Desktop: Palm ･ﾇ･ｹ･ｯ･ﾈ･ﾃ･ﾗ
 The following entries will not be imported: 次のエントリはインポートされなかったでしょう
 Entries older than the current date: エントリは現在の期日より古いです
 Therefore, updates should be made in the Palm Desktop.: したがって、Palm デスクトップで更新されるべきです。
-This form will import vCalendar (.vcs) 1.0 events: このフォームは vCalendar (.vcs) 1.0 イベントとしてインポートするでしょう
+This form will import vCalendar (.vcs) 1.0 events.: このフォームは vCalendar (.vcs) 1.0 イベントとしてインポートするでしょう
 The following formats have been tested: 次の形式がテストされました。
 This form will import iCalendar (.ics) events: このフォームは iCalendar (.ics) イベントをインポートするでしょう
 Enabling: 有効にする

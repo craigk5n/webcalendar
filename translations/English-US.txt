@@ -901,18 +901,19 @@ Import: Import
 Palm Desktop: Palm Desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
-The following entries will not be imported: The following entries will not be imported
+allow you to import entries from the Palm...: This form will allow you to import entries from the Palm Desktop Datebook. It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
+The following entries will not be imported: The following entries will not be imported:
 Entries older than the current date: Entries older than the current date
 Entries created in the Palm Desktop...: Entries created in the Palm Desktop that have not been HotSync'd
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
 Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
 vCal: vCal
-This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
-The following formats have been tested: The following formats have been tested
+This form will import vCalendar (.vcs) 1.0 events.: This form will import vCalendar (.vcs) 1.0 events.
+The following formats have been tested: The following formats have been tested:
 This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
 Enabling: Enabling
 Overwrite Prior Import: Overwrite Prior Import
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.
+will cause events imported previously...: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.
 
 ########################################
 # Page: help_index.php
