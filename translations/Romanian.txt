@@ -535,7 +535,7 @@ Entries older than the current date: &#206;nregistr&#259;ri mai vechi dec&#226;t
 Entries created in the Palm Desktop...: &#206;nregistr&#259;ri create pe Palm dar care nu au fost HotSync-ate
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Orice a fost importat de pe Palm va fi rescris la urmatorul import (dac&#259; data nu este trecut&#259;).
 Therefore, updates should be made in the Palm Desktop.: De aceea actualiz&#259;rile ar trebui f&#259;cute pe Palm Desktop.
-This form will import vCalendar (.vcs) 1.0 events: Acest formular va importa evenimente de tip vCalendar (.vcs) 1.0
+This form will import vCalendar (.vcs) 1.0 events.: Acest formular va importa evenimente de tip vCalendar (.vcs) 1.0
 The following formats have been tested: Au fost testate urm&#259;toarele formate
 This form will import iCalendar (.ics) events: Aceast formular va importa evenimente de tip iCalendar (.ics)
 Enabling: Activare

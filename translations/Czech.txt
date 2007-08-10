@@ -540,7 +540,7 @@ Entries older than the current date: Záznamy starší, než aktuální datum
 Entries created in the Palm Desktop...: Záznamy vytvo?ené Palm Desktopem, které nebyly synchronizovány HotSyncem
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Cokoli importovaného z Palmu bude p?epsáno následujícím importem (ledaže by již prošla platnost záznamu).
 Therefore, updates should be made in the Palm Desktop.: Proto, m?l by provést aktualizaci v Palm Desktopu.
-This form will import vCalendar (.vcs) 1.0 events: Tímto formulá?em lze importovat události z vCalendar (.vcs) 1.0
+This form will import vCalendar (.vcs) 1.0 events.: Tímto formulá?em lze importovat události z vCalendar (.vcs) 1.0
 The following formats have been tested: Tyto formáty soubor? byly otestovány
 This form will import iCalendar (.ics) events: Tímto formulá?em lze importovat události z iCalendar (.ics)
 Enabling: Povolení

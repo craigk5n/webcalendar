@@ -528,7 +528,7 @@ Entries older than the current date: Händelser äldre än dagens datum
 Entries created in the Palm Desktop...: Händelser skapade i Palm Desktop som inte har blivit "HotSynkroniserade"
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Allting som importerats från Palm kommer att skrivas över vid nästa import (om inte händelsedatumet har passerats).
 Therefore, updates should be made in the Palm Desktop.: Därför bör uppdateringar göras i Palm Desktop.
-This form will import vCalendar (.vcs) 1.0 events: Detta formulär kommer att importera vCalendar (.vcs) 1.0 aktiviteter
+This form will import vCalendar (.vcs) 1.0 events.: Detta formulär kommer att importera vCalendar (.vcs) 1.0 aktiviteter
 The following formats have been tested: Följande format har testats
 This form will import iCalendar (.ics) events: Detta formulär kommer att importera iCalendar (.ics) aktiviteter
 Enabling: Tillåt

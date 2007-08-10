@@ -880,12 +880,12 @@ Entries created in the Palm Desktop...: Hinzugef&uuml;gte Eintr&auml;ge im Palm 
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er das Datum des Termines ist vorbei).
 Therefore, updates should be made in the Palm Desktop.: Deshalb sollten &Auml;nderungen auf dem Palm&#47;Desktop durchgef&uuml;hrt werden.
 vCal: =
-This form will import vCalendar (.vcs) 1.0 events: Dieses Formular importiert vCalendar (.vcs) 1.0 Eintr&auml;ge
+This form will import vCalendar (.vcs) 1.0 events.: Dieses Formular importiert vCalendar (.vcs) 1.0 Eintr&auml;ge
 The following formats have been tested: Folgende Formate wurden getestet
 This form will import iCalendar (.ics) events: Dieses Formular importiert iCalendar (.ics) Eintr&auml;ge
 Enabling: Aktivieren
 Overwrite Prior Import: Vorigen Import &uuml;berschreiben
-will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.: bewirkt, da&szlig; vorige <b>&#34;importierte Termine&#34;</b>, welche die <u>selbe UID</u> verwenden, als <b>&#34;gel&ouml;scht&#34;</b> markiert sind. Das erm&ouml;glicht ein importieren einer aktuellen iCalendar Datei <b>ohne Duplikate</b> zu erzeugen.
+will cause events imported previously...: bewirkt, da&szlig; vorige <b>&#34;importierte Termine&#34;</b>, welche die <u>selbe UID</u> verwenden, als <b>&#34;gel&ouml;scht&#34;</b> markiert sind. Das erm&ouml;glicht ein importieren einer aktuellen iCalendar Datei <b>ohne Duplikate</b> zu erzeugen.
 
 ########################################
 # Page: help_index.php

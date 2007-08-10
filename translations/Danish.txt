@@ -540,7 +540,7 @@ Entries older than the current date: Aftaler ældre end dags dato
 Entries created in the Palm Desktop...: Aftaler oprettet på Palm Desktoppen som ikke er blevet HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alle data importeret fra Palm bliver overskrevet ved den næste import (hvis ikke datoen for aftalen er passeret).
 Therefore, updates should be made in the Palm Desktop.: Derfor bør opdateringer blive lavet på Palm Desktoppen
-This form will import vCalendar (.vcs) 1.0 events: Denne formular importerer vCalandar (.vcs) 1.0 aftaler
+This form will import vCalendar (.vcs) 1.0 events.: Denne formular importerer vCalandar (.vcs) 1.0 aftaler
 The following formats have been tested: Følgende formater er testet
 This form will import iCalendar (.ics) events: Denne formular importerer iCalendar (.ics) aftaler
 Enabling: Slå til

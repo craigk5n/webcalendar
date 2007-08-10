@@ -517,7 +517,7 @@ Entries older than the current date: Kuluvaa päivää vanhemmat tapahtumat
 Entries created in the Palm Desktop...: Palmissa luodut tapahtumat, joita ei ole synkronoitu HotSync:llä
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Kaikki Palmista tuodut tapahtumat pyyhkiytyvät seuraavassa tuonnissa (ellei tapahtuma ole jo mennyt ohi).
 Therefore, updates should be made in the Palm Desktop.: Siksi päivitykset tulisi tehdä Palmin kautta.
-This form will import vCalendar (.vcs) 1.0 events: Tuo vCalendar (.vcs) 1.0 tällä lomakkeella
+This form will import vCalendar (.vcs) 1.0 events.: Tuo vCalendar (.vcs) 1.0 tällä lomakkeella
 The following formats have been tested: Seuraavat tiedostomuodot on testattu
 This form will import iCalendar (.ics) events: Tuo iCalendar (.ics) tällä lomakkeella
 Enabling: Otetaan käyttöön

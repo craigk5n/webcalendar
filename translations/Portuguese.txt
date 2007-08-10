@@ -516,7 +516,7 @@ Entries older than the current date: Entradas mais antigas do que a data corrent
 Entries created in the Palm Desktop...: Entradas criadas no Palm Desktop que não foram HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Informação importada do Palm será sobreescrita na próxima importação (excepto se a data do evento tiver passado).
 Therefore, updates should be made in the Palm Desktop.: Assim sendo, deverão ser feitas actualizações no Palm.
-This form will import vCalendar (.vcs) 1.0 events: Este formulário permite importar eventos vCalendar 1.0 (.vcs)
+This form will import vCalendar (.vcs) 1.0 events.: Este formulário permite importar eventos vCalendar 1.0 (.vcs)
 The following formats have been tested: Os seguintes formatos foram testados
 This form will import iCalendar (.ics) events: Este formulário irá importar eventos iCalendar (.ics)
 Enabling: Activando
