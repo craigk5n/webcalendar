@@ -860,7 +860,7 @@ Therefore, updates should be made in the Palm Desktop.: Deshalb sollten Änderun
 vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: Dieses Formular importiert vCalendar (.vcs) 1.0 Einträge
 The following formats have been tested: Folgende Formate wurden getestet
-This form will import iCalendar (.ics) events: Dieses Formular importiert iCalendar (.ics) Einträge
+This form will import iCalendar (.ics) events.: Dieses Formular importiert iCalendar (.ics) Einträge
 Enabling: Aktivieren
 Overwrite Prior Import: Vorigen Import überschreiben
 will cause events imported previously...: bewirkt, daß vorige <b>"importierte Termine"</b>, welche die <u>selbe UID</u> verwenden, als <b>"gelöscht"</b> markiert sind. Das ermöglicht ein importieren einer aktuellen iCalendar Datei <b>ohne Duplikate</b> zu erzeugen.
@@ -1695,20 +1695,20 @@ Unable to write password to settings.php file: Kennwort kann nicht in die 'setti
 Password has been set: Kennwort wurde gesetzt
 Connection Successful: Verbindung erfolgreich.
 Please go to next page to continue installation: Bitte führen Sie den nächsten Schritt aus um mit der Installation fortzufahren
-Correct your entries or click the Create New button to continue installation: Korrigieren Sie Ihre Einträge oder klicken Sie auf <b>Neu erstellen</b> Button um die Installation fortzufahren
-Correct your entries and try again: Korrigieren Sie Ihre Einträge und versichen Sie es erneut
+Correct your entries or click the Create New...: Korrigieren Sie Ihre Einträge oder klicken Sie auf <b>Neu erstellen</b> Button um die Installation fortzufahren
+Correct your entries and try again.: Korrigieren Sie Ihre Einträge und versichen Sie es erneut
 does not exist: existiert nicht
 is not writable: ist schreibgeschützt
 Error Converting Timezone: Fehler bei der Zeitzonenkonvertierung
-Please change the file permissions of this file: Bitte ändern Sie die Rechte dieser Datei
+Please change the file permissions of this file.: Bitte ändern Sie die Rechte dieser Datei
 Please change includes dir permission: Bitte ändern Sie die Dateiberechtigungen von Ihrem 'includes'-Verzeichnis um 'Schreibrechte' für 'andere Benutzer' zu haben.
-Your settings have been saved: Ihre Einstellungen wurden gespeichert.
-Error you must specify a\\nSingle-User Login: Fehler, Sie müssen ein Einzelbenutzer Login definieren
+Your settings have been saved.: Ihre Einstellungen wurden gespeichert.
+Error you must specify a Single-User Login: Fehler, Sie müssen ein Einzelbenutzer Login definieren
 Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
 The password contains illegal characters.: Das Kennwort beinhaltet unzulässige Zeichen
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). Für Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
 PHP Version Check: PHP Versionsüberprüfung
-Check to see if PHP 4.1.0 or greater is installed: Überprüfung ob PHP 4.1.0 oder höher installiert ist
+Check to see if PHP 4.1.0 or greater is installed.: Überprüfung ob PHP 4.1.0 oder höher installiert ist
 PHP version: PHP Version
 PHP Settings: PHP Einstellungen
 Detailed PHP Info: Detailierte PHP Information
@@ -1716,16 +1716,16 @@ Session Check: Session Überprüfung
 To test the proper operation of sessions, reload this page: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie diese Seite neu.
 You should see the session counter increment each time: Kontrollieren Sie ob der Sessionzähler jedesmal weiterzählt
 SESSION COUNTER: Sessionzähler
-Settings.php Status: 'Settings.php' Status
+settings.php Status: 'Settings.php' Status
 The file permissions of settings.php are set...: Die Dateirechte von <b>settings.php</b> sind so gesetzt, daß der Installer keine Rechte zur Änderung besitzt. Bitte ändern Sie die Zugriffsrechte der Datei um fortzufahren
 The file permissions of the includes directory are set...: Die Zugriffsrechte von <b>includes</b> Verzeichnis sind so gesetzt, daß der Installer keine Rechte zum Erstellen von neuen Dateien hat. Bitte ändern Sie die Zugriffsrechte des Verzeichnisses um fortzufahren.
-Your settings.php file appears to be valid: Ihre <b>settings.php</b> Datei scheint gültig zu sein
+Your settings.php file appears to be valid.: Ihre <b>settings.php</b> Datei scheint gültig zu sein
 Configuration Wizard Password: Assitenten - Konfigurationspasswort
 Create Settings File Password: Erzeuge Kennwort für die Settings Datei
 db setup directions...: In diesem Abschnitt stellen (und überprüfen) Sie die Verbindung zum Datenbankserver her. Die gelieferten Kontoinformationen sollten VOLLE Erlaubnis haben um Datenbanken, Tabellen und Benutzer zu erstellen. Wenn dies nicht möglich oder Ihr Datenbankzugriff begrenzt ist, müssen Sie manuell Ihre Datenbank justieren.
 Database Status: Datenbank Status
 Supported databases for your PHP installation: Unterstüzte Datenbanken für Ihre PHP Installation
-Your current database settings are able to access the database: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie in der Lage auf Ihre Datenbank zuzugreifen.
+Your current database settings are able to access the database.: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie in der Lage auf Ihre Datenbank zuzugreifen.
 Please Test Settings: Bitte testen Sie Ihre Einstellungen
 Your current database settings are not able...: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie <b>nicht</b> in der Lage auf die Datenbank zuzugreifen, oder ist noch nicht getestet worden (drücken Sie auf den 'Einstellungen-testen'-Knopf)
 Database Settings: Datenbankeinstellungen
@@ -1743,7 +1743,7 @@ In this section we will perform the required database changes to bring your data
 If you are using a fully supported database, this step will be performed automatically for you: Wenn Sie eine völlig unterstützte Datenbank benutzen, wird dieser Schritt automatisch für Sie durchgeführt.
 If not, the required SQL can be displayed and you should be able: Wenn nicht, kann das benötigte SQL-Skript angezeigt werden und sollten dann in der Lage sein,
 to cut &amp; paste it into your database server query window: dieses zu kopieren und danach in Ihrem Datenbankabfragefenster einzufügen und auszuführen
-No database actions are required: Keine Datenbanktätigkeiten erforderlich
+No database actions are required.: Keine Datenbanktätigkeiten erforderlich
 The following database actions are required: Folgende Datenbanktätigkeiten sind erforderlich
 ODBC Underlying Database: ODBC zugrundeliegende Datenbank
 Automatic installation not supported: Eine komplett automatisierte Installation wird von Ihrem verwendeten Datenbanktyps nicht vollständig unterstützt. Sie müssen die erforderlichen Tabellen mit den mitgelieferten SQL manuell erstellen. Bitte Klicken <b>Benötigte SQL anzeigen</b> um fortzufahren. Ausschneiden &amp; Einfügen in Ihrem Datenbankabfragefenster.

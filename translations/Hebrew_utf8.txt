@@ -764,7 +764,7 @@ Anything imported from Palm will be overwritten during the next import (unless t
 Therefore, updates should be made in the Palm Desktop.: לכן יש לעדכן אותם בשולחן העבודה של ה-Palm.
 This form will import vCalendar (.vcs) 1.0 events.: טופס זה יאפשר ייבוא של ארועים של vCalendar (.vcs) 1.0
 The following formats have been tested: נבדקו התצורות הבאות
-This form will import iCalendar (.ics) events: טופס זה מאפשר ייבוא של ארועים של iCalendar (.ics)
+This form will import iCalendar (.ics) events.: טופס זה מאפשר ייבוא של ארועים של iCalendar (.ics)
 Enabling: אפשור
 Overwrite Prior Import: דרוס ייבוא קודם
 
@@ -1399,36 +1399,36 @@ Unable to write password to settings.php file: לא הצלחתי לכתוב את
 Password has been set: הסיסמא נקבעה
 Connection Successful: החיבור הצליח
 Please go to next page to continue installation: נא להתקדם לדף הבא כדי להמשיך בהתקנה
-Correct your entries or click the Create New button to continue installation: תקן את התשובות שלך או הלקל על כפתור <b>צור חדש</b> כדי להמשיך את ההתקנה
-Correct your entries and try again: תקן את התשובות שלך ונסה שוב
+Correct your entries or click the Create New...: תקן את התשובות שלך או הלקל על כפתור <b>צור חדש</b> כדי להמשיך את ההתקנה
+Correct your entries and try again.: תקן את התשובות שלך ונסה שוב
 does not exist: אינו קיים
 is not writable: לא פתוח לכתיבה
 Error Converting Timezone: שגיאה בהמרת איזור הזמן
-Please change the file permissions of this file: נא לשנות את ההרשאות של הקובץ הזה
+Please change the file permissions of this file.: נא לשנות את ההרשאות של הקובץ הזה
 Please change includes dir permission: נא לשנות את ההרשאות של מחיצת includes כדי לאפשר כתיבה על ידי משתמשים אחרים
-Your settings have been saved: העדיפויות שלך נשמרו
-Error you must specify a\\nSingle-User Login: שגיאה, עליך לציין \\nכניסת משתמש יחיד
+Your settings have been saved.: העדיפויות שלך נשמרו
+Error you must specify a Single-User Login: שגיאה, עליך לציין \\nכניסת משתמש יחיד
 Full Path (no backslashes): מסלול מלא (ללא קו נתוי הפוך)
 The password contains illegal characters.: הסיסמא מכילה תווים לא חוקיים.
 This installation wizard will guide you...: אשף ההתקנה יוביל אותך דרך ההתקנה הבסיסית של לוח השנה. עבור עזרה ואיתור תקלות ראה
 PHP Version Check: בדיקת גרסת PHP
-Check to see if PHP 4.1.0 or greater is installed: בודק לוודא שמותקן PHP בגרסה 4.1.0 או יותר
+Check to see if PHP 4.1.0 or greater is installed.: בודק לוודא שמותקן PHP בגרסה 4.1.0 או יותר
 PHP version: גרסת PHP
 Detailed PHP Info: מידע PHP מפורט
 Session Check: בדיקת סשן
 To test the proper operation of sessions, reload this page: כדי לבדוק את הפעולה התקינה של הסשן, טען דף זה מחדש
 You should see the session counter increment each time: אתה אמור לראות את מונה הסשן מתקדם בכל פעם
 SESSION COUNTER: מונה הסשן
-Settings.php Status: מצב Settings.php
+settings.php Status: מצב Settings.php
 The file permissions of settings.php are set...: הרשאות הקובץ של <b>settings.php</b> נקבעו כך שלמתקין אין הרשאה לשנותו. נא לשנות את הרשאות הקובץ של הקובץ הבא כדי להמשיך.
 The file permissions of the includes directory are set...: הרשאות הקובץ של מחיצת <b>includes</b> כך שלמתקין אין הרשאה ליצור בה קובץ חדש. נא לשנות את ההרשאות של המחיצה הבאה כדי להמשיך.
-Your settings.php file appears to be valid: קובץ <b>settings.php</b> שלך נראה תקין
+Your settings.php file appears to be valid.: קובץ <b>settings.php</b> שלך נראה תקין
 Configuration Wizard Password: סיסמת אשף ההתקנה
 Create Settings File Password: צור סיסמא בקובץ ההגדרות
 db setup directions...: בחלק זה תגדיר ותבדוק חיבור לשרת בסיס הנתונים שלך. החשבון המסופק צריך להיות בעל הרשאות מלאות ליצור את בסיס נתונים, טבלאות ומשתמשים. אם דבר זה לא אפשרי, או שיש לך גישה מוגבלת לבסיס הנתונים שלך, תאלץ להגדיר את בסיס הנתונים שלך ידנית.
 Database Status: מצב בסיס הנתונים
 Supported databases for your PHP installation: בסיסי נתונים הנתמכים עבור תצורת ה-PHP שלך
-Your current database settings are able to access the database: ניתן לגשת לבסיס הנתונים בעזרת ההגדרות הנוכחיות שלך
+Your current database settings are able to access the database.: ניתן לגשת לבסיס הנתונים בעזרת ההגדרות הנוכחיות שלך
 Please Test Settings: נא לבדוק את ההגדרות
 Your current database settings are not able...: ההגדרות הנוכחיות שלך <b>אינן</b> מאפשרות גישה אל בסיס הנתונים שלך או שעדיין לא נבדקו
 Database Settings: הגדרות בסיס הנתונים
@@ -1445,7 +1445,7 @@ This appears to be an upgrade from version: זה נראה כעדכון מגרס�
 In this section we will perform the required database changes to bring your database up to the required level: בחלק זה נבצע את השינויים המתבקשים לבסיס הנתונים כדי להביא את בסיס הנתונים שלך אל הרמה הדרושה
 If you are using a fully supported database, this step will be performed automatically for you: אם הנך משתמש בבסיס נתונים עם תמיכה מלאה, צעד זה יתבצע באופן אוטומטי
 If not, the required SQL can be displayed and you should be able: אם לא, יוצג ה-SQL הדרוש, ואתה אמור להיות מסוגללחתוך &amp; הדבק אותו אל תוך חלון השאילתות של בסיס הנתונים שלך
-No database actions are required: לא נדרשות כל פעולות בבסיס הנתונים
+No database actions are required.: לא נדרשות כל פעולות בבסיס הנתונים
 The following database actions are required: פעולות בסיס הנתונים הבאות נדרשות
 ODBC Underlying Database: בסיס נתונים על בסיס ODBC
 Automatic installation not supported: עוד לא יישמנו התקנה אוטומטית עבור סוג בסיס הנתונים שלך. עליך ליצור את הטבלאות הדרושות ידינית בעזרת ה-SQL המסופק. נא הקלק על <b>הצג SQL</b> כדי להמשיך. חתוך &amp; הדבק אותו אל תוך חלון ה-SQL של בסיס הנתונים שלך.

@@ -588,7 +588,7 @@ Anything imported from Palm will be overwritten during the next import (unless t
 Therefore, updates should be made in the Palm Desktop.: Dlatego, aktualizacje powinny bya robione w Palmtopie
 This form will import vCalendar (.vcs) 1.0 events.: Ten formularz zaimportuje zdarzenia vCalendar (.vcs) 1.0
 The following formats have been tested: Podane formaty zosta³y przetestowane
-This form will import iCalendar (.ics) events: Ten formularz zaimportujec zdarzenia iCalendar (.ics)
+This form will import iCalendar (.ics) events.: Ten formularz zaimportujec zdarzenia iCalendar (.ics)
 Enabling: W³±czanie
 Overwrite Prior Import: Otwórz przed zaimportowaniem
 
@@ -1084,28 +1084,28 @@ Passwords do not match: Podane has³a ró¿ni± siê od siebie
 Unable to write password to settings.php file: Nie mogê zapisaæ has³a do pliku "setting.php"
 Connection Successful: Po³±czenie zakoñczone sukcesem
 Please go to next page to continue installation: Przejd¼ do nastêpnej strony aby kontynuowaæ instalacjê
-Correct your entries or click the Create New button to continue installation: Popraw wprowadzone dane lub klikni j przycisk <b>Stwórz nowy</b> aby kontynuowaæ instalacjê
-Correct your entries and try again: Popraw wprowadzone dane i spróbuj ponownie
+Correct your entries or click the Create New...: Popraw wprowadzone dane lub klikni j przycisk <b>Stwórz nowy</b> aby kontynuowaæ instalacjê
+Correct your entries and try again.: Popraw wprowadzone dane i spróbuj ponownie
 Error Converting Timezone: B³±d podczas konwertowania stefy czasowej
-Please change the file permissions of this file: Zmieñ prawa dostêpu do tego pliku
-Your settings have been saved: Twoje ustawienia zosta³y zapisane
-Error you must specify a\\nSingle-User Login: B³±d musisz ustaliæ a\\nLogowanie pojedyñczego u¿ytkownika
+Please change the file permissions of this file.: Zmieñ prawa dostêpu do tego pliku
+Your settings have been saved.: Twoje ustawienia zosta³y zapisane
+Error you must specify a Single-User Login: B³±d musisz ustaliæ a\\nLogowanie pojedyñczego u¿ytkownika
 Full Path (no backslashes): Pe³na ¶cie¿ka (bez backslashy)
 PHP Version Check: Sprawdzenie wersji PHP
-Check to see if PHP 4.1.0 or greater is installed: Zaznacz aby sprawdziæ czy jest zainstalowane PHP w wersji 4.1.0 lub nowszej
+Check to see if PHP 4.1.0 or greater is installed.: Zaznacz aby sprawdziæ czy jest zainstalowane PHP w wersji 4.1.0 lub nowszej
 PHP version: Wersja PHP
 Detailed PHP Info: Szczegó³owe informacje o PHP
 Session Check: Sprawdzenie sesji
 To test the proper operation of sessions, reload this page: Aby sprawrziæ odpowiednie operacje sesji od¶wie¿ stronê
 You should see the session counter increment each time: Powiniene¶ widzieæ zwiêkszanie siê licznika sesji za ka¿dem razem.
 SESSION COUNTER: LICZNIK SESJI
-Settings.php Status: Status settings.php
-Your settings.php file appears to be valid: Plik <b>settings.php</b> jest poprawny
+settings.php Status: Status settings.php
+Your settings.php file appears to be valid.: Plik <b>settings.php</b> jest poprawny
 Configuration Wizard Password: Has³o kreatora instalacji
 Create Settings File Password: Utwórz has³o pliku z ustawieniami
 Database Status: Status bazy danych
 Supported databases for your PHP installation: Bazy danych obs³ugiwane przez Twoj± instalacjê PHP
-Your current database settings are able to access the database: Twoje obecne ustawienia pozwalaj± na dostêp do bazy danych.
+Your current database settings are able to access the database.: Twoje obecne ustawienia pozwalaj± na dostêp do bazy danych.
 Please Test Settings: Proszê przetestowaæ ustawienia
 Your current database settings are not able...: Twoje obecne ustawienia <b>nie</b> pozwalaj± na dostêp do bazy danych.
 Database Settings: Ustawienia bazy danych
@@ -1123,7 +1123,7 @@ In this section we will perform the required database changes to bring your data
 If you are using a fully supported database, this step will be performed automatically for you: Je¶li u¿ywasz w pe³ni obs³ugiwanej bazy danych, ten krok zostanie wykonany automatycznie.
 If not, the required SQL can be displayed and you should be able: Je¶li nie, niezbêdne zapytania SQL bêd± wy¶wietlone i bêdziesz móg³
 to cut &amp; paste it into your database server query window: skopiowaæ je i wkleiæ w oknie zapytañ swojej bazy.
-No database actions are required: Nie s± potrzebne ¿adne zmiany w bazie danych
+No database actions are required.: Nie s± potrzebne ¿adne zmiany w bazie danych
 The following database actions are required: Potrzebne s± nastêpuj±ce zmiany
 ODBC Underlying Database: Zasadnicza baza danych ODBC
 This may take several minutes to complete: To mo¿e zaj±æ kilka minut

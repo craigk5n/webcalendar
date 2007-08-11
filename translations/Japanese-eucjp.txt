@@ -750,7 +750,7 @@ Entries older than the current date: ¥¨¥ó¥È¥ê¤Ï¸½ºß¤Î´üÆü¤è¤ê¸Å¤¤¤Ç¤¹
 Therefore, updates should be made in the Palm Desktop.: ¤·¤¿¤¬¤Ã¤Æ¡¢Palm ¥Ç¥¹¥¯¥È¥Ã¥×¤Ç¹¹¿·¤µ¤ì¤ë¤Ù¤­¤Ç¤¹¡£
 This form will import vCalendar (.vcs) 1.0 events.: ¤³¤Î¥Õ¥©¡¼¥à¤Ï vCalendar (.vcs) 1.0 ¥¤¥Ù¥ó¥È¤È¤·¤Æ¥¤¥ó¥Ý¡¼¥È¤¹¤ë¤Ç¤·¤ç¤¦
 The following formats have been tested: ¼¡¤Î·Á¼°¤¬¥Æ¥¹¥È¤µ¤ì¤Þ¤·¤¿¡£
-This form will import iCalendar (.ics) events: ¤³¤Î¥Õ¥©¡¼¥à¤Ï iCalendar (.ics) ¥¤¥Ù¥ó¥È¤ò¥¤¥ó¥Ý¡¼¥È¤¹¤ë¤Ç¤·¤ç¤¦
+This form will import iCalendar (.ics) events.: ¤³¤Î¥Õ¥©¡¼¥à¤Ï iCalendar (.ics) ¥¤¥Ù¥ó¥È¤ò¥¤¥ó¥Ý¡¼¥È¤¹¤ë¤Ç¤·¤ç¤¦
 Enabling: Í­¸ú¤Ë¤¹¤ë
 Overwrite Prior Import: ¥¤¥ó¥Ý¡¼¥ÈÀè¤ò¾å½ñ¤­¤¹¤ë
 
@@ -1391,16 +1391,16 @@ Unable to write password to settings.php file: ¥Õ¥¡¥¤¥ë settings.php ¤Ë½ñ¤­¹þ¤á¤
 Password has been set: ¥Ñ¥¹¥ï¡¼¥É¤ÏÀßÄê¤µ¤ì¤Þ¤·¤¿¡£
 Connection Successful: ÀÜÂ³¤ËÀ®¸ù¤·¤Þ¤·¤¿¡£
 Please go to next page to continue installation: ¥¤¥ó¥¹¥È¡¼¥ë¤òÂ³¤±¤ë¤Ë¤Ï¼¡¤Î¥Ú¡¼¥¸¤Ë°ÜÆ°¤·¤Æ¤¯¤À¤µ¤¤¡£
-Correct your entries or click the Create New button to continue installation: ¥¨¥ó¥È¥ê¤ò½¤Àµ¤¹¤ë¤«¡¢¥¤¥ó¥¹¥È¡¼¥ë¤ò·ÑÂ³¤¹¤ë¤¿¤á¤Ë<b>¿·µ¬ºîÀ®¤¹¤ë</b>¥Ü¥¿¥ó¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£
-Correct your entries and try again: ¥¨¥ó¥È¥ê¤ò½¤Àµ¤·¡¢ºÆÅÙ»î¤ß¤Þ¤¹¡£
+Correct your entries or click the Create New...: ¥¨¥ó¥È¥ê¤ò½¤Àµ¤¹¤ë¤«¡¢¥¤¥ó¥¹¥È¡¼¥ë¤ò·ÑÂ³¤¹¤ë¤¿¤á¤Ë<b>¿·µ¬ºîÀ®¤¹¤ë</b>¥Ü¥¿¥ó¤ò¥¯¥ê¥Ã¥¯¤·¤Æ¤¯¤À¤µ¤¤¡£
+Correct your entries and try again.: ¥¨¥ó¥È¥ê¤ò½¤Àµ¤·¡¢ºÆÅÙ»î¤ß¤Þ¤¹¡£
 Error Converting Timezone: ¥¿¥¤¥à¥¾¡¼¥ó¤ÎÊÑ´¹¤Ë¥¨¥é¡¼¤Ç¤¹¡£
-Please change the file permissions of this file: ¤³¤Î¥Õ¥¡¥¤¥ë¤Î¥Ñ¡¼¥ß¥Ã¥·¥ç¥ó¤òÊÑ¹¹¤·¤Æ¤¯¤À¤µ¤¤¡£
-Your settings have been saved: ÀßÄê¤òÊÝÂ¸¤·¤Þ¤·¤¿¡£
-Error you must specify a\\nSingle-User Login: ¥¨¥é¡¼¤Ç¤¹¡£¥·¥ó¥°¥ë¥æ¡¼¥¶¡¼¥í¥°¥¤¥ó¤ò»ØÄê¤·¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó¡£
+Please change the file permissions of this file.: ¤³¤Î¥Õ¥¡¥¤¥ë¤Î¥Ñ¡¼¥ß¥Ã¥·¥ç¥ó¤òÊÑ¹¹¤·¤Æ¤¯¤À¤µ¤¤¡£
+Your settings have been saved.: ÀßÄê¤òÊÝÂ¸¤·¤Þ¤·¤¿¡£
+Error you must specify a Single-User Login: ¥¨¥é¡¼¤Ç¤¹¡£¥·¥ó¥°¥ë¥æ¡¼¥¶¡¼¥í¥°¥¤¥ó¤ò»ØÄê¤·¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó¡£
 Full Path (no backslashes): ¥Õ¥ë¥Ñ¥¹ (¥Ð¥Ã¥¯¥¹¥é¥Ã¥·¥å¤ÏÉÔÍ×¤Ç¤¹)
 The password contains illegal characters.: ¥Ñ¥¹¥ï¡¼¥É¤ËÉÔÅö¤ÊÊ¸»ú¤¬´Þ¤Þ¤ì¤Æ¤¤¤Þ¤¹¡£
 PHP Version Check: PHP ¤Î¥Ð¡¼¥¸¥ç¥ó¤ò³ÎÇ§¤¹¤ë
-Check to see if PHP 4.1.0 or greater is installed: PHP 4.1.0 °Ê¾å¤¬¥¤¥ó¥¹¥È¡¼¥ë¤µ¤ì¤Æ¤¤¤ë¤«³ÎÇ§
+Check to see if PHP 4.1.0 or greater is installed.: PHP 4.1.0 °Ê¾å¤¬¥¤¥ó¥¹¥È¡¼¥ë¤µ¤ì¤Æ¤¤¤ë¤«³ÎÇ§
 PHP version: PHP ¤Î¥Ð¡¼¥¸¥ç¥ó
 PHP Settings: PHP ¤ÎÀßÄê
 Detailed PHP Info: PHP ¤Î¾ÜºÙ¾ðÊó
@@ -1408,13 +1408,13 @@ Session Check: ¥»¥Ã¥·¥ç¥ó¤Î³ÎÇ§
 To test the proper operation of sessions, reload this page: ¥»¥·¥ç¥ó¤ÎÅ¬ÀÚ¤ÊÁàºî¤ò³ÎÇ§¤¹¤ë¤¿¤á¤Ë¤Ï¡¢¤³¤Î¥Ú¡¼¥¸¤ËºÆÆÉ¤ß¹þ¤ß¤·¤Æ¤¯¤À¤µ¤¤¡£
 You should see the session counter increment each time: ¥»¥Ã¥·¥ç¥ó¥«¥¦¥ó¥¿¡¼¤¬Ëè²óÁý²Ã¤·¤Æ¤¤¤ë¤³¤È¤ò³ÎÇ§¤¹¤ë¤Ù¤­¤Ç¤¹¡£
 SESSION COUNTER: ¥»¥Ã¥·¥ç¥ó¥«¥¦¥ó¥¿¡¼
-Settings.php Status: Settings.php ¤Î¾õÂÖ
-Your settings.php file appears to be valid: <b>settings.php</b> ¥Õ¥¡¥¤¥ë¤ÏÍ­¸ú¤Ë¸«¤¨¤Þ¤¹¡£
+settings.php Status: Settings.php ¤Î¾õÂÖ
+Your settings.php file appears to be valid.: <b>settings.php</b> ¥Õ¥¡¥¤¥ë¤ÏÍ­¸ú¤Ë¸«¤¨¤Þ¤¹¡£
 Configuration Wizard Password: ¥¦¥£¥¶¡¼¥É¥Ñ¥¹¥ï¡¼¥É¤ÎÀßÄê
 Create Settings File Password: ÀßÄê¥Õ¥¡¥¤¥ë¤Î¥Ñ¥¹¥ï¡¼¥É¤òºîÀ®¤¹¤ë
 Database Status: ¥Ç¡¼¥¿¥Ù¡¼¥¹¤Î¾õÂÖ
 Supported databases for your PHP installation: ¥¤¥ó¥¹¥È¡¼¥ëºÑ PHP ¤Ç¥µ¥Ý¡¼¥È¤µ¤ì¤¿¥Ç¡¼¥¿¥Ù¡¼¥¹
-Your current database settings are able to access the database: ¸½ºß¤Î¥Ç¡¼¥¿¥Ù¡¼¥¹ÀßÄê¤Ï¥Ç¡¼¥¿¥Ù¡¼¥¹¤Ë¥¢¥¯¥»¥¹¤Ç¤­¤Þ¤¹¡£
+Your current database settings are able to access the database.: ¸½ºß¤Î¥Ç¡¼¥¿¥Ù¡¼¥¹ÀßÄê¤Ï¥Ç¡¼¥¿¥Ù¡¼¥¹¤Ë¥¢¥¯¥»¥¹¤Ç¤­¤Þ¤¹¡£
 Please Test Settings: ¥Æ¥¹¥ÈÀßÄê¤ò¤·¤Æ¤¯¤À¤µ¤¤¡£
 Your current database settings are not able...: ¸½ºß¤Î¥Ç¡¼¥¿¥Ù¡¼¥¹ÀßÄê¤Ï¥Ç¡¼¥¿¥Ù¡¼¥¹¤Ë¥¢¥¯¥»¥¹¤¹¤ë¤³¤È¤¬<b>¤Ç¤­¤º</b>¡¢¤Þ¤À¥Æ¥¹¥È¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡£
 Database Settings: ¥Ç¡¼¥¿¥Ù¡¼¥¹¤ÎÀßÄê
@@ -1431,7 +1431,7 @@ This appears to be an upgrade from version: ¤³¤ì¤Ï¼¡¤Î¥Ð¡¼¥¸¥ç¥ó¤«¤é¤Î¥¢¥Ã¥×¥°¥ì
 If you are using a fully supported database, this step will be performed automatically for you: Á´ÌÌÅª¤Ë¥µ¥Ý¡¼¥È¤µ¤ì¤¿¥Ç¡¼¥¿¥Ù¡¼¥¹¤ò»ÈÍÑ¤·¤Æ¤¤¤ì¤Ð¡¢¤³¤Î¥¹¥Æ¥Ã¥×¤Ï¼«Æ°Åª¤Ë¼Â¹Ô¤µ¤ì¤ë¤Ç¤·¤ç¤¦¡£
 If not, the required SQL can be displayed and you should be able: ¤½¤¦¤Ç¤Ê¤¤¾ì¹ç¡¢Í×µá¤µ¤ì¤¿ SQL ¤òÉ½¼¨¤¹¤ë¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£
 to cut &amp; paste it into your database server query window: ¤Þ¤¿¤½¤ì¤òÀÚ¤ê¼è¤ê¡¢¥Ç¡¼¥¿¥Ù¡¼¥¹¥µ¡¼¥Ð¡¼¤Î¾È²ñ¥¦¥£¥ó¥É¥¦¤ËÅ½¤êÉÕ¤±¤Ç¤­¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó¡£
-No database actions are required: ¥Ç¡¼¥¿¥Ù¡¼¥¹Áàºî¤òÍ×µá¤·¤Þ¤»¤ó
+No database actions are required.: ¥Ç¡¼¥¿¥Ù¡¼¥¹Áàºî¤òÍ×µá¤·¤Þ¤»¤ó
 The following database actions are required: ¼¡¤Î¥Ç¡¼¥¿¥Ù¡¼¥¹Áàºî¤¬É¬Í×¤Ç¤¹¡£
 ODBC Underlying Database: ODBC ¤Î¸µ¤Î¥Ç¡¼¥¿¥Ù¡¼¥¹
 This may take several minutes to complete: ¤³¤ì¤¬´°Î»¤¹¤ë¤Ë¤Ï¿ôÊ¬¤«¤«¤ë¤«¤â¤·¤ì¤Þ¤»¤ó¡£
