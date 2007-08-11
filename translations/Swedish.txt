@@ -530,7 +530,7 @@ Anything imported from Palm will be overwritten during the next import (unless t
 Therefore, updates should be made in the Palm Desktop.: Därför bör uppdateringar göras i Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events.: Detta formulär kommer att importera vCalendar (.vcs) 1.0 aktiviteter
 The following formats have been tested: Följande format har testats
-This form will import iCalendar (.ics) events: Detta formulär kommer att importera iCalendar (.ics) aktiviteter
+This form will import iCalendar (.ics) events.: Detta formulär kommer att importera iCalendar (.ics) aktiviteter
 Enabling: Tillåt
 Overwrite Prior Import: Skriv över tidigare import
 

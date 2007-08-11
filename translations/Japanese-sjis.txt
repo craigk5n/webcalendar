@@ -746,7 +746,7 @@ Entries older than the current date: ƒGƒ“ƒgƒŠ‚ÍŒ»İ‚ÌŠú“ú‚æ‚èŒÃ‚¢‚Å‚·
 Therefore, updates should be made in the Palm Desktop.: ‚µ‚½‚ª‚Á‚ÄAPalm ƒfƒXƒNƒgƒbƒv‚ÅXV‚³‚ê‚é‚×‚«‚Å‚·B
 This form will import vCalendar (.vcs) 1.0 events.: ‚±‚ÌƒtƒH[ƒ€‚Í vCalendar (.vcs) 1.0 ƒCƒxƒ“ƒg‚Æ‚µ‚ÄƒCƒ“ƒ|[ƒg‚·‚é‚Å‚µ‚å‚¤
 The following formats have been tested: Ÿ‚ÌŒ`®‚ªƒeƒXƒg‚³‚ê‚Ü‚µ‚½B
-This form will import iCalendar (.ics) events: ‚±‚ÌƒtƒH[ƒ€‚Í iCalendar (.ics) ƒCƒxƒ“ƒg‚ğƒCƒ“ƒ|[ƒg‚·‚é‚Å‚µ‚å‚¤
+This form will import iCalendar (.ics) events.: ‚±‚ÌƒtƒH[ƒ€‚Í iCalendar (.ics) ƒCƒxƒ“ƒg‚ğƒCƒ“ƒ|[ƒg‚·‚é‚Å‚µ‚å‚¤
 Enabling: —LŒø‚É‚·‚é
 Overwrite Prior Import: ƒCƒ“ƒ|[ƒgæ‚ğã‘‚«‚·‚é
 
@@ -1375,16 +1375,16 @@ Unable to write password to settings.php file: ƒtƒ@ƒCƒ‹ settings.php ‚É‘‚«‚ß‚
 Password has been set: ƒpƒXƒ[ƒh‚Íİ’è‚³‚ê‚Ü‚µ‚½B
 Connection Successful: Ú‘±‚É¬Œ÷‚µ‚Ü‚µ‚½B
 Please go to next page to continue installation: ƒCƒ“ƒXƒg[ƒ‹‚ğ‘±‚¯‚é‚É‚ÍŸ‚Ìƒy[ƒW‚ÉˆÚ“®‚µ‚Ä‚­‚¾‚³‚¢B
-Correct your entries or click the Create New button to continue installation: ƒGƒ“ƒgƒŠ‚ğC³‚·‚é‚©AƒCƒ“ƒXƒg[ƒ‹‚ğŒp‘±‚·‚é‚½‚ß‚É<b>V‹Kì¬‚·‚é</b>ƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B
-Correct your entries and try again: ƒGƒ“ƒgƒŠ‚ğC³‚µAÄ“x‚İ‚Ü‚·B
+Correct your entries or click the Create New...: ƒGƒ“ƒgƒŠ‚ğC³‚·‚é‚©AƒCƒ“ƒXƒg[ƒ‹‚ğŒp‘±‚·‚é‚½‚ß‚É<b>V‹Kì¬‚·‚é</b>ƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B
+Correct your entries and try again.: ƒGƒ“ƒgƒŠ‚ğC³‚µAÄ“x‚İ‚Ü‚·B
 Error Converting Timezone: ƒ^ƒCƒ€ƒ][ƒ“‚Ì•ÏŠ·‚ÉƒGƒ‰[‚Å‚·B
-Please change the file permissions of this file: ‚±‚Ìƒtƒ@ƒCƒ‹‚Ìƒp[ƒ~ƒbƒVƒ‡ƒ“‚ğ•ÏX‚µ‚Ä‚­‚¾‚³‚¢B
-Your settings have been saved: İ’è‚ğ•Û‘¶‚µ‚Ü‚µ‚½B
-Error you must specify a\\nSingle-User Login: ƒGƒ‰[‚Å‚·BƒVƒ“ƒOƒ‹ƒ†[ƒU[ƒƒOƒCƒ“‚ğw’è‚µ‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
+Please change the file permissions of this file.: ‚±‚Ìƒtƒ@ƒCƒ‹‚Ìƒp[ƒ~ƒbƒVƒ‡ƒ“‚ğ•ÏX‚µ‚Ä‚­‚¾‚³‚¢B
+Your settings have been saved.: İ’è‚ğ•Û‘¶‚µ‚Ü‚µ‚½B
+Error you must specify a Single-User Login: ƒGƒ‰[‚Å‚·BƒVƒ“ƒOƒ‹ƒ†[ƒU[ƒƒOƒCƒ“‚ğw’è‚µ‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
 Full Path (no backslashes): ƒtƒ‹ƒpƒX (ƒoƒbƒNƒXƒ‰ƒbƒVƒ…‚Í•s—v‚Å‚·)
 The password contains illegal characters.: ƒpƒXƒ[ƒh‚É•s“–‚È•¶š‚ªŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚·B
 PHP Version Check: PHP ‚Ìƒo[ƒWƒ‡ƒ“‚ğŠm”F‚·‚é
-Check to see if PHP 4.1.0 or greater is installed: PHP 4.1.0 ˆÈã‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é‚©Šm”F
+Check to see if PHP 4.1.0 or greater is installed.: PHP 4.1.0 ˆÈã‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é‚©Šm”F
 PHP version: PHP ‚Ìƒo[ƒWƒ‡ƒ“
 PHP Settings: PHP ‚Ìİ’è
 Detailed PHP Info: PHP ‚ÌÚ×î•ñ
@@ -1392,13 +1392,13 @@ Session Check: ƒZƒbƒVƒ‡ƒ“‚ÌŠm”F
 To test the proper operation of sessions, reload this page: ƒZƒVƒ‡ƒ“‚Ì“KØ‚È‘€ì‚ğŠm”F‚·‚é‚½‚ß‚É‚ÍA‚±‚Ìƒy[ƒW‚ÉÄ“Ç‚İ‚İ‚µ‚Ä‚­‚¾‚³‚¢B
 You should see the session counter increment each time: ƒZƒbƒVƒ‡ƒ“ƒJƒEƒ“ƒ^[‚ª–ˆ‰ñ‘‰Á‚µ‚Ä‚¢‚é‚±‚Æ‚ğŠm”F‚·‚é‚×‚«‚Å‚·B
 SESSION COUNTER: ƒZƒbƒVƒ‡ƒ“ƒJƒEƒ“ƒ^[
-Settings.php Status: Settings.php ‚Ìó‘Ô
-Your settings.php file appears to be valid: <b>settings.php</b> ƒtƒ@ƒCƒ‹‚Í—LŒø‚ÉŒ©‚¦‚Ü‚·B
+settings.php Status: Settings.php ‚Ìó‘Ô
+Your settings.php file appears to be valid.: <b>settings.php</b> ƒtƒ@ƒCƒ‹‚Í—LŒø‚ÉŒ©‚¦‚Ü‚·B
 Configuration Wizard Password: ƒEƒBƒU[ƒhƒpƒXƒ[ƒh‚Ìİ’è
 Create Settings File Password: İ’èƒtƒ@ƒCƒ‹‚ÌƒpƒXƒ[ƒh‚ğì¬‚·‚é
 Database Status: ƒf[ƒ^ƒx[ƒX‚Ìó‘Ô
 Supported databases for your PHP installation: ƒCƒ“ƒXƒg[ƒ‹Ï PHP ‚ÅƒTƒ|[ƒg‚³‚ê‚½ƒf[ƒ^ƒx[ƒX
-Your current database settings are able to access the database: Œ»İ‚Ìƒf[ƒ^ƒx[ƒXİ’è‚Íƒf[ƒ^ƒx[ƒX‚ÉƒAƒNƒZƒX‚Å‚«‚Ü‚·B
+Your current database settings are able to access the database.: Œ»İ‚Ìƒf[ƒ^ƒx[ƒXİ’è‚Íƒf[ƒ^ƒx[ƒX‚ÉƒAƒNƒZƒX‚Å‚«‚Ü‚·B
 Please Test Settings: ƒeƒXƒgİ’è‚ğ‚µ‚Ä‚­‚¾‚³‚¢B
 Your current database settings are not able...: Œ»İ‚Ìƒf[ƒ^ƒx[ƒXİ’è‚Íƒf[ƒ^ƒx[ƒX‚ÉƒAƒNƒZƒX‚·‚é‚±‚Æ‚ª<b>‚Å‚«‚¸</b>A‚Ü‚¾ƒeƒXƒg‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB
 Database Settings: ƒf[ƒ^ƒx[ƒX‚Ìİ’è
@@ -1415,7 +1415,7 @@ This appears to be an upgrade from version: ‚±‚ê‚ÍŸ‚Ìƒo[ƒWƒ‡ƒ“‚©‚ç‚ÌƒAƒbƒvƒOƒŒ
 If you are using a fully supported database, this step will be performed automatically for you: ‘S–Ê“I‚ÉƒTƒ|[ƒg‚³‚ê‚½ƒf[ƒ^ƒx[ƒX‚ğg—p‚µ‚Ä‚¢‚ê‚ÎA‚±‚ÌƒXƒeƒbƒv‚Í©“®“I‚ÉÀs‚³‚ê‚é‚Å‚µ‚å‚¤B
 If not, the required SQL can be displayed and you should be able: ‚»‚¤‚Å‚È‚¢ê‡A—v‹‚³‚ê‚½ SQL ‚ğ•\¦‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
 to cut &amp; paste it into your database server query window: ‚Ü‚½‚»‚ê‚ğØ‚èæ‚èAƒf[ƒ^ƒx[ƒXƒT[ƒo[‚ÌÆ‰ïƒEƒBƒ“ƒhƒE‚É“\‚è•t‚¯‚Å‚«‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
-No database actions are required: ƒf[ƒ^ƒx[ƒX‘€ì‚ğ—v‹‚µ‚Ü‚¹‚ñ
+No database actions are required.: ƒf[ƒ^ƒx[ƒX‘€ì‚ğ—v‹‚µ‚Ü‚¹‚ñ
 The following database actions are required: Ÿ‚Ìƒf[ƒ^ƒx[ƒX‘€ì‚ª•K—v‚Å‚·B
 ODBC Underlying Database: ODBC ‚ÌŒ³‚Ìƒf[ƒ^ƒx[ƒX
 This may take several minutes to complete: ‚±‚ê‚ªŠ®—¹‚·‚é‚É‚Í”•ª‚©‚©‚é‚©‚à‚µ‚ê‚Ü‚¹‚ñB

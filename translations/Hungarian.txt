@@ -714,7 +714,7 @@ Anything imported from Palm will be overwritten during the next import (unless t
 Therefore, updates should be made in the Palm Desktop.: Tehát készíts frissítést a Palm Desktopon.
 This form will import vCalendar (.vcs) 1.0 events.: Ezen az ûrlapon tudsz vCalendar (.vcs) 1.0 eseményeket importálni.
 The following formats have been tested: A következõ formátumok lettek tesztelve
-This form will import iCalendar (.ics) events: Ezen az ûrlapon tudsz iCalendar (.ics) eseményeket importálni.
+This form will import iCalendar (.ics) events.: Ezen az ûrlapon tudsz iCalendar (.ics) eseményeket importálni.
 Enabling: Engedélyezés
 Overwrite Prior Import: Elõzõ import felülírása
 

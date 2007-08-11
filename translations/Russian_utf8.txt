@@ -789,7 +789,7 @@ Anything imported from Palm will be overwritten during the next import (unless t
 Therefore, updates should be made in the Palm Desktop.: Таким образом обновления должны быть сделаны в Palm Desktop.
 This form will import vCalendar (.vcs) 1.0 events.: Эта форма загрузит события в формате vCalendar (.vcs) 1.0
 The following formats have been tested: Следующие форматы были проверены
-This form will import iCalendar (.ics) events: Эта форма загрузит события в формате iCalendar (.ics)
+This form will import iCalendar (.ics) events.: Эта форма загрузит события в формате iCalendar (.ics)
 Enabling: Подключение
 Overwrite Prior Import: Переписать предыдущую загрузку
 
@@ -1484,20 +1484,20 @@ Unable to write password to settings.php file: Невозможно записа
 Password has been set: Пароль установлен
 Connection Successful: Соединение Успешно
 Please go to next page to continue installation: Пожалуйста пройдите на следующую страницу для продолжения установки
-Correct your entries or click the Create New button to continue installation: Исправьте введенные значения или нажмите <b>Создать Новую</b> для продолжения
-Correct your entries and try again: Исправьте введенные значения и попробуйте снова
+Correct your entries or click the Create New...: Исправьте введенные значения или нажмите <b>Создать Новую</b> для продолжения
+Correct your entries and try again.: Исправьте введенные значения и попробуйте снова
 does not exist: не существует
 is not writable: не доступна запись
 Error Converting Timezone: Ошибка преобразования Временной Зоны
-Please change the file permissions of this file: Пожалуйста измените права доступа к файлу
+Please change the file permissions of this file.: Пожалуйста измените права доступа к файлу
 Please change includes dir permission: Пожалуйста установите права на запись для других пользователей в каталог includes
-Your settings have been saved: Ваши настройки сохранены
-Error you must specify a\\nSingle-User Login: Ошибка. Вы должны указать имя для\\nоднопользовательского режима
+Your settings have been saved.: Ваши настройки сохранены
+Error you must specify a Single-User Login: Ошибка. Вы должны указать имя для\\nоднопользовательского режима
 Full Path (no backslashes): Полный путь (без обратных слэшей)
 The password contains illegal characters.: Пароль содержит неправильные символы.
 This installation wizard will guide you...: Этот мастер установки поможет вам настроить базовую установку WebCalendar. Для помощи и разрешения проблем смотрите
 PHP Version Check: Проверка версии PHP
-Check to see if PHP 4.1.0 or greater is installed: Проверьте что ваша версия PHP больше или равно 4.1.0
+Check to see if PHP 4.1.0 or greater is installed.: Проверьте что ваша версия PHP больше или равно 4.1.0
 PHP version: Версия PHP
 PHP Settings: Настройки PHP
 Detailed PHP Info: Детализованная информация о PHP
@@ -1505,16 +1505,16 @@ Session Check: Проверка Сессии
 To test the proper operation of sessions, reload this page: Для тестирования правильности работы сессий,обновите страницу
 You should see the session counter increment each time: Вы должны увидеть счетчик сессий обновляющийся каждый раз
 SESSION COUNTER: СЧЕТЧИК СЕССИЙ
-Settings.php Status: Статус Settings.php
+settings.php Status: Статус Settings.php
 The file permissions of settings.php are set...: Права доступа для файла <b>settings.php</b> установлены так, что установщик не имеет права изменить его. Пожалуйста измените права доступа к данному файлу для продолжения.
 The file permissions of the includes directory are set...: Права доступа для каталога <b>includes</b> установлены так, что установщик не имеет права создать новый файл. Пожалуйста измените права доступа к данному файлу для продолжения.
-Your settings.php file appears to be valid: Ваш файл <b>settings.php</b> успешно проверен на правильность.
+Your settings.php file appears to be valid.: Ваш файл <b>settings.php</b> успешно проверен на правильность.
 Configuration Wizard Password: Пароль для Мастера Установки
 Create Settings File Password: Создать пароль для файла настроек
 db setup directions...: В этой секции вам надо установить и проверить соединение с сервером вашей базы данных. Указанный пользователь базы данных должен иметь ВСЕ привилегии на создание базы данных, таблиц и пользователей. Если это невозможно или ваш доступ к базе данных ограничен вам надо самостоятельно настроить вашу базу данных.
 Database Status: Статус Базы Данных
 Supported databases for your PHP installation: PHP установка поддерживает следующие Базы Данных
-Your current database settings are able to access the database: Удалось установить соединение с текущими настройками
+Your current database settings are able to access the database.: Удалось установить соединение с текущими настройками
 Please Test Settings: Пожалуйста проверьте настройки
 Your current database settings are not able...: С вашими текущими настнойками <b>невозможно</b> соединиться с базой данных. Или соединение еще не проверено.
 Database Settings: Настройки Базы Данных
@@ -1532,7 +1532,7 @@ In this section we will perform the required database changes to bring your data
 If you are using a fully supported database, this step will be performed automatically for you: Если вы используете полностью поддерживаемую базу данных, этот шаг будет произведен автоматически
 If not, the required SQL can be displayed and you should be able: Если нет, требуемый SQL текст будет отображен и вам надо
 to cut &amp; paste it into your database server query window: скопировать и вставить его в окно запросов вашей базы данных
-No database actions are required: Никаких действий на стороне базы данных не требуется
+No database actions are required.: Никаких действий на стороне базы данных не требуется
 The following database actions are required: Следующие действия необходимо выполнить на базе данных
 ODBC Underlying Database: Основная База Данных ODBC
 Automatic installation not supported: Автоматисеская установка полностью не поддерживается для вашего типа базы данных. Вам надо вручную создать необходитые таблицы используя поставляемый SQL. Пожалуйста нажмите <b>Показать</b> для продолжения. Скопируйте его в окно запросов вашей базы данных.

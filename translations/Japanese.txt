@@ -746,7 +746,7 @@ Entries older than the current date: エントリは現在の期日より古い�
 Therefore, updates should be made in the Palm Desktop.: したがって、Palm デスクトップで更新されるべきです。
 This form will import vCalendar (.vcs) 1.0 events.: このフォームは vCalendar (.vcs) 1.0 イベントとしてインポートするでしょう
 The following formats have been tested: 次の形式がテストされました。
-This form will import iCalendar (.ics) events: このフォームは iCalendar (.ics) イベントをインポートするでしょう
+This form will import iCalendar (.ics) events.: このフォームは iCalendar (.ics) イベントをインポートするでしょう
 Enabling: 有効にする
 Overwrite Prior Import: インポート先を上書きする
 
@@ -1379,16 +1379,16 @@ Unable to write password to settings.php file: ファイル settings.php に書�
 Password has been set: パスワードは設定されました。
 Connection Successful: 接続に成功しました。
 Please go to next page to continue installation: インストールを続けるには次のページに移動してください。
-Correct your entries or click the Create New button to continue installation: エントリを修正するか、インストールを継続するために<b>新規作成する</b>ボタンをクリックしてください。
-Correct your entries and try again: エントリを修正し、再度試みます。
+Correct your entries or click the Create New...: エントリを修正するか、インストールを継続するために<b>新規作成する</b>ボタンをクリックしてください。
+Correct your entries and try again.: エントリを修正し、再度試みます。
 Error Converting Timezone: タイムゾーンの変換にエラーです。
-Please change the file permissions of this file: このファイルのパーミッションを変更してください。
-Your settings have been saved: 設定を保存しました。
-Error you must specify a\\nSingle-User Login: エラーです。シングルユーザーログインを指定しなければなりません。
+Please change the file permissions of this file.: このファイルのパーミッションを変更してください。
+Your settings have been saved.: 設定を保存しました。
+Error you must specify a Single-User Login: エラーです。シングルユーザーログインを指定しなければなりません。
 Full Path (no backslashes): フルパス (バックスラッシュは不要です)
 The password contains illegal characters.: パスワードに不当な文字が含まれています。
 PHP Version Check: PHP のバージョンを確認する
-Check to see if PHP 4.1.0 or greater is installed: PHP 4.1.0 以上がインストールされているか確認
+Check to see if PHP 4.1.0 or greater is installed.: PHP 4.1.0 以上がインストールされているか確認
 PHP version: PHP のバージョン
 PHP Settings: PHP の設定
 Detailed PHP Info: PHP の詳細情報
@@ -1396,13 +1396,13 @@ Session Check: セッションの確認
 To test the proper operation of sessions, reload this page: セションの適切な操作を確認するためには、このページに再読み込みしてください。
 You should see the session counter increment each time: セッションカウンターが毎回増加していることを確認するべきです。
 SESSION COUNTER: セッションカウンター
-Settings.php Status: Settings.php の状態
-Your settings.php file appears to be valid: <b>settings.php</b> ファイルは有効に見えます。
+settings.php Status: Settings.php の状態
+Your settings.php file appears to be valid.: <b>settings.php</b> ファイルは有効に見えます。
 Configuration Wizard Password: ウィザードパスワードの設定
 Create Settings File Password: 設定ファイルのパスワードを作成する
 Database Status: データベースの状態
 Supported databases for your PHP installation: インストール済 PHP でサポートされたデータベース
-Your current database settings are able to access the database: 現在のデータベース設定はデータベースにアクセスできます。
+Your current database settings are able to access the database.: 現在のデータベース設定はデータベースにアクセスできます。
 Please Test Settings: テスト設定をしてください。
 Your current database settings are not able...: 現在のデータベース設定はデータベースにアクセスすることが<b>できず</b>、まだテストされていません。
 Database Settings: データベースの設定
@@ -1419,7 +1419,7 @@ This appears to be an upgrade from version: これは次のバージョンから
 If you are using a fully supported database, this step will be performed automatically for you: 全面的にサポートされたデータベースを使用していれば、このステップは自動的に実行されるでしょう。
 If not, the required SQL can be displayed and you should be able: そうでない場合、要求された SQL を表示することができます。
 to cut &amp; paste it into your database server query window: またそれを切り取り、データベースサーバーの照会ウィンドウに貼り付けできなければなりません。
-No database actions are required: データベース操作を要求しません
+No database actions are required.: データベース操作を要求しません
 The following database actions are required: 次のデータベース操作が必要です。
 ODBC Underlying Database: ODBC の元のデータベース
 This may take several minutes to complete: これが完了するには数分かかるかもしれません。

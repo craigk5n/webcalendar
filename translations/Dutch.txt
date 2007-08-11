@@ -838,7 +838,7 @@ Therefore, updates should be made in the Palm Desktop.: &nbsp;Derhalve dient u <
 vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: Hier kunt u afspraken uit vCalendar (.vcs) 1.0 in uw agenda importeren
 The following formats have been tested: De volgende bestandsformaten zijn getest
-This form will import iCalendar (.ics) events: Met dit formulier importeert u iCalendar (.ics) afspraken
+This form will import iCalendar (.ics) events.: Met dit formulier importeert u iCalendar (.ics) afspraken
 Enabling: activeer
 Overwrite Prior Import: Vorige import overschrijven
 will cause events imported previously...: zal vroeger geïmporteerde afspraken als <i>verwijderd</i> aanduiden, wanneer ze dezelfde UID gebruikten als het pas geïmporteerde bestand. Dit maakt het mogelijk een bijgewerkt iCalendar-bestand te importeren zonder dubbels te creëren.
@@ -1592,20 +1592,20 @@ Unable to write password to settings.php file: Niet mogelijk om wachtwoord in se
 Password has been set: Wachtwoord is ingesteld
 Connection Successful: Verbinding succesvol
 Please go to next page to continue installation: Ga naar de volgende pagina om de installatie voort te zetten
-Correct your entries or click the Create New button to continue installation: Corrigeer uw vermeldingen of klik de <b>Maak nieuw</b> knop om door te gaan
-Correct your entries and try again: Corrigeer uw vermeldingen en probeer opnieuw
+Correct your entries or click the Create New...: Corrigeer uw vermeldingen of klik de <b>Maak nieuw</b> knop om door te gaan
+Correct your entries and try again.: Corrigeer uw vermeldingen en probeer opnieuw
 does not exist: bestaat niet
 is not writable: is niet schrijfbaar
 Error Converting Timezone: Fout bij converteren tijdzone
-Please change the file permissions of this file: Wijzig de bestandspermissies van dit bestand
+Please change the file permissions of this file.: Wijzig de bestandspermissies van dit bestand
 Please change includes dir permission: Wijzig includes directory permissies
-Your settings have been saved: Uw instellingen zijn opgeslagen
-Error you must specify a\\nSingle-User Login: Fout u moet een\\nEnkele-Gebruikers Login
+Your settings have been saved.: Uw instellingen zijn opgeslagen
+Error you must specify a Single-User Login: Fout u moet een\\nEnkele-Gebruikers Login
 Full Path (no backslashes): Volledig pad (geen schuine strepen achterover)
 The password contains illegal characters.: Het wachtwoord bevat ongeldige tekens.
 This installation wizard will guide you...: De installatie-wizard zal u leiden...
 PHP Version Check: PHP Versiecontrole
-Check to see if PHP 4.1.0 or greater is installed: Controleer of PHP 4.1.0 of hoger is geinstalleerd
+Check to see if PHP 4.1.0 or greater is installed.: Controleer of PHP 4.1.0 of hoger is geinstalleerd
 PHP version: PHP versie
 PHP Settings: PHP-instellingen
 Detailed PHP Info: Gedetailleerde PHP informatie
@@ -1613,10 +1613,10 @@ Session Check: Sessie-controle
 To test the proper operation of sessions, reload this page: Om de correcte werking van sessies te testen, herlaad (F5) deze pagina
 You should see the session counter increment each time: U moet de sessie-teller iedere keer omhoog zien gaan
 SESSION COUNTER: SESSIE TELLER
-Settings.php Status: =
+settings.php Status: =
 The file permissions of settings.php are set...: De bestandspermissies van <b>settings.php</b> zijn gezet op...
 The file permissions of the includes directory are set...: De bestandspermissies van de map van <b>settings.php</b> zijn zo gezet dat de installateerder geen recht heeft om een nieuw bestand aan te maken. Verander de permissies van de volgende map alvorens verder te gaan.
-Your settings.php file appears to be valid: Uw <b>settings.php</b> bestand blijkt geldig te zijn
+Your settings.php file appears to be valid.: Uw <b>settings.php</b> bestand blijkt geldig te zijn
 Configuration Wizard Password: Configuratie wizard wachtwoord
 Create Settings File Password: Maak wachtwoord voor configuratiebestand
 db setup directions...: db instellingen aanwijzingen...
@@ -1639,7 +1639,7 @@ In this section we will perform the required database changes to bring your data
 If you are using a fully supported database, this step will be performed automatically for you: Indien u een volledig ondersteunde database gebruikt, zal deze stap automatisch worden uitgevoerd
 If not, the required SQL can be displayed and you should be able: Zoniet kan de gevraagde SQL getoond worden met u in staat zijn
 to cut &amp; paste it into your database server query window: om het de knippen &amp; plakken in uw database server query venster
-No database actions are required: Er zijn geen database-acties vereist
+No database actions are required.: Er zijn geen database-acties vereist
 The following database actions are required: De volgende database acties zijn benodigd
 ODBC Underlying Database: Database met ODBC ondersteuning
 Automatic installation not supported: Automatische installatie wordt niet ondersteund

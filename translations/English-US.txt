@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 08-04-2007
+# Translation last updated on 08-10-2007
 
 
 ################################################################################
@@ -907,10 +907,11 @@ Entries older than the current date: Entries older than the current date
 Entries created in the Palm Desktop...: Entries created in the Palm Desktop that have not been HotSync'd
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
 Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
+Anything imported from Palm...: Anything imported from Palm will be overwritten during the next import (unless the event date has passed). Therefore, updates should be made in the Palm Desktop.
 vCal: vCal
 This form will import vCalendar (.vcs) 1.0 events.: This form will import vCalendar (.vcs) 1.0 events.
 The following formats have been tested: The following formats have been tested:
-This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
+This form will import iCalendar (.ics) events.: This form will import iCalendar (.ics) events.
 Enabling: Enabling
 Overwrite Prior Import: Overwrite Prior Import
 will cause events imported previously...: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.
@@ -1323,7 +1324,6 @@ Invalid function id: Invalid function id
 # Page: includes/config.php
 #
 Could not find settings.php file...: Could not find "settings.php" file.<br />Please copy "settings.php.orig" to "settings.php" and edit for your site.
-#
 Incomplete settings.php file...: Incomplete settings.php file...
 Could not find XXX defined in...: Could not find "XXX" defined in your "settings.php" file.
 You must define XXX in: You must define "XXX" in the "settings.php" file.
@@ -1701,86 +1701,110 @@ Help Contents: Help Contents
 ########################################
 # Page: install/index.php
 #
+Create New: Create New
+Database Cache Directory: Database Cache Directory
+Database Name: Database Name
+Failure Reason: <b>Failure Reason: </b>
+Single-User: Single-User
+Test Settings: Test Settings
+Timezone Conversion Successful: Timezone Conversion Successful
 WebCalendar Installation Wizard: WebCalendar Installation Wizard
 Step: Step
 WebCalendar Installation Wizard Step XXX: WebCalendar Installation Wizard Step XXX
-Single-User: Single-User
-Failure Reason: Failure Reason
-You must manually create database: You must manually create database
-Database Cache Directory: Database Cache Directory
-Test Settings: Test Settings
-Create New: Create New
-Database Name: Database Name
-Timezone Conversion Successful: Timezone Conversion Successful
-Error Unable to write to file: Error Unable to write to file
-Error Unable to write to file XXX.: Error Unable to write to file XXX.
+You must manually create database: You must manually create database.
+Password Accepted: Password Accepted
 Successful Login: Successful Login
+Password Incorrect: Password Incorrect
 Invalid Login: Invalid Login
 required only if Safe Mode is On: required only if Safe Mode is On
+(required only if Safe Mode is On): (required only if Safe Mode is On)
 required only if Remote Calendars are used: required only if Remote Calendars are used
+(required only if Remote Calendars are used): (required only if Remote Calendars are used)
 needed for Gradient Image Backgrounds: needed for Gradient Image Backgrounds
+(needed for Gradient Image Backgrounds): (needed for Gradient Image Backgrounds)
 Passwords do not match: Passwords do not match
-Unable to write password to settings.php file: Unable to write password to settings.php file
-Password has been set: Password has been set
+Passwords do not match!: Passwords do not match!
+Unable to write password to settings.php file: Unable to write password to "settings.php" file.
+Password Updated: Password Updated
+Password has been set: Password has been set.
 Connection Successful: Connection Successful
 Please go to next page to continue installation: Please go to next page to continue installation
-Correct your entries or click the Create New button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
-Correct your entries and try again: Correct your entries and try again
+Connection Successful...: <b>Connection Successful</b> Please go to next page to continue installation.
+Correct your entries or click the Create New...: Correct your entries or click the <b>Create New</b> button to continue installation.
+Correct your entries and try again.: Correct your entries and try again.
 does not exist: does not exist
 is not writable: is not writable
 Error Converting Timezone: Error Converting Timezone
-Please change the file permissions of this file: Please change the file permissions of this file
-Please change includes dir permission: Please change the file permissions of your includes directory to allow writing by other users
-Your settings have been saved: Your settings have been saved
-Error you must specify a\\nSingle-User Login: Error you must specify a\\nSingle-User Login
+Error Unable to write to file: Error Unable to write to file
+Error Unable to write to file XXX.: Error Unable to write to file XXX.
+Please change the file permissions of this file.: Please change the file permissions of this file.
+Please change includes dir permission: Please change the file permissions of your "includes" directory to allow writing by other users.
+Your settings have been saved.: Your settings have been saved.
+WebCalendar Setup Wizard: WebCalendar Setup Wizard
+Error you must specify a Single-User Login: Error: You must specify a\\nSingle-User Login.
 Full Path (no backslashes): Full Path (no backslashes)
 The password contains illegal characters.: The password contains illegal characters.
-This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
+This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see:<br />
+System Administrators Guide: System Administrator's Guide
+Frequently Asked Questions: Frequently Asked Questions
+FAQ: FAQ
+Troubleshooting: Troubleshooting
+Getting Help: Getting Help
+Upgrading Guide: Upgrading Guide
+User Supported Wiki: User Supported Wiki
 PHP Version Check: PHP Version Check
-Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
+Check to see if PHP 4.1.0 or greater is installed.: Check to see if PHP 4.1.0 or greater is installed.
 PHP version: PHP version
 PHP Settings: PHP Settings
 Detailed PHP Info: Detailed PHP Info
+ON: ON
+OFF: OFF
+settings.php Status: "settings.php" Status
 Session Check: Session Check
 To test the proper operation of sessions, reload this page: To test the proper operation of sessions, reload this page
 You should see the session counter increment each time: You should see the session counter increment each time
+To test the proper operation of sessions...: To test the proper operation of sessions, reload this page. You should see the session counter increment each time.
 SESSION COUNTER: SESSION COUNTER
-Settings.php Status: Settings.php Status
-The file permissions of settings.php are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
-The file permissions of the includes directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
-Your settings.php file appears to be valid: Your <b>settings.php</b> file appears to be valid
+The file permissions of settings.php are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue
+The file permissions of the includes directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue
+Your settings.php file appears to be valid.: Your <b>settings.php</b> file appears to be valid.
 Configuration Wizard Password: Configuration Wizard Password
 Create Settings File Password: Create Settings File Password
 db setup directions...: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
 Database Status: Database Status
 Supported databases for your PHP installation: Supported databases for your PHP installation
-Your current database settings are able to access the database: Your current database settings are able to access the database
+Your current database settings are able to access the database.: Your current database settings are able to access the database.
 Please Test Settings: Please Test Settings
-Your current database settings are not able...: Your current database settings are <b>not</b> able to access the database or have not yet been tested
+Your current database settings are not able...: Your current database settings are <b>not</b> able to access the database or have not yet been tested.
 Database Settings: Database Settings
 Database Type: Database Type
 Server: Server
 Connection Persistence: Connection Persistence
 All your database tables appear to be up to date. You may proceed to the: All your database tables appear to be up to date. You may proceed to the
 next page and complete your WebCalendar setup: next page and complete your WebCalendar setup
+All your database tables appear to be up...: All your database tables appear to be up to date. You may proceed to the next page and complete your WebCalendar setup.
 This appears to be a new installation. If this is not correct, please: This appears to be a new installation. If this is not correct, please
 go back to the previous page and correct your settings: go back to the previous page and correct your settings
+This appears to be a new installation...: This appears to be a new installation. If this is not correct, please go back to the previous page and correct your settings.
+This appears to be an upgrade from version: This appears to be an upgrade from version
+This appears to be an upgrade...: This appears to be an upgrade from version&nbsp;XXX&nbsp;to&nbsp;XXX.
 The database requires some data input: The database requires some data input
 Click Update Database to complete the upgrade: Click <b>Update Database</b> to complete the upgrade
-This appears to be an upgrade from version: This appears to be an upgrade from version
+The database requires some data input...: The database requires some data input Click <b>Update Database</b> to complete the upgrade.
 In this section we will perform the required database changes to bring your database up to the required level: In this section we will perform the required database changes to bring your database up to the required level
 If you are using a fully supported database, this step will be performed automatically for you: If you are using a fully supported database, this step will be performed automatically for you
 If not, the required SQL can be displayed and you should be able: If not, the required SQL can be displayed and you should be able
 to cut &amp; paste it into your database server query window: to cut &amp; paste it into your database server query window
-No database actions are required: No database actions are required
+In this section we will perform...: In this section we will perform the changes to bring your database up to the required level. If you are using a fully supported database, this step will be performed automatically for you. If not, the required SQL can be displayed and you should be able to cut and paste it into your database server query window.
+No database actions are required.: No database actions are required.
 The following database actions are required: The following database actions are required
-ODBC Underlying Database: ODBC Underlying Database
-Automatic installation not supported: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the SQL supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
-This may take several minutes to complete: This may take several minutes to complete
+ODBC Underlying Database: <b>ODBC Underlying Database: </b>
+Automatic installation not supported: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the SQL supplied. Please click <b>Display SQL</b> to continue. Cut and Paste into your database query window.
+This may take several minutes to complete: This may take several minutes to complete.
 Install Database: Install Database
 Update Database: Update Database
 Display Required SQL: Display Required SQL
-Return to previous page after processing SQL.: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
+Return to previous page after processing SQL.: After manually processing this SQL, you will need to return to the previous page and retest your database so that the script can detect the changes.
 This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
 Timezone Conversion: Timezone Conversion
 It appears that you have: It appears that you have
@@ -1788,7 +1812,7 @@ NOT: NOT
 converted your existing WebCalendar event data to GMT.: converted your existing WebCalendar event data to GMT.
 If you have, you may ignore this notice and not proceed with the conversion.: If you have, you may ignore this notice and not proceed with the conversion.
 If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
-It appears that you have NOT converted your existing WebCalendar...: It appears that you have NOT converted your existing WebCalendar event data to GMT. If you have, you may ignore this notice and not proceed with the conversion.. If this is a new installation, you may also ignore this notice.
+It appears that you have NOT converted...: It appears that you have NOT converted your existing WebCalendar event data to GMT. If you have, you may ignore this notice and not proceed with the conversion. If this is a new installation, you may also ignore this notice.
 Convert Data to GMT: Convert Data to GMT
 Application Settings: Application Settings
 HTTP-based authentication was not detected: HTTP-based authentication was not detected
@@ -1801,6 +1825,7 @@ You should select Web Server from the list of User Authentication choices below.
 HTTP-based authentication was detected...: HTTP-based authentication was detected. User authentication is being handled by your web server. You should select 'Web Server' from the list of 'User Authentication' choices below.
 Create Default Admin Account: Create Default Admin Account
 Admin Account Not Found: Admin Account Not Found
+(Admin Account Not Found): (Admin Account Not Found)
 User Authentication: User Authentication
 Web-based via WebCalendar (default): Web-based via WebCalendar (default)
 Web Server: Web Server
