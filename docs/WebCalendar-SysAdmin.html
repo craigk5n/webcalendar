@@ -146,22 +146,28 @@ h2 {
   <li>Users can accept or reject events added by another user to their calendar</li>
   <li>Email reminders</li>
   <li>Email notifications for new events</li>
-  <li>Support for 30 different languages:
+  <li>Support, at least partially, for more than 40 different languages:
   <ul>
+   <li>Afrikaans</li>
+   <li>Albanian</li>
+   <li>Arabic</li>
    <li>Basque</li>
    <li>Bulgarian</li>
    <li>Catalan</li>
    <li>繁體中文(Big5)</li>
    <li>简体中文(GB2312)</li>
+   <li>Croatian</li>
    <li>Czech</li>
    <li>Danish</li>
    <li>Deutsche (German)</li>
+   <li>Elven (JRR Tolkien's "<i>Lord of the Rings</i>") Requires a special font.</li>
    <li>English</li>
    <li>Espa&#241;ol (Spanish)</li>
    <li>Estonian</li>
    <li>Fran&#231;ais (French)</li>
    <li>Galician</li>
    <li>Greek</li>
+   <li>Hebrew</li>
    <li>Hollands (Dutch)</li>
    <li>Holo (Taiwanese)</li>
    <li>Hungarian</li>
@@ -169,12 +175,16 @@ h2 {
    <li>Italiano (Italian)</li>
    <li>Japanese (EUCJP, SJIS)</li>
    <li>Korean</li>
+   <li>Lithuanian</li>
    <li>Norsk (Norwegian)</li>
    <li>Polish</li>
    <li>Portuguese</li>
    <li>Portuguese/Brazil</li>
    <li>Romanian</li>
    <li>Русско (Russian)</li>
+   <li>Serbian</li>
+   <li>Slovak</li>
+   <li>Slovenian</li>
    <li>Suomalainen (Finnish)</li>
    <li>Svensk (Swedish)</li>
    <li>Turkish</li>
@@ -1870,11 +1880,38 @@ If you use LDAP, the group functionality of WebCalendar does not yet work.</p>
 
 <p>To configure WebCalendar to use LDAP, do the following:</p>
 <ol>
+ <li>Verify that your PHP install supports LDAP.</li>
  <li>Configure <tt>settings.php</tt></li>
  <li>Configure <tt>includes/user-ldap.php</tt></li>
 </ol>
 
-<p>The first step is to set WebCalendar to use LDAP authentication in
+<p>The first step is to verify that your install of PHP supports LDAP. The 
+simplest way to do this is to view the output of <code>phpinfo()</code>. If you 
+can't easily call phpinfo() from another page, consider pasting the following 
+into a new page (e.g. <tt>phpinfo.php</tt>):</p>
+
+<pre>
+&lt;html&gt;&lt;head&gt;&lt;title&gt;PHP Info page&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;?php
+  phpinfo()
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>When you load the page in your browser, the resulting output will begin with 
+general PHP information and then include an alphabetical list of enabled PHP 
+modules. If you aren't sure where to put the file so you can load it via your 
+web server, place it in the webcalendar directory and add &quot;phpinfo.php&quot; 
+to the URL for your webcalendar install. If your PHP supports LDAP, it will be 
+listed as a module and version information will be given. If &quot;ldap&quot; is 
+not listed anywhere in the output of <tt>phpinfo()</tt>, then your PHP install 
+does not support LDAP. You may need to install additional packages, depending on 
+your OS and version; under Debian Linux, for example, the &quot;php4&quot; 
+package does not include support but, &quot;php4-ldap&quot; does.</p>
+ 
+<p>The second step is to set WebCalendar to use LDAP authentication in
 <tt>settings.php</tt>. Instructions on to do this can be found in the
 <a href="#appsetup">Application Installation</a> section above.
 In summary, the following should be set:<br />

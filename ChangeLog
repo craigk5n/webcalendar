@@ -1,5 +1,7 @@
 $Id$
 Version 1.1.3+CVS (?? ??? 2007)
+ - Applied PATCH [ 1203702 ] Sys-Admin Guide fails to mention LDAP support in PHP
+ - Updated list of supported languages in SysAdmin.html
  - Per PATCH [ 1622050 ] fixed somy messages
    I've started to combine some phrases together for easier translation.
    Including moving the punctuation from the code and into the phrase.
