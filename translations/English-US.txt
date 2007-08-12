@@ -1741,7 +1741,7 @@ Please change the file permissions of this file.: Please change the file permiss
 Please change includes dir permission: Please change the file permissions of your "includes" directory to allow writing by other users.
 Your settings have been saved.: Your settings have been saved.
 WebCalendar Setup Wizard: WebCalendar Setup Wizard
-Error you must specify a Single-User Login: Error: You must specify a\\nSingle-User Login.
+Error you must specify a Single-User Login: Error: You must specify a\nSingle-User Login.
 Full Path (no backslashes): Full Path (no backslashes)
 The password contains illegal characters.: The password contains illegal characters.
 This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see:<br />
