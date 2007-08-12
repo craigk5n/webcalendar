@@ -158,19 +158,21 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
 </html>';
   exit;
 }
+$offStr = translate ( 'OFF');
+$onStr = translate ( 'ON');
 // [0]Display Text [1]ini_get name [2]required value [3]ini_get string search value
 $php_settings = array (
-  array ( 'Safe Mode', 'safe_mode', 'OFF', false ),
+  array ( 'Safe Mode', 'safe_mode', $offStr, false ),
   // translate ( 'required only if Safe Mode is On' )
   array ( 'Safe Mode Allowed Vars '
      . translate ( '(required only if Safe Mode is On)' ),
     'safe_mode_allowed_env_vars', 'TZ', 'TZ' ),
-  array ( 'Display Errors', 'display_errors', 'ON', false ),
-  array ( 'File Uploads', 'file_uploads', 'ON', false ),
+  array ( 'Display Errors', 'display_errors', $onStr, false ),
+  array ( 'File Uploads', 'file_uploads', $onStr, false ),
   // translate ( 'required only if Remote Calendars are used' )
   array ( 'Allow URL fopen '
      . translate ( '(required only if Remote Calendars are used)' ),
-    'allow_url_fopen', 'ON', false ),
+    'allow_url_fopen', $onStr, false ),
   );
 // .
 // Set up array to test for some constants
@@ -186,7 +188,7 @@ $php_modules = array ( // .
   // translate ( 'needed for Gradient Image Backgrounds' )
   array ( 'GD '
      . translate ( '(needed for Gradient Image Backgrounds)' ),
-    'imagepng', 'ON' ),
+    'imagepng', $onStr ),
   );
 
 $pwd1 = getPostValue ( 'password1' );
@@ -695,7 +697,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>' . translate ( 'WebCalendar Setup Wizard' ) . '</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />';
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    ';
 include '../includes/js/visible.php';
 echo '
     <script language="JavaScript" type="text/javascript">
@@ -914,8 +917,8 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td class="prompt">' . $constant[0] . '</td>
         <td class="' . $class . '"><img alt="" src="'
      . ( $class == 'recommended'
-      ? 'recommended.gif" />&nbsp;' . translate ( 'ON' )
-      : 'not_recommended.jpg" />&nbsp;' . translate ( 'OFF' ) )
+      ? 'recommended.gif" />&nbsp;' . $onStr
+      : 'not_recommended.jpg" />&nbsp;' . $offStr )
      . '</td>
       </tr>';
   }
