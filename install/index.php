@@ -873,7 +873,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . translate ( 'Getting Help' ) . '</a></li>
             <li><a href="../UPGRADING.html" target="_docs">'
    . translate ( 'Upgrading Guide' ) . '</a></li>
-            <li><a href="http://www.k5n.us/dokuwiki/doku.php" target="_docs">'
+            <li><a href="http://www.k5n.us/wiki/" target="_docs">'
    . translate ( 'User Supported Wiki' ) . '</a></li>
           </ul>
         </td>
