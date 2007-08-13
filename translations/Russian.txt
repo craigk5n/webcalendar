@@ -1500,7 +1500,7 @@ Error Converting Timezone: Ошибка преобразования Временной Зоны
 Please change the file permissions of this file: Пожалуйста измените права доступа к файлу
 Please change includes dir permission: Пожалуйста установите права на запись для других пользователей в каталог includes
 Your settings have been saved: Ваши настройки сохранены
-Error you must specify a\\nSingle-User Login: Ошибка. Вы должны указать имя для\\nоднопользовательского режима
+Error you must specify a Single-User Login: Ошибка. Вы должны указать имя для\\nоднопользовательского режима
 Full Path (no backslashes): Полный путь (без обратных слэшей)
 The password contains illegal characters.: Пароль содержит неправильные символы.
 This installation wizard will guide you...: Этот мастер установки поможет вам настроить базовую установку WebCalendar. Для помощи и разрешения проблем смотрите

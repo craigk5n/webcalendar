@@ -1703,7 +1703,7 @@ Error Converting Timezone: Fehler bei der Zeitzonenkonvertierung
 Please change the file permissions of this file: Bitte ändern Sie die Rechte dieser Datei
 Please change includes dir permission: Bitte ändern Sie die Dateiberechtigungen von Ihrem 'includes'-Verzeichnis um 'Schreibrechte' für 'andere Benutzer' zu haben.
 Your settings have been saved: Ihre Einstellungen wurden gespeichert.
-Error you must specify a\\nSingle-User Login: Fehler, Sie müssen ein Einzelbenutzer Login definieren
+Error you must specify a Single-User Login: Fehler, Sie müssen ein Einzelbenutzer Login definieren
 Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
 The password contains illegal characters.: Das Kennwort beinhaltet unzulässige Zeichen
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). Für Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
