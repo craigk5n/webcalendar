@@ -1,5 +1,5 @@
 $Id$
-Version 1.1.4+CVS (?? ??? 2007)
+Version 1.3.0+CVS (?? ??? 2007)
  - Added CDATA block around JS in view_r.php
  - Applied PATCH [ 1203702 ] Sys-Admin Guide fails to mention LDAP support in PHP
  - Updated list of supported languages in SysAdmin.html
