@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.4 (?? Aug 2007)
+ - Added CDATA block around JS in view_r.php
  - Fixed bug [ 1716961 ] View other peoples Private Date Descriptions
  - Fixed bug [ 1768505 ] unclosed select-tag
  - Fixed bug [ 1657776 ] reminder time zone problem

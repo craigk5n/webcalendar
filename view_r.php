@@ -586,6 +586,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 
 </table>
 <script language="javascript" type="text/javascript">
+<!-- <![CDATA[
 function dblclick ( date, name, hour, minute ) {
 
  if ( ! minute )
@@ -600,6 +601,7 @@ function dblclick ( date, name, hour, minute ) {
 
  window.location.href  = url;
 }
+//]]> -->
 </script>
 <?php
 
