@@ -1,4 +1,8 @@
 $Id$
+
+NOTE: This is the 1.3.X development branch.  Put code changes right
+below the 1.3.0+CVS label below.
+
 Version 1.3.0+CVS (?? ??? 2007)
  - Added CDATA block around JS in view_r.php
  - Applied PATCH [ 1203702 ] Sys-Admin Guide fails to mention LDAP support in PHP
@@ -9,6 +13,7 @@ Version 1.3.0+CVS (?? ??? 2007)
  - Update the URL to the WebCalendar wiki
  - Fixed bug [ 1748124 ] reminder email has wrong date
  - Fixed bug [ 1766614 ] 'weekstart' at edit_entry is wrong
+
 Version 1.1.3 (4 Aug 2007)
  - Fixed bug: when upgrading from 1.0.5 to 1.1.X, a bad cookie session can
    cause PHP to crash on some systems.
@@ -128,6 +133,7 @@ Version 1.1.3 (4 Aug 2007)
  - Fixed bug [ 1617805 ] missing LINK to Craig's site if using 'top-menue'
  - Fixed bug [ 1617595 ] edit_template.php Error
  - Fixed bug [ 1617983 ] 'previous' and 'next' arrows didn't work at 'pop-up'-minical
+
 Version 1.1.2 (18 Dec 2006)
  - Fix in dbi4php.php when translate is not yet defined
  - Created new function get_users_event_ids ()
@@ -301,6 +307,7 @@ Version 1.1.2 (18 Dec 2006)
  - Fixed bug 1496930: 'userlist' will not be sorted as at your site
  - Fixed bug 1559567: v1.1.1 Fresh install Fails due to no database
  - Fixed bug 1556705: Missing mailto links on view_entry.php
+
 Version 1.1.1 (15 Sep 2006)
  - Fixed bug 1431329: user_search_dn() uses call by ref and too many admins
  - Fixed bug 1523439: Bug with admins in LDAP
@@ -830,6 +837,7 @@ Version 1.1.1 (15 Sep 2006)
  - Updated Norwegian translation
  - Updated French translation
  - Added Greek translation
+
 Version 1.0.0 (17 May 2005) aka Buster
  - Fixed bug 1202127: [ 1187734 ] Timezone offset problems still exist.
  - Fixed bug 1201821: Bypass user_sees_only_his_groups
@@ -899,6 +907,7 @@ Version 1.0.0 (17 May 2005) aka Buster
  - Updated Danish translation
  - Updated Finnish translation
  - Updated Polish translation
+
 Version 1.0RC3 (11 Mar 2005)
  - Added 'Public Access' to Manage Calendar of: list, if Admin.
  - Removed ODBC host:database option from php-dbi.php. If needed, host can be
@@ -975,6 +984,7 @@ Version 1.0RC3 (11 Mar 2005)
  - Updated Dutch translation
  - Updated Spanish translation
  - Updated all 3 Japanese translations
+
 Version 1.0RC2 (09 Feb 2005)
  - Fixed PHP warnings about undefined variable $enventinfo if empty.
  - Fixed issue where month.php and mini-calendar today highlight based on
@@ -992,6 +1002,7 @@ Version 1.0RC2 (09 Feb 2005)
  - Fixed bug 1116008: Got invalid user error when clicking on '+' icon
  to add new event
  - Updated Czech translation
+
 Version 1.0RC1 (04 Feb 2005)
  - Fixed Bug 1088857: sql statement was using != vs <> and failing
  with db2 7.1/odbc affected file view_entry.php
@@ -1437,6 +1448,7 @@ Verion 0.9.41 (16 Jun 2003)
  - Updated Dutch translation
  - Updated German translation.
  - Added Estonian translation.
+
 Version 0.9.40 (30 Nov 2002)
  - Added support for all-day events that will prevent any events from
  being added to that day (good for out-of-the-office/vacation).
@@ -1512,6 +1524,7 @@ Version 0.9.40 (30 Nov 2002)
  - Updated tables-db2.sql (was out-of-date).
  - Added + icon for adding new events on each hour for week and day views.
  - Fixed bug 598765: Fixed DEFAULT date setting.
+
 Version 0.9.39 (21 Aug 2002)
  - Fixed bug 597815: Fixed autoset of 'server_url' config setting to
  work when admin.php isn't the first page accessed.
@@ -1575,6 +1588,7 @@ Version 0.9.39 (21 Aug 2002)
  - Updated Chinese-GB2312 translation.
  - Updated German translation.
  - Updated French translation.
+
 Version 0.9.38 (12 Jul 2002)
  - Added event category support (code from Jeff Hoover - thanks).
  Categories can be either user-specific or global (if added by
@@ -1640,6 +1654,7 @@ Version 0.9.38 (12 Jul 2002)
  - Added Japanese translation.
  - Added Simplified Chinese translation (and renamed Big5 translation
  to Tradition Chinese based on some web research...)
+
 Version 0.9.37 (24 Jun 2002)
  - Added support for overriding or deleting single events in a
  repeating event. New links at the bottom of the view event page
@@ -1670,6 +1685,7 @@ Version 0.9.37 (24 Jun 2002)
  shows recent activity for all events.
  - Updated French translation
  - Updated German translation
+
 Version 0.9.36 (20 Jun 2002)
  - Fixed SQL bug in del_entry.php.
  - Added create table SQL in tables-postgres.sql and tables-oracle.sql
@@ -1705,6 +1721,7 @@ Version 0.9.36 (20 Jun 2002)
  - Updated FAQ.html to include note about register_globals.
  - Replaced COPYING with GPL.html.
  - Updated German translation.
+
 Version 0.9.35 (05 Jun 2002)
  - Added fancy new admin interface for setting WebCalendar settings.
  Almost all settings previously found in config.inc are now set
@@ -1783,6 +1800,7 @@ Version 0.9.35 (05 Jun 2002)
  Tracks event creation, update, accept, reject, notification and
  reminders.
  - Updated FAQ and converted it to HTML.
+
 Version 0.9.34 (16 Dec 2001)
  - Patch 468897: Fix DEFAULT for new calendar entries to be public (not
  confidential)
@@ -1806,6 +1824,7 @@ Version 0.9.34 (16 Dec 2001)
  - Added Hungarian translation.
  - Updated Swedish translation.
  - Updated French translation.
+
 Version 0.9.33 (02 Aug 01)
  - Fixed bug: the back to my calendar link would go to another user's
  calendar if you just viewed another user's calendar.
@@ -1820,6 +1839,7 @@ Version 0.9.33 (02 Aug 01)
  reminders if they've been disabled in config.inc
  - Added missing user-ldap.inc to the distribution.
  - Updated Swedish translation
+
 Version 0.9.32 (26 July 01)
  - Fixed some of the login/session code. After examining the code, I'm
  surprised it worked at all! :-) And, it suddenly stopped working on
@@ -1861,6 +1881,7 @@ Version 0.9.32 (26 July 01)
  - Fixed bug 438980: Oracle SQL syntax error in tables-oracle.sql
  - Fixed bug: When participant list display is disabled, events
  were not being created properly.
+
 Version 0.9.31 (02 Jul 01)
  - Added Swedish translation.
  - Updated Dutch translation.
@@ -1922,6 +1943,7 @@ Version 0.9.31 (02 Jul 01)
  - Don't allow user to change password if using http authorization.
  - Added back selectDate javascript function that was mistakenly
  removed from edit_entry.php.
+
 Version 0.9.30 (08 Jun 01)
  - Generate a fatal error when MySQL returns an error instead of
  ignoring it.
@@ -1936,11 +1958,13 @@ Version 0.9.30 (08 Jun 01)
  on Postgres.
  - Fixed bug: conflict checking was not working properly for repeating
  events when future dates were in a different daylight savings mode.
+
 Version 0.9.29 (05 Jun 01)
  - Fixed bug: When editing an event, the event date is set to the
  current date rather than the event's date.
  - Fixed bug: Adding missing argument to user_load_variables() in
  login.php that was preventing some people from being able to login.
+
 Version 0.9.28 (01 Jun 01)
  - Moved all the references to the webcal_user table to be in the
  new includes/user.inc file. This BREAKS the NIS user authentication,
@@ -1965,6 +1989,7 @@ Version 0.9.28 (01 Jun 01)
  - Fixed bug 429271: error message on missing argument to my_array_slice().
  - Security fixes
  - Updated translations: French
+
 Version 0.9.27 (20 May 01)
  - Added support for customizing event fields. This allows each
  site to add textual fields, dates, URLs, etc. without having
@@ -2012,6 +2037,7 @@ Version 0.9.27 (20 May 01)
  - Added Chinese-Big5 translation
  - Updated Danish translation
  - Updated German translation
+
 Version 0.9.26 (05 January 01)
  - Added Portuguese/Brazil translation
  - Add ability to add event to your own calendar when viewing an
@@ -2028,6 +2054,7 @@ Version 0.9.26 (05 January 01)
  - Fixed bug: error on deleting an event because translate.inc was
  not included
  - Fixed bug: dups for layers were showing up in all views
+
 Version 0.9.25 (18 December 00)
  - Added Russian translation
  - Updated Dutch translation
@@ -2063,6 +2090,7 @@ Version 0.9.25 (18 December 00)
  - Consolidated some near-duplicate code in the process.
  - Speeds up queries when using layers considerably.
  - Fixed bug 119484: errors in popups when listing unapproved events
+
 Version 0.9.24 (16 October 00)
  - Fixed bug: logins do not work sometimes when first setting up
  the app. (Removed the use of $HTTP_COOKIE_VARS array.)
@@ -2073,6 +2101,7 @@ Version 0.9.24 (16 October 00)
  event via layers.
  - Added ability to quickly disable and enable layers via link on the
  bottom of all pages.
+
 Version 0.9.23 (20 September 00)
  - Added support for using the browser-specified language (specified
  in your browser's preferences). The DEFAULT language is now set
@@ -2085,12 +2114,14 @@ Version 0.9.23 (20 September 00)
  new translations are usually started with this file)
  - Added Portuguese translation file missing from version 0.9.22
  - Added Icelandic translation
+
 Version 0.9.22 (17 August 00)
  - Added support for layers that allow you to overlay another user's
  calendar onto your calendar. (See UPGRADING for upgrading instructions).
  - Fixed bug: Time, Description were not being translated in the
  event popup windows
  - Added Portuguese translation
+
 Version 0.9.21 (31 July 00)
  - Fixed bug: JavaScript bug in datesel.php caused date selection popup
  window to not work
@@ -2098,6 +2129,7 @@ Version 0.9.21 (31 July 00)
  - Fixed bug: Sun did not show up in the table header of the week view
  when week start is set to Monday
  - Update Czech translation
+
 Version 0.9.20 (30 July 00)
  - Added spacer.gif back to the distribution (required by colors.php)
  - Fixed bug: typo in SQL prevented repeated events from being read
@@ -2110,6 +2142,7 @@ Version 0.9.20 (30 July 00)
  - Added Danish translation
  - Updated German translation
  - Updated Italian translation
+
 Version 0.9.19 (28 July 00)
  - Fixed bug: when week starts on Monday, week view displayed first
  day header as Sunday
@@ -2131,8 +2164,10 @@ Version 0.9.19 (28 July 00)
  - Made the created by user a mailto link on the event view page
  - Updated French translation
  - Updated German translation
+
 Version 0.9.18 (22 July 00)
  - Adding missing files month.php and year.php to distribution (oops)
+
 Version 0.9.17 (22 July 00)
  - Modified week-at-a-glance view to display hours like the
  day-at-a-glance view.
@@ -2157,6 +2192,7 @@ Version 0.9.17 (22 July 00)
  1st of the month if configured with Mondays as the week start
  - Fixed bug: months with daylight savings change-overs sometimes
  displayed incorrectly
+
 Version 0.9.16 (26 June 00)
  - Added export function. The first format supported is the format of
  the install-datebook tool, which is part of the pilot-link distribution.
@@ -2187,9 +2223,11 @@ Version 0.9.16 (26 June 00)
  - Fixed bug: private events could not be viewed by the event owner
  - Fixed bug: when viewing another user's calendar, some links would take
  you back to your own calendar without notice
+
 Version 0.9.15 (09 June 00)
  - Fixed bug that prevented the description from appearing on mouse over
  in the month view and week view.
+
 Version 0.9.14 (09 June 00)
  - Added repeating events
  (original code contributed by Lachlan Cox <lachie@zip.com.au>)
@@ -2201,6 +2239,7 @@ Version 0.9.14 (09 June 00)
  - Added Dutch translation
  - Added Korean translation
  - Added Spanish translation
+
 Version 0.9.13 (07 Jun 00)
  - Added I18N support through the use of translate() and etranslate()
  functions in new translate.inc file.
@@ -2216,13 +2255,16 @@ Version 0.9.13 (07 Jun 00)
  can be generated dynamically (eventually)
  - Changed Oracle table for events to use VARCHAR2(1024) instead of LONG
  so that the description field can be searched.
+
 Version 0.9.12 (25 May 00)
  - Added popups for event description on mouse over of events.
  - Fixes for events scheduled at midnight
  - Fixed so that an event from 10-11 doesn't conflict with an event
  from 11-12.
+
 Version 0.9.11 (23 May 00)
  - Fixed some code that was MySQL-specific to work with all dbs.
+
 Version 0.9.10 (23 May 00)
  - Added day-at-a-glance
  - Added support for sending email notification when events are added
@@ -2244,14 +2286,17 @@ Version 0.9.10 (23 May 00)
  Ian R. Justman)
  - Don't allow someone to delete an event unless they created it (were
  able to do this from the edit event page)
+
 Version 0.9.9 (02 May 00)
  - PostgreSQL fixes (provided by Ken Harris)
  - New tables-postgres.sql provided (provided by Ken Harris)
  - fixed HTML bug where the navigation pulldowns on the bottom were
  incorrect when viewing another user's calendar
  - Added FAQs to README
+
 Version 0.9.8 (23 Feb 00)
  - fixed major bug that prevented users from adding new events
+
 Version 0.9.7 (23 Feb 00)
  - moved all database-specific calls into php-dbi.inc and added
  support for Oracle as well as PostgreSQL (not tested) and
@@ -2271,6 +2316,7 @@ Version 0.9.7 (23 Feb 00)
  are approved despite the setting of $DISPLAY_UNAPPROVED.
  - fixed bugs where confidential entries could be viewed and edited
  by other users
+
 Version 0.9.6 (21 Feb 00)
  - renamed all files from .php3 to php (since it works with php4, too)
  - added the option to use HTTP basic authorization (if using PHP
@@ -2283,6 +2329,7 @@ Version 0.9.6 (21 Feb 00)
  in case users did not use --enable-track-vars when building PHP
  (caused people to not be able to login)
  (Thanks to Andy Skunza <askunza@dynamix-ltd.com> for this fix.)
+
 
 Version 0.9.5 (10 Feb 2000)
  - fixed bug that caused months with DST change to display incorrect
