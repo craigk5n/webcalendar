@@ -1384,7 +1384,7 @@ Correct your entries and try again: エントリを修正し、再度試みま�
 Error Converting Timezone: タイムゾーンの変換にエラーです。
 Please change the file permissions of this file: このファイルのパーミッションを変更してください。
 Your settings have been saved: 設定を保存しました。
-Error you must specify a\\nSingle-User Login: エラーです。シングルユーザーログインを指定しなければなりません。
+Error you must specify a Single-User Login: エラーです。シングルユーザーログインを指定しなければなりません。
 Full Path (no backslashes): フルパス (バックスラッシュは不要です)
 The password contains illegal characters.: パスワードに不当な文字が含まれています。
 PHP Version Check: PHP のバージョンを確認する

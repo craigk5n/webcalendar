@@ -1407,7 +1407,7 @@ Error Converting Timezone: שגיאה בהמרת איזור הזמן
 Please change the file permissions of this file: נא לשנות את ההרשאות של הקובץ הזה
 Please change includes dir permission: נא לשנות את ההרשאות של מחיצת includes כדי לאפשר כתיבה על ידי משתמשים אחרים
 Your settings have been saved: העדיפויות שלך נשמרו
-Error you must specify a\\nSingle-User Login: שגיאה, עליך לציין \\nכניסת משתמש יחיד
+Error you must specify a Single-User Login: שגיאה, עליך לציין \\nכניסת משתמש יחיד
 Full Path (no backslashes): מסלול מלא (ללא קו נתוי הפוך)
 The password contains illegal characters.: הסיסמא מכילה תווים לא חוקיים.
 This installation wizard will guide you...: אשף ההתקנה יוביל אותך דרך ההתקנה הבסיסית של לוח השנה. עבור עזרה ואיתור תקלות ראה

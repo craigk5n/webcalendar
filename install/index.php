@@ -745,7 +745,7 @@ function validate ( form )
   if ( form.form_user_inc.options[listid].selected ) {
     if ( form.form_single_user_login.value.length == 0 ) {
       // No single user login specified
-      alert ("<?php etranslate ( 'Error you must specify a\\nSingle-User Login', true ) ?> ");
+      alert ("<?php etranslate ( 'Error you must specify a Single-User Login', true ) ?> ");
       form.form_single_user_login.focus ();
       return false;
     }

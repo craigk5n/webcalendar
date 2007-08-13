@@ -1600,7 +1600,7 @@ Error Converting Timezone: Fout bij converteren tijdzone
 Please change the file permissions of this file: Wijzig de bestandspermissies van dit bestand
 Please change includes dir permission: Wijzig includes directory permissies
 Your settings have been saved: Uw instellingen zijn opgeslagen
-Error you must specify a\\nSingle-User Login: Fout u moet een\\nEnkele-Gebruikers Login
+Error you must specify a Single-User Login: Fout u moet een\\nEnkele-Gebruikers Login
 Full Path (no backslashes): Volledig pad (geen schuine strepen achterover)
 The password contains illegal characters.: Het wachtwoord bevat ongeldige tekens.
 This installation wizard will guide you...: De installatie-wizard zal u leiden...

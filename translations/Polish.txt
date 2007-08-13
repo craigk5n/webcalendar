@@ -1089,7 +1089,7 @@ Correct your entries and try again: Popraw wprowadzone dane i spróbuj ponownie
 Error Converting Timezone: B³±d podczas konwertowania stefy czasowej
 Please change the file permissions of this file: Zmieñ prawa dostêpu do tego pliku
 Your settings have been saved: Twoje ustawienia zosta³y zapisane
-Error you must specify a\\nSingle-User Login: B³±d musisz ustaliæ a\\nLogowanie pojedyñczego u¿ytkownika
+Error you must specify a Single-User Login: B³±d musisz ustaliæ a\\nLogowanie pojedyñczego u¿ytkownika
 Full Path (no backslashes): Pe³na ¶cie¿ka (bez backslashy)
 PHP Version Check: Sprawdzenie wersji PHP
 Check to see if PHP 4.1.0 or greater is installed: Zaznacz aby sprawdziæ czy jest zainstalowane PHP w wersji 4.1.0 lub nowszej
