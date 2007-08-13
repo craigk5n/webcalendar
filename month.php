@@ -68,7 +68,7 @@ if ( $DISPLAY_TASKS == 'Y' && $friendly != 1 ) {
   $tableWidth = '80%';
 }
 $eventinfo = ( ! empty ( $eventinfo ) ? $eventinfo : '' );
-$monthStr = display_month ( $thismonth, $thisyear );
+$monthStr = display_month ( $thismonth, $thisyear, false, true );
 $navStr = display_navigation ( 'month' );
 
 if ( empty ( $friendly ) ) {

@@ -965,12 +965,58 @@ function display_admin_link ( $break = true ) {
 
 /* Generate HTML to create a month display.
  */
-function display_month ( $thismonth, $thisyear, $demo = false ) {
+function display_month ( $thismonth, $thisyear, $demo = false,
+  $enableDblClick = false ) {
   global $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_LONG_DAYS, $DISPLAY_WEEKNUMBER,
-  $login, $today, $user, $WEEK_START, $WEEKENDBG;
+    $login, $today, $user, $WEEK_START, $WEEKENDBG,
+    $readonly, $is_admin, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD;
 
-  $ret = '
-    <table class="main" cellspacing="0" cellpadding="0" id="month_main" summary="">
+  $ret = '';
+
+  if ( $enableDblClick ) {
+    $can_add = ( $readonly == 'N' || $is_admin );
+    if ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD != 'Y'
+       && $login == '__public__' )
+      $can_add = false;
+    if ( $readonly == 'Y' )
+      $can_add = false;
+    if ( $is_nonuser )
+      $can_add = false;
+  } else {
+    // double-click not enabled
+    $can_add = false;
+  }
+
+  // Add JavaScript code for double-click handling
+  // TODO: may want to add this to an external javascript file
+  if ( $can_add ) {
+    $ret .=
+      '<script language="javascript" type="text/javascript">' . "\n" .
+      '<!-- <![CDATA[' . "\n" .
+      'function dblclick ( date, name, hour, minute ) {' . "\n" .
+      '  if ( ! minute )' . "\n" .
+      '    minute = 0;' . "\n" .
+      '  if ( hour ){' . "\n" .
+      '    time = "&hour=" + hour + "&minute=" + minute;' . "\n" .
+      '  } else {' . "\n" .
+      '    time = "&duration=1440";' . "\n" .
+      '  }' . "\n" .
+      '  var url = \'edit_entry.php?date=\' + date' . "\n" .
+      '    + \'&defusers=\' + name + time;' . "\n" .
+      //'  alert("URL: " + url );' . "\n" .
+      '  window.location.href = url;' . "\n" .
+      '}' . "\n" .
+      '//]]> -->' . "\n" .
+      '</script>' . "\n";
+    $help = 'title="' .
+      translate ( 'Double-click on empty cell to add new entry' ) . '"';
+  } else {
+    $help = '';
+  }
+
+
+  $ret .= '
+    <table ' . $help . ' class="main" cellspacing="0" cellpadding="0" id="month_main" summary="">
       <tr>' . ( $DISPLAY_WEEKNUMBER == 'Y' ? '
         <th class="empty"></th>' : '' );
 
@@ -1025,6 +1071,10 @@ function display_month ( $thismonth, $thisyear, $demo = false ) {
       $ret .= '
         <td';
 
+      if ( $can_add ) {
+        $ret .= " ondblclick=\"dblclick( '$dateYmd', '$login' )\"";
+      }
+
       $currMonth = ( $dateYmd >= $monthstart && $dateYmd <= $monthend );
       if ( $currMonth ||
         ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
@@ -1036,7 +1086,7 @@ function display_month ( $thismonth, $thisyear, $demo = false ) {
         $ret_events = '';
         if ( ! $demo )
           $ret_events = print_date_entries ( $dateYmd,
-            ( empty ( $user ) ? $login : $user ), false );
+            ( empty ( $user ) ? $login : $user ), false, true );
         else {
           // Since we base this calendar on the current month,
           // the placement of the days always change so
@@ -4311,8 +4361,11 @@ function print_color_input_html ( $varname, $title, $varval = '' ) {
  * @param string $date  Date in YYYYMMDD format
  * @param string $user  Username
  * @param bool   $ssi   Is this being called from week_ssi.php?
+ * @param bool   $disallowAddIcon	If true, then do not display the
+ *					add icon, even if user can add events
  */
-function print_date_entries ( $date, $user, $ssi = false ) {
+function print_date_entries ( $date, $user, $ssi = false,
+  $disallowAddIcon = false ) {
   global $cat_id, $DISPLAY_TASKS_IN_GRID, $DISPLAY_UNAPPROVED, $events,
   $is_admin, $is_nonuser, $login, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
   $readonly, $tasks, $WEEK_START;
@@ -4334,6 +4387,9 @@ function print_date_entries ( $date, $user, $ssi = false ) {
     $can_add = false;
 
   if ( $is_nonuser )
+    $can_add = false;
+
+  if ( $disallowAddIcon )
     $can_add = false;
 
   if ( ! $ssi ) {
