@@ -46,7 +46,7 @@ $thisdate = date ( 'Ymd', $startdate );
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
-print_header ( array ( 'js/popups.php/true' ) );
+print_header ( array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ) );
 
 echo '
     <div style="width:99%;">
@@ -81,6 +81,7 @@ if ( ! empty ( $error ) ) {
   echo print_error ( $error ) . print_trailer ();
   exit;
 }
+$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
 $e_save = $re_save = array ();
 $viewusercnt = count ( $viewusers );
@@ -108,7 +109,11 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
 
   echo '
     <br /><br />
-    <table class="main" summary="">
+    <table class="main" summary=""';
+  if ( $can_add )
+    echo ' title="' .
+      translate ( 'Double-click on empty cell to add new entry' ) . '"';
+  echo '>
       <tr>
         <th class="empty">&nbsp;</th>';
   // .
@@ -153,11 +158,10 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       if ( $class == 'class="row"' )
         $class = '';
 
-      echo '
-        <td ' . $class . ' style="width:' . $tdw . '%;">'
-       . ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N'
-        ? html_for_add_icon ( $dateYmd, '', '', $user ) : '' )
-       . $entryStr . '</td>';
+      echo '<td ' . $class . ' style="width:' . $tdw . '%;"';
+      if ( $can_add )
+        echo " ondblclick=\"dblclick_add( '$dateYmd', '$user', 0, 0 )\"";
+      echo '>' . $entryStr . '</td>';
     } //end for
     echo '
       </tr>';
