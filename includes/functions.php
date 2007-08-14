@@ -4503,31 +4503,38 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
   for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     $time_h = intval ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
-    $addIcon = ( $can_add
-      ? html_for_add_icon ( $date, $time_h, $time_m, $user ) : '' );
-    $ret .= '
-      <tr>
-        <th class="row">'
+    $ret .= '<tr><th class="row"';
+    $ret .= '>'
      . display_time ( ( $time_h * 100 + $time_m ) * 100 ) . '</th>';
     if ( $rowspan > 1 ) {
       // This might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
-      if ( ! empty ( $hour_arr[$i] ) )
-        $ret .= '
-        <td class="hasevents">' . $addIcon . $hour_arr[$i] . '</td>';
-
+      if ( ! empty ( $hour_arr[$i] ) ) {
+        $ret .= '<td class="hasevents"';
+        if ( $can_add )
+          $ret .=
+            " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
+        $ret .= '>' . $hour_arr[$i] . '</td>';
+      }
       $rowspan--;
     } else {
       $ret .= '
         <td ';
-      if ( empty ( $hour_arr[$i] ) )
-        $ret .= ( $date == date ( 'Ymd', $today ) ? ' class="today"' : '' )
-         . '>' . ( $can_add ? $addIcon : '&nbsp;' );
-      else {
+      if ( empty ( $hour_arr[$i] ) ) {
+        $ret .= ( $date == date ( 'Ymd', $today ) ? ' class="today"' : '' );
+        if ( $can_add )
+          $ret .=
+            " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
+        $ret .=  '>&nbsp;';
+      } else {
         $rowspan = ( empty ( $rowspan_arr[$i] ) ? '' : $rowspan_arr[$i] );
 
         $ret .= ( $rowspan > 1 ? 'rowspan="' . $rowspan . '"' : '' )
-         . 'class="hasevents">' . $addIcon . $hour_arr[$i];
+         . 'class="hasevents"';
+        if ( $can_add )
+          $ret .=
+            " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
+        $ret .= '>' . $hour_arr[$i];
       }
       $ret .= '</td>';
     }
