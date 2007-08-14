@@ -42,7 +42,9 @@ $thisdate = date ( 'Ymd', $wkstart );
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
-print_header ( array ( 'js/popups.php/true' ) );
+$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
+
+print_header ( array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ) );
 ob_start ();
 echo '
     <div style="width:99%;">
@@ -94,7 +96,11 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   // .
   $tdw = 12; // Column width percent.
   echo '
-    <table class="main" summary="">
+    <table class="main" summary=""';
+  if ( $can_add )
+    echo 'title="' .
+      translate ( 'Double-click on empty cell to add new entry' ) . '"';
+  echo '>
       <tr>
         <th class="empty">&nbsp;</th>';
 
@@ -120,21 +126,19 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
         : ( ! empty ( $entryStr ) && $entryStr != '&nbsp;'
           ? ' class="hasevents"'
           : ( $is_weekend ? ' class="weekend"' : '' ) ) )
-       . ' style="width:' . $tdw . '%;">';
+       . ' style="width:' . $tdw . '%;"';
       // .
       // Build header row.
       if ( $i == 0 ) {
-        $header .= '
-        <th' . $class
+        $header .= '<th' . $class . '>'
          . weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS ) . ' '
          . date ( 'd', $date ) . '</th>';
       }
 
-      $body .= '
-        <td' . $class
-       . ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N'
-        ? html_for_add_icon ( $dateYmd, '', '', $user ) . "\n" : '' )
-       . $entryStr . '
+      $body .= '<td' . $class;
+      if ( $can_add )
+        $body .= " ondblclick=\"dblclick_add( '$dateYmd', '$user' )\"";
+      $body .= '>' . $entryStr . '
         </td>';
     }
     $body .= '
