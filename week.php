@@ -59,6 +59,13 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
   $tasks = read_tasks ( ! empty ( $user ) && strlen ( $user ) && $is_assistant
     ? $user : $login, $wkend, $cat_id );
 
+if ( $can_add ) {
+  $help = 'title="' .
+    translate ( 'Double-click on empty cell to add new entry' ) . '"';
+} else {
+  $help = '';
+}
+
 $eventsStr = $filler = $headerStr = $minical_tasks = $untimedStr = '';
 $navStr = display_navigation ( 'week' );
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
@@ -74,11 +81,13 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     ? ' class="today"'
     : ( is_weekend ( $days[$i] ) ? ' class="weekend"' : '' ) );
 
-  $headerStr .= '
-              <th ' . $class . '>'
-   . ( $can_add ? html_for_add_icon ( $dateYmd, '', '', $user ) : '' )
-   . '<p style="margin:.75em 0 0 0"><a href="day.php?' . $u_url . 'date=' . $dateYmd . $caturl . '">'
-   . $header[$i] . '</a></p></th>';
+  $headerStr .= '<th ' . $class .
+    ( $can_add ? " ondblclick=\"dblclick_add('$dateYmd','$user',0,0)\"" : '' ) .
+    ">";
+  $headerStr .=
+    '<p style="margin:.75em 0 0 0"><a href="day.php?' . $u_url .
+    'date=' . $dateYmd . $caturl . '">' .
+    $header[$i] . '</a></p></th>';
 
   $date = date ( 'Ymd', $days[$i] );
   $hour_arr = $rowspan_arr = $tk = array ();
@@ -137,12 +146,13 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     $untimed_found = true;
   }
 
-  $untimedStr .= '
-              <td'
+  $untimedStr .= '<td';
+  if ( $can_add )
+    $untimedStr .= " ondblclick=\"dblclick_add('$dateYmd','$user',0,0)\"";
   // Use the class 'hasevents' for any hour block that has events in it.
-  . ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
-   ? ' class="hasevents"' : $class )
-   . '>' . ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
+  $untimedStr .= ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
+    ? ' class="hasevents"' : $class )
+    . '>' . ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
     ? $untimed[$i] : '&nbsp;' ) . '</td>';
 
   $save_hour_arr[$i] = $hour_arr;
@@ -157,10 +167,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = intval ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
   // Do not apply TZ offset.
-  $eventsStr .= '
-            <tr>
-              <th class="row">'
-   . display_time ( ( $time_h * 100 + $time_m ) * 100, 1 ) . '</th>';
+  $eventsStr .= '<tr><th class="row">' .
+    display_time ( ( $time_h * 100 + $time_m ) * 100, 1 ) . '</th>';
 
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $dateYmd = date ( 'Ymd', $days[$d] );
@@ -177,26 +185,26 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     if ( $rowspan_day[$d] > 1 ) {
       // This might mean there's an overlap,
       // or it could mean one event ends at 11:15 and another starts at 11:30.
-      if ( ! empty ( $save_hour_arr[$d][$i] ) )
+      if ( ! empty ( $save_hour_arr[$d][$i] ) ) {
         $eventsStr .= '
-              <td' . $class . '>' . $save_hour_arr[$d][$i] . '</td>';
+              <td' . $class;
+        if ( $can_add )
+          $eventsStr .= " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
+        $eventsStr .=  '>' . $save_hour_arr[$d][$i] . '</td>';
+      }
 
       $rowspan_day[$d]--;
     } else {
-      $eventsStr .= '
-              <td' . $class;
+      $eventsStr .= '<td' . $class;
+      if ( $can_add )
+        $eventsStr .= " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
-        $eventsStr .= '>'
-         . ( $can_add // If user can add events, then echo the add event icon.
-          ? html_for_add_icon ( $dateYmd, $time_h, $time_m, $user ) : '' )
-         . '&nbsp;';
+        $eventsStr .= '>' . '&nbsp;';
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         $eventsStr .= ( $rowspan_day[$d] > 1
           ? ' rowspan="' . $rowspan_day[$d]  .'"': '' )
-         . '>' . ( $can_add
-          ? html_for_add_icon ( $dateYmd, $time_h, $time_m, $user ) : '' )
-         . $save_hour_arr[$d][$i];
+         . '>' .  $save_hour_arr[$d][$i];
       }
       $eventsStr .= '</td>';
     }
@@ -230,8 +238,9 @@ if ( $DISPLAY_TASKS == 'Y' ) {
         </td>';
 }
 
-print_header ( array ( 'js/popups.php/true' ), generate_refresh_meta (), '',
-  false, false, false, false );
+print_header (
+  array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ),
+  generate_refresh_meta (), '', false, false, false, false );
 
 echo <<<EOT
     <table width="100%" cellpadding="1" summary="">
@@ -243,7 +252,7 @@ echo <<<EOT
       </tr>
       <tr>
         <td>
-          <table class="main" summary="">
+          <table class="main" summary="" $help >
             <tr>
               <th class="empty">&nbsp;</th>{$headerStr}
             </tr>{$untimedStr}{$eventsStr}

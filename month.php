@@ -81,8 +81,9 @@ $trailerStr = print_trailer ();
 $HeadX = generate_refresh_meta ()
   . '<script src="includes/js/weekHover.js" type="text/javascript"></script>';
 
-print_header ( array ( 'js/popups.php/true', 'js/visible.php' ), $HeadX,
-'', false, false, false, false );
+print_header (
+  array ( 'js/popups.php/true', 'js/visible.php', 'js/dblclick_add.js/true' ),
+  $HeadX, '', false, false, false, false );
 
 echo <<<EOT
     <table border="0" width="100%" cellpadding="1" summary="">
