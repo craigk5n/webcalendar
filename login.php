@@ -179,7 +179,11 @@ function myOnLoad () {
 </script>
 <?php
 }
-  echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login=__public__" />';
+  $csscache =  ( isset ( $_COOKIE['webcalendar_csscache'] ) ?
+    $_COOKIE['webcalendar_csscache'] : 1 );
+
+  echo '<link rel="stylesheet" type="text/css" href="css_cacher.php?login=__public__'
+	 . $csscache . '" />';
 
  // Print custom header (since we do not call print_header function)
  if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {

@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.4 (?? Aug 2007)
+ - Fixed bug [ 1746529 ] login.php is still cached after changing anything at admin.php
  - Added CDATA block around JS in view_r.php
  - Fixed bug [ 1716961 ] View other peoples Private Date Descriptions
  - Fixed bug [ 1768505 ] unclosed select-tag
