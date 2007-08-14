@@ -964,6 +964,8 @@ function display_admin_link ( $break = true ) {
 }
 
 /* Generate HTML to create a month display.
+ * If $enableDblClick is set to true, the file js/dblclick_add.js should
+ * be included in the array of includes passed to print_header().
  */
 function display_month ( $thismonth, $thisyear, $demo = false,
   $enableDblClick = false ) {
@@ -987,27 +989,8 @@ function display_month ( $thismonth, $thisyear, $demo = false,
     $can_add = false;
   }
 
-  // Add JavaScript code for double-click handling
-  // TODO: may want to add this to an external javascript file
+  // Add mouse-over help for table.
   if ( $can_add ) {
-    $ret .=
-      '<script language="javascript" type="text/javascript">' . "\n" .
-      '<!-- <![CDATA[' . "\n" .
-      'function dblclick ( date, name, hour, minute ) {' . "\n" .
-      '  if ( ! minute )' . "\n" .
-      '    minute = 0;' . "\n" .
-      '  if ( hour ){' . "\n" .
-      '    time = "&hour=" + hour + "&minute=" + minute;' . "\n" .
-      '  } else {' . "\n" .
-      '    time = "&duration=1440";' . "\n" .
-      '  }' . "\n" .
-      '  var url = \'edit_entry.php?date=\' + date' . "\n" .
-      '    + \'&defusers=\' + name + time;' . "\n" .
-      //'  alert("URL: " + url );' . "\n" .
-      '  window.location.href = url;' . "\n" .
-      '}' . "\n" .
-      '//]]> -->' . "\n" .
-      '</script>' . "\n";
     $help = 'title="' .
       translate ( 'Double-click on empty cell to add new entry' ) . '"';
   } else {
@@ -1072,7 +1055,7 @@ function display_month ( $thismonth, $thisyear, $demo = false,
         <td';
 
       if ( $can_add ) {
-        $ret .= " ondblclick=\"dblclick( '$dateYmd', '$user' )\"";
+        $ret .= " ondblclick=\"dblclick_add( '$dateYmd', '$user' )\"";
       }
 
       $currMonth = ( $dateYmd >= $monthstart && $dateYmd <= $monthend );
