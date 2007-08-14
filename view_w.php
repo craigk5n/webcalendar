@@ -40,7 +40,9 @@ $wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ) );
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
-print_header ( array ( 'js/popups.php/true' ) );
+$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
+
+print_header ( array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ) );
 
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );
@@ -106,7 +108,11 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     : 5 );
 
   echo '
-    <table class="main" cellspacing="0" cellpadding="1" summary="">
+    <table class="main" cellspacing="0" cellpadding="1" summary=""';
+  if ( $can_add )
+    echo 'title="' .
+      translate ( 'Double-click on empty cell to add new entry' ) . '"';
+  echo '>
       <tr>
         <th class="empty">&nbsp;</th>';
 
@@ -149,11 +155,10 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
         $class = '';
 
       echo '
-        <td ' . $class . ' style="width:' . $tdw . '%;">'
-       . ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N'
-        ? html_for_add_icon ( date ( 'Ymd', $date ), '', '', $user ) : '' )
-       . $entryStr . '
-        </td>';
+        <td ' . $class . ' style="width:' . $tdw . '%;"';
+      if ( $can_add )
+        echo " ondblclick=\"dblclick_add( '$dateYmd', '$user', 0, 0 )\"";
+      echo '>' . $entryStr . '</td>';
     }
     echo '
       </tr>';
