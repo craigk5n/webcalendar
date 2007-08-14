@@ -1072,7 +1072,7 @@ function display_month ( $thismonth, $thisyear, $demo = false,
         <td';
 
       if ( $can_add ) {
-        $ret .= " ondblclick=\"dblclick( '$dateYmd', '$login' )\"";
+        $ret .= " ondblclick=\"dblclick( '$dateYmd', '$user' )\"";
       }
 
       $currMonth = ( $dateYmd >= $monthstart && $dateYmd <= $monthend );
