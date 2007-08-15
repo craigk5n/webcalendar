@@ -542,10 +542,6 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
               . "'$viewusers[$u]', '$time_h', '$time_m' )\"";
           }
           echo '>';
-          //if ( $can_add ) {        //if user can add events...
-          //  echo html_for_add_icon ( $dateYmd,
-          //    $time_h, $time_m, $user );        //..then echo the add event icon
-          //}
           echo "&nbsp;</td>\n";
         } else {
           $rowspan_day[$u][$d] = $save_rowspan_arr[$u][$d][$i];
@@ -557,10 +553,6 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
                 . "'$user', '$time_h', '$time_m' )\"";
             }
             echo '>';
-            //if ( $can_add ) {
-            //  echo html_for_add_icon ( $dateYmd, $time_h,
-            //    $time_m, $user );
-            //}
             echo $hour_arr[$i]."</td>\n";
           } else {
             echo "<td $class ";
@@ -569,10 +561,6 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
                 . "'$user', '$time_h', '$time_m' )\"";
             }
             echo '>';
-            //if ( $can_add ) {
-            //  echo html_for_add_icon ( $dateYmd, $time_h,
-            //    $time_m, $user );
-            //}
             echo $hour_arr[$i]."</td>\n";
           }
         }
