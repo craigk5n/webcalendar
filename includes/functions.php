@@ -3271,38 +3271,6 @@ function hextoint ( $val ) {
   return 0;
 }
 
-/* Generates the HTML for an icon to add a new event.
- *
- * @param string $date    Date for new event in YYYYMMDD format
- * @param int    $hour    Hour of day (0-23)
- * @param int    $minute  Minute of the hour (0-59)
- * @param string $user    Participant to initially select for new event
- *
- * @return string  The HTML for the add event icon.
- */
-function html_for_add_icon ( $date = 0, $hour = '', $minute = '', $user = '' ) {
-  global $cat_id, $login, $readonly;
-  static $newEntryStr;
-
-  if ( $readonly == 'Y' )
-    return '';
-
-  if ( empty ( $newEntryStr ) )
-    $newEntryStr = translate ( 'New Entry' );
-
-  if ( $minute < 0 ) {
-    $hour = $hour -1;
-    $minute = abs ( $minute );
-  }
-  return '
-        <a title="' . $newEntryStr . '" href="edit_entry.php?'
-   . ( ! empty ( $user ) && $user != $login ? 'user=' . $user . '&amp;' : '' )
-   . 'date=' . $date . ( strlen ( $hour ) > 0 ? '&amp;hour=' . $hour : '' )
-   . ( $minute > 0 ? '&amp;minute=' . $minute : '' )
-   . ( empty ( $user ) ? '' : '&amp;defusers=' . $user )
-   . ( empty ( $cat_id ) ? '' : '&amp;cat_id=' . $cat_id )
-   . '"><img src="images/new.gif" class="new" alt="' . $newEntryStr . '" /></a>';
-}
 
 /* Generates the HTML for an event to be viewed in the day-at-glance (day.php).
  *

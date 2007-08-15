@@ -349,8 +349,6 @@ for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
     echo " ondblclick=\"dblclick_add( '$dateYmd', '$login' )\"" .
       " title=\"" . translate ( 'Double-click on empty cell to add new entry' ) . "\"";
   echo '>';
-   //. ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N'
-   // ? html_for_add_icon ( $dateYmd, '', '', $user ) : '' )
   echo weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS ) . '&nbsp;' .
     date ( 'd', $date ) . '</th><td class="timebar">' . $timeBarHeader .
     print_date_entries_timebar ( $dateYmd, $login, true ) .
