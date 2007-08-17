@@ -24,6 +24,7 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 $user_can_update_password = true;
 $admin_can_add_user = true;
 $admin_can_delete_user = true;
+$admin_can_disable_user = false;
 
 /**
  * Check to see if a given login/password is valid.
@@ -194,7 +195,7 @@ function user_load_variables ( $login, $prefix ) {
  * @global string Error message
  */
 function user_add_user ( $user, $password, $firstname,
-  $lastname, $email, $admin ) {
+  $lastname, $email, $admin, $enabled='Y' ) {
   global $error;
 
   if ( $user == '__public__' ) {
@@ -225,7 +226,7 @@ function user_add_user ( $user, $password, $firstname,
     'cal_is_admin, cal_passwd, cal_email ) ' .
     'VALUES ( ?, ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $user, $ulastname,
-    $ufirstname, $admin, $upassword, $uemail ) ) ) {
+    $ufirstname, $admin, $upassword, $uemail, $enabled ) ) ) {
     $error = db_error ();
     return false;
   }
@@ -246,7 +247,8 @@ function user_add_user ( $user, $password, $firstname,
  *
  * @global string Error message
  */
-function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabled='Y' ) {
+function user_update_user ( $user, $firstname, $lastname, $email, 
+  $admin, $enabled='Y' ) {
   global $error;
 
   if ( $user == '__public__' ) {
@@ -267,10 +269,12 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabl
     $ulastname = NULL;
   if ( $admin != 'Y' )
     $admin = 'N';
-
+  if ( $enabled != 'Y' )
+    $enabled = 'N';
+		
   $sql = 'UPDATE webcal_user SET cal_lastname = ?, ' .
     'cal_firstname = ?, cal_email = ?,' .
-    'cal_is_admin = ?,cal_enabled = ? WHERE cal_login = ?';
+    'cal_is_admin = ?, cal_enabled = ? WHERE cal_login = ?';
   if ( ! dbi_execute ( $sql,
     array ( $ulastname, $ufirstname, $uemail, $admin, $enabled, $user  ) ) ) {
     $error = db_error ();

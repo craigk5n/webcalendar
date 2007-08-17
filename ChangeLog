@@ -1,5 +1,7 @@
 $Id$
 Version 1.1.4 (?? Aug 2007)
+ - Disabled option to disable users at this time. It was not full implemented anyway.
+   See Bug Report[ 1775544 ] Enable/Disable Users
  - Fixed bug [ 1746529 ] login.php is still cached after changing anything at admin.php
  - Added CDATA block around JS in view_r.php
  - Fixed bug [ 1716961 ] View other peoples Private Date Descriptions

@@ -125,6 +125,7 @@ if ( empty ( $error ) && $delete )
 // We don't check return status... hope it worked.
 else
 if ( empty ( $error ) && $add ) {
+	//TODO add $user_enabled
   if ( user_add_user ( $user_login, $user_password, $user_firstname,
       $user_lastname, $user_email, $user_admin ) ) {
     // success    :-)
@@ -137,6 +138,7 @@ if ( empty ( $error ) && $add ) {
 } else
 if ( empty ( $error ) ) {
   // update
+	//TODO add $user_enabled
   if ( user_update_user ( $user_login, $user_firstname,
       $user_lastname, $user_email, $user_admin ) ) {
     // success    :-)
