@@ -348,6 +348,7 @@ $admin_can_add_user = false;
 
 // Allow admin to delete user from webcal tables (not application)
 $admin_can_delete_user = true;
+$admin_can_disable_user = false;
 
 // Redirect the user to the login-app.php page
 function app_login_screen( $return ) {
@@ -436,7 +437,8 @@ function user_delete_user ( $user ) {
 }
 
 // Functions we don't use with this file:
-function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
+function user_update_user ( $user, $firstname, $lastname, $email, 
+  $admin, $enabled ) {
   global $error;
   $error = 'User admin not supported.'; return false;
 }
@@ -444,7 +446,8 @@ function user_update_user_password ( $user, $password ) {
   global $error;
   $error = 'User admin not supported.'; return false;
 }
-function user_add_user ( $user, $password, $firstname, $lastname, $email, $admin ) {
+function user_add_user ( $user, $password, $firstname, $lastname, 
+  $email, $admin, $enabled ) {
   global $error;
   $error = 'User admin not supported.'; return false;
 }

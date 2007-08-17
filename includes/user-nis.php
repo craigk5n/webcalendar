@@ -21,6 +21,7 @@ if ( ! defined ( 'CRYPT_SALT_LENGTH' ) )
 $user_can_update_password = false;
 $admin_can_add_user = false;
 $admin_can_delete_user = false;
+$admin_can_disable_user = false;
 
 // $user_external_group = 100;
 $user_external_email = 'domain.com';
@@ -187,7 +188,7 @@ function user_load_variables ( $login, $prefix ) {
  * @global string Error message
  */
 function user_add_user ( $user, $password, $firstname,
-  $lastname, $email, $admin ) {
+  $lastname, $email, $admin, $enabled='Y' ) {
   global $error;
 
   if ( $user == '__public__' ) {
@@ -215,11 +216,11 @@ function user_add_user ( $user, $password, $firstname,
     $admin = 'N';
   $sql = 'INSERT INTO webcal_user
     ( cal_login, cal_lastname, cal_firstname,
-    cal_is_admin, cal_passwd, cal_email )
+    cal_is_admin, cal_passwd, cal_email, cal_enabled )
     VALUES ( ?, ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $user, $ulastname,
 
-    $ufirstname, $admin, $upassword, $uemail ) ) ) {
+    $ufirstname, $admin, $upassword, $uemail, $enabled ) ) ) {
     $error = translate ( 'Database error', true) . ': ' . dbi_error ();
     return false;
   }
@@ -239,7 +240,8 @@ function user_add_user ( $user, $password, $firstname,
  *
  * @global string Error message
  */
-function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
+function user_update_user ( $user, $firstname, $lastname, $email, 
+  $admin, $enabled='Y' ) {
   global $error;
 
   if ( $user == '__public__' ) {
@@ -260,11 +262,14 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
     $ulastname = NULL;
   if ( $admin != 'Y' )
     $admin = 'N';
-
+  if ( $enabled != 'Y' )
+    $enabled = 'N';
+		
   $sql = 'UPDATE webcal_user SET cal_lastname = ?,
     cal_firstname = ?, cal_email = ?,
-    cal_is_admin = ? WHERE cal_login = ?';
-  if ( ! dbi_execute ( $sql, array ( $ulastname, $ufirstname, $uemail, $admin, $user  ) ) ) {
+    cal_is_admin = ?, cal_enabled = ? WHERE cal_login = ?';
+  if ( ! dbi_execute ( $sql, array ( $ulastname, $ufirstname, $uemail, 
+	  $admin, $enabled, $user  ) ) ) {
     $error = db_error ();
     return false;
   }

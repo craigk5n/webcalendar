@@ -25,6 +25,7 @@ $admin_can_add_user = false;
 
 // Allow admin to delete user from webcal tables
 $admin_can_delete_user = true;
+$admin_can_disable_user = false;
 
 //------ LDAP General Server Settings ------//
 //
@@ -244,7 +245,8 @@ function user_load_variables ( $login, $prefix ) {
 //   $lastname - last name
 //   $email - email address
 //   $admin - is admin? ("Y" or "N")
-function user_add_user ( $user, $password, $firstname, $lastname, $email, $admin ) {
+function user_add_user ( $user, $password, $firstname, $lastname, $email, 
+  $admin, $enabled ) {
   global $error;
 
   $error = 'Not yet supported.';
@@ -258,7 +260,8 @@ function user_add_user ( $user, $password, $firstname, $lastname, $email, $admin
 //   $lastname - last name
 //   $email - email address
 //   $admin - is admin?
-function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
+function user_update_user ( $user, $firstname, $lastname, $email, 
+  $admin, $enabled ) {
   global $error;
 
   $error = 'Not yet supported.';
