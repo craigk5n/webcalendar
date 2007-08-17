@@ -110,10 +110,10 @@ if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
   <?php etranslate ( 'Enabled' )?>:</td><td>
   <?php
     $defIdx = ( ! empty ( $uenabled ) && $uenabled == 'Y' ? 'Y' : 'N' );
-    echo print_radio ( 'u_enabled', '', '', $defIdx ) ?>
+    echo print_radio ( 'uenabled', '', '', $defIdx ) ?>
  </td></tr>
  <?php }else { ?>
-    <input type="hidden" name="$u_enabled" value="Y" />
+    <input type="hidden" name="uenabled" value="Y" />
  <?php } //end test $admin_can_disable_user ?>
 <?php }  else if ( $is_admin ) {  ?>
   <input type="hidden" name="uis_admin" value="Y" />

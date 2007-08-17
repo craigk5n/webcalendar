@@ -101,7 +101,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
             $uis_admin = 'N';
 
           user_update_user ( $user, $ufirstname, 
-					  $ulastname, $uemail, $uis_admin, $u_enabled );
+					  $ulastname, $uemail, $uis_admin, $uenabled );
           activity_log ( 0, $login, $user, LOG_USER_UPDATE,
             "$ufirstname $ulastname" . ( empty ( $uemail ) ? '' : " <$uemail>" ) );
         }
