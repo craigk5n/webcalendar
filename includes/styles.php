@@ -1166,6 +1166,9 @@ echo '  body {
   #viewt table.timebar a {
     text-align:inherit !important;
   }
+	#viewt table.timebar td {
+    width: 1%;
+  }
   .viewnav {
     width:99%;
     border:0;
