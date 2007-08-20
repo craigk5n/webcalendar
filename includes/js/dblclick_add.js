@@ -7,7 +7,8 @@ function dblclick_add ( date, name, hour, minute )
   if ( hour ) {
     time = "&hour=" + hour + "&minute=" + minute;
   } else {
-    time = "&duration=1440";
+    time = "";
+    //time = "&duration=1440";
   }
   var url = 'edit_entry.php?date=' + date
     + '&defusers=' + name + time;
