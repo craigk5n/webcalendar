@@ -7,10 +7,11 @@
  *
  * NEW RELEASE UPDATE PROCEDURES:
  *   - Update WEBCAL_PROGRAM_VERSION default value in default_config.php
- *     Thiss hould be of the format "v1.0.0"
+ *     This should be of the format "v1.0.0"
  *   - Make sure the last entry in all the upgrade-*.sql files reference
  *     this same version.  For example, for "v1.0.0", there should be a
- *     comment of the format: /*upgrade_v1.0.0*/
+ *     comment of the format:    /*upgrade_v1.0.0 */  
+       /* ( Don't remove this line as it leads to nested C-Style comments )
  *     If there are NO db changes, then you should just modify the
  *     the last comment to be the new version number.  If there are
  *     db changes, you should create a new entry in the *.sql files
@@ -64,20 +65,20 @@ $file = '../includes/settings.php';
 $fileDir = '../includes';
 
 clearstatcache ();
-// .
 // We may need time to run extensive database loads.
-set_time_limit ( 240 );
-// .
+if  ( ! get_php_setting ( 'safe_mode' ) )
+  set_time_limit ( 240 );
+
 // If we're using SQLLite, it seems that magic_quotes_sybase must be on.
 // ini_set ( 'magic_quotes_sybase', 'On' );
-// .
+
 // Check for proper auth settings.
 if ( ! empty ( $_SERVER['PHP_AUTH_USER'] ) )
   $PHP_AUTH_USER = $_SERVER['PHP_AUTH_USER'];
-// .
+
 // We'll always use browser defined languages.
 reset_language ( 'none' );
-// .
+
 // Some common translations used in the install script.
 $backStr = translate ( 'Back' );
 $createNewStr = translate ( 'Create New' );
@@ -99,7 +100,7 @@ $failure = $failureStr . '<blockquote>';
 
 $checked = ' checked="checked"';
 $selected = ' selected="selected"';
-// .
+
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
 $magic = @get_magic_quotes_runtime ();
@@ -126,11 +127,11 @@ if ( ! empty ( $fd ) ) {
 
 session_start ();
 $doLogin = false;
-// .
+
 // Set default Application Name.
 if ( ! isset ( $_SESSION['application_name'] ) )
   $_SESSION['application_name'] = 'WebCalendar';
-// .
+
 // Set Server URL.
 if ( ! isset ( $_SESSION['server_url'] ) ) {
   if ( ! empty ( $_SERVER['HTTP_HOST'] ) && !
@@ -143,14 +144,14 @@ if ( ! isset ( $_SESSION['server_url'] ) ) {
        . substr ( $_SERVER['REQUEST_URI'], 0, $ptr + 1 );
   }
 }
-// .
+
 // Handle "Logout" button.
 if ( 'logout' == getGetValue ( 'action' ) ) {
   session_destroy ();
   Header ( 'Location: index.php' );
   exit;
 }
-// .
+
 // If password already exists, check for valid session.
 if ( file_exists ( $file ) && ! empty ( $password ) &&
     ( empty ( $_SESSION['validuser'] ) || $_SESSION['validuser'] != $password ) )
@@ -199,17 +200,17 @@ $php_settings = array (
      . translate ( '(required only if Remote Calendars are used)' ),
     'allow_url_fopen', $onStr, false ),
   );
-// .
+
 // Set up array to test for some constants
 // (display name, constant name, preferred value )
-$php_constants = array ( // .
+$php_constants = array ( 
   // array (' CRYPT_STD_DES', CRYPT_STD_DES, 1)
   // future expansion
   // array ('CRYPT_STD_DES',CRYPT_STD_DES, 1)
   // array ('CRYPT_MD5',CRYPT_MD5, 1)
   // array ('CRYPT_BLOWFISH',CRYPT_BLOWFISH, 1)
   );
-$php_modules = array ( // .
+$php_modules = array ( 
   // translate ( 'needed for Gradient Image Backgrounds' )
   array ( 'GD '
      . translate ( '(needed for Gradient Image Backgrounds)' ),
@@ -275,7 +276,7 @@ $action = getGetValue ( 'action' );
 // A simple way to ensure that UPGRADING.html gets read and processed.
 if ( ! empty ( $action ) && $action == 'mismatch' )
   $_SESSION['old_program_version'] = $version = getGetValue ( 'version' );
-// .
+
 // Go to the proper page.
 if ( ! empty ( $action ) && $action == 'switch' ) {
   $page = getGetValue ( 'page' );
@@ -303,7 +304,7 @@ if ( ! empty ( $action ) && $action == 'switch' ) {
       $_SESSION['step'] = 1;
   }
 }
-// .
+
 // We're doing a database installation yea ha!
 if ( ! empty ( $action ) && $action == 'install' ) {
   // We'll grab database settings from settings.php.
@@ -315,7 +316,7 @@ if ( ! empty ( $action ) && $action == 'install' ) {
   $db_type = $settings['db_type'];
   $real_db = ( $db_type == 'sqlite'
     ? get_full_include_path ( $db_database ) : $db_database );
-  // .
+  
   // We might be displaying SQL only.
   $display_sql = getPostValue ( 'display_sql' );
 
@@ -367,27 +368,27 @@ if ( ! empty ( $action ) && $action == 'install' ) {
       }
       dbi_free_result ( $res );
     }
-    // .
+    
     // If new install, run 0 GMT offset
     // just to set webcal_config.WEBCAL_TZ_CONVERSION.
     if ( $_SESSION['old_program_version'] == 'new_install' )
       convert_server_to_GMT ();
-    // .
+    
     // For upgrade to v1.1b
     // we need to convert existing categories and repeating events.
     do_v11b_updates ();
-    // .
+    
     // v1.1e requires converting webcal_site_extras to webcal_reminders.
     do_v11e_updates ();
-    // .
+    
     // Update the version info.
     get_installed_version ( true );
 
     $_SESSION['blank_database'] = '';
   } //end if $display_sql
-  // .
+  
 } //end database installation
-// .
+
 // Set the value of the underlying database for ODBC connections.
 if ( ! empty ( $action ) && $action == 'set_odbc_db' )
   $_SESSION['odbc_db'] = getPostValue ( 'odbc_db' );
@@ -409,7 +410,7 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr && !
   $response_msg = $response_msg2 = '';
   // Allow field length to change if needed.
   $onload = 'db_type_handler();';
-  // .
+  
   // Disable warnings.
   show_errors ();
 
@@ -417,13 +418,13 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr && !
     ? get_full_include_path ( $db_database ) : $db_database );
 
   $c = dbi_connect ( $db_host, $db_login, $db_password, $real_db, false );
-  // .
+
   // Re-enable warnings.
   show_errors ( true );
 
   if ( $c ) {
     $_SESSION['db_success'] = true;
-    // .
+    
     // Do some queries to try to determine the previous version.
     get_installed_version ();
     // translate ( 'Connection Successful' )
@@ -433,7 +434,7 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr && !
     $response_msg = $failure . dbi_error () . '</blockquote>' . "\n";
     // See if user is valid, but database doesn't exist.
     // The normal call to dbi_connect simply return false for both conditions.
-    // .
+    
     // TODO figure out how to remove this hardcoded link.
     if ( $db_type == 'ibase' )
       $c =
@@ -442,12 +443,14 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr && !
       $c = mssql_connect ( $db_host, $db_login, $db_password );
     elseif ( $db_type == 'mysql' )
       $c = mysql_connect ( $db_host, $db_login, $db_password );
+    elseif ( $db_type == 'mysqli' )
+		  $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
     elseif ( $db_type == 'postgresql' )
       $c =
       dbi_connect ( $db_host, $db_login, $db_password, 'template1', false );
-    // .
+    
     // TODO Code remaining database types.
-    // .
+    
     if ( $c ) { // Credentials are valid, but database doesn't exist.
       $response_msg =
       translate ( 'Correct your entries or click the Create New...' );
@@ -458,7 +461,7 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr && !
         : dbi_error () . '</blockquote>' . "\n"
          . translate ( 'Correct your entries and try again.' ) );
   } //end if ($c)
-  // .
+  
   // Test db_cachedir directory for write permissions.
   if ( strlen ( $db_cachedir ) > 0 ) {
     if ( ! is_dir ( $db_cachedir ) )
@@ -469,7 +472,7 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr && !
       $response_msg2 = $failureStr . $cachedirStr . ' '
        . translate ( 'is not writable' );
   }
-  // .
+  
   // Is this a db create?
   // If so, just test the connection, show the result and exit.
 } else
@@ -486,7 +489,7 @@ if ( ! empty ( $post_action2 ) && $post_action2 == $createNewStr && !
   $onload = 'db_type_handler();';
 
   $sql = 'CREATE DATABASE ' . $db_database;
-  // .
+  
   // We don't use the normal dbi_execute because we need to know
   // the difference between no conection and no database.
   if ( $db_type == 'ibase' )
@@ -515,6 +518,18 @@ if ( ! empty ( $post_action2 ) && $post_action2 == $createNewStr && !
       }
     } else
       $response_msg = $failure . dbi_error () . '</blockquote>' . "\n";
+  } elseif ( $db_type == 'mysqli' ) {
+    $c = dbi_connect ( $db_host, $db_login, $db_password, '', false );
+    if ( $c ) {
+      dbi_execute ( $sql . ';', array (), false, $show_all_errors );
+      if ( ! $c->select_db($db_database ) )
+        $response_msg = $failure . dbi_error () . '</blockquote>' . "\n";
+      else {
+        $_SESSION['db_noexist'] = false;
+        $_SESSION['old_program_version'] = 'new_install';
+      }
+    } else
+      $response_msg = $failure . dbi_error () . '</blockquote>' . "\n";
   } elseif ( $db_type == 'postgresql' ) {
     $c = dbi_connect ( $db_host, $db_login, $db_password, 'template1', false );
     if ( $c ) {
@@ -523,19 +538,19 @@ if ( ! empty ( $post_action2 ) && $post_action2 == $createNewStr && !
     } else
       $response_msg = $failure . dbi_error () . '</blockquote>' . "\n";
   }
-  // .
+  
   // TODO code remaining database types.
-  // .
+  
   // Allow bypass of TZ Conversion.
   $_SESSION['tz_conversion'] = 'Y';
 }
-// .
+
 // Is this a Timezone Convert?
 // Manual tzoffset input in URL.
 $tzoffset = getGetValue ( 'tzoffset' );
 if ( ! empty ( $tzoffset ) )
   $action = 'tz_convert';
-// .
+
 // If so, run it.
 if ( ! empty ( $action ) && $action == 'tz_convert' && !
     empty ( $_SESSION['validuser'] ) ) {
@@ -563,7 +578,7 @@ if ( ! empty ( $action ) && $action == 'tz_convert' && !
   } else
     $response_msg = $failure . dbi_error () . '</blockquote>' . "\n";
 }
-// .
+
 // Is this a call to phpinfo ()?
 if ( ! empty ( $action ) && $action == 'phpinfo' ) {
   if ( ! empty ( $_SESSION['validuser'] ) )
@@ -573,7 +588,7 @@ if ( ! empty ( $action ) && $action == 'phpinfo' ) {
 
   exit;
 }
-// .
+
 // Session check counter.
 if ( isset ( $_SESSION['check'] ) )
   $_SESSION['check']++;
@@ -592,7 +607,7 @@ else {
 
   @fclose ( $testFd );
 }
-// .
+
 // If we are handling a form POST,
 // take that data and put it in settings array.
 $x = getPostValue ( 'form_db_type' );
@@ -646,7 +661,7 @@ if ( ! empty ( $y ) ) {
     $settings['single_user'] = 'true';
   else
     $settings['user_inc'] = $formUserStr;
-  // .
+  
   // Save Application Name and Server URL.
   $_SESSION['application_name'] = getPostValue ( 'form_application_name' );
   $_SESSION['server_url'] = getPostValue ( 'form_server_url' );
@@ -705,7 +720,7 @@ if ( ! empty ( $x ) || ! empty ( $y ) ) {
     if ( $post_action != $testSettingsStr && $post_action2 != $createNewStr )
       $onload .= 'alert( \''
        . translate ( 'Your settings have been saved.', true ) . "\\n\\n' );";
-    // .
+    
     // Change to read/write by us only (only applies if we created file)
     // and read-only by all others. Would be nice to make it 600,
     // but the "send_reminders.php" script is usually run under a different
@@ -1069,7 +1084,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         </td>
       </tr>
     </table>' );
-  // .
+  
   // BEGIN STEP 2
 } elseif ( $_SESSION['step'] == 2 ) {
   echo '
@@ -1235,7 +1250,7 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
      . 'id="form_db_cachedir" value="' . $settings['db_cachedir'] . '" /></td>
               </tr>';
   } //end test for file_get_contents
-  // .
+  
   echo ( empty ( $_SESSION['validuser'] ) ? '' : '
               <tr>
                 <td align="center" colspan="3">

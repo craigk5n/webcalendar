@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - MySqli can now create database during installation 
  - Remove '+' icon from month.php, week.php, day.php.
    Users can now double-click on a date to add a new event.
  - Added CDATA block around JS in view_r.php

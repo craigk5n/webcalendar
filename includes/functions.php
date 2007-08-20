@@ -970,7 +970,7 @@ function display_admin_link ( $break = true ) {
 function display_month ( $thismonth, $thisyear, $demo = false,
   $enableDblClick = false ) {
   global $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_LONG_DAYS, $DISPLAY_WEEKNUMBER,
-    $login, $today, $user, $WEEK_START, $WEEKENDBG,
+    $login, $today, $user, $WEEK_START, $WEEKENDBG, $is_nonuser,
     $readonly, $is_admin, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD;
 
   $ret = '';
