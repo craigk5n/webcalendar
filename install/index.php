@@ -5,6 +5,31 @@
  * Main page for install/config of db settings.
  * This page is used to create/update includes/settings.php.
  *
+ * NEW RELEASE UPDATE PROCEDURES:
+ *   - Update WEBCAL_PROGRAM_VERSION default value in default_config.php
+ *     Thiss hould be of the format "v1.0.0"
+ *   - Make sure the last entry in all the upgrade-*.sql files reference
+ *     this same version.  For example, for "v1.0.0", there should be a
+ *     comment of the format: /*upgrade_v1.0.0*/
+ *     If there are NO db changes, then you should just modify the
+ *     the last comment to be the new version number.  If there are
+ *     db changes, you should create a new entry in the *.sql files
+ *     that detail the SQL to upgrade.
+ *   - Update the $PROGRAM_VERSION and $PROGRAM_DATA variables defined
+ *     in includes/config.php.  The $PROGRAM_VERSION needs to be the
+ *     same value (e.g. "v1.0.0") that was defined above.
+ *   - Update the version/date in ChangeLog and NEWS files.
+ *
+ * ABOUT VERSION NUMBERS:
+ *   From now on, we should only be using "vN.N.N" format for versions.
+ *   (No more "v.1.12+CVS", for example.)  This may be confusing for CVS
+ *   users since they may download a CVS snapshot that says its "1.1.4",
+ *   but it's really not quite the official "1.1.4" since we will using
+ *   1.1.4 in CVS until the official 1.1.4 release is made.
+ *
+ *   You can mark the version with "+CVS" or something similar in NEWS
+ *   and/or ChangeLog since these are not used in the code.
+ *
  * Input Parameters:
  * OPTIONAL tzoffset   If after logging in, adding tzoffset to the URL
  * ( http://yourserver/install/index.php?tzoffset=2 )
