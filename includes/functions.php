@@ -4349,7 +4349,7 @@ function print_date_entries ( $date, $user, $ssi = false,
    */
     $userCatStr = ( strcmp ( $user, $login ) ? 'user=' . $user . '&amp;' : '' )
      . ( empty ( $cat_id ) ? '' : 'cat_id=' . $cat_id . '&amp;' );
-    $tmp = $moons[$date];
+    $tmp = ( ! empty ( $moons[$date] ) ? $moons[$date] : '' );
     $moon_title = ( empty ( $tmp ) ? '' : translate ( ucfirst ( $tmp )
      . ( strpos ( 'fullnew', $tmp ) !== false ? '' : ' Quarter' ) . ' Moon' ) );
     $ret = ( $can_add ? '
