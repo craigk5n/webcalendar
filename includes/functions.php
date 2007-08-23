@@ -4481,7 +4481,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
         $ret .= '<td class="hasevents"';
         if ( $can_add )
           $ret .=
-            " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
+            " ondblclick=\"dblclick_add('$date','$user',$time_h,$time_m)\"";
         $ret .= '>' . $hour_arr[$i] . '</td>';
       }
       $rowspan--;
@@ -4492,7 +4492,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
         $ret .= ( $date == date ( 'Ymd', $today ) ? ' class="today"' : '' );
         if ( $can_add )
           $ret .=
-            " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
+            " ondblclick=\"dblclick_add('$date','$user',$time_h,$time_m)\"";
         $ret .=  '>&nbsp;';
       } else {
         $rowspan = ( empty ( $rowspan_arr[$i] ) ? '' : $rowspan_arr[$i] );
@@ -4501,7 +4501,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
          . 'class="hasevents"';
         if ( $can_add )
           $ret .=
-            " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
+            " ondblclick=\"dblclick_add('$date','$user',$time_h,$time_m)\"";
         $ret .= '>' . $hour_arr[$i];
       }
       $ret .= '</td>';
