@@ -210,11 +210,11 @@ for ( $i = $startTime; date ( "Ymd", $i ) <= date ( "Ymd", $endTime ) &&
     print "<!-- XXX -->\n";
     print "<dt>" . date_to_str ( $d ) . "</dt>\n<dd>";
     for ( $j = 0; $j < count ( $entries ) && $numEvents < $maxEvents; $j++ ) {
-      print_upcoming_event ( $entries[$j] );
+      print_upcoming_event ( $entries[$j], $d );
       $numEvents++;
     }
     for ( $j = 0; $j < count ( $rentries ) && $numEvents < $maxEvents; $j++ ) {
-      print_upcoming_event ( $rentries[$j] );
+      print_upcoming_event ( $rentries[$j], $d );
       $numEvents++;
     }
     print "</dd>\n";
@@ -227,7 +227,7 @@ print "</body>\n</html>";
 
 
 // Print the details of an upcoming event
-function print_upcoming_event ( $e ) {
+function print_upcoming_event ( $e, $d ) {
   global $display_link, $link_target, $server_url, $charset;
 
   if ( $e['cal_access'] == 'P' ) {
@@ -236,7 +236,7 @@ function print_upcoming_event ( $e ) {
         $e['cal_name'] . "\" href=\"" . 
         $server_url . "view_entry.php?id=" . 
         $e['cal_id'] . "&amp;date=" . 
-        $e['cal_date'] . "\"";
+        $d . "\"";
       if ( ! empty ( $link_target ) ) {
         print " target=\"$link_target\"";
       }

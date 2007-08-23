@@ -1,3 +1,5 @@
+Version 1.0.5 CVS
+ - Fixed bug [ 1778587 ] upcoming.php wrong link for repeating events
 Version 1.0.5 (04 Mar 2007)
  - Security patch: don't allow URL to set 'noset', which allows users
    to then set other global variables.
