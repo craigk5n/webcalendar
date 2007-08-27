@@ -1,5 +1,6 @@
 $Id$
 Version 1.1.4 (?? Aug 2007)
+ - Fixed problem with RSS feed not validating
  - Fixed bug [ 1776496 ] view Week by Time Table is skewed
  - Disabled option to disable users at this time. It was not full implemented anyway.
    See Bug Report[ 1775544 ] Enable/Disable Users
