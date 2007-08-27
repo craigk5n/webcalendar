@@ -143,12 +143,14 @@ if ( $allow_user_override ) {
 }
 
 load_user_preferences ();
+
+// public entries only
+$allow_access = array ( 'P' );
+
 // .
 // Determine what remote access has been set up by user.
 // This will only be used if $username is not __public__.
 if ( isset ( $USER_REMOTE_ACCESS ) && $username != '__public__' ) {
-  // public entries only
-  $allow_access = array ( 'P' );
   if ( $USER_REMOTE_ACCESS > 0 ) // plus confidential
     $allow_access[] = 'C';
 
