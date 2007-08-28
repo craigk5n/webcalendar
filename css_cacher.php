@@ -20,7 +20,7 @@ $login = ( empty ( $_SESSION['webcal_login'] )
   ? '__public__' : $_SESSION['webcal_login'] );
 $login = ( empty ( $_SESSION['webcal_tmp_login'] )
   ? $login : $_SESSION['webcal_tmp_login'] );
-// .
+
 // If calling script uses 'guest', we must also.
 if ( ! empty ( $_GET['login'] ) )
   $login = $_GET['login'];
@@ -29,7 +29,7 @@ if ( ! empty ( $_REQUEST['login'] ) )
   $login = $_REQUEST['login'];
 
 load_user_preferences ( $login );
-// .
+
 // We will cache CSS as default, but override from admin and pref
 // by incrementing the webcalendar_csscache cookie value.
 $cookie = ( isset ( $_COOKIE['webcalendar_csscache'] )
@@ -37,7 +37,7 @@ $cookie = ( isset ( $_COOKIE['webcalendar_csscache'] )
 
 header ( 'Content-type: text/css' );
 header ( 'Last-Modified: ' . date ( 'r', mktime ( 0, 0, 0 ) + $cookie ) );
-// .
+
 // If we are calling from admin or pref, expire CSS now.
 if ( empty ( $_SESSION['webcal_tmp_login'] ) ) {
   header ( 'Expires: ' . date ( 'D, j M Y H:i:s', time () + 86400 ) . ' UTC' );

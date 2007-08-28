@@ -36,7 +36,7 @@ $last_slot = intval ( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 
 $untimed_found = false;
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
-// .
+
 // Make sure all days with events are bold if mini cal is displayed.
 if ( $DISPLAY_SM_MONTH == 'Y' && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $evStart = get_weekday_before ( $thisyear, $thismonth );
@@ -75,7 +75,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 
   $header[$i] = $weekdays[$i] . '<br />'
    . date_to_str ( $dateYmd, $DATE_FORMAT_MD, false, true );
-  // .
+
   // Generate header row.
   $class = ( $dateYmd == date ( 'Ymd', $today )
     ? ' class="today"'
@@ -91,11 +91,11 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 
   $date = date ( 'Ymd', $days[$i] );
   $hour_arr = $rowspan_arr = $tk = array ();
-  // .
+
   // Get, combine and sort, static and repeating events for this date.
   $ev = combine_and_sort_events ( get_entries ( $date, $get_unapproved ),
     get_repeating_entries ( $user, $date ) );
-  // .
+
   // Then sort in any tasks due for this day and before.
   $ev = combine_and_sort_events ( $ev,
     ( $date >= date ( 'Ymd' )
@@ -105,7 +105,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     if ( $get_unapproved || $ev[$j]->getStatus () == 'A' )
       html_for_event_week_at_a_glance ( $ev[$j], $date );
   }
-  // .
+
   // Squish events that use the same cell into the same cell.
   // For example, an event from 8:00-9:15 and another from 9:30-9:45
   // both want to show up in the 8:00-9:59 cell.
@@ -122,7 +122,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
           $rowspan += ( $rowspan_arr[$j] - 1 );
         } else
           $rowspan_arr[$last_row] += $rowspan_arr[$j];
-        // .
+
         // This will move entries apart that appear in one field,
         // yet start on different hours.
         for ( $u = $diff_start_time; $u > 0; $u-- ) {
@@ -139,7 +139,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
       $rowspan = $rowspan_arr[$j];
     }
   }
-  // .
+
   // Now save the output...
   if ( ! empty ( $hour_arr[9999] ) && strlen ( $hour_arr[9999] ) ) {
     $untimed[$i] = $hour_arr[9999];

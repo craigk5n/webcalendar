@@ -1261,7 +1261,7 @@ echo '  body {
   }
   .alt {
   background:' . $CELLBG . ';
-  }  
+  }
   .layers {
     float:left;
     margin:2px 1px;

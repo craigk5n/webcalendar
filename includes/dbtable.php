@@ -1,9 +1,9 @@
 <?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
-// .
+
 // This file contains some convenient functions for editing rows in a table.
 // You need to define the tables (typically this is done in tables.php).
-// .
+
 /*
  *
  * @param $tablear   - array that defines table (see tables.php)

@@ -61,7 +61,7 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
 }
 
 $thisdate = date ( 'Ymd', $startdate );
-// .
+
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );
 if ( count ( $viewusers ) == 0 )

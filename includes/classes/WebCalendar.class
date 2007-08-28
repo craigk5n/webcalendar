@@ -734,10 +734,10 @@ class WebCalendar {
       $login_url = 'login.php';
 
     $login_url .= ( strstr ( $login_url, '?' ) ? '&amp;' : '?' )
-     . ( empty ( $login_return_path ) ? '' : 'return_path=' 
+     . ( empty ( $login_return_path ) ? '' : 'return_path='
 		 . $login_return_path );
 
-    // If sent here from an email and not logged in, 
+    // If sent here from an email and not logged in,
 		//save URI and redirect to login.
     $em = getGetValue ( 'em' );
     if ( ! empty ( $em ) && empty ( $login ) ) {

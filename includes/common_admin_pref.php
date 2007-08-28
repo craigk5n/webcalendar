@@ -2,7 +2,7 @@
 /* Consolidating parts of admin.php and pref.php.
  * $Id$
  */
-// .
+
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
 $webcalendar_csscache = 1;
 if ( isset ( $_COOKIE['webcalendar_csscache'] ) )
@@ -24,7 +24,7 @@ $editStr = '<input type="button" value="' . translate ( 'Edit' )
 $option = '
             <option value="';
 $selected = ' selected="selected"';
-// .
+
 // Get system settings.
 $res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config' );
 if ( $res ) {
@@ -34,7 +34,7 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
-// .
+
 // Get list of theme files from "themes" directory.
 $dir = 'themes/';
 if ( is_dir ( $dir ) && $dh = opendir ( $dir ) ) {
@@ -48,7 +48,7 @@ if ( is_dir ( $dir ) && $dh = opendir ( $dir ) ) {
   sort ( $themes );
   closedir ( $dh );
 }
-// .
+
 // Get list of menu themes.
 $dir = 'includes/menu/themes/';
 if ( is_dir ( $dir ) && $dh = opendir ( $dir ) ) {
@@ -63,7 +63,7 @@ if ( is_dir ( $dir ) && $dh = opendir ( $dir ) ) {
   sort ( $menuthemes );
   closedir ( $dh );
 }
-// .
+
 // Set globals values to be passed to styles.php.
 // Makes the demo calendar and Page title accurate.
 $GLOBALS['APPLICATION_NAME'] = $s['APPLICATION_NAME'];
@@ -99,7 +99,7 @@ if ( $prad || access_can_access_function ( ACCESS_YEAR, $user ) ) {
   $choices[] = 'year.php';
   $choices_text[] = translate ( 'Year' );
 }
-// .
+
 // This should be easier to add more tabs if needed.
 if ( $prad ) {
   $tabs_ar = array ( // tab name, title= (if any), display text
@@ -113,7 +113,7 @@ if ( $prad ) {
     'colors', '', translate ( 'Colors' )
     );
 } else {
-  $tabs_ar = array ( // .
+  $tabs_ar = array (
     'settings', '', translate ( 'Settings' ) );
 
   if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) {
@@ -147,7 +147,7 @@ if ( $prad ) {
     $tabs_ar[] = translate ( 'Colors' );
   }
 }
-// .
+
 // Move the loops here and combine a few.
 for ( $i = 0, $cnt = count ( $tabs_ar ); $i < $cnt; $i += 3 ) {
   $tabs .= '
@@ -232,7 +232,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
    . ( $tmp == $xurl_strip ? $selected : '' )
    . '>' . htmlspecialchars ( $views[$i]['cal_name'] ) . '</option>';
 }
-foreach ( array ( // .
+foreach ( array (
     'BGCOLOR' => translate ( 'Document background' ),
     'H2COLOR' => translate ( 'Document title' ),
     'TEXTCOLOR' => translate ( 'Document text' ),
@@ -281,7 +281,7 @@ function save_pref ( $prefs, $src ) {
       $setting = substr ( $key, $pos );
       if ( ( ! $prad && $prefix != 'pref_' ) || $prad && $key == 'currenttab' )
         continue;
-      // .
+
       // Validate key name.
       // If $prad not true, should start with "pref_"
       // else should start with "admin_",

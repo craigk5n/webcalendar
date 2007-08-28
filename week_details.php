@@ -219,7 +219,7 @@ function print_det_date_entries ( $date, $user, $ssi ) {
 
   $date = mktime ( 0, 0, 0, substr ( $date, 4, 2 ),
     substr ( $date, 6, 2 ), substr ( $date, 0, 4 ) );
-  // .
+
   // Get and sort all the repeating and non-repeating events for this date.
   $ev = combine_and_sort_events ( get_entries ( $date ),
     get_repeating_entries ( $user, $date ) );

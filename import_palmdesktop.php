@@ -52,7 +52,7 @@ function delete_palm_events ( $login ) {
 function ParseLine ( $line ) {
   global $calUser;
 
-  list ( // .
+  list (
     $Entry['RecordID'],
     $Entry['StartTime'],
     $Entry['EndTime'],
@@ -72,7 +72,7 @@ function ParseLine ( $line ) {
     $Entry['Repeat']['RepeatDays'],
     $WeekNum,
     ) = explode ( '|', $line );
-  // .
+
   // Adjust times to users Timezone if not Untimed.
   if ( isset ( $Entry['Untimed'] ) && $Entry['Untimed'] == 0 ) {
     $Entry['StartTime'] -= date ( 'Z', $Entry['StartTime'] );

@@ -79,7 +79,7 @@ function calculateMoonPhases ( $year, $month = 1 ) {
     $s = ( function_exists ( 'jdtogregorian' )
       ? date ( 'Ymd', strtotime ( jdtogregorian ( $julian ) ) )
       : jd_to_greg ( $julian ) );
-    // .
+
     // half K
     if ( ( $K9 - floor ( $K9 ) ) > 0 )
       $phases[$s] = ( $U ? 'first' : 'last' );
@@ -91,7 +91,7 @@ function calculateMoonPhases ( $year, $month = 1 ) {
   } // Next
   return $phases;
 } //End MoonPhase
-// .
+
 // Function borrowed from http://us3.php.net/manual/en/function.jdtogregorian.php
 // Used if calendar functions are not compiled in php.
 function jd_to_greg ( $julian ) {

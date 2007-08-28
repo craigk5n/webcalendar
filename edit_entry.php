@@ -98,18 +98,18 @@ $minutStr = translate ( 'minutes' );
 $saveStr = translate ( 'Save' );
 
 load_user_categories ();
-// .
+
 // Default for using tabs is enabled.
 if ( empty ( $EVENT_EDIT_TABS ) )
   $EVENT_EDIT_TABS = 'Y'; // default
-// .
+
 $useTabs = ( $EVENT_EDIT_TABS == 'Y' );
 // Make sure this is not a read-only calendar.
 $can_edit = false;
 $others_complete = 'yes';
 $checked = ' checked="checked"';
 $selected = ' selected="selected"';
-// .
+
 // Public access can only add events, not edit.
 if ( empty ( $login ) || ( $login == '__public__' && $id > 0 ) )
   $id = 0;
@@ -138,7 +138,7 @@ if ( empty ( $date ) && empty ( $month ) ) {
 $BodyX = 'onload="onLoad();"';
 $INC = array ( 'js/edit_entry.php/false/' . $user, 'js/visible.php' );
 $textareasize = '15';
-// .
+
 // Can we use HTMLArea or FCKEditor? (Relax! That's the authors initials.)
 // Note: HTMLArea has been discontinued, so FCKEditor is preferred.
 $use_fckeditor = $use_htmlarea = false;
@@ -230,7 +230,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
     $location = $row[12];
     $completed = ( empty ( $row[15] ) ? date ( 'Ymd' ) : $row[15] );
     $cal_url = $row[16];
-    // .
+
     // What kind of entry are we dealing with?
     if ( strpos ( 'EM', $type ) !== false )
       $eType = 'event';
@@ -238,13 +238,13 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $eType = 'journal';
     elseif ( strpos ( 'NT', $type ) !== false )
       $eType = 'task';
-    // .
+
     // Public access has no access to tasks.
     // translate ( 'You are not authorized to edit this task' )
     if ( $login == '__public__' && $eType == 'task' )
       echo str_replace ( 'XXX', translate ( 'task' ),
         translate ( 'You are not authorized to edit this XXX.' ) );
-    // .
+
     // Check UAC.
     if ( access_is_enabled () )
       $can_edit =
@@ -262,7 +262,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $duration = '';
       $hour = -1;
     }
-    // .
+
     // Check for repeating event info...
     // but not if we're overriding a single entry of an already repeating event...
     // confusing, eh?
@@ -309,7 +309,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
           $byyearday = $row[10];
           $wkst = $row[11];
           $rpt_count = $row[12];
-          // .
+
           // Check to see if Weekends Only is applicable.
           $weekdays_only = ( $rpt_type == 'daily' && $byday == 'MO,TU,WE,TH,FR' );
         }
@@ -329,12 +329,12 @@ if ( ! empty ( $id ) && $id > 0 ) {
       }
       dbi_free_result ( $res );
     }
-    // .
+
     // Determine if Expert mode needs to be set.
     $expert_mode = ( count ( $byday ) || count ( $bymonth ) ||
       count ( $bymonthday ) || count ( $bysetpos ) ||
       isset ( $byweekno ) || isset ( $byyearday ) || isset ( $rpt_count ) );
-    // .
+
     // Get Repeat Exceptions.
     $res = dbi_execute ( 'SELECT cal_date, cal_exdate
       FROM webcal_entry_repeats_not WHERE cal_id = ?', array ( $id ) );
@@ -355,14 +355,14 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $catList = implode ( ',', array_keys ( $catById ) );
     }
   } //end CATEGORIES_ENABLED test
-  // .
+
   // Get reminders.
   $reminder = getReminders ( $id );
   $reminder_offset = ( empty ( $reminder ) ? 0 : $reminder['offset'] );
 
 	$rem_status = ( count ( $reminder ));
   $rem_use_date = ( ! empty ( $reminder['date'] ) );
-  // .
+
   // Get participants.
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user WHERE cal_id = ?
     AND cal_status IN ( \'A\', \'W\' )', array ( $id ) );
@@ -379,7 +379,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
 } else {
   // ##########   New entry   ################
   $id = 0; // To avoid warnings below about use of undefined var.
-  // .
+
   // We'll use $WORK_DAY_START_HOUR and $WORK_DAY_END_HOUR
   // as our starting and due times.
   $cal_time = $WORK_DAY_START_HOUR . '0000';
@@ -388,7 +388,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $due_minute = $task_percent = 0;
   $due_time = $WORK_DAY_END_HOUR . '0000';
   $overall_percent = array ();
-  // .
+
   // Get category if passed in URL as cat_id.
   $cat_id = getGetValue ( 'cat_id' );
   if ( ! empty ( $cat_id ) ) {
@@ -401,7 +401,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $catList = $cat_id;
     }
   }
-  // .
+
   // Reminder settings.
   $reminder_offset = ( $REMINDER_WITH_DATE == 'N' ? $REMINDER_OFFSET : 0 );
 
@@ -410,7 +410,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
 
   if ( $eType == 'task' )
     $hour = $WORK_DAY_START_HOUR;
-  // .
+
   // Anything other then testing for strlen breaks either hour=0 or no hour in URL.
   if ( strlen ( $hour ) )
     $time = $hour * 100;
@@ -439,7 +439,7 @@ $thismonth = $month;
 $thisyear = $year;
 if ( empty ( $rpt_type ) || ! $rpt_type )
   $rpt_type = 'none';
-// .
+
 // Avoid error for using undefined vars.
 if ( ! isset ( $hour ) && $hour != 0 )
   $hour = -1;
@@ -502,7 +502,7 @@ if ( empty ( $cal_date ) || ! $cal_date )
 
 if ( empty ( $due_date ) || ! $due_date )
   $due_date = $thisdate;
-// .
+
 // Setup to display user's timezone difference if Admin or Assistant.
 // Even though event is stored in GMT,
 // an Assistant may need to know that the boss is in a different Timezone.
@@ -847,7 +847,7 @@ if ( $can_edit ) {
           <td colspan="2">' . time_selection ( 'due_', $due_time ) . '</td>
         </tr>';
   }
-  // .
+
   // Site-specific extra fields (see site_extras.php).
   // load and display any site-specific fields.
   if ( $id > 0 )
@@ -919,7 +919,7 @@ if ( $can_edit ) {
         if ( access_is_enabled () && !
             access_user_calendar ( 'view', $userlist[$j]['cal_login'] ) )
           continue; // Cannot view calendar so cannot add to their cal.
-        // .
+
         echo '
                   <option value="' . $userlist[$j]['cal_login'] . '"'
          . ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
@@ -980,7 +980,7 @@ if ( $can_edit ) {
       </div>' );
   }
   // end site-specific extra fields
-  // .
+
   echo ( $useTabs ? '
     </div>' : '
     </fieldset>' ) . '
@@ -991,7 +991,7 @@ if ( $can_edit ) {
     <fieldset>
       <legend>' . translate ( 'Participants' ) . '</legend>' ) . '
       <table summary="">';
-  // .
+
   // Only ask for participants if we are multi-user.
   $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
   if ( $is_admin )
@@ -1347,7 +1347,7 @@ if ( $can_edit ) {
     echo '
           </tr>
         </table>';
-    // .
+
     // Populate Repeat Exceptions data for later use.
     $excepts = '';
     $exceptcnt = count ( $exceptions );
@@ -1433,13 +1433,13 @@ if ( $can_edit ) {
     ( empty ( $reminder['before'] ) || $reminder['before'] == 'Y' );
     $rem_related =
     ( empty ( $reminder['related'] ) || $reminder['related'] == 'S' );
-    // .
+
     // Reminder Repeats.
     $rem_rep_count =
     ( isset ( $reminder['repeats'] ) ? $reminder['repeats'] : 0 );
     $rem_rep_minutes =
     ( isset ( $reminder['duration'] ) ? $reminder['duration'] : 0 );
-    // .
+
     // Will be specified in total minutes.
     $rem_rep_days = intval ( $rem_rep_minutes / 1440 );
     $rem_rep_minutes -= ( $rem_rep_days * 1440 );
@@ -1616,7 +1616,7 @@ if ( $can_edit ) {
   echo str_replace ( 'XXX', translate ( 'entry' ),
     translate ( 'You are not authorized to edit this XXX.' ) );
 // end if ( $can_edit )
-// .
+
 ob_end_flush ();
 
 echo print_trailer ();
