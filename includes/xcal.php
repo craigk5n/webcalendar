@@ -2618,14 +2618,14 @@ function format_ical ( $event ) {
 // Note: f = chr(102) and 'n' is still a not present value
 function rrule_repeat_days ( $RA ) {
   global $byday_names;
-  
+
   $ret = array ();
   foreach ( $RA as $item ) {
     $item = strtoupper ( $item );
     if ( in_array ( $item, $byday_names ) )
       $ret[] = $item;
   }
-  
+
   return ( empty ( $ret ) ? false : implode ( ',', $ret ) );
 }
 // Convert PYMDTHMS format to minutes
@@ -2789,10 +2789,10 @@ function vcaldate_to_timestamp( $vdate, $plus_d = '0', $plus_m = '0', $plus_y = 
 // Put all vcal data into import hash structure
 function format_vcal( $event ) {
   // Start and end time
-  
+
   // Set Calendar Type for easier processing later
   $fevent['CalendarType'] = $event['state'];
-  
+
   $fevent['StartTime'] = vcaldate_to_timestamp( $event['dtstart'] );
   if ( $fevent['StartTime'] == '-1' ) return false;
   $fevent['EndTime'] = vcaldate_to_timestamp( $event['dtend'] );

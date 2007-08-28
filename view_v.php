@@ -61,13 +61,13 @@ echo '
         <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
       </div>
     </div><br />';
-// .
+
 // The table has names across the top and dates for rows. Since we need to spit
 // out an entire row before we can move to the next date, we'll save up all the
 // HTML for each cell and then print it out when we're done..
 // Additionally, we only want to put at most 6 users in one table since
 // any more than that doesn't really fit in the page.
-// .
+
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );
 $viewusercnt = count ( $viewusers );
@@ -93,7 +93,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
 for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   // Since print_date_entries is rather stupid, we can swap the event data
   // around for users by changing what $events points to.
-  // .
+
   $tdw = 12; // Column width percent.
   echo '
     <table class="main" summary=""';
@@ -127,7 +127,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
           ? ' class="hasevents"'
           : ( $is_weekend ? ' class="weekend"' : '' ) ) )
        . ' style="width:' . $tdw . '%;"';
-      // .
+
       // Build header row.
       if ( $i == 0 ) {
         $header .= '<th' . $class . '>'
@@ -144,15 +144,15 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     $body .= '
       </tr>';
   }
-  // .
+
   // Output all.
   echo $header . '
       </tr>' . $body . '
     </table>';
 }
-// .
+
 $user = ''; // reset
-// .
+
 echo ( empty ( $eventinfo ) ? '' : $eventinfo );
 
 ob_end_flush ();

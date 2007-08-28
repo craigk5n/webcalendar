@@ -19,7 +19,7 @@
  * @version $Id$
  * @package WebCalendar
  */
-// .
+
 // This will force $LANGUAGE to the current value
 // and eliminate having to double click the 'SAVE' button.
 reset_language ( get_pref_setting ( $login, 'LANGUAGE' ) );
@@ -29,7 +29,7 @@ reset ( $languages );
 $DecemberStr = translate ( 'December' );
 $DecStr = translate ( 'Dec' );
 $langDefStr = translate ( 'LANGUAGE DEFINED' );
-// .
+
 // Day Month Year format
 $datestyles = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__mon__ __j__, __yyyy__', $DecStr . ' 5, 2000',
@@ -56,7 +56,7 @@ $datestyles = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__yyyy__/__mm__/__dd__', '2000/12/31',
   '__yyyy__-__mm__-__dd__', '2000-12-31',
   );
-// .
+
 // Month Year format
 $datestyles_my = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__mon__ __yyyy__', $DecStr . ' 2000',
@@ -75,7 +75,7 @@ $datestyles_my = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__yyyy__/__mm__', '2000/12',
   '__yyyy__-__mm__', '2000-12',
   );
-// .
+
 // Month Day format
 $datestyles_md = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__mon__ __dd__', $DecStr . ' 31',
@@ -90,7 +90,7 @@ $datestyles_md = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__mm__/__dd__', '12/31',
   '__mm__-__dd__', '12-31',
   );
-// .
+
 // Task Date format
 $datestyles_task = array ( 'LANGUAGE_DEFINED', $langDefStr,
   '__mon__ __dd__', $DecStr . ' 31',

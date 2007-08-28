@@ -157,7 +157,7 @@ if ( empty ( $USER_PUBLISH_RW_ENABLED ) || $USER_PUBLISH_RW_ENABLED != 'Y' ) {
 }
 
 $prodid = 'Unnamed iCal client';
-// .
+
 // Load user name, etc.
 user_load_variables ( $login, 'publish_' );
 

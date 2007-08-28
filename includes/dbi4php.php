@@ -115,10 +115,10 @@ function dbi_connect ( $host, $login, $password, $database, $lazy = true ) {
   } elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
     $c  = new mysqli( $host, $login, $password, $database );
     if ( $c ) {
-      
+
       if ( mysqli_connect_errno() && ! empty ( $database ) )
         return false;
-      
+
       $db_connection_info['connected'] = true;
       $db_connection_info['connection'] = $GLOBALS['db_connection'] = $c;
       return $c;

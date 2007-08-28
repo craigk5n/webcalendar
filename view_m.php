@@ -63,13 +63,13 @@ echo '</span><br />
         <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
       </div>
     </div><br />';
-// .
+
 // The table has names across the top and dates for rows. Since we need to spit
 // out an entire row before we can move to the next date, we'll save up all the
 // HTML for each cell and then print it out when we're done....
 // Additionally, we only want to put at most 6 users in one table
 // since any more than that doesn't really fit in the page.
-// .
+
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );
 if ( count ( $viewusers ) == 0 )
@@ -97,7 +97,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
 for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   // Since print_date_entries is rather stupid, we can swap the event data
   // around for users by changing what $events points to.
-  // .
+
   // Calculate width of columns in this table.
   $num_left = count ( $viewusers ) - $j;
   if ( $num_left > $USERS_PER_TABLE )
@@ -116,7 +116,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   echo '>
       <tr>
         <th class="empty">&nbsp;</th>';
-  // .
+
   // $j points to start of this table/row.
   // $k is counter starting at 0.
   // $i starts at table start and goes until end of this table/row.
@@ -141,7 +141,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     $class = 'class="' . ( $dateYmd == $todayYmd
       ? 'today"'
       : ( $is_weekend ? 'weekend"' : 'row"' ) );
-    // .
+
     // Non-breaking space below keeps event from wrapping prematurely.
     echo '
       <tr>
@@ -170,9 +170,9 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   echo '
     </table>';
 }
-// .
+
 $user = ''; // reset
-// .
+
 echo ( empty ( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer ();
 
 ?>

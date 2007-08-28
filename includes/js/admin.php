@@ -10,7 +10,7 @@ function init_admin () {
   public_handler ();
   sr_handler ();
   altps();
-  
+
   return true;
 }
 

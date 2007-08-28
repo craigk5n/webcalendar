@@ -6,7 +6,7 @@
  *  - Javascript & CSS by JSCookMenu at http://www.cs.ucla.edu/~heng/JSCookMenu/
  */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
-// .
+
 // Configure your menu using this file.
 include_once 'includes/menu/menu_config.php';
 
@@ -80,7 +80,7 @@ if ( $single_user != 'Y' ) {
     ( $REQUIRE_APPROVALS == 'Y' || $PUBLIC_ACCESS == 'Y' ) )
     $unapproved_url = 'list_unapproved.php'
      . ( $is_nonuser_admin ? '?user=' . getValue ( 'user' ) : '' );
-  // .
+
   // Another User's Calendar.
   if ( ( $login == '__public__' && $PUBLIC_ACCESS_OTHERS != 'Y' ) ||
       ( $is_nonuser && ! access_is_enabled () ) ) {
@@ -195,7 +195,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     $grouplist = array_merge ( $admincals, $grouplist );
 
   if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
-    $public = array ( // .
+    $public = array (
       'cal_login' => '__public__',
       'cal_fullname' => translate ( 'Public Access' )
       );
@@ -319,7 +319,7 @@ $menuScript .= '
 <!-- <![CDATA[
       var myMenu =
 ['
-// .
+
 // Add Menu Extra if defined.
  . ( empty ( $menuExtras[0] ) ? '' : parse_menu_extras ( $menuExtras[0] ) );
 // My Calendar Menu
@@ -348,7 +348,7 @@ if ( $menuConfig['My Calendar'] ) {
 
   jscMenu_close ();
 }
-// .
+
 // Add Menu Extra if defined.
 if ( ! empty ( $menuExtras[1] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[1] );
@@ -377,11 +377,11 @@ if ( $menuConfig['Events'] ) {
 
   jscMenu_close ();
 }
-// .
+
 // Add Menu Extra if defined.
 if ( ! empty ( $menuExtras[2] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[2] );
-// .
+
 // Views Menu
 // translate ( 'My Views' ) translate ( 'Manage Calendar of' );
 if ( $menuConfig['Views'] &&
@@ -421,11 +421,11 @@ if ( $menuConfig['Views'] &&
   }
   jscMenu_close ();
 }
-// .
+
 // Add Menu Extra if defined.
 if ( ! empty ( $menuExtras[3] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[3] );
-// .
+
 // Reports Menu
 // translate ( 'My Reports' )
 if ( ( $login != '__public__' || $reports_linkcnt > 0 ) && $menuConfig['Reports'] ) {
@@ -456,11 +456,11 @@ if ( ( $login != '__public__' || $reports_linkcnt > 0 ) && $menuConfig['Reports'
   }
   jscMenu_close ();
 }
-// .
+
 // Add Menu Extra if defined.
 if ( ! empty ( $menuExtras[4] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[4] );
-// .
+
 // Settings Menu
 // translate ( 'My Profile' ) translate ( 'Public Calendar' )
 // translate ( 'Unapproved Events' ) translate ( 'User Manager' )
@@ -537,11 +537,11 @@ if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' && $menuConfig[
   }
   jscMenu_close ();
 }
-// .
+
 // Add Menu Extra if defined.
 if ( ! empty ( $menuExtras[5] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[5] );
-// .
+
 // Search Menu
 if ( $search_url != '' && $menuConfig['Search'] ) {
   jscMenu_menu ( 'Search' );
@@ -559,11 +559,11 @@ if ( $search_url != '' && $menuConfig['Search'] ) {
      . '" /></form></td>' );
   jscMenu_close ();
 }
-// .
+
 // Add Menu Extra if defined.
 if ( ! empty ( $menuExtras[6] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[6] );
-// .
+
 // Help Menu (Link)
 // translate ( 'Help Contents' )  translate ( 'About WebCalendar' )
 if ( $menuConfig['Help'] ) {
@@ -592,7 +592,7 @@ if ( ! empty ( $unapprovedStr ) && $unapproved_url != '' && $menuConfig['Unappro
 if ( $show_printer && $menuConfig['Printer'] )
   jscMenu_item ( 'printer.png', '', generate_printer_friendly (),
     'cal_printer_friendly' );
-// .
+
 // Add Menu Extra if defined.
 if ( ! empty ( $menuExtras[7] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[7] );
@@ -625,7 +625,7 @@ $menuHtml .= '
   ) . '&nbsp;</td>
         </tr>
       </table>';
-// .
+
 // Add function to onload string as needed.
 $BodyX = ( empty ( $BodyX ) ? 'onload="' : substr ( $BodyX, 0, -1 ) )
  . "cmDraw ( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );\"";

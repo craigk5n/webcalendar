@@ -111,7 +111,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $appStr = generate_application_name ( true );
 
   $ret .= send_doctype ( $appStr );
-  
+
   $ret .= ( ! $disableAJAX ? '
     <script type="text/javascript" src="includes/js/prototype.js"></script>'
     : '' );
@@ -119,7 +119,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   if ( $MENU_ENABLED == 'Y' ) {
     $MENU_THEME = ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none'
       ? $MENU_THEME : 'default' );
-    $menu_theme =  ( $SCRIPT == 'admin.php' 
+    $menu_theme =  ( $SCRIPT == 'admin.php'
 		  && ! empty ( $GLOBALS['sys_MENU_THEME'] ) ? $GLOBALS['sys_MENU_THEME'] :
       $MENU_THEME );
     $ret .= '

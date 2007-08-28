@@ -4,7 +4,7 @@ include_once 'includes/init.php';
 include_once 'includes/date_formats.php';
 if ( file_exists ( 'install/default_config.php' ) )
   include_once 'install/default_config.php';
-// .
+
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
 // admin.php will not use this cached CSS, but we want to make sure it's flushed.
 $webcalendar_csscache = 1;
@@ -22,7 +22,7 @@ function save_pref ( $prefs, $src ) {
       $setting = substr ( $key, 6 );
       if ( $key == 'currenttab' )
         continue;
-      // .
+
       // Validate key name.  Should start with "admin_" and not include
       // any unusual characters that might be an SQL injection attack.
       if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) )
@@ -111,7 +111,7 @@ if ( ! empty ( $_POST ) && empty ( $error ) ) {
     save_pref ( $webcal_theme, 'theme' );
   }
 }
-// .
+
 // Load any new config settings.  Existing ones will not be affected.
 // This function is in the install/default_config.php file.
 if ( function_exists ( 'db_load_config' ) && empty ( $_POST ) )
@@ -128,7 +128,7 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 }
-// .
+
 // Get list of theme files from /themes directory.
 $dir = 'themes';
 if ( is_dir ( $dir ) ) {
@@ -147,7 +147,7 @@ if ( is_dir ( $dir ) ) {
     closedir ( $dh );
   }
 }
-// .
+
 // Get list of menu themes.
 $dir = 'includes/menu/themes/';
 if ( is_dir ( $dir ) ) {
@@ -162,7 +162,7 @@ if ( is_dir ( $dir ) ) {
     closedir ( $dh );
   }
 }
-$BodyX = 'onload="init_admin();' . ( empty ( $currenttab ) ? '"' 
+$BodyX = 'onload="init_admin();' . ( empty ( $currenttab ) ? '"'
   : 'showTab( \'' . $currenttab . '\' );"' );
 print_header (
   array ( 'js/admin.php', 'js/visible.php' ), '', $BodyX );
@@ -193,7 +193,7 @@ if ( ! $error ) {
   $checked = ' checked="checked"';
   $selected = ' selected="selected"';
   $select = translate ( 'Select' ) . '...';
-  // .
+
   // Allow css_cache of webcal_config values.
   @session_start ();
   $_SESSION['webcal_tmp_login'] = 'blahblahblah';
@@ -220,9 +220,9 @@ if ( ! $error ) {
   $datestyle_ymd = $lang_list = $menu_theme_list = $prefer_vu = '';
   $start_wk_on = $start_wkend_on = $tabs = $theme_list = $user_vu = '';
   $work_hr_end = $work_hr_start = '';
-  // .
+
   // This should be easier to add more tabs if needed.
-  $tabs_ar = array ( // .
+  $tabs_ar = array (
     'settings', translate ( 'Settings' ),
     'public', translate ( 'Public Access' ),
     'uac', translate ( 'User Access Control' ),
@@ -758,7 +758,7 @@ if ( ! $error ) {
 <!-- TODO add account aging feature. -->
 
 <!-- BEGIN ATTACHMENTS/COMMENTS -->
-        <div><p><label title="' 
+        <div><p><label title="'
    . tooltip ( 'allow-attachment-help' ) . '">'
    . translate ( 'Allow file attachments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_ATTACH', '', 'attach_handler' )
@@ -766,7 +766,7 @@ if ( ! $error ) {
    . translate ( 'Admin and owner can always add attachments if enabled.' )
    . '<br />' . print_checkbox ( array ( 'ALLOW_ATTACH_PART', 'Y', $partyStr ) )
    . print_checkbox ( array ( 'ALLOW_ATTACH_ANY', 'Y', $anyoneStr ) )
-   . '</p><br/><p><label title="' 
+   . '</p><br/><p><label title="'
    . tooltip ( 'allow-comments-help' ) . '">'
    . translate ( 'Allow comments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_COMMENTS', '', 'comment_handler' )
