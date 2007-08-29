@@ -2,17 +2,43 @@
 /* $Id$
  *
  * Page Description:
- * Main page for install/config of db settings.
- * This page is used to create/update includes/settings.php.
+ *	Main page for install/config of db settings.
+ *	This page is used to create/update includes/settings.php.
  *
  * Input Parameters:
- * OPTIONAL tzoffset   If after logging in, adding tzoffset to
- * the URL ( http://yourserver/install/index.php?tzoffset=2 )
- * will adjust all existing events in the database +2 hours.
- * OPTIONAL cutoffdate (YYYYMMDD)  When adjusting the tzoffset
- * the URL ( http://yourserver/install/index.php?tzoffset=2&cutoffdate=20070110 )
- * will adjust all events <= 20070110 in the database +2 hours.
- * This is very handy if your server changes timezones after installation.
+ *	OPTIONAL tzoffset   If after logging in, adding tzoffset to
+ *	the URL ( http://yourserver/install/index.php?tzoffset=2 )
+ *	will adjust all existing events in the database +2 hours.
+ *	OPTIONAL cutoffdate (YYYYMMDD)  When adjusting the tzoffset
+ *	the URL ( http://yourserver/install/index.php?tzoffset=2&cutoffdate=20070110 )
+ *	will adjust all events <= 20070110 in the database +2 hours.
+ *	This is very handy if your server changes timezones after installation.
+ *
+ * NEW RELEASE UPDATE PROCEDURES:
+ *   - Update WEBCAL_PROGRAM_VERSION default value in default_config.php
+ *     This should be of the format "v1.0.0"
+ *   - Make sure the last entry in all the upgrade-*.sql files reference
+ *     this same version.  For example, for "v1.0.0", there should be a
+ *     comment of the format:    /*upgrade_v1.0.0 */
+       /* ( Don't remove this line as it leads to nested C-Style comments )
+ *     If there are NO db changes, then you should just modify the
+ *     the last comment to be the new version number.  If there are
+ *     db changes, you should create a new entry in the *.sql files
+ *     that detail the SQL to upgrade.
+ *   - Update the $PROGRAM_VERSION and $PROGRAM_DATE variables defined
+ *     in includes/config.php.  The $PROGRAM_VERSION needs to be the
+ *     same value (e.g. "v1.0.0") that was defined above.
+ *   - Update the version/date in ChangeLog and NEWS files.
+ *
+ * ABOUT VERSION NUMBERS:
+ *   From now on, we should only be using "vN.N.N" format for versions.
+ *   (No more "v.1.12+CVS", for example.)  This may be confusing for CVS
+ *   users since they may download a CVS snapshot that says its "1.1.4",
+ *   but it's really not quite the official "1.1.4" since we will using
+ *   1.1.4 in CVS until the official 1.1.4 release is made.
+ *
+ *   You can mark the version with "+CVS" or something similar in NEWS
+ *   and/or ChangeLog since these are not used in the code.
  *
  * Security:
  * The first time this page is accessed, there are no security
