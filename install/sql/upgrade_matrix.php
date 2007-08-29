@@ -2,7 +2,7 @@
 /* $Id$ */
 
 //Program Version for this release
-$PROGRAM_VERSION = 'v1.1.3';
+$PROGRAM_VERSION = 'v1.1.4';
 
 //array element[0] = sql insertion testy
 //array element[1] = sql delete to clean up
@@ -72,6 +72,9 @@ array ( "INSERT INTO webcal_categories ( cat_id, cat_name, cat_color ) VALUES ( 
 array ( "INSERT INTO webcal_timezones ( tzid ) VALUES ( 'zzz' )",
         "DELETE FROM webcal_timezones WHERE tzid = 'zzz'",
         'v1.1.2', 'upgrade_v1.1.3'),
+array ( "INSERT INTO webcal_timezones ( tzid ) VALUES ( 'zzz' )",
+        "DELETE FROM webcal_timezones WHERE tzid = 'zzz'",
+        'v1.1.3', 'upgrade_v1.1.4'),
 
 //don't change this array element
 array ( '','', $PROGRAM_VERSION, '' )

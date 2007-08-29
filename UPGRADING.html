@@ -109,7 +109,84 @@
 
     <p><a href="install/index.php">Launch the Automatic Installation Script</a></p>
 
+    <h2>Upgrading Steps</h2>
+
+    <p>With the new 1.1 install wizard, you will no longer have to be troubled
+    with uploading SQL files to phpMyAdmin or executing SQL commands yourself.
+    Your database will be upgraded automatically from your current older
+    WebCalendar installation.  Follow the steps below to upgrade to WebCalendar
+    1.1 from an older version of WebCalendar.
+    </p>
+
+    <ol>
+       <li>Make a backup of your current WebCalendar database.  This can be done
+       a couple of different ways.
+         <ul>
+           <li>If you have access to phpMyAdmin, you can use the export function:
+             <ul>
+               <li>Startup phpMyAdmin </li>
+               <li>Select the database from the pulldown on the left under the
+                   label "Databases".  (This will be the same database name
+                   used in your <tt>includes/settings.php</tt> file in your
+                   old WebCalendar install.)</li>
+               <li>Click on the "Export" tab.</li>
+               <li>It's best to use "SQL" for the format so it can be easily imported again.</li>
+               <li>Select "zipped" for compression.  If you don't do this, you will just
+                   see the SQL in your browser window, and you will have to cut and
+                   paste this into a text editor to save it.
+               <li>Click on the "Go" button at the bottom of the page. </li>
+
+             </ul> </li>
+          <li>If you have access to a MySQL command line (typically via shell access on a
+              Linux server), you can use the mysqldump command:<br/>
+             &nbsp;&nbsp;<tt>mysqldump -u<b>USERNAME</b> -p<b>PASSWORD</b> <b>DATABASE</b> > dumpfile.sql</tt>
+             <br/>Of course, replace USERNAME, PASSWORD and DATABASE from the values in
+            your <tt>includes/settings.php</tt> file from your old WebCalendar install.
+         </li>
+         </ul></li>
+       </li>
+
+    <li>Make a backup of your current WebCalendar files on the server.  You would typically
+        do this with an FTP client
+        (like <a hrer="http://filezilla.sourceforge.net/"FileZilla</a>).
+    </li>
+
+    <li>Install the new WebCalendar files in a <b>new</b> directory on your server.
+        How you do this will depend on what type of access you have to your server.
+        It is best to not overwrite your old WebCalendar install.  The unpacked/unzipped
+        files will create a directory with the current WebCalendar version name in it.
+    </li>
+    <li><b>Optional:</b>
+        If you prefer to use a simple name (like "webcalendar" rather than "WebCalendar-1.1.4"),
+        then you can rename the directory after you've installed the files.
+        A good way to do this might be to rename your old webcalendar install to
+        something like "webcalendar-oldinstall" and rename the new install to be
+        the same name as your old one.
+        <br/><b>Note:</b> If you are planning on renaming the directory, it is best to do
+        this <i>before</i> you proceed to the automated install.
+    </li>
+
+    <li>Change the permissions the permissions of the <tt>includes</tt> directory.
+        If you are doing this from FTP, change directories to the new webcalendar directory
+        and use the following command:<br/>
+        &nbsp;&nbsp;<tt>chmod 777 includes</tt>
+
+    <li>Download a copy of your old <tt>includes/settings.php</tt> file from the old
+        WebCalendar install and have it handy so you can enter the same values in your
+        upgrade process. </li>
+
+   <li>You're now ready to start the install/upgrade wizard.  Point your browser to the
+       web server where you have installed the files.   You only need to specify
+       the webcalendar directory to get to the wizard.  Because there is no
+       <tt>includes/settings.php</tt> file in the new install, you will be redirected
+       to the install/upgrade wizard.</li>
+    
+   <li>Once the wizard is complete, it's a good idea to change your <tt>includes</tt>
+       permissions back to what they were originally for better security. </li>
+    </ol>
+
     <hr />
+    <h2>Manual Upgrade Instructions</h2>
 
     <p>Below are the steps needed to manually upgrade from a previous version.
     <b>You can ignore everything below if you use the Automated Installation

@@ -288,3 +288,5 @@ CREATE TABLE webcal_timezones (
   vtimezone TEXT,
   PRIMARY KEY  ( tzid )
 );
+
+/*upgrade_v1.1.4*/
