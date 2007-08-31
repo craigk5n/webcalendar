@@ -369,11 +369,11 @@ if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != 'Y' )
 
 if ( $ALLOW_CONFLICTS != 'Y' && empty ( $confirm_conflicts ) &&
     strlen ( $entry_hour ) > 0 && $timetype != 'U' && $eType != 'task' ) {
-  $conflict_until = ( empty ( $rpt_until ) ? '' : $rpt_until );
-  $conflict_count = ( empty ( $count ) ? 999 : $count );
-  $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, $bymonth,
-    $byweekno, $byyearday, $bymonthday, $byday, $bysetpos, $conflict_count,
-    $conflict_until, $wkst, $exception_list, $inclusion_list );
+  $conf_until = ( empty ( $rpt_until ) ? '' : $rpt_until );
+  $conf_count = ( empty ( $count ) ? 999 : $count );
+  $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, 
+	  array ( $bymonth, $byweekno, $byyearday, $bymonthday, $byday, $bysetpos ),
+	  $conf_count, $conf_until, $wkst, $exception_list, $inclusion_list );
 
   // Make sure at least start date is in array.
   if ( empty ( $dates ) )
