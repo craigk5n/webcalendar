@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Patch 1719114: Allow leading/trailing space in header/trailer file name
  - Added Indonesian translation
  - Bug fix: icalclient.php was not working with Thunderbird/Lightning
  - FIxed bug [ 1780025 ] moonphase: Notice: Undefined index: 20070731 in functions.php
