@@ -381,6 +381,7 @@ function define_languages () {
     translate ( 'Holo (Taiwanese)' ) => 'Holo-Big5',
     translate ( 'Hungarian' ) => 'Hungarian',
     translate ( 'Icelandic' ) => 'Icelandic',
+    translate ( 'Indonesian' ) => 'Bahasa_Indonesia',
     translate ( 'Italian' ) => 'Italian',
     translate ( 'Japanese' ) . ' (EUC-JP)' => 'Japanese-eucjp',
     translate ( 'Japanese' ) . ' (SHIFT JIS)' => 'Japanese-sjis',
@@ -463,6 +464,7 @@ $browser_languages = array (
   'he' => 'Hebrew',
   'hr' => 'Croatian',
   'hu' => 'Hungarian',
+  'id' => 'Bahasa_Indonesia',
   'is' => 'Icelandic',
   'it' => 'Italian',
   'it-ch' => 'Italian', // Italian/Switzerland
