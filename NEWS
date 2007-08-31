@@ -1,3 +1,5 @@
+Version 1.0.6 (?? ??? ????)
+  - Added Indonesian translation
 Version 1.0.5 (04 Mar 2006)
   - Security patch: don't allow URL to set 'noset', which allows users
     to then set other global variables.

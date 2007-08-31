@@ -200,6 +200,7 @@ $languages = array (
   "Holo (Taiwanese)" => "Holo-Big5",
   "Hungarian" =>"Hungarian",
   "Icelandic" => "Icelandic",
+  "Indonesian" => "Bahasa_Indonesia",
   "Italian" => "Italian",
   "Japanese(SHIFT JIS)" => "Japanese",
   "Japanese(EUC-JP)" => "Japanese-eucjp",
@@ -254,6 +255,7 @@ $browser_languages = array (
   "hu" => "Hungarian",
   "zh-min-nan-tw" => "Holo-Big5",
   "is" => "Icelandic",
+  "id" => "Bahasa_Indonesia",
   "it" => "Italian",
   "it-ch" => "Italian", // Italian/Switzerland
   "ja" => "Japanese",
@@ -291,6 +293,7 @@ $browser_languages = array (
 // translate("Holo (Taiwanese)")
 // translate("Hungarian")
 // translate("Icelandic")
+// translate("Indonesian")
 // translate("Italian")
 // translate("Japanese")
 // translate("Korean")
