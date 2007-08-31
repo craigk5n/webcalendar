@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 08-10-2007
+# Translation last updated on 08-31-2007
 
 
 ################################################################################
@@ -1296,7 +1296,7 @@ Export this entry to: Export this entry to
 Palm Pilot: Palm Pilot
 
 ########################################
-# Page: view_r.php
+# Page: view_m.php
 #
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
 
@@ -1520,6 +1520,7 @@ Hebrew: Hebrew
 Holo (Taiwanese): Holo (Taiwanese)
 Hungarian: Hungarian
 Icelandic: Icelandic
+Indonesian: Indonesian
 Italian: Italian
 Japanese: Japanese
 Korean: Korean
@@ -1716,6 +1717,8 @@ Password Accepted: Password Accepted
 Successful Login: Successful Login
 Password Incorrect: Password Incorrect
 Invalid Login: Invalid Login
+OFF: OFF
+ON: ON
 required only if Safe Mode is On: required only if Safe Mode is On
 (required only if Safe Mode is On): (required only if Safe Mode is On)
 required only if Remote Calendars are used: required only if Remote Calendars are used
@@ -1757,8 +1760,6 @@ Check to see if PHP 4.1.0 or greater is installed.: Check to see if PHP 4.1.0 or
 PHP version: PHP version
 PHP Settings: PHP Settings
 Detailed PHP Info: Detailed PHP Info
-ON: ON
-OFF: OFF
 settings.php Status: "settings.php" Status
 Session Check: Session Check
 To test the proper operation of sessions, reload this page: To test the proper operation of sessions, reload this page
