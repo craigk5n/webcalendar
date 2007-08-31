@@ -117,9 +117,13 @@ you'll need to include this in your php.ini file or possibly in an .htaccess fil
   </IfModule>
 
 */
-if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) )
+if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) ) {
   list ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
   explode ( ':', base64_decode ( substr ( $_ENV['REMOTE_USER'], 6 ) ) );
+
+  $_SERVER['PHP_AUTH_USER'] = trim ( $_SERVER['PHP_AUTH_USER'] );
+  $_SERVER['PHP_AUTH_PW'] = trim ( $_SERVER['PHP_AUTH_PW'] );
+}
 
 unset ( $_ENV['REMOTE_USER'] );
 if ( empty ( $login ) ) {
