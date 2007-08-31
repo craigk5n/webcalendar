@@ -1,5 +1,6 @@
-Version 1.0.5 CVS
+Version 1.0.6 (?? ??? ????)
  - Fixed bug [ 1778587 ] upcoming.php wrong link for repeating events
+ - Added Indonesian translation
 Version 1.0.5 (04 Mar 2007)
  - Security patch: don't allow URL to set 'noset', which allows users
    to then set other global variables.
