@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot from the REL_1_2 CVS branch.
 
 Version 1.1.5 (?? ??? 2007)
+ - Bug fix: icalclient.php was not working with Thunderbird/Lightning
 
 Version 1.1.4 (28 Aug 2007)
  - Fixed problem with RSS feed not validating
