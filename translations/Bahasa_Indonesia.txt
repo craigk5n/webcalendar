@@ -1,5 +1,7 @@
 # Translated by: Ronny as-salafi <ronny.assalafi@gmail.com>
 # Last update: 28 August 2007
+# Translation last updated on 08-31-2007
+
 
 ###############################################
 # Specify a charset (will be sent within meta tag for each page)
@@ -878,7 +880,9 @@ English: Bahasa Inggris
 Basque: Bahasa Basque
 Bulgarian: Bahasa Bulgaria
 Catalan: Bahasa Catalonia
-Chinese (Traditional/Big5): Cina (Tradisional/Big5)
+#
+# << MISSING >>
+# Chinese (Traditonal/Big5):
 Chinese (Simplified/GB2312): Cina (Disederhanakan/GB2312)
 Czech: Bahasa Ceko
 Danish: Bahasa Denmark
@@ -892,6 +896,7 @@ Greek: Bahasa Yunani
 Holo (Taiwanese): Holo (Bahasa Taiwan)
 Hungarian: Bahasa Hungaria
 Icelandic: Bahasa Iceland
+Indonesian: Bahasa Indonesia
 Italian: Bahasa Italia
 Japanese: Bahasa Jepang
 Korean: Bahasa Korea
