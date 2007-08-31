@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot from the REL_1_2 CVS branch.
 
 Version 1.1.5 (?? ??? 2007)
+ - Bug fix: [ 1784746 ] Event conflict checking does not work for recurring events
  - Patch 1719114: Allow leading/trailing space in header/trailer file name
  - Bug fix: icalclient.php was not working with Thunderbird/Lightning
  - Added Indonesian translation
