@@ -3859,11 +3859,15 @@ function load_template ( $login, $type ) {
     }
   }
 
+  // Strip leading and trailing white spaces in file name cnadidate
+  $file = preg_replace ('/^\s*/', '', $ret);
+  $file = preg_replace ('/\s*$/', '', $file);
+
   if ( $found &&
     ( ! empty ( $ALLOW_EXTERNAL_HEADER ) && $ALLOW_EXTERNAL_HEADER == 'Y' ) &&
-      file_exists ( $ret ) ) {
+      file_exists ( $file ) ) {
     ob_start ();
-    include "$ret";
+    include "$file";
     $ret = ob_get_contents ();
     ob_end_clean ();
   }
