@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 08-04-2007
+# Translation last updated on 08-31-2007
 
 
 ################################################################################
@@ -1322,7 +1322,6 @@ Invalid function id: Invalid function id
 # Page: includes/config.php
 #
 Could not find settings.php file...: Could not find "settings.php" file.<br />Please copy "settings.php.orig" to "settings.php" and edit for your site.
-#
 Incomplete settings.php file...: Incomplete settings.php file...
 Could not find XXX defined in...: Could not find "XXX" defined in your "settings.php" file.
 You must define XXX in: You must define "XXX" in the "settings.php" file.
@@ -1519,6 +1518,7 @@ Hebrew: Hebrew
 Holo (Taiwanese): Holo (Taiwanese)
 Hungarian: Hungarian
 Icelandic: Icelandic
+Indonesian: Indonesian
 Italian: Italian
 Japanese: Japanese
 Korean: Korean
