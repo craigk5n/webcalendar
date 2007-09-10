@@ -85,7 +85,7 @@ function setCookie(name, value, expire) {
 function transferColor () {
   today= new Date ();
   expires= new Date ()
-  expires.setTime(today.getTime () + 1000*60*60*24*365)
+  expires.setTime( today.getTime () + 1000 * 86400 * 365 )
   setCookie("webcalendar_custom_colors",precol.join(","),expires);
   thisInput.value = '#' + document.getElementById("htmlcolor").value.toUpperCase ();
   if (thisInput.onchange) {
