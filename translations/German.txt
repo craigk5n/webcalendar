@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 26. Juli 2007
+# Last update: 11. September 2007
 #
 # $Id$
-# Translation last updated on 08-03-2007
+# Translation last updated on 09-11-2007
 
 
 ################################################################################
@@ -816,7 +816,7 @@ Add New Group: Benutzergruppe hinzuf&uuml;gen
 #
 Unnamed Group: Neue Benutzergruppe
 Add Group: Benutzergruppe hinzuf&uuml;gen
-Edit Group: Benutzergruppe editieren
+Edit Group: Benutzergruppe &auml;ndern
 Group name: Benutzergruppenname
 Updated: Aktualisiert
 Created by: Erstellt von
@@ -874,15 +874,17 @@ Import: =
 Palm Desktop: =
 This form will allow you to import entries from the Palm Desktop Datebook.: Dieses Formular erlaubt das Importieren der Kalendereintr&auml;ge ihres Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner <tt>datebook&#47;datebook.dat</tt> in einem Unterverzeichnis mit Ihrem Usernamen sein.
+allow you to import entries from the Palm...: Diese Maske erm&ouml;glicht das Importieren von Eintr&auml;gen aus dem Palm Desktop Datebook. Diese sollten in einem Unterverzeichnis (benannt nach Ihrem Benutzernamen) Ihres Palm in <tt>datebook/datebook.dat</tt> sich befinden.
 The following entries will not be imported: Folgende Eintr&auml;ge werden nicht importiert
 Entries older than the current date: Eintr&auml;ge die &auml;lter als das aktuelle Datum sind
 Entries created in the Palm Desktop...: Hinzugef&uuml;gte Eintr&auml;ge im Palm Desktop die nicht synchronisiert wurden (HotSync&#39;d)
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er das Datum des Termines ist vorbei).
 Therefore, updates should be made in the Palm Desktop.: Deshalb sollten &Auml;nderungen auf dem Palm&#47;Desktop durchgef&uuml;hrt werden.
+Anything imported from Palm...: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er Termine die abgelaufen sind). Deshalb sollten &Auml;nderungen auf dem Palm&#47;Desktop durchgef&uuml;hrt werden.
 vCal: =
-This form will import vCalendar (.vcs) 1.0 events.: Dieses Formular importiert vCalendar (.vcs) 1.0 Eintr&auml;ge
+This form will import vCalendar (.vcs) 1.0 events.: Dieses Formular importiert vCalendar (.vcs) 1.0 - Eintr&auml;ge.
 The following formats have been tested: Folgende Formate wurden getestet
-This form will import iCalendar (.ics) events.: Dieses Formular importiert iCalendar (.ics) Eintr&auml;ge
+This form will import iCalendar (.ics) events.: Dieses Formular importiert iCalendar (.ics) - Eintr&auml;ge.
 Enabling: Aktivieren
 Overwrite Prior Import: Vorigen Import &uuml;berschreiben
 will cause events imported previously...: bewirkt, da&szlig; vorige <b>&#34;importierte Termine&#34;</b>, welche die <u>selbe UID</u> verwenden, als <b>&#34;gel&ouml;scht&#34;</b> markiert sind. Das erm&ouml;glicht ein importieren einer aktuellen iCalendar Datei <b>ohne Duplikate</b> zu erzeugen.
@@ -1267,7 +1269,7 @@ Export this entry to: Diesen Eintrag exportieren nach
 Palm Pilot: =
 
 ########################################
-# Page: view_r.php
+# Page: view_m.php
 #
 Double-click on empty cell to add new entry: Ein &#39;Doppelklick&#39; auf eine leere Zelle f&uuml;gt einen neuen Termin ein.
 
@@ -1294,9 +1296,8 @@ Invalid function id: Ung&uuml;ltige &#39;Funktions-ID&#39;
 ########################################
 # Page: includes/config.php
 #
-Fatal Error: Fataler Fehler
-Troubleshooting Help: Fehlersuche (Hilfe)
 Could not find settings.php file...: Kann die Datei &#34;settings.php&#34; nicht finden.</br>Bitte kopieren Sie &#34;settings.php.orig&#34; nach &#34;settings.php&#34; und editieren diese f6uuml;r Ihre Seite.
+Incomplete settings.php file...: Unvollst&auml;ndige settings.php Datei...
 Could not find XXX defined in...: Kann XXX in Ihrer Datei &#34;settings.php&#34; nicht finden.
 You must define XXX in: Sie m&uuml;ssen XXX in Ihrer &#34;settings.php&#34; Datei definieren.
 
@@ -1396,7 +1397,7 @@ May: Mai
 Jun: =
 Jul: =
 Aug: =
-Sep: =
+Sep: Sept
 Oct: Okt
 Nov: =
 unknown-month: unbekannter Monat
@@ -1440,6 +1441,7 @@ unknown-weekday: unbekannter Wochentag
 ########################################
 # Page: includes/getPredefinedVariables.php
 #
+Fatal Error: Fataler Fehler
 Invalid data format for: Ung&uuml;ltiges Datenformat f&uuml;r&nbsp;
 
 ########################################
@@ -1491,6 +1493,7 @@ Hebrew: Hebr$auml;isch
 Holo (Taiwanese): Taiwanesisch
 Hungarian: Ungarisch
 Icelandic: Isl&auml;ndisch
+Indonesian: Indonesisch
 Italian: Italienisch
 Japanese: Japanisch
 Korean: Koreanisch
@@ -1536,13 +1539,13 @@ no such user: kein solcher Benutzer
 ########################################
 # Page: includes/xcal.php
 #
-MO: Mo
-TU: Di
-WE: Mi
-TH: Do
-FR: Fr
-SA: Sa
-SU: So
+MO: =
+TU: DI
+WE: MI
+TH: DO
+FR: =
+SA: =
+SU: SO
 Interval: =
 Months: Monate
 Month Days: Monatstage
@@ -1672,54 +1675,73 @@ Help Contents: Hilfe Inhaltsverzeichnis
 ########################################
 # Page: install/index.php
 #
+Create New: Neu erstellen
+Database Cache Directory: Cache-Verzeichnis der Datenbank
+Database Name: Datenbankname
+Failure Reason: Fehlerbegr&uuml;ndung
+Single-User: Einzelbenutzer
+Test Settings: Einstellungen testen
+Timezone Conversion Successful: Konvertierung der Zeitzone erfolgreich abgeschlossen
 WebCalendar Installation Wizard: Webkalender Installationsassistent
 Step: Schritt
 WebCalendar Installation Wizard Step XXX: Webkalender Installationsassistent Schritt XXX
-Single-User: Einzelbenutzer
-Failure Reason: Fehlerbegr&uuml;ndung
 You must manually create database: Sie m&uuml;ssen die Datenbank manuell einrichten
-Database Cache Directory: Cache-Verzeichnis der Datenbank
-Test Settings: Einstellungen testen
-Create New: Neu erstellen
-Database Name: Datenbankname
-Timezone Conversion Successful: Konvertierung der Zeitzone erfolgreich abgeschlossen
-Error Unable to write to file: Fehler beim Schreiben auf Datei
-Error Unable to write to file XXX.: Fehler beim Schreiben auf Datei XXX.
+Password Accepted: Kennwort akzeptiert
 Successful Login: Erfolgreiches Login
+Password Incorrect: Kennwort falsch
 Invalid Login: Ung&uuml;ltiges Login
+OFF: AUS
+ON: EIN
 required only if Safe Mode is On: nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist
+(required only if Safe Mode is On): (nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
 required only if Remote Calendars are used: nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden
+(required only if Remote Calendars are used): (nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden)
 needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig
-Passwords do not match: Passw&ouml;rter stimmen nicht &uuml;berein
+(needed for Gradient Image Backgrounds): (F&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig)
+Passwords do not match: Kennw&ouml;rter stimmen nicht &uuml;berein
+Passwords do not match!: Kennw&ouml;rter stimmen nicht &uuml;berein!
 Unable to write password to settings.php file: Kennwort kann nicht in die &#39;settings.php&#39;-Datei geschrieben werden
+Password Updated: Kennwort upgedated
 Password has been set: Kennwort wurde gesetzt
 Connection Successful: Verbindung erfolgreich.
 Please go to next page to continue installation: Bitte f&uuml;hren Sie den n&auml;chsten Schritt aus um mit der Installation fortzufahren
-Correct your entries or click the Create New...: Korrigieren Sie Ihre Eintr&auml;ge oder klicken Sie auf <b>Neu erstellen</b> Button um die Installation fortzufahren
-Correct your entries and try again.: Korrigieren Sie Ihre Eintr&auml;ge und versichen Sie es erneut
+Connection Successful...: <b>Verbindung erfolgreich</b> Bitte f&uuml;hren Sie den n&auml;chsten Schritt aus um mit der Installation fortzufahren
+Correct your entries or click the Create New...: Korrigieren Sie Ihre Eintr&auml;ge oder klicken Sie auf <b>Neu erstellen</b> Button um die Installation fortzufahren.
+Correct your entries and try again.: Korrigieren Sie Ihre Eintr&auml;ge und versuchen Sie es erneut.
 does not exist: existiert nicht
 is not writable: ist schreibgesch&uuml;tzt
 Error Converting Timezone: Fehler bei der Zeitzonenkonvertierung
-Please change the file permissions of this file.: Bitte &auml;ndern Sie die Rechte dieser Datei
+Error Unable to write to file: Fehler beim Schreiben auf Datei
+Error Unable to write to file XXX.: Fehler beim Schreiben auf Datei XXX.
+Please change the file permissions of this file.: Bitte &auml;ndern Sie die Rechte dieser Datei.
 Please change includes dir permission: Bitte &auml;ndern Sie die Dateiberechtigungen von Ihrem &#39;includes&#39;-Verzeichnis um &#39;Schreibrechte&#39; f&uuml;r &#39;andere Benutzer&#39; zu haben.
 Your settings have been saved.: Ihre Einstellungen wurden gespeichert.
-Error you must specify a Single-User Login: Fehler, Sie m&uuml;ssen ein Einzelbenutzer Login definieren
+WebCalendar Setup Wizard: WebKalender Installationsassistent
+Error you must specify a Single-User Login: Sie m&uuml;ssen ein\nSingle-User Login festlegen.
 Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
 The password contains illegal characters.: Das Kennwort beinhaltet unzul&auml;ssige Zeichen
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
+System Administrators Guide: Systemverwalter-F&uuml;hrer
+Frequently Asked Questions: H&auml;fig gestellte Fragen und Antworten
+FAQ: =
+Troubleshooting: Fehlersuche
+Getting Help: Hilfe erhalten
+Upgrading Guide: Upgrade-F&uuml;hrer
+User Supported Wiki: User unterst&uuml;tztes Wiki
 PHP Version Check: PHP Versions&uuml;berpr&uuml;fung
-Check to see if PHP 4.1.0 or greater is installed.: &Uuml;berpr&uuml;fung ob PHP 4.1.0 oder h&ouml;her installiert ist
+Check to see if PHP 4.1.0 or greater is installed.: &Uuml;berpr&uuml;fung ob PHP 4.1.0 oder h&ouml;her installiert ist.
 PHP version: PHP Version
 PHP Settings: PHP Einstellungen
 Detailed PHP Info: Detailierte PHP Information
+settings.php Status: &#39;settings.php&#39; Status
 Session Check: Session &Uuml;berpr&uuml;fung
 To test the proper operation of sessions, reload this page: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie diese Seite neu.
 You should see the session counter increment each time: Kontrollieren Sie ob der Sessionz&auml;hler jedesmal weiterz&auml;hlt
+To test the proper operation of sessions...: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie diese Seite neu. Kontrollieren Sie ob der Sessionz&auml;hler jedesmal weiterz&auml;hlt
 SESSION COUNTER: Sessionz&auml;hler
-settings.php Status: &#39;Settings.php&#39; Status
 The file permissions of settings.php are set...: Die Dateirechte von <b>settings.php</b> sind so gesetzt, da&szlig; der Installer keine Rechte zur &Auml;nderung besitzt. Bitte &auml;ndern Sie die Zugriffsrechte der Datei um fortzufahren
 The file permissions of the includes directory are set...: Die Zugriffsrechte von <b>includes</b> Verzeichnis sind so gesetzt, da&szlig; der Installer keine Rechte zum Erstellen von neuen Dateien hat. Bitte &auml;ndern Sie die Zugriffsrechte des Verzeichnisses um fortzufahren.
-Your settings.php file appears to be valid.: Ihre <b>settings.php</b> Datei scheint g&uuml;ltig zu sein
+Your settings.php file appears to be valid.: Ihre <b>settings.php</b> Datei scheint g&uuml;ltig zu sein.
 Configuration Wizard Password: Assitenten - Konfigurationspasswort
 Create Settings File Password: Erzeuge Kennwort f&uuml;r die Settings Datei
 db setup directions...: In diesem Abschnitt stellen (und &uuml;berpr&uuml;fen) Sie die Verbindung zum Datenbankserver her. Die gelieferten Kontoinformationen sollten VOLLE Erlaubnis haben um Datenbanken, Tabellen und Benutzer zu erstellen. Wenn dies nicht m&ouml;glich oder Ihr Datenbankzugriff begrenzt ist, m&uuml;ssen Sie manuell Ihre Datenbank justieren.
@@ -1734,16 +1756,21 @@ Server: =
 Connection Persistence: Permanente Verbindung
 All your database tables appear to be up to date. You may proceed to the: Alle Ihre Datenbanktabellen scheinen auf den neuesten Stand gebracht zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
 next page and complete your WebCalendar setup: Ihre Webkalendereinstellungen zu vervollst&auml;ndigen
+All your database tables appear to be up...: You may proceed to the: Alle Ihre Datenbanktabellen scheinen auf den neuesten Stand gebracht zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
 This appears to be a new installation. If this is not correct, please: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte
 go back to the previous page and correct your settings: Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen
+This appears to be a new installation...: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen.
+This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
+This appears to be an upgrade...: Dieses scheint ein Upgrade zu sein von der Version&nbsp;XXX&nbsp;auf&nbsp;XXX.
 The database requires some data input: Die Datenbank erfodert einige Dateneingaben
 Click Update Database to complete the upgrade: Klicken Sie auf <b>Update Database</b> um das Upgrade zu vervollst&auml;ndigen
-This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
+The database requires some data input...: Die Datenbank erfodert einige Dateneingaben. Klicken Sie auf <b>Update Database</b> um das Upgrade zu vervollst&auml;ndigen.
 In this section we will perform the required database changes to bring your database up to the required level: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch, um Ihre Datenbank auf den aktuellen Stand zu bringen.
 If you are using a fully supported database, this step will be performed automatically for you: Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt.
 If not, the required SQL can be displayed and you should be able: Wenn nicht, kann das ben&ouml;tigte SQL-Skript angezeigt werden und sollten dann in der Lage sein,
 to cut &amp; paste it into your database server query window: dieses zu kopieren und danach in Ihrem Datenbankabfragefenster einzuf&uuml;gen und auszuf&uuml;hren
-No database actions are required.: Keine Datenbankt&auml;tigkeiten erforderlich
+In this section we will perform...: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch um Ihre Datenbank auf den aktuellen Stand zu bringen. Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt. Wenn nicht, kann das ben&ouml;tigte SQL-Skript angezeigt werden und sollten dann in der Lage sein, dieses in Ihr Datenbankabfragefenster zu kopieren und danach auszuf&uuml;hren.
+No database actions are required.: Kein Datenbankeingriff erforderlich
 The following database actions are required: Folgende Datenbankt&auml;tigkeiten sind erforderlich
 ODBC Underlying Database: ODBC zugrundeliegende Datenbank
 Automatic installation not supported: Eine komplett automatisierte Installation wird von Ihrem verwendeten Datenbanktyps nicht vollst&auml;ndig unterst&uuml;tzt. Sie m&uuml;ssen die erforderlichen Tabellen mit den mitgelieferten SQL manuell erstellen. Bitte Klicken <b>Ben&ouml;tigte SQL anzeigen</b> um fortzufahren. Ausschneiden &amp; Einf&uml;gen in Ihrem Datenbankabfragefenster.
@@ -1758,8 +1785,8 @@ It appears that you have: Es scheint Sie haben Ihre Webkalendereintr&auml;ge noc
 NOT: NICHT
 converted your existing WebCalendar event data to GMT.: &nbsp;in GMT (Greenwich Mean Time) umgewandelt zu haben.
 If you have, you may ignore this notice and not proceed with the conversion.: Wenn Sie dies bereits getan haben, k&ouml;nnen Sie diese Nachricht ignorieren und ohne der Umwandlung fortfahren.
-If this is a new installation, you may also ignore this notice.: Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren.
-It appears that you have NOT converted your existing WebCalendar...: Es scheint, Ihr existierender Webkalender wurde noch NICHT auf GMT umgewandelt. Wenn Sie dies bereits getan haben, oder es sich um eine NEUE Installation handelt, d&uuml;rfen Sie diese Meldung ignorieren und fortfahren.
+If this is a new installation, you may also ignore this notice.: Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren. Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren.
+It appears that you have NOT converted...: Es scheint Sie haben Ihre Webkalendereintr&auml;ge noch NICHT in GMT (Greenwich Mean Time) umgewandelt zu haben.
 Convert Data to GMT: Konvertieren nach GMT
 Application Settings: Anwendungseinstellung
 HTTP-based authentication was not detected: HTTP-basierende Authentisierung wurde nicht erkannt
@@ -1772,6 +1799,7 @@ You should select Web Server from the list of User Authentication choices below.
 HTTP-based authentication was detected...: HTTP-basierende Authentisierung wurde erkannt. Sie sollten &#39;Web Server&#39; von der Liste &#39;Benutzer Authentisierung&#39; von unten ausw&auml;hlen.
 Create Default Admin Account: Ein Administratorkonto einrichten
 Admin Account Not Found: Administratorkonto nicht gefunden
+(Admin Account Not Found): (Administratorkonto nicht gefunden)
 User Authentication: Benutzer Authentisierung
 Web-based via WebCalendar (default): Webbasierend via Webkalender (Grundeinstellung)
 Web Server: Webserver
@@ -1797,7 +1825,7 @@ previous version requires updating several tables: Ihre vorige Version des Webka
 ########################################
 # Page: themes/theme_inc.php
 #
-NO PREVIEW AVAILABLE: KEINE VORSCHAU M&Ouml;GLICH
+NO PREVIEW AVAILABLE: KEINE VORSCHAU VERF&Uuml;GBAR
 
 ########################################
 # Page: tools/reload_remotes.php
