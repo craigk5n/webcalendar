@@ -23,8 +23,7 @@
 
 /* Load other specific function libraries.
  */
-$includeDir = ( empty ( $includedir ) ? 'includes' : $includedir );
-include_once $includeDir . '/getPredefinedVariables.php';
+include_once 'includes/getPredefinedVariables.php';
 
 /* Logs a debug message.
  *
