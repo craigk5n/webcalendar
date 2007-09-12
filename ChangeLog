@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Security fix: vulnerability in $includeDir in functions.php
  - Patch 1719114: Allow leading/trailing space in header/trailer file name
  - Added Indonesian translation
  - Bug fix: icalclient.php was not working with Thunderbird/Lightning
