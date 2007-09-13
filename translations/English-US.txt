@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 08-31-2007
+# Translation last updated on 09-12-2007
 
 
 ################################################################################
@@ -834,11 +834,6 @@ export format not defined or incorrect: export format not defined or incorrect
 No user specified.: No user specified.
 
 ########################################
-# Page: groups.php
-#
-Add New Group: Add New Group
-
-########################################
 # Page: group_edit.php
 #
 Unnamed Group: Unnamed Group
@@ -852,6 +847,11 @@ Created by: Created by
 # Page: group_edit_handler.php
 #
 You must specify a group name: You must specify a group name
+
+########################################
+# Page: groups.php
+#
+Add New Group: Add New Group
 
 ########################################
 # Page: help_admin.php
@@ -1220,33 +1220,6 @@ listid: listid
 Reset: Reset
 
 ########################################
-# Page: views.php
-#
-Add New View: Add New View
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Unnamed View
-Add View: Add View
-Edit View: Edit View
-View Name: View Name
-View Type: View Type
-Day by Time: Day by Time
-Week (Users horizontal): Week (Users horizontal)
-Week by Time: Week by Time
-Week (Users vertical): Week (Users vertical)
-Week (Timebar): Week (Timebar)
-Month (Timebar): Month (Timebar)
-Month (side by side): Month (side by side)
-Month (on same calendar): Month (on same calendar)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: You must specify a view name
-
-########################################
 # Page: view_d.php
 #
 No users for this view: No users for this view
@@ -1299,6 +1272,33 @@ Palm Pilot: Palm Pilot
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
 
 ########################################
+# Page: views.php
+#
+Add New View: Add New View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Unnamed View
+Add View: Add View
+Edit View: Edit View
+View Name: View Name
+View Type: View Type
+Day by Time: Day by Time
+Week (Users horizontal): Week (Users horizontal)
+Week by Time: Week by Time
+Week (Users vertical): Week (Users vertical)
+Week (Timebar): Week (Timebar)
+Month (Timebar): Month (Timebar)
+Month (side by side): Month (side by side)
+Month (on same calendar): Month (on same calendar)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: You must specify a view name
+
+########################################
 # Page: week_details.php
 #
 New Entry: New Entry
@@ -1349,6 +1349,12 @@ write: write
 Could not XXX file: Could not XXX file
 Error opening cache dir: Error opening cache dir
 delete: delete
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fatal Error
+Invalid data format for: Invalid data format for
 
 ########################################
 # Page: includes/functions.php
@@ -1462,12 +1468,6 @@ Thu: Thu
 Fri: Fri
 Sat: Sat
 unknown-weekday: unknown-weekday
-
-########################################
-# Page: includes/getPredefinedVariables.php
-#
-Fatal Error: Fatal Error
-Invalid data format for: Invalid data format for
 
 ########################################
 # Page: includes/help_list.php
