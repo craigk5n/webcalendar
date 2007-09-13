@@ -54,7 +54,7 @@ $show_all_errors = false;
 include_once '../includes/translate.php';
 include_once '../includes/dbi4php.php';
 include_once '../includes/config.php';
-include_once '../includes/getPredefinedVariables.php';
+include_once '../includes/formvars.php';
 include_once 'default_config.php';
 include_once 'install_functions.php';
 include_once 'sql/upgrade_matrix.php';
@@ -201,6 +201,7 @@ $allowurlstring = 'Allow URL fopen  (' .
 $php_settings = array (
   array ('Safe Mode','safe_mode','OFF', false),
   array ( $safevarstring,'safe_mode_allowed_env_vars','TZ', 'TZ'),
+  array ('Register Globals','register_globals','OFF', false),
   array ('Display Errors','display_errors','ON', false),
   array ('File Uploads','file_uploads','ON', false),
   array ($allowurlstring,'allow_url_fopen','ON', false),

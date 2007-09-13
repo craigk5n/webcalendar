@@ -21,10 +21,6 @@
  *    Retrieve preferences from the webcal_user_pref table.
  */
 
-/* Load other specific function libraries.
- */
-include_once 'includes/getPredefinedVariables.php';
-
 /* Logs a debug message.
  *
  * Generally, we try not to leave calls to this function in the code.
