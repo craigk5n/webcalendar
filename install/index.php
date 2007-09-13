@@ -55,7 +55,7 @@ $firebird_path = 'c&#58;/program files/firebird/firebird_1_5/examples/employee.f
 include_once '../includes/translate.php';
 include_once '../includes/dbi4php.php';
 include_once '../includes/config.php';
-include_once '../includes/getPredefinedVariables.php';
+include_once '../includes/formvars.php';
 include_once 'default_config.php';
 include_once 'install_functions.php';
 include_once 'sql/upgrade_matrix.php';
