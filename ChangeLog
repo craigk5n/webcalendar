@@ -1,5 +1,10 @@
 $Id$
 
+This is the CVS REL_1_2 branch.
+
+Version 1.1.6 (?? ??? 2007)
+
+
 Version 1.1.5 (12 Sep 2007)
  - Security fix: vulnerability in $includeDir in functions.php
    Renamed getPredefinedVariables.php to formvars.php
