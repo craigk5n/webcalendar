@@ -3,6 +3,7 @@ $Id$
 This is the CVS REL_1_2 branch.
 
 Version 1.1.6 (?? ??? 2007)
+ - Bug fix: upcoming.php was missing include for formvars.php
 
 
 Version 1.1.5 (12 Sep 2007)
