@@ -1,8 +1,6 @@
 $Id$
 
-You are looking at a CVS snapshot from the REL_1_2 CVS branch.
-
-Version 1.1.5 (?? ??? 2007)
+Version 1.1.5 (12 Sep 2007)
  - Security fix: vulnerability in $includeDir in functions.php
    Renamed getPredefinedVariables.php to formvars.php
  - Bug fix: [ 1780226 ] Repeat event monthly by position 

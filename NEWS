@@ -8,9 +8,9 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 ---------------------------------------------------------------------------
 
-Version 1.1.5 (?? ??? 2007)
+Version 1.1.5 (12 Sep 2007)
 
-  - This release fixes bugs found in 1.1.4.
+  - Security fix: vulnerability in $includeDir in functions.php
   - The following translations were updated:
     Indonesian
 
