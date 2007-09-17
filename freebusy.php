@@ -50,6 +50,7 @@ $WebCalendar =& new WebCalendar ( __FILE__ );
 
 include 'includes/config.php';
 include 'includes/dbi4php.php';
+include 'includes/formvars.php';
 include 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase ();

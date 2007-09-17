@@ -66,6 +66,7 @@ $WebCalendar =& new WebCalendar ( __FILE__ );
 include $includedir . '/translate.php';
 include $includedir . '/config.php';
 include $includedir . '/dbi4php.php';
+include $includedir . '/formvars.php';
 include $includedir . '/functions.php';
 
 $WebCalendar->initializeFirstPhase ();
