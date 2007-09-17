@@ -5,6 +5,7 @@ define ( '_ISVALID', true );
 include 'includes/translate.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
+include 'includes/formvars.php';
 include 'includes/functions.php';
 
 do_config ( 'includes/settings.php' );
