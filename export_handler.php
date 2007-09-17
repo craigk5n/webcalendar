@@ -210,7 +210,7 @@ function transmit_header ( $mime, $file ) {
 $format = getValue ( 'format' );
 if ( $format != 'ical' && $format != 'vcal' && $format != 'pilot-csv' &&
   $format != 'pilot-text' )
-  die_miserable_death ( 'Invalid format "' . $format . '"' );
+  die_miserable_death ( 'Invalid format "' . htmlspecialchars($format) . '"' );
 $id = getValue ( 'id', '-?[0-9]+', true );
 
 $use_all_dates = getPostValue ( 'use_all_dates' );
