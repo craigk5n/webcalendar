@@ -3,8 +3,8 @@ $Id$
 This is the CVS REL_1_2 branch.
 
 Version 1.1.6 (?? ??? 2007)
- - Bug fix: upcoming.php was missing include for formvars.php
-
+ - Fixed bug 1794658, 1795649: various files (upcoming.php, rss.php, etc.)
+   were missing needed includes/formvars.php.
 
 Version 1.1.5 (12 Sep 2007)
  - Security fix: vulnerability in $includeDir in functions.php

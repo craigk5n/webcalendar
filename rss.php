@@ -59,6 +59,7 @@ require_once 'includes/classes/RptEvent.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
+include 'includes/formvars.php';
 include 'includes/functions.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
