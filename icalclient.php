@@ -176,20 +176,33 @@ function dump_globals () {
   }
 }
 
-if ( $_SERVER['REQUEST_METHOD'] == 'PUT' ) {
-  // do_debug ( "Importing updated remote calendar" );
-  $calUser = $login;
-  $overwrite = true;
-  $type = 'icalclient';
+switch ( $_SERVER['REQUEST_METHOD'] ) {
+  case 'PUT':
+    // do_debug ( "Importing updated remote calendar" );
+    $calUser = $login;
+    $overwrite = true;
+    $type = 'icalclient';
 
-  $data = parse_ical ( '', $type );
-  import_data ( $data, $overwrite, $type );
-} else {
-  // do_debug ( "Exporting updated remote calendar" );
-  header ( 'Content-Type: text/calendar' );
-  header ( 'Content-Disposition: attachment; filename="' . $login . '.ics"' );
-  $use_all_dates = true;
-  export_ical ();
+    $data = parse_ical ( '', $type );
+    import_data ( $data, $overwrite, $type );
+    break;
+
+  case 'GET':
+    // do_debug ( "Exporting updated remote calendar" );
+    header ( 'Content-Type: text/calendar' );
+    header ( 'Content-Disposition: attachment; filename="' . $login . '.ics"' );
+    $use_all_dates = true;
+    export_ical ();
+    break;
+
+  case 'OPTIONS';
+    header ( 'Allow: GET, PUT, OPTIONS' );
+    break;
+
+  default:
+    header ( 'Allow: GET, PUT, OPTIONS' );
+    header( 'HTTP/1.0 405 Method Not Allowed' );
+    break;
 }
 
 ?>
