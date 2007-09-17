@@ -3,7 +3,7 @@ $Id$
 This is the CVS REL_1_2 branch.
 
 Version 1.1.6 (?? ??? 2007)
- - Patch 1791947 ] Handle the OPTIONS method in icalclient.php
+ - Patch 1791947: Handle the OPTIONS method in icalclient.php
    (Used by Evolution linux client.)
  - Fixed bug 1794658, 1795649: various files (upcoming.php, rss.php, etc.)
    were missing needed includes/formvars.php.
