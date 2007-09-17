@@ -4,6 +4,8 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Patch 1791947: Handle the OPTIONS method in icalclient.php
+   (Used by Evolution linux client.)
  - Patch 1792796: Debian fix for vulnerability CVE-2006-6669
    Fixes cross-site scripting (XSS) vulnerability in export_handler.php.
  - Security fix: vulnerability in $includeDir in functions.php
