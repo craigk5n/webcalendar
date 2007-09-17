@@ -218,9 +218,8 @@ class WebCalendar {
           $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
       } else {
         $u_url = '';
-        $user_fullname = $fullname;
-        if ( $login == '__public__' )
-          $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
+        $user_fullname = ( $login == '__public__'
+          ? translate ( $PUBLIC_ACCESS_FULLNAME ) : $fullname );
       }
 
       set_today ( $date );
@@ -598,12 +597,12 @@ class WebCalendar {
             // NOTE: we also changed the cookie encoding from WebCalendar 1.0.X
             // to WebCalendar 1.1.X+, so this causes a bad cookie error.
             if ( ! empty ( $login ) && $login != addslashes ( $login ) ) {
-              // The following deletes the bad cookie.  So, the user just needs
-              // to reload.
+              // The following deletes the bad cookie.
+              // So, the user just needs to reload.
               SetCookie ( 'webcalendar_session', '', 0 );
               die_miserable_death ( 'Illegal characters in login <tt>'
-                 . htmlentities ( $login ) . '</tt>' .
-                 "Press browser reload to clear bad cookie." );
+                 . htmlentities ( $login )
+                 . '</tt>. Press browser reload to clear bad cookie.' );
             }
 
             // Make sure we are connected to the database for password check.
@@ -688,7 +687,7 @@ class WebCalendar {
     if ( $single_user == 'Y' ) {
       if ( empty ( $single_user_login ) )
         die_miserable_death ( 'You have not defined <tt>single_user_login</tt> '
-           . 'in <tt>includes/settings.php</tt>' );
+           . 'in <tt>includes/settings.php</tt>.' );
 
       $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_user
         WHERE cal_login = ?', array ( $single_user_login ) );
@@ -714,13 +713,12 @@ class WebCalendar {
     // Global settings have not been loaded yet, so check for public_access now.
     $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
       WHERE cal_setting = \'PUBLIC_ACCESS\'' );
-		if ( $rows ) {
+		if ( $rows )
 		  $row = $rows[0];
-		}
+
     $pub_acc_enabled = ( ! empty ( $row ) && $row[0] == 'Y' );
 
     if ( $pub_acc_enabled ) {
-
       $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
         WHERE cal_setting = \'PUBLIC_ACCESS_CAN_ADD\'' );
       if ( $rows && $row == $rows[0] )
@@ -740,9 +738,8 @@ class WebCalendar {
     // If sent here from an email and not logged in,
 		//save URI and redirect to login.
     $em = getGetValue ( 'em' );
-    if ( ! empty ( $em ) && empty ( $login ) ) {
+    if ( ! empty ( $em ) && empty ( $login ) )
       remember_this_view ();
-    }
 
     if ( empty ( $session_not_found ) )
       $session_not_found = false;
@@ -801,85 +798,82 @@ class WebCalendar {
       }
     }
 
-    // If they are accessing using the public login, restrict them from using
-    // certain pages.
+    // If they are accessing using the public login,
+    // Restrict them from using certain pages.
     $not_auth = false;
     if ( ! empty ( $login ) && $login == '__public__' || $is_nonuser ) {
-      if ( strstr ( $PHP_SELF, 'views.php' ) ||
-        strstr ( $PHP_SELF, 'views_edit_handler.php' ) ||
+      if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
+        strstr ( $PHP_SELF, 'admin.php' ) ||
+        strstr ( $PHP_SELF, 'admin_handler.php' ) ||
+        strstr ( $PHP_SELF, 'adminhome.php' ) ||
+        strstr ( $PHP_SELF, 'approve_entry.php' ) ||
         strstr ( $PHP_SELF, 'category.php' ) ||
         strstr ( $PHP_SELF, 'category_handler.php' ) ||
-        strstr ( $PHP_SELF, 'activity_log.php' ) ||
-        strstr ( $PHP_SELF, 'admin.php' ) ||
-        strstr ( $PHP_SELF, 'adminhome.php' ) ||
-        strstr ( $PHP_SELF, 'admin_handler.php' ) ||
-        strstr ( $PHP_SELF, 'groups.php' ) ||
-        strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
-        strstr ( $PHP_SELF, 'pref.php' ) ||
-        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
+        strstr ( $PHP_SELF, 'del_entry.php' ) ||
         strstr ( $PHP_SELF, 'edit_remotes.php' ) ||
         strstr ( $PHP_SELF, 'edit_remotes_handler.php' ) ||
+        strstr ( $PHP_SELF, 'edit_template.php' ) ||
         strstr ( $PHP_SELF, 'edit_user.php' ) ||
         strstr ( $PHP_SELF, 'edit_user_handler.php' ) ||
-        strstr ( $PHP_SELF, 'approve_entry.php' ) ||
-        strstr ( $PHP_SELF, 'reject_entry.php' ) ||
-        strstr ( $PHP_SELF, 'del_entry.php' ) ||
-        strstr ( $PHP_SELF, 'set_entry_cat.php' ) ||
-        strstr ( $PHP_SELF, 'list_unapproved.php' ) ||
-        strstr ( $PHP_SELF, 'layers.php' ) ||
-        strstr ( $PHP_SELF, 'layer_toggle.php' ) ||
+        strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
+        strstr ( $PHP_SELF, 'groups.php' ) ||
         strstr ( $PHP_SELF, 'import.php' ) ||
         strstr ( $PHP_SELF, 'import_handler.php' ) ||
-        strstr ( $PHP_SELF, 'edit_template.php' ) ) {
+        strstr ( $PHP_SELF, 'layer_toggle.php' ) ||
+        strstr ( $PHP_SELF, 'layers.php' ) ||
+        strstr ( $PHP_SELF, 'list_unapproved.php' ) ||
+        strstr ( $PHP_SELF, 'pref.php' ) ||
+        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
+        strstr ( $PHP_SELF, 'reject_entry.php' ) ||
+        strstr ( $PHP_SELF, 'set_entry_cat.php' ) ||
+        strstr ( $PHP_SELF, 'views.php' ) ||
+        strstr ( $PHP_SELF, 'views_edit_handler.php' ) )
         $not_auth = true;
-      }
     }
 
     if ( empty ( $is_admin ) || ! $is_admin ) {
-      if ( strstr ( $PHP_SELF, 'admin.php' ) ||
+      if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
+        strstr ( $PHP_SELF, 'admin.php' ) ||
         strstr ( $PHP_SELF, 'admin_handler.php' ) ||
-        strstr ( $PHP_SELF, 'groups.php' ) ||
         strstr ( $PHP_SELF, 'group_edit.php' ) ||
         strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
-        strstr ( $PHP_SELF, 'activity_log.php' ) ) {
+        strstr ( $PHP_SELF, 'groups.php' ) )
         $not_auth = true;
-      }
     }
 
-    // restrict access if calendar is read-only
+    // Restrict access if calendar is read-only.
     if ( $readonly == 'Y' ) {
       if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
-        strstr ( $PHP_SELF, 'adminhome.php' ) ||
         strstr ( $PHP_SELF, 'admin.php' ) ||
+        strstr ( $PHP_SELF, 'adminhome.php' ) ||
         strstr ( $PHP_SELF, 'approve_entry.php' ) ||
-        strstr ( $PHP_SELF, 'category_handler.php' ) ||
         strstr ( $PHP_SELF, 'category.php' ) ||
+        strstr ( $PHP_SELF, 'category_handler.php' ) ||
         strstr ( $PHP_SELF, 'del_entry.php' ) ||
-        strstr ( $PHP_SELF, 'edit_report_handler.php' ) ||
         strstr ( $PHP_SELF, 'edit_report.php' ) ||
+        strstr ( $PHP_SELF, 'edit_report_handler.php' ) ||
         strstr ( $PHP_SELF, 'edit_template.php' ) ||
-        strstr ( $PHP_SELF, 'edit_user_handler.php' ) ||
         strstr ( $PHP_SELF, 'edit_user.php' ) ||
+        strstr ( $PHP_SELF, 'edit_user_handler.php' ) ||
         strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
         strstr ( $PHP_SELF, 'groups.php' ) ||
-        strstr ( $PHP_SELF, 'import_handler.php' ) ||
-        strstr ( $PHP_SELF, 'import_handler.php' ) ||
         strstr ( $PHP_SELF, 'import.php' ) ||
-        strstr ( $PHP_SELF, 'layers.php' ) ||
+        strstr ( $PHP_SELF, 'import_handler.php' ) ||
+        strstr ( $PHP_SELF, 'import_handler.php' ) ||
         strstr ( $PHP_SELF, 'layer_toggle.php' ) ||
+        strstr ( $PHP_SELF, 'layers.php' ) ||
         strstr ( $PHP_SELF, 'list_unapproved.php' ) ||
-        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
         strstr ( $PHP_SELF, 'pref.php' ) ||
+        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
         strstr ( $PHP_SELF, 'pref_handler.php' ) ||
         strstr ( $PHP_SELF, 'purge.php' ) ||
         strstr ( $PHP_SELF, 'register.php' ) ||
         strstr ( $PHP_SELF, 'reject_entry.php' ) ||
         strstr ( $PHP_SELF, 'set_entry_cat.php' ) ||
         strstr ( $PHP_SELF, 'users.php' ) ||
-        strstr ( $PHP_SELF, 'views_edit_handler.php' ) ||
-        strstr ( $PHP_SELF, 'views.php' ) ) {
+        strstr ( $PHP_SELF, 'views.php' ) ||
+        strstr ( $PHP_SELF, 'views_edit_handler.php' ) )
         $not_auth = true;
-      }
     }
 
     // An attempt will be made to translate
