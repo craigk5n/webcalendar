@@ -5,6 +5,8 @@ This is the CVS REL_1_2 branch.
 Version 1.1.6 (?? ??? 2007)
  - Fixed bug 1794658, 1795649: various files (upcoming.php, rss.php, etc.)
    were missing needed includes/formvars.php.
+ - Patch 1792796: Debian fix for vulnerability CVE-2006-6669
+   Fixes cross-site scripting (XSS) vulnerability in export_handler.php.
 
 Version 1.1.5 (12 Sep 2007)
  - Security fix: vulnerability in $includeDir in functions.php
