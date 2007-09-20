@@ -193,7 +193,7 @@ switch ( $_SERVER['REQUEST_METHOD'] ) {
     header ( 'Content-Type: text/calendar' );
     header ( 'Content-Disposition: attachment; filename="' . $login . '.ics"' );
     $use_all_dates = true;
-    export_ical ();
+    echo export_ical ();
     break;
 
   case 'OPTIONS';
