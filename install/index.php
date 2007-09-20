@@ -29,6 +29,7 @@
  *     in includes/config.php.  The $PROGRAM_VERSION needs to be the
  *     same value (e.g. "v1.0.0") that was defined above.
  *   - Update the version/date in ChangeLog and NEWS files.
+ *   - Update UPGRADING.html documentation.
  *
  * ABOUT VERSION NUMBERS:
  *   From now on, we should only be using "vN.N.N" format for versions.
