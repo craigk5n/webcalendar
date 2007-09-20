@@ -4,9 +4,16 @@ Version: $Id$
 This file lists significant changes to WebCalendar.  For a more detailed
 list (that includes specific bugs fixed, please look at ChangeLog):
 
-http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/ChangeLog
+http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/ChangeLog?&pathrev=REL_1_2
 
 ---------------------------------------------------------------------------
+
+Version 1.1.6 (19 Sep 2007)
+
+ - This release fixes bugs found in 1.1.5.
+   (For a complete list of changes, see the ChangeLog in CVS.)
+ - Security:
+   Fixes cross-site scripting (XSS) vulnerability in export_handler.php.
 
 Version 1.1.5 (12 Sep 2007)
 
