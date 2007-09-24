@@ -127,7 +127,6 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
 function reset_language ( $new_language ) {
   global $basedir, $fullname, $lang, $lang_file,
   $PUBLIC_ACCESS_FULLNAME, $translation_loaded, $translations;
-
   if ( $new_language == 'none' )
     $new_language = get_browser_language ();
 
@@ -152,7 +151,7 @@ function load_translation_text () {
 
   if ( $translation_loaded ) // No need to run this twice.
     return;
-
+  $eng_file = 'translations/English-US.txt';
   $lang_cache = substr ( $lang_file, strrpos ( $lang_file, '/' ) + 1 );
   $lang_file_2 = '';
 
@@ -165,14 +164,17 @@ function load_translation_text () {
 
     if ( ! file_exists ( $lang_file ) )
       $lang_file = 'translations/' . $lang_cache;
+
   }
+  if ( ! file_exists ( $lang_file ) )
+      $lang_file = $eng_file;
+			
   if ( ! file_exists ( $lang_file ) )
     die_miserable_death ( 'Cannot find language file: ' . $lang_file );
 
   $cached_base_file = $cached_file = $cachedir = '';
   $can_save = false;
 
-  $eng_file = 'translations/English-US.txt';
   if ( ! file_exists ( $eng_file ) )
     $eng_file = '../' . $eng_file;
 
