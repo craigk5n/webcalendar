@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 11. September 2007
+# Last update: 24. September 2007
 #
 # $Id$
-# Translation last updated on 09-11-2007
+# Translation last updated on 09-24-2007
 
 
 ################################################################################
@@ -216,8 +216,8 @@ Display 00 minutes always: Anzeigen auch von &#39;:00&#39; Minuten
 display-end-times-help: Anzeigen der Endzeit falls es ein gezeiteter Termin ist
 Display end times on calendars: Anzeigen der Endzeiten am Kalender
 allow-view-add-help: Ein &#34;+&#34; Icon wird bei Ansichten beigef&uuml;gt, welches Teilnehmern ein schnelles hinzuf&uuml;gen von Terminen bei anderen Kalendern erm&ouml;glicht
-Include add event link in views: Beeinhaltet LINK-Adressen von Terminen bei den Ansichten
-lunar-help: Wenn aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
+Include add event link in views: &Uuml;ber "Ansichten" Termine
+lunar-help: Falls aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
 Display Lunar Phases in month view: Anzeigen der Mondphasen in der Monatsansicht
 Restrictions: Beschr&auml;nkungen
 allow-view-other-help: Gibt an, ob die Benutzer die Kalender anderer Teilnehmer sehen kann.
@@ -1326,6 +1326,12 @@ Error opening cache dir: Fehler beim &Ouml;ffnen des Cache-Verzeichnis
 delete: l&ouml;schen
 
 ########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fataler Fehler
+Invalid data format for: Ung&uuml;ltiges Datenformat f&uuml;r&nbsp;
+
+########################################
 # Page: includes/functions.php
 #
 Error Type not set for activity log!: Fehler, Typ ist nicht f&uuml;r Aktivit&auml;ten Protokoll definiert!
@@ -1437,12 +1443,6 @@ Thu: Do
 Fri: Fr
 Sat: Sa
 unknown-weekday: unbekannter Wochentag
-
-########################################
-# Page: includes/getPredefinedVariables.php
-#
-Fatal Error: Fataler Fehler
-Invalid data format for: Ung&uuml;ltiges Datenformat f&uuml;r&nbsp;
 
 ########################################
 # Page: includes/help_list.php
@@ -1756,7 +1756,7 @@ Server: =
 Connection Persistence: Permanente Verbindung
 All your database tables appear to be up to date. You may proceed to the: Alle Ihre Datenbanktabellen scheinen auf den neuesten Stand gebracht zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
 next page and complete your WebCalendar setup: Ihre Webkalendereinstellungen zu vervollst&auml;ndigen
-All your database tables appear to be up...: You may proceed to the: Alle Ihre Datenbanktabellen scheinen auf den neuesten Stand gebracht zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
+All your database tables appear to be up...: Alle Ihre Datenbanktabellen scheinen auf den neuesten Stand gebracht zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
 This appears to be a new installation. If this is not correct, please: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte
 go back to the previous page and correct your settings: Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen
 This appears to be a new installation...: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen.
@@ -1787,7 +1787,7 @@ converted your existing WebCalendar event data to GMT.: &nbsp;in GMT (Greenwich 
 If you have, you may ignore this notice and not proceed with the conversion.: Wenn Sie dies bereits getan haben, k&ouml;nnen Sie diese Nachricht ignorieren und ohne der Umwandlung fortfahren.
 If this is a new installation, you may also ignore this notice.: Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren. Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren.
 It appears that you have NOT converted...: Es scheint Sie haben Ihre Webkalendereintr&auml;ge noch NICHT in GMT (Greenwich Mean Time) umgewandelt zu haben.
-Convert Data to GMT: Konvertieren nach GMT
+Convert Data to GMT: Umwandeln auf GMT
 Application Settings: Anwendungseinstellung
 HTTP-based authentication was not detected: HTTP-basierende Authentisierung wurde nicht erkannt
 You will need to reconfigure your web server if you wish to: Sie m&uuml;ssen Ihren Webserver nochmals konfigurieren.
@@ -1811,7 +1811,7 @@ Environment: Umgebung
 Production: Produktion
 Development: Entwicklung
 Save Settings: Einstellung speichern
-Launch WebCalendar: Webkalender starten
+Launch WebCalendar: Webkalender starte
 
 ########################################
 # Page: install/install_functions.php
