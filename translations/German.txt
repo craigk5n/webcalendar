@@ -6,7 +6,7 @@
 # Last update: 3. August 2007
 #
 # $Id$
-# Translation last updated on 09-11-2007
+# Translation last updated on 09-24-2007
 
 
 ################################################################################
@@ -1324,6 +1324,12 @@ Error opening cache dir: Fehler beim &Ouml;ffnen des Cache-Verzeichnis
 delete: l&ouml;schen
 
 ########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fataler Fehler
+Invalid data format for: Ung&uuml;ltiges Datenformat f&uuml;r&nbsp;
+
+########################################
 # Page: includes/functions.php
 #
 Error Type not set for activity log!: Fehler, Typ ist nicht f&uuml;r Aktivit&auml;ten Protokoll definiert!
@@ -1435,12 +1441,6 @@ Thu: Do
 Fri: Fr
 Sat: Sa
 unknown-weekday: unbekannter Wochentag
-
-########################################
-# Page: includes/getPredefinedVariables.php
-#
-Fatal Error: Fataler Fehler
-Invalid data format for: Ung&uuml;ltiges Datenformat f&uuml;r&nbsp;
 
 ########################################
 # Page: includes/help_list.php
