@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Patch 1798549: Updated French translation
 
 Version 1.1.6 (19 Sep 2007)
  - Patch 1791947: Handle the OPTIONS method in icalclient.php
