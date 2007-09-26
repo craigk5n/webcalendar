@@ -141,7 +141,7 @@ echo 'BEGIN:VCALENDAR' . "\r\n"
   ( empty ( $publish_fullname ) ? $user : translate ( $publish_fullname ) ) ) . "\r\n"
  . generate_prodid ()
  . 'VERSION:2.0' . "\r\n"
- 'METHOD:PUBLISH' . "\r\n"
+ . 'METHOD:PUBLISH' . "\r\n"
  . 'BEGIN:VFREEBUSY' . "\r\n"
  . 'DTSTART:' . export_get_utc_date ( date ( 'Ymd', $startdate ), 0 ) . "\r\n"
  . 'DTEND:' . export_get_utc_date ( date ( 'Ymd', $enddate ), '235959' ) . "\r\n"
