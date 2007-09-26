@@ -17,7 +17,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 09-17-2007
+# Translation last updated on 09-26-2007
 
 
 ################################################################################
@@ -52,18 +52,20 @@ __month__ __yyyy__: =
 ########################################
 # Page: about.php
 #
-Title: Agenda partagé
+Title: WebCalendar, Agenda partagé
 version: =
 version XXX: =
+WebCalendar is a PHP application used...: WebCalendar est une application PHP utilisée pour maintenir un calendrier   en mode usagé simple ou multiple. WebCalendar peut aussi être configuré comme un calendrier d'événements.
 Credits: Crédits
 About: A propos
-OK: =
+OK: = Ok
 
 ########################################
 # Page: access.php
 #
 Database error: Erreur sur la base de données
 Database error XXX.: Erreur sur la base de données : XXX
+DEFAULT CONFIGURATION: CONFIGURATION PAR DÉFAUT
 Go: Afficher
 Save: Sauvegarder
 Undo: Annuler
@@ -83,6 +85,7 @@ Tasks: Tâches
 Journals: Journaux
 Can Invite: Peut inviter
 Can Email: Peut envoyer un email
+Can See Time Only: Peut voir le temps seulement
 Assistant: =
 Select All: Tout sélectionner
 Clear All: Tout supprimer
@@ -211,6 +214,7 @@ display-weekends-help: Inclure les week-ends lors de la visualisation de la sema
 Display weekends: Afficher les week-ends
 display-long-daynames-help: Si activé, les noms longs pour les jours seront affichés
 Display long day names: affiche les jours au format long
+display-alldays-help: Afficher les jours du mois précédant et du mois suivant dans la vue par mois, remplissant ainsi toutes les cellules.
 Display all days in month view: Afficher tous les jours dans la vue mensuelle
 display-week-number-help: Spécifie si le numéro de la semaine (1-52) doit être affiché.
 Display week number: Afficher le numéro de semaine
@@ -245,6 +249,8 @@ limit-appts-help: Permet à l'administrateur de fixer la limite générale du nombr
 Limit number of timed events per day: Nombre maximum d'événements temporels par jour
 limit-appts-number-help: Détermine le nombre maximum d'événements temporels qu'un utilisateur peut avoir dans une journée.
 Maximum timed events per day: Nombre maximum d'événements temporels par jour
+crossday-help: Si activé, les événements de plus d'une journée seronts affichés sur des jours différents
+Disable Cross-Day Events: Desactiver événements interjournalier
 disable-location-field-help: Choisir "Oui" supprimera le champ "Lieu" des pages d'information des événements
 Disable Location field: Désactiver le champ "Lieu"
 disable-url-field-help: Choisir "Oui" supprimera le champ "URL" des pages d'information des événements
@@ -269,6 +275,7 @@ Display Participants in popup: Afficher les participants dans un pop-up
 Miscellaneous: Divers
 remember-last-login-help: Si activé, l'identifiant de l'utilisateur sera rempli pour son compte sur la page de connexion (sans le mot de passe), et les préférences de l'utilisateur seront chargées (y compris les couleurs préférées et la sélection de la langue).
 Remember last login: Se souvenir de la dernière connexion
+summary_length-help: Longueur maximale de la description brève dans les vues des calendriers
 Brief Description Length: Longueur de la description rapide
 user_sort-help: Détermine l'ordre de tri pour les listes d'utilisateurs et de non-utilisateurs
 User Sort Order: Ordre de tri utilisateur
@@ -577,6 +584,7 @@ end-time-help: Spécifie l'heure à laquelle l'événement est prévu se terminer
 Start Time: Heure de début
 Due Date: Date de fin
 Due Time: Heure de fin
+Site Extras: Bonus site
 participants-help: Liste des participants pour cet événement.
 Availability: Disponibilité
 external-participants-help: Spécifie une liste de participants pour cet événement qui ne font pas partie des utilisateurs de l'agenda. Ces utilisateurs devraient figurer un à un par ligne avec éventuellement leur adresse de couriel. Si une adresse de couriel est spécifiée, l'utilisateur peut recevoir par couriel les notifications et rappels.
@@ -604,12 +612,18 @@ Frequency: Fréquence
 Weekdays Only: Week-end seulement
 Week Start: Début de la semaine
 repeat-bydayextended-help: Permet la sélection de date basée sur le jour de la semaine.
+ByDay: par jour
 All: Tout
 repeat-month-help: Spécifie sur quels mois l'événement doit se répéter.
+ByMonth: par mois
 repeat-bysetpos-help: Permet la sélection de date basée sur la position dans le mois.
+BySetPos: par pos dét
 repeat-bymonthdayextended-help: Permet la sélection de date basée sur la date.
+ByMonthDay: par mois-jour
 repeat-byweekno-help: Permet à l'utilsateur de spécifier une liste de semaines pour la répétition des événements (1,2...53,-53,-52...-1).
+ByWeekNo: par No. sem.
 repeat-byyearday-help: Permet à l'utilsateur de spécifier une liste d'années pour la répétition des événements(1,2...366,-366,-365...-1).
+ByYearDay: par no. jour année
 repeat-exceptions-help: Jours additionnels sur lequel l'événement peut ou non se produire.
 Exclusions: =
 Inclusions: =
@@ -804,11 +818,6 @@ export format not defined or incorrect: Le format d'exportation n'est pas défini
 No user specified.: Aucun utilisateur spécifié.
 
 ########################################
-# Page: groups.php
-#
-Add New Group: Ajouter un nouveau groupe
-
-########################################
 # Page: group_edit.php
 #
 Unnamed Group: Groupe sans nom
@@ -822,6 +831,11 @@ Created by: Créé par
 # Page: group_edit_handler.php
 #
 You must specify a group name: Vous devez préciser un nom de groupe
+
+########################################
+# Page: groups.php
+#
+Add New Group: Ajouter un nouveau groupe
 
 ########################################
 # Page: help_admin.php
@@ -871,25 +885,47 @@ Import: Importer
 Palm Desktop: =
 This form will allow you to import entries from the Palm Desktop Datebook.: Ce formulaire vous permet d'importer les données de votre logiciel Palm Desktop gérant votre ordinateur personnel Palm.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Les données sont implémentées dans un fichier <tt>datebook.dat</tt> placé dans le répertoire <tt>datebook/</tt> de votre Palm (cf. sous-répertoire généralement à votre nom). Sélectionner sur votre disque dur, dans l'arborescence Palm Desktop, le fichier <tt>datebook.dat</tt> pour l'importation.
+#
+# << MISSING >>
+# allow you to import entries from the Palm...:
+# English text: This form will allow you to import entries from the Palm Desktop Datebook. It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
+#
 The following entries will not be imported: Les entrées suivantes ne seront pas importées
 Entries older than the current date: Entrées antérieures à la date courante
 Entries created in the Palm Desktop...: Entrées crées dans le logiciel Palm Desktop qui n'ont pas été synchronisées via HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Tout événement importé du Palm sera écrasé dans votre agenda partagé WebCalendar lors de la prochaine importation (sauf si la date de l'événement en question est antérieure).
 Therefore, updates should be made in the Palm Desktop.: Les mises à jour doivent donc au préalable être effectuées via le logiciel Palm Desktop (HotSync).
+#
+# << MISSING >>
+# Anything imported from Palm...:
+# English text: Anything imported from Palm will be overwritten during the next import (unless the event date has passed). Therefore, updates should be made in the Palm Desktop.
+#
 vCal: =
+#
+# << MISSING >>
+# This form will import vCalendar (.vcs) 1.0 events.:
 The following formats have been tested: Les formats suivants ont été testés
+#
+# << MISSING >>
+# This form will import iCalendar (.ics) events.:
 Enabling: Activer
 Overwrite Prior Import: Remplacer l'importation précédente
+#
+# << MISSING >>
+# will cause events imported previously...:
+# English text: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.
+#
 
 ########################################
 # Page: help_index.php
 #
 Help Index: Index de l'aide
-About WebCalendar: A propos de webcalendar
+About WebCalendar: A propos de WebCalendar
 
 ########################################
 # Page: help_layers.php
 #
+Layers are useful for displaying...: Les calques sont utils pour afficher les événements des autres utilisateurs dans votre propre agenda. Vous pouvez spécifier quel utilisateur et la couleur avec laquel les événements seronts affichés.
 Add/Edit/Delete: Ajouter/Modifier/Supprimer
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Cliquer sur le lien « Modifier les calques » dans la section administration, au bas de la page, vous permet d'ajouter/modifier/supprimer les calques.
 The text color of the new layer that will be displayed in your calendar.: La couleur à utiliser pour l'affichage du texte d'un nouveau calque dans votre agenda.
@@ -915,11 +951,15 @@ allow-remote-publishing-help: Précise si un client iCal distant peut republier s
 remote-publishing-url-help: Affiche l'URL à utiliser dans l'application cliente iCal pour s'abonner et pour publier dans WebCalendar
 allow-remote-subscriptions-help: Détermine si les usagers distants peuvent s'abonner à votre agenda, leur permettant de consulter vos événements à l'aide d'une application compatible iCal (Apple iCal ouMozilla Calendar par exemple)
 remote-subscriptions-url-help: Affiche l'URL avec lequel les utilisateurs distants peuvent s'abonner à votre agenda
+Enable FreeBusy publishing: Permettre publication FreeBusy 
+freebusy-enabled-help: Spécifie si le temps disponible de l'utilisateur peut être obtenu en utilisant le standard iCal FreeBusy.
+freebusy-url-help: L'URL pour accéder à la liste FreeBusy de l'utilisateur
 rss-feed-url-help: L'URL pour accéder au flux RSS
 
 ########################################
 # Page: help_uac.php
 #
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Permet un contrôle précis des accès et persmissions des utilisateurs. Les utilisateurs peuvent aussi donner des droits par défaut et/ou sur une base individuel si permit par l'administrateur.
 If disabled, this user cannot send you emails.: Si désactivé, cet utilisateur ne pourra pas vous envoyer d'email.
 If disabled, this user cannot see you in the participants list.: Si désactivé, cet utilisateur ne pourra pas vous voir dans la liste des participants
 If enabled, this user cannot view the details of any of your entries.: Si activé, cet utilisateur ne pourra voir le détail d'aucune de vos entrée.
@@ -948,6 +988,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: Les 
 # Page: import_handler.php
 #
 No file: Aucun fichier
+Error deleting palm events from webcalendar.: Erreur lors de l'éffacement d'événements palm de webcalendar
 Events from prior import marked as deleted: Les événements importés précédemment sont marqués supprimés
 Conflicting events: Événements en conflits
 The import file contained no data: Le fichier à importer ne contient aucune donnée exploitable
@@ -1035,6 +1076,8 @@ Modify Non User Calendar Preferences: Modifier les préférences du calendrier Non
 Return to My Preferences: Retourner à Mes Préférences
 Custom Scripts: Scripts personnalisés
 Timezone Selection: Sélection de fuseau horaire
+entry-interval-help: Définit l'interval en minutes lors de l'édition du temps d'événements
+Entry interval: Interval de l'entré
 hour: heure
 minute: =
 theme-reload-help: A cause de la mise en cache des CSS, le rechargement de la page pourra être nécessaire
@@ -1042,9 +1085,10 @@ Page may need to be reloaded for new Theme to take effect: La page peut avoir be
 Email format preference: Préférence de format d'email
 HTML: =
 Plain Text: Texte brut
+display_byproxy-help: Afficher le créateur réel sur la page "view_entry"
 Display if created by Assistant: Afficher si créé par un assistant
 allow-view-subscriptions-help: Permet de restreindre l'accès distant des entrées privées ou confidentielles
-Allow remote viewing of: Permet la visualiation distante de
+Allow remote viewing of: Permet la visualiation distante de 
 entries: entrées
 
 ########################################
@@ -1178,31 +1222,6 @@ listid: =
 Reset: Réinitialiser
 
 ########################################
-# Page: views.php
-#
-Add New View: Ajouter une nouvelle vue
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: sans titre
-Add View: Ajouter une vue
-Edit View: Modifier la vue
-View Name: Nom de la vue
-View Type: Type de la vue
-Week (Users horizontal): Semaine (utilisateurs à l'horizontale)
-Week (Users vertical): Semaine (utilisateurs à la verticale)
-Week (Timebar): Semaine (planning)
-Month (Timebar): Mois (planning)
-Month (side by side): Mois (côte à côte)
-Month (on same calendar): Mois (sur le même agenda)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: Vous devez indiquer une vue
-
-########################################
 # Page: view_d.php
 #
 No users for this view: Aucun utilisateur pour cette vue
@@ -1215,6 +1234,7 @@ Completed: Terminée
 Assistant mode: Mode assistant
 Status: Etat
 Declined: Refusée
+Needs-Action: Besoin d'une action
 by: par
 Percentage Complete: Pourcentage atteint
 External User: Utilisateur extérieur
@@ -1234,7 +1254,7 @@ Edit repeating entry for all dates: Modifier l'événement répétitif pour toutes l
 Delete repeating event for all dates: Supprimer l'événement répétitif pour toutes les dates
 Edit entry for this date: Modifier l'événement pour cette date
 Delete entry only for this date: Supprimer l'événement pour cette date
-from calendar of: de l'agenda de
+from calendar of: de l'agenda de 
 This will delete the entry from your XXX calendar.: Ceci va supprimer l'entrée de votre agenda XXX.
 boss: patron
 This will delete the entry from your boss calendar.: Ceci va supprimer l'entrée de l'agenda de votre patron.
@@ -1254,6 +1274,33 @@ Palm Pilot: =
 Double-click on empty cell to add new entry: Double-cliquez sur une cellule vide pour ajouter une nouvelle entrée
 
 ########################################
+# Page: views.php
+#
+Add New View: Ajouter une nouvelle vue
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: sans titre
+Add View: Ajouter une vue
+Edit View: Modifier la vue
+View Name: Nom de la vue
+View Type: Type de la vue
+Day by Time: Jour par temps
+Week (Users horizontal): Semaine (utilisateurs à l'horizontale)
+Week by Time: Semaine par temps
+Week (Users vertical): Semaine (utilisateurs à la verticale)
+Week (Timebar): Semaine (planning)
+Month (Timebar): Mois (planning)
+Month (side by side): Mois (côte à côte)
+Month (on same calendar): Mois (sur le même agenda)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Vous devez indiquer une vue
+
+########################################
 # Page: week_details.php
 #
 New Entry: Nouvel événement
@@ -1264,7 +1311,7 @@ New Entry: Nouvel événement
 Another Users Calendar: Agenda d'un autre utilisateur
 Category Management: Gestion des catégories
 Day View: Vue journalière
-Edit Event: Editer un événement
+Edit Event: Editer un événement 
 Month View: Vue mensuelle
 Common Trailer: Pied de page standard
 User Management: Gestion des utilisateurs
@@ -1274,14 +1321,47 @@ Year View: Vue annuelle
 Invalid function id: Id de fonction invalide
 
 ########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Incapable de trouver le fichier "settings.php".<br />S.V.P. copier "settings.php.orig" vers "settings.php" et éditer pour votre site.
+Incomplete settings.php file...: Fichier "settings.php" incomplet.
+Could not find XXX defined in...: Ne peut trouver "XXX" définit dans le fichier "settings.php".
+You must define XXX in: Vous devez définir "XXX" dans le fichier "settings.php".
+
+########################################
 # Page: includes/date_formats.php
 #
 December: décembre
 Dec: Déc
+LANGUAGE DEFINED: LANGAGE DÉFINIT
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database: Erreur pendant la connexion à la base de donnée
+db_type not defined.: db_type pas définit.
+invalid db_type: db_type invalid
+Cache cleared from previous SQL!: Cache éffacé par requête SQL précédente!
+Error executing query.: Erreur durant l'exécution de la requête SQL.
+Unfortunately, XXX is not implemented for: Malheuresement, XXX n'est pas implémenté pour
+Unknown ODBC error.: Erreur ODBC inconnu.
+Unknown error.: Erreur inconnu.
+Cache error: Erreur de cache
+write: écrire
+Could not XXX file: Pas pu XXX fichier
+Error opening cache dir: Erreur lors d'ouverture répertoire cache
+delete: éffacer
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Erreur fatale
+Invalid data format for: Format de donnée invalid pour
 
 ########################################
 # Page: includes/functions.php
 #
+Error Type not set for activity log!: Erreur: Le type n'est pas définit pour le journal d'activité!
 This event is private: Cet événement est privé
 This event is XXX.: Cet événement est  XXX.
 Conf.: =
@@ -1353,17 +1433,21 @@ Aug: Aoû
 Sep: =
 Oct: =
 Nov: =
+unknown-month: mois inconnu
 First Quarter Moon: Premier quartier de lune
 Full Moon: Pleine lune
 Last Quarter Moon: Dernier quartier de lune
 New Moon: Nouvelle lune
+Error TIME_SLOTS undefined!: Erreur: TIME_SLOTS indéfinie!
 The following error occurred: L'erreur suivante est survenue
 You are not authorized.: Vous n'êtes pas autorisé(e)
 Add N hours to: Ajouter N heure(s) à
 Subtract N hours from: Déduire N heure(s) de
 same as: Aucun - identique à
 server time: l'heure du serveur
+Cannot read timezone file XXX.: Ne peut lire le fichier de zone de temps: XXX.
 Your current GMT offset is: Votre décalage GMT est de
+Your current GMT offset is XXX hours.: Votre décalage GMT est de XXX heures.
 Unauthorized: Non autorisé
 Error approving event: Erreur en approuvant l'événement
 Error approving event XXX.: Erreur lors de l'approbation de l'événement : XXX
@@ -1385,6 +1469,7 @@ Wed: Mer
 Thu: Jeu
 Fri: Ven
 Sat: Sam
+unknown-weekday: jour de semaine inconnu
 
 ########################################
 # Page: includes/help_list.php
@@ -1408,38 +1493,64 @@ Manage calendar of: Gérer l'agenda de
 ########################################
 # Page: includes/translate.php
 #
-Browser Language Not Found: Langage du nvigateur non déterminée
+Browser Language Not Found: Langage du navigateur non déterminée
 not supported: non supporté
 English: Anglais
+English-US: =
+Afrikaans: =
+Albanian: =
+Arabic: =
+Basque: =
 Bulgarian: Bulgare
+Catalan: =
 Chinese (Simplified/GB2312): Chinois (Simplifié/GB2312)
 Chinese (Traditional/Big5): Chinois (Traditionnel/Big5)
+Croatian: Croate
 Czech: Tchèque
 Danish: Danois
 Dutch: Néerlandais
+Elven: =
 Estonian: Estonien
 Finnish: Finnois
 French: Français
 Galician: Galicien
 German: Allemand
 Greek: Grec
+Hebrew: =
 Holo (Taiwanese): Taïwanais
 Hungarian: Hongrois
 Icelandic: Islandais
+Indonesian: Indonésien
 Italian: Italien
 Japanese: Japonais
 Korean: Coréen
+Lithuanian: Lithuanien
 Norwegian: Norvégien
 Polish: Polonais
 Portuguese: Portuguais
 Portuguese/Brazil: Portuguais/Brézilien
 Romanian: Roumain
 Russian: Russe
+Serbian: Serbe
+Slovak: Slovaquien
+Slovenian: =
 Spanish: Espagnol
 Swedish: Suédois
 Turkish: Turque
 Welsh: Gallois
+Browser-defined: Définit par fureteur
 event: &eacute;v&eacute;nement
+journal: =
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
 
 ########################################
 # Page: includes/user-imap.php
@@ -1509,6 +1620,7 @@ recipients_failed: SMTP Erreur: Les destinataires suivants sont en erreur:
 #
 Enter Characters Seen in Graphic: Entrez les caractères présents sur l'image
 Enter the correct letters and numbers from the image into the text box...: Entrez les lettres et chiffres présents dans l'image dans le champ de saisie. The test sert de restriction d'accès pour des robots. Rechargez la page si le graphique est trop difficile à lire.
+Challenge/Response: Protocol/réponse
 
 ########################################
 # Page: includes/js/admin.php
@@ -1588,6 +1700,455 @@ User Manager: Gestionnaire des utilisateurs
 Help Contents: Contenu de l'aide
 
 ########################################
+# Page: install/index.php
+#
+Create New: Créer nouveau
+Database Cache Directory: Répertoire cache de base de donnée
+Database Name: Nom de la base de donnée
+Failure Reason: Raison d'Échec
+Single-User: Mode Simple Utilisateur
+Test Settings: Essais des paramêtres
+Timezone Conversion Successful: Succès conversion zone
+WebCalendar Installation Wizard: =
+Step: Étape
+WebCalendar Installation Wizard Step XXX: =
+You must manually create database: Vous devez manuelement créer la base de données
+#
+# << MISSING >>
+# Password Accepted:
+Successful Login: Succès de connexion 
+#
+# << MISSING >>
+# Password Incorrect:
+Invalid Login: Connexion incorrecte
+#
+# << MISSING >>
+# OFF:
+#
+# << MISSING >>
+# ON:
+required only if Safe Mode is On: Requit seulement si "Safe Mode" est activé
+#
+# << MISSING >>
+# (required only if Safe Mode is On):
+required only if Remote Calendars are used: Requit seulement si des agendas distants sont utilisés
+#
+# << MISSING >>
+# (required only if Remote Calendars are used):
+needed for Gradient Image Backgrounds: Requit pour images en dégradés
+#
+# << MISSING >>
+# (needed for Gradient Image Backgrounds):
+Passwords do not match: Mot de passe invalid 
+#
+# << MISSING >>
+# Passwords do not match!:
+Unable to write password to settings.php file: Incapable d'écrire le mot de passe vers le fichier "settings.php"
+#
+# << MISSING >>
+# Password Updated:
+Password has been set: Le mot de passe a bien été déterminé
+Connection Successful: Succès de connexion
+Please go to next page to continue installation: S.V.P. aller vers la prochaine page pour continuer l'installation
+#
+# << MISSING >>
+# Connection Successful...:
+# English text: <b>Connection Successful</b> Please go to next page to continue installation.
+#
+#
+# << MISSING >>
+# Correct your entries or click the Create New...:
+# English text: Correct your entries or click the <b>Create New</b> button to continue installation.
+#
+#
+# << MISSING >>
+# Correct your entries and try again.:
+does not exist: n'exist pas
+is not writable: n'est pas écrivable
+Error Converting Timezone: Erreur conversion zone de temps
+Error Unable to write to file: Erreur incapable d'écrire vers le fichier
+Error Unable to write to file XXX.: Erreur incapable d'écrire vers le fichier XXX.
+#
+# << MISSING >>
+# Please change the file permissions of this file.:
+Please change includes dir permission: S.V.P. changer les permissions de votre répertoire "includes" pour permettre le droit d'écriture par d'autres utilisateurs
+#
+# << MISSING >>
+# Your settings have been saved.:
+#
+# << MISSING >>
+# WebCalendar Setup Wizard:
+Error you must specify a Single-User Login: Erreur vous devez spécifier une connexion de \nMode Simple Utilisateur
+Full Path (no backslashes): Chemin complet (sans "backslashes")
+The password contains illegal characters.: Le mot de passe contient des caractères invalids.
+This installation wizard will guide you...: =
+#
+# << MISSING >>
+# System Administrators Guide:
+# English text: System Administrator's Guide
+#
+#
+# << MISSING >>
+# Frequently Asked Questions:
+#
+# << MISSING >>
+# FAQ:
+#
+# << MISSING >>
+# Troubleshooting:
+#
+# << MISSING >>
+# Getting Help:
+#
+# << MISSING >>
+# Upgrading Guide:
+#
+# << MISSING >>
+# User Supported Wiki:
+PHP Version Check: Vérification version PHP
+#
+# << MISSING >>
+# Check to see if PHP 4.1.0 or greater is installed.:
+PHP version: Version PHP
+PHP Settings: Paramêtres PHP 
+Detailed PHP Info: Information détaillé PHP
+#
+# << MISSING >>
+# settings.php Status:
+# English text: "settings.php" Status
+#
+Session Check: Vérification session
+To test the proper operation of sessions, reload this page: pour vérifier l'operation correct des sessions, recharger cette page
+You should see the session counter increment each time: Vous devriez voir le compteur de session incrémenter à chaque fois
+#
+# << MISSING >>
+# To test the proper operation of sessions...:
+# English text: To test the proper operation of sessions, reload this page. You should see the session counter increment each time.
+#
+SESSION COUNTER: COMPTEUR SESSION
+The file permissions of settings.php are set...: =
+The file permissions of the includes directory are set...: =
+#
+# << MISSING >>
+# Your settings.php file appears to be valid.:
+# English text: Your <b>settings.php</b> file appears to be valid.
+#
+Configuration Wizard Password: =
+Create Settings File Password: =
+db setup directions...: =
+Database Status: Satus base de données
+Supported databases for your PHP installation: Bases de donées supportées pour votre installation PHP
+#
+# << MISSING >>
+# Your current database settings are able to access the database.:
+Please Test Settings: S.V.P. tester vos paramêtres
+Your current database settings are not able...: =
+Database Settings: Paramêtres de base de donnée
+Database Type: Type de base de donnée
+Server: Serveur
+Connection Persistence: Persistence de connexion
+All your database tables appear to be up to date. You may proceed to the: =
+next page and complete your WebCalendar setup: =
+#
+# << MISSING >>
+# All your database tables appear to be up...:
+# English text: All your database tables appear to be up to date. You may proceed to the next page and complete your WebCalendar setup.
+#
+This appears to be a new installation. If this is not correct, please: =
+go back to the previous page and correct your settings: =
+#
+# << MISSING >>
+# This appears to be a new installation...:
+# English text: This appears to be a new installation. If this is not correct, please go back to the previous page and correct your settings.
+#
+This appears to be an upgrade from version: =
+#
+# << MISSING >>
+# This appears to be an upgrade...:
+# English text: This appears to be an upgrade from version&nbsp;XXX&nbsp;to&nbsp;XXX.
+#
+The database requires some data input: =
+Click Update Database to complete the upgrade: =
+#
+# << MISSING >>
+# The database requires some data input...:
+# English text: The database requires some data input Click <b>Update Database</b> to complete the upgrade.
+#
+In this section we will perform the required database changes to bring your database up to the required level: =
+If you are using a fully supported database, this step will be performed automatically for you: =
+If not, the required SQL can be displayed and you should be able: =
+to cut &amp; paste it into your database server query window: =
+#
+# << MISSING >>
+# In this section we will perform...:
+# English text: In this section we will perform the changes to bring your database up to the required level. If you are using a fully supported database, this step will be performed automatically for you. If not, the required SQL can be displayed and you should be able to cut and paste it into your database server query window.
+#
+#
+# << MISSING >>
+# No database actions are required.:
+The following database actions are required: =
+ODBC Underlying Database: Base de donnée ODBC
+Automatic installation not supported: =
+This may take several minutes to complete: Ceci peut prendre plusieurs minutes a completer
+Install Database: Installer base de donnée
+Update Database: Mis à jour base de donnée
+Display Required SQL: Affichier le SQL requit
+Return to previous page after processing SQL.: =
+This is the final step in setting up your WebCalendar Installation.: =
+Timezone Conversion: Converion zone de temps
+It appears that you have: Il semble que vous avez
+NOT: NEGATION
+converted your existing WebCalendar event data to GMT.: convertit vos données d'événements existant au format GMT.
+If you have, you may ignore this notice and not proceed with the conversion.: =
+If this is a new installation, you may also ignore this notice.: =
+#
+# << MISSING >>
+# It appears that you have NOT converted...:
+# English text: It appears that you have NOT converted your existing WebCalendar event data to GMT. If you have, you may ignore this notice and not proceed with the conversion. If this is a new installation, you may also ignore this notice.
+#
+Convert Data to GMT: Convertir données vers GMT
+Application Settings: Paramêtres d'application
+HTTP-based authentication was not detected: =
+You will need to reconfigure your web server if you wish to: =
+select Web Server from the User Authentication choices below.: =
+HTTP-based authentication was not detected...: =
+HTTP-based authentication was detected.: =
+User authentication is being handled by your web server.: =
+You should select Web Server from the list of User Authentication choices below.: =
+HTTP-based authentication was detected...: =
+Create Default Admin Account: =
+Admin Account Not Found: =
+#
+# << MISSING >>
+# (Admin Account Not Found):
+User Authentication: =
+Web-based via WebCalendar (default): =
+Web Server: =
+Web Server (detected): =
+Web Server (not detected): =
+None (Single-User): =
+Read-Only: =
+Environment: =
+Production: =
+Development: =
+Save Settings: =
+Launch WebCalendar: =
+
+########################################
+# Page: install/install_functions.php
+#
+#
+# << MISSING >>
+# Error updating webcal_config:
+#
+# << MISSING >>
+# Error updating table XXX:
+# English text: Error updating table "XXX": XXX.
+#
+#
+# << MISSING >>
+# Conversion Successful:
+# English text: <b>Conversion Successful</b>
+#
+#
+# << MISSING >>
+# Perl script required:
+# English text: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
+#
+#
+# << MISSING >>
+# previous version requires updating several tables:
+# English text: Your previous version of WebCalendar requires updating several database tables.
+#
+
+########################################
+# Page: themes/theme_inc.php
+#
+#
+# << MISSING >>
+# NO PREVIEW AVAILABLE:
+
+########################################
+# Page: tools/reload_remotes.php
+#
+#
+# << MISSING >>
+# Include Path:
+#
+# << MISSING >>
+# Deleting events for:
+#
+# << MISSING >>
+# Importing events for:
+#
+# << MISSING >>
+# No data returned from:
+#
+# << MISSING >>
+# for non-user calendar:
+#
+# << MISSING >>
+# No Remote Calendars found:
+#
+# << MISSING >>
+# Remote Calendars not enabled:
+
+########################################
 # Page: tools/send_reminders.php
 #
+#
+# << MISSING >>
+# could not find event id:
+#
+# << MISSING >>
+# could not find event id XXX in database.:
+#
+# << MISSING >>
+# This is a reminder for the XXX detailed below.:
+#
+# << MISSING >>
+# Pecentage Complete:
 Reminder: Rappel
+
+########################################
+# Page: ws/event_mod.php
+#
+#
+# << MISSING >>
+# Unsupported action:
+#
+# << MISSING >>
+# Unsupported action XXX.:
+# English text: Unsupported action: XXX.
+#
+#
+# << MISSING >>
+# No event id specified.:
+#
+# << MISSING >>
+# not admin:
+#
+# << MISSING >>
+# Not authorized (not admin).:
+
+########################################
+# Page: ws/get_events.php
+#
+#
+# << MISSING >>
+# Checking for events for XXX from date XXX to date XXX.:
+#
+# << MISSING >>
+# Found XXX events in time range.:
+#
+# << MISSING >>
+# Event id=XXX XXX at XXX on XXX.:
+# English text: Event id=XXX "XXX" at XXX on XXX.
+#
+
+########################################
+# Page: ws/get_reminders.php
+#
+#
+# << MISSING >>
+# Allowing XXX user to view other users calendar.:
+# English text: Allowing XXX user to view other user's calendar.
+#
+#
+# << MISSING >>
+# Error Email reminders disabled for user XXX.:
+# English text: Error: Email reminders disabled for user "XXX".
+#
+#
+# << MISSING >>
+# Number of site_extras XXX.:
+# English text: Number of site_extras: XXX.
+#
+#
+# << MISSING >>
+# Reminder set for event.:
+#
+# << MISSING >>
+# Mins Before XXX.:
+# English text: Mins Before: XXX.
+#
+#
+# << MISSING >>
+# Event time is XXX.:
+# English text: Event time is: XXX.
+#
+#
+# << MISSING >>
+# Remind time is XXX.:
+# English text: Remind time is: XXX.
+#
+#
+# << MISSING >>
+# Reminders for user XXX, login XXX.:
+# English text: Reminders for user "XXX", login "XXX".
+#
+
+########################################
+# Page: ws/get_unapproved.php
+#
+#
+# << MISSING >>
+# Getting unapproved for user XXX.:
+# English text: Getting unapproved for user "XXX".
+#
+#
+# << MISSING >>
+# Event id=XXX XXX already sent.:
+# English text: Event id=XXX "XXX" already sent.
+#
+
+########################################
+# Page: ws/login.php
+#
+#
+# << MISSING >>
+# No login required for single-user mode.:
+#
+# << MISSING >>
+# No login required for HTTP authentication.:
+
+########################################
+# Page: ws/user_mod.php
+#
+#
+# << MISSING >>
+# Invalid characters in login:
+# English text: Invalid characters in login.
+#
+#
+# << MISSING >>
+# Username XXX does not exist.:
+# English text: Username "XXX" does not exist.
+#
+#
+# << MISSING >>
+# You cannot remove admin rights from yourself!:
+#
+# << MISSING >>
+# Unknown error saving user:
+# English text: Unknown error saving user.
+#
+
+########################################
+# Page: ws/ws.php
+#
+#
+# << MISSING >>
+# No participants found for event id XXX.:
+# English text: No participants found for event id: XXX.
+#
+#
+# << MISSING >>
+# Db error Could not find event id XXX.:
+# English text: Db error: Could not find event id XXX.
+#
+#
+# << MISSING >>
+# Error Could not find event id XXX in database.:
+# English text: Error: Could not find event id XXX in database.
+#
