@@ -4,6 +4,7 @@ You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
  - Patch 1798549: Updated French translation
+ - Fix bug [ 1802380 ] Error in freebusy.php.
 
 Version 1.1.6 (19 Sep 2007)
  - Patch 1791947: Handle the OPTIONS method in icalclient.php
@@ -16,7 +17,7 @@ Version 1.1.6 (19 Sep 2007)
 Version 1.1.5 (12 Sep 2007)
  - Security fix: vulnerability in $includeDir in functions.php
    Renamed getPredefinedVariables.php to formvars.php
- - Bug fix: [ 1780226 ] Repeat event monthly by position 
+ - Bug fix: [ 1780226 ] Repeat event monthly by position
  - Bug fix: [ 1784746 ] Event conflict checking does not work for recurring events
  - Patch 1719114: Allow leading/trailing space in header/trailer file name
  - Bug fix: icalclient.php was not working with Thunderbird/Lightning
