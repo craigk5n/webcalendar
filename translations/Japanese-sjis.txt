@@ -856,7 +856,7 @@ cookies-note: <b>’ˆÓ:</b> ‚±‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÍƒNƒbƒL[‚ª—LŒø‚Å‚È‚¯‚ê‚Î³í‚É“
 # Page: login.php
 #
 Invalid login: ƒƒOƒCƒ“‚Í–³Œø‚Å‚·B
-You have been logged out: ƒƒOƒAƒEƒg‚µ‚Ü‚µ‚½B
+You have been logged out.: ƒƒOƒAƒEƒg‚µ‚Ü‚µ‚½B
 Not yet registered? Register here!: ‚Ü‚¾“o˜^‚µ‚Ä‚¢‚Ü‚¹‚ñ‚©? ‚±‚±‚Å“o˜^‚Å‚«‚Ü‚·!
 
 ########################################

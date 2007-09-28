@@ -829,7 +829,7 @@ cookies-note: <b>Megjegyzés:</b> A sütiket engedélyezni kell a naptár haszn�
 # Page: login.php
 #
 Invalid login: Érvénytelen azonosító
-You have been logged out: Sikeresen kijelentkeztél
+You have been logged out.: Sikeresen kijelentkeztél
 Not yet registered? Register here!: Még nem regisztráltál ? Tedd meg itt!
 
 ########################################

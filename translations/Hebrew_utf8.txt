@@ -886,7 +886,7 @@ cookies-note: <b>הערה:</b> יישום זה מחייב שימוש בעוגי�
 # Page: login.php
 #
 Invalid login: כניסה לא חוקית
-You have been logged out: יצאת מהמערכת
+You have been logged out.: יצאת מהמערכת
 Not yet registered? Register here!: עוד לא רשמת? הרשם כאן!
 
 ########################################
