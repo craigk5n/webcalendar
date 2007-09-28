@@ -1017,7 +1017,7 @@ cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Coo
 # Page: login.php
 #
 Invalid login: Benutzername oder Kennwort falsch
-You have been logged out: Sie sind nun abgemeldet
+You have been logged out.: Sie sind nun abgemeldet
 Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie sich registrieren!
 
 ########################################

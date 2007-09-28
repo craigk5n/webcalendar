@@ -685,7 +685,7 @@ cookies-note: <b>Uwaga!</b> Ta aplikacja wymaga w³±czonych cookies!
 # Page: login.php
 #
 Invalid login: Nieprawod³owy login
-You have been logged out: Zosta³e¶ wylogowany
+You have been logged out.: Zosta³e¶ wylogowany
 Not yet registered? Register here!: Niezarejestrowany? Zarejestruj siê tutaj!
 
 ########################################
