@@ -5,83 +5,54 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-27-2007
 
 
-################################################################################
-#                       DO NOT "TRANSLATE" THIS SECTION                        #
-################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
-# indicates that the "translation" is identical to the English text.
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
 #
-
-# Specify a charset (will be sent within meta tag for each page).
-
 charset: ISO-8859-2
 
-# "direction" need only be changed if using a right to left language.
-# Options are: ltr (left to right, default) or rtl (right to left).
-
-direction: =
-
-# In the date formats, change only the format of the terms.
-# For example in German.txt the proper "translation" would be
-#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
-
-__mm__/__dd__/__yyyy__: =
-__month__ __dd__: =
-__month__ __dd__, __yyyy__: =
-__month__ __yyyy__: =
-
-################################################################################
-################################################################################
 
 
-########################################
-# Page: access.php
+###############################################
+# Page: activity_log.php
 #
 Calendar: koledarju
+Date: datum
 
-########################################
+
+###############################################
 # Page: admin.php
 #
 Month: mesec
 Year: leto
+December: =
+Sunday: Nedelja
+Monday: Ponedeljek
 
-########################################
-# Page: approve_entry.php
+
+###############################################
+# Page: edit_entry.php
 #
-Date: datum
+Tuesday: Torek
+Wednesday: Sreda
+Thursday: Četrtek
+Friday: Petek
+Saturday: Sobota
 
-########################################
+
+###############################################
 # Page: edit_report.php
 #
 Today: Danes
 Next month: Naslednji mesec
 Next year: Naslednje leto
 
-########################################
-# Page: includes/functions.php
+
+###############################################
+# Page: month.php
 #
-WK: Te
-January: Januar
-February: Februar
-March: Marec
-May_: Maj
-June: Junij
-July: Julij
-August: Avgust
-October: Oktober
-May: Maj
-Aug: Avg
-Oct: Okt
-Sunday: Nedelja
-Monday: Ponedeljek
-Tuesday: Torek
-Wednesday: Sreda
-Thursday: Četrtek
-Friday: Petek
-Saturday: Sobota
 Sun: Ned
 Mon: Pon
 Tue: Tor
@@ -89,3 +60,31 @@ Wed: Sre
 Thu: Čet
 Fri: Pet
 Sat: Sob
+
+
+###############################################
+# Page: includes/functions.php
+#
+January: Januar
+February: Februar
+March: Marec
+April: =
+May_: Maj
+June: Junij
+July: Julij
+August: Avgust
+September: =
+October: Oktober
+November: =
+Jan: =
+Feb: =
+Mar: =
+Apr: =
+May: Maj
+Jun: =
+Jul: =
+Aug: Avg
+Sep: =
+Oct: Okt
+Nov: =
+Dec: =
