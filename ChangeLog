@@ -1,4 +1,6 @@
 Version 1.0.6 (?? ??? ????)
+ - Add support for the other languages, too.
+   Afrikaans, Albanian, Arabic, Croatian, Elven, Hebrew, Lithuanian, Serbian, Slovak, Slovenian
  - Fixed bug [ 1778587 ] upcoming.php wrong link for repeating events
  - Added Indonesian translation
 Version 1.0.5 (04 Mar 2007)
@@ -80,7 +82,7 @@ Version 1.0.1 (19 Aug 2005)
 Version 1.0.0 (17 May 2005) aka "Buster"
  - Fixed bug 1202127: [ 1187734 ] Timezone offset problems still exist.
  - Fixed bug 1201821: Bypass user_sees_only_his_groups
- - Undo bug fix 1120897: Conflict with exceptions. This patch caused conflicts 
+ - Undo bug fix 1120897: Conflict with exceptions. This patch caused conflicts
    on other days which turns out to be a more severe problem.
  - Fixed bug 1193835: Creator cannot "edit" a nonuser-event after Admin changes it.
  - Fixed bug 1193579: Untimed shows up wrong in edit page
@@ -108,15 +110,15 @@ Version 1.0.0 (17 May 2005) aka "Buster"
    formatting.
  - Fixed bug 1181682: Reports with just spaces for a name cannot be edited.
  - Fixed bug 1179403: Availability selection fails when Time Format =24
- - Added sql to set webcal_config STARTVIEW default to week.php for 
+ - Added sql to set webcal_config STARTVIEW default to week.php for
    upgrade from v1.0RC2 to v1.0RC3.
  - Fixed problem with missing $cat_id in week and day URLs in month.php
  - Fixed bug 1065461: timezone offset & all-day events
  - Fixed bug 1107253: time zone offset
  - Fixed bug 1140453: Time zone offset in email notifications
- - Fixed problem with second edit of a single event in a repeating series 
+ - Fixed problem with second edit of a single event in a repeating series
    losing linkage with the original event.
- - Updated install/index.php. Added link to phpinfo if valid user. 
+ - Updated install/index.php. Added link to phpinfo if valid user.
    Added security to dbtest, now requires log in to test db settings.
  - Fixed bug 1148602: External Recipients with same name fails
  - Updated install/index.php to use "\r\n" instead of "\n".  Added area
@@ -128,8 +130,8 @@ Version 1.0.0 (17 May 2005) aka "Buster"
  - Fixed bug 1168686: Month display collides with minicals on Safari
  - Fixed $charset problem in xml definition in login.php
  - Fixed bug 1168682:  RC3 Language Detection Broken for Safari
- - Fixed bug 1169403:  Public Access not default selected if 
-   Particiapants not shown. 
+ - Fixed bug 1169403:  Public Access not default selected if
+   Particiapants not shown.
  - Fixed bug 1169078: Bad function call in import_handler.php
  - Fixed bug 1168092: Overlapping events display problem
  - Fixed bug 1167281: View_l loses colour for "today"
@@ -147,14 +149,14 @@ Version 1.0.0 (17 May 2005) aka "Buster"
  - Updated Finnish translation
  - Updated Polish translation
 Version 1.0RC3 (11 Mar 2005)
- - Added 'Public Access' to Manage Calendar of: list, if Admin. 
- - Removed ODBC host:database option from php-dbi.php. If needed, host can be 
+ - Added 'Public Access' to Manage Calendar of: list, if Admin.
+ - Removed ODBC host:database option from php-dbi.php. If needed, host can be
    added to DSN in settings.php.
  - Changed charset in Czech.txt from utf8 to UTF-8
- - Fixed problem with upcoming.php header. xml:lang and lang were set to full 
+ - Fixed problem with upcoming.php header. xml:lang and lang were set to full
    LANGUAGE value, not abbreviation.
  - login.php: Added xml encoding back in, it's now dynamic like other pages.
- - upcoming.php: Fixed problem with "You are not Authorized" error message 
+ - upcoming.php: Fixed problem with "You are not Authorized" error message
    being sent without a header.
  - Patch 1158090: convert comments for use with phpDocumentor
  - Updated German translation
@@ -162,7 +164,7 @@ Version 1.0RC3 (11 Mar 2005)
  - Fixed problem with popups.php with long text strings going off screen.
    Maximum width is now configurable.
  - Fixed issue with Application Name containing ? characters in logon.php.
-   If Application Name = "Title" then translate, else use Admin defined 
+   If Application Name = "Title" then translate, else use Admin defined
    name and run through htmlspecialchars. Also removed forms[0] references
  - Fixed bug 1152863: Japanese strings munged by reports.php and upcoming.php
  - Fixed bug 1124461: Apostrophe in Text Aborts Translation
@@ -183,7 +185,7 @@ Version 1.0RC3 (11 Mar 2005)
  - Replaced popups.php code with new knoppix based code. This should eliminate
    the problems with popups going off screen. Popups also follow the cursor now,
    but can be disabled in the file.
- - Fixed printer friendly view problem. With refresh on, the refresh URL 
+ - Fixed printer friendly view problem. With refresh on, the refresh URL
    reverted to the regular page.
  - Fixed bug 1151442: Overlapping events display error in day.php
  - Fixed bug  1146037: Availibility legend size not dynamic and not centered in IE.
@@ -248,7 +250,7 @@ Version 1.0RC1 (04 Feb 2005)
  - Updated several files to replace "<?" with "<?php"
  which causes problems on Windows
  - Fixed Bug 931096: Restrict views and view edits to owner of that view.
- Added some error notices to database calls 
+ Added some error notices to database calls
  affected files view_v.php, view_d.php, view_w.php, view_t.php,
  view_m.php, views_edit.php
  - Fixed Bug 1101823: Problem importing palm desktop datebook.dat file
@@ -324,11 +326,11 @@ Version 1.0RC1 (04 Feb 2005)
  - Fixed Bug 824268: emails sent by edit_entry_handler.php in wrong time zone
  - Fixed Bug 1066440: End Time increased by timezone offset
  - Fixed Bug 1085337: Categories combo-box in month.php in assistant mode
- - Modified validate.php and trailer.php to look for new $user_inc 
- user-app-*.php files to allow webcalendar to work with other 
+ - Modified validate.php and trailer.php to look for new $user_inc
+ user-app-*.php files to allow webcalendar to work with other
  applications' authentication and user tables.
  - Added user-app-postnuke.php which allows webcalendar to use postnuke's
- authentication and user tables. 
+ authentication and user tables.
  - Fixed Bug 1087604: Vanishing Layers / cookies
  - Fixed Bug 1086357: repeating details display
  - Fixed Bug 1085846: SQL error in get_my_users() function
@@ -494,7 +496,7 @@ Version 0.9.45 (12 Dec 2004)
  - Converting day.php over to new style system (particularly the header)
  - Making code in activity log easier to read both before & after rendering
  - Disallow includes from being called directly
- - Fixed several security issues reported by Joxean Koret 
+ - Fixed several security issues reported by Joxean Koret
  - Added "Admin" links to return user to adminhome.php from admin pages
  - Improved iCal import handling of folded lines (data that spreads
  over more than one line of text)
@@ -582,7 +584,7 @@ Verion 0.9.44 (02 Aug 2004)
  - Added patch 972688: attempt to translate language names ("English")
  into other languages. Updated config.php to have comments for
  perl language tools (update_translation.pl).
- - Changed popup color palette to web safe colors 
+ - Changed popup color palette to web safe colors
  - Fixed bug 885181: If a user adds an event to a nonuser calendar,
  the admin of that nonuser admin calendar must be able to approve
  the event (if approvals are required).
@@ -1096,7 +1098,7 @@ Version 0.9.36 (20 Jun 2002)
  - Replaced COPYING with GPL.html.
  - Updated German translation.
 Version 0.9.35 (05 Jun 2002)
- - Added fancy new admin interface for setting WebCalendar settings. 
+ - Added fancy new admin interface for setting WebCalendar settings.
  Almost all settings previously found in config.inc are now set
  through the new admin interface.
  - Allow user to customize application title (appears in page titlebar
@@ -1434,7 +1436,7 @@ Version 0.9.25 (18 December 00)
  - Patch 102212 from lord@crocodile.org:
  Fixes IE5 compatibility problem with repeating events
  - Patch 102032 from m.crosby@msdw.com:
- Fixed bug: Entries aren't properly added to calendar when in multi user 
+ Fixed bug: Entries aren't properly added to calendar when in multi user
  mode with only one user
  - Patch 101698 from Jonathan Mark <jhmark@xenops.com>:
  - edit_entry_handler.php accepts an "allow_conflicts" flag which
@@ -1771,7 +1773,7 @@ Version 1.0RC1 (04 Feb 2005)
  - Updated several files to replace <? with <?php
  which causes problems on Windows
  - Fixed Bug 931096: Restrict views and view edits to owner of that view.
- Added some error notices to database calls 
+ Added some error notices to database calls
  affected files view_v.php, view_d.php, view_w.php, view_t.php,
  view_m.php, views_edit.php
  - Fixed Bug 1101823: Problem importing palm desktop datebook.dat file
@@ -1847,11 +1849,11 @@ Version 1.0RC1 (04 Feb 2005)
  - Fixed Bug 824268: emails sent by edit_entry_handler.php in wrong time zone
  - Fixed Bug 1066440: End Time increased by timezone offset
  - Fixed Bug 1085337: Categories combo-box in month.php in assistant mode
- - Modified validate.php and trailer.php to look for new $user_inc 
- user-app-*.php files to allow webcalendar to work with other 
+ - Modified validate.php and trailer.php to look for new $user_inc
+ user-app-*.php files to allow webcalendar to work with other
  applications' authentication and user tables.
  - Added user-app-postnuke.php which allows webcalendar to use postnuke's
- authentication and user tables. 
+ authentication and user tables.
  - Fixed Bug 1087604: Vanishing Layers / cookies
  - Fixed Bug 1086357: repeating details display
  - Fixed Bug 1085846: SQL error in get_my_users() function
@@ -2017,7 +2019,7 @@ Version 0.9.45 (12 Dec 2004)
  - Converting day.php over to new style system (particularly the header)
  - Making code in activity log easier to read both before & after rendering
  - Disallow includes from being called directly
- - Fixed several security issues reported by Joxean Koret 
+ - Fixed several security issues reported by Joxean Koret
  - Added "Admin" links to return user to adminhome.php from admin pages
  - Improved iCal import handling of folded lines (data that spreads
  over more than one line of text)
@@ -2105,7 +2107,7 @@ Verion 0.9.44 (02 Aug 2004)
  - Added patch 972688: attempt to translate language names ("English")
  into other languages. Updated config.php to have comments for
  perl language tools (update_translation.pl).
- - Changed popup color palette to web safe colors 
+ - Changed popup color palette to web safe colors
  - Fixed bug 885181: If a user adds an event to a nonuser calendar,
  the admin of that nonuser admin calendar must be able to approve
  the event (if approvals are required).
@@ -2619,7 +2621,7 @@ Version 0.9.36 (20 Jun 2002)
  - Replaced COPYING with GPL.html.
  - Updated German translation.
 Version 0.9.35 (05 Jun 2002)
- - Added fancy new admin interface for setting WebCalendar settings. 
+ - Added fancy new admin interface for setting WebCalendar settings.
  Almost all settings previously found in config.inc are now set
  through the new admin interface.
  - Allow user to customize application title (appears in page titlebar
@@ -2957,7 +2959,7 @@ Version 0.9.25 (18 December 00)
  - Patch 102212 from lord@crocodile.org:
  Fixes IE5 compatibility problem with repeating events
  - Patch 102032 from m.crosby@msdw.com:
- Fixed bug: Entries aren't properly added to calendar when in multi user 
+ Fixed bug: Entries aren't properly added to calendar when in multi user
  mode with only one user
  - Patch 101698 from Jonathan Mark <jhmark@xenops.com>:
  - edit_entry_handler.php accepts an "allow_conflicts" flag which
