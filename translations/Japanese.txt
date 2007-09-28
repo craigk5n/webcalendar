@@ -856,7 +856,7 @@ cookies-note: <b>注意:</b> このアプリケーションはクッキーが有
 # Page: login.php
 #
 Invalid login: ログインは無効です。
-You have been logged out: ログアウトしました。
+You have been logged out..: ログアウトしました。
 Not yet registered? Register here!: まだ登録していませんか? ここで登録できます!
 
 ########################################

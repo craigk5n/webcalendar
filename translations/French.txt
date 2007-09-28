@@ -1046,7 +1046,7 @@ cookies-note: <b>Note:</b> Cette application nécessite l'activation des cookies
 # Page: login.php
 #
 Invalid login: Identifiant utilisateur incorrect
-You have been logged out: Vous avez été déconnecté(e)
+You have been logged out..: Vous avez été déconnecté(e)
 Not yet registered? Register here!: Pas encore enregistré(e) ? Enregistrez-vous ici !
 
 ########################################
