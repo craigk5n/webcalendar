@@ -2,17 +2,17 @@
 /* $Id$
  *
  * Page Description:
- *	Main page for install/config of db settings.
- *	This page is used to create/update includes/settings.php.
+ *  Main page for install/config of db settings.
+ *  This page is used to create/update includes/settings.php.
  *
  * Input Parameters:
- *	OPTIONAL tzoffset   If after logging in, adding tzoffset to
- *	the URL ( http://yourserver/install/index.php?tzoffset=2 )
- *	will adjust all existing events in the database +2 hours.
- *	OPTIONAL cutoffdate (YYYYMMDD)  When adjusting the tzoffset
- *	the URL ( http://yourserver/install/index.php?tzoffset=2&cutoffdate=20070110 )
- *	will adjust all events <= 20070110 in the database +2 hours.
- *	This is very handy if your server changes timezones after installation.
+ *  OPTIONAL tzoffset   If after logging in, adding tzoffset to
+ *  the URL ( http://yourserver/install/index.php?tzoffset=2 )
+ *  will adjust all existing events in the database +2 hours.
+ *  OPTIONAL cutoffdate (YYYYMMDD)  When adjusting the tzoffset
+ *  the URL ( http://yourserver/install/index.php?tzoffset=2&cutoffdate=20070110 )
+ *  will adjust all events <= 20070110 in the database +2 hours.
+ *  This is very handy if your server changes timezones after installation.
  *
  * NEW RELEASE UPDATE PROCEDURES:
  *   - Update WEBCAL_PROGRAM_VERSION default value in default_config.php
@@ -69,7 +69,8 @@ $firebird_path = 'c&#58;/program files/firebird/firebird_1_5/examples/employee.f
 clearstatcache ();
 
 // We may need time to run extensive database loads
-set_time_limit(240);
+if  ( ! get_php_setting ( 'safe_mode' ) )
+  set_time_limit ( 240 );
 
 // If we're using SQLLite, it seems that magic_quotes_sybase must be on
 //ini_set('magic_quotes_sybase', 'On');
@@ -162,15 +163,15 @@ if ( 'logout' == getGetValue ( 'action' ) ) {
 }
 
 // If password already exists, check for valid session.
-if ( file_exists ( $file ) && ! empty ( $password ) &&
+if ( @file_exists ( $file ) && ! empty ( $password ) &&
   ( empty ( $_SESSION['validuser'] ) ||
   $_SESSION['validuser'] != $password ) ) {
   // Make user login
   $doLogin = true;
 }
 
-$pwd = getPostValue ( 'password' );
-if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
+$pwd = getPostValue ( 'password3' );
+if ( @file_exists ( $file ) && ! empty ( $pwd ) ) {
   if ( md5 ($pwd) == $password ) {
     $_SESSION['validuser'] = $password;
 ?>
@@ -223,7 +224,7 @@ $php_modules = array (
 
 $pwd1 = getPostValue ( 'password1' );
 $pwd2 = getPostValue ( 'password2' );
-if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
+if ( @file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
   if ( $pwd1 != $pwd2 ) {
     echo translate ( 'Passwords do not match' ) . "!<br />\n";
     exit;
@@ -316,7 +317,8 @@ if ( ! empty ( $action ) &&  $action == 'install' ){
   $real_db = $db_database;
   if ( $db_type == 'sqlite' )
     $real_db = get_full_include_path ( $db_database );
-
+  if ( $db_password == 'none' )
+    $db_password ='';
   // We might be displaying sql only
   $display_sql = getPostValue('display_sql');
 
@@ -404,85 +406,9 @@ if ( ! empty ( $action ) &&  $action == 'set_odbc_db' ){
 
 $post_action = getPostValue ( 'action' );
 $post_action2 = getPostValue ( 'action2' );
-// Is this a db connection test?
-// If so, just test the connection, show the result and exit.
-if ( ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
-  ! empty ( $_SESSION['validuser'] )  ) {
-    $response_msg = '';
-    $response_msg2 = '';
-    $_SESSION['db_success'] = false;
-    $db_persistent = getPostValue ( 'db_persistent' );
-    $db_type = getPostValue ( 'form_db_type' );
-    $db_host = getPostValue ( 'form_db_host' );
-    $db_database = getPostValue ( 'form_db_database' );
-    $db_login = getPostValue ( 'form_db_login' );
-    $db_password = getPostValue ( 'form_db_password' );
-    $db_cachedir = getPostValue ( 'form_db_cachedir' );
-    //Allow  field length to change if needed
-   $onload = 'db_type_handler();';
-
-   //disable warnings
-   show_errors ();
-   $real_db = $db_database;
-   if ( $db_type == 'sqlite' )
-     $real_db = get_full_include_path ( $db_database );
-   $c = dbi_connect ( $db_host, $db_login,
-     $db_password, $real_db, false );
-
-    //enable warnings
-   show_errors ( true);
-
-   if ( $c ) {
-      $_SESSION['db_success'] = true;
-
-      // Do some queries to try to determine the previous version
-      get_installed_version ();
-
-      $response_msg = '<b>' .translate ( 'Connection Successful' ) . '</b> ' .
-      translate ( 'Please go to next page to continue installation' ) . '.';
-
-    } else {
-      $response_msg =  $failure . dbi_error () . "</blockquote>\n";
-     // See if user is valid, but database doesn't exist
-     // The normal call to dbi_connect simply return false for both conditions
-     if ( $db_type == 'mysql'  ) {
-       $c = mysql_connect ( $db_host, $db_login, $db_password );
-     } else if ( $db_type == 'mssql'  ) {
-       $c = mssql_connect ( $db_host, $db_login, $db_password );
-     } else if ( $db_type == 'postgresql'  ) {
-       $c = dbi_connect ( $db_host, $db_login, $db_password, 'template1', false);
-     } else if ( $db_type == 'ibase'  ) {
-      //TODO figure out how to remove this hardcoded link
-       $c = dbi_connect ( $db_host, $db_login, $db_password, $firebird_path, false);
-     } //TODO Code remaining database types
-     if ( $c ) { // credentials are valid, but database doesn't exist
-        $response_msg = translate ( 'Correct your entries or click the Create New button to continue installation' );
-       $_SESSION['db_noexist'] = true;
-     } else {
-       if ( $db_type == 'ibase'  ) {
-         $response_msg = $failure . $manualStr . "</blockquote>\n";
-       } else {
-         $response_msg = $failure . dbi_error () . "</blockquote>\n" .
-           translate ( 'Correct your entries and try again' );
-       }
-     }
-  } //end if ($c)
-
-  //test db_cachedir directory for write permissions
-  if ( strlen ( $db_cachedir ) > 0 ) {
-    if ( ! is_dir ( $db_cachedir ) ) {
-      $response_msg2 = $failureStr . $cachedirStr . ' ' .
-        translate ( 'does not exist' );
-    } else if ( ! is_writable ( $db_cachedir ) ) {
-      $response_msg2 = $failureStr . $cachedirStr . ' ' .
-        translate ( 'is not writable' );
-      } else {
-    }
-  }
-
 // Is this a db create?
 // If so, just test the connection, show the result and exit.
-} else if ( ! empty ( $post_action2 ) && $post_action2== $createNewStr  &&
+if ( ! empty ( $post_action2 ) && $post_action2== $createNewStr  &&
   ! empty ( $_SESSION['validuser'] ) && ! empty ( $_SESSION['db_noexist'] )) {
     $_SESSION['db_success'] = false;
 
@@ -495,7 +421,8 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
     $db_cachedir = getPostValue ( 'form_db_cachedir' );
     //Allow ODBC field to be visible if needed
    $onload = 'db_type_handler();';
-
+   if ( $db_password == 'none' )
+     $db_password ='';
     // We don't use the normal dbi_execute because we need to know
   // the difference between no conection and no database
   if ( $db_type == 'mysql' ) {
@@ -543,6 +470,86 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
   } // TODO code remainig database types
   //allow bypass of TZ Conversion
   $_SESSION['tz_conversion'] = 'Y';
+	//Force a db test now
+	$post_action = $testSettingsStr;
+}
+// Is this a db connection test?
+// If so, just test the connection, show the result and exit.
+if ( ! empty ( $post_action ) && $post_action == $testSettingsStr  &&
+  ! empty ( $_SESSION['validuser'] )  ) {
+    $response_msg = '';
+    $response_msg2 = '';
+    $_SESSION['db_success'] = false;
+    $db_persistent = getPostValue ( 'db_persistent' );
+    $db_type = getPostValue ( 'form_db_type' );
+    $db_host = getPostValue ( 'form_db_host' );
+    $db_database = getPostValue ( 'form_db_database' );
+    $db_login = getPostValue ( 'form_db_login' );
+    $db_password = getPostValue ( 'form_db_password' );
+    $db_cachedir = getPostValue ( 'form_db_cachedir' );
+    //Allow  field length to change if needed
+   $onload = 'db_type_handler();';
+
+   //disable warnings
+   show_errors ();
+   $real_db = $db_database;
+   if ( $db_type == 'sqlite' )
+     $real_db = get_full_include_path ( $db_database );
+   if ( $db_password == 'none' )
+     $db_password ='';
+   $c = dbi_connect ( $db_host, $db_login,
+     $db_password, $real_db, false );
+
+    //enable warnings
+   show_errors ( true);
+
+   if ( $c ) {
+      $_SESSION['db_success'] = true;
+
+      // Do some queries to try to determine the previous version
+      get_installed_version ();
+
+      $response_msg = '<b>' .translate ( 'Connection Successful' ) . '</b> ' .
+      translate ( 'Please go to next page to continue installation' ) . '.';
+
+    } else {
+      $response_msg =  $failure . dbi_error () . "</blockquote>\n";
+     // See if user is valid, but database doesn't exist
+     // The normal call to dbi_connect simply return false for both conditions
+     if ( $db_type == 'mysql'  ) {
+       $c = mysql_connect ( $db_host, $db_login, $db_password );
+     } else if ( $db_type == 'mssql'  ) {
+       $c = mssql_connect ( $db_host, $db_login, $db_password );
+     } else if ( $db_type == 'postgresql'  ) {
+       $c = dbi_connect ( $db_host, $db_login, $db_password, 'template1', false);
+     } else if ( $db_type == 'ibase'  ) {
+      //TODO figure out how to remove this hardcoded link
+       $c = dbi_connect ( $db_host, $db_login, $db_password, $firebird_path, false);
+     } //TODO Code remaining database types
+     if ( $c ) { // credentials are valid, but database doesn't exist
+        $response_msg = translate ( 'Correct your entries or click the Create New button to continue installation' );
+       $_SESSION['db_noexist'] = true;
+     } else {
+       if ( $db_type == 'ibase'  ) {
+         $response_msg = $failure . $manualStr . "</blockquote>\n";
+       } else {
+         $response_msg = $failure . dbi_error () . "</blockquote>\n" .
+           translate ( 'Correct your entries and try again' );
+       }
+     }
+  } //end if ($c)
+
+  //test db_cachedir directory for write permissions
+  if ( strlen ( $db_cachedir ) > 0 ) {
+    if ( ! @is_dir ( $db_cachedir ) ) {
+      $response_msg2 = $failureStr . $cachedirStr . ' ' .
+        translate ( 'does not exist' );
+    } else if ( ! @is_writable ( $db_cachedir ) ) {
+      $response_msg2 = $failureStr . $cachedirStr . ' ' .
+        translate ( 'is not writable' );
+      } else {
+    }
+  }
 }
 
 // Is this a Timezone Convert?
@@ -566,7 +573,10 @@ if ( ! empty ( $action ) && $action == 'tz_convert' && ! empty ( $_SESSION['vali
     $real_db = $db_database;
     if ( $db_type == 'sqlite' )
       $real_db = get_full_include_path ( $db_database );
-    $c = dbi_connect ( $db_host, $db_login,
+
+   if ( $db_password == 'none' )
+     $db_password ='';
+   $c = dbi_connect ( $db_host, $db_login,
       $db_password, $real_db, false );
 
     if ( $c ) {
@@ -587,7 +597,7 @@ if ( ! empty ( $action ) && $action == 'phpinfo' ) {
   if ( ! empty ( $_SESSION['validuser'] ) ) {
     phpinfo ();
   } else {
-    etranlate ( 'You are not authorized' ) . '.';
+    etranslate ( 'You are not authorized' ) . '.';
   }
   exit;
 }
@@ -600,14 +610,14 @@ if ( isset (  $_SESSION['check'] ) ){
 }
 
 $exists = false;
-$exists = file_exists ( $file );
+$exists = @file_exists ( $file );
 $canWrite = false;
 if ( $exists ) {
   $canWrite = is_writable ( $file );
 } else {
   // check to see if we can create the settings file.
   $testFd = @fopen ( $file, 'w+b', false );
-  if ( file_exists ( $file ) ) {
+  if ( @file_exists ( $file ) ) {
     $canWrite = true;
     $exists  = true;
     $forcePassword = true;
@@ -620,14 +630,15 @@ if ( $exists ) {
 $x = getPostValue ( 'form_db_type' );
 if ( empty ( $x ) ) {
   // No form was posted. Set defaults if none set yet.
-  if ( ! file_exists ( $file ) || count ( $settings ) == 1) {
+  if ( ! @file_exists ( $file ) || count ( $settings ) == 1) {
     $settings['db_type'] = 'mysql';
     $settings['db_host'] = 'localhost';
     $settings['db_database'] = 'intranet';
-    $settings['db_login'] = 'webcalendar';
-    $settings['db_password'] = 'webcal01';
+    $settings['db_login'] = 'root';
+    $settings['db_password'] = 'none';
     $settings['db_persistent'] = 'false';
-    $settings['db_cachedir'] = '/tmp';
+    $settings['db_cachedir'] =( file_exists ( '/tmp' ) && is_writable ( '/tmp' ) 
+      ? '/tmp' : '' );      
     $settings['readonly'] = 'false';
     $settings['user_inc'] = 'user.php';
     $settings['install_password'] = '';
@@ -678,13 +689,14 @@ if ( ! empty ( $y ) ) {
  //Save Application Name and Server URL
  $db_persistent = false;
  $db_type = $settings['db_type'];
+ $db_password = ( $settings['db_password'] == 'none' ? '' : $settings['db_password'] );
  $_SESSION['application_name']  = getPostValue ( 'form_application_name' );
  $_SESSION['server_url']  = getPostValue ( 'form_server_url' );
  $db_database = $settings['db_database'];
  if ( $db_type == 'sqlite' )
    $db_database = get_full_include_path ( $db_database );
   $c = dbi_connect ( $settings['db_host'], $settings['db_login'],
-    $settings['db_password'], $db_database, false );
+    $db_password, $db_database, false );
  if ( $c ) {
    if ( isset ( $_SESSION['application_name'] ) ) {
     dbi_execute ("DELETE FROM webcal_config WHERE cal_setting = 'APPLICATION_NAME'");
@@ -710,7 +722,7 @@ if ( ! empty ( $y ) ) {
 if ( ! empty ( $x ) || ! empty ( $y ) ){
   $fd = @fopen ( $file, 'w+b', false );
   if ( empty ( $fd ) ) {
-    if ( file_exists ( $file ) ) {
+    if ( @file_exists ( $file ) ) {
       $onloadDetailStr =
         translate ( 'Please change the file permissions of this file', true );
     } else {
@@ -1039,7 +1051,7 @@ if ( ! $exists || ! $canWrite ) { ?>
    <table>
     <tr><th>
      <?php echo $passwordStr ?>:</th><td>
-     <input name="password" type="password" />
+     <input name="password3" type="password" />
      <input type="submit" value="<?php echo $loginStr ?>" />
     </td></tr>
    </table>
@@ -1278,7 +1290,7 @@ if ( ! $exists || ! $canWrite ) { ?>
  if ( empty ( $_SESSION['odbc_db'] ) ) $_SESSION['odbc_db'] = 'mysql'; ?>
 <tr><td id="odbc_db" align="center" nowrap>
 <form action="index.php?action=set_odbc_db" method="post" name="set_odbc_db">
-<b><?php etranslate ( 'ODBC Underlying Database' ) ?>:</b> <select name="odbc_db" onchange="document.set_odbc_db.submit();">
+<b><?php etranslate ( 'ODBC Underlying Database' ) ?>:</b> <select name="odbc_db" onChange="document.set_odbc_db.submit();">
   <option value="mysql"
    <?php echo $_SESSION['odbc_db'] == 'mysql'? $selected : '' ; ?> >MySQL</option>
   <option value="mssql"
