@@ -207,7 +207,7 @@ if ( ! empty ( $error ) ) {
 }
 
 if ( $logout ) {
-  echo '<p>' . translate ( 'You have been logged out' ) . ".</p>\n";
+  echo '<p>' . translate ( 'You have been logged out.' ) . "</p>\n";
   echo "<br /><br />\n";
   echo '<a href="login.php' .
     ( ! empty ( $return_path ) ?

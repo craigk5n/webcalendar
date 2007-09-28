@@ -1046,7 +1046,7 @@ cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 # Page: login.php
 #
 Invalid login: Invalid login
-You have been logged out: You have been logged out
+You have been logged out..: You have been logged out..
 Not yet registered? Register here!: Not yet registered? Register here!
 
 ########################################

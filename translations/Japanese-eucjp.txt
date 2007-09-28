@@ -860,7 +860,7 @@ cookies-note: <b>Ãí°Õ:</b> ¤³¤Î¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ï¥¯¥Ã¥­¡¼¤¬Í­¸ú¤Ç¤Ê¤±¤ì¤ÐÀµ¾ï¤ËÆ
 # Page: login.php
 #
 Invalid login: ¥í¥°¥¤¥ó¤ÏÌµ¸ú¤Ç¤¹¡£
-You have been logged out: ¥í¥°¥¢¥¦¥È¤·¤Þ¤·¤¿¡£
+You have been logged out..: ¥í¥°¥¢¥¦¥È¤·¤Þ¤·¤¿¡£
 Not yet registered? Register here!: ¤Þ¤ÀÅÐÏ¿¤·¤Æ¤¤¤Þ¤»¤ó¤«? ¤³¤³¤ÇÅÐÏ¿¤Ç¤­¤Þ¤¹!
 
 ########################################

@@ -970,7 +970,7 @@ cookies-note: <b>NB:</b> Deze applicatie maakt gebruik van cookies.
 # Page: login.php
 #
 Invalid login: Ongeldige login
-You have been logged out: U bent uitgelogd
+You have been logged out..: U bent uitgelogd
 Not yet registered? Register here!: Nog niet geregistreerd? Registreer hier!
 
 ########################################
