@@ -1924,10 +1924,10 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
     $cdate = $date;
     $n = 0;
     $bymonth   = ( ! empty ( $Byxxx[0] ) ? explode ( ',', $Byxxx[0] ): array() );
-		$byweekno  = ( ! empty ( $Byxxx[1] ) ? explode ( ',', $Byxxx[1] ): array() );
-	  $byyearday = ( ! empty ( $Byxxx[2] ) ? explode ( ',', $Byxxx[2] ): array() );
+    $byweekno  = ( ! empty ( $Byxxx[1] ) ? explode ( ',', $Byxxx[1] ): array() );
+    $byyearday = ( ! empty ( $Byxxx[2] ) ? explode ( ',', $Byxxx[2] ): array() );
     $bymonthday= ( ! empty ( $Byxxx[3] ) ? explode ( ',', $Byxxx[3] ): array() );
-		$byday     = ( ! empty ( $Byxxx[4] ) ? explode ( ',', $Byxxx[4] ): array() );
+    $byday     = ( ! empty ( $Byxxx[4] ) ? explode ( ',', $Byxxx[4] ): array() );
     $bysetpos  = ( ! empty ( $Byxxx[5] ) ? explode ( ',', $Byxxx[5] ): array() );
 
     if ( $rpt_type == 'daily' ) {
@@ -1947,25 +1947,25 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
     } elseif ( $rpt_type == 'weekly' ) {
       $r = 0;
       $dow = date ( 'w', $date );
-			$cdate = $date - ( $dow * 86400 );
+      $cdate = $date - ( $dow * 86400 );
       if ( ! empty ( $jump ) && $Count == 999 ) {
         while ( $cdate < $jump ) {
           $cdate = add_dstfree_time ( $cdate, 604800, $interval );
         }
       }
       while ( $cdate <= $realend && $n <= $Count ) {
-				if ( ! empty ( $byday ) ) {
+        if ( ! empty ( $byday ) ) {
           foreach ( $byday as $day ) {
             $td = $cdate + ( $byday_values[$day] * 86400 );
             if ( getBymonth ( $td, $Byxxx[0] ) && $td >= $date 
-						  && $td <= $realend && $n <= $Count )
+              && $td <= $realend && $n <= $Count )
               $ret[$n++] = $td;
           }
         } else {
           $td = $cdate + ( $dow * 86400 );
           $cdow = date ( 'w', $td );
           if ( get_RRULE ( $date, $td, $Byxxx ) 
-					  && $cdow == $dow )
+            && $cdow == $dow )
             $ret[$n++] = $td;
         }
         // Skip to the next week in question.
@@ -1977,7 +1977,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
       $thisday = substr ( $dateYmd, 6, 2 );
       $hour = date ( 'H', $date );
       $minute = date ( 'i', $date );
-			$cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
+      $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
       // Skip to this year if called from query_events and we don't need count.
       if ( ! empty ( $jump ) && $Count == 999 ) {
         while ( $cdate < $jump ) {
@@ -1987,9 +1987,9 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
       }
       $mdate = $cdate;
       while ( $cdate <= $realend && $n <= $Count ) {
-			  if ( ! getBymonth ( $td, $Byxxx[0] ) ) {
-					//We skip this month
-			   } else {
+        if ( ! getBymonth ( $td, $Byxxx[0] ) ) {
+          //We skip this month
+         } else {
           $bydayvalues = $bymonthdayvalues = $yret = array ();
           if ( count ( $byday ) )
             $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
@@ -2030,8 +2030,8 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
             $ret = array_merge ( $ret, $yret );
           }
           sort ( $ret );
-					$n = count ( $ret );
-				}//end $bymonth test
+          $n = count ( $ret );
+        }//end $bymonth test
         $thismonth += $interval;
         $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
         $mdate = mktime ( $hour, $minute, 0, $thismonth, 1, $thisyear );
@@ -2047,7 +2047,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
       $thisyear = substr ( $dateYmd, 0, 4 );
       $thismonth = substr ( $dateYmd, 4, 2 );
       $thisday = substr ( $dateYmd, 6, 2 );
-			$cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
+      $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
 
       // Skip to this year if called from query_events and we don't need count.
       if ( ! empty ( $jump ) && $Count == 999 ) {
@@ -2066,28 +2066,28 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
         $ldow = date ( 'w', $ldoy ); //day of week last day  of year
         $dow = date ( 'w', $cdate ); //day of week
         $week = date ( 'W', $cdate ); //ISO 8601 number of week
-        if ( isset ( $bymonth ) ) {
+        if ( count ( $bymonth ) ) {
           foreach ( $bymonth as $month ) {
             $mdate = mktime ( $hour, $minute, 0, $month, 1, $ycd );
             $bydayvalues = $bymonthdayvalues = array ();
-            if ( isset ( $byday ) )
+            if ( count ( $byday ) )
               $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
 
-            if ( isset ( $bymonthday ) )
+            if ( count ( $bymonthday ) )
               $bymonthdayvalues = get_bymonthday ( $bymonthday, $mdate,
                 $date, $realend );
 
-            if ( isset ( $byday ) && isset ( $bymonthday ) ) {
+            if ( count ( $byday ) && count ( $bymonthday ) ) {
               $bydaytemp = array_intersect ( $bymonthdayvalues, $bydayvalues );
               $yret = array_merge ( $yret, $bydaytemp );
             } else
-              $yret = ( isset ( $bymonthday )
+              $yret = ( count ( $bymonthday )
                 ? array_merge ( $yret, $bymonthdayvalues )
-                : ( isset ( $byday )
+                : ( count ( $byday )
                   ? array_merge ( $yret, $bydayvalues )
                   : array ( mktime ( $hour, $minute, 0, $month, $thisday, $ycd ) ) ) );
           } //end foreach bymonth
-        } elseif ( isset ( $byyearday ) ) { // end if isset bymonth
+        } elseif ( count ( $byyearday ) ) { // end if isset bymonth
           foreach ( $byyearday as $yearday ) {
             ereg ( '([-\+]{0,1})?([0-9]{1,3})', $yearday, $match );
             if ( $match[1] == '-' && ( $cdate >= $date ) )
@@ -2097,13 +2097,13 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
             if ( ( $n <= $Count ) && ( $cdate >= $date ) )
               $yret[] = mktime ( $hour, $minute, 0, 1, $match[2], $thisyear );
           }
-        } elseif ( isset ( $byweekno ) ) {
+        } elseif ( count ( $byweekno ) ) {
           $wkst_date = ( $Wkst == 'SU' ? $cdate + 86400 : $cdate );
-          if ( isset ( $byday ) )
+          if ( count ( $byday ) )
             $bydayvalues = get_byday ( $byday, $cdate, 'year', $date );
 
           if ( in_array ( $week, $byweekno ) ) {
-            if ( isset ( $bydayvalues ) ) {
+            if ( count ( $bydayvalues ) ) {
               foreach ( $bydayvalues as $bydayvalue ) {
                 if ( $week == date ( 'W', $bydayvalue ) )
                   $yret[] = $bydayvalue;
@@ -2111,7 +2111,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
             } else
               $yret[] = $cdate;
           }
-        } elseif ( isset ( $byday ) ) {
+        } elseif ( count ( $byday ) ) {
           $bydayvalues = get_byday ( $byday, $cdate, 'year', $date );
           if ( ! empty ( $bydayvalues ) )
             $yret = array_merge ( $yret, $bydayvalues );
@@ -2119,7 +2119,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
           $ret[] = $cdate;
 
         // Must wait till all other BYxx are processed.
-        if ( isset ( $bysetpos ) ) {
+        if ( count ( $bysetpos ) ) {
           sort ( $yret );
           for ( $i = 0, $bysetposcnt = count ( $bysetpos ); $i < $bysetposcnt;
             $i++ ) {
@@ -2174,24 +2174,24 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
  */
 function get_RRULE ( $date, $cdate, $Byxxx ) {
   $ret0 = getBymonth ( $cdate, $Byxxx[0] );
-	$ret1 = getByweekno ( $cdate, $Byxxx[1] );
-	$ret2 = getByyearday ( $cdate, $Byxxx[2] );
-	$ret3  = getBymonthday( $cdate, $Byxxx[3] );
-	$ret4  = getByday( $cdate, $Byxxx[4], 'daily', $date );
-	return ( $ret0 & $ret1 & $ret2 & $ret3 & $ret4 );
+  $ret1 = getByweekno ( $cdate, $Byxxx[1] );
+  $ret2 = getByyearday ( $cdate, $Byxxx[2] );
+  $ret3  = getBymonthday( $cdate, $Byxxx[3] );
+  $ret4  = getByday( $cdate, $Byxxx[4], 'daily', $date );
+  return ( $ret0 & $ret1 & $ret2 & $ret3 & $ret4 );
 }
 
 function getBymonth ( $cdate, $bymonth ) {
 
  if ( empty ( $bymonth ) )
-   return true; 	
+   return true;   
  return ( in_array ( date ( 'n', $cdate ), explode ( ',', $bymonth ) ) );
 }
 
 function getByweekno ( $cdate, $byweekno ) {
 
  if ( empty ( $byweekno ) )
-   return true; 	
+   return true;   
  return ( in_array ( date ( 'W', $cdate ), explode ( ',', $byweekno ) ) );
 }
 
@@ -2199,14 +2199,14 @@ function getByyearday ( $cdate, $byyearday  ) {
 
  if ( empty ( $byyearday ) )
    return true;
-	$byyearday =   	explode ( ',', $byyearday );
+  $byyearday =     explode ( ',', $byyearday );
   $doy = date ( 'z', $cdate ); //day of year
   $diy = date ( 'L', $cdate ) + 365; //days in year
   $diyReverse = $doy - $diy -1;
   return ( in_array ( $doy, $byyearday ) ||
     in_array ( $diyReverse, $byyearday ) );
 }
-	
+  
 function getBymonthday( $cdate, $bymonthday  ) {
 
  if ( empty ( $bymonthday ) )
@@ -2215,18 +2215,18 @@ function getBymonthday( $cdate, $bymonthday  ) {
    $dim = date ( 't', $cdate ); //days in month
    $dimReverse = $dom - $dim -1;
    return ( in_array ( $dom, $bymonthday ) ||
-	   in_array ( $dimReverse, $bymonthday ) );
-}				
+     in_array ( $dimReverse, $bymonthday ) );
+}        
 
 function getByday ( $cdate, $byday, $type, $date ) {
 
  if ( empty ( $byday ) )
    return true; 
-	$bydayvalues = get_byday ( explode ( ',',$byday ), $cdate, $type, $date );
+  $bydayvalues = get_byday ( explode ( ',',$byday ), $cdate, $type, $date );
   return( in_array ( $cdate, $bydayvalues ) );
 
 }
-					
+          
 /* Get the dates the correspond to the byday values.
  *
  * @param array $byday   ByDay values to process (MO,TU,-1MO,20MO...)
@@ -5075,7 +5075,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           $dates = get_all_dates ( $date,
             $result[$i]->getRepeatType (), $result[$i]->getRepeatFrequency (),
             array ($result[$i]->getRepeatByMonth (), 
-						$result[$i]->getRepeatByWeekNo (),
+            $result[$i]->getRepeatByWeekNo (),
             $result[$i]->getRepeatByYearDay (),
             $result[$i]->getRepeatByMonthDay (),
             $result[$i]->getRepeatByDay (), $result[$i]->getRepeatBySetPos () ),
