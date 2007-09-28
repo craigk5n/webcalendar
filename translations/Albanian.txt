@@ -5,72 +5,66 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-27-2007
 
 
-################################################################################
-#                       DO NOT "TRANSLATE" THIS SECTION                        #
-################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
-# indicates that the "translation" is identical to the English text.
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
 #
-
-# Specify a charset (will be sent within meta tag for each page).
-
 charset: =
 
-# "direction" need only be changed if using a right to left language.
-# Options are: ltr (left to right, default) or rtl (right to left).
-
-direction: =
-
-# In the date formats, change only the format of the terms.
-# For example in German.txt the proper "translation" would be
-#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
-
-__mm__/__dd__/__yyyy__: =
-__month__ __dd__: =
-__month__ __dd__, __yyyy__: =
-__month__ __yyyy__: =
-
-################################################################################
-################################################################################
 
 
-########################################
-# Page: access.php
+###############################################
+# Page: activity_log.php
 #
 Calendar: Kalendarin
+Date: Daten
+Time: Koha
 
-########################################
+
+###############################################
 # Page: admin.php
 #
 Month: Muaji
 Year: Viti
+December: Dhjetor"
+Sunday: E Diele
+Monday: E Hene
 
-########################################
-# Page: approve_entry.php
+
+###############################################
+# Page: edit_entry.php
 #
-Date: Daten
-Time: Koha
+Tuesday: E Marte
+Wednesday: E Merkure
+Friday: E Premte
+Saturday: E Shtune
 
-########################################
+
+###############################################
 # Page: edit_report.php
 #
 Today: Sot
 Next month: Muaji i ardhshem
 Next year: Viti i ardhshem
 
-########################################
-# Page: includes/date_formats.php
-#
-December: Dhjetor"
-Dec: Dhj
 
-########################################
+###############################################
+# Page: month.php
+#
+Sun: Die
+Mon: Hen
+Tue: Mar
+Wed: Mer
+Thu: Enj
+Fri: Pre
+Sat: Sht
+
+
+###############################################
 # Page: includes/functions.php
 #
-WK: Java
 January: Janar
 February: Shkurt
 March: Mars
@@ -82,7 +76,9 @@ August: Gusht
 September: Shtator
 October: Tetor
 November: Nentor
+Jan: =
 Feb: Shk
+Mar: =
 Apr: Pri
 May: Maj
 Jun: Qes
@@ -91,16 +87,4 @@ Aug: Gus
 Sep: Sht
 Oct: Tet
 Nov: Nen
-Sunday: E Diele
-Monday: E Hene
-Tuesday: E Marte
-Wednesday: E Merkure
-Friday: E Premte
-Saturday: E Shtune
-Sun: Die
-Mon: Hen
-Tue: Mar
-Wed: Mer
-Thu: Enj
-Fri: Pre
-Sat: Sht
+Dec: Dhj

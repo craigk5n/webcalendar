@@ -12,129 +12,98 @@
 # Note:  Elven folk do not use abbreviations much.
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-27-2007
 
 
-################################################################################
-#                       DO NOT "TRANSLATE" THIS SECTION                        #
-################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
-# indicates that the "translation" is identical to the English text.
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
 #
-
-# Specify a charset (will be sent within meta tag for each page).
-
 charset: =
 
-# "direction" need only be changed if using a right to left language.
-# Options are: ltr (left to right, default) or rtl (right to left).
-
-direction: =
-
-# In the date formats, change only the format of the terms.
-# For example in German.txt the proper "translation" would be
-#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
-
-__mm__/__dd__/__yyyy__: =
-__month__ __dd__: =
-__month__ __dd__, __yyyy__: =
-__month__ __yyyy__: =
-
-################################################################################
-################################################################################
 
 
-########################################
+###############################################
 # Page: activity_log.php
 #
-Next: Ento
+Time: Luume'
 Previous: Yana
+Next: Ento
 
-########################################
+
+###############################################
 # Page: admin.php
 #
-Week: Enquie
-to: a'
-Bottom: Sundo
-Top: Telmello
 Yes: Um
 No: N'uma
-Anyone: Ai'er
+Week: Enquie
+December: Ringáre
+Sunday: Tárion
+Monday: Elenya
+to: a'
+Top: Telmello
+Bottom: Sundo
 
-########################################
+
+###############################################
 # Page: adminhome.php
 #
 Account: Quentale
 
-########################################
-# Page: approve_entry.php
-#
-Time: Luume'
 
-########################################
-# Page: availability.php
-#
-year: atendea
-month: asta
-day: re
-
-########################################
+###############################################
 # Page: edit_entry.php
 #
-High: Taurn
-Medium: Ened
 Low: N'taurn
-MO: Elenya
-SU: Tárion
-All: Ilya
+Medium: Ened
+High: Taurn
+Tuesday: Anarya
+Wednesday: Isilya
+Thursday: Alduya
+Friday: Menelya
+Saturday: Valanya
 
-########################################
+
+###############################################
 # Page: edit_report.php
 #
 Tomorrow: Tul're
 Today: A're
 Yesterday: Tella're
 
-########################################
+
+###############################################
 # Page: edit_user.php
 #
 again: au'
 
-########################################
-# Page: register.php
-#
-Welcome: Creoso
 
-########################################
-# Page: upcoming.php
+###############################################
+# Page: month.php
 #
-more: ner
+Sun: Tárion
+Mon: Elenya
+Tue: Anarya
+Wed: Isilya
+Thu: Alduya
+Fri: Menelya
+Sat: Valany
 
-########################################
+
+###############################################
+# Page: pref.php
+#
+All: Ilya
+
+
+###############################################
 # Page: view_entry.php
 #
-by: ed'
-boss: kano
+day: re
 
-########################################
-# Page: includes/date_formats.php
-#
-December: Ringáre
-Dec: Ringáre
 
-########################################
-# Page: includes/dbi4php.php
-#
-write: tengw
-
-########################################
+###############################################
 # Page: includes/functions.php
 #
-WK: ENQUIE
-after: ale'
-before: n'ala
-end: tál
-start: mas
 January: Narvinye
 February: Nénime
 March: Súlime
@@ -157,41 +126,4 @@ Aug: Urime
 Sep: Yavannie
 Oct: Narquelie
 Nov: Hísime
-Sunday: Tárion
-Monday: Elenya
-Tuesday: Anarya
-Wednesday: Isilya
-Thursday: Alduya
-Friday: Menelya
-Saturday: Valanya
-Sun: Tárion
-Mon: Elenya
-Tue: Anarya
-Wed: Isilya
-Thu: Alduya
-Fri: Menelya
-Sat: Valany
-
-########################################
-# Page: includes/trailer.php
-#
-Home: Eska
-
-########################################
-# Page: includes/translate.php
-#
-Elven: Eldalie
-
-########################################
-# Page: includes/xcal.php
-#
-TU: Anarya
-WE: Isilya
-TH: Alduya
-FR: Menelya
-SA: Valany
-
-########################################
-# Page: install/index.php
-#
-NOT: IL
+Dec: Ringáre

@@ -5,65 +5,64 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-27-2007
 
 
-################################################################################
-#                       DO NOT "TRANSLATE" THIS SECTION                        #
-################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
-# indicates that the "translation" is identical to the English text.
+###############################################
+# Specify a charset (will be sent within meta tag for each page)
 #
-
-# Specify a charset (will be sent within meta tag for each page).
-
 charset: Windows-1257
 
-# "direction" need only be changed if using a right to left language.
-# Options are: ltr (left to right, default) or rtl (right to left).
-
-direction: =
-
-# In the date formats, change only the format of the terms.
-# For example in German.txt the proper "translation" would be
-#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
-
-__mm__/__dd__/__yyyy__: =
-__month__ __dd__: =
-__month__ __dd__, __yyyy__: =
-__month__ __yyyy__: =
-
-################################################################################
-################################################################################
 
 
-########################################
-# Page: access.php
+###############################################
+# Page: activity_log.php
 #
 Calendar: Kalendoriø
-
-########################################
-# Page: approve_entry.php
-#
 Date: Pasirinkite datà
 
-########################################
+
+###############################################
+# Page: admin.php
+#
+December: Gruodis
+Sunday: Sekmadienis
+Monday: Pirmadienis
+
+
+###############################################
+# Page: edit_entry.php
+#
+Tuesday: Antradienis
+Wednesday: Treèiadienis
+Thursday: Ketvirtadienis
+Friday: Pentadienis
+Saturday: Ðeðtadienis
+
+
+###############################################
 # Page: edit_report.php
 #
 Today: Ðiandien
 Next month: Kitas mënuo
 Next year: Kiti metai
 
-########################################
-# Page: includes/date_formats.php
-#
-December: Gruodis
-Dec: Gru
 
-########################################
+###############################################
+# Page: month.php
+#
+Sun: Sek
+Mon: Pir
+Tue: Ant
+Wed: Tre
+Thu: Ket
+Fri: Pen
+Sat: Ðeð
+
+
+###############################################
 # Page: includes/functions.php
 #
-WK: sav
 January: Sausis
 February: Vasaris
 March: Kovas
@@ -86,17 +85,4 @@ Aug: Rgp
 Sep: Rgs
 Oct: Spa
 Nov: Lap
-Sunday: Sekmadienis
-Monday: Pirmadienis
-Tuesday: Antradienis
-Wednesday: Treèiadienis
-Thursday: Ketvirtadienis
-Friday: Pentadienis
-Saturday: Ðeðtadienis
-Sun: Sek
-Mon: Pir
-Tue: Ant
-Wed: Tre
-Thu: Ket
-Fri: Pen
-Sat: Ðeð
+Dec: Gru
