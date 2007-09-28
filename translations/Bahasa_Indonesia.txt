@@ -1005,7 +1005,7 @@ Change the date and time of this entry?: Ganti tanggal dan waktu dari entri ini?
 #
 You have not entered a Brief Description: Anda tidak mengetikkan Keterangan Singkat
 You have not entered a valid time of day: Anda tidak mengetikkan sebuah waktu hari yang sahih
-The time you have entered begins before your preferred work hours.  Is this correct?: Waktu yang telah Anda ketikkan dimulai sebelum jam kerja Anda. Apakah memang waktu ini yang Anda inginkan?
+The time you have entered begins before your preferred work hours. Is this correct?: Waktu yang telah Anda ketikkan dimulai sebelum jam kerja Anda. Apakah memang waktu ini yang Anda inginkan?
 Please add a participant: Silakan tambahkan seorang partisipan
 
 
