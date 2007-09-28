@@ -20,10 +20,10 @@
 /* database settings see notes above
 db_type: mysql
 db_host: localhost
-db_login: webcalendar
-db_password: webcal01
+db_login: root
+db_password: none
 db_database: intranet
-db_persistent: true
+db_persistent: false
 
 # Read-only mode: You can set this to true to create a read-only calendar.
 # If you enable $single_user_login (below), no login will be required,

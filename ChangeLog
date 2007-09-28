@@ -3,6 +3,8 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Changed default installation user/password to root/none
+ - Added read/write test to db_cache /tmp folder
  - Fix bug [ 1803715 ] Warnings from functions.php on repeating event
  - Patch 1798549: Updated French translation
  - Fix bug [ 1802380 ] Error in freebusy.php.
