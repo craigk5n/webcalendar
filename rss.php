@@ -53,6 +53,7 @@
 
 $debug = false;
 
+include_once $includedir . '/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
@@ -69,7 +70,6 @@ $WebCalendar->initializeFirstPhase ();
 include 'includes/' . $user_inc;
 
 include_once 'includes/validate.php';
-include 'includes/translate.php';
 include 'includes/site_extras.php';
 
 include_once 'includes/xcal.php';
