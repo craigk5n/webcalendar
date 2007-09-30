@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 08-31-2007
+# Translation last updated on 09-30-2007
 
 
 ################################################################################
@@ -1045,8 +1045,12 @@ cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 ########################################
 # Page: login.php
 #
+Illegal characters in login: Illegal characters in login
+Illegal characters in login XXX.: Illegal characters in login <tt>XXX</tt>.
 Invalid login: Invalid login
-You have been logged out..: You have been logged out..
+Activity login failure: Username: "XXX", IP: "XXX".
+Error XXX: Error: "XXX".
+You have been logged out.: You have been logged out.
 Not yet registered? Register here!: Not yet registered? Register here!
 
 ########################################
@@ -1065,7 +1069,6 @@ Add New NonUser Calendar: Add New NonUser Calendar
 # Page: nulogin.php
 #
 A login must be specified: A login must be specified
-Illegal characters in login: Illegal characters in login
 
 ########################################
 # Page: pref.php
@@ -1113,7 +1116,6 @@ Records deleted from: Records deleted from
 # Page: register.php
 #
 Email address cannot be blank.: Email address cannot be blank.
-Illegal characters in login XXX.: Illegal characters in login XXX.
 New user via self-registration.: New user via self-registration.
 A new WebCalendar account has been set up for you.: A new WebCalendar account has been set up for you.
 Your username is: Your username is
@@ -1353,6 +1355,12 @@ Error opening cache dir: Error opening cache dir
 delete: delete
 
 ########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fatal Error
+Invalid data format for: Invalid data format for
+
+########################################
 # Page: includes/functions.php
 #
 Error Type not set for activity log!: Error: Type not set for activity log!
@@ -1464,12 +1472,6 @@ Thu: Thu
 Fri: Fri
 Sat: Sat
 unknown-weekday: unknown-weekday
-
-########################################
-# Page: includes/getPredefinedVariables.php
-#
-Fatal Error: Fatal Error
-Invalid data format for: Invalid data format for
 
 ########################################
 # Page: includes/help_list.php
