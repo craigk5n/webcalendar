@@ -8,7 +8,7 @@
 $basedir = '..';
 $includedir = '../includes';
 
-include $includedir . '/translate.php';
+include_once $includedir . '/translate.php';
 require_once $includedir . '/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );

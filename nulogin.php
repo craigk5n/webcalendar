@@ -3,11 +3,11 @@
  *
  * This page handles logins for nonuser calendars.
  */
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
-include 'includes/translate.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';

@@ -82,8 +82,7 @@
  * Also, not sure if reminders for repeated events are handled properly yet.
  */
 
-include 'includes/translate.php';
-
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );

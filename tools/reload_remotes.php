@@ -47,11 +47,11 @@ $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
 ini_set ( 'include_path', $old_path . $delim . $includedir . $delim );
 
+include_once $includedir . '/translate.php';
 require_once $includedir . '/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
-include $includedir . '/translate.php';
 include $includedir . '/config.php';
 include $includedir . '/dbi4php.php';
 include $includedir . '/formvars.php';
