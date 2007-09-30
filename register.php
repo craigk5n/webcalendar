@@ -114,16 +114,17 @@ if ( empty ( $valid_ip ) )
 
 // We could make $control a unique value if necessary.
 $control = getPostValue ( 'control' );
+$illegalCharStr = translate ( 'Illegal characters in login XXX.' );
+
 if ( empty ( $error ) && ! empty ( $control ) ) {
   $uemail = getPostValue ( 'uemail' );
   $ufirstname = getPostValue ( 'ufirstname' );
   $uis_admin = 'N';
   $ulastname = getPostValue ( 'ulastname' );
   $user = trim ( getPostValue ( 'user' ) );
-  // translate ( 'Illegal characters in login' )
+
   if ( $user != addslashes ( $user ) )
-    $error = str_replace ( 'XXX', htmlentities ( $user ),
-      translate ( 'Illegal characters in login XXX.' ) );
+    $error = str_replace ( 'XXX', htmlentities ( $user ), $illegalCharStr );
 
   // Check to make sure user doesn't already exist.
   check_username ( $user );
@@ -145,8 +146,7 @@ if ( empty ( $error ) && ! empty ( $control ) ) {
       }
       $user = trim ( $user );
       if ( $user != addslashes ( $user ) )
-        $error = str_replace ( 'XXX', htmlentities ( $user ),
-          translate ( 'Illegal characters in login XXX.' ) );
+        $error = str_replace ( 'XXX', htmlentities ( $user ), $illegalCharStr );
     } else
     if ( $upassword1 != $upassword2 ) {
       $control = '';
