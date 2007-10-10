@@ -145,11 +145,13 @@ if ( $allow_user_override ) {
 
 load_user_preferences ();
 
-// Determine what remote access has been set up by user.
-// This will only be used if $username is not __public__.
-if ( ! empty ( $USER_REMOTE_ACCESS ) && $username != '__public__' ) {
   // public entries only
   $allow_access = array ( 'P' );
+
+// .
+// Determine what remote access has been set up by user.
+// This will only be used if $username is not __public__.
+if ( isset ( $USER_REMOTE_ACCESS ) && $username != '__public__' ) {
   if ( $USER_REMOTE_ACCESS > 0 ) // plus confidential
     $allow_access[] = 'C';
 
@@ -325,7 +327,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
     <item>';
         $unixtime = date_to_epoch ( $rentries[$j]->getDateTime () );
         $dateinfo = ( $date_in_title == true
-          ? date ( $date_format, $unixtime )
+          ? date ( $date_format, $i )
            . ( $rentries[$j]->isAllDay () || $rentries[$j]->isUntimed ()
             ? $time_separator . date ( $time_format, $unixtime ) : '' ) . ' '
           : '' );
