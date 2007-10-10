@@ -3,6 +3,8 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Fix bug [ 1788481 ] Button Report is visible although not active in UAC
+ - Fixed bug [ 1804895 ] Remote Calendars Breakage when using non-english
  - Fix bug [ 1808687 ] error relating to functions.php line 1990
  - Changed default installation user/password to root/none
  - Added read/write test to db_cache /tmp folder
