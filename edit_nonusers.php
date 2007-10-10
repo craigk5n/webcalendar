@@ -22,14 +22,14 @@ $nid = getValue ( 'nid' );
 // Adding/Editing nonuser calendar.
 if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
   $userlist = user_get_users ();
-  $button = translate ( 'Add' );
+  $button = translate ( 'Add', true );
   $nid = clean_html ( $nid );
 
   if ( ! empty ( $nid ) ) {
     nonuser_load_variables ( $nid, 'nonusertemp_' );
     $id_display = $nid . '
       <input type="hidden" name="nid" value="' . $nid . '" />';
-    $button = translate ( 'Save' );
+    $button = translate ( 'Save', true );
     $nonusertemp_login = substr ( $nonusertemp_login,
       strlen ( $NONUSER_PREFIX ) );
   } else
@@ -117,7 +117,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
       </table><br />
       <input type="submit" name="action" value="' . $button . '" />'
    . ( empty ( $nid ) ? '' : '
-      <input type="submit" name="delete" value="' . translate ( 'Delete' )
+      <input type="submit" name="delete" value="' . translate ( 'Delete')
      . '" onclick="return confirm( \''
      . str_replace ( 'XXX', translate ( 'entry' ),
       translate ( 'Are you sure you want to delete this XXX?' ) )

@@ -9,7 +9,6 @@ if ( ! $is_admin ) {
   exit;
 }
 $error = '';
-
 $delete = getPostValue ( 'delete' );
 $nid = getPostValue ( 'nid' );
 $nadmin = getPostValue ( 'nadmin' );
@@ -80,8 +79,8 @@ if ( ! empty ( $delete ) ) {
     array ( $nid ) ) )
     $error = db_error ();
 
-} else {
-  if ( $action == 'Save' || $action == translate ( 'Save' ) ) {
+} else if ( ! empty ( $action ) ){
+  if ( $action == translate ( 'Save', true ) ) {
     // Updating
     $query_params = array ();
     $sql = 'UPDATE webcal_nonuser_cals SET ';
@@ -104,7 +103,7 @@ if ( ! empty ( $delete ) ) {
     if ( ! dbi_execute ( $sql . 'cal_admin = ? WHERE cal_login = ?',
       $query_params ) )
       $error = db_error ();
-  } else {
+  } else if ( $action == translate ( 'Add', true ) ){
     // Adding
     if ( preg_match ( '/^[\w]+$/', $nid ) ) {
       $nid = $NONUSER_PREFIX.$nid;
