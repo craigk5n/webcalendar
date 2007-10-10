@@ -1987,7 +1987,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
       }
       $mdate = $cdate;
       while ( $cdate <= $realend && $n <= $Count ) {
-        if ( ! getBymonth ( $td, $Byxxx[0] ) ) {
+        if ( ! getBymonth ( $cdate, $Byxxx[0] ) ) {
           //We skip this month
          } else {
           $bydayvalues = $bymonthdayvalues = $yret = array ();
