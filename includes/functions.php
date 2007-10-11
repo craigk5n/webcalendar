@@ -5095,8 +5095,9 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           // }
           // }
         } else { // Process clones if any.
-          if ( count ( $result[$i-1]->getRepeatAllDates () > 0 ) ) {
+          if ( count ( $result[$i-1]->getRepeatAllDates () ) > 0 ) {
             $parentRepeats = $result[$i-1]->getRepeatAllDates ();
+            $cloneRepeats = array();
             for ( $j = 0, $parentRepeatscnt = count ( $parentRepeats );
               $j < $parentRepeatscnt; $j++ ) {
               $cloneRepeats[] = gmdate ( 'Ymd',
