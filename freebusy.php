@@ -104,7 +104,7 @@ $get_unapproved = false;
 $datem = date ( 'm' );
 $dateY = date ( 'Y' );
 // Start date is beginning of this month.
-$startdate = mktime ( 0, 0, 0, $datem, 1, $dateY );
+$startdate = mktime ( 0, 0, 0, $datem, 0, $dateY );
 
 // End date is one year from now.
 // Seems kind of arbitrary, eh?

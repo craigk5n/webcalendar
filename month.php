@@ -23,11 +23,11 @@ $prevmonth = substr ( $prevYmd, 4, 2 );
 
 if ( $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;
-  $startdate = mktime ( 0, 0, 0, $prevmonth, 1, $prevyear );
+  $startdate = mktime ( 0, 0, 0, $prevmonth, 0, $prevyear );
   $enddate = mktime ( 23, 59, 59, $nextmonth + 1, 0, $nextyear );
 } else {
   $boldDays = false;
-  $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+  $startdate = mktime ( 0, 0, 0, $thismonth, 0, $thisyear );
   $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 }
 
