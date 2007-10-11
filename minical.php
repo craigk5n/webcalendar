@@ -103,7 +103,7 @@ $prevmonth = date ( 'm', $prev );
 $prevyear = date ( 'Y', $prev );
 
 $boldDays = true;
-$startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+$startdate = mktime ( 0, 0, 0, $thismonth, 0, $thisyear );
 $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 
 // Don't display custom header.
