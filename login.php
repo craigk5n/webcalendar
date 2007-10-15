@@ -129,7 +129,8 @@ else {
         $error = translate ( 'Invalid login', true );
 
       activity_log ( 0, 'system', '', LOG_LOGIN_FAILURE,
-        str_replace ( 'XXX', array ( $login, $_SERVER['REMOTE_ADDR'] ),
+        str_replace ( array ( 'XXX', 'YYY' ),
+          array ( $login, $_SERVER['REMOTE_ADDR'] ),
           translate ( 'Activity login failure' ) ) );
     }
   } else {

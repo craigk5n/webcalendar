@@ -14,12 +14,14 @@ function make_uppercase () {
   // translate ( 'Error updating webcal_config' )
   if ( ! dbi_execute ( 'UPDATE webcal_config
     SET cal_setting = UPPER( cal_setting )' ) )
-    echo str_replace ( 'XXX', array ( 'webcal_config', dbi_error () ),
+    echo str_replace ( array ( 'XXX', 'YYY'),
+      array ( 'webcal_config', dbi_error () ),
       translate ( 'Error updating table XXX' ) );
 
   if ( ! dbi_execute ( 'UPDATE webcal_user_pref
     SET cal_setting = UPPER( cal_setting )' ) )
-    echo str_replace ( 'XXX', array ( 'webcal_user_pref', dbi_error () ),
+    echo str_replace ( array ( 'XXX', 'YYY' ),
+      array ( 'webcal_user_pref', dbi_error () ),
       translate ( 'Error updating table XXX' ) );
 }
 
@@ -257,7 +259,8 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
         if ( ! dbi_execute ( 'UPDATE webcal_entry SET cal_date = ?, cal_time = ?
           WHERE cal_id = ?' . $cutoff,
             array ( $new_cal_date, $new_cal_time, $cal_id, $cutoffdate ) ) )
-          return str_replace ( 'XXX', array ( 'webcal_entry', dbi_error () ),
+          return str_replace ( array ( 'XXX', 'YYY' ),
+            array ( 'webcal_entry', dbi_error () ),
             translate ( 'Error updating table XXX' ) );
       }
     }
@@ -285,7 +288,8 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
       if ( ! dbi_execute ( 'UPDATE webcal_entry_log
         SET cal_date = ?, cal_time = ? WHERE cal_log_id = ?',
           array ( $new_cal_date, $new_cal_time, $cal_log_id ) ) )
-        return str_replace ( 'XXX', array ( 'webcal_entry_log', dbi_error () ),
+        return str_replace ( array ( 'XXX', 'YYY' ),
+          array ( 'webcal_entry_log', dbi_error () ),
           translate ( 'Error updating table XXX' ) );
     }
     dbi_free_result ( $res );

@@ -74,8 +74,9 @@ $repeated_events = query_events ( $user, true,
 // Read non-repeating events (for all users).
 if ( $WS_DEBUG )
   $out .= '
-<!-- ' . str_replace ( 'XXX', array ( $user, $startdate, $enddate ),
-    translate ( 'Checking for events for XXX from date XXX to date XXX.' ) )
+<!-- ' . str_replace ( array ( 'XXX', 'YYY', 'ZZZ' ),
+    array ( $user, $startdate, $enddate ),
+    translate ( 'Checking for events for XXX from date YYY to date ZZZ.' ) )
    . ' -->
 ';
 
@@ -95,9 +96,9 @@ function process_event ( $id, $name, $event_date, $event_time ) {
   global $out, $WS_DEBUG;
 
   if ( $WS_DEBUG )
-    ws_log_message ( str_replace ( 'XXX',
+    ws_log_message ( str_replace ( array ( 'XXX', 'YYY', 'ZZZ', 'AAA' ),
         array ( $id, $name, $event_time, $event_date ),
-        translate ( 'Event id=XXX XXX at XXX on XXX.' ) ) );
+        translate ( 'Event id=XXX YYY at ZZZ on AAA.' ) ) );
 
   return ws_print_event_xml ( $id, $event_date );
 }

@@ -93,14 +93,15 @@ function process_event ( $id, $name, $event_date, $event_time ) {
 
   if ( ! empty ( $sentIds[$id] ) ) {
     if ( $WS_DEBUG )
-      ws_log_message ( str_replace ( 'XXX', array ( $id, $name ),
-          translate ('Event id=XXX XXX already sent.' ) ) );
+      ws_log_message ( str_replace ( array ( 'XXX', 'YYY' ),
+          array ( $id, $name ),
+          translate ('Event id=XXX YYY already sent.' ) ) );
     return '';
   } else {
     if ( $WS_DEBUG )
-      ws_log_message ( str_replace ( 'XXX',
+      ws_log_message ( str_replace ( array ( 'XXX', 'YYY', 'ZZZ', 'AAA' ),
           array ( $id, $name, $event_time, $event_date ),
-          translate ( 'Event id=XXX XXX at XXX on XXX.' ) ) );
+          translate ( 'Event id=XXX YYY at ZZZ on AAA.' ) ) );
     $sentIds[$id] = true;
     return ws_print_event_xml ( $id, $event_date );
   }

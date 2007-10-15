@@ -126,8 +126,9 @@ function process_event ( $id, $name, $event_date, $event_time ) {
   global $CUTOFF, $site_extras, $WS_DEBUG;
   $out = '';
 
-  $debug = str_replace ( 'XXX', array ( $id, $name, $event_time, $event_date ),
-    translate ( 'Event id=XXX XXX at XXX on XXX.' ) ) . "\n"
+  $debug = str_replace ( array ( 'XXX', 'YYY', 'ZZZ', 'AAA' ),
+    array ( $id, $name, $event_time, $event_date ),
+    translate ( 'Event id=XXX YYY at ZZZ on AAA.' ) ) . "\n"
    . str_replace ( 'XXX', count ( $site_extras ),
     translate ( 'Number of site_extras XXX.' ) );
 
@@ -184,8 +185,8 @@ function process_event ( $id, $name, $event_date, $event_time ) {
 }
 
 $out .= '
-<!-- ' . str_replace ( 'XXX', array ( $user, $login ),
-  translate ( 'Reminders for user XXX, login XXX.' ) ) . ' -->
+<!-- ' . str_replace ( array ( 'XXX', 'YYY' ), array ( $user, $login ),
+  translate ( 'Reminders for user XXX, login YYY.' ) ) . ' -->
 ';
 
 $startdate = time (); // today

@@ -73,7 +73,6 @@
  *
  * @return resource The connection
  */
-
 function dbi_connect ( $host, $login, $password, $database, $lazy = true ) {
   global $db_cache_count, $db_connection_info, $db_query_count,
   $old_textlimit, $old_textsize, $db_sqlite_error_str;
@@ -473,9 +472,10 @@ function dbi_affected_rows ( $conn, $res ) {
 function dbi_update_blob ( $table, $column, $key, $data ) {
   global $unavail_DBI_Update_blob;
 
-  $unavail_DBI_Update_blob = str_replace ( 'XXX', '"dbi_update_blob"',
-    translate ( 'Unfortunately, XXX is not implemented for' ) ) . ' ('
-   . $GLOBALS['db_type'] . ').';
+  // translate ( 'Unfortunately, XXX is not implemented for' )
+  $unavail_DBI_Update_blob = str_replace ( array ( 'XXX', 'YYY' ),
+    array ( '"dbi_update_blob"', $GLOBALS['db_type'] ),
+    translate ( 'Unfortunately, XXX is not implemented for YYY' ) );
 
   assert ( '! empty ( $table )' );
   assert ( '! empty ( $column )' );
@@ -751,14 +751,13 @@ function dbi_get_cached_rows ( $sql, $params = array (),
     if ( ! empty ( $file ) && $save_query ) {
       $fd = @fopen ( $file, 'w+b', false );
       if ( empty ( $fd ) ) {
-        if ( function_exists ( "translate" ) ) {
-          dbi_fatal_error ( translate ( 'Cache error' ) . ': '
-             . str_replace ( 'XXX', translate ( 'write' ),
-              translate ( 'Could not XXX file' ) ) . " $file." );
+        if ( function_exists ( 'translate' ) ) {
+          dbi_fatal_error ( str_replace ( array ( 'XXX', 'YYY' ),
+              array ( translate ( 'write' ), $file ),
+              translate ( 'Cache error Could not XXX file YYY.' ) ) );
         } else {
-          dbi_fatal_error ( 'Cache error' . ': '
-             . str_replace ( 'XXX', 'write',
-              'Could not XXX file' ) . " $file." );
+          dbi_fatal_error ( 'Cache error: Could not write file "'
+            . $file . '".' );
         }
       }
 
@@ -813,8 +812,9 @@ function dbi_clear_cache () {
   $cnt = 0;
   $fd = @opendir ( $db_connection_info['cachedir'] );
   if ( empty ( $fd ) )
-    dbi_fatal_error ( translate ( 'Error opening cache dir' ) . ': '
-       . $db_connection_info['cachedir'] );
+    // translate ( 'Error opening cache dir' )
+    dbi_fatal_error ( str_replace ( 'XXX', $db_connection_info['cachedir'],
+      translate ( 'Error opening cache dir XXX.' ) ) );
 
   $b = 0;
   while ( false !== ( $file = readdir ( $fd ) ) ) {
@@ -824,9 +824,9 @@ function dbi_clear_cache () {
       $fullpath = $db_connection_info['cachedir'] . '/' . $file;
       $b += filesize ( $fullpath );
       if ( ! unlink ( $fullpath ) )
-        echo '<!-- ' . translate ( 'Error' ) . ': '
-         . str_replace ( 'XXX', translate ( 'delete' ),
-          translate ( 'Could not XXX file' ) ) . " $file. -->\n";
+        echo '<!-- ' . str_replace ( array ( 'XXX', 'YYY' ),
+          array ( translate ( 'delete' ), $file ),
+          translate ( 'Cache error Could not XXX file YYY.' ) ) . " -->\n";
       // TODO: log this somewhere???
     }
   }
