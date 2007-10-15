@@ -2048,13 +2048,12 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
       $thismonth = substr ( $dateYmd, 4, 2 );
       $thisday = substr ( $dateYmd, 6, 2 );
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
-
       // Skip to this year if called from query_events and we don't need count.
       if ( ! empty ( $jump ) && $Count == 999 ) {
         $jumpY = date ( 'Y', $jump );
         while ( date ( 'Y', $cdate ) < $jumpY ) {
           $thisyear += $interval;
-          $cdate = mktime ( $hour, $minute, 0, 1, 1, $thisyear );
+          $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
         }
       }
       while ( $cdate <= $realend && $n <= $Count ) {
