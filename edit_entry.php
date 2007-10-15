@@ -181,7 +181,7 @@ if ( $readonly == 'Y' ) {
   if ( $readonly == "N" ) {
     // If public, then make sure we can add events
     if ( $login == '__public__' ) {
-      if ( $public_access_can_add )
+      if ( ! empty ( $public_access_can_add ) && $public_access_can_add == 'Y' )
         $can_edit = true;
     } else {
       // not public user
