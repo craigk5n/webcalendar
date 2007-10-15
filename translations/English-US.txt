@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 09-30-2007
+# Translation last updated on 10-12-2007
 
 
 ################################################################################
@@ -557,8 +557,8 @@ hour ahead of you: hour ahead of you
 hour behind you: hour behind you
 hours ahead of you: hours ahead of you
 hours behind you: hours behind you
-XXX is in a different timezone (ahead): (XXX is in a different timezone; XXX ahead of you.<br />&nbsp;XXX)
-XXX is in a different timezone (behind): (XXX is in a different timezone; XXX behind you.<br />&nbsp;XXX)
+XXX is in a different timezone (ahead): (XXX is in a different timezone; YYY ahead of you.<br />&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX is in a different timezone; YYY behind you.<br />&nbsp;ZZZ)
 Time entered here is based on your Timezone.: Time entered here is based on <b>your</b> Timezone.
 Edit Entry: Edit Entry
 Add Entry: Add Entry
@@ -1048,7 +1048,7 @@ cookies-note: <b>Note:</b> This application requires cookies to be enabled.
 Illegal characters in login: Illegal characters in login
 Illegal characters in login XXX.: Illegal characters in login <tt>XXX</tt>.
 Invalid login: Invalid login
-Activity login failure: Username: "XXX", IP: "XXX".
+Activity login failure: Username: "XXX", IP: "YYY".
 Error XXX: Error: "XXX".
 You have been logged out.: You have been logged out.
 Not yet registered? Register here!: Not yet registered? Register here!
@@ -1340,18 +1340,23 @@ LANGUAGE DEFINED: LANGUAGE DEFINED
 ########################################
 # Page: includes/dbi4php.php
 #
-Error connecting to database: Error connecting to database
 db_type not defined.: db_type not defined.
+Error connecting to database: Error connecting to database
+Error connecting to database XXX.: Error connecting to database "XXX".
 invalid db_type: invalid db_type
+invalid db_type XXX.: invalid db_type "XXX".
 Cache cleared from previous SQL!: Cache cleared from previous SQL!
 Error executing query.: Error executing query.
 Unfortunately, XXX is not implemented for: Unfortunately, XXX is not implemented for
+Unfortunately, XXX is not implemented for YYY: Unfortunately, "XXX" is not implemented for (YYY).
 Unknown ODBC error.: Unknown ODBC error.
 Unknown error.: Unknown error.
 Cache error: Cache error
-write: write
 Could not XXX file: Could not XXX file
+write: write
+Cache error Could not XXX file YYY.: Cache error: Could not XXX file "YYY".
 Error opening cache dir: Error opening cache dir
+Error opening cache dir XXX.: Error opening cache dir "XXX".
 delete: delete
 
 ########################################
@@ -1373,7 +1378,7 @@ All Attendees: All Attendees
 Busy: Busy
 Tentative: Tentative
 Schedule an appointment for: Schedule an appointment for
-Schedule an appointment for XXX.: Schedule an appointment for XXX:XXX.
+Schedule an appointment for XXX.: Schedule an appointment for XXX:YYY.
 Event approved: Event approved
 Journal approved: Journal approved
 Task approved: Task approved
@@ -1721,12 +1726,18 @@ Password Incorrect: Password Incorrect
 Invalid Login: Invalid Login
 OFF: OFF
 ON: ON
+Safe Mode: Safe Mode
 required only if Safe Mode is On: required only if Safe Mode is On
 (required only if Safe Mode is On): (required only if Safe Mode is On)
+Safe Mode Allowed Vars: Safe Mode Allowed Vars (required only if Safe Mode is On)
+Display Errors: Display Errors
+File Uploads: File Uploads
 required only if Remote Calendars are used: required only if Remote Calendars are used
 (required only if Remote Calendars are used): (required only if Remote Calendars are used)
+Allow URL fopen: Allow URL fopen (required only if Remote Calendars are used)
 needed for Gradient Image Backgrounds: needed for Gradient Image Backgrounds
 (needed for Gradient Image Backgrounds): (needed for Gradient Image Backgrounds)
+GD: GD (needed for Gradient Image Backgrounds)
 Passwords do not match: Passwords do not match
 Passwords do not match!: Passwords do not match!
 Unable to write password to settings.php file: Unable to write password to "settings.php" file.
@@ -1790,7 +1801,7 @@ This appears to be a new installation. If this is not correct, please: This appe
 go back to the previous page and correct your settings: go back to the previous page and correct your settings
 This appears to be a new installation...: This appears to be a new installation. If this is not correct, please go back to the previous page and correct your settings.
 This appears to be an upgrade from version: This appears to be an upgrade from version
-This appears to be an upgrade...: This appears to be an upgrade from version&nbsp;XXX&nbsp;to&nbsp;XXX.
+This appears to be an upgrade...: This appears to be an upgrade from version&nbsp;XXX&nbsp;to&nbsp;YYY.
 The database requires some data input: The database requires some data input
 Click Update Database to complete the upgrade: Click <b>Update Database</b> to complete the upgrade
 The database requires some data input...: The database requires some data input Click <b>Update Database</b> to complete the upgrade.
@@ -1846,7 +1857,7 @@ Launch WebCalendar: Launch WebCalendar
 # Page: install/install_functions.php
 #
 Error updating webcal_config: Error updating webcal_config
-Error updating table XXX: Error updating table "XXX": XXX.
+Error updating table XXX: Error updating table "XXX": YYY.
 Conversion Successful: <b>Conversion Successful</b>
 Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
 previous version requires updating several tables: Your previous version of WebCalendar requires updating several database tables.
@@ -1888,9 +1899,9 @@ Not authorized (not admin).: Not authorized (not admin).
 ########################################
 # Page: ws/get_events.php
 #
-Checking for events for XXX from date XXX to date XXX.: Checking for events for XXX from date XXX to date XXX.
+Checking for events for XXX from date YYY to date ZZZ.: Checking for events for XXX from date YYY to date ZZZ.
 Found XXX events in time range.: Found XXX events in time range.
-Event id=XXX XXX at XXX on XXX.: Event id=XXX "XXX" at XXX on XXX.
+Event id=XXX YYY at ZZZ on AAA.: Event id=XXX "YYY" at ZZZ on AAA.
 
 ########################################
 # Page: ws/get_reminders.php
@@ -1902,13 +1913,13 @@ Reminder set for event.: Reminder set for event.
 Mins Before XXX.: Mins Before: XXX.
 Event time is XXX.: Event time is: XXX.
 Remind time is XXX.: Remind time is: XXX.
-Reminders for user XXX, login XXX.: Reminders for user "XXX", login "XXX".
+Reminders for user XXX, login YYY.: Reminders for user "XXX", login "YYY".
 
 ########################################
 # Page: ws/get_unapproved.php
 #
 Getting unapproved for user XXX.: Getting unapproved for user "XXX".
-Event id=XXX XXX already sent.: Event id=XXX "XXX" already sent.
+Event id=XXX YYY already sent.: Event id=XXX "YYY" already sent.
 
 ########################################
 # Page: ws/login.php

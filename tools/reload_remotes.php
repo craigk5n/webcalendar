@@ -15,9 +15,8 @@
  * To set this up in cron, add a line like the following in your crontab
  * to run it every hour:
  *   1 * * * * php /some/path/here/reload_remotes.php
- * Of course, change the path to where this script lives. If the
- * php binary is not in your $PATH, you may also need to provide
- * the full path to "php".
+ * Of course, change the path to where this script lives. If the PHP binary is
+ * not in your $PATH, you may also need to provide the full path to "php".
  * On Linux, just type crontab -e to edit your crontab.
  *
  * If you're a Windows user, you'll either need to find a cron clone
@@ -25,23 +24,25 @@
  * (See docs/WebCalendar-SysAdmin.html for instructions.)
  *
  * Comments:
- * You will need access to the PHP binary (command-line) rather than
- * the module-based version that is typically installed for use with
- * a web server.to build as a CGI (rather than an Apache module) for
+ * You will need access to the PHP binary (command-line) rather than the
+ * module-based version that is typically installed for use with a web server.
  *
- * If running this script from the command line generates PHP
- * warnings, you can disable error_reporting by adding
+ * If running this script from the command line generates PHP warnings,
+ * you can disable error_reporting by adding
  * "-d error_reporting=0" to the command line:
  *   php -d error_reporting=0 /some/path/here/tools/reload_remotes.php
  *
- *********************************************************************/
+ ******************************************************************** */
 // Load include files.
 // If you have moved this script out of the WebCalendar directory,
-// which you probably should do since it would be better for security
-// reasons, you would need to change $includedir to point to the
+// which you probably should do since it would be better for security reasons,
+// you would need to change $includedir to point to the
 // webcalendar include directory.
-$basedir = '..'; // points to the base WebCalendar directory relative to
-// current working directory
+
+/* Points to the base WebCalendar directory relative to
+   current working directory. */
+$basedir = '..';
+
 $includedir = '../includes';
 $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
@@ -63,10 +64,10 @@ include "$includedir/$user_inc";
 include $includedir . '/xcal.php';
 
 $WebCalendar->initializeSecondPhase ();
-// used for hCal parsing
+// Used for hCal parsing.
 require_once $includedir . '/classes/hKit/hkit.class.php';
 
-$debug = false; // set to true to print debug info...
+$debug = false; // Set to true to print debug info...
 
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
@@ -149,7 +150,7 @@ function delete_events ( $nid ) {
   // If just 1, then save id to be deleted
   $delete_em = array ();
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
-    $res = dbi_execute ( 'SELECT COUNT (*) FROM webcal_entry_user
+    $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
       WHERE cal_id = ?', array ( $events[$i] ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {

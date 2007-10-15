@@ -120,9 +120,8 @@ if ( ! empty ( $fd ) ) {
   }
   fclose ( $fd );
   // File exists, but no password. Force them to create a password.
-  if ( empty ( $password ) ) {
+  if ( empty ( $password ) )
     $forcePassword = true;
-  }
 }
 @set_magic_quotes_runtime ( $magic );
 
@@ -187,19 +186,19 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
 }
 $offStr = translate ( 'OFF');
 $onStr = translate ( 'ON');
+
 // [0]Display Text [1]ini_get name [2]required value [3]ini_get string search value
 $php_settings = array (
-  array ( 'Safe Mode', 'safe_mode', $offStr, false ),
+  array ( translate ( 'Safe Mode' ), 'safe_mode', $offStr, false ),
   // translate ( 'required only if Safe Mode is On' )
-  array ( 'Safe Mode Allowed Vars '
-     . translate ( '(required only if Safe Mode is On)' ),
+  // translate ( '(required only if Safe Mode is On)' )
+  array ( translate ( 'Safe Mode Allowed Vars' ),
     'safe_mode_allowed_env_vars', 'TZ', 'TZ' ),
-  array ( 'Display Errors', 'display_errors', $onStr, false ),
-  array ( 'File Uploads', 'file_uploads', $onStr, false ),
+  array ( translate ( 'Display Errors' ), 'display_errors', $onStr, false ),
+  array ( translate ( 'File Uploads' ), 'file_uploads', $onStr, false ),
   // translate ( 'required only if Remote Calendars are used' )
-  array ( 'Allow URL fopen '
-     . translate ( '(required only if Remote Calendars are used)' ),
-    'allow_url_fopen', $onStr, false ),
+  // translate ( '(required only if Remote Calendars are used)' )
+  array ( translate ( 'Allow URL fopen' ), 'allow_url_fopen', $onStr, false ),
   );
 
 // Set up array to test for some constants
@@ -213,9 +212,8 @@ $php_constants = array (
   );
 $php_modules = array (
   // translate ( 'needed for Gradient Image Backgrounds' )
-  array ( 'GD '
-     . translate ( '(needed for Gradient Image Backgrounds)' ),
-    'imagepng', $onStr ),
+  // translate ( '(needed for Gradient Image Backgrounds)' )
+  array ( translate ( 'GD' ), 'imagepng', $onStr ),
   );
 
 $pwd1 = getPostValue ( 'password1' );
@@ -1311,7 +1309,7 @@ translate ( 'go back to the previous page and correct your settings' )
       : ( empty ( $_SESSION['blank_database'] )
         // translate ( 'This appears to be an upgrade from version' )
         // translate ( 'to' )
-        ? str_replace ( 'XXX',
+        ? str_replace ( array ('XXX', 'YYY'),
           array ( $_SESSION['old_program_version'], $PROGRAM_VERSION ),
           translate ( 'This appears to be an upgrade...' ) )
         // translate ( 'The database requires some data input' )
