@@ -622,6 +622,8 @@ function completed_handler () {
 }
 
 function onLoad () {
+  if ( ! document.editentryform )
+	  return false;
   //define these variables here so they are valid
   form = document.editentryform;
   elements = document.editentryform.elements;

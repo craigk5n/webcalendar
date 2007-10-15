@@ -426,10 +426,9 @@ if ( ! empty ( $id ) && $id > 0 ) {
   }
   if ( $readonly == 'N' ) {
     // If public, then make sure we can add events.
-    if ( $login == '__public__' ) {
-      if ( $PUBLIC_ACCESS_CAN_ADD )
-        $can_edit = true;
-    } else
+    if ( $login == '__public__'  && $PUBLIC_ACCESS_CAN_ADD != 'Y' )
+        $can_edit = false;
+    else
       // Not public user.
       $can_edit = true;
   }
