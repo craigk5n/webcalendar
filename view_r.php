@@ -472,6 +472,9 @@ if ( $untimed_found || $show_untimed_row_always ) {
       $class = '';
     for ( $u = 0; $u < $viewusercnt; $u++ ) {
       $untimed = $save_untimed[$u][$d];
+      // Unset class from above if needed.
+      if ( $class == 'class="hasevents"' )
+        $class = '';
       // Use the class 'hasevents' for any hour block that has events
       // in it.
       if ( !empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {

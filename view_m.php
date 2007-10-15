@@ -147,11 +147,11 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       $repeated_events = $re_save[$i];
       $user = $viewusers[$i];
       $entryStr = print_date_entries ( $dateYmd, $user, true );
+      // Unset class from above if needed.
+      if ( $class == 'class="row"' ||  $class == 'class="hasevents"' )
+        $class = '';
       if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
         $class = 'class="hasevents"';
-      // Unset class from above if needed.
-      if ( $class == 'class="row"' )
-        $class = '';
 
       echo '
         <td ' . $class . ' style="width:' . $tdw . '%;">'

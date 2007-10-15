@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Fix bug [ 1811902 ] 1.1.6 - wrong highlight
  - Fix bug [ 1811891 ] 1.1.6 - repeating events (year) broken
  - Fix bug [ 1808020 ] Bugs in Webcalendar 1.1.6 in month view
  - Fix bug [ 1788481 ] Button Report is visible although not active in UAC
