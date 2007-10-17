@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 24. September 2007
+# Last update: 16. Oktober 2007
 #
 # $Id$
-# Translation last updated on 09-24-2007
+# Translation last updated on 10-17-2007
 
 
 ################################################################################
@@ -416,7 +416,11 @@ Approve and Exit: Genehmigen und Schlie&szlig;en
 Hello: Guten Tag
 Hello, XXX.: Guten Tag, XXX
 An appointment has been approved and comments added by: Eine Termin wurde genehmigt und eine Anmerkung wurde hinzugef&uuml;gt von
-XXX has approved an appointment and added comments.: Ein Termin wurde genehmigt mit zus&auml;tzlichen Anmerkungen
+#
+# << MISSING >>
+# XXX has approved an appointment and added comments.:
+# English text: An appointment has been approved and comments added by XXX.
+#
 The subject was: Der Betreff lautete
 Subject XXX: Betrifft XXX
 The description is: Die Beschreibung lautet
@@ -530,8 +534,8 @@ hour ahead of you: Stunde vor Ihnen
 hour behind you: Stunde nach Ihnen
 hours ahead of you: Stunden vor Ihnen
 hours behind you: Stunden nach Ihnen
-XXX is in a different timezone (ahead): (XXX ist in einer anderen Zeitzone; XXX vor Ihrer.<br />&nbsp;XXX)
-XXX is in a different timezone (behind): (XXX ist in einer anderen Zeitzone; XXX hinter Ihrer.<br />&nbsp;XXX)
+XXX is in a different timezone (ahead): (XXX ist in einer anderen Zeitzone; YYY vor Ihrer.<br />&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX ist in einer anderen Zeitzone; YYY hinter Ihrer.<br />&nbsp;ZZZ)
 Time entered here is based on your Timezone.: Die eingegebene Zeit basiert auf <b>Ihre</b> Zeitzone.
 Edit Entry: Eintrag &auml;ndern
 Add Entry: Eintrag hinzuf&uuml;gen
@@ -1018,8 +1022,12 @@ cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Coo
 ########################################
 # Page: login.php
 #
+Illegal characters in login: Nicht zul&auml;ssige Zeichen beim Login
+Illegal characters in login XXX.: Ung&uuml;ltige Zeichen im Login XXX.
 Invalid login: Benutzername oder Kennwort falsch
-You have been logged out..: Sie sind nun abgemeldet
+Activity login failure: Benutzername: &#34;XXX&#34;, IP: &#34;YYY&#34;.
+Error XXX: Fehler: &#34;XXX&#34;.
+You have been logged out.: Sie wurden ausgeloggt.
 Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie sich registrieren!
 
 ########################################
@@ -1038,7 +1046,6 @@ Add New NonUser Calendar: Neuen &#39;Zentralen-Kalender&#39; hinzuf&uuml;gen
 # Page: nulogin.php
 #
 A login must be specified: Eine Anmeldung mu&szlig; erfolgen
-Illegal characters in login: Nicht zul&auml;ssige Zeichen beim Login
 
 ########################################
 # Page: pref.php
@@ -1086,7 +1093,6 @@ Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
 # Page: register.php
 #
 Email address cannot be blank.: Emailadresse darf nicht leer sein.
-Illegal characters in login XXX.: Ung&uuml;ltige Zeichen im Login XXX.
 New user via self-registration.: Neuer Benutzer via Selbstregistrierung.
 A new WebCalendar account has been set up for you.: Ein neues Webkalenderkonto wurde f&uuml;r Sie eingerichtet.
 Your username is: Ihr Benutzername lautet
@@ -1311,18 +1317,35 @@ LANGUAGE DEFINED: SPRACHDEFINIERT
 ########################################
 # Page: includes/dbi4php.php
 #
-Error connecting to database: Datenbank Verbindungsfehler
 db_type not defined.: db_type nicht definiert
+Error connecting to database: Datenbank Verbindungsfehler
+#
+# << MISSING >>
+# Error connecting to database XXX.:
+# English text: Error connecting to database "XXX".
+#
 invalid db_type: ung&uuml;tige db_type
+#
+# << MISSING >>
+# invalid db_type XXX.:
+# English text: invalid db_type "XXX".
+#
 Cache cleared from previous SQL!: Cache wird von voriger SQL geleert!
 Error executing query.: Fehler beim Ausf&uuml;hren des Query
 Unfortunately, XXX is not implemented for: Ungew&ouml;hnliches, XXX ist nicht implementiert
+Unfortunately, XXX is not implemented for YYY: Ungew&ouml;hnlich, &#34;XXX&#34; ist nicht (f&uuml;r YYY) implementiert.
 Unknown ODBC error.: Unbekannter ODBC Fehler
 Unknown error.: Unbekannter Fehler
-Cache error: Cache Fehler
+#
+# << MISSING >>
+# Cache error:
+#
+# << MISSING >>
+# Could not XXX file:
 write: schreiben
-Could not XXX file: Kann Datei XXX nicht
+Cache error Could not XXX file YYY.: Cache-Fehler, kann Datei YYY nicht XXX.
 Error opening cache dir: Fehler beim &Ouml;ffnen des Cache-Verzeichnis
+Error opening cache dir XXX.: Fehler beim &Ouml;ffnen des Cache-Verzeichnisses &#34;XXX&#34;.
 delete: l&ouml;schen
 
 ########################################
@@ -1692,12 +1715,18 @@ Password Incorrect: Kennwort falsch
 Invalid Login: Ung&uuml;ltiges Login
 OFF: AUS
 ON: EIN
+Safe Mode: =
 required only if Safe Mode is On: nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist
 (required only if Safe Mode is On): (nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
+Safe Mode Allowed Vars: Safe Mode erlaubte Variablen (nur erfoderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
+Display Errors: Anzeigefehler
+File Uploads: Datei Hochladen
 required only if Remote Calendars are used: nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden
 (required only if Remote Calendars are used): (nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden)
-needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig
-(needed for Gradient Image Backgrounds): (F&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig)
+Allow URL fopen: Erlaubt URL (Adresse) &#39;fopen&#39; (nur erforderlich wenn Externe-Kalender(Remote-Kalender) verwendet werden)
+needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufende Hintergrundbilder n&ouml;tig
+(needed for Gradient Image Backgrounds): (F&uuml;r stufenweis verlaufende Hintergrundbilder n&ouml;tig)
+GD: GD (ben&ouml;tigt f&uuml;r stufenweis verlaufende Hintergrundbilder)
 Passwords do not match: Kennw&ouml;rter stimmen nicht &uuml;berein
 Passwords do not match!: Kennw&ouml;rter stimmen nicht &uuml;berein!
 Unable to write password to settings.php file: Kennwort kann nicht in die &#39;settings.php&#39;-Datei geschrieben werden
@@ -1721,13 +1750,13 @@ Error you must specify a Single-User Login: Sie m&uuml;ssen ein\nSingle-User Log
 Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
 The password contains illegal characters.: Das Kennwort beinhaltet unzul&auml;ssige Zeichen
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
-System Administrators Guide: Systemverwalter-F&uuml;hrer
+System Administrators Guide: Systemverwalter-Anleitung
 Frequently Asked Questions: H&auml;fig gestellte Fragen und Antworten
 FAQ: =
 Troubleshooting: Fehlersuche
 Getting Help: Hilfe erhalten
-Upgrading Guide: Upgrade-F&uuml;hrer
-User Supported Wiki: User unterst&uuml;tztes Wiki
+Upgrading Guide: Upgrade-Anleitung
+User Supported Wiki: Benutzer unterst&uuml;tztes Wiki
 PHP Version Check: PHP Versions&uuml;berpr&uuml;fung
 Check to see if PHP 4.1.0 or greater is installed.: &Uuml;berpr&uuml;fung ob PHP 4.1.0 oder h&ouml;her installiert ist.
 PHP version: PHP Version
@@ -1761,7 +1790,7 @@ This appears to be a new installation. If this is not correct, please: Diese sch
 go back to the previous page and correct your settings: Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen
 This appears to be a new installation...: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen.
 This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
-This appears to be an upgrade...: Dieses scheint ein Upgrade zu sein von der Version&nbsp;XXX&nbsp;auf&nbsp;XXX.
+This appears to be an upgrade...: Dieses scheint ein Upgrade zu sein von der Version&nbsp;XXX&nbsp;auf&nbsp;YYY.
 The database requires some data input: Die Datenbank erfodert einige Dateneingaben
 Click Update Database to complete the upgrade: Klicken Sie auf <b>Update Database</b> um das Upgrade zu vervollst&auml;ndigen
 The database requires some data input...: Die Datenbank erfodert einige Dateneingaben. Klicken Sie auf <b>Update Database</b> um das Upgrade zu vervollst&auml;ndigen.
@@ -1851,7 +1880,11 @@ Reminder: Erinnerung
 # Page: ws/event_mod.php
 #
 Unsupported action: Nicht unterst&uuml;tzte Aktion
-Unsupported action XXX.: Nicht unterst&uuml;tzte Aktion.
+#
+# << MISSING >>
+# Unsupported action XXX.:
+# English text: Unsupported action: XXX.
+#
 No event id specified.: Keine Termin-Id festgelegt.
 not admin: kein Administrator
 Not authorized (not admin).: Nicht berechtigt (kein Administrator).
@@ -1859,9 +1892,9 @@ Not authorized (not admin).: Nicht berechtigt (kein Administrator).
 ########################################
 # Page: ws/get_events.php
 #
-Checking for events for XXX from date XXX to date XXX.: Termin&uuml;berpr&uuml;fung f&uuml;r XXX von XXX bis XXX
+Checking for events for XXX from date YYY to date ZZZ.: Termin&uuml;berpr&uuml;fung f&uuml;r XXX von YYY bis ZZZ.
 Found XXX events in time range.: XXX Termine im Zeitbereich gefunden.
-Event id=XXX XXX at XXX on XXX.: Termin Id=XXX XXX am XXX um XXX.
+Event id=XXX YYY at ZZZ on AAA.: Termin id=XXX &#34;YYY&#34; am ZZZ um AAA.
 
 ########################################
 # Page: ws/get_reminders.php
@@ -1873,13 +1906,13 @@ Reminder set for event.: Erinnerungseinstellung f&uuml;r Termin.
 Mins Before XXX.: Minuten vor XXX.
 Event time is XXX.: Terminzeit ist XXX.
 Remind time is XXX.: Erinnerungszeit ist XXX.
-Reminders for user XXX, login XXX.: Erinnerung f&uuml;r Benutzer XXX, Login XXX.
+Reminders for user XXX, login YYY.: Erinnerung f&uuml;r Benutzer &#34;XXX&#34;, Login &#34;YYY&#34;.
 
 ########################################
 # Page: ws/get_unapproved.php
 #
 Getting unapproved for user XXX.: Erhaltene &#39;zu &uuml;berpr&uuml;fende&#39; f&uuml;r Benutzer XXX.
-Event id=XXX XXX already sent.: Termin-Id=XXX XXX schon gesendet.
+Event id=XXX YYY already sent.: Termin-Id=XXX &#34;YYY&#34; schon gesendet.
 
 ########################################
 # Page: ws/login.php
@@ -1901,3 +1934,4 @@ Unknown error saving user: Unbekannter Fehler beim Speichern des Benutzers
 No participants found for event id XXX.: Keine(n) Teilnehmer f&uuml;r Termin-Id XXX gefunden.
 Db error Could not find event id XXX.: Db-Fehler, Termin-Id XXX nicht gefunden.
 Error Could not find event id XXX in database.: Fehler, Termin-Id XXX in der Datenbank nicht gefunden
+Cache error: Cache Fehler
