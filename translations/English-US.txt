@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-12-2007
+# Translation last updated on 10-17-2007
 
 
 ################################################################################
