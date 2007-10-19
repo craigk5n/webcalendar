@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fix bug [ 1814377 ] 1.1.6 Week.php and repeats
  - Fix bug [ 1792322 ] wrong filled variables at installation wizard step 3
    ( PHP str_replace doesn't work right. )
  - Patch 1798549: Updated French translation
