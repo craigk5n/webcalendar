@@ -47,7 +47,7 @@ if ( $DISPLAY_SM_MONTH == 'Y' && $BOLD_DAYS_IN_YEAR == 'Y' ) {
 }
 /* Pre-Load the repeated events for quickier access. */
 $repeated_events = read_repeated_events ( ( strlen ( $user )
-    ? $user : $login ), $evStart, $evEnd, $cat_id );
+    ? $user : $login ), $evStart - 604800, $evEnd, $cat_id );
 
 /* Pre-load the non-repeating events for quicker access. */
 // Start the search ONE_WEEK early to account for cross-day events.
