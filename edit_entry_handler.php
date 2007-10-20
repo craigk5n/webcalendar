@@ -175,6 +175,7 @@ if ( $eType == 'task' ) {
     $eventcomplete = sprintf ( "%04d%02d%02d", $completed_year,
       $completed_month, $completed_day );
 }
+
 // Create event stop from event duration/end values.
 // Note: for any given event, either end times or durations are 0
 if ( $TIMED_EVT_LEN == 'E' ) {
@@ -201,13 +202,14 @@ if ( $eType != 'task' ) {
   }
 }
 
-// Make sure this user is really allowed to edit this event.
-// Otherwise, someone could hand type in the URL to edit someone else's event.
-// Can edit if:
-//   - new event
-//   - user is admin
-//   - user created event
-//   - user is participant
+/* Make sure this user is really allowed to edit this event.
+ * Otherwise, someone could hand type in the URL to edit someone else's event.
+ * Can edit if:
+ *   - new event
+ *   - user is admin
+ *   - user created event
+ *   - user is participant
+ */
 $can_doall = $can_edit = false;
 // Value may be needed later for recreating event.
 $old_create_by = ( empty ( $user ) ? '' : $user );
@@ -239,7 +241,8 @@ if ( access_is_enabled () && ! empty ( $old_create_by ) )
 if ( empty ( $error ) && ! $can_edit ) {
   // Is user a participant of that event?
   $res = dbi_execute ( 'SELECT cal_id FROM webcal_entry_user WHERE cal_id = ?
-    AND cal_login = ? AND cal_status IN ( \'W\',\'A\' )', array ( $id, $login ) );
+    AND cal_login = ? AND cal_status IN ( \'W\',\'A\' )',
+    array ( $id, $login ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( ! empty ( $row[0] ) )
@@ -265,17 +268,18 @@ if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__publ
     // Should have seen warning on edit_entry.php, so no warning here...
   }
 }
+
 // If display of participants is disabled, set the participant list to the event
 // creator. This also works for single-user mode. Basically, if no participants
 // were selected (because there was no selection list available in the form or
 // because the user refused to select any participant from the list), then we
 // will assume the only participant is the current user.
-if ( empty ( $participants[0] ) ) {
-  $participants[0] = $login;
+if ( empty ( $selectedPart[0] ) ) {
+  $selectedPart[0] = $login;
   // There might be a better way to do this,
   // but if Admin sets this value, WebCalendar should respect it.
   if ( ! empty ( $PUBLIC_ACCESS_DEFAULT_SELECTED ) && $PUBLIC_ACCESS_DEFAULT_SELECTED == 'Y' )
-    $participants[1] = '__public__';
+    $selectedPart[1] = '__public__';
 }
 
 if ( empty ( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
@@ -299,6 +303,7 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
         $byday = substr ( $byday, 1 );
     }
   }
+
   // This allows users to select on weekdays if daily.
   if ( $rpt_type == 'daily' && ! empty ( $weekdays_only ) )
     $byday = 'MO,TU,WE,TH,FR';
@@ -328,6 +333,7 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
     if ( substr ( $bysetpos, 0, 1 ) == ',' )
       $bysetpos = substr ( $bysetpos, 1 );
   }
+
   // If expert mode not selected,
   // we need to set the basic value for monthlyByDay events.
   if ( $rpt_type == 'monthlyByDay' && empty ( $rptmode ) && empty ( $byday ) )
@@ -353,6 +359,7 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
     }
   }
 } // end test for $DISABLE_REPEATING_FIELD
+
 // Make sure we initialize these variables.
 if ( empty ( $byday ) )
   $byday = '';
@@ -390,11 +397,11 @@ if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != 'Y' )
 
 if ( $ALLOW_CONFLICTS != 'Y' && empty ( $confirm_conflicts ) &&
     strlen ( $entry_hour ) > 0 && $timetype != 'U' && $eType != 'task' ) {
-  $conflict_until = ( empty ( $rpt_until ) ? '' : $rpt_until );
-  $conflict_count = ( empty ( $count ) ? 999 : $count );
-  $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq, $bymonth,
-    $byweekno, $byyearday, $bymonthday, $byday, $bysetpos, $conflict_count,
-    $conflict_until, $wkst, $exception_list, $inclusion_list );
+  $conf_until = ( empty ( $rpt_until ) ? '' : $rpt_until );
+  $conf_count = ( empty ( $count ) ? 999 : $count );
+  $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq,
+    array ( $bymonth, $byweekno, $byyearday, $bymonthday, $byday, $bysetpos ),
+    $conf_count, $conf_until, $wkst, $exception_list, $inclusion_list );
 
   // Make sure at least start date is in array.
   if ( empty ( $dates ) )
@@ -529,10 +536,11 @@ if ( empty ( $error ) ) {
     $log_u = LOG_UPDATE;
   }
   activity_log ( $id, $login, ( $is_assistant || $is_nonuser_admin
-      ? $user : $login ), $newevent ? $log_c : $log_u, '' );
+      ? $user : $login ),
+    $newevent ? $log_c : $log_u, '' );
 
   if ( $single_user == 'Y' )
-    $participants[0] = $single_user_login;
+    $selectedPart[0] = $single_user_login;
 
   // Add categories.
   $cat_owner = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
@@ -568,7 +576,8 @@ if ( empty ( $error ) ) {
       for ( $v_i = 0; $v_i < $valuecnt; $v_i++ ) {
         $placeholders .= '?,';
       }
-      // Remove trailing ','.
+
+       // Remove trailing ','.
       $placeholders = preg_replace ( '/,$/', '', $placeholders );
       if ( ! dbi_execute ( 'INSERT INTO webcal_entry_categories ( '
            . implode ( ', ', $names )
@@ -578,6 +587,7 @@ if ( empty ( $error ) ) {
       }
     }
   }
+
   // Add site extras.
   $site_extracnt = count ( $site_extras );
   $extra_email_data = '';
@@ -593,8 +603,6 @@ if ( empty ( $error ) ) {
       $extra_email = $site_extras[$i][5] & EXTRA_DISPLAY_EMAIL;
 
     $value = $$extra_name;
-    // echo 'Looking for ' . $extra_name . '... value = ' . $value .
-    // ' ... type = ' . $extra_type . '<br />' . "\n";
     $sql = '';
     $query_params = array ();
 
@@ -633,6 +641,7 @@ if ( empty ( $error ) ) {
         $error = $dberror . dbi_error ();
     }
   } //end for site_extras loop
+
   // Process reminder.
   if ( ! dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id = ?',
       array ( $id ) ) )
@@ -651,7 +660,7 @@ if ( empty ( $error ) ) {
     $reminder_date = $reminder_duration = $reminder_offset = $reminder_repeats = 0;
     if ( $rem_when == 'Y' ) { // Use date.
       $reminder_hour += $reminder_ampm;
-      $reminder_date = gmmktime ( $reminder_hour, $reminder_minute, 0,
+      $reminder_date = mktime ( $reminder_hour, $reminder_minute, 0,
         $reminder_month, $reminder_day, $reminder_year );
     } else // Use offset.
       $reminder_offset =
@@ -670,6 +679,7 @@ if ( empty ( $error ) ) {
           $rem_times_sent ) ) )
       $error = $dberror . dbi_error ();
   }
+
   // Clearly, we want to delete the old repeats, before inserting new...
   if ( empty ( $error ) ) {
     if ( ! dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
@@ -737,6 +747,7 @@ if ( empty ( $error ) ) {
       dbi_execute ( $sql, $values );
       $msg .= '<span class="bold">SQL:</span> ' . $sql . '<br /><br />';
     } //end add repeating info
+
     // We manually created exceptions. This can be done without repeats.
     if ( ! empty ( $exceptions ) ) {
       $exceptcnt = count ( $exceptions );
@@ -754,16 +765,18 @@ if ( empty ( $error ) ) {
   $from = $login_email;
   if ( empty ( $from ) && ! empty ( $EMAIL_FALLBACK_FROM ) )
     $from = $EMAIL_FALLBACK_FROM;
+
   // Check if participants have been removed and send out emails.
   if ( ! $newevent && count ( $old_status ) > 0 ) {
     while ( list ( $old_participant, $dummy ) = each ( $old_status ) ) {
       $found_flag = false;
       for ( $i = 0; $i < $partcnt; $i++ ) {
-        if ( $participants[$i] == $old_participant ) {
+        if ( $selectedPart[$i] == $old_participant ) {
           $found_flag = true;
           break;
         }
       }
+
       // Check UAC.
       $can_email = 'Y';
       if ( access_is_enabled () )
@@ -799,6 +812,7 @@ if ( empty ( $error ) ) {
           . ( $timetype != 'T' ? '' : str_replace ( 'XXX',
               display_time ( '', 2, $eventstart, $t_format ),
               $timeStr . "\n\n\n" ) );
+
           // Add URL to event, if we can figure it out.
           if ( ! empty ( $SERVER_URL ) ) {
             // DON'T change & to &amp; here. Email will handle it.
@@ -820,7 +834,7 @@ if ( empty ( $error ) ) {
   // Now add participants and send out notifications.
   for ( $i = 0; $i < $partcnt; $i++ ) {
     // Is the person adding the nonuser calendar admin?
-    $is_nonuser_admin = user_is_nonuser_admin ( $login, $participants[$i] );
+    $is_nonuser_admin = user_is_nonuser_admin ( $login, $selectedPart[$i] );
     // If public access, require approval unless
     // $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL is set to 'N'
     if ( $login == '__public__' ) {
@@ -834,34 +848,37 @@ if ( empty ( $error ) ) {
     } else
     if ( ! $newevent ) {
       // Keep the old status if no email will be sent.
-      $send_user_mail = ( empty ( $old_status[$participants[$i]] ) || $entry_changed );
-      $tmp_status = ( ! empty ( $old_status[$participants[$i]] ) && ! $send_user_mail
-        ? $old_status[$participants[$i]] : 'W' );
-      $status = ( $participants[$i] != $login &&
-        boss_must_approve_event ( $login, $participants[$i] ) &&
-          $REQUIRE_APPROVALS == 'Y' && ! $is_nonuser_admin ? $tmp_status : 'A' );
+      $send_user_mail =
+      ( empty ( $old_status[$selectedPart[$i]] ) || $entry_changed );
+      $tmp_status =
+      ( ! empty ( $old_status[$selectedPart[$i]] ) && ! $send_user_mail
+        ? $old_status[$selectedPart[$i]] : 'W' );
+      $status = ( $selectedPart[$i] != $login &&
+        boss_must_approve_event ( $login, $selectedPart[$i] ) &&
+        $REQUIRE_APPROVALS == 'Y' && ! $is_nonuser_admin ? $tmp_status : 'A' );
 
       // Set percentage to old_percent if not owner.
-      $tmp_percent = ( empty ( $old_percent[$participants[$i]] )
-        ? 0 : $old_percent[$participants[$i]] );
+      $tmp_percent = ( empty ( $old_percent[$selectedPart[$i]] )
+        ? 0 : $old_percent[$selectedPart[$i]] );
+
       // TODO:  This logic needs work.
-      $new_percent = ( $participants[$i] != $login
+      $new_percent = ( $selectedPart[$i] != $login
         ? $tmp_percent : $percent );
       // If user is admin and this event was previously approved for public,
       // keep it as approved even though date/time may have changed.
       // This goes against stricter security, but it confuses users to have
       // to re-approve events they already approved.
-      if ( $participants[$i] == '__public__' && $is_admin &&
+      if ( $selectedPart[$i] == '__public__' && $is_admin &&
         ( empty ( $old_status['__public__'] ) || $old_status['__public__'] == 'A' ) )
         $status = 'A';
     } else { // New Event.
       $send_user_mail = true;
-      $status = ( $participants[$i] != $login &&
-        boss_must_approve_event ( $login, $participants[$i] ) &&
+      $status = ( $selectedPart[$i] != $login &&
+        boss_must_approve_event ( $login, $selectedPart[$i] ) &&
         $REQUIRE_APPROVALS == 'Y' && ! $is_nonuser_admin ? 'W' : 'A' );
-      $new_percent = ( $participants[$i] != $login ? 0 : $percent );
+      $new_percent = ( $selectedPart[$i] != $login ? 0 : $percent );
       // If admin, no need to approve Public Access Events
-      if ( $participants[$i] == '__public__' && $is_admin )
+      if ( $selectedPart[$i] == '__public__' && $is_admin )
         $status = 'A';
     } //end new/old event
 
@@ -869,43 +886,43 @@ if ( empty ( $error ) ) {
     // on the following add... As a safety measure, delete any
     // existing entry with the id. Ignore the result.
     dbi_execute ( 'DELETE FROM webcal_entry_user
-      WHERE cal_id = ? AND cal_login = ?', array ( $id, $participants[$i] ) );
+      WHERE cal_id = ? AND cal_login = ?', array ( $id, $selectedPart[$i] ) );
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
       cal_status, cal_percent ) VALUES ( ?, ?, ?, ? )',
-        array ( $id, $participants[$i], $status, $new_percent ) ) ) {
+        array ( $id, $selectedPart[$i], $status, $new_percent ) ) ) {
       $error = $dberror . dbi_error ();
       break;
     } else {
       // Check UAC.
       $can_email = 'Y';
       if ( access_is_enabled () )
-        $can_email = access_user_calendar ( 'email', $participants[$i], $login );
+        $can_email = access_user_calendar ( 'email', $selectedPart[$i], $login );
 
-      // Don't send mail if we are editing a non-user calendar and we are the admin.
+      // Don't send mail if we are editing a non-user calendar and are the admin.
       if ( !$is_nonuser_admin && $can_email == 'Y' ) {
         // Only send mail if their email address is filled in.
-        $do_send = get_pref_setting ( $participants[$i], $newevent
+        $do_send = get_pref_setting ( $selectedPart[$i], $newevent
           ? 'EMAIL_EVENT_ADDED' : 'EMAIL_EVENT_UPDATED' );
-        $htmlmail = get_pref_setting ( $participants[$i], 'EMAIL_HTML' );
-        $t_format = get_pref_setting ( $participants[$i], 'TIME_FORMAT' );
-        $user_TIMEZONE = get_pref_setting ( $participants[$i], 'TIMEZONE' );
+        $htmlmail = get_pref_setting ( $selectedPart[$i], 'EMAIL_HTML' );
+        $t_format = get_pref_setting ( $selectedPart[$i], 'TIME_FORMAT' );
+        $user_TIMEZONE = get_pref_setting ( $selectedPart[$i], 'TIMEZONE' );
         set_env ( 'TZ', $user_TIMEZONE );
-        $user_language = get_pref_setting ( $participants[$i], 'LANGUAGE' );
-        user_load_variables ( $participants[$i], 'temp' );
-        if ( boss_must_be_notified ( $login, $participants[$i] ) && !
+        $user_language = get_pref_setting ( $selectedPart[$i], 'LANGUAGE' );
+        user_load_variables ( $selectedPart[$i], 'temp' );
+        if ( boss_must_be_notified ( $login, $selectedPart[$i] ) && !
             empty ( $tempemail ) && $do_send == 'Y' && $send_user_mail &&
               $SEND_EMAIL != 'N' ) {
           // We send to creator if they want it.
-          if ( $send_own != 'Y' && ( $participants[$i] == $login ) )
+          if ( $send_own != 'Y' && ( $selectedPart[$i] == $login ) )
             continue;
 
-          reset_language ( empty ( $user_language ) || ( $user_language == 'none' )
+          reset_language ( empty ( $user_language ) || $user_language == 'none'
             ? $LANGUAGE : $user_language );
           $fmtdate = ( $timetype == 'T'
-            ? date ( 'Ymd', $eventstart ): gmdate ( 'Ymd', $eventstart ) );
+            ? date ( 'Ymd', $eventstart ) : gmdate ( 'Ymd', $eventstart ) );
           $msg = str_replace ( 'XXX', $tempfullname, $helloStr ) . "\n\n"
            . str_replace ( 'XXX', $login_fullname,
-            ( $newevent || ( empty ( $old_status[$participants[$i]] ) )
+            ( $newevent || ( empty ( $old_status[$selectedPart[$i]] ) )
               ? $newAppStr : $updAppStr ) ) . "\n"
            . str_replace ( 'XXX', $name, $subjStr ) . "\n\n"
            . str_replace ( 'XXX', $description, $descStr ) . "\n"
@@ -932,10 +949,11 @@ if ( empty ( $error ) ) {
 
             $msg .= "\n\n" . $url;
           }
+
           // Use WebCalMailer class.
           $mail->WC_Send ( $login_fullname, $tempemail,
             $tempfullname, $name, $msg, $htmlmail, $from );
-          activity_log ( $id, $login, $participants[$i], LOG_NOTIFICATION, '' );
+          activity_log ( $id, $login, $selectedPart[$i], LOG_NOTIFICATION, '' );
         }
       }
     }
@@ -963,9 +981,9 @@ if ( empty ( $error ) ) {
           $ext_emails[$ext_count] = $ext_names[$ext_count] = '';
           for ( $j = 0; $j < $ext_wordscnt; $j++ ) {
             // Use regexp matching to pull email address out.
-            $ext_words[$j] = chop ( $ext_words[$j] ); // Remove \r if there is one.
+            $ext_words[$j] = chop ( $ext_words[$j] ); // Remove any \r.
             if ( preg_match ( '/<?\\S+@\\S+\\.\\S+>?/', $ext_words[$j],
-                $matches ) ) {
+              $matches ) ) {
               $ext_emails[$ext_count] = $matches[0];
               $ext_emails[$ext_count] = preg_replace ( '/[<>]/', '',
                 $ext_emails[$ext_count] );
@@ -976,6 +994,7 @@ if ( empty ( $error ) ) {
               $ext_names[$ext_count] .= $ext_words[$j];
             }
           }
+
           // Test for duplicate Names.
           if ( $i > 0 ) {
             for ( $k = $i; $k > 0; $k-- ) {
@@ -992,6 +1011,7 @@ if ( empty ( $error ) ) {
       }
     }
   }
+
   // Send notification if enabled.
   if ( is_array ( $ext_names ) && is_array ( $ext_emails ) ) {
     $ext_namescnt = count ( $ext_names );
@@ -1011,8 +1031,8 @@ if ( empty ( $error ) ) {
             $fmtdate = ( $timetype == 'T'
               ? date ( 'Ymd', $eventstart ) : gmdate ( 'Ymd', $eventstart ) );
             // Strip [\d] from duplicate Names before emailing.
-            $ext_names[$i] = trim ( preg_replace ( '/\[[\d]]/', '',
-                $ext_names[$i] ) );
+            $ext_names[$i] =
+            trim ( preg_replace ( '/\[[\d]]/', '', $ext_names[$i] ) );
             $msg = str_replace ( 'XXX', $ext_names[$i], $helloStr ) . "\n\n"
              . str_replace ( 'XXX', $login_fullname,
               ( $newevent ? $newAppStr : $updAppStr ) ) . "\n"
@@ -1036,7 +1056,9 @@ if ( empty ( $error ) ) {
     }
   } //end external mail
 } //end empty error
-// If we were editing this event, then go back to the last view (day, month, week).
+
+// If we were editing this event,
+// then go back to the last view (day, month, week).
 // If this is a new event,
 // then go to the preferred view for the date range where this event was added.
 if ( empty ( $error ) && empty ( $mailerError ) ) {
