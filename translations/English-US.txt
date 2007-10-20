@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-17-2007
+# Translation last updated on 10-20-2007
 
 
 ################################################################################
@@ -1340,19 +1340,15 @@ LANGUAGE DEFINED: LANGUAGE DEFINED
 ########################################
 # Page: includes/dbi4php.php
 #
-db_type not defined.: db_type not defined.
 Error connecting to database: Error connecting to database
-Error connecting to database XXX.: Error connecting to database "XXX".
+db_type not defined.: db_type not defined.
 invalid db_type: invalid db_type
-invalid db_type XXX.: invalid db_type "XXX".
 Cache cleared from previous SQL!: Cache cleared from previous SQL!
 Error executing query.: Error executing query.
 Unfortunately, XXX is not implemented for: Unfortunately, XXX is not implemented for
 Unfortunately, XXX is not implemented for YYY: Unfortunately, "XXX" is not implemented for (YYY).
 Unknown ODBC error.: Unknown ODBC error.
 Unknown error.: Unknown error.
-Cache error: Cache error
-Could not XXX file: Could not XXX file
 write: write
 Cache error Could not XXX file YYY.: Cache error: Could not XXX file "YYY".
 Error opening cache dir: Error opening cache dir

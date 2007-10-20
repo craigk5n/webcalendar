@@ -6,7 +6,7 @@
 # Last update: 16. Oktober 2007
 #
 # $Id$
-# Translation last updated on 10-17-2007
+# Translation last updated on 10-20-2007
 
 
 ################################################################################
@@ -1317,31 +1317,15 @@ LANGUAGE DEFINED: SPRACHDEFINIERT
 ########################################
 # Page: includes/dbi4php.php
 #
-db_type not defined.: db_type nicht definiert
 Error connecting to database: Datenbank Verbindungsfehler
-#
-# << MISSING >>
-# Error connecting to database XXX.:
-# English text: Error connecting to database "XXX".
-#
+db_type not defined.: db_type nicht definiert
 invalid db_type: ung&uuml;tige db_type
-#
-# << MISSING >>
-# invalid db_type XXX.:
-# English text: invalid db_type "XXX".
-#
 Cache cleared from previous SQL!: Cache wird von voriger SQL geleert!
 Error executing query.: Fehler beim Ausf&uuml;hren des Query
 Unfortunately, XXX is not implemented for: Ungew&ouml;hnliches, XXX ist nicht implementiert
 Unfortunately, XXX is not implemented for YYY: Ungew&ouml;hnlich, &#34;XXX&#34; ist nicht (f&uuml;r YYY) implementiert.
 Unknown ODBC error.: Unbekannter ODBC Fehler
 Unknown error.: Unbekannter Fehler
-#
-# << MISSING >>
-# Cache error:
-#
-# << MISSING >>
-# Could not XXX file:
 write: schreiben
 Cache error Could not XXX file YYY.: Cache-Fehler, kann Datei YYY nicht XXX.
 Error opening cache dir: Fehler beim &Ouml;ffnen des Cache-Verzeichnis
@@ -1934,4 +1918,3 @@ Unknown error saving user: Unbekannter Fehler beim Speichern des Benutzers
 No participants found for event id XXX.: Keine(n) Teilnehmer f&uuml;r Termin-Id XXX gefunden.
 Db error Could not find event id XXX.: Db-Fehler, Termin-Id XXX nicht gefunden.
 Error Could not find event id XXX in database.: Fehler, Termin-Id XXX in der Datenbank nicht gefunden
-Cache error: Cache Fehler
