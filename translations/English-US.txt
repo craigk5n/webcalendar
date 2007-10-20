@@ -601,6 +601,9 @@ Start Time: Start Time
 Due Date: Due Date
 Due Time: Due Time
 Site Extras: Site Extras
+AVAILABLE PARTICIPANTS...: AVAILABLE PARTICIPANTS...
+SELECTED PARTICIPANTS...: SELECTED PARTICIPANTS...
+AVAILABLE RESOURCES...: AVAILABLE RESOURCES...
 participants-help: Lists the participants of this entry.
 Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users. The users should be listed one per line and can include an email address. If an email address is specified, the user is eligible to receive notifications and reminders.
