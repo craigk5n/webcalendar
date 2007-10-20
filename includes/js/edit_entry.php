@@ -143,6 +143,12 @@ function validate_and_submit () {
  if ( bysetposStr.length > 0 )
    elements['bysetposList'].value = bysetposStr.substr(1);
 
+ //select allusers in selectedPart
+ var userlist = form.elements['selectedPart[]'];
+ for ( i = 1; i < userlist.length; i++ ) { 
+   userlist.options[i].selected = true;
+ }
+ 
  form.submit ();
  return true;
 }
@@ -342,25 +348,25 @@ var sch_win;
 function showSchedule () {
   //var agent=navigator.userAgent.toLowerCase ();
   //var agent_isIE=(agent.indexOf("msie") > -1);
-  var userlist = form.elements['participants[]'];
+  var userlist = form.elements['selectedPart[]'];
   var delim = '';
   var users = '';
   var cols = <?php echo $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ?>;
   //var w = 140 + ( cols * 31 );
   var w = 760;
   var h = 180;
-  for ( i = 0; i < userlist.length; i++ ) {
-    if (userlist.options[i].selected) {
+  for ( i = 1; i < userlist.length; i++ ) {
       users += delim + userlist.options[i].value;
       delim = ',';
       h += 18;
     }
-  }
   if (users == '') {
     alert("<?php etranslate ( 'Please add a participant', true)?>" );
     return false;
   }
-  var features = 'width='+ w +',height='+ h +',resizable=yes,scrollbars=yes';
+  var mX = 100, mY = 200;
+  var MyPosition = 'left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;
+  var features = MyPosition + ',width='+ w +',height='+ h +',resizable=yes,scrollbars=yes';
   var url = 'availability.php?users=' + users +
            '&form='  + 'editentryform' +
            '&year='  + form.year.value +
@@ -622,6 +628,8 @@ function completed_handler () {
 }
 
 function onLoad () {
+  if ( ! document.editentryform )
+	  return false;
   //define these variables here so they are valid
   form = document.editentryform;
   elements = document.editentryform.elements;
@@ -673,4 +681,120 @@ function onLoad () {
   toggle_reminders ();
   toggle_rem_rep ();
   completed_handler ();
+}
+
+function selAdd(btn){
+  // find id of user selection object
+  var partid = 0;
+  var selectid = 0;
+  for ( i = 0; i < form.elements.length; i++ ) {
+    if ( form.elements[i].name == "participants[]" )
+      partid = i;
+  if ( form.elements[i].name == "selectedPart[]" )
+      selectid = i;
+  }
+   
+   with (form)
+   {
+      with (form.elements[partid])
+      {
+         for (i = 0; i < length; i++)
+         {
+            doIt = false;
+               if(options[i].selected) {
+                with (options[i])
+               {
+                  form.elements[selectid].options[form.elements[selectid].length]  = new Option( text, value );
+             options[i].selected = false;
+          } //end with options
+               }
+    
+         } // end for loop
+      } // end with islist1
+   } // end with document
+}
+
+function selResource(btn){
+  // find id of Resource selection object
+  var partid = 0;
+  var selectid = 0;
+  for ( i = 0; i < form.elements.length; i++ ) {
+    if ( form.elements[i].name == "nonuserPart[]" )
+      partid = i;
+  if ( form.elements[i].name == "selectedPart[]" )
+      selectid = i;
+  }
+   
+   with (form)
+   {
+      with (form.elements[partid])
+      {
+         for (i = 0; i < length; i++)
+         {
+            doIt = false;
+               if(options[i].selected) {
+                with (options[i])
+               {
+                form.elements[selectid].options[form.elements[selectid].length]  = new Option( text, value );
+           options[i].selected = false;
+          } //end with options
+               }
+    
+         } // end for loop
+      } // end with islist1
+   } // end with document
+}
+function selRemove(btn){
+  // find id of user selection object
+  var selectid = 0;
+  for ( i = 0; i < form.elements.length; i++ ) {
+  if ( form.elements[i].name == "selectedPart[]" )
+      selectid = i;
+  }
+   with (form)
+   { 
+      with (form.elements[selectid])
+      {
+         for (i = 0; i < length; i++)
+         {
+         
+               if(options[i].selected){
+               options[i] = null;
+         } 
+           
+    
+         } // end for loop
+     }
+   } // end with document
+}
+
+function lookupName(){
+  var partid = 0;
+  var selectid = 0;
+  var lookupid = 0;
+  for ( i = 0; i < form.elements.length; i++ ) {
+    if ( form.elements[i].name == "participants[]" )
+      partid = i;
+    if ( form.elements[i].name == "lookup" )
+      lookupid = i;
+  }
+  var x =  stringLength(form.elements[lookupid].value);
+  for ( i = 0; i < form.elements[partid].length; i++ ) {
+    str = form.elements[partid].options[i].text;
+    if ( stringToLowercase(str.substring(0,x)) == stringToLowercase(form.elements[lookupid].value )){
+      selectid = i;
+    i =  form.elements[partid].length;
+   }
+  }
+
+  form.elements[partid].selectedIndex = selectid;
+}
+
+function stringLength(inputString)
+{
+  return inputString.length;
+}
+function stringToLowercase(inputString)
+{
+  return inputString.toLowerCase();
 }
