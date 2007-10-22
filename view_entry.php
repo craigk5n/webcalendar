@@ -422,7 +422,7 @@ echo '
         <td class="aligntop bold">'
  . ( $eType == 'task' ? translate ( 'Start Date' ) : translate ( 'Date' ) )
  . ':</td>
-        <td>' . date_to_str ( $display_date ) . ( $eType == 'task' ? '</td>
+        <td>' . date_to_str ( $event_date ) . ( $eType == 'task' ? '</td>
       </tr>' . ( $event_time >= 0 ? '
       <tr>
         <td class="aligntop bold">' . translate ( 'Start Time' ) . ':</td>
