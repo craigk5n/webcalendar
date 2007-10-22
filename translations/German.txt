@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 16. Oktober 2007
+# Last update: 22. Oktober 2007
 #
 # $Id$
-# Translation last updated on 10-20-2007
+# Translation last updated on 10-22-2007
 
 
 ################################################################################
@@ -416,11 +416,7 @@ Approve and Exit: Genehmigen und Schlie&szlig;en
 Hello: Guten Tag
 Hello, XXX.: Guten Tag, XXX
 An appointment has been approved and comments added by: Eine Termin wurde genehmigt und eine Anmerkung wurde hinzugef&uuml;gt von
-#
-# << MISSING >>
-# XXX has approved an appointment and added comments.:
-# English text: An appointment has been approved and comments added by XXX.
-#
+XXX has approved an appointment and added comments.: Ein Termin wurde genehmigt mit zus&auml;tzlichen Anmerkungen
 The subject was: Der Betreff lautete
 Subject XXX: Betrifft XXX
 The description is: Die Beschreibung lautet
@@ -578,6 +574,9 @@ Start Time: Startzeit
 Due Date: F&auml;lligkeitsdatum
 Due Time: F&auml;lligkeitszeit
 Site Extras: Extrafelder
+AVAILABLE PARTICIPANTS...: VERF&Uuml;GBARE TEILNEHMER
+SELECTED PARTICIPANTS...: AUSGEW&Auml;HLTE TEILNEHMER
+AVAILABLE RESOURCES...: VERF&Uuml;GBARE MITTEL
 participants-help: Gibt die Benutzer des Termines an.
 Availability: Verf&uuml;gbarkeit
 external-participants-help: Spezifiziert eine Teilnehmerliste f&uuml;r Benutzer die keinen eigenen Webkalenderzugang haben. Die Benutzer sollten pro Zeile aufgef&uuml;hrt werden und k&ouml;nnen auch Emailadressen miteinschlie&szlig;en bzw. enthalten.  Wenn ein Emailadresse eingetragen wurde, ist der Benutzer in der Lage, Benachrichtigungen und Erinnerungen zu empfangen.
@@ -1025,7 +1024,7 @@ cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Coo
 Illegal characters in login: Nicht zul&auml;ssige Zeichen beim Login
 Illegal characters in login XXX.: Ung&uuml;ltige Zeichen im Login XXX.
 Invalid login: Benutzername oder Kennwort falsch
-Activity login failure: Benutzername: &#34;XXX&#34;, IP: &#34;YYY&#34;.
+Activity login failure: Benutzername: &#34;XXX&#34;, IP: &#34;XXX&#34;.
 Error XXX: Fehler: &#34;XXX&#34;.
 You have been logged out.: Sie wurden ausgeloggt.
 Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie sich registrieren!
@@ -1864,11 +1863,7 @@ Reminder: Erinnerung
 # Page: ws/event_mod.php
 #
 Unsupported action: Nicht unterst&uuml;tzte Aktion
-#
-# << MISSING >>
-# Unsupported action XXX.:
-# English text: Unsupported action: XXX.
-#
+Unsupported action XXX.: Nicht unterst&uuml;tzte Aktion.
 No event id specified.: Keine Termin-Id festgelegt.
 not admin: kein Administrator
 Not authorized (not admin).: Nicht berechtigt (kein Administrator).
