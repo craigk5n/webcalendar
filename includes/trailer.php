@@ -53,8 +53,8 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   }
 
   $mycal = ( empty ( $GLOBALS['STARTVIEW'] )
-    ? 'index.php' : $GLOBALS['STARTVIEW'] . '.php' );
-  $mycal = str_replace ( '.php.php', '.php', $mycal );
+    ? 'index.php' : $GLOBALS['STARTVIEW'] );
+  $mycal .= ( stripos ( $mycal, '.php' )? '' : '.php' );
 
   // Calc URL to today.
   $reqURI = 'month.php';
