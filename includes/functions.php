@@ -993,7 +993,7 @@ function display_month ( $thismonth, $thisyear, $demo = false ) {
     $ret .= '
       <tr>';
     if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
-      $tmp = date ( 'W', $i + 86400 * 2 );
+      $tmp = date ( 'W', $i + 86400 );
       $ret .= '
         <td class="weekcell"><a title="' . $weekStr . ' ' . $tmp . '" href="'
        . ( $demo ? '' : 'week.php?date=' . date ( 'Ymd', $i + 86400 ) )
