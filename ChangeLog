@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Fix bug [ 1819188 ] v1.1.6 SelectWeek problem
  - Fix bug [ 1819327 ] 1.1.6 Wrong "goto my calender" link, with own views
  - Fix bug [ 1806533 ] edit_entry still allows anyone to submit an entry
  - Fix bug [ 1811902 ] 1.1.6 - wrong highlight
