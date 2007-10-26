@@ -290,12 +290,15 @@ function get_browser_language ( $pref = false ) {
 function translate ( $str, $decode = '' ) {
   global $translation_loaded, $translations;
 
+  //Set $blink to true to aid in finding missing translations
+  $blink = false;
+  
   if ( ! $translation_loaded )
     load_translation_text ();
 
   $str = trim ( $str );
   return ( empty ( $translations[$str] )
-    ? $str
+    ? ($blink ? '<blink>' . $str . '</blink>' : $str )
     : ( $decode ? unhtmlentities ( $translations[$str] ) : $translations[$str] ) );
 }
 
