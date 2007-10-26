@@ -270,7 +270,7 @@ function jscMenu_item ( $icon, $title, $url, $target = '' ) {
   global $menuScript;
 
   $menuScript .= '[\'<img src="includes/menu/icons/' . $icon
-   . '" alt="" />\',\'' . ( $title != '' ? translate ( $title ) : '' )
+   . '" alt="'.$title.'" />\',\'' . ( $title != '' ? translate ( $title ) : '' )
    . "','$url','$target',''],\n";
 }
 
