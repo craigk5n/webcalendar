@@ -364,11 +364,12 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $rem_use_date = ( ! empty ( $reminder['date'] ) );
 
   // Get participants.
-  $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user WHERE cal_id = ?
+  $res = dbi_execute ( 'SELECT cal_login, cal_status FROM webcal_entry_user WHERE cal_id = ?
     AND cal_status IN ( \'A\', \'W\' )', array ( $id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[$row[0]] = 1;
+      $selectedStatus[$row[0]] = $row[1];
     }
     dbi_free_result ( $res );
   }
@@ -606,7 +607,7 @@ if ( $can_edit ) {
         <legend>' . translate ( 'Details' ) . '</legend>' ) . '
           <table border="0" summary="">
             <tr>
-              <td style="width:14%;" class="tooltip" title="'
+              <td class="tooltip" title="'
    . tooltip ( 'brief-description-help' ) . '"><label for="entry_brief">'
    . translate ( 'Brief Description' ) . ':</label></td>
               <td colspan="2"><input type="text" name="name" id="entry_brief" '
@@ -1003,7 +1004,7 @@ if ( $can_edit ) {
     <div id="tabscontent_participants">' : '
     <fieldset>
       <legend>' . translate ( 'Participants' ) . '</legend>' ) . '
-      <table summary="">';
+      <table border="0" summary="">';
 
   // Only ask for participants if we are multi-user.
   $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
@@ -1014,14 +1015,11 @@ if ( $can_edit ) {
     $show_participants = false;
 
   if ( $single_user == 'N' && $show_participants ) {
+    $groups = get_groups ( $real_user );
     $userlist = get_my_users ( $create_by, 'invite' );
     $num_users = $size = 0;
     $usercnt = count ( $userlist );
-    $myusers = $nonusers = $users = '
-              <option disabled>';
-    $users .= translate ( 'AVAILABLE PARTICIPANTS...' ) . '</option>';
-    $myusers .= translate ( 'SELECTED PARTICIPANTS...' ) . '</option>';
-    $nonusers .= translate ( 'AVAILABLE RESOURCES...' ) . '</option>';
+    $myusers = $nonusers = $users = $grouplist = '';
 
     for ( $i = 0; $i < $usercnt; $i++ ) {
       $f = $userlist[$i]['cal_fullname'];
@@ -1030,38 +1028,38 @@ if ( $can_edit ) {
         ? ' (?)' : '' );
       $size++;
       $users .= '
-              <option value="' . $l . '"';
+              <option value="' . $l . '">' . $f . '</option>';
 
       if ( $id > 0 ) {
         if ( ! empty ( $participants[$l] ) ) {
-          $users .= $selected;
           $myusers .= '
-              <option value="' . $l . '">' . $f . $q . '</option>';
+            <option value="' . $l . '">' 
+            . $f . $q . '</option>';
         }
       } else {
-        if ( ! empty ( $defusers ) && ! empty ( $participants[$l] ) ) {
+        if ( ! empty ( $defusers ) && ! empty ( $userlist[$l] ) ) {
           // Default selection of participants was in the URL.
-          $users .= $selected;
           $myusers .= '
-              <option value="' . $l . '">' . $f . $q . '</option>';
+            <option value="' . $l . '">'
+            . $f . $q . '</option>';
         }
 
-        if ( ! empty ( $user ) && ! empty ( $selectedPart[$l] ) ) {
+        if ( ! empty ( $user ) && ! empty ( $userlist[$l] ) ) {
           // Default selection of participants was in the URL.
-          $users .= $selected;
           $myusers .= '
-              <option value="' . $l . '">' . $f . $q . '</option>';
+            <option value="' . $l . '">' 
+            . $f . $q . '</option>';
         }
         if ( ( $l == $login && ! $is_assistant && ! $is_nonuser_admin ) ||
             ( ! empty ( $user ) && $l == $user ) )
-          $users .= $selected;
 
         if ( $l == '__public__' && !
           empty ( $PUBLIC_ACCESS_DEFAULT_SELECTED ) &&
             $PUBLIC_ACCESS_DEFAULT_SELECTED == 'Y' )
-          $users .= $selected;
+         $myusers .= '
+           <option value="' . $l . '">'
+           . $f . $q . '</option>';
       }
-      $users .= '>' . $f . $q . '</option>';
     }
 
     if ( $NONUSER_ENABLED == 'Y' ) {
@@ -1072,85 +1070,106 @@ if ( $can_edit ) {
         $n = $mynonusers[$i]['cal_fullname'];
         $q = ( ! empty ( $selectedStatus[$l] ) && $selectedStatus[$l] == 'W'
           ? ' (?)' : '' );
-        $is_selected = ( empty ( $nonuserPart[$l] ) ? '' : $selected );
-
-        if ( ! empty ( $resourcestatus[$l] ) && $resourcestatus[$l] == 'W' )
-          $n .= ' (?)';
 
         $nonusers .= '
-              <option value="' . $l . '" ' . $is_selected . '> '
-         . $mynonusers[$i]['cal_fullname'] . '</option>';
+              <option value="' . $l . '"> ' . $n . '</option>';
 
-        if ( ! empty ( $nonuserPart[$l] ) )
+        if ( ! empty ( $participants[$l] ) ) {
           $myusers .= '
-              <option value="' . $l . '">' . $n . '</option>';
+              <option value="' . $l . '">' 
+                . $n . $q .'</option>';
 
-        if ( ! empty ( $user ) && ! empty ( $selectedPart[$l] ) ) {
+        } else if ( ! empty ( $user ) && ! empty ( $mynonusers[$l] ) ) {
           // Default selection of participants was in the URL.
-          // $users .= $selected;
           $myusers .= '
-              <option value="' . $l . '">' . $n . $q . '</option>';
+              <option value="' . $l . '">' 
+                . $n . $q . '</option>';
         }
       }
+    }
+    
+    if ( $GROUPS_ENABLED == 'Y'  ) {
+      for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
+        $grouplist .= '
+          <option value="' . $groups[$i]['cal_group_id'] . '">'
+            . $groups[$i]['cal_name'] . '</option>';
+     }  
+    
     }
     $addStr = '"     ' . translate ( 'Add' ) . '    "';
 
     if ( $size > 50 )
       $size = 15;
-    elseif ( $size > 5 )
-      $size = 5;
+    else
+      $size = 4;
 
     echo '
-        <tr title="' . tooltip ( 'participants-help' ) . '">
-          <td class="tooltipselect" rowspan="4"><label for="entry_part">'
+        <tr title="' . tooltip ( 'avail_participants-help' ) . '">
+          <td class="tooltip aligntop" rowspan="3"><label>'
+     . translate ( 'Available' ) . '<br />' 
      . translate ( 'Participants' ) . ':</label></td>
-          <td>&nbsp;</td>
-          <td colspan="4"><input type="text" size="20" name="lookup" '
-     . 'onkeyup="lookupName()" />&nbsp;Find Name</td>
+          <td class="boxleft boxtop">&nbsp;</td>
+          <td colspan="5"class="boxtop boxright">' . translate ( 'Find Name' ) 
+          . '<input type="text" size="20" name="lookup" id="lookup" '
+     . 'onkeyup="lookupName()" /></td>
         </tr>
         <tr>
-          <td nowrap align="right" valign="top" class="boxtop boxleft '
-     . 'boxbottom"><input name="movert" type="button" value=' . $addStr
-     . ' onclick="selAdd( this );" /></td>
-          <td class="boxtop boxright boxbottom">
-            <select name="participants[]" id="entry_part" size="' . $size
+          <td align="right" valign="top" class="boxleft"><label>'
+          .translate ( 'Users' ) . '</label></td>
+          <td rowspan="2" valign="top" width="160px" class="boxbottom">
+            <select class="fixed" name="participants[]" id="entry_part" size="' . $size
      . '" multiple="multiple">' . $users . '
-            </select>' . ( $GROUPS_ENABLED == 'Y' ? '
-            <input type="button" onclick="selectUsers()" value="'
-       . translate ( 'Select' ) . '..." />' : '' ) . '
-          </td>
-          <td>&nbsp;</td>
-          <td valign="top" class="boxtop boxleft boxbottom">
-            <select name="nonuserPart[]" size='
-     . $size . ' multiple>' . $nonusers . '
+            </select></td>
+        <td align="right" valign="top"><label>'
+          .translate ( 'Resources' ) . '</label></td>
+        <td rowspan="2"  class="boxbottom">
+            <select class="fixed" name="nonuserPart[]" id="res_part" size="'
+     . $size . '" multiple="multiple">' . $nonusers . '
             </select>
-          </td>
-          <td valign="top" align="left" class="boxtop boxright boxbottom">'
-     . '<input name="moveit" type="button" value=' . $addStr
-     . ' onclick="selResource( this );" /></td>
+          </td>  
+          <td rowspan="2" align="right" valign="top" class="boxbottom">'
+        .  ( $GROUPS_ENABLED == 'Y' ? '&nbsp;&nbsp;<label>' . translate ( 'Groups' ) .'</label>
+        </td><td rowspan="2" valign="top"  class="boxbottom boxright">
+          <select class="fixed" name="groups" id="groups" size="'
+     . $size . '" onclick="addGroup()" >' . $grouplist . '
+            </select>' : '' ) .'
+          </td>      
         </tr>
         <tr>
-          <td colspan="5">&nbsp;</td>
-        </tr>
+          <td align="right" valign="bottom" class="boxbottom boxleft" >
+          <input name="movert" type="button" value=' 
+     . $addStr . ' onclick="selAdd( this );" /></td>
+       <td align="right" valign="bottom" class="boxbottom" >
+         <input name="moveit" type="button" value=' 
+     . $addStr . ' onclick="selResource( this );" /></td>
+        </tr>    
         <tr>
-          <td align="right" valign="top" class="boxtop boxleft boxbottom">'
-     . '<input name="movelt" class="class10" type="button" value=" Remove " '
+          <td colspan="7">&nbsp;</td>
+        </tr>
+        <tr title="' . tooltip ( 'participants-help' ) . '">
+          <td class="tooltip aligntop" rowspan="2"><label>'
+            . translate ( 'Selected' ) . '<br />' 
+            . translate ( 'Participants' ) . ':</label></td>
+          <td align="left" valign="bottom" class="boxtop boxleft boxbottom">'
+     . '<input name="movelt" type="button" value="'
+     . translate ( 'Remove' ) .'" '
      . 'onclick="selRemove( this );" /></td>
-          <td colspan="4" class="boxtop boxright boxbottom">
-            <select name="selectedPart[]" size=7 multiple="multiple">'
+          <td class="boxtop boxright boxbottom" colspan="2">
+            <select class="fixed" name="selectedPart[]" id="sel_part" size="7" multiple="multiple">'
      . $myusers . '
             </select>
             <input type="button" onclick="showSchedule()" value="'
      . translate ( 'Availability' ) . '..." />
           </td>
+          <td colspan="3"></td>
         </tr>'
     // External Users
     . ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' ? '
         <tr title="' . tooltip ( 'external-participants-help' ) . '">
           <td class="tooltip aligntop"><label for="entry_extpart">'
        . translate ( 'External Participants' ) . ':</label></td>
-          <td><textarea name="externalparticipants" id="entry_extpart" rows="5"'
-       . ' cols="40">' . $external_users . '</textarea></td>
+          <td colspan="6"><textarea name="externalparticipants" id="entry_extpart" rows="5"'
+       . ' cols="75">' . $external_users . '</textarea></td>
         </tr>' : '' );
   }
 

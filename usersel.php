@@ -24,28 +24,7 @@ for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
   $selected[$exp[$i]] = 1;
 }
 
-$owner = ( $is_nonuser_admin || $is_assistant ? $user : $login );
-
-// Load list of groups.
-$sql = 'SELECT wg.cal_group_id, wg.cal_name FROM webcal_group wg';
-
-if ( $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
-  $sql .= ', webcal_group_user wgu WHERE wg.cal_group_id = wgu.cal_group_id
-    AND wgu.cal_login = ?';
-  $sql_params[] = $owner;
-}
-
-$res = dbi_execute ( $sql . ' ORDER BY wg.cal_name', $sql_params );
-
-if ( $res ) {
-  while ( $row = dbi_fetch_row ( $res ) ) {
-    $groups[] = array (
-      'cal_group_id' => $row[0],
-      'cal_name' => $row[1]
-      );
-  }
-  dbi_free_result ( $res );
-}
+$groups = get_groups ( $user );
 
 print_header ( '', '', '', true, false, true );
 
