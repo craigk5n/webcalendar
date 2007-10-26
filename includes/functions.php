@@ -2412,6 +2412,46 @@ function get_entries ( $date, $get_unapproved = true ) {
   return $ret;
 }
 
+/* Gets all the groups a user is authorized to see
+ *
+ *
+ * @param string $user        Subject User
+ *                                
+ *
+ * @return array  Array of Groups.
+ */
+function get_groups ( $user ) {
+  global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS ,
+  $is_nonuser_admin, $is_assistant, $login;
+  
+  if ( empty ( $GROUPS_ENABLED  ) || $GROUPS_ENABLED != 'Y' )
+    return false;
+    
+  $owner = ( $is_nonuser_admin || $is_assistant ? $user : $login );
+
+  // Load list of groups.
+  $sql = 'SELECT wg.cal_group_id, wg.cal_name FROM webcal_group wg';
+
+ if ( $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
+   $sql .= ', webcal_group_user wgu WHERE wg.cal_group_id = wgu.cal_group_id
+     AND wgu.cal_login = ?';
+    $sql_params[] = $owner;
+ }
+
+  $res = dbi_execute ( $sql . ' ORDER BY wg.cal_name', $sql_params );
+
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+     $groups[] = array (
+        'cal_group_id' => $row[0],
+       'cal_name' => $row[1]
+       );
+    }
+   dbi_free_result ( $res );
+ }
+ return $groups;
+}
+
 /* Gets the last page stored using {@link remember_this_view ()}.
  *
  * @return string The URL of the last view or an empty string if it cannot be
@@ -4312,8 +4352,8 @@ function print_color_input_html ( $varname, $title, $varval = '' ) {
  * @param string $date  Date in YYYYMMDD format
  * @param string $user  Username
  * @param bool   $ssi   Is this being called from week_ssi.php?
- * @param bool   $disallowAddIcon	If true, then do not display the
- *					add icon, even if user can add events
+ * @param bool   $disallowAddIcon  If true, then do not display the
+ *          add icon, even if user can add events
  */
 function print_date_entries ( $date, $user, $ssi = false,
   $disallowAddIcon = false ) {

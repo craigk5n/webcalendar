@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-20-2007
+# Translation last updated on 10-26-2007
 
 
 ################################################################################
@@ -601,10 +601,12 @@ Start Time: Start Time
 Due Date: Due Date
 Due Time: Due Time
 Site Extras: Site Extras
-AVAILABLE PARTICIPANTS...: AVAILABLE PARTICIPANTS...
-SELECTED PARTICIPANTS...: SELECTED PARTICIPANTS...
-AVAILABLE RESOURCES...: AVAILABLE RESOURCES...
+avail_participants-help: Lists the available participants of this entry.
+Available: Available
+Find Name: Find Name
+Resources: Resources
 participants-help: Lists the participants of this entry.
+Selected: Selected
 Availability: Availability
 external-participants-help: Specifies a list of participants for the event that are not calendar users. The users should be listed one per line and can include an email address. If an email address is specified, the user is eligible to receive notifications and reminders.
 External Participants: External Participants

@@ -145,7 +145,7 @@ function validate_and_submit () {
 
  //select allusers in selectedPart
  var userlist = form.elements['selectedPart[]'];
- for ( i = 1; i < userlist.length; i++ ) { 
+ for ( i = 0; i < userlist.length; i++ ) { 
    userlist.options[i].selected = true;
  }
  
@@ -154,28 +154,51 @@ function validate_and_submit () {
 }
 
 <?php if ( $GROUPS_ENABLED == 'Y' ) {
-?>function selectUsers () {
-  var user = "<?php echo $user ?>";
-  // find id of user selection object
-  var listid = 0;
-  for ( i = 0; i < elementlength; i++ ) {
-    if ( elements[i].name == "participants[]" )
-      listid = i;
-  }
-  url = "usersel.php?form=editentryform&listid=" + listid + "&user=" + user + "&users=";
-  // add currently selected users
-  for ( i = 0, j = 0; i < elements[listid].length; i++ ) {
-    if ( elements[listid].options[i].selected ) {
-      if ( j != 0 )
-        url += ",";
-      j++;
-      url += elements[listid].options[i].value;
+?>
+
+// Set the state (selected or unselected) if a single user in the list of users.
+function selectByLogin ( login ) {
+  //alert ( "selectByLogin ( " + login + " )" );
+  //Check Users
+  var list = document.editentryform.entry_part;
+  var listlen = list.options.length;
+  for ( var i = 0; i < listlen; i++ ) {
+    if ( list.options[i].value == login ) {
+      list.options[i].selected = true;
+      return true;
     }
   }
-  //alert ( "URL: " + url );
-  // open window
-  window.open ( url, "UserSelection",
-    "width=500,height=500,resizable=yes,scrollbars=yes" );
+  //Check Resources
+  var list = document.editentryform.res_part;
+  var listlen = list.options.length;
+  for ( var i = 0; i < listlen; i++ ) {
+    if ( list.options[i].value == login ) {
+      list.options[i].selected = true;
+      return true;
+    }
+  }
+}
+
+function addGroup () {
+  var
+    list = document.editentryform.groups,
+    selNum = list.selectedIndex;
+    //alert ( selNum);
+<?php
+  $groups = get_groups ( $user );
+  for ( $i = 0; $i < count ( $groups )  ; $i++ ) {
+    echo "\n    if ( selNum == $i ) {\n";
+    $res = dbi_execute ( 'SELECT cal_login from webcal_group_user
+      WHERE cal_group_id = ?', array ( $groups[$i]['cal_group_id'] ) );
+    if ( $res ) {
+      while ( $row = dbi_fetch_row ( $res ) ) {
+        echo "      selectByLogin ( \"$row[0]\" );\n";
+      }
+      dbi_free_result ( $res );
+      echo "  }\n";
+    }
+  }
+?>
 }
 <?php }
 // This function is called when the event type combo box
@@ -355,7 +378,7 @@ function showSchedule () {
   //var w = 140 + ( cols * 31 );
   var w = 760;
   var h = 180;
-  for ( i = 1; i < userlist.length; i++ ) {
+  for ( i = 0; i < userlist.length; i++ ) {
       users += delim + userlist.options[i].value;
       delim = ',';
       h += 18;
@@ -629,7 +652,7 @@ function completed_handler () {
 
 function onLoad () {
   if ( ! document.editentryform )
-	  return false;
+    return false;
   //define these variables here so they are valid
   form = document.editentryform;
   elements = document.editentryform.elements;
@@ -684,110 +707,117 @@ function onLoad () {
 }
 
 function selAdd(btn){
-  // find id of user selection object
-  var partid = 0;
-  var selectid = 0;
-  for ( i = 0; i < form.elements.length; i++ ) {
-    if ( form.elements[i].name == "participants[]" )
-      partid = i;
-  if ( form.elements[i].name == "selectedPart[]" )
-      selectid = i;
-  }
-   
-   with (form)
-   {
-      with (form.elements[partid])
+  with (form)
+  {
+    with (form.entry_part)
+    {
+      for (i = 0; i < length; i++)
       {
-         for (i = 0; i < length; i++)
-         {
-            doIt = false;
-               if(options[i].selected) {
-                with (options[i])
-               {
-                  form.elements[selectid].options[form.elements[selectid].length]  = new Option( text, value );
-             options[i].selected = false;
+        if(options[i].selected) {
+          with (options[i])
+          {  
+            if(is_unique(value)) {
+              form.sel_part.options[form.sel_part.length]  = new Option( text, value );
+            }
+            options[i].selected = false;
           } //end with options
-               }
-    
-         } // end for loop
-      } // end with islist1
-   } // end with document
+        }
+      } // end for loop
+    } // end with islist1
+  } // end with document
 }
 
-function selResource(btn){
-  // find id of Resource selection object
-  var partid = 0;
-  var selectid = 0;
-  for ( i = 0; i < form.elements.length; i++ ) {
-    if ( form.elements[i].name == "nonuserPart[]" )
-      partid = i;
-  if ( form.elements[i].name == "selectedPart[]" )
-      selectid = i;
-  }
-   
-   with (form)
-   {
-      with (form.elements[partid])
+function is_unique ( val ) {
+   unique = true;
+   var sel = form.sel_part;
+   for (j = 0; j < sel.length; j++){
+     if ( sel.options[j].value == val )
+       unique = false;
+   } 
+   return unique;
+}
+
+function selResource(btn){ 
+  with (form)
+  {
+    with (form.res_part)
+    {
+      for (r = 0; r < length; r++)
       {
-         for (i = 0; i < length; i++)
-         {
-            doIt = false;
-               if(options[i].selected) {
-                with (options[i])
-               {
-                form.elements[selectid].options[form.elements[selectid].length]  = new Option( text, value );
-           options[i].selected = false;
+        if(options[r].selected) {
+          with (options[r])
+          {
+            if(is_unique(value)) {
+              form.sel_part.options[form.sel_part.length]  = new Option( text, value );
+            }
+            options[r].selected = false;
           } //end with options
-               }
-    
-         } // end for loop
-      } // end with islist1
-   } // end with document
+        }
+      } // end for loop
+    } 
+  } // end with document
 }
 function selRemove(btn){
-  // find id of user selection object
-  var selectid = 0;
-  for ( i = 0; i < form.elements.length; i++ ) {
-  if ( form.elements[i].name == "selectedPart[]" )
-      selectid = i;
-  }
    with (form)
    { 
-      with (form.elements[selectid])
+      with (form.sel_part)
       {
          for (i = 0; i < length; i++)
-         {
-         
-               if(options[i].selected){
-               options[i] = null;
-         } 
-           
-    
+         {   
+            if(options[i].selected){
+              options[i] = null;
+         }      
          } // end for loop
      }
    } // end with document
 }
 
 function lookupName(){
-  var partid = 0;
-  var selectid = 0;
-  var lookupid = 0;
-  for ( i = 0; i < form.elements.length; i++ ) {
-    if ( form.elements[i].name == "participants[]" )
-      partid = i;
-    if ( form.elements[i].name == "lookup" )
-      lookupid = i;
-  }
-  var x =  stringLength(form.elements[lookupid].value);
-  for ( i = 0; i < form.elements[partid].length; i++ ) {
-    str = form.elements[partid].options[i].text;
-    if ( stringToLowercase(str.substring(0,x)) == stringToLowercase(form.elements[lookupid].value )){
+  var selectid = -1;
+  var x =  stringLength(form.lookup.value);
+	var lower = stringToLowercase(form.lookup.value );
+  form.entry_part.selectedIndex = -1;
+  form.res_part.selectedIndex = -1;
+  if ( form.groups )
+    form.groups.selectedIndex = -1;
+  //check userlist
+  for ( i = 0; i < form.entry_part.length; i++ ) {
+    str = form.entry_part.options[i].text;
+    if ( stringToLowercase(str.substring(0,x)) == lower){
       selectid = i;
-    i =  form.elements[partid].length;
+    i =  form.entry_part.length;
    }
   }
-
-  form.elements[partid].selectedIndex = selectid;
+  if ( selectid  > -1) {
+    form.entry_part.selectedIndex = selectid;
+    return true;
+  }
+  //check resource list
+  for ( i = 0; i < form.res_part.length; i++ ) {
+    str = form.res_part.options[i].text;
+    if ( stringToLowercase(str.substring(0,x)) == lower){
+      selectid = i;
+    i =  form.res_part.length;
+   }
+  }    
+  if ( selectid > -1 ) {
+    form.res_part.selectedIndex = selectid;
+    return true;
+  }
+  //check groups if enabled
+  if ( form.groups ) {
+    for ( i = 0; i < form.groups.length; i++ ) {
+      str = form.groups.options[i].text;
+      if ( stringToLowercase(str.substring(0,x)) == lower){
+        selectid = i;
+      i =  form.groups.length;
+     }
+    }
+    if ( selectid > -1) {
+      form.groups.selectedIndex = selectid;
+      return true;
+    }  
+  }    
 }
 
 function stringLength(inputString)

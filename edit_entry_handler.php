@@ -70,6 +70,7 @@ $priority = getPostValue ( 'priority' );
 $reminder = getPostValue ( 'reminder' );
 $rpt_type = getPostValue ( 'rpt_type' );
 $timetype = getPostValue ( 'timetype' );
+$participants = getPostValue ( 'selectedPart' );
 
 $description =
 ( strlen ( $description ) == 0 || $description == '<br />'

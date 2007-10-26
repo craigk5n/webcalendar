@@ -195,7 +195,6 @@ echo '  body {
   ul a {
     font-size:12px;
   }
-
   .main {
     clear:both;
     width:100%;
@@ -233,6 +232,10 @@ echo '  body {
   }
   .underline {
    text-decoration:underline;
+  }
+  .fixed {
+    width: 160px;
+    margin-right:0px;
   }
   .cursoradd a {
     cursor:pointer;
