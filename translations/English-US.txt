@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-26-2007
+# Translation last updated on 10-28-2007
 
 
 ################################################################################
@@ -1503,6 +1503,7 @@ Manage calendar of: Manage calendar of
 #
 Browser Language Not Found: Browser Language Not Found
 not supported: not supported
+(not supported): (not supported)
 English: English
 English-US: English-US
 Afrikaans: Afrikaans
