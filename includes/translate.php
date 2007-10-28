@@ -254,24 +254,25 @@ function load_translation_text () {
 function get_browser_language ( $pref = false ) {
   global $browser_languages, $HTTP_ACCEPT_LANGUAGE;
 
-  $ret = '';
   if ( empty ( $HTTP_ACCEPT_LANGUAGE ) &&
       isset ( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) )
     $HTTP_ACCEPT_LANGUAGE = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
   if ( empty ( $HTTP_ACCEPT_LANGUAGE ) )
-    return ( $pref ? translate ( 'Browser Language Not Found' ) : 'English-US' );
+    // If this is true, can we translate without knowing which language?
+    // return ( $pref ? translate ( 'Browser Language Not Found' ) : 'English-US' );
+    return ( $pref ? 'Browser Language Not Found' : 'English-US' );
   else {
     $langs = explode ( ',', $HTTP_ACCEPT_LANGUAGE );
-    for ( $i = 0, $cnt = count ( $langs ); $i < $cnt; $i++ ) {
+    for ( $i = count ( $langs ) - 1; $i >= 0; $i-- ) {
       $l = strtolower ( trim ( ereg_replace ( ';.*', '', $langs[$i] ) ) );
-      $ret .= "\"$l\" ";
       if ( ! empty ( $browser_languages[$l] ) )
         return $browser_languages[$l];
     }
   }
+  // translate ( 'not supported' )
   return ( strlen ( $HTTP_ACCEPT_LANGUAGE ) && $pref == true
-    ? $HTTP_ACCEPT_LANGUAGE . ' ( ' . translate ( 'not supported' ) . ' )'
+    ? $HTTP_ACCEPT_LANGUAGE . ' ' . translate ( '(not supported)' )
     : 'English-US' );
 }
 
@@ -292,7 +293,7 @@ function translate ( $str, $decode = '' ) {
 
   //Set $blink to true to aid in finding missing translations
   $blink = false;
-  
+
   if ( ! $translation_loaded )
     load_translation_text ();
 
