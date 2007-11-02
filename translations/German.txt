@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 22. Oktober 2007
+# Last update: 31. Oktober 2007
 #
 # $Id$
-# Translation last updated on 10-22-2007
+# Translation last updated on 11-02-2007
 
 
 ################################################################################
@@ -416,7 +416,7 @@ Approve and Exit: Genehmigen und Schlie&szlig;en
 Hello: Guten Tag
 Hello, XXX.: Guten Tag, XXX
 An appointment has been approved and comments added by: Eine Termin wurde genehmigt und eine Anmerkung wurde hinzugef&uuml;gt von
-XXX has approved an appointment and added comments.: Ein Termin wurde genehmigt mit zus&auml;tzlichen Anmerkungen
+XXX has approved an appointment and added comments.: XXX hat den Termin &uuml;berpr&uuml;ft mit zus&auml;tzlichen Anmerkungen.
 The subject was: Der Betreff lautete
 Subject XXX: Betrifft XXX
 The description is: Die Beschreibung lautet
@@ -574,10 +574,12 @@ Start Time: Startzeit
 Due Date: F&auml;lligkeitsdatum
 Due Time: F&auml;lligkeitszeit
 Site Extras: Extrafelder
-AVAILABLE PARTICIPANTS...: VERF&Uuml;GBARE TEILNEHMER
-SELECTED PARTICIPANTS...: AUSGEW&Auml;HLTE TEILNEHMER
-AVAILABLE RESOURCES...: VERF&Uuml;GBARE MITTEL
+avail_participants-help: Liste der verf&uuml;gbaren Teilnehmer dieses Eintrags.
+Available: Verf&uuml;gbar
+Find Name: Suche Name
+Resources: Mittel
 participants-help: Gibt die Benutzer des Termines an.
+Selected: Auswahl
 Availability: Verf&uuml;gbarkeit
 external-participants-help: Spezifiziert eine Teilnehmerliste f&uuml;r Benutzer die keinen eigenen Webkalenderzugang haben. Die Benutzer sollten pro Zeile aufgef&uuml;hrt werden und k&ouml;nnen auch Emailadressen miteinschlie&szlig;en bzw. enthalten.  Wenn ein Emailadresse eingetragen wurde, ist der Benutzer in der Lage, Benachrichtigungen und Erinnerungen zu empfangen.
 External Participants: Externe Benutzer
@@ -1474,6 +1476,7 @@ Manage calendar of: Kalender verwalten von
 #
 Browser Language Not Found: Browsersprache nicht gefunden
 not supported: nicht unterst&uuml;tzt
+(not supported): (nicht unterst&uuml;tzt)
 English: Englisch
 English-US: Englisch-US
 Afrikaans: Afrikanisch
@@ -1863,7 +1866,7 @@ Reminder: Erinnerung
 # Page: ws/event_mod.php
 #
 Unsupported action: Nicht unterst&uuml;tzte Aktion
-Unsupported action XXX.: Nicht unterst&uuml;tzte Aktion.
+Unsupported action XXX.: Nicht unterst&uuml;tzte Aktion XXX.
 No event id specified.: Keine Termin-Id festgelegt.
 not admin: kein Administrator
 Not authorized (not admin).: Nicht berechtigt (kein Administrator).
