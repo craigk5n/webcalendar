@@ -37,6 +37,7 @@ $app_config = '';
 $config_lines = file( $app_path . "configuration.php" );
 foreach ( $config_lines as $line ) {
   preg_match ( "/mosConfig_([\w]+) = '([^']+)'/", $line, $match);
+    if ( isset ( $match[1] ) && isset ( $match[2] ) )
   $app_config[$match[1]] = $match[2];
 }
 unset ( $config_lines );
@@ -47,7 +48,7 @@ $app_session_type = ( isset ( $app_config['session_type'] ) )
 $app_secret = $app_config['secret'];
 
 // Session id cookie name
-$app_sid = md5 ( 'site'.$app_config['live_site'] );
+$app_sid = app_cookie_name( $app_config['live_site'] );
 
 // Session lifetime before required to login again
 $app_sid_lifetime = $app_config['lifetime'];
@@ -169,6 +170,17 @@ function app_update_session($sid) {
   return true;
 }
 
+
+function app_cookie_name( $live_site='' ) {
+  if( substr( $live_site, 0, 7 ) == 'http://' ) {
+    $hash = md5( 'site' . substr( $live_site, 7 ) );
+  } elseif( substr( $live_site, 0, 8 ) == 'https://' ) {
+    $hash = md5( 'site' . substr( $live_site, 8 ) );
+  } else {
+    $hash = md5( 'site' . $live_site );
+  }
+  return $hash;
+}
 // Searches application database for $app_admin_gid and returns an array of the group members.
 // Do this search only once per request.
 // returns: array of admin ids
@@ -233,7 +245,9 @@ function user_get_users ( $publicOnly=false ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      list ( $fname, $lname ) = split ( ' ',$row[1] );
+      $flname = explode (' ',$row[1]);
+      $fname = ( isset ( $flname[1] ) ? $flname[0] : $row[1] );
+      $lname = ( isset ( $flname[1] ) ? $flname[1] : '' );
       $ret[$count++] = array (
         'cal_login' => $row[2],
         'cal_lastname' => $lname,
@@ -288,7 +302,9 @@ function user_load_variables ( $login, $prefix ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
-      list ( $fname, $lname ) = split ( ' ',$row[1] );
+      $flname = explode (' ',$row[1]);
+      $fname = ( isset ( $flname[1] ) ? $flname[0] : $row[1] );
+      $lname = ( isset ( $flname[1] ) ? $flname[1] : '' );
       $GLOBALS[$prefix . 'login'] = $login;
       $GLOBALS[$prefix . 'firstname'] = $fname;
       $GLOBALS[$prefix . 'lastname'] = $lname;
