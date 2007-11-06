@@ -38,7 +38,7 @@ $prevyear = date ( 'Y', $prev );
 $prevmonth = date ( 'm', $prev );
 $prevdate = sprintf ( "%04d%02d01", $prevyear, $prevmonth );
 
-$startdate = mktime ( 0, 0, 0, $thismonth, 0, $thisyear );
+$startdate = mktime ( 12, 0, 0, $thismonth, 1, $thisyear );
 $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 
 $thisdate = date ( 'Ymd', $startdate );
@@ -152,7 +152,9 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
         $class = '';
       if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
         $class = 'class="hasevents"';
-
+			else
+      if (  $dateYmd == $todayYmd )
+        $class = 'class="today"';
       echo '
         <td ' . $class . ' style="width:' . $tdw . '%;">'
        . ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N'
