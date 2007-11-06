@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fixed bug [ 1826464 ] wrong default browser language
  - Applied PATCH [ 1813253 ] patch for upgrade-postgres.sql
  - Fixed bug [ 1818796 ] DbCachedir readable by any WebCal installation
  - Fixed bug [ 1819188 ] v1.1.6 SelectWeek problem

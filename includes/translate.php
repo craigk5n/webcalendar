@@ -264,7 +264,7 @@ function get_browser_language ( $pref = false ) {
     return ( $pref ? 'Browser Language Not Found' : 'English-US' );
   else {
     $langs = explode ( ',', $HTTP_ACCEPT_LANGUAGE );
-    for ( $i = count ( $langs ) - 1; $i >= 0; $i-- ) {
+    for ( $i = 0, $cnt = count ( $langs ); $i < $cnt; $i++ ) {
       $l = strtolower ( trim ( ereg_replace ( ';.*', '', $langs[$i] ) ) );
       if ( ! empty ( $browser_languages[$l] ) )
         return $browser_languages[$l];
