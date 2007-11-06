@@ -5,7 +5,7 @@ include_once 'includes/init.php';
 if ( ! $is_admin )
   $user = $login;
 
-print_header ( array ( 'js/views.php/true', 'js/visible.php' ) );
+print_header ( array ( 'js/visible.php' ) );
 
 ob_start ();
 
