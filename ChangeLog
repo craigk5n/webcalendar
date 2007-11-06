@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Applied PATCH [1826466 ] update to translations/Italian.txt
  - Applied PATCH [ 1813253 ] patch for upgrade-postgres.sql
  - Fixed problem with user-app-joomla.php when using https or single word names
  - Fix bug [ 1818796 ] DbCachedir readable by any WebCal installation
