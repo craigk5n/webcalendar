@@ -146,6 +146,8 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
         $class = '';
       if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
         $class = 'class="hasevents"';
+      else if (  $dateYmd == $todayYmd )
+        $class = 'class="today"';
       echo '
         <td ' . $class . ' style="width:' . $tdw . '%;">'
        . ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N'
