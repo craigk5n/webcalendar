@@ -14,7 +14,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 11-05-2007
 
 
 ################################################################################
@@ -50,13 +50,31 @@ __month__ __yyyy__: =
 # Page: access.php
 #
 Database error: Errore nel database
+Database error XXX.: Errore nel database: XXX.
+DEFAULT CONFIGURATION: CONFIGURAZIONE PREDEFINITA
 Go: Vai
 Save: Salva
+Undo: Annulla
 Public Access: Accesso Pubblico
 Admin: Amministratore
+User Access Control: Controllo Accesso Utente
+Allow Access to Other Users Calendar: Consenti accesso al calendario di altri utenti
+Grant This User Access to My Calendar: Concedi l'accesso al mio calendario a questo utente
+Type: Tipo
 Calendar: Calendario
+View Event: Mostra evento
+View: Vedi
 Edit: Modifica
+Approve/Reject: Conferma/Rifiuta
 Events: Eventi
+Tasks: Compiti
+Journals: =
+Can Invite: Pu&ograve; invitare
+Can Email: Pu&ograve; spedire Email
+Can See Time Only: Pu&ograve; vedere solo i tempi
+Assistant: Assistente
+Select All: Seleziona tutto
+Clear All: Cancella Tutto
 Public: Pubblico
 Confidential: Confidenziale
 Private: Privato
@@ -82,21 +100,35 @@ Day: Giorno
 Week: Settimana
 Month: Mese
 Year: Anno
-System Settings: Settaggi del sistema
-Help: Guida
-Settings: Settaggi
+Bottom: fine
+Top: inizio
+Settings: Impostazioni
 Groups: Gruppi
 NonUser Calendars: Calendari dei non utenti
 Other: Altro
 Email: E-Mail
 Colors: Colori
+Document background: Sfondo documento
+Document title: Titolo documento
+Document text: Testo
+Table grid color: Griglia della tabella
+Table header background: Sfondo dell'intestazione della tabella
+Table header text: Testo dell'intestazione della tabella
+Table cell background: Sfondo cella tabella
+Table cell background for current day: Sfondo cella tabella per oggi
+Table cell background for weekends: Sfondo cella tabella per il week-end
+Event popup background: Sfondo della popup degli eventi
+Event popup text: Testo della popup degli eventi
+System Settings: Impostazioni del sistema
+Help: Guida
 app-name-help: Specifica il nome dell'applicazione che apparir&agrave; nella barra del titolo del browser per tutte le pagine e sulla pagina di login. Il valore che si specifica qui sar&agrave; cercato nei file delle traduzioni, permettendo di fornire titoli diversi per linguaggi diversi
 Application Name: Nome dell'applicazione
 server-url-help: Specifica l'URL di base per l'applicazione. Questo sar&agrave; incluso quando si inviano memorandum e notifiche via e-mail
 Server URL: URL del Server
 language-help: Specifica quale lingua utilizzare
 Language: Lingua
-Your browser default language is: La lingua di default del tuo browser &egrave;:
+Your browser default language is: La lingua preferita del tuo browser &egrave;:
+Your browser default language is XXX.: La lingua preferita del tuo navigatore &egrave; "XXX".
 None: Nessuna
 custom-script-help: Permette di inserire il proprio codice Javascript o foglio di stile che sar&agrave; inserito nella sezione "head" del codice HTML di ogni pagina
 Custom script/stylesheet: Script/foglio di stile personale
@@ -123,8 +155,6 @@ From: Da
 to: a
 preferred-view-help: Specifica la vista di default (Giorno, Settimana, Mese, o Anno)
 Preferred view: Vista preferita
-Bottom: fine
-Top: inizio
 fonts-help: Specifica una lista di font si sistema da utilizzare (ad esempio "Arial, Helvetica")
 display-weekends-help: Include i weekend quando si guarda una settimana
 display-week-number-help: Specifica se mostrare o meno il numero della settimana (1-52) quando il calendario viene visualizzato per mese o per settimana.
@@ -139,16 +169,16 @@ allow-view-other-help: Specifica se un utente pu&ograve; visualizzare il calenda
 Allow viewing other users calendars: Permetti la visione dei calendari degli altri utenti
 require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad accesso pubblico (se il calendario ad accesso pubblico &egrave; abilitato)
 Require event approvals: Richiedi che gli eventi siano approvati
-display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se settato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se settato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
+display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se impostato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se impostato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
 Display unapproved: Mostrare eventi non approvati
-conflict-check-help: Controlla se esistono conflitti fra gli eventi (due eventi programmati per lo stesso istante o per la stessa persona). Se lo setti a "S&igrave;", sarai ancora in grado di programmare due eventi per lo stesso istante dopo aver dato conferma ad un avviso. Se lo setti a "No", il controllo dei conflitti fra gli eventi sar&agrave; fatto. &Egrave; probabile che tu voglia settare questo a "S&igrave;", cos&igrave; il controllo dei conflitti viene fatto
+conflict-check-help: Controlla se esistono conflitti fra gli eventi (due eventi programmati per lo stesso istante o per la stessa persona). Se lo imposti a "S&igrave;", sarai ancora in grado di programmare due eventi per lo stesso istante dopo aver dato conferma ad un avviso. Se lo imposti a "No", il controllo dei conflitti fra gli eventi sar&agrave; fatto. &Egrave; probabile che tu voglia impostare questo a "S&igrave;", cos&igrave; il controllo dei conflitti viene fatto
 Check for event conflicts: Controlla se esistono conflitti fra gli eventi
 Yes: S&igrave;
-conflict-months-help: Se il controllo dei conflitti &egrave; ablitato ("Controlla se esistono conflitti fra gli eventi" &egrave; settato a "No"), questo specifica quanti mesi futuri includere nel controllo. Se verifichi che l'aggiunta di un evento dura molto tempo, riduci questo numero
+conflict-months-help: Se il controllo dei conflitti &egrave; ablitato ("Controlla se esistono conflitti fra gli eventi" &egrave; impostato a "No"), questo specifica quanti mesi futuri includere nel controllo. Se verifichi che l'aggiunta di un evento dura molto tempo, riduci questo numero
 Conflict checking months: Controllo dei conflitti mensile
 conflict-check-override-help: Permette agli utenti di sovrascrivere conflitti degli eventi e di programmare due o pi&ugrave; eventi per lo stesso istante
 Allow users to override conflicts: Consenti agli utenti di sovrascrivere i conflitti
-limit-appts-help: Permette all'amministratore di sistema di settare un limite globale sul numero di appuntamenti che un singolo utente pu&ograve; avere in un singolo giorno
+limit-appts-help: Permette all'amministratore di sistema di impostare un limite globale sul numero di appuntamenti che un singolo utente pu&ograve; avere in un singolo giorno
 Limit number of timed events per day: Limita il numero degli eventi del giorno
 limit-appts-number-help: Specifica il massimo numero di eventi che un utente pu&ograve; avere in un giorno
 Maximum timed events per day: Massimo numero di eventi al giorno
@@ -162,14 +192,10 @@ disable-repeating-field-help: Selezionare "S&igrave;" rimuover&agrave; il campo 
 Disable Repeating field: Disattiva il campo "ripetizioni"
 allow-html-description-help: Se abilitato, gli utenti possono inserire HTML nel campo di descrizione di un evento. Se non abilitato, i tag HTML saranno saltati, in modo da farli apparire com testo semplice. Attenzione: Abilitare questa caratteristica permetter&agrave; agli utenti di fare riferimenti ad immagini di altri siti
 Allow HTML in Description: Permetti HTML nella Descrizione
-popup-includes-siteextras-help: Se abilitato nei popup degli eventi sar&agrave abilitato nel file site_extras.php il settaggio del campo permetti eventi personalizzati
+popup-includes-siteextras-help: Se abilitato nei popup degli eventi sar&agrave abilitato nel file site_extras.php l'impostazione del campo permetti eventi personalizzati
 Display Site Extras in popup: Mostra gli Extra per il Sito in un popup
 remember-last-login-help: Quando abilitato, i campi di accesso dell'utente saranno riempiti automaticamente nella pagina di accesso (ma non la password) e saranno caricate le preferenze dell'utente (inclusi i colori preferiti e la scelta della lingua)
 Remember last login: Ricorda l'ultimo accesso
-Plugins: Plugin
-plugins-enabled-help: Abilita applicazioni Plugin
-Enable Plugins: Abilita Plugin
-plugins-sort-key-help: Specifica una chiave di ordinamento per i plugin. Questo permette di ordinare in un determinato modo i plugin
 allow-public-access-help: Se abilitato, il calendario pu&ograve; essere utilizzato come un calendario pubblico in sola lettura che non richiede agli utenti di effettuare il login
 Allow public access: Permetti l'accesso pubblico
 public-access-default-visible: Eventi dal calendario pubblico appariranno automaticamente nel calendario di tutti gli utenti
@@ -204,11 +230,11 @@ external-can-receive-notification-help: Quando gli utenti esterni sono abilitati
 External users can receive email notifications: Gli utenti esterni possono ricevere e-mail di notifica
 external-can-receive-reminder-help: Quando gli utenti esterni sono abilitati ed &egrave; abilitato l'uso di e-mail, gli utenti esterni possono ricevere avvisi via e-mail (se l'indirizzo e-mail dell'utente &egrave; stato fornito)
 External users can receive email reminders: Utenti esterni possono ricevere avvisi via e-mail
-email-enabled-help: Attiva o disattiva l'invio di e-mail di notifica ed avviso. Settalo a "No", se il tuo server non &egrave; propriamente configurato per l'invio di e-mail
+email-enabled-help: Attiva o disattiva l'invio di e-mail di notifica ed avviso. Impostalo a "No", se il tuo server non &egrave; propriamente configurato per l'invio di e-mail
 Email enabled: Abilita e-mail
 email-default-sender: Specifica l'indirizzo e-mail da cui figurano provenire le e-mail quando si inviano gli avvisi
 Default sender address: Indirizzo del mittente standard
-Default user settings: Settaggi dell'utente standard
+Default user settings: Impostazioni dell'utente standard
 email-event-reminders-help: Specifica se inviare o meno avvisi per gli eventi
 Event reminders: Segnala eventi in e-mail
 email-event-added: Segnala nuovo evento
@@ -220,17 +246,6 @@ Events removed from my calendar: Segnala un evento cancellato dal mio calendario
 email-event-rejected: Segnala un evento rifiutato
 Event rejected by participant: Segnala un evento rifiutato da un partecipante
 Allow user to customize colors: Consenti all'utente di personalizzare i colori
-Document background: Sfondo documento
-Document title: Titolo documento
-Document text: Testo
-Table grid color: Griglia della tabella
-Table header background: Sfondo dell'intestazione della tabella
-Table header text: Testo dell'intestazione della tabella
-Table cell background: Sfondo cella tabella
-Table cell background for current day: Sfondo cella tabella per oggi
-Table cell background for weekends: Sfondo cella tabella per il week-end
-Event popup background: Sfondo della popup degli eventi
-Event popup text: Testo della popup degli eventi
 
 ########################################
 # Page: adminhome.php
@@ -238,7 +253,7 @@ Event popup text: Testo della popup degli eventi
 Assistants: Assistenti
 Preferences: Preferenze
 Users: Utenti
-Categories: Categoris
+Categories: Categorie
 Views: Viste
 Layers: Livelli
 Reports: Rapporti
@@ -297,6 +312,9 @@ Description: Descrizione
 ########################################
 # Page: edit_entry.php
 #
+days: giorni
+hours: ore
+minutes: minuti
 Edit Entry: Modifica Nota
 Add Entry: Aggiungi Nota
 Details: Dettagli
@@ -322,10 +340,9 @@ All day event: Evento giornaliero
 Timezone Offset: Scostamento della Timezone
 time-help: Specifica l'ora di un evento.<br /><i>Questo campo pu&ograve; essere lasciato in bianco.</i>
 duration-help: Specifica la durata (in minuti) dell'evento.<br /><i>Questo campo pu&ograve; essere lasciato in bianco.</i>
-hours: ore
-minutes: minuti
 end-time-help: Specifica il tempo previsto per la fine dell'evento
 participants-help: Elenca i partecipanti di questa nota.
+Availability: Disponibilit&agrave;
 external-participants-help: Specifica una lista di partecipanti all'evento che sono dei non utenti del calendario. Gli utenti dovrebbero essere listati uno per riga e possono includere un indirizzo e-mail. Se un indirizzo e-mail viene specificato, &egrave; possibile che l'utente riceva notifiche e avvisi
 External Participants: Partecipanti Esterni
 repeat-type-help: Seleziona quanto spesso l'evento si deve ripetere.<i>Mensile (per giorno)</i> permette ad un evento di ripetersi il 1&grad; Luned&igrave; del mese, 3&grad; Gioved&igrave; del mese, ecc. <i>Mensile (per data)</i> permette ad un evento di ripetersi nello stesso giorno del mese.
@@ -341,7 +358,6 @@ repeat-frequency-help: Specifica quanto spesso l'evento si deve ripetere. Il val
 Frequency: Frequenza
 All: Tutte
 Send Reminder: Avvisa
-days: giorni
 Delete entry: Cancella nota
 You are not authorized to edit this entry.: Non sei autorizzato a modificare questa nota
 
@@ -378,7 +394,7 @@ You can only create one layer for each user.: Tu puoi creare un livello solo per
 ########################################
 # Page: edit_nonusers.php
 #
-NONUSER_PREFIX not set: NONUSER_PREFIX non &egrave; stato settato nel file config.php.
+NONUSER_PREFIX not set: NONUSER_PREFIX non &egrave; stato impostato nel file config.php.
 word characters only: pu&ograve; contenere solo caratteri alfanumerici (a-zA-Z_0-9)
 Add User: Aggiungi Utente
 Edit User: Modifica Utente
@@ -570,10 +586,19 @@ Default Category: Categoria di default
 default-category-help: Specifica la categoria di default di un nuovo evento
 When I am the boss: Quando il capo sono io
 Email me event notification: Mandami una notifica dell'evento via e-mail
+email-boss-notifications-help: Specifica se i capi ricevono email per notifiche eventi
 I want to approve events: Voglio approvare gli eventi
+boss-approve-event-help: Specifica al capo &egrave; richiesto approvare eventi aggiunti dagli assistententi.
 Subscribe/Publish: Sottoscrizione/Pubblicazione
+Allow remote publishing: Consenti pubblicazione remota
+allow-remote-publishing-help: Specifica se il cliente iCal remoto pu&ograve; pubblicare eventi su questo WebCalendar
+remote-publishing-url-help: Mosta l'URL da usare nel cliente remoto iCal sia per sottoscrizione che pubblicazione su questo WebCalendar.
 allow-remote-subscriptions-help: Specifica se utenti remoti possono sottoscrivere il tuo calendario, permettendo loro di vedere i tuoi eventi nella loro applicazione abilitata all'uso di iCal (ad esempio iCal della Apple o il Mozilla Calendar).
 remote-subscriptions-url-help: Mostra l'URL che gli utenti remoti dovrebbero utilizzare per sottoscrivere il tuo calendario
+Enable FreeBusy publishing: Abilita pubblicazione di Libero/Occupato (FreeBusy)
+freebusy-enabled-help: Specifica se la disponibilit&agrave; di un utente pu&ograve; essere letta da un cliente iCal via lo standard FreeBusy.
+freebusy-url-help: L' URL per accedere alla lista Libero/Occupato di un utente
+rss-feed-url-help: L' URL per accedere al flusso RSS
 
 ########################################
 # Page: import.php
@@ -597,15 +622,16 @@ Edit layer: Modifica il livello
 Layers are currently: I livelli sono attualmente
 Disable Layers: Disabilita Livelli
 Click here: Clicca qui
-to modify the layers settings for the: per modificare i settaggi per
+to modify the layers settings for the: per modificare i impostazioni per
 Add layer: Crea un livello
 
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Visualizza questa nota
 Approve/Confirm: Approva/Conferma
 Reject: Rifiuta
+View this entry: Visualizza questa nota
+Unapproved Entries: Eventi non approvati
 Approve this entry?: Approva questa nota?
 Reject this entry?: Rifiuta questo inserimento?
 
@@ -632,6 +658,7 @@ Add New NonUser Calendar: Aggiungi un nuovo calendario per non utenti
 # Page: pref.php
 #
 Save Preferences: Salva Preferenze
+Return to My Preferences: Torna a 'Le mie preferenze'
 hour: ora
 minute: minuto
 
@@ -693,6 +720,7 @@ Set Category: Setta la categoria
 ########################################
 # Page: users.php
 #
+Remote Calendars: Calendari remoti
 denotes administrative user: denota utente con privilegi amministrativi
 Add New User: Aggiungere Nuovo Utente
 
@@ -830,6 +858,7 @@ Sat: Sab
 #
 My Calendar: Il mio calendario
 Add New Entry: Aggiungi nuova nota
+Add New Task: Aggiungi nuovo compito
 Logout: Esci
 Back to My Calendar: Torna al mio calendario
 Go to: Vai a
@@ -933,7 +962,20 @@ Invalid color: Colore non valido
 ########################################
 # Page: includes/menu/index.php
 #
+This Week: Settimana corrente
+This Month: Mese corrente
+This Year: Anno corrente
+Exit: Esci
+Add New Event: Aggiungi nuovo evento
+Delete Entries: Elimina elementi
+My Views: Viste ...
+Manage Calendar of: Gestione del Calendario di ...
+My Reports: Rapporti
+My Profile: Profilo utente
+Public Calendar: Calendario pubblico
 Unapproved Events: Eventi non approvati
+User Manager: Gestione Utenti
+Help Contents: Argomenti Guida
 
 ########################################
 # Page: tools/send_reminders.php
