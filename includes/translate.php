@@ -168,7 +168,7 @@ function load_translation_text () {
   }
   if ( ! file_exists ( $lang_file ) )
       $lang_file = $eng_file;
-			
+      
   if ( ! file_exists ( $lang_file ) )
     die_miserable_death ( 'Cannot find language file: ' . $lang_file );
 
@@ -292,14 +292,18 @@ function get_browser_language ( $pref = false ) {
 function translate ( $str, $decode = '' ) {
   global $translation_loaded, $translations;
 
+  //Set $blink to true to aid in finding missing translations
+  $blink = true;
+  
   if ( ! $translation_loaded )
     load_translation_text ();
 
   $str = trim ( $str );
   return ( empty ( $translations[$str] )
-    ? $str
+    ? ($blink ? '<blink>' . $str . '</blink>' : $str )
     : ( $decode ? unhtmlentities ( $translations[$str] ) : $translations[$str] ) );
 }
+
 
 /* Translates text and prints it.
  *
