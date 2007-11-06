@@ -20,9 +20,7 @@ if ( ! $is_admin )
   $user = $login;
 
 $BodyX = 'onload="usermode_handler();"';
-$INC = array ( 'js/visible.php');
-if ( $GROUPS_ENABLED == 'Y' )
-  $INC[] = 'js/views_edit.php/true';
+$INC = array ( 'js/visible.php', 'js/views_edit.php/true');
 
 $disableCustom = true;
 
