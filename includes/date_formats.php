@@ -5,12 +5,15 @@
  * <b>Note:</b>
  * PLEASE EDIT THIS FILE TO ADD ANY ADDITIONAL FORMATS REQUIRED.
  *  valid codes example
- *    __month__ = December
- *    __mon__ = Dec
- *    __dd__ = 09 (date with leading zero)
- *    __j__ = 9 ( date without leading zero)
- *    __yyyy__ = 2005
- *    __yy__ = 05
+ *    __month__ = September
+ *    __mon__   = Sep
+ *    __mm__    = 09 (Number of month with leading zero.)
+ *
+ *    __dd__    = 04 (Date with leading zero.)
+ *    __j__     = 4  (Date without leading zero.)
+ *
+ *    __yy__    = 07   (2 digit year.)
+ *    __yyyy__  = 2007 (4 digit year.)
  *
  *
  * @author Ray Jones < rjones@umces.edu>
@@ -28,10 +31,12 @@ reset ( $languages );
 
 $DecemberStr = translate ( 'December' );
 $DecStr = translate ( 'Dec' );
-$langDefStr = translate ( 'LANGUAGE DEFINED' );
+
+$datestyles = $datestyles_md = $datestyles_my = $datestyles_task =
+array ( 'LANGUAGE_DEFINED', translate ( 'LANGUAGE DEFINED' ) );
 
 // Day Month Year format
-$datestyles = array ( 'LANGUAGE_DEFINED', $langDefStr,
+$datestyles += array (
   '__mon__ __j__, __yyyy__', $DecStr . ' 5, 2000',
   '__month__ __dd__, __yyyy__', $DecemberStr . ' 31, 2000',
   '__dd__ __month__ __yy__', '31 ' . $DecemberStr . ' 00',
@@ -58,7 +63,7 @@ $datestyles = array ( 'LANGUAGE_DEFINED', $langDefStr,
   );
 
 // Month Year format
-$datestyles_my = array ( 'LANGUAGE_DEFINED', $langDefStr,
+$datestyles_my += array (
   '__mon__ __yyyy__', $DecStr . ' 2000',
   '__month__ __yy__', $DecemberStr . ' 00',
   '__month__ __yyyy__', $DecemberStr . ' 2000',
@@ -77,7 +82,7 @@ $datestyles_my = array ( 'LANGUAGE_DEFINED', $langDefStr,
   );
 
 // Month Day format
-$datestyles_md = array ( 'LANGUAGE_DEFINED', $langDefStr,
+$datestyles_md += array (
   '__mon__ __dd__', $DecStr . ' 31',
   '__month__ __dd__', $DecemberStr . ' 31',
   '__month__-__dd__', $DecemberStr . '-31',
@@ -92,7 +97,7 @@ $datestyles_md = array ( 'LANGUAGE_DEFINED', $langDefStr,
   );
 
 // Task Date format
-$datestyles_task = array ( 'LANGUAGE_DEFINED', $langDefStr,
+$datestyles_task += array (
   '__mon__ __dd__', $DecStr . ' 31',
   '__dd__ __mon__', ' 31' . $DecStr,
   '__dd__.__mm__', '31.12',
