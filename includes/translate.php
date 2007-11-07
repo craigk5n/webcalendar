@@ -281,26 +281,80 @@ function get_browser_language ( $pref = false ) {
  * The first time that this is called, the translation file will be loaded
  * (with {@link load_translation_text () }).
  *
- * @param string $str    Text to translate
- * @param string $decode Do we want to envoke html_entity_decode?
- *                       We currently only use this with javascript alerts.
+ * @param string   $str     Text to translate
+ *                          or format for date () ie: 'Y m' for date ( 'Y m' )
+ * @param string   $decode  Do we want to envoke html_entity_decode?
+ *                          We currently only use this with javascript alerts.
+ * @param string   $type    (A = alphabetic, D = date, N = numeric)
+ * @param integer  $date    Default date()
  *
  * @return string The translated text, if available. If no translation is
  *                avalailable, then the original untranslated text is returned.
  */
-function translate ( $str, $decode = '' ) {
+function translate ( $str, $decode = '', $type = 'A', $date = '' ) {
   global $translation_loaded, $translations;
-
-  //Set $blink to true to aid in finding missing translations
-  $blink = false;
 
   if ( ! $translation_loaded )
     load_translation_text ();
 
-  $str = trim ( $str );
-  return ( empty ( $translations[$str] )
-    ? ($blink ? '<blink>' . $str . '</blink>' : $str )
-    : ( $decode ? unhtmlentities ( $translations[$str] ) : $translations[$str] ) );
+  if ( $type == 'A' ) {
+    $str = trim ( $str );
+
+    /*
+    All $translations[$str] should at least have default values now.
+
+    // Set $blink to true to aid in finding missing translations.
+    $blink = false;
+
+    return ( empty ( $translations[$str] )
+      ? ( $blink ? '<blink>' . $str . '</blink>' : $str )
+      : ( $decode
+        ? unhtmlentities ( $translations[$str] ) : $translations[$str] ) );
+    */
+    return ( $decode
+      ? unhtmlentities ( $translations[$str] ) : $translations[$str] );
+  }
+
+  $not_English = ( strpos ( strtolower ( $LANGUAGE ), 'English' ) === false );
+
+  if ( $type == 'D' ) {
+    $str = date ( $str, $date );
+
+    if ( $not_English ) {
+      // Only translate if not English.
+      for ( $i = 0; $i < 12; $i++ ) {
+        // Translate month names. Full then abbreviation.
+        $tmp = date ( 'F', mktime ( 0, 0, 0, $i + 1 ) );
+        if ( $tmp != $translations[$tmp] )
+          $str = str_replace ( $tmp, $translations[$tmp], $str );
+
+        $tmp = date ( 'M', mktime ( 0, 0, 0, $i + 1 ) );
+        if ( $tmp != $translations[$tmp] )
+          $str = str_replace ( $tmp, $translations[$tmp], $str );
+
+        if ( $i < 7 ) {
+          // Might as well translate day names while we're here.
+          $tmp = date ( 'l', mktime ( 0, 0, 0, 1, $i + 1 ) );
+          if ( $tmp != $translations[$tmp] )
+            $str = str_replace ( $tmp, $translations[$tmp], $str );
+
+          $tmp = date ( 'D', mktime ( 0, 0, 0, 1, $i + 1 ) );
+          if ( $tmp != $translations[$tmp] )
+            $str = str_replace ( $tmp, $translations[$tmp], $str );
+        }
+      }
+    }
+  }
+  if ( $not_English ) {
+    // Translate number symbols.
+    for ( $i = 0; $i < 10; $i++ ) {
+      $tmp = $i . '';
+      if ( $tmp != $translations[$tmp] )
+        $str = str_replace ( $tmp, $translations[$tmp], $str );
+    }
+  }
+
+  return $str;
 }
 
 /* Translates text and prints it.
@@ -309,12 +363,15 @@ function translate ( $str, $decode = '' ) {
  *
  * <code>echo translate ( $str )</code>
  *
- * @param string $str    Text to translate and print
- * @param string $decode Do we want to envoke html_entity_decode
+ * @param string   $str     Text to translate and print
+ * @param string   $decode  Do we want to envoke html_entity_decode
+ * @param string   $type    (A = alphabetic, D = date, N = numeric)
+ * @param integer  $date    Default date()
+ *
  * @uses translate
  */
-function etranslate ( $str, $decode = '' ) {
-  echo translate ( $str, $decode );
+function etranslate ( $str, $decode = '', $type = 'A', $date = '' ) {
+  echo translate ( $str, $decode, $type, $date );
 }
 
 /* Translates and removes HTML from text, and returns it.
