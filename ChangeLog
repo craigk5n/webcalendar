@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Fix bug [ 1828416 ] no pull-down entries for languages at 'preferences' and 'sys
  - Fix bug [ 1823080 ] CVS 1.1.7 - double sunday in month view
  - Applied PATCH [1826466 ] update to translations/Italian.txt
  - Applied PATCH [ 1813253 ] patch for upgrade-postgres.sql
