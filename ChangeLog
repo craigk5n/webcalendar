@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fix bug [ 1828232 ] Error after Login
  - Add capability to translate dates and numbers.
    In preparation for eliminating file 'includes/date_formats.php'.
  - Applied PATCH [1826466 ] update to translations/Italian.txt
