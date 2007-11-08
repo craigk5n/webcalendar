@@ -798,17 +798,16 @@ function date_to_epoch ( $d ) {
 /* Converts a date in YYYYMMDD format into "Friday, December 31, 1999",
  * "Friday, 12-31-1999" or whatever format the user prefers.
  *
- * @param string $indate        Date in YYYYMMDD format
- * @param string $format        Format to use for date
- *                              (default is "__month__ __dd__, __yyyy__")
- * @param bool   $show_weekday  Should the day of week also be included?
- * @param bool   $short_months  Should the abbreviated month names be used
- *                              instead of the full month names?
+ * @param string  $indate        Date in YYYYMMDD format
+ * @param string  $format        Format to use for date
+ *                               (default is "__month__ __dd__, __yyyy__")
+ * @param bool    $show_weekday  Should the day of week also be included?
+ * @param bool    $short_months  Should the abbreviated month names be used
+ *                               instead of the full month names?
  *
  * @return string  Date in the specified format.
  *
  * @global string Preferred date format
- * @TODO Add other date () parameters like ( j, n )
  */
 function date_to_str ( $indate, $format = '', $show_weekday = true,
   $short_months = false ) {
@@ -827,14 +826,8 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   $y = intval ( $indate / 10000 );
   $m = intval ( $indate / 100 ) % 100;
   $d = $indate % 100;
-  $wday = strftime ( "%w", mktime ( 0, 0, 0, $m, $d, $y ) );
-  if ( $short_months ) {
-    $month = month_name ( $m - 1, 'M' );
-    $weekday = weekday_name ( $wday, 'D' );
-  } else {
-    $month = month_name ( $m - 1 );
-    $weekday = weekday_name ( $wday );
-  }
+
+  $month = month_name ( $m - 1, ( $short_months ? 'M' : '' ) );
 
   $ret = str_replace ( '__dd__', $d, $format );
   $ret = str_replace ( '__j__', intval ( $d ), $ret );
@@ -843,9 +836,11 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   $ret = str_replace ( '__month__', $month, $ret );
   $ret = str_replace ( '__n__', sprintf ( "%02d", $m ), $ret );
   $ret = str_replace ( '__yy__', sprintf ( "%02d", $y % 100 ), $ret );
-  $ret = str_replace ( '__yyyy__', $y, $ret );
 
-  return ( $show_weekday ? "$weekday, $ret" : $ret );
+  return ( $show_weekday
+    ? weekday_name ( strftime ( '%w', mktime ( 0, 0, 0, $m, $d, $y ) ),
+      ( $short_months ? 'D' : '' ) ) . ', '
+    : '' ) . str_replace ( '__yyyy__', $y, $ret );
 }
 
 /* Extracts a user's name from a session id.
@@ -2416,17 +2411,17 @@ function get_entries ( $date, $get_unapproved = true ) {
  *
  *
  * @param string $user        Subject User
- *                                
+ *
  *
  * @return array  Array of Groups.
  */
 function get_groups ( $user ) {
   global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS ,
   $is_nonuser_admin, $is_assistant, $login;
-  
+
   if ( empty ( $GROUPS_ENABLED  ) || $GROUPS_ENABLED != 'Y' )
     return false;
-    
+
   $owner = ( $is_nonuser_admin || $is_assistant ? $user : $login );
 
   // Load list of groups.
