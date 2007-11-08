@@ -277,7 +277,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
               $is_nonuser_admin ) {
      echo '<option value="' . $val . '"';
      if ( $val == $prefarray['LANGUAGE'] ) echo $selected;
-     echo '>' . translate ( $key ) . "</option>\n";
+     echo '>' . $key . "</option>\n";
    }
  }
 ?>
