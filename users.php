@@ -26,7 +26,9 @@ if ( empty ( $login ) || $login == '__public__' ) {
   exit;
 }
 
-$doUsers = $doGroups = $doNUCS = false;
+$doUser = $doUsers = $doGroups = $doNUCS = false;
+$doUser = ( ! access_is_enabled () ||
+  access_can_access_function ( ACCESS_ACCOUNT_INFO ) );
 $doUsers = ( ! access_is_enabled () ||
   access_can_access_function ( ACCESS_USER_MANAGEMENT ) );
 $doRemotes = ( ! empty ( $REMOTES_ENABLED ) && $REMOTES_ENABLED == 'Y' &&
@@ -46,7 +48,7 @@ ob_start ();
 echo display_admin_link () . '
 <!-- TABS -->
     <div id="tabs">'
- .( $doUsers ? '
+ .( $doUser || $doUsers? '
       <span class="'.$taborder[$i++].'" id="tab_users"><a href="#tabusers" onclick="return '
  . 'showTab( \'users\' )">'
  . ( $is_admin ? translate ( 'Users' ) : translate ( 'Account' ) )
@@ -87,15 +89,19 @@ if ( $doUsers ) {
            . $denotesStr . '">*</abbr>' : '' )
          . '</li>';
     }
+  }
+}
+if ( $is_admin ) {
     echo '
           </ul>
           *&nbsp;' . $denotesStr . '.<br />
           <iframe name="useriframe" id="useriframe"></iframe>';
-  } else
+}
+if ($doUser || $doUsers ) {
     echo '
           <iframe src="edit_user.php" name="accountiframe" id="accountiframe">'
-     . '</iframe>';
-} //end if $doUsers
+    . '</iframe>';
+}
 
 echo '
       </div>';
