@@ -30,7 +30,7 @@ if ( empty ( $user ) ) {
   }
 } else {
   // User is editing their account info.
-  if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) )
+  if ( ! access_can_access_function ( ACCESS_ACCOUNT_INFO ) )
     send_to_preferred_view ();
 }
 

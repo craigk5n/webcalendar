@@ -3,6 +3,9 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Added ability to place page in more than one UAC 'page_lookup' group. We should be able to eliminate
+   'page_lookup_ex' array eventually.
+ - Fix bug [ 1828397 ] "you are not authorized" error
  - Fix bug [ 1828416 ] no pull-down entries for languages at 'preferences' and 'sys
  - Fix bug [ 1823080 ] CVS 1.1.7 - double sunday in month view
  - Applied PATCH [1826466 ] update to translations/Italian.txt

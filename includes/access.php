@@ -103,7 +103,7 @@ $GLOBALS['page_lookup'] = array (
   ACCESS_WEEK => '(week.php|week_details.php)',
   ACCESS_MONTH => 'month.php',
   ACCESS_YEAR => 'year.php',
-  ACCESS_ADMIN_HOME => '(adminhome.php|users.php)',
+  ACCESS_ADMIN_HOME => '(adminhome.php)',
   ACCESS_REPORT => 'report',
   ACCESS_VIEW => 'view_..php',
   ACCESS_VIEW_MANAGEMENT => '(views.php|views_edit)',
@@ -111,8 +111,8 @@ $GLOBALS['page_lookup'] = array (
   ACCESS_LAYERS => 'layer',
   ACCESS_SEARCH => 'search',
   ACCESS_ACTIVITY_LOG => 'activity_log.php',
-  ACCESS_USER_MANAGEMENT => '(edit.*user.*.php|nonusers.*php|group.*php)',
-  ACCESS_ACCOUNT_INFO => 'XYZXYZ_special_case',
+  ACCESS_USER_MANAGEMENT => '(edit.*user.*.php|nonusers.*php|group.*php|users.php)',
+  ACCESS_ACCOUNT_INFO => '(users.php|XYZXYZ_special_case)',
   ACCESS_ACCESS_MANAGEMENT => '(access.*php)',
   ACCESS_PREFERENCES => 'pref.*php',
   ACCESS_SYSTEM_SETTINGS => '(admin.php|admin_handler.php|controlpanel.php)',
@@ -392,7 +392,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
   global $access_user, $is_admin, $login,
   $page_lookup, $page_lookup_ex, $PHP_SELF;
 
-  $page_id = -1;
+  $page_id = array();
 
   if ( ! access_is_enabled () )
     return true;
@@ -419,7 +419,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
   for ( $i = 0; $i <= ACCESS_NUMBER_FUNCTIONS && $page_id < 0; $i++ ) {
     if ( ! empty ( $page_lookup[$i] ) &&
         preg_match ( "/$page_lookup[$i]/", $page ) )
-      $page_id = $i;
+      $page_id[] = $i;
   }
 
   // echo "page_id = $page_id<br />page = $page<br />\n";
@@ -435,9 +435,12 @@ function access_can_view_page ( $page = '', $user = '' ) {
 
   // If we did not find a page id, then this is also a WebCalendar bug.
   // (Someone needs to add another entry in the $page_lookup[] array.)
-  assert ( '$page_id >= 0' );
+  //assert ( 'count ( $page_id ) > 0' );
 
-  $yesno = substr ( $access, $page_id, 1 );
+  for ( $i=0, $cnt = count ( $page_id ); $i < $cnt; $i++ ) {
+    $yes = substr ( $access, $page_id, 1 );
+		if (  $yes == 'Y' ) $yesno = $yes;
+	}
   // echo $page . '  ' . $page_id . ' ' . $access . '<br />';
   // No setting found. Use default values.
   if ( empty ( $yesno ) )
