@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fix bug [ 1827370 ] would not add multiple participants to event
  - Added ability to place page in more than one UAC 'page_lookup' group. We should be able to eliminate
    'page_lookup_ex' array eventually.
  - Fix bug [ 1828397 ] "you are not authorized" error
