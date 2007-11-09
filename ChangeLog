@@ -4,6 +4,9 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Added ability to place page in more than one UAC 'page_lookup' group. We should be able to eliminate
+   'page_lookup_ex' array eventually.
+ - Fix bug [ 1828397 ] "you are not authorized" error
  - Fix bug [ 1828416 ] no pull-down entries for languages at 'preferences' and 'sys
  - Fix bug [ 1828232 ] Error after Login
  - Add capability to translate dates and numbers.
