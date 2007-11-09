@@ -282,46 +282,29 @@ function get_browser_language ( $pref = false ) {
  * (with {@link load_translation_text () }).
  *
  * @param string   $str     Text to translate
- *                          or format for date () ie: 'Y m' for date ( 'Y m' )
  * @param string   $decode  Do we want to envoke html_entity_decode?
  *                          We currently only use this with javascript alerts.
- * @param string   $type    (A = alphabetic, D = date, N = numeric)
- * @param integer  $date    Default date()
+ * @param string   $type    ('' = alphabetic, A = alphanumeric,
+ *                          D = date, N = numeric)
  *
  * @return string The translated text, if available. If no translation is
  *                avalailable, then the original untranslated text is returned.
  */
-function translate ( $str, $decode = '', $type = 'A', $date = '' ) {
+function translate ( $str, $decode = '', $type = '' ) {
   global $translation_loaded, $translations;
 
   if ( ! $translation_loaded )
     load_translation_text ();
 
-  if ( $type == 'A' ) {
+  if ( $type = '' OR $type == 'A' ) {
+    // Translate these because even English may be abbreviated.
     $str = trim ( $str );
-
-    /*
-    All $translations[$str] should at least have default values now.
-
-    // Set $blink to true to aid in finding missing translations.
-    $blink = false;
-
-    return ( empty ( $translations[$str] )
-      ? ( $blink ? '<blink>' . $str . '</blink>' : $str )
-      : ( $decode
-        ? unhtmlentities ( $translations[$str] ) : $translations[$str] ) );
-    */
-    return ( $decode
-      ? unhtmlentities ( $translations[$str] ) : $translations[$str] );
+    $str = $decode
+      ? unhtmlentities ( $translations[$str] ) : $translations[$str];
   }
-
-  $not_English = ( strpos ( strtolower ( $LANGUAGE ), 'English' ) === false );
-
-  if ( $type == 'D' ) {
-    $str = date ( $str, $date );
-
-    if ( $not_English ) {
-      // Only translate if not English.
+  if ( strpos ( strtolower ( $LANGUAGE ), 'english' ) === false ) {
+    // Only translate if not English.
+    if ( $type == 'D' ) {
       for ( $i = 0; $i < 12; $i++ ) {
         // Translate month names. Full then abbreviation.
         $tmp = date ( 'F', mktime ( 0, 0, 0, $i + 1 ) );
@@ -344,13 +327,13 @@ function translate ( $str, $decode = '', $type = 'A', $date = '' ) {
         }
       }
     }
-  }
-  if ( $not_English ) {
-    // Translate number symbols.
-    for ( $i = 0; $i < 10; $i++ ) {
-      $tmp = $i . '';
-      if ( $tmp != $translations[$tmp] )
-        $str = str_replace ( $tmp, $translations[$tmp], $str );
+    if ( $type != '' ) {
+      // Translate number symbols.
+      for ( $i = 0; $i < 10; $i++ ) {
+        $tmp = $i . '';
+        if ( $tmp != $translations[$tmp] )
+          $str = str_replace ( $tmp, $translations[$tmp], $str );
+      }
     }
   }
 
