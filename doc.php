@@ -162,7 +162,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       $can_view = true;
   }
   if ( empty ( $error ) && ! $can_view )
-    $error = print_not_auth ();
+    $error = print_not_auth (8);
 }
 
 if ( ! empty ( $error ) ) {

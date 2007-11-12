@@ -44,7 +44,7 @@ print_header ();
 ob_start ();
 
 if ( $ALLOW_VIEW_OTHER != 'Y' )
-  echo print_not_auth ();
+  echo print_not_auth (7);
 else {
   echo '
     <h2>' . ( $updating_public

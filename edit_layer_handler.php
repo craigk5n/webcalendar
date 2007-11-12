@@ -5,7 +5,7 @@ include_once 'includes/init.php';
 $error = '';
 
 if ( $ALLOW_VIEW_OTHER != 'Y' )
-  $error = print_not_auth ();
+  $error = print_not_auth (7);
 
 if ( empty ( $dups ) )
   $dups = 'N';

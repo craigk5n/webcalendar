@@ -6,7 +6,7 @@ require ( 'includes/classes/WebCalMailer.class' );
 $error = '';
 
 if ( $readonly == 'Y' )
-  $error = print_not_auth ();
+  $error = print_not_auth (4);
 // Give user a chance to add comments to approval email.
 if ( ! empty ( $_POST ) ) {
   $comments = getPostValue ( 'comments' );

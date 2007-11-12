@@ -4694,15 +4694,19 @@ function print_error_header () {
 
 /* Generate standardized Not Authorized message
  *
+ * @param int $errno  Optional Error number to display
  * @param bool $full  Include ERROR title
  *
  * @return string  HTML to display notice.
  *
  * @uses print_error_header
  */
-function print_not_auth ( $full = false ) {
+function print_not_auth ( $errno='', $full = false ) {
+  global $settings;
   return ( $full ? print_error_header () : '' )
-   . '!!!' . translate ( 'You are not authorized.' ) . "\n";
+   . '!!!' . translate ( 'You are not authorized.' ) 
+	 . ( ! empty ( $settings['mode'] ) && $settings['mode'] == 'dev' ? ' ' 
+	 . $errno : '' )  . "\n";
 }
 
 /* Generates HTML for radio buttons.

@@ -3,7 +3,7 @@
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 if ( ! $is_admin ) {
-  echo print_not_auth ( true ) . '
+  echo print_not_auth ( 3, true ) . '
   </body>
 </html>';
   exit;

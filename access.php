@@ -23,7 +23,7 @@ $allow_view_other =
 ( ! empty ( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );
 
 if ( ! access_is_enabled () ) {
-  echo print_not_auth ();
+  echo print_not_auth (1);
   exit;
 }
 // translate ( 'Database error' )

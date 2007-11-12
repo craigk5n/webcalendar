@@ -82,7 +82,7 @@ $WebCalendar->setLanguage ();
 
 if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  echo print_not_auth ();
+  echo print_not_auth (28);
   exit;
 }
 /* Configurable settings for this file. You may change the settings below to
@@ -164,7 +164,7 @@ $creator = ( $username == '__public__' ) ? 'Public' : $rss_fullname;
 if ( $username != '__public__' &&
   ( empty ( $USER_RSS_ENABLED ) || $USER_RSS_ENABLED != 'Y' ) ) {
   header ( 'Content-Type: text/plain' );
-  echo print_not_auth ();
+  echo print_not_auth (29);
   exit;
 }
 

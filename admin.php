@@ -98,7 +98,7 @@ function admin_print_color_input_html ( $varname, $title, $varval = '' ) {
 }
 
 $currenttab = '';
-$error = ( $is_admin ? '' : print_not_auth () );
+$error = ( $is_admin ? '' : print_not_auth (3) );
 
 if ( ! empty ( $_POST ) && empty ( $error ) ) {
   $currenttab = getPostValue ( 'currenttab' );

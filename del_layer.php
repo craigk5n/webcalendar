@@ -6,7 +6,7 @@ $id = getGetValue ( 'id' );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' || empty ( $id ) ) {
   print_header ();
-  echo print_not_auth () . print_trailer ();
+  echo print_not_auth (7) . print_trailer ();
   exit;
 }
 $id = getGetValue ( 'id' );

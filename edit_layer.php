@@ -4,7 +4,7 @@ include_once 'includes/init.php';
 
 if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   print_header ();
-  echo print_not_auth () . print_trailer ();
+  echo print_not_auth (7) . print_trailer ();
   exit;
 }
 

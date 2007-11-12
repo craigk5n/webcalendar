@@ -61,7 +61,7 @@ if ( empty ( $error ) && ! $can_delete && $event_id > 0 ) {
 }
 
 if ( empty ( $error ) && ! $can_delete )
-  $error = print_not_auth ();
+  $error = print_not_auth (6);
 
 if ( empty ( $error ) && $can_delete ) {
   if ( ! dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_blob_id = ?',

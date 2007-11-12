@@ -25,10 +25,12 @@ load_global_settings ();
 
 $WebCalendar->setLanguage ();
 
-if ( $single_user == 'Y'/* No login for single-user mode.*/ ||
-    $use_http_auth )/* No web login for HTTP-based authentication.*/
-  die_miserable_death ( print_not_auth () );
+if ( $single_user == 'Y') /* No login for single-user mode.*/ 
+  die_miserable_death ( print_not_auth (22) );
 
+if ( $use_http_auth )/* No web login for HTTP-based authentication.*/
+  die_miserable_death ( print_not_auth (23) );
+	
 $login = getValue ( 'login' );
 if ( empty ( $login ) )
   die_miserable_death ( translate ( 'A login must be specified' ) . '.' );
@@ -49,7 +51,7 @@ if ( ! nonuser_load_variables ( $login, 'temp_' ) )
      . ": $login" );
 
 if ( empty ( $temp_is_public ) || $temp_is_public != 'Y' )
-  die_miserable_death ( print_not_auth () );
+  die_miserable_death ( print_not_auth (24) );
 // calculate path for cookie
 if ( empty ( $PHP_SELF ) )
   $PHP_SELF = $_SERVER['PHP_SELF'];

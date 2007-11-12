@@ -44,13 +44,13 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
     } else
       $error = $deleteStr;
   } else
-    $error = $notAuthStr;
+    $error = print_not_auth (15);
 } else {
   // Handle update of password.
   if ( $formtype == 'setpassword' && strlen ( $user ) ) {
     if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) && !
         access_can_access_function ( ACCESS_ACCOUNT ) )
-      $error = $notAuthStr;
+      $error = print_not_auth (17);
     else
     if ( $upassword1 != $upassword2 )
       $error = $notIdenticalStr;
@@ -61,7 +61,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
           activity_log ( 0, $login, $user, LOG_USER_UPDATE,
             translate ( 'Set Password' ) );
         } else
-          $error = $notAuthStr;
+          $error = print_not_auth (18);
       } else
         $error = $noPasswordStr;
     }
@@ -93,7 +93,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
       } else {
         if ( ! empty ( $add ) && !
             access_can_access_function ( ACCESS_USER_MANAGEMENT ) )
-          $error = $notAuthStr;
+          $error = print_not_auth (15);
         else {
           // Don't allow a user to change themself to an admin by setting
           // uis_admin in the URL by hand. They must be admin beforehand.
