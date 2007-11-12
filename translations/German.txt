@@ -1702,9 +1702,7 @@ Invalid Login: Ung&uuml;ltiges Login
 OFF: AUS
 ON: EIN
 Safe Mode: =
-required only if Safe Mode is On: nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist
-(required only if Safe Mode is On): (nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
-Safe Mode Allowed Vars: Safe Mode erlaubte Variablen (nur erfoderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
+Safe Mode Allowed Vars: Safe Mode erlaubte Variablen (TZ nur erfoderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
 Display Errors: Anzeigefehler
 File Uploads: Datei Hochladen
 required only if Remote Calendars are used: nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden

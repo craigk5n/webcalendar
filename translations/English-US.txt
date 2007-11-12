@@ -1729,9 +1729,7 @@ Invalid Login: Invalid Login
 OFF: OFF
 ON: ON
 Safe Mode: Safe Mode
-required only if Safe Mode is On: required only if Safe Mode is On
-(required only if Safe Mode is On): (required only if Safe Mode is On)
-Safe Mode Allowed Vars: Safe Mode Allowed Vars (required only if Safe Mode is On)
+Safe Mode Allowed Vars: Safe Mode Allowed Vars (TZ required only if Safe Mode is On)
 Display Errors: Display Errors
 File Uploads: File Uploads
 required only if Remote Calendars are used: required only if Remote Calendars are used
