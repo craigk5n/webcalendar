@@ -731,7 +731,8 @@ function dbi_get_cached_rows ( $sql, $params = array (),
   if ( ! empty ( $db_connection_info['cachedir'] ) &&
     function_exists ( 'file_get_contents' ) ) {
     // Cache enabled.
-    $hash = md5 ( $db_connection_info['password'] . $sql . serialize ( $params ) );
+    $hash = md5 ( $db_connection_info['database'] 
+      . $db_connection_info['password'] .$sql . serialize ( $params ) );
     $file = $db_connection_info['cachedir'] . '/' . $hash . '.dat';
     if ( file_exists ( $file ) ) {
       $db_cache_count++;
