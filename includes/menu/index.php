@@ -128,7 +128,7 @@ if ( ( access_can_access_function ( ACCESS_VIEW, $user ) && $ALLOW_VIEW_OTHER !=
     $tmp['name'] = htmlspecialchars ( $views[$i]['cal_name'], ENT_QUOTES );
     $tmp['url'] = str_replace ( '&amp;', '&', $views[$i]['url'] )
      . ( empty ( $thisdate ) ? '' : '&date=' . $thisdate );
-    $views_link[] = $tmp;
+    $views_link[$i] = $tmp;
   }
   $views_linkcnt = count ( $views_link );
   $tmp = '';
@@ -257,30 +257,30 @@ $menuHtml = $menuScript = '';
 
 /* A menu link.
  */
-function jscMenu_menu ( $title, $url = false ) {
+function jscMenu_menu ( $title='', $url = false, $translate=true ) {
   global $menuScript;
 
-  $menuScript .= '[null,\'' . ( $title != '' ? translate ( $title ) : '' )
+  $menuScript .= '[null,\'' . ( $translate ? translate ( $title ) : $title )
    . "','$url'" . ',null,null' . ( $url ? ']' : '' ) . ',';
 }
 
 /* Dropdown menu item.
  */
-function jscMenu_item ( $icon, $title, $url, $target = '' ) {
+function jscMenu_item ( $icon, $title='', $url, $translate=true, $target = '' ) {
   global $menuScript;
 
   $menuScript .= '[\'<img src="includes/menu/icons/' . $icon
-   . '" alt="" />\',\'' . ( $title != '' ? translate ( $title ) : '' )
+   . '" alt="'.$title.'" />\',\'' . ( $translate ? translate ( $title ) : $title )
    . "','$url','$target',''],\n";
 }
 
 /* Dropdown menu item that has a sub menu.
  */
-function jscMenu_sub_menu ( $icon, $title ) {
+function jscMenu_sub_menu ( $icon, $title='', $translate=true  ) {
   global $menuScript;
 
   $menuScript .= '[\'<img src="includes/menu/icons/' . $icon
-   . '" alt="" />\',\'' . ( $title != '' ? translate ( $title ) : '' )
+   . '" alt="" />\',\'' . ( $translate ? translate ( $title ) : $title )
    . "','',null,'',\n";
 }
 
@@ -398,7 +398,7 @@ if ( $menuConfig['Views'] &&
 
       for ( $i = 0; $i < $views_linkcnt; $i++ ) {
         jscMenu_item ( 'views.png', $views_link[$i]['name'],
-          $views_link[$i]['url'] );
+          $views_link[$i]['url'], false );
       }
       jscMenu_close ();
     }
@@ -408,7 +408,8 @@ if ( $menuConfig['Views'] &&
       $groupcnt = count ( $groups );
 
       for ( $i = 0; $i < $groupcnt; $i++ ) {
-        jscMenu_item ( 'display.png', $groups[$i]['name'], $groups[$i]['url'] );
+        jscMenu_item ( 'display.png', $groups[$i]['name'], 
+				  $groups[$i]['url'], false );
       }
       jscMenu_close ();
     }
@@ -444,7 +445,7 @@ if ( (  $is_admin || is_array ( $reports_link ) ) && $menuConfig['Reports'] ) {
 
     for ( $i = 0; $i < $reports_linkcnt; $i++ ) {
       jscMenu_item ( 'document.png', $reports_link[$i]['name'],
-        $reports_link[$i]['url'] );
+        $reports_link[$i]['url'], false );
     }
     jscMenu_close ();
   }
@@ -635,16 +636,16 @@ $BodyX = ( empty ( $BodyX ) ? 'onload="' : substr ( $BodyX, 0, -1 ) )
 function parse_menu_extras ( $menuA ) {
   $ret = '';
   if ( $menuA[0] == 'menu' ) {
-    $ret .= jscMenu_menu ( $menuA[1], $menuA[2] );
+    $ret .= jscMenu_menu ( $menuA[1], $menuA[2], false );
 
     if ( is_array ( $menuA[3] ) ) {
       foreach ( $menuA[3] as $menuB ) {
         if ( $menuB[0] == 'item' )
-          $ret .= jscMenu_item ( $menuB[1], $menuB[2], $menuB[3], $menuB[4] );
+          $ret .= jscMenu_item ( $menuB[1], $menuB[2], $menuB[3], false, $menuB[4] );
         elseif ( $menuB[0] == 'submenu' ) {
-          $ret .= jscMenu_sub_menu ( $menuB[1], $menuB[2] );
+          $ret .= jscMenu_sub_menu ( $menuB[1], $menuB[2], false );
           foreach ( $menuB[3] as $menuC ) {
-            $ret .= jscMenu_item ( $menuC[1], $menuC[2], $menuC[3], $menuC[4] );
+            $ret .= jscMenu_item ( $menuC[1], $menuC[2], $menuC[3], false, $menuC[4] );
           }
           $ret .= jscMenu_close ();
         } elseif ( $menuB[0] == 'divider' )
@@ -655,7 +656,7 @@ function parse_menu_extras ( $menuA ) {
     }
     $ret .= jscMenu_close ();
   } elseif ( $menuA[0] == 'item' )
-    $ret .= jscMenu_item ( $menuA[1], $menuA[2], $menuA[3], $menuA[4] );
+    $ret .= jscMenu_item ( $menuA[1], $menuA[2], $menuA[3], false, $menuA[4] );
 
   return $ret;
 }
