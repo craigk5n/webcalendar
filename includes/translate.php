@@ -296,7 +296,7 @@ function translate ( $str, $decode = '', $type = '' ) {
   if ( ! $translation_loaded )
     load_translation_text ();
 
-  if ( $type = '' OR $type == 'A' ) {
+  if ( $type == '' || $type == 'A' ) {
     // Translate these because even English may be abbreviated.
     $str = trim ( $str );
     $str = $decode
