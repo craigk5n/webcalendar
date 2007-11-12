@@ -9,6 +9,8 @@ if ( ! $is_admin ) {
   exit;
 }
 $error = '';
+$save = getPostValue ( 'Save' );
+$add = getPostValue ( 'Add' );
 $delete = getPostValue ( 'delete' );
 $nid = getPostValue ( 'nid' );
 $nadmin = getPostValue ( 'nadmin' );
@@ -78,44 +80,42 @@ if ( ! empty ( $delete ) ) {
   if ( ! dbi_execute ( 'DELETE FROM webcal_nonuser_cals WHERE cal_login = ?',
     array ( $nid ) ) )
     $error = db_error ();
+		
+} else if ( ! empty ( $save ) ) {
+  // Updating
+  $query_params = array ();
+  $sql = 'UPDATE webcal_nonuser_cals SET ';
+  if ($nlastname) {
+    $sql .= ' cal_lastname = ?, ';
+    $query_params[] = $nlastname;
+  }
+  if ($nfirstname) {
+    $sql .= ' cal_firstname = ?, ';
+    $query_params[] = $nfirstname;
+  }
+  if ( $ispublic ) {
+    $sql .= ' cal_is_public = ?, ';
+    $query_params[] = $ispublic;
+  }
 
-} else if ( ! empty ( $action ) ){
-  if ( $action == translate ( 'Save', true ) ) {
-    // Updating
-    $query_params = array ();
-    $sql = 'UPDATE webcal_nonuser_cals SET ';
-    if ($nlastname) {
-      $sql .= ' cal_lastname = ?, ';
-      $query_params[] = $nlastname;
-    }
-    if ($nfirstname) {
-      $sql .= ' cal_firstname = ?, ';
-      $query_params[] = $nfirstname;
-    }
-    if ( $ispublic ) {
-      $sql .= ' cal_is_public = ?, ';
-      $query_params[] = $ispublic;
-    }
+  $query_params[] = $nadmin;
+  $query_params[] = $nid;
 
-    $query_params[] = $nadmin;
-    $query_params[] = $nid;
-
-    if ( ! dbi_execute ( $sql . 'cal_admin = ? WHERE cal_login = ?',
-      $query_params ) )
+  if ( ! dbi_execute ( $sql . 'cal_admin = ? WHERE cal_login = ?',
+    $query_params ) )
+    $error = db_error ();
+} else if ( ! empty ( $add ) ){
+  // Adding
+  if ( preg_match ( '/^[\w]+$/', $nid ) ) {
+    $nid = $NONUSER_PREFIX.$nid;
+    if ( ! dbi_execute ( 'INSERT INTO webcal_nonuser_cals ( cal_login,
+      cal_firstname, cal_lastname, cal_admin, cal_is_public )
+      VALUES ( ?, ?, ?, ?, ? )',
+      array ( $nid, $nfirstname, $nlastname, $nadmin, $ispublic ) ) ) {
       $error = db_error ();
-  } else if ( $action == translate ( 'Add', true ) ){
-    // Adding
-    if ( preg_match ( '/^[\w]+$/', $nid ) ) {
-      $nid = $NONUSER_PREFIX.$nid;
-      if ( ! dbi_execute ( 'INSERT INTO webcal_nonuser_cals ( cal_login,
-        cal_firstname, cal_lastname, cal_admin, cal_is_public )
-        VALUES ( ?, ?, ?, ?, ? )',
-        array ( $nid, $nfirstname, $nlastname, $nadmin, $ispublic ) ) ) {
-        $error = db_error ();
-      }
-    } else {
-      $error = translate ( 'Calendar ID' ).' '.translate ( 'word characters only' ).'.';
     }
+  } else {
+    $error = translate ( 'Calendar ID' ).' '.translate ( 'word characters only' ).'.';
   }
   //Add entry in UAC access table for new admin and remove for of admin
   //first delete any record for this user/nuc combo
@@ -134,5 +134,5 @@ if ( ! empty ( $delete ) ) {
       AND cal_other_user = ?', array ( $old_admin, $nid ) );
 }
 
-echo error_check('users.php', false);
+echo error_check('users.php?tab=nonusers', false);
 ?>
