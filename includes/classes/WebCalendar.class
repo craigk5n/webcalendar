@@ -738,19 +738,23 @@ class WebCalendar {
     // If sent here from an email and not logged in,
 		//save URI and redirect to login.
     $em = getGetValue ( 'em' );
-    if ( ! empty ( $em ) && empty ( $login ) )
+		$view_via_email = false;
+    if ( ! empty ( $em ) && empty ( $login ) ) {
       remember_this_view ();
+		  $view_via_email = true;
+		}
 
     if ( empty ( $session_not_found ) )
       $session_not_found = false;
 
-    if ( $pub_acc_enabled && ! empty ( $session_not_found ) ) {
+    if ( ! $view_via_email && $pub_acc_enabled && ! empty ( $session_not_found ) ) {
       $firstname = $lastname = $user_email = '';
       $fullname = 'Public Access'; // Will be translated after translation is loaded.
       $is_admin = false;
       $login = '__public__';
     } else
-    if ( ! $pub_acc_enabled && $session_not_found && ! $use_http_auth ) {
+    if ( $view_via_email || ( ! $pub_acc_enabled && $session_not_found 
+		  && ! $use_http_auth ) ) {
       if ( substr ( $user_inc, 0, 9 ) == 'user-app-' )
         app_login_screen ( clean_whitespace ( $SCRIPT ) );
       else {
