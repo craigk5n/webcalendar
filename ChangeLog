@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fix bug [ 1823063 ] CVS 1.1.7 - month /week view - no today color right of event
  - Fix bug [ 1829125 ] I can not add external calendars
  - Fix bug [ 1792313 ] Installation wizard step 1 shows wrong colors
  - Fix bug [ 1830446 ] Installation wizard will not be displayed in proper language
