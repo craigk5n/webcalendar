@@ -380,7 +380,6 @@ function print_menu_dates ( $menu = false ) {
   $d = ( empty ( $thisday ) ? date ( 'd' ) : $thisday  );
   $d_time = mktime ( 0, 0, 0, $m, $d, $y );
   $thisweek = date ( 'W', $d_time );
-  $wday = date ( 'w', $d_time );
   $wkstart = get_weekday_before ( $y, $m, $d );
   $lastDay = ( $DISPLAY_WEEKENDS == 'N' ? 4 : 6 );
   for ( $i = -5; $i <= 9; $i++ ) {
