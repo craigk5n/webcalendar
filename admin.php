@@ -162,8 +162,11 @@ if ( is_dir ( $dir ) ) {
     closedir ( $dh );
   }
 }
-$BodyX = 'onload="init_admin();' . ( empty ( $currenttab ) ? '"' 
-  : 'showTab( \'' . $currenttab . '\' );"' );
+
+$currenttab = getPostValue ( 'currenttab', 'settings' );
+$currenttab = ( ! empty ( $currenttab) ? $currenttab : 'settings' );
+
+$BodyX = 'onload="init_admin();showTab( \'' . $currenttab . '\' );"';
 print_header (
   array ( 'js/admin.php', 'js/visible.php' ), '', $BodyX );
 
