@@ -302,7 +302,7 @@ if ( ! empty ( $user ) && $login != $user ) {
 //}
 
 // If we have no event status yet, it must have been deleted.
-if ( ( empty ( $event_status ) && ! $is_admin  ) {
+if ( empty ( $event_status ) && ! $is_admin  ) {
   echo print_not_auth ( 33, true ) . print_trailer ();
   exit;
 }
