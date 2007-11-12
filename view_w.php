@@ -148,6 +148,8 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
         $class = 'class="hasevents"';
       else if (  $dateYmd == $todayYmd )
         $class = 'class="today"';
+      else if ( $is_weekend )
+        $class = 'class="weekend"';
       echo '
         <td ' . $class . ' style="width:' . $tdw . '%;">'
        . ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N'

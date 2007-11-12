@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Fix bug [ 1823063 ] CVS 1.1.7 - month /week view - no today color right of event
  - Fix bug [ 1829125 ] I can not add external calendars
  - Implemented RFE [ 1829482 ] Display Error Codes, to aid in troubleshooting other bug reports
  - Fix bug [ 1829224 ] getPostVal fails on non-array
