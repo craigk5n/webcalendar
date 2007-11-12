@@ -68,7 +68,7 @@ $WebCalendar->setLanguage ();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  echo print_not_auth ();
+  echo print_not_auth (20);
   exit;
 }
 
@@ -95,7 +95,7 @@ load_user_preferences ();
 
 if ( empty ( $USER_PUBLISH_ENABLED ) || $USER_PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  echo print_not_auth ();
+  echo print_not_auth (25);
   exit;
 }
 

@@ -31,10 +31,9 @@ require ( 'includes/classes/WebCalMailer.class' );
 $mail = &new WebCalMailer;
 
 $appStr = generate_application_name ();
-$notauth = print_not_auth ();
 
 $error = ( empty ( $ALLOW_SELF_REGISTRATION ) || $ALLOW_SELF_REGISTRATION != 'Y'
-  ? $notauth : '' );
+  ? print_not_auth (26) : '' );
 
 if ( empty ( $SELF_REGISTRATION_FULL ) || $SELF_REGISTRATION_FULL != 'Y' )
   $SELF_REGISTRATION_FULL = 'N';
@@ -110,7 +109,7 @@ $uemail = $ufirstname = $ulastname = $upassword1 = $upassword2 = $user = '';
 // $self_registration_domain should have this format "192.168.220.0:255.255.240.0";
 $valid_ip = validate_domain ();
 if ( empty ( $valid_ip ) )
-  $error = $notauth;
+  $error = print_not_auth (36);
 
 // We could make $control a unique value if necessary.
 $control = getPostValue ( 'control' );

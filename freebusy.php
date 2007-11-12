@@ -91,7 +91,7 @@ user_load_variables ( $user, 'publish_' );
 
 if ( empty ( $FREEBUSY_ENABLED ) || $FREEBUSY_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  echo 'user=' . $user . "\n" . print_not_auth ();
+  echo 'user=' . $user . "\n" . print_not_auth (19);
   exit;
 }
 

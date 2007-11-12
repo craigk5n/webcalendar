@@ -75,14 +75,14 @@ if ( empty ( $error ) && ! empty ( $id ) ) {
 
 if ( $type == 'A' ) {
   if ( empty ( $ALLOW_ATTACH ) || $ALLOW_ATTACH != 'Y' )
-    $error = print_not_auth ();
+    $error = print_not_auth (9);
   else if ( empty ( $error ) && $ALLOW_ATTACH_PART == 'Y' && $is_my_event )
     $can_add = true;
   else if ( $ALLOW_ATTACH_ANY == 'Y' )
     $can_add = true;
 } else if ( $type == 'C' ) {
   if ( empty ( $ALLOW_COMMENTS ) || $ALLOW_COMMENTS != 'Y' )
-    $error = print_not_auth ();
+    $error = print_not_auth (10);
   else if ( empty ( $error ) && $ALLOW_COMMENTS_PART == 'Y' && $is_my_event )
     $can_add = true;
   else if ( $ALLOW_COMMENTS_ANY == 'Y' )
@@ -94,7 +94,7 @@ if ( access_is_enabled () ) {
 }
 
 if ( ! $can_add )
-  $error = print_not_auth ();
+  $error = print_not_auth (6);
 
 if ( ! empty ( $error ) ) {
   print_header ();

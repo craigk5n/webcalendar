@@ -302,12 +302,16 @@ if ( ! empty ( $user ) && $login != $user ) {
 //}
 
 // If we have no event status yet, it must have been deleted.
-if ( ( empty ( $event_status ) && ! $is_admin ) ||
-    ( ! $can_view && empty ( $rss_view ) ) ) {
-  echo print_not_auth ( true ) . print_trailer ();
+if ( ( empty ( $event_status ) && ! $is_admin  ) {
+  echo print_not_auth ( 33, true ) . print_trailer ();
   exit;
 }
 
+// We can bypass $can_view if coming from RSS
+if ( ( ! $can_view && empty ( $rss_view ) ) ) {
+  echo print_not_auth ( 8, true ) . print_trailer ();
+  exit;
+}
 // save date so the trailer links are for the same time period
 $thisyear = intval ( $orig_date / 10000 );
 $thismonth = ( $orig_date / 100 ) % 100;

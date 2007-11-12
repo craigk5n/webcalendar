@@ -189,7 +189,7 @@ if ( ! empty ( $user ) && $user != $login &&
 }
 
 if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' )
-  $error = print_not_auth ();
+  $error = print_not_auth (12);
 
 $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
@@ -205,7 +205,7 @@ $report_id = getValue ( 'report_id', '-?[0-9]+', true );
 // If no report id is specified,
 // then generate a list of reports from which the user may choose.
 if ( empty ( $error ) && empty ( $report_id ) && $login == '__public__' )
-  $error = print_not_auth ();
+  $error = print_not_auth (27);
 
 $invalidID = translate ( 'Invalid report id.' );
 if ( empty ( $error ) && empty ( $report_id ) ) {
@@ -267,7 +267,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[2] != 'Y' && $login != $row[0] )
-        $error = print_not_auth ();
+        $error = print_not_auth (14);
       else {
         $i = 0;
         $report_login = $row[$i++];

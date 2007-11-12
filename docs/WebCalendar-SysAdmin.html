@@ -112,6 +112,7 @@ h2 {
  <li><a href="#appendixD">Appendix D: Displaying Upcoming Events on Your Site</a></li>
  <li><a href="#appendixE">Appendix E: How To Configure for LDAP</a></li>
  <li><a href="#appendixF">Appendix F: Manual Installation</a></li>
+ <li><a href="#appendixG">Appendix G: Error Codes</a></li>
 </ul>
 <hr />
 
@@ -1933,6 +1934,50 @@ and <tt>$ldap_version = '3'</tt>.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr />
 <h3>TODO</h3>
+
+<a name="appendixG"></a>
+<h2>Appendix G: Error Codes</h2>
+<p>These error codes will be used along with the print_not_auth () function to give an idea of the what the problem might be without displaying site sensitive information.</p>
+<p><span class="note">Note:</span> <tt>mode=dev</tt> must be set in includes/settings.php for these error numbers to be displayed</p>
+<ul>
+<li style="list-style:decimal">ACCESS NOT ENABLED (UAC)</li>
+<li style="list-style:decimal">ACCESS ACTIVITY LOG (UAC)</li>
+<li style="list-style:decimal">Not Admin</li>
+<li style="list-style:decimal">Read Only (setting.php)</li>
+<li style="list-style:decimal">Not my event</li>
+<li style="list-style:decimal">Can not edit (UAC)</li>
+<li style="list-style:decimal">Allow View Others (System Settings)</li>
+<li style="list-style:decimal">Can not view (UAC)</li>
+<li style="list-style:decimal">Allow Attachment (System Settings)</li>
+<li style="list-style:decimal">Allow Comment (System Settings)</li>
+<li style="list-style:decimal">REMOTES ENABLED (System Settings)</li>
+<li style="list-style:decimal">REPORTS ENABLED (System Settings)</li>
+<li style="list-style:decimal">Report user not allowed</li>
+<li style="list-style:decimal">Report not yours</li>
+<li style="list-style:decimal">ACCESS USER MANAGEMENT (UAC)</li>
+<li style="list-style:decimal">Admin can not add user (user.php)</li>
+<li style="list-style:decimal">ACCESS ACCOUNT INFO (UAC)</li>
+<li style="list-style:decimal">User can not update password (user.php)</li>
+<li style="list-style:decimal">FREEBUSY ENABLED (System Settings)</li>
+<li style="list-style:decimal">PUBLISH ENABLED (System Settings)</li>
+<li style="list-style:decimal">Public must be enabled</li>
+<li style="list-style:decimal">Single User (settings.php)</li>
+<li style="list-style:decimal">HTTP Auth (settings.php)</li>
+<li style="list-style:decimal">Non-User calendar not public</li>
+<li style="list-style:decimal">USER PUBLISH ENABLED (System Settings)</li>
+<li style="list-style:decimal">ALLOW SELF REGISTRATION (System Settings)</li>
+<li style="list-style:decimal">Report ID</li>
+<li style="list-style:decimal">RSS ENABLED (System Settings)</li>
+<li style="list-style:decimal">USER RSS ENABLED (User preferences)</li>
+<li style="list-style:decimal">Categories not enabled (System Settings)</li>
+<li style="list-style:decimal">Event deleted for this user</li>
+<li style="list-style:decimal">User not participant</li>
+<li style="list-style:decimal">Event status empty</li>
+<li style="list-style:decimal">View name empty</li>
+<li style="list-style:decimal">PUBLIC ACCESS OTHERS (System Settings)</li>
+</ul>
+<div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
+<hr />
 <p>
  <a href="http://validator.w3.org/check?uri=referer"><img
   src="http://www.w3.org/Icons/valid-xhtml10"

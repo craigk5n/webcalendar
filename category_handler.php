@@ -41,7 +41,7 @@ if ( ! empty ( $file['tmp_name'] ) && $file['tmp_name'] == 'none' )
   $file = '';
 
 if ( ! $is_my_event )
-  $error = print_not_auth ();
+  $error = print_not_auth (5);
 
 $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $delete ) ) {

@@ -20,7 +20,7 @@ include_once 'includes/init.php';
 
 if ( ! $is_admin || ( access_is_enabled () && !
       access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) )
-  die_miserable_death ( print_not_auth () );
+  die_miserable_death ( print_not_auth (2) );
 
 $eventsStr = translate ( 'Events' );
 $nextStr = translate ( 'Next' );

@@ -25,7 +25,7 @@ if ( ! $NONUSER_PREFIX )
 
 if ( $REMOTES_ENABLED != 'Y' || ( access_is_enabled () && !
       access_can_access_function ( ACCESS_IMPORT ) ) )
-  $error = print_not_auth ();
+  $error = print_not_auth (11);
 
 if ( $error ) {
   echo print_error ( $error ) . '

@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Implemented RFE [ 1829482 ] Display Error Codes, to aid in troubleshooting other bug reports
  - Fix bug [ 1829224 ] getPostVal fails on non-array
  - Added ability to place page in more than one UAC 'page_lookup' group. We should be able to eliminate
    'page_lookup_ex' array eventually.

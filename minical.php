@@ -34,7 +34,7 @@ $MINICALWIDTH = '160px';
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  echo print_not_auth ();
+  echo print_not_auth (20);
   exit;
 }
 
@@ -70,8 +70,9 @@ $cat_id = ( empty ( $cat_id ) ? '' : $cat_id );
 // Set for use elsewhere as a global.
 $login = $user;
 
+//Error code 
 if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' )
-  $error = print_not_auth ();
+  $error = print_not_auth (21);
 
 if ( $allow_user_override ) {
   $u = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]+', true );

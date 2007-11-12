@@ -239,7 +239,7 @@ if ( empty ( $error ) && ! $can_edit ) {
 }
 
 if ( ! $can_edit && empty ( $error ) )
-  $error = print_not_auth ();
+  $error = print_not_auth (6);
 
 // CAPTCHA
 if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__public__' && !

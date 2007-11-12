@@ -36,7 +36,7 @@ include_once 'includes/init.php';
 load_user_categories ();
 
 $error = ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'
-  ? print_not_auth () : '' );
+  ? print_not_auth (12) : '' );
 $report_id = getValue ( 'report_id', '-?[0-9]+', true );
 $updating_public = ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' );
 
@@ -57,7 +57,7 @@ if ( empty ( $error ) && $single_user != 'N' && !
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] != $login )
-        $error = print_not_auth ();
+        $error = print_not_auth (5);
     } else
       $error = str_replace ( 'XXX', $report_id,
         translate ( 'No such report id XXX.' ) );

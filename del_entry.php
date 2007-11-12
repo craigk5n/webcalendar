@@ -73,7 +73,7 @@ if ( ! $can_edit && access_is_enabled () && ! empty ( $user ) &&
   $can_edit = true;
 
 if ( ! $can_edit )
-  $error = print_not_auth ();
+  $error = print_not_auth (6);
 
 // Is this a repeating event?
 $event_repeats = false;
@@ -229,7 +229,7 @@ if ( $id > 0 && empty ( $error ) ) {
         $del_user = $user;
       } else
         // Error: user cannot delete from other user's calendar.
-        $error = print_not_auth ();
+        $error = print_not_auth (6);
     }
     if ( empty ( $error ) ) {
       dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?

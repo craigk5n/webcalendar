@@ -5,7 +5,7 @@ print_header ( array ( 'js/edit_nonuser.php/false' ),
   '', '', true, '', true, false );
 
 if ( ! $is_admin ) {
-  echo print_not_auth ( true ) . '
+  echo print_not_auth ( 3, true ) . '
   </body>
 </html>';
   exit;

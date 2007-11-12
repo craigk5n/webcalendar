@@ -17,17 +17,17 @@ if ( empty ( $user ) ) {
   if ( ! $is_admin ) {
     // must be admin...
     if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
-      $error = print_not_auth ();
+      $error = print_not_auth (15);
     }
   }
   if ( ! $admin_can_add_user ) {
     // if adding users is not allowed...
-    $error = print_not_auth ();
+    $error = print_not_auth (16);
   }
 } else {
   // User is editing their account info
   if ( ! access_can_access_function ( ACCESS_ACCOUNT_INFO ) )
-    $error = print_not_auth ();
+    $error = print_not_auth (17);
 }
 
 $disableCustom = true;

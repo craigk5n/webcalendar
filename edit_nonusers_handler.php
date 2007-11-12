@@ -4,7 +4,7 @@ include_once 'includes/init.php';
 load_user_layers ();
 
 if ( ! $is_admin ) {
-  echo print_not_auth ( true );
+  echo print_not_auth ( 3, true );
   echo "</body>\n</html>";
   exit;
 }

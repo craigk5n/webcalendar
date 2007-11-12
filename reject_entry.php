@@ -7,7 +7,7 @@ $mail = new WebCalMailer;
 $error = '';
 
 if ( $readonly == 'Y' )
-  $error = print_not_auth ();
+  $error = print_not_auth (4);
 
 //give user a change to add comments to rejection email
 if ( ! empty ( $_POST ) ) {

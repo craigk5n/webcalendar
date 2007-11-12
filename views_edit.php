@@ -56,7 +56,7 @@ if ( empty ( $id ) ) {
 // If view_name not found, then the specified view id does not
 // belong to current user.
 if ( empty ( $viewname ) ) {
-  $error = print_not_auth ();
+  $error = print_not_auth (34);
 }
 
 // get list of users for this view

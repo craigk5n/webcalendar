@@ -31,7 +31,7 @@ $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 $checked = ' checked="checked"';
 $error =
  ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' || $login == '__public__'
-   ? print_not_auth () : '' );
+   ? print_not_auth (12) : '' );
 $report_id = getValue ( 'report_id', '-?[0-9]+', true );
 $selected = ' selected="selected"';
 $show_participants = ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y'
@@ -151,11 +151,11 @@ if ( empty ( $error ) && $report_id >= 0 ) {
             $user_is_in_list = true;
         }
         if ( ! $user_is_in_list && $report_login != $login && ! $is_admin )
-          $error = print_not_auth ();
+          $error = print_not_auth (13);
       }
       if ( ! $is_admin && $login != $report_login )
         // Only creator or an admin can edit/delete the event.
-        $error = print_not_auth ();
+        $error = print_not_auth (3);
 
       // If we are editing a public user report we need to set $updating_public.
       if ( $is_admin && $report_login == '__public__' )
