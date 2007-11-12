@@ -10,7 +10,8 @@ if ( function_exists ( 'simplexml_load_string' ) )
 $error = '';
 $layer_found = false;
 
-$action = getPostValue ( 'action' );
+$save = getPostValue ( 'Save' );
+$add = getPostValue ( 'Add' );
 $delete = getPostValue ( 'delete' );
 $reload = getPostValue ( 'reload' );
 $nid = getPostValue ( 'nid' );
@@ -40,8 +41,7 @@ if ( ! empty ( $delete ) ) {
       array ( $nid ) ) )
     $error = db_error ();
 } else {
-  if ( ! empty ( $nid ) && $action == 'Save' ||
-    $action == translate ( 'Save' ) ) {
+  if ( ! empty ( $nid ) && ! empty ( $save ) ) {
     // Updating
     $query_params = array ();
     $sql = 'UPDATE webcal_nonuser_cals SET ';
@@ -63,7 +63,7 @@ if ( ! empty ( $delete ) ) {
     if ( ! dbi_execute ( $sql, $query_params ) )
       $error = db_error ();
   } else
-  if ( $action == 'Add' || $action == translate ( 'Add' ) ) {
+  if ( ! empty ( $add ) ) {
     // Adding
     if ( preg_match ( '/^[\w]+$/', $nid ) ) {
       $nid = $NONUSER_PREFIX . $nid;

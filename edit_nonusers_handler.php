@@ -11,6 +11,8 @@ if ( ! $is_admin ) {
 $error = '';
 
 $delete = getPostValue ( 'delete' );
+$save = getPostValue ( 'Save' );
+$add = getPostValue ( 'Add' );
 $nid = getPostValue ( 'nid' );
 $nadmin = getPostValue ( 'nadmin' );
 $old_admin = getPostValue ( 'old_admin' );
@@ -81,7 +83,7 @@ if ( ! empty ( $delete ) ) {
     $error = db_error ();
 
 } else {
-  if ( $action == 'Save' || $action == translate ( 'Save' ) ) {
+  if ( ! empty ( $save ) ) {
     // Updating
     $query_params = array ();
     $sql = 'UPDATE webcal_nonuser_cals SET ';
@@ -135,5 +137,5 @@ if ( ! empty ( $delete ) ) {
       AND cal_other_user = ?', array ( $old_admin, $nid ) );
 }
 
-echo error_check('users.php', false);
+echo error_check('users.php?tab=nonusers', false);
 ?>

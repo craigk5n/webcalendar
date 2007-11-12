@@ -50,6 +50,7 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
     nonuser_load_variables ( $nid, 'remotestemp_' );
 
     $button = translate ( 'Save' );
+		$buttonAction = 'Save';
     $id_display = $nid . ' <input type="hidden" name="nid" id="nid" value="'
      . $nid . '" />';
     $lableStr = translate ( 'Edit Remote Calendar' );
@@ -57,6 +58,7 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
   }
 
   $button = translate ( 'Add' );
+	$buttonAction = 'Add';
   $calIdStr = translate ( 'Calendar ID' );
   $colorStr = translate ( 'Color' );
   $confirmStr = str_replace ( 'XXX', translate ( 'entry' ),
@@ -122,7 +124,7 @@ EOT;
   echo <<<EOT
       </table>
       <input type="hidden" name="nadmin" id="nadmin" value="{$login}" />
-      <input type="submit" name="action" value="{$button}" />
+      <input type="submit" name="{$buttonAction}" value="{$button}" />
 EOT;
 
   if ( ! empty ( $nid ) )
