@@ -167,8 +167,11 @@ $minutesStr = translate ( 'minutes' );
 @session_start ();
 $_SESSION['webcal_tmp_login'] = $prefuser;
 $openStr ="\"window.open( 'edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520' );\"";
-//'onload="altrows();showTab
-$BodyX = 'onload="altrows();' . ( ! empty ( $currenttab ) ? "showTab( '". $currenttab . "' );" : '' ) . '"';
+
+$currenttab = getPostValue ( 'currenttab', 'settings' );
+$currenttab = ( ! empty ( $currenttab) ? $currenttab : 'settings' );
+
+$BodyX = 'onload="altrows();showTab( \'' . $currenttab . '\' );"';
 $INC = array ('js/visible.php', 'js/pref.php');
 print_header($INC, '', $BodyX);
 ?>
