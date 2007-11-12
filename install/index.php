@@ -184,23 +184,26 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
 </html>';
   exit;
 }
-$offStr = translate ( 'OFF');
-$onStr = translate ( 'ON');
 
 // [0]Display Text [1]ini_get name [2]required value [3]ini_get string search value
+//DO NOT TRANSLATE OFF/ON in this section
 $php_settings = array (
-  array ( translate ( 'Safe Mode' ), 'safe_mode', $offStr, false ),
-  // translate ( 'required only if Safe Mode is On' )
-  // translate ( '(required only if Safe Mode is On)' )
-  array ( translate ( 'Safe Mode Allowed Vars' ),
-    'safe_mode_allowed_env_vars', 'TZ', 'TZ' ),
-  array ( translate ( 'Display Errors' ), 'display_errors', $onStr, false ),
-  array ( translate ( 'File Uploads' ), 'file_uploads', $onStr, false ),
+  array ( translate ( 'Display Errors' ), 'display_errors', 'ON', false ),
+  array ( translate ( 'File Uploads' ), 'file_uploads', 'ON', false ),
   // translate ( 'required only if Remote Calendars are used' )
   // translate ( '(required only if Remote Calendars are used)' )
-  array ( translate ( 'Allow URL fopen' ), 'allow_url_fopen', $onStr, false ),
+  array ( translate ( 'Allow URL fopen' ), 'allow_url_fopen', 'ON', false ),
+  array ( translate ( 'Safe Mode' ), 'safe_mode', 'OFF', false )
   );
 
+//Add 'Safe Mode Allowed Vars' if 'Safe Mode' is enabled
+// translate ( 'required only if Safe Mode is On' )
+// translate ( '(required only if Safe Mode is On)' )
+if ( get_php_setting ( 'safe_mode' )== 'ON' )
+  $php_settings[] =  array ( 
+    translate ('Safe Mode Allowed Vars'),
+    'safe_mode_allowed_env_vars', 'TZ', 'TZ');
+    
 // Set up array to test for some constants
 // (display name, constant name, preferred value )
 $php_constants = array (
@@ -213,7 +216,7 @@ $php_constants = array (
 $php_modules = array (
   // translate ( 'needed for Gradient Image Backgrounds' )
   // translate ( '(needed for Gradient Image Backgrounds)' )
-  array ( translate ( 'GD' ), 'imagepng', $onStr ),
+  array ( translate ( 'GD' ), 'imagepng', 'ON' ),
   );
 
 $pwd1 = getPostValue ( 'password1' );
@@ -443,7 +446,7 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr && !
     elseif ( $db_type == 'mysql' )
       $c = mysql_connect ( $db_host, $db_login, $db_password );
     elseif ( $db_type == 'mysqli' )
-		  $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
+      $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
     elseif ( $db_type == 'postgresql' )
       $c =
       dbi_connect ( $db_host, $db_login, $db_password, 'template1', false );
@@ -956,8 +959,8 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td class="prompt">' . $constant[0] . '</td>
         <td class="' . $class . '"><img alt="" src="'
      . ( $class == 'recommended'
-      ? 'recommended.gif" />&nbsp;' . $onStr
-      : 'not_recommended.jpg" />&nbsp;' . $offStr )
+      ? 'recommended.gif" />&nbsp;' . translate ( 'ON')
+      : 'not_recommended.jpg" />&nbsp;' . translate ( 'OFF') )
      . '</td>
       </tr>';
   }
