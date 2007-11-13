@@ -431,7 +431,12 @@ As long as we're looping the whole array.
     for ( $i = count ( $tmp_ar ) - 1; $i >= 0; $i-- ) {
       $participants[$tmp_ar[$i]] = 1;
     }
-  }
+  } 
+
+	//Add the logged in user if none other supplied
+	if ( count ( $participants )  == 0 )
+	  $participants[$login] = 1;
+
   if ( $readonly == 'N' ) {
     // Is public allowed to add events?
     if ( $login == '__public__' && $PUBLIC_ACCESS_CAN_ADD != 'Y' )
@@ -1052,7 +1057,9 @@ if ( $can_edit ) {
         }
         if ( ( $l == $login && ! $is_assistant && ! $is_nonuser_admin ) ||
             ( ! empty ( $user ) && $l == $user ) )
-
+           // Default selection of participants is logged in user.
+          $myusers .= ' <option value="' . $l . '">' . $f . '</option>';
+						
         if ( $l == '__public__' && !
           empty ( $PUBLIC_ACCESS_DEFAULT_SELECTED ) &&
             $PUBLIC_ACCESS_DEFAULT_SELECTED == 'Y' )
