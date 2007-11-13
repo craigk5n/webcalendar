@@ -49,9 +49,9 @@ $DAYS_IN_ADVANCE = 30;
 // If you have moved this script out of the WebCalendar directory, which you
 // probably should do since it would be better for security reasons, you would
 // need to change __WC_INCLUDEDIR to point to the webcalendar include directory.
-define ( __WC_BASEDIR, '..' ); // Points to the base WebCalendar directory
+define ( '__WC_BASEDIR', '..' ); // Points to the base WebCalendar directory
                           // relative to current working directory.
-define ( __WC_INCLUDEDIR, '../includes' );
+define ( '__WC_INCLUDEDIR', '../includes' );
 $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
 ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );

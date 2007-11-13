@@ -5,9 +5,9 @@
  *   Provides login mechanism for web service clients.
  */
 
-define ( __WC_BASEDIR, '..' ); // Points to the base WebCalendar directory
+define ( '__WC_BASEDIR', '..' ); // Points to the base WebCalendar directory
                           // relative to current working directory.
-define ( __WC_INCLUDEDIR, '../includes' );
+define ( '__WC_INCLUDEDIR', '../includes' );
 
 include __WC_INCLUDEDIR . '/translate.php';
 require_once __WC_INCLUDEDIR . '/classes/WebCalendar.class';
