@@ -125,7 +125,7 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
  *                             no directory or file suffix. Example:  "French")
  */
 function reset_language ( $new_language ) {
-  global $basedir, $fullname, $lang, $lang_file,
+  global $fullname, $lang, $lang_file,
   $PUBLIC_ACCESS_FULLNAME, $translation_loaded, $translations;
   if ( $new_language == 'none' )
     $new_language = get_browser_language ();
@@ -147,7 +147,7 @@ function reset_language ( $new_language ) {
  * It will be invoked by {@link translate () } the first time it is called.
  */
 function load_translation_text () {
-  global $basedir, $lang_file, $settings, $translation_loaded, $translations;
+  global $lang_file, $settings, $translation_loaded, $translations;
 
   if ( $translation_loaded ) // No need to run this twice.
     return;
@@ -155,9 +155,9 @@ function load_translation_text () {
   $lang_cache = substr ( $lang_file, strrpos ( $lang_file, '/' ) + 1 );
   $lang_file_2 = '';
 
-  if ( ! empty ( $basedir ) ) {
+  if ( defined ( '__WC_BASEDIR' ) ) {
     if ( ! file_exists ( $lang_file ) )
-      $lang_file_2 = $basedir . '/' . $lang_file;
+      $lang_file_2 = __WC_BASEDIR . '/' . $lang_file;
 
     if ( file_exists ( $lang_file_2 ) )
       $lang_file = $lang_file_2;

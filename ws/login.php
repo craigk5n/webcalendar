@@ -5,21 +5,22 @@
  *   Provides login mechanism for web service clients.
  */
 
-$basedir = '..';
-$includedir = '../includes';
+define ( __WC_BASEDIR, '..' ); // Points to the base WebCalendar directory
+                          // relative to current working directory.
+define ( __WC_INCLUDEDIR, '../includes' );
 
-include $includedir . '/translate.php';
-require_once $includedir . '/classes/WebCalendar.class';
+include __WC_INCLUDEDIR . '/translate.php';
+require_once __WC_INCLUDEDIR . '/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
-include $includedir . '/config.php';
-include $includedir . '/dbi4php.php';
-include $includedir . '/functions.php';
+include __WC_INCLUDEDIR . '/config.php';
+include __WC_INCLUDEDIR . '/dbi4php.php';
+include __WC_INCLUDEDIR . '/functions.php';
 
 $WebCalendar->initializeFirstPhase ();
 
-include "$includedir/$user_inc";
+include __WC_INCLUDEDIR . '/' .$user_inc;
 
 $WebCalendar->initializeSecondPhase ();
 
