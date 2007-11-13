@@ -171,7 +171,7 @@ $openStr ="\"window.open( 'edit_template.php?type=%s','cal_template','dependent,
 $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( ! empty ( $currenttab) ? $currenttab : 'settings' );
 
-$BodyX = 'onload="altrows(); showTab( \''. $currenttab . '\' );"  . '"';
+$BodyX = 'onload="altrows(); showTab( \''. $currenttab . '\' );"';
 $INC = array ('js/visible.php', 'js/pref.php');
 print_header($INC, '', $BodyX);
 ?>
