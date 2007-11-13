@@ -52,7 +52,7 @@
  */
 $show_all_errors = false;
 
-define ( __WC_BASEDIR, '..' );
+define ( '__WC_BASEDIR', '..' );
 
 include_once '../includes/translate.php';
 include_once '../includes/dbi4php.php';
