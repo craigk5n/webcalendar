@@ -14,14 +14,16 @@
 
 /********************************************************************/
 
-$includedir = "../includes";
+define ( __WC_BASEDIR, '..' ); // Points to the base WebCalendar directory
+                          // relative to current working directory.
+define ( __WC_INCLUDEDIR, '../includes' );
 
-require_once "$includedir/classes/WebCalendar.class";
+require_once  __WC_INCLUDEDIR . '/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
-include "$includedir/config.php";
-include "$includedir/dbi4php.php";
+include __WC_INCLUDEDIR . '/config.php';
+include __WC_INCLUDEDIR . '/dbi4php.php';
 
 $WebCalendar->initializeFirstPhase();
 $WebCalendar->initializeSecondPhase();

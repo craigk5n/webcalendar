@@ -100,10 +100,10 @@ function do_config ( $fileLoc ) {
   if ( file_exists ( $fileLoc ) ) {
     $fd = @fopen ( $fileLoc, 'rb', true );
   }
-  if ( empty ( $fd ) && ! empty ( $includedir ) ) {
-    $fd = @fopen ( $includedir . '/settings.php', 'rb', true );
+  if ( empty ( $fd ) && defined ( '__WC_INCLUDEDIR' ) ) {
+    $fd = @fopen ( __WC_INCLUDEDIR . '/settings.php', 'rb', true );
     if ( $fd )
-      $fileLoc = $includedir . '/settings.php';
+      $fileLoc = __WC_INCLUDEDIR . '/settings.php';
   }
   // If still empty.... use __FILE__.
   if ( empty ( $fd ) ) {
