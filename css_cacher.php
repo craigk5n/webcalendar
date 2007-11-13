@@ -29,6 +29,9 @@ else
 if ( ! empty ( $_REQUEST['login'] ) )
   $login = $_REQUEST['login'];
 
+if ( substr ( $login, 0, 10 ) == '__public__' )
+  $login = '__public__';
+	
 load_user_preferences ( $login );
 // .
 // We will cache CSS as default, but override from admin and pref
