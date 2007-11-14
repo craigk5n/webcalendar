@@ -99,7 +99,7 @@ if ( $is_admin ) {
           *&nbsp;' . $denotesStr . '.<br />
           <iframe name="useriframe" id="useriframe"></iframe>';
 }
-if ($doUser || $doUsers ) {
+if ($doUser && ! $doUsers ) {
     echo '
           <iframe src="edit_user.php" name="accountiframe" id="accountiframe">'
     . '</iframe>';
