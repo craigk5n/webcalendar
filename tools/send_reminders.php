@@ -48,35 +48,35 @@ $DAYS_IN_ADVANCE = 30;
 // Load include files.
 // If you have moved this script out of the WebCalendar directory, which you
 // probably should do since it would be better for security reasons, you would
-// need to change $includedir to point to the webcalendar include directory.
-$basedir = '..'; // Points to the base WebCalendar directory
+// need to change __WC_INCLUDEDIR to point to the webcalendar include directory.
+define ( '__WC_BASEDIR', '..' ); // Points to the base WebCalendar directory
                  // relative to current working directory.
-$includedir = '../includes';
+define ( '__WC_INCLUDEDIR', '../includes' );
 $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
-ini_set ( 'include_path', $old_path . $delim . $includedir . $delim );
+ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 
-include_once $includedir . '/translate.php';
-require_once $includedir . '/classes/WebCalendar.class';
-require_once $includedir . '/classes/Event.class';
-require_once $includedir . '/classes/RptEvent.class';
-require_once $includedir . '/classes/WebCalMailer.class';
+require_once __WC_INCLUDEDIR . '/classes/WebCalendar.class';
+require_once __WC_INCLUDEDIR . '/classes/Event.class';
+require_once __WC_INCLUDEDIR . '/classes/RptEvent.class';
+require_once __WC_INCLUDEDIR . '/classes/WebCalMailer.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
-include $includedir . '/config.php';
-include $includedir . '/dbi4php.php';
-include $includedir . '/formvars.php';
-include $includedir . '/functions.php';
+include __WC_INCLUDEDIR . '/translate.php';
+include __WC_INCLUDEDIR . '/config.php';
+include __WC_INCLUDEDIR . '/dbi4php.php';
+include __WC_INCLUDEDIR . '/formvars.php';
+include __WC_INCLUDEDIR . '/functions.php';
 
 $WebCalendar->initializeFirstPhase ();
 
-include "$includedir/$user_inc";
-include $includedir . '/site_extras.php';
+include __WC_INCLUDEDIR . '/' .$user_inc;
+include __WC_INCLUDEDIR . '/site_extras.php';
 
 $WebCalendar->initializeSecondPhase ();
 
-$debug = // Set to true to print debug info...
+$debug = false;// Set to true to print debug info...
 $only_testing = false; // Just pretend to send -- for debugging.
 
 // Establish a database connection.
@@ -185,7 +185,8 @@ if ( $debug )
 
 $is_task = false;
 for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
-  $date = date ( 'Ymd', time () + ( $d * 86400 ) );
+  $dateTS = time () + ( $d * 86400 );
+  $date = date ( 'Ymd', $dateTS );
 
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.
@@ -217,7 +218,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
     $completed_ids[$id] = 1;
     $is_task = true;
     process_event ( $id, $tks[$i]->getName (), $tks[$i]->getDateTimeTS (),
-      $tks[$i]->getDueDateTimeTS (), $date );
+      $tks[$i]->getDueDateTimeTS (), $dateTS );
   }
   $is_task = false;
   // Get repeating events...tasks are not included at this time.
@@ -491,7 +492,7 @@ From:' . $adminStr . '
       $attach = ( $isExt ? $id : '' );
       $mail->WC_Send ( $adminStr, $recip, $recipName, $subject,
         $body, $useHtml, $GLOBALS['EMAIL_FALLBACK_FROM'], $attach );
-      $cal_text = ( $isExt ? translate ( 'External User' ) : '' );
+      $cal_text = ( $isExt ? translate ( 'External User' ) : '' ) . $recipName;
       activity_log ( $id, 'system', $user, LOG_REMINDER, $cal_text );
     }
   }
@@ -528,7 +529,8 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
     if ( ! empty ( $new_date ) ) {
       if ( $times_sent == $repeats + 1 ) {
         if ( ! $is_task ||
-          ( $related == 'E' && $new_date != date ( 'Ymd', $end ) ) ) // Tasks only.
+          ( $related == 'E' && date ( 'Ymd', $new_date ) 
+            != date ( 'Ymd', $end ) ) ) // Tasks only.
           $times_sent = 0;
       }
       $new_offset = date_to_epoch ( $new_date ) - ( $start - ( $start % 86400 ) );
@@ -576,10 +578,10 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
        . '<br /><br />
   times_sent = ' . $times_sent . '
   repeats = ' . $repeats . '
-  time = ' . time () . '
-  remind_time = ' . $remind_time . '
-  lastsent = ' . $lastsent . '
-  pointless = ' . $pointless . '
+  time = ' . date ( 'His', time () ). ' 
+  remind_time = ' . date ( 'His', $remind_time ). ' 
+  lastsent = ' . ( $lastsent > 0 ? date ( 'Ymd His', $lastsent  ): " NEVER " ) . ' 
+  pointless = ' .date ( 'Ymd His',  $pointless  ). ' 
   is_task = ' . ( $is_task ? 'true' : 'false' ) . '<br />';
 
     if ( $times_sent < ( $repeats + 1 ) &&

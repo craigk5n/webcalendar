@@ -36,36 +36,34 @@
 // Load include files.
 // If you have moved this script out of the WebCalendar directory,
 // which you probably should do since it would be better for security reasons,
-// you would need to change $includedir to point to the
+// you would need to change __WC_INCLUDEDIR to point to the
 // webcalendar include directory.
 
-/* Points to the base WebCalendar directory relative to
-   current working directory. */
-$basedir = '..';
-
-$includedir = '../includes';
+define ( '__WC_BASEDIR', '..' ); // Points to the base WebCalendar directory
+                 // relative to current working directory.
+define ( '__WC_INCLUDEDIR', '../includes' );
 $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
-ini_set ( 'include_path', $old_path . $delim . $includedir . $delim );
+ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 
-include_once $includedir . '/translate.php';
-require_once $includedir . '/classes/WebCalendar.class';
+include_once __WC_INCLUDEDIR . '/translate.php';
+require_once __WC_INCLUDEDIR . '/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
-include $includedir . '/config.php';
-include $includedir . '/dbi4php.php';
-include $includedir . '/formvars.php';
-include $includedir . '/functions.php';
+include __WC_INCLUDEDIR . '/config.php';
+include __WC_INCLUDEDIR . '/dbi4php.php';
+include __WC_INCLUDEDIR . '/formvars.php';
+include __WC_INCLUDEDIR . '/functions.php';
 
 $WebCalendar->initializeFirstPhase ();
 
-include "$includedir/$user_inc";
-include $includedir . '/xcal.php';
+include __WC_INCLUDEDIR . '/' . $user_inc;
+include __WC_INCLUDEDIR . '/xcal.php';
 
 $WebCalendar->initializeSecondPhase ();
 // Used for hCal parsing.
-require_once $includedir . '/classes/hKit/hkit.class.php';
+require_once __WC_INCLUDEDIR . '/classes/hKit/hkit.class.php';
 
 $debug = false; // Set to true to print debug info...
 

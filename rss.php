@@ -53,7 +53,7 @@
 
 $debug = false;
 
-include_once $includedir . '/translate.php';
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
