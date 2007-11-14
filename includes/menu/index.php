@@ -429,7 +429,7 @@ if ( ! empty ( $menuExtras[3] ) )
 
 // Reports Menu
 // translate ( 'My Reports' )
-if ( (  $is_admin || is_array ( $reports_link ) ) && $menuConfig['Reports'] ) {
+if ( ( $is_admin || is_array ( $reports_link ) ) && $menuConfig['Reports'] ) {
   jscMenu_menu ( 'Reports' );
 
   if ( $is_admin && $menuConfig['Activity Log'] && ( ! access_is_enabled () ||
