@@ -61,7 +61,7 @@ include_once 'default_config.php';
 include_once 'install_functions.php';
 include_once 'sql/upgrade_matrix.php';
 
-$basedir = '..';
+define ( '__WC_BASEDIR', '..' );
 $file = '../includes/settings.php';
 $fileDir = '../includes';
 

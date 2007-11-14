@@ -1,6 +1,6 @@
 <?php
 /* $Id$ */
-include_once $includedir . '/translate.php';
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
