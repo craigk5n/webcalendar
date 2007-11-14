@@ -41,7 +41,7 @@ if ( $is_admin ) {
 $currenttab = getPostValue ( 'tab' );
 $currenttab = ( ! empty ( $currenttab) ? $currenttab : 'users' );
 
-$BodyX = 'onload="showTab(' . $currenttab . ');"';
+$BodyX = 'onload="showTab(\'' . $currenttab . '\');"';
 print_header ( array ( 'js/visible.php', 'js/users.php/true' ), '',
   $BodyX, '', '', true );
 
