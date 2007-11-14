@@ -284,174 +284,178 @@ function print_menu_dates ( $menu = false ) {
        . $match[1] . '" value="' . $match[2] . '" />';
     }
   }
-
-  $ret .= '
-          <form action="' . $monthUrl
-   . '" method="get" name="SelectMonth" id="month'
-   . ( $menu ? 'menu' : 'form' ) . '"> ' . $urlArgs
-   . ( ! empty ( $user ) && $user != $login ? '
-            <input type="hidden" name="user" value="' . $user . '" />' : '' )
-   . ( ! empty ( $id ) && $include_id ? '
-            <input type="hidden" name="id" value="' . $id . '" />' : '' )
-   . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
-    ( ! $user || $user == $login ) ? '
-            <input type="hidden" name="cat_id" value="'
-     . $cat_id . '" />' : '' ) . '
-            <label for="monthselect"><a '
-   . 'href="javascript:document.SelectMonth.submit()">'
-   . translate ( 'Month' ) . '</a>:&nbsp;</label>
-            <select name="date" id="monthselect" '
-   . 'onchange="document.SelectMonth.submit()">';
-
-  if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
-    $m = $thismonth;
-    $y = $thisyear;
-  } else {
-    $m = date ( 'm' );
-    $y = date ( 'Y' );
-  }
-  $d_time = mktime ( 0, 0, 0, $m, 1, $y );
-  $thisdate = date ( 'Ymd', $d_time );
-  // $y--;
-  $m -= 7;
-  for ( $i = 0; $i < 25; $i++ ) {
-    $m++;
-    if ( $m > 12 ) {
-      $m = 1;
-      $y++;
+  if ( access_can_access_function ( ACCESS_MONTH ) ) {
+    $ret .= '
+            <form action="' . $monthUrl
+     . '" method="get" name="SelectMonth" id="month'
+     . ( $menu ? 'menu' : 'form' ) . '"> ' . $urlArgs
+     . ( ! empty ( $user ) && $user != $login ? '
+              <input type="hidden" name="user" value="' . $user . '" />' : '' )
+     . ( ! empty ( $id ) && $include_id ? '
+              <input type="hidden" name="id" value="' . $id . '" />' : '' )
+     . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
+      ( ! $user || $user == $login ) ? '
+              <input type="hidden" name="cat_id" value="'
+       . $cat_id . '" />' : '' ) . '
+              <label for="monthselect"><a '
+     . 'href="javascript:document.SelectMonth.submit()">'
+     . translate ( 'Month' ) . '</a>:&nbsp;</label>
+              <select name="date" id="monthselect" '
+     . 'onchange="document.SelectMonth.submit()">';
+  
+    if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
+      $m = $thismonth;
+      $y = $thisyear;
+    } else {
+      $m = date ( 'm' );
+      $y = date ( 'Y' );
     }
-    if ( $y >= 1970 && $y < 2038 ) {
-      $d = mktime ( 0, 0, 0, $m, 1, $y );
-      $dateYmd = date ( 'Ymd', $d );
-      $ret .= '
-                <option value="' . $dateYmd . '"'
-       . ( $dateYmd == $thisdate ? $selected : '' ) . '>'
-       . date_to_str ( $dateYmd, $DATE_FORMAT_MY, false, true, 0 ) . '</option>';
-    }
-  }
-
-  $ret .= '
-            </select>' . ( $menu ? '' : '
-            <input type="submit" value="' . $goStr . '" />' ) . '
-          </form>' . ( $menu ? '
-        </td>
-        <td class="ThemeMenubackgr ThemeMenu">' : '' );
-
-  if ( $STAY_IN_VIEW == 'Y' && ! empty ( $custom_view ) )
-    $weekUrl = $SCRIPT;
-  else
-  if ( access_can_view_page ( 'week.php' ) ) {
-    $urlArgs = '';
-    $weekUrl = 'week.php';
-  } else {
-    $weekUrl = $GLOBALS['STARTVIEW'];
-    if ( preg_match ( '/[?&](\S+)=(\S+)/', $weekUrl, $match ) ) {
-      $weekUrl = $match[0];
-      $urlArgs = '
-              <input type="hidden" name="'
-       . $match[1] . '" value="' . $match[2] . '" />';
+    $d_time = mktime ( 0, 0, 0, $m, 1, $y );
+    $thisdate = date ( 'Ymd', $d_time );
+    // $y--;
+    $m -= 7;
+    for ( $i = 0; $i < 25; $i++ ) {
+      $m++;
+      if ( $m > 12 ) {
+        $m = 1;
+        $y++;
+      }
+      if ( $y >= 1970 && $y < 2038 ) {
+        $d = mktime ( 0, 0, 0, $m, 1, $y );
+        $dateYmd = date ( 'Ymd', $d );
+        $ret .= '
+                  <option value="' . $dateYmd . '"'
+         . ( $dateYmd == $thisdate ? $selected : '' ) . '>'
+         . date_to_str ( $dateYmd, $DATE_FORMAT_MY, false, true, 0 ) . '</option>';
+      }
     }
   }
-  $ret .= '
-          <form action="' . $weekUrl
-   . '" method="get" name="SelectWeek" id="week'
-   . ( $menu ? 'menu' : 'form' ) . '">' . $urlArgs
-   . ( ! empty ( $user ) && $user != $login ? '
-            <input type="hidden" name="user" value="' . $user . '" />' : '' )
-   . ( ! empty ( $id ) && $include_id ? '
-            <input type="hidden" name="id" value="' . $id . '" />' : '' )
-   . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
-    ( ! $user || $user == $login ) ? '
-            <input type="hidden" name="cat_id" value="'
-     . $cat_id . '" />' : '' ) . '
-            <label for="weekselect"><a '
-   . 'href="javascript:document.SelectWeek.submit()">'
-   . translate ( 'Week' ) . '</a>:&nbsp;</label>
-            <select name="date" id="weekselect" '
-   . 'onchange="document.SelectWeek.submit()">';
-
-  if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
-    $m = $thismonth;
-    $y = $thisyear;
-  } else {
-    $m = date ( 'm' );
-    $y = date ( 'Y' );
-  }
-  $d = ( empty ( $thisday ) ? date ( 'd' ) : $thisday  );
-  $d_time = mktime ( 0, 0, 0, $m, $d, $y );
-  $thisweek = date ( 'W', $d_time );
-  $wkstart = get_weekday_before ( $y, $m, $d );
-  $lastDay = ( $DISPLAY_WEEKENDS == 'N' ? 4 : 6 );
-  for ( $i = -5; $i <= 9; $i++ ) {
-    $twkstart = $wkstart + ( 604800 * $i );
-    $twkend = $twkstart + ( 86400 * $lastDay );
-    $dateSYmd = date ( 'Ymd', $twkstart );
-    $dateEYmd = date ( 'Ymd', $twkend );
-    $dateW = date ( 'W',  $twkstart + 86400 );
-    if ( $twkstart > 0 && $twkend < 2146021200 )
-      $ret .= '
-              <option value="' . $dateSYmd . '"'
-       . ( $dateW == $thisweek ? $selected : '' ) . '>'
-       . ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
-        ( $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y' )
-        ? '( ' . $dateW . ' )&nbsp;&nbsp;' : '' ) . sprintf ( "%s - %s",
-        date_to_str ( $dateSYmd, $DATE_FORMAT_MD, false, true, 0 ),
-        date_to_str ( $dateEYmd, $DATE_FORMAT_MD, false, true, 0 ) )
-       . '</option>';
-  }
-
-  $ret .= '
+  if ( access_can_access_function ( ACCESS_WEEK ) ) {
+    $ret .= '
               </select>' . ( $menu ? '' : '
-            <input type="submit" value="' . $goStr . '" />' ) . '
-          </form>' . ( $menu ? '
-        </td>
-        <td class="ThemeMenubackgr ThemeMenu" align="right">' : '' );
-
-  if ( $STAY_IN_VIEW == 'Y' && ! empty ( $custom_view ) )
-    $yearUrl = $SCRIPT;
-  else
-  if ( access_can_view_page ( 'year.php' ) ) {
-    $urlArgs = '';
-    $yearUrl = 'year.php';
-  } else {
-    $yearUrl = $GLOBALS['STARTVIEW'];
-    if ( preg_match ( '/[?&](\S+)=(\S+)/', $yearUrl, $match ) ) {
-      $yearUrl = $match[0];
-      $urlArgs = '
-            <input type="hidden" name="'
-       . $match[1] . '" value="' . $match[2] . '" />';
+              <input type="submit" value="' . $goStr . '" />' ) . '
+            </form>' . ( $menu ? '
+          </td>
+          <td class="ThemeMenubackgr ThemeMenu">' : '' );
+  
+    if ( $STAY_IN_VIEW == 'Y' && ! empty ( $custom_view ) )
+      $weekUrl = $SCRIPT;
+    else
+    if ( access_can_view_page ( 'week.php' ) ) {
+      $urlArgs = '';
+      $weekUrl = 'week.php';
+    } else {
+      $weekUrl = $GLOBALS['STARTVIEW'];
+      if ( preg_match ( '/[?&](\S+)=(\S+)/', $weekUrl, $match ) ) {
+        $weekUrl = $match[0];
+        $urlArgs = '
+                <input type="hidden" name="'
+         . $match[1] . '" value="' . $match[2] . '" />';
+      }
+    }
+    $ret .= '
+            <form action="' . $weekUrl
+     . '" method="get" name="SelectWeek" id="week'
+     . ( $menu ? 'menu' : 'form' ) . '">' . $urlArgs
+     . ( ! empty ( $user ) && $user != $login ? '
+              <input type="hidden" name="user" value="' . $user . '" />' : '' )
+     . ( ! empty ( $id ) && $include_id ? '
+              <input type="hidden" name="id" value="' . $id . '" />' : '' )
+     . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
+      ( ! $user || $user == $login ) ? '
+              <input type="hidden" name="cat_id" value="'
+       . $cat_id . '" />' : '' ) . '
+              <label for="weekselect"><a '
+     . 'href="javascript:document.SelectWeek.submit()">'
+     . translate ( 'Week' ) . '</a>:&nbsp;</label>
+              <select name="date" id="weekselect" '
+     . 'onchange="document.SelectWeek.submit()">';
+  
+    if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
+      $m = $thismonth;
+      $y = $thisyear;
+    } else {
+      $m = date ( 'm' );
+      $y = date ( 'Y' );
+    }
+    $d = ( empty ( $thisday ) ? date ( 'd' ) : $thisday  );
+    $d_time = mktime ( 0, 0, 0, $m, $d, $y );
+    $thisweek = date ( 'W', $d_time );
+    $wkstart = get_weekday_before ( $y, $m, $d );
+    $lastDay = ( $DISPLAY_WEEKENDS == 'N' ? 4 : 6 );
+    for ( $i = -5; $i <= 9; $i++ ) {
+      $twkstart = $wkstart + ( 604800 * $i );
+      $twkend = $twkstart + ( 86400 * $lastDay );
+      $dateSYmd = date ( 'Ymd', $twkstart );
+      $dateEYmd = date ( 'Ymd', $twkend );
+      $dateW = date ( 'W',  $twkstart + 86400 );
+      if ( $twkstart > 0 && $twkend < 2146021200 )
+        $ret .= '
+                <option value="' . $dateSYmd . '"'
+         . ( $dateW == $thisweek ? $selected : '' ) . '>'
+         . ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
+          ( $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y' )
+          ? '( ' . $dateW . ' )&nbsp;&nbsp;' : '' ) . sprintf ( "%s - %s",
+          date_to_str ( $dateSYmd, $DATE_FORMAT_MD, false, true, 0 ),
+          date_to_str ( $dateEYmd, $DATE_FORMAT_MD, false, true, 0 ) )
+         . '</option>';
     }
   }
-  $ret .= '
-          <form action="' . $yearUrl . '" method="get" name="SelectYear" id="year'
-   . ( $menu ? 'menu' : 'form' ) . '">' . $urlArgs
-   . ( ! empty ( $user ) && $user != $login ? '
-            <input type="hidden" name="user" value="' . $user . '" />' : '' )
-   . ( ! empty ( $id ) && $include_id ? '
-            <input type="hidden" name="id" value="' . $id . '" />' : '' )
-   . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
-    ( ! $user || $user == $login ) ? '
-            <input type="hidden" name="cat_id" value="'
-     . $cat_id . '" />' : '' ) . '
-            <label for="yearselect"><a '
-   . 'href="javascript:document.SelectYear.submit()">'
-   . translate ( 'Year' ) . '</a>:&nbsp;</label>
-            <select name="year" id="yearselect" '
-   . 'onchange="document.SelectYear.submit()">';
-
-  $y = ( empty ( $thisyear ) ? date ( 'Y' ) : $thisyear );
-
-  for ( $i = $y - 2; $i < $y + 6; $i++ ) {
-    if ( $i >= 1970 && $i < 2038 )
-      $ret .= '
-              <option value="' . $i . '"'
-       . ( $i == $y ? $selected : '' ) . ">$i" . '</option>';
+  if ( access_can_access_function ( ACCESS_YEAR ) ) {
+    $ret .= '
+                </select>' . ( $menu ? '' : '
+              <input type="submit" value="' . $goStr . '" />' ) . '
+            </form>' . ( $menu ? '
+          </td>
+          <td class="ThemeMenubackgr ThemeMenu" align="right">' : '' );
+  
+    if ( $STAY_IN_VIEW == 'Y' && ! empty ( $custom_view ) )
+      $yearUrl = $SCRIPT;
+    else
+    if ( access_can_view_page ( 'year.php' ) ) {
+      $urlArgs = '';
+      $yearUrl = 'year.php';
+    } else {
+      $yearUrl = $GLOBALS['STARTVIEW'];
+      if ( preg_match ( '/[?&](\S+)=(\S+)/', $yearUrl, $match ) ) {
+        $yearUrl = $match[0];
+        $urlArgs = '
+              <input type="hidden" name="'
+         . $match[1] . '" value="' . $match[2] . '" />';
+      }
+    }
+    $ret .= '
+            <form action="' . $yearUrl . '" method="get" name="SelectYear" id="year'
+     . ( $menu ? 'menu' : 'form' ) . '">' . $urlArgs
+     . ( ! empty ( $user ) && $user != $login ? '
+              <input type="hidden" name="user" value="' . $user . '" />' : '' )
+     . ( ! empty ( $id ) && $include_id ? '
+              <input type="hidden" name="id" value="' . $id . '" />' : '' )
+     . ( ! empty ( $cat_id ) && $CATEGORIES_ENABLED == 'Y' &&
+      ( ! $user || $user == $login ) ? '
+              <input type="hidden" name="cat_id" value="'
+       . $cat_id . '" />' : '' ) . '
+              <label for="yearselect"><a '
+     . 'href="javascript:document.SelectYear.submit()">'
+     . translate ( 'Year' ) . '</a>:&nbsp;</label>
+              <select name="year" id="yearselect" '
+     . 'onchange="document.SelectYear.submit()">';
+  
+    $y = ( empty ( $thisyear ) ? date ( 'Y' ) : $thisyear );
+  
+    for ( $i = $y - 2; $i < $y + 6; $i++ ) {
+      if ( $i >= 1970 && $i < 2038 )
+        $ret .= '
+                <option value="' . $i . '"'
+         . ( $i == $y ? $selected : '' ) . ">$i" . '</option>';
+    }
+  
+    $ret .= '
+              </select>' . ( $menu ? '' : '
+              <input type="submit" value="' . $goStr . '" />' ) . '
+            </form>';
   }
-
-  return $ret . '
-            </select>' . ( $menu ? '' : '
-            <input type="submit" value="' . $goStr . '" />' ) . '
-          </form>';
+return $ret;
 }
 
 ?>
