@@ -168,7 +168,7 @@ function load_translation_text () {
   }
   if ( ! file_exists ( $lang_file ) )
       $lang_file = $eng_file;
-      
+
   if ( ! file_exists ( $lang_file ) )
     die_miserable_death ( 'Cannot find language file: ' . $lang_file );
 
@@ -294,7 +294,7 @@ function translate ( $str, $decode = '' ) {
 
   //Set $blink to true to aid in finding missing translations
   $blink = true;
-  
+
   if ( ! $translation_loaded )
     load_translation_text ();
 
@@ -372,6 +372,7 @@ function define_languages () {
     translate ( 'Chinese (Traditional/Big5)' ) => 'Chinese-Big5',
     translate ( 'Croatian' ) . ' (UTF8)' => 'Croatian_utf8',
     translate ( 'Czech' ) => 'Czech',
+    translate ( 'Czech' ) . ' (UTF8)'  => 'Czech',
     translate ( 'Danish' ) => 'Danish',
     translate ( 'Dutch' ) => 'Dutch',
     translate ( 'Elven' ) => 'Elven',
