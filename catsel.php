@@ -63,7 +63,7 @@ echo '
         <td valign="center"><input type="button" value=">>" onclick="selAdd()"'
  . ' /></td>
         <td align="center" valign="top">
-          <select name="eventcats[]" size="9" multiple>
+          <select name="eventcats[]" size="9"  multiple="multiple">
             <option disabled>' . $entryCatStr . '</option>';
 
 if ( strlen ( $cats ) ) {
