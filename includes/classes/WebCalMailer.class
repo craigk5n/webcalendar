@@ -11,7 +11,7 @@
  * @package WebCalendar
  * @subpackage Mailer
  */
-$inc_path = ( ! empty ( $includedir ) ? $includedir : 'includes' );
+$inc_path = ( defined ( '__WC_INCLUDEDIR' ) ? __WC_INCLUDEDIR : 'includes' );
 if ( file_exists ( $inc_path . '/xcal.php' ) )
   include_once $inc_path . '/xcal.php'; // Used for ics attachments.
 require ( 'phpmailer/class.phpmailer.php' );
