@@ -3,6 +3,10 @@
 include_once 'includes/init.php';
 send_no_cache_header ();
 
+//check UAC
+if ( ! access_can_access_function ( ACCESS_YEAR ) )
+  send_to_preferred_view ();
+      
 if ( ( $user != $login ) && $is_nonuser_admin )
   load_user_layers ( $user );
 else
@@ -42,7 +46,7 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
     ( ! empty ( $user ) && strlen ( $user ) ? $user : $login ),
     $startdate, $enddate, $cat_id );
   $boldDays = true;
-	
+  
   $catSelectStr = print_category_menu ( 'year', $thisyear, $cat_id );
 }
 

@@ -331,16 +331,16 @@ if ( $menuConfig['My Calendar'] ) {
   if ( $menuConfig['Home'] )
     jscMenu_item ( 'home.png', 'Home', $mycal );
 
-  if ( $menuConfig['Today'] )
+  if ( $menuConfig['Today'] && access_can_access_function ( ACCESS_DAY ) )
     jscMenu_item ( 'today.png', 'Today', $today_url );
 
-  if ( $menuConfig['This Week'] )
+  if ( $menuConfig['This Week'] && access_can_access_function ( ACCESS_WEEK ) )
     jscMenu_item ( 'week.png', 'This Week', $week_url );
 
-  if ( $menuConfig['This Month'] )
+  if ( $menuConfig['This Month'] && access_can_access_function ( ACCESS_MONTH ) )
     jscMenu_item ( 'month.png', 'This Month', $month_url );
 
-  if ( $menuConfig['This Year'] )
+  if ( $menuConfig['This Year'] && access_can_access_function ( ACCESS_YEAR ) )
     jscMenu_item ( 'year.png', 'This Year', $year_url );
 
   if ( ! empty ( $HOME_LINK ) && $menuConfig['Exit'] )
@@ -355,8 +355,10 @@ if ( ! empty ( $menuExtras[1] ) )
 // Events Menu
 // translate ( 'Add New Event' ) translate ( 'Delete Entries' )
 if ( $menuConfig['Events'] ) {
+  //allow us to back out menu if empty
+  $tmp1_menuScript = $menuScript;
   jscMenu_menu ( 'Events' );
-
+  $tmp2_menuScript = $menuScript;
   if ( $new_entry_url != '' && $menuConfig['Add New Event'] )
     jscMenu_item ( 'add.png', 'Add New Event', $new_entry_url );
 
@@ -375,7 +377,11 @@ if ( $menuConfig['Events'] ) {
   if ( $import_url != '' && $menuConfig['Import'] )
     jscMenu_item ( 'down.png', 'Import', $import_url );
 
-  jscMenu_close ();
+  //if nothing was added, remove the menu
+  if ( $menuScript == $tmp2_menuScript ) 
+    $menuScript = $tmp1_menuScript;
+  else
+    jscMenu_close ();
 }
 // .
 // Add Menu Extra if defined.
@@ -386,8 +392,10 @@ if ( ! empty ( $menuExtras[2] ) )
 // translate ( 'My Views' ) translate ( 'Manage Calendar of' );
 if ( $menuConfig['Views'] &&
   ( $select_user_url != '' || ! empty ( $views_link ) ) ) {
+  //allow us to back out menu if empty
+  $tmp1_menuScript = $menuScript;
   jscMenu_menu ( 'Views' );
-
+  $tmp2_menuScript = $menuScript;
   if ( $select_user_url != '' && $menuConfig['Another Users Calendar'] )
     jscMenu_item ( 'display.png', 'Another Users Calendar',
       $select_user_url );
@@ -409,7 +417,7 @@ if ( $menuConfig['Views'] &&
 
       for ( $i = 0; $i < $groupcnt; $i++ ) {
         jscMenu_item ( 'display.png', $groups[$i]['name'], 
-				  $groups[$i]['url'], false );
+          $groups[$i]['url'], false );
       }
       jscMenu_close ();
     }
@@ -420,7 +428,11 @@ if ( $menuConfig['Views'] &&
       jscMenu_item ( 'manage_views.png', 'Manage Views', 'views.php' );
     }
   }
-  jscMenu_close ();
+  //if nothing was added, remove the menu
+  if ( $menuScript == $tmp2_menuScript ) 
+    $menuScript = $tmp1_menuScript;
+  else
+    jscMenu_close ();
 }
 // .
 // Add Menu Extra if defined.
@@ -430,8 +442,10 @@ if ( ! empty ( $menuExtras[3] ) )
 // Reports Menu
 // translate ( 'My Reports' )
 if ( (  $is_admin || is_array ( $reports_link ) ) && $menuConfig['Reports'] ) {
+  //allow us to back out menu if empty
+  $tmp1_menuScript = $menuScript;
   jscMenu_menu ( 'Reports' );
-
+  $tmp2_menuScript = $menuScript;
   if ( $is_admin && $menuConfig['Activity Log'] && ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_ACTIVITY_LOG, $user ) ) )
     jscMenu_item ( 'log.png', 'Activity Log', 'activity_log.php' );
@@ -455,7 +469,11 @@ if ( (  $is_admin || is_array ( $reports_link ) ) && $menuConfig['Reports'] ) {
     jscMenu_divider ();
     jscMenu_item ( 'manage_reports.png', 'Manage Reports', 'report.php' );
   }
-  jscMenu_close ();
+  //if nothing was added, remove the menu
+  if ( $menuScript == $tmp2_menuScript ) 
+    $menuScript = $tmp1_menuScript;
+  else
+    jscMenu_close ();
 }
 // .
 // Add Menu Extra if defined.
@@ -465,8 +483,12 @@ if ( ! empty ( $menuExtras[4] ) )
 // Settings Menu
 // translate ( 'My Profile' ) translate ( 'Public Calendar' )
 // translate ( 'Unapproved Events' ) translate ( 'User Manager' )
-if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' && $menuConfig['Settings'] ) {
+if ( $login != '__public__' && ! $is_nonuser && $readonly 
+  != 'Y' && $menuConfig['Settings'] ) {
+  //allow us to back out menu if empty
+  $tmp1_menuScript = $menuScript;  
   jscMenu_menu ( 'Settings' );
+  $tmp2_menuScript = $menuScript;
   // Nonuser Admin Settings.
   if ( $is_nonuser_admin ) {
     if ( $single_user != 'Y' && $readonly != 'Y' && $menuConfig['NUC_Assistants'] ) {
@@ -536,7 +558,11 @@ if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' && $menuConfig[
               access_can_access_function ( ACCESS_USER_MANAGEMENT, $user ) ) ) ) )
       jscMenu_item ( 'user.png', 'User Manager', 'users.php' );
   }
-  jscMenu_close ();
+  //if nothing was added, remove the menu
+  if ( $menuScript == $tmp2_menuScript ) 
+    $menuScript = $tmp1_menuScript;
+  else
+    jscMenu_close ();
 }
 // .
 // Add Menu Extra if defined.
