@@ -1,4 +1,3 @@
-  </Directory>
 # See translations/English-US.txt for instructions.
 #
 # Translated by: Hanuš Adler <had@penguin.cz> and Aldar
@@ -10,8 +9,10 @@
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
+# Czech converted to UTF8 and updated by: Lukáš Hlůže on 13 Nov, 2007
+#
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 11-14-2007
 
 
 ################################################################################
@@ -24,7 +25,7 @@
 # Specify a charset (will be sent within meta tag for each page).
 
 charset: UTF-8
-#
+
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
@@ -34,7 +35,7 @@ direction: =
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__:  __dd__. __month__ 
+__mm__/__dd__/__yyyy__: __dd__. __month__
 __month__ __dd__: __month__ __yyyy__
 __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 __month__ __yyyy__: =
@@ -50,6 +51,7 @@ Database error: Chyba databáze
 Go: Jdi
 Save: Uložit
 Public Access: Veřejný přístup
+User Access Control: Správa uživatelských práv
 Calendar: Kalendář
 Edit: Uprav
 Events: Události
@@ -78,13 +80,26 @@ Day: Den
 Week: Týden
 Month: Měsíc
 Year: Rok
-System Settings: Nastavení systému
-Help: Nápověda
+Bottom: Dole
+Top: Nahoře
 Settings: Nastavení
 Groups: Skupiny
 NonUser Calendars: Neuživatelské kalendáře
 Other: Ostatní
 Colors: Barvy
+Document background: Pozadí dokumentu
+Document title: Titulek
+Document text: Text dokumentu
+Table grid color: Barva mřížky v tabulce
+Table header background: Pozadí záhlaví tabulky
+Table header text: Záhlaví tabulky
+Table cell background: Pozadí políček v tabulce
+Table cell background for current day: Pozadí políčka pro dnešní den
+Table cell background for weekends: Pozadí tabulky pro víkendy
+Event popup background: Pozadí vyskakovacího okna události
+Event popup text: Text vyskakovacího okna události
+System Settings: Nastavení systému
+Help: Nápověda
 app-name-help: Určuje jméno aplikace, které se na všech stránkách zobrazí v záhlaví prohlížeče. Zadaná hodnota se zkusí vyhledat v překladech, aby bylo možno definovat její znění ve všech jazycích.
 Application Name: Název aplikace
 server-url-help: Určuje základní URL k tomuto web kalendáři. Tato URL bude použita jako základ při zasílání emailů s připomínkami a upozorňováním.
@@ -118,8 +133,6 @@ From: Od
 to: do
 preferred-view-help: Určuje výchozí pohled na kalendář (denní, týdení, měsíční a nebo roční)
 Preferred view: Upřednostnovaný pohled
-Bottom: Dole
-Top: Nahoře
 fonts-help: Určuje seznam systémových fontů, které se mají používat (jako jsou "Arial, Helvetica").
 Fonts: Písma
 display-weekends-help: Vypisuje také víkendové dny při prohlížení týdne.
@@ -163,11 +176,6 @@ popup-includes-siteextras-help: Pokud je povoleno, umožní vlastní údaje k ud
 Display Site Extras in popup: Zobrazuj rozšířené místní info v pop-up oknech
 remember-last-login-help: Pokud je povoleno, login uživatele bude předvyplněn na přihlašovací stránce (ne heslo) a bude i použito uživatelské nastavení barev a jazyka.
 Remember last login: Zapamatuj si poslední přihlášení
-Plugins: Doplnky
-plugins-enabled-help: Povolí doplňkové rozšíření aplikací
-Enable Plugins: Povol doplňky
-plugins-sort-key-help: Určuje způsob řazení doplňků.
-Plugin: Doplněk
 allow-public-access-help: Pokud je povoleno, bude možno bez možnosti zápisu přistupovat do kalendáře bez nutnosti se přihlašovat.
 Allow public access: Povolit veřejný přístup
 public-access-default-visible: Události od anonymů se automaticky objeví v kalendářích všech uživatel?
@@ -220,17 +228,6 @@ Event rejected by participant: Událost byla zamítnuta účastníkem
 Allow user to customize colors: Povol uživatelům měnit si barvy
 Enable gradient images for background colors: Povol gradientová obrázky namísto barvy pozadí
 Not available: Není k dispozici
-Document background: Pozadí dokumentu
-Document title: Titulek
-Document text: Text dokumentu
-Table grid color: Barva mřížky v tabulce
-Table header background: Pozadí záhlaví tabulky
-Table header text: Záhlaví tabulky
-Table cell background: Pozadí políček v tabulce
-Table cell background for current day: Pozadí políčka pro dnešní den
-Table cell background for weekends: Pozadí tabulky pro víkendy
-Event popup background: Pozadí vyskakovacího okna události
-Event popup text: Text vyskakovacího okna události
 
 ########################################
 # Page: adminhome.php
@@ -248,19 +245,6 @@ Activity Log: Protokol o aktivitách
 Public Preferences: Veřejné předvolby
 Unapproved Public Events: Neschválené veřejné události
 Administrative Tools: Administrační nástroje
-This Week: Tento týden
-This Month: Tento měsíc
-This Year: Tento rok
-Exit: Konec
-Home: Domů
-Add New Event: Přidej novou událost
-Add New Task: Přidej nový úkol
-Unapproved Entries: Neschválené události
-Manage Calendar of: Uprav cizí kalendář
-Manage Views: Uprav náhledy
-User Access Control: Správa uživatelských práv
-Help Contents: Obsah nápovědy
-About WebCalendar: O aplikaci WebCalendar
 
 ########################################
 # Page: approve_entry.php
@@ -313,6 +297,9 @@ Description: Popis
 #
 am: dop.
 pm: odp.
+days: dnů
+hours: hodin
+minutes: minut
 Edit Entry: Uprav záznam
 Add Entry: Přidat záznam
 Details: Detaily
@@ -338,8 +325,6 @@ All day event: Celodenní událost
 Timezone Offset: časová zóna
 time-help: Tímto se urdžuje přesný čas události.<br /><i>Nemusí se sem nic vyplňovat.</i>
 duration-help: Tímto lze určit dobu trvání (v minutách) dané události.<br /><i>Toto políčko může zůstat prázdné.</i>
-hours: hodin
-minutes: minut
 end-time-help: Určuje očekávaný konec události.
 participants-help: Seznam účastníků této události.
 external-participants-help: Určuje seznam zůčastněných události, kterí nepatří mezi uživatele tohoto kalendářového systému. Tyto uživatele je možno vypsat jednoho po druhém, jeden na řádek (včetně emailové adresy). Pokud bude zadána emailová adresa, uživatel bude moct přijímat sdělení a připomínky.
@@ -357,7 +342,6 @@ repeat-frequency-help: Určuje, jak často se má událost opakovat. Výchozí p
 Frequency: Frekvence
 All: Všichni
 Send Reminder: Poslat upomínku
-days: dnů
 Delete entry: Smaž záznam
 You are not authorized to edit this entry.: Nemáš oprávnění upravovat tento záznam
 
@@ -554,9 +538,7 @@ Entries older than the current date: Záznamy starší, než aktuální datum
 Entries created in the Palm Desktop...: Záznamy vytvořené Palm Desktopem, které nebyly synchronizovány HotSyncem
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Cokoli importovaného z Palmu bude přepsáno následujícím importem (ledaže by již prošla platnost záznamu).
 Therefore, updates should be made in the Palm Desktop.: Proto, měl by provést aktualizaci v Palm Desktopu.
-This form will import vCalendar (.vcs) 1.0 events: Tímto formulářem lze importovat události z vCalendar (.vcs) 1.0
 The following formats have been tested: Tyto formáty souborů byly otestovány
-This form will import iCalendar (.ics) events: Tímto formulářem lze importovat události z iCalendar (.ics)
 Enabling: Povolení
 Overwrite Prior Import: Přepsat data předchozího importu
 
@@ -564,6 +546,7 @@ Overwrite Prior Import: Přepsat data předchozího importu
 # Page: help_index.php
 #
 Help Index: Index nápovědy
+About WebCalendar: O aplikaci WebCalendar
 
 ########################################
 # Page: help_layers.php
@@ -618,9 +601,10 @@ Add layer: Přidej vrstvu
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Prohlédnout tento záznam
 Approve/Confirm: Schválit/potvrdit
 Reject: Odmítnout
+View this entry: Prohlédnout tento záznam
+Unapproved Entries: Neschválené události
 Approve this entry?: Potvrdit tento záznam?
 Reject this entry?: Odmítnout tuto událost?
 
@@ -629,6 +613,7 @@ Reject this entry?: Odmítnout tuto událost?
 #
 You must enter a login and password.: Musíš zadat svůj platný login a heslo
 Save login via cookies so I dont have to login next time.: Abych se příště nemusel přihlašovat, zapamatuj si přihlašovací údaje do cookies
+Login: Příhlást se
 Access public calendar: Přístup k veřejným kalendářům
 cookies-note: <b>Poznámka:</b> Pro přihlášení a správný běh je potřeba mít v prohlížeci povolena cookies.
 
@@ -636,9 +621,7 @@ cookies-note: <b>Poznámka:</b> Pro přihlášení a správný běh je potřeba 
 # Page: login.php
 #
 Invalid login: Neplatné přihlášení
-Not yet registered? Register here!:Nemáte ještě účet? Registrovat zde!
-Login: Příhlást se
-You have been logged out:Byl jste odhlášen
+Not yet registered? Register here!: Nemáte ještě účet? Registrovat zde!
 
 ########################################
 # Page: nonusers.php
@@ -772,6 +755,7 @@ New Entry: Nový záznam
 # Page: includes/access.php
 #
 Another Users Calendar: Kalendář jiného uživatele
+Manage Views: Uprav náhledy
 
 ########################################
 # Page: includes/date_formats.php
@@ -790,6 +774,7 @@ Notification sent: Bylo odesláno upozornění
 Event rejected: Událost byla odmítnuta
 Reminder sent: Byla odeslána upopomínka
 Event updated: Událost byla aktualizována
+WK: týden
 Changes successfully saved: Změny byly úspěšně uloženy
 Event: Událost
 Action: Událost
@@ -806,7 +791,6 @@ August: srpen
 September: září
 October: říjen
 November: listopad
-WK: týden
 Jan: led
 Feb: úno
 Mar: bře
@@ -845,7 +829,9 @@ Sat: so
 #
 My Calendar: Můj kalendář
 Add New Entry: Přidat nový záznam
+Add New Task: Přidej nový úkol
 Logout: Odhlášení
+Home: Domů
 Back to My Calendar: Zpět k mému kalendáři
 Go to: Jít na
 Manage calendar of: Správa kalendáře uživatele
@@ -922,7 +908,14 @@ Invalid color: Neplatná barva
 ########################################
 # Page: includes/menu/index.php
 #
+This Week: Tento týden
+This Month: Tento měsíc
+This Year: Tento rok
+Exit: Konec
+Add New Event: Přidej novou událost
+Manage Calendar of: Uprav cizí kalendář
 Unapproved Events: Nepotvrzené události
+Help Contents: Obsah nápovědy
 
 ########################################
 # Page: tools/send_reminders.php
