@@ -1,4 +1,5 @@
 Version 1.0.6 (?? ??? ????)
+ - Add support for Czech UTF8
  - Add support for the other languages, too.
    Afrikaans, Albanian, Arabic, Croatian, Elven, Hebrew, Lithuanian, Serbian, Slovak, Slovenian
  - Fixed bug [ 1778587 ] upcoming.php wrong link for repeating events
