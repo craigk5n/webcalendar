@@ -291,7 +291,7 @@ function get_browser_language ( $pref = false ) {
  *                avalailable, then the original untranslated text is returned.
  */
 function translate ( $str, $decode = '', $type = '' ) {
-  global $translation_loaded, $translations;
+  global $LANGUAGE, $translation_loaded, $translations;
 
   if ( ! $translation_loaded )
     load_translation_text ();
@@ -299,8 +299,11 @@ function translate ( $str, $decode = '', $type = '' ) {
   if ( $type == '' || $type == 'A' ) {
     // Translate these because even English may be abbreviated.
     $str = trim ( $str );
-    $str = $decode
-      ? unhtmlentities ( $translations[$str] ) : $translations[$str];
+    // $public_access, and maybe other things, getting translated more than once.
+    // Which is not supposed to happen.
+    if ( ! empty ( $translations[$str] ) )
+      $str = ( $decode
+        ? unhtmlentities ( $translations[$str] ) : $translations[$str] );
   }
   if ( strpos ( strtolower ( $LANGUAGE ), 'english' ) === false ) {
     // Only translate if not English.

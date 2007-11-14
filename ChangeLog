@@ -4,6 +4,9 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Partial fix bug [ 1832024 ] Notice: Undefined variable: LANGUAGE in /var/www/webcalendar/includes/translate.php
+   (Forgot to set $LANGUAGE global in function translate.
+    And, some things seem to be getting translated more than once.)
  - Add support for Czech UTF8
  - Fix bug [ 1830952 ] Cannot add events - Error, during execute Query
  - Fix bug [ 1737128 ] From notification to "not authorized"
