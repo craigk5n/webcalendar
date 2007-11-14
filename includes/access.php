@@ -416,7 +416,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
   // First, check list of exceptions to our rules.
   if ( ! empty ( $page_lookup_ex[$page] ) )
     return true;
-  for ( $i = 0; $i <= ACCESS_NUMBER_FUNCTIONS && $page_id < 0; $i++ ) {
+  for ( $i = 0; $i <= ACCESS_NUMBER_FUNCTIONS; $i++ ) {
     if ( ! empty ( $page_lookup[$i] ) &&
         preg_match ( "/$page_lookup[$i]/", $page ) )
       $page_id[] = $i;
@@ -436,19 +436,15 @@ function access_can_view_page ( $page = '', $user = '' ) {
   // If we did not find a page id, then this is also a WebCalendar bug.
   // (Someone needs to add another entry in the $page_lookup[] array.)
   //assert ( 'count ( $page_id ) > 0' );
-
   for ( $i=0, $cnt = count ( $page_id ); $i < $cnt; $i++ ) {
-    $yes = substr ( $access, $page_id, 1 );
-		if (  $yes == 'Y' ) $yesno = $yes;
-	}
-  // echo $page . '  ' . $page_id . ' ' . $access . '<br />';
+    $yesno  = substr ( $access, $page_id[$i], 1 );
+  }
   // No setting found. Use default values.
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $page_id, $user );
 
-  // echo "yesno = $yesno<br />\n";
+  //echo "yesno = $yesno<br />\n";
   assert ( '! empty ( $yesno )' );
-
   return ( $yesno == 'Y' );
 }
 
