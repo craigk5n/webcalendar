@@ -410,6 +410,7 @@ function define_languages () {
     translate ( 'Chinese (Traditional/Big5)' ) => 'Chinese-Big5',
     translate ( 'Croatian' ) . ' (UTF8)' => 'Croatian_utf8',
     translate ( 'Czech' ) => 'Czech',
+    translate ( 'Czech' ) . ' (UTF8)' => 'Czech_utf8',
     translate ( 'Danish' ) => 'Danish',
     translate ( 'Dutch' ) => 'Dutch',
     translate ( 'Elven' ) => 'Elven',
