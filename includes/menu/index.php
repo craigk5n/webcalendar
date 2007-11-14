@@ -408,7 +408,7 @@ if ( $menuConfig['Views'] &&
       $groupcnt = count ( $groups );
 
       for ( $i = 0; $i < $groupcnt; $i++ ) {
-        jscMenu_item ( 'display.png', $groups[$i]['name'], 
+        jscMenu_item ( 'display.png', $groups[$i]['name'],
 				  $groups[$i]['url'], false );
       }
       jscMenu_close ();
@@ -629,7 +629,7 @@ $menuHtml .= '
 
 // Add function to onload string as needed.
 $BodyX = ( empty ( $BodyX ) ? 'onload="' : substr ( $BodyX, 0, -1 ) )
- . "cmDraw ( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );\"";
+ . "cmDraw( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );\"";
 
 /* This function allows admins to add static content to their menu.
  */
