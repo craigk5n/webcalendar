@@ -53,19 +53,22 @@ load_user_preferences ( 'guest' );
 
 $WebCalendar->setLanguage ();
 
+$cookie_path = str_replace ( 'login.php', '', $PHP_SELF );
+//echo "Cookie path: $cookie_path\n";
+
 // Look for action=logout
 $logout = false;
 $action = getGetValue ( 'action' );
 if ( ! empty ( $action ) && $action == 'logout' ) {
   $logout = true;
   $return_path = '';
-  SetCookie ( 'webcalendar_login', '', 0 );
-  SetCookie ( 'webcalendar_last_view', '', 0 );
+  SetCookie ( 'webcalendar_login', '', 0, $cookie_path );
+  SetCookie ( 'webcalendar_last_view', '', 0, $cookie_path );
 } else if ( empty ( $return_path ) ) {
   // see if a return path was set
   $return_path = get_last_view ();
   if ( ! empty ( $return_path ) )
-    SetCookie ( 'webcalendar_last_view', '', 0 );
+    SetCookie ( 'webcalendar_last_view', '', 0, $cookie_path );
 }
 
 if ( ! empty ( $return_path ) ) {
@@ -86,8 +89,6 @@ $password = getPostValue ( 'password' );
 if ( empty ( $PHP_SELF ) ) {
   $PHP_SELF = $_SERVER['PHP_SELF'];
 }
-$cookie_path = str_replace ( 'login.php', '', $PHP_SELF );
-//echo "Cookie path: $cookie_path\n";
 
 if ( $single_user == 'Y' ) {
   // No login for single-user mode

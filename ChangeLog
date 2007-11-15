@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Fix bug [ 1649974 ] 'public access' impossible cause using previous logged
  - Add support for Czech UTF8
  - Change $includedir and $basedir to CONSTANTS
  - Fix bug [ 1797030 ] Error in send_reminder.php
