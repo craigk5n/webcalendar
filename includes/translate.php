@@ -299,6 +299,12 @@ function translate ( $str, $decode = '', $type = '' ) {
   if ( $type == '' || $type == 'A' ) {
     // Translate these because even English may be abbreviated.
     $str = trim ( $str );
+		
+	if ( empty ( $str ) )
+		return false;
+			
+    $str = $decode
+      ? unhtmlentities ( $translations[$str] ) : $translations[$str];
     // $public_access, and maybe other things, getting translated more than once.
     // Which is not supposed to happen.
     if ( ! empty ( $translations[$str] ) )
