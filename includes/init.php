@@ -303,30 +303,31 @@ function print_menu_dates ( $menu = false ) {
             <select name="date" id="monthselect" '
    . 'onchange="document.SelectMonth.submit()">';
 
-  if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
-    $m = $thismonth;
-    $y = $thisyear;
-  } else {
-    $m = date ( 'm' );
-    $y = date ( 'Y' );
-  }
-  $d_time = mktime ( 0, 0, 0, $m, 1, $y );
-  $thisdate = date ( 'Ymd', $d_time );
-  // $y--;
-  $m -= 7;
+  $d = ( empty ( $thisday ) ? date ( 'd' ) : $thisday );
+  $m = ( empty ( $thismonth ) ? date ( 'm' ) : $thismonth );
+  $y = ( empty ( $thisyear ) ? date ( 'Y' ) : $thisyear );
+
+  $lastDay = ( $DISPLAY_WEEKENDS == 'N' ? 4 : 6 );
+  $thisdate = date ( 'Ymd', mktime ( 0, 0, 0, $m, 1, $y ) );
+  $thisweek = date ( 'W', mktime ( 0, 0, 0, $m, $d, $y ) );
+  $wkstart = get_weekday_before ( $y, $m, $d );
+
+  $tmp = mktime ( 0, 0, 0, $m - 7, 1, $y );
+  $m = date ( 'm', $tmp );
+  $y = date ( 'Y', $tmp );
+
   for ( $i = 0; $i < 25; $i++ ) {
     $m++;
     if ( $m > 12 ) {
       $m = 1;
       $y++;
     }
-    if ( $y >= 1970 && $y < 2038 ) {
-      $d = mktime ( 0, 0, 0, $m, 1, $y );
-      $dateYmd = date ( 'Ymd', $d );
+    if ( $y > 1969 && $y < 2038 ) {
+      $dateYmd = date ( 'Ymd', mktime ( 0, 0, 0, $m, 1, $y ) );
       $ret .= '
                 <option value="' . $dateYmd . '"'
        . ( $dateYmd == $thisdate ? $selected : '' ) . '>'
-       . date_to_str ( $dateYmd, $DATE_FORMAT_MY, false, true, 0 ) . '</option>';
+       . date_to_str ( $dateYmd, $DATE_FORMAT_MY, false, true ) . '</option>';
     }
   }
 
@@ -370,21 +371,10 @@ function print_menu_dates ( $menu = false ) {
             <select name="date" id="weekselect" '
    . 'onchange="document.SelectWeek.submit()">';
 
-  if ( ! empty ( $thisyear ) && ! empty ( $thismonth ) ) {
-    $m = $thismonth;
-    $y = $thisyear;
-  } else {
-    $m = date ( 'm' );
-    $y = date ( 'Y' );
-  }
-  $d = ( empty ( $thisday ) ? date ( 'd' ) : $thisday  );
-  $d_time = mktime ( 0, 0, 0, $m, $d, $y );
-  $thisweek = date ( 'W', $d_time );
-  $wkstart = get_weekday_before ( $y, $m, $d );
-  $lastDay = ( $DISPLAY_WEEKENDS == 'N' ? 4 : 6 );
+  $y = ( empty ( $thisyear ) ? date ( 'Y' ) : $thisyear );
   for ( $i = -5; $i <= 9; $i++ ) {
-    $twkstart = $wkstart + ( 604800 * $i );
-    $twkend = $twkstart + ( 86400 * $lastDay );
+    $twkstart = 604800 * $i + $wkstart;
+    $twkend = 86400 * $lastDay + $twkstart;
     $dateSYmd = date ( 'Ymd', $twkstart );
     $dateEYmd = date ( 'Ymd', $twkend );
     $dateW = date ( 'W', $twkstart + 86400 );
@@ -393,11 +383,10 @@ function print_menu_dates ( $menu = false ) {
               <option value="' . $dateSYmd . '"'
        . ( $dateW == $thisweek ? $selected : '' ) . '>'
        . ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
-        ( $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y' )
-        ? '( ' . $dateW . ' )&nbsp;&nbsp;' : '' ) . sprintf ( "%s - %s",
-        date_to_str ( $dateSYmd, $DATE_FORMAT_MD, false, true, 0 ),
-        date_to_str ( $dateEYmd, $DATE_FORMAT_MD, false, true, 0 ) )
-       . '</option>';
+        $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y'
+        ? '(' . $dateW . ')&nbsp;&nbsp;' : '' ) . sprintf ( '%s - %s',
+        date_to_str ( $dateSYmd, $DATE_FORMAT_MD, false, true ),
+        date_to_str ( $dateEYmd, $DATE_FORMAT_MD, false, true ) ) . '</option>';
   }
 
   $ret .= '
@@ -423,7 +412,8 @@ function print_menu_dates ( $menu = false ) {
     }
   }
   $ret .= '
-          <form action="' . $yearUrl . '" method="get" name="SelectYear" id="year'
+          <form action="' . $yearUrl
+   . '" method="get" name="SelectYear" id="year'
    . ( $menu ? 'menu' : 'form' ) . '">' . $urlArgs
    . ( ! empty ( $user ) && $user != $login ? '
             <input type="hidden" name="user" value="' . $user . '" />' : '' )
@@ -439,13 +429,11 @@ function print_menu_dates ( $menu = false ) {
             <select name="year" id="yearselect" '
    . 'onchange="document.SelectYear.submit()">';
 
-  $y = ( empty ( $thisyear ) ? date ( 'Y' ) : $thisyear );
-
-  for ( $i = $y - 2; $i < $y + 6; $i++ ) {
-    if ( $i >= 1970 && $i < 2038 )
+  for ( $i = $y - 2, $cnt = $y + 6; $i < $cnt; $i++ ) {
+    if ( $i > 1969 && $i < 2038 )
       $ret .= '
               <option value="' . $i . '"'
-       . ( $i == $y ? $selected : '' ) . ">$i" . '</option>';
+       . ( $i == $y ? $selected : '' ) . '>' . $i . '</option>';
   }
 
   return $ret . '
