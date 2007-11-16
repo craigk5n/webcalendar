@@ -203,7 +203,7 @@ class WebCalendar {
       $can_add, $can_add,
       $valid_user, $userlist,
       $nonusers, $u_url, $user_fullname, $fullname,
-      $caturl, $is_nonuser, $CATEGORY_VIEW;
+      $caturl, $CATEGORY_VIEW;
 
     loadConfig ();
 		$smarty->LoadVars ( $this->_loginId );
@@ -296,7 +296,7 @@ class WebCalendar {
         $this->_userId = '';
 
       $can_add = ( !_WC_READONLY || $this->_isAdmin );
-      if ( $is_nonuser )
+      if ( $this->_isNonuser )
         $can_add = false;
 
       if ( getPref ( 'GROUPS_ENABLED', 2 ) && 
@@ -623,7 +623,7 @@ class WebCalendar {
    */
   function _initValidate() {
     global  $PHP_AUTH_USER, $REMOTE_USER,  $c,
-      $login_return_path, $is_nonuser;
+      $login_return_path;
 
     /* If WebCalendar is configured to use http authentication, then we can
      * use _initValidate().  If we are not using http auth, icalclient.php will
@@ -637,7 +637,6 @@ class WebCalendar {
     }
     $validate_redirect = false;
 
-    $is_nonuser = false;
 
     // Catch-all for getting the username when using HTTP-authentication
     if ( _WC_HTTP_AUTH ) {
@@ -725,7 +724,6 @@ class WebCalendar {
                 die_miserable_death ( 'Nonuser calendar is not public' );
               }
 							$this->_loginId = $nucData['login_id'];
-              $is_nonuser = true;
             } else if (! $this->User->validCrypt ( $this->_login, $cryptpw)) {
               //do_debug ( "User not logged in; redirecting to login page" );
               if ( empty ( $login_return_path ) )
@@ -750,7 +748,7 @@ class WebCalendar {
    */
   function _initConnect() {
     global $c, $PHP_AUTH_USER,
-      $not_auth, $is_nonuser;
+      $not_auth;
 
     // Establish a database connectio
     if ( empty ( $c ) ) {
@@ -803,7 +801,7 @@ class WebCalendar {
         exit;
       }
     }
-    $is_nonuser = false;
+    $this->_isNonuser = false;
 
     if ( empty ( $this->_login ) && _WC_HTTP_AUTH 
 		  && _WC_SCRIPT != 'login.php' ) {
