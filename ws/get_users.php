@@ -7,7 +7,7 @@
  *       overkill and require extra packages to install).
  *
  * Comments:
- *  Client apps must use the same authentication as the web browser. If
+ *  Client apps must use the same authentication as the web browser.  If
  *  WebCalendar is setup to use web-based authentication, then the login.php
  *  found in this directory should be used to obtain a session cookie.
  *
