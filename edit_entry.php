@@ -419,7 +419,7 @@ if ( ( ! getPref ( 'DISABLE_PARTICIPANTS_FIELD' )
     $size = 15;
   else if ( $size > 5 )
     $size = 5;	
-		print_r ( $myusers);
+
 	$smarty->assign ( 'size', $size );
 	$smarty->assign ( 'myuserlist', $myuserlist );
 	$smarty->assign ( 'nonuserlist', $nonuserlist );
