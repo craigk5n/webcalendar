@@ -1,10 +1,9 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
-
 // If not yet logged in, you will be redirected to login.php before
 // we get to this point (by init.php included above).
-if ( ! empty ( $STARTVIEW ) ) {
+if ( getPref ( 'STARTVIEW' ) ) {
   $page = get_preferred_view ();
   if ( access_can_view_page ( $page ) )
     send_to_preferred_view ();
@@ -24,8 +23,9 @@ if ( ! empty ( $STARTVIEW ) ) {
       do_redirect ( 'year.php' );
     // At this point, this user cannot view the preferred view in their
     // preferences (and they cannot update their preferences), and they cannot
-    // view any of the standard day/week/month/year pages. All that's left is a
+    // view any of the standard day/week/month/year pages.  All that's left is a
     // custom view that is either created by them or a global view.
+	$views = loadViews ();
     if ( count ( $views ) > 0 )
       do_redirect ( $views[0]['url'] );
 

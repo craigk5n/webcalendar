@@ -1,5 +1,6 @@
 <?php
-/* This page produces search results.
+/*
+ * This page produces search results.
  *
  * "Advanced Search" adds the ability to search other users' calendars.
  * We do a number of security checks to make sure this is allowed.
@@ -14,7 +15,7 @@ include_once 'includes/init.php';
 
 $error = '';
 
-$keywords = getValue ( 'keywords' );
+$keywords = $WC->getValue ( 'keywords' );
 
 if ( strlen ( $keywords ) == 0 )
   $error = translate ( 'You must enter one or more search keywords' ) . '.';
@@ -22,22 +23,10 @@ if ( strlen ( $keywords ) == 0 )
 $matches = 0;
 // Determine if this user is allowed to search the calendar of other users
 $search_others = false; // show "Advanced Search"
-if ( $single_user == 'Y' )
+if ( _WC_SINGLE_USER )
   $search_others = false;
 
-if ( $is_admin )
-  $search_others = true;
-else
-if ( access_is_enabled () )
-  $search_others = access_can_access_function ( ACCESS_ADVANCED_SEARCH );
-else
-if ( $login != '__public__' && ! empty ( $ALLOW_VIEW_OTHER ) &&
-    $ALLOW_VIEW_OTHER == 'Y' )
-  $search_others = true;
-else
-if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
-    $PUBLIC_ACCESS_OTHERS == 'Y' )
-  $search_others = true;
+$search_others = access_can_access_function ( ACCESS_ADVANCED_SEARCH );
 
 if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
@@ -45,9 +34,7 @@ if ( empty ( $users ) || empty ( $users[0] ) )
 // was not hacked up to include users that they don't really have access to.
 if ( $search_others ) {
   // If user can only see users in his group, then remove users not in his group.
-  if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
-      $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! empty ( $GROUPS_ENABLED ) &&
-      $GROUPS_ENABLED == 'Y' ) {
+  if ( getPref ( 'USER_SEES_ONLY_HIS_GROUPS' ) && getPref ( 'GROUPS_ENABLED' ) ) {
     $myusers = get_my_users ( '', 'view' );
     $userlookup = array ();
     for ( $i = 0, $cnt = count ( $myusers ); $i < $cnt; $i++ ) {
@@ -62,7 +49,7 @@ if ( $search_others ) {
     $users = $newlist;
   }
   // Now, use access control to remove more users :-)
-  if ( access_is_enabled () && ! $is_admin ) {
+  if ( ! $WC->isAdmin() ) {
     $newlist = array ();
     for ( $i = 0; $i < $cnt; $i++ ) {
       if ( access_user_calendar ( 'view', $users[$i] ) )
@@ -76,28 +63,28 @@ if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
 
 //Get advanced filters
-$cat_filter = getPostValue ( 'cat_filter' );
-$extra_filter = getPostValue ( 'extra_filter' );
-$date_filter = getPostValue ( 'date_filter' );
-$start_day = getPostValue ( 'from_day' );
-$start_month = getPostValue ( 'from_month' );
-$start_year = getPostValue ( 'from_year' );
-$end_day = getPostValue ( 'until_day' );
-$end_month = getPostValue ( 'until_month' );
-$end_year = getPostValue ( 'until_year' );
-$startDate =  gmdate ( 'Ymd', gmmktime ( 0, 0, 0,
+$cat_filter = $WC->getPOST ( 'cat_filter' );
+$extra_filter = $WC->getPOST ( 'extra_filter' );
+$date_filter = $WC->getPOST ( 'date_filter' );
+$start_day = $WC->getPOST ( 'from_day' );
+$start_month = $WC->getPOST ( 'from_month' );
+$start_year = $WC->getPOST ( 'from_year' );
+$end_day = $WC->getPOST ( 'until_day' );
+$end_month = $WC->getPOST ( 'until_month' );
+$end_year = $WC->getPOST ( 'until_year' );
+$startDate =  gmdate ( 'Ymd', gmmktime ( 0, 0, 0, 
   $start_month, $start_day, $start_year ) );
-$endDate =  gmdate ( 'Ymd', gmmktime ( 23, 59, 59,
+$endDate =  gmdate ( 'Ymd', gmmktime ( 23, 59, 59, 
   $end_month, $end_day, $end_year ) );
 
-print_header ();
+build_header ();
 echo '
     <h2>' . translate ( 'Search Results' ) . '</h2>';
 
 if ( ! empty ( $error ) )
   echo print_error ( $error );
 else {
-  $ids = array ();
+  $eids = array ();
 // *** "Phrase" feature by Steve Weyer saweyer@comcast.net 4-May-2005
 // check if keywords is surrounded by quotes
 // an alternative might be to add a checkbox/list on search.php
@@ -118,7 +105,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
 } else
   // original (default) behavior
   $words = explode ( ' ', $keywords );
-// end Phrase modification
+// end Phrase modification 
   $order = 'DESC';
   $word_cnt = count ( $words );
   for ( $i = 0; $i < $word_cnt; $i++ ) {
@@ -130,31 +117,31 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
       . ( ! empty ( $cat_filter ) ? ', webcal_entry_categories wec ' : '')
       . ( ! empty ( $extra_filter ) ? ', webcal_site_extras wse ' : '')
       . ' WHERE we.cal_id = weu.cal_id AND weu.cal_status in ( \'A\',\'W\' )
-      AND weu.cal_login IN ( ?';
+      AND weu.cal_login_id IN ( ?';
     if ( $search_others ) {
       if ( empty ( $users[0] ) )
-        $sql_params[0] = $users[0] = $login;
+        $sql_params[0] = $users[0] = $WC->loginId();
       $user_cnt = count ( $users );
       for ( $j = 0; $j < $user_cnt; $j++ ) {
         if ( $j > 0 ) $sql .= ', ?';
         $sql_params[] = $users[$j];
       }
     } else
-      $sql_params[] = $login;
+      $sql_params[] = $WC->loginId();
 
     $sql .= ' ) ';
     if ( $search_others ) {
       // Don't search confidential entries of other users.
-      $sql .= 'AND ( weu.cal_login = ?
-        OR ( weu.cal_login != ? AND we.cal_access = \'P\' ) ) ';
-      $sql_params[] = $login;
-      $sql_params[] = $login;
+      $sql .= 'AND ( weu.cal_login_id = ?
+        OR ( weu.cal_login_id != ? AND we.cal_access = \'P\' ) ) ';
+      $sql_params[] = $WC->loginId();
+      $sql_params[] = $WC->loginId();
     }
     // We get an error using mssql trying to read text column as varchar.
     // This workaround seems to fix it up ROJ
     // but, will only search the first 1kb of the description.
     $sql .= 'AND ( UPPER( we.cal_name ) LIKE UPPER( ? ) OR UPPER( '
-     . ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0
+     . ( strcmp ( _WC_DB_TYPE, 'mssql' ) == 0
       ? 'CAST ( we.cal_description AS varchar (1024) )'
       : 'we.cal_description' )
      . ' ) LIKE UPPER( ? ) ';
@@ -186,23 +173,25 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
       }
       if ( $date_filter == 3 ) {//Use Date Range
         $sql .= 'AND ( we.cal_date >= ? AND we.cal_date <= ? )';
-        $sql_params[] = $startDate;
-        $sql_params[] = $endDate;
+        $sql_params[] = $startDate; 
+        $sql_params[] = $endDate;      
       }
     }
 
-    $res = dbi_execute ( $sql . ' ORDER BY we.cal_date ' . $order
-     . ', we.cal_name', $sql_params );
+    $sql .= ' ORDER BY we.cal_date ' . $order . ', we.cal_name';
+     //echo "SQL: $sql<br /><br />";
+     //print_r ( $sql_params );
+    $res = dbi_execute ( $sql, $sql_params );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $matches++;
-        $idstr = strval ( $row[0] );
-        if ( empty ( $ids[$idstr] ) )
-          $ids[$idstr] = 1;
+        $eidstr = strval ( $row[0] );
+        if ( empty ( $eids[$eidstr] ) )
+          $eids[$eidstr] = 1;
         else
-          $ids[$idstr]++;
+          $eids[$eidstr]++;
 
-        $info[$idstr] = $row[1] . ' ( ' . date_to_str ( $row[2] ) . ' )';
+        $info[$eidstr] = $row[1] . ' ( ' . date_to_str ( $row[2] ) . ' )';
       }
     }
     dbi_free_result ( $res );
@@ -213,7 +202,7 @@ ob_start ();
 echo '
     <p><strong>';
 if ( $matches > 0 ) {
-  $matches = count ( $ids );
+  $matches = count ( $eids );
   // Let update_translation.pl pick up translations.
   // translate ( 'match found' ) translate ( 'matches found' )
   echo $matches . ' '
@@ -225,19 +214,19 @@ if ( $matches > 0 ) {
 echo ": $keywords" . '</strong>.</p>';
 // now sort by number of hits
 if ( empty ( $error ) ) {
-  //arsort ( $ids );
+  //arsort ( $eids );
   echo '
     <ul>';
-  for ( reset ( $ids ); $key = key ( $ids ); next ( $ids ) ) {
+  for ( reset ( $eids ); $key = key ( $eids ); next ( $eids ) ) {
     echo '
-      <li><a class="nav" href="view_entry.php?id=' . $key . '">' . $info[$key]
+      <li><a class="nav" href="view_entry.php?eid=' . $key . '">' . $info[$key]
      . '</a></li>';
   }
   echo '
     </ul>';
 }
 echo '
-      <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
+      <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' ) 
         . '"  style="margin-left: 13px;" method="post">
        <input type="submit" value="'
         . translate ( 'New Search' ) . '" /></form>';

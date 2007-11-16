@@ -3,7 +3,7 @@
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
-print_header ( '', '', '', true );
+build_header ( '', '', '', 29 );
 ob_start ();
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'System Settings' )
@@ -16,7 +16,7 @@ $tmp_arr = array (
   translate ( 'allow-html-description-help' ),
   translate ( 'Allow users to override conflicts' ) =>
   translate ( 'conflict-check-override-help' ),
-  translate ( 'Allow viewing other users calendars' ) =>
+  translate ( 'Allow viewing other user&#39;s calendars' ) =>
   translate ( 'allow-view-other-help' ),
   translate ( 'Application Name' ) =>
   translate ( 'app-name-help' ),
