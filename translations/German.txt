@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 31. Oktober 2007
+# Last update: 15. November 2007
 #
 # $Id$
-# Translation last updated on 11-02-2007
+# Translation last updated on 11-16-2007
 
 
 ################################################################################
@@ -1601,7 +1601,7 @@ recipients_failed: SMTP Fehler - Die (der) folgende(n) Empf&auml;nger sind (ist)
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: Eingabe der Zeichen, die in der Grafik angezeigt werden
-Enter the correct letters and numbers from the image into the text box...: Tragen Sie die richtigen Buchstaben und Zahlen vom Bild in das Textfeld ein. Dieser kleine Test verhindert b&ouml;swilligen Bots (SPAM). Wenn die Grafik schwer zu lesen ist, einfach die Seite neu laden.
+Enter the correct letters and numbers...: Tragen Sie die richtigen Buchstaben und Zahlen vom Bild in das Textfeld ein. Dieser kleine Test verhindert b&ouml;swilligen Bots (SPAM). Wenn die Grafik schwer zu lesen ist, einfach die Seite neu laden.
 Challenge/Response: Aufforderung/Beantwortung
 
 ########################################
@@ -1699,18 +1699,18 @@ Password Accepted: Kennwort akzeptiert
 Successful Login: Erfolgreiches Login
 Password Incorrect: Kennwort falsch
 Invalid Login: Ung&uuml;ltiges Login
-OFF: AUS
-ON: EIN
-Safe Mode: =
-Safe Mode Allowed Vars: Safe Mode erlaubte Variablen (TZ nur erfoderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
-Display Errors: Anzeigefehler
-File Uploads: Datei Hochladen
+Display Errors: =
+File Uploads: =
 required only if Remote Calendars are used: nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden
 (required only if Remote Calendars are used): (nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden)
-Allow URL fopen: Erlaubt URL (Adresse) &#39;fopen&#39; (nur erforderlich wenn Externe-Kalender(Remote-Kalender) verwendet werden)
+Allow URL fopen: Allow URL fopen (nur erforderlich wenn Externe-Kalender(Remote-Kalender) verwendet werden)
+Safe Mode: =
+required only if Safe Mode is On: nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist
+(required only if Safe Mode is On): (nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
+Safe Mode Allowed Vars: Safe Mode erlaubte Variablen (nur erfoderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
 needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufende Hintergrundbilder n&ouml;tig
 (needed for Gradient Image Backgrounds): (F&uuml;r stufenweis verlaufende Hintergrundbilder n&ouml;tig)
-GD: GD (ben&ouml;tigt f&uuml;r stufenweis verlaufende Hintergrundbilder)
+GD: GD (ben&ouml;tigt f&uuml;r stufenweis verlaufendes Hintergrundbild)
 Passwords do not match: Kennw&ouml;rter stimmen nicht &uuml;berein
 Passwords do not match!: Kennw&ouml;rter stimmen nicht &uuml;berein!
 Unable to write password to settings.php file: Kennwort kann nicht in die &#39;settings.php&#39;-Datei geschrieben werden
@@ -1734,18 +1734,20 @@ Error you must specify a Single-User Login: Sie m&uuml;ssen ein\nSingle-User Log
 Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
 The password contains illegal characters.: Das Kennwort beinhaltet unzul&auml;ssige Zeichen
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
-System Administrators Guide: Systemverwalter-Anleitung
-Frequently Asked Questions: H&auml;fig gestellte Fragen und Antworten
-FAQ: =
-Troubleshooting: Fehlersuche
-Getting Help: Hilfe erhalten
-Upgrading Guide: Upgrade-Anleitung
-User Supported Wiki: Benutzer unterst&uuml;tztes Wiki
+System Administrators Guide: Systemverwalter-Anleitung (in Englisch)
+Frequently Asked Questions: H&auml;ufig gestellte Fragen und Antworten (in Englisch)
+FAQ: FAQ - H&auml;ufig gestellte Fragen und Antworten (in Englisch)
+Troubleshooting: Fehlersuche (in Englisch)
+Getting Help: Hilfe erhalten (in Englisch)
+Upgrading Guide: Upgrade-Anleitung (in Englisch)
+User Supported Wiki: Benutzer unterst&uuml;tztes Wiki (mehrsprachig)
 PHP Version Check: PHP Versions&uuml;berpr&uuml;fung
 Check to see if PHP 4.1.0 or greater is installed.: &Uuml;berpr&uuml;fung ob PHP 4.1.0 oder h&ouml;her installiert ist.
 PHP version: PHP Version
 PHP Settings: PHP Einstellungen
 Detailed PHP Info: Detailierte PHP Information
+ON: EIN
+OFF: AUS
 settings.php Status: &#39;settings.php&#39; Status
 Session Check: Session &Uuml;berpr&uuml;fung
 To test the proper operation of sessions, reload this page: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie diese Seite neu.
