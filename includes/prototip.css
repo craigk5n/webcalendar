@@ -1,0 +1,18 @@
+/* Prototip.css */
+
+.tooltip { width: 150px; color: #fff;}
+.tooltip .title { background: #0F6788; font: italic 17px Georgia, serif; padding: 5px;}
+.tooltip .content { background: dodgerblue; font: 11px Arial, Helvetica, sans-serif; padding: 5px;}
+
+.pinktip { border: 5px solid #a1a1a1; }
+.pinktip .title { background: #ff1e53; color: #fff; font: italic 17px Georgia, serif; padding: 5px; }
+.pinktip .content { background: #fff; color: #555555; padding: 5px; }
+
+/* Effects like 'blind' go a little bit better when 
+   there is no border on the tooltip itself.
+   Put the borders on .title and .content instead,
+   here's how to do that: */
+.darktip { width: 200px; }
+.darktip .title, .darktip .content { border: 5px solid #999999; padding: 5px; }
+.darktip .title { border-bottom: none; background: #606060; color: #fff; font: italic 17px Georgia, serif; }
+.darktip .content { border-top: none; background: #808080; color: #fff; font: 11px Arial, Helvetica, sans-serif; }
