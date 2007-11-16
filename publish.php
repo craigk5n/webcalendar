@@ -3,7 +3,7 @@
  *
  * Description:
  * Creates the iCal output for a single user's calendar so that remote users can
- * "subscribe" to a WebCalendar calendar. Both Apple iCal and Mozilla's calendar
+ * "subscribe" to a WebCalendar calendar. Both Apple iCal and Mozilla's Calendar
  * support subscribing to remote calendars.
  *
  * Note that unlike the export to iCal, this page does not include
@@ -20,37 +20,33 @@
  *
  * Security:
  * DO NOT ALLOW if either;
- * $PUBLISH_ENABLED is not 'Y' (set in Admin System Settings).
- * $USER_PUBLISH_ENABLED is not 'Y' (set in each user's Preferences).
+ * PUBLISH_ENABLED is not 'Y' (set in Admin System Settings).
+ * USER_PUBLISH_ENABLED is not 'Y' (set in each user's Preferences).
  */
 
-include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/WebCalendar.class.php';
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+$WC =& new WebCalendar ( __FILE__ );
 
+include 'includes/translate.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
-include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
-
-include 'includes/' . $user_inc;
-include 'includes/validate.php';
-
+$WC->initializeFirstPhase ();
+ 
 include 'includes/site_extras.php';
 include_once 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WC->initializeSecondPhase ();
 
 // Calculate username.
 // If using http_auth, use those credentials.
-if ( $use_http_auth && empty ( $user ) )
-  $user = $login;
+if ( _WC_HTTP_AUTH && empty ( $user ) )
+  $user = $WC->loginId();
 
 if ( empty ( $user ) ) {
-  $arr = explode ( '/', $PHP_SELF );
+  $arr = explode ( '/', $_SERVER['PHP_SELF'] );
   $user = $arr[count ( $arr )-1];
   # remove any trailing ".ics" in user name
   $user = preg_replace ( "/\.[iI][cC][sS]$/", '', $user );
@@ -59,14 +55,10 @@ if ( empty ( $user ) ) {
 if ( $user == 'publish.php' )
   $user = '';
 
-if ( $user == 'public' )
-  $user = '__public__';
 
-load_global_settings ();
+$WC->setLanguage ();
 
-$WebCalendar->setLanguage ();
-
-if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
+if ( ! getPref ( 'PUBLISH_ENABLED' ) ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth ();
   exit;
@@ -90,23 +82,24 @@ EOT;
 
 // Load user preferences (to get the USER_PUBLISH_ENABLED and
 // DISPLAY_UNAPPROVED setting for this user).
+//TODO
 $login = $user;
-load_user_preferences ();
 
-if ( empty ( $USER_PUBLISH_ENABLED ) || $USER_PUBLISH_ENABLED != 'Y' ) {
+if ( ! getPref ( 'USER_PUBLISH_ENABLED' ) ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth ();
   exit;
 }
 
 // Load user name, etc.
-user_load_variables ( $user, 'publish_' );
+$WC->User->loadVariables ( $user, 'publish_' );
 
+$calUser = $user;
 // header ( 'Content-Type: text/plain' );
 header ( 'Content-Type: text/calendar' );
 header ( 'Content-Disposition: attachment; filename="' . $user . '.ics"' );
 $use_all_dates = true;
 $type = 'publish';
-export_ical ();
+echo export_ical ();
 
 ?>

@@ -1,8 +1,9 @@
 <?php
-/* $Id$
+/*
+ * $Id$
  *
  * Page Description:
- *  This page will handle adding blobs into the database. It will
+ *  This page will handle adding blobs into the database.  It will
  *  present the form page on a GET and handle updating the database
  *  on a POST.
  *  This includes:
@@ -25,21 +26,22 @@
  */
 include_once 'includes/init.php';
 
-$id = getValue ( 'id', '-?[0-9]+' );
-$type = getValue ( 'type' );
-$user = getValue ( 'user' );
+$type = $WC->getValue ( 'type' );
+
+$eid = $WC->getId();
+
 $error = '';
 
 switch ( $type ) {
   case 'C':
-    if ( empty ( $id ) )
+    if ( empty ( $eid ) )
       $error = 'No id specified';
-    $title = translate ( 'Add Comment' );
+    $smarty->assign ( 'title', translate ( 'Add Comment' ) );
     break;
   case 'A':
-    if ( empty ( $id ) )
+    if ( empty ( $eid ) )
       $error = 'No id specified';
-    $title = translate ( 'Add Attachment' );
+    $smarty->assign ( 'title', translate ( 'Add Attachment' ) );
     $upload = ini_get ( 'file_uploads' );
     $upload_enabled = ! empty ( $upload ) &&
       preg_match ( "/(On|1|true|yes)/i", $upload );
@@ -53,51 +55,50 @@ switch ( $type ) {
 }
 
 $can_add = false;
-if ( $is_admin )
+if ( $WC->isAdmin() )
   $can_add = true;
 
 // Get event details if this is associated with an event
-if ( empty ( $error ) && ! empty ( $id ) ) {
+if ( empty ( $error ) && ! empty ( $eid ) ) {
   // is this user a participant or the creator of the event?
-  $res = dbi_execute ( 'SELECT we.cal_id
-    FROM webcal_entry we, webcal_entry_user weu
+  $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu 
     WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
-    AND ( we.cal_create_by = ? OR weu.cal_login = ? )',
-    array ( $id, $login, $login ) );
+    AND (we.cal_create_by = ? OR weu.cal_login_id = ?)';
+  $res = dbi_execute ( $sql, array( $eid, $WC->loginId(), 
+    $WC->loginId() ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row && $row[0] > 0 )
+    if ( $row && $row[0] > 0 ) {
       $is_my_event = true; // user is participant
-
+    }
     dbi_free_result ( $res );
   }
 }
 
 if ( $type == 'A' ) {
-  if ( empty ( $ALLOW_ATTACH ) || $ALLOW_ATTACH != 'Y' )
+  if ( ! getPref ( 'ALLOW_ATTACH' ) )
     $error = print_not_auth ();
-  else if ( empty ( $error ) && $ALLOW_ATTACH_PART == 'Y' && $is_my_event )
+  else if ( empty ( $error ) && getPref ( 'ALLOW_ATTACH_PART' ) && $is_my_event )
     $can_add = true;
-  else if ( $ALLOW_ATTACH_ANY == 'Y' )
+  else if ( getPref ( 'ALLOW_ATTACH_ANY' ) )
     $can_add = true;
 } else if ( $type == 'C' ) {
-  if ( empty ( $ALLOW_COMMENTS ) || $ALLOW_COMMENTS != 'Y' )
+  if ( ! getPref ( 'ALLOW_COMMENTS' ) )
     $error = print_not_auth ();
-  else if ( empty ( $error ) && $ALLOW_COMMENTS_PART == 'Y' && $is_my_event )
+  else if ( empty ( $error ) && getPref ( 'ALLOW_COMMENTS_PART' ) && $is_my_event )
     $can_add = true;
-  else if ( $ALLOW_COMMENTS_ANY == 'Y' )
+  else if ( getPref ( 'ALLOW_COMMENTS_ANY' ) )
     $can_add = true;
 }
 //check UAC
-if ( access_is_enabled () ) {
-  $can_add = $can_add || access_user_calendar ( 'edit', $user );
-}
+$can_add = $can_add || access_user_calendar ( 'edit', $WC->userId() );
+
 
 if ( ! $can_add )
   $error = print_not_auth ();
 
 if ( ! empty ( $error ) ) {
-  print_header ();
+  build_header ();
   echo print_error ( $error );
   echo print_trailer ();
   exit;
@@ -109,42 +110,46 @@ if ( empty ( $REQUEST_METHOD ) )
 if ( $REQUEST_METHOD == 'POST' ) {
 
   // get next id first
-  $res = dbi_execute ( 'SELECT MAX( cal_blob_id ) FROM webcal_blob' );
-  if ( ! $res )
-    die_miserable_death ( str_replace ( 'XXX', dbi_error (),
-      translate ( 'Database error XXX.' ) ) );
-       $row = dbi_fetch_row ( $res );
-  $nextid = ( ! empty ( $row ) ? $row[0] + 1 :  1 );
+  $res = dbi_execute ( 'SELECT MAX(cal_blob_id) FROM webcal_blob' );
+  if ( ! $res ) {
+    die_miserable_death ( translate( 'Database error' ) . ': ' .
+      dbi_error () );
+  }
+  if ( $row = dbi_fetch_row ( $res ) )
+    $nextid = $row[0] + 1;
+  else
+    $nextid = 1;
   dbi_free_result ( $res );
 
   if ( $type == 'C' ) {
     // Comment
-    $description = getValue ( 'description' );
-    $comment = getValue ( 'comment' );
-    if ( ! dbi_execute ( 'INSERT INTO webcal_blob ( cal_blob_id, cal_id,
-      cal_login, cal_name, cal_description, cal_size, cal_mime_type, cal_type,
-      cal_mod_date, cal_mod_time, cal_blob )
-      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )', array ( $nextid, $id, $login,
-        NULL, $description, 0, 'text/plain', 'C', date ( 'Ymd' ), date ( 'His' ),
-        NULL ) ) )
+    $description = $WC->getValue ( 'description' );
+    $comment = $WC->getValue ( 'comment' );
+    $sql = 'INSERT INTO webcal_blob ( cal_blob_id, cal_id, cal_login_id, 
+      cal_name, cal_description, cal_size, cal_mime_type, cal_type, 
+      cal_mod_date, cal_blob ) 
+      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
+    if ( ! dbi_execute ( $sql, array( $nextid, $eid, $WC->loginId(), NULL, 
+      $description, 0, 'text/plain', 'C', time(), NULL ) ) ) {
       $error = db_error ();
-    else {
+    } else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
-        "cal_blob_id = $nextid", $comment ) )
+        "cal_blob_id = $nextid", $comment ) ) {
         $error = db_error ();
-      else {
+      } else {
         // success!  redirect to view event page
-        activity_log ( $id, $login, $login, LOG_COMMENT, '' );
-        do_redirect ( "view_entry.php?id=$id" );
+        activity_log ( $eid, $WC->loginId(), $WC->loginId(), 
+		  LOG_COMMENT, '' );
+        do_redirect ( "view_entry.php?eid=$eid" );
       }
     }
   } else if ( $type == 'A' ) {
     // Attachment
-    $description = getValue ( 'description' );
+    $description = $WC->getValue ( 'description' );
     if ( ! empty ( $_FILES['FileName'] ) )
       $file = $_FILES['FileName'];
     if ( empty ( $file['file'] ) )
-      $error = 'File Upload error!<br />';
+      $error = 'File Upload error!<br/>';
 
     //print_r ( $file ); exit;
     $mimetype = $file['type'];
@@ -165,22 +170,24 @@ if ( $REQUEST_METHOD == 'POST' ) {
     }
     fclose ( $fd );
 
-    $comment = getValue ( 'description' );
-    if ( ! dbi_execute ( 'INSERT INTO webcal_blob ( cal_blob_id, cal_id,
-      cal_login, cal_name, cal_description, cal_size, cal_mime_type, cal_type,
-      cal_mod_date, cal_mod_time, cal_blob )
-      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )', array ( $nextid, $id, $login,
-        $filename, $description, $filesize, $mimetype, 'A', date ( 'Ymd' ),
-        date ( 'His' ), NULL ) ) )
+    $comment = $WC->getValue ( 'description' );
+    $sql = 'INSERT INTO webcal_blob ( cal_blob_id, cal_id, cal_login_id, 
+      cal_name, cal_description, cal_size, cal_mime_type, cal_type, 
+      cal_mod_date, cal_blob ) 
+      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
+    if ( ! dbi_execute ( $sql, array( $nextid, $eid, 
+	  $WC->loginId(), $filename, 
+      $description, $filesize, $mimetype, 'A', time(), NULL ) ) ) {
       $error = db_error ();
-    else {
+    } else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
         "cal_blob_id = $nextid", $data ) ) {
         $error = db_error ();
       } else {
         // success!  redirect to view event page
-        activity_log ( $id, $login, $login, LOG_ATTACHMENT, $filename );
-        do_redirect ( "view_entry.php?id=$id" );
+        activity_log ( $eid, $WC->loginId(), $WC->loginId(), 
+		  LOG_ATTACHMENT, $filename );
+        do_redirect ( "view_entry.php?eid=$eid" );
       }
     }
   } else {
@@ -188,58 +195,26 @@ if ( $REQUEST_METHOD == 'POST' ) {
   }
 
   if ( ! empty ( $error ) ) {
-    print_header ();
+    build_header ();
     echo print_error ( $error );
     echo print_trailer ();
     exit;
   }
 }
 
-print_header ();
-?>
-<h2><?php echo $title;?></h2>
+// Do we use FCKEditor?
+if ( getPref ( 'ALLOW_HTML_DESCRIPTION' ) ){
+  if ( file_exists ( 'includes/FCKeditor-2.0/fckeditor.js' ) &&
+    file_exists ( 'includes/FCKeditor-2.0/fckconfig.js' ) ) {
+    $smarty->assign ( 'use_fckeditor', true );
+  }
+}
 
-<?php if ( $type == 'C' ) {
-  // Comment
-?>
-<form action="docadd.php" method="post" name="docform">
-<input type="hidden" name="id" value="<?php echo $id?>" />
-<input type="hidden" name="type" value="C" />
 
-<table summary="">
+build_header ();
 
-<tr><td class="aligntop"><label for="description">
-  <?php etranslate ( 'Subject' )?>:</label></td>
-  <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
-<!-- TODO: htmlarea or fckeditor support -->
-<tr><td class="aligntop"><label for="comment">
-  <?php etranslate ( 'Comment' )?>:</label></td>
-  <td><textarea name="comment" rows="15" cols="60" wrap="auto"></textarea></td></tr>
-<tr><td colspan="2">
-<input type="submit" value="<?php etranslate ( 'Add Comment' )?>" /></td></tr>
-</table>
-</form>
+$smarty->assign ( 'type', $type );
 
-<?php } else if ( $type == 'A' ) {
-  // Attachment
-?>
-<form action="docadd.php" method="post" name="docform" enctype="multipart/form-data">
-<input type="hidden" name="id" value="<?php echo $id?>" />
-<input type="hidden" name="type" value="A" />
-<table summary="">
-<tr class="browse"><td>
- <label for="fileupload"><?php etranslate ( 'Upload file' );?>:</label></td><td>
- <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
-<tr><td class="aligntop"><label for="description">
-  <?php etranslate ( 'Description' )?>:</label></td>
-  <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
-
-<tr><td colspan="2">
-<input type="submit" value="<?php etranslate ( 'Add Attachment' )?>" /></td></tr>
-
-</table>
-</form>
-
-<?php }
-echo print_trailer (); ?>
+$smarty->display ( 'docadd.tpl' );
+ ?>
 

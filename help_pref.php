@@ -3,7 +3,7 @@
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
-print_header ( '', '', '', true );
+build_header ( '', '', '', 29 );
 
 ob_start ();
 
@@ -77,7 +77,7 @@ list_help ( $tmp_arr );
 echo '
       </div>';
 
-if ( $PUBLISH_ENABLED == 'Y' ) {
+if ( getPref ( 'PUBLISH_ENABLED' ) ) {
   echo '
       <h3>' . translate ( 'Subscribe/Publish' ) . '</h3>
       <div>';
@@ -102,7 +102,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) {
       </div';
 }
 
-if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' )
+if ( getPref ( 'ALLOW_COLOR_CUSTOMIZATION' ) )
   echo '
       <h3>' . translate ( 'Colors' ) . '</h3>
       <p>' . translate ( 'colors-help' ) . '</p>';
