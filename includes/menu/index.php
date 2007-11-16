@@ -441,7 +441,7 @@ if ( ! empty ( $menuExtras[3] ) )
 // .
 // Reports Menu
 // translate ( 'My Reports' )
-if ( (  $is_admin || is_array ( $reports_link ) ) && $menuConfig['Reports'] ) {
+if ( ( $is_admin || $reports_linkcnt  > 0 ) && $menuConfig['Reports'] ) {
   //allow us to back out menu if empty
   $tmp1_menuScript = $menuScript;
   jscMenu_menu ( 'Reports' );
