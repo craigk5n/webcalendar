@@ -428,24 +428,10 @@ if ( ! empty ( $menuExtras[4] ) )
 // translate ( 'My Profile' ) translate ( 'Public Calendar' )
 // translate ( 'Unapproved Events' ) translate ( 'User Manager' )
 
-if ( ! $is_nonuser && ! _WC_READONLY &&
+if ( ! $WC->isNonUser ( ) && ! _WC_READONLY &&
   $menuConfig['Settings'] ) {
   jscMenu_menu ( 'Settings' );
-  // Nonuser Admin Settings
-  if ( $WC->isNonuserAdmin() ) {
-    if ( ! _WC_SINGLE_USER && ! _WC_READONLY &&
-      $menuConfig['NUC_Assistants'] ) {
-      if ( access_can_access_function ( ACCESS_ASSISTANTS, 
-	    $WC->userLoginId() ) )
-        jscMenu_item ( 'users.png', 'Assistants',
-          'assistant_edit.php?user=' . $WC->userId() );
-    }
-    if ( $menuConfig['NUC_Preferences'] &&
-      access_can_access_function ( ACCESS_PREFERENCES, $WC->userId() ) )
-      jscMenu_item ( 'settings.png', 'Preferences', 'pref.php?user=' . 
-	    $WC->userLoginId() );
-    // Normal User Settings
-  } else {
+
     if ( getPref ( 'CATEGORIES_ENABLED' ) && $menuConfig['Categories'] &&
       access_can_access_function ( ACCESS_CATEGORY_MANAGEMENT, 
 	    $WC->userId() ) )
@@ -483,7 +469,6 @@ if ( ! $is_nonuser && ! _WC_READONLY &&
       access_can_access_function ( ACCESS_USER_MANAGEMENT, 
 	    $WC->userId() ) )
       jscMenu_item ( 'user.png', 'User Manager', 'users.php' );
-  }
   jscMenu_close ();
 }
 
