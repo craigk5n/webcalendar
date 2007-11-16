@@ -1,139 +1,5 @@
 $Id$
-
-NOTE: This is the 1.3.X development branch.  Put code changes right
-below the 1.3.0+CVS label below.
-
-Version 1.3.0+CVS (?? ??? 2007)
- - Partial fix bug [ 1832024 ] Notice: Undefined variable: LANGUAGE in /var/www/webcalendar/includes/translate.php
-   (Forgot to set $LANGUAGE global in function translate.
-    And, some things seem to be getting translated more than once.)
- - Add support for Czech UTF8
- - Fix bug [ 1830952 ] Cannot add events - Error, during execute Query
- - Fix bug [ 1737128 ] From notification to "not authorized"
- - Fix bug [ 1823063 ] CVS 1.1.7 - month /week view - no today color right of event
- - Fix bug [ 1829125 ] I can not add external calendars
- - Fix bug [ 1792313 ] Installation wizard step 1 shows wrong colors
- - Fix bug [ 1830446 ] Installation wizard will not be displayed in proper language
- - Fix bug [ 1829224 ] getPostVal fails on non-array
- - Fix bug [ 1827370 ] would not add multiple participants to event
- - Added ability to place page in more than one UAC 'page_lookup' group. We should be able to eliminate
-   'page_lookup_ex' array eventually.
- - Fix bug [ 1828397 ] "you are not authorized" error
- - Fix bug [ 1828416 ] no pull-down entries for languages at 'preferences' and 'sys
- - Fix bug [ 1828232 ] Error after Login
- - Add capability to translate dates and numbers.
-   In preparation for eliminating file 'includes/date_formats.php'.
- - Applied PATCH [1826466 ] update to translations/Italian.txt
- - Fixed bug [ 1826464 ] wrong default browser language
- - Applied PATCH [ 1813253 ] patch for upgrade-postgres.sql
- - Fixed bug [ 1818796 ] DbCachedir readable by any WebCal installation
- - Fixed bug [ 1819188 ] v1.1.6 SelectWeek problem
- - Added <blink></blink> login back into translate.php to aid in development
- - Cleaned up new Participant Selection
- - Fix bug [ 1819327 ] 1.1.6 Wrong "goto my calender" link, with own views
- - Fix bug [ 1811925 ] Participant selection needs improvement
-   with related Patch [ 1816757 ] v1.1.6 PATCH to improve Participant Selection
- - Fix bug [ 1814377 ] 1.1.6 Week.php and repeats
- - Fix bug [ 1792322 ] wrong filled variables at installation wizard step 3
-   ( PHP str_replace doesn't work right. )
- - Patch 1798549: Updated French translation
- - Fix bug [ 1802380 ] Error in freebusy.php.
- - Patch 1791947: Handle the OPTIONS method in icalclient.php
-   (Used by Evolution linux client.)
- - Patch 1792796: Debian fix for vulnerability CVE-2006-6669
-   Fixes cross-site scripting (XSS) vulnerability in export_handler.php.
- - Security fix: vulnerability in $includeDir in functions.php
-   Renamed getPredefinedVariables.php to formvars.php
- - Patch 1719114: Allow leading/trailing space in header/trailer file name
- - Added Indonesian translation
- - Bug fix: icalclient.php was not working with Thunderbird/Lightning
- - FIxed bug [ 1780025 ] moonphase: Notice: Undefined index: 20070731 in functions.php
- - MySqli can now create database during installation
- - Remove '+' icon from month.php, week.php, day.php.
-   Users can now double-click on a date to add a new event.
- - Added CDATA block around JS in view_r.php
- - Applied PATCH [ 1203702 ] Sys-Admin Guide fails to mention LDAP support in PHP
- - Updated list of supported languages in SysAdmin.html
- - Per PATCH [ 1622050 ] fixed somy messages
-   I've started to combine some phrases together for easier translation.
-   Including moving the punctuation from the code and into the phrase.
- - Update the URL to the WebCalendar wiki
- - Fixed bug [ 1748124 ] reminder email has wrong date
- - Fixed bug [ 1766614 ] 'weekstart' at edit_entry is wrong
-
-Version 1.1.3 (4 Aug 2007)
- - Fixed bug: when upgrading from 1.0.5 to 1.1.X, a bad cookie session can
-   cause PHP to crash on some systems.
- - If settings.php is size 0, then redirect to install page (because install
-   was started but not completed).
- - Fixed bug [ 1744648 ] Theme changing over system settings
- - Fixed bug: error in SQLite creation SQL
- - Fixed bug [ 1738333 ] Events without reminder
- - Fixed bug [ 1737128 ] From notification to "not authorized"
- - Fixed bug [ 1766291 ] mini-calender pop-up will not be displayed correctly
- - Fixed bug [ 1754622 ] every 'normal' entry will be displayed as 'Priority: 2-High'
- - Fixed bug [ 1765906 ] layered-entries don't show detailed pop-up infos via hover
- - Fixed bug [ 1765924 ] improvements requested at view_entry.php refering 'Notes'
- - Fixed bug [ 1765928 ] cannot add attachments to an entry
- - Fixed bug [ 1765881 ] long day names not proper adjusted in week.php for English
- - Fixed bug [ 1765970 ] enabled option "Display tasks in Calendars" will not work at
- - Fixed bug [ 1765977 ] cannot edit any entries of users.php
- - Fixed bug [ 1700505 ] repeating multiday events
- - Fixed bug [ 1664815 ] Import Sum/Desc trunc if colon in text
- - Fixed bug [ 1765216 ] repeating matrix (by Day) didn't start with the adjust week-
- - Fixed bug [ 1755306 ] Option with 'Note' are not hidden if Entry is set to 'No'
- - Fixed bug [ 1756739 ] layout of system-settings and preference are not fexible dep
- - Fixed bug [ 1763463 ] "+" sign cannot be used for a second time using week.php
- - Fixed bug [ 1763455 ] week.php not displayed correctly.....
- - Fixed bug [ 1763472 ] repeat-function "weekly" will not proper work
- - Fix bug [ 1763378 ] view by week incorrect output
- - Fix bug [ 1755948 ] Oracle Installation Error
-   both tables-oracle.sql and upgrade-oracle.sql
- - Fix bug [ 1755735 ] v 1.1.3 Category Edit Sample Color
- - Fix bug [ 1752504 ] selectDate doesnt work if you want to edit an entry
- - Fix bug [ 1751928 ] edit_entry allows anyone to add entries
- - Fix bug [ 1750990 ] next year / prev. year buttons in year view
- - Added German UTF8 convertion by Jörg Raftopoulos
- - Fix bug [ 1745238 ] Error in event_get_external_users (cvs release)
- - Fix bug [ 1744641 ] Layout "Public Preferences"
- - Fix bug [ 1744773 ] Bug at install function "do_v11b_updates()"
- - Fix bug [ 1744648 ] Theme changing over system settings
- - Fix bug [ 1744662 ] German translation
- - Fix bug [ 1743401 ] code error for view type=day
- - Applied PATCH [ 1726402 ] Fix for send_reminder.php
- - Fix bug [ 1718609 ] Cannot login after upgrading/updating
- - Fix bug [ 1719102 ] Including header/trailer file also includes its file name
- - Changed iCalendar output (export, publish) for all-day and untimed events.
- - Fixed bug [ 1714785 ] new feature "plugins" not being displayed correctly at system settings
- - Fixed bug [ 1711983 ] cannot switch between registers of system settings
- - Fixed bug [ 1714844 ] Small patch for includes/styles.php + includes/js/popups.php
- - Applied PATCH [ 1710686 ] Version 1.0.5 uses javascript functions undefined in IE6
- - Applied PATCH [1060051 ] Add hover effect for week number links
- - Applied PATCH [ 1659949 ] MyCalendar Link not including .php suffix
- - Applied PATCH [ 1669552 ] Themes are not all listed in drop-down
- - Applied PATCH [ 1697119 ] popups.php - fix for IE popups falling of screen.
- - Instead of 'removing' translations identical to English, replace them with
-   an equal sign "=".  Cuts down on <<MISSING>> by update_translation.pl and
-   still saves a lot of file space.
- - Fully populate translations[] with default English text
-   before loading other language files.
- - Begin support for new language - JRR Tolkien's "Elven". :)
-   See the comment notes in the file for where to get the fonts.
- - Removed several more phrases from translations/*.txt files that are the same
-   in English.  Between these last two 'removals', overall file size is 100+K smaller.
- - Removed "ob_start()" from help_docs.php so it would output.
-   Removed several phrases from translations/*.txt files that are the same in
-   English - cutting overall file size considerably.
- - Fixed bug [ 1663286 ] pop-up window of categories are not dynamic
- - Fixed bug [ 1663292 ] date-pop-up --> mini calendar should be increased the size
- - Fixed bug [ 1671714 ] right bracket is displayed for untimed events at day.php
- - Fixed bug [ 1663269 ] untimed events and tasks not proper displayed at day.php
- - Fixed bug [ 1663341 ] first square in the time-matrix not proper visible for BG-
- - Fixed bug [ 1673806 ] Premature end of script headers
- - Fixed bug [ 1660278 ] Fatal Error: Invalid data format forid
- - Fixed logic error: $translations_loaded was being set = true before it actually was.
- - Security patch: don't allow URL to set 'noset', which allows users
-   to then set other global variables.
+Version 1.1.3+CVS (?? ??? 2006)
  - Fixed bug [ 1657494 ] Unable to repeat events by slecting months
  - Fixed bug [ 1654078 ] cannot managed 'public access' without using 'top-menue'
  - Fixed bug [ 1657946 ] little thick squares at layered events at month.php
@@ -180,7 +46,6 @@ Version 1.1.3 (4 Aug 2007)
  - Fixed bug [ 1617805 ] missing LINK to Craig's site if using 'top-menue'
  - Fixed bug [ 1617595 ] edit_template.php Error
  - Fixed bug [ 1617983 ] 'previous' and 'next' arrows didn't work at 'pop-up'-minical
-
 Version 1.1.2 (18 Dec 2006)
  - Fix in dbi4php.php when translate is not yet defined
  - Created new function get_users_event_ids ()
@@ -188,7 +53,7 @@ Version 1.1.2 (18 Dec 2006)
  - Fixed bug [ 1612332 ] empty exports with date limits
  - Fixed bug [ 1445428 ] Import needs utf8_decode()
  - Fixed bug [ 1614644 ] Remote subscriptions don't work with umlauts (Sunbird)
- - Implemented PATCH [ webcalendar-Bugs-1615738 ] EMAIL_EVENT_CREATE pref don't get invisible
+ - Implemented PATCH [ webcalendar-Bugs-1615738 ] EMAIL_EVENT_CRETE pref don't get invisible
  - Updated German.txt for ws/event_mod.php and ws/user_mod.php.
  - Fix bug [ 1614167 ] adjusted bg-image not working at views
    Cut the wrong set of dupe code the first time.
@@ -354,7 +219,6 @@ Version 1.1.2 (18 Dec 2006)
  - Fixed bug 1496930: 'userlist' will not be sorted as at your site
  - Fixed bug 1559567: v1.1.1 Fresh install Fails due to no database
  - Fixed bug 1556705: Missing mailto links on view_entry.php
-
 Version 1.1.1 (15 Sep 2006)
  - Fixed bug 1431329: user_search_dn() uses call by ref and too many admins
  - Fixed bug 1523439: Bug with admins in LDAP
@@ -723,7 +587,7 @@ Version 1.1.1 (15 Sep 2006)
  - Fixed default UAC settings. User's cal_admin value is now used vs $is_admin
  - Fixed bug 1335631: Admin-Link on bottom of page shows with access control on
  - Changed the way cookies are encrypted. This should fix login looping problems
- - Added ability to disable RSS link inclusion in print_header(). Useful for popups
+ - Added ability to disable RSS link inclusion in build_header (). Useful for popups
  - Fixed bug 1275705: Typos in language files
  - Fixed bug 1278023: Carriage returns break I-cal files in v1.1.0-CVS
  - Fixed bug 1324505: Last hour of day (23:00 - 00:00) missing!
@@ -884,7 +748,6 @@ Version 1.1.1 (15 Sep 2006)
  - Updated Norwegian translation
  - Updated French translation
  - Added Greek translation
-
 Version 1.0.0 (17 May 2005) aka Buster
  - Fixed bug 1202127: [ 1187734 ] Timezone offset problems still exist.
  - Fixed bug 1201821: Bypass user_sees_only_his_groups
@@ -954,7 +817,6 @@ Version 1.0.0 (17 May 2005) aka Buster
  - Updated Danish translation
  - Updated Finnish translation
  - Updated Polish translation
-
 Version 1.0RC3 (11 Mar 2005)
  - Added 'Public Access' to Manage Calendar of: list, if Admin.
  - Removed ODBC host:database option from php-dbi.php. If needed, host can be
@@ -1031,7 +893,6 @@ Version 1.0RC3 (11 Mar 2005)
  - Updated Dutch translation
  - Updated Spanish translation
  - Updated all 3 Japanese translations
-
 Version 1.0RC2 (09 Feb 2005)
  - Fixed PHP warnings about undefined variable $enventinfo if empty.
  - Fixed issue where month.php and mini-calendar today highlight based on
@@ -1049,7 +910,6 @@ Version 1.0RC2 (09 Feb 2005)
  - Fixed bug 1116008: Got invalid user error when clicking on '+' icon
  to add new event
  - Updated Czech translation
-
 Version 1.0RC1 (04 Feb 2005)
  - Fixed Bug 1088857: sql statement was using != vs <> and failing
  with db2 7.1/odbc affected file view_entry.php
@@ -1057,34 +917,62 @@ Version 1.0RC1 (04 Feb 2005)
  and getGetValue (functions.php) since they are not auto-global.
  - Recommitted recent files in UNIX format vs DOS. My bad RJ
  - Fixed Bug 986774:Editing Category for and event as Assistant
- - Updated several files to replace <?php with < ?php
-which causes problems on Windows - Fixed Bug 931096: Restrict views and view edits to owner of that view .
-Added some error notices to database calls
-affected files view_v . php, view_d . php, view_w . php, view_t . php,
-view_m . php, views_edit . php - Fixed Bug 1101823: Problem importing palm desktop datebook . dat file - Security fix: Fixed protential problem if a user attempts to login
-with a username that has charaters that will affect the database . - Second pass at Bug Fix 1109141: Added empty and none testing of
-language pref - Changed encode / decode functions used in generating session cookies
-to use md5 of install_password rather than various server variables .
-( Hoping this may help with IE login problems . . . ) - Fixed Bug 1109141: Notification language is the senders, not the recipients
-  affected files edit_entry . php, del_entry . php, reject_entry . php - Fixed Bug 1109323: Error in LDAP get_admins function - Patch 1113315: Change maxsize of username from 20 to 25 in
-  admin add user form ( db was already 25 ) - Patch 1113319: fixed finding of username for http authentication
-  ( Different versions of PHP store it in different variables . ) - Fixed bug 1061746: layout issues with view_d . php - If php . ini setting for file_uploads is not enabled, then indicate
-  this on the import page ( import . php ) . - Streamlined layers . php &made layers only be displayed when layers
-    are enabled - Updated Admin docs for content &xhtml / css validity - Adding Styling docs ( still under construction . . feel free to contribute ) - Adding title attribute to links - Cleaning up html for editing layers &streamlining GUI - Making code easier to read &fixing '&' to read '&amp;' in url - Updated reading of settings . php in config . php to strip off white
-    space . Added new function, dieMiserableDeath(), that can be called
-    before functions . php is loaded . We will typlically use this function
-    when there is a fatal error in reading settings . php or a db connect
-    problem . ( It will show a link to the Troubleshooting section of the
-      SysAdmin Guide, which will hopefully cut down on some of the help / support
-      requests . ) - Fixed bug: we were opening two db connections ( one in validate . php and
-      then another in connect . php ) for web - based user authentication . ( Oops ) - Added database sanity check ( can we access webcal_config table ) that
-    was being skipped for web - based user authentication . - Updated DEFAULT color scheme ( modified values in tables - * . sql ) .
-      ( Will only apply to new installs . ) - Fixed bug: vCal import was completely broken ( looking for type 'VCAL' when
-        for was using 'vcal' ) - Added patch 1098507: Fixed problem using htmlarea where event description
-      would not be saved . - Added variable in includes / php - dbi . php ( $phpdbiVerbose ) . DEFAULT is false .
-        When set to true, the SQL statement will be displayed in the browser
-        when there is a database query error . - Added patch 1102478: Add mssql support to php - dbi . php - Fix bug: Import and Export in import . php were not being translated . - Fix bug: view_entry . php would not display links to edit / delete under
-        some circumstances . - Updated upgrading docs so they're xhtml valid
+ - Updated several files to replace <? with <?php
+ which causes problems on Windows
+ - Fixed Bug 931096: Restrict views and view edits to owner of that view.
+ Added some error notices to database calls
+ affected files view_v.php, view_d.php, view_w.php, view_t.php,
+ view_m.php, views_edit.php
+ - Fixed Bug 1101823: Problem importing palm desktop datebook.dat file
+ - Security fix: Fixed protential problem if a user attempts to login
+ with a username that has charaters that will affect the database.
+ - Second pass at Bug Fix 1109141: Added empty and none testing of
+ language pref
+ - Changed encode/decode functions used in generating session cookies
+ to use md5 of install_password rather than various server variables.
+ (Hoping this may help with IE login problems...)
+ - Fixed Bug 1109141: Notification language is the senders, not the recipients
+ affected files edit_entry.php, del_entry.php, reject_entry.php
+ - Fixed Bug 1109323: Error in LDAP get_admins function
+ - Patch 1113315: Change maxsize of username from 20 to 25 in
+ admin add user form (db was already 25)
+ - Patch 1113319: fixed finding of username for http authentication
+ (Different versions of PHP store it in different variables.)
+ - Fixed bug 1061746: layout issues with view_d.php
+ - If php.ini setting for file_uploads is not enabled, then indicate
+ this on the import page (import.php).
+ - Streamlined layers.php & made layers only be displayed when layers
+ are enabled
+ - Updated Admin docs for content & xhtml/css validity
+ - Adding Styling docs (still under construction.. feel free to contribute)
+ - Adding title attribute to links
+ - Cleaning up html for editing layers & streamlining GUI
+ - Making code easier to read & fixing '&' to read '&amp;' in url
+ - Updated reading of settings.php in config.php to strip off white
+ space. Added new function, dieMiserableDeath(), that can be called
+ before functions.php is loaded. We will typlically use this function
+ when there is a fatal error in reading settings.php or a db connect
+ problem. (It will show a link to the Troubleshooting section of the
+ SysAdmin Guide, which will hopefully cut down on some of the help/support
+ requests.)
+ - Fixed bug: we were opening two db connections (one in validate.php and
+ then another in connect.php) for web-based user authentication. (Oops)
+ - Added database sanity check (can we access webcal_config table) that
+ was being skipped for web-based user authentication.
+ - Updated DEFAULT color scheme (modified values in tables-*.sql).
+ (Will only apply to new installs.)
+ - Fixed bug: vCal import was completely broken (looking for type 'VCAL' when
+ for was using 'vcal')
+ - Added patch 1098507: Fixed problem using htmlarea where event description
+ would not be saved.
+ - Added variable in includes/php-dbi.php ($phpdbiVerbose). DEFAULT is false.
+ When set to true, the SQL statement will be displayed in the browser
+ when there is a database query error.
+ - Added patch 1102478: Add mssql support to php-dbi.php
+ - Fix bug: Import and Export in import.php were not being translated.
+ - Fix bug: view_entry.php would not display links to edit/delete under
+ some circumstances.
+ - Updated upgrading docs so they're xhtml valid
  - Updated admin & user docs to reflect new content, correct minor typos, and
  minor clarification of phrasing/language.
  - Making edit_entry.php valid xhtml & slightly easier to read
@@ -1095,25 +983,51 @@ to use md5 of install_password rather than various server variables .
  - Pointing 'account' option for non-admin users to edit_users.php &
  making indentation of css & php code easier to read by using tabs
  - Making the trailer not be displayed in edit_user.php (since it's always
-        in an iframe now ) - Fixing users . php so it only shows a single user's info when the user
- isn't an admin - Fixing export . php JS so '&amp;' only reads '&' - Added 'unapproved' class &removed gradient code from styles . php for
-      empty cells so they blend in with the background of the page - Added 'unapproved' class for customizing listing of unapproved events in
-      list_unapproved . php - Fixing strange nested form tags &adding labels for form fields in
-      import . php - Fixed Bug 824268: emails sent by edit_entry_handler . php in wrong time zone - Fixed Bug 1066440: End Time increased by timezone offset - Fixed Bug 1085337: Categories combo - box in month . php in assistant mode - Modified validate . php and trailer . php to look for new $user_inc
-      user - app - * . php files to allow webcalendar to work with other
-      applications' authentication and user tables.
+ in an iframe now)
+ - Fixing users.php so it only shows a single user's info when the user
+ isn't an admin
+ - Fixing export.php JS so '&amp;' only reads '&'
+ - Added 'unapproved' class & removed gradient code from styles.php for
+ empty cells so they blend in with the background of the page
+ - Added 'unapproved' class for customizing listing of unapproved events in
+ list_unapproved.php
+ - Fixing strange nested form tags & adding labels for form fields in
+ import.php
+ - Fixed Bug 824268: emails sent by edit_entry_handler.php in wrong time zone
+ - Fixed Bug 1066440: End Time increased by timezone offset
+ - Fixed Bug 1085337: Categories combo-box in month.php in assistant mode
+ - Modified validate.php and trailer.php to look for new $user_inc
+ user-app-*.php files to allow webcalendar to work with other
+ applications' authentication and user tables.
  - Added user-app-postnuke.php which allows webcalendar to use postnuke's
-      authentication and user tables . - Fixed Bug 1087604: Vanishing Layers / cookies - Fixed Bug 1086357: repeating details display - Fixed Bug 1085846: SQL error in get_my_users() function - Fixed Bug 1085971: repeat tab does not display details - Fixed Bug 1074403: Day View is not accounting for server offset - Added support for automatic gradient background images for table cells . - Updated Japanese translation with support for 3 character sets
-      now ( Japanese - utf8, Japanese, Japanese - eucjp ) - Added Romanian translation - Updated French translation - Updated German translation - Updated Italian translation - Updated Norwegian translation
-      Version 0.9.45 ( 12 Dec 2004 ) - Cleaned up user - ldap . php: added connect_and_bind function, config
-      section cleanup, check all searches for attr array, etc . - Made search js load even when groups aren't enabled.
+ authentication and user tables.
+ - Fixed Bug 1087604: Vanishing Layers / cookies
+ - Fixed Bug 1086357: repeating details display
+ - Fixed Bug 1085846: SQL error in get_my_users() function
+ - Fixed Bug 1085971: repeat tab does not display details
+ - Fixed Bug 1074403: Day View is not accounting for server offset
+ - Added support for automatic gradient background images for table cells.
+ - Updated Japanese translation with support for 3 character sets
+ now (Japanese-utf8, Japanese, Japanese-eucjp)
+ - Added Romanian translation
+ - Updated French translation
+ - Updated German translation
+ - Updated Italian translation
+ - Updated Norwegian translation
+Version 0.9.45 (12 Dec 2004)
+ - Cleaned up user-ldap.php: added connect_and_bind function, config
+ section cleanup, check all searches for attr array, etc.
+ - Made search js load even when groups aren't enabled.
  - Fixed permissions so read-only cannot add/edit/delete anything
  - Added patch 1081875: added parseInt calls in js/popups.js
  - Added patch 1082460: better layout for timebar views
  - Fixed Bug 1022224: Stranded Branch in Code
- - Fixed bug 1080911: Copy entry doesn't work for assistant - Fixed security issue with assistants and nonuser admins - Fixed bug 1071725: do not use printer - friendly URLs for the
-      My Calendar link - Disable all layer functionality if system settings do not allow
-      viewing another user's calendar (since this would be a security
+ - Fixed bug 1080911: Copy entry doesn't work for assistant
+ - Fixed security issue with assistants and nonuser admins
+ - Fixed bug 1071725: do not use printer-friendly URLs for the
+ My Calendar link
+ - Disable all layer functionality if system settings do not allow
+ viewing another user's calendar (since this would be a security
  problem.)
  - When admin is editing an approved public event, do not require the
  event to be approved again.
@@ -1162,7 +1076,7 @@ to use md5 of install_password rather than various server variables .
  - Fixed bug 1061702: site extras (reminder info) not showing up
  properly in event popups
  - Reorganizing styles.php to be more logical
- - Adding new help & ' + ' images
+ - Adding new help & '+' images
  - A few minor style changes to remedy problems with views
  - Applying patch 1061811: leading &amp; in minicals week url
  - Applying patch 1062782: view_t styles moving to styles.php
@@ -1174,13 +1088,43 @@ to use md5 of install_password rather than various server variables .
  - Combining & converting import/export pages to new tabbed GUI
  - Edited import/export link in trailer
  - Fixed bug 1009183: exporting event from another user's calendar or
-      from a layer generated an empty ics file . Added Include all layers
-      option on main export page also . Include WebCalendar version number
-      in ics file . - Removing blank lines from the end of files - Temporarily disabling the print - media stylesheet - Fixing a TON of bugs in almost all of the views NOTE: view_m, day, and
-      week . php are in need of a major php code overhaul to fix some of the
-      remaining bugs - Fixed bug 1060764: forgot to add translation stuff to public access in
-      trailer - Fixing bug 1060784: category id in functions . php because it caused a conflict with category . php - Added a favicon . ico and supporting code - Adding new edit_entry &admin . php code ( tabbed GUI ) - Made view_entry reminders statement use singular / plural days, hours &minutes as needed - Added title attributes in activity_log . php - Cleaning up HTML &CSS - Adding additional save button in pref . php to mirror admin . php - Extending admin . php to pref . php - Modifying class 'navlinks' to now read just 'nav' - Adding patch 1059984: alternating row colors for activity_log . php - Removing obsolete styles from styles . php - Adding title attributes to various links - Moving &making login / logout link to be inline with current user in
-        trailer &dynamic depending on if user is logged in or not - Updating upgrading docs with easier to read code areas - Added patch 1059130: minical function implementation - Added patch 1016648: datesel . php when global vars = off - Added patch 1045008: Weekly ( Users vertical ) view colors - Cleaning up styles . php - Bringing views up to date - Applying print - media patch . Credit to Adam Roben . - Fixed bug causing today link not to work when not logged in - Fixed Bug 1057889: Public events duplicated in month view ( view_t . php ) - Fixed Bug 1057887: Month view ( view_t . php ) doubles last sunday in October ( DST ) - Fixed Bug 983139: fix date in notice for single deleted item from repeating - Fixed Bug 1019285: Unable to edit a single date of a repeating event - Fixed Bug 1056621: Edit entry for this date won't work for repeating events
+ from a layer generated an empty ics file. Added Include all layers
+ option on main export page also. Include WebCalendar version number
+ in ics file.
+ - Removing blank lines from the end of files
+ - Temporarily disabling the print-media stylesheet
+ - Fixing a TON of bugs in almost all of the views NOTE: view_m, day, and
+ week.php are in need of a major php code overhaul to fix some of the
+ remaining bugs
+ - Fixed bug 1060764: forgot to add translation stuff to public access in
+ trailer
+ - Fixing bug 1060784: category id in functions.php because it caused a conflict with category.php
+ - Added a favicon.ico and supporting code
+ - Adding new edit_entry & admin.php code (tabbed GUI)
+ - Made view_entry reminders statement use singular/plural days, hours & minutes as needed
+ - Added title attributes in activity_log.php
+ - Cleaning up HTML & CSS
+ - Adding additional save button in pref.php to mirror admin.php
+ - Extending admin.php to pref.php
+ - Modifying class 'navlinks' to now read just 'nav'
+ - Adding patch 1059984: alternating row colors for activity_log.php
+ - Removing obsolete styles from styles.php
+ - Adding title attributes to various links
+ - Moving & making login/logout link to be inline with current user in
+ trailer & dynamic depending on if user is logged in or not
+ - Updating upgrading docs with easier to read code areas
+ - Added patch 1059130: minical function implementation
+ - Added patch 1016648: datesel.php when global vars=off
+ - Added patch 1045008: Weekly (Users vertical) view colors
+ - Cleaning up styles.php
+ - Bringing views up to date
+ - Applying print-media patch. Credit to Adam Roben.
+ - Fixed bug causing today link not to work when not logged in
+ - Fixed Bug 1057889: Public events duplicated in month view (view_t.php)
+ - Fixed Bug 1057887: Month view (view_t.php) doubles last sunday in October (DST)
+ - Fixed Bug 983139: fix date in notice for single deleted item from repeating
+ - Fixed Bug 1019285: Unable to edit a single date of a repeating event
+ - Fixed Bug 1056621: Edit entry for this date won't work for repeating events
  - Added Patch 1024543: Fix editing of single instance of repeating event
  - Updated trailer with title attribute for links
  - Added title attributes to time cells in view_d.php
@@ -1188,11 +1132,16 @@ to use md5 of install_password rather than various server variables .
  - Fixed random border-rendering issues in week.php
  - Fixed Bug 1016135: Time is listed in email for untimed events
  - Fixed Bug 1026762: import handler --circular code
- - Fixed Bug 1020450: upcomming rev1.3 doesn't display layers - Added user - ldap patch by David Black to use $ldap_user_attr throughout script - Only allow word characters ( a - zA - Z_0-9 ) in nonuser calendar ID's
+ - Fixed Bug 1020450: upcomming rev1.3 doesn't display layers
+ - Added user-ldap patch by David Black to use $ldap_user_attr throughout script
+ - Only allow word characters (a-zA-Z_0-9) in nonuser calendar ID's
  - Fixing up styles in views
  - Fixed bug 1048157: user select in managing views
  - Fixing login.php so it's both xHTML 1.0T valid, and properly handles
-          translations - Fixed Bug 1050786: Mail fails if not \r\n in extra headers - Fixed Bug 1052000: Error in Day view for several users - Fixed Bug 1050624: upcoming . php doesn't work when requiring public access
+ translations
+ - Fixed Bug 1050786: Mail fails if not \r\n in extra headers
+ - Fixed Bug 1052000: Error in Day view for several users
+ - Fixed Bug 1050624: upcoming.php doesn't work when requiring public access
  - Applying patch #1055122: making custom colors update on change
  - Fixed bug 1044374: random issues with Bulgarian translation file
  - Implemented minicalendar function
@@ -1208,25 +1157,73 @@ to use md5 of install_password rather than various server variables .
  - Updating functions.php to partially implement new styling system for
  viewt.php
  - Updating styles.php with more comments (encapsulated in php tags so
- they're stripped in processing ) &removing old classes - Removing blanks lines at the end of js . php &site_extras . php - Updating admin docs with more efficient CSS &HTML - Converting year . php to new style system &adding comments for new minicals - Converting viewt . php over to new style system &fixing a couple odd
-          rendering issues - Converting day . php over to new style system ( particularly the header ) - Making code in activity log easier to read both before &after rendering - Disallow includes from being called directly - Fixed several security issues reported by Joxean Koret - Added Admin links to return user to adminhome . php from admin pages - Improved iCal import handling of folded lines ( data that spreads
-            over more than one line of text ) - Reapplied patch 1044285: today &weekend classes got reversed - Changed '>' character to be '&raquo;' - Added 'bullet' class for event bullets being styled in styles . php - Changed background color for date links to a border - Moved help button to new icon in - line with the header - Added unique id to body tag for new style system - Fixed funky rendering of new trailer in Opera &Safari - Added . printer class to format printer - friendly link - Converted headers for most pages to use divs &new styling rather than
-          tables - Added line breaks to code for easier reading post - rendering - Reorganized CSS in styles . php &eliminated duplicate code - Cleaned up &updated code for week . php, month . php, and most of the views to
-          use new styling system - Added title attributes to links - Recommitted corrupted images so Windows users could use CVS - Patch 1040376: Added code to style cells for today &for the day being viewed - Patch 1019183: Removed tables from trailer &added necessary styles - Patch 1041179: Added code for today, weekends &days that have events to year . php - Patch 1044285: Cell for today doesn't get colored on weekends (month.php)
+ they're stripped in processing) & removing old classes
+ - Removing blanks lines at the end of js.php & site_extras.php
+ - Updating admin docs with more efficient CSS & HTML
+ - Converting year.php to new style system & adding comments for new minicals
+ - Converting viewt.php over to new style system & fixing a couple odd
+ rendering issues
+ - Converting day.php over to new style system (particularly the header)
+ - Making code in activity log easier to read both before & after rendering
+ - Disallow includes from being called directly
+ - Fixed several security issues reported by Joxean Koret
+ - Added Admin links to return user to adminhome.php from admin pages
+ - Improved iCal import handling of folded lines (data that spreads
+ over more than one line of text)
+ - Reapplied patch 1044285: today & weekend classes got reversed
+ - Changed '>' character to be '&raquo;'
+ - Added 'bullet' class for event bullets being styled in styles.php
+ - Changed background color for date links to a border
+ - Moved help button to new icon in-line with the header
+ - Added unique id to body tag for new style system
+ - Fixed funky rendering of new trailer in Opera & Safari
+ - Added .printer class to format printer-friendly link
+ - Converted headers for most pages to use divs & new styling rather than
+ tables
+ - Added line breaks to code for easier reading post-rendering
+ - Reorganized CSS in styles.php & eliminated duplicate code
+ - Cleaned up & updated code for week.php, month.php, and most of the views to
+ use new styling system
+ - Added title attributes to links
+ - Recommitted corrupted images so Windows users could use CVS
+ - Patch 1040376: Added code to style cells for today & for the day being viewed
+ - Patch 1019183: Removed tables from trailer & added necessary styles
+ - Patch 1041179: Added code for today, weekends & days that have events to year.php
+ - Patch 1044285: Cell for today doesn't get colored on weekends (month.php)
  - Fixed Bug 1030575: extra tag
  - Fixed Bug 1016668: Changing table cell background for current day modifies events background too
- - Fixed Bug 1031253: Can't add events for non - standard usernames - Fixed issue: Cell for today doesn't get colored on weekends (ref patch 1044285)
+ - Fixed Bug 1031253: Can't add events for non-standard usernames
+ - Fixed issue: Cell for today doesn't get colored on weekends (ref patch 1044285)
  - Fixed Bug 1025547: Exporting data - change vcal to ical
  - Patch 1021530: Fixed purge with all selected
  - SQL Query enhancement for function read_repeated_events to speed up processing
- - Fixed Bug 1017097: Can't Delete / Edit First Layer - Fixed Bug 1007496: Repeat Type off - by - one in Event Details - Fixed bug: iCal import would fail if the file included section with
-          timezone info in it . - Patch 1002156: improved html for event popups - Added javascript to admin page to remove options that are not relavant
-          ( such as all the options for public access when public access is disabled ) - Added login icon to login page - Added system setting for making public access selected as a participant
-            by DEFAULT for new events . - Added patch 1006000: added time monthbar view - Fixed bug 1004162: user color preferences remain active after the
-              admin turns allow user color customizations off . - Updated week / day / month view to not include target in meta - refresh
-              since it will not xhtml validate . - Fixed bug: iCal for multiday events was adding extra day at end - Updated German translation
-              Verion 0.9.44 ( 02 Aug 2004 ) - Fixed bug 1001054: deleting user was not deleting from webcal_asst table - Fixed bug 989443: http login does not work with http on newer PHP version - Added patch 1001078: xhtml error in week . php - Added patch 1000911: no CR in site_extras field when displayed - Added patch 1000220: removed font tag from trailer . php - Fixed bug in repeating event conflict checking when using month by day - Added upcoming . php page that can be used as an iframe in non - WebCalendar
-              pages to present a list of upcoming events . - Fixed bug 960897: Could not modify user's email address if no last
+ - Fixed Bug 1017097: Can't Delete/Edit First Layer
+ - Fixed Bug 1007496: Repeat Type off-by-one in Event Details
+ - Fixed bug: iCal import would fail if the file included section with
+ timezone info in it.
+ - Patch 1002156: improved html for event popups
+ - Added javascript to admin page to remove options that are not relavant
+ (such as all the options for public access when public access is disabled)
+ - Added login icon to login page
+ - Added system setting for making public access selected as a participant
+ by DEFAULT for new events.
+ - Added patch 1006000: added time monthbar view
+ - Fixed bug 1004162: user color preferences remain active after the
+ admin turns allow user color customizations off.
+ - Updated week/day/month view to not include target in meta-refresh
+ since it will not xhtml validate.
+ - Fixed bug: iCal for multiday events was adding extra day at end
+ - Updated German translation
+Verion 0.9.44 (02 Aug 2004)
+ - Fixed bug 1001054: deleting user was not deleting from webcal_asst table
+ - Fixed bug 989443: http login does not work with http on newer PHP version
+ - Added patch 1001078: xhtml error in week.php
+ - Added patch 1000911: no CR in site_extras field when displayed
+ - Added patch 1000220: removed font tag from trailer.php
+ - Fixed bug in repeating event conflict checking when using month by day
+ - Added upcoming.php page that can be used as an iframe in non-WebCalendar
+ pages to present a list of upcoming events.
+ - Fixed bug 960897: Could not modify user's email address if no last
  name was set
  - Fixed bug 980215: GLobal var $STARTVIEW was not declared global.
  - Fixed bug: do_redirect() calls should not have the '&' escaped into '&amp;'
@@ -1261,10 +1258,17 @@ to use md5 of install_password rather than various server variables .
  - Fixed bug 885181: If a user adds an event to a nonuser calendar,
  the admin of that nonuser admin calendar must be able to approve
  the event (if approvals are required).
- - Allow admin users to import events into other user's calendars . - Patch 931248: Mishandled single quotes in event name / description when
-            overriding a conflict . - Fixed bug 929977: site_extras not showing up in event popups when enabled - Updated purge . php to not use '<?' and always use '<?php' instead . - Added support for repeating events in iCal import - Fixed bug 923129: Used unnamed view for views without a name
-            so user can edit / delete the view . - Updated README . html to not assume user has downloaded user manual .
-            Instead link to the download area on SourceForge . - Fixed bug 903285: PHP balise problem < ? ?>
+ - Allow admin users to import events into other user's calendars.
+ - Patch 931248: Mishandled single quotes in event name/description when
+ overriding a conflict.
+ - Fixed bug 929977: site_extras not showing up in event popups when enabled
+ - Updated purge.php to not use '<?' and always use '<?php' instead.
+ - Added support for repeating events in iCal import
+ - Fixed bug 923129: Used unnamed view for views without a name
+ so user can edit/delete the view.
+ - Updated README.html to not assume user has downloaded user manual.
+ Instead link to the download area on SourceForge.
+ - Fixed bug 903285: PHP balise problem <? ?>
  (fixed for view_d.php, didn't check all files)
  - Fixed bug 850719: repeating whole day event has only on the
  - Improved sizing of event popups on MSIE/Mozilla
@@ -1495,7 +1499,6 @@ Verion 0.9.41 (16 Jun 2003)
  - Updated Dutch translation
  - Updated German translation.
  - Added Estonian translation.
-
 Version 0.9.40 (30 Nov 2002)
  - Added support for all-day events that will prevent any events from
  being added to that day (good for out-of-the-office/vacation).
@@ -1571,7 +1574,6 @@ Version 0.9.40 (30 Nov 2002)
  - Updated tables-db2.sql (was out-of-date).
  - Added + icon for adding new events on each hour for week and day views.
  - Fixed bug 598765: Fixed DEFAULT date setting.
-
 Version 0.9.39 (21 Aug 2002)
  - Fixed bug 597815: Fixed autoset of 'server_url' config setting to
  work when admin.php isn't the first page accessed.
@@ -1635,7 +1637,6 @@ Version 0.9.39 (21 Aug 2002)
  - Updated Chinese-GB2312 translation.
  - Updated German translation.
  - Updated French translation.
-
 Version 0.9.38 (12 Jul 2002)
  - Added event category support (code from Jeff Hoover - thanks).
  Categories can be either user-specific or global (if added by
@@ -1701,7 +1702,6 @@ Version 0.9.38 (12 Jul 2002)
  - Added Japanese translation.
  - Added Simplified Chinese translation (and renamed Big5 translation
  to Tradition Chinese based on some web research...)
-
 Version 0.9.37 (24 Jun 2002)
  - Added support for overriding or deleting single events in a
  repeating event. New links at the bottom of the view event page
@@ -1732,7 +1732,6 @@ Version 0.9.37 (24 Jun 2002)
  shows recent activity for all events.
  - Updated French translation
  - Updated German translation
-
 Version 0.9.36 (20 Jun 2002)
  - Fixed SQL bug in del_entry.php.
  - Added create table SQL in tables-postgres.sql and tables-oracle.sql
@@ -1768,7 +1767,6 @@ Version 0.9.36 (20 Jun 2002)
  - Updated FAQ.html to include note about register_globals.
  - Replaced COPYING with GPL.html.
  - Updated German translation.
-
 Version 0.9.35 (05 Jun 2002)
  - Added fancy new admin interface for setting WebCalendar settings.
  Almost all settings previously found in config.inc are now set
@@ -1847,7 +1845,6 @@ Version 0.9.35 (05 Jun 2002)
  Tracks event creation, update, accept, reject, notification and
  reminders.
  - Updated FAQ and converted it to HTML.
-
 Version 0.9.34 (16 Dec 2001)
  - Patch 468897: Fix DEFAULT for new calendar entries to be public (not
  confidential)
@@ -1871,13 +1868,12 @@ Version 0.9.34 (16 Dec 2001)
  - Added Hungarian translation.
  - Updated Swedish translation.
  - Updated French translation.
-
 Version 0.9.33 (02 Aug 01)
  - Fixed bug: the back to my calendar link would go to another user's
  calendar if you just viewed another user's calendar.
  - Fixed bug: was not displaying more than one event per day in the
  week view.
- - Removed all the <?php _track_vars?> from every .php file since it was
+ - Removed all the <?php_track_vars?> from every .php file since it was
  causing problems for a lot of people.
  - Fixed bug: User who logged in to the 0.9.31 version would have a
  session cookie that would generate a Error getting user message.
@@ -1886,7 +1882,6 @@ Version 0.9.33 (02 Aug 01)
  reminders if they've been disabled in config.inc
  - Added missing user-ldap.inc to the distribution.
  - Updated Swedish translation
-
 Version 0.9.32 (26 July 01)
  - Fixed some of the login/session code. After examining the code, I'm
  surprised it worked at all! :-) And, it suddenly stopped working on
@@ -1906,7 +1901,7 @@ Version 0.9.32 (26 July 01)
  - Fixed bug: printer friendly version of week view was displaying
  events as links.
  - Fixed use of php_track_vars. Was using <?php php_track_vars?>.
- Proper use is just <?php _track_vars?>.
+ Proper use is just <?php_track_vars?>.
  - Fixed bug 441688: MySQL does case-insensitive searches, which allows
  a user named 'cknudsen' to login with 'CKnudsen', which causes
  problems. Now, users can only login with correct case-sensitive
@@ -1928,7 +1923,6 @@ Version 0.9.32 (26 July 01)
  - Fixed bug 438980: Oracle SQL syntax error in tables-oracle.sql
  - Fixed bug: When participant list display is disabled, events
  were not being created properly.
-
 Version 0.9.31 (02 Jul 01)
  - Added Swedish translation.
  - Updated Dutch translation.
@@ -1990,7 +1984,6 @@ Version 0.9.31 (02 Jul 01)
  - Don't allow user to change password if using http authorization.
  - Added back selectDate javascript function that was mistakenly
  removed from edit_entry.php.
-
 Version 0.9.30 (08 Jun 01)
  - Generate a fatal error when MySQL returns an error instead of
  ignoring it.
@@ -2005,13 +1998,11 @@ Version 0.9.30 (08 Jun 01)
  on Postgres.
  - Fixed bug: conflict checking was not working properly for repeating
  events when future dates were in a different daylight savings mode.
-
 Version 0.9.29 (05 Jun 01)
  - Fixed bug: When editing an event, the event date is set to the
  current date rather than the event's date.
- - Fixed bug: Adding missing argument to user_load_variables() in
+ - Fixed bug: Adding missing argument to $WC->User->loadVariables() in
  login.php that was preventing some people from being able to login.
-
 Version 0.9.28 (01 Jun 01)
  - Moved all the references to the webcal_user table to be in the
  new includes/user.inc file. This BREAKS the NIS user authentication,
@@ -2036,7 +2027,6 @@ Version 0.9.28 (01 Jun 01)
  - Fixed bug 429271: error message on missing argument to my_array_slice().
  - Security fixes
  - Updated translations: French
-
 Version 0.9.27 (20 May 01)
  - Added support for customizing event fields. This allows each
  site to add textual fields, dates, URLs, etc. without having
@@ -2084,7 +2074,6 @@ Version 0.9.27 (20 May 01)
  - Added Chinese-Big5 translation
  - Updated Danish translation
  - Updated German translation
-
 Version 0.9.26 (05 January 01)
  - Added Portuguese/Brazil translation
  - Add ability to add event to your own calendar when viewing an
@@ -2101,7 +2090,6 @@ Version 0.9.26 (05 January 01)
  - Fixed bug: error on deleting an event because translate.inc was
  not included
  - Fixed bug: dups for layers were showing up in all views
-
 Version 0.9.25 (18 December 00)
  - Added Russian translation
  - Updated Dutch translation
@@ -2137,7 +2125,6 @@ Version 0.9.25 (18 December 00)
  - Consolidated some near-duplicate code in the process.
  - Speeds up queries when using layers considerably.
  - Fixed bug 119484: errors in popups when listing unapproved events
-
 Version 0.9.24 (16 October 00)
  - Fixed bug: logins do not work sometimes when first setting up
  the app. (Removed the use of $HTTP_COOKIE_VARS array.)
@@ -2148,7 +2135,6 @@ Version 0.9.24 (16 October 00)
  event via layers.
  - Added ability to quickly disable and enable layers via link on the
  bottom of all pages.
-
 Version 0.9.23 (20 September 00)
  - Added support for using the browser-specified language (specified
  in your browser's preferences). The DEFAULT language is now set
@@ -2161,14 +2147,12 @@ Version 0.9.23 (20 September 00)
  new translations are usually started with this file)
  - Added Portuguese translation file missing from version 0.9.22
  - Added Icelandic translation
-
 Version 0.9.22 (17 August 00)
  - Added support for layers that allow you to overlay another user's
  calendar onto your calendar. (See UPGRADING for upgrading instructions).
  - Fixed bug: Time, Description were not being translated in the
  event popup windows
  - Added Portuguese translation
-
 Version 0.9.21 (31 July 00)
  - Fixed bug: JavaScript bug in datesel.php caused date selection popup
  window to not work
@@ -2176,7 +2160,6 @@ Version 0.9.21 (31 July 00)
  - Fixed bug: Sun did not show up in the table header of the week view
  when week start is set to Monday
  - Update Czech translation
-
 Version 0.9.20 (30 July 00)
  - Added spacer.gif back to the distribution (required by colors.php)
  - Fixed bug: typo in SQL prevented repeated events from being read
@@ -2189,7 +2172,6 @@ Version 0.9.20 (30 July 00)
  - Added Danish translation
  - Updated German translation
  - Updated Italian translation
-
 Version 0.9.19 (28 July 00)
  - Fixed bug: when week starts on Monday, week view displayed first
  day header as Sunday
@@ -2211,10 +2193,8 @@ Version 0.9.19 (28 July 00)
  - Made the created by user a mailto link on the event view page
  - Updated French translation
  - Updated German translation
-
 Version 0.9.18 (22 July 00)
  - Adding missing files month.php and year.php to distribution (oops)
-
 Version 0.9.17 (22 July 00)
  - Modified week-at-a-glance view to display hours like the
  day-at-a-glance view.
@@ -2239,7 +2219,6 @@ Version 0.9.17 (22 July 00)
  1st of the month if configured with Mondays as the week start
  - Fixed bug: months with daylight savings change-overs sometimes
  displayed incorrectly
-
 Version 0.9.16 (26 June 00)
  - Added export function. The first format supported is the format of
  the install-datebook tool, which is part of the pilot-link distribution.
@@ -2270,11 +2249,9 @@ Version 0.9.16 (26 June 00)
  - Fixed bug: private events could not be viewed by the event owner
  - Fixed bug: when viewing another user's calendar, some links would take
  you back to your own calendar without notice
-
 Version 0.9.15 (09 June 00)
  - Fixed bug that prevented the description from appearing on mouse over
  in the month view and week view.
-
 Version 0.9.14 (09 June 00)
  - Added repeating events
  (original code contributed by Lachlan Cox <lachie@zip.com.au>)
@@ -2286,7 +2263,6 @@ Version 0.9.14 (09 June 00)
  - Added Dutch translation
  - Added Korean translation
  - Added Spanish translation
-
 Version 0.9.13 (07 Jun 00)
  - Added I18N support through the use of translate() and etranslate()
  functions in new translate.inc file.
@@ -2302,16 +2278,13 @@ Version 0.9.13 (07 Jun 00)
  can be generated dynamically (eventually)
  - Changed Oracle table for events to use VARCHAR2(1024) instead of LONG
  so that the description field can be searched.
-
 Version 0.9.12 (25 May 00)
  - Added popups for event description on mouse over of events.
  - Fixes for events scheduled at midnight
  - Fixed so that an event from 10-11 doesn't conflict with an event
  from 11-12.
-
 Version 0.9.11 (23 May 00)
  - Fixed some code that was MySQL-specific to work with all dbs.
-
 Version 0.9.10 (23 May 00)
  - Added day-at-a-glance
  - Added support for sending email notification when events are added
@@ -2333,17 +2306,14 @@ Version 0.9.10 (23 May 00)
  Ian R. Justman)
  - Don't allow someone to delete an event unless they created it (were
  able to do this from the edit event page)
-
 Version 0.9.9 (02 May 00)
  - PostgreSQL fixes (provided by Ken Harris)
  - New tables-postgres.sql provided (provided by Ken Harris)
  - fixed HTML bug where the navigation pulldowns on the bottom were
  incorrect when viewing another user's calendar
  - Added FAQs to README
-
 Version 0.9.8 (23 Feb 00)
  - fixed major bug that prevented users from adding new events
-
 Version 0.9.7 (23 Feb 00)
  - moved all database-specific calls into php-dbi.inc and added
  support for Oracle as well as PostgreSQL (not tested) and
@@ -2363,7 +2333,6 @@ Version 0.9.7 (23 Feb 00)
  are approved despite the setting of $DISPLAY_UNAPPROVED.
  - fixed bugs where confidential entries could be viewed and edited
  by other users
-
 Version 0.9.6 (21 Feb 00)
  - renamed all files from .php3 to php (since it works with php4, too)
  - added the option to use HTTP basic authorization (if using PHP
@@ -2376,7 +2345,6 @@ Version 0.9.6 (21 Feb 00)
  in case users did not use --enable-track-vars when building PHP
  (caused people to not be able to login)
  (Thanks to Andy Skunza <askunza@dynamix-ltd.com> for this fix.)
-
 
 Version 0.9.5 (10 Feb 2000)
  - fixed bug that caused months with DST change to display incorrect
