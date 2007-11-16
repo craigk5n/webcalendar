@@ -6,12 +6,12 @@
 # has a corresponding entry in the translation data file.
 #
 # Usage:
-#  check_translation.pl languagefile
-#    ... or to check the most recently modified translation file
-#  check_translation.pl
+#	check_translation.pl languagefile
+#	  ... or to check the most recently modified translation file
+#	check_translation.pl
 #
 # Example:
-#  check_translation.pl ../translations/English-US.txt
+#	check_translation.pl ../translations/English-US.txt
 #
 # Note: this utility should be run from this directory (tools).
 #
@@ -19,7 +19,7 @@
 use File::Find;
 
 sub find_pgm_files {
-# Skipping non WebCalendar plugins,
+# Skipping non Webcalendar plugins,
 # if the filename ends in .class or .php, add it to @files.
   push( @files, "$File::Find::name" )
     if ( $_ =~ /\.(class|php)$/i
