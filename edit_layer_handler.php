@@ -36,7 +36,7 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
 
   if ( ! empty ( $layeruser ) && $error == '' ) {
     // Existing layer entry.
-    if ( ! empty ( $layers[$id]['cal_layeruser'] ) ) {
+    if ( ! empty ( $layers[$id]['cal_layeruser_id'] ) ) {
       // Update existing layer entry for this user.
       $layerid = $layers[$id]['cal_layerid'];
 
@@ -47,7 +47,7 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
       // New layer entry.
       // Check for existing layer for user. Can only have one layer per user.
       $res = dbi_execute ( 'SELECT COUNT( cal_layerid ) FROM webcal_user_layers
-        WHERE cal_login = ? AND cal_layeruser = ?',
+        WHERE cal_login = ? AND cal_layeruser_id = ?',
         array ( $layer_user, $layeruser ) );
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
@@ -66,7 +66,7 @@ function save_layer ( $layer_user, $layeruser, $layercolor, $dups, $id ) {
           $layerid = 1;
 
         dbi_execute ( 'INSERT INTO webcal_user_layers ( cal_layerid, cal_login,
-          cal_layeruser, cal_color, cal_dups ) VALUES ( ?, ?, ?, ?, ? )',
+          cal_layeruser_id, cal_color, cal_dups ) VALUES ( ?, ?, ?, ?, ? )',
           array ( $layerid, $layer_user, $layeruser, $layercolor, $dups ) );
       }
     }

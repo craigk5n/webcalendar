@@ -404,7 +404,7 @@ $install_sql = array (
      array ( 'cal_dups', CHAR, 1, N, 'N' ) 
     ),
   'primary'=>array ( 'cal_layerid' ),
-  'index'=>array ( 'cal_login_id', 'cal_layeruser' )
+  'index'=>array ( 'cal_login_id', 'cal_layeruser_id' )
   ),
 
   array ( 'name'=>'user_pref',
