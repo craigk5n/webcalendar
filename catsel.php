@@ -2,103 +2,48 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
-// load user and global cats
-load_user_categories ();
 
 $catList = $catNames = $error = '';
 
-if ( $CATEGORIES_ENABLED == 'N' )
+if ( ! getPref ( 'CATEGORIES_ENABLED' ) )
   exit;
 
-$cats = getGetValue ( 'cats' );
-$form = getGetValue ( 'form' );
+//$WC->loadCategories();
 
-$eventcats = explode ( ',', $cats );
+$cats = $WC->getGET ( 'cats' );
+$form = $WC->getGET ( 'form' );
 
-$availCatStr = translate ( 'AVAILABLE CATEGORIES' );
-$availCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $availCatStr ) ) / 2 );
-if ( strlen ( $availCatStr ) < 30 )
-  $availCatStr = $availCatFiller . $availCatStr . $availCatFiller ;
+build_header ( array ( 'catsel.js' ),
+  '', '', 5 );
 
-$entryCatStr = translate ( 'ENTRY CATEGORIES' );
-$entryCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $entryCatStr ) ) / 2 );
-if ( strlen ( $entryCatStr ) < 30 )
-  $entryCatStr = $entryCatFiller . $entryCatStr . $entryCatFiller ;
-
-print_header ( array ( 'js/catsel.php/false/' . $form ),
-  '', '', true, false, true );
-
-ob_start ();
-
-echo '
-    <table align="center" border="0" width="90%" summary="">
-      <tr>
-        <th colspan="3">' . translate ( 'Categories' ) . '</th>
-      </tr>
-      <form action="" method="post" name="editCategories" '
- . 'onSubmit="sendCats( this )">
-      <tr>
-        <td valign="top">';
-
-if ( ! empty ( $categories ) ) {
-  echo '
-          <select name="cats[]" size="10">
-            <option disabled>' . $availCatStr . '</option>';
-
-  foreach ( $categories as $K => $V ) {
+  foreach ( $WC->categories() as $K => $V ) {
     // None is index -1 and needs to be ignored
-    if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin ||
+    if ( $K > 0 && ( $WC->isLogin( $V['cat_owner'] ) || $WC->isAdmin() ||
         substr ( $form, 0, 4 ) == 'edit' ) ) {
-      $tmpStr = $K . '" name="' . $V['cat_name'] . '">' . $V['cat_name'];
-      echo '
-            <option value="' . ( empty ( $V['cat_owner'] )
-        ? "-$tmpStr" . '<sup>*</sup>' : $tmpStr ) . '</option>';
-    }
-  }
-  echo '
-          </select>';
-}
-echo '
-        </td>
-        <td valign="center"><input type="button" value=">>" onclick="selAdd()"'
- . ' /></td>
-        <td align="center" valign="top">
-          <select name="eventcats[]" size="9"  multiple="multiple">
-            <option disabled>' . $entryCatStr . '</option>';
+        $catList[$K]['name'] = $V['cat_name'] 
+          . ( empty ( $V['cat_owner'] ) ? '<sup>*</sup>' : '' );
+    } 
+  } 
 
 if ( strlen ( $cats ) ) {
+$eventcats = explode ( ',', $cats );
   foreach ( $eventcats as $K ) {
     // disable if not creator and category is Global
     $neg_num = $show_ast = '';
     $disabled = ( empty ( $categories[abs ( $K )]['cat_owner'] ) &&
       substr ( $form, 0, 4 ) != 'edit' ? 'disabled' : '' );
-    if ( empty ( $categories[abs ( $K )]['cat_owner'] ) ) {
-      $neg_num = '-';
-      $show_ast = '*';
-    }
-    echo '
-            <option value="' . "$neg_num$K\" $disabled>"
-     . $categories[abs ( $K )]['cat_name'] . $show_ast . '</option>';
-  }
+  //  if ( empty ( $categories[abs ( $K )]['cat_owner'] ) ) {
+  //    $neg_num = '-';
+  //    $show_ast = '*';
+  // } 
+	 $eventList[$K]['name'] = $categories[abs ( $K )]['cat_name'] 
+       . ( empty ( $categories[abs ( $K )]['cat_owner'] ) ? '<sup>*</sup>' : '' );
+
+  } 
 }
-
-ob_end_flush ();
-
-echo '
-          </select>
-          <input type="button" value="' . translate ( 'Remove' )
- . '" onclick="selRemove()" />
-        </td>
-      </tr>
-      <tr>
-        <td valign="top" align="right">*' . translate ( 'Global Category' )
- . '&nbsp;&nbsp;&nbsp;<input type="button" value="' . translate ( 'OK' )
- . '" onclick="sendCats()" /></td>
-        <td colspan="2" align="left">&nbsp;&nbsp;<input type="button" value="'
- . translate ( 'Cancel' ) . '" onclick="window.close()" /></td>
-      </tr>
-      </form>
-    </table>
-    ' . print_trailer ( false, true, true );
-
+print_r ($eventcats );
+print_r ($eventList );
+$smarty->assign ( 'catList', $catList );
+$smarty->assign ( 'eventList', $eventList );
+$smarty->display ( 'catsel.tpl' );
 ?>
