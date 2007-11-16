@@ -1,0 +1,1451 @@
+body {
+  margin: 2px;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;  
+}
+a {
+  cursor: pointer;
+  color: #000000;
+  text-decoration: none;
+}
+a:hover {
+  color: #00F;
+}
+abbr {
+  cursor: help;
+}
+div {
+  border: 0;
+}
+h2 {
+  font-size: 20px;
+  color: #000000;
+}
+h3 {
+  font-size: 18px;
+}
+fieldset {
+  width: 85%;
+}
+label {
+  font-size: 11px;
+  font-weight: bold;
+  white-space:nowrap
+}
+p,
+input,
+select {
+  font-size: 12px;
+  margin-left:2px;
+}
+input {
+  margin:2px;
+  padding:2px;
+  vertical-align:middle;
+}
+input.btn[disabled]{
+  padding:3px;
+}
+.tristate {
+  width:35px;
+}
+textarea {
+  font-size: 12px;
+  overflow: auto;
+  margin-left:2px;
+}
+table {
+  border-spacing: 0;
+  border: 0;
+}
+th {
+  font-size: 13px;
+  color: #000000;
+  background: #FFFFFF;
+  padding: 0;
+}
+td {
+  font-size: 11px;
+}
+ul,
+ul a {
+  font-size: 12px;
+}
+
+.main {
+  border-bottom: 1px solid #000000;
+  border-right: 1px solid #000000;
+  width: 100%;
+  clear: both;
+}
+.main th {
+  background-color: #FFFFFF;
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  vertical-align: top;
+}
+.main th.weekend {
+  background-color: #FFFFFF;
+}
+.main th.today {
+  background-color: #FFFF33;
+}
+.main td {
+  background-color: #C0C0C0;
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  vertical-align: top;
+}
+.main td.weekend {
+  background-color: #D0D0D0;
+}
+.main td.hasevents {
+  background-color: #FFFF33;
+}
+.main td.today {
+  background-color: #FFFF33;
+}
+.main td.othermonth {
+  background-color: #D0D0D0;
+}
+.underline {
+ text-decoration: underline;
+}
+.fixed {
+  width: 160px;
+  margin-right:0px;
+}
+.cursoradd a {
+  cursor: pointer;
+}
+#tabs {
+  padding-top: 20px;
+}
+#tabscontent {
+  margin: -1px 2px;
+  padding: 0.5em;
+  border: 2px groove #C0C0C0;
+  width: 98%;
+  background: #F8F8FF;
+  position: relative;
+  z-index: 50;
+}
+.tabfor,
+.tabbak  {
+  position:relative;
+  padding: .3em 1.2em .1em;
+}
+.tabfor {
+  background: #F8F8FF;
+}
+.tabbak {
+  background: #E0E0E0;
+}
+.tabfor a,
+.tabbak a {
+  font-size: 14px;
+  font-weight: bold;
+  vertical-align:top;
+  text-decoration: none;
+}
+.tabfor a {
+  color: #000000;
+}
+.tabbak a {
+  color: #999;
+}
+#editnonusers,
+#editremotes,
+#editremoteshandler,
+#edituser,
+#editgroup,
+#editviews {
+  background: #F8F8FF;
+}
+#tabscontent_boss,
+#tabscontent_colors,
+#tabscontent_email,
+#tabscontent_groups,
+#tabscontent_header,
+#tabscontent_nonuser,
+#tabscontent_nonusers,
+#tabscontent_other,
+#tabscontent_participants,
+#tabscontent_pete,
+#tabscontent_public,
+#tabscontent_reminder,
+#tabscontent_remotes,
+#tabscontent_sched,
+#tabscontent_subscribe,
+#tabscontent_themes,
+#tabscontent_uac {
+  display: none;
+}
+#users  #tabscontent,
+#views #tabscontent,
+#category #tabscontent,
+#layers #tabscontent {
+  height: 400px;
+}
+.sample {
+  border-style: groove;
+  text-align: left;
+  width: 18px;
+}
+.weeknumber,
+.weeknumber a {
+  font-size: 10px;
+  color: #FF6633;
+  text-decoration: none;
+}
+img.color {
+  border: 0;
+  width: 15px;
+  height: 15px;
+}
+#cat {
+  display: none;
+  font-size: 18px;
+}
+#dateselector{
+  width:100%;
+}
+#dateselector tr{
+  height:1.2em;
+}
+#dateselector label {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  white-space:nowrap;
+}
+#dateselector #dsleft{
+  text-align:left;
+  vertical-align:middle;
+}
+#dateselector #dscenter {
+  text-align:center;
+}
+#dateselector #dsright {
+  text-align:right;
+}
+#dateselector form {
+  margin:0px;
+  vertical-align:inherit;
+}
+#weekform,
+#monthform,
+#yearform {
+  font-size: 9px;
+}
+#menu {
+  font-size: 14px;
+  clear: both;
+}
+#menu a {
+  font-size: 14px;
+}
+.prefix {
+  font-weight: bold;
+  font-size: 14px;
+}
+a#programname {
+  margin-top: 10px;
+  font-size: 10px;
+}
+.printer {
+  font-size: 14px;
+  color: #000000;
+  text-decoration: none;
+  clear: both;
+  display: block;
+  width: 15ex;
+}
+.new {
+  border: 0;
+  float: right;
+}
+.unapprovedentry {
+  font-size: 12px;
+/* Remove comments to set unapproved italics
+  font-style: italic;
+*/
+  color: #800000;
+  text-decoration: none;
+  padding-right: 3px;
+
+}
+.nounapproved {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.layerentry {
+  font-size: 12px;
+  color: #006060;
+  text-decoration: none;
+  padding-right: 3px;
+}
+.entry {
+  font-size: 12px;
+  color: #006000;
+  text-decoration: none;
+  padding-right: 3px;
+}
+.entry img,
+.layerentry img,
+.unapprovedentry img {
+  border: 0;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.dayofmonth {
+  color: #000000;
+  font-weight: bold;
+  text-decoration: none;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  padding: 0 2px 0 3px;
+  vertical-align: top;
+}
+.dayofmonth:hover {
+  color: #00F;
+  border-right: 1px solid #00F;
+  border-bottom: 1px solid #00F;
+}
+.prev img {
+  border: 0;
+  margin-left: 3px;
+  margin-top: 7px;
+  float: left;
+}
+.next img {
+  border: 0;
+  margin-right: 3px;
+  margin-top: 7px;
+  float: right;
+}
+#activitylog .prev {
+  font-size: 14px;
+  font-weight: bold;
+  border: 0;
+  float: left;
+}
+#activitylog .next {
+  font-size: 14px;
+  font-weight: bold;
+  border: 0;
+  float: right;
+}
+#day .prev img {
+  border: 0;
+  margin-top: 37px;
+  float: left;
+}
+#day .next img {
+  border: 0;
+  margin-top: 37px;
+  float: right;
+}
+#day .monthnav .prev img {
+  border: 0;
+  margin: 0;
+  float: left;
+}
+#day .monthnav .next img {
+  border: 0;
+  margin: 0;
+  float: right;
+}
+.dailymatrixl,
+.dailymatrixr {
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+  text-align: right;
+  background: #FFFFFF;
+}
+.dailymatrixl {
+  text-align: left;
+}
+.dailymatrixl:hover,
+.dailymatrixr:hover {
+  background: #CFC;
+}
+td.matrixappts {
+  cursor: pointer;
+  text-align: left;
+  background: #C0C0C0;
+  vertical-align: middle;
+  width: 0%;
+}
+td.matrixappts:hover {
+  background: #CFC;
+}
+td.matrix {
+  height: 1px;
+  background: #000;
+}
+.matrix img {
+  border: 0;
+  width: 100%;
+  height: 1px;
+}
+a.matrix img {
+  border: 0;
+  width: 100%;
+  height: 8px;
+}
+.matrixd {
+  width:80%;
+  text-align:center;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+  margin-left: auto;
+  margin-right: auto;
+}
+.matrixledge {
+  border-left: 1px solid #000;
+}
+.matrixlegend {
+  margin-top: 25px;
+  padding: 5px;
+  text-align: center;
+  background: #FFF;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #000;
+}
+.matrixlegend img {
+  border: 0;
+  width: 10px;
+  height: 10px;
+}
+.nav {
+  font-size: 14px;
+  color: #000000;
+  text-decoration: none;
+}
+#DomContextMenu_div,
+.popup {
+  font-size: 12px;
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  padding: 3px;
+  -moz-border-radius: 6px;
+}
+.popup dl {
+  margin: 0;
+  padding: 0;
+}
+.popup dt {
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+.popup dd {
+  margin-left: 20px;
+}
+#admin p {
+  margin:2px;
+  padding:0px;
+}
+.tooltip {
+  cursor: help;
+  text-decoration: none;
+  width: 175px;
+  
+}
+.user,
+.categories {
+  font-size: 18px;
+  color: #000000;
+  text-align: center;
+}
+.asstmode {
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+}
+.help {
+  vertical-align: top;
+  font-weight: bold;
+}
+.helpbody {
+  margin-bottom: 1em;
+  font-weight: normal;
+  vertical-align: top;
+}
+.helpbody div {
+  border: 1px solid #000;
+}
+.helpbody label {
+  font-weight: bold;
+  font-size: 1.1em;
+  vertical-align: top;
+}
+.helpbody p {
+  margin: 1em;
+}
+.helplist {
+  border: 0;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+}
+.helplist a {
+  font-weight: normal;
+  text-decoration: underline;
+}
+.helplist a.current {
+  font-weight: bold;
+  text-decoration: none;
+}
+#helpbug form {
+  margin-bottom: 1em;
+}
+#helpbug label {
+  clear: left;
+  float: left;
+  width: 32%;
+}
+#helpbug p {
+  margin: 0 1em;
+}
+img.help {
+  border: 0;
+  cursor: help;
+}
+.standard {
+  border: 1px solid #000000;
+  background: #C0C0C0;
+  font-size: 12px;
+}
+.standard th {
+  font-size: 18px;
+  padding: 0;
+  border-bottom: 1px solid #000000;
+}
+.minical {
+  border-collapse: collapse;
+  font-size: 10px;
+  margin: 0 0 5px 0;
+}
+.minical caption a {
+  font-weight: bold;
+  color: #B04040;
+}
+.minical caption a:hover {
+  color: #00F;
+}
+.minical th {
+  border: 0px solid #FFFFFF;
+ padding: 0 2px;
+}
+.minical td {
+  padding: 0 2px;
+  border: 1px solid #FFFFFF;
+  background: #C0C0C0;
+}
+.minical td a {
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding: 3px;
+}
+.minical td.weekend {
+  background: #D0D0D0;
+}
+.minical td#today {
+  background: #FFFF33;
+}
+.minical td.hasevents {
+  font-weight: bold;
+}
+.minical th {
+  color: #000000;
+  text-align: center;
+  background: #FFFFFF;
+}
+.minical th.empty,
+.minical td.empty {
+  background: transparent;
+}
+#minitask {
+  float:left;
+  padding-top:10px;
+}
+.minitask {
+  width: 100%;
+  border: 1px solid #000;
+  margin-left: 1px;
+}
+.minitask tr.header th,
+.minitask tr.header td {
+  text-align: center;
+  background: #C0C0C0;
+  font-size: 12px;
+  padding: 0;
+  border-bottom: 2px solid #000;
+}
+.minitask tr.header td {
+  text-align:right;
+  margin: 0;
+  border-bottom: 0px;
+}
+.sorter {
+  text-align: left !important;
+  cursor: pointer;
+  margin: 0;
+  border-bottom: 0px;
+}
+.sorterbottom {
+ border-bottom: 1px solid #000 !important;
+}
+.minitask  td {
+  color: #000000;
+  font-size: 12px;
+  padding: 0;
+  border-bottom: 1px solid #000;
+  text-align: center;
+}
+.minitask td.filler {
+  padding: 0;
+  border-bottom: 0;
+}
+.task {
+  color: #000000;
+}
+table.admin {
+	border:1px solid #000;
+	padding:5px
+}
+table.admin td {
+	padding:20px
+}
+table.admin td,
+.admin td a {
+	text-align:center
+}
+.admin td a {
+	border:1px solid #EEE;
+	border-color:#EEE #777 #777 #EEE;
+	padding:10px;
+}
+.admin td a:hover {
+	border-color:#777 #EEE #EEE #777
+	background:#AAA;
+}
+#admin table,
+#pref table{
+  vertical-align: top;
+}
+#admin .tooltip,
+#pref .tooltip,
+#admin .tooltipselect,
+#pref .tooltipselect{
+  cursor: help;
+  text-decoration: none;
+  font-weight: bold;
+  width: 250px;
+  vertical-align: middle;
+}
+.tooltipselect {
+  vertical-align: top;
+}
+#minicalendar table {
+  width: 160px;
+}
+#minicalendar th{
+  font-size: 11px;
+}
+#minicalendar td {
+  font-size: 11px;
+}
+.embactlog {
+  width: 100%;
+  border-bottom: 1px solid #000000;
+  border-right: 1px solid #000000;
+  border-spacing: 0;
+}
+.embactlog tr {
+  background: #FFF;
+}
+.embactlog th {
+  width: 14%;
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  padding: 1px 3px;
+}
+.embactlog th.usr,
+.embactlog th.cal,
+.embactlog th.action {
+  width: 7%;
+}
+.embactlog td {
+  border-left: 1px solid #000000;
+  padding: 1px 3px;
+}
+#day div.minicalcontainer {
+  vertical-align: top;
+  border: 1px solid #000;
+  padding: 3px;
+}
+#day table.minical {
+  margin-left: auto;
+  margin-right: auto;
+}
+#day .minical caption {
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  color: #000000;
+  background: #FFFFFF;
+  font-size: 47px;
+}
+#day .minical td.selectedday {
+  border: 2px solid #000000;
+}
+#day .monthnav th {
+  text-align: center;
+  border: 0;
+  padding: 3px;
+}
+.menuhref {
+  font-family:  arial, verdana, sans-serif;
+  font-size: 12px;
+}
+#datesel td.field {
+  font-size: 12px;
+}
+.glance {
+  border-bottom: 1px solid #000000;
+  border-right: 1px solid #000000;
+  width: 100%;
+}
+.glance th.empty {
+  border-top: 1px solid #FFFFFF;
+  border-left: 1px solid #FFFFFF;
+  background: #FFFFFF;
+}
+.glance th.row {
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  height: 40px;
+  width: 14%;
+  vertical-align: top;
+}
+.glance td {
+  vertical-align: top;
+  background-color: #C0C0C0;
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  padding-left: 3px;
+}
+#day dl.desc {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+#day dl.desc dt {
+  font-weight: bold;
+}
+#day dl.desc dd {
+  margin: 0;
+  padding-left: 20px;
+}
+#year #monthgrid td {
+  vertical-align: top;
+  padding: 0 5px;
+}
+#year .minical tr {
+  vertical-align: top;
+}
+#admin th td {
+  padding: 3px;
+}
+#viewm .main,
+#viewr .main,
+#viewt .main,
+#viewv .main,
+#week .main {
+border-collapse: collapse;
+}
+#admin .main th,
+#pref .main th,
+#viewv .main th,
+#viewl .main th,
+#month .main th {
+  width: 14%;
+}
+
+#vieww .main th,
+#week .main th {
+  width: 12%;
+}
+#viewr th.small {
+  background: none;
+  font-size: 8px;
+}
+#viewd .main th {
+  border-right: 1px solid #000000;
+  padding: 1px;
+}
+a.weekcell {
+  color: #FF6633;
+}
+#admin .main th.empty,
+#pref .main th.weekcell,
+#viewl .main th.empty,
+#month .main th.empty {
+  background: transparent;
+  border-left: 0;
+  border-top: 0;
+  width: 1%;
+}
+#admin .main td.weekcell,
+#pref .main td.weekcell,
+#viewl .main td.weekcell,
+#month .main td.weekcell {
+  background-color: #FFFFFF;
+  width: 1%;
+  margin: 0;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 12px;
+  color: #000000;
+  text-decoration: none;
+}
+#viewv .main th.empty,
+#viewm .main th.empty,
+#vieww .main th.empty,
+#viewr .main th.empty,
+#week .main th.empty {
+  width: 5%;
+  background: none;
+  background: transparent;
+  border-top: 1px solid #FFFFFF;
+  border-left: 1px solid #FFFFFF;
+}
+#week .main th.row {
+  width: 5%;
+  vertical-align: top;
+  height: 40px;
+}
+#viewt.main {
+  margin: 0;
+  padding: 0;
+}
+#vieww .main th.row,
+#viewv .main th.row,
+#viewm .main th.row,
+#viewt .main th {
+  width: 10%;
+  vertical-align: top;
+}
+#viewt .main th.weekend {
+  background-color: #D0D0D0;
+}
+#viewv .main th.row {
+  text-align: left;
+  padding: 0 5px;
+}
+#viewd .main th.row {
+  border-right-width: 0;
+  text-align: left;
+}
+#viewr th.row {
+  height: 40px;
+  vertical-align: top;
+}
+#vieww .main th.today,
+#viewm .main th.today,
+#viewv .main th.today {
+  width: 10%;
+}
+#admin .main th.today,
+#pref .main th.today,
+#viewr .main th.today,
+#week .main th.today {
+  width: 12%;
+}
+#viewr .main th a,
+#week .main th a,
+#weekdetails .main th a {
+  color: #000000;
+}
+#viewr .main th a:hover,
+#week .main th a:hover,
+#weekdetails .main th a:hover {
+  color: #00F;
+}
+#year .minical td {
+  text-align: center;
+  vertical-align: top;
+}
+#admin .main td,
+#pref .main td{
+  font-size: 12px;
+  height: 30px;
+}
+#viewl .main td,
+#month .main td {
+  font-size: 12px;
+  height: 75px;
+  vertical-align: top;
+  table-layout: fixed;
+  overflow: auto;
+}
+#vieww .main td,
+#week .main td,
+#viewr .main td,
+#viewm .main td,
+#viewv .main td {
+  font-size: 12px;
+  padding-left: 3px;
+}
+#printarea #prevmonth {
+  float: left;
+}
+#printarea #nextmonth {
+  float: right;
+}
+#month .minical caption,
+#viewl .minical caption {
+  margin-left: 4ex;
+}
+#year .minical {
+  display: block;
+}
+#year .minical caption {
+  margin: 0 auto;
+}
+#viewl .minical,
+#month .minical {
+  margin: 0 4px;
+  border: 0;
+}
+.topnav {
+  border: 0;
+  _zoom: 1;
+}
+.title {
+  width: 99%;
+  text-align: center;
+}
+#day .title {
+  margin-top: 3px;
+  text-align: center;
+}
+#day .title .date,
+.title .date {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+}
+.title .titleweek {
+  font-size: 20px;
+  color: #000000;
+}
+.title .viewname,
+#day .title .user,
+.title .user {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+}
+#weekdetails .main {
+  width: 90%;
+}
+#weekdetails .main th {
+  width: 100%;
+  padding: 2px;
+}
+#weekdetails .main td {
+  height: 75px;
+}
+#viewt table.timebar {
+  border-collapse: collapse;
+  width: 100%;
+}
+#viewt td.timebar {
+  width: 90%;
+  background: #FFF;
+  text-align: center;
+  color: #999;
+  font-size: 10px;
+}
+#viewt .yardstick td {
+  padding: 0;
+  border: 1px solid #999;
+}
+#viewt td.entry {
+  padding: 0;
+  background-color: #FFFFFF;
+}
+#viewt table.timebar a {
+  text-align: inherit !important;
+}
+.viewnav {
+  border: 0;
+  width: 99%;
+}
+#login {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+#register table,
+#login table {
+  border: 1px solid #000000;
+  background-color: #C0C0C0;
+  font-size: 12px;
+}
+.cookies {
+  font-size: 13px;
+}
+.strikethrough {
+  text-decoration : line-through;
+}
+.pub {
+  background: #80FF80;
+  text-align: center;
+
+}
+.conf {
+  background: #FFFF80;
+  text-align: center;
+}
+.priv {
+  background: #FF5050;
+  text-align: center;
+}
+.boxT {
+ border-top: 1px solid #888;
+}
+.boxL {
+ border-left: 1px solid #888;
+}
+.boxR {
+ border-right: 1px solid #888;
+}
+.boxB {
+ border-bottom: 1px solid #888;
+}
+.boxA {
+ padding-left: 3px;
+ border: 1px solid #888;
+}
+.leftpadded {
+ padding-left: 50px;
+ text-align: left;
+}
+.location {
+ font-size: 10px;
+}
+.byxxx th,
+.byxxx td {
+ text-align: center;
+}
+.icon_text {
+ border: 0;
+ width: 10px;
+ height: 10px;
+}
+.minitask td.pct,
+.alignR {
+ text-align: right;
+}
+.minitask td.name,
+.alignL {
+ text-align: left;
+}
+.alignC{
+ text-align: center;
+}
+.alignT {
+ vertical-align: top;
+}
+.bold {
+ font-weight: bold;
+}
+#about {
+  background-image: url(../images/kn5.jpg);
+  background-repeat: no-repeat;
+}
+#about p {
+  margin:1px;
+  color:#333;
+}
+#scroller {
+  position:absolute;
+  width:100%;
+}
+.layers {
+
+  margin: 2px 1px;
+  padding: 5px;
+  background: #C0C0C0;
+  width: 250px;
+}
+.layers h4{
+  margin: 0 0 5px;
+}
+.layers p {
+  margin: 0;
+  padding-left: 5px;
+  font-size: 12px;
+}
+.layers p label {
+  font-size: 13px;
+}
+#accountiframe,
+#layeriframe,
+#grpiframe,
+#useriframe,
+#nonusersiframe,
+#remotesiframe,
+#viewiframe {
+  position: absolute;
+  height: 280px;
+  left: 300px;
+  width:600px;
+  background: #F8F8FF;
+  height: 395px;
+  border: 0px;
+  top:20px;
+}
+#DomContextMenu_div { 
+  position:absolute;  
+  margin: 5px 0 0 5px !important; 
+}
+#DomContextMenuContent_div { 
+  font-size: 11px;
+  padding:  0;
+  white-space:  nowrap;
+  cursor:    default;
+  display: block; 
+  position: relative;    
+  margin: 2px; 
+}
+#DomContextMenuContent_div ul {
+  list-style-type:none;
+  display:block; 
+  padding:2px;
+}
+#DomContextMenuContent_div ul li { 
+  vertical-align: middle;
+  padding-right:.5em;
+  cursor:pointer !important;
+}
+#DomContextMenuContent_div ul li img {
+  vertical-align: middle; 
+  margin: 3px 3px 3px 2px;
+}
+.Menubar {
+  width: 100%;
+  padding-bottom:  2px;
+}
+
+.Menu,.SubMenuTable {
+  font-size:  1em;
+  padding:  0;
+  white-space:  nowrap;
+  cursor:    default;
+  height: 25px;
+  vertical-align:middle;
+}
+
+.SubMenu {
+  position:  absolute;
+  visibility:  hidden;
+  /*
+     Netscape/Mozilla renders borders by increasing
+     their z-index.  The following line is necessary
+     to cover any borders underneath
+  */
+  z-index:  100;
+  border:    0;
+  padding:  1px;
+  overflow:  visible;
+}
+
+.SubMenuTable {
+  overflow:  visible;
+}
+
+.MainItem,.MainItemHover,.MainItemActive,
+.MenuItem,.MenuItemHover,.MenuItemActive,
+#DomContextMenuContent_div ul li:hover {
+  border:    0;
+  cursor:    default;
+  white-space:  nowrap;
+}
+
+.MainItem {
+  padding: 1px;
+  border: 0;
+}
+
+td.MainItemHover,td.MainItemActive {
+  padding:  0px;
+}
+
+.MainFolderLeft,.MainItemLeft,
+.MainFolderText,.MainItemText,
+.MainFolderRight,.MainItemRight {
+  background-color:  inherit;
+}
+
+/* vertical main menu sub components */
+
+td.MainFolderLeft,td.MainItemLeft {
+  padding-top:  2px;
+  padding-bottom:  2px;
+  padding-left:  0px;
+  padding-right:  2px;
+  background-color:  inherit;
+}
+
+td.MainFolderText,td.MainItemText {
+  padding-top:  2px;
+  padding-bottom:  2px;
+  padding-left:  5px;
+  padding-right:  5px;
+  background-color:  inherit;
+  white-space:  nowrap;
+}
+
+td.MainFolderRight,td.MainItemRight {
+  padding-top:  2px;
+  padding-bottom:  2px;
+  padding-left:  0px;
+  padding-right:  0px;
+  background-color:  inherit;
+}
+
+tr.MainItem td.MainFolderLeft,
+tr.MainItem td.MainItemLeft {
+  padding-top:  3px;
+  padding-bottom:  3px;
+  padding-left:  1px;
+  padding-right:  2px;
+  white-space:  nowrap;
+  border:    0;
+  background-color:  inherit;
+}
+
+tr.MainItem td.MainFolderText,
+tr.MainItem td.MainItemText {
+  padding-top:  3px;
+  padding-bottom:  3px;
+  padding-left:  5px;
+  padding-right:  5px;
+  border:    0;
+  background-color:  inherit;
+}
+
+tr.MainItem td.MainItemRight,
+tr.MainItem td.MainFolderRight {
+  padding-top:  3px;
+  padding-bottom:  3px;
+  padding-left:  0px;
+  padding-right:  1px;
+  border:    0;
+  background-color:  inherit;
+}
+
+/* sub menu sub components */
+
+.MenuFolderLeft,.MenuItemLeft {
+  padding-top:  2px;
+  padding-bottom:  2px;
+  padding-left:  1px;
+  padding-right:  3px;
+  background-color:  inherit;
+  white-space:  nowrap;
+}
+
+.MenuFolderText,.MenuItemText {
+  padding-top:  2px;
+  padding-bottom:  2px;
+  padding-left:  5px;
+  padding-right:  5px;
+  background-color:  inherit;
+  white-space:  nowrap;
+}
+
+.MenuFolderRight,.MenuItemRight {
+  padding-top:  2px;
+  padding-bottom:  2px;
+  padding-left:  0px;
+  padding-right:  0px;
+  background-color:  inherit;
+  white-space:  nowrap;
+}
+
+.MenuItem .MenuFolderLeft,
+.MenuItem .MenuItemLeft {
+  padding-top:  3px;
+  padding-bottom:  3px;
+  padding-left:  2px;
+  padding-right:  3px;
+  white-space:  nowrap;
+  border:   0px;
+}
+
+.MenuItem .MenuFolderText,
+.MenuItem .MenuItemText {
+  padding-top:  3px;
+  padding-bottom:  3px;
+  padding-left:  5px;
+  padding-right:  5px;
+  border:    0px;
+  background-color:  inherit;
+}
+
+.MenuItem .MenuFolderRight,
+.MenuItem .MenuItemRight {
+  padding-top:  3px;
+  padding-bottom:  3px;
+  padding-left:  0px;
+  padding-right:  1px;
+  border:    0;
+  background-color:  inherit;
+}
+
+/* menu splits */
+
+.MenuSplit {
+  margin:    2px;
+  height:    1px;
+  overflow:  hidden;
+  background-color:  inherit;
+}
+
+.MenuItem img.seq1 {
+  display:  inline;
+}
+
+.MenuItemHover seq2,
+.MenuItemActive seq2 {
+  display:  inline;
+}
+
+.MenuItem .seq2,
+.MenuItemHover .seq1,
+.MenuItemActive .seq1 {
+  display:  none;
+}
+.demotable {
+  text-align:center;
+  width: 90%; 
+}
+#fc{
+  position:absolute;
+  border-collapse:
+  collapse;
+  background:#FFFFFF;
+  border:1px solid #404040;
+  z-index: 100;
+}
+#fc td{
+ text-align:center;
+}
+#fc #mns,
+#fc #dn {
+  text-align:center;
+  font:bold 13px Arial;
+}
+#fc .current,
+#fc .day,
+#fc .other {
+  border:1px solid #404040;
+  width: 16px;
+  height: 16px;
+}
+#fc .current,
+#fc .day,
+#fc .arrow {
+  cursor:pointer;
+}
+DIV.multiselect_container {
+  font-size: 18px;
+	padding: .3em;
+	width:  9.8em;
+}
+.a9multiselect {
+	width: 9.9em;
+	font-family: Arial, Helvetica, sans-serif;
+	position: relative;
+	height: 22px;
+	padding: 0;
+	margin: -.05em 0 1em 0;
+	border: 0;
+}
+.a9multiselect .expcol-click, .a9multiselect .expcol-click-open {
+	background-color: #fff;
+	border: 1px solid #999;
+	padding: 0;
+	margin: 0;
+	cursor: default;
+	min-width: 9.8em;
+}
+.a9multiselect div.expcol-click {
+	position: absolute;
+	z-index: 104;
+	height: 20px;
+}
+.a9multiselect div.expcol-click-open {
+	border-bottom: 1px solid #fff;
+}
+.a9multiselect .title { 
+	font-size: .8em;
+	height: 1.3em;
+	line-height: 1.2em;
+	overflow: hidden;
+	padding: .3em 1.1em .1em .5em;
+	background: white url(../images/multiselect.gif) no-repeat top right;
+}
+.a9multiselect .title:hover { 
+	background: white url(../images/multiselect-hover.gif) no-repeat top right; 
+}
+.expcol-body {
+	position: absolute;
+	z-index: 106;
+	min-height: 1em;
+	background: #e9f3f8;
+	padding: .1em;
+	display: block;
+	font-size: 75%;
+	display: none;
+	margin-top: -1px;
+	border: 1px solid #999;
+}
+.expcol-body ul {
+	overflow: auto;
+	min-height: 1em;
+	margin: 0;
+	padding: 0;
+}
+.expcol-body li { 
+  text-align:left;
+  margin: 0 0 .2em 0; 
+	list-style:none; 
+}
+.expcol-body li:hover {
+	background: #ddd;
+}
+.arc90_multiselect {
+	width: 12.5em;
+	height: 1.35em;
+	visibility: hidden;
+}
+.a9selectall {
+	border-bottom: 1px solid #ccc;
+}

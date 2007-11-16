@@ -8,46 +8,60 @@
  * @version $Id$
  * @package WebCalendar
  */
+defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
+
+//set this to prove we in are inside a custom view page
+define ( '_WC_CUSTOM_VIEW', true );
+
+$error = ''; 
+$vid = $WC->getValue ( 'vid', '-?[0-9]+', true ); 
+
+view_init ( $vid );
+
+$date = $WC->getDate();
+$WC->setToday ( $date );
+
+
+
+$participants = view_get_user_list ( $vid );
+if ( count ( $participants ) == 0 ) {
+  // This could happen if user_sees_only_his_groups  = Y and
+  // this user is not a member of any group assigned to this view.
+  $smarty->assign ( 'errorStr', translate ( 'No users for this view' ) . '.' );
+	$smarty->display ( 'error.tpl' );
+  exit;
+}
 
 /**
   * Initialize view variables and check permissions.
   * @param int $view_id id for the view
   */
-function view_init ( $view_id )
-{
-  global $views, $error, $login;
-  global $ALLOW_VIEW_OTHER, $is_admin;
-  global $view_name, $view_type, $custom_view;
+function view_init ( $vid ) {
+  global $WC, $smarty;
 
-  //set this to prove we in are inside a custom view page
-  $custom_view = true;
-
-  if ( ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'N' )
-    && ! $is_admin ) {
+  
+  if ( ! getPref ( 'ALLOW_VIEW_OTHER' ) && ! $WC->isAdmin() ) {
     // not allowed...
     send_to_preferred_view ();
   }
-  if ( empty ( $view_id ) ) {
+  if ( empty ( $vid ) ) {
     do_redirect ( 'views.php' );
   }
 
   // Find view name in $views[]
-  $view_name = '';
-  $view_type = '';
-  $viewcnt = count ( $views );
-  for ( $i = 0; $i < $viewcnt; $i++ ) {
-    if ( $views[$i]['cal_view_id'] == $view_id ) {
-      $view_name = htmlspecialchars ( $views[$i]['cal_name'] );
-      $view_type = $views[$i]['cal_view_type'];
-    }
-  }
+  $views = loadViews ( $vid );
+  $smarty->assign ( 'view_name', htmlspecialchars ( $views[0]['cal_name'] ) );
+  $smarty->assign ( 'view_type', $views[0]['cal_view_type'] );
 
   // If view_name not found, then the specified view id does not
   // belong to current user.
-  if ( empty ( $view_name ) ) {
-    $error = print_not_auth ();
+  if ( empty ( $views ) ) {
+    $smarty->assign ( 'not_auth', true );
+    $smarty->display ( 'error.tpl' );
   }
+	return $views;
 }
+
 
 /**
   * Remove any users from the view list who this user is not
@@ -55,83 +69,34 @@ function view_init ( $view_id )
   * @param int $view_id id of the view
   * @return the array of valid users
   */
-function view_get_user_list ( $view_id ) {
-  global $error, $login, $is_admin, $NONUSER_ENABLED, $USER_SEES_ONLY_HIS_GROUPS;
+function view_get_user_list ( $vid ) {
+  global $error, $WC;
 
   // get users in this view
   $res = dbi_execute (
-    'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?', array ( $view_id ) );
+    'SELECT cal_login_id FROM webcal_view_user WHERE cal_view_id = ?', array ( $vid ) );
   $ret = array ();
   $all_users = false;
   if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
       $ret[] = $row[0];
-      if ( $row[0] == '__all__' )
+      if ( $row[0] == -1 )
         $all_users = true;
     }
     dbi_free_result ( $res );
   } else {
     $error = db_error ();
   }
-  if ( $all_users ) {
-    $users = get_my_users ( '', 'view' );
-    $ret = array ();
-    $usercnt = count ( $users );
-    for ( $i = 0; $i < $usercnt; $i++ ) {
-      $ret[] = $users[$i]['cal_login'];
-    }
-  } else {
-    $myusers = get_my_users ( '', 'view' );
+	$myusers = get_my_users ( '', 'view' );
 
-    if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
-      $myusers = array_merge ( $myusers, get_my_nonusers ( $login, true, 'view' ) );
+  if ( ! $all_users ) {
+    for ( $i = 0, $cnt = count ( $myusers ); isset ( $myusers[$i] ) && $i < $cnt; $i++ ) {
+        if ( ! array_key_exists ( $myusers[$i]['cal_login_id'], $ret ) )
+          array_pop ( $myusers);
     }
-    // Make sure this user is allowed to see all users in this view
-    // If this is a global view, it may include users that this user
-    // is not allowed to see.
-    if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
-      $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
-      $userlookup = array ();
-      $myusercnt = count ( $myusers );
-      for ( $i = 0; $i < $myusercnt; $i++ ) {
-        $userlookup[$myusers[$i]['cal_login']] = 1;
-      }
-      $newlist = array ();
-      $retcnt = count ( $ret );
-      for ( $i = 0; $i < $retcnt; $i++ ) {
-        if ( ! empty ( $userlookup[$ret[$i]] ) )
-          $newlist[] = $ret[$i];
-      }
-      $ret = $newlist;
-    }
-
-    //Sort user list...
-    $sortlist = array ();
-    $myusercnt = count ( $myusers );
-    $retcnt = count ( $ret );
-    for ( $i = 0; $i < $myusercnt; $i++ ) {
-      for ( $j = 0; $j < $retcnt; $j++ ) {
-        if ( $myusers[$i]['cal_login'] == $ret[$j] ) {
-          $sortlist[] = $ret[$j];
-          break;
-        }
-      }
-    }
-    $ret = $sortlist;
   }
-
-  // If user access control enabled, check against that as well.
-  if ( access_is_enabled () && ! $is_admin ) {
-    $newlist = array ();
-    $retcnt = count ( $ret );
-    for ( $i = 0; $i < $retcnt; $i++ ) {
-      if ( access_user_calendar ( 'view', $ret[$i] ) )
-        $newlist[] = $ret[$i];
-    }
-    $ret = $newlist;
-  }
-
-  //echo "<pre>"; print_r ( $ret ); echo "</pre>\n";
+    $ret = $myusers;	  
+//  echo "<pre>"; print_r ( $ret ); echo "</pre>\n";
   return $ret;
 }
 ?>
