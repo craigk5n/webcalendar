@@ -34,7 +34,7 @@
       <table border="0">
         <tr>
           <td style="width:14%;" class="tooltip" title="__brief-description-help@T__">
-					  <label for="entry_brief">__Brief Description__:</label></td>
+            <label for="entry_brief">__Brief Description__:</label></td>
           <td colspan="4"><input type="text" name="entry_brief" id="entry_brief" size="25" value="{$name|htmlspecialchars}" /></td>
         </tr>
         <tr>
@@ -82,7 +82,7 @@
         {if $eType eq 'task'}
         <tr id="completed">
           <td class="tooltip" title="__completed-help@T__">
-					  <label for="task_percent">__Date Completed__:&nbsp;</label></td>
+            <label for="task_percent">__Date Completed__:&nbsp;</label></td>
           <td colspan="4"><input type="text" name="completed_date" id="completed_date" value="{$completed|date_to_str:datepicker}" onclick="lcs(this, event)" /></td>
         </tr>
         <tr>
@@ -316,7 +316,7 @@
               <option value="{$v.cal_group_id}">{$v.cal_name}</option>
         {/foreach}
             </select>
-				{/if}
+        {/if}
           </td>      
         </tr>
         <tr>
@@ -340,11 +340,11 @@
           <td class="boxT boxB" valign="bottom">
             <select class="fixed" name="selectedPart[]" id="sel_part" size="7" multiple="multiple">
         {foreach from=$participants key=k item=v}
-              <option value="{$v.cal_fullname}">{$v.cal_login_id} {$v.status}</option>
+              <option value="{$v.cal_login_id}">{$v.cal_fullname} {$v.status}</option>
         {/foreach}
             </select>
-					</td>
-					<td class="boxT boxR boxB" valign="bottom">
+          </td>
+          <td class="boxT boxR boxB" valign="bottom">
             <input type="button" onclick="showSchedule()" value="__Availability__..." />
           </td>
           <td colspan="3"></td>
