@@ -3156,7 +3156,7 @@ function query_events ( $user='', $want_repeated, $date_filter, $cat_id = '',
 
   if ( $user == $WC->loginId() && strlen ( $user ) > 0 && $layers ) {
     foreach ( $layers as $layer ) {
-      $layeruser = $layer['cal_layeruse_id'];
+      $layeruser = $layer['cal_layeruser_id'];
 
       $sql .= 'OR weu.cal_login_id = ? ';
       $query_params[] = $layeruser;
