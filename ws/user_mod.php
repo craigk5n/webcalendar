@@ -32,17 +32,13 @@
  *
  * Security:
  *  - Remote user must be an admin user
- *  - User include file (user.php, user-ldap.php, etc.) must have the
- *    $admin_can_add_user global variable set to add a user.
- *  - User include file (user.php, user-ldap.php, etc.) must have the
- *    $admin_can_delete_user global variable set to delete a user.
+ *  - User include Class (User, User-ldap, etc.) must have the
+ *    _WC_ADMIN_CAN_ADD_USER define to add a user.
+ *    _WC_ADMIN_CAN_DELETE_USER defined to delete a user.
  */
 
 $WS_DEBUG = false;
 
-// Security precaution. In case register_globals is on,
-// unset anything a malicious user may set in the URL.
-$admin_can_add_user = $admin_can_delete_user = false;
 $error = '';
 
 require_once 'ws.php';
@@ -59,32 +55,32 @@ $out = '
 <result>';
 
 // If not an admin user, they cannot do this...
-if ( ! $is_admin )
+if ( ! $WC->isAdmin() )
   $error = translate ( 'Not authorized (not admin).' );
 
 // Some installs do not allow.
-if ( empty ( $error ) && ! $admin_can_add_user )
+if ( empty ( $error ) && ! _WC_ADMIN_CAN_ADD_USER )
   $error = translate ( 'Not authorized' );
 
-$addIn = getGetValue ( 'add' );
+$addIn = $WC->getGET ( 'add' );
 $add = ( ! empty ( $addIn ) && $addIn == '1' );
 
-$deleteIn = getGetValue ( 'delete' );
+$deleteIn = $WC->getGET ( 'delete' );
 if ( empty ( $deleteIn ) )
-  $deleteIn = getGetValue ( 'del' );
+  $deleteIn = $WC->getGET ( 'del' );
 
 $delete = ( ! empty ( $deleteIn ) && $deleteIn == '1' );
-$user_admin = getGetValue ( 'admin' );
-$user_email = getGetValue ( 'email' );
-$user_firstname = getGetValue ( 'firstname' );
-$user_lastname = getGetValue ( 'lastname' );
-$user_login = getGetValue ( 'username' );
-$user_password = getGetValue ( 'password' );
+$user_admin = $WC->getGET ( 'admin' );
+$user_email = $WC->getGET ( 'email' );
+$user_firstname = $WC->getGET ( 'firstname' );
+$user_lastname = $WC->getGET ( 'lastname' );
+$user_login = $WC->getGET ( 'username' );
+$user_password = $WC->getGET ( 'password' );
 
 // This error should not happen in a properly written client,
 // so no need to translate it.
 if ( empty ( $error ) && empty ( $user_login ) )
-  $error = 'Username cannot be blank.';
+  $error = 'Username can not be blank.';
 
 // Check for invalid characters in the login.
 if ( empty ( $error ) && addslashes ( $user_login ) != $user_login )
@@ -92,7 +88,7 @@ if ( empty ( $error ) && addslashes ( $user_login ) != $user_login )
 
 // Check to see if username exists...
 if ( empty ( $error ) ) {
-  if ( user_load_variables ( $user_login, 'old_' ) ) {
+  if ( $WC->User->loadVariables ( $user_login, 'old_' ) ) {
     // username does already exist...
     if ( $add )
       $error = str_replace ( 'XXX', ws_escape_xml ( $user_login ),
@@ -107,7 +103,7 @@ if ( empty ( $error ) ) {
 
 // If adding a user, make sure a password was provided
 if ( empty ( $error ) && $add && empty ( $user_password ) )
-  $error = translate ( 'You have not entered a password.' );
+  $error = translate ( 'You have not entered a password' );
 
 if ( empty ( $error ) && ! $add && ! $delete && empty ( $user_password ) )
   $user_password = $old_password;
@@ -117,16 +113,21 @@ $user_admin = ( empty ( $user_admin ) || $user_admin != '1' ? 'N' : 'Y' );
 
 // If user is editing themself, do not let them take away admin setting.
 // We don't want them to accidentally have no admin users left.
-if ( empty ( $error ) && $user_login == $login && $user_admin == 'N' )
+if ( empty ( $error ) && $WC->login( $user_login ) && $user_admin == 'N' )
   $error = translate ( 'You cannot remove admin rights from yourself!' );
 
 if ( empty ( $error ) && $delete )
-  user_delete_user ( $user_login );
+  $WC->User->deleteUser ( $user_login );
 // We don't check return status... hope it worked.
 else
 if ( empty ( $error ) && $add ) {
-  if ( user_add_user ( $user_login, $user_password, $user_firstname,
-      $user_lastname, $user_email, $user_admin ) ) {
+	$params = array ( 'cal_login'=>$user_login,
+	  'cal_password'=>$user_password,
+		'cal_lastname'=>$user_lastname,
+		'cal_firstname'=>$user_firstname,
+		'cal_email'=>$user_email,
+		'cal_is_admin'=>$user_admin );
+  if ( $WC->User->addUser ( $params ) ) {
     // success    :-)
   } else
     // error
@@ -137,8 +138,12 @@ if ( empty ( $error ) && $add ) {
 } else
 if ( empty ( $error ) ) {
   // update
-  if ( user_update_user ( $user_login, $user_firstname,
-      $user_lastname, $user_email, $user_admin ) ) {
+	$params = array ( 'cal_login_id'=>$user_login,
+	  'cal_firstname'=>$user_firstname,
+		'cal_lastname'=>$user_lastname,
+		'cal_email'=>$user_email,
+		'cal_is_admin'=>$user_admin );
+  if ( $WC->User->updateUser ( $params ) ) {
     // success    :-)
   } else
     // error

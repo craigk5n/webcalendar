@@ -7,7 +7,7 @@
  *       overkill and require extra packages to install).
  *
  * Comments:
- *  Client apps must use the same authentication as the web browser. If
+ *  Client apps must use the same authentication as the web browser.  If
  *  WebCalendar is setup to use web-based authentication, then the login.php
  *  found in this directory should be used to obtain a session cookie.
  *
@@ -32,8 +32,8 @@ $out = '
 <events>';
 
 // If login is public user, make sure public can view others...
-if ( $login == '__public__' && $login != $user ) {
-  if ( $PUBLIC_ACCESS_OTHERS != 'Y' ) {
+if ( $WC->isLogin( '__public__' ) && ! $WC->isLogin( $user ) ) {
+  if ( ! getPref ( 'PUBLIC_ACCESS_OTHERS' ) {
     $out .= '
   <error>' . translate ( 'Not authorized' ) . '</error>
 </events>
@@ -44,11 +44,11 @@ if ( $login == '__public__' && $login != $user ) {
 }
 
 if ( empty ( $user ) )
-  $user = $login;
+  $user = $WC->loginId();
 
 // If viewing different user then yourself...
 if ( $login != $user ) {
-  if ( $ALLOW_VIEW_OTHER != 'Y' ) {
+  if ( ! getPref ( 'ALLOW_VIEW_OTHER' ) ) {
     $out .= '
   <error>' . translate ( 'Not authorized' ) . '</error>
 </events>
@@ -58,8 +58,8 @@ if ( $login != $user ) {
   // $out .= '<!-- Allowing user to view other users calendar -->';
 }
 
-$startdate = getValue ( 'startdate' );
-$enddate = getValue ( 'enddate' );
+$startdate = $WC->getValue ( 'startdate' );
+$enddate = $WC->getValue ( 'enddate' );
 
 if ( empty ( $startdate ) )
   $startdate = date ( 'Ymd' );
@@ -74,9 +74,8 @@ $repeated_events = query_events ( $user, true,
 // Read non-repeating events (for all users).
 if ( $WS_DEBUG )
   $out .= '
-<!-- ' . str_replace ( array ( 'XXX', 'YYY', 'ZZZ' ),
-    array ( $user, $startdate, $enddate ),
-    translate ( 'Checking for events for XXX from date YYY to date ZZZ.' ) )
+<!-- ' . str_replace ( 'XXX', array ( $user, $startdate, $enddate ),
+    translate ( 'Checking for events for XXX from date XXX to date XXX.' ) )
    . ' -->
 ';
 
@@ -89,18 +88,18 @@ if ( $WS_DEBUG )
     translate ( 'Found XXX events in time range.' ) ) . ' -->
 ';
 
-/* Process an event for a single day. Check to see if it has a reminder,
+/* Process an event for a single day.  Check to see if it has a reminder,
  * when it needs to be sent and when the last time it was sent.
  */
-function process_event ( $id, $name, $event_date, $event_time ) {
+function process_event ( $eid, $name, $event_date, $event_time ) {
   global $out, $WS_DEBUG;
 
   if ( $WS_DEBUG )
-    ws_log_message ( str_replace ( array ( 'XXX', 'YYY', 'ZZZ', 'AAA' ),
-        array ( $id, $name, $event_time, $event_date ),
-        translate ( 'Event id=XXX YYY at ZZZ on AAA.' ) ) );
+    ws_log_message ( str_replace ( 'XXX',
+        array ( $eid, $name, $event_time, $event_date ),
+        translate ( 'Event id=XXX XXX at XXX on XXX.' ) ) );
 
-  return ws_print_event_xml ( $id, $event_date );
+  return ws_print_event_xml ( $eid, $event_date );
 }
 
 // $out .= '<!-- events for user "'.$user.'", login "'.$login.'" -->
@@ -115,7 +114,7 @@ $endtime = mktime ( 0, 0, 0,
   substr ( $enddate, 6, 2 ),
   substr ( $enddate, 0, 4 ) );
 
-for ( $d = $starttime; $d <= $endtime; $d += 86400 ) {
+for ( $d = $starttime; $d <= $endtime; $d += ONE_DAY ) {
   $completed_ids = array ();
   $date = date ( 'Ymd', $d );
   // $out .= "Date: $date\n";
@@ -125,20 +124,20 @@ for ( $d = $starttime; $d <= $endtime; $d += 86400 ) {
   // Keep track of duplicates.
   $completed_ids = array ();
   for ( $i = 0, $evCnt = count ( $ev ); $i < $evCnt; $i++ ) {
-    $id = $ev[$i]->getID ();
-    if ( ! empty ( $completed_ids[$id] ) )
+    $eid = $ev[$i]->getId ();
+    if ( ! empty ( $completed_ids[$eid] ) )
       continue;
-    $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $ev[$i]->getName (), $date,
+    $completed_ids[$eid] = 1;
+    $out .= process_event ( $eid, $ev[$i]->getName (), $date,
       $ev[$i]->getTime () );
   }
   $rep = get_repeating_entries ( $user, $date );
   for ( $i = 0, $repCnt = count ( $rep ); $i < $repCnt; $i++ ) {
-    $id = $rep[$i]->getID ();
-    if ( ! empty ( $completed_ids[$id] ) )
+    $eid = $rep[$i]->getId ();
+    if ( ! empty ( $completed_ids[$eid] ) )
       continue;
-    $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $rep[$i]->getName (), $date,
+    $completed_ids[$eid] = 1;
+    $out .= process_event ( $eid, $rep[$i]->getName (), $date,
       $rep[$i]->getTime () );
   }
 }

@@ -5,73 +5,73 @@
  *   Provides login mechanism for web service clients.
  */
 
-define ( '__WC_BASEDIR', '..' ); // Points to the base WebCalendar directory
-                 // relative to current working directory.
-define ( '__WC_INCLUDEDIR', '../includes' );
+// If you have moved this script out of the WebCalendar directory, which you
+// probably should do since it would be better for security reasons, you would
+// need to change _WC_BASE_DIR to point to the webcalendar include directory.
 
-include_once __WC_INCLUDEDIR . '/translate.php';
-require_once __WC_INCLUDEDIR . '/classes/WebCalendar.class';
+// _WC_BASE_DIR points to the base WebCalendar directory relative to
+// current working directory
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+define ( '_WC_BASE_DIR', '..' );
+define ( '_WC_INCLUDE_DIR', _WC_BASE_DIR . '/includes/' );
 
-include __WC_INCLUDEDIR . '/config.php';
-include __WC_INCLUDEDIR . '/dbi4php.php';
-include __WC_INCLUDEDIR . '/functions.php';
+include _WC_INCLUDE_DIR . 'translate.php';
+require_once _WC_INCLUDE_DIR . 'classes/WebCalendar.class';
 
-$WebCalendar->initializeFirstPhase ();
+$WC =& new WebCalendar ( __FILE__ );
 
-include __WC_INCLUDEDIR . '/' . $user_inc;
+include _WC_INCLUDE_DIR . 'config.php';
+include _WC_INCLUDE_DIR . 'dbi4php.php';
+include _WC_INCLUDE_DIR . 'functions.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WC->initializeFirstPhase ();
 
-load_global_settings ();
+$WC->initializeSecondPhase ();
+
 
 if ( ! empty ( $last_login ) )
   $login = '';
 
-// Calculate path for cookie.
-if ( empty ( $PHP_SELF ) )
-  $PHP_SELF = $_SERVER['PHP_SELF'];
 
-$cookie_path = str_replace ( 'login.php', '', $PHP_SELF );
+$cookie_path = str_replace ( 'login.php', '', $_SERVER['PHP_SELF'] );
 // echo 'Cookie path: ' . $cookie_path;
 
 $out = '
 <login>';
 
-if ( ! empty ($single_user) && $single_user == 'Y' )
+if ( _WC_SINGLE_USER )
   // No login for single-user mode.
   $out .= '
   <error>' . translate ( 'No login required for single-user mode.' )
    . '</error>';
 else
-if ( $use_http_auth )
+if ( _WC_HTTP_AUTH )
   // There is no login page when using HTTP authorization.
   $out .= '
   <error>' . translate ( 'No login required for HTTP authentication.' )
    . '</error>';
 else {
-  $login = getValue ( 'login' );
-  $password = getValue ( 'password' );
+  $login = $WC->getValue ( 'login' );
+  $password = $WC->getValue ( 'password' );
   if ( ! empty ( $login ) && ! empty ( $password ) ) {
     $login = trim ( $login );
     if ( user_valid_login ( $login, $password ) ) {
-      user_load_variables ( $login, '' );
+      $WC->User->loadVariables ( $login, '' );
       // Set login to expire in 365 days.
       srand ( ( double ) microtime () * 1000000 );
       $salt = chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) )
        . chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) );
-      $encoded_login = encode_string ( $login . '|'
+      $encoded_login = $WC->encode_string ( $login . '|'
        . crypt ( $password, $salt ) );
       // SetCookie ( 'webcalendar_session', $encoded_login, 0, $cookie_path );
       $out .= '
   <cookieName>webcalendar_session</cookieName>
-  <cookieValue>$encoded_login</cookieValue>' . ( $is_admin ? '
+  <cookieValue>$encoded_login</cookieValue>' . ( $WC->isAdmin() ? '
   <admin>1</admin>' : '' ) . '
   <calendarName>' . generate_application_name () . '</calendarName>
-  <appName>' . htmlspecialchars ( $PROGRAM_NAME ) . '</appName>
-  <appVersion>' . htmlspecialchars ( $PROGRAM_VERSION ) . '</appVersion>
-  <appDate>' . htmlspecialchars ( $PROGRAM_DATE ) . '</appDate>';
+  <appName>' . htmlspecialchars ( PROGRAM_NAME ) . '</appName>
+  <appVersion>' . htmlspecialchars ( PROGRAM_VERSION ) . '</appVersion>
+  <appDate>' . htmlspecialchars ( PROGRAM_DATE ) . '</appDate>';
     } else
       $out .= '
   <error>Invalid login</error>';

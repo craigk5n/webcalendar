@@ -10,16 +10,16 @@
  *  Some of this code was borrowed from send_reminders.php.
  *
  *  This functionality works somewhat independent of the email-based
- *  send_reminders.php script. If the end user intends to use
+ *  send_reminders.php script.  If the end user intends to use
  *  client-side reminders, they should set "Event Reminders" to "No"
  *  in the "Email" section on the Prefernces page.
  *
  *  This is read-only for the client side, so the client must
  *  keep track of whether or not they have displayed the reminder
- *  to the user. (No where in the database will it be recorded that
+ *  to the user.  (No where in the database will it be recorded that
  *  the user received a reminder through this functionality.)
  *
- *  Client apps must use the same authentication as the web browser. If
+ *  Client apps must use the same authentication as the web browser.  If
  *  WebCalendar is setup to use web-based authentication, then the login.php
  *  found in this directory should be used to obtain a session cookie.
  */
@@ -68,7 +68,7 @@ if ( empty ( $user ) )
 
 // If viewing different user then yourself...
 if ( $login != $user ) {
-  if ( $ALLOW_VIEW_OTHER != 'Y' ) {
+  if ( ! getPref ( 'ALLOW_VIEW_OTHER' ) ) {
     echo '
   <error>' . translate ( 'Not authorized' ) . '</error>
 </reminders>
@@ -82,14 +82,14 @@ if ( $login != $user ) {
 
 // Make sure this user has enabled email reminders.
 // if ( $EMAIL_REMINDER == 'N' ) {
-// $out .= str_replace ('XXX', $user,
+// $out .= str_replace ('XXX', $user, 
 // translate ( 'Error Email reminders disabled for user XXX.' ) );
 // dbi_close ( $c );
 // exit;
 // }
 
 $startdate = mktime ();
-$enddate = $startdate + ( $DAYS_IN_ADVANCE * 86400 );
+$enddate = $startdate + ( $DAYS_IN_ADVANCE * ONE_DAY );
 
 // Now read all the repeating events.
 $repeated_events = query_events ( $user, true,
@@ -103,37 +103,33 @@ if ( $WS_DEBUG )
 
 /* Send a reminder for a single event for a single day.
  */
-function process_reminder ( $id, $event_date, $remind_time ) {
-  global $DISABLE_ACCESS_FIELD, $DISABLE_PARTICIPANTS_FIELD,
-  $DISABLE_PRIORITY_FIELD, $SERVER_URL, $single_user,
-  $single_user_login, $site_extras, $WS_DEBUG;
+function process_reminder ( $eid, $event_date, $remind_time ) {
 
   return '
 <reminder>
   <remindDate>' . date ( 'Ymd', $remind_time ) . '</remindDate>
   <remindTime>' . date ( 'Hi', $remind_time ) . '</remindTime>
   <untilRemind>' . ( $remind_time - time () ) . '</untilRemind>
-  ' . ws_print_event_xml ( $id, $event_date ) . '
+  ' . ws_print_event_xml ( $eid, $event_date ) . '
 </reminder>
 ';
 }
 
 /*
- * Process an event for a single day. Check to see if it has a reminder,
+ * Process an event for a single day.  Check to see if it has a reminder,
  * when it needs to be sent and when the last time it was sent.
  */
-function process_event ( $id, $name, $event_date, $event_time ) {
+function process_event ( $eid, $name, $event_date, $event_time ) {
   global $CUTOFF, $site_extras, $WS_DEBUG;
   $out = '';
 
-  $debug = str_replace ( array ( 'XXX', 'YYY', 'ZZZ', 'AAA' ),
-    array ( $id, $name, $event_time, $event_date ),
-    translate ( 'Event id=XXX YYY at ZZZ on AAA.' ) ) . "\n"
+  $debug = str_replace ( 'XXX', array ( $eid, $name, $event_time, $event_date ),
+    translate ( 'Event id=XXX XXX at XXX on XXX.' ) ) . "\n"
    . str_replace ( 'XXX', count ( $site_extras ),
     translate ( 'Number of site_extras XXX.' ) );
 
   // Check to see if this event has any reminders.
-  $extras = get_site_extra_fields ( $id );
+  $extras = get_site_extra_fields ( $eid );
   for ( $j = 0, $seCnt = count ( $site_extras ); $j < $seCnt; $j++ ) {
     $extra_name = $site_extras[$j][0];
     $extra_type = $site_extras[$j][2];
@@ -169,12 +165,12 @@ function process_event ( $id, $name, $event_date, $event_time ) {
   ' . str_replace ( 'XXX', date ( 'm/d/Y H:i', $remind_time ),
         translate ( 'Remind time is XXX.' ) );
       // Send a reminder.
-      if ( time () >= $remind_time - ( $CUTOFF * 86400 ) ) {
+      if ( time () >= $remind_time - ( $CUTOFF * ONE_DAY ) ) {
         if ( $debug )
           $debug .= '
   SENDING REMINDER!';
 
-        $out .= process_reminder ( $id, $event_date, $remind_time );
+        $out .= process_reminder ( $eid, $event_date, $remind_time );
       }
     }
   }
@@ -185,13 +181,13 @@ function process_event ( $id, $name, $event_date, $event_time ) {
 }
 
 $out .= '
-<!-- ' . str_replace ( array ( 'XXX', 'YYY' ), array ( $user, $login ),
-  translate ( 'Reminders for user XXX, login YYY.' ) ) . ' -->
+<!-- ' . str_replace ( 'XXX', array ( $user, $login ),
+  translate ( 'Reminders for user XXX, login XXX.' ) ) . ' -->
 ';
 
 $startdate = time (); // today
 for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
-  $date = date ( 'Ymd', time () + ( $d * 86400 ) );
+  $date = date ( 'Ymd', time () + ( $d * ONE_DAY ) );
   // echo "Date: $date\n";
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.
@@ -199,20 +195,20 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   // Keep track of duplicates.
   $completed_ids = array ();
   for ( $i = 0, $evCnt = count ( $ev ); $i < $evCnt; $i++ ) {
-    $id = $ev[$i]->getID ();
-    if ( ! empty ( $completed_ids[$id] ) )
+    $eid = $ev[$i]->getId ();
+    if ( ! empty ( $completed_ids[$eid] ) )
       continue;
-    $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $ev[$i]->getName (),
+    $completed_ids[$eid] = 1;
+    $out .= process_event ( $eid, $ev[$i]->getName (),
       $date, $ev[$i]->getTime () );
   }
   $rep = get_repeating_entries ( $user, $date );
   for ( $i = 0, $repCnt = count ( $rep ); $i < $repCnt; $i++ ) {
-    $id = $rep[$i]->getID ();
-    if ( ! empty ( $completed_ids[$id] ) )
+    $eid = $rep[$i]->getId ();
+    if ( ! empty ( $completed_ids[$eid] ) )
       continue;
-    $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $rep[$i]->getName (), $date,
+    $completed_ids[$eid] = 1;
+    $out .= process_event ( $eid, $rep[$i]->getName (), $date,
       $rep[$i]->getTime () );
   }
 }
