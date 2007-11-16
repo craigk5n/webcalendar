@@ -43,13 +43,25 @@
 use File::Find;
 
 sub find_pgm_files {
-# Skipping non WebCalendar plugins,
-# if the filename ends in .class or .php, add it to @files.
+# Skipping non Webcalendar plugins,
+# if the filename ends in .php add it to @files.
   push( @files, "$File::Find::name" )
-    if ( $_ =~ /\.(class|php)$/i
-    && $File::Find::dir !~ /(fckeditor|htmlarea|phpmailer)/i );
+    if ( $_ =~ /\.(php)$/i
+    && $File::Find::dir !~ /(templates|hKit|fckeditor|phpmailer|cache|classes\smarty|install)/i );
+
+# if the filename ends in .tpl, add it to @tfiles.
+  push( @tfiles, "$File::Find::name" )
+    if ( $_ =~ /\.(tpl)$/i
+    && $File::Find::dir =~ /templates/i );
 }
 
+sub find_install_files {
+# Doing install files last
+  push( @files, "$File::Find::name" )
+    if ( $_ =~ /\.(php)$/i
+    && $File::Find::dir =~ /install/i );
+}
+		
 $base_dir  = '..';
 $trans_dir = '../translations';
 
@@ -134,6 +146,23 @@ while ( <F> ) {
 }
 close( F );
 
+# read in the plugin base translation file
+if ( $plugin ne '' ) {
+  print "Reading plugin base translation file: $p_base_trans_file\n"
+    if ( $verbose );
+  open( F, $p_base_trans_file ) || die "Error opening $p_base_trans_file";
+  while ( <F> ) {
+    chop;
+    s/\r*$//g; # remove annoying CR
+    next if ( /^#/ );
+    if ( /\s*:\s*/ ) {
+      $abbrev = $`;
+      $base_trans{ $abbrev } = $';
+    }
+  }
+  close( F );
+}
+
 #
 # Now load the translation file we are going to update.
 #
@@ -164,6 +193,7 @@ if ( -f $infile ) {
       $trans{ $abbrev } = $temp;
     }
   }
+	close( F );
 }
 
 $trans{ 'charset' }   = '=' if ( !defined( $trans{ 'charset' } ) );
@@ -190,6 +220,7 @@ if ( $plugin ne '' ) {
       $webcaltrans{ $abbrev } = $';
     }
   }
+	close( F );
 }
 
 #
@@ -207,9 +238,9 @@ $header .=
   '# Translation last updated on '
   . sprintf( "%02d-%02d-%04d", $mon + 1, $day, $year + 1900 ) . "\n";
 
-print "\nFinding WebCalendar class and php files.\n\n" if ( $verbose );
+print "\nFinding Webcalendar class and php files.\n\n" if ( $verbose );
 find \&find_pgm_files, $base_dir;
-
+find \&find_install_files, $base_dir;
 #
 # Write new translation file.
 #
@@ -262,8 +293,67 @@ __month__ __yyyy__: ' . $trans{ '__month__ __yyyy__' } . '
 
 ';
 }
+#Process template files first
+foreach $f ( @tfiles ) {
+  open( F, $f ) || die "Error reading $f";
+  $f =~ s,^\.\.\/,,;
+  $pageHeader = "\n########################################\n# Page: $f\n#\n";
+  print "Searching $f\n" if ( $verbose );
+  %thispage = ();
+  while ( <F> ) {
+    $data = $_;
+    while ( $data =~ /__/ ) {
+      $data = $';
+      if ( $data =~ /__/ ) {
+			  $data = $';
+        $text = $tmp = $`;
+				if ( $tmp =~ /(.*)@/ ) {
+				  $text = $1;
+				}
+        if ( defined( $thispage{ $text } ) || $text eq 'charset' ) {
+          # already found
+        }
+        elsif ( defined( $text{ $text } ) ) {
+          if ( $show_dups ) {
+            print OUT $pageHeader
+             . "# \"$text\" previously defined (in $foundin{$text})\n";
+            $pageHeader = '';
+          }
+          $thispage{ $text } = 1;
+        }
+        else {
+          if ( !length( $trans{ $text } ) ) {
+            if ( $show_missing ) {
+              print OUT $pageHeader;
+              $pageHeader = '';
+              if ( length( $webcaltrans{ $text } ) ) {
+                print OUT "# \"$text\" defined in WebCalendar translation\n";
+              }
+              else {
+                print OUT "#\n# << MISSING >>\n# $text:\n";
+                print OUT "# English text: $base_trans{$text}\n#\n"
+                  if ( length( $base_trans{ $text } )
+                  && $base_trans{ $text } ne $text );
+              }
+            }
+            $notfound++ if ( !length( $webcaltrans{ $text } ) );
+          }
+          else {
+            print OUT $pageHeader;
+            $pageHeader = '';
+            printf OUT ( "%s: %s\n", $text, $trans{ $text } );
+          }
+          $foundin{ $text } = $f;
+          $text{ $text } = $thispage{ $text } = 1;
+        }
+			}
+    }
+  }
+  close( F );
+}
 
 foreach $f ( @files ) {
+
   open( F, $f ) || die "Error reading $f";
   $f =~ s,^\.\.\/,,;
   $pageHeader = "\n########################################\n# Page: $f\n#\n";
@@ -276,12 +366,12 @@ foreach $f ( @files ) {
       if ( $data =~ /['"]\s*[,\)]/ ) {
         $text = $`;
         if ( defined( $thispage{ $text } ) || $text eq 'charset' ) {
-# already found
+          # already found
         }
         elsif ( defined( $text{ $text } ) ) {
           if ( $show_dups ) {
             print OUT $pageHeader
-              . "# \"$text\" previously defined (in $foundin{$text})\n";
+             . "# \"$text\" previously defined (in $foundin{$text})\n";
             $pageHeader = '';
           }
           $thispage{ $text } = 1;
