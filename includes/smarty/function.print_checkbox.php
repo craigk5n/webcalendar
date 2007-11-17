@@ -19,18 +19,12 @@
  */
 function smarty_function_print_checkbox ( $params, &$smarty )
 {
-  static $No, $Yes;
-
+ 
   $name = $params['name'];
-	$value = ( ! empty ( $params['value'] ) ? $params['value'] : 'Y' );
+  $value = ( ! empty ( $params['value'] ) ? $params['value'] : 'Y' );
   $onchange = ( ! empty ( $params['onchange'] ) 
-	  ? ' onchange="' . $params['onchange'] . '"' : '' );
-	
-  if ( empty ( $No ) ) {
-    $No = translate ( 'No' );
-    $Yes = translate ( 'Yes' );
-  }
-
+    ? ' onchange="' . $params['onchange'] . '"' : '' );
+  
 
   if ( _WC_SCRIPT == 'admin.php' ) {
     $setting = getPref ( $name, 2 );
@@ -40,12 +34,18 @@ function smarty_function_print_checkbox ( $params, &$smarty )
     $setting = getPref ( $name );
     $name = 'pref_' . $name ;
   }
-	$checked = ( $setting == $params['value'] ? CHECKED : '' );
-  return '
-      <label><input type="checkbox" name="' . $name . '" value="' . $value
+  //getPref returns boolean values for Y/N by default
+  $checked = ( ($setting === $value) 
+    || ($setting && $value =='Y' ) ? CHECKED : '' );
+    
+  $ret = '<input type="checkbox" name="' . $name . '" value="' . $value
    . '" id="' . $name . '" ' . $checked 
-   . $onchange . ' />&nbsp;' . $params['label'] . '</label>';
+   . $onchange . ' />';
+   
+  if ( ! empty ( $params['label'] ) ) 
+    $ret =  '<label>' . $ret . '&nbsp;' . $params['label'] . '</label>';
 
+  return $ret;
 }
 
 /* vim: set expandtab: */

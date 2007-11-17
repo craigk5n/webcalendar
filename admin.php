@@ -6,11 +6,25 @@ if ( file_exists ( 'install/default_config.php' ) )
   include_once 'install/default_config.php';
 
 function save_pref( $prefs, $src) {
-  global $my_theme;
+  global $my_theme, $webcalConfig;
+  //We now use checkboxes instead of radis controls. If not checked, still
+  //need store 'N' in the database. We loop through $webcalConfig and look
+  //for Y/N settings and if missing from $prefs, we insert a 'N' value
+  if ( $src == 'post' ) {
+    while ( list ( $key, $value ) = each ( $webcalConfig ) ) {
+      if ( $value == 'Y' || $value == 'N' )  {
+//        echo "$key  $value   " . $prefs['admin_' . $key] . '<br>';
+        if ( empty ( $prefs['admin_' . $key] ) )
+          $prefs['admin_' . $key] = 'N';
+      }
+    }
+  }
+//  echo"*******<br>";
   while ( list ( $key, $value ) = each ( $prefs ) ) {
     if ( $src == 'post' ) {
       $setting = substr ( $key, 6 );
       $prefix = substr ( $key, 0, 6 );
+//echo "$key  $value <br>";
       if ( $key == 'currenttab')
         continue;
       // validate key name.  should start with "admin_" and not include
@@ -42,7 +56,7 @@ function save_pref( $prefs, $src) {
       }
     }
   }
-	generate_CSS ( true ); 
+  generate_CSS ( true ); 
 }
 
 $error = '';
@@ -80,7 +94,7 @@ $dir = 'themes';
 if ( @is_dir($dir) ) {
    if ($dh = opendir($dir)) {
        while (($file = readdir($dh)) !== false) {
-			   $k = str_replace ( '.php', '', $file );
+         $k = str_replace ( '.php', '', $file );
          if ( strpos ( $file, '_admin.php' ) ) {
            $themes[$k] = strtoupper( str_replace ( '_admin.php', '', $file ) );
         } else if ( strpos ( $file, '_pref.php' ) ) {
@@ -107,39 +121,40 @@ $smarty->assign ( 'views', loadViews ( '', '', true ) );
 
 $smarty->assign ( 'tabs_ar', array (
     'settings' => translate ( 'Settings' ),
+    'events' => translate ( 'Events' ),
     'groups' => translate ( 'Groups' ),
     'users' => translate ( 'User Settings' ),
-    'nonuser' => translate ( 'NonUser Calendars' ),
     'other' => translate ( 'Other' ),
     'email' => translate ( 'Email' ),
     'colors' => translate ( 'Colors' ) ) );
 
 if ( function_exists ( 'imagepng' ) || function_exists ( 'imagegif' )) 
-	$smarty->assign ( 'enable_gradients', true );
-		
+  $smarty->assign ( 'enable_gradients', true );
+    
 //determine if allow_url_fopen is enabled
 $allow_url_fopen = preg_match ( "/(On|1|true|yes)/i", ini_get ( 'allow_url_fopen' ) );
 
 $BodyX = 'onload="init_admin();showTab(\''. $currenttab . '\');"';
 build_header (array('admin.js'), '', $BodyX );
 if ( ! $error ) {
+  $smarty->assign ( 'userlist', $WC->User->getUsers () );
   $smarty->assign ( 'allow_url_fopen', 
-	  ( preg_match ( '/(On|1|true|yes)/i', ini_get ( 'allow_url_fopen' ) ) ) );
+    ( preg_match ( '/(On|1|true|yes)/i', ini_get ( 'allow_url_fopen' ) ) ) );
   $smarty->assign ( 'icons_dir_notice', ! @is_dir ( 'icons/' ) );
-	$smarty->assign ( 'languages', define_languages () );
-	$smarty->assign ( 'themes', $themes );
-	$smarty->assign ( 'can_set_timezone', 
-	  set_env ( 'TZ', getPref ('SERVER_TIMEZONE',2 ) ) );
+  $smarty->assign ( 'languages', define_languages () );
+  $smarty->assign ( 'themes', $themes );
+  $smarty->assign ( 'can_set_timezone', 
+    set_env ( 'TZ', getPref ('SERVER_TIMEZONE',2 ) ) );
   $smarty->assign ( 'currenttab', $currenttab );
-	$smarty->assign ( 'openS', sprintf ( $openStr, 'S' ) );
-	$smarty->assign ( 'openH', sprintf ( $openStr, 'H' ) );
-	$smarty->assign ( 'openT', sprintf ( $openStr, 'T' ) );
-	$smarty->assign ( 'time_format_array', 
-	  array ( '12'=>translate( '12 hour' ), '24'=>translate( '24 hour' ) ) );
-	$smarty->assign ( 'timed_evt_len_array', 
-	  array ('D'=>translate( 'Duration' ), 'E'=>translate( 'End Time' ) ) );
-	$smarty->assign ( 'top_bottom_array', 
-	  array ( 'Y'=>translate ( 'Top' ), 'N'=>translate ( 'Bottom' ) ) );
+  $smarty->assign ( 'openS', sprintf ( $openStr, 'S' ) );
+  $smarty->assign ( 'openH', sprintf ( $openStr, 'H' ) );
+  $smarty->assign ( 'openT', sprintf ( $openStr, 'T' ) );
+  $smarty->assign ( 'time_format_array', 
+    array ( '12'=>translate( '12 hour' ), '24'=>translate( '24 hour' ) ) );
+  $smarty->assign ( 'timed_evt_len_array', 
+    array ('D'=>translate( 'Duration' ), 'E'=>translate( 'End Time' ) ) );
+  $smarty->assign ( 'top_bottom_array', 
+    array ( 'Y'=>translate ( 'Top' ), 'N'=>translate ( 'Bottom' ) ) );
   $smarty->display ( 'admin.tpl' );
 
 } else {// if $error 
