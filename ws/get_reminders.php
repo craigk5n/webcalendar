@@ -10,16 +10,16 @@
  *  Some of this code was borrowed from send_reminders.php.
  *
  *  This functionality works somewhat independent of the email-based
- *  send_reminders.php script.  If the end user intends to use
+ *  send_reminders.php script. If the end user intends to use
  *  client-side reminders, they should set "Event Reminders" to "No"
  *  in the "Email" section on the Prefernces page.
  *
  *  This is read-only for the client side, so the client must
  *  keep track of whether or not they have displayed the reminder
- *  to the user.  (No where in the database will it be recorded that
+ *  to the user. (No where in the database will it be recorded that
  *  the user received a reminder through this functionality.)
  *
- *  Client apps must use the same authentication as the web browser.  If
+ *  Client apps must use the same authentication as the web browser. If
  *  WebCalendar is setup to use web-based authentication, then the login.php
  *  found in this directory should be used to obtain a session cookie.
  */
@@ -116,7 +116,7 @@ function process_reminder ( $eid, $event_date, $remind_time ) {
 }
 
 /*
- * Process an event for a single day.  Check to see if it has a reminder,
+ * Process an event for a single day. Check to see if it has a reminder,
  * when it needs to be sent and when the last time it was sent.
  */
 function process_event ( $eid, $name, $event_date, $event_time ) {
@@ -181,8 +181,8 @@ function process_event ( $eid, $name, $event_date, $event_time ) {
 }
 
 $out .= '
-<!-- ' . str_replace ( 'XXX', array ( $user, $login ),
-  translate ( 'Reminders for user XXX, login XXX.' ) ) . ' -->
+<!-- ' . str_replace ( array ( 'XXX', 'YYY' ), array ( $user, $login ),
+  translate ( 'Reminders for user XXX, login YYY.' ) ) . ' -->
 ';
 
 $startdate = time (); // today

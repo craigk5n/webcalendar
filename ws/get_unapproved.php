@@ -83,7 +83,7 @@ if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG )
 // Send output now...
 echo $out;
 
-/* Process an event.  For unapproved events, we may find that the same event is
+/* Process an event. For unapproved events, we may find that the same event is
  * listed more than once (if two participants are not yet approved.)
  * In that case, we send the event just once since the participant list
  * (with status) is sent with the event.
