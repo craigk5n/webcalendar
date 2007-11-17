@@ -2,7 +2,7 @@
 /* Presents a HTML form to add or edit a report.
  * 
  * Input Parameters:
- * - <var>report_id</var> (optional) - the report id of the report to edit.  If
+ * - <var>report_id</var> (optional) - the report id of the report to edit. If
  *   blank, user is adding a new report.
  * - <var>public</var> (optional) - If set to '1' and user is an admin user,
  *   then we are creating a report for the public user.

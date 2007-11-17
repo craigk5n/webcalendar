@@ -193,7 +193,6 @@ if ( $REQUEST_METHOD == 'POST' ) {
   } else {
     die_miserable_death ( 'Unsupported type' ); // programmer error
   }
-
   if ( ! empty ( $error ) ) {
     build_header ();
     echo print_error ( $error );

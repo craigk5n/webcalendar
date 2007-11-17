@@ -62,7 +62,7 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
         translate ( 'Email address XXX already exists', true ) );
   }
 } elseif ( $page == 'minitask' ) {
-  $name = ( ! empty ( $name ) ? $name : 0 );
+  $name = ( empty ( $name ) ? 0 : $name );
   require_once 'includes/classes/Event.class.php';
   require_once 'includes/classes/RptEvent.class.php';
 	  require_once 'includes/gradient.php';
