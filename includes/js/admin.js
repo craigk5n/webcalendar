@@ -109,39 +109,39 @@ function valid_form ( form ) {
 // Gets called on page load and when user changes setting for
 // "Disable popup".
 function popup_handler () {
-	$('popup').showIf(document.prefform.admin_DISABLE_POPUPS[1].checked);
+	$('popup').showIf(document.prefform.admin_DISABLE_POPUPS.checked);
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow external users".
 function eu_handler () {
-	$('eu').showIf(document.prefform.admin_ALLOW_EXTERNAL_USERS[0].checked);
+	$('eu').showIf(document.prefform.admin_ALLOW_EXTERNAL_USERS.checked);
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow self registration".
 function sr_handler () {
-	$('sr').showIf(document.prefform.admin_ALLOW_SELF_REGISTRATION[0].checked);
+	$('sr').showIf(document.prefform.admin_ALLOW_SELF_REGISTRATION.checked);
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow attachments".
 function attach_handler () {
-	$('attach').showIf(document.prefform.admin_ALLOW_ATTACH[0].checked);
+	$('attach').showIf(document.prefform.admin_ALLOW_ATTACH.checked);
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow comments".
 function comment_handler () {
-	$('comment').showIf(document.prefform.admin_ALLOW_COMMENTS[0].checked);
+	$('comment').showIf(document.prefform.admin_ALLOW_COMMENTS.checked);
 }
 
 // Gets called on page load and when user changes setting for
 // "Email enabled".
 function email_handler () {
-	var sm = document.prefform.admin_SEND_EMAIL[0].checked;
+	var sm = document.prefform.admin_SEND_EMAIL.checked;
 	var em = document.prefform.admin_EMAIL_MAILER.selectedIndex;
-  var sa = document.prefform.admin_SMTP_AUTH[0].checked;
+  var sa = document.prefform.admin_SMTP_AUTH.checked;
 	$('em').showIf(sm);
 	$('em_smtp').showIf(sm && em == 0);
 	$('em_auth').showIf(sm && em == 0 && sa);
@@ -149,9 +149,9 @@ function email_handler () {
 
 var tabs = new Array();
 tabs[1] = "settings";
-tabs[2] = "groups";
-tabs[3] = "users";
-tabs[4] = "nonuser";
+tabs[2] = "events";
+tabs[3] = "groups";
+tabs[4] = "users";
 tabs[5] = "other";
 tabs[6] = "email";
 tabs[7] = "colors";
