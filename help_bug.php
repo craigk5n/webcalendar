@@ -41,7 +41,7 @@ if ( empty ( $HTTP_USER_AGENT ) )
     'user_inc' => _WC_USER_INC,
     );
   $res = dbi_execute ( 'SELECT cal_setting, cal_value
-  FROM webcal_config ORDER BY cal_setting' );
+    FROM webcal_config ORDER BY cal_setting' );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $tmp_arr[ $row[0] ] = $row[1];

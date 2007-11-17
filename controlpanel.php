@@ -14,20 +14,21 @@
  *
  * Security:
  * This page doesn't really need securing since it just passes info to the
- * web start app.  The web start app then does its own authenticating since
+ * web start app. The web start app then does its own authenticating since
  * the web services require authentication to do anything.
  *
  **************************************************************************/
 
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class.php';
 require_once 'includes/classes/Event.class.php';
 require_once 'includes/classes/RptEvent.class.php';
 
 $WC =& new WebCalendar ( __FILE__ );
 
-include 'includes/translate.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
+include 'includes/formvars.php';
 include 'includes/functions.php';
 
 $WC->initializeFirstPhase ();

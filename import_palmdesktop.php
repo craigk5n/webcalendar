@@ -12,8 +12,10 @@ function parse_palmdesktop ( $file, $exc_private = 1 ) {
   return $data;
 }
 
-// Delete all Palm Events for $login to clear any events deleted in the palm.
-// Return 1 if successful.
+/* Delete all Palm Events for $login to clear any events deleted in the palm.
+ *
+ * @return 1 if successful.
+ */
 function delete_palm_events ( $login ) {
   global $WC;
   $res = dbi_execute ( 'SELECT cal_id FROM webcal_import_data
@@ -29,6 +31,7 @@ function delete_palm_events ( $login ) {
 
 function ParseLine ( $line ) {
   global $calUser;
+
   list (
     $Entry['RecordID'],
     $Entry['StartTime'],
@@ -50,7 +53,7 @@ function ParseLine ( $line ) {
     $WeekNum,
     ) = explode ( '|', $line );
 
-  // Adjust times to users Timezone if not Untimed
+  // Adjust times to users Timezone if not Untimed.
   if ( isset ( $Entry['Untimed'] ) && $Entry['Untimed'] == 0 ) {
     $Entry['StartTime'] -= date ( 'Z', $Entry['StartTime'] );
     $Entry['EndTime'] -= date ( 'Z', $Entry['EndTime'] );
@@ -58,8 +61,10 @@ function ParseLine ( $line ) {
 
   if ( $Exceptions )
     $Entry['Repeat']['Exceptions'] = explode ( ': ', $Exceptions );
+
   if ( ( $WeekNum == '5' ) && ( $Entry['Repeat']['Interval'] == '3' ) )
     $Entry['Repeat']['Interval'] = '6';
+
   return $Entry;
 }
 

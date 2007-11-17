@@ -70,7 +70,7 @@ if ( $WC->isNonuserAdmin() ) {
   }
   /*
  This Activity Log link shows ALL activity for ALL events, so you really need
- to be an admin user for this.  Enabling "Activity Log" in UAC just gives you
+ to be an admin user for this. Enabling "Activity Log" in UAC just gives you
  access to the log for your _own_ events or other events you have access to.
  */
   if ( $WC->isAdmin() && access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) {

@@ -56,7 +56,7 @@ if ( $d = dir ( $icon_path ) ) {
 <?php
   ob_start ();
   echo '
-    <table align="center" border="0">
+    <table align="center" border="0" summary="">
       <tr>
         <td colspan="8" align="center"><h2>'
    . translate ( 'Current Icons on Server' ) . '</h2></td>
