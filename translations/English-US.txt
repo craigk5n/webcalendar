@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-09-2007
+# Translation last updated on 11-16-2007
 
 
 ################################################################################
@@ -191,8 +191,6 @@ Include add event link in views: Include add event link in views
 lunar-help: If enabled, will display small icons representing the lunar phases each month
 Display Lunar Phases in month view: Display Lunar Phases in month view
 Restrictions: Restrictions
-allow-view-other-help: Specifies whether one user may view another user&#39;s calendar.
-Allow viewing other user&#39;s calendars: Allow viewing other user&#39;s calendars
 require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled). Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 Require event approvals: Require event approvals
 display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
@@ -235,16 +233,24 @@ remember-last-login-help: When enabled, the user&#39;s login will be filled in f
 Remember last login: Remember last login
 summary_length-help: Maximum length of Brief Description in calendar views
 Brief Description Length: Brief Description Length
+groups-enabled-help: Enables group support, allowing users to select users by groups.
+Groups enabled: Groups enabled
+user-sees-his-group-help: If enabled, users will not see calendar users that are not in at least one of their groups.
+User sees only his groups: User sees only his groups
+allow-view-other-help: Specifies whether one user may view another user&#39;s calendar.
+Allow viewing other user&#39;s calendars: Allow viewing other user&#39;s calendars
 user_sort-help: Determines sort order for User, Nonuser lists
 User Sort Order: User Sort Order
 Lastname, Firstname: Lastname, Firstname
 Firstname, Lastname: Firstname, Lastname
 extended_user-help: Use extended user settings
 Allow extended user settings: Allow extended user settings
-groups-enabled-help: Enables group support, allowing users to select users by groups.
-Groups enabled: Groups enabled
-user-sees-his-group-help: If enabled, users will not see calendar users that are not in at least one of their groups.
-User sees only his groups: User sees only his groups
+allow-external-users-help: Specifies whether a non-calendar user can be added to an event. This allows non-calendar users to be listed as event participants.
+Allow external users: Allow external users
+external-can-receive-notification-help: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user&#39;s email address is provided).
+External users can receive email notifications: External users can receive email notifications
+external-can-receive-reminder-help: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user&#39;s email address is provided).
+External users can receive email reminders: External users can receive email reminders
 nonuser-enabled-help: If enabled, admins will have the option to add nonuser calendars
 Nonuser enabled: Nonuser Calendars Enabled
 nonuser-list-help: Where to display the nonuser calendars in the participant list
@@ -265,12 +271,6 @@ display-tasks-help: Display small task window on month and day calendar
 Display small task list: Display small task list
 display-tasks-in-grid-help: Display tasks in calendars along with events
 Display tasks in Calendars: Display tasks in Calendars
-allow-external-users-help: Specifies whether a non-calendar user can be added to an event. This allows non-calendar users to be listed as event participants.
-Allow external users: Allow external users
-external-can-receive-notification-help: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user&#39;s email address is provided).
-External users can receive email notifications: External users can receive email notifications
-external-can-receive-reminder-help: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user&#39;s email address is provided).
-External users can receive email reminders: External users can receive email reminders
 allow-self-registration-help: Permit new users to register themselves
 Allow self-registration: Allow self-registration
 use-blacklist-help: Limit access to WebCalendar functions based on IP address
@@ -790,6 +790,12 @@ Show activity log: Show activity log
 Export this entry to: Export this entry to
 
 ########################################
+# Page: templates/view_t.tpl
+#
+Previous: Previous
+Next: Next
+
+########################################
 # Page: access.php
 #
 DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
@@ -817,6 +823,7 @@ Error adding event XXX: Error adding event XXX
 #
 Year: Year
 Settings: Settings
+User Settings: User Settings
 NonUser Calendars: NonUser Calendars
 Other: Other
 Email: Email
@@ -932,12 +939,6 @@ File type is not supported: File type is not supported
 # Page: controlpanel.php
 #
 Control Panel: Control Panel
-
-########################################
-# Page: datesel_bak.php
-#
-Next: Next
-Previous: Previous
 
 ########################################
 # Page: del_entry.php
@@ -1287,6 +1288,11 @@ No matches found: No matches found
 New Search: New Search
 
 ########################################
+# Page: select_user.php
+#
+View Another Users Calendar: View Another Users Calendar
+
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories: You have not added any categories
@@ -1319,7 +1325,7 @@ Needs-Action: Needs-Action
 by: by
 
 ########################################
-# Page: view_l_bak.php
+# Page: view_t.php
 #
 No users for this view: No users for this view
 
@@ -1511,6 +1517,15 @@ New Moon: New Moon
 Full Moon: Full Moon
 
 ########################################
+# Page: includes/trailer.php
+#
+Add New Entry: Add New Entry
+Current User: Current User
+Back to My Calendar: Back to My Calendar
+Go to: Go to
+Manage calendar of: Manage calendar of
+
+########################################
 # Page: includes/translate.php
 #
 Browser Language Not Found: Browser Language Not Found
@@ -1616,7 +1631,7 @@ recipients_failed: SMTP Error: The following recipients failed:
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: Enter Characters Seen in Graphic
-Enter the correct letters and numbers...: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read.
+Enter the correct letters and numbers from the image into the text box...: Enter the correct letters and numbers from the image into the text box...
 Challenge/Response: Challenge/Response
 
 ########################################
