@@ -25,6 +25,7 @@
  * - require_once 'includes/classes/RptEvent.class.php';
  * - include_once 'includes/assert.php';
  * - include_once 'includes/config.php';
+ * - include_once 'includes/formvars.php';
  * - include_once 'includes/dbi4php.php';
  * - include_once 'includes/functions.php';
  * - include_once 'includes/site_extras.php';
@@ -51,6 +52,7 @@ $WC =& new WebCalendar ( __FILE__ );
 include_once 'includes/assert.php';
 include_once 'includes/config.php';
 include_once 'includes/dbi4php.php';
+include_once 'includes/formvars.php';
 include_once 'includes/functions.php';
 
 $WC->initializeFirstPhase();
@@ -71,3 +73,4 @@ if ( ! access_can_view_page () )
  send_to_preferred_view ();
 	
 ?>
+

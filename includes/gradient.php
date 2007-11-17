@@ -319,7 +319,7 @@ function  rgb2hsl ( $rgb ) {
   $G = ( hexdec (substr ( $rgb,2,2) ) / 255 );
   $B = ( hexdec (substr ( $rgb,4,2) ) / 255 );
  
-  $Min = min( $R, $G, $B );    //Min. value of RGB
+  $Min = min ( $R, $G, $B );   //Min. value of RGB
   $Max = max( $R, $G, $B );    //Max. value of RGB
   $deltaMax = $Max - $Min;     //Delta RGB value  
   $L = ( $Max + $Min ) / 2;
@@ -374,9 +374,9 @@ function hsl2rgb ( $hsl ){
      $G = 255 * Hue_2_RGB( $var_1, $var_2, $hsl[0] );
      $B = 255 * Hue_2_RGB( $var_1, $var_2, $hsl[0] - ( 1 / 3 ) );
   }
-  $R = sprintf("%02X",round($R));
-  $G = sprintf("%02X",round($G));
-  $B = sprintf("%02X",round($B));
+  $R = sprintf ( "%02X",round ( $R ) );
+  $G = sprintf ( "%02X",round ( $G ) );
+  $B = sprintf ( "%02X",round ( $B ) );
 
   $rgb = '#' . $R . $G . $B;
 
