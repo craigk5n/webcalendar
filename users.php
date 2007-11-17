@@ -6,8 +6,7 @@
  1. users.php
   - contains the tabs
   - lists users
-  - has an iframe for adding/editing users
-  - include statements for groups.php and nonusers.php
+  - has an iframe for adding/editing users/nonusers/remotes
  2. edit_user.php
   - the contents of the iframe (i.e. a form for adding/editing users)
  3. edit_user_handler.php
