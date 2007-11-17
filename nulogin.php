@@ -53,9 +53,11 @@ if ( get_magic_quotes_gpc () )
   $login = stripslashes ( $login );
 
 $login = trim ( $login );
+$badLoginStr = translate ( 'Illegal characters in login XXX.' );
+
 if ( $login != addslashes ( $login ) )
-  die_miserable_death ( translate ( 'Illegal characters in login' )
-     . ' <tt>' . htmlentities ( $login ) . '</tt>.' );
+  die_miserable_death (
+    str_replace ( 'XXX', htmlentities ( $login ), $badLoginStr ) );
 
 // Allow proper login using NUC name
 $encoded_login = $WC->encode_string ( $login . '|nonuser' );

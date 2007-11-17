@@ -30,15 +30,15 @@
  *   - days: number of days ahead to look for events
  *   - cat_id: specify a category id to filter on
  *   - user: login name of calendar to display (instead of public
- *     user), if allowed by System Settings.  You must have the
+ *     user), if allowed by System Settings. You must have the
  *     following System Settings configured for this:
  *       Allow viewing other user's calendars: Yes
  *       Public access can view others: Yes
  *   - tasks: specify a value of '1' to show just tasks (if permitted
- *       by system settings and config settings below).  This will
+ *       by system settings and config settings below). This will
  *       show only tasks and not show any events.
  *   - showTitle (boolean, set to 1 or 0) whether the page title is shown or not
- *   - upcoming_title: The page title to print.  There is a default but this overrides it.
+ *   - upcoming_title: The page title to print. There is a default but this overrides it.
  *     Of course it will only be printed if showTitle so indicates.
  *   - showMore (boolean, set to 1 or 0) whether "more" at the end is shown or not,
  *         with a link to your main calendar page
@@ -46,7 +46,7 @@
  *
  * if calling as an include file can pre-set these variables in your PHP file
  * before including upcoming.php (you can't use URL parameters when calling 
- * an include file).  Remember that after debugging you can use @include to suppress
+ * an include file). Remember that after debugging you can use @include to suppress
  * PHP warnings.
  *     $numDays               default 30
  *     $cat_id                default ALL
@@ -60,7 +60,7 @@
  *     $showPopups bool       default true
  *     $hcalendar_output bool default false
  *
- * To do: Cache results, used cached results mostly, only update occasionally.  This
+ * To do: Cache results, used cached results mostly, only update occasionally. This
  * is pretty simple to do and greatly speeds up the include file if you have a large
  * calendar.
  *
@@ -73,7 +73,6 @@
 // clients
 if ( empty( $hcalendar_output ) ) 
   $hcalendar_output = false;
-
 
 //only go through the requires & includes & function declarations once, 
 // in case upcoming.php is included twice on one page
@@ -221,7 +220,7 @@ function print_upcoming_event ( $e, $date ) {
 
 /*
  *
- * Configurable settings for this file.  You may change the settings
+ * Configurable settings for this file. You may change the settings
  * below to change the default settings.
  * This settings will likely move into the System Settings in the
  * web admin interface in a future release.
@@ -265,8 +264,8 @@ if (empty($maxEvents)) $maxEvents = 10;
 
 // Should we include tasks?
 // (Only relavant if tasks are enabled in system settings AND enabled for
-// display in calendar view for this user.  So, this is really
-// a way to disable tasks from showing up.  It will not display
+// display in calendar view for this user. So, this is really
+// a way to disable tasks from showing up. It will not display
 // them if specified user has not enabled "Display tasks in Calendars"
 // in their preferences.)
 if ( empty ( $showTasks ) ) $showTasks = false;
@@ -344,7 +343,6 @@ $get_unapproved = ( getPref ( 'DISPLAY_UNAPPROVED', 2 ) );
 if ( $load_layers ) {
   $layers = loadLayers ( $username );
 }
-
 // Calculate date range
 $date = $WC->getValue ( 'date', '-?[0-9]+', true );
 if ( empty ( $date ) || strlen ( $date ) != 8 ) {
@@ -354,7 +352,6 @@ if ( empty ( $date ) || strlen ( $date ) != 8 ) {
 $thisyear = substr ( $date, 0, 4 );
 $thismonth = substr ( $date, 4, 2 );
 $thisday = substr ( $date, 6, 2 );
-
 $startDate = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 
 $x = $WC->getValue ( 'days', '-?[0-9]+', true );
@@ -396,7 +393,6 @@ if ( getPref ( 'DISPLAY_TASKS_IN_GRID' ) && $showTasks ) {
 if ( preg_match ( $name_of_this_file, $_SERVER['PHP_SELF'] ) ) { 
 // Print header without custom header and no style sheet.
 echo send_doctype ( generate_application_name () );
-
 ?>
 <!-- This style sheet is here mostly to make it easier for others
      to customize the appearance of the page.
@@ -542,6 +538,5 @@ if ( preg_match ( $name_of_this_file, $_SERVER['PHP_SELF'] ) ) {
 
 //restore previous working directory before exit
 if (strlen($save_current_working_dir)) chdir($save_current_working_dir);
-
 
 ?>

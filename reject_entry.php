@@ -18,7 +18,7 @@ if ( ! empty ( $_POST ) ) {
 
    build_header ();
    echo "<form action=\"reject_entry.php$q_string\" method=\"post\" name=\"add_comments\" >\n";
-   echo "<table border=\"0\" cellspacing=\"5\">\n" .
+   echo '<table border="0" cellspacing="5" summary="">' . "\n" .
      "<tr><td align=\"center\" valign=\"bottom\"><h3>" . 
      translate ( 'Additional Comments (optional)' ) . "</h3></td><tr>\n";
    echo "<tr><td align=\"center\">" .
@@ -53,7 +53,7 @@ if ( empty ( $error ) && $eid > 0 ) {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) )
       $partlogin[] = $row[0];
-    dbi_free_result($res);
+    dbi_free_result ( $res );
   }
 
   // Get the name of the event
@@ -89,7 +89,7 @@ if ( empty ( $error ) && $eid > 0 ) {
       }
       $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
       translate( 'An appointment has been rejected by' ) .
-      ' ' . $login_fullname .  ".\n\n" .
+      ' ' . $login_fullname . ".\n\n" .
       translate( 'The subject was' ) . ' "' . $name . " \"\n" .
       translate( 'The description is' ) . ' "' . $description . "\"\n" .
       translate( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .
@@ -122,7 +122,7 @@ set_env ( 'TZ', getPref ( 'TIMEZONE' ) );
 if ( empty ( $error ) && empty ( $mailerError ) ) {
   if ( ! empty ( $ret ) && $ret == 'listall' )
     do_redirect ( 'list_unapproved.php' );
-  else if (  ! empty ( $ret ) &&  $ret == 'list' )
+  else if ( ! empty ( $ret ) &&  $ret == 'list' )
     do_redirect ( "list_unapproved.php?user=$app_user" );
   else
     do_redirect ( $view_type . ".php?eid=$eid&amp;user=$app_user" );

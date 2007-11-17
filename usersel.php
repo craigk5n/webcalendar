@@ -62,7 +62,7 @@ echo '
     </script>
     <center>
       <form action="#" name="userselform">
-        <table style="borderh: 0; width: 100%;">
+        <table style="border: 0; width: 100%;" summary="">
           <tr>
             <td class="alignT">
               <b>' . translate ( 'Users' ) . ':</b><br />

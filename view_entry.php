@@ -102,7 +102,7 @@ if ( empty ( $error ) ) {
   // Is this user a participant or the creator of the event?
   $is_my_event = $item->isMine ( $WC->userLoginId() );
 
-  // check UAC
+  // Check UAC.
   $euser = ( empty ( $user ) ? ( $is_my_event ? 
     $WC->loginId() : $item->getOwner () ) : $user );
   $time_only = 'N';
@@ -435,7 +435,7 @@ if ( ! _WC_SINGLE_USER && $show_participants ) {
 
 if ( empty ( $event_status ) ) {
   // this only happens when an admin views a deleted event that he is
-  // not a participant for.  Set to $event_status to "D" just to get
+  // not a participant for. Set to $event_status to "D" just to get
   // rid of all the edit/delete links below.
   $event_status = 'D';
 }
