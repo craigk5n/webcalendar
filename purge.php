@@ -10,7 +10,7 @@
  *
  * Security:
  * Events will only be deleted if they were created by the selected
- * user.  Events where the user was a participant (but not did not
+ * user. Events where the user was a participant (but not did not
  * create) will remain unchanged.
  *
  */

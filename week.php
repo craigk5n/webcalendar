@@ -114,13 +114,14 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
         $rowspan_arr[$j] = 0;
       }
       $rowspan--;
-    } else if ( ! empty ( $rowspan_arr[$j] ) && $rowspan_arr[$j] > 1 ) {
-      $rowspan = $rowspan_arr[$j];
+    } else
+    if ( ! empty ( $rowspan_arr[$j] ) && $rowspan_arr[$j] > 1 ) {
       $last_row = $j;
+      $rowspan = $rowspan_arr[$j];
     }
   }
 
-  // now save the output...
+  // Now save the output...
   if ( ! empty ( $hour_arr[9999] ) && strlen ( $hour_arr[9999] ) ) {
     $untimed[$i] = $hour_arr[9999];
     $untimed_found = true;

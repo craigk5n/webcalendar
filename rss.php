@@ -27,12 +27,11 @@
  *       repeats=0 do not output repeating events (default)
  *       repeats=1 outputs repeating events 
  *       repeats=2 outputs repeating events but suppresses display of
- *           2nd & subsequent occurences of daily events
- *   - user: login name of calendar to display (instead of public
- *     user).  You must have the
- *     following System Settings configured for this:
- *       Allow viewing other user's calendars: Yes
- *       Public access can view others: Yes
+ *                 2nd & subsequent occurences of daily events
+ *   - user: login name of calendar to display (instead of public user).
+ *       You must have the following System Settings configured for this:
+ *         Allow viewing other user's calendars: Yes
+ *         Public access can view others: Yes
  *   - showdate: put the date and time (if specified in the title 
  *       of the item) in the title
  *
@@ -75,7 +74,6 @@ include_once 'includes/xcal.php';
 
 
 $WC->setLanguage();
-
 
 if ( ! getPref ( 'RSS_ENABLED' ) ) {
   header ( 'Content-Type: text/plain' );

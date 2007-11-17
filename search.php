@@ -27,7 +27,7 @@ echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
     <form action="search_handler.php" method="post" id="searchformentry" '
  . 'name="searchformentry" style="margin-left: 13px;">
       <input type="hidden" name="advanced" value="' . $show_advanced . '" />
-      <table><tr><td><label for="keywordsadv">' . translate ( 'Keywords' )
+      <table summary=""><tr><td><label for="keywordsadv">' . translate ( 'Keywords' )
  . ':&nbsp;</label></td>
         <td><input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
         <input type="submit" value="' . $searchStr . '" /></td></tr>';
@@ -57,7 +57,7 @@ if ( is_array ( $categories ) && $show_advanced ) {
           </td>
         </tr>';
 }
-if (  count ( $site_extras ) > 0 ) {
+if ( count ( $site_extras ) > 0 ) {
   echo '
         <tr id="extrafilter" style="visibility:' . $avdStyle[$show_advanced] 
    . ';">
@@ -67,7 +67,7 @@ if (  count ( $site_extras ) > 0 ) {
           <td><input type="checkbox" name="extra_filter" value="Y" />
           </td></tr>';
 }
-if (  $show_advanced ) {
+if ( $show_advanced ) {
   $dateYmd = date ( 'Ymd' );
   echo '
         <tr id="datefilter" style="visibility:' . $avdStyle[$show_advanced] 

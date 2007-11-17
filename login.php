@@ -56,7 +56,7 @@ if ( $remember_last_login && empty ( $login ) ) {
 
 $WC->setLanguage();
 
-// Look for action=logout
+// Look for action=logout.
 $logout = false;
 $action = $WC->getGET ( 'action' );
 if ( ! empty ( $action ) && $action == 'logout' ) {
@@ -64,8 +64,9 @@ if ( ! empty ( $action ) && $action == 'logout' ) {
   $return_path = '';
   SetCookie ( 'webcalendar_login', '', 0 );
   SetCookie ( 'webcalendar_last_view', '', 0 );
-} else if (  empty ( $return_path ) ) {
-  // see if a return path was set
+} else
+if ( empty ( $return_path ) ) {
+  // See if a return path was set.
   $return_path = get_last_view();
   if ( ! empty ( $return_path ) ) 
     SetCookie ( 'webcalendar_last_view', '', 0 );
