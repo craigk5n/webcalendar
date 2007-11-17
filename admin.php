@@ -108,6 +108,7 @@ $smarty->assign ( 'views', loadViews ( '', '', true ) );
 $smarty->assign ( 'tabs_ar', array (
     'settings' => translate ( 'Settings' ),
     'groups' => translate ( 'Groups' ),
+    'users' => translate ( 'User Settings' ),
     'nonuser' => translate ( 'NonUser Calendars' ),
     'other' => translate ( 'Other' ),
     'email' => translate ( 'Email' ),

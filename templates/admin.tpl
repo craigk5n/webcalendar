@@ -252,10 +252,6 @@
 <fieldset>
  <legend>__Restrictions__</legend>
  <table width="100%">
- <tr><td class="tooltip" title="__allow-view-other-help@T__">
-  __Allow viewing other user&#39;s calendars__:</td><td>
-  {print_radio variable='ALLOW_VIEW_OTHER'}
- </td></tr>
  <tr><td class="tooltip" title="__require-approvals-help@T__">
   __Require event approvals__:</td><td>
   {print_radio variable='REQUIRE_APPROVALS'}
@@ -353,6 +349,32 @@
   __Brief Description Length__:</td><td>
   <input type="text" size="3" name="admin_SUMMARY_LENGTH" value="{$s.SUMMARY_LENGTH}" />
  </td></tr>
+</table>
+</fieldset>
+</div>
+<!-- END SETTINGS -->
+
+<!-- BEGIN GROUPS -->
+<div id="tabscontent_groups">
+<table width="100%">
+ <tr><td class="tooltip" title="__groups-enabled-help@T__">
+  __Groups enabled__:</td><td>
+  {print_radio variable='GROUPS_ENABLED'}
+ </td></tr>
+ <tr><td class="tooltip" title="__user-sees-his-group-help@T__">
+  __User sees only his groups__:</td><td>
+  {print_radio variable='USER_SEES_ONLY_HIS_GROUPS'}
+ </td></tr>
+</table>
+</div>
+
+<!-- BEGIN USER SETTINGS-->
+<div id="tabscontent_users">
+<table width="100%">
+ <tr><td class="tooltip" title="__allow-view-other-help@T__">
+  __Allow viewing other user&#39;s calendars__:</td><td>
+  {print_radio variable='ALLOW_VIEW_OTHER'}
+ </td></tr>
  <tr><td class="tooltip" title="__user_sort-help@T__">
   <label for="admin_USER_SORT_ORDER">__User Sort Order__:</label></td><td>
   <select name="admin_USER_SORT_ORDER" id="admin_USER_SORT_ORDER">
@@ -370,22 +392,22 @@
   __Allow extended user settings__:</td><td>
   {print_radio variable='EXTENDED_USER'}
  </td></tr>
-</table>
-</fieldset>
-</div>
-<!-- END SETTINGS -->
+<!-- BEGIN EXT PARTICIPANTS -->
 
-<!-- BEGIN GROUPS -->
-<div id="tabscontent_groups">
-<table width="100%">
- <tr><td class="tooltip" title="__groups-enabled-help@T__">
-  __Groups enabled__:</td><td>
-  {print_radio variable='GROUPS_ENABLED'}
+ <tr><td class="tooltip" title="__allow-external-users-help@T__">
+  __Allow external users__:</td><td>
+  {print_radio variable='ALLOW_EXTERNAL_USERS' onclick='eu_handler()'}
  </td></tr>
- <tr><td class="tooltip" title="__user-sees-his-group-help@T__">
-  __User sees only his groups__:</td><td>
-  {print_radio variable='USER_SEES_ONLY_HIS_GROUPS'}
+ <tbody id="eu">
+ <tr><td class="tooltip" title="__external-can-receive-notification-help@T__">
+  __External users can receive email notifications@L4__:</td><td>
+  {print_radio variable='EXTERNAL_NOTIFICATIONS'}
  </td></tr>
+ <tr><td class="tooltip" title="__external-can-receive-reminder-help@T__">
+  __External users can receive email reminders@L4__:</td><td>
+  {print_radio variable='EXTERNAL_REMINDERS'}
+ </td></tr>
+ </tbody>
 </table>
 </div>
 
@@ -452,22 +474,6 @@
   {print_radio variable='DISPLAY_TASKS_IN_GRID'}
  </td></tr>
 
-<!-- BEGIN EXT PARTICIPANTS -->
-
- <tr><td class="tooltip" title="__allow-external-users-help@T__">
-  __Allow external users__:</td><td>
-  {print_radio variable='ALLOW_EXTERNAL_USERS' onclick='eu_handler()'}
- </td></tr>
- <tbody id="eu">
- <tr><td class="tooltip" title="__external-can-receive-notification-help@T__">
-  __External users can receive email notifications@L4__:</td><td>
-  {print_radio variable='EXTERNAL_NOTIFICATIONS'}
- </td></tr>
- <tr><td class="tooltip" title="__external-can-receive-reminder-help@T__">
-  __External users can receive email reminders@L4__:</td><td>
-  {print_radio variable='EXTERNAL_REMINDERS'}
- </td></tr>
- </tbody>
  <!-- BEGIN SELF REGISTRATION -->
 
  <tr><td class="tooltip" title="__allow-self-registration-help@T__">

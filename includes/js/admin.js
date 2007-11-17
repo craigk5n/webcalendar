@@ -149,11 +149,12 @@ function email_handler () {
 
 var tabs = new Array();
 tabs[1] = "settings";
-tabs[4] = "groups";
-tabs[5] = "nonuser";
-tabs[6] = "other";
-tabs[8] = "email";
-tabs[9] = "colors";
+tabs[2] = "groups";
+tabs[3] = "users";
+tabs[4] = "nonuser";
+tabs[5] = "other";
+tabs[6] = "email";
+tabs[7] = "colors";
 //]]> -->
 
 function showPreview() {

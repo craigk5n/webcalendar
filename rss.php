@@ -112,7 +112,7 @@ $maxEvents = 10;
 // Login of calendar user to use
 // '__public__' is the login name for the public user
 //TODO Fix this for NUCs
-$username = '__public__';
+$userID = '__public__';
 
 // Allow the URL to override the user setting such as
 // "rss.php?user=craig"
@@ -136,16 +136,12 @@ $show_daily_events_only_once = false;
 
 // End configurable settings...
 
-// Set for use elsewhere as a global
-//TODO
-$login = $username;
-
 if ( $allow_user_override ) {
-  $u = $WC->getValue ( 'user', "[A-Za-z0-9_\.=@,\-]+", true );
+  $u = $WC->getValue ( 'user', "[0-9]+", true );
   if ( ! empty ( $u ) ) {
-    $username = $u;
+    $userID = $u;
 	//TODO
-    $login = $u;
+    $WC->_login = $u;
     // We also set $login since some functions assume that it is set.
   }
 }
@@ -177,7 +173,7 @@ if ( $WC->catId() ) {
 }
 
 if ( $load_layers ) {
-  $layers = loadLayers ( $username );
+  $layers = loadLayers ( $userID );
 }
 
 
@@ -225,10 +221,10 @@ $endDate = date ( 'Ymd', $endTime );
 
 /* Pre-Load the repeated events for quicker access */
 if (  $allow_repeats == true )
-  $repeated_events = read_repeated_events ( $username, $startTime, $endTime, $cat_id );
+  $repeated_events = read_repeated_events ( $userID, $startTime, $endTime, $cat_id );
 
 /* Pre-load the non-repeating events for quicker access */
-$events = read_events ( $username, $startTime, $endTime, $cat_id );
+$events = read_events ( $userID, $startTime, $endTime, $cat_id );
 
 $language = getPref ( 'LANGUAGE' );
 $charset = ( $language ? translate( 'charset' ): 'iso-8859-1' );
@@ -266,7 +262,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd &&
   $d = date ( 'Ymd', $i );
   $pubDate = gmdate ( 'D, d M Y', $i );
   $entries = get_entries ( $d, false  );
-  $rentries = get_repeating_entries ( $username, $d );
+  $rentries = get_repeating_entries ( $userID, $d );
   $entrycnt = count ( $entries );
   $rentrycnt = count ( $rentries );
   if ($debug) echo "\n\ncountentries==". $entrycnt . " " . $rentrycnt . "\n\n";

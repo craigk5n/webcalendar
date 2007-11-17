@@ -107,12 +107,9 @@
  *
  *                          CSS CACHING AND VIEWING
  * A caching scheme has been implemented to improve performance and reduce
- * download payloads. This file is now called from a helper file called
- * 'css_cacher.php'. Its function is to control cache expiration and compress
- * the data if possible.
+ * download payloads. The resulting file will be stored in cache/css 
+ * with a filename created by md5 ( user id )
  *
- * To view the current CSS definitions from your browser, simply run
- *   http://yourserver/css_cacher.php
  * The resulting file will contain the color and layout preferences for the
  * logged in user or the default values if not logged in.
  *
@@ -124,7 +121,7 @@
 
 //include gradient.pho is not already loaded
 include_once 'includes/gradient.php';
-do_debug ( "RUNNING STYLES.PHP " . date ( 'His' ) );
+//do_debug ( "RUNNING STYLES.PHP " . date ( 'His' ) );
 
 $COLORS_FROM_CONFIG = ( _WC_SCRIPT == 'admin.php' ? 2 : 1 );
 
