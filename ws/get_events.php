@@ -7,7 +7,7 @@
  *       overkill and require extra packages to install).
  *
  * Comments:
- *  Client apps must use the same authentication as the web browser.  If
+ *  Client apps must use the same authentication as the web browser. If
  *  WebCalendar is setup to use web-based authentication, then the login.php
  *  found in this directory should be used to obtain a session cookie.
  *
@@ -74,8 +74,9 @@ $repeated_events = query_events ( $user, true,
 // Read non-repeating events (for all users).
 if ( $WS_DEBUG )
   $out .= '
-<!-- ' . str_replace ( 'XXX', array ( $user, $startdate, $enddate ),
-    translate ( 'Checking for events for XXX from date XXX to date XXX.' ) )
+<!-- ' . str_replace ( array ( 'XXX', 'YYY', 'ZZZ' ),
+    array ( $user, $startdate, $enddate ),
+    translate ( 'Checking for events for XXX from date YYY to date ZZZ.' ) )
    . ' -->
 ';
 
@@ -88,7 +89,7 @@ if ( $WS_DEBUG )
     translate ( 'Found XXX events in time range.' ) ) . ' -->
 ';
 
-/* Process an event for a single day.  Check to see if it has a reminder,
+/* Process an event for a single day. Check to see if it has a reminder,
  * when it needs to be sent and when the last time it was sent.
  */
 function process_event ( $eid, $name, $event_date, $event_time ) {

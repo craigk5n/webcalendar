@@ -54,7 +54,7 @@ function ws_escape_xml ( $str ) {
   return ( str_replace ( '<', '&lt;', str_replace ( '>', '&gt;', $str ) ) );
 }
 
-/* Send a single event.  This will include all participants (with status).
+/* Send a single event. This will include all participants (with status).
  */
 function ws_print_event_xml ( $eid, $event_date, $extra_tags = '' ) {
   global $site_extras, $WS_DEBUG;
