@@ -570,10 +570,10 @@ function loginReturnPath(){
  *
  ********************************************************************/
 
-// Redirect the user to the login-app.php page
+// Redirect the user to the applogin.php page
 function app_login_screen( $return ) {
   global $SERVER_URL;
-  header ( "Location: {$SERVER_URL}login-app.php?return_path={$return}");
+  header ( "Location: {$SERVER_URL}applogin.php?return_path={$return}");
   exit;
 }
 

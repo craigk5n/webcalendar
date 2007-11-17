@@ -33,9 +33,6 @@ if ( ! empty ( $do_layer_edit ) ) {
     ( $WC->userId() ? '?user=' . $WC->userId() : '' ) , false );
 } else { //we are editing a layer
 
-
-$layer_user = $WC->userLoginId();
-
 $layers = loadLayers ( $layer_user, 1 );
 
 if ( ! _WC_SINGLE_USER ) {

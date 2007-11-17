@@ -178,7 +178,8 @@ ul a {
 #tabscontent_sched,
 #tabscontent_subscribe,
 #tabscontent_themes,
-#tabscontent_uac {
+#tabscontent_uac,
+#tabscontent_users {
   display: none;
 }
 #users  #tabscontent,

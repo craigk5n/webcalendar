@@ -76,7 +76,7 @@ function myOnLoad() {
  echo $ret;
 ?>
 </head>
-<body onLoad="myOnLoad();">
+<body onload="myOnLoad();">
 <?php
 // Print custom header (since we do not call print_header function)
 if ( getPref ( 'CUSTOM_HEADER' ) ) {

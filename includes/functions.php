@@ -2643,7 +2643,7 @@ function loadPreferences ( $guest = '', $boolean=false ) {
  * we ignore all layer functionality.  If <var>$force</var> is 0, we only load
  * layers if the current user preferences have layers turned on.
  *
- * @param string $user   Username of user to load layers for
+ * @param int $user      User ID of user to load layers for
  * @param int    $force  If set to 1, then load layers for this user even if
  *                       user preferences have layers turned off.
  */
