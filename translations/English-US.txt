@@ -190,7 +190,18 @@ allow-view-add-help: A &#39;+&#39; icon will be included in views, allowing user
 Include add event link in views: Include add event link in views
 lunar-help: If enabled, will display small icons representing the lunar phases each month
 Display Lunar Phases in month view: Display Lunar Phases in month view
-Restrictions: Restrictions
+Popups: Popups
+disable-popups-help: Disable popups from calendar views
+Disable Pop-Ups: Disable Pop-Ups
+popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+Display Site Extras in popup: Display Site Extras in popup
+popup-includes-participants-help: If enabled, participants are displayed in event popups.
+Display Participants in popup: Display Participants in popup
+Miscellaneous: Miscellaneous
+remember-last-login-help: When enabled, the user&#39;s login will be filled in for them on the login page (but not the password), and the user&#39;s preferences will be loaded (including their preferred colors and language selection).
+Remember last login: Remember last login
+summary_length-help: Maximum length of Brief Description in calendar views
+Brief Description Length: Brief Description Length
 require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled). Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 Require event approvals: Require event approvals
 display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
@@ -221,18 +232,15 @@ disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field 
 Disable Repeating field: Disable Repeating field
 allow-html-description-help: If enabled, users can enter HTML in the event description field. If not enabled, the HTML tags will be escaped so as to appear as plain text. Warning: Enabling this feature will allow users to reference images on other websites.
 Allow HTML in Description: Allow HTML in Description
-Popups: Popups
-disable-popups-help: Disable popups from calendar views
-Disable Pop-Ups: Disable Pop-Ups
-popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
-Display Site Extras in popup: Display Site Extras in popup
-popup-includes-participants-help: If enabled, participants are displayed in event popups.
-Display Participants in popup: Display Participants in popup
-Miscellaneous: Miscellaneous
-remember-last-login-help: When enabled, the user&#39;s login will be filled in for them on the login page (but not the password), and the user&#39;s preferences will be loaded (including their preferred colors and language selection).
-Remember last login: Remember last login
-summary_length-help: Maximum length of Brief Description in calendar views
-Brief Description Length: Brief Description Length
+allow-attachment-help: Allow users to add file attachments to events.
+Allow file attachments to events: Allow file attachments to events
+Note: Note
+Admin and owner can always add attachments if enabled: Admin and owner can always add attachments if enabled
+Participant: Participant
+Anyone: Anyone
+allow-comments-help: Allow users to add comments to events.
+Allow comments to events: Allow comments to events
+Admin and owner can always add comments if enabled: Admin and owner can always add comments if enabled
 groups-enabled-help: Enables group support, allowing users to select users by groups.
 Groups enabled: Groups enabled
 user-sees-his-group-help: If enabled, users will not see calendar users that are not in at least one of their groups.
@@ -251,18 +259,18 @@ external-can-receive-notification-help: When external users are enabled and emai
 External users can receive email notifications: External users can receive email notifications
 external-can-receive-reminder-help: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user&#39;s email address is provided).
 External users can receive email reminders: External users can receive email reminders
+allow-self-registration-help: Permit new users to register themselves
+Allow self-registration: Allow self-registration
+use-blacklist-help: Limit access to WebCalendar functions based on IP address
+Restrict self-registration to blacklist: Restrict self-registration to blacklist
+allow-self-registration-full-help: Allow new users to complete the self-registration process on-line
+Use self-registration email notifications: Generate passwords and send to new users
 nonuser-enabled-help: If enabled, admins will have the option to add nonuser calendars
 Nonuser enabled: Nonuser Calendars Enabled
 nonuser-list-help: Where to display the nonuser calendars in the participant list
 Nonuser list: Display in participants list at
 reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports. Additionally, admin users can create global reports that will appear at the bottom of all users&#39; pages.
 Reports enabled: Reports enabled
-subscriptions-enabled-help: Specifies if remote users can subscribe to a WebCalendar user&#39;s calendar, allowing them to see the WebCalendar user&#39;s events in their iCal-enabled application (such as Apple&#39;s iCal or Mozilla Calendar).
-Allow remote subscriptions: Allow remote subscriptions
-remotes-enabled-help: Allows users to load remote ics files using URL
-Allow remote calendars: Allow remote calendars
-rss-enabled-help: Specifies if a user&#39;s calendar can be obtained from a RSS feed.
-Enable RSS feed: Enable RSS feed
 categories-enabled-help: Enables support for event categories.
 Categories enabled: Categories enabled
 icon_upload-enabled-help: If enabled, users can upload category icons
@@ -271,21 +279,18 @@ display-tasks-help: Display small task window on month and day calendar
 Display small task list: Display small task list
 display-tasks-in-grid-help: Display tasks in calendars along with events
 Display tasks in Calendars: Display tasks in Calendars
-allow-self-registration-help: Permit new users to register themselves
-Allow self-registration: Allow self-registration
-use-blacklist-help: Limit access to WebCalendar functions based on IP address
-Restrict self-registration to blacklist: Restrict self-registration to blacklist
-allow-self-registration-full-help: Allow new users to complete the self-registration process on-line
-Use self-registration email notifications: Generate passwords and send to new users
-allow-attachment-help: Allow users to add file attachments to events.
-Allow file attachments to events: Allow file attachments to events
-Note: Note
-Admin and owner can always add attachments if enabled: Admin and owner can always add attachments if enabled
-Participant: Participant
-Anyone: Anyone
-allow-comments-help: Allow users to add comments to events.
-Allow comments to events: Allow comments to events
-Admin and owner can always add comments if enabled: Admin and owner can always add comments if enabled
+subscriptions-enabled-help: Specifies if remote users can subscribe to a WebCalendar user&#39;s calendar, allowing them to see the WebCalendar user&#39;s events in their iCal-enabled application (such as Apple&#39;s iCal or Mozilla Calendar).
+Allow remote subscriptions: Allow remote subscriptions
+remotes-enabled-help: Allows users to load remote ics files using URL
+Allow remote calendars: Allow remote calendars
+rss-enabled-help: Specifies if a user&#39;s calendar can be obtained from a RSS feed.
+Enable RSS feed: Enable RSS feed
+rss-default-user-help: Default user to display in RSS feed.
+RSS default user: RSS default user
+publish-default-user-help: Default user account to use for Publishing via publish.php 
+Publish default user: Publish default user
+minical-default-user-help: Default user account to display when using minical.php
+Minical default user: Minical default user
 email-enabled-help: Turn on or off all sending of email for notification and reminders. Set to "no", if your server is not properly setup to send mail.
 Email enabled: Email enabled
 email-default-sender: Specifies the email address to specify as the sender when sending out reminders.
@@ -824,7 +829,6 @@ Error adding event XXX: Error adding event XXX
 Year: Year
 Settings: Settings
 User Settings: User Settings
-NonUser Calendars: NonUser Calendars
 Other: Other
 Email: Email
 Colors: Colors
@@ -1307,6 +1311,7 @@ more: more
 ########################################
 # Page: users.php
 #
+NonUser Calendars: NonUser Calendars
 Remote Calendars: Remote Calendars
 
 ########################################
