@@ -55,8 +55,8 @@ function getGetValue ( $name, $defVal=NULL ) {
   $getName = $defVal;
   if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) )
     $getName = ( get_magic_quotes_gpc () != 0
-      ? $_GET[$name] : is_array ( $_GET[$name] ) 
-			? array_map ( 'addslashes',  $_GET[$name] ): addslashes ( $_GET[$name] ) );
+      ? $_GET[$name] : ( is_array ( $_GET[$name] ) 
+      ? array_map ( 'addslashes',  $_GET[$name] ): addslashes ( $_GET[$name] ) ) );
   return $getName;
 }
 
