@@ -258,7 +258,7 @@
               {print_radio variable=$v[0]  vars=$v[3] 
                 defIdx=$v[0]}
               {elseif $v[2] == $smarty.const.EXTRA_CHECKBOX}
-              {print_checkbox  variable=$v[0] vars=$v[3] defIdx=$v[0]}
+              {print_checkbox  name=$v[0] vars=$v[3] defIdx=$v[0]}
               {/if} </td>
           </tr>
           {/foreach}
