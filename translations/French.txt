@@ -1619,7 +1619,7 @@ recipients_failed: SMTP Erreur: Les destinataires suivants sont en erreur:
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: Entrez les caractères présents sur l'image
-Enter the correct letters and numbers from the image into the text box...: Entrez les lettres et chiffres présents dans l'image dans le champ de saisie. The test sert de restriction d'accès pour des robots. Rechargez la page si le graphique est trop difficile à lire.
+Enter the correct letters and numbers...: Entrez les lettres et chiffres présents dans l'image dans le champ de saisie. The test sert de restriction d'accès pour des robots. Rechargez la page si le graphique est trop difficile à lire.
 Challenge/Response: Protocol/réponse
 
 ########################################
