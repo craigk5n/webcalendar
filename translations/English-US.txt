@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-28-2007
+# Translation last updated on 11-19-2007
 
 
 ################################################################################
@@ -1149,6 +1149,8 @@ Submit: Submit
 Continue: Continue
 (Your comments will be emailed to the other participants.): (Your comments will be emailed to the other participants.)
 An appointment has been rejected by: An appointment has been rejected by
+XXX has rejected an appointment.: XXX has rejected an appointment.
+Rejected by XXX.: Rejected by XXX.
 
 ########################################
 # Page: remotes.php
@@ -1305,7 +1307,7 @@ Palm Pilot: Palm Pilot
 ########################################
 # Page: view_m.php
 #
-Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
+Double-click on empty cell to add new entry: Double-click on empty cell to add new entry.
 
 ########################################
 # Page: week_details.php
@@ -1628,7 +1630,7 @@ recipients_failed: SMTP Error: The following recipients failed:
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: Enter Characters Seen in Graphic
-Enter the correct letters and numbers from the image into the text box...: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read.
+Enter the correct letters and numbers...: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read
 Challenge/Response: Challenge/Response
 
 ########################################
@@ -1726,15 +1728,15 @@ Password Accepted: Password Accepted
 Successful Login: Successful Login
 Password Incorrect: Password Incorrect
 Invalid Login: Invalid Login
-OFF: OFF
-ON: ON
-Safe Mode: Safe Mode
-Safe Mode Allowed Vars: Safe Mode Allowed Vars (TZ required only if Safe Mode is On)
 Display Errors: Display Errors
 File Uploads: File Uploads
 required only if Remote Calendars are used: required only if Remote Calendars are used
 (required only if Remote Calendars are used): (required only if Remote Calendars are used)
 Allow URL fopen: Allow URL fopen (required only if Remote Calendars are used)
+Safe Mode: Safe Mode
+required only if Safe Mode is On: required only if Safe Mode is On
+(required only if Safe Mode is On): (required only if Safe Mode is On)
+Safe Mode Allowed Vars: Safe Mode Allowed Vars (TZ required only if Safe Mode is On)
 needed for Gradient Image Backgrounds: needed for Gradient Image Backgrounds
 (needed for Gradient Image Backgrounds): (needed for Gradient Image Backgrounds)
 GD: GD (needed for Gradient Image Backgrounds)
@@ -1773,6 +1775,8 @@ Check to see if PHP 4.1.0 or greater is installed.: Check to see if PHP 4.1.0 or
 PHP version: PHP version
 PHP Settings: PHP Settings
 Detailed PHP Info: Detailed PHP Info
+ON: ON
+OFF: OFF
 settings.php Status: "settings.php" Status
 Session Check: Session Check
 To test the proper operation of sessions, reload this page: To test the proper operation of sessions, reload this page

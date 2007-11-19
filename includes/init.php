@@ -263,8 +263,14 @@ function print_menu_dates ( $menu = false ) {
   $DATE_FORMAT_MY, $DISPLAY_WEEKENDS, $id, $login, $SCRIPT, $thisday,
   $thismonth, $thisyear, $user, $WEEK_START;
 
-  $goStr = translate ( 'Go' );
-  $ret = $urlArgs = $include_id = '';
+  $goStr = '
+            </select>' . ( $menu ? '' : '
+            <input type="submit" value="' . translate ( 'Go' ) . '" />' ) . '
+          </form>';
+  $include_id = false;
+  $option = '
+              <option value="';
+  $ret = $urlArgs = '';
   // TODO add this to admin and pref.
   // Change this value to 'Y' to enable staying in custom views.
   $STAY_IN_VIEW = 'N';
@@ -324,17 +330,13 @@ function print_menu_dates ( $menu = false ) {
     }
     if ( $y > 1969 && $y < 2038 ) {
       $dateYmd = date ( 'Ymd', mktime ( 0, 0, 0, $m, 1, $y ) );
-      $ret .= '
-                <option value="' . $dateYmd . '"'
+      $ret .= $option . $dateYmd . '"'
        . ( $dateYmd == $thisdate ? $selected : '' ) . '>'
        . date_to_str ( $dateYmd, $DATE_FORMAT_MY, false, true ) . '</option>';
     }
   }
 
-  $ret .= '
-            </select>' . ( $menu ? '' : '
-            <input type="submit" value="' . $goStr . '" />' ) . '
-          </form>' . ( $menu ? '
+  $ret .= $goStr . ( $menu ? '
         </td>
         <td class="ThemeMenubackgr ThemeMenu">' : '' );
 
@@ -353,6 +355,7 @@ function print_menu_dates ( $menu = false ) {
        . $match[1] . '" value="' . $match[2] . '" />';
     }
   }
+
   $ret .= '
           <form action="' . $weekUrl
    . '" method="get" name="SelectWeek" id="week'
@@ -379,8 +382,7 @@ function print_menu_dates ( $menu = false ) {
     $dateEYmd = date ( 'Ymd', $twkend );
     $dateW = date ( 'W', $twkstart + 86400 );
     if ( $twkstart > 0 && $twkend < 2146021200 )
-      $ret .= '
-              <option value="' . $dateSYmd . '"'
+      $ret .= $option . $dateSYmd . '"'
        . ( $dateW == $thisweek ? $selected : '' ) . '>'
        . ( ! empty ( $GLOBALS['PULLDOWN_WEEKNUMBER'] ) &&
         $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y'
@@ -389,10 +391,7 @@ function print_menu_dates ( $menu = false ) {
         date_to_str ( $dateEYmd, $DATE_FORMAT_MD, false, true ) ) . '</option>';
   }
 
-  $ret .= '
-              </select>' . ( $menu ? '' : '
-            <input type="submit" value="' . $goStr . '" />' ) . '
-          </form>' . ( $menu ? '
+  $ret .= $goStr . ( $menu ? '
         </td>
         <td class="ThemeMenubackgr ThemeMenu" align="right">' : '' );
 
@@ -411,6 +410,7 @@ function print_menu_dates ( $menu = false ) {
        . $match[1] . '" value="' . $match[2] . '" />';
     }
   }
+
   $ret .= '
           <form action="' . $yearUrl
    . '" method="get" name="SelectYear" id="year'
@@ -431,15 +431,11 @@ function print_menu_dates ( $menu = false ) {
 
   for ( $i = $y - 2, $cnt = $y + 6; $i < $cnt; $i++ ) {
     if ( $i > 1969 && $i < 2038 )
-      $ret .= '
-              <option value="' . $i . '"'
+      $ret .= $option . $i . '"'
        . ( $i == $y ? $selected : '' ) . '>' . $i . '</option>';
   }
 
-  return $ret . '
-            </select>' . ( $menu ? '' : '
-            <input type="submit" value="' . $goStr . '" />' ) . '
-          </form>';
+  return $ret . $goStr;
 }
 
 ?>

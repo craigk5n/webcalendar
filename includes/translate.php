@@ -29,7 +29,7 @@
 function unhtmlentities ( $string ) {
   global $charset;
 
-  // TODO:  Not sure what to do here re: UTF-8 encoding.
+  // TODO: Not sure what to do here re: UTF-8 encoding.
 
   // html_entity_decode available PHP 4 >= 4.3.0, PHP 5.
   if ( function_exists ( 'html_entity_decode' ) )
@@ -128,7 +128,7 @@ function reset_language ( $new_language ) {
   global $fullname, $lang, $lang_file,
   $PUBLIC_ACCESS_FULLNAME, $translation_loaded, $translations;
 
-  if ( $new_language == 'none' )
+  if ( $new_language == 'none' || $new_language == 'Browser-defined' )
     $new_language = get_browser_language ();
 
   if ( $new_language != $lang || ! $translation_loaded ) {
@@ -299,15 +299,13 @@ function translate ( $str, $decode = '', $type = '' ) {
   if ( $type == '' || $type == 'A' ) {
     // Translate these because even English may be abbreviated.
     $str = trim ( $str );
-		
-	if ( empty ( $str ) )
-		return false;
-			
-    $str = $decode
-      ? unhtmlentities ( $translations[$str] ) : $translations[$str];
-    // $public_access, and maybe other things, getting translated more than once.
-    // Which is not supposed to happen.
+
+    if ( empty ( $str ) )
+	    return false;
+
     if ( ! empty ( $translations[$str] ) )
+      // $public_access, and maybe other things,
+      // getting translated more than once which is not supposed to happen.
       $str = ( $decode
         ? unhtmlentities ( $translations[$str] ) : $translations[$str] );
   }

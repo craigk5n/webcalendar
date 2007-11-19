@@ -1489,7 +1489,7 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
 
   // Prevent goofy times like 8:00 9:30 9:00 10:30 10:00.
   if ( $time < 0 && $min > 0 )
-    $hour = $hour - 1;
+    $hour--;
   while ( $hour < 0 ) {
     $hour += 24;
   }
@@ -3820,8 +3820,7 @@ function load_nonuser_preferences ( $nonuser ) {
       $GLOBALS[$setting] = $prefarray[$setting] = $value;
     }
   }
-  // reset_language ( empty ( $LANGUAGE) || $LANGUAGE != 'none'
-  // ? $LANGUAGE : $browser_lang );
+
   if ( empty ( $DATE_FORMAT ) || $DATE_FORMAT == 'LANGUAGE_DEFINED' )
     $DATE_FORMAT = translate ( '__month__ __dd__, __yyyy__' );
 
