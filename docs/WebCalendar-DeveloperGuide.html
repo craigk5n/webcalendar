@@ -199,9 +199,9 @@ have not been 100% enforced, so you will see exceptions):</p>
     Classes should be defined in files contained in <tt>includes/classes/</tt>.
     Filenames should be of the form ClassName.class. There should only be one
     class defined per file.<br />
-		If incorporating a class from another project (i.e. phpMailer ), it is 
+		If incorporating a class from another project (i.e. phpMailer ), it is
 		acceptable to use the original naming conventions and filenames. This will
-		allow for easy upgrading and help avoid any GNU license issues. 
+		allow for easy upgrading and help avoid any GNU license issues.
   </dd>
 
   <dt>Method/Function Names</dt>
@@ -210,9 +210,9 @@ have not been 100% enforced, so you will see exceptions):</p>
   implies a yes/no answer (e.g. 'is' or 'has'). Names should be in
   lowerCamelCaps. Examples:
     <ul class="example">
-      <li>getPostValue ()</li>
-      <li>saveEvent ()</li>
-      <li>isAllDay ()</li>
+      <li>getPostValue()</li>
+      <li>saveEvent()</li>
+      <li>isAllDay()</li>
     </ul>
   </dd>
 
@@ -228,7 +228,7 @@ have not been 100% enforced, so you will see exceptions):</p>
   </dd>
 
   <dt>Constant Names</dt>
-  <dd>Constants (declared with <tt>define ()</tt>) should be named with descriptive noun phrases. Names should be in uppercase with WORDS_SEPARATED_BY_UNDERSCORES. Examples:
+  <dd>Constants (declared with <tt>define()</tt>) should be named with descriptive noun phrases. Names should be in uppercase with WORDS_SEPARATED_BY_UNDERSCORES. Examples:
     <ul class="example">
       <li>ONE_DAY</li>
       <li>EXTRA_REMINDER</li>
@@ -243,9 +243,9 @@ have not been 100% enforced, so you will see exceptions):</p>
       <li>webcal_entry</li>
     </ul>
   </dd>
-	
+
   <dt>Preference Value Names</dt>
-  <dd>These are variables stored in webcal_config and webcal_user_pref tables. 
+  <dd>These are variables stored in webcal_config and webcal_user_pref tables.
 	Names should be in uppercase with words_separated_by_underscores. Examples:
     <ul class="example">
       <li>ALLOW_HTML_DESCRIPTION</li>
@@ -315,10 +315,10 @@ if ( $bar &gt; 0 ) {
  }</pre>
   </dd>
   <dt>Function Calls/Declarations</dt>
-  <dd>Use one space both inside and outside of parenthesis ()
+  <dd>Use one space inside of parenthesis ()
 
-    <pre>Declaration: function getGetValue ( $name ) {
-Call: bar = getGetValue ( $name );</pre>
+    <pre>Declaration: function getGetValue( $name ) {
+Call: bar = getGetValue( $name );</pre>
   </dd>
    <dt>Single quotes vs double quotes</dt>
    <dd>With the exception of XHTML attributes, use single quotes where possible.
@@ -421,9 +421,9 @@ quickly and efficiently.</p>
 
 <dl>
   <dt>Translate</dt>
-  <dd>All displayable text should be sent to the <em>translate ()</em>
+  <dd>All displayable text should be sent to the <em>translate()</em>
   function, which returns the text translated in the user's language of choice.
-  A variation of this function is <em>etranslate ()</em>, which includes and
+  A variation of this function is <em>etranslate()</em>, which includes and
   echo command. When translating text within javascript, always set the <em>decode</em>
   flag to true. This will allow proper decoding of htmlentities.</dd>
 
@@ -450,7 +450,7 @@ quickly and efficiently.</p>
 
   Language files should always be committed to CVS in Unix format to save space.
   <pre>perl update_translation.pl English-US.txt</pre>
-</dd>	
+</dd>
 </dl>
 
 <div class="top"><a href="#" target="_top">top</a></div>
