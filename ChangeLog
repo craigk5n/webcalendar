@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Apply PATCH [ 1834400 ] some corrections to Italian.txt
  - Apply PATCH [ 1834285 ] All remaning items for Italian.txt
  - Partial fix bug [ 1832024 ] Notice: Undefined variable: LANGUAGE in /var/www/webcalendar/includes/translate.php
    (Forgot to set $LANGUAGE global in function translate.
