@@ -184,9 +184,9 @@ date-format-help: Specifica il formato preferito per la data
 Date format: Formato della data
 Small Task Date: Data riquadro compiti
 display-week-starts-on: Specifica se la settimana inizia Domenica o Luned&igrave;.. Se si specifica Luned&igrave;, i numeri delle settimane saranno numeri di settimane secondo lo standard ISO.
-Week starts on: La settimana inizia
-display-weekend-starts-on: Imposta giorno di inizio del finesettimana
-Weekend starts on: Il finesettimana inizia di
+Week starts on: La settimana inizia di
+display-weekend-starts-on: Imposta giorno di inizio del fine settimana
+Weekend starts on: Il fine settimana inizia di
 time-format-help: Specifica quale formato orario usare: <br /><i>12 ore:</i> Mostra le ore come 3am, 8:30pm, ecc.  <br /><i>24 ore:</i> Mostra le ore come 3:00, 20:30, ecc.
 Time format: Formato ora
 12 hour: 12 ore
@@ -200,7 +200,7 @@ Work hours: Ore lavorative
 From: Da
 to: a
 Appearance: Aspetto
-preferred-view-help: Specifica la vista di default (Giorno, Settimana, Mese, o Anno)
+preferred-view-help: Specifica la vista predefinita (Giorno, Settimana, Mese, o Anno)
 Preferred view: Vista preferita
 Allow top menu: Abilita men&ugrave; superiore
 Date Selectors position: Posizione selettori data
@@ -208,10 +208,10 @@ menu-themes-help: Imposta colori e stile del men&ugrave; superiore
 Menu theme: Men&ugrave; temi
 fonts-help: Specifica una lista di font si sistema da utilizzare (ad esempio "Arial, Helvetica")
 Fonts: Caratteri
-display-sm_month-help: Se abilitato, mostra piccoli calendari (mese prima/dopo) nella vista 'mese'
-Display small months: Mostra piccoli calendari
+display-sm_month-help: Se abilitato, mostra mini-calendari (mese prima/dopo) nella vista 'mese'
+Display small months: Mostra mini-calendari
 display-weekends-help: Include i weekend quando si guarda una settimana
-Display weekends: Mostra finesettimana
+Display weekends: Mostra fine settimana
 display-long-daynames-help: Se abilitato, mostra nomi completi dei giorni
 Display long day names: Mostra nomi completi dei giorni
 display-alldays-help: Mostra i giorni dei mesi precedente e seguente, in vista mese, occupando tutte le celle
@@ -233,7 +233,7 @@ Display Lunar Phases in month view: Mostra fasi lunari nella vista mese
 Restrictions: Restrizioni
 allow-view-other-help: Specifica se un utente pu&ograve; visualizzare il calendario di un altro utente.
 Allow viewing other users calendars: Permetti la visione dei calendari degli altri utenti
-require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad accesso pubblico (se il calendario ad accesso pubblico &egrave; abilitato)
+require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad Accesso Pubblico (se il calendario ad accesso pubblico &egrave; abilitato)
 Require event approvals: Richiedi che gli eventi siano approvati
 display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se settato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se settato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
 Display unapproved: Mostrare eventi non approvati
@@ -282,23 +282,23 @@ User Sort Order: Metodo ordinamento Utenti
 Lastname, Firstname: Cognome, Nome
 Firstname, Lastname: Nome, Cognome
 allow-public-access-help: Se abilitato, il calendario pu&ograve; essere utilizzato come un calendario pubblico in sola lettura che non richiede agli utenti di effettuare il login
-Allow public access: Permetti l'accesso pubblico
+Allow public access: Permetti l'Accesso Pubblico
 public-access-default-visible: Eventi dal calendario pubblico appariranno automaticamente nel calendario di tutti gli utenti
-Public access visible by default: Accesso pubblico visibile di default
+Public access visible by default: Se non specificato, l'Accesso Pubblico &egrave; visibile
 public-access-default-selected: Quando si aggiunge un nuovo evento, l'utente pubblico sar&agrave; selezionato automaticamente come partecipante
-Public access is default participant: L'accesso pubblico &egrave; un partecipante per default
-public-access-view-others-help: Quando si accede al sistema coun un accesso pubblico, specifica se l'utente pu&ograve; vedere il calendario di un altro utente
-Public access can view other users: Permetti all'accesso pubblico di vedere gli altri utenti
-public-access-can-add-help: Quando abilitato, gli utenti che accedono al sistema con un accesso pubblico saranno in grado di aggiungere nuovo eventi, ma questi non saranni visibili nel calendario finch&eacute; un amministratore approver&agrave; il nuovo evento
-Public access can add events: Permetti all'accesso pubblico di aggiungere eventi
-public-access-add-requires-approval-help: Specifica se gli eventi aggiunti per mezzo dell'accesso pubblico necessitino dell'approvazione prima di essere visibili
-Public access new events require approval: L'inserimento di un evento da pubblico accesso richiede l'approvazione
+Public access is default participant: Preseleziona sempre Accesso Pubblico come partecipante
+public-access-view-others-help: Quando accede al sistema come Accesso Pubblico, specifica se l'utente pu&ograve; vedere il calendario di un altro utente
+Public access can view other users: Permetti all'Accesso Pubblico di vedere gli altri utenti
+public-access-can-add-help: Quando abilitato, gli utenti che accedono al sistema con un Accesso Pubblico saranno in grado di aggiungere nuovo eventi, ma questi non saranni visibili nel calendario finch&eacute; un amministratore approver&agrave; il nuovo evento
+Public access can add events: Permetti all'Accesso Pubblico di aggiungere eventi
+public-access-add-requires-approval-help: Specifica se gli eventi aggiunti per mezzo dell'Accesso Pubblico necessitino dell'approvazione prima di essere visibili
+Public access new events require approval: L'inserimento di un evento da Accesso Pubblico richiede l'approvazione
 public-access-sees-participants-help: Se abilitato, gli utenti che stanno accedendo al calendario dall'account pubblico saranno in grado di vedere i partecipanti all'evento se guarderanno i dettagli dell'evento
-Public access can view participants: L'accesso pubblico pu&ograve; vedere i partecipanti
-public-access-override-help: Consenti di nascondere nomi e descrizioni per accesso pubblico
-Override event name/description for public access: Consenti cambio nome/descrizione per accesso pubblico
+Public access can view participants: L'Accesso Pubblico pu&ograve; vedere i partecipanti
+public-access-override-help: Consenti di nascondere nomi e descrizioni per Accesso Pubblico
+Override event name/description for public access: Consenti cambio nome/descrizione per Accesso Pubblico
 public-access-override-text-help: Il testo da mostrare se l'opzione sopra &egrave; abilitata. Se &egrave; 'Not Available', viene tradotto.
-Text to display to public access: Testo da mostrare per accesso pubblico
+Text to display to public access: Testo da mostrare per Accesso Pubblico
 public-access-captcha-help: Se impostato, l'aggiunta di eventi da parte di 'Accesso Pubblico' richiede validazione CAPTCHA.
 Require CAPTCHA validation for public access new events: Richiede validazione CAPTCHA per 'nuovo evento' da 'Accesso Pubblico'
 uac-enabled-help: Abilita controllo accesso a livello utente
@@ -607,7 +607,7 @@ Ending: Finale
 Forever: Perpetuo
 Use end date: Data termine
 Number of times: Numero di volte
-repeat-frequency-help: Specifica quanto spesso l'evento si deve ripetere. Il valore di default 1 indica che deve avvenire ogni volta. Specificando 2 l'evento avverr&agrave; una volta s&igrave; e una no (se <i>Tipo di ripetizione</i> &egrave; impostato su <i>Settimanale</i>), un mese s&igrave; e uno no (se <i>Tipo di ripetizione</i> &egrave; impostato su <i>Mensile</i>), ecc.
+repeat-frequency-help: Specifica quanto spesso l'evento si deve ripetere. Il valore predefinito 1 indica che deve avvenire ogni volta. Specificando 2 l'evento avverr&agrave; una volta s&igrave; e una no (se <i>Tipo di ripetizione</i> &egrave; impostato su <i>Settimanale</i>), un mese s&igrave; e uno no (se <i>Tipo di ripetizione</i> &egrave; impostato su <i>Mensile</i>), ecc.
 Frequency: Frequenza
 Weekdays Only: Solo fine settimana
 Week Start: Inizio settimana
@@ -919,8 +919,8 @@ Specifies the user that you would like to see displayed in your calendar.: Speci
 ########################################
 # Page: help_pref.php
 #
-Default Category: Categoria di default
-default-category-help: Specifica la categoria di default di un nuovo evento
+Default Category: Categoria predefinita
+default-category-help: Specifica la categoria predefinita di un nuovo evento
 When I am the boss: Quando il capo sono io
 Email me event notification: Mandami una notifica dell'evento via e-mail
 email-boss-notifications-help: Specifica se i capi ricevono email per notifiche eventi
@@ -1141,7 +1141,7 @@ Deleted: Cancellato
 Rejected: Rifiutato
 Waiting for approval: In attesa di approvazione
 Unknown: Sconosciuto
-to manage reports for the Public Access calendar: per gestire rapporti per il calendario ad accesso pubblico
+to manage reports for the Public Access calendar: per gestire rapporti per il calendario ad Accesso Pubblico
 Click here to manage reports for the Public Access calendar.: Clic qui per gestire i rapporti per il calendario di Accesso Pubblico
 Add new report: Aggiungi un nuovo rapporto
 Manage Reports: Gestisci rapporti
@@ -1372,7 +1372,7 @@ Event updated: Evento aggiornato
 Journal updated: Giornale aggiornato
 Task updated: Compito aggiornato
 Delete User: Cancella utente
-WK: set
+WK: SETT
 TASKS: COMPITI
 Task_Title: Titolo
 Due: Termine
