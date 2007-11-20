@@ -1680,7 +1680,7 @@ Please go to next page to continue installation: Vai alla pagina successiva per 
 does not exist: non esiste
 is not writable: non &egrave; scrivibile
 Error Converting Timezone: Errore nella conversione del fuso orario
-You are not authorized: Non sei autorizzato
+You are not authorized.: Non sei autorizzato
 Please change includes dir permission: Cambia i permessi della cartella "includes" per consentire scrittura ad altri utenti.
 Error you must specify a Single-User Login: Errore: devi specificare un accesso a singolo-utente.
 Full Path (no backslashes): Percorso completo (no barra-inversa)

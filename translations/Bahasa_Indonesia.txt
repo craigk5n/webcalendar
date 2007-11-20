@@ -45,7 +45,7 @@ Error adding event: Terjadi kesalahan pada saat menambahkan acara
 #
 System Settings: Pengaturan Sistem
 Help: Bantuan
-You are not authorized: Anda tidak mempunyai kewenangan
+You are not authorized.: Anda tidak mempunyai kewenangan
 Note: Catatan
 Your user preferences: Preferensi pengguna Anda
 may be affecting the appearance of this page.: dapat mempengaruhi penampilan halaman ini.

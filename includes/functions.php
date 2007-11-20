@@ -5272,7 +5272,7 @@ function send_http_login () {
     $title = translate ( 'Title' );
     $unauthorized = translate ( 'Unauthorized' );
   } else {
-    $not_authorized = 'You are not authorized';
+    $not_authorized = 'You are not authorized.';
     $title = 'WebCalendar';
     $unauthorized = 'Unauthorized';
   }
