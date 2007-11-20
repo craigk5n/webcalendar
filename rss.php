@@ -36,8 +36,8 @@
  *       of the item) in the title
  *
  * Security:
- * RSS_ENABLED must be set true
- * USER_RSS_ENABLED must be set true unless this is for the public user
+ * _ENABLE_RSS must be set true
+ * ENABLE_USER_RSS must be set true unless this is for the public user
  * USER_REMOTE_ACCESS can be set as follows in pref.php
  *      0 = Public entries only
  *      1 = Public & Confidential entries only
@@ -75,7 +75,8 @@ include_once 'includes/xcal.php';
 
 $WC->setLanguage();
 
-if ( ! getPref ( 'RSS_ENABLED' ) ) {
+
+if ( ! getPref ( '_ENABLE_RSS' ) ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth ();
   exit;
@@ -114,7 +115,7 @@ $userID = '__public__';
 
 // Allow the URL to override the user setting such as
 // "rss.php?user=craig"
-$allow_user_override = true;
+$_ALLOW_USER_OVERRIDE = true;
 
 // Load layers
 $load_layers = false;
@@ -134,7 +135,7 @@ $show_daily_events_only_once = false;
 
 // End configurable settings...
 
-if ( $allow_user_override ) {
+if ( $_ALLOW_USER_OVERRIDE ) {
   $u = $WC->getValue ( 'user', "[0-9]+", true );
   if ( ! empty ( $u ) ) {
     $userID = $u;
@@ -159,7 +160,7 @@ if ( ! empty ( $USER_REMOTE_ACCESS ) ) {
 $WC->User->loadVariables ( $WC->loginId(), 'rss_' );
 $creator = $rss_fullname;
 
-if ( ! getPref ( 'USER_RSS_ENABLED' ) )  {
+if ( ! getPref ( 'ENABLE_USER_RSS' ) )  {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth ();
   exit;

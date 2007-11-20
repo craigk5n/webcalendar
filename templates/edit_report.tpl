@@ -11,83 +11,83 @@
  <tr>
    <td>
      <label for="rpt_name">__Report name__:</label></td>
-	<td>
+  <td>
     <input type="text" name="report_name" id="rpt_name" size="40" maxlength="50"
     value="{$report_name}" />
   </td>
  </tr>
  <tr>
    <td>
-	   <label for="rpt_user">__User__:</label></td>
+     <label for="rpt_user">__User__:</label></td>
    <td>
-	   <select name="report_user" id="rpt_user" size="1">
-		{foreach from=$users key=k item=v}
-		  <option value="{$k}" {$v.selected}>{$v.cal_fullname}</option>
-		{/foreach}
+     <select name="report_user" id="rpt_user" size="1">
+    {foreach from=$users key=k item=v}
+      <option value="{$k}" {$v.selected}>{$v.cal_fullname}</option>
+    {/foreach}
      </select>
    </td>
   </tr>
 
 {if $WC->isAdmin() }
    <tr>
-	   <td>
-		   <label>__Global__:</label></td>
-		 <td>{print_radio variable='is_global' defIdx=$report_is_global}
+     <td>
+       <label>__Global__:</label></td>
+     <td>{print_radio variable='is_global' defIdx=$report_is_global}
      </td>
-	</tr>
+  </tr>
   <tr>
-	  <td>
-		   <label>__Include link in menu__:</label></td>
-		<td>{print_radio variable='show_in_trailer' defIdx=$report_show_in_menu}
+    <td>
+       <label>__Include link in menu__:</label></td>
+    <td>{print_radio variable='show_in_trailer' defIdx=$report_show_in_menu}
     </td>
-	</tr>
+  </tr>
 {/if}
 
   <tr>
-	  <td>
-		  <label>__Include standard header/trailer__:</label></td>
-		<td>{print_radio variable=include_header' defIdx=$report_include_header} 
+    <td>
+      <label>__Include standard header/trailer__:</label></td>
+    <td>{print_radio variable=include_header' defIdx=$report_include_header} 
     </td>
-	</tr>
+  </tr>
  
   <tr>
-	  <td>
-		  <label>__Include previous/next links__:</label></td>
-		<td>{print_radio variable='allow_nav' defIdx=$report_allow_nav}
+    <td>
+      <label>__Include previous/next links__:</label></td>
+    <td>{print_radio variable='allow_nav' defIdx=$report_allow_nav}
     </td>
-	</tr>
+  </tr>
 
   <tr>
-	  <td>
-		  <label>__Include empty dates__:</label></td>
-		<td>{print_radio variable='include_empty' defIdx=$report_include_empty} 
+    <td>
+      <label>__Include empty dates__:</label></td>
+    <td>{print_radio variable='include_empty' defIdx=$report_include_empty} 
     </td>
-	</tr>
+  </tr>
 
   <tr>
-	  <td>
+    <td>
       <label for="rpt_time_range">__Date range__:</label></td>
-		<td>
+    <td>
       <select name="time_range" id="rpt_time_range">
     {foreach from=$rpt_ranges key=k item=v}
         <option value="{$k}" {$v.selected}>{$v.desc}</option>
-		{/foreach}
+    {/foreach}
       </select>
     </td>
-	</tr>
-{if $sCATEGORIES_ENABLED}
+  </tr>
+{if $s_ENABLE_CATEGORIES}
   <tr>
-	  <td>
+    <td>
       <label for="rpt_cat_id">__Category__:</label></td>
-		<td>
+    <td>
       <select name="cat_id" id="rpt_cat_id">
         <option value="">__None__</option>
-			{foreach from=$categories key=k item=v}
+      {foreach from=$categories key=k item=v}
         <option value="{$k}" {$v.selected}>{$v.cat_name}</option>
       {/foreach}
       </select>
     </td>
-	</tr>
+  </tr>
 {/if}
 </table>
 

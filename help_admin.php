@@ -31,14 +31,14 @@ $tmp_arr = array (
   translate ( 'custom-script-help' ),
   translate ( 'Custom trailer' ) => translate ( 'custom-trailer-help' ),
   translate ( 'Date format' ) => translate ( 'date-format-help' ),
-  translate ( 'Disable Access field' ) =>
-  translate ( 'disable-access-field-help' ),
-  translate ( 'Disable Participants field' ) =>
-  translate ( 'disable-participants-field-help' ),
-  translate ( 'Disable Priority field' ) =>
-  translate ( 'disable-priority-field-help' ),
-  translate ( 'Disable Repeating field' ) =>
-  translate ( 'disable-repeating-field-help' ),
+  translate ( 'Enable Access field' ) =>
+  translate ( 'enable-access-field-help' ),
+  translate ( 'Enable Participants field' ) =>
+  translate ( 'enable-participants-field-help' ),
+  translate ( 'Enable Priority field' ) =>
+  translate ( 'enable-priority-field-help' ),
+  translate ( 'Enable Repeating field' ) =>
+  translate ( 'enable-repeating-field-help' ),
   translate ( 'Display days with events in bold in year view' ) =>
   translate ( 'yearly-shows-events-help' ),
   translate ( 'Display description in printer day view' ) =>

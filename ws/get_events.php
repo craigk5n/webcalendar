@@ -48,7 +48,7 @@ if ( empty ( $user ) )
 
 // If viewing different user then yourself...
 if ( $login != $user ) {
-  if ( ! getPref ( 'ALLOW_VIEW_OTHER' ) ) {
+  if ( ! getPref ( '_ALLOW_VIEW_OTHER' ) ) {
     $out .= '
   <error>' . translate ( 'Not authorized' ) . '</error>
 </events>

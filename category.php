@@ -2,7 +2,7 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
-if ( ! getPref ( 'CATEGORIES_ENABLED' ) ) {
+if ( ! getPref ( '_ENABLE_CATEGORIES' ) ) {
   send_to_preferred_view ();
   exit;
 }
@@ -31,7 +31,7 @@ $smarty->assign ( 'showIcon', ( ! empty ( $catIcon ) && file_exists ( $catIcon )
   ? 'visible' : 'hidden' ) );;
 
 $smarty->assign ( 'doUploads',  @is_dir ( $icon_path ) &&
-    ( getPref ( 'ENABLE_ICON_UPLOADS' )  || $WC->isAdmin() ) ); 
+    ( getPref ( '_ENABLE_ICON_UPLOADS' )  || $WC->isAdmin() ) ); 
 
 if ( $WC->getGET('add' ) || $WC->getId() ) {
  $smarty->assign ( 'add_edit', true );

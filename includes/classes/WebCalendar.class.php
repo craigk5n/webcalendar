@@ -77,7 +77,7 @@ class WebCalendar {
    var $_cat_id;
    var $_friendly;
    var $_lang;
-	 var $_browserLanguage;
+   var $_browserLanguage;
    var $_year;
    var $_month;
    var $_day;
@@ -99,16 +99,16 @@ class WebCalendar {
    var $_webcalendar_login;
    var $_webcalendar_custom_colors;
    var $_webcalendar_captcha;
-	 var $_webcalendar_last_view;
-	 var $_login_url;
-	 var $_logout_url;
-	 var $_isAdmin;
-	 var $lastName;
-	 var $firstName;
-	 var $fullName;
-	 var $userEmail;
-	 var $_isNonUser;
-	 var $_can_add;
+   var $_webcalendar_last_view;
+   var $_login_url;
+   var $_logout_url;
+   var $_isAdmin;
+   var $lastName;
+   var $firstName;
+   var $fullName;
+   var $userEmail;
+   var $_isNonUser;
+   var $_can_add;
    
   /**
    * A map from filenames to initialization phases.
@@ -165,9 +165,9 @@ class WebCalendar {
         
     //define  a value to prevent direct access to files
     define ( '_ISVALID', 1 );
-		
-		//setup up some date values based of the 'CALTYPE' constant value
-		$caltype =  $this->getValue ( 'caltype' );
+    
+    //setup up some date values based of the 'CALTYPE' constant value
+    $caltype =  $this->getValue ( 'caltype' );
     if ( ! defined ( 'CALTYPE' ) )
       define ( 'CALTYPE', ( ! empty ( $caltype ) ? $caltype : false ) ); 
   }
@@ -206,10 +206,10 @@ class WebCalendar {
       $caturl, $CATEGORY_VIEW;
 
     loadConfig ();
-		$smarty->LoadVars ( $this->_loginId );
+    $smarty->LoadVars ( $this->_loginId );
 
     $this->setLanguage();
-		
+    
     $this->loadCategories();
   
     if ( empty ( $ovrd ) )
@@ -220,7 +220,7 @@ class WebCalendar {
     $this->_date = $this->getValue ( 'date', '[\-0-9]+' );
     $this->hour = $this->getValue ( 'hour', '[0-9]+' );
     $this->minute = $this->getValue ( 'minute', '[0-9]+' );
-    if ( getPref ( 'CATEGORIES_ENABLED', 2 ) )
+    if ( getPref ( '_ENABLE_CATEGORIES', 2 ) )
       $this->_cat_id = $this->getValue ( 'cat_id', '\-*[0-9]+\-*[,0-9]*' );
     $this->_friendly = $this->getValue ( 'friendly', '[01]' );
     $this->_year = $this->getValue ( 'year', '[0-9]+' );
@@ -289,22 +289,22 @@ class WebCalendar {
   }
   $smarty->assign('thisyear', $this->thisyear);
   $smarty->assign('thismonth', $this->thismonth);
-  $smarty->assign('thisday', $this->thisday);	       
+  $smarty->assign('thisday', $this->thisday);         
      // Load if _WC_SCRIPT is in $special array:
     if ($DMW) {     
-      if ( ! getPref ( 'ALLOW_VIEW_OTHER', 2 ) && ! $this->_isAdmin )
+      if ( ! getPref ( '_ALLOW_VIEW_OTHER', 2 ) && ! $this->_isAdmin )
         $this->_userId = '';
 
       $can_add = ( !_WC_READONLY || $this->_isAdmin );
       if ( $this->_isNonuser )
         $can_add = false;
 
-      if ( getPref ( 'GROUPS_ENABLED', 2 ) && 
-        getPref ( 'USER_SEES_ONLY_HIS_GROUPS', 2 ) &&
+      if ( getPref ( '_ENABLE_GROUPS', 2 ) && 
+        getPref ( '_USER_SEES_ONLY_HIS_GROUPS', 2 ) &&
         ! $this->_isAdmin ) {
         $valid_user = false;
         $userlist = get_my_users();
-        if ( getPref ( 'NONUSER_ENABLED', 2 )) {
+        if ( getPref ( '_ENABLE_NONUSERS', 2 )) {
           $nonusers = get_my_nonusers ( $this->_login, true );
           $userlist =  array_merge($nonusers, $userlist);
         }
@@ -326,7 +326,7 @@ class WebCalendar {
       
       remember_this_view();
 
-      if ( getPref ( 'CATEGORIES_ENABLED', 2 ) ) {
+      if ( getPref ( '_ENABLE_CATEGORIES', 2 ) ) {
         if ( ! empty ( $CATEGORY_VIEW ) && ! $this->_cat_id ) {
           $this->_cat_id = $CATEGORY_VIEW;
         }
@@ -356,17 +356,17 @@ class WebCalendar {
    * @access private
    */
   function _initConfig() {
-		
+    
     do_config ( $this->absolutePath ( 'includes/settings.php' ) );
 
     //Do include here to allow login var to be set
-		$incDir =  ( defined ( '_WC_INCLUDE_DIR' ) ? _WC_INCLUDE_DIR : 'includes/' );
+    $incDir =  ( defined ( '_WC_INCLUDE_DIR' ) ? _WC_INCLUDE_DIR : 'includes/' );
     include $incDir . 'classes/user/' . _WC_USER_INC . '.class.php';
-		//We need to init the defines inside the current User class
-		//We'll assign variables later in _initUser()
+    //We need to init the defines inside the current User class
+    //We'll assign variables later in _initUser()
     $inc_class = _WC_USER_INC;
     $this->User =& new $inc_class;
-		     
+         
     /**#@+
      * Used for activity log
      */
@@ -407,7 +407,12 @@ class WebCalendar {
      */
     define ( 'SELECTED', ' selected="selected"' );
     
-    
+
+    /**
+     * Disabled used by numerous pages
+     */
+    define ( 'DISABLED', ' disabled="disabled" ' );
+        
     /**
      * Number of seconds in an hour
      */
@@ -554,23 +559,23 @@ class WebCalendar {
       echo "offset $i: $this->_offsets[$i] <br />\n";
     }
     */
-			
-		// Logout/Login URL
-		if ( ! _WC_HTTP_AUTH && !_WC_SINGLE_USER ) {
-			$this->_login_url = 'login.php';
-		  $this->_logout_url = $this->_login_url . '?action=logout';
-			// Should we use another application's login/logout pages?
-			if ( substr( _WC_USER_INC, 0, 7 ) == 'UserApp' ) {
-				$this->_login_url = 'applogin.php';
-				if ($this->User->app_login_page['return'] )
-				   $this->_login_url .= '?return_path=' 
-					   . $this->User->app_login_page['return'];
+      
+    // Logout/Login URL
+    if ( ! _WC_HTTP_AUTH && !_WC_SINGLE_USER ) {
+      $this->_login_url = 'login.php';
+      $this->_logout_url = $this->_login_url . '?action=logout';
+      // Should we use another application's login/logout pages?
+      if ( substr( _WC_USER_INC, 0, 7 ) == 'UserApp' ) {
+        $this->_login_url = 'applogin.php';
+        if ($this->User->app_login_page['return'] )
+           $this->_login_url .= '?return_path=' 
+             . $this->User->app_login_page['return'];
         $this->_logout_url = $this->User->app_logout_page;
-			} else if ( $this->User->loginReturnPath() ) {
-				$this->_login_url .= '?return_path=' 
-				  . $this->User->loginReturnPath();
-			}
-		}					
+      } else if ( $this->User->loginReturnPath() ) {
+        $this->_login_url .= '?return_path=' 
+          . $this->User->loginReturnPath();
+      }
+    }          
   }
 
   /**
@@ -586,33 +591,33 @@ class WebCalendar {
    */
   function _initUser() {
 
-    $this->_initLoginId ( $this->_login );	
-				do_debug ( _WC_SCRIPT );
-				do_debug ( $this->_login );
-				do_debug ( $this->_loginId );	   
+    $this->_initLoginId ( $this->_login );  
+        //do_debug ( _WC_SCRIPT );
+        //do_debug ( $this->_login );
+        //do_debug ( $this->_loginId );     
     //Set up some useful values
     if ( $this->_userId )
       $this->_isNonuserAdmin = 
       $this->isNonuserAdmin ( $this->_userId, $this->_loginId );
 
     if ( $this->_loginId ) {
-			$loginData = $this->User->loadVariables ( $this->_loginId );
-			if ( ! empty ( $loginData ['login_id'] ) ) {
-				$this->_isAdmin   = $loginData ['is_admin'] == 'Y' ? true : false;
-				$this->lastName  = $loginData ['lastname'];
-				$this->firstName = $loginData ['firstname'];
-				$this->fullName  = $loginData ['fullname'];
-				$this->userEmail = $loginData ['email'];
-				$this->_isNonuser = $loginData ['is_nonuser'] == 'Y' ? true : false;
-			}
-	  } else {
-		  if (  _WC_SCRIPT == 'icalclient.php' )
-			  return;
-				// This shouldn't happen since login should already be valid
-				// If it does happen, it means we received an invalid login cookie.
-				//echo "Error getting user info for login \"$this->_login\".";
-				do_redirect ( $this->_login_url . "?error=Invalid+session+found." );
-		}
+      $loginData = $this->User->loadVariables ( $this->_loginId );
+      if ( ! empty ( $loginData ['login_id'] ) ) {
+        $this->_isAdmin   = $loginData ['is_admin'] == 'Y' ? true : false;
+        $this->lastName  = $loginData ['lastname'];
+        $this->firstName = $loginData ['firstname'];
+        $this->fullName  = $loginData ['fullname'];
+        $this->userEmail = $loginData ['email'];
+        $this->_isNonuser = $loginData ['is_nonuser'] == 'Y' ? true : false;
+      }
+    } else {
+      if (  _WC_SCRIPT == 'icalclient.php' )
+        return;
+        // This shouldn't happen since login should already be valid
+        // If it does happen, it means we received an invalid login cookie.
+        //echo "Error getting user info for login \"$this->_login\".";
+        do_redirect ( $this->_login_url . "?error=Invalid+session+found." );
+    }
 
   }
 
@@ -686,7 +691,7 @@ class WebCalendar {
         }
         if ( ! empty ( $_SESSION['webcalendar_login'] ) ) {
           $this->_initLogin ( $_SESSION['webcalendar_login'] );
-					$this->_initLoginId ( $_SESSION['webcalendar_login'] );
+          $this->_initLoginId ( $_SESSION['webcalendar_login'] );
         } else {
           // Check for cookie...
           if ( $this->_webcalendar_session ) {
@@ -723,7 +728,7 @@ class WebCalendar {
               if ( $nucData['is_public'] != 'Y' ) {
                 die_miserable_death ( 'Nonuser calendar is not public' );
               }
-							$this->_loginId = $nucData['login_id'];
+              $this->_loginId = $nucData['login_id'];
             } else if (! $this->User->validCrypt ( $this->_login, $cryptpw)) {
               //do_debug ( "User not logged in; redirecting to login page" );
               if ( empty ( $login_return_path ) )
@@ -770,7 +775,7 @@ class WebCalendar {
     if ( _WC_SINGLE_USER ) {
       if ( ! _WC_SINGLE_USER_LOGIN  ) {
         die_miserable_death ( 'You have not defined <tt>single_user_login</tt> 
-				  <tt>includes/settings.php</tt>' );
+          <tt>includes/settings.php</tt>' );
       }
       $res = dbi_execute ( "SELECT COUNT(*) FROM webcal_user " .
         "WHERE cal_login = ?", array( _WC_SINGLE_USER_LOGIN ) );
@@ -804,7 +809,7 @@ class WebCalendar {
     $this->_isNonuser = false;
 
     if ( empty ( $this->_login ) && _WC_HTTP_AUTH 
-		  && _WC_SCRIPT != 'login.php' ) {
+      && _WC_SCRIPT != 'login.php' ) {
       send_http_login ();
     }
   }
@@ -823,8 +828,8 @@ class WebCalendar {
     //Allow UAC to override settings.php READONLY value
     define ( '_WC_READONLY', _WC_READ_ONLY_PROTO && 
       ! access_can_access_function ( ACCESS_READONLY ) );
-			
-	  $this->_can_add = ! _WC_READONLY && 
+      
+    $this->_can_add = ! _WC_READONLY && 
   access_can_access_function ( ACCESS_EVENT_EDIT, $this->userId() );
   }
 
@@ -837,7 +842,7 @@ class WebCalendar {
     global $smarty, $lang, $lang_file, $translation_loaded;
 
     $this->_browserLanguage = get_browser_language ( true );
-		
+    
     $lang = getPref ( 'LANGUAGE', 1, '', 'English-US' );
 
     // If set to use browser settings, use the user's language preferences
@@ -852,11 +857,11 @@ class WebCalendar {
     $lang_file = 'translations/' . $lang . '.txt';
     
     $this->_lang = $lang;
-		
-		$smarty->compile_id = $lang;
-		
+    
+    $smarty->compile_id = $lang;
+    
     reset_language ( $lang);
-		
+    
     //$translation_loaded = false;
   }
 
@@ -923,7 +928,7 @@ class WebCalendar {
     }
     return false;
   }
-	
+  
   /**
    * Begins initialization of WebCalendar.
    *
@@ -966,12 +971,12 @@ function loadCategories ( $ex_global = false ) {
   // These are default values.
   $categories[0]['cat_name'] = translate ( 'All' );
   $categories[-1]['cat_name'] = translate ( 'None' );
-  if ( getPref ( 'CATEGORIES_ENABLED' ) ) {
+  if ( getPref ( '_ENABLE_CATEGORIES' ) ) {
     $query_params = array ();
     $query_params[] = ( $this->_userId &&
       ( $is_assistant || $this->isAdmin ) ? $this->_userId : $this->_loginId );
     $rows = dbi_get_cached_rows ( 'SELECT cat_id, cat_name, 
-		  cat_owner, cat_color, cat_icon
+      cat_owner, cat_color, cat_icon
       FROM webcal_categories WHERE ( cat_owner = ? ) ' . ( ! $ex_global 
         ? 'OR ( cat_owner IS NULL ) ORDER BY cat_owner,' : 'ORDER BY' )
        . ' cat_name', $query_params );
@@ -982,27 +987,27 @@ function loadCategories ( $ex_global = false ) {
           'cat_name' => $row[1],
           'cat_owner' => $row[2],
           'cat_color' => ( empty ( $row[3] ) ? '#000000' : $row[3] ),
-					'cat_icon' => $row[4],
+          'cat_icon' => $row[4],
           );
       }
     }
-	$this->_categories = $categories;
-	$smarty->assign('categories', $categories );
+  $this->_categories = $categories;
+  $smarty->assign('categories', $categories );
   }
 }
 
 function isMyCat ( $cid='' ) {
   if ( !$cid ) return true;
-	return ($this->_categories[$cid]['cat_owner'] == $this->_loginId ?
-	  true : false );
+  return ($this->_categories[$cid]['cat_owner'] == $this->_loginId ?
+    true : false );
 }
 
 function deleteCat ( $cid='' ) {
   if ( ! $this->isMyCat ( $cid )) return false;
-	dbi_execute ( 'DELETE FROM webcal_categories WHERE cat_id = ?' ,
-	  array ( $cid ) );
-	dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cat_id = ?' ,
-	  array ( $cid ) );
+  dbi_execute ( 'DELETE FROM webcal_categories WHERE cat_id = ?' ,
+    array ( $cid ) );
+  dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cat_id = ?' ,
+    array ( $cid ) );
 }
 
 /* Determines what the day is and sets class values.
@@ -1136,14 +1141,14 @@ function setToday ( $date='' ) {
   function user () {
     return ( ! empty ( $this->_user ) ? $this->_user : false );
   }
-	
-	  /**
+  
+    /**
    * Return the fullname of the user specified
    *
    * @return string The user's fullname
    */
   function getFullName ( $user_id='' ) {
-	  $user = ( empty ( $user_id ) ? $this->_loginId : $user_id );
+    $user = ( empty ( $user_id ) ? $this->_loginId : $user_id );
     return $this->User->getFullName( $user );
   }
 
@@ -1153,8 +1158,8 @@ function setToday ( $date='' ) {
    * @return string The user url 
    */
   function getUserUrl ( $url='' ) {
-	  $seperator = ( ! empty ( $url ) ? strstr ( $url, '?') ? '&amp;' : '?' : '' ); 
-		if ( $url == '?' || $url == '&amp;' ) $seperator = $url;
+    $seperator = ( ! empty ( $url ) ? strstr ( $url, '?') ? '&amp;' : '?' : '' ); 
+    if ( $url == '?' || $url == '&amp;' ) $seperator = $url;
     return ( ! empty ( $this->_userId ) && ! $this->isLogin()
     ? $seperator . 'user='. $this->_userId : false );
   }
@@ -1201,13 +1206,13 @@ function setToday ( $date='' ) {
   function isNonUser ( ) {
       return $this->_isNonUser;    
   }
-	
-	function isNonuserAdmin ( $nonuser_id='', $login_id='' ){
-	//if called with no parameters, return the basic value
-	if ( empty ( $nonuser_id ) && empty ( $login_id ) )
-	  return $this->_isNonuserAdmin;
-	$nonuser_id = ( ! empty ( $nonuser_id ) ? $nonuser_id : $this->_userId );
-	$login_id = ( ! empty ( $login_id ) ? $login_id : $this->_loginId );
+  
+  function isNonuserAdmin ( $nonuser_id='', $login_id='' ){
+  //if called with no parameters, return the basic value
+  if ( empty ( $nonuser_id ) && empty ( $login_id ) )
+    return $this->_isNonuserAdmin;
+  $nonuser_id = ( ! empty ( $nonuser_id ) ? $nonuser_id : $this->_userId );
+  $login_id = ( ! empty ( $login_id ) ? $login_id : $this->_loginId );
   if ( $user_id ) { 
     $rows = dbi_get_cached_rows ( 'SELECT cal_admin FROM webcal_user
       WHERE cal_login_id = ? AND cal_admin = ?', 
@@ -1242,7 +1247,7 @@ function setToday ( $date='' ) {
   function isAdmin () {
     return $this->_isAdmin;
   }
-	
+  
   /**
    * Return the cat_id in a URL format for insertion in href
    *
@@ -1277,7 +1282,7 @@ function setToday ( $date='' ) {
   function lang () {
     return $this->_lang;
   }
-	   /**
+     /**
    * Return the browser's language setting 
    *
    * @return string brower language
@@ -1294,7 +1299,7 @@ function setToday ( $date='' ) {
   function friendly () {
     return ( $this->_friendly == 1 ? true : false );
   }
-	
+  
    /**
    * Return the current value of _can_add
    *
@@ -1352,7 +1357,7 @@ function getPOST ( $name, $default=NULL, $format = '' ) {
     $postName = ( get_magic_quotes_gpc () != 0
       ? $_POST[$name] : addslashes ( $_POST[$name] ) );
   if ( $postName != NULL && ! empty ( $format ) && ! preg_match ( '/^' 
-	  . $format . '$/', $postName ) ) {
+    . $format . '$/', $postName ) ) {
     // ignore value
     return '';
   }

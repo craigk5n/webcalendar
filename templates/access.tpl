@@ -3,9 +3,9 @@
 {if $WC->isAdmin() }
 <form action="access.php" method="post" name="SelectUser">
   <select name="guser" onchange="document.SelectUser.submit()">
-	{foreach from=$userlist key=k item=v}
+  {foreach from=$userlist key=k item=v}
     <option value="{$v.value}" {$v.selected}>{$v.display}</option>
-	{/foreach}
+  {/foreach}
     </select>
   <input type="submit" value="__Go__" />
 </form>
@@ -20,11 +20,11 @@
       <tr>
         <td valign="top" style="padding:5px">
      {foreach from=$access_functions key=k item=v}
-				  <label><input type="checkbox" name="access_{$k}" value="Y" id="access_{$k}" {$v.checked} />&nbsp;{$v.desc}</label><br />
+          <label><input type="checkbox" name="access_{$k}" value="Y" id="access_{$k}" {$v.checked} />&nbsp;{$v.desc}</label><br />
       {if $v.closeTD}
          </td>
          <td valign="top" style="padding:5px">
-			{/if}
+      {/if}
      {/foreach}
         </td>
       </tr>
@@ -38,20 +38,20 @@
 {if $otheruserList}
 <h2 style="margin-bottom: 2px;">{$pagetitle}</h2>
   <form action="access.php" method="post" name="SelectOther">
-	{if $otheruserList}
+  {if $otheruserList}
     <input type="hidden" name="guser" value="{$guser}" />
     <select name="otheruser" onchange="document.SelectOther.submit()">
-		{foreach from=$otheruserList key=k item=v}
+    {foreach from=$otheruserList key=k item=v}
       <option value="{$v.value}" {$v.selected}>{$v.display}</option>
     {/foreach}
     </select> 
     <input type="submit" value="__Go__" />
-	{/if} 
+  {/if} 
   </form>
 {/if}
 
 {if $otheruser}
-  {if $s.ALLOW_VIEW_OTHER}
+  {if $s._ALLOW_VIEW_OTHER}
   <form action="access.php" method="post" name="EditOther">
     <input type="hidden" name="guser" value="{$guser}" />
     <input type="hidden" name="otheruser" value="{$otheruser}"/><br />
@@ -66,58 +66,58 @@
       </tr>
 
     {section name=grid loop=5 start=1}
-		  {assign var=index value=$smarty.section.grid.index}
+      {assign var=index value=$smarty.section.grid.index}
       {if $index !=3}
        <tr>
          <td class="boxL leftpadded {if $index > 3}boxB{/if}">
-				 {if $index == 1}
-				  <input type="checkbox" value="Y" name="invite" 
+         {if $index == 1}
+          <input type="checkbox" value="Y" name="invite" 
          {if $op.invite == 'Y'}{#checked#}{/if} /> __Can Invite__
-				 {elseif $index == 2}
-				  <input type="checkbox" value="Y" name="email" 
+         {elseif $index == 2}
+          <input type="checkbox" value="Y" name="email" 
          {if $op.email == 'Y'}{#checked#}{/if} /> __Can Email__
          {else}
-				  <input type="checkbox" value="Y" name="time" 
+          <input type="checkbox" value="Y" name="time" 
          {if $op.time == 'Y'}{#checked#}{/if} /> __Can See Time Only__
         {/if}
         </td>
         <td align="center" class="boxL {if $index > 3}boxB{/if}">{$access_type.$index}</td>
         <td align="center" class="boxL pub {if $index > 3}boxB{/if}">
           <input type="checkbox" value="{$index}" name="v_{$index}" {if $op.view & $index}{#checked#}{/if} />
-				</td>
+        </td>
         <td class="conf {if $index > 3}boxB{/if}">
-				  <input type="checkbox" value="{$index*8}" name="v_{$index*8}" {if $op.view & $index*8}{#checked#}{/if} />
-				</td>
+          <input type="checkbox" value="{$index*8}" name="v_{$index*8}" {if $op.view & $index*8}{#checked#}{/if} />
+        </td>
         <td class="priv {if $index > 3}boxB{/if}">
-				 <input type="checkbox" value="{$index*64}" name="v_{$index*64}" {if $op.view & $index*64}{#checked#}{/if} />
-				</td>
+         <input type="checkbox" value="{$index*64}" name="v_{$index*64}" {if $op.view & $index*64}{#checked#}{/if} />
+        </td>
         <td align="center" class="boxL pub  {if $index > 3}boxB{/if}">
           <input type="checkbox" value="{$index}" name="e_{$index}" {if $op.edit & $index}{#checked#}{/if} />
-				</td>
+        </td>
         <td class="conf {if $index > 3}boxB{/if}">
-				  <input type="checkbox" value="{$index*8}" name="e_{$index*8}" {if $op.edit & $index*8}{#checked#}{/if} />
-				</td>
+          <input type="checkbox" value="{$index*8}" name="e_{$index*8}" {if $op.edit & $index*8}{#checked#}{/if} />
+        </td>
         <td class="priv {if $index > 3}boxB{/if}">
-				 <input type="checkbox" value="{$index*64}" name="e_{$index*64}" {if $op.edit & $index*64}{#checked#}{/if} />
-				</td>
+         <input type="checkbox" value="{$index*64}" name="e_{$index*64}" {if $op.edit & $index*64}{#checked#}{/if} />
+        </td>
         <td align="center" class="boxL pub  {if $index > 3}boxB{/if}">
           <input type="checkbox" value="{$index}" name="a_{$index}" {if $op.approve & $index}{#checked#}{/if} />
-				</td>
+        </td>
         <td class="conf {if $index > 3}boxB{/if}">
-				  <input type="checkbox" value="{$index*8}" name="a_{$index*8}" {if $op.approve & $index*8}{#checked#}{/if} />
-				</td>
+          <input type="checkbox" value="{$index*8}" name="a_{$index*8}" {if $op.approve & $index*8}{#checked#}{/if} />
+        </td>
         <td class="priv {if $index > 3}boxB{/if}">
-				 <input type="checkbox" value="{$index*64}" name="a_{$index*64}" {if $op.approve & $index*64}{#checked#}{/if} />
+         <input type="checkbox" value="{$index*64}" name="a_{$index*64}" {if $op.approve & $index*64}{#checked#}{/if} />
         </td>
       </tr>
-			{/if}
+      {/if}
     {/section}
       <tr>
         <td colspan="2" class="boxL alignR">
         {if ! $otheruserSpecial}
-	        <input type="checkbox" value="Y" name="assistant" {if $op.assistant == 'Y'}{#checked#}{/if} />
+          <input type="checkbox" value="Y" name="assistant" {if $op.assistant == 'Y'}{#checked#}{/if} />
           <input type="button" value="__Assistant__" onclick="selectAll('{$asstWeight}');" />&nbsp;&nbsp;
-				{/if}
+        {/if}
           <input type="button" value="__Select All__" onclick="selectAll(256,256,256,0);" />&nbsp;&nbsp;
           <input type="button" value="__Clear All__" onclick="selectAll(0,0,0,0);" />
         </td>
@@ -153,7 +153,7 @@
         document.EditOther.invite.checked = ( view != 0 )
         if ( document.EditOther.assistant )
           document.EditOther.assistant.checked = ( assistant == 1 )
-				
+        
         for ( i = 1; i <= 256; ) {ldelim}
           var
             aname = 'a_' + i,

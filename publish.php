@@ -20,8 +20,8 @@
  *
  * Security:
  * DO NOT ALLOW if either;
- * PUBLISH_ENABLED is not 'Y' (set in Admin System Settings).
- * USER_PUBLISH_ENABLED is not 'Y' (set in each user's Preferences).
+ * _ENABLE_PUBLISH is not 'Y' (set in Admin System Settings).
+ * ENABLE_USER_PUBLISH is not 'Y' (set in each user's Preferences).
  */
 
 require_once 'includes/classes/WebCalendar.class.php';
@@ -58,7 +58,7 @@ if ( $user == 'publish.php' )
 
 $WC->setLanguage ();
 
-if ( ! getPref ( 'PUBLISH_ENABLED' ) ) {
+if ( ! getPref ( '_ENABLE_PUBLISH' ) ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth ();
   exit;
@@ -80,12 +80,12 @@ EOT;
   exit;
 }
 
-// Load user preferences (to get the USER_PUBLISH_ENABLED and
+// Load user preferences (to get the ENABLE_USER_PUBLISH and
 // DISPLAY_UNAPPROVED setting for this user).
 //TODO
 $login = $user;
 
-if ( ! getPref ( 'USER_PUBLISH_ENABLED' ) ) {
+if ( ! getPref ( 'ENABLE_USER_PUBLISH' ) ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth ();
   exit;

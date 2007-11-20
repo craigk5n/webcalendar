@@ -71,9 +71,9 @@ if ( ! empty ( $error ) ) {
 
   // get list of all users
   $users = get_my_users ( '', 'view' );
-  if ( getPref ( 'NONUSER_ENABLED' ) ) {
+  if ( getPref ( '_ENABLE_NONUSERS' ) ) {
     $nonusers = get_my_nonusers ( $user, true, 'view' );
-    $users = ( getPref ( 'NONUSER_AT_TOP' ) ) ? 
+    $users = ( getPref ( '_NONUSER_AT_TOP' ) ) ? 
 	  array_merge($nonusers, $users) : array_merge($users, $nonusers);
   }
   for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {

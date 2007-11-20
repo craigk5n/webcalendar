@@ -21,7 +21,7 @@
  *           Only NUC Calendar that are marked PUBLIC can be specified.
  *
  * Security:
- * $PUBLISH_ENABLED must be set true
+ * _ENABLE_PUBLISH must be set true
  */
 include_once 'includes/init.php';
 
@@ -31,7 +31,7 @@ $DISPLAY_WEEKENDS = true;
 $MINICALFONT = '11px';
 $MINICALWIDTH = '160px';
 
-if ( ! getPref ( 'PUBLISH_ENABLED' ) ) {
+if ( ! getPref ( '_ENABLE_PUBLISH' ) ) {
   header ( 'Content-Type: text/plain' );
   echo print_not_auth ();
   exit;
@@ -48,7 +48,7 @@ $MINI_TARGET = '_blank';
 // Allow the URL to override the user setting such as
 // "minical.php?user=_NUC_training".
 // If false, __public_ will always be used.
-$allow_user_override = false;
+$_ALLOW_USER_OVERRIDE = false;
 
 // End configurable settings...
 
@@ -56,7 +56,7 @@ $allow_user_override = false;
 //TODO
 $login = $user;
 
-if ( $allow_user_override ) {
+if ( $_ALLOW_USER_OVERRIDE ) {
   $u = $WC->getValue ( 'user', '[A-Za-z0-9_\.=@,\-]+', true );
   if ( ! empty ( $u ) )
     //TODO

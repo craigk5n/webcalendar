@@ -5,7 +5,7 @@ initPhpVars( 'pref' );
 function valid_form ( form ) {
   var err = "";
   var colorErr = false;
-  if ( ALLOW_COLOR_CUSTOMIZATION == 'Y') {
+  if ( _ALLOW_COLOR_CUSTOMIZATION == 'Y') {
     if ( ! valid_color ( form.pref_BGCOLOR.value ) ) {
       err += BGCOLOR;
     } else if ( ! valid_color ( form.pref_H2COLOR.value ) ) {

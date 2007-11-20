@@ -145,13 +145,13 @@ function export_get_attendee( $eid, $export ) {
         default:
           continue;
       } //end switch
-			
+      
       if ( strcmp( $export, 'vcal' ) == 0 )
         $attendee[$count] .= ';ENCODING=QUOTED-PRINTABLE';
      
-		  $attendee[$count] .= ":CN:$user[0] $user[1]";
-			
-			if ( ! empty ( $user[2] ) ) 
+      $attendee[$count] .= ":CN:$user[0] $user[1]";
+      
+      if ( ! empty ( $user[2] ) ) 
         $attendee[$count] .= ":MAILTO:$user[2]";
 
       $count++;
@@ -216,8 +216,8 @@ function export_recurrence_ical( $eid, $simple=false ) {
   $recurrance = '';
   $sql = 'SELECT cal_date, cal_exdate FROM webcal_entry_exceptions
     WHERE cal_id = ?';
-		
-	 
+    
+   
   $res = dbi_execute( $sql, array ( $eid ) );
 
   if ( $res ) {
@@ -245,9 +245,9 @@ function export_recurrence_ical( $eid, $simple=false ) {
   if ( $res ) {
     if ( $row = dbi_fetch_row( $res ) ) {
       $type = $row[0];
-			if ( ! empty ( $row[1]) ) {
+      if ( ! empty ( $row[1]) ) {
         $end = date ( 'Ymd', $row[1] );
-			}
+      }
       $interval = $row[2];
       $bymonth = $row[3];
       $bymonthday = $row[4];
@@ -378,7 +378,7 @@ function export_recurrence_ical( $eid, $simple=false ) {
 function export_recurrence_vcal( $eid, $date ) {
 
   $ret = '';
-	
+  
   $sql = 'SELECT cal_date, cal_exdate FROM webcal_entry_exceptions
     WHERE cal_id = ?';
 
@@ -496,8 +496,8 @@ function export_recurrence_vcal( $eid, $date ) {
       }
     }
   }
-	
-	return $ret;
+  
+  return $ret;
 }
 
 /*
@@ -526,10 +526,10 @@ function export_alarm_vcal( $eid, $date ) {
   // get reminders
   $reminder = getReminders ( $eid );
 
-	if ( ! empty ( $reminder['date'] ) ) {
-		return 'DALARM:' . $reminder['date'] . 'T'
-		 . $reminder['time'] . "Z\r\n";
-	}
+  if ( ! empty ( $reminder['date'] ) ) {
+    return 'DALARM:' . $reminder['date'] . 'T'
+     . $reminder['time'] . "Z\r\n";
+  }
 }
 // Convert the webcalendar reminder to an ical VALARM
 function export_alarm_ical ( $eid, $date, $description, $task_complete = true ) {
@@ -621,7 +621,7 @@ function export_get_event_entry( $eid = 'all', $attachment = false ) {
     if ( $attachment == true && ! $WC->loginId() ) {
       $sql .= ' OR weu.cal_login_id = we.cal_create_by';
     }
-	} //end if $eid=all
+  } //end if $eid=all
   if ( $include_layers && $layers ) {
     foreach ( $layers as $layer ) {
       $sql .= ' OR weu.cal_login_id = ?';
@@ -714,7 +714,7 @@ function create_import_instance () {
 
 function export_vcal ( $eid ) {
   global $errorStr;
-	
+  
   $ret = '';
   $res = export_get_event_entry( $eid );
 
@@ -724,15 +724,15 @@ function export_vcal ( $eid ) {
   while ( $entry = dbi_fetch_row( $res ) ) {
     $entry_array[$count++] = $entry;
   }
-	
+  
   dbi_free_result( $res );
 
   //abort if no records to output
   if ( $count == 0 ) {
     $errorStr = translate ( 'No Events Found', true );
     return;
-	}
-	
+  }
+  
   if ( count( $entry_array ) > 0 ) {
     $ret .= "BEGIN:VCALENDAR\r\n";
     $ret .= generate_prodid ();
@@ -821,8 +821,8 @@ function export_vcal ( $eid ) {
   } //end while (list ($key,$row) = each ( $entry_array))
   if ( count ( $entry_array ) > 0 )
     $ret .= "END:VCALENDAR\r\n";
-		
-	return $ret;
+    
+  return $ret;
 } //end function
 
 function export_ical ( $eid = 'all', $attachment = false ) {
@@ -843,7 +843,7 @@ function export_ical ( $eid = 'all', $attachment = false ) {
   if ( $count == 0 ) {
     $errorStr = translate ( 'No Events Found', true );
     return;
-	}
+  }
   // Always output something, even if no records come back
   // This prevents errors on the iCal client
   $ret = "BEGIN:VCALENDAR\r\n";
@@ -855,7 +855,7 @@ function export_ical ( $eid = 'all', $attachment = false ) {
   $ret .= generate_prodid ();
   $ret .= "VERSION:2.0\r\n";
   $ret .= "METHOD:PUBLISH\r\n";
-	 
+   
   while ( list( $key, $row ) = each( $entry_array ) ) {
     $eid = $row[0];
     $event_uid = generate_uid( $eid );
@@ -951,7 +951,7 @@ function export_ical ( $eid = 'all', $attachment = false ) {
     while ( list( $key, $value ) = each( $array ) )
     $ret .= "$value\r\n";
 
-	  $ret .= 'LAST-MODIFIED:' . export_get_utc_date( $moddate ) . "\r\n";
+    $ret .= 'LAST-MODIFIED:' . export_get_utc_date( $moddate ) . "\r\n";
 
     $name = preg_replace( "/\r/", ' ', $name );
     // escape,;  \ in octal ascii
@@ -1073,7 +1073,7 @@ function export_ical ( $eid = 'all', $attachment = false ) {
 
   $ret .= "END:VCALENDAR\r\n";
     
-	return $ret;
+  return $ret;
 
 }
 // IMPORT FUNCTIONS BELOW HERE
@@ -1297,7 +1297,7 @@ function import_data ( $data, $overwrite, $type ) {
       }
       $names[] = 'cal_date';
       $values[] = $Entry['start_date'];
-	  //TODO
+    //TODO
       //$names[] = 'cal_time';
       //$values[] = ( ! empty ( $Entry['Untimed'] ) && $Entry['Untimed'] == 1 )
       //? '-1' : $Entry['start_time'];
@@ -1332,7 +1332,7 @@ function import_data ( $data, $overwrite, $type ) {
       }
       if ( ! empty ( $Entry['Due'] ) ) {
         $names[] = 'cal_due_date';
-		//TODO convert to TS
+    //TODO convert to TS
         $values[] = sprintf ( "%d", substr ( $Entry['Due'], 0, 8 ) );
       }
       if ( ! empty ( $Entry['CalendarType'] ) ) {
@@ -1369,7 +1369,7 @@ function import_data ( $data, $overwrite, $type ) {
       // This will only be practical for mysql and MSSQL/Postgres as
       // these do not have limits on the table definition
       // TODO Add this option to preferences
-      if ( getPref ( 'LIMIT_DESCRIPTION_SIZE' ) ) {
+      if ( getPref ( '_LIMIT_DESCRIPTION_SIZE' ) ) {
         // limit length to 1024 chars since we setup tables that way
         if ( strlen ( $Entry['Description'] ) >= 1024 ) {
           $Entry['Description'] = substr ( $Entry['Description'], 0, 1019 )
@@ -1521,7 +1521,7 @@ function import_data ( $data, $overwrite, $type ) {
             ( cal_id, cat_id, cat_order, cat_owner ) VALUES ( ?, ?, ?, ? )';
 
           if ( ! dbi_execute ( $sql, array ( $eid, $cat_id, 
-		    $cat_order++, $WC->loginId() ) ) ) {
+        $cat_order++, $WC->loginId() ) ) ) {
             $error = db_error ();
             // do_debug ( "Error: " . $error );
             break;
@@ -1777,7 +1777,7 @@ function import_data ( $data, $overwrite, $type ) {
       }
     }
   }
-	return $ret;
+  return $ret;
 }
 
 /*Functions from import_ical.php
@@ -2255,6 +2255,7 @@ function RepeatType ( $type ) {
 function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0',
   $plus_m = '0', $plus_y = '0' ) {
   global $SERVER_TIMEZONE, $calUser;
+
   $this_TIMEZONE = $Z = '';
 
   $user_TIMEZONE = getPref ( 'TIMEZONE', 1, $calUser );
@@ -2301,7 +2302,7 @@ function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0',
   } //end switch
   // Convert time from user's timezone to GMT if datetime value
   if ( empty ( $this_TIMEZONE ) ) {
-    $this_TIMEZONE = ( ! empty ( $user_TIMEZONE ) ? $user_TIMEZONE : $SERVER_TIMEZONE );
+    $this_TIMEZONE = ( ! empty ( $user_TIMEZONE ) ? $user_TIMEZONE : $_SERVER_TIMEZONE );
   }
   if ( empty ( $Z ) ) {
     putenv ( "TZ=$this_TIMEZONE" );
@@ -2875,12 +2876,12 @@ function get_categories_id_byname ( $cat_names ) {
   foreach ( $categories as $cat_name ) {
     $res = dbi_execute ( 'SELECT cat_id FROM webcal_categories WHERE '
        . 'cat_name  = ? AND ' . '(cat_owner = ? OR cat_owner IS NULL )', 
-	   array ( $cat_name, $WC->loginId() ) );
+     array ( $cat_name, $WC->loginId() ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         $ret[] = $row[0];
         dbi_free_result ( $res );
-      } else if ( getPref ( 'IMPORT_CATEGORIES' ) ) {
+      } else if ( getPref ( '_IMPORT_CATEGORIES' ) ) {
         // Need to insert new Category
         $res = dbi_execute ( 'SELECT MAX(cat_id) FROM webcal_categories' );
         if ( $res ) {
@@ -2890,7 +2891,7 @@ function get_categories_id_byname ( $cat_names ) {
           $sql = 'INSERT INTO webcal_categories '
            . '( cat_id, cat_owner, cat_name ) ' . 'VALUES ( ?,?,? )';
           if ( ! dbi_execute ( $sql, 
-		    array ( $eid, $WC->loginId(), $cat_name ) ) ) {
+        array ( $eid, $WC->loginId(), $cat_name ) ) ) {
             $error = db_error ();
             // do_debug ( $error );
           } else {

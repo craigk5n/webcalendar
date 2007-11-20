@@ -24,13 +24,13 @@ class WebCalMailer extends phpmailer {
     global $mailerError;
     $mailerError = '';
     $this->Version .= ' extended by ' . generate_application_name ( false );
-    $this->Host = getPref ( 'SMTP_HOST', 2 );
-    $this->Mailer = getPref ( 'EMAIL_MAILER', 2 );
+    $this->Host = getPref ( '_SMTP_HOST', 2 );
+    $this->Mailer = getPref ( '_EMAIL_MAILER', 2 );
     $this->CharSet = translate ( 'charset' );
     // Turn on SMTP authentication.
-    $this->SMTPAuth = ( getPref ( 'SMTP_AUTH', 2 ) ? true : false );
-    $this->Username = getPref ( 'SMTP_USERNAME', 2 ); // SMTP username.
-    $this->Password = getPref ( 'SMTP_PASSWORD', 2 ); // SMTP password.
+    $this->SMTPAuth = ( getPref ( '_SMTP_AUTH', 2 ) ? true : false );
+    $this->Username = getPref ( '_SMTP_USERNAME', 2 ); // SMTP username.
+    $this->Password = getPref ( '_SMTP_PASSWORD', 2 ); // SMTP password.
   }
 
   /* Build email from single via single class call. */
@@ -96,22 +96,22 @@ class WebCalMailer extends phpmailer {
 
   /* Locate common error function here. */
   function MailError ( $mailerError='', $error='' ) {
-	  global $smarty;
-		
-		$errorStr = '';
+    global $smarty;
+    
+    $errorStr = '';
     build_header ();
-		if ( $mailerError ) 
-		   $errorStr = '
+    if ( $mailerError ) 
+       $errorStr = '
          <h2>' . translate ( 'Email' ) . ' '
-				 . translate ( 'Error' ) . '</h2>
+         . translate ( 'Error' ) . '</h2>
          <blockquote>' . $mailerError . '</blockquote>'
-		     . ( empty ( $error ) ? translate ( 'Changes successfully saved' ) : '' );
-		else
-		  $errorStr = $error ;
+         . ( empty ( $error ) ? translate ( 'Changes successfully saved' ) : '' );
+    else
+      $errorStr = $error ;
 
     $smarty->assign ( 'errorStr', $errorStr );
     $smarty->display ( 'error.tpl' );
-	}
+  }
 }
 /*
  The following comments will be picked up by update_translation.pl so

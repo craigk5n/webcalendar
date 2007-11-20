@@ -5,7 +5,7 @@ $icon_path = 'icons/';
 
   
 $can_edit = ( @is_dir ( $icon_path ) &&
-  ( getPref ( 'ENABLE_ICON_UPLOADS' ) || $WC->isAdmin() ) );
+  ( getPref ( '_ENABLE_ICON_UPLOADS' ) || $WC->isAdmin() ) );
 
 if ( ! $can_edit || ! access_can_access_function ( ACCESS_CATEGORY_MANAGEMENT ) )
   exit;

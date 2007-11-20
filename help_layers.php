@@ -23,7 +23,7 @@ $tmp_arr = array (
   translate ( 'Specifies the user that you would like to see displayed in your calendar.' ),
   );
 list_help ( $tmp_arr );
-if ( getPref ( 'ALLOW_COLOR_CUSTOMIZATION' ) )
+if ( getPref ( '_ALLOW_COLOR_CUSTOMIZATION' ) )
   echo '
     <h3>' . translate ( 'Colors' ) . '</h3>
     <p>' . translate ( 'colors-help' ) . '</p>';

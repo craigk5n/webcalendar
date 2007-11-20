@@ -56,9 +56,9 @@ if ( empty ( $error ) ) {
 // Check if we can display basic info for RSS FEED
 $rssuser = $WC->getGET ( 'rssuser' );
 if ( ! empty ( $rssuser ) ) {
-  $user_rss_enabled = getPref ( 'USER_RSS_ENABLED', 1, $rssuser );
+  $user_rss_enabled = getPref ( 'ENABLE_USER_RSS', 1, $rssuser );
   $user_rss_timezone = getPref ( 'TIMEZONE', 1, $rssuser );
-  $rss_view = ( getPref ( 'RSS_ENABLED', 2 ) && $user_rss_enabled == 'Y' &&
+  $rss_view = ( getPref ( '_ENABLE_RSS', 2 ) && $user_rss_enabled == 'Y' &&
     $friendly == 1 && ! empty ( $rssuser ) );
   if ( $rss_view == true ) {
     $hide_details = false;
@@ -242,7 +242,7 @@ $email_addr = empty ( $createby['email'] ) ? '' : $createby['email'];
 $event_date = ( $event_repeats && ! empty ( $date ) ? $date : $item->getDate ( 'Ymd' ) );
 
 // Get category Info
-if ( getPref ( 'CATEGORIES_ENABLED' ) ) {
+if ( getPref ( '_ENABLE_CATEGORIES' ) ) {
   $categories = get_categories_by_eid ( $eid,
     ( ( ! empty ( $user ) && strlen ( $user ) ) && $WC->isAdmin() 
       ? $user : $WC->loginId() ), true );
@@ -253,7 +253,7 @@ if ( getPref ( 'CATEGORIES_ENABLED' ) ) {
 $smarty->assign ('reminder', getReminders ( $eid, true ) );
 
 
-if ( getPref ( 'ALLOW_HTML_DESCRIPTION' ) ) {
+if ( getPref ( '_ALLOW_HTML_DESCRIPTION' ) ) {
   $str = $item->getDescription ();
   // $str = str_replace ( '&', '&amp;', $item->getDescription () );
   $str = str_replace ( '&amp;amp;', '&amp;', $str );
@@ -312,11 +312,11 @@ if ( $item->getDuration () > 0 && $item->getDuration () != 1440 ) {
    . ( $dur_m > 0 ? $dur_m . ' ' . translate ( 'minutes' ) : '' ) );
 }
 
-if ( ! getPref ( 'DISABLE_PRIORITY_FIELD' ) ){
+if ( getPref ( '_ENABLE_PRIORITY_FIELD' ) ){
  $smarty->assign ( 'itemPriority', $item->getPriority () . '-' . $pri[ceil($item->getPriority ()/3)] );
 }			
 			
-if ( ! getPref ( 'DISABLE_ACCESS_FIELD' ) ) {
+if ( getPref ( '_ENABLE_ACCESS_FIELD' ) ) {
  $smarty->assign ( 'itemAccess', $item->getAccessName() );
 }
 
@@ -357,7 +357,7 @@ $smarty->assign ( 'site_extras', $site_extras );
 // participants
 // Only ask for participants if we are multi-user.
 $allmails = $approved = $rejected = $waiting = array ();
-$show_participants = ( ! getPref ( 'DISABLE_PARTICIPANTS_FIELD' ) );
+$show_participants = ( getPref ( '_ENABLE_PARTICIPANTS_FIELD' ) );
 if ( $WC->isAdmin() )
   $show_participants = true;
 $smarty->assign ( 'show_participants', $show_participants );
@@ -425,7 +425,7 @@ if ( ! _WC_SINGLE_USER && $show_participants ) {
 	  $smarty->assign ( 'rejected', $rejected );
 	  $smarty->assign ( 'waiting', $waiting );
     // show external users here...
-    if ( getPref ( 'ALLOW_EXTERNAL_USERS' ) ) {
+    if ( getPref ( '_ALLOW_EXTERNAL_USERS' ) ) {
       $external_users = event_get_external_users ( $eid, 1 );
 			if ( ! empty ( $external_users ) ) 
         $smarty->assign ( 'ext_users', explode ( "\n", $external_users ) );
@@ -487,12 +487,12 @@ if ( ( $is_my_event || $WC->isNonuserAdmin() || $can_approve ) &&
 
 // TODO add these permissions to the UAC list
 $smarty->assign ( 'can_add_attach', ( Doc::attachmentsEnabled () &&
-  $can_edit && ( $is_my_event && getPref ( 'ALLOW_ATTACH_PART' ) ) ||
-  ( getPref ( 'ALLOW_ATTACH_ANY' ) && $event_status != 'D' ) ) );
+  $can_edit && ( $is_my_event && getPref ( '_ALLOW_ATTACH_PART' ) ) ||
+  ( getPref ( '_ALLOW_ATTACH_ANY' ) && $event_status != 'D' ) ) );
 
 $smarty->assign ( 'can_add_comment', ( Doc::commentsEnabled () &&
-  $can_edit && ( $is_my_event && getPref ( 'ALLOW_COMMENTS_PART' ) ) ||
-  ( getPref ( 'ALLOW_COMMENTS_ANY' ) && $event_status != 'D' ) ) );
+  $can_edit && ( $is_my_event && getPref ( '_ALLOW_COMMENTS_PART' ) ) ||
+  ( getPref ( '_ALLOW_COMMENTS_ANY' ) && $event_status != 'D' ) ) );
 
 
 
@@ -501,7 +501,7 @@ $smarty->assign ( 'can_add_comment', ( Doc::commentsEnabled () &&
 // If approved, but event category not set (and user does not have permission
 // to edit where they could also set the category), then allow them to
 // set it through set_cat.php.
-if ( empty ( $user ) && getPref ( 'CATEGORIES_ENABLED' ) && !_WC_READONLY &&
+if ( empty ( $user ) && getPref ( '_ENABLE_CATEGORIES' ) && !_WC_READONLY &&
     $is_my_event && ! $WC->isLogin( '__public__' ) && !
     $is_nonuser && $event_status != 'D' && ! $can_edit ) {
   $smarty->assign ( 'setCategory', true );

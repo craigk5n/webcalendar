@@ -34,7 +34,7 @@ if ( empty ( $users ) || empty ( $users[0] ) )
 // was not hacked up to include users that they don't really have access to.
 if ( $search_others ) {
   // If user can only see users in his group, then remove users not in his group.
-  if ( getPref ( 'USER_SEES_ONLY_HIS_GROUPS' ) && getPref ( 'GROUPS_ENABLED' ) ) {
+  if ( getPref ( '_USER_SEES_ONLY_HIS_GROUPS' ) && getPref ( '_ENABLE_GROUPS' ) ) {
     $myusers = get_my_users ( '', 'view' );
     $userlookup = array ();
     for ( $i = 0, $cnt = count ( $myusers ); $i < $cnt; $i++ ) {

@@ -22,15 +22,15 @@ function smarty_function_print_tabs ( $params, &$smarty )
 
   create_menu_edges ();
   $class= 'tabfor';
-	$tabs = $params['tabs'];
+  $tabs = $params['tabs'];
   $ret ='
-	<div id="tabs">';
+  <div id="tabs">';
   foreach ( $tabs as $name=>$label ) {
     $ret .= '
-		<span class="' .$class .'" id="tab_' . $name . '">
-		<a onclick="return setTab(\''. $name. '\')">'
-		  . $label . '</a></span>';
-	  $class = 'tabbak';
+    <span class="' .$class .'" id="tab_' . $name . '">
+    <a onclick="return setTab(\''. $name. '\')">'
+      . $label . '</a></span>';
+    $class = 'tabbak';
 
   }
   $ret .='</div>'; 
@@ -40,37 +40,37 @@ function smarty_function_print_tabs ( $params, &$smarty )
 
 function create_menu_edges () {
 
-  $dir_name = 'cache/images/';
+  $dir_name = _WC_PUB_CACHE . '/images/';
 
   $FGCOLOR = substr ( getPref ( 'CELLBG', 
-	   _WC_SCRIPT == 'admin.php' ? 2 : 1 ), 1);	
+     _WC_SCRIPT == 'admin.php' ? 2 : 1 ), 1);  
   
-	if ( file_exists ( $dir_name . $FGCOLOR . '_lt.png' ) ) 
-	  return;
+  if ( file_exists ( $dir_name . $FGCOLOR . '_lt.png' ) ) 
+    return;
 
   $FGred = hexdec ( substr ( $FGCOLOR, 0, 2 ) );
   $FGgrn = hexdec ( substr ( $FGCOLOR, 2, 2 ) );
   $FGblu = hexdec ( substr ( $FGCOLOR, 4, 2 ) );
-				
+        
 
   if ( function_exists ( 'imagepng' ) ) {
     $image = imagecreatefrompng ( 'images/left_menu.png' );
-		
-		$colors = imagecolorallocate ( $image, $FGred, $FGgrn, $FGblu );
-		imagefill ( $image, 0, 0, $colors );
+    
+    $colors = imagecolorallocate ( $image, $FGred, $FGgrn, $FGblu );
+    imagefill ( $image, 0, 0, $colors );
     imagepng ( $image, $dir_name . $FGCOLOR . '_lt.png' );
-		
-		$colors = imagecolorallocate ( $image, $FGred, $FGgrn, $FGblu );
-		imagefill ( $image, 0, 9, $colors );
+    
+    $colors = imagecolorallocate ( $image, $FGred, $FGgrn, $FGblu );
+    imagefill ( $image, 0, 9, $colors );
     imagepng ( $image, $dir_name . $FGCOLOR . '_rt.png' );
-				
+        
   } elseif ( function_exists ( 'imagegif' ) ) {
     $image = imagecreatefromgif ( 'images/lft_menu.gif' );
-		    
+        
     imagegif ( $image, $file_name );
   } 
-	
-	
+  
+  
   imagedestroy ( $image );
   return;
 } 

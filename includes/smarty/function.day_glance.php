@@ -15,7 +15,7 @@ function smarty_function_day_glance ( $params, &$smarty ) {
   $date = $params['date'];
   $user = $params['user'];
   $can_add = $WC->canAdd();
-	
+  
   $time_slots = getPref ( 'TIME_SLOTS' );
   if ( ! $time_slots )
     $time_slots = 24;
@@ -106,13 +106,13 @@ function smarty_function_day_glance ( $params, &$smarty ) {
       if ( ! empty ( $hour_arr[$i] ) )
         $ret .= '
         <td id="td' . $date . $time_h . $time_m 
-				  . '" class="hasevents"><div>'  . $hour_arr[$i] . '</div></td>';
+          . '" class="hasevents"><div>'  . $hour_arr[$i] . '</div></td>';
 
       $rowspan--;
     } else {
       $ret .= '
         <td id="td' . $date . $time_h . $time_m 
-				  . '" ';
+          . '" ';
       if ( empty ( $hour_arr[$i] ) )
         $ret .= ( $date == $WC->todayYmd ? ' class="today"' : '' )
          . '><div>';
@@ -268,7 +268,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     <dl class="desc">
       <dt>' . translate ( 'Description' ) . ':</dt>
       <dd>'
-     . ( getPref ( 'ALLOW_HTML_DESCRIPTION' )
+     . ( getPref ( '_ALLOW_HTML_DESCRIPTION' )
       ? $getDesc : strip_tags ( $getDesc ) ) . '</dd>
     </dl>' : '' ) . "<br />\n";
 }

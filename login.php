@@ -145,7 +145,7 @@ $smarty->assign ( 'last_login', $last_login );
 $smarty->assign ( 'remember_last_login', $remember_last_login );
 
 
-if ( getPref ( 'NONUSER_ENABLED', 2  ) ) { 
+if ( getPref ( '_ENABLE_NONUSERS', 2  ) ) { 
 $nulist = @get_nonuser_cals ();
 $nuclist = array();
 for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
@@ -157,7 +157,7 @@ for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
 $smarty->assign ( 'nuclist', $nuclist );
 }
 
-if ( getPref ( 'ALLOW_SELF_REGISTRATION', 2  ) ) { 
+if ( getPref ( '_ALLOW_SELF_REGISTRATION', 2  ) ) { 
   // We can limit what domain is allowed to self register
   // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
   $valid_ip = validate_domain ();

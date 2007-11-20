@@ -12,8 +12,8 @@ function valid_form ( form ) {ldelim}
 function myOnLoad() {ldelim}
   document.login_form.login.focus();
   {if $login}
-	  document.login_form.login.select();
-	{/if}
+    document.login_form.login.select();
+  {/if}
   {if $error}
      alert ( '{$error}' );
   {/if}
@@ -32,8 +32,8 @@ function myOnLoad() {ldelim}
   <p>__You have been logged out__</p>
   <br /><br />
   <a href="login.php{if $return_path}?return_path={$return_path|htmlentities}{/if}" 
-	class="nav">__Login__</a>
-	<br /><br /><br />
+  class="nav">__Login__</a>
+  <br /><br /><br />
 
 
 {else}
@@ -59,7 +59,7 @@ function myOnLoad() {ldelim}
 <tr><td colspan="3" style="font-size: 10px;">
  <input type="checkbox" name="remember" id="remember" tabindex="3" 
    value="yes" {if $remember_last_login}{#checked#}{/if}/>
-	 <label for="remember">&nbsp;__Save login via cookies__</label>
+   <label for="remember">&nbsp;__Save login via cookies__</label>
 </td></tr>
 <tr><td colspan="4" class="alignC">
  <input type="submit" value="__Login__" tabindex="4" />
@@ -71,7 +71,7 @@ function myOnLoad() {ldelim}
   <a class="nav" href="nulogin.php?login={$v.user}">__Access@R1__{$v.fullname}__calendar@L1__</a><br />
 {/foreach}
 
-{if $s.DEMO_MODE}
+{if $s._DEMO_MODE}
   <b>Demo login: user = "demo", password = "demo"</b><br />
 {/if}
 <br /><br />

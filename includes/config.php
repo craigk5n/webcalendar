@@ -119,7 +119,7 @@ function do_config ( $fileLoc ) {
     if ( file_exists ( 'install/index.php' ) ) {
       die_via_installation ();
     } else  // There is no settings.php file.
-	  die_miserable_death ( str_replace ( 'XXX defined in ', '',
+    die_miserable_death ( str_replace ( 'XXX defined in ', '',
         translate ( 'Could not find XXX defined in settings.php file...' ) ) );
   }
   $data = '';
@@ -179,7 +179,7 @@ function do_config ( $fileLoc ) {
 
   if ( defined ( '_WC_DB_CACHEDIR' ) ) 
     dbi_init_cache ( _WC_DB_CACHEDIR );
-	
+  
   if ( ! empty ( $cfg['db_debug'] ) &&
       preg_match ( '/(1|true|yes|enable|on)/i', $cfg['db_debug'] ) )
     dbi_set_debug ( true );
@@ -192,7 +192,19 @@ function do_config ( $fileLoc ) {
 
   define ( '_WC_RUN_MODE', preg_match ( '/(dev)/i', 
     $cfg['mode'] ) ? 'dev' : 'prod' );
-   
+
+  define ( '_WC_PUB_CACHE', empty ( $cfg['pub_cache'] ) ? 'cache' : $cfg['pub_cache'] );
+  if ( ! @is_dir (  _WC_PUB_CACHE ) ) 
+    @mkdir ( _WC_PUB_CACHE );
+  if ( ! @is_dir (  _WC_PUB_CACHE . '/css' ) ) 
+    @mkdir ( _WC_PUB_CACHE . '/css' );
+  if ( ! @is_dir (  _WC_PUB_CACHE . '/images' ) ) 
+    @mkdir ( _WC_PUB_CACHE . '/images' );
+  if ( ! @is_dir (  _WC_PUB_CACHE . '/templates_c' ) ) 
+    @mkdir ( _WC_PUB_CACHE . '/templates_c' );
+  if ( ! @is_dir (  _WC_PUB_CACHE . '/translations' ) )
+    @mkdir ( _WC_PUB_CACHE . '/translations' );
+      
   define ( '_WC_phpdbiVerbose',  _WC_RUN_MODE == 'dev' ? true : false );
   
   define ( '_WC_SINGLE_USER', preg_match ( '/(1|yes|true|on)/i',
@@ -206,11 +218,11 @@ function do_config ( $fileLoc ) {
 
   define ( '_WC_HTTP_AUTH', preg_match ( '/(1|yes|true|on)/i',
       $cfg['use_http_auth'] ) ? true : false );
-	
-	if ( ! empty ( $cfg['user_app_path'] ) )	
+  
+  if ( ! empty ( $cfg['user_app_path'] ) )  
     define ( '_WC_USER_APP_PATH', $cfg['user_app_path'] );
-	
-	if ( ! empty ( $cfg['imap_server'] ) )		
+  
+  if ( ! empty ( $cfg['imap_server'] ) )    
     define ( '_WC_IMAP_SERVER', $cfg['imap_server'] );
 
   // Type of user authentication.
@@ -224,14 +236,14 @@ function do_config ( $fileLoc ) {
     _WC_DB_PASSWORD, _WC_DB_DATABASE, false );
   if ( $c ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
-       WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'',array(), false, false );
+       WHERE cal_setting = \'_WEBCAL_PROGRAM_VERSION\'',array(), false, false );
     if ( $rows ) {
       $row = $rows[0];
       if ( ! empty ( $row ) && $row[0] != PROGRAM_VERSION ) {
         die_via_installation ( $row[0] );
       }
     } else
-	  die_via_installation ();
+    die_via_installation ();
     dbi_close ( $c );
   } else { // Must mean we don't have a settings.php file.
     die_via_installation ();

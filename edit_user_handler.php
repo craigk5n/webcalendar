@@ -23,7 +23,7 @@ $username = $WC->getPOST ( 'username' );
 $uenabled = $WC->getPOST ( 'uenabled' );
 $reset_login = $WC->getPOST ( 'reset_login' );
 
-//only exist if EXTENDED_USER is enabled
+//only exist if _EXTENDED_USER is enabled
 $utelephone = $WC->getPOST ( 'utelephone' );
 $utitle = $WC->getPOST ( 'utitle' );
 $uaddress = $WC->getPOST ( 'uaddress' );

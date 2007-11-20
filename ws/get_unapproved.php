@@ -41,7 +41,7 @@ if ( empty ( $user ) )
   $user = $login;
 
 // If viewing different user then yourself...
-if ( $login != $user && ! getPref ( 'ALLOW_VIEW_OTHER'  ) {
+if ( $login != $user && ! getPref ( '_ALLOW_VIEW_OTHER'  ) {
     $out = '
   <error>' . translate ( 'Not authorized' ) . '</error>
 </events>
@@ -108,7 +108,7 @@ function process_event ( $eid, $name, $event_date, $event_time ) {
 
 // Get the list of unapproved events for the specified user.
 function get_unapproved ( $user ) {
-  global $key, $login, $NONUSER_ENABLED, $temp_fullname;
+  global $key, $login, $temp_fullname;
 
   $count = 0;
   $ret = '';
@@ -141,7 +141,7 @@ function get_unapproved ( $user ) {
 // Get an array of users for whom the current user has event approval permission.
 // Returns an array of logins.
 function get_users_to_approve () {
-  global $login, $NONUSER_ENABLED, $PUBLIC_ACCESS, $user;
+  global $login, $PUBLIC_ACCESS, $user;
   $app_user_hash = $app_users = $my_non_users = array ();
   $non_users = get_nonuser_cals ();
   foreach ( $non_users as $nonuser ) {
@@ -154,7 +154,7 @@ function get_users_to_approve () {
   // First, we list ourself.
   $app_users[] = $login;
   $app_user_hash[$login] = 1;
-  $all = ( getPref ( 'NONUSER_ENABLED' )
+  $all = ( getPref ( '_ENABLE_NONUSERS' )
     ? array_merge ( get_my_users (), $my_non_users ) : get_my_users () );
   for ( $j = 0, $cnt = count ( $all ); $j < $cnt; $j++ ) {
     $x = $all[$j]['cal_login'];

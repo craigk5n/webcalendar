@@ -20,13 +20,12 @@ function smarty_function_date_selectors( $params, &$smarty ) {
 
   //Generate the Date Select menu options
   $menu = getPref ( 'MENU_DATE_TOP' );
-	$padding = ( $menu ? '10px' : '60px' );
+  $padding = ( $menu ? '10px' : '60px' );
   $goStr = translate ( 'Go' );
   $ret = $urlArgs = $include_id = '';
-  $categories_enabled = getPref ( 'CATEGORIES_ENABLED' );
   $startview = getPref ( 'STARTVIEW' );
-	//Allow month, week, year selectors to keep custom view links
-	$stay_in_view = getPref ( 'STAY_IN_VIEW' );
+  //Allow month, week, year selectors to keep custom view links
+  $stay_in_view = getPref ( 'STAY_IN_VIEW' );
   if ( $stay_in_view && defined ( '_WC_CUSTOM_VIEW' ) ) {
     $include_id = true;
     $monthUrl = _WC_SCRIPT;
@@ -42,21 +41,21 @@ function smarty_function_date_selectors( $params, &$smarty ) {
     }
   }
   $ret .= '<table id="dateselector">
-	  <tr>
-		  <td id="dsleft" style="padding-left:'. $padding .'">
-		  <form action="' . $monthUrl
+    <tr>
+      <td id="dsleft" style="padding-left:'. $padding .'">
+      <form action="' . $monthUrl
    . '" method="get" id="monthform"> ' . $urlArgs
    . ( $WC->isUser() ? '
             <input type="hidden" name="user" id="user" value="' 
-			. $WC->userId() . '" />' : '' )
+      . $WC->userId() . '" />' : '' )
    . ( $WC->getId() && $include_id ? '
             <input type="hidden" name="eid" value="' 
-			. $WC->getId() . '" />' : '' )
+      . $WC->getId() . '" />' : '' )
    . ( $WC->catId() && $WC->catId() !=-99 && 
     ( $WC->isUser( false ) ) ? '
             <input type="hidden" name="cat_id"  id="cat_id" value="'
    . $WC->catId() . '" />' : '' ) . '
-			 <label for="monthselect"><a '
+       <label for="monthselect"><a '
    . 'href="javascript:$(\'monthform\').submit()">'
    . translate ( 'Month' ) . '</a>:&nbsp;</label>
             <select name="date" id="monthselect" '
@@ -86,7 +85,7 @@ function smarty_function_date_selectors( $params, &$smarty ) {
                 <option value="' . $dateYmd . '"'
        . ( $dateYmd == $thisdate ? SELECTED : '' ) . '>'
        . date_to_str ( $dateYmd, 'DATE_FORMAT_MY', 
-	     false, true) . '</option>';
+       false, true) . '</option>';
     }
   }
 
@@ -113,10 +112,10 @@ function smarty_function_date_selectors( $params, &$smarty ) {
    . '" method="get" id="weekform">' . $urlArgs
    . ( $WC->isUser() ? '
             <input type="hidden" name="user" value="' 
-			. $WC->userId() . '" />' : '' )
+      . $WC->userId() . '" />' : '' )
    . ( $WC->getId() && $include_id ? '
             <input type="hidden" name="eid" value="' 
-			. $WC->getId() . '" />' : '' )
+      . $WC->getId() . '" />' : '' )
    . ( $WC->catId() &&
     ( $WC->isUser( false ) ) ? '
             <input type="hidden" name="cat_id" value="'
@@ -136,13 +135,13 @@ function smarty_function_date_selectors( $params, &$smarty ) {
   $d = ( $WC->thisday ? $WC->thisday : date ( 'd' ) );
   $d_time = mktime ( 12, 0, 0, $m, $d, $y );
   $thisweek = date ( 'W', $d_time );
-	$wkstart = get_weekday_before ( $y, $m, $d );
+  $wkstart = get_weekday_before ( $y, $m, $d );
   $lastDay = ( ! getPref ( 'DISPLAY_WEEKENDS' ) ? 4 : 6 );
   for ( $i = -5; $i <= 9; $i++ ) {
     $twkstart = $wkstart + ( ONE_WEEK * $i );
     $twkend = $twkstart + ( ONE_DAY * $lastDay );
     $dateSYmd = date ( 'Ymd', $twkstart );
-	  $dateEYmd = date ( 'Ymd', $twkend );
+    $dateEYmd = date ( 'Ymd', $twkend );
     $dateW = date ( 'W', $twkstart + ONE_DAY  );
     // echo $twkstart . " " . $twkend;
     if ( $twkstart > 0 && $twkend < 2146021200 ) {
@@ -178,15 +177,15 @@ function smarty_function_date_selectors( $params, &$smarty ) {
     }
   }
   $ret .= '
-	  <td  id="dsright" style="padding-right:' . $padding .'">
-		  <form action="' . $yearUrl
+    <td  id="dsright" style="padding-right:' . $padding .'">
+      <form action="' . $yearUrl
    . '" method="get" id="yearform">' . $urlArgs
    . ( $WC->isUser() ? '
             <input type="hidden" name="user" value="' 
-			. $WC->userId() . '" />' : '' )
+      . $WC->userId() . '" />' : '' )
    . ( $WC->getId() && $include_id ? '
             <input type="hidden" name="eid" value="' 
-			. $WC->getId() . '" />' : '' )
+      . $WC->getId() . '" />' : '' )
    . ( $WC->catId() &&
     ( $WC->isUser( false ) ) ? '
             <input type="hidden" name="cat_id" value="'

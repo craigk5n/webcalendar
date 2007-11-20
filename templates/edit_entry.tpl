@@ -41,8 +41,8 @@
           <td class="tooltip alignT" title="__full-description-help@T__"><label for="entry_full">__Full Description__:</label></td>
           <td   colspan="4"><textarea name="entry_full" id="entry_full" {$textareasize}>{$description|htmlspecialchars}</textarea></td>
         </tr>
-          {if ! $s.DISABLE_ACCESS_FIELD || ! $s.DISABLE_PRIORITY_FIELD}
-        <tr> {if ! $s.DISABLE_ACCESS_FIELD}
+          {if $s._ENABLE_ACCESS_FIELD || $s._ENABLE_PRIORITY_FIELD}
+        <tr> {if $s._ENABLE_ACCESS_FIELD}
           <td class="tooltip" title="__access-help@T__"><label for="access">__Access__:</label></td>
           <td><select name="access" id="access">
               <option value="P" {if $access == 'P'}
@@ -54,8 +54,8 @@
             </select>
           </td>
           {/if}
-          {if ! $s.DISABLE_PRIORITY_FIELD}
-          <td class="tooltip" title="__priority-help@T__" {if ! $s.DISABLE_ACCESS_FIELD}align="right"{/if}><label for="priority">__Priority__:&nbsp;</label></td>
+          {if $s._ENABLE_PRIORITY_FIELD}
+          <td class="tooltip" title="__priority-help@T__" {if $s._ENABLE_ACCESS_FIELD}align="right"{/if}><label for="priority">__Priority__:&nbsp;</label></td>
           <td><select name="priority" id="priority">
       {foreach from=$priority key=k item=v}
               <option  value="{$k}" {$v.selected}>{$v.display}</option>
@@ -114,14 +114,14 @@
         </tr>
       
       {/if}
-      {if  ! $s.DISABLE_LOCATION_FIELD}
+      {if $s._ENABLE_LOCATION_FIELD}
         <tr>
           <td class="tooltip" title="__location-help@T__"><label for="location">__Location__:</label></td>
           <td colspan="4"><input type="text" name="location" id="location" size="55" value="{$location|htmlspecialchars}" />
           </td>
         </tr>
         {/if}
-        {if ! $s.DISABLE_URL_FIELD}
+        {if $s._ENABLE_URL_FIELD}
         <tr>
           <td class="tooltip" title="__url-help@T__"><label for="entry_url">__URL__:</label></td>
           <td colspan="4"><input type="text" name="entry_url" id="entry_url" size="100" 
@@ -350,7 +350,7 @@
           <td colspan="3"></td>
         </tr>
 
-        {if $s.ALLOW_EXTERNAL_USERS}
+        {if $s._ALLOW_EXTERNAL_USERS}
         <tr title="__external-participants-help@T__">
           <td class="tooltip alignT"><label for="entry_extpart">__External Participants__:</label></td>
           <td><textarea name="externalparticipants" id="entry_extpart" rows="5" cols="40">
@@ -362,7 +362,7 @@
     </div>
     {/if}
     <!-- REPEATING INFO -->
-    {if ! $s.DISABLE_REPEATING_FIELD} <a name="tabpete"></a>
+    {if $s._ENABLE_REPEATING_FIELD} <a name="tabpete"></a>
     <div id="tabscontent_pete">
       <fieldset>
       <legend>__Repeat__</legend>
@@ -578,7 +578,7 @@
     <!-- End tabscontent_pete -->
     {/if}
     <!-- REMINDER INFO -->
-    {if ! $s.DISABLE_REMINDER_FIELD} <a name="tabreminder"></a>
+    {if $s._ENABLE_REMINDER_FIELD} <a name="tabreminder"></a>
     <div id="tabscontent_reminder">
       <fieldset>
       <legend>__Reminders__</legend>

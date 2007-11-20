@@ -31,7 +31,7 @@ $owner = ( $WC->isNonuserAdmin() ? $WC->userId() : $WC->loginId() );
 // Load list of groups.
 $sql = 'SELECT wg.cal_group_id, wg.cal_name FROM webcal_group wg';
 
-if ( getPref ( 'USER_SEES_ONLY_HIS_GROUPS' ) ) {
+if ( getPref ( '_USER_SEES_ONLY_HIS_GROUPS' ) ) {
   $sql .= ', webcal_group_user wgu WHERE wg.cal_group_id = wgu.cal_group_id
     AND wgu.cal_login_id = ?';
   $sql_params[] = $owner;
@@ -69,9 +69,9 @@ echo '
               <select name="users" size="15" multiple="multiple">';
 
 $users = get_my_users ();
-if ( getPref ( 'NONUSER_ENABLED' ) ) {
+if ( getPref ( '_ENABLE_NONUSERS' ) ) {
   $nonusers = get_my_nonusers ( $WC->loginId(), true );
-  $users = ( getPref ( 'NONUSER_AT_TOP' )
+  $users = ( getPref ( '_NONUSER_AT_TOP' )
     ? array_merge ( $nonusers, $users ) : array_merge ( $users, $nonusers ) );
 }
 for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {

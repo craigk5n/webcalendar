@@ -164,7 +164,7 @@ if ( $eid > 0 && empty ( $error ) ) {
         if ( ! $WC->isNonuserAdmin() && ! $WC->isLogin( $partlogin[$i] ) 
 		  && $do_send == 'Y' &&
           boss_must_be_notified ( $WC->loginId(), $partlogin[$i] ) && 
-          ! empty ( $tempemail ) && getPref ( 'SEND_EMAIL', 2 ) ) {
+          ! empty ( $tempemail ) && getPref ( '_SEND_EMAIL', 2 ) ) {
             if ( empty ( $user_language ) || ( $user_language == 'none' )) {
                reset_language ( $default_language );
             } else {

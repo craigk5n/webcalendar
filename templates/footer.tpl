@@ -2,7 +2,7 @@
   {date_selectors}
 {/if}
   {$footer_template}
-{if $demo_mode }
+{if $s._DEMO_MODE }
   <p><a href="http://validator.w3.org/check?uri=referer">
     <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" class="valid"  border="0" /></a>
   </p>

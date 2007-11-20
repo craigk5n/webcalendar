@@ -105,9 +105,9 @@ if ( ! empty ( $_POST ) ) {
   // - non-admin users this functionality
   if ( ! _WC_SINGLE_USER && $WC->isAdmin() ) {
 	  $userlist = $WC->User->getUsers ();
-	  if ( getPref ( 'NONUSER_ENABLED' ) ) {
+	  if ( getPref ( '_ENABLE_NONUSERS' ) ) {
 	  	$nonusers = get_nonuser_cals ();
-		  $userlist = ( getPref ( 'NONUSER_AT_TOP' ) ) ?
+		  $userlist = ( getPref ( '_NONUSER_AT_TOP' ) ) ?
 		  	array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
 	  }
 	  $size = 0;

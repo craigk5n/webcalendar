@@ -41,7 +41,7 @@
  </td></tr>
 <tr><td><label>
  __Allow user to use themes__:</label></td><td colspan="3">
- {print_checkbox name='ALLOW_USER_THEMES'}
+ {print_checkbox name='_ALLOW_USER_THEMES'}
 </td></tr> 
  <tr><td  class="tooltip" title="__themes-help@T__">
  <label for="admin_THEME">__Themes__:</label></td><td>
@@ -79,12 +79,12 @@
 
  <tr><td class="tooltip" title="__enable-external-header-help@T__">
   __Allow external file for header/script/trailer__:</td><td>
-  {print_checkbox name='ALLOW_EXTERNAL_HEADER'}
+  {print_checkbox name='_ALLOW_EXTERNAL_HEADER'}
  </td></tr>
 
 <tr><td class="tooltip" title="__enable-user-header-help__"><label>
  __Allow user to override header/trailer__:</label></td><td colspan="3">
- {print_checkbox name='ALLOW_USER_HEADER'}
+ {print_checkbox name='_ALLOW_USER_HEADER'}
 </td></tr>
  </table>
 </fieldset>
@@ -252,9 +252,9 @@
 <fieldset>
 <legend>__Popups__</legend>
 <table width="100%">
- <tr><td class="tooltip" title="__disable-popups-help@T__">
-  __Disable Pop-Ups__:</td><td>
-  {print_checkbox name='DISABLE_POPUPS' onclick='popup_handler()'}
+ <tr><td class="tooltip" title="__enable-popups-help@T__">
+  __Enable Pop-Ups__:</td><td>
+  {print_checkbox name='ENABLE_POPUPS' onchange='popup_handler()'}
  </td></tr>
  <tbody id="popup">
  <tr><td class="tooltip" title="__popup-includes-siteextras-help@T__">
@@ -266,19 +266,6 @@
   {print_checkbox name='PARTICIPANTS_IN_POPUP'}
  </td></tr>
  </tbody>
-</table>
-</fieldset>
-<fieldset>
- <legend>__Miscellaneous__</legend>
- <table width="100%">
- <tr><td class="tooltip" title="__remember-last-login-help@T__">
-  __Remember last login__:</td><td>
-  {print_checkbox name='REMEMBER_LAST_LOGIN'}
- </td></tr>
-<tr><td class="tooltip" title="__summary_length-help@T__">
-  __Brief Description Length__:</td><td>
-  <input type="text" size="3" name="admin_SUMMARY_LENGTH" value="{$s.SUMMARY_LENGTH}" />
- </td></tr>
 </table>
 </fieldset>
 </div>
@@ -305,70 +292,74 @@
  </td></tr>
  <tr><td class="tooltip" title="__conflict-check-override-help@T__">
   __Allow users to override conflicts@L4__:</td><td>
-  {print_checkbox name='ALLOW_CONFLICT_OVERRIDE'}
+  {print_checkbox name='_ALLOW_CONFLICT_OVERRIDE'}
  </td></tr>
  <tr><td class="tooltip" title="__limit-appts-help@T__">
   __Limit number of timed events per day__:</td><td>
-  {print_checkbox name='LIMIT_APPTS'}
+  {print_checkbox name='_LIMIT_APPTS'}
  </td></tr>
  <tr><td class="tooltip" title="__limit-appts-number-help@T__">
   __Maximum timed events per day@L4__:</td><td>
-  <input type="text" size="3" name="admin_LIMIT_APPTS_NUMBER" value="{$s.LIMIT_APPTS_NUMBER|htmlspecialchars}" />
+  <input type="text" size="3" name="admin__LIMIT_APPTS_NUMBER" value="{$s._LIMIT_APPTS_NUMBER|htmlspecialchars}" />
+ </td></tr>
+ <tr><td class="tooltip" title="__summary_length-help@T__">
+  __Brief Description Length__:</td><td>
+  <input type="text" size="3" name="admin_SUMMARY_LENGTH" value="{$s.SUMMARY_LENGTH}" />
  </td></tr>
  <tr><td class="tooltip" title="__crossday-help@T__">
-  __Disable Cross-Day Events__:</td><td>
-  {print_checkbox name='DISABLE_CROSSDAY_EVENTS'}
+  __Enable Cross-Day Events__:</td><td>
+  {print_checkbox name='_ENABLE_CROSSDAY_EVENTS'}
  </td></tr>
-  <tr><td class="tooltip" title="__disable-location-field-help@T__">
-  __Disable Location field__:</td><td>
-  {print_checkbox name='DISABLE_LOCATION_FIELD'}
+  <tr><td class="tooltip" title="__enable-location-field-help@T__">
+  __Enable Location field__:</td><td>
+  {print_checkbox name='_ENABLE_LOCATION_FIELD'}
  </td></tr>
-  <tr><td class="tooltip" title="__disable-url-field-help@T__">
-  __Disable URL field__:</td><td>
-  {print_checkbox name='DISABLE_URL_FIELD'}
+  <tr><td class="tooltip" title="__enable-url-field-help@T__">
+  __Enable URL field__:</td><td>
+  {print_checkbox name='_ENABLE_URL_FIELD'}
  </td></tr>
- <tr><td class="tooltip" title="__disable-priority-field-help@T__">
-  __Disable Priority field__:</td><td>
-  {print_checkbox name='DISABLE_PRIORITY_FIELD'}
+ <tr><td class="tooltip" title="__enable-priority-field-help@T__">
+  __Enable Priority field__:</td><td>
+  {print_checkbox name='_ENABLE_PRIORITY_FIELD'}
  </td></tr>
- <tr><td class="tooltip" title="__disable-access-field-help@T__">
-  __Disable Access field__:</td><td>
-  {print_checkbox name='DISABLE_ACCESS_FIELD'}
+ <tr><td class="tooltip" title="__enable-access-field-help@T__">
+  __Enable Access field__:</td><td>
+  {print_checkbox name='_ENABLE_ACCESS_FIELD'}
  </td></tr>
- <tr><td class="tooltip" title="__disable-participants-field-help@T__">
-  __Disable Participants field__:</td><td>
-  {print_checkbox name='DISABLE_PARTICIPANTS_FIELD'}
+ <tr><td class="tooltip" title="__enable-participants-field-help@T__">
+  __Enable Participants field__:</td><td>
+  {print_checkbox name='_ENABLE_PARTICIPANTS_FIELD'}
  </td></tr>
- <tr><td class="tooltip" title="__disable-repeating-field-help@T__">
-  __Disable Repeating field__:</td><td>
-  {print_checkbox name='DISABLE_REPEATING_FIELD'}
+ <tr><td class="tooltip" title="__enable-repeating-field-help@T__">
+  __Enable Repeating field__:</td><td>
+  {print_checkbox name='_ENABLE_REPEATING_FIELD'}
  </td></tr>
  <tr><td class="tooltip" title="__allow-html-description-help@T__">
   __Allow HTML in Description__:</td><td>
-  {print_checkbox name='ALLOW_HTML_DESCRIPTION'}
+  {print_checkbox name='_ALLOW_HTML_DESCRIPTION'}
  </td></tr>
  <!-- BEGIN ATTACHMENTS/COMMENTS -->
 
  <tr><td class="tooltip" title="__allow-attachment-help@T__">
   __Allow file attachments to events__:</td><td>
-  {print_checkbox name='ALLOW_ATTACH' onclick='attach_handler()'}
+  {print_checkbox name='_ALLOW_ATTACH' onchange='attach_handler()'}
   <span id="attach">
   <br/><strong>__Note__:</strong>
   __Admin and owner can always add attachments if enabled__<br/>
-   {print_checkbox name='ALLOW_ATTACH_PART' label="__Participant__"}
-   {print_checkbox name='ALLOW_ATTACH_ANY' label="__Anyone__"}
+   {print_checkbox name='_ALLOW_ATTACH_PART' label="__Participant__"}
+   {print_checkbox name='_ALLOW_ATTACH_ANY' label="__Anyone__"}
   </span>
  </td></tr>
 
  <tr><td class="tooltip" title="__allow-comments-help@T__">
   __Allow comments to events__:</td><td>
-  {print_checkbox name='ALLOW_COMMENTS' onclick='comment_handler()'}
+  {print_checkbox name='_ALLOW_COMMENTS' onchange='comment_handler()'}
   <br/>
   <span id="comment">
   <br/><strong>Note:</strong>
   __Admin and owner can always add comments if enabled__<br/>
-  {print_checkbox name='ALLOW_COMMENTS_PART' label="__Participant__"}
-  {print_checkbox name='ALLOW_COMMENTS_ANY' label="__Anyone__"}
+  {print_checkbox name='_ALLOW_COMMENTS_PART' label="__Participant__"}
+  {print_checkbox name='_ALLOW_COMMENTS_ANY' label="__Anyone__"}
   </span>
  </td></tr>
 
@@ -381,11 +372,11 @@
 <table width="100%">
  <tr><td class="tooltip" title="__groups-enabled-help@T__">
   __Groups enabled__:</td><td>
-  {print_checkbox name='GROUPS_ENABLED'}
+  {print_checkbox name='_ENABLE_GROUPS'}
  </td></tr>
  <tr><td class="tooltip" title="__user-sees-his-group-help@T__">
   __User sees only his groups__:</td><td>
-  {print_checkbox name='USER_SEES_ONLY_HIS_GROUPS'}
+  {print_checkbox name='_USER_SEES_ONLY_HIS_GROUPS'}
  </td></tr>
 </table>
 </div>
@@ -393,9 +384,21 @@
 <!-- BEGIN USER SETTINGS-->
 <div id="tabscontent_users">
 <table width="100%">
+ <tr><td class="tooltip" title="__cleartext-passwords-help@T__">
+  __Allow cleartext passwords__:</td><td>
+  {print_checkbox name='_CLEARTEXT_PASSWORDS'}
+ </td></tr>
+ <tr><td class="tooltip" title="__expire-password-help@T__">
+  __Password expiration__:</td><td>
+  <input type="text" size="3" name="admin__EXPIRE_PASSWORDS" value="{$s._EXPIRE_PASSWORDS}" />
+ </td></tr>
+ <tr><td class="tooltip" title="__remember-last-login-help@T__">
+  __Remember last login__:</td><td>
+  {print_checkbox name='REMEMBER_LAST_LOGIN'}
+ </td></tr>
  <tr><td class="tooltip" title="__allow-view-other-help@T__">
   __Allow viewing other user&#39;s calendars__:</td><td>
-  {print_checkbox name='ALLOW_VIEW_OTHER'}
+  {print_checkbox name='_ALLOW_VIEW_OTHER'}
  </td></tr>
  <tr><td class="tooltip" title="__user_sort-help@T__">
   <label for="admin_USER_SORT_ORDER">__User Sort Order__:</label></td><td>
@@ -412,46 +415,46 @@
  </td></tr>
  <tr><td class="tooltip" title="__nonuser-enabled-help@T__">
   __Nonuser enabled__:</td><td>
-  {print_checkbox name='NONUSER_ENABLED'}
+  {print_checkbox name='_ENABLE_NONUSERS'}
  </td></tr>
  <tr><td class="tooltip" title="__nonuser-list-help@T__">
   __Nonuser list__:</td><td>
-  {print_radio variable='NONUSER_AT_TOP' vars=$top_bottom_array}
+  {print_radio variable='_NONUSER_AT_TOP' vars=$top_bottom_array}
 </td></tr>
- <tr><td class="tooltip" title="__extended_user-help@T__">
+ <tr><td class="tooltip" title="___EXTENDED_USER-help@T__">
   __Allow extended user settings__:</td><td>
-  {print_checkbox name='EXTENDED_USER'}
+  {print_checkbox name='_EXTENDED_USER'}
  </td></tr>
 <!-- BEGIN EXT PARTICIPANTS -->
 
  <tr><td class="tooltip" title="__allow-external-users-help@T__">
   __Allow external users__:</td><td>
-  {print_checkbox name='ALLOW_EXTERNAL_USERS' onclick='eu_handler()'}
+  {print_checkbox name='_ALLOW_EXTERNAL_USERS' onchange='eu_handler()'}
  </td></tr>
  <tbody id="eu">
  <tr><td class="tooltip" title="__external-can-receive-notification-help@T__">
   __External users can receive email notifications@L4__:</td><td>
-  {print_checkbox name='EXTERNAL_NOTIFICATIONS'}
+  {print_checkbox name='_EXTERNAL_NOTIFICATIONS'}
  </td></tr>
  <tr><td class="tooltip" title="__external-can-receive-reminder-help@T__">
   __External users can receive email reminders@L4__:</td><td>
-  {print_checkbox name='EXTERNAL_REMINDERS'}
+  {print_checkbox name='_EXTERNAL_REMINDERS'}
  </td></tr>
  </tbody>
   <!-- BEGIN SELF REGISTRATION -->
 
  <tr><td class="tooltip" title="__allow-self-registration-help@T__">
   __Allow self-registration__:</td><td>
-  {print_checkbox name='ALLOW_SELF_REGISTRATION' onclick='sr_handler()'}
+  {print_checkbox name='_ALLOW_SELF_REGISTRATION' onchange='sr_handler()'}
  </td></tr>
  <tbody id="sr">
  <tr><td class="tooltip" title="__use-blacklist-help@T__">
   __Restrict self-registration to blacklist@L4__:</td><td>
-  {print_checkbox name='SELF_REGISTRATION_BLACKLIST' onclick='sr_handler()'}
+  {print_checkbox name='_SELF_REGISTRATION_BLACKLIST' onchange='sr_handler()'}
  </td></tr>
  <tr><td class="tooltip" title="__allow-self-registration-full-help@T__">
   __Use self-registration email notifications@L4__:</td><td>
-  {print_checkbox name='SELF_REGISTRATION_FULL' onclick='sr_handler()'}
+  {print_checkbox name='_SELF_REGISTRATION_FULL' onchange='sr_handler()'}
  </td></tr>
  </tbody>
 <!-- TODO add account aging feature -->
@@ -463,7 +466,7 @@
 <table width="100%">
 <tr><td class="tooltip" title="__reports-enabled-help@T__">
  __Reports enabled__:</td><td>
- {print_checkbox name='REPORTS_ENABLED'}
+ {print_checkbox name='_ENABLE_REPORTS'}
 </td></tr>
 
 
@@ -471,12 +474,12 @@
 
  <tr><td class="tooltip" title="__categories-enabled-help@T__">
   __Categories enabled__:</td><td>
-  {print_checkbox name='CATEGORIES_ENABLED'}
+  {print_checkbox name='_ENABLE_CATEGORIES'}
  </td></tr>
 
  <tr><td class="tooltip" title="__icon_upload-enabled-help@T__">
   __Category Icon Upload enabled__:</td><td>
-  {print_checkbox name='ENABLE_ICON_UPLOADS'}&nbsp;{$icons_dir_notice}
+  {print_checkbox name='_ENABLE_ICON_UPLOADS'}&nbsp;{$icons_dir_notice}
  </td></tr>
  
 <!-- Display Task Preferences -->
@@ -492,42 +495,42 @@
 
 <tr><td class="tooltip" title="__subscriptions-enabled-help@T__">
  __Allow remote subscriptions__:</td><td>
- {print_checkbox name='PUBLISH_ENABLED'}
+ {print_checkbox name='_ENABLE_PUBLISH'}
 </td></tr>
 {if $allow_url_fopen}
 <tr><td class="tooltip" title="__remotes-enabled-help@T__">
  __Allow remote calendars__:</td><td>
- {print_checkbox name='REMOTES_ENABLED'}
+ {print_checkbox name='_ENABLE_REMOTES'}
 </td></tr>
 {/if}
 <tr><td class="tooltip" title="__rss-enabled-help@T__">
  __Enable RSS feed__:</td><td>
- {print_checkbox name='RSS_ENABLED'}
+ {print_checkbox name='_ENABLE_RSS'}
 </td></tr>
 <tr><td class="tooltip" title="__rss-default-user-help@T__">
  __RSS default user__:</td><td>
-  <select name="admin_RSS_DEFAULT_USER"> 
+  <select name="admin__RSS_DEFAULT_USER"> 
  {foreach from=$userlist key=k item=v}
     <option value="{$v.cal_login_id}" {if  $v.cal_login_id == 
-      $s.RSS_DEFAULT_USER}{#selected#}{/if}>{$v.cal_fullname}</option>
+      $s._RSS_DEFAULT_USER}{#selected#}{/if}>{$v.cal_fullname}</option>
  {/foreach}
   </select>
 </td></tr>
 <tr><td class="tooltip" title="__publish-default-user-help@T__">
  __Publish default user__:</td><td>
-  <select name="admin_PUBLISH_DEFAULT_USER"> 
+  <select name="admin__PUBLISH_DEFAULT_USER"> 
  {foreach from=$userlist key=k item=v}
     <option value="{$v.cal_login_id}" {if  $v.cal_login_id == 
-      $s.PUBLISH_DEFAULT_USER}{#selected#}{/if}>{$v.cal_fullname}</option>
+      $s._PUBLISH_DEFAULT_USER}{#selected#}{/if}>{$v.cal_fullname}</option>
  {/foreach}
   </select>
 </td></tr>
 <tr><td class="tooltip" title="__minical-default-user-help@T__">
  __Minical default user__:</td><td>
-  <select name="admin_MINICAL_DEFAULT_USER"> 
+  <select name="admin__MINICAL_DEFAULT_USER"> 
  {foreach from=$userlist key=k item=v}
     <option value="{$v.cal_login_id}" {if  $v.cal_login_id == 
-      $s.MINICAL_DEFAULT_USER}{#selected#}{/if}>{$v.cal_fullname}</option>
+      $s._MINICAL_DEFAULT_USER}{#selected#}{/if}>{$v.cal_fullname}</option>
  {/foreach}
   </select>
 </td></tr>
@@ -540,48 +543,48 @@
 <table width="100%">
 <tr><td class="tooltip" title="__email-enabled-help@T__">
  __Email enabled__:</td><td>
- {print_checkbox name='SEND_EMAIL' onclick='email_handler()'}
+ {print_checkbox name='_SEND_EMAIL' onchange='email_handler()'}
 </td></tr>
 <tbody id="em">
 <tr><td class="tooltip" title="__email-default-sender@T__">
  __Default sender address@L4__:</td><td>
- <input type="text" size="30" name="admin_EMAIL_FALLBACK_FROM" value="{$s.EMAIL_FALLBACK_FROM}" />
+ <input type="text" size="30" name="admin__EMAIL_FALLBACK_FROM" value="{$s._EMAIL_FALLBACK_FROM}" />
 </td></tr>
 
 <tr><td class="tooltip" title="__email-mailer@T__">
 __Email Mailer__:</td><td>
- <select name="admin_EMAIL_MAILER"  onchange="email_handler()">
-   <option value="smtp" {if $s.EMAIL_MAILER == 'smtp'}
+ <select name="admin__EMAIL_MAILER"  onchange="email_handler()">
+   <option value="smtp" {if $s._EMAIL_MAILER == 'smtp'}
      {#selected#}{/if}>SMTP</option>
-   <option value="mail" {if $s.EMAIL_MAILER == 'mail'}
+   <option value="mail" {if $s._EMAIL_MAILER == 'mail'}
      {#selected#}{/if}>PHP mail</option>
-   <option value="sendmail" {if $s.EMAIL_MAILER == 'sendmail'}
+   <option value="sendmail" {if $s._EMAIL_MAILER == 'sendmail'}
      {#selected#}{/if}>sendmail</option>
   </select>   
 </td></tr>
 <tbody id="em_smtp">
 <tr><td class="tooltip" title="__email-smtp-host@T__">
 __SMTP Host name(s)__:</td><td>
- <input type="text" size="50" name="admin_SMTP_HOST" value="{$s.SMTP_HOST}" />
+ <input type="text" size="50" name="admin__SMTP_HOST" value="{$s._SMTP_HOST}" />
 </td></tr>
 <tr><td class="tooltip" title="__email-smtp-port@T__">
 __SMTP Port Number__:</td><td>
- <input type="text" size="4" name="admin_SMTP_PORT" value="{$s.SMTP_PORT}" />
+ <input type="text" size="4" name="admin__SMTP_PORT" value="{$s._SMTP_PORT}" />
 </td></tr>
 
 <tr><td class="tooltip" title="__email-smtp-auth@T__">
  __SMTP Authentication__:</td><td>
- {print_checkbox name='SMTP_AUTH' onclick='email_handler()'}
+ {print_checkbox name='_SMTP_AUTH' onchange='email_handler()'}
 </td></tr>
 <tbody id="em_auth">
 <tr><td class="tooltip" title="__email-smtp-username@T__">
  __SMTP Username@L4__:</td><td>
- <input type="text" size="30" name="admin_SMTP_USERNAME" value="{$s.SMTP_USERNAME}" />
+ <input type="text" size="30" name="admin__SMTP_USERNAME" value="{$s._SMTP_USERNAME}" />
 </td></tr>
 
 <tr><td class="tooltip" title="__email-smtp-password@T__">
  __SMTP Password@L4__:</td><td>
- <input type="text" size="30" name="admin_SMTP_PASSWORD" value="{$s.SMTP_PASSWORD}" />
+ <input type="text" size="30" name="admin__SMTP_PASSWORD" value="{$s._SMTP_PASSWORD}" />
 </td></tr>
 </tbody>
 </tbody>
@@ -637,7 +640,7 @@ __SMTP Port Number__:</td><td>
 </td></tr>
 <tr><td width="30%"><label>
  __Allow user to customize colors__:</label></td><td colspan="3">
- {print_checkbox name='ALLOW_COLOR_CUSTOMIZATION'}
+ {print_checkbox name='_ALLOW_COLOR_CUSTOMIZATION'}
 </td></tr>
 <tr><td class="tooltip" title="__gradient-colors@T__">
   <label>__Enable gradient images for background colors__:</label></td>

@@ -11,16 +11,16 @@
 
 <table>
   <tr>
-	  <td>
+    <td>
       <label for="viewname">__View Name__:</label></td>
-		<td colspan="3">
+    <td colspan="3">
       <input name="viewname" id="viewname" size="20" value="{$viewname|htmlspecialchars}" />
     </td>
   </tr>
   <tr>
-	  <td>
+    <td>
       <label for="viewtype">__View Type__:</label></td>
-		<td colspan="3">
+    <td colspan="3">
  <select name="viewtype" id="viewtype">
   <option value="D" {if $viewtype == 'D'}{#selected#}{/if}>__Day__</option>
   <option value="E" {if $viewtype == 'E'}{#selected#}{/if}>__Day by Time__</option>
@@ -36,25 +36,25 @@
 
 {if $WC->isAdmin()}
   <tr>
-	  <td>
-		  <label>__Global__:</label></td>
-		<td>{print_radio variable='is_global' defIdx=$viewisglobal sep='</td><td>'}
+    <td>
+      <label>__Global__:</label></td>
+    <td>{print_radio variable='is_global' defIdx=$viewisglobal sep='</td><td>'}
     </td>
-	</tr>
+  </tr>
 {/if}
 
 
   <tr>
-	  <td>
-		  <label>__Users__:</label></td>
-	  <td>{print_radio variable='viewuserall' vars=$selectuserall
+    <td>
+      <label>__Users__:</label></td>
+    <td>{print_radio variable='viewuserall' vars=$selectuserall
     onclick='usermode_handler()' defIdx=$all_users sep='</td><td>'}
     </td>
-	</tr>
+  </tr>
 
   <tr>
-	  <td></td>
-	  <td colspan="3">
+    <td></td>
+    <td colspan="3">
       <div id="viewuserlist">
         <select name="users[]" id="viewusers" size="{$userSize}" multiple="multiple">
  {foreach from=$users key=k item=v}
@@ -62,14 +62,14 @@
 {/foreach}
        </select>
 
-{if $s.GROUPS_ENABLED}
+{if $s._ENABLE_GROUPS}
        <input type="button" onclick="selectUsers()" value="__Select__..." />
 {/if}
       </div>
     </td>
-	</tr>
+  </tr>
   <tr>
-	  <td colspan="4">
+    <td colspan="4">
       <input type="submit" name="action" value="{if $newview}__Add__{else}__Save__{/if}" />
 
 {if ! $newview}
@@ -79,4 +79,4 @@
 </table>
 
 </form>
-{include file="footer.tpl" include_nav_links=false}	
+{include file="footer.tpl" include_nav_links=false}  

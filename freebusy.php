@@ -38,7 +38,7 @@
  * Preferences or this page will generate a "you are not authorized"
  * error message.
  *
- * If $FREEBUSY_ENABLED is not 'Y' (set in each user's
+ * If _ENABLE_FREEBUSY is not 'Y' (set in each user's
  *   Preferences), do not allow.
  */
  
@@ -60,14 +60,14 @@ if ( empty ( $user ) ) {
  
 
 // Load user preferences (to get the DISPLAY_UNAPPROVED and
-// FREEBUSY_ENABLED pref for this user).
+// _ENABLE_FREEBUSY pref for this user).
 
 $WC->setLanguage();
 
 // Load user name, etc.
 $WC->User->loadVariables ( $user, 'publish_' );
 
-if ( ! getPref ( 'FREEBUSY_ENABLED' ) ) {
+if ( ! getPref ( '_ENABLE_FREEBUSY' ) ) {
   header ( 'Content-Type: text/plain' );
   echo "user=$user\n";
   echo print_not_auth ();

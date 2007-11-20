@@ -294,7 +294,7 @@ function build_prototip ( $user, $description = '', $time,
   global $WC, $popup_fullnames, $popuptemp_fullname,
   $tempfullname;
 
-  if ( getPref ( 'DISABLE_POPUPS' ) )
+  if ( ! getPref ( 'ENABLE_POPUPS' ) )
     return;
 
   // Restrict info if time only set.
@@ -367,7 +367,7 @@ function build_prototip ( $user, $description = '', $time,
   if ( ! empty ( $description ) && $details ) {
 	  $description = addslashes ( $description );
     $ret .= ',"pdesc":"';
-    if ( getPref ( 'ALLOW_HTML_DESCRIPTION' ) ) {
+    if ( getPref ( '_ALLOW_HTML_DESCRIPTION' ) ) {
       // Replace &s and decode special characters.
       $str = unhtmlentities (
         str_replace ( '&amp;amp;', '&amp;',

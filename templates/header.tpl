@@ -21,7 +21,7 @@
 
 {if $disableStyle eq false}
   <link rel="stylesheet" type="text/css" href="includes/styles.css" />
-  <link rel="stylesheet" title="{$smarty.const._WC_SCRIPT}" type="text/css" href="cache/css/{$cachedCSS}" />
+  <link rel="stylesheet" title="{$smarty.const._WC_SCRIPT}" type="text/css" href="{$smarty.const._WC_PUB_CACHE}/css/{$cachedCSS}" />
 {/if} 
 {$css_template}
 {if $WC->friendly() }

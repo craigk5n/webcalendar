@@ -142,45 +142,45 @@
 
 <tr><td class="tooltip" title="__display-sm_month-help@T__">
  __Display small months__:</td><td>
- {print_radio variable='DISPLAY_SM_MONTH'}
+ {print_checkbox name='DISPLAY_SM_MONTH'}
 </td></tr>
 
 <tr><td class="tooltip" title="__display-weekends-help@T__">
  __Display weekends__:</td><td>
- {print_radio variable='DISPLAY_WEEKENDS'}
+ {print_checkbox name='DISPLAY_WEEKENDS'}
 </td></tr>
  <tr><td class="tooltip" title="__display-long-daynames-help@T__">
   __Display long day names__:</td><td>
-  {print_radio variable='DISPLAY_LONG_DAYS'}
+  {print_checkbox name='DISPLAY_LONG_DAYS'}
  </td></tr>
 <tr><td class="tooltip" title="__display-minutes-help@T__">
  __Display 00 minutes always__:</td><td>
- {print_radio variable='DISPLAY_MINUTES'}
+ {print_checkbox name='DISPLAY_MINUTES'}
 </td></tr>
 <tr><td class="tooltip" title="__display-end-times-help@T__">
  __Display end times on calendars__:</td><td>
- {print_radio variable='DISPLAY_END_TIMES'}
+ {print_checkbox name='DISPLAY_END_TIMES'}
 </td></tr>
 <tr><td class="tooltip" title="__display-alldays-help@T__">
   __Display all days in month view__:</td><td>
-  {print_radio variable='DISPLAY_ALL_DAYS_IN_MONTH'}
+  {print_checkbox name='DISPLAY_ALL_DAYS_IN_MONTH'}
  </td></tr> 
 <tr><td class="tooltip" title="__display-week-number-help@T__">
  __Display week number__:</td><td>
- {print_radio variable='DISPLAY_WEEKNUMBER'}
+ {print_checkbox name='DISPLAY_WEEKNUMBER'}
 </td></tr>
 <tr><td class="tooltip" title="__display-tasks-help@T__">
  __Display small task list__:</td><td>
- {print_radio variable='DISPLAY_TASKS'}
+ {print_checkbox name='DISPLAY_TASKS'}
 </td></tr>
 <tr><td class="tooltip" title="__display-tasks-in-grid-help@T__">
  __Display tasks in Calendars__:</td><td>
- {print_radio variable='DISPLAY_TASKS_IN_GRID'}
+ {print_checkbox name='DISPLAY_TASKS_IN_GRID'}
 </td></tr>
 
 <tr><td class="tooltip" title="__lunar-help@T__">
  __Display Lunar Phases in month view__:</td><td>
- {print_radio variable='DISPLAY_MOON_PHASES'}
+ {print_checkbox name='DISPLAY_MOON_PHASES'}
 </td></tr>
 
 </table>
@@ -191,7 +191,7 @@
 
 <tr><td class="tooltip" title="__display-unapproved-help@T__">
  __Display unapproved__:</td><td>
- {print_radio variable='DISPLAY_UNAPPROVED'}
+ {print_checkbox name='DISPLAY_UNAPPROVED'}
 </td></tr>
 
 <tr><td class="tooltip" title="__timed-evt-len-help@T__">
@@ -204,18 +204,18 @@
  <label for="pref_cat">__Default Category__:</label></td><td>
  <select name="pref_CATEGORY_VIEW" id="pref_cat">
   {foreach from=$categories key=k item=v}
-   <option value={$k}{if $p.CATEGORY_VIEW== $k}{#selected#}{/if}>{$v.cat_name}</option>
+   <option value="{$k}" {if $p.CATEGORY_VIEW== $k}{#selected#}{/if}>{$v.cat_name}</option>
   {/foreach}
  </select>
 </td></tr>
 {/if}
 <tr><td class="tooltip" title="__crossday-help@T__">
- __Disable Cross-Day Events__:</td><td>
- {print_radio variable='DISABLE_CROSSDAY_EVENTS'}
+ __Enable Cross-Day Events__:</td><td>
+ {print_checkbox name='_ENABLE_CROSSDAY_EVENTS'}
 </td></tr>
 <tr><td class="tooltip" title="__display-desc-print-day-help@T__">
  __Display description in printer day view__:</td><td>
- {print_radio variable='DISPLAY_DESC_PRINT_DAY'}
+ {print_checkbox name='DISPLAY_DESC_PRINT_DAY'}
 </td></tr>
 
 <tr><td class="tooltip" title="__entry-interval-help@T__">
@@ -250,7 +250,7 @@
 
 <tr><td class="tooltip" title="__auto-refresh-help@T__">
  __Auto-refresh calendars__:</td><td>
- {print_radio variable='AUTO_REFRESH'}
+ {print_checkbox name='AUTO_REFRESH'}
 </td></tr>
 
 <tr><td class="tooltip" title="__auto-refresh-time-help@T__">
@@ -293,32 +293,32 @@ __Page may need to be reloaded for new Theme to take effect__</td></tr>
 
 <tr><td class="tooltip">
  __Event reminders__:</td><td>
- {print_radio variable='EMAIL_REMINDER'}
+ {print_checkbox name='EMAIL_REMINDER'}
 </td></tr>
 
 <tr><td class="tooltip">
  __Events added to my calendar__:</td><td>
- {print_radio variable='EMAIL_EVENT_ADED'}
+ {print_checkbox name='EMAIL_EVENT_ADED'}
 </td></tr>
 
 <tr><td class="tooltip">
  __Events updated on my calendar__:</td><td>
- {print_radio variable='EMAIL_EVENT_UPDTED'}
+ {print_checkbox name='EMAIL_EVENT_UPDTED'}
 </td></tr>
 
 <tr><td class="tooltip">
  __Events removed from my calendar__:</td><td>
- {print_radio variable='EMAIL_EVENT_DELTED'}
+ {print_checkbox name='EMAIL_EVENT_DELTED'}
 </td></tr>
 
 <tr><td class="tooltip">
  __Event rejected by participant__:</td><td>
- {print_radio variable='EMAIL_EVENT_REJCTED'}
+ {print_checkbox name='EMAIL_EVENT_REJCTED'}
 </td></tr>
 
 <tr><td class="tooltip">
  __Event that I create__:</td><td>
- {print_radio variable='EMAIL_EVENT_CRETE'}
+ {print_checkbox name='EMAIL_EVENT_CRETE'}
 </td></tr>
 </table>
 </div>
@@ -329,16 +329,16 @@ __Page may need to be reloaded for new Theme to take effect__</td></tr>
 <table width="100%">
 {if $send_email}
 <tr><td class="tooltip">__Email me event notification__:</td><td>
- {print_radio variable='EMAIL_ASSISTANT_EVENTS'}
+ {print_checkbox name='EMAIL_ASSISTANT_EVENTS'}
 </td></tr>
 {/if}
 <tr><td class="tooltip">__I want to approve events__:</td><td>
- {print_radio variable='APPROVE_ASSISTANT_EVENT'}
+ {print_checkbox name='APPROVE_ASSISTANT_EVENT'}
 </td></tr>
 
 <tr><td class="tooltip" title="__display_byproxy-help@T__">
 __Display if created by Assistant__:</td><td>
-  {print_radio variable='DISPLAY_CREATED_BYPROXY'}
+  {print_checkbox name='DISPLAY_CREATED_BYPROXY'}
 </td></tr>
 </table>
 </div>
@@ -360,7 +360,7 @@ __Allow remote viewing of__:</td><td>
   </td></tr>
   {if $publish_enabled}
 <tr><td class="tooltipselect" title="__allow-remote-subscriptions-help@T__">__Allow remote subscriptions__:</td><td>
-  {print_radio variable='USER_PUBLISH_ENABLED'}
+  {print_checkbox name='ENABLE_USER_PUBLISH'}
 </td></tr>
    {if $server_url}
 <tr><td class="tooltipselect" title="__remote-subscriptions-url-help@T__">__URL@L4__:</td>
@@ -373,7 +373,7 @@ __Allow remote viewing of__:</td><td>
 
 <tr><td class="tooltipselect" title="__allow-remote-publishing-help@T__">__Allow remote publishing__:</td>
   <td>
-  {print_radio variable='USER_PUBLISH_RW_ENABLED'}
+  {print_checkbox name='ENABLE_USER_PUBLISH_RW'}
 </td></tr>
    {if $server_url}
 <tr><td class="tooltipselect" title="__remote-publishing-url-help@T__">__URL@L4__:</td>
@@ -387,7 +387,7 @@ __Allow remote viewing of__:</td><td>
   {if $rss_enabled}
 <tr><td class="tooltipselect" title="__rss-enabled-help@T__">__Enable RSS feed__:</td>
   <td>
-  {print_radio variable='USER_RSS_ENABLED'}
+  {print_checkbox name='ENABLE_USER_RSS'}
 </td></tr>
     {if $server_url}
 <tr><td class="tooltipselect" title="__rss-feed-url-help@T__">__URL@L4__:</td>
@@ -399,7 +399,7 @@ __Allow remote viewing of__:</td><td>
 
 <tr><td class="tooltipselect" title="__freebusy-enabled-help@T__">__Enable FreeBusy publishing__:</td>
   <td>
-  {print_radio variable='FREEBUSY_ENABLED'}
+  {print_checkbox name='_ENABLE_FREEBUSY'}
 </td></tr>
   {if $server_url}
 <tr><td class="tooltipselect" title="__freebusy-url-help@T__">__URL@L4__:</td>
@@ -414,27 +414,27 @@ __Allow remote viewing of__:</td><td>
 <!-- END SUBSCRIBE -->
 {/if}
 
-{if $allow_user_header}
+{if $s._ALLOW_USER_HEADER}
 <div id="tabscontent_header">
 <table  width="100%">
 {if $custom_script}
  <tr><td class="tooltip" title="__custom-script-help@T__">
   __Custom script/stylesheet__:</td><td>
-  {print_radio variable='CUSTOM_SCRIPT'}&nbsp;&nbsp;
+  {print_checkbox name='CUSTOM_SCRIPT'}&nbsp;&nbsp;
   <input type="button" value="__Edit__..." onclick="{$openS}" name="" />
  </td></tr>
 {/if}
 {if $custom_header}
  <tr><td class="tooltip" title="__custom-header-help@T__">
   __Custom header__:</td><td>
-  {print_radio variable='CUSTOM_HEADER'}&nbsp;&nbsp;
+  {print_checkbox name='CUSTOM_HEADER'}&nbsp;&nbsp;
   <input type="button" value="__Edit__..." onclick="{$openH}" name="" />
  </td></tr>
 {/if}
 {if $custom_trailer}
  <tr><td class="tooltip" title="__custom-trailer-help@T__">
   __Custom trailer__:</td><td>
-  {print_radio variable='CUSTOM_TRAILER'}&nbsp;&nbsp;
+  {print_checkbox name='CUSTOM_TRAILER'}&nbsp;&nbsp;
   <input type="button" value="__Edit__..." onclick="{$openT}" name="" />
  </td></tr>
 {/if}
@@ -445,7 +445,7 @@ __Allow remote viewing of__:</td><td>
 
 <!-- BEGIN COLORS -->
 
-{if $allow_color_customization}
+{if $s._ALLOW_COLOR_CUSTOMIZATION}
 <div id="tabscontent_colors">
 <fieldset>
  <legend>__Color options__</legend>
