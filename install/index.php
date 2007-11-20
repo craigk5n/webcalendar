@@ -599,7 +599,7 @@ if ( ! empty ( $action ) && $action == 'phpinfo' ) {
   if ( ! empty ( $_SESSION['validuser'] ) ) {
     phpinfo ();
   } else {
-    etranslate ( 'You are not authorized' ) . '.';
+    etranslate ( 'You are not authorized.' );
   }
   exit;
 }
@@ -639,8 +639,8 @@ if ( empty ( $x ) ) {
     $settings['db_login'] = 'root';
     $settings['db_password'] = 'none';
     $settings['db_persistent'] = 'false';
-    $settings['db_cachedir'] =( file_exists ( '/tmp' ) && is_writable ( '/tmp' ) 
-      ? '/tmp' : '' );      
+    $settings['db_cachedir'] =( file_exists ( '/tmp' ) && is_writable ( '/tmp' )
+      ? '/tmp' : '' );
     $settings['readonly'] = 'false';
     $settings['user_inc'] = 'user.php';
     $settings['install_password'] = '';
