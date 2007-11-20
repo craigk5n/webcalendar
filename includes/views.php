@@ -28,7 +28,7 @@ if ( count ( $participants ) == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any group assigned to this view.
   $smarty->assign ( 'errorStr', translate ( 'No users for this view' ) . '.' );
-	$smarty->display ( 'error.tpl' );
+  $smarty->display ( 'error.tpl' );
   exit;
 }
 
@@ -40,7 +40,7 @@ function view_init ( $vid ) {
   global $WC, $smarty;
 
   
-  if ( ! getPref ( 'ALLOW_VIEW_OTHER' ) && ! $WC->isAdmin() ) {
+  if ( ! getPref ( '_ALLOW_VIEW_OTHER' ) && ! $WC->isAdmin() ) {
     // not allowed...
     send_to_preferred_view ();
   }
@@ -59,7 +59,7 @@ function view_init ( $vid ) {
     $smarty->assign ( 'not_auth', true );
     $smarty->display ( 'error.tpl' );
   }
-	return $views;
+  return $views;
 }
 
 
@@ -87,7 +87,7 @@ function view_get_user_list ( $vid ) {
   } else {
     $error = db_error ();
   }
-	$myusers = get_my_users ( '', 'view' );
+  $myusers = get_my_users ( '', 'view' );
 
   if ( ! $all_users ) {
     for ( $i = 0, $cnt = count ( $myusers ); isset ( $myusers[$i] ) && $i < $cnt; $i++ ) {
@@ -95,7 +95,7 @@ function view_get_user_list ( $vid ) {
           array_pop ( $myusers);
     }
   }
-    $ret = $myusers;	  
+    $ret = $myusers;    
 //  echo "<pre>"; print_r ( $ret ); echo "</pre>\n";
   return $ret;
 }

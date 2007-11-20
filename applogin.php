@@ -145,7 +145,7 @@ if ( ! empty ( $error ) ) {
     }
   }
 
-if ( getPref ( 'DEMO_MODE' ) ) {
+if ( getPref ( '_DEMO_MODE' ) ) {
  // This is used on the sourceforge demo page
  echo 'Demo login: user = "demo", password = "demo"<br />';
 } ?>

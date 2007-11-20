@@ -4,6 +4,18 @@ include_once 'includes/init.php';
 
 function save_pref( $prefs, $src) {
   global $my_theme, $prefuser;
+	//We now use checkboxes instead of radis controls. If not checked, still
+  //need store 'N' in the database. We loop through $webcalConfig and look
+  //for Y/N settings and if missing from $prefs, we insert a 'N' value
+  if ( $src == 'post' ) {
+	  include_once 'install/default_config.php';
+    while ( list ( $key, $value ) = each ( $webcalConfig ) ) {
+      if ( ( $value == 'Y' || $value == 'N' ) && substr ( $key,0,1 ) == '_' )  {
+        if ( empty ( $prefs['pref_' . $key] ) )
+          $prefs['pref_' . $key] = 'N';
+      }
+    }
+  }
   while ( list ( $key, $value ) = each ( $prefs ) ) {
     if ( $src == 'post' ) {
       $setting = substr ( $key, 5 );
@@ -102,34 +114,31 @@ $prefStr = translate( 'Preferences' );
 $smarty->assign ('nonUserStr', str_replace ( 'XXX', $prefStr, 
   translate ( 'Modify Non User Calendar Preferences' ) ) );
 
-//allow css_cache to display public or NUC values
-@session_start (); 
-$_SESSION['webcal_tmp_login'] = $prefuser;
 $openStr ="\"window.open('edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');\"";
 
 
 $tabs_ar = array('settings'=>translate( 'Settings' ));
-if ( getPref ( 'ALLOW_USER_THEMES', 2 ) || $WC->isAdmin() )
+if ( getPref ( '_ALLOW_USER_THEMES', 2 ) || $WC->isAdmin() )
   $tabs_ar['themes'] = translate( 'Themes' );
-if ( getPref ( 'SEND_EMAIL', 2 ) )
+if ( getPref ( '_SEND_EMAIL', 2 ) )
  $tabs_ar['email'] = translate( 'Email' );
 
 $tabs_ar['boss'] = translate( 'When I am the boss' );
-if ( getPref ( 'PUBLISH_ENABLED' ) || getPref ( 'RSS_ENABLED' ) ) {
+if ( getPref ( '_ENABLE_PUBLISH' ) || getPref ( '_ENABLE_RSS' ) ) {
  $tabs_ar['subscribe'] = translate( 'Subscribe/Publish' );
 }
-if ( getPref ( 'ALLOW_USER_HEADER' ) && ( getPref ( 'CUSTOM_SCRIPT' ) || 
+if ( getPref ( '_ALLOW_USER_HEADER' ) && ( getPref ( 'CUSTOM_SCRIPT' ) || 
   getPref ( 'CUSTOM_HEADER' ) || getPref ( 'CUSTOM_TRAILER' ) ) ) 
  $tabs_ar['header'] = translate( 'Custom Scripts' );
-if ( getPref ( 'ALLOW_COLOR_CUSTOMIZATION' ) ) {
+if ( getPref ( '_ALLOW_COLOR_CUSTOMIZATION' ) ) {
  $tabs_ar['colors'] = translate( 'Colors' );
- $smarty->assign ( 'allow_color_customization', true );
+ $smarty->assign ( '_ALLOW_COLOR_CUSTOMIZATION', true );
 }
 
-if ( getPref ( 'RSS_ENABLED' ) ) 
+if ( getPref ( '_ENABLE_RSS' ) ) 
  $smarty->assign ( 'rss_enabled', true );
 
-if ( getPref ( 'PUBLISH_ENABLED' ) ) 
+if ( getPref ( '_ENABLE_PUBLISH' ) ) 
  $smarty->assign ( 'publish_enabled', true );
 
 

@@ -52,7 +52,7 @@ if ( ! $WC->isUser () ) {
 build_header ();
 
 
-if ( ! getPref ( 'ALLOW_VIEW_OTHER' ) )
+if ( ! getPref ( '_ALLOW_VIEW_OTHER' ) )
   echo print_not_auth ();
 else
   $smarty->display ( 'layers.tpl' );

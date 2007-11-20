@@ -5,7 +5,7 @@ print_header ();
 echo '
     <h2>' . translate ( 'View Another Users Calendar' ) . '</h2>';
 
-if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
+if ( ( getPref ( '_ALLOW_VIEW_OTHER' ) && ! $is_admin ) ||
     ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' &&
       $PUBLIC_ACCESS_OTHERS != 'Y' ) ) {
   $error = print_not_auth ();
@@ -13,9 +13,9 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
     <blockquote>' . $error . '</blockquote>';
 } else {
   $userlist = get_my_users ( '', 'view' );
-  if ( $NONUSER_ENABLED == 'Y' ) {
+  if ( getPref ('_ENABLE_NONUSERS' ) ) {
     $nonusers = get_my_nonusers ( $login, true );
-    $userlist = ( $NONUSER_AT_TOP == 'Y'
+    $userlist = ( $_NONUSER_AT_TOP == 'Y'
       ? array_merge ( $nonusers, $userlist )
       : array_merge ( $userlist, $nonusers ) );
   }

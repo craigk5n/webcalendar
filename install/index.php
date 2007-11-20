@@ -7,7 +7,7 @@
  * This page is used to create/update includes/settings.php.
  *
  * NEW RELEASE UPDATE PROCEDURES:
- *   - Update WEBCAL_PROGRAM_VERSION default value in default_config.php
+ *   - Update _WEBCAL_PROGRAM_VERSION default value in default_config.php
  *     This should be of the format "v1.0.0"
  *   - Make sure the last entry in all the upgrade-*.sql files reference
  *     this same version.  For example, for "v1.0.0", there should be a
@@ -187,16 +187,16 @@ if ( @file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
   }
   $fd = @fopen ( $file, 'a+b', false );
   if ( empty ( $fd ) ) {
-	  writeAlert ( translate ( 'Unable to write password to settings.php file', true ) );
+    writeAlert ( translate ( 'Unable to write password to settings.php file', true ) );
     exit;
   }
-	
+  
   fwrite ( $fd, "<?php\r\n" );
   fwrite ( $fd, 'install_password: ' . md5($pwd1) . "\r\n" );
   fwrite ( $fd, "?>\r\n" );
   fclose ( $fd );  
-	writeAlert ( translate ( 'Password has been set', true ) );
-	$_SESSION['validuser'] = $pwd1;
+  writeAlert ( translate ( 'Password has been set', true ) );
+  $_SESSION['validuser'] = $pwd1;
   exit;
 }
 
@@ -549,12 +549,12 @@ if ( ! empty ( $y ) ) {
   $settings['single_user_login'] = getPostValue ( 'form_single_user_login' );
   $settings['readonly'] = getPostValue ( 'form_readonly' );
   $settings['mode'] = getPostValue ( 'form_mode' );
-	$settings['use_http_auth'] = ( $incval == 'http' ? 'true' : 'false' );
-	$settings['single_user'] = ( $incval == 'none' ? 'true' : 'false' );
+  $settings['use_http_auth'] = ( $incval == 'http' ? 'true' : 'false' );
+  $settings['single_user'] = ( $incval == 'none' ? 'true' : 'false' );
   $settings['user_inc'] = ( $incval == 'none' || $incval == 'http'
-	  ? 'User' : $incval );
-  $settings['imap_server'] = getPostValue ( 'form_imap_server' );	
-  $settings['user_app_path'] = getPostValue ( 'form_user_app_path' );	
+    ? 'User' : $incval );
+  $settings['imap_server'] = getPostValue ( 'form_imap_server' );  
+  $settings['user_app_path'] = getPostValue ( 'form_user_app_path' );  
 
  //Save Application Name and Server URL
  $db_persistent = false;

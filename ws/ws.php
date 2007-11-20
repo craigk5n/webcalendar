@@ -77,7 +77,7 @@ function ws_print_event_xml ( $eid, $event_date, $extra_tags = '' ) {
   // Get external participants.
   $ext_participants = array ();
   $num_ext_participants = 0;
-  if ( getPref ( 'ALLOW_EXTERNAL_USERS' ) && getPref ( 'EXTERNAL_REMINDERS' ) ) {
+  if ( getPref ( '_ALLOW_EXTERNAL_USERS' ) && getPref ( '_EXTERNAL_REMINDERS' ) ) {
     $res = dbi_execute ( 'SELECT cal_fullname, cal_email
       FROM webcal_entry_ext_user WHERE cal_id = ? AND cal_email IS NOT NULL
       ORDER BY cal_fullname', array ( $eid ) );
@@ -106,7 +106,7 @@ function ws_print_event_xml ( $eid, $event_date, $extra_tags = '' ) {
       echo translate ( 'Error' ) . ': ' . str_replace ( 'XXX', $eid,
       translate ( 'could not find event id XXX in database.' ) ) . "\n";
       return;
-		}
+    }
   }
 
   $create_by = $row[0];
@@ -137,7 +137,7 @@ function ws_print_event_xml ( $eid, $event_date, $extra_tags = '' ) {
   $out .= '</timeFormatted>' . ( $row[5] > 0 ? '
   <duration>' . $row[5] . '</duration>' : '' );
 
-  if ( ! getPref ( 'DISABLE_PRIORITY_FIELD' ) ) {
+  if ( getPref ( '_ENABLE_PRIORITY_FIELD' ) ) {
     $pri[1] = translate ( 'High' );
     $pri[2] = translate ( 'Medium' );
     $pri[3] = translate ( 'Low' );
@@ -145,7 +145,7 @@ function ws_print_event_xml ( $eid, $event_date, $extra_tags = '' ) {
   <priority>' . $row[6] . '-' . $pri[ceil ( $row[6] / 3 )] . '</priority>';
   }
 
-  $out .= ( ! getPref ( 'DISABLE_ACCESS_FIELD' ) ? '
+  $out .= ( getPref ( '_ENABLE_ACCESS_FIELD' ) ? '
   <access>'
      . ( $row[8] == 'P' ? translate ( 'Public' ) : translate ( 'Confidential' ) )
      . '</access>' : '' ) . ( ! _WC_SINGLE_USER ? '
@@ -194,7 +194,7 @@ function ws_print_event_xml ( $eid, $event_date, $extra_tags = '' ) {
   <siteExtras>' . $se . '
   </siteExtras>' : '' );
 
-  if ( ! _WC_SINGLE_USER && ! getPref ( 'DISABLE_PARTICIPANTS_FIELD' ) ) {
+  if ( ! _WC_SINGLE_USER && getPref ( '_ENABLE_PARTICIPANTS_FIELD' ) ) {
     $out .= '
   <participants>';
     for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {

@@ -21,7 +21,7 @@ $report_id = 0;
 $type = $WC->getValue ( 'type', 'H|S|T', true );
 $user = WC__SYSTEM__;
 
-if ( getPref ( 'ALLOW_USER_HEADER' ) ) {
+if ( getPref ( '_ALLOW_USER_HEADER' ) ) {
   $user = $WC->userID();
   if ( empty ( $user ) )
     $user = WC__SYSTEM__;
@@ -128,7 +128,7 @@ if ( $user != WC__SYSTEM__ ) {
 echo '</h2>' . ( ! empty ( $error ) ? print_error ( $error ) : '
     <form action="edit_template.php" method="post" name="reportform">
       <input type="hidden" name="type" value="' . $type . '" />'
-   . ( getPref ( 'ALLOW_USER_HEADER' ) && !
+   . ( getPref ( '_ALLOW_USER_HEADER' ) && !
     empty ( $user ) && $user != WC__SYSTEM__ ? '
       <input type="hidden" name="user" value="' . $user . '" />' : '' ) . '
       <textarea rows="15" cols="60" name="template">' . htmlspecialchars ( $cur )

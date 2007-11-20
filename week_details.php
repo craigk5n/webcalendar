@@ -86,7 +86,7 @@ if ( getPref ( 'DISPLAY_WEEKNUMBER' ) ) {
     echo '<br />-- ' . translate( 'Assistant mode' ) . ' --';
 ?></span>
 <?php
-  if ( getPref ( 'CATEGORIES_ENABLED' ) ) {
+  if ( getPref ( '_ENABLE_CATEGORIES' ) ) {
     echo "<br /><br />\n";
     echo print_category_menu('week', sprintf ( "%04d%02d%02d",$thisyear, $thismonth, $thisday ), $WC->catId() );
   } ?>

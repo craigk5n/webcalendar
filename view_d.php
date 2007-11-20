@@ -13,7 +13,7 @@
  * (*) required field
  *
  * Security:
- * Must have "allow view others" enabled ($ALLOW_VIEW_OTHER) in System Settings
+ * Must have "allow view others" enabled (_ALLOW_VIEW_OTHER) in System Settings
  * unless the user is an admin ($WC->isAdmin()).
  * If the view is not global, the user must own the view.
  * If the view is global and user_sees_only_his_groups is enabled,

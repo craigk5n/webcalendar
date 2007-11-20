@@ -57,7 +57,7 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
       $error = db_error ();
   }
   if ( empty ( $delIcon ) && @is_dir( $icon_path ) && 
-    ( getPref ('ENABLE_ICON_UPLOADS') ||
+    ( getPref ('_ENABLE_ICON_UPLOADS') ||
         $WC->isAdmin() ) ) {
     // Save icon if uploaded.
     if ( ! empty ( $file['tmp_name'] ) ) {

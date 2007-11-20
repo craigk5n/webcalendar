@@ -283,7 +283,7 @@ if (empty($username)) $username = '__public__';
 
 // Allow the URL to override the user setting such as
 // "upcoming.php?user=craig"
-$allow_user_override = true;
+$_ALLOW_USER_OVERRIDE = true;
 
 // Load layers
 $load_layers = true;
@@ -301,7 +301,7 @@ $display_tzid = 2;
 $login = $username;
 
 
-if ( $allow_user_override ) {
+if ( $_ALLOW_USER_OVERRIDE ) {
   $u = $WC->getValue ( 'user', "[A-Za-z0-9_\.=@,\-]+", true );
   if ( ! empty ( $u ) ) {
     $username = $u;

@@ -85,7 +85,7 @@ if ( ! empty ( $eid ) && empty ( $error ) ) {
       $check_group = false;
       // if not a participant in the event, must be allowed to look at
       // other user's calendar.
-      if ( getPref ( 'ALLOW_VIEW_OTHER' ) ) {
+      if ( getPref ( '_ALLOW_VIEW_OTHER' ) ) {
         $check_group = true;
       }
       // If $check_group is true now, it means this user can look at the
@@ -132,8 +132,7 @@ if ( ! empty ( $eid ) && empty ( $error ) ) {
   }
   // If they still cannot view, make sure they are not looking at a nonuser
   // calendar event where the nonuser is the _only_ participant.
-  if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
-    getpref ( 'NONUSER_ENABLED' ) ) {
+  if ( empty ( $error ) && ! $can_view   && getpref ( '_ENABLE_NONUSERS' ) ) {
     $nonusers = get_nonuser_cals ();
     $nonuser_lookup = array ();
     for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {

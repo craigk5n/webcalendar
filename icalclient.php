@@ -44,9 +44,9 @@
  * None
  *
  * Security:
- * If $PUBLISH_ENABLED is not 'Y' (set in Admin System Settings),
+ * If _ENABLE_PUBLISH is not 'Y' (set in Admin System Settings),
  *   do not allow.
- * If USER_PUBLISH_RW_ENABLED is not 'Y' (set in each user's
+ * If ENABLE_USER_PUBLISH_RW is not 'Y' (set in each user's
  *   Preferences), do not allow.
  *
  * Change List:
@@ -150,7 +150,7 @@ $WC->initializeSecondPhase();
  
 $WC->setLanguage();
 
-if ( ! getPref ( 'PUBLISH_ENABLED' ) ) {
+if ( ! getPref ( '_ENABLE_PUBLISH' ) ) {
   header ( 'Content-Type: text/plain' );
   // Mozilla Calendar does not bother showing errors, so they won't
   // see this error message anyhow....  Not sure about Apple iCal or
@@ -158,8 +158,8 @@ if ( ! getPref ( 'PUBLISH_ENABLED' ) ) {
   etranslate ( 'Publishing Disabled (Admin)' );
   exit;
 }
-//echo $prefarray['USER_PUBLISH_RW_ENABLED'];
-if ( ! getPref ( 'USER_PUBLISH_RW_ENABLED'  )) {
+//echo $prefarray['ENABLE_USER_PUBLISH_RW'];
+if ( ! getPref ( 'ENABLE_USER_PUBLISH_RW'  )) {
   header ( 'Content-Type: text/plain' );
   etranslate ( 'Publishing Disabled (User)' );
   exit;

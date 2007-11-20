@@ -77,7 +77,7 @@ list_help ( $tmp_arr );
 echo '
       </div>';
 
-if ( getPref ( 'PUBLISH_ENABLED' ) ) {
+if ( getPref ( '_ENABLE_PUBLISH' ) ) {
   echo '
       <h3>' . translate ( 'Subscribe/Publish' ) . '</h3>
       <div>';
@@ -102,7 +102,7 @@ if ( getPref ( 'PUBLISH_ENABLED' ) ) {
       </div';
 }
 
-if ( getPref ( 'ALLOW_COLOR_CUSTOMIZATION' ) )
+if ( getPref ( '_ALLOW_COLOR_CUSTOMIZATION' ) )
   echo '
       <h3>' . translate ( 'Colors' ) . '</h3>
       <p>' . translate ( 'colors-help' ) . '</p>';

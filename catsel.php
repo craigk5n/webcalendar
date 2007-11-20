@@ -5,7 +5,7 @@ include_once 'includes/init.php';
 
 $catList = $catNames = $error = '';
 
-if ( ! getPref ( 'CATEGORIES_ENABLED' ) )
+if ( ! getPref ( '_ENABLE_CATEGORIES' ) )
   exit;
 
 //$WC->loadCategories();

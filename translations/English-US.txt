@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-16-2007
+# Translation last updated on 11-20-2007
 
 
 ################################################################################
@@ -191,17 +191,12 @@ Include add event link in views: Include add event link in views
 lunar-help: If enabled, will display small icons representing the lunar phases each month
 Display Lunar Phases in month view: Display Lunar Phases in month view
 Popups: Popups
-disable-popups-help: Disable popups from calendar views
-Disable Pop-Ups: Disable Pop-Ups
+enable-popups-help: Enable popups from calendar views
+Enable Pop-Ups: Enable Pop-Ups
 popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
 Display Site Extras in popup: Display Site Extras in popup
 popup-includes-participants-help: If enabled, participants are displayed in event popups.
 Display Participants in popup: Display Participants in popup
-Miscellaneous: Miscellaneous
-remember-last-login-help: When enabled, the user&#39;s login will be filled in for them on the login page (but not the password), and the user&#39;s preferences will be loaded (including their preferred colors and language selection).
-Remember last login: Remember last login
-summary_length-help: Maximum length of Brief Description in calendar views
-Brief Description Length: Brief Description Length
 require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled). Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 Require event approvals: Require event approvals
 display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
@@ -216,20 +211,22 @@ limit-appts-help: Allows the system administrator to set a system-wide limit on 
 Limit number of timed events per day: Limit number of timed events per day
 limit-appts-number-help: Specifies the maximum number of timed events a user can have in a single day.
 Maximum timed events per day: Maximum timed events per day
+summary_length-help: Maximum length of Brief Description in calendar views
+Brief Description Length: Brief Description Length
 crossday-help: If enabled, events that span days will be displayed on separate days
-Disable Cross-Day Events: Disable Cross-Day Events
-disable-location-field-help: Selecting "Yes" will remove the "Location" field from event information pages
-Disable Location field: Disable Location field
-disable-url-field-help: Selecting "Yes" will remove the "URL" field from event information pages
-Disable URL field: Disable URL field
-disable-priority-field-help: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
-Disable Priority field: Disable Priority field
-disable-access-field-help: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
-Disable Access field: Disable Access field
-disable-participants-field-help: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events. If you enable this option, you may want to also disable the "Allow viewing other user&#39;s calendars" field also.
-Disable Participants field: Disable Participants field
-disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field when adding events. This will provide a simpler interface for novices.
-Disable Repeating field: Disable Repeating field
+Enable Cross-Day Events: Enable Cross-Day Events
+enable-location-field-help: Display the "Location" field from event information pages
+Enable Location field: Enable Location field
+enable-url-field-help: Display the "URL" field from event information pages
+Enable URL field: Enable URL field
+enable-priority-field-help: Display the "Priority" field from event information pages, providing a simpler interface for novices.
+Enable Priority field: Enable Priority field
+enable-access-field-help: Display the "Access" field from event information pages, providing a simpler interface for novices.
+Enable Access field: Enable Access field
+enable-participants-field-help: Display the "Participants" field from event information pages, preventing users from adding other users to their events. If you enable this option, you may want to also disable the "Allow viewing other user&#39;s calendars" field also.
+Enable Participants field: Enable Participants field
+enable-repeating-field-help: Display the "Repeating" field when adding events. This will provide a simpler interface for novices.
+Enable Repeating field: Enable Repeating field
 allow-html-description-help: If enabled, users can enter HTML in the event description field. If not enabled, the HTML tags will be escaped so as to appear as plain text. Warning: Enabling this feature will allow users to reference images on other websites.
 Allow HTML in Description: Allow HTML in Description
 allow-attachment-help: Allow users to add file attachments to events.
@@ -245,13 +242,23 @@ groups-enabled-help: Enables group support, allowing users to select users by gr
 Groups enabled: Groups enabled
 user-sees-his-group-help: If enabled, users will not see calendar users that are not in at least one of their groups.
 User sees only his groups: User sees only his groups
+cleartext-passwords-help: If enabled, user passwords are stored in plaintext. Existing md5 passwords are still valid.
+Allow cleartext passwords: Allow cleartext passwords
+expire-password-help: If not 0, passwords expire after number of days entered if user doesn&#39;t log in. Can be reset by admin
+Password expiration: Password expiration
+remember-last-login-help: When enabled, the user&#39;s login will be filled in for them on the login page (but not the password), and the user&#39;s preferences will be loaded (including their preferred colors and language selection).
+Remember last login: Remember last login
 allow-view-other-help: Specifies whether one user may view another user&#39;s calendar.
 Allow viewing other user&#39;s calendars: Allow viewing other user&#39;s calendars
 user_sort-help: Determines sort order for User, Nonuser lists
 User Sort Order: User Sort Order
 Lastname, Firstname: Lastname, Firstname
 Firstname, Lastname: Firstname, Lastname
-extended_user-help: Use extended user settings
+nonuser-enabled-help: If enabled, admins will have the option to add nonuser calendars
+Nonuser enabled: Nonuser Calendars Enabled
+nonuser-list-help: Where to display the nonuser calendars in the participant list
+Nonuser list: Display in participants list at
+_EXTENDED_USER-help: Use extended user settings
 Allow extended user settings: Allow extended user settings
 allow-external-users-help: Specifies whether a non-calendar user can be added to an event. This allows non-calendar users to be listed as event participants.
 Allow external users: Allow external users
@@ -265,10 +272,6 @@ use-blacklist-help: Limit access to WebCalendar functions based on IP address
 Restrict self-registration to blacklist: Restrict self-registration to blacklist
 allow-self-registration-full-help: Allow new users to complete the self-registration process on-line
 Use self-registration email notifications: Generate passwords and send to new users
-nonuser-enabled-help: If enabled, admins will have the option to add nonuser calendars
-Nonuser enabled: Nonuser Calendars Enabled
-nonuser-list-help: Where to display the nonuser calendars in the participant list
-Nonuser list: Display in participants list at
 reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports. Additionally, admin users can create global reports that will appear at the bottom of all users&#39; pages.
 Reports enabled: Reports enabled
 categories-enabled-help: Enables support for event categories.
@@ -706,6 +709,7 @@ hour: hour
 minute: minute
 time-interval-help: Specifies how long the time blocks in the week view and day view will be.
 Time interval: Time interval
+Miscellaneous: Miscellaneous
 auto-refresh-help: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
 Auto-refresh calendars: Auto-refresh calendars
 auto-refresh-time-help: If Auto-refresh is enabled, this specifies the time between each refresh.
@@ -1216,7 +1220,7 @@ This Calendar is not Public: This Calendar is not Public
 # Page: nulogin.php
 #
 A login must be specified: A login must be specified
-Illegal characters in login: Illegal characters in login
+Illegal characters in login XXX.: Illegal characters in login XXX.
 
 ########################################
 # Page: pref.php
@@ -1232,6 +1236,7 @@ No user specified: No user specified
 # Page: register.php
 #
 Email address can not be blank: Email address can not be blank
+Illegal characters in login: Illegal characters in login
 A new WebCalendar account has been set up for you: A new WebCalendar account has been set up for you
 Your username is: Your username is
 Your password is: Your password is
@@ -1609,7 +1614,7 @@ Unnamed Event: Unnamed Event
 Event Imported: Event Imported
 
 ########################################
-# Page: includes/classes/Config.class.php
+# Page: includes/classes/Doc.class.php
 #
 bytes: bytes
 kb: kb
@@ -1636,7 +1641,7 @@ recipients_failed: SMTP Error: The following recipients failed:
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: Enter Characters Seen in Graphic
-Enter the correct letters and numbers from the image into the text box...: Enter the correct letters and numbers from the image into the text box...
+Enter the correct letters and numbers...: Enter the correct letters and numbers...
 Challenge/Response: Challenge/Response
 
 ########################################
@@ -1711,7 +1716,7 @@ Not authorized (not admin).: Not authorized (not admin).
 ########################################
 # Page: ws/get_events.php
 #
-Checking for events for XXX from date XXX to date XXX.: Checking for events for XXX from date XXX to date XXX.
+Checking for events for XXX from date YYY to date ZZZ.: Checking for events for XXX from date YYY to date ZZZ.
 Found XXX events in time range.: Found XXX events in time range.
 Event id=XXX XXX at XXX on XXX.: Event id=XXX XXX at XXX on XXX.
 
@@ -1726,7 +1731,7 @@ Reminder set for event.: Reminder set for event.
 Mins Before XXX.: Mins Before: XXX.
 Event time is XXX.: Event time is: XXX.
 Remind time is XXX.: Remind time is: XXX.
-Reminders for user XXX, login XXX.: Reminders for user XXX, login XXX.
+Reminders for user XXX, login YYY.: Reminders for user XXX, login YYY.
 
 ########################################
 # Page: ws/get_unapproved.php

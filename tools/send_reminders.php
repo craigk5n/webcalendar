@@ -78,8 +78,8 @@ include _WC_INCLUDE_DIR . 'site_extras.php';
 
 $WC->initializeSecondPhase ();
 
-$debug = true;// Set to true to print debug info...
-$only_testing = true; // Just pretend to send -- for debugging.
+$debug = false;// Set to true to print debug info...
+$only_testing = false; // Just pretend to send -- for debugging.
 
 // Establish a database connection.
 $c = dbi_connect ( _WC_DB_HOST, _WC_DB_LOGIN, 
@@ -160,7 +160,7 @@ if ( $res ) {
 }
 
 if ( ! getPref ( 'GENERAL_USE_GMT' ) )
-  $def_tz = $SERVER_TIMEZONE;
+  $def_tz = $_SERVER_TIMEZONE;
 
 $startdateTS = time ( 0, 0, 0 );
 $enddateTS = $startdateTS + ( $DAYS_IN_ADVANCE * ONE_DAY );
@@ -265,7 +265,7 @@ function send_reminder ( $eid, $event_date ) {
   }
   $partcnt = count ( $participants );
   // Get external participants.
-  if ( getPref ( 'ALLOW_EXTERNAL_USERS' ) && getPref ( 'EXTERNAL_REMINDERS' ) ) {
+  if ( getPref ( '_ALLOW_EXTERNAL_USERS' ) && getPref ( '_EXTERNAL_REMINDERS' ) ) {
     $res = dbi_execute ( 'SELECT cal_fullname, cal_email
       FROM webcal_entry_ext_user WHERE cal_id = ? AND cal_email IS NOT NULL
       ORDER BY cal_fullname', array ( $eid ) );
@@ -294,7 +294,7 @@ function send_reminder ( $eid, $event_date ) {
       echo translate ( 'Error' ) . ': ' . str_replace ( 'XXX', $eid,
       translate ( 'could not find event id XXX in database.' ) ) . "\n";
       return;
-		}
+    }
   }
 
   // send mail. We send one user at a time so that we can switch
@@ -398,11 +398,11 @@ function send_reminder ( $eid, $event_date ) {
       ? translate ( 'Pecentage Complete' ) . ': ' . $percentage[$user]
        . "%\n"
       : '' )
-     . ( ! getPref ( 'DISABLE_PRIORITY_FIELD' )
+     . ( getPref ( '_ENABLE_PRIORITY_FIELD' )
       ? translate ( 'Priority' ) . ': ' . $row[6] . '-'
       . $pri[ceil($row[6]/3 )]  . "\n" : '' );
 
-    if ( ! getPref ( 'DISABLE_ACCESS_FIELD' ) ) {
+    if ( getPref ( '_ENABLE_ACCESS_FIELD' ) ) {
       $body .= translate ( 'Access' ) . ': ';
       if ( $row[8] == 'C' )
         $body .= translate ( 'Confidential' ) . "\n";
@@ -445,7 +445,7 @@ function send_reminder ( $eid, $event_date ) {
           $body .= ': ' . $extras[$extra_name]['cal_data'] . "\n";
       }
     }
-    if ( ! _WC_SINGLE_USER &&! getPref ( 'DISABLE_PARTICIPANTS_FIELD' ) ) {
+    if ( ! _WC_SINGLE_USER && getPref ( '_ENABLE_PARTICIPANTS_FIELD' ) ) {
       $body .= translate ( 'Participants') . ":\n";
 
       for ( $i = 0; $i < $partcnt; $i++ ) {
@@ -480,7 +480,7 @@ From:' . $adminStr . '
       // send ics attachment to External Users
       $attach = ( $isExt ? $eid : '' );
       $mail->WC_Send ( $adminStr, $recip, $recipName, $subject,
-        $body, $useHtml, $GLOBALS['EMAIL_FALLBACK_FROM'], $attach  );
+        $body, $useHtml, $GLOBALS['_EMAIL_FALLBACK_FROM'], $attach  );
       $cal_text = ( $isExt ? translate ( 'External User' ) : '' );
       activity_log ( $eid, 'system', $user, LOG_REMINDER, $cal_text );
     }

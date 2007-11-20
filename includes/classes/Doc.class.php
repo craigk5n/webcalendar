@@ -94,13 +94,13 @@ class Doc {
   /** Are attachments enabled? */
   function attachmentsEnabled ()
   {
-    return ( getPref ( 'ALLOW_ATTACH', 2 ) );
+    return ( getPref ( '_ALLOW_ATTACH', 2 ) );
   }
 
   /** Are comments enabled? */
   function commentsEnabled ()
   {
-    return ( getPref ( 'ALLOW_COMMENTS', 2 ) );
+    return ( getPref ( '_ALLOW_COMMENTS', 2 ) );
   }
 
 

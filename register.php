@@ -28,10 +28,10 @@ $appStr =  generate_application_name ();
 
 $notauth = print_not_auth ();
 
-if ( ! getPref ( 'ALLOW_SELF_REGISTRATION' ) ) { 
+if ( ! getPref ( '_ALLOW_SELF_REGISTRATION' ) ) { 
   $error = $notauth;
 }
-$self_registration_full = getPref ( 'SELF_REGISTRATION_FULL', 2 );
+$self_registration_full = getPref ( '_SELF_REGISTRATION_FULL', 2 );
 $form_control = ( $self_registration_full ? 'email' : 'full');
 
 //See if new username is unique
@@ -189,7 +189,7 @@ if ( empty ( $error ) && ! empty ( $control ) && $control == 'full' ) {
   $name = $appStr . ' ' . translate( 'Welcome' ) . ': ' . $ufirstname;
   //send  via WebCalMailer class
   $mail->WC_Send ( $adminStr, $uemail, $ufirstname .  ' ' 
-    . $ulastname, $name, $msg, $htmlmail, getPref ( 'EMAIL_FALLBACK_FROM', 2 ) );
+    . $ulastname, $name, $msg, $htmlmail, getPref ( '_EMAIL_FALLBACK_FROM', 2 ) );
   activity_log ( 0, 'system', $user, LOG_NEWUSER_EMAIL, $newID .' New user via email' ); 
  }
 }

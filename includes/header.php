@@ -36,11 +36,11 @@ function build_header ( $includes='', $HeadX='', $BodyX='', $control=0 ) {
   $smarty->assign ('doctype', send_doctype ( $appStr ) );
   
   //Set CSS dynamic name
-	generate_CSS();
-	//$smarty->assign ( 'cachedCSS', 'default.css' );
-	$smarty->assign ( 'cachedCSS', 
-	  ( _WC_SCRIPT != 'admin.php' && $WC->userLoginId() ?
-		 md5($WC->userLoginId()) : 'default' ) . '.css' );
+  generate_CSS();
+  //$smarty->assign ( 'cachedCSS', 'default.css' );
+  $smarty->assign ( 'cachedCSS', 
+    ( _WC_SCRIPT != 'admin.php' && $WC->userLoginId() ?
+     md5($WC->userLoginId()) : 'default' ) . '.css' );
   // Any other includes?
   if ( is_array ( $includes ) ) {
     foreach ( $includes as $inc ) {
@@ -52,29 +52,28 @@ function build_header ( $includes='', $HeadX='', $BodyX='', $control=0 ) {
   // Add custom header if enabled.
   if ( getPref ( 'CUSTOM_HEADER' ) && ! $disableCustom  )
     $smarty->assign ('header_template', load_template( 'H' ) );
-	
+  
   // Add custom script/stylesheet if enabled.
   if ( getPref ( 'CUSTOM_SCRIPT' ) && ! $disableStyle )
     $smarty->assign ('css_template', load_template( 'S' ) );
-	
+  
   // Add custom footer if enabled. (Used in footer.tpl)
   if ( getPref ( 'CUSTOM_TRAILER' ) && ! $disableStyle )
-    $smarty->assign ('footer_template', load_template( 'T' ) );	
-	
+    $smarty->assign ('footer_template', load_template( 'T' ) );  
+  
   // Add RSS feed if publishing is enabled.
-  $smarty->assign ('rss_enabled', getPref ( 'RSS_ENABLED' ) && getPref ('USER_RSS_ENABLED' ) && ! $disableRSS);
+  $smarty->assign ('rss_enabled', getPref ( '_ENABLE_RSS' ) && getPref ('ENABLE_USER_RSS' ) && ! $disableRSS);
 
   if ( $menu_enabled){
     include_once 'includes/menu.php';
-	$smarty->assign ( 'logout', ! empty ( $WC->_logout_url ) 
-	  && $menuConfig['Login'] );
-	$smarty->assign ('menuScript', $menuScript );
-	$smarty->assign ('menu_above', $menuConfig['Above Custom Header'] );
-	$smarty->assign ( 'menuName', ( $menuConfig['Login Fullname'] 
-	  ? $WC->fullName : $WC->login() ));
+  $smarty->assign ( 'logout', ! empty ( $WC->_logout_url ) 
+    && $menuConfig['Login'] );
+  $smarty->assign ('menuScript', $menuScript );
+  $smarty->assign ('menu_above', $menuConfig['Above Custom Header'] );
+  $smarty->assign ( 'menuName', ( $menuConfig['Login Fullname'] 
+    ? $WC->fullName : $WC->login() ));
   $smarty->assign ('menu_enabled', $menu_enabled); 
   $smarty->assign ('menu_date_top', getPref ( 'MENU_DATE_TOP' ) );
-  $smarty->assign ('menu_theme', getPref ( 'MENU_THEME', 1, '', 'default' ) );
     // Add menu function to onload string as needed.
     $BodyX = ( ! empty ( $BodyX ) ? substr ( $BodyX, 0, -1 ) : 'onload="' )
       . "cmDraw ( 'myMenuID', myMenu, 'hbr', cm);;\"";
@@ -82,15 +81,15 @@ function build_header ( $includes='', $HeadX='', $BodyX='', $control=0 ) {
 
 
   $smarty->assign ( 'include_nav_links', true ); 
-	$smarty->assign ( 'demo_mode', getPref ( 'DEMO_MODE', 2 ) );	
-	
+  $smarty->assign ( '_DEMO_MODE', getPref ( '_DEMO_MODE', 2 ) );  
+  
   $smarty->assign('navFullname', ( ! _WC_SINGLE_USER ?
     $WC->getFullName( $WC->userLoginId() ) : '' ) );
   $smarty->assign('navAdmin', ( $WC->isNonuserAdmin() ? '-- ' 
     . translate ( 'Admin mode' ) . ' --' : '' ) );
   $smarty->assign('navAssistant', ( access_user_calendar ( 'assistant', $WC->userLoginId()) ? '-- ' 
     . translate ( 'Assistant mode' ) . ' --' : '' ) ); 
-		
+    
   $smarty->assign ('HeadX', $HeadX);
   $smarty->assign ('BodyX', $BodyX); 
   $smarty->assign ('direction',( translate ( 'direction' ) == 'rtl' 

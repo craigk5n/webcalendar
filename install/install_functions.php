@@ -20,7 +20,7 @@ function db_load_admin () {
 
     dbi_free_result ( $res );
   }
-  $upassword = ( $wewbcalConfig['PASSWORDS_CLEARTEXT'] == 'Y'? 'admin' : md5 ( 'admin' ) );
+  $upassword = ( $wewbcalConfig['_CLEARTEXT_PASSWORDS'] == 'Y'? 'admin' : md5 ( 'admin' ) );
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_user
     WHERE cal_login = \'admin\'', array (), false, false );
   $sql = 'INSERT INTO webcal_user ( cal_login_id, cal_login, cal_passwd, cal_lastname,
@@ -29,7 +29,7 @@ function db_load_admin () {
   // Preload access_function premissions.
   $sql2 = 'INSERT INTO webcal_access_function ( cal_login_id, cal_permissions )
     VALUES ( \'' . $next_id 
-	. '\', \'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY\' )';
+  . '\', \'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY\' )';
   if ( ! $res ) {
     dbi_execute ( $sql );
     dbi_execute ( $sql2 );
@@ -67,11 +67,11 @@ function get_php_setting ( $val, $string = false ) {
 
 function get_php_modules ( $val ) {
   $ret = 'OFF';
-	//Allow multiple comma seperated values to be passed
+  //Allow multiple comma seperated values to be passed
   $vals = explode ( ',', $val );
-	foreach ( $vals as $values ) {
-	  if ( function_exists ( $values ) ) $ret = 'ON';
-	}
+  foreach ( $vals as $values ) {
+    if ( function_exists ( $values ) ) $ret = 'ON';
+  }
   return $ret;
 }
 // We will generate many errors while trying to test database
@@ -105,7 +105,7 @@ function get_installed_version ( $postinstall = false ) {
 
   // v1.1 and after will have an entry in webcal_config to make this easier
   $res = @dbi_execute ( 'SELECT cal_value FROM webcal_config
-    WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'', array(), false, false );
+    WHERE cal_setting = \'_WEBCAL_PROGRAM_VERSION\'', array(), false, false );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
    if ( ! empty ( $row[0] ) ) {
@@ -126,16 +126,16 @@ function get_installed_version ( $postinstall = false ) {
     else {
 
       // Clear db_cache. This will prevent looping when launching WebCalendar
-      // if upgrading and WEBCAL_PROGRAM_VERSION is cached.
+      // if upgrading and _WEBCAL_PROGRAM_VERSION is cached.
       if ( ! empty ( $settings['db_cachedir'] ) && @is_dir ( $cfg['db_cachedir'] ) )
         dbi_init_cache ( $settings['db_cachedir'] );
       else
       if ( ! empty ( $settings['cachedir'] ) && @is_dir ( $cfg['cachedir'] ) )
         dbi_init_cache ( $settings['cachedir'] );
 
-      // Delete existing WEBCAL_PROGRAM_VERSION number.
+      // Delete existing _WEBCAL_PROGRAM_VERSION number.
       dbi_execute ( 'DELETE FROM webcal_config
-        WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
+        WHERE cal_setting = \'_WEBCAL_PROGRAM_VERSION\'' );
     }
     dbi_free_result ( $res );
     // Insert webcal_config values only if blank.
@@ -187,7 +187,7 @@ function parse_sql ( $sql ) {
 
 function db_populate ( $install_filename, $display_sql ) {
   global $show_all_errors, $str_parsed_sql;
-	
+  
   if ( $install_filename == '' )
     return;
   $full_sql = '';
@@ -255,7 +255,7 @@ echo <<<EOT
    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
    <html>
    <head>
-	 <title>{$str}</title>
+   <title>{$str}</title>
    <meta http-equiv="refresh" content="0; index.php" />
    </head>
    <body onload="alert ('{$str}'); {$go_back}">

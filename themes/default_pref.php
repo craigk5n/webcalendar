@@ -15,7 +15,6 @@
 
 // This theme will be available to both normal users and System Settings.
 $webcal_theme = array (
-  'MENU_THEME'            => 'default',
   'BGCOLOR'               => '#FFFFFF',
   'CELLBG'                => '#C0C0C0',
   'DISPLAY_SM_MONTH'      => 'Y',

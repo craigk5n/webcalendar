@@ -2,7 +2,7 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
-if ( ! getPref ( 'ALLOW_VIEW_OTHER' ) ) {
+if ( ! getPref ( '_ALLOW_VIEW_OTHER' ) ) {
   build_header ();
 	$smarty->assign ( 'not_auth', true );
   $smarty->display ( 'error.tpl' );
@@ -37,16 +37,16 @@ $layers = loadLayers ( $layer_user, 1 );
 
 if ( ! _WC_SINGLE_USER ) {
   $others = $userlist = get_my_users ( '', 'view' );
-  if ( getpref ( 'NONUSER_ENABLED' ) ) {
+  if ( getpref ( '_ENABLE_NONUSERS' ) ) {
     // Restrict NUC list if groups are enabled.
     $nonusers = get_my_nonusers ( $layer_user, true, 'view' );
-    $userlist = ( getpref ( 'NONUSER_AT_TOP' )
+    $userlist = ( getpref ( '_NONUSER_AT_TOP' )
       ? array_merge ( $nonusers, $userlist )
       : array_merge ( $userlist, $nonusers ) );
   }
-  if ( getPref ( 'REMOTES_ENABLED', 2 ) ) {
+  if ( getPref ( '_ENABLE_REMOTES', 2 ) ) {
     $remotes = get_nonuser_cals ( $layer_user, true );
-    $userlist = ( getpref ( 'NONUSER_AT_TOP' )
+    $userlist = ( getpref ( '_NONUSER_AT_TOP' )
       ? array_merge ( $remotes, $userlist )
       : array_merge ( $userlist, $remotes ) );
   }

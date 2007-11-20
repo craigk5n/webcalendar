@@ -12,8 +12,8 @@
  * @subpackage Edit Remotes
  *
  * Security
- * $REMOTES_ENABLED must be enabled under System Settings and if
- * if UAC is enabled, then the user must be allowed to ACCESS_IMPORT 
+ * _ENABLE_REMOTES must be enabled under System Settings and
+ * the user must be allowed to ACCESS_IMPORT 
 */
 include_once 'includes/init.php';
 $INC = array('edit_remotes.js');
@@ -21,7 +21,7 @@ build_header ( $INC, '', '', 5 );
 
 $error = '';
 
-if ( ! getPref ( 'REMOTES_ENABLED', 2 )  || 
+if ( ! getPref ( '_ENABLE_REMOTES', 2 )  || 
   ! access_can_access_function ( ACCESS_IMPORT ) ) {
   $error = print_not_auth ();
 }

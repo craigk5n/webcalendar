@@ -19,7 +19,18 @@
  */
 function smarty_function_print_checkbox ( $params, &$smarty )
 {
+  static $sysConfig, $userPref;
+
+  //load webcal_config values if not already loaded
+  if ( empty ( $sysConfig ) ) 
+    $sysConfig = loadConfig ();
  
+  //load webcal_user_pref values if not already loaded
+  if (  _WC_SCRIPT == 'pref.php' && empty ( $userPref ) ) {
+    $userPref = loadPreferences ();
+  }
+  
+  $disabled = '';
   $name = $params['name'];
   $value = ( ! empty ( $params['value'] ) ? $params['value'] : 'Y' );
   $onchange = ( ! empty ( $params['onchange'] ) 
@@ -27,20 +38,25 @@ function smarty_function_print_checkbox ( $params, &$smarty )
   
 
   if ( _WC_SCRIPT == 'admin.php' ) {
-    $setting = getPref ( $name, 2 );
+    $setting = $sysConfig[$name];
     $name = 'admin_' . $name ;
   }
   if ( _WC_SCRIPT == 'pref.php' ) {
-    $setting = getPref ( $name );
+    $setting = $userPref[$name];
+    //Check if control should be disabled
+    $admin_setting = $sysConfig[$name];
+    if ( substr ( $name, 0, 1 ) == '_' &&  $admin_setting == 'N' ) {
+      $disabled = DISABLED;
+      $setting = $admin_setting;
+    }
     $name = 'pref_' . $name ;
   }
   //getPref returns boolean values for Y/N by default
-  $checked = ( ($setting === $value) 
-    || ($setting && $value =='Y' ) ? CHECKED : '' );
-    
+  $checked = ( ( $setting == $value ) ? CHECKED : '' );
+      
   $ret = '<input type="checkbox" name="' . $name . '" value="' . $value
    . '" id="' . $name . '" ' . $checked 
-   . $onchange . ' />';
+   . $onchange . $disabled . ' />';
    
   if ( ! empty ( $params['label'] ) ) 
     $ret =  '<label>' . $ret . '&nbsp;' . $params['label'] . '</label>';

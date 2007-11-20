@@ -5,9 +5,9 @@ include_once 'includes/init.php';
 // we get to this point (by init.php included above).
 if ( getPref ( 'STARTVIEW' ) ) {
   $page = get_preferred_view ();
-  if ( access_can_view_page ( $page ) )
+  if ( access_can_view_page ( $page ) ) {
     send_to_preferred_view ();
-  else {
+  } else {
     // User's preferences need to be updated to their preferred view.
     if ( access_can_access_function ( ACCESS_PREFERENCES ) )
       do_redirect ( 'pref.php' );

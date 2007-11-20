@@ -8,7 +8,7 @@ function init_admin () {
   eu_handler ();
   popup_handler ();
   sr_handler ();
-	altrows();
+  altrows();
 }
 
 function valid_form ( form ) {
@@ -107,44 +107,44 @@ function valid_form ( form ) {
 }
 
 // Gets called on page load and when user changes setting for
-// "Disable popup".
+// "Enable popup".
 function popup_handler () {
-	$('popup').showIf(document.prefform.admin_DISABLE_POPUPS.checked);
+  $('popup').showIf(document.prefform.admin_ENABLE_POPUPS.checked);
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow external users".
 function eu_handler () {
-	$('eu').showIf(document.prefform.admin_ALLOW_EXTERNAL_USERS.checked);
+  $('eu').showIf(document.prefform.admin__ALLOW_EXTERNAL_USERS.checked);
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow self registration".
 function sr_handler () {
-	$('sr').showIf(document.prefform.admin_ALLOW_SELF_REGISTRATION.checked);
+  $('sr').showIf(document.prefform.admin__ALLOW_SELF_REGISTRATION.checked);
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow attachments".
 function attach_handler () {
-	$('attach').showIf(document.prefform.admin_ALLOW_ATTACH.checked);
+  $('attach').showIf(document.prefform.admin__ALLOW_ATTACH.checked);
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow comments".
 function comment_handler () {
-	$('comment').showIf(document.prefform.admin_ALLOW_COMMENTS.checked);
+  $('comment').showIf(document.prefform.admin__ALLOW_COMMENTS.checked);
 }
 
 // Gets called on page load and when user changes setting for
 // "Email enabled".
 function email_handler () {
-	var sm = document.prefform.admin_SEND_EMAIL.checked;
-	var em = document.prefform.admin_EMAIL_MAILER.selectedIndex;
-  var sa = document.prefform.admin_SMTP_AUTH.checked;
-	$('em').showIf(sm);
-	$('em_smtp').showIf(sm && em == 0);
-	$('em_auth').showIf(sm && em == 0 && sa);
+  var sm = document.prefform.admin__SEND_EMAIL.checked;
+  var em = document.prefform.admin__EMAIL_MAILER.selectedIndex;
+  var sa = document.prefform.admin__SMTP_AUTH.checked;
+  $('em').showIf(sm);
+  $('em_smtp').showIf(sm && em == 0);
+  $('em_auth').showIf(sm && em == 0 && sa);
 }
 
 var tabs = new Array();

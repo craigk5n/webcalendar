@@ -27,7 +27,7 @@ class WebCalSmarty extends Smarty {
     $this->assign_by_ref('WC', $WC);
     $this->template_dir = 'templates';
     //the following link points to \cache\templates_c
-    $this->compile_dir  = 'cache/templates_c';
+    $this->compile_dir  = _WC_PUB_CACHE . '/templates_c';
     $this->config_dir   = 'includes/smarty';
     $this->plugins_dir  =  array( 'includes/smarty', 'plugins');
     $this->config_load('wc.conf');  

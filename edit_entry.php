@@ -9,7 +9,7 @@ include_once 'includes/init.php';
 
 
 // Default for using tabs is enabled
-$useTabs = ( getpref ( 'EVENT_EDIT_TABS' ) );
+$useTabs = ( getpref ( '_EVENT_EDIT_TABS' ) );
 // make sure this is not a read-only calendar
 $can_edit = true;
 
@@ -35,7 +35,7 @@ if ( empty ( $date ) && empty ( $month ) ) {
 $eid = $WC->getId();
 
 // Do we use FCKEditor?
-if ( getPref ( 'ALLOW_HTML_DESCRIPTION' ) ){
+if ( getPref ( '_ALLOW_HTML_DESCRIPTION' ) ){
   if ( file_exists ( 'includes/FCKeditor-2.0/fckeditor.js' ) &&
     file_exists ( 'includes/FCKeditor-2.0/fckconfig.js' ) ) {
     $smarty->assign ( 'use_fckeditor',  true );
@@ -110,7 +110,7 @@ if ( _WC_READONLY ) {
       
     //if we allow NUCs to edit their own events, we can compare their IP
     // to the one saved with the event.
-    if ( getPref ( 'RESTRICT_NUC_EDITS_BY_IP', 2 ) && $WC->isNonUser() && 
+    if ( getPref ( '_RESTRICT_NUC_EDITS_BY_IP', 2 ) && $WC->isNonUser() && 
     ( $cal_creatorIp != ip2long ( $_SERVER['REMOTE_ADDR'] ) ) ) {
       $can_edit = false;
       $error = str_replace ('XXX', 'IP', translate ( 'Restricted by XXX' ) );
@@ -195,13 +195,13 @@ if ( _WC_READONLY ) {
       $smarty->assign ( 'expert_mode', $item->isExpertMode() );
     }  
 
-  if ( getPref ( 'CATEGORIES_ENABLED' ) ) {
+  if ( getPref ( '_ENABLE_CATEGORIES' ) ) {
     $catById = get_categories_by_eid ( $eid, $real_user, true );
     if ( ! empty ( $catById ) ) {
       $catNames = implode(', ', $catById );
       $catList = implode(',', array_keys ( $catById ) );
     }
-  } //end CATEGORIES_ENABLED test
+  } //end _ENABLE_CATEGORIES test
 
   //get reminders 
   $reminder = getReminders ( $eid ); 
@@ -223,7 +223,7 @@ if ( _WC_READONLY ) {
     dbi_free_result ( $res );    
   }
 //Not allowed for tasks or journals 
-  if (  $eType == 'event'  && getPref ( 'ALLOW_EXTERNAL_USERS' ) ) {
+  if (  $eType == 'event'  && getPref ( '_ALLOW_EXTERNAL_USERS' ) ) {
     $external_users = event_get_external_users ( $eid );
   }
   }
@@ -388,7 +388,7 @@ if ( $eid > 0 )
   $smarty->assign ( 'extras', get_site_extra_fields ( $eid ) );
 
 //Participants
-if ( ( ! getPref ( 'DISABLE_PARTICIPANTS_FIELD' ) 
+if ( ( getPref ( '_ENABLE_PARTICIPANTS_FIELD' ) 
   || $WC->isAdmin() ) && ! _WC_SINGLE_USER ) {
   $myuserlist = array ();
   $smarty->assign ( 'show_participants', true );
@@ -484,13 +484,13 @@ $BodyX = 'onload="onLoad();"';
 
 $tabs_ar = array();
 $tabs_ar['details'] =translate( 'Details' );
-if ( ! getPref ( 'DISABLE_PARTICIPANTS_FIELD' ) )
+if ( getPref ( '_ENABLE_PARTICIPANTS_FIELD' ) )
  $tabs_ar['participants'] = translate( 'Participants' );
 
-if ( ! getPref ( 'DISABLE_REPEATING_FIELD' ) )
+if ( getPref ( '_ENABLE_REPEATING_FIELD' ) )
    $tabs_ar['pete'] = translate( 'Repeat' );
 
-if ( ! getPref ( 'DISABLE_REMINDER_FIELD' ) )
+if ( getPref ( '_ENABLE_REMINDER_FIELD' ) )
    $tabs_ar['reminder'] = translate( 'Reminders' );
 
 $smarty->assign ( 'tabs_ar', $tabs_ar );

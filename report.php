@@ -23,7 +23,7 @@
 
 /*
  * Security:
- * If system setting $REPORTS_ENABLED is set to anything other than
+ * If system setting _ENABLE_REPORTS is set to anything other than
  *   'Y', then don't allow access to this page.
  * If webcal_report.cal_is_global is set to 'Y', any user can view
  *   the report.  If set to 'N', only the creator (set in
@@ -116,7 +116,7 @@ function event_to_text ( $event, $date ) {
     $description_str = translate ( 'This event is confidential' );
   } else {
     $name_str = htmlspecialchars ( $name );
-    if ( getPref ( 'ALLOW_HTML_DESCRIPTION' ) ) {
+    if ( getPref ( '_ALLOW_HTML_DESCRIPTION' ) ) {
       $str = str_replace ( '&', '&amp;', $event->getDescription() );
       $description_str = str_replace ( '&amp;amp;', '&amp;', $str );
       if ( strstr ( $description_str, '<' ) &&
@@ -196,7 +196,7 @@ function event_to_text ( $event, $date ) {
 $error = $list = $report_allow_nav = $textStr  = $day_str = $text = '';
 
 if ( $WC->isUser() &&
-  ( ( getPref ( 'ALLOW_VIEW_OTHER' ) )
+  ( ( getPref ( '_ALLOW_VIEW_OTHER' ) )
   || $WC->isAdmin() ) ) {
   $report_user = $WC->userId();
   $u_url = '&amp;user=' . $report_user;
@@ -204,7 +204,7 @@ if ( $WC->isUser() &&
   $u_url = '';
 }
 
-if ( ! getPref ( 'REPORTS_ENABLED', 2 ) ) {
+if ( ! getPref ( '_ENABLE_REPORTS', 2 ) ) {
   $error = print_not_auth () . '.';
 }
 

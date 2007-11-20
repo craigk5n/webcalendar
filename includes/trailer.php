@@ -104,7 +104,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       ( $is_nonuser && ! access_is_enabled () ) ) {
       // Don't allow them to see other people's calendar.
     } else
-    if ( ( $ALLOW_VIEW_OTHER == 'Y' || $is_admin ) &&
+    if ( getPref ('_ALLOW_VIEW_OTHER' ) || $is_admin ) &&
         // Also, make sure they able to access either day/week/month/year view.
         // If not, the only way to view another user's calendar is a custom view.
         ( ! access_is_enabled () ||
@@ -179,7 +179,8 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   $tret .= '<!-- VIEWS -->' . "\n";
 
   $viewcnt = count ( $views );
-  if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER != 'N' ) && $viewcnt > 0 ) {
+  if ( ( access_can_access_function ( ACCESS_VIEW )
+     && getPref ('_ALLOW_VIEW_OTHER' ) ) && $viewcnt > 0 ) {
     for ( $i = 0; $i < $viewcnt; $i++ ) {
       $views_link[] = '<a title="' . htmlspecialchars ( $views[$i]['cal_name'] )
        . '" href="' . $views[$i]['url']
@@ -198,7 +199,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
 
   $tret .= '<!-- REPORTS -->' . "\n";
 
-  if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
+  if ( getPref ('_ENABLE_REPORTS' ) &&
       access_can_access_function ( ACCESS_REPORT ) ) {
     $reports_link = array ();
     $rows = dbi_get_cached_rows ( 'SELECT cal_report_name, cal_report_id
@@ -255,7 +256,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   }
 
   // Manage Calendar links.
-  if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' )
+  if ( getPref ('_ENABLE_NONUSERS' ) )
     $admincals = get_nonuser_cals ( $login );
   // Make sure they have access to either month/week/day view. If they do not,
   // then we cannot create a URL that shows just the boss' events. So, we

@@ -32,7 +32,7 @@ $mycal = getPref ( 'STARTVIEW', 1, '', 'index.php' );
 //used when looking at other user's calendars
 $otherUserUrl = ( strstr ( $mycal, 'view' ) ? 'month.php' : $mycal );
 
-	
+  
 
 if ( $WC->canAdd() ) {
   // Add new entry.
@@ -66,16 +66,16 @@ if ( ! _WC_SINGLE_USER ) {
       $unapproved_url .= $WC->getUserUrl( $unapproved_url );
   }
   // Another User's Calendar
-  if ( getPref ( 'ALLOW_VIEW_OTHER' ) || $WC->isAdmin() ) {
+  if ( getPref ( '_ALLOW_VIEW_OTHER' ) || $WC->isAdmin() ) {
     // Also, make sure they able to access either day/week/month/year view.
     // If not, then there is no way to view another user's calendar except
     // a custom view.
     if ( access_can_access_function ( ACCESS_ANOTHER_CALENDAR ) ) {
       // Get count of users this user can see
-			$userlist = get_my_users ( '', 'view' );
-      if ( getPref ( 'NONUSER_ENABLED' ) ) {
+      $userlist = get_my_users ( '', 'view' );
+      if ( getPref ( '_ENABLE_NONUSERS' ) ) {
         $nonusers = get_my_nonusers ( $WC->loginId(), true );
-        $userlist = ( getPref ( 'NONUSER_AT_TOP' )
+        $userlist = ( getPref ( '_NONUSER_AT_TOP' )
           ? array_merge ( $nonusers, $userlist )
           : array_merge ( $userlist, $nonusers ) );
       }
@@ -107,8 +107,8 @@ if ( $WC->isUser( false ) ) {
 $showHelp = access_can_access_function ( ACCESS_HELP, $WC->userId() );
 // Views
 if ( access_can_access_function ( ACCESS_VIEW, $WC->userId() ) &&
-  getPref ( 'ALLOW_VIEW_OTHER' ) ) {
-	$views = loadViews ();
+  getPref ( '_ALLOW_VIEW_OTHER' ) ) {
+  $views = loadViews ();
   $view_cnt = count ( $views );
   $views_link = array ();
   for ( $i = 0; $i < $view_cnt; $i++ ) {
@@ -122,7 +122,7 @@ if ( access_can_access_function ( ACCESS_VIEW, $WC->userId() ) &&
 }
 // Reports
 $reports_linkcnt = 0;
-if ( getPref ( 'REPORTS_ENABLED', 2 ) &&
+if ( getPref ( '_ENABLE_REPORTS', 2 ) &&
     access_can_access_function ( ACCESS_REPORT, $WC->userId() ) ) {
   $reports_link = array ();
   $rows = dbi_get_cached_rows ( 'SELECT cal_report_name, cal_report_id
@@ -142,7 +142,7 @@ if ( getPref ( 'REPORTS_ENABLED', 2 ) &&
 }
 
 // Manage Calendar links.
-if ( getPref ( 'NONUSER_ENABLED' ) )
+if ( getPref ( '_ENABLE_NONUSERS' ) )
   $admincals = get_nonuser_cals ( $WC->loginId() );
 // Make sure they have access to either month/week/day view. If they do not,
 // then we cannot create a URL that shows just the boss' events.  So, we would
@@ -246,7 +246,7 @@ function jscMenu_sub_menu ( $icon, $title ) {
  */
 function jscMenu_custom ( $html ) {
   global $menuScript;
-	
+  
     $menuScript .= '[_cmNoClick,' . "'$html']\n";
 }
 
@@ -340,17 +340,17 @@ if ( $menuConfig['Views'] ) {
     jscMenu_sub_menu ( 'display.png', 'Another Users Calendar' );
 
     jscMenu_custom ( 
-		  '<td class="MenuItemLeft" valign="top"><img src="images/icons/search.png" /><\/td>'
-		  . '<td colspan="2">'
-			. '<input type="text" id="hint" size="25" value"'
-			. translate ( 'Lookup User' ) . '" onKeyUp="lookupName(\\\'viewuser\\\')"/>'
-			. '<form action="' . $otherUserUrl .'" method="get" name="SelectUser">'
-			. '<select style="margin-left:3px" id="viewuser" name="user" onchange="document.SelectUser.submit()">'
-			. $useroption
-			. '<input type="submit" value="' . translate ( 'Go' ) .'" />'
-			. '<\/form><\/td>');
-		jscMenu_close ();
-		
+      '<td class="MenuItemLeft" valign="top"><img src="images/icons/search.png" /><\/td>'
+      . '<td colspan="2">'
+      . '<input type="text" id="hint" size="25" value"'
+      . translate ( 'Lookup User' ) . '" onKeyUp="lookupName(\\\'viewuser\\\')"/>'
+      . '<form action="' . $otherUserUrl .'" method="get" name="SelectUser">'
+      . '<select style="margin-left:3px" id="viewuser" name="user" onchange="document.SelectUser.submit()">'
+      . $useroption
+      . '<input type="submit" value="' . translate ( 'Go' ) .'" />'
+      . '<\/form><\/td>');
+    jscMenu_close ();
+    
     if ( ! empty ( $views_link ) && $views_linkcnt > 0 &&
       $menuConfig['My Views'] ) {
       jscMenu_sub_menu ( 'views.png', 'My Views' );
@@ -388,7 +388,7 @@ if ( ! empty ( $menuExtras[3] ) )
 
 // Reports Menu
 // translate ( 'My Reports' )
-if ( ! $is_nonuser && getPref ( 'REPORTS_ENABLED', 2 )
+if ( ! $is_nonuser && getPref ( '_ENABLE_REPORTS', 2 )
   && $menuConfig['Reports'] ) {
   jscMenu_menu ( 'Reports' );
 
@@ -411,7 +411,7 @@ if ( ! $is_nonuser && getPref ( 'REPORTS_ENABLED', 2 )
     jscMenu_close ();
   }
 
-  if ( ! $is_nonuser && getPref ( 'REPORTS_ENABLED', 2 ) && 
+  if ( ! $is_nonuser && getPref ( '_ENABLE_REPORTS', 2 ) && 
     ! _WC_READONLY && $menuConfig['Manage Reports'] &&
     access_can_access_function ( ACCESS_REPORT, $WC->userId() ) ) {
     jscMenu_divider ();
@@ -432,42 +432,42 @@ if ( ! $WC->isNonUser ( ) && ! _WC_READONLY &&
   $menuConfig['Settings'] ) {
   jscMenu_menu ( 'Settings' );
 
-    if ( getPref ( 'CATEGORIES_ENABLED' ) && $menuConfig['Categories'] &&
+    if ( getPref ( '_ENABLE_CATEGORIES' ) && $menuConfig['Categories'] &&
       access_can_access_function ( ACCESS_CATEGORY_MANAGEMENT, 
-	    $WC->userId() ) )
+      $WC->userId() ) )
       jscMenu_item ( 'folder.png', 'Categories', 'category.php' );
 
     if ( $menuConfig['Layers'] &&
       access_can_access_function ( ACCESS_LAYERS, 
-	    $WC->userId() ) )
+      $WC->userId() ) )
       jscMenu_item ( 'layers.png', 'Layers', 'layers.php' );
 
     if ( ! $WC->isAdmin() && $menuConfig['My Profile'] )
       jscMenu_item ( 'profile.png', 'My Profile', 'users.php' );
 
-    if ( getPref ( 'REMOTES_ENABLED', 2 ) && $menuConfig['Remote Calendars'] &&
+    if ( getPref ( '_ENABLE_REMOTES', 2 ) && $menuConfig['Remote Calendars'] &&
       access_can_access_function ( ACCESS_IMPORT ) )
       jscMenu_item ( 'vcalendar.png', 'Remote Calendars', 'users.php?tab=remotes' );
 
     if ( $menuConfig['Preferences'] &&
       access_can_access_function ( ACCESS_PREFERENCES, 
-	    $WC->userId() ) )
+      $WC->userId() ) )
       jscMenu_item ( 'settings.png', 'Preferences', 'pref.php' );
 
 
     if ( $menuConfig['System Settings'] && 
       access_can_access_function ( ACCESS_SYSTEM_SETTINGS, 
-	    $WC->userId() ) )
+      $WC->userId() ) )
       jscMenu_item ( 'config.png', 'System Settings', 'admin.php' );
 
     if ( $menuConfig['User Access Control'] &&
       access_can_access_function ( ACCESS_ACCESS_MANAGEMENT, 
-	    $WC->userId() ) )
+      $WC->userId() ) )
       jscMenu_item ( 'access.png', 'User Access Control', 'access.php' );
 
     if ( $menuConfig['User Manager'] && 
       access_can_access_function ( ACCESS_USER_MANAGEMENT, 
-	    $WC->userId() ) )
+      $WC->userId() ) )
       jscMenu_item ( 'user.png', 'User Manager', 'users.php' );
   jscMenu_close ();
 }

@@ -26,9 +26,9 @@
  *
  * Security:
  * Same as in edit_report.php...
- * If system setting $REPORTS_ENABLED is set to anything other than
+ * If system setting _ENABLE_REPORTS is set to anything other than
  *   'Y', then don't allow access to this page.
- * If $ALLOW_VIEW_OTHER is 'N', then do not allow selection of
+ * If _ALLOW_VIEW_OTHER is 'N', then do not allow selection of
  *   participants.
  * Can only delete/edit an event if you are the creator of the event
  *   or you are an admin user.
@@ -38,11 +38,11 @@ include_once 'includes/init.php';
 $error = '';
 $report_id = $WC->getValue ( 'report_id', '-?[0-9]+', true );
 
-if ( ! getPref ( 'REPORTS_ENABLED', 2 ) ) {
+if ( ! getPref ( '_ENABLE_REPORTS', 2 ) ) {
   $error = print_not_auth () . '.';
 }
 
-if ( _WC_SINGLE_USER || getPref ( 'DISABLE_PARTICIPANTS_FIELD' ) ) {
+if ( _WC_SINGLE_USER || ! getPref ( '_ENABLE_PARTICIPANTS_FIELD' ) ) {
   $report_user = '';
 }
 

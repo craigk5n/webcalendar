@@ -81,7 +81,7 @@ if ( empty ( $error ) && $eid > 0 ) {
     set_env ( 'TZ', $user_TIMEZONE);
     $user_language = getPref ( 'LANGUAGE', 1, $partlogin[$i] );
     if ( $send_user_mail == 'Y' && strlen ( $tempemail ) &&
-      getPref ( 'SEND_EMAIL', 2 ) && $can_mail == 'Y') {
+      getPref ( '_SEND_EMAIL', 2 ) && $can_mail == 'Y') {
       if ( empty ( $user_language ) || ( $user_language == 'none' )) {
         reset_language ( $default_language );
       } else {
@@ -107,7 +107,7 @@ if ( empty ( $error ) && $eid > 0 ) {
       if ( strlen ( $comments ) ) {
         $msg .= "\n\n" . translate ( 'Comments' ) . ': ' . $comments;
       }
-      $from = $EMAIL_FALLBACK_FROM;
+      $from = getPref ('_EMAIL_FALLBACK_FROM' );
       if ( strlen ( $login_email ) ) $from = $login_email;
       //send via WebCalMailer class
       $mail->WC_Send ( $login_fullname, $tempemail, 

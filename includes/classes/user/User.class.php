@@ -51,16 +51,16 @@ function User () {
  */
 function validLogin ( $login, $password, $silent=false ) {
   $ret = $enabled = false;
-	
-	$password2 =  ( getPref ( 'PASSWORDS_CLEARTEXT', 2 )? $password : md5( $password ) );
+  
+  $password2 =  ( getPref ( '_CLEARTEXT_PASSWORDS', 2 )? $password : md5( $password ) );
   $sql = 'SELECT cal_login, cal_enabled 
-	  FROM webcal_user 
-		WHERE cal_login = ? AND ( cal_passwd = ? or cal_passwd = ?)';
+    FROM webcal_user 
+    WHERE cal_login = ? AND ( cal_passwd = ? or cal_passwd = ?)';
   $res = dbi_execute ( $sql , array ( $login , md5 ( $password ), $password2 ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row && $row[0] != '' ) {
-		  $enabled = ( $row[1] == 'Y' ? true : false );
+      $enabled = ( $row[1] == 'Y' ? true : false );
       // MySQL seems to do case insensitive matching, so double-check
       // the login.
       if ( $row[0] == $login )
@@ -88,13 +88,13 @@ function validLogin ( $login, $password, $silent=false ) {
        // dbi_free_result ( $res2 );
       }
     }
-		if ( ! $enabled && ! $this->_error) {
-		  $ret = false;
-			$this->_error = ( ! $silent ? translate('Account disabled', true) : '' );
-		}
-		if ( ! $this->checkPasswd ( $login ) ) {
-		  $ret = false;
-		}		
+    if ( ! $enabled && ! $this->_error) {
+      $ret = false;
+      $this->_error = ( ! $silent ? translate('Account disabled', true) : '' );
+    }
+    if ( ! $this->checkPasswd ( $login ) ) {
+      $ret = false;
+    }    
     dbi_free_result ( $res );
   } else if ( ! $silent ) {
     $this->_error = translate('Database error', true) . ': ' . dbi_error();
@@ -116,35 +116,35 @@ function validLogin ( $login, $password, $silent=false ) {
 function validCrypt ( $login, $crypt_password ) {
 
   $enabled = false;
-	
+  
   $sql = 'SELECT cal_login, cal_passwd, cal_enabled 
-	  FROM webcal_user 
-		WHERE cal_login = ?';
+    FROM webcal_user 
+    WHERE cal_login = ?';
   $res = dbi_execute ( $sql , array ( $login ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-		//Do we allow cleartext passwords and is this not md5?
-		$passwd = ( getPref ( 'PASSWORDS_CLEARTEXT', 2 ) 
-		  && strlen ( $row[1] ) != 32 ? md5( $row[1] ) : $row[1] );
-		  
+    //Do we allow cleartext passwords and is this not md5?
+    $passwd = ( getPref ( '_CLEARTEXT_PASSWORDS', 2 ) 
+      && strlen ( $row[1] ) != 32 ? md5( $row[1] ) : $row[1] );
+      
     if ( $row && $row[0] != '' ) {
-			$enabled = ( $row[2] == 'Y' ? true : false );
+      $enabled = ( $row[2] == 'Y' ? true : false );
       // MySQL seems to do case insensitive matching, so double-check
       // the login.
       // also check if password matches
       if ( ($row[0] == $login) && ( (crypt($passwd, 
-	    $crypt_password) == $crypt_password) ) ) {
+      $crypt_password) == $crypt_password) ) ) {
         $this->_ret = true; // found login/password
       } else {
         $this->_error = 'Invalid login';
-	    }
+      }
     } else {
       $this->_error = 'Invalid login';
     }
-		if ( ! $enabled ) {
-		  $this->ret = false;
-		  $this->_error = ( ! $silent ? translate('Account disabled', true) : '' );
-		}
+    if ( ! $enabled ) {
+      $this->ret = false;
+      $this->_error = ( ! $silent ? translate('Account disabled', true) : '' );
+    }
     dbi_free_result ( $res );
   } else {
     $this->_error = 'Database error: ' . dbi_error();
@@ -163,32 +163,32 @@ function validCrypt ( $login, $crypt_password ) {
 function checkPasswd ( $login ) {
    
   $last_login = time();
-	$password_expires = getPref ( 'PASSWORD_EXPIRES', 2 );
+  $password_expires = getPref ( '_EXPIRE_PASSWORDS', 2 );
 
-	if ( $password_expires ) {
+  if ( $password_expires > 0 ) {
     $sql = 'SELECT cal_last_login, cal_is_admin 
-	    FROM webcal_user 
-		  WHERE cal_login = ?';
+      FROM webcal_user 
+      WHERE cal_login = ?';
     $res = dbi_execute ( $sql , array ( $login ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
-			//Don't expire admin accts
-			if ( $row[1] == 'N' )
-		    $last_login = $row[0];
-		  dbi_free_result ( $res );
-	  }
-		//echo date ( 'Ymd', $last_login + ( $password_expires * ONE_DAY ) );
-	  if ( ( $last_login + ( $password_expires * ONE_DAY ) ) < time() ) {
-			$this->_error = 'Password Expired. Contact Administrator';
-	 	  return false; 
-		}
-	}
+      //Don't expire admin accts
+      if ( $row[1] == 'N' )
+        $last_login = $row[0];
+      dbi_free_result ( $res );
+    }
+    //echo date ( 'Ymd', $last_login + ( $password_expires * ONE_DAY ) );
+    if ( ( $last_login + ( $password_expires * ONE_DAY ) ) < time() ) {
+      $this->_error = 'Password Expired. Contact Administrator';
+       return false; 
+    }
+  }
 
-	//Update last login
-	@dbi_execute ( 'UPDATE webcal_user 
-	  SET  cal_last_login = ? 
-		WHERE cal_login = ?', array ( time(), $login ) );
-	return true;		
+  //Update last login
+  @dbi_execute ( 'UPDATE webcal_user 
+    SET  cal_last_login = ? 
+    WHERE cal_login = ?', array ( time(), $login ) );
+  return true;    
 }
 
 /**
@@ -202,53 +202,53 @@ function checkPasswd ( $login ) {
 function loadVariables ( $login, $boolean=true ) {
 
   $ret = array();
-	//allow this function to handle cal_login or cal_login_id values
-	if ( is_numeric ( $login ) ) {
-	  $where = 'cal_login_id   = ?';
-	} else {
-	  $where = 'cal_login = ?';
-	}
-	$sql = 'SELECT cal_login_id, cal_login, cal_passwd, cal_lastname, 
-	  cal_firstname, cal_is_admin, cal_email, cal_enabled, cal_telephone,
-		cal_address, cal_title, cal_birthday, cal_is_nuc, cal_admin,
-		cal_is_public, cal_url, cal_selected, cal_view_part
-		FROM webcal_user WHERE ' . $where;
-		$rows = dbi_get_cached_rows ( $sql , array ( $login ) );
-		if ( $rows ) {
-			$row = $rows[0];
-			$ret['login_id']     = $row[0];
-			$ret['login']        = $row[1];
-			$ret['password']     = $row[2];
-			$ret['lastname']     = $row[3];
-			$ret['firstname']    = $row[4];
-			$ret['fullname']     = "$row[4] $row[3]";
-			$ret['is_admin']     = $row[5];
-			$ret['email']        = $row[6];
-			$ret['enabled']      = $row[7];
-			$ret['telephone']    = $row[8];
-			$ret['address']      = $row[9];
-			$ret['title']        = $row[10];
-			$ret['birthday']     = $row[11];
-		  $ret['is_nonuser']   = $row[12];
-			$ret['admin']        = $row[13];
-			$ret['is_public']    = $row[14];
+  //allow this function to handle cal_login or cal_login_id values
+  if ( is_numeric ( $login ) ) {
+    $where = 'cal_login_id   = ?';
+  } else {
+    $where = 'cal_login = ?';
+  }
+  $sql = 'SELECT cal_login_id, cal_login, cal_passwd, cal_lastname, 
+    cal_firstname, cal_is_admin, cal_email, cal_enabled, cal_telephone,
+    cal_address, cal_title, cal_birthday, cal_is_nuc, cal_admin,
+    cal_is_public, cal_url, cal_selected, cal_view_part
+    FROM webcal_user WHERE ' . $where;
+    $rows = dbi_get_cached_rows ( $sql , array ( $login ) );
+    if ( $rows ) {
+      $row = $rows[0];
+      $ret['login_id']     = $row[0];
+      $ret['login']        = $row[1];
+      $ret['password']     = $row[2];
+      $ret['lastname']     = $row[3];
+      $ret['firstname']    = $row[4];
+      $ret['fullname']     = "$row[4] $row[3]";
+      $ret['is_admin']     = $row[5];
+      $ret['email']        = $row[6];
+      $ret['enabled']      = $row[7];
+      $ret['telephone']    = $row[8];
+      $ret['address']      = $row[9];
+      $ret['title']        = $row[10];
+      $ret['birthday']     = $row[11];
+      $ret['is_nonuser']   = $row[12];
+      $ret['admin']        = $row[13];
+      $ret['is_public']    = $row[14];
       $ret['url']          = $row[15];
       $ret['is_selected']  = $row[16];
       $ret['view_part']    = $row[17];
-			
-			if ( $boolean ) {
-			  $ret['is_admin']    = ( $ret['is_admin']    == 'Y' ? true : false );
-			  $ret['enabled']     = ( $ret['enabled']     == 'Y' ? true : false );
-		    $ret['is_nonuser']  = ( $ret['is_nonuser']  == 'Y' ? true : false );
-			  $ret['is_public']   = ( $ret['is_public']   == 'Y' ? true : false );
+      
+      if ( $boolean ) {
+        $ret['is_admin']    = ( $ret['is_admin']    == 'Y' ? true : false );
+        $ret['enabled']     = ( $ret['enabled']     == 'Y' ? true : false );
+        $ret['is_nonuser']  = ( $ret['is_nonuser']  == 'Y' ? true : false );
+        $ret['is_public']   = ( $ret['is_public']   == 'Y' ? true : false );
         $ret['is_selected'] = ( $ret['is_selected'] == 'Y' ? true : false );
         $ret['view_part']   = ( $ret['view_part']   == 'Y' ? true : false );
-			}
-			
+      }
+      
     } else {
       $this->_error = translate ( 'Database error' ) . ': ' . dbi_error ();
       return false;
-		}	
+    }  
   return $ret;
 }
 
@@ -262,22 +262,22 @@ function loadVariables ( $login, $boolean=true ) {
 function getFullName ( $login ) {
 
   $ret = array();
-	//allow this function to handle cal_login or cal_login_id values
-	if ( is_numeric ( $login ) ) {
-	  $where = 'cal_login_id = ?';
-	} else {
-	  $where = 'cal_login = ?';
-	}
-		$sql ='SELECT cal_firstname, cal_lastname
-			FROM webcal_user WHERE ' . $where;
-		$rows = dbi_get_cached_rows ( $sql , array ( $login ) );
-		if ( $rows ) {
-		  $row = $rows[0];
-			$ret = "$row[0] $row[1]";
+  //allow this function to handle cal_login or cal_login_id values
+  if ( is_numeric ( $login ) ) {
+    $where = 'cal_login_id = ?';
+  } else {
+    $where = 'cal_login = ?';
+  }
+    $sql ='SELECT cal_firstname, cal_lastname
+      FROM webcal_user WHERE ' . $where;
+    $rows = dbi_get_cached_rows ( $sql , array ( $login ) );
+    if ( $rows ) {
+      $row = $rows[0];
+      $ret = "$row[0] $row[1]";
     } else {
       $this->_error = translate ( 'Database error' ) . ': ' . dbi_error ();
       return false;
-		}
+    }
   return $ret;
 }
 
@@ -291,44 +291,44 @@ function getFullName ( $login ) {
  */
 function addUser ( $params ) {
 
-  if ( isset ( $params['cal_passwd'] ) && ! getPref ( 'PASSWORDS_CLEARTEXT', 2 ) )
+  if ( isset ( $params['cal_passwd'] ) && ! getPref ( '_CLEARTEXT_PASSWORDS', 2 ) )
     $params['cal_passwd'] = md5($params['cal_passwd']);
 
   if ( empty ( $params['cal_is_admin'] ) || $params['cal_is_admin'] != 'Y' )
     $params['cal_is_admin'] = 'N';
-	
-	//Preload cal_last_login to current datetime
-	$params['cal_last_login'] = time();
-					
+  
+  //Preload cal_last_login to current datetime
+  $params['cal_last_login'] = time();
+          
   $placeholders = '';
-	$values = array();
-	$sql = 'INSERT INTO webcal_user ( ';
+  $values = array();
+  $sql = 'INSERT INTO webcal_user ( ';
   foreach ( $params as $K => $V ) {
-	  $sql .= $K . ', ';
-	  $values[] = $V;
-		$placeholders .= '?, ';
-	}
-		
-	$sql .= 'cal_login_id ) VALUES ( ' . $placeholders . '? )';
+    $sql .= $K . ', ';
+    $values[] = $V;
+    $placeholders .= '?, ';
+  }
+    
+  $sql .= 'cal_login_id ) VALUES ( ' . $placeholders . '? )';
   $res = dbi_execute ( 'SELECT MAX( cal_login_id ) FROM webcal_user' );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
       $next_id = $row[0] + 1;
     dbi_free_result ( $res );
   }
-	$values[] = $next_id;
-	//print_r ( $params);
+  $values[] = $next_id;
+  //print_r ( $params);
   if ( ! dbi_execute ( $sql , $values ) ) {
     $this->_error = translate ('Database error', true) . ': ' . dbi_error ();
     return false;
   }
-	
+  
   //If NUC is Public set View = 1  in UAC
   if ( $params['cal_is_nuc'] == 'Y' && $params['cal_is_public'] == 'Y' ) {
-	  set_user_UAC ( $next_id, -2, 1 );
-	}
-	
-	
+    set_user_UAC ( $next_id, -2, 1 );
+  }
+  
+  
   return $next_id;
 }
 
@@ -343,26 +343,26 @@ function addUser ( $params ) {
 function updateUser ( $params ) {
 
   //make sure we have set the target login_id
-	if ( empty ( $params['cal_login_id'] ) )
-	  return false;
+  if ( empty ( $params['cal_login_id'] ) )
+    return false;
 
-  if ( isset ( $params['cal_passwd'] ) && ! getPref ( 'PASSWORDS_CLEARTEXT' ) )
+  if ( isset ( $params['cal_passwd'] ) && ! getPref ( '_CLEARTEXT_PASSWORDS' ) )
     $params['cal_passwd'] = md5($params['cal_passwd']);
-				
-	$values = array();
+        
+  $values = array();
   $sql = 'UPDATE webcal_user SET';
   foreach ( $params as $K => $V ) {
-	  if ( $K != 'cal_login_id' ) {
-	    $sql .= ' ' . $K . ' = ?,';
-			$values[] = $V;
-		} 	
-	}
-	// remove trailing ','
-	$sql = preg_replace( '/,$/', '', $sql );
-	 
+    if ( $K != 'cal_login_id' ) {
+      $sql .= ' ' . $K . ' = ?,';
+      $values[] = $V;
+    }   
+  }
+  // remove trailing ','
+  $sql = preg_replace( '/,$/', '', $sql );
+   
   $sql .= ' WHERE cal_login_id = ? ';
-	$values[] = $params['cal_login_id'];
-	
+  $values[] = $params['cal_login_id'];
+  
   if ( ! dbi_execute ( $sql , $values ) ) {
     $this->_error = translate ('Database error') . ': ' . dbi_error ();
     return false;
@@ -381,7 +381,7 @@ function updateUser ( $params ) {
  */
 function deleteUser ( $user_id ) {
   //Delete all events for this user
-	$this->deleteUserEvents( $user_id );
+  $this->deleteUserEvents( $user_id );
 
   // Delete preferences
   dbi_execute ( 'DELETE FROM webcal_user_pref WHERE cal_login_id = ?' , 
@@ -488,7 +488,7 @@ function deleteUserEvents ( $user_id ) {
     dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?' , 
           array ( $delete_em[$i] )  );
   }
-	
+  
   // Delete user participation from events
   dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login_id = ?' , 
       array ( $user_id ) );
@@ -501,18 +501,18 @@ function deleteUserEvents ( $user_id ) {
  */
 function getUsers ( $getNUC='' ) {
   
-	$_user_array = array();
-	if ( $getNUC === true ) 
-	  $getNUC = 'WHERE cal_is_nuc = \'Y\' ';
-	else if ( $getNUC === false )
-	  $getNUC = 'WHERE cal_is_nuc = \'N\' ';	 
-	else 
-		$getNUC = '';
-		 
+  $_user_array = array();
+  if ( $getNUC === true ) 
+    $getNUC = 'WHERE cal_is_nuc = \'Y\' ';
+  else if ( $getNUC === false )
+    $getNUC = 'WHERE cal_is_nuc = \'N\' ';   
+  else 
+    $getNUC = '';
+     
   $count = 0;
   $rows = dbi_get_cached_rows ( 'SELECT cal_login, cal_lastname, cal_firstname,
     cal_is_admin, cal_email, cal_passwd, cal_login_id, cal_enabled 
-		FROM webcal_user ' . $getNUC .
+    FROM webcal_user ' . $getNUC .
     'ORDER BY cal_lastname, cal_firstname, cal_login' );
   if ( $rows ) {
      for ( $i = 0; $i < count ( $rows ); $i++ ) {
@@ -530,8 +530,8 @@ function getUsers ( $getNUC='' ) {
         'cal_password' => $row[5],
         'cal_login_id' => $row[6],
         'cal_fullname' => $fullname,
-				'cal_enabled'  => $row[7],
-				'selected' => ''
+        'cal_enabled'  => $row[7],
+        'selected' => ''
       );
     }
     //dbi_free_result ( $res );
@@ -548,11 +548,11 @@ function getUserId ( $user ) {
     if ( $rows ) {
       $row = $rows[0];
       return $row[0];
-		}
+    }
   } else {
-	  $userData = $this->loadVariables ( $user, 'tp', true );
-		return $userData['login_id'];
-	}
+    $userData = $this->loadVariables ( $user, 'tp', true );
+    return $userData['login_id'];
+  }
   return false;
 }
 
@@ -590,36 +590,36 @@ function _app_user_is_admin ( $uid ) {
 function _app_db_connect ( $app=true ) {
   global $c;
   //clean up existing db connection
-  if ( $this->_app_chg_db )	
-	  dbi_close ($c);
-	else 
-	  return true;
-		
+  if ( $this->_app_chg_db )  
+    dbi_close ($c);
+  else 
+    return true;
+    
   if ( $app )
-	  $c = dbi_connect( $this->_app_config['host']
-		  , $this->_app_config['user']
-			, $this->_app_config['password']
-			, $this->_app_config['db'] );
+    $c = dbi_connect( $this->_app_config['host']
+      , $this->_app_config['user']
+      , $this->_app_config['password']
+      , $this->_app_config['db'] );
   else// we have to connect back to the webcal db
-	  $c = dbi_connect(_WC_DB_HOST, _WC_DB_LOGIN, _WC_DB_PASSWORD, _WC_DB_DATABASE);	
+    $c = dbi_connect(_WC_DB_HOST, _WC_DB_LOGIN, _WC_DB_PASSWORD, _WC_DB_DATABASE);  
 }
 
 function _app_autoCreate ( $login, $password ) {
-	if ( $this->_allow_auto_create && _WC_SCRIPT == 'login.php' ) {
-		//Test if user is in WebCalendar database
-		$testuser = $this->loadVariables ( $login );
-		$params = array ( 'cal_login'=>$login,
-			'cal_passwd'=>$password);
-		if ( empty ( $testuser ) || 
-			$testuser['login'] != $login ) {
-			$newID = $this->addUser ( $params );
-			//Redirect new users to enter user date
-			$GLOBALS['newUserUrl'] = 'edit_user.php';
-		} else {
-			//update password just in case it was changed outside WebCalendar
-			$this->updateUser ( $params );
-		}
-	}
+  if ( $this->_allow_auto_create && _WC_SCRIPT == 'login.php' ) {
+    //Test if user is in WebCalendar database
+    $testuser = $this->loadVariables ( $login );
+    $params = array ( 'cal_login'=>$login,
+      'cal_passwd'=>$password);
+    if ( empty ( $testuser ) || 
+      $testuser['login'] != $login ) {
+      $newID = $this->addUser ( $params );
+      //Redirect new users to enter user date
+      $GLOBALS['newUserUrl'] = 'edit_user.php';
+    } else {
+      //update password just in case it was changed outside WebCalendar
+      $this->updateUser ( $params );
+    }
+  }
 }
 }
 ?>

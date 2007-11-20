@@ -228,21 +228,21 @@ function access_load_user_permissions ( $useCache = true, $adminOverride=true ) 
   if ( ! empty ( $access_other_cals ) && $useCache == true )
     return $access_other_cals;
 
-  $admin_override = ( $WC->isAdmin() && getPref ( 'ADMIN_OVERRIDE_UAC', 2 ) && 
-	  $adminOverride);
+  $admin_override = ( $WC->isAdmin() && getPref ( '_ADMIN_OVERRIDE_UAC', 2 ) && 
+    $adminOverride);
   $res = dbi_execute ( 'SELECT cal_login_id, 
     cal_other_user_id,  cal_can_view, cal_can_edit, cal_can_approve, 
-	cal_can_email, cal_can_invite, cal_see_time_only, cal_assistant 
-	FROM webcal_access_user' );
+  cal_can_email, cal_can_invite, cal_see_time_only, cal_assistant 
+  FROM webcal_access_user' );
   assert ( '$res' );
   while ( $row = dbi_fetch_row ( $res ) ) {
     // TODO should we set admin_override here to apply to
     // DEFAULT CONFIGURATION only?
     // $admin_override = ( $row[1] == UAC_DEFAULT && $WC->isAdmin() &&
-    // getPref ( 'ADMIN_OVERRIDE_UAC' );
+    // getPref ( '_ADMIN_OVERRIDE_UAC' );
     $key = $row[0] . '.' . $row[1];
     $access_other_cals[$key] = array (      
-	  'cal_login_id' => $row[0],
+    'cal_login_id' => $row[0],
       'cal_other_user_id' => $row[1],
       'view' => ( $admin_override ? CAN_DOALL : $row[2] ),
       'edit' => ( $admin_override ? CAN_DOALL : $row[3] ),
@@ -254,10 +254,10 @@ function access_load_user_permissions ( $useCache = true, $adminOverride=true ) 
       );
   }
   dbi_free_result ( $res );
-	//Init DEFAULT VALUES if nothing is set
-	if ( empty ( $access_other_cals ) ) {
+  //Init DEFAULT VALUES if nothing is set
+  if ( empty ( $access_other_cals ) ) {
     $access_other_cals['-2.-2'] = array (      
-	    'cal_login_id' => -2,
+      'cal_login_id' => -2,
       'cal_other_user_id' => -2,
       'view' => ( $admin_override ? CAN_DOALL : 1 ),
       'edit' => ( $admin_override ? CAN_DOALL : 0 ),
@@ -266,8 +266,8 @@ function access_load_user_permissions ( $useCache = true, $adminOverride=true ) 
       'invite' => 'Y',
       'time' => 'N',
       'assistant' => 'N'
-      );	
-	}
+      );  
+  }
   return $access_other_cals;
 }
 
@@ -464,7 +464,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
   //Check READONLY FILES
   if ( _WC_READONLY && preg_match ( "/$page_readonly/", $page ) )
     $yesno = 'N';
-	
+  
   // echo "yesno = $yesno <br />\n";
   assert ( '! empty ( $yesno )' );
 
@@ -557,13 +557,13 @@ function set_user_UAC ( $puser, $pouser, $view=0, $edit=0, $approve=0,
    $invite='N', $email='N', $time='N', $assistant='N' ) {
 
   if ( empty ( $puser ) || empty ( $pouser ) ) {
-	  print_error ( translate ( 'UAC user is empty' ), true );
-		return false;
-	}
+    print_error ( translate ( 'UAC user is empty' ), true );
+    return false;
+  }
 
   dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login_id = ?
       AND cal_other_user_id = ?', array ( $puser, $pouser ) );
-							
+              
   if ( ! dbi_execute ( 'INSERT INTO webcal_access_user ( cal_login_id,
       cal_other_user_id, cal_can_view, cal_can_edit, cal_can_approve,
       cal_can_invite, cal_can_email, cal_see_time_only, cal_assistant )
@@ -577,15 +577,15 @@ function set_user_UAC ( $puser, $pouser, $view=0, $edit=0, $approve=0,
           $invite,
           $email,
           $time,
-		      $assistant 
-				) 
-			) 
-	 ) {
+          $assistant 
+        ) 
+      ) 
+   ) {
       die_miserable_death ( str_replace ( 'XXX', dbi_error (),
           translate ( 'Database error XXX.' ) ) );
    } else {
-	   return true;
-	}		
+     return true;
+  }    
 }
 
 ?>

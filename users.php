@@ -35,21 +35,21 @@ if (access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
 if ( $WC->isAdmin() ) {
   $smarty->assign('userlist', $WC->User->getUsers ( false ) );
 	
-  if ( getPref ( 'GROUPS_ENABLED' ) ) {
+  if ( getPref ( '_ENABLE_GROUPS' ) ) {
 	  $tabs_ar['groups'] = translate ('Groups' );
     $smarty->assign('doGroups', true );
 
     $smarty->assign ( 'groups', get_groups ( '', true ));
 
   }		
-	if ( getPref ( 'NONUSER_ENABLED' ) ) {
+	if ( getPref ( '_ENABLE_NONUSERS' ) ) {
 	  $tabs_ar['nonusers'] = translate ( 'NonUser Calendars' );
     $smarty->assign('doNUCS', true );	
 		$smarty->assign('nucuserlist', get_nonuser_cals () );
 	}
 }
 
-if ( getPref ( 'REMOTES_ENABLED', 2 ) &&
+if ( getPref ( '_ENABLE_REMOTES', 2 ) &&
   access_can_access_function ( ACCESS_IMPORT ) && 
 	access_can_access_function ( ACCESS_LAYERS ) ) {	
   $tabs_ar['remotes'] = translate ( 'Remote Calendars' );

@@ -81,7 +81,7 @@ if ( $debug )
   echo "<br />\n" . translate ( 'Include Path' )
    . ' =' . ini_get ( 'include_path' ) . "<br />\n";
 
-if ( getPref ( 'REMOTES_ENABLED', 2 ) ) {
+if ( getPref ( '_ENABLE_REMOTES', 2 ) ) {
   $res = dbi_execute ( 'SELECT cal_login_id, cal_url, cal_admin
     FROM webcal_user WHERE cal_is_nuc = \'Y\' AND cal_url IS NOT NULL' );
   $cnt = 0;

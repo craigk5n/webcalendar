@@ -15,7 +15,7 @@ $error = '';
 
 if ( ! $WC->getId() )
   $error = translate( 'Invalid entry id' ) . '.';
-else if ( ! getPref ( 'CATEGORIES_ENABLED' ) )
+else if ( ! getPref ( '_ENABLE_CATEGORIES' ) )
   $error = print_not_auth () . '.';
 else if ( empty ( $categories ) )
   $error = translate( 'You have not added any categories' ) . '.';

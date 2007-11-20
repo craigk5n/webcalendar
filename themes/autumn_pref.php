@@ -15,7 +15,6 @@
 
 // This theme will be available to both normal users and System Settings.
 $webcal_theme = array (
-  'MENU_THEME'   => 'autumn',
   'BGCOLOR'      => '#F4DD65',
   'CELLBG'       => '#F4DD65',
   'H2COLOR'      => '#000000',

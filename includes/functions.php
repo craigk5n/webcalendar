@@ -35,8 +35,8 @@ include_once $includeDir . 'formvars.php';
  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-  // error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
-  // 3, 'd:/php/logs/debug.txt' );
+   error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
+   3, 'c:/temp/debug.txt' );
   // fwrite ( $fd, date ( 'Y-m-d H:i:s' ) .  "> $msg\n" );
   // fclose ( $fd );
   // 3, '/tmp/webcal-debug.log' );
@@ -182,7 +182,7 @@ function calc_time_slot ( $time, $round_down = false ) {
  * Find overlaps between an array of dates and the other dates in the database.
  *
  * Limits on number of appointments: if enabled in System Settings
- * (<var>$LIMIT_APPTS</var> global variable), too many appointments can also
+ * (<var>$_LIMIT_APPTS</var> global variable), too many appointments can also
  * generate a scheduling conflict.
  *
  * @todo Update this to handle exceptions to repeating events.
@@ -259,9 +259,9 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
           $evtcnt[$cntkey] = 0;
         else
           $evtcnt[$cntkey]++;
-        $limit_appts_number = getPref ( 'LIMIT_APPTS_NUMBER' );
-        $over_limit = ( getPref ( 'LIMIT_APPTS' )  && $limit_appts_number &&
-          $evtcnt[$cntkey] >= $limit_appts_number ? 1 : 0 );
+        $_LIMIT_APPTS_number = getPref ( '_LIMIT_APPTS_NUMBER' );
+        $over_limit = ( getPref ( '_LIMIT_APPTS' )  && $_LIMIT_APPTS_number &&
+          $evtcnt[$cntkey] >= $_LIMIT_APPTS_number ? 1 : 0 );
 
         if ( $over_limit ||
           times_overlap ( $time1, $duration1, $time2, $duration2 ) ) {
@@ -290,7 +290,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
            . ' ' . $onStr . ' '
            . date_to_str ( date ( 'Ymd', date_to_epoch ( $row[7]
                  . sprintf ( "%06d", $row[1] ) ) ) )
-           . ( $over_limit ? ' (' . str_replace ( 'XXX', $limit_appts_number,
+           . ( $over_limit ? ' (' . str_replace ( 'XXX', $_LIMIT_APPTS_number,
               $exceedsStr ) . ')' : '' ) . '</li>';
         }
       }
@@ -441,9 +441,9 @@ function createEvent ( $row, $want_repeated=true ) {
       array (), array (), array () );
   else
     $item =& new Event ( $row[0], $row[1], $row[2], $row[3], 
-		  $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], 
-			$row[10], $row['primary_cat'], $row[11], $row[12], $row[13], 
-			$row[14], $row[15], $row[16], $row[17], $row[18] );
+      $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], 
+      $row[10], $row['primary_cat'], $row[11], $row[12], $row[13], 
+      $row[14], $row[15], $row[16], $row[17], $row[18] );
 
   return $item;        
 }
@@ -494,12 +494,12 @@ function date_to_str ( $indate='', $format='', $show_weekday = true,
     $format = getPref ( $format );
   } else if ( $format == 'datepicker' ) {
     $format =translate ( '__mm__/__dd__/__yyyy__' );
-	$show_weekday = false;
+  $show_weekday = false;
   }
    
   $format = ( ! $format || $format == 'LANGUAGE_DEFINED' 
     ? translate ( '__month__ __dd__, __yyyy__' ) : $format );
-		
+    
   $y = date ( 'Y', $indate );
   $m = date ('m', $indate );
   $d = date ( 'd', $indate );
@@ -623,7 +623,7 @@ function display_small_tasks ( $cat_id='' ) {
     $row_cnt++;
     // Build special string to pass to popup.
     // TODO:  Move this logic into build_entry_popup ().
-		/*
+    /*
     $smarty->append('eventinfo', build_entry_popup ( 'eventinfo-' 
       . $linkid, $E->getLoginId (),
       $E->getDescription (), translate ( 'Due Time' ) . ':'
@@ -634,7 +634,7 @@ function display_small_tasks ( $cat_id='' ) {
        . '-' . $pri[ceil ( $E->getPriority () / 3 )] . "</dd>\n<dt>"
        . translate ( 'Percent Complete' ) . ":</dt>\n<dd>" . $E->getPercent ()
        . '%', '', $E->getLocation (), $E->getName (), $cal_id ), true );
-			*/
+      */
   }
   for ( $i = 7; $i > $row_cnt; $i-- ) {
     $task_html .= '<tr><td colspan="8" class="filler">&nbsp;</td></tr>' . "\n";
@@ -645,11 +645,11 @@ function display_small_tasks ( $cat_id='' ) {
 
 
 function display_time ( $intime, $control = 0, $format = '' ) {
-  global $SERVER_TIMEZONE;
+  global $_SERVER_TIMEZONE;
 
   if ( $control & 4 ) {
     $currentTZ = getenv ( 'TZ' );
-    set_env ( 'TZ', $SERVER_TIMEZONE );
+    set_env ( 'TZ', $_SERVER_TIMEZONE );
   }
   $t_format = ( empty ( $format ) ? getPref ( 'TIME_FORMAT' ) : $format );
   $tzid = date ( ' T' ); //Default tzid for today.
@@ -662,11 +662,11 @@ function display_time ( $intime, $control = 0, $format = '' ) {
       $time = gmdate ( 'His', $intime );
       $tzid = ' GMT';
     }
-	} else if ( strlen ( $intime ) < 3 ) { //we must be getting a simple integer
-	   $time  = $intime . '0000';
-	} else {
-	  $time  = $intime;
-	}
+  } else if ( strlen ( $intime ) < 3 ) { //we must be getting a simple integer
+     $time  = $intime . '0000';
+  } else {
+    $time  = $intime;
+  }
 
   $hour = intval ( $time / 10000 );
   $min = abs ( ( $time / 100 ) % 100 );
@@ -732,7 +732,7 @@ function display_unapproved_events ( $user ) {
     $app_user_hash[$WC->loginId()] = 1;
     $app_users[] = $WC->loginId();
 
-    $all = ( getPref ( 'NONUSER_ENABLED' )
+    $all = ( getPref ( '_ENABLE_NONUSERS' )
       // TODO:  Add 'approved' switch to these functions.
       ? array_merge ( get_my_users (), get_my_nonusers () ) : get_my_users () );
 
@@ -925,22 +925,22 @@ function generate_CSS ( $replace=false ) {
   global $WC;
 
   $CSShandle = ( _WC_SCRIPT == 'admin.php' ? 'default' : md5($WC->userLoginId()) ); 
-	$CSSfile = 'cache/css/' . $CSShandle . '.css';
-	if ( $replace &&  @file_exists ( $CSSfile ) ) {	
-	  unlink ( $CSSfile );
-	}
-	if ( ! $replace && ! @file_exists ( $CSSfile ) ) {
+  $CSSfile = _WC_PUB_CACHE .'/css/' . $CSShandle . '.css';
+  if ( $replace &&  @file_exists ( $CSSfile ) ) {  
+    unlink ( $CSSfile );
+  }
+  if ( ! $replace && ! @file_exists ( $CSSfile ) ) {
     ob_start ();
     include 'includes/styles.php';
     $tmpCSS = ob_get_contents ();
     ob_end_clean ();
-  	$fd = @fopen ( $CSSfile, 'w+b', false );
+    $fd = @fopen ( $CSSfile, 'w+b', false );
     if ( ! empty ( $fd ) ) {
       fwrite ( $fd, $tmpCSS );
       fclose ( $fd );
       chmod ( $CSSfile, 0666 );
     }
-	}
+  }
 }
 
 /* Returns all the dates a specific event will fall on
@@ -972,10 +972,10 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
   $Count = 999, $Until = null, $Wkst = 'MO', $ex_days = '', $inc_days = '',
   $jump = '' ) {
   global $WC;
-	
+  
   //make sure we don't loop endlessly
-	if ( $interval == 0 ) $interval = 1;
-	
+  if ( $interval == 0 ) $interval = 1;
+  
   $dateYmd = date ( 'Ymd', $date );
   $hour = date ( 'H', $date );
   $minute = date ( 'i', $date );
@@ -1256,9 +1256,9 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
       }
     } //end if rpt_type
   }
-	
-	//Add in initial date to repeat array so it can be an exception if desired
-	$ret[] = $date;
+  
+  //Add in initial date to repeat array so it can be an exception if desired
+  $ret[] = $date;
   if ( ! empty ( $ex_days ) ) {
     foreach ( $ex_days as $ex_day ) {
       for ( $i = 0, $cnt = count ( $ret ); $i < $cnt;$i++ ) {
@@ -1465,7 +1465,7 @@ function get_entries ( $date, $get_unapproved = true ) {
  *
  *
  * @param string $user        Subject User
- * @param bool   $override    Ignore USER_SEES_ONLY_HIS_GROUPS
+ * @param bool   $override    Ignore _USER_SEES_ONLY_HIS_GROUPS
  *                                
  *
  * @return array  Array of Groups.
@@ -1473,7 +1473,7 @@ function get_entries ( $date, $get_unapproved = true ) {
 function get_groups ( $user='', $override=false ) {
   global $WC;
   
-  if ( ! getPref ( 'GROUPS_ENABLED', 2 ) )
+  if ( ! getPref ( '_ENABLE_GROUPS', 2 ) )
     return false;
     
   $owner = ( $user? $user : $WC->userLoginId () );
@@ -1481,7 +1481,7 @@ function get_groups ( $user='', $override=false ) {
   // Load list of groups.
   $sql = 'SELECT wg.cal_group_id, wg.cal_name FROM webcal_group wg';
 
- if ( getPref ( 'USER_SEES_ONLY_HIS_GROUPS', 2 ) ) {
+ if ( getPref ( '_USER_SEES_ONLY_HIS_GROUPS', 2 ) ) {
    $sql .= ', webcal_group_user wgu WHERE wg.cal_group_id = wgu.cal_group_id
      AND wgu.cal_login_id = ?';
     $sql_params[] = $owner;
@@ -1572,7 +1572,7 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
     return $my_nonuser_array[$this_user . $add_public];
 
   $u = get_nonuser_cals ();
-  if ( getPref ( 'GROUPS_ENABLED' ) && getPref ( 'USER_SEES_ONLY_HIS_GROUPS' ) && ! $WC->isAdmin() ) {
+  if ( getPref ( '_ENABLE_GROUPS' ) && getPref ( '_USER_SEES_ONLY_HIS_GROUPS' ) && ! $WC->isAdmin() ) {
     // Get current user's groups.
     $rows = dbi_get_cached_rows ( 'SELECT cal_group_id FROM webcal_group_user
       WHERE cal_login_id = ?', array ( $this_user ) );
@@ -1673,7 +1673,7 @@ function get_my_users ( $user = '', $reason = 'invite', $nuc='' ) {
       is_array ( $my_user_array ) )
     return $my_user_array[$this_user][$reason];
 
-  if ( getPref ( 'GROUPS_ENABLED' ) && getPref ( 'USER_SEES_ONLY_HIS_GROUPS' ) && !
+  if ( getPref ( '_ENABLE_GROUPS' ) && getPref ( '_USER_SEES_ONLY_HIS_GROUPS' ) && !
     $WC->isAdmin() ) {
     // Get groups with current user as member.
     $rows = dbi_get_cached_rows ( 'SELECT cal_group_id FROM webcal_group_user
@@ -1763,9 +1763,9 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
   $count = 0;
   $query_params = $ret = array ();
   $sql = 'SELECT cal_login_id, cal_login, cal_firstname, cal_lastname, 
-	  cal_admin, cal_is_public, cal_url, cal_selected, cal_view_part
-		FROM webcal_user 
-		WHERE cal_is_nuc = \'Y\' AND cal_url IS '
+    cal_admin, cal_is_public, cal_url, cal_selected, cal_view_part
+    FROM webcal_user 
+    WHERE cal_is_nuc = \'Y\' AND cal_url IS '
    . ( $remote == false ? '' : 'NOT ' ) . 'NULL ';
 
   if ( $user != '' ) {
@@ -1785,9 +1785,9 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
         'cal_admin'     => $row[4],
         'cal_is_public' => $row[5],
         'cal_url'       => $row[6],
-				'cal_selected'  => $row[7],
-				'cal_view_part' => $row[8],
-				'selected'      => ''
+        'cal_selected'  => $row[7],
+        'cal_view_part' => $row[8],
+        'selected'      => ''
         );
     }
   }
@@ -1811,7 +1811,7 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
  * @param bool   $control  0 return user pref only
  *                         1 return user pref then system pref
  *                         2 return system pref only
- *                         4 don't use static or convert Y/N to bool
+ *                         4 don't use static and don't convert Y/N to bool
  * @param string $user     User login we are getting preference for
  * @param string $defVal   Value to be returned if no setting found
  *
@@ -1825,11 +1825,11 @@ function getPref ( $setting, $control=1, $user='', $defVal='' ) {
   
   $ret = $defVal;
   
-	//clear static variables to avoid returning bools if literals req.
-	if ( $control & 4 ) {
-	  unset ( $sysConfig );
-		unset ( $userPref );
-	}
+  //clear static variables to avoid returning bools if literals req.
+  if ( $control & 4 ) {
+    unset ( $sysConfig );
+    unset ( $userPref );
+  }
   //load webcal_config values if not already loaded
   if ( $control%4 > 0 && empty ( $sysConfig ) ) 
     $sysConfig = loadConfig ();
@@ -1837,12 +1837,12 @@ function getPref ( $setting, $control=1, $user='', $defVal='' ) {
    //load webcal_user_pref values if not already loaded
   if ( $control%4 < 2 && empty ( $userPref ) ) {
     $userPref = loadPreferences ();
-	}
+  }
      
   if ( $control%4 > 0 && isset ( $sysConfig[$setting] ) )
     $ret = $sysConfig[$setting];
     
-  //get a user's prefence if not requesting system only
+  //get a user's preference if not requesting system only
   if ( $user && ! $WC->isLogin( $user )  && $control < 2 ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_user_pref
       WHERE cal_login_id = ? AND cal_setting = ?', array ( $user, $setting ) );
@@ -1856,14 +1856,14 @@ function getPref ( $setting, $control=1, $user='', $defVal='' ) {
       $ret = $userPref[$setting];
     }
   }
-	
+  
   //handle Y/N variables
-	if ( ! ( $control & 4 ) ) {
+  if ( ! ( $control & 4 ) ) {
     if  ( $ret == 'Y' )
       $ret = true;
     else if ( ! isset ( $ret ) || $ret == 'N' )
       $ret = false;
-	}
+  }
 
   return $ret;
 }
@@ -1889,7 +1889,7 @@ function get_preferred_view ( $indate = '', $args = '' ) {
 
   // Prevent endless looping
   // if preferred view is custom and viewing others is not allowed.
-  if ( substr ( $url, 0, 5 ) == 'view_' && ! getPref ( 'ALLOW_VIEW_OTHER' ) && !
+  if ( substr ( $url, 0, 5 ) == 'view_' && ! getPref ( '_ALLOW_VIEW_OTHER', 2 ) && !
       $WC->isAdmin() )
     $url = 'month.php';
 
@@ -1920,6 +1920,7 @@ function get_preferred_view ( $indate = '', $args = '' ) {
      . 'date=' . $xdate );
   $url .= ( empty ( $args ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
      . $args );
+
 
   return $url;
 }
@@ -2013,22 +2014,22 @@ function get_user_plugin_list () {
  */
 function get_event_ids ( $sql_params, $unique=true, $sql='' ) {
   $events = array ();
-	//we may be passing only an int value, so convert it if needed
-	if ( ! is_array ( $sql_params ) )
-	  $sql_params = array ( $sql_params );
-	$def_sql = 'SELECT we.cal_id 
-	  FROM webcal_entry we, webcal_entry_user weu
+  //we may be passing only an int value, so convert it if needed
+  if ( ! is_array ( $sql_params ) )
+    $sql_params = array ( $sql_params );
+  $def_sql = 'SELECT we.cal_id 
+    FROM webcal_entry we, webcal_entry_user weu
     WHERE we.cal_id = weu.cal_id AND weu.cal_login_id = ?';
-	$sql = ( ! empty ( $sql ) ? $sql : $def_sql );
+  $sql = ( ! empty ( $sql ) ? $sql : $def_sql );
   $res = dbi_execute ( $sql, $sql_params );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $events[] = $row[0];
     }
   }
-	
-	if ( $unique ) {
-	  // Now count number of participants in each event...
+  
+  if ( $unique ) {
+    // Now count number of participants in each event...
     $unique_events = array ();
     for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
       $res = dbi_execute ( "SELECT COUNT(*) FROM webcal_entry_user " .
@@ -2040,8 +2041,8 @@ function get_event_ids ( $sql_params, $unique=true, $sql='' ) {
         }
         dbi_free_result ( $res );
       }
-		}
-	  $events = $unique_events;
+    }
+    $events = $unique_events;
   }
   return $events;
 }
@@ -2117,7 +2118,7 @@ function getOverLap ( $item, $i, $parent = true ) {
   global $result;
   static $originalDate, $originalItem, $realEndTS;
 
-  if ( getPref ( 'DISABLE_CROSSDAY_EVENTS' ) )
+  if ( ! getPref ( 'ENABLE_CROSSDAY_EVENTS' ) )
     return false;
 
   $lt = localtime ( $item->getDate () );
@@ -2127,13 +2128,13 @@ function getOverLap ( $item, $i, $parent = true ) {
     0, 0, $lt[4] + 1, $lt[3] + 1, $lt[5] );
 
   $realEndTS = $item->getEndDate ();
-	if ( $parent ) {
+  if ( $parent ) {
     $originalDate = $item->getDate ();
     $originalItem = $item;
   }
   $new_duration = ( $realEndTS - $midnight ) / 60;
-	//do_debug ( print_r ( $lt, true ) ) ;
-	//do_debug ( date ( 'YmdHis', $realEndTS) . ' ' . date ( 'YmdHis', $midnight).' '. $new_duration  );
+  //do_debug ( print_r ( $lt, true ) ) ;
+  //do_debug ( date ( 'YmdHis', $realEndTS) . ' ' . date ( 'YmdHis', $midnight).' '. $new_duration  );
   if ( $new_duration > 1440 ) {
     $new_duration = 1439;
     $recurse = 1;
@@ -2418,7 +2419,7 @@ function isLeapYear ( $year = '' ) {
 /* Returns a custom header, stylesheet or tailer.
  *
  * The data will be loaded from the webcal_user_template table.
- * If variable $ALLOW_EXTERNAL_HEADER is set to 'Y',
+ * If variable _ALLOW_EXTERNAL_HEADER is set to 'Y',
  * then we load an external file using include.
  * This can have serious security issues since a
  * malicous user could open up /etc/passwd.
@@ -2436,7 +2437,7 @@ function load_template ( $type ) {
   // First, check for a user-specific template.
   $sql = 'SELECT cal_template_text FROM webcal_user_template
     WHERE cal_type = ? and cal_login_id = ?';
-  if ( getPref ( 'ALLOW_USER_HEADER', 2 ) ) {
+  if ( getPref ( '_ALLOW_USER_HEADER', 2 ) ) {
     $rows = dbi_get_cached_rows ( $sql, array ( $type, $WC->loginId() ) );
     if ( $rows && ! empty ( $rows[0] ) ) {
       $row = $rows[0];
@@ -2455,7 +2456,7 @@ function load_template ( $type ) {
     }
   }
 
-  if ( $found && getPref ( 'ALLOW_EXTERNAL_HEADER' ) &&
+  if ( $found && getPref ( '_ALLOW_EXTERNAL_HEADER' ) &&
       file_exists ( $ret ) ) {
     ob_start ();
     include "$ret";
@@ -2489,7 +2490,7 @@ function loadConfig ( $boolean=false ) {
     $row = $rows[$i];
     $setting = $row[0];
     $value = $row[1];
-		if ( ! $boolean || ( $boolean && $value != 'N' ) )
+    if ( ! $boolean || ( $boolean && $value != 'N' ) )
       $sysConfig[$setting] = $value;
   }
 
@@ -2528,15 +2529,15 @@ function loadConfig ( $boolean=false ) {
  */
 function loadEvent ( $eid, $want_repeated='auto' ) {
   
-	if ( $want_repeated = 'auto' ) {
-	  $res = dbi_execute ( 'SELECT COUNT(cal_id) FROM webcal_entry_repeats 
-		  WHERE cal_id = ?', array( $eid ) );
+  if ( $want_repeated = 'auto' ) {
+    $res = dbi_execute ( 'SELECT COUNT(cal_id) FROM webcal_entry_repeats 
+      WHERE cal_id = ?', array( $eid ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $want_repeated = ( $row[0] > 0 );
       dbi_free_result ( $res );
     }
-	}
+  }
   $item = '';
   $sql = 'SELECT we.cal_name, we.cal_description, we.cal_date,
     we.cal_id, we.cal_rmt_addr, we.cal_priority, we.cal_access,
@@ -2569,7 +2570,7 @@ function loadEvent ( $eid, $want_repeated='auto' ) {
  *
  *
  * <b>Notes:</b>
- * - If <var>$ALLOW_COLOR_CUSTOMIZATION</var> is set to 'N', then we ignore any
+ * - If <var>_ALLOW_COLOR_CUSTOMIZATION</var> is set to 'N', then we ignore any
  *   color preferences.
  * - Other default values will also be set if the user has not saved a
  *   preference and no global value has been set by the administrator in the
@@ -2597,7 +2598,7 @@ function loadPreferences ( $guest = '', $boolean=false ) {
       $value = $row[1];
       if ( $setting == 'LANGUAGE' )
         $lang_found = true;
-			if ( ! $boolean || ( $boolean && $value != 'N' ) )
+      if ( ! $boolean || ( $boolean && $value != 'N' ) )
         $prefarray[$setting] = $value;
     }
   }
@@ -2639,7 +2640,7 @@ function loadPreferences ( $guest = '', $boolean=false ) {
 
 /* Loads current user's layer info into layer global variable.
  *
- * If the system setting <var>$ALLOW_VIEW_OTHER</var> is not set to 'Y', then
+ * If the system setting <var>_ALLOW_VIEW_OTHER</var> is not set to 'Y', then
  * we ignore all layer functionality.  If <var>$force</var> is 0, we only load
  * layers if the current user preferences have layers turned on.
  *
@@ -2655,13 +2656,13 @@ function loadLayers ( $user = '', $force = 0 ) {
 
   $layers = array ();
 
-  if ( ! getPref ( 'ALLOW_VIEW_OTHER' ) )
+  if ( ! getPref ( '_ALLOW_VIEW_OTHER' ) )
     return; // Not allowed to view others' calendars, so cannot use layers.
   if ( $force || getPref ( 'LAYERS_STATUS' ) ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_layerid, cal_layeruser_id, cal_color,
       cal_dups
-			FROM webcal_user_layers 
-			WHERE cal_login_id = ? ORDER BY cal_layerid',
+      FROM webcal_user_layers 
+      WHERE cal_login_id = ? ORDER BY cal_layerid',
       array ( $user ) );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
@@ -2671,26 +2672,26 @@ function loadLayers ( $user = '', $force = 0 ) {
           'cal_layeruser_id' => $row[1],
           'cal_color' => $row[2],
           'cal_dups' => $row[3],
-					'cal_fullname' => $WC->User->getFullName ( $row[1] ) 
+          'cal_fullname' => $WC->User->getFullName ( $row[1] ) 
           );
       }
     }
   }
-	return $layers;
+  return $layers;
 }
 
 function loadViews ( $view_id='', $user='', $globalOnly=false) {
   global $WC;
     
-	$views = $query_params = array ();	
-	$query_params[] = ( empty ( $user ) ? $WC->loginId() : $user );
-	if ( $view_id )
-	  $query_params[] = $view_id;
+  $views = $query_params = array ();  
+  $query_params[] = ( empty ( $user ) ? $WC->loginId() : $user );
+  if ( $view_id )
+    $query_params[] = $view_id;
   // Get views for this user and global views.
   $rows = dbi_get_cached_rows ( 'SELECT cal_view_id, cal_name, cal_view_type,
     cal_is_global, cal_owner FROM webcal_view WHERE cal_owner = ? '
      . ( $globalOnly ? '' : ' OR cal_is_global = \'Y\' ' )
-		 . ( $view_id ? ' AND cal_view_id = ? ' : '' )
+     . ( $view_id ? ' AND cal_view_id = ? ' : '' )
      . 'ORDER BY cal_name', $query_params );
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
@@ -2708,7 +2709,7 @@ function loadViews ( $view_id='', $user='', $globalOnly=false) {
       $v = array (
         'cal_view_id' => $row[0],
         'cal_name' => ( ! empty ( $row[1]) ?
-				  $row[1] : translate( 'Unnamed View' ) ),
+          $row[1] : translate( 'Unnamed View' ) ),
         'cal_view_type' => $row[2],
         'cal_is_global' => $row[3],
         'cal_owner' => $row[4],
@@ -2786,11 +2787,11 @@ function parseDate ( $date ) {
   //we may be using different separators
   if ( count ( $dateArr ) == 2 ) {
     $date2 = $dateArr[1];
-		array_pop (  $dateArr );
+    array_pop (  $dateArr );
     $dateArr2 = explode (   $sep2, $date2 );
     //$dateArr[1] = $dateArr2[0];
     //$dateArr[2] = $dateArr2[1];
-		$dateArr = array_merge ( $dateArr, $dateArr2 );    
+    $dateArr = array_merge ( $dateArr, $dateArr2 );    
   }
   $dtarr = array();  
   for( $k=0; $k<5; $k++ ) {
@@ -2802,7 +2803,7 @@ function parseDate ( $date ) {
       $dtarr[2] = $dateArr[$k/2];
     if ( $formatParts[$k] == 'yy' )
       $dtarr[2] = ($dateArr[$k/2] < 30 ? '20' : '19') + $dateArr[$k/2] ;
-		$k++;//we need to step 2    
+    $k++;//we need to step 2    
   }
   return  $dtarr; 
 }
@@ -3151,7 +3152,7 @@ function query_events ( $user='', $want_repeated, $date_filter, $cat_id = '',
   $sql .= 'AND we.cal_type IN '
    . ( $want_repeated == false
     ? '( \'E\',\'T\' ) ' : '( \'M\',\'N\' ) ' );
-	 
+   
   $query_params[] = $user;
 
   if ( $user == $WC->loginId() && strlen ( $user ) > 0 && $layers ) {
@@ -3312,7 +3313,7 @@ function query_events ( $user='', $want_repeated, $date_filter, $cat_id = '',
             $parentRepeats = $result[$i-1]->getRepeatAllDates ();
             for ( $j = 0, $parentRepeatscnt = count ( $parentRepeats );
               $j < $parentRepeatscnt; $j++ ) {
-							//TODO Improve the logic over simply adding ONE_DAY
+              //TODO Improve the logic over simply adding ONE_DAY
               $cloneRepeats[] = date ( 'Ymd', $parentRepeats[$j] + ONE_DAY );
             }
             $result[$i]->addRepeatAllDates ( $cloneRepeats );
@@ -3641,12 +3642,12 @@ function update_status ( $status, $user, $eid, $type = 'E' ) {
 
   if ( empty ( $status ) )
     return;
-		
+    
   $date = false;
   if ( strlen ( $status ) == 10 ) {
-		$date = substr ( $status, 2 );
-		$status = 'D';
-	}
+    $date = substr ( $status, 2 );
+    $status = 'D';
+  }
   $log_type = '';
   switch ( $type ) {
     case 'N':
@@ -3678,15 +3679,15 @@ function update_status ( $status, $user, $eid, $type = 'E' ) {
         VALUES ( ?, ?, ? )', array( $eid, $date, 1 ) ) )
       $error = str_replace ( 'XXX', dbi_error (), $error_msg );
     else
-      activity_log ( $eid, $WC->loginId(), $user, $log_type, '' );				
-	 
-	} else {
+      activity_log ( $eid, $WC->loginId(), $user, $log_type, '' );        
+   
+  } else {
     if ( ! dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
       WHERE cal_login_id = ? AND cal_id = ?', array ( $status, $user, $eid ) ) )
       $error = str_replace ( 'XXX', dbi_error (), $error_msg );
     else
       activity_log ( $eid, $WC->loginId(), $user, $log_type, '' );
-	}
+  }
 }
 
 
@@ -3725,7 +3726,7 @@ function user_is_participant ( $eid, $user ) {
  */
 function validate_domain () {
 
-  if ( ! getPref ( 'SELF_REGISTRATION_BLACKLIST' ) )
+  if ( ! getPref ( '_SELF_REGISTRATION_BLACKLIST' ) )
     return true;
 
   $allow_true = $deny_true = array ();
@@ -3874,9 +3875,9 @@ function user_get_boss_list ( $assistant ) {
   $count = 0;
   $ret = array ();
   $rows = dbi_get_cached_rows ( 'SELECT cal_other_user_id 
-	  FROM webcal_access_user
+    FROM webcal_access_user
     WHERE cal_login_id = ? 
-		AND cal_assistant = \'Y\'', array ( $assistant ) );
+    AND cal_assistant = \'Y\'', array ( $assistant ) );
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
@@ -3979,7 +3980,7 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
   global $WC, $popup_fullnames, $popuptemp_fullname,
   $tempfullname;
 
-  if ( getPref ( 'DISABLE_POPUPS' ) )
+  if ( ! getPref ( 'ENABLE_POPUPS' ) )
     return;
 
   // Restrict info if time only set.
@@ -3990,7 +3991,7 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
   }
 
   $ret = 'new Tip( $(\'ev' . substr ( $popupid, 13 ) 
-	  . '\'), \'<div id="' . $popupid . '" ><dl>';
+    . '\'), \'<div id="' . $popupid . '" ><dl>';
 
   if ( empty ( $popup_fullnames ) )
     $popup_fullnames = array ();
@@ -4048,7 +4049,7 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
 
   if ( ! empty ( $description ) && $details ) {
     $ret .= '<dt>' . translate ( 'Description' ) . ":</dt><dd>";
-    if ( getPref ( 'ALLOW_HTML_DESCRIPTION' ) ) {
+    if ( getPref ( '_ALLOW_HTML_DESCRIPTION' ) ) {
       // Replace &s and decode special characters.
       $str = unhtmlentities (
         str_replace ( '&amp;amp;', '&amp;',

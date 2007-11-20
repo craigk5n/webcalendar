@@ -102,9 +102,9 @@ if ( $show_advanced ) {
 if ( $show_others ) {
   $users = get_my_users ( '', 'view' );
   // Get non-user calendars (if enabled)
-  if ( getPref ( 'NONUSER_ENABLED' ) ) {
+  if ( getPref ( '_ENABLE_NONUSERS' ) ) {
     $nonusers = get_my_nonusers ( $WC->loginId(), true, 'view' );
-    $users = ( getPref ( 'NONUSER_AT_TOP' )
+    $users = ( getPref ( '_NONUSER_AT_TOP' )
       ? array_merge ( $nonusers, $users )
       : array_merge ( $users, $nonusers ) );
   }
@@ -138,7 +138,7 @@ if ( $show_others ) {
 
   echo '
             </select>'
-   . ( getPref ( 'GROUPS_ENABLED' )
+   . ( getPref ( '_ENABLE_GROUPS' )
     ? '<input type="button" onclick="selectUsers()" value="'
      . translate ( 'Select' ) . '..." />' : '' ) . '
           </td>

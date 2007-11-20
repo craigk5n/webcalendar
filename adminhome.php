@@ -41,7 +41,7 @@ if ( $WC->isNonuserAdmin() ) {
   }
 
 
-  if ( getPref ( 'CATEGORIES_ENABLED' ) ) {
+  if ( getPref ( '_ENABLE_CATEGORIES' ) ) {
     if ( access_can_access_function ( ACCESS_CATEGORY_MANAGEMENT ) ) {
       $names[$i]['name'] = translate ( 'Categories', P40 );
       $links[$i++]['link'] = 'category.php';
@@ -58,7 +58,7 @@ if ( $WC->isNonuserAdmin() ) {
     $links[$i++]['link'] = 'layers.php';
   }
 
-  if ( getPref ( 'REPORTS_ENABLED', 2 ) &&
+  if ( getPref ( '_ENABLE_REPORTS', 2 ) &&
     ( access_can_access_function ( ACCESS_REPORT ) ) ) {
     $names[$i]['name'] = translate ( 'Reports', P40 );
     $links[$i++]['link'] = 'report.php';

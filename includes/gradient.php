@@ -108,7 +108,8 @@ function background_css ( $base, $height = '', $percent = '' ) {
   $ret = 'background';
   if ( $type != '' && getPref ( 'ENABLE_GRADIENTS' ) ) {
     $ret .= ': ' . $base . ' url( ';
-    if ( ! file_exists ( 'cache/images' ) || ! can_write_to_dir ( 'cache/images/' ) )
+    if ( ! file_exists ( _WC_PUB_CACHE .'/images' ) 
+      || ! can_write_to_dir ( _WC_PUB_CACHE. '/images/' ) )
       $ret .= '"includes/gradient.php?base=' . substr ( $base, 1 )
        . ( $height != '' ? '&height=' . $height : '' )
        . ( $percent != '' ? '&percent=' . $percent : '' ) . '"';
@@ -116,8 +117,8 @@ function background_css ( $base, $height = '', $percent = '' ) {
       $img_name = substr ( $base, 1, 6 )
        . ( $height != '' ? '-' . $height : '' )
        . ( $percent != ''? '-' . $percent : '' ) . $type;
-      $path_name = '../images/' . $img_name;		  
-      $file_name = 'cache/images/' . $img_name;
+      $path_name = '../images/' . $img_name;      
+      $file_name = _WC_PUB_CACHE . 'images/' . $img_name;
       if ( ! file_exists ( $file_name ) )
         $tmp = create_image ( $file_name, $base, $height, $percent );
       $ret .= $path_name;
@@ -144,7 +145,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
    'percent' => 15,
    'width' => 50, 
    );
-	
+  
   if ( $base != '' )
     $color1 = $color2 = $base;
 
@@ -193,7 +194,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
 
   if ( $width > $MAX_WIDTH )
     $width = $MAX_WIDTH;
-						
+            
   if ( empty ( $numcolors ) )
     $numcolors = $DEFAULTS['colors'];
   else {
@@ -402,15 +403,5 @@ function rgb_luminance ( $rgb, $scale=5) {
   $new[2] = $luminance[ round ( $scale )];
   $newColor = hsl2rgb( $new );
   return $newColor;
-}
-function do_debug_grad ( $msg ) {
-  // log to /tmp/webcal-debug.log
-   error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n<br />",
-   3, 'd:/php/logs/debug.txt' );
-  // fwrite ( $fd, date ( 'Y-m-d H:i:s' ) .  "> $msg\n" );
-  // fclose ( $fd );
-  // 3, '/tmp/webcal-debug.log' );
-  // error_log ( date ( 'Y-m-d H:i:s' ) .  "> $msg\n",
-  // 2, 'sockieman:2000' );
 }
 ?>

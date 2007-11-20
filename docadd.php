@@ -76,18 +76,18 @@ if ( empty ( $error ) && ! empty ( $eid ) ) {
 }
 
 if ( $type == 'A' ) {
-  if ( ! getPref ( 'ALLOW_ATTACH' ) )
+  if ( ! getPref ( '_ALLOW_ATTACH' ) )
     $error = print_not_auth ();
-  else if ( empty ( $error ) && getPref ( 'ALLOW_ATTACH_PART' ) && $is_my_event )
+  else if ( empty ( $error ) && getPref ( '_ALLOW_ATTACH_PART' ) && $is_my_event )
     $can_add = true;
-  else if ( getPref ( 'ALLOW_ATTACH_ANY' ) )
+  else if ( getPref ( '_ALLOW_ATTACH_ANY' ) )
     $can_add = true;
 } else if ( $type == 'C' ) {
-  if ( ! getPref ( 'ALLOW_COMMENTS' ) )
+  if ( ! getPref ( '_ALLOW_COMMENTS' ) )
     $error = print_not_auth ();
-  else if ( empty ( $error ) && getPref ( 'ALLOW_COMMENTS_PART' ) && $is_my_event )
+  else if ( empty ( $error ) && getPref ( '_ALLOW_COMMENTS_PART' ) && $is_my_event )
     $can_add = true;
-  else if ( getPref ( 'ALLOW_COMMENTS_ANY' ) )
+  else if ( getPref ( '_ALLOW_COMMENTS_ANY' ) )
     $can_add = true;
 }
 //check UAC
@@ -202,7 +202,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
 }
 
 // Do we use FCKEditor?
-if ( getPref ( 'ALLOW_HTML_DESCRIPTION' ) ){
+if ( getPref ( '_ALLOW_HTML_DESCRIPTION' ) ){
   if ( file_exists ( 'includes/FCKeditor-2.0/fckeditor.js' ) &&
     file_exists ( 'includes/FCKeditor-2.0/fckconfig.js' ) ) {
     $smarty->assign ( 'use_fckeditor', true );

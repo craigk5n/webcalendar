@@ -15,7 +15,6 @@
 
 // This theme will be available to both normal users and System Settings.
 $webcal_theme = array (
-  'MENU_THEME'   => 'spring',
   'BGCOLOR'      => '#CCFFCC',
   'CELLBG'       => '#99FF99',
   'H2COLOR'      => '#006600',

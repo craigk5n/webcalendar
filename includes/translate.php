@@ -53,7 +53,7 @@ function unhtmlentities ( $string ) {
  */
 function reset_language ( $new_language ) {
   global $lang, $lang_file, $translation_loaded;
-	
+  
   if ( $new_language == 'none' || $new_language == 'Browser-defined')
     $new_language = get_browser_language ();
 
@@ -76,12 +76,12 @@ function load_translation_text () {
     return;
 
   $translations = array ();
-	$cached_file = 'cache/' . $lang_file;
-	
+  $cached_file = _WC_PUB_CACHE . '/' . $lang_file;
+  
   if ( defined ( '_WC_BASE_DIR' ) ) {
-	  $base_dir = _WC_BASE_DIR;
+    $base_dir = _WC_BASE_DIR;
     $lang_file_2 = _WC_BASE_DIR . "/$lang_file";
-		$cached_file = _WC_BASE_DIR . "/$cached_file";
+    $cached_file = _WC_BASE_DIR . "/$cached_file";
 
     if ( file_exists ( $lang_file_2 ) )
       $lang_file = $lang_file_2;
@@ -154,7 +154,7 @@ function load_translation_text () {
            . $cached_file );
     }
   }
-	return $translations;
+  return $translations;
 }
 
 /* Gets browser-specified language preference.
@@ -208,18 +208,18 @@ function get_browser_language ( $pref = false ) {
 function translate ( $str, $options = '' ) {
   global $translation_loaded;
   
-	static $translations;
-	//Set $blink to true to aid in finding missing translations
-	$blink = true;
+  static $translations;
+  //Set $blink to true to aid in finding missing translations
+  $blink = true;
 
-	$decode = ( strpos ( $options, 'D' ) ? true : false );
-	$tooltip = ( strpos ( $options, 'T' ) ? true : false );		
-	
+  $decode = ( strpos ( $options, 'D' ) ? true : false );
+  $tooltip = ( strpos ( $options, 'T' ) ? true : false );    
+  
   if ( ! $translation_loaded || empty ($translations ) ) {
     $translations = load_translation_text ();
-		$translation_loaded = true;
+    $translation_loaded = true;
   }
-	
+  
   $str = trim ( $str );
   $retval = ( ! empty ( $translations[$str] )
     ? ( $decode ? unhtmlentities ( $translations[$str] ) : $translations[$str] )
@@ -227,46 +227,46 @@ function translate ( $str, $options = '' ) {
 
   if ( $tooltip && ! $blink  ) {
     $retval = eregi_replace ( '<[^>]+>', '', $retval );
-    $retval = eregi_replace ( '"', "'", $retval );	
-	}
-	
-	if ( $options ) {
-	  $opts = explode ( ',', $options );
-		foreach ( $opts as $opt ) {
-		  $opt = trim ( $opt );
-	    if ( substr ( $opt,0,1 ) == 'L' ) {
-			  $retval = str_repeat( '&nbsp;', substr ( $opt,1 ) ) . $retval;
-			} else if ( substr ( $opt,0,1 ) == 'R' ) {
-			  $retval .= str_repeat( '&nbsp;', substr ( $opt,1 ) );
-		  } else if ( substr ( $opt,0,1 ) == 'P' ) {
-			  $padstr = str_repeat( '&nbsp;', 
-				  ( substr ( $opt,1 ) - (int) strlen ( $retval ) ) /2 );
-			  $retval = $padstr . $retval .$padstr;		
-			}
-	  }
-	}
+    $retval = eregi_replace ( '"', "'", $retval );  
+  }
+  
+  if ( $options ) {
+    $opts = explode ( ',', $options );
+    foreach ( $opts as $opt ) {
+      $opt = trim ( $opt );
+      if ( substr ( $opt,0,1 ) == 'L' ) {
+        $retval = str_repeat( '&nbsp;', substr ( $opt,1 ) ) . $retval;
+      } else if ( substr ( $opt,0,1 ) == 'R' ) {
+        $retval .= str_repeat( '&nbsp;', substr ( $opt,1 ) );
+      } else if ( substr ( $opt,0,1 ) == 'P' ) {
+        $padstr = str_repeat( '&nbsp;', 
+          ( substr ( $opt,1 ) - (int) strlen ( $retval ) ) /2 );
+        $retval = $padstr . $retval .$padstr;    
+      }
+    }
+  }
 
-	return $retval;
+  return $retval;
 }
 
 
 function template_translate(&$tpl_source, &$smarty)
 {
   preg_match_all("/__(.*)__/U", $tpl_source, $match_trans);
-	$cnt = 0;
+  $cnt = 0;
   foreach (  $match_trans[1] as $match ) { 
-	  //? and / scroggs the preg_replace function
-		$match = explode ( '@', $match );
-		$pmatch = str_replace ( '?', '\?' , trim ( $match[0] ) );
-		$pmatch = str_replace ( '/', '\/' , $pmatch );
-	  $pattern =  "/__" .$pmatch 
-		  . ( isset ( $match[1] ) ? '@' . $match[1] : '' ). "__/U";
-	  $tpl_source = preg_replace( $pattern, 
-		  translate ( $match[0], $match[1] ), $tpl_source);
-	  $cnt++;
-	}			
-	return $tpl_source; 
-	
+    //? and / scroggs the preg_replace function
+    $match = explode ( '@', $match );
+    $pmatch = str_replace ( '?', '\?' , trim ( $match[0] ) );
+    $pmatch = str_replace ( '/', '\/' , $pmatch );
+    $pattern =  "/__" .$pmatch 
+      . ( isset ( $match[1] ) ? '@' . $match[1] : '' ). "__/U";
+    $tpl_source = preg_replace( $pattern, 
+      translate ( $match[0], $match[1] ), $tpl_source);
+    $cnt++;
+  }      
+  return $tpl_source; 
+  
 }
 
 /* Translates text and prints it.
@@ -361,8 +361,8 @@ function define_languages () {
   //make sure Browser Defined is first in list
   $browser_defined = array ( translate ( 'Browser-defined' ) => 'none');
   $languages = array_merge ( $browser_defined, $languages );
-	
-	return $languages;
+  
+  return $languages;
 }
 
 /* Converts language names to their abbreviation.

@@ -88,9 +88,9 @@ if ( $do_purge ) {
 }
 
   $userlist = get_my_users ();
-  if ( getPref ( 'NONUSER_ENABLED' ) ) {
+  if ( getPref ( '_ENABLE_NONUSERS' ) ) {
     $nonusers = get_nonuser_cals ();
-    $userlist = ( getPref ( 'NONUSER_AT_TOP' ) ) ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
+    $userlist = ( getPref ( '_NONUSER_AT_TOP' ) ) ? array_merge($nonusers, $userlist) : array_merge($userlist, $nonusers);
   }
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     $users[$userlist[$i]['cal_login_id']]['fullname'] = 

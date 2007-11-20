@@ -1,7 +1,6 @@
 <?php
 define ( 'Y', 'Y' );
-//this is already defined
-//define ( 'N', 'N' );
+define ( 'N', 'N' );
 define ( 'INT', 'INTEGER' );
 define ( 'CHAR', 'CHAR' );
 define ( 'VARCHAR', 'VARCHAR' );
@@ -13,64 +12,64 @@ $sql_array = array();
 $dbDef = array ( 
   'mysql'=>array (
     'CREATE'=>'CREATE TABLE IF NOT EXISTS ',
-	  'PRIMARY'=>'PRIMARY KEY',
-	  'INDEX'=>'CREATE INDEX ',
-	  'INTEGER'=>'INTEGER',
-	  'CHAR'=>'CHAR',
-	  'TEXT'=>'TEXT',
-	  'LONGBLOB'=>'LONGBLOB',
-	  'VARCHAR'=>'VARCHAR'
-	),
+    'PRIMARY'=>'PRIMARY KEY',
+    'INDEX'=>'CREATE INDEX ',
+    'INTEGER'=>'INTEGER',
+    'CHAR'=>'CHAR',
+    'TEXT'=>'TEXT',
+    'LONGBLOB'=>'LONGBLOB',
+    'VARCHAR'=>'VARCHAR'
+  ),
   'mysqli'=>array (
     'CREATE'=>'CREATE TABLE IF NOT EXISTS ',
-	  'PRIMARY'=>'PRIMARY KEY',
-	  'INDEX'=>'CREATE INDEX ',
-	  'INTEGER'=>'INTEGER',
-	  'CHAR'=>'CHAR',
-	  'TEXT'=>'TEXT',
-	  'LONGBLOB'=>'LONGBLOB',
-	  'VARCHAR'=>'VARCHAR'
-	),
+    'PRIMARY'=>'PRIMARY KEY',
+    'INDEX'=>'CREATE INDEX ',
+    'INTEGER'=>'INTEGER',
+    'CHAR'=>'CHAR',
+    'TEXT'=>'TEXT',
+    'LONGBLOB'=>'LONGBLOB',
+    'VARCHAR'=>'VARCHAR'
+  ),
   'oracle'=>array (
     'CREATE'=>'CREATE TABLE ',
-	  'PRIMARY'=>'PRIMARY KEY',
-	  'INDEX'=>'CREATE INDEX ',
-	  'INTEGER'=>'INTEGER',
-	  'CHAR'=>'CHAR',
-	  'TEXT'=>'TEXT',
-	  'LONGBLOB'=>'BLOB',
-	  'VARCHAR'=>'VARCHAR2'
-	),
+    'PRIMARY'=>'PRIMARY KEY',
+    'INDEX'=>'CREATE INDEX ',
+    'INTEGER'=>'INTEGER',
+    'CHAR'=>'CHAR',
+    'TEXT'=>'TEXT',
+    'LONGBLOB'=>'BLOB',
+    'VARCHAR'=>'VARCHAR2'
+  ),
   'mssql'=>array (
     'CREATE'=>'CREATE TABLE ',
-	  'PRIMARY'=>'PRIMARY KEY',
-	  'INDEX'=>'CREATE INDEX ',
-	  'INTEGER'=>'INTEGER',
-	  'CHAR'=>'CHAR',
-	  'TEXT'=>'TEXT',
-	  'LONGBLOB'=>'IMAGE',
-	  'VARCHAR'=>'VARCHAR'
-	),
+    'PRIMARY'=>'PRIMARY KEY',
+    'INDEX'=>'CREATE INDEX ',
+    'INTEGER'=>'INTEGER',
+    'CHAR'=>'CHAR',
+    'TEXT'=>'TEXT',
+    'LONGBLOB'=>'IMAGE',
+    'VARCHAR'=>'VARCHAR'
+  ),
   'psql'=>array (
     'CREATE'=>'CREATE TABLE ',
-	  'PRIMARY'=>'PRIMARY KEY',
-	  'INDEX'=>'CREATE INDEX ',
-	  'INTEGER'=>'INTEGER',
-	  'CHAR'=>'CHAR',
-	  'TEXT'=>'TEXT',
-	  'LONGBLOB'=>'BTYEA',
-	  'VARCHAR'=>'VARCHAR'
-	),
+    'PRIMARY'=>'PRIMARY KEY',
+    'INDEX'=>'CREATE INDEX ',
+    'INTEGER'=>'INTEGER',
+    'CHAR'=>'CHAR',
+    'TEXT'=>'TEXT',
+    'LONGBLOB'=>'BTYEA',
+    'VARCHAR'=>'VARCHAR'
+  ),
   'sqlite'=>array (
     'CREATE'=>'CREATE TABLE ',
-	  'PRIMARY'=>'PRIMARY KEY',
-	  'INDEX'=>'CREATE INDEX ',
-	  'INTEGER'=>'INTEGER',
-	  'CHAR'=>'CHAR',
-	  'TEXT'=>'TEXT',
-	  'LONGBLOB'=>'BLOB',
-	  'VARCHAR'=>'VARCHAR'
-	)
+    'PRIMARY'=>'PRIMARY KEY',
+    'INDEX'=>'CREATE INDEX ',
+    'INTEGER'=>'INTEGER',
+    'CHAR'=>'CHAR',
+    'TEXT'=>'TEXT',
+    'LONGBLOB'=>'BLOB',
+    'VARCHAR'=>'VARCHAR'
+  )
 );
 
 
@@ -80,7 +79,7 @@ $dbDef = array (
 
 $install_sql = array (
   array ( 'name'=>'access_function',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (
      array ( 'cal_login_id', INT, 11, N ),
      array ( 'cal_permissions', VARCHAR, 64, N )
@@ -90,7 +89,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'access_user',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (
      array ('cal_login_id',  INT, 11, N ),
      array ('cal_other_user_id', INT, 11, N ),
@@ -106,7 +105,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'blob',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (
      array ( 'cal_blob_id', INT, 11, N ),
      array ( 'cal_id',  INT, 11, Y, NULL ),
@@ -124,7 +123,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'categories',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (
      array ( 'cat_id', INT, 11, N ),
      array ( 'cat_owner', INT, 11, Y, NULL ),
@@ -138,7 +137,7 @@ $install_sql = array (
 
 
   array ( 'name'=>'config',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (
      array ( 'cal_setting', VARCHAR, 50, N ),
      array ( 'cal_value', VARCHAR, 100, Y, NULL )
@@ -148,7 +147,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'entry',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
     'fields'=>array (
      array ( 'cal_id', INT, 11, N ),       
      array ( 'cal_parent_id', INT, 11, Y, NULL ),    
@@ -172,7 +171,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'entry_categories',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_id', INT, 11, N ),
      array ( 'cat_id', INT, 11, N, 0 ),
@@ -183,7 +182,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'entry_exceptions',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_id', INT, 11, N, 0 ),       
      array ( 'cal_date', INT, 11, N ),       
@@ -191,9 +190,9 @@ $install_sql = array (
     ),
   'primary'=>array ( 'cal_id', 'cal_date' )
   ),
-	
+  
   array ( 'name'=>'entry_ext_user',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_id', INT, 11, N ),       
      array ( 'cal_fullname', VARCHAR, 50, N ),       
@@ -203,7 +202,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'entry_log',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_log_id', INT, 11, N ),       
      array ( 'cal_entry_id', INT, 11, N ),       
@@ -218,7 +217,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'entry_repeats',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_id', INT, 11, N, 0 ),       
      array ( 'cal_type', VARCHAR, 20, Y ),       
@@ -234,11 +233,11 @@ $install_sql = array (
      array ( 'cal_count', INT, 11, Y )
     ), 
   'primary'=>array ('cal_id'),
-  'index'=>array ( 'cal_type', 'cal_end' )	
+  'index'=>array ( 'cal_type', 'cal_end' )  
   ),
 
   array ( 'name'=>'entry_user',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_id', INT, 11, N, 0 ),       
      array ( 'cal_login_id', INT, 11, N ),       
@@ -249,7 +248,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'group',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_group_id', INT, 11, N ),       
      array ( 'cal_owner', INT, 11, N ),       
@@ -261,7 +260,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'group_user',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_group_id', INT, 11, N ),       
      array ( 'cal_login_id', INT, 11, N )
@@ -270,7 +269,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'import',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_import_id', INT, 11, N ),       
      array ( 'cal_name', VARCHAR, 50, Y ),       
@@ -283,7 +282,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'import_data',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array ( 
      array ( 'cal_id', INT, 11, N ),       
      array ( 'cal_import_id', INT, 11, N ),             
@@ -295,7 +294,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'reminders',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_id', INT, 11, N, 0 ),       
      array ( 'cal_date', INT, 11, N, 0 ),       
@@ -309,11 +308,11 @@ $install_sql = array (
      array ( 'cal_action', VARCHAR, 12, N, 'EMAIL' ) 
     ),
   'primary'=>array ('cal_id'),
-  'index'=>array ( 'cal_times_sent' )	
+  'index'=>array ( 'cal_times_sent' )  
   ),
 
   array ( 'name'=>'report',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (   
      array ( 'cal_report_id', INT, 11, N ),     
      array ( 'cal_login_id', INT, 11, N ),             
@@ -334,7 +333,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'report_template',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_report_id', INT, 11, N ),       
      array ( 'cal_template_type', CHAR, 1, N ),       
@@ -344,7 +343,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'site_extras',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_id', INT, 11, N, 0 ),       
      array ( 'cal_name', VARCHAR, 25, N ),       
@@ -356,7 +355,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'timezones',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (
      array ( 'tzid', VARCHAR, 100, N,  '' ),
      array ( 'dtstart', INT, 11, Y ),
@@ -368,7 +367,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'user',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_login_id', INT, 11, N ),       
      array ( 'cal_login', VARCHAR, 25, N ),       
@@ -395,7 +394,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'user_layers',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_layerid', INT, 11, N ),       
      array ( 'cal_login_id', INT, 11, N ),       
@@ -408,17 +407,17 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'user_pref',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_login_id', INT, 11, N ),       
-     array ( 'cal_setting', VARCHAR, 25, N ),       
+     array ( 'cal_setting', VARCHAR, 50, N ),       
      array ( 'cal_value', VARCHAR, 100, Y ) 
     ),
   'primary'=>array ( 'cal_login_id', 'cal_setting' )
   ),
 
   array ( 'name'=>'user_template',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_login_id', INT, 11, N ),       
      array ( 'cal_type', CHAR, 1, N ),       
@@ -428,7 +427,7 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'view',
-	 'action'=>'CREATE',
+   'action'=>'CREATE',
    'fields'=>array (       
      array ( 'cal_view_id', INT, 11, N ),       
      array ( 'cal_owner', INT, 11, N ),       
@@ -441,8 +440,8 @@ $install_sql = array (
   ),
 
   array ( 'name'=>'view_user',
-	 'action'=>'CREATE',
-	 'fields'=>array (       
+   'action'=>'CREATE',
+   'fields'=>array (       
      array ( 'cal_view_id', INT, 11, N ),       
      array ( 'cal_login_id', INT, 11, N )
     ),
@@ -457,42 +456,42 @@ $fieldsCnt = $primaryCnt = $indexCnt = 1;
 
 $tmp = "\n" . $dbDef[$dbType][$table_sql['action']] 
   . $dbPrefix . $table_sql['name'] . " (\n";
-	foreach ( $table_sql['fields'] as $fields ) {
-		$pricnt = count ( $table_sql['fields'] );
-	  $columnSql .=  $fields[0] . " " . $dbDef[$dbType][$fields[1]];
-		if ( isset ( $fields[2] ) )
-		  $columnSql .= '(' . $fields[2] . ')';
-		if ( isset ( $fields[3] )	)	
-		  $columnSql .= ( $fields[3] == 'N' ? ' NOT ' : ' ' ) . 'NULL';
-		if ( isset ( $fields[4] ) )			 
-			$columnSql .= ' DEFAULT \'' . $fields[4] . '\'';
-		$columnSql .= ( $fieldsCnt++ < $pricnt || 
-		  isset ( $table_sql['primary'] )? ",\n" : '' );	
+  foreach ( $table_sql['fields'] as $fields ) {
+    $pricnt = count ( $table_sql['fields'] );
+    $columnSql .=  $fields[0] . " " . $dbDef[$dbType][$fields[1]];
+    if ( isset ( $fields[2] ) )
+      $columnSql .= '(' . $fields[2] . ')';
+    if ( isset ( $fields[3] )  )  
+      $columnSql .= ( $fields[3] == 'N' ? ' NOT ' : ' ' ) . 'NULL';
+    if ( isset ( $fields[4] ) )       
+      $columnSql .= ' DEFAULT \'' . $fields[4] . '\'';
+    $columnSql .= ( $fieldsCnt++ < $pricnt || 
+      isset ( $table_sql['primary'] )? ",\n" : '' );  
   }
-	if ( isset ( $table_sql['primary'] ) ) {
-	  $primarySql = $dbDef[$dbType]['PRIMARY'] . "(";
-		$pricnt = count ( $table_sql['primary'] );
-	  foreach ( $table_sql['primary'] as $primary ) {	
-	    $primarySql .= $primary;
-	    $primarySql .= ( $primaryCnt++ < $pricnt ? ", " : ")" );						  
-		}
-	}
-	if ( isset ( $table_sql['index'] ) ) {
-	  $indexSql = $dbDef[$dbType]['INDEX'] 
-		  . "IDX_" . $table_sql['name'] . ' ON ' 
-			. $dbPrefix . $table_sql['name'] . "(";
-		$idxcnt = count ( $table_sql['index'] );
-	  foreach ( $table_sql['index'] as $index ) {	
-	    $indexSql .= $index;
-	    $indexSql .= ( $indexCnt++ < $idxcnt ? ", " : ")" );						  
-		}
-	}
-	$tmp .= $columnSql . $primarySql . "\n);\n" ;
-	$sql_array[] = str_replace ( "\n", " ", $tmp );
-	if ( ! empty ( $indexSql ) ) {
-	  $tmp .= $indexSql . ";\n" ;
-	  $sql_array[] = str_replace ( "\n", " ", $indexSql );		
-	} 		
+  if ( isset ( $table_sql['primary'] ) ) {
+    $primarySql = $dbDef[$dbType]['PRIMARY'] . "(";
+    $pricnt = count ( $table_sql['primary'] );
+    foreach ( $table_sql['primary'] as $primary ) {  
+      $primarySql .= $primary;
+      $primarySql .= ( $primaryCnt++ < $pricnt ? ", " : ")" );              
+    }
+  }
+  if ( isset ( $table_sql['index'] ) ) {
+    $indexSql = $dbDef[$dbType]['INDEX'] 
+      . "IDX_" . $table_sql['name'] . ' ON ' 
+      . $dbPrefix . $table_sql['name'] . "(";
+    $idxcnt = count ( $table_sql['index'] );
+    foreach ( $table_sql['index'] as $index ) {  
+      $indexSql .= $index;
+      $indexSql .= ( $indexCnt++ < $idxcnt ? ", " : ")" );              
+    }
+  }
+  $tmp .= $columnSql . $primarySql . "\n);\n" ;
+  $sql_array[] = str_replace ( "\n", " ", $tmp );
+  if ( ! empty ( $indexSql ) ) {
+    $tmp .= $indexSql . ";\n" ;
+    $sql_array[] = str_replace ( "\n", " ", $indexSql );    
+  }     
   $sql_displayStr .= $tmp;
 }
 

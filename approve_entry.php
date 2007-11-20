@@ -86,7 +86,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   set_env ( 'TZ', $user_TIMEZONE );
   $default_language = getPref ( 'LANGUAGE', 2 );
   $user_language = getPref ( 'LANGUAGE', 1, $creator );
-  if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && getPref ( 'SEND_EMAIL', 2 ) ) {
+  if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && getPref ( '_SEND_EMAIL', 2 ) ) {
     reset_language ( empty ( $user_language ) || ( $user_language == 'Browser-defined' )
       ? $default_language : $user_language );
 
@@ -123,7 +123,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
         translate ( 'Comments XXX' ) );
 
     $from = ( strlen ( $login_email ) ? $login_email : 
-	  getPref ('EMAIL_FALLBACK_FROM' ) );
+	  getPref ('_EMAIL_FALLBACK_FROM' ) );
     // Send mail.
     $mail->WC_Send ( $login_fullname, $tempemail,
       $tempfullname, $name, $msg, $htmlmail, $from );

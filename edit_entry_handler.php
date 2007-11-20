@@ -250,7 +250,7 @@ if ( ! $can_edit && empty ( $error ) ) {
 
 // CAPTCHA
 if ( file_exists ( 'includes/classes/captcha/captcha.php' )  && 
-  getPref ('ENABLE_CAPTCHA' ) ) {
+  getPref ('_ENABLE_CAPTCHA' ) ) {
   if ( function_exists ( 'imagecreatetruecolor' ) ) {
     include_once 'includes/classes/captcha/captcha.php';
     $res = captcha::check ();
@@ -272,7 +272,7 @@ if ( empty ( $participants[0] ) ) {
   $participants[0] = $WC->userLoginId();
 }
 
-if ( ! getPref ( 'DISABLE_REPEATING_FIELD' ) ) {
+if ( getPref ( '_ENABLE_REPEATING_FIELD' ) ) {
   //process only if Expert Mode or Weekly
   if ( $rpt_type == 'weekly' || ! empty ( $rpt_mode ) ) {
     $bydayAr = explode ( ',', $bydayList );
@@ -352,7 +352,7 @@ if ( ! getPref ( 'DISABLE_REPEATING_FIELD' ) ) {
      }
    }
   }
-} // end test for $DISABLE_REPEATING_FIELD
+} // end test for _ENABLE_REPEATING_FIELD
 
 //make sure we initialize this variables
 if ( empty ( $bymonth ) ) $bymonth = '';
@@ -620,7 +620,7 @@ if ( empty ( $error ) ) {
   //process reminder
   if ( ! dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id = ?', array( $eid ) ) )
     $error = $dberror . dbi_error ();
-  if ( ! getPref ( 'DISABLE_REMINDER_FIELD' ) && $reminder == true ) {
+  if ( getPref ( '_ENABLE_REMINDER_FIELD' ) && $reminder == true ) {
     if ( empty ( $rem_related ) ) $rem_related = 'S';
     if ( empty ( $rem_before ) ) $rem_before = 'Y';
     if ( empty ( $rem_last_sent ) ) $rem_last_sent = '0';
@@ -737,11 +737,11 @@ if ( empty ( $error ) ) {
       } //end exceptions    
   } 
   //EMAIL PROCESSING
-  $send_email = getPref ( 'SEND_EMAIL' );
+  $send_email = getPref ( '_SEND_EMAIL' );
   $partcnt = count ( $participants );
   $from = $login_email;
-  if ( empty ( $from ) && getPref ('EMAIL_FALLBACK_FROM' ) )
-    $from = getPref ( 'EMAIL_FALLBACK_FROM' );
+  if ( empty ( $from ) && getPref ('_EMAIL_FALLBACK_FROM' ) )
+    $from = getPref ( '_EMAIL_FALLBACK_FROM' );
   $default_language = getPref ( 'LANGUAGE' );
   // check if participants have been removed and send out emails
   if ( ! $newevent && count ( $old_status ) > 0 ) {  
@@ -927,7 +927,7 @@ $ext_names = array ();
 $ext_emails = array ();
 $matches = array ();
 $ext_count = 0;
-if ( !_WC_SINGLE_USER && getPref ( 'ALLOW_EXTERNAL_USERS' ) &&
+if ( !_WC_SINGLE_USER && getPref ( '_ALLOW_EXTERNAL_USERS' ) &&
   ! empty ( $externalparticipants ) ) {
   $lines = explode ( "\n", $externalparticipants );
   if ( ! is_array ( $lines ) ) {
@@ -989,7 +989,7 @@ if ( !_WC_SINGLE_USER && getPref ( 'ALLOW_EXTERNAL_USERS' ) &&
         }
         // send mail notification if enabled
         // TODO: move this code into a function...
-        if ( getPref ( 'EXTERNAL_NOTIFICATIONS' ) && $send_email &&
+        if ( getPref ( '_EXTERNAL_NOTIFICATIONS' ) && $send_email &&
           strlen ( $ext_emails[$i] ) > 0 ) {          
           if ( ( ! $newevent && getpref ( 'EXTERNAL_UPDATES' ) ) || $newevent ) { 
             // Strip [\d] from duplicate Names before emailing
@@ -1087,7 +1087,7 @@ build_header ();
  <tr>
 <?php
   // Allow them to override a conflict if server settings allow it
-  if ( getPref ( 'ALLOW_CONFLICT_OVERRIDE' ) ) {
+  if ( getPref ( '_ALLOW_CONFLICT_OVERRIDE' ) ) {
     echo '<td><input type="submit" name="confirm_conflicts" value="' . 
       translate( 'Save' ) . "\" /></td>\n";
   }

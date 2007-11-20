@@ -87,7 +87,7 @@ foreach ( $users as $user ) {
 	}
 }
 
-do_debug ( print_r ( $user_list, true ) );
+//do_debug ( print_r ( $user_list, true ) );
 $smarty->assign ( 'can_delete', access_user_calendar ( 'edit', $user ) );
 $smarty->assign ( 'users', $user_list );
 $smarty->display ( 'list_unapproved.tpl' );

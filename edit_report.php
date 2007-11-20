@@ -18,9 +18,9 @@
 
 /*
  * Security:
- * If system setting $REPORTS_ENABLED is set to anything other than
+ * If system setting _ENABLE_REPORTS is set to anything other than
  *   'Y', then don't allow access to this page.
- * If $ALLOW_VIEW_OTHER is 'N', then do not allow selection of
+ * If _ALLOW_VIEW_OTHER is 'N', then do not allow selection of
  *   participants.
  * If not an admin user, only report creator (cal_login in webcal_report)
  *   can edit/delete report.
@@ -30,7 +30,7 @@ include_once 'includes/init.php';
 
 $error = '';
 
-if ( ! getPref ( 'REPORTS_ENABLED', 2 ) ) {
+if ( ! getPref ( '_ENABLE_REPORTS', 2 ) ) {
   $error = print_not_auth () . '.';
 }
 
@@ -49,7 +49,7 @@ if ( empty ( $report_id ) ) {
 }
 
 $show_participants = true;
-if ( _WC_SINGLE_USER || getPref ( 'DISABLE_PARTICIPANTS_FIELD' ) ) {
+if ( _WC_SINGLE_USER || ! getPref ( '_ENABLE_PARTICIPANTS_FIELD' ) ) {
   $show_participants = false;
 }
 
@@ -90,10 +90,10 @@ $ranges = array (
 // Get list of users that the current user can see
 if ( empty ( $error ) && $show_participants ) {
   $userlist = get_my_users ( '', 'view' );
-  if ( getpref ( 'NONUSER_ENABLED' ) ) {
+  if ( getpref ( '_ENABLE_NONUSERS' ) ) {
     //restrict NUC list if groups are enabled
     $nonusers = get_my_nonusers ( $WC->loginId(), true, 'view' );
-    $userlist = getpref ( 'NONUSER_AT_TOP') ? array_merge($nonusers, $userlist) : 
+    $userlist = getpref ( '_NONUSER_AT_TOP') ? array_merge($nonusers, $userlist) : 
       array_merge($userlist, $nonusers);
   }
   $userlistcnt = count ( $userlist );

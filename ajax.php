@@ -142,8 +142,8 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
     if ( $filename == 'admin' )
       $ret .= 'CSS_COLOR_FROM_CONFIG = "true";'; 
     if ( $filename == 'pref' )
-      $ret .= 'ALLOW_COLOR_CUSTOMIZATION = "' . 
-    getPref ( 'ALLOW_COLOR_CUSTOMIZATION' ) . '";';   
+      $ret .= '_ALLOW_COLOR_CUSTOMIZATION = "' . 
+    getPref ( '_ALLOW_COLOR_CUSTOMIZATION' ) . '";';   
     $ret .= 'SERVER_URL = "' . 
      translate ( 'Server URL is required', true ) . '";
    SERVER_URL_END = "' . 
@@ -181,11 +181,11 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
      translate ( 'Event popup text', true ) . '";';
   } elseif ( $filename == 'edit_entry' ) {
     $datepicker = true;
-    $ret .= 'GROUPS_ENABLED = "' .  getPref ( 'GROUPS_ENABLED', 2 ) . '";
+    $ret .= '_ENABLE_GROUPS = "' .  getPref ( '_ENABLE_GROUPS', 2 ) . '";
     WORK_DAY_START_HOUR = "' . getPref ( 'WORK_DAY_START_HOUR' ) . '";
     WORK_DAY_END_HOUR = "' . getPref ( 'WORK_DAY_END_HOUR' ) . '";
     TIME_FORMAT = "' . getPref ( 'TIME_FORMAT' ) . '";
-    EVENT_EDIT_TABS = "' . getPref ( 'EVENT_EDIT_TABS' ) . '";
+    _EVENT_EDIT_TABS = "' . getPref ( '_EVENT_EDIT_TABS' ) . '";
     SU = "' . translate ( 'SU' ) . '";
     MO = "' . translate ( 'MO' ) . '";
     TU = "' . translate ( 'TU' ) . '";  
@@ -222,7 +222,7 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   }  
   echo $ret;
 } elseif ( $page == 'edit_entry_groups' ) {
-	  if ( getPref ( 'GROUPS_ENABLED', 2  ) ) {
+	  if ( getPref ( '_ENABLE_GROUPS', 2  ) ) {
       $groups = get_groups ();
 			$groupmembers = '{"groups":[';
       for ( $i = 0; $i < count ( $groups )  ; $i++ ) {

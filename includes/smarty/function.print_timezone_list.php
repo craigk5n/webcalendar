@@ -20,10 +20,10 @@ function smarty_function_print_timezone_list ( $params, &$smarty )
   $ret = '';
   // Allows different SETTING names between SERVER and USER.
   if ( $params['prefix'] == 'admin_' ) {
-		$tz = getPref ( 'SERVER_TIMEZONE',2 );	
-	} else {
-		$tz = getPref ( 'SERVER_TIMEZONE' );	
-	}
+    $tz = getPref ( '_SERVER_TIMEZONE',2 );  
+  } else {
+    $tz = getPref ( '_SERVER_TIMEZONE' );  
+  }
   // We may be using php 4.x on Windows, so we can't use set_env () to
   // adjust the user's TIMEZONE.  We'll need to reply on the old fashioned
   // way of using $tz_offset from the server's timezone.
@@ -38,7 +38,7 @@ function smarty_function_print_timezone_list ( $params, &$smarty )
     $tz_value = ( ! $can_setTZ ? substr ( $tz, 12 ) : 0 );
     $ret = '
         <select name="' . $params['prefix'] 
-				. 'TIMEZONE" id="' . $params['prefix'] . 'TIMEZONE">';
+        . 'TIMEZONE" id="' . $params['prefix'] . 'TIMEZONE">';
     $text_add = translate ( 'Add N hours to' );
     $text_sub = translate ( 'Subtract N hours from' );
     for ( $i = -12; $i <= 13; $i++ ) {
@@ -73,7 +73,7 @@ function smarty_function_print_timezone_list ( $params, &$smarty )
     sort ( $timezones );
     $ret = '
         <select name="' . $params['prefix'] 
-				. 'TIMEZONE" id="' . $params['prefix'] . 'TIMEZONE">';
+        . 'TIMEZONE" id="' . $params['prefix'] . 'TIMEZONE">';
     for ( $i = 0, $cnt = count ( $timezones ); $i < $cnt; $i++ ) {
       $ret .= '
           <option value="' . $timezones[$i] . '"'
