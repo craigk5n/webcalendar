@@ -6,7 +6,7 @@
 # Last update: 3. August 2007
 #
 # $Id$
-# Translation last updated on 09-24-2007
+# Translation last updated on 11-20-2007
 
 
 ################################################################################
@@ -216,8 +216,8 @@ Display 00 minutes always: Anzeigen auch von &#39;:00&#39; Minuten
 display-end-times-help: Anzeigen der Endzeit falls es ein gezeiteter Termin ist
 Display end times on calendars: Anzeigen der Endzeiten am Kalender
 allow-view-add-help: Ein &#34;+&#34; Icon wird bei Ansichten beigef&uuml;gt, welches Teilnehmern ein schnelles hinzuf&uuml;gen von Terminen bei anderen Kalendern erm&ouml;glicht
-Include add event link in views: Beeinhaltet LINK-Adressen von Terminen bei den Ansichten
-lunar-help: Wenn aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
+Include add event link in views: &Uuml;ber "Ansichten" Termine
+lunar-help: Falls aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
 Display Lunar Phases in month view: Anzeigen der Mondphasen in der Monatsansicht
 Restrictions: Beschr&auml;nkungen
 allow-view-other-help: Gibt an, ob die Benutzer die Kalender anderer Teilnehmer sehen kann.
@@ -416,7 +416,7 @@ Approve and Exit: Genehmigen und Schlie&szlig;en
 Hello: Guten Tag
 Hello, XXX.: Guten Tag, XXX
 An appointment has been approved and comments added by: Eine Termin wurde genehmigt und eine Anmerkung wurde hinzugef&uuml;gt von
-XXX has approved an appointment and added comments.: Ein Termin wurde genehmigt mit zus&auml;tzlichen Anmerkungen
+XXX has approved an appointment and added comments.: XXX hat den Termin &uuml;berpr&uuml;ft mit zus&auml;tzlichen Anmerkungen.
 The subject was: Der Betreff lautete
 Subject XXX: Betrifft XXX
 The description is: Die Beschreibung lautet
@@ -530,8 +530,8 @@ hour ahead of you: Stunde vor Ihnen
 hour behind you: Stunde nach Ihnen
 hours ahead of you: Stunden vor Ihnen
 hours behind you: Stunden nach Ihnen
-XXX is in a different timezone (ahead): (XXX ist in einer anderen Zeitzone; XXX vor Ihrer.<br />&nbsp;XXX)
-XXX is in a different timezone (behind): (XXX ist in einer anderen Zeitzone; XXX hinter Ihrer.<br />&nbsp;XXX)
+XXX is in a different timezone (ahead): (XXX ist in einer anderen Zeitzone; YYY vor Ihrer.<br />&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX ist in einer anderen Zeitzone; YYY hinter Ihrer.<br />&nbsp;ZZZ)
 Time entered here is based on your Timezone.: Die eingegebene Zeit basiert auf <b>Ihre</b> Zeitzone.
 Edit Entry: Eintrag &auml;ndern
 Add Entry: Eintrag hinzuf&uuml;gen
@@ -1017,7 +1017,7 @@ cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Coo
 # Page: login.php
 #
 Invalid login: Benutzername oder Kennwort falsch
-You have been logged out.: Sie sind nun abgemeldet
+You have been logged out.: Sie wurden ausgeloggt.
 Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie sich registrieren!
 
 ########################################
@@ -1690,8 +1690,8 @@ Successful Login: Erfolgreiches Login
 Invalid Login: Ung&uuml;ltiges Login
 required only if Safe Mode is On: nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist
 required only if Remote Calendars are used: nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden
-needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufendes Hintergrundbild n&ouml;tig
-Passwords do not match: Passw&ouml;rter stimmen nicht &uuml;berein
+needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufende Hintergrundbilder n&ouml;tig
+Passwords do not match: Kennw&ouml;rter stimmen nicht &uuml;berein
 Unable to write password to settings.php file: Kennwort kann nicht in die &#39;settings.php&#39;-Datei geschrieben werden
 Password has been set: Kennwort wurde gesetzt
 Connection Successful: Verbindung erfolgreich.
@@ -1704,7 +1704,7 @@ Error Converting Timezone: Fehler bei der Zeitzonenkonvertierung
 Please change the file permissions of this file: Bitte &auml;ndern Sie die Rechte dieser Datei
 Please change includes dir permission: Bitte &auml;ndern Sie die Dateiberechtigungen von Ihrem &#39;includes&#39;-Verzeichnis um &#39;Schreibrechte&#39; f&uuml;r &#39;andere Benutzer&#39; zu haben.
 Your settings have been saved: Ihre Einstellungen wurden gespeichert.
-Error you must specify a Single-User Login: Fehler, Sie m&uuml;ssen ein Einzelbenutzer Login definieren
+Error you must specify a Single-User Login: Sie m&uuml;ssen ein\nSingle-User Login festlegen.
 Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
 The password contains illegal characters.: Das Kennwort beinhaltet unzul&auml;ssige Zeichen
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
@@ -1759,9 +1759,9 @@ It appears that you have: Es scheint Sie haben Ihre Webkalendereintr&auml;ge noc
 NOT: NICHT
 converted your existing WebCalendar event data to GMT.: &nbsp;in GMT (Greenwich Mean Time) umgewandelt zu haben.
 If you have, you may ignore this notice and not proceed with the conversion.: Wenn Sie dies bereits getan haben, k&ouml;nnen Sie diese Nachricht ignorieren und ohne der Umwandlung fortfahren.
-If this is a new installation, you may also ignore this notice.: Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren.
+If this is a new installation, you may also ignore this notice.: Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren. Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren.
 It appears that you have NOT converted your existing WebCalendar...: Es scheint, Ihr existierender Webkalender wurde noch NICHT auf GMT umgewandelt. Wenn Sie dies bereits getan haben, oder es sich um eine NEUE Installation handelt, d&uuml;rfen Sie diese Meldung ignorieren und fortfahren.
-Convert Data to GMT: Konvertieren nach GMT
+Convert Data to GMT: Umwandeln auf GMT
 Application Settings: Anwendungseinstellung
 HTTP-based authentication was not detected: HTTP-basierende Authentisierung wurde nicht erkannt
 You will need to reconfigure your web server if you wish to: Sie m&uuml;ssen Ihren Webserver nochmals konfigurieren.
@@ -1824,7 +1824,7 @@ Reminder: Erinnerung
 # Page: ws/event_mod.php
 #
 Unsupported action: Nicht unterst&uuml;tzte Aktion
-Unsupported action XXX.: Nicht unterst&uuml;tzte Aktion.
+Unsupported action XXX.: Nicht unterst&uuml;tzte Aktion XXX.
 No event id specified.: Keine Termin-Id festgelegt.
 not admin: kein Administrator
 Not authorized (not admin).: Nicht berechtigt (kein Administrator).
