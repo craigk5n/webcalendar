@@ -73,4 +73,3 @@ if ( ! access_can_view_page () )
  send_to_preferred_view ();
 	
 ?>
-
