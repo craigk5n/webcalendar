@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 15. November 2007
+# Last update: 19. November 2007
 #
 # $Id$
-# Translation last updated on 11-16-2007
+# Translation last updated on 11-20-2007
 
 
 ################################################################################
@@ -1122,6 +1122,8 @@ Submit: Senden
 Continue: Weiter
 (Your comments will be emailed to the other participants.): (Ihre Anmerkungen werden den anderen Teilnehmern per Email gesendet.)
 An appointment has been rejected by: Eine Termin wurde zur&uuml;ckgewiesen von
+XXX has rejected an appointment.: XXX hat einen Termin zur&uuml;ckgewiesen.
+Rejected by XXX.: Zur&uuml;ckgewiesen von XXX.
 
 ########################################
 # Page: remotes.php
@@ -1601,7 +1603,7 @@ recipients_failed: SMTP Fehler - Die (der) folgende(n) Empf&auml;nger sind (ist)
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: Eingabe der Zeichen, die in der Grafik angezeigt werden
-Enter the correct letters and numbers...: Tragen Sie die richtigen Buchstaben und Zahlen vom Bild in das Textfeld ein. Dieser kleine Test verhindert b&ouml;swilligen Bots (SPAM). Wenn die Grafik schwer zu lesen ist, einfach die Seite neu laden.
+Enter the correct letters and numbers...: Geben Sie die am Bild angezigten richtigen Buchstaben und Ziffern in das Textfeld ein. Dieser kleine Test dient als Zugangsbeschr&auml;kung vor b&ouml;swilligen Bots. Wenn das Bild schwer zu lesen ist, einfach diese Seite nochmals laden (bzw. aktualisieren)
 Challenge/Response: Aufforderung/Beantwortung
 
 ########################################
@@ -1826,7 +1828,7 @@ Environment: Umgebung
 Production: Produktion
 Development: Entwicklung
 Save Settings: Einstellung speichern
-Launch WebCalendar: Webkalender starte
+Launch WebCalendar: Webkalender starten
 
 ########################################
 # Page: install/install_functions.php
