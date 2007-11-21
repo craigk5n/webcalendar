@@ -131,7 +131,6 @@ if ( getPref ( '_ALLOW_USER_HEADER' ) && ( getPref ( 'CUSTOM_SCRIPT' ) ||
  $tabs_ar['header'] = translate( 'Custom Scripts' );
 if ( getPref ( '_ALLOW_COLOR_CUSTOMIZATION' ) ) {
  $tabs_ar['colors'] = translate( 'Colors' );
- $smarty->assign ( '_ALLOW_COLOR_CUSTOMIZATION', true );
 }
 
 $smarty->assign ( 'tabs_ar', $tabs_ar );
