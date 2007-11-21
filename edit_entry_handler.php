@@ -565,6 +565,7 @@ if ( empty ( $error ) ) {
   // add site extras
   $site_extracnt = count ( $site_extras );
   $extra_email_data = '';
+	$value = 'N'; //default value
   for ( $i = 0; $i < $site_extracnt && empty ( $error ); $i++ ) {
     $sql = '';
     if ( $site_extras[$i] == 'FIELDSET' ) continue;
@@ -740,7 +741,7 @@ if ( empty ( $error ) ) {
   //EMAIL PROCESSING
   $send_email = getPref ( '_SEND_EMAIL' );
   $partcnt = count ( $participants );
-  $from = $login_email;
+  $from = $WC->getEmail();
   if ( empty ( $from ) && getPref ('_EMAIL_FALLBACK_FROM' ) )
     $from = getPref ( '_EMAIL_FALLBACK_FROM' );
   $default_language = getPref ( 'LANGUAGE' );

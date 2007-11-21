@@ -122,8 +122,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
       $msg .= "\n\n" . str_replace ( 'XXX', $comments,
         translate ( 'Comments XXX' ) );
 
-    $from = ( strlen ( $login_email ) ? $login_email : 
-	  getPref ('_EMAIL_FALLBACK_FROM' ) );
+    $from = $WC->getEmail();
     // Send mail.
     $mail->WC_Send ( $WC->getFullName (), $temp['email'],
       $temp['fullname'], $name, $msg, $htmlmail, $from );

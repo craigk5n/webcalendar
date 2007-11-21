@@ -1,5 +1,6 @@
 $Id$
 Version 2.0+CVS (?? ??? 2007)
+ - Added new WebCalendar class method getMail(). Returns logged in user's email or FALLBACK
  - Cleaned up calls to function User->loadVariables. Not using GLOBALS anymore
  - Implemented DEFAULT_XXX_USER options for rss, minical,upcoming and publish
  - Implemented RFE [ 574173 ] Allow password expiration

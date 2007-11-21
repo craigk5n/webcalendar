@@ -1162,7 +1162,17 @@ function setToday ( $date='' ) {
     return ( ! empty ( $this->_userId ) && ! $this->isLogin()
     ? $seperator . 'user='. $this->_userId : false );
   }
-  
+
+  /**
+   * Return the email of the logged in user
+   *
+   * @return string  The user's email address
+   */
+  function getEmail ( $fallback=true ) {
+    return ( ! empty ( $this->_userEmail ) ? $this->_userEmail : 
+		  ( $fallback ? getPref ( '_EMAIL_FALLBACK_FROM', 2 ) : false ) );
+  }
+	  
   /**
    * Return the ID of the user specified by user= in the URL
    *

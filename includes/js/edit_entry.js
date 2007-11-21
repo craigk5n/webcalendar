@@ -367,10 +367,11 @@ function toggle_reminders() {
 }
 
 function toggle_rem_rep(){
- $('rem_rep_days').disabled =
- $('rem_rep_hours').disabled =
- $('rem_rep_minutes').disabled = 
- ( $('rem_rep_count').value == 0 );
+ if ( $('rem_rep_count' ) ) 
+   $('rem_rep_days').disabled =
+   $('rem_rep_hours').disabled =
+   $('rem_rep_minutes').disabled = 
+   ( $('rem_rep_count').value == 0 );
 }
 
 
