@@ -1,25 +1,22 @@
 <?php
 /* $Id$
-
- Page Description:
-  Serves as the home page for administrative functions.
- Input Parameters:
-  None
- Security:
-  Users will see different options available on this page.
+ *
+ * Page Description:
+ *   Serves as the home page for administrative functions.
+ *
+ * Security:
+ *   Users will see different options available on this page.
  */
 include_once 'includes/init.php';
 
-
-build_header ();
-$i=0;
-$names = array ();
+build_header();
+$i = 0;
+$names = array();
 if ( $WC->isNonuserAdmin() ) {
   if ( access_can_access_function ( ACCESS_PREFERENCES ) ) {
     $names[$i]['name'] = translate ( 'Preferences', P40 );
     $names[$i++]['link'] = 'pref.php?user=' . $user;
   }
-
 } else {
   if ( access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) ) {
     $names[$i]['name'] = translate ( 'System Settings', P40 );
@@ -31,15 +28,14 @@ if ( $WC->isNonuserAdmin() ) {
     $names[$i++]['link'] = 'pref.php';
   }
 
-  $names[$i]['name'] = ( $WC->isAdmin() 
-	  ? translate ( 'Users', P40 ) : translate ( 'Account', P40 ) );
+  $names[$i]['name'] =
+  translate ( ( $WC->isAdmin() ? 'Users' : 'Account' ), P40 );
   $names[$i++]['link'] = 'users.php';
 
   if ( access_can_access_function ( ACCESS_ACCESS_MANAGEMENT ) ) {
     $names[$i]['name'] = translate ( 'User Access Control', P40 );
     $names[$i++]['link'] = 'access.php';
   }
-
 
   if ( getPref ( '_ENABLE_CATEGORIES' ) ) {
     if ( access_can_access_function ( ACCESS_CATEGORY_MANAGEMENT ) ) {
@@ -59,7 +55,7 @@ if ( $WC->isNonuserAdmin() ) {
   }
 
   if ( getPref ( '_ENABLE_REPORTS', 2 ) &&
-    ( access_can_access_function ( ACCESS_REPORT ) ) ) {
+      ( access_can_access_function ( ACCESS_REPORT ) ) ) {
     $names[$i]['name'] = translate ( 'Reports', P40 );
     $links[$i++]['link'] = 'report.php';
   }
@@ -83,6 +79,7 @@ if ( $WC->isNonuserAdmin() ) {
 }
 $smarty->assign ( 'columns', 3 );
 $smarty->assign ( 'names', $names );
+
 $smarty->display ( 'adminhome.tpl' );
 
 ?>
