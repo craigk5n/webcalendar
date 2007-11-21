@@ -159,8 +159,8 @@ if ( empty ( $error ) ) {
 } //end $error test
 
 // Update the task percentage for this user.
-$canUpdatePercentage = ( empty ( $user ) && $readonly != 'Y' && $is_my_event &&
-      ( ! $WC->isNonUser ( ) && $event_status != 'D' );
+$canUpdatePercentage = ( empty ( $user ) && ! _WC_READONLY && $is_my_event &&
+      ! $WC->isNonUser ( ) && $event_status != 'D' );
 if ( ! empty ( $_POST ) && $canUpdatePercentage ) {
   $upercent = $WC->getPOST ( 'upercent' );
   if ( $upercent >= 0 && $upercent <= 100 ) {
