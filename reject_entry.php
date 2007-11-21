@@ -76,20 +76,20 @@ if ( empty ( $error ) && $eid > 0 ) {
 	  $WC->loginId());
     $htmlmail = getPref ( 'EMAIL_HTML', 1, $partlogin[$i] );
     $t_format = getPref ( 'TIME_FORMAT', 1, $partlogin[$i] );
-    $WC->User->loadVariables ( $partlogin[$i], 'temp' );
+    $temp = $WC->User->loadVariables ( $partlogin[$i] );
     $user_TIMEZONE = getPref ( 'TIMEZONE', 1, $partlogin[$i] );
     set_env ( 'TZ', $user_TIMEZONE);
     $user_language = getPref ( 'LANGUAGE', 1, $partlogin[$i] );
-    if ( $send_user_mail == 'Y' && strlen ( $tempemail ) &&
+    if ( $send_user_mail == 'Y' && strlen ( $temp['email'] ) &&
       getPref ( '_SEND_EMAIL', 2 ) && $can_mail == 'Y') {
       if ( empty ( $user_language ) || ( $user_language == 'none' )) {
         reset_language ( $default_language );
       } else {
         reset_language ( $user_language );
       }
-      $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
+      $msg = translate( 'Hello' ) . ', ' . $temp['fullname'] . ".\n\n" .
       translate( 'An appointment has been rejected by' ) .
-      ' ' . $login_fullname . ".\n\n" .
+      ' ' . $WC->getFullName () . ".\n\n" .
       translate( 'The subject was' ) . ' "' . $name . " \"\n" .
       translate( 'The description is' ) . ' "' . $description . "\"\n" .
       translate( 'Date' ) . ': ' . date_to_str ( $fmtdate ) . "\n" .
@@ -110,8 +110,8 @@ if ( empty ( $error ) && $eid > 0 ) {
       $from = getPref ('_EMAIL_FALLBACK_FROM' );
       if ( strlen ( $login_email ) ) $from = $login_email;
       //send via WebCalMailer class
-      $mail->WC_Send ( $login_fullname, $tempemail, 
-        $tempfullname, $name, $msg, $htmlmail, $from );
+      $mail->WC_Send ( $WC->getFullName (), $temp['email'], 
+        $temp['fullname'], $name, $msg, $htmlmail, $from );
       activity_log ( $eid, $WC->loginId(), $partlogin[$i], LOG_NOTIFICATION,
         "Rejected by $app_user" );
     }

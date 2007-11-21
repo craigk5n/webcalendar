@@ -474,7 +474,7 @@ function access_can_view_page ( $page = '', $user = '' ) {
 function get_default_function_access ( $page_id, $user ) {
   global $WC, $user_is_admin;
 
-  $WC->User->loadVariables ( $user, 'user_' );
+  $uservars = $WC->User->loadVariables ( $user );
 
   switch ( $page_id ) {
     case ACCESS_ACTIVITY_LOG:
@@ -482,7 +482,7 @@ function get_default_function_access ( $page_id, $user ) {
     case ACCESS_SYSTEM_SETTINGS:
     case ACCESS_USER_MANAGEMENT:
     case ACCESS_READONLY:
-      return ( ! empty ( $user_is_admin ) && $user_is_admin == 'Y' ? 'Y' : 'N' );
+      return ( $uservars['is_admin'] ? 'Y' : 'N' );
       break;
     default:
       return 'Y';

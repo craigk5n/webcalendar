@@ -88,7 +88,7 @@ if ( empty ( $error ) && addslashes ( $user_login ) != $user_login )
 
 // Check to see if username exists...
 if ( empty ( $error ) ) {
-  if ( $WC->User->loadVariables ( $user_login, 'old_' ) ) {
+  if ( $old = $WC->User->loadVariables ( $user_login ) ) {
     // username does already exist...
     if ( $add )
       $error = str_replace ( 'XXX', ws_escape_xml ( $user_login ),
@@ -106,7 +106,7 @@ if ( empty ( $error ) && $add && empty ( $user_password ) )
   $error = translate ( 'You have not entered a password' );
 
 if ( empty ( $error ) && ! $add && ! $delete && empty ( $user_password ) )
-  $user_password = $old_password;
+  $user_password = $old['password'];
 
 // admin must be 'Y' or 'N' for call to user_add_user ()
 $user_admin = ( empty ( $user_admin ) || $user_admin != '1' ? 'N' : 'Y' );

@@ -169,11 +169,6 @@ if ( ! getPref ( 'ENABLE_USER_PUBLISH_RW'  )) {
 $prodid = 'Unnamed iCal client';
 
 
-
-// Load user name, etc.
-$WC->User->loadVariables ( $WC->loginId(), 'publish_' );
-
-
 function dump_globals ()
 {
   foreach ( $GLOBALS as $K => $V ) {

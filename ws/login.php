@@ -56,7 +56,6 @@ else {
   if ( ! empty ( $login ) && ! empty ( $password ) ) {
     $login = trim ( $login );
     if ( user_valid_login ( $login, $password ) ) {
-      $WC->User->loadVariables ( $login, '' );
       // Set login to expire in 365 days.
       srand ( ( double ) microtime () * 1000000 );
       $salt = chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) )

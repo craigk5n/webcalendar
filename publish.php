@@ -91,9 +91,6 @@ if ( ! getPref ( 'ENABLE_USER_PUBLISH' ) ) {
   exit;
 }
 
-// Load user name, etc.
-$WC->User->loadVariables ( $user, 'publish_' );
-
 $calUser = $user;
 // header ( 'Content-Type: text/plain' );
 header ( 'Content-Type: text/calendar' );

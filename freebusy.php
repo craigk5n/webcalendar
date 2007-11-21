@@ -64,9 +64,6 @@ if ( empty ( $user ) ) {
 
 $WC->setLanguage();
 
-// Load user name, etc.
-$WC->User->loadVariables ( $user, 'publish_' );
-
 if ( ! getPref ( '_ENABLE_FREEBUSY' ) ) {
   header ( 'Content-Type: text/plain' );
   echo "user=$user\n";
@@ -117,8 +114,7 @@ header ( 'Content-Type: text/calendar' );
 header ( 'Content-Disposition: attachment; filename="' . 
   $WC->loginId() .  '.ifb"' );
 echo "BEGIN:VCALENDAR\r\n";
-  $title = "X-WR-CALNAME;VALUE=TEXT:" .
-  ( empty ( $publish_fullname ) ? $WC->getFullName() : translate($publish_fullname) );
+  $title = "X-WR-CALNAME;VALUE=TEXT:" . translate ( $WC->getFullName() );
 $title = str_replace ( ",", "\\,", $title );
 echo "$title\r\n";
 echo generate_prodid ();

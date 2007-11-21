@@ -89,10 +89,8 @@ if ( $WC->getPOST ( 'otheruser' ) != '' &&
 $guser = $WC->getPOST ( 'guser' );
 
 if ( $guser == UAC_DEFAULT ) {
-  $user_fullname = $defStr;
   $otheruser = UAC_DEFAULT;
 } elseif ( $guser == UAC_ASSISTANT ) {
-  $user_fullname = $asstStr;
   $otheruser = UAC_ASSISTANT;
 } else
   $otheruser = $WC->getPOST ( 'otheruser' );

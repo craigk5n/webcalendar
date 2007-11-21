@@ -56,10 +56,8 @@ function user_valid_login ( $login, $password ) {
         $ret = true;
         if ( $this->_allow_auto_create && preg_match ( "/\/login.php/", _WC_SCRIPT )) {
           //Test if user is in WebCalendar database
-          $prefix = "testuser";  
-          $WC->User->loadVariables ( $login, $prefix );
-          if ( empty ( $GLOBALS[$prefix . "login"] ) || 
-            $GLOBALS[$prefix . "login"] != $login ) {
+          $testuser = $WC->User->loadVariables ( $login );
+          if ( empty ( $testuser['login'] ) || $testuser['login'] != $login ) {
             $WC->User->addUser ( $login, $password, "" , "", "", "N" );
             //Redirect new users to enter user date
             $GLOBALS["newUserUrl"] = "edit_user.php";

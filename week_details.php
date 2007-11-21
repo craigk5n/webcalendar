@@ -78,7 +78,7 @@ if ( getPref ( 'DISPLAY_WEEKNUMBER' ) ) {
 ?>
 <span class="user"><?php
   if ( ! _WC_SINGLE_USER ) {
-    echo "<br />$user_fullname\n";
+    echo '<br />' . $WC->getFullName () ."\n";
   }
   if ( $WC->isNonuserAdmin() )
     echo '<br />-- ' . translate( 'Admin mode' ) . ' --';

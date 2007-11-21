@@ -574,7 +574,8 @@ if ( empty ( $error ) ) {
     $extra_arg2 = $site_extras[$i][4];
     if ( ! empty ( $site_extras[$i][5] ) )
       $extra_email = $site_extras[$i][5] & EXTRA_DISPLAY_EMAIL;
-    $value = $$extra_name;
+    if ( ! empty ( $$extra_name ) )
+		  $value = $$extra_name;
     //echo "Looking for $extra_name... value = " . $value . " ... type = " .
     // $extra_type . "<br />\n";
     
@@ -768,11 +769,11 @@ if ( empty ( $error ) ) {
         $user_TIMEZONE = getPref ( 'TIMEZONE', 1, $old_participant );
         set_env ( 'TZ', $user_TIMEZONE );
         $user_language = getPref ( 'LANGUAGE', 1, $old_participant );
-        $WC->User->loadVariables ( $old_participant, 'temp' );
+        $temp = $WC->User->loadVariables ( $old_participant );
         
         
         if ( ! $WC->isLogin( $old_participant ) && 
-		  ! empty ( $tempemail ) && $do_send == 'Y' && $send_email ) {     
+		  ! empty ( $temp['email'] ) && $do_send == 'Y' && $send_email ) {     
        
           if ( empty ( $user_language ) || ( $user_language == 'none' )) {
              reset_language ( $default_language );
@@ -780,9 +781,9 @@ if ( empty ( $error ) ) {
              reset_language ( $user_language );
           }
    
-          $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
+          $msg = translate( 'Hello' ) . ', ' . $temp['fullname'] . ".\n\n" .
             translate( 'An appointment has been canceled for you by' ) .
-            ' ' . $login_fullname .  ".\n" .
+            ' ' . $WC->getFullName () .  ".\n" .
             translate( 'The subject was' ) . ' "' . $name . "\"\n\n" .
             translate( 'The description is' ) . ' "' . $description . "\"\n" .
             translate( 'Date') . ': ' . date_to_str ( $eventstart ) . "\n" .
@@ -799,8 +800,8 @@ if ( empty ( $error ) ) {
             }
             $msg .= $url . "\n\n";
           }
-          $mail->WC_Send ( $login_fullname, $tempemail, 
-            $tempfullname, $name, $msg, $htmlmail, $from );      
+          $mail->WC_Send ( $WC->getFullName (), $temp['email'], 
+            $temp['fullname'], $name, $msg, $htmlmail, $from );      
           activity_log ( $eid, $WC->loginId(), $old_participant, 
 		    LOG_NOTIFICATION, 'User removed from participants list' );
         }
@@ -869,9 +870,9 @@ if ( empty ( $error ) ) {
         $user_TIMEZONE = getPref ( 'TIMEZONE', 1, $participants[$i] );
         set_env ( 'TZ', $user_TIMEZONE );
         $user_language = getPref ( 'LANGUAGE', 1, $participants[$i] );
-        $WC->User->loadVariables ( $participants[$i], 'temp' );
+        $temp = $WC->User->loadVariables ( $participants[$i] );
         if ( boss_must_be_notified ( $WC->loginId(), $participants[$i] ) && 
-          ! empty ( $tempemail ) &&
+          ! empty ( $temp['email'] ) &&
           $do_send == 'Y' && $send_user_mail && $send_email ) {
           // We send to creator if they want it
           if ( $send_own != 'Y' && ( $WC->login( $participants[$i] ) ) )
@@ -882,13 +883,13 @@ if ( empty ( $error ) ) {
              reset_language ( $user_language );
           }
  
-          $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n";
+          $msg = translate( 'Hello' ) . ', ' . $temp['fullname'] . ".\n\n";
           if ( $newevent || ( empty ( $old_status[$participants[$i]] ) ) ) {
             $msg .= translate( 'A new appointment has been made for you by' );
           } else {
             $msg .= translate( 'An appointment has been updated by' );
           }
-          $msg .= ' ' . $login_fullname .  ".\n" .
+          $msg .= ' ' . $WC->getFullName () .  ".\n" .
             translate( 'The subject is' ) . ' "' . $name . "\"\n\n" .
             translate( 'The description is' ) . ' "' . $description . "\"\n" .
             translate( 'Date' ) . ': ' . date_to_str ( $eventstart ) . "\n" .
@@ -912,8 +913,8 @@ if ( empty ( $error ) ) {
             $msg .= "\n\n" . $url;
           }
           //use WebCalMailer class
-          $mail->WC_Send ( $login_fullname, $tempemail, 
-            $tempfullname, $name, $msg, $htmlmail, $from );          
+          $mail->WC_Send ( $WC->getFullName (), $temp['email'], 
+            $temp['fullname'], $name, $msg, $htmlmail, $from );          
           activity_log ( $eid, $WC->loginId(), 
 		    $participants[$i], LOG_NOTIFICATION, '' );
         }
@@ -1000,7 +1001,7 @@ if ( !_WC_SINGLE_USER && getPref ( '_ALLOW_EXTERNAL_USERS' ) &&
             } else {
               $msg .= translate( 'An appointment has been updated by' );
             }
-            $msg .= ' ' . $login_fullname .  ".\n" .
+            $msg .= ' ' . $WC->getFullName () .  ".\n" .
               translate( 'The subject is' ) . ' "' . $name . "\"\n\n" .
               translate( 'The description is' ) . ' "' . $description . "\"\n\n" .
               translate( 'Date') . ': ' . date_to_str ( $eventstart ) . "\n";
@@ -1017,7 +1018,7 @@ if ( !_WC_SINGLE_USER && getPref ( '_ALLOW_EXTERNAL_USERS' ) &&
               // Add Site Extra Date if permitted
               $msg .= $extra_email_data;         
             //don't send HTML to external adresses  
-            $mail->WC_Send ( $login_fullname, $ext_emails[$i], 
+            $mail->WC_Send ( $WC->getFullName (), $ext_emails[$i], 
               $ext_names[$i], $name, $msg, 'N', $from, $eid );       
           }
         } 

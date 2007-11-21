@@ -227,9 +227,8 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
       subtracting ONE_WEEK to allow cross-day events to display*/
   $events = read_events ( $viewusers[$i], $wkstart - ONE_WEEK, $wkend );
   $e_save[$i] = $events;
-  $WC->User->loadVariables ( $viewusers[$i], 'temp' );
   $uheader .= "<th class=\"small\" width=\"$uwf\" style=\"width:$uwf;\">" .
-    $tempfullname . "</th>\n";
+    $WC->getFullName ( $viewusers[$i] ) . "</th>\n";
   //echo "$viewusers[$i]: loaded " . count ( $events ) . " events<br />\n";
 }
 $num_users = $viewusercnt;

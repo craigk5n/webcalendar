@@ -160,19 +160,19 @@ if ( $eid > 0 && empty ( $error ) ) {
         set_env ( 'TZ', $user_TIMEZONE );
         $default_language = getPref ( 'LANGUAGE', 2 );
         $user_language = getPref ( 'LANGUAGE', 1, $partlogin[$i] );
-        $WC->User->loadVariables ( $partlogin[$i], 'temp' );         
+        $temp = $WC->User->loadVariables ( $partlogin[$i] );         
         if ( ! $WC->isNonuserAdmin() && ! $WC->isLogin( $partlogin[$i] ) 
 		  && $do_send == 'Y' &&
           boss_must_be_notified ( $WC->loginId(), $partlogin[$i] ) && 
-          ! empty ( $tempemail ) && getPref ( '_SEND_EMAIL', 2 ) ) {
+          ! empty ( $temp['email'] ) && getPref ( '_SEND_EMAIL', 2 ) ) {
             if ( empty ( $user_language ) || ( $user_language == 'none' )) {
                reset_language ( $default_language );
             } else {
                reset_language ( $user_language );
             }
-          $msg = translate( 'Hello' ) . ', ' . $tempfullname . ".\n\n" .
+          $msg = translate( 'Hello' ) . ', ' . $temp['fullname'] . ".\n\n" .
             translate( 'An appointment has been canceled for you by' ) .
-            ' ' . $login_fullname .  ".\n" .
+            ' ' . $WC->getFullName () .  ".\n" .
             translate( 'The subject was' ) . ' "' . $name . "\"\n" .
             translate( 'Date' ) . ': ' . date_to_str ($thisdate) . "\n";
             if ( ! empty ( $eventtime ) && $eventtime != '-1' ) 
@@ -181,8 +181,8 @@ if ( $eid > 0 && empty ( $error ) ) {
              display_time ( $eventstart, 2, $t_format );
             $msg .= "\n\n";
             //use WebCalMailer class
-            $mail->WC_Send ( $login_fullname, $tempemail, 
-              $tempfullname, $name, $msg, $htmlmail, $login_email );
+            $mail->WC_Send ( $WC->getFullName (), $temp['email'], 
+              $temp['fullname'], $name, $msg, $htmlmail, $login_email );
         }
       }
     }

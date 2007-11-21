@@ -81,19 +81,19 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   $send_user_mail = access_user_calendar ( 'email', $creator, $WC->loginId() );
 
   $htmlmail = getPref ( 'EMAIL_HTML', 1, $creator );
-  $WC->User->loadVariables ( $creator, 'temp' );
+  $temp = $WC->User->loadVariables ( $creator );
   $user_TIMEZONE = getPref ( 'TIMEZONE', 1, $creator );
   set_env ( 'TZ', $user_TIMEZONE );
   $default_language = getPref ( 'LANGUAGE', 2 );
   $user_language = getPref ( 'LANGUAGE', 1, $creator );
-  if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && getPref ( '_SEND_EMAIL', 2 ) ) {
+  if ( $send_user_mail == 'Y' && strlen ( $temp['email'] ) && getPref ( '_SEND_EMAIL', 2 ) ) {
     reset_language ( empty ( $user_language ) || ( $user_language == 'Browser-defined' )
       ? $default_language : $user_language );
 
     // translate ( 'Hello' )
-    $msg = str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) )
+    $msg = str_replace ( 'XXX', $temp['fullname'], translate ( 'Hello, XXX.' ) )
     // translate ( 'An appointment has been approved and comments added by' )
-    . "\n\n" . str_replace ( 'XXX', $login_fullname,
+    . "\n\n" . str_replace ( 'XXX', $WC->getFullName (),
       translate ( 'XXX has approved appointment and added comments' ) ) . "\n\n"
     // translate ( 'The subject was' )
     . str_replace ( 'XXX', $name, translate ( 'Subject XXX' ) ) . "\n"
@@ -125,8 +125,8 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
     $from = ( strlen ( $login_email ) ? $login_email : 
 	  getPref ('_EMAIL_FALLBACK_FROM' ) );
     // Send mail.
-    $mail->WC_Send ( $login_fullname, $tempemail,
-      $tempfullname, $name, $msg, $htmlmail, $from );
+    $mail->WC_Send ( $WC->getFullName (), $temp['email'],
+      $temp['fullname'], $name, $msg, $htmlmail, $from );
     activity_log ( $eid, $WC->loginId(), $creator, LOG_NOTIFICATION,
       str_replace ( 'XXX', $app_user,
         translate ( 'Approved w/Comments by XXX.' ) ) );

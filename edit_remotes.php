@@ -37,7 +37,7 @@ $smarty->assign ( 'add', $WC->getValue ( 'add' ) );
 
 
 if ( ! empty ( $nid ) ) {
-  $nidData = $WC->User->loadVariables ( $nid );
+  $nidData = $WC->User->loadVariables ( $nid, false );
 	$smarty->assign ( 'rmt_login', $nidData['login'] );
 	 $smarty->assign ( 'rmt_name', htmlspecialchars ( $nidData['fullname'] ) );
 	 $smarty->assign ( 'rmt_url', htmlspecialchars ( $nidData['url'] ) );
