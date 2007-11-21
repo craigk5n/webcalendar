@@ -4,15 +4,14 @@ include_once 'includes/init.php';
 
 function save_pref( $prefs, $src) {
   global $my_theme, $prefuser;
-	//We now use checkboxes instead of radis controls. If not checked, still
-  //need store 'N' in the database. We loop through $webcalConfig and look
-  //for Y/N settings and if missing from $prefs, we insert a 'N' value
+	//We now use checkboxes instead of radio controls.
+  // We loop through $sysConfig and look for Y/N settings 
+	//and if set to 'N', delete it from prefs array
   if ( $src == 'post' ) {
-	  include_once 'install/default_config.php';
-    while ( list ( $key, $value ) = each ( $webcalConfig ) ) {
-      if ( ( $value == 'Y' || $value == 'N' ) && substr ( $key,0,1 ) == '_' )  {
-        if ( empty ( $prefs['pref_' . $key] ) )
-          $prefs['pref_' . $key] = 'N';
+	  $sysConfig = loadConfig ();
+    while ( list ( $key, $value ) = each ( $sysConfig ) ) {
+      if ( $value == 'N' && substr ( $key,0,1 ) == '_' )  {
+          unset ( $prefs['pref_' . $key] );
       }
     }
   }
@@ -135,16 +134,8 @@ if ( getPref ( '_ALLOW_COLOR_CUSTOMIZATION' ) ) {
  $smarty->assign ( '_ALLOW_COLOR_CUSTOMIZATION', true );
 }
 
-if ( getPref ( '_ENABLE_RSS' ) ) 
- $smarty->assign ( 'rss_enabled', true );
-
-if ( getPref ( '_ENABLE_PUBLISH' ) ) 
- $smarty->assign ( 'publish_enabled', true );
-
-
 $smarty->assign ( 'tabs_ar', $tabs_ar );
 		
-
 $smarty->assign ( 'choices', array ( 'day.php'=>translate ( 'Day' ),
   'week.php'=>translate ( 'Week' ),
   'month.php'=>translate ( 'Month' ),

@@ -493,13 +493,17 @@
  </td></tr>
 <!-- BEGIN PUBLISHING -->
 
-<tr><td class="tooltip" title="__subscriptions-enabled-help@T__">
- __Allow remote subscriptions__:</td><td>
+<tr><td class="tooltip" title="__icalclient-enabled-help@T__">
+ __Enable ical client__:</td><td>
+ {print_checkbox name='_ENABLE_ICALCLIENT'}
+</td></tr>
+<tr><td class="tooltip" title="__publish-enabled-help@T__">
+ __Enable publish__:</td><td>
  {print_checkbox name='_ENABLE_PUBLISH'}
 </td></tr>
 {if $allow_url_fopen}
 <tr><td class="tooltip" title="__remotes-enabled-help@T__">
- __Allow remote calendars__:</td><td>
+ __Enable remote calendars__:</td><td>
  {print_checkbox name='_ENABLE_REMOTES'}
 </td></tr>
 {/if}

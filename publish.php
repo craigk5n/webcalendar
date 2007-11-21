@@ -19,9 +19,8 @@
  * or /xxx/publish.php?user=username
  *
  * Security:
- * DO NOT ALLOW if either;
- * _ENABLE_PUBLISH is not 'Y' (set in Admin System Settings).
- * ENABLE_USER_PUBLISH is not 'Y' (set in each user's Preferences).
+ * _ENABLE_PUBLISH == 'Y' (set in Admin System Settings).
+ * _ENABLE_PUBLISH == 'Y' (set in each user's Preferences).
  */
 
 require_once 'includes/classes/WebCalendar.class.php';

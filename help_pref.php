@@ -86,8 +86,8 @@ if ( getPref ( '_ENABLE_PUBLISH' ) ) {
     translate ( 'Allow remote publishing' ) =>
     translate ( 'allow-remote-publishing-help' ),
     translate ( 'URL' ) => translate ( 'remote-publishing-url-help' ),
-    translate ( 'Allow remote subscriptions' ) =>
-    translate ( 'allow-remote-subscriptions-help' ),
+    translate ( 'Enable publish' ) =>
+    translate ( 'publish-enabled-help' ),
     translate ( 'URL' ) => translate ( 'remote-subscriptions-url-help' ),
     translate ( 'Enable FreeBusy publishing' ) =>
     translate ( 'freebusy-enabled-help' ),

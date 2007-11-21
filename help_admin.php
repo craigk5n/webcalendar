@@ -120,8 +120,8 @@ echo '
 $tmp_arr = array (
   translate ( 'Allow external users' ) =>
   translate ( 'allow-external-users-help' ),
-  translate ( 'Allow remote subscriptions' ) =>
-  translate ( 'subscriptions-enabled-help' ),
+  translate ( 'Enable publish' ) =>
+  translate ( 'publish-enabled-help' ),
   translate ( 'Categories enabled' ) => translate ( 'categories-enabled-help' ),
   translate ( 'External users can receive email notifications' ) =>
   translate ( 'external-can-receive-notification-help' ),

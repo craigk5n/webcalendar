@@ -1822,7 +1822,6 @@ function getPref ( $setting, $control=1, $user='', $defVal='' ) {
   static $sysConfig, $userPref;
   
   $ret = $defVal;
-  
   //clear static variables to avoid returning bools if literals req.
   if ( $control & 4 ) {
     unset ( $sysConfig );
@@ -1839,9 +1838,12 @@ function getPref ( $setting, $control=1, $user='', $defVal='' ) {
      
   if ( $control%4 > 0 && isset ( $sysConfig[$setting] ) )
     $ret = $sysConfig[$setting];
-    
+
+  //If Admin has set a '_SETTING' to 'N', don't return pref setting
+  $adminDef = ( substr ( $setting, 0 ,1 ) == '_' && $ret == 'N' ? true : false );
+	    
   //get a user's preference if not requesting system only
-  if ( $user && ! $WC->isLogin( $user )  && $control < 2 ) {
+  if ( ! $adminDef && $user && ! $WC->isLogin( $user )  && $control < 2 ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_user_pref
       WHERE cal_login_id = ? AND cal_setting = ?', array ( $user, $setting ) );
     if ( $rows ) {
@@ -1849,7 +1851,7 @@ function getPref ( $setting, $control=1, $user='', $defVal='' ) {
       if ( $row && isset ( $row[0] ) )
         $ret = $row[0];
     }
-  } else if ( $control%4 < 2 ){ //we'll get the value from the userPref array
+  } else if ( ! $adminDef && $control%4 < 2 ){ //we'll get the value from the userPref array
     if ( isset ( $userPref[$setting] ) ) {
       $ret = $userPref[$setting];
     }
