@@ -22,7 +22,7 @@
  * @return string  HTML to display matrix.
  */
 function smarty_function_daily_matrix ( $params, &$smarty ) {
-  global $WC, $events, $repeated_events, $user_fullname;
+  global $WC, $events, $repeated_events;
 @set_time_limit(10);
   $date = $params['date'];
   $participants = $params['participants'];

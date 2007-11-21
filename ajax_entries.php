@@ -291,8 +291,7 @@ function print_ajax_entries ( $date, $user, &$events, &$tasks, &$WC ) {
  */
 function build_prototip ( $user, $description = '', $time,
   $site_extras = '', $location = '', $name = '', $eid = '', $reminder = '' ) {
-  global $WC, $popup_fullnames, $popuptemp_fullname,
-  $tempfullname;
+  global $WC;
 
   if ( ! getPref ( 'ENABLE_POPUPS' ) )
     return;
@@ -321,8 +320,7 @@ function build_prototip ( $user, $description = '', $time,
       }
     }
     for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
-      $WC->User->loadVariables ( $participants[$i][0], 'temp' );
-      $partList[] = $tempfullname . ' '
+      $partList[] = $WC->getFullName ( $participants[$i][0] ) . ' '
        . ( $participants[$i][1] == 'W' ? '(?)' : '' );
     }
     $rows = dbi_get_cached_rows ( 'SELECT cal_fullname FROM webcal_entry_ext_user
@@ -338,8 +336,7 @@ function build_prototip ( $user, $description = '', $time,
 
   if ( ! $WC->isLogin( $user ) ) {
     if ( empty ( $popup_fullnames[$user] ) ) {
-      $WC->User->loadVariables ( $user, 'popuptemp_' );
-      $popup_fullnames[$user] = $popuptemp_fullname;
+      $popup_fullnames[$user] = $WC->getFullName ( $user);
     }
     $ret .= ',"puser":"' . $popup_fullnames[$user] . '"';
   }

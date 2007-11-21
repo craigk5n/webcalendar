@@ -120,8 +120,8 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     $repeated_events = $re_save[$i];
     $body .= "\n<tr>\n";
     $user = $viewusers[$i];
-    $WC->User->loadVariables ( $user, 'temp' );
-    $body .= "<th class=\"row\" style=\"width:$tdw%;\">$tempfullname</th>\n";
+    $body .= "<th class=\"row\" style=\"width:$tdw%;\">" 
+		  . $WC->getFullName ( $user )  ."</th>\n";
     for ( $date = $wkstart; $date < $wkend; $date += ONE_DAY ) {
       $is_weekend = is_weekend ( $date );
       if ( $is_weekend && ! $display_weekends ) continue; 

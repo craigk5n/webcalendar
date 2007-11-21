@@ -826,7 +826,7 @@ function export_vcal ( $eid ) {
 } //end function
 
 function export_ical ( $eid = 'all', $attachment = false ) {
-  global $publish_fullname, $WC, $cal_type, $calUser, 
+  global $WC, $cal_type, $calUser, 
     $cat_filter, $insert_vtimezone, $errorStr;
 
   $exportId = -1;
@@ -844,6 +844,7 @@ function export_ical ( $eid = 'all', $attachment = false ) {
     $errorStr = translate ( 'No Events Found', true );
     return;
   }
+  $publish_fullname = $WC->getFullName ( );
   // Always output something, even if no records come back
   // This prevents errors on the iCal client
   $ret = "BEGIN:VCALENDAR\r\n";

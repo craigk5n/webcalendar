@@ -202,7 +202,7 @@ class WebCalendar {
     global $smarty, $ovrd, $DMW,
       $can_add, $can_add,
       $valid_user, $userlist,
-      $nonusers, $u_url, $user_fullname, $fullname,
+      $nonusers, $u_url,
       $caturl, $CATEGORY_VIEW;
 
     loadConfig ();
@@ -321,7 +321,6 @@ class WebCalendar {
         //$this->User->loadVariables ( $this->_userId, 'user_' );
       } else {
         $u_url = '';
-        $user_fullname = $fullname;
       }
       
       remember_this_view();
@@ -1213,7 +1212,7 @@ function setToday ( $date='' ) {
     return $this->_isNonuserAdmin;
   $nonuser_id = ( ! empty ( $nonuser_id ) ? $nonuser_id : $this->_userId );
   $login_id = ( ! empty ( $login_id ) ? $login_id : $this->_loginId );
-  if ( $user_id ) { 
+  if ( $nonuser_id ) { 
     $rows = dbi_get_cached_rows ( 'SELECT cal_admin FROM webcal_user
       WHERE cal_login_id = ? AND cal_admin = ?', 
       array ( $nonuser_id, $login_id ) );

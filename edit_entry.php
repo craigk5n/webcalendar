@@ -358,11 +358,10 @@ if ( $WC->userId() ) {
   set_env ( 'TZ', $user_TIMEZONE );
   $user_tz_offset = date ( 'Z', date_to_epoch ( $cal_date . $cal_time ) );
   if ( $tz_offset != $user_tz_offset ) {  //Different TZ_Offset
-    $WC->User->loadVariables ( $user, 'temp' );
     $tz_diff = ( $user_tz_offset - $tz_offset ) / ONE_HOUR;
     $tz_value = ( $tz_diff > 0? translate ( 'hours ahead of you' ) :
       translate ( 'hours behind you' ) );
-    $TZ_notice = '(' . $tempfullname . ' ' . 
+    $TZ_notice = '(' . $$WC->getFUllName ( $user ) . ' ' . 
       translate ( 'is in a different timezone than you are. Currently' ) . ' ';
       //TODO show hh:mm instead of abs 
     $TZ_notice .= abs ( $tz_diff ) . ' ' . $tz_value . '.<br />&nbsp;'; 

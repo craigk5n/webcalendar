@@ -119,8 +119,7 @@ else
   etranslate( 'Edit Custom Trailer' );
 
 if ( $user != WC__SYSTEM__ ) {
-  $WC->User->loadVariables ( $user, 'temp_' );
-  echo '<br />[' . $WC->User->_uservar['temp_'][$user]['fullname'] . ']';
+  echo '<br />[' . $WC->getFullName ( $user ) . ']';
 } else {
  echo '<br />[' . translate ( 'Site Wide Setting' ) . ']';
 }

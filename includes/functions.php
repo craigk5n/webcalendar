@@ -269,8 +269,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
             <li>';
 
           if ( ! _WC_SINGLE_USER ) {
-            $WC->User->loadVariables ( $row[0], 'conflict_' );
-            $conflicts .= $GLOBALS['conflict_fullname'] . ': ';
+            $conflicts .= $WC->getFullName ( $row[0] ) . ': ';
           }
           $conflicts .= ( $row[5] == 'C' && $row[0] != $login && !
             $WC->isNonuserAdmin()
@@ -325,8 +324,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
             $conflicts .= '
             <li>';
             if ( ! _WC_SINGLE_USER ) {
-              $WC->User->loadVariables ( $row->getLoginId (), 'conflict_' );
-              $conflicts .= $GLOBALS['conflict_fullname'] . ': ';
+              $conflicts .= $WC->getFullName ( $row->getLoginId () )  . ': ';
             }
             $conflicts .= ( $row->getAccess () == 'C' && 
               ! $WC->isLogin( $row->getLoginId () ) && !
@@ -3881,10 +3879,9 @@ function user_get_boss_list ( $assistant ) {
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
-      $bossData = $WC->User->loadVariables ( $row[0], 'boss_' );
       $ret[$count++] = array (
         'cal_login_id' => $row[0],
-        'cal_fullname' => $bossData['fullname']
+        'cal_fullname' => $WC->getFullName ( $row[0] )
         );
     }
   }
@@ -3977,8 +3974,7 @@ function build_entry_label ( $event, $popupid,
  */
 function build_entry_popup ( $popupid, $user, $description = '', $time,
   $site_extras = '', $location = '', $name = '', $eid = '', $reminder = '' ) {
-  global $WC, $popup_fullnames, $popuptemp_fullname,
-  $tempfullname;
+  global $WC;
 
   if ( ! getPref ( 'ENABLE_POPUPS' ) )
     return;
@@ -4008,8 +4004,7 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
       }
     }
     for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
-      $WC->User->loadVariables ( $participants[$i][0], 'temp' );
-      $partList[] = $tempfullname . ' '
+      $partList[] = $WC->getFullName ( $participants[$i][0] ) . ' '
        . ( $participants[$i][1] == 'W' ? '(?)' : '' );
     }
     $rows = dbi_get_cached_rows ( 'SELECT cal_fullname FROM webcal_entry_ext_user
@@ -4025,8 +4020,7 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
 
   if ( ! $WC->isLogin( $user ) ) {
     if ( empty ( $popup_fullnames[$user] ) ) {
-      $WC->User->loadVariables ( $user, 'popuptemp_' );
-      $popup_fullnames[$user] = $popuptemp_fullname;
+      $popup_fullnames[$user] = $WC->getFullName ( $user );
     }
     $ret .= '<dt>' . translate ( 'User' )
      . ":</dt><dd>$popup_fullnames[$user]</dd>";

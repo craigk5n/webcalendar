@@ -108,11 +108,10 @@ function process_event ( $eid, $name, $event_date, $event_time ) {
 
 // Get the list of unapproved events for the specified user.
 function get_unapproved ( $user ) {
-  global $key, $login, $temp_fullname;
+  global $key, $login;
 
   $count = 0;
   $ret = '';
-  $WC->User->loadVariables ( $user, 'temp_' );
   // echo 'Listing events for ' . $user . '<br />';
 
   $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, we.cal_time
