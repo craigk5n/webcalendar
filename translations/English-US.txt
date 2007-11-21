@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-20-2007
+# Translation last updated on 11-21-2007
 
 
 ################################################################################
@@ -282,10 +282,12 @@ display-tasks-help: Display small task window on month and day calendar
 Display small task list: Display small task list
 display-tasks-in-grid-help: Display tasks in calendars along with events
 Display tasks in Calendars: Display tasks in Calendars
-subscriptions-enabled-help: Specifies if remote users can subscribe to a WebCalendar user&#39;s calendar, allowing them to see the WebCalendar user&#39;s events in their iCal-enabled application (such as Apple&#39;s iCal or Mozilla Calendar).
-Allow remote subscriptions: Allow remote subscriptions
+icalclient-enabled-help: Allows users to publish and subscribe (read/write) from an external client
+Enable ical client: Enable ical client
+publish-enabled-help: Allows users to subscribe (read) from an external client
+Enable publish: Enable publish
 remotes-enabled-help: Allows users to load remote ics files using URL
-Allow remote calendars: Allow remote calendars
+Enable remote calendars: Enable remote calendars
 rss-enabled-help: Specifies if a user&#39;s calendar can be obtained from a RSS feed.
 Enable RSS feed: Enable RSS feed
 user-override-help: If enabled, allow user=nn URL parameter to be specified for special scripts.
@@ -728,11 +730,8 @@ Display if created by Assistant: Display if created by Assistant
 allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries
 Allow remote viewing of: Allow remote viewing of
 entries: entries
-allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple&#39;s iCal or Mozilla Calendar).
-remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
-allow-remote-publishing-help: Specifies if a remote iCal client can publish events back to WebCalendar
-Allow remote publishing: Allow remote publishing
-remote-publishing-url-help: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
+publish-url-help: The URL to access publish.php
+icalclient-url-help: The URL to access icalclient.php
 rss-feed-url-help: The URL to access the RSS feed
 freebusy-enabled-help: Specifies if a user&#39;s available time can be obtained using the iCal FreeBusy standard.
 Enable FreeBusy publishing: Enable FreeBusy publishing
@@ -1175,6 +1174,10 @@ When I am the boss: When I am the boss
 email-boss-notifications-help: Specifies if bosses receive emails as event notifications.
 boss-approve-event-help: Specifies whether the boss will be required to approve events added by assistants.
 Subscribe/Publish: Subscribe/Publish
+Allow remote publishing: Allow remote publishing
+allow-remote-publishing-help: Specifies if a remote iCal client can publish events back to WebCalendar
+remote-publishing-url-help: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
+remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
 
 ########################################
 # Page: help_uac.php
@@ -1187,8 +1190,7 @@ If enabled, this user cannot view the details of any of your entries.: If enable
 ########################################
 # Page: icalclient.php
 #
-Publishing Disabled (Admin): Publishing Disabled (Admin)
-Publishing Disabled (User): Publishing Disabled (User)
+IcalClient Disabled: IcalClient Disabled
 
 ########################################
 # Page: icons.php

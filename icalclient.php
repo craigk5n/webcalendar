@@ -44,10 +44,10 @@
  * None
  *
  * Security:
- * If _ENABLE_PUBLISH is not 'Y' (set in Admin System Settings),
+ * If _ENABLE_ICALCLIENT is not 'Y' (set in Admin System Settings),
  *   do not allow.
- * If ENABLE_USER_PUBLISH_RW is not 'Y' (set in each user's
- *   Preferences), do not allow.
+ * If _ENABLE_ICALCLIENT is not 'Y' (set in each user's
+ *   Preferences), do not allow 
  *
  * Change List:
  * 06-Jan-2005 Ray Jones
@@ -150,23 +150,18 @@ $WC->initializeSecondPhase();
  
 $WC->setLanguage();
 
-if ( ! getPref ( '_ENABLE_PUBLISH' ) ) {
+if ( ! getPref ( '_ENABLE_ICALCLIENT', 2 ) ) {
   header ( 'Content-Type: text/plain' );
-  // Mozilla Calendar does not bother showing errors, so they won't
-  // see this error message anyhow....  Not sure about Apple iCal or
-  // other clients.
-  etranslate ( 'Publishing Disabled (Admin)' );
+  echo translate ( 'IcalClient Disabled' ) . translate ( 'System Settings' ) ;
   exit;
 }
-//echo $prefarray['ENABLE_USER_PUBLISH_RW'];
-if ( ! getPref ( 'ENABLE_USER_PUBLISH_RW'  )) {
+if ( ! getPref ( '_ENABLE_ICALCLIENT', 0, $WC->loginId() ) ) {
   header ( 'Content-Type: text/plain' );
-  etranslate ( 'Publishing Disabled (User)' );
+  echo translate ( 'IcalClient Disabled' ) . translate ( 'User' );
   exit;
 }
 
-
-$prodid = 'Unnamed iCal client';
+$prodid = 'WebCalendar iCal client';
 
 
 function dump_globals ()

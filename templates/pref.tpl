@@ -358,12 +358,12 @@ __Allow remote viewing of__:</td><td>
 {#selected#}{/if}>__All__ __entries__</option>  
   </select>  
   </td></tr>
-  {if $publish_enabled}
-<tr><td class="tooltipselect" title="__allow-remote-subscriptions-help@T__">__Allow remote subscriptions__:</td><td>
-  {print_checkbox name='ENABLE_USER_PUBLISH'}
+  {if $s._ENABLE_PUBLISH}
+<tr><td class="tooltipselect" title="__publish-enabled-help@T__">__Enable publish__:</td><td>
+  {print_checkbox name='_ENABLE_PUBLISH'}
 </td></tr>
    {if $server_url}
-<tr><td class="tooltipselect" title="__remote-subscriptions-url-help@T__">__URL@L4__:</td>
+<tr><td class="tooltipselect" title="__publish-url-help@T__">__URL@L4__:</td>
   <td>
     {$server_url|htmlspecialchars}publish.php/{$user}.ics
     <br />
@@ -371,12 +371,12 @@ __Allow remote viewing of__:</td><td>
 </td></tr>
     {/if}
 
-<tr><td class="tooltipselect" title="__allow-remote-publishing-help@T__">__Allow remote publishing__:</td>
+<tr><td class="tooltipselect" title="__icalclient-enabled-help@T__">__Enable ical client__:</td>
   <td>
-  {print_checkbox name='ENABLE_USER_PUBLISH_RW'}
+  {print_checkbox name='_ENABLE_ICALCLIENT'}
 </td></tr>
    {if $server_url}
-<tr><td class="tooltipselect" title="__remote-publishing-url-help@T__">__URL@L4__:</td>
+<tr><td class="tooltipselect" title="__icalclient-url-help@T__">__URL@L4__:</td>
   <td>
     {$server_url|htmlspecialchars}icalclient.php
 </td></tr>
@@ -384,10 +384,10 @@ __Allow remote viewing of__:</td><td>
 
   {/if}
 
-  {if $rss_enabled}
+  {if $s._ENABLE_RSS}
 <tr><td class="tooltipselect" title="__rss-enabled-help@T__">__Enable RSS feed__:</td>
   <td>
-  {print_checkbox name='ENABLE_USER_RSS'}
+  {print_checkbox name='_ENABLE_RSS'}
 </td></tr>
     {if $server_url}
 <tr><td class="tooltipselect" title="__rss-feed-url-help@T__">__URL@L4__:</td>
