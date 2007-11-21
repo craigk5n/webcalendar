@@ -109,13 +109,7 @@ $numDays = 30;
 $maxEvents = 10;
 
 // Login of calendar user to use
-// '__public__' is the login name for the public user
-//TODO Fix this for NUCs
-$userID = '__public__';
-
-// Allow the URL to override the user setting such as
-// "rss.php?user=craig"
-$_ALLOW_USER_OVERRIDE = true;
+$userID = getPref ( '_DEFAULT_RSS_USER' );
 
 // Load layers
 $load_layers = false;
@@ -135,16 +129,14 @@ $show_daily_events_only_once = false;
 
 // End configurable settings...
 
-if ( $_ALLOW_USER_OVERRIDE ) {
+if ( get_Pref ( '_ALLOW_USER_OVERRIDE', 2 ) ) {
   $u = $WC->getValue ( 'user', "[0-9]+", true );
   if ( ! empty ( $u ) ) {
     $userID = $u;
-	//TODO
-    $WC->_login = $u;
     // We also set $login since some functions assume that it is set.
   }
 }
-
+$WC->_login = $userID;
 
 // Determine what remote access has been set up by user
 if ( ! empty ( $USER_REMOTE_ACCESS ) ) {

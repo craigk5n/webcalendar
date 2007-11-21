@@ -1,5 +1,6 @@
 $Id$
 Version 2.0+CVS (?? ??? 2007)
+ - Implemented DEFAULT_XXX_USER options for rss, minical,upcoming and publish
  - Implemented RFE [ 574173 ] Allow password expiration
  - Implemented RFE [ 1393620 ] Plain Password Option
  - Implemented RFE [ 1827093 ] Use Checkboxes in Preferences

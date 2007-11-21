@@ -45,18 +45,12 @@ if ( ! getPref ( '_ENABLE_PUBLISH' ) ) {
 // able to set this to the desired frame or window to receive the results.
 $MINI_TARGET = '_blank';
 
-// Allow the URL to override the user setting such as
-// "minical.php?user=_NUC_training".
-// If false, __public_ will always be used.
-$_ALLOW_USER_OVERRIDE = false;
-
 // End configurable settings...
 
 // Set for use elsewhere as a global.
-//TODO
-$login = $user;
+$user = getPref ( '_DEFAULT_MINICAL_USER' );;
 
-if ( $_ALLOW_USER_OVERRIDE ) {
+if ( get_Pref ( '_ALLOW_USER_OVERRIDE', 2 ) ) {
   $u = $WC->getValue ( 'user', '[A-Za-z0-9_\.=@,\-]+', true );
   if ( ! empty ( $u ) )
     //TODO

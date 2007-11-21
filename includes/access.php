@@ -498,9 +498,9 @@ function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
 
   if ( empty ( $cur_user ) && $WC->loginId() )
     $cur_user = $WC->loginId();
-  //TODO FIx this
+
   if ( $cur_user == $other_user ) {
-    if ( $WC->isLogin( '__public__' ) && $cal_can_xxx == 'approve' )
+    if ( $WC->isNonUser() && $cal_can_xxx == 'approve' )
       return 'N';
     if ( $cal_can_xxx == 'assistant' )
       return false;
