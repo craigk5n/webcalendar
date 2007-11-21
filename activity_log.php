@@ -7,8 +7,8 @@
  *
  * Input Parameters:
  *  startid - specified the id of the first log entry to display
- *  system - if specified, then view the system log (entries with no
- *           event id associated with them) rather than the event log.
+ *  system  - if specified, then view the system log (entries with no
+ *            event id associated with them) rather than the event log.
  *
  * Security:
  *  User must be an admin user
@@ -18,18 +18,16 @@
  */
 include_once 'includes/init.php';
 
-
-if ( ! access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) {
-  die_miserable_death ( print_not_auth () );
-}else {
-  $PAGE_SIZE = 25; // number of entries to show at once
+if ( ! access_can_access_function ( ACCESS_ACTIVITY_LOG ) )
+  die_miserable_death ( print_not_auth() );
+else {
+  $PAGE_SIZE = 25; // Number of entries to show at once.
   include_once 'includes/activity_log.php';
 }
 
-if ( ! empty ( $nextpage ) ) {
+if ( ! empty ( $nextpage ) )
   $smarty->assign ( 'prev_URL', 'activity_log.php?startid='
-   . $nextpage . ( $sys ? '&amp;system=1' : '' ) ); 
-}
+     . $nextpage . ( $sys ? '&amp;system=1' : '' ) );
 
 if ( ! empty ( $startid ) ) {
   $previd = $startid + $PAGE_SIZE;
@@ -37,16 +35,16 @@ if ( ! empty ( $startid ) ) {
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
       $smarty->assign ( 'next_URL', ( $row[0] <= $previd
-        ? ( $sys ? '?system=1' : '' )
-        : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) ) );
+          ? ( $sys ? '?system=1' : '' )
+          : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) ) );
+
     dbi_free_result ( $res );
   }
 }
 
-build_header ();
+build_header();
+$smarty->assign ( 'activity_log', true );
 
-$smarty ->assign ( 'activity_log', true );
 $smarty->display ( 'activity_log.tpl' );
-
 
 ?>
