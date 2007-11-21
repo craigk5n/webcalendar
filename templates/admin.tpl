@@ -507,21 +507,25 @@
  __Enable RSS feed__:</td><td>
  {print_checkbox name='_ENABLE_RSS'}
 </td></tr>
+<tr><td class="tooltip" title="__user-override-help@T__">
+ __Allow user override__:</td><td>
+ {print_checkbox name='_ALLOW_USER_OVERRIDE'}
+</td></tr>
 <tr><td class="tooltip" title="__rss-default-user-help@T__">
  __RSS default user__:</td><td>
-  <select name="admin__RSS_DEFAULT_USER"> 
+  <select name="admin__DEFAULT_RSS_USER"> 
  {foreach from=$userlist key=k item=v}
     <option value="{$v.cal_login_id}" {if  $v.cal_login_id == 
-      $s._RSS_DEFAULT_USER}{#selected#}{/if}>{$v.cal_fullname}</option>
+      $s._DEFAULT_RSS_USER}{#selected#}{/if}>{$v.cal_fullname}</option>
  {/foreach}
   </select>
 </td></tr>
 <tr><td class="tooltip" title="__publish-default-user-help@T__">
  __Publish default user__:</td><td>
-  <select name="admin__PUBLISH_DEFAULT_USER"> 
+  <select name="admin__DEFAULT_PUBLISH_USER"> 
  {foreach from=$userlist key=k item=v}
     <option value="{$v.cal_login_id}" {if  $v.cal_login_id == 
-      $s._PUBLISH_DEFAULT_USER}{#selected#}{/if}>{$v.cal_fullname}</option>
+      $s._DEFAULT_PUBLISH_USER}{#selected#}{/if}>{$v.cal_fullname}</option>
  {/foreach}
   </select>
 </td></tr>
@@ -534,7 +538,15 @@
  {/foreach}
   </select>
 </td></tr>
-
+<tr><td class="tooltip" title="__upcoming-default-user-help@T__">
+ __Upcoming default user__:</td><td>
+  <select name="admin__UPCOMING_DEFAULT_USER"> 
+ {foreach from=$userlist key=k item=v}
+    <option value="{$v.cal_login_id}" {if  $v.cal_login_id == 
+      $s._UPCOMING_DEFAULT_USER}{#selected#}{/if}>{$v.cal_fullname}</option>
+ {/foreach}
+  </select>
+</td></tr>
 </table>
 </div>
 

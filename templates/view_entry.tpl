@@ -99,9 +99,9 @@
     <td class="alignT bold">__Created by__:</td>
     <td>
     {if $can_email}
-      <a href="mailto:{$email_addr}?subject={$subject}">{$pubAccStr}</a>
+      <a href="mailto:{$email_addr}?subject={$subject}">{$createby_fullname}</a>
 		{else}
-      {$pubAccStr}
+      {$createby_fullname}
 		{/if}{$proxy_fullname}</td>
   </tr>
 {/if}

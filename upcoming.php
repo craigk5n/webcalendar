@@ -50,7 +50,7 @@
  * PHP warnings.
  *     $numDays               default 30
  *     $cat_id                default ALL
- *     $username              default __public__
+ *     $userID                _DEFAULT_UPCOMING_USER
  *     $maxEvents             default 10   
  *     $showTasks bool        default true
  *     $showTitle bool        default true
@@ -131,7 +131,7 @@ $WC->setLanguage();
 // declared twice in case of this file being included twice or more within the same doc.
 function print_upcoming_event ( $e, $date ) {
   global $display_link, $link_target, $charset, $WC,
-    $display_tzid, $showTime, $showPopups, $eventinfo, $username, $hcalendar_output;
+    $display_tzid, $showTime, $showPopups, $eventinfo, $userID, $hcalendar_output;
 
   $popupid = 'pop' . $e->getId() . '-' . $date;
   $server_url = getPref ( 'SERVER_URL', 2 );
@@ -158,7 +158,7 @@ function print_upcoming_event ( $e, $date ) {
           $timestr .= ' - ' . display_time ( $e->getEndDate() );
         }
       }
-      $eventinfo .= build_entry_popup ( 'eventinfo-' . $popupid, $username,
+      $eventinfo .= build_entry_popup ( 'eventinfo-' . $popupid, $userID,
         $e->getDescription(), $timestr, site_extras_for_popup ( $e->getId() ),
         $e->getLocation(), $e->getName(), $e->getId() );
     }
@@ -193,7 +193,7 @@ function print_upcoming_event ( $e, $date ) {
     echo '<span class="description">' . $e->getDescription() . "</span>\n";
     if ( strlen ( $e->getLocation() ) > 0 )
     echo '<span class="location">' . $e->getLocation() . "</span>\n";
-    $categories = get_categories_by_eid ( $e->getId(), $username );
+    $categories = get_categories_by_eid ( $e->getId(), $userID );
     $category = implode ( ', ', $categories);
     if ( strlen ( $category  ) > 0 )
       echo '<span class="categories">' . $category . "</span>\n";
@@ -276,15 +276,6 @@ if ( ! isset ( $showPopups ) )
 else if ( $showPopups == 'N' )
   $showPopups = false;
 
-// Login of calendar user to use
-// '__public__' is the login name for the public user
-//TODO Fix this
-if (empty($username)) $username = '__public__';
-
-// Allow the URL to override the user setting such as
-// "upcoming.php?user=craig"
-$_ALLOW_USER_OVERRIDE = true;
-
 // Load layers
 $load_layers = true;
 
@@ -295,18 +286,12 @@ $load_layers = true;
 $display_tzid = 2;
 
 // End configurable settings...
+$userID = getPref ( '_DEFAULT_RSS_USER' );
 
-// Set for use elsewhere as a global
-//TODO
-$login = $username;
-
-
-if ( $_ALLOW_USER_OVERRIDE ) {
+if ( get_Pref ( '_ALLOW_USER_OVERRIDE', 2 ) ) {
   $u = $WC->getValue ( 'user', "[A-Za-z0-9_\.=@,\-]+", true );
   if ( ! empty ( $u ) ) {
-    $username = $u;
-	//TODOO
-    $login = $u;
+    $userID = $u;
     $TIMEZONE = getPref ( 'TIMEZONE', 1, $username );
     $DISPLAY_UNAPPROVED = getPref ( 'DISPLAY_UNAPPROVED', 1, $username );
     $DISPLAY_TASKS_IN_GRID =
@@ -314,7 +299,7 @@ if ( $_ALLOW_USER_OVERRIDE ) {
     // We also set $login since some functions assume that it is set.
   }
 }
-
+$WC->_login = $userID;
 $get_unapproved = ( getPref ( 'DISPLAY_UNAPPROVED', 2 ) );
 
 

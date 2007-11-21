@@ -341,8 +341,7 @@ if ( ! _WC_SINGLE_USER && ! empty ( $createby['fullname'] ) ) {
     $smarty->assign ( 'can_email', 
 		  access_user_calendar ( 'email', $item->getOwner () ) );
 
-    $smarty->assign ( 'pubAccStr', ( $row[0] == '__public__'
-      ? translate ( 'Public Access' ) : $createby['fullname'] ) );
+    $smarty->assign ( 'createby_fullname', $createby['fullname'] );
 }
 
 $smarty->assign ( 'itemModDate', display_time ( $item->getModDate (), getPref ( 'GENERAL_USE_GMT' ) ?3 : 2 ) );
@@ -502,8 +501,7 @@ $smarty->assign ( 'can_add_comment', ( Doc::commentsEnabled () &&
 // to edit where they could also set the category), then allow them to
 // set it through set_cat.php.
 if ( empty ( $user ) && getPref ( '_ENABLE_CATEGORIES' ) && !_WC_READONLY &&
-    $is_my_event && ! $WC->isLogin( '__public__' ) && !
-    $is_nonuser && $event_status != 'D' && ! $can_edit ) {
+    $is_my_event && ! $WC->isNonUser() && $event_status != 'D' && ! $can_edit ) {
   $smarty->assign ( 'setCategory', true );
 }
 
@@ -522,7 +520,7 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && ! _WC_READONLY ) {
 if ( ! _WC_READONLY && ! $is_my_event && $event_status != 'D' &&  ! $is_nonuser )
   $smarty->assign ( 'addToMyCal', true );
 
-if ( ! $WC->login( '__public__' ) && count ( $allmails ) > 0 )
+if ( ! $WC->isNonUser() && count ( $allmails ) > 0 )
   $smarty->assign ( 'emailAll', true );
 
 if ( access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) {
