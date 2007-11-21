@@ -107,8 +107,7 @@ if ( empty ( $error ) && $eid > 0 ) {
       if ( strlen ( $comments ) ) {
         $msg .= "\n\n" . translate ( 'Comments' ) . ': ' . $comments;
       }
-      $from = getPref ('_EMAIL_FALLBACK_FROM' );
-      if ( strlen ( $login_email ) ) $from = $login_email;
+      $from = $WC->getEmail();
       //send via WebCalMailer class
       $mail->WC_Send ( $WC->getFullName (), $temp['email'], 
         $temp['fullname'], $name, $msg, $htmlmail, $from );

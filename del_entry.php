@@ -182,7 +182,7 @@ if ( $eid > 0 && empty ( $error ) ) {
             $msg .= "\n\n";
             //use WebCalMailer class
             $mail->WC_Send ( $WC->getFullName (), $temp['email'], 
-              $temp['fullname'], $name, $msg, $htmlmail, $login_email );
+              $temp['fullname'], $name, $msg, $htmlmail, $WC->getEmail() );
         }
       }
     }
