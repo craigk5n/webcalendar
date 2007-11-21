@@ -118,7 +118,7 @@ function background_css ( $base, $height = '', $percent = '' ) {
        . ( $height != '' ? '-' . $height : '' )
        . ( $percent != ''? '-' . $percent : '' ) . $type;
       $path_name = '../images/' . $img_name;      
-      $file_name = _WC_PUB_CACHE . 'images/' . $img_name;
+      $file_name = _WC_PUB_CACHE . '/images/' . $img_name;
       if ( ! file_exists ( $file_name ) )
         $tmp = create_image ( $file_name, $base, $height, $percent );
       $ret .= $path_name;

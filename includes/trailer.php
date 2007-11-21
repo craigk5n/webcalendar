@@ -27,11 +27,10 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   $currentUserStr = translate ( 'Current User' );
   $helpStr = translate ( 'Help' );
   $publicStr = $PUBLIC_ACCESS_FULLNAME;
-  if ( empty ( $readonly ) || $readonly != 'Y' )
-    $readonly = 'N';
+
   // Go To links.
   $can_add = true;
-  if ( $readonly == 'Y' )
+  if ( _WC_READONLY )
     $can_add = false;
   else
   if ( access_is_enabled () )
@@ -84,7 +83,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
        . "$todayURL\">$todayStr" . '</a>';
     }
     if ( $login != '__public__' ) {
-      if ( ! $is_nonuser && $readonly == 'N' ) {
+      if ( ! $is_nonuser && ! _WC_READONLY ) {
         if ( ( ! access_is_enabled () ||
               access_can_access_function ( ACCESS_ADMIN_HOME ) ||
               access_can_access_function ( ACCESS_PREFERENCES ) ) )
@@ -123,7 +122,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     $goto_link[] = '<a title="' . $todayStr . '" class="bold" href="'
      . "$todayURL\">$todayStr" . '</a>';
 
-    if ( $readonly == 'N' )
+    if ( ! _WC_READONLY )
       $goto_link[] = '<a title="' . $adminStr
        . '" class="bold" href="adminhome.php">' . $adminStr . '</a>';
   }
@@ -133,7 +132,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       $goto_link[] = '<a title="' . $searchStr . '" href="search.php">'
        . $searchStr . '</a>';
 
-    if ( $login != '__public__' && ! $is_nonuser && $readonly != 'Y' ) {
+    if ( $login != '__public__' && ! $is_nonuser && ! _WC_READONLY ) {
       if ( access_can_access_function ( ACCESS_IMPORT ) )
         $goto_link[] = '<a title="' . $importStr . '" href="import.php">'
          . $importStr . '</a>';
@@ -245,7 +244,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
         ? '?return_path=' . $login_return_path : '' );
     }
 
-    if ( $readonly != 'Y' )
+    if ( ! _WC_READONLY )
       $tret .= '<br /><span class="prefix">' . $currentUserStr . ':</span>&nbsp;'
        . ( strlen ( $login ) && $login != '__public__'
         ? $fullname . '&nbsp;(<a title="' . $logoutStr . '" href="'

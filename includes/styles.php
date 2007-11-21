@@ -205,7 +205,7 @@ if ( ! $display_weekends ) { ?>
 }
 .admin,
 .admin td a {
-	background: <?php echo $CELLBG;?>
+	background: <?php echo $CELLBG;?>;
 }
 .weeknumber,
 .weeknumber a,
