@@ -13,7 +13,7 @@ if ( $eid > 0 ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $eid ) {
       $is_my_event = true;
-      echo str_replace ('XXX', $eid,
+      echo str_replace ( 'XXX', $eid,
        translate ( 'Event XXX is already on your calendar.' ) );
       exit;
     }
@@ -23,7 +23,7 @@ if ( $eid > 0 ) {
   $res = dbi_execute ( 'SELECT cal_access FROM webcal_entry WHERE cal_id = ?',
     array ( $eid ) );
   if ( ! $res ) {
-    echo str_replace ('XXX', $eid, translate ( 'Invalid entry id XXX' ) );
+    echo str_replace ( 'XXX', $eid, translate ( 'Invalid entry id XXX' ) );
     exit;
   }
   $mayNotAddStr =
@@ -48,12 +48,12 @@ if ( $eid > 0 ) {
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login_id,
       cal_status ) VALUES ( ?, ?, ? )', array ( $eid, $WC->loginId(), 'A' ) ) )
 // translate ( 'Error adding event' )
-      $error = str_replace ('XXX', dbi_error (),
+      $error = str_replace ( 'XXX', dbi_error(),
         translate ( 'Error adding event XXX' ) );
   }
 }
 
-send_to_preferred_view ();
+send_to_preferred_view();
 exit;
 
 ?>
