@@ -908,9 +908,9 @@ Color format should be RRGGBB.: Formatul culorii trebuie s&#259; fie '#RRGGBB'
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Nu ai scris o scurt&#259; descriere
-The time you have entered begins before your preferred work hours. Is this correct?: Ora pe care ai dat-o este inainte de orele tale preferate de lucru. E corect a&#351;a?
-You have not entered a valid time of day: Nu ai specificat o or&#259; corect&#259;
+You have not entered a Brief Description.: Nu ai scris o scurt&#259; descriere
+time entered before preferred work hours...: Ora pe care ai dat-o este inainte de orele tale preferate de lucru. E corect a&#351;a?
+You have not entered a valid time of day.: Nu ai specificat o or&#259; corect&#259;
 
 ########################################
 # Page: includes/js/edit_layer.php

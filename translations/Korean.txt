@@ -363,8 +363,8 @@ Color format should be RRGGBB.: 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: 요약 설명을 입력하지 않았습니다.
-You have not entered a valid time of day: 유효한 일자/시각이 아닙니다.
+You have not entered a Brief Description.: 요약 설명을 입력하지 않았습니다.
+You have not entered a valid time of day.: 유효한 일자/시각이 아닙니다.
 
 ########################################
 # Page: includes/menu/index.php

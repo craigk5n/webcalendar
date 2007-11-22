@@ -647,9 +647,9 @@ Color format should be RRGGBB.: Mae angen fformat lliw megis '#RRGGBB'
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Mae angen Disgrifiad Byr
-The time you have entered begins before your preferred work hours. Is this correct?: Mae'r amser yr ydych wedi dynodi yn cychwyn cyn yr oriau gwaith yr ydych wedi dewis. A yw hyn yn gywir?
-You have not entered a valid time of day: Nid yw'r amser yr ydych wedi dynodi yn gywir
+You have not entered a Brief Description.: Mae angen Disgrifiad Byr
+time entered before preferred work hours...: Mae'r amser yr ydych wedi dynodi yn cychwyn cyn yr oriau gwaith yr ydych wedi dewis. A yw hyn yn gywir?
+You have not entered a valid time of day.: Nid yw'r amser yr ydych wedi dynodi yn gywir
 
 ########################################
 # Page: includes/js/edit_layer.php

@@ -1133,7 +1133,7 @@ Export this entry to: Экспортировать данную запись в
 ########################################
 # Page: view_r.php
 #
-Double-click on empty cell to add new entry: Нажмите дважды на пустую ячейку для создания новой записи
+Double-click on empty cell to add new entry.: Нажмите дважды на пустую ячейку для создания новой записи
 
 ########################################
 # Page: week_details.php
@@ -1415,12 +1415,12 @@ Change the date and time of this entry?: Изменить дату и время
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Вы не ввели краткое описание
-The time you have entered begins before your preferred work hours. Is this correct?: Время указанное вами начинается до начала ваших предпочтительных рабочих часов. Это правильно?
+You have not entered a Brief Description.: Вы не ввели краткое описание
+time entered before preferred work hours...: Время указанное вами начинается до начала ваших предпочтительных рабочих часов. Это правильно?
 Invalid Event Date: Недопустимая дата события
-Please add a participant: Пожалуйста добавьте участника
+Please add a participant.: Пожалуйста добавьте участника
 Invalid Date: Недопустимая дата
-You have not entered a valid time of day: Вы не ввели правильное время дня
+You have not entered a valid time of day.: Вы не ввели правильное время дня
 
 ########################################
 # Page: includes/js/edit_layer.php
@@ -1441,7 +1441,7 @@ URL cannot be blank.: Адрес не может быть пустым
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: Файл не совпадает с форматом импорта
+File type does not match Import Format.: Файл не совпадает с форматом импорта
 
 ########################################
 # Page: includes/menu/index.php

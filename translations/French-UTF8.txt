@@ -924,10 +924,10 @@ Change the date and time of this entry?: Modifier la date et l'heure de cet év�
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Vous n'avez pas saisi de description résumée
-The time you have entered begins before your preferred work hours. Is this correct?: L'heure que vous avez spécifiée commence avant l'heure de début de vos journées. Est-ce correct ?
-Please add a participant: Veuillez ajouter un participant
-You have not entered a valid time of day: Vous n'avez pas saisi une heure appropriée
+You have not entered a Brief Description.: Vous n'avez pas saisi de description résumée
+time entered before preferred work hours...: L'heure que vous avez spécifiée commence avant l'heure de début de vos journées. Est-ce correct ?
+Please add a participant.: Veuillez ajouter un participant
+You have not entered a valid time of day.: Vous n'avez pas saisi une heure appropriée
 
 ########################################
 # Page: includes/js/edit_layer.php

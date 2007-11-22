@@ -294,7 +294,7 @@ user-override-help: If enabled, allow user=nn URL parameter to be specified for 
 Allow user override: Allow user override
 rss-default-user-help: Default user to display in RSS feed.
 RSS default user: RSS default user
-publish-default-user-help: Default user account to use for Publishing via publish.php 
+publish-default-user-help: Default user account to use for Publishing via publish.php
 Publish default user: Publish default user
 minical-default-user-help: Default user account to display when using minical.php
 Minical default user: Minical default user
@@ -861,7 +861,7 @@ Duplicate Name XXX: Duplicate Name: "XXX".
 Username already exists: Username already exists
 Username XXX already exists.: Username "XXX" already exists.
 Email address already exists: Email address already exists
-Email address XXX already exists: Email address XXX already exists
+Email address XXX already exists.: Email address XXX already exists.
 Invalid Color: Invalid Color
 Color format should be &#39;#RRGGBB&#39;: Color format should be &#39;#RRGGBB&#39;
 View this event: View this event
@@ -870,16 +870,16 @@ View this task: View this task
 Edit this task: Edit this task
 Approve: Approve
 Invalid Date: Invalid Date
-File type does not match Import Format: File type does not match Import Format
-Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
+File type does not match Import Format.: File type does not match Import Format.
+Double-click on empty cell to add new entry.: Double-click on empty cell to add new entry.
 Summary: Summary
 Reminder: Reminder
-Username can not be blank: Username can not be blank
-You have not entered a password: You have not entered a password
-The passwords were not identical: The passwords were not identical
-URL can not be blank: URL can not be blank
-Calendar ID can not be blank: Calendar ID can not be blank
-Both first and last names can not be blank: Both first and last names can not be blank
+Username can not be blank.: Username can not be blank.
+You have not entered a password.: You have not entered a password.
+The passwords were not identical.: The passwords were not identical.
+URL can not be blank.: URL can not be blank.
+Calendar ID can not be blank.: Calendar ID can not be blank.
+First and last names cannot both be blank.: First and last names cannot both be blank.
 Delete this entry?: Delete this entry?
 Approve Selected entries?: Approve Selected entries?
 Reject Selected entries?: Reject Selected entries?
@@ -887,8 +887,8 @@ Schedule an appointment for: Schedule an appointment for
 Change the time for this appointment to: Change the time for this appointment to
 Change the date and time of this entry?: Change the date and time of this entry?
 Invalid color for: Invalid color for
-Server URL is required: Server URL is required
-Server URL must end with &quot;/&quot;: Server URL must end with &quot;/&quot;
+Server URL is required.: Server URL is required.
+Server URL must end with /.: Server URL must end with "/".
 Invalid work hours: Invalid work hours
 SU: SU
 MO: MO
@@ -897,11 +897,11 @@ WE: WE
 TH: TH
 FR: FR
 SA: SA
-You have not entered a Brief Description: You have not entered a Brief Description
+You have not entered a Brief Description.: You have not entered a Brief Description.
 Invalid Exception Date: Invalid Exception Date
-Please add a participant: Please add a participant
-You have not entered a valid time of day: You have not entered a valid time of day
-The time you have entered begins before your preferred work hours.  Is this correct?: The time you have entered begins before your preferred work hours.  Is this correct?
+Please add a participant.: Please add a participant.
+You have not entered a valid time of day.: You have not entered a valid time of day.
+time entered before preferred work hours...: The time you have entered begins before your preferred work hours. Is this correct?
 
 ########################################
 # Page: ajax_entries.php

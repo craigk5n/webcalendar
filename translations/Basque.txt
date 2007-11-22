@@ -661,8 +661,8 @@ Color format should be RRGGBB.: Kolorearen formatua hamaseitarra izan beharko lu
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Ez duzu deskribapen laburrik sartu
-You have not entered a valid time of day: Ez duzu ordu egoki bat sartu
+You have not entered a Brief Description.: Ez duzu deskribapen laburrik sartu
+You have not entered a valid time of day.: Ez duzu ordu egoki bat sartu
 
 ########################################
 # Page: includes/js/edit_layer.php

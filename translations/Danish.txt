@@ -925,10 +925,10 @@ Change the date and time of this entry?: Skal dato og tid ændres for denne post?
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Du har ikke indtastet en kort beskrivelse
-The time you have entered begins before your preferred work hours. Is this correct?: Det valgte tidspunkt er før end din foretrukne arbejdstid. Er dette korrekt?
-Please add a participant: Tilføj venligst en deltager:
-You have not entered a valid time of day: Du har ikke indtastet et gyldigt tidspunkt
+You have not entered a Brief Description.: Du har ikke indtastet en kort beskrivelse
+time entered before preferred work hours...: Det valgte tidspunkt er før end din foretrukne arbejdstid. Er dette korrekt?
+Please add a participant.: Tilføj venligst en deltager:
+You have not entered a valid time of day.: Du har ikke indtastet et gyldigt tidspunkt
 
 ########################################
 # Page: includes/js/edit_layer.php

@@ -396,8 +396,8 @@ Color format should be RRGGBB.: Form lita á að vera '#RRGGBB'
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Stutta lýsingu vantar
-You have not entered a valid time of day: Rangur tími sleginn inn
+You have not entered a Brief Description.: Stutta lýsingu vantar
+You have not entered a valid time of day.: Rangur tími sleginn inn
 
 ########################################
 # Page: includes/menu/index.php
