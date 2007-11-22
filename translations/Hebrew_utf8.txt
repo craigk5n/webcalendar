@@ -1108,7 +1108,7 @@ Export this entry to: ייצא רשומה זו ל-
 ########################################
 # Page: view_r.php
 #
-Double-click on empty cell to add new entry: הקלק הקלקה כפולה בתא ריק כדי להוסיף רשומה
+Double-click on empty cell to add new entry.: הקלק הקלקה כפולה בתא ריק כדי להוסיף רשומה
 
 ########################################
 # Page: week_details.php
@@ -1332,12 +1332,12 @@ Change the date and time of this entry?: שנה את השעה והתאריך ש�
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: לא הכנסת תאור קצר
-The time you have entered begins before your preferred work hours. Is this correct?: ציינת שעה לפני תחילת יום העבודה שלך. האם זה נכון?
+You have not entered a Brief Description.: לא הכנסת תאור קצר
+time entered before preferred work hours...: ציינת שעה לפני תחילת יום העבודה שלך. האם זה נכון?
 Invalid Event Date: תאריך ארוע לא חוקי
-Please add a participant: נא להוסיף משתתף
+Please add a participant.: נא להוסיף משתתף
 Invalid Date: תאריך לא חוקי
-You have not entered a valid time of day: לא הכנסת שעה חוקית
+You have not entered a valid time of day.: לא הכנסת שעה חוקית
 
 ########################################
 # Page: includes/js/edit_layer.php
@@ -1358,7 +1358,7 @@ URL cannot be blank.: כתובת URL לא יכול להיות ריקה
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: סוג הקובץ אינו תואם לפורמאט הייבוא
+File type does not match Import Format.: סוג הקובץ אינו תואם לפורמאט הייבוא
 
 ########################################
 # Page: includes/menu/index.php

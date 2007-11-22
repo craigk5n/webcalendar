@@ -944,10 +944,10 @@ Change the date and time of this entry?: Να αλλαχθεί η ημερομη
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Δεν δώσατε σύντομη περιγραφή
-The time you have entered begins before your preferred work hours. Is this correct?: Η ώρα που δώσατε ξεκινάει πριν από τις ώρες εργασίας. Είναι σωστό;
-Please add a participant: Παρακαλώ προσθέσετε ένα συμμετέχοντα
-You have not entered a valid time of day: Δεν δώσατε σωστή ώρα
+You have not entered a Brief Description.: Δεν δώσατε σύντομη περιγραφή
+time entered before preferred work hours...: Η ώρα που δώσατε ξεκινάει πριν από τις ώρες εργασίας. Είναι σωστό;
+Please add a participant.: Παρακαλώ προσθέσετε ένα συμμετέχοντα
+You have not entered a valid time of day.: Δεν δώσατε σωστή ώρα
 
 ########################################
 # Page: includes/js/edit_layer.php

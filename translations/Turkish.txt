@@ -399,8 +399,8 @@ Color format should be RRGGBB.: Renkler sadece '#RRGGBB' seklinde verilebilir.
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Özet Anlami vermediniz
-You have not entered a valid time of day: Gecerli saat vermediniz
+You have not entered a Brief Description.: Özet Anlami vermediniz
+You have not entered a valid time of day.: Gecerli saat vermediniz
 
 ########################################
 # Page: includes/menu/index.php

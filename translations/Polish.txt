@@ -861,7 +861,7 @@ Export this entry to: Eksportuj ten wpis do
 ########################################
 # Page: view_r.php
 #
-Double-click on empty cell to add new entry: Podwójne klikniêcie na pustej komórce dodaje nowy wpis
+Double-click on empty cell to add new entry.: Podwójne klikniêcie na pustej komórce dodaje nowy wpis
 
 ########################################
 # Page: week_details.php
@@ -1053,10 +1053,10 @@ Change the date and time of this entry?: Zmienia date i czas tego wpisu?
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Nie wprowadzi³e¶ krótkiego opisu
-The time you have entered begins before your preferred work hours. Is this correct?: Czas który poda³e¶ zaczyna siê przed preferowanymi godzinami pracy. Czy jest to poprawne?
-Please add a participant: Podaj wspó³uczestnika
-You have not entered a valid time of day: Nie wprowadzi³e¶ poprawnego czasu
+You have not entered a Brief Description.: Nie wprowadzi³e¶ krótkiego opisu
+time entered before preferred work hours...: Czas który poda³e¶ zaczyna siê przed preferowanymi godzinami pracy. Czy jest to poprawne?
+Please add a participant.: Podaj wspó³uczestnika
+You have not entered a valid time of day.: Nie wprowadzi³e¶ poprawnego czasu
 
 ########################################
 # Page: includes/js/edit_layer.php

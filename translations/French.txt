@@ -1271,7 +1271,7 @@ Palm Pilot: =
 ########################################
 # Page: view_m.php
 #
-Double-click on empty cell to add new entry: Double-cliquez sur une cellule vide pour ajouter une nouvelle entrée
+Double-click on empty cell to add new entry.: Double-cliquez sur une cellule vide pour ajouter une nouvelle entrée
 
 ########################################
 # Page: views.php
@@ -1647,12 +1647,12 @@ Change the date and time of this entry?: Modifier la date et l'heure de cet évén
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Vous n'avez pas saisi de description résumée
-The time you have entered begins before your preferred work hours. Is this correct?: L'heure que vous avez spécifiée commence avant l'heure de début de vos journées. Est-ce correct ?
+You have not entered a Brief Description.: Vous n'avez pas saisi de description résumée
+time entered before preferred work hours...: L'heure que vous avez spécifiée commence avant l'heure de début de vos journées. Est-ce correct ?
 Invalid Event Date: Date de l'événement invalide
-Please add a participant: Veuillez ajouter un participant
+Please add a participant.: Veuillez ajouter un participant
 Invalid Date: Date invalide
-You have not entered a valid time of day: Vous n'avez pas saisi une heure appropriée
+You have not entered a valid time of day.: Vous n'avez pas saisi une heure appropriée
 
 ########################################
 # Page: includes/js/edit_layer.php
@@ -1674,7 +1674,7 @@ URL cannot be blank.: L'URL ne doit pas être vide.
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: Le type de fichier ne correspond pas au format d'import
+File type does not match Import Format.: Le type de fichier ne correspond pas au format d'import
 
 ########################################
 # Page: includes/js/visible.php

@@ -863,8 +863,8 @@ Notification: Oznámení
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Nevlo¾il jste struèný popis
-You have not entered a valid time of day: Nevlo¾il jste platný èas
+You have not entered a Brief Description.: Nevlo¾il jste struèný popis
+You have not entered a valid time of day.: Nevlo¾il jste platný èas
 
 ########################################
 # Page: includes/js/edit_layer.php

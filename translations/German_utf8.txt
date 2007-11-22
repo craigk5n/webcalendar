@@ -1258,7 +1258,7 @@ Palm Pilot: =
 # Page: view_r.php
 #
 Week: Woche
-Double-click on empty cell to add new entry: Ein 'Doppelklick' auf eine leere Zelle fügt einen neuen Termin ein.
+Double-click on empty cell to add new entry.: Ein 'Doppelklick' auf eine leere Zelle fügt einen neuen Termin ein.
 
 ########################################
 # Page: week_details.php
@@ -1617,12 +1617,12 @@ Change the date and time of this entry?: Datum und Uhrzeit für diesen Eintrag �
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben
-The time you have entered begins before your preferred work hours. Is this correct?: Die eingetragene Zeit beginnt vor der normalen Arbeitszeit. Ist das richtig?
+You have not entered a Brief Description.: Sie haben keine Kurzbeschreibung eingegeben
+time entered before preferred work hours...: Die eingetragene Zeit beginnt vor der normalen Arbeitszeit. Ist das richtig?
 Invalid Event Date: Ungütiges Datum für Termin
-Please add a participant: Bitte einen Teilnehmer hinzufügen
+Please add a participant.: Bitte einen Teilnehmer hinzufügen
 Invalid Date: Ungültiges Datum
-You have not entered a valid time of day: Sie haben keine gültige Zeit für diesen Tag eingetragen
+You have not entered a valid time of day.: Sie haben keine gültige Zeit für diesen Tag eingetragen
 
 ########################################
 # Page: includes/js/edit_layer.php
@@ -1644,7 +1644,7 @@ URL cannot be blank.: URL darf nicht leer sein.
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: Dateityp passt nicht mit dem Import-Format überein
+File type does not match Import Format.: Dateityp passt nicht mit dem Import-Format überein
 
 ########################################
 # Page: includes/js/visible.php

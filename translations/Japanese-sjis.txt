@@ -1069,7 +1069,7 @@ Export this entry to: 次の形式にエクスポート
 ########################################
 # Page: view_r.php
 #
-Double-click on empty cell to add new entry: 空セルをダブルクリックで新規エントリを追加する
+Double-click on empty cell to add new entry.: 空セルをダブルクリックで新規エントリを追加する
 
 ########################################
 # Page: week_details.php
@@ -1307,12 +1307,12 @@ Change the date and time of this entry?: このエントリの日付と時間を変更しますか?
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: 簡単な説明を入力していません。
-The time you have entered begins before your preferred work hours. Is this correct?: 記入した時間は通常勤務時間帯よりも早いですが良いですか?
+You have not entered a Brief Description.: 簡単な説明を入力していません。
+time entered before preferred work hours...: 記入した時間は通常勤務時間帯よりも早いですが良いですか?
 Invalid Event Date: 正しくないイベントの日付です
-Please add a participant: 参加者を追加してください
+Please add a participant.: 参加者を追加してください
 Invalid Date: 無効な日付です
-You have not entered a valid time of day: 有効な時間を入力していません。
+You have not entered a valid time of day.: 有効な時間を入力していません。
 
 ########################################
 # Page: includes/js/edit_layer.php
@@ -1332,7 +1332,7 @@ URL cannot be blank.: URL は空にできません
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: ファイルの種類がインポート形式と一致しません。
+File type does not match Import Format.: ファイルの種類がインポート形式と一致しません。
 
 ########################################
 # Page: includes/menu/index.php

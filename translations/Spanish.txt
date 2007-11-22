@@ -923,9 +923,9 @@ Color format should be RRGGBB.: Formato de Color debe ser Hexadecimal '#RRGGB
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: No has escrito una Breve descripción
-The time you have entered begins before your preferred work hours. Is this correct?: La hora que ha introducido comienza antes de tus horas laborables preferidas. ¿Es correcto?
-You have not entered a valid time of day: No has dado una hora válida
+You have not entered a Brief Description.: No has escrito una Breve descripción
+time entered before preferred work hours...: La hora que ha introducido comienza antes de tus horas laborables preferidas. ¿Es correcto?
+You have not entered a valid time of day.: No has dado una hora válida
 
 ########################################
 # Page: includes/js/edit_layer.php
