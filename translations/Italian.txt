@@ -17,7 +17,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 11-19-2007
+# Translation last updated on 11-23-2007
 
 
 ################################################################################
@@ -29,7 +29,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: =
+charset: = iso-8859-15
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -40,9 +40,9 @@ direction: =
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
-__mm__/__dd__/__yyyy__: =
+__mm__/__dd__/__yyyy__: __dd__/__mm__/__yyyy__
 __month__ __dd__: =
-__month__ __dd__, __yyyy__: =
+__month__ __dd__, __yyyy__: __dd__ __month__, __yyyy__
 __month__ __yyyy__: =
 
 ################################################################################
@@ -52,7 +52,7 @@ __month__ __yyyy__: =
 ########################################
 # Page: about.php
 #
-Title: =
+Title: Titolo
 version: versione
 version XXX: versione XXX
 WebCalendar is a PHP application used...: WebCalendar &egrave; una applicazione PHP intesa per gestire il calendario per un singolo utente o per un gruppo di utenti in intranet / internet.  Pu&ograve; essere configurato anche come agenda.
@@ -157,7 +157,7 @@ home-url-help: Specifica l'URL iniziale per l'applicazione. Questo pu&ograve; es
 Home URL: URL inizio
 language-help: Specifica quale lingua utilizzare
 Language: Lingua
-Your browser default language is: La lingua di default del tuo browser &egrave;:
+Your browser default language is: La lingua preferita per il tuo navigatore &egrave;:
 Your browser default language is XXX.: La lingua preferita del tuo navigatore &egrave; "XXX".
 Allow user to use themes: Consenti agli utenti di usare i temi
 themes-help: Consente aggiornamento di massa delle impostazioni di configurazione. Le etichette in minuscolo sono solo pref utente.
@@ -217,7 +217,7 @@ Display long day names: Mostra nomi completi dei giorni
 display-alldays-help: Mostra i giorni dei mesi precedente e seguente, in vista mese, occupando tutte le celle
 Display all days in month view: Mostra tutti i giorni in vista mese
 display-week-number-help: Specifica se mostrare o meno il numero della settimana (1-52) quando il calendario viene visualizzato per mese o per settimana.
-Display week number: Mostrare numero settimana
+Display week number: Mostra numero settimana
 display-desc-print-day-help: Include la descrizione dell'evento nel formato stampabile della vista giornaliera
 Display description in printer day view: Mostra la descrizione nella visualizzazione giornaliera stampabile
 yearly-shows-events-help: Nella visualizzazione annuale, mostra in grassetto i giorni con degli eventi
@@ -236,7 +236,7 @@ Allow viewing other users calendars: Permetti la visione dei calendari degli alt
 require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad Accesso Pubblico (se il calendario ad accesso pubblico &egrave; abilitato)
 Require event approvals: Richiedi che gli eventi siano approvati
 display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se settato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se settato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
-Display unapproved: Mostrare eventi non approvati
+Display unapproved: Mostra eventi non approvati
 conflict-check-help: Controlla se esistono conflitti fra gli eventi (due eventi programmati per lo stesso istante o per la stessa persona). Se lo setti a "S&igrave;", sarai ancora in grado di programmare due eventi per lo stesso istante dopo aver dato conferma ad un avviso. Se lo setti a "No", il controllo dei conflitti fra gli eventi sar&agrave; fatto. &Egrave; probabile che tu voglia settare questo a "S&igrave;", cos&igrave; il controllo dei conflitti viene fatto
 Check for event conflicts: Controlla se esistono conflitti fra gli eventi
 Yes: S&igrave;
@@ -789,7 +789,7 @@ again: di nuovo
 Enabled: Abilitati
 Disabled for demo: Disabilita per la demo
 Change Password: Cambiare Parola chiave
-New Password: Nuova Password
+New Password: Nuova parola chiave
 Set Password: Assegnare Parola chiave
 
 ########################################
@@ -846,9 +846,9 @@ You must specify a group name: Devi specificare il nome del gruppo
 # Page: help_admin.php
 #
 Auto-refresh calendars: Calendari autoaggiornanti
-auto-refresh-help: Quando &egrave; abilitato, la vista giornaliera, quella settimanale, quella mensile e la lista delle pagine non approvate si aggiorneranno automaticamente
+auto-refresh-help: Aggiorna automaticamante viste giorno/settimana/mese e lista pagine non approvate
 Auto-refresh time: Frequenza di aggiornamento
-auto-refresh-time-help: Se Calendari autoaggiornanti &egrave; abilitato, questo specifica il tempo che intercorre fra due aggiornamenti
+auto-refresh-time-help: Se Calendari autoaggiornanti &egrave; abilitato, il tempo che intercorre fra due aggiornamenti
 Display days with events in bold in year view: Nella visualizzazione annuale mostra in grassetto i giorni con degli eventi
 Display weekends in week view: Mostra i week-end nella vista della settimana
 Time interval: Intervallo di tempo
@@ -862,7 +862,7 @@ colors-help: Tutti i colori devono essere specificati nel formato esadecimale "#
 ########################################
 # Page: help_bug.php
 #
-Report Bug: Segnala un Bug
+Report Bug: Segnala un difetto
 Please include all the information below when reporting a bug.: Includi <b>tutte</b> le informazioni seguenti quando riporti un difetto.
 Also, please use English rather than: Inoltre usa l'<strong>inglese</strong> piuttosto che
 Also, please use English rather than XXX.: Inoltre usa l'<strong>inglese</strong> piuttosto che l'XXX.
@@ -1064,7 +1064,7 @@ A login must be specified: Devi specificare un nome utente
 #
 Save Preferences: Salva Preferenze
 Public Access calendar: Calendario ad Accesso Pubblico
-Modify Non User Calendar Preferences: Modifica preferenze per il calendario NonUtente
+Modify Non User Calendar Preferences: >Modifica preferenze per il calendario NonUtente ...<
 Return to My Preferences: Torna a 'Le mie preferenze'
 Custom Scripts: <i>script</i> personalizzati
 Timezone Selection: Selezione fuso orario
@@ -1274,7 +1274,7 @@ Edit entry for this date: Inserisci l'evento per questa data
 Delete entry only for this date: Cancella l'evento solo per questa data
 from calendar of: dal calendario di
 This will delete the entry from your XXX calendar.: Questo canceller&agrave; l'elemento dal tuo calendario XXX.
-boss: =
+boss: capo
 This will delete the entry from your boss calendar.: Questo canceller&agrave; l'elemento dal calendario del tuo capo.
 This will delete the entry from your calendar.: Questo canceller&agrave; tutti gli eventi del tuo calendario.
 from your boss calendar: dal calendario del tuo capo
@@ -1324,7 +1324,7 @@ You must define XXX in: Devi definire "XXX" in "settings.php".
 #
 December: Dicembre
 Dec: Dic
-LANGUAGE DEFINED: LINGUA DEFINITA
+LANGUAGE DEFINED: (conforme alla lingua scelta)
 
 ########################################
 # Page: includes/dbi4php.php
@@ -1486,7 +1486,7 @@ Manage calendar of: Gestisci il calendario di
 # Page: includes/translate.php
 #
 Browser Language Not Found: Impostazione di lingua del navigatore non trovata
-not supported: =
+not supported: non supportato
 (not supported): (non supportato)
 English: Inglese
 Basque: Basco
@@ -1557,7 +1557,7 @@ Event Imported: Eventi importati
 ########################################
 # Page: includes/classes/Doc.class
 #
-bytes: =
+bytes: byte
 kb: kB
 Mb: MB
 
