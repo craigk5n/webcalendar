@@ -4,12 +4,14 @@ include_once 'includes/init.php';
 
 function save_pref( $prefs, $src) {
   global $my_theme, $prefuser;
-	//We now use checkboxes instead of radio controls.
+  //We now use checkboxes instead of radio controls.
   // We loop through $sysConfig and look for Y/N settings 
-	//and if set to 'N', delete it from prefs array
+  //and if set to 'N', delete it from prefs array
   if ( $src == 'post' ) {
-	  $sysConfig = loadConfig ();
+    $sysConfig = loadConfig ();
     while ( list ( $key, $value ) = each ( $sysConfig ) ) {
+      if ( empty (  $prefs['pref_' . $key] ) )
+         $prefs['pref_' . $key]  = 'N';
       if ( $value == 'N' && substr ( $key,0,1 ) == '_' )  {
           unset ( $prefs['pref_' . $key] );
       }
@@ -51,7 +53,7 @@ function save_pref( $prefs, $src) {
       }
     }
   }
-	generate_CSS ( true );
+  generate_CSS ( true );
 }
 $currenttab = 'settings';
 
@@ -93,9 +95,9 @@ if ( @is_dir($dir) ) {
    if ($dh = opendir($dir)) {
        while (($file = readdir($dh)) !== false) {
          if ( strpos ( $file, '_pref.php' ) ) {
-				 	 $k = str_replace ( '.php', '', $file );
+            $k = str_replace ( '.php', '', $file );
            $themes[$k] = strtolower( str_replace ( '_pref.php', '', $file ) );
-				 }
+         }
        }
        asort ( $themes );
        closedir($dh);
@@ -107,7 +109,7 @@ if ( @is_dir($dir) ) {
 // the current user to modify prefs for that nonuser cal
 if ( $WC->isUser( false ) )
   $nulist = get_my_nonusers ( $WC->loginId() );
-	
+  
 $smarty->assign ('minutesStr', translate( 'minutes' ) );
 $prefStr = translate( 'Preferences' );
 $smarty->assign ('nonUserStr', str_replace ( 'XXX', $prefStr, 
@@ -134,7 +136,7 @@ if ( getPref ( '_ALLOW_COLOR_CUSTOMIZATION' ) ) {
 }
 
 $smarty->assign ( 'tabs_ar', $tabs_ar );
-		
+    
 $smarty->assign ( 'choices', array ( 'day.php'=>translate ( 'Day' ),
   'week.php'=>translate ( 'Week' ),
   'month.php'=>translate ( 'Month' ),
@@ -148,22 +150,22 @@ $INC = array('pref.js');
 build_header ($INC, '', $BodyX);
 
   $smarty->assign ( 'qryStr',( ! empty ( $_SERVER['QUERY_STRING'] ) ? '?' 
-	  . $_SERVER['QUERY_STRING'] : '' ) );
-	$smarty->assign ( 'server_url', getPref ( 'SERVER_URL' ) );
-	$smarty->assign ( 'user', $prefuser );
-	$smarty->assign ( 'languages', define_languages () );
-	$smarty->assign ( 'themes', $themes );
-	$smarty->assign ( 'can_set_timezone', set_env ( 'TZ', getPref ( 'TIMEZONE' ) ) );
+    . $_SERVER['QUERY_STRING'] : '' ) );
+  $smarty->assign ( 'server_url', getPref ( 'SERVER_URL' ) );
+  $smarty->assign ( 'user', $prefuser );
+  $smarty->assign ( 'languages', define_languages () );
+  $smarty->assign ( 'themes', $themes );
+  $smarty->assign ( 'can_set_timezone', set_env ( 'TZ', getPref ( 'TIMEZONE' ) ) );
   $smarty->assign ( 'selected', SELECTED );
   $smarty->assign ( 'currenttab', $currenttab );
-	$smarty->assign ( 'openS', sprintf ( $openStr, 'S' ) );
-	$smarty->assign ( 'openH', sprintf ( $openStr, 'H' ) );
-	$smarty->assign ( 'openT', sprintf ( $openStr, 'T' ) );
-	$smarty->assign ( 'time_format_array', 
-	  array ( '12'=>translate( '12 hour' ), '24'=>translate( '24 hour' ) ) );
-	$smarty->assign ( 'timed_evt_len_array', 
-	  array ('D'=>translate( 'Duration' ), 'E'=>translate( 'End Time' ) ) );
-		
+  $smarty->assign ( 'openS', sprintf ( $openStr, 'S' ) );
+  $smarty->assign ( 'openH', sprintf ( $openStr, 'H' ) );
+  $smarty->assign ( 'openT', sprintf ( $openStr, 'T' ) );
+  $smarty->assign ( 'time_format_array', 
+    array ( '12'=>translate( '12 hour' ), '24'=>translate( '24 hour' ) ) );
+  $smarty->assign ( 'timed_evt_len_array', 
+    array ('D'=>translate( 'Duration' ), 'E'=>translate( 'End Time' ) ) );
+    
 $smarty->display ( 'pref.tpl' );
 
 ?>
