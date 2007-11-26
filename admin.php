@@ -12,7 +12,7 @@ function save_pref ( $prefs, $src ) {
   // for Y/N settings and if missing from $prefs, we insert an 'N' value.
   if ( $src == 'post' ) {
     while ( list ( $key, $value ) = each ( $webcalConfig ) ) {
-      if ( strpos ( 'NY', $value ) !== false &&
+      if ( ( $value == 'Y' || $value == 'N' ) &&
           empty ( $prefs['admin_' . $key] ) )
         $prefs['admin_' . $key] = 'N';
     }
