@@ -2426,7 +2426,7 @@ function get_groups ( $user ) {
 
   // Load list of groups.
   $sql = 'SELECT wg.cal_group_id, wg.cal_name FROM webcal_group wg';
-
+ $sql_params = array();
  if ( $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
    $sql .= ', webcal_group_user wgu WHERE wg.cal_group_id = wgu.cal_group_id
      AND wgu.cal_login = ?';
