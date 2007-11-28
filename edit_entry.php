@@ -433,9 +433,9 @@ As long as we're looping the whole array.
     }
   } 
 
-	//Add the logged in user if none other supplied
-	if ( count ( $participants )  == 0 )
-	  $participants[$login] = 1;
+  //Add the logged in user if none other supplied
+  if ( count ( $participants )  == 0 )
+    $participants[$login] = 1;
 
   if ( $readonly == 'N' ) {
     // Is public allowed to add events?
@@ -1059,7 +1059,7 @@ if ( $can_edit ) {
             ( ! empty ( $user ) && $l == $user ) )
            // Default selection of participants is logged in user.
           $myusers .= ' <option value="' . $l . '">' . $f . '</option>';
-						
+            
         if ( $l == '__public__' && !
           empty ( $PUBLIC_ACCESS_DEFAULT_SELECTED ) &&
             $PUBLIC_ACCESS_DEFAULT_SELECTED == 'Y' )
@@ -1154,7 +1154,7 @@ if ( $can_edit ) {
           <td colspan="7">&nbsp;</td>
         </tr>
         <tr title="' . tooltip ( 'participants-help' ) . '">
-          <td class="tooltip aligntop" rowspan="2"><label>'
+          <td class="tooltip aligntop"><label>'
             . translate ( 'Selected' ) . '<br />' 
             . translate ( 'Participants' ) . ':</label></td>
           <td align="left" valign="bottom" class="boxtop boxleft boxbottom">'
