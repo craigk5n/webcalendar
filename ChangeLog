@@ -1,5 +1,12 @@
 $Id$
 Version 2.0+CVS (?? ??? 2007)
+ - Implement RFE [ 1532171 ] enhanced user info
+ - Implement RFE [ 1471322 ] URLs with &id= Do Not Get Indexed By Google
+ - Implement RFE [ 1402126 ] Switch user with selectbox
+ - Implement RFE [ 1421027 ] dhtml calendar for date selection
+ - Implement RFE [ 1356206 ] Need a way to change admins on public access
+ - Implement RFE [ 1046536 ] repeat frequencies always start on sunday
+ - Implement RFE [ 1083783 ] Defaults vs Overrides in admin panel
  - Cleanup subscribe vs publish issues. Added ENABLE_ICALCLIENT variable
  - Added new WebCalendar class method getMail(). Returns logged in user's email or FALLBACK
  - Cleaned up calls to function User->loadVariables. Not using GLOBALS anymore
