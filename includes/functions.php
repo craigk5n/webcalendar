@@ -1243,7 +1243,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
               : $yret[count ( $yret ) + $bysetpos[$i] ] );
           }
         } else
-        if ( ! empty ( $yret ) ) { // Add all BYxx additional dates.
+        if ( ! empty ( $yret ) && is_array ( $yret )  ) { // Add all BYxx additional dates.
           $yret = array_unique ( $yret );
           $ret = array_merge ( $ret, $yret );
         }
@@ -1444,15 +1444,14 @@ function get_entries ( $date, $get_unapproved = true ) {
   global $events;
   $ret = array ();
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
-    $event_date = date ( 'Ymd', $events[$i]->getDate () );
     if ( ! $get_unapproved && $events[$i]->getStatus () == 'W' )
       continue;
 
     if ( $events[$i]->isAllDay () || $events[$i]->isUntimed () ) {
-      if ( $events[$i]->getDate () == $date )
+      if ( gmdate ( 'Ymd', $events[$i]->getDate () ) == $date )
         $ret[] = $events[$i];
     } else {
-      if ( $event_date == $date )
+      if ( date ( 'Ymd', $events[$i]->getDate () ) == $date )
         $ret[] = $events[$i];
     }
   }
