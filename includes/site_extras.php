@@ -291,14 +291,5 @@ function site_extras_for_popup ( $eid ) {
  you need to translate to another language.
  Use tools/check_translation.pl to verify you have all your translations.
 */
-$site_extras = array (
-   array (
-     "NeedLunch",       // unique name of this extra field (used in db)
-     "Lunch",           // how this field will be described to users
-     EXTRA_CHECKBOX,    // type of field
-     'Y',               // Value of checkbox
-     'Y',               // default state (set to above value to check )
-     EXTRA_DISPLAY_POPUP | EXTRA_DISPLAY_VIEW //Display in Popups and View
-   )
-);
+$site_extras = array();
 ?>
