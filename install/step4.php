@@ -49,7 +49,7 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
     <td class="prompt"><?php etranslate ( 'Create Default Admin Account' ) ?>:</td>
     <td><input type="checkbox" name="load_admin" value="Yes" <?php 
       echo $will_load_admin ?> /><?php 
-         if ( ! isset ( $_SESSION['admin_exists']  ) ) {
+         if ( empty ( $_SESSION['admin_exists']  ) ) {
            echo '<span class="notrecommended"> ( ' . 
            translate ( 'Admin Account Not Found' ) . ' )</span>';
          } ?></td></tr>
