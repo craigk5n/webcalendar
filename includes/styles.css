@@ -1,7 +1,7 @@
 body {
   margin: 2px;
   color: #000000;
-  font-family: Arial, Helvetica, sans-serif;  
+  font-family: Arial, Helvetica, sans-serif;
 }
 a {
   cursor: pointer;
@@ -457,7 +457,7 @@ a.matrix img {
   cursor: help;
   text-decoration: none;
   width: 175px;
-  
+
 }
 .user,
 .categories {
@@ -620,24 +620,24 @@ img.help {
   color: #000000;
 }
 table.admin {
-	border:1px solid #000;
-	padding:5px;
+    border:1px solid #000;
+    padding:5px;
 }
 table.admin td {
-	padding:20px
+    padding:20px
 }
 table.admin td,
 .admin td a {
-	text-align:center;
+    text-align:center;
 }
 .admin td a {
-	border:1px solid #EEE;
-	border-color:#EEE #777 #777 #EEE;
-	padding:10px;
+    border:1px solid #EEE;
+    border-color:#EEE #777 #777 #EEE;
+    padding:10px;
 }
 .admin td a:hover {
-	border-color:#777 #EEE #EEE #777;
-	background:#AAA;
+    border-color:#777 #EEE #EEE #777;
+    background:#AAA;
 }
 #admin table,
 #pref table{
@@ -1075,7 +1075,7 @@ a.weekcell {
  font-weight: bold;
 }
 #about {
-  background-image: url(../images/kn5.jpg);
+  background-image: url(../images/k5n.jpg);
   background-repeat: no-repeat;
 }
 #about p {
@@ -1120,31 +1120,31 @@ a.weekcell {
   border: 0px;
   top:20px;
 }
-#DomContextMenu_div { 
-  position:absolute;  
-  margin: 5px 0 0 5px !important; 
+#DomContextMenu_div {
+  position:absolute;
+  margin: 5px 0 0 5px !important;
 }
-#DomContextMenuContent_div { 
+#DomContextMenuContent_div {
   font-size: 11px;
   padding:  0;
   white-space:  nowrap;
   cursor:    default;
-  display: block; 
-  position: relative;    
-  margin: 2px; 
+  display: block;
+  position: relative;
+  margin: 2px;
 }
 #DomContextMenuContent_div ul {
   list-style-type:none;
-  display:block; 
+  display:block;
   padding:2px;
 }
-#DomContextMenuContent_div ul li { 
+#DomContextMenuContent_div ul li {
   vertical-align: middle;
   padding-right:.5em;
   cursor:pointer !important;
 }
 #DomContextMenuContent_div ul li img {
-  vertical-align: middle; 
+  vertical-align: middle;
   margin: 3px 3px 3px 2px;
 }
 .Menubar {
@@ -1344,7 +1344,7 @@ tr.MainItem td.MainFolderRight {
 }
 .demotable {
   text-align:center;
-  width: 90%; 
+  width: 90%;
 }
 #fc{
   position:absolute;
@@ -1376,76 +1376,76 @@ tr.MainItem td.MainFolderRight {
 }
 DIV.multiselect_container {
   font-size: 18px;
-	padding: .3em;
-	width:  9.8em;
+    padding: .3em;
+    width:  9.8em;
 }
 .a9multiselect {
-	width: 9.9em;
-	font-family: Arial, Helvetica, sans-serif;
-	position: relative;
-	height: 22px;
-	padding: 0;
-	margin: -.05em 0 1em 0;
-	border: 0;
+    width: 9.9em;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    height: 22px;
+    padding: 0;
+    margin: -.05em 0 1em 0;
+    border: 0;
 }
 .a9multiselect .expcol-click, .a9multiselect .expcol-click-open {
-	background-color: #fff;
-	border: 1px solid #999;
-	padding: 0;
-	margin: 0;
-	cursor: default;
-	min-width: 9.8em;
+    background-color: #fff;
+    border: 1px solid #999;
+    padding: 0;
+    margin: 0;
+    cursor: default;
+    min-width: 9.8em;
 }
 .a9multiselect div.expcol-click {
-	position: absolute;
-	z-index: 104;
-	height: 20px;
+    position: absolute;
+    z-index: 104;
+    height: 20px;
 }
 .a9multiselect div.expcol-click-open {
-	border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #fff;
 }
-.a9multiselect .title { 
-	font-size: .8em;
-	height: 1.3em;
-	line-height: 1.2em;
-	overflow: hidden;
-	padding: .3em 1.1em .1em .5em;
-	background: white url(../images/multiselect.gif) no-repeat top right;
+.a9multiselect .title {
+    font-size: .8em;
+    height: 1.3em;
+    line-height: 1.2em;
+    overflow: hidden;
+    padding: .3em 1.1em .1em .5em;
+    background: white url(../images/multiselect.gif) no-repeat top right;
 }
-.a9multiselect .title:hover { 
-	background: white url(../images/multiselect-hover.gif) no-repeat top right; 
+.a9multiselect .title:hover {
+    background: white url(../images/multiselect-hover.gif) no-repeat top right;
 }
 .expcol-body {
-	position: absolute;
-	z-index: 106;
-	min-height: 1em;
-	background: #e9f3f8;
-	padding: .1em;
-	display: block;
-	font-size: 75%;
-	display: none;
-	margin-top: -1px;
-	border: 1px solid #999;
+    position: absolute;
+    z-index: 106;
+    min-height: 1em;
+    background: #e9f3f8;
+    padding: .1em;
+    display: block;
+    font-size: 75%;
+    display: none;
+    margin-top: -1px;
+    border: 1px solid #999;
 }
 .expcol-body ul {
-	overflow: auto;
-	min-height: 1em;
-	margin: 0;
-	padding: 0;
+    overflow: auto;
+    min-height: 1em;
+    margin: 0;
+    padding: 0;
 }
-.expcol-body li { 
+.expcol-body li {
   text-align:left;
-  margin: 0 0 .2em 0; 
-	list-style:none; 
+  margin: 0 0 .2em 0;
+    list-style:none;
 }
 .expcol-body li:hover {
-	background: #ddd;
+    background: #ddd;
 }
 .arc90_multiselect {
-	width: 12.5em;
-	height: 1.35em;
-	visibility: hidden;
+    width: 12.5em;
+    height: 1.35em;
+    visibility: hidden;
 }
 .a9selectall {
-	border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
