@@ -7,7 +7,7 @@ function save_pref( $prefs, $src) {
   //We now use checkboxes instead of radio controls.
   // We loop through $sysConfig and look for Y/N settings 
   //and if set to 'N', delete it from prefs array
-  if ( $src == 'post' ) {
+  if ( $src == 'post'  && $prefs['pref_THEME'] == 'none' ) {
     $sysConfig = loadConfig ();
     while ( list ( $key, $value ) = each ( $sysConfig ) ) {
       if ( empty (  $prefs['pref_' . $key] ) )
