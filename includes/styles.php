@@ -142,6 +142,7 @@ $HASEVENTBG = getPref ( 'HASEVENTSBG', $COLORS_FROM_CONFIG );
 $OTHERMONTHBG = getPref ( 'OTHERMONTHBG', $COLORS_FROM_CONFIG );
 $MYEVENTS = getPref ( 'MYEVENTS', $COLORS_FROM_CONFIG );
 $WEEKNUMBER = getPref ( 'WEEKNUMBER', $COLORS_FROM_CONFIG );
+$CAPTIONS = getPref ( 'CAPTIONS', $COLORS_FROM_CONFIG );
 
 ?>
 body {
@@ -240,7 +241,7 @@ td.matrixappts {
   background: <?php echo $CELLBG;?>;
 }
 .minical caption a {
-  color: <?php echo getPref ( 'CAPTIONS' );?>;
+  color: <?php echo $CAPTIONS;?>;
 }
 .minical th {
   border: 0px solid <?php echo $BGCOLOR;?>;
