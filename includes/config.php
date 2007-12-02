@@ -234,9 +234,10 @@ function do_config ( $fileLoc ) {
   // read and required upgrade actions completed.
   $c = @dbi_connect ( _WC_DB_HOST, _WC_DB_LOGIN, 
     _WC_DB_PASSWORD, _WC_DB_DATABASE, false );
+
   if ( $c ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
-       WHERE cal_setting = \'_WEBCAL_PROGRAM_VERSION\'',array(), false, false );
+       WHERE cal_setting = ?', array( _WEBCAL_PROGRAM_VERSION ), false, false );
     if ( $rows ) {
       $row = $rows[0];
       if ( ! empty ( $row ) && $row[0] != PROGRAM_VERSION ) {
