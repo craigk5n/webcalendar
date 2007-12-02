@@ -53,7 +53,7 @@ function unhtmlentities ( $string ) {
  */
 function reset_language ( $new_language ) {
   global $lang, $lang_file, $translation_loaded;
-  
+
   if ( $new_language == 'none' || $new_language == 'Browser-defined')
     $new_language = get_browser_language ();
 
@@ -71,17 +71,22 @@ function reset_language ( $new_language ) {
  */
 function load_translation_text () {
   global $lang_file, $translation_loaded;
- 
+
   if ( $translation_loaded == true ) // No need to run this twice.
     return;
 
   $translations = array ();
-  $cached_file = _WC_PUB_CACHE . '/' . $lang_file;
-  
+  if ( defined ( '_WC_PUB_CACHE' ) ) {
+    $cached_file = _WC_PUB_CACHE . '/' . $lang_file;
+  } else {
+    $cached_file = $use_cached = false;
+  }
+
   if ( defined ( '_WC_BASE_DIR' ) ) {
     $base_dir = _WC_BASE_DIR;
     $lang_file_2 = _WC_BASE_DIR . "/$lang_file";
-    $cached_file = _WC_BASE_DIR . "/$cached_file";
+    if ( ! empty ( $cached_file ) )
+      $cached_file = _WC_BASE_DIR . "/$cached_file";
 
     if ( file_exists ( $lang_file_2 ) )
       $lang_file = $lang_file_2;
@@ -92,7 +97,7 @@ function load_translation_text () {
   //  We will save the parsed translation file as a serialized array.
   $save_to_cache = $use_cached = false;
 
-  if ( @function_exists ( 'file_get_contents' ) ) {
+  if ( @function_exists ( 'file_get_contents' ) && $cached_file ) {
 
     if ( ! @file_exists ( $cached_file ) )
       $save_to_cache = true;
@@ -105,7 +110,7 @@ function load_translation_text () {
         $use_cached = true;
     }
   }
-  if ( $use_cached )
+  if ( $use_cached && $cached_file )
     $translations = unserialize ( @file_get_contents ( $cached_file ) );
   // boy, that was easy ;-)
   else {
@@ -117,6 +122,7 @@ function load_translation_text () {
     $isInstall = strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' );
     while ( ! feof ( $fp ) ) {
       $buffer = trim ( fgets ( $fp, 4096 ) );
+
       if ( strlen ( $buffer ) == 0 )
         continue;
       // stripslashes may cause problems with Japanese translations.
@@ -129,7 +135,8 @@ function load_translation_text () {
       $buffer = str_replace ( "'", '&#39;', $buffer );
       // Skip installation translations unless we're running install/index.php
       if ( substr ( $buffer, 0, 7 ) == '# Page:' ) {
-        $inInstallTrans = ( substr ( $buffer, 0, 15 ) == '# Page: install' );
+        $inInstallTrans = ( substr ( $buffer, 0, 15 ) == '# Page: install'
+          || substr ( $buffer, 0, 12 ) == '# Page: step');
         continue;
       }
       if ( ( substr ( $buffer, 0, 1 ) == '#' || $inInstallTrans && !
@@ -137,6 +144,7 @@ function load_translation_text () {
         continue;
       $pos = strpos ( $buffer, ':' );
       $abbrev = trim ( substr ( $buffer, 0, $pos ) );
+
       $translations[$abbrev] = trim ( substr ( $buffer, $pos + 1 ) );
     }
     fclose ( $fp );
@@ -207,19 +215,20 @@ function get_browser_language ( $pref = false ) {
  */
 function translate ( $str, $options = '' ) {
   global $translation_loaded;
-  
+
   static $translations;
   //Set $blink to true to aid in finding missing translations
-  $blink = true;
+  $blink = ( true & WC_RUN_MODE == 'prod' );
 
   $decode = ( strpos ( $options, 'D' ) ? true : false );
-  $tooltip = ( strpos ( $options, 'T' ) ? true : false );    
-  
+  $tooltip = ( strpos ( $options, 'T' ) ? true : false );
+
   if ( ! $translation_loaded || empty ($translations ) ) {
     $translations = load_translation_text ();
-    $translation_loaded = true;
+    if ( ! empty ($translations ) )
+      $translation_loaded = true;
   }
-  
+
   $str = trim ( $str );
   $retval = ( ! empty ( $translations[$str] )
     ? ( $decode ? unhtmlentities ( $translations[$str] ) : $translations[$str] )
@@ -227,9 +236,9 @@ function translate ( $str, $options = '' ) {
 
   if ( $tooltip && ! $blink  ) {
     $retval = eregi_replace ( '<[^>]+>', '', $retval );
-    $retval = eregi_replace ( '"', "'", $retval );  
+    $retval = eregi_replace ( '"', "'", $retval );
   }
-  
+
   if ( $options ) {
     $opts = explode ( ',', $options );
     foreach ( $opts as $opt ) {
@@ -239,9 +248,9 @@ function translate ( $str, $options = '' ) {
       } else if ( substr ( $opt,0,1 ) == 'R' ) {
         $retval .= str_repeat( '&nbsp;', substr ( $opt,1 ) );
       } else if ( substr ( $opt,0,1 ) == 'P' ) {
-        $padstr = str_repeat( '&nbsp;', 
+        $padstr = str_repeat( '&nbsp;',
           ( substr ( $opt,1 ) - (int) strlen ( $retval ) ) /2 );
-        $retval = $padstr . $retval .$padstr;    
+        $retval = $padstr . $retval .$padstr;
       }
     }
   }
@@ -254,19 +263,19 @@ function template_translate(&$tpl_source, &$smarty)
 {
   preg_match_all("/__(.*)__/U", $tpl_source, $match_trans);
   $cnt = 0;
-  foreach (  $match_trans[1] as $match ) { 
+  foreach (  $match_trans[1] as $match ) {
     //? and / scroggs the preg_replace function
     $match = explode ( '@', $match );
     $pmatch = str_replace ( '?', '\?' , trim ( $match[0] ) );
     $pmatch = str_replace ( '/', '\/' , $pmatch );
-    $pattern =  "/__" .$pmatch 
+    $pattern =  "/__" .$pmatch
       . ( isset ( $match[1] ) ? '@' . $match[1] : '' ). "__/U";
-    $tpl_source = preg_replace( $pattern, 
+    $tpl_source = preg_replace( $pattern,
       translate ( $match[0], $match[1] ), $tpl_source);
     $cnt++;
-  }      
-  return $tpl_source; 
-  
+  }
+  return $tpl_source;
+
 }
 
 /* Translates text and prints it.
@@ -361,7 +370,7 @@ function define_languages () {
   //make sure Browser Defined is first in list
   $browser_defined = array ( translate ( 'Browser-defined' ) => 'none');
   $languages = array_merge ( $browser_defined, $languages );
-  
+
   return $languages;
 }
 
