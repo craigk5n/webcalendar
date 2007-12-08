@@ -564,7 +564,7 @@ class WebCalendar {
              . dbi_error () . '</blockquote>' );
 
         // Use another application's authentication.
-        if ( $login != user_logged_in () )
+        if ( ! $login = user_logged_in () )
           $session_not_found = true;
       } else {
         @session_start ();
