@@ -153,6 +153,9 @@ function load_translation_text () {
   if ( $translation_loaded ) // No need to run this twice.
     return;
 
+  if ( empty ( $lang_file ) )
+    $lang_file = "translations/English-US.txt";
+
   $lang_cache = substr ( $lang_file, strrpos ( $lang_file, '/' ) + 1 );
   $lang_file_2 = '';
 
