@@ -1,4 +1,6 @@
 Version 1.0.6 (?? ??? ????)
+ - Security fix: do not allow certain HTML tags in event descriptions
+   such as SCRIPT, META, LINK, OBJECT, APPLET and others.
  - Add support for Czech UTF8
  - Add support for the other languages, too.
    Afrikaans, Albanian, Arabic, Croatian, Elven, Hebrew, Lithuanian, Serbian, Slovak, Slovenian
