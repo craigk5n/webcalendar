@@ -122,6 +122,21 @@ if ( ! $can_edit && empty ( $error ) ) {
   $error = translate ( "You are not authorized" );
 }
 
+// Don't allow certain HTML tags in description.
+// Malicious users can use meta refresh to redirect users to another
+// site (possibly a malware site).  This could be form a public submission
+// on an event calendar, and the admin gets sent to the malware site when
+// viewing the event to approve/reject it.
+if ( $error == '' ) {
+  $bannedTags = array ( 'HTML', 'HEAD', 'TITLE', 'BODY',
+    'SCRIPT', 'META', 'LINK', 'OBJECT', 'APPLET' );
+  for ( $i = 0; $i < count ( $bannedTags ); $i++ ) {
+    if ( preg_match ( "/<\s*$bannedTags[$i]/i", $description ) ) {
+      $error = translate('Security violation!');
+    }
+  }
+}
+
 // If display of participants is disabled, set the participant list
 // to the event creator.  This also works for single-user mode.
 // Basically, if no participants were selected (because there
