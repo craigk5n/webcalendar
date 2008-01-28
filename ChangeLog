@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Security fix: Better cleansing of search.php 'adv' parameter
  - Security fix: do not allow certain HTML tags in event descriptions
    such as SCRIPT, META, LINK, OBJECT, APPLET and others.
  - Fix bug: set default translation to 'English-US.txt', which seems to
