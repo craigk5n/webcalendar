@@ -2,7 +2,7 @@ $Id$
 
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
-Version 1.1.7 (?? ??? 2007)
+Version 1.2-b1 (?? ??? 2007)
  - Apply PATCH [ 1878014 ] Fix selectDate() JavaScript function
  - Security fix: Better cleansing of search.php 'adv' parameter
  - Security fix: do not allow certain HTML tags in event descriptions
