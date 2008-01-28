@@ -21,8 +21,8 @@ if ( $login == '__public__' && !
   empty ( $PUBLIC_ACCESS_OTHERS ) && $PUBLIC_ACCESS_OTHERS == 'Y' )
   $show_others = true;
 
-$show_advanced = getValue ( 'adv' );
-if ( empty ( $show_advanced ) ) $show_advanced = 0;
+$show_advanced = getValue ( 'adv', '[01]' );
+$show_advanced = $show_advanced == '1' ? '1' : '0';
 $avdStyle = array ( 'hidden', 'visible' );
 
 load_user_categories ();
