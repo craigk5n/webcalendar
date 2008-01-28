@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.1.7 (?? ??? 2007)
+ - Fixes to icalclient.php: include translate.php sooner
  - Apply PATCH [ 1836703 ] a few corrections to Italian.txt
  - Apply PATCH [ 1834400 ] some corrections to Italian.txt
  - Apply PATCH [ 1834285 ] All remaning items for Italian.txt
