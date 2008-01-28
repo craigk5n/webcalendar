@@ -82,8 +82,7 @@
  * Also, not sure if reminders for repeated events are handled properly yet.
  */
 
-include 'includes/translate.php';
-
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
@@ -103,9 +102,6 @@ include 'includes/site_extras.php';
 include_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase ();
-
-
-$WebCalendar->setLanguage ();
 
 $appStr = generate_application_name ();
 // If WebCalendar is using http auth, then $login will be set in validate.php.
@@ -148,6 +144,8 @@ if ( empty ( $login ) ) {
 load_global_settings ();
 load_user_preferences ();
 
+$WebCalendar->setLanguage ();
+
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
   // Mozilla Calendar does not bother showing errors, so they won't see this
@@ -163,7 +161,7 @@ if ( empty ( $USER_PUBLISH_RW_ENABLED ) || $USER_PUBLISH_RW_ENABLED != 'Y' ) {
 }
 
 $prodid = 'Unnamed iCal client';
-// .
+
 // Load user name, etc.
 user_load_variables ( $login, 'publish_' );
 
