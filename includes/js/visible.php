@@ -126,11 +126,11 @@ function getScrollingPosition ()
 
 //these common function is placed here because all the files that use it
 //also use visibility functions
-function selectDate ( day, month, year, current, evt, frm ) {
+function selectDate ( day, month, year, current, evt, form ) {
   // get currently selected day/month/year
-  monthobj = eval( 'document.' + frm.id + '.' + month);
+  monthobj = eval( 'document.' + form.id + '.' + month);
   curmonth = monthobj.options[monthobj.selectedIndex].value;
-  yearobj = eval( 'document.' + frm.id + '.' + year );
+  yearobj = eval( 'document.' + form.id + '.' + year );
   curyear = yearobj.options[yearobj.selectedIndex].value;
   date = curyear;
   evt = evt? evt: window.event;
