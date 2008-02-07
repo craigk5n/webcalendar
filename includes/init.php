@@ -90,7 +90,8 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG,
   $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR,
-  $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG, $SCRIPT;
+  $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG, $SCRIPT, $PUBLIC_ACCESS_FULLNAME,
+  $PUBLIC_ACCESS;
 
   $lang = $ret = '';
   // Remember this view if the file is a view_x.php script.
@@ -154,6 +155,19 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     $ret .= '
     <link rel="stylesheet" type="text/css" href="includes/menu/themes/'
      . $menu_theme . '/theme.css" />';
+  }
+  // Add RSS feed for unapproved events if approvals are required
+  if ( $GLOBALS['REQUIRE_APPROVALS'] == 'Y' && $login != '__public__' && $is_admin ) {
+    // Note: we could do all the queries to add the RSS feed for every user
+    // the current user has permissions to approve for, but I'm thinking
+    // that's too many db requests to repeat on every page.
+    $ret .= '<link rel="alternate" type="application/rss+xml" title="' . $appStr
+      . ' - Unapproved Events - ' . $login . '" href="rss_unapproved.php"/>';
+    if ( $is_admin && $PUBLIC_ACCESS == 'Y' )
+      $ret .= '<link rel="alternate" type="application/rss+xml" title="' .
+        $appStr . ' - Unapproved Events - ' .
+        translate ( $PUBLIC_ACCESS_FULLNAME ) .
+        '" href="rss_unapproved.php?user=public"/>';
   }
   // If loading admin.php, we will not use an exrternal file because we need to
   // override the global colors and this is impossible if loading external file.
