@@ -49,6 +49,8 @@ $eventinfo = $noret = '';
  * Exclude "extension" events (used when an event goes past midnight).
  * TODO: Only include delete link if they have permission to delete
  *       when user access control is enabled.
+ * NOTE: this function is almost identical to the one in rss_unapproved.php.
+ * Just the format (RSS vs HTML) is different.
 */
 function list_unapproved ( $user ) {
   global $eventinfo, $key, $login, $NONUSER_ENABLED, $noret, $temp_fullname;
@@ -225,7 +227,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
 
 echo '
     <form action="list_unapproved.php" name="listunapproved" method="post">
-      <table border="0">';
+      <table border="0" summary="">';
 
 for ( $i = 0, $cnt = count ( $app_users ); $i < $cnt; $i++ ) {
   // List unapproved entries for this user.
