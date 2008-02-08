@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b1 (?? ??? 2007)
+ - Fix bug [ 1851220 ] cannot enter multiple categories.. only first one is kept
  - Added new rss_unapproved.php that will generate RSS 2.0 listing
    of unapproved events.
  - Apply PATCH [ 1878014 ] Fix selectDate() JavaScript function
