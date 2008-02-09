@@ -4,6 +4,8 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Modified iCalendar output to correct ATTENDEE output to conform to
+   RFC2445; fixed attendee to user login if no fullname info available.
  - Modified iCalendar output to avoid bug in Sunbird 0.7.
  - Fix bug [ 1851220 ] cannot enter multiple categories.. only first one is kept
  - Added new rss_unapproved.php that will generate RSS 2.0 listing
