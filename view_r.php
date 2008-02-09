@@ -77,8 +77,6 @@ $DISPLAY_TZ = 2;
 // if you want to be able to add an all-day event quickly, you can
 // double-click in one of these table cells, so it's handy to have
 // this row around in all cases.
-// FYI, the add-event link defaults to "all-day event" rather than
-// an untimed event.
 $show_untimed_row_always = true;
 
 view_init ( $id );
