@@ -2298,6 +2298,8 @@ function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0',
   $plus_m = '0', $plus_y = '0' ) {
   global $SERVER_TIMEZONE, $calUser;
   $this_TIMEZONE = $Z = '';
+  // Just in case, trim off leading/trailing whitespace.
+  $vdate = trim ( $vdate );
 
   $user_TIMEZONE = get_pref_setting ( $calUser, 'TIMEZONE' );
 
