@@ -164,13 +164,19 @@ function export_get_attendee( $id, $export ) {
   } //end while
   return $attendee;
 } //end function export_get_attendee($id, $export)
+
 // All times are now stored in UTC time, so no conversions are needed
 // other than formatting
+//
+// NOTE: Forcing the DTEND to include a 'T000000' as a DATETIME rather
+// than just a DATE is needed to avoid a bug in Sunbird 0.7.  If the
+// DTSTART has a DATETIME and the DTEND is just DATE, then Sunbird locks up.
 function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   global $TIMEZONE, $insert_vtimezone;
   $ret = '';
   $eventstart = date_to_epoch ( $date . $time );
   $eventend = $eventstart + ( $duration * 60 );
+  $startHasTime = 0;
   if ( $time == 0 && $duration == 1440 ) {
     // all day. Treat this as an event that starts at midnight localtime
     // with a duration of 24 hours
@@ -179,6 +185,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
       $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $dtstart. "\r\n";
     else
       $ret .= 'DTSTART;VALUE=DATETIME:' . $dtstart. "\r\n";
+    $startHasTime = 1;
   } else if ( $time == -1 ) {
     // untimed event: this is the same regardless of timezone. For example,
     // New Year's Day starts at 12am localtime regardless of timezone.
@@ -187,6 +194,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
     // timed event
     $utc_start = export_ts_utc_date ( $eventstart );
     $ret .= "DTSTART:$utc_start\r\n";
+    $startHasTime = 1;
   }
   if ( strcmp( $texport, 'ical' ) == 0 ) {
     $utc_dtstamp = export_ts_utc_date ( time () );
@@ -196,9 +204,11 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
     if ( $time == 0 && $duration == 1440 ) {
       // all day event: better to use end date than duration since
       // duration will be 23hr and 25hrs on DST switch-over days.
-      $ret .= "DTEND;VALUE=DATE:" . gmdate ( 'Ymd', $eventend ) . "\r\n";
+      $ret .= 'DTEND;VALUE=' . ( $startHasTime ? 'DATETIME' : 'DATE' ) .
+        ':' . gmdate ( 'Ymd', $eventend ) .
+        ( $startHasTime ? 'T000000' : '' ) . "\r\n";
     }
-    if ( $time > 0 || ( $time == 0 && $duration != 1440 ) ) {
+    else if ( $time > 0 || ( $time == 0 && $duration != 1440 ) ) {
       // timed event
       $utc_end = export_ts_utc_date ( $eventend );
       $ret .= "DTEND:$utc_end\r\n";
