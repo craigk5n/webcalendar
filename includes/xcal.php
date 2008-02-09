@@ -164,13 +164,19 @@ function export_get_attendee( $id, $export ) {
   } //end while
   return $attendee;
 } //end function export_get_attendee($id, $export)
+
 // All times are now stored in UTC time, so no conversions are needed
 // other than formatting
+//
+// NOTE: Forcing the DTEND to include a 'T000000' as a DATETIME rather
+// than just a DATE is needed to avoid a bug in Sunbird 0.7.  If the
+// DTSTART has a DATETIME and the DTEND is just DATE, then Sunbird locks up.
 function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   global $TIMEZONE, $insert_vtimezone;
   $ret = '';
   $eventstart = date_to_epoch ( $date . $time );
   $eventend = $eventstart + ( $duration * 60 );
+  $startHasTime = 0;
   if ( $time == 0 && $duration == 1440 ) {
     // all day. Treat this as an event that starts at midnight localtime
     // with a duration of 24 hours
@@ -179,6 +185,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
       $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $dtstart. "\r\n";
     else
       $ret .= 'DTSTART;VALUE=DATETIME:' . $dtstart. "\r\n";
+    $startHasTime = 1;
   } else if ( $time == -1 ) {
     // untimed event: this is the same regardless of timezone. For example,
     // New Year's Day starts at 12am localtime regardless of timezone.
@@ -187,6 +194,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
     // timed event
     $utc_start = export_ts_utc_date ( $eventstart );
     $ret .= "DTSTART:$utc_start\r\n";
+    $startHasTime = 1;
   }
   if ( strcmp( $texport, 'ical' ) == 0 ) {
     $utc_dtstamp = export_ts_utc_date ( time () );
@@ -196,9 +204,11 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
     if ( $time == 0 && $duration == 1440 ) {
       // all day event: better to use end date than duration since
       // duration will be 23hr and 25hrs on DST switch-over days.
-      $ret .= "DTEND;VALUE=DATE:" . gmdate ( 'Ymd', $eventend ) . "\r\n";
+      $ret .= 'DTEND;VALUE=' . ( $startHasTime ? 'DATETIME' : 'DATE' ) .
+        ':' . gmdate ( 'Ymd', $eventend ) .
+        ( $startHasTime ? 'T000000' : '' ) . "\r\n";
     }
-    if ( $time > 0 || ( $time == 0 && $duration != 1440 ) ) {
+    else if ( $time > 0 || ( $time == 0 && $duration != 1440 ) ) {
       // timed event
       $utc_end = export_ts_utc_date ( $eventend );
       $ret .= "DTEND:$utc_end\r\n";
@@ -1809,6 +1819,7 @@ function import_data ( $data, $overwrite, $type ) {
 function parse_ical ( $cal_file, $source = 'file' ) {
   global $tz, $errormsg;
   $ical_data = array ();
+  do_debug ( "in parse_ical, file=$cal_file, source=$source" );
   if ( $source == 'file' || $source == 'remoteics' ) {
     if ( ! $fd = @fopen ( $cal_file, 'r' ) ) {
       $errormsg .= "Can't read temporary file: $cal_file\n";
@@ -1825,21 +1836,24 @@ function parse_ical ( $cal_file, $source = 'file' ) {
     }
   } else if ( $source == 'icalclient' ) {
     //do_debug ( "before fopen on stdin..." );
-    $stdin = fopen ( 'php://input', 'rb' );
-    // $stdin = fopen ("/dev/stdin", "r");
+    $stdin = fopen ( 'php://input', 'r' );
+    $tmp = fopen ( "/tmp/data.ics", "w+" );
+    //$stdin = fopen ("/dev/stdin", "r");
     // $stdin = fopen ("/dev/fd/0", "r");
-    //do_debug ( "after fopen on stdin..." );
+    do_debug ( "after fopen on stdin..." );
     // Read in contents of entire file first
     $data = '';
     $cnt = 0;
     while ( ! feof ( $stdin ) ) {
       $line = fgets ( $stdin, 1024 );
+      fwrite ( $tmp, $line );
       $cnt++;
-      // do_debug ( "cnt = " . ( ++$cnt ) );
+      do_debug ( "read: " . $line );
+      do_debug ( "cnt = " . ( $cnt ) );
       $data .= $line;
       if ( $cnt > 10 && strlen ( $data ) == 0 ) {
-        // do_debug ( "Read $cnt lines of data, but got no data :-(" );
-        // do_debug ( "Informing user of PHP server bug (PHP v" . phpversion () . ")" );
+        do_debug ( "Read $cnt lines of data, but got no data :-(" );
+        do_debug ( "Informing user of PHP server bug (PHP v" . phpversion () . ")" );
         // Note: Mozilla Calendar does not display this error for some reason.
         echo '<br /><b>Error:</b> Your PHP server ' . phpversion ()
          . ' seems to have a bug reading stdin. '
@@ -1848,15 +1862,24 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       }
     }
     fclose ( $stdin );
-    // do_debug ( "strlen (data)=" . strlen ($data) );
+    fclose ( $tmp );
+    do_debug ( "strlen (data)=" . strlen ($data) );
     // Check for PHP stdin bug
     if ( $cnt > 5 && strlen ( $data ) < 10 ) {
-       //do_debug ( "Read $cnt lines of data, but got no data :-(" );
-       //do_debug ( "Informing user of PHP server bug" );
+      do_debug ( "Read $cnt lines of data, but got no data :-(" );
+      do_debug ( "Informing user of PHP server bug" );
       header ( 'Content-Type: text/plain' );
       echo 'Error: Your PHP server ' . phpversion ()
        . ' seems to have a bug reading stdin.' . "\n"
        . 'Try upgrading to a newer release.' . "\n";
+      exit;
+    }
+    // Check to see if client sent valid data
+    if ( strlen ( $data ) < 20 ) {
+      do_debug ( "Informing user of no client data" );
+      header ( 'Content-Type: text/plain' );
+      echo 'Error: Your iCalendar client did not ' .
+        'send any data.';
       exit;
     }
   }
@@ -1967,10 +1990,10 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
           $substate = 'dtstartTzid';
           $event[$substate] = $submatch[1];
-        } else if ( preg_match ( "/VALUE=DATE-TIME(.*)$/i", $match[1], $submatch ) ) {
+        } else if ( preg_match ( "/VALUE=\"{0,1}DATE-TIME\"{0,1}(.*)$/i", $match[1], $submatch ) ) {
           $substate = 'dtstartDATETIME';
           $event[$substate] = true;
-        } else if ( preg_match ( "/VALUE=DATE(.*)$/i", $match[1], $submatch ) ) {
+        } else if ( preg_match ( "/VALUE=\"{0,1}DATE\"{0,1}(.*)$/i", $match[1], $submatch ) ) {
           $substate = 'dtstartDATE';
           $event[$substate] = true;
         }
@@ -2371,11 +2394,14 @@ function format_ical ( $event ) {
   }
 
   if ( isset ( $event['dtstartDATE'] ) && ! isset ( $event['dtendDATE'] ) ) {
-    // This is an anniversary
+    // Untimed
     $fevent['StartTime'] = icaldate_to_timestamp ( $event['dtstart'], 'GMT' );
-    $fevent['EndTime'] = $fevent['StartTime'] + 86400;
-    $fevent['AllDay'] = 1;
-    $fevent['Duration'] = 1440;
+    $fevent['EndTime'] = $fevent['StartTime'];
+    $fevent['Untimed'] = 1;
+    $fevent['Duration'] = 0;
+    //$fevent['EndTime'] = $fevent['StartTime'] + 86400;
+    //$fevent['AllDay'] = 1;
+    //$fevent['Duration'] = 1440;
   } else if ( isset ( $event['dtstartDATE'] ) && isset ( $event['dtendDATE'] ) ) {
     $fevent['StartTime'] = icaldate_to_timestamp ( $event['dtstart'], 'GMT' );
     // This is an untimed event
