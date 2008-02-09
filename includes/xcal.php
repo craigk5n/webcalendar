@@ -139,11 +139,15 @@ function export_get_attendee( $id, $export ) {
     if ( count ( $user ) > 0 ) {
       $attendee[$count] = 'ATTENDEE;ROLE=';
       $attendee[$count] .= ( $row[2] == $user[3] ) ? 'OWNER;': 'ATTENDEE;';
-      $attendee[$count] .= 'STATUS=';
+      // Note: Ray said Outlook likes 'STATUS', but RFC2445 says it
+      // should be 'PARTSTAT'.
+      //$attendee[$count] .= 'STATUS=';
+      $attendee[$count] .= 'PARTSTAT=';
 
       switch ( $row[1] ) {
         case 'A':
-          $attendee[$count] .= 'CONFIRMED';
+          //$attendee[$count] .= 'CONFIRMED';
+          $attendee[$count] .= 'ACCEPTED';
           break;
         case 'R':
           $attendee[$count] .= 'DECLINED';
@@ -157,7 +161,14 @@ function export_get_attendee( $id, $export ) {
       if ( strcmp( $export, 'vcal' ) == 0 )
         $attendee[$count] .= ';ENCODING=QUOTED-PRINTABLE';
 
-      $attendee[$count] .= ":$user[0] $user[1] <$user[2]>";
+      // Use "Full Name <email>" if we have it, just "login" if that's all
+      // we have.
+      if ( empty ( $user[0] ) && empty ( $user[1] ) )
+        $attendee[$count] .= ":$user[3]";
+      else
+        $attendee[$count] .= ":$user[0] $user[1]";
+      if ( ! empty ( $user[2] ) )
+        $attendee[$count]  .= " <$user[2]>";
 
       $count++;
     } //end if ( count ( $user ) > 0 )
