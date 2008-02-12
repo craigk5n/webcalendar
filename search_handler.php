@@ -39,6 +39,8 @@ if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
     $PUBLIC_ACCESS_OTHERS == 'Y' )
   $search_others = true;
 
+$users = getPostValue ( 'users' );
+
 if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
 // Security precaution -- make sure users listed in participants list
@@ -64,9 +66,13 @@ if ( $search_others ) {
   // Now, use access control to remove more users :-)
   if ( access_is_enabled () && ! $is_admin ) {
     $newlist = array ();
-    for ( $i = 0; $i < $cnt; $i++ ) {
-      if ( access_user_calendar ( 'view', $users[$i] ) )
+    for ( $i = 0; $i < count ( $users ); $i++ ) {
+      if ( access_user_calendar ( 'view', $users[$i] ) ) {
         $newlist[] = $users[$i];
+        //echo "can access $users[$i] <br>";
+      } else {
+        //echo "cannot access $users[$i] <br>";
+      }
     }
     $users = $newlist;
   }
