@@ -24,6 +24,9 @@ if ( $login == '__public__' && !
 $show_advanced = getValue ( 'adv', '[01]' );
 $show_advanced = $show_advanced == '1' ? '1' : '0';
 $avdStyle = array ( 'hidden', 'visible' );
+if ( access_is_enabled () &&
+  ! access_can_access_function ( ACCESS_ADVANCED_SEARCH ) )
+  $show_advanced = false;
 
 load_user_categories ();
 $selected = ' selected="selected" ';

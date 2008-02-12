@@ -573,9 +573,17 @@ if ( ! empty ( $menuExtras[5] ) )
 if ( $search_url != '' && $menuConfig['Search'] ) {
   jscMenu_menu ( 'Search' );
 
-  if ( $menuConfig['Advanced Search'] && $login != '__public__' &&
-    ( ! $is_nonuser || access_is_enabled () &&
-        access_can_access_function ( ACCESS_ADVANCED_SEARCH ) ) ) {
+  $doAdv = false;
+  if ( ! empty ( $menuConfig['Advanced Search'] ) ) {
+    // Use UAC if enabled...
+    if ( access_is_enabled () && 
+      access_can_access_function ( ACCESS_ADVANCED_SEARCH ) )
+      $doAdv = true;
+    else if ( ! access_is_enabled () &&
+      ! $is_nonuser && $login != '__public__' )
+      $doAdv = true;
+  }
+  if ( $doAdv ) {
     jscMenu_item ( 'search.png', 'Advanced Search', 'search.php?adv=1' );
     jscMenu_divider ();
   }
