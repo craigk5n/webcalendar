@@ -6,7 +6,7 @@
 # Last update: 19. November 2007
 #
 # $Id$
-# Translation last updated on 11-20-2007
+# Translation last updated on 02-11-2008
 
 
 ################################################################################
@@ -645,6 +645,7 @@ A new appointment has been made for you by: Es wurde Ihnen eine neuer Termin ein
 XXX has made a new appointment.: XXX hat Ihnen einen neuen Termin eingetragen.
 An appointment has been updated by: Ein Termin wurde aktualisiert von
 XXX has updated an appointment.: XXX hat einen Termin aktualisiert.
+Security violation!: Sicherheitsverletzung!
 You must enter the anti-spam text on the previous page.: Auf der vorigen Seite m&uuml;ssen Sie einen Anti-Spam Text eingeben.
 The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
 User removed from participants list.: Benutzer wurde von der Teilnehmerliste entfernt.
@@ -1576,11 +1577,6 @@ Event Imported: Termin importiert
 bytes: Bytes
 kb: kB
 Mb: =
-
-########################################
-# Page: includes/classes/WebCalendar.class
-#
-Security violation!: Sicherheitsverletzung!
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
