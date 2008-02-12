@@ -40,7 +40,7 @@ function die_miserable_death ( $error ) {
   echo <<<EOT
 <html>
   <head><title>{$appStr}: Fatal Error</title></head>
-  <body bgcolor="#fff">
+  <body bgcolor="#ffffff">
     <h2>{$appStr} Error</h2>
     <p>{$error}</p><hr />
     <p><a href="{$TROUBLE_URL}" target="_blank">Troubleshooting Help</a></p>
