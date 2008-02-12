@@ -5,12 +5,12 @@ print_header ();
 echo '
     <h2>' . translate ( 'View Another Users Calendar' ) . '</h2>';
 
-if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) {
+if ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) {
   $error = print_not_auth (7);
   echo '
     <blockquote>' . $error . '</blockquote>';
-}else if (  $PUBLIC_ACCESS == 'Y' && $login == '__public__' &&
-      $PUBLIC_ACCESS_OTHERS != 'Y' ) ) {
+} else if (  $PUBLIC_ACCESS == 'Y' && $login == '__public__' &&
+  $PUBLIC_ACCESS_OTHERS != 'Y' ) {
   $error = print_not_auth (35);
   echo '
     <blockquote>' . $error . '</blockquote>';
