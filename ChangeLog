@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b1 (?? ??? 2007)
+ - Fix bug [ 1881030 ] date-format wrong in month.php
  - Modified iCalendar output to correct ATTENDEE output to conform to
    RFC2445; fixed attendee to user login if no fullname info available.
  - Modified iCalendar output to avoid bug in Sunbird 0.7.
