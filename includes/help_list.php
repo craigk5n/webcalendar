@@ -7,17 +7,46 @@
 */
 defined ( '_ISVALID' ) or ( 'You cannot access this file directly!' );
 // DO NOT DELETE translate ( 'Index' ) translate ( 'Documentation' )
-$help_list = array (
-  'Index' => 'help_index.php',
-  'Adding/Editing Calendar Entries' => 'help_edit_entry.php',
-  'Layers' => 'help_layers.php',
-  'Import' => 'help_import.php',
-  'Preferences' => 'help_pref.php',
-  'User Access Control' => 'help_uac.php',
-  'System Settings' => 'help_admin.php',
-  'Documentation' => 'help_docs.php',
-  'Report Bug' => 'help_bug.php'
-  );
+$help_list = array ();
+$help_list['Index'] = 'help_index.php';
+
+$can_add = true;
+if ( $readonly == 'Y' )
+  $can_add = false;
+else
+if ( access_is_enabled () )
+  $can_add = access_can_access_function ( ACCESS_EVENT_EDIT );
+else {
+  if ( $login == '__public__' )
+    $can_add = ( $GLOBALS['PUBLIC_ACCESS_CAN_ADD'] == 'Y' );
+
+  if ( $is_nonuser )
+    $can_add = false;
+}
+if ( $can_add )
+  $help_list['Adding/Editing Calendar Entries'] = 'help_edit_entry.php';
+
+if ( ! access_is_enabled () && $login != '__public__' ||
+  access_can_access_function ( ACCESS_LAYERS ) )
+  $help_list['Layers'] = 'help_layers.php';
+if ( ( ! access_is_enabled () && $login != '__public__' ) ||
+  access_can_access_function ( ACCESS_IMPORT ) )
+  $help_list['Import'] = 'help_import.php';
+
+if ( ( ! access_is_enabled () && $login != '__public__' ) ||
+  access_can_access_function ( ACCESS_PREFERENCES ) )
+  $help_list['Preferences'] = 'help_pref.php';
+
+if ( access_is_enabled () && $login != '__public__' )
+  $help_list['User Access Control'] = 'help_uac.php';
+
+if ( ( $is_admin && ! access_is_enabled () ) ||
+  access_can_access_function ( ACCESS_IMPORT ) )
+  $help_list['System Settings'] = 'help_admin.php';
+
+$help_list['Documentation'] = 'help_docs.php';
+$help_list['Report Bug'] = 'help_bug.php';
+
 $helpListStr = '
     <div class="helplist">
       ' . translate ( 'Page' ) . ': ';
