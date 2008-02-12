@@ -422,7 +422,7 @@ echo send_doctype ( generate_application_name () );
 -->
 <style type="text/css">
 body {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 dt {
   font-family: arial,helvetica;
@@ -441,11 +441,11 @@ a {
 }
 a:hover {
   font-family: arial,helvetica;
-  color: #fff;
+  color: #ffffff;
   background-color: #33a;
 }
 .popup {
-  color: #fff;
+  color: #ffffff;
   background-color: #33a;
   text-decoration: none;
   position: absolute;
@@ -465,12 +465,12 @@ a:hover {
   font-weight: bold;
   margin: 0px;
   padding: 0px;
-  color: #fff;
+  color: #ffffff;
 }
 .popup dd {
   font-size: 10px;
   margin-left: 20px;
-  color: #fff;
+  color: #ffffff;
 }
 .dtstart,
 .dtend,

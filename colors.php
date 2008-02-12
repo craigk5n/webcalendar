@@ -80,7 +80,7 @@ echo <<<EOT
                     value="FFFFFF" onchange="setFromHTML()" />
                 </td>
                 <td class="boxtop boxright boxbottom" width="120">
-          <table id="thecell" bgcolor="#fff" align="center"
+          <table id="thecell" bgcolor="#ffffff" align="center"
             border="1" cellspacing="0" cellpadding="0" summary="">
                     <tr>
                       <td><img src="images/blank.gif" width="55" height="53"
@@ -91,7 +91,7 @@ echo <<<EOT
                 <td valign="middle" align="center" class="boxtop boxright
                   boxbottom">
 <!--  Display New Color  -->
-        <table id="theoldcell" bgcolor="#fff" border="1" cellspacing="0"
+        <table id="theoldcell" bgcolor="#ffffff" border="1" cellspacing="0"
            cellpadding="0" summary="">
                     <tr>
             <td><img src="images/blank.gif" width="55" height="53"
