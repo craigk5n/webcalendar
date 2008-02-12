@@ -111,7 +111,7 @@ if ( $do_purge ) {
 onclick="history.back()" /></form
 ><?php
   if ( $purgeDebug ) {
-    echo '<div style="border: 1px solid #000;background-color: #fff;"><tt>' .
+    echo '<div style="border: 1px solid #000;background-color: #ffffff;"><tt>' .
   $sqlLog . '</tt></div>' ."\n";
   }
 } else {

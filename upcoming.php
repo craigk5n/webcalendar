@@ -422,38 +422,38 @@ echo send_doctype ( generate_application_name () );
 -->
 <style type="text/css">
 body {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 dt {
   font-family: arial,helvetica;
   font-weight: bold;
   font-size: 12px;
-  color: #000;
+  color: #000000;
 }
 dd {
   font-family: arial,helvetica;
-  color: #33a;
+  color: #3030a0;
   font-size: 12px;
 }
 a {
   font-family: arial,helvetica;
-  color: #33a;
+  color: #3030a0;
 }
 a:hover {
   font-family: arial,helvetica;
-  color: #fff;
-  background-color: #33a;
+  color: #ffffff;
+  background-color: #3030a0;
 }
 .popup {
-  color: #fff;
-  background-color: #33a;
+  color: #ffffff;
+  background-color: #3030a0;
   text-decoration: none;
   position: absolute;
   z-index: 20;
   visibility: hidden;
   top: 0px;
   left: 0px;
-  border: 1px solid #000;
+  border: 1px solid #000000;
   padding: 3px;
 }
 .popup dl {
@@ -465,12 +465,12 @@ a:hover {
   font-weight: bold;
   margin: 0px;
   padding: 0px;
-  color: #fff;
+  color: #ffffff;
 }
 .popup dd {
   font-size: 10px;
   margin-left: 20px;
-  color: #fff;
+  color: #ffffff;
 }
 .dtstart,
 .dtend,
