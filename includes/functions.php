@@ -81,6 +81,9 @@ $noSet = array (
   "admin_can_add_user" => 1,
   "admin_can_delete_user" => 1,
   "noSet" => 1,
+  'PHP_AUTH_USER' => 1,
+  'CATEGORIES_VIEW' => 1,
+  'FONTS' => 1,
 );
 
 // This code is a temporary hack to make the application work when
@@ -3396,7 +3399,7 @@ function display_unapproved_events ( $user ) {
  $str = str_replace ( "XXX", $row[0], $str );
         echo "<a class=\"nav\" href=\"list_unapproved.php";
         if ( $user != $login )
-          echo "?user=$user\"";
+          echo "?user=$user";
         echo "\">" . $str .  "</a><br />\n";
       }
     }

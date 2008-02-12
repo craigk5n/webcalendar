@@ -1,4 +1,5 @@
 Version 1.0.6 (?? ??? ????)
+ - Security fix 1826571: misc XSS issues
  - Security fix: do not allow certain HTML tags in event descriptions
    such as SCRIPT, META, LINK, OBJECT, APPLET and others.
  - Add support for Czech UTF8
