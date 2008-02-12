@@ -147,7 +147,7 @@ echo '  body {
     text-decoration:none;
   }
   a:hover {
-    color:#00F;
+    color:#0000ff;
   }
   abbr {
     cursor:help;
@@ -267,7 +267,7 @@ echo '  body {
     color:' . $GLOBALS['H2COLOR'] . ';
   }
   .tabbak a {
-    color:#999;
+    color:#909090;
   }
   .tabfor {
     background:#F8F8FF;
@@ -445,9 +445,9 @@ echo '  body {
     vertical-align:top;
   }
   .dayofmonth:hover {
-    border-right:1px solid #00F;
-    border-bottom:1px solid #00F;
-    color:#00F;
+    border-right:1px solid #0000ff;
+    border-bottom:1px solid #0000ff;
+    color:#0000ff;
   }
   .next img,
   #activitylog .next {
@@ -523,7 +523,7 @@ echo '  body {
     margin-left:auto;
     border:1px solid #000;
     padding:5px;
-    background:#FFF;
+    background:#ffffff;
     text-align:center;
   }
   .matrixlegend img {
@@ -647,7 +647,7 @@ echo '  body {
   }
    /* style for week hover highlight */
   tr.highlight td {
-    background-color:#ffb !important;
+    background-color:#ffffb0 !important;
   }
   .minical {
     margin:0 0 5px 0;
@@ -659,7 +659,7 @@ echo '  body {
     font-weight:bold;
   }
   .minical caption a:hover {
-    color:#00F;
+    color:#0000ff;
   }
   .minical th {
     border:0 solid ' . $GLOBALS['BGCOLOR'] . ';
@@ -1055,7 +1055,7 @@ echo '  body {
   #viewr .main th a:hover,
   #week .main th a:hover,
   #weekdetails .main th a:hover {
-    color:#00f;
+    color:#0000ff;
   }
   #year .minical td {
     text-align:center;
@@ -1150,14 +1150,14 @@ echo '  body {
   }
   #viewt td.timebar {
     width:90%;
-    background:#FFF;
-    color:#999;
+    background:#ffffff;
+    color:#909090;
     font-size:10px;
     text-align:center;
   }
   #viewt .yardstick td {
     padding:0;
-    border:1px solid #999;
+    border:1px solid #909090;
   }
   #viewt td.entry {
     padding:0;
@@ -1202,19 +1202,19 @@ echo '  body {
     text-align:center;
   }
   .boxtop {
-   border-top:1px solid #888;
+   border-top:1px solid #808080;
   }
   .boxright {
-   border-right:1px solid #888;
+   border-right:1px solid #808080;
   }
   .boxbottom {
-   border-bottom:1px solid #888;
+   border-bottom:1px solid #808080;
   }
   .boxleft {
-   border-left:1px solid #888;
+   border-left:1px solid #808080;
   }
   .boxall {
-   border:1px solid #888;
+   border:1px solid #808080;
    padding-left:3px;
   }
   .leftpadded {
@@ -1256,7 +1256,7 @@ echo '  body {
   }
   #about p {
     margin:1px;
-    color:#333;
+    color:#303030;
   }
   #scroller {
     position:absolute;
