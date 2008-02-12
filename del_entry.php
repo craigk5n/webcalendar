@@ -232,9 +232,16 @@ if ( $id > 0 && empty ( $error ) ) {
         $error = print_not_auth (6);
     }
     if ( empty ( $error ) ) {
-      dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
-        WHERE cal_id = ? AND cal_login = ?', array ( 'D', $id, $del_user ) );
-      activity_log ( $id, $login, $login, $log_reject, '' );
+      if ( $override_repeat ) {
+        dbi_execute ( 'INSERT INTO webcal_entry_repeats_not
+          ( cal_id, cal_date, cal_exdate ) VALUES ( ?, ?, ? )',
+          array ( $id, $date, 1 ) );
+        // Should we log this to the activity log???
+      } else {
+        dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
+          WHERE cal_id = ? AND cal_login = ?', array ( 'D', $id, $del_user ) );
+        activity_log ( $id, $login, $login, $log_reject, '' );
+      }
     }
   }
 }
