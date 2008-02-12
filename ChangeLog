@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fix bug [ 1814525 ] Repeating event deletion
  - Apply PATCH [ 1802793 ] iCS export - LDAP - Empty Attendee's info
  - Security fix 1826571: misc XSS issues
  - Modified iCalendar output to correct ATTENDEE output to conform to
