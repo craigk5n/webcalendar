@@ -32,8 +32,9 @@ function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
   // error_log ( date ( 'Y-m-d H:i:s' ) . "> $msg\n<br />",
   // 3, 'd:/php/logs/debug.txt' );
-  // fwrite ( $fd, date ( 'Y-m-d H:i:s' ) . "> $msg\n" );
-  // fclose ( $fd );
+  $fd = fopen ( "/tmp/webcal.log", 'a+b' );
+  fwrite ( $fd, date ( 'Y-m-d H:i:s' ) . "> $msg\n" );
+  fclose ( $fd );
   // 3, '/tmp/webcal-debug.log' );
   // error_log ( date ( 'Y-m-d H:i:s' ) . "> $msg\n",
   // 2, 'sockieman:2000' );
@@ -804,13 +805,17 @@ function date_to_epoch ( $d ) {
  * @param bool    $show_weekday  Should the day of week also be included?
  * @param bool    $short_months  Should the abbreviated month names be used
  *                               instead of the full month names?
+ * @param bool   $forceTranslate Check to see if there is a translation for
+ *                    the specified data format.  If there is, then use
+ *                    the translated format from the language file, but
+ *                    only if $DATE_FORMAT is language-defined.
  *
  * @return string  Date in the specified format.
  *
  * @global string Preferred date format
  */
 function date_to_str ( $indate, $format = '', $show_weekday = true,
-  $short_months = false ) {
+  $short_months = false, $forceTranslate = false ) {
   global $DATE_FORMAT;
 
   if ( strlen ( $indate ) == 0 )
@@ -819,6 +824,10 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   // If they have not set a preference yet...
   if ( $DATE_FORMAT == '' || $DATE_FORMAT == 'LANGUAGE_DEFINED' )
     $DATE_FORMAT = translate ( '__month__ __dd__, __yyyy__' );
+  else if ( $DATE_FORMAT == 'LANGUAGE_DEFINED' &&
+    $forceTranslate && $format != '' && translation_exists ( $format ) ) {
+    $format = translate ( $format );
+  }
 
   if ( empty ( $format ) )
     $format = $DATE_FORMAT;
@@ -1130,10 +1139,11 @@ function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
      . date_to_str ( date ( 'Ymd', $wkend - 86400 ), '', false )
      . ( $DISPLAY_WEEKNUMBER == 'Y' ? " \n(" . translate ( 'Week' ) . ' '
        . date ( 'W', $wkstart + 86400 ) . ')' : '' );
-  elseif ( $name == 'month' || $name == 'view_l' )
+  elseif ( $name == 'month' || $name == 'view_l' ) {
     $ret .= $spacer
      . date_to_str ( sprintf ( "%04d%02d01", $thisyear, $thismonth ),
-      $DATE_FORMAT_MY, false, false );
+      $DATE_FORMAT_MY, false, false, true );
+  }
 
   return $ret . '</span>
           <span class="user">'

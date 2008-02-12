@@ -279,6 +279,14 @@ function get_browser_language ( $pref = false ) {
     : 'English-US' );
 }
 
+function translation_exists ( $str )
+{
+  global $translation_loaded, $translations;
+  if ( ! $translation_loaded )
+    return false;
+  return ( empty ( $translations[$str] ) ? false : true );
+}
+
 /* Translates a string from the default English usage to another language.
  *
  * The first time that this is called, the translation file will be loaded
