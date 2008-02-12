@@ -103,6 +103,16 @@ function export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
   $res[$res_ind] = $row; // Add last row (or first if no folding is necessary)
   return $res;
 } //end function export_fold_lines ($string, $encoding="none", $limit=76)
+
+function search_users($arrInArray, $varSearchValue){
+  foreach ($arrInArray as $key => $row){
+    if ($row['cal_login'] == $varSearchValue) {
+      return $key;
+    }
+  }
+  return -1;
+}
+
 function export_get_attendee( $id, $export ) {
   global $login;
 
@@ -126,17 +136,15 @@ function export_get_attendee( $id, $export ) {
 
   $count = 0;
 
+  $userlist = user_get_users ();
+
   while ( list ( $key, $row ) = each ( $entry_array ) ) {
-    $request = 'SELECT cal_firstname, cal_lastname, cal_email, cal_login
-      FROM webcal_user where cal_login = ?';
-
-    $user_res = dbi_execute ( $request, array ( $row[0] ) );
-
-    $user = dbi_fetch_row( $user_res );
-
-    dbi_free_result ( $user_res );
-
-    if ( count ( $user ) > 0 ) {
+    // $user[0] = cal_firstname, cal_lastname, cal_email, cal_login
+    $userPos = search_users($userlist, $row[0]);
+    if ($userPos == -1) {
+      continue;
+    } else {
+      $user = $userlist[$userPos];
       $attendee[$count] = 'ATTENDEE;ROLE=';
       $attendee[$count] .= ( $row[2] == $user[3] ) ? 'OWNER;': 'ATTENDEE;';
       // Note: Ray said Outlook likes 'STATUS', but RFC2445 says it
@@ -163,12 +171,12 @@ function export_get_attendee( $id, $export ) {
 
       // Use "Full Name <email>" if we have it, just "login" if that's all
       // we have.
-      if ( empty ( $user[0] ) && empty ( $user[1] ) )
-        $attendee[$count] .= ":$user[3]";
+      if ( empty ( $user['cal_firstname'] ) && empty ( $user['cal_lastname'] ) )
+        $attendee[$count] .= ':' . $user['cal_login'];
       else
-        $attendee[$count] .= ":$user[0] $user[1]";
-      if ( ! empty ( $user[2] ) )
-        $attendee[$count]  .= " <$user[2]>";
+        $attendee[$count] .= ':' . $user['cal_firstname'] . ' ' .  $user['cal_lastname'];
+      if ( ! empty ( $user['cal_email'] ) )
+        $attendee[$count]  .= ' <' . $user['cal_email'] . '>';
 
       $count++;
     } //end if ( count ( $user ) > 0 )
