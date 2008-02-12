@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b1 (?? ??? 2007)
+ - Fix bug [ 1851209 ] advanced search doesn't show on public calendar
  - Fix bug [ 1814525 ] Repeating event deletion
  - Apply PATCH [ 1802793 ] iCS export - LDAP - Empty Attendee's info
  - Security fix 1826571: misc XSS issues
