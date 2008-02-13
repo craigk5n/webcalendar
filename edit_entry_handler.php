@@ -71,6 +71,8 @@ $reminder = getPostValue ( 'reminder' );
 $rpt_type = getPostValue ( 'rpt_type' );
 $timetype = getPostValue ( 'timetype' );
 $participants = getPostValue ( 'selectedPart' );
+// entry_changed is calculated client-side with javascript
+$entry_changed = getPostValue ( 'entry_changed' );
 
 $description =
 ( strlen ( $description ) == 0 || $description == '<br />'

@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fix bug [ 1851371 ] Notification not sent on description change
  - Fix bug [ 1839882 ] help/guide pages blocked (non auth)
  - Fix bug [ 1851209 ] advanced search doesn't show on public calendar
  - Fix bug [ 1814525 ] Repeating event deletion
