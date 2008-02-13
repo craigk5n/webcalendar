@@ -69,6 +69,8 @@ $rpt_type = getPostValue ( 'rpt_type' );
 $timetype = getPostValue ( 'timetype' );
 $priority = getPostValue ( 'priority' );
 $access = getPostValue ( 'access' );
+// entry_changed is calculated client-side with javascript
+$entry_changed = getPostValue ( 'entry_changed' );
 
 
 $description =
