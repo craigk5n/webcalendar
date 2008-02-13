@@ -58,7 +58,7 @@ function validate_and_submit () {
           changed = true;
         break;
       case "text":
-//      case "textarea":
+      case "textarea":
         if ( field.value != field.defaultValue )
           changed = true;
         break;
